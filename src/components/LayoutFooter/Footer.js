@@ -60,7 +60,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             },
           }}>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>文档</MetaTitle>
+            <MetaTitle onDark={true}>Docs</MetaTitle>
             {sectionListDocs.map(section => {
               const defaultItem = section.items[0];
               return (
@@ -90,19 +90,19 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
               href="https://discuss.reactjs.org"
               target="_blank"
               rel="noopener">
-              Discussion 论坛
+              Discussion Forum
             </ExternalFooterLink>
             <ExternalFooterLink
               href="https://discord.gg/0ZcbPKXt5bZjGY5n"
               target="_blank"
               rel="noopener">
-              Reactiflux 聊天室
+              Reactiflux Chat
             </ExternalFooterLink>
             <ExternalFooterLink
               href="https://dev.to/t/react"
               target="_blank"
               rel="noopener">
-              DEV 社区
+              DEV Community
             </ExternalFooterLink>
             <ExternalFooterLink
               href="https://www.facebook.com/react"
@@ -118,7 +118,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             </ExternalFooterLink>
           </FooterNav>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>社区</MetaTitle>
+            <MetaTitle onDark={true}>Community</MetaTitle>
             {sectionListCommunity.map(section => (
               <FooterLink
                 to={`/community/${section.items[0].id}.html`}
@@ -128,11 +128,11 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             ))}
           </FooterNav>
           <FooterNav layoutHasSidebar={layoutHasSidebar}>
-            <MetaTitle onDark={true}>其他</MetaTitle>
-            <FooterLink to="/tutorial/tutorial.html">教程</FooterLink>
-            <FooterLink to="/blog/">博客</FooterLink>
+            <MetaTitle onDark={true}>More</MetaTitle>
+            <FooterLink to="/tutorial/tutorial.html">Tutorial</FooterLink>
+            <FooterLink to="/blog/">Blog</FooterLink>
             <FooterLink to="/acknowledgements.html">
-              致谢
+              Acknowledgements
             </FooterLink>
             <ExternalFooterLink
               href="https://facebook.github.io/react-native/"
@@ -179,14 +179,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
               color: colors.subtleOnDark,
               paddingTop: 15,
             }}>
-            Copyright © 2019 Facebook Inc.
-          </p>
-          <p
-            css={{
-              color: colors.subtleOnDark,
-              paddingTop: 15,
-            }}>
-            <a href="https://docschina.org/" target="_blank">印记中文</a>
+            Copyright © 2018 Facebook Inc.
           </p>
         </section>
       </div>

@@ -1,8 +1,8 @@
 ---
-title: 一次学习，随处编写
+title: Learn Once, Write Anywhere
 order: 2
 ---
 
-无论你现在正在使用什么技术栈，你都可以随时引入 React 开发新特性。
+We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code.
 
-React 也可以用作开发原生应用的框架 [React Native](https://facebook.github.io/react-native/).
+React can also render on the server using Node and power mobile apps using [React Native](https://facebook.github.io/react-native/).

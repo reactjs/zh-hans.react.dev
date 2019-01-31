@@ -1,82 +1,82 @@
-- title: 安装
+- title: Installation
   items:
     - id: getting-started
-      title: 开始
+      title: Getting Started
     - id: add-react-to-a-website
-      title: 在网站中添加 React 
+      title: Add React to a Website
     - id: create-a-new-react-app
-      title: 创建新的 React App
+      title: Create a New React App
     - id: cdn-links
       title: CDN Links
-- title: 主要概念
+- title: Main Concepts
   isOrdered: true
   items:
     - id: hello-world
       title: Hello World
     - id: introducing-jsx
-      title: JSX 简介
+      title: Introducing JSX
     - id: rendering-elements
-      title: 元素渲染
+      title: Rendering Elements
     - id: components-and-props
-      title: 组件 & Props
+      title: Components and Props
     - id: state-and-lifecycle
-      title: State & 生命周期
+      title: State and Lifecycle
     - id: handling-events
-      title: 事件处理
+      title: Handling Events
     - id: conditional-rendering
-      title: 条件渲染
+      title: Conditional Rendering
     - id: lists-and-keys
-      title: 列表 & Keys
+      title: Lists and Keys
     - id: forms
-      title: 表单
+      title: Forms
     - id: lifting-state-up
-      title: 状态提升
+      title: Lifting State Up
     - id: composition-vs-inheritance
-      title: 组合 vs 继承
+      title: Composition vs Inheritance
     - id: thinking-in-react
-      title: React 理念
-- title: 高级指引
+      title: Thinking In React
+- title: Advanced Guides
   items:
     - id: accessibility
-      title: 无障碍
+      title: Accessibility
     - id: code-splitting
-      title: 代码分割
+      title: Code-Splitting
     - id: context
       title: Context
     - id: error-boundaries
-      title: 异常捕获边界
+      title: Error Boundaries
     - id: forwarding-refs
-      title: Refs 转发
+      title: Forwarding Refs
     - id: fragments
       title: Fragments
     - id: higher-order-components
-      title: 高阶组件
+      title: Higher-Order Components
     - id: integrating-with-other-libraries
-      title: 与第三方库协同
+      title: Integrating with Other Libraries
     - id: jsx-in-depth
-      title: 深入 JSX 
+      title: JSX In Depth
     - id: optimizing-performance
-      title: 性能优化
+      title: Optimizing Performance
     - id: portals
       title: Portals
     - id: react-without-es6
-      title: 不使用 ES6
+      title: React Without ES6
     - id: react-without-jsx
-      title: 不使用 JSX
+      title: React Without JSX
     - id: reconciliation
       title: Reconciliation
     - id: refs-and-the-dom
-      title: Refs & DOM
+      title: Refs and the DOM
     - id: render-props
       title: Render Props
     - id: static-type-checking
-      title: 静态类型检查
+      title: Static Type Checking
     - id: strict-mode
-      title: 严格模式
+      title: Strict Mode
     - id: typechecking-with-proptypes
-      title: 使用 PropTypes 类型检查
+      title: Typechecking With PropTypes
     - id: uncontrolled-components
-      title: 非受控组件
+      title: Uncontrolled Components
     - id: web-components
       title: Web Components
 - title: API Reference
@@ -91,61 +91,63 @@
     - id: react-dom-server
       title: ReactDOMServer
     - id: dom-elements
-      title: DOM 元素
+      title: DOM Elements
     - id: events
-      title: 合成事件
+      title: SyntheticEvent
     - id: test-utils
       title: Test Utilities
     - id: shallow-renderer
-      title: 浅层渲染
+      title: Shallow Renderer
     - id: test-renderer
       title: Test Renderer
     - id: javascript-environment-requirements
-      title: JavaScript 环境要求
+      title: JS Environment Requirements
     - id: glossary
-      title: 术语表
-- title: Hooks（预览）
+      title: Glossary
+- title: Hooks (Preview)
   isOrdered: true
   items:
       - id: hooks-intro
-        title: Hooks 简介
+        title: Introducing Hooks
       - id: hooks-overview
-        title: Hooks 概述
+        title: Hooks at a Glance
       - id: hooks-state
-        title: 使用 State Hook
+        title: Using the State Hook
       - id: hooks-effect
-        title: 使用 Effect Hook
+        title: Using the Effect Hook
       - id: hooks-rules
-        title: Hooks 规范
+        title: Rules of Hooks
       - id: hooks-custom
-        title: 自定义 Hooks
+        title: Building Your Own Hooks
       - id: hooks-reference
-        title: Hooks API 参考
+        title: Hooks API Reference
       - id: hooks-faq
         title: Hooks FAQ
-- title: 贡献
+- title: Contributing
   items:
   - id: how-to-contribute
-    title: 如何参与
+    title: How to Contribute
   - id: codebase-overview
-    title: 源码概述
+    title: Codebase Overview
   - id: implementation-notes
-    title: 实现说明
+    title: Implementation Notes
   - id: design-principles
-    title: 设计理念
+    title: Design Principles
 - title: FAQ
   items:
     - id: faq-ajax
-      title: AJAX 及 APIs
+      title: AJAX and APIs
     - id: faq-build
-      title: Babel, JSX, 及构建过程
+      title: Babel, JSX, and Build Steps
     - id: faq-functions
-      title: 在组件中使用事件处理函数
+      title: Passing Functions to Components
     - id: faq-state
-      title: 组件状态
+      title: Component State
     - id: faq-styling
-      title: 样式及 CSS
+      title: Styling and CSS
     - id: faq-structure
-      title: 项目文件结构
+      title: File Structure
+    - id: faq-versioning
+      title: Versioning Policy
     - id: faq-internals
-      title: Virtual DOM 及内核
+      title: Virtual DOM and Internals
