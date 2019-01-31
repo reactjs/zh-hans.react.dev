@@ -22,8 +22,8 @@ class DocSearch extends Component<{}, State> {
     // eslint-disable-next-line no-undef
     if (window.docsearch) {
       window.docsearch({
-        apiKey: '36221914cce388c46d0420343e0bb32e',
-        indexName: 'react',
+        apiKey: 'fb1476c24383a4a7a8d944449c21fdba',
+        indexName: 'react_china',
         inputSelector: '#algolia-doc-search',
       });
     } else {
@@ -104,8 +104,8 @@ class DocSearch extends Component<{}, State> {
           }}
           id="algolia-doc-search"
           type="search"
-          placeholder="Search docs"
-          aria-label="Search docs"
+          placeholder="在文档中搜索..."
+          aria-label="在文档中搜索..."
         />
       </form>
     ) : null;

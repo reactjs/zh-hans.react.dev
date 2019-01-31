@@ -1,7 +1,7 @@
 ---
-title: A Stateful Component
+title: 有状态组件
 order: 1
 domid: timer-example
 ---
 
-In addition to taking input data (accessed via `this.props`), a component can maintain internal state data (accessed via `this.state`). When a component's state data changes, the rendered markup will be updated by re-invoking `render()`.
+除了使用外部传入的数据以外 (通过 `this.props` 访问传入数据), 组件还可以拥有其内部的状态数据 (通过 `this.state` 访问状态数据)。 当组件的状态数据改变时， 组件会调用 `render()` 方法重新渲染。
