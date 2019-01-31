@@ -1,7 +1,7 @@
 ---
-title: An Application
+title: 应用
 order: 2
 domid: todos-example
 ---
 
-Using `props` and `state`, we can put together a small Todo application. This example uses `state` to track the current list of items as well as the text that the user has entered. Although event handlers appear to be rendered inline, they will be collected and implemented using event delegation.
+使用 `props` 和 `state`, 我们可以创建一个简易的 Todo 应用。 下面这个示例中，我们使用 `state` 来保存现有的待办事项列表及用户的输入。 与此同时，我们也使用了内联的方法添加了事件处理函数，它们将通过事件代理被收集和调用。
