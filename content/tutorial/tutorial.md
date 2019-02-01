@@ -1,6 +1,6 @@
 ---
 id: tutorial
-title: "Tutorial: Intro to React"
+title: "入门教程: React 简介"
 layout: tutorial
 sectionid: tutorial
 permalink: tutorial/tutorial.html
@@ -12,97 +12,97 @@ redirect_from:
   - "docs/tutorial-zh-CN.html"
 ---
 
-This tutorial doesn't assume any existing React knowledge.
+阅读该教程不需要你掌握任何现有的 React 知识
 
-## Before We Start the Tutorial
+## 课前准备
 
-We will build a small game during this tutorial. **You might be tempted to skip it because you're not building games -- but give it a chance.** The techniques you'll learn in the tutorial are fundamental to building any React apps, and mastering it will give you a deep understanding of React.
+我们将会在这个教程中开发一个小游戏。 **你可能并不打算做游戏开发，然后就跳过了这个教程——但是不妨尝试一下呢！** 你将在该教程中学到关于构建 React 应用的基础知识，掌握这些知识后，你将会对 React 有更加深刻的理解。
 
->Tip
+>提示
 >
->This tutorial is designed for people who prefer to **learn by doing**. If you prefer learning concepts from the ground up, check out our [step-by-step guide](/docs/hello-world.html). You might find this tutorial and the guide complementary to each other.
+>这篇教程适用于更喜欢 **边学边做** 的开发者，如果你更喜欢从头开始学习一些概念，请参考 [逐步学习指南]()。你会发现这篇教程和逐步学习指南是互补的。
 
-The tutorial is divided into several sections:
+这篇教程分为以下几个部分：
 
-* [Setup for the Tutorial](#setup-for-the-tutorial) will give you **a starting point** to follow the tutorial.
-* [Overview](#overview) will teach you **the fundamentals** of React: components, props, and state.
-* [Completing the Game](#completing-the-game) will teach you **the most common techniques** in React development.
-* [Adding Time Travel](#adding-time-travel) will give you **a deeper insight** into the unique strengths of React.
+* [环境准备](#环境准备) 提供了学习该教程的 **起点**
+* [概览](#概览) 介绍了 React 的 **基础知识**：组件、props 和 state
+* [完善小游戏](#完善小游戏) 介绍了在 React 开发过程中最常用的技术
+* [时间旅行](#时间旅行) 可以让你更加深刻地了解 React 的独特优势
 
-You don't have to complete all of the sections at once to get the value out of this tutorial. Try to get as far as you can -- even if it's one or two sections.
+你不必着急一口气学完这篇教程的所有内容，尽力就行，哪怕是先学习一两节。
 
-It's fine to copy and paste code as you're following along the tutorial, but we recommend to type it by hand. This will help you develop a muscle memory and a stronger understanding.
+在跟着这篇教程学习的时候，你可以复制粘贴教程里面的代码，但是我们推荐你亲手敲一遍代码。这样可以促进你的肌肉记忆，加深对 React 的理解。
 
-### What Are We Building?
+### W我们要做出什么东西？
 
-In this tutorial, we'll show how to build an interactive tic-tac-toe game with React.
+接下来，我们一起用 React 开发一个井字游戏 （tic-tac-toe）。
 
-You can see what we'll be building here: **[Final Result](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**. If the code doesn't make sense to you, or if you are unfamiliar with the code's syntax, don't worry! The goal of this tutorial is to help you understand React and its syntax.
+你可以提前预览我们要写的游戏的 **[最终效果](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**。如果里面的代码你现在一点也看不懂，很多语法也不熟悉，别担心！接下来的教程会一步一步教你理解和用 React 编写出这个小游戏所有的代码。
 
-We recommend that you check out the tic-tac-toe game before continuing with the tutorial. One of the features that you'll notice is that there is a numbered list to the right of the game's board. This list gives you a history of all of the moves that have occurred in the game, and is updated as the game progresses.
+在继续后面的教程之前，推荐你先玩一下这个井字游戏。在游戏里，你会看到游戏面板的右边有一个标有序号的列表。这个列表记录了游戏中的每个步骤，并且会随着游戏的进行不断更新。
 
-You can close the tic-tac-toe game once you're familiar with it. We'll be starting from a simpler template in this tutorial. Our next step is to set you up so that you can start building the game.
+等你玩得差不多了，大概了解了我们要实现什么样的功能，关掉它准备开始学习编码吧！我们会在一个简单的模板上开始写起。下一步就是帮做好准备工作，这样你就可以开始游戏开发了。
 
-### Prerequisites
+### 前置知识
 
-We'll assume that you have some familiarity with HTML and JavaScript, but you should be able to follow along even if you're coming from a different programming language. We'll also assume that you're familiar with programming concepts like functions, objects, arrays, and to a lesser extent, classes.
+我们假定你已经对 HTML 和 JavaScript 都比较熟悉了。但是如果你是从其他编程语言转来的，你也可以跟上这篇教程的。除此之外，我们假定你也已经熟悉了一些编程的概念，例如，函数、对象、数组，甚至是类。
 
-If you need to review JavaScript, we recommend reading [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript). Note that we're also using some features from ES6 -- a recent version of JavaScript. In this tutorial, we're using [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), and [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) statements. You can use the [Babel REPL](babel://es5-syntax-example) to check what ES6 code compiles to.
+如果你想复习一下 JavaScript，你可以阅读 [这篇教程]()。注意，我们也用到了一些 ES6（比较新的 JavaScript 版本）的特性。在这篇教程里，我们主要使用了 [arrow functions]()、[classes]()、[let]() 语句和 [const]() 语句。你可以使用 [Babel REPL]() 在线预览 ES6 代码被编译后的结果。
 
-## Setup for the Tutorial
+## 环境准备
 
-There are two ways to complete this tutorial: you can either write the code in your browser, or you can set up a local development environment on your computer.
+完成这篇教程有两种方式：可以直接在浏览器中编写代码，也可以用你的电脑在本地搭建开发环境。
 
-### Setup Option 1: Write Code in the Browser
+### 方式一：在浏览器中编写代码
 
-This is the quickest way to get started!
+这是上手最快的一种方式了！
 
-First, open this **[Starter Code](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)** in a new tab. The new tab should display an empty tic-tac-toe game board and React code. We will be editing the React code in this tutorial.
+首先在新的浏览器选项卡中打开这个 **[初始模板](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**。 你可以看到一个空的井字棋盘和 React 代码。我们接下来会在这一基础上编写 React 代码。
 
-You can now skip the second setup option, and go to the [Overview](#overview) section to get an overview of React.
+如果你选择这种方式，就可以跳过方式二，直接从 [概览](#概览) 开始阅读教程啦。
 
-### Setup Option 2: Local Development Environment
+### 方式二：搭建本地开发环境
 
-This is completely optional and not required for this tutorial!
+这篇教程并不强制要求你使用这种方式！
 
 <br>
 
 <details>
 
-<summary><b>Optional: Instructions for following along locally using your preferred text editor</b></summary>
+<summary><b>可选项：使用你喜欢的文本编辑器进行本地开发的步骤：</b></summary>
 
-This setup requires more work but allows you to complete the tutorial using an editor of your choice. Here are the steps to follow:
+虽然在本地搭建环境要费一些功夫，但好处是你可以任意选择你喜欢的编辑器来完成开发。以下是具体步骤：
 
-1. Make sure you have a recent version of [Node.js](https://nodejs.org/en/) installed.
-2. Follow the [installation instructions for Create React App](/docs/create-a-new-react-app.html#create-react-app) to make a new project.
+1. 确保你安装了近期版本的 [Node.js](https://nodejs.org/zh-cn/)。
+2. 按照 [installation instructions for Create React App](/docs/create-a-new-react-app.html#create-react-app) 创建一个新的项目
 
 ```bash
 npx create-react-app my-app
 ```
 
-3. Delete all files in the `src/` folder of the new project 
+3. 删除掉新项目中 `src/` 文件夹下的所有文件。
 
-> Note: **don't delete the entire `src` folder, just the original source files inside it.**.  We'll replace the default source files with examples for this project in the next step.
+> 注意： **不要删除整个 `src` 文件夹，删除里面的源文件就好了**。在接下来的步骤中，我们使用实例代码来替换项目中的原有的默认文件。
 
 ```bash
 cd my-app
 cd src
 
-# If you're using a Mac or Linux:
+# 使用 Mac 或 Linux:
 rm -f *
 
-# Or, if you're on Windows:
+# 使用 Windows:
 del *
 
-# Then, switch back to the project folder
+# 然后回到项目文件夹
 cd ..
 ```
 
-4. Add a file named `index.css` in the `src/` folder with [this CSS code](https://codepen.io/gaearon/pen/oWWQNa?editors=0100).
+4. 在 `src/` 文件夹中创建一个名为 `index.css` 的文件，并拷贝 [这些 CSS 代码](https://codepen.io/gaearon/pen/oWWQNa?editors=0100)。
 
-5. Add a file named `index.js` in the `src/` folder with [this JS code](https://codepen.io/gaearon/pen/oWWQNa?editors=0010).
+5. 在 `src` 文件夹下创建一个名为 `index.js` 的文件，并拷贝 [这些 JS 代码](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)。
 
-6. Add these three lines to the top of `index.js` in the `src/` folder:
+6. 把以下三行代码拷贝到 `src/` 文件夹下的 `index.js` 文件的顶部：
 
 ```js
 import React from 'react';
@@ -110,25 +110,25 @@ import ReactDOM from 'react-dom';
 import './index.css';
 ```
 
-Now if you run `npm start` in the project folder and open `http://localhost:3000` in the browser, you should see an empty tic-tac-toe field.
+现在，在项目文件夹下执行 `npm start` 命令，然后在浏览器访问 `http://localhost:3000`。这样你就可以在浏览器中看见一个空的井字游戏的棋盘了。
 
-We recommend following [these instructions](https://babeljs.io/docs/editors/) to configure syntax highlighting for your editor.
+推荐按照 [这篇教程](https://babeljs.io/docs/editors/)来给你的编辑器配置代码高亮显示。
 
 </details>
 
-### Help, I'm Stuck!
+### 我遇到困难了，谁能帮帮我！
 
-If you get stuck, check out the [community support resources](/community/support.html). In particular, [Reactiflux Chat](https://discord.gg/0ZcbPKXt5bZjGY5n) is a great way to get help quickly. If you don't receive an answer, or if you remain stuck, please file an issue, and we'll help you out.
+如果你遇到了任何困难，可以在 [community support resources](/community/support.html) 寻求帮助。你也可以在 [Reactiflux Chat](https://discord.gg/0ZcbPKXt5bZjGY5n) 快速求助。如果通过上述方式还是解决不了你的问题，请给我们提 issue，我们会帮助你的。
 
-## Overview
+## 概览
 
-Now that you're set up, let's get an overview of React!
+你已经准备好了，让我们先大致了解一下 React 吧！
 
-### What Is React?
+### React 是什么？
 
-React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called "components".
+React 是一个采用声明式，高效而且灵活的用户界面 （UI） 库。在 React 中，你可以采用一些独立的小型代码单元（称之为“组件”）来搭建出复杂的 UI 界面。
 
-React has a few different kinds of components, but we'll start with `React.Component` subclasses:
+React 中有不同种类的组件，我们先从 `React.Component` 的子类开始：
 
 ```javascript
 class ShoppingList extends React.Component {
@@ -146,14 +146,14 @@ class ShoppingList extends React.Component {
   }
 }
 
-// Example usage: <ShoppingList name="Mark" />
+// 使用示例: <ShoppingList name="Mark" />
 ```
 
-We'll get to the funny XML-like tags soon. We use components to tell React what we want to see on the screen. When our data changes, React will efficiently update and re-render our components.
+我们马上会讨论这些有意思的、看起来像 XML 的标签。我们通过使用组件来告诉 React 我们希望在屏幕上看到什么。当数据发生改变时，React 会高效地更新并重新渲染我们的组件。
 
-Here, ShoppingList is a **React component class**, or **React component type**. A component takes in parameters, called `props` (short for "properties"), and returns a hierarchy of views to display via the `render` method.
+这里，ShoppingList 是一个 **React 组件类**，或者说是一个 **React 组件类型**。一个组件接收一些参数，我们把这些参数叫做 `props`（“props” 是 “properties” 简写），然后通过 `render` 方法返回需要展示在屏幕上的视图的嵌套结构。
 
-The `render` method returns a *description* of what you want to see on the screen. React takes the description and displays the result. In particular, `render` returns a **React element**, which is a lightweight description of what to render. Most React developers use a special syntax called "JSX" which makes these structures easier to write. The `<div />` syntax is transformed at build time to `React.createElement('div')`. The example above is equivalent to:
+`render` 方法的返回值 *描述* 了你希望在屏幕上看到的内容。React 会根据这个描述，然后把结果展示出来。更具体地来说，`render` 返回了一个 **React 元素**，这是一种轻量级的、对渲染内容的描述。大多数的 React 开发者使用了一种名为 “JSX” 的特殊语法，JSX 可以让你更轻松地书写这些结构。比如说上述代码中的 `<div />` 这种语法会被编译成 `React.createElement('div')`。因此上述的代码等同于以下代码：
 
 ```javascript
 return React.createElement('div', {className: 'shopping-list'},
@@ -162,33 +162,33 @@ return React.createElement('div', {className: 'shopping-list'},
 );
 ```
 
-[See full expanded version.](babel://tutorial-expanded-version)
+[查看完整展开的代码。](babel://tutorial-expanded-version)
 
-If you're curious, `createElement()` is described in more detail in the [API reference](/docs/react-api.html#createelement), but we won't be using it in this tutorial. Instead, we will keep using JSX.
+如果你对这个比较感兴趣，可以在 [API 文档](/docs/react-api.html#createelement) 中查看 `createElement()` 更详细的用法。但在接下来的教程中，我们并不会直接使用这个方法，而是继续使用 JSX。
 
-JSX comes with the full power of JavaScript. You can put *any* JavaScript expressions within braces inside JSX. Each React element is a JavaScript object that you can store in a variable or pass around in your program.
+在 JSX 中你可以任意使用 JavaScript 表达式，只需要用一个大括号把表达式括起来。每一个 React 元素事实上都一个 JavaScript 对象，你可以在你的应用中把它当保存在变量中或者作为参数传递。
 
-The `ShoppingList` component above only renders built-in DOM components like `<div />` and `<li />`. But you can compose and render custom React components too. For example, we can now refer to the whole shopping list by writing `<ShoppingList />`. Each React component is encapsulated and can operate independently; this allows you to build complex UIs from simple components.
+上文中的 `ShoppingList` 组件只会渲染一些内置的 DOM 组件（`<div />`、`<li />`等）。但是你也可以组合和渲染自定义的 React 组件。例如，你可以通过 `<ShoppingList />` 来表示整个购物清单组件。每个组件都是封装好的，并且可以单独进行操作，这样也就方便你像搭积木一样组合各种组件来构建复杂的 UI 界面。
 
-## Inspecting the Starter Code
+### 阅读初始代码
 
-If you're going to work on the tutorial **in your browser,** open this code in a new tab: **[Starter Code](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**. If you're going to work on the tutorial **locally,** instead open `src/index.js` in your project folder (you have already touched this file during the [setup](#setup-option-2-local-development-environment)).
+如果你要在 **浏览器** 中学习该教程，在新标签页中打开 **[初始代码](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**。如果你在本地环境中学习开发该教程的内容，就在你的工程文件夹下打开 `src/index.js`（你已经在前面的 [环境准备](#环境准备) 中创建过这个文件了）。
 
-This Starter Code is the base of what we're building. We've provided the CSS styling so that you only need to focus on learning React and programming the tic-tac-toe game.
+这些初始代码是我们要开发的小游戏的基础代码。我们已经提供了 CSS 样式，这样你只需要关注使用 React 来开发这个井字游戏了。
 
-By inspecting the code, you'll notice that we have three React components:
+通过阅读代码，你可以看到我们有三个 React 组件：
 
 * Square
 * Board
 * Game
 
-The Square component renders a single `<button>` and the Board renders 9 squares. The Game component renders a board with placeholder values which we'll modify later. There are currently no interactive components.
+Square 组件渲染了一个单独的 `<button>`。Board 组件渲染了 9 个方块。Game 组件渲染了含有默认值的一个棋盘，我们一会儿会修改这些值。到目前为止还没有可以交互的组件。
 
-### Passing Data Through Props
+### 通过 Props 传递数据
 
-Just to get our feet wet, let's try passing some data from our Board component to our Square component.
+我们这就开始吧！下面我们要尝试把数据从 Board 组件传递到 Square 组件。
 
-In Board's `renderSquare` method, change the code to pass a prop called `value` to the Square:
+在 Board 组件的 `renderSquare` 方法中，我们将代码改写成下面这样，传递一个名为 `value` 的 prop 到 Square 当中：
 
 ```js{3}
 class Board extends React.Component {
@@ -197,7 +197,7 @@ class Board extends React.Component {
   }
 ```
 
-Change Square's `render` method to show that value by replacing `{/* TODO */}` with `{this.props.value}`:
+Change Square's `render` method to show that value by replacing `{/* TODO */}` with `{this.props.value}`:吧 `render` 方法中的 `{/* TODO */}` 替换为
 
 ```js{5}
 class Square extends React.Component {
