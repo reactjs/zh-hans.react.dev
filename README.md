@@ -50,7 +50,9 @@ This repo contains the source code and documentation powering [reactjs.org](http
 项目起步，部分内容逐步完善中。后续会添加相关流程图片，便于理解。
 该流程我继续细化，如有疑问。可扫码进入该群，一起讨论完善这个项目：
 
-![React](./4BA430EC-A3C2-4CD9-8E44-D21E6461854D.png)
+<div align="center">   
+	<img src="./4BA430EC-A3C2-4CD9-8E44-D21E6461854D.png" width="300" height="388" alt="图片名称" align=center />
+</div>
 
 ## About Chinese translation:
 
