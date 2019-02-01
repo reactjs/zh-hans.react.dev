@@ -11,7 +11,7 @@ This repo contains the source code and documentation powering [reactjs.org](http
 3. 基于 fork 后的仓库中 cn 分支拉取一个新的分支（名字自取）
 4. 翻译(校对)你所选择的文章，提交到新的分支
 5. 此时提交 Pull Request 到该仓库
-6. 会有专人 Review 该 Pull Request，当两人以上通过该 Pull Request 时。你的翻译将被合并到仓库中
+6. 会有专人 Review 该 Pull Request，当两人以上通过该 Pull Request 时，你的翻译将被合并到仓库中
 7. 删除你所创建的分支（如继续参与，参考同步流程）
 
 **同步流程：**
@@ -61,7 +61,7 @@ This repo contains the source code and documentation powering [reactjs.org](http
 1. Choose the article you want to translate or proofread [New Chinese Website: TODOs](https://github.com/reactjs/zh-hans.reactjs.org/issues/4)
 2. Please fork this repo
 3. In the repo after fork, create a new branch (custom branch name) based on the cn branch.
-4. Translation or proofreading article, and commit your branch
+4. Translation or proofread article, and commit your branch
 5. Commit your PR to this repo
 6. Please wait for Review.
 7. When PR merge to this repo, you can delete your branch.
@@ -139,12 +139,6 @@ The documentation is divided into several sections with a different tone and pur
 1. Go to the [reactjs.org repo](https://github.com/reactjs/reactjs.org) and you should see recently pushed branches.
 1. Follow GitHub's instructions.
 1. If possible, include screenshots of visual changes. A Netlify build will also be automatically created once you make your PR so other people can see your change.
-
-## Translation
-
-If you are interesting in translating `reactjs.org`, please join the Crowdin.
-
-* [Crowdin - React](https://crowdin.com/project/react)
 
 ## Troubleshooting
 
