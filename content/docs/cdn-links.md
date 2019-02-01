@@ -13,7 +13,7 @@ next: hello-world.html
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 ```
 
-上述版本仅用于开发环境，不适合用于生产环境。压缩优化后的可供生产环境使用的 React 版本可在使用如下方式引用：
+上述版本仅用于开发环境，不适合用于生产环境。压缩优化后可用于生产的 React 版本可通过如下方式引用：
 
 ```html
 <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
@@ -24,7 +24,7 @@ next: hello-world.html
 
 ### 为什么要使用 `crossorigin` 属性?
 
-如果你通过 CDN 的方式引入 React，我们推荐你设置 [`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes) 属性：
+如果你通过 CDN 的方式引入 React，我们建议你设置 [`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes) 属性：
 
 ```html
 <script crossorigin src="..."></script>
