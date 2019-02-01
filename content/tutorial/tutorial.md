@@ -16,7 +16,7 @@ redirect_from:
 
 ## 课前准备
 
-我们将会在这个教程中开发一个小游戏。 **你可能并不打算做游戏开发，然后就跳过了这个教程——但是不妨尝试一下呢！** 你将在该教程中学到关于构建 React 应用的基础知识，掌握这些知识后，你将会对 React 有更加深刻的理解。
+我们将会在这个教程中开发一个小游戏。 **你可能并不打算做游戏开发，然后就直接跳过了这个教程——但是不妨尝试一下！** 你将在该教程中学到关于构建 React 应用的基础知识，掌握这些知识后，你将会对 React 有更加深刻的理解。
 
 >提示
 >
@@ -26,14 +26,14 @@ redirect_from:
 
 * [环境准备](#环境准备) 提供了学习该教程的 **起点**
 * [概览](#概览) 介绍了 React 的 **基础知识**：组件、props 和 state
-* [完善小游戏](#完善小游戏) 介绍了在 React 开发过程中最常用的技术
+* [完成小游戏](#完善小游戏) 介绍了在 React 开发过程中最常用的技术
 * [时间旅行](#时间旅行) 可以让你更加深刻地了解 React 的独特优势
 
 你不必着急一口气学完这篇教程的所有内容，尽力就行，哪怕是先学习一两节。
 
 在跟着这篇教程学习的时候，你可以复制粘贴教程里面的代码，但是我们推荐你亲手敲一遍代码。这样可以促进你的肌肉记忆，加深对 React 的理解。
 
-### W我们要做出什么东西？
+### 我们会做出什么东西？
 
 接下来，我们一起用 React 开发一个井字游戏 （tic-tac-toe）。
 
@@ -82,7 +82,7 @@ npx create-react-app my-app
 
 3. 删除掉新项目中 `src/` 文件夹下的所有文件。
 
-> 注意： **不要删除整个 `src` 文件夹，删除里面的源文件就好了**。在接下来的步骤中，我们使用实例代码来替换项目中的原有的默认文件。
+> 注意： **不要删除整个 `src` 文件夹，删除里面原有的源文件就好了**。在接下来的步骤中，我们使用实例代码来替换项目中的原有的默认文件。
 
 ```bash
 cd my-app
@@ -197,7 +197,7 @@ class Board extends React.Component {
   }
 ```
 
-Change Square's `render` method to show that value by replacing `{/* TODO */}` with `{this.props.value}`:吧 `render` 方法中的 `{/* TODO */}` 替换为
+修改 Square 组件中的 `render` 方法，把 `{/* TODO */}` 替换为 `{this.props.value}`，以显示上文中传入的值：
 
 ```js{5}
 class Square extends React.Component {
@@ -211,22 +211,22 @@ class Square extends React.Component {
 }
 ```
 
-Before:
+修改前：
 
 ![React Devtools](../images/tutorial/tictac-empty.png)
 
-After: You should see a number in each square in the rendered output.
+修改后：在渲染结果中，你可以看到每个方格中都有一个数字。
 
 ![React Devtools](../images/tutorial/tictac-numbers.png)
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/aWWQOG?editors=0010)**
+**[查看此步完整代码示例](https://codepen.io/gaearon/pen/aWWQOG?editors=0010)**
 
-Congratulations! You've just "passed a prop" from a parent Board component to a child Square component. Passing props is how information flows in React apps, from parents to children.
+恭喜你！你刚刚成功地把一个 prop 从子组件 Square “传递” 给了父组件 Board。在 React 应用中，数据通过 props 的传递，从父组件流向子组件。
 
-### Making an Interactive Component
+### 给组件添加交互功能
 
-Let's fill the Square component with an "X" when we click it. 
-First, change the button tag that is returned from the Square component's `render()` function to this:
+接下来我们试着让棋盘的每一个格子在点击之后能落下一颗 "X" 作为棋子。
+首先，我们把 Square 组件中 `render()` 方法的返回值中的 button 标签修改为如下内容：
 
 ```javascript{4}
 class Square extends React.Component {
@@ -240,11 +240,11 @@ class Square extends React.Component {
 }
 ```
 
-If we click on a Square now, we should get an alert in our browser.
+现在你试着点击一下某个格子，浏览器会弹出一个警示框。
 
->Note
+>注意
 >
->To save typing and avoid the [confusing behavior of `this`](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/), we will use the [arrow function syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) for event handlers here and further below:
+>为了少输入代码，同时为了避免 [`this` 造成的困扰](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/) ，我们在这里使用 [箭头函数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) 来进行事件处理，如下所示：
 >
 >```javascript{4}
 >class Square extends React.Component {
@@ -258,13 +258,13 @@ If we click on a Square now, we should get an alert in our browser.
 >}
 >```
 >
->Notice how with `onClick={() => alert('click')}`, we're passing *a function* as the `onClick` prop. It only fires after a click. Forgetting `() =>` and writing `onClick={alert('click')}` is a common mistake, and would fire the alert every time the component re-renders.
+>Notice how with `onClick={() => alert('click')}`, we're passing *a function* as the `onClick` prop. It only fires after a click. Forgetting `() =>` and writing `onClick={alert('click')}` is a common mistake, and would fire the alert every time the component re-renders.注意我们是如何用 `onClick={() => alert('click')}` 来向 `onClick` 这个 prop 传入一个 *函数* 的。很多人经常忘了 `() =>`，写成了 `onClick={alert('click')}`，这种常见的错误会导致每次这个组件渲染的时候都会触发弹出框。
 
-As a next step, we want the Square component to "remember" that it got clicked, and fill it with an "X" mark. To "remember" things, components use **state**.
+接下来，我们希望 Square 组件可以“记住”它被点击过，然后用 “X” 来填充对应的方格。我们用 **state** 来实现所谓 “记忆” 的功能。
 
-React components can have state by setting `this.state` in their constructors. `this.state` should be considered as private to a React component that it's defined in. Let's store the current value of the Square in `this.state`, and change it when the Square is clicked.
+可以通过在 React 组件构的造函数中设置 `this.state` 来初始化 state。`this.state` 应该被视为一个组件的私有属性。我们在 `this.state` 中存储当前每个方格（Square）的值，并且在每次方格被点击的时候改变这个值。
 
-First, we'll add a constructor to the class to initialize the state:
+首先，我们向这个 class 中添加一个构造函数，用来初始化 state。
 
 ```javascript{2-7}
 class Square extends React.Component {
@@ -285,17 +285,17 @@ class Square extends React.Component {
 }
 ```
 
->Note
+>注意
 >
->In [JavaScript classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), you need to always call `super` when defining the constructor of a subclass. All React component classes that have a `constructor` should start it with a `super(props)` call.
+>在 [JavaScript classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) 中，每次你定义其子类的构造函数时，都需要调用 `super` 方法。因此，在所有含有构造函数的的 React 组件中，构造函数必须以调用 `super(props)` 开头。
 
-Now we'll change the Square's `render` method to display the current state's value when clicked:
+现在，我们来修改一下 Square 组件的 `render` 方法，这样，每当方格被点击的时候，就可以显示当前 state 的值了：
 
-* Replace `this.props.value` with `this.state.value` inside the `<button>` tag.
-* Replace the `() => alert()` event handler with `() => this.setState({value: 'X'})`.
-* Put the `className` and `onClick` props on separate lines for better readability.
+* 在 `<button>` 标签中，把 `this.props.value` 替换为 `this.state.value`。
+* 把 `() => alert()` 事件监听函数替换为 `() => this.setState({value: 'X'})`。
+* 为了更好的可读性，把 `className` 和 `onClick` prop 分两行书写。
 
-After these changes, the `<button>` tag that is returned by the Square's `render` method looks like this:
+修改之后，Square 组件中 `render` 方法的返回值中的 `<button>` 标签就变成了下面这样：
 
 ```javascript{12-13,15}
 class Square extends React.Component {
@@ -319,30 +319,30 @@ class Square extends React.Component {
 }
 ```
 
-By calling `this.setState` from an `onClick` handler in the Square's `render` method, we tell React to re-render that Square whenever its `<button>` is clicked. After the update, the Square's `this.state.value` will be `'X'`, so we'll see the `X` on the game board. If you click on any Square, an `X` should show up.
+在 Square 组件 `render` 方法中的 `onCLick` 事件监听函数中调用 `this.setState`，我们就可以在每次 `<button>` 被点击的时候通知 React 去重新渲染 Square 组件。组件更新之后，Square 组件的 `this.state.value` 的值会变为 `'X'`，因此，我们在游戏棋盘上就能看见 `X` 了。点击任意一个方格，`X` 就会出现了。
 
-When you call `setState` in a component, React automatically updates the child components inside of it too.
+每次在组件中调用 `setState` 时，React 都会自动更新其子组件。
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/VbbVLg?editors=0010)**
+**[查看此步完整代码示例](https://codepen.io/gaearon/pen/VbbVLg?editors=0010)**
 
-### Developer Tools
+### 开发者工具
 
-The React Devtools extension for [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) lets you inspect a React component tree with your browser's developer tools.
+安装 React Devtools 的 [Chrome 版](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) 或者 [Firefox 版](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) 可以让你在浏览器开发者工具中查看 React 的组件树。
 
 <img src="../images/tutorial/devtools.png" alt="React Devtools" style="max-width: 100%">
 
-The React DevTools let you check the props and the state of your React components.
+你还可以在 React DevTools 中检查 React 组件的 state 和 props。
 
-After installing React DevTools, you can right-click on any element on the page, click "Inspect" to open the developer tools, and the React tab will appear as the last tab to the right.
+安装 React DevTools 之后，右键点击页面的任何一个元素，然后选择 “查看”，这样就能打开浏览器的开发者工具了。React 的标签页会出现在最右边。
 
-**However, note there are a few extra steps to get it working with CodePen:**
+**不过，如果你使用的是Codepen在线编辑器的话，还需要几步操作才能正确使用开发工具**
 
-1. Log in or register and confirm your email (required to prevent spam).
-2. Click the "Fork" button.
-3. Click "Change View" and then choose "Debug mode".
-4. In the new tab that opens, the devtools should now have a React tab.
+1. 登录或注册，然后在邮件中确认（需要关闭垃圾邮件）。
+2. 点击 “Fork” 按钮。
+3. 点击 “Change View”，然后选择 “Debug mode”。
+4. 上一步会打开一个新的标签页，此时开发者工具就会有一个 React 标签了。
 
-## Completing the Game
+## 完成小游戏
 
 We now have the basic building blocks for our tic-tac-toe game. To have a complete game, we now need to alternate placing "X"s and "O"s on the board, and we need a way to determine a winner.
 
