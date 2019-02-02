@@ -146,11 +146,12 @@ By default, React DOM [escapes](http://stackoverflow.com/questions/7381974/which
 
 React DOM 在渲染之前默认会 过滤(http://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html)  所有传入的值。它可以确保你的应用里没有写进去的信息无法被进行注入攻击。所有的内容在渲染之前都被转换成了字符串。这样可以有效地防止 XSS (跨站脚本) 攻击。
 
-### JSX Represents Objects
+### JSX 代表着对象（Objects）
 
-Babel compiles JSX down to `React.createElement()` calls.
+Babel 转译器会把 JSX 转换成一个名为 React.createElement() 的方法调用。
 
-These two examples are identical:
+下面两种代码的作用是完全相同的：
+
 
 ```js
 const element = (
@@ -168,7 +169,7 @@ const element = React.createElement(
 );
 ```
 
-`React.createElement()` performs a few checks to help you write bug-free code but essentially it creates an object like this:
+React.createElement() 这个方法首先会进行一些避免bug的检查，但更主要的是会返回一个类似下面例子的对象：
 
 ```js
 // Note: this structure is simplified
@@ -181,10 +182,13 @@ const element = {
 };
 ```
 
-These objects are called "React elements". You can think of them as descriptions of what you want to see on the screen. React reads these objects and uses them to construct the DOM and keep it up to date.
+这样的对象被称为 “React 元素”。它代表所有你在屏幕上看到的东西。React 通过读取这些对象来构建 DOM 并保持随时更新。
 
-We will explore rendering React elements to the DOM in the next section.
-
+我们将在下一节中探索将如何React元素呈现给DOM。
 >**Tip:**
 >
 >We recommend using the ["Babel" language definition](http://babeljs.io/docs/editors) for your editor of choice so that both ES6 and JSX code is properly highlighted. This website uses the [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) color scheme which is compatible with it.
+
+Tip:
+
+我们建议您使用 [“Babel”语言定义] 工具（http://babeljs.io/docs/editors）作为您选择的编辑器的辅助，以便正确突出显示ES6和JSX代码。 本网站使用与之兼容的 [Oceanic Next]（https://labs.voronianski.com/oceanic-next-color-scheme/）配色方案。
