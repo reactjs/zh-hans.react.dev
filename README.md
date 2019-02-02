@@ -8,7 +8,7 @@ This repo contains the source code and documentation powering [reactjs.org](http
 
 1. 挑选你想要翻译或校对的文章 [New Chinese Website: TODOs](https://github.com/reactjs/zh-hans.reactjs.org/issues/4) 
 2. 请 fork 这个仓库
-3. 基于 fork 后的仓库中 cn 分支拉取一个新的分支（名字自取）
+3. 基于 fork 后的仓库中 master 分支拉取一个新的分支（名字自取）
 4. 翻译(校对)你所选择的文章，提交到新的分支
 5. 此时提交 Pull Request 到该仓库
 6. 会有专人 Review 该 Pull Request，当两人以上通过该 Pull Request 时，你的翻译将被合并到仓库中
@@ -27,13 +27,13 @@ This repo contains the source code and documentation powering [reactjs.org](http
 2. 同步 git fetch 上游代码
 
 	```
-	$ git checkout cn && git fetch upstream
+	$ git checkout master && git fetch upstream
 	```
 	
-3. 将上游代码合并至你 fork 后的仓库(cn 分支)中，保证你的 cn 分支永远是最新版本
+3. 将上游代码合并至你 fork 后的仓库(master 分支)中，保证你的 master 分支永远是最新版本
 
 	```
-	$ git merge upstream/cn
+	$ git merge upstream/master
 	```
 	
 4. 重复翻译流程
@@ -60,7 +60,7 @@ This repo contains the source code and documentation powering [reactjs.org](http
 
 1. Choose the article you want to translate or proofread [New Chinese Website: TODOs](https://github.com/reactjs/zh-hans.reactjs.org/issues/4)
 2. Please fork this repo
-3. In the repo after fork, create a new branch (custom branch name) based on the cn branch.
+3. In the repo after fork, create a new branch (custom branch name) based on the master branch.
 4. Translation or proofread article, and commit your branch
 5. Commit your PR to this repo
 6. Please wait for Review.
@@ -80,10 +80,10 @@ This repo contains the source code and documentation powering [reactjs.org](http
 	```
 	$ git fetch upstream
 	```
-3. Merge upstream/cn to your repo/cn
+3. Merge upstream/master to your repo/master
 	
 	```
-	$ git checkout cn && git merge upstream/cn
+	$ git checkout master && git merge upstream/master
 	```
 4. Re-execute the translation process
 
