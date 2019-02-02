@@ -14,11 +14,9 @@ const element = <h1>Hello, world!</h1>;
 
 这个语法标记看起来很奇怪，因为它既不是字符串也不是 HTML。
 
-它被称为 JSX， 一种 JavaScript 的语法扩展。 我们推荐在 React 中使用 JSX 来描述用户界面。JSX 可能乍一看像模版语言，但它具有JavaScript 的全部功能。
+它被称为 JSX， 是基于JavaScript 语法的一种扩展。 我们推荐大家用它来描述用户界面。JSX 可能乍一看像模版语言，但它具有JavaScript 的全部功能。
 
-JSX 生成 React "元素"。We will explore rendering them to the DOM in the [next section](/docs/rendering-elements.html). Below, you can find the basics of JSX necessary to get you started.
-
-我们将在 [下一章节]（/ docs / rendering-elements.html）中探索如何将这些元素渲染到DOM里。 下面，我们来看一看 JSX 的基本使用方法，以帮助您入门。
+JSX 生成 React "元素"。我们将在 [下一章节]（/ docs / rendering-elements.html）中探索如何将这些元素渲染到 DOM 里。 下面，我们来看一看 JSX 的基本使用方法，以帮助您入门。
 
 ### 为什么使用 JSX？
 
@@ -26,13 +24,13 @@ React 认为渲染逻辑本质上与其他 UI 逻辑一脉相通，比如，如�
 
 React 并没有把标记语言 (markup) 和逻辑这两个东西区分放在不同的文件里，而是使用松散耦合的单元分离“关注点” (https://en.wikipedia.org/wiki/Separation_of_concerns)，这些单元称为包含两者的“组件”。我们会在[延伸章节]（/docs /components-and-props.html）里重新回到“组件”，但如果你还不熟悉在JS里使用标记 (markup)，[这个视频解说]（https://www.youtube .com / watch？v = x7cQ3mrcKaY）可能会说服你。
 
-React 也可以不要求使用 JSX (/docs /react-without-jsx.html)，但大多数人觉得在 JavaScript 代码中处理UI时，JSX 是一种有用的视觉辅助工具。除此之外，JSX 也帮助 React 显示更多有用的错误和警告消息。
+React 里也可以不要求使用 JSX (/docs /react-without-jsx.html)，但大多数人觉得，淡定在 JavaScript 代码中与 UI 打交道时，JSX 是一种有用的视觉辅助工具。除此之外，JSX 也能帮助 React 显示更多有用的错误和警告消息。
 
-明白了这个，让我们开始吧！
+明白了这个，让我们开始写代码吧！
 
 ### 在 JSX 中嵌入表达式
 
-在下面的例子中，我们声明了一个名为 `name` 的变量，然后在JSX中使用它，并将它包装在花括号中：
+在下面的例子中，我们声明了一个名为 `name` 的变量，然后在 JSX 中使用它，并将它包装在大括号中：
 
 ```js{1,2}
 const name = 'Josh Perez';
@@ -72,14 +70,13 @@ ReactDOM.render(
 
 [在codepen上运行](codepen://introducing-jsx)
 
-为了便于阅读，我们一般分多行来书写 JSX 代码。 虽然不一定要拆分它，但如果要分行书写，我们建议将其包装在括号中，以避免 [分号自动插入] 的问题发生（http://stackoverflow.com/q/2846283）。
+为了便于阅读，我们一般分多行来书写 JSX 代码。 虽然不一定要拆分它，但如果要分行书写，我们还是建议将其包装在括号中，以避免 [分号自动插入] 的问题发生（http://stackoverflow.com/q/2846283）。
 
 ### JSX 本身也是一种表达式
 
-在编译之后呢，JSX 会被转化为普通的 JavaScript 函数调用， 变成 JavaScript 对象。
+在编译之后，JSX 会被转化为普通的 JavaScript 函数调用， 变成 JavaScript 对象。
 
-
-也就是说，你其实可以在 if 或者 for 语句里使用 JSX，将它赋值给变量，当作参数传入，作为返回值：
+也就是说，你可以在 if 或者 for 语句里使用 JSX，将它赋值给变量，当作参数传入，并作为返回值：
 
 ```js{3,5}
 function getGreeting(user) {
@@ -114,7 +111,6 @@ const element = <img src={user.avatarUrl}></img>;
 
 ### 使用 JSX 指定子项
 
-If a tag is empty, you may close it immediately with `/>`, like XML:
 假如某个标签里面没有内容，你可以把它当作 XML  ，在末尾加上 `/>` 来关上它。
 
 ```js
