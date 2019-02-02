@@ -8,7 +8,7 @@ prev: components-and-props.html
 next: handling-events.html
 ---
 
-本页面会在一个 React 组件之中介绍一些 state 和生命周期的概念。你可以在这查阅[详细的组件 API 参考文档](/docs/react-component.html)。
+本页面会介绍一个 React 组件中 state 和生命周期的概念。你可以在这查阅[详细的组件 API 参考文档](/docs/react-component.html)。
 
 请参考[之前一节](/docs/rendering-elements.html#updating-the-rendered-element)中的 Ticking Clock 的例子。在[元素渲染](/docs/rendering-elements.html#rendering-an-element-into-the-dom)章节中，我们只了解了一种更新 UI 界面的方法。通过调用 `ReactDOM.render()` 来修改我们想要渲染的元素：
 
@@ -31,9 +31,9 @@ setInterval(tick, 1000);
 
 [**在 CodePen 中试试**](http://codepen.io/gaearon/pen/gwoJZk?editors=0010)
 
-在本节中，我们将学习如何使真正的重用与封装 `Clock` 组件。它将设置自己的计时器并每秒更新一次。
+在本节中，我们将学习如何使真正的复用与封装 `Clock` 组件。它将设置自己的计时器并每秒更新一次。
 
-我们可以从像这样封装 Clock 开始：
+我们可以从像这样封装 Clock 的外观显示开始：
 
 ```js{3-6,12}
 function Clock(props) {
@@ -57,9 +57,9 @@ setInterval(tick, 1000);
 
 [**在 CodePen 中试试**](http://codepen.io/gaearon/pen/dpdoYR?editors=0010)
 
-可是，这样我们就错过了一个关键要求： `Clock` 设置一个计时器并且每秒更新 U I应该是 `Clock` 的实现细节。
+可是，这样我们就错过了一个关键要求： `Clock` 设置一个计时器并且每秒更新 UI 应该是 `Clock` 的实现细节。
 
-理想情况下，我们希望像这样来编写 `Clock` 而且它会自己更新自己：
+理想情况下，我们希望像这样只写一次，然后让`Clock` 会自己更新自己：
 
 ```js{2}
 ReactDOM.render(
@@ -86,7 +86,7 @@ State 与 props 类似，但是 state 是私有的，并且完全受控于当前
 
 4. 在 `render()` 方法中用 `this.props` 替换 `props`。
 
-5. 删除剩下声明的空函数。
+5. 删除剩下的空函数声明。
 
 ```js
 class Clock extends React.Component {
@@ -103,9 +103,9 @@ class Clock extends React.Component {
 
 [**在 CodePen 中试试**](http://codepen.io/gaearon/pen/zKRGpo?editors=0010)
 
-`Clock` 现在定义为一个 class，而不是一个函数。
+`Clock` 现在被定义为一个 class，而不是一个函数。
 
-`render` 方法会在每次组件更新时被调用。然而只要在相同的 DOM 节点中渲染 `<Clock />` ，就会只有一个 `clock` class 的实例被调用。这就让我们可以使用一些比如 state 或是生命周期方法的一些额外特性。
+`render` 方法会在每次组件更新时被调用。然而只要在相同的 DOM 节点中渲染 `<Clock />` ，就会只有一个 `Clock` class 的实例被调用。这就让我们可以使用一些比如 state 或是生命周期方法的一些额外特性。
 
 ## 向类型定义组件中添加局部的 state
 
@@ -146,7 +146,7 @@ class Clock extends React.Component {
 }
 ```
 
-注意看我们是如何把 `props` 传递到基类的构造函数中的：
+注意看我们是如何把 `props` 传递到父类的构造函数中的：
 
 ```js{2}
   constructor(props) {
@@ -155,9 +155,9 @@ class Clock extends React.Component {
   }
 ```
 
-类定义组件应该始终用 `props` 参数来调用基类的构造函数。
+类定义组件应该始终用 `props` 参数来调用父类的构造函数。
 
-3) 删除 `<Clock />` 元素中的 `date` 属性。
+1) 删除 `<Clock />` 元素中的 `date` 属性。
 
 ```js{2}
 ReactDOM.render(
@@ -199,11 +199,11 @@ ReactDOM.render(
 
 ## 将生命周期方法添加到 Class 中
 
-在具有许多组件的应用程序中，当组件被卸载时释放所占用的资源是非常重要的。
+在具有许多组件的应用程序中，当组件被销毁时释放所占用的资源是非常重要的。
 
-我们想要在每当 `Clock` 第一次被渲染到 DOM 中的时候，就[设置一个计时器](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval)。这在 React 中被称为 "挂载" 。
+我们想要在每当 `Clock` 第一次被渲染到 DOM 中的时候，就[设置一个计时器](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval)。这在 React 中被称为 "挂载(mount)" 。
 
-同时，我们还想在当 DOM 告知我们 `Clock` 被删除的时候[清除计时器](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval)。这在 React 中被称为 "卸载" 。
+同时，我们还想在当 DOM 告知我们 `Clock` 被删除的时候[清除计时器](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval)。这在 React 中被称为 "卸载(umount)" 。
 
 我们可以在类定义组件中声明一些特殊的方法，每当一个组件挂载或卸载时就会去执行这些方法：
 
@@ -235,7 +235,7 @@ class Clock extends React.Component {
 
 这些方法叫做“生命周期方法”。
 
-`componentDidMount()` 方法会在组件已经被渲染到 DOM 中后运行。这是一个不错的地方来设置我们的计时器：
+`componentDidMount()` 方法会在组件已经被渲染到 DOM 中后运行，所以，最好在这里设置计时器：
 
 ```js{2-5}
   componentDidMount() {
@@ -260,7 +260,7 @@ class Clock extends React.Component {
 
 最后，我们会实现一个叫 `tick()`　的方法， `Clock` 组件每秒都会调用它。
 
-它会用 `this.setState()`  来安排组件 state 的更新：
+它会用 `this.setState()`  来调度组件 state 的更新：
 
 ```js{18-22}
 class Clock extends React.Component {
@@ -314,7 +314,7 @@ ReactDOM.render(
 
 3) 当 `Clock` 的输出被插入到 DOM 中后， React 就会调用 `ComponentDidMount()` 生命周期方法。在这个方法中，`Clock` 组件向浏览器请求设置一个计时器来每秒调用一次组件的 `tick()` 方法。
 
-4) 浏览器每秒都会调用一次 `tick()` 方法。 在这方法之中，`Clock` 组件会通过调用 `setState()` 来计划进行一次 UI 更新。得益于 `setState()` 的调用，React 能够知道 state 已经改变了，然后会重新调用 `render()` 方法来确定页面上该显示什么。这一次，`render()` 方法中的 `this.state.data` 就不一样了，如此以来就会渲染输出更新过的时间。React 也会相应的更新 DOM。
+4) 浏览器每秒都会调用一次 `tick()` 方法。 在这方法之中，`Clock` 组件会通过调用 `setState()` 来计划进行一次 UI 更新。得益于 `setState()` 的调用，React 能够知道 state 已经改变了，然后会重新调用 `render()` 方法来确定页面上该显示什么。这一次，`render()` 方法中的 `this.state.date` 就不一样了，如此以来就会渲染输出更新过的时间。React 也会相应的更新 DOM。
 
 5) 一旦 `Clock` 组件从 DOM 中被移除，React 就会调用 `componentWillUnmount()` 生命周期方法，这样计时器就停止了。
 
@@ -411,9 +411,9 @@ this.setState(function(state, props) {
 
 这里的合并是浅合并，所以 `this.setState({coments})` 完整保留了 `this.state.posts`， 但是完全替换了 `this.state.comments`。
 
-## 数据是朝下方单向流动的
+## 数据是向下流动的
 
-不管是父组件或是子组件都无法知道一个确切的组件是有状态的还是无状态的，而且它们也不应该关心它是以函数定义的还是以类定义的。
+不管是父组件或是子组件都无法知道某个组件是有状态的还是无状态的，而且它们也不应该关心它是以函数定义的还是以类定义的。
 
 这就是为什么称 state 为局部的或是封装的的原因。除了拥有并设置了它的组件，其他组件都无法访问。
 
@@ -466,4 +466,4 @@ ReactDOM.render(
 
 每个 `Clock` 会单独的设置它自己的计时器并且更新它。
 
-在 React 应用中，一个组件是有状态的还是无状态的是会随着时间变化。你可以在有状态的组件中使用无状态的组件，反之亦然。
+在 React 应用中，，一个组件是有状态的还是无状态的属于组件实现的细节，他会随着时间变化。你可以在有状态的组件中使用无状态的组件，反之亦然。
