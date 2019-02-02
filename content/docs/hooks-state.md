@@ -60,7 +60,7 @@ class Example extends React.Component {
 
 >注意
 >
->你可能会想知道为什么我们要用一个计数器例子而不使用一个更加实际的应用。这是为了帮助我们关注 API 本身，因为我们还在迈出使用 Hooks 的第一步。
+>你可能会想知道为什么我们要用一个计数器例子而不使用一个更加实际的应用。这是为了帮助我们关注 API 本身，因为我们还在迈出使用钩子的第一步。
 
 
 ## 钩子和函数式组件
@@ -69,7 +69,7 @@ class Example extends React.Component {
 
 ```js
 const Example = (props) => {
-  // 你可以在这用Hooks
+  // 你可以在这用钩子
   return <div />;
 }
 ```
@@ -78,7 +78,7 @@ const Example = (props) => {
 
 ```js
 function Example(props) {
-  // 你可以在这用Hooks
+  // 你可以在这用钩子
   return <div />;
 }
 ```
@@ -105,7 +105,7 @@ function Example() {
 
 >注意：
 >
->关于在组件中，有什么地方能使用钩子，有什么地方不能使用钩子，有一些特殊的规则。我们会学到的在[Hooks使用规则](/docs/hooks-rules.html)。
+>关于在组件中，有什么地方能使用钩子，有什么地方不能使用钩子，有一些特殊的规则。我们会学到的在[钩子的使用规则](/docs/hooks-rules.html)。
 
 ## 声明一个状态变量
 
