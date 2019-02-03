@@ -278,4 +278,3 @@ function ExampleWithManyStates() {
 我们也学到了一点点关于 Hook 是什么的知识。Hook 是能让你在函数组件中“钩住”React特性的函数。它们名字通常都以 `use` 开始，还有更多 Hook 等着我们去探索。
 
 **现在我们继续下一章[学习下一个 Hook: `useEffect` .](/docs/hooks-effect.html)** 它让你产生组件中的副作用，并且它跟 class 里面的生命周期函数很类似。
-
