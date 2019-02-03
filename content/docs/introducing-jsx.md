@@ -14,17 +14,17 @@ const element = <h1>Hello, world!</h1>;
 
 这个语法标记看起来很奇怪，因为它既不是字符串也不是 HTML。
 
-它被称为 JSX， 是基于 JavaScript 语法的一种扩展。 我们推荐大家用它来描述用户界面。JSX 可能乍一看像模版语言，但它具有 JavaScript 的全部功能。
+它被称为 JSX， 是基于 JavaScript 语法的一种扩展。我们推荐大家用它来描述用户界面。JSX 可能乍一看像模版语言，但它具有 JavaScript 的全部功能。
 
-JSX 生成 React "元素"。我们将在[下一章节] (/docs /rendering-elements.html) 中探索如何将这些元素渲染到 DOM 里。 下面，我们来看一看 JSX 的基本使用方法，以帮助您入门。
+JSX 生成 React "元素"。我们将在[下一章节] (/docs/rendering-elements.html) 中探索如何将这些元素渲染到 DOM 里。 下面，我们来看一看 JSX 的基本使用方法，以帮助您入门。
 
 ### 为什么使用 JSX？
 
-React 认为渲染逻辑本质上与其他 UI 逻辑一脉相通，比如，如何处理事件，状态如何随时间变化，以及如何把数据展示出来。
+React 认为渲染逻辑本质上与其他 UI 逻辑一脉相通，比如，如何处理事件、状态如何随时间变化，以及如何把数据展示出来。
 
-React 并没有把标记语言和逻辑这两个东西区分放在不同的文件里，而是使用松散耦合的单元把“关注点”分离 (https://en.wikipedia.org/wiki/Separation_of_concerns)，这些单元称为包含两者的“组件”。我们会在[延伸章节] (/docs /components-and-props.html) 里重新回到“组件”，但如果你还不熟悉怎么在 JS 里使用标记语言，[这个视频解说] (https://www.youtube.com/watchv = x7cQ3mrcKaY) 可能会说服你。
+React 并没有把标记语言和逻辑这两个东西分开放在不同的文件里，而是使用松散耦合的单元进行“关注点”分离 (https://en.wikipedia.org/wiki/Separation_of_concerns)，这些单元称为包含两者的“组件”。我们会在[延伸章节] (/docs /components-and-props.html) 里重新回到“组件”，但如果你还不熟悉怎么在 JS 里使用标记语言，[这个视频解说] (https://www.youtube.com/watchv = x7cQ3mrcKaY) 可能会说服你。
 
-React 里也可以不要求使用 JSX (/docs/react-without-jsx.html)，但大多数人觉得，淡定在 JavaScript 代码中与 UI 打交道时，JSX 是一种有用的视觉辅助工具。除此之外，JSX 也能帮助 React 显示更多有用的错误和警告消息。
+React 里并非一定要使用 JSX (/docs/react-without-jsx.html)，但大多数人觉得，在 JavaScript 代码中与 UI 打交道时，JSX 是一种有用的视觉辅助工具。除此之外，JSX 也能帮助 React 显示更多有用的错误和警告消息。
 
 明白了这个，让我们开始写代码吧！
 
