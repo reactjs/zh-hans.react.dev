@@ -78,7 +78,7 @@ State 与 props 类似，但是 state 是私有的，并且完全受控于当前
 
 你可以用以下五个步骤把一个类似于 `Clock` 的函数定义组件转换成一个类定义组件：
 
-1. 创建一个同名的 [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)，并且继承自 `React.Component`。
+1. 创建一个同名的 [ES6 class](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes)，并且继承自 `React.Component`。
 
 2. 添加一个空的 `render()` 方法。
    
@@ -126,7 +126,7 @@ class Clock extends React.Component {
 }
 ```
 
-2) 添加一个[class 构造函数](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)，然后在其中为 `this.state` 赋初值：
+2) 添加一个[class 构造函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes#Constructor)，然后在其中为 `this.state` 赋初值：
 
 ```js{4}
 class Clock extends React.Component {
@@ -201,9 +201,9 @@ ReactDOM.render(
 
 在具有许多组件的应用程序中，当组件被销毁时释放所占用的资源是非常重要的。
 
-我们想要在每当 `Clock` 第一次被渲染到 DOM 中的时候，就[设置一个计时器](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval)。这在 React 中被称为 "挂载(mount)" 。
+我们想要在每当 `Clock` 第一次被渲染到 DOM 中的时候，就[设置一个计时器](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setInterval)。这在 React 中被称为 "挂载(mount)" 。
 
-同时，我们还想在当 DOM 告知我们 `Clock` 被删除的时候[清除计时器](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval)。这在 React 中被称为 "卸载(umount)" 。
+同时，我们还想在当 DOM 告知我们 `Clock` 被删除的时候[清除计时器](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/clearInterval)。这在 React 中被称为 "卸载(umount)" 。
 
 我们可以在类定义组件中声明一些特殊的方法，每当一个组件挂载或卸载时就会去执行这些方法：
 
@@ -364,7 +364,7 @@ this.setState((state, props) => ({
 }));
 ```
 
-我们上面用到了一个[箭头函数](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)，但是用普通的函数也是可以运行的：
+我们上面用到了一个[箭头函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)，但是用普通的函数也是可以运行的：
 
 ```js
 // Correct
