@@ -197,7 +197,7 @@ function Example() {
 -->
 ```js{1,4,9}
  1:  import { useState } from 'react';
- 2: 
+ 2:
  3:  function Example() {
  4:    const [count, setCount] = useState(0);
  5:
@@ -272,6 +272,7 @@ function ExampleWithManyStates() {
 我们提供了更多关于分离独立状态变量的建议[在FAQ中](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables)。
 
 ## 下一步
+
 上述页面中，我们了解了React提供的一个叫 `useState` Hook，有时候我们也叫它 `State Hook`。它让我们在React函数组件上添加内部 state——这是我们第一次这么做。
 
 我们也学到了一点点关于 Hook 是什么的知识。Hook 是能让你在函数组件中“钩住”React特性的函数。它们名字通常都以 `use` 开始，还有更多 Hook 等着我们去探索。
