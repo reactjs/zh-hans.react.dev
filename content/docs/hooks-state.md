@@ -8,7 +8,7 @@ prev: hooks-overview.html
 
 *Hook* 是一个即将到来的功能，它让你不用写 class 也可以使用 state 和其他 React 特性。他们现在在React v16.8.0-alpha.1中。
 
-[上一页](/docs/hooks-intro.html)用这个例子介绍了钩子:
+[上一页](/docs/hooks-intro.html)用这个例子介绍了 Hook:
 
 ```js{4-5}
 import { useState } from 'react';
@@ -98,13 +98,13 @@ function Example() {
 }
 ```
 
-**Hook 是什么？** 钩子是一个特殊的函数，它可以让你 `钩住` React 的特性。例如，`useState` 是一个让你添加 React State 到函数组件的 Hook。稍后我们将学习其他 Hook。
+**Hook 是什么？** Hook 是一个特殊的函数，它可以让你 `钩住` React 的特性。例如，`useState` 是一个让你添加 React State 到函数组件的 Hook。稍后我们将学习其他 Hook。
 
 **什么时候我会用 Hook？** 如果你在写一个函数组件并意识到需要向其添加一些状态，如果是以前的话你必须把它转化为一个 class。现在你可以在现有的函数组件中使用 Hook。我们现在就去做！
 
 >注意：
 >
->关于在组件中，有什么地方能使用钩子，有什么地方不能使用钩子，有一些特殊的规则。我们将在[ Hook 规则](/docs/hooks-rules.html)中学习它们。
+>关于在组件中，有什么地方能使用 Hook，有什么地方不能使用 Hook，有一些特殊的规则。我们将在[ Hook 规则](/docs/hooks-rules.html)中学习它们。
 
 ## 声明一个状态变量
 
