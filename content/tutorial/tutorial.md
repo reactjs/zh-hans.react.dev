@@ -1,6 +1,6 @@
 ---
 id: tutorial
-title: "入门教程: React 简介"
+title: "入门教程: 认识 React"
 layout: tutorial
 sectionid: tutorial
 permalink: tutorial/tutorial.html
@@ -1094,22 +1094,22 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 <li key={user.id}>{user.name}: {user.taskCount} tasks left</li>
 ```
 
-When a list is re-rendered, React takes each list item's key and searches the previous list's items for a matching key. If the current list has a key that didn't exist before, React creates a component. If the current list is missing a key that existed in the previous list, React destroys the previous component. If two keys match, the corresponding component is moved. Keys tell React about the identity of each component which allows React to maintain state between re-renders. If a component's key changes, the component will be destroyed and re-created with a new state.
+每当一个列表重新渲染时，React 会根据每一项列表元素的 “key” 来搜索上一次渲染时与每个 key 所匹配的列表项。如果 React 发现当前的列表有一个之前不存在的 key，那么就会创建出一个新的组件。如果 React 发现和之前对比少了一个 key，那么就会销毁之前对应的组件。如果一个组件的 key 发生了变化，这个组件会被销毁，然后使用新的 state 重新创建一份。
 
-`key` is a special and reserved property in React (along with `ref`, a more advanced feature). When an element is created, React extracts the `key` property and stores the key directly on the returned element. Even though `key` may look like it belongs in `props`, `key` cannot be referenced using `this.props.key`. React automatically uses `key` to decide which components to update. A component cannot inquire about its `key`.
+`key` 是 React 中一个特殊的保留属性（还有一个是 `ref`，拥有更高级的特性）。当 React 元素被创建出来的时候，React 会提取出 `key` 属性，然后把 key 直接存储在返回的元素上。虽然 `key` 看起来好像是 `props` 中的一个，但是你不能通过 `this.props.key` 来获取 `key`。React 会通过 `key` 来自动判断哪些组件需要更新。组件是不能查询到它的 `key` 的。
 
-**It's strongly recommended that you assign proper keys whenever you build dynamic lists.** If you don't have an appropriate key, you may want to consider restructuring your data so that you do.
+**我们强烈推荐，每次只要你构建动态列表的时候，都要指定一个合适的 key** 如果你没有找到一个合适的 key，那么你就需要考虑重新整理你的数据结构了，这样才能有合适的 key。
 
-If no key is specified, React will present a warning and use the array index as a key by default. Using the array index as a key is problematic when trying to re-order a list's items or inserting/removing list items. Explicitly passing `key={i}` silences the warning but has the same problems as array indices and is not recommended in most cases.
+如果你没有指定任何 key，React 会发出警告，并且会把数组的索引当作默认的 key。但是如果想要对列表进行重新排序、新增、删除操作时，把数组索引作为 key 是有问题的。显式地使用 `key={i}` 来指定 key 确实会消除警告，但是和数组索引有同样的问题，所以大多数情况下最好不要这么做。
 
-Keys do not need to be globally unique; they only need to be unique between components and their siblings.
+组件的 key 的值并不需要在全局都保证唯一，只需要在当前的节点里保证唯一即可。
 
 
-### Implementing Time Travel
+### 实现时间旅行
 
-In the tic-tac-toe game's history, each past move has a unique ID associated with it: it's the sequential number of the move. The moves are never re-ordered, deleted, or inserted in the middle, so it's safe to use the move index as a key.
+在井字游戏的历史记录中，每一个历史步骤都有一个与之对应的唯一 ID：这个 ID 就是每一步棋的序号，。因为历史步骤不需要重新排序，或者新增、删除，所以使用步骤的索引作为 `key` 是安全的。
 
-In the Game component's `render` method, we can add the key as `<li key={move}>` and React's warning about keys should disappear:
+在 Game 组件的 `render` 方法中，我们可以这样添加 key，`<li key={move}>`，这样关于 key 的警告就会消失了。
 
 ```js{6}
     const moves = history.map((step, move) => {
@@ -1124,11 +1124,11 @@ In the Game component's `render` method, we can add the key as `<li key={move}>`
     });
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/PmmXRE?editors=0010)**
+**[查看此步完整代码示例](https://codepen.io/gaearon/pen/PmmXRE?editors=0010)**
 
-Clicking any of the list item's buttons throws an error because the `jumpTo` method is undefined. Before we implement `jumpTo`, we'll add `stepNumber` to the Game component's state to indicate which step we're currently viewing.
+因为 `jumpTo` 还没有定义，所以你点击列表项的按钮时，会出现报错，。在我们实现 `jumpTo` 之前，我们向 Game 组件的 state 中添加 `stepNumber`，这个值代表我们当前正在看哪一项历史记录。
 
-First, add `stepNumber: 0` to the initial state in Game's `constructor`:
+首先，我们在 Game 的构造函数 `constructor` 中向初始 state 中添加 `stepNumber: 0`：
 
 ```js{8}
 class Game extends React.Component {
@@ -1144,11 +1144,11 @@ class Game extends React.Component {
   }
 ```
 
-Next, we'll define the `jumpTo` method in Game to update that `stepNumber`. We also set `xIsNext` to true if the number that we're changing `stepNumber` to is even:
+然后我们在 Game 组件中定义 `jumpTo` 方法以更新上述的 `stepNumber`。除此之外，如果我们将要改变的 `stepNumber` 是偶数时，我们还要把 `xIsNext` 设为 true：
 
 ```javascript{5-10}
   handleClick(i) {
-    // this method has not changed
+    // 这个方法无更改
   }
 
   jumpTo(step) {
@@ -1159,15 +1159,15 @@ Next, we'll define the `jumpTo` method in Game to update that `stepNumber`. We a
   }
 
   render() {
-    // this method has not changed
+    // 这个方法无更改
   }
 ```
 
-We will now make a few changes to the Game's `handleClick` method which fires when you click on a square.
+接下来，我们还要对 Game 组件的 `handleClick` 方法做一些修改，这个方法会在你点击方格的时候触发。
 
-The `stepNumber` state we've added reflects the move displayed to the user now. After we make a new move, we need to update `stepNumber` by adding `stepNumber: history.length` as part of the `this.setState` argument. This ensures we don't get stuck showing the same move after a new one has been made.
+我们刚才添加的 `stepNumber` state 反映了给用户展示的当前步骤。每当我们下一步新棋子的时候，我们需要把 `stepNumber: history.length` 添加为 `this.setState` 的参数的一部分，以更新 `stepNumber`。这就保证了保证每走一步 `stepNumber` 会跟着改变。
 
-We will also replace reading `this.state.history` with `this.state.history.slice(0, this.state.stepNumber + 1)`. This ensures that if we "go back in time" and then make a new move from that point, we throw away all the "future" history that would now become incorrect.
+We will also replace reading `this.state.history` with `this.state.history.slice(0, this.state.stepNumber + 1)`. This ensures that if we "go back in time" and then make a new move from that point, we throw away all the "future" history that would now become incorrect.我们还把读取 `this.state.history` 换成了 `this.state.history.slice(0, this.state.stepNumber + 1)`。如果我们“回到过去”，然后在走一步新棋子，原来的“未来”历史记录就不正确了，这个替换可以保证我们把这些“未来”的不正确的历史记录丢弃掉。
 
 ```javascript{2,13}
   handleClick(i) {
@@ -1188,7 +1188,7 @@ We will also replace reading `this.state.history` with `this.state.history.slice
   }
 ```
 
-Finally, we will modify the Game component's `render` method from always rendering the last move to rendering the currently selected move according to `stepNumber`:
+最后一步，我们把 Game 组件的 `render` 方法从总是渲染最后一步更改为，根据 stepNumber` 渲染当前选择的步骤。
 
 ```javascript{3}
   render() {
@@ -1199,30 +1199,30 @@ Finally, we will modify the Game component's `render` method from always renderi
     // the rest has not changed
 ```
 
-If we click on any step in the game's history, the tic-tac-toe board should immediately update to show what the board looked like after that step occurred.
+如果我们点击游戏历史记录的任何一步，井字游戏的棋盘就会立即更新为刚刚下那一步棋时候的样子。
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**
+**[查看此步完整代码示例](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**
 
-### Wrapping Up
+### 总结
 
-Congratulations! You've created a tic-tac-toe game that:
+恭喜你！你已经完成了一个拥有以下功能的井字游戏啦：
 
-* Lets you play tic-tac-toe,
-* Indicates when a player has won the game,
-* Stores a game's history as a game progresses,
-* Allows players to review a game's history and see previous versions of a game's board.
+* 可以愉快地玩这个游戏
+* 可以告诉你什么时候有人获胜
+* 把游戏的历史过程记录下来
+* 允许玩家查看游戏的历史记录，也可以查看任意一个历史版本的游戏棋盘状态
 
-Nice work! We hope you now feel like you have a decent grasp on how React works.
+干的不错！我们希望你至此已经基本掌握了 React 的使用。
 
-Check out the final result here: **[Final Result](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**.
+在这里可以查看最终的游戏代码: **[最终成果](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**.
 
-If you have extra time or want to practice your new React skills, here are some ideas for improvements that you could make to the tic-tac-toe game which are listed in order of increasing difficulty:
+如果你还有充裕的时间，或者想练习一下的 React 新技能，这里有一些可以改进游戏的想法供你参考，这些功能的实现顺序的难度是递增的：
 
-1. Display the location for each move in the format (col, row) in the move history list.
-2. Bold the currently selected item in the move list.
-3. Rewrite Board to use two loops to make the squares instead of hardcoding them.
-4. Add a toggle button that lets you sort the moves in either ascending or descending order.
-5. When someone wins, highlight the three squares that caused the win.
-6. When no one wins, display a message about the result being a draw.
+1. 在游戏历史记录列表显示每一步棋的坐标，格式为 (列号, 行号)。
+2. 在历史记录列表中加粗显示当前选择的项目。
+3. 使用两个循环来渲染出棋盘的格子，而不是在代码里写死（hardcode）。
+4. 添加一个可以升序或降序排列历史记录的按钮。
+5. 每当有人获胜时，高亮显示连成一线的 3 颗棋子。
+6. 当没有人获胜时，显示一个平局的消息。
 
-Throughout this tutorial, we touched on React concepts including elements, components, props, and state. For a more detailed explanation of each of these topics, check out [the rest of the documentation](/docs/hello-world.html). To learn more about defining components, check out the [`React.Component` API reference](/docs/react-component.html).
+通过这一篇教程，我们接触了 React 中的一些概念，比如 React 元素、React 组件、props，还有 state。更多关于这些概念的细节的解释，参考 [文档的其他部分](/docs/hello-world.html)。了解更多关于组件定义的内容，参考[`React.Component` API reference](/docs/react-component.html)。
