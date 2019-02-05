@@ -32,7 +32,7 @@ function Example() {
 
 ## 等价的 class 示例
 
-如果你之前在 React 中使用过 class,这段代码看起来应该很熟悉：
+如果你之前在 React 中使用过 class，这段代码看起来应该很熟悉：
 
 ```js
 class Example extends React.Component {
