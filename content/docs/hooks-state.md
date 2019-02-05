@@ -120,7 +120,7 @@ class Example extends React.Component {
   }
 ```
 
-在函数组件中，我们没有 `this`，所以我们不能分配或读取 `this.state`。我们直接在组件中调用 `useState` Hook：
+在函数定义组件中，我们没有 `this`，所以我们不能分配或读取 `this.state`。我们直接在组件中调用 `useState` Hook：
 
 ```js{4,5}
 import { useState } from 'react';
