@@ -8,7 +8,7 @@ next: forms.html
 
 首先，让我们看下在 Javascript 中如何转化列表。
 
-如下代码，我们使用 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 函数让数组中的每一项变双倍，我们得到了一个新的列表`doubled`：
+如下代码，我们使用 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 函数让数组中的每一项变双倍，我们得到了一个新的列表 `doubled`：
 
 ```javascript{2}
 const numbers = [1, 2, 3, 4, 5];
@@ -16,15 +16,15 @@ const doubled = numbers.map((number) => number * 2);
 console.log(doubled);
 ```
 
-代码打印出`[2, 4, 6, 8, 10]`。
+代码打印出 `[2, 4, 6, 8, 10]`。
 
 在 React 中，把数组转化为列表[元素](/docs/rendering-elements.html) 的过程是相似的。
 
 ### 渲染多个组件
 
-你可以通过使用`{}`在 JSX 内构建一个[元素集合](/docs/introducing-jsx.html#embedding-expressions-in-jsx)。
+你可以通过使用 `{}` 在 JSX 内构建一个[元素集合](/docs/introducing-jsx.html#embedding-expressions-in-jsx)。
 
-下面，我们使用 Javascript 中的 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 方法遍历`numbers`数组。对数组中的每个元素返回`<li>`标签，最后我们得到一个数组`listItems`：
+下面，我们使用 Javascript 中的 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 方法遍历 `numbers` 数组。对数组中的每个元素返回 `<li>` 标签，最后我们得到一个数组 `listItems`：
 
 ```javascript{2-4}
 const numbers = [1, 2, 3, 4, 5];
@@ -33,7 +33,7 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-我们把整个`listItems`插入到`<ul>`元素中，然后[渲染进 DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom)：
+我们把整个 `listItems` 插入到 `<ul>` 元素中，然后[渲染进 DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom)：
 
 ```javascript{2}
 ReactDOM.render(
@@ -129,7 +129,7 @@ const todoItems = todos.map((todo, index) =>
 );
 ```
 
-如果列表项目的顺序可能会变化，我们不建议使用索引来用作键值，因为这样做会导致性能的负面影响，还可能引起组件状态问题。如果你想要了解更多，请点击[深度解析 key 的必要性](/docs/reconciliation.html#递归子节点)。如果你选择不指定显式的键值，那么 React 将默认使用索引用作为列表项目的键值。
+如果列表项目的顺序可能会变化，我们不建议使用索引来用作键值，因为这样做会导致性能的负面影响，还可能引起组件状态问题。如果你想要了解更多，请点击[深度解析 key 的必要性](/docs/reconciliation.html# 递归子节点)。如果你选择不指定显式的键值，那么 React 将默认使用索引用作为列表项目的键值。
 
 要是你有兴趣了解更多的话，这里有一篇文章 [in-depth explanation about why keys are necessary](https://reactjs.org/docs/reconciliation.html#recursing-on-children) 可以参考。
 
@@ -137,9 +137,9 @@ const todoItems = todos.map((todo, index) =>
 
 元素的 key 只有放在其周围数组的上下文中才有意义。
 
-比方说，如果你[抽取](/docs/components-and-props.html#extracting-components) 出一个`ListItem`组件，你应该把 key 保存在数组中的这个`<ListItem />`元素上，而不是放在`ListItem`组件中的`<li>`元素上。
+比方说，如果你[抽取](/docs/components-and-props.html#extracting-components) 出一个 `ListItem` 组件，你应该把 key 保存在数组中的这个 `<ListItem />` 元素上，而不是放在 `ListItem` 组件中的 `<li>` 元素上。
 
-**示范：不正确的使用键的方式**
+** 示范：不正确的使用键的方式 **
 
 ```javascript{4,5,14,15}
 function ListItem(props) {
@@ -173,7 +173,7 @@ ReactDOM.render(
 ```
 
 
-**示范：正确的使用键的方式**
+** 示范：正确的使用键的方式 **
 
 ```javascript{2,3,9,10}
 function ListItem(props) {
@@ -204,7 +204,7 @@ ReactDOM.render(
 
 [在 CodePen 上试试。](https://codepen.io/rthor/pen/QKzJKG?editors=0010)
 
-一个好的经验法则是：在`map()`方法中的元素时需要设置键属性。
+一个好的经验法则是：在 `map()` 方法中的元素时需要设置键属性。
 
 ### 键（key）只是在兄弟节点之间必须唯一
 
@@ -248,7 +248,7 @@ ReactDOM.render(
 
 [在 CodePen 上试试。](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
 
-key 会传递信息给 React ，但不会传递给你的组件。如果你的组件中需要使用`key`属性的值，请用其他属性名显式传递这个值：
+key 会传递信息给 React ，但不会传递给你的组件。如果你的组件中需要使用 `key` 属性的值，请用其他属性名显式传递这个值：
 
 ```js{3,4}
 const content = posts.map((post) =>
@@ -259,11 +259,11 @@ const content = posts.map((post) =>
 );
 ```
 
-上面例子中，`Post`组件可以读出`props.id`，但是不能读出`props.key`。
+上面例子中，`Post` 组件可以读出 `props.id`，但是不能读出 `props.key`。
 
 ### 在 JSX 中嵌入 map()
 
-在上面的例子中，我们声明了一个单独的`listItems`变量并将其包含在 JSX 中：
+在上面的例子中，我们声明了一个单独的 `listItems` 变量并将其包含在 JSX 中：
 
 ```js{3-6}
 function NumberList(props) {
@@ -280,7 +280,7 @@ function NumberList(props) {
 }
 ```
 
-JSX 允许在大括号中[嵌入任何表达式](/docs/introducing-jsx.html#embedding-expressions-in-jsx)，所以我们可以在`map()`中这样使用：
+JSX 允许在大括号中[嵌入任何表达式](/docs/introducing-jsx.html#embedding-expressions-in-jsx)，所以我们可以在 `map()` 中这样使用：
 
 ```js{5-8}
 function NumberList(props) {
@@ -298,4 +298,4 @@ function NumberList(props) {
 
 [在 CodePen 上试试。](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
 
-这么做有时可以使你的代码更清晰，但有时这种风格也会被滥用。就像在 JavaScript 中一样，何时需要为了可读性提取出一个变量，这完全取决于你。但请记住，如果一个`map()`嵌套了太多层级，那可能就是你[提取出组件](/docs/components-and-props.html#提取组件)的一个好时机。
+这么做有时可以使你的代码更清晰，但有时这种风格也会被滥用。就像在 JavaScript 中一样，何时需要为了可读性提取出一个变量，这完全取决于你。但请记住，如果一个 `map()` 嵌套了太多层级，那可能就是你 [提取出组件](/docs/components-and-props.html# 提取组件) 的一个好时机。
