@@ -62,9 +62,9 @@ class Example extends React.Component {
 >
 >你可能想知道为什么我们在这里使用一个计数器例子而不一个更实际的示例。这可以帮助我们将注意力集中到 API 身上，因为我们还在迈出使用 Hook 的第一步。
 
-## Hook 和函数组件
+## Hook 和函数定义组件
 
-复习一下， React 的函数组件是这样的：
+复习一下， React 的函数定义组件是这样的：
 
 ```js
 const Example = (props) => {
@@ -82,7 +82,7 @@ function Example(props) {
 }
 ```
 
-你之前可能已经知道这些是“无状态组件”。我们现在介绍的是在这些基础上使用 React State 的能力，所以我们更喜欢叫他"函数组件"。
+你之前可能已经知道这些是“无状态组件”。我们现在介绍的是在这些基础上使用 React State 的能力，所以我们更喜欢叫他"函数定义组件"。
 
 Hook 在 class 内部是**不**起作用的。但你可以使用它们来代替编写 class。
 
@@ -98,9 +98,9 @@ function Example() {
 }
 ```
 
-**Hook 是什么？** Hook 是一个特殊的函数，它可以让你 `钩住` React 的特性。例如，`useState` 是一个让你添加 React State 到函数组件的 Hook。稍后我们将学习其他 Hook。
+**Hook 是什么？** Hook 是一个特殊的函数，它可以让你 `钩住` React 的特性。例如，`useState` 是一个让你添加 React State 到函数定义组件的 Hook。稍后我们将学习其他 Hook。
 
-**什么时候我会用 Hook？** 如果你在写一个函数组件并意识到需要向其添加一些 state，如果是以前的话你必须把它转化为一个 class。现在你可以在现有的函数组件中使用 Hook。我们现在就去做！
+**什么时候我会用 Hook？** 如果你在写一个函数定义组件并意识到需要向其添加一些 state，如果是以前的话你必须把它转化为一个 class。现在你可以在现有的函数定义组件中使用 Hook。我们现在就去做！
 
 >注意：
 >
@@ -187,7 +187,7 @@ function Example() {
   </button>
 ```
 
-## 重述
+## 总结
 
 现在让我们来**仔细回顾学到的知识**，看下我们是否真正理解了。
 
@@ -212,7 +212,7 @@ function Example() {
 14:  }
 ```
 
-* **第一行:** 引入 React 中的 `useState` Hook。它让我们在函数组件中存储内部 state。
+* **第一行:** 引入 React 中的 `useState` Hook。它让我们在函数定义组件中存储内部 state。
 * **第四行:** 在 `Example` 组件内部，我们通过调用 `useState` Hook 声明了一个新的 state 变量。它返回一对值给到我们命名的变量上。我们把变量命名为 `count`，因为它存储的是点击次数。我们通过传 `0` 作为 `useState` 唯一参数来将其初始化为 `0`。第二个返回的值本身就是一个函数。它让我们可以更新 `count` 的值，所以我们叫它 `setCount`。
 * **第九行:** 当用户点击按钮后，我们传递一个新的值给 `setCount`。React 会重新渲染 `Example` 组件，并把最新的 `count` 传给它。
 
@@ -273,8 +273,8 @@ function ExampleWithManyStates() {
 
 ## 下一步
 
-上述页面中，我们了解了 React 提供的一个叫 `useState` Hook，有时候我们也叫它 “State Hook”。它让我们在 React 函数组件上添加内部 state——这是我们第一次这么做。
+上述页面中，我们了解了 React 提供的一个叫 `useState` Hook，有时候我们也叫它 “State Hook”。它让我们在 React 函数定义组件上添加内部 state——这是我们第一次这么做。
 
-我们还学到了一些知识比如什么是 Hook。Hook 是能让你在函数组件中“钩住” React 特性的函数。它们名字通常都以 `use` 开始，还有更多 Hook 等着我们去探索。
+我们还学到了一些知识比如什么是 Hook。Hook 是能让你在函数定义组件中“钩住” React 特性的函数。它们名字通常都以 `use` 开始，还有更多 Hook 等着我们去探索。
 
 **现在我们继续下一章[学习下一个 Hook: `useEffect` 。](/docs/hooks-effect.html)** 它让你产生组件中的副作用，并且它跟 class 里面的生命周期函数很类似。
