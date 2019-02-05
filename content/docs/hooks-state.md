@@ -32,7 +32,7 @@ function Example() {
 
 ## 等价的 class 示例
 
-如果你之前使用过 React 的 class,这段代码看起来应该很熟悉：
+如果你之前在 React 中使用过 class,这段代码看起来应该很熟悉：
 
 ```js
 class Example extends React.Component {
@@ -56,7 +56,7 @@ class Example extends React.Component {
 }
 ```
 
-状态起始时候为 `{ count: 0 }`,当用户点击按钮后，我们通过调用`this.setState()`来增加 `state.count`。我们将在整个页面中使用这个 class 的代码片段。
+起始 state 为 `{ count: 0 }`，当用户点击按钮后，我们通过调用 `this.setState()` 来增加 `state.count`。我们将在整个页面中使用这个 class 的代码片段。
 
 >注意
 >
@@ -84,7 +84,7 @@ function Example(props) {
 
 你之前可能已经知道这些是"无状态组件"。我们现在介绍的是在这些基础上使用 React State 的能力 ,所以我们更喜欢叫他"函数组件"。
 
-Hook 在 class 内部是 **不** 起作用的。但你可以使用它们来代替编写 class。
+Hook 在 class 内部是**不**起作用的。但你可以使用它们来代替编写 class。
 
 ## Hook是什么？
 
@@ -106,7 +106,7 @@ function Example() {
 >
 >关于在组件中，有什么地方能使用 Hook，有什么地方不能使用 Hook，有一些特殊的规则。我们将在[ Hook 规则](/docs/hooks-rules.html)中学习它们。
 
-## 声明一个状态变量
+## 声明一个 State 变量
 
 在 class 中，我们通过在构造函数中设置 `this.state` 为 `{ count: 0 }` 来初始化 `count` state 为 `0`：
 
@@ -132,7 +132,7 @@ function Example() {
 
 **调用 `useState` 方法做了什么?** 它定义一个 “state 变量”。我们的变量叫 `count` ， 但我们可以把它叫做任意的东西，像 `banana` 。这是一种在函数调用之间保存一些值的方式 —— `useState` 是一种新方法，它和 class 里面的 `this.state` 提供的功能完全相同。一般来说，在函数退出后变量就就会"消失"，但 state 变量是被 React 保留的。
 
-**我们应该传递给 `useState` 哪些参数？** `useState()` 方法里面唯一的参数就是初始 state。与 class 不一样，state 可以不是对象。我们可以保留一个数字或字符串，如果这是我们所需要的。在我们示例中，我们只要一个数字来记录用户点击次数，所以我们传了 `0` 作为变量的初始 state。（如果我们想要在 state 中存储两个不同的变量，只需调用 `useState()`两次即可。）
+**我们应该传递哪些参数给 `useState`？** `useState()` 方法里面唯一的参数就是初始 state。与 class 不一样，state 可以不是对象。我们可以保留一个数字或字符串，如果这是我们所需要的。在我们示例中，我们只要一个数字来记录用户点击次数，所以我们传了 `0` 作为变量的初始 state。（如果我们想要在 state 中存储两个不同的变量，只需调用 `useState()`两次即可。）
 
 **`useState`方法的返回值是什么？** 它返回一对值：当前 state 和一个更新 state 的函数。这就是我们写 `const [count, setCount] = useState()` 的原因。这和 class 里面 `this.state.count` 和 `this.setState` 类似，唯一区别就是你把它们配成了对。如果你不熟悉我们使用的语法，我们可以返回到[这页的底部](/docs/hooks-state.html#tip-what-do-square-brackets-mean)。
 
@@ -152,7 +152,7 @@ function Example() {
 >
 >你可能想知道：为什么叫 `useState` 而不叫 `createState`?
 >
->"Create"可能不是很准确，因为 state 只在组件首次渲染的时候被创建。在下一次重新渲染期间，`useState` 给我们当前的 state。否则 它就不是 “state”了！这也是 Hook的名字 *总是*以`use`开头的一个原因。我们将在后面的[ Hook 规则](/docs/hooks-rules.html)中了解原因。
+>"Create"可能不是很准确，因为 state 只在组件首次渲染的时候被创建。在下一次重新渲染时，`useState` 给我们当前的 state。否则 它就不是 “state”了！这也是 Hook的名字 *总是*以`use`开头的一个原因。我们将在后面的 [Hook 规则](/docs/hooks-rules.html)中了解原因。
 
 ## 读取 State
 
@@ -189,7 +189,7 @@ function Example() {
 
 ## 重述
 
-现在我们可以**逐行重述我们学到的知识**，并且看下我们是否真正理解了。
+现在让我们来**仔细回顾学到的知识**，看下我们是否真正理解了。
 
 <!--
   I'm not proud of this line markup. Please somebody fix this.
@@ -212,11 +212,11 @@ function Example() {
 14:  }
 ```
 
-* **第一行:** 引入 React 中的`useState` Hook。它让我们在函数组件中存储内部状态。
-* **第四行:** 在 `Example` 组件内部，我们通过调用 `useState` Hook 声明了一个新的状态变量。它返回一对值，我们为其命名。我们把变量命名为 `count`,因为它存储的是点击次数。我们通过传`0`作为 `useState` 唯一参数来将其初始化为 `0`。第二个返回的值本身就是一个函数。它让我们可以更新 `count` 的值,所以我们叫它 `setCount`。
-* **第九行:** 当用户点击按钮后，我们传递一个新的值给 `setCount` 方法。React会重新渲染 `Example` 组件，并把最新的 `count` 传给它。
+* **第一行:** 引入 React 中的 `useState` Hook。它让我们在函数组件中存储内部状态。
+* **第四行:** 在 `Example` 组件内部，我们通过调用 `useState` Hook 声明了一个新的状态变量。它返回一对值给到我们命名的变量上。我们把变量命名为 `count`,因为它存储的是点击次数。我们通过传 `0` 作为 `useState` 唯一参数来将其初始化为 `0`。第二个返回的值本身就是一个函数。它让我们可以更新 `count` 的值,所以我们叫它 `setCount`。
+* **第九行:** 当用户点击按钮后，我们传递一个新的值给 `setCount`。React 会重新渲染 `Example` 组件，并把最新的 `count` 传给它。
 
-乍一看这似乎有点太多了。不要急于求成！如果你有不理解的地方，请再次查看上面的代码并尝试从头到尾阅读它。我们保证一旦你试着"忘记" class 里面 state 的工作原理，用新的眼光看这段代码，就容易理解了。 
+乍一看这似乎有点太多了。不要急于求成！如果你有不理解的地方，请再次查看以上代码并从头到尾阅读。我们保证一旦你试着"忘记" class 里面 state 是如何工作的，并用新的眼光看这段代码，就容易理解了。 
 
 ### 提示：方括号有什么用？
 
@@ -244,7 +244,7 @@ function Example() {
 
 >注意
 >
->你可能会好奇React怎么知道 `useState` 对应哪个组件的  ，因为我们并没有传递 `this` 给 React 。我们回答[这个问题](/docs/hooks-faq.html#how-does-react-associate-hook-calls-with-components)。
+>你可能会好奇React怎么知道 `useState` 对应的是哪个组件，因为我们并没有传递 `this` 给 React。我们将在 FAQ 部分回答[这个问题](/docs/hooks-faq.html#how-does-react-associate-hook-calls-with-components)以及许多其他问题。
 
 ### 提示：使用多个状态变量
 
@@ -258,7 +258,7 @@ function ExampleWithManyStates() {
   const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
 ```
 
-上面组件中，我们有 `age`,`fruit` 和 `todos` 局部变量，并且我们可以单独更新它们：
+在以上组件中，我们有局部变量 `age`,`fruit` 和 `todos`，并且我们可以单独更新它们：
 
 ```js
   function handleOrangeClick() {
@@ -267,14 +267,14 @@ function ExampleWithManyStates() {
   }
 ```
 
-你 **不必** 使用多个状态变量。状态变量可以很好的存储对象和数组，因此，你仍然可以将相关数据分为一组。然而，不像在class内部`this.setState`，更新 state 变量总是`替换`它而不是合并它。
+你**不必**使用多个状态变量。状态变量可以很好的存储对象和数组，因此，你仍然可以将相关数据分为一组。然而，不像在 class 内部`this.setState`，更新 state 变量总是`替换`它而不是合并它。
 
-我们提供了更多关于分离独立状态变量的建议[在FAQ中](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables)。
+我们提供了更多关于分离独立状态变量的建议 [在 FAQ 中](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables)。
 
 ## 下一步
 
-上述页面中，我们了解了React提供的一个叫 `useState` Hook，有时候我们也叫它 `State Hook`。它让我们在React函数组件上添加内部 state——这是我们第一次这么做。
+上述页面中，我们了解了 React 提供的一个叫 `useState` Hook，有时候我们也叫它 “State Hook”。它让我们在 React 函数组件上添加内部 state——这是我们第一次这么做。
 
-我们也学到了一点点关于 Hook 是什么的知识。Hook 是能让你在函数组件中“钩住”React特性的函数。它们名字通常都以 `use` 开始，还有更多 Hook 等着我们去探索。
+我们还学到了一些知识比如什么是 Hook。Hook 是能让你在函数组件中“钩住” React 特性的函数。它们名字通常都以 `use` 开始，还有更多 Hook 等着我们去探索。
 
 **现在我们继续下一章[学习下一个 Hook: `useEffect` .](/docs/hooks-effect.html)** 它让你产生组件中的副作用，并且它跟 class 里面的生命周期函数很类似。
