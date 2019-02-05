@@ -269,7 +269,7 @@ function ExampleWithManyStates() {
 
 你**不必**使用多个状态变量。状态变量可以很好的存储对象和数组，因此，你仍然可以将相关数据分为一组。然而，不像 class 中的 `this.setState`，更新 state 变量总是`替换`它而不是合并它。
 
-我们提供了更多关于分离独立状态变量的建议 [在 FAQ 中](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables)。
+我们[在 FAQ 中](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables)提供了更多关于分离独立状态变量的建议 。
 
 ## 下一步
 
