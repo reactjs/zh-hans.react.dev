@@ -246,7 +246,7 @@ function Example() {
 >
 >你可能会好奇React怎么知道 `useState` 对应的是哪个组件，因为我们并没有传递 `this` 给 React。我们将在 FAQ 部分回答[这个问题](/docs/hooks-faq.html#how-does-react-associate-hook-calls-with-components)以及许多其他问题。
 
-### 提示：使用多个状态变量
+### 提示：使用多个 state 变量
 
 将 state 变量声明为一对 `[something, setSomething]` 也很方便，因为如果我们想使用多个 state 变量，它允许我们给不同的 state 变量取不同的名称：
 
