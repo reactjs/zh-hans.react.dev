@@ -6,7 +6,7 @@ next: hooks-effect.html
 prev: hooks-overview.html
 ---
 
-*Hook* 是一个即将到来的功能，它让你不用写 class 也可以使用 state 和其他 React 特性。他们现在在React v16.8.0-alpha.1中。
+*Hook* 是一个即将到来的特性，它让你不用写 class 也可以使用 state 和其他 React 特性。他们现在在React v16.8.0-alpha.1中。
 
 [上一页](/docs/hooks-intro.html)用这个例子介绍了 Hook:
 
@@ -28,7 +28,7 @@ function Example() {
 }
 ```
 
-我们将通过将这段代码与一个等价的 class 示例进行比较来开始学习有关 Hook 的知识
+我们将通过将这段代码与一个等价的 class 示例进行比较来开始学习有关 Hook 的知识。
 
 ## 等价的 class 示例
 
@@ -104,7 +104,7 @@ function Example() {
 
 >注意：
 >
->关于在组件中，有什么地方能使用 Hook，有什么地方不能使用 Hook，有一些特殊的规则。我们将在[ Hook 规则](/docs/hooks-rules.html)中学习它们。
+>关于在组件中，有什么地方能使用 Hook，有什么地方不能使用 Hook，有一些特殊的规则。我们将在[Hook 规则](/docs/hooks-rules.html)中学习它们。
 
 ## 声明一个 State 变量
 
@@ -130,7 +130,7 @@ function Example() {
   const [count, setCount] = useState(0);
 ```
 
-**调用 `useState` 方法做了什么?** 它定义一个 “state 变量”。我们的变量叫 `count` ， 但我们可以把它叫做任意的东西，像 `banana` 。这是一种在函数调用之间保存一些值的方式 —— `useState` 是一种新方法，它和 class 里面的 `this.state` 提供的功能完全相同。一般来说，在函数退出后变量就就会"消失"，但 state 变量是被 React 保留的。
+**调用 `useState` 方法做了什么?** 它定义一个 “state 变量”。我们的变量叫 `count`， 但我们可以把它叫做任意的东西，像 `banana`。这是一种在函数调用之间保存一些值的方式—— `useState` 是一种新方法，它和 class 里面的 `this.state` 提供的功能完全相同。一般来说，在函数退出后变量就就会"消失"，但 state 变量是被 React 保留的。
 
 **我们应该传递哪些参数给 `useState`？** `useState()` 方法里面唯一的参数就是初始 state。与 class 不一样，state 可以不是对象。我们可以保留一个数字或字符串，如果这是我们所需要的。在我们示例中，我们只要一个数字来记录用户点击次数，所以我们传了 `0` 作为变量的初始 state。（如果我们想要在 state 中存储两个不同的变量，只需调用 `useState()`两次即可。）
 
@@ -146,13 +146,13 @@ function Example() {
   const [count, setCount] = useState(0);
 ```
 
-我们声明了 一个叫 `count`的 state 变量，然后把它设为 `0`。React 会在重新渲染的时记住它当前的值，并且提供最新的值给我们的函数。如果我想要更新当前的 `count`,我们可以调用 `setCount`。
+我们声明了一个叫 `count`的 state 变量，然后把它设为 `0`。React 会在重新渲染的时记住它当前的值，并且提供最新的值给我们的函数。如果我想要更新当前的 `count`,我们可以调用 `setCount`。
 
 >注意
 >
 >你可能想知道：为什么叫 `useState` 而不叫 `createState`?
 >
->"Create"可能不是很准确，因为 state 只在组件首次渲染的时候被创建。在下一次重新渲染时，`useState` 给我们当前的 state。否则 它就不是 “state”了！这也是 Hook的名字 *总是*以`use`开头的一个原因。我们将在后面的 [Hook 规则](/docs/hooks-rules.html)中了解原因。
+>"Create"可能不是很准确，因为 state 只在组件首次渲染的时候被创建。在下一次重新渲染时，`useState` 给我们当前的 state。否则 它就不是 “state”了！这也是 Hook的名字*总是*以`use`开头的一个原因。我们将在后面的 [Hook 规则](/docs/hooks-rules.html)中了解原因。
 
 ## 读取 State
 
@@ -267,7 +267,7 @@ function ExampleWithManyStates() {
   }
 ```
 
-你**不必**使用多个状态变量。状态变量可以很好的存储对象和数组，因此，你仍然可以将相关数据分为一组。然而，不像在 class 内部`this.setState`，更新 state 变量总是`替换`它而不是合并它。
+你**不必**使用多个状态变量。状态变量可以很好的存储对象和数组，因此，你仍然可以将相关数据分为一组。然而，不像 class 中的 `this.setState`，更新 state 变量总是`替换`它而不是合并它。
 
 我们提供了更多关于分离独立状态变量的建议 [在 FAQ 中](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables)。
 
