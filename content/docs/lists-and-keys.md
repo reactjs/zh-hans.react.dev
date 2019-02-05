@@ -22,7 +22,7 @@ console.log(doubled);
 
 ### 渲染多个组件
 
-你可以通过使用`{}`在 JSX 内构建一个[元素集合](/docs/introducing-jsx.html#JSX 嵌套)。
+你可以通过使用`{}`在 JSX 内构建一个[元素集合](/docs/introducing-jsx.html#embedding-expressions-in-jsx)。
 
 下面，我们使用 Javascript 中的 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 方法遍历`numbers`数组。对数组中的每个元素返回`<li>`标签，最后我们得到一个数组`listItems`：
 
@@ -33,7 +33,7 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-我们把整个`listItems`插入到`ul`元素中，然后[渲染进 DOM](/docs/rendering-elements.html#将元素渲染到 DOM 中)：
+我们把整个`listItems`插入到`<ul>`元素中，然后[渲染进 DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom)：
 
 ```javascript{2}
 ReactDOM.render(
@@ -50,7 +50,7 @@ ReactDOM.render(
 
 通常你需要在一个[组件](/docs/components-and-props.html) 中渲染列表。
 
-我们可以把前面的例子重构成一个组件。这个组件接收`numbers`数组作为参数，输出一个无序列表。
+我们可以把前面的例子重构成一个组件。这个组件接收 `numbers` 数组作为参数，输出一个无序列表。
 
 ```javascript{3-5,7,13}
 function NumberList(props) {
@@ -135,9 +135,9 @@ const todoItems = todos.map((todo, index) =>
 
 ### 用 Keys 提取组件
 
-元素的 key 只有放在其环绕数组的上下文中才有意义。
+元素的 key 只有放在其周围数组的上下文中才有意义。
 
-比方说，如果你提取出一个`ListItem`组件，你应该把 key 保存在数组中的这个`<ListItem />`元素上，而不是放在`ListItem`组件中的`<li>`元素上。
+比方说，如果你[抽取](/docs/components-and-props.html#extracting-components) 出一个`ListItem`组件，你应该把 key 保存在数组中的这个`<ListItem />`元素上，而不是放在`ListItem`组件中的`<li>`元素上。
 
 **示范：不正确的使用键的方式**
 
