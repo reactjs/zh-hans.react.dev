@@ -244,7 +244,7 @@ function Example() {
 
 >注意
 >
->你可能会好奇React怎么知道 `useState` 对应的是哪个组件，因为我们并没有传递 `this` 给 React。我们将在 FAQ 部分回答[这个问题](/docs/hooks-faq.html#how-does-react-associate-hook-calls-with-components)以及许多其他问题。
+>你可能会好奇 React 怎么知道 `useState` 对应的是哪个组件，因为我们并没有传递 `this` 给 React。我们将在 FAQ 部分回答[这个问题](/docs/hooks-faq.html#how-does-react-associate-hook-calls-with-components)以及许多其他问题。
 
 ### 提示：使用多个 state 变量
 
