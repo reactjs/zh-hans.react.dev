@@ -108,6 +108,7 @@ const listItems = numbers.map((number) =>
   </li>
 );
 ```
+
 一个元素的 key 最好是这个元素在列表中拥有的一个独一无二的字符串。通常，我们使用来自数据的 id 作为元素的 key：
 
 ```js{2}
@@ -171,7 +172,6 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
-
 
 ** 示范：正确的使用键的方式 **
 
