@@ -8,7 +8,7 @@
       title: 创建新的 React App
     - id: cdn-links
       title: CDN Links
-- title: 主要概念
+- title: 核心概念
   isOrdered: true
   items:
     - id: hello-world
