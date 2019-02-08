@@ -104,7 +104,7 @@ function Example() {
 
 >注意：
 >
->关于在组件中，有什么地方能使用 Hook，有什么地方不能使用 Hook，有一些特殊的规则。我们将在[Hook 规则](/docs/hooks-rules.html)中学习它们。
+>关于在组件中，有什么地方能使用 Hook，有什么地方不能使用 Hook，有一些特殊的规则。我们将在 [Hook 规范](/docs/hooks-rules.html)中学习它们。
 
 ## 声明一个 State 变量
 
@@ -152,7 +152,7 @@ function Example() {
 >
 >你可能想知道：为什么叫 `useState` 而不叫 `createState`?
 >
->"Create"可能不是很准确，因为 state 只在组件首次渲染的时候被创建。在下一次重新渲染时，`useState` 返回给我们当前的 state。否则 它就不是 “state”了！这也是 Hook 的名字*总是*以 `use` 开头的一个原因。我们将在后面的 [Hook 规则](/docs/hooks-rules.html)中了解原因。
+>"Create"可能不是很准确，因为 state 只在组件首次渲染的时候被创建。在下一次重新渲染时，`useState` 返回给我们当前的 state。否则 它就不是 “state”了！这也是 Hook 的名字*总是*以 `use` 开头的一个原因。我们将在后面的 [Hook 规范](/docs/hooks-rules.html)中了解原因。
 
 ## 读取 State
 
