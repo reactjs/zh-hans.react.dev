@@ -20,7 +20,7 @@ console.log(doubled);
 
 在 React 中，把数组转化为[元素](/docs/rendering-elements.html) 列表的过程是相似的。
 
-### 渲染多个组件
+### 渲染多个组件 {#rendering-multiple-components}
 
 你可以通过使用 `{}` 在 JSX 内构建一个[元素集合](/docs/introducing-jsx.html#embedding-expressions-in-jsx)。
 
@@ -46,7 +46,7 @@ ReactDOM.render(
 
 这段代码生成了一个 1 到 5 的数字列表。
 
-### 基础列表组件
+### 基础列表组件 {#basic-list-component}
 
 通常你需要在一个[组件](/docs/components-and-props.html) 中渲染列表。
 
@@ -96,7 +96,7 @@ ReactDOM.render(
 
 [在 CodePen 上试试。](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
 
-## Keys
+## Keys {#keys}
 
 Keys 可以在 DOM 中的某些元素被增加或删除的时候帮助 React 识别哪些元素发生了变化。因此你应当给数组中的每一个元素赋予一个确定的标识。
 
@@ -134,7 +134,7 @@ const todoItems = todos.map((todo, index) =>
 
 要是你有兴趣了解更多的话，这里有一篇文章 [in-depth explanation about why keys are necessary](/docs/reconciliation.html#recursing-on-children) 可以参考。
 
-### 用 Keys 提取组件
+### 用 Keys 提取组件 {#extracting-components-with-keys}
 
 元素的 Key 只有放在其周围数组的上下文中才有意义。
 
@@ -206,7 +206,7 @@ ReactDOM.render(
 
 一个好的经验法则是：在 `map()` 方法中的元素需要设置键属性。
 
-### 键（Key）只是在兄弟节点之间必须唯一
+### 键（Key）只是在兄弟节点之间必须唯一 {#keys-must-only-be-unique-among-siblings}
 
 数组元素中使用的 key 在其兄弟节点之间应该是独一无二的。然而，它们不需要是全局唯一的。当我们生成两个不同的数组时，我们可以使用相同的键：
 
@@ -261,7 +261,7 @@ const content = posts.map((post) =>
 
 上面例子中，`Post` 组件可以读出 `props.id`，但是不能读出 `props.key`。
 
-### 在 JSX 中嵌入 map()
+### 在 JSX 中嵌入 map() {#embedding-map-in-jsx}
 
 在上面的例子中，我们声明了一个单独的 `listItems` 变量并将其包含在 JSX 中：
 
