@@ -22,7 +22,7 @@ next: hello-world.html
 
 如果需要加载指定版本的 `react` 和 `react-dom`，可以把 `16` 替换成所需加载的版本号。
 
-### 为什么要使用 `crossorigin` 属性?
+### 为什么要使用 `crossorigin` 属性? {#why-the-crossorigin-attribute}
 
 如果你通过 CDN 的方式引入 React，我们建议你设置 [`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes) 属性：
 
