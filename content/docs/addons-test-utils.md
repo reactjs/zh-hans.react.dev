@@ -46,7 +46,6 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
 当我们为 React 编写单元测试时，浅层渲染非常有用。浅层渲染能让你渲染一个组件时“只渲染一层”，然后断言组件渲染函数返回的内容，不用担心子组件的渲染行为，这样没有组件实例化和真正的渲染。这种情况也不需要 DOM。
 
 > 注意：
-> 
 > 浅层渲染的方法被移动到了 `react-test-renderer/shallow`。<br>
 > [学习更多关于浅层渲染的内容查看这篇文档](/docs/shallow-renderer.html)
 
@@ -61,9 +60,9 @@ Simulate.{eventName}(
 )
 ```
 
-模拟在 DOM 节点上触发一个事件，使用可选的 `eventData` 事件数据。
+使用可选的 `eventData` 事件数据来模拟在 DOM 节点上触发一个事件。
 
-`Simulate` 有对应的方法来支持 [React 支持的事件](/docs/events.html#supported-events).
+`Simulate` 有对应的方法来支持 [React 支持的所有事件](/docs/events.html#supported-events).
 
 **点击一个元素**
 
@@ -99,7 +98,7 @@ renderIntoDocument(element)
 
 > 注意：
 >
-> 你需要在引入 `React` 之前确保 `window`，`window.document` 和 `window.document.createElement` 能在全局环境中获取到。不然 React 会认为它没有权限去操作 DOM，以及像 `setState` 方法将不可用。
+> 你需要在引入 `React` **之前**确保 `window`，`window.document` 和 `window.document.createElement` 能在全局环境中获取到。不然 React 会认为它没有权限去操作 DOM，以及像 `setState` 方法将不可用。
 
 * * *
 
@@ -112,7 +111,7 @@ mockComponent(
 )
 ```
 
-将一个模拟组件模块传递给这个方法，使用方法来扩充它，使它可以用作一个木偶 React 组件。与通常的渲染不同，组件将变成一个简单的 `<div>` (如果提供了 `mockTagName` 则是其他标签)，包含任何提供的子级。
+将一个模拟组件模块传递给这个方法，使用方法来扩充它，使它可以用作一个虚拟 React 组件。与通常的渲染不同，组件将变成一个简单的 `<div>` (如果提供了 `mockTagName` 则是其他标签)，包含任何提供的子级。
 
 > 注意：
 >
@@ -126,7 +125,7 @@ mockComponent(
 isElement(element)
 ```
 
-结果返回 `true`，当 `element` 是任何一种 React 元素。
+当 `element` 是任何一种 React 元素时，返回 `true`。
 
 * * *
 
@@ -139,7 +138,7 @@ isElementOfType(
 )
 ```
 
-结果返回 `true`，当 `element` 是一种 React 元素，并且它的类型是参数 `componentClass` 的类型。
+当 `element` 是一种 React 元素，并且它的类型是参数 `componentClass` 的类型时，返回 `true`。
 
 * * *
 
@@ -149,7 +148,7 @@ isElementOfType(
 isDOMComponent(instance)
 ```
 
-结果返回 `true`，当 `instance` 是一个 DOM 组件（比如 `<div>` 或 `<span>`）。
+当 `instance` 是一个 DOM 组件（比如 `<div>` 或 `<span>`）时，返回 `true`。
 
 * * *
 
@@ -159,7 +158,7 @@ isDOMComponent(instance)
 isCompositeComponent(instance)
 ```
 
-结果返回 `true`，当 `instance` 是一个用户自定义的组件，比如一个类或者一个函数。
+当 `instance` 是一个用户自定义的组件，比如一个类或者一个函数时，返回 `true`。
 
 * * *
 
@@ -172,7 +171,7 @@ isCompositeComponentWithType(
 )
 ```
 
-结果返回 `true`，当 `instance` 是一个组件，并且它的类型是参数 `componentClass` 的类型。
+当 `instance` 是一个组件，并且它的类型是参数 `componentClass` 的类型时，返回 `true`。
 
 * * *
 
