@@ -16,16 +16,16 @@ redirect_from:
 
 ## 课前准备
 
-我们将会在这个教程中开发一个小游戏。 **你可能并不打算做游戏开发，然后就直接跳过了这个教程——但是不妨尝试一下！** 你将在该教程中学到关于构建 React 应用的基础知识，掌握这些知识后，你将会对 React 有更加深刻的理解。
+我们将会在这个教程中开发一个小游戏。**你可能并不打算做游戏开发，然后就直接跳过了这个教程——但是不妨尝试一下！**你将在该教程中学到关于构建 React 应用的基础知识，掌握这些知识后，你将会对 React 有更加深刻的理解。
 
 >提示
 >
->这篇教程适用于更喜欢 **边学边做** 的开发者，如果你更喜欢从头开始学习一些概念，请参考 [逐步学习指南](/docs/hello-world.html)。你会发现这篇教程和逐步学习指南是互补的。
+>这篇教程适用于更喜欢**边学边做**的开发者，如果你更喜欢从头开始学习一些概念，请参考 [逐步学习指南](/docs/hello-world.html)。你会发现这篇教程和逐步学习指南是互补的。
 
 这篇教程分为以下几个部分：
 
-* [环境准备](#环境准备) 提供了学习该教程的 **起点**
-* [概览](#概览) 介绍了 React 的 **基础知识**：组件、props 和 state
+* [环境准备](#环境准备) 提供了学习该教程的**起点**
+* [概览](#概览) 介绍了 React 的**基础知识**：组件、props 和 state
 * [完成小游戏](#完成小游戏) 介绍了在 React 开发过程中最常用的技术
 * [时间旅行](#时间旅行) 可以让你更加深刻地了解 React 的独特优势
 
@@ -47,7 +47,7 @@ redirect_from:
 
 我们假定你已经对 HTML 和 JavaScript 都比较熟悉了。但是如果你是从其他编程语言转来的，你也可以跟上这篇教程的。除此之外，我们假定你也已经熟悉了一些编程的概念，例如，函数、对象、数组，甚至是类。
 
-如果你想复习一下 JavaScript，你可以阅读 [这篇教程](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript)。注意，我们也用到了一些 ES6（较新的 JavaScript 版本）的特性。在这篇教程里，我们主要使用了 [箭头函数（arrow functions）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)、[类（classes）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes)、[let](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let) 语句和 [const](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/const) 语句。你可以使用 [Babel REPL](babel://es5-syntax-example) 在线预览 ES6 代码被编译后的结果。
+如果你想复习一下 JavaScript，你可以阅读 [这篇教程](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript)。注意，我们也用到了一些 ES6（较新的 JavaScript 版本）的特性。在这篇教程里，我们主要使用了 [箭头函数（arrow functions）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)、[class](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes)、[let](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let) 语句和 [const](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/const) 语句。你可以使用 [Babel REPL](babel://es5-syntax-example) 在线预览 ES6 代码被编译后的结果。
 
 ## 环境准备
 
@@ -82,7 +82,7 @@ npx create-react-app my-app
 
 3. 删除掉新项目中 `src/` 文件夹下的所有文件。
 
-> 注意： **不要删除整个 `src` 文件夹，删除里面原有的源文件就好了**。在接下来的步骤中，我们使用实例代码来替换项目中的原有的默认文件。
+> 注意：**不要删除整个 `src` 文件夹，删除里面原有的源文件就好了**。在接下来的步骤中，我们使用实例代码来替换项目中的原有的默认文件。
 
 ```bash
 cd my-app
@@ -151,9 +151,9 @@ class ShoppingList extends React.Component {
 
 我们马上会讨论这些有意思的、看起来像 XML 的标签。我们通过使用组件来告诉 React 我们希望在屏幕上看到什么。当数据发生改变时，React 会高效地更新并重新渲染我们的组件。
 
-这里，ShoppingList 是一个 **React 组件类**，或者说是一个 **React 组件类型**。一个组件接收一些参数，我们把这些参数叫做 `props`（“props” 是 “properties” 简写），然后通过 `render` 方法返回需要展示在屏幕上的视图的嵌套结构。
+这里，ShoppingList 是一个**React 组件类**，或者说是一个**React 组件类型**。一个组件接收一些参数，我们把这些参数叫做 `props`（“props” 是 “properties” 简写），然后通过 `render` 方法返回需要展示在屏幕上的视图的嵌套结构。
 
-`render` 方法的返回值 *描述* 了你希望在屏幕上看到的内容。React 会根据这个描述，然后把结果展示出来。更具体地来说，`render` 返回了一个 **React 元素**，这是一种轻量级的、对渲染内容的描述。大多数的 React 开发者使用了一种名为 “JSX” 的特殊语法，JSX 可以让你更轻松地书写这些结构。比如说上述代码中的 `<div />` 这种语法会被编译成 `React.createElement('div')`。因此上述的代码等同于以下代码：
+`render` 方法的返回值 *描述* 了你希望在屏幕上看到的内容。React 会根据这个描述，然后把结果展示出来。更具体地来说，`render` 返回了一个**React 元素**，这是一种轻量级的、对渲染内容的描述。大多数的 React 开发者使用了一种名为 “JSX” 的特殊语法，JSX 可以让你更轻松地书写这些结构。比如说上述代码中的 `<div />` 这种语法会被编译成 `React.createElement('div')`。因此上述的代码等同于以下代码：
 
 ```javascript
 return React.createElement('div', {className: 'shopping-list'},
@@ -172,7 +172,7 @@ return React.createElement('div', {className: 'shopping-list'},
 
 ### 阅读初始代码
 
-如果你要在 **浏览器** 中学习该教程，在新标签页中打开 **[初始代码](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**。如果你在本地环境中学习开发该教程的内容，就在你的工程文件夹下打开 `src/index.js`（你已经在前面的 [环境准备](#环境准备) 中创建过这个文件了）。
+如果你要在**浏览器**中学习该教程，在新标签页中打开 **[初始代码](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**。如果你在本地环境中学习开发该教程的内容，就在你的工程文件夹下打开 `src/index.js`（你已经在前面的 [环境准备](#环境准备) 中创建过这个文件了）。
 
 这些初始代码是我们要开发的小游戏的基础代码。我们已经提供了 CSS 样式，这样你只需要关注使用 React 来开发这个井字游戏了。
 
@@ -587,9 +587,9 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 ### 函数定义组件
 
-接下来我们把 Square 组件重写为一个 **函数定义组件**。
+接下来我们把 Square 组件重写为一个**函数定义组件**。
 
-如果你想写的组件只包含一个 `render` 方法，并且不包含 state，那么使用 **函数定义组件** 就会更简单。我们不需要定义一个继承于 `React.Component` 的类，我们可以定义一个函数，这个函数接收 `props` 作为参数，然后返回需要渲染的元素。函数定义组件写起来不像类定义组件那么繁琐，很多组件都可以使用函数定义组件来写。
+如果你想写的组件只包含一个 `render` 方法，并且不包含 state，那么使用**函数定义组件** 就会更简单。我们不需要定义一个继承于 `React.Component` 的类，我们可以定义一个函数，这个函数接收 `props` 作为参数，然后返回需要渲染的元素。函数定义组件写起来不像类定义组件那么繁琐，很多组件都可以使用函数定义组件来写。
 
 把 Square 类替换成下面的函数：
 
