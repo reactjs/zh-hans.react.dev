@@ -22,7 +22,7 @@ const element = <h1>Hello, world</h1>;
 >
 >你可能会将元素与另一个被熟知的概念——“组件”混淆起来。我们会在[下一个章节](/docs/components-and-props.html)介绍组件。组件是由元素构成的。我们强烈建议你不要觉得繁琐而跳过本章节，应当深入阅读这一章节。
 
-## 将一个元素渲染为 DOM
+## 将一个元素渲染为 DOM {#rendering-an-element-into-the-dom}
 
 假设你的 HTML 文件某处有一个 `<div>`：
 
@@ -42,7 +42,7 @@ const element = <h1>Hello, world</h1>;
 
 页面上会展示出 "Hello, world"。
 
-## 更新已渲染的元素
+## 更新已渲染的元素 {#updating-the-rendered-element}
 
 React 元素是[不可变对象](https://zh.wikipedia.org/wiki/%E4%B8%8D%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6)。一旦被创建，你就无法更改它的子元素或者属性。一个元素就像电影的单帧：它代表了某个特定时刻的 UI。
 
@@ -62,7 +62,7 @@ React 元素是[不可变对象](https://zh.wikipedia.org/wiki/%E4%B8%8D%E5%8F%A
 >
 >我们建议你不要跳跃着阅读，因为每个话题都是紧密联系的。
 
-## React 只更新它需要更新的部分
+## React 只更新它需要更新的部分 {#react-only-updates-whats-necessary}
 
 React DOM 会将元素和它的子元素与它们之前的状态进行比较，并只会进行必要的更新来使 DOM 达到预期的状态。
 
