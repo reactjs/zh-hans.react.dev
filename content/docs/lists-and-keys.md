@@ -202,7 +202,7 @@ ReactDOM.render(
 );
 ```
 
-[在 CodePen 上试试。](https://codepen.io/rthor/pen/QKzJKG?editors=0010)
+[在 CodePen 上试试。](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
 
 一个好的经验法则是：在 `map()` 方法中的元素需要设置键属性。
 
