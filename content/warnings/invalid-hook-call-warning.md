@@ -16,11 +16,19 @@ There are three common reasons you might be seeing it:
 
 Let's look at each of these cases.
 
+<<<<<<< HEAD
 ## Mismatching Versions of React and React DOM
 
 You might be using a version of `react-dom` (< 16.8.0) or `react-native` (< 0.59) that doesn't yet support Hooks. You can run `npm ls react-dom` or `npm ls react-native` in your application folder to check which version you're using. If you find more than one of them, this might also create problems (more on that below).
 
 ## Breaking the Rules of Hooks
+=======
+## Mismatching Versions of React and React DOM {#mismatching-versions-of-react-and-react-dom}
+
+You might be using a version of `react-dom` (< 16.8.0) or `react-native` (< 0.59) that doesn't yet support Hooks. You can run `npm ls react-dom` or `npm ls react-native` in your application folder to check which version you're using. If you find more than one of them, this might also create problems (more on that below).
+
+## Breaking the Rules of Hooks {#breaking-the-rules-of-hooks}
+>>>>>>> e3cf542e75018ff7f0104ab7a4df9dc2b8d43bef
 
 You can only call Hooks **while React is rendering a function component**:
 
@@ -85,7 +93,11 @@ You can use the [`eslint-plugin-react-hooks` plugin](https://www.npmjs.com/packa
 >[Custom Hooks](/docs/hooks-custom.html) *may* call other Hooks (that's their whole purpose). This works because custom Hooks are also supposed to only be called while a function component is rendering.
 
 
+<<<<<<< HEAD
 ## Duplicate React
+=======
+## Duplicate React {#duplicate-react}
+>>>>>>> e3cf542e75018ff7f0104ab7a4df9dc2b8d43bef
 
 In order for Hooks to work, the `react` import from your application code needs to resolve to the same module as the `react` import from inside the `react-dom` package.
 
@@ -117,6 +129,10 @@ This problem can also come up when you use `npm link` or an equivalent. In that 
 >
 >In general, React supports using multiple independent copies on one page (for example, if an app and a third-party widget both use it). It only breaks if `require('react')` resolves differently between the component and the `react-dom` copy it was rendered with.
 
+<<<<<<< HEAD
 ## Other Causes
+=======
+## Other Causes {#other-causes}
+>>>>>>> e3cf542e75018ff7f0104ab7a4df9dc2b8d43bef
 
 If none of this worked, please comment in [this issue](https://github.com/facebook/react/issues/13991) and we'll try to help. Try to create a small reproducing example — you might discover the problem as you're doing it.

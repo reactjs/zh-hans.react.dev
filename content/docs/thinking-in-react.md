@@ -12,7 +12,11 @@ prev: composition-vs-inheritance.html
 
 React 最棒的部分之一是引导我们思考如何构建一个应用。在这篇文档中，我们将会通过 React 构建一个可搜索的产品数据表格来更深刻地领会 React 哲学。
 
+<<<<<<< HEAD
 ## 从设计稿开始
+=======
+## Start With A Mock {#start-with-a-mock}
+>>>>>>> e3cf542e75018ff7f0104ab7a4df9dc2b8d43bef
 
 假设我们已经有了一个返回 JSON 的 API，以及设计师提供的组件设计稿。如下所示：
 
@@ -31,7 +35,11 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
 ];
 ```
 
+<<<<<<< HEAD
 ## 第一步：将设计好的 UI 划分为组件层级
+=======
+## Step 1: Break The UI Into A Component Hierarchy {#step-1-break-the-ui-into-a-component-hierarchy}
+>>>>>>> e3cf542e75018ff7f0104ab7a4df9dc2b8d43bef
 
 首先，你需要在设计稿上用方框圈出每一个组件（包括它们的子组件），并且以合适的名称命名。如果你是和设计师一起完成此任务，那么他们可能已经做过类似的工作，所以请和他们进行交流！他们的 Photoshop 的图层名称可能最终就是你编写的 React 组件的名称！
 
@@ -59,7 +67,11 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
       * `ProductCategoryRow`
       * `ProductRow`
 
+<<<<<<< HEAD
 ## 第二步：用 React 创建一个静态版本
+=======
+## Step 2: Build A Static Version in React {#step-2-build-a-static-version-in-react}
+>>>>>>> e3cf542e75018ff7f0104ab7a4df9dc2b8d43bef
 
 <p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">参阅 <a href="http://codepen.io">CodePen</a> 上的 <a href="https://codepen.io/gaearon/pen/BwWzwm">React 哲学：第二步</a>。</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
@@ -74,11 +86,19 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
 
 如果你在完成这一步骤时遇到了困难，可以参阅 [React 文档](/docs/)。
 
+<<<<<<< HEAD
 ### 补充说明: 有关 props 和 state
+=======
+### A Brief Interlude: Props vs State {#a-brief-interlude-props-vs-state}
+>>>>>>> e3cf542e75018ff7f0104ab7a4df9dc2b8d43bef
 
 在 React 中，有两类“模型”数据：props 和 state。清楚地理解两者的区别是十分重要的；如果你不太有把握，可以参阅 [React 官方文档](/docs/interactivity-and-dynamic-uis.html)。
 
+<<<<<<< HEAD
 ## 第三步：确定 UI state 的最小（且完整）表示
+=======
+## Step 3: Identify The Minimal (but complete) Representation Of UI State {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
+>>>>>>> e3cf542e75018ff7f0104ab7a4df9dc2b8d43bef
 
 想要使你的 UI 具备交互功能，需要有触发基础数据模型改变的能力。React 通过 **state** 来完成这个任务。
 
@@ -104,7 +124,11 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
   * 用户输入的搜索词
   * 复选框是否选中的值
 
+<<<<<<< HEAD
 ## 第四步：确定 state 放置的位置
+=======
+## Step 4: Identify Where Your State Should Live {#step-4-identify-where-your-state-should-live}
+>>>>>>> e3cf542e75018ff7f0104ab7a4df9dc2b8d43bef
 
 <p data-height="600" data-theme-id="0" data-slug-hash="qPrNQZ" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">参阅 <a href="http://codepen.io">CodePen</a> 上的 <a href="https://codepen.io/gaearon/pen/qPrNQZ">React 哲学：第四步</a>。</p>
 
@@ -129,7 +153,11 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
 
 你现在可以看到应用的变化了：将 `filterText` 设置为 `"ball"` 并刷新应用，你能发现表格中的数据已经更新了。
 
+<<<<<<< HEAD
 ## 第五步：添加反向数据流
+=======
+## Step 5: Add Inverse Data Flow {#step-5-add-inverse-data-flow}
+>>>>>>> e3cf542e75018ff7f0104ab7a4df9dc2b8d43bef
 
 <p data-height="600" data-theme-id="0" data-slug-hash="LzWZvb" data-default-tab="js,result" data-user="rohan10" data-embed-version="2" data-pen-title="Thinking In React: Step 5" class="codepen">参阅 <a href="http://codepen.io">CodePen</a> 上的 <a href="https://codepen.io/gaearon/pen/LzWZvb">React 哲学：第五步</a>。</p>
 
@@ -143,6 +171,10 @@ React 通过一种比传统的双向绑定略微繁琐的方法来实现反向�
 
 尽管描述起来有点复杂，但实际上只是几行代码而已。你可以清楚地看到你的应用中数据是如何流动的。
 
+<<<<<<< HEAD
 ## 这就是全部了
+=======
+## And That's It {#and-thats-it}
+>>>>>>> e3cf542e75018ff7f0104ab7a4df9dc2b8d43bef
 
 希望这篇文档能够帮助你建立起构建 React 组件和应用的一般概念。尽管你可能需要编写更多的代码，但是别忘了：比起写，代码更多地是给人看的。我们一起构建的这个模块化示例应用的代码就很适合阅读。当你开始构建更大的组件库时，你会意识到这种代码模块化和清晰度的重要性。并且随着代码重用程度的加深，你的代码行数也会显著地减少。:)

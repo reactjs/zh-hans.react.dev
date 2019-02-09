@@ -13,7 +13,7 @@ import ReactTestUtils from 'react-dom/test-utils'; // ES6
 var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
 ```
 
-## Overview
+## Overview {#overview}
 
 `ReactTestUtils` makes it easy to test React components in the testing framework of your choice. At Facebook we use [Jest](https://facebook.github.io/jest/) for painless JavaScript testing. Learn how to get started with Jest through the Jest website's [React Tutorial](http://facebook.github.io/jest/docs/en/tutorial-react.html#content).
 
@@ -40,9 +40,13 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
  - [`renderIntoDocument()`](#renderintodocument)
  - [`Simulate`](#simulate)
 
-## Reference
+## Reference {#reference}
 
+<<<<<<< HEAD
 ### `act()`
+=======
+### `act()` {#act}
+>>>>>>> e3cf542e75018ff7f0104ab7a4df9dc2b8d43bef
 
 To prepare a component for assertions, wrap the code rendering it and performing updates inside an `act()` call. This makes your test run closer to how React works in the browser.
 
@@ -81,6 +85,7 @@ class App extends React.Component {
     );
   }
 }
+<<<<<<< HEAD
 ```
 
 Here is how we can test it:
@@ -122,11 +127,54 @@ it('can render and update a counter', () => {
 });
 ```
 
+=======
+```
+
+Here is how we can test it:
+
+```js{3,20-22,29-31}
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { act } from 'react-dom/test-utils';
+import Counter from './Counter';
+
+let container;
+
+beforeEach(() => {
+  container = document.createElement('div');
+  document.body.appendChild(container);
+});
+
+afterEach(() => {
+  document.body.removeChild(container);
+  container = null;
+});
+
+it('can render and update a counter', () => {
+  // Test first render and componentDidMount
+  act(() => {
+    ReactDOM.render(<Counter />, container);
+  });
+  const button = container.querySelector('button');
+  const label = container.querySelector('p');
+  expect(label.textContent).toBe('You clicked 0 times');
+  expect(document.title).toBe('You clicked 0 times');
+
+  // Test second render and componentDidUpdate
+  act(() => {
+    button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
+  });
+  expect(label.textContent).toBe('You clicked 1 times');
+  expect(document.title).toBe('You clicked 1 times');
+});
+```
+
+>>>>>>> e3cf542e75018ff7f0104ab7a4df9dc2b8d43bef
 Don't forget that dispatching DOM events only works when the DOM container is added to the `document`. You can use a helper like [`react-testing-library`](https://github.com/kentcdodds/react-testing-library) to reduce the boilerplate code.
 
 * * *
 
-### `mockComponent()`
+### `mockComponent()` {#mockcomponent}
 
 ```javascript
 mockComponent(
@@ -143,7 +191,7 @@ Pass a mocked component module to this method to augment it with useful methods 
 
 * * *
 
-### `isElement()`
+### `isElement()` {#iselement}
 
 ```javascript
 isElement(element)
@@ -153,7 +201,7 @@ Returns `true` if `element` is any React element.
 
 * * *
 
-### `isElementOfType()`
+### `isElementOfType()` {#iselementoftype}
 
 ```javascript
 isElementOfType(
@@ -166,7 +214,7 @@ Returns `true` if `element` is a React element whose type is of a React `compone
 
 * * *
 
-### `isDOMComponent()`
+### `isDOMComponent()` {#isdomcomponent}
 
 ```javascript
 isDOMComponent(instance)
@@ -176,7 +224,7 @@ Returns `true` if `instance` is a DOM component (such as a `<div>` or `<span>`).
 
 * * *
 
-### `isCompositeComponent()`
+### `isCompositeComponent()` {#iscompositecomponent}
 
 ```javascript
 isCompositeComponent(instance)
@@ -186,7 +234,7 @@ Returns `true` if `instance` is a user-defined component, such as a class or a f
 
 * * *
 
-### `isCompositeComponentWithType()`
+### `isCompositeComponentWithType()` {#iscompositecomponentwithtype}
 
 ```javascript
 isCompositeComponentWithType(
@@ -199,7 +247,7 @@ Returns `true` if `instance` is a component whose type is of a React `componentC
 
 * * *
 
-### `findAllInRenderedTree()`
+### `findAllInRenderedTree()` {#findallinrenderedtree}
 
 ```javascript
 findAllInRenderedTree(
@@ -212,7 +260,7 @@ Traverse all components in `tree` and accumulate all components where `test(comp
 
 * * *
 
-### `scryRenderedDOMComponentsWithClass()`
+### `scryRenderedDOMComponentsWithClass()` {#scryrendereddomcomponentswithclass}
 
 ```javascript
 scryRenderedDOMComponentsWithClass(
@@ -225,7 +273,7 @@ Finds all DOM elements of components in the rendered tree that are DOM component
 
 * * *
 
-### `findRenderedDOMComponentWithClass()`
+### `findRenderedDOMComponentWithClass()` {#findrendereddomcomponentwithclass}
 
 ```javascript
 findRenderedDOMComponentWithClass(
@@ -238,7 +286,7 @@ Like [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclas
 
 * * *
 
-### `scryRenderedDOMComponentsWithTag()`
+### `scryRenderedDOMComponentsWithTag()` {#scryrendereddomcomponentswithtag}
 
 ```javascript
 scryRenderedDOMComponentsWithTag(
@@ -251,7 +299,7 @@ Finds all DOM elements of components in the rendered tree that are DOM component
 
 * * *
 
-### `findRenderedDOMComponentWithTag()`
+### `findRenderedDOMComponentWithTag()` {#findrendereddomcomponentwithtag}
 
 ```javascript
 findRenderedDOMComponentWithTag(
@@ -264,7 +312,7 @@ Like [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag) b
 
 * * *
 
-### `scryRenderedComponentsWithType()`
+### `scryRenderedComponentsWithType()` {#scryrenderedcomponentswithtype}
 
 ```javascript
 scryRenderedComponentsWithType(
@@ -277,7 +325,7 @@ Finds all instances of components with type equal to `componentClass`.
 
 * * *
 
-### `findRenderedComponentWithType()`
+### `findRenderedComponentWithType()` {#findrenderedcomponentwithtype}
 
 ```javascript
 findRenderedComponentWithType(
@@ -290,7 +338,11 @@ Same as [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) bu
 
 ***
 
+<<<<<<< HEAD
 ### `renderIntoDocument()`
+=======
+### `renderIntoDocument()` {#renderintodocument}
+>>>>>>> e3cf542e75018ff7f0104ab7a4df9dc2b8d43bef
 
 ```javascript
 renderIntoDocument(element)
@@ -309,9 +361,15 @@ ReactDOM.render(element, domContainer);
 
 * * *
 
+<<<<<<< HEAD
 ## Other Utilities
 
 ### `Simulate`
+=======
+## Other Utilities {#other-utilities}
+
+### `Simulate` {#simulate}
+>>>>>>> e3cf542e75018ff7f0104ab7a4df9dc2b8d43bef
 
 ```javascript
 Simulate.{eventName}(
