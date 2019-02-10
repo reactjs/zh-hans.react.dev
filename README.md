@@ -51,7 +51,7 @@ This repo contains the source code and documentation powering [reactjs.org](http
 该流程我继续细化，如有疑问。可扫码进入该群，一起讨论完善这个项目：
 
 <div align="center">   
-	<img src="./4BA430EC-A3C2-4CD9-8E44-D21E6461854D.png" width="300" height="388" alt="图片名称" align=center />
+	<img src="https://user-images.githubusercontent.com/13861040/52535012-dfc97b80-2d83-11e9-910a-46ab217b7ff4.png" width="300" height="388" alt="图片名称" align=center />
 </div>
 
 ## About Chinese translation:
@@ -140,8 +140,6 @@ The documentation is divided into several sections with a different tone and pur
 1. Follow GitHub's instructions.
 1. If possible, include screenshots of visual changes. A Netlify build will also be automatically created once you make your PR so other people can see your change.
 
-<<<<<<< HEAD
-=======
 ## Translation
 
 If you are interesting in translating `reactjs.org`, please see the current translation efforts at [isreactreadyyet.com](https://www.isreactreadyyet.com).
@@ -149,7 +147,6 @@ If you are interesting in translating `reactjs.org`, please see the current tran
 
 If your language does not have a translation and you would like to create one, please follow the instructions at [reactjs.org Translations](https://github.com/reactjs/reactjs.org-translation#translating-reactjsorg).
 
->>>>>>> 61b96a2f24d6c64851ee747e99d5ea7629059ec6
 ## Troubleshooting
 
 - `yarn reset` to clear the local cache
