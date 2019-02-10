@@ -232,7 +232,7 @@ You can also create the initial state lazily. To do this, you can pass an `init`
 
 It lets you extract the logic for calculating the initial state outside the reducer. This is also handy for resetting the state later in response to an action:
 
-```js{1-3,11-12,21,26}
+```js{1-3,11-12,19,24}
 function init(initialCount) {
   return {count: initialCount};
 }
@@ -246,9 +246,7 @@ function reducer(state, action) {
     case 'reset':
       return init(action.payload);
     default:
-      // A reducer must always return a valid state.
-      // Alternatively you can throw an error if an invalid action is dispatched.
-      return state;
+      throw new Error();
   }
 }
 
