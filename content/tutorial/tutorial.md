@@ -12,7 +12,7 @@ redirect_from:
   - "docs/tutorial-zh-CN.html"
 ---
 
-阅读该教程不需要你掌握任何现有的 React 知识
+阅读该教程不需要你预先掌握任何 React 知识
 
 ## 课前准备
 
@@ -24,46 +24,46 @@ redirect_from:
 
 这篇教程分为以下几个部分：
 
-* [环境准备](#环境准备) 提供了学习该教程的**起点**
-* [概览](#概览) 介绍了 React 的**基础知识**：组件、props 和 state
-* [完成小游戏](#完成小游戏) 介绍了在 React 开发过程中最常用的技术
-* [时间旅行](#时间旅行) 可以让你更加深刻地了解 React 的独特优势
+* [环境准备](#环境准备) 是学习该教程的**起点**。
+* [概览](#概览) 介绍了 React 的**基础知识**：组件、props 和 state。
+* [完成小游戏](#完成小游戏) 介绍了在 React 开发过程中最常用的技术。
+* [时间旅行](#时间旅行) 可以让你更加深刻地了解 React 的独特优势。
 
 你不必着急一口气学完这篇教程的所有内容，尽力就行，哪怕是先学习一两节。
 
-在跟着这篇教程学习的时候，你可以复制粘贴教程里面的代码，但是我们推荐你亲手敲一遍代码。这样可以促进你的肌肉记忆，加深对 React 的理解。
+在跟着这篇教程学习的时候，你可以复制粘贴教程里面的代码，但是我们推荐你亲手敲一遍代码。这样可以加深对 React 的理解。
 
 ### 我们会做出什么东西？
 
 接下来，我们一起用 React 开发一个井字游戏 （tic-tac-toe）。
 
-你可以提前预览我们要写的游戏的 **[最终效果](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**。如果里面的代码你现在一点也看不懂，很多语法也不熟悉，别担心！接下来的教程会一步一步教你理解和用 React 编写出这个小游戏所有的代码。
+你可以提前预览我们要写的游戏的 **[最终效果](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**。如果你看不懂其中的代码，或不熟悉这些语法，别担心！接下来的教程会一步一步帮助你理解 React 及其语法。
 
 在继续后面的教程之前，推荐你先玩一下这个井字游戏。在游戏里，你会看到游戏面板的右边有一个标有序号的列表。这个列表记录了游戏中的每个步骤，并且会随着游戏的进行不断更新。
 
-等你玩得差不多了，大概了解了我们要实现什么样的功能，关掉它准备开始学习编码吧！我们会在一个简单的模板上开始写起。下一步就是帮做好准备工作，这样你就可以开始游戏开发了。
+等你熟悉游戏功能，便可关掉它！我们会在一个简单的模板上开始写起。下一步就是帮做好准备工作，这样你就可以开始游戏开发了。
 
 ### 前置知识
 
-我们假定你已经对 HTML 和 JavaScript 都比较熟悉了。但是如果你是从其他编程语言转来的，你也可以跟上这篇教程的。除此之外，我们假定你也已经熟悉了一些编程的概念，例如，函数、对象、数组，甚至是类。
+我们假定你已经对 HTML 和 JavaScript 都比较熟悉了。即便你之前使用其他编程语言，你也可以跟上这篇教程的。除此之外，我们假定你也已经熟悉了一些编程的概念，例如，函数、对象、数组，以及 class 的一些内容。
 
-如果你想复习一下 JavaScript，你可以阅读 [这篇教程](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript)。注意，我们也用到了一些 ES6（较新的 JavaScript 版本）的特性。在这篇教程里，我们主要使用了 [箭头函数（arrow functions）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)、[class](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes)、[let](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let) 语句和 [const](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/const) 语句。你可以使用 [Babel REPL](babel://es5-syntax-example) 在线预览 ES6 代码被编译后的结果。
+如果你想复习一下 JavaScript，你可以阅读 [这篇教程](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript)。注意，我们也用到了一些 ES6（较新的 JavaScript 版本）的特性。在这篇教程里，我们主要使用了 [箭头函数（arrow functions）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)、[class](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes)、[let](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let) 语句和 [const](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/const) 语句。你可以使用 [Babel REPL](babel://es5-syntax-example) 在线预览 ES6 的编译结果。
 
 ## 环境准备
 
-完成这篇教程有两种方式：可以直接在浏览器中编写代码，也可以用你的电脑在本地搭建开发环境。
+完成这篇教程有两种方式：可以直接在浏览器中编写代码，也可以在你电脑上搭建本地开发环境。
 
 ### 方式一：在浏览器中编写代码
 
 这是上手最快的一种方式了！
 
-首先在新的浏览器选项卡中打开这个 **[初始模板](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**。 你可以看到一个空的井字棋盘和 React 代码。我们接下来会在这一基础上编写 React 代码。
+首先在新的浏览器选项卡中打开这个 **[初始模板](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**。 你可以看到一个空的井字棋盘和 React 代码。我们接下来会在本教程中修改该 React 代码。
 
 如果你选择这种方式，就可以跳过方式二，直接从 [概览](#概览) 开始阅读教程啦。
 
 ### 方式二：搭建本地开发环境
 
-这篇教程并不强制要求你使用这种方式！
+这是完全可选的，本教程不强制要求！
 
 <br>
 
@@ -71,9 +71,9 @@ redirect_from:
 
 <summary><b>可选项：使用你喜欢的文本编辑器进行本地开发的步骤：</b></summary>
 
-虽然在本地搭建环境要费一些功夫，但好处是你可以任意选择你喜欢的编辑器来完成开发。以下是具体步骤：
+虽然在本地搭建环境要费一些功夫，但是允许你选择自己喜欢的编辑器来完成开发。以下是具体步骤：
 
-1. 确保你安装了近期版本的 [Node.js](https://nodejs.org/zh-cn/)。
+1. 确保你安装了较新版本的 [Node.js](https://nodejs.org/zh-cn/)。
 2. 按照 [创建新的 React App 指南](/docs/create-a-new-react-app.html#create-react-app) 创建一个新的项目
 
 ```bash
@@ -82,16 +82,16 @@ npx create-react-app my-app
 
 3. 删除掉新项目中 `src/` 文件夹下的所有文件。
 
-> 注意：**不要删除整个 `src` 文件夹，删除里面原有的源文件就好了**。在接下来的步骤中，我们使用实例代码来替换项目中的原有的默认文件。
+> 注意：**不要删除整个 `src` 文件夹，删除里面的源文件就好了**。我们会在下一步中使用示例代码替换默认源文件。
 
 ```bash
 cd my-app
 cd src
 
-# 使用 Mac 或 Linux:
+# 如果你使用 Mac 或 Linux:
 rm -f *
 
-# 使用 Windows:
+# 如果你使用 Windows:
 del *
 
 # 然后回到项目文件夹

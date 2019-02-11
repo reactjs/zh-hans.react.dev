@@ -1,28 +1,28 @@
 - title: 入门教程
   items:
-    - id: 课前准备
+    - id: before-we-start-the-tutorial
       title: 课前准备
       href: /tutorial/tutorial.html#课前准备
       forceInternal: true
       subitems:
-        - id: 我们会做出什么东西？
+        - id: what-are-we-building
           title: 我们会做出什么东西？
           href: /tutorial/tutorial.html#我们会做出什么东西？
           forceInternal: true
-        - id: 前置知识
+        - id: prerequisites
           title: 前置知识
           href: /tutorial/tutorial.html#前置知识
           forceInternal: true
-    - id: 环境准备
+    - id: setup-for-the-tutorial
       title: 环境准备
       href: /tutorial/tutorial.html#环境准备
       forceInternal: true
       subitems:
-        - id: 方式一：在浏览器中编写代码
+        - id: setup-option-1-write-code-in-the-browser
           title: "方式一：在浏览器中编写代码"
           href: /tutorial/tutorial.html#方式一：在浏览器中编写代码
           forceInternal: true
-        - id: 方式二：搭建本地开发环境
+        - id: setup-option-2-local-development-environment
           title: "方式二：搭建本地开发环境"
           href: /tutorial/tutorial.html#方式二：搭建本地开发环境
           forceInternal: true
@@ -30,82 +30,82 @@
           title: 我遇到困难了，谁能帮帮我！
           href: /tutorial/tutorial.html#我遇到困难了，谁能帮帮我！
           forceInternal: true
-    - id: 概览
+    - id: overview
       title: 概览
       href: /tutorial/tutorial.html#概览
       forceInternal: true
       subitems:
-        - id: react-是什么？
+        - id: what-is-react
           title: React 是什么？
           href: /tutorial/tutorial.html#react-是什么？
           forceInternal: true
-        - id: 阅读初始代码
+        - id: inspecting-the-starter-code
           title: 阅读初始代码
           href: /tutorial/tutorial.html#阅读初始代码
           forceInternal: true
-        - id: 通过-props-传递数据
+        - id: passing-data-through-props
           title: 通过 Props 传递数据
           href: /tutorial/tutorial.html#通过-props-传递数据
           forceInternal: true
-        - id: 给组件添加交互功能
+        - id: making-an-interactive-component
           title: 给组件添加交互功能
           href: /tutorial/tutorial.html#给组件添加交互功能
           forceInternal: true
-        - id: 开发者工具
+        - id: developer-tools
           title: 开发者工具
           href: /tutorial/tutorial.html#开发者工具
           forceInternal: true
-    - id: 完成小游戏
+    - id: completing-the-game
       title: 完成小游戏
       href: /tutorial/tutorial.html#完成小游戏
       forceInternal: true
       subitems:
-        - id: 提升-state
+        - id: lifting-state-up
           title: 提升 State
           href: /tutorial/tutorial.html#提升-state
           forceInternal: true
-        - id: 为什么不可变性在-react-中非常重要
+        - id: why-immutability-is-important
           title: 为什么不可变性在 React 中非常重要
           href: /tutorial/tutorial.html#为什么不可变性在-react-中非常重要
           forceInternal: true
-        - id: 函数定义组件
+        - id: function-components
           title: 函数定义组件
           href: /tutorial/tutorial.html#函数定义组件
           forceInternal: true
-        - id: 轮流落子
+        - id: taking-turns
           title: 轮流落子
           href: /tutorial/tutorial.html#轮流落子
           forceInternal: true
-        - id: 判断出胜者
+        - id: declaring-a-winner
           title: 判断出胜者
           href: /tutorial/tutorial.html#判断出胜者
           forceInternal: true
-    - id: 时间旅行
+    - id: adding-time-travel
       title: 时间旅行
       href: /tutorial/tutorial.html#时间旅行
       forceInternal: true
       subitems:
-        - id: 保存历史记录
+        - id: storing-a-history-of-moves
           title: 保存历史记录
           href: /tutorial/tutorial.html#保存历史记录
           forceInternal: true
-        - id: 再次提升-state
+        - id: lifting-state-up-again
           title: 再次提升 State
           href: /tutorial/tutorial.html#再次提升-state
           forceInternal: true
-        - id: 展示历史步骤记录
+        - id: showing-the-past-moves
           title: 展示历史步骤记录
           href: /tutorial/tutorial.html#展示历史步骤记录
           forceInternal: true
-        - id: 选择一个-key
+        - id: picking-a-key
           title: 选择一个 key
           href: /tutorial/tutorial.html#选择一个-key
           forceInternal: true
-        - id: 实现时间旅行
+        - id: implementing-time-travel
           title: 实现时间旅行
           href: /tutorial/tutorial.html#实现时间旅行
           forceInternal: true
-        - id: 总结
+        - id: wrapping-up
           title: 总结
           href: /tutorial/tutorial.html#总结
           forceInternal: true
