@@ -74,7 +74,7 @@ redirect_from:
 虽然在本地搭建环境要费一些功夫，但是允许你选择自己喜欢的编辑器来完成开发。以下是具体步骤：
 
 1. 确保你安装了较新版本的 [Node.js](https://nodejs.org/zh-cn/)。
-2. 按照 [创建新的 React App 指南](/docs/create-a-new-react-app.html#create-react-app) 创建一个新的项目
+2. 按照 [Create React App 安装指南](/docs/create-a-new-react-app.html#create-react-app) 创建一个新的项目
 
 ```bash
 npx create-react-app my-app
