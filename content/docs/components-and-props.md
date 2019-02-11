@@ -16,9 +16,9 @@ prev: rendering-elements.html
 next: state-and-lifecycle.html
 ---
 
-组件允许你将 UI 拆分为独立且可复用的代码片段，这样你就只需专注于构建每个独立的代码片段。本指南旨在介绍有关组件的概念。你可以在此处找到[详细的组件 API 参考](/docs/react-component.html)。
+组件允许你将 UI 拆分为独立可复用的代码片段，并对每个片段进行独立构思。本指南旨在介绍组件的相关理念。你可以[参考详细组件 API](/docs/react-component.html)。
 
-从概念上讲，组件就像 JavaScript 函数。它可以接收任意的入参（称之为 “props”），并返回要用于描述页面中展示内容的 React 元素。
+从概念上讲，组件就像 JavaScript 函数。它接受任意的入参（即 “props”），并返回用于描述页面展示内容的 React 元素。
 
 ## 函数式组件与 class 组件 {#function-and-class-components}
 
@@ -30,7 +30,7 @@ function Welcome(props) {
 }
 ```
 
-该函数是一个有效的 React 组件，因为它接受单一带有数据的 “props”（代表属性）对象与并返回一个 React 元素。这类组件被称为“函数组件”，因为它本质上就是 JavaScript 函数。
+该函数是一个有效的 React 组件，因为它接受唯一带有数据的 “props”（代表属性）对象与并返回一个 React 元素。这类组件被称为“函数组件”，因为它本质上就是 JavaScript 函数。
 
 你同时还可以使用 [ES6 的 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) 来定义组件：
 
