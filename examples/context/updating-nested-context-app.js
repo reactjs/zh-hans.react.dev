@@ -14,9 +14,8 @@ class App extends React.Component {
       }));
     };
 
-    // highlight-range{1-2,5}
-    // State also contains the updater function so it will
-    // be passed down into the context provider
+    // highlight-range{1,4}
+    // State 也包含了更新函数，因此它会被传递进 context provider。
     this.state = {
       theme: themes.light,
       toggleTheme: this.toggleTheme,
@@ -25,7 +24,7 @@ class App extends React.Component {
 
   render() {
     // highlight-range{1,3}
-    // The entire state is passed to the provider
+    // 整个 state 都被传递进 provider
     return (
       <ThemeContext.Provider value={this.state}>
         <Content />
