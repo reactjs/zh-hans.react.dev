@@ -6,7 +6,7 @@ permalink: docs/code-splitting.html
 
 ## 打包
 
-大多数React应用都会通过 [Webpack](https://webpack.docschina.org) 或 [Browserify](http://browserify.org/) 这类的工具来构建自己的打包文件。打包是一个将文件引入并合并到一个单独文件的环节，最终形成一个包（bundle）。这个包（bundle）是在进入页面后用以加载整个应用的。
+大多数React应用都会通过 [Webpack](https://webpack.docschina.org) 或 [Browserify](http://browserify.org/) 这类的工具来构建自己的打包文件。打包是一个将文件引入并合并到一个单独文件的环节，最终形成一个包（bundle）。这个包用于在页面上加载整个应用。
 
 #### 示例
 
