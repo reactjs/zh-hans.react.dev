@@ -24,7 +24,7 @@ next: hello-world.html
 
 ### 为什么要使用 `crossorigin` 属性? {#why-the-crossorigin-attribute}
 
-如果你通过 CDN 的方式引入 React，我们建议你设置 [`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes) 属性：
+如果你通过 CDN 的方式引入 React，我们建议你设置 [`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes) 属性：
 
 ```html
 <script crossorigin src="..."></script>
@@ -34,4 +34,4 @@ next: hello-world.html
 
 ![Access-Control-Allow-Origin: *](../images/docs/cdn-cors-header.png)
 
-这样能在 React 16 及以上的版本中有更好的[错误处理体验](/blog/2017/07/26/error-handling-in-react-16.html)。
+这样能在 React 16 及以上的版本中有更好的[错误处理体验](/blog/2017/07/26/error-handling-in-react-16.html)。
