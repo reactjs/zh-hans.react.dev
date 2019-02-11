@@ -6,7 +6,7 @@ prev: cdn-links.html
 next: introducing-jsx.html
 ---
 
-The smallest React example looks like this:
+最简易的 React 示例如下：
 
 ```js
 ReactDOM.render(
@@ -15,36 +15,36 @@ ReactDOM.render(
 );
 ```
 
-It displays a heading saying "Hello, world!" on the page.
+它将在页面上展示一个 "Hello, world!" 的标题。
 
-[](codepen://hello-world)
+[在 CodePen 上尝试](codepen://hello-world)
 
-Click the link above to open an online editor. Feel free to make some changes, and see how they affect the output. Most pages in this guide will have editable examples like this one.
+点击链接打开在线编辑器。随意更改内容，查看它们会怎样影响展示。本指南中的大多数页面都有像这样的可编辑的示例。
 
 
-## How to Read This Guide
+## 如何阅读本指南 {#how-to-read-this-guide}
 
-In this guide, we will examine the building blocks of React apps: elements and components. Once you master them, you can create complex apps from small reusable pieces.
+在本指南中，我们将研究 React 应用程序的组成部分：元素和组件。一旦你掌握了它们，便可以使用这些可复用的小片段组成复杂的应用。
 
->Tip
+>提示
 >
->This guide is designed for people who prefer **learning concepts step by step**. If you prefer to learn by doing, check out our [practical tutorial](/tutorial/tutorial.html). You might find this guide and the tutorial complementary to each other.
+>本指南专为喜欢**逐步学习概念**的人士设计。如果你想边学边做，请查阅我们的[实用教程](/tutorial/tutorial.html)。你会发现该指南与教程是相互补充的。
 
-This is the first chapter in a step-by-step guide about main React concepts. You can find a list of all its chapters in the navigation sidebar. If you're reading this from a mobile device, you can access the navigation by pressing the button in the bottom right corner of your screen.
+本文是 React 核心概念分步指南的第一章。你可以在侧边导航栏中找到所有章节的列表。如果你是通过移动设备阅读此内容，你可以通过点击屏幕右下角的按钮来查看导航栏。
 
-Every chapter in this guide builds on the knowledge introduced in earlier chapters. **You can learn most of React by reading the “Main Concepts” guide chapters in the order they appear in the sidebar.** For example, [“Introducing JSX”](/docs/introducing-jsx.html) is the next chapter after this one.
+本指南中的每一章节都以其前述章节中介绍的知识点为基础。**你可以按照侧边导航栏中显示的顺序阅读浏览 “核心概念” 的指南章节。以了解 React 的大部分内容。** 例如，[“JSX 简介”](/docs/introducing-jsx.html)就是本文的下一章节。
 
-## Knowledge Level Assumptions
+## 预备知识 {#knowledge-level-assumptions}
 
-React is a JavaScript library, and so we'll assume you have a basic understanding of the JavaScript language. **If you don't feel very confident, we recommend [going through a JavaScript tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) to check your knowledge level** and enable you to follow along this guide without getting lost. It might take you between 30 minutes and an hour, but as a result you won't have to feel like you're learning both React and JavaScript at the same time.
+React 是一个 JavaScript 库，所以我们假设你对 JavaScript 语言已有基本的了解。**如果你对自己的基础不自信，我们推荐[通过 JavaScript 教程](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)检查你的基础知识储备水平**，使得你能够无压力的阅读本指南。这可能会花费你 30 分钟到 1 个小时的时间，但这样做的好处是你不会觉得同时在学习 React 和 JavaScript。
 
->Note
+>注意
 >
->This guide occasionally uses some of the newer JavaScript syntax in the examples. If you haven't worked with JavaScript in the last few years, [these three points](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) should get you most of the way.
+>本指南的示例中偶尔会使用一些 JavaScript 新语法。如果你在过去几年中并没有使用过 JavaScript，大多数情况下[这三点](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c)应该能帮到你。
 
 
-## Let's Get Started!
+## 让我们开始吧！ {#lets-get-started}
 
-Keep scrolling down, and you'll find the link to the [next chapter of this guide](/docs/introducing-jsx.html) right before the website footer.
+继续向下滚动，你将在网站页脚右侧找到[下一篇指南](/docs/introducing-jsx.html)的链接。
 
 

@@ -20,7 +20,7 @@ next: state-and-lifecycle.html
 
 从概念上讲，组件就像 JavaScript 函数。它可以接收任意的入参（称之为 “props”），并返回要用于描述页面中展示内容的 React 元素。
 
-## 函数式组件与 class 组件
+## 函数式组件与 class 组件 {#function-and-class-components}
 
 定义组件最简单的方式就是编写 JavaScript 函数：
 
@@ -46,7 +46,7 @@ class Welcome extends React.Component {
 
 我们将[在下一章节](/docs/state-and-lifecycle.html)中讨论关于 class 的额外特性。在那之前，我们将使用较为简洁的函数式组件。
 
-## 组件渲染
+## 组件渲染 {#rendering-a-component}
 
 之前，我们遇到的React 元素都只是 DOM 标签：
 
@@ -91,7 +91,7 @@ ReactDOM.render(
 >
 >你可以在[此处](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized)了解有关此约定背后原因的更多信息。
 
-## 组合组件
+## 组合组件 {#composing-components}
 
 组件可以在其输出中引用其他组件。这就可以让我们用同一组件来抽象出任意层次的细节。按钮，表单，对话框，甚至整个屏幕的内容：在 React 应用程序中，这些通常都会以组件的形式表示。
 
@@ -122,7 +122,7 @@ ReactDOM.render(
 
 通常来说，每个新的 React 应用程序的顶层组件都是 `App` 组件。但是，如果你将 React 集成到现有的应用程序中，你可能需要使用像 `Button` 这样的小组件，并自下而上地逐步应用到视图层的顶部。
 
-## 提取组件
+## 提取组件 {#extracting-components}
 
 将组件拆分为更小的组件。
 
@@ -235,7 +235,7 @@ function Comment(props) {
 
 提取组件一开始看起来是件繁重的工作，但是，在大型应用中，构建可复用组件是完全值得的。根据经验来看，如果 UI 中有一部分被多次使用（`Button`，`Panel`，`Avatar`），或者组件本身就足够复杂（`App`，`FeedStory`，`Comment`），类似于这类的组件成为可复用组件是绝佳的选择。
 
-## Props 的只读性
+## Props 的只读性 {#props-are-read-only}
 
 组件无论是使用[函数式声明还是通过 class 声明](#function-and-class-components)，都决不能修改自身的 props。来看下这个 `sum` 函数：
 
