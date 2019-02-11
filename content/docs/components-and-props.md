@@ -16,7 +16,7 @@ prev: rendering-elements.html
 next: state-and-lifecycle.html
 ---
 
-组件允许你将 UI 拆分为独立且可复用的代码片段，这样你就只需专注于构建每个独立的代码片段。本指南旨在介绍有关组件的概念。你可以在此处找到[有关组件 API 详情的参考](/docs/react-component.html)。
+组件允许你将 UI 拆分为独立且可复用的代码片段，这样你就只需专注于构建每个独立的代码片段。本指南旨在介绍有关组件的概念。你可以在此处找到[详细的组件 API 参考](/docs/react-component.html)。
 
 从概念上讲，组件就像 JavaScript 函数。它可以接收任意的入参（称之为 “props”），并返回要用于描述页面中展示内容的 React 元素。
 
@@ -42,13 +42,13 @@ class Welcome extends React.Component {
 }
 ```
 
-从 React 的角度来思考，上述两个组件是等效的。
+上述两个组件在 React 里是等效的。
 
-我们将[在下一章节](/docs/state-and-lifecycle.html)中讨论关于 class 的额外特性。在那之前，我们将使用较为简洁的函数式组件。
+我们将[在下一章节](/docs/state-and-lifecycle.html)中讨论关于 class 的额外特性。在那之前，为了保持简洁，将使用函数式组件。
 
 ## 组件渲染 {#rendering-a-component}
 
-之前，我们遇到的React 元素都只是 DOM 标签：
+之前，我们遇到的 React 元素都只是 DOM 标签：
 
 ```js
 const element = <div />;
@@ -62,7 +62,7 @@ const element = <Welcome name="Sara" />;
 
 当 React 元素为用户自定义组件时，它会将 JSX 所接收的属性作为单个对象传递给组件，这个对象被称之为 “props”。
 
-例如，这段代码会在页面上的内容渲染为 “Hello, Sara”：
+例如，这段代码会在页面上渲染 “Hello, Sara”：
 
 ```js{1,5}
 function Welcome(props) {
@@ -89,13 +89,13 @@ ReactDOM.render(
 >
 >React 会将以小写字母开头的组件视为原生 DOM 标签。例如，`<div />` 代表 HTML 的 div 标签，而 `<Welcome />` 则代表一个组件，且需在作用域内使用 `Welcome`。
 >
->你可以在[此处](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized)了解有关此约定背后原因的更多信息。
+>你可以在[这里](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized)了解更多关于此约定的原因。
 
 ## 组合组件 {#composing-components}
 
 组件可以在其输出中引用其他组件。这就可以让我们用同一组件来抽象出任意层次的细节。按钮，表单，对话框，甚至整个屏幕的内容：在 React 应用程序中，这些通常都会以组件的形式表示。
 
-例如，我们可以创建 `App` 组件，用于多次渲染 `Welcome` 组件：
+例如，我们可以创建一个可以多次渲染 `Welcome` 组件的 `App` 组件：
 
 ```js{8-10}
 function Welcome(props) {
@@ -156,7 +156,7 @@ function Comment(props) {
 
 该组件接收 `author`（对象），`text` （字符串）以及 `date`（日期）作为 props，以此来描述社交媒体网站上的评论功能。
 
-该组件由于嵌套的关系，变得难以维护，且很难复用它的某部分的代码。因此，我们需要从该组件中提取出一些组件。
+该组件由于嵌套的关系，变得难以维护，且很难复用它的各个部分。因此，让我们从中提取一些组件出来。
 
 首先，我们将提取 `Avatar` 组件：
 
@@ -171,9 +171,9 @@ function Avatar(props) {
 }
 ```
 
-`Avatar` 在 `Comment` 组件内部，且不知道是否会被渲染。因此，我们给它的 props 起了一个更通用的名字：`user`，而不是 `author`。
+`Avatar` 在 `Comment` 组件内部，且不需知道是否会被渲染。因此，我们给它的 props 起了一个更通用的名字：`user`，而不是 `author`。
 
-我们建议从组件自身的角度命名 props，而不能根据使用组件的上下文命名。
+我们建议从组件自身的角度命名 props，而不是根据使用组件的上下文命名。
 
 我们现在针对 `Comment` 做些微小调整：
 
@@ -233,7 +233,7 @@ function Comment(props) {
 
 [在 CodePen 上试用](codepen://components-and-props/extracting-components-continued)
 
-提取组件一开始看起来是件繁重的工作，但是，在大型应用中，构建可复用组件是完全值得的。根据经验来看，如果 UI 中有一部分被多次使用（`Button`，`Panel`，`Avatar`），或者组件本身就足够复杂（`App`，`FeedStory`，`Comment`），类似于这类的组件成为可复用组件是绝佳的选择。
+乍一看，提取组件可能是一件繁重的工作，但是，在大型应用中，构建可复用组件是完全值得的。根据经验来看，如果 UI 中有一部分被多次使用（`Button`，`Panel`，`Avatar`），或者组件本身就足够复杂（`App`，`FeedStory`，`Comment`），那么它就是一个可复用组件的候选项。
 
 ## Props 的只读性 {#props-are-read-only}
 
@@ -259,4 +259,4 @@ React 非常灵活，但它也有一个严格的规则：
 
 **所有 React 组件都必须像纯函数一样保护它们的 props**
 
-当然，应用程序的 UI 是动态的，并会伴随着时间的推移而变化。在[下一章节](/docs/state-and-lifecycle.html)中，我们将介绍一种新的概念，称之为 “state”。State 可以在不违反上述规则的情况下，根据用户操作、网络响应、或者其他状态变化，使组件动态的响应并改变组件的输出。
+当然，应用程序的 UI 是动态的，并会伴随着时间的推移而变化。在[下一章节](/docs/state-and-lifecycle.html)中，我们将介绍一种新的概念，称之为 “state”。State 可以在不违反上述规则的情况下，允许 React 组件随用户操作、网络响应或者其他变化而动态更改输出内容。。
