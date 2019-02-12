@@ -56,8 +56,8 @@
           href: /tutorial/tutorial.html#开发者工具
           forceInternal: true
     - id: completing-the-game
-      title: 完成小游戏
-      href: /tutorial/tutorial.html#完成小游戏
+      title: 游戏完善
+      href: /tutorial/tutorial.html#游戏完善
       forceInternal: true
       subitems:
         - id: lifting-state-up
