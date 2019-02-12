@@ -6,7 +6,7 @@ layout: docs
 category: Reference
 ---
 
-**引入**
+**如何引入**
 
 ```javascript
 import ReactTestUtils from 'react-dom/test-utils'; // ES6
@@ -15,13 +15,13 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
 
 ## 概述
 
-`ReactTestUtils` 让你在所选的测试框架中测试 React 组件变得容易。在 Facebook 我们使用 [Jest](https://facebook.github.io/jest/) 来做无压力 JavaScript 测试。学习如何开始使用 Jest 测试可以浏览官方文档中的 [React Tutorial](http://facebook.github.io/jest/docs/en/tutorial-react.html#content) 部分。
+`ReactTestUtils` 可搭配你所选的测试框架，轻松实现 React 组件测试。在 Facebook 内部，我们使用 [Jest](https://facebook.github.io/jest/) 进行无压力 JavaScript 测试。你可以从 Jest 官网的 [React Tutorial](http://facebook.github.io/jest/docs/en/tutorial-react.html#content) 中了解如何开始使用它。
 
 > 注意：
 >
-> Airbnb 发布了一款叫作 Enzyme 的测试工具，它能轻松对 React 组件的输出进行断言、控制和遍历。如果你需要决定一款和 Jest 搭配使用单元测试工具，或者其他测试运行器，值得看一下：[http://airbnb.io/enzyme/](http://airbnb.io/enzyme/)
+> Airbnb 发布了一款叫作 Enzyme 的测试工具，通过它能够轻松对 React 组件的输出进行断言、操控和遍历。如果你需要决定一款和 Jest 或者其他测试运行器搭配使用单元测试工具，值得看一下：[http://airbnb.io/enzyme/](http://airbnb.io/enzyme/)
 > 
-> 或者，这里有另外一款叫作 react-testing-library 的测试工具，设计成能够和鼓励像终端用户使用你的组件一样写测试用例。并且它也能与其他任何一款测试运行器配合工作：[https://git.io/react-testing-library](https://git.io/react-testing-library)
+> 另外，这里还有一款叫做 react-testing-library 的测试工具，能轻松像终端用户使用一样写测试用例，并且能与任何一款测试运行器配合工作：[https://git.io/react-testing-library](https://git.io/react-testing-library)
 
  - [`Simulate`](#simulate)
  - [`renderIntoDocument()`](#renderintodocument)
@@ -49,7 +49,7 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
 > 浅层渲染的方法被移动到了 `react-test-renderer/shallow`。<br>
 > [学习更多关于浅层渲染的内容查看这篇文档](/docs/shallow-renderer.html)
 
-## 其他工具库
+## 其他工具方法
 
 ### `Simulate`
 
@@ -98,7 +98,7 @@ renderIntoDocument(element)
 
 > 注意：
 >
-> 你需要在引入 `React` **之前**确保 `window`，`window.document` 和 `window.document.createElement` 能在全局环境中获取到。不然 React 会认为它没有权限去操作 DOM，以及像 `setState` 方法将不可用。
+> 你需要在引入 `React` **之前**确保 `window`，`window.document` 和 `window.document.createElement` 能在全局环境中获取到。不然 React 会认为它没有权限去操作 DOM，以及像 `setState` 这样的方法将不可用。
 
 * * *
 
@@ -115,9 +115,9 @@ mockComponent(
 
 > 注意：
 >
-> `mockComponent()` 是一个过时的 API，我们推荐使用 [shallow rendering](/docs/test-utils.html#shallow-rendering) 或者 [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) 来代替。
+> `mockComponent()` 是一个过时的 API，我们推荐使用[浅层渲染](/docs/test-utils.html#shallow-rendering)或者 [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) 来代替。
 
-* * *
+* * 
 
 ### `isElement()`
 
@@ -184,7 +184,7 @@ findAllInRenderedTree(
 )
 ```
 
-遍历所有在参数 `tree` 中的组件，记录所有 `test(component)` 为 `true` 的组件。这个方法本身没有那么有用，但是它常常被用作其他测试用例的原型。
+遍历所有在参数 `tree` 中的组件，记录所有 `test(component)` 为 `true` 的组件。单独调用此方法不是很有用，但是它常常被作为底层 API 被其他测试方法使用。
 
 * * *
 
@@ -249,7 +249,7 @@ scryRenderedComponentsWithType(
 )
 ```
 
-查找组件类型等于参数 `componentClass` 的组件的所有实例。
+查找组件类型等于 `componentClass` 组件的所有实例。
 
 * * *
 
