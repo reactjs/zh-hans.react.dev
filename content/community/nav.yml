@@ -1,42 +1,42 @@
-- title: Community Resources
+- title: 社区资源
   items:
     - id: support
-      title: Support
+      title: 技术支持
     - id: courses
-      title: Courses
+      title: 课程
     - id: examples
-      title: Examples
+      title: 示例
     - id: meetups
-      title: Meetups
+      title: 线下交流
     - id: conferences
-      title: Conferences
+      title: 会议
     - id: articles
-      title: Articles
+      title: 文章
     - id: podcasts
-      title: Podcasts
+      title: 播客
     - id: videos
-      title: Videos
+      title: 视频
     - id: external-resources
-      title: External Resources
-- title: Tools
+      title: 外部资源
+- title: 工具
   items:
     - id: debugging-tools
-      title: Debugging
+      title: 调试
     - id: component-workbenches
-      title: Component Workbenches
+      title: 组件 Workbench
     - id: jsx-integrations
-      title: JSX Integrations
+      title: 集成 JSX
     - id: starter-kits
-      title: Starter Kits
+      title: 脚手架
     - id: routing
-      title: Routing
+      title: 路由
     - id: model-management
-      title: Model Management
+      title: 模型管理
     - id: data-fetching
-      title: Data Fetching
+      title: 数据交互
     - id: testing
-      title: Testing
+      title: 测试
     - id: ui-components
-      title: UI Components
+      title: UI 组件
     - id: misc
-      title: Miscellaneous
+      title: 杂项
