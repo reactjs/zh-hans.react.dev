@@ -58,7 +58,7 @@ class Calculator extends React.Component {
 
 [**在 CodePen 上试试**](https://codepen.io/gaearon/pen/ZXeOBm?editors=0010)
 
-## 添加第二个输入框
+## 添加第二个输入框 {#adding-a-second-input}
 
 现在我们有了新的需求，在已有摄氏温度输入框的基础上，我们提供华氏度的输入框，并保持两个输入框的数据同步。
 
@@ -116,7 +116,7 @@ class Calculator extends React.Component {
 
 另外，我们也不能通过 `Calculator` 组件展示 `BoilingVerdict` 组件的渲染结果。因为 `Calculator` 组件并不知道隐藏在 `TemperatureInput` 组件中的当前温度是多少。
 
-## 编写转换函数
+## 编写转换函数 {#writing-conversion-functions}
 
 首先，我们将编写两个可以在摄氏度与华氏度之间相互转换的函数：
 
@@ -148,7 +148,7 @@ function tryConvert(temperature, convert) {
 
 例如，`tryConvert('abc', toCelsius)` 返回一个空字符串，而 `tryConvert('10.22', toFahrenheit)` 返回 `'50.396'`。
 
-## 状态提升
+## 状态提升 {#lifting-state-up}
 
 到目前为止, 两个 `TemperatureInput` 组件均在各自本地的 state 中相互独立地保存着各自的数据。
 
@@ -317,7 +317,7 @@ class Calculator extends React.Component {
 
 得益于每次的更新都经历相同的步骤，两个输入框的内容才能始终保持同步。
 
-## 学习小结
+## 学习小结 {#lessons-learned}
 
 在React应用中，任何可变数据应当只有一个相对应的唯一“数据源”。通常，state 都是首先添加到需要渲染数据的组件中去。然后，如果其他组件也需要这个 state，那么你可以将它提升至这些组件的最近共同父组件中。你应当依靠 [自上而下的数据流](/docs/state-and-lifecycle.html#the-data-flows-down)，而不是尝试在不同组件间同步 state。
 
