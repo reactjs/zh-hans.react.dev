@@ -38,7 +38,7 @@ console.log(add(16, 26)); // 42
 
 > 注意：
 >
-> 最终你的打包文件看起来会和上面的例子有点区别。
+> 最终你的打包文件看起来会和上面的例子区别很大。
 
 如果你正在使用 [Create React App](https://github.com/facebookincubator/create-react-app)，[Next.js](https://github.com/zeit/next.js/)，[Gatsby](https://www.gatsbyjs.org/)，或者类似的工具，你会拥有一个可以直接使用的 Webpack 配置来进行打包工作。
 
@@ -54,7 +54,7 @@ console.log(add(16, 26)); // 42
 
 ## `import()`
 
-在你的应用中引入代码分割的最佳方式是通过动态引入语法 `import()`。
+在你的应用中引入代码分割的最佳方式是通过动态 `import()` 语法。
 
 **使用之前：**
 
@@ -74,23 +74,23 @@ import("./math").then(math => {
 
 > 注意:
 >
-> 动态引入语法 `import()` 目前只是一个 ECMAScript (JavaScript) [提案](https://github.com/tc39/proposal-dynamic-import)，
+> 动态 `import()` 语法目前只是一个 ECMAScript (JavaScript) [提案](https://github.com/tc39/proposal-dynamic-import)，
 > 而不是正式的语法标准。预计在不远的将来就会被正式接受。
 
 当 Webpack 解析到该语法时，它会自动地开始进行代码分割。如果你使用 Create React App，该功能已配置好，你能[立刻使用](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#code-splitting)这个特性。[Next.js](https://github.com/zeit/next.js/#dynamic-import) 也已支持该特性而无需再配置。
 
 如果你自己配置 Webpack，你可能要阅读下 Webpack 关于[代码分割](https://webpack.docschina.org/guides/code-splitting/)的指南。你的 Webpack 配置应该[类似于此](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269)。
 
-当使用 [Babel](https://babel.docschina.org/) 时，你要确保 Babel 能够解析动态引入语法而不是将其进行转换。对于这一要求你需要 [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import) 插件。
+当使用 [Babel](https://babel.docschina.org/) 时，你要确保 Babel 能够解析动态 `import()` 语法而不是将其进行转换。对于这一要求你需要 [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import) 插件。
 
 ## `React.lazy`
 
 > 注意:
 >
-> `React.lazy` 和 Suspense 技术还没有为服务端渲染准备好。如果你想要在使用服务端渲染的应用中使用，我们推荐 [Loadable Components](https://github.com/smooth-code/loadable-components) 这个库。
+> `React.lazy` 和 Suspense 技术还不支持服务端渲染。如果你想要在使用服务端渲染的应用中使用，我们推荐 [Loadable Components](https://github.com/smooth-code/loadable-components) 这个库。
 > 它有一个很棒的[服务端渲染打包指南](https://github.com/smooth-code/loadable-components/blob/master/packages/server/README.md)。
 
-`React.lazy` 函数能让你像渲染常规组件一样处理动态引入。
+`React.lazy` 函数能让你像渲染常规组件一样处理动态引入（的组件）。
 
 **使用之前：**
 
@@ -122,11 +122,11 @@ function MyComponent() {
 
 这个代码将会在渲染组件时，自动导入包含 `OtherComponent` 组件的包。
 
-`React.lazy` 必须接受一个调用动态导入语法 `import()` 的函数。它将会返回一个 `Promise` 对象，这个对象指向一个包含 React 组件的默认导出。
+`React.lazy` 必须接受一个调用动态 `import()` 语法的函数。它将会返回一个 `Promise` 对象，这个对象指向一个包含 React 组件的默认导出。
 
 ### Suspense
 
-如果在 `MyComponent` 渲染完成后，包含 `OtherComponent` 的模块还没有被加载完成，我们必须在这个加载的过程展示一些兜底内容——比如一个加载指示效果。这里我们使用 `Suspense` 组件来解决。
+如果在 `MyComponent` 渲染完成后，包含 `OtherComponent` 的模块还没有被加载完成，我们可以使用加载指示器为此组件做优雅降级。这里我们使用 `Suspense` 组件来解决。
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
