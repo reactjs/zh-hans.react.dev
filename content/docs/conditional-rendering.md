@@ -14,12 +14,6 @@ React 中的条件渲染和 JavaScript 中的一样，使用 JavaScript 操作�
 
 来看看这两个组件:
 
-在 React 中，你可以创建一些明确的组件来封装各种你需要的行为。然后，依据应用的不同状态，你可以只渲染对应状态下的部分内容。
-
-React 中的条件渲染和 JavaScript 中的一样，使用 JavaScript 操作符 [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) 或者 [条件运算符](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) 去创建元素来表现当前的状态，然后让 React 会根据他们来更新 UI。
-
-来看看这两个组件:
-
 ```js
 function UserGreeting(props) {
   return <h1>Welcome back!</h1>;
@@ -154,7 +148,7 @@ ReactDOM.render(
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
 
-之所以能这样做，是因为在 JavaScript 中， `true && expression` 总是会返回 `expression`, 而 `false && expression` 总是会返回 `false`。
+之所以能这样做，是因为在 JavaScript 中，`true && expression` 总是会返回 `expression`, 而 `false && expression` 总是会返回 `false`。
 
 因此，如果条件是 `true`，`&&` 右侧的元素就会被渲染，如果是 `false`，React 会忽略并跳过它
 
@@ -179,7 +173,7 @@ render() {
 }
 ```
 
-同样的，它也可以用在较大的表达式中， 虽然看起来不是太直观：
+同样的，它也可以用在较大的表达式中，虽然看起来不是太直观：
 
 ```js{5,7,9}
 render() {
