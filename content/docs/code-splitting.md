@@ -6,7 +6,7 @@ permalink: docs/code-splitting.html
 
 ## 打包
 
-大多数React应用都会通过 [Webpack](https://webpack.docschina.org) 或 [Browserify](http://browserify.org/) 这类的工具来构建自己的打包文件。打包是一个将文件引入并合并到一个单独文件的环节，最终形成一个包（bundle）。这个包用于在页面上加载整个应用。
+大多数 React 应用都会使用 [Webpack](https://webpack.docschina.org) 或 [Browserify](http://browserify.org/) 这类的构建工具来打包文件。打包是一个将文件引入并合并到一个单独文件的过程，最终形成一个“bundle”。这个 bundle 用于在页面上一次性加载整个应用。
 
 #### 示例
 
@@ -162,9 +162,9 @@ function MyComponent() {
 }
 ```
 
-### 错误边界（Error boundaries）
+### 异常捕获边界（Error boundaries）
 
-如果模块加载失败（如网络问题），它会触发一个错误。你可以通过[错误边界（Error boundaries）](/docs/error-boundaries.html)技术来处理这些情况，以显示良好的用户体验并管理恢复事宜。
+如果模块加载失败（如网络问题），它会触发一个错误。你可以通过[异常捕获边界（Error boundaries）](/docs/error-boundaries.html)技术来处理这些情况，以显示良好的用户体验并管理恢复事宜。
 
 ```js
 import MyErrorBoundary from './MyErrorBoundary';
