@@ -158,10 +158,6 @@ ReactDOM.render(
 
 在下面这个例子中，我们用它来条件渲染一小段文本
 
-另一种条件渲染的方法是使用 JavaScript 中的条件运算符 [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)。
-
-在下面这个例子中，我们用它来条件渲染一小段文本
-
 ```javascript{5}
 render() {
   const isLoggedIn = this.state.isLoggedIn;
@@ -197,8 +193,6 @@ render() {
 在极少数情况下，你可能希望能隐藏组件，即使它已经被其他组件渲染了。为了达到这个目的，你可以让 `render` 方法返回 `null`。
 
 下面这个例子中，`<WarningBanner />` 根据属性 `warn` 的值来进行条件渲染。如果 `warn` 的值是 `false`，那么组件将隐藏起来:
-
-在极少数情况下，你可能希望能隐藏组件，即使它已经被其他组件渲染了。为了达到这个目的，你可以让 `render` 方法返回 `null`。
 
 ```javascript{2-4,29}
 function WarningBanner(props) {
