@@ -245,7 +245,7 @@ class TemperatureInput extends React.Component {
 }
 ```
 
-如果我们之后修改华氏度的输入框中的内容为212时，`Calculator` 组件中的 state 将会是：
+如果我们之后修改华氏度的输入框中的内容为 212 时，`Calculator` 组件中的 state 将会是：
 
 ```js
 {
