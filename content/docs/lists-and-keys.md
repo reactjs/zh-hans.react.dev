@@ -50,7 +50,7 @@ ReactDOM.render(
 
 通常你需要在一个[组件](/docs/components-and-props.html) 中渲染列表。
 
-我们可以把前面的例子重构成一个组件。这个组件接收 `numbers` 数组作为参数，输出一个无序列表。
+我们可以把前面的例子重构成一个组件，这个组件接收 `numbers` 数组作为参数并输出一个元素列表。
 
 ```javascript{3-5,7,13}
 function NumberList(props) {
