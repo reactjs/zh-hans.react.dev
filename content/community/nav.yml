@@ -23,9 +23,9 @@
     - id: debugging-tools
       title: 调试
     - id: component-workbenches
-      title: 组件 Workbench
+      title: 组件工具集
     - id: jsx-integrations
-      title: 集成 JSX
+      title: JSX 集成
     - id: starter-kits
       title: 脚手架
     - id: routing
@@ -37,6 +37,6 @@
     - id: testing
       title: 测试
     - id: ui-components
-      title: UI 组件
+      title: UI 组件库
     - id: misc
       title: 杂项
