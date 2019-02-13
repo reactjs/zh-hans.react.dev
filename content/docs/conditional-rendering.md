@@ -44,7 +44,7 @@ ReactDOM.render(
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
 
-这个例子展示了如果根据 `isLoggedIn` 的值来渲染不同的问候语。
+这个例子展示了根据 `isLoggedIn` 的值来渲染不同的问候语。
 
 ### 元素变量
 
@@ -120,7 +120,7 @@ ReactDOM.render(
 
 声明一个变量并使用 `if` 语句是来做条件渲染的一个不错的方式，但有时你可能会想使用更简洁的语法。接下来，我们将介绍几中在 JSX 中做条件渲染的方法。
 
-### 与运算符
+### && 与运算符
 
 通过花括号包裹代码，你可以 [在 JSX 中嵌入任何表达式](/docs/introducing-jsx.html#embedding-expressions-in-jsx)。 这也包括 JavaScript 中的逻辑与 && 操作符。它可以很方便的来进行一个元素的条件渲染。
 
@@ -154,7 +154,7 @@ ReactDOM.render(
 
 ### 三目运算符
 
-另一种条件渲染的方法是使用 JavaScript 中的条件运算符 [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)。
+另一种条件渲染的方法是使用 JavaScript 中的三目运算符 [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)。
 
 在下面这个例子中，我们用它来条件渲染一小段文本
 
