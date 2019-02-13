@@ -42,7 +42,7 @@ ReactDOM.render(
 );
 ```
 
-[在 CodePen 上试试。](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
+[在 CodePen 上尝试](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
 
 这段代码生成了一个 1 到 5 的数字列表。
 
@@ -94,7 +94,7 @@ ReactDOM.render(
 );
 ```
 
-[在 CodePen 上试试。](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
+[在 CodePen 上尝试](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
 
 ## Keys {#keys}
 
@@ -202,7 +202,7 @@ ReactDOM.render(
 );
 ```
 
-[在 CodePen 上试试。](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
+[在 CodePen 上尝试](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
 
 一个好的经验法则是：在 `map()` 方法中的元素需要设置键属性。
 
@@ -246,7 +246,7 @@ ReactDOM.render(
 );
 ```
 
-[在 CodePen 上试试。](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
+[在 CodePen 上尝试](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
 
 key 会传递信息给 React ，但不会传递给你的组件。如果你的组件中需要使用 `key` 属性的值，请用其他属性名显式传递这个值：
 
@@ -296,6 +296,6 @@ function NumberList(props) {
 }
 ```
 
-[在 CodePen 上试试。](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
+[在 CodePen 上尝试](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
 
 这么做有时可以使你的代码更清晰，但有时这种风格也会被滥用。就像在 JavaScript 中一样，何时需要为了可读性提取出一个变量，这完全取决于你。但请记住，如果一个 `map()` 嵌套了太多层级，那可能就是你 [提取出组件](/docs/components-and-props.html#extracting-components) 的一个好时机。
