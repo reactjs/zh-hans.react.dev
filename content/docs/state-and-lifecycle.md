@@ -29,7 +29,7 @@ function tick() {
 setInterval(tick, 1000);
 ```
 
-[**在 CodePen 中试试**](http://codepen.io/gaearon/pen/gwoJZk?editors=0010)
+[**在 CodePen 中尝试**](http://codepen.io/gaearon/pen/gwoJZk?editors=0010)
 
 在本节中，我们将学习如何使真正的复用与封装 `Clock` 组件。它将设置自己的计时器并每秒更新一次。
 
@@ -55,7 +55,7 @@ function tick() {
 setInterval(tick, 1000);
 ```
 
-[**在 CodePen 中试试**](http://codepen.io/gaearon/pen/dpdoYR?editors=0010)
+[**在 CodePen 中尝试*](http://codepen.io/gaearon/pen/dpdoYR?editors=0010)
 
 可是，这样我们就错过了一个关键要求： `Clock` 设置一个计时器并且每秒更新 UI 应该是 `Clock` 的实现细节。
 
@@ -101,7 +101,7 @@ class Clock extends React.Component {
 }
 ```
 
-[**在 CodePen 中试试**](http://codepen.io/gaearon/pen/zKRGpo?editors=0010)
+[**在 CodePen 中尝试**](http://codepen.io/gaearon/pen/zKRGpo?editors=0010)
 
 `Clock` 现在被定义为一个 class，而不是一个函数。
 
@@ -193,7 +193,7 @@ ReactDOM.render(
 );
 ```
 
-[**在 CodePen 中试试**](http://codepen.io/gaearon/pen/KgQpJd?editors=0010)
+[**在 CodePen 中尝试**](http://codepen.io/gaearon/pen/KgQpJd?editors=0010)
 
 接下来，我们会让 `Clock` 设置自己的计时器并每秒更新一次。
 
@@ -302,7 +302,7 @@ ReactDOM.render(
 );
 ```
 
-[**在 CodePen 中试试**](http://codepen.io/gaearon/pen/amqdNA?editors=0010)
+[**在 CodePen 中尝试**](http://codepen.io/gaearon/pen/amqdNA?editors=0010)
 
 现在时钟每秒都会刷新。
 
@@ -437,7 +437,7 @@ function FormattedDate(props) {
 }
 ```
 
-[**在 CodePen 中试试**](http://codepen.io/gaearon/pen/zKRqNB?editors=0010)
+[**在 CodePen 中尝试**](http://codepen.io/gaearon/pen/zKRqNB?editors=0010)
 
 这通常会被叫做“自顶向下”或是“单向”的数据流。任何的 state 总是所属于特定的组件，而且从该 state 派生的任何数据或 UI 只能影响树中“低于”它们的组件。
 
@@ -462,7 +462,7 @@ ReactDOM.render(
 );
 ```
 
-[**在 CodePen 中试试**](http://codepen.io/gaearon/pen/vXdGmd?editors=0010)
+[**在 CodePen 中尝试**](http://codepen.io/gaearon/pen/vXdGmd?editors=0010)
 
 每个 `Clock` 会单独的设置它自己的计时器并且更新它。
 
