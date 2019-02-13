@@ -8,9 +8,9 @@ redirect_from:
   - "docs/events-ko-KR.html"
 ---
 
-React 元素的事件处理和 DOM元素的很相似，但是有一点语法上的不同:
+React 元素的事件处理和 DOM 元素的很相似，但是有一点语法上的不同:
 
-* React事件的命名采用驼峰式，而不是小写。
+* React 事件的命名采用驼峰式，而不是小写。
 * 采用 JSX 的语法你需要传入一个函数作为事件处理函数，而不是一个字符串。
 
 例如，传统的 HTML：
@@ -21,7 +21,7 @@ React 元素的事件处理和 DOM元素的很相似，但是有一点语法上�
 </button>
 ```
 
-在React 中有些略微不同：
+在 React 中有些略微不同：
 
 ```js{1}
 <button onClick={activateLasers}>
@@ -29,7 +29,7 @@ React 元素的事件处理和 DOM元素的很相似，但是有一点语法上�
 </button>
 ```
 
-在 React 中另一个不同是你不能使用返回 false 的方式阻止默认行为。你必须明确的使用 preventDefault。例如，传统的 HTML 中阻止链接默认打开一个新页面，你可以这样写：
+在 React 中另一个不同是你不能使用返回 `false` 的方式阻止默认行为。你必须显式的使用 preventDefault。例如，传统的 HTML 中阻止链接默认打开一个新页面，你可以这样写：
 
 ```html
 <a href="#" onclick="console.log('The link was clicked.'); return false">
@@ -54,11 +54,11 @@ function ActionLink() {
 }
 ```
 
-在这里, `e` 是一个合成事件。React 根据 [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/) 来定义这些合成事件，所以你不需要担心跨浏览器的兼容性问题。 如果想了解更多，请查看 [`SyntheticEvent`](/docs/events.html) 参考指南。
+在这里，`e` 是一个合成事件。React 根据 [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/) 来定义这些合成事件，所以你不需要担心跨浏览器的兼容性问题。 如果想了解更多，请查看 [`SyntheticEvent`](/docs/events.html) 参考指南。
 
 使用 React 时你一般不需要使用 `addEventListener` 为一个已创建的 DOM 元素添加监听器。你仅仅需要在这个元素初始渲染的时候提供一个监听器。
 
-当你使用 [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) 语法定义一个组件的时候，通常的做法是使事件处理器成为类中的一个方法。例如，下面的 `Toggle` 组件渲染一个让用户切换开关状态的按钮：
+当你使用 [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) 语法定义一个组件的时候，通常的做法是使事件处理函数成为类中的一个方法。例如，下面的 `Toggle` 组件渲染一个让用户切换开关状态的按钮：
 
 ```js{6,7,10-14,18}
 class Toggle extends React.Component {
@@ -140,9 +140,9 @@ class LoggingButton extends React.Component {
 
 使用这个语法有个问题就是每次 `LoggingButton` 渲染的时候都会创建一个不同的回调函数。在大多数情况下，这没有问题。然而如果这个回调函数作为一个属性值传入低阶组件，这些组件可能会进行额外的重新渲染。我们通常建议在构造器中绑定或使用类字段语法来避免这类性能问题。
 
-## 向事件处理程序传递参数
+## 向事件处理函数传递参数
 
-在循环中，通常我们会为事件处理程序传递额外的参数。例如，若 `id` 是你要删除那一行的 ID，以下两种方式都可以向事件处理程序传递参数：
+在循环中，通常我们会为事件处理函数传递额外的参数。例如，若 `id` 是你要删除那一行的 ID，以下两种方式都可以向事件处理函数传递参数：
 
 ```js
 <button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
