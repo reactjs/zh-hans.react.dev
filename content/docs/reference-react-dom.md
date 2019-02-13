@@ -6,11 +6,11 @@ category: Reference
 permalink: docs/react-dom.html
 ---
 
-If you load React from a `<script>` tag, these top-level APIs are available on the `ReactDOM` global. If you use ES6 with npm, you can write `import ReactDOM from 'react-dom'`. If you use ES5 with npm, you can write `var ReactDOM = require('react-dom')`.
+如果您使用一个 `<script>` 标签引入React，所有的顶层API都能在 `ReactDOM` 的全局范围内被调用。如果您使用npm和ES6, 您可以用 `import ReactDOM from 'react-dom'`。如果您使用npm和ES5, 您可以用 `var ReactDOM = require('react-dom')`。
 
-## Overview {#overview}
+## 概述 {#overview}
 
-The `react-dom` package provides DOM-specific methods that can be used at the top level of your app and as an escape hatch to get outside of the React model if you need to. Most of your components should not need to use this module.
+`react-dom` 包提供了可在应用顶层使用的 DOM 特定（DOM-specific）的方法，如果有需要，您可以把这些方法用作到React模型外面的逃生出口。不过一般情况下，您的大部分组件都不需要使用这个包。
 
 - [`render()`](#render)
 - [`hydrate()`](#hydrate)
@@ -18,41 +18,38 @@ The `react-dom` package provides DOM-specific methods that can be used at the to
 - [`findDOMNode()`](#finddomnode)
 - [`createPortal()`](#createportal)
 
-### Browser Support {#browser-support}
+### 浏览器支持 {#browser-support}
 
-React supports all popular browsers, including Internet Explorer 9 and above, although [some polyfills are required](/docs/javascript-environment-requirements.html) for older browsers such as IE 9 and IE 10.
+React 支持所有的现代浏览器，包括 IE9 及以上版本，但是需要为老浏览器比如 IE9 和 IE10 引入[一些polyfills](/docs/javascript-environment-requirements.html)。
 
-> Note
+> 注意：
 >
-> We don't support older browsers that don't support ES5 methods, but you may find that your apps do work in older browsers if polyfills such as [es5-shim and es5-sham](https://github.com/es-shims/es5-shim) are included in the page. You're on your own if you choose to take this path.
+>我们不支持那些不兼容 ES5 方法的老浏览器，但如果您的应用包含了 polyfill，例如 [es5-shim and es5-sham](https://github.com/es-shims/es5-shim) 您可能会发现您的应用仍然可以在这些浏览器中正常运行。不过如果您选择这种方法，您便需要孤军奋战了。
 
 * * *
 
-## Reference {#reference}
+## 参考 {#reference}
 
 ### `render()` {#render}
 
 ```javascript
 ReactDOM.render(element, container[, callback])
 ```
+在提供的 `container` 里渲染一个 React 元素，返回一个这个组件的[引用](/docs/more-about-refs.html)（或者为[无状态组件](/docs/components-and-props.html#functional-and-class-components)返回 `null`）。
 
-Render a React element into the DOM in the supplied `container` and return a [reference](/docs/more-about-refs.html) to the component (or returns `null` for [stateless components](/docs/components-and-props.html#functional-and-class-components)).
+如果 React 元素之前已经在 `container` 里渲染过，这将会进行一次更新，并且只会在必要时改变 DOM 来体现最新的 React 元素。
 
-If the React element was previously rendered into `container`, this will perform an update on it and only mutate the DOM as necessary to reflect the latest React element.
+如果提供了可选的回调函数，回调将在组件被渲染或更新之后执行。
 
-If the optional callback is provided, it will be executed after the component is rendered or updated.
-
-> Note:
+> 注意:
 >
-> `ReactDOM.render()` controls the contents of the container node you pass in. Any existing DOM elements inside are replaced when first called. Later calls use React’s DOM diffing algorithm for efficient updates.
+> `ReactDOM.render()` 会控制你提供的容器节点里的内容。当第一次调用时，容器节点里的所有 DOM 元素都会被清除，后续的调用则会使用 React 的 DOM 差分算法（DOM diffing algorithm）进行高效的更新。
 >
-> `ReactDOM.render()` does not modify the container node (only modifies the children of the container). It may be possible to insert a component to an existing DOM node without overwriting the existing children.
+> `ReactDOM.render()` 不会修改容器节点（只会修改容器的子节点）。你可以在不覆盖已有子节点的情况下添加一个组件到已有的 DOM 节点中去。
 >
-> `ReactDOM.render()` currently returns a reference to the root `ReactComponent` instance. However, using this return value is legacy
-> and should be avoided because future versions of React may render components asynchronously in some cases. If you need a reference to the root `ReactComponent` instance, the preferred solution is to attach a
-> [callback ref](/docs/more-about-refs.html#the-ref-callback-attribute) to the root element.
+> `ReactDOM.render()` 目前会返回一个指向根 `ReactComponent` 实例的引用。但是使用返回值的这种写法来自历史遗留并且应该避免，因为在未来版本的 React 中，组件的渲染在某些情况下会是异步的。如果您真的需要一个指向根 `ReactComponent` 实例的引用，推荐的方法是添加一个 [callback ref](/docs/more-about-refs.html#the-ref-callback-attribute) 到根元素上。
 >
-> Using `ReactDOM.render()` to hydrate a server-rendered container is deprecated and will be removed in React 17. Use [`hydrate()`](#hydrate) instead.
+> 使用 `ReactDOM.render()` 混合服务端渲染的容器已经弃用了，并且会在 React 17 被移除。作为替代，使用 [`hydrate()`](#hydrate)。
 
 * * *
 
@@ -60,17 +57,17 @@ If the optional callback is provided, it will be executed after the component is
 
 ```javascript
 ReactDOM.hydrate(element, container[, callback])
+
 ```
+和 [`render()`](#render) 相同，用来混合由 [`ReactDOMServer`](/docs/react-dom-server.html) 渲染 HTML 内容的容器。React 会尝试在已有标记上绑定事件监听器。
 
-Same as [`render()`](#render), but is used to hydrate a container whose HTML contents were rendered by [`ReactDOMServer`](/docs/react-dom-server.html). React will attempt to attach event listeners to the existing markup.
+React 期望服务端和客户端渲染的内容完全一致。React 可以弥补文本内容的差异，但是您需要将不匹配的地方作为 bug 进行修复。在开发者模式，React 会对混合过程中的不匹配进行警告。不过不能保证在不匹配的情况下，属性的不同会被修补。在性能原因上这很重要，因为大多是应用很少有不匹配的情况，所以验证所有的标记将会造成过于昂贵的性能开销。
 
-React expects that the rendered content is identical between the server and the client. It can patch up differences in text content, but you should treat mismatches as bugs and fix them. In development mode, React warns about mismatches during hydration. There are no guarantees that attribute differences will be patched up in case of mismatches. This is important for performance reasons because in most apps, mismatches are rare, and so validating all markup would be prohibitively expensive.
+如果一个单一元素的属性或者文本内容，在服务端和客户端之间不可避免的不同（比如：时间戳），您可以为元素添加 `suppressHydrationWarning={true}` 隐藏警告。这种方式只在一层深度上有效，而且应只作为一个逃生窗口（escape hatch）。除非是文本内容，否则不要滥用，React 不会尝试修补不同，所以在未来的更新以前，仍会保持不一致。
 
-If a single element's attribute or text content is unavoidably different between the server and the client (for example, a timestamp), you may silence the warning by adding `suppressHydrationWarning={true}` to the element. It only works one level deep, and is intended to be an escape hatch. Don't overuse it. Unless it's text content, React still won't attempt to patch it up, so it may remain inconsistent until future updates.
+如果您刻意的在服务端与客户端渲染不同内容，您可以采用两遍（two-pass）渲染。在客户端渲染不同内容的组件可以读取一个 state 变量，例如 `this.state.isClient`，您可以在 `componentDidMount()` 里将它设置为 `true`。这种方式在初始渲染时会和服务端渲染相同的内容，避免不同。混合之后，另外的操作会同步进行。 注意，因为进行了两次渲染，这种实现会使您的组件变慢，请小心使用。
 
-If you intentionally need to render something different on the server and the client, you can do a two-pass rendering. Components that render something different on the client can read a state variable like `this.state.isClient`, which you can set to `true` in `componentDidMount()`. This way the initial render pass will render the same content as the server, avoiding mismatches, but an additional pass will happen synchronously right after hydration. Note that this approach will make your components slower because they have to render twice, so use it with caution.
-
-Remember to be mindful of user experience on slow connections. The JavaScript code may load significantly later than the initial HTML render, so if you render something different in the client-only pass, the transition can be jarring. However, if executed well, it may be beneficial to render a "shell" of the application on the server, and only show some of the extra widgets on the client. To learn how to do this without getting the markup mismatch issues, refer to the explanation in the previous paragraph.
+记得留意弱网络环境下的用户体验，JavaScript 代码的加载可能比初始 HTML 渲染晚的多。所以如果您只在客户端渲染不同的内容，其变化可能会有冲突。但是，如果执行顺利，在服务端渲染外壳（shell）也许是有益的，并且只需在客户端显示额外的小组件。要了解如何在避免不匹配标记问题下实现，请参考上一段的解释。
 
 * * *
 
@@ -79,29 +76,28 @@ Remember to be mindful of user experience on slow connections. The JavaScript co
 ```javascript
 ReactDOM.unmountComponentAtNode(container)
 ```
-
-Remove a mounted React component from the DOM and clean up its event handlers and state. If no component was mounted in the container, calling this function does nothing. Returns `true` if a component was unmounted and `false` if there was no component to unmount.
+从 DOM 中移除一个已经挂载的组件，并且清除其事件处理器（event handlers）和 state 。如果指定容器上没有已挂载组件，这个函数什么也不会做。如果组件被移除将会返回 `true`，如果没有组件可被移除将会返回 `false`。
 
 * * *
 
 ### `findDOMNode()` {#finddomnode}
 
-> Note:
->
-> `findDOMNode` is an escape hatch used to access the underlying DOM node. In most cases, use of this escape hatch is discouraged because it pierces the component abstraction. [It has been deprecated in `StrictMode`.](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
+> 注意:
+> `findDOMNode` 是一个访问底层 DOM 节点的逃生窗口（escape hatch）。在大多数情况下，不鼓励使用这个方法，因为它会穿透组件的抽象结构。[严格模式下这个方法已经弃用。](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
+
 
 ```javascript
 ReactDOM.findDOMNode(component)
 ```
-If this component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements. **In most cases, you can attach a ref to the DOM node and avoid using `findDOMNode` at all.**
+如果组件已经被挂载到 DOM 上，这个方法会返回相应的原生浏览器 DOM 元素。这个方法对于从 DOM 中读取值很有用，例如表单字段的值和执行 DOM 测量（performing DOM measurements）。**大多数情况下，您可以绑定一个 ref 到 DOM 节点上，完全避免使用 findDOMNode。**
 
-When a component renders to `null` or `false`, `findDOMNode` returns `null`. When a component renders to a string, `findDOMNode` returns a text DOM node containing that value. As of React 16, a component may return a fragment with multiple children, in which case `findDOMNode` will return the DOM node corresponding to the first non-empty child.
+当一个组件渲染的内容是 `null` 或者 `false` 时，`findDOMNode` 返回的是 `null`。当一个组件渲染的是字符串时，`findDOMNode` 返回的包含这个值的文本 DOM 节点。从 React 16 开始，一个组件可能会返回有多个子节点的碎片（fragment），在这个情况下，`findDOMNode` 会返回第一个非空子节点对应的 DOM 节点。
 
-> Note:
+> 注意:
 >
-> `findDOMNode` only works on mounted components (that is, components that have been placed in the DOM). If you try to call this on a component that has not been mounted yet (like calling `findDOMNode()` in `render()` on a component that has yet to be created) an exception will be thrown.
->
-> `findDOMNode` cannot be used on function components.
+> `findDOMNode` 只在挂载的组件上可用（即，已经放置在 DOM 中的组件）。如果您尝试调用一个未挂载的组件（例如在一个还未创建的组件上调用 `render()` 中的 `findDOMNode()`）将会引发异常。
+> 
+> `findDOMNode` 不能用于函数式组件。
 
 * * *
 
@@ -110,5 +106,4 @@ When a component renders to `null` or `false`, `findDOMNode` returns `null`. Whe
 ```javascript
 ReactDOM.createPortal(child, container)
 ```
-
-Creates a portal. Portals provide a way to [render children into a DOM node that exists outside the hierarchy of the DOM component](/docs/portals.html).
+创建一个入口。入口提供了一种[将子节点渲染到 DOM 节点中的方法，该节点存在于 DOM 组件的层次结构之外](/docs/portals.html)。
