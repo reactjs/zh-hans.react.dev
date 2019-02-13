@@ -1,6 +1,6 @@
 ---
 id: dom-elements
-title: DOM Elements
+title: DOM 元素
 layout: docs
 category: Reference
 permalink: docs/dom-elements.html
@@ -14,17 +14,15 @@ redirect_from:
   - "tips/dangerously-set-inner-html.html"
 ---
 
-React implements a browser-independent DOM system for performance and cross-browser compatibility. We took the opportunity to clean up a few rough edges in browser DOM implementations.
+React 实现了一套独立于浏览器的DOM系统，兼顾了性能和跨浏览器的兼容性。我们借此机会完善了浏览器DOM实现的一些边缘情况。
 
-In React, all DOM properties and attributes (including event handlers) should be camelCased. For example, the HTML attribute `tabindex` corresponds to the attribute `tabIndex` in React. The exception is `aria-*` and `data-*` attributes, which should be lowercased. For example, you can keep `aria-label` as `aria-label`.
+在React中，所有的DOM特性和属性（包括事件处理）都应该是驼峰拼写法命名。例如，与HTML中的`tabindex`属性对应的React的属性是`tabIndex`。例外的情况是`aria-*`和`data-*`属性，一律使用小写字母命名。比如, 你依然可以用 `aria-label` 作为 `aria-label`。
 
-## Differences In Attributes {#differences-in-attributes}
-
-There are a number of attributes that work differently between React and HTML:
+## 属性的不同 {#differences-in-attributes}
+在React和HTML之间有很多属性的作用是不同的。
 
 ### checked {#checked}
-
-The `checked` attribute is supported by `<input>` components of type `checkbox` or `radio`. You can use it to set whether the component is checked. This is useful for building controlled components. `defaultChecked` is the uncontrolled equivalent, which sets whether the component is checked when it is first mounted.
+`checked`属性是由type为`checkbox`或`radio`的`<input>`组件所支持的。你可以用它来设定组件是否被选中。这对于构建控制组件很有用。与之相对的`defaultChecked`是非控制组件的属性，用来设定组件首次加载时是否被选中。
 
 ### className {#classname}
 
