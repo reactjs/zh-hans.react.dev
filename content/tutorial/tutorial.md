@@ -118,7 +118,7 @@ import './index.css';
 
 ### 我遇到困难了，谁能帮帮我！
 
-如果你遇到了任何困难，可以在 [community support resources](/community/support.html) 寻求帮助。你也可以在 [Reactiflux Chat](https://discord.gg/0ZcbPKXt5bZjGY5n) 快速求助。如果通过上述方式还是解决不了你的问题，请给我们提 issue，我们会帮助你的。
+如果你遇到了任何困难，可以去[社区支持资源](/community/support.html)看看。你也可以在 [Reactiflux Chat](https://discord.gg/0ZcbPKXt5bZjGY5n) 快速求助。如果通过上述方式还是解决不了你的问题，请给我们提 issue，我们会帮助你的。
 
 ## 概览
 
@@ -126,7 +126,7 @@ import './index.css';
 
 ### React 是什么？
 
-React 是一个采用声明式，高效而且灵活的用户界面 （UI） 库。在 React 中，你可以采用一些独立的小型代码单元（称之为“组件”）来搭建出复杂的 UI 界面。
+React 是一个声明式，高效而且灵活的用户界面 （UI） 库。React 允许你可以将一些简短、独立的代码片段组合在一起构成复杂的 UI 界面，这些代码片段被称作“组件”。
 
 React 中有不同种类的组件，我们先从 `React.Component` 的子类开始：
 
@@ -151,9 +151,9 @@ class ShoppingList extends React.Component {
 
 我们马上会讨论这些有意思的、看起来像 XML 的标签。我们通过使用组件来告诉 React 我们希望在屏幕上看到什么。当数据发生改变时，React 会高效地更新并重新渲染我们的组件。
 
-这里，ShoppingList 是一个**React 组件类**，或者说是一个**React 组件类型**。一个组件接收一些参数，我们把这些参数叫做 `props`（“props” 是 “properties” 简写），然后通过 `render` 方法返回需要展示在屏幕上的视图的嵌套结构。
+这里，ShoppingList 是一个**React 组件类**，或者说是一个**React 组件类型**。一个组件接收一些参数，我们把这些参数叫做 `props`（“props” 是 “properties” 简写），然后通过 `render` 方法返回需要展示在屏幕上的视图的层次结构。
 
-`render` 方法的返回值 *描述* 了你希望在屏幕上看到的内容。React 会根据这个描述，然后把结果展示出来。更具体地来说，`render` 返回了一个**React 元素**，这是一种轻量级的、对渲染内容的描述。大多数的 React 开发者使用了一种名为 “JSX” 的特殊语法，JSX 可以让你更轻松地书写这些结构。比如说上述代码中的 `<div />` 这种语法会被编译成 `React.createElement('div')`。因此上述的代码等同于以下代码：
+`render` 方法的返回值*描述*了你希望在屏幕上看到的内容。React 根据描述，然后把结果展示出来。更具体地来说，`render` 返回了一个**React 元素**，这是一种对渲染内容的轻量级描述。大多数的 React 开发者使用了一种名为 “JSX” 的特殊语法，JSX 可以让你更轻松地书写这些结构。语法 `<div />` 会被编译成 `React.createElement('div')`。上述的代码等同于：
 
 ```javascript
 return React.createElement('div', {className: 'shopping-list'},
@@ -166,13 +166,13 @@ return React.createElement('div', {className: 'shopping-list'},
 
 如果你对这个比较感兴趣，可以在 [API 文档](/docs/react-api.html#createelement) 中查看 `createElement()` 更详细的用法。但在接下来的教程中，我们并不会直接使用这个方法，而是继续使用 JSX。
 
-在 JSX 中你可以任意使用 JavaScript 表达式，只需要用一个大括号把表达式括起来。每一个 React 元素事实上都一个 JavaScript 对象，你可以在你的应用中把它当保存在变量中或者作为参数传递。
+在 JSX 中你可以任意使用 JavaScript 表达式，只需要用一个大括号把表达式括起来。每一个 React 元素事实上都一个 JavaScript 对象，你可以在你的程序中把它当保存在变量中或者作为参数传递。
 
-上文中的 `ShoppingList` 组件只会渲染一些内置的 DOM 组件（`<div />`、`<li />`等）。但是你也可以组合和渲染自定义的 React 组件。例如，你可以通过 `<ShoppingList />` 来表示整个购物清单组件。每个组件都是封装好的，并且可以单独进行操作，这样也就方便你像搭积木一样组合各种组件来构建复杂的 UI 界面。
+上文中的 `ShoppingList` 组件只会渲染一些内置的 DOM 组件，如`<div />`、`<li />`等。但是你也可以组合和渲染自定义的 React 组件。例如，你可以通过 `<ShoppingList />` 来表示整个购物清单组件。每个组件都是封装好的，并且可以单独运行，这样你就可以通过组合简单的组件来构建复杂的 UI 界面。
 
 ### 阅读初始代码
 
-如果你要在**浏览器**中学习该教程，在新标签页中打开 **[初始代码](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**。如果你在本地环境中学习开发该教程的内容，就在你的工程文件夹下打开 `src/index.js`（你已经在前面的 [环境准备](#环境准备) 中创建过这个文件了）。
+如果你要在**浏览器**中学习该教程，在新标签页中打开**[初始代码](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**。如果你在本地环境中学习开发该教程的内容，就在你的工程文件夹下打开 `src/index.js`（你已经在前面的[环境准备](#环境准备)中创建过这个文件了）。
 
 这些初始代码是我们要开发的小游戏的基础代码。我们已经提供了 CSS 样式，这样你只需要关注使用 React 来开发这个井字游戏了。
 
@@ -244,7 +244,7 @@ class Square extends React.Component {
 
 >注意
 >
->为了少输入代码，同时为了避免 [`this` 造成的困扰](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/) ，我们在这里使用 [箭头函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions) 来进行事件处理，如下所示：
+>为了少输入代码，同时为了避免 [`this` 造成的困扰](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/)，我们在这里使用 [箭头函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions) 来进行事件处理，如下所示：
 >
 >```javascript{4}
 >class Square extends React.Component {
@@ -327,7 +327,7 @@ class Square extends React.Component {
 
 ### 开发者工具
 
-安装 React Devtools 的 [Chrome 版](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) 或者 [Firefox 版](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) 可以让你在浏览器开发者工具中查看 React 的组件树。
+安装 React Devtools 的 [Chrome 版](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)或者 [Firefox 版](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)可以让你在浏览器开发者工具中查看 React 的组件树。
 
 <img src="../images/tutorial/devtools.png" alt="React Devtools" style="max-width: 100%">
 
@@ -350,7 +350,7 @@ class Square extends React.Component {
 
 当前，每个 Square 组件都维护了游戏的状态。我们可以把所有 9 个 Square 的值放在一个地方，这样我们就可以判断出胜者了。
 
-你可能会想着说，我们也可以在棋盘 Board 组件中收集各个格子 Square 组件当中的数据。虽然技术上来讲是可以实现的，但是代码这么写的话会让人很难理解，并且我们以后想要修改重构时也会非常困难。所以，最好的解决方式是直接将所有的 state 状态数据存储在 Board 父组件当中。之后 Board 组件可以将这些数据通过 props 传递给各个 Square 子组件， [正如上文我们把数字传递给每一个 Square 一样](#通过-props-传递数据)。
+你可能会想着说，我们也可以在棋盘 Board 组件中收集各个格子 Square 组件当中的数据。虽然技术上来讲是可以实现的，但是代码这么写的话会让人很难理解，并且我们以后想要修改重构时也会非常困难。所以，最好的解决方式是直接将所有的 state 状态数据存储在 Board 父组件当中。之后 Board 组件可以将这些数据通过 props 传递给各个 Square 子组件，[正如上文我们把数字传递给每一个 Square 一样](#通过-props-传递数据)。
 
 **当你遇到需要同时获取多个子组件数据，或者两个组件之间需要相互通讯的情况时，需要把子组件的 state 数据提升至其共同的父组件当中保存。之后父组件可以通过 props 将状态数据传递到子组件当中。这样应用当中所有组件的状态数据就能够更方便地同步共享了。**
 
@@ -414,7 +414,7 @@ Board 组件当前的 `renderSquare` 方法看起来像下面这样：
   }
 ```
 
-最开始的时候，我们依次使把 0 到 8 的值通过 prop 从 Board [向下传递](#通过-props-传递数据)，从而让它们显示出来。上一步与此不同，我们 [根据 Square 自己内部的 state](#给组件添加交互功能)，使用了 ”X“ 来代替之前的数字。因此，Square 忽略了当前从 Board 传递给它的那个 `value` prop。
+最开始的时候，我们依次使把 0 到 8 的值通过 prop 从 Board [向下传递](#通过-props-传递数据)，从而让它们显示出来。上一步与此不同，我们[根据 Square 自己内部的 state](#给组件添加交互功能)，使用了 ”X“ 来代替之前的数字。因此，Square 忽略了当前从 Board 传递给它的那个 `value` prop。
 
 让我们再一次使用 prop 的传递机制。我们通过修改 Board 来指示每一个 Square 的当前值（`'X'`, `'O'`, 或者 `null`）。我们在 Board 的构造函数中已经定义好了 `squares` 数组，这样，我们就可以通过修改 Board 的 `renderSquare` 方法来读取这些值了。
 
@@ -780,7 +780,7 @@ function calculateWinner(squares) {
 
 如果我们直接修改了 `square` 数组，实现时间旅行就会变得很棘手了。
 
-然而在每一步，我们可以使用 `slice()` 函数来创建 `squares` 数组的副本，同时把这个数组 [当作不可变对象](#为什么不可变性在 React 中非常重要)。这样我们就可以把所有 `squares` 数组的历史版本都保存下来了，然后可以在历史的步骤中随意跳转。
+然而在每一步，我们可以使用 `slice()` 函数来创建 `squares` 数组的副本，同时把这个数组[当作不可变对象](#为什么不可变性在 React 中非常重要)。这样我们就可以把所有 `squares` 数组的历史版本都保存下来了，然后可以在历史的步骤中随意跳转。
 
 我们把历史的 `squares` 数组保存在另一个名为 `history` 的数组中。`history` 数组保存了从第一步到最后一步的所有的棋盘状态。`history` 数组的结构如下所示：
 
@@ -820,7 +820,7 @@ history = [
 
 我们希望顶层 Game 组件展示出一个历史步骤的列表。这个功能需要访问 `history` 的数据，因此我们把 `history` 这个 state 放在顶层 Game 组件中。 
 
-我们把 `history` state 放在了 Game 组件中，这样就可以从它的子组件 Board 里面删除掉 `square` state 了。正如我们把 Square 组件的状态 [提升](#状态提升) 到 Board 组件一样，现在我们来把 state 从 Board 组件提升到顶层的 Game 组件里。这样，Game 组件就拥有了对 Board 组件数据的完全控制权了，除此之外，还可以让 Game 组件控制 Board 组件根据 `history` 渲染出历史步骤。
+我们把 `history` state 放在了 Game 组件中，这样就可以从它的子组件 Board 里面删除掉 `square` state 了。正如我们把 Square 组件的 state [提升](#状态提升)到 Board 组件一样，现在我们来把 state 从 Board 组件提升到顶层的 Game 组件里。这样，Game 组件就拥有了对 Board 组件数据的完全控制权了，除此之外，还可以让 Game 组件控制 Board 组件根据 `history` 渲染出历史步骤。
 
 首先，我们在 Game 组件的构造函数中设置初始 state：
 
@@ -1225,4 +1225,4 @@ class Game extends React.Component {
 5. 每当有人获胜时，高亮显示连成一线的 3 颗棋子。
 6. 当无人获胜时，显示一个平局的消息。
 
-通过这一篇教程，我们接触了 React 中的一些概念，比如 React 元素、React 组件、props，还有 state。更多关于这些概念的细节的解释，参考 [文档的其他部分](/docs/hello-world.html)。了解更多关于组件定义的内容，参考[`React.Component` API reference](/docs/react-component.html)。
+通过这一篇教程，我们接触了 React 中的一些概念，比如 React 元素、React 组件、props，还有 state。更多关于这些概念的细节的解释，参考[文档的其他部分](/docs/hello-world.html)。了解更多关于组件定义的内容，参考[`React.Component` API reference](/docs/react-component.html)。
