@@ -122,7 +122,7 @@ const MyContext = React.createContext(defaultValue);
 ### `Context.Provider` {#contextprovider}
 
 ```js
-<MyContext.Provider value={/* 一些值 */}>
+<MyContext.Provider value={/* 某个值 */}>
 ```
 
 每一个 Context 对象都会返回一个 Provider React 组件，它允许要调用的组件（consumer）订阅 context 的变化。
