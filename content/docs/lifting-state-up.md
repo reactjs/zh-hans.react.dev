@@ -13,7 +13,7 @@ redirect_from:
 
 在本节中，我们将创建一个用于计算水在给定温度下是否会沸腾的温度计算器。
 
-我们将从一个名为 `BoilingVerdict` 的组件开始，它接受 `celsius` 温度作为一个属性，并且打印出这个温度是否足以让水沸腾。
+我们将从一个名为 `BoilingVerdict` 的组件开始，它接受 `celsius` 温度作为一个 prop，并且打印出这个温度是否足以让水沸腾。
 
 ```js{3,5}
 function BoilingVerdict(props) {
