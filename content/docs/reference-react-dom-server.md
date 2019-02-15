@@ -6,7 +6,7 @@ category: Reference
 permalink: docs/react-dom-server.html
 ---
 
-The `ReactDOMServer` object enables you to render components to static markup. Typically, it's used on a Node server:
+`ReactDOMServer` 类允许你将组件渲染成静态标记。通常，它被使用在 Node 服务端上：
 
 ```js
 // ES modules
@@ -15,21 +15,21 @@ import ReactDOMServer from 'react-dom/server';
 var ReactDOMServer = require('react-dom/server');
 ```
 
-## Overview {#overview}
+## 概览 {#overview}
 
-The following methods can be used in both the server and browser environments:
+下面的方法可以被使用在服务端和浏览器环境。
 
 - [`renderToString()`](#rendertostring)
 - [`renderToStaticMarkup()`](#rendertostaticmarkup)
 
-These additional methods depend on a package (`stream`) that is **only available on the server**, and won't work in the browser.
+下面这些附加的方法依赖一个**只能在服务端使用**的 package（`stream`）。它们在浏览器中不起作用。
 
 - [`renderToNodeStream()`](#rendertonodestream)
 - [`renderToStaticNodeStream()`](#rendertostaticnodestream)
 
 * * *
 
-## Reference {#reference}
+## 参考 {#reference}
 
 ### `renderToString()` {#rendertostring}
 
@@ -37,9 +37,9 @@ These additional methods depend on a package (`stream`) that is **only available
 ReactDOMServer.renderToString(element)
 ```
 
-Render a React element to its initial HTML. React will return an HTML string. You can use this method to generate HTML on the server and send the markup down on the initial request for faster page loads and to allow search engines to crawl your pages for SEO purposes.
+将一个 React 元素渲染成其初始 HTML。React 会返回一个 HTML 字符串。你可以使用本方法在服务器上生成 HTML，并在初始请求时将标记下发，以加快页面加载速度，并允许搜索引擎抓取你的页面以达到 SEO 优化的目的。
 
-If you call [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
+如果你在一个已经有了服务端渲染标记的节点上调用 [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) 方法，React 将会保留该节点并仅作绑定事件处理，从而让你有一个非常高性能的首次加载体验。
 
 * * *
 
@@ -49,9 +49,9 @@ If you call [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) on a node that 
 ReactDOMServer.renderToStaticMarkup(element)
 ```
 
-Similar to [`renderToString`](#rendertostring), except this doesn't create extra DOM attributes that React uses internally, such as `data-reactroot`. This is useful if you want to use React as a simple static page generator, as stripping away the extra attributes can save some bytes.
+本方法与 [`renderToString`](#rendertostring) 相似，除了本方法不会创建在 React 内部使用的额外 DOM 属性，例如 `data-reactroot`。如果你希望把 React 当作一个静态页面生成器来使用，本方法会非常有用，因为除去额外的属性可以节省一些字节。
 
-If you plan to use React on the client to make the markup interactive, do not use this method. Instead, use [`renderToString`](#rendertostring) on the server and [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) on the client.
+如果你计划在前端使用 React 以使得标记可交互，不要使用本方法。作为代替，在服务端上使用 [`renderToString`](#rendertostring) 和在前端上使用 [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate)。
 
 * * *
 
@@ -61,15 +61,15 @@ If you plan to use React on the client to make the markup interactive, do not us
 ReactDOMServer.renderToNodeStream(element)
 ```
 
-Render a React element to its initial HTML. Returns a [Readable stream](https://nodejs.org/api/stream.html#stream_readable_streams) that outputs an HTML string. The HTML output by this stream is exactly equal to what [`ReactDOMServer.renderToString`](#rendertostring) would return. You can use this method to generate HTML on the server and send the markup down on the initial request for faster page loads and to allow search engines to crawl your pages for SEO purposes.
+将一个 React 元素渲染成其初始 HTML。返回一个可输出 HTML 字符串的 [可读流](https://nodejs.org/api/stream.html#stream_readable_streams)。通过可读流输出的 HTML，完全等同于 [`ReactDOMServer.renderToString`](#rendertostring) 返回的 HTML。你可以使用本方法在服务器上生成 HTML，并在初始请求时将标记下发，以加快页面加载速度，并允许搜索引擎抓取你的页面以达到 SEO 优化的目的。
 
-If you call [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
+如果你在一个已经有了服务端渲染标记的节点上调用 [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) 方法，React 将会保留该节点并仅作绑定事件处理，从而让你有一个非常高性能的首次加载体验。
 
-> Note:
+> 注意:
 >
-> Server-only. This API is not available in the browser.
->
-> The stream returned from this method will return a byte stream encoded in utf-8. If you need a stream in another encoding, take a look at a project like [iconv-lite](https://www.npmjs.com/package/iconv-lite), which provides transform streams for transcoding text.
+> 这个 API 仅允许在服务端使用。不允许在浏览器使用。
+> 通过本方法返回的流会返回一个由 utf-8 编码的字节流。如果你需要另一种编码的流，请查看像 [iconv-lite](https://www.npmjs.com/package/iconv-lite) 这样的项目，它为转换文本提供了转换流。
+
 
 * * *
 
@@ -79,14 +79,13 @@ If you call [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) on a node that 
 ReactDOMServer.renderToStaticNodeStream(element)
 ```
 
-Similar to [`renderToNodeStream`](#rendertonodestream), except this doesn't create extra DOM attributes that React uses internally, such as `data-reactroot`. This is useful if you want to use React as a simple static page generator, as stripping away the extra attributes can save some bytes.
+本方法与 [`renderToNodeStream`](#rendertonodestream) 相似，除了本方法不会创建在 React 内部使用的额外 DOM 属性，例如 `data-reactroot`。如果你希望把 React 当作一个静态页面生成器来使用，本方法会非常有用，因为除去额外的属性可以节省一些字节。
 
-The HTML output by this stream is exactly equal to what [`ReactDOMServer.renderToStaticMarkup`](#rendertostaticmarkup) would return.
+通过可读流输出的 HTML，完全等同于 [`ReactDOMServer.renderToString`](#rendertostring) 返回的 HTML。
 
-If you plan to use React on the client to make the markup interactive, do not use this method. Instead, use [`renderToNodeStream`](#rendertonodestream) on the server and [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) on the client.
+如果你计划在前端使用 React 以使得标记可交互，不要使用本方法。作为代替，在服务端上使用 [`renderToNodeStream`](#rendertonodestre上) 和在前端上使用 [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate)。
 
-> Note:
+> 注意:
 >
-> Server-only. This API is not available in the browser.
->
-> The stream returned from this method will return a byte stream encoded in utf-8. If you need a stream in another encoding, take a look at a project like [iconv-lite](https://www.npmjs.com/package/iconv-lite), which provides transform streams for transcoding text.
+> 这个 API 仅允许在服务端使用。不允许在浏览器使用。
+> 通过本方法返回的流会返回一个由 utf-8 编码的字节流。如果你需要另一种编码的流，请查看像 [iconv-lite](https://www.npmjs.com/package/iconv-lite) 这样的项目，它为转换文本提供了转换流。
