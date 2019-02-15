@@ -103,9 +103,9 @@ function Page(props) {
 }
 ```
 
-这种模式足够覆盖很多场景了，在这些场景下你需要将子组件（child）和直接关联的父组件（immediate parents）解耦。如果子组件（child）需要在渲染前和父组件进行一些交流，你可以进一步使用 [render props](/docs/render-props.html)。
+这种模式足够覆盖很多场景了，在这些场景下你需要将子组件和直接关联的父组件解耦。如果子组件需要在渲染前和父组件进行一些交流，你可以进一步使用 [render props](/docs/render-props.html)。
 
-但是，有的时候在组件树中很多不同层级的组件需要访问同样的一批数据。Context 能让你将这些数据在组件树中“广泛传播（broadcast）”，所有的组件都能访问到这些数据，也能访问到后续的数据更新。使用 context 的通用的场景包括管理当前的 locale，theme，或者一些缓存数据，这比替代方案要简单的多。
+但是，有的时候在组件树中很多不同层级的组件需要访问同样的一批数据。Context 能让你将这些数据向组件树下所有的组件进行“广播”，所有的组件都能访问到这些数据，也能访问到后续的数据更新。使用 context 的通用的场景包括管理当前的 locale，theme，或者一些缓存数据，这比替代方案要简单的多。
 
 ## API {#api}
 
@@ -115,7 +115,7 @@ function Page(props) {
 const MyContext = React.createContext(defaultValue);
 ```
 
-创建一个 Context 对象。当 React 渲染一个订阅了这个 Context 对象的组件（consumer），这个组件会从组件树中离自身最近的那个匹配的 `Provider` 中读取到当前的 context 值。
+创建一个 Context 对象。当 React 渲染一个订阅了这个 Context 对象的组件，这个组件会从组件树中离自身最近的那个匹配的 `Provider` 中读取到当前的 context 值。
 
 `defaultValue` 参数**只**在组件没有在上层组件树中找到匹配的 Provider 情况下会有用。这有助于在不封装它们的情况下对组件进行测试。注意：传递 `undefined` 作为 Provider 值的情况下，调用组件（consumer）不会使用 `defaultValue` 值。
 
