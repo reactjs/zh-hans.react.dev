@@ -56,13 +56,13 @@ class Calculator extends React.Component {
 }
 ```
 
-[**在 CodePen 上试试**](https://codepen.io/gaearon/pen/ZXeOBm?editors=0010)
+[**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/ZXeOBm?editors=0010)
 
 ## 添加第二个输入框 {#adding-a-second-input}
 
 现在我们有了新的需求，在已有摄氏温度输入框的基础上，我们提供华氏度的输入框，并保持两个输入框的数据同步。
 
-我们先从 `Calculator` 组件中抽离出 `TemperatureInput` 组件，然后为其添加一个新的 `scale`属性，它可以是 `"c"` 或是 `"f"`：
+我们先从 `Calculator` 组件中抽离出 `TemperatureInput` 组件，然后为其添加一个新的 `scale` prop，它可以是 `"c"` 或是 `"f"`：
 
 ```js{1-4,19,22}
 const scaleNames = {
@@ -110,7 +110,7 @@ class Calculator extends React.Component {
 }
 ```
 
-[**在 CodePen 上试试**](https://codepen.io/gaearon/pen/jGBryx?editors=0010)
+[**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/jGBryx?editors=0010)
 
 虽然我们现在有了两个输入框，但当你在其中一个键入温度时，另一个并不会更新，这便与两个输入框保持同步的需求相悖了。
 
@@ -186,7 +186,7 @@ class TemperatureInput extends React.Component {
     // ...
 ```
 
-我们知道 [props 是只读的](/docs/components-and-props.html#props-are-read-only)。当 `temperature` 在 `TemperatureInput` 组件本地的 state 中时，组件只能通过调用 `this.setState()` 去修改它。然而现在 `temperature` 来源于父组件并以属性的方式传入，`TemperatureInput` 组件也就对它已经没有任何的控制权了。
+我们知道 [props 是只读的](/docs/components-and-props.html#props-are-read-only)。当 `temperature` 在 `TemperatureInput` 组件本地的 state 中时，组件只能通过调用 `this.setState()` 去修改它。然而现在 `temperature` 来源于父组件并通过 prop 形式传入，`TemperatureInput` 组件也就对它已经没有任何的控制权了。
 
 在 React 中，这个问题通常是通过让组件“受控”来解决的。与 DOM 中的 `<input>` 接受 `value` 和 `onChange` 一样，自定义的 `TemperatureInput` 组件接受 `temperature` 和 `onTemperatureChange` 这两个来自父组件 `Calculator` 的 props。
 
@@ -201,9 +201,9 @@ class TemperatureInput extends React.Component {
 
 >注意：
 >
->自定义组件中的 `temperature` 和 `onTemperatureChange` 这两个属性的命名是没有特殊含义的。我们可以将它们叫做其它任意的名字，例如，把它们叫做 `value` 和 `onChange` 就是一个常见的命名约定。
+>自定义组件中的 `temperature` 和 `onTemperatureChange` 这两个 prop 的命名是没有特殊含义的。我们可以将它们叫做其它任意的名字，例如，把它们叫做 `value` 和 `onChange` 就是一个常见的命名约定。
 
-与 `temperature` 属性一起由父组件 `Calculator` 提供的还有 `onTemperatureChange` 属性。它通过修改父组件本地的 state 来处理数据的变化，进而使用新的数值重新渲染两个输入框。我们很快就会看到 `Calculator` 组件的新实现。
+与 `temperature` 这个 prop 一起由父组件 `Calculator` 提供的还有 `onTemperatureChange` 这个 prop。它通过修改父组件本地的 state 来处理数据的变化，进而使用新的数值重新渲染两个输入框。我们很快就会看到 `Calculator` 组件的新实现。
 
 在深入研究 `Calculator` 组件的变化之前，让我们回顾一下 `TemperatureInput` 组件的变化。我们将组件自身的 state 移除，通过使用 `this.props.temperature` 替代 `this.state.temperature` 来读取温度数据。当我们想要响应数据改变时，我们通过调用 `Calculator` 组件提供的 `this.props.onTemperatureChange()` 而不是之前的 `this.setState()`。
 
@@ -236,7 +236,7 @@ class TemperatureInput extends React.Component {
 
 我们将会把当前输入的 `temperature` 和 `scale` 保存在组件本地的 state 中，这个 state 就是从两个输入框组件中“提升”得来的，并且它将用作两个输入框组件的同一“数据源”。这也就是我们为了渲染两个输入框组件所需要的所有数据的最小表示。
 
-例如，当我们在摄氏度输入框中键入37时，`Calculator` 组件中的 state 将会是：
+例如，当我们在摄氏度输入框中键入 37 时，`Calculator` 组件中的 state 将会是：
 
 ```js
 {
@@ -299,7 +299,7 @@ class Calculator extends React.Component {
 }
 ```
 
-[**在 CodePen 上试试**](https://codepen.io/gaearon/pen/WZpxpz?editors=0010)
+[**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/WZpxpz?editors=0010)
 
 现在无论你编辑哪个输入框中的内容，`Calculator` 组件中的 `this.state.temperature` 和 `this.state.scale` 均会被更新。其中一个输入框保留用户的输入并取值，另一个输入框始终基于这个值显示转换后的结果。
 
