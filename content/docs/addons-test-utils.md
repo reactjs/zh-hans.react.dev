@@ -15,12 +15,12 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
 
 ## 概述
 
-`ReactTestUtils` 可搭配你所选的测试框架，轻松实现 React 组件测试。在 Facebook 内部，我们使用 [Jest](https://facebook.github.io/jest/) 进行无压力 JavaScript 测试。你可以从 Jest 官网的 [React Tutorial](http://facebook.github.io/jest/docs/en/tutorial-react.html#content) 中了解如何开始使用它。
+`ReactTestUtils` 可搭配你所选的测试框架，轻松实现 React 组件测试。在 Facebook 内部，我们使用 [Jest](https://facebook.github.io/jest/) 来轻松实现 JavaScript 测试。你可以从 Jest 官网的 [React Tutorial](http://facebook.github.io/jest/docs/en/tutorial-react.html#content) 中了解如何开始使用它。
 
 > 注意：
 >
 > Airbnb 发布了一款叫作 Enzyme 的测试工具，通过它能够轻松对 React 组件的输出进行断言、操控和遍历。如果你需要决定一款和 Jest 或者其他测试运行器搭配使用单元测试工具，值得看一下：[http://airbnb.io/enzyme/](http://airbnb.io/enzyme/)
-> 
+>
 > 另外，这里还有一款叫做 react-testing-library 的测试工具，能轻松像终端用户使用一样写测试用例，并且能与任何一款测试运行器配合工作：[https://git.io/react-testing-library](https://git.io/react-testing-library)
 
  - [`Simulate`](#simulate)
@@ -43,7 +43,7 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
 
 ## 浅层渲染
 
-当我们为 React 编写单元测试时，浅层渲染非常有用。浅层渲染能让你渲染一个组件时“只渲染一层”，然后断言组件渲染函数返回的内容，不用担心子组件的渲染行为，这样没有组件实例化和真正的渲染。这种情况也不需要 DOM。
+当我们为 React 编写单元测试时，浅层渲染非常有用。浅层渲染能使得组件渲染时”只渲染一层“，断言组件渲染函数所返回的内容，无需担心触发子组件的行为，因为没有真正地进行组件实例化和渲染。这种情况也不需要 DOM。
 
 > 注意：
 > 浅层渲染的方法被移动到了 `react-test-renderer/shallow`。<br>
@@ -62,7 +62,7 @@ Simulate.{eventName}(
 
 使用可选的 `eventData` 事件数据来模拟在 DOM 节点上触发一个事件。
 
-`Simulate` 有对应的方法来支持 [React 支持的所有事件](/docs/events.html#supported-events).
+[React 所支持的所有事件](/docs/events.html#supported-events) 在 `Simulate` 中都有对应的方法.
 
 **点击一个元素**
 
@@ -111,13 +111,13 @@ mockComponent(
 )
 ```
 
-将一个模拟组件模块传递给这个方法，使用方法来扩充它，使它可以用作一个虚拟 React 组件。与通常的渲染不同，组件将变成一个简单的 `<div>` (如果提供了 `mockTagName` 则是其他标签)，包含任何提供的子级。
+将模拟组件模块传入这个方法后，React 内部会使用有效的方法填充该模块，使其成为虚拟的 React 组件。与通常的渲染不同，组件将变成一个简单的 `<div>` (如果提供了 `mockTagName` 则是其他标签)，包含任何提供的子级。
 
 > 注意：
 >
 > `mockComponent()` 是一个过时的 API，我们推荐使用[浅层渲染](/docs/test-utils.html#shallow-rendering)或者 [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) 来代替。
 
-* * 
+* * *
 
 ### `isElement()`
 
