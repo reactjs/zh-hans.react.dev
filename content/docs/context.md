@@ -81,7 +81,7 @@ function Page(props) {
 
 这种对组件的*控制反转*减少了在你的应用中要传递的 props 数量，这在很多场景下会使得你的代码更加干净，使你对根组件有更多的把控。但是，这并不适用于每一个场景：这种将逻辑提升到组件树的更高层次来处理，会使得这些高层组件变得更复杂，并且会强行将低层组件适应这样的形式，这可能不会是你想要的。
 
-而且你的组件并不限制于接收单个子组件（child）。你可能会传递多个子组件（children），甚至会为这些子组件（children）封装多个单独的“接口（slots）”，[正如这里的文档所列举的](/docs/composition-vs-inheritance.html#containment)
+而且你的组件并不限制于接收单个子组件。你可能会传递多个子组件，甚至会为这些子组件（children）封装多个单独的“接口（slots）”，[正如这里的文档所列举的](/docs/composition-vs-inheritance.html#containment)
 
 ```js
 function Page(props) {
