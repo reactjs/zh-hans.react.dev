@@ -194,7 +194,7 @@ class MyClass extends React.Component {
 
 > 注意
 > 
-> 想要了解更多关于'函数作为子元素（function as a child）'模式，见 [render props](/docs/render-props.html)。
+> 想要了解更多关于“函数作为子元素（function as a child）”模式，见 [render props](/docs/render-props.html)。
 
 ## 案例 {#examples}
 
@@ -246,6 +246,7 @@ class MyClass extends React.Component {
 ## 废弃 API {#legacy-api}
 
 > 注意
+>
 > 先前 React 使用实验性的 context API运行，旧的API将会在所有16.x版本中得到支持，但用到它的应用应该迁移到新版本。废弃的API将在未来的 React 版本中被移除。阅读 [废弃的 context 文档](/docs/legacy-context.html) 了解更多。
 
  
