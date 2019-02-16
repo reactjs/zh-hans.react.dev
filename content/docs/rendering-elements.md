@@ -44,7 +44,7 @@ const element = <h1>Hello, world</h1>;
 
 ## 更新已渲染的元素 {#updating-the-rendered-element}
 
-React 元素是[不可变对象](https://zh.wikipedia.org/wiki/%E4%B8%8D%E5%8F%AF%E8%AE%8A%E7%89%A9%E4%BB%B6)。一旦被创建，你就无法更改它的子元素或者属性。一个元素就像电影的单帧：它代表了某个特定时刻的 UI。
+React 元素是[不可变对象](https://en.wikipedia.org/wiki/Immutable_object)。一旦被创建，你就无法更改它的子元素或者属性。一个元素就像电影的单帧：它代表了某个特定时刻的 UI。
 
 根据我们已有的知识，更新 UI 唯一的方式是创建一个全新的元素，并将其传入 `ReactDOM.render()`。
 
@@ -54,7 +54,7 @@ React 元素是[不可变对象](https://zh.wikipedia.org/wiki/%E4%B8%8D%E5%8F%A
 
 [](codepen://rendering-elements/update-rendered-element)
 
-这个例子会在 [`setInterval()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setInterval) 回调函数，每秒都调用 `ReactDOM.render()`。
+这个例子会在 [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) 回调函数，每秒都调用 `ReactDOM.render()`。
 
 >**注意：**
 >
