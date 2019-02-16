@@ -180,7 +180,6 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
               paddingTop: 15,
             }}>
             Copyright © 2019 Facebook Inc.
-<<<<<<< HEAD
           </p>
           <p
             css={{
@@ -188,8 +187,6 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
               paddingTop: 15,
             }}>
             <a href="https://docschina.org/" target="_blank">印记中文</a>
-=======
->>>>>>> 99e97c33ae1a12d65c872361250f3ac92b043f38
           </p>
         </section>
       </div>
