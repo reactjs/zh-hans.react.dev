@@ -1,39 +1,40 @@
 ---
-title: Unknown Prop Warning
+title: 未知的 Prop 警告
 layout: single
 permalink: warnings/unknown-prop.html
 ---
-The unknown-prop warning will fire if you attempt to render a DOM element with a prop that is not recognized by React as a legal DOM attribute/property. You should ensure that your DOM elements do not have spurious props floating around.
 
-There are a couple of likely reasons this warning could be appearing:
+unknown-prop 警告出现在：当你试图用 React 无法识别为合法 DOM 属性（attribute/property）的一个 prop 渲染 DOM 元素的时候。你应该确保你的那些 DOM 元素中没有这样失效的 props。
 
-1. Are you using `{...this.props}` or `cloneElement(element, this.props)`? Your component is transferring its own props directly to a child element (eg. [transferring props](/docs/transferring-props.html)). When transferring props to a child component, you should ensure that you are not accidentally forwarding props that were intended to be interpreted by the parent component.
+这个警告的出现有几种可能的原因：
 
-2. You are using a non-standard DOM attribute on a native DOM node, perhaps to represent custom data. If you are trying to attach custom data to a standard DOM element, consider using a custom data attribute as described [on MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes).
+1. 你使用了 `{...this.props}` 或者 `cloneElement(element, this.props)` 吗？你的组件会直接把它自己的 props 传递给子元素（例如 [传递 props](/docs/transferring-props.html))。将 props 传递给子组件时，你应该确保不会意外地转发要由父组件解释的 props。
 
-3. React does not yet recognize the attribute you specified. This will likely be fixed in a future version of React. However, React currently strips all unknown attributes, so specifying them in your React app will not cause them to be rendered.
+2. 你在原生 DOM 节点上使用的是非标准的 DOM 属性，或许是用来表示自定义数据。如果你想把自定义数据附加到标准 DOM 元素上，请考虑使用自定义的 data 属性，描述参考 [MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes)。
 
-4. You are using a React component without an upper case. React interprets it as a DOM tag because [React JSX transform uses the upper vs. lower case convention to distinguish between user-defined components and DOM tags](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized).
+3. React 还不能识别你指定的属性。这可能会在 React 的未来版本中修复。不过，当前的 React 会去除所有未知的属性，所以在你的 React 应用中指定它们，它们也不会被渲染。
+
+4. 你在使用 React 组件但是没有使用大写，React 会将其解释为 DOM 标签，这是因为 [React JSX 依次使用大写和小写的约定来区分用户定义的组件和 DOM 标签](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized)。
 
 ---
 
-To fix this, composite components should "consume" any prop that is intended for the composite component and not intended for the child component. Example:
+要解决这个问题，组合组件应该“消耗”任何用于复合组件的 prop，而不要用于子组件。例如：
 
-**Bad:** Unexpected `layout` prop is forwarded to the `div` tag.
+**糟糕的：** `layout` prop 意外转发给了 `div` 标签。
 
 ```js
 function MyDiv(props) {
   if (props.layout === 'horizontal') {
-    // BAD! Because you know for sure "layout" is not a prop that <div> understands.
+    // 糟糕的！ 因为你清楚地知道 "layout" 不应该是被 <div> 了解的 prop。
     return <div {...props} style={getHorizontalStyle()} />
   } else {
-    // BAD! Because you know for sure "layout" is not a prop that <div> understands.
+    // 糟糕的！ 因为你清楚地知道 "layout" 不应该是被 <div> 了解的 prop。
     return <div {...props} style={getVerticalStyle()} />
   }
 }
 ```
 
-**Good:** The spread operator can be used to pull variables off props, and put the remaining props into a variable.
+**良好的：** 剩余运算符能用于从 props 中剥离变量，并将剩余的 props 放到一个新变量中。
 
 ```js
 function MyDiv(props) {
@@ -46,7 +47,7 @@ function MyDiv(props) {
 }
 ```
 
-**Good:** You can also assign the props to a new object and delete the keys that you're using from the new object. Be sure not to delete the props from the original `this.props` object, since that object should be considered immutable.
+**良好的：** 你也可以将 props 分配给一个新的对象，并从新对象中删除你正在使用的属性。注意不要删除原始的 `this.props` 对象中的 props，因为这个对象理应被认为是不可变的（immutable）。
 
 ```js
 function MyDiv(props) {
