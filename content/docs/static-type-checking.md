@@ -202,7 +202,7 @@ yarn add --dev typescript
 npm install --save-dev typescript
 ```
 
-恭喜！你已将最新版本的 TypeScript 安装到项目中。安装 TypeScript 后我们就可以使用 `tsc` 命令。在配置编译器之前，让我们将 `tsc` 添加到 `package.json` 中的 “scripts” 部分：
+恭喜！你已将最新版本的 TypeScript 安装到项目中。安装 TypeScript 后我们就可以使用 `tsc` 命令。在配置编译器之前，让我们将 `tsc` 添加到 `package.json` 中的 "scripts" 部分：
 
 ```js{4}
 {
