@@ -14,25 +14,23 @@ redirect_from:
   - "tips/dangerously-set-inner-html.html"
 ---
 
-React 实现了一套独立于浏览器的DOM系统，兼顾了性能和跨浏览器的兼容性。我们借此机会完善了浏览器DOM实现的一些边缘情况。
+React 实现了一套独立于浏览器的 DOM 系统，兼顾了性能和跨浏览器的兼容性。我们借此机会完善了浏览器 DOM 实现的一些边缘情况。
 
-在React中，所有的DOM特性和属性（包括事件处理）都应该是驼峰拼写法命名。例如，与HTML中的`tabindex`属性对应的React的属性是`tabIndex`。例外的情况是`aria-*`和`data-*`属性，一律使用小写字母命名。比如, 你依然可以用 `aria-label` 作为 `aria-label`。
+在 React 中，所有的 DOM 特性和属性（包括事件处理）都应该是驼峰拼写法命名。例如，与 HTML 中的 `tabindex` 属性对应的 React 的属性是 `tabIndex` 。例外的情况是 `aria-*` 和 `data-*` 属性，一律使用小写字母命名。比如, 你依然可以用 `aria-label` 作为 `aria-label`。
 
 ## 属性的不同 {#differences-in-attributes}
-在React和HTML之间有很多属性的作用是不同的。
+在 React 和 HTML 之间有很多属性的作用是不同的。
 
 ### checked {#checked}
-`checked`属性是由type为`checkbox`或`radio`的`<input>`组件所支持的。你可以用它来设定组件是否被选中。这对于构建控制组件很有用。与之相对的`defaultChecked`是非控制组件的属性，用来设定组件首次加载时是否被选中。
+`checked` 属性是由 type 为 `checkbox` 或 `radio` 的 `<input>` 组件所支持的。你可以用它来设定组件是否被选中。这对于构建控制组件很有用。与之相对的 `defaultChecked` 是非控制组件的属性，用来设定组件首次装载时是否被选中。
 
 ### className {#classname}
+用 `className` 属性来指定一个 CSS class，这个特性适用于所有的常规 DOM 节点和 SVG 元素，比如 `<div>`，`<a>` 和其它的标签。
 
-To specify a CSS class, use the `className` attribute. This applies to all regular DOM and SVG elements like `<div>`, `<a>`, and others.
-
-If you use React with Web Components (which is uncommon), use the `class` attribute instead.
+如果你在 React 中使用 Web 组件（这是一种不常见的使用方式），请使用 class 属性来代替。
 
 ### dangerouslySetInnerHTML {#dangerouslysetinnerhtml}
-
-`dangerouslySetInnerHTML` is React's replacement for using `innerHTML` in the browser DOM. In general, setting HTML from code is risky because it's easy to inadvertently expose your users to a [cross-site scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) attack. So, you can set HTML directly from React, but you have to type out `dangerouslySetInnerHTML` and pass an object with a `__html` key, to remind yourself that it's dangerous. For example:
+`dangerouslySetInnerHTML` 是 React 提供给浏览器 DOM 中 `innerHTML` 方法的一种替换方案。通常来讲，使用代码直接设置 HTML 文档内容是存在风险的，因为这样很容易把你的用户信息暴露，且不经意间就会受到[跨站脚本(XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting)攻击。所以，虽然可以直接在 React 中设置 HTML 的内容，但是你要使用 `dangerouslySetInnerHTML` 并且向其传递一个含有 `__html` 为 key 的对象，以此来提醒你这样做是很危险。例如：
 
 ```js
 function createMarkup() {
@@ -45,24 +43,20 @@ function MyComponent() {
 ```
 
 ### htmlFor {#htmlfor}
-
-Since `for` is a reserved word in JavaScript, React elements use `htmlFor` instead.
+因为 `for` 在 Javascript 中是一个关键字，所以 React 元素使用 `htmlFor` 代替。
 
 ### onChange {#onchange}
-
-The `onChange` event behaves as you would expect it to: whenever a form field is changed, this event is fired. We intentionally do not use the existing browser behavior because `onChange` is a misnomer for its behavior and React relies on this event to handle user input in real time.
+`onChange` 事件的行为就如你所想的：无论一个表单内容何时发生变化，这个事件都会被触发。我们故意不使用浏览器已有的默认行为，就是因为 `onChange` 在浏览器中的行为和名称不相称，而 React 是依靠这个事件实时处理用户输入。
 
 ### selected {#selected}
-
-The `selected` attribute is supported by `<option>` components. You can use it to set whether the component is selected. This is useful for building controlled components.
+`selected` 属性被 `<option>` 组件所支持。你可以使用该属性设置组件是否被选择。这对构建控制组件很有用。
 
 ### style {#style}
-
->Note
+>注
 >
->Some examples in the documentation use `style` for convenience, but **using the `style` attribute as the primary means of styling elements is generally not recommended.** In most cases, [`className`](#classname) should be used to reference classes defined in an external CSS stylesheet. `style` is most often used in React applications to add dynamically-computed styles at render time. See also [FAQ: Styling and CSS](/docs/faq-styling.html).
+>在文档中，为了方便，一些例子直接使用了 `style` ，但是**一般不推荐使用 `style` 属性作为样式化元素的主要方式**。在多数情况下，[`className`](#classname) 应用于指向对应的外部 CSS 样式文档定义的 class 。`style` 在 React 应用中更多的用于在渲染过程中添加动态计算的样式。另请参阅：[问与答: Styling 和 CSS](/docs/faq-styling.html)。
 
-The `style` attribute accepts a JavaScript object with camelCased properties rather than a CSS string. This is consistent with the DOM `style` JavaScript property, is more efficient, and prevents XSS security holes. For example:
+`style` 属性接受一个 JavaScript 对象，其对象接受用驼峰拼写法命名的字符串，而不是 CSS 字符串。这和 DOM 中 `style` JavaScript 属性是一致的，同时也是更高效的，而且能够防止跨站脚本(XSS)的安全漏洞。例如：
 
 ```js
 const divStyle = {
@@ -75,7 +69,8 @@ function HelloWorldComponent() {
 }
 ```
 
-Note that styles are not autoprefixed. To support older browsers, you need to supply corresponding style properties:
+注意样式不会自动补齐前缀。为了支持旧的浏览器，你需要手动补充相对应的样式属性：
+
 
 ```js
 const divStyle = {
@@ -88,9 +83,9 @@ function ComponentWithTransition() {
 }
 ```
 
-Style keys are camelCased in order to be consistent with accessing the properties on DOM nodes from JS (e.g. `node.style.backgroundImage`). Vendor prefixes [other than `ms`](http://www.andismith.com/blog/2012/02/modernizr-prefixed/) should begin with a capital letter. This is why `WebkitTransition` has an uppercase "W".
+样式中关键字使用驼峰拼写法命名是为了与从 JS 中访问 DOM 节点的属性保持一致性（例如 `node.style.backgroundImage` ）。浏览器引擎前缀 [除了 `ms` ](http://www.andismith.com/blog/2012/02/modernizr-prefixed/) 都应该以大写字母开头。这就是为什么 `WebkitTransition` 有一个大写字母 ”W”。
 
-React will automatically append a "px" suffix to certain numeric inline style properties. If you want to use units other than "px", specify the value as a string with the desired unit. For example:
+React 将自动添加一个 ”px” 后缀到某些特定数字的内联样式属性。如果你希望使用不同于 ”px” 的其他单位，那么设置值则是该数字与你想要设置的单位组成一个字符串。例如：
 
 ```js
 // Result style: '10px'
@@ -103,28 +98,26 @@ React will automatically append a "px" suffix to certain numeric inline style pr
   Hello World!
 </div>
 ```
-
-Not all style properties are converted to pixel strings though. Certain ones remain unitless (eg `zoom`, `order`, `flex`). A complete list of unitless properties can be seen [here](https://github.com/facebook/react/blob/4131af3e4bf52f3a003537ec95a1655147c81270/src/renderers/dom/shared/CSSProperty.js#L15-L59).
+尽管不是所有样式属性都会被转化为像素字符串，但某些个样式属性是会保持无单位(例如 `zoom` , `order`, `flex`)。完整的无单位的属性列表在[这里](https://github.com/facebook/react/blob/4131af3e4bf52f3a003537ec95a1655147c81270/src/renderers/dom/shared/CSSProperty.js#L15-L59)。
 
 ### suppressContentEditableWarning {#suppresscontenteditablewarning}
-
-Normally, there is a warning when an element with children is also marked as `contentEditable`, because it won't work. This attribute suppresses that warning. Don't use this unless you are building a library like [Draft.js](https://facebook.github.io/draft-js/) that manages `contentEditable` manually.
+一般来说，当一个拥有子节点的元素被标记为 `contentEditable` 时，React 会发出一个警告，因为这是无效的。这个属性会触发这样的警告信息。不要使用这个属性，除非你要构建一个类似 [Draft.js](https://facebook.github.io/draft-js/) 这样需要手动管理 `contentEditable` 属性的库。
 
 ### suppressHydrationWarning {#suppresshydrationwarning}
 
-If you use server-side React rendering, normally there is a warning when the server and the client render different content. However, in some rare cases, it is very hard or impossible to guarantee an exact match. For example, timestamps are expected to differ on the server and on the client.
+如果你使用服务端 React 渲染，通常来说，当服务端和客户端渲染不同的内容时，就会给出一个警告信息。但是，在一些极少数的情况下，很难甚至于不可能保证内容绝对的一致。例如，在服务端和客户端上，时间戳通常是不一样的。 
 
-If you set `suppressHydrationWarning` to `true`, React will not warn you about mismatches in the attributes and the content of that element. It only works one level deep, and is intended to be used as an escape hatch. Don't overuse it. You can read more about hydration in the [`ReactDOM.hydrate()` documentation](/docs/react-dom.html#hydrate).
+如果设置 `suppressHydrationWarning` 为 `true`，React 将不会警告你属性和元素的内容不一致。它只对元素一层深度起作用，并且意指在特殊情况下才使用的。不要过度使用它。你可以在 [`ReactDOM.hydrate()` 文档](/docs/react-dom.html#hydrate) 里读到更多关于 hydration 的信息。
 
 ### value {#value}
 
-The `value` attribute is supported by `<input>` and `<textarea>` components. You can use it to set the value of the component. This is useful for building controlled components. `defaultValue` is the uncontrolled equivalent, which sets the value of the component when it is first mounted.
+`value` 属性是受到 `<input>` 和 `<textarea>` 组件所支持的。你可以使用它设置组件的值。这对于构建控制组件是非常有用的。`defaultValue` 属性对应的是非控制组件属性，用来设置组件第一次装载时的值。
 
 ## All Supported HTML Attributes {#all-supported-html-attributes}
 
-As of React 16, any standard [or custom](/blog/2017/09/08/dom-attributes-in-react-16.html) DOM attributes are fully supported.
+对于 React 16, 任何标准的[或自定义的](/blog/2017/09/08/dom-attributes-in-react-16.html) DOM 属性都是被充分支持的。
 
-React has always provided a JavaScript-centric API to the DOM. Since React components often take both custom and DOM-related props, React uses the `camelCase` convention just like the DOM APIs:
+React 已经提供给 DOM 一套以 JavaScript 为中心的 API 。因为 React 组件经常采用自定义或和 DOM 相关的 props 。React 使用`驼峰拼写法`为惯例，就像 DOM APIs 一样：
 
 ```js
 <div tabIndex="-1" />      // Just like node.tabIndex DOM API
@@ -132,9 +125,9 @@ React has always provided a JavaScript-centric API to the DOM. Since React compo
 <input readOnly={true} />  // Just like node.readOnly DOM API
 ```
 
-These props work similarly to the corresponding HTML attributes, with the exception of the special cases documented above.
+除了上述文档提到的特殊拼写方式以外，这些 props 的用法与相对应的 HTML 属性是类似的。
 
-Some of the DOM attributes supported by React include:
+被 React 所支持的一些 DOM 属性包括：
 
 ```
 accept acceptCharset accessKey action allowFullScreen alt async autoComplete
@@ -152,7 +145,7 @@ sizes span spellCheck src srcDoc srcLang srcSet start step style summary
 tabIndex target title type useMap value width wmode wrap
 ```
 
-Similarly, all SVG attributes are fully supported:
+同样, 所有的 SVG 属性也全部被支持:
 
 ```
 accentHeight accumulate additive alignmentBaseline allowReorder alphabetic
@@ -191,4 +184,4 @@ xlinkHref xlinkRole xlinkShow xlinkTitle xlinkType xmlns xmlnsXlink xmlBase
 xmlLang xmlSpace y y1 y2 yChannelSelector z zoomAndPan
 ```
 
-You may also use custom attributes as long as they're fully lowercase.
+你也可以使用自定义属性，只要这些属性全都是小写的。
