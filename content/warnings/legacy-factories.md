@@ -1,22 +1,22 @@
 ---
-title: React Element Factories and JSX Warning
+title: React 元素工厂和 JSX 警告
 layout: single
 permalink: warnings/legacy-factories.html
 ---
 
-You probably came here because your code is calling your component as a plain function call. This is now deprecated:
+你能到这个页面很可能是因为：你的代码把你的组件直接作为普通的函数来调用。这个方式现在被废弃了：
 
 ```javascript
 var MyComponent = require('MyComponent');
 
 function render() {
-  return MyComponent({ foo: 'bar' });  // WARNING
+  return MyComponent({ foo: 'bar' });  // 警告
 }
 ```
 
 ## JSX {#jsx}
 
-React components can no longer be called directly like this. Instead [you can use JSX](/docs/jsx-in-depth.html).
+React 组件现在不再能像这样直接被调用。取而代之的，[你可以使用 JSX](/docs/jsx-in-depth.html)。
 
 ```javascript
 var React = require('react');
@@ -27,9 +27,9 @@ function render() {
 }
 ```
 
-## Without JSX {#without-jsx}
+## 不用 JSX {#without-jsx}
 
-If you don't want to, or can't use JSX, then you'll need to wrap your component in a factory before calling it:
+如果你不希望、或者是不能使用 JSX，那么你需要把你的组件包装成工厂函数然后再调用它：
 
 ```javascript
 var React = require('react');
@@ -40,11 +40,11 @@ function render() {
 }
 ```
 
-This is an easy upgrade path if you have a lot of existing function calls.
+当你有一大堆现存的函数调用的时候，这样做是一个简单的升级方式。
 
-## Dynamic components without JSX {#dynamic-components-without-jsx}
+## 不使用 JSX 的动态组件 {#dynamic-components-without-jsx}
 
-If you get a component class from a dynamic source, then it might be unnecessary to create a factory that you immediately invoke. Instead you can just create your element inline:
+如果从动态来源取得组件类，那么就不需要创建立即调用的工厂函数。相反，你可以直接内联地创建你的元素：
 
 ```javascript
 var React = require('react');
@@ -54,6 +54,6 @@ function render(MyComponent) {
 }
 ```
 
-## In Depth {#in-depth}
+## 深入 {#in-depth}
 
-[Read more about WHY we're making this change.](https://gist.github.com/sebmarkbage/d7bce729f38730399d28)
+[查阅更多关于**为什么**我们做出这个变动。](https://gist.github.com/sebmarkbage/d7bce729f38730399d28)
