@@ -1,11 +1,14 @@
 ---
-title: Invalid ARIA Prop Warning
+title: 非法 ARIA Prop 警告
 layout: single
 permalink: warnings/invalid-aria-prop.html
 ---
 
-The invalid-aria-prop warning will fire if you attempt to render a DOM element with an aria-* prop that does not exist in the Web Accessibility Initiative (WAI) Accessible Rich Internet Application (ARIA) [specification](https://www.w3.org/TR/wai-aria-1.1/#states_and_properties).
+invalid-aria-prop 警告出现在：当你试图渲染一个 DOM 元素，并且它的 aria-* 属性不存在于 WAI-ARIA [规范](https://www.w3.org/TR/wai-aria-1.1/#states_and_properties) 中时。
 
-1. If you feel that you are using a valid prop, check the spelling carefully. `aria-labelledby` and `aria-activedescendant` are often misspelled.
+（WAI：Web Accessibility Initiative，Web 无障碍计划）  
+（ARIA：Accessible Rich Internet Application，无障碍丰富互联网应用程序）
 
-2. React does not yet recognize the attribute you specified. This will likely be fixed in a future version of React. However, React currently strips all unknown attributes, so specifying them in your React app will not cause them to be rendered
+1. 如果你认为你使用的是合法的属性，仔细检查拼写。`aria-labelledby` 和 `aria-activedescendant` 常常会被拼错。
+
+2. React 还无法识别你指定的属性。这可能会在 React 的未来版本中被修复。但是，当前的 React 会去除所有未知属性，因此在 React 应用中指定它们不会使得它们被渲染。
