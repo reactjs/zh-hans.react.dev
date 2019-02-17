@@ -49,7 +49,7 @@ function onClick(event) {
     console.log(eventType); // => "click"
   }, 0);
 
-  // 无用，this.state.clickEvent 会只包含 null 值
+  // 不起作用，this.state.clickEvent 的值将会只包含 null
   this.setState({clickEvent: event});
 
   // 你仍然可以导出事件属性
