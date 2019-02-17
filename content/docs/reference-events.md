@@ -5,6 +5,7 @@ permalink: docs/events.html
 layout: docs
 category: Reference
 ---
+
 此参考指南记录了构成 React 事件系统一部分的 `SyntheticEvent` 包装器。参考 [Handling Events](/docs/handling-events.html) 指南学习更多。
 
 ## 概述 {#overview}
