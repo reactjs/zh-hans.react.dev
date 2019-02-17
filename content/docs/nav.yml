@@ -3,7 +3,7 @@
     - id: getting-started
       title: 开始
     - id: add-react-to-a-website
-      title: 在网站中添加 React 
+      title: 在网站中添加 React
     - id: create-a-new-react-app
       title: 创建新的 React App
     - id: cdn-links
@@ -54,7 +54,7 @@
     - id: integrating-with-other-libraries
       title: 与第三方库协同
     - id: jsx-in-depth
-      title: 深入 JSX 
+      title: 深入 JSX
     - id: optimizing-performance
       title: 性能优化
     - id: portals
@@ -110,7 +110,7 @@
       - id: hooks-intro
         title: Hooks 简介
       - id: hooks-overview
-        title: Hooks 概述
+        title: Hooks 概览
       - id: hooks-state
         title: 使用 State Hook
       - id: hooks-effect
