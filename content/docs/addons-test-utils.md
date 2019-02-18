@@ -6,22 +6,22 @@ layout: docs
 category: Reference
 ---
 
-**Importing**
+**如何引入**
 
 ```javascript
 import ReactTestUtils from 'react-dom/test-utils'; // ES6
 var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
 ```
 
-## Overview
+## 概述
 
-`ReactTestUtils` makes it easy to test React components in the testing framework of your choice. At Facebook we use [Jest](https://facebook.github.io/jest/) for painless JavaScript testing. Learn how to get started with Jest through the Jest website's [React Tutorial](http://facebook.github.io/jest/docs/en/tutorial-react.html#content).
+`ReactTestUtils` 可搭配你所选的测试框架，轻松实现 React 组件测试。在 Facebook 内部，我们使用 [Jest](https://facebook.github.io/jest/) 来轻松实现 JavaScript 测试。你可以从 Jest 官网的 [React Tutorial](http://facebook.github.io/jest/docs/en/tutorial-react.html#content) 中了解如何开始使用它。
 
-> Note:
+> 注意：
 >
-> Airbnb has released a testing utility called Enzyme, which makes it easy to assert, manipulate, and traverse your React Components' output. If you're deciding on a unit testing utility to use together with Jest, or any other test runner, it's worth checking out: [http://airbnb.io/enzyme/](http://airbnb.io/enzyme/)
+> Airbnb 发布了一款叫作 Enzyme 的测试工具，通过它能够轻松对 React 组件的输出进行断言、操控和遍历。如果你需要决定一款和 Jest 或者其他测试运行器搭配使用单元测试工具，值得看一下：[http://airbnb.io/enzyme/](http://airbnb.io/enzyme/)
 >
-> Alternatively, there is another testing utility called react-testing-library designed to enable and encourage writing tests that use your components as the end users use them. It also works with any test runner: [https://git.io/react-testing-library](https://git.io/react-testing-library)
+> 另外，这里还有一款叫做 react-testing-library 的测试工具，它使得对组件编写测试用例就像终端用户在使用它一样方便，并且能与任何一款测试运行器配合工作：[https://git.io/react-testing-library](https://git.io/react-testing-library)
 
  - [`Simulate`](#simulate)
  - [`renderIntoDocument()`](#renderintodocument)
@@ -39,18 +39,17 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
  - [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype)
  - [`findRenderedComponentWithType()`](#findrenderedcomponentwithtype)
 
-## Reference
+## 参考
 
-## Shallow Rendering
+## 浅层渲染
 
-When writing unit tests for React, shallow rendering can be helpful. Shallow rendering lets you render a component "one level deep" and assert facts about what its render method returns, without worrying about the behavior of child components, which are not instantiated or rendered. This does not require a DOM.
+当我们为 React 编写单元测试时，浅层渲染非常有用。浅层渲染能使得组件渲染时”只渲染一层“，断言组件渲染函数所返回的内容，无需担心触发子组件的行为，因为没有真正地进行组件实例化和渲染。这种情况也不需要 DOM。
 
-> Note:
->
-> The shallow renderer has moved to `react-test-renderer/shallow`.<br>
-> [Learn more about shallow rendering on its reference page.](/docs/shallow-renderer.html)
+> 注意：
+> 浅层渲染的方法被移动到了 `react-test-renderer/shallow`。<br>
+> [学习更多关于浅层渲染的内容查看这篇文档](/docs/shallow-renderer.html)
 
-## Other Utilities
+## 其他工具方法
 
 ### `Simulate`
 
@@ -61,11 +60,11 @@ Simulate.{eventName}(
 )
 ```
 
-Simulate an event dispatch on a DOM node with optional `eventData` event data.
+使用可选的 `eventData` 事件数据来模拟在 DOM 节点上触发一个事件。
 
-`Simulate` has a method for [every event that React understands](/docs/events.html#supported-events).
+[React 所支持的所有事件](/docs/events.html#supported-events) 在 `Simulate` 中都有对应的方法.
 
-**Clicking an element**
+**点击一个元素**
 
 ```javascript
 // <button ref={(node) => this.button = node}>...</button>
@@ -73,7 +72,7 @@ const node = this.button;
 ReactTestUtils.Simulate.click(node);
 ```
 
-**Changing the value of an input field and then pressing ENTER.**
+**修改一个 input 输入框的值，然后按回车键**
 
 ```javascript
 // <input ref={(node) => this.textInput = node} />
@@ -83,9 +82,9 @@ ReactTestUtils.Simulate.change(node);
 ReactTestUtils.Simulate.keyDown(node, {key: "Enter", keyCode: 13, which: 13});
 ```
 
-> Note
+> 注意：
 >
-> You will have to provide any event property that you're using in your component (e.g. keyCode, which, etc...) as React is not creating any of these for you.
+> 你必须提供一切需要在组件中用到的事件属性（比如：keyCode、which 等等），因为 React 没有为你创建这些属性。
 
 * * *
 
@@ -95,11 +94,11 @@ ReactTestUtils.Simulate.keyDown(node, {key: "Enter", keyCode: 13, which: 13});
 renderIntoDocument(element)
 ```
 
-Render a React element into a detached DOM node in the document. **This function requires a DOM.**
+渲染一个 React 元素到 document 中的一个单独的 DOM 节点上。**这个函数需要一个 DOM 对象。**
 
-> Note:
+> 注意：
 >
-> You will need to have `window`, `window.document` and `window.document.createElement` globally available **before** you import `React`. Otherwise React will think it can't access the DOM and methods like `setState` won't work.
+> 你需要在引入 `React` **之前**确保 `window`，`window.document` 和 `window.document.createElement` 能在全局环境中获取到。不然 React 会认为它没有权限去操作 DOM，以及像 `setState` 这样的方法将不可用。
 
 * * *
 
@@ -112,11 +111,11 @@ mockComponent(
 )
 ```
 
-Pass a mocked component module to this method to augment it with useful methods that allow it to be used as a dummy React component. Instead of rendering as usual, the component will become a simple `<div>` (or other tag if `mockTagName` is provided) containing any provided children.
+将模拟组件模块传入这个方法后，React 内部会使用有效的方法填充该模块，使其成为虚拟的 React 组件。与通常的渲染不同，组件将变成一个简单的 `<div>` (如果提供了 `mockTagName` 则是其他标签)，包含任何提供的子级。
 
-> Note:
+> 注意：
 >
-> `mockComponent()` is a legacy API. We recommend using [shallow rendering](/docs/test-utils.html#shallow-rendering) or [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) instead.
+> `mockComponent()` 是一个过时的 API，我们推荐使用[浅层渲染](/docs/test-utils.html#shallow-rendering)或者 [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) 来代替。
 
 * * *
 
@@ -126,7 +125,7 @@ Pass a mocked component module to this method to augment it with useful methods 
 isElement(element)
 ```
 
-Returns `true` if `element` is any React element.
+当 `element` 是任何一种 React 元素时，返回 `true`。
 
 * * *
 
@@ -139,7 +138,7 @@ isElementOfType(
 )
 ```
 
-Returns `true` if `element` is a React element whose type is of a React `componentClass`.
+当 `element` 是一种 React 元素，并且它的类型是参数 `componentClass` 的类型时，返回 `true`。
 
 * * *
 
@@ -149,7 +148,7 @@ Returns `true` if `element` is a React element whose type is of a React `compone
 isDOMComponent(instance)
 ```
 
-Returns `true` if `instance` is a DOM component (such as a `<div>` or `<span>`).
+当 `instance` 是一个 DOM 组件（比如 `<div>` 或 `<span>`）时，返回 `true`。
 
 * * *
 
@@ -159,7 +158,7 @@ Returns `true` if `instance` is a DOM component (such as a `<div>` or `<span>`).
 isCompositeComponent(instance)
 ```
 
-Returns `true` if `instance` is a user-defined component, such as a class or a function.
+当 `instance` 是一个用户自定义的组件，比如一个类或者一个函数时，返回 `true`。
 
 * * *
 
@@ -172,7 +171,7 @@ isCompositeComponentWithType(
 )
 ```
 
-Returns `true` if `instance` is a component whose type is of a React `componentClass`.
+当 `instance` 是一个组件，并且它的类型是参数 `componentClass` 的类型时，返回 `true`。
 
 * * *
 
@@ -185,7 +184,7 @@ findAllInRenderedTree(
 )
 ```
 
-Traverse all components in `tree` and accumulate all components where `test(component)` is `true`. This is not that useful on its own, but it's used as a primitive for other test utils.
+遍历所有在参数 `tree` 中的组件，记录所有 `test(component)` 为 `true` 的组件。单独调用此方法不是很有用，但是它常常被作为底层 API 被其他测试方法使用。
 
 * * *
 
@@ -198,7 +197,7 @@ scryRenderedDOMComponentsWithClass(
 )
 ```
 
-Finds all DOM elements of components in the rendered tree that are DOM components with the class name matching `className`.
+查找渲染树中组件的所有 DOM 元素，这些组件是 css 类名与参数 `className` 匹配的 DOM 组件。
 
 * * *
 
@@ -211,7 +210,7 @@ findRenderedDOMComponentWithClass(
 )
 ```
 
-Like [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass) but expects there to be one result, and returns that one result, or throws exception if there is any other number of matches besides one.
+功能类似于 [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass)，但是预计只有一个结果，然后返回这个结果，如果除了一个匹配项之外还有其他匹配项，则抛出异常。
 
 * * *
 
@@ -224,7 +223,7 @@ scryRenderedDOMComponentsWithTag(
 )
 ```
 
-Finds all DOM elements of components in the rendered tree that are DOM components with the tag name matching `tagName`.
+查找渲染树中组件的所有的 DOM 元素，这些组件是标记名与参数 `tagName` 匹配的 DOM 组件。
 
 * * *
 
@@ -237,7 +236,7 @@ findRenderedDOMComponentWithTag(
 )
 ```
 
-Like [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag) but expects there to be one result, and returns that one result, or throws exception if there is any other number of matches besides one.
+功能类似于 [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag)，但是预计只有一个结果，然后返回这个结果，如果除了一个匹配项之外还有其他匹配项，则抛出异常。
 
 * * *
 
@@ -250,7 +249,7 @@ scryRenderedComponentsWithType(
 )
 ```
 
-Finds all instances of components with type equal to `componentClass`.
+查找组件类型等于 `componentClass` 组件的所有实例。
 
 * * *
 
@@ -263,7 +262,7 @@ findRenderedComponentWithType(
 )
 ```
 
-Same as [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) but expects there to be one result and returns that one result, or throws exception if there is any other number of matches besides one.
+功能类似于 [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype)，但是预计只有一个结果，然后返回这个结果，如果除了一个匹配项之外还有其他匹配项，则抛出异常。
 
 * * *
 
