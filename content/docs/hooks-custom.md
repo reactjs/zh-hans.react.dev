@@ -185,7 +185,7 @@ function ChatRecipientPicker() {
 }
 ```
 
-我们将当前选择的朋友 ID 保存在 `recipientID` 状态变量中，如果用户在 `<select>` 中选择了其他的朋友，我们就更新这个变量。
+我们将当前选择的好友 ID 保存在 `recipientID` 状态变量中，并在用户从 `<select>` 中选择其他好友时更新这个变量。
 
 因为 `useState` 为我们提供了 `recipientID` 状态变量的最新值，所以我们可以将它作为参数传递给我们的自定义 Hook `useFriendStatus`：
 
