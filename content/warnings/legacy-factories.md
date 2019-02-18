@@ -1,5 +1,5 @@
 ---
-title: React 元素工厂和 JSX 警告
+title: 警告：有关 React 元素工厂和 JSX 
 layout: single
 permalink: warnings/legacy-factories.html
 ---
