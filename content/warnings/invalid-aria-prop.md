@@ -1,5 +1,5 @@
 ---
-title: 非法 ARIA Prop 警告
+title: 警告：非法的 ARIA Prop
 layout: single
 permalink: warnings/invalid-aria-prop.html
 ---
