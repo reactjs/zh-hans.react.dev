@@ -7,20 +7,15 @@ redirect_from:
 ---
 
 
-UI 更新需要对 DOM 进行操作，而 React 内部通过多种灵巧的技术以最小化操作 DOM 来降低性能损耗。
-对于大部分应用而言，使用 React 不需要额外功夫来特别优化就已拥有高性能的用户界面。
-尽管如此，你仍然可以通过一些手段来加速你的 React 应用。
+UI 更新需要对 DOM 进行操作，而 React 内部通过多种灵巧的技术以最小化操作 DOM 来降低性能损耗。对于大部分应用而言，使用 React 不需要额外功夫来特别优化就已拥有高性能的用户界面。尽管如此，你仍然可以通过一些手段来加速你的 React 应用。
 
 ## 使用生产版本 {#use-the-production-build}
 
 如果需要对你的 React 应用进行度量或者遇到性能问题时，确保你正在使用压缩的生产版本。
 
-React 默认包含了许多有用的警告信息。
-这些警告信息在开发过程中非常有帮助。
-然而这使得 React 变得更大且更慢，所以你需要确保部署时使用了生产版本。
+React 默认包含了许多有用的警告信息。这些警告信息在开发过程中非常有帮助。然而这使得 React 变得更大且更慢，所以你需要确保部署时使用了生产版本。
 
-如果你不能确定你的编译过程是否设置正确，你可以通过安装 [Chrome 的 React 开发者工具](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) 来检查。
-如果你浏览一个使用 React 生产版本的网站，图标背景会变成深色：
+如果你不能确定你的编译过程是否设置正确，你可以通过安装 [Chrome 的 React 开发者工具](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) 来检查。如果你浏览一个使用 React 生产版本的网站，图标背景会变成深色：
 
 <img src="../images/docs/devtools-prod.png" style="max-width:100%" alt="React DevTools on a website with production version of React">
 
@@ -73,8 +68,7 @@ yarn add --dev uglify-js-brunch
 brunch build -p
 ```
 
-注意你只需要在生产构建时这么做。
-你不需要在开发环境中使用 `-p` 参数或者应用这个插件，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
+注意你只需要在生产构建时这么做。你不需要在开发环境中使用 `-p` 参数或者应用这个插件，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
 
 ### Browserify {#browserify}
 
@@ -108,8 +102,7 @@ browserify ./index.js \
 >虽然这个包名叫做 `uglify-js`，但是执行文件叫做 `uglifyjs`。<br>
 >这不是拼写错误。
 
-注意你只需要在生产构建时用到它。
-你不需要在开发环境应用这些插件，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
+注意你只需要在生产构建时用到它。你不需要在开发环境应用这些插件，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
 
 ### Rollup {#rollup}
 
@@ -143,8 +136,7 @@ plugins: [
 
 [点击](https://gist.github.com/Rich-Harris/cb14f4bc0670c47d00d191565be36bf0)查看完整的安装示例。
 
-注意你只需要在生产构建时用到它。
-你不需要在开发中使用 `uglify` 插件或者 `replace` 插件替换 `'production'` 变量，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
+注意你只需要在生产构建时用到它。你不需要在开发中使用 `uglify` 插件或者 `replace` 插件替换 `'production'` 变量，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
 
 ### webpack {#webpack}
 
@@ -164,8 +156,7 @@ new webpack.optimize.UglifyJsPlugin()
 
 你可以在 [webpack 文档](https://webpack.js.org/guides/production-build/)中了解更多内容。
 
-注意你只需要在生产构建时用到它。
-你不需要在开发中使用 `UglifyJsPlugin` 插件或者 `DefinePlugin` 插件设置 `'production'` 变量，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
+注意你只需要在生产构建时用到它。你不需要在开发中使用 `UglifyJsPlugin` 插件或者 `DefinePlugin` 插件设置 `'production'` 变量，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
 
 ## 使用 Chrome 性能标签分析组件 {#profiling-components-with-the-chrome-performance-tab}
 
@@ -189,16 +180,13 @@ new webpack.optimize.UglifyJsPlugin()
 
 你可以通过查阅[这篇文章](https://calibreapp.com/blog/2017-11-28-debugging-react/)以获取更详尽的指导。
 
-需要注意的是**在生产环境中组件相对会渲染的更快些**。
-当然了，这能帮助你查看是否有不相关的组件被错误的更新，以及你的 UI 更新深度和频率。
+需要注意的是**在生产环境中组件相对会渲染的更快些**。当然了，这能帮助你查看是否有不相关的组件被错误的更新，以及你的 UI 更新深度和频率。
 
 目前只有 Chrome、Edge 和 IE 支持该功能，但是我们使用的是标准的[用户计时 API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API)。我们期待有更多的浏览器来支持它。
 
 ## 使用开发工具的分析器对组件进行分析 {#profiling-components-with-the-devtools-profiler}
 
-`react-dom` 16.5+ 和 `react-native` 0.57+ 加强了分析能力。在开发模式下，React 开发工具会出现分析器标签。
-你可以在这篇博客[《介绍 React 分析器》](/blog/2018/09/10/introducing-the-react-profiler.html)中了解概述。
-你同样可以[在 YouTube 上](https://www.youtube.com/watch?v=nySib7ipZdk)观看分析器的视频指导。
+`react-dom` 16.5+ 和 `react-native` 0.57+ 加强了分析能力。在开发模式下，React 开发工具会出现分析器标签。你可以在这篇博客[《介绍 React 分析器》](/blog/2018/09/10/introducing-the-react-profiler.html)中了解概述。你同样可以[在 YouTube 上](https://www.youtube.com/watch?v=nySib7ipZdk)观看分析器的视频指导。
 
 如果你还未安装 React 开发工具，你可以在这里找到它们：
 
@@ -213,8 +201,7 @@ new webpack.optimize.UglifyJsPlugin()
 
 ## 虚拟化长列表 {#virtualize-long-lists}
 
-如果你的应用渲染了长列表（上百甚至上千的数据），我们推荐使用“虚拟滚动”技术。
-这项技术会在有限的时间内仅渲染少量的数据，并戏剧性的降低重新渲染组件的时间消耗，以及创建 DOM 节点的数量。
+如果你的应用渲染了长列表（上百甚至上千的数据），我们推荐使用“虚拟滚动”技术。这项技术会在有限的时间内仅渲染少量的数据，并戏剧性的降低重新渲染组件的时间消耗，以及创建 DOM 节点的数量。
 
 [react-window](https://react-window.now.sh/) 和 [react-virtualized](https://bvaughn.github.io/react-virtualized/) 是热门的虚拟滚动库。
 它们提供了多种可复用的组件，用于展示列表、网格和表格数据。
@@ -222,13 +209,9 @@ new webpack.optimize.UglifyJsPlugin()
 
 ## 避免调停 {#avoid-reconciliation}
 
-React 构建并维护了一套内部的 UI 渲染陈述。
-它包含了来自你的组件返回的 React 元素。
-该陈述使得 React 避免创建 DOM 节点以及没有必要的节点访问，因为 DOM 操作相对于 JavaScript 对象操作更慢。
-虽然有时候它被称为“虚拟 DOM”，但是它在 React Native 中拥有相同的工作原理。
+React 构建并维护了一套内部的 UI 渲染陈述。它包含了来自你的组件返回的 React 元素。该陈述使得 React 避免创建 DOM 节点以及没有必要的节点访问，因为 DOM 操作相对于 JavaScript 对象操作更慢。虽然有时候它被称为“虚拟 DOM”，但是它在 React Native 中拥有相同的工作原理。
 
-当一个组件的 props 或者 state 变更，React 会将最新返回的元素与之前的记录的元素进行对比，来决定是否有必要更新真实的 DOM。
-当它们不相同时，React 会更新该 DOM。
+当一个组件的 props 或者 state 变更，React 会将最新返回的元素与之前的记录的元素进行对比，来决定是否有必要更新真实的 DOM。当它们不相同时，React 会更新该 DOM。
 
 你可以通过 React 开发工具可视化查看这些重新渲染的虚拟 DOM：
 
@@ -240,22 +223,15 @@ React 构建并维护了一套内部的 UI 渲染陈述。
 
 <center><img src="../images/blog/devtools-highlight-updates.png" style="max-width:100%; margin-top:10px;" alt="如何开启更新高亮" /></center>
 
-当与你的页面进行交互时，你会看到被重新渲染的组件立刻出现了彩色的边框。
-这能帮助你找到那些没有必要的重新渲染。
-你可以在来自 [Ben Edelstein](https://blog.logrocket.com/@edelstein) 的[这篇博客](https://blog.logrocket.com/make-react-fast-again-part-3-highlighting-component-updates-6119e45e6833)中学到更多关于 React 开发工具的功能。
+当与你的页面进行交互时，你会看到被重新渲染的组件立刻出现了彩色的边框。这能帮助你找到那些没有必要的重新渲染。你可以在来自 [Ben Edelstein](https://blog.logrocket.com/@edelstein) 的[这篇博客](https://blog.logrocket.com/make-react-fast-again-part-3-highlighting-component-updates-6119e45e6833)中学到更多关于 React 开发工具的功能。
 
 思考这个例子：
 
 <center><img src="../images/blog/highlight-updates-example.gif" style="max-width:100%; margin-top:20px;" alt="React 开发工具更新高亮示例" /></center>
 
-注意到当我们输入第二个待办事项时，第一个待办事项在每次按键时也一并闪烁了。
-这意味着输入时，它也被 React 一并重新渲染了。
-这通常被称作“无用的”渲染。
-我们知道这是毫无必要的，因为第一个待办事项并没有改变，但是 React 并不知道。
+注意到当我们输入第二个待办事项时，第一个待办事项在每次按键时也一并闪烁了。这意味着输入时，它也被 React 一并重新渲染了。这通常被称作“无用的”渲染。我们知道这是毫无必要的，因为第一个待办事项并没有改变，但是 React 并不知道。
 
-即使 React 只更新改变了的 DOM 节点，重新渲染仍然花费了一些时间。
-在大部分情况下它并不是问题，不过如果它已经慢到让人注意了，你可以通过覆盖生命周期方法 `shouldComponentUpdate` 来进行提速。该方法会在重新渲染前被触发。
-其默认实现总是返回 `true`，让 React 执行更新：
+即使 React 只更新改变了的 DOM 节点，重新渲染仍然花费了一些时间。在大部分情况下它并不是问题，不过如果它已经慢到让人注意了，你可以通过覆盖生命周期方法 `shouldComponentUpdate` 来进行提速。该方法会在重新渲染前被触发。其默认实现总是返回 `true`，让 React 执行更新：
 
 ```javascript
 shouldComponentUpdate(nextProps, nextState) {
@@ -265,26 +241,21 @@ shouldComponentUpdate(nextProps, nextState) {
 
 如果你知道在什么情况下你的组件不需要更新，你可以在 `shouldComponentUpdate` 中返回 `false` 来跳过整个渲染过程。其包括该组件的 `render` 调用以及之后的操作。
 
-在大部分情况下，你可以继承 [`React.PureComponent`](/docs/react-api.html#reactpurecomponent) 以代替手写 `shouldComponentUpdate()`。
-它覆写了 `shouldComponentUpdate()` 来对当前和之前的 props 和 state 进行浅比较。
+在大部分情况下，你可以继承 [`React.PureComponent`](/docs/react-api.html#reactpurecomponent) 以代替手写 `shouldComponentUpdate()`。它覆写了 `shouldComponentUpdate()` 来对当前和之前的 props 和 state 进行浅比较。
 
 ## shouldComponentUpdate 的作用 {#shouldcomponentupdate-in-action}
 
-这是一个组件的子树。每个节点中，`SCU` 代表 `shouldComponentUpdate` 返回的值，而 `vDOMEq` 代表是否返回的 React 元素相同。
-最后，圆圈的颜色代表了该组件是否需要被调停。
+这是一个组件的子树。每个节点中，`SCU` 代表 `shouldComponentUpdate` 返回的值，而 `vDOMEq` 代表是否返回的 React 元素相同。最后，圆圈的颜色代表了该组件是否需要被调停。
 
 <figure><img src="../images/docs/should-component-update.png" style="max-width:100%" /></figure>
 
 节点 C2 的 `shouldComponentUpdate` 返回了 `false`，React 因而不会去渲染 C2，也因此 C4 和 C5 的 `shouldComponentUpdate` 不会被调用到。
 
-对于 C1 和 C3，`shouldComponentUpdate` 返回了 `true`，所以 React 需要继续向下查询子节点。
-这里 C6 的 `shouldComponentUpdate` 返回了 `true`，同时由于渲染的元素与之前的不同使得 React 更新了该 DOM。
+对于 C1 和 C3，`shouldComponentUpdate` 返回了 `true`，所以 React 需要继续向下查询子节点。这里 C6 的 `shouldComponentUpdate` 返回了 `true`，同时由于渲染的元素与之前的不同使得 React 更新了该 DOM。
 
 最后一个有趣的例子是 C8。React 需要渲染这个组件，但是由于其返回的 React 元素和之前渲染的相同，所以不需要更新 DOM。
 
-显而易见，你看到 React 只改变了 C6 的 DOM。
-对于 C8，通过对比了渲染的 React 元素跳过了渲染。
-而对于 C2 的子节点和 C7，由于 `shouldComponentUpdate` 使得 `render` 并没有被调用。因此它们也不需要对比元素了。
+显而易见，你看到 React 只改变了 C6 的 DOM。对于 C8，通过对比了渲染的 React 元素跳过了渲染。而对于 C2 的子节点和 C7，由于 `shouldComponentUpdate` 使得 `render` 并没有被调用。因此它们也不需要对比元素了。
 
 ## 示例 {#examples}
 
@@ -319,11 +290,7 @@ class CounterButton extends React.Component {
 }
 ```
 
-在这段代码中，`shouldComponentUpdate` 仅检查了 `props.color` 或 `state.count` 是否改变。
-如果这些值没有改变，那么这个组件不会更新。
-如果你的组件更复杂一些，你可以使用类似“浅比较”的模式来检查 `props` 和 `state` 中所有的字段，以此来决定是否组件需要更新。
-React 已经提供了一位好帮手来帮你实现这种常见的模式 - 你只要继承 `React.PureComponent` 就行了。
-所以这段代码可以改成以下这种更简洁的形式：
+在这段代码中，`shouldComponentUpdate` 仅检查了 `props.color` 或 `state.count` 是否改变。如果这些值没有改变，那么这个组件不会更新。如果你的组件更复杂一些，你可以使用类似“浅比较”的模式来检查 `props` 和 `state` 中所有的字段，以此来决定是否组件需要更新。React 已经提供了一位好帮手来帮你实现这种常见的模式 - 你只要继承 `React.PureComponent` 就行了。所以这段代码可以改成以下这种更简洁的形式：
 
 ```js
 class CounterButton extends React.PureComponent {
@@ -344,11 +311,7 @@ class CounterButton extends React.PureComponent {
 }
 ```
 
-大部分情况下，你可以使用 `React.PureComponent` 来代替手写 `shouldComponentUpdate`。
-但它只进行浅比较，所以当 props 或者 state 某种程度是可变的话，浅比较会有遗漏，那你就不能使用它了。
-当数据结构很复杂时，情况会变得麻烦。
-例如，你想要一个 `ListOfWords` 组件来渲染一组用逗号分开的单词。它有一个叫做 `WordAdder` 的父组件，该组件允许你点击一个按钮来添加一个单词到列表中。
-下面是一个*并不完整*的样例：
+大部分情况下，你可以使用 `React.PureComponent` 来代替手写 `shouldComponentUpdate`。但它只进行浅比较，所以当 props 或者 state 某种程度是可变的话，浅比较会有遗漏，那你就不能使用它了。当数据结构很复杂时，情况会变得麻烦。例如，你想要一个 `ListOfWords` 组件来渲染一组用逗号分开的单词。它有一个叫做 `WordAdder` 的父组件，该组件允许你点击一个按钮来添加一个单词到列表中。下面是一个*并不完整*的样例：
 
 ```javascript
 class ListOfWords extends React.PureComponent {
@@ -384,15 +347,11 @@ class WordAdder extends React.Component {
 }
 ```
 
-问题在于 `PureComponent` 仅仅会对新老 `this.props.words` 的值进行简单的对比。
-由于代码中 `WordAdder` 的 `handleClick` 方法改变了同一个 `words` 数组，使得新老 `this.props.words` 比较的其实还是同一个数组。
-即便实际上数组中的单词已经变了，但是比较结果是相同的。
-可以看到，即便多了新的单词需要被渲染， `ListOfWords` 却并没有被更新。
+问题在于 `PureComponent` 仅仅会对新老 `this.props.words` 的值进行简单的对比。由于代码中 `WordAdder` 的 `handleClick` 方法改变了同一个 `words` 数组，使得新老 `this.props.words` 比较的其实还是同一个数组。即便实际上数组中的单词已经变了，但是比较结果是相同的。可以看到，即便多了新的单词需要被渲染， `ListOfWords` 却并没有被更新。
 
 ## 不可变数据的力量 {#the-power-of-not-mutating-data}
 
-避免该问题最简单的方式是避免更改你正用于 props 或 state 的值。
-例如，上面 `handleClick` 方法可以用 `concat` 重写：
+避免该问题最简单的方式是避免更改你正用于 props 或 state 的值。例如，上面 `handleClick` 方法可以用 `concat` 重写：
 
 ```javascript
 handleClick() {
@@ -402,8 +361,7 @@ handleClick() {
 }
 ```
 
-ES6 数组支持[扩展运算符](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator)，这让代码写起来更方便了。
-如果你在使用 Create React App，该运算符默认已经支持了。
+ES6 数组支持[扩展运算符](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator)，这让代码写起来更方便了。如果你在使用 Create React App，该运算符默认已经支持了。
 
 ```js
 handleClick() {
@@ -413,8 +371,7 @@ handleClick() {
 };
 ```
 
-你可以改写代码来避免可变对象的产生，同时很方便的操作对象。
-例如，我们有一个叫做 `colormap` 的对象。我们希望写一个方法来将 `colormap.right` 设置为 `'blue'`。我们可以这么写：
+你可以改写代码来避免可变对象的产生，同时很方便的操作对象。例如，我们有一个叫做 `colormap` 的对象。我们希望写一个方法来将 `colormap.right` 设置为 `'blue'`。我们可以这么写：
 
 ```js
 function updateColorMap(colormap) {
@@ -445,16 +402,13 @@ function updateColorMap(colormap) {
 
 ## 使用不可变数据结构 {#using-immutable-data-structures}
 
-[Immutable.js](https://github.com/facebook/immutable-js) 是另一种解决方案。
-它通过结构共享提供了不可变、持久化集合：
+[Immutable.js](https://github.com/facebook/immutable-js) 是另一种解决方案。它通过结构共享提供了不可变、持久化集合：
 
 * *不可变*：一旦创建，一个集合便不能再被修改。
 * *持久化*：对集合进行修改，会创建一个新的集合。之前的集合仍然有效。
 * *结构共享*：新的集合会尽可能复用之前集合的结构，以最小化拷贝操作来提高性能。
 
-不可变数据使得追踪变更非常容易。
-每次变更都会生成一个新的对象使得我们只需要检查对象的引用是否改变。
-举个例子，这是一段很常见的 JavaScript 代码：
+不可变数据使得追踪变更非常容易。每次变更都会生成一个新的对象使得我们只需要检查对象的引用是否改变。举个例子，这是一段很常见的 JavaScript 代码：
 
 ```javascript
 const x = { foo: 'bar' };
@@ -463,8 +417,7 @@ y.foo = 'baz';
 x === y; // true
 ```
 
-由于 `y` 被指向和 `x` 相同的对象，虽然我们修改了 `y`，但是对比结果还是 `true`。
-你可以使用 immutable.js 来写相似的代码：
+由于 `y` 被指向和 `x` 相同的对象，虽然我们修改了 `y`，但是对比结果还是 `true`。你可以使用 immutable.js 来写相似的代码：
 
 ```javascript
 const SomeRecord = Immutable.Record({ foo: null });
