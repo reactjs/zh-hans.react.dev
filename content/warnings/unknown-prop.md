@@ -1,5 +1,5 @@
 ---
-title: 未知的 Prop 警告
+title: 警告：未知的 Prop
 layout: single
 permalink: warnings/unknown-prop.html
 ---
@@ -10,7 +10,7 @@ unknown-prop 警告出现在：当你试图用 React 无法识别为合法 DOM �
 
 1. 你使用了 `{...this.props}` 或者 `cloneElement(element, this.props)` 吗？你的组件会直接把它自己的 props 传递给子元素（例如 [传递 props](/docs/transferring-props.html))。将 props 传递给子组件时，你应该确保不会意外地转发要由父组件解释的 props。
 
-2. 你在原生 DOM 节点上使用的是非标准的 DOM 属性，或许是用来表示自定义数据。如果你想把自定义数据附加到标准 DOM 元素上，请考虑使用自定义的 data 属性，描述参考 [MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes)。
+2. 你在原生 DOM 节点上使用的是非标准的 DOM 属性，或许是用来表示自定义数据。如果你想把自定义数据附加到标准 DOM 元素上，请考虑使用自定义的 data 属性，参考 [MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes)。
 
 3. React 还不能识别你指定的属性。这可能会在 React 的未来版本中修复。不过，当前的 React 会去除所有未知的属性，所以在你的 React 应用中指定它们，它们也不会被渲染。
 
@@ -18,23 +18,23 @@ unknown-prop 警告出现在：当你试图用 React 无法识别为合法 DOM �
 
 ---
 
-要解决这个问题，组合组件应该“消耗”任何用于复合组件的 prop，而不要用于子组件。例如：
+要解决这个问题，组合组件应该“消费掉”任何只用于复合组件而不是子组件的 prop。例如：
 
 **糟糕的：** `layout` prop 意外转发给了 `div` 标签。
 
 ```js
 function MyDiv(props) {
   if (props.layout === 'horizontal') {
-    // 糟糕的！ 因为你清楚地知道 "layout" 不应该是被 <div> 了解的 prop。
+    // 糟糕的！ 因为你很清楚 <div> 不知道如何处理 "layout" 这个 prop。
     return <div {...props} style={getHorizontalStyle()} />
   } else {
-    // 糟糕的！ 因为你清楚地知道 "layout" 不应该是被 <div> 了解的 prop。
+    // 糟糕的！ 因为你很清楚 <div> 不知道如何处理 "layout" 这个 prop。
     return <div {...props} style={getVerticalStyle()} />
   }
 }
 ```
 
-**良好的：** 剩余运算符能用于从 props 中剥离变量，并将剩余的 props 放到一个新变量中。
+**良好的：** 剩余运算符能从 props 中剥离变量，并将剩余的 props 放到一个新变量中。
 
 ```js
 function MyDiv(props) {
@@ -47,7 +47,7 @@ function MyDiv(props) {
 }
 ```
 
-**良好的：** 你也可以将 props 分配给一个新的对象，并从新对象中删除你正在使用的属性。注意不要删除原始的 `this.props` 对象中的 props，因为这个对象理应被认为是不可变的（immutable）。
+**良好的：** 你也可以将 props 分配给一个新的对象，并从新对象中删除你正在使用的属性。注意不要删除原始对象 `this.props` 中的 props，因为这个对象理应被认为是不可变的（immutable）。
 
 ```js
 function MyDiv(props) {
