@@ -6,31 +6,31 @@ prev: typechecking-with-prototypes.html
 next: refs-and-the-dom.html
 ---
 
-像 [Flow](https://flow.org/) 和 [TypeScript](https://www.typescriptlang.org/) 等这些静态类型检查器，可以在你运行代码之前识别某些类型的问题。他们还可以通过增加自动补全等功能来改善开发者的工作流程。出于这个原因，我们建议在大型代码库中使用 Flow 或 TypeScript 来代替 `PropTypes`。
+像 [Flow](https://flow.org/) 和 [TypeScript](https://www.typescriptlang.org/) 等这些静态类型检查器，可以在运行前识别某些类型的问题。他们还可以通过增加自动补全等功能来改善开发者的工作流程。出于这个原因，我们建议在大型代码库中使用 Flow 或 TypeScript 来代替 `PropTypes`。
 
 ## Flow {#flow}
 
-[Flow](https://flow.org/) 是一个针对 JavaScript 代码的静态类型检测器。由 Facebook 开发，经常与 React 一起使用。它可以让你使用特殊的类型语法来注释变量、函数和 React 组件，并且能尽早捕获错误。您可以阅读 [introduction to Flow](https://flow.org/en/docs/getting-started/) 来了解它的基础知识。
+[Flow](https://flow.org/) 是一个针对 JavaScript 代码的静态类型检测器。Flow 由 Facebook 开发，经常与 React 一起使用。Flow 通过特殊的类型语法为变量，函数，以及 React 组件提供注解，帮助你尽早地发现错误。你可以阅读 [introduction to Flow](https://flow.org/en/docs/getting-started/) 来了解它的基础知识。
 
-要使用 Flow，你只需要：
+完成以下步骤，便可开始使用 Flow：
 
 * 将 Flow 添加到你的项目依赖中。
 * 确保编译后的代码中去除了 Flow 语法。
-* 添加类型注释并且运行 Flow 来检查它们。
+* 添加类型注解并且运行 Flow 来检查它们。
 
 我们将会下面加以详细解释这些步骤。
 
 ### 在项目中添加 Flow {#adding-flow-to-a-project}
 
-首先，在终端中进入到项目根目录下。然后你需要去执行以下命令：
+首先，在终端中进入到项目根目录下。然后你需要执行以下命令：
 
-如果你使用 [Yarn](https://yarnpkg.com/), 运行：
+如果你使用 [Yarn](https://yarnpkg.com/), 执行：
 
 ```bash
 yarn add --dev flow-bin
 ```
 
-如果你使用 [npm](https://www.npmjs.com/), 运行：
+如果你使用 [npm](https://www.npmjs.com/), 执行：
 
 ```bash
 npm install --save-dev flow-bin
@@ -51,15 +51,15 @@ npm install --save-dev flow-bin
 }
 ```
 
-最后，运行以下命令之一：
+最后，执行以下命令之一：
 
-如果你使用 [Yarn](https://yarnpkg.com/), 运行：
+如果你使用 [Yarn](https://yarnpkg.com/), 执行：
 
 ```bash
 yarn run flow init
 ```
 
-如果你使用 [npm](https://www.npmjs.com/), 运行：
+如果你使用 [npm](https://www.npmjs.com/), 执行：
 
 ```bash
 npm run flow init
@@ -69,29 +69,29 @@ npm run flow init
 
 ### 从编译后的代码中去除 Flow 语法 {#stripping-flow-syntax-from-the-compiled-code}
 
-Flow 通过这种类型注释的特殊语法扩展了 JavaScript 语言。但是，浏览器不能够解析这种语法，所以我们需要确保它不会被编译到在浏览器执行的 JavaScript 包中。
+Flow 通过这种类型注释的特殊语法扩展了 JavaScript 语言。但是，浏览器不能够解析这种语法，所以我们需要确保它不会被编译到在浏览器执行的 JavaScript bundle 中。
 
 具体方法取决于你使用的 JavaScript 编译工具。
 
 #### Create React App {#create-react-app}
 
-如果你的项目使用的是 [Create React App](https://github.com/facebookincubator/create-react-app)，恭喜！Flow 注释此时默认会被去除，所以在这一步你不需要做任何事情。
+如果你的项目使用的是 [Create React App](https://github.com/facebookincubator/create-react-app)，那么 Flow 注解默认会被去除，所以在这一步你不需要做任何事情。
 
 #### Babel {#babel}
 
 >注意：
 >
->这些说明*不适用*于使用 Create React App 的用户。即使 Create React App 底层也使用了 Babel，但它已经配置了去除 Flow。 如果你*没有*使用 Create React App，请执行此步骤。
+>这些说明*不适用*于使用 Create React App 的用户。虽然 Create React App 底层也使用了 Babel，但它已经配置了去除 Flow。 如果你*没有*使用 Create React App，请执行此步骤。
 
 如果你的项目手动配置了 Babel，你将需要安装一个特殊的 Flow preset。
 
-如果你使用 Yarn, 运行：
+如果你使用 Yarn, 执行：
 
 ```bash
 yarn add --dev babel-preset-flow
 ```
 
-如果你使用 npm, 运行：
+如果你使用 npm, 执行：
 
 ```bash
 npm install --save-dev babel-preset-flow
@@ -112,11 +112,11 @@ npm install --save-dev babel-preset-flow
 
 >注意：
 >
->Flow 不需要 react preset，但他们经常一起使用。 Flow 本身就识别 JSX 语法。
+>Flow 不需要 react preset，但他们经常一起使用。 Flow 内置了 JSX 的语法识别。
 
 #### 其他构建工具设置 {#other-build-setups}
 
-如果你没有使用 Create React App 或 Babel，则可以用 [flow-remove-types](https://github.com/flowtype/flow-remove-types) 来去除类型注释。
+如果没有使用 Create React App 或 Babel 来构建项目，可以通过 [flow-remove-types](https://github.com/flowtype/flow-remove-types) 去除类型注解。
 
 ### 运行 Flow {#running-flow}
 
@@ -126,7 +126,7 @@ npm install --save-dev babel-preset-flow
 yarn flow
 ```
 
-如果你使用 npm, 运行：
+如果你使用 npm, 执行：
 
 ```bash
 npm run flow
@@ -149,22 +149,22 @@ No errors!
 
 通常，它位于文件的顶部。试着将其添加到项目的某些文件中，然后运行 `yarn flow` 或 `npm run flow` 来查看 Flow 是否已经发现了一些问题。
 
-还有 [一个选项](https://flow.org/en/docs/config/options/#toc-all-boolean)There is also [an option](https://flow.org/en/docs/config/options/#toc-all-boolean) 用来强制 Flow 检查*所有*文件（包括没有注释的文件）。对于现有的项目可能太繁琐了，但如果你想用 Flow 来检查全部文件类型，对于一个新项目来说是合理的。
+还可以通过 [这个选项](https://flow.org/en/docs/config/options/#toc-all-boolean) 开启*所有*文件（包括没有注解的文件）的强制检查。通过 Flow 来检查全部文件对于现有的项目来说，可能导致大量修改，但对于希望完全集成 Flow 的新项目来说开启这个选项比较合理。
 
 现在一切就绪！我们建议你查看以下资源来了解有关 Flow 的更多信息：
 
-* [Flow 文档：类型注释](https://flow.org/en/docs/types/)
+* [Flow 文档：类型注解](https://flow.org/en/docs/types/)
 * [Flow 文档：编辑器](https://flow.org/en/docs/editors/)
 * [Flow 文档：React](https://flow.org/en/docs/react/)
 * [在 Flow 中进行 lint](https://medium.com/flow-type/linting-in-flow-7709d7a7e969)
 
 ## TypeScript {#typescript}
 
-[TypeScript](https://www.typescriptlang.org/) 是一种由微软开发的编程语言。它是 JavaScript 的一个类型超集，包含它自己的编译器。作为一种类型语言，TypeScript 可以在应用程序上线之前，构建时捕获错误。您可以通过 React 在 [这里](https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter) 了解更多有关在 React 中使用 TypeScript 的知识。
+[TypeScript](https://www.typescriptlang.org/) 是一种由微软开发的编程语言。它是 JavaScript 的一个类型超集，包含独立的编译器。作为一种类型语言，TypeScript 可以在构建时发现 bug 和错误，这样程序运行时就可以避免此类错误。您可以通过 React 在 [这里](https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter) 了解更多有关在 React 中使用 TypeScript 的知识。
 
-要使用 TypeScript，你需要：
+完成以下步骤，便可开始使用 TypeScript：
 * 将 TypeScript 添加到你的项目依赖中。
-* 配置 TypeScript 编译器
+* 配置 TypeScript 编译选项
 * 使用正确的文件扩展名
 * 为你使用的库添加定义
 
@@ -172,31 +172,31 @@ No errors!
 
 ### 在 Create React App 中使用 TypeScript {#using-typescript-with-create-react-app}
 
-Create React App 支持 TypeScript 开箱即用。
+Create React App 内置了对 TypeScript 的支持。
 
-需要创建一个使用 TypeScript 的**新项目**，终端运行：
+需要创建一个使用 TypeScript 的**新项目**，在终端运行：
 
 ```bash
 npx create-react-app my-app --typescript
 ```
 
-你也可以将 TypeScript 添加到**现有的 Create React App 项目**中，[根据这里的文档](https://facebook.github.io/create-react-app/docs/adding-typescript).
+如需将 TypeScript 添加到**现有的 Create React App 项目**中，[请参考此文档](https://facebook.github.io/create-react-app/docs/adding-typescript).
 
 >注意：
 >
 >如果你使用的是 Create React App，可以跳过本节的其余部分。其余部分讲述了不使用 Create React App 脚手架，手动配置项目的用户。
 
 
-### 添加 TypeScript 到项目中 {#adding-typescript-to-a-project}
-这一切都始于在终端中运行的一个命令。
+### 添加 TypeScript 到现有项目中 {#adding-typescript-to-a-project}
+这一切都始于在终端中执行的一个命令。
 
-如果你使用 [Yarn](https://yarnpkg.com/)，运行：
+如果你使用 [Yarn](https://yarnpkg.com/)，执行：
 
 ```bash
 yarn add --dev typescript
 ```
 
-如果你使用 [npm](https://www.npmjs.com/)，运行：
+如果你使用 [npm](https://www.npmjs.com/)，执行：
 
 ```bash
 npm install --save-dev typescript
@@ -215,19 +215,19 @@ npm install --save-dev typescript
 }
 ```
 
-### 配置 TypeScript 编译器 {#configuring-the-typescript-compiler}
-在我们告诉编译器该做什么之前，它对我们的项目毫无帮助。在 TypeScript 中，这些规则定义在一个名为 `tsconfig.json` 的特殊文件中。要生成这个文件，请运行：
+### 配置 TypeScript 编译器{#configuring-the-typescript-compiler}
+没有配置项，编译器提供不了任何帮助。在 TypeScript 里，这些配置项都在一个名为 `tsconfig.json` 的特殊文件中定义。可以通过执行以下命令生成该文件：
 
 ```bash
 tsc --init
 ```
 
-看现在生成的 `tsconfig.json` 文件，你可以看到有很多选项可以用来配置编译器。有关所有选项的详细说明，请点击[这里](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)。
+`tsconfig.json` 文件中，有许多配置项用于配置编译器。查看所有配置项的的详细说明，[请参考此文档](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)。
 
-在众多选项中，我们将看到 `rootDir` 和`outDir`。编译器将从项目中找到 typescript 文件并编译成相对应 javascript 文件。但是，我们不想混淆源文件和编译后的输出文件。
+我们来看一下 `rootDir` 和 `outDir` 这两个配置项。编译器将从项目中找到 TypeScript 文件并编译成相对应 JavaScript 文件。但我们不想混淆源文件和编译后的输出文件。
 
-我们将分两步解决这个问题：
-* 首先，让我们像这样组织我们的项目结构。我们将所有源代码放在 `src` 目录中。
+为了解决该问题，我们将执行以下两个步骤：
+* 首先，让我们重新整理下项目目录，把所有的源代码放入 `src` 目录中。
 
 ```
 ├── package.json
@@ -236,7 +236,7 @@ tsc --init
 └── tsconfig.json
 ```
 
-* 第二步，我们将告诉编译器我们的源代码在哪以及编译后的输出代码应该放哪。
+* 其次，我们将通过配置项告诉编译器源码和输出的位置。
 
 ```js{6,7}
 // tsconfig.json
@@ -251,12 +251,12 @@ tsc --init
 }
 ```
 
-很好！现在，当我们运行构建脚本时，编译器会将生成的 javascript 输出到 `build` 文件夹。 [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json) 为`tsconfig.json` 提供了一套不错的配置来帮助你上手。
+很好！现在，当我们运行构建脚本时，编译器会将生成的 javascript 输出到 `build` 文件夹。 [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json) 提供了一套默认的 `tsconfig.json` 帮助你快速上手。
 
-通常情况下，你不希望将编译后生成的 javascript 文件保留在源代码管理中，因此请务必将生成文件夹添加到 `.gitignore` 中。
+通常情况下，你不希望将编译后生成的 JavaScript 文件保留在版本控制内。因此，应该把构建文件夹添加到 `.gitignore` 中。
 
 ### 文件扩展名 {#file-extensions}
-在 React 中，你大多数情况下在 `.js` 文件中编写你的组件。在 TypeScript 中，我们有两个文件扩展名：
+在 React 中，你的组件文件大多数使用 `.js` 作为扩展名。在 TypeScript 中，提供两种文件扩展名：
 
 `.ts` 是默认的文件扩展名，而 `.tsx` 是一个用于包含 `JSX` 代码的特殊扩展名。
 
@@ -268,23 +268,23 @@ tsc --init
 yarn build
 ```
 
-如果你使用 npm，运行：
+如果你使用 npm，执行：
 
 ```bash
 npm run build
 ```
 
-如果你没有看到输出信息，这意味着它完全编译成功了。
+如果你没有看到输出信息，这意味着它编译成功了。
 
 
 ### 类型定义 {#type-definitions}
-为了能够显示来自其他包的错误和提示，编译器依赖于声明文件。声明文件提供有关库的所有类型信息。这使我们能够在项目中使用像 javascript 这样的第三方包。
+为了能够显示来自其他包的错误和提示，编译器依赖于声明文件。声明文件提供有关库的所有类型信息。这样，我们的项目就可以用上像 npm 这样的平台提供的三方 JavaScript 库。
 
 获取一个库的声明文件有两种方式：
 
-__Bundled__ - 该库包含了自己的声明文件。这对我们来说很好，因为我们所要做的就是安装这个库，我们便可以立即使用它了。要知道一个库是否包含类型，看库中是否有 `index.d.ts` 文件。有些库会在 `package.json` 文件的 `typings` 或 `types` 属性中指定类型文件。
+__Bundled__ - 该库包含了自己的声明文件。这样很好，因为我们只需要安装这个库，就可以立即使用它了。要知道一个库是否包含类型，看库中是否有 `index.d.ts` 文件。有些库会在 `package.json` 文件的 `typings` 或 `types` 属性中指定类型文件。
 
-__[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)__ - DefinitelyTyped 是一个庞大的声明存储库，主要为大多数没有声明文件的 JavaScript 库。这些声明是由众包和开源贡献者管理。例如，React 库并没有自己的声明文件。但是，我们可以从 DefinitelyTyped 获取它的声明文件。所以，在终端中输入此命令。
+__[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)__ - DefinitelyTyped 是一个庞大的声明仓库，为没有声明文件的 JavaScript 库提供类型定义。这些类型定义通过众包的方式完成，并由微信和开源贡献者一起管理。例如，React 库并没有自己的声明文件。但我们可以从 DefinitelyTyped 获取它的声明文件。只要执行以下命令。
 
 ```bash
 # yarn
@@ -295,7 +295,7 @@ npm i --save-dev @types/react
 ```
 
 __局部声明__
-有时，你要使用的包里没有声明文件，在 DefinitelyTyped 上也没有。在这种情况下，我们可以有一个本地声明文件。因此，在项目的根目录中创建一个 `declarations.d.ts` 文件。一个简单的声明可能是这样的：
+有时，你要使用的包里没有声明文件，在 DefinitelyTyped 上也没有。在这种情况下，我们可以创建一个本地的定义文件。因此，在项目的根目录中创建一个 `declarations.d.ts` 文件。一个简单的声明可能是这样的：
 
 ```typescript
 declare module 'querystring' {
@@ -312,15 +312,15 @@ declare module 'querystring' {
 
 ## Reason {#reason}
 
-[Reason](https://reasonml.github.io/) 不是一种新的语言；它是一种新的语法和工具链，由测试语言 [OCaml](https://ocaml.org/) 提供支持。Reason 使 OCaml 提供了适合 JavaScript 程序员的熟悉语法，而且迎合现有已知的 NPM/Yarn 工作流。
+[Reason](https://reasonml.github.io/) 不是一种新的语言；它是一种新的语法和工具链，底层使用的是久经验证的 [OCaml](https://ocaml.org/) 语言。Reason 在 OCaml 之上提供了 JavaScript 程序员的熟悉语法，而且集成了现有的 NPM/Yarn 工作流。
 
-Reason 是由 Facebook 开发，并且用在一些产品中，例如 Messenger。它仍然有一定的实验性质，但它有由 Facebook 维护的[专门的 React 绑定](https://reasonml.github.io/reason-react/) 和一个 [充满活力的社区](https://reasonml.github.io/docs/en/community.html)。
+Reason 是由 Facebook 开发，并且运用在一些现有产品中比如 Messager。虽然它有一定的实验性质，但它拥有由 Facebook 维护的 [专门的 React 绑定](https://reasonml.github.io/reason-react/) 和一个 [充满活力的社区](https://reasonml.github.io/docs/en/community.html)。
 
 ## Kotlin {#kotlin}
 
-[Kotlin](https://kotlinlang.org/) 是由 JetBrains 开发的一门静态类型语言。其目标平台包括 JVM、Android、LLVM和 [JavaScript](https://kotlinlang.org/docs/reference/js-overview.html)。
+[Kotlin](https://kotlinlang.org/) 是由 JetBrains 开发的一门静态类型语言。其目标平台包括 JVM、Android、LLVM 和 [JavaScript](https://kotlinlang.org/docs/reference/js-overview.html)。
 
-JetBrains 专门为 React 社区开发和维护了几个工具：[React bindings](https://github.com/JetBrains/kotlin-wrappers) 以及 [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app)。后者可以帮助您开始使用 Kotlin 构建 React 应用程序，并且不需要构建配置。
+JetBrains 专门为 React 社区开发和维护了几个工具：[React bindings](https://github.com/JetBrains/kotlin-wrappers) 以及 [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app)。后者可以通过 Kotlin 快速编写 React 应用程序，并且不需要构建配置。
 
 ## 其他语言 {#other-languages}
 
