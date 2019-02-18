@@ -15,7 +15,7 @@ const TestRenderer = require('react-test-renderer'); // ES5 with npm
 
 ## 概览 {#overview}
 
-这个 package 提供了一个 React 渲染器，用于将 React 组件渲染成纯 JavaScript 对象, 无需依赖 DOM 或原生移动环境。
+这个 package 提供了一个 React 渲染器，用于将 React 组件渲染成纯 JavaScript 对象，无需依赖 DOM 或原生移动环境。
 
 这个 package 提供的主要功能是在不依赖浏览器或 [jsdom](https://github.com/tmpvar/jsdom) 的情况下，返回某个时间点由 React DOM 或者 React Native 平台渲染出的视图结构（类似与 DOM 树）快照。
 
