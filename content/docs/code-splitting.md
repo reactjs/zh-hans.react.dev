@@ -122,7 +122,7 @@ function MyComponent() {
 
 这个代码将会在渲染组件时，自动导入包含 `OtherComponent` 组件的包。
 
-`React.lazy` 接受一个函数，这个函数需要动态调用 `import()`。它必须返回一个 `Promise`，该 Promise 需要 resolve 至一个 `default` export 属性包含 React 组件的 module。
+`React.lazy` 接受一个函数，这个函数需要动态调用 `import()`。它必须返回一个 `Promise`，该 Promise 需要 resolve 一个 `defalut` export 的 React 组件。
 
 ### Suspense
 
