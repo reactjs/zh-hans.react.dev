@@ -113,7 +113,7 @@ function useFriendStatus(friendID) {
 
 现在让我们看看应该如何使用自定义 Hook。
 
-## 使用自定义Hook {#using-a-custom-hook}
+## 使用自定义 Hook {#using-a-custom-hook}
 
 在开始的时候，我们的目标是在 `FriendStatus` 和 `FriendListItem` 组件中去除重复的逻辑，即：这两个组件都想知道朋友是否在线。
 
