@@ -1,5 +1,5 @@
 ---
-title: 禁止调用 PropTypes 函数警告
+title: 警告：禁止调用 PropTypes 函数
 layout: single
 permalink: warnings/dont-call-proptypes.html
 ---
