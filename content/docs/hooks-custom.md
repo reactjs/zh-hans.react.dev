@@ -10,7 +10,7 @@ prev: hooks-rules.html
 
 通过自定义 Hooks，可以将组件逻辑提取到可重用的函数中。
 
-当我们学习[使用 Effect Hook](/docs/hooks-effect.html#example-using-hooks-1)时，我们从聊天程序中看到了下面这个组件，该组件指示朋友当前的状态是否在线：
+在我们学习[使用 Effect Hook](/docs/hooks-effect.html#example-using-hooks-1)时，我们已经见过这个聊天程序中的组件，该组件用来显示好友的在线状态：
 
 ```js{4-15}
 import React, { useState, useEffect } from 'react';
