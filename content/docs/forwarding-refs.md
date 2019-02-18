@@ -4,7 +4,7 @@ title: Refs 转发
 permalink: docs/forwarding-refs.html
 ---
 
-Ref 转发是一项将 [ref](/docs/refs-and-the-dom.html) 自动的通过一组件传递到其子组件的技术。对于大多数应用中的组件来说，这通常不是必需的。但其对某些组件，尤其是可重用的组件库是很有用的。最常见的案例如下所述。
+Ref 转发是一项将 [ref](/docs/refs-and-the-dom.html) 自动地通过一组件传递到其子组件的技巧。对于大多数应用中的组件来说，这通常不是必需的。但其对某些组件，尤其是可重用的组件库是很有用的。最常见的案例如下所述。
 
 ## 转发 refs 到 DOM 组件 {#forwarding-refs-to-dom-components}
 
@@ -41,36 +41,36 @@ React 组件隐藏其实现细节，包括其渲染的输出。其他使用 `Fan
 
 **当你开始在组件库中使用 `forwardRef` 时，你应当将其作为一个 breaking change，并发布库的一个新的主板本。**这是因为你的库可能会有明显不同的行为（例如 refs 被分配给了什么，以及导出了什么类型），并且这样可能会导致依赖旧行为的应用和其他库崩溃。
 
-出于同样的原因，当存在时有条件的应用 `React.forwardRef` 也是不推荐的：其改变了你的库的行为，并在升级 React 自身时破环用户的应用。
+出于同样的原因，当存在时有条件地应用 `React.forwardRef` 也是不推荐的：其改变了你的库的行为，并在升级 React 自身时破环用户的应用。
 
 ## 在高阶组件中转发 refs {#forwarding-refs-in-higher-order-components}
 
-这项技术对[高阶组件](/docs/higher-order-components.html)（也被成为 HOC）特别有用。让我们从一个输出组件 props 到控制台的 HOC 示例开始：
+这个技巧对[高阶组件](/docs/higher-order-components.html)（也被称为 HOC）特别有用。让我们从一个输出组件 props 到控制台的 HOC 示例开始：
 `embed:forwarding-refs/log-props-before.js`
 
-"logProps" HOC 透传所有 `props` 到其包裹的组件， 所以渲染的输出将是相同的。 例如：我们可以使用该 HOC 记录所有传递到“funcy button”组件的 props：
+"logProps" HOC 透传所有 `props` 到其包裹的组件，所以渲染的输出将是相同的。例如：我们可以使用该 HOC 记录所有传递到“fancy button”组件的 props：
 `embed:forwarding-refs/fancy-button.js`
 
 上面的示例有一点需要注意：refs 将不会透传下去。这是因为 `ref` 不是 prop 属性。就像 `key` 一样，其被 React 进行了特殊处理。如果你对 HOC 添加 ref，该 ref 将引用最外层的容器组件，而不是被包裹的组件。
 
-这意味着用于我们 `FancyButton` 组件的 refs 将实际上被挂载到了 `LogProps` 组件：
+这意味着用于我们 `FancyButton` 组件的 refs 实际上将被挂载到了 `LogProps` 组件：
 `embed:forwarding-refs/fancy-button-ref.js`
 
-幸运的是，我们可以使用 `React.forwardRef` API 明确地将 refs 转发到内部的 `FancyButton` 组件。`React.forwardRef` 接受一个渲染函数，其接收 `props` 和 `ref` 参数并返回一个React节点。例如：
+幸运的是，我们可以使用 `React.forwardRef` API 明确地将 refs 转发到内部的 `FancyButton` 组件。`React.forwardRef` 接受一个渲染函数，其接收 `props` 和 `ref` 参数并返回一个 React 节点。例如：
 `embed:forwarding-refs/log-props-after.js`
 
 ## 在 DevTools 中显示自定义名称 {#displaying-a-custom-name-in-devtools}
 
 `React.forwardRef` 接受一个渲染函数。React DevTools 使用该函数来决定为 ref 转发组件显示的内容。
 
-例如：以下组件将在 DevTools 中显示为“*ForwardRef*”：
+例如，以下组件将在 DevTools 中显示为“*ForwardRef*”：
 
 `embed:forwarding-refs/wrapped-component.js`
 
-如果你命名了渲染函数，DevTools 也将包含其名称（例如“*ForwardRef(myFunction)*”）
+如果你命名了渲染函数，DevTools 也将包含其名称（例如“*ForwardRef(myFunction)*”）：
 
 `embed:forwarding-refs/wrapped-component-with-function-name.js`
 
-你甚至可以设置函数的 `displayName` 属性来包含包装的组件：
+你甚至可以设置函数的 `displayName` 属性来包含被包裹组件的名称：
 
 `embed:forwarding-refs/customized-display-name.js`
