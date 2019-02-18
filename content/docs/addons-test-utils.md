@@ -21,7 +21,7 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
 >
 > Airbnb 发布了一款叫作 Enzyme 的测试工具，通过它能够轻松对 React 组件的输出进行断言、操控和遍历。如果你需要决定一款和 Jest 或者其他测试运行器搭配使用单元测试工具，值得看一下：[http://airbnb.io/enzyme/](http://airbnb.io/enzyme/)
 >
-> 另外，这里还有一款叫做 react-testing-library 的测试工具，能轻松像终端用户使用一样写测试用例，并且能与任何一款测试运行器配合工作：[https://git.io/react-testing-library](https://git.io/react-testing-library)
+> 另外，这里还有一款叫做 react-testing-library 的测试工具，它使得对组件编写测试用例就像终端用户在使用它一样方便，并且能与任何一款测试运行器配合工作：[https://git.io/react-testing-library](https://git.io/react-testing-library)
 
  - [`Simulate`](#simulate)
  - [`renderIntoDocument()`](#renderintodocument)
