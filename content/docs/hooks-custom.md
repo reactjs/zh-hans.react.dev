@@ -36,7 +36,7 @@ function FriendStatus(props) {
 }
 ```
 
-现在让聊天应用拥有一个联系人列表，当用户在线时将名字设置为绿色。我们可以将上面类似的逻辑复制并粘贴到 `FriendListItem` 组件中来，但是这样并不理想：
+现在比如说我们的聊天应用有一个联系人列表，当用户在线时需要把名字设置为绿色。我们可以把上面类似的逻辑复制并粘贴到 `FriendListItem` 组件中来，但这并不是理想的做法：
 
 ```js{4-15}
 import React, { useState, useEffect } from 'react';
