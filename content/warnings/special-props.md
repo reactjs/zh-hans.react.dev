@@ -1,5 +1,5 @@
 ---
-title: 特殊 props 警告
+title: 警告：特殊的 props
 layout: single
 permalink: warnings/special-props.html
 ---
