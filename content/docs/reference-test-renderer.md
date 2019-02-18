@@ -15,9 +15,9 @@ const TestRenderer = require('react-test-renderer'); // ES5 with npm
 
 ## 概览 {#overview}
 
-这个 package 提供了一个 React 渲染器，可以用来将 React 组件渲染成纯 JavaScript 对象, 无需依赖 DOM 或原生移动环境。
+这个 package 提供了一个 React 渲染器，用于将 React 组件渲染成纯 JavaScript 对象, 无需依赖 DOM 或原生移动环境。
 
-本质上, 这个 package 无需利用浏览器或 [jsdom](https://github.com/tmpvar/jsdom) 便可以轻松抓取由 React DOM 或 React Native 渲染出的平台试图层次结构（类似 DOM 树）。
+这个 package 提供的主要功能是在不依赖浏览器或 [jsdom](https://github.com/tmpvar/jsdom) 的情况下，返回某个时间点由 React DOM 或者 React Native 平台渲染出的视图结构（类似与 DOM 树）快照。
 
 示例:
 
@@ -38,7 +38,7 @@ console.log(testRenderer.toJSON());
 //   children: [ 'Facebook' ] }
 ```
 
-你可以使用 Jest 的快照测试来自动保存一个该 `JSON` 树文件的副本，并在你的测试中检查它是否被更改：[了解更多](http://facebook.github.io/jest/blog/2016/07/27/jest-14.html)。
+你可以使用 Jest 的快照测试功能来自动保存当前 `JSON` 树结构到一个文件中，并在测试中检查它是否被修改：[了解更多](http://facebook.github.io/jest/blog/2016/07/27/jest-14.html)。
 
 你也可以通过遍历输出来查找特定节点，并对它们进行断言。
 
@@ -110,7 +110,7 @@ TestRenderer.create(element, options);
 testRenderer.toJSON()
 ```
 
-返回一个表示渲染后的树的对象。该树仅包含特定平台的节点，例如 `<div>` 或 `<View>` 和他们的 props，但并不包含任何用户编写的组件。这对于[快照测试](http://facebook.github.io/jest/docs/en/snapshot-testing.html#snapshot-testing-with-jest)非常方便。
+返回一个已渲染的的树对象。该树仅包含特定平台的节点，例如 `<div>` 或 `<View>` 和它们的 props，但并不包含任何用户编写的组件。这对于[快照测试](http://facebook.github.io/jest/docs/en/snapshot-testing.html#snapshot-testing-with-jest)非常方便。
 
 ### `testRenderer.toTree()` {#testrenderertotree}
 
@@ -118,7 +118,7 @@ testRenderer.toJSON()
 testRenderer.toTree()
 ```
 
-返回一个表示渲染后的树的对象。和 `toJSON()` 不同，它表示的内容比 `toJSON()` 提供的内容要更加详细，并且包含用户编写的组件。除非你要在测试渲染器（test renderer）之上编写自己的断言库，否则你可能并不需要这个方法。
+返回一个已渲染的的树对象。和 `toJSON()` 不同，它表示的内容比 `toJSON()` 提供的内容要更加详细，并且包含用户编写的组件。除非你要在测试渲染器（test renderer）之上编写自己的断言库，否则你可能并不需要这个方法。
 
 ### `testRenderer.update()` {#testrendererupdate}
 
@@ -126,7 +126,7 @@ testRenderer.toTree()
 testRenderer.update(element)
 ```
 
-使用新的根元素重新渲染内存中的树。它模拟根元素的一次React更新。如果新的元素和之前的元素有相同的 type 和 key，该树将会被更新；否则，它将重挂载一个新树。
+使用新的根元素重新渲染内存中的树。它模拟根元素的一次 React 更新。如果新的元素和之前的元素有相同的 type 和 key，该树将会被更新；否则，它将重挂载一个新树。
 
 ### `testRenderer.unmount()` {#testrendererunmount}
 
@@ -134,7 +134,7 @@ testRenderer.update(element)
 testRenderer.unmount()
 ```
 
-卸载内存中的树，触发相应的生命周期事件。
+卸载内存中的树，会触发相应的生命周期事件。
 
 ### `testRenderer.getInstance()` {#testrenderergetinstance}
 
@@ -158,7 +158,7 @@ testRenderer.root
 testInstance.find(test)
 ```
 
-找到一个 `test(testInstance)` 返回 `true` 的后代测试实例。如果 `test(testInstance)` 没有只对一个测试实例返回 `true`，将会报错。
+找到一个 `test(testInstance)` 返回 `true` 的后代测试实例。如果不只有一个测试实例匹配，将会报错。
 
 ### `testInstance.findByType()` {#testinstancefindbytype}
 
@@ -240,9 +240,9 @@ testInstance.children
 
 该测试实例的子测试实例。
 
-## 意见 {#ideas}
+## 想法 {#ideas}
 
-你可以把 `createNodeMock` 函数作为选项（option）传递给 `TestRenderer.create`，可以自行模拟 refs。`createNodeMock` 接受当前元素作为参数，并且返回一个模拟 ref 对象的。这十分有利于测试依赖于 refs 的组件。
+你可以把 `createNodeMock` 函数作为选项（option）传递给 `TestRenderer.create`，进行自定义 refs 模拟。`createNodeMock` 接受当前元素作为参数，并且返回一个模拟 ref 对象的。这十分有利于依赖 refs 组件的测试。
 
 ```javascript
 import TestRenderer from 'react-test-renderer';
