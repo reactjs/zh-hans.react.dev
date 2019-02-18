@@ -194,7 +194,7 @@ function ChatRecipientPicker() {
   const isRecipientOnline = useFriendStatus(recipientID);
 ```
 
-这让我们知道*当前选中*的朋友是否在线。如果我们选择不同的朋友并更新 `recipientID` 状态变量，我们的 `useFriendStatusHook` 将会取消订阅之前选中的朋友，并订阅新选中的朋友状态。
+这让我们知道*当前选中*的好友是否在线。如果我们选择不同的好友并更新 `recipientID` 状态变量，我们的 `useFriendStatusHook` 将会取消订阅之前选中的好友，并订阅新选中的好友状态。
 
 ## `useYourImagination()` {#useyourimagination}
 
