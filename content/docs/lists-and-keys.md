@@ -8,7 +8,7 @@ next: forms.html
 
 首先，让我们看下在 Javascript 中如何转化列表。
 
-如下代码，我们使用 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 函数让数组中的每一项变双倍，然后我们得到了一个新的列表 `doubled`：
+如下代码，我们使用 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 函数让数组中的每一项变双倍，然后我们得到了一个新的列表 `doubled`并打印出来：
 
 ```javascript{2}
 const numbers = [1, 2, 3, 4, 5];
@@ -24,7 +24,7 @@ console.log(doubled);
 
 你可以通过使用 `{}` 在 JSX 内构建一个[元素集合](/docs/introducing-jsx.html#embedding-expressions-in-jsx)。
 
-下面，我们使用 Javascript 中的 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 方法来遍历 `numbers` 数组。将数组中的每个元素变成 `<li>` 标签，最后我们得到一个数组 `listItems`：
+下面，我们使用 Javascript 中的 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 方法来遍历 `numbers` 数组。将数组中的每个元素变成 `<li>` 标签，最后我们将得到的数组赋值给 `listItems`：
 
 ```javascript{2-4}
 const numbers = [1, 2, 3, 4, 5];
@@ -44,7 +44,7 @@ ReactDOM.render(
 
 [在 CodePen 上尝试](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
 
-这段代码生成了一个 1 到 5 的数字列表。
+这段代码生成了一个 1 到 5 的项目符号列表。
 
 ### 基础列表组件 {#basic-list-component}
 
@@ -130,15 +130,15 @@ const todoItems = todos.map((todo, index) =>
 );
 ```
 
-如果列表项目的顺序可能会变化，我们不建议使用索引来用作键值，因为这样做会导致性能变差，还可能引起组件状态的问题。可以看看 Robin Pokorny 的[深度解析使用索引作为 key 的副作用](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318) 这一篇文章。如果你选择不指定显式的键值，那么 React 将默认使用索引用作为列表项目的键值。
+如果列表项目的顺序可能会变化，我们不建议使用索引来用作键值，因为这样做会导致性能变差，还可能引起组件状态的问题。可以看看 Robin Pokorny 的[深度解析使用索引作为 key 的负面影响](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318) 这一篇文章。如果你选择不指定显式的键值，那么 React 将默认使用索引用作为列表项目的键值。
 
-要是你有兴趣了解更多的话，这里有一篇文章 [in-depth explanation about why keys are necessary](/docs/reconciliation.html#recursing-on-children) 可以参考。
+要是你有兴趣了解更多的话，这里有一篇文章 [深入解析为什么 keys 是必须的](/docs/reconciliation.html#recursing-on-children) 可以参考。
 
 ### 用 Keys 提取组件 {#extracting-components-with-keys}
 
-元素的 Key 只有放在其周围数组的上下文中才有意义。
+元素的 Key 只有放在就近的数组上下文中才有意义。
 
-比方说，如果你[抽取](/docs/components-and-props.html#extracting-components) 出一个 `ListItem` 组件，你应该把 key 保存在数组中的这个 `<ListItem />` 元素上，而不是放在 `ListItem` 组件中的 `<li>` 元素上。
+比方说，如果你[抽取](/docs/components-and-props.html#extracting-components) 出一个 `ListItem` 组件，你应该把 key 保留在数组中的这个 `<ListItem />` 元素上，而不是放在 `ListItem` 组件中的 `<li>` 元素上。
 
 ** 例子：不正确的使用键的方式 **
 
@@ -204,7 +204,7 @@ ReactDOM.render(
 
 [在 CodePen 上尝试](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
 
-一个好的经验法则是：在 `map()` 方法中的元素需要设置键属性。
+一个好的经验法则是：在 `map()` 方法中的元素需要设置 keys 属性。
 
 ### 键（Key）只是在兄弟节点之间必须唯一 {#keys-must-only-be-unique-among-siblings}
 
@@ -280,7 +280,7 @@ function NumberList(props) {
 }
 ```
 
-JSX 允许在大括号中[嵌入任何表达式](/docs/introducing-jsx.html#embedding-expressions-in-jsx)，所以我们可以在 `map()` 中这样使用：
+JSX 允许在大括号中[嵌入任何表达式](/docs/introducing-jsx.html#embedding-expressions-in-jsx)，所以我们可以内联 `map()` 返回的结果：
 
 ```js{5-8}
 function NumberList(props) {
