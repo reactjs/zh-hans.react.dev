@@ -29,7 +29,7 @@ React 元素的事件处理和 DOM 元素的很相似，但是有一点语法上
 </button>
 ```
 
-在 React 中另一个不同是你不能使用返回 `false` 的方式阻止默认行为。你必须显式的使用 preventDefault。例如，传统的 HTML 中阻止链接默认打开一个新页面，你可以这样写：
+在 React 中另一个不同是你不能使用返回 `false` 的方式阻止默认行为。你必须显式的使用 preventDefault 。例如，传统的 HTML 中阻止链接默认打开一个新页面，你可以这样写：
 
 ```html
 <a href="#" onclick="console.log('The link was clicked.'); return false">
@@ -58,7 +58,7 @@ function ActionLink() {
 
 使用 React 时你一般不需要使用 `addEventListener` 为一个已创建的 DOM 元素添加监听器。你仅仅需要在这个元素初始渲染的时候提供一个监听器。
 
-当你使用 [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) 语法定义一个组件的时候，通常的做法是使事件处理函数成为类中的一个方法。例如，下面的 `Toggle` 组件渲染一个让用户切换开关状态的按钮：
+当你使用 [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) 语法定义一个组件的时候，通常的做法是使事件处理函数成为 class 中的一个方法。例如，下面的 `Toggle` 组件渲染一个让用户切换开关状态的按钮：
 
 ```js{6,7,10-14,18}
 class Toggle extends React.Component {
@@ -93,7 +93,7 @@ ReactDOM.render(
 
 [**在 CodePen 上试试**](http://codepen.io/gaearon/pen/xEmzGg?editors=0010)
 
-你必须谨慎对待 JSX 回调函数中的 `this`， 在 JavaScript 中，类的方法默认是不会[绑定](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind) `this` 的。如果你忘记绑定 `this.handleClick` 并把它传入了 `onClick`, 当你调用这个函数的时候 `this` 会是 `undefined`。
+你必须谨慎对待 JSX 回调函数中的 `this`， 在 JavaScript 中， class 的方法默认是不会[绑定](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind) `this` 的。如果你忘记绑定 `this.handleClick` 并把它传入了 `onClick`，当你调用这个函数的时候 `this` 会是 `undefined`。
 
 这并不是 React 的特殊行为；它是[函数如何在 JavaScript 中运行](https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/)的一部分。通常情况下，如果你没有在方法后面添加 `()`，例如 `onClick={this.handleClick}`，你应该为这个方法绑定 `this`。
 
@@ -119,7 +119,7 @@ class LoggingButton extends React.Component {
 
 这个语法在 [Create React App](https://github.com/facebookincubator/create-react-app) 中默认开启。
 
-如果你没有使用类字段语法，你可以在回调函数中使用[箭头函数](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)：
+如果你没有使用 class 字段语法，你可以在回调函数中使用[箭头函数](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)：
 
 ```js{7-9}
 class LoggingButton extends React.Component {
