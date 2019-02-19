@@ -7,11 +7,11 @@ redirect_from:
 ---
 
 
-UI 更新需要对 DOM 进行操作，而 React 内部通过多种灵巧的技术以最小化操作 DOM 来降低性能损耗。对于大部分应用而言，使用 React 不需要额外功夫来特别优化就已拥有高性能的用户界面。尽管如此，你仍然可以通过一些手段来加速你的 React 应用。
+UI 更新需要对 DOM 进行操作，而 React 内部通过几种巧妙的技术以最小化操作 DOM 来降低性能损耗。对于大部分应用而言，使用 React 不需要特别去优化就已拥有高性能的用户界面。尽管如此，你仍然有办法来加速你的 React 应用。
 
 ## 使用生产版本 {#use-the-production-build}
 
-如果需要对你的 React 应用进行度量或者遇到性能问题时，确保你正在使用压缩的生产版本。
+当你需要对你的 React 应用进行 benchmark，或者遇到了性能问题，请确保你正在使用压缩后的生产版本。
 
 React 默认包含了许多有用的警告信息。这些警告信息在开发过程中非常有帮助。然而这使得 React 变得更大且更慢，所以你需要确保部署时使用了生产版本。
 
@@ -172,7 +172,7 @@ new webpack.optimize.UglifyJsPlugin()
 
 3. 打开 Chrome 开发工具的 **[Performance](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool)** 标签并按下 **Record**。
 
-4. 对你想度量的行为进行复现。尽量在 20 秒内完成以避免 Chrome 卡住。
+4. 对你想分析的行为进行复现。尽量在 20 秒内完成以避免 Chrome 卡住。
 
 5. 停止记录。
 
@@ -201,11 +201,11 @@ new webpack.optimize.UglifyJsPlugin()
 
 ## 虚拟化长列表 {#virtualize-long-lists}
 
-如果你的应用渲染了长列表（上百甚至上千的数据），我们推荐使用“虚拟滚动”技术。这项技术会在有限的时间内仅渲染少量的数据，并戏剧性的降低重新渲染组件的时间消耗，以及创建 DOM 节点的数量。
+如果你的应用渲染了长列表（上百甚至上千的数据），我们推荐使用“虚拟滚动”技术。这项技术会在有限的时间内仅渲染少量的数据，并奇迹般的降低重新渲染组件的时间消耗，以及创建 DOM 节点的数量。
 
 [react-window](https://react-window.now.sh/) 和 [react-virtualized](https://bvaughn.github.io/react-virtualized/) 是热门的虚拟滚动库。
 它们提供了多种可复用的组件，用于展示列表、网格和表格数据。
-如果你想要一些针对你的应用更加定制化的场景，你也可以创建你自己的虚拟滚动组件，就像 [Twitter 所做的](https://medium.com/@paularmstrong/twitter-lite-and-high-performance-react-progressive-web-apps-at-scale-d28a00e780a3)。
+如果你想要一些针对你的应用做定制优化，你也可以创建你自己的虚拟滚动组件，就像 [Twitter 所做的](https://medium.com/@paularmstrong/twitter-lite-and-high-performance-react-progressive-web-apps-at-scale-d28a00e780a3)。
 
 ## 避免调停 {#avoid-reconciliation}
 
@@ -223,9 +223,9 @@ React 构建并维护了一套内部的 UI 渲染陈述。它包含了来自你�
 
 <center><img src="../images/blog/devtools-highlight-updates.png" style="max-width:100%; margin-top:10px;" alt="如何开启更新高亮" /></center>
 
-当与你的页面进行交互时，你会看到被重新渲染的组件立刻出现了彩色的边框。这能帮助你找到那些没有必要的重新渲染。你可以在来自 [Ben Edelstein](https://blog.logrocket.com/@edelstein) 的[这篇博客](https://blog.logrocket.com/make-react-fast-again-part-3-highlighting-component-updates-6119e45e6833)中学到更多关于 React 开发工具的功能。
+当与你的页面进行交互时，你会看到被重新渲染的组件立刻出现了彩色的边框。这能帮助你找到那些没有必要的重新渲染。你可以在 [Ben Edelstein](https://blog.logrocket.com/@edelstein) 的[这篇博客](https://blog.logrocket.com/make-react-fast-again-part-3-highlighting-component-updates-6119e45e6833)中学到更多关于 React 开发工具的功能。
 
-思考这个例子：
+考虑这种情况：
 
 <center><img src="../images/blog/highlight-updates-example.gif" style="max-width:100%; margin-top:20px;" alt="React 开发工具更新高亮示例" /></center>
 
