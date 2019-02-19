@@ -262,7 +262,7 @@ tsc --init
 
 ### 运行 TypeScript {#running-typescript}
 
-如果你按照上面的说明操作，你应该能第一次运行 TypeScript 了。
+如果你按照上面的说明操作，现在应该能运行 TypeScript 了。
 
 ```bash
 yarn build
@@ -314,7 +314,7 @@ declare module 'querystring' {
 
 [Reason](https://reasonml.github.io/) 不是一种新的语言；它是一种新的语法和工具链，底层使用的是久经验证的 [OCaml](https://ocaml.org/) 语言。Reason 在 OCaml 之上提供了 JavaScript 程序员的熟悉语法，而且集成了现有的 NPM/Yarn 工作流。
 
-Reason 是由 Facebook 开发，并且运用在一些现有产品中比如 Messager。虽然它有一定的实验性质，但它拥有由 Facebook 维护的 [专门的 React 绑定](https://reasonml.github.io/reason-react/) 和一个 [充满活力的社区](https://reasonml.github.io/docs/en/community.html)。
+Reason 是由 Facebook 开发，并且运用在一些现有产品中比如 Messager。虽然它有一定的实验性质，但它拥有由 Facebook 维护的 [专门的 React 绑定](https://reasonml.github.io/reason-react/) 和一个 [活跃的社区](https://reasonml.github.io/docs/en/community.html)。
 
 ## Kotlin {#kotlin}
 
