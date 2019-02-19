@@ -24,7 +24,7 @@ permalink: warnings/refs-must-have-owner.html
 
 ## 函数组件上的 Refs {#refs-on-function-components}
 
-如果 `<Foo>` 是一个函数组件，那么你不能给他添加 ref：
+如果 `<Foo>` 是一个函数组件，那么你不能给它添加 ref：
 
 ```js
 // 如果 Foo 是一个函数，那么这样将不起作用！
