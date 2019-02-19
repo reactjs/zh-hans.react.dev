@@ -1,48 +1,48 @@
 ---
-title: Refs Must Have Owner Warning
+title: 警告：Refs 属性必须有所有者
 layout: single
 permalink: warnings/refs-must-have-owner.html
 ---
 
-You are probably here because you got one of the following error messages:
+你能到这个页面很可能是因为你看到了以下错误信息：
 
 *React 16.0.0+*
 > Warning:
 >
 > Element ref was specified as a string (myRefName) but no owner was set. You may have multiple copies of React loaded. (details: https://fb.me/react-refs-must-have-owner).
 
-*earlier versions of React*
+*早期版本的 React*
 > Warning:
 >
 > addComponentAsRefTo(...): Only a ReactOwner can have refs. You might be adding a ref to a component that was not created inside a component's `render` method, or you have multiple copies of React loaded.
 
-This usually means one of three things:
+这通常意味着以下三种原因之一：
 
-- You are trying to add a `ref` to a function component.
-- You are trying to add a `ref` to an element that is being created outside of a component's render() function.
-- You have multiple (conflicting) copies of React loaded (eg. due to a misconfigured npm dependency)
+- 你试图给一个函数组件添加 `ref`。
+- 你试图把 `ref` 添加到一个在 render() 函数之外生成的元素上。
+- 你加载了多个不同的（冲突的） React 副本（比方说是由配置错误的 npm 依赖所引起）。
 
-## Refs on Function Components {#refs-on-function-components}
+## 函数组件上的 Refs {#refs-on-function-components}
 
-If `<Foo>` is a function component, you can't add a ref to it:
+如果 `<Foo>` 是一个函数组件，那么你不能给他添加 ref：
 
 ```js
-// Doesn't work if Foo is a function!
+// 如果 Foo 是一个函数，那么这样将不起作用！
 <Foo ref={foo} />
 ```
 
-If you need to add a ref to a component, convert it to a class first, or consider not using refs as they are [rarely necessary](/docs/refs-and-the-dom.html#when-to-use-refs).
+如果你需要为一个组件添加 ref，首先将组件转换为一个类，或者考虑不要使用 refs，因为它们 [很少是必要的](/docs/refs-and-the-dom.html#when-to-use-refs)。
 
-## Strings Refs Outside the Render Method {#strings-refs-outside-the-render-method}
+## 在 Render 方法外的字符串型 Refs {#strings-refs-outside-the-render-method}
 
-This usually means that you're trying to add a ref to a component that doesn't have an owner (that is, was not created inside of another component's `render` method). For example, this won't work:
+这通常意味着你试图将 ref 添加到没有所有者的组件上（即，不是在某个组件的 `render` 方法中创建的）。举个例子，这样是不起作用的：
 
 ```js
-// Doesn't work!
+// 不起作用！
 ReactDOM.render(<App ref="app" />, el);
 ```
 
-Try rendering this component inside of a new top-level component which will hold the ref. Alternatively, you may use a callback ref:
+试试在顶层组件内渲染该组件，该组件将保存 ref。或者，你可以用回调函数作为 ref：
 
 ```js
 let app;
@@ -54,10 +54,11 @@ ReactDOM.render(
 );
 ```
 
-Consider if you [really need a ref](/docs/refs-and-the-dom.html#when-to-use-refs) before using this approach.
+在使用这种实现方式之前，请考虑你是否 [真的需要 ref](/docs/refs-and-the-dom.html#when-to-use-refs)。
 
-## Multiple copies of React {#multiple-copies-of-react}
+## 多个 React 副本 {#multiple-copies-of-react}
 
-Bower does a good job of deduplicating dependencies, but npm does not. If you aren't doing anything (fancy) with refs, there is a good chance that the problem is not with your refs, but rather an issue with having multiple copies of React loaded into your project. Sometimes, when you pull in a third-party module via npm, you will get a duplicate copy of the dependency library, and this can create problems.
+Bower 在消除重复依赖方面做得不错，但 npm 不行。如果你没有用 refs 做任何（花哨的）事情，那么问题很有可能不是出在你写的 refs 上，而是由你的项目加载了多个 React 副本所引起。有时候，当你通过 npm 拉取一个第三方模块时，你会得到重复的依赖库副本，这可能会产生问题。
 
-If you are using npm... `npm ls` or `npm ls react` might help illuminate.
+如果你用的是 npm，`npm ls` 或 `npm ls react` 命令将有助于发现问题。
+
