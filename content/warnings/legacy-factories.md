@@ -44,7 +44,7 @@ function render() {
 
 ## 不使用 JSX 的动态组件 {#dynamic-components-without-jsx}
 
-如果从动态来源取得组件类，那么就不需要创建立即调用的工厂函数。相反，你可以直接内联地创建你的元素：
+如果从动态来源取得组件类，那么就不需要创建立即调用的工厂函数。你可以改用内联的方式创建你的元素：
 
 ```javascript
 var React = require('react');
