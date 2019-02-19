@@ -10,7 +10,7 @@ permalink: warnings/dont-call-proptypes.html
 >
 > 我们提供了 [一个重构件（codemod）脚本](/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes) 来自动完成这个过程。
 
-在 React 未来的主要版本（major release）中。执行 PropType 校验函数的代码应该从生成环境中剥离。此时，任何手动调用这些函数的代码（还没从生产环境中剥离的）都会产生报错。
+在 React 未来的主要版本（major release）中。执行 PropType 校验函数的代码应该从生产环境中剥离。此时，任何手动调用这些函数的代码（还没从生产环境中剥离的）都会产生报错。
 
 ### 声明 PropTypes 仍然没有问题 {#declaring-proptypes-is-still-fine}
 
@@ -44,7 +44,7 @@ var error = apiShape(json, 'response');
 
 ### 如果你没有直接调用 PropTypes 函数但是依然出现警告 {#if-you-dont-call-proptypes-directly-but-still-get-the-warning}
 
-检查警告产生的堆栈跟踪。你将找到涉及 PropTypes 直接调用的组件定义。最有可能的是，问题是由包装（wrap）了 React PropTypes 的第三方的 PropTypes 导致的，举个例子：
+检查警告产生的堆栈跟踪。你将找到涉及 PropTypes 直接调用的组件定义。问题很有可能是由包装（wrap）了 React PropTypes 的第三方 PropTypes 导致的，举个例子：
 
 ```js
 Button.propTypes = {
