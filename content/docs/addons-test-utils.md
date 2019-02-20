@@ -139,11 +139,7 @@ mockComponent(
 
 > 注意：
 >
-<<<<<<< HEAD
-> `mockComponent()` 是一个过时的 API，我们推荐使用[浅层渲染](/docs/test-utils.html#shallow-rendering)或者 [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) 来代替。
-=======
-> `mockComponent()` is a legacy API. We recommend using [shallow rendering](/docs/shallow-renderer.html) or [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) instead.
->>>>>>> 022c1b2f86bb7b37401bc2d35d9ae6e44f422715
+> `mockComponent()` 是一个过时的 API，我们推荐使用[浅层渲染](/docs/shallow-renderer.html)或者 [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) 来代替。
 
 * * *
 
