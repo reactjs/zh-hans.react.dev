@@ -388,8 +388,7 @@ function updateColorMap(colormap) {
 }
 ```
 
-现在 `updateColorMap` 返回了一个新的对象，而不是修改老对象。
-`Object.assign` 是 ES6 的方法，需要 polyfill。
+现在 `updateColorMap` 返回了一个新的对象，而不是修改老对象。`Object.assign` 是 ES6 的方法，需要 polyfill。
 
 这里有一个 JavaScript 的提案，旨在添加[对象扩展属性](https://github.com/sebmarkbage/ecmascript-rest-spread)以使得不改变对象的更新变得更方便：
 
