@@ -138,7 +138,7 @@ const todoItems = todos.map((todo, index) =>
 
 元素的 Key 只有放在就近的数组上下文中才有意义。
 
-比方说，如果你[抽取](/docs/components-and-props.html#extracting-components) 出一个 `ListItem` 组件，你应该把 key 保留在数组中的这个 `<ListItem />` 元素上，而不是放在 `ListItem` 组件中的 `<li>` 元素上。
+比方说，如果你[提取](/docs/components-and-props.html#extracting-components) 出一个 `ListItem` 组件，你应该把 key 保留在数组中的这个 `<ListItem />` 元素上，而不是放在 `ListItem` 组件中的 `<li>` 元素上。
 
 ** 例子：不正确的使用键的方式 **
 
