@@ -5,7 +5,7 @@ permalink: warnings/unknown-prop.html
 ---
 当你尝试用一个无法被 React 识别为合法 DOM 属性（attribute / property）的 prop 渲染 DOM 元素时，会出现 unknown-prop 警告。你应该确保你的 DOM 元素上没有这类失效的 props。
 
-这个警告出现的原因可能有几种：
+这个警告出现的原因可能有如下几种：
 
 1. 你使用了 `{...this.props}` 或者 `cloneElement(element, this.props)` 吗？你的组件会直接把它自己的 props 传递给子元素（例如 [传递 props](/docs/transferring-props.html))。向子组件传递 props 时，你应该避免转发本应由父组件解释的 props。
 
@@ -19,7 +19,7 @@ permalink: warnings/unknown-prop.html
 
 要解决这个问题，组合组件应该“消费掉”任何只用于复合组件而不是子组件的 prop。例如：
 
-**糟糕的：** `layout` prop 意外转发给了 `div` 标签。
+**Bad：** `layout` prop 意外转发给了 `div` 标签。
 
 ```js
 function MyDiv(props) {
@@ -33,7 +33,7 @@ function MyDiv(props) {
 }
 ```
 
-**良好的：** 展开运算符能从 props 中剥离变量，并将剩余的 props 放到一个新变量中。
+**Good：** 展开运算符能从 props 中剥离变量，并将剩余的 props 放到一个新变量中。
 
 ```js
 function MyDiv(props) {
@@ -46,7 +46,7 @@ function MyDiv(props) {
 }
 ```
 
-**良好的：** 你也可以将 props 分配给一个新的对象，并从新对象中删除你正在使用的属性。注意不要删除原始对象 `this.props` 中的 props，因为这个对象理应被认为是不可变的。
+**Good：** 你也可以将 props 分配给一个新的对象，并从新对象中删除你正在使用的属性。注意不要删除原始对象 `this.props` 中的 props，因为这个对象理应被认为是不可变的。
 
 ```js
 function MyDiv(props) {
