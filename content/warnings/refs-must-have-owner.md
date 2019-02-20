@@ -18,8 +18,8 @@ permalink: warnings/refs-must-have-owner.html
 
 这通常意味着以下三种原因之一：
 
-- 你试图给一个函数组件添加 `ref`。
-- 你试图把 `ref` 添加到一个在 render() 函数之外生成的元素上。
+- 你试图给一个函数组件添加 `ref`；
+- 你试图把 `ref` 添加到一个在 render() 函数之外生成的元素上；
 - 你加载了多个不同的（冲突的） React 副本（比方说是由配置错误的 npm 依赖所引起）。
 
 ## 函数组件上的 Refs {#refs-on-function-components}
@@ -42,7 +42,7 @@ permalink: warnings/refs-must-have-owner.html
 ReactDOM.render(<App ref="app" />, el);
 ```
 
-试试在顶层组件内渲染该组件，该组件将保存 ref。或者，你可以用回调函数作为 ref：
+试试在顶层组件内渲染该组件，由该组件保存 ref。或者，你可以用回调函数作为 ref：
 
 ```js
 let app;
