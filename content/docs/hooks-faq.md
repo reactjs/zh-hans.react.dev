@@ -403,7 +403,7 @@ function ScrollView({row}) {
 
 ### 我可以引用一个函数组件吗？ {#can-i-make-a-ref-to-a-function-component}
 
-尽管你不应该经常需要这么做，但你可以通过 [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle) Hook 暴露一些的命令式的方法给父组件。
+尽管你不应该经常需要这么做，但你可以通过 [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle) Hook 暴露一些命令式的方法给父组件。
 
 ### `const [thing, setThing] = useState()` 是什么意思？ {#what-does-const-thing-setthing--usestate-mean}
 
