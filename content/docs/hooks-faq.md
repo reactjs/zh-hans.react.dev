@@ -403,7 +403,7 @@ function ScrollView({row}) {
 
 ### 我可以引用一个函数组件吗？ {#can-i-make-a-ref-to-a-function-component}
 
-尽管你不应该经常需要这么做，但你可以通过 [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle) Hook 暴露一些的必要的方法给父组件。
+尽管你不应该经常需要这么做，但你可以通过 [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle) Hook 暴露一些的命令式的方法给父组件。
 
 ### `const [thing, setThing] = useState()` 是什么意思？ {#what-does-const-thing-setthing--usestate-mean}
 
@@ -490,7 +490,7 @@ function Table(props) {
 
 React 只会在首次渲染时调用这个函数。参见 [`useState` API 参考](/docs/hooks-reference.html#usestate)。
 
-**你或许也会偶尔想要避免重新创建 `useRef()` 的初始值。**举个例子，或许你想确保某些必要的 class 实例只被创建一次：
+**你或许也会偶尔想要避免重新创建 `useRef()` 的初始值。**举个例子，或许你想确保某些命令式的 class 实例只被创建一次：
 
 ```js
 function Image(props) {
