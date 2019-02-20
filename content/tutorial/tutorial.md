@@ -24,10 +24,10 @@ redirect_from:
 
 这篇教程分为以下几个部分：
 
-* [环境准备](#环境准备) 是学习该教程的**起点**。
-* [概览](#概览) 介绍了 React 的**基础知识**：组件、props 和 state。
-* [游戏完善](#游戏完善) 介绍了在 React 开发过程中最常用的技术。
-* [时间旅行](#时间旅行) 可以让你更加深刻地了解 React 的独特优势。
+* [环境准备](#setup-for-the-tutorial)是学习该教程的**起点**。
+* [概览](#overview)介绍了 React 的**基础知识**：组件、props 和 state。
+* [游戏完善](#completing-the-game)介绍了在 React 开发过程中最常用的技术。
+* [时间旅行](#adding-time-travel)可以让你更加深刻地了解 React 的独特优势。
 
 你不必着急一口气学完这篇教程的所有内容，尽力就行，哪怕是先学习一两节。
 
@@ -35,9 +35,9 @@ redirect_from:
 
 ### 我们会做出什么东西？
 
-接下来，我们一起用 React 开发一个井字游戏 （tic-tac-toe）。
+接下来，我们一起用 React 开发一个井字游戏（tic-tac-toe）。
 
-你可以提前预览我们要写的游戏的 **[最终效果](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**。如果你看不懂其中的代码，或不熟悉这些语法，别担心！接下来的教程会一步一步帮助你理解 React 及其语法。
+你可以提前预览我们要写的游戏的**[最终效果](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**。如果你看不懂其中的代码，或不熟悉这些语法，别担心！接下来的教程会一步一步帮助你理解 React 及其语法。
 
 在继续后面的教程之前，推荐你先玩一下这个井字游戏。在游戏里，你会看到游戏面板的右边有一个标有序号的列表。这个列表记录了游戏中的每个步骤，并且会随着游戏的进行不断更新。
 
@@ -47,7 +47,7 @@ redirect_from:
 
 我们假定你已经对 HTML 和 JavaScript 都比较熟悉了。即便你之前使用其他编程语言，你也可以跟上这篇教程的。除此之外，我们假定你也已经熟悉了一些编程的概念，例如，函数、对象、数组，以及 class 的一些内容。
 
-如果你想复习一下 JavaScript，你可以阅读 [这篇教程](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript)。注意，我们也用到了一些 ES6（较新的 JavaScript 版本）的特性。在这篇教程里，我们主要使用了 [箭头函数（arrow functions）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)、[class](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes)、[let](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let) 语句和 [const](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/const) 语句。你可以使用 [Babel REPL](babel://es5-syntax-example) 在线预览 ES6 的编译结果。
+如果你想回顾一下 JavaScript，你可以阅读[这篇教程](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript)。注意，我们也用到了一些 ES6（较新的 JavaScript 版本）的特性。在这篇教程里，我们主要使用了 [箭头函数（arrow functions）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)、[class](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes)、[let](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let) 语句和 [const](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/const) 语句。你可以使用 [Babel REPL](babel://es5-syntax-example) 在线预览 ES6 的编译结果。
 
 ## 环境准备
 
@@ -57,9 +57,9 @@ redirect_from:
 
 这是上手最快的一种方式了！
 
-首先在新的浏览器选项卡中打开这个 **[初始模板](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**。 你可以看到一个空的井字棋盘和 React 代码。我们接下来会在本教程中修改该 React 代码。
+首先在新的浏览器选项卡中打开这个**[初始模板](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**。 你可以看到一个空的井字棋盘和 React 代码。我们接下来会在本教程中修改该 React 代码。
 
-如果你选择这种方式，就可以跳过方式二，直接从 [概览](#概览) 开始阅读教程啦。
+如果你选择这种方式，就可以跳过方式二，直接从[概览](#overview)开始阅读教程啦。
 
 ### 方式二：搭建本地开发环境
 
@@ -71,10 +71,10 @@ redirect_from:
 
 <summary><b>可选项：使用你喜欢的文本编辑器进行本地开发的步骤：</b></summary>
 
-虽然在本地搭建环境要费一些功夫，但是允许你选择自己喜欢的编辑器来完成开发。以下是具体步骤：
+虽然在本地搭建环境要费一些时间，但是你可以选择自己喜欢的编辑器来完成开发。以下是具体步骤：
 
-1. 确保你安装了较新版本的 [Node.js](https://nodejs.org/zh-cn/)。
-2. 按照 [Create React App 安装指南](/docs/create-a-new-react-app.html#create-react-app) 创建一个新的项目
+1. 确保你安装了较新版本的 [Node.js](https://nodejs.org/en/)。
+2. 按照 [Create React App 安装指南](/docs/create-a-new-react-app.html#create-react-app)创建一个新的项目
 
 ```bash
 npx create-react-app my-app
@@ -82,7 +82,7 @@ npx create-react-app my-app
 
 3. 删除掉新项目中 `src/` 文件夹下的所有文件。
 
-> 注意：**不要删除整个 `src` 文件夹，删除里面的源文件就好了**。我们会在下一步中使用示例代码替换默认源文件。
+> 注意：**不要删除整个 `src` 文件夹，删除里面的源文件**。我们会在下一步中使用示例代码替换默认源文件。
 
 ```bash
 cd my-app
@@ -98,11 +98,11 @@ del *
 cd ..
 ```
 
-4. 在 `src/` 文件夹中创建一个名为 `index.css` 的文件，并拷贝 [这些 CSS 代码](https://codepen.io/gaearon/pen/oWWQNa?editors=0100)。
+4. 在 `src/` 文件夹中创建一个名为 `index.css` 的文件，并拷贝[这些 CSS 代码](https://codepen.io/gaearon/pen/oWWQNa?editors=0100)。
 
-5. 在 `src` 文件夹下创建一个名为 `index.js` 的文件，并拷贝 [这些 JS 代码](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)。
+5. 在 `src/` 文件夹下创建一个名为 `index.js` 的文件，并拷贝[这些 JS 代码](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)。
 
-6. 把以下三行代码拷贝到 `src/` 文件夹下的 `index.js` 文件的顶部：
+6. 拷贝以下三行代码到 `src/` 文件夹下的 `index.js` 文件的顶部：
 
 ```js
 import React from 'react';
@@ -112,13 +112,13 @@ import './index.css';
 
 现在，在项目文件夹下执行 `npm start` 命令，然后在浏览器访问 `http://localhost:3000`。这样你就可以在浏览器中看见一个空的井字游戏的棋盘了。
 
-推荐按照 [这篇教程](https://babeljs.io/docs/editors/)来给你的编辑器配置代码高亮显示。
+推荐参照 [这篇教程](https://babeljs.io/docs/editors/)来给你的编辑器配置语法高亮。
 
 </details>
 
-### 我遇到困难了，谁能帮帮我！
+### 寻求帮助
 
-如果你遇到了任何困难，可以去[社区支持资源](/community/support.html)看看。你也可以在 [Reactiflux Chat](https://discord.gg/0ZcbPKXt5bZjGY5n) 快速求助。如果通过上述方式还是解决不了你的问题，请给我们提 issue，我们会帮助你的。
+如果你遇到了任何困难，可以去查看[社区支持资源](/community/support.html)。你也可以在 [Reactiflux Chat](https://discord.gg/0ZcbPKXt5bZjGY5n) 快速求助。如果通过上述方式还是解决不了你的问题，请给我们提 issue，我们会帮助你的。
 
 ## 概览
 
@@ -126,9 +126,9 @@ import './index.css';
 
 ### React 是什么？
 
-React 是一个声明式，高效而且灵活的用户界面 （UI） 库。React 允许你可以将一些简短、独立的代码片段组合在一起构成复杂的 UI 界面，这些代码片段被称作“组件”。
+React 是一个声明式，高效且灵活的用于构建用户界面的 JavaScript 库。使用 React 可以将一些简短、独立的代码片段组合成复杂的 UI 界面，这些代码片段被称作“组件”。
 
-React 中有不同种类的组件，我们先从 `React.Component` 的子类开始：
+React 中拥有多种不同类型的组件，我们先从 `React.Component` 的子类开始介绍：
 
 ```javascript
 class ShoppingList extends React.Component {
@@ -146,12 +146,12 @@ class ShoppingList extends React.Component {
   }
 }
 
-// 使用示例: <ShoppingList name="Mark" />
+// 用法示例: <ShoppingList name="Mark" />
 ```
 
 我们马上会讨论这些有意思的、看起来像 XML 的标签。我们通过使用组件来告诉 React 我们希望在屏幕上看到什么。当数据发生改变时，React 会高效地更新并重新渲染我们的组件。
 
-这里，ShoppingList 是一个**React 组件类**，或者说是一个**React 组件类型**。一个组件接收一些参数，我们把这些参数叫做 `props`（“props” 是 “properties” 简写），然后通过 `render` 方法返回需要展示在屏幕上的视图的层次结构。
+其中，ShoppingList 是一个**React 组件类**，或者说是一个**React 组件类型**。一个组件接收一些参数，我们把这些参数叫做 `props`（“props” 是 “properties” 简写），然后通过 `render` 方法返回需要展示在屏幕上的视图的层次结构。
 
 `render` 方法的返回值*描述*了你希望在屏幕上看到的内容。React 根据描述，然后把结果展示出来。更具体地来说，`render` 返回了一个**React 元素**，这是一种对渲染内容的轻量级描述。大多数的 React 开发者使用了一种名为 “JSX” 的特殊语法，JSX 可以让你更轻松地书写这些结构。语法 `<div />` 会被编译成 `React.createElement('div')`。上述的代码等同于：
 
@@ -164,7 +164,7 @@ return React.createElement('div', {className: 'shopping-list'},
 
 [查看完整展开的代码。](babel://tutorial-expanded-version)
 
-如果你对这个比较感兴趣，可以在 [API 文档](/docs/react-api.html#createelement) 中查看 `createElement()` 更详细的用法。但在接下来的教程中，我们并不会直接使用这个方法，而是继续使用 JSX。
+如果你对这个比较感兴趣，可以在 [API 文档](/docs/react-api.html#createelement)中查看 `createElement()` 更详细的用法。但在接下来的教程中，我们并不会直接使用这个方法，而是继续使用 JSX。
 
 在 JSX 中你可以任意使用 JavaScript 表达式，只需要用一个大括号把表达式括起来。每一个 React 元素事实上都一个 JavaScript 对象，你可以在你的程序中把它当保存在变量中或者作为参数传递。
 
@@ -172,7 +172,7 @@ return React.createElement('div', {className: 'shopping-list'},
 
 ### 阅读初始代码
 
-如果你要在**浏览器**中学习该教程，在新标签页中打开**[初始代码](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**。如果你在本地环境中学习开发该教程的内容，就在你的工程文件夹下打开 `src/index.js`（你已经在前面的[环境准备](#环境准备)中创建过这个文件了）。
+如果你要在**浏览器**中学习该教程，在新标签页中打开**[初始代码](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**。如果你在本地环境中学习开发该教程的内容，就在你的工程文件夹下打开 `src/index.js`（你已经在前面的[环境准备](#setup-for-the-tutorial)中创建过这个文件了）。
 
 这些初始代码是我们要开发的小游戏的基础代码。我们已经提供了 CSS 样式，这样你只需要关注使用 React 来开发这个井字游戏了。
 
@@ -287,7 +287,7 @@ class Square extends React.Component {
 
 >注意
 >
->在 [JavaScript 类（classes）](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) 中，每次你定义其子类的构造函数时，都需要调用 `super` 方法。因此，在所有含有构造函数的的 React 组件中，构造函数必须以 `super(props)` 开头。
+>在 [JavaScript 类（classes）](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)中，每次你定义其子类的构造函数时，都需要调用 `super` 方法。因此，在所有含有构造函数的的 React 组件中，构造函数必须以 `super(props)` 开头。
 
 现在，我们来修改一下 Square 组件的 `render` 方法，这样，每当方格被点击的时候，就可以显示当前 state 的值了：
 
@@ -350,7 +350,7 @@ class Square extends React.Component {
 
 当前，每个 Square 组件都维护了游戏的状态。我们可以把所有 9 个 Square 的值放在一个地方，这样我们就可以判断出胜者了。
 
-你可能会想着说，我们也可以在棋盘 Board 组件中收集各个格子 Square 组件当中的数据。虽然技术上来讲是可以实现的，但是代码这么写的话会让人很难理解，并且我们以后想要修改重构时也会非常困难。所以，最好的解决方式是直接将所有的 state 状态数据存储在 Board 父组件当中。之后 Board 组件可以将这些数据通过 props 传递给各个 Square 子组件，[正如上文我们把数字传递给每一个 Square 一样](#通过-props-传递数据)。
+你可能会想着说，我们也可以在棋盘 Board 组件中收集各个格子 Square 组件当中的数据。虽然技术上来讲是可以实现的，但是代码这么写的话会让人很难理解，并且我们以后想要修改重构时也会非常困难。所以，最好的解决方式是直接将所有的 state 状态数据存储在 Board 父组件当中。之后 Board 组件可以将这些数据通过 props 传递给各个 Square 子组件，[正如上文我们把数字传递给每一个 Square 一样](#passing-data-through-props)。
 
 **当你遇到需要同时获取多个子组件数据，或者两个组件之间需要相互通讯的情况时，需要把子组件的 state 数据提升至其共同的父组件当中保存。之后父组件可以通过 props 将状态数据传递到子组件当中。这样应用当中所有组件的状态数据就能够更方便地同步共享了。**
 
@@ -414,7 +414,7 @@ Board 组件当前的 `renderSquare` 方法看起来像下面这样：
   }
 ```
 
-最开始的时候，我们依次使把 0 到 8 的值通过 prop 从 Board [向下传递](#通过-props-传递数据)，从而让它们显示出来。上一步与此不同，我们[根据 Square 自己内部的 state](#给组件添加交互功能)，使用了 ”X“ 来代替之前的数字。因此，Square 忽略了当前从 Board 传递给它的那个 `value` prop。
+最开始的时候，我们依次使把 0 到 8 的值通过 prop 从 Board [向下传递](#passing-data-through-props)，从而让它们显示出来。上一步与此不同，我们[根据 Square 自己内部的 state](#making-an-interactive-component)，使用了 ”X“ 来代替之前的数字。因此，Square 忽略了当前从 Board 传递给它的那个 `value` prop。
 
 让我们再一次使用 prop 的传递机制。我们通过修改 Board 来指示每一个 Square 的当前值（`'X'`, `'O'`, 或者 `null`）。我们在 Board 的构造函数中已经定义好了 `squares` 数组，这样，我们就可以通过修改 Board 的 `renderSquare` 方法来读取这些值了。
 
@@ -780,7 +780,7 @@ function calculateWinner(squares) {
 
 如果我们直接修改了 `square` 数组，实现时间旅行就会变得很棘手了。
 
-然而在每一步，我们可以使用 `slice()` 函数来创建 `squares` 数组的副本，同时把这个数组[当作不可变对象](#为什么不可变性在 React 中非常重要)。这样我们就可以把所有 `squares` 数组的历史版本都保存下来了，然后可以在历史的步骤中随意跳转。
+然而在每一步，我们可以使用 `slice()` 函数来创建 `squares` 数组的副本，同时把这个数组[当作不可变对象](#why-immutability-is-important)。这样我们就可以把所有 `squares` 数组的历史版本都保存下来了，然后可以在历史的步骤中随意跳转。
 
 我们把历史的 `squares` 数组保存在另一个名为 `history` 的数组中。`history` 数组保存了从第一步到最后一步的所有的棋盘状态。`history` 数组的结构如下所示：
 
@@ -820,7 +820,7 @@ history = [
 
 我们希望顶层 Game 组件展示出一个历史步骤的列表。这个功能需要访问 `history` 的数据，因此我们把 `history` 这个 state 放在顶层 Game 组件中。 
 
-我们把 `history` state 放在了 Game 组件中，这样就可以从它的子组件 Board 里面删除掉 `square` state 了。正如我们把 Square 组件的 state [提升](#状态提升)到 Board 组件一样，现在我们来把 state 从 Board 组件提升到顶层的 Game 组件里。这样，Game 组件就拥有了对 Board 组件数据的完全控制权了，除此之外，还可以让 Game 组件控制 Board 组件根据 `history` 渲染出历史步骤。
+我们把 `history` state 放在了 Game 组件中，这样就可以从它的子组件 Board 里面删除掉 `square` state 了。正如我们把 Square 组件的 state [提升](#lifting-state-up)到 Board 组件一样，现在我们来把 state 从 Board 组件提升到顶层的 Game 组件里。这样，Game 组件就拥有了对 Board 组件数据的完全控制权了，除此之外，还可以让 Game 组件控制 Board 组件根据 `history` 渲染出历史步骤。
 
 首先，我们在 Game 组件的构造函数中设置初始 state：
 
