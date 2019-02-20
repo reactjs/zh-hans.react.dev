@@ -6,7 +6,6 @@ redirect_from:
   - "docs/advanced-performance.html"
 ---
 
-
 UI 更新需要对 DOM 进行操作，而 React 内部通过几种巧妙的技术以最小化操作 DOM 来降低性能损耗。对于大部分应用而言，使用 React 不需要特别去优化就已拥有高性能的用户界面。尽管如此，你仍然有办法来加速你的 React 应用。
 
 ## 使用生产版本 {#use-the-production-build}
