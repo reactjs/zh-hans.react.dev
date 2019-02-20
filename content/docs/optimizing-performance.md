@@ -185,7 +185,9 @@ new webpack.optimize.UglifyJsPlugin()
 
 ## 使用开发工具的分析器对组件进行分析 {#profiling-components-with-the-devtools-profiler}
 
-`react-dom` 16.5+ 和 `react-native` 0.57+ 加强了分析能力。在开发模式下，React 开发工具会出现分析器标签。你可以在这篇博客[《介绍 React 分析器》](/blog/2018/09/10/introducing-the-react-profiler.html)中了解概述。你同样可以[在 YouTube 上](https://www.youtube.com/watch?v=nySib7ipZdk)观看分析器的视频指导。
+`react-dom` 16.5+ 和 `react-native` 0.57+ 加强了分析能力。在开发模式下，React 开发工具会出现分析器标签。
+你可以在这篇博客[《介绍 React 分析器》](/blog/2018/09/10/introducing-the-react-profiler.html)中了解概述。
+你同样可以[在 YouTube 上](https://www.youtube.com/watch?v=nySib7ipZdk)观看分析器的视频指导。
 
 如果你还未安装 React 开发工具，你可以在这里找到它们：
 
