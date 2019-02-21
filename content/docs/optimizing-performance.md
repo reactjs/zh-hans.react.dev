@@ -6,7 +6,7 @@ redirect_from:
   - "docs/advanced-performance.html"
 ---
 
-UI 更新需要对 DOM 进行操作，而 React 内部通过几种巧妙的技术以最小化操作 DOM 来降低性能损耗。对于大部分应用而言，使用 React 不需要特别去优化就已拥有高性能的用户界面。尽管如此，你仍然有办法来加速你的 React 应用。
+UI 更新需要昂贵的 DOM 操作，而 React 内部使用几种巧妙的技术以便最小化 DOM 操作次数。对于大部分应用而言，使用 React 时无需专门优化就已拥有高性能的用户界面。尽管如此，你仍然有办法来加速你的 React 应用。
 
 ## 使用生产版本 {#use-the-production-build}
 
@@ -14,33 +14,33 @@ UI 更新需要对 DOM 进行操作，而 React 内部通过几种巧妙的技�
 
 React 默认包含了许多有用的警告信息。这些警告信息在开发过程中非常有帮助。然而这使得 React 变得更大且更慢，所以你需要确保部署时使用了生产版本。
 
-如果你不能确定你的编译过程是否设置正确，你可以通过安装 [Chrome 的 React 开发者工具](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) 来检查。如果你浏览一个使用 React 生产版本的网站，图标背景会变成深色：
+如果你不能确定你的编译过程是否设置正确，你可以通过安装 [Chrome 的 React 开发者工具](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) 来检查。如果你浏览一个基于 React 生产版本的网站，图标背景会变成深色：
 
 <img src="../images/docs/devtools-prod.png" style="max-width:100%" alt="React DevTools on a website with production version of React">
 
-如果你浏览一个使用 React 开发模式的网站，图标背景会变成红色：
+如果你浏览一个基于 React 开发模式的网站，图标背景会变成红色：
 
 <img src="../images/docs/devtools-dev.png" style="max-width:100%" alt="React DevTools on a website with development version of React">
 
-推荐在开发你的应用时使用开发模式，而在你为用户部署应用时使用生产模式。
+推荐你在开发应用时使用开发模式，而在为用户部署应用时使用生产模式。
 
-你可以在下面看到几种生产构建的使用说明。
+你可以在下面看到几种为应用构建生产版本的操作说明。
 
 ### Create React App {#create-react-app}
 
-如果你的项目是通过 [Create React App](https://github.com/facebookincubator/create-react-app) 开发，运行：
+如果你的项目是通过 [Create React App](https://github.com/facebookincubator/create-react-app) 构建的，运行：
 
 ```
 npm run build
 ```
 
-这段脚本将在你的项目下的 `build/` 目录中生成生产版本。
+这段命令将在你的项目下的 `build/` 目录中生成生产版本。
 
-注意只有在生产部署前才需要执行这个脚本。正常开发使用 `npm start` 即可。
+注意只有在生产部署前才需要执行这个命令。正常开发使用 `npm start` 即可。
 
 ### 单文件构建 {#single-file-builds}
 
-我们提供了可以在生产环境使用的 React 和 React DOM 的单个文件：
+我们提供了可以在生产环境使用的单文件版 React 和 React DOM：
 
 ```html
 <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
@@ -67,7 +67,7 @@ yarn add --dev uglify-js-brunch
 brunch build -p
 ```
 
-注意你只需要在生产构建时这么做。你不需要在开发环境中使用 `-p` 参数或者应用这个插件，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
+请注意，你只需要在生产构建时这么做。你不需要在开发环境中使用 `-p` 参数或者应用这个插件，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
 
 ### Browserify {#browserify}
 
@@ -87,7 +87,7 @@ yarn add --dev envify uglify-js uglifyify
 * [`uglifyify`](https://github.com/hughsk/uglifyify) 转换器移除开发相关的引用代码。同样设置为全局 (`-g`)。
 * 最后，将产物传给 [`uglify-js`](https://github.com/mishoo/UglifyJS2) 用以压缩（[为什么要这么做？](https://github.com/hughsk/uglifyify#motivationusage)）。
 
-举例：
+举个例子：
 
 ```
 browserify ./index.js \
@@ -98,10 +98,10 @@ browserify ./index.js \
 
 >**注意：**
 >
->虽然这个包名叫做 `uglify-js`，但是执行文件叫做 `uglifyjs`。<br>
+>虽然这个包的名字叫做 `uglify-js`，但是执行文件叫做 `uglifyjs`。<br>
 >这不是拼写错误。
 
-注意你只需要在生产构建时用到它。你不需要在开发环境应用这些插件，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
+请注意，你只需要在生产构建时用到它。你不需要在开发环境应用这些插件，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
 
 ### Rollup {#rollup}
 
@@ -135,11 +135,11 @@ plugins: [
 
 [点击](https://gist.github.com/Rich-Harris/cb14f4bc0670c47d00d191565be36bf0)查看完整的安装示例。
 
-注意你只需要在生产构建时用到它。你不需要在开发中使用 `uglify` 插件或者 `replace` 插件替换 `'production'` 变量，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
+请注意，你只需要在生产构建时用到它。你不需要在开发中使用 `uglify` 插件或者 `replace` 插件替换 `'production'` 变量，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
 
 ### webpack {#webpack}
 
->**Note:**
+>**注意：**
 >
 >如果你使用了 Create React App，请跟随[上面的说明](#create-react-app)进行操作。<br>
 >只有当你直接配置了 webpack 才需要参考以下内容。
@@ -155,21 +155,21 @@ new webpack.optimize.UglifyJsPlugin()
 
 你可以在 [webpack 文档](https://webpack.js.org/guides/production-build/)中了解更多内容。
 
-注意你只需要在生产构建时用到它。你不需要在开发中使用 `UglifyJsPlugin` 插件或者 `DefinePlugin` 插件设置 `'production'` 变量，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
+请注意，你只需要在生产构建时用到它。你不需要在开发中使用 `UglifyJsPlugin` 插件或者 `DefinePlugin` 插件设置 `'production'` 变量，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
 
-## 使用 Chrome 性能标签分析组件 {#profiling-components-with-the-chrome-performance-tab}
+## 使用 Chrome Performance 标签分析组件 {#profiling-components-with-the-chrome-performance-tab}
 
-在**开发**模式下，你可以在支持的游览器中可视化了解组件是如何 挂载、更新以及卸载的。例如：
+在**开发**模式下，你可以通过支持的浏览器可视化地了解组件是如何 挂载、更新以及卸载的。例如：
 
 <center><img src="../images/blog/react-perf-chrome-timeline.png" style="max-width:100%" alt="在 Chrome 时间线中的 React 组件" /></center>
 
-在 Chrome 如下操作：
+在 Chrome 中进行如下操作：
 
-1. 临时**禁用所有的 Chrome 扩展，尤其是 React 开发工具**。它们会干扰度量结果！
+1. 临时**禁用所有的 Chrome 扩展，尤其是 React 开发者工具**。他们会严重干扰度量结果！
 
-2. 确保你是在开发模式下运行应用。
+2. 确保你是在 React 的开发模式下运行应用。
 
-3. 打开 Chrome 开发工具的 **[Performance](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool)** 标签并按下 **Record**。
+3. 打开 Chrome 开发者工具的 **[Performance](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool)** 标签并按下 **Record**。
 
 4. 对你想分析的行为进行复现。尽量在 20 秒内完成以避免 Chrome 卡住。
 
@@ -177,32 +177,32 @@ new webpack.optimize.UglifyJsPlugin()
 
 6. 在 **User Timing** 标签下会显示 React 归类好的事件。
 
-你可以通过查阅[这篇文章](https://calibreapp.com/blog/2017-11-28-debugging-react/)以获取更详尽的指导。
+你可以查阅[这篇文章](https://calibreapp.com/blog/2017-11-28-debugging-react/)以获取更详尽的指导。
 
-需要注意的是**在生产环境中组件相对会渲染的更快些**。当然了，这能帮助你查看是否有不相关的组件被错误的更新，以及你的 UI 更新深度和频率。
+需要注意的是**在生产环境中组件会相对渲染得更快些**。当然了，这能帮助你查看是否有不相关的组件被错误地更新，以及 UI 更新的深度和频率。
 
-目前只有 Chrome、Edge 和 IE 支持该功能，但是我们使用的是标准的[用户计时 API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API)。我们期待有更多的浏览器来支持它。
+目前只有 Chrome、Edge 和 IE 支持该功能，但是我们使用的是标准的[用户计时 API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API)。我们期待有更多浏览器能支持它。
 
-## 使用开发工具的分析器对组件进行分析 {#profiling-components-with-the-devtools-profiler}
+## 使用开发者工具中的分析器对组件进行分析 {#profiling-components-with-the-devtools-profiler}
 
-`react-dom` 16.5+ 和 `react-native` 0.57+ 加强了分析能力。在开发模式下，React 开发工具会出现分析器标签。
-你可以在这篇博客[《介绍 React 分析器》](/blog/2018/09/10/introducing-the-react-profiler.html)中了解概述。
-你同样可以[在 YouTube 上](https://www.youtube.com/watch?v=nySib7ipZdk)观看分析器的视频指导。
+`react-dom` 16.5+ 和 `react-native` 0.57+ 加强了分析能力。在开发模式下，React 开发者工具会出现分析器标签。
+你可以在[《介绍 React 分析器》](/blog/2018/09/10/introducing-the-react-profiler.html)这篇博客中了解概述。
+你也可以[在 YouTube 上](https://www.youtube.com/watch?v=nySib7ipZdk)观看分析器的视频指导。
 
-如果你还未安装 React 开发工具，你可以在这里找到它们：
+如果你还未安装 React 开发者工具，你可以在这里找到它们：
 
-- [Chrome 浏览器拓展](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
-- [Firefox 浏览器拓展](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
+- [Chrome 浏览器扩展](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+- [Firefox 浏览器扩展](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
 - [独立 Node 包](https://www.npmjs.com/package/react-devtools)
 
 > 注意
 >
->`react-dom` 的生产分析包可以在  `react-dom/profiling` 中找到。
->可以通过 [fb.me/react-profiling](https://fb.me/react-profiling) 来了解更多关于使用这个包的内容。
+>`react-dom` 的生产分析包也可以在 `react-dom/profiling` 中找到。
+>通过查阅 [fb.me/react-profiling](https://fb.me/react-profiling) 来了解更多关于使用这个包的内容。
 
 ## 虚拟化长列表 {#virtualize-long-lists}
 
-如果你的应用渲染了长列表（上百甚至上千的数据），我们推荐使用“虚拟滚动”技术。这项技术会在有限的时间内仅渲染少量的数据，并奇迹般的降低重新渲染组件的时间消耗，以及创建 DOM 节点的数量。
+如果你的应用渲染了长列表（上百甚至上千的数据），我们推荐使用“虚拟滚动”技术。这项技术会在有限的时间内仅渲染有限的内容，并奇迹般地降低重新渲染组件消耗的时间，以及创建 DOM 节点的数量。
 
 [react-window](https://react-window.now.sh/) 和 [react-virtualized](https://bvaughn.github.io/react-virtualized/) 是热门的虚拟滚动库。
 它们提供了多种可复用的组件，用于展示列表、网格和表格数据。
@@ -210,11 +210,11 @@ new webpack.optimize.UglifyJsPlugin()
 
 ## 避免调停 {#avoid-reconciliation}
 
-React 构建并维护了一套内部的 UI 渲染陈述。它包含了来自你的组件返回的 React 元素。该陈述使得 React 避免创建 DOM 节点以及没有必要的节点访问，因为 DOM 操作相对于 JavaScript 对象操作更慢。虽然有时候它被称为“虚拟 DOM”，但是它在 React Native 中拥有相同的工作原理。
+React 构建并维护了一套内部的 UI 渲染描述。它包含了来自你的组件返回的 React 元素。该描述使得 React 避免创建 DOM 节点以及没有必要的节点访问，因为 DOM 操作相对于 JavaScript 对象操作更慢。虽然有时候它被称为“虚拟 DOM”，但是它在 React Native 中拥有相同的工作原理。
 
-当一个组件的 props 或者 state 变更，React 会将最新返回的元素与之前的记录的元素进行对比，来决定是否有必要更新真实的 DOM。当它们不相同时，React 会更新该 DOM。
+当一个组件的 props 或 state 变更，React 会将最新返回的元素与之前渲染的元素进行对比，以此决定是否有必要更新真实的 DOM。当它们不相同时，React 会更新该 DOM。
 
-你可以通过 React 开发工具可视化查看这些重新渲染的虚拟 DOM：
+你可以通过 React 开发者工具可视化地查看这些重新渲染的虚拟 DOM：
 
 - [Chrome 浏览器扩展](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
 - [Firefox 浏览器扩展](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
@@ -224,11 +224,11 @@ React 构建并维护了一套内部的 UI 渲染陈述。它包含了来自你�
 
 <center><img src="../images/blog/devtools-highlight-updates.png" style="max-width:100%; margin-top:10px;" alt="如何开启更新高亮" /></center>
 
-当与你的页面进行交互时，你会看到被重新渲染的组件立刻出现了彩色的边框。这能帮助你找到那些没有必要的重新渲染。你可以在 [Ben Edelstein](https://blog.logrocket.com/@edelstein) 的[这篇博客](https://blog.logrocket.com/make-react-fast-again-part-3-highlighting-component-updates-6119e45e6833)中学到更多关于 React 开发工具的功能。
+当与你的页面进行交互时，你会看到被重新渲染的组件立刻出现了彩色的边框。这能帮助你找到那些没有必要的重新渲染。你可以在 [Ben Edelstein](https://blog.logrocket.com/@edelstein) 的[这篇博客](https://blog.logrocket.com/make-react-fast-again-part-3-highlighting-component-updates-6119e45e6833)中学到更多关于 React 开发者工具的功能。
 
 考虑这种情况：
 
-<center><img src="../images/blog/highlight-updates-example.gif" style="max-width:100%; margin-top:20px;" alt="React 开发工具更新高亮示例" /></center>
+<center><img src="../images/blog/highlight-updates-example.gif" style="max-width:100%; margin-top:20px;" alt="React 开发者工具更新高亮示例" /></center>
 
 注意到当我们输入第二个待办事项时，第一个待办事项在每次按键时也一并闪烁了。这意味着输入时，它也被 React 一并重新渲染了。这通常被称作“无用的”渲染。我们知道这是毫无必要的，因为第一个待办事项并没有改变，但是 React 并不知道。
 
@@ -242,11 +242,11 @@ shouldComponentUpdate(nextProps, nextState) {
 
 如果你知道在什么情况下你的组件不需要更新，你可以在 `shouldComponentUpdate` 中返回 `false` 来跳过整个渲染过程。其包括该组件的 `render` 调用以及之后的操作。
 
-在大部分情况下，你可以继承 [`React.PureComponent`](/docs/react-api.html#reactpurecomponent) 以代替手写 `shouldComponentUpdate()`。它覆写了 `shouldComponentUpdate()` 来对当前和之前的 props 和 state 进行浅比较。
+在大部分情况下，你可以继承 [`React.PureComponent`](/docs/react-api.html#reactpurecomponent) 以代替手写 `shouldComponentUpdate()`。它用当前与之前 props 和 state 的浅比较覆写了 `shouldComponentUpdate()` 的实现。
 
 ## shouldComponentUpdate 的作用 {#shouldcomponentupdate-in-action}
 
-这是一个组件的子树。每个节点中，`SCU` 代表 `shouldComponentUpdate` 返回的值，而 `vDOMEq` 代表是否返回的 React 元素相同。最后，圆圈的颜色代表了该组件是否需要被调停。
+这是一个组件的子树。每个节点中，`SCU` 代表 `shouldComponentUpdate` 返回的值，而 `vDOMEq` 代表返回的 React 元素是否相同。最后，圆圈的颜色代表了该组件是否需要被调停。
 
 <figure><img src="../images/docs/should-component-update.png" style="max-width:100%" /></figure>
 
@@ -312,7 +312,7 @@ class CounterButton extends React.PureComponent {
 }
 ```
 
-大部分情况下，你可以使用 `React.PureComponent` 来代替手写 `shouldComponentUpdate`。但它只进行浅比较，所以当 props 或者 state 某种程度是可变的话，浅比较会有遗漏，那你就不能使用它了。当数据结构很复杂时，情况会变得麻烦。例如，你想要一个 `ListOfWords` 组件来渲染一组用逗号分开的单词。它有一个叫做 `WordAdder` 的父组件，该组件允许你点击一个按钮来添加一个单词到列表中。下面是一个*并不完整*的样例：
+大部分情况下，你可以使用 `React.PureComponent` 来代替手写 `shouldComponentUpdate`。但它只进行浅比较，所以当 props 或者 state 某种程度是可变的话，浅比较会有遗漏，那你就不能使用它了。当数据结构很复杂时，情况会变得麻烦。例如，你想要一个 `ListOfWords` 组件来渲染一组用逗号分开的单词。它有一个叫做 `WordAdder` 的父组件，该组件允许你点击一个按钮来添加一个单词到列表中。以下代码*并不*正确：
 
 ```javascript
 class ListOfWords extends React.PureComponent {
@@ -362,7 +362,7 @@ handleClick() {
 }
 ```
 
-ES6 数组支持[扩展运算符](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator)，这让代码写起来更方便了。如果你在使用 Create React App，该运算符默认已经支持了。
+ES6 数组支持[扩展运算符](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator)，这让代码写起来更方便了。如果你在使用 Create React App，该语法已经默认支持了。
 
 ```js
 handleClick() {
@@ -372,7 +372,7 @@ handleClick() {
 };
 ```
 
-你可以改写代码来避免可变对象的产生，同时很方便的操作对象。例如，我们有一个叫做 `colormap` 的对象。我们希望写一个方法来将 `colormap.right` 设置为 `'blue'`。我们可以这么写：
+你可以用类似的方式改写代码来避免可变对象的产生。例如，我们有一个叫做 `colormap` 的对象。我们希望写一个方法来将 `colormap.right` 设置为 `'blue'`。我们可以这么写：
 
 ```js
 function updateColorMap(colormap) {
@@ -390,7 +390,7 @@ function updateColorMap(colormap) {
 
 现在 `updateColorMap` 返回了一个新的对象，而不是修改老对象。`Object.assign` 是 ES6 的方法，需要 polyfill。
 
-这里有一个 JavaScript 的提案，旨在添加[对象扩展属性](https://github.com/sebmarkbage/ecmascript-rest-spread)以使得不改变对象的更新变得更方便：
+这里有一个 JavaScript 的提案，旨在添加[对象扩展属性](https://github.com/sebmarkbage/ecmascript-rest-spread)以使得更新不可变对象变得更方便：
 
 ```js
 function updateColorMap(colormap) {
@@ -432,4 +432,4 @@ x === z; // true
 
 还有两个其他的库可以帮助使用不可变数据，它们是 [seamless-immutable](https://github.com/rtfeldman/seamless-immutable) 和 [immutability-helper](https://github.com/kolodny/immutability-helper)。
 
-不可变数据结构使你可以方便的追踪对象的变化，这是应用 `shouldComponentUpdate` 所需要的。让性能得以提升。
+不可变数据结构使你可以方便地追踪对象的变化，这是应用 `shouldComponentUpdate` 所需要的。让性能得以提升。
