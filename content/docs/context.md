@@ -131,7 +131,7 @@ Provider 接收一个 `value` 属性，传递给下面的调用组件（consumer
 
 当 Provider 的 `value` 值发生变化时，它下面的所有调用组件（consumer）都会重新渲染。从 Provider 到它下面的调用组件不会受制于 `shouldComponentUpdate` 函数，因此调用组件在其上层组件没有触发更新的情况下也能更新。
 
-这些变化会通过比较新旧值而被检测到，这里使用的算法是 [`Object.is`](//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description)。
+通过新旧值检测来确定变化，使用了与 [`Object.is`](//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) 相同的算法。
 
 > 注意
 > 
