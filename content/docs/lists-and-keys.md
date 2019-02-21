@@ -98,7 +98,7 @@ ReactDOM.render(
 
 ## Keys {#keys}
 
-Keys 可以在 DOM 中的某些元素被增加或删除的时候帮助 React 识别哪些元素发生了变化。因此你应当给数组中的每一个元素赋予一个确定的标识。
+Keys 帮助 React 识别哪些元素改变了，比如被添加或删除。因此你应当给数组中的每一个元素赋予一个确定的标识。
 
 ```js{3}
 const numbers = [1, 2, 3, 4, 5];
@@ -119,7 +119,7 @@ const todoItems = todos.map((todo) =>
 );
 ```
 
-当元素没有确定的 id 时，你可以使用他的序列号索引 index 作为 key：
+当元素没有确定 id 的时候，万不得已你可以使用元素索引 index 作为 key：
 
 ```js{2,3}
 const todoItems = todos.map((todo, index) =>
