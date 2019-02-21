@@ -155,7 +155,7 @@ class MyClass extends React.Component {
   }
   render() {
     let value = this.context;
-    /* 基于 MyContext 的值进行渲染 */
+    /* 基于 MyContext 组件的值进行渲染 */
   }
 }
 MyClass.contextType = MyContext;
