@@ -135,7 +135,7 @@ Provider 接收一个 `value` 属性，传递给下面的调用组件（consumer
 
 > 注意
 > 
-> 当传递对象给 `value` 时，变化被检测的方式会导致一些问题： 详见 [注意事项](#caveats).
+> 当传递对象给 `value` 时，检测变化的方式会导致一些问题：详见[注意事项](#caveats)。
 
 ### `Class.contextType` {#classcontexttype}
 
