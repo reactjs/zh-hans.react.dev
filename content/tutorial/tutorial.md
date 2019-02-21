@@ -258,7 +258,7 @@ class Square extends React.Component {
 >}
 >```
 >
->注意我们使用了 `onClick={() => alert('click')}` 向 `onClick` 这个 prop 传入一个*函数* 。很多人经常忘了 `() =>`，写成了 `onClick={alert('click')}`，这种常见的错误会导致每次这个组件渲染的时候都会触发弹出框。
+>注意我们使用了 `onClick={() => alert('click')}` 向 `onClick` 这个 prop 传入一个*函数*。很多人经常忘了 `() =>`，写成了 `onClick={alert('click')}`，这种常见的错误会导致每次这个组件渲染的时候都会触发弹出框。
 
 接下来，我们希望 Square 组件可以“记住”它被点击过，然后用 “X” 来填充对应的方格。我们用 **state** 来实现所谓“记忆”的功能。
 
@@ -287,7 +287,7 @@ class Square extends React.Component {
 
 >注意
 >
->在 [JavaScript 类（classes）](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)中，每次你定义其子类的构造函数时，都需要调用 `super` 方法。因此，在所有含有构造函数的的 React 组件中，构造函数必须以 `super(props)` 开头。
+>在 [JavaScript class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) 中，每次你定义其子类的构造函数时，都需要调用 `super` 方法。因此，在所有含有构造函数的的 React 组件中，构造函数必须以 `super(props)` 开头。
 
 现在，我们来修改一下 Square 组件的 `render` 方法，这样，每当方格被点击的时候，就可以显示当前 state 的值了：
 
@@ -327,7 +327,7 @@ class Square extends React.Component {
 
 ### 开发者工具
 
-安装 React Devtools 的 [Chrome 版](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)或者 [Firefox 版](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)可以让你在浏览器开发者工具中查看 React 的组件树。
+在 [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) 或者 [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) 中安装扩展 React Devtools 可以让你在浏览器开发者工具中查看 React 的组件树。
 
 <img src="../images/tutorial/devtools.png" alt="React Devtools" style="max-width: 100%">
 
@@ -350,7 +350,7 @@ class Square extends React.Component {
 
 当前，每个 Square 组件都维护了游戏的状态。我们可以把所有 9 个 Square 的值放在一个地方，这样我们就可以判断出胜者了。
 
-你可能会想着说，我们也可以在棋盘 Board 组件中收集各个格子 Square 组件当中的数据。虽然技术上来讲是可以实现的，但是代码这么写的话会让人很难理解，并且我们以后想要修改重构时也会非常困难。所以，最好的解决方式是直接将所有的 state 状态数据存储在 Board 父组件当中。之后 Board 组件可以将这些数据通过 props 传递给各个 Square 子组件，[正如上文我们把数字传递给每一个 Square 一样](#passing-data-through-props)。
+你可能会想，我们也可以在棋盘 Board 组件中收集每个格子 Square 组件中的 state。虽然技术上来讲是可以实现的，但是代码如此编写会让人很难理解，并且我们以后想要维护重构时也会非常困难。所以，最好的解决方式是直接将所有的 state 状态数据存储在 Board 父组件当中。之后 Board 组件可以将这些数据通过 props 传递给各个 Square 子组件，[正如上文我们把数字传递给每一个 Square 一样](#passing-data-through-props)。
 
 **当你遇到需要同时获取多个子组件数据，或者两个组件之间需要相互通讯的情况时，需要把子组件的 state 数据提升至其共同的父组件当中保存。之后父组件可以通过 props 将状态数据传递到子组件当中。这样应用当中所有组件的状态数据就能够更方便地同步共享了。**
 
@@ -396,7 +396,7 @@ class Board extends React.Component {
 }
 ```
 
-我们稍后再填充棋盘，数据结构如下所示：
+当我们填满整个棋盘时，数据结构如下所示：
 
 ```javascript
 [
@@ -414,7 +414,7 @@ Board 组件当前的 `renderSquare` 方法看起来像下面这样：
   }
 ```
 
-最开始的时候，我们依次使把 0 到 8 的值通过 prop 从 Board [向下传递](#passing-data-through-props)，从而让它们显示出来。上一步与此不同，我们[根据 Square 自己内部的 state](#making-an-interactive-component)，使用了 ”X“ 来代替之前的数字。因此，Square 忽略了当前从 Board 传递给它的那个 `value` prop。
+开始时，我们依次使把 0 到 8 的值通过 prop 从 Board [向下传递](#passing-data-through-props)，从而让它们显示出来。上一步与此不同，我们[根据 Square 自己内部的 state](#making-an-interactive-component)，使用了 ”X“ 来代替之前的数字。因此，Square 忽略了当前从 Board 传递给它的那个 `value` prop。
 
 让我们再一次使用 prop 的传递机制。我们通过修改 Board 来指示每一个 Square 的当前值（`'X'`, `'O'`, 或者 `null`）。我们在 Board 的构造函数中已经定义好了 `squares` 数组，这样，我们就可以通过修改 Board 的 `renderSquare` 方法来读取这些值了。
 
