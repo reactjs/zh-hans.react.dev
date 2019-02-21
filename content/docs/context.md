@@ -15,7 +15,7 @@ Context 提供了一个无需手动层层传递 props 属性就能在组件树�
   - [Context.Provider](#contextprovider)
   - [Class.contextType](#classcontexttype)
   - [Context.Consumer](#contextconsumer)
-- [案例](#examples)
+- [示例](#examples)
   - [动态 Context](#dynamic-context)
   - [在嵌套组件中更新 Context](#updating-context-from-a-nested-component)
   - [使用多个 Context](#consuming-multiple-contexts)
