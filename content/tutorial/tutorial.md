@@ -47,7 +47,7 @@ redirect_from:
 
 我们假定你已经对 HTML 和 JavaScript 都比较熟悉了。即便你之前使用其他编程语言，你也可以跟上这篇教程的。除此之外，我们假定你也已经熟悉了一些编程的概念，例如，函数、对象、数组，以及 class 的一些内容。
 
-如果你想回顾一下 JavaScript，你可以阅读[这篇教程](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript)。注意，我们也用到了一些 ES6（较新的 JavaScript 版本）的特性。在这篇教程里，我们主要使用了 [箭头函数（arrow functions）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)、[class](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes)、[let](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let) 语句和 [const](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/const) 语句。你可以使用 [Babel REPL](babel://es5-syntax-example) 在线预览 ES6 的编译结果。
+如果你想回顾一下 JavaScript，你可以阅读[这篇教程](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript)。注意，我们也用到了一些 ES6（较新的 JavaScript 版本）的特性。在这篇教程里，我们主要使用了[箭头函数（arrow functions）](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)、[class](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes)、[let](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/let) 语句和 [const](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/const) 语句。你可以使用 [Babel REPL](babel://es5-syntax-example) 在线预览 ES6 的编译结果。
 
 ## 环境准备
 
@@ -112,7 +112,7 @@ import './index.css';
 
 现在，在项目文件夹下执行 `npm start` 命令，然后在浏览器访问 `http://localhost:3000`。这样你就可以在浏览器中看见一个空的井字游戏的棋盘了。
 
-推荐参照 [这篇教程](https://babeljs.io/docs/editors/)来给你的编辑器配置语法高亮。
+推荐参照[这篇教程](https://babeljs.io/docs/editors/)来给你的编辑器配置语法高亮。
 
 </details>
 
@@ -151,9 +151,9 @@ class ShoppingList extends React.Component {
 
 我们马上会讨论这些有奇怪、又像 XML 的标签。我们通过使用组件来告诉 React 我们希望在屏幕上看到什么。当数据发生改变时，React 会高效地更新并重新渲染我们的组件。
 
-其中，ShoppingList 是一个**React 组件类**，或者说是一个**React 组件类型**。一个组件接收一些参数，我们把这些参数叫做 `props`（“props” 是 “properties” 简写），然后通过 `render` 方法返回需要展示在屏幕上的视图的层次结构。
+其中，ShoppingList 是一个 **React 组件类**，或者说是一个 **React 组件类型**。一个组件接收一些参数，我们把这些参数叫做 `props`（“props” 是 “properties” 简写），然后通过 `render` 方法返回需要展示在屏幕上的视图的层次结构。
 
-`render` 方法的返回值*描述*了你希望在屏幕上看到的内容。React 根据描述，然后把结果展示出来。更具体地来说，`render` 返回了一个**React 元素**，这是一种对渲染内容的轻量级描述。大多数的 React 开发者使用了一种名为 “JSX” 的特殊语法，JSX 可以让你更轻松地书写这些结构。语法 `<div />` 会被编译成 `React.createElement('div')`。上述的代码等同于：
+`render` 方法的返回值*描述*了你希望在屏幕上看到的内容。React 根据描述，然后把结果展示出来。更具体地来说，`render` 返回了一个 **React 元素**，这是一种对渲染内容的轻量级描述。大多数的 React 开发者使用了一种名为 “JSX” 的特殊语法，JSX 可以让你更轻松地书写这些结构。语法 `<div />` 会被编译成 `React.createElement('div')`。上述的代码等同于：
 
 ```javascript
 return React.createElement('div', {className: 'shopping-list'},
@@ -244,7 +244,7 @@ class Square extends React.Component {
 
 >注意
 >
->为了少输入代码，同时为了避免 [`this` 造成的困扰](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/)，我们在这里使用 [箭头函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions) 来进行事件处理，如下所示：
+>为了少输入代码，同时为了避免 [`this` 造成的困扰](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/)，我们在这里使用[箭头函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions) 来进行事件处理，如下所示：
 >
 >```javascript{4}
 >class Square extends React.Component {
@@ -475,12 +475,12 @@ class Square extends React.Component {
 1. 向 DOM 内置元素 `<button>` 添加 `onClick` prop，让 React 开启对点击事件的监听。
 2. 当 button 被点击时，React 会调用 Square 组件的 `render()` 方法中的 `onClick` 事件处理函数。
 3. 事件处理函数触发了传入其中的 `this.props.onClick()` 方法。这个方法是由 Board 传递给 Square 的。
-4. 由于Board 把 `onClick={() => this.handleClick(i)}` 传递给了 Square，所以当 Square 中的事件处理函数触发时，其实就是触发的 Board 当中的 `this.handleClick(i)` 方法。
+4. 由于 Board 把 `onClick={() => this.handleClick(i)}` 传递给了 Square，所以当 Square 中的事件处理函数触发时，其实就是触发的 Board 当中的 `this.handleClick(i)` 方法。
 5. 现在我们还尚未定义 `handleClick()` 方法，所以代码还不能正常工作。
 
 >注意
 >
->因为DOM 元素 `<button>` 是一个内置组件，因此其 `onClick` 属性在 React 中有特殊的含义。而对于用户自定义的组件来说，命名就可以由用户自己来定义了。我们可以给 Square 和 Board 的 prop 分别命名为 `onClick` 和 `handleClick`。然而在 React 中，有一个命名的约定，我们一般把代表事件的的监听 prop 命名为 `on[Event]`，把处理事件的监听方法命名为 `handle[Event]` 这样的格式。
+>因为 DOM 元素 `<button>` 是一个内置组件，因此其 `onClick` 属性在 React 中有特殊的含义。而对于用户自定义的组件来说，命名就可以由用户自己来定义了。我们可以给 Square 和 Board 的 prop 分别命名为 `onClick` 和 `handleClick`。然而在 React 中，有一个命名的约定，我们一般把代表事件的的监听 prop 命名为 `on[Event]`，把处理事件的监听方法命名为 `handle[Event]` 这样的格式。
 
 这时候我们点击 Square 的时候，浏览器会报错，因为我们还没有定义 `handleClick` 方法。我们现在来向 Board 里添加 `handleClick` 方法：
 
@@ -583,7 +583,7 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 不可变性最主要的优势在于它可以帮助我们在 React 中创建 _pure components_。我们可以很轻松的确定不可变数据是否发生了改变，从而确定何时对组件进行重新渲染。
 
-解更多有关 `shouldComponentUpdate()` 的内容，以及如何编写 *pure components* 的内容，你可以查阅 [性能优化](/docs/optimizing-performance.html#examples)。
+解更多有关 `shouldComponentUpdate()` 的内容，以及如何编写 *pure components* 的内容，你可以查阅[性能优化](/docs/optimizing-performance.html#examples)。
 
 ### 函数定义组件
 
