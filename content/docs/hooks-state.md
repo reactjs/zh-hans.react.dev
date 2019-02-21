@@ -8,13 +8,13 @@ prev: hooks-overview.html
 
 *Hook* 是一个即将到来的特性，它让你不用写 class 也可以使用 state 和其他 React 特性。他们现在在React v16.8.0-alpha.1 中。
 
-[上一页](/docs/hooks-intro.html)用这个例子介绍了 Hook:
+[上一页](/docs/hooks-intro.html)用这个例子介绍了 Hook：
 
 ```js{4-5}
 import { useState } from 'react';
 
 function Example() {
-  // 声明一个新的 state 变量：count
+  // 声明一个叫 "count" 的 state 变量
   const [count, setCount] = useState(0);
 
   return (
@@ -82,11 +82,11 @@ function Example(props) {
 }
 ```
 
-你之前可能已经知道这些是“无状态组件”。我们现在介绍的是在这些基础上使用 React State 的能力，所以我们更喜欢叫他"函数定义组件"。
+你之前可能已经知道这些是“无状态组件”。我们现在介绍的是在这些基础上使用 React state 的能力，所以我们更喜欢叫他"函数定义组件"。
 
 Hook 在 class 内部是**不**起作用的。但你可以使用它们来代替编写 class。
 
-## Hook是什么？
+## Hook 是什么？
 
 我们的新示例首先从 React 导入 `useState` Hook
 
@@ -98,7 +98,7 @@ function Example() {
 }
 ```
 
-**Hook 是什么？** Hook 是一个特殊的函数，它可以让你 `钩住` React 的特性。例如，`useState` 是一个让你添加 React State 到函数定义组件的 Hook。稍后我们将学习其他 Hook。
+**Hook 是什么？** Hook 是一个特殊的函数，它可以让你 `钩入` React 的特性。例如，`useState` 是一个让你添加 React state 到函数定义组件的 Hook。稍后我们将学习其他 Hook。
 
 **什么时候我会用 Hook？** 如果你在写一个函数定义组件并意识到需要向其添加一些 state，如果是以前的话你必须把它转化为一个 class。现在你可以在现有的函数定义组件中使用 Hook。我们现在就去做！
 
@@ -126,15 +126,15 @@ class Example extends React.Component {
 import { useState } from 'react';
 
 function Example() {
-  // 声明一个新 state 变量：count
+  // 声明一个叫 “count” 的 state 变量
   const [count, setCount] = useState(0);
 ```
 
-**调用 `useState` 方法做了什么?** 它定义一个 “state 变量”。我们的变量叫 `count`， 但我们可以把它叫做任意的东西，像 `banana`。这是一种在函数调用之间保存一些值的方式—— `useState` 是一种新方法，它和 class 里面的 `this.state` 提供的功能完全相同。一般来说，在函数退出后变量就就会"消失"，但 state 变量是被 React 保留的。
+**`useState` 方法做了什么?** 它定义一个 “state 变量”。我们的变量叫 `count`， 但我们可以把它叫做任意的东西，像 `banana`。这是一种在函数调用之间保存一些值的方式—— `useState` 是一种新方法，它和 class 里面的 `this.state` 提供的功能完全相同。一般来说，在函数退出后变量就就会"消失"，但 state 变量会被 React 保留。
 
-**我们应该传递哪些参数给 `useState`？** `useState()` 方法里面唯一的参数就是初始 state。与 class 不一样，state 可以不是对象。我们可以保留一个数字或字符串，如果这是我们所需要的。在我们示例中，我们只要一个数字来记录用户点击次数，所以我们传了 `0` 作为变量的初始 state。（如果我们想要在 state 中存储两个不同的变量，只需调用 `useState()`两次即可。）
+**我们应该传递哪些参数给 `useState`？** `useState()` 方法里面唯一的参数就是初始 state。不用于 class，我们可以按照需要使用数字或字符串，而不一定是要一个对象。在我们示例中，只要一个数字来记录用户点击次数，所以我们传了 `0` 作为变量的初始 state。（如果我们想要在 state 中存储两个不同的变量，只需调用 `useState()`两次即可。）
 
-**`useState`方法的返回值是什么？** 它返回一对值：当前 state 和一个更新 state 的函数。这就是我们写 `const [count, setCount] = useState()` 的原因。这和 class 里面 `this.state.count` 和 `this.setState` 类似，唯一区别就是你把它们配成了对。如果你不熟悉我们使用的语法，我们可以返回到[这页的底部](/docs/hooks-state.html#tip-what-do-square-brackets-mean)。
+**`useState` 方法的返回值是什么？** 它返回一对值：当前 state 和一个更新 state 的函数。这就是我们写 `const [count, setCount] = useState()` 的原因。这跟 class 里面 `this.state.count` 和 `this.setState` 类似，唯一区别就是你可以成对的获取它们。如果你不熟悉我们使用的语法，我们会在[这页的底部](/docs/hooks-state.html#tip-what-do-square-brackets-mean)介绍它。
 
 既然我们知道了 `useState` 的作用，我们的示例应该更容易理解了：
 
@@ -142,17 +142,17 @@ function Example() {
 import { useState } from 'react';
 
 function Example() {
-  // 声明 state 变量：count
+  // 声明一个叫 "count" 的 state 变量
   const [count, setCount] = useState(0);
 ```
 
-我们声明了一个叫 `count`的 state 变量，然后把它设为 `0`。React 会在重新渲染的时记住它当前的值，并且提供最新的值给我们的函数。如果我想要更新当前的 `count`，我们可以调用 `setCount`。
+我们声明了一个叫 `count` 的 state 变量，然后把它设为 `0`。React 会在重复渲染时记住它当前的值，并且提供最新的值给我们的函数。我们可以通过调用 `setCount` 来更新当前的 `count`。
 
 >注意
 >
 >你可能想知道：为什么叫 `useState` 而不叫 `createState`?
 >
->"Create"可能不是很准确，因为 state 只在组件首次渲染的时候被创建。在下一次重新渲染时，`useState` 返回给我们当前的 state。否则 它就不是 “state”了！这也是 Hook 的名字*总是*以 `use` 开头的一个原因。我们将在后面的 [Hook 规范](/docs/hooks-rules.html)中了解原因。
+>"Create" 可能不是很准确，因为 state 只在组件首次渲染的时候被创建。在下一次重新渲染时，`useState` 返回给我们当前的 state。否则它就不是 “state”了！这也是 Hook 的名字*总是*以 `use` 开头的一个原因。我们将在后面的 [Hook 规范](/docs/hooks-rules.html)中了解原因。
 
 ## 读取 State
 
@@ -171,7 +171,7 @@ function Example() {
 
 ## 更新 State
 
-在 class 中，我们需要调用 `this.setState()` 来更新 `count` state：
+在 class 中，我们需要调用 `this.setState()` 来更新 `count` 值：
 
 ```js{1}
   <button onClick={() => this.setState({ count: this.state.count + 1 })}>
@@ -189,7 +189,7 @@ function Example() {
 
 ## 总结
 
-现在让我们来**仔细回顾学到的知识**，看下我们是否真正理解了。
+现在让我们来**仔细回顾一下学到的知识**，看下我们是否真正理解了。
 
 <!--
   I'm not proud of this line markup. Please somebody fix this.
@@ -213,7 +213,7 @@ function Example() {
 ```
 
 * **第一行:** 引入 React 中的 `useState` Hook。它让我们在函数定义组件中存储内部 state。
-* **第四行:** 在 `Example` 组件内部，我们通过调用 `useState` Hook 声明了一个新的 state 变量。它返回一对值给到我们命名的变量上。我们把变量命名为 `count`，因为它存储的是点击次数。我们通过传 `0` 作为 `useState` 唯一参数来将其初始化为 `0`。第二个返回的值本身就是一个函数。它让我们可以更新 `count` 的值，所以我们叫它 `setCount`。
+* **第四行:** 在 `Example` 组件内部，我们通过调用 `useState` Hook 声明了一个新的 state 变量。它返回一对值给到我们命名的变量上。我们把变量命名为 `count`，因为它存储的是点击次数。我们通过传 `0` 作为 `useState` 唯一的参数来将其初始化为 `0`。第二个返回的值本身就是一个函数。它让我们可以更新 `count` 的值，所以我们叫它 `setCount`。
 * **第九行:** 当用户点击按钮后，我们传递一个新的值给 `setCount`。React 会重新渲染 `Example` 组件，并把最新的 `count` 传给它。
 
 乍一看这似乎有点太多了。不要急于求成！如果你有不理解的地方，请再次查看以上代码并从头到尾阅读。我们保证一旦你试着"忘记" class 里面 state 是如何工作的，并用新的眼光看这段代码，就容易理解了。 
@@ -232,7 +232,7 @@ function Example() {
   const [fruit, setFruit] = useState('banana');
 ```
 
-这种 Javascript 语法叫[数组解构](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring)。它意味着我们同时创建了 `fruit` 和 `setFruit` 两个变量，`fruit` 值为 `useState` 返回的第一个值，`setFruit` 是返回的第二个值。它等价于下面的代码：
+这种 JavaScript 语法叫[数组解构](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring)。它意味着我们同时创建了 `fruit` 和 `setFruit` 两个变量，`fruit` 的值为 `useState` 返回的第一个值，`setFruit` 是返回的第二个值。它等价于下面的代码：
 
 ```js
   var fruitStateVariable = useState('banana'); // 返回一个有两个元素的数组
@@ -240,7 +240,7 @@ function Example() {
   var setFruit = fruitStateVariable[1]; // 数组里的第二个值
 ```
 
-当我们使用 `useSatate` 定义 一个 state 变量时候，它返回一对值——有两个值的数组。第一个值是当前的 state，第二值是更新 state 的函数。使用 `[0]` 和 `[1]` 来访问有点令人困惑，因为它们有特定的含义。这就是我们使用数组析构的原因。
+当我们使用 `useSatate` 定义 一个 state 变量时候，它返回一个有两个值的数组。第一个值是当前的 state，第二值是更新 state 的函数。使用 `[0]` 和 `[1]` 来访问有点令人困惑，因为它们有特定的含义。这就是我们使用数组解构的原因。
 
 >注意
 >
@@ -277,4 +277,4 @@ function ExampleWithManyStates() {
 
 我们还学到了一些知识比如什么是 Hook。Hook 是能让你在函数定义组件中“钩住” React 特性的函数。它们名字通常都以 `use` 开始，还有更多 Hook 等着我们去探索。
 
-**现在我们继续下一章[学习下一个 Hook: `useEffect` 。](/docs/hooks-effect.html)** 它让你产生组件中的副作用，并且它跟 class 里面的生命周期函数很类似。
+**现在我们继续下一章[学习下一个 Hook: `useEffect` ](/docs/hooks-effect.html)。** 它让你产生组件中的副作用，并且它跟 class 里面的生命周期函数很类似。
