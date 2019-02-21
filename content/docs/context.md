@@ -125,7 +125,7 @@ const MyContext = React.createContext(defaultValue);
 <MyContext.Provider value={/* 某个值 */}>
 ```
 
-每一个 Context 对象都会返回一个 Provider React 组件，它允许要调用的组件（consumer）订阅 context 的变化。
+每个 Context 对象都会返回一个 Provider React 组件，它允许消费组件订阅 context 的变化。
 
 Provider 接收一个 `value` 属性，传递给消费组件。一个 Provider 可以和多个消费组件有对应关系。多个 Provider 也可以嵌套使用，里层的会覆盖外层的数据。
 
