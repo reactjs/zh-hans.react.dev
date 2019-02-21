@@ -68,7 +68,7 @@ class Example extends React.Component {
 
 ```js
 const Example = (props) => {
-  // 你可以在这使用 Hook
+  // 你可以在这使用 Hooks
   return <div />;
 }
 ```
