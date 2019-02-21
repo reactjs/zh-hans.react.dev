@@ -143,7 +143,7 @@ Provider 接收一个 `value` 属性，传递给下面的调用组件（consumer
 class MyClass extends React.Component {
   componentDidMount() {
     let value = this.context;
-    /* 在组件挂载完成后使用 MyContext 的值来执行一些有副作用的操作 */
+    /* 在组件挂载完成后，使用 MyContext 组件的值来执行一些有副作用的操作 */
   }
   componentDidUpdate() {
     let value = this.context;
