@@ -1,6 +1,6 @@
 ---
 id: hooks-state
-title: Using the State Hook
+title: 使用 State Hook
 permalink: docs/hooks-state.html
 next: hooks-effect.html
 prev: hooks-overview.html
