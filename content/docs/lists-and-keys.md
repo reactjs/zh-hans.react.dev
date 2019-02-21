@@ -132,7 +132,7 @@ const todoItems = todos.map((todo, index) =>
 
 如果列表项目的顺序可能会变化，我们不建议使用索引来用作键值，因为这样做会导致性能变差，还可能引起组件状态的问题。可以看看 Robin Pokorny 的[深度解析使用索引作为 key 的负面影响](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318) 这一篇文章。如果你选择不指定显式的键值，那么 React 将默认使用索引用作为列表项目的键值。
 
-要是你有兴趣了解更多的话，这里有一篇文章 [深入解析为什么 keys 是必须的](/docs/reconciliation.html#recursing-on-children) 可以参考。
+要是你有兴趣了解更多的话，这里有一篇文章[深入解析为什么 keys 是必须的](/docs/reconciliation.html#recursing-on-children)可以参考。
 
 ### 用 Keys 提取组件 {#extracting-components-with-keys}
 
@@ -298,4 +298,4 @@ function NumberList(props) {
 
 [在 CodePen 上尝试](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
 
-这么做有时可以使你的代码更清晰，但有时这种风格也会被滥用。就像在 JavaScript 中一样，何时需要为了可读性提取出一个变量，这完全取决于你。但请记住，如果一个 `map()` 嵌套了太多层级，那可能就是你 [提取出组件](/docs/components-and-props.html#extracting-components) 的一个好时机。
+这么做有时可以使你的代码更清晰，但有时这种风格也会被滥用。就像在 JavaScript 中一样，何时需要为了可读性提取出一个变量，这完全取决于你。但请记住，如果一个 `map()` 嵌套了太多层级，那可能就是你[提取组件](/docs/components-and-props.html#extracting-components)的一个好时机。
