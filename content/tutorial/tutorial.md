@@ -149,7 +149,7 @@ class ShoppingList extends React.Component {
 // 用法示例: <ShoppingList name="Mark" />
 ```
 
-我们马上会讨论这些有意思的、看起来像 XML 的标签。我们通过使用组件来告诉 React 我们希望在屏幕上看到什么。当数据发生改变时，React 会高效地更新并重新渲染我们的组件。
+我们马上会讨论这些有奇怪、又像 XML 的标签。我们通过使用组件来告诉 React 我们希望在屏幕上看到什么。当数据发生改变时，React 会高效地更新并重新渲染我们的组件。
 
 其中，ShoppingList 是一个**React 组件类**，或者说是一个**React 组件类型**。一个组件接收一些参数，我们把这些参数叫做 `props`（“props” 是 “properties” 简写），然后通过 `render` 方法返回需要展示在屏幕上的视图的层次结构。
 
@@ -164,11 +164,11 @@ return React.createElement('div', {className: 'shopping-list'},
 
 [查看完整展开的代码。](babel://tutorial-expanded-version)
 
-如果你对这个比较感兴趣，可以在 [API 文档](/docs/react-api.html#createelement)中查看 `createElement()` 更详细的用法。但在接下来的教程中，我们并不会直接使用这个方法，而是继续使用 JSX。
+如果你对这个比较感兴趣，可以查阅 [API 文档](/docs/react-api.html#createelement)了解有关 `createElement()` 更详细的用法。但在接下来的教程中，我们并不会直接使用这个方法，而是继续使用 JSX。
 
 在 JSX 中你可以任意使用 JavaScript 表达式，只需要用一个大括号把表达式括起来。每一个 React 元素事实上都一个 JavaScript 对象，你可以在你的程序中把它当保存在变量中或者作为参数传递。
 
-上文中的 `ShoppingList` 组件只会渲染一些内置的 DOM 组件，如`<div />`、`<li />`等。但是你也可以组合和渲染自定义的 React 组件。例如，你可以通过 `<ShoppingList />` 来表示整个购物清单组件。每个组件都是封装好的，并且可以单独运行，这样你就可以通过组合简单的组件来构建复杂的 UI 界面。
+前文中的 `ShoppingList` 组件只会渲染一些内置的 DOM 组件，如`<div />`、`<li />`等。但是你也可以组合和渲染自定义的 React 组件。例如，你可以通过 `<ShoppingList />` 来表示整个购物清单组件。每个组件都是封装好的，并且可以单独运行，这样你就可以通过组合简单的组件来构建复杂的 UI 界面。
 
 ### 阅读初始代码
 
@@ -221,7 +221,7 @@ class Square extends React.Component {
 
 **[查看此步完整代码示例](https://codepen.io/gaearon/pen/aWWQOG?editors=0010)**
 
-恭喜你！你刚刚成功地把一个 prop 从父组件 Board “传递” 给了子组件 Square。在 React 应用中，数据通过 props 的传递，从父组件流向子组件。
+恭喜你！你刚刚成功地把一个 prop 从父组件 Board “传递”给了子组件 Square。在 React 应用中，数据通过 props 的传递，从父组件流向子组件。
 
 ### 给组件添加交互功能
 
@@ -258,9 +258,9 @@ class Square extends React.Component {
 >}
 >```
 >
->注意我们使用了 `onClick={() => alert('click')}` 向 `onClick` 这个 prop 传入一个 *函数* 。很多人经常忘了 `() =>`，写成了 `onClick={alert('click')}`，这种常见的错误会导致每次这个组件渲染的时候都会触发弹出框。
+>注意我们使用了 `onClick={() => alert('click')}` 向 `onClick` 这个 prop 传入一个*函数* 。很多人经常忘了 `() =>`，写成了 `onClick={alert('click')}`，这种常见的错误会导致每次这个组件渲染的时候都会触发弹出框。
 
-接下来，我们希望 Square 组件可以“记住”它被点击过，然后用 “X” 来填充对应的方格。我们用 **state** 来实现所谓 “记忆” 的功能。
+接下来，我们希望 Square 组件可以“记住”它被点击过，然后用 “X” 来填充对应的方格。我们用 **state** 来实现所谓“记忆”的功能。
 
 可以通过在 React 组件构的造函数中设置 `this.state` 来初始化 state。`this.state` 应该被视为一个组件的私有属性。我们在 `this.state` 中存储当前每个方格（Square）的值，并且在每次方格被点击的时候改变这个值。
 
@@ -333,7 +333,7 @@ class Square extends React.Component {
 
 你还可以在 React DevTools 中检查 React 组件的 state 和 props。
 
-安装 React DevTools 之后，右键点击页面的任何一个元素，然后选择 “查看”，这样就能打开浏览器的开发者工具了。React 的标签页会出现在顶部标签栏最右边。
+安装 React DevTools 之后，右键点击页面的任何一个元素，然后选择“查看”，这样就能打开浏览器的开发者工具了。React 的标签页会出现在顶部标签栏最右边。
 
 **不过，如果你使用的是 CodePen 在线编辑器的话，还需要几步操作才能正确使用开发工具**
 
@@ -346,7 +346,7 @@ class Square extends React.Component {
 
 我们现在已经编写好了井字棋游戏中，最基础的可以落子的棋盘。为了开发一个完整的游戏，我们还需要交替在棋盘上放置 “X” 和 “O”，并且判断出胜者。
 
-### 提升 State
+### 状态提升
 
 当前，每个 Square 组件都维护了游戏的状态。我们可以把所有 9 个 Square 的值放在一个地方，这样我们就可以判断出胜者了。
 
@@ -547,7 +547,7 @@ class Board extends React.Component {
 
 在上一节内容当中，我们通过使用 `.slice()` 方法创建了数组的一个副本，而不是直接修改现有的数组。接下来我们来学习不可变性以及不可变性的重要性。
 
-一般来说，有两种改变数据的方式。第一种方式是直接 *修改* 变量的值，第二种方式是使用新的一份数据替换旧数据。
+一般来说，有两种改变数据的方式。第一种方式是直接*修改*变量的值，第二种方式是使用新的一份数据替换旧数据。
 
 #### 直接修改数据
 ```javascript
@@ -589,7 +589,7 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 接下来我们把 Square 组件重写为一个**函数定义组件**。
 
-如果你想写的组件只包含一个 `render` 方法，并且不包含 state，那么使用**函数定义组件** 就会更简单。我们不需要定义一个继承于 `React.Component` 的类，我们可以定义一个函数，这个函数接收 `props` 作为参数，然后返回需要渲染的元素。函数定义组件写起来不像类定义组件那么繁琐，很多组件都可以使用函数定义组件来写。
+如果你想写的组件只包含一个 `render` 方法，并且不包含 state，那么使用**函数定义组件**就会更简单。我们不需要定义一个继承于 `React.Component` 的类，我们可以定义一个函数，这个函数接收 `props` 作为参数，然后返回需要渲染的元素。函数定义组件写起来不像类定义组件那么繁琐，很多组件都可以使用函数定义组件来写。
 
 把 Square 类替换成下面的函数：
 
@@ -609,7 +609,7 @@ function Square(props) {
 
 >注意
 >
->当我们把 Square 修改成函数定义组件时，我们同时也把 `onClick={() => this.props.onClick()}` 改成了更短的 `onClick={props.onClick}`（注意两侧 *都* 没有括号）。在类定义组件中，我们使用箭头函数来获取正确的 `this` 的值。但是在函数定义组件中，我们不必担心 `this` 的问题。
+>当我们把 Square 修改成函数定义组件时，我们同时也把 `onClick={() => this.props.onClick()}` 改成了更短的 `onClick={props.onClick}`（注意两侧*都*没有括号）。在类定义组件中，我们使用箭头函数来获取正确的 `this` 的值。但是在函数定义组件中，我们不必担心 `this` 的问题。
 
 ### 轮流落子
 
@@ -774,7 +774,7 @@ function calculateWinner(squares) {
 
 ## 时间旅行
 
-接下来是最后一个练习，我们将实现 “回到过去” 的功能，从而在游戏里跳回到历史步骤。
+接下来是最后一个练习，我们将实现“回到过去”的功能，从而在游戏里跳回到历史步骤。
 
 ### 保存历史记录
 
@@ -816,7 +816,7 @@ history = [
 
 现在，我们需要确定应该在哪一个组件里保存 `history` 这个 state。
 
-### 再次提升 State
+### 再次提升状态
 
 我们希望顶层 Game 组件展示出一个历史步骤的列表。这个功能需要访问 `history` 的数据，因此我们把 `history` 这个 state 放在顶层 Game 组件中。 
 
@@ -1214,7 +1214,7 @@ class Game extends React.Component {
 
 干的不错！我们希望你至此已经基本掌握了 React 的使用。
 
-在这里可以查看最终的游戏代码: **[最终成果](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**.
+在这里可以查看最终的游戏代码:**[最终成果](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**.
 
 如果你还有充裕的时间，或者想练习一下刚刚学会的 React 新技能，这里有一些可以改进游戏的想法供你参考，这些功能的实现顺序的难度是递增的：
 
