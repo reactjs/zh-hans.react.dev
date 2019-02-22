@@ -14,7 +14,7 @@ class App extends React.Component {
       }));
     };
 
-    // highlight-range{1,4}
+    // highlight-range{1-2,5}
     // State 也包含了更新函数，因此它会被传递进 context provider。
     this.state = {
       theme: themes.light,
