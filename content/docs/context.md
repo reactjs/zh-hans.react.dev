@@ -213,7 +213,7 @@ class MyClass extends React.Component {
 
 ### 在嵌套组件中更新 Context {#updating-context-from-a-nested-component}
 
-从一个在组件树中嵌套很深的组件中更新 context 是很有必要的。在这种场景下，你可以通过 context 传递一个函数，来允许调用组件更新 context：
+从一个在组件树中嵌套很深的组件中更新 context 是很有必要的。在这种场景下，你可以通过 context 传递一个函数，使得 consumers 组件更新 context：
 
 **theme-context.js**
 `embed:context/updating-nested-context-context.js`
