@@ -226,7 +226,7 @@ class MyClass extends React.Component {
 
 ### 调用多个 Context {#consuming-multiple-contexts}
 
-为了确保 context 快速进行重渲染，React 需要使每一个 context 调用组件在组件树中成为一个单独的节点。
+为了确保 context 快速进行重渲染，React 需要使每一个 consumers 组件的 context 在组件树中成为一个单独的节点。
 
 `embed:context/multiple-contexts.js`
 
