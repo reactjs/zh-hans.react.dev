@@ -165,7 +165,7 @@ MyClass.contextType = MyContext;
 
 > 注意：
 >
-> 你只可以使用这个 API 订阅单一 context。但如果你想订阅不只一个，阅读[使用多个 Context](#consuming-multiple-contexts) 章节
+> 你只通过该 API 订阅单一 context。如果你想订阅多个，阅读[使用多个 Context](#consuming-multiple-contexts) 章节
 >
 > 如果你正在使用实验性的 [public class fields 语法](https://babeljs.io/docs/plugins/transform-class-properties/)，你可以使用 `static` 这个类属性来初始化你的 `contextType`。
 
