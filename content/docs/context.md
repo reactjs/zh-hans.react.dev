@@ -239,7 +239,7 @@ class MyClass extends React.Component {
 `embed:context/reference-caveats-problem.js`
 
 
-为了防止这种情况, 将 value 提升到父节点的 state 里：
+为了防止这种情况, 将 value 状态提升到父节点的 state 里：
 
 `embed:context/reference-caveats-solution.js`
 
