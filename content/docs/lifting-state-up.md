@@ -13,7 +13,7 @@ redirect_from:
 
 在本节中，我们将创建一个用于计算水在给定温度下是否会沸腾的温度计算器。
 
-我们将从一个名为 `BoilingVerdict` 的组件开始，它接受 `celsius` 温度作为一个 prop，并且打印出这个温度是否足以让水沸腾。
+我们将从一个名为 `BoilingVerdict` 的组件开始，它接受 `celsius` 温度作为一个 prop，并据此打印出该温度是否足以将水煮沸的结果。
 
 ```js{3,5}
 function BoilingVerdict(props) {
@@ -24,7 +24,7 @@ function BoilingVerdict(props) {
 }
 ```
 
-接下来, 我们创建一个名为 `Calculator` 的组件。它渲染一个让你输入温度的 `<input>`，并将其值保存在 `this.state.temperature` 中。
+接下来, 我们创建一个名为 `Calculator` 的组件。它渲染一个用于输入温度的 `<input>`，并将其值保存在 `this.state.temperature` 中。
 
 另外, 它根据当前输入值渲染 `BoilingVerdict` 组件。
 
@@ -60,7 +60,7 @@ class Calculator extends React.Component {
 
 ## 添加第二个输入框 {#adding-a-second-input}
 
-现在我们有了新的需求，在已有摄氏温度输入框的基础上，我们提供华氏度的输入框，并保持两个输入框的数据同步。
+我们的新需求是，在已有摄氏温度输入框的基础上，我们提供华氏度的输入框，并保持两个输入框的数据同步。
 
 我们先从 `Calculator` 组件中抽离出 `TemperatureInput` 组件，然后为其添加一个新的 `scale` prop，它可以是 `"c"` 或是 `"f"`：
 
@@ -112,7 +112,7 @@ class Calculator extends React.Component {
 
 [**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/jGBryx?editors=0010)
 
-虽然我们现在有了两个输入框，但当你在其中一个键入温度时，另一个并不会更新，这便与两个输入框保持同步的需求相悖了。
+我们现在有了两个输入框，但当你在其中一个输入温度时，另一个并不会更新。这与我们的要求相矛盾：我们希望让它们保持同步。
 
 另外，我们也不能通过 `Calculator` 组件展示 `BoilingVerdict` 组件的渲染结果。因为 `Calculator` 组件并不知道隐藏在 `TemperatureInput` 组件中的当前温度是多少。
 
@@ -169,7 +169,7 @@ class TemperatureInput extends React.Component {
     // ...  
 ```
 
-然而，我们希望这两个输入框中的数值能够保持同步。当我们更新摄氏度输入框的内容时，华氏度输入框应当显示转换后的华氏温度，反之亦然。
+然而，我们希望两个输入框内的数值彼此能够同步。当我们更新摄氏度输入框内的数值时，华氏度输入框内应当显示转换后的华氏温度，反之亦然。
 
 在 React 中，共享 state 是通过将多个组件中需要共享的 state 向上移动到它们的最近共同父组件来实现的。这就是所谓的“状态提升”。接下来，我们将 `TemperatureInput` 组件中的 state 移动至 `Calculator` 组件中去。
 
@@ -312,20 +312,19 @@ class Calculator extends React.Component {
 * React 调用 `Calculator` 组件的 `render` 方法得到组件的 UI 呈现。温度转换在这时进行，两个输入框中的数值通过当前输入温度和其计量单位来重新计算获得。
 * React 使用 `Calculator` 组件提供的新 props 分别调用两个 `TemperatureInput` 子组件的 `render` 方法来获取子组件的 UI 呈现。
 * React 调用 `BoilingVerdict` 组件的 `render` 方法，并将摄氏温度值以组件 props 方式传入。
-* React DOM 根据输入值匹配水是否沸腾，并将结果更新至 DOM。
-* 使用沸腾判定更新 DOM 并匹配所需的输入值。我们最近编辑的那个输入框接收其当前数值，而另一个输入框内的值更新为经过转换的温度数值。
+* React DOM 根据输入值匹配水是否沸腾，并将结果更新至 DOM。我们刚刚编辑的输入框接收其当前值，另一个输入框内容更新为转换后的温度值。
 
 得益于每次的更新都经历相同的步骤，两个输入框的内容才能始终保持同步。
 
 ## 学习小结 {#lessons-learned}
 
-在React应用中，任何可变数据应当只有一个相对应的唯一“数据源”。通常，state 都是首先添加到需要渲染数据的组件中去。然后，如果其他组件也需要这个 state，那么你可以将它提升至这些组件的最近共同父组件中。你应当依靠 [自上而下的数据流](/docs/state-and-lifecycle.html#the-data-flows-down)，而不是尝试在不同组件间同步 state。
+在 React 应用中，任何可变数据应当只有一个相对应的唯一“数据源”。通常，state 都是首先添加到需要渲染数据的组件中去。然后，如果其他组件也需要这个 state，那么你可以将它提升至这些组件的最近共同父组件中。你应当依靠 [自上而下的数据流](/docs/state-and-lifecycle.html#the-data-flows-down)，而不是尝试在不同组件间同步 state。
 
-虽然提升 state 方式比双向绑定方式需要编写更多的“样板”代码，但带来的好处是，排查和隔离 bug 所需的工作量将会变少。因为任何“活”在某些组件中的状态数据，仅有该组件自己能够修改它，这样 bug 的排查范围就被大大地被缩减了。此外，你也可以使用自定义逻辑来拒绝或转换用户的输入。
+虽然提升 state 方式比双向绑定方式需要编写更多的“样板”代码，但带来的好处是，排查和隔离 bug 所需的工作量将会变少。由于“存在”于组件中的任何 state，仅有组件自己能够修改它，因此 bug 的排查范围被大大缩减了。此外，你也可以使用自定义逻辑来拒绝或转换用户的输入。
 
-如果某些数据可以由 props 或 state 推导得出，那么它就不应该存在于 state 中。举个例子，本例中我们没有将 `celsiusValue` 和 `fahrenheitValue` 一起保存，而是仅保存了最后修改的 `temperature` 和它的 `scale`。这是因为另一个输入框的温度值始终可以通过这两个值以及组件的 `render()` 方法获得。这使得我们能够清除输入框内容，亦或是，对输入框内的数值在不损失任何精度的前提下进行四舍五入的计算。
+如果某些数据可以由 props 或 state 推导得出，那么它就不应该存在于 state 中。举个例子，本例中我们没有将 `celsiusValue` 和 `fahrenheitValue` 一起保存，而是仅保存了最后修改的 `temperature` 和它的 `scale`。这是因为另一个输入框的温度值始终可以通过这两个值以及组件的 `render()` 方法获得。这使得我们能够清除输入框内容，亦或是，在不损失用户操作的输入框内数值精度的前提下对另一个输入框内的转换数值做四舍五入的操作。
 
-当你在 UI 界面上发现问题时，你可以使用 [React 开发者工具](https://github.com/facebook/react-devtools) 来检查问题组件的 props，并且按照组件树结构逐级向上搜寻，直到定位到负责更新 state 的那个组件。这使得你能够追踪到产生 bug 的源头：
+当你在 UI 中发现错误时，可以使用 [React 开发者工具](https://github.com/facebook/react-devtools) 来检查问题组件的 props，并且按照组件树结构逐级向上搜寻，直到定位到负责更新 state 的那个组件。这使得你能够追踪到产生 bug 的源头：
 
 <img src="../images/docs/react-devtools-state.gif" alt="Monitoring State in React DevTools" max-width="100%" height="100%">
 
