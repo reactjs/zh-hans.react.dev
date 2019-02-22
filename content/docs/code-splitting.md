@@ -81,7 +81,12 @@ import("./math").then(math => {
 
 如果你自己配置 Webpack，你可能要阅读下 Webpack 关于[代码分割](https://webpack.docschina.org/guides/code-splitting/)的指南。你的 Webpack 配置应该[类似于此](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269)。
 
+<<<<<<< HEAD
 当使用 [Babel](https://babel.docschina.org/) 时，你要确保 Babel 能够解析动态 import 语法而不是将其进行转换。对于这一要求你需要 [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import) 插件。
+=======
+When using [Babel](https://babeljs.io/), you'll need to make sure that Babel can
+parse the dynamic import syntax but is not transforming it. For that you will need [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import).
+>>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
 
 ## `React.lazy` {#reactlazy}
 
