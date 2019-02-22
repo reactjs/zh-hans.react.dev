@@ -85,7 +85,7 @@ class Chosen extends React.Component {
 }
 ```
 
-注意我们为什么要把 `<select>` 使用一个额外的 `<div>` 包裹起来。这是很必要的，因为 Chosen 会紧挨着我们传递给它的 `<select>` 节点追加另一个 DOM 元素。然而，对于 React 来说 `<div>` 总是只有一个子节点。这样我们就能确保 React 更新不会和 Chosen 追加的额外 DOM 节点发生冲突。在 React 工作流之外修改 DOM 是非常重大的事情，你必须确保 React 没有原因去触碰那些节点。
+注意我们为什么要把 `<select>` 使用一个额外的 `<div>` 包裹起来。这是很必要的，因为 Chosen 会紧挨着我们传递给它的 `<select>` 节点追加另一个 DOM 元素。然而，对于 React 来说 `<div>` 总是只有一个子节点。这样我们就能确保 React 更新不会和 Chosen 追加的额外 DOM 节点发生冲突。在 React 工作流之外修改 DOM 是非常重大的事情，你必须确保 React 没有理由去触碰那些节点。
 
 接下来，我们会实现声明周期函数。我们需要在 `componentDidMount` 中使用 `<select>` 的引用初始化 Chosen，并且在 `componentWillUnmount` 中将其销毁:
 
@@ -110,7 +110,7 @@ componentWillUnmount() {
 
 到此已经足够让我们的组件去渲染了，但我们同时希望在值变化的时候被通知到。要做到这点，我们需要在订阅由 Chosen 管理的 `<select>` 上的 jQuery `change` 事件。
 
-我们不直接吧 `this.props.onChange` 传递给 Chosen 是因为 组件的 props 可能随时间而变化，而且它还有可能包含事件处理函数。反之，我们会定义一个 `handleChange()` 方法来调用 `this.props.onChange`，并且订阅 jQuery `change` 事件：
+我们不直接吧 `this.props.onChange` 传递给 Chosen 是因为 组件的 props 可能随时间而变化，而且它还有可能包含事件处理函数。对应的，我们会定义一个 `handleChange()` 方法来调用 `this.props.onChange`，并且订阅 jQuery `change` 事件：
 
 ```js{5,6,10,14-16}
 componentDidMount() {
@@ -133,7 +133,7 @@ handleChange(e) {
 
 [**在 CodePen 上运行**](http://codepen.io/gaearon/pen/bWgbeE?editors=0010)
 
-最终，没有其他还需要做的事情了。在 React 中，props 可以因在不同的时间有不同的值。例如，如果父组件的状态发生变化 `<Chosen>` 组件可能得到不同的 children。这意味着从集成的角度来看 prop 更新的时候我们需要手动更新 DOM 来相应它是很重要的，因为我们已经不再使用 React 来帮我们管理这个 DOM 了。
+最终，没有其他还需要做的事情了。在 React 中，props 可以在不同的时间有不同的值。例如，如果父组件的状态发生变化 `<Chosen>` 组件可能得到不同的 children。这意味着从集成的角度来看 prop 更新的时候我们需要手动更新 DOM 来相应它是很重要的，因为我们已经不再使用 React 来帮我们管理这个 DOM 了。
 
 Chosen 的文档建议我们使用 jQuery `trigger()` API 来通知原始 DOM 元素这些变化。我们会让 React来管理在 `<select>` 中 `this.props.children` 的更新，但是我们同样需要增加一个 `componentDidUpdate()` 声明周期函数来通知 Chosen 关于 children 列表的变化：
 
@@ -196,7 +196,7 @@ class Chosen extends React.Component {
 
 事实上，这正是 Facebook 如何使用 React 的。这让我们小块小块在应用中使用 React，并且把他们结合到我们现存的服务端产生的模板和其他客户端代码中。
 
-### 利用 React 移除基于字符串的渲染 {#replacing-string-based-rendering-with-react}
+### 利用 React 替换基于字符串的渲染 {#replacing-string-based-rendering-with-react}
 
 在旧的 web 应用中一个通用的模式就是使用一个字符串描述大块的 DOM 并且通过类似 `$el.html(htmlString)` 这样的方式插入到 DOM 中。代码库中的这种例子是非常适合引入 React 的。直接把基于字符串的渲染重写成 React 组件即可。
 
@@ -285,7 +285,7 @@ const ParagraphView = Backbone.View.extend({
 
 虽然通常是推荐使用单向数据流动的，例如 [React state](/docs/lifting-state-up.html)，[Flux](http://facebook.github.io/flux/)，或者 [Redux](http://redux.js.org/)，React 组件也可以使用一个其他框架和库的 Model 层。
 
-### 在 React 组建中使用 Backbone 的 Model {#using-backbone-models-in-react-components}
+### 在 React 组件中使用 Backbone 的 Model {#using-backbone-models-in-react-components}
 
 在 React 组件中使用 [Backbone](http://backbonejs.org/) 的 model 和 collection 最简单的方法就是监听多种变化事件并且手动强制触发一个更新。
 
@@ -353,7 +353,7 @@ class List extends React.Component {
 
 前面的方式需要你的 React 组件知道 Backbone 的 model 和 collection。如果你计划迁移到另一个数据管理方案，你可能希望将关于Backbone的知识集中在尽可能少的代码部分中。
 
-其中一个解决方案就是每当 model 中的属性变化时都把它提取到简单数据，并且把这个逻辑放在一个独立的地方。接下来是一个提取 Backbone model 到 state 的[高阶组件](/docs/higher-order-components.html)，把数据传递到被包裹的组建中。
+其中一个解决方案就是每当 model 中的属性变化时都把它提取到简单数据，并且把这个逻辑放在一个独立的地方。接下来是一个提取 Backbone model 到 state 的[高阶组件](/docs/higher-order-components.html)，把数据传递到被包裹的组件中。
 
 通过这种方法，只有高阶组件需要知道 Backbone model 的内部构造，而且应用中大多数的组件可以保持和 Backbone 无关。
 
