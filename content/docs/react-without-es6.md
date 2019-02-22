@@ -134,7 +134,7 @@ var SayHello = createReactClass({
 
 这就意味着，如果使用 ES6 class 关键字创建组件，那在处理事件回调的时候就要多写一点点代码。但对于大型项目来说，这样做可以提升运行效率。
 
-如果你觉得上面这个写法很麻烦，那么可以尝试一下 ** 目前还处于实验性阶段 ** 的 Babel 插件 [Class Properties](https://babeljs.io/docs/plugins/transform-class-properties/)。
+如果你觉得上面这个写法很麻烦，那么可以尝试一下 **目前还处于实验性阶段** 的 Babel 插件 [Class Properties](https://babeljs.io/docs/plugins/transform-class-properties/)。
 
 
 ```javascript
@@ -159,7 +159,7 @@ class SayHello extends React.Component {
 }
 ```
 
-请注意，上面这种语法 ** 目前还处于实验性阶段 **，这意味着语法随时都可能改变，也存在最终没有被官方批准的可能。
+请注意，上面这种语法 **目前还处于实验性阶段**，这意味着语法随时都可能改变，也存在最终没有被官方批准的可能。
 
 为了保险起见，以下三种做法都是可以的：
 
@@ -169,13 +169,13 @@ class SayHello extends React.Component {
 
 ## Mixins {#mixins}
 
->** 注：**
+>**注：**
 >
->>ES6 本身是不包含 mixin 支持的。因此，如果你使用 ES6 class 关键字创建组件，那就不能使用 mixin 功能了。
+>ES6 本身是不包含 mixin 支持的。因此，如果你使用 ES6 class 关键字创建组件，那就不能使用 mixin 功能了。
 >
->>** 我们也发现了很多使用混入然后出现了问题的代码库。[因此，我们并不推荐在 ES6 中使用 mixin ](/blog/2016/07/13/mixins-considered-harmful.html)。**
+>**我们也发现了很多使用混入然后出现了问题的代码库。[因此，我们并不推荐在 ES6 中使用 mixin ](/blog/2016/07/13/mixins-considered-harmful.html)。**
 >
->> 以下内容仅作为参考。
+> 以下内容仅作为参考。
 
 如果完全不同的组件有相似的功能，这就会产生 ["横切关注点" 问题](https://en.wikipedia.org/wiki/Cross-cutting_concern)。针对这个问题，在使用 createReactClass 创建 React 组件的时候，引入 `mixin` 功能会是一个很好的解决方案。
 
