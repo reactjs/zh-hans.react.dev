@@ -560,7 +560,11 @@ function Image(props) {
 const TodosDispatch = React.createContext(null);
 
 function TodosApp() {
+<<<<<<< HEAD
   // 提示：`dispatch` 不会在重新渲染之间变化
+=======
+  // Note: `dispatch` won't change between re-renders
+>>>>>>> master
   const [todos, dispatch] = useReducer(todosReducer);
 
   return (
