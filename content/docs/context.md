@@ -196,7 +196,7 @@ class MyClass extends React.Component {
 > 
 > 想要了解更多关于“函数作为子元素（function as a child）”模式，见 [render props](/docs/render-props.html)。
 
-## 案例 {#examples}
+## 示例 {#examples}
 
 ### 动态 Context {#dynamic-context}
 
