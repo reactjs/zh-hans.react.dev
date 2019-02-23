@@ -14,7 +14,7 @@ permalink: docs/render-props.html
 )}/>
 ```
 
-使用 render prop 的库有 [React Router](https://reacttraining.com/react-router/web/api/Route/Route-render-methods) and [Downshift](https://github.com/paypal/downshift).
+使用 render prop 的库有 [React Router](https://reacttraining.com/react-router/web/api/Route/Route-render-methods) 和 [Downshift](https://github.com/paypal/downshift).
 
 在这个文档中，我们将讨论为什么 render prop 是有用的，以及如何写一个自己的 render prop 组件。
 
@@ -210,15 +210,15 @@ class MouseTracker extends React.Component {
 
 现在，我们提供了一个 render prop 以让 <Mouse> 能够动态决定什么需要渲染，而不是克隆 <Mouse> 组件并硬编码来解决特定的用例。
 
-更具体地说, **render prop 是一个组件用来了解要渲染什么内容的函数 prop。**
+更具体地说, **render prop 是一个组件用来知道要渲染什么内容的函数 prop。**
 
 这一技术使得共享代码间变得相当容易。要获得这个行为，只要渲染一个带有 render prop 的 `<Mouse>` 组件就能够告诉它当前鼠标坐标 (x, y) 要渲染什么。
 
-关于渲染道具的一个有趣的事情是你可以使用带有渲染道具的常规组件来实现大多数[高阶组件](/docs/higher-order-components.html) (HOC)。 例如，如果你更喜欢使用 `withMouse` HOC而不是 `<Mouse>` 组件，你可以使用带有 render prop 的常规 `<Mouse>` 轻松创建一个：
+关于 render prop 的一个有趣的事情是你可以使用带有 render prop 的常规组件来实现大多数[高阶组件](/docs/higher-order-components.html) (HOC)。 例如，如果你更喜欢使用 `withMouse` HOC而不是 `<Mouse>` 组件，你可以使用带有 render prop 的常规 `<Mouse>` 轻松创建一个：
 
 ```js
-// If you really want a HOC for some reason, you can easily
-// create one using a regular component with a render prop!
+// 如果您出于某种原因真的想要HOC，那么您可以轻松实现
+// 使用具有 render prop 的常规组件创建一个！
 function withMouse(Component) {
   return class extends React.Component {
     render() {
@@ -236,7 +236,7 @@ function withMouse(Component) {
 
 ## 使用 Props 而非 render {#using-props-other-than-render}
 
-重要的是要记住，仅仅因为模式被称为 “render prop” ，你不必使用名为 `render` 的道具来使用这种模式。 事实上， [*any* prop that is a function that a component uses to know what to render is technically a "render prop"](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce).
+重要的是要记住，仅仅因为模式被称为 “render prop” ，你不必使用名为 `render` 的 prop 来使用这种模式。 事实上， [组件能够知道什么需要渲染的*任何*函数 prop 在技术上都可以被称为 “render prop”](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce).
 
 尽管之前的例子使用了 `render`，我们也可以简单地使用 `children` prop！
 
@@ -266,13 +266,13 @@ Mouse.propTypes = {
 };
 ```
 
-## 警告 {#caveats}
+## 注意事项 {#caveats}
 
 ### 将Render Props 与 React.PureComponent一起使用时要小心 {#be-careful-when-using-render-props-with-reactpurecomponent}
 
 如果你在 render 方法里创建函数，那么使用 render prop 会抵消使用 [`React.PureComponent`](/docs/react-api.html#reactpurecomponent)  带来的优势。因为浅比较 props 的时候总会得到 false ，并且在这种情况下每一个 `render` 对于 render prop 将会生成一个新的值。
 
-例如，继续我们之前使用 `<Mouse>` 组件，如果 `Mouse` 继承自 `React.PureComponent` 而不是 `React.Component`，我们的例子看起来就像这样：
+例如，继续我们之前使用的 `<Mouse>` 组件，如果 `Mouse` 继承自 `React.PureComponent` 而不是 `React.Component`，我们的例子看起来就像这样：
 
 ```js
 class Mouse extends React.PureComponent {
@@ -287,7 +287,7 @@ class MouseTracker extends React.Component {
 
         {/*
           这是不好的！
-          每个渲染 `render` prop的值将会是不同的。
+          每个渲染的 `render` prop的值将会是不同的。
         */}
         <Mouse render={mouse => (
           <Cat mouse={mouse} />
