@@ -69,7 +69,7 @@
           href: /tutorial/tutorial.html#why-immutability-is-important
           forceInternal: true
         - id: function-components
-          title: 函数定义组件
+          title: 函数式组件
           href: /tutorial/tutorial.html#function-components
           forceInternal: true
         - id: taking-turns
