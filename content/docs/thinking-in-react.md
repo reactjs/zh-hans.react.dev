@@ -61,11 +61,7 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
 
 ## 第二步：用 React 创建一个静态版本 {#step-2-build-a-static-version-in-react}
 
-<<<<<<< HEAD
-<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">参阅 <a href="http://codepen.io">CodePen</a> 上的 <a href="https://codepen.io/gaearon/pen/BwWzwm">React 哲学：第二步</a>。</p>
-=======
-<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/BwWzwm">Thinking In React: Step 2</a> on <a href="https://codepen.io">CodePen</a>.</p>
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">参阅 <a href="https://codepen.io">CodePen</a> 上的 <a href="https://codepen.io/gaearon/pen/BwWzwm">React 哲学：第二步</a>。</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 现在我们已经确定了组件层级，可以编写对应的应用了。最容易的方式，是先用已有的数据模型渲染一个不包含交互功能的 UI。最好将渲染 UI 和添加交互这两个过程分开。这是因为，编写一个应用的静态版本时，往往要编写大量代码，而不需要考虑太多交互细节；添加交互功能时则要考虑大量细节，而不需要编写太多代码。所以，将这两个过程分开进行更为合适。我们会在接下来的代码中体会到其中的区别。
@@ -110,11 +106,7 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
 
 ## 第四步：确定 state 放置的位置 {#step-4-identify-where-your-state-should-live}
 
-<<<<<<< HEAD
-<p data-height="600" data-theme-id="0" data-slug-hash="qPrNQZ" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">参阅 <a href="http://codepen.io">CodePen</a> 上的 <a href="https://codepen.io/gaearon/pen/qPrNQZ">React 哲学：第四步</a>。</p>
-=======
-<p data-height="600" data-theme-id="0" data-slug-hash="qPrNQZ" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/qPrNQZ">Thinking In React: Step 4</a> on <a href="https://codepen.io">CodePen</a>.</p>
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+<p data-height="600" data-theme-id="0" data-slug-hash="qPrNQZ" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">参阅 <a href="https://codepen.io">CodePen</a> 上的 <a href="https://codepen.io/gaearon/pen/qPrNQZ">React 哲学：第四步</a>。</p>
 
 我们已经确定了应用所需的 state 的最小集合。接下来，我们需要确定哪个组件能够改变这些 state，或者说*拥有*这些 state。
 
@@ -139,11 +131,7 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
 
 ## 第五步：添加反向数据流 {#step-5-add-inverse-data-flow}
 
-<<<<<<< HEAD
-<p data-height="600" data-theme-id="0" data-slug-hash="LzWZvb" data-default-tab="js,result" data-user="rohan10" data-embed-version="2" data-pen-title="Thinking In React: Step 5" class="codepen">参阅 <a href="http://codepen.io">CodePen</a> 上的 <a href="https://codepen.io/gaearon/pen/LzWZvb">React 哲学：第五步</a>。</p>
-=======
-<p data-height="600" data-theme-id="0" data-slug-hash="LzWZvb" data-default-tab="js,result" data-user="rohan10" data-embed-version="2" data-pen-title="Thinking In React: Step 5" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/LzWZvb">Thinking In React: Step 5</a> on <a href="https://codepen.io">CodePen</a>.</p>
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+<p data-height="600" data-theme-id="0" data-slug-hash="LzWZvb" data-default-tab="js,result" data-user="rohan10" data-embed-version="2" data-pen-title="Thinking In React: Step 5" class="codepen">参阅 <a href="https://codepen.io">CodePen</a> 上的 <a href="https://codepen.io/gaearon/pen/LzWZvb">React 哲学：第五步</a>。</p>
 
 到目前为止，我们已经借助自上而下传递的 props 和 state 渲染了一个应用。现在，我们将尝试让数据反向传递：处于较低层级的表单组件更新较高层级的 `FilterableProductTable` 中的 state。
 
