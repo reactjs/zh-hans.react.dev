@@ -217,7 +217,7 @@ class MouseTracker extends React.Component {
 关于 render prop 的一个有趣的事情是你可以使用带有 render prop 的常规组件来实现大多数[高阶组件](/docs/higher-order-components.html) (HOC)。 例如，如果你更喜欢使用 `withMouse` HOC而不是 `<Mouse>` 组件，你可以使用带有 render prop 的常规 `<Mouse>` 轻松创建一个：
 
 ```js
-// 如果您出于某种原因真的想要HOC，那么您可以轻松实现
+// 如果你出于某种原因真的想要HOC，那么你可以轻松实现
 // 使用具有 render prop 的常规组件创建一个！
 function withMouse(Component) {
   return class extends React.Component {
@@ -232,7 +232,7 @@ function withMouse(Component) {
 }
 ```
 
-因此，您可以将任一模式与 render prop 一起使用。
+因此，你可以将任一模式与 render prop 一起使用。
 
 ## 使用 Props 而非 render {#using-props-other-than-render}
 
@@ -256,7 +256,7 @@ function withMouse(Component) {
 </Mouse>
 ```
 
-您将在 [react-motion](https://github.com/chenglou/react-motion) API中看到此技术。
+你将在 [react-motion](https://github.com/chenglou/react-motion) API中看到此技术。
 
 由于这一技术的特殊性，当你在设计一个类似的 API 时，你可能要直接地在你的 propTypes 里声明 children 的类型应为一个函数。
 
@@ -321,4 +321,4 @@ class MouseTracker extends React.Component {
 }
 ```
 
-如果您无法静态定义 prop（例如，因为您需要关闭组件的 props 和/或 state），则 `<Mouse>` 应该扩展 `React.Component`。
+如果你无法静态定义 prop（例如，因为你需要关闭组件的 props 和/或 state），则 `<Mouse>` 应该扩展 `React.Component`。
