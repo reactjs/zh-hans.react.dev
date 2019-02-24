@@ -14,7 +14,7 @@ class Greeting extends React.Component {
 }
 ```
 
-如果你不打算使用 ES6，你也可以使用 `create-react-class` 模块来创建：
+如果你还未使用过 ES6，你可以使用 `create-react-class` 模块：
 
 
 ```javascript
@@ -59,7 +59,7 @@ var Greeting = createReactClass({
 
 ## 设置初始状态 {#setting-the-initial-state}
 
-如果使用 ES6 的 class 关键字创建组件，你可以通过给 `this.state` 赋值的方式来定义组件的初始状态：
+如果使用 ES6 的 class 关键字创建组件，你可以通过给 `this.state` 赋值的方式来定义组件的初始 state：
 
 ```javascript
 class Counter extends React.Component {
@@ -71,7 +71,7 @@ class Counter extends React.Component {
 }
 ```
 
-如果使用 `createReactClass` 方法创建组件，你就需要多写一个 `getInitialState` 方法，并让这个方法返回你要定义的初始属性：
+如果使用 `createReactClass` 方法创建组件，你需要提供一个单独的 `getInitialState` 方法，让其返回初始 state：
 
 ```javascript
 var Counter = createReactClass({
@@ -84,7 +84,7 @@ var Counter = createReactClass({
 
 ## 自动绑定 {#autobinding}
 
-对于使用 ES6 的 class 关键字创建的 React 组件，组件中的方法遵循与常规 ES6 class 相同的语法规则。这意味着这些方法不会自动绑定 `this` 到这个组件实例。 你需要在 constructor 中为方法手动添加 `.bind(this)`：
+对于使用 ES6 的 class 关键字创建的 React 组件，组件中的方法遵循与常规 ES6 class 相同的语法规则。这意味着这些方法不会自动绑定 `this` 到这个组件实例。 你需要在 constructor 中显式地调用 `.bind(this)`：
 
 ```javascript
 class SayHello extends React.Component {
@@ -134,7 +134,7 @@ var SayHello = createReactClass({
 
 这就意味着，如果使用 ES6 class 关键字创建组件，那在处理事件回调的时候就要多写一点点代码。但对于大型项目来说，这样做可以提升运行效率。
 
-如果你觉得上面这个写法很麻烦，那么可以尝试一下 **目前还处于实验性阶段** 的 Babel 插件 [Class Properties](https://babeljs.io/docs/plugins/transform-class-properties/)。
+如果你觉得上面这个写法很麻烦，那么可以尝试一下 **目前还处于试验性阶段** 的 Babel 插件 [Class Properties](https://babeljs.io/docs/plugins/transform-class-properties/)。
 
 
 ```javascript
@@ -143,7 +143,7 @@ class SayHello extends React.Component {
     super(props);
     this.state = {message: 'Hello!'};
   }
-  // 警告：这种语法还处于实验性阶段！
+  // 警告：这种语法还处于试验性阶段！
   // 在这里使用箭头函数就可以把方法绑定给实例：
   handleClick = () => {
     alert(this.state.message);
@@ -159,7 +159,7 @@ class SayHello extends React.Component {
 }
 ```
 
-请注意，上面这种语法 **目前还处于实验性阶段**，这意味着语法随时都可能改变，也存在最终没有被官方批准的可能。
+请注意，上面这种语法**目前还处于试验性阶段**，这意味着语法随时都可能改变，也存在最终不被列入框架标准的可能。
 
 为了保险起见，以下三种做法都是可以的：
 
@@ -171,15 +171,15 @@ class SayHello extends React.Component {
 
 >**注：**
 >
->ES6 本身是不包含 mixin 支持的。因此，如果你使用 ES6 class 关键字创建组件，那就不能使用 mixin 功能了。
+>ES6 本身是不包含任何 mixin 支持。因此，当你在 React 中使用 ES6 class 时，将不支持 mixins 。
 >
->**我们也发现了很多使用混入然后出现了问题的代码库。[因此，我们并不推荐在 ES6 中使用 mixin ](/blog/2016/07/13/mixins-considered-harmful.html)。**
+>**我们也发现了很多使用 mixin 然后出现了问题的代码库。[因此，我们并不推荐在 ES6 中使用 mixin ](/blog/2016/07/13/mixins-considered-harmful.html)。**
 >
 > 以下内容仅作为参考。
 
-如果完全不同的组件有相似的功能，这就会产生 ["横切关注点" 问题](https://en.wikipedia.org/wiki/Cross-cutting_concern)。针对这个问题，在使用 createReactClass 创建 React 组件的时候，引入 `mixin` 功能会是一个很好的解决方案。
+如果完全不同的组件有相似的功能，这就会产生["横切关注点" 问题](https://en.wikipedia.org/wiki/Cross-cutting_concern)。针对这个问题，在使用 createReactClass 创建 React 组件的时候，引入 `mixin` 功能会是一个很好的解决方案。
 
-一个常见的使用情景是，当一个组件想要每隔一段时间更新，那么最简单的方法就是使用 `setInterval()`。但更重要的是，如果后续代码中不需要这个功能，为了节省内存，你应该把它删除。React 提供了 [生命周期方法](/docs/working-with-the-browser.html#component-lifecycle)，这样你就可以知道某一个组件什么时候要被创建或被销毁。我们先来创建一个使用 `setInterval()` 的 mixin，它会在组件销毁的时候也销毁。
+一个常见的使用情景是，一个组件每隔一段时间需要更新。使用 `setInterval()` 可以很容易实现这个功能，但更重要的是，当你不再需要它时，为了节省内存，你应该把它删除。React 提供了[生命周期方法](/docs/working-with-the-browser.html#component-lifecycle)，这样你就可以知道一个组件何时被创建或被销毁了。让我们创建一个简单的 mixin，它使用这些方法提供一个简单的 `setInterval()` 函数，它会在组件被销毁时被自动清理。
 
 ```javascript
 var SetIntervalMixin = {
