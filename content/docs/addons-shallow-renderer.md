@@ -49,7 +49,7 @@ expect(result.props.children).toEqual([
 
 浅层测试（Shallow testing）当前还有一些局限，即不支持 refs。
 
-> 注意:
+> 注意：
 >
 > 我们还建议你看看 Enzyme 的 [Shallow Rendering API](http://airbnb.io/enzyme/docs/api/shallow.html)。它在相同的功能上提供了一个更棒的高级 API。
 
@@ -59,7 +59,7 @@ expect(result.props.children).toEqual([
 
 你可以把 shallowRenderer 看作一个用来渲染你正在测试的组件的“地方”，并且你可以从那里取到该组件的输出。
 
-`shallowRenderer.render()` 和 [`ReactDOM.render()`](/docs/react-dom.html#render) 很像，但是它不需要 DOM 并且只渲染一层。 这意味着你可以只测试组件，不必担心它的子组件是如何实现的。
+`shallowRenderer.render()` 和 [`ReactDOM.render()`](/docs/react-dom.html#render) 很像，但是它不需要 DOM 并且只渲染一层。 这意味着你可以只测试组件，不必关心它的子组件是如何实现的。
 
 ### `shallowRenderer.getRenderOutput()` {#shallowrenderergetrenderoutput}
 
