@@ -212,7 +212,7 @@ class MouseTracker extends React.Component {
 
 更具体地说, **render prop 是一个组件用来知道要渲染什么内容的函数 prop。**
 
-这一技术使得共享代码间变得相当容易。要获得这个行为，只要渲染一个带有 render prop 的 `<Mouse>` 组件就能够告诉它当前鼠标坐标 (x, y) 要渲染什么。
+这项技术使用我们所需行为的共享变得相当容易。要获得这个行为，只要渲染一个带有 render prop 的 `<Mouse>` 组件就能够告诉它当前鼠标坐标 (x, y) 要渲染什么。
 
 关于 render prop 的一个有趣的事情是你可以使用带有 render prop 的常规组件来实现大多数[高阶组件](/docs/higher-order-components.html) (HOC)。 例如，如果你更喜欢使用 `withMouse` HOC而不是 `<Mouse>` 组件，你可以使用带有 render prop 的常规 `<Mouse>` 轻松创建一个：
 
