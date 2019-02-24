@@ -4,7 +4,7 @@ title: Fragments
 permalink: docs/fragments.html
 ---
 
-React 中的一个常见模式是组件返回多个元素。 Fragments 允许您将子列表分组，而无需向 DOM 添加额外节点.
+React 中的一个常见模式是组件返回多个元素。 Fragments 允许你将子列表分组，而无需向 DOM 添加额外节点.
 
 ```js
 render() {
@@ -96,7 +96,7 @@ class Columns extends React.Component {
 
 ### 短语法 {#short-syntax}
 
-您可以使用一种新的，更短的语法来声明 Fragments。 它看起来像空标签：
+你可以使用一种新的，更短的语法来声明 Fragments。 它看起来像空标签：
 
 ```jsx{4,7}
 class Columns extends React.Component {
@@ -139,4 +139,4 @@ function Glossary(props) {
 
 ### 在线 Demo {#live-demo}
 
-您可以使用[CodePen](https://codepen.io/reactjs/pen/VrEbjE?editors=1000)此尝试新的 JSX Fragment 语法 .
+你可以使用[CodePen](https://codepen.io/reactjs/pen/VrEbjE?editors=1000)此尝试新的 JSX Fragment 语法 .
