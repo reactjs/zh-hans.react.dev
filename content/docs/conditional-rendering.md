@@ -42,7 +42,7 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
+[**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
 
 这个示例根据 `isLoggedIn` 的值来渲染不同的问候语。
 
@@ -116,7 +116,7 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
+[**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
 
 声明一个变量并使用 `if` 语句是条件渲染的一个不错的方式，但有时你可能会想使用更简洁的语法。接下来，我们将介绍几种在 JSX 中内联条件渲染的方法。
 
@@ -146,7 +146,7 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
+[**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
 
 之所以能这样做，是因为在 JavaScript 中，`true && expression` 总是会返回 `expression`, 而 `false && expression` 总是会返回 `false`。
 
@@ -238,6 +238,6 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)
+[**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)
 
 在组件的 `render` 方法中返回 `null` 并不会影响组件的生命周期方法的回调。例如，上面这个示例中，`componentDidUpdate` 依然会被调用。
