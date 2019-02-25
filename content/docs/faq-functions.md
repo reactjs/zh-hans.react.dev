@@ -6,7 +6,7 @@ layout: docs
 category: FAQ
 ---
 
-### 如何将事件处理器（比如 onClick ）传递给组件？{#如何将事件处理器（比如onClick）传递给组件}
+### 如何将事件处理器（比如 onClick）传递给组件？{#如何将事件处理器（比如onClick）传递给组件}
 
 可以将事件处理器和其他函数作为 props 传递给子组件：
 
@@ -93,7 +93,7 @@ class Foo extends Component {
 
 ### 为什么绑定是必要的？ {#为什么绑定是必要的？}
 
-I在JavaScript中，以下两种写法是**不**等价的：
+在JavaScript中，以下两种写法是**不**等价的：
 
 ```js
 obj.method();
@@ -234,7 +234,7 @@ class Alphabet extends React.Component {
 
 #### 节流 {#节流}
 
-节流阻止函数在给定时间窗口内被调不能超过一次。下面这个例子会节流“click”事件处理器每秒钟的只能调用一次。
+节流阻止函数在给定时间窗口内被调不能超过一次。下面这个例子会节流 “click” 事件处理器每秒钟的只能调用一次。
 
 ```jsx
 import throttle from 'lodash.throttle';
