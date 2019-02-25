@@ -51,24 +51,24 @@ const Languages = ({location}: Props) => (
 
           <div css={sharedStyles.markdown}>
             <p>
-              The React documentation is available in the following languages:
+              React 文档提供了以下语言版本：
             </p>
 
             <LanguagesGrid languages={complete} />
 
-            <h2>In Progress</h2>
+            <h2>进行中</h2>
             <LanguagesGrid languages={partial} />
 
-            <h2>Needs Contributors</h2>
+            <h2>需要贡献者</h2>
             <LanguagesGrid languages={incomplete} />
 
             <p>
-              Don't see your language above?{' '}
+              没有在上述列表找到你的语言？{' '}
               <a
                 href="https://github.com/reactjs/reactjs.org-translation#reactjsorg-translation"
                 target="_blank"
                 rel="noopener">
-                Let us know
+                告诉我们
               </a>
               .
             </p>
@@ -149,7 +149,7 @@ const Language = ({code, name, status, translatedName}) => {
           href={`https://github.com/reactjs/${prefix}reactjs.org/`}
           target="_blank"
           rel="noopener">
-          Contribute
+          参与贡献
         </a>
       </div>
     </li>
