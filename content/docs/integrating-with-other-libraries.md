@@ -10,7 +10,7 @@ React 可以被用在任何网页应用中。它可以被嵌入到其他应用�
 
 React 对于 React 自身之外的 DOM 操作是不理会的。 它判定更新是基于它自身内部的画像，而且如果同一个 DOM 节点被另一个库操作了，React 会觉得困惑而且没有办法恢复。
 
-这不代表它不能或者一定很难把 React 和其他的影响 DOM 的方式组合在一起，你只是需要去关注他们每个（React 和其他库）所做的事情。
+这不代表它不能或者一定很难把 React 和其他的影响 DOM 的方式组合在一起，你只是需要去关注每个库所做的事情。
 
 避免冲突的最简单的方法就是防止 React 组件的更新。你可以通过渲染 React 无需更新的元素，比如一个空的 `<div />`。
 
@@ -39,7 +39,7 @@ class SomePlugin extends React.Component {
 }
 ```
 
-注意我们同事定义了 `componentDidMount` 和 `componentWillUnmount` [声明周期函数](/docs/react-component.html#the-component-lifecycle)。许多 jQuery 插件绑定事件监听到 DOM 上，所以在 `componentWillUnmount` 中注销监听是很重要的。如果这个插件没有提供一个用于清理的方法，你很可能会需要自己来提供一个，为了避免内存泄漏要记得把所有插件注册的监听都移除掉。
+注意我们同时定义了 `componentDidMount` 和 `componentWillUnmount` [生命周期函数](/docs/react-component.html#the-component-lifecycle)。许多 jQuery 插件绑定事件监听到 DOM 上，所以在 `componentWillUnmount` 中注销监听是很重要的。如果这个插件没有提供一个用于清理的方法，你很可能会需要自己来提供一个，为了避免内存泄漏要记得把所有插件注册的监听都移除掉。
 
 ### 集成 jQuery Chosen 插件 {#integrating-with-jquery-chosen-plugin}
 
@@ -51,7 +51,7 @@ class SomePlugin extends React.Component {
 
 首先，我们来看下 Chosen 对 DOM 做了哪些操作
 
-如果你在一个 `<select>` DOM 节点上调用了它，它会读取原 DOM 节点的属性，使用行内样式隐藏它，然后紧挨着这个 `<select>` 之后增加一个独立的具有它自身现实表现的 DOM 节点。然后它会在值变化的时候触发 jQuery 事件来通知我们这些变化。
+如果你在一个 `<select>` DOM 节点上调用了它，它会读取原 DOM 节点的属性，使用行内样式隐藏它，然后紧挨着这个 `<select>` 之后增加一个独立的具有它自身显示表现的 DOM 节点。然后它会在值变化的时候触发 jQuery 事件来通知我们这些变化。
 
 比方说这就是我们努力要用的 API 和我们的 React 组件 `<Chosen>` wrapper：
 
@@ -87,7 +87,7 @@ class Chosen extends React.Component {
 
 注意我们为什么要把 `<select>` 使用一个额外的 `<div>` 包裹起来。这是很必要的，因为 Chosen 会紧挨着我们传递给它的 `<select>` 节点追加另一个 DOM 元素。然而，对于 React 来说 `<div>` 总是只有一个子节点。这样我们就能确保 React 更新不会和 Chosen 追加的额外 DOM 节点发生冲突。在 React 工作流之外修改 DOM 是非常重大的事情，你必须确保 React 没有理由去触碰那些节点。
 
-接下来，我们会实现声明周期函数。我们需要在 `componentDidMount` 中使用 `<select>` 的引用初始化 Chosen，并且在 `componentWillUnmount` 中将其销毁:
+接下来，我们会实现生命周期函数。我们需要在 `componentDidMount` 中使用 `<select>` 的引用初始化 Chosen，并且在 `componentWillUnmount` 中将其销毁:
 
 ```js{2,3,7}
 componentDidMount() {
@@ -110,7 +110,7 @@ componentWillUnmount() {
 
 到此已经足够让我们的组件去渲染了，但我们同时希望在值变化的时候被通知到。要做到这点，我们需要在订阅由 Chosen 管理的 `<select>` 上的 jQuery `change` 事件。
 
-我们不直接吧 `this.props.onChange` 传递给 Chosen 是因为 组件的 props 可能随时间而变化，而且它还有可能包含事件处理函数。对应的，我们会定义一个 `handleChange()` 方法来调用 `this.props.onChange`，并且订阅 jQuery `change` 事件：
+我们不直接吧 `this.props.onChange` 传递给 Chosen 是因为 组件的 props 可能随时间而变化，而且这也包括事件处事函数。对应的，我们会定义一个 `handleChange()` 方法来调用 `this.props.onChange`，并且订阅 jQuery `change` 事件：
 
 ```js{5,6,10,14-16}
 componentDidMount() {
@@ -133,9 +133,9 @@ handleChange(e) {
 
 [**在 CodePen 上运行**](http://codepen.io/gaearon/pen/bWgbeE?editors=0010)
 
-最终，没有其他还需要做的事情了。在 React 中，props 可以在不同的时间有不同的值。例如，如果父组件的状态发生变化 `<Chosen>` 组件可能得到不同的 children。这意味着从集成的角度来看 prop 更新的时候我们需要手动更新 DOM 来相应它是很重要的，因为我们已经不再使用 React 来帮我们管理这个 DOM 了。
+最后，还剩下一件事情需要处理。在 React 中，props 可以在不同的时间有不同的值。例如，如果父组件的状态发生变化 `<Chosen>` 组件可能得到不同的 children。这意味着从集成的角度来看，我们因应 prop 的更新而手动更新 DOM 这一点是非常重要的，因为我们已经不再使用 React 来帮我们管理 DOM 了。
 
-Chosen 的文档建议我们使用 jQuery `trigger()` API 来通知原始 DOM 元素这些变化。我们会让 React来管理在 `<select>` 中 `this.props.children` 的更新，但是我们同样需要增加一个 `componentDidUpdate()` 声明周期函数来通知 Chosen 关于 children 列表的变化：
+Chosen 的文档建议我们使用 jQuery `trigger()` API 来通知原始 DOM 元素这些变化。我们会让 React来管理在 `<select>` 中 `this.props.children` 的更新，但是我们同样需要增加一个 `componentDidUpdate()` 生命周期函数来通知 Chosen 关于 children 列表的变化：
 
 ```js{2,3}
 componentDidUpdate(prevProps) {
@@ -145,7 +145,7 @@ componentDidUpdate(prevProps) {
 }
 ```
 
-通过这种方法，Chosen 就会在 `<select>` 中 children 由 React 管理的同时能够知道如何去更新它的 DOM 元素。
+通过这种方法，当由 React 管理的 `<select>` children 改变时， Chosen 会知道如何更新它的 DOM 元素。。
 
 `Chosen` 组件的完整实现看起来是这样的：
 
@@ -188,17 +188,17 @@ class Chosen extends React.Component {
 
 [**在 CodePen 上运行**](http://codepen.io/gaearon/pen/xdgKOz?editors=0010)
 
-## 和其他库集成 {#integrating-with-other-view-libraries}
+## 和其他视图库集成 {#integrating-with-other-view-libraries}
 
 得益于 [`ReactDOM.render()`](/docs/react-dom.html#render) 的灵活性 React 可以被嵌入到其他的应用中。
 
-虽然 React 通常被用来在启动的时候加载一个单独的根 Recat 组件到 DOM 上，`ReactDOM.render()` 同样可以在 UI 的独立部分上多次调用，这些部分可以小到一个按钮，也可以大到一个应用。
+虽然 React 通常被用来在启动的时候加载一个单独的根 React 组件到 DOM 上，`ReactDOM.render()` 同样可以在 UI 的独立部分上多次调用，这些部分可以小到一个按钮，也可以大到一个应用。
 
-事实上，这正是 Facebook 如何使用 React 的。这让我们小块小块在应用中使用 React，并且把他们结合到我们现存的服务端产生的模板和其他客户端代码中。
+事实上，这正是 Facebook 如何使用 React 的。这让我们小块小块地在应用中使用 React，并且把他们结合到我们现存的服务端产生的模板和其他客户端代码中。
 
 ### 利用 React 替换基于字符串的渲染 {#replacing-string-based-rendering-with-react}
 
-在旧的 web 应用中一个通用的模式就是使用一个字符串描述大块的 DOM 并且通过类似 `$el.html(htmlString)` 这样的方式插入到 DOM 中。代码库中的这种例子是非常适合引入 React 的。直接把基于字符串的渲染重写成 React 组件即可。
+在旧的 web 应用中一个通用的模式就是使用一个字符串描述 DOM 块并且通过类似 `$el.html(htmlString)` 这样的方式插入到 DOM 中。代码库中的这种例子是非常适合引入 React 的。直接把基于字符串的渲染重写成 React 组件即可。
 
 那么下面这段 jQuery 的实现...
 
@@ -277,7 +277,7 @@ const ParagraphView = Backbone.View.extend({
 
 [**在 CodePen 上运行**](http://codepen.io/gaearon/pen/gWgOYL?editors=0010)
 
-在 `remove` 方法中我们也需要调用 `ReactDOM.unmountComponentAtNode()` 以便在它解除的时候 React 清理组件树相关的事件处理的注册和其他的资源是很重要的。
+在 `remove` 方法中我们也需要调用 `ReactDOM.unmountComponentAtNode()` 以便在它解除的时候 React 清理组件树相关的事件处理的注册和其他的资源，这点是是很重要的。
 
 当一个组件在 React 树中*从内部*删除的时候，清理工作是自动完成的，但是因为我们现在手动移除整个树，我们必须调用这个方法。
 
@@ -353,7 +353,7 @@ class List extends React.Component {
 
 前面的方式需要你的 React 组件知道 Backbone 的 model 和 collection。如果你计划迁移到另一个数据管理方案，你可能希望将关于Backbone的知识集中在尽可能少的代码部分中。
 
-其中一个解决方案就是每当 model 中的属性变化时都把它提取到简单数据，并且把这个逻辑放在一个独立的地方。接下来是一个提取 Backbone model 到 state 的[高阶组件](/docs/higher-order-components.html)，把数据传递到被包裹的组件中。
+其中一个解决方案就是每当 model 中的属性变化时都把它提取成简单数据，并且把这个逻辑放在一个独立的地方。下面是一个[高阶组件](/docs/higher-order-components.html)，它提取了 Backbone model 的所有数据存放到 state 中，并将数据传递到被包裹的组件中。
 
 通过这种方法，只有高阶组件需要知道 Backbone model 的内部构造，而且应用中大多数的组件可以保持和 Backbone 无关。
 
@@ -436,4 +436,4 @@ ReactDOM.render(
 
 [**在 CodePen 上运行**](http://codepen.io/gaearon/pen/PmWwwa?editors=0010)
 
-这个技术并不仅限于 Backbone。你可以通过在生命周期方法中订阅其更改并，选择性的，拷贝数据到本地 React state，来将 React 用于任何 model 库。
+这个技术并不仅限于 Backbone。你可以通过在生命周期方法中订阅其更改并，并选择性地，拷贝数据到本地 React state，来将 React 用于任何 model 库。
