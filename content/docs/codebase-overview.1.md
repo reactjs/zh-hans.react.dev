@@ -21,10 +21,9 @@ React几乎没有外部依赖。通常`require()`指向React自己代码库的�
 
 [fbjs仓库](https://github.com/facebook/fbjs) 的存在是因为React和一些库像[Relay](https://github.com/facebook/relay)共享一些小功能，并且我们保证他们同步。我们不依赖Node系统中同能小巧的模块，因为我们希望Facebook工程师必要时能够做出修改。fbjs中的功能没有一个是公共API，他们仅仅是用于Facebook的项目，比如React。
 
-### 最高层级文件夹 {#top-level-folders}
+### 顶层文件夹 {#top-level-folders}
 
-After cloning the [React repository](https://github.com/facebook/react), you will see a few top-level folders in it:
-当clone[React仓库](https://github.com/facebook/react)之后，你们看到最一些高层级的文件夹：
+当clone[React仓库](https://github.com/facebook/react)之后，你们看到最一些顶层文件夹：
 
 * [`packages`](https://github.com/facebook/react/tree/master/packages) 包含元数据（比如`package.json`）和源码 (`src`子目录) 用于React仓库的所有包。. **如果你修改相关代码, 每个包的`src`子目录是你需要花费大部分事件的部分。**
 * [`fixtures`](https://github.com/facebook/react/tree/master/fixtures)包含给参与者一些小的React测试应用。
@@ -33,11 +32,11 @@ After cloning the [React repository](https://github.com/facebook/react), you wil
 文档在[和React分离得一个单独仓库中](https://github.com/reactjs/reactjs.org)。
 
 
-还有一些其他得高层及文件夹，但是他们几乎都是用于工具得，并且你基本上在参与得时候不会遇上。
+还有一些其他的顶层文件夹，但是他们几乎都是用于工具得，并且你基本上在参与得时候不会遇上。
 
 ### 共同测试 {#colocated-tests}
 
-我没有单元测试的高层及文件夹。而是讲他们放入一个一个叫做`__tests__`的文件夹，相对于他们想要测试的文件。
+我没有单元测试的顶层文件夹。而是讲他们放入一个一个叫做`__tests__`的文件夹，相对于他们想要测试的文件。
 
 
 比如，一个用于[`setInnerHTML.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/setInnerHTML.js) 的测试，位于[`__tests__/setInnerHTML-test.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/__tests__/setInnerHTML-test.js)，就在它旁边。
@@ -57,9 +56,9 @@ warning(
 
 **警告会在`warning`的条件设置为false的时候出现。**
 
-One way to think about it is that the condition should reflect the normal situation rather than the exceptional one.
+有一种思考方式是，这个条件需要反应正常情况而不是特殊情况。
 
-It is a good idea to avoid spamming the console with duplicate warnings:
+有一个很好的主意是避免大量打印重复的警告：
 
 ```js
 var warning = require('warning');
@@ -74,7 +73,7 @@ if (!didWarnAboutMath) {
 }
 ```
 
-Warnings are only enabled in development. In production, they are completely stripped out. If you need to forbid some code path from executing, use `invariant` module instead:
+警告只在开发环境中启用。在生产环境中，他们会被完全剥离出来。如果你需要禁止执行某些代码，使用`invariant`模块代替：
 
 ```js
 var invariant = require('invariant');
