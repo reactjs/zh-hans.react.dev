@@ -10,7 +10,7 @@ redirect_from:
 
 在 React 中，你可以创建一些明确的组件来封装各种你需要的行为。然后，依据应用的不同状态，你可以只渲染对应状态下的部分内容。
 
-React 中的条件渲染和 JavaScript 中的一样，使用 JavaScript 操作符 [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) 或者 [条件运算符](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) 去创建元素来表现当前的状态，然后让 React 会根据他们来更新 UI。
+React 中的条件渲染和 JavaScript 中的一样，使用 JavaScript 运算符 [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) 或者 [条件运算符](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) 去创建元素来表现当前的状态，然后让 React 根据它们来更新 UI。
 
 来看看这两个组件:
 
@@ -44,11 +44,11 @@ ReactDOM.render(
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
 
-这个例子展示了根据 `isLoggedIn` 的值来渲染不同的问候语。
+这个示例根据 `isLoggedIn` 的值来渲染不同的问候语。
 
 ### 元素变量
 
-你可以使用变量来储存元素。 它可以帮组你有条件的渲染组件的一部分，而其他的渲染部分并不会因此而改变。
+你可以使用变量来储存元素。 它可以帮助你有条件地渲染组件的一部分，而其他的渲染部分并不会因此而改变。
 
 来看看这两个组件，它们分别代表了注销和登录按钮：
 
@@ -70,9 +70,9 @@ function LogoutButton(props) {
 }
 ```
 
-在下面的例子中，我们将创建一个名叫 `LoginControl` 的 [有状态的组件](/docs/state-and-lifecycle.html#adding-local-state-to-a-class)
+在下面的示例中，我们将创建一个名叫 `LoginControl` 的 [有状态的组件](/docs/state-and-lifecycle.html#adding-local-state-to-a-class)
 
-它将根据当前的状态来渲染 `<LoginButton />` 或者 `<LogoutButton />`。它也将渲染上一个例子中的 `<Greeting />`。
+它将根据当前的状态来渲染 `<LoginButton />` 或者 `<LogoutButton />`。它也将渲染上一个示例中的 `<Greeting />`。
 
 ```javascript{20-25,29,30}
 class LoginControl extends React.Component {
@@ -118,11 +118,11 @@ ReactDOM.render(
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
 
-声明一个变量并使用 `if` 语句是来做条件渲染的一个不错的方式，但有时你可能会想使用更简洁的语法。接下来，我们将介绍几中在 JSX 中做条件渲染的方法。
+声明一个变量并使用 `if` 语句是条件渲染的一个不错的方式，但有时你可能会想使用更简洁的语法。接下来，我们将介绍几种在 JSX 中内联条件渲染的方法。
 
-### && 与运算符
+### 与运算符 &&
 
-通过花括号包裹代码，你可以 [在 JSX 中嵌入任何表达式](/docs/introducing-jsx.html#embedding-expressions-in-jsx)。 这也包括 JavaScript 中的逻辑与 && 操作符。它可以很方便的来进行一个元素的条件渲染。
+通过花括号包裹代码，你可以 [在 JSX 中嵌入任何表达式](/docs/introducing-jsx.html#embedding-expressions-in-jsx)。这也包括 JavaScript 中的逻辑与 (&&) 运算符。它可以很方便地进行一个元素的条件渲染。
 
 ```js{6-10}
 function Mailbox(props) {
@@ -150,13 +150,13 @@ ReactDOM.render(
 
 之所以能这样做，是因为在 JavaScript 中，`true && expression` 总是会返回 `expression`, 而 `false && expression` 总是会返回 `false`。
 
-因此，如果条件是 `true`，`&&` 右侧的元素就会被渲染，如果是 `false`，React 会忽略并跳过它
+因此，如果条件是 `true`，`&&` 右侧的元素就会被渲染，如果是 `false`，React 会忽略并跳过它。
 
 ### 三目运算符
 
-另一种条件渲染的方法是使用 JavaScript 中的三目运算符 [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)。
+另一种内联条件渲染的方法是使用 JavaScript 中的三目运算符 [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)。
 
-在下面这个例子中，我们用它来条件渲染一小段文本
+在下面这个示例中，我们用它来条件渲染一小段文本
 
 ```javascript{5}
 render() {
@@ -186,13 +186,13 @@ render() {
 }
 ```
 
-就像在 JavaScript 中一样，你可以根据你们团队的习惯来选择更易读的代码风格。在这里提醒一下，如果条件变得过于复杂，那你应该考虑考虑[提取组件](/docs/components-and-props.html#extracting-components) 了。
+就像在 JavaScript 中一样，你可以根据你们团队的习惯来选择更易读的代码风格。在这里提醒一下，如果条件变得过于复杂，那你应该考虑考虑 [提取组件](/docs/components-and-props.html#extracting-components) 了。
 
 ### 阻止组件渲染
 
-在极少数情况下，你可能希望能隐藏组件，即使它已经被其他组件渲染了。为了达到这个目的，你可以让 `render` 方法返回 `null`。
+在极少数情况下，你可能希望能隐藏组件，即使它已经被其他组件渲染了。为了达到这个目的，你可以让 `render` 方法返回 `null`，而不是其渲染结果。
 
-下面这个例子中，`<WarningBanner />` 根据属性 `warn` 的值来进行条件渲染。如果 `warn` 的值是 `false`，那么组件将隐藏起来:
+下面的示例中，`<WarningBanner />` 根据 prop 属性 `warn` 的值来进行条件渲染。如果 `warn` 的值是 `false`，那么组件将不会渲染:
 
 ```javascript{2-4,29}
 function WarningBanner(props) {
@@ -240,4 +240,4 @@ ReactDOM.render(
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)
 
-在组件的 `render` 方法中返回 `null` 并不会影响组件的生命周期方法的回调。例如，上面这个例子中，`componentDidUpdate` 依然会被调用。
+在组件的 `render` 方法中返回 `null` 并不会影响组件的生命周期方法的回调。例如，上面这个示例中，`componentDidUpdate` 依然会被调用。
