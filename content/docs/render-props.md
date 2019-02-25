@@ -18,9 +18,9 @@ permalink: docs/render-props.html
 
 在这个文档中，我们将讨论为什么 render prop 是有用的，以及如何写一个自己的 render prop 组件。
 
-## 在横切关注点（Cross-Cutting Concerns）使用 render prop {#use-render-props-for-cross-cutting-concerns}
+## 在横切关注点（Cross-Cutting Concerns）使用 Render Props {#use-render-props-for-cross-cutting-concerns}
 
-组件是在 React 主要的代码复用单元,但如何共享状态或一个组件的行为封装到其他需要相同 state 的组件中却不是显而易见的。
+组件是 React 代码复用的主要单元，但如何分享一个组件封装到其他需要相同 state 组件的状态或行为并不总是很容易。
 
 例如，以下组件跟踪 Web 应用程序中的鼠标位置：
 
@@ -52,9 +52,9 @@ class MouseTracker extends React.Component {
 
 当光标在屏幕上移动时，组件在 `<p>` 中显示其（x，y）坐标。
 
-现在的问题是：我们如何在另一个组件中重用这个行为？换个说法，若另一个组件需要知道鼠标位置，我们能否封装这一行为让它可以在其他组件间轻松的共享？
+现在的问题是：我们如何在另一个组件中复用这个行为？换个说法，若另一个组件需要知道鼠标位置，我们能否封装这一行为，以便轻松地与其他组件共享它？？
 
-由于组件是 React 中最基础的代码重用单元，现在尝试重构一部分代码使其能够在 `<Mouse>` 组件中封装我们需要共享的行为。
+由于组件是 React 中最基础的代码复用单元，现在尝试重构一部分代码使其能够在 `<Mouse>` 组件中封装我们需要共享的行为。
 
 ```js
 // <Mouse> 组件封装了我们需要的行为...
@@ -95,7 +95,7 @@ class MouseTracker extends React.Component {
 }
 ```
 
-现在  `<Mouse>` 组件封装了所有关于监听 `mousemove` 事件和存储鼠标 (x, y) 位置的行为，但其仍不是真正的可重用。
+现在  `<Mouse>` 组件封装了所有关于监听 `mousemove` 事件和存储鼠标 (x, y) 位置的行为，但其仍不是真正的可复用。
 
 举个例子, 让我们假设现在有一个在屏幕上跟随鼠标渲染一张猫的图片的 `<Cat>` 组件。我们可能使用 `<Cat mouse={{ x, y }}` prop 来告诉组件鼠标的坐标以让它知道图片应该在屏幕哪个位置。
 
@@ -152,7 +152,7 @@ class MouseTracker extends React.Component {
 }
 ```
 
-这种方法适用于我们的特定用例，但我们还没有达到以可重用的方式真正封装行为的目标。现在，每当我们想要鼠标位置用于不同的用例时，我们必须创建一个新的组件（本质上是另一个 `<MouseWithCat>` ），它专门为该用例呈现一些东西.
+这种方法适用于我们的特定用例，但我们还没有达到以可复用的方式真正封装行为的目标。现在，每当我们想要鼠标位置用于不同的用例时，我们必须创建一个新的组件（本质上是另一个 `<MouseWithCat>` ），它专门为该用例呈现一些东西.
 
 这也是 render prop 的来历：我们可以提供一个带有函数 prop 的 `<Mouse>` 组件，它能够动态决定什么需要渲染的，而不是将 `<Cat>` 硬编码到 `<Mouse>` 组件里，并有效地改变它的渲染结果。
 
@@ -236,7 +236,7 @@ function withMouse(Component) {
 
 ## 使用 Props 而非 render {#using-props-other-than-render}
 
-重要的是要记住，仅仅因为模式被称为 “render prop” ，你不必使用名为 `render` 的 prop 来使用这种模式。 事实上， [组件能够知道什么需要渲染的*任何*函数 prop 在技术上都可以被称为 “render prop”](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce).
+重要的是要记住，render prop 是因为模式才被称为 *render* prop，你不一定要用名为 `render` 的 prop 来使用这种模式。事实上， [*任何*被用来告知组件该渲染什么内容的函数 prop 在技术上都可以被称为 “render prop”](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce).
 
 尽管之前的例子使用了 `render`，我们也可以简单地使用 `children` prop！
 
@@ -268,9 +268,9 @@ Mouse.propTypes = {
 
 ## 注意事项 {#caveats}
 
-### 将Render Props 与 React.PureComponent一起使用时要小心 {#be-careful-when-using-render-props-with-reactpurecomponent}
+### 将 Render Props 与 React.PureComponent 一起使用时要小心 {#be-careful-when-using-render-props-with-reactpurecomponent}
 
-如果你在 render 方法里创建函数，那么使用 render prop 会抵消使用 [`React.PureComponent`](/docs/react-api.html#reactpurecomponent)  带来的优势。因为浅比较 props 的时候总会得到 false ，并且在这种情况下每一个 `render` 对于 render prop 将会生成一个新的值。
+如果你在 render 方法里创建函数，那么使用 render prop 会抵消使用 [`React.PureComponent`](/docs/react-api.html#reactpurecomponent) 带来的优势。因为浅比较 props 的时候总会得到 false，并且在这种情况下每一个 `render` 对于 render prop 将会生成一个新的值。
 
 例如，继续我们之前使用的 `<Mouse>` 组件，如果 `Mouse` 继承自 `React.PureComponent` 而不是 `React.Component`，我们的例子看起来就像这样：
 
