@@ -26,7 +26,7 @@ var Greeting = createReactClass({
 });
 ```
 
-ES6 中的 class 与 `createReactClass` 方法十分相似，但有以下几个区别值得注意。
+ES6 中的 class 与 `createReactClass()` 方法十分相似，但有以下几个区别值得注意。
 
 ## 声明默认属性 {#declaring-default-props}
 
@@ -42,7 +42,7 @@ Greeting.defaultProps = {
 };
 ```
 
-如果使用 `createReactClass` 方法创建组件，那就需要在参数对象中定义 `getDefaultProps` 方法，并且在这个方法中返回包含自定义属性的对象：
+如果使用 `createReactClass()` 方法创建组件，那就需要在参数对象中定义 `getDefaultProps()` 方法，并且在这个方法中返回包含自定义属性的对象：
 
 ```javascript
 var Greeting = createReactClass({
@@ -71,7 +71,7 @@ class Counter extends React.Component {
 }
 ```
 
-如果使用 `createReactClass` 方法创建组件，你需要提供一个单独的 `getInitialState` 方法，让其返回初始 state：
+如果使用 `createReactClass()` 方法创建组件，你需要提供一个单独的 `getInitialState` 方法，让其返回初始 state：
 
 ```javascript
 var Counter = createReactClass({
@@ -110,7 +110,7 @@ class SayHello extends React.Component {
 }
 ```
 
-如果使用 `createReactClass` 方法创建组件，组件中的方法会自动绑定至实例，所以不需要像上面那样做：
+如果使用 `createReactClass()` 方法创建组件，组件中的方法会自动绑定至实例，所以不需要像上面那样做：
 
 ```javascript
 var SayHello = createReactClass({
