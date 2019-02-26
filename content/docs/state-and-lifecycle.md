@@ -157,7 +157,7 @@ class Clock extends React.Component {
 
 Class 组件应该始终使用 `props` 参数来调用父类的构造函数。
 
-3) 删除 `<Clock />` 元素中的 `date` 属性。
+3) 移除 `<Clock />` 元素中的 `date` 属性：
 
 ```js{2}
 ReactDOM.render(
