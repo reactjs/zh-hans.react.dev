@@ -57,7 +57,7 @@ setInterval(tick, 1000);
 
 [**在 CodePen 上尝试**](http://codepen.io/gaearon/pen/dpdoYR?editors=0010)
 
-可是，这样我们就错过了一个关键要求： `Clock` 设置一个计时器并且每秒更新 UI 应该是 `Clock` 的实现细节。
+然而，它忽略了一个关键的技术细节：`Clock` 组件需要设置一个计时器，并且需要每秒更新 UI。
 
 理想情况下，我们希望像这样只写一次，然后让 `Clock` 会自己更新自己：
 
