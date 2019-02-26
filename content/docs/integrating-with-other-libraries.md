@@ -20,7 +20,7 @@ React 对于 React 自身之外的 DOM 操作是不理会的。 它判定更新�
 
 我们会添加一个 [ref](/docs/refs-and-the-dom.html) 到这个根 DOM 元素。 在 `componentDidMount` 中，我们能够获取它的引用这样我们就可以把它传递给 jQuery 插件了。
 
-为了防止 React 在挂载之后去碰这个 DOM，我们会从 `render()` 函数返回一个空的 `<div />`。这个 `<div />` 元素既没有属性也没有子元素，所以 React 没有理由去更新它，使得 jQuery 插件可以自由的管理这部分的 DOM：
+为了防止 React 在挂载之后去触碰这个 DOM，我们会从 `render()` 函数返回一个空的 `<div />`。这个 `<div />` 元素既没有属性也没有子元素，所以 React 没有理由去更新它，使得 jQuery 插件可以自由的管理这部分的 DOM：
 
 ```js{3,4,8,12}
 class SomePlugin extends React.Component {
@@ -53,7 +53,7 @@ class SomePlugin extends React.Component {
 
 如果你在一个 `<select>` DOM 节点上调用了它，它会读取原 DOM 节点的属性，使用行内样式隐藏它，然后紧挨着这个 `<select>` 之后增加一个独立的具有它自身显示表现的 DOM 节点。然后它会在值变化的时候触发 jQuery 事件来通知我们这些变化。
 
-比方说这就是我们努力要用的 API 和我们的 React 组件 `<Chosen>` wrapper：
+以下代码是我们最终要实现的效果：
 
 ```js
 function Example() {
