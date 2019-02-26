@@ -78,7 +78,7 @@ State 与 props 类似，但是 state 是私有的，并且完全受控于当前
 
 通过以下五步将 `Clock` 的函数组件转成 class 组件：
 
-1. 创建一个同名的 [ES6 class](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes)，并且继承自 `React.Component`。
+1. 创建一个同名的 [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)，并且继承于 `React.Component`。
 
 2. 添加一个空的 `render()` 方法。
    
