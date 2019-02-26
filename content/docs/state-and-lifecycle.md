@@ -201,7 +201,7 @@ ReactDOM.render(
 
 在具有许多组件的应用程序中，当组件被销毁时释放所占用的资源是非常重要的。
 
-我们想要在每当 `Clock` 第一次被渲染到 DOM 中的时候，就[设置一个计时器](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setInterval)。这在 React 中被称为 "挂载(mount)" 。
+当 `Clock` 组件第一次被渲染到 DOM 中的时候，就为其[设置一个计时器](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval)。这在 React 中被称为“挂载（mount）”。
 
 同时，我们还想在当 DOM 告知我们 `Clock` 被删除的时候[清除计时器](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/clearInterval)。这在 React 中被称为 "卸载(umount)" 。
 
