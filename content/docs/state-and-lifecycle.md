@@ -55,7 +55,7 @@ function tick() {
 setInterval(tick, 1000);
 ```
 
-[**在 CodePen 中尝试**](http://codepen.io/gaearon/pen/dpdoYR?editors=0010)
+[**在 CodePen 上尝试**](http://codepen.io/gaearon/pen/dpdoYR?editors=0010)
 
 可是，这样我们就错过了一个关键要求： `Clock` 设置一个计时器并且每秒更新 UI 应该是 `Clock` 的实现细节。
 
