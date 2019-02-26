@@ -107,7 +107,7 @@ class Clock extends React.Component {
 
 每次组件更新时 `render` 方法都会被调用，但只要在相同的 DOM 节点中渲染 `<Clock />` ，就仅有一个 `Clock` 组件的 class 实例被创建使用。这就使得我们可以使用如 state 或生命周期方法等很多其他特性。
 
-## 向类型定义组件中添加局部的 state
+## 向 class 组件中添加局部的 state
 
 我们用以下三个步骤把 `date` 从 props 移动到 state ：
 
