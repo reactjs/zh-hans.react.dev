@@ -260,7 +260,7 @@ class Clock extends React.Component {
 
 最后，我们会实现一个叫 `tick()`　的方法，`Clock` 组件每秒都会调用它。
 
-它会用 `this.setState()`  来调度组件 state 的更新：
+使用 `this.setState()` 来时刻更新组件 state：
 
 ```js{18-22}
 class Clock extends React.Component {
