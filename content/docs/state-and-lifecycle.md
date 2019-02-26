@@ -1,6 +1,6 @@
 ---
 id: state-and-lifecycle
-title: State 和生命周期
+title: State & 生命周期
 permalink: docs/state-and-lifecycle.html
 redirect_from:
   - "docs/interactivity-and-dynamic-uis.html"
