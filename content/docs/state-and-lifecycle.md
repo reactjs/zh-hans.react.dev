@@ -423,7 +423,7 @@ this.setState(function(state, props) {
 <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
 ```
 
-这对于用户定义的组件同样适用：
+这对于自定义组件同样适用：
 
 ```js
 <FormattedDate date={this.state.date} />
