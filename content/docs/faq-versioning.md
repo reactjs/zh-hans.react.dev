@@ -1,48 +1,48 @@
 ---
 id: faq-versioning
-title: Versioning Policy
+title: 版本号规则
 permalink: docs/faq-versioning.html
 layout: docs
 category: FAQ
 ---
 
-React follows [semantic versioning (semver)](https://semver.org/) principles.
+React 遵循[语义化版本（semver）](https://semver.org/)原则。
 
-That means that with a version number **x.y.z**:
+也就是说，若当前版本号为 **x.y.z**，则:
 
-* When releasing **breaking changes**, we make a **major release** by changing the **x** number (ex: 15.6.2 to 16.0.0).
-* When releasing **new features**, we make a **minor release** by changing the **y** number (ex: 15.6.2 to 15.7.0).
-* When releasing **bug fixes**, we make a **patch release** by changing the **z** number (ex: 15.6.2 to 15.6.3).
+* 当发布**不兼容的改动**时，我们会通过修改 **x** 来发布一个**主版本**（如：15.6.2 至 16.0.0）。
+* 当发布**新功能**时，我们会通过修改 **y** 来发布一个**次版本**（如：15.6.2 至 15.7.0）。
+* 当发布**问题修复**时，我们会通过修改 **z** 来发布一个**修订版本**（如：15.6.2 至 15.6.3）。
 
-Major releases can also contain new features, and any release can include bug fixes.
+主版本也可能包含新功能，任何一个版本都可能包含问题修复。
 
-### Breaking Changes {#breaking-changes}
+### 不兼容的改动 {#breaking-changes}
 
-Breaking changes are inconvenient for everyone, so we try to minimize the number of major releases – for example, React 15 was released in April 2016 and React 16 was released in September 2017; React 17 isn't expected until 2019.
+不兼容的改动会对所有人造成不便，因此我们会尽可能地减少主版本的发布次数。例如：React 15 在 2016 年 4 月发布，React 16 在 2017 年 9 月发布，而 React 17 在 2019 年才会发布。
 
-Instead, we release new features in minor versions. That means that minor releases are often more interesting and compelling than majors, despite their unassuming name.
+实际上，我们会在次版本中发布新功能。次版本相比主版本更加有趣和吸引人，尽管它的名字没这么说。
 
-### Commitment to Stability {#commitment-to-stability}
+### 对稳定性的承诺 {#commitment-to-stability}
 
-As we change React over time, we try to minimize the effort required to take advantage of new features. When possible, we'll keep an older API working, even if that means putting it in a separate package. For example, [mixins have been discouraged for years](/blog/2016/07/13/mixins-considered-harmful.html) but they're supported to this day [via create-react-class](/docs/react-without-es6.html#mixins) and many codebases continue to use them in stable, legacy code.
+在我们不断改变 React 的过程中，我们一直尝试着减少使用新功能的成本。如果情况允许，我们会保留旧的 API，哪怕是将它放在一个独立的 package 中。例如，[很多年前我们就不建议使用 mixins](/blog/2016/07/13/mixins-considered-harmful.html)，但我们仍然通过 [create-react-class](/docs/react-without-es6.html#mixins) 提供对它的支持，使许多项目得以继续在稳定的、旧的代码中使用 mixins。
 
-Over a million developers use React, collectively maintaining millions of components. The Facebook codebase alone has over 50,000 React components. That means we need to make it as easy as possible to upgrade to new versions of React; if we make large changes without a migration path, people will be stuck on old versions. We test these upgrade paths on Facebook itself – if our team of less than 10 people can update 50,000+ components alone, we hope the upgrade will be manageable for anyone using React. In many cases, we write [automated scripts](https://github.com/reactjs/react-codemod) to upgrade component syntax, which we then include in the open-source release for everyone to use.
+超过一百万开发者使用 React，维护着数百万个组件。仅 Facebook 代码库就有超过 50000 个 React 组件。这意味着我们需要让升级 React 版本尽可能的简单。如果我们做了很大的变动但没有提供升级方案，人们就会继续使用旧版本。我们在 Facebook 内部会测试这些升级 —— 如果不足 10 人的团队能够独自升级 50000 多个组件，那么任何使用 React 的人都可以轻松升级。在许多情况下，我们会编写[自动脚本](https://github.com/reactjs/react-codemod)来帮助更新组件语法，并将这些脚本开源供所有人使用。
 
-### Gradual Upgrades via Warnings {#gradual-upgrades-via-warnings}
+### 根据警告逐渐升级 {#gradual-upgrades-via-warnings}
 
-Development builds of React include many helpful warnings. Whenever possible, we add warnings in preparation for future breaking changes. That way, if your app has no warnings on the latest release, it will be compatible with the next major release. This allows you to upgrade your apps one component at a time.
+开发环境的 React 包含许多有帮助的警告。我们会尽可能地添加一些警告以提示未来的不兼容改动。因此，如果你的应用使用的是最新版本而没有收到警告，那么它就会兼容下个主版本。基于此，你可以逐个组件地升级你的应用。
 
-Development warnings won't affect the runtime behavior of your app. That way, you can feel confident that your app will behave the same way between the development and production builds -- the only differences are that the production build won't log the warnings and that it is more efficient. (If you ever notice otherwise, please file an issue.)
+开发环境的警告不会影响你的应用，你的应用在开发环境和生成环境的表现是一致的 —— 唯一的区别是生产环境不会打印出这些警告，并且生产环境的性能更好。（如果你发现了其他的区别，请提交 issue。）
 
-### What Counts as a Breaking Change? {#what-counts-as-a-breaking-change}
+### 什么算是不兼容的改动? {#what-counts-as-a-breaking-change}
 
-In general, we *don't* bump the major version number for changes to:
+通常来说，在对下列事情做变更时，我们**不会**升级主版本号：
 
-* **Development warnings.** Since these don't affect production behavior, we may add new warnings or modify existing warnings in between major versions. In fact, this is what allows us to reliably warn about upcoming breaking changes.
-* **APIs starting with `unstable_`.** These are provided as experimental features whose APIs we are not yet confident in. By releasing these with an `unstable_` prefix, we can iterate faster and get to a stable API sooner.
-* **Alpha and canary versions of React.** We provide alpha versions of React as a way to test new features early, but we need the flexibility to make changes based on what we learn in the alpha period. If you use these versions, note that APIs may change before the stable release.
-* **Undocumented APIs and internal data structures.** If you access internal property names like `__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` or `__reactInternalInstance$uk43rzhitjg`, there is no warranty.  You are on your own.
+* **开发环境的警告。** 由于这些警告不会影响生产环境的表现，我们可能会在同一个主版本中添加或修改警告。实际上这样做可以让我们更好地去提示即将到来的不兼容的改动。
+* **以 `unstable_` 开头的 API。** 当一些功能还不够稳定时，这些 API 会作为试验性功能提供。通过以 `unstable_` 为前缀的方式发布这些 API，我们能够更快地迭代，更早地推出稳定的功能。
+* **React 的 alpha 和 canary 版本。** 我们提供 alpha 版本的 React 是为了尽早测试新功能，同时我们需要根据 alpha 版本的反馈灵活地做出改动。如果你使用了这些版本，请注意这些 API 在稳定版本发布前可能会有变化。
+* **没有文档的 API 和内部数据结构。** 如果你使用了如 `__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED`、`__reactInternalInstance$uk43rzhitjg` 之类的内部属性，我们不会向你承诺这些属性会一直有效。
 
-This policy is designed to be pragmatic: certainly, we don't want to cause headaches for you. If we bumped the major version for all of these changes, we would end up releasing more major versions and ultimately causing more versioning pain for the community. It would also mean that we can't make progress in improving React as fast as we'd like.
+这条规则的出发点是务实的：我们不想为你造成不便。如果我们因为这些改动而升级了主版本号，那么会出现更多的主版本，为社区制造更多的版本问题，我们也不能快速地去完善 React。
 
-That said, if we expect that a change on this list will cause broad problems in the community, we will still do our best to provide a gradual migration path.
+然而，如果上述列表中的改动会在社区中造成大范围的问题，我们仍会尽全力提供一个逐渐升级的方案。
