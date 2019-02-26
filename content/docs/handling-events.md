@@ -140,7 +140,7 @@ class LoggingButton extends React.Component {
 
 此语法问题在于每次渲染 `LoggingButton` 时都会创建不同的回调函数。在大多数情况下，这没什么问题，但如果该回调函数作为 prop 传入子组件时，这些组件可能会进行额外的重新渲染。我们通常建议在构造器中绑定或使用 class fileds 语法来避免这类性能问题。
 
-## 向事件处理函数传递参数
+## 向事件处理函数传递参数 {#passing-arguments-to-event-handlers}
 
 在循环中，通常我们会为事件处理函数传递额外的参数。例如，若 `id` 是你要删除那一行的 ID，以下两种方式都可以向事件处理函数传递参数：
 
