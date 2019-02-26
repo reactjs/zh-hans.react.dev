@@ -126,7 +126,7 @@ class Clock extends React.Component {
 }
 ```
 
-2) 添加一个[class 构造函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes#Constructor)，然后在其中为 `this.state` 赋初值：
+2) 添加一个[class 构造函数](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor)，然后在该函数中为 `this.state` 赋初值：
 
 ```js{4}
 class Clock extends React.Component {
