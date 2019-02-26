@@ -82,7 +82,7 @@ State 与 props 类似，但是 state 是私有的，并且完全受控于当前
 
 2. 添加一个空的 `render()` 方法。
    
-3. 把函数体移动到 `render()` 方法之中。
+3. 将函数体移动到 `render()` 方法之中。
 
 4. 在 `render()` 方法中用 `this.props` 替换 `props`。
 
