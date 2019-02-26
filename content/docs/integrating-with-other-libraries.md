@@ -4,7 +4,7 @@ title: 与其他库集成
 permalink: docs/integrating-with-other-libraries.html
 ---
 
-React 可以被用在任何网页应用中。它可以被嵌入到其他应用而且，需要小心一点，其他的应用也可以被嵌入到 React。这篇指引会去调查一些更通用的用例，聚焦在和  [jQuery](https://jquery.com/) 和 [Backbone](http://backbonejs.org/)， 但是同样的思路可以应用于集成任意现存代码的组件
+React 可以被用于任何 web 应用中。它可以被嵌入到其他应用，且需要注意，其他的应用也可以被嵌入到 React。本指南将介绍一些更常见的用例，专注于与 [jQuery](https://jquery.com/) 和 [Backbone](http://backbonejs.org/) 进行整合，同样的思路还可以应用将组件与任意现有代码集成。
 
 ## 集成带有 DOM 操作的插件 {#integrating-with-dom-manipulation-plugins}
 
