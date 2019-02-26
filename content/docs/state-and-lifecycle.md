@@ -74,7 +74,7 @@ State 与 props 类似，但是 state 是私有的，并且完全受控于当前
 
 我们[之前提到](/docs/components-and-props.html#functional-and-class-components)过组件如果一个组件用 class 定义时，会包含一些额外的特性。State 是： 仅属于 class 组件的特性。
 
-## 从函数定义组件转换成类定义组件
+## 将函数组件转换成 class 组件
 
 你可以用以下五个步骤把一个类似于 `Clock` 的函数定义组件转换成一个类定义组件：
 
