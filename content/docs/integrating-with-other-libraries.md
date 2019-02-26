@@ -8,7 +8,7 @@ React 可以被用于任何 web 应用中。它可以被嵌入到其他应用，
 
 ## 集成带有 DOM 操作的插件 {#integrating-with-dom-manipulation-plugins}
 
-React 不会理会 React 自身之外的 DOM 操作。 它根据内部虚拟 DOM 来决定是否需要更新，而且如果同一个 DOM 节点被另一个库操作了，React 会觉得困惑而且没有办法恢复。
+React 不会理会 React 自身之外的 DOM 操作。它根据内部虚拟 DOM 来决定是否需要更新，而且如果同一个 DOM 节点被另一个库操作了，React 会觉得困惑而且没有办法恢复。
 
 这不代表它不能或者一定很难把 React 和其他的影响 DOM 的方式组合在一起，你只是需要去关注每个库所做的事情。
 
