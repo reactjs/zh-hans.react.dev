@@ -56,7 +56,7 @@ class Example extends React.Component {
 }
 ```
 
-起始 state 为 `{ count: 0 }`，当用户点击按钮后，我们通过调用 `this.setState()` 来增加 `state.count`。我们将在整个页面中使用这个 class 的代码片段。
+state 初始值为 `{ count: 0 }` ，当用户点击按钮后，我们通过调用 `this.setState()` 来增加 `state.count`。后文中我们将使用这个 class 的代码片段做范例。
 
 >注意
 >
