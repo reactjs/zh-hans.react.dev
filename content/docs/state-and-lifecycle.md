@@ -195,7 +195,7 @@ ReactDOM.render(
 
 [**在 CodePen 上尝试**](http://codepen.io/gaearon/pen/KgQpJd?editors=0010)
 
-接下来，我们会让 `Clock` 设置自己的计时器并每秒更新一次。
+接下来，我们会设置 `Clock` 的计时器并每秒更新它。
 
 ## 将生命周期方法添加到 Class 中
 
