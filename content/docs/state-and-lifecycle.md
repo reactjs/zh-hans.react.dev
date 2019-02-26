@@ -146,7 +146,7 @@ class Clock extends React.Component {
 }
 ```
 
-注意看我们是如何把 `props` 传递到父类的构造函数中的：
+通过以下方式将 `props` 传递到父类的构造函数中：
 
 ```js{2}
   constructor(props) {
