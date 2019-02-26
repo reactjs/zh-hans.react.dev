@@ -205,7 +205,7 @@ ReactDOM.render(
 
 同时，当 DOM 中 `Clock` 组件被删除的时候，应该[清除计时器](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval)。这在 React 中被称为“卸载（umount）”。
 
-我们可以在类定义组件中声明一些特殊的方法，每当一个组件挂载或卸载时就会去执行这些方法：
+我们可以为 class 组件声明一些特殊的方法，当组件挂载或卸载时就会去执行这些方法：
 
 ```js{7-9,11-13}
 class Clock extends React.Component {
