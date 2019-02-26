@@ -58,7 +58,7 @@ warning(
 
 有一种思考方式是，这个条件需要反应正常情况而不是特殊情况。
 
-有一个很好的主意是避免大量打印重复的警告：
+有一个很好的主意，避免大量打印重复的警告：
 
 ```js
 var warning = require('warning');
@@ -84,13 +84,15 @@ invariant(
 );
 ```
 
-**The invariant is thrown when the `invariant` condition is `false`.**
+**当`invariant`条件是`false`时，会抛出invariant**
 
-"Invariant" is just a way of saying "this condition always holds true". You can think about it as making an assertion.
+“Invariant”只是一种方式，说 “这种情况下总是true”的方式。你可以把这个当成一种断言。
 
-It is important to keep development and production behavior similar, so `invariant` throws both in development and in production. The error messages are automatically replaced with error codes in production to avoid negatively affecting the byte size.
+保持开发和生产环境的行为相似是十分重要的，因此`invariant`在开发和生产环境下都会抛出。
 
-### Development and Production {#development-and-production}
+这些错误信息会在生产环境中自动替换错误的代码，以避免对字节大小产生负面影响。
+
+### 开发和生产 {#development-and-production}
 
 You can use `__DEV__` pseudo-global variable in the codebase to guard development-only blocks of code.
 
@@ -183,46 +185,46 @@ Renderers are also located in [`packages/`](https://github.com/facebook/react/tr
 * [React Native Renderer](https://github.com/facebook/react/tree/master/packages/react-native-renderer) renders React components to native views. It is used internally by React Native.
 * [React Test Renderer](https://github.com/facebook/react/tree/master/packages/react-test-renderer) renders React components to JSON trees. It is used by the [Snapshot Testing](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html) feature of [Jest](https://facebook.github.io/jest) and is available as [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) npm package.
 
-The only other officially supported renderer is [`react-art`](https://github.com/facebook/react/tree/master/packages/react-art). It used to be in a separate [GitHub repository](https://github.com/reactjs/react-art) but we moved it into the main source tree for now.
+另外一个官方支持的渲染层的是[`react-art`](https://github.com/facebook/react/tree/master/packages/react-art)。它曾经是一个单独的[GitHub仓库](https://github.com/reactjs/react-art)，但是现在我们将此加入了主源代码树。
 
->**Note:**
+>**注意:**
 >
 >Technically the [`react-native-renderer`](https://github.com/facebook/react/tree/master/packages/react-native-renderer) is a very thin layer that teaches React to interact with React Native implementation. The real platform-specific code managing the native views lives in the [React Native repository](https://github.com/facebook/react-native) together with its components.
 
-### Reconcilers {#reconcilers}
+### 协调者 {#reconcilers}
 
-Even vastly different renderers like React DOM and React Native need to share a lot of logic. In particular, the [reconciliation](/docs/reconciliation.html) algorithm should be as similar as possible so that declarative rendering, custom components, state, lifecycle methods, and refs work consistently across platforms.
+Even vastly different renderers like React DOM and React Native need to share a lot of logic. In particular, the [协调](/docs/reconciliation.html) algorithm should be as similar as possible so that declarative rendering, custom components, state, lifecycle methods, and refs work consistently across platforms.
 
 To solve this, different renderers share some code between them. We call this part of React a "reconciler". When an update such as `setState()` is scheduled, the reconciler calls `render()` on components in the tree and mounts, updates, or unmounts them.
 
 Reconcilers are not packaged separately because they currently have no public API. Instead, they are exclusively used by renderers such as React DOM and React Native.
 
-### Stack Reconciler {#stack-reconciler}
+### Stack协调者 {#stack-reconciler}
 
-The "stack" reconciler is the implementation powering React 15 and earlier. We have since stopped using it, but it is documented in detail in the [next section](/docs/implementation-notes.html).
+"stack"协调者 is the implementation powering React 15 and earlier. 虽然我们已经停止使用他了, 但是这个在[下一章节](/docs/implementation-notes.html)有详细的文档。
 
-### Fiber Reconciler {#fiber-reconciler}
+### Fiber协调者 {#fiber-reconciler}
 
-The "fiber" reconciler is a new effort aiming to resolve the problems inherent in the stack reconciler and fix a few long-standing issues. It has been the default reconciler since React 16.
+"fiber"协调者是一个新尝试，致力于解决问题stack协调者中固有的问题，同时解决一些由来已久的问题。这个从React 16开始变成了默认的协调者。
 
-Its main goals are:
+它的主要目标是：
 
 * Ability to split interruptible work in chunks.
 * Ability to prioritize, rebase and reuse work in progress.
 * Ability to yield back and forth between parents and children to support layout in React.
-* Ability to return multiple elements from `render()`.
-* Better support for error boundaries.
+* 能够从`render()`中返回多个元素。
+* 更好地支持错误边界。
 
-You can read more about React Fiber Architecture [here](https://github.com/acdlite/react-fiber-architecture) and [here](https://medium.com/react-in-depth/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react-e1c04700ef6e). While it has shipped with React 16, the async features are not enabled by default yet.
+你可以在[这里](https://github.com/acdlite/react-fiber-architecture)和[这里](https://medium.com/react-in-depth/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react-e1c04700ef6e)，深入了解React Fiber架构。
+While it has shipped with React 16, the async features are not enabled by default yet.
 
-Its source code is located in [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler).
+他的代码在[`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler)。
 
-### Event System {#event-system}
+### 事件系统 {#event-system}
+React实现一个合成事件，与渲染层无关，适用于React DOM和React Native。他的源码在[`packages/events`](https://github.com/facebook/react/tree/master/packages/events)。
 
-React implements a synthetic event system which is agnostic of the renderers and works both with React DOM and React Native. Its source code is located in [`packages/events`](https://github.com/facebook/react/tree/master/packages/events).
+这个是一个[深入研究代码的视频](https://www.youtube.com/watch?v=dRo_egw7tBc) （66分钟）。
 
-There is a [video with a deep code dive into it](https://www.youtube.com/watch?v=dRo_egw7tBc) (66 mins).
+### 下一个是什么？ {#what-next}
 
-### What Next? {#what-next}
-
-Read the [next section](/docs/implementation-notes.html) to learn about the pre-React 16 implementation of reconciler in more detail. We haven't documented the internals of the new reconciler yet.
+查看[下一章节](/docs/implementation-notes.html)去学习协调者在pre-React 16中的实现。我们还没有给新的协调者的内部原理写文档。
