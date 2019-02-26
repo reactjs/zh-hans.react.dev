@@ -72,7 +72,7 @@ ReactDOM.render(
 
 State 与 props 类似，但是 state 是私有的，并且完全受控于当前组件。
 
-我们[之前提到](/docs/components-and-props.html#functional-and-class-components)过组件如果一个组件用 class 定义时，会有一些额外的特性。 state 是： 仅属于类定义组件的特性。
+我们[之前提到](/docs/components-and-props.html#functional-and-class-components)过组件如果一个组件用 class 定义时，会包含一些额外的特性。State 是： 仅属于 class 组件的特性。
 
 ## 从函数定义组件转换成类定义组件
 
