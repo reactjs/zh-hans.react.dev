@@ -34,7 +34,7 @@ render() {
 
 ### 我可以使用行内样式吗？ {#can-i-use-inline-styles}
 
-是的，在[此处](/docs/dom-elements.html#style)查看关于样式的文档。
+可以，在[此处](/docs/dom-elements.html#style)查看关于样式的文档。
 
 ### 行内样式不好 (bad) 吗？ {#are-inline-styles-bad}
 
