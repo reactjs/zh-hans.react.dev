@@ -246,7 +246,7 @@ class Clock extends React.Component {
   }
 ```
 
-注意看我们是如何把计时器的 ID 保存在 `this` 之中的。
+接下来把计时器的 ID 保存在 `this` 之中。
 
 尽管 `this.props` 是 React 本身设置的， `this.state` 拥有一个特殊的含义，但是你可以向 class 中随意添加不参与数据流（比如计时器 ID）的额外字段。
 
