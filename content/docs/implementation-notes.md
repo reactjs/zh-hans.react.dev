@@ -9,9 +9,9 @@ redirect_from:
   - "contributing/implementation-notes.html"
 ---
 
-This section is a collection of implementation notes for the [stack reconciler](/docs/codebase-overview.html#stack-reconciler).
+这一部分是关于 [stack reconciler](/docs/codebase-overview.html#stack-reconciler) 的一些实现说明。
 
-It is very technical and assumes a strong understanding of React public API as well as how it's divided into core, renderers, and the reconciler. If you're not very familiar with the React codebase, read [the codebase overview](/docs/codebase-overview.html) first.
+这部分具有很强的技术性，需要对 React 公开应用程序接口，以及 React 是如何分为 core，renders 和 reconciler 的具有较强的理解。如果你对源码还不是很熟悉，请先阅读[源码总览](/docs/codebase-overview.html)。
 
 It also assumes an understanding of the [differences between React components, their instances, and elements](/blog/2015/12/18/react-components-elements-and-instances.html).
 
