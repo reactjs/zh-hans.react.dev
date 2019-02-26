@@ -1,6 +1,6 @@
 ---
 id: integrating-with-other-libraries
-title: 与其他库集成
+title: 与第三方库协同
 permalink: docs/integrating-with-other-libraries.html
 ---
 
