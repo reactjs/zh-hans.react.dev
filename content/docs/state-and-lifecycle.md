@@ -76,7 +76,7 @@ State 与 props 类似，但是 state 是私有的，并且完全受控于当前
 
 ## 将函数组件转换成 class 组件
 
-你可以用以下五个步骤把一个类似于 `Clock` 的函数定义组件转换成一个类定义组件：
+通过以下五步将 `Clock` 的函数组件转成 class 组件：
 
 1. 创建一个同名的 [ES6 class](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes)，并且继承自 `React.Component`。
 
