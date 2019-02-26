@@ -31,7 +31,7 @@ setInterval(tick, 1000);
 
 [**在 CodePen 中尝试**](http://codepen.io/gaearon/pen/gwoJZk?editors=0010)
 
-在本节中，我们将学习如何使真正的复用与封装 `Clock` 组件。它将设置自己的计时器并每秒更新一次。
+在本章节中，我们将学习如何封装真正可复用的 `Clock` 组件。它将设置自己的计时器并每秒更新一次。
 
 我们可以从像这样封装 Clock 的外观显示开始：
 
