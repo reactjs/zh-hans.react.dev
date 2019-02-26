@@ -409,7 +409,7 @@ this.setState(function(state, props) {
   }
 ```
 
-这里的合并是浅合并，所以 `this.setState({coments})` 完整保留了 `this.state.posts`， 但是完全替换了 `this.state.comments`。
+这里的合并是浅合并，所以 `this.setState({comments})` 完整保留了 `this.state.posts`， 但是完全替换了 `this.state.comments`。
 
 ## 数据是向下流动的
 
