@@ -91,7 +91,7 @@ ReactDOM.render(
 );
 ```
 
-[**在 CodePen 上试试**](http://codepen.io/gaearon/pen/xEmzGg?editors=0010)
+[**在 CodePen 上尝试**](http://codepen.io/gaearon/pen/xEmzGg?editors=0010)
 
 你必须谨慎对待 JSX 回调函数中的 `this`， 在 JavaScript 中， class 的方法默认是不会[绑定](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind) `this` 的。如果你忘记绑定 `this.handleClick` 并把它传入了 `onClick`，当你调用这个函数的时候 `this` 会是 `undefined`。
 
@@ -140,7 +140,7 @@ class LoggingButton extends React.Component {
 
 使用这个语法有个问题就是每次 `LoggingButton` 渲染的时候都会创建一个不同的回调函数。在大多数情况下，这没有问题。然而如果这个回调函数作为一个属性值传入低阶组件，这些组件可能会进行额外的重新渲染。我们通常建议在构造器中绑定或使用类字段语法来避免这类性能问题。
 
-## 向事件处理函数传递参数
+## 向事件处理函数传递参数 {#passing-arguments-to-event-handlers}
 
 在循环中，通常我们会为事件处理函数传递额外的参数。例如，若 `id` 是你要删除那一行的 ID，以下两种方式都可以向事件处理函数传递参数：
 
