@@ -6,7 +6,7 @@ layout: docs
 category: FAQ
 ---
 
-### 什么是虚拟 DOM? {#what-is-the-virtual-dom}
+### 什么是虚拟 DOM？ {#what-is-the-virtual-dom}
 
 虚拟 DOM 是一种编程概念。在这个概念里，一种想象的，或者说“虚拟的” UI 会被保存于内存中，并通过如 ReactDOM 等类库使之与“真实的” DOM 同步。这一过程叫做[协调](/docs/reconciliation.html).
 
@@ -14,10 +14,10 @@ category: FAQ
 
 由于“虚拟 DOM”相比于特定的技术更像是一种模式，我们提到它有时也代表不同的含义。在 React 世界里，术语“虚拟 DOM”通常与[React 元素](/docs/rendering-elements.html)关联在一起，因为它们都是呈现 UI 的对象。而 React 也使用一个名为“fibers”的内部对象来存放组件树的其他信息。上述二者也被认为是 React 中“虚拟 DOM ”实现的一部分。
 
-### 影子 DOM 和虚拟 DOM 是一回事吗? {#is-the-shadow-dom-the-same-as-the-virtual-dom}
+### 影子 DOM 和虚拟 DOM 是一回事吗？ {#is-the-shadow-dom-the-same-as-the-virtual-dom}
 
-不，他们不一样。影子 DOM 是一种浏览器技术，主要用于在 web 组件中封装变量和CSS。虚拟 DOM 则是一种概念，由 Javascript 类库基于浏览器 API 实现。
+不，他们不一样。影子 DOM 是一种浏览器技术，主要用于在 web 组件中封装变量和 CSS。虚拟 DOM 则是一种概念，由 Javascript 类库基于浏览器 API 实现。
 
-### 什么是“React Fiber”? {#what-is-react-fiber}
+### 什么是“React Fiber”？ {#what-is-react-fiber}
 
 Fiber 是 React 16 中新的协调引擎。它的主要目的是使虚拟 DOM 可以进行增量式渲染。[了解更多](https://github.com/acdlite/react-fiber-architecture).
