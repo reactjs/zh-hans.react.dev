@@ -10,7 +10,7 @@ redirect_from:
 
 在 React 中，你可以创建不同的组件来封装各种你需要的行为。然后，依据应用的不同状态，你可以只渲染对应状态下的部分内容。
 
-React 中的条件渲染和 JavaScript 中的一样，使用 JavaScript 运算符[`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else)或者[条件运算符](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)去创建元素来表现当前的状态，然后让 React 根据它们来更新 UI。
+React 中的条件渲染和 JavaScript 中的一样，使用 JavaScript 运算符 [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) 或者[条件运算符](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)去创建元素来表现当前的状态，然后让 React 根据它们来更新 UI。
 
 观察这两个组件:
 
@@ -186,7 +186,7 @@ render() {
 }
 ```
 
-就像在 JavaScript 中一样，你可以根据团队的习惯来选择可读性更高的代码风格。需要注意的是，如果条件变得过于复杂，那你应该考虑如何 [提取组件](/docs/components-and-props.html#extracting-components) 了。
+就像在 JavaScript 中一样，你可以根据团队的习惯来选择可读性更高的代码风格。需要注意的是，如果条件变得过于复杂，那你应该考虑如何[提取组件](/docs/components-and-props.html#extracting-components)了。
 
 ### 阻止组件渲染
 
