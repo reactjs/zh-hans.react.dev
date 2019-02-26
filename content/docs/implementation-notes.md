@@ -13,15 +13,16 @@ redirect_from:
 
 这部分具有很强的技术性，需要对 React 公开应用程序接口，以及 React 是如何分为 core，renders 和 reconciler 的具有较强的理解。如果你对源码还不是很熟悉，请先阅读[源码总览](/docs/codebase-overview.html)。
 
-It also assumes an understanding of the [differences between React components, their instances, and elements](/blog/2015/12/18/react-components-elements-and-instances.html).
+这部分还要求了解[组件，组件的实例，以及元素之间的不同](/blog/2015/12/18/react-components-elements-and-instances.html)。
 
-The stack reconciler was used in React 15 and earlier. It is located at [src/renderers/shared/stack/reconciler](https://github.com/facebook/react/tree/15-stable/src/renderers/shared/stack/reconciler).
+Stack reconciler 是在 React 15 以及更早的版本中被采用。它的源码位于 [src/renderers/shared/stack/reconciler](https://github.com/facebook/react/tree/15-stable/src/renderers/shared/stack/reconciler)。
 
 ### Video: Building React from Scratch {#video-building-react-from-scratch}
+### 视频：从零开始构建 React {#video-building-react-from-scratch}
 
-[Paul O'Shannessy](https://twitter.com/zpao) gave a talk about [building React from scratch](https://www.youtube.com/watch?v=_MAD4Oly9yg) that largely inspired this document.
+[Paul O'Shannessy](https://twitter.com/zpao) 讲解的 [从零开始构建 React](https://www.youtube.com/watch?v=_MAD4Oly9yg) 对本文档有较大的启发。
 
-Both this document and his talk are simplifications of the real codebase so you might get a better understanding by getting familiar with both of them.
+本文档和他的讲解是对于真实源码的简化， 所以你能通过熟悉它们来对代码有更好的理解。
 
 ### Overview {#overview}
 
