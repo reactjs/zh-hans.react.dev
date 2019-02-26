@@ -273,7 +273,7 @@ function ExampleWithManyStates() {
 
 ## 下一步
 
-上述页面中，我们了解了 React 提供的一个叫 `useState` Hook，有时候我们也叫它 “State Hook”。它让我们在 React 函数定义组件上添加内部 state——这是我们第一次这么做。
+上述页面中，我们了解了 React 提供的一个叫 `useState` Hook，有时候我们也叫它 “State Hook”。它让我们在 React 函数定义组件上添加内部 state——这是我们头一次能这么干。
 
 我们还学到了一些知识比如什么是 Hook。Hook 是能让你在函数定义组件中“钩入” React 特性的函数。它们名字通常都以 `use` 开始，还有更多 Hook 等着我们去探索。
 
