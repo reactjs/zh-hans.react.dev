@@ -6,7 +6,7 @@ next: hooks-rules.html
 prev: hooks-intro.html
 ---
 
-*Hooks* 是 React 16.8 的新增特性。它可以让你在不使用 class 的情况下使用 state 和一些其他 React 功能。
+*Hooks* 是 React 16.8 的新增特性。它可以让你在不使用 class 的情况下使用 state 和一些其他的 React 功能。
 
 *Effect Hook* 让你可以在函数定义组件中执行一些副作用(side effect)操作
 
@@ -40,7 +40,7 @@ function Example() {
 
 >Tip
 >
->如果你熟悉 React class 的生命周期函数，你可以把 `useEffect` Hooks 看做 `componentDidMount` 和 `componentWillUnmount` 这两个函数的结合
+>如果你熟悉 React class 的生命周期函数，你可以把 `useEffect` Hooks 看做 `componentDidMount`，`componentDidUpdate` 和 `componentWillUnmount` 这三个函数的结合
 
 通常来说在 React 组件中有两种副作用操作：需要清理的和不需要清理的。我们来更仔细地看一下他们之间的区别
 
@@ -52,7 +52,7 @@ function Example() {
 
 在 React 的类定义组件中，`render` 函数是不应该有任何副作用的。一般来说，在这里执行操作太早了，我们基本上都希望在 React 更新 DOM 之后才执行我们的操作。
 
-这就是为什么在 React 类中，我们把副作用操作放到 `componentDidMount` 和 `componentDidUpdate` 函数中。回到我们的示例中来，这是一个 React 计数器类定义组件。它在 Ract 对 DOM 进行操作之后，立刻更新了 document 的 title 属性
+这就是为什么在 React 类中，我们把副作用操作放到 `componentDidMount` 和 `componentDidUpdate` 函数中。回到我们的示例中来，这是一个 React 计数器类定义组件。它在 React 对 DOM 进行操作之后，立刻更新了 document 的 title 属性
 
 ```js{9-15}
 class Example extends React.Component {
