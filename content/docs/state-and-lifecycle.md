@@ -103,7 +103,7 @@ class Clock extends React.Component {
 
 [**在 CodePen 上尝试**](http://codepen.io/gaearon/pen/zKRGpo?editors=0010)
 
-`Clock` 现在被定义为一个 class，而不是一个函数。
+现在 `Clock` 组件被定义为 class，而不是函数。
 
 `render` 方法会在每次组件更新时被调用。然而只要在相同的 DOM 节点中渲染 `<Clock />` ，就会只有一个 `Clock` class 的实例被调用。这就让我们可以使用一些比如 state 或是生命周期方法的一些额外特性。
 
