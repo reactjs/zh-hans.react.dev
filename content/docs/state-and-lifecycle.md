@@ -391,7 +391,7 @@ this.setState(function(state, props) {
   }
 ```
 
-然后你可以分开调用 `setState()` 来单独地更新它们：
+然后你可以分别调用 `setState()` 来单独地更新它们：
 
 ```js{4,10}
   componentDidMount() {
