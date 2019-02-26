@@ -429,7 +429,7 @@ this.setState(function(state, props) {
 <FormattedDate date={this.state.date} />
 ```
 
-`FormattedDate` 组件会在他的 props 中接收 `date` 参数，但是却无法知道它是来自于 `Clock` 的 state，或是 `Clock` 的 props，又或者是手动输入的：
+`FormattedDate` 组件会在其 props 中接收参数 `date`，但是组件本身无法知道它是来自于 `Clock` 的 state，或是 `Clock` 的 props，还是手动输入的：
 
 ```js
 function FormattedDate(props) {
