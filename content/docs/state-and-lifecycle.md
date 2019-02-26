@@ -109,7 +109,7 @@ class Clock extends React.Component {
 
 ## 向 class 组件中添加局部的 state
 
-我们用以下三个步骤把 `date` 从 props 移动到 state ：
+我们通过以下三步将 `date` 从 props 移动到 state 中：
 
 1) 把 `render()` 方法中的 `this.props.date` 替换成 `this.state.date` ：
 
