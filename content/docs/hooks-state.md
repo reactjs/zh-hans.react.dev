@@ -84,7 +84,7 @@ function Example(props) {
 
 你之前可能已经知道这些是“无状态组件”。我们现在介绍的是在这些基础上使用 React state 的能力，所以我们更喜欢叫他"函数定义组件"。
 
-Hook 在 class 内部是**不**起作用的。但你可以使用它们来代替编写 class。
+Hook 在 class 内部是**不**起作用的。但你可以使用它们来取代 class 。
 
 ## Hook 是什么？
 
