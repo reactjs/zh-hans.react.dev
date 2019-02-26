@@ -192,7 +192,7 @@ There are a few more heuristics, and they might change over time as we fine-tune
 
 ### How do lifecycle methods correspond to Hooks? {#how-do-lifecycle-methods-correspond-to-hooks}
 
-* `constructor`: Function components don't need a constructor. You can initialize the state in the [`useState`](/docs/hooks-reference.html#usestate) call. If computing it is expensive, you can pass a function to `useState`.
+* `constructor`: Function components don't need a constructor. You can initialize the state in the [`useState`](/docs/hooks-reference.html#usestate) call. If computing the initial state is expensive, you can pass a function to `useState`.
 
 * `getDerivedStateFromProps`: Schedule an update [while rendering](#how-do-i-implement-getderivedstatefromprops) instead.
 
@@ -466,7 +466,7 @@ Note that this approach won't work in a loop because Hook calls [can't](/docs/ho
 
 ### How to create expensive objects lazily? {#how-to-create-expensive-objects-lazily}
 
-`useMemo` lets you [memoize an expensive calculation](#how-to-memoize-calculations) if the inputs are the same. However, it only serves as a hint, and doesn't *guarantee* the computation won't re-run. But sometimes need to be sure an object is only created once.
+`useMemo` lets you [memoize an expensive calculation](#how-to-memoize-calculations) if the inputs are the same. However, it only serves as a hint, and doesn't *guarantee* the computation won't re-run. But sometimes you need to be sure an object is only created once.
 
 **The first common use case is when creating the initial state is expensive:**
 
@@ -560,7 +560,7 @@ In large component trees, an alternative we recommend is to pass down a `dispatc
 const TodosDispatch = React.createContext(null);
 
 function TodosApp() {
-  // Tip: `dispatch` won't change between re-renders
+  // Note: `dispatch` won't change between re-renders
   const [todos, dispatch] = useReducer(todosReducer);
 
   return (
