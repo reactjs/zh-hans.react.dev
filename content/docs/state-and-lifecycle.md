@@ -464,6 +464,6 @@ ReactDOM.render(
 
 [**在 CodePen 上尝试**](http://codepen.io/gaearon/pen/vXdGmd?editors=0010)
 
-每个 `Clock` 会单独的设置它自己的计时器并且更新它。
+每个 `Clock` 组件都会单独设置它自己的计时器并且更新它。
 
 在 React 应用中，组件是有状态组件还是无状态组件属于组件实现的细节，它可能会随着时间的推移而改变。你可以在有状态的组件中使用无状态的组件，反之亦然。
