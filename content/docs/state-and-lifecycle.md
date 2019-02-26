@@ -168,7 +168,7 @@ ReactDOM.render(
 
 我们之后会将计时器相关的代码添加到组件中。
 
-结果看上去是这样的：
+代码如下：
 
 ```js{2-5,11,18}
 class Clock extends React.Component {
