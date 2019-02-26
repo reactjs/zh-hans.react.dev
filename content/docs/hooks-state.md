@@ -6,7 +6,7 @@ next: hooks-effect.html
 prev: hooks-overview.html
 ---
 
-*Hook* 是一个即将到来的特性，它让你不用写 class 也可以使用 state 和其他 React 特性。他们现在在React v16.8.0-alpha.1 中。
+*Hook* 是一个即将到来的特性，它让你不用写 class 也可以使用 state 和其他 React 特性。现在可以在 React v16.8.0-alpha.1 版本中使用它。
 
 [上一页](/docs/hooks-intro.html)用这个例子介绍了 Hook：
 
