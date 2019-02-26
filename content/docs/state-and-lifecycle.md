@@ -417,7 +417,7 @@ this.setState(function(state, props) {
 
 这就是为什么称 state 为局部的或是封装的的原因。除了拥有并设置了它的组件，其他组件都无法访问。
 
-一个组件可以选择把他的 state 作为 props 向下传递到它的子组件：
+组件可以选择把它的 state 作为 props 向下传递到它的子组件中：
 
 ```js
 <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
