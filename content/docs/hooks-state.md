@@ -104,7 +104,7 @@ function Example() {
 
 >注意：
 >
->关于在组件中，有什么地方能使用 Hook，有什么地方不能使用 Hook，有一些特殊的规则。我们将在 [Hook 规范](/docs/hooks-rules.html)中学习它们。
+>在组件中有些特殊的规则，规定什么地方能使用 Hook，什么地方不能使用。我们将在 [Hook 规范](/docs/hooks-rules.html)中学习它们。
 
 ## 声明一个 State 变量
 
