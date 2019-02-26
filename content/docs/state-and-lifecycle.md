@@ -10,7 +10,7 @@ next: handling-events.html
 
 本页面会介绍一个 React 组件中 state 和生命周期的概念。你可以在这查阅[详细的组件 API 参考文档](/docs/react-component.html)。
 
-请参考[之前一节](/docs/rendering-elements.html#updating-the-rendered-element)中的 Ticking Clock 的例子。在[元素渲染](/docs/rendering-elements.html#rendering-an-element-into-the-dom)章节中，我们只了解了一种更新 UI 界面的方法。通过调用 `ReactDOM.render()` 来修改我们想要渲染的元素：
+请参考[前一章节](/docs/rendering-elements.html#updating-the-rendered-element)中时钟的例子。在[元素渲染](/docs/rendering-elements.html#rendering-an-element-into-the-dom)章节中，我们只了解了一种更新 UI 界面的方法。通过调用 `ReactDOM.render()` 来修改我们想要渲染的元素：
 
 ```js{8-11}
 function tick() {
