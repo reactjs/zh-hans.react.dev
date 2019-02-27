@@ -1,6 +1,6 @@
 ---
 id: conditional-rendering
-title: Conditional Rendering
+title: 条件渲染
 permalink: docs/conditional-rendering.html
 prev: handling-events.html
 next: lists-and-keys.html
