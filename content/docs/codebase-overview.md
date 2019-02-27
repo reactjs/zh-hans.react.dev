@@ -1,6 +1,6 @@
 ---
 id: codebase-overview
-title: Codebase Overview
+title: 代码库概述
 layout: contributing
 permalink: docs/codebase-overview.html
 prev: how-to-contribute.html
@@ -9,39 +9,40 @@ redirect_from:
   - "contributing/codebase-overview.html"
 ---
 
-This section will give you an overview of the React codebase organization, its conventions, and the implementation.
+本节将对React的代码库架构，惯例和其实现进行概述。
 
-If you want to [contribute to React](/docs/how-to-contribute.html) we hope that this guide will help you feel more comfortable making changes.
+如果您想[参与React](/docs/how-to-contribute.html)的开发，我们希望这份指导可以帮助你更加舒适地做出修改。
 
-We don't necessarily recommend any of these conventions in React apps. Many of them exist for historical reasons and might change with time.
+我们并不完全推荐在React app中使用这些惯例。有许多是历史原因，并且之后也许会有所修改。
 
-### External Dependencies {#external-dependencies}
+### 外部依赖 {#external-dependencies}
 
-React has almost no external dependencies. Usually, a `require()` points to a file in React's own codebase. However, there are a few relatively rare exceptions.
+React几乎没有外部依赖。通常`require()`指向React自己代码库的文件。然而，也有一些比较少见的例外。
 
-The [fbjs repository](https://github.com/facebook/fbjs) exists because React shares some small utilities with libraries like [Relay](https://github.com/facebook/relay), and we keep them in sync. We don't depend on equivalent small modules in the Node ecosystem because we want Facebook engineers to be able to make changes to them whenever necessary. None of the utilities inside fbjs are considered to be public API, and they are only intended for use by Facebook projects such as React.
+[fbjs仓库](https://github.com/facebook/fbjs) 的存在是因为React和一些类似像[Relay](https://github.com/facebook/relay)的库共享一些小功能，并且我们保持他们同步。我们不依赖Node系统中同等功能的小模块，因为我们希望Facebook工程师能够再必要时做出修改。fbjs中没有公共API，他们仅仅用于Facebook的项目，比如React。
 
-### Top-Level Folders {#top-level-folders}
+### 顶层文件夹 {#top-level-folders}
 
-After cloning the [React repository](https://github.com/facebook/react), you will see a few top-level folders in it:
+当clone [React仓库](https://github.com/facebook/react)之后，你们将看到一些顶层文件夹：
 
-* [`packages`](https://github.com/facebook/react/tree/master/packages) contains metadata (such as `package.json`) and the source code (`src` subdirectory) for all packages in the React repository. **If your change is related to the code, the `src` subdirectory of each package is where you'll spend most of your time.**
-* [`fixtures`](https://github.com/facebook/react/tree/master/fixtures) contains a few small React test applications for contributors.
-* `build` is the build output of React. It is not in the repository but it will appear in your React clone after you [build it](/docs/how-to-contribute.html#development-workflow) for the first time.
+* [`packages`](https://github.com/facebook/react/tree/master/packages) 包含元数据（比如`package.json`）和React仓库中所有包的源码 (子目录`src`)。. **如果你的修改与源代码相关, 那么每个包的子目录`src`是你需要花费最多精力的部分。**
+* [`fixtures`](https://github.com/facebook/react/tree/master/fixtures)包含一些给参与者的小型React测试应用。
+* `build`是React的创建的输出。这不在仓库内，但是这会出现在你clone React并且第一次[创建它](/docs/how-to-contribute.html#development-workflow)之后。
 
-The documentation is hosted [in a separate repository from React](https://github.com/reactjs/reactjs.org).
+文档位于[React仓库之外的一个单独仓库中](https://github.com/reactjs/reactjs.org)。
 
-There are a few other top-level folders but they are mostly used for the tooling and you likely won't ever encounter them when contributing.
 
-### Colocated Tests {#colocated-tests}
+还有一些其他的顶层文件夹，但是他们几乎都是工具类的，并且基本上你在参与时不会涉及。
 
-We don't have a top-level directory for unit tests. Instead, we put them into a directory called `__tests__` relative to the files that they test.
+### 共同测试 {#colocated-tests}
 
-For example, a test for [`setInnerHTML.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/setInnerHTML.js) is located in [`__tests__/setInnerHTML-test.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/__tests__/setInnerHTML-test.js) right next to it.
+我没有单元测试的顶层文件夹。而是将他们放入所需测试文件的目录下，一个叫做`__tests__`的文件夹之中。
 
-### Warnings and Invariants {#warnings-and-invariants}
+比如，一个用于[`setInnerHTML.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/setInnerHTML.js) 的测试，位于[`__tests__/setInnerHTML-test.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/__tests__/setInnerHTML-test.js)，就在它旁边。
 
-The React codebase uses the `warning` module to display warnings:
+### warning和invariant {#warnings-and-invariants}
+
+React仓库用`warning`模块展示警告。
 
 ```js
 var warning = require('warning');
@@ -52,11 +53,11 @@ warning(
 );
 ```
 
-**The warning is shown when the `warning` condition is `false`.**
+**警告会在`warning`的条件设置为false的时候出现。**
 
-One way to think about it is that the condition should reflect the normal situation rather than the exceptional one.
+有一种理解方式，这个条件需要反应正常情况而不是特殊情况。
 
-It is a good idea to avoid spamming the console with duplicate warnings:
+避免大量打印重复的警告是一个很好的主意：
 
 ```js
 var warning = require('warning');
@@ -71,7 +72,7 @@ if (!didWarnAboutMath) {
 }
 ```
 
-Warnings are only enabled in development. In production, they are completely stripped out. If you need to forbid some code path from executing, use `invariant` module instead:
+警告仅在开发环境中启用。在生产环境中，他们会被完全剥离出来。如果你需要禁止执行某些代码，请使用`invariant`模块代替：
 
 ```js
 var invariant = require('invariant');
@@ -82,31 +83,31 @@ invariant(
 );
 ```
 
-**The invariant is thrown when the `invariant` condition is `false`.**
+**当`invariant`条件是`false`时，会抛出invariant**
 
-"Invariant" is just a way of saying "this condition always holds true". You can think about it as making an assertion.
+“Invariant”只是一种声明“这种情况下总是true”的方式。你可以把这个当成一种断言。
 
-It is important to keep development and production behavior similar, so `invariant` throws both in development and in production. The error messages are automatically replaced with error codes in production to avoid negatively affecting the byte size.
+保持开发和生产环境的行为相似是十分重要的，因此`invariant`在开发和生产环境下都会抛出。这些错误信息会在生产环境中自动替换错误的代码，以避免对文件大小产生负面影响。
 
-### Development and Production {#development-and-production}
+### 开发和生产 {#development-and-production}
 
-You can use `__DEV__` pseudo-global variable in the codebase to guard development-only blocks of code.
+你可以在代码库中使用`__DEV__`这个伪全局变量，用来管理开发环境中的代码块。
 
-It is inlined during the compile step, and turns into `process.env.NODE_ENV !== 'production'` checks in the CommonJS builds.
+这在编译阶段会被内联，在CommonJS构建中，转化成`process.env.NODE_ENV !== 'production'`这样的判断。
 
-For standalone builds, it becomes `true` in the unminified build, and gets completely stripped out with the `if` blocks it guards in the minified build.
+对于独立构建，在未压缩的构建中，这会变成`true`，同时在压缩的构建中，检测到的`if`代码块会被完全剥离。
 
 ```js
 if (__DEV__) {
-  // This code will only run in development.
+  // 仅在开发环境下执行的代码
 }
 ```
 
 ### Flow {#flow}
 
-We recently started introducing [Flow](https://flow.org/) checks to the codebase. Files marked with the `@flow` annotation in the license header comment are being typechecked.
+我们最近开始引入[Flow](https://flow.org/)，用于检查代码库。在许可证头部的注释中，标记了`@flow`注释的文件是已经经过类型检查的。
 
-We accept pull requests [adding Flow annotations to existing code](https://github.com/facebook/react/pull/7600/files). Flow annotations look like this:
+我们接受[添加Flow注释到现有代码](https://github.com/facebook/react/pull/7600/files)。Flow注释看上去像这样：
 
 ```js
 ReactRef.detachRefs = function(
@@ -117,20 +118,21 @@ ReactRef.detachRefs = function(
 }
 ```
 
-When possible, new code should use Flow annotations.
-You can run `yarn flow` locally to check your code with Flow.
+如果可以，新代码需要使用Flow注释。
 
-### Dynamic Injection {#dynamic-injection}
+你可以运行`yarn flow`，用Flow本地检查你的代码。
 
-React uses dynamic injection in some modules. While it is always explicit, it is still unfortunate because it hinders understanding of the code. The main reason it exists is because React originally only supported DOM as a target. React Native started as a React fork. We had to add dynamic injection to let React Native override some behaviors.
+### 动态注入 {#dynamic-injection}
 
-You may see modules declaring their dynamic dependencies like this:
+React在一些模块中使用了动态注入。虽然这一直很清晰，但是很不幸，因为这阻碍了代码的可理解性。这存在的最主要原因是React原本只以支持DOM为目标。然而React Native开始作为React的一个分支。我们必须添加一些动态注入让React Native覆盖一些行为。
+
+你可能看到过一些模块，像下面这样声明动态依赖：
 
 ```js
-// Dynamically injected
+// 动态注入
 var textComponentClass = null;
 
-// Relies on dynamically injected value
+// 依赖动态注入的值
 function createInstanceForText(text) {
   return new textComponentClass(text);
 }
@@ -138,7 +140,7 @@ function createInstanceForText(text) {
 var ReactHostComponent = {
   createInstanceForText,
 
-  // Provides an opportunity for dynamic injection
+  // 提供动态注入的入口
   injection: {
     injectTextComponentClass: function(componentClass) {
       textComponentClass = componentClass;
@@ -148,79 +150,80 @@ var ReactHostComponent = {
 
 module.exports = ReactHostComponent;
 ```
+`injection`部分并没有用某种特别的方式处理。但是按照惯例，这意味着这模块在运行时想要注入一些（很可能是平台特定的）依赖。
 
-The `injection` field is not handled specially in any way. But by convention, it means that this module wants to have some (presumably platform-specific) dependencies injected into it at runtime.
+在代码库中有许多注入点。未来，我们打算抛弃动态注入机制，并且在构建的时候静态地连接所有的碎片。
 
-There are multiple injection points in the codebase. In the future, we intend to get rid of the dynamic injection mechanism and wire up all the pieces statically during the build.
+### 多包 {#multiple-packages}
 
-### Multiple Packages {#multiple-packages}
+React是一个[单包](https://danluu.com/monorepo/)。他的代码库包含多个单独的包，因此他的改动可以一起联调的，并且问题只存在一个地方。
 
-React is a [monorepo](https://danluu.com/monorepo/). Its repository contains multiple separate packages so that their changes can be coordinated together, and issues live in one place.
+### React核心 {#react-core}
 
-### React Core {#react-core}
-
-The "core" of React includes all the [top-level `React` APIs](/docs/top-level-api.html#react), for example:
+React"核心"包括所有[全局`React`APIs](/docs/top-level-api.html#react)，比如：
 
 * `React.createElement()`
 * `React.Component`
 * `React.Children`
 
-**React core only includes the APIs necessary to define components.** It does not include the [reconciliation](/docs/reconciliation.html) algorithm or any platform-specific code. It is used both by React DOM and React Native components.
+**React核心只包含定义组件必要的API**。它不包含[reconciliation](/docs/reconciliation.html)算法或者其他平台特定的代码。这同时适用于React DOM和React Native组件。
 
-The code for React core is located in [`packages/react`](https://github.com/facebook/react/tree/master/packages/react) in the source tree. It is available on npm as the [`react`](https://www.npmjs.com/package/react) package. The corresponding standalone browser build is called `react.js`, and it exports a global called `React`.
+React核心代码在源码树的[`packages/react`](https://github.com/facebook/react/tree/master/packages/react)。这在npm上作为[`react`](https://www.npmjs.com/package/react)包。 相应的独立浏览器构建版本称为`react.js`，这个导出一个称为`React`的全局对象。
 
-### Renderers {#renderers}
+### 渲染层 {#renderers}
 
-React was originally created for the DOM but it was later adapted to also support native platforms with [React Native](https://facebook.github.io/react-native/). This introduced the concept of "renderers" to React internals.
+React最初只是服务于DOM，但是这之后被改编成同时支持原生平台的[React Native](https://facebook.github.io/react-native/)。这就在React内部机制中引入了“渲染层”这个概念。
 
-**Renderers manage how a React tree turns into the underlying platform calls.**
+**渲染层管理如何将一棵React树变成底层平台调用。**
 
-Renderers are also located in [`packages/`](https://github.com/facebook/react/tree/master/packages/):
+渲染层同样位于[`packages/`](https://github.com/facebook/react/tree/master/packages/)：
 
-* [React DOM Renderer](https://github.com/facebook/react/tree/master/packages/react-dom) renders React components to the DOM. It implements [top-level `ReactDOM` APIs](/docs/react-dom.html) and is available as [`react-dom`](https://www.npmjs.com/package/react-dom) npm package. It can also be used as standalone browser bundle called `react-dom.js` that exports a `ReactDOM` global.
-* [React Native Renderer](https://github.com/facebook/react/tree/master/packages/react-native-renderer) renders React components to native views. It is used internally by React Native.
-* [React Test Renderer](https://github.com/facebook/react/tree/master/packages/react-test-renderer) renders React components to JSON trees. It is used by the [Snapshot Testing](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html) feature of [Jest](https://facebook.github.io/jest) and is available as [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) npm package.
+* [React DOM Renderer](https://github.com/facebook/react/tree/master/packages/react-dom)将React组件渲染成DOM。
+它实现了全局[`ReactDOM`API](/docs/react-dom.html)，这在npm上作为[`react-dom`](https://www.npmjs.com/package/react-dom)包。这也可以作为单独浏览器版本使用，称为 `react-dom.js`，导出一个`ReactDOM`的全局对象.
+* [React Native Renderer](https://github.com/facebook/react/tree/master/packages/react-native-renderer)将React组件渲染为原生视图。这在React Native内部使用。 
+* [React Test Renderer](https://github.com/facebook/react/tree/master/packages/react-test-renderer)将React组件渲染为JSON树。这用于 [Jest](https://facebook.github.io/jest)的[快照测试](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html)特性。这在npm上作为[react-test-renderer](https://www.npmjs.com/package/react-test-renderer)包。
 
-The only other officially supported renderer is [`react-art`](https://github.com/facebook/react/tree/master/packages/react-art). It used to be in a separate [GitHub repository](https://github.com/reactjs/react-art) but we moved it into the main source tree for now.
+另外一个官方支持的渲染层的是[`react-art`](https://github.com/facebook/react/tree/master/packages/react-art)。它曾经是一个独立的[GitHub仓库](https://github.com/reactjs/react-art)，但是现在我们将此加入了主源代码树。
 
->**Note:**
+>**注意:**
 >
->Technically the [`react-native-renderer`](https://github.com/facebook/react/tree/master/packages/react-native-renderer) is a very thin layer that teaches React to interact with React Native implementation. The real platform-specific code managing the native views lives in the [React Native repository](https://github.com/facebook/react-native) together with its components.
+>严格说来，[`react-native-renderer`](https://github.com/facebook/react/tree/master/packages/react-native-renderer)是一个非常薄的层，这实现了React和React Native的连接。管理着原生视图的真正的平台特定的代码和它的组件都在[React Native repository](https://github.com/facebook/react-native)这里。
 
-### Reconcilers {#reconcilers}
+### reconcilers {#reconcilers}
 
-Even vastly different renderers like React DOM and React Native need to share a lot of logic. In particular, the [reconciliation](/docs/reconciliation.html) algorithm should be as similar as possible so that declarative rendering, custom components, state, lifecycle methods, and refs work consistently across platforms.
+即便React DOM和React Native渲染层区别很大，他们也需要共享一些逻辑。特别是[reconciliation](/docs/reconciliation.html)算法需要尽可能相似，这样可以让声明渲染，自定义组件，state，生命周期方法和refs，保持跨平台工作一致。
 
-To solve this, different renderers share some code between them. We call this part of React a "reconciler". When an update such as `setState()` is scheduled, the reconciler calls `render()` on components in the tree and mounts, updates, or unmounts them.
+为了解决这个问题，不同的渲染层彼此共享一些代码。我们称React这一部分为"reconciler"。当安排了类似于`setState()`这样的更新，reconciler会调用树中组件上的 `render()`，然后决定装载，更新或者是卸载它们。
 
-Reconcilers are not packaged separately because they currently have no public API. Instead, they are exclusively used by renderers such as React DOM and React Native.
+Reconciler没有单独的包，因为他们暂时没有公共API。相反，它们被如React DOM和React Native的渲染层排除在外。
 
-### Stack Reconciler {#stack-reconciler}
+### Stack reconciler {#stack-reconciler}
 
-The "stack" reconciler is the implementation powering React 15 and earlier. We have since stopped using it, but it is documented in detail in the [next section](/docs/implementation-notes.html).
+"stack" reconciler是React 15及更早的使用方案。虽然我们已经停止了对它的使用, 但是这在[下一章节](/docs/implementation-notes.html)有详细的文档。
 
-### Fiber Reconciler {#fiber-reconciler}
+### Fiber reconciler {#fiber-reconciler}
 
-The "fiber" reconciler is a new effort aiming to resolve the problems inherent in the stack reconciler and fix a few long-standing issues. It has been the default reconciler since React 16.
+"fiber" reconciler是一个新尝试，致力于解决stack reconciler中固有的问题，同时解决一些由来已久的问题。这个从React 16开始变成了默认的reconciler。
 
-Its main goals are:
+它的主要目标是：
 
-* Ability to split interruptible work in chunks.
-* Ability to prioritize, rebase and reuse work in progress.
-* Ability to yield back and forth between parents and children to support layout in React.
-* Ability to return multiple elements from `render()`.
-* Better support for error boundaries.
+* 能够剔除区块中可中断工作。
+* 能够在运行中，划分优先顺序，重建和复用工作。
+* 能够在父元素和子元素之间来回提供支持React中的布局。
+* 能够从`render()`中返回多个元素。
+* 更好地支持错误边界。
 
-You can read more about React Fiber Architecture [here](https://github.com/acdlite/react-fiber-architecture) and [here](https://medium.com/react-in-depth/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react-e1c04700ef6e). While it has shipped with React 16, the async features are not enabled by default yet.
+你可以在[这里](https://github.com/acdlite/react-fiber-architecture)和[这里](https://medium.com/react-in-depth/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react-e1c04700ef6e)，深入了解React Fiber架构。
+虽然这已经再React 16中启用了，但是async特性还没有默认启用。
 
-Its source code is located in [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler).
+他的代码在[`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler)。
 
-### Event System {#event-system}
+### 事件系统 {#event-system}
 
-React implements a synthetic event system which is agnostic of the renderers and works both with React DOM and React Native. Its source code is located in [`packages/events`](https://github.com/facebook/react/tree/master/packages/events).
+React实现一个合成事件，这与渲染层无关，适用于React DOM和React Native。他的源码在[`packages/events`](https://github.com/facebook/react/tree/master/packages/events)。
 
-There is a [video with a deep code dive into it](https://www.youtube.com/watch?v=dRo_egw7tBc) (66 mins).
+这个是一个[深入研究事件系统代码的视频](https://www.youtube.com/watch?v=dRo_egw7tBc) （66分钟）。
 
-### What Next? {#what-next}
+### 下一个是什么？ {#what-next}
 
-Read the [next section](/docs/implementation-notes.html) to learn about the pre-React 16 implementation of reconciler in more detail. We haven't documented the internals of the new reconciler yet.
+查看下一章节去学习reconciler在pre-React 16中的实现。我们还没有给新的reconciler的内部原理写文档。
