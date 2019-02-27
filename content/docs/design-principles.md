@@ -10,7 +10,7 @@ redirect_from:
 
 We wrote this document so that you have a better idea of how we decide what React does and what React doesn't do, and what our development philosophy is like. While we are excited to see community contributions, we are not likely to choose a path that violates one or more of these principles.
 
-这篇文章是为了让大家对我们如何决定React做什么和不做什么，以及我们的开发理念有更好的了解。尽管我们非常欢迎来自社区的贡献，但我们不太愿意看到违反这些理念的做法。
+这篇文章是为了让大家对我们如何决定React做什么和不做什么，以及对我们的开发理念有更好的了解。尽管我们非常欢迎来自社区的贡献，但我们不太愿意看到违反这些理念的做法。
 
 >**Note:**
 >
@@ -24,19 +24,19 @@ We wrote this document so that you have a better idea of how we decide what Reac
 
 The key feature of React is composition of components. Components written by different people should work well together. It is important to us that you can add functionality to a component without causing rippling changes throughout the codebase.
 
-React的重要特性是组件之间的组合。不同开发者写的组件应该一起正常运行。大家给一个组件添加功能，而不对整个代码库造成涟漪似的变化，这对我们很重要。
+组件之间的组合是 React 的重要特征。不同开发者写的组件应该可以一起正常执行。给一个组件添加功能，而不会对整个代码库造成涟漪似的变化，这对我们很重要。
 
 For example, it should be possible to introduce some local state into a component without changing any of the components using it. Similarly, it should be possible to add some initialization and teardown code to any component when necessary.
 
-比如，需要可以在不影响任何使用它的组件的情况下引入一些本地 state。类似的，在必要的情况下可以在任何组件里添加一些初始化和销毁的代码。
+比如，应该可以在不影响任何使用它的组件的情况下，将一些 local state 引入该组件。类似的，在必要的情况下可以在任何组件里添加一些初始化和销毁的代码。
 
 There is nothing "bad" about using state or lifecycle methods in components. Like any powerful feature, they should be used in moderation, but we have no intention to remove them. On the contrary, we think they are integral parts of what makes React useful. We might enable [more functional patterns](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State) in the future, but both local state and lifecycle methods will be a part of that model.
 
-在组件中使用 state 或者生命周期函数没什么不好。跟所有强大的特性一样，需要适度使用它们，我们并不打算移除他们。相反，我们认为他们是React之所以好用的一部分。我们未来也许会开启[更多函数模式](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State)，但本地 state 和生命周期函数都会在里面。
+在组件中使用 state 或者生命周期函数没什么不好。跟所有强大的特性一样，应该适度使用它们，我们并不打算移除他们。相反，我们认为他们是React之所以好用的一部分。我们未来也许会启用[更多函数模式](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State)，但 local state 和生命周期函数都会在里面。
 
 Components are often described as "just functions" but in our view they need to be more than that to be useful. In React, components describe any composable behavior, and this includes rendering, lifecycle, and state. Some external libraries like [Relay](https://facebook.github.io/relay/) augment components with other responsibilities such as describing data dependencies. It is possible that those ideas might make it back into React too in some form.
 
-人们常常认为组件“只是方法”，但我们看来组件要好用的话，需要的不止这些。在React中，组件描述了任何可组合的行为，包含渲染、生命周期和 state。一些类似[Relay](https://facebook.github.io/relay/)的外部库给组件带来了其他增强功能，比如描述数据之间的依赖关系。有可能这些做法会以某种形式回到React中。
+人们常常认为组件“只是函数”，但我们看来组件要好用的话，需要的不止这些。在React中，组件描述了任何可组合的行为，包含渲染、生命周期和 state。一些类似[Relay](https://facebook.github.io/relay/)的外部库给组件带来了其他增强功能，比如描述数据之间的依赖关系。有可能这些做法会以某种形式回到React中。
 
 ### 共用抽象 {#common-abstraction}
 
@@ -46,11 +46,11 @@ In general we [resist adding features](https://www.youtube.com/watch?v=4anAwXYqL
 
 For example, if React didn't provide support for local state or lifecycle methods, people would create custom abstractions for them. When there are multiple abstractions competing, React can't enforce or take advantage of the properties of either of them. It has to work with the lowest common denominator.
 
-比如，如果React不支持本地 state 或者生命周期函数，大家会为此创建自己的抽象。当有多种抽象竞争的时候，React不能强制使用或利用这些抽象中的任何一个。React必须选择最基本的共同点。
+比如，如果 React 不支持 local state 或者生命周期函数，大家会为此创建自己的抽象。当有多种抽象竞争的时候，React 不能强制使用或利用这些抽象中的任何一个。React 必须选择最基本的共同点。
 
 This is why sometimes we add features to React itself. If we notice that many components implement a certain feature in incompatible or inefficient ways, we might prefer to bake it into React. We don't do it lightly. When we do it, it's because we are confident that raising the abstraction level benefits the whole ecosystem. State, lifecycle methods, cross-browser event normalization are good examples of this.
 
-这就是为什么我们增加React的特性。如果我们发现很多组件以不兼容或者不高效的方式实现了某些特性，我们会倾向在React中实现它。我们轻易不这样做，只有我们非常确定提高抽象层级有助于整个生态系统时我们才会这样做，State、生命周期函数、跨浏览器事件的正规化都是很好的范例。
+这就是我们增加 React 特性的原因。如果我们发现很多组件以不兼容或者不高效的方式实现了某些特性，我们会倾向在 React 中实现它。我们轻易不这样做，只有我们非常确定提高抽象层级有助于整个生态系统时我们才会这样做，State、生命周期函数、跨浏览器事件的正规化都是很好的范例。
 
 We always discuss such improvement proposals with the community. You can find some of those discussions by the ["big picture"](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"Type:+Big+Picture") label on the React issue tracker.
 
@@ -60,7 +60,7 @@ We always discuss such improvement proposals with the community. You can find so
 
 React is pragmatic. It is driven by the needs of the products written at Facebook. While it is influenced by some paradigms that are not yet fully mainstream such as functional programming, staying accessible to a wide range of developers with different skills and experience levels is an explicit goal of the project.
 
-React是务实的，Facebook的产品需求驱使它这样。尽管React受一些目前还非主流的编程思想比如函数式编程的影响，这个项目的一个明确目标是广泛地接触具有不同技能和经验的开发者。
+React 是务实的，Facebook 的产品需求驱使它这样。尽管 React 受一些目前还非主流的编程思想比如函数式编程的影响，这个项目的一个明确目标是广泛地接触具有不同技能和经验的开发者。
 
 If we want to deprecate a pattern that we don't like, it is our responsibility to consider all existing use cases for it and [educate the community about the alternatives](/blog/2016/07/13/mixins-considered-harmful.html) before we deprecate it. If some pattern that is useful for building apps is hard to express in a declarative way, we will [provide an imperative API](/docs/more-about-refs.html) for it. If we can't figure out a perfect API for something that we found necessary in many apps, we will [provide a temporary subpar working API](/docs/legacy-context.html) as long as it is possible to get rid of it later and it leaves the door open for future improvements.
 
@@ -70,7 +70,7 @@ If we want to deprecate a pattern that we don't like, it is our responsibility t
 
 We value API stability. At Facebook, we have more than 50 thousand components using React. Many other companies, including [Twitter](https://twitter.com/) and [Airbnb](https://www.airbnb.com/), are also heavy users of React. This is why we are usually reluctant to change public APIs or behavior.
 
-我们重视 API 的稳定性。在 Facebook，我们有超过5万多个组件在使用 React。很多其他公司，包括[Twitter](https://twitter.com/) 和 [Airbnb](https://www.airbnb.com/)也是React的重度用户。这就是我们一般不愿意变更公共API或行为的原因。
+我们重视 API 的稳定性。在 Facebook，我们有超过5万多个组件在使用 React。很多其他公司，包括[Twitter](https://twitter.com/) 和 [Airbnb](https://www.airbnb.com/)也是 React 的重度用户。这就是我们一般不愿意变更公共API或行为的原因。
 
 However we think stability in the sense of "nothing changes" is overrated. It quickly turns into stagnation. Instead, we prefer the stability in the sense of "It is heavily used in production, and when something changes, there is a clear (and preferably automated) migration path."
 
@@ -98,11 +98,11 @@ For example, we added a [warning about unknown DOM props](/warnings/unknown-prop
 
 When we add a deprecation warning, we keep it for the rest of the current major version, and [change the behavior in the next major version](/blog/2016/02/19/new-versioning-scheme.html). If there is a lot of repetitive manual work involved, we release a [codemod](https://www.youtube.com/watch?v=d0pOgY8__JM) script that automates most of the change. Codemods enable us to move forward without stagnation in a massive codebase, and we encourage you to use them as well.
 
-我们添加废弃警告时会保留到当前大版本，在[下一次大版本中改变行为](/blog/2016/02/19/new-versioning-scheme.html)。如果这其中设计到大量重复性的人力工作，我们会发布一个[代码更改](https://www.youtube.com/watch?v=d0pOgY8__JM)脚本自动化大部分的改动。代码更改脚本使我们能够在庞大的代码库中继续前行，我们也推荐大家使用。
+我们添加废弃警告时会保留到当前大版本，在[下一次大版本中改变行为](/blog/2016/02/19/new-versioning-scheme.html)。如果这其中设计到大量重复性的人力工作，我们会发布一个[代码更改](https://www.youtube.com/watch?v=d0pOgY8__JM)脚本自动化大部分的改动。codemods 使我们能够在庞大的代码库中继续前行，我们也推荐大家使用。
 
 You can find the codemods that we released in the [react-codemod](https://github.com/reactjs/react-codemod) repository.
 
-你可以在[react-codemod](https://github.com/reactjs/react-codemod)仓库中找到我们发布的代码更改脚本。
+你可以在[react-codemod](https://github.com/reactjs/react-codemod)仓库中找到我们发布的codemods。
 
 ### 互操作 {#interoperability}
 
@@ -112,25 +112,25 @@ We place high value in interoperability with existing systems and gradual adopti
 
 This is why React provides escape hatches to work with mutable models, and tries to work well together with other UI libraries. You can wrap an existing imperative UI into a declarative component, and vice versa. This is crucial for gradual adoption.
 
-这就是React提供紧急出口的原因：让不同的模型协同工作，让不同的UI库协同工作。你可以把一个已有的命令式UI封装成声明式的组件，反过来也可以。这对渐进采用而言至关重要。
+这就是 React 提供紧急出口的原因：让不同的模型协同工作，让不同的UI库协同工作。你可以把一个已有的命令式UI封装成声明式的组件，反过来也可以。这对渐进采用而言至关重要。
 
 ### 调度 {#scheduling}
 
 Even when your components are described as functions, when you use React you don't call them directly. Every component returns a [description of what needs to be rendered](/blog/2015/12/18/react-components-elements-and-instances.html#elements-describe-the-tree), and that description may include both user-written components like `<LikeButton>` and platform-specific components like `<div>`. It is up to React to "unroll" `<LikeButton>` at some point in the future and actually apply changes to the UI tree according to the render results of the components recursively.
 
-即便你的组件以 function 的方式声明，在 React 中你并不会直接调用它们。每个组件返回一个该渲染什么的描述，该描述会包含开发者写的组件如 <LikeButton> 和 平台特定的组件如 <div> 。由React决定在未来的某个时间点展开 <LikeButton>，并根据组件的渲染结果递归地把这些变更实际应用到 UI 树上。
+即便你的组件以 function 的方式声明，在 React 中你并不会直接调用它们。每个组件返回一个该渲染什么的描述，该描述会包含开发者写的组件如 <LikeButton> 和 平台特定的组件如 <div> 。由 React 决定在未来的某个时间点展开 <LikeButton>，并根据组件的渲染结果递归地把这些变更实际应用到 UI 树上。
 
 This is a subtle distinction but a powerful one. Since you don't call that component function but let React call it, it means React has the power to delay calling it if necessary. In its current implementation React walks the tree recursively and calls render functions of the whole updated tree during a single tick. However in the future it might start [delaying some updates to avoid dropping frames](https://github.com/facebook/react/issues/6170).
 
-这是个很小的区别但很强大。因为你不需要调用组件方法而是让React调用它，这意味着如果必要React可以延迟调用。在 React 当前的实现中，React 在单个 tick 周期中递归地走完这棵树，然后调用整个更新后树的渲染方法。但是以后React 可能会[延迟一些更新操作来防止掉帧](https://github.com/facebook/react/issues/6170)。
+这是个很小的区别但很强大。因为你不需要调用组件方法而是让 React 调用它，这意味着如果必要 React 可以延迟调用。在 React 当前的实现中，React 在单个 tick 周期中递归地走完这棵树，然后调用整个更新后树的渲染方法。但是以后 React 可能会[延迟一些更新操作来防止掉帧](https://github.com/facebook/react/issues/6170)。
 
 This is a common theme in React design. Some popular libraries implement the "push" approach where computations are performed when the new data is available. React, however, sticks to the "pull" approach where computations can be delayed until necessary.
 
-这在React的设计中很常见。有一些流行的库实现了“推”模式，即当新数据到达时再计算。然而 React 坚持“拉”模式，即延迟计算直到必须。
+这在 React 的设计中很常见。有一些流行的库实现了“推”模式，即当新数据到达时再计算。然而 React 坚持“拉”模式，即延迟计算直到必须。
 
 React is not a generic data processing library. It is a library for building user interfaces. We think that it is uniquely positioned in an app to know which computations are relevant right now and which are not.
 
-React不是一个常规的数据处理库，它是开发用户界面的库。我们认为 React 在一个应用中的位置很独特，它知道当前哪些计算是相关的，哪些不是。
+React 不是一个常规的数据处理库，它是开发用户界面的库。我们认为 React 在一个应用中的位置很独特，它知道当前哪些计算是相关的，哪些不是。
 
 If something is offscreen, we can delay any logic related to it. If data is arriving faster than the frame rate, we can coalesce and batch updates. We can prioritize work coming from user interactions (such as an animation caused by a button click) over less important background work (such as rendering new content just loaded from the network) to avoid dropping frames.
 
@@ -146,11 +146,11 @@ The control over scheduling would be harder for us to gain if we let the user di
 
 It is a key goal for React that the amount of the user code that executes before yielding back into React is minimal. This ensures that React retains the capability to schedule and split work in chunks according to what it knows about the UI.
 
-React的一个关键目标是在把控制权转交给React之前执行的用户代码量最少。这确保React保持调度的能力，并根据它所知道的UI的情况把工作切分成小块处理。
+React 的一个关键目标是在把控制权转交给React之前执行的用户代码量最少。这确保React保持调度的能力，并根据它所知道的UI的情况把工作切分成小块处理。
 
 There is an internal joke in the team that React should have been called "Schedule" because React does not want to be fully "reactive".
 
-在团队内部有个笑话，React本该叫做“调度”因为React不想完全变得“（reactive）反应式”。
+在团队内部有个笑话，React 本该叫做“调度”因为 React 不想完全变得“（reactive）反应式”。
 
 ### 开发者体验 {#developer-experience}
 
@@ -160,11 +160,11 @@ Providing a good developer experience is important to us.
 
 For example, we maintain [React DevTools](https://github.com/facebook/react-devtools) which let you inspect the React component tree in Chrome and Firefox. We have heard that it brings a big productivity boost both to the Facebook engineers and to the community.
 
-例如，我们维护了[React 开发工具](https://github.com/facebook/react-devtools)，它让大家在 Chrome 和 Firefox 浏览器中可以检查React组件树。我们听说它大幅提高了 Facebook 的工程师和社区的生产效率。
+例如，我们维护了[React 开发工具](https://github.com/facebook/react-devtools)，它让大家在 Chrome 和 Firefox 浏览器中可以检查 React 组件树。我们听说它大幅提高了 Facebook 的工程师和社区的生产效率。
 
 We also try to go an extra mile to provide helpful developer warnings. For example, React warns you in development if you nest tags in a way that the browser doesn't understand, or if you make a common typo in the API. Developer warnings and the related checks are the main reason why the development version of React is slower than the production version.
 
-我们还提供了有用的开发者警告。比如如果你以浏览器不理解的方式嵌套标签或者你打了API中常见的错别字，React会警告你。开发者警告和相关的检查导致了React的开发版本比生产版本速度慢。
+我们还提供了有用的开发者警告。比如如果你以浏览器不理解的方式嵌套标签或者你打了API中常见的错别字，React会警告你。开发者警告和相关的检查导致了 React 的开发版本比生产版本速度慢。
 
 The usage patterns that we see internally at Facebook help us understand what the common mistakes are, and how to prevent them early. When we add new features, we try to anticipate the common mistakes and warn about them.
 
@@ -190,7 +190,7 @@ If the state is wrong, you know that the problem is caused by one of the `setSta
 
 If the props are wrong, you can traverse the tree up in the inspector, looking for the component that first "poisoned the well" by passing bad props down.
 
-如果 prop s错误，你可以在检查器中沿着树向上排查，查找到第一个因为向下传递了错误的 props 而“污染了这口井”的组件。
+如果 props 错误，你可以在检查器中沿着树向上排查，查找到第一个因为向下传递了错误的 props 而“污染了这口井”的组件。
 
 This ability to trace any UI to the data that produced it in the form of current props and state is very important to React. It is an explicit design goal that state is not "trapped" in closures and combinators, and is available to React directly.
 
@@ -254,7 +254,7 @@ In a massive codebase like Facebook, being able to search for uses of specific A
 
 Optimizing for search is also important because of our reliance on [codemods](https://www.youtube.com/watch?v=d0pOgY8__JM) to make breaking changes. We want it to be easy and safe to apply vast automated changes across the codebase, and unique verbose names help us achieve this. Similarly, distinctive names make it easy to write custom [lint rules](https://github.com/yannickcr/eslint-plugin-react) about using React without worrying about potential false positives.
 
-针对搜索优化很重要，因为我们依赖[代码变更脚本](https://www.youtube.com/watch?v=d0pOgY8__JM)做不兼容的变更。我们希望非常容易、安全地在代码库中应用大量自动化变更，独特冗长的名字帮助了我们。类似地，独特的命名使得编写自定义 React 用法的[提示规则](https://github.com/yannickcr/eslint-plugin-react)变得很容易，无需担心潜在的错误匹配。
+针对搜索优化很重要，因为我们依赖[codemods](https://www.youtube.com/watch?v=d0pOgY8__JM)做不兼容的变更。我们希望非常容易、安全地在代码库中应用大量自动化变更，独特冗长的名字帮助了我们。类似地，独特的命名使得编写自定义 React 用法的[提示规则](https://github.com/yannickcr/eslint-plugin-react)变得很容易，无需担心潜在的错误匹配。
 
 [JSX](/docs/introducing-jsx.html) plays a similar role. While it is not required with React, we use it extensively at Facebook both for aesthetic and pragmatic reasons.
 
@@ -262,7 +262,7 @@ Optimizing for search is also important because of our reliance on [codemods](ht
 
 In our codebase, JSX provides an unambiguous hint to the tools that they are dealing with a React element tree. This makes it possible to add build-time optimizations such as [hoisting constant elements](https://babeljs.io/docs/en/babel-plugin-transform-react-constant-elements/), safely lint and codemod internal component usage, and [include JSX source location](https://github.com/facebook/react/pull/6771) into the warnings.
 
-在我们的代码库中，JSX 给和 React 元素树打交道的工具提供了明确的提示。这使得构建时优化成为可能，比如[提升常量元素](https://babeljs.io/docs/en/babel-plugin-transform-react-constant-elements/)、安全地进行代码提示、使用脚本变更内部组件用法、在代码警告中[包含JSX源码定位](https://github.com/facebook/react/pull/6771).
+在我们的代码库中，JSX 给和 React 元素树打交道的工具提供了明确的提示。这使得构建时优化成为可能，比如[提升常量元素](https://babeljs.io/docs/en/babel-plugin-transform-react-constant-elements/)、安全地进行代码提示、codemod 内部组件用法、在代码警告中[包含JSX源码定位](https://github.com/facebook/react/pull/6771).
 
 ### 内部测试 {#dogfooding}
 
@@ -272,7 +272,7 @@ We try our best to address the problems raised by the community. However we are 
 
 Heavy internal usage gives us the confidence that React won't disappear tomorrow. React was created at Facebook to solve its problems. It brings tangible business value to the company and is used in many of its products. [Dogfooding](https://en.wikipedia.org/wiki/Eating_your_own_dog_food) it means that our vision stays sharp and we have a focused direction going forward.
 
-内部的重度使用使我们坚信React不会凭空消失。Facebook 创建了 React 是来解决它的问题的。React 给 Facebook 带来了现实的商业价值，并且在很多产品中使用。在内部测试意味着我们的目光保持敏锐，有着前进的重点方向。
+内部的重度使用使我们坚信 React 不会凭空消失。Facebook 创建了 React 是来解决它的问题的。React 给 Facebook 带来了现实的商业价值，并且在很多产品中使用。在内部测试意味着我们的目光保持敏锐，有着前进的重点方向。
 
 This doesn't mean that we ignore the issues raised by the community. For example, we added support for [web components](/docs/webcomponents.html) and [SVG](https://github.com/facebook/react/pull/6243) to React even though we don't rely on either of them internally. We are actively [listening to your pain points](https://github.com/facebook/react/issues/2686) and [address them](/blog/2016/07/11/introducing-reacts-error-code-system.html) to the best of our ability. The community is what makes React special to us, and we are honored to contribute back.
 
@@ -280,8 +280,8 @@ This doesn't mean that we ignore the issues raised by the community. For example
 
 After releasing many open source projects at Facebook, we have learned that trying to make everyone happy at the same time produced projects with poor focus that didn't grow well. Instead, we found that picking a small audience and focusing on making them happy brings a positive net effect. That's exactly what we did with React, and so far solving the problems encountered by Facebook product teams has translated well to the open source community.
 
-在 Facebook 发布了很多开源的项目之后，我们学到了让大家都开心的做法会导致项目没有重点，成长不起来。相反，我们发现选择一小部分群体，重点关注如何使他们开心带来了积极的净效应。这正是React的做法，到目前为止解决Facebook 产品团队的问题很好的传递到了开源社区。
+在 Facebook 发布了很多开源的项目之后，我们学到了让大家都开心的做法会导致项目没有重点，成长不起来。相反，我们发现选择一小部分群体，重点关注如何使他们开心带来了积极的净效应。这正是 React 的做法，到目前为止解决 Facebook 产品团队的问题很好的传递到了开源社区。
 
 The downside of this approach is that sometimes we fail to give enough focus to the things that Facebook teams don't have to deal with, such as the "getting started" experience. We are acutely aware of this, and we are thinking of how to improve in a way that would benefit everyone in the community without making the same mistakes we did with open source projects before.
 
-这种做法的不好之处是有时对于Facebook团队无需关心的事，比如“起步”的体验，我们不能够给予足够的重视。我们已经觉察到了，我们正在着手思考如何做才能使社区里的每个人都受益，不重蹈以前开源项目的覆辙。
+这种做法的不好之处是有时对于 Facebook 团队无需关心的事，比如“起步”的体验，我们不能够给予足够的重视。我们已经觉察到了，我们正在着手思考如何做才能使社区里的每个人都受益，不重蹈以前开源项目的覆辙。
