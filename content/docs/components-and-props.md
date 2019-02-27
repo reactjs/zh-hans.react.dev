@@ -20,7 +20,7 @@ next: state-and-lifecycle.html
 
 组件，从概念上类似于 JavaScript 函数。它接受任意的入参（即 “props”），并返回用于描述页面展示内容的 React 元素。
 
-## 函数式组件与 class 组件 {#function-and-class-components}
+## 函数组件与 class 组件 {#function-and-class-components}
 
 定义组件最简单的方式就是编写 JavaScript 函数：
 
@@ -30,7 +30,7 @@ function Welcome(props) {
 }
 ```
 
-该函数是一个有效的 React 组件，因为它接收唯一带有数据的 “props”（代表属性）对象与并返回一个 React 元素。这类组件被称为“函数式组件”，因为它本质上就是 JavaScript 函数。
+该函数是一个有效的 React 组件，因为它接收唯一带有数据的 “props”（代表属性）对象与并返回一个 React 元素。这类组件被称为“函数组件”，因为它本质上就是 JavaScript 函数。
 
 你同时还可以使用 [ES6 的 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) 来定义组件：
 
@@ -44,7 +44,7 @@ class Welcome extends React.Component {
 
 上述两个组件在 React 里是等效的。
 
-我们将在[下一章节](/docs/state-and-lifecycle.html)中讨论关于 class 的额外特性。在那之前，为了保持示例简单明了，将使用函数式组件。
+我们将在[下一章节](/docs/state-and-lifecycle.html)中讨论关于 class 的额外特性。在那之前，为了保持示例简单明了，将使用函数组件。
 
 ## 渲染组件 {#rendering-a-component}
 
@@ -76,7 +76,7 @@ ReactDOM.render(
 );
 ```
 
-[在 CodePen 上试试](codepen://components-and-props/rendering-a-component)
+[在 CodePen 上尝试](codepen://components-and-props/rendering-a-component)
 
 让我们来回顾一下这个例子中发生了什么：
 
@@ -89,7 +89,7 @@ ReactDOM.render(
 >
 >React 会将以小写字母开头的组件视为原生 DOM 标签。例如，`<div />` 代表 HTML 的 div 标签，而 `<Welcome />` 则代表一个组件，并且需在作用域内使用 `Welcome`。
 >
->你可以在[这里](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized)了解更多关于此约定的原因。
+>你可以在[深入 JSX](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized)中了解更多关于此规范的原因。
 
 ## 组合组件 {#composing-components}
 
@@ -118,7 +118,7 @@ ReactDOM.render(
 );
 ```
 
-[在 CodePen 上试试](codepen://components-and-props/composing-components)
+[在 CodePen 上尝试](codepen://components-and-props/composing-components)
 
 通常来说，每个新的 React 应用程序的顶层组件都是 `App` 组件。但是，如果你将 React 集成到现有的应用程序中，你可能需要使用像 `Button` 这样的小组件，并自下而上地将这类组件逐步应用到视图层的每一处。
 
@@ -152,7 +152,7 @@ function Comment(props) {
 }
 ```
 
-[在 CodePen 上试试](codepen://components-and-props/extracting-components)
+[在 CodePen 上尝试](codepen://components-and-props/extracting-components)
 
 该组件用于描述一个社交媒体网站上的评论功能，它接收 `author`（对象），`text` （字符串）以及 `date`（日期）作为 props。
 
@@ -231,13 +231,13 @@ function Comment(props) {
 }
 ```
 
-[在 CodePen 上试用](codepen://components-and-props/extracting-components-continued)
+[在 CodePen 上尝试](codepen://components-and-props/extracting-components-continued)
 
 最初看上去，提取组件可能是一件繁重的工作，但是，在大型应用中，构建可复用组件库是完全值得的。根据经验来看，如果 UI 中有一部分被多次使用（`Button`，`Panel`，`Avatar`），或者组件本身就足够复杂（`App`，`FeedStory`，`Comment`），那么它就是一个可复用组件的候选项。
 
 ## Props 的只读性 {#props-are-read-only}
 
-组件无论是使用[函数式声明还是通过 class 声明](#function-and-class-components)，都决不能修改自身的 props。来看下这个 `sum` 函数：
+组件无论是使用[函数声明还是通过 class 声明](#function-and-class-components)，都决不能修改自身的 props。来看下这个 `sum` 函数：
 
 ```js
 function sum(a, b) {
@@ -259,4 +259,4 @@ React 非常灵活，但它也有一个严格的规则：
 
 **所有 React 组件都必须像纯函数一样保护它们的 props 不被更改。**
 
-当然，应用程序的 UI 是动态的，并会伴随着时间的推移而变化。在[下一章节](/docs/state-and-lifecycle.html)中，我们将介绍一种新的概念，称之为 “state”。State 可以在不违反上述规则的情况下，允许 React 组件随用户操作、网络响应或者其他变化而动态更改输出内容。
+当然，应用程序的 UI 是动态的，并会伴随着时间的推移而变化。在[下一章节](/docs/state-and-lifecycle.html)中，我们将介绍一种新的概念，称之为 “state”。在不违反上述规则的情况下，state 允许 React 组件随用户操作、网络响应或者其他变化而动态更改输出内容。
