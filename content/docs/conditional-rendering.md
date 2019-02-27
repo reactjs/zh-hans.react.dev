@@ -186,7 +186,7 @@ render() {
 }
 ```
 
-就像在 JavaScript 中一样，你可以根据团队的习惯来选择可读性更高的代码风格。需要注意的是，如果条件变得过于复杂，那你应该考虑如何[提取组件](/docs/components-and-props.html#extracting-components)了。
+就像在 JavaScript 中一样，你可以根据团队的习惯来选择可读性更高的代码风格。需要注意的是，如果条件变得过于复杂，那你应该考虑如何[提取组件](/docs/components-and-props.html#extracting-components)。
 
 ### 阻止组件渲染
 
