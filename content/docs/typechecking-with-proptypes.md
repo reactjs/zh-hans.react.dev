@@ -32,7 +32,7 @@ Greeting.propTypes = {
 
 `PropTypes` 提供一系列验证器，可用于确保组件接收到的数据类型是有效的。在本例中, 我们使用了 `PropTypes.string`。当传入的 `prop` 值类型不正确时，JavaScript 控制台将会显示警告。出于性能方面的考虑，`propTypes` 仅在开发模式下进行检查。
 
-### Prop 类型 {#proptypes}
+### PropTypes {#proptypes}
 
 以下提供了使用不同验证器的例子：
 
