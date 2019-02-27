@@ -11,49 +11,48 @@ redirect_from:
 
 这一部分是关于 [stack reconciler](/docs/codebase-overview.html#stack-reconciler) 的一些实现说明。
 
-这部分具有很强的技术性，需要对 React 公开应用程序接口，以及 React 是如何分为 core，renders 和 reconciler 的具有较强的理解。如果你对源码还不是很熟悉，请先阅读[源码总览](/docs/codebase-overview.html)。
+这部分具有很强的技术性，需要对 React 公共应用程序接口，以及 React 是如何分为 core，renders 和 reconciler 的具有较强的理解。如果你对源码还不是很熟悉，请先阅读[源码总览](/docs/codebase-overview.html)。
 
 这部分还要求了解[组件，组件的实例，以及元素之间的不同](/blog/2015/12/18/react-components-elements-and-instances.html)。
 
 Stack reconciler 是在 React 15 以及更早的版本中被采用。它的源码位于 [src/renderers/shared/stack/reconciler](https://github.com/facebook/react/tree/15-stable/src/renderers/shared/stack/reconciler)。
 
-### Video: Building React from Scratch {#video-building-react-from-scratch}
 ### 视频：从零开始构建 React {#video-building-react-from-scratch}
 
 [Paul O'Shannessy](https://twitter.com/zpao) 讲解的 [从零开始构建 React](https://www.youtube.com/watch?v=_MAD4Oly9yg) 对本文档有较大的启发。
 
 本文档和他的讲解是对于真实源码的简化， 所以你能通过熟悉它们来对代码有更好的理解。
 
-### Overview {#overview}
+### 总览 {#overview}
 
-The reconciler itself doesn't have a public API. [Renderers](/docs/codebase-overview.html#stack-renderers) like React DOM and React Native use it to efficiently update the user interface according to the React components written by the user.
+Reconciler 本身没有公共应用程序接口。[Renderers](/docs/codebase-overview.html#stack-renderers) 如 React DOM 和 React Native 使用它并根据用户写的 React 组件来高效地更新用户界面。
 
-### Mounting as a Recursive Process {#mounting-as-a-recursive-process}
+### 挂载是递归过程 {#mounting-as-a-recursive-process}
 
-Let's consider the first time you mount a component:
+考虑首次挂载组件。
 
 ```js
 ReactDOM.render(<App />, rootEl);
 ```
 
-React DOM will pass `<App />` along to the reconciler. Remember that `<App />` is a React element, that is, a description of *what* to render. You can think about it as a plain object:
+React DOM 把 `<App />` 传递给 reconciler。`<App />` 是 React 元素，也就是对于用来渲染的*事物*的描述。可以把它当作朴素的对象：
 
 ```js
 console.log(<App />);
 // { type: App, props: {} }
 ```
 
-The reconciler will check if `App` is a class or a function.
+Reconciler 校验 `App` 是一个类或是一个函数。
 
-If `App` is a function, the reconciler will call `App(props)` to get the rendered element.
+如果 `App` 是函数，那么 reconciler 会调用 `App(props)` 来获取渲染元素。
 
-If `App` is a class, the reconciler will instantiate an `App` with `new App(props)`, call the `componentWillMount()` lifecycle method, and then will call the `render()` method to get the rendered element.
+如果 `App` 是类，那么 reconciler 会通过 `new App(props)` 来实例化 `App`，并调用生命周期方法 `componentWillMount()`，之后调用 `render()` 方法来获取渲染元素。
 
-Either way, the reconciler will learn the element `App` "rendered to".
+无论哪种方式，reconciler 都会探悉 `App` 渲染的元素。
 
-This process is recursive. `App` may render to a `<Greeting />`, `Greeting` may render to a `<Button />`, and so on. The reconciler will "drill down" through user-defined components recursively as it learns what each component renders to.
+这个过程是递归的。`App` 可能会渲染某个 `<Greeting />`，`Greeting` 可能会渲染某个 `<Button />`，以此类推。当它探悉各个组件渲染的元素时，Reconciler 会通过用户定义的组件递归地“向下钻取”。
 
-You can imagine this process as a pseudocode:
+想象这个过程为如下的伪代码：
 
 ```js
 function isClass(type) {
@@ -104,42 +103,42 @@ var node = mount(<App />);
 rootEl.appendChild(node);
 ```
 
->**Note:**
+>**注意：**
 >
->This really *is* a pseudo-code. It isn't similar to the real implementation. It will also cause a stack overflow because we haven't discussed when to stop the recursion.
+>这其实*是*一份伪代码。它与真实的实现代码不尽相同。因为我们还没有论述该递归过程何时停止，所以它也会造成堆栈溢出。
 
-Let's recap a few key ideas in the example above:
+让我们概括上面例子中的一些核心的概念：
 
-* React elements are plain objects representing the component type (e.g. `App`) and the props.
-* User-defined components (e.g. `App`) can be classes or functions but they all "render to" elements.
-* "Mounting" is a recursive process that creates a DOM or Native tree given the top-level React element (e.g. `<App />`).
+* React 元素是用来表示组件的类型（e.g. `App`）和 props 的朴素的对象。
+* 用户定义的组件（e.g. `App`）可以是类，也可以是函数，但是它们都“渲染产生”元素。
+* “挂载”是一个递归的过程，根据特定的顶层 React 元素（e.g. `<App />`）产生 DOM 或 Native 树。
 
-### Mounting Host Elements {#mounting-host-elements}
+### 挂载 Host 元素 {#mounting-host-elements}
 
-This process would be useless if we didn't render something to the screen as a result.
+如果我们没有渲染某些东西输出到电脑屏幕，这个过程将会是无用的。
 
-In addition to user-defined ("composite") components, React elements may also represent platform-specific ("host") components. For example, `Button` might return a `<div />` from its render method.
+除了用户定义的（“复合”）组件，React 元素也可能表示为平台专属（“host”）组件。例如，`Button` 可能会从 render 方法返回一个 `<div />`。
 
-If element's `type` property is a string, we are dealing with a host element:
+如果元素的 `type` 属性是字符串，我们处理的就是 host 元素：
 
 ```js
 console.log(<div />);
 // { type: 'div', props: {} }
 ```
 
-There is no user-defined code associated with host elements.
+host 元素中没有用户定义代码。
 
-When the reconciler encounters a host element, it lets the renderer take care of mounting it. For example, React DOM would create a DOM node.
+当 reconciler 遇到 host 元素时，它会让 render 负责挂载 host 元素。例如，React DOM 会生成一个 DOM 节点。
 
-If the host element has children, the reconciler recursively mounts them following the same algorithm as above. It doesn't matter whether children are host (like `<div><hr /></div>`), composite (like `<div><Button /></div>`), or both.
+如果 host 元素拥有子元素， Reconciler 会根据上文已经提到的算法对其进行递归地挂载。无论子元素全部都是 host 的（like `<div><hr /><div>`），全部都是复合的（like `<div><Button /></div>`），还是两者都有。
 
-The DOM nodes produced by the child components will be appended to the parent DOM node, and recursively, the complete DOM structure will be assembled.
+子组件生成的 DOM 节点会附加在父 DOM 节点上，递归地完成整个 DOM 结构的组装。
 
->**Note:**
+>**注意：**
 >
->The reconciler itself is not tied to the DOM. The exact result of mounting (sometimes called "mount image" in the source code) depends on the renderer, and can be a DOM node (React DOM), a string (React DOM Server), or a number representing a native view (React Native).
+>Reconciler 本身联结 DOM。挂载的确切结果（在源代码中有时叫做 “mount image”）取决于 renderer，可以是一个 DOM 节点（React DOM），一个字符串（React DOM Server），或是一个表示 native view（React Native）的数字。
 
-If we were to extend the code to handle host elements, it would look like this:
+如果我们扩展代码去处理 host 元素，会是如下样子：
 
 ```js
 function isClass(type) {
@@ -230,11 +229,12 @@ var node = mount(<App />);
 rootEl.appendChild(node);
 ```
 
-This is working but still far from how the reconciler is really implemented. The key missing ingredient is support for updates.
+以上代码是可以运作的，但是与 reconciler 的现实实现依然相差很远
+This is working but still far from how the reconciler is really implemented. 关键的缺失成分是对更新的支持。
 
-### Introducing Internal Instances {#introducing-internal-instances}
+### 内部实例（Internal Instances）介绍 {#introducing-internal-instances}
 
-The key feature of React is that you can re-render everything, and it won't recreate the DOM or reset the state:
+React 的关键特点是你可以重新渲染（re-render）任何东西，并且不会重新生成 DOM 或重置 state：
 
 ```js
 ReactDOM.render(<App />, rootEl);
@@ -242,13 +242,13 @@ ReactDOM.render(<App />, rootEl);
 ReactDOM.render(<App />, rootEl);
 ```
 
-However, our implementation above only knows how to mount the initial tree. It can't perform updates on it because it doesn't store all the necessary information, such as all the `publicInstance`s, or which DOM `node`s correspond to which components.
+然而，之前的实现只是知道如何挂载最初的树。由于它没有储存所有的必要信息，如所有的 `publicInstance`，或不同的 DOM 节点属于哪个组件，所以它不能完成更新操作。
 
-The stack reconciler codebase solves this by making the `mount()` function a method and putting it on a class. There are drawbacks to this approach, and we are going in the opposite direction in the [ongoing rewrite of the reconciler](/docs/codebase-overview.html#fiber-reconciler). Nevertheless this is how it works now.
+Stack reconciler 源码通过把 `mount()` 函数作为一个类的方法来解决这个问题。这种方法是存在缺点的，所以我们正朝着与之相对的方向[进行 reconciler 的重写工作](/docs/codebase-overview.html#fiber-reconciler)。不过这就是它现在的运作方式。
 
-Instead of separate `mountHost` and `mountComposite` functions, we will create two classes: `DOMComponent` and `CompositeComponent`.
+我们会创建两个类：`DOMComponent` 和 `CompositeComponent`，而不是分离的两个函数 `mountHost` 和 `mountComposite`。
 
-Both classes have a constructor accepting the `element`, as well as a `mount()` method returning the mounted node. We will replace a top-level `mount()` function with a factory that instantiates the correct class:
+两个类都有一个接受 `element` 的构造函数，同时也有一个返回挂载节点的 `mount()` 方法。我们用一个可以实例化正确类的工厂函数替换了顶层的 `mount()` 函数：
 
 ```js
 function instantiateComponent(element) {
@@ -263,7 +263,7 @@ function instantiateComponent(element) {
 }
 ```
 
-First, let's consider the implementation of `CompositeComponent`:
+首先，让我们考虑一下 `CompositeComponent` 的实现：
 
 ```js
 class CompositeComponent {
