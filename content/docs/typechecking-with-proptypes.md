@@ -8,9 +8,9 @@ redirect_from:
 
 > 注意：
 >
-> 自 React 15.5 起，`React.PropTypes` 已移入另一个包中。请使用 [`prop-types`](https://www.npmjs.com/package/prop-types) 库代替。
+> 自 React v15.5 起，`React.PropTypes` 已移入另一个包中。请使用 [`prop-types` 库](https://www.npmjs.com/package/prop-types) 代替。
 >
->我们提供了一个 [codemod](/blog/2017/04/07/react-v15.5.0.html#migrating-from-reactproptypes) 脚本来自动转换。
+>我们提供了一个 [codemod 脚本](/blog/2017/04/07/react-v15.5.0.html#migrating-from-reactproptypes)来做自动转换。
 
 随着你的应用程序不断增长，你可以通过类型检查捕获大量错误。对于某些应用程序来说，你可以使用 [Flow](https://flow.org/) 或 [TypeScript](https://www.typescriptlang.org/) 等 JavaScript 扩展来对整个应用程序做类型检查。但即使你不使用这些扩展，React 也内置了一些类型检查的功能。要在组件的 props 上进行类型检查，你只需配置特定的 `propTypes` 属性：
 
@@ -30,7 +30,7 @@ Greeting.propTypes = {
 };
 ```
 
-`PropTypes` 提供一系列验证器，可用于组件接收的数据类型是有效的。在本例中, 我们使用了 `PropTypes.string`。当传入类型不正确的属性时，JavaScript 控制台将会显示警告。出于性能方面的考虑，`propTypes` 只仅在开发模式下进行检查。
+`PropTypes` 提供一系列验证器，可用于确保组件接收到的数据类型是有效的。在本例中, 我们使用了 `PropTypes.string`。当传入的 `prop` 值类型不正确时，JavaScript 控制台将会显示警告。出于性能方面的考虑，`propTypes` 仅在开发模式下进行检查。
 
 ### Prop 类型 {#proptypes}
 
@@ -40,7 +40,8 @@ Greeting.propTypes = {
 import PropTypes from 'prop-types';
 
 MyComponent.propTypes = {
-  // 你可以将属性声明为 JS 原生类型，默认情况下这些属性都是可选的。
+  // 你可以将属性声明为 JS 原生类型，默认情况下
+  // 这些属性都是可选的。
   optionalArray: PropTypes.array,
   optionalBool: PropTypes.bool,
   optionalFunc: PropTypes.func,
@@ -49,28 +50,29 @@ MyComponent.propTypes = {
   optionalString: PropTypes.string,
   optionalSymbol: PropTypes.symbol,
 
-  // 任何可被渲染的元素（包括数字、字符串、子元素或数组）
-  //（或 Fragment）也包含这些类型。
+  // 任何可被渲染的元素（包括数字、字符串、元素或数组）
+  // (或 Fragment) 也包含这些类型。
   optionalNode: PropTypes.node,
 
-  // 一个 React 元素
+  // 一个 React 元素。
   optionalElement: PropTypes.element,
 
-  // 你也可以声明属性为某个类的实例，这里使用 JS 的 instanceof 操作符。
+  // 你也可以声明 prop 为类的实例，这里使用
+  // JS 的 instanceof 操作符。
   optionalMessage: PropTypes.instanceOf(Message),
 
-  // 你可以使你的属性只接收指定的值。
-  // 这是一个枚举类型。
+  // 你可以让你的 prop 只能是特定的值，指定它为
+  // 枚举类型。
   optionalEnum: PropTypes.oneOf(['News', 'Photos']),
 
-  // 指定的多个对象类型中的一个
+  // 一个对象可以是几种类型中的任意一个类型
   optionalUnion: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
     PropTypes.instanceOf(Message)
   ]),
 
-  // 一个指定类型组成的数组
+  // 可以指定一个数组由某一类型的元素组成
   optionalArrayOf: PropTypes.arrayOf(PropTypes.number),
 
   // 一个指定类型属性构成的对象
