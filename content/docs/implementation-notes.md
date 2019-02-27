@@ -316,15 +316,15 @@ class CompositeComponent {
 }
 ```
 
-This is not much different from our previous `mountComposite()` implementation, but now we can save some information, such as `this.currentElement`, `this.renderedComponent`, and `this.publicInstance`, for use during updates.
+这与之前的 `mountComposite()` 的实现没有太多的不同，但是现在我们可以保存一些信息，如 `this.currentElement`，`this.renderedComponent` 和 `this.publicInstance`，在更新过程中使用。
 
-Note that an instance of `CompositeComponent` is not the same thing as an instance of the user-supplied `element.type`. `CompositeComponent` is an implementation detail of our reconciler, and is never exposed to the user. The user-defined class is the one we read from `element.type`, and `CompositeComponent` creates an instance of it.
+需要注意的是 `CompositeComponent` 的实例与用户提供的 `element.type` 的实例是不同的东西。`CompositeComponent` 是我们的 reconciler 的实现细节，并且永远不会暴露给用户。用户定义的类是从 `element.type` 读取的，并且 `CompositeComponent` 会创建一个它的实例。
 
-To avoid the confusion, we will call instances of `CompositeComponent` and `DOMComponent` "internal instances". They exist so we can associate some long-lived data with them. Only the renderer and the reconciler are aware that they exist.
+为了避免混淆，我们把 `CompositeComponent` 和 `DOMComponent` 的实例叫做 “内部实例（internal instances）”。由于它们的存在，我们可以把一些长时间存在的数据存入其中。只有 renderer 和 reconciler 能意识到它们的存在。
 
-In contrast, we call an instance of the user-defined class a "public instance". The public instance is what you see as `this` in the `render()` and other methods of your custom components.
+相反，我们把用户定义的类的实例叫做“公共实例（public instance）”。公共实例就是你在 `render()` 中所见到的 `this` 和你的自定义组件中的一些其他方法。
 
-The `mountHost()` function, refactored to be a `mount()` method on `DOMComponent` class, also looks familiar:
+`mountHost()` 函数，重构为 `DOMComponent` 类的 `mount()` 方法，看起来也很熟悉：
 
 ```js
 class DOMComponent {
