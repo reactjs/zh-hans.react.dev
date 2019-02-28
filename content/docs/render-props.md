@@ -4,7 +4,7 @@ title: Render Props
 permalink: docs/render-props.html
 ---
 
-术语 ["render prop"](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce) 是指一种在 React 组件之间使用一个值为函数的 prop 在 React 组件间共享代码的简单技术
+术语 ["render prop"](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce) 是指一种在 React 组件之间使用一个值为函数的 prop 共享代码的简单技术
 
 具有 render prop 的组件接受一个函数，该函数返回一个 React 元素并调用它而不是实现自己的渲染逻辑。
 
@@ -97,9 +97,9 @@ class MouseTracker extends React.Component {
 
 现在  `<Mouse>` 组件封装了所有关于监听 `mousemove` 事件和存储鼠标 (x, y) 位置的行为，但其仍不是真正的可复用。
 
-举个例子, 让我们假设现在有一个在屏幕上跟随鼠标渲染一张猫的图片的 `<Cat>` 组件。我们可能使用 `<Cat mouse={{ x, y }}` prop 来告诉组件鼠标的坐标以让它知道图片应该在屏幕哪个位置。
+举个例子, 举个例子，假设我们有一个 <Cat> 组件，它可以呈现一张在屏幕上追逐鼠标的猫的图片。我们或许会使用 `<Cat mouse={{ x, y }}` prop 来告诉组件鼠标的坐标以让它知道图片应该在屏幕哪个位置。
 
-首先, 你可能会像这样，尝试在 `<Mouse>` 的内部的渲染方法渲染 `<Cat>` 组件：:
+首先, 你或许会像这样，尝试在 `<Mouse>` 内部的渲染方法渲染 `<Cat>` 组件：:
 
 ```js
 class Cat extends React.Component {
@@ -130,8 +130,8 @@ class MouseWithCat extends React.Component {
       <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
 
         {/*
-          我们可以在这里换掉<p>的<Cat>   ......
-          但是接着我们需要创建一个单独的<MouseWithSomethingElse>
+          我们可以在这里换掉 <p> 的 <Cat>   ......
+          但是接着我们需要创建一个单独的 <MouseWithSomethingElse>
           每次我们需要使用它时，<MouseWithCat> 是不是真的可以重复使用.
         */}
         <Cat mouse={this.state} />
@@ -208,16 +208,16 @@ class MouseTracker extends React.Component {
 }
 ```
 
-现在，我们提供了一个 render prop 以让 <Mouse> 能够动态决定什么需要渲染，而不是克隆 <Mouse> 组件并硬编码来解决特定的用例。
+现在，我们提供了一个 `render` 方法 让 `<Mouse>` 能够动态决定什么需要渲染，而不是克隆 `<Mouse>` 组件然后硬编码来解决特定的用例。
 
-更具体地说, **render prop 是一个组件用来知道要渲染什么内容的函数 prop。**
+更具体地说, **render prop 是一个用于告知组件需要渲染什么内容的函数 prop 。**
 
-这项技术使用我们所需行为的共享变得相当容易。要获得这个行为，只要渲染一个带有 render prop 的 `<Mouse>` 组件就能够告诉它当前鼠标坐标 (x, y) 要渲染什么。
+这项技术使我们共享行为非常容易。要获得这个行为，只要渲染一个带有 `render` prop 的 `<Mouse>` 组件就能够告诉它当前鼠标坐标 (x, y) 要渲染什么。
 
-关于 render prop 的一个有趣的事情是你可以使用带有 render prop 的常规组件来实现大多数[高阶组件](/docs/higher-order-components.html) (HOC)。 例如，如果你更喜欢使用 `withMouse` HOC而不是 `<Mouse>` 组件，你可以使用带有 render prop 的常规 `<Mouse>` 轻松创建一个：
+关于 render prop 一个有趣的事情是你可以使用带有 render prop 的常规组件来实现大多数[高阶组件](/docs/higher-order-components.html) (HOC)。 例如，如果你更喜欢使用 `withMouse` HOC而不是 `<Mouse>` 组件，你可以使用带有 render prop 的常规 `<Mouse>` 轻松创建一个：
 
 ```js
-// 如果你出于某种原因真的想要HOC，那么你可以轻松实现
+// 如果你出于某种原因真的想要 HOC，那么你可以轻松实现
 // 使用具有 render prop 的常规组件创建一个！
 function withMouse(Component) {
   return class extends React.Component {
@@ -234,11 +234,11 @@ function withMouse(Component) {
 
 因此，你可以将任一模式与 render prop 一起使用。
 
-## 使用 Props 而非 render {#using-props-other-than-render}
+## 使用 Props 而非 `render` {#using-props-other-than-render}
 
-重要的是要记住，render prop 是因为模式才被称为 *render* prop，你不一定要用名为 `render` 的 prop 来使用这种模式。事实上， [*任何*被用来告知组件该渲染什么内容的函数 prop 在技术上都可以被称为 “render prop”](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce).
+重要的是要记住，render prop 是因为模式才被称为 *render* prop ，你不一定要用名为 `render` 的 prop 来使用这种模式。事实上， [*任何*被用于告知组件需要渲染什么内容的函数 prop 在技术上都可以被称为 “render prop”](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce).
 
-尽管之前的例子使用了 `render`，我们也可以简单地使用 `children` prop！
+尽管之前的例子使用了 `render`，我们也可以简单地使用 `children` prop ！
 
 ```js
 <Mouse children={mouse => (
@@ -258,7 +258,7 @@ function withMouse(Component) {
 
 你将在 [react-motion](https://github.com/chenglou/react-motion) API中看到此技术。
 
-由于这一技术的特殊性，当你在设计一个类似的 API 时，你可能要直接地在你的 propTypes 里声明 children 的类型应为一个函数。
+由于这一技术的特殊性，当你在设计一个类似的 API 时，你或许会要直接地在你的 propTypes 里声明 children 的类型应为一个函数。
 
 ```js
 Mouse.propTypes = {
