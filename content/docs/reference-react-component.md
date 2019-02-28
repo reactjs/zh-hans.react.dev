@@ -15,11 +15,11 @@ redirect_from:
   - "tips/use-react-with-other-libraries.html"
 ---
 
-This page contains a detailed API reference for the React component class definition. It assumes you're familiar with fundamental React concepts, such as [Components and Props](/docs/components-and-props.html), as well as [State and Lifecycle](/docs/state-and-lifecycle.html). If you're not, read them first.
+此页面包含React组件类定义的详细API参考。它假设您熟悉基本的React概念，例如[ Components 和 Props](/docs/components-and-props.html)，以及[ State 和 生命周期 ](/docs/state-and-lifecycle.html)。如果你不是，请先阅读。
 
-## Overview {#overview}
+## 概述 {#overview}
 
-React lets you define components as classes or functions. Components defined as classes currently provide more features which are described in detail on this page. To define a React component class, you need to extend `React.Component`:
+React允许您将组件定义为类或函数。定义为类的组件当前提供了更多功能，这些功能将在此页面中详细介绍。要定义React组件类，需要继承 React.Component：
 
 ```js
 class Welcome extends React.Component {
@@ -29,36 +29,35 @@ class Welcome extends React.Component {
 }
 ```
 
-The only method you *must* define in a `React.Component` subclass is called [`render()`](#render). All the other methods described on this page are optional.
+您必须在React.Component子类中定义一个名为render的函数。此页面上描述的其他方法都是可选的。
 
-**We strongly recommend against creating your own base component classes.** In React components, [code reuse is primarily achieved through composition rather than inheritance](/docs/composition-vs-inheritance.html).
+**我们强烈建议您不要创建自己的基本组件类。** 在React组件中, [代码重用主要通过组合而不是继承来实现。](/docs/composition-vs-inheritance.html).
 
->Note:
+>注意:
 >
->React doesn't force you to use the ES6 class syntax. If you prefer to avoid it, you may use the `create-react-class` module or a similar custom abstraction instead. Take a look at [Using React without ES6](/docs/react-without-es6.html) to learn more.
+>React不会强制您使用ES6类语法。如果您倾向于不使用它，您可以使用 create-react-class 模块或类似的自定义抽象来代替。在 [Using React without ES6](/docs/react-without-es6.html) 里查看更多.
 
-### The Component Lifecycle {#the-component-lifecycle}
+### 组件的生命周期 {#the-component-lifecycle}
 
-Each component has several "lifecycle methods" that you can override to run code at particular times in the process. **You can use [this lifecycle diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/) as a cheat sheet.** In the list below, commonly used lifecycle methods are marked as **bold**. The rest of them exist for relatively rare use cases.
+每个组件都有一些“生命周期方法”, 您可以重写代码运行在特定的时间。 您可以使用此生命周期图作为一个备忘单。在下面的列表中,常用的生命周期方法是标记为粗体。其他人存在相对罕见的用例。
+#### 挂载 {#mounting}
 
-#### Mounting {#mounting}
-
-These methods are called in the following order when an instance of a component is being created and inserted into the DOM:
+按照以下顺序调用这些方法,当一个组件的一个实例被创建和插入到DOM:
 
 - [**`constructor()`**](#constructor)
 - [`static getDerivedStateFromProps()`](#static-getderivedstatefromprops)
 - [**`render()`**](#render)
 - [**`componentDidMount()`**](#componentdidmount)
 
->Note:
+>注意:
 >
->These methods are considered legacy and you should [avoid them](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>这些方法已经被废弃里,你在新代码中应该[避免使用它们](/blog/2018/03/27/update-on-async-rendering.html):
 >
 >- [`UNSAFE_componentWillMount()`](#unsafe_componentwillmount)
 
-#### Updating {#updating}
+#### 更新 {#updating}
 
-An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:
+props或state的变化会触发更新。当一个组件被重新渲染的时候会按照以下顺序调用这些方法:
 
 - [`static getDerivedStateFromProps()`](#static-getderivedstatefromprops)
 - [`shouldComponentUpdate()`](#shouldcomponentupdate)
@@ -66,50 +65,50 @@ An update can be caused by changes to props or state. These methods are called i
 - [`getSnapshotBeforeUpdate()`](#getsnapshotbeforeupdate)
 - [**`componentDidUpdate()`**](#componentdidupdate)
 
->Note:
+>注意:
 >
->These methods are considered legacy and you should [avoid them](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>这些方法已经被废弃里,你在新代码中应该[避免使用它们](/blog/2018/03/27/update-on-async-rendering.html):
 >
 >- [`UNSAFE_componentWillUpdate()`](#unsafe_componentwillupdate)
 >- [`UNSAFE_componentWillReceiveProps()`](#unsafe_componentwillreceiveprops)
 
-#### Unmounting {#unmounting}
+#### 卸载 {#unmounting}
 
-This method is called when a component is being removed from the DOM:
+当一个组件正在调用此方法从DOM中删除:
 
 - [**`componentWillUnmount()`**](#componentwillunmount)
 
-#### Error Handling {#error-handling}
+#### 错误处理 {#error-handling}
 
-These methods are called when there is an error during rendering, in a lifecycle method, or in the constructor of any child component.
+这些方法会被触发, 当在渲染期间,或者生命周期方法,或任何子组件的构造函数中抛出错误的时候。
 
 - [`static getDerivedStateFromError()`](#static-getderivedstatefromerror)
 - [`componentDidCatch()`](#componentdidcatch)
 
-### Other APIs {#other-apis}
+### 其他 APIs {#other-apis}
 
-Each component also provides some other APIs:
+每个组件还提供了一些额外的api:
 
   - [`setState()`](#setstate)
   - [`forceUpdate()`](#forceupdate)
 
-### Class Properties {#class-properties}
+### 类属性 {#class-properties}
 
   - [`defaultProps`](#defaultprops)
   - [`displayName`](#displayname)
 
-### Instance Properties {#instance-properties}
+### 实例属性 {#instance-properties}
 
   - [`props`](#props)
   - [`state`](#state)
 
 * * *
 
-## Reference {#reference}
+## 说明 {#reference}
 
-### Commonly Used Lifecycle Methods {#commonly-used-lifecycle-methods}
+### 常用的生命周期方法 {#commonly-used-lifecycle-methods}
 
-The methods in this section cover the vast majority of use cases you'll encounter creating React components. **For a visual reference, check out [this lifecycle diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/).**
+本节中的方法涵盖了创建React组件时遇到的绝大多数用例 **想要更好了解这些方法,可以参考[生命周期图谱](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/).**
 
 ### `render()` {#render}
 
@@ -117,23 +116,27 @@ The methods in this section cover the vast majority of use cases you'll encounte
 render()
 ```
 
-The `render()` method is the only required method in a class component.
+render（）方法是类组件中唯一必需的方法。
 
-When called, it should examine `this.props` and `this.state` and return one of the following types:
+调用时，它会检查this.props和this.state并返回以下类型之一：
 
-- **React elements.** Typically created via [JSX](/docs/introducing-jsx.html). For example, `<div />` and `<MyComponent />` are React elements that instruct React to render a DOM node, or another user-defined component, respectively.
-- **Arrays and fragments.** Let you return multiple elements from render. See the documentation on [fragments](/docs/fragments.html) for more details.
-- **Portals**. Let you render children into a different DOM subtree. See the documentation on [portals](/docs/portals.html) for more details.
-- **String and numbers.** These are rendered as text nodes in the DOM.
-- **Booleans or `null`**. Render nothing. (Mostly exists to support `return test && <Child />` pattern, where `test` is boolean.)
+- **React elements.** 通常通过JSX创建。例如， `<div />`和 `<MyComponent />`是React元素，它们指示React分别呈现DOM节点或另一个用户定义的组件。
+- **Arrays and fragments.** 让您从渲染中返回多个元素。
+有关更多详细信息，请参阅 [fragments](/docs/fragments.html) 文档
+- **Portals**. 让您将子项渲染到不同的DOM子树中。
+有关更多详细信息，请参阅有关 [portals](/docs/portals.html) 的文档。
+- **String and numbers.** 它们在DOM中呈现为文本节点.
+- **Booleans or `null`**.什么都不渲染。
+（主要用于支持返回 `test && <Child />`模式，其中test是boolean类型。)
 
-The `render()` function should be pure, meaning that it does not modify component state, it returns the same result each time it's invoked, and it does not directly interact with the browser.
+render（）函数应该是纯的，这意味着它不会修改组件状态的情况下，每次调用时都返回相同的结果，并且它不直接与浏览器交互。
 
-If you need to interact with the browser, perform your work in `componentDidMount()` or the other lifecycle methods instead. Keeping `render()` pure makes components easier to think about.
+如果需要与浏览器进行交互，请在componentDidMount（）或其他生命周期方法中执行您的工作。
+保持render（）纯粹使组件更容易思考。
 
-> Note
+> 注意
 >
-> `render()` will not be invoked if [`shouldComponentUpdate()`](#shouldcomponentupdate) returns false.
+> 如果shouldComponentUpdate（）返回false，则不会调用render（）。
 
 * * *
 
@@ -143,16 +146,18 @@ If you need to interact with the browser, perform your work in `componentDidMoun
 constructor(props)
 ```
 
-**If you don't initialize state and you don't bind methods, you don't need to implement a constructor for your React component.**
+**如果不需要初始化状态活不绑定方法的上下文，则不需要为React组件实现构造函数。**
 
-The constructor for a React component is called before it is mounted. When implementing the constructor for a `React.Component` subclass, you should call `super(props)` before any other statement. Otherwise, `this.props` will be undefined in the constructor, which can lead to bugs.
+在React组件挂载之前，会调用它的构造函数。
+在为React.Component子类实现构造函数时，应该在任何其他语句之前调用super（props）。
+否则，this.props将在构造函数中未定义，这可能导致错误。
 
-Typically, in React constructors are only used for two purposes:
+通常，在React中，构造函数仅用于两个目的：
 
-* Initializing [local state](/docs/state-and-lifecycle.html) by assigning an object to `this.state`.
-* Binding [event handler](/docs/handling-events.html) methods to an instance.
+* 通过将对象 assign 给 this.state 来初始化 [本地状态](/docs/state-and-lifecycle.html)。
+* 绑定[事件方法](/docs/handling-events.html)的上下文到实例。
 
-You **should not call `setState()`** in the `constructor()`. Instead, if your component needs to use local state, **assign the initial state to `this.state`** directly in the constructor:
+在 `constructor()` 函数中 **不应该调用 `setState()` 方法**. 相反，如果您的组件需要使用本地状态，请直接在构造函数中将 **初始状态分配给 this.state**：
 
 ```js
 constructor(props) {
@@ -163,13 +168,15 @@ constructor(props) {
 }
 ```
 
-Constructor is the only place where you should assign `this.state` directly. In all other methods, you need to use `this.setState()` instead.
+构造函数是您应该直接分配this.state的唯一位置。
+在所有其他方法中，您需要使用this.setState（）。
 
-Avoid introducing any side-effects or subscriptions in the constructor. For those use cases, use `componentDidMount()` instead.
+避免在构造函数中引入任何副作用或订阅。
+对于这些用例，请改用componentDidMount 来代替
 
->Note
+>注意
 >
->**Avoid copying props into state! This is a common mistake:**
+>**避免将 props 复制到 state！这是一个常见的错误：**
 >
 >```js
 >constructor(props) {
@@ -179,11 +186,12 @@ Avoid introducing any side-effects or subscriptions in the constructor. For thos
 >}
 >```
 >
->The problem is that it's both unnecessary (you can use `this.props.color` directly instead), and creates bugs (updates to the `color` prop won't be reflected in the state).
+>这里的问题是它既不必要的（你可以直接使用this.props.color），同时产生了错误（颜色道具的更新不会反映在状态中）.
 >
->**Only use this pattern if you intentionally want to ignore prop updates.** In that case, it makes sense to rename the prop to be called `initialColor` or `defaultColor`. You can then force a component to "reset" its internal state by [changing its `key`](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) when necessary.
+>**此模式仅在您有意忽略prop的更新时使用** 在这种情况下，将prop重命名为initialColor或defaultColor是有意义的。
+然后，在必要时您可以通过[更改它的属性](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key)来强制组件“重置”其内部状态
 >
->Read our [blog post on avoiding derived state](/blog/2018/06/07/you-probably-dont-need-derived-state.html) to learn about what to do if you think you need some state to depend on the props.
+>阅读我们关于[避免派生状态的博客文章](/blog/2018/06/07/you-probably-dont-need-derived-state.html) ，去了解如果state 依赖 props 的话该如何去做。
 
 
 * * *
