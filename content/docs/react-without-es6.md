@@ -132,9 +132,9 @@ var SayHello = createReactClass({
 });
 ```
 
-这就意味着，如果使用 ES6 class 关键字创建组件，那在处理事件回调的时候就要多写一点点代码。但对于大型项目来说，这样做可以提升运行效率。
+这就意味着，如果使用 ES6 class 关键字创建组件，在处理事件回调时就要多写一部分代码。但对于大型项目来说，这样做可以提升运行效率。
 
-如果你觉得上面这个写法很麻烦，那么可以尝试一下 **目前还处于试验性阶段** 的 Babel 插件 [Class Properties](https://babeljs.io/docs/plugins/transform-class-properties/)。
+如果你觉得上述写法很繁琐，那么可以尝试使用**目前还处于试验性阶段**的 Babel 插件 [Class Properties](https://babeljs.io/docs/plugins/transform-class-properties/)。
 
 
 ```javascript
@@ -169,7 +169,7 @@ class SayHello extends React.Component {
 
 ## Mixins {#mixins}
 
->**注：**
+>**注意：**
 >
 >ES6 本身是不包含任何 mixin 支持。因此，当你在 React 中使用 ES6 class 时，将不支持 mixins 。
 >
@@ -179,7 +179,7 @@ class SayHello extends React.Component {
 
 如果完全不同的组件有相似的功能，这就会产生["横切关注点（cross-cutting concerns）"问题](https://en.wikipedia.org/wiki/Cross-cutting_concern)。针对这个问题，在使用 createReactClass 创建 React 组件的时候，引入 `mixins` 功能会是一个很好的解决方案。
 
-一个常见的使用情景是，一个组件每隔一段时间需要更新。使用 `setInterval()` 可以很容易实现这个功能，但更重要的是，当你不再需要它时，你应该删掉它以节省内存。React 提供了[生命周期方法](/docs/working-with-the-browser.html#component-lifecycle)，这样你就可以知道一个组件何时被创建或被销毁了。让我们创建一个简单的 mixin，它使用这些方法提供一个简单的 `setInterval()` 函数，它会在组件被销毁时被自动清理。
+比较常见的用法是，组件每隔一段时间更新一次。使用 `setInterval()` 可以很容易实现这个功能，但需要注意的是，当你不再需要它时，你应该清除它以节省内存。React 提供了[生命周期方法](/docs/working-with-the-browser.html#component-lifecycle)，这样你就可以知道一个组件何时被创建或被销毁了。让我们创建一个简单的 mixin，它使用这些方法提供一个简单的 `setInterval()` 函数，它会在组件被销毁时被自动清理。
 
 ```javascript
 var SetIntervalMixin = {
