@@ -8,7 +8,7 @@ prev: hooks-intro.html
 
 *Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
 
-Hooks 是[向下兼容的](/docs/hooks-intro.html#no-breaking-changes)。 本页面为有经验的 React 用户提供一个对 Hooks 的概览。这是一个相当快速的概览，如果你有疑惑，可以参阅下面这样的黄色方框。
+Hooks 是[向下兼容的](/docs/hooks-intro.html#no-breaking-changes)。本页面为有经验的 React 用户提供一个对 Hooks 的概览。这是一个相当快速的概览，如果你有疑惑，可以参阅下面这样的黄色提示框。
 
 >详细说明
 >
