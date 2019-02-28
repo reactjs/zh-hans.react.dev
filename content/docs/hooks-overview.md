@@ -38,7 +38,7 @@ function Example() {
 }
 ```
 
-在这里，`useState` 就是一个 *Hook* （等下我们会讲到这是什么意思）。通过在函数定义组件里调用它来给组件添加一些本地 state。React 会在重复渲染时保留这个 state。`useState` 会返回一对值：**当前**状态和一个让你更新它的函数，你可以在事件处理函数中或其他一些地方调用这个函数。它类似类定义组件的 `this.setState`，唯一的区别是它不会把新的 state 和旧的 state 进行合并。（我们会在[使用 State Hook](/docs/hooks-state.html) 里展示一个对比 `useState` 和 `this.state` 的例子）。
+在这里，`useState` 就是一个 *Hook* （等下我们会讲到这是什么意思）。通过在函数组件里调用它来给组件添加一些本地 state。React 会在重复渲染时保留这个 state。`useState` 会返回一对值：**当前**状态和一个让你更新它的函数，你可以在事件处理函数中或其他一些地方调用这个函数。它类似 class 组件的 `this.setState`，唯一的区别是它不会把新的 state 和旧的 state 进行合并。（我们会在[使用 State Hook](/docs/hooks-state.html) 里展示一个对比 `useState` 和 `this.state` 的例子）。
 
 `useState` 唯一的参数就是初始 state。在上面的例子中，我们的计数器是从零开始的，所以初始 state 就是 `0`。值得注意的是，不同于 `this.state`，这里的 state 不一定要是一个对象 -- 如果你有需要，它也可以是。这个初始 state 参数只有在第一次渲染的会被用到。
 
@@ -60,7 +60,7 @@ function ExampleWithManyStates() {
 
 #### 那么，什么是 Hook? {#but-what-is-a-hook}
 
-Hooks 是一些可以让你在函数定义组件里“钩入” React state 和生命周期功能的函数。Hooks 不能在类定义组件里使用 -- 它们让你不用类也能使用 React。（我们[不推荐](/docs/hooks-intro.html#gradual-adoption-strategy)把你已有的组件全部重写，但是你可以在新组件里开始使用 Hooks。）
+Hooks 是一些可以让你在函数组件里“钩入” React state 和生命周期功能的函数。Hooks 不能在 class 组件里使用 -- 它们让你不用类也能使用 React。（我们[不推荐](/docs/hooks-intro.html#gradual-adoption-strategy)把你已有的组件全部重写，但是你可以在新组件里开始使用 Hooks。）
 
 React 内置了一些像 `useState` 这样的 Hooks。你也可以创建你自己的 Hooks 来重用不同组件之间的状态逻辑。我们会先介绍这些内置的 Hooks。
 
@@ -72,7 +72,7 @@ React 内置了一些像 `useState` 这样的 Hooks。你也可以创建你自�
 
 你之前可能已经在 React 组件里做过数据获取、订阅或者手动修改 DOM。我们把这些操作叫“副作用（side-effects）”，或者简称为“作用（effects）”。
 
-`useEffect` 就是一个 Effect Hook，给函数定义组件增加了操作副作用的能力。它跟类定义组件中的 `componentDidMount`、`componentDidUpdate` 和 `componentWillUnmount` 具有相同的用途，不过被合并成了一个 API。（我们会在[使用 Effect Hook](/docs/hooks-effect.html)里展示对比 `useEffect` 和这些方法的例子。）
+`useEffect` 就是一个 Effect Hook，给函数组件增加了操作副作用的能力。它跟 class 组件中的 `componentDidMount`、`componentDidUpdate` 和 `componentWillUnmount` 具有相同的用途，不过被合并成了一个 API。（我们会在[使用 Effect Hook](/docs/hooks-effect.html)里展示对比 `useEffect` 和这些方法的例子。）
 
 例如，下面这个组件在 React 更新 DOM 后会设置一个页面标题：
 
@@ -164,7 +164,7 @@ function FriendStatusWithCounter(props) {
 Hooks 就是 JavaScript 函数，但是使用它们会有两个额外的规则：
 
 * 只能在**函数顶层**调用 Hooks。不要在循环、条件判断或者子函数中调用。
-* 只能在 **React 的函数定义组件**中调用 Hooks。不要在其他 JavaScript 函数中调用。（还有一个地方可以调用 Hooks -- 就是你自己的自定义 Hooks 里，我们等会学习到。）
+* 只能在 **React 的函数组件**中调用 Hooks。不要在其他 JavaScript 函数中调用。（还有一个地方可以调用 Hooks -- 就是你自己的自定义 Hooks 里，我们等会学习到。）
 
 我们提供了一个 [linter 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks)来自动执行这些规则。这些规则乍看起来会有一些限制和令人困惑，但是它们对于让 Hooks 能很好的工作非常重要。
 
@@ -268,4 +268,4 @@ function Todos() {
 
 你也可以查看 [Hooks API 索引](/docs/hooks-reference.html) 和 [Hooks 常见问题](/docs/hooks-faq.html)。
 
-最后，不要忘记[介绍页面](/docs/hooks-intro.html)，它介绍了我们*为什么*要增加 Hooks 以及如何在不重写整个应用的情况下将 Hooks 跟类定义组件一起使用。
+最后，不要忘记[介绍页面](/docs/hooks-intro.html)，它介绍了我们*为什么*要增加 Hooks 以及如何在不重写整个应用的情况下将 Hooks 跟 class 组件一起使用。
