@@ -42,7 +42,7 @@ render() {
 > 
 > 当在使用 portals 时, 记住[管理键盘焦点](/docs/accessibility.html#programmatically-managing-focus)就变得尤为重要。
 >
-> 对于模态框，通过遵循[WAI-ARIA 模态开发实践](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal)，来确保每个人都能够运用它。
+> 对于模态对话框，通过遵循[WAI-ARIA 模态开发实践](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal)，来确保每个人都能够运用它。
 
 [**在 CodePen 上试一试**](https://codepen.io/gaearon/pen/yzMaBd)
 
@@ -50,7 +50,7 @@ render() {
 
 尽管 portal 可以被放置在 DOM 树中的任何地方，但在任何其他方面，其行为和普通的 React 子节点行为一致。由于 portal 仍存在于 *React 树*， 且不管 *DOM 树* 中的位置，那么无论其子节点是否是 portal，功能特性比如 context 的工作原理都是不变的。
 
-这包含事件冒泡。一个从 portal 内部触发的事件会一直冒泡至包含 *React 树* 的祖先，即便这些元素并不是 *DOM tree* 中的祖先。假设如下 HTML 结构：
+这包含事件冒泡。一个从 portal 内部触发的事件会一直冒泡至包含 *React 树* 的祖先，即便这些元素并不是 *DOM 树* 中的祖先。假设如下 HTML 结构：
 
 ```html
 <html>
