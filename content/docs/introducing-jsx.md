@@ -24,7 +24,7 @@ React 认为渲染逻辑本质上与其他 UI 逻辑一脉相通，比如，如�
 
 React 并没有把标记语言和逻辑这两个东西分开放在不同的文件里，而是使用松散耦合的单元进行[关注点*分离*](https://en.wikipedia.org/wiki/Separation_of_concerns)，这些单元称为包含两者的“组件”。我们会在[延伸章节](/docs/components-and-props.html)里重新回到“组件”，但如果你还不熟悉怎么在 JS 里使用标记语言，[这个视频解说](https://www.youtube.com/watch?v=x7cQ3mrcKaY)可能会说服你。
 
-React 不一定要使用 JSX (/docs/react-without-jsx.html)，但是大多数人发现在JavaScript 代码中使用 UI 时它是一种有用的视觉辅助工具。它还允许 React 显示更多有用的错误和警告消息。
+React [不一定要使用 JSX ](/docs/react-without-jsx.html)，但是大多数人发现在 JavaScript 代码中使用 UI 时它是一种有用的视觉辅助工具。它还允许 React 显示更多有用的错误和警告消息。
 
 弄清楚这个，让我们开始吧！
 
