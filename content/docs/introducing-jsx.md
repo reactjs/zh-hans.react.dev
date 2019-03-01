@@ -158,7 +158,7 @@ Hello, world!
 ```js
 const element = React.createElement(
 'h1',
-{className: 'greeting'},
+  {className: 'greeting'},
 'Hello, world!'
 );
 ```
