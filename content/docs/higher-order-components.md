@@ -1,32 +1,32 @@
 ---
 id: higher-order-components
-title: Higher-Order Components
+title: 高阶组件
 permalink: docs/higher-order-components.html
 ---
 
-A higher-order component (HOC) is an advanced technique in React for reusing component logic. HOCs are not part of the React API, per se. They are a pattern that emerges from React's compositional nature.
+高阶组件（之后简称 HOC，复数 HOCs）是 React 中复用组件逻辑的高级技能。HOCs 本身并不是 React API 的一部分。他们是从 React 的特性中衍生出来的一种模式。
 
-Concretely, **a higher-order component is a function that takes a component and returns a new component.**
+具体来讲，**HOC 是接收一个组件作为参数然后返回一个新的组件的方法。**
 
 ```js
 const EnhancedComponent = higherOrderComponent(WrappedComponent);
 ```
 
-Whereas a component transforms props into UI, a higher-order component transforms a component into another component.
+相对于组件把 props 转换成 UI，HOC 则是把一个组件转换成另外一个组件。
 
-HOCs are common in third-party React libraries, such as Redux's [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) and Relay's [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html).
+HOCs 经常用于 React 的第三方库，比如 Redux 中的 [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) 和 Relay 中的 [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html)。
 
-In this document, we'll discuss why higher-order components are useful, and how to write your own.
+在这篇文档中，我们会讨论为什么 HOCs 是有用的，以及怎么写一个你自己的 HOC。
 
-## Use HOCs For Cross-Cutting Concerns {#use-hocs-for-cross-cutting-concerns}
+## 使用 HOCs 来切分逻辑 {#use-hocs-for-cross-cutting-concerns}
 
-> **Note**
+> **注意**
 >
-> We previously recommended mixins as a way to handle cross-cutting concerns. We've since realized that mixins create more trouble than they are worth. [Read more](/blog/2016/07/13/mixins-considered-harmful.html) about why we've moved away from mixins and how you can transition your existing components.
+> 我们曾今推荐使用 mixins 作为处理横切关注点的方式。我们现在发觉相比于 mixins 的价值他带来了更多麻烦。[阅读更多](/blog/2016/07/13/mixins-considered-harmful.html)关于为什么我们去掉来 mixins 以及你该如何修改你已有的组件。
 
-Components are the primary unit of code reuse in React. However, you'll find that some patterns aren't a straightforward fit for traditional components.
+组件是 React 中最主要的代码复用单元。然而你会发现一些模式并不非常直接适合传统的组件。
 
-For example, say you have a `CommentList` component that subscribes to an external data source to render a list of comments:
+举个例子，假如你有一个 `CommentList` 组件用来订阅外部的数据源并渲染一个评论列表：
 
 ```js
 class CommentList extends React.Component {
@@ -68,7 +68,7 @@ class CommentList extends React.Component {
 }
 ```
 
-Later, you write a component for subscribing to a single blog post, which follows a similar pattern:
+然后，你写了一个组件使用相同的模式来订阅一篇博客：
 
 ```js
 class BlogPost extends React.Component {
@@ -100,15 +100,15 @@ class BlogPost extends React.Component {
 }
 ```
 
-`CommentList` and `BlogPost` aren't identical — they call different methods on `DataSource`, and they render different output. But much of their implementation is the same:
+`CommentList` 和 `BlogPost` 并不完全相同——他们调用 `DateSource` 上的不同方法，并渲染不同的输出。但是他们大部分的实现过程是一样的：
 
-- On mount, add a change listener to `DataSource`.
-- Inside the listener, call `setState` whenever the data source changes.
-- On unmount, remove the change listener.
+- 在挂载后，在 `DateSource` 上增加一个变化监听器。
+- 在订阅中一旦发现数据变化就调用 `setState`。
+- 在卸载之前，删除变化监听器。
 
-You can imagine that in a large app, this same pattern of subscribing to `DataSource` and calling `setState` will occur over and over again. We want an abstraction that allows us to define this logic in a single place and share it across many components. This is where higher-order components excel.
+你可以预感到在一个大型的应用中，这种类似的订阅 `DataSource` 并调用 `setState` 的模式会一次又一次的出现。我们想要一种抽象来允许我们把这部分逻辑定义到一个单独的地方并在不同的组件中进行分享。这就是HOCs擅长的地方。
 
-We can write a function that creates components, like `CommentList` and `BlogPost`, that subscribe to `DataSource`. The function will accept as one of its arguments a child component that receives the subscribed data as a prop. Let's call the function `withSubscription`:
+我们可以写一个方法来创建组件，比如 `CommentList` 和 `BlogPost` 这种订阅 `DataSource` 的组件，这个方法接收的参数中会有一个子组件，其接收订阅数据作为 prop。我们叫这个方法 `withSubscription`：
 
 ```js
 const CommentListWithSubscription = withSubscription(
@@ -122,9 +122,9 @@ const BlogPostWithSubscription = withSubscription(
 );
 ```
 
-The first parameter is the wrapped component. The second parameter retrieves the data we're interested in, given a `DataSource` and the current props.
+第一个参数是一个被包装的组件。第二个参数用来检索我们感兴趣的数据，他接收 `DataSource` 以及当前的props作为参数。
 
-When `CommentListWithSubscription` and `BlogPostWithSubscription` are rendered, `CommentList` and `BlogPost` will be passed a `data` prop with the most current data retrieved from `DataSource`:
+当 `CommentListWithSubscription` 和 `BlogPostWithSubscription` 被渲染的时候，`CommentList` 和 `BlogPost` 会收到一个叫 `data` 的 prop，他会带上从 `DataSource` 中获取的最新数据：
 
 ```js
 // This function takes a component...
@@ -163,17 +163,17 @@ function withSubscription(WrappedComponent, selectData) {
 }
 ```
 
-Note that a HOC doesn't modify the input component, nor does it use inheritance to copy its behavior. Rather, a HOC *composes* the original component by *wrapping* it in a container component. A HOC is a pure function with zero side-effects.
+注意 HOC 不会修改传入的组件，也不会使用继承的方式来拷贝他的行为。相反，HOC **组合**原始组件的方式是通过把他**包装**进入一个容器组件。HOC 是一个没有任何副作用的纯粹的方法。
 
-And that's it! The wrapped component receives all the props of the container, along with a new prop, `data`, which it uses to render its output. The HOC isn't concerned with how or why the data is used, and the wrapped component isn't concerned with where the data came from.
+就是这样！被包装的组件从容器那接收所有的 props，同时包括一个新的 prop，叫做 `date`，用来渲染他的输出。HOC 并不关心数据被怎么样或者为什么被使用，同样被包装的组件也不关心数据是从哪里来的。
 
-Because `withSubscription` is a normal function, you can add as many or as few arguments as you like. For example, you may want to make the name of the `data` prop configurable, to further isolate the HOC from the wrapped component. Or you could accept an argument that configures `shouldComponentUpdate`, or one that configures the data source. These are all possible because the HOC has full control over how the component is defined.
+因为 `withSubscription` 只是一个普通的方法，你可以增加随意数量的参数。举个例子，你可能想要让 `date` 的名字变得可配置，让 HOC 更加独立于被包装的组件。或者你可以接收一个参数来配置 `shouldComponentUpdate`，甚至一个参数来配置数据源。这些都是可能的因为 HOC 有定义组件的完全控制权。
 
-Like components, the contract between `withSubscription` and the wrapped component is entirely props-based. This makes it easy to swap one HOC for a different one, as long as they provide the same props to the wrapped component. This may be useful if you change data-fetching libraries, for example.
+跟组件很像，`withSubscription` 和被包装的组件之间的约定是完全基于 props 的。这就让切换一个 HOC 到另外一个变得非常简单，只要他们提供相同的props给被包装的组件。举个例子，这在我们需要切换数据获取的类库的时候可能会非常有用。
 
-## Don't Mutate the Original Component. Use Composition. {#dont-mutate-the-original-component-use-composition}
+## 不要修改原始的组件。使用组合。 {#dont-mutate-the-original-component-use-composition}
 
-Resist the temptation to modify a component's prototype (or otherwise mutate it) inside a HOC.
+请抵挡诱惑，不要在 HOC 中去修改组件的原型（或者直接修改他本身）。
 
 ```js
 function logProps(InputComponent) {
@@ -190,11 +190,11 @@ function logProps(InputComponent) {
 const EnhancedComponent = logProps(InputComponent);
 ```
 
-There are a few problems with this. One is that the input component cannot be reused separately from the enhanced component. More crucially, if you apply another HOC to `EnhancedComponent` that *also* mutates `componentWillReceiveProps`, the first HOC's functionality will be overridden! This HOC also won't work with function components, which do not have lifecycle methods.
+这样做会存在一些问题。首先输入的组件不能和增强之后的组件分开使用来。至关重要的是，如果你对 `EnhancedComponent` 使用了另外一个同样修改了 `componentWillReceiveProps` 的 HOC，那么第一个 HOC 的功能就会被覆盖！这个 HOC 还不能配合函数组件进行使用，因为函数组件根本没有生命周期方法。
 
-Mutating HOCs are a leaky abstraction—the consumer must know how they are implemented in order to avoid conflicts with other HOCs.
+通过修改实现的 HOCs 是低级抽象——使用者必须知道他们是如何实现的，才能避免和其他 HOCs 产生冲突。
 
-Instead of mutation, HOCs should use composition, by wrapping the input component in a container component:
+HOCs 应该使用组合，通过包装输入组件进入一个容器的方式，而不是直接进行修改。
 
 ```js
 function logProps(WrappedComponent) {
@@ -211,15 +211,15 @@ function logProps(WrappedComponent) {
 }
 ```
 
-This HOC has the same functionality as the mutating version while avoiding the potential for clashes. It works equally well with class and function components. And because it's a pure function, it's composable with other HOCs, or even with itself.
+这个 HOC 跟通过修改实现的版本有相同的功能，同时他可以避免潜在的冲突问题。他能够同时很好地配合 class 和函数组件使用。同时因为他是纯粹的方法，他能够和其他 HOCs，甚至是自己都进行组合。
 
-You may have noticed similarities between HOCs and a pattern called **container components**. Container components are part of a strategy of separating responsibility between high-level and low-level concerns. Containers manage things like subscriptions and state, and pass props to components that handle things like rendering UI. HOCs use containers as part of their implementation. You can think of HOCs as parameterized container component definitions.
+你可能已经注意到了 HOCs 和**容器组件**模式之间的相似性。容器组件是分割高级和低级关注点策略的一部分。容器处理订阅和状态等内容，并且传递 props 给一些处理UI渲染的组件。HOCs 使用容器作为他的实现的一部分。你可以认为 HOCs 是参数化的容器组件定义。
 
-## Convention: Pass Unrelated Props Through to the Wrapped Component {#convention-pass-unrelated-props-through-to-the-wrapped-component}
+## 惯例：无关的 Props 直接传递到被包装的组件 {#convention-pass-unrelated-props-through-to-the-wrapped-component}
 
-HOCs add features to a component. They shouldn't drastically alter its contract. It's expected that the component returned from a HOC has a similar interface to the wrapped component.
+HOCs 为组件增加功能，HOCs 不应该大量的改动组件的约定。我们期望 HOC 返回的组件跟被包装的组件具有相似的接口。
 
-HOCs should pass through props that are unrelated to its specific concern. Most HOCs contain a render method that looks something like this:
+HOCs 应该直接传递跟他的具体关注点无关的 props。大部分的 HOCs 会包含一个类似如下的 render 方法：
 
 ```js
 render() {
@@ -241,30 +241,30 @@ render() {
 }
 ```
 
-This convention helps ensure that HOCs are as flexible and reusable as possible.
+这个惯例帮助我们确保 HOCs 的最高的灵活性和复用性。
 
-## Convention: Maximizing Composability {#convention-maximizing-composability}
+## 惯例：最大限度的可组合性 {#convention-maximizing-composability}
 
-Not all HOCs look the same. Sometimes they accept only a single argument, the wrapped component:
+并不是所有的 HOC 看上去都一样。有些时候他们接收唯一一个参数——被包装的组件：
 
 ```js
 const NavbarWithRouter = withRouter(Navbar);
 ```
 
-Usually, HOCs accept additional arguments. In this example from Relay, a config object is used to specify a component's data dependencies:
+通常来说，HOCs 会接收额外的参数。在一些 Relay 的例子中，一个配置对象会被用来表示组件的数据依赖：
 
 ```js
 const CommentWithRelay = Relay.createContainer(Comment, config);
 ```
 
-The most common signature for HOCs looks like this:
+最常见的 HOC 特征看起来如下：
 
 ```js
 // React Redux's `connect`
 const ConnectedComment = connect(commentSelector, commentActions)(CommentList);
 ```
 
-*What?!* If you break it apart, it's easier to see what's going on.
+*啥？！*如果你把他们分开来看，可以很轻松发现到底他做了什么。
 
 ```js
 // connect is a function that returns another function
@@ -273,9 +273,10 @@ const enhance = connect(commentListSelector, commentListActions);
 // to the Redux store
 const ConnectedComment = enhance(CommentList);
 ```
-In other words, `connect` is a higher-order function that returns a higher-order component!
 
-This form may seem confusing or unnecessary, but it has a useful property. Single-argument HOCs like the one returned by the `connect` function have the signature `Component => Component`. Functions whose output type is the same as its input type are really easy to compose together.
+换句话说，`connect` 是一个高阶方法，他返回一个 HOC！
+
+这种方式看起来令人困惑的或者是不必要的，但是他包含了非常有用特性。类似 `connect` 返回的单参数的HOC具有 `Component => Component` 这样的特性。具有输入和输出的类型相同的方法真的非常容易进行组合。
 
 ```js
 // Instead of doing this...
@@ -291,15 +292,15 @@ const enhance = compose(
 const EnhancedComponent = enhance(WrappedComponent)
 ```
 
-(This same property also allows `connect` and other enhancer-style HOCs to be used as decorators, an experimental JavaScript proposal.)
+（这种相同的特性同样允许 `connect` 和其他增强类型的 HOCs 被用来当作装饰器，一个试验性的 JavaScript 提案。）
 
-The `compose` utility function is provided by many third-party libraries including lodash (as [`lodash.flowRight`](https://lodash.com/docs/#flowRight)), [Redux](https://redux.js.org/api/compose), and [Ramda](https://ramdajs.com/docs/#compose).
+很多第三方库提供了 `compose` 工具方法包括lodash（叫做 [`lodash.flowRight`](https://lodash.com/docs/#flowRight)），[Redux](https://redux.js.org/api/compose)，以及 [Ramda](https://ramdajs.com/docs/#compose)。
 
-## Convention: Wrap the Display Name for Easy Debugging {#convention-wrap-the-display-name-for-easy-debugging}
+## 惯例：包装显示名称来方便调试 {#convention-wrap-the-display-name-for-easy-debugging}
 
-The container components created by HOCs show up in the [React Developer Tools](https://github.com/facebook/react-devtools) like any other component. To ease debugging, choose a display name that communicates that it's the result of a HOC.
+HOCs 创建的容器组件会像其他组件一样在 [React 开发工具](https://github.com/facebook/react-devtools)中展示。为了方便调试，选择一个显示名称来传达他是一个 HOC 返回的结果。
 
-The most common technique is to wrap the display name of the wrapped component. So if your higher-order component is named `withSubscription`, and the wrapped component's display name is `CommentList`, use the display name `WithSubscription(CommentList)`:
+最常用的技巧是包装被包装组件的显示名称。所以如果你的HOC叫做 `withSubscription`，同时被包装的组件的显示名字是 `CommentList`，那么使用显示名称 `WithSubscription(CommentList)`：
 
 ```js
 function withSubscription(WrappedComponent) {
@@ -314,15 +315,15 @@ function getDisplayName(WrappedComponent) {
 ```
 
 
-## Caveats {#caveats}
+## 附加说明 {#caveats}
 
-Higher-order components come with a few caveats that aren't immediately obvious if you're new to React.
+如果你是 React 新手 HOC 中会存在一些不那么明显的附加说明需要注意。
 
-### Don't Use HOCs Inside the render Method {#dont-use-hocs-inside-the-render-method}
+### 不要在render方法中使用HOCs {#dont-use-hocs-inside-the-render-method}
 
-React's diffing algorithm (called reconciliation) uses component identity to determine whether it should update the existing subtree or throw it away and mount a new one. If the component returned from `render` is identical (`===`) to the component from the previous render, React recursively updates the subtree by diffing it with the new one. If they're not equal, the previous subtree is unmounted completely.
+React 的对比算法（通常叫做调和）使用组件标识来确认是否他应该更新当前的子树或者直接丢弃重新挂载一个新的。如果 `render` 中返回的组件和上一次渲染中的组件完全相同（`===`），React 会递归地更新子树通过对比新的组件。如果他们不相同，之前的子树会完全卸载。
 
-Normally, you shouldn't need to think about this. But it matters for HOCs because it means you can't apply a HOC to a component within the render method of a component:
+通常来说，你不应考虑这个问题。但是在 HOC 中这非常重要，因为他意味着你不能在一个组件的 render 方法执行的时候调用 HOC 来生产一个组件。
 
 ```js
 render() {
@@ -334,17 +335,17 @@ render() {
 }
 ```
 
-The problem here isn't just about performance — remounting a component causes the state of that component and all of its children to be lost.
+在这的问题并不只是性能——重新挂载一个组件会导致组件的状态和他所有的子节点全部丢失。
 
-Instead, apply HOCs outside the component definition so that the resulting component is created only once. Then, its identity will be consistent across renders. This is usually what you want, anyway.
+相对的，在一个组件定义的外部调用 HOCs，所以结果只会被创建一次。然后他的标识会在渲染中就是一致的。无论如何这通常都是你想要的。
 
-In those rare cases where you need to apply a HOC dynamically, you can also do it inside a component's lifecycle methods or its constructor.
+在其他一些你需要动态调用 HOCs 的罕见的场景中，你同样可以在组件的生命周期方法或者他的构造器当中来执行。
 
-### Static Methods Must Be Copied Over {#static-methods-must-be-copied-over}
+### 静态方法必须拷贝过去 {#static-methods-must-be-copied-over}
 
-Sometimes it's useful to define a static method on a React component. For example, Relay containers expose a static method `getFragment` to facilitate the composition of GraphQL fragments.
+有时候在 React 组件上定义一个静态方法会十分有用。比如，Relay 容器暴露出了一个静态的 `getFragment` 方法来帮助组合 GraphQL fragments。
 
-When you apply a HOC to a component, though, the original component is wrapped with a container component. That means the new component does not have any of the static methods of the original component.
+当你对一个组件调用 HOCs，原始组件会被包装到一个容器组件中。这意味着新的组件并不包含原始组件上的静态方法。
 
 ```js
 // Define a static method
@@ -356,7 +357,7 @@ const EnhancedComponent = enhance(WrappedComponent);
 typeof EnhancedComponent.staticMethod === 'undefined' // true
 ```
 
-To solve this, you could copy the methods onto the container before returning it:
+要解决这个问题，你可以在返回容器组件之前把所有方法拷贝过去。
 
 ```js
 function enhance(WrappedComponent) {
@@ -367,7 +368,7 @@ function enhance(WrappedComponent) {
 }
 ```
 
-However, this requires you to know exactly which methods need to be copied. You can use [hoist-non-react-statics](https://github.com/mridgway/hoist-non-react-statics) to automatically copy all non-React static methods:
+然而，这要求你完全清楚哪些方法需要拷贝。你可以使用 [hoist-non-react-statics](https://github.com/mridgway/hoist-non-react-statics) 来自动拷贝非 React 的静态方法。
 
 ```js
 import hoistNonReactStatic from 'hoist-non-react-statics';
@@ -378,7 +379,7 @@ function enhance(WrappedComponent) {
 }
 ```
 
-Another possible solution is to export the static method separately from the component itself.
+另外一个可能的解决方案是把静态方法和组件分开导出
 
 ```js
 // Instead of...
@@ -392,8 +393,8 @@ export { someFunction };
 import MyComponent, { someFunction } from './MyComponent.js';
 ```
 
-### Refs Aren't Passed Through {#refs-arent-passed-through}
+### Refs 不会被传递过去 {#refs-arent-passed-through}
 
-While the convention for higher-order components is to pass through all props to the wrapped component, this does not work for refs. That's because `ref` is not really a prop — like `key`, it's handled specially by React. If you add a ref to an element whose component is the result of a HOC, the ref refers to an instance of the outermost container component, not the wrapped component.
+虽然惯例来说 HOCs 会把所有 props 传递给被包装的组件，但是这对于 refs 来说是不可行的。因为 `ref` 并不是真正的 prop——就像 `key`，他会被 React 特殊处理。如果你对一个 HOC 生产的组件增加 ref，他会被指向外层的容器组件，而不是被包装的组件。
 
-The solution for this problem is to use the `React.forwardRef` API (introduced with React 16.3). [Learn more about it in the forwarding refs section](/docs/forwarding-refs.html).
+解决方法是使用 `React.forwardRef` API（在React 16.3中引入）。[在 forwarding refs 章节学习更多](/docs/forwarding-refs.html).
