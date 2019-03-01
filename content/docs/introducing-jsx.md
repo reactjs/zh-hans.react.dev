@@ -138,7 +138,7 @@ const title = response.potentiallyMaliciousInput;
 const element = <h1>{title}</h1>;
 ```
 
-React DOM 在渲染之前默认会过滤 (http://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html)  所有传入的值。它可以确保你的应用里没有写进去的信息无法被进行注入攻击。所有的内容在渲染之前都被转换成了字符串。这样可以有效地防止 XSS (跨站脚本) 攻击。
+React DOM 在渲染之前默认会[过滤](http://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html)所有传入的值。它可以确保你的应用里没有写进去的信息无法被进行注入攻击。所有的内容在渲染之前都被转换成了字符串。这样可以有效地防止 [XSS (跨站脚本)](https://en.wikipedia.org/wiki/Cross-site_scripting)攻击。
 
 ### JSX 代表对象（Objects）
 
