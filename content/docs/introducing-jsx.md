@@ -16,7 +16,7 @@ const element = <h1>Hello, world!</h1>;
 
 它被称为 JSX， 是一个 JavaScript 的语法扩展。我们建议在 React 中配合使用 JSX ， JSX 可以很好地描述 UI 应该呈现出它应有交互的本质形式。JSX 可能使人想起模版语言，但它具有 JavaScript 的全部功能。
 
-JSX 生成 React "元素"。我们将在[下一章节] (/docs/rendering-elements.html) 中探讨如何将这些元素渲染到 DOM 里。 下面，我们来看一下开始学习 JSX 的所需的基础知识。
+JSX 生成 React “元素”。我们将在[下一章节](/docs/rendering-elements.html)中探讨如何将这些元素渲染到 DOM 里。下面，我们来看一下开始学习 JSX 的所需的基础知识。
 
 ### 为什么使用 JSX？
 
