@@ -76,7 +76,7 @@ document.getElementById('root')
 
 编译之后，JSX 表达式成为常规 JavaScript 函数调用， 并评估为 JavaScript 对象。
 
-这意味着你可以在 if 语句和 for 循环中使用 JSX，将其赋值给变量，当作参数传入，并从函数返回它：
+这意味着你可以在 `if` 语句和 `for` 循环中使用 JSX，将其赋值给变量，当作参数传入，并从函数返回它：
 
 ```js{3,5}
 function getGreeting(user) {
