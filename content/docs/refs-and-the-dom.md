@@ -11,33 +11,34 @@ redirect_from:
 permalink: docs/refs-and-the-dom.html
 ---
 
-Refs provide a way to access DOM nodes or React elements created in the render method.
+Refs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素。
 
-In the typical React dataflow, [props](/docs/components-and-props.html) are the only way that parent components interact with their children. To modify a child, you re-render it with new props. However, there are a few cases where you need to imperatively modify a child outside of the typical dataflow. The child to be modified could be an instance of a React component, or it could be a DOM element. For both of these cases, React provides an escape hatch.
+在典型的 React 数据流中，[props](/docs/components-and-props.html) 是唯一一个让父组件与子组件交互的唯一方式。要修改一个子组件，你需要使用新的 props 来重新渲染它。
+但是，在某些情况下，你需要在典型数据流之外强制修改子组件。被修改的子组件可能是一个 React 组件的实例，也可能是一个 DOM 元素。对于这两种情况，React 都提供了解决办法。
 
-### When to Use Refs {#when-to-use-refs}
+### 何时使用 Refs {#when-to-use-refs}
 
-There are a few good use cases for refs:
+下面是几个适合使用 refs 的情况：
 
-* Managing focus, text selection, or media playback.
-* Triggering imperative animations.
-* Integrating with third-party DOM libraries.
+* 管理焦点，文本选择或媒体播放。
+* 触发强制动画。
+* 集成第三方 DOM 库。
 
-Avoid using refs for anything that can be done declaratively.
+避免使用 refs 来做任何可以通过声明式实现来完成的事情。
 
-For example, instead of exposing `open()` and `close()` methods on a `Dialog` component, pass an `isOpen` prop to it.
+举个例子，避免在 `Dialog` 组件里暴露 `open()` 和 `close()` 方法，最好传递 `isOpen` 属性。
 
-### Don't Overuse Refs {#dont-overuse-refs}
+### 勿过度使用 Refs {#dont-overuse-refs}
 
-Your first inclination may be to use refs to "make things happen" in your app. If this is the case, take a moment and think more critically about where state should be owned in the component hierarchy. Often, it becomes clear that the proper place to "own" that state is at a higher level in the hierarchy. See the [Lifting State Up](/docs/lifting-state-up.html) guide for examples of this.
+你可能首先会想到使用 refs 在你的 app 中“让事情发生”。如果是这种情况，请花一点时间，认真再考虑一下 state 属性应该被安排在哪个组件层中。通常你会想明白，让更高的组件层级拥有这个 state，是更恰当的。查看 [Lifting State Up](/docs/lifting-state-up.html) 以获取更多有关示例。
 
-> Note
+> 注意：
 >
-> The examples below have been updated to use the `React.createRef()` API introduced in React 16.3. If you are using an earlier release of React, we recommend using [callback refs](#callback-refs) instead.
+> 下面的例子已经更新为使用在 React 16.3 版本引入的 `React.createRef()` API。如果你正在使用一个较早的 Release 版本的 React，我们推荐你使用 [回调形式的 refs](#callback-refs)。
 
-### Creating Refs {#creating-refs}
+### 创建 Refs {#creating-refs}
 
-Refs are created using `React.createRef()` and attached to React elements via the `ref` attribute. Refs are commonly assigned to an instance property when a component is constructed so they can be referenced throughout the component.
+Refs是使用 `React.createRef()` 创建的，并通过 `ref` 属性附加到 React 元素。在构造组件时，通常将 Refs 分配给实例属性，以便可以在整个组件中引用它们。
 
 ```javascript{4,7}
 class MyComponent extends React.Component {
@@ -51,44 +52,44 @@ class MyComponent extends React.Component {
 }
 ```
 
-### Accessing Refs {#accessing-refs}
+### 访问 Refs {#accessing-refs}
 
-When a ref is passed to an element in `render`, a reference to the node becomes accessible at the `current` attribute of the ref.
+当 ref 被传递给 `render` 中的元素时，对该节点的引用可以在 ref 的 `current` 属性中被访问。
 
 ```javascript
 const node = this.myRef.current;
 ```
 
-The value of the ref differs depending on the type of the node:
+ref 的值根据节点的类型而有所不同：
 
-- When the `ref` attribute is used on an HTML element, the `ref` created in the constructor with `React.createRef()` receives the underlying DOM element as its `current` property.
-- When the `ref` attribute is used on a custom class component, the `ref` object receives the mounted instance of the component as its `current`.
-- **You may not use the `ref` attribute on function components** because they don't have instances.
+- 当 `ref` 属性用于 HTML 元素时，构造函数中使用 `React.createRef()` 创建的 `ref` 接收底层 DOM 元素作为其 `current` 属性。
+- 当 `ref` 属性用于自定义 class 组件时，`ref` 对象接收组件的挂载实例作为其 `current` 属性。
+- **你不能在函数式组件上使用 `ref` 属性**，因为他们没有实例。
 
-The examples below demonstrate the differences.
+以下例子说明了这些差异。
 
-#### Adding a Ref to a DOM Element {#adding-a-ref-to-a-dom-element}
+#### 为 DOM 元素添加 ref  {#adding-a-ref-to-a-dom-element}
 
-This code uses a `ref` to store a reference to a DOM node:
+以下代码使用 `ref` 去存储 DOM 节点的引用：
 
 ```javascript{5,12,22}
 class CustomTextInput extends React.Component {
   constructor(props) {
     super(props);
-    // create a ref to store the textInput DOM element
+    // 创建一个 ref 来存储 textInput 的 DOM 元素
     this.textInput = React.createRef();
     this.focusTextInput = this.focusTextInput.bind(this);
   }
 
   focusTextInput() {
-    // Explicitly focus the text input using the raw DOM API
-    // Note: we're accessing "current" to get the DOM node
+    // 直接使用原生 API 使 text 输入框获得焦点
+    // 注意：我们通过 "current" 来访问 DOM 节点
     this.textInput.current.focus();
   }
 
   render() {
-    // tell React that we want to associate the <input> ref
-    // with the `textInput` that we created in the constructor
+    // 告诉 React 我们想把 <input> ref 关联到
+    // 构造器里创建的 `textInput` 上
     return (
       <div>
         <input
@@ -105,11 +106,11 @@ class CustomTextInput extends React.Component {
 }
 ```
 
-React will assign the `current` property with the DOM element when the component mounts, and assign it back to `null` when it unmounts. `ref` updates happen before `componentDidMount` or `componentDidUpdate` lifecycle methods.
+React 会在组件挂载时给 `current` 属性传入 DOM 元素，并在组件卸载时传入 `null` 值。`ref` 会在 `componentDidMount` 或 `componentDidUpdate` 生命周期钩子触发前更新。
 
-#### Adding a Ref to a Class Component {#adding-a-ref-to-a-class-component}
+#### 为 class 组件添加 Ref {#adding-a-ref-to-a-class-component}
 
-If we wanted to wrap the `CustomTextInput` above to simulate it being clicked immediately after mounting, we could use a ref to get access to the custom input and call its `focusTextInput` method manually:
+如果我们想包装上面的 `CustomTextInput`，来模拟它挂载之后立即被点击的操作，我们可以使用 ref 来获取这个自定义的 input 组件并手动调用它的 `focusTextInput` 方法：
 
 ```javascript{4,8,13}
 class AutoFocusTextInput extends React.Component {
@@ -130,7 +131,7 @@ class AutoFocusTextInput extends React.Component {
 }
 ```
 
-Note that this only works if `CustomTextInput` is declared as a class:
+请注意，这仅在 `CustomTextInput` 声明为类时才有效：
 
 ```js{1}
 class CustomTextInput extends React.Component {
@@ -138,9 +139,9 @@ class CustomTextInput extends React.Component {
 }
 ```
 
-#### Refs and Function Components {#refs-and-function-components}
+#### Refs 与函数式组件 {#refs-and-function-components}
 
-**You may not use the `ref` attribute on function components** because they don't have instances:
+**你不能在函数式组件上使用 ref 属性**，因为它们没有实例：
 
 ```javascript{1,8,13}
 function MyFunctionComponent() {
@@ -161,13 +162,13 @@ class Parent extends React.Component {
 }
 ```
 
-You should convert the component to a class if you need a ref to it, just like you do when you need lifecycle methods or state.
+如果你需要使用 ref，你应该将组件转化为一个 class，就像当你需要使用生命周期钩子或 state 时一样。
 
-You can, however, **use the `ref` attribute inside a function component** as long as you refer to a DOM element or a class component:
+不管怎样，你可以**在函数式组件内部使用 `ref` 属性**，只要它指向一个 DOM 元素或 class 组件：
 
 ```javascript{2,3,6,13}
 function CustomTextInput(props) {
-  // textInput must be declared here so the ref can refer to it
+  // 这里必须声明 textInput，这样 ref 才可以引用它
   let textInput = React.createRef();
 
   function handleClick() {
@@ -189,25 +190,25 @@ function CustomTextInput(props) {
 }
 ```
 
-### Exposing DOM Refs to Parent Components {#exposing-dom-refs-to-parent-components}
+### 将 DOM Refs 暴露给父组件 {#exposing-dom-refs-to-parent-components}
 
-In rare cases, you might want to have access to a child's DOM node from a parent component. This is generally not recommended because it breaks component encapsulation, but it can occasionally be useful for triggering focus or measuring the size or position of a child DOM node.
+在极少数情况下，你可能希望在父组件中引用子节点的 DOM 节点。通常不建议这样做，因为它会打破组件的封装，但它偶尔可用于触发焦点或测量子 DOM 节点的大小或位置。
 
-While you could [add a ref to the child component](#adding-a-ref-to-a-class-component), this is not an ideal solution, as you would only get a component instance rather than a DOM node. Additionally, this wouldn't work with function components.
+虽然你可以[向子组件添加 ref](#adding-a-ref-to-a-class-component)，但这不是一个理想的解决方案，因为你只能获取组件实例而不是 DOM 节点。并且，它还在函数式组件上无效。
 
-If you use React 16.3 or higher, we recommend to use [ref forwarding](/docs/forwarding-refs.html) for these cases. **Ref forwarding lets components opt into exposing any child component's ref as their own**. You can find a detailed example of how to expose a child's DOM node to a parent component [in the ref forwarding documentation](/docs/forwarding-refs.html#forwarding-refs-to-dom-components).
+如果你使用 16.3 或更高版本的 React, 这种情况下我们推荐使用 [ref 转发](/docs/forwarding-refs.html)。**Ref 转发使组件可以像暴露自己的 ref 一样暴露子组件的 ref**。关于怎样对父组件暴露子组件的 DOM 节点，在 [ref 转发文档](/docs/forwarding-refs.html#forwarding-refs-to-dom-components)中有一个详细的例子。
 
-If you use React 16.2 or lower, or if you need more flexibility than provided by ref forwarding, you can use [this alternative approach](https://gist.github.com/gaearon/1a018a023347fe1c2476073330cc5509) and explicitly pass a ref as a differently named prop.
+如果你使用 16.2 或更低版本的 React，或者你需要比 ref 转发更高的灵活性，你可以使用[这个替代方案](https://gist.github.com/gaearon/1a018a023347fe1c2476073330cc5509)将 ref 作为特殊名字的 prop 直接传递。
 
-When possible, we advise against exposing DOM nodes, but it can be a useful escape hatch. Note that this approach requires you to add some code to the child component. If you have absolutely no control over the child component implementation, your last option is to use [`findDOMNode()`](/docs/react-dom.html#finddomnode), but it is discouraged and deprecated in [`StrictMode`](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage).
+可能的话，我们不建议暴露 DOM 节点，但有时候它会成为救命稻草。注意这个方案需要你在子组件中增加一些代码。如果你对子组件的实现没有控制权的话，你剩下的选择是使用 [`findDOMNode()`](/docs/react-dom.html#finddomnode)，但这是不推荐的，而且在[`严格模式`](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage) 下被禁用。
 
-### Callback Refs {#callback-refs}
+### 回调 Refs {#callback-refs}
 
-React also supports another way to set refs called "callback refs", which gives more fine-grain control over when refs are set and unset.
+React 也支持另一种设置 refs 的方式，称为“回调 refs”。它能助你更精细地控制合适 refs 被设置和解除。
 
-Instead of passing a `ref` attribute created by `createRef()`, you pass a function. The function receives the React component instance or HTML DOM element as its argument, which can be stored and accessed elsewhere. 
+不同于传递 `createRef()` 创建的 `ref` 属性，你会传递一个函数。这个函数中接受 React 组件实例或 HTML DOM 元素作为参数，以存储它们并使它们能被其他地方访问。
 
-The example below implements a common pattern: using the `ref` callback to store a reference to a DOM node in an instance property.
+下面的例子描述了一个通用的范例：使用 `ref` 回调函数，在实例的属性中存储对 DOM 节点的引用。
 
 ```javascript{5,7-9,11-14,19,29,34}
 class CustomTextInput extends React.Component {
@@ -221,19 +222,19 @@ class CustomTextInput extends React.Component {
     };
 
     this.focusTextInput = () => {
-      // Focus the text input using the raw DOM API
+      // 使用原生 DOM API 使 text 输入框获得焦点
       if (this.textInput) this.textInput.focus();
     };
   }
 
   componentDidMount() {
-    // autofocus the input on mount
+    // 组件挂载后，让文本框自动获得焦点
     this.focusTextInput();
   }
 
   render() {
-    // Use the `ref` callback to store a reference to the text input DOM
-    // element in an instance field (for example, this.textInput).
+    // 使用 `ref` 的回调函数将 text 输入框 DOM 节点的引用存储到 React
+    // 实例上（比如 this.textInput）
     return (
       <div>
         <input
@@ -251,9 +252,9 @@ class CustomTextInput extends React.Component {
 }
 ```
 
-React will call the `ref` callback with the DOM element when the component mounts, and call it with `null` when it unmounts. Refs are guaranteed to be up-to-date before `componentDidMount` or `componentDidUpdate` fires.
+React 将在组件挂载时，会调用 `ref` 回调函数并传入 DOM 元素，当卸载时调用它并传入 null。在 `componentDidMount` 或 `componentDidUpdate` 触发前，React 会保证refs 一定是最新的。
 
-You can pass callback refs between components like you can with object refs that were created with `React.createRef()`.
+你可以在组件间传递回调形式的 refs，就像你可以传递通过 `React.createRef()` 创建的对象 refs 一样。
 
 ```javascript{4,13}
 function CustomTextInput(props) {
@@ -275,16 +276,16 @@ class Parent extends React.Component {
 }
 ```
 
-In the example above, `Parent` passes its ref callback as an `inputRef` prop to the `CustomTextInput`, and the `CustomTextInput` passes the same function as a special `ref` attribute to the `<input>`. As a result, `this.inputElement` in `Parent` will be set to the DOM node corresponding to the `<input>` element in the `CustomTextInput`.
+在上面的例子中，`Parent` 把它的 refs 回调函数当作 `inputRef` props 传递给了 `CustomTextInput`，而且 `CustomTextInput` 把相同的函数作为特殊的 `ref` 属性传递给了 `<input>`。结果是，在 `Parent` 中的 `this.inputElement` 会被设置为与 `CustomTextInput` 中的 `input` 元素相对应的 DOM 节点。
 
-### Legacy API: String Refs {#legacy-api-string-refs}
+### 旧版 API：String 类型的 Refs {#legacy-api-string-refs}
 
-If you worked with React before, you might be familiar with an older API where the `ref` attribute is a string, like `"textInput"`, and the DOM node is accessed as `this.refs.textInput`. We advise against it because string refs have [some issues](https://github.com/facebook/react/pull/8333#issuecomment-271648615), are considered legacy, and **are likely to be removed in one of the future releases**. 
+如果你之前使用过 React，你可能了解过之前的 API 中的 string 类型的 ref 属性，例如 `"textInput"`。你可以通过 `this.refs.textInput` 来访问 DOM 节点。我们不建议使用它，因为 string 类型的 refs 存在 [一些问题](https://github.com/facebook/react/pull/8333#issuecomment-271648615)。它已过时并可能会在未来的版本被移除。
 
-> Note
+> 注意
 >
-> If you're currently using `this.refs.textInput` to access refs, we recommend using either the [callback pattern](#callback-refs) or the [`createRef` API](#creating-refs) instead.
+> 如果你目前还在使用 `this.refs.textInput` 这种方式访问 refs ，我们建议用[回调函数](#callback-refs)或 [`createRef` API](#creating-refs) 的方式代替。
 
-### Caveats with callback refs {#caveats-with-callback-refs}
+### 关于回调 refs 的警告 {#caveats-with-callback-refs}
 
-If the `ref` callback is defined as an inline function, it will get called twice during updates, first with `null` and then again with the DOM element. This is because a new instance of the function is created with each render, so React needs to clear the old ref and set up the new one. You can avoid this by defining the `ref` callback as a bound method on the class, but note that it shouldn't matter in most cases.
+如果 `ref` 回调函数是以内联函数的方式定义的，在更新过程中它会被执行两次，第一次传入参数 `null`，然后第二次会传入参数 `DOM` 元素。这是因为在每次渲染时会创建一个新的函数实例，所以 React 清空旧的 ref 并且设置新的。通过将 ref 的回调函数定义成类的绑定函数的方式可以避免上述问题，但是大多数情况下它是无关紧要的。
