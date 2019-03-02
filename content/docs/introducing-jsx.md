@@ -181,4 +181,4 @@ const element = {
 
 >**提示：**
 >
-> 我们建议您使用 [“Babel” 插件](http://babeljs.io/docs/editors)作为你所使用编辑器的辅助，以使得 ES6 和 JSX 代码高亮。本网站使用与之兼容的 [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) 配色方案。
+> 我们建议您使用 [“Babel” 编辑器插件](http://babeljs.io/docs/editors)作为你所使用编辑器的辅助，以使得 ES6 和 JSX 代码高亮。本网站使用与之兼容的 [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) 配色方案。
