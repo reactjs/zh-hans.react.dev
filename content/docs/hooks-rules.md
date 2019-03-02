@@ -1,6 +1,6 @@
 ---
 id: hooks-rules
-title: 使用 Hooks 的规则
+title: 使用 Hook 的规则
 permalink: docs/hooks-rules.html
 next: hooks-custom.html
 prev: hooks-effect.html
@@ -21,7 +21,7 @@ Hook 是 JavaScript 函数，你在使用它的时候需要遵循两条规则。
 * ✅ 在 React 的函数定义组件中调用 Hook
 * ✅ 在自定义 Hook 中调用 Hook (我们将会在[下一页](/docs/hooks-custom.html) 中学习这个。)
 
-通过遵循此规则，你确保了组件中所有的 state 逻辑在它的代码中清晰可见。
+通过遵循此规则，你确保了组件的状态逻辑在它的代码中清晰可见。
 
 ## ESLint 插件 {#eslint-plugin}
 
