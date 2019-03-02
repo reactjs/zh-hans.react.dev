@@ -91,8 +91,8 @@ MyComponent.propTypes = {
   // 任意类型的数据
   requiredAny: PropTypes.any.isRequired,
 
-  // 你可以指定一个自定义验证器。如果验证失败应该返回一个 Error 对象
-  // 而不是 `console.warn` 或抛异常，因为在 `onOfType` 中不会起作用。
+  // 你可以指定一个自定义验证器。它在验证失败时应返回一个 Error 对象。
+  // 请不要使用 `console.warn` 或抛出异常，因为这在 `onOfType` 中不会起作用。
   customProp: function(props, propName, componentName) {
     if (!/matchme/.test(props[propName])) {
       return new Error(
