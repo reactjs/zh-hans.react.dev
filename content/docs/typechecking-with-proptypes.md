@@ -75,16 +75,17 @@ MyComponent.propTypes = {
   // 可以指定一个数组由某一类型的元素组成
   optionalArrayOf: PropTypes.arrayOf(PropTypes.number),
 
-  // 一个指定类型属性构成的对象
+  // 可以指定一个对象由某一类型的值组成
   optionalObjectOf: PropTypes.objectOf(PropTypes.number),
 
-  // 一个指定属性及其类型的对象
+  // 可以指定一个对象由特定的类型值组成
   optionalObjectWithShape: PropTypes.shape({
     color: PropTypes.string,
     fontSize: PropTypes.number
   }),
 
-  // 你可以在任何 PropTypes 属性后面加上 `isRequired` ，确保这个属性父组件没有提供时，会打印警告信息。
+  // 你可以在任何 PropTypes 属性后面加上 `isRequired` ，确保
+  // 这个 prop 没有被提供时，会打印警告信息。
   requiredFunc: PropTypes.func.isRequired,
 
   // 任意类型的数据
@@ -104,7 +105,8 @@ MyComponent.propTypes = {
   // 你也可以提供一个自定义的 `arrayOf` 或 `objectOf` 验证器。
   // 它应该在验证失败时返回一个 Error 对象。
   // 验证器将验证数组或对象中的每个值。验证器的前两个参数
-  // 第一个是数组或对象本身，第二个是他们的键。
+  // 第一个是数组或对象本身
+  // 第二个是他们当前的键。
   customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) {
     if (!/matchme/.test(propValue[key])) {
       return new Error(
@@ -116,10 +118,9 @@ MyComponent.propTypes = {
 };
 ```
 
-### 限制一个元素 {#requiring-single-child}
+### 限制单个元素 {#requiring-single-child}
 
-使用 `PropTypes.element`
-你可以指定 children 只有一个元素作为传递到组件。
+你可以通过 `PropTypes.element` 来确保传递给组件的 children 中只包含一个元素。
 
 ```javascript
 import PropTypes from 'prop-types';
@@ -141,7 +142,7 @@ MyComponent.propTypes = {
 };
 ```
 
-### 属性默认值 {#default-prop-values}
+### 默认 Prop 值 {#default-prop-values}
 
 您可以通过配置特定的 `defaultProps` 属性来定义 `props` 的默认值：
 
@@ -166,7 +167,7 @@ ReactDOM.render(
 );
 ```
 
-如果你正在使用像 [transform-class-properties](https://babeljs.io/docs/plugins/transform-class-properties/) 的 Babel 转换工具，你也可以在 React 组件类中声明 `defaultProps` 作为静态属性。此语法提案还没有最终确定，在浏览器中需要进行编译才能使用。要了解更多信息，请查阅 [class fields proposal](https://github.com/tc39/proposal-class-fields)。
+如果你正在使用像 [transform-class-properties](https://babeljs.io/docs/plugins/transform-class-properties/) 的 Babel 转换工具，你也可以在 React 组件类中声明 `defaultProps` 作为静态属性。此语法提案还没有最终确定，需要进行编译后才能在浏览器中运行。要了解更多信息，请查阅 [class fields proposal](https://github.com/tc39/proposal-class-fields)。
 
 ```javascript
 class Greeting extends React.Component {
@@ -182,4 +183,4 @@ class Greeting extends React.Component {
 }
 ```
 
-`defaultProps` 用于确保 `this.props.name` 在父组件没有指定值时，有一个默认值。`propTypes` 类型检查发生在 `defaultProps` 赋值后，所以类型检查也适用于 `defaultProps`。
+`defaultProps` 用于确保 `this.props.name` 在父组件没有指定其值时，有一个默认值。`propTypes` 类型检查发生在 `defaultProps` 赋值后，所以类型检查也适用于 `defaultProps`。
