@@ -6,7 +6,7 @@ prev: hello-world.html
 next: rendering-elements.html
 ---
 
-考虑如下声明变量：
+考虑如下变量声明：
 
 ```js
 const element = <h1>Hello, world!</h1>;
@@ -16,21 +16,21 @@ const element = <h1>Hello, world!</h1>;
 
 它被称为 JSX，是一个 JavaScript 的语法扩展。我们建议在 React 中配合使用 JSX，JSX 可以很好地描述 UI 应该呈现出它应有交互的本质形式。JSX 可能会使人联想到模版语言，但它具有 JavaScript 的全部功能。
 
-JSX 可以生成 React “元素”。我们将在[下一章节](/docs/rendering-elements.html)中探讨如何将这些元素渲染到 DOM 里。下面，我们来看一下开始学习 JSX 的所需的基础知识。
+JSX 可以生成 React “元素”。我们将在[下一章节](/docs/rendering-elements.html)中探讨如何将这些元素渲染为 DOM。下面我们看下学习 JSX 所需的基础知识。
 
 ### 为什么使用 JSX？ {#why-jsx}
 
-React 认为渲染逻辑本质上与其他 UI 逻辑一脉相通，比如，如何处理事件、状态如何变化以及如何把数据展示出来。
+React 认为渲染逻辑本质上与其他 UI 逻辑内在耦合，比如，如何处理事件、状态如何随时间变化，以及如何展示准备好的数据。
 
-React 并没有把标记语言和逻辑这两个东西分开放在不同的文件里，而是使用松散耦合的单元进行[关注点*分离*](https://en.wikipedia.org/wiki/Separation_of_concerns)，我们将包含两者的单元称为“组件”。我们会在[延伸章节](/docs/components-and-props.html)里重新探讨“组件”，但如果你还不熟悉怎么在 JS 里使用标记语言，请查看[视频讲解](https://www.youtube.com/watch?v=x7cQ3mrcKaY)。
+React 并没有采用将*标记与逻辑进行分离到不同文件*这种人为地分离方式*，而是通过将二者共同存放在称之为“组件”的松散耦合单元之中，来实现[关注点*分离*](https://en.wikipedia.org/wiki/Separation_of_concerns)。我们将在[后面章节](/docs/components-and-props.html)中深入学习组件。如果你还没有适应在 JS 中使用标记语言，这个[会议讨论](https://www.youtube.com/watch?v=x7cQ3mrcKaY)应该可以说服你。
 
-React [不一定要使用 JSX ](/docs/react-without-jsx.html)，但是大多数人在 JavaScript 代码中编写 UI 时，发现它是一种非常好的视觉辅助工具。它还允许 React 显示更多有用的错误和警告消息。
+React [不强制要求](/docs/react-without-jsx.html)使用 JSX，但是大多数人发现，在 JavaScript 代码中将 JSX 和 UI 放在一起时，会在视觉上有辅助作用。它还可以使 React 显示更多有用的错误和警告消息。
 
-弄清楚这个，让我们开始吧！
+搞清楚这个问题后，我们就开始学习 JSX 吧！
 
 ### 在 JSX 中嵌入表达式 {#embedding-expressions-in-jsx}
 
-在下面的例子中，我们声明了一个名为 `name` 的变量，然后在 JSX 中使用它，并将它包装在大括号中：
+在下面的例子中，我们声明了一个名为 `name` 的变量，然后在 JSX 中使用它，并将它包裹在大括号中：
 
 ```js{1,2}
 const name = 'Josh Perez';
@@ -42,7 +42,7 @@ ReactDOM.render(
 );
 ```
 
-你可以在 JSX 中的大括号内放置任何有效的 [JavaScript 表达式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions)。例如，`2 + 2`，`user.firstName` 或 `formatName(user)` 都是有效的 JavaScript 表达式。
+在 JSX 语法中，你可以在大括号内放置任何有效的 [JavaScript 表达式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions)。例如，`2 + 2`，`user.firstName` 或 `formatName(user)` 都是有效的 JavaScript 表达式。
 
 在下面的示例中，我们将调用 JavaScript 函数 `formatName(user)` 的结果，并将结果嵌入到 `<h1>` 元素中。
 
@@ -70,13 +70,13 @@ ReactDOM.render(
 
 [在 CodePen 上尝试](codepen://introducing-jsx)
 
-为了便于阅读，我们将 JSX 拆分为多行。虽然开发时并不需要这样，但在执行此操作时，我们还是建议将其包装在小括号中，以避免掉入[分号自动插入](https://stackoverflow.com/q/2846283)的陷阱。
+为了便于阅读，我们会将 JSX 拆分为多行。同时，我们建议将内容包裹在括号中，虽然这样做不是强制要求的，但是这可以避免遇到[自动插入分号](http://stackoverflow.com/q/2846283)陷阱。
 
-### JSX 本身也是一种表达式 {#jsx-is-an-expression-too}
+### JSX 也是一个表达式 {#jsx-is-an-expression-too}
 
-编译之后，JSX 表达式成为常规 JavaScript 函数调用，并评估为 JavaScript 对象。
+在编译之后，JSX 表达式会被转为普通 JavaScript 函数调用，并且对其取值后得到 JavaScript 对象。
 
-这意味着你可以在 `if` 语句和 `for` 循环中使用 JSX，将其赋值给变量，或作为参数传递，再或者作为函数返回值返回：
+也就是说，你可以在 `if` 语句和 `for` 循环的代码块中使用 JSX，将 JSX 赋值给变量，把 JSX 当作参数传入，以及从函数中返回 JSX：
 
 ```js{3,5}
 function getGreeting(user) {
@@ -87,37 +87,37 @@ function getGreeting(user) {
 }
 ```
 
-### JSX 属性 {#specifying-attributes-with-jsx}
+### JSX 特定属性 {#specifying-attributes-with-jsx}
 
-你可以使用引号来为字符串类型的属性赋值：
+你可以通过使用引号，来将属性值指定为字符串字面量：
 
 ```js
 const element = <div tabIndex="0"></div>;
 ```
 
-也可以使用大括号来定义以 JavaScript 表达式为值的属性：
+也可以使用大括号，来在属性值中插入一个 JavaScript 表达式：
 
 ```js
 const element = <img src={user.avatarUrl}></img>;
 ```
 
-切记，如果把 JavaScript 表达式镶嵌在大括号里，大括号外面不能再套引号。JSX 会将引号当中的内容识别为字符串而不是表达式。你可以只使用引号（当对象是字符串），或者使用大阔号（当对象是表达式），但这两个不能在同一个属性里出现。
+在属性中嵌入 JavaScript 表达式时，不要在大括号外面加上引号。你应该仅使用引号（对于字符串值）或大括号（对于表达式）中的一个，对于同一属性不能同时使用这两种符号。
 
 >**警告：**
 >
->因为 JSX 的特性更接近 JavaScript 而不是 HTML，所以 React DOM 使用 `camelCase`（小驼峰命名）来定义属性的名称，而不是 HTML 的属性名称。
+>因为 JSX 语法上更接近 JavaScript 而不是 HTML，所以 React DOM 使用 `camelCase`（小驼峰命名）来定义属性的名称，而不使用 HTML 属性名称的命名约定。
 >
->例如，JSX 里的 `class` 变成了 [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className)，而 `tabindex` 则对应着 [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex)。
+>例如，JSX 里的 `class` 变成了 [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className)，而 `tabindex` 则变为 [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex)。
 
-### 使用 JSX 指定子项 {#specifying-children-with-jsx}
+### 使用 JSX 指定子元素 {#specifying-children-with-jsx}
 
-假如一个标签里面没有内容，你可以把它当作 XML，在末尾加上 `/>` 来关上它。
+假如一个标签里面没有内容，你可以使用 `/>` 来闭合标签，就像 XML 语法一样：
 
 ```js
 const element = <img src={user.avatarUrl} />;
 ```
 
-JSX 标签里能够包含很多子项:
+JSX 标签里能够包含很多子元素:
 
 ```js
 const element = (
@@ -130,7 +130,7 @@ const element = (
 
 ### JSX 防止注入攻击 {#jsx-prevents-injection-attacks}
 
-你可以放心地在 JSX 当中使用用户输入：
+你可以安全地在 JSX 当中插入用户输入内容：
 
 ```js
 const title = response.potentiallyMaliciousInput;
@@ -138,13 +138,13 @@ const title = response.potentiallyMaliciousInput;
 const element = <h1>{title}</h1>;
 ```
 
-React DOM 在渲染之前默认会[过滤](https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html)所有传入的值。它可以确保你的应用里没有写进去的信息无法被进行注入攻击。所有的内容在渲染之前都被转换成了字符串。这样可以有效地防止 [XSS（cross-site-scripting, 跨站脚本）](https://en.wikipedia.org/wiki/Cross-site_scripting)攻击。
+React DOM 在渲染所有输入内容之前，默认会进行[转义](https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html)。它可以确保在你的应用中，永远不会注入那些并非自己明确编写的内容。所有的内容在渲染之前都被转换成了字符串。这样可以有效地防止 [XSS（cross-site-scripting, 跨站脚本）](https://en.wikipedia.org/wiki/Cross-site_scripting)攻击。
 
-### JSX 代表对象（Objects） {#jsx-represents-objects}
+### JSX 表示对象 {#jsx-represents-objects}
 
-Babel 转译器会把 JSX 转换成一个名为 `React.createElement()` 的方法调用。
+Babel 会把 JSX 转译成一个名为 `React.createElement()` 函数调用。
 
-下面两种代码的作用是完全相同的：
+以下两种示例代码完全等效：
 
 ```js
 const element = (
@@ -162,10 +162,10 @@ const element = React.createElement(
 );
 ```
 
-`React.createElement()` 这个方法首先会进行一些避免 bug 的检查，但更主要的是返回一个类似下面例子的对象：
+`React.createElement()` 会预先执行一些检查，以帮助你编写无错代码，但实际上它创建了一个这样的对象：
 
 ```js
-// 注意：这是简化后的示例
+// 注意：这是简化过的结构
 const element = {
   type: 'h1',
   props: {
@@ -175,10 +175,10 @@ const element = {
 };
 ```
 
-这样的对象被称为 “React 元素”。它代表所有你在屏幕上看到的东西。React 通过读取这些对象来构建 DOM 并保持随时更新。
+这些对象被称为 “React 元素”。它们描述了你希望在屏幕上看到的内容。React 通过读取这些对象，然后使用它们来构建 DOM 以及保持随时更新。
 
-我们将在下一节中探讨如何将 React 元素渲染到 DOM。
+我们将在下一章节中探讨如何将 React 元素渲染为 DOM。
 
 >**提示：**
 >
-> 我们建议您使用 [“Babel” 编辑器插件](https://babeljs.io/docs/editors)作为你所使用编辑器的辅助，以使得 ES6 和 JSX 代码高亮。本网站使用与之兼容的 [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) 配色方案。
+> 我们推荐在你使用的编辑器中，使用 [“Babel” 提供的语言定义](https://babeljs.io/docs/editors)，来正确地高亮显示 ES6 和 JSX 代码。本网站使用与其兼容的 [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) 配色方案。
