@@ -37,8 +37,8 @@ const name = 'Josh Perez';
 const element = <h1>Hello, {name}</h1>;
 
 ReactDOM.render(
- element,
-document.getElementById('root')
+  element,
+  document.getElementById('root')
 );
 ```
 
@@ -48,27 +48,27 @@ document.getElementById('root')
 
 ```js{12}
 function formatName(user) {
-return user.firstName + ' ' + user.lastName;
+  return user.firstName + ' ' + user.lastName;
 }
 
 const user = {
-firstName: 'Harper',
-lastName: 'Perez'
+  firstName: 'Harper',
+  lastName: 'Perez'
 };
 
 const element = (
-<h1>
-Hello, {formatName(user)}!
-</h1>
+  <h1>
+    Hello, {formatName(user)}!
+  </h1>
 );
 
 ReactDOM.render(
-element,
-document.getElementById('root')
+  element,
+  document.getElementById('root')
 );
 ```
 
-[在codepen上运行](codepen://introducing-jsx)
+[在 codepen 上运行](codepen://introducing-jsx)
 
 为了便于阅读，我们将 JSX 拆分为多行。 虽然不需要这样，但在执行此操作时，我们还是建议将其包装在括号中，以避免掉入[分号自动插入]的陷阱 (http://stackoverflow.com/q/2846283)。
 
@@ -80,10 +80,10 @@ document.getElementById('root')
 
 ```js{3,5}
 function getGreeting(user) {
-if (user) {
-return <h1>Hello, {formatName(user)}!</h1>;
-}
-return <h1>Hello, Stranger.</h1>;
+  if (user) {
+    return <h1>Hello, {formatName(user)}!</h1>;
+  }
+  return <h1>Hello, Stranger.</h1>;
 }
 ```
 
@@ -121,10 +121,10 @@ JSX 标签里能够包含很多子项:
 
 ```js
 const element = (
-<div>
-<h1>Hello!</h1>
-<h2>Good to see you here.</h2>
-</div>
+  <div>
+    <h1>Hello!</h1>
+    <h2>Good to see you here.</h2>
+  </div>
 );
 ```
 
@@ -146,12 +146,11 @@ Babel 转译器会把 JSX 转换成一个名为 React.createElement() 的方法�
 
 下面两种代码的作用是完全相同的：
 
-
 ```js
 const element = (
-<h1 className="greeting">
-Hello, world!
-</h1>
+  <h1 className="greeting">
+    Hello, world!
+  </h1>
 );
 ```
 
@@ -168,11 +167,11 @@ React.createElement() 这个方法首先会进行一些避免 bug 的检查，�
 ```js
 // Note: this structure is simplified
 const element = {
-type: 'h1',
-props: {
-className: 'greeting',
-children: 'Hello, world!'
-}
+  type: 'h1',
+  props: {
+    className: 'greeting',
+    children: 'Hello, world!'
+  }
 };
 ```
 
@@ -180,7 +179,6 @@ children: 'Hello, world!'
 
 我们将在下一节中探讨如何将 React 元素渲染到 DOM。
 
-Tip:
-
-我们建议您使用[“Babel”语言定义]工具 (http://babeljs.io/docs/editors) 作为您选择的编辑器的辅助，以便正确突出显示 ES6 和 JSX 代码。 本网站使用与之兼容的 [Oceanic Next]（https://labs.voronianski.com/oceanic-next-color-scheme/）配色方案。
-
+>**Tip:**
+>
+>我们建议您使用[“Babel”语言定义]工具 (http://babeljs.io/docs/editors) 作为您选择的编辑器的辅助，以便正确突出显示 ES6 和 JSX 代码。 本网站使用与之兼容的 [Oceanic Next]（https://labs.voronianski.com/oceanic-next-color-scheme/）配色方案。
