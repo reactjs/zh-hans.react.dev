@@ -42,7 +42,7 @@ ReactDOM.render(
 );
 ```
 
-你可以在 JSX 中的大括号内放置任何有效的 [JavaScript 表达式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions)。例如，`2 + 2`，`user.firstName` 或 `formatName（user）` 都是有效的 JavaScript 表达式。
+你可以在 JSX 中的大括号内放置任何有效的 [JavaScript 表达式](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions)。例如，`2 + 2`，`user.firstName` 或 `formatName(user)` 都是有效的 JavaScript 表达式。
 
 在下面的示例中，我们将调用 JavaScript 函数 `formatName(user)` 的结果，并将结果嵌入到 `<h1>` 元素中。
 
@@ -105,13 +105,13 @@ const element = <img src={user.avatarUrl}></img>;
 
 >**警告：**
 >
->因为 JSX 的特性更接近 JavaScript 而不是 HTML , 所以 React DOM 使用 `camelCase`（小驼峰命名）来定义属性的名称，而不是 HTML 的属性名称。
+>因为 JSX 的特性更接近 JavaScript 而不是 HTML，所以 React DOM 使用 `camelCase`（小驼峰命名）来定义属性的名称，而不是 HTML 的属性名称。
 >
 >例如，JSX 里的 `class` 变成了 [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className)，而 `tabindex` 则对应着 [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex)。
 
 ### 使用 JSX 指定子项
 
-假如一个标签里面没有内容，你可以把它当作 XML ，在末尾加上 `/>` 来关上它。
+假如一个标签里面没有内容，你可以把它当作 XML，在末尾加上 `/>` 来关上它。
 
 ```js
 const element = <img src={user.avatarUrl} />;
@@ -138,7 +138,7 @@ const title = response.potentiallyMaliciousInput;
 const element = <h1>{title}</h1>;
 ```
 
-React DOM 在渲染之前默认会[过滤](http://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html)所有传入的值。它可以确保你的应用里没有写进去的信息无法被进行注入攻击。所有的内容在渲染之前都被转换成了字符串。这样可以有效地防止 [XSS (跨站脚本)](https://en.wikipedia.org/wiki/Cross-site_scripting)攻击。
+React DOM 在渲染之前默认会[过滤](http://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html)所有传入的值。它可以确保你的应用里没有写进去的信息无法被进行注入攻击。所有的内容在渲染之前都被转换成了字符串。这样可以有效地防止 [XSS（cross-site-scripting, 跨站脚本）](https://en.wikipedia.org/wiki/Cross-site_scripting)攻击。
 
 ### JSX 代表对象（Objects）
 
@@ -179,6 +179,6 @@ const element = {
 
 我们将在下一节中探讨如何将 React 元素渲染到 DOM。
 
->提示：
+>**提示：**
 >
-> 我们建议您使用 [“Babel” 语义](http://babeljs.io/docs/editors)工具作为您选择的编辑器的辅助，以便使得 ES6 和 JSX 代码高亮。本网站使用与之兼容的 [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) 配色方案。
+> 我们建议您使用 [“Babel” 插件](http://babeljs.io/docs/editors)作为你所使用编辑器的辅助，以使得 ES6 和 JSX 代码高亮。本网站使用与之兼容的 [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) 配色方案。
