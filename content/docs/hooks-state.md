@@ -277,4 +277,4 @@ function ExampleWithManyStates() {
 
 我们同时也了解了一点什么是Hooks。Hooks是帮助我们为方法组件连接React功能的。他们的名字总是以`use`开头，我们还有很多Hooks没有见识过。
 
-**现在让我们继续[学习下一个Hook： `useEffect`.](/docs/hooks-effect.html)**他帮助我们在组件中执行副作用，非常像class中的声明周期方法。
+**现在让我们继续 [学习下一个Hook： `useEffect`](/docs/hooks-effect.html)。**他帮助我们在组件中执行副作用，等同于类组件中的生命周期方法。
