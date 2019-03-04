@@ -56,12 +56,11 @@ class CodeEditor extends Component {
     if (showBabelErrorMessage) {
       errorMessage = (
         <span>
-          Babel could not be loaded.
+          Babel 加载失败。
           <br />
           <br />
-          This can be caused by an ad blocker. If you're using one, consider
-          adding reactjs.org to the whitelist so the live code examples will
-          work.
+          这可能是广告拦截器导致的。如果你正在使用此类插件，
+          建议将 reactjs.org 加入白名单，以保证代码示例能够正常工作。
         </span>
       );
     } else if (error != null) {
