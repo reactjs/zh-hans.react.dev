@@ -61,7 +61,7 @@ class CodeExample extends Component {
         {loaded ? (
           <CodeEditor code={code} containerNodeID={containerNodeID} />
         ) : (
-          <h4>正在加载代码范例...</h4>
+          <h4>正在加载代码示例...</h4>
         )}
       </div>
     );
