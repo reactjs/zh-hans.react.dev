@@ -6,19 +6,19 @@ layout: docs
 category: FAQ
 ---
 
-### How can I make an AJAX call? {#how-can-i-make-an-ajax-call}
+### 我怎样在React中发起AJAX请求{#how-can-i-make-an-ajax-call}
 
-You can use any AJAX library you like with React. Some popular ones are [Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/), and the browser built-in [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
+在React开发中，你能使用任何流行的AJAX库，比如社区比较流行的[Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/),或者是浏览器内置的[window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)。
 
-### Where in the component lifecycle should I make an AJAX call? {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
+### 我应该在React组件的哪个生命周期函数中发起AJAX请求？{#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
 
-You should populate data with AJAX calls in the [`componentDidMount`](/docs/react-component.html#mounting) lifecycle method. This is so you can use `setState` to update your component when the data is retrieved.
+我们推荐你在[`componentDidMount`](/docs/react-component.html#mounting)这个生命周期函数中发起AJAX请求。这样做你可以很方便的使用AJAX请求返回回来数据，通过`setState`来更新组件。
 
-### Example: Using AJAX results to set local state {#example-using-ajax-results-to-set-local-state}
+### 用例：使用AJAX请求结果去改变local state{#example-using-ajax-results-to-set-local-state}
 
-The component below demonstrates how to make an AJAX call in `componentDidMount` to populate local component state. 
+下面这个组件演示了如何在`componentDidMount`中发起AJAX call去更新组件的state。
 
-The example API returns a JSON object like this:
+示例API返回如下的JSON格式。
 
 ```
 {
@@ -50,9 +50,8 @@ class MyComponent extends React.Component {
             items: result.items
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+        // 注意：在这里需要通过如下方式来处理错误而不是使用catch()去捕捉错误
+        // 因为使用catch去捕捉错误会掩盖掉组件本身可能产生的bug
         (error) => {
           this.setState({
             isLoaded: true,
