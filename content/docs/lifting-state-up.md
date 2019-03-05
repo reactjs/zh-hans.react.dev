@@ -150,7 +150,7 @@ function tryConvert(temperature, convert) {
 
 ## 状态提升 {#lifting-state-up}
 
-到目前为止, 两个 `TemperatureInput` 组件均在各自本地的 state 中相互独立地保存着各自的数据。
+到目前为止, 两个 `TemperatureInput` 组件均在各自内部的 state 中相互独立地保存着各自的数据。
 
 ```js{5,9,13}
 class TemperatureInput extends React.Component {
