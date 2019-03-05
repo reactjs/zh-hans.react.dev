@@ -12,7 +12,7 @@ category: FAQ
 
 ### 我应该在React组件的哪个生命周期函数中发起AJAX请求？{#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
 
-我们推荐你在[`componentDidMount`](/docs/react-component.html#mounting)这个生命周期函数中发起AJAX请求。这样做你可以很方便的使用AJAX请求返回回来数据，通过`setState`来更新组件。
+我们推荐你在[`componentDidMount`](/docs/react-component.html#mounting)这个生命周期函数中发起AJAX请求。这样做你可以拿到AJAX请求返回的数据并通过`setState`来更新组件。
 
 ### 用例：使用AJAX请求结果去改变local state{#example-using-ajax-results-to-set-local-state}
 
