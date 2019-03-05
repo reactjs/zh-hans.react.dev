@@ -31,13 +31,7 @@ redirect_from:
 
 你不必着急一口气学完这篇教程的所有内容，尽力就行，哪怕是先学习一两节。
 
-<<<<<<< HEAD
-在跟着这篇教程学习的时候，你可以复制粘贴教程里面的代码，但是我们推荐你亲手敲一遍代码。这样可以加深对 React 的理解。
-
 ### 我们会做出什么东西？ {#what-are-we-building}
-=======
-### What Are We Building? {#what-are-we-building}
->>>>>>> 8803c6375b153af39a850822d844db94ea4c9b0a
 
 接下来，我们一起用 React 开发一个井字棋（tic-tac-toe）。
 
@@ -192,13 +186,9 @@ Square 组件渲染了一个单独的 `<button>`。Board 组件渲染了 9 个�
 
 ### 通过 Props 传递数据 {#passing-data-through-props}
 
-<<<<<<< HEAD
-我们这就开始吧！下面我们要尝试把数据从 Board 组件传递到 Square 组件。
-=======
-To get our feet wet, let's try passing some data from our Board component to our Square component.
+让我们试试水，尝试将数据从 Board 组件传递到 Square 组件中。
 
-We strongly recommend typing code by hand as you're working through the tutorial and not using copy/paste. This will help you develop muscle memory and a stronger understanding.
->>>>>>> 8803c6375b153af39a850822d844db94ea4c9b0a
+我们强烈建议你动手编写本教程中的代码，不要使用复制/粘贴。这将加深你对 React 的记忆和理解。
 
 在 Board 组件的 `renderSquare` 方法中，我们将代码改写成下面这样，传递一个名为 `value` 的 prop 到 Square 当中：
 
@@ -252,11 +242,7 @@ class Square extends React.Component {
 }
 ```
 
-<<<<<<< HEAD
-现在你试着点击一下某个格子，浏览器会弹出一个警示框。
-=======
-If you click on a Square now, you should see an alert in your browser.
->>>>>>> 8803c6375b153af39a850822d844db94ea4c9b0a
+如果此刻点击某个格子，浏览器会弹出提示框。
 
 >注意
 >
@@ -274,11 +260,7 @@ If you click on a Square now, you should see an alert in your browser.
 >}
 >```
 >
-<<<<<<< HEAD
->注意我们使用了 `onClick={() => alert('click')}` 向 `onClick` 这个 prop 传入一个*函数*。很多人经常忘了 `() =>`，写成了 `onClick={alert('click')}`，这种常见的错误会导致每次这个组件渲染的时候都会触发弹出框。
-=======
->Notice how with `onClick={() => alert('click')}`, we're passing *a function* as the `onClick` prop. React will only call this function after a click. Forgetting `() =>` and writing `onClick={alert('click')}` is a common mistake, and would fire the alert every time the component re-renders.
->>>>>>> 8803c6375b153af39a850822d844db94ea4c9b0a
+>注意：此处使用了 `onClick={() => alert('click')}` 的方式向 `onClick` 这个 prop 传入一个*函数*。 React 将在单击时调用此函数。但很多人经常忘记编写 `() =>`，而写成了 `onClick={alert('click')}`，这种常见的错误会导致每次这个组件渲染的时候都会触发弹出框。
 
 接下来，我们希望 Square 组件可以“记住”它被点击过，然后用 “X” 来填充对应的方格。我们用 **state** 来实现所谓“记忆”的功能。
 
@@ -311,15 +293,9 @@ class Square extends React.Component {
 
 现在，我们来修改一下 Square 组件的 `render` 方法，这样，每当方格被点击的时候，就可以显示当前 state 的值了：
 
-<<<<<<< HEAD
 * 在 `<button>` 标签中，把 `this.props.value` 替换为 `this.state.value`。
-* 把 `() => alert()` 事件监听函数替换为 `() => this.setState({value: 'X'})`。
-* 为了更好的可读性，把 `className` 和 `onClick` prop 分两行书写。
-=======
-* Replace `this.props.value` with `this.state.value` inside the `<button>` tag.
-* Replace the `onClick={...}` event handler with `onClick={() => this.setState({value: 'X'})}`.
-* Put the `className` and `onClick` props on separate lines for better readability.
->>>>>>> 8803c6375b153af39a850822d844db94ea4c9b0a
+* 将 `onClick={...}` 事件监听函数替换为 `onClick={() => this.setState({value: 'X'})}`。
+* 为了更好的可读性，将 `className` 和 `onClick` 的 prop 分两行书写。
 
 修改之后，Square 组件中 `render` 方法的返回值中的 `<button>` 标签就变成了下面这样：
 
@@ -380,13 +356,9 @@ class Square extends React.Component {
 
 **当你遇到需要同时获取多个子组件数据，或者两个组件之间需要相互通讯的情况时，需要把子组件的 state 数据提升至其共同的父组件当中保存。之后父组件可以通过 props 将状态数据传递到子组件当中。这样应用当中所有组件的状态数据就能够更方便地同步共享了。**
 
-<<<<<<< HEAD
-像这种把组件的 state 提升到父组件的情形在重构 React 组件时经常会遇到。我们趁现在也来实践一下，在 Board 组件的构造函数中设置一个包含 9 个 null 的数组作为 state 初始值。这 9 个 null 分别对应 9 个 Square：
-=======
-Lifting state into a parent component is common when React components are refactored -- let's take this opportunity to try it out.
+像这种将组件的 state 提升到父组件的情形在重构 React 组件时经常会遇到 —— 借此我们来实践一下。
 
-Add a constructor to the Board and set the Board's initial state to contain an array of 9 nulls corresponding to the 9 squares:
->>>>>>> 8803c6375b153af39a850822d844db94ea4c9b0a
+为 Board 组件添加构造函数，将 Board 组件的初始状态设置为长度为 9 的空值数组：
 
 ```javascript{2-7}
 class Board extends React.Component {
@@ -402,11 +374,7 @@ class Board extends React.Component {
   }
 ```
 
-<<<<<<< HEAD
-当我们填满整个棋盘时，数据结构如下所示：
-=======
-When we fill the board in later, the `this.state.squares` array will look something like this:
->>>>>>> 8803c6375b153af39a850822d844db94ea4c9b0a
+当我们填满整个棋盘时，`this.state.squares` 数组的值如下所示：
 
 ```javascript
 [
@@ -440,11 +408,7 @@ Board 组件当前的 `renderSquare` 方法看起来像下面这样：
 
 接下来，我们要修改一下 Square 的点击事件监听函数。Board 组件当前维护了那些已经被填充了的方格。我们需要想办法让 Square 去更新 Board 的 state。由于 state 对于每个组件来说是私有的，因此我们不能直接通过 Square 来更新 Board 的 state。
 
-<<<<<<< HEAD
-为了保持 Board 的 state 的私有性，我们在 Board 里向 Square 传递一个函数。每次 Square 被点击的时候，这个函数就会被调用。接下来，我们把 Board 组件的 `renderSquare` 方法改成下面这样：
-=======
-Instead, we'll pass down a function from the Board to the Square, and we'll have Square call that function when a square is clicked. We'll change the `renderSquare` method in Board to:
->>>>>>> 8803c6375b153af39a850822d844db94ea4c9b0a
+相反，从 Board 组件向 Square 组件传递一个函数，当 Square 被点击的时候，这个函数就会被调用。接着，我们将 Board 组件的 `renderSquare` 方法改写为如下效果：
 
 ```javascript{5}
   renderSquare(i) {
@@ -486,27 +450,15 @@ class Square extends React.Component {
 
 每一个 Square 被点击时，Board 提供的 `onClick` 函数就会触发。我们回顾一下这是怎么实现的：
 
-<<<<<<< HEAD
 1. 向 DOM 内置元素 `<button>` 添加 `onClick` prop，让 React 开启对点击事件的监听。
 2. 当 button 被点击时，React 会调用 Square 组件的 `render()` 方法中的 `onClick` 事件处理函数。
 3. 事件处理函数触发了传入其中的 `this.props.onClick()` 方法。这个方法是由 Board 传递给 Square 的。
 4. 由于 Board 把 `onClick={() => this.handleClick(i)}` 传递给了 Square，所以当 Square 中的事件处理函数触发时，其实就是触发的 Board 当中的 `this.handleClick(i)` 方法。
-5. 现在我们还尚未定义 `handleClick()` 方法，所以代码还不能正常工作。
-=======
-1. The `onClick` prop on the built-in DOM `<button>` component tells React to set up a click event listener.
-2. When the button is clicked, React will call the `onClick` event handler that is defined in Square's `render()` method.
-3. This event handler calls `this.props.onClick()`. The Square's `onClick` prop was specified by the Board.
-4. Since the Board passed `onClick={() => this.handleClick(i)}` to Square, the Square calls `this.handleClick(i)` when clicked.
-5. We have not defined the `handleClick()` method yet, so our code crashes. If you click a square now, you should see a red error screen saying something like "this.handleClick is not a function".
->>>>>>> 8803c6375b153af39a850822d844db94ea4c9b0a
+5. 现在我们还尚未定义 `handleClick()` 方法，所以代码还不能正常工作。如果此时点击 Square，你会在屏幕上看到红色的错误提示，提示内容为：“this.handleClick is not a function”。
 
 >注意
 >
-<<<<<<< HEAD
->因为 DOM 元素 `<button>` 是一个内置组件，因此其 `onClick` 属性在 React 中有特殊的含义。而对于用户自定义的组件来说，命名就可以由用户自己来定义了。我们可以给 Square 和 Board 的 prop 分别命名为 `onClick` 和 `handleClick`。然而在 React 中，有一个命名的约定，我们一般把代表事件的的监听 prop 命名为 `on[Event]`，把处理事件的监听方法命名为 `handle[Event]` 这样的格式。
-=======
->The DOM `<button>` element's `onClick` attribute has a special meaning to React because it is a built-in component. For custom components like Square, the naming is up to you. We could give any name to the Square's `onClick` prop or Board's `handleClick` method, and the code would work the same. In React, it's conventional to use `on[Event]` names for props which represent events and `handle[Event]` for the methods which handle the events.
->>>>>>> 8803c6375b153af39a850822d844db94ea4c9b0a
+>因为 DOM 元素 `<button>` 是一个内置组件，因此其 `onClick` 属性在 React 中有特殊的含义。而对于用户自定义的组件来说，命名就可以由用户自己来定义了。我们给 Square 的 `onClick` 和 Board 的 `handleClick` 赋予任意的名称，代码依旧有效。在 React 中，有一个命名规范，通常会将代表事件的的监听 prop 命名为 `on[Event]`，将处理事件的监听方法命名为 `handle[Event]` 这样的格式。
 
 这时候我们点击 Square 的时候，浏览器会报错，因为我们还没有定义 `handleClick` 方法。我们现在来向 Board 里添加 `handleClick` 方法：
 
@@ -563,11 +515,7 @@ class Board extends React.Component {
 
 **[查看此步完整代码示例](https://codepen.io/gaearon/pen/ybbQJX?editors=0010)**
 
-<<<<<<< HEAD
-现在，我们就可以通过点击 Square 来填充那些方格了。但是，当前 state 没有保存在单个的 Square 组件中，而是保存在了 Board 组件中。每当 Board 的 state 发生变化的时候，这些 Square 组件都会重新渲染一次。把所有 Square 的 state 保存在 Board 组件中可以让我们在将来判断出游戏的胜者。
-=======
-After these changes, we're again able to click on the Squares to fill them, the same as we had before. However, now the state is stored in the Board component instead of the individual Square components. When the Board's state changes, the Square components re-render automatically. Keeping the state of all squares in the Board component will allow it to determine the winner in the future.
->>>>>>> 8803c6375b153af39a850822d844db94ea4c9b0a
+现在，我们可以通过点击 Square 来填充那些方格，效果与之前相同。但是，当前 state 没有保存在单个的 Square 组件中，而是保存在了 Board 组件中。每当 Board 的 state 发生变化的时候，这些 Square 组件都会重新渲染一次。把所有 Square 的 state 保存在 Board 组件中可以让我们在将来判断出游戏的胜者。
 
 因为 Square 组件不再持有 state，因此每次它们被点击的时候，Square 组件就会从 Board 组件中接收值，并且通知 Board 组件。在 React 术语中，我们把目前的 Square 组件称做“受控组件”。在这种情况下，Board 组件完全控制了 Square 组件。
 
@@ -609,21 +557,17 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 跟踪不可变数据的变化相对来说就容易多了。如果发现对象变成了一个新对象，那么我们就可以说对象发生改变了。
 
-<<<<<<< HEAD
 #### 确定在 React 中何时重新渲染 {#determining-when-to-re-render-in-react}
-=======
-#### Determining When to Re-Render in React {#determining-when-to-re-render-in-react}
->>>>>>> 8803c6375b153af39a850822d844db94ea4c9b0a
 
 不可变性最主要的优势在于它可以帮助我们在 React 中创建 _pure components_。我们可以很轻松的确定不可变数据是否发生了改变，从而确定何时对组件进行重新渲染。
 
 查阅[性能优化](/docs/optimizing-performance.html#examples)章节，以了解更多有关 `shouldComponentUpdate()` 函数及如何构建 *pure components* 的内容。
 
-### 函数式组件 {#function-components}
+### 函数组件 {#function-components}
 
-接下来我们把 Square 组件重写为一个**函数式组件**。
+接下来我们把 Square 组件重写为一个**函数组件**。
 
-如果你想写的组件只包含一个 `render` 方法，并且不包含 state，那么使用**函数式组件**就会更简单。我们不需要定义一个继承于 `React.Component` 的类，我们可以定义一个函数，这个函数接收 `props` 作为参数，然后返回需要渲染的元素。函数式组件写起来不像类定义组件那么繁琐，很多组件都可以使用函数式组件来写。
+如果你想写的组件只包含一个 `render` 方法，并且不包含 state，那么使用**函数组件**就会更简单。我们不需要定义一个继承于 `React.Component` 的类，我们可以定义一个函数，这个函数接收 `props` 作为参数，然后返回需要渲染的元素。函数组件写起来并不像 class 组件那么繁琐，很多组件都可以使用函数组件来写。
 
 把 Square 类替换成下面的函数：
 
@@ -643,11 +587,7 @@ function Square(props) {
 
 >注意
 >
-<<<<<<< HEAD
->当我们把 Square 修改成函数式组件时，我们同时也把 `onClick={() => this.props.onClick()}` 改成了更短的 `onClick={props.onClick}`（注意两侧*都*没有括号）。在类定义组件中，我们使用箭头函数来获取正确的 `this` 的值。但是在函数式组件中，我们不必担心 `this` 的问题。
-=======
->When we modified the Square to be a function component, we also changed `onClick={() => this.props.onClick()}` to a shorter `onClick={props.onClick}` (note the lack of parentheses on *both* sides).
->>>>>>> 8803c6375b153af39a850822d844db94ea4c9b0a
+>当我们把 Square 修改成函数组件时，我们同时也把 `onClick={() => this.props.onClick()}` 改成了更短的 `onClick={props.onClick}`（注意两侧*都*没有括号）。
 
 ### 轮流落子 {#taking-turns}
 
@@ -679,13 +619,9 @@ class Board extends React.Component {
   }
 ```
 
-<<<<<<< HEAD
-修改之后，我们就实现了 “X” 和 “O” 轮流落子的效果了。接下来我们修改 Board 组件的 `render` 方法中的 “status” 的值，这样就可以显示下一步是哪个玩家的了。
-=======
-With this change, "X"s and "O"s can take turns. Try it!
+修改之后，我们就实现了 “X” 和 “O” 轮流落子的效果。尝试玩一下。
 
-Let's also change the "status" text in Board's `render` so that it displays which player has the next turn:
->>>>>>> 8803c6375b153af39a850822d844db94ea4c9b0a
+接下来修改 Board 组件 `render` 方法中 “status” 的值，这样就可以显示下一步是哪个玩家的了。
 
 ```javascript{2}
   render() {
@@ -756,11 +692,7 @@ class Board extends React.Component {
 
 ### 判断出胜者 {#declaring-a-winner}
 
-<<<<<<< HEAD
-至此我们就可以看出下一步会轮到哪位玩家，与此同时，我们还需要显示游戏的结果来判定游戏结束。在文件底部添加如下函数来帮助我们判断胜者是谁：
-=======
-Now that we show which player's turn is next, we should also show when the game is won and there are no more turns to make. Copy this helper function and paste it at the end of the file:
->>>>>>> 8803c6375b153af39a850822d844db94ea4c9b0a
+至此我们就可以看出下一步会轮到哪位玩家，与此同时，我们还需要显示游戏的结果来判定游戏结束。拷贝如下 helper 函数并粘贴到文件底部：
 
 ```javascript
 function calculateWinner(squares) {
@@ -784,13 +716,9 @@ function calculateWinner(squares) {
 }
 ```
 
-<<<<<<< HEAD
-接着，在 Board 组件的 `render` 方法中调用 `calculateWinner(squares)` 检查是否有玩家胜出。一旦有一方玩家胜出，就把获胜玩家的信息显示出来，比如，“胜者：X” 或者“胜者：O”。现在，我们把 Board 的 `render` 函数中的 status 的定义修改为如下代码：
-=======
-Given an array of 9 squares, this function will check for a winner and return `'X'`, `'O'`, or `null` as appropriate.
+传入长度为 9 的数组，此函数将判断出获胜者，并根据情况返回 “X”，“0” 或 “null”。
 
-We will call `calculateWinner(squares)` in the Board's `render` function to check if a player has won. If a player has won, we can display text such as "Winner: X" or "Winner: O". We'll replace the `status` declaration in Board's `render` function with this code:
->>>>>>> 8803c6375b153af39a850822d844db94ea4c9b0a
+接着，在 Board 组件的 `render` 方法中调用 `calculateWinner(squares)` 检查是否有玩家胜出。一旦有一方玩家胜出，就把获胜玩家的信息显示出来，比如，“胜者：X” 或者“胜者：O”。现在，我们把 Board 的 `render` 函数中的 status 的定义修改为如下代码：
 
 ```javascript{2-8}
   render() {
