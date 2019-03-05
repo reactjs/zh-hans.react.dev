@@ -54,7 +54,7 @@ Context 主要应用场景在于*很多*不同层级的组件需要访问同样�
 
 如果在最后只有 `Avatar` 组件真的需要 `user` 和 `avatarSize`，那么层层传递这两个 props 就显得非常冗余。而且一旦 `Avatar` 组件需要更多从来自顶层组件的 props，你还得在中间层级一个一个加上去，这将会变得非常麻烦。
 
-一种**无需 context** 的解决方案是[将 `Avatar` 组件自身传递下去](/docs/composition-vs-inheritance.html#containment)，因而中间组件无需知道 `user` 属性：
+一种**无需 context** 的解决方案是[将 `Avatar` 组件自身传递下去](/docs/composition-vs-inheritance.html#containment)，因而中间组件无需知道 `user` 或者 `avatarSize` 等 props：
 
 ```js
 function Page(props) {
@@ -68,7 +68,7 @@ function Page(props) {
 }
 
 // 现在，我们有这样的组件：
-<Page user={user} />
+<Page user={user} avatarSize={avatarSize} />
 // ... 渲染出 ...
 <PageLayout userLink={...} />
 // ... 渲染出 ...
