@@ -8,7 +8,7 @@ category: FAQ
 
 ### 我怎样在React中发起AJAX请求{#how-can-i-make-an-ajax-call}
 
-在React开发中，你能使用任何流行的AJAX库，比如社区比较流行的[Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/),或者是浏览器内置的[window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)。
+在React开发中，你能使用任何你喜欢的AJAX库，比如社区比较流行的[Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/),或者是浏览器内置的[window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)。
 
 ### 我应该在React组件的哪个生命周期函数中发起AJAX请求？{#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
 
