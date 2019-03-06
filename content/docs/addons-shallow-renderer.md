@@ -51,7 +51,7 @@ expect(result.props.children).toEqual([
 
 > 注意：
 >
-> 建议你查阅 Enzyme 的[浅层渲染的 API](http://airbnb.io/enzyme/docs/api/shallow.html)。它在相同的功能基础上提供了更棒更高级 API。
+> 建议你查阅 Enzyme 的[浅层渲染的 API](https://airbnb.io/enzyme/docs/api/shallow.html)。它在相同的功能基础上提供了更棒更高级的 API。
 
 ## 参考 {#reference}
 
