@@ -44,7 +44,7 @@ render() {
 
 “CSS-in-JS” 是指一种模式，其中 CSS 由 JavaScript 生成而不是在外部文件中定义。在[此处](https://github.com/MicheleBertoli/css-in-js)阅读 CSS-in-JS 库的一个比较。
 
-_注意此功能并不是 React 的一部分，而是由第三方库提供。_ React 对样式如何定义并没有一个观点；如果有所怀疑，一个好的起点是和平时一样，在一个单独的 `*.css` 文件定义你的样式，并且通过 [`className`](/docs/dom-elements.html#classname) 指代它们。
+_注意此功能并不是 React 的一部分，而是由第三方库提供。_ React 对样式如何定义并没有一个观点；如果有所疑惑，一个好的起点是和平时一样，在一个单独的 `*.css` 文件定义你的样式，并且通过 [`className`](/docs/dom-elements.html#classname) 指代它们。
 
 ### 我可以在 React 中实现动画效果吗？ {#can-i-do-animations-in-react}
 
