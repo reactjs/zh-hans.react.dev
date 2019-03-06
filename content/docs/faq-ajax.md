@@ -16,7 +16,7 @@ category: FAQ
 
 ### 用例：使用AJAX请求结果去改变local state{#example-using-ajax-results-to-set-local-state}
 
-下面这个组件演示了如何在`componentDidMount`中发起AJAX call去更新组件的state。
+下面这个组件演示了如何在`componentDidMount`中发起AJAX请求去更新组件的state。
 
 示例API返回如下的JSON格式。
 
