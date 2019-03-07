@@ -19,17 +19,21 @@ React 实现了一套独立于浏览器的 DOM 系统，兼顾了性能和跨浏
 在 React 中，所有的 DOM 特性和属性（包括事件处理）都应该是驼峰拼写法命名。例如，与 HTML 中的 `tabindex` 属性对应的 React 的属性是 `tabIndex` 。例外的情况是 `aria-*` 和 `data-*` 属性，一律使用小写字母命名。比如, 你依然可以用 `aria-label` 作为 `aria-label`。
 
 ## 属性的不同 {#differences-in-attributes}
+
 在 React 和 HTML 之间有很多属性的作用是不同的。
 
 ### checked {#checked}
+
 `checked` 属性是由 type 为 `checkbox` 或 `radio` 的 `<input>` 组件所支持的。你可以用它来设定组件是否被选中。这对于构建控制组件很有用。与之相对的 `defaultChecked` 是非控制组件的属性，用来设定组件首次装载时是否被选中。
 
 ### className {#classname}
+
 用 `className` 属性来指定一个 CSS class，这个特性适用于所有的常规 DOM 节点和 SVG 元素，比如 `<div>`，`<a>` 和其它的标签。
 
 如果你在 React 中使用 Web 组件（这是一种不常见的使用方式），请使用 class 属性来代替。
 
 ### dangerouslySetInnerHTML {#dangerouslysetinnerhtml}
+
 `dangerouslySetInnerHTML` 是 React 提供给浏览器 DOM 中 `innerHTML` 方法的一种替换方案。通常来讲，使用代码直接设置 HTML 文档内容是存在风险的，因为这样很容易把你的用户信息暴露，且不经意间就会受到[跨站脚本(XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting)攻击。所以，虽然可以直接在 React 中设置 HTML 的内容，但是你要使用 `dangerouslySetInnerHTML` 并且向其传递一个含有 `__html` 为 key 的对象，以此来提醒你这样做是很危险。例如：
 
 ```js
@@ -43,15 +47,19 @@ function MyComponent() {
 ```
 
 ### htmlFor {#htmlfor}
+
 因为 `for` 在 Javascript 中是一个关键字，所以 React 元素使用 `htmlFor` 代替。
 
 ### onChange {#onchange}
+
 `onChange` 事件的行为就如你所想的：无论一个表单内容何时发生变化，这个事件都会被触发。我们故意不使用浏览器已有的默认行为，就是因为 `onChange` 在浏览器中的行为和名称不相称，而 React 是依靠这个事件实时处理用户输入。
 
 ### selected {#selected}
+
 `selected` 属性被 `<option>` 组件所支持。你可以使用该属性设置组件是否被选择。这对构建控制组件很有用。
 
 ### style {#style}
+
 >注
 >
 >在文档中，为了方便，一些例子直接使用了 `style` ，但是**一般不推荐使用 `style` 属性作为样式化元素的主要方式**。在多数情况下，[`className`](#classname) 应用于指向对应的外部 CSS 样式文档定义的 class 。`style` 在 React 应用中更多的用于在渲染过程中添加动态计算的样式。另请参阅：[问与答: Styling 和 CSS](/docs/faq-styling.html)。
@@ -101,6 +109,7 @@ React 将自动添加一个 ”px” 后缀到某些特定数字的内联样式�
 尽管不是所有样式属性都会被转化为像素字符串，但某些个样式属性是会保持无单位(例如 `zoom` , `order`, `flex`)。完整的无单位的属性列表在[这里](https://github.com/facebook/react/blob/4131af3e4bf52f3a003537ec95a1655147c81270/src/renderers/dom/shared/CSSProperty.js#L15-L59)。
 
 ### suppressContentEditableWarning {#suppresscontenteditablewarning}
+
 一般来说，当一个拥有子节点的元素被标记为 `contentEditable` 时，React 会发出一个警告，因为这是无效的。这个属性会触发这样的警告信息。不要使用这个属性，除非你要构建一个类似 [Draft.js](https://facebook.github.io/draft-js/) 这样需要手动管理 `contentEditable` 属性的库。
 
 ### suppressHydrationWarning {#suppresshydrationwarning}
