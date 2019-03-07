@@ -14,10 +14,10 @@ redirect_from:
 ```html
 <form>
   <label>
-    Name:
+    名字:
     <input type="text" name="name" />
   </label>
-  <input type="submit" value="Submit" />
+  <input type="submit" value="提交" />
 </form>
 ```
 
@@ -46,7 +46,7 @@ class NameForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
+    alert('提交的名字: ' + this.state.value);
     event.preventDefault();
   }
 
@@ -54,10 +54,10 @@ class NameForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Name:
+          名字:
           <input type="text" value={this.state.value} onChange={this.handleChange} />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="提交" />
       </form>
     );
   }
@@ -93,7 +93,7 @@ class EssayForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 'Please write an essay about your favorite DOM element.'
+      value: '请撰写一篇关于你喜欢的 DOM 元素的文章.'
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -105,7 +105,7 @@ class EssayForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('An essay was submitted: ' + this.state.value);
+    alert('提交的文章: ' + this.state.value);
     event.preventDefault();
   }
 
@@ -113,10 +113,10 @@ class EssayForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Essay:
+          文章:
           <textarea value={this.state.value} onChange={this.handleChange} />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="提交" />
       </form>
     );
   }
@@ -131,20 +131,20 @@ class EssayForm extends React.Component {
 
 ```html
 <select>
-  <option value="grapefruit">Grapefruit</option>
-  <option value="lime">Lime</option>
-  <option selected value="coconut">Coconut</option>
-  <option value="mango">Mango</option>
+  <option value="葡萄柚">葡萄柚</option>
+  <option value="柠檬">柠檬</option>
+  <option selected value="椰子">椰子</option>
+  <option value="芒果">芒果</option>
 </select>
 ```
 
-请注意，由于 `selected` 属性的缘故，Coconut 选项默认被选中。React 并不会使用 `selected` 属性，而是在根 `select` 标签上使用 `value` 属性。这在受控组件中更便捷，因为您只需要在根标签中更新它。例如：
+请注意，由于 `selected` 属性的缘故，椰子选项默认被选中。React 并不会使用 `selected` 属性，而是在根 `select` 标签上使用 `value` 属性。这在受控组件中更便捷，因为您只需要在根标签中更新它。例如：
 
 ```javascript{4,10-12,24}
 class FlavorForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: 'coconut'};
+    this.state = {value: '椰子'};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -155,7 +155,7 @@ class FlavorForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('Your favorite flavor is: ' + this.state.value);
+    alert('你喜欢的风味是: ' + this.state.value);
     event.preventDefault();
   }
 
@@ -163,15 +163,15 @@ class FlavorForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Pick your favorite flavor:
+          选择你喜欢的风味:
           <select value={this.state.value} onChange={this.handleChange}>
-            <option value="grapefruit">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
+            <option value="葡萄柚">葡萄柚</option>
+            <option value="柠檬">柠檬</option>
+            <option value="椰子">椰子</option>
+            <option value="芒果">芒果</option>
           </select>
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="提交" />
       </form>
     );
   }
@@ -232,7 +232,7 @@ class Reservation extends React.Component {
     return (
       <form>
         <label>
-          Is going:
+          参与:
           <input
             name="isGoing"
             type="checkbox"
@@ -241,7 +241,7 @@ class Reservation extends React.Component {
         </label>
         <br />
         <label>
-          Number of guests:
+          来宾人数:
           <input
             name="numberOfGuests"
             type="number"
