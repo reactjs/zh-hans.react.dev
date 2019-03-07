@@ -9,9 +9,9 @@ permalink: docs/glossary.html
 
 ## 单页面应用 {#single-page-application}
 
-单页面应用(single-page application)，是一个应用程序，它可以加载单个 HTML 页面，以及运行应用程序所需的所有必要资源（例如 JavaScript 和 CSS）。在页面中的任何交互或后续页面或跳转，都不再去 server 往返加载资源，也就是说页面不会重新加载。
+单页面应用(single-page application)，是一个应用程序，它可以加载单个 HTML 页面，以及运行应用程序所需的所有必要资源（例如 JavaScript 和 CSS）。与页面或后续页面的任何交互，都不再需要往返 server 加载资源，即页面不会重新加载。
 
-你可以使用 React 来构建单页应用程序，但并不要求只能如此。React 还可用于增强现有网站的小部分，使其增加额外交互。用 React 编写的代码，可以与服务器端渲染的标记（例如 PHP）或其他客户端库和平共处。实际上，这也正是 Facebook 内部使用 React 的方式。
+你可以使用 React 来构建单页应用程序，但这不是必须如此。React 还可用于增强现有网站的小部分，使其增加额外交互。用 React 编写的代码，可以与服务器端渲染的标记（例如 PHP）或其他客户端库和平共处。实际上，这也正是 Facebook 内部使用 React 的方式。
 
 ## ES6, ES2015, ES2016 等 {#es6-es2015-es2016-etc}
 
@@ -19,7 +19,7 @@ permalink: docs/glossary.html
 
 ## compiler（编译器） {#compilers}
 
-JavaScript compiler 接收 JavaScript 代码，然后对其进行转换，最终返回不同格式的 JavaScript 代码。最为常见的使用示例是，接收 ES6 语法，然后将其转换为旧版本浏览器能够解释执行的语法。[Babel](https://babeljs.io/) 是 React 最常用的编译器。
+JavaScript compiler 接收 JavaScript 代码，然后对其进行转换，最终返回不同格式的 JavaScript 代码。最为常见的使用示例是，接收 ES6 语法，然后将其转换为旧版本浏览器能够解释执行的语法。[Babel](https://babeljs.io/) 是 React 最常用的 compiler。
 
 ## bundler（打包工具） {#bundlers}
 
@@ -122,7 +122,7 @@ class Welcome extends React.Component {
 
 当组件一些数据在某些时刻发生变化时，这时就需要使用 `state` 来跟踪状态。例如，`Checkbox` 组件可能需要 `isChecked` 状态，而 `NewsFeed` 组件可能需要跟踪 `fetchedPosts` 状态。
 
-`state` 和 `props` 之间最重要的区别是：`props` 是从父组件传入的，而 `state` 是由组件本身管理。组件不能修改 `props`，但它可以修改 `state`。如果要修改 `state`，必须调用 `this.setState()`。只有 class 组件才具有 state。
+`state` 和 `props` 之间最重要的区别是：`props` 由父组件传入，而 `state` 是由组件本身管理。组件不能修改 `props`，但它可以修改 `state`。如果要修改 `state`，必须调用 `this.setState()`。只有 class 组件才具有 state。
 
 对于所有变化数据中的每个特定部分，只应该由一个组件在其 state 中“持有”它。不要试图同步来自于两个不同组件的 state。相反，应当将其[提升](/docs/lifting-state-up.html)到最近的共同祖先组件中，并将这个 state 作为 props 传递到两个子组件。
 
@@ -142,7 +142,7 @@ React 有两种不同的方式来处理表单输入。
 
 ## [key](/docs/lists-and-keys.html) {#keys}
 
-“key” 是在创建元素数组时，需要包含的特殊字符串属性。key 帮助 React 识别出修改、添加或删除的 item。应当给数组内的每个元素都设定 key，以使元素具有固定身份标识。
+“key” 是在创建元素数组时，需要包含的特殊字符串属性。key 帮助 React 识别出被修改、添加或删除的 item。应当给数组内的每个元素都设定 key，以使元素具有固定身份标识。
 
 只需要保证，在同一个数组中的兄弟元素之间的 key 是唯一的。而不需要在整个应用程序甚至单个组件中保持唯一。
 
