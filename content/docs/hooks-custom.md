@@ -152,7 +152,7 @@ function FriendListItem(props) {
 
 ### Tip: 在多个 Hook 之间传递信息 {#tip-pass-information-between-hooks}
 
-由于 Hooks 就是函数，我们可以在它们之间传递信息。
+由于 Hooks 本身就是函数，因此我们可以在它们之间传递信息。
 
 我们将使用聊天应用中的另一个组件来说明这一点。这是一个消息接收人的选择器，它会显示当前选定的好友是否在线:
 
