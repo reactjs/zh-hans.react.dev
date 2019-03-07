@@ -99,7 +99,7 @@ function useFriendStatus(friendID) {
 
 与 React 组件不同的是，自定义 Hook 不需要具有特殊的标识。我们可以自由的决定它的参数是什么，以及它应该返回什么（如果需要的话）。换句话说，它就像一个正常的函数。但是它的名字应该始终以 `use` 开头，这样可以一眼看出其符合[Hook 的规则](/docs/hooks-rules.html)。
 
-我们这个 Hook `useFriendStatus` 的目的是订阅某个好友的在线状态。这也就是为什么我们需要 `friendID` 作为参数，并返回这位朋友的在线状态。
+此处 `useFriendStatus` 的 Hook 目的是订阅某个好友的在线状态。这就是我们需要将 `friendID` 作为参数，并返回这位朋友的在线状态的原因。
 
 ```js
 function useFriendStatus(friendID) {
