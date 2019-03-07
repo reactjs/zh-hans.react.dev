@@ -63,7 +63,7 @@ function FriendListItem(props) {
 }
 ```
 
-相反，我们想在 `FriendStatus` 和 `FriendListItem` 之间共享逻辑。
+相反，我们希望在 `FriendStatus` 和 `FriendListItem` 之间共享逻辑。
 
 目前为止，在 React 中有两种流行的方式来共享组件之间的状态逻辑: [render props](/docs/render-props.html) 和[高阶组件](/docs/higher-order-components.html)，现在让我们来看看 Hooks 是如何在让你不增加组件的情况下解决相同问题的。
 
