@@ -144,7 +144,7 @@ class EssayForm extends React.Component {
 class FlavorForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: '椰子'};
+    this.state = {value: 'coconut'};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
