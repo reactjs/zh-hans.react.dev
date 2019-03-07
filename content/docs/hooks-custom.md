@@ -236,7 +236,7 @@ function useReducer(reducer, initialState) {
 }
 ```
 
-现在我们可以在我们的组件中使用它，让 reducer 驱动它的状态管理：
+在组件中使用它，让 reducer 驱动它管理 state：
 
 ```js{2}
 function Todos() {
