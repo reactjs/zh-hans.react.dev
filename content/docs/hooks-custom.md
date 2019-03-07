@@ -150,7 +150,7 @@ function FriendListItem(props) {
 
 **自定义 Hook 如何获取独立的 state?**每次*调用* Hook，它都会获取独立的 state。由于我们直接调用了 `useFriendStatus`，从 React 的角度来看，我们的组件只是调用了 `useState` 和 `useEffect`。 正如我们在[之前章节](/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns)中[了解到的](/docs/hooks-state.html#tip-using-multiple-state-variables)一样，我们可以在一个组件中多次调用 `useState` 和 `useEffect`，它们是完全独立的。
 
-### Tip: 在多个 Hook 之间传递信息 {#tip-pass-information-between-hooks}
+### 提示：在多个 Hook 之间传递信息 {#tip-pass-information-between-hooks}
 
 由于 Hooks 本身就是函数，因此我们可以在它们之间传递信息。
 
