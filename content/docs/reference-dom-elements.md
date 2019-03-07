@@ -79,7 +79,6 @@ function HelloWorldComponent() {
 
 注意样式不会自动补齐前缀。为了支持旧的浏览器，你需要手动补充相对应的样式属性：
 
-
 ```js
 const divStyle = {
   WebkitTransition: 'all', // note the capital 'W' here
@@ -106,6 +105,7 @@ React 将自动添加一个 ”px” 后缀到某些特定数字的内联样式�
   Hello World!
 </div>
 ```
+
 尽管不是所有样式属性都会被转化为像素字符串，但某些个样式属性是会保持无单位(例如 `zoom` , `order`, `flex`)。完整的无单位的属性列表在[这里](https://github.com/facebook/react/blob/4131af3e4bf52f3a003537ec95a1655147c81270/src/renderers/dom/shared/CSSProperty.js#L15-L59)。
 
 ### suppressContentEditableWarning {#suppresscontenteditablewarning}
