@@ -219,7 +219,7 @@ function todosReducer(state, action) {
 }
 ```
 
-Reducers 非常便于单独测试，并且可以扩展以表达复杂的更新逻辑。如有必要，您可以将它们分成更小的 reducer。但是，您可能还享受使用 React 本地状态的好处，或者可能不想安装其他库。
+Reducers 非常便于单独测试，且易于扩展，以表达复杂的更新逻辑。如有必要，您可以将它们分成更小的 reducer。但是，你可能还享受着 React 内部 state 带来的好处，或者可能根本不想安装其他库。
 
 那么，为什么我们不编写一个 `useReducer` 的 Hook，使用 reducer 的方式来管理组件的内部 state 呢？其简化版本可能如下所示：
 
