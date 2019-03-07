@@ -67,7 +67,6 @@ function FriendListItem(props) {
 
 目前为止，在 React 中有两种流行的方式来共享组件之间的状态逻辑: [render props](/docs/render-props.html) 和[高阶组件](/docs/higher-order-components.html)，现在让我们来看看 Hooks 是如何在让你不增加组件的情况下解决相同问题的。
 
-## Extracting a Custom Hook {#extracting-a-custom-hook}
 ## 提取自定义 Hook {#extracting-a-custom-hook}
 
 当我们想在两个函数之间共享逻辑时，我们会把它提取到第三个函数中。而组件和 Hooks 都是函数，所以也同样适用这种方式。
@@ -99,7 +98,7 @@ function useFriendStatus(friendID) {
 
 与 React 组件不同的是，自定义 Hook 不需要具有特殊的标识。我们可以自由的决定它的参数是什么，以及它应该返回什么（如果需要的话）。换句话说，它就像一个正常的函数。但是它的名字应该始终以 `use` 开头，这样可以一眼看出其符合[Hook 的规则](/docs/hooks-rules.html)。
 
-此处 `useFriendStatus` 的 Hook 目的是订阅某个好友的在线状态。这就是我们需要将 `friendID` 作为参数，并返回这位朋友的在线状态的原因。
+此处 `useFriendStatus` 的 Hook 目的是订阅某个好友的在线状态。这就是我们需要将 `friendID` 作为参数，并返回这位好友的在线状态的原因。
 
 ```js
 function useFriendStatus(friendID) {
