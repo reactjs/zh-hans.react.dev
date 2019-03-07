@@ -146,7 +146,7 @@ function FriendListItem(props) {
 
 **我必须以 “`use`” 开头来自定义 Hooks 吗?** 请这么做。这个约定非常重要。没有它，React 无法自动检查是否违反了[Hook 的规则](/docs/hooks-rules.html)，因为我们无法判断某个函数是否包含了 Hooks 的调用。
 
-**在两个组件中使用相同的 Hook 会共享状态吗?** 不会。自定义 Hooks 是一种重用*状态逻辑*的机制(例如设置订阅并记住当前值)，所以每次使用自定义 Hook 时，其中的所有 state 和副作用都是完全隔离的。
+**在两个组件中使用相同的 Hook 会共享 state 吗?**不会。自定义 Hooks 是一种重用*状态逻辑*的机制(例如设置为订阅并存储当前值)，所以每次使用自定义 Hook 时，其中的所有 state 和副作用都是完全隔离的。
 
 **自定义 Hook 如何获取独立的 state?**每次*调用* Hook，它都会获取独立的 state。由于我们直接调用了 `useFriendStatus`，从 React 的角度来看，我们的组件只是调用了 `useState` 和 `useEffect`。 正如我们在[之前章节](/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns)中[了解到的](/docs/hooks-state.html#tip-using-multiple-state-variables)一样，我们可以在一个组件中多次调用 `useState` 和 `useEffect`，它们是完全独立的。
 
