@@ -100,7 +100,7 @@ ReactDOM.findDOMNode(component)
 > 注意:
 >
 > `findDOMNode` 只在已挂载的组件上可用（即，已经放置在 DOM 中的组件）。如果你尝试调用未挂载的组件（例如在一个还未创建的组件上调用 `render()` 中的 `findDOMNode()`）将会引发异常。
-> 
+>
 > `findDOMNode` 不能用于函数组件。
 
 * * *
