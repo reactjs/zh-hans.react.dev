@@ -131,10 +131,10 @@ class EssayForm extends React.Component {
 
 ```html
 <select>
-  <option value="葡萄柚">葡萄柚</option>
-  <option value="柠檬">柠檬</option>
-  <option selected value="椰子">椰子</option>
-  <option value="芒果">芒果</option>
+  <option value="grapefruit">葡萄柚</option>
+  <option value="lime">柠檬</option>
+  <option selected value="coconut">椰子</option>
+  <option value="mango">芒果</option>
 </select>
 ```
 
@@ -165,10 +165,10 @@ class FlavorForm extends React.Component {
         <label>
           选择你喜欢的风味:
           <select value={this.state.value} onChange={this.handleChange}>
-            <option value="葡萄柚">葡萄柚</option>
-            <option value="柠檬">柠檬</option>
-            <option value="椰子">椰子</option>
-            <option value="芒果">芒果</option>
+            <option value="grapefruit">葡萄柚</option>
+            <option value="lime">柠檬</option>
+            <option value="coconut">椰子</option>
+            <option value="mango">芒果</option>
           </select>
         </label>
         <input type="submit" value="提交" />
