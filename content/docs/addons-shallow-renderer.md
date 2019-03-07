@@ -30,7 +30,7 @@ function MyComponent() {
 }
 ```
 
-你可以使用断言(assert)：
+你可以使用断言：
 
 ```javascript
 import ShallowRenderer from 'react-test-renderer/shallow';
@@ -65,4 +65,4 @@ expect(result.props.children).toEqual([
 
 在 `shallowRenderer.render()` 被调用后，你可以使用 `shallowRenderer.getRenderOutput()` 来获取浅层渲染的输出内容。
 
-然后，你就可以开始对输出内容进行断言（assert）了。
+然后，你就可以开始对输出内容进行断言操作。
