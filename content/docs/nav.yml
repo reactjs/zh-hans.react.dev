@@ -7,7 +7,7 @@
     - id: create-a-new-react-app
       title: 创建新的 React App
     - id: cdn-links
-      title: CDN Links
+      title: CDN 链接
 - title: 核心概念
   isOrdered: true
   items:
@@ -34,7 +34,7 @@
     - id: composition-vs-inheritance
       title: 组合 vs 继承
     - id: thinking-in-react
-      title: React 理念
+      title: React 哲学
 - title: 高级指引
   items:
     - id: accessibility

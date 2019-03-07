@@ -83,7 +83,7 @@ function ComponentWithTransition() {
 }
 ```
 
-样式中关键字使用驼峰拼写法命名是为了与从 JS 中访问 DOM 节点的属性保持一致性（例如 `node.style.backgroundImage` ）。浏览器引擎前缀 [除了 `ms` ](http://www.andismith.com/blog/2012/02/modernizr-prefixed/) 都应该以大写字母开头。这就是为什么 `WebkitTransition` 有一个大写字母 ”W”。
+样式中关键字使用驼峰拼写法命名是为了与从 JS 中访问 DOM 节点的属性保持一致性（例如 `node.style.backgroundImage` ）。浏览器引擎前缀 [除了 `ms` ](https://www.andismith.com/blog/2012/02/modernizr-prefixed/) 都应该以大写字母开头。这就是为什么 `WebkitTransition` 有一个大写字母 ”W”。
 
 React 将自动添加一个 ”px” 后缀到某些特定数字的内联样式属性。如果你希望使用不同于 ”px” 的其他单位，那么设置值则是该数字与你想要设置的单位组成一个字符串。例如：
 
