@@ -117,7 +117,7 @@ function useFriendStatus(friendID) {
 
 我们一开始的目标是在 `FriendStatus` 和 `FriendListItem` 组件中去除重复的逻辑，即：这两个组件都想知道好友是否在线。
 
-现在我们已经把这个逻辑提到了一个叫 `useFriendStatus` 的自定义 Hook 中，然后就可以*用它了：*
+现在我们已经把这个逻辑提取到 `useFriendStatus` 的自定义 Hook 中，然后就可以*使用它了：*
 
 ```js{2}
 function FriendStatus(props) {
