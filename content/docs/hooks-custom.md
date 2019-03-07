@@ -202,7 +202,7 @@ function ChatRecipientPicker() {
 
 尽量不要过早地增加抽象。既然函数定义组件可以做更多事了，那么代码库中函数定义组件的代码行数可能会变得更多。这是正常的 —— 不要觉得你必须立即将其拆分为 Hook。但我们鼓励你去发现可以通过自定义 Hook 将复杂的逻辑隐藏在简单的接口背后，或者可以帮助解决组件内部杂乱无章的情况的点。
 
-例如，你可能有一个复杂的组件，包含了以临时方式来管理大量的本地状态。`useState` 不会使集中更新逻辑变得更容易，因此您可能更愿意将其编写为 [redux](http://redux.js.org/) reducer。
+例如，有个复杂的组件，其中包含了大量以特殊的方式来管理的内部状态。`useState` 并不会使得集中更新逻辑变得容易，因此您可能更愿意使用 [redux](http://redux.js.org/) 中的 reducer 来编写。
 
 ```js
 function todosReducer(state, action) {
