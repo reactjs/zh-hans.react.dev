@@ -60,8 +60,8 @@ ReactDOM.render(element, container[, callback])
 
 ```javascript
 ReactDOM.hydrate(element, container[, callback])
-
 ```
+
 与 [`render()`](#render) 相同，但它用于在 [`ReactDOMServer`](/docs/react-dom-server.html) 渲染的容器中对 HTML 的内容进行 hydrate 操作。React 会尝试在已有标记上绑定事件监听器。
 
 React 希望服务端与客户端渲染的内容完全一致。React 可以弥补文本内容的差异，但是你需要将不匹配的地方作为 bug 进行修复。在开发者模式下，React 会对 hydration 操作过程中的不匹配进行警告。但并不能保证在不匹配的情况下，修补属性的差异。由于性能的关系，这一点非常重要，因为大多是应用中不匹配的情况很少见，并且验证所有标记的成本非常昂贵。
@@ -90,7 +90,6 @@ ReactDOM.unmountComponentAtNode(container)
 > 注意:
 >
 > `findDOMNode` 是一个访问底层 DOM 节点的应急方案（escape hatch）。在大多数情况下，不推荐使用该方法，因为它会破坏组件的抽象结构。[严格模式下该方法已弃用。](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
-
 
 ```javascript
 ReactDOM.findDOMNode(component)
