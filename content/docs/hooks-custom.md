@@ -148,7 +148,7 @@ function FriendListItem(props) {
 
 **在两个组件中使用相同的 Hook 会共享状态吗?** 不会。自定义 Hooks 是一种重用*状态逻辑*的机制(例如设置订阅并记住当前值)，所以每次使用自定义 Hook 时，其中的所有 state 和副作用都是完全隔离的。
 
-**自定义 Hook 如何获取独立的 state?** 每次*调用* Hook，它都会获取独立的 state。由于我们直接调用了 `useFriendStatus`，从 React 的角度来看，我们的组件只是调用了 `useState` 和 `useEffect`。 正如我们在[前面的章节](/docs/hooks-state.html#tip-using-multiple-state-variables)[了解到的](/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns)，我们可以在一个组件中多次调用 `useState` 和 `useEffect`，它们是完全独立的。
+**自定义 Hook 如何获取独立的 state?**每次*调用* Hook，它都会获取独立的 state。由于我们直接调用了 `useFriendStatus`，从 React 的角度来看，我们的组件只是调用了 `useState` 和 `useEffect`。 正如我们在[之前章节](/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns)中[了解到的](/docs/hooks-state.html#tip-using-multiple-state-variables)一样，我们可以在一个组件中多次调用 `useState` 和 `useEffect`，它们是完全独立的。
 
 ### Tip: 在多个 Hook 之间传递信息 {#tip-pass-information-between-hooks}
 
