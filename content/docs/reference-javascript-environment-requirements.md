@@ -23,8 +23,8 @@ ReactDOM.render(
 );
 ```
 
-React 同时还依赖于 requestAnimationFrame（甚至包括测试环境）。
-你可以使用 [raf](https://www.npmjs.com/package/raf) 的 package 添加 `requestAnimationFrame` 的 shim：
+React 同时还依赖于 `requestAnimationFrame`（甚至包括测试环境）。
+你可以使用 [raf](https://www.npmjs.com/package/raf) 的 package 增添 `requestAnimationFrame` 的 shim：
 
 ```js
 import 'raf/polyfill';
