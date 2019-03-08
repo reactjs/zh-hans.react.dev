@@ -6,7 +6,7 @@ category: Reference
 permalink: docs/react-dom-server.html
 ---
 
-`ReactDOMServer` 类允许你将组件渲染成静态标记。通常，它被使用在 Node 服务端上：
+`ReactDOMServer` 对象允许你将组件渲染成静态标记。通常，它被使用在 Node 服务端上：
 
 ```js
 // ES modules
