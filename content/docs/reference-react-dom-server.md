@@ -39,7 +39,7 @@ ReactDOMServer.renderToString(element)
 
 将 React 元素渲染为初始 HTML。React 将返回一个 HTML 字符串。你可以使用此方法在服务端生成 HTML，并在首次请求时将标记下发，以加快页面加载速度，并允许搜索引擎爬取你的页面以达到 SEO 优化的目的。
 
-如果你在一个已经有了服务端渲染标记的节点上调用 [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) 方法，React 将会保留该节点并仅作绑定事件处理，从而让你有一个非常高性能的首次加载体验。
+如果你在已有服务端渲染标记的节点上调用 [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) 方法，React 将会保留该节点且只进行事件处理绑定，从而让你有一个非常高性能的首次加载体验。
 
 * * *
 
