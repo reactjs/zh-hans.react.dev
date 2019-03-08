@@ -68,6 +68,7 @@ ReactDOMServer.renderToNodeStream(element)
 > 注意:
 >
 > 这个 API 仅允许在服务端使用。不允许在浏览器使用。
+>
 > 通过本方法返回的流会返回一个由 utf-8 编码的字节流。如果你需要另一种编码的流，请查看像 [iconv-lite](https://www.npmjs.com/package/iconv-lite) 这样的项目，它为转换文本提供了转换流。
 
 
