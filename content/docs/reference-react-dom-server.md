@@ -61,7 +61,7 @@ ReactDOMServer.renderToStaticMarkup(element)
 ReactDOMServer.renderToNodeStream(element)
 ```
 
-将一个 React 元素渲染成其初始 HTML。返回一个可输出 HTML 字符串的 [可读流](https://nodejs.org/api/stream.html#stream_readable_streams)。通过可读流输出的 HTML，完全等同于 [`ReactDOMServer.renderToString`](#rendertostring) 返回的 HTML。你可以使用本方法在服务器上生成 HTML，并在初始请求时将标记下发，以加快页面加载速度，并允许搜索引擎抓取你的页面以达到 SEO 优化的目的。
+将一个 React 元素渲染成其初始 HTML。返回一个可输出 HTML 字符串的[可读流](https://nodejs.org/api/stream.html#stream_readable_streams)。通过可读流输出的 HTML 完全等同于 [`ReactDOMServer.renderToString`](#rendertostring) 返回的 HTML。你可以使用本方法在服务器上生成 HTML，并在初始请求时将标记下发，以加快页面加载速度，并允许搜索引擎抓取你的页面以达到 SEO 优化的目的。
 
 如果你在已有服务端渲染标记的节点上调用 [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) 方法，React 将会保留该节点且只进行事件处理绑定，从而让你有一个非常高性能的首次加载体验。
 
