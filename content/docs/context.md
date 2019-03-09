@@ -224,7 +224,7 @@ class MyClass extends React.Component {
 **app.js**
 `embed:context/updating-nested-context-app.js`
 
-### 调用多个 Context {#consuming-multiple-contexts}
+### 消费多个 Context {#consuming-multiple-contexts}
 
 为了确保 context 快速进行重渲染，React 需要使每一个 consumers 组件的 context 在组件树中成为一个单独的节点。
 
