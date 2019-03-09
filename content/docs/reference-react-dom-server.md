@@ -71,7 +71,6 @@ ReactDOMServer.renderToNodeStream(element)
 >
 > 通过本方法返回的流会返回一个由 utf-8 编码的字节流。如果你需要另一种编码的流，请查看像 [iconv-lite](https://www.npmjs.com/package/iconv-lite) 这样的项目，它为转换文本提供了转换流。
 
-
 * * *
 
 ### `renderToStaticNodeStream()` {#rendertostaticnodestream}
@@ -89,4 +88,5 @@ ReactDOMServer.renderToStaticNodeStream(element)
 > 注意:
 >
 > 此 API 仅限在服务端使用。不允许在浏览器中使用。
+>
 > 通过本方法返回的流会返回一个由 utf-8 编码的字节流。如果你需要另一种编码的流，请查看像 [iconv-lite](https://www.npmjs.com/package/iconv-lite) 这样的项目，它为转换文本提供了转换流。
