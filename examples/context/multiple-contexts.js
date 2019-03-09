@@ -31,7 +31,7 @@ function Layout() {
   );
 }
 
-// 一个组件可能会调用多个 context
+// 一个组件可能会消费多个 context
 function Content() {
   // highlight-range{2-10}
   return (
