@@ -6,7 +6,7 @@ redirect_from:
   - "docs/webcomponents.html"
 ---
 
-React 和 [Web Component](https://developer.mozilla.org/en-US/docs/Web/Web_Components) 为了解决不同的问题而生。Web Component 为解决可复用组件提供了强大的封装，而 React 的提供了声明式库，使 DOM 和你的数据保持同步。这两个目标是互补的。作为开发人员，你可以自由的选择在 Web Component 使用 React，或者在 React 中使用 Web Component，或者两者都存在。
+React 和 [Web Component](https://developer.mozilla.org/en-US/docs/Web/Web_Components) 为了解决不同的问题而生。Web Component 为解决可复用组件提供了强大的封装，而 React 的提供了声明式库，使 DOM 和你的数据保持同步。这两个目标是互补的。作为开发人员，你可以自由的选择在 Web Component 中使用 React，或者在 React 中使用 Web Component，或者两者都存在。
 
 大多数人使用 React 时不使用 Web Component，但可能你需要使用，尤其是在使用 Web Component 编写的第三方 UI 组件时。
 
