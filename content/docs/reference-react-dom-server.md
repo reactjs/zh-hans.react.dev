@@ -49,7 +49,7 @@ ReactDOMServer.renderToString(element)
 ReactDOMServer.renderToStaticMarkup(element)
 ```
 
-本方法与 [`renderToString`](#rendertostring) 相似，除了本方法不会创建在 React 内部使用的额外 DOM 属性，例如 `data-reactroot`。如果你希望把 React 当作一个静态页面生成器来使用，本方法会非常有用，因为除去额外的属性可以节省一些字节。
+此方法与 [`renderToString`](#rendertostring) 相似，但此方法不会在 React 内部创建的额外 DOM 属性，例如 `data-reactroot`。如果你希望把 React 当作静态页面生成器来使用，此方法会非常有用，因为去除额外的属性可以节省一些字节。
 
 如果你计划在前端使用 React 以使得标记可交互，不要使用本方法。作为代替，在服务端上使用 [`renderToString`](#rendertostring) 和在前端上使用 [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate)。
 
