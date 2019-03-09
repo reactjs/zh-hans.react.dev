@@ -84,7 +84,7 @@ ReactDOMServer.renderToStaticNodeStream(element)
 
 通过可读流输出的 HTML，完全等同于 [`ReactDOMServer.renderToStaticMarkup`](#rendertostaticmarkup) 返回的 HTML。
 
-如果你计划在前端使用 React 以使得标记可交互，请不要使用此方法。你可以在服务端上使用 [`renderToNodeStream`](#rendertonodestre) 或在前端上使用 [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) 来代替此方法。
+如果你计划在前端使用 React 以使得标记可交互，请不要使用此方法。你可以在服务端上使用 [`renderToNodeStream`](#rendertonodestream) 或在前端上使用 [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) 来代替此方法。
 
 > 注意:
 >
