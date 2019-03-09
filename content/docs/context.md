@@ -243,7 +243,7 @@ class MyClass extends React.Component {
 
 `embed:context/reference-caveats-solution.js`
 
-## 废弃 API {#legacy-api}
+## 过时的 API {#legacy-api}
 
 > 注意
 >
