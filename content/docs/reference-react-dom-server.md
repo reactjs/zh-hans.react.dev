@@ -17,12 +17,12 @@ var ReactDOMServer = require('react-dom/server');
 
 ## 概览 {#overview}
 
-下面的方法可以被使用在服务端和浏览器环境。
+下述方法可以被使用在服务端和浏览器环境。
 
 - [`renderToString()`](#rendertostring)
 - [`renderToStaticMarkup()`](#rendertostaticmarkup)
 
-下面这些附加的方法依赖一个**只能在服务端使用**的 package（`stream`）。它们在浏览器中不起作用。
+下述附加方法依赖一个**只能在服务端使用**的 package（`stream`）。它们在浏览器中不起作用。
 
 - [`renderToNodeStream()`](#rendertonodestream)
 - [`renderToStaticNodeStream()`](#rendertostaticnodestream)
