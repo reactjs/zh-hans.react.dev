@@ -77,7 +77,7 @@ function Page(props) {
 {props.userLink}
 ```
 
-这种变化下，只有最顶部的 Page 组件需要知道 `Link` 和 `Avatar` 组件是如何使用 `user` 和 `avatarSize` 的。 
+这种变化下，只有最顶部的 Page 组件需要知道 `Link` 和 `Avatar` 组件是如何使用 `user` 和 `avatarSize` 的。
 
 这种对组件的*控制反转*减少了在你的应用中要传递的 props 数量，这在很多场景下会使得你的代码更加干净，使你对根组件有更多的把控。但是，这并不适用于每一个场景：这种将逻辑提升到组件树的更高层次来处理，会使得这些高层组件变得更复杂，并且会强行将低层组件适应这样的形式，这可能不会是你想要的。
 
@@ -239,7 +239,7 @@ class MyClass extends React.Component {
 `embed:context/reference-caveats-problem.js`
 
 
-为了防止这种情况, 将 value 状态提升到父节点的 state 里：
+为了防止这种情况，将 value 状态提升到父节点的 state 里：
 
 `embed:context/reference-caveats-solution.js`
 
@@ -247,5 +247,5 @@ class MyClass extends React.Component {
 
 > 注意
 >
-> 先前 React 使用实验性的 context API运行，旧的API将会在所有16.x版本中得到支持，但用到它的应用应该迁移到新版本。废弃的API将在未来的 React 版本中被移除。阅读[废弃的 context 文档](/docs/legacy-context.html)了解更多。
+> 先前 React 使用实验性的 context API 运行，旧的API将会在所有16.x版本中得到支持，但用到它的应用应该迁移到新版本。废弃的API将在未来的 React 版本中被移除。阅读[废弃的 context 文档](/docs/legacy-context.html)了解更多。
 
