@@ -31,7 +31,7 @@ class Welcome extends React.Component {
 
 你必须在React.Component子类中定义一个名为render的函数。此页面上描述的其他方法都是可选的。
 
-**我们强烈建议你不要创建自己的基本组件类。** 在React组件中, [代码重用主要通过组合而不是继承来实现。](/docs/composition-vs-inheritance.html).
+**我们强烈建议你不要创建自己的组件基类。** 在React组件中, [代码重用的实现主要通过组合而不是继承。](/docs/composition-vs-inheritance.html).
 
 >注意:
 >
