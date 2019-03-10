@@ -1,65 +1,65 @@
 ---
 id: strict-mode
-title: Strict Mode
+title: 严格模式
 permalink: docs/strict-mode.html
 ---
 
-`StrictMode` is a tool for highlighting potential problems in an application. Like `Fragment`, `StrictMode` does not render any visible UI. It activates additional checks and warnings for its descendants.
+`StrictMode` 是一个用来突出显示应用程序中潜在问题的工具。 与 `Fragment` 一样， `StrictMode` 不会渲染任何可见的 UI。它为其后代元素触发额外的检查和警告。
 
-> Note:
+> 注意：
 >
-> Strict mode checks are run in development mode only; _they do not impact the production build_.
+> 严格模式检查仅在开发模式下运行； _它们不会影响生产构建_。
 
-You can enable strict mode for any part of your application. For example:
+你可以为应用程序的任何部分启用严格模式。例如：
 `embed:strict-mode/enabling-strict-mode.js`
 
-In the above example, strict mode checks will *not* be run against the `Header` and `Footer` components. However, `ComponentOne` and `ComponentTwo`, as well as all of their descendants, will have the checks.
+在上面的示例中，*不* 会对 `Header` 和 `Footer` 组件运行严格模式检查。但是， `ComponentOne` 和 `ComponentTwo` 以及它们的所有后代元素都将进行检查。 
 
-`StrictMode` currently helps with:
-* [Identifying components with unsafe lifecycles](#identifying-unsafe-lifecycles)
-* [Warning about legacy string ref API usage](#warning-about-legacy-string-ref-api-usage)
-* [Warning about deprecated findDOMNode usage](#warning-about-deprecated-finddomnode-usage)
-* [Detecting unexpected side effects](#detecting-unexpected-side-effects)
-* [Detecting legacy context API](#detecting-legacy-context-api)
+`StrictMode` 目前有助于：
+* [识别不安全的生命周期](#identifying-unsafe-lifecycles)
+* [关于使用过时字符串 ref API 的警告](#warning-about-legacy-string-ref-api-usage)
+* [关于使用废弃的 findDOMNode 方法的警告](#warning-about-deprecated-finddomnode-usage)
+* [检测意外的副作用](#detecting-unexpected-side-effects)
+* [检测过时的 context API](#detecting-legacy-context-api)
 
-Additional functionality will be added with future releases of React.
+未来的React版本将添加其他功能。
 
-### Identifying unsafe lifecycles {#identifying-unsafe-lifecycles}
+### 识别不安全的生命周期 {#identifying-unsafe-lifecycles}
 
-As explained [in this blog post](/blog/2018/03/27/update-on-async-rendering.html), certain legacy lifecycle methods are unsafe for use in async React applications. However, if your application uses third party libraries, it can be difficult to ensure that these lifecycles aren't being used. Fortunately, strict mode can help with this!
+正如 [这篇博文](/blog/2018/03/27/update-on-async-rendering.html) 所述，某些过时的生命周期方法在异步 React 应用程序中使用是不安全的。但是，如果你的应用程序使用第三方库，很难确保它们不使用这些生命周期方法。幸运的是，严格模式可以帮助解决这个问题！
 
-When strict mode is enabled, React compiles a list of all class components using the unsafe lifecycles, and logs a warning message with information about these components, like so:
+当启用严格模式时，React 会列出使用不安全生命周期方法的所有类组件，并记录一条包含这些组件信息的警告消息，如下所示：
 
 ![](../images/blog/strict-mode-unsafe-lifecycles-warning.png)
 
-Addressing the issues identified by strict mode _now_ will make it easier for you to take advantage of async rendering in future releases of React.
+_现在_ 解决严格模式识别的问题，会让你在未来的 React 版本中利用异步渲染变得更容易。
 
-### Warning about legacy string ref API usage {#warning-about-legacy-string-ref-api-usage}
+### 关于使用过时字符串 ref API 的警告{#warning-about-legacy-string-ref-api-usage}
 
-Previously, React provided two ways for managing refs: the legacy string ref API and the callback API. Although the string ref API was the more convenient of the two, it had [several downsides](https://github.com/facebook/react/issues/1373) and so our official recommendation was to [use the callback form instead](/docs/refs-and-the-dom.html#legacy-api-string-refs).
+以前，React 提供了两种方法管理 ref：过时字符串 ref API 和回调 API。 尽管字符串 ref API 在两者中使用更方便，但是它有 [一些缺点](https://github.com/facebook/react/issues/1373)， 因此我们官方推荐 [使用回调方式](/docs/refs-and-the-dom.html#legacy-api-string-refs)。
 
-React 16.3 added a third option that offers the convenience of a string ref without any of the downsides:
+React 16.3新增了第三种选择，它提供了字符串 ref 的便利性，并且没有任何缺点：
 `embed:16-3-release-blog-post/create-ref-example.js`
 
-Since object refs were largely added as a replacement for string refs, strict mode now warns about usage of string refs.
+由于对象 ref 主要是为了替换字符串 ref 而添加的，因此严格模式现在会警告使用字符串 ref。
 
-> **Note:**
+> **注意：**
 >
-> Callback refs will continue to be supported in addition to the new `createRef` API.
+> 除了新增加的 `createRef` API，还将继续支持回调 ref。
 >
-> You don't need to replace callback refs in your components. They are slightly more flexible, so they will remain as an advanced feature.
+> 你无需替换组件中的回调 ref。它们更灵活，因此仍将作为高级功能保留。
 
-[Learn more about the new `createRef` API here.](/docs/refs-and-the-dom.html)
+[在此处了解有关 `createRef` API 的更多信息](/docs/refs-and-the-dom.html)
 
-### Warning about deprecated findDOMNode usage {#warning-about-deprecated-finddomnode-usage}
+### 关于使用废弃的 findDOMNode 方法的警告 {#warning-about-deprecated-finddomnode-usage}
 
-React used to support `findDOMNode` to search the tree for a DOM node given a class instance. Normally you don't need this because you can [attach a ref directly to a DOM node](/docs/refs-and-the-dom.html#creating-refs).
+React 支持用 `findDOMNode` 来在给定类实例的情况下在树中搜索 DOM 节点。通常你不需要这样做，因为你可以 [将 ref 直接绑定到 DOM 节点](/docs/refs-and-the-dom.html#creating-refs)。
 
-`findDOMNode` can also be used on class components but this was breaking abstraction levels by allowing a parent to demand that certain children was rendered. It creates a refactoring hazard where you can't change the implementation details of a component because a parent might be reaching into its DOM node. `findDOMNode` only returns the first child, but with the use of Fragments, it is possible for a component to render multiple DOM nodes. `findDOMNode` is a one time read API. It only gave you an answer when you asked for it. If a child component renders a different node, there is no way to handle this change. Therefore `findDOMNode` only worked if components always return a single DOM node that never changes.
+`findDOMNode` 也可用于类组件，但它违反了抽象级别，允许父组件要求渲染某个子组件。它会产生重构危险，你不能更改组件的实现细节，因为父组件可能正在访问它的 DOM 节点。`findDOMNode` 只返回第一个子节点，但是使用 Fragments，组件可以渲染多个 DOM 节点。`findDOMNode` 是一个只读一次的 API。调用该方法只会返回第一次查询的结果。如果子组件渲染了不同的节点，则无法跟踪此更改。因此，`findDOMNode` 仅在组件返回单个且不可变的 DOM 节点时才有效。
 
-You can instead make this explicit by pass a ref to your custom component and pass that along to the DOM using [ref forwarding](/docs/forwarding-refs.html#forwarding-refs-to-dom-components).
+你可以通过将 ref 传递给自定义组件并使用 [ref 转发](/docs/forwarding-refs.html#forwarding-refs-to-dom-components) 来将其传递给 DOM 节点。
 
-You can also add a wrapper DOM node in your component and attach a ref directly to it.
+你也可以在组件中创建一个 wrapper DOM 节点，并将 ref 直接绑定到它。
 
 ```javascript{4,7}
 class MyComponent extends React.Component {
@@ -73,19 +73,19 @@ class MyComponent extends React.Component {
 }
 ```
 
-> Note:
+> 注意：
 >
-> In CSS, the [`display: contents`](https://developer.mozilla.org/en-US/docs/Web/CSS/display#display_contents) attribute can be used if you don't want the node to be part of the layout.
+> 在 CSS 中，如果你不希望节点成为布局的一部分，则可以使用 [`display: contents`](https://developer.mozilla.org/en-US/docs/Web/CSS/display#display_contents) 属性。
 
-### Detecting unexpected side effects {#detecting-unexpected-side-effects}
+### 检测意外的副作用 {#detecting-unexpected-side-effects}
 
-Conceptually, React does work in two phases:
-* The **render** phase determines what changes need to be made to e.g. the DOM. During this phase, React calls `render` and then compares the result to the previous render.
-* The **commit** phase is when React applies any changes. (In the case of React DOM, this is when React inserts, updates, and removes DOM nodes.) React also calls lifecycles like `componentDidMount` and `componentDidUpdate` during this phase.
+从概念上讲，React 分两个阶段工作：
+* **渲染** 阶段确定需要对 DOM 进行哪些更改。在此阶段，React 调用 `render`，然后将结果与前一个渲染的结果进行比较。
+* **提交** 阶段是 React 应用任何更改的时间。（就 React DOM 来说，这是 React 插入，更新和删除 DOM 节点的时候。）在此阶段，React 还会调用 `componentDidMount` 和 `componentDidUpdate` 之类的生命周期方法。
 
-The commit phase is usually very fast, but rendering can be slow. For this reason, the upcoming async mode (which is not enabled by default yet) breaks the rendering work into pieces, pausing and resuming the work to avoid blocking the browser. This means that React may invoke render phase lifecycles more than once before committing, or it may invoke them without committing at all (because of an error or a higher priority interruption).
+提交阶段通常很快，但渲染可能很慢。因此，即将推出的异步模式 (默认情况下未启用) 将渲染工作分解为多个部分，暂停和恢复工作以避免阻塞浏览器。这意味着 React 可以在提交之前多次调用渲染阶段生命周期的方法，或者在不提交的情况下调用它们（由于错误或更高优先级的中断）。
 
-Render phase lifecycles include the following class component methods:
+渲染阶段的生命周期包括以下 class 组件方法：
 * `constructor`
 * `componentWillMount`
 * `componentWillReceiveProps`
@@ -93,32 +93,33 @@ Render phase lifecycles include the following class component methods:
 * `getDerivedStateFromProps`
 * `shouldComponentUpdate`
 * `render`
-* `setState` updater functions (the first argument)
+* `setState` 更新函数（第一个参数）
 
-Because the above methods might be called more than once, it's important that they do not contain side-effects. Ignoring this rule can lead to a variety of problems, including memory leaks and invalid application state. Unfortunately, it can be difficult to detect these problems as they can often be [non-deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm).
+由于上述方法可能不止一次被调用，因此重要的是它们不会导致任何副作用。忽略此规则可能会导致各种问题，包括内存泄漏和无效的应用程序状态。不幸的是，很难发现这些问题，因为它们通常都是 [不确定](https://en.wikipedia.org/wiki/Deterministic_algorithm) 的。
 
-Strict mode can't automatically detect side effects for you, but it can help you spot them by making them a little more deterministic. This is done by intentionally double-invoking the following methods:
+严格模式不能自动检测到你的副作用，但它可以帮助你发现它们，使它们更具确定性。这是通过故意双重调用以下方法来完成的：
 
-* Class component `constructor` method
-* The `render` method
-* `setState` updater functions (the first argument)
-* The static `getDerivedStateFromProps` lifecycle
+* class 组件的 `constructor` 方法
+* `render` 方法
+* `setState` 更新函数 (第一个参数）
+* 静态的 `getDerivedStateFromProps` 生命周期方法
 
-> Note:
+> 注意：
 >
-> This only applies to development mode. _Lifecycles will not be double-invoked in production mode._
+> 这仅适用于开发模式。_生产模式下生命周期不会被调用两次。_
 
-For example, consider the following code:
+例如，请考虑以下代码：
 `embed:strict-mode/side-effects-in-constructor.js`
 
-At first glance, this code might not seem problematic. But if `SharedApplicationState.recordEvent` is not [idempotent](https://en.wikipedia.org/wiki/Idempotence#Computer_science_meaning), then instantiating this component multiple times could lead to invalid application state. This sort of subtle bug might not manifest during development, or it might do so inconsistently and so be overlooked.
 
-By intentionally double-invoking methods like the component constructor, strict mode makes patterns like this easier to spot.
+乍一看，这段代码似乎没有问题。但是如果 `SharedApplicationState.recordEvent` 不是 [幂等](https://en.wikipedia.org/wiki/Idempotence#Computer_science_meaning) 的，那么多次实例化此组件可能会导致应用程序状态无效。这种小 bug 可能在开发过程中不会表现出来，或者很少见，以至于它们不被注意到。
 
-### Detecting legacy context API {#detecting-legacy-context-api}
+通过故意双重调用方法（如组件的构造函数），严格模式使得这样的情况更容易被发现。
 
-The legacy context API is error-prone, and will be removed in a future major version. It still works for all 16.x releases but will show this warning message in strict mode:
+### 检测过时的 context API {#detecting-legacy-context-api}
+
+过时的 context API 容易出错，将在未来的主要版本中删除。在所有 16.x 版本中它仍然有效，但在严格模式下，将显示以下警告：
 
 ![](../images/blog/warn-legacy-context-in-strict-mode.png)
 
-Read the [new context API documentation](/docs/context.html) to help migrate to the new version.
+阅读 [新的 context API 文档](/docs/context.html) 以帮助你迁移到新版本。
