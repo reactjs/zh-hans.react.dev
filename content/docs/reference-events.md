@@ -146,6 +146,7 @@ boolean repeat
 boolean shiftKey
 number which
 ```
+
 `key` 属性可以是 [DOM Level 3 Events spec](https://www.w3.org/TR/uievents-key/#named-key-attribute-values) 里记录的任意值。
 
 * * *
@@ -157,6 +158,7 @@ number which
 ```
 onFocus onBlur
 ```
+
 这些焦点事件在 React DOM 上的所有元素都有效，不只是表单元素。
 
 属性：
@@ -174,6 +176,7 @@ DOMEventTarget relatedTarget
 ```
 onChange onInput onInvalid onSubmit
 ```
+
 想了解 onChange 事件的更多信息，查看 [Forms](/docs/forms.html) 。
 
 * * *
