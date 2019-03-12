@@ -1,18 +1,18 @@
 ---
 id: events
-title: SyntheticEvent
+title: 合成事件
 permalink: docs/events.html
 layout: docs
 category: Reference
 ---
 
-此参考指南记录了构成 React 事件系统一部分的 `SyntheticEvent` 包装器。参考 [Handling Events](/docs/handling-events.html) 指南学习更多。
+此参考指南记录了构成 React 事件系统一部分的 `SyntheticEvent` 包装器。请参考有关[事件处理](/docs/handling-events.html)的指南来了解更多。
 
-## 概述 {#overview}
+## 概览 {#overview}
 
-`SyntheticEvent` 实例将被传递给你的事件处理程序，这是一个浏览器原生事件的跨浏览器包装器。除了在所有浏览器间完全相同的事件，它有着和浏览器原生事件相同的接口，包括 `stopPropagation()` 和 `preventDefault()` 。
+`SyntheticEvent` 实例将被传递给你的事件处理函数，它是浏览器的原生事件的跨浏览器包装器。除兼容所有浏览器外，它还拥有和浏览器原生事件相同的接口，包括 `stopPropagation()` 和 `preventDefault()`。
 
-如果因为某些原因，你需要使用浏览器的底层事件，只需要使用 `nativeEvent` 属性实现。每个 `SyntheticEvent` 对象有以下属性：
+如果因为某些原因，当你需要使用浏览器的底层事件时，只需要使用 `nativeEvent` 属性来获取即可。每个 `SyntheticEvent` 对象都包含以下属性：
 
 ```javascript
 boolean bubbles
@@ -33,11 +33,11 @@ string type
 
 > 注意：
 >
-> 截止 v0.14 ，事件处理程序返回 `false` 不再阻止事件传播。相反，`e.stopPropagation()` 或者 `e.preventDefault()` 应适当的手动触发。
+> 截止 v0.14，当事件处理函数返回 `false` 时，不再阻止事件冒泡。你可以选择使用 `e.stopPropagation()` 或者 `e.preventDefault()` 替代。
 
 ### 事件池 {#event-pooling}
 
- `SyntheticEvent` 是被合并的。这意味着 `SyntheticEvent` 对象会被重用，而且在事件回调函数被调用后，所有的属性都会无效。这是为性能考虑。因此，你不能以异步方式访问事件。
+`SyntheticEvent` 是合并而来。这意味着 `SyntheticEvent` 对象可能会被重用，而且在事件回调函数被调用后，所有的属性都会无效。出于性能考虑，你不能通过异步访问事件。
 
 ```javascript
 function onClick(event) {
@@ -60,13 +60,13 @@ function onClick(event) {
 
 > 注意：
 >
-> 如果你想以异步方式访问事件属性，你应当在事件上调用 `event.persist()` ，这个方法会从池中移除合成事件，允许用户代码保留对事件的引用。
+> 如果你想异步访问事件属性，你需在事件上调用 `event.persist()`，此方法会从池中移除合成事件，允许用户代码保留对事件的引用。
 
 ## 支持的事件 {#supported-events}
 
-React 使事件正常化，所以他们在不同浏览器中有一致的属性。
+React 使事件规范化，因此它们在不同浏览器中拥有相同的属性。
 
-以下的事件处理函数在冒泡阶段被事件触发。要在注册捕获阶段的事件处理函数，需要为事件名称添加 `Capture` 。例如，不是使用 `onClick` ，而是使用 `onClickCapture` 处理捕获阶段的点击事件。
+以下的事件处理函数在冒泡阶段被触发。如需注册捕获阶段的事件处理函数，则应为事件名添加 `Capture`。例如，处理捕获阶段的点击事件请使用 `onClickCapture`，而不是 `onClick`。
 
 - [Clipboard Events](#clipboard-events)
 - [Composition Events](#composition-events)
@@ -187,6 +187,7 @@ onClick onContextMenu onDoubleClick onDrag onDragEnd onDragEnter onDragExit
 onDragLeave onDragOver onDragStart onDrop onMouseDown onMouseEnter onMouseLeave
 onMouseMove onMouseOut onMouseOver onMouseUp
 ```
+
 `onMouseEnter` 和 `onMouseLeave` 事件从离开的元素向进入的元素传播，不是正常的冒泡，也没有捕获阶段。
 
 属性：
@@ -218,6 +219,7 @@ boolean shiftKey
 onPointerDown onPointerMove onPointerUp onPointerCancel onGotPointerCapture
 onLostPointerCapture onPointerEnter onPointerLeave onPointerOver onPointerOut
 ```
+
 `onPointerEnter` 和 `onPointerLeave` 事件从离开的元素向进入的元素传播，不是正常的冒泡，也没有捕获阶段。
 
 属性：
@@ -239,7 +241,7 @@ boolean isPrimary
 
 关于跨浏览器支持的说明：
 
-并非每个浏览器都支持指针事件（在写这篇文章时，支持的浏览器有：Chrome，Firefox，Edge，和 Internet Explorer）。React 有意没有通过 polyfill 支持其他浏览器，因为符合标准的 polyfill 会显著增加 react-dom 的包大小。
+并非每个浏览器都支持指针事件（在写这篇文章时，已支持的浏览器有：Chrome，Firefox，Edge 和 Internet Explorer）。React 故意不通过 polyfill 的方式适配其他浏览器，主要是符合标准的 polyfill 会显著增加 react-dom 的 bundle 大小。
 
 如果你的应用要求指针事件，我们推荐添加第三方的指针事件 polyfil 。
 
