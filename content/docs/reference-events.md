@@ -64,7 +64,7 @@ function onClick(event) {
 
 ## 支持的事件 {#supported-events}
 
-React 使事件规范化，因此它们在不同浏览器中拥有相同的属性。
+React 通过将事件 normalize 以让他们在不同浏览器中拥有一致的属性。
 
 以下的事件处理函数在冒泡阶段被触发。如需注册捕获阶段的事件处理函数，则应为事件名添加 `Capture`。例如，处理捕获阶段的点击事件请使用 `onClickCapture`，而不是 `onClick`。
 
