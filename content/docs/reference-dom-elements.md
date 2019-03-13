@@ -28,7 +28,7 @@ React 与 HTML 之间有很多属性存在差异：
 
 ### className {#classname}
 
-`className` 属性用于指定 CSS 的 class，此特性适用于所有常规 DOM 节点和 SVG 元素，如 `<div>`，`<a>` 等其它标签。
+`className` 属性用于指定 CSS 的 class，此特性适用于所有常规 DOM 节点和 SVG 元素，如 `<div>`，`<a>` 及其它标签。
 
 如果你在 React 中使用 Web Components（这是一种不常见的使用方式），请使用 class 属性代替。
 
@@ -48,7 +48,7 @@ function MyComponent() {
 
 ### htmlFor {#htmlfor}
 
-由于 `for` 在 Javascript 中是关键字，所以 React 元素中请使用 `htmlFor` 代替。
+由于 `for` 在 JavaScript 中是保留字，所以 React 元素中使用了 `htmlFor` 来代替。
 
 ### onChange {#onchange}
 
@@ -62,7 +62,7 @@ function MyComponent() {
 
 >注意
 >
->在文档中，部分例子为了方便，直接使用了 `style`，但是**不推荐使用 `style` 属性为元素提供样式**。在多数情况下，应使用 [`className`](#classname) 属性，并引用外部 CSS 样式表中定义的 class。`style` 在 React 应用中多用于在渲染过程中添加动态计算的样式。另请参阅：[FAQ：Styling 和 CSS](/docs/faq-styling.html)。
+>在文档中，部分例子为了方便，直接使用了 `style`，但是**通常不推荐将 `style` 属性作为设置元素样式的主要方式**。在多数情况下，应使用 [`className`](#classname) 属性来引用外部 CSS 样式表中定义的 class。`style` 在 React 应用中多用于在渲染过程中添加动态计算的样式。另请参阅：[FAQ：Styling 和 CSS](/docs/faq-styling.html)。
 
 `style` 接受一个采用小驼峰命名属性的 JavaScript 对象，而不是 CSS 字符串。这与 DOM 中 `style` 的 JavaScript 属性是一致的，同时会更高效的，且能预防跨站脚本（XSS）的安全漏洞。例如：
 
@@ -110,7 +110,7 @@ React 会自动添加 ”px” 后缀到内联样式为数字的属性后。如�
 
 ### suppressContentEditableWarning {#suppresscontenteditablewarning}
 
-通常，当拥有子节点的元素被标记为 `contentEditable` 时，React 会发出一个警告，因为这不会生效。此属性会触发警告信息。尽量不要使用该属性，除非你要构建一个类似 [Draft.js](https://facebook.github.io/draft-js/) 需要手动管理 `contentEditable` 属性的库。
+通常，当拥有子节点的元素被标记为 `contentEditable` 时，React 会发出一个警告，因为这不会生效。此属性会触发警告信息。尽量不要使用该属性，除非你要构建一个类似 [Draft.js](https://facebook.github.io/draft-js/) 的手动管理 `contentEditable` 属性的库。
 
 ### suppressHydrationWarning {#suppresshydrationwarning}
 
@@ -124,7 +124,7 @@ React 会自动添加 ”px” 后缀到内联样式为数字的属性后。如�
 
 ## All Supported HTML Attributes {#all-supported-html-attributes}
 
-在 React 16 中，任何标准的[或自定义的](/blog/2017/09/08/dom-attributes-in-react-16.html) DOM 属性都是得到了充分的支持。
+在 React 16 中，任何标准的[或自定义的](/blog/2017/09/08/dom-attributes-in-react-16.html) DOM 属性都是完全支持的。
 
 React 为 DOM 提供了一套以 JavaScript 为中心的 API。由于 React 组件经常采用自定义或和 DOM 相关的 props 的关系，React 采用了`小驼峰命名`的方式，正如 DOM APIs 那样：
 
