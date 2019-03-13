@@ -36,7 +36,7 @@ _现在_ 解决严格模式识别的问题，会让你在未来的 React 版本�
 
 ### 关于使用过时字符串 ref API 的警告{#warning-about-legacy-string-ref-api-usage}
 
-以前，React 提供了两种方法管理 ref：过时字符串 ref API 和回调 API。 尽管字符串 ref API 在两者中使用更方便，但是它有 [一些缺点](https://github.com/facebook/react/issues/1373)， 因此我们官方推荐 [使用回调方式](/docs/refs-and-the-dom.html#legacy-api-string-refs)。
+以前，React 提供了两种方法管理 ref：过时字符串 ref API 和回调函数 API。 尽管字符串 ref API 在两者中使用更方便，但是它有 [一些缺点](https://github.com/facebook/react/issues/1373)， 因此我们官方推荐 [使用回调方式](/docs/refs-and-the-dom.html#legacy-api-string-refs)。
 
 React 16.3新增了第三种选择，它提供了字符串 ref 的便利性，并且没有任何缺点：
 `embed:16-3-release-blog-post/create-ref-example.js`
@@ -57,7 +57,7 @@ React 支持用 `findDOMNode` 来在给定类实例的情况下在树中搜索 D
 
 `findDOMNode` 也可用于类组件，但它违反了抽象级别，允许父组件要求渲染某个子组件。它会产生重构危险，你不能更改组件的实现细节，因为父组件可能正在访问它的 DOM 节点。`findDOMNode` 只返回第一个子节点，但是使用 Fragments，组件可以渲染多个 DOM 节点。`findDOMNode` 是一个只读一次的 API。调用该方法只会返回第一次查询的结果。如果子组件渲染了不同的节点，则无法跟踪此更改。因此，`findDOMNode` 仅在组件返回单个且不可变的 DOM 节点时才有效。
 
-你可以通过将 ref 传递给自定义组件并使用 [ref 转发](/docs/forwarding-refs.html#forwarding-refs-to-dom-components) 来将其传递给 DOM 节点。
+你可以通过将 ref 传递给自定义组件并使用 [ref 传递](/docs/forwarding-refs.html#forwarding-refs-to-dom-components) 来将其传递给 DOM 节点。
 
 你也可以在组件中创建一个 wrapper DOM 节点，并将 ref 直接绑定到它。
 
@@ -97,7 +97,7 @@ class MyComponent extends React.Component {
 
 由于上述方法可能不止一次被调用，因此重要的是它们不会导致任何副作用。忽略此规则可能会导致各种问题，包括内存泄漏和无效的应用程序状态。不幸的是，很难发现这些问题，因为它们通常都是 [不确定](https://en.wikipedia.org/wiki/Deterministic_algorithm) 的。
 
-严格模式不能自动检测到你的副作用，但它可以帮助你发现它们，使它们更具确定性。这是通过故意双重调用以下方法来完成的：
+严格模式不能自动检测到你的副作用，但它可以帮助你发现它们，使它们更具确定性。这是通过故意调用两次以下方法来完成的：
 
 * class 组件的 `constructor` 方法
 * `render` 方法
@@ -114,7 +114,7 @@ class MyComponent extends React.Component {
 
 乍一看，这段代码似乎没有问题。但是如果 `SharedApplicationState.recordEvent` 不是 [幂等](https://en.wikipedia.org/wiki/Idempotence#Computer_science_meaning) 的，那么多次实例化此组件可能会导致应用程序状态无效。这种小 bug 可能在开发过程中不会表现出来，或者很少见，以至于它们不被注意到。
 
-通过故意双重调用方法（如组件的构造函数），严格模式使得这样的情况更容易被发现。
+通过故意调用两次方法（如组件的构造函数），严格模式使得这样的情况更容易被发现。
 
 ### 检测过时的 context API {#detecting-legacy-context-api}
 
