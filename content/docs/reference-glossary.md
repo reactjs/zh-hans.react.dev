@@ -31,7 +31,7 @@ package 管理工具，是帮助你管理项目依赖的工具。[npm](https://w
 
 ## CDN {#cdn}
 
-CDN 代表内容分发网络（Content Delivery Network）。CDN 会分发缓存，然后从全球服务器网络上获取静态内容。
+CDN 代表内容分发网络（Content Delivery Network）。CDN 会通过一个遍布全球的服务器网络来分发缓存的静态内容。
 
 ## JSX {#jsx}
 
