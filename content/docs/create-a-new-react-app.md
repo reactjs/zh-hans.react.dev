@@ -37,7 +37,7 @@ React 团队主要推荐这些解决方案：
 
 ### Create React App {#create-react-app}
 
-[Create React App](http://github.com/facebookincubator/create-react-app) 是一个用于**学习 React** 的舒适环境，也是用 React 创建**新的 [单页](/docs/glossary.html#single-page-application) 应用**的最佳方式。
+[Create React App](https://github.com/facebookincubator/create-react-app) 是一个用于**学习 React** 的舒适环境，也是用 React 创建**新的 [单页](/docs/glossary.html#single-page-application) 应用**的最佳方式。
 
 它会配置你的开发环境，以便使你能够使用最新的 JavaScript 特性，提供良好的开发人员体验，并为生产环境优化你的应用程序。你需要在你的机器上安装 Node >= 6 和 npm >= 5.2。要创建项目，执行：
 
@@ -51,7 +51,7 @@ npm start
 >
 > `npx` 不是拼写错误 —— 它是 [npm 5.2+ 附带的 package 运行工具](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b)。
 
-Create React App 不会处理后端逻辑或数据库；它只是创建一个前端构建管道（build pipeline），所以你可以使用它来配合任何你想使用的后端。它在内部使用 [Babel](http://babeljs.io/) 和  [webpack](https://webpack.js.org/)，但你无需了解它们的任何细节。
+Create React App 不会处理后端逻辑或数据库；它只是创建一个前端构建管道（build pipeline），所以你可以使用它来配合任何你想使用的后端。它在内部使用 [Babel](https://babeljs.io/) 和  [webpack](https://webpack.js.org/)，但你无需了解它们的任何细节。
 
 当你准备好部署到生产环境时，执行 `npm run build` 会在 `build` 文件夹内生成你的应用的优化版本。你能 [从它的 README](https://github.com/facebookincubator/create-react-app#create-react-app-) 和 [用户指南](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#table-of-contents) 了解 Create React App 的更多。
 
@@ -87,7 +87,7 @@ Create React App 不会处理后端逻辑或数据库；它只是创建一个前
 
 * 一个**打包器**，比如 [webpack](https://webpack.js.org/) 或 [Parcel](https://parceljs.org/)。它能让你编写模块化代码，并将它们组合在一起成为小的 package，以优化加载时间。
 
-* 一个**编译器**，例如 [Babel](http://babeljs.io/)。它能让你编写的现代 JavaScript 代码，并在旧版浏览器中依然能够工作。
+* 一个**编译器**，例如 [Babel](https://babeljs.io/)。它能让你编写的现代 JavaScript 代码，并在旧版浏览器中依然能够工作。
 
 如果你倾向于从头开始打造你自己的 JavaScript 工具链，[查看这个指南](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658)，它重新创建了一些 Create React App 的功能。
 
