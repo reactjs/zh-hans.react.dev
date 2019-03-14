@@ -67,7 +67,7 @@ Suspense 使得组件可以“等待”某些操作结束后，再进行渲染�
 
 ### Hooks {#hooks}
 
-*Hooks* 是在 React 16.8 中引入的新概念。Hooks 允许你在不使用 class 组件的情况下使用 state 及其他 React 功能。Hooks 拥有[专属文档章节](/docs/hooks-intro.html) 和单独的 API 参考文档：
+*Hooks* 是在 React 16.8 中引入的新概念。Hooks 允许你在不使用 class 组件的情况下使用 state 及其他 React 功能。Hooks 拥有[专属文档章节](/docs/hooks-intro.html)和单独的 API 参考文档：
 
 - [基础 Hooks](/docs/hooks-reference.html#basic-hooks)
   - [`useState`](/docs/hooks-reference.html#usestate)
@@ -106,11 +106,11 @@ class Greeting extends React.Component {
 
 `React.PureComponent` 与 [`React.Component`](#reactcomponent) 很相似。两者的区别在于 [`React.Component`](#reactcomponent) 并未实现 [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate)，而 `React.PureComponent` 中以浅层对比 prop 和 state 的方式来实现了该函数。
 
-如果为 React 组件赋值相同的 props 和 state，`render()` 函数会渲染相同的内容，在某些情况下使用 `React.PureComponent` 可提高性能。
+如果赋予 React 组件相同的 props 和 state，`render()` 函数会渲染相同的内容，那么在某些情况下使用 `React.PureComponent` 可提高性能。
 
 > 注意
 >
-> `React.PureComponent` 中的 `shouldComponentUpdate()` 仅作对象的浅层比较。如果对象中包含复杂的数据结构，则有可能因为无法检查深层的差别，产生错误的比对结果。当你的 props 和 state 较为简单时，或者说你已知道深层数据结构发生变化并使用 [`forceUpdate()`](/docs/react-component.html#forceupdate) 更新时，亦或是考虑使用 [immutable 对象](https://facebook.github.io/immutable-js/)加速嵌套数据比较时，才适合使用 `React.PureComponent`。
+> `React.PureComponent` 中的 `shouldComponentUpdate()` 仅作对象的浅层比较。如果对象中包含复杂的数据结构，则有可能因为无法检查深层的差别，产生错误的比对结果。仅在你的 props 和 state 较为简单时，才使用 `React.PureComponent`，或者在深层数据结构发生变化时调用 [`forceUpdate()`](/docs/react-component.html#forceupdate) 来确保组件被正确地更新。你也可以考虑使用 [immutable 对象](https://facebook.github.io/immutable-js/)加速嵌套数据的比较。
 >
 > 此外，`React.PureComponent` 中的 `shouldComponentUpdate()` 将跳过所有子组件树的 prop 更新。因此，请确保所有子组件也都是“纯”的组件。
 
@@ -164,7 +164,7 @@ React.createElement(
 
 创建并返回指定类型的新 [React 元素](/docs/rendering-elements.html)。其中的类型参数既可以是标签名字符串（如 `'div'` 或 `'span'`），也可以是 [React 组件](/docs/components-and-props.html) 类型 （class 组件或函数组件），或是 [React fragment](#reactfragment) 类型。
 
-使用 [JSX](/docs/introducing-jsx.html) 编写的代码将会被转换成使用 `React.createElement()` 的形式。如果使用了 JSX 方式，那么一般来说就不需要直接调用 `React.createElement()`。请查阅[不使用 JSX](/docs/react-without-jsx.html)章节获得更多信息。
+使用 [JSX](/docs/introducing-jsx.html) 编写的代码将会被转换成使用 `React.createElement()` 的形式。如果使用了 JSX 方式，那么一般来说就不需要直接调用 `React.createElement()`。请查阅[不使用 JSX](/docs/react-without-jsx.html) 章节获得更多信息。
 
 * * *
 
@@ -325,15 +325,15 @@ render() {
 const SomeComponent = React.lazy(() => import('./SomeComponent'));
 ```
 
-请注意，渲染 `lazy` 组件依赖该组件渲染树上层的 `<React.Suspense>` 组件。它用于标记组件的加载方式。
+请注意，渲染 `lazy` 组件依赖该组件渲染树上层的 `<React.Suspense>` 组件。这是指定加载指示器（loading indicator）的方式。
 
 > **注意**
 >
-> 使用 `React.lazy` 的动态引入特性需要在 JS 环境中支持 Promise。在 IE11 及以下版本的浏览器中使用该特性需引入 polyfill。
+> 使用 `React.lazy` 的动态引入特性需要 JS 环境支持 Promise。在 IE11 及以下版本的浏览器中需要通过引入 polyfill 来使用该特性。
 
 ### `React.Suspense` {#reactsuspense}
 
-`React.Suspense` 可以指定加载提示符，以防其组件树中的某些子组件尚未具备渲染条件。目前，懒加载组件是 `<React.Suspense>` 支持的**唯一**用例：
+`React.Suspense` 可以指定加载指示器（loading indicator），以防其组件树中的某些子组件尚未具备渲染条件。目前，懒加载组件是 `<React.Suspense>` 支持的**唯一**用例：
 
 ```js
 // 该组件是动态加载的
@@ -351,7 +351,7 @@ function MyComponent() {
 }
 ```
 
-它已被收录在了我们的[代码分割指南](/docs/code-splitting.html#reactlazy)中。请注意，`lazy` 组件可以位于 `Suspense` 组件树的深处 -- 它不必包装树中的每一个延迟加载组件。最佳实践是将 `<Suspense>` 置于你想展示加载指示器的位置，而使用 `lazy()` 则可以放置于任何你想要做代码分割的地方。
+它已被收录在了我们的[代码分割指南](/docs/code-splitting.html#reactlazy)中。请注意，`lazy` 组件可以位于 `Suspense` 组件树的深处——它不必包装树中的每一个延迟加载组件。最佳实践是将 `<Suspense>` 置于你想展示加载指示器（loading indicator）的位置，而 `lazy()` 则可被放置于任何你想要做代码分割的地方。
 
 虽然目前尚未支持其它特性，但未来我们计划让 `Suspense` 支持包括数据获取在内的更多场景。你可以在 [roadmap](/blog/2018/11/27/react-16-roadmap.html) 中了解相关信息。
 
