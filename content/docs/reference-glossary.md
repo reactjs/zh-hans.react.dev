@@ -11,11 +11,11 @@ permalink: docs/glossary.html
 
 单页面应用(single-page application)，是一个应用程序，它可以加载单个 HTML 页面，以及运行应用程序所需的所有必要资源（例如 JavaScript 和 CSS）。与页面或后续页面的任何交互，都不再需要往返 server 加载资源，即页面不会重新加载。
 
-你可以使用 React 来构建单页应用程序，但这不是必须如此。React 还可用于增强现有网站的小部分，使其增加额外交互。用 React 编写的代码，可以与服务器端渲染的标记（例如 PHP）或其他客户端库和平共处。实际上，这也正是 Facebook 内部使用 React 的方式。
+你可以使用 React 来构建单页应用程序，但不是必须如此。React 还可用于增强现有网站的小部分，使其增加额外交互。用 React 编写的代码，可以与服务器端渲染的标记（例如 PHP）或其他客户端库和平共处。实际上，这也正是 Facebook 内部使用 React 的方式。
 
 ## ES6, ES2015, ES2016 等 {#es6-es2015-es2016-etc}
 
-这些首字母缩略词都是指 ECMAScript 语言规范标准的最新版本，JavaScript 语言是此标准的一个实现。其中 ES6 版本（也称为 ES2015）包括对前面版本的许多补充，例如：箭头函数、类、模板字面量、`let` 和 `const` 语句。可以在[这里](https://en.wikipedia.org/wiki/ECMAScript#Versions)了解此规范特定版本的详细信息。
+这些首字母缩写都是指 ECMAScript 语言规范标准的最新版本，JavaScript 语言是此标准的一个实现。其中 ES6 版本（也称为 ES2015）包括对前面版本的许多补充，例如：箭头函数、class、模板字面量、`let` 和 `const` 语句。可以在[这里](https://en.wikipedia.org/wiki/ECMAScript#Versions)了解此规范特定版本的详细信息。
 
 ## compiler（编译器） {#compilers}
 
@@ -23,11 +23,11 @@ JavaScript compiler 接收 JavaScript 代码，然后对其进行转换，最终
 
 ## bundler（打包工具） {#bundlers}
 
-bundler 会将 JavaScript 和 CSS 代码作为单独的模块（通常有数百个），然后将它们组合在一起，最终生成出一些适用于浏览器加载的文件。常用的打包 React 应用的工具有 [webpack](https://webpack.js.org/) 和 [Browserify](http://browserify.org/)。
+bundler 会接收写成单独模块（通常有数百个）的 JavaScript 和 CSS 代码，然后将它们组合在一起（通常有数百个），最终生成出一些为浏览器优化的文件。常用的打包 React 应用的工具有 [webpack](https://webpack.js.org/) 和 [Browserify](http://browserify.org/)。
 
 ## package 管理工具 {#package-managers}
 
-package 管理工具，是帮助你管理项目依赖的工具。[npm](https://www.npmjs.com/) 和 [Yarn](https://yarnpkg.com/) 是常用的管理 React 应用依赖的 package 管理工具。它们都是使用相同的 npm package registry 的客户端。
+package 管理工具，是帮助你管理项目依赖的工具。[npm](https://www.npmjs.com/) 和 [Yarn](https://yarnpkg.com/) 是两个常用的管理 React 应用依赖的 package 管理工具。它们都是使用了相同 npm package registry 的客户端。
 
 ## CDN {#cdn}
 
@@ -35,7 +35,7 @@ CDN 代表内容分发网络（Content Delivery Network）。CDN 会在全球服
 
 ## JSX {#jsx}
 
-JSX 是一个 JavaScript 语法扩展。它类似于模板语言，但它具有 JavaScript 的全部能力。JSX 最终会被编译为 `React.createElement()` 函数调用，返回称为 “React 元素” 的普通 JavaScript 对象。通过[这篇文档](/docs/introducing-jsx.html)中查看 JSX 语法的基本介绍，在[这篇文档]中可以找到 JSX 语法的更多深入教程。
+JSX 是一个 JavaScript 语法扩展。它类似于模板语言，但它具有 JavaScript 的全部能力。JSX 最终会被编译为 `React.createElement()` 函数调用，返回称为 “React 元素” 的普通 JavaScript 对象。通过[查看这篇文档](/docs/introducing-jsx.html)获取 JSX 语法的基本介绍，在[这篇文档]中可以找到 JSX 语法的更多深入教程。
 
 React DOM 使用 camelCase（驼峰式命名）来定义属性的名称，而不使用 HTML 属性名称的命名约定。例如，HTML 的 `tabindex` 属性变成了 JSX 的 `tabIndex`。而 `class` 属性则变为 `className`，这是因为 `class` 是 JavaScript 中的保留字：
 
@@ -77,11 +77,11 @@ class Welcome extends React.Component {
 }
 ```
 
-可以将组件拆分为不同的功能片段，然后在其他组件中重复使用这些功能片段。组件可以返回其他组件、数组、字符串和数字。根据经验来看，如果 UI 中有一部分被多次使用（Button，Panel，Avatar），或者组件本身就足够复杂（App，FeedStory，Comment），那么它就是一个可复用组件的候选项。组件名称应该始终以大写字母开头（`<Wrapper/>` **而不是** `<wrapper/>`）。有关渲染组件的更多信息，请参阅[这篇文档](/docs/components-and-props.html#rendering-a-component)。
+组件可被拆分为不同的功能片段，这些片段可以在其他组件中使用。组件可以返回其他组件、数组、字符串和数字。根据经验来看，如果 UI 中有一部分被多次使用（Button，Panel，Avatar），或者组件本身就足够复杂（App，FeedStory，Comment），那么它就是一个可复用组件的候选项。组件名称应该始终以大写字母开头（`<Wrapper/>` **而不是** `<wrapper/>`）。有关渲染组件的更多信息，请参阅[这篇文档](/docs/components-and-props.html#rendering-a-component)。
 
 ### [`props`](/docs/components-and-props.html) {#props}
 
-`props` 是 React 组件的输入。它们是从父组件传递给子组件的数据。
+`props` 是 React 组件的输入。它们是从父组件向下传递给子组件的数据。
 
 记住，`props` 是只读的。不应以任何方式修改它们：
 
@@ -120,9 +120,9 @@ class Welcome extends React.Component {
 
 ### [`state`](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) {#state}
 
-当组件一些数据在某些时刻发生变化时，这时就需要使用 `state` 来跟踪状态。例如，`Checkbox` 组件可能需要 `isChecked` 状态，而 `NewsFeed` 组件可能需要跟踪 `fetchedPosts` 状态。
+当组件中的一些数据在某些时刻发生变化时，这时就需要使用 `state` 来跟踪状态。例如，`Checkbox` 组件可能需要 `isChecked` 状态，而 `NewsFeed` 组件可能需要跟踪 `fetchedPosts` 状态。
 
-`state` 和 `props` 之间最重要的区别是：`props` 由父组件传入，而 `state` 是由组件本身管理。组件不能修改 `props`，但它可以修改 `state`。如果要修改 `state`，必须调用 `this.setState()`。只有 class 组件才具有 state。
+`state` 和 `props` 之间最重要的区别是：`props` 由父组件传入，而 `state` 由组件本身管理。组件不能修改 `props`，但它可以修改 `state`。如果要修改 `state`，必须调用 `this.setState()`。只有 class 组件才具有 state。
 
 对于所有变化数据中的每个特定部分，只应该由一个组件在其 state 中“持有”它。不要试图同步来自于两个不同组件的 state。相反，应当将其[提升](/docs/lifting-state-up.html)到最近的共同祖先组件中，并将这个 state 作为 props 传递到两个子组件。
 
@@ -134,15 +134,15 @@ class Welcome extends React.Component {
 
 React 有两种不同的方式来处理表单输入。
 
-一个 input 表单元素，如果其值是由 React 控制，就其称为*受控组件*。当用户将数据输入到受控组件时，会触发修改状态的事件处理程序，这时由你的代码来决定此输入是否有效（如果有效就使用更新后的值重新渲染）。如果不重新渲染，则表单元素将保持不变。
+如果一个 input 表单元素的值是由 React 控制，就其称为*受控组件*。当用户将数据输入到受控组件时，会触发修改状态的事件处理程序，这时由你的代码来决定此输入是否有效（如果有效就使用更新后的值重新渲染）。如果不重新渲染，则表单元素将保持不变。
 
-一个*非受控组件*，就像是运行在 React 体系之外的表单元素。当用户将数据输入到表单字段（例如 input，dropdown 等）时，更新后的信息被映射到表单元素，但是并没有执行操作来将信息更新到 React 中。也就是说，你无法强制给这个表单字段设置一个特定值。
+一个*非受控组件*，就像是运行在 React 体系之外的表单元素。当用户将数据输入到表单字段（例如 input，dropdown 等）时，React 不需要做任何事情就可以映射更新后的信息。然而，这也意味着，你无法强制给这个表单字段设置一个特定值。
 
 在大多数情况下，你应该使用受控组件。
 
 ## [key](/docs/lists-and-keys.html) {#keys}
 
-“key” 是在创建元素数组时，需要包含的特殊字符串属性。key 帮助 React 识别出被修改、添加或删除的 item。应当给数组内的每个元素都设定 key，以使元素具有固定身份标识。
+“key” 是在创建元素数组时，需要用到的一个特殊字符串属性。key 帮助 React 识别出被修改、添加或删除的 item。应当给数组内的每个元素都设定 key，以使元素具有固定身份标识。
 
 只需要保证，在同一个数组中的兄弟元素之间的 key 是唯一的。而不需要在整个应用程序甚至单个组件中保持唯一。
 
@@ -152,7 +152,7 @@ React 有两种不同的方式来处理表单输入。
 
 React 支持一个特殊的、可以附加到任何组件上的 `ref` 属性。此属性可以是一个由 [`React.createRef()` 函数](/docs/react-api.html#reactcreateref)创建的对象、或者一个回调函数、或者一个字符串（遗留 API）。当 `ref` 属性是一个回调函数时，此函数会（根据元素的类型）接收底层 DOM 元素或 class 实例作为其参数。这能够让你直接访问 DOM 元素或组件实例。
 
-谨慎使用 ref。如果你发现自己经常使用 ref 来在应用中“触发一些事情”，请考虑改为使用更加熟悉的[自上而下的数据流](/docs/lifting-state-up.html)。
+谨慎使用 ref。如果你发现自己经常使用 ref 来在应用中“实现想要的功能”，你可以考虑去了解一下[自上而下的数据流](/docs/lifting-state-up.html)。
 
 ## [事件](/docs/handling-events.html) {#events}
 
