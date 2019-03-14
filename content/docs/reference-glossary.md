@@ -23,7 +23,7 @@ JavaScript compiler 接收 JavaScript 代码，然后对其进行转换，最终
 
 ## bundler（打包工具） {#bundlers}
 
-bundler 会接收写成单独模块（通常有数百个）的 JavaScript 和 CSS 代码，然后将它们组合在一起（通常有数百个），最终生成出一些为浏览器优化的文件。常用的打包 React 应用的工具有 [webpack](https://webpack.js.org/) 和 [Browserify](http://browserify.org/)。
+bundler 会接收写成单独模块（通常有数百个）的 JavaScript 和 CSS 代码，然后将它们组合在一起，最终生成出一些为浏览器优化的文件。常用的打包 React 应用的工具有 [webpack](https://webpack.js.org/) 和 [Browserify](http://browserify.org/)。
 
 ## package 管理工具 {#package-managers}
 
@@ -31,7 +31,7 @@ package 管理工具，是帮助你管理项目依赖的工具。[npm](https://w
 
 ## CDN {#cdn}
 
-CDN 代表内容分发网络（Content Delivery Network）。CDN 会在全球服务器网络上提供静态内容缓存。
+CDN 代表内容分发网络（Content Delivery Network）。CDN 会分发缓存，然后从全球服务器网络上获取静态内容。
 
 ## JSX {#jsx}
 
