@@ -103,7 +103,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 ### API 参考 {#api-reference}
 
-当你想深入学习特定 React API 细节时，该章节将会变得非常有用。举个例子：[`React.Component` API 参考](/docs/react-component.html) 能够介绍 `setState()` 方法是如何工作的，以及不同生命周期方法的使用场景。
+当你想深入学习特定 React API 细节时，该章节将会变得非常有用。举个例子：[`React.Component` API 参考](/docs/react-component.html)能够介绍 `setState()` 方法是如何工作的，以及不同生命周期方法的使用场景。
 
 ### 词汇表与常见问题 {#glossary-and-faq}
 
