@@ -89,7 +89,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 如果你喜欢**一步步学习概念**，我们的 [Hello World](/docs/hello-world.html) 是最好的开始。指南里的每一章节都基于前一章节已学的内容，这样一步步过来你不会错过任何知识。
 
-### React 理念 {#thinking-in-react}
+### React 哲学 {#thinking-in-react}
 
 很多用户将阅读 [React 理念](/docs/thinking-in-react.html) 作为点亮 React 技能的最后一课。这可能是最老的 React 教程，但它依然极具价值。
 
