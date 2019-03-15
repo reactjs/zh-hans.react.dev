@@ -69,7 +69,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 ### 设计师的 React {#react-for-designers}
 
-如果你有设计背景，[这些资源](http://reactfordesigners.com/) 是很好的开始。
+如果你有设计背景，[这些资源](http://reactfordesigners.com/)是很好的开始。
 
 ### JavaScript 资源 {#javascript-resources}
 
