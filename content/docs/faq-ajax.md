@@ -18,7 +18,7 @@ category: FAQ
 
 下面这个组件演示了如何在 `componentDidMount` 中发起 AJAX 请求去更新组件的 state 。
 
-示例 API 返回如下的 JSON 格式。
+示例 API 返回如下的 JSON 对象。
 
 ```
 {
