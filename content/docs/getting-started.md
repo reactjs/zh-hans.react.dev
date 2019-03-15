@@ -113,7 +113,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 [React 博客](/blog/)是 React 团队发布更新的官方渠道。一切重要的信息，包括：更新日志，废弃通知等，都会首先在这里发布。
 
-你也可以在 Twitter 上关注 [@reactjs 账号](https://twitter.com/reactjs) 获取更新，但即使不这样做，仅通过官方博客你也不会错过任何必要的信息。
+你也可以在 Twitter 上关注 [@reactjs 账号](https://twitter.com/reactjs)获取更新，但即使不这样做，仅通过官方博客你也不会错过任何必要的信息。
 
 并非每一个 React 版本都值得我们在博客上发布文章，但你可以在 [React 代码仓库中的 `CHANGELOG.md` 文件](https://github.com/facebook/react/blob/master/CHANGELOG.md)或[更新日志页面](https://github.com/facebook/react/releases)找到每个版本的更新日志。
 
