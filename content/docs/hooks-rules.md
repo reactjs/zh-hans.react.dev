@@ -135,4 +135,4 @@ React 不知道第二个 `useState` Hook 应该返回什么了。React 以为在
 
 ## 下一步 {#next-steps}
 
-最后，我们已经准备好学习[如何编写你自己的 Hook](/docs/hooks-custom.html)了！自定义 Hooks 允许你将 React 提供的 Hook 组合到您自己的 Hook 中，重用不同组件之间的常见状态逻辑。
+最后，我们已经准备好学习[如何编写你自己的 Hook](/docs/hooks-custom.html)了！自定义 Hook 允许你将 React 提供的 Hook 组合到您自己的 Hook 中，复用不同组件之间的常见状态逻辑。
