@@ -91,7 +91,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 ### React 哲学 {#thinking-in-react}
 
-很多用户将阅读 [React 理念](/docs/thinking-in-react.html) 作为点亮 React 技能的最后一课。这可能是最老的 React 教程，但它依然极具价值。
+很多用户认为阅读 [React 哲学](/docs/thinking-in-react.html)是他们最终对 React 恍然大悟的时刻。它可能是最老的 React 教程，但它依然极具价值。
 
 ### 推荐课程 {#recommended-courses}
 
