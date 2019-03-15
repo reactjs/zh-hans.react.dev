@@ -95,7 +95,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 ### 推荐课程 {#recommended-courses}
 
-相比官方文档，有时人们更喜欢第三方的书籍或视频课程。我们维护了一个 [推荐资源清单](/community/courses.html)，其中有一些资源是免费的。
+相比官方文档，有时人们更喜欢第三方的书籍或视频课程。我们维护了一个[推荐资源清单](/community/courses.html)，其中有一些资源是免费的。
 
 ### 高级概念 {#advanced-concepts}
 
