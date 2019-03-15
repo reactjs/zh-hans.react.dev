@@ -79,7 +79,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 >提示
 >
->当你对一些 JavaScript 知识感到疑惑时，[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) 和 [javascript.info](http://javascript.info/) 是很棒的资源网站。你也可以去 [社区支持论坛](/community/support.html) 寻求帮助。
+>当你对一些 JavaScript 知识感到疑惑时，[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) 和 [javascript.info](http://javascript.info/) 是很棒的资源网站。你也可以去[社区支持论坛](/community/support.html)寻求帮助。
 
 ### 实践教程 {#practical-tutorial}
 
