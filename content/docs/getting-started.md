@@ -20,7 +20,7 @@ redirect_from:
 
 这是一个 React 文档及相关资源的概览页面。
 
-**React** 是一个用于构建用户界面的 JavaScript 库。你可以在 [首页](/) 或 [教程](/tutorial/tutorial.html) 中学习什么是 React。
+**React** 是一个用于构建用户界面的 JavaScript 库。你可以在[首页](/)或[教程](/tutorial/tutorial.html)中学习什么是 React。
 
 ---
 
