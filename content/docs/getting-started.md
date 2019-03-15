@@ -42,7 +42,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 ### 在网站中添加 React {#add-react-to-a-website}
 
-你可以 [立即在 HTML 文件中添加 React](/docs/add-react-to-a-website.html)，然后选择逐渐拓展它的应用范围，或只在一些动态小部件中使用它。
+你可以[立即在 HTML 文件中添加 React](/docs/add-react-to-a-website.html)，然后选择逐渐拓展它的应用范围，或只在一些动态小部件中使用它。
 
 ### 创建新的 React 应用 {#create-a-new-react-app}
 
