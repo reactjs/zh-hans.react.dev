@@ -210,7 +210,7 @@ There are a few more heuristics, and they might change over time as we fine-tune
 
 ### How can I do data fetching with Hooks?
 
-Check out [this article](https://www.robinwieruch.de/react-hooks-fetch-data/) to learn more about data fetching with Hooks.
+Here is a [small demo](https://codesandbox.io/s/jvvkoo8pq3) to get you started. To learn more, check out [this article](https://www.robinwieruch.de/react-hooks-fetch-data/) about data fetching with Hooks.
 
 ### Is there something like instance variables? {#is-there-something-like-instance-variables}
 
@@ -467,7 +467,7 @@ Yes. See [conditionally firing an effect](/docs/hooks-reference.html#conditional
 Generally speaking, no.
 
 ```js{3,8}
-function Example() {
+function Example({ someProp }) {
   function doSomething() {
     console.log(someProp);
   }
@@ -481,7 +481,7 @@ function Example() {
 It's difficult to remember which props or state are used by functions outside of the effect. This is why **usually you'll want to declare functions needed by an effect *inside* of it.** Then it's easy to see what values from the component scope that effect depends on:
 
 ```js{4,8}
-function Example() {
+function Example({ someProp }) {
   useEffect(() => {
     function doSomething() {
       console.log(someProp);
@@ -571,7 +571,7 @@ We moved the function inside the effect so it doesn't need to be in its dependen
 
 >Tip
 >
->Check out [this article](https://www.robinwieruch.de/react-hooks-fetch-data/) to learn more about data fetching with Hooks.
+>Check out [this small demo](https://codesandbox.io/s/jvvkoo8pq3) and [this article](https://www.robinwieruch.de/react-hooks-fetch-data/) to learn more about data fetching with Hooks.
 
 **If for some reason you _can't_ move a function inside an effect, there are a few more options:**
 
