@@ -26,7 +26,7 @@ redirect_from:
 
 - [体验 React](#try-react)
 - [学习 React](#learn-react)
-- [保持更新](#staying-informed)
+- [获取最新消息](#staying-informed)
 - [版本化文档](#versioned-documentation)
 - [找不到想要的？](#something-missing)
 
@@ -54,7 +54,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 学习 React 的人有着不同的知识背景和学习方式，不管你是理论派还是实践派，我们希望该章节内容对你有帮助。
 
-* 如果你喜欢 **边做边学**，请从 [实践教程](/tutorial/tutorial.html) 开始。
+* 如果你喜欢**边做边学**，请从[实践教程](/tutorial/tutorial.html)开始。
 * 如果你喜欢**一步步学习概念**，请从 [Hello World](/docs/hello-world.html) 开始。
 
 和所有新技术一样，React 也有一条学习曲线。但只要多多实践和保有一点点耐心，你*终将*掌握它。
@@ -83,7 +83,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 ### 实践教程 {#practical-tutorial}
 
-如果你喜欢 **实践中学**，请参考我们的 [实践教程](/tutorial/tutorial.html)。在这篇教程中，我们用 React 构建了一个井字棋游戏。你可能想要跳过这部分，因为你并不是游戏开发者。但请给它一次机会，这篇教程中所涉及的技术是构建 *任何* React 应用的基础，掌握它们将让你对 React 有更深的理解。
+如果你喜欢**边做边学**，请参考我们的[实践教程](/tutorial/tutorial.html)。在这篇教程中，我们用 React 构建了一个井字棋游戏。你可能想要跳过这部分，因为你并不是游戏开发者。但请给它一次机会，这篇教程中所涉及的技术是构建*任何* React 应用的基础，掌握它们将让你对 React 有更深的理解。
 
 ### 一步步学习指南 {#step-by-step-guide}
 
@@ -109,7 +109,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 [词汇表](/docs/glossary.html)中包含了 React 文档中最常见术语的概览。常见问题章节致力于简短解答一些大家普遍遇到的问题，包括[发送 AJAX 请求](/docs/faq-ajax.html)，[组件状态](/docs/faq-state.html)以及[文件结构](/docs/faq-structure.html) 等。
 
-## 更新动态 {#staying-informed}
+## 获取最新消息 {#staying-informed}
 
 [React 博客](/blog/)是 React 团队发布更新的官方渠道。一切重要的信息，包括：更新日志，废弃通知等，都会首先在这里发布。
 
