@@ -75,7 +75,7 @@ function Form() {
 }
 ```
 
-那么 React 怎么知道哪个 state 对应哪个 `useState`？答案是 React 靠的是 Hook 调用的顺序。因为我们的实例中，Hook 的调用顺序在每次渲染中都是相同的，所以它能够正常工作：
+那么 React 怎么知道哪个 state 对应哪个 `useState`？答案是 React 靠的是 Hook 调用的顺序。因为我们的示例中，Hook 的调用顺序在每次渲染中都是相同的，所以它能够正常工作：
 
 ```js
 // ------------
