@@ -110,7 +110,6 @@ useEffect(updateTitle)     // 4. Replace the effect for updating the title
 
 在第一次渲染中 `name !== ''` 这个条件值为 `true`，所以我们会执行这个 Hook。但是下一次渲染时我们可能清空了表单，表达式值变为 `false`。现在我们在渲染时跳过了这个 Hook，Hook 的调用顺序变得不同了：
 
-
 ```js
 useState('Mary')           // 1. Read the name state variable (argument is ignored)
 // useEffect(persistForm)  // 🔴 This Hook was skipped!
