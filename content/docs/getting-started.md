@@ -99,7 +99,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 ### 高级概念 {#advanced-concepts}
 
-一旦你已经熟知 React 的 [主要概念](#main-concepts)，并且已经在项目中小试牛刀，你可能会对更高级的话题感兴趣。该章节内容将会介绍一些强大但并不常用的 React 特性，举个例子：[context](/docs/context.html) 和 [refs](/docs/refs-and-the-dom.html)。
+一旦你已经熟知 React 的[主要概念](#main-concepts)，并且已经在项目中小试牛刀，你可能会对更高级的话题感兴趣。该章节内容将会介绍一些强大但并不常用的 React 特性，举个例子：[context](/docs/context.html) 和 [refs](/docs/refs-and-the-dom.html)。
 
 ### API 参考 {#api-reference}
 
