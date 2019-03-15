@@ -123,4 +123,4 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 ## 找不到想要的？ {#something-missing}
 
-如果你找不到想要的内容或觉得文档某些地方让人疑惑，请 [移步文档仓库提交 issue](https://github.com/reactjs/reactjs.org/issues/new) 或在 Twitter 上提及 [@reactjs 账号](https://twitter.com/reactjs)。我们期待你的反馈！
+如果你找不到想要的内容或觉得文档某些地方让人疑惑，请[移步文档仓库提交 issue](https://github.com/reactjs/reactjs.org/issues/new) 或在 Twitter 上提及 [@reactjs 账号](https://twitter.com/reactjs)。我们期待你的反馈！
