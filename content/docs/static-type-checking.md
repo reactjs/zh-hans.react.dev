@@ -18,7 +18,7 @@ next: refs-and-the-dom.html
 * 确保编译后的代码中去除了 Flow 语法。
 * 添加类型注解并且运行 Flow 来检查它们。
 
-我们将会下面加以详细解释这些步骤。
+下面我们会详细解释这些步骤。
 
 ### 在项目中添加 Flow {#adding-flow-to-a-project}
 
@@ -83,7 +83,7 @@ Flow 通过这种类型注释的特殊语法扩展了 JavaScript 语言。但是
 >
 >这些说明*不适用*于使用 Create React App 的用户。虽然 Create React App 底层也使用了 Babel，但它已经配置了去除 Flow。 如果你*没有*使用 Create React App，请执行此步骤。
 
-如果你的项目手动配置了 Babel，你将需要安装一个特殊的 Flow preset。
+如果你的项目手动配置了 Babel，你需要为 Flow 安装一个特殊的 preset。
 
 如果你使用 Yarn, 执行：
 
@@ -120,7 +120,7 @@ npm install --save-dev babel-preset-flow
 
 ### 运行 Flow {#running-flow}
 
-如果你按照上面的说明操作，你应该能第一次运行 Flow 了。
+如果你按照上面的说明操作，你应该能运行 Flow 了。
 
 ```bash
 yarn flow
