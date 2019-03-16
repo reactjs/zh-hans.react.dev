@@ -18,13 +18,13 @@ HOCs 经常用于 React 的第三方库，比如 Redux 中的 [`connect`](https:
 
 在这篇文档中，我们会讨论为什么 HOCs 是有用的，以及怎么写一个你自己的 HOC。
 
-## 使用 HOCs 来切分逻辑 {#use-hocs-for-cross-cutting-concerns}
+## 使用 HOCs 来解决跨组件协同问题  {#use-hocs-for-cross-cutting-concerns}
 
 > **注意**
 >
-> 我们曾今推荐使用 mixins 作为处理横切关注点的方式。我们现在发觉相比于 mixins 的价值他带来了更多麻烦。[阅读更多](/blog/2016/07/13/mixins-considered-harmful.html)关于为什么我们去掉来 mixins 以及你该如何修改你已有的组件。
+> 我们曾今推荐使用 mixins 作为处理跨组件协同的方式。我们发现相对于 mixins 带来的好处，它带来了更多麻烦。[阅读更多](/blog/2016/07/13/mixins-considered-harmful.html)关于为什么我们去掉 mixins 以及你该如何修改你已有的组件。
 
-组件是 React 中最主要的代码复用单元。然而你会发现一些模式并不非常直接适合传统的组件。
+组件是 React 中最主要的代码复用单元。然而，你会发现一些模式不直接适用于传统的组件。
 
 举个例子，假如你有一个 `CommentList` 组件用来订阅外部的数据源并渲染一个评论列表：
 
@@ -106,7 +106,7 @@ class BlogPost extends React.Component {
 - 在订阅中一旦发现数据变化就调用 `setState`。
 - 在卸载之前，删除变化监听器。
 
-你可以预感到在一个大型的应用中，这种类似的订阅 `DataSource` 并调用 `setState` 的模式会一次又一次的出现。我们想要一种抽象来允许我们把这部分逻辑定义到一个单独的地方并在不同的组件中进行分享。这就是HOCs擅长的地方。
+你可以预感到在一个大型的应用中，这种类似的订阅 `DataSource` 并调用 `setState` 的模式会重复出现。我们想要一种抽象的方法来让我们把这些逻辑定义到一个单独的地方并在不同的组件中共享。这就是HOCs所擅长的。
 
 我们可以写一个方法来创建组件，比如 `CommentList` 和 `BlogPost` 这种订阅 `DataSource` 的组件，这个方法接收的参数中会有一个子组件，其接收订阅数据作为 prop。我们叫这个方法 `withSubscription`：
 
@@ -165,11 +165,11 @@ function withSubscription(WrappedComponent, selectData) {
 
 注意 HOC 不会修改传入的组件，也不会使用继承的方式来拷贝他的行为。相反，HOC **组合**原始组件的方式是通过把他**包装**进入一个容器组件。HOC 是一个没有任何副作用的纯粹的方法。
 
-就是这样！被包装的组件从容器那接收所有的 props，同时包括一个新的 prop，叫做 `date`，用来渲染他的输出。HOC 并不关心数据被怎么样或者为什么被使用，同样被包装的组件也不关心数据是从哪里来的。
+就是这样！被包装的组件从容器那接收所有的 props，同时包括一个新的 prop，叫做 `data`，用来渲染他的输出。HOC 并不关心数据被如何使用，同样被包装的组件也不关心数据是从哪里来的。
 
-因为 `withSubscription` 只是一个普通的方法，你可以增加随意数量的参数。举个例子，你可能想要让 `date` 的名字变得可配置，让 HOC 更加独立于被包装的组件。或者你可以接收一个参数来配置 `shouldComponentUpdate`，甚至一个参数来配置数据源。这些都是可能的因为 HOC 有定义组件的完全控制权。
+因为 `withSubscription` 只是一个普通的方法，你可以增加随意数量的参数。举个例子，你可能想要让 `data` 的名字变得可配置，让 HOC 更加独立于被包装的组件。或者你可以接收一个参数来配置 `shouldComponentUpdate`，甚至一个参数来配置数据源。这些都是可能的因为 HOC 有定义组件的完全控制权。
 
-跟组件很像，`withSubscription` 和被包装的组件之间的约定是完全基于 props 的。这就让切换一个 HOC 到另外一个变得非常简单，只要他们提供相同的props给被包装的组件。举个例子，这在我们需要切换数据获取的类库的时候可能会非常有用。
+和所有组件一样，`withSubscription` 和被包装的组件之间的约定是完全基于 props 的。这就让切换一个 HOC 到另外一个变得非常简单，只要他们提供相同的props给被包装的组件。举个例子，这在我们需要切换数据获取的类库的时候可能会非常有用。
 
 ## 不要修改原始的组件。使用组合。 {#dont-mutate-the-original-component-use-composition}
 
@@ -323,7 +323,7 @@ function getDisplayName(WrappedComponent) {
 
 React 的对比算法（通常叫做调和）使用组件标识来确认是否他应该更新当前的子树或者直接丢弃重新挂载一个新的。如果 `render` 中返回的组件和上一次渲染中的组件完全相同（`===`），React 会递归地更新子树通过对比新的组件。如果他们不相同，之前的子树会完全卸载。
 
-通常来说，你不应考虑这个问题。但是在 HOC 中这非常重要，因为他意味着你不能在一个组件的 render 方法执行的时候调用 HOC 来生产一个组件。
+通常来说，你不应考虑这个问题。但是在 HOC 中这非常重要，因为他意味着你不能在一个组件的 render 方法执行的时候调用 HOC 来产生一个组件。
 
 ```js
 render() {
