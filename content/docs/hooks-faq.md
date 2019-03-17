@@ -99,7 +99,7 @@ Hooks 确实有它们自己的学习曲线。如果这份文档中遗失了一�
 
 ### Hooks 会替代 render props 和高阶组件吗？ {#do-hooks-replace-render-props-and-higher-order-components}
 
-通常，render props 和高阶组件只渲染一个子节点。我们认为让 Hooks 来服务这个使用场景更加简单。这两种模式仍有用武之地，（例如，一个虚拟滚动条组件或许会有一个 `renderItem` 属性，或是一个课件的容器组件或许会有它自己的 DOM 结构）。但在大部分场景下，Hooks 足够了，并且能够帮助减少嵌套。
+通常，render props 和高阶组件只渲染一个子节点。我们认为让 Hooks 来服务这个使用场景更加简单。这两种模式仍有用武之地，（例如，一个虚拟滚动条组件或许会有一个 `renderItem` 属性，或是一个可见的容器组件或许会有它自己的 DOM 结构）。但在大部分场景下，Hooks 足够了，并且能够帮助减少嵌套。
 
 ### Hooks 对像 Redux connect() 和 React Router 等流行的 API 意味着什么？ {#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router}
 
