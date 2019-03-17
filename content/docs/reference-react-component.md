@@ -223,7 +223,7 @@ componentDidUpdate(prevProps) {
 
 你也可以在 `componentDidUpdate()` 中**直接调用 `setState()`**，但请注意**它必须像上述例子**那样进行处理，否则会导致死循环。它还会导致额外的重新渲染，虽然用户不可见，但会影响组件性能。不要将 props “镜像”给 state，请考虑直接使用 props。 欲了解更多有关内容，请参阅[为什么 props 复制给 state 会产生 bug](/blog/2018/06/07/you-probably-dont-need-derived-state.html)。
 
-如果组件实现了 `getSnapshotBeforeUpdate()` 生命周期（不常用），则它的返回值将作为 `componentDidUpdate()`的第三个参数 “snapshot” 参数传递。否则此参数将为 undefined。
+如果组件实现了 `getSnapshotBeforeUpdate()` 生命周期（不常用），则它的返回值将作为 `componentDidUpdate()` 的第三个参数 “snapshot” 参数传递。否则此参数将为 undefined。
 
 > 注意
 >
