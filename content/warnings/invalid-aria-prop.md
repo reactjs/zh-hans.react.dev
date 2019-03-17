@@ -10,7 +10,7 @@ permalink: warnings/invalid-aria-prop.html
 
 2. React 还无法识别你指定的属性。这可能会在 React 的未来版本中被修复。但是，React 目前会去除所有未知属性，因此即使在 React 应用中指定这些属性也无法使它们渲染。
 
-### 译注：
+**译注：**
  
 <a name="note1"></a> [1] WAI：Web Accessibility Initiative，Web 无障碍计划<br>
 <a name="note2"></a> [2] ARIA：Accessible Rich Internet Application，无障碍丰富互联网应用程序
