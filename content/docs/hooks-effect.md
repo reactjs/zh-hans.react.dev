@@ -6,7 +6,7 @@ next: hooks-rules.html
 prev: hooks-intro.html
 ---
 
-*Hooks* 是 React 16.8 的新增特性。它可以让你在不使用 class 的情况下使用 state 和一些其他的 React 功能。
+*Hook* 是 React 16.8 的新增特性。它可以让你在不使用 class 的情况下使用 state 和一些其他的 React 特性。
 
 *Effect Hook* 让你可以在函数定义组件中执行一些副作用(side effect)操作
 
