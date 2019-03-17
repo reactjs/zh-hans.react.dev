@@ -746,7 +746,7 @@ function Image(props) {
 }
 ```
 
-`useRef` **不会** 像 `useState` 那样接受一个特殊的函数重载。相反，你可以辨析你自己的函数来创建并将其设为惰性的：
+`useRef` **不会** 像 `useState` 那样接受一个特殊的函数重载。相反，你可以编写你自己的函数来创建并将其设为惰性的：
 
 ```js
 function Image(props) {
