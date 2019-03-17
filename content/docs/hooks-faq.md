@@ -183,7 +183,7 @@ it('can render and update a counter', () => {
 
 ### [lint 规则](https://www.npmjs.com/package/eslint-plugin-react-hooks)具体强制了哪些内容？ {#what-exactly-do-the-lint-rules-enforce}
 
-我们提供了一个 [ESLint 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks) 来强制 [Hooks 规范](/docs/hooks-rules.html) 以避免 Bugs。它假设任何以 「`use`」 开头并紧跟着一个大写字母的函数就是一个 Hook。我们知道这种启发方式并不完美，甚至存在一些伪真理，但如果没有一个全生态范围的约定就没法让 Hooks 很好的工作 —— 而名字太长会让人要么不愿意采用 Hooks，要么不愿意遵守约定。
+我们提供了一个 [ESLint 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks) 来强制 [Hooks 规范](/docs/hooks-rules.html) 以避免 Bug。它假设任何以 「`use`」 开头并紧跟着一个大写字母的函数就是一个 Hook。我们知道这种启发方式并不完美，甚至存在一些伪真理，但如果没有一个全生态范围的约定就没法让 Hooks 很好的工作 —— 而名字太长会让人要么不愿意采用 Hooks，要么不愿意遵守约定。
 
 规范尤其强制了以下内容：
 
