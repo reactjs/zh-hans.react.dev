@@ -139,7 +139,7 @@ function Example() {
 
 >Tip
 >
-> 与 `componentDidMount` 或 `componentDidUpdate` 不同，使用 `useEffect` 调度的 effect 不会阻止浏览器更新屏幕，这让你的 app 看起来响应更快。大多数情况下，effect 不需要同步地执行。 在个别情况下（例如测量布局），有一个单独的 [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect) Hook，其API与`useEffect`相同。
+> 与 `componentDidMount` 或 `componentDidUpdate` 不同，使用 `useEffect` 调度的 effect 不会阻塞浏览器更新屏幕，这让你的 app 看起来响应更快。大多数情况下，effect 不需要同步地执行。 在个别情况下（例如测量布局），有一个单独的 [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect) Hook，其API与`useEffect`相同。
 
 ## 须要清理的 Effect
 
