@@ -195,7 +195,7 @@ class FriendStatus extends React.Component {
 
 ### 使用 Hooks 的示例
 
-让我们看看我们如何用 Hooks 编写这个组件。
+让我们看看我们如何用 Hook 编写这个组件。
 
 您可能认为我们需要单独的 effect 来执行清理工作。但因为添加和删除订阅的代码是如此紧密相关，所以 `useEffect` 的设计是让他们保持在同一个地方。如果你的 effect 返回了一个函数， React 将会在清理的时候执行它。
 
