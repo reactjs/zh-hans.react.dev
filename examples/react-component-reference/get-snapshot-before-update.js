@@ -5,8 +5,8 @@ class ScrollingList extends React.Component {
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
-    // Are we adding new items to the list?
-    // Capture the scroll position so we can adjust scroll later.
+    // 我们是否在 list 中添加新的 items
+    // 捕获滚动​​位置以便我们稍后调整滚动位置
     if (prevProps.list.length < this.props.list.length) {
       const list = this.listRef.current;
       return list.scrollHeight - list.scrollTop;
@@ -15,9 +15,9 @@ class ScrollingList extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    // If we have a snapshot value, we've just added new items.
-    // Adjust scroll so these new items don't push the old ones out of view.
-    // (snapshot here is the value returned from getSnapshotBeforeUpdate)
+    // 如果我们 snapshot 有值，说明我们刚刚添加了新的 items。
+    // 调整滚动位置使得这些新 items 不会将旧的 items 推出视图。
+    //（这里的 snapshot 是 getSnapshotBeforeUpdate 的返回值）
     if (snapshot !== null) {
       const list = this.listRef.current;
       list.scrollTop = list.scrollHeight - snapshot;

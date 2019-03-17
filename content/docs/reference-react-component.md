@@ -157,7 +157,7 @@ constructor(props)
 ```js
 constructor(props) {
   super(props);
-  // Don't call this.setState() here!
+  // 不要在这里调用 this.setState()
   this.state = { counter: 0 };
   this.handleClick = this.handleClick.bind(this);
 }
@@ -174,7 +174,7 @@ constructor(props) {
 >```js
 >constructor(props) {
 >  super(props);
->  // Don't do this!
+>  // 不要这样做
 >  this.state = { color: props.color };
 >}
 >```
@@ -214,7 +214,7 @@ componentDidUpdate(prevProps, prevState, snapshot)
 
 ```js
 componentDidUpdate(prevProps) {
-  // Typical usage (don't forget to compare props):
+  // 典型用法（不要忘记比较 props）：
   if (this.props.userID !== prevProps.userID) {
     this.fetchData(this.props.userID);
   }
@@ -342,13 +342,13 @@ class ErrorBoundary extends React.Component {
   }
 
   static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
+    // 更新 state 使下一次渲染可以显示后备UI
     return { hasError: true };
   }
 
   render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
+      // 你可以渲染任何自定义的后备UI
       return <h1>Something went wrong.</h1>;
     }
 
@@ -388,12 +388,12 @@ class ErrorBoundary extends React.Component {
   }
 
   static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
+    // 更新 state 使下一次渲染可以显示后备UI
     return { hasError: true };
   }
 
   componentDidCatch(error, info) {
-    // Example "componentStack":
+    // 例如 "组件堆栈":
     //   in ComponentThatThrows (created by App)
     //   in ErrorBoundary (created by App)
     //   in div (created by App)
@@ -403,7 +403,7 @@ class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
+      // 你可以渲染任何自定义的后备UI
       return <h1>Something went wrong.</h1>;
     }
 
@@ -431,7 +431,7 @@ UNSAFE_componentWillMount()
 
 > 注意
 >
-> > 此生命周期之前名为 `componentWillMount`。该名称将继续使用至 React 17。可以使用 [`rename-unsafe-lifecycles` codemod](https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles) 自动更新你的组件。
+> 此生命周期之前名为 `componentWillMount`。该名称将继续使用至 React 17。可以使用 [`rename-unsafe-lifecycles` codemod](https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles) 自动更新你的组件。
 
 `UNSAFE_componentWillMount()` 在挂载之前被调用。它在 `render()` 之前调用，因此在此方法中同步调用 `setState()` 不会触发额外渲染。通常，我们建议使用 `constructor()` 来初始化 state。
 
@@ -602,7 +602,7 @@ CustomButton.defaultProps = {
 
 ```js
   render() {
-    return <CustomButton /> ; // props.color will be set to blue
+    return <CustomButton /> ; // props.color 将设置为 'blue'
   }
 ```
 
@@ -610,7 +610,7 @@ CustomButton.defaultProps = {
 
 ```js
   render() {
-    return <CustomButton color={null} /> ; // props.color will remain null
+    return <CustomButton color={null} /> ; // props.color 将保持是 null
   }
 ```
 
