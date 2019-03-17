@@ -50,7 +50,8 @@ class MyComponent extends React.Component {
             items: result.items
           });
         },
-        // 注意：在这里需要在此处处理错误而不是使用 catch() 去捕捉错误
+        // 注意：在这里需要在此处处理错误
+        // 而不是使用 catch() 去捕捉错误
         // 因为使用 catch 去捕获异常会掩盖掉组件本身可能产生的 bug
         (error) => {
           this.setState({
