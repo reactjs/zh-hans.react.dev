@@ -460,7 +460,7 @@ function ScrollView({row}) {
 
 ### 我可以在更新时跳过一个 effect 吗？ {#can-i-skip-an-effect-on-updates}
 
-可以的。参见 [条件式的发起一个 effect](/docs/hooks-reference.html#conditionally-firing-an-effect)。注意，忘记处理更新常会 [导致 bugs](/docs/hooks-effect.html#explanation-why-effects-run-on-each-update)，这就是不以此为默认行为的原因。
+可以的。参见 [条件式的发起一个 effect](/docs/hooks-reference.html#conditionally-firing-an-effect)。注意，忘记处理更新常会 [导致 bug](/docs/hooks-effect.html#explanation-why-effects-run-on-each-update)，这也正是我们没有默认使用条件式 effect 的原因。
 
 ### 在依赖列表中省略函数是否安全？ {#is-it-safe-to-omit-functions-from-the-list-of-dependencies}
 
