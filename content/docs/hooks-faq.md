@@ -905,7 +905,7 @@ function useEventCallback(fn, dependencies) {
 }
 ```
 
-无论是和，我们都 **不推荐使用这种模式** 并仅处于文档文整形而把它展示在这里。相反的，我们更倾向于 [避免很深的向下传递回调](#how-to-avoid-passing-callbacks-down)。
+无论是和，我们都 **不推荐使用这种模式** 并仅为了文档完整性而把它展示在这里。相反的，我们更倾向于 [避免很深的向下传递回调](#how-to-avoid-passing-callbacks-down)。
 
 
 ## 底层原理 {#under-the-hood}
