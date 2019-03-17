@@ -277,7 +277,7 @@ function Box() {
 
 这是因为当我们更新一个 state 变量，我们会 *替换* 它的值。这和 class 中的 `this.setState` 不一样，后者会把更新后的字段 *合并* 入对象中。
 
-如果你怀念自动合并，你可以写一个自定义的 `useLegacyState` Hook 来合并对象 state 的更新。然而However, instead **we recommend to split state into multiple state variables based on which values tend to change together.**
+如果你怀念自动合并，你可以写一个自定义的 `useLegacyState` Hook 来合并对象 state 的更新。然而，相反的**我们推荐吧 state 切分成多个 state 变量，每个变量包含的不同值会在同时发生变化。**
 
 举个例子，我们可以把组件的 state 拆分为 `position` 和 `size` 两个对象，并永远以非合并的方式去替换 `position`：
 
