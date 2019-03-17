@@ -1,25 +1,15 @@
 ---
-title: "你可能不需要使用Derived State"
+title: “你可能不需要使用Derived State”
 author: [bvaughn]
 ---
 
 React 16.4版本修复了一个[getDerivedStateFromProps的bug](/blog/2018/05/23/react-v-16-4.html#bugfix-for-getderivedstatefromprops)的bug，这个bug会在React components复现一些已知的bug。如果这个版本导致出现的问题，导致您在修复过之后还已知出现的话，我们非常抱歉。在这篇文章里，我们会展示一些常见的反面模式，和相对应的，我们推荐的模式。
-
-
-> 译注
->
-> memoization是一个计算机名词，记忆化，[wikipedia](https://zh.wikipedia.org/wiki/%E8%AE%B0%E5%BF%86%E5%8C%96)。
->
-> 反面模式是anti-patterns的翻译，参考[wiki页面](https://zh.wikipedia.org/zh-cn/%E5%8F%8D%E9%9D%A2%E6%A8%A1%E5%BC%8F)
->
-> drived state应该翻译成派生状态，但是这个词好像并不怎么流行，不是那么通用。所以我觉得就没必要再记一个新的词汇了，就没翻译。
 
 在很长一段时间内，生命周期函数`componentWillReceiveProps`是响应Props变化之后进行更新的唯一方式。16.3版本里, [我们介绍了一个替代版的生命周期函数：`getDerivedStateFromProps`](/blog/2018/03/29/react-v-16-3.html#component-lifecycle-changes)，尝试用一个更安全的方式达到同样的目的。与此同时，我们意识到人们对如何使用这两种方法存在许多误解，并且我们发现反模式会导致细微而混乱的错误。16.4版本修复的这个bug， [让derived state更加可控](https://github.com/facebook/react/issues/12898)，会让滥用导致的bug更容易被发现。
 
 > 注意
 >
 > 下面所有的反面模式中，`componentWillReceiveProps`和`getDerivedStateFromProps`都是通用的。
-
 
  这篇blog包含以下主题：
 * [什么时候使用derived state](#when-to-use-derived-state)
@@ -33,14 +23,14 @@ React 16.4版本修复了一个[getDerivedStateFromProps的bug](/blog/2018/05/23
 
 `getDerivedStateFromProps`的存在只有一个目的：让组件在**props变化**的时候更新state。上一个blog展示了一些示例，比如[props的offset变化时，修改当前的滚动方向](/blog/2018/03/27/update-on-async-rendering.html#updating-state-based-on-props)和[根据props变化加载外部数据](/blog/2018/03/27/update-on-async-rendering.html#fetching-external-data-when-props-change)。
 
-我们没有提供很多示例，应为有**保守的使用derived state**这个规则。大部分使用derived state导致的问题，不外乎两个原因：1，直接复制props到state上；2，如果props和state不一致就更新state。下面的示例包含了这两种情况。
+我们没有提供很多示例，应为有**保守使用derived state**这个规则。大部分使用derived state导致的问题，不外乎两个原因：1，直接复制props到state上；2，如果props和state不一致就更新state。下面的示例包含了这两种情况。
 
 * 如果你只是为了缓存（memoize）基于当前props计算后的结果的话，你就没必要使用derived state。[尝试一下memoization？](#what-about-memoization)。
 * 如果只是用来保存props或者和当前state比较之后不一致后更新state，那你的组件应该是太频繁的更新了state。请继续阅读。
 
 ## Derived State的常见bug {#common-bugs-when-using-derived-state}
 
-名词["受控"](/docs/forms.html#controlled-components)和["非受控"](/docs/uncontrolled-components.html)通常用来指代表单的inputs，但是也可以用来描述数据频繁更新的组件。用props传入数据的话，组件可以被认为是**受控**（因为组件被父级传入的props控制）。数据只保存在组件内部的state的话，是**非受控**组件（因为外部没办法直接控制state）。
+名词[“受控”](/docs/forms.html#controlled-components)和[“非受控”](/docs/uncontrolled-components.html)通常用来指代表单的inputs，但是也可以用来描述数据频繁更新的组件。用props传入数据的话，组件可以被认为是**受控**（因为组件被父级传入的props控制）。数据只保存在组件内部的state的话，是**非受控**组件（因为外部没办法直接控制state）。
 
 常见的错误就是把两者混为一谈。当一个derived state值也被`setState`方法更新的时候，这个值就不是一个单一来源的值了。[加载外部数据示例](/blog/2018/03/27/update-on-async-rendering.html#fetching-external-data-when-props-change)描述的行为和这个类似，但是有很重要的区别。在加载外部数据示例中，数据`source`和`loading`都有非常清晰并且唯一的数据来源。当prop改变时，`loading`的状态**一定**会改变。相反，state只有在prop改变的时候才会改变，除非组件内部还有其他行为改变这个状态。
 
@@ -71,7 +61,7 @@ class EmailInput extends Component {
 }
 ```
 
-乍看之下还可以。state的初始值是props传来的，当在`<input/>`里输入的时候，修改state。但是如果父组件重新渲染，我们输入的所有东西都会丢失！([查看这个示例](https://codesandbox.io/s/m3w9zn1z8x))，即使在重置state前比较`nextProps.email !== this.state.email`仍然会导致更新。
+乍看之下还可以。state的初始值是props传来的，当在`<input>`里输入的时候，修改state。但是如果父组件重新渲染，我们输入的所有东西都会丢失！([查看这个示例](https://codesandbox.io/s/m3w9zn1z8x))，即使在重置state前比较`nextProps.email !== this.state.email`仍然会导致更新。
 
 这个小例子中，使用`shouldComponentUpdate`，比较props的email是不是修改再决定要不要重新渲染。但是在实践中，一个组件会接收多个prop，任何一个prop的改变都会导致重新渲染和不正确的状态重置。加上行内函数和对象prop，创建一个完全可靠的`shouldComponentUpdate`会变得越来越难。[这个示例展示了这个情况](https://codesandbox.io/s/jl0w6r9w59)。而且`shouldComponentUpdate`的最佳实践是用于性能提升，而不是改正不合适的derived state。
 
@@ -170,7 +160,7 @@ class EmailInput extends Component {
   };
 
   static getDerivedStateFromProps(props, state) {
-    // 只要当前user变化,
+    // 只要当前user变化，
     // 重置所有跟user相关的状态。
     // 这个例子中，只有email和user相关。
     if (props.userID !== state.prevPropsUserID) {
@@ -231,9 +221,9 @@ Refs在某些情况下很有用，比如这个。但通常我们建议谨慎使�
 
 我们上面用到了————仅在输入变化的时候，重新计算`render`需要使用的值————这个技术叫做[memoization](https://en.wikipedia.org/wiki/Memoization).
 
-把derived state用作memoization并不是什么坏事情，但是这并不是好的方法。管理drived state本来就很复杂，而且这种复杂度是随着需要管理的属性变得越来越庞大。比如，如果我们想在组件state里添加第二个drived state，那就需要写两份跟踪变化的逻辑。
+把derived state用作memoization并不是什么坏事情，但是这并不是好的方法。管理derived state本来就很复杂，而且这种复杂度是随着需要管理的属性变得越来越庞大。比如，如果我们想在组件state里添加第二个derived state，那就需要写两份跟踪变化的逻辑。
 
-这里有个示例，组件使用一个prop————一个列表————并在用户输入查询条件时显示匹配的项，我们可以使用drived state存储过滤后的列表：
+这里有个示例，组件使用一个prop————一个列表————并在用户输入查询条件时显示匹配的项，我们可以使用derived state存储过滤后的列表：
 
 ```js
 class Example extends Component {
@@ -293,7 +283,8 @@ class Example extends PureComponent {
   };
 
   render() {
-    // PureComponent的render只有在props.list或state.filterText变化的时候才会调用
+    // PureComponent的render只有
+    // 在props.list或state.filterText变化的时候才会调用
     const filteredList = this.props.list.filter(
       item => item.text.includes(this.state.filterText)
     )
@@ -327,7 +318,8 @@ class Example extends Component {
   };
 
   render() {
-    // 计算最新的过滤后的list。如果和上次render参数一样，`memoize-one`会重复使用上一次的值。
+    // 计算最新的过滤后的list。
+    // 如果和上次render参数一样，`memoize-one`会重复使用上一次的值。
     const filteredList = this.filter(this.props.list, this.state.filterText);
 
     return (
@@ -344,12 +336,20 @@ class Example extends Component {
 
 在使用memoization时，请记住这些约束：
 
-1. **每个组件内部都要引入memoized方法**，已免实例之间相互影响。
+1. 大部分情况下， **每个组件内部都要引入memoized方法**，已免实例之间相互影响。
 2. 一般情况下，我们会**限制memoization helper的缓存空间**，以免内存泄漏。（上面的例子中，使用`memoize-one`是因为它只缓存最后一次的参数和结果）。
-3. 如果每次父组件都传入新的`props.list`，那文提到的问题都不会遇到，在大多数情况下，这种方式是可取的。
+3. 如果每次父组件都传入新的`props.list`，那本文提到的问题都不会遇到。在大多数情况下，这种方式是可取的。
 
-## 最后 {#in-closing}
+## 结束语 {#in-closing}
 
 在实际应用中，组件一般既包含了controlled和uncontrolled行为。这是正常的！不过如果每个值都有明确的来源，则可以避免上面提到的反面模式。
 
 `getDerivedStateFromProps`（以及其他derived state）是一个高级复杂的功能，应该保守使用，这个再怎么重申也不过分。如果你的用法不属于这些模式，请在[GitHub](https://github.com/reactjs/reactjs.org/issues/new)或[Twitter](https://twitter.com/reactjs)与我们分享！
+
+---
+
+> 译注
+>
+> 反面模式是anti-patterns的翻译，参考[wiki页面](https://zh.wikipedia.org/zh-cn/%E5%8F%8D%E9%9D%A2%E6%A8%A1%E5%BC%8F)
+>
+> derived state应该翻译成派生状态，但是这个词好像并不怎么流行，不是那么通用。所以我觉得就没必要再记一个新的词汇了，就没翻译。
