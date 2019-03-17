@@ -89,7 +89,7 @@ class Example extends React.Component {
 
 现在让我们来看看如何使用 `useEffect` Hook 做同样的事情。
 
-### 使用 Hooks 的示例 {#example-using-hooks}
+### 使用 Hook 的示例 {#example-using-hooks}
 
 我们已经在本页顶部看到了这个示例，但让我们再仔细看看它：
 
