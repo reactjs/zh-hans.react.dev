@@ -191,7 +191,7 @@ class FriendStatus extends React.Component {
 
 >Note
 >
->眼尖的读者可能已经注意到了，这个示例还需要一个 `componentDidUpdate` 方法是完全正确的。我们先暂时忽略这一点，并在本页的[后面一部分](#explanation-why-effects-run-on-each-update)再关注它。
+>细心的读者可能已经注意到了，这个示例还需要一个 `componentDidUpdate` 方法才完全正确。我们先暂时忽略这一点，并在本页的[后面一部分](#explanation-why-effects-run-on-each-update)再关注它。
 
 ### 使用 Hook 的示例
 
