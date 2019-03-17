@@ -332,7 +332,7 @@ function FriendStatusWithCounter(props) {
 
 **Hook 允许我们按照代码的用途分割他们**，而不是像生命周期函数那样。React 将按照 effect 声明的顺序依次调用组件中的*每一个* effct
 
-### Explanation: 为什么每次更新的时候都要运行 Effect {#explanation-why-effects-run-on-each-update}
+### 解释：为什么每次更新的时候都要运行 Effect {#explanation-why-effects-run-on-each-update}
 
 If you're used to classes, you might be wondering why the effect cleanup phase happens after every re-render, and not just once during unmounting. Let's look at a practical example to see why this design helps us create components with fewer bugs.
 如果你已经习惯了使用 class，那么你可能会想知道为什么 effect 在每次重渲染时都会执行，而不是只在卸载组件的时候执行一次。让我们看一个实际的例子，看看为什么这个设计可以帮助我们创建 bug 更少的组件。
