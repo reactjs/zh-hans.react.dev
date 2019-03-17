@@ -97,7 +97,7 @@ useEffect(updateTitle)     // 4. Replace the effect for updating the title
 // ...
 ```
 
-只要 Hook 的调用顺序在多次渲染之间保持一致，React 就能正确地将本地的 state 和对应的 Hook 关联。但如果我们将一个 Hook (例如 `persistForm` effect) 调用放到一个条件语句中会发生什么呢？
+只要 Hook 的调用顺序在多次渲染之间保持一致，React 就能正确地将内部 state 和对应的 Hook 关联。但如果我们将一个 Hook (例如 `persistForm` effect) 调用放到一个条件语句中会发生什么呢？
 
 ```js
   // 🔴 We're breaking the first rule by using a Hook in a condition
