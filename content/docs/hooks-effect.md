@@ -261,7 +261,7 @@ Effect Hook 使用同一个 API 来满足这两种情况。
 
 -------------
 
-## 使用 Effect 的 Tip {#tips-for-using-effects}
+## 使用 Effect 的提示 {#tips-for-using-effects}
 
 在本页中我们将继续深入了解 `useEffect` 的某些方面，有经验的 React 使用者可能会对此感兴趣。你不一定要在现在了解他们，你可以随时返回此页面以了解有关 Effect Hook 的更多详细信息。
 
