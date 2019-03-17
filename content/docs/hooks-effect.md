@@ -473,6 +473,6 @@ useEffect(() => {
 
 恭喜你！这是一个很长的页面，希望最后你关于 effect 的大多数问题都得到了解答。你已经学习了 State Hook 和 Effect Hook，将它们结合起来你可以做很多事情了。它们涵盖了大多数使用 class 的用例 - 如果没有，您可能须要[其他的 Hook](/docs/hooks-reference.html)。
 
-我们也看到了 Hooks 如何解决[使用目的部分](/docs/hooks-intro.html#motivation)中提到的问题。我们看到 effect 的清理机制如何避免重复地使用 `componentDidUpdate` 和 `componentWillUnmount`，同时让相关的代码关联更加紧密，帮助我们避免一些 bug。我们还看到了我们如何根据 effect 的功能分隔他们，这是在 class 中无法做到的。
+我们也看到了 Hook 如何解决[使用目的部分](/docs/hooks-intro.html#motivation)中提到的问题。我们看到 effect 的清理机制如何避免重复地使用 `componentDidUpdate` 和 `componentWillUnmount`，同时让相关的代码关联更加紧密，帮助我们避免一些 bug。我们还看到了我们如何根据 effect 的功能分隔他们，这是在 class 中无法做到的。
 
 此时你可能会好奇 Hooks 是如何工作的。在两次渲染间，React如何知道哪个 `useState` 调用对应于哪个 state 变量？Reat 又是如何匹配前后两次渲染中的每一个 effect 的？**在下一页中我们会学习[使用 Hooks 的规则](/docs/hooks-rules.html) -- 他们对 Hook 的工作至关重要**
