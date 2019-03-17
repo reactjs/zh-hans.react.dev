@@ -130,7 +130,7 @@ React 不知道第二个 `useState` Hook 应该返回什么了。React 以为在
   });
 ```
 
-**如果你使用了[上面提供的 lint 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks)，就不需要担心这个问题了。**不过你现在知道了为什么 Hook 会这样工作，也知道了这个规则是为了避免什么问题。
+**注意：如果你使用了[上面提供的 lint 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks)，就不需要担心这个问题了。**不过你现在知道了为什么 Hook 会这样工作，也知道了这个规则是为了避免什么问题。
 
 ## 下一步 {#next-steps}
 
