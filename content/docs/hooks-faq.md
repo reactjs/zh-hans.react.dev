@@ -673,7 +673,7 @@ const Button = React.memo((props) => {
 });
 ```
 
-这不是一个 Hook 因为它的写法和 Hooks 不同。`React.memo` 等效于 `PureComponent`，但它之比较 props。（你也可以通过第二个参数指定一个自定义的比较函数来比较新旧 props。如果函数返回 true，就会跳过更新。）
+这不是一个 Hook 因为它的写法和 Hooks 不同。`React.memo` 等效于 `PureComponent`，但它只比较 props。（你也可以通过第二个参数指定一个自定义的比较函数来比较新旧 props。如果函数返回 true，就会跳过更新。）
 
 `React.memo` 不比较 state 因为没有单一的 state 对象可供比较。但你也可以让子节点变为纯组件，或者针织 [用 `useMemo` 优化每一个具体的子节点](/docs/hooks-faq.html#how-to-memoize-calculations)。
 
