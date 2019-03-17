@@ -103,7 +103,7 @@ Hooks 确实有它们自己的学习曲线。如果这份文档中遗失了一�
 
 ### Hooks 对于类似 Redux connect() 和 React Router 等流行的 API 意味着什么？ {#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router}
 
-你可以继续使用完全相同的 API；它们会继续工作的。
+你可以继续使用之前使用的 API；它们仍会继续有效。
 
 在未来，这些苦的新版本或许也会导出诸如 `useRedux()` 和 `useRouter()` 的自定义 Hooks 以允许你不需要包裹组件也能使用同样的特性。
 
