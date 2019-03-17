@@ -265,7 +265,7 @@ Effect Hook 使用同一个 API 来满足这两种情况。
 
 在本页中我们将继续深入了解 `useEffect` 的某些方面，有经验的 React 使用者可能会对此感兴趣。你不一定要在现在了解他们，你可以随时返回此页面以了解有关 Effect Hook 的更多详细信息。
 
-### Tip: 使用多个 Effect 来隔离不同的问题 {#tip-use-multiple-effects-to-separate-concerns}
+### 提示：使用多个 Effect 来隔离不同的问题 {#tip-use-multiple-effects-to-separate-concerns}
 
 我们使用 Hooks 其中一个[目的](/docs/hooks-intro.html#complex-components-become-hard-to-understand)就是要解决 class 中生命周期函数经常包含了不相关的逻辑，但又把相关的逻辑分隔到几个不同的方法中的问题。下面这是一个组合了前面示例中的计数器和朋友状态指示器逻辑的组件
 
