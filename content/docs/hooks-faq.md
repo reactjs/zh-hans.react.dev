@@ -402,11 +402,11 @@ function Example() {
 
 如果你刻意地想要从某些异步回调中读取 *最新的* state，你可以用 [一个 ref](/docs/hooks-faq.html#is-there-something-like-instance-variables) 来保存它，修改它，并从中读取。
 
-最后，你看到陈旧的 props 和 state 的另一个可能的原因是，如果你使用了「依赖数组」优化但没有正确地指定所有的依赖。举个例子，如果一个 effect 指定了 `[]` 作为第二个参数，但在内部读取了 `someProp`，它会一直「看到」 `someProp` 的初始值。解决办法是要么移除依赖数组，或者修正它。 这是 [你该如何处理函数](#is-it-safe-to-omit-functions-from-the-list-of-dependencies)，而这是减少错误地跳过依赖来运行 effect 的 [一些常见策略](#what-can-i-do-if-my-effect-dependencies-change-too-often) to run effects less often without incorrectly skipping dependencies.
+最后，你看到陈旧的 props 和 state 的另一个可能的原因是，如果你使用了「依赖数组」优化但没有正确地指定所有的依赖。举个例子，如果一个 effect 指定了 `[]` 作为第二个参数，但在内部读取了 `someProp`，它会一直「看到」 `someProp` 的初始值。解决办法是要么移除依赖数组，或者修正它。 这是 [你该如何处理函数](#is-it-safe-to-omit-functions-from-the-list-of-dependencies)，而这是关于如何减少 effect 的运行而不必错误的跳过依赖的 [一些常见策略](#what-can-i-do-if-my-effect-dependencies-change-too-often)。
 
->Note
+>注意
 >
->We provide an [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) ESLint rule as a part of the [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It warns when dependencies are specified incorrectly and suggests a fix.
+>我们提供了一个 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) ESLint 规则作为 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 包的一部分。它会在依赖被错误指定时发出警告，并给出修复建议。
 
 ### 我该如何实现 `getDerivedStateFromProps`？ {#how-do-i-implement-getderivedstatefromprops}
 
@@ -464,7 +464,7 @@ function ScrollView({row}) {
 
 ### 在依赖列表中省略函数是否安全？ {#is-it-safe-to-omit-functions-from-the-list-of-dependencies}
 
-Generally speaking, no.
+一般来说，不安全。
 
 ```js{3,8}
 function Example({ someProp }) {
@@ -474,11 +474,11 @@ function Example({ someProp }) {
 
   useEffect(() => {
     doSomething();
-  }, []); // 🔴 This is not safe (it calls `doSomething` which uses `someProp`)
+  }, []); // 🔴 这样不安全（它调用的 `doSomething` 函数使用了 `someProp`）
 }
 ```
 
-It's difficult to remember which props or state are used by functions outside of the effect. This is why **usually you'll want to declare functions needed by an effect *inside* of it.** Then it's easy to see what values from the component scope that effect depends on:
+要记住 effect 外部的函数使用了哪些 props 和 state 很难。这也是为什么 **通常你会想要在 effect *内部* 去申明它所需要的函数。** 这样就能容易的看出那个 effect 依赖了组件作用域中的哪些值：
 
 ```js{4,8}
 function Example({ someProp }) {
@@ -488,11 +488,11 @@ function Example({ someProp }) {
     }
 
     doSomething();
-  }, [someProp]); // ✅ OK (our effect only uses `someProp`)
+  }, [someProp]); // ✅ 安全（我们的 effect 仅用到了 `someProp`）
 }
 ```
 
-If after that we still don't use any values from the component scope, it's safe to specify `[]`:
+如果这样之后我们依然没用到组件作用域中的任何值，就可以安全地把它指定为 `[]`：
 
 ```js{7}
 useEffect(() => {
@@ -501,46 +501,46 @@ useEffect(() => {
   }
 
   doSomething();
-}, []); // ✅ OK in this example because we don't use *any* values from component scope
+}, []); // ✅ 在这个例子中是安全的，因为我们没有用到组件作用域中的 *任何* 值
 ```
 
-Depending on your use case, there are a few more options described below.
+根据你的用例，下面列举了一些其他的办法。
 
->Note
+>注意
 >
->We provide the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) ESLint rule as a part of the [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It help you find components that don't handle updates consistently.
+>我们提供了一个 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) ESLint 规则作为 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 包的一部分。它会帮助你找出无法一致地处理更新的组件。
 
-Let's see why this matters.
+让我们来看看这有什么关系。
 
-If you specify a [list of dependencies](/docs/hooks-reference.html#conditionally-firing-an-effect) as the last argument to `useEffect`, `useMemo`, `useCallback`, or `useImperativeHandle`, it must include all values used inside that participate in the React data flow. That includes props, state, and anything derived from them.
+如果你指定了一个 [依赖列表](/docs/hooks-reference.html#conditionally-firing-an-effect) 作为 `useEffect`、`useMemo`、`useCallback` 或 `useImperativeHandle` 的最后一个参数，它必须包含参与那次 React 数据流的所有值。这就包含了 props、state，以及任何由它们衍生而来的东西。
 
-It is **only** safe to omit a function from the dependency list if nothing in it (or the functions called by it) references props, state, or values derived from them. This example has a bug:
+**只有** 当函数（以及它所调用的函数）不引用 props、state 以及由它们衍生而来的值时，你才能放心地把它们从依赖列表中省略。下面这个案例有一个 Bug：
 
 ```js{5,12}
 function ProductPage({ productId }) {
   const [product, setProduct] = useState(null);
 
   async function fetchProduct() {
-    const response = await fetch('http://myapi/product' + productId); // Uses productId prop
+    const response = await fetch('http://myapi/product' + productId); // 使用了 productId prop
     const json = await response.json();
     setProduct(json);
   }
 
   useEffect(() => {
     fetchProduct();
-  }, []); // 🔴 Invalid because `fetchProduct` uses `productId`
+  }, []); // 🔴 这样是无效的，因为 `fetchProduct` 使用了 `productId`
   // ...
 }
 ```
 
-**The recommended fix is to move that function _inside_ of your effect**. That makes it easy to see which props or state your effect uses, and to ensure they're all declared:
+**推荐的修复方案是把那个函数移动到你的 effect _内部_**。这样就能很容易的看出来你的 effect 使用了哪些 props 和 state，并确保它们都被声明了：
 
 ```js{5-10,13}
 function ProductPage({ productId }) {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    // By moving this function inside the effect, we can clearly see the values it uses.
+    // 把这个函数移动到 effect 内部后，我们可以清楚地看到它用到的值。
     async function fetchProduct() {
       const response = await fetch('http://myapi/product' + productId);
       const json = await response.json();
@@ -548,12 +548,12 @@ function ProductPage({ productId }) {
     }
 
     fetchProduct();
-  }, [productId]); // ✅ Valid because our effect only uses productId
+  }, [productId]); // ✅ 有效，因为我们的 effect 只用到了 productId
   // ...
 }
 ```
 
-This also allows you to handle out-of-order responses with a local variable inside the effect:
+这同时也允许你通过一个 effect 内部的局部变量来处理无序的响应：
 
 ```js{2,6,8}
   useEffect(() => {
@@ -567,24 +567,24 @@ This also allows you to handle out-of-order responses with a local variable insi
   }, [productId]);
 ```
 
-We moved the function inside the effect so it doesn't need to be in its dependency list.
+我们把这个函数移动到 effect 内部，这样它就不用出现在它的依赖列表中了。
 
->Tip
+>提示
 >
->Check out [this small demo](https://codesandbox.io/s/jvvkoo8pq3) and [this article](https://www.robinwieruch.de/react-hooks-fetch-data/) to learn more about data fetching with Hooks.
+>看看 [这个小 demo](https://codesandbox.io/s/jvvkoo8pq3) 和 [这篇文章](https://www.robinwieruch.de/react-hooks-fetch-data/) 来了解更多关于如何用 Hooks 进行数据获取。
 
-**If for some reason you _can't_ move a function inside an effect, there are a few more options:**
+**如果处于某些原因你 _无法_ 把一个函数移动到 effect 内部，还有一些其他办法：**
 
-* **You can try moving that function outside of your component**. In that case, the function is guaranteed to not reference any props or state, and also doesn't need to be in the list of dependencies.
-* If the function you're calling is a pure computation and is safe to call while rendering, you may **call it outside of the effect instead,** and make the effect depend on the returned value.
-* As a last resort, you can **add a function to effect dependencies but _wrap its definition_** into the [`useCallback`](/docs/hooks-reference.html#usecallback) Hook. This ensures it doesn't change on every render unless *its own* dependencies also change:
+* **你可以尝试把那个函数移动到你的组件之外**。那样一来，这个函数就肯定不会依赖任何 props 或 state，并且也不用出现在依赖列表中了。
+* 如果你所调用的方法是一个纯计算，并且可以在渲染时调用，你可以 **转而在 effect 之外调用它，** 并让 effect 依赖于它的返回值。
+* 万不得已的情况下，你可以 **把函数加入 effect 的依赖但 _把它的定义包裹_** 进 [`useCallback`](/docs/hooks-reference.html#usecallback) Hook。这就确保了它不随渲染而改变，除非 *它自身* 的依赖发生了改变：
 
 ```js{2-5}
 function ProductPage({ productId }) {
-  // ✅ Wrap with useCallback to avoid change on every render
+  // ✅ 用 useCallback 包裹以避免随渲染发生改变
   const fetchProduct = useCallback(() => {
     // ... Does something with productId ...
-  }, [productId]); // ✅ All useCallback dependencies are specified
+  }, [productId]); // ✅ useCallback 的所有依赖都被指定了
 
   return <ProductDetails fetchProduct={fetchProduct} />;
 }
@@ -592,16 +592,16 @@ function ProductPage({ productId }) {
 function ProductDetails({ fetchProduct })
   useEffect(() => {
     fetchProduct();
-  }, [fetchProduct]); // ✅ All useEffect dependencies are specified
+  }, [fetchProduct]); // ✅ useEffect 的所有依赖都被指定了
   // ...
 }
 ```
 
-Note that in the above example we **need** to keep the function in the dependencies list. This ensures that a change in the `productId` prop of `ProductPage` automatically triggers a refetch in the `ProductDetails` component.
+注意在上面的案例中，我们 **需要** 让函数出现在依赖列表中。这确保了 `ProductPage` 的 `productId` prop 的变化会自动触发 `ProductDetails` 的重新获取。
 
 ### 如果我的 effect 的依赖频繁变化，我该怎么办？
 
-Sometimes, your effect may be using reading state that changes too often. You might be tempted to omit that state from a list of dependencies, but that usually leads to bugs:
+有时候，你的 effect 会读取一些频繁变化的值。你或许会试图在依赖列表中省略那个 state ，但这通常会引起 Bug：
 
 ```js{6,9}
 function Counter() {
@@ -609,16 +609,16 @@ function Counter() {
 
   useEffect(() => {
     const id = setInterval(() => {
-      setCount(count + 1); // This effect depends on the `count` state
+      setCount(count + 1); // 这个 effect 依赖于 `count` state
     }, 1000);
     return () => clearInterval(id);
-  }, []); // 🔴 Bug: `count` is not specified as a dependency
+  }, []); // 🔴 Bug: `count` 没有被指定为依赖
 
   return <h1>{count}</h1>;
 }
 ```
 
-Specifying `[count]` as a list of dependencies would fix the bug, but would cause the interval to be reset on every change. That may not be desirable. To fix this, we can use the [functional update form of `setState`](/docs/hooks-reference.html#functional-updates). It lets us specify *how* the state needs to change without referencing the *current* state:
+指定 `[count]` 作为依赖列表就能修复这个 Bug，但会导致内部每次改变时都被重置。这并不是我们想要的。要解决这个问题，我们可以使用 [`setState` 的函数式更新形式](/docs/hooks-reference.html#functional-updates)。它允许我们指定 state 该 *如何* 改变而不用引用 *当前* state：
 
 ```js{6,9}
 function Counter() {
@@ -626,24 +626,24 @@ function Counter() {
 
   useEffect(() => {
     const id = setInterval(() => {
-      setCount(c => c + 1); // ✅ This doesn't depend on `count` variable outside
+      setCount(c => c + 1); // ✅ 在这不依赖于外部的 `count` 变量
     }, 1000);
     return () => clearInterval(id);
-  }, []); // ✅ Our effect doesn't use any variables in the component scope
+  }, []); // ✅ 我们的 effect 不适用组件作用域中的任何变量
 
   return <h1>{count}</h1>;
 }
 ```
 
-(The identity of the `setCount` function is guaranteed to be stable so it's safe to omit.)
+（`setCount` 函数的身份是被确保稳定的，所以可以放心的省略掉）
 
-In more complex cases (such as if one state depends on another state), try moving the state update logic outside the effect with the [`useReducer` Hook](/docs/hooks-reference.html#usereducer). [This article](https://adamrackis.dev/state-and-use-reducer/) offers an example of how you can do this. **The identity of the `dispatch` function from `useReducer` is always stable** — even if the reducer function is declared inside the component and reads its props.
+在一些更加复杂的场景中（例如鳄鱼共一个 state 依赖于另一个 state），尝试用 [`useReducer` Hook](/docs/hooks-reference.html#usereducer) 把 state 更新逻辑一道 effect 之外。[这篇文章](https://adamrackis.dev/state-and-use-reducer/) 提供了一个你该如何做到这一点的案例。 **`useReducer` 的 `dispatch` 的身份永远是稳定的** —— 即使 reducer 函数是定义在组件内部并且依赖 props。
 
-As a last resort, if you want to something like `this` in a class, you can [use a ref](/docs/hooks-faq.html#is-there-something-like-instance-variables) to hold a mutable variable. Then you can write and read to it. For example:
+万不得已的情况下，如果你想要类似 class 中的 `this` 的功能，你可以 [使用一个 ref](/docs/hooks-faq.html#is-there-something-like-instance-variables) 来保存一个可变的变量。然后你就可以对它进行读写了。举个例子：
 
 ```js{2-6,10-11,16}
 function Example(props) {
-  // Keep latest props in a ref.
+  // 把最新的 props 保存在一个 ref 中
   let latestProps = useRef(props);
   useEffect(() => {
     latestProps.current = props;
@@ -651,17 +651,17 @@ function Example(props) {
 
   useEffect(() => {
     function tick() {
-      // Read latest props at any time
+      // 在任何时候读取最新的 props
       console.log(latestProps.current);
     }
 
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
-  }, []); // This effect never re-runs
+  }, []); // 这个 effect 从不会重新执行
 }
 ```
 
-Only do this if you couldn't find a better alternative, as relying on mutation makes components less predictable. If there's a specific pattern that doesn't translate well, [file an issue](https://github.com/facebook/react/issues/new) with a runnable example code and we can try to help.
+仅当你是在找不到更好办法的时候才这么做，因为依赖于变更会使得组件更难以预测。如果有某些特定的模式无法很好地转化成这样，[发起一个 issue](https://github.com/facebook/react/issues/new) 并配上可运行的实例代码以便，我们会尽可能帮助你。
 
 ### 我该如何实现 `shouldComponentUpdate`? {#how-do-i-implement-shouldcomponentupdate}
 
