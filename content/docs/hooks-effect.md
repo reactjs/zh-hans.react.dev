@@ -116,7 +116,7 @@ function Example() {
 
 **`useEffect` 做了什么？** 通过使用这个 Hook，你告诉 React 你的组件需要在渲染后执行某些操作。React 会记住你传递的函数(我们将它称之为 “effect”)，并且在执行 DOM 更新之后调用它。在这个 effect 中，我们设置了 document 的 title 属性，不过我们也可以执行数据获取或调用其他命令式 API。
 
-**为什么在组件内部调用 `useEffect`？** 将 `useEffect` 放在组件内部让我们可以在 effect 中直接访问 `count` state 变量(或其他 props)。我们不需要特殊的 API 来读取它 -- 它已经在作用域中了。Hooks 使用 JavaScript 的闭包机制，而不是在 JavaScript 已经提供了解决方案的情况下还引入特定的 React API。
+**为什么在组件内部调用 `useEffect`？** 将 `useEffect` 放在组件内部让我们可以在 effect 中直接访问 `count` state 变量(或其他 props)。我们不需要特殊的 API 来读取它 -- 它已经在函数作用域中了。Hooks 使用 JavaScript 的闭包机制，而不是在 JavaScript 已经提供了解决方案的情况下还引入特定的 React API。
 
 **`useEffect` 会在每次渲染后都执行吗？**是的，默认情况下，它在第一次渲染之后*和*每次更新之后都运行。(我们稍后会谈到[如何控制它](#tip-optimizing-performance-by-skipping-effects)。)你可能会更容易接受 effect 发生在“渲染之后”这种概念，不用再去考虑“挂载”还是“更新”。React 保证了每次运行 effect 的时候，DOM 都已经更新完毕。
 
@@ -139,7 +139,7 @@ function Example() {
 
 >Tip
 >
-> 与 `componentDidMount` 或 `componentDidUpdate` 不同，使用 `useEffect` 调度的 effect 不会阻止浏览器更新屏幕，这让你的 app 看起来响应更快。大多数情况下，effect 不需要同步地执行。 在个别情况下（例如测量布局），有一个单独的 [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect) Hook，其API与`useEffect`相同。
+> 与 `componentDidMount` 或 `componentDidUpdate` 不同，使用 `useEffect` 调度的 effect 不会阻塞浏览器更新屏幕，这让你的 app 看起来响应更快。大多数情况下，effect 不需要同步地执行。 在个别情况下（例如测量布局），有一个单独的 [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect) Hook，其API与`useEffect`相同。
 
 ## 须要清理的 Effect
 
@@ -190,9 +190,9 @@ class FriendStatus extends React.Component {
 
 >Note
 >
->眼尖的读者可能已经注意到了，这个示例还需要一个 `componentDidUpdate` 方法是完全正确的。我们先暂时忽略这一点，并在本页的[后面一部分](#explanation-why-effects-run-on-each-update)再关注它。
+>眼尖的读者可能已经注意到了，这个示例还需要一个 `componentDidUpdate` 方法才是完全正确的。我们先暂时忽略这一点，并在本页的[后面一部分](#explanation-why-effects-run-on-each-update)再关注它。
 
-### 使用 Hooks 的示例
+### 使用 Hook 的示例
 
 让我们看看我们如何用 Hook 编写这个组件。
 
@@ -229,7 +229,7 @@ function FriendStatus(props) {
 
 >Note
 >
->我们并不是必须在 effect 中返回一个命名的函数。这里我们将其命名为 `cleanup` 是为了表明此函数的目的，但其实也可以返回一个箭头函数或者给它命一个别的名字
+>我们并不是必须在 effect 中返回一个命名的函数。这里我们将其命名为 `cleanup` 是为了表明此函数的目的，但其实也可以返回一个箭头函数或者给它命一个别的名字。
 
 ## 小结 {#recap}
 
@@ -260,13 +260,13 @@ Effect Hook 使用同一个 API 来满足这两种情况。
 
 -------------
 
-## 使用 Effect 的 Tip {#tips-for-using-effects}
+## 使用 Effect 的提示 {#tips-for-using-effects}
 
 在本页中我们将继续深入了解 `useEffect` 的某些方面，有经验的 React 使用者可能会对此感兴趣。你不一定要在现在了解他们，你可以随时返回此页面以了解有关 Effect Hook 的更多详细信息。
 
-### Tip: 使用多个 Effect 来隔离不同的问题 {#tip-use-multiple-effects-to-separate-concerns}
+### 提示: 使用多个 Effect 来隔离不同的问题 {#tip-use-multiple-effects-to-separate-concerns}
 
-我们使用 Hooks 其中一个[目的](/docs/hooks-intro.html#complex-components-become-hard-to-understand)就是要解决 class 中生命周期函数经常包含了不相关的逻辑，但又把相关的逻辑分隔到几个不同的方法中的问题。下面这是一个组合了前面示例中的计数器和朋友状态指示器逻辑的组件
+我们使用 Hook 其中一个[目的](/docs/hooks-intro.html#complex-components-become-hard-to-understand)就是要解决 class 中生命周期函数经常包含了不相关的逻辑，但又把相关的逻辑分隔到几个不同的方法中的问题。下面这是一个组合了前面示例中的计数器和朋友状态指示器逻辑的组件
 
 ```js
 class FriendStatusWithCounter extends React.Component {
@@ -329,9 +329,9 @@ function FriendStatusWithCounter(props) {
 }
 ```
 
-**Hook 允许我们按照代码的用途分割他们**，而不是像生命周期函数那样。React 将按照 effect 声明的顺序依次调用组件中的*每一个* effct
+**Hook 允许我们按照代码的用途分割他们**，而不是像生命周期函数那样。React 将按照 effect 声明的顺序依次调用组件中的*每一个* effect
 
-### Explanation: 为什么每次更新的时候都要运行 Effect {#explanation-why-effects-run-on-each-update}
+### 解释: 为什么每次更新的时候都要运行 Effect {#explanation-why-effects-run-on-each-update}
 
 If you're used to classes, you might be wondering why the effect cleanup phase happens after every re-render, and not just once during unmounting. Let's look at a practical example to see why this design helps us create components with fewer bugs.
 如果你已经习惯了使用 class，那么你可能会想知道为什么 effect 在每次重渲染时都会执行，而不是只在卸载组件的时候执行一次。让我们看一个实际的例子，看看为什么这个设计可以帮助我们创建 bug 更少的组件。
