@@ -357,7 +357,7 @@ If you're used to classes, you might be wondering why the effect cleanup phase h
 
 **但是当组件已经显示在屏幕上时，`friend` prop 发生变化会发生什么？**我们的组件将继续展示原来的好友状态。这是一个 bug。而且我们还会因为取消订阅时使用错误的好友 ID 导致内存泄露的问题。
 
-在一个类定义组件中，我们需要加上 `componentDidUpdate` 来解决这个问题：
+在一个 class 组件中，我们需要加上 `componentDidUpdate` 来解决这个问题：
 
 ```js{8-19}
   componentDidMount() {
