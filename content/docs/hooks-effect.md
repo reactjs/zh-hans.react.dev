@@ -37,7 +37,6 @@ function Example() {
 
 数据获取，设置订阅以及手动更改 React 组件中的 DOM 都是副作用的示例。无论你之前是否将他们称为"副作用"（可能就是你想要的效果），应该都在组件中使用过了。
 
-
 >Tip
 >
 >如果你熟悉 React class 的生命周期函数，你可以把 `useEffect` Hook 看做 `componentDidMount`，`componentDidUpdate` 和 `componentWillUnmount` 这三个函数的组合。
