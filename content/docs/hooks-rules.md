@@ -18,7 +18,7 @@ Hook 是 JavaScript 函数，但是你在使用它的时候需要遵循两条规
 
 **不要在普通的 JavaScript 函数中调用 Hook。**你可以：
 
-* ✅ 在 React 的函数定义组件中调用 Hook
+* ✅ 在 React 的函数式组件中调用 Hook
 * ✅ 在自定义 Hook 中调用 Hook (我们将会在[下一页](/docs/hooks-custom.html) 中学习这个。)
 
 通过遵循此规则，你确保了组件的状态逻辑在它的代码中清晰可见。
