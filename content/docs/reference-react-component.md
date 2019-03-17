@@ -247,6 +247,7 @@ componentWillUnmount()
 
 本节中的生命周期方法并不太常用。它们偶尔会很方便，但是大部分情况下组件可能都不需要它们。你可以在[生命周期图谱](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)中，选择“显示不常用的生命周期”复选框，即可看到下述相关方法。
 
+
 ### `shouldComponentUpdate()` {#shouldcomponentupdate}
 
 ```javascript
