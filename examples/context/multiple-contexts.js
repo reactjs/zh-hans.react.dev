@@ -1,7 +1,7 @@
-// Theme context, default to light theme
+// Theme context，默认的 theme 是 “light” 值
 const ThemeContext = React.createContext('light');
 
-// Signed-in user context
+// 用户登录 context
 const UserContext = React.createContext({
   name: 'Guest',
 });
@@ -10,7 +10,7 @@ class App extends React.Component {
   render() {
     const {signedInUser, theme} = this.props;
 
-    // App component that provides initial context values
+    // 提供初始 context 值的 App 组件
     // highlight-range{2-3,5-6}
     return (
       <ThemeContext.Provider value={theme}>
@@ -31,7 +31,7 @@ function Layout() {
   );
 }
 
-// A component may consume multiple contexts
+// 一个组件可能会消费多个 context
 function Content() {
   // highlight-range{2-10}
   return (

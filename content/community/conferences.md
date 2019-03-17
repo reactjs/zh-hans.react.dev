@@ -12,10 +12,6 @@ Do you know of a local React.js conference? Add it here! (Please keep the list c
 
 ## Upcoming Conferences {#upcoming-conferences}
 
-### React Iran 2019 {#react-iran-2019}
-January 31, 2019 in Tehran, Iran
-[Website](http://reactiran.com) - [Instagram](https://www.instagram.com/reactiran/)
-
 ### Reactathon 2019 {#reactathon-2019}
 March 30-31, 2019 in San Francisco, USA
 
@@ -30,6 +26,11 @@ April 4-5, 2019 in Kraków, Poland
 April 12, 2019 in Amsterdam, The Netherlands
 
 [Website](https://react.amsterdam) - [Twitter](https://twitter.com/reactamsterdam) - [Facebook](https://www.facebook.com/reactamsterdam)
+
+### ReactJS Girls Conference 
+May 3, 2019 in London, UK
+
+[Website](https://reactjsgirls.com/) - [Twitter](https://twitter.com/reactjsgirls)
 
 ### ReactEurope 2019 {#reacteurope-2019}
 May 23-24, 2019 in Paris, France
@@ -51,6 +52,11 @@ June 21, 2019 Chicago, Illinois USA
 
 [Website](https://reactloop.com) - [Twitter](https://twitter.com/ReactLoop)
 
+### React Week '19 {#RWNY19}
+July 15-21, 2019. New York City, USA
+
+[Website](https://reactweek.nyc) - [Twitter](https://twitter.com/ReactWeek)
+
 ### ComponentsConf 2019 {#componentsconf-2019}
 September 6, 2019 in Melbourne, Australia
 [Website](https://www.componentsconf.com.au/) - [Twitter](https://twitter.com/componentsconf)
@@ -69,6 +75,11 @@ September 13th, 2019. New York, USA
 September 26-28, 2019 in Goa, India
 
 [Website](https://www.reactindia.io/) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia)
+
+### React Alicante 2019 {#react-alicante-2019}
+September 26-28, 2019 in Alicante, Spain
+
+[Website](http://reactalicante.es/) - [Twitter](https://twitter.com/reactalicante) - [Facebook](https://www.facebook.com/ReactAlicante)
 
 ## Past Conferences {#past-conferences}
 
@@ -338,3 +349,8 @@ November 4 in Tel Aviv, Israel
 November 30, Berlin, Germany
 
 [Website](https://reactday.berlin) - [Twitter](https://twitter.com/reactdayberlin) - [Facebook](https://www.facebook.com/reactdayberlin/) - [Videos](https://www.youtube.com/channel/UC1EYHmQYBUJjkmL6OtK4rlw)
+
+### React Iran 2019 {#react-iran-2019}
+January 31, 2019 in Tehran, Iran
+
+[Website](http://reactiran.com) - [Instagram](https://www.instagram.com/reactiran/)

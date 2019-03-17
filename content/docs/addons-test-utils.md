@@ -53,7 +53,7 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 使用 npm 的方�
 例如，假设我们有个 `Counter` 组件:
 
 ```js
-class App extends React.Component {
+class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {count: 0};

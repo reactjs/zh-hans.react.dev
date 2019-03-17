@@ -1,6 +1,6 @@
 ---
 id: getting-started
-title: Getting Started
+title: 开始
 permalink: docs/getting-started.html
 next: add-react-to-a-website.html
 redirect_from:
@@ -18,109 +18,109 @@ redirect_from:
   - "docs/environments.html"
 ---
 
-This page is an overview of the React documentation and related resources.
+这是一个 React 文档及相关资源的概览页面。
 
-**React** is a JavaScript library for building user interfaces. Learn what React is all about on [our homepage](/) or [in the tutorial](/tutorial/tutorial.html).
+**React** 是一个用于构建用户界面的 JavaScript 库。你可以在[首页](/)或[教程](/tutorial/tutorial.html)中学习什么是 React。
 
 ---
 
-- [Try React](#try-react)
-- [Learn React](#learn-react)
-- [Staying Informed](#staying-informed)
-- [Versioned Documentation](#versioned-documentation)
-- [Something Missing?](#something-missing)
+- [体验 React](#try-react)
+- [学习 React](#learn-react)
+- [获取最新消息](#staying-informed)
+- [版本化文档](#versioned-documentation)
+- [找不到想要的？](#something-missing)
 
-## Try React {#try-react}
+## 体验 React {#try-react}
 
-React has been designed from the start for gradual adoption, and **you can use as little or as much React as you need.** Whether you want to get a taste of React, add some interactivity to a simple HTML page, or start a complex React-powered app, the links in this section will help you get started.
+React 从诞生之初就是可被逐步采用的，因而**你可以按需引入或多或少的 React 特性**。不管你是想体验下 React，用它给简单的 HTML 页面增加一点交互，还是要开始一个完全由 React 驱动的复杂应用，该章节内容里的链接都能帮你快速开始。
 
-### Online Playgrounds {#online-playgrounds}
+### 在线体验 {#online-playgrounds}
 
-If you're interested in playing around with React, you can use an online code playground. Try a Hello World template on [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new), or [Glitch](https://glitch.com/edit/#!/remix/starter-react-template).
+如果你对体验 React 感兴趣，可以尝试在线代码编辑器。从 [CodePen](codepen://hello-world) 或 [CodeSandbox](https://codesandbox.io/s/new) 开始一个 React 版本的 Hello World 模版。
 
-If you prefer to use your own text editor, you can also [download this HTML file](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html), edit it, and open it from the local filesystem in your browser. It does a slow runtime code transformation, so we'd only recommend using this for simple demos.
+如果你喜欢使用自己的文本编辑器，也可以[下载这个 HTML 文件](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html)，然后编辑文件内容，最后再用浏览器从本地文件系统打开文件，预览页面效果。注意：这个文件中包含一个低效率的运行时代码转换脚本，所以我们推荐仅在简单的演示项目中使用。
 
-### Add React to a Website {#add-react-to-a-website}
+### 在网站中添加 React {#add-react-to-a-website}
 
-You can [add React to an HTML page in one minute](/docs/add-react-to-a-website.html). You can then either gradually expand its presence, or keep it contained to a few dynamic widgets.
+你可以[立即在 HTML 文件中添加 React](/docs/add-react-to-a-website.html)，然后选择逐渐拓展它的应用范围，或只在一些动态小部件中使用它。
 
-### Create a New React App {#create-a-new-react-app}
+### 创建新的 React 应用 {#create-a-new-react-app}
 
-When starting a React project, [a simple HTML page with script tags](/docs/add-react-to-a-website.html) might still be the best option. It only takes a minute to set up!
+当你刚开始一个 React 应用时，[通过 HTML 的 script 标签引入 React](/docs/add-react-to-a-website.html) 依然是最好的选项，因为这能让你的项目立即启动。
 
-As your application grows, you might want to consider a more integrated setup. There are [several JavaScript toolchains](/docs/create-a-new-react-app.html) we recommend for larger applications. Each of them can work with little to no configuration and lets you take full advantage of the rich React ecosystem.
+但随着应用越来越大，你可能会需要更加集成化的安装方式。我们推荐了[一些 JavaScript 工具链](/docs/create-a-new-react-app.html)，它们适合大型应用。它们只需很少甚至零配置，就能让你充分利用丰富的 React 生态。
 
-## Learn React {#learn-react}
+## 学习 React {#learn-react}
 
-People come to React from different backgrounds and with different learning styles. Whether you prefer a more theoretical or a practical approach, we hope you'll find this section helpful.
+学习 React 的人有着不同的知识背景和学习方式，不管你是理论派还是实践派，我们希望该章节内容对你有帮助。
 
-* If you prefer to **learn by doing**, start with our [practical tutorial](/tutorial/tutorial.html).
-* If you prefer to **learn concepts step by step**, start with our [guide to main concepts](/docs/hello-world.html).
+* 如果你喜欢**边做边学**，请从[实践教程](/tutorial/tutorial.html)开始。
+* 如果你喜欢**一步步学习概念**，请从 [Hello World](/docs/hello-world.html) 开始。
 
-Like any unfamiliar technology, React does have a learning curve. With practice and some patience, you *will* get the hang of it.
+和所有新技术一样，React 也有一条学习曲线。但只要多多实践和保有一点点耐心，你*终将*掌握它。
 
-### First Examples {#first-examples}
+### 第一个示例 {#first-examples}
 
-The [React homepage](/) contains a few small React examples with a live editor. Even if you don't know anything about React yet, try changing their code and see how it affects the result.
+[React 首页](/)包含了一些可在线编辑的小示例。即使你对 React 尚一无所知，也可以尝试修改代码，看看结果会怎样。
 
-### React for Beginners {#react-for-beginners}
+### 初学者的 React {#react-for-beginners}
 
-If you feel that the React documentation goes at a faster pace than you're comfortable with, check out [this overview of React by Tania Rascia](https://www.taniarascia.com/getting-started-with-react/). It introduces the most important React concepts in a detailed, beginner-friendly way. Once you're done, give the documentation another try!
+如果你觉得 React 官方文档节奏太快，不太适应，可以先去看看这篇 [Tania Rascia 的 React 概览](https://www.taniarascia.com/getting-started-with-react/)。它以新手友好的方式详细介绍了最重要的 React 概念，看完这篇概览，再回来试试看官方文档吧！
 
-### React for Designers {#react-for-designers}
+### 设计师的 React {#react-for-designers}
 
-If you're coming from a design background, [these resources](https://reactfordesigners.com/) are a great place to get started.
+如果你有设计背景，[这些资源](http://reactfordesigners.com/)是很好的开始。
 
-### JavaScript Resources {#javascript-resources}
+### JavaScript 资源 {#javascript-resources}
 
-The React documentation assumes some familiarity with programming in the JavaScript language. You don't have to be an expert, but it's harder to learn both React and JavaScript at the same time.
+阅读 React 官方文档需要对使用 JavaScript 语言编程有一定基础。你不需要是一个 JavaScript 编程专家，但同时学习 React 和 JavaScript 编程将会比较困难。
 
-We recommend going through [this JavaScript overview](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) to check your knowledge level. It will take you between 30 minutes and an hour but you will feel more confident learning React.
+我们推荐你浏览 [JavaScript 概览](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)来评估自己的知识水平。这将花费你大约 30 分钟到 1 个小时，但之后学习 React 你会感觉更加自信。
 
->Tip
+>提示
 >
->Whenever you get confused by something in JavaScript, [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [javascript.info](https://javascript.info/) are great websites to check. There are also [community support forums](/community/support.html) where you can ask for help.
+>当你对一些 JavaScript 知识感到疑惑时，[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) 和 [javascript.info](http://javascript.info/) 是很棒的资源网站。你也可以去[社区支持论坛](/community/support.html)寻求帮助。
 
-### Practical Tutorial {#practical-tutorial}
+### 实践教程 {#practical-tutorial}
 
-If you prefer to **learn by doing,** check out our [practical tutorial](/tutorial/tutorial.html). In this tutorial, we build a tic-tac-toe game in React. You might be tempted to skip it because you're not building games -- but give it a chance. The techniques you'll learn in the tutorial are fundamental to building *any* React apps, and mastering it will give you a much deeper understanding.
+如果你喜欢**边做边学**，请参考我们的[实践教程](/tutorial/tutorial.html)。在这篇教程中，我们用 React 构建了一个井字棋游戏。你可能想要跳过这部分，因为你并不是游戏开发者。但请给它一次机会，这篇教程中所涉及的技术是构建*任何* React 应用的基础，掌握它们将让你对 React 有更深的理解。
 
-### Step-by-Step Guide {#step-by-step-guide}
+### 一步步学习指南 {#step-by-step-guide}
 
-If you prefer to **learn concepts step by step,** our [guide to main concepts](/docs/hello-world.html) is the best place to start. Every next chapter in it builds on the knowledge introduced in the previous chapters so you won't miss anything as you go along.
+如果你喜欢**一步步学习概念**，我们的 [Hello World](/docs/hello-world.html) 是最好的开始。指南里的每一章节都基于前一章节已学的内容，这样一步步过来你不会错过任何知识。
 
-### Thinking in React {#thinking-in-react}
+### React 哲学 {#thinking-in-react}
 
-Many React users credit reading [Thinking in React](/docs/thinking-in-react.html) as the moment React finally "clicked" for them. It's probably the oldest React walkthrough but it's still just as relevant.
+很多用户认为阅读 [React 哲学](/docs/thinking-in-react.html)是他们最终对 React 恍然大悟的时刻。它可能是最老的 React 教程，但它依然极具价值。
 
-### Recommended Courses {#recommended-courses}
+### 推荐课程 {#recommended-courses}
 
-Sometimes people find third-party books and video courses more helpful than the official documentation. We maintain [a list of commonly recommended resources](/community/courses.html), some of which are free.
+相比官方文档，有时人们更喜欢第三方的书籍或视频课程。我们维护了一个[推荐资源清单](/community/courses.html)，其中有一些资源是免费的。
 
-### Advanced Concepts {#advanced-concepts}
+### 高级概念 {#advanced-concepts}
 
-Once you're comfortable with the [main concepts](#main-concepts) and played with React a little bit, you might be interested in more advanced topics. This section will introduce you to the powerful, but less commonly used React features like [context](/docs/context.html) and [refs](/docs/refs-and-the-dom.html).
+一旦你已经熟知 React 的[主要概念](#main-concepts)，并且已经在项目中小试牛刀，你可能会对更高级的话题感兴趣。该章节内容将会介绍一些强大但并不常用的 React 特性，举个例子：[context](/docs/context.html) 和 [refs](/docs/refs-and-the-dom.html)。
 
-### API Reference {#api-reference}
+### API 参考 {#api-reference}
 
-This documentation section is useful when you want to learn more details about a particular React API. For example, [`React.Component` API reference](/docs/react-component.html) can provide you with details on how `setState()` works, and what different lifecycle methods are useful for.
+当你想深入学习特定 React API 细节时，该章节将会变得非常有用。举个例子：[`React.Component` API 参考](/docs/react-component.html)能够介绍 `setState()` 方法是如何工作的，以及不同生命周期方法的使用场景。
 
-### Glossary and FAQ {#glossary-and-faq}
+### 词汇表与常见问题 {#glossary-and-faq}
 
-The [glossary](/docs/glossary.html) contains an overview of the most common terms you'll see in the React documentation. There is also a FAQ section dedicated to short questions and answers about common topics, including [making AJAX requests](/docs/faq-ajax.html), [component state](/docs/faq-state.html), and [file structure](/docs/faq-structure.html).
+[词汇表](/docs/glossary.html)中包含了 React 文档中最常见术语的概览。常见问题章节致力于简短解答一些大家普遍遇到的问题，包括[发送 AJAX 请求](/docs/faq-ajax.html)，[组件状态](/docs/faq-state.html)以及[文件结构](/docs/faq-structure.html) 等。
 
-## Staying Informed {#staying-informed}
+## 获取最新消息 {#staying-informed}
 
-The [React blog](/blog/) is the official source for the updates from the React team. Anything important, including release notes or deprecation notices, will be posted there first.
+[React 博客](/blog/)是 React 团队发布更新的官方渠道。一切重要的信息，包括：更新日志，废弃通知等，都会首先在这里发布。
 
-You can also follow the [@reactjs account](https://twitter.com/reactjs) on Twitter, but you won't miss anything essential if you only read the blog.
+你也可以在 Twitter 上关注 [@reactjs 账号](https://twitter.com/reactjs)获取更新，但即使不这样做，仅通过官方博客你也不会错过任何必要的信息。
 
-Not every React release deserves its own blog post, but you can find a detailed changelog for every release [in the `CHANGELOG.md` file in the React repository](https://github.com/facebook/react/blob/master/CHANGELOG.md), as well as on the [Releases](https://github.com/facebook/react) page.
+并非每一个 React 版本都值得我们在博客上发布文章，但你可以在 [React 代码仓库中的 `CHANGELOG.md` 文件](https://github.com/facebook/react/blob/master/CHANGELOG.md)或[更新日志页面](https://github.com/facebook/react/releases)找到每个版本的更新日志。
 
-## Versioned Documentation {#versioned-documentation}
+## 版本化文档 {#versioned-documentation}
 
-This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation [on a separate page](/versions). Note that documentation for past versions is snapshotted at the time of the release, and isn't being continuously updated.
+官方文档会和最新稳定版的 React 保持同步。从 React 16 开始，你可以在[历史版本页面](/versions)找到老版本的 React 文档。注意，老版本的文档是该版本发布时的快照，并不会持续地更新。
 
-## Something Missing? {#something-missing}
+## 找不到想要的？ {#something-missing}
 
-If something is missing in the documentation or if you found some part confusing, please [file an issue for the documentation repository](https://github.com/reactjs/reactjs.org/issues/new) with your suggestions for improvement, or tweet at the [@reactjs account](https://twitter.com/reactjs). We love hearing from you!
+如果你找不到想要的内容或觉得文档某些地方让人疑惑，请[移步文档仓库提交 issue](https://github.com/reactjs/reactjs.org/issues/new) 或在 Twitter 上提及 [@reactjs 账号](https://twitter.com/reactjs)。我们期待你的反馈！
