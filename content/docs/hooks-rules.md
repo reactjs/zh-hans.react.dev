@@ -12,7 +12,7 @@ Hook 是 JavaScript 函数，但是你在使用它的时候需要遵循两条规
 
 ### 只在最顶层使用 Hook {#only-call-hooks-at-the-top-level}
 
-**不要在循环，条件或嵌套函数中调用 Hook，**确保总是在你的 React 函数的最顶层调用他们。遵守这条规则，你就能确保 Hooks 在每一次渲染中都按照同样的顺序被调用。这让 React 能够在多次的 `useState` 和 `useEffect` 调用之间保持 hook 状态的正确。(如果你对此感到好奇，我们[下面](#explanation)会有更深入的解释。)
+**不要在循环，条件或嵌套函数中调用 Hook，**确保总是在你的 React 函数的最顶层调用他们。遵守这条规则，你就能确保 Hooks 在每一次渲染中都按照同样的顺序被调用。这让 React 能够在多次的 `useState` 和 `useEffect` 调用之间保持 hook 状态的正确。(如果你对此感到好奇，我们在[下面](#explanation)会有更深入的解释。)
 
 ### 只在 React 函数中调用 Hook {#only-call-hooks-from-react-functions}
 
