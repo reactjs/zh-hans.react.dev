@@ -918,7 +918,7 @@ React 保持对当先渲染中的组件的追踪。多亏了 [Hooks 规范](/doc
 
 ### Hooks 使用了哪些现有技术？ {#what-is-the-prior-art-for-hooks}
 
-Hooks 从多个不同的来源合成想法：
+Hooks 由不同的来源的多个想法构成：
 
 * [react-future](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State) 这个仓库中我们对函数式 APIs 的老旧实验。
 * React 社区对 render prop APIs 的实验，包括 [Ryan Florence](https://github.com/ryanflorence) 的 [Reactions Component](https://github.com/reactions/component)。
