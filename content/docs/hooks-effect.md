@@ -426,9 +426,9 @@ ChatAPI.unsubscribeFromFriendStatus(300, handleStatusChange); // Clean up last e
 
 这样的默认行为保证了一致性，避免了在类定义组件中常见的，由于没有处理更新逻辑而导致的 bug。
 
-### Tip: 通过跳过 Effect 进行性能优化 {#tip-optimizing-performance-by-skipping-effects}
+### 提示: 通过跳过 Effect 进行性能优化 {#tip-optimizing-performance-by-skipping-effects}
 
-在某些情况下，每次渲染后都执行清理或者执行 effect 可能会导致性能问题。在类定义组件中，我们可以通过在 `componentDidUpdate` 中加入一些对 `prevProps` 或 `prevState` 进行比较的逻辑解决：
+在某些情况下，每次渲染后都执行清理或者执行 effect 可能会导致性能问题。在 class 组件中，我们可以通过在 `componentDidUpdate` 中加入一些对 `prevProps` 或 `prevState` 进行比较的逻辑解决：
 
 ```js
 componentDidUpdate(prevProps, prevState) {
