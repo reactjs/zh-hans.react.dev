@@ -1,45 +1,45 @@
 ---
-title: "React 16.x Roadmap"
+title: "React 16.x 的规划"
 author: [gaearon]
 ---
 
-You might have heard about features like "Hooks", "Suspense", and "Concurrent Rendering" in the previous blog posts and talks. In this post, we'll look at how they fit together and the expected timeline for their availability in a stable release of React.
- 
-## tl;dr {#tldr}
+你可能已经在之前的博客和视频中看到过了“Hooks”，”延迟渲染”和”同步渲染“这三种功能。在这篇文章中，我们会讨论它们将如何整合在React中，以及它们将在何时出现在React的稳定版本中。
 
-We plan to split the rollout of new React features into the following milestones:
+## 太长不看 {#tldr}
 
-* React 16.6 with [Suspense for Code Splitting](#react-166-shipped-the-one-with-suspense-for-code-splitting) (*already shipped*)
-* A minor 16.x release with [React Hooks](#react-16x-q1-2019-the-one-with-hooks) (~Q1 2019)
-* A minor 16.x release with [Concurrent Mode](#react-16x-q2-2019-the-one-with-concurrent-mode) (~Q2 2019)
-* A minor 16.x release with [Suspense for Data Fetching](#react-16x-mid-2019-the-one-with-suspense-for-data-fetching) (~mid 2019)
+我们计划在如下里程碑中发布React的新功能：
 
-*(The original version of this post used exact version numbers. We edited it to reflect that there might need to be a few other minor releases in the middle between these ones.)*
+* React 16.6 中包括 [延迟渲染以帮助分割代码](#react-166-shipped-the-one-with-suspense-for-code-splitting) (*已经发布*)
+* 16.x 的一个小更新包括 [React Hooks](#react-16x-q1-2019-the-one-with-hooks) (~2019第一季度)
+* 16.x 的一个小更新包括 [同步模式](#react-16x-q2-2019-the-one-with-concurrent-mode) (~2019第二季度)
+* 16.x 的一个小更新包括 [延迟渲染以帮助数据获取](#react-16x-mid-2019-the-one-with-suspense-for-data-fetching) (~2019中旬)
 
-These are estimates, and the details may change as we're further along. There's at least two more projects we plan to complete in 2019. They require more exploration and aren't tied to a particular release yet:
+*(这篇文章的原始版本包含了具体的版本号。现在我们隐藏了他们，因为我们可能会在其中加入一些其他的小更新)*
 
-* [Modernizing React DOM](#modernizing-react-dom)
-* [Suspense for Server Rendering](#suspense-for-server-rendering)
+这些是我们的估计，具体计划会根据情况而定。我们计划在2019年还至少再完成2个项目。它们需要更多的探究，目前还没有加入特定的版本。
 
-We expect to get more clarity on their timeline in the coming months.
+* [现代化 React DOM](#modernizing-react-dom)
+* [延迟渲染以帮助服务器渲染](#suspense-for-server-rendering)
 
->Note
+我们将会在未来的几个月中研究出更加清晰的时间线。
+
+>注意
 >
 >
->This post is just a roadmap -- there is nothing in it that requires your immediate attention. When each of these features are released, we'll publish a full blog post announcing them.
+>这篇文章只是一个计划 —— 其中并没有需要立即注意的内容。未来在每个新功能发布的时候我们会撰写详细的博客文章来解释它们。
 
-## Release Timeline {#release-timeline}
+## 发行计划 {#release-timeline}
 
-We have a single vision for how all of these features fit together, but we're releasing each part as soon as it is ready so that you can test and start using them sooner. The API design doesn't always make sense when looking at one piece in isolation; this post lays out the major parts of our plan to help you see the whole picture. (See our [versioning policy](/docs/faq-versioning.html) to learn more about our commitment to stability.)
+我们对于这些功能有一个总体的规划，但是我们将会在完成每个功能的时候发布它，以便大家可以尽早测试和使用。当你单独看一些API的设计的时候，它们不总是合理的。为了方便你在全局的角度理解我们的计划，这篇文章整理了我们计划中的重要组成部分。（参见 [版本规则](/docs/faq-versioning.html) 来了解我们对稳定性的承诺）
 
-The gradual release strategy helps us refine the APIs, but the transitional period when some things aren't ready can be confusing. Let's look at what these different features mean for your app, how they relate to each other, and when you can expect to start learning and using them.
+我们逐步发布的计划可以帮助我们优化API，不过在过渡期一些还不完善的部分会令人费解。我们来看看这些功能将会对你的app产生怎样的影响，这些功能之间的关联，还有你可以在什么时候开始学习并使用它们。
 
-### [React 16.6](/blog/2018/10/23/react-v-16-6.html) (shipped): The One with Suspense for Code Splitting {#react-166-shipped-the-one-with-suspense-for-code-splitting}
+### [React 16.6](/blog/2018/10/23/react-v-16-6.html) (已发布): 延迟渲染以便拆分代码 {#react-166-shipped-the-one-with-suspense-for-code-splitting}
 
-*Suspense* refers to React's new ability to "suspend" rendering while components are waiting for something, and display a loading indicator. In React 16.6, Suspense supports only one use case: lazy loading components with `React.lazy()` and `<React.Suspense>`.
+*延迟渲染* 代表了React的新功能：当组件在等待某些事情时，我们可以“延迟”渲染并显示一个载入指示图标。在React 16.6中，延迟渲染只支持一种情况：使用`React.lazy()` 和 `<React.Suspense>`延迟加载组件。
 
 ```js
-// This component is loaded dynamically
+// 这个组件是动态加载的
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 
 function MyComponent() {
@@ -53,27 +53,27 @@ function MyComponent() {
 }
 ```
 
-Code splitting with `React.lazy()` with `<React.Suspense>` is documented [in the Code Splitting guide](/docs/code-splitting.html#reactlazy). You can find another practical explanation in [this article](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d).
+使用 `React.lazy()` 和 `<React.Suspense>` 分割代码被记录在 [代码分割指南](/docs/code-splitting.html#reactlazy)中。 你可以在 [这篇文章](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d)中找到另一个实践中的例子。
 
-We have been using Suspense for code splitting at Facebook since July, and expect it to be stable. There's been a few regressions in the initial public release in 16.6.0, but they were fixed in 16.6.3.
+从2018年7月开始，Facebook就已经开始使用延迟渲染分割代码了，并且期待它是稳定的。在第一个公开版本16.6.0中，这个功能还有一些问题，我们在16.6.3中修复了它们。
 
-Code splitting is just the first step for Suspense. Our longer term vision for Suspense involves letting it handle data fetching too (and integrate with libraries like Apollo). In addition to a convenient programming model, Suspense also provides better user experience in Concurrent Mode. You'll find information about these topics further below.
+代码分割只是延迟渲染的第一步。我们对延迟渲染的的长远规划包括了利用它来获取信息（并集成一些库，比如Apollo）。除了是一个方便的编程模型，在同步模式中，延迟渲染也提供了更好的用户体验。我们会在本文之后的内容中讨论它们。
 
-**Status in React DOM:** Available since React 16.6.0.
+**在React DOM中的状态:** 自React 16.6.0 之后的版本支持。
 
-**Status in React DOM Server:** Suspense is not available in the server renderer yet. This isn't for the lack of attention. We've started work on a new asynchronous server renderer that will support Suspense, but it's a large project and will take a good chunk of 2019 to complete.
+**在React DOM Server中的状态:** 延迟渲染还没有包含在服务器端渲染器中。不是因为我们不关注它，我们已经开始了对一个支持延迟渲染的异步服务器端渲染器的开发工作。这是一个很大的项目，将会占用2019年的大部分时间来完成。
 
-**Status in React Native:** Bundle splitting isn't very useful in React Native, but there's nothing technically preventing `React.lazy()` and `<Suspense>` from working when given a Promise to a module.
+**在React Native中的状态:** 分割Bundle在React Native中不是很有用，不过当一个组件使用Promise时，没有任何技术障碍可以阻止你用`React.lazy()` 和 `<Suspense>`。
 
-**Recommendation:** If you only do client rendering, we recommend widely adopting `React.lazy()` and `<React.Suspense>` for code splitting React components. If you do server rendering, you'll have to wait with adoption until the new server renderer is ready.
+**建议:** 如果你只在客户端渲染，我们强烈建议使用`React.lazy()` 和 `<React.Suspense>`来分割React组件的代码。如果你在服务器端渲染，你需要等到新的服务器端渲染器开发完成再使用它们。
 
-### React 16.x (~Q1 2019): The One with Hooks {#react-16x-q1-2019-the-one-with-hooks}
+### React 16.x (~2019第一季度): 包含Hooks的版本 {#react-16x-q1-2019-the-one-with-hooks}
 
-*Hooks* let you use features like state and lifecycle from function components. They also let you reuse stateful logic between components without introducing extra nesting in your tree.
+*Hooks* 让你可以在函数组件中使用诸如state和生命周期之类的的功能。它们也可以让你在不在文件数中增加镶嵌的情况下重用带有状态的逻辑。
 
 ```js
 function Example() {
-  // Declare a new state variable, which we'll call "count"
+  // 声明一个新的state变量，我们叫他“count”
   const [count, setCount] = useState(0);
 
   return (
@@ -87,9 +87,9 @@ function Example() {
 }
 ```
 
-Hooks [introduction](/docs/hooks-intro.html) and [overview](/docs/hooks-overview.html) are good places to start. Watch [these talks](https://www.youtube.com/watch?v=V-QO-KO90iQ) for a video introduction and a deep dive. The [FAQ](/docs/hooks-faq.html) should answer most of your further questions. To learn more about the motivation behind Hooks, you can read [this article](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889). Some of the rationale for the API design of Hooks is explained in [this RFC thread reply](https://github.com/reactjs/rfcs/pull/68#issuecomment-439314884).
+Hooks [介绍](/docs/hooks-intro.html) 和 [综述](/docs/hooks-overview.html) 是好的起点。 观看 [这些演讲](https://www.youtube.com/watch?v=V-QO-KO90iQ) ，这是视频的综述和深入介绍。[问答](/docs/hooks-faq.html) 部分可以解答你的一些问题。 如果想要了解Hooks背后的动机，可以阅读 [这篇文章](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889)。 一些Hooks API设计的原理阐述可以在 [这个RFC帖子](https://github.com/reactjs/rfcs/pull/68#issuecomment-439314884)中找到。
 
-We have been dogfooding Hooks at Facebook since September. We don't expect major bugs in the implementation. Hooks are only available in the 16.7 alpha versions of React. Some of their API is expected to change in the final version (see the end of [this comment](https://github.com/reactjs/rfcs/pull/68#issuecomment-439314884) for details). It is possible that the minor release with Hooks might not be React 16.7.
+自9月以来，我们在Facebook对Hooks进行了内测。我们不认为Hooks中还存在严重漏洞。Hooks只在16.7 alpha版本React中。一些API会在最终版本中改动（在[这个评论](https://github.com/reactjs/rfcs/pull/68#issuecomment-439314884)的底部有详细信息）。也有可能对于Hooks的小更新不在React 16.7版本中。
 
 Hooks represent our vision for the future of React. They solve both problems that React users experience directly ("wrapper hell" of render props and higher-order components, duplication of logic in lifecycle methods), and the issues we've encountered optimizing React at scale (such as difficulties in inlining components with a compiler). Hooks don't deprecate classes. However, if Hooks are successful, it is possible that in a future *major* release class support might move to a separate package, reducing the default bundle size of React.
 
@@ -199,7 +199,3 @@ And that's about it! As you can see, there's a lot here to keep us busy but we e
 We hope this post gives you an idea of what we're working on, what you can use today, and what you can expect to use in the future. While there's a lot of discussion about new features on social media platforms, you won't miss anything important if you read this blog.
 
 We're always open to feedback, and love to hear from you in the [RFC repository](https://github.com/reactjs/rfcs), [the issue tracker](https://github.com/facebook/react/issues), and [on Twitter](https://mobile.twitter.com/reactjs).
-
-
-
-
