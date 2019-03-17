@@ -105,7 +105,7 @@ Hooks 确实有它们自己的学习曲线。如果这份文档中遗失了一�
 
 你可以继续使用之前使用的 API；它们仍会继续有效。
 
-在未来，这些苦的新版本或许也会导出诸如 `useRedux()` 和 `useRouter()` 的自定义 Hooks 以允许你不需要包裹组件也能使用同样的特性。
+在未来，这些库的新版本或许也会导出诸如 `useRedux()` 和 `useRouter()` 的自定义 Hooks 以允许你不需要包裹组件也能使用同样的特性。
 
 ### Hooks 能和静态类型一起用吗？ {#do-hooks-work-with-static-typing}
 
