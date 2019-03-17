@@ -190,7 +190,7 @@ it('can render and update a counter', () => {
 * 对 Hooks 的调用要么在一个`大驼峰法`命名的函数（视作一个组件）内部或另一个 `useSomething` 函数（视作一个自定义 Hook）中。
 * Hooks 在每次渲染时都按照相同的顺序被调用。
 
-还有一些其他的启发方式，但随着我们不断地调优以在发现 Bugs 和避免伪真理之前取得平衡，这些方式随时会改变。
+还有一些其他的启发方式，但随着我们不断地调优以在发现 Bug 和避免伪真理之前取得平衡，这些方式随时会改变。
 
 ## 从 Classes 迁移到 Hooks {#from-classes-to-hooks}
 
