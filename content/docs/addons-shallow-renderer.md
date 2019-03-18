@@ -1,23 +1,23 @@
 ---
 id: shallow-renderer
-title: Shallow Renderer
+title: 浅层渲染
 permalink: docs/shallow-renderer.html
 layout: docs
 category: Reference
 ---
 
-**Importing**
+**如何引入**
 
 ```javascript
 import ShallowRenderer from 'react-test-renderer/shallow'; // ES6
 var ShallowRenderer = require('react-test-renderer/shallow'); // ES5 with npm
 ```
 
-## Overview {#overview}
+## 概览 {#overview}
 
-When writing unit tests for React, shallow rendering can be helpful. Shallow rendering lets you render a component "one level deep" and assert facts about what its render method returns, without worrying about the behavior of child components, which are not instantiated or rendered. This does not require a DOM.
+当为 React 编写单元测试时，浅层渲染十分有用。浅层渲染可以只渲染组件的“第一层”，并且对组件的 render 方法的返回值进行断言，不必担心子组件的行为，子组件并没有实例化或被渲染。并且浅层渲染不依赖 DOM。
 
-For example, if you have the following component:
+例如，如果你有如下的组件：
 
 ```javascript
 function MyComponent() {
@@ -30,12 +30,12 @@ function MyComponent() {
 }
 ```
 
-Then you can assert:
+你可以使用断言：
 
 ```javascript
 import ShallowRenderer from 'react-test-renderer/shallow';
 
-// in your test:
+// 测试代码:
 const renderer = new ShallowRenderer();
 renderer.render(<MyComponent />);
 const result = renderer.getRenderOutput();
@@ -47,22 +47,22 @@ expect(result.props.children).toEqual([
 ]);
 ```
 
-Shallow testing currently has some limitations, namely not supporting refs.
+浅层测试（Shallow testing）目前有些局限性，即不支持 refs。
 
-> Note:
+> 注意：
 >
-> We also recommend checking out Enzyme's [Shallow Rendering API](http://airbnb.io/enzyme/docs/api/shallow.html). It provides a nicer higher-level API over the same functionality.
+> 建议你查阅 Enzyme 的[浅层渲染的 API](https://airbnb.io/enzyme/docs/api/shallow.html)。它在相同的功能基础上提供了更棒更高级的 API。
 
-## Reference {#reference}
+## 参考 {#reference}
 
 ### `shallowRenderer.render()` {#shallowrendererrender}
 
-You can think of the shallowRenderer as a "place" to render the component you're testing, and from which you can extract the component's output.
+你可以把 shallowRenderer 看作用来渲染测试中组件的“容器”，且可以从容器中取到该组件的输出内容。
 
-`shallowRenderer.render()` is similar to [`ReactDOM.render()`](/docs/react-dom.html#render) but it doesn't require DOM and only renders a single level deep. This means you can test components isolated from how their children are implemented.
+`shallowRenderer.render()` 和 [`ReactDOM.render()`](/docs/react-dom.html#render) 很像，但是它不依赖 DOM 且只渲染一层。这意味着你可以对组件和其子组件的实现进行隔离测试。
 
 ### `shallowRenderer.getRenderOutput()` {#shallowrenderergetrenderoutput}
 
-After `shallowRenderer.render()` has been called, you can use `shallowRenderer.getRenderOutput()` to get the shallowly rendered output.
+在 `shallowRenderer.render()` 被调用后，你可以使用 `shallowRenderer.getRenderOutput()` 来获取浅层渲染的输出内容。
 
-You can then begin to assert facts about the output.
+然后，你就可以开始对输出内容进行断言操作。

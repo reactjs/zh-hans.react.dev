@@ -110,7 +110,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 ### 提示：为生产环境压缩 JavaScript 代码 {#tip-minify-javascript-for-production}
 
-在将你的网站部署到生产环境之前，请注意，未压缩的 JavaScript 可能会显著降低用户的页面速度。
+在将你的网站部署到生产环境之前，要注意未经压缩的 JavaScript 可能会显著降低用户的访问速度。
 
 如果你已经压缩了应用代码，如果你确保已部署的 HTML 加载了以 `production.min.js` 结尾的 React 版本，那么**你的网站是生产就绪的**：
 
@@ -149,7 +149,7 @@ return (
 
 这两段代码是等价的。虽然 **JSX [完全是可选的](/docs/react-without-jsx.html)**，但是很多人认为它有助于编写 UI 代码 —— 无论是使用 React 还是其它库。
 
-你可以用 [这个在线转换器](http://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cstage-3&prettier=true&targets=Node-6.12&version=6.26.0&envVersion=) 来试试 JSX。
+你可以用 [这个在线转换器](https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cstage-3&prettier=true&targets=Node-6.12&version=6.26.0&envVersion=) 来试试 JSX。
 
 ### 快速尝试 JSX {#quickly-try-jsx}
 
@@ -197,6 +197,6 @@ npx babel --watch src --out-dir . --presets react-app/prod
 
 如果你用 **[JSX 入门代码](https://cdn.rawgit.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)** 创建了一个 `src/like_button.js` 文件，监听器会创建一个预处理过的 `like_button.js` 文件，它包含了适用于浏览器的朴素的 JavaScript 代码。当你编辑带有 JSX 的源文件时，转换过程将自动重新执行。
 
-还有一个福利，这也使你能使用现代 JavaScript 的语法特性，比如 class，而不用担心在旧浏览器上失效。我们刚才使用的工具叫 Babel，你可以从 [它的文档](http://babeljs.io/docs/en/babel-cli/) 里了解更多。
+还有一个福利，这也使你能使用现代 JavaScript 的语法特性，比如 class，而不用担心在旧浏览器上失效。我们刚才使用的工具叫 Babel，你可以从[其文档](http://babeljs.io/docs/en/babel-cli/)中了解更多。
 
 如果你认为你已经习惯了构建工具，并希望它们能为你做更多事，[下一章节](/docs/create-a-new-react-app.html) 描述了一些最流行和易上手的工具链。如果不使用构建工具 —— 那些 script 标签也可以工作很好！

@@ -48,11 +48,7 @@ This repo contains the source code and documentation powering [reactjs.org](http
 大家在翻译过程中会遇到不需要翻译的内容，可以添加到词汇表中。
 
 项目起步，部分内容逐步完善中。后续会添加相关流程图片，便于理解。
-该流程我继续细化，如有疑问。可扫码进入该群，一起讨论完善这个项目：
-
-<div align="center">   
-	<img src="https://user-images.githubusercontent.com/13861040/52535012-dfc97b80-2d83-11e9-910a-46ab217b7ff4.png" width="300" height="388" alt="图片名称" align=center />
-</div>
+该流程我继续细化，如有疑问。
 
 ## About Chinese translation:
 

@@ -1,14 +1,14 @@
 ---
 id: javascript-environment-requirements
-title: JavaScript Environment Requirements
+title: JavaScript 环境要求
 layout: docs
 category: Reference
 permalink: docs/javascript-environment-requirements.html
 ---
 
-React 16 depends on the collection types [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) and [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set). If you support older browsers and devices which may not yet provide these natively (e.g. IE < 11) or which have non-compliant implementations (e.g. IE 11), consider including a global polyfill in your bundled application, such as [core-js](https://github.com/zloirock/core-js) or [babel-polyfill](https://babeljs.io/docs/usage/polyfill/).
+React 16 依赖集合类型 [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) 和 [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) 。如果你要支持无法原生提供这些能力（例如 IE < 11）或实现不规范（例如 IE 11）的旧浏览器与设备，考虑在你的应用库中包含一个全局的 polyfill ，例如 [core-js](https://github.com/zloirock/core-js) 或 [babel-polyfill](https://babeljs.io/docs/usage/polyfill/) 。
 
-A polyfilled environment for React 16 using core-js to support older browsers might look like:
+React 16 使用 core-js 支持老版本浏览器，其 polyfill 环境可能如下：
 
 ```js
 import 'core-js/es6/map';
@@ -23,8 +23,8 @@ ReactDOM.render(
 );
 ```
 
-React also depends on `requestAnimationFrame` (even in test environments).  
-You can use the [raf](https://www.npmjs.com/package/raf) package to shim `requestAnimationFrame`:
+React 同时还依赖于 `requestAnimationFrame`（甚至包括测试环境）。
+你可以使用 [raf](https://www.npmjs.com/package/raf) 的 package 增添 `requestAnimationFrame` 的 shim：
 
 ```js
 import 'raf/polyfill';
