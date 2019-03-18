@@ -65,7 +65,7 @@ Create React App 不会处理后端逻辑或操纵数据库；它只是创建一
 
 [Gatsby](https://www.gatsbyjs.org/) 是用 React 创建**静态网站**的最佳方式。它让你能使用 React 组件，但输出预渲染的 HTML 和 CSS 以保证最快的加载速度。
 
-从[它的官方指南](https://www.gatsbyjs.org/docs/)和[入门示例集](https://www.gatsbyjs.org/docs/gatsby-starters/)了解 Gatsby。
+从 Gatsby 的[官方指南](https://www.gatsbyjs.org/docs/)和[入门示例集](https://www.gatsbyjs.org/docs/gatsby-starters/)了解更多。
 
 ### 更灵活的工具链 {#more-flexible-toolchains}
 
