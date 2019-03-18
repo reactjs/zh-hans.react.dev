@@ -10,9 +10,9 @@ next: create-a-new-react-app.html
 
 根据需要或多或少地使用 React。
 
-React 从一开始就被设计为逐步采用，并且**你可以根据需要或多或少地使用 React**。可能你只想在现有页面中“点缀一些交互性”。使用 React 组件是一种不错的方式。
+React 从一开始就被设计为逐步采用，并且**你可以根据需要或多或少地使用 React**。可能你只想在现有页面中“局部地添加交互性”。使用 React 组件是一种不错的方式。
 
-大多数网站不是、也不需要是单页应用程序。**用几行代码以及不用构建工具**，试试在你的网站的一小部分中使用 React。然后，你可以逐步扩展它的存在，或只将其涵盖在少数动态部件中。
+大多数网站不是、也不需要是单页应用程序。通过**仅仅几行代码并且无需使用构建工具**，试试在你的网站的一小部分中使用 React。然后，你可以逐步扩展它的存在，或只将其涵盖在少数动态部件中。
 
 ---
 
@@ -112,7 +112,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 在将你的网站部署到生产环境之前，要注意未经压缩的 JavaScript 可能会显著降低用户的访问速度。
 
-如果你已经压缩了应用代码，如果你确保已部署的 HTML 加载了以 `production.min.js` 结尾的 React 版本，那么**你的网站是生产就绪的**：
+如果你已经压缩了应用代码，如果你确保已部署的 HTML 加载了以 `production.min.js` 结尾的 React 版本，那么**你的网站是生产就绪（production-ready）的**：
 
 ```js
 <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
