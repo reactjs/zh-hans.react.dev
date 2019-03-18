@@ -15,7 +15,7 @@ redirect_from:
   - "tips/use-react-with-other-libraries.html"
 ---
 
-本章节提供了 React class 组件的详细 API 参考。本章节默认你已熟悉基本的 React 概念，例如 [Components 和 Props](/docs/components-and-props.html)，以及 [State 和生命周期](/docs/state-and-lifecycle.html)等。如果你还未熟悉，请先阅读之前章节进行学习。
+本章节提供了 React class 组件的详细 API 参考。本章节默认你已熟悉基本的 React 概念，例如 [组件 & Props](/docs/components-and-props.html)，以及 [State & 生命周期](/docs/state-and-lifecycle.html)等。如果你还未熟悉，请先阅读之前章节进行学习。
 
 ## 概览 {#overview}
 
@@ -183,7 +183,7 @@ constructor(props) {
 >
 >**只有在你刻意忽略 prop 更新的情况下使用。**此时，应将 prop 重命名为 `initialColor` 或 `defaultColor`。必要时，你可以[修改它的 `key`](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key)，以强制“重置”其内部 state。
 >
->请参阅关于[避免状态提升的博客](/blog/2018/06/07/you-probably-dont-need-derived-state.html)，以了解如果 state 依赖 props 的情况该如何处理。
+>请参阅关于[避免状态提升的博文](/blog/2018/06/07/you-probably-dont-need-derived-state.html)，以了解如果 state 依赖 props 的情况该如何处理。
 
 
 * * *
@@ -221,7 +221,7 @@ componentDidUpdate(prevProps) {
 }
 ```
 
-你也可以在 `componentDidUpdate()` 中**直接调用 `setState()`**，但请注意**它必须像上述例子**那样进行处理，否则会导致死循环。它还会导致额外的重新渲染，虽然用户不可见，但会影响组件性能。不要将 props “镜像”给 state，请考虑直接使用 props。 欲了解更多有关内容，请参阅[为什么 props 复制给 state 会产生 bug](/blog/2018/06/07/you-probably-dont-need-derived-state.html)。
+你也可以在 `componentDidUpdate()` 中**直接调用 `setState()`**，但请注意**它必须被包裹在一个条件语件里**，正如上述的例子那样进行处理，否则会导致死循环。它还会导致额外的重新渲染，虽然用户不可见，但会影响组件性能。不要将 props “镜像”给 state，请考虑直接使用 props。 欲了解更多有关内容，请参阅[为什么 props 复制给 state 会产生 bug](/blog/2018/06/07/you-probably-dont-need-derived-state.html)。
 
 如果组件实现了 `getSnapshotBeforeUpdate()` 生命周期（不常用），则它的返回值将作为 `componentDidUpdate()` 的第三个参数 “snapshot” 参数传递。否则此参数将为 undefined。
 
@@ -237,7 +237,7 @@ componentDidUpdate(prevProps) {
 componentWillUnmount()
 ```
 
-`componentWillUnmount()` 会在组件卸载及销毁之前直接调用。在此方法中必要时执行清理操作，例如，清除 timer，取消网络请求或清除在 `componentDidMount()` 中创建订阅等。
+`componentWillUnmount()` 会在组件卸载及销毁之前直接调用。在此方法中执行必要的清理操作，例如，清除 timer，取消网络请求或清除在 `componentDidMount()` 中创建的订阅等。
 
 `componentWillUnmount()` 中**不应调用 `setState()`**，因为该组件将永远不会重新渲染。组件实例卸载后，将永远不会再挂载它。
 
