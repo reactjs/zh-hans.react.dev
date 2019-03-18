@@ -1,13 +1,13 @@
 ---
-id: hooks-faq
-title: Hooks FAQ
-permalink: docs/hooks-faq.html
-prev: hooks-reference.html
+id: Hook-faq
+title: Hook FAQ
+permalink: docs/Hook-faq.html
+prev: Hook-reference.html
 ---
 
-*Hooks* 是 React 16.8 中加入的新特性。它可以让你无需编写 class 就能使用 state 和其它 React 特性。
+*Hook* 是 React 16.8 中加入的新特性。它可以让你无需编写 class 就能使用 state 和其它 React 特性。
 
-这一页回答了一些关于 [Hooks](/docs/hooks-overview.html) 的常见问题。
+这一页回答了一些关于 [Hook](/docs/Hook-overview.html) 的常见问题。
 
 <!--
   if you ever need to regenerate this, this snippet in the devtools console might help:
@@ -19,23 +19,23 @@ prev: hooks-reference.html
 -->
 
 * **[采纳策略](#adoption-strategy)**
-  * [哪个版本的 React 包含了 Hooks？](#which-versions-of-react-include-hooks)
-  * [我需要重写我所有的组件吗？](#do-i-need-to-rewrite-all-my-class-components)
-  * [有什么是 Hooks 能做到而 classes 做不到的？](#what-can-i-do-with-hooks-that-i-couldnt-with-classes)
-  * [我的 React 知识还有多少是继续有用的？](#how-much-of-my-react-knowledge-stays-relevant)
-  * [我应该使用 Hooks，classes，还是两者混用？](#should-i-use-hooks-classes-or-a-mix-of-both)
-  * [Hooks 能否覆盖 classes 的所有使用场景？](#do-hooks-cover-all-use-cases-for-classes)
-  * [Hooks 会替代 render props 和高阶组件吗？](#do-hooks-replace-render-props-and-higher-order-components)
-  * [Hooks 对像 Redux connect() 和 React Router 等流行的 API 意味着什么？](#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router)
-  * [Hooks 能和静态类型一起用吗？](#do-hooks-work-with-static-typing)
-  * [如何测试使用了 Hooks 的组件？](#how-to-test-components-that-use-hooks)
+  * [哪个版本的 React 包含了 Hook？](#which-versions-of-react-include-Hook)
+  * [我需要重写所有的 class 组件吗？](#do-i-need-to-rewrite-all-my-class-components)
+  * [有什么是 Hook 能做而 class 做不到的？](#what-can-i-do-with-Hook-that-i-couldnt-with-classes)
+  * [我的 React 知识还有多少是仍然有用的？](#how-much-of-my-react-knowledge-stays-relevant)
+  * [我应该使用 Hook，classes，还是两者混用？](#should-i-use-Hook-classes-or-a-mix-of-both)
+  * [Hook 能否覆盖 classes 的所有使用场景？](#do-Hook-cover-all-use-cases-for-classes)
+  * [Hook 会替代 render props 和高阶组件吗？](#do-Hook-replace-render-props-and-higher-order-components)
+  * [Hook 对于 Redux connect() 和 React Router 等流行的 API 来说，意味着什么？](#what-do-Hook-mean-for-popular-apis-like-redux-connect-and-react-router)
+  * [Hook 能和静态类型一起用吗？](#do-Hook-work-with-static-typing)
+  * [如何测试使用了 Hook 的组件？](#how-to-test-components-that-use-Hook)
   * [lint 规则具体强制了哪些内容？](#what-exactly-do-the-lint-rules-enforce)
-* **[从 Classes 迁移到 Hooks](#from-classes-to-hooks)**
-  * [生命周期方法要如何对应到 Hooks？](#how-do-lifecycle-methods-correspond-to-hooks)
-  * [我该如何使用 Hooks 进行数据获取？](#how-can-i-do-data-fetching-with-hooks)
+* **[从 Classes 迁移到 Hook](#from-classes-to-Hook)**
+  * [生命周期方法要如何对应到 Hook？](#how-do-lifecycle-methods-correspond-to-Hook)
+  * [我该如何使用 Hook 进行数据获取？](#how-can-i-do-data-fetching-with-Hook)
   * [有类似实例变量的东西吗？](#is-there-something-like-instance-variables)
   * [我应该使用单个还是多个 state 变量？](#should-i-use-one-or-many-state-variables)
-  * [我可以只在更新时运行一个 effect 吗？](#can-i-run-an-effect-only-on-updates)
+  * [我可以只在更新时运行 effect 吗？](#can-i-run-an-effect-only-on-updates)
   * [如何获取上一轮的 props 或 state？](#how-to-get-the-previous-props-or-state)
   * [为什么我会在我会的函数中看到陈旧的 props 和 state ？](#why-am-i-seeing-stale-props-or-state-inside-my-function)
   * [我该如何实现 getDerivedStateFromProps？](#how-do-i-implement-getderivedstatefromprops)
@@ -43,79 +43,79 @@ prev: hooks-reference.html
   * [我可以引用一个函数组件吗？](#can-i-make-a-ref-to-a-function-component)
   * [const [thing, setThing] = useState() 是什么意思？](#what-does-const-thing-setthing--usestate-mean)
 * **[性能优化](#performance-optimizations)**
-  * [我可以在更新时跳过一个 effect 吗？](#can-i-skip-an-effect-on-updates)
+  * [我可以在更新时跳过 effect 吗？](#can-i-skip-an-effect-on-updates)
   * [在依赖列表中省略函数是否安全？](#is-it-safe-to-omit-functions-from-the-list-of-dependencies)
   * [如果我的 effect 的依赖频繁变化，我该怎么办？](#what-can-i-do-if-my-effect-dependencies-change-too-often)
   * [我该如何实现 shouldComponentUpdate？](#how-do-i-implement-shouldcomponentupdate)
   * [如何记忆计算结果？](#how-to-memoize-calculations)
   * [如何惰性创建昂贵的对象？](#how-to-create-expensive-objects-lazily)
-  * [Hooks 是否会因为在渲染时创建函数而显得慢？](#are-hooks-slow-because-of-creating-functions-in-render)
+  * [Hook 会因为在渲染时创建函数而变慢吗？](#are-Hook-slow-because-of-creating-functions-in-render)
   * [如何避免向下传递回调？](#how-to-avoid-passing-callbacks-down)
   * [如何从 useCallback 读取一个经常变化的值？](#how-to-read-an-often-changing-value-from-usecallback)
 * **[底层原理](#under-the-hood)**
   * [React 是如何把对 Hook 的调用和组件联系起来的？](#how-does-react-associate-hook-calls-with-components)
-  * [Hooks 使用了哪些现有技术？](#what-is-the-prior-art-for-hooks)
+  * [Hook 使用了哪些现有技术？](#what-is-the-prior-art-for-Hook)
 
 ## 采纳策略 {#adoption-strategy}
 
-### 哪个版本的 React 包含了 Hooks？ {#which-versions-of-react-include-hooks}
+### 哪个版本的 React 包含了 Hook？ {#which-versions-of-react-include-Hook}
 
-从 16.8.0 开始，React 在以下模块中包含了 React Hooks 的稳定实现：
+从 16.8.0 开始，React 在以下模块中包含了 React Hook 的稳定实现：
 
 * React DOM
 * React DOM Server
 * React Test Renderer
 * React Shallow Renderer
 
-注意，**想要启用 Hooks，所有的 React 包需要 16.8.0 或更高版本**。如果你忘记更新的话 Hooks 是不会起作用的，比如说, React DOM。
+请注意，**要启用 Hook，所有 React 包都必须升级到 16.8.0 或更高版本**。如果你忘记更新诸如 React DOM 之类的包，Hook 将无法运行。
 
-React Native 会在它的下一个稳定发行版中全面支持 Hooks。
+React Native 会在它的下一个稳定发行版中全面支持 Hook。
 
-### 我需要重写我所有的组件吗？ {#do-i-need-to-rewrite-all-my-class-components}
+### 我需要重写所有的 class 组件吗？ {#do-i-need-to-rewrite-all-my-class-components}
 
-不。我们并 [没有计划](/docs/hooks-intro.html#gradual-adoption-strategy) 从 React 中移除 classes —— 我们都需要不断的发布产品，重写不起。我们推荐在新代码中尝试 Hooks。
+不。我们并 [没有计划](/docs/Hook-intro.html#gradual-adoption-strategy) 从 React 中移除 class —— 我们都需要不断地发布产品，重写不起。我们推荐在新代码中尝试 Hook。
 
-### 有什么是 Hooks 能做到而 classes 做不到的？ {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
+### 有什么是 Hook 能做而 class 做不到的？ {#what-can-i-do-with-Hook-that-i-couldnt-with-classes}
 
-Hooks 提供了强大而富有表现力的方式来在组件间复用功能。[「自定义 Hooks」](/docs/hooks-custom.html) 允许我们一瞥能做些什么。[这篇文章](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889) 来自一位 React 核心团队的成员，深入剖析了 Hooks 解锁了哪些新的能力。
+Hook 提供了强大而富有表现力的方式来在组件间复用功能。[「自定义 Hook」](/docs/Hook-custom.html) 允许我们一瞥能做些什么。[这篇文章](https://medium.com/@dan_abramov/making-sense-of-react-Hook-fdbde8803889) 来自一位 React 核心团队的成员，深入剖析了 Hook 解锁了哪些新的能力。
 
-### 我的 React 知识还有多少是继续有用的？ {#how-much-of-my-react-knowledge-stays-relevant}
+### 我的 React 知识还有多少是仍然有用的？ {#how-much-of-my-react-knowledge-stays-relevant}
 
-Hooks 是使用你已经知道的 React 特性的一种更直接的方式 —— 比如 state，生命周期，context，以及 refs。它们并没有从根本上改变 React 的工作方式，你对组件，props, 以及自顶向下的数据流的知识并没有改变。
+Hook 是使用你已经知道的 React 特性的一种更直接的方式 —— 比如 state，生命周期，context，以及 refs。它们并没有从根本上改变 React 的工作方式，你对组件，props, 以及自顶向下的数据流的知识并没有改变。
 
-Hooks 确实有它们自己的学习曲线。如果这份文档中遗失了一些什么，[提一个 issue](https://github.com/reactjs/reactjs.org/issues/new)，我们会尽可能地帮你。
+Hook 确实有它们自己的学习曲线。如果这份文档中遗失了一些什么，[提一个 issue](https://github.com/reactjs/reactjs.org/issues/new)，我们会尽可能地帮你。
 
-### 我应该使用 Hooks，classes，还是两者混用？ {#should-i-use-hooks-classes-or-a-mix-of-both}
+### 我应该使用 Hook，classes，还是两者混用？ {#should-i-use-Hook-classes-or-a-mix-of-both}
 
-当你准备好了，我们鼓励你在写新组件的时候开始尝试 Hooks。请确保你团队中的每个人都愿意使用它们并且熟知这份文档中的内容。我们不推荐用 Hooks 重写你已有的 classes，除非你本就打算重写它们。（例如：为了修复bug）。
+当你准备好了，我们鼓励你在写新组件的时候开始尝试 Hook。请确保你团队中的每个人都愿意使用它们并且熟知这份文档中的内容。我们不推荐用 Hook 重写你已有的 classes，除非你本就打算重写它们。（例如：为了修复bug）。
 
-你不能在一个 class 组件*中*使用 Hooks，但毫无疑问你可以在组件树里混合使用 class 组件和使用了 Hooks 的函数组件。不论一个组件是一个 class 还是一个使用了 Hooks 的函数，都只是这个组件的实现细节而已。长远来看，我们期望 Hooks 能够成为人们编写 React 组件的主要方式。
+你不能在一个 class 组件*中*使用 Hook，但毫无疑问你可以在组件树里混合使用 class 组件和使用了 Hook 的函数组件。不论一个组件是一个 class 还是一个使用了 Hook 的函数，都只是这个组件的实现细节而已。长远来看，我们期望 Hook 能够成为人们编写 React 组件的主要方式。
 
-### Hooks 能否覆盖 classes 的所有使用场景？ {#do-hooks-cover-all-use-cases-for-classes}
+### Hook 能否覆盖 classes 的所有使用场景？ {#do-Hook-cover-all-use-cases-for-classes}
 
-我们给 Hooks 设定的目标是尽早覆盖 classes 的所有使用场景。目前暂时还没有对应不常用的 `getSnapshotBeforeUpdate` 和 `componentDidCatch` 生命周期的 Hook 等价写法，但我们计划尽早把它们加进来。
+我们给 Hook 设定的目标是尽早覆盖 classes 的所有使用场景。目前暂时还没有对应不常用的 `getSnapshotBeforeUpdate` 和 `componentDidCatch` 生命周期的 Hook 等价写法，但我们计划尽早把它们加进来。
 
-目前 Hooks 还处于早期阶段，一些第三方的库可能还暂时无法兼容 Hooks。
+目前 Hook 还处于早期阶段，一些第三方的库可能还暂时无法兼容 Hook。
 
-### Hooks 会替代 render props 和高阶组件吗？ {#do-hooks-replace-render-props-and-higher-order-components}
+### Hook 会替代 render props 和高阶组件吗？ {#do-Hook-replace-render-props-and-higher-order-components}
 
-通常，render props 和高阶组件只渲染一个子节点。我们认为让 Hooks 来服务这个使用场景更加简单。这两种模式仍有用武之地，（例如，一个虚拟滚动条组件或许会有一个 `renderItem` 属性，或是一个可见的容器组件或许会有它自己的 DOM 结构）。但在大部分场景下，Hooks 足够了，并且能够帮助减少嵌套。
+通常，render props 和高阶组件只渲染一个子节点。我们认为让 Hook 来服务这个使用场景更加简单。这两种模式仍有用武之地，（例如，一个虚拟滚动条组件或许会有一个 `renderItem` 属性，或是一个可见的容器组件或许会有它自己的 DOM 结构）。但在大部分场景下，Hook 足够了，并且能够帮助减少嵌套。
 
-### Hooks 对于类似 Redux connect() 和 React Router 等流行的 API 意味着什么？ {#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router}
+### Hook 对于 Redux connect() 和 React Router 等流行的 API 来说，意味着什么？ {#what-do-Hook-mean-for-popular-apis-like-redux-connect-and-react-router}
 
 你可以继续使用之前使用的 API；它们仍会继续有效。
 
-在未来，这些库的新版本或许也会导出诸如 `useRedux()` 和 `useRouter()` 的自定义 Hooks 以允许你不需要包裹组件也能使用同样的特性。
+在未来，这些库的新版本或许也会导出诸如 `useRedux()` 和 `useRouter()` 的自定义 Hook 以允许你不需要包裹组件也能使用同样的特性。
 
-### Hooks 能和静态类型一起用吗？ {#do-hooks-work-with-static-typing}
+### Hook 能和静态类型一起用吗？ {#do-Hook-work-with-static-typing}
 
-Hooks 在设计阶段就考虑了静态类型的问题。因为它们是函数，所以它们比像高阶组件这样的模式更易于设定正确的类型。最新版的 Flow 和 TypeScript React 定义已经包含了对 React Hooks 的支持。
+Hook 在设计阶段就考虑了静态类型的问题。因为它们是函数，所以它们比像高阶组件这样的模式更易于设定正确的类型。最新版的 Flow 和 TypeScript React 定义已经包含了对 React Hook 的支持。
 
 重要的是，在你需要严格限制类型的时候，自定义 Hook 能够帮你限制 React 的 API。React 只是给你提供了基础功能，具体怎么用就是你自己的事了。
 
-### 如何测试使用了 Hooks 的组件？ {#how-to-test-components-that-use-hooks}
+### 如何测试使用了 Hook 的组件？ {#how-to-test-components-that-use-Hook}
 
-在 React 看来，一个使用了 Hooks 的组件只不过是一个常规组件。如果你的测试方案不依赖于 React 的内部实现，测试带 Hooks 的组件应该和你通常测试组件的方式没什么差别。
+在 React 看来，一个使用了 Hook 的组件只不过是一个常规组件。如果你的测试方案不依赖于 React 的内部实现，测试带 Hook 的组件应该和你通常测试组件的方式没什么差别。
 
 举个例子，比如我们有这么个计数器组件：
 
@@ -181,22 +181,22 @@ it('can render and update a counter', () => {
 
 为了减少不必要的模板项目，我们推荐使用 [`react-testing-library`](https://git.io/react-testing-library)，该项目被设计用来鼓励编写按照你的终端用户的方式来使用你的组件的测试。
 
-### [lint 规则](https://www.npmjs.com/package/eslint-plugin-react-hooks)具体强制了哪些内容？ {#what-exactly-do-the-lint-rules-enforce}
+### [lint 规则](https://www.npmjs.com/package/eslint-plugin-react-Hook)具体强制了哪些内容？ {#what-exactly-do-the-lint-rules-enforce}
 
-我们提供了一个 [ESLint 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks) 来强制 [Hooks 规范](/docs/hooks-rules.html) 以避免 Bug。它假设任何以 「`use`」 开头并紧跟着一个大写字母的函数就是一个 Hook。我们知道这种启发方式并不完美，甚至存在一些伪真理，但如果没有一个全生态范围的约定就没法让 Hooks 很好的工作 —— 而名字太长会让人要么不愿意采用 Hooks，要么不愿意遵守约定。
+我们提供了一个 [ESLint 插件](https://www.npmjs.com/package/eslint-plugin-react-Hook) 来强制 [Hook 规范](/docs/Hook-rules.html) 以避免 Bug。它假设任何以 「`use`」 开头并紧跟着一个大写字母的函数就是一个 Hook。我们知道这种启发方式并不完美，甚至存在一些伪真理，但如果没有一个全生态范围的约定就没法让 Hook 很好的工作 —— 而名字太长会让人要么不愿意采用 Hook，要么不愿意遵守约定。
 
 规范尤其强制了以下内容：
 
-* 对 Hooks 的调用要么在一个`大驼峰法`命名的函数（视作一个组件）内部或另一个 `useSomething` 函数（视作一个自定义 Hook）中。
-* Hooks 在每次渲染时都按照相同的顺序被调用。
+* 对 Hook 的调用要么在一个`大驼峰法`命名的函数（视作一个组件）内部或另一个 `useSomething` 函数（视作一个自定义 Hook）中。
+* Hook 在每次渲染时都按照相同的顺序被调用。
 
 还有一些其他的启发方式，但随着我们不断地调优以在发现 Bug 和避免伪真理之前取得平衡，这些方式随时会改变。
 
-## 从 Classes 迁移到 Hooks {#from-classes-to-hooks}
+## 从 Classes 迁移到 Hook {#from-classes-to-Hook}
 
-### 生命周期方法要如何对应到 Hooks？ {#how-do-lifecycle-methods-correspond-to-hooks}
+### 生命周期方法要如何对应到 Hook？ {#how-do-lifecycle-methods-correspond-to-Hook}
 
-* `constructor`：函数组件不需要构造函数。你可以通过调用 [`useState`](/docs/hooks-reference.html#usestate) 来初始化 state。如果计算的代价比较昂贵，你可以传一个函数给 `useState`。
+* `constructor`：函数组件不需要构造函数。你可以通过调用 [`useState`](/docs/Hook-reference.html#usestate) 来初始化 state。如果计算的代价比较昂贵，你可以传一个函数给 `useState`。
 
 * `getDerivedStateFromProps`：改为 [在渲染时](#how-do-i-implement-getderivedstatefromprops) 安排一次更新。
 
@@ -204,17 +204,17 @@ it('can render and update a counter', () => {
 
 * `render`：这是函数组件体本身。
 
-* `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`：[`useEffect` Hook](/docs/hooks-reference.html#useeffect) 可以表达所有这些(包括 [不那么](#can-i-skip-an-effect-on-updates) [常见](#can-i-run-an-effect-only-on-updates) 的场景)的组合。
+* `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`：[`useEffect` Hook](/docs/Hook-reference.html#useeffect) 可以表达所有这些(包括 [不那么](#can-i-skip-an-effect-on-updates) [常见](#can-i-run-an-effect-only-on-updates) 的场景)的组合。
 
 * `componentDidCatch` and `getDerivedStateFromError`：目前还没有这些方法的 Hook 等价写法，但很快会加上。
 
-### 我该如何使用 Hooks 进行数据获取？ {#how-can-i-do-data-fetching-with-hooks}
+### 我该如何使用 Hook 进行数据获取？ {#how-can-i-do-data-fetching-with-Hook}
 
-这里有一个 [小 demo](https://codesandbox.io/s/jvvkoo8pq3) 来帮助你开始。想了解更多，请查看 [这篇文章](https://www.robinwieruch.de/react-hooks-fetch-data/) 来了解如何使用 Hooks 进行数据获取。
+这里有一个 [小 demo](https://codesandbox.io/s/jvvkoo8pq3) 来帮助你开始。想了解更多，请查看 [这篇文章](https://www.robinwieruch.de/react-Hook-fetch-data/) 来了解如何使用 Hook 进行数据获取。
 
 ### 有类似实例变量的东西吗？ {#is-there-something-like-instance-variables}
 
-有！[`useRef()`](/docs/hooks-reference.html#useref) Hook 不仅可以用于 DOM refs。「ref」 对象是一个 `current` 属性可变且可以容纳任意值的通用容器，类似于一个 class 的实例属性。
+有！[`useRef()`](/docs/Hook-reference.html#useref) Hook 不仅可以用于 DOM refs。「ref」 对象是一个 `current` 属性可变且可以容纳任意值的通用容器，类似于一个 class 的实例属性。
 
 你可以在 `useEffect` 内部对其进行写入:
 
@@ -313,9 +313,9 @@ function useWindowPosition() {
 
 注意看我们是如何做到把对 `position` 这个 state 变量的 `useState` 调用和相关的 effect 移动到一个自定义 custom Hook 但不改变它们的代码的。如果所有的 state 都存在同一个对象中，想要抽取出来就比较难了。
 
-把所有 state 都放在同一个 `useState` 调用中，或是每一个字段都对应一个 `useState` 调用，这两方式都能跑通。当你在这两个极端之间找到平衡，然后把相关 state 组合到几个独立的 state 变量时，组件就会更加的可读。如果 state 的逻辑开始变得复杂，我们推荐 [用 reducer 来管理它](/docs/hooks-reference.html#usereducer)，或使用自定义 Hook。
+把所有 state 都放在同一个 `useState` 调用中，或是每一个字段都对应一个 `useState` 调用，这两方式都能跑通。当你在这两个极端之间找到平衡，然后把相关 state 组合到几个独立的 state 变量时，组件就会更加的可读。如果 state 的逻辑开始变得复杂，我们推荐 [用 reducer 来管理它](/docs/Hook-reference.html#usereducer)，或使用自定义 Hook。
 
-### 我可以只在更新时运行一个 effect 吗？ {#can-i-run-an-effect-only-on-updates}
+### 我可以只在更新时运行 effect 吗？ {#can-i-run-an-effect-only-on-updates}
 
 这是个比较罕见的使用场景。如果你需要的话，你可以 [使用一个可变的 ref](#is-there-something-like-instance-variables) 来手动存储一个布尔值来表示时首次渲染还是后续渲染，然后在你的 effect 中检查这个标识。（如果你发现自己经常在这么做，你可以为之创建一个自定义 Hook。）
 
@@ -400,13 +400,13 @@ function Example() {
 
 如果你先点击「Show alert」然后增加计数器的计数，那这个 alert 会 **在你点击『Show alert』按钮时** 显示 `count` 变量。这避免了那些因为假设 props 和 state 没有改变的代码引起问题。
 
-如果你刻意地想要从某些异步回调中读取 *最新的* state，你可以用 [一个 ref](/docs/hooks-faq.html#is-there-something-like-instance-variables) 来保存它，修改它，并从中读取。
+如果你刻意地想要从某些异步回调中读取 *最新的* state，你可以用 [一个 ref](/docs/Hook-faq.html#is-there-something-like-instance-variables) 来保存它，修改它，并从中读取。
 
 最后，你看到陈旧的 props 和 state 的另一个可能的原因是，如果你使用了「依赖数组」优化但没有正确地指定所有的依赖。举个例子，如果一个 effect 指定了 `[]` 作为第二个参数，但在内部读取了 `someProp`，它会一直「看到」 `someProp` 的初始值。解决办法是要么移除依赖数组，或者修正它。 这是 [你该如何处理函数](#is-it-safe-to-omit-functions-from-the-list-of-dependencies)，而这是关于如何减少 effect 的运行而不必错误的跳过依赖的 [一些常见策略](#what-can-i-do-if-my-effect-dependencies-change-too-often)。
 
 >注意
 >
->我们提供了一个 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) ESLint 规则作为 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 包的一部分。它会在依赖被错误指定时发出警告，并给出修复建议。
+>我们提供了一个 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) ESLint 规则作为 [`eslint-plugin-react-Hook`](https://www.npmjs.com/package/eslint-plugin-react-Hook#installation) 包的一部分。它会在依赖被错误指定时发出警告，并给出修复建议。
 
 ### 我该如何实现 `getDerivedStateFromProps`？ {#how-do-i-implement-getderivedstatefromprops}
 
@@ -433,7 +433,7 @@ function ScrollView({row}) {
 
 ### 有类似 forceUpdate 的东西吗？ {#is-there-something-like-forceupdate}
 
-如果前后两次的值相同，`useState` 和 `useReducer` Hooks [都会放弃更新](/docs/hooks-reference.html#bailing-out-of-a-state-update)。原地修改 state 并调用 `setState` 不会引起重新渲染。
+如果前后两次的值相同，`useState` 和 `useReducer` Hook [都会放弃更新](/docs/Hook-reference.html#bailing-out-of-a-state-update)。原地修改 state 并调用 `setState` 不会引起重新渲染。
 
 通常，你不应该在 React 中修改本地 state。然而，作为一条出路，你可以用一个增长的计数器来在 state 没变的时候依然强制一次重新渲染：
 
@@ -449,18 +449,18 @@ function ScrollView({row}) {
 
 ### 我可以引用一个函数组件吗？ {#can-i-make-a-ref-to-a-function-component}
 
-尽管你不应该经常需要这么做，但你可以通过 [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle) Hook 暴露一些命令式的方法给父组件。
+尽管你不应该经常需要这么做，但你可以通过 [`useImperativeHandle`](/docs/Hook-reference.html#useimperativehandle) Hook 暴露一些命令式的方法给父组件。
 
 ### `const [thing, setThing] = useState()` 是什么意思？ {#what-does-const-thing-setthing--usestate-mean}
 
-如果你不熟悉这个语法，可以查看 State Hook 文档中的 [解释](/docs/hooks-state.html#tip-what-do-square-brackets-mean) 一节。
+如果你不熟悉这个语法，可以查看 State Hook 文档中的 [解释](/docs/Hook-state.html#tip-what-do-square-brackets-mean) 一节。
 
 
 ## 性能优化 {#performance-optimizations}
 
-### 我可以在更新时跳过一个 effect 吗？ {#can-i-skip-an-effect-on-updates}
+### 我可以在更新时跳过 effect 吗？ {#can-i-skip-an-effect-on-updates}
 
-可以的。参见 [条件式的发起一个 effect](/docs/hooks-reference.html#conditionally-firing-an-effect)。注意，忘记处理更新常会 [导致 bug](/docs/hooks-effect.html#explanation-why-effects-run-on-each-update)，这也正是我们没有默认使用条件式 effect 的原因。
+可以的。参见 [条件式的发起 effect](/docs/Hook-reference.html#conditionally-firing-an-effect)。注意，忘记处理更新常会 [导致 bug](/docs/Hook-effect.html#explanation-why-effects-run-on-each-update)，这也正是我们没有默认使用条件式 effect 的原因。
 
 ### 在依赖列表中省略函数是否安全？ {#is-it-safe-to-omit-functions-from-the-list-of-dependencies}
 
@@ -508,11 +508,11 @@ useEffect(() => {
 
 >注意
 >
->我们提供了一个 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) ESLint 规则作为 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 包的一部分。它会帮助你找出无法一致地处理更新的组件。
+>我们提供了一个 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) ESLint 规则作为 [`eslint-plugin-react-Hook`](https://www.npmjs.com/package/eslint-plugin-react-Hook#installation) 包的一部分。它会帮助你找出无法一致地处理更新的组件。
 
 让我们来看看这有什么关系。
 
-如果你指定了一个 [依赖列表](/docs/hooks-reference.html#conditionally-firing-an-effect) 作为 `useEffect`、`useMemo`、`useCallback` 或 `useImperativeHandle` 的最后一个参数，它必须包含参与那次 React 数据流的所有值。这就包含了 props、state，以及任何由它们衍生而来的东西。
+如果你指定了一个 [依赖列表](/docs/Hook-reference.html#conditionally-firing-an-effect) 作为 `useEffect`、`useMemo`、`useCallback` 或 `useImperativeHandle` 的最后一个参数，它必须包含参与那次 React 数据流的所有值。这就包含了 props、state，以及任何由它们衍生而来的东西。
 
 **只有** 当函数（以及它所调用的函数）不引用 props、state 以及由它们衍生而来的值时，你才能放心地把它们从依赖列表中省略。下面这个案例有一个 Bug：
 
@@ -553,7 +553,7 @@ function ProductPage({ productId }) {
 }
 ```
 
-这同时也允许你通过一个 effect 内部的局部变量来处理无序的响应：
+这同时也允许你通过 effect 内部的局部变量来处理无序的响应：
 
 ```js{2,6,8}
   useEffect(() => {
@@ -571,13 +571,13 @@ function ProductPage({ productId }) {
 
 >提示
 >
->看看 [这个小 demo](https://codesandbox.io/s/jvvkoo8pq3) 和 [这篇文章](https://www.robinwieruch.de/react-hooks-fetch-data/) 来了解更多关于如何用 Hooks 进行数据获取。
+>看看 [这个小 demo](https://codesandbox.io/s/jvvkoo8pq3) 和 [这篇文章](https://www.robinwieruch.de/react-Hook-fetch-data/) 来了解更多关于如何用 Hook 进行数据获取。
 
 **如果处于某些原因你 _无法_ 把一个函数移动到 effect 内部，还有一些其他办法：**
 
 * **你可以尝试把那个函数移动到你的组件之外**。那样一来，这个函数就肯定不会依赖任何 props 或 state，并且也不用出现在依赖列表中了。
 * 如果你所调用的方法是一个纯计算，并且可以在渲染时调用，你可以 **转而在 effect 之外调用它，** 并让 effect 依赖于它的返回值。
-* 万不得已的情况下，你可以 **把函数加入 effect 的依赖但 _把它的定义包裹_** 进 [`useCallback`](/docs/hooks-reference.html#usecallback) Hook。这就确保了它不随渲染而改变，除非 *它自身* 的依赖发生了改变：
+* 万不得已的情况下，你可以 **把函数加入 effect 的依赖但 _把它的定义包裹_** 进 [`useCallback`](/docs/Hook-reference.html#usecallback) Hook。这就确保了它不随渲染而改变，除非 *它自身* 的依赖发生了改变：
 
 ```js{2-5}
 function ProductPage({ productId }) {
@@ -618,7 +618,7 @@ function Counter() {
 }
 ```
 
-指定 `[count]` 作为依赖列表就能修复这个 Bug，但会导致内部每次改变时都被重置。这并不是我们想要的。要解决这个问题，我们可以使用 [`setState` 的函数式更新形式](/docs/hooks-reference.html#functional-updates)。它允许我们指定 state 该 *如何* 改变而不用引用 *当前* state：
+指定 `[count]` 作为依赖列表就能修复这个 Bug，但会导致内部每次改变时都被重置。这并不是我们想要的。要解决这个问题，我们可以使用 [`setState` 的函数式更新形式](/docs/Hook-reference.html#functional-updates)。它允许我们指定 state 该 *如何* 改变而不用引用 *当前* state：
 
 ```js{6,9}
 function Counter() {
@@ -637,9 +637,9 @@ function Counter() {
 
 （`setCount` 函数的身份是被确保稳定的，所以可以放心的省略掉）
 
-在一些更加复杂的场景中（例如鳄鱼共一个 state 依赖于另一个 state），尝试用 [`useReducer` Hook](/docs/hooks-reference.html#usereducer) 把 state 更新逻辑一道 effect 之外。[这篇文章](https://adamrackis.dev/state-and-use-reducer/) 提供了一个你该如何做到这一点的案例。 **`useReducer` 的 `dispatch` 的身份永远是稳定的** —— 即使 reducer 函数是定义在组件内部并且依赖 props。
+在一些更加复杂的场景中（例如鳄鱼共一个 state 依赖于另一个 state），尝试用 [`useReducer` Hook](/docs/Hook-reference.html#usereducer) 把 state 更新逻辑一道 effect 之外。[这篇文章](https://adamrackis.dev/state-and-use-reducer/) 提供了一个你该如何做到这一点的案例。 **`useReducer` 的 `dispatch` 的身份永远是稳定的** —— 即使 reducer 函数是定义在组件内部并且依赖 props。
 
-万不得已的情况下，如果你想要类似 class 中的 `this` 的功能，你可以 [使用一个 ref](/docs/hooks-faq.html#is-there-something-like-instance-variables) 来保存一个可变的变量。然后你就可以对它进行读写了。举个例子：
+万不得已的情况下，如果你想要类似 class 中的 `this` 的功能，你可以 [使用一个 ref](/docs/Hook-faq.html#is-there-something-like-instance-variables) 来保存一个可变的变量。然后你就可以对它进行读写了。举个例子：
 
 ```js{2-6,10-11,16}
 function Example(props) {
@@ -673,13 +673,13 @@ const Button = React.memo((props) => {
 });
 ```
 
-这不是一个 Hook 因为它的写法和 Hooks 不同。`React.memo` 等效于 `PureComponent`，但它只比较 props。（你也可以通过第二个参数指定一个自定义的比较函数来比较新旧 props。如果函数返回 true，就会跳过更新。）
+这不是一个 Hook 因为它的写法和 Hook 不同。`React.memo` 等效于 `PureComponent`，但它只比较 props。（你也可以通过第二个参数指定一个自定义的比较函数来比较新旧 props。如果函数返回 true，就会跳过更新。）
 
-`React.memo` 不比较 state 因为没有单一的 state 对象可供比较。但你也可以让子节点变为纯组件，或者 [用 `useMemo` 优化每一个具体的子节点](/docs/hooks-faq.html#how-to-memoize-calculations)。
+`React.memo` 不比较 state 因为没有单一的 state 对象可供比较。但你也可以让子节点变为纯组件，或者 [用 `useMemo` 优化每一个具体的子节点](/docs/Hook-faq.html#how-to-memoize-calculations)。
 
 ### 如何记忆计算结果？ {#how-to-memoize-calculations}
 
-[`useMemo`](/docs/hooks-reference.html#usememo) Hook 允许你通过「记住」上一次计算结果的方式在多次渲染的之间缓存计算结果：
+[`useMemo`](/docs/Hook-reference.html#usememo) Hook 允许你通过「记住」上一次计算结果的方式在多次渲染的之间缓存计算结果：
 
 ```js
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
@@ -708,7 +708,7 @@ function Parent({ a, b }) {
 }
 ```
 
-注意这种方式在循环中是无效的，因为 Hook 调用 [不能](/docs/hooks-rules.html) 被放在循环中。但你可以为列表项抽取一个单独的组件，并在其中调用 `useMemo`。
+注意这种方式在循环中是无效的，因为 Hook 调用 [不能](/docs/Hook-rules.html) 被放在循环中。但你可以为列表项抽取一个单独的组件，并在其中调用 `useMemo`。
 
 ### 如何惰性创建昂贵的对象？ {#how-to-create-expensive-objects-lazily}
 
@@ -734,7 +734,7 @@ function Table(props) {
 }
 ```
 
-React 只会在首次渲染时调用这个函数。参见 [`useState` API 参考](/docs/hooks-reference.html#usestate)。
+React 只会在首次渲染时调用这个函数。参见 [`useState` API 参考](/docs/Hook-reference.html#usestate)。
 
 **你或许也会偶尔想要避免重新创建 `useRef()` 的初始值。**举个例子，或许你想确保某些命令式的 class 实例只被创建一次：
 
@@ -771,19 +771,19 @@ function Image(props) {
 这避免了创建一个昂贵的对象直到它首次被真正需要。如果你使用 Flow 或 TypeScript，你还可以为了方便给 `getObserver()` 一个不可为 null 的类型。
 
 
-### Hooks 是否会因为在渲染时创建函数而显得慢？ {#are-hooks-slow-because-of-creating-functions-in-render}
+### Hook 会因为在渲染时创建函数而变慢吗？ {#are-Hook-slow-because-of-creating-functions-in-render}
 
 不会。在现代浏览器中，闭包和类的原始性能只有在极端场景下才会有明显的差别。
 
-除此之外，可以认为 Hooks 的设计在某些方面更加高效：
+除此之外，可以认为 Hook 的设计在某些方面更加高效：
 
-* Hooks 避免了 classes 需要的额外开支，像是创建类实例和在构造函数中绑定事件处理器的成本。
+* Hook 避免了 classes 需要的额外开支，像是创建类实例和在构造函数中绑定事件处理器的成本。
 
-* **符合语言习惯的代码在使用 Hooks 时不需要很深的组件树嵌套**。这个现象在使用高阶组件、render props、和 context 的代码库中非常普遍。组件树小了，React 的工作量也随之减少。
+* **符合语言习惯的代码在使用 Hook 时不需要很深的组件树嵌套**。这个现象在使用高阶组件、render props、和 context 的代码库中非常普遍。组件树小了，React 的工作量也随之减少。
 
-传统上认为，在 React 中使用内联函数对性能的影响与在每次渲染时传递新的回调是如何破坏子组件的 `shouldComponentUpdate` 优化的有关。 Hooks 从三个方面解决了这个问题。
+传统上认为，在 React 中使用内联函数对性能的影响与在每次渲染时传递新的回调是如何破坏子组件的 `shouldComponentUpdate` 优化的有关。 Hook 从三个方面解决了这个问题。
 
-* [`useCallback`](/docs/hooks-reference.html#usecallback) Hook 允许你在重新渲染之间保持对相同的回调引用以使得 `shouldComponentUpdate` 继续工作：
+* [`useCallback`](/docs/Hook-reference.html#usecallback) Hook 允许你在重新渲染之间保持对相同的回调引用以使得 `shouldComponentUpdate` 继续工作：
 
     ```js{2}
     // 除非 `a` 或 `b` 改变，否则不会变
@@ -792,7 +792,7 @@ function Image(props) {
     }, [a, b]);
     ```
 
-* [`useMemo` Hook](/docs/hooks-faq.html#how-to-memoize-calculations) 使控制具体子节点何时更新变得更容易，减少了对纯组件的需要。
+* [`useMemo` Hook](/docs/Hook-faq.html#how-to-memoize-calculations) 使控制具体子节点何时更新变得更容易，减少了对纯组件的需要。
 
 * 最后，`useReducer` Hook 减少了对深层传递回调的需要，就如下面解释的那样。
 
@@ -800,7 +800,7 @@ function Image(props) {
 
 我们已经发现大部分人并不喜欢在组件树的每一层手动传递回调。尽管这种写法更明确，但这给人感觉像错综负责的管道工程一样麻烦。
 
-在大型的组件树中，我们推荐的替代方案是通过 context 用 [`useReducer`](/docs/hooks-reference.html#usereducer) 往下传一个 `dispatch` 函数：
+在大型的组件树中，我们推荐的替代方案是通过 context 用 [`useReducer`](/docs/Hook-reference.html#usereducer) 往下传一个 `dispatch` 函数：
 
 ```js{4,5}
 const TodosDispatch = React.createContext(null);
@@ -846,7 +846,7 @@ function DeepChild(props) {
 >
 >同时也请注意这种模式在 [并行模式](/blog/2018/03/27/update-on-async-rendering.html) 下可能会导致一些问题。我们计划在未来提供一个更加合理的替代方案，但当下最安全的解决方案是，如果回调所依赖的值变化了，总是让回调失效。
 
-在某些罕见场景中，你可能会需要用 [`useCallback`](/docs/hooks-reference.html#usecallback) 记住一个回调，但由于内部函数必须经常重新创建，记忆效果不是很好。如果你想要记住的函数是一个事件处理器并且在渲染期间没有被用到，你可以 [把 ref 当做实例变量](#is-there-something-like-instance-variables) 来用，并手动把最后提交的值保存在它当中：
+在某些罕见场景中，你可能会需要用 [`useCallback`](/docs/Hook-reference.html#usecallback) 记住一个回调，但由于内部函数必须经常重新创建，记忆效果不是很好。如果你想要记住的函数是一个事件处理器并且在渲染期间没有被用到，你可以 [把 ref 当做实例变量](#is-there-something-like-instance-variables) 来用，并手动把最后提交的值保存在它当中：
 
 ```js{6,10}
 function Form() {
@@ -912,13 +912,13 @@ function useEventCallback(fn, dependencies) {
 
 ### React 是如何把对 Hook 的调用和组件联系起来的？ {#how-does-react-associate-hook-calls-with-components}
 
-React 保持对当先渲染中的组件的追踪。多亏了 [Hooks 规范](/docs/hooks-rules.html)，我们得知 Hooks 只会在 React 组件中被调用（或自定义 Hooks —— 同样只会在 React 组件中被调用）。
+React 保持对当先渲染中的组件的追踪。多亏了 [Hook 规范](/docs/Hook-rules.html)，我们得知 Hook 只会在 React 组件中被调用（或自定义 Hook —— 同样只会在 React 组件中被调用）。
 
 每个组件内部都有一个「记忆单元格」列表。它们只不过是我们用来存储一些数据的 JavaScript 对象。当你用 `useState()` 调用一个 Hook 的时候，它会读取当前的单元格（或在首次渲染时将其初始化），让后把指针移动到下一个。这就是多个 `useState()` 调用会得到各自独立的本地 state 的原因。
 
-### Hooks 使用了哪些现有技术？ {#what-is-the-prior-art-for-hooks}
+### Hook 使用了哪些现有技术？ {#what-is-the-prior-art-for-Hook}
 
-Hooks 由不同的来源的多个想法构成：
+Hook 由不同的来源的多个想法构成：
 
 * [react-future](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State) 这个仓库中我们对函数式 APIs 的老旧实验。
 * React 社区对 render prop APIs 的实验，包括 [Ryan Florence](https://github.com/ryanflorence) 的 [Reactions Component](https://github.com/reactions/component)。
@@ -928,4 +928,4 @@ Hooks 由不同的来源的多个想法构成：
 * Rx 中的 [Subscriptions](http://reactivex.io/rxjs/class/es6/Subscription.js~Subscription.html)。
 * Multicore OCaml 提到的 [Algebraic effects](https://github.com/ocamllabs/ocaml-effects-tutorial#2-effectful-computations-in-a-pure-setting)。
 
-[Sebastian Markbåge](https://github.com/sebmarkbage) 想到了 Hooks 最初的设计，后来经过 [Andrew Clark](https://github.com/acdlite)，[Sophie Alpert](https://github.com/sophiebits)，[Dominic Gannaway](https://github.com/trueadm)，和 React 团队的其它成员的提炼。
+[Sebastian Markbåge](https://github.com/sebmarkbage) 想到了 Hook 最初的设计，后来经过 [Andrew Clark](https://github.com/acdlite)，[Sophie Alpert](https://github.com/sophiebits)，[Dominic Gannaway](https://github.com/trueadm)，和 React 团队的其它成员的提炼。
