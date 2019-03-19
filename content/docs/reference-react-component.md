@@ -343,13 +343,13 @@ class ErrorBoundary extends React.Component {
   }
 
   static getDerivedStateFromError(error) {
-    // 更新 state 使下一次渲染可以显示后备UI
+    // 更新 state 使下一次渲染可以显降级UI
     return { hasError: true };
   }
 
   render() {
     if (this.state.hasError) {
-      // 你可以渲染任何自定义的后备UI
+      // 你可以渲染任何自定义的降级UI
       return <h1>Something went wrong.</h1>;
     }
 
@@ -389,7 +389,7 @@ class ErrorBoundary extends React.Component {
   }
 
   static getDerivedStateFromError(error) {
-    // 更新 state 使下一次渲染可以显示后备UI
+    // 更新 state 使下一次渲染可以显示降级UI
     return { hasError: true };
   }
 
@@ -404,7 +404,7 @@ class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      // 你可以渲染任何自定义的后备UI
+      // 你可以渲染任何自定义的降级UI
       return <h1>Something went wrong.</h1>;
     }
 
