@@ -199,4 +199,4 @@ npx babel --watch src --out-dir . --presets react-app/prod
 
 还有一个福利，这也使你能使用现代 JavaScript 的语法特性，比如 class，而不用担心在旧浏览器上失效。我们刚才使用的工具叫 Babel，你可以从[其文档](http://babeljs.io/docs/en/babel-cli/)中了解更多。
 
-如果你认为你已经习惯了构建工具，并希望它们能为你做更多事，[下一章节](/docs/create-a-new-react-app.html) 描述了一些最流行和易上手的工具链。如果不使用构建工具 —— 那些 script 标签也可以工作很好！
+如果你认为你已经习惯了构建工具，并希望它们能为你做更多事，[下一章节](/docs/create-a-new-react-app.html)描述了一些最流行和易上手的工具链。如果不使用构建工具 —— 那些 script 标签也可以工作很好！
