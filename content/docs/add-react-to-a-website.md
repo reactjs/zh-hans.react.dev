@@ -16,10 +16,10 @@ React 从一开始就被设计为逐步采用，并且**你可以根据需要选
 
 ---
 
-- [在一分钟内添加 React](#add-react-in-one-minute)
+- [一分钟用上 React](#add-react-in-one-minute)
 - [可选：使用 React 和 JSX](#optional-try-react-with-jsx) (不需要打包工具！)
 
-## 在一分钟内添加 React {#add-react-in-one-minute}
+## 一分钟用上 React {#add-react-in-one-minute}
 
 在本小节中，我们会展示如何将 React 组件添加到现有的 HTML 页面中。你可以基于自己现有的网站，或创建一个空的 HTML 文件来练习。
 
@@ -73,7 +73,7 @@ React 从一开始就被设计为逐步采用，并且**你可以根据需要选
 
 > 提示
 >
-> 这段代码定义了一个名为 `LikeButton` 的 React 组件。如果你还不明白这段代码的意思，不用担心 —— 我们将在后续的[入门教程](/tutorial/tutorial.html)和[核心概念](/docs/hello-world.html)中介绍 React 的构建块。现在，让我们只是把它显示在屏幕上！
+> 这段代码定义了一个名为 `LikeButton` 的 React 组件。如果你还不明白这段代码的意思，不用担心 —— 我们将在后续的[入门教程](/tutorial/tutorial.html)和[核心概念](/docs/hello-world.html)中介绍 React 的构建块。目前，我们先只做到显示！
 
 在 `like_button.js` 的底部，在**[入门代码](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**之后，加入以下两行代码。
 
@@ -147,7 +147,7 @@ return (
 );
 ```
 
-这两段代码是等价的。虽然 **JSX [完全是可选的](/docs/react-without-jsx.html)**，但是很多人认为它有助于编写 UI 代码 —— 无论是使用 React 还是其它库。
+这两段代码是等价的。虽然 **JSX [完全是可选的](/docs/react-without-jsx.html)**，但是多数人觉得这样编写 UI 代码更方便 —— 无论是使用 React 还是其它库。
 
 你可以用[这个在线转换器](https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cstage-3&prettier=true&targets=Node-6.12&version=6.26.0&envVersion=)来试试 JSX。
 
@@ -193,10 +193,10 @@ npx babel --watch src --out-dir . --presets react-app/prod
 >
 > 如果你看到一个错误消息显示为："You have mistakenly installed the `babel` package"，你可能错过了[上一步](#add-jsx-to-a-project)。在同一个文件夹中执行它，然后重试。
 
-别等着它结束 —— 这个命令启动了一个对 JSX 的自动监听器。
+不要等待它运行结束 —— 这个命令启动了一个对 JSX 的自动监听器。
 
 如果此时你用这段 **[JSX 入门代码](https://cdn.rawgit.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**创建一个 `src/like_button.js` 文件，监听器会创建一个预处理过的 `like_button.js` 文件，它包含了适用于浏览器的朴素的 JavaScript 代码。当你编辑带有 JSX 的源文件时，转换过程将自动重新执行。
 
 这样，在旧浏览器上也能够使用现代 JavaScript 的语法特性，比如 class。我们刚才使用的工具叫 Babel，你可以从[它的文档](https://babeljs.io/docs/en/babel-cli/)中了解更多。
 
-如果你认为你已经习惯了构建工具，并希望它们能为你做更多事，[下一章节](/docs/create-a-new-react-app.html)描述了一些最流行和易上手的工具链。如果不使用构建工具 —— 那些 script 标签也可以很好地完成工作！
+如果你认为你已经习惯了构建工具，并希望它们能为你做更多事，[下一章节](/docs/create-a-new-react-app.html)描述了一些最流行和易上手的工具链。如果不使用构建工具 —— 直接以 scripts 标签的方式也可以很好地完成工作！
