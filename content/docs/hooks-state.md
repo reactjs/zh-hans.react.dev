@@ -8,7 +8,7 @@ prev: hooks-overview.html
 
 *Hook* 是 React 16.8 中新增的功能。它让你不用写 class 也可以使用 state 和其他 React 特性。
 
-[上一章节](/docs/hooks-intro.html)中使用下面的例子介绍了 Hooks：
+[上一章节](/docs/hooks-intro.html)中使用下面的例子介绍了 Hook：
 
 ```js{4-5}
 import React, { useState } from 'react';
@@ -16,9 +16,6 @@ import React, { useState } from 'react';
 function Example() {
   // 声明一个叫 "count" 的 state 变量
   const [count, setCount] = useState(0);
-  
-  
-  
 
   return (
     <div>
@@ -31,7 +28,7 @@ function Example() {
 }
 ```
 
-我们将通过将这段代码与一个等价的 class 示例进行比较来开始学习 Hooks。
+我们将通过将这段代码与一个等价的 class 示例进行比较来开始学习 Hook。
 
 ## 等价的 class 示例 {#equivalent-class-example}
 
@@ -71,7 +68,7 @@ state 初始值为 `{ count: 0 }` ，当一个用户点击按钮后，我们通�
 
 ```js
 const Example = (props) => {
-  // 你可以在这使用 Hooks
+  // 你可以在这使用 Hook
   return <div />;
 }
 ```
@@ -80,12 +77,12 @@ const Example = (props) => {
 
 ```js
 function Example(props) {
-  // 你可以在这使用 Hooks
+  // 你可以在这使用 Hook
   return <div />;
 }
 ```
 
-你之前可能把它们叫做“无状态组件”。但现在我们为它们引入了使用 React state 的能力，所以我们更喜欢叫它"函数定义组件"。
+你之前可能把它们叫做“无状态组件”。但现在我们为它们引入了使用 React state 的能力，所以我们更喜欢叫它"函数组件"。
 
 Hook 在 class 内部是**不**起作用的。但你可以使用它们来取代 class 。
 
@@ -101,7 +98,7 @@ function Example() {
 }
 ```
 
-**Hooks 是什么？** 一个 Hook 是一个特殊的函数，它可以让你 `钩入` React 的特性。例如，`useState` 是一个让你添加 React state 到函数定义组件的 Hook。稍后我们将学习其他 Hook。
+**Hook 是什么？** 一个 Hook 是一个特殊的函数，它可以让你 `钩入` React 的特性。例如，`useState` 是一个让你添加 React state 到函数定义组件的 Hook。稍后我们将学习其他 Hook。
 
 **什么时候我会用 Hook？** 如果你在写一个函数定义组件并意识到需要向其添加一些 state，如果是以前的话你必须把它转化为一个 class。现在你可以在现有的函数定义组件中使用 Hook。我们现在就去做！
 
@@ -258,7 +255,7 @@ function ExampleWithManyStates() {
   // 声明多个 state 变量
   const [age, setAge] = useState(42);
   const [fruit, setFruit] = useState('banana');
-  const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+  const [todos, setTodos] = useState([{ text: '学习 Hook' }]);
 ```
 
 在以上组件中，我们有局部变量 `age`，`fruit` 和 `todos`，并且我们可以单独更新它们：
