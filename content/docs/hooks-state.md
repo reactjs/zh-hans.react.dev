@@ -98,9 +98,9 @@ function Example() {
 }
 ```
 
-**Hook 是什么？**Hook 是一个特殊的函数，它可以让你 `钩入` React 的特性。例如，`useState` 是允许你在 React 函数组件中添加 state 的 Hook。稍后我们将学习其他 Hook。
+**Hook 是什么？** Hook 是一个特殊的函数，它可以让你 `钩入` React 的特性。例如，`useState` 是允许你在 React 函数组件中添加 state 的 Hook。稍后我们将学习其他 Hook。
 
-**什么时候我会用 Hook？**如果你在编写函数组件并意识到需要向其添加一些 state，以前的做法是必须将其它转化为 class。现在你可以在现有的函数组件中使用 Hook。
+**什么时候我会用 Hook？** 如果你在编写函数组件并意识到需要向其添加一些 state，以前的做法是必须将其它转化为 class。现在你可以在现有的函数组件中使用 Hook。
 
 >注意：
 >
@@ -132,9 +132,9 @@ function Example() {
 
 **`调用 useState` 方法的时候做了什么?** 它定义一个 “state 变量”。我们的变量叫 `count`， 但是我们可以叫他任何名字，比如 `banana`。这是一种在函数调用时保存变量的方式 —— `useState` 是一种新方法，它与 class 里面的 `this.state` 提供的功能完全相同。一般来说，在函数退出后变量就就会"消失"，而 state 中的变量会被 React 保留。
 
-**`useState` 需要哪些参数？** `useState()` 方法里面唯一的参数就是初始 state。不同于 class 的是，我们可以按照需要使用数字或字符串对其进行赋值，而不一定是对象。在示例中，只需使用数字来记录用户点击次数，所以我们传了 `0` 作为变量的初始 state。（如果我们想要在 state 中存储两个不同的变量，只需调用 `useState()`两次即可。）
+**`useState` 需要哪些参数？** `useState()` 方法里面唯一的参数就是初始 state。不同于 class 的是，我们可以按照需要使用数字或字符串对其进行赋值，而不一定是对象。在示例中，只需使用数字来记录用户点击次数，所以我们传了 `0` 作为变量的初始 state。（如果我们想要在 state 中存储两个不同的变量，只需调用 `useState()` 两次即可。）
 
-**`useState` 方法的返回值是什么？**返回值为：当前 state 以及更新 state 的函数。这就是我们写 `const [count, setCount] = useState()` 的原因。这与 class 里面 `this.state.count` 和 `this.setState` 类似，唯一区别就是你需要成对的获取它们。如果你不熟悉我们使用的语法，我们会在[本章节的底部](/docs/hooks-state.html#tip-what-do-square-brackets-mean)介绍它。
+**`useState` 方法的返回值是什么？** 返回值为：当前 state 以及更新 state 的函数。这就是我们写 `const [count, setCount] = useState()` 的原因。这与 class 里面 `this.state.count` 和 `this.setState` 类似，唯一区别就是你需要成对的获取它们。如果你不熟悉我们使用的语法，我们会在[本章节的底部](/docs/hooks-state.html#tip-what-do-square-brackets-mean)介绍它。
 
 既然我们知道了 `useState` 的作用，我们的示例应该更容易理解了：
 
@@ -277,4 +277,4 @@ function ExampleWithManyStates() {
 
 我们还学到了一些知识比如什么是 Hook。Hook 是能让你在函数组件中“钩入” React 特性的函数。它们名字通常都以 `use` 开始，还有更多 Hook 等着我们去探索。
 
-**现在我们将[学习另一个 Hook: `useEffect` ](/docs/hooks-effect.html)。**它能在函数组件中执行副作用，并且它与 class 中的生命周期函数极为类似。
+**现在我们将[学习另一个 Hook: `useEffect` ](/docs/hooks-effect.html)。** 它能在函数组件中执行副作用，并且它与 class 中的生命周期函数极为类似。
