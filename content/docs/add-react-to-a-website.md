@@ -195,7 +195,7 @@ npx babel --watch src --out-dir . --presets react-app/prod
 
 不要等待它运行结束 —— 这个命令启动了一个对 JSX 的自动监听器。
 
-如果此时你用这段 **[JSX 入门代码](https://cdn.rawgit.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**创建一个 `src/like_button.js` 文件，监听器会创建一个预处理过的 `like_button.js` 文件，它包含了适用于浏览器的朴素的 JavaScript 代码。当你编辑带有 JSX 的源文件时，转换过程将自动重新执行。
+如果此时你用这段 **[JSX 入门代码](https://cdn.rawgit.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**创建一个 `src/like_button.js` 文件，监听器会创建一个预处理过的 `like_button.js` 文件，它包含了适用于浏览器的普通 JavaScript 代码。当你编辑带有 JSX 的源文件时，转换过程将自动重新执行。
 
 这样，在旧浏览器上也能够使用现代 JavaScript 的语法特性，比如 class。我们刚才使用的工具叫 Babel，你可以从[它的文档](https://babeljs.io/docs/en/babel-cli/)中了解更多。
 
