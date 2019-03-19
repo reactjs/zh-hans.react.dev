@@ -32,7 +32,7 @@ react_js = source.path_for('react.min.js')
 
 ## Django {#django}
 
-PyReact 包括一个为 [django-pipeline](https://github.com/cyberdelia/django-pipeline) 使用的 JSX 编译器。将它加入您项目的管道设置，如下:
+PyReact 包括一个与 [django-pipeline](https://github.com/cyberdelia/django-pipeline) 同时使用的 JSX 编译器。将它加入您项目的管道设置，如下：
 
 ```python
 PIPELINE_COMPILERS = (
@@ -52,4 +52,4 @@ PyReact 托管于 PyPI, 并可以使用 `pip` 安装:
 
 **关于依赖**: PyReact 使用 [PyExecJS](https://github.com/doloopwhile/PyExecJS) 以执行捆绑的 React 代码, 它要求 JS 运行时环境已经安装在您的机器上。我们没有显式指定上述的运行时环境 —— Mac OS X 自带一个。当然，如果您在使用其他平台，我们推荐使用 [PyV8](https://code.google.com/p/pyv8/)。
 
-鉴于这是初始版本，我们只在 Python 2.7 平台进行过测试。如果您希望在未来得到关于 Python 3 版本的支持，或者发现任何值得改进的地方，我们欢迎您的[贡献](https://github.com/facebook/react-python/blob/master/CONTRIBUTING.md)!
+鉴于这是初始版本，我们只在 Python 2.7 平台进行过测试。如果您希望在未来得到关于 Python 3 版本的支持，或者发现任何值得改进的地方，我们欢迎您的[贡献](https://github.com/facebook/react-python/blob/master/CONTRIBUTING.md)！
