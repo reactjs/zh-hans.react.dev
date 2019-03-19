@@ -8,7 +8,7 @@ prev: getting-started.html
 next: create-a-new-react-app.html
 ---
 
-根据需要或多或少地使用 React。
+根据需要选择性使用 React。
 
 React 从一开始就被设计为逐步采用，并且**你可以根据需要选择性地使用 React**。可能你只想在现有页面中“局部地添加交互性”。使用 React 组件是一种不错的方式。
 
