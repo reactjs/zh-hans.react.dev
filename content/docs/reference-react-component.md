@@ -315,9 +315,9 @@ getSnapshotBeforeUpdate(prevProps, prevState)
 
 ### Error boundaries {#error-boundaries}
 
-[Error boundaries](/docs/error-boundaries.html) 是 React 组件，它会在其子组件树中的任何位置捕获 JavaScript 错误，并记录这些错误，展示备用 UI 而不是崩溃的组件树。Error boundaries 组件会捕获在渲染期间，在生命周期方法以及其整个树的构造函数中发生的错误。
+[Error boundaries](/docs/error-boundaries.html) 是 React 组件，它会在其子组件树中的任何位置捕获 JavaScript 错误，并记录这些错误，展示降级 UI 而不是崩溃的组件树。Error boundaries 组件会捕获在渲染期间，在生命周期方法以及其整个树的构造函数中发生的错误。
 
-如果 class 组件定义了生命周期方法 `static getDerivedStateFromError()` 或 `componentDidCatch()` 中的任何一个（或两者），它就成为了 Error boundaries。通过生命周期更新 state 可让组件捕获树中未处理的 JavaScript 错误并展示备用 UI。
+如果 class 组件定义了生命周期方法 `static getDerivedStateFromError()` 或 `componentDidCatch()` 中的任何一个（或两者），它就成为了 Error boundaries。通过生命周期更新 state 可让组件捕获树中未处理的 JavaScript 错误并展示降级 UI。
 
 仅使用 Error boundaries 组件来从意外异常中恢复的情况；**不要将它们用于流程控制。**
 
@@ -415,8 +415,8 @@ class ErrorBoundary extends React.Component {
 
 > 注意
 > 
-> 如果发生错误，你可以通过调用 `setState` 使用 `componentDidCatch()` 渲染备用 UI，但在未来的版本中将不推荐这样做。
-> 可以使用静态 `getDerivedStateFromError()` 来处理备用渲染。
+> 如果发生错误，你可以通过调用 `setState` 使用 `componentDidCatch()` 渲染降级 UI，但在未来的版本中将不推荐这样做。
+> 可以使用静态 `getDerivedStateFromError()` 来处理降级渲染。
 
 * * *
 
