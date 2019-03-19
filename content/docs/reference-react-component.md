@@ -39,7 +39,7 @@ class Welcome extends React.Component {
 
 ### 组件的生命周期 {#the-component-lifecycle}
 
-每个组件都包含“生命周期方法”，你可以重写这些方法，以便于在运行过程中特定的阶段执行这些方法。你可以使用此[生命周期图谱](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)作为速查表。在下述列表中，常用的生命周期方法会被加粗。其余生命周期函数的使用则相对罕见。
+每个组件都包含“生命周期方法”，你可以重写这些方法，以便于在运行过程中特定的阶段执行这些方法。**你可以使用此[生命周期图谱](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)作为速查表**。在下述列表中，常用的生命周期方法会被加粗。其余生命周期函数的使用则相对罕见。
 
 #### 挂载 {#mounting}
 
@@ -163,7 +163,7 @@ constructor(props) {
 }
 ```
 
-只能在构造函数中为 `this.state` 赋值。如需在其他方法中赋值，你应使用 `this.setState()` 替代。
+只能在构造函数中直接为 `this.state` 赋值。如需在其他方法中赋值，你应使用 `this.setState()` 替代。
 
 要避免在构造函数中引入任何副作用或订阅。如遇到此场景，请将对应的操作放置在 `componentDidMount` 中。
 
