@@ -39,7 +39,7 @@ class Welcome extends React.Component {
 
 ### 组件的生命周期 {#the-component-lifecycle}
 
-每个组件都包含“生命周期方法”，你可以重写这些方法，以便于在运行过程中特定的阶段执行这些方法。你可以使用此[生命周期图谱](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)作为备忘录。在下述列表中，常用的生命周期方法会被加粗。其余生命周期函数的使用则相对罕见。
+每个组件都包含“生命周期方法”，你可以重写这些方法，以便于在运行过程中特定的阶段执行这些方法。你可以使用此[生命周期图谱](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)作为速查表。在下述列表中，常用的生命周期方法会被加粗。其余生命周期函数的使用则相对罕见。
 
 #### 挂载 {#mounting}
 
@@ -183,7 +183,7 @@ constructor(props) {
 >
 >**只有在你刻意忽略 prop 更新的情况下使用。**此时，应将 prop 重命名为 `initialColor` 或 `defaultColor`。必要时，你可以[修改它的 `key`](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key)，以强制“重置”其内部 state。
 >
->请参阅关于[避免状态提升的博文](/blog/2018/06/07/you-probably-dont-need-derived-state.html)，以了解如果 state 依赖 props 的情况该如何处理。
+>请参阅关于[避免派生状态的博文](/blog/2018/06/07/you-probably-dont-need-derived-state.html)，以了解出现 state 依赖 props 的情况该如何处理。
 
 
 * * *
@@ -278,7 +278,7 @@ static getDerivedStateFromProps(props, state)
 
 此方法适用于[罕见的用例](/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state)，即 state 的值在任何时候都取决于 props。例如，实现 `<Transition>` 组件可能很方便，该组件会比较当前组件与下一组件，以决定针对哪些组件进行转场动画。
 
-状态提升会导致代码冗余，并使组件难以维护。
+派生状态会导致代码冗余，并使组件难以维护。
 [确保你已熟悉这些简单的替代方案：](/blog/2018/06/07/you-probably-dont-need-derived-state.html)
 
 * 如果你需要**执行副作用**（例如，数据提取或动画）以响应 props 中的更改，请改用 [`componentDidUpdate`](#componentdidupdate)。
@@ -394,7 +394,7 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, info) {
-    // 例如 "组件堆栈":
+    // "组件堆栈" 例子:
     //   in ComponentThatThrows (created by App)
     //   in ErrorBoundary (created by App)
     //   in div (created by App)
@@ -460,7 +460,7 @@ UNSAFE_componentWillReceiveProps(nextProps)
 > * 如果你使用 `componentWillReceiveProps` **仅在 prop 更改时重新计算某些数据**，请[使用 memoization helper 代替](/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization)。
 > * 如果你使用 `componentWillReceiveProps` 是为了**在 prop 更改时“重置”某些 state**，请考虑使组件[完全受控](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component)或[使用 `key` 使组件完全不受控](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) 代替。
 >
-> 对于其他使用场景，[请遵循此博客文章中有关状态提升的建议](/blog/2018/06/07/you-probably-dont-need-derived-state.html)。
+> 对于其他使用场景，[请遵循此博客文章中有关派生状态的建议](/blog/2018/06/07/you-probably-dont-need-derived-state.html)。
 
 `UNSAFE_componentWillReceiveProps()` 会在已挂载的组件接收新的 props 之前被调用。如果你需要更新状态以响应 prop 更改（例如，重置它），你可以比较 `this.props` 和 `nextProps` 并在此方法中使用 `this.setState()` 执行 state 转换。
 
@@ -577,7 +577,7 @@ component.forceUpdate(callback)
 
 默认情况下，当组件的 state 或 props 发生变化时，组件将重新渲染。如果 `render()` 方法依赖于其他数据，则可以调用 `forceUpdate()` 强制让组件重新渲染。
 
-调用 `forceUpdate()` 将致使组件调用 `render()` 方法，此操作会跳过该组件的 `shouldComponentUpdate()`。但其子组件会触发正常的生命周期方法，包括 `shouldComponentUpdate()` 方法。如果 markup 发生变化，React 仍将只更新 DOM。
+调用 `forceUpdate()` 将致使组件调用 `render()` 方法，此操作会跳过该组件的 `shouldComponentUpdate()`。但其子组件会触发正常的生命周期方法，包括 `shouldComponentUpdate()` 方法。如果标记发生变化，React 仍将只更新 DOM。
 
 通常你应该避免使用 `forceUpdate()`，尽量在 `render()` 只使用 `this.props` 和 `this.state`
 
@@ -627,7 +627,7 @@ CustomButton.defaultProps = {
 
 ### `props` {#props}
 
-`this.props` 包含该组件实例中定义的 props。欲了解 props 的详细介绍，请参阅[组件 & Props][组件和props](/docs/components-and-props.html)。
+`this.props` 包括被该组件调用者定义的 props。欲了解 props 的详细介绍，请参阅[组件 & Props][组件和props](/docs/components-and-props.html)。
 
 需特别注意，`this.props.children` 是一个特殊的 prop，通常由 JSX 表达式中的子组件组成，而不是由组件本身定义。
 
