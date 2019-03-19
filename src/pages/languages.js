@@ -46,7 +46,7 @@ const Languages = ({location}: Props) => (
     <Container>
       <div css={sharedStyles.articleLayout.container}>
         <div css={sharedStyles.articleLayout.content}>
-          <Header>Languages</Header>
+          <Header>多语言</Header>
           <TitleAndMetaTags title="React - Languages" />
 
           <div css={sharedStyles.markdown}>

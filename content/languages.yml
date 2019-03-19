@@ -1,7 +1,7 @@
 # Status enums indicate what percentage of "core" content has been translated:
-# 0: Incomplete (0–49%)
-# 1: Partially complete (50–94%)
-# 2: Complete (95–100%)
+# 0: Incomplete (0-49%)
+# 1: Partially complete (50-99%)
+# 2: Complete (100%)
 
 - name: English
   translated_name: English
@@ -26,6 +26,10 @@
 - name: German
   translated_name: Deutsch
   code: de
+  status: 1
+- name: Greek
+  translated_name: Ελληνικά
+  code: el
   status: 0
 - name: Spanish
   translated_name: Español
@@ -38,11 +42,15 @@
 - name: French
   translated_name: Français
   code: fr
+  status: 2
+- name: Gujarati
+  translated_name: ગુજરાતી
+  code: gu
   status: 0
 - name: Hebrew
   translated_name: עברית
   code: he
-  status: 0
+  status: 1
 - name: Hindi
   translated_name: हिन्दी
   code: hi
@@ -62,10 +70,22 @@
 - name: Japanese
   translated_name: 日本語
   code: ja
-  status: 1
+  status: 2
+- name: Central Khmer
+  translated_name: ភាសាខ្មែរ
+  code: km
+  status: 0
 - name: Korean
   translated_name: 한국어
   code: ko
+  status: 1
+- name: Kurdish
+  translated_name: کوردی‎
+  code: ku
+  status: 0
+- name: Lithuanian
+  translated_name: Lietuvių kalba
+  code: lt
   status: 0
 - name: Malayalam
   translated_name: മലയാളം
@@ -82,11 +102,11 @@
 - name: Polish
   translated_name: Polski
   code: pl
-  status: 0
+  status: 1
 - name: Portuguese (Brazil)
   translated_name: Português do Brasil
   code: pt-br
-  status: 1
+  status: 2
 - name: Portuguese (Portugal)
   translated_name: Português europeu
   code: pt-pt
@@ -98,22 +118,33 @@
 - name: Russian
   translated_name: Русский
   code: ru
-  status: 0
+  status: 2
 - name: Sinhala
   translated_name: සිංහල
   code: si
   status: 0
+- name: Swedish
+  translated_name: Svenska
+  code: sv
 - name: Tamil
   translated_name: தமிழ்
   code: ta
   status: 0
+- name: Telugu
+  translated_name: తెలుగు
+  code: te
+  status: 0
 - name: Turkish
   translated_name: Türkçe
   code: tr
-  status: 0
+  status: 1
 - name: Ukrainian
   translated_name: Українська
   code: uk
+  status: 1
+- name: Urdu
+  translated_name: اردو
+  code: ur
   status: 0
 - name: Uzbek
   translated_name: Oʻzbekcha
@@ -126,7 +157,7 @@
 - name: Simplified Chinese
   translated_name: 简体中文
   code: zh-hans
-  status: 0
+  status: 1
 - name: Traditional Chinese
   translated_name: 繁體中文
   code: zh-hant

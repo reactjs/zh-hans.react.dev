@@ -273,8 +273,8 @@ function ExampleWithManyStates() {
 
 ## 下一步 {#next-steps}
 
-上述页面中，我们了解了 React 提供的一个叫 `useState` Hook，有时候我们也叫它 “State Hook”。它让我们在 React 函数组件上添加内部 state —— 这是我们头一次能这么干。
+从上述内容中，我们了解了 React 提供的 `useState` Hook，有时候我们也叫它 “State Hook”。它让我们在 React 函数组件上添加内部 state —— 这是我们头一次能这么干。
 
 我们还学到了一些知识比如什么是 Hook。Hook 是能让你在函数组件中“钩入” React 特性的函数。它们名字通常都以 `use` 开始，还有更多 Hook 等着我们去探索。
 
-**现在我们继续下一章[学习下一个 Hook: `useEffect` ](/docs/hooks-effect.html)。** 它让你能在组件中产生副作用，并且它跟 class 里面的生命周期函数很类似。
+**现在我们将[学习另一个 Hook: `useEffect` ](/docs/hooks-effect.html)。** 它能在函数组件中执行副作用，并且它与 class 中的生命周期函数极为类似。
