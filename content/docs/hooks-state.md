@@ -56,7 +56,7 @@ class Example extends React.Component {
 }
 ```
 
-state 初始值为 `{ count: 0 }` ，当用户点击按钮后，我们通过调用 `this.setState()` 来增加 `state.count`。整个章节中我们都将使用这个 class 的代码片段做范例。
+state 初始值为 `{ count: 0 }` ，当用户点击按钮后，我们通过调用 `this.setState()` 来增加 `state.count`。整个章节中都将使用该 class 的代码片段做示例。
 
 >注意
 >
@@ -88,7 +88,7 @@ Hook 在 class 内部是**不**起作用的。但你可以使用它们来取代 
 
 ## Hook 是什么？ {#whats-a-hook}
 
-我们的新示例首先从 React 导入 `useState` Hook
+在新示例中，首选引入 React 中 `useState` 的 Hook
 
 ```js{1}
 import React, { useState } from 'react';
@@ -277,4 +277,4 @@ function ExampleWithManyStates() {
 
 我们还学到了一些知识比如什么是 Hook。Hook 是能让你在函数组件中“钩入” React 特性的函数。它们名字通常都以 `use` 开始，还有更多 Hook 等着我们去探索。
 
-**现在我们将[学习另一个 Hook: `useEffect` ](/docs/hooks-effect.html)。** 它能在函数组件中执行副作用，并且它与 class 中的生命周期函数极为类似。
+**现在我们将[学习另一个 Hook: `useEffect` ](/docs/hooks-effect.html)。**它能在函数组件中执行副作用，并且它与 class 中的生命周期函数极为类似。
