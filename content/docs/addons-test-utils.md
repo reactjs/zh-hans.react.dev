@@ -10,18 +10,18 @@ category: Reference
 
 ```javascript
 import ReactTestUtils from 'react-dom/test-utils'; // ES6
-var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
+var ReactTestUtils = require('react-dom/test-utils'); // ES5 使用 npm 的方式
 ```
 
-## 概述 {#overview}
+## 概览 {#overview}
 
-`ReactTestUtils` 可搭配你所选的测试框架，轻松实现 React 组件测试。在 Facebook 内部，我们使用 [Jest](https://facebook.github.io/jest/) 来轻松实现 JavaScript 测试。你可以从 Jest 官网的 [React Tutorial](http://facebook.github.io/jest/docs/en/tutorial-react.html#content) 中了解如何开始使用它。
+`ReactTestUtils` 可搭配你所选的测试框架，轻松实现 React 组件测试。在 Facebook 内部，我们使用 [Jest](https://facebook.github.io/jest/) 来轻松实现 JavaScript 测试。你可以从 Jest 官网的 [React 教程](https://jestjs.io/docs/tutorial-react)中了解如何开始使用它。
 
 > 注意：
 >
 > 我们推荐使用 [`react-testing-library`](https://git.io/react-testing-library)，它使得对组件编写测试用例就像终端用户在使用它一样方便。
 >
-> 另外， Airbnb 发布了一款叫作 [Enzyme]([Enzyme](http://airbnb.io/enzyme/)) 的测试工具，通过它能够轻松对 React 组件的输出进行断言、操控和遍历。
+> 另外，Airbnb 发布了一款叫作 [Enzyme]([Enzyme](https://airbnb.io/enzyme/)) 的测试工具，通过它能够轻松对 React 组件的输出进行断言、操控和遍历。
 
  - [`act()`](#act)
  - [`mockComponent()`](#mockcomponent)
@@ -53,7 +53,7 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
 例如，假设我们有个 `Counter` 组件:
 
 ```js
-class App extends React.Component {
+class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {count: 0};
@@ -139,7 +139,7 @@ mockComponent(
 
 > 注意：
 >
-> `mockComponent()` 是一个过时的 API，我们推荐使用[浅层渲染](/docs/test-utils.html#shallow-rendering)或者 [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) 来代替。
+> `mockComponent()` 是一个过时的 API，我们推荐使用[浅层渲染](/docs/shallow-renderer.html)或者 [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) 来代替。
 
 * * *
 

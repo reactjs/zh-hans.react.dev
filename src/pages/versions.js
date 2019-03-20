@@ -24,26 +24,26 @@ const Versions = ({location}: Props) => (
     <Container>
       <div css={sharedStyles.articleLayout.container}>
         <div css={sharedStyles.articleLayout.content}>
-          <Header>React Versions</Header>
+          <Header>React 版本</Header>
           <TitleAndMetaTags title="React - Versions" />
           <div css={sharedStyles.markdown}>
             <p>
-              A complete release history for React is available{' '}
               <a
                 href="https://github.com/facebook/react/releases"
                 target="_blank"
                 rel="noopener">
-                on GitHub
+                在 GitHub 上
               </a>
-              .<br />
-              Documentation for recent releases can also be found below.
+              可以获取 React 完整版本历史记录
+              。<br />
+              最新版本的文档也可以在下方找到。
             </p>
             <p>
-              See our FAQ for information about{' '}
+              欲了解有关{' '}
               <a href="/docs/faq-versioning.html">
-                our versioning policy and commitment to stability
+                版本政策和稳定性承诺
               </a>
-              .
+              的信息，请查阅 FAQ。
             </p>
             {versions.map(version => (
               <div key={version.title}>
@@ -51,13 +51,13 @@ const Versions = ({location}: Props) => (
                 <ul>
                   <li>
                     <a href={version.changelog} target="_blank" rel="noopener">
-                      Changelog
+                      更新日志
                     </a>
                   </li>
                   {version.path && (
                     <li>
                       <a href={version.path} rel="nofollow">
-                        Documentation
+                        文档
                       </a>
                     </li>
                   )}
