@@ -33,7 +33,7 @@ React 组件隐藏其实现细节，包括其渲染结果。其他使用 `FancyB
 
 >注意
 >
->第二个参数 `ref` 只在使用 `React.forwardRef` 定义组件时存在。常规函数和类定义组件不接收 `ref` 参数，且props中也不存在 `ref`。
+>第二个参数 `ref` 只在使用 `React.forwardRef` 定义组件时存在。常规函数和类定义组件不接收 `ref` 参数，且 props 中也不存在 `ref`。
 >
 >Ref 转发不仅仅限制在 DOM 组件中，你也可以转发 refs 到类定义组件实例中。
 
@@ -48,7 +48,7 @@ React 组件隐藏其实现细节，包括其渲染结果。其他使用 `FancyB
 这个技巧对 [高阶组件](/docs/higher-order-components.html)（也被称为 HOC）特别有用。让我们从一个输出组件 props 到控制台的 HOC 示例开始：
 `embed:forwarding-refs/log-props-before.js`
 
-“logProps”HOC 透传（pass through）所有 `props` 到其包裹的组件，所以渲染结果将是相同的。示例：我们可以使用该 HOC 记录所有传递到“fancy button”组件的 props：
+“logProps” HOC 透传（pass through）所有 `props` 到其包裹的组件，所以渲染结果将是相同的。示例：我们可以使用该 HOC 记录所有传递到 “fancy button” 组件的 props：
 `embed:forwarding-refs/fancy-button.js`
 
 上面的示例有一点需要注意：refs 将不会透传下去。这是因为 `ref` 不是 prop 属性。就像 `key` 一样，其被 React 进行了特殊处理。如果你对 HOC 添加 ref，该 ref 将引用最外层的容器组件，而不是被包裹的组件。
@@ -63,11 +63,11 @@ React 组件隐藏其实现细节，包括其渲染结果。其他使用 `FancyB
 
 `React.forwardRef` 接受一个渲染函数。React DevTools 使用该函数来决定为 ref 转发组件显示的内容。
 
-示例，以下组件将在 DevTools 中显示为“*ForwardRef*”：
+示例，以下组件将在 DevTools 中显示为 “*ForwardRef*”：
 
 `embed:forwarding-refs/wrapped-component.js`
 
-如果你命名了渲染函数，DevTools 也将包含其名称（例如“*ForwardRef(myFunction)*”）：
+如果你命名了渲染函数，DevTools 也将包含其名称（例如 “*ForwardRef(myFunction)*”）：
 
 `embed:forwarding-refs/wrapped-component-with-function-name.js`
 
