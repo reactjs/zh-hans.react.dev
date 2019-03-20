@@ -1,22 +1,22 @@
 ---
 id: hooks-reference
-title: Hooks API Reference
+title: Hook API 参考
 permalink: docs/hooks-reference.html
 prev: hooks-custom.html
 next: hooks-faq.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*Hook* 是 React 16.8 的新特性。利用它，你无需编写 class 就能使用 state 和其他 React 特性。
 
-This page describes the APIs for the built-in Hooks in React.
+本页面描述 React 内置的 Hook API。
 
-If you're new to Hooks, you might want to check out [the overview](/docs/hooks-overview.html) first. You may also find useful information in the [frequently asked questions](/docs/hooks-faq.html) section.
+如果你是 Hook 新手，可能需要先查阅 [概览](/docs/hooks-overview.html) 一章来了解它。还能在 [常见问题](/docs/hooks-faq.html) 一章找到有用的信息。
 
-- [Basic Hooks](#basic-hooks)
+- [基础的 Hooks](#basic-hooks)
   - [`useState`](#usestate)
   - [`useEffect`](#useeffect)
   - [`useContext`](#usecontext)
-- [Additional Hooks](#additional-hooks)
+- [额外的 Hooks](#additional-hooks)
   - [`useReducer`](#usereducer)
   - [`useCallback`](#usecallback)
   - [`useMemo`](#usememo)
@@ -25,7 +25,7 @@ If you're new to Hooks, you might want to check out [the overview](/docs/hooks-o
   - [`useLayoutEffect`](#uselayouteffect)
   - [`useDebugValue`](#usedebugvalue)
 
-## Basic Hooks {#basic-hooks}
+## 基础的 Hooks {#basic-hooks}
 
 ### `useState` {#usestate}
 
@@ -33,25 +33,25 @@ If you're new to Hooks, you might want to check out [the overview](/docs/hooks-o
 const [state, setState] = useState(initialState);
 ```
 
-Returns a stateful value, and a function to update it.
+`useState` 返回一个有状态的值和一个可以更新该值的函数。
 
-During the initial render, the returned state (`state`) is the same as the value passed as the first argument (`initialState`).
+在组件初始渲染期间，`useState` 会返回和它第一个参数（`initialState`）等值的 state（`state`）。
 
-The `setState` function is used to update the state. It accepts a new state value and enqueues a re-render of the component.
+`setState` 函数用来更新 state。它接收新的 state 值，然后将组件排入重渲染队列。
 
 ```js
 setState(newState);
 ```
 
-During subsequent re-renders, the first value returned by `useState` will always be the most recent state after applying updates.
+在后续的组件重渲染过程中，`useState` 的第一个返回值总是最新的 state。
 
->Note
+> 注意
 >
->React guarantees that `setState` function identity is stable and won't change on re-renders. This is why it's safe to omit from the `useEffect` or `useCallback` dependency list.
+> React 会确保 `setState` 函数的标识是稳定的，并且不会在组件重新渲染时发生变化。这就是为什么可以安全地从 `useEffect` 或 `useCallback` 的依赖列表中省略 `setState`。
 
-#### Functional updates {#functional-updates}
+#### 函数式的更新 {#functional-updates}
 
-If the new state is computed using the previous state, you can pass a function to `setState`. The function will receive the previous value, and return an updated value. Here's an example of a counter component that uses both forms of `setState`:
+如果需要基于上一轮的 state 来计算新的 state，可以把一个接收旧值并返回新值的函数传给 `setState`。下面的计数器组件示例使用了 `setState` 的两种用法：
 
 ```js
 function Counter({initialCount}) {
@@ -67,24 +67,24 @@ function Counter({initialCount}) {
 }
 ```
 
-The "+" and "-" buttons use the functional form, because the updated value is based on the previous value. But the "Reset" button uses the normal form, because it always sets the count back to 0.
+由于需通过上一次的计数来计算新的计数值，「+」「-」按钮采用函数式的 `setState` 去处理更新。而「Reset」按钮则使用普通形式的 `setState`，因为它总是将计数置回 0。
 
-> Note
+> 注意
 >
-> Unlike the `setState` method found in class components, `useState` does not automatically merge update objects. You can replicate this behavior by combining the function updater form with object spread syntax:
+> 与 class 组件的 `setState` 方法不同，`useState` 返回的 `setState` 函数并不会自动合并两次更新时接收的对象。你可以用函数式的 `setState` 结合对象拓展语法来合并 state 对象。
 >
 > ```js
 > setState(prevState => {
->   // Object.assign would also work
+>   // 也可以使用 Object.assign
 >   return {...prevState, ...updatedValues};
 > });
 > ```
 >
-> Another option is `useReducer`, which is more suited for managing state objects that contain multiple sub-values.
+> `useReducer` 是另一种可选的方案，但它更适合管理包含多个子状态的 state 对象。
 
-#### Lazy initial state {#lazy-initial-state}
+#### state 的惰性初始化 {#lazy-initial-state}
 
-The `initialState` argument is the state used during the initial render. In subsequent renders, it is disregarded. If the initial state is the result of an expensive computation, you may provide a function instead, which will be executed only on the initial render:
+`initialState` 参数只会在组件的初始渲染中起作用，后续渲染时会被忽略。如果初始化 state 的开销比较大，你可以提供一个返回 state 的函数作为 `initialState` 实参，该函数只在初始渲染时被调用：
 
 ```js
 const [state, setState] = useState(() => {
@@ -93,9 +93,9 @@ const [state, setState] = useState(() => {
 });
 ```
 
-#### Bailing out of a state update {#bailing-out-of-a-state-update}
+#### 跳过 state 更新 {#bailing-out-of-a-state-update}
 
-If you update a State Hook to the same value as the current state, React will bail out without rendering the children or firing effects. (React uses the [`Object.is` comparison algorithm](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)
+假如你在调用 State Hook 的更新函数时，给它传入当前的 state 值，那本次更新将被跳过，React 既不会渲染子组件，也不会执行 effect。（React 使用 [`Object.is` 比较算法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) 来比较 state。）
 
 ### `useEffect` {#useeffect}
 
@@ -103,45 +103,45 @@ If you update a State Hook to the same value as the current state, React will ba
 useEffect(didUpdate);
 ```
 
-Accepts a function that contains imperative, possibly effectful code.
+`useEffect` 接收一个包含命令式的、可能有副作用代码的函数。
 
-Mutations, subscriptions, timers, logging, and other side effects are not allowed inside the main body of a function component (referred to as React's _render phase_). Doing so will lead to confusing bugs and inconsistencies in the UI.
+在函数组件主体内（这里指在 React 渲染阶段）变更DOM、设置订阅、计时、记录日志，以及执行其他副作用等操作都是不可取的，因为这可能引发令人困扰的 bugs，破坏 UI 的一致性。
 
-Instead, use `useEffect`. The function passed to `useEffect` will run after the render is committed to the screen. Think of effects as an escape hatch from React's purely functional world into the imperative world.
+相反，应该使用 `useEffect` 来完成上述操作。传给 `useEffect` 的函数会在组件渲染完成后执行。你可以把 effect 函数看作是从 React 的纯函数世界通往命令式世界的应急通道。
 
-By default, effects run after every completed render, but you can choose to fire it [only when certain values have changed](#conditionally-firing-an-effect).
+默认情况下，effect 将在每轮渲染结束后执行，但你可以选择让它 [在只有某些值改变的时候](#conditionally-firing-an-effect) 才执行。
 
-#### Cleaning up an effect {#cleaning-up-an-effect}
+#### 清理 effect {#cleaning-up-an-effect}
 
-Often, effects create resources that need to be cleaned up before the component leaves the screen, such as a subscription or timer ID. To do this, the function passed to `useEffect` may return a clean-up function. For example, to create a subscription:
+通常，effect 内部会产生诸如订阅或计时器 ID 等资源，必须在组件卸载前清除它们。为此，传给 `useEffect` 的函数可能需要返回一个清理函数。如下，一个创建订阅的例子：
 
 ```js
 useEffect(() => {
   const subscription = props.source.subscribe();
   return () => {
-    // Clean up the subscription
+    // 清除 subscription
     subscription.unsubscribe();
   };
 });
 ```
 
-The clean-up function runs before the component is removed from the UI to prevent memory leaks. Additionally, if a component renders multiple times (as they typically do), the **previous effect is cleaned up before executing the next effect**. In our example, this means a new subscription is created on every update. To avoid firing an effect on every update, refer to the next section.
+为防止内存泄漏，清理函数将在组件卸载前执行。另外，如果组件多次渲染（通常如此），**在执行下一轮的 effect 之前，上一轮的 effect 就已经被清理了**。在我们的示例中，意味着组件每一轮更新都会创建新的订阅。若想避免每次都调用 effect，请参阅下一章节。
 
-#### Timing of effects {#timing-of-effects}
+#### effect 的调用时机 {#timing-of-effects}
 
-Unlike `componentDidMount` and `componentDidUpdate`, the function passed to `useEffect` fires **after** layout and paint, during a deferred event. This makes it suitable for the many common side effects, like setting up subscriptions and event handlers, because most types of work shouldn't block the browser from updating the screen.
+与 `componentDidMount`、`componentDidUpdate` 不同，在浏览器完成布局与绘制**之后**，传给 `useEffect` 的函数会在一个延迟事件中被调用。这使得 `useEffect` 能跟许多常见的副作用，如订阅设置、事件处理器等搭配使用，因为大多数副作用不应该阻塞视图更新。
 
-However, not all effects can be deferred. For example, a DOM mutation that is visible to the user must fire synchronously before the next paint so that the user does not perceive a visual inconsistency. (The distinction is conceptually similar to passive versus active event listeners.) For these types of effects, React provides one additional Hook called [`useLayoutEffect`](#uselayouteffect). It has the same signature as `useEffect`, and only differs in when it is fired.
+然而，并非所有 effect 都可以被延迟。例如，在浏览器执行下一次绘制前，用户可见的 DOM 变更就必须同步执行，这样用户才不会感觉到视觉上的不一致。（在概念上类似于被动事件监听器和主动事件监听器的区别。）React 提供了额外的 [`useLayoutEffect`](#uselayouteffect) Hook 来处理这类 effect。它和 `useEffect` 签名相同，区别只是调用时机不同。
 
-Although `useEffect` is deferred until after the browser has painted, it's guaranteed to fire before any new renders. React will always flush a previous render's effects before starting a new update.
+浏览器绘制完成之后，`useEffect` 会确保在新的组件渲染前调用 effect。React 将在组件更新前刷新上一轮渲染的 effect。
 
-#### Conditionally firing an effect {#conditionally-firing-an-effect}
+#### effect 的条件调用 {#conditionally-firing-an-effect}
 
-The default behavior for effects is to fire the effect after every completed render. That way an effect is always recreated if one of its dependencies changes.
+默认情况下，effect 会在每轮组件渲染完成后被调用。这样一旦 effect 的依赖发生变化了，它就会被重新创建。
 
-However, this may be overkill in some cases, like the subscription example from the previous section. We don't need to create a new subscription on every update, only if the `source` props has changed.
+然而，在某些场景下这么做可能过于简单粗暴了。就像上一章节的订阅示例一样，我们不需要在每次组件更新时都创建新的订阅，只要在 `source` props 改变时重新创建就行。
 
-To implement this, pass a second argument to `useEffect` that is the array of values that the effect depends on. Our updated example now looks like this:
+为此，可以用数组表示 effect 的依赖项，作为 `useEffect` 的第二个参数。更新后的示例如下:
 
 ```js
 useEffect(
@@ -155,20 +155,22 @@ useEffect(
 );
 ```
 
-Now the subscription will only be recreated when `props.source` changes.
+现在，只有当 `props.source` 改变了才会重新创建订阅。
 
->Note
+> 注意
 >
->If you use this optimization, make sure the array includes **all values from the component scope (such as props and state) that change over time and that are used by the effect**. Otherwise, your code will reference stale values from previous renders. Learn more about [how to deal with functions](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) and what to do when the [array values change too often](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often).
+> 如果使用此优化，请确保依赖项数组包含**组件作用域（如 props 和 state）内被 effect 使用的所有随时间变化的值**。
 >
->If you want to run an effect and clean it up only once (on mount and unmount), you can pass an empty array (`[]`) as a second argument. This tells React that your effect doesn't depend on *any* values from props or state, so it never needs to re-run. This isn't handled as a special case -- it follows directly from how the dependencies array always works.
+> 否则，你的代码将会引用上一轮渲染的旧数据。了解更多有关 [如何处理函数](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) 和如何处理 [频繁变化的数组值](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) 的信息。
 >
->If you pass an empty array (`[]`), the props and state as inside the effect will always have their initial values. While passing `[]` as the second argument is closer to the familiar `componentDidMount` and `componentWillUnmount` mental model, there are usually [better](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [solutions](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) to avoid re-running effects too often. Also, don't forget that React defers running `useEffect` until after the browser has painted, so doing extra work is less of a problem.
+> 如果你期望 effect 只会被调用一次和清理一次（在 mount 和 unmount 的时候），可以传一个空数组（`[]`）作为 `useEffect` 第二个参数。这表示你的 effect 不依赖于任何的 props 或 state，所以无需重复调用。它不是一个特例，而是遵循依赖项数组一贯的工作方式。
+>
+> 如果你传了一个空数组（`[]`），effect 内部引用的 props 和 state 将始终维持它们的初始值。将 `[]` 作为第二个参数有点类似于 `componentDidMount` 和 `componentWillUnmount` 的手动模式，但通常来说有 [更好的](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [解决方案](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) 来避免 effect 的频繁调用。另外，不要忘了 React 会把 `useEffect` 延迟到浏览器完成绘制才执行，所以多一些额外的调用也没什么问题。
 >
 >
->We recommend using the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) rule as part of our [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It warns when dependencies are specified incorrectly and suggests a fix.
+> 我们推荐你把 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 规则作为 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 的一部分来使用。当依赖项指定有误时，它会生成警告并提供修复建议。
 
-The array of dependencies is not passed as arguments to the effect function. Conceptually, though, that's what they represent: every value referenced inside the effect function should also appear in the dependencies array. In the future, a sufficiently advanced compiler could create this array automatically.
+依赖项数组不会作为参数传给 effect 函数。然而从概念上来说，这表示 effect 函数引用的每个值也应该出现在依赖项数组中。将来，一个足够先进的编译器可以自动创建这个数组。
 
 ### `useContext` {#usecontext}
 
@@ -176,13 +178,13 @@ The array of dependencies is not passed as arguments to the effect function. Con
 const context = useContext(Context);
 ```
 
-Accepts a context object (the value returned from `React.createContext`) and returns the current context value, as given by the nearest context provider for the given context.
+`useContext` 接收一个 context 对象（`React.createContext` 的返回值）并返回当前的 context 值，该值由距离组件最近的、当前 context 的 provider 提供。
 
-When the provider updates, this Hook will trigger a rerender with the latest context value.
+当 provider 更新时，`useContext` Hook 将使用最新的 context 值触发新的渲染。
 
-## Additional Hooks {#additional-hooks}
+## 额外的 Hook {#additional-hooks}
 
-The following Hooks are either variants of the basic ones from the previous section, or only needed for specific edge cases. Don't stress about learning them up front.
+以下介绍的 Hook，有些是上一章节基础 Hook 的变体，有些仅在特定边界场景下用到。不用急着先学习它们。
 
 ### `useReducer` {#usereducer}
 
@@ -190,11 +192,11 @@ The following Hooks are either variants of the basic ones from the previous sect
 const [state, dispatch] = useReducer(reducer, initialArg, init);
 ```
 
-An alternative to [`useState`](#usestate). Accepts a reducer of type `(state, action) => newState`, and returns the current state paired with a `dispatch` method. (If you're familiar with Redux, you already know how this works.)
+`useReducer` 是 [`useState`](#usestate) 的替代方案。它接收一个形如 `(state, action) => newState` 的 reducer，然后返回当前的 state 以及配套的 `dispatch` 方法。（如果你熟悉 Redux 的话，你已经知道这个 Hook 是如何工作的了。）
 
-`useReducer` is usually preferable to `useState` when you have complex state logic that involves multiple sub-values or when the next state depends on the previous one. `useReducer` also lets you optimize performance for components that trigger deep updates because [you can pass `dispatch` down instead of callbacks](/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down).
+当你遇到几种情况，比如 state 包含多个子对象、逻辑复杂，或者未来的 state 需要依赖之前的 state，通常 `useReducer` 会比 `useState` 更适用。使用 `useReducer` 还能给那些会触发深度更新的组件做性能优化，因为 [你可以向子组件传递 `dispatch` 而不是回调函数](/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down) 。
 
-Here's the counter example from the [`useState`](#usestate) section, rewritten to use a reducer:
+用 reducer 重写 [`useState`](#usestate) 一章的计数器示例：
 
 ```js
 const initialState = {count: 0};
@@ -222,13 +224,13 @@ function Counter({initialState}) {
 }
 ```
 
->Note
+> 注意
 >
->React guarantees that `dispatch` function identity is stable and won't change on re-renders. This is why it's safe to omit from the `useEffect` or `useCallback` dependency list.
+> React 确保 `dispatch` 函数的标识是稳定的，并且不会在组件重新渲染时改变。这就是为什么可以安全地从 `useEffect` 或 `useCallback` 的依赖列表中省略 `dispatch`。
 
-#### Specifying the initial state {#specifying-the-initial-state}
+#### 指定初始 state {#specifying-the-initial-state}
 
-There’s two different ways to initialize `useReducer` state. You may choose either one depending on the use case. The simplest way to pass the initial state as a second argument:
+有两种初始化 `useReducer` state 的方法，你可以根据使用场景选择其中一种。将初始 state 作为 `useReducer` 的第二个参数是最简单的方法：
 
 ```js{3}
   const [state, dispatch] = useReducer(
@@ -237,15 +239,15 @@ There’s two different ways to initialize `useReducer` state. You may choose ei
   );
 ```
 
->Note
+> 注意
 >
->React doesn’t use the `state = initialState` argument convention popularized by Redux. The initial value sometimes needs to depend on props and so is specified from the Hook call instead. If you feel strongly about this, you can call `useReducer(reducer, undefined, reducer)` to emulate the Redux behavior, but it's not encouraged.
+> React 不使用 `state = initialState` 这一由 Redux 推广开来的参数约定。有时候初始值依赖于 props，因此需要在调用 Hook 时指定。如果你特别喜欢上述的参数约定，可以通过调用 `useReducer(reducer, undefined, reducer)` 来模拟 Redux 的行为，但我们不鼓励你这么做。
 
-#### Lazy initialization {#lazy-initialization}
+#### 惰性初始化 {#lazy-initialization}
 
-You can also create the initial state lazily. To do this, you can pass an `init` function as the third argument. The initial state will be set to `init(initialArg)`.
+你可以选择惰性初始化 state。为此，需要把 `init` 函数作为 `useReducer` 的第三个参数。这样初始状态将被设置为 `init(initialArg)`。
 
-It lets you extract the logic for calculating the initial state outside the reducer. This is also handy for resetting the state later in response to an action:
+使用这种方法可以把 state 的初始化计算逻辑抽离到 reducer 外面，也方便将来对重置 state 的 action 做处理：
 
 ```js{1-3,11-12,19,24}
 function init(initialCount) {
@@ -281,9 +283,9 @@ function Counter({initialCount}) {
 }
 ```
 
-#### Bailing out of a dispatch {#bailing-out-of-a-dispatch}
+#### 跳过 dispatch {#bailing-out-of-a-dispatch}
 
-If you return the same value from a Reducer Hook as the current state, React will bail out without rendering the children or firing effects. (React uses the [`Object.is` comparison algorithm](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)
+如果你在 Reducer Hook 的 reducer 中返回当前的 state 值，那么本次更新将被跳过，React 既不会渲染子组件，也不会执行 effect。（React 使用 [`Object.is` 比较算法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description)来比较 state。）
 
 ### `useCallback` {#usecallback}
 
@@ -296,17 +298,17 @@ const memoizedCallback = useCallback(
 );
 ```
 
-Returns a [memoized](https://en.wikipedia.org/wiki/Memoization) callback.
+`useCallback` 返回一个 [memoized](https://en.wikipedia.org/wiki/Memoization) 回调函数。
 
-Pass an inline callback and an array of dependencies. `useCallback` will return a memoized version of the callback that only changes if one of the dependencies has changed. This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders (e.g. `shouldComponentUpdate`).
+给 `useCallback` 传一个内联的回调函数和一个依赖项数组，它会返回回调函数的 memoized 版本，该回调仅在某个依赖项改变时才更新。当你把回调函数传给优化过的、利用引用相等规则去避免非必要渲染（例如 `shouldComponentUpdate`）的子组件时，这种手段非常有用。
 
-`useCallback(fn, deps)` is equivalent to `useMemo(() => fn, deps)`.
+`useCallback(fn, inputs)` 相当于 `useMemo(() => fn, inputs)`。
 
-> Note
+> 注意
 >
-> The array of dependencies is not passed as arguments to the callback. Conceptually, though, that's what they represent: every value referenced inside the callback should also appear in the dependencies array. In the future, a sufficiently advanced compiler could create this array automatically.
+> 依赖项数组不会作为参数传给回调函数。然而从概念上来说，这表示回调函数引用的每个值也应该出现在依赖项数组中。将来，一个足够先进的编译器可以自动创建这个数组。
 >
-> We recommend using the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) rule as part of our [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It warns when dependencies are specified incorrectly and suggests a fix.
+> 我们推荐你把 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 规则作为 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 的一部分来使用。当依赖项指定有误时，它会生成警告并提供修复建议。
 
 ### `useMemo` {#usememo}
 
@@ -314,21 +316,21 @@ Pass an inline callback and an array of dependencies. `useCallback` will return 
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
-Returns a [memoized](https://en.wikipedia.org/wiki/Memoization) value.
+`useMemo` 返回一个 [memoized](https://en.wikipedia.org/wiki/Memoization) 值。
 
-Pass a "create" function and an array of dependencies. `useMemo` will only recompute the memoized value when one of the dependencies has changed. This optimization helps to avoid expensive calculations on every render.
+它接收一个「创建器」函数和一个依赖项数组。仅在某个依赖项改变时，`useMemo` 才会重新计算 memoized 值。这种优化有助于避免在每次渲染时都进行高开销的计算。
 
-Remember that the function passed to `useMemo` runs during rendering. Don't do anything there that you wouldn't normally do while rendering. For example, side effects belong in `useEffect`, not `useMemo`.
+记住，传给 `useMemo` 的函数会在渲染期间执行。不要在这个函数内部执行与渲染无关的操作。像副作用就应该交给 `useEffect` 去处理，而不是交给 `useMemo`。
 
-If no array is provided, a new value will be computed on every render.
+如果没有提供依赖项数组，每次渲染 `useMemo` 都会计算新的值。
 
-**You may rely on `useMemo` as a performance optimization, not as a semantic guarantee.** In the future, React may choose to "forget" some previously memoized values and recalculate them on next render, e.g. to free memory for offscreen components. Write your code so that it still works without `useMemo` — and then add it to optimize performance.
+ **你可以把 `useMemo` 作为性能优化的手段，但不要把它当成语义上的保证。** 未来，React 可能会选择「忘记」以前的一些 memoized 值，并在下次渲染时重新计算它们，比如为离屏组件释放内存。建议自己编写代码，以便脱离 `useMemo` 也能正常工作 —— 然后在你的代码中添加 `useMemo` 来优化性能。
 
-> Note
+> 注意
 >
-> The array of dependencies is not passed as arguments to the function. Conceptually, though, that's what they represent: every value referenced inside the function should also appear in the dependencies array. In the future, a sufficiently advanced compiler could create this array automatically.
+> 依赖项数组不会作为参数传给「创建器」函数。然而从概念上来说，这表示「创建器」函数引用的每个值也应该出现在依赖项数组中。将来，一个足够先进的编译器可以自动创建这个数组。
 >
-> We recommend using the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) rule as part of our [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It warns when dependencies are specified incorrectly and suggests a fix.
+> 我们推荐你把 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 规则作为 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 的一部分来使用。当依赖项指定有误时，它会生成警告并提供修复建议。
 
 ### `useRef` {#useref}
 
@@ -336,15 +338,15 @@ If no array is provided, a new value will be computed on every render.
 const refContainer = useRef(initialValue);
 ```
 
-`useRef` returns a mutable ref object whose `.current` property is initialized to the passed argument (`initialValue`). The returned object will persist for the full lifetime of the component.
+`useRef` 返回一个可变的 ref 对象，其 `.current` 属性被初始化为 `useRef` 的参数（`initialValue`）。ref 对象在组件的整个生命周期内保持不变。
 
-A common use case is to access a child imperatively:
+一个常见的用例，命令式地访问子组件：
 
 ```js
 function TextInputWithFocusButton() {
   const inputEl = useRef(null);
   const onButtonClick = () => {
-    // `current` points to the mounted text input element
+    // `current` 指向挂载到 DOM 上的文本输入元素
     inputEl.current.focus();
   };
   return (
@@ -356,15 +358,15 @@ function TextInputWithFocusButton() {
 }
 ```
 
-Note that `useRef()` is useful for more than the `ref` attribute. It's [handy for keeping any mutable value around](/docs/hooks-faq.html#is-there-something-like-instance-variables) similar to how you'd use instance fields in classes.
+注意， `useRef()` 并非只有 `ref` 属性的作用。它 [便于保持任何可变值](/docs/hooks-faq.html#is-there-something-like-instance-variables)，跟你在 class 中使用实例字段的效果类似。
 
 ### `useImperativeHandle` {#useimperativehandle}
 
 ```js
-useImperativeHandle(ref, createHandle, [deps])
+useImperativeHandle(ref, createHandle, [inputs])
 ```
 
-`useImperativeHandle` customizes the instance value that is exposed to parent components when using `ref`. As always, imperative code using refs should be avoided in most cases. `useImperativeHandle` should be used with `forwardRef`:
+`useImperativeHandle` 可以让你在使用 `ref` 时自定义暴露给父组件的实例值。在大多数情况下，应该避免使用 refs 这样的命令式代码。`useImperativeHandle` 应该和 `forwardRef` 一起使用：
 
 ```js
 function FancyInput(props, ref) {
@@ -379,17 +381,17 @@ function FancyInput(props, ref) {
 FancyInput = forwardRef(FancyInput);
 ```
 
-In this example, a parent component that renders `<FancyInput ref={fancyInputRef} />` would be able to call `fancyInputRef.current.focus()`.
+在本例中，渲染 `<FancyInput ref={fancyInputRef} />` 的父组件可以调用 `fancyInputRef.current.focus()`。
 
 ### `useLayoutEffect` {#uselayouteffect}
 
-The signature is identical to `useEffect`, but it fires synchronously after all DOM mutations. Use this to read layout from the DOM and synchronously re-render. Updates scheduled inside `useLayoutEffect` will be flushed synchronously, before the browser has a chance to paint.
+`useLayoutEffect` 的函数签名与 `useEffect` 相同，但它会在所有的 DOM 变更之后同步调用 effect。可以使用它来读取 DOM 布局，并同步地触发重渲染。在浏览器执行绘制之前，`useLayoutEffect` 内部的更新计划将被同步刷新。
 
-Prefer the standard `useEffect` when possible to avoid blocking visual updates.
+尽可能使用标准的 `useEffect`，以防止阻塞视图更新。
 
-> Tip
+> 提示
 >
-> If you're migrating code from a class component, `useLayoutEffect` fires in the same phase as `componentDidMount` and `componentDidUpdate`, so if you're unsure of which effect Hook to use, it's probably the least risky.
+> 如果你正在将代码从 class 组件迁移到使用 Hook 的函数组件，需要知道 `useLayoutEffect` 的调用时机和 `componentDidMount`、`componentDidUpdate` 一样。因此如果你不确定使用哪一种 effect Hook，使用 `useLayoutEffect` 可能是风险最小的。
 
 ### `useDebugValue` {#usedebugvalue}
 
@@ -397,9 +399,9 @@ Prefer the standard `useEffect` when possible to avoid blocking visual updates.
 useDebugValue(value)
 ```
 
-`useDebugValue` can be used to display a label for custom hooks in React DevTools.
+`useDebugValue` 用于在 React 开发者工具中显示自定义 hook 标签。
 
-For example, consider the `useFriendStatus` custom Hook described in ["Building Your Own Hooks"](/docs/hooks-custom.html):
+例如，考虑 [「编写自己的 Hook」](/docs/hooks-custom.html) 一章中描述的 `useFriendStatus` 自定义 Hook：
 
 ```js{6-8}
 function useFriendStatus(friendID) {
@@ -407,7 +409,7 @@ function useFriendStatus(friendID) {
 
   // ...
 
-  // Show a label in DevTools next to this Hook
+  // 在开发者工具中的这个 Hook 旁边显示标签
   // e.g. "FriendStatus: Online"
   useDebugValue(isOnline ? 'Online' : 'Offline');
 
@@ -415,17 +417,17 @@ function useFriendStatus(friendID) {
 }
 ```
 
-> Tip
+> 提示
 >
-> We don't recommend adding debug values to every custom Hook. It's most valuable for custom Hooks that are part of shared libraries.
+> 我们不推荐你向每个自定义 Hook 添加 debug 值。对于共享库的自定义 Hook 来说，它是最有价值的。
 
-#### Defer formatting debug values {#defer-formatting-debug-values}
+#### 延迟格式化 debug 值 {#defer-formatting-debug-values}
 
-In some cases formatting a value for display might be an expensive operation. It's also unnecessary unless a Hook is actually inspected.
+在某些情况下，格式化显示可能是一项开销很大的操作。除非真的去查看 Hook，否则没有必要对 Hook 的显示值做格式化处理。
 
-For this reason `useDebugValue` accepts a formatting function as an optional second parameter. This function is only called if the Hooks are inspected. It receives the debug value as a parameter and should return a formatted display value.
+因此，`useDebugValue` 接收一个格式化函数作为可选的第二个参数。该函数只有在 Hook 被查看时才会被调用。它接收 debug 值作为参数，并且应该返回一个格式化的显示值。
 
-For example a custom Hook that returned a `Date` value could avoid calling the `toDateString` function unnecessarily by passing the following formatter:
+例如，一个返回 `Date` 值的自定义 Hook 可以通过格式化函数来避免不必要的 `toDateString` 函数调用：
 
 ```js
 useDebugValue(date, date => date.toDateString());
