@@ -69,7 +69,7 @@ function ErrorResult(props: {|code: ?string, msg: string|}) {
   if (!code) {
     return (
       <p>
-        一旦遇到错误，你将收到指向此页面的特定错误的链接，我们会完全地显示错误内容。
+        一旦遇到错误，你将收到指向此页面的特定错误的链接，我们会完整地显示错误内容。
       </p>
     );
   }
@@ -77,7 +77,7 @@ function ErrorResult(props: {|code: ?string, msg: string|}) {
   return (
     <div>
       <p>
-        <b>你刚才遇到错误的完全内容：</b>
+        <b>刚刚遇到错误的完整内容为：</b>
       </p>
       <code>
         <b>{urlify(errorMsg)}</b>
