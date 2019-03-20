@@ -228,7 +228,7 @@ function FriendListItem(props) {
 }
 ```
 
-这两个组件的 state 是完全独立的。Hooks 是一种重用*状态逻辑*的方式，它不重用 state 本身。事实上 Hook 的每次*调用*都有一个完全独立的 state -- 因此你可以在单个组件中多次调用同一个自定义 Hook。
+这两个组件的 state 是完全独立的。Hooks 是一种复用*状态逻辑*的方式，它不复用 state 本身。事实上 Hook 的每次*调用*都有一个完全独立的 state -- 因此你可以在单个组件中多次调用同一个自定义 Hook。
 
 自定义 Hooks 更像是一种约定而不是功能。如果函数的名字以 “`use`” 开头并调用其他 Hooks，我们就说这是一个自定义 Hook。 `useSomething` 的命名约定可以让我们的 linter 插件在使用 Hooks 的代码中找到 bug。
 
