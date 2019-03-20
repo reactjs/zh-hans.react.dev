@@ -1,20 +1,20 @@
 ---
-title: Don't Call PropTypes Warning
+title: 警告：禁止调用 PropTypes 函数
 layout: single
 permalink: warnings/dont-call-proptypes.html
 ---
 
-> Note:
+> 注意：
 >
-> `React.PropTypes` has moved into a different package since React v15.5. Please use [the `prop-types` library instead](https://www.npmjs.com/package/prop-types).
+> 自从 React v15.5 起，`React.PropTypes` 被移动到了另一个 package 中。请改用 [`prop-types`](https://www.npmjs.com/package/prop-types)。
 >
->We provide [a codemod script](/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes) to automate the conversion.
+> 我们提供了 [codemod 脚本](/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes) 来自动完成这个过程。
 
-In a future major release of React, the code that implements PropType validation functions will be stripped in production. Once this happens, any code that calls these functions manually (that isn't stripped in production) will throw an error.
+在 React 未来的主要版本（major release）中。执行 PropType 校验函数的代码应该从生产环境中剥离。此时，任何手动调用这些函数的代码（还没从生产环境中剥离的）都会产生报错。
 
-### Declaring PropTypes is still fine {#declaring-proptypes-is-still-fine}
+### 声明 PropTypes 仍然没有问题 {#declaring-proptypes-is-still-fine}
 
-The normal usage of PropTypes is still supported:
+PropTypes 的正常用法依然是被支持的：
 
 ```javascript
 Button.propTypes = {
@@ -22,11 +22,11 @@ Button.propTypes = {
 };
 ```
 
-Nothing changes here.
+没有变化。
 
-### Don’t call PropTypes directly {#dont-call-proptypes-directly}
+### 不要直接调用 PropTypes 函数 {#dont-call-proptypes-directly}
 
-Using PropTypes in any other way than annotating React components with them is no longer supported:
+除了用于解释 React 组件，其他使用 PropTypes 的方式将不再受到支持：
 
 ```javascript
 var apiShape = PropTypes.shape({
@@ -34,17 +34,17 @@ var apiShape = PropTypes.shape({
   statusCode: PropTypes.number.isRequired
 }).isRequired;
 
-// Not supported!
+// 不支持！
 var error = apiShape(json, 'response');
 ```
 
-If you depend on using PropTypes like this, we encourage you to use or create a fork of PropTypes (such as [these](https://github.com/aackerman/PropTypes) [two](https://github.com/developit/proptypes) packages).
+如果你依赖这样使用 PropTypes 的方式，我们鼓励你对 PropTypes 进行 fork 和使用（就像 [这个](https://github.com/aackerman/PropTypes) 还有 [这个](https://github.com/developit/proptypes) package）。
 
-If you don't fix the warning, this code will crash in production with React 16.
+如果你不根据警告进行修复，在采用 React 16 的生产环境中这些代码将会崩溃。
 
-### If you don't call PropTypes directly but still get the warning {#if-you-dont-call-proptypes-directly-but-still-get-the-warning}
+### 如果你没有直接调用 PropTypes 函数但是依然出现警告 {#if-you-dont-call-proptypes-directly-but-still-get-the-warning}
 
-Inspect the stack trace produced by the warning. You will find the component definition responsible for the PropTypes direct call. Most likely, the issue is due to third-party PropTypes that wrap React’s PropTypes, for example:
+检查警告产生的堆栈跟踪。你将找到涉及 PropTypes 直接调用的组件定义。问题很有可能是由包装（wrap）了 React PropTypes 的第三方 PropTypes 导致的，举个例子：
 
 ```js
 Button.propTypes = {
@@ -55,13 +55,13 @@ Button.propTypes = {
 }
 ```
 
-In this case, `ThirdPartyPropTypes.deprecated` is a wrapper calling `PropTypes.bool`. This pattern by itself is fine, but triggers a false positive because React thinks you are calling PropTypes directly. The next section explains how to fix this problem for a library implementing something like `ThirdPartyPropTypes`. If it's not a library you wrote, you can file an issue against it.
+在这个例子中，`ThirdPartyPropTypes.deprecated` 是一个调用 `PropTypes.bool` 的包装器（wrapper）。这个模式本身很好，但是会引发误报，因为 React 认为你在直接调用 PropTypes 函数。下一小节将介绍如何为像 `ThirdPartyPropTypes` 那样实现的库修复该问题。如果它不是你编写的库，你可以给它提一个 issue。
 
-### Fixing the false positive in third party PropTypes {#fixing-the-false-positive-in-third-party-proptypes}
+### 修复第三方 PropTypes 库的误报 {#fixing-the-false-positive-in-third-party-proptypes}
 
-If you are an author of a third party PropTypes library and you let consumers wrap existing React PropTypes, they might start seeing this warning coming from your library. This happens because React doesn't see a "secret" last argument that [it passes](https://github.com/facebook/react/pull/7132) to detect manual PropTypes calls.
+如果你是第三方 PropTypes 库的作者，并且能让使用者包装现有的 React PropTypes，他们可能就会看到由你的库引起的这个警告。发生这种情况是因为 React 没有看到用于检测手动 PropTypes 调用的、React “秘密”  [传入](https://github.com/facebook/react/pull/7132) 的最后一个参数。
 
-Here is how to fix it. We will use `deprecated` from [react-bootstrap/react-prop-types](https://github.com/react-bootstrap/react-prop-types/blob/0d1cd3a49a93e513325e3258b28a82ce7d38e690/src/deprecated.js) as an example. The current implementation only passes down the `props`, `propName`, and `componentName` arguments:
+下面是修复的方法。我们用 [react-bootstrap/react-prop-types](https://github.com/react-bootstrap/react-prop-types/blob/0d1cd3a49a93e513325e3258b28a82ce7d38e690/src/deprecated.js) 中的 `deprecated` 做示例。当前实现只传递 `props`、`propName` 和 `componentName` 参数：
 
 ```javascript
 export default function deprecated(propType, explanation) {
@@ -79,11 +79,11 @@ export default function deprecated(propType, explanation) {
 }
 ```
 
-In order to fix the false positive, make sure you pass **all** arguments down to the wrapped PropType. This is easy to do with the ES6 `...rest` notation:
+为了修复误报，确保你向被包装的 PropType 传入了**全部的**参数。用 ES6 的 `...rest` 运算符来做比较简单。
 
 ```javascript
 export default function deprecated(propType, explanation) {
-  return function validate(props, propName, componentName, ...rest) { // Note ...rest here
+  return function validate(props, propName, componentName, ...rest) { // 注意这里的 ...rest
     if (props[propName] != null) {
       const message = `"${propName}" property of "${componentName}" has been deprecated.\n${explanation}`;
       if (!warned[message]) {
@@ -92,9 +92,9 @@ export default function deprecated(propType, explanation) {
       }
     }
 
-    return propType(props, propName, componentName, ...rest); // and here
+    return propType(props, propName, componentName, ...rest); // 还有这里
   };
 }
 ```
 
-This will silence the warning.
+这将会消除错误警告。
