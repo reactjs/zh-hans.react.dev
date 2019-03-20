@@ -8,7 +8,7 @@ permalink: warnings/dont-call-proptypes.html
 >
 > 自从 React v15.5 起，`React.PropTypes` 被移动到了另一个 package 中。请改用 [`prop-types`](https://www.npmjs.com/package/prop-types)。
 >
-> 我们提供了 [一个重构件（codemod）脚本](/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes) 来自动完成这个过程。
+> 我们提供了 [codemod 脚本](/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes) 来自动完成这个过程。
 
 在 React 未来的主要版本（major release）中。执行 PropType 校验函数的代码应该从生产环境中剥离。此时，任何手动调用这些函数的代码（还没从生产环境中剥离的）都会产生报错。
 
