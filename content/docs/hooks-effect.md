@@ -37,7 +37,7 @@ function Example() {
 
 数据获取，设置订阅以及手动更改 React 组件中的 DOM 都是副作用的示例。无论你之前是否将他们称为"副作用"（可能就是你想要的效果），应该都在组件中使用过了。
 
->Tip
+>提示
 >
 >如果你熟悉 React class 的生命周期函数，你可以把 `useEffect` Hook 看做 `componentDidMount`，`componentDidUpdate` 和 `componentWillUnmount` 这三个函数的组合。
 
@@ -137,7 +137,7 @@ function Example() {
 
 经验丰富的 JavaScript 开发人员可能会注意到，传递给 `useEffect` 的函数在每次渲染中都会有所不同，这是刻意为之的。事实上这正是我们可以在 effect 中获取最新的 `count` 的值，而不用担心其过期的原因。每次我们重新渲染，都会生成一个_新的_ effect，替换掉之前的。某种意义上来说，effect 更像是渲染结果的一部分 —— 每个 effect “属于”一次特定的渲染。我们将在[本页后面(#explanation-why-effects-run-on-each-update)]更清楚地看到为什么这很有意义。
 
->Tip
+>提示
 >
 > 与 `componentDidMount` 或 `componentDidUpdate` 不同，使用 `useEffect` 调度的 effect 不会阻塞浏览器更新屏幕，这让你的 app 看起来响应更快。大多数情况下，effect 不需要同步地执行。 在个别情况下（例如测量布局），有一个单独的 [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect) Hook，其API与`useEffect`相同。
 
@@ -188,7 +188,7 @@ class FriendStatus extends React.Component {
 
 你会注意到 `componentDidMount` 和 `componentWillUnmount` 之间相互依赖。生命周期函数让我们只能拆分这些逻辑，即使他们中的代码都是服务于同一个功能。
 
->Note
+>注意
 >
 >眼尖的读者可能已经注意到了，这个示例还需要一个 `componentDidUpdate` 方法才是完全正确的。我们先暂时忽略这一点，并在本页的[后面一部分](#explanation-why-effects-run-on-each-update)再关注它。
 
@@ -227,7 +227,7 @@ function FriendStatus(props) {
 
 **React 什么时候清理一个 effect？**React 在组件卸载的时候执行清理。正如我们之前学到的， effect 在每次渲染的时候都会执行。这就是为什么 React *还会*在执行 effect 之前对上一个 effect 进行清理。我们稍后将讨论[为什么这有助于避免 bug](#explanation-why-effects-run-on-each-update)以及[如何在发生性能问题时选择跳过此行为](#tip-optimizing-performance-by-skipping-effects)。
 
->Note
+>注意
 >
 >我们并不是必须在 effect 中返回一个命名的函数。这里我们将其命名为 `cleanup` 是为了表明此函数的目的，但其实也可以返回一个箭头函数或者给它命一个别的名字。
 
