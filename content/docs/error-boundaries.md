@@ -15,7 +15,7 @@ permalink: docs/error-boundaries.html
 
 > 注意
 >
-> 错误边界 **无法** 捕获如下错误：
+> 错误边界 **无法** 捕获以下场景中产生的错误：
 >
 > * 事件处理（[了解更多](#how-about-event-handlers)）
 > * 异步代码（例如 `setTimeout` 或 `requestAnimationFrame` 回调函数）
