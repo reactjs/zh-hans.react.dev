@@ -1,32 +1,32 @@
 ---
 id: accessibility
-title: Accessibility
+title: 无障碍辅助功能
 permalink: docs/accessibility.html
 ---
 
-## Why Accessibility? {#why-accessibility}
+## 为什么我们需要无障碍辅助功能？ {#why-accessibility}
 
-Web accessibility (also referred to as [**a11y**](https://en.wiktionary.org/wiki/a11y)) is the design and creation of websites that can be used by everyone. Accessibility support is necessary to allow assistive technology to interpret web pages.
+网络无障碍辅助功能（Accessibility，也被称为 [**a11y**](https://en.wiktionary.org/wiki/a11y)，因为以A开头，以Y结尾，一共11个字母）是一种可以帮助所有人获得服务的设计和创造。为了使辅助技术可以正确的解读您的网页，无障碍辅助功能是必要的。
 
-React fully supports building accessible websites, often by using standard HTML techniques.
+React通常使用标准HTML技术来完全支持创建具有可访问性的网站。
 
-## Standards and Guidelines {#standards-and-guidelines}
+## 标准和指引 {#standards-and-guidelines}
 
 ### WCAG {#wcag}
 
-The [Web Content Accessibility Guidelines](https://www.w3.org/WAI/intro/wcag) provides guidelines for creating accessible web sites.
+[网络内容无障碍指南（Web Content Accessibility Guidelines，WCAG）](https://www.w3.org/WAI/intro/wcag) 为开发无障碍网站提供了指南。
 
-The following WCAG checklists provide an overview:
+下面的 WCAG 检查表提供了一个概览：
 
-- [WCAG checklist from Wuhcag](https://www.wuhcag.com/wcag-checklist/)
-- [WCAG checklist from WebAIM](https://webaim.org/standards/wcag/checklist)
-- [Checklist from The A11Y Project](https://a11yproject.com/checklist.html)
+- [Wuchang提供的WCAG检查表（WCAG checklist from Wuhcag）](https://www.wuhcag.com/wcag-checklist/)
+- [WebAIM提供的WCAG检查表（WCAG checklist from WebAIM）](https://webaim.org/standards/wcag/checklist)
+- [A11Y Project提供的检查表（Checklist from The A11Y Project）](https://a11yproject.com/checklist.html)
 
 ### WAI-ARIA {#wai-aria}
 
-The [Web Accessibility Initiative - Accessible Rich Internet Applications](https://www.w3.org/WAI/intro/aria) document contains techniques for building fully accessible JavaScript widgets.
+[网络无障碍倡议 - 无障碍互联网应用（Web Accessibility Initiative - Accessible Rich Internet Applications）](https://www.w3.org/WAI/intro/aria) 文件包含了创建完全无障碍JavaScript部件所需要的技术。
 
-Note that all `aria-*` HTML attributes are fully supported in JSX. Whereas most DOM properties and attributes in React are camelCased, these attributes should be hyphen-cased (also known as kebab-case, lisp-case, etc) as they are in plain HTML:
+注意：JSX 支持所有 `aria-*` HTML 属性。虽然大多数React的DOM变量和属性命名都使用驼峰命名（camelCased），`aria-*` 应该使用带连字符的命名法（也叫诸如hyphen-cased，kebab-case, lisp-case），就像在 HTML 中一样。
 
 ```javascript{3,4}
 <input
@@ -39,16 +39,15 @@ Note that all `aria-*` HTML attributes are fully supported in JSX. Whereas most 
 />
 ```
 
-## Semantic HTML {#semantic-html}
-Semantic HTML is the foundation of accessibility in a web application. Using the various HTML elements to reinforce the meaning of information
-in our websites will often give us accessibility for free.
+## HTML 语义 {#semantic-html}
+HTML 语义是无障碍辅助功能网络应用的基础。利用多种HTML元素来强化您网站中的信息通常可以使您直接获得无障碍辅助功能。
 
-- [MDN HTML elements reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+- [MDN 的 HTML 元素参照（MDN HTML elements reference）](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 
-Sometimes we break HTML semantics when we add `<div>` elements to our JSX to make our React code work, especially when working with lists (`<ol>`, `<ul>` and `<dl>`) and the HTML `<table>`.
-In these cases we should rather use [React Fragments](/docs/fragments.html) to group together multiple elements.
+在 JSX 中使用 `<div>` 元素来实现我们的 React 代码功能的时候，尤其当我们使用列表（`<ol>`， `<ul>` 和 `<dl>`）和 HTML `<table>` 时，HTML 语义会被破坏。
+在这种情况下，我们应该使用 [React Fragments](/docs/fragments.html) 来组合各个组件。
 
-For example,
+举个例子，
 
 ```javascript{1,5,8}
 import React, { Fragment } from 'react';
@@ -73,7 +72,7 @@ function Glossary(props) {
 }
 ```
 
-You can map a collection of items to an array of fragments as you would any other type of element as well:
+和其他的元素一样，你可以把一系列的对象映射到一个 fragment 的数组中。
 
 ```javascript{6,9}
 function Glossary(props) {
@@ -91,7 +90,7 @@ function Glossary(props) {
 }
 ```
 
-When you don't need any props on the Fragment tag you can use the [short syntax](/docs/fragments.html#short-syntax), if your tooling supports it:
+当你不需要在 fragment 标签中添加任何 prop 且你的工具支持的时候，你可以使用 [短语法](/docs/fragments.html#short-syntax)：
 
 ```javascript{3,6}
 function ListItem({ item }) {
@@ -104,83 +103,80 @@ function ListItem({ item }) {
 }
 ```
 
-For more info, see [the Fragments documentation](/docs/fragments.html).
+更多信息请参见 [Fragments 文档](/docs/fragments.html)。
 
-## Accessible Forms {#accessible-forms}
+## 无障碍表单 {#accessible-forms}
 
-### Labeling {#labeling}
-Every HTML form control, such as `<input>` and `<textarea>`, needs to be labeled accessibly. We need to provide descriptive labels that are also exposed to screen readers.
+### 标记 {#labeling}
+所有的 HTML 表单控制，例如 `<input>` 和 `<textarea>` ，都需要标注来实现无障碍辅助功能。我们需要提供屏幕朗读器以解释性标注。
 
-The following resources show us how to do this:
+以下资源向我们展示了如何写标注：
 
-- [The W3C shows us how to label elements](https://www.w3.org/WAI/tutorials/forms/labels/)
-- [WebAIM shows us how to label elements](https://webaim.org/techniques/forms/controls)
-- [The Paciello Group explains accessible names](https://www.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/)
+- [W3C 向我们展示如何标注元素](https://www.w3.org/WAI/tutorials/forms/labels/)
+- [WebAIM 向我们展示如何标注元素](https://webaim.org/techniques/forms/controls)
+- [Paciello Group 解释什么是无障碍名称](https://www.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/)
 
-Although these standard HTML practices can be directly used in React, note that the `for` attribute is written as `htmlFor` in JSX:
+尽管这些标准 HTML 实践可以被直接用在 React 中，请注意 `for` 在 JSX 中应该被写作 `htmlFor`：
 
 ```javascript{1}
 <label htmlFor="namedInput">Name:</label>
 <input id="namedInput" type="text" name="name"/>
 ```
 
-### Notifying the user of errors {#notifying-the-user-of-errors}
+### 在出错时提醒用户 {#notifying-the-user-of-errors}
 
-Error situations need to be understood by all users. The following link shows us how to expose error texts to screen readers as well:
+当出现错误时，所有用户都应该知情。下面的链接告诉我们如何给屏幕朗读器设置错误信息：
 
-- [The W3C demonstrates user notifications](https://www.w3.org/WAI/tutorials/forms/notifications/)
-- [WebAIM looks at form validation](https://webaim.org/techniques/formvalidation/)
+- [W3C 展示用户推送](https://www.w3.org/WAI/tutorials/forms/notifications/)
+- [WebAIM 关于表单校验的文章](https://webaim.org/techniques/formvalidation/)
 
-## Focus Control {#focus-control}
+## 控制焦点 {#focus-control}
 
-Ensure that your web application can be fully operated with the keyboard only:
+确保你的网络应用可以在只使用键盘的情况下使用：
 
-- [WebAIM talks about keyboard accessibility](https://webaim.org/techniques/keyboard/)
+- [WebAIM 讨论使用键盘进行无障碍访问](https://webaim.org/techniques/keyboard/)
 
-### Keyboard focus and focus outline {#keyboard-focus-and-focus-outline}
+### 键盘焦点及焦点轮廓 {#keyboard-focus-and-focus-outline}
 
-Keyboard focus refers to the current element in the DOM that is selected to accept input from the keyboard. We see it everywhere as a focus outline similar to that shown in the following image:
+键盘焦点的定义是：在 DOM 中，当前被选中来接受键盘信息的元素。我们可以在各处看到键盘焦点，它会被焦点轮廓包围，像下面的这个图像一样。
 
-<img src="../images/docs/keyboard-focus.png" alt="Blue keyboard focus outline around a selected link." />
+<img src="../images/docs/keyboard-focus.png" alt="选中的链接被蓝色键盘焦点轮廓包围着。" />
 
-Only ever use CSS that removes this outline, for example by setting `outline: 0`, if you are replacing it with another focus outline implementation.
+请不要使用 CSS 移除这个轮廓，比如设置 `outline: 0`，除非你将使用其他的方法实现焦点轮廓。
 
-### Mechanisms to skip to desired content {#mechanisms-to-skip-to-desired-content}
+### 跳过一些内容的机制 {#mechanisms-to-skip-to-desired-content}
 
-Provide a mechanism to allow users to skip past navigation sections in your application as this assists and speeds up keyboard navigation.
+为了帮助和提速键盘导航，我们提供了一种机制，可以帮助用户跳过一些导航段落。
 
-Skiplinks or Skip Navigation Links are hidden navigation links that only become visible when keyboard users interact with the page. They are very easy to implement with
-internal page anchors and some styling:
+跳转链接（Skiplinks），或者说跳转导航链接（Skip Navigation Links）是一种隐藏的导航链接，它只会在使用键盘导航时可见。使用网页内部锚点和一些式样可以很容易地实现它：
 
-- [WebAIM - Skip Navigation Links](https://webaim.org/techniques/skipnav/)
+- [WebAIM - 跳转导航链接（Skip Navigation Links）](https://webaim.org/techniques/skipnav/)
 
-Also use landmark elements and roles, such as `<main>` and `<aside>`, to demarcate page regions as assistive technology allow the user to quickly navigate to these sections.
+另外，使用地标元素和角色，比如 `<main>` 和 `<aside>`，作为辅助来划分网页的区域可以让用户快速导航至这些部分。
 
-Read more about the use of these elements to enhance accessibility here:
+您可以通过下面的链接了解更多如何使用这些元素来增强无障碍辅助功能：
 
-- [Accessible Landmarks](https://www.scottohara.me/blog/2018/03/03/landmarks.html)
+- [无障碍地标](https://www.scottohara.me/blog/2018/03/03/landmarks.html)
 
-### Programmatically managing focus {#programmatically-managing-focus}
+### 使用程序管理焦点 {#programmatically-managing-focus}
 
-Our React applications continuously modify the HTML DOM during runtime, sometimes leading to keyboard focus being lost or set to an unexpected element. In order to repair this,
-we need to programmatically nudge the keyboard focus in the right direction. For example, by resetting keyboard focus to a button that opened a modal window after that modal window is closed.
+我们的 React 应用在运行时会持续更改 HTML DOM，有时这将会导致键盘焦点的丢失或者是被设置到了意料之外的元素上。为了修复这类问题，我们需要以编程的方式让键盘聚焦到正确的方向上。比方说，在一个弹窗被关闭的时候，重新设置键盘焦点到弹窗的打开按钮上。
 
-MDN Web Docs takes a look at this and describes how we can build [keyboard-navigable JavaScript widgets](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets).
+MDN Web Docs 关注了这个问题并解释了我们可以如何搭建[可用键盘导航的 JavaScript 部件](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets)。
 
-To set focus in React, we can use [Refs to DOM elements](/docs/refs-and-the-dom.html).
+我们可以用[DOM 元素的 Refs](/docs/refs-and-the-dom.html)在 React 中设置焦点。
 
-Using this, we first create a ref to an element in the JSX of a component class:
+用以上技术，我们先在一个类的 JSX 中创建一个元素的 ref：
 
 ```javascript{4-5,8-9,13}
 class CustomTextInput extends React.Component {
   constructor(props) {
     super(props);
-    // Create a ref to store the textInput DOM element
+    // 创造一个 textInput DOM 元素的 ref
     this.textInput = React.createRef();
   }
   render() {
-  // Use the `ref` callback to store a reference to the text input DOM
-  // element in an instance field (for example, this.textInput).
+  // 使用 `ref` 回调函数以在实例的一个变量中存储文本输入 DOM 元素 （比如，this.textInput）。
     return (
       <input
         type="text"
@@ -191,18 +187,17 @@ class CustomTextInput extends React.Component {
 }
 ```
 
-Then we can focus it elsewhere in our component when needed:
+然后我们就可以在需要时于其他地方把焦点设置在这个组件上：
 
  ```javascript
  focus() {
-   // Explicitly focus the text input using the raw DOM API
-   // Note: we're accessing "current" to get the DOM node
+   // 使用原始的 DOM API 明确的聚焦在 text input 上
+   // 注意：我们通过访问 ”current“ 来获得 DOM 节点
    this.textInput.current.focus();
  }
  ```
 
-Sometimes a parent component needs to set focus to an element in a child component. We can do this by [exposing DOM refs to parent components](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components)
-through a special prop on the child component that forwards the parent's ref to the child's DOM node.
+有时，父组件需要把焦点设置在其子组件的一个元素上。我们可以通过在子组件上设置一个特殊的 prop 来[对父组件暴露 DOM refs](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components)从而把父组件的 ref 传向子节点的 DOM 节点。
 
 ```javascript{4,12,16}
 function CustomTextInput(props) {
@@ -225,32 +220,28 @@ class Parent extends React.Component {
   }
 }
 
-// Now you can set focus when required.
+// 现在你就可以在需要时设置焦点了
 this.inputElement.current.focus();
 ```
 
-When using a HOC to extend components, it is recommended to [forward the ref](/docs/forwarding-refs.html) to the wrapped component using the `forwardRef` function of React. If a third party HOC
-does not implement ref forwarding, the above pattern can still be used as a fallback.
+当使用 HOC 来延伸组件的时候，我们建议使用 React 的 `forwardRef` 函数来向被包裹的组件[转递 ref](/docs/forwarding-refs.html)。如果第三方的 HOC 不支持转递 ref，上面的方法仍可以作为一种后备。
 
-A great focus management example is the [react-aria-modal](https://github.com/davidtheclark/react-aria-modal). This is a relatively rare example of a fully accessible modal window. Not only does it set initial focus on
-the cancel button (preventing the keyboard user from accidentally activating the success action) and trap keyboard focus inside the modal, it also resets focus back to the element that
-initially triggered the modal.
+[react-aria-modal](https://github.com/davidtheclark/react-aria-modal)提供了一个很好的焦点管理的例子。这是一个少有的完全无障碍的模式窗口的例子。它不仅仅把初始焦点设置在了取消按钮上（防止键盘用户意外激活成功操作）和把键盘焦点固定在了窗口之内，关闭窗口时它也会把键盘焦点重置到打开窗口的那一个元素上。
 
->Note:
+>注意:
 >
->While this is a very important accessibility feature, it is also a technique that should be used judiciously. Use it to repair the keyboard focus flow when it is disturbed, not to try and anticipate how
->users want to use applications.
+>虽然这是一个非常重要的无障碍辅助功能，但它也是一种应该谨慎使用的技术。 我们应该在受到干扰时使用它来修复键盘焦点，而不是试图预测
+>用户想要如何使用应用程序。
 
-## Mouse and pointer events {#mouse-and-pointer-events}
+## 鼠标和指针事件 {#mouse-and-pointer-events}
 
-Ensure that all functionality exposed through a mouse or pointer event can also be accessed using the keyboard alone. Depending only on the pointer device will lead to many cases where
-keyboard users cannot use your application.
+确保任何可以使用鼠标和指针完成的功能也可以只通过键盘完成。只依靠指针会产生很多使键盘用户无法使用你的应用的情况。
 
-To illustrate this, let's look at a prolific example of broken accessibility caused by click events. This is the outside click pattern, where a user can disable an opened popover by clicking outside the element.
+为了说明这一点，让我们看一下由点击事件引起的破坏无障碍访问的典型示例：外部点击模式，用户可以通过点击元素以外的地方来关闭已打开的弹出框。
 
-<img src="../images/docs/outerclick-with-mouse.gif" alt="A toggle button opening a popover list implemented with the click outside pattern and operated with a mouse showing that the close action works." />
+<img src="../images/docs/outerclick-with-mouse.gif" alt="一个切换按钮可以打开一个弹窗，这个弹窗使用了外部点击模式，此图用一个鼠标指针展示了关闭操作是可行的。" />
 
-This is typically implemented by attaching a `click` event to the `window` object that closes the popover:
+通常实现这个功能的方法是在 `window` 对象中附上一个 `click` 事件以关闭弹窗：
 
 ```javascript{12-14,26-30}
 class OuterClickExample extends React.Component {
@@ -301,12 +292,11 @@ constructor(props) {
 }
 ```
 
-This may work fine for users with pointer devices, such as a mouse, but operating this with the keyboard alone leads to broken functionality when tabbing to the next element
-as the `window` object never receives a `click` event. This can lead to obscured functionality which blocks users from using your application.
+当用户使用指针设备，比如鼠标时，这样做没有问题。但是当只使用键盘时，因为 `window` 对象不会接受到 `click` 事件，用户将无法使用tab切换到下一个元素。这样会导致用户无法使用你应用中的一些内容，导致不完整的用户体验。
 
-<img src="../images/docs/outerclick-with-keyboard.gif" alt="A toggle button opening a popover list implemented with the click outside pattern and operated with the keyboard showing the popover not being closed on blur and it obscuring other screen elements." />
+<img src="../images/docs/outerclick-with-keyboard.gif" alt="一个通过按钮打开的使用了外部点击模式的弹窗列表。用键盘操作时，我们可以看到弹窗没有在失去焦点时被关闭，遮挡了屏幕上的其他元素。" />
 
-The same functionality can be achieved by using an appropriate event handlers instead, such as `onBlur` and `onFocus`:
+使用正确的事件触发器，比如 `onBlur` 和 `onFocus`，同样可以达成这项功能：
 
 ```javascript{19-29,31-34,37-38,40-41}
 class BlurExample extends React.Component {
@@ -327,10 +317,9 @@ class BlurExample extends React.Component {
     }));
   }
 
-  // We close the popover on the next tick by using setTimeout.
-  // This is necessary because we need to first check if
-  // another child of the element has received focus as
-  // the blur event fires prior to the new focus event.
+  // 我们在下一个时间点使用 setTimeout 关闭弹窗。
+  // 这是必要的，因为失去焦点事件会在新的焦点事件前被触发，
+  // 我们需要通过这个步骤确认这个元素的一个子节点是否得到了焦点。
   onBlurHandler() {
     this.timeOutId = setTimeout(() => {
       this.setState({
@@ -339,14 +328,13 @@ class BlurExample extends React.Component {
     });
   }
 
-  // If a child receives focus, do not close the popover.
+  // 如果一个子节点获得了焦点，不要关闭弹窗。
   onFocusHandler() {
     clearTimeout(this.timeOutId);
   }
 
   render() {
-    // React assists us by bubbling the blur and
-    // focus events to the parent.
+    // React通过把失去焦点和获得焦点事件传输给父节点来帮助我们。
     return (
       <div onBlur={this.onBlurHandler}
            onFocus={this.onFocusHandler}>
@@ -368,86 +356,82 @@ class BlurExample extends React.Component {
 }
 ```
 
-This code exposes the functionality to both pointer device and keyboard users. Also note the added `aria-*` props to support screen-reader users. For simplicity's sake
-the keyboard events to enable `arrow key` interaction of the popover options have not been implemented.
+以上代码使得键盘和鼠标用户都可以使用我们的功能。请注意我们添加了 `aria-*` props 以服务屏幕朗读器用户。
+作为一个简单的例子，我们没有实现使用`方向键`来与弹窗互动。
 
-<img src="../images/docs/blur-popover-close.gif" alt="A popover list correctly closing for both mouse and keyboard users." />
+<img src="../images/docs/blur-popover-close.gif" alt="一个针对鼠标和键盘用户都正确关闭的弹窗。" />
 
-This is one example of many cases where depending on only pointer and mouse events will break functionality for keyboard users. Always testing with the keyboard will immediately
-highlight the problem areas which can then be fixed by using keyboard aware event handlers.
+这只是众多只依赖于鼠标和指针的程序破坏键盘用户的例子之一。始终使用键盘测试会让你迅速发现这些问题，你可以使用适用于键盘的事件处理器来修复这些问题。
 
-## More Complex Widgets {#more-complex-widgets}
+## 更复杂的部件 {#more-complex-widgets}
 
-A more complex user experience should not mean a less accessible one. Whereas accessibility is most easily achieved by coding as close to HTML as possible,
-even the most complex widget can be coded accessibly.
+一个更加复杂的用户体验并不意味着更加难以访问。通过尽可能接近 HTML 编程，无障碍访问会变得更加容易，即使最复杂的部件也可以实现无障碍访问。
 
-Here we require knowledge of [ARIA Roles](https://www.w3.org/TR/wai-aria/#roles) as well as [ARIA States and Properties](https://www.w3.org/TR/wai-aria/#states_and_properties).
-These are toolboxes filled with HTML attributes that are fully supported in JSX and enable us to construct fully accessible, highly functional React components.
+这里我们需要了解 [ARIA Roles](https://www.w3.org/TR/wai-aria/#roles) 和 [ARIA States and Properties](https://www.w3.org/TR/wai-aria/#states_and_properties) 的知识。
+其中有包含了多种 HTML 属性的工具箱，这些HTML属性被JSX完全支持并且可以帮助我们搭建完全无障碍，功能强大的React组件。
 
-Each type of widget has a specific design pattern and is expected to function in a certain way by users and user agents alike:
+每一种部件都有一种特定的设计模式，并且用户和用户代理都会期待使用相似的方法使用它：
 
-- [WAI-ARIA Authoring Practices - Design Patterns and Widgets](https://www.w3.org/TR/wai-aria-practices/#aria_ex)
+- [WAI-ARIA 创作实践 —— 设计模式和部件](https://www.w3.org/TR/wai-aria-practices/#aria_ex)
 - [Heydon Pickering - ARIA Examples](https://heydonworks.com/practical_aria_examples/)
-- [Inclusive Components](https://inclusive-components.design/)
+- [包容性组件（Inclusive Components）](https://inclusive-components.design/)
 
-## Other Points for Consideration {#other-points-for-consideration}
+## 其他考虑因素 {#other-points-for-consideration}
 
-### Setting the language {#setting-the-language}
+### 设置语言 {#setting-the-language}
 
-Indicate the human language of page texts as screen reader software uses this to select the correct voice settings:
+为了使屏幕朗读器可以使用正确的语音设置，请在网页上设置正确的人类语言（不是编程语言）：
 
-- [WebAIM - Document Language](https://webaim.org/techniques/screenreader/#language)
+- [WebAIM —— 文档语言](https://webaim.org/techniques/screenreader/#language)
 
-### Setting the document title {#setting-the-document-title}
+### 设置文档标题 {#setting-the-document-title}
 
-Set the document `<title>` to correctly describe the current page content as this ensures that the user remains aware of the current page context:
+为了确保用户可以了解当前网页的内容，我们需要把文档的 `<title>` 设置为可以正确描述当前页面的文字。
 
-- [WCAG - Understanding the Document Title Requirement](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-title.html)
+- [WCAG —— 理解文档标题的要求](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-title.html)
 
-We can set this in React using the [React Document Title Component](https://github.com/gaearon/react-document-title).
+在 React 中，我们可以使用[React文档标题组件（React Document Title Component）](https://github.com/gaearon/react-document-title)来设置标题。
 
-### Color contrast {#color-contrast}
+### 色彩对比度 {#color-contrast}
 
-Ensure that all readable text on your website has sufficient color contrast to remain maximally readable by users with low vision:
+为了尽可能让视力障碍用户可以阅读您网站上的所有可读文字，请确保你的文字都有足够的色彩对比度。
 
-- [WCAG - Understanding the Color Contrast Requirement](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html)
-- [Everything About Color Contrast And Why You Should Rethink It](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
-- [A11yProject - What is Color Contrast](https://a11yproject.com/posts/what-is-color-contrast/)
+- [WCAG —— 理解色彩对比度要求](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html)
+- [有关色彩对比度的一切以及为何你应该重新考虑它](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
+- [A11yProject —— 什么是色彩对比度](https://a11yproject.com/posts/what-is-color-contrast/)
 
-It can be tedious to manually calculate the proper color combinations for all cases in your website so instead, you can [calculate an entire accessible color palette with Colorable](https://jxnblk.com/colorable/).
+手工计算您网站上所有恰当的色彩组合会是乏味的。所以，作为代替，你可以[使用Colorable来计算出一个完全无障碍的调色板](https://jxnblk.com/colorable/)。
 
-Both the aXe and WAVE tools mentioned below also include color contrast tests and will report on contrast errors.
+下面介绍的aXe和WAVE都支持色彩对比度测试并会报告对比度错误。
 
-If you want to extend your contrast testing abilities you can use these tools:
+如果您想扩展对比度测试能力，可以使用以下工具：
 
-- [WebAIM - Color Contrast Checker](https://webaim.org/resources/contrastchecker/)
-- [The Paciello Group - Color Contrast Analyzer](https://www.paciellogroup.com/resources/contrastanalyser/)
+- [WebAIM —— 色彩对比度检验工具](https://webaim.org/resources/contrastchecker/)
+- [The Paciello Group —— 色彩对比度分析工具](https://www.paciellogroup.com/resources/contrastanalyser/)
 
-## Development and Testing Tools {#development-and-testing-tools}
+## 开发及测试 {#development-and-testing-tools}
 
-There are a number of tools we can use to assist in the creation of accessible web applications.
+我们可以利用很多工具来帮助我们创建无障碍的网络应用。
 
-### The keyboard {#the-keyboard}
+### 键盘 {#the-keyboard}
 
-By far the easiest and also one of the most important checks is to test if your entire website can be reached and used with the keyboard alone. Do this by:
+最最简单也是最最重要的检测是确保你的整个网站都可以被只使用键盘的用户使用和访问。你可以通过如下步骤进行检测：
 
-1. Plugging out your mouse.
-1. Using `Tab` and `Shift+Tab` to browse.
-1. Using `Enter` to activate elements.
-1. Where required, using your keyboard arrow keys to interact with some elements, such as menus and dropdowns.
+1. 拔掉鼠标
+1. 使用 `Tab` 和 `Shift+Tab` 来浏览。
+1. 使用 `Enter` 来激活元素。
+1. 当需要时，使用键盘上的方向键来和某些元素互动，比如菜单和下拉选项。
 
-### Development assistance {#development-assistance}
+### 开发辅助 {#development-assistance}
 
-We can check some accessibility features directly in our JSX code. Often intellisense checks are already provided in JSX aware IDE's for the ARIA roles, states and properties. We also
-have access to the following tool:
+我们可以直接在 JSX 代码中检测一些无障碍复制功能。通常支持 JSX 的 IDE 会针对 ARIA roles,states 和 properties 提供智能检测。我们也可以使用以下工具：
 
 #### eslint-plugin-jsx-a11y {#eslint-plugin-jsx-a11y}
 
-The [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) plugin for ESLint provides AST linting feedback regarding accessibility issues in your JSX. Many
-IDE's allow you to integrate these findings directly into code analysis and source code windows.
+ESLint 中的 [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y)插件提供为您 JSX 中的无障碍问题提供了 AST 的语法检测反馈。
+许多 IDE 都允许您把这些发现直接集成到代码分析和源文件窗口中。
 
-[Create React App](https://github.com/facebookincubator/create-react-app) has this plugin with a subset of rules activated. If you want to enable even more accessibility rules,
-you can create an `.eslintrc` file in the root of your project with this content:
+[创建 React 应用](https://github.com/facebookincubator/create-react-app)中使用了这个插件中的一部分规则。如果您想启用更多的无障碍规则，你可以在项目的根目录中创建一个有如下内容的 `.eslintrc` 文件：
 
   ```json
   {
@@ -456,77 +440,75 @@ you can create an `.eslintrc` file in the root of your project with this content
   }
   ```
 
-### Testing accessibility in the browser {#testing-accessibility-in-the-browser}
+### 在浏览器中测试无障碍辅助功能 {#testing-accessibility-in-the-browser}
 
-A number of tools exist that can run accessibility audits on web pages in your browser. Please use them in combination with other accessibility checks mentioned here as they can only
-test the technical accessibility of your HTML.
+已有很多工具可以在您的浏览器内进行网页的无障碍性验证。因为它们只能检测您 HTML 的技术无障碍性，所以请将它们与这里提到的无障碍检测工具一起使用。
 
-#### aXe, aXe-core and react-axe {#axe-axe-core-and-react-axe}
+#### aXe,aXe-core以及react-axe {#axe-axe-core-and-react-axe}
 
-Deque Systems offers [aXe-core](https://github.com/dequelabs/axe-core) for automated and end-to-end accessibility tests of your applications. This module includes integrations for Selenium.
+Deque 系统提供了 [aXe-core](https://github.com/dequelabs/axe-core) 以对您的应用进行自动及端至端无障碍性测试。这个组件包含了对 Selenium 的集成。
 
-[The Accessibility Engine](https://www.deque.com/products/axe/) or aXe, is an accessibility inspector browser extension built on `aXe-core`.
+[无障碍访问引擎（The Accessibility Engine）](https://www.deque.com/products/axe/)，简称 aXe，是一个基于 `aXe-core` 的无障碍访问性检测器。
 
-You can also use the [react-axe](https://github.com/dylanb/react-axe) module to report these accessibility findings directly to the console while developing and debugging.
+在开发和 debug 时，你也可以使用 [react-axe](https://github.com/dylanb/react-axe) 组件直接把无障碍访问的发现显示在控制台中。
 
 #### WebAIM WAVE {#webaim-wave}
 
-The [Web Accessibility Evaluation Tool](https://wave.webaim.org/extension/) is another accessibility browser extension.
+[网络无障碍性评估工具（Web Accessibility Evaluation Tool）](https://wave.webaim.org/extension/)也是一个无障碍辅助的浏览器插件。
 
-#### Accessibility inspectors and the Accessibility Tree {#accessibility-inspectors-and-the-accessibility-tree}
+#### 无障碍辅助功能检测器和无障碍辅助功能树 {#accessibility-inspectors-and-the-accessibility-tree}
 
-[The Accessibility Tree](https://www.paciellogroup.com/blog/2015/01/the-browser-accessibility-tree/) is a subset of the DOM tree that contains accessible objects for every DOM element that should be exposed
-to assistive technology, such as screen readers.
+[无障碍辅助功能树](https://www.paciellogroup.com/blog/2015/01/the-browser-accessibility-tree/)是 DOM 树的一个子集，其中包含了所有 DOM 元素中应该被暴露给无障碍辅助技术（比如屏幕朗读器）的无障碍辅助对象。
 
-In some browsers we can easily view the accessibility information for each element in the accessibility tree:
+在一些浏览器中，我们可以在无障碍辅助功能树中轻松的看到每个元素的无障碍辅助功能信息：
 
-- [Using the Accessibility Inspector in Firefox](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector)
-- [Activate the Accessibility Inspector in Chrome](https://gist.github.com/marcysutton/0a42f815878c159517a55e6652e3b23a)
-- [Using the Accessibility Inspector in OS X Safari](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
+- [在 Firefox 中使用无障碍辅助功能检测器](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector)
+- [在 Chrome 中激活无障碍辅助功能检测器](https://gist.github.com/marcysutton/0a42f815878c159517a55e6652e3b23a)
+- [在 OS X Safari 中使用无障碍辅助功能检测器](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
 
-### Screen readers {#screen-readers}
+### 屏幕朗读器 {#screen-readers}
 
-Testing with a screen reader should form part of your accessibility tests.
+使用屏幕朗读器测试应该是你无障碍辅助功能测试的一部分。
 
-Please note that browser / screen reader combinations matter. It is recommended that you test your application in the browser best suited to your screen reader of choice.
+请注意，浏览器与屏幕朗读器的组合很重要。我们建议在最适用于您的屏幕朗读器的浏览器中测试您的应用。
 
-### Commonly Used Screen Readers {#commonly-used-screen-readers}
+### 常用屏幕朗读器 {#commonly-used-screen-readers}
 
-#### NVDA in Firefox {#nvda-in-firefox}
+#### 火狐中的NVDA {#nvda-in-firefox}
 
-[NonVisual Desktop Access](https://www.nvaccess.org/) or NVDA is an open source Windows screen reader that is widely used.
+[NonVisual Desktop Access](https://www.nvaccess.org/)，简称 NVDA，是一个被广泛使用的 Windows 开源屏幕朗读器。
 
-Refer to the following guides on how to best use NVDA:
+想要了解怎么样最好的使用NVDA，请参考下面的指南：
 
-- [WebAIM - Using NVDA to Evaluate Web Accessibility](https://webaim.org/articles/nvda/)
-- [Deque - NVDA Keyboard Shortcuts](https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts)
+- [WebAIM —— 使用NVDA来评估网络的可无障碍访问性](https://webaim.org/articles/nvda/)
+- [Deque —— NVDA键盘快捷键](https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts)
 
-#### VoiceOver in Safari {#voiceover-in-safari}
+#### Safari中的VoiceOver {#voiceover-in-safari}
 
-VoiceOver is an integrated screen reader on Apple devices.
+VoiceOver 是苹果设备的自带屏幕朗读器。
 
-Refer to the following guides on how activate and use VoiceOver:
+想要了解如何激活以及使用 VoiceOver，请参考下面的指南：
 
-- [WebAIM - Using VoiceOver to Evaluate Web Accessibility](https://webaim.org/articles/voiceover/)
-- [Deque - VoiceOver for OS X Keyboard Shortcuts](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)
-- [Deque - VoiceOver for iOS Shortcuts](https://dequeuniversity.com/screenreaders/voiceover-ios-shortcuts)
+- [WebAIM —— 使用VoiceOver来评估网络的可无障碍访问性](https://webaim.org/articles/voiceover/)
+- [Deque —— OS X中的VoiceOver键盘快捷键](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)
+- [Deque —— iOS中的VoiceOver快捷键](https://dequeuniversity.com/screenreaders/voiceover-ios-shortcuts)
 
-#### JAWS in Internet Explorer {#jaws-in-internet-explorer}
+#### Internet Explorer中的JAWS {#jaws-in-internet-explorer}
 
-[Job Access With Speech](https://www.freedomscientific.com/Products/software/JAWS/) or JAWS, is a prolifically used screen reader on Windows.
+[Job Access With Speech](https://www.freedomscientific.com/Products/software/JAWS/)又称JAWS，是一个常用的Windows屏幕朗读器。
 
-Refer to the following guides on how to best use JAWS:
+想要了解如何最好的使用 VoiceOver，请参考下面的指南：
 
-- [WebAIM - Using JAWS to Evaluate Web Accessibility](https://webaim.org/articles/jaws/)
-- [Deque - JAWS Keyboard Shortcuts](https://dequeuniversity.com/screenreaders/jaws-keyboard-shortcuts)
+- [WebAIM —— 使用 JAWS 来评估网络的可无障碍访问性](https://webaim.org/articles/jaws/)
+- [Deque —— JAWS 键盘快捷键](https://dequeuniversity.com/screenreaders/jaws-keyboard-shortcuts)
 
-### Other Screen Readers {#other-screen-readers}
+### 其他屏幕朗读器 {#other-screen-readers}
 
-#### ChromeVox in Google Chrome {#chromevox-in-google-chrome}
+#### Google Chrome中的ChromeVox {#chromevox-in-google-chrome}
 
-[ChromeVox](https://www.chromevox.com/) is an integrated screen reader on Chromebooks and is available [as an extension](https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en) for Google Chrome.
+[ChromeVox](https://www.chromevox.com/)是 Chromebook 的内置屏幕朗读器，同时也是 Google Chrome 中的[一个插件](https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en)。
 
-Refer to the following guides on how best to use ChromeVox:
+想要了解如何最好的使用 ChromeVox，请参考下面的指南：
 
-- [Google Chromebook Help - Use the Built-in Screen Reader](https://support.google.com/chromebook/answer/7031755?hl=en)
-- [ChromeVox Classic Keyboard Shortcuts Reference](https://www.chromevox.com/keyboard_shortcuts.html)
+- [Google Chromebook 帮助 —— 使用内置屏幕朗读器](https://support.google.com/chromebook/answer/7031755?hl=en)
+- [ChromeVox 经典键盘快捷键参考](https://www.chromevox.com/keyboard_shortcuts.html)
