@@ -159,9 +159,7 @@ useEffect(
 
 > 注意
 >
-> 如果使用此优化，请确保依赖项数组包含**组件作用域（如 props 和 state）内被 effect 使用的所有随时间变化的值**。
->
-> 否则，你的代码将会引用上一轮渲染的旧数据。了解更多有关 [如何处理函数](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) 和如何处理 [频繁变化的数组值](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) 的信息。
+> 如果使用此优化，请确保依赖项数组包含**组件作用域（如 props 和 state）内被 effect 使用的所有随时间变化的值**。否则，你的代码将会引用上一轮渲染的旧数据。了解更多有关 [如何处理函数](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) 和如何处理 [频繁变化的数组值](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) 的信息。
 >
 > 如果你期望 effect 只会被调用一次和清理一次（在 mount 和 unmount 的时候），可以传一个空数组（`[]`）作为 `useEffect` 第二个参数。这表示你的 effect 不依赖于任何的 props 或 state，所以无需重复调用。它不是一个特例，而是遵循依赖项数组一贯的工作方式。
 >
