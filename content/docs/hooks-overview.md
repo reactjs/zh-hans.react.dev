@@ -1,6 +1,6 @@
 ---
 id: hooks-overview
-title: Hooks 概览
+title: Hook 概览
 permalink: docs/hooks-overview.html
 next: hooks-state.html
 prev: hooks-intro.html
