@@ -62,7 +62,7 @@ function ExampleWithManyStates() {
 
 Hooks 是一些可以让你在函数组件里“钩入” React state 及生命周期等特性的函数。Hooks 不能在 class 组件中使用 -- 这使得你不使用 class 也能使用 React。（我们[不推荐](/docs/hooks-intro.html#gradual-adoption-strategy)把你已有的组件全部重写，但是你可以在新组件里开始使用 Hooks。）
 
-React 内置了一些像 `useState` 这样的 Hooks。你也可以创建你自己的 Hooks 来重用不同组件之间的状态逻辑。我们会先介绍这些内置的 Hooks。
+React 内置了一些像 `useState` 这样的 Hook。你也可以创建你自己的 Hooks 来复用不同组件之间的状态逻辑。我们会先介绍这些内置的 Hook。
 
 > 详细说明
 >
