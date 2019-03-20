@@ -31,7 +31,7 @@ class Welcome extends React.Component {
 
 在 `React.Component` 的子类中有个必须定义的 [`render()`](#render) 函数。本章节介绍其他方法均为可选。
 
-**我们极其反对你创建自己的组件基类。** 在 React 组件中，[代码重用的主要方式是组合而不是继承](/docs/composition-vs-inheritance.html)。
+**我们强烈建议你不要创建自己的组件基类。** 在 React 组件中，[代码重用的主要方式是组合而不是继承](/docs/composition-vs-inheritance.html)。
 
 >注意:
 >
@@ -262,7 +262,7 @@ shouldComponentUpdate(nextProps, nextState)
 
 如果你一定要手动编写此函数，可以将 `this.props` 与 `nextProps ` 以及 `this.state` 与`nextState` 进行比较，并返回 `false` 以告知 React 可以跳过更新。请注意，返回 `false` 并不会阻止子组件在 state 更改时重新渲染。
 
-我们不建议在 `shouldComponentUpdate()` 中进行深层比较或使用 `JSON.stringify()`。这样非常影响效率，且会损害性能
+我们不建议在 `shouldComponentUpdate()` 中进行深层比较或使用 `JSON.stringify()`。这样非常影响效率，且会损害性能。
 
 目前，如果 `shouldComponentUpdate()` 返回 `false`，则不会调用 [`UNSAFE_componentWillUpdate()`](#unsafe_componentwillupdate)，[`render()`](#render) 和 [`componentDidUpdate()`](#componentdidupdate)。后续版本，React 可能会将 `shouldComponentUpdate` 视为提示而不是严格的指令，并且，当返回 `false` 时，仍可能导致组件重新渲染。
 
@@ -343,13 +343,13 @@ class ErrorBoundary extends React.Component {
   }
 
   static getDerivedStateFromError(error) {
-    // 更新 state 使下一次渲染可以显降级UI
+    // 更新 state 使下一次渲染可以显降级 UI
     return { hasError: true };
   }
 
   render() {
     if (this.state.hasError) {
-      // 你可以渲染任何自定义的降级UI
+      // 你可以渲染任何自定义的降级  UI
       return <h1>Something went wrong.</h1>;
     }
 
@@ -389,7 +389,7 @@ class ErrorBoundary extends React.Component {
   }
 
   static getDerivedStateFromError(error) {
-    // 更新 state 使下一次渲染可以显示降级UI
+    // 更新 state 使下一次渲染可以显示降级 UI
     return { hasError: true };
   }
 
@@ -404,7 +404,7 @@ class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      // 你可以渲染任何自定义的降级UI
+      // 你可以渲染任何自定义的降级 UI
       return <h1>Something went wrong.</h1>;
     }
 
