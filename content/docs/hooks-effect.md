@@ -3,7 +3,7 @@ id: hooks-state
 title: 使用 Effect Hook
 permalink: docs/hooks-effect.html
 next: hooks-rules.html
-prev: hooks-intro.html
+prev: hooks-state.html
 ---
 
 *Hook* 是 React 16.8 的新增特性。它可以让你在不使用 class 的情况下使用 state 和一些其他的 React 特性。
@@ -198,17 +198,17 @@ class FriendStatus extends React.Component {
 
 您可能认为我们需要单独的 effect 来执行清理工作。但因为添加和删除订阅的代码是如此紧密相关，所以 `useEffect` 的设计是让他们保持在同一个地方。如果你的 effect 返回了一个函数， React 将会在清理的时候执行它。
 
-```js{10-16}
+```js{6-16}
 import React, { useState, useEffect } from 'react';
 
 function FriendStatus(props) {
   const [isOnline, setIsOnline] = useState(null);
 
-  function handleStatusChange(status) {
-    setIsOnline(status.isOnline);
-  }
-
   useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
     // Specify how to clean up after this effect:
     return function cleanup() {
@@ -237,6 +237,10 @@ function FriendStatus(props) {
 
 ```js
   useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
     return () => {
       ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
@@ -316,15 +320,15 @@ function FriendStatusWithCounter(props) {
 
   const [isOnline, setIsOnline] = useState(null);
   useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
     return () => {
       ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
     };
   });
-
-  function handleStatusChange(status) {
-    setIsOnline(status.isOnline);
-  }
   // ...
 }
 ```
@@ -395,6 +399,7 @@ If you're used to classes, you might be wondering why the effect cleanup phase h
 function FriendStatus(props) {
   // ...
   useEffect(() => {
+    // ...
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
     return () => {
       ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
@@ -450,8 +455,12 @@ useEffect(() => {
 
 对于有清理阶段的 effect 这也是同样有效的：
 
-```js{6}
+```js{10}
 useEffect(() => {
+  function handleStatusChange(status) {
+    setIsOnline(status.isOnline);
+  }
+
   ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
   return () => {
     ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
@@ -463,9 +472,13 @@ useEffect(() => {
 
 >Note
 >
->如果你要使用这个优化，请确保数组中包含了**所有外部作用域中会随时间变化并且在 effect 中使用的变量**，否则你的代码会引用到先前渲染中陈旧的变量。我们在[Hooks API 参考](/docs/hooks-reference.html)中还讨论了其他的优化选项。
+>如果你要使用这个优化，请确保数组中包含了**所有外部作用域中会随时间变化并且在 effect 中使用的变量**，否则你的代码会引用到先前渲染中陈旧的变量。Learn more about [how to deal with functions](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) and [what to do when the array changes too often](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often).
 >
->如果你想要执行一个只运行一次的 effect(仅在组件加载和卸载时执行)，你可以传递一个空数组(`[]`)作为第二个参数。这就告诉 React 你的 effect 不依赖于 proprs 或 state 中的任何值，所以它永远都不需要重复执行。这并不算是一种特殊情况 -- 它依然遵循输入数组的工作方式。虽然传递 `[]` 更接近于我们熟悉的 `componentDidMount` 和 `componentWillUnmount`，但我们建议不要将它作为一种习惯，因为这经常会[像之前讨论的那样](#explanation-why-effects-run-on-each-update)导致 bug。不要忘记 React 将 `useEffect` 的运行延迟到浏览器完成绘制之后，所以做一些额外的工作并不是什么问题。
+>如果你想要执行一个只运行一次的 effect(仅在组件加载和卸载时执行)，你可以传递一个空数组(`[]`)作为第二个参数。这就告诉 React 你的 effect 不依赖于 proprs 或 state 中的任何值，所以它永远都不需要重复执行。这并不算是一种特殊情况 —— 它依然遵循输入数组的工作方式。
+>
+>If you pass an empty array (`[]`), the props and state inside the effect will always have their initial values. While passing `[]` as the second argument is closer to the familiar `componentDidMount` and `componentWillUnmount` mental model, there are usually [better](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [solutions](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) to avoid re-running effects too often. Also, don't forget that React defers running `useEffect` until after the browser has painted, so doing extra work is less of a problem.
+>
+>We recommend using the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) rule as part of our [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It warns when dependencies are specified incorrectly and suggests a fix.
 
 ## 下一步 {#next-steps}
 
