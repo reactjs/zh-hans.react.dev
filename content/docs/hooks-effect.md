@@ -85,7 +85,7 @@ class Example extends React.Component {
 
 注意，**在这个 class 中我们需要在两个生命周期函数中写重复的代码**
 
-这是因为很多情况下我们希望在组件加载和更新时执行同样的操作。从概念上说，我们希望它在每次渲染之后执行 ———— 但 React 的 class 组件没有提供这样的方法。即使我们提取出一个方法，我们还是要在两个地方调用它。
+这是因为很多情况下我们希望在组件加载和更新时执行同样的操作。从概念上说，我们希望它在每次渲染之后执行 —— 但 React 的 class 组件没有提供这样的方法。即使我们提取出一个方法，我们还是要在两个地方调用它。
 
 现在让我们来看看如何使用 `useEffect` Hook 做同样的事情。
 
@@ -133,9 +133,9 @@ function Example() {
   });
 ```
 
-我们声明了 `count` state 变量，并告诉 React 我们需要使用一个 effect。接着传递一个函数给 `useEffect` Hook。这个函数就是我们的 effect。然后使用 `document.title` 浏览器 API 设置 document 的 title。我们可以在 effct 中获取到最新的 `count` 值，因为他在函数的作用域内。当 React 渲染我们的组件时，会记住我们使用的 effect，并在更新完 DOM 后运行它。这个过程在每次渲染时都会发生，包括首次渲染。
+我们声明了 `count` state 变量，并告诉 React 我们需要使用一个 effect。接着传递一个函数给 `useEffect` Hook。这个函数就是我们的 effect。然后使用 `document.title` 浏览器 API 设置 document 的 title。我们可以在 effect 中获取到最新的 `count` 值，因为他在函数的作用域内。当 React 渲染我们的组件时，会记住我们使用的 effect，并在更新完 DOM 后运行它。这个过程在每次渲染时都会发生，包括首次渲染。
 
-经验丰富的 JavaScript 开发人员可能会注意到，传递给 `useEffect` 的函数在每次渲染中都会有所不同，这是刻意为之的。事实上这正是我们可以在 effect 中获取最新的 `count` 的值，而不用担心其过期的原因。每次我们重新渲染，都会生成一个_新的_ effect，替换掉之前的。某种意义上来说，effect 更像是渲染结果的一部分 -- 每个 effect “属于”一次特定的渲染。我们将在[本页后面(#explanation-why-effects-run-on-each-update)]更清楚地看到为什么这很有意义。
+经验丰富的 JavaScript 开发人员可能会注意到，传递给 `useEffect` 的函数在每次渲染中都会有所不同，这是刻意为之的。事实上这正是我们可以在 effect 中获取最新的 `count` 的值，而不用担心其过期的原因。每次我们重新渲染，都会生成一个_新的_ effect，替换掉之前的。某种意义上来说，effect 更像是渲染结果的一部分 —— 每个 effect “属于”一次特定的渲染。我们将在[本页后面(#explanation-why-effects-run-on-each-update)]更清楚地看到为什么这很有意义。
 
 >Tip
 >
@@ -471,13 +471,13 @@ useEffect(() => {
 
 >Note
 >
->如果你要使用这个优化，请确保数组中包含了**所有外部作用域中会随时间变化并且在 effect 中使用的变量**，否则你的代码会引用到先前渲染中陈旧的变量。Learn more about [how to deal with functions](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) and [what to do when the array changes too often](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often).
+>如果你要使用这个优化，请确保数组中包含了**所有外部作用域中会随时间变化并且在 effect 中使用的变量**，否则你的代码会引用到先前渲染中陈旧的变量。了解更多关于[如何处理函数](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)以及[数组频繁变化时的措施](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)内容。
 >
->如果你想要执行一个只运行一次的 effect(仅在组件加载和卸载时执行)，你可以传递一个空数组(`[]`)作为第二个参数。这就告诉 React 你的 effect 不依赖于 proprs 或 state 中的任何值，所以它永远都不需要重复执行。这并不算是一种特殊情况 —— 它依然遵循输入数组的工作方式。
+>如果你想要执行一个只运行一次的 effect(仅在组件加载和卸载时执行)，你可以传递一个空数组(`[]`)作为第二个参数。这就告诉 React 你的 effect 不依赖于 props 或 state 中的任何值，所以它永远都不需要重复执行。这并不算是一种特殊情况 —— 它依然遵循输入数组的工作方式。
 >
->If you pass an empty array (`[]`), the props and state inside the effect will always have their initial values. While passing `[]` as the second argument is closer to the familiar `componentDidMount` and `componentWillUnmount` mental model, there are usually [better](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [solutions](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) to avoid re-running effects too often. Also, don't forget that React defers running `useEffect` until after the browser has painted, so doing extra work is less of a problem.
+>如果你传入了一个空数组（`[]`），effect 内部的 props 和 state 就会一直拥有其初始值。由于传入 `[]` 作为第二个参数更接近大家更熟悉的 `componentDidMount` 和 `componentWillUnmount` 思维模式，所以我们可以用[更好的](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)[方法](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)来避免过过于频繁的重复调用 effect。除此之外，记住，React 直到浏览器完成画面渲染之后才会延迟调用 `useEffect`，因此做额外的工作不是大问题。
 >
->We recommend using the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) rule as part of our [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It warns when dependencies are specified incorrectly and suggests a fix.
+>推荐使用 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 规则来作为我们的 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 的部分内容。他会在错误指定依赖的时候发出警告并给出修复建议。
 
 ## 下一步 {#next-steps}
 
@@ -485,4 +485,4 @@ useEffect(() => {
 
 我们也看到了 Hook 如何解决[使用目的部分](/docs/hooks-intro.html#motivation)中提到的问题。我们看到 effect 的清理机制如何避免重复地使用 `componentDidUpdate` 和 `componentWillUnmount`，同时让相关的代码关联更加紧密，帮助我们避免一些 bug。我们还看到了我们如何根据 effect 的功能分隔他们，这是在 class 中无法做到的。
 
-此时你可能会好奇 Hook 是如何工作的。在两次渲染间，React如何知道哪个 `useState` 调用对应于哪个 state 变量？Reat 又是如何匹配前后两次渲染中的每一个 effect 的？**在下一页中我们会学习[使用 Hooks 的规则](/docs/hooks-rules.html) —— 他们对 Hook 的工作至关重要。**
+此时你可能会好奇 Hook 是如何工作的。在两次渲染间，React如何知道哪个 `useState` 调用对应于哪个 state 变量？React 又是如何匹配前后两次渲染中的每一个 effect 的？**在下一页中我们会学习[使用 Hooks 的规则](/docs/hooks-rules.html) —— 他们对 Hook 的工作至关重要。**
