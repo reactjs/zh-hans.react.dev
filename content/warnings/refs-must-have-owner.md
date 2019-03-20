@@ -31,11 +31,11 @@ permalink: warnings/refs-must-have-owner.html
 <Foo ref={foo} />
 ```
 
-如果你需要为一个组件添加 ref，首先将组件转换为一个类，或者考虑不要使用 refs，因为它们 [很少是必要的](/docs/refs-and-the-dom.html#when-to-use-refs)。
+如果你需要为一个组件添加 ref，首先将组件转换为 class，或者考虑不要使用 refs，因为它们 [是非必要的](/docs/refs-and-the-dom.html#when-to-use-refs)。
 
 ## 在 Render 方法外的字符串型 Refs {#strings-refs-outside-the-render-method}
 
-这通常意味着你试图将 ref 添加到没有所有者的组件上（即，不是在某个组件的 `render` 方法中创建的）。举个例子，这样是不起作用的：
+这通常意味着你试图将 ref 添加到没有所有者的组件上（即，不是在某个组件的 `render` 方法中创建的）。举个例子，下述代码是不起作用的：
 
 ```js
 // 不起作用！
