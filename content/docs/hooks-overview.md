@@ -70,7 +70,7 @@ React 内置了一些像 `useState` 这样的 Hooks。你也可以创建你自�
 
 ## ⚡️ Effect Hook {#effect-hook}
 
-你之前可能已经在 React 组件中执行过数据获取、订阅或者手动修改过 DOM。我们统一把这些操作称为“副作用（side-effects）”，或者简称为“作用（effects）”。
+你之前可能已经在 React 组件中执行过数据获取、订阅或者手动修改过 DOM。我们统一把这些操作称为“副作用”，或者简称为“作用”。
 
 `useEffect` 就是一个 Effect Hook，给函数组件增加了操作副作用的能力。它跟 class 组件中的 `componentDidMount`、`componentDidUpdate` 和 `componentWillUnmount` 具有相同的用途，只不过被合并成了一个 API。（我们会在[使用 Effect Hook](/docs/hooks-effect.html) 里展示对比 `useEffect` 和这些方法的例子。）
 
