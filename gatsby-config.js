@@ -9,7 +9,7 @@
 module.exports = {
   siteMetadata: {
     title: 'React: A JavaScript library for building user interfaces',
-    siteUrl: 'https://reactjs.org',
+    siteUrl: 'https://zh-hans.reactjs.org',
     rssFeedTitle: 'React',
     rssFeedDescription: 'A JavaScript library for building user interfaces',
   },
