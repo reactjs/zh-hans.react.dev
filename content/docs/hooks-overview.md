@@ -8,11 +8,11 @@ prev: hooks-intro.html
 
 *Hook* 是 React 16.8 的新增特性。它可以让你在不使用 class 的情况下使用 state 和一些其他的 React 特性。
 
-Hooks 是[向下兼容的](/docs/hooks-intro.html#no-breaking-changes)。本页面为有经验的 React 用户提供一个对 Hooks 的概览。这是一个相当快速的概览，如果你有疑惑，可以参阅下面这样的黄色提示框。
+Hook 是[向下兼容的](/docs/hooks-intro.html#no-breaking-changes)。本页面为有经验的 React 用户提供一个对 Hook 的概览。这是一个相当快速的概览，如果你有疑惑，可以参阅下面这样的黄色提示框。
 
 >详细说明
 >
->有关我们为什么要在 React 中引入 Hooks 的原因，请参考[动机](/docs/hooks-intro.html#motivation)。
+>有关我们为什么要在 React 中引入 Hook 的原因，请参考[动机](/docs/hooks-intro.html#motivation)。
 
 **↑↑↑ 每个部分的结尾都会有一个如上所示的黄色方框。** 它们会链接到更详细的说明。
 
@@ -40,7 +40,7 @@ function Example() {
 
 在这里，`useState` 就是一个 *Hook* （等下我们会讲到这是什么意思）。通过在函数组件里调用它来给组件添加一些内部 state。React 会在重复渲染时保留这个 state。`useState` 会返回一对值：**当前**状态和一个让你更新它的函数，你可以在事件处理函数中或其他一些地方调用这个函数。它类似 class 组件的 `this.setState`，唯一的区别是它不会把新的 state 和旧的 state 进行合并。（我们会在[使用 State Hook](/docs/hooks-state.html) 里展示一个对比 `useState` 和 `this.state` 的例子）。
 
-`useState` 唯一的参数就是初始 state。在上面的例子中，我们的计数器是从零开始的，所以初始 state 就是 `0`。值得注意的是，不同于 `this.state`，这里的 state 不一定要是一个对象 -- 如果你有需要，它也可以是。这个初始 state 参数只有在第一次渲染的会被用到。
+`useState` 唯一的参数就是初始 state。在上面的例子中，我们的计数器是从零开始的，所以初始 state 就是 `0`。值得注意的是，不同于 `this.state`，这里的 state 不一定要是一个对象 —— 如果你有需要，它也可以是。这个初始 state 参数只有在第一次渲染的会被用到。
 
 #### 声明多个 state 变量 {#declaring-multiple-state-variables}
 
@@ -56,13 +56,13 @@ function ExampleWithManyStates() {
 }
 ```
 
-[数组解构](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#%E8%A7%A3%E6%9E%84%E6%95%B0%E7%BB%84)的语法让我们在调用 `useState` 时可以给 state 变量取不同的名字。当然，这些名字并不是 `useState` API 的一部分。React 假设当你多次调用 `useState` 的时候，你能保证每次渲染时它们的调用顺序是不变的。后面我们会再次解释它是如何工作的以及在什么场景下使用。
+[数组解构](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring)的语法让我们在调用 `useState` 时可以给 state 变量取不同的名字。当然，这些名字并不是 `useState` API 的一部分。React 假设当你多次调用 `useState` 的时候，你能保证每次渲染时它们的调用顺序是不变的。后面我们会再次解释它是如何工作的以及在什么场景下使用。
 
 #### 那么，什么是 Hook? {#but-what-is-a-hook}
 
-Hooks 是一些可以让你在函数组件里“钩入” React state 及生命周期等特性的函数。Hooks 不能在 class 组件中使用 -- 这使得你不使用 class 也能使用 React。（我们[不推荐](/docs/hooks-intro.html#gradual-adoption-strategy)把你已有的组件全部重写，但是你可以在新组件里开始使用 Hooks。）
+Hooks 是一些可以让你在函数组件里“钩入” React state 及生命周期等特性的函数。Hooks 不能在 class 组件中使用 —— 这使得你不使用 class 也能使用 React。（我们[不推荐](/docs/hooks-intro.html#gradual-adoption-strategy)把你已有的组件全部重写，但是你可以在新组件里开始使用 Hook。）
 
-React 内置了一些像 `useState` 这样的 Hook。你也可以创建你自己的 Hooks 来复用不同组件之间的状态逻辑。我们会先介绍这些内置的 Hook。
+React 内置了一些像 `useState` 这样的 Hook。你也可以创建你自己的 Hook 来复用不同组件之间的状态逻辑。我们会先介绍这些内置的 Hook。
 
 > 详细说明
 >
@@ -130,7 +130,7 @@ function FriendStatus(props) {
 
 在这个示例中，React 会在组件销毁或者后续渲染重新执行副作用函数时取消对 `ChatAPI` 的订阅。（如果传给 `ChatAPI` 的 `props.friend.id` 没有变化，你可以也[告诉 React 跳过重新订阅](/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)。）
 
-跟 `useState` 一样，你可以在一个组件中多次使用副作用函数：
+跟 `useState` 一样，你可以在组件中多次使用副作用函数：
 
 ```js{3,8}
 function FriendStatusWithCounter(props) {
@@ -153,30 +153,30 @@ function FriendStatusWithCounter(props) {
   // ...
 ```
 
-通过使用 Hooks，你可以把组件内相关的副作用组织在一起（例如增加和取消一个订阅），而不是把它们拆分到不同的生命周期函数里。
+通过使用 Hook，你可以把组件内相关的副作用组织在一起（例如创建订阅及取消订阅），而不要把它们拆分到不同的生命周期函数里。
 
->详细说明
+> 详细说明
 >
 > 你可以在这一章节了解更多关于 `useEffect` 的内容：[使用 Effect Hook](/docs/hooks-effect.html)
 
-## ✌️ Hooks 使用规则 {#rules-of-hooks}
+## ✌️ Hook 使用规则 {#rules-of-hooks}
 
-Hooks 就是 JavaScript 函数，但是使用它们会有两个额外的规则：
+Hook 就是 JavaScript 函数，但是使用它们会有两个额外的规则：
 
-* 只能在**函数最外层**调用 Hooks。不要在循环、条件判断或者子函数中调用。
-* 只能在 **React 的函数组件**中调用 Hooks。不要在其他 JavaScript 函数中调用。（还有一个地方可以调用 Hooks -- 就是你自己的自定义 Hooks 里，我们稍后会学习到。）
+* 只能在**函数最外层**调用 Hook。不要在循环、条件判断或者子函数中调用。
+* 只能在 **React 的函数组件**中调用 Hook。不要在其他 JavaScript 函数中调用。（还有一个地方可以调用 Hook —— 就是自定义的 Hook 中，我们稍后会学习到。）
 
-我们提供了一个 [linter 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks)来自动执行这些规则。这些规则乍看起来会有一些限制和令人困惑，但是它们对于让 Hooks 能很好的工作非常重要。
+同时，我们提供了 [linter 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks)来自动执行这些规则。这些规则乍看起来会有一些限制和令人困惑，但是它们能使得 Hook 能很好的工作非常重要。
 
 >详细说明
 >
->你可以在这章节了解更多关于这些规则的内容：[Hooks 使用规则](/docs/hooks-rules.html)。
+>你可以在这章节了解更多关于这些规则的内容：[Hook 使用规则](/docs/hooks-rules.html)。
 
-## 💡 创建你自己的 Hooks {#building-your-own-hooks}
+## 💡 自定义 Hook {#building-your-own-hooks}
 
-有时候我们会想要在组件之间重用一些状态逻辑。目前为止，有两种主流方案来解决这个问题：[高阶组件](/docs/higher-order-components.html)和 [render props](/docs/render-props.html)。自定义 Hooks 可以让你在不增加组件的情况下达到同样的目的。
+有时候我们会想要在组件之间重用一些状态逻辑。目前为止，有两种主流方案来解决这个问题：[高阶组件](/docs/higher-order-components.html)和 [render props](/docs/render-props.html)。自定义 Hook 可以让你在不增加组件的情况下达到同样的目的。
 
-前面，我们介绍了一个叫 `FriendStatus` 的组件，它通过调用 `useState` 和 `useEffect` Hooks 来订阅一个好友的在线状态。假设我们想在另一个组件里重用这个订阅逻辑。
+前面，我们介绍了一个叫 `FriendStatus` 的组件，它通过调用 `useState` 和 `useEffect` 的 Hook 来订阅一个好友的在线状态。假设我们想在另一个组件里重用这个订阅逻辑。
 
 首页，我们把这个逻辑抽取到一个叫做 `useFriendStatus` 的自定义 Hook 里：
 
@@ -228,9 +228,9 @@ function FriendListItem(props) {
 }
 ```
 
-这两个组件的 state 是完全独立的。Hooks 是一种复用*状态逻辑*的方式，它不复用 state 本身。事实上 Hook 的每次*调用*都有一个完全独立的 state -- 因此你可以在单个组件中多次调用同一个自定义 Hook。
+这两个组件的 state 是完全独立的。Hook 是一种复用*状态逻辑*的方式，它不复用 state 本身。事实上 Hook 的每次*调用*都有一个完全独立的 state —— 因此你可以在单个组件中多次调用同一个自定义 Hook。
 
-自定义 Hooks 更像是一种约定而不是功能。如果函数的名字以 “`use`” 开头并调用其他 Hooks，我们就说这是一个自定义 Hook。 `useSomething` 的命名约定可以让我们的 linter 插件在使用 Hooks 的代码中找到 bug。
+自定义 Hooks 更像是一种约定而不是功能。如果函数的名字以 “`use`” 开头并调用其他 Hooks，我们就说这是一个自定义 Hook。 `useSomething` 的命名约定可以让我们的 linter 插件在使用 Hook 的代码中找到 bug。
 
 你可以创建涵盖各种场景的自定义 Hook，如表单处理、动画、订阅声明、计时器，甚至可能还有更多我们没想到的场景。我们很期待看到 React 社区会出现什么样的自定义 Hook。
 
@@ -238,7 +238,7 @@ function FriendListItem(props) {
 >
 >我们会在这一章节介绍更多关于自定义 Hook 的内容： [创建你自己的 Hooks](/docs/hooks-custom.html)。
 
-## 🔌 其他 Hooks {#-other-hooks}
+## 🔌 其他 Hook {#-other-hooks}
 
 除此之外，还有一些使用频率较低的但是很有用的 Hook。比如，[`useContext`](/docs/hooks-reference.html#usecontext) 让你不使用组件嵌套就可以订阅 React 的 Context。
 
@@ -260,13 +260,13 @@ function Todos() {
 
 >详细说明
 >
->你可以在这一章节了解更多关于所有内置 Hook 的内容：[Hooks API 索引](/docs/hooks-reference.html)。
+>你可以在这一章节了解更多关于所有内置 Hook 的内容：[Hook API 索引](/docs/hooks-reference.html)。
 
 
 ## 下一步 {#next-steps}
 
 嗯，真快！如果你还有什么东西不是很理解或者想要了解更详细的内容，可以继续阅读下一章节：[State Hook](/docs/hooks-state.html)。
 
-你也可以查看 [Hooks API 索引](/docs/hooks-reference.html) 和 [Hooks 常见问题](/docs/hooks-faq.html)。
+你也可以查阅 [Hook API 索引](/docs/hooks-reference.html) 和 [Hook 常见问题](/docs/hooks-faq.html)。
 
-最后，不要忘记查看 [Hooks 简介](/docs/hooks-intro.html)，它介绍了我们*为什么*要增加 Hooks 以及如何在不重写整个应用的情况下将 Hooks 跟 class 组件一起使用。
+最后，不要忘记查阅 [Hook 简介](/docs/hooks-intro.html)，它介绍了我们*为什么*要增加 Hook 以及如何在不重写整个应用的情况下将 Hook 跟 class 组件同时使用。
