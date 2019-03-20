@@ -74,7 +74,7 @@ render() {
 <input type="file" />
 ```
 
-在 React 中，`<input type="file" />` 始终是一个非受控组件，因为它的值只能由用户设置，而不能通过代码赋予。
+在 React 中，`<input type="file" />` 始终是一个非受控组件，因为它的值只能由用户设置，而不能通过代码控制。
 
 您应该使用 File API 与文件进行交互。下面的例子显示了如何创建一个 [DOM 节点的 ref](/docs/refs-and-the-dom.html) 从而在提交表单时获取文件的信息。
 
