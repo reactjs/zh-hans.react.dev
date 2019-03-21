@@ -69,7 +69,7 @@ class ErrorBoundary extends React.Component {
 查看通过 [React 16](/blog/2017/09/26/react-v16.0.html) [定义和使用错误边界的例子](/blog/2017/09/26/react-v16.0.html)。
 
 
-## 放置错误边界的位置 {#where-to-place-error-boundaries}
+## 错误边界应该放置在哪？ {#where-to-place-error-boundaries}
 
 错误边界的粒度由你来决定，可以将其包装在最顶层的路由组件并为用户展示一个 “Something went wrong” 的错误信息，就像服务端框架经常处理崩溃一样。你也可以将单独的部件包装在错误边界以保护应用其他部分不崩溃。 
 
