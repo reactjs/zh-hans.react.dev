@@ -97,6 +97,8 @@ const [state, setState] = useState(() => {
 
 假如你在调用 State Hook 的更新函数时，给它传入当前的 state 值，那本次更新将被跳过，React 既不会渲染子组件，也不会执行 effect。（React 使用 [`Object.is` 比较算法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) 来比较 state。）
 
+Note that React may still need to render that specific component again before bailing out. That shouldn't be a concern because React won't unnecessarily go "deeper" into the tree. If you're doing expensive calculations while rendering, you can optimize them with `useMemo`.
+
 ### `useEffect` {#useeffect}
 
 ```js
@@ -173,12 +175,26 @@ useEffect(
 ### `useContext` {#usecontext}
 
 ```js
-const context = useContext(Context);
+const value = useContext(MyContext);
 ```
 
-`useContext` 接收一个 context 对象（`React.createContext` 的返回值）并返回当前的 context 值，该值由距离组件最近的、当前 context 的 provider 提供。
+`useContext` 接收一个 context 对象（`React.createContext` 的返回值）并返回该 context 的当前值。该值由距离当前组件最近的 `<MyContext.Provider>` 的 `value` prop 确定。
 
-当 provider 更新时，`useContext` Hook 将使用最新的 context 值触发新的渲染。
+当最近的 `<MyContext.Provider>` 更新时，`useContext` Hook 将使用 `MyContext` provider 的最新 context `value` 触发组件重渲染。
+
+别忘了 `useContext` 的参数必须是 *context 对象本身*：
+
+ * **正确的：** `useContext(MyContext)`
+ * **错误的：** `useContext(MyContext.Consumer)`
+ * **错误的：** `useContext(MyContext.Provider)`
+
+调用了 `useContext` 的组件总会在 context 值变化时重新渲染。如果重渲染组件的开销较大，你可以 [通过 memoization 手段进行优化](https://github.com/facebook/react/issues/15156#issuecomment-474590693)。
+
+> 提示
+>
+> 如果你已经对 context API 很熟悉，应该明白 `useContext(MyContext)` 相当于 class 组件中的 `static contextType = MyContext` 或者 `<MyContext.Consumer>`。
+>
+> `useContext(MyContext)` 只是给你提供了 *读取* context 值和订阅 context 变化的功能。你仍然需要在组件树中使用 `<MyContext.Provider>` 为组件 *提供* context 值。
 
 ## 额外的 Hook {#additional-hooks}
 
@@ -285,6 +301,8 @@ function Counter({initialCount}) {
 
 如果你在 Reducer Hook 的 reducer 中返回当前的 state 值，那么本次更新将被跳过，React 既不会渲染子组件，也不会执行 effect。（React 使用 [`Object.is` 比较算法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description)来比较 state。）
 
+Note that React may still need to render that specific component again before bailing out. That shouldn't be a concern because React won't unnecessarily go "deeper" into the tree. If you're doing expensive calculations while rendering, you can optimize them with `useMemo`.
+
 ### `useCallback` {#usecallback}
 
 ```js
@@ -356,7 +374,16 @@ function TextInputWithFocusButton() {
 }
 ```
 
-注意， `useRef()` 并非只有 `ref` 属性的作用。它 [便于保持任何可变值](/docs/hooks-faq.html#is-there-something-like-instance-variables)，跟你在 class 中使用实例字段的效果类似。
+本质上，`useRef` 就像一个「盒子」，可以在其 `.current` 属性中保存一个可变值。
+
+refs 主要作为一种 [访问 DOM](/docs/refs-and-the-dom.html) 的方法，对此你已经很熟悉。如果以 `<div ref={myRef} />` 的绑定形式把 ref 对象传给 React，只要节点发生变化，React 都会将 ref 对象的 `.current` 属性设置为相应的 DOM 节点。
+
+然而，`useRef()` 比 `ref` 属性更有用。它可以 [很方便地保持任何可变值](/docs/hooks-faq.html#is-there-something-like-instance-variables)，其原理类似于你在 class 中使用实例字段的方式。
+
+之所以 `useRef()` 能实现上述功能，是因为它创建的是普通的 Javascript 对象。使用 `useRef()` 和你自己创建一个 `{current: ...}` 对象的唯一区别是，`useRef` 会在每次渲染时返回同一个 ref 对象。
+
+请记住，当 ref 对象内容发生变化时，`useRef` *不会* 通知你。更改 `.current` 属性不会引发组件重渲染。如果要在 React 绑定或解绑 DOM 节点的 ref 时运行某些代码，则需要使用 [回调 ref](/docs/hooks-faq.html#how-can-i-measure-a-dom-node)。
+
 
 ### `useImperativeHandle` {#useimperativehandle}
 
@@ -385,11 +412,15 @@ FancyInput = forwardRef(FancyInput);
 
 `useLayoutEffect` 的函数签名与 `useEffect` 相同，但它会在所有的 DOM 变更之后同步调用 effect。可以使用它来读取 DOM 布局，并同步地触发重渲染。在浏览器执行绘制之前，`useLayoutEffect` 内部的更新计划将被同步刷新。
 
-尽可能使用标准的 `useEffect`，以防止阻塞视图更新。
+尽可能使用标准的 `useEffect` 以避免阻塞视图更新。
 
 > 提示
 >
-> 如果你正在将代码从 class 组件迁移到使用 Hook 的函数组件，需要知道 `useLayoutEffect` 的调用时机和 `componentDidMount`、`componentDidUpdate` 一样。因此如果你不确定使用哪一种 effect Hook，使用 `useLayoutEffect` 可能是风险最小的。
+> 如果你正在将代码从 class 组件迁移到使用 Hook 的函数组件，需要知道 `useLayoutEffect` 的调用时机和 `componentDidMount`、`componentDidUpdate` 一样。然而，我们推荐你 **一开始先用 `useEffect`**，只有在出问题的时候才来尝试 `useLayoutEffect`。
+>
+> 如果你使用服务端渲染，请记住，在 Javascript 代码加载完成之前，`useLayoutEffect` 和 `useEffect` *都* 无法执行。这就是为什么 React 发现服务端渲染组件包含了 `useLayoutEffect` 代码的时候会发出警告。想解决这个问题，要么把逻辑迁移到 `useEffect`（如果首次渲染不需要这段逻辑），要么将该组件延迟到客户端渲染完了再显示（如果直到 `useLayoutEffect` 执行之前 HTML 都像坏掉一样的话）。
+>
+> 为了从服务端渲染的 HTML 中移除用到 layout effect 的组件，可以通过 `showChild && <Child />` 进行条件渲染，并使用 `useEffect(() => { setShowChild(true); }, [])` 延迟显示组件。这样，在客户端渲染完成之前，UI 就不会出现坏掉的样子。
 
 ### `useDebugValue` {#usedebugvalue}
 
