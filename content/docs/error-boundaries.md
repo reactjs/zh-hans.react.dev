@@ -89,7 +89,7 @@ React 开发团队内部对这一决定有过一些争论，但在我们的经�
 
 ## 组件栈追踪 {#component-stack-traces}
 
-React 16 会在渲染期间将所有在开发环境下抛出的错误打印到控制台，即使应用程序意外的将其掩盖。除了错误信息和 JavaScript 栈外，它还提供了组件栈追踪。现在你可以准确地查看发生在组件树内的错误信息：
+React 16 会在渲染期间将所有在开发环境下抛出的错误打印到控制台，即使应用程序意外的将其掩盖。除了错误信息和 JavaScript 栈外，React 16 还提供了组件栈追踪。现在你可以准确地查看发生在组件树内的错误信息：
 
 <img src="../images/docs/error-boundaries-stack-trace.png" style="max-width:100%" alt="Error caught by Error Boundary component">
 
