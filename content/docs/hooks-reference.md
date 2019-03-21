@@ -12,11 +12,11 @@ next: hooks-faq.html
 
 如果你是 Hook 新手，可能需要先查阅 [概览](/docs/hooks-overview.html) 一章来了解它。还能在 [常见问题](/docs/hooks-faq.html) 一章找到有用的信息。
 
-- [基础的 Hooks](#basic-hooks)
+- [基础的 Hook](#basic-hooks)
   - [`useState`](#usestate)
   - [`useEffect`](#useeffect)
   - [`useContext`](#usecontext)
-- [额外的 Hooks](#additional-hooks)
+- [额外的 Hook](#additional-hooks)
   - [`useReducer`](#usereducer)
   - [`useCallback`](#usecallback)
   - [`useMemo`](#usememo)
@@ -25,7 +25,7 @@ next: hooks-faq.html
   - [`useLayoutEffect`](#uselayouteffect)
   - [`useDebugValue`](#usedebugvalue)
 
-## 基础的 Hooks {#basic-hooks}
+## 基础的 Hook {#basic-hooks}
 
 ### `useState` {#usestate}
 
