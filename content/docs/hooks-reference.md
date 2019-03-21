@@ -121,7 +121,7 @@ useEffect(didUpdate);
 useEffect(() => {
   const subscription = props.source.subscribe();
   return () => {
-    // 清除 subscription
+    // 清除订阅
     subscription.unsubscribe();
   };
 });
@@ -318,7 +318,7 @@ const memoizedCallback = useCallback(
 
 给 `useCallback` 传一个内联的回调函数和一个依赖项数组，它会返回回调函数的 memoized 版本，该回调仅在某个依赖项改变时才更新。当你把回调函数传给优化过的、利用引用相等规则去避免非必要渲染（例如 `shouldComponentUpdate`）的子组件时，这种手段非常有用。
 
-`useCallback(fn, inputs)` 相当于 `useMemo(() => fn, inputs)`。
+`useCallback(fn, deps)` 相当于 `useMemo(() => fn, deps)`。
 
 > 注意
 >
@@ -388,7 +388,7 @@ refs 主要作为一种 [访问 DOM](/docs/refs-and-the-dom.html) 的方法，�
 ### `useImperativeHandle` {#useimperativehandle}
 
 ```js
-useImperativeHandle(ref, createHandle, [inputs])
+useImperativeHandle(ref, createHandle, [deps])
 ```
 
 `useImperativeHandle` 可以让你在使用 `ref` 时自定义暴露给父组件的实例值。在大多数情况下，应该避免使用 refs 这样的命令式代码。`useImperativeHandle` 应该和 `forwardRef` 一起使用：
