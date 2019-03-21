@@ -24,13 +24,13 @@ next: refs-and-the-dom.html
 
 首先，在终端中进入到项目根目录下。然后你需要执行以下命令：
 
-如果你使用 [Yarn](https://yarnpkg.com/), 执行：
+如果你使用 [Yarn](https://yarnpkg.com/)，执行：
 
 ```bash
 yarn add --dev flow-bin
 ```
 
-如果你使用 [npm](https://www.npmjs.com/), 执行：
+如果你使用 [npm](https://www.npmjs.com/)，执行：
 
 ```bash
 npm install --save-dev flow-bin
@@ -53,13 +53,13 @@ npm install --save-dev flow-bin
 
 最后，执行以下命令之一：
 
-如果你使用 [Yarn](https://yarnpkg.com/), 执行：
+如果你使用 [Yarn](https://yarnpkg.com/)，执行：
 
 ```bash
 yarn run flow init
 ```
 
-如果你使用 [npm](https://www.npmjs.com/), 执行：
+如果你使用 [npm](https://www.npmjs.com/)，执行：
 
 ```bash
 npm run flow init
@@ -81,23 +81,23 @@ Flow 通过这种类型注释的特殊语法扩展了 JavaScript 语言。但是
 
 >注意：
 >
->这些说明*不适用*于使用 Create React App 的用户。虽然 Create React App 底层也使用了 Babel，但它已经配置了去除 Flow。 如果你*没有*使用 Create React App，请执行此步骤。
+>这些说明*不适用*于使用 Create React App 的用户。虽然 Create React App 底层也使用了 Babel，但它已经配置了去除 Flow。如果你*没有*使用 Create React App，请执行此步骤。
 
 如果你的项目手动配置了 Babel，你需要为 Flow 安装一个特殊的 preset。
 
-如果你使用 Yarn, 执行：
+如果你使用 Yarn，执行：
 
 ```bash
 yarn add --dev babel-preset-flow
 ```
 
-如果你使用 npm, 执行：
+如果你使用 npm，执行：
 
 ```bash
 npm install --save-dev babel-preset-flow
 ```
 
-接下来将 `flow` preset 添加到你的 [Babel configuration](https://babeljs.io/docs/usage/babelrc/) 配置中。例如，如果你通过 `.babelrc` 文件配置 Babel，它可能会如下所示：
+接下来将 `flow` preset 添加到你的 [Babel 配置](https://babeljs.io/docs/usage/babelrc/) 配置中。例如，如果你通过 `.babelrc` 文件配置 Babel，它可能会如下所示：
 
 ```js{3}
 {
@@ -112,7 +112,7 @@ npm install --save-dev babel-preset-flow
 
 >注意：
 >
->Flow 不需要 react preset，但他们经常一起使用。 Flow 内置了 JSX 的语法识别。
+>Flow 不需要 react preset，但他们经常一起使用。Flow 内置了 JSX 的语法识别。
 
 #### 其他构建工具设置 {#other-build-setups}
 
@@ -126,7 +126,7 @@ npm install --save-dev babel-preset-flow
 yarn flow
 ```
 
-如果你使用 npm, 执行：
+如果你使用 npm，执行：
 
 ```bash
 npm run flow
@@ -149,7 +149,7 @@ No errors!
 
 通常，它位于文件的顶部。试着将其添加到项目的某些文件中，然后运行 `yarn flow` 或 `npm run flow` 来查看 Flow 是否已经发现了一些问题。
 
-还可以通过 [这个选项](https://flow.org/en/docs/config/options/#toc-all-boolean) 开启*所有*文件（包括没有注解的文件）的强制检查。通过 Flow 来检查全部文件对于现有的项目来说，可能导致大量修改，但对于希望完全集成 Flow 的新项目来说开启这个选项比较合理。
+还可以通过[这个选项](https://flow.org/en/docs/config/options/#toc-all-boolean)开启*所有*文件（包括没有注解的文件）的强制检查。通过 Flow 来检查全部文件对于现有的项目来说，可能导致大量修改，但对于希望完全集成 Flow 的新项目来说开启这个选项比较合理。
 
 现在一切就绪！我们建议你查看以下资源来了解有关 Flow 的更多信息：
 
@@ -160,7 +160,7 @@ No errors!
 
 ## TypeScript {#typescript}
 
-[TypeScript](https://www.typescriptlang.org/) 是一种由微软开发的编程语言。它是 JavaScript 的一个类型超集，包含独立的编译器。作为一种类型语言，TypeScript 可以在构建时发现 bug 和错误，这样程序运行时就可以避免此类错误。您可以通过 React 在 [这里](https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter) 了解更多有关在 React 中使用 TypeScript 的知识。
+[TypeScript](https://www.typescriptlang.org/) 是一种由微软开发的编程语言。它是 JavaScript 的一个类型超集，包含独立的编译器。作为一种类型语言，TypeScript 可以在构建时发现 bug 和错误，这样程序运行时就可以避免此类错误。您可以通过[此文档](https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter) 了解更多有关在 React 中使用 TypeScript 的知识。
 
 完成以下步骤，便可开始使用 TypeScript：
 * 将 TypeScript 添加到你的项目依赖中。
@@ -306,15 +306,15 @@ declare module 'querystring' {
 
 你现在已做好编码准备了！我们建议你查看以下资源来了解有关 TypeScript 的更多知识：
 
-* [TypeScript 文档: 基本类型](https://www.typescriptlang.org/docs/handbook/basic-types.html)
-* [TypeScript 文档: JavaScript 迁移](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
-* [TypeScript 文档: React 与 Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
+* [TypeScript 文档：基本类型](https://www.typescriptlang.org/docs/handbook/basic-types.html)
+* [TypeScript 文档：JavaScript 迁移](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
+* [TypeScript 文档：React 与 Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
 
 ## Reason {#reason}
 
 [Reason](https://reasonml.github.io/) 不是一种新的语言；它是一种新的语法和工具链，底层使用的是经过实战验证的 [OCaml](https://ocaml.org/) 语言。Reason 在 OCaml 之上提供了 JavaScript 程序员的熟悉语法，而且集成了现有的 NPM/Yarn 工作流。
 
-Reason 是由 Facebook 开发，并且运用在一些现有产品中比如 Messager。虽然它有一定的实验性质，但它拥有由 Facebook 维护的 [专门的 React 绑定](https://reasonml.github.io/reason-react/) 和一个 [活跃的社区](https://reasonml.github.io/docs/en/community.html)。
+Reason 是由 Facebook 开发，并且运用在一些现有产品中比如 Messager。虽然它有一定的实验性质，但它拥有由 Facebook 维护的[专门的 React 绑定](https://reasonml.github.io/reason-react/)和一个[活跃的社区](https://reasonml.github.io/docs/en/community.html)。
 
 ## Kotlin {#kotlin}
 
@@ -324,4 +324,4 @@ JetBrains 专门为 React 社区开发和维护了几个工具：[React bindings
 
 ## 其他语言 {#other-languages}
 
-注意，还有其他静态类型语言可以编译成 JavaScript，也与 React 兼容。例如，和 [elmish-react](https://elmish.github.io/react) 一起使用的 [F＃/ Fable](http://fable.io)。查看他们各自的网站以获取更多信息，并欢迎添加更多和与 React 结合的静态类型语言到这个页面！
+注意，还有其他静态类型语言可以编译成 JavaScript，也与 React 兼容。例如，和 [elmish-react](https://elmish.github.io/react) 一起使用的 [F＃/Fable](http://fable.io)。查看他们各自的网站以获取更多信息，并欢迎添加更多和与 React 结合的静态类型语言到这个页面！
