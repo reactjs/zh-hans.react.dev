@@ -141,7 +141,7 @@ No errors!
 
 ### 添加 Flow 类型注释 {#adding-flow-type-annotations}
 
-默认情况下， Flow 仅检查包含此注释的文件：
+默认情况下，Flow 仅检查包含此注释的文件：
 
 ```js
 // @flow
