@@ -41,6 +41,7 @@ prev: hooks-reference.html
   * [我该如何实现 getDerivedStateFromProps？](#how-do-i-implement-getderivedstatefromprops)
   * [有类似 forceUpdate 的东西吗？](#is-there-something-like-forceupdate)
   * [我可以引用一个函数组件吗？](#can-i-make-a-ref-to-a-function-component)
+  * [我该如何测量 DOM 节点？](#how-can-i-measure-a-dom-node)
   * [const [thing, setThing] = useState() 是什么意思？](#what-does-const-thing-setthing--usestate-mean)
 * **[性能优化](#performance-optimizations)**
   * [我可以在更新时跳过 effect 吗？](#can-i-skip-an-effect-on-updates)
@@ -451,6 +452,59 @@ function ScrollView({row}) {
 
 尽管你不应该经常需要这么做，但你可以通过 [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle) Hook 暴露一些命令式的方法给父组件。
 
+### 我该如何测量 DOM 节点？ {#how-can-i-measure-a-dom-node}
+
+要想测量一个 DOM 节点的位置或是尺寸，你可以使用 [callback ref](/docs/refs-and-the-dom.html#callback-refs)。每当 ref 被附加到一个另一个节点，React 就会调用 callback。这里有一个 [小 demo](https://codesandbox.io/s/l7m0v5x4v9):
+
+```js{4-8,12}
+function MeasureExample() {
+  const [height, setHeight] = useState(0);
+
+  const measuredRef = useCallback(node => {
+    if (node !== null) {
+      setHeight(node.getBoundingClientRect().height);
+    }
+  }, []);
+
+  return (
+    <>
+      <h1 ref={measuredRef}>Hello, world</h1>
+      <h2>The above header is {Math.round(height)}px tall</h2>
+    </>
+  );
+}
+```
+
+在这个案例中，我们没有选择使用 `useRef`，因为当 ref 是一个对象时它并不会把当前 ref 的值的 *变化* 通知到我们。使用 callback ref 可以确保 [即便子组件延迟显示被测量的节点](https://codesandbox.io/s/818zzk8m78) (比如为了响应一次点击)，我们依然能够在父组件接收到相关的信息，以便更新测量结果。
+
+注意到我们传递了 `[]` 作为 `useCallback` 的依赖列表。这确保了 ref callback 不会在再次渲染时改变，因此 React 不会在非必要的时候调用它。
+
+如果你愿意，你可以 [把这个逻辑抽取出来作为](https://codesandbox.io/s/m5o42082xy) 一个可复用的 Hook:
+
+```js{2}
+function MeasureExample() {
+  const [rect, ref] = useClientRect();
+  return (
+    <>
+      <h1 ref={ref}>Hello, world</h1>
+      {rect !== null &&
+        <h2>The above header is {Math.round(rect.height)}px tall</h2>
+      }
+    </>
+  );
+}
+
+function useClientRect() {
+  const [rect, setRect] = useState(null);
+  const ref = useCallback(node => {
+    if (node !== null) {
+      setRect(node.getBoundingClientRect());
+    }
+  }, []);
+  return [rect, ref];
+}
+```
+
 ### `const [thing, setThing] = useState()` 是什么意思？ {#what-does-const-thing-setthing--usestate-mean}
 
 如果你不熟悉这个语法，可以查看 State Hook 文档中的 [解释](/docs/hooks-state.html#tip-what-do-square-brackets-mean) 一节。
@@ -853,8 +907,13 @@ function Form() {
   const [text, updateText] = useState('');
   const textRef = useRef();
 
+<<<<<<< HEAD
   useLayoutEffect(() => {
     textRef.current = text; // 把它写入 ref
+=======
+  useEffect(() => {
+    textRef.current = text; // Write it to the ref
+>>>>>>> master
   });
 
   const handleSubmit = useCallback(() => {
@@ -894,7 +953,7 @@ function useEventCallback(fn, dependencies) {
     throw new Error('Cannot call an event handler while rendering.');
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     ref.current = fn;
   }, [fn, ...dependencies]);
 
