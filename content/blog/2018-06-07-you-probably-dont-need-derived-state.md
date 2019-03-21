@@ -1,5 +1,5 @@
 ---
-title: “你可能不需要使用 Derived State <sup><a href="#note1">[1]</a></sup>”
+title: “你可能不需要使用 Derived State ”
 author: [bvaughn]
 ---
 
@@ -12,7 +12,7 @@ React 16.4 版本修复了一个 [getDerivedStateFromProps](/blog/2018/05/23/rea
 > 下面所有的反面模式中，`componentWillReceiveProps` 和 `getDerivedStateFromProps` 都是通用的。
 
  这篇blog包含以下主题：
-* [什么时候使用 derived state](#when-to-use-derived-state)
+* [什么时候使用 derived state <sup><a href="#note1">[1]</a></sup>](#when-to-use-derived-state)
 * [derived state 的常见 bug](#common-bugs-when-using-derived-state)
   * [反面模式 <sup><a href="#note2">[2]</a></sup>：直接复制 props 到 state 上](#anti-pattern-unconditionally-copying-props-to-state)
   * [反面模式：在 props 变化后修改 state ](#anti-pattern-erasing-state-when-props-change)
