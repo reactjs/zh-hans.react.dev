@@ -8,7 +8,7 @@ permalink: docs/accessibility.html
 
 网络无障碍辅助功能（Accessibility，也被称为 [**a11y**](https://en.wiktionary.org/wiki/a11y)，因为以A开头，以Y结尾，一共11个字母）是一种可以帮助所有人获得服务的设计和创造。为了使辅助技术可以正确的解读您的网页，无障碍辅助功能是必要的。
 
-React通常使用标准HTML技术来完全支持创建具有可访问性的网站。
+React 通常使用标准 HTML 技术来完全支持创建具有可访问性的网站。
 
 ## 标准和指引 {#standards-and-guidelines}
 
@@ -16,17 +16,17 @@ React通常使用标准HTML技术来完全支持创建具有可访问性的网�
 
 [网络内容无障碍指南（Web Content Accessibility Guidelines，WCAG）](https://www.w3.org/WAI/intro/wcag) 为开发无障碍网站提供了指南。
 
-下面的 WCAG 检查表提供了一个概览：
+下面的 WCAG 检查表提供了一些概览：
 
-- [Wuchang提供的WCAG检查表（WCAG checklist from Wuhcag）](https://www.wuhcag.com/wcag-checklist/)
-- [WebAIM提供的WCAG检查表（WCAG checklist from WebAIM）](https://webaim.org/standards/wcag/checklist)
-- [A11Y Project提供的检查表（Checklist from The A11Y Project）](https://a11yproject.com/checklist.html)
+- [Wuchang 提供的 WCAG 检查表（WCAG checklist from Wuhcag）](https://www.wuhcag.com/wcag-checklist/)
+- [WebAIM 提供的 WCAG 检查表（WCAG checklist from WebAIM）](https://webaim.org/standards/wcag/checklist)
+- [A11Y Project 提供的检查表（Checklist from The A11Y Project）](https://a11yproject.com/checklist.html)
 
 ### WAI-ARIA {#wai-aria}
 
-[网络无障碍倡议 - 无障碍互联网应用（Web Accessibility Initiative - Accessible Rich Internet Applications）](https://www.w3.org/WAI/intro/aria) 文件包含了创建完全无障碍JavaScript部件所需要的技术。
+[网络无障碍倡议 - 无障碍互联网应用（Web Accessibility Initiative - Accessible Rich Internet Applications）](https://www.w3.org/WAI/intro/aria) 文件包含了创建完全无障碍 JavaScript 部件所需要的技术。
 
-注意：JSX 支持所有 `aria-*` HTML 属性。虽然大多数React的DOM变量和属性命名都使用驼峰命名（camelCased），`aria-*` 应该使用带连字符的命名法（也叫诸如hyphen-cased，kebab-case, lisp-case），就像在 HTML 中一样。
+注意：JSX 支持所有 `aria-*` HTML 属性。虽然大多数 React 的 DOM 变量和属性命名都使用驼峰命名（camelCased），`aria-*`  应该使用带连字符的命名法（也叫诸如 hyphen-cased，kebab-case, lisp-case），就像在 HTML 中一样。
 
 ```javascript{3,4}
 <input
@@ -40,11 +40,11 @@ React通常使用标准HTML技术来完全支持创建具有可访问性的网�
 ```
 
 ## HTML 语义 {#semantic-html}
-HTML 语义是无障碍辅助功能网络应用的基础。利用多种HTML元素来强化您网站中的信息通常可以使您直接获得无障碍辅助功能。
+HTML 语义是无障碍辅助功能网络应用的基础。利用多种 HTML 元素来强化您网站中的信息通常可以使您直接获得无障碍辅助功能。
 
 - [MDN 的 HTML 元素参照（MDN HTML elements reference）](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 
-在 JSX 中使用 `<div>` 元素来实现我们的 React 代码功能的时候，尤其当我们使用列表（`<ol>`， `<ul>` 和 `<dl>`）和 HTML `<table>` 时，HTML 语义会被破坏。
+在 JSX 中使用  `<div>`  元素来实现我们的 React 代码功能的时候，尤其当我们使用列表（`<ol>`， `<ul>` 和 `<dl>`）和 HTML `<table>` 时，HTML 语义会被破坏。
 在这种情况下，我们应该使用 [React Fragments](/docs/fragments.html) 来组合各个组件。
 
 举个例子，
@@ -164,7 +164,7 @@ function ListItem({ item }) {
 
 MDN Web Docs 关注了这个问题并解释了我们可以如何搭建[可用键盘导航的 JavaScript 部件](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets)。
 
-我们可以用[DOM 元素的 Refs](/docs/refs-and-the-dom.html)在 React 中设置焦点。
+我们可以用 [DOM 元素的 Refs](/docs/refs-and-the-dom.html) 在 React 中设置焦点。
 
 用以上技术，我们先在一个类的 JSX 中创建一个元素的 ref：
 
@@ -197,7 +197,7 @@ class CustomTextInput extends React.Component {
  }
  ```
 
-有时，父组件需要把焦点设置在其子组件的一个元素上。我们可以通过在子组件上设置一个特殊的 prop 来[对父组件暴露 DOM refs](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components)从而把父组件的 ref 传向子节点的 DOM 节点。
+有时，父组件需要把焦点设置在其子组件的一个元素上。我们可以通过在子组件上设置一个特殊的 prop 来[对父组件暴露 DOM refs](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components) 从而把父组件的 ref 传向子节点的 DOM 节点。
 
 ```javascript{4,12,16}
 function CustomTextInput(props) {
@@ -226,12 +226,11 @@ this.inputElement.current.focus();
 
 当使用 HOC 来延伸组件的时候，我们建议使用 React 的 `forwardRef` 函数来向被包裹的组件[转递 ref](/docs/forwarding-refs.html)。如果第三方的 HOC 不支持转递 ref，上面的方法仍可以作为一种后备。
 
-[react-aria-modal](https://github.com/davidtheclark/react-aria-modal)提供了一个很好的焦点管理的例子。这是一个少有的完全无障碍的模式窗口的例子。它不仅仅把初始焦点设置在了取消按钮上（防止键盘用户意外激活成功操作）和把键盘焦点固定在了窗口之内，关闭窗口时它也会把键盘焦点重置到打开窗口的那一个元素上。
+[react-aria-modal](https://github.com/davidtheclark/react-aria-modal)  提供了一个很好的焦点管理的例子。这是一个少有的完全无障碍的模式窗口的例子。它不仅仅把初始焦点设置在了取消按钮上（防止键盘用户意外激活成功操作）和把键盘焦点固定在了窗口之内，关闭窗口时它也会把键盘焦点重置到打开窗口的那一个元素上。
 
 >注意:
 >
->虽然这是一个非常重要的无障碍辅助功能，但它也是一种应该谨慎使用的技术。 我们应该在受到干扰时使用它来修复键盘焦点，而不是试图预测
->用户想要如何使用应用程序。
+>虽然这是一个非常重要的无障碍辅助功能，但它也是一种应该谨慎使用的技术。 我们应该在受到干扰时使用它来修复键盘焦点，而不是试图预测用户想要如何使用应用程序。
 
 ## 鼠标和指针事件 {#mouse-and-pointer-events}
 
@@ -334,7 +333,7 @@ class BlurExample extends React.Component {
   }
 
   render() {
-    // React通过把失去焦点和获得焦点事件传输给父节点来帮助我们。
+    // React 通过把失去焦点和获得焦点事件传输给父节点来帮助我们。
     return (
       <div onBlur={this.onBlurHandler}
            onFocus={this.onFocusHandler}>
@@ -368,7 +367,7 @@ class BlurExample extends React.Component {
 一个更加复杂的用户体验并不意味着更加难以访问。通过尽可能接近 HTML 编程，无障碍访问会变得更加容易，即使最复杂的部件也可以实现无障碍访问。
 
 这里我们需要了解 [ARIA Roles](https://www.w3.org/TR/wai-aria/#roles) 和 [ARIA States and Properties](https://www.w3.org/TR/wai-aria/#states_and_properties) 的知识。
-其中有包含了多种 HTML 属性的工具箱，这些HTML属性被JSX完全支持并且可以帮助我们搭建完全无障碍，功能强大的React组件。
+其中有包含了多种 HTML 属性的工具箱，这些 HTML 属性被 JSX 完全支持并且可以帮助我们搭建完全无障碍，功能强大的 React 组件。
 
 每一种部件都有一种特定的设计模式，并且用户和用户代理都会期待使用相似的方法使用它：
 
@@ -400,9 +399,9 @@ class BlurExample extends React.Component {
 - [有关色彩对比度的一切以及为何你应该重新考虑它](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
 - [A11yProject —— 什么是色彩对比度](https://a11yproject.com/posts/what-is-color-contrast/)
 
-手工计算您网站上所有恰当的色彩组合会是乏味的。所以，作为代替，你可以[使用Colorable来计算出一个完全无障碍的调色板](https://jxnblk.com/colorable/)。
+手工计算您网站上所有恰当的色彩组合会是乏味的。所以，作为代替，你可以[使用 Colorable 来计算出一个完全无障碍的调色板](https://jxnblk.com/colorable/)。
 
-下面介绍的aXe和WAVE都支持色彩对比度测试并会报告对比度错误。
+下面介绍的 aXe 和 WAVE 都支持色彩对比度测试并会报告对比度错误。
 
 如果您想扩展对比度测试能力，可以使用以下工具：
 
@@ -424,14 +423,14 @@ class BlurExample extends React.Component {
 
 ### 开发辅助 {#development-assistance}
 
-我们可以直接在 JSX 代码中检测一些无障碍复制功能。通常支持 JSX 的 IDE 会针对 ARIA roles,states 和 properties 提供智能检测。我们也可以使用以下工具：
+我们可以直接在 JSX 代码中检测一些无障碍复制功能。通常支持 JSX 的 IDE 会针对 ARIA roles，states 和 properties 提供智能检测。我们也可以使用以下工具：
 
 #### eslint-plugin-jsx-a11y {#eslint-plugin-jsx-a11y}
 
 ESLint 中的 [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y)插件提供为您 JSX 中的无障碍问题提供了 AST 的语法检测反馈。
 许多 IDE 都允许您把这些发现直接集成到代码分析和源文件窗口中。
 
-[创建 React 应用](https://github.com/facebookincubator/create-react-app)中使用了这个插件中的一部分规则。如果您想启用更多的无障碍规则，你可以在项目的根目录中创建一个有如下内容的 `.eslintrc` 文件：
+[创建 React 应用](https://github.com/facebookincubator/create-react-app)中使用了这个插件中的一部分规则。如果您想启用更多的无障碍规则，你可以在项目的根目录中创建一个有如下内容的   `.eslintrc`  文件：
 
   ```json
   {
@@ -474,28 +473,28 @@ Deque 系统提供了 [aXe-core](https://github.com/dequelabs/axe-core) 以对�
 
 ### 常用屏幕朗读器 {#commonly-used-screen-readers}
 
-#### 火狐中的NVDA {#nvda-in-firefox}
+#### 火狐中的 NVDA {#nvda-in-firefox}
 
 [NonVisual Desktop Access](https://www.nvaccess.org/)，简称 NVDA，是一个被广泛使用的 Windows 开源屏幕朗读器。
 
-想要了解怎么样最好的使用NVDA，请参考下面的指南：
+想要了解怎么样最好的使用 NVDA，请参考下面的指南：
 
-- [WebAIM —— 使用NVDA来评估网络的可无障碍访问性](https://webaim.org/articles/nvda/)
-- [Deque —— NVDA键盘快捷键](https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts)
+- [WebAIM —— 使用 NVD A来评估网络的可无障碍访问性](https://webaim.org/articles/nvda/)
+- [Deque —— NVDA 键盘快捷键](https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts)
 
-#### Safari中的VoiceOver {#voiceover-in-safari}
+#### Safari 中的 VoiceOver {#voiceover-in-safari}
 
 VoiceOver 是苹果设备的自带屏幕朗读器。
 
 想要了解如何激活以及使用 VoiceOver，请参考下面的指南：
 
-- [WebAIM —— 使用VoiceOver来评估网络的可无障碍访问性](https://webaim.org/articles/voiceover/)
-- [Deque —— OS X中的VoiceOver键盘快捷键](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)
-- [Deque —— iOS中的VoiceOver快捷键](https://dequeuniversity.com/screenreaders/voiceover-ios-shortcuts)
+- [WebAIM —— 使用 VoiceOver 来评估网络的可无障碍访问性](https://webaim.org/articles/voiceover/)
+- [Deque —— OS X 中的 VoiceOver 键盘快捷键](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)
+- [Deque —— iOS 中的 VoiceOver 快捷键](https://dequeuniversity.com/screenreaders/voiceover-ios-shortcuts)
 
-#### Internet Explorer中的JAWS {#jaws-in-internet-explorer}
+#### Internet Explorer 中的 JAWS {#jaws-in-internet-explorer}
 
-[Job Access With Speech](https://www.freedomscientific.com/Products/software/JAWS/)又称JAWS，是一个常用的Windows屏幕朗读器。
+[Job Access With Speech](https://www.freedomscientific.com/Products/software/JAWS/)又称 JAWS，是一个常用的 Windows 屏幕朗读器。
 
 想要了解如何最好的使用 VoiceOver，请参考下面的指南：
 
@@ -504,7 +503,7 @@ VoiceOver 是苹果设备的自带屏幕朗读器。
 
 ### 其他屏幕朗读器 {#other-screen-readers}
 
-#### Google Chrome中的ChromeVox {#chromevox-in-google-chrome}
+#### Google Chrome 中的 ChromeVox {#chromevox-in-google-chrome}
 
 [ChromeVox](https://www.chromevox.com/)是 Chromebook 的内置屏幕朗读器，同时也是 Google Chrome 中的[一个插件](https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en)。
 
