@@ -1,5 +1,5 @@
 ---
-title: 一个简单组件
+title: 简单组件
 order: 0
 domid: hello-example
 ---
