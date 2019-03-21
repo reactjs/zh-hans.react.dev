@@ -1,6 +1,6 @@
 ---
 id: hooks-reference
-title: Hook API 参考
+title: Hooks API 参考
 permalink: docs/hooks-reference.html
 prev: hooks-custom.html
 next: hooks-faq.html
