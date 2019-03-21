@@ -22,7 +22,7 @@ permalink: docs/error-boundaries.html
 > * 服务端渲染
 > * 它自身抛出来的错误（并非它的子组件）
 
-如果一个类组件中定义了生命周期方法 [`static getDerivedStateFromError()`](/docs/react-component.html#static-getderivedstatefromerror) 或 [`componentDidCatch()`](/docs/react-component.html#componentdidcatch) 中的任意一个（或两个），那么它就变成一个错误边界 (error boundary)。当抛出错误后，使用 `static getDerivedStateFromError()` 渲染备用 UI ，使用 `componentDidCatch()` 记录错误信息。
+如果一个类组件中定义了 [`static getDerivedStateFromError()`](/docs/react-component.html#static-getderivedstatefromerror) 或 [`componentDidCatch()`](/docs/react-component.html#componentdidcatch) 这两个生命周期方法中的任意一个（或两个）时，那么它就变成一个错误边界 (error boundary)。当抛出错误后，请使用使用 `static getDerivedStateFromError()` 渲染备用 UI ，使用 `componentDidCatch()` 记录错误信息。
 
 ```js{7-10,12-15,18-21}
 class ErrorBoundary extends React.Component {
