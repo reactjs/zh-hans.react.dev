@@ -12,7 +12,7 @@ ReactDOM.createPortal(child, container)
 
 ## 用法 {#usage}
 
-通常来讲，当你从组件的 render 方法返回一个元素时，该元素将被装载到 DOM 节点中离其最近的父节点：
+通常来讲，当你从组件的 render 方法返回一个元素时，该元素将被挂载到 DOM 节点中离其最近的父节点：
 
 ```js{4,6}
 render() {
@@ -42,7 +42,7 @@ render() {
 > 
 > 当在使用 portals 时, 记住[管理键盘焦点](/docs/accessibility.html#programmatically-managing-focus)就变得尤为重要。
 >
-> 对于模态对话框，通过遵循[WAI-ARIA 模态开发实践](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal)，来确保每个人都能够运用它。
+> 对于模态对话框，通过遵循 [WAI-ARIA 模态开发实践](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal)，来确保每个人都能够运用它。
 
 [**在 CodePen 上试一试**](https://codepen.io/gaearon/pen/yzMaBd)
 
@@ -50,7 +50,7 @@ render() {
 
 尽管 portal 可以被放置在 DOM 树中的任何地方，但在任何其他方面，其行为和普通的 React 子节点行为一致。由于 portal 仍存在于 *React 树*， 且不管 *DOM 树* 中的位置，那么无论其子节点是否是 portal，功能特性比如 context 的工作原理都是不变的。
 
-这包含事件冒泡。一个从 portal 内部触发的事件会一直冒泡至包含 *React 树* 的祖先，即便这些元素并不是 *DOM 树* 中的祖先。假设如下 HTML 结构：
+这包含事件冒泡。一个从 portal 内部触发的事件会一直冒泡至包含 *React 树*的祖先，即便这些元素并不是 *DOM 树* 中的祖先。假设存在如下 HTML 结构：
 
 ```html
 <html>
@@ -61,7 +61,7 @@ render() {
 </html>
 ```
 
-在 `#app-root` 里的 `父` 组件能够捕获到未被捕获的从兄弟节点 `#modal-root` 冒泡上来的事件。
+在 `#app-root` 里的 `Parent` 组件能够捕获到未被捕获的从兄弟节点 `#modal-root` 冒泡上来的事件。
 
 ```js{28-31,42-49,53,61-63,70-71,74}
 // These two containers are siblings in the DOM
