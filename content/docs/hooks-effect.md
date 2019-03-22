@@ -270,7 +270,7 @@ Effect Hook 使用同一个 API 来满足这两种情况。
 
 ### 提示: 使用多个 Effect 来隔离不同的问题 {#tip-use-multiple-effects-to-separate-concerns}
 
-我们使用 Hook 其中一个[目的](/docs/hooks-intro.html#complex-components-become-hard-to-understand)就是要解决 class 中生命周期函数经常包含了不相关的逻辑，但又把相关的逻辑分隔到几个不同的方法中的问题。下面这是一个组合了前面示例中的计数器和朋友状态指示器逻辑的组件
+我们使用 Hook 其中一个[目的](/docs/hooks-intro.html#complex-components-become-hard-to-understand)就是要解决 class 中生命周期函数经常包含了不相关的逻辑，但又把相关的逻辑分隔到几个不同的方法中的问题。下面这是一个组合了前面示例中的计数器和朋友状态指示器逻辑的组件：
 
 ```js
 class FriendStatusWithCounter extends React.Component {
