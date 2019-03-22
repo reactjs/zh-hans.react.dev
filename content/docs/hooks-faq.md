@@ -5,9 +5,9 @@ permalink: docs/hooks-faq.html
 prev: hooks-reference.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*Hook* 是 React 16.8 中的新增功能。它们允许您在不编写 class 的情况下使用状态和其他 React 功能。
 
-This page answers some of the frequently asked questions about [Hooks](/docs/hooks-overview.html).
+此页面回答了一些有关 [Hooks](/docs/hooks-overview.html) 的常见问题。
 
 <!--
   if you ever need to regenerate this, this snippet in the devtools console might help:
@@ -18,18 +18,18 @@ This page answers some of the frequently asked questions about [Hooks](/docs/hoo
   ).join('\n')
 -->
 
-* **[Adoption Strategy](#adoption-strategy)**
-  * [Which versions of React include Hooks?](#which-versions-of-react-include-hooks)
-  * [Do I need to rewrite all my class components?](#do-i-need-to-rewrite-all-my-class-components)
-  * [What can I do with Hooks that I couldn't with classes?](#what-can-i-do-with-hooks-that-i-couldnt-with-classes)
-  * [How much of my React knowledge stays relevant?](#how-much-of-my-react-knowledge-stays-relevant)
-  * [Should I use Hooks, classes, or a mix of both?](#should-i-use-hooks-classes-or-a-mix-of-both)
-  * [Do Hooks cover all use cases for classes?](#do-hooks-cover-all-use-cases-for-classes)
-  * [Do Hooks replace render props and higher-order components?](#do-hooks-replace-render-props-and-higher-order-components)
-  * [What do Hooks mean for popular APIs like Redux connect() and React Router?](#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router)
-  * [Do Hooks work with static typing?](#do-hooks-work-with-static-typing)
-  * [How to test components that use Hooks?](#how-to-test-components-that-use-hooks)
-  * [What exactly do the lint rules enforce?](#what-exactly-do-the-lint-rules-enforce)
+* **[适应策略](#adoption-strategy)**
+  * [哪个版本的React包括Hooks？](#which-versions-of-react-include-hooks)
+  * [我是否需要重写所有 class 组件？](#do-i-need-to-rewrite-all-my-class-components)
+  * [我能用 Hooks 做什么 class做不到的事情？](#what-can-i-do-with-hooks-that-i-couldnt-with-classes)
+  * [我的现有 React 知识中有多少能保持相关性？](#how-much-of-my-react-knowledge-stays-relevant)
+  * [我应该使用 Hooks，classes 还是两者兼而有之？](#should-i-use-hooks-classes-or-a-mix-of-both)
+  * [Hooks 涵盖了 class 的所有用例吗？](#do-hooks-cover-all-use-cases-for-classes)
+  * [Hooks 会替换 render props 和高阶组件吗？](#do-hooks-replace-render-props-and-higher-order-components)
+  * [Hooks 对流行框架的 API 来说意味着什么（Redux 的 `connect()` 和React Router 等）？](#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router)
+  * [Hooks 可以使用静态类型吗？](#do-hooks-work-with-static-typing)
+  * [如何测试使用 Hooks 的组件？](#how-to-test-components-that-use-hooks)
+  * [lint 规则究竟强制执行了什么？](#what-exactly-do-the-lint-rules-enforce)
 * **[From Classes to Hooks](#from-classes-to-hooks)**
   * [How do lifecycle methods correspond to Hooks?](#how-do-lifecycle-methods-correspond-to-hooks)
   * [How can I do data fetching with Hooks?](#how-can-i-do-data-fetching-with-hooks)
@@ -57,68 +57,68 @@ This page answers some of the frequently asked questions about [Hooks](/docs/hoo
   * [How does React associate Hook calls with components?](#how-does-react-associate-hook-calls-with-components)
   * [What is the prior art for Hooks?](#what-is-the-prior-art-for-hooks)
 
-## Adoption Strategy {#adoption-strategy}
+## 适应策略 {#adoption-strategy}
 
-### Which versions of React include Hooks? {#which-versions-of-react-include-hooks}
+### 哪个版本的React包括Hooks？ {#which-versions-of-react-include-hooks}
 
-Starting with 16.8.0, React includes a stable implementation of React Hooks for:
+从 16.8.0 开始，React 已经针对以下生态，包含稳定的React Hooks实现：
 
-* React DOM
-* React DOM Server
-* React Test Renderer
-* React Shallow Renderer
+- React DOM
+- React DOM Server
+- React Test Renderer
+- React Shallow Renderer
 
-Note that **to enable Hooks, all React packages need to be 16.8.0 or higher**. Hooks won't work if you forget to update, for example, React DOM.
+请注意，**要启用Hook，所有 React 包都需要为 16.8.0 或更高版本**。如果您忘记更新（例如，React DOM），Hooks 将无法工作。
 
-React Native will fully support Hooks in its next stable release.
+React Native 将在下一个稳定版本中完全支持 Hooks。
 
-### Do I need to rewrite all my class components? {#do-i-need-to-rewrite-all-my-class-components}
+### 我是否需要重写所有 class 组件？ {#do-i-need-to-rewrite-all-my-class-components}
 
-No. There are [no plans](/docs/hooks-intro.html#gradual-adoption-strategy) to remove classes from React -- we all need to keep shipping products and can't afford rewrites. We recommend trying Hooks in new code.
+不需要，我们 [没有计划](https://zh-hans.reactjs.org/docs/hooks-intro.html#gradual-adoption-strategy) 在 React 中删除 Class —— 我们都需要保持出货的产品（ keep shipping products ），不可能承受重写的成本。我们建议你在新代码中尝试使用Hook。
 
-### What can I do with Hooks that I couldn't with classes? {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
+### 我能用 Hooks 做什么 class做不到的事情？{#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
 
-Hooks offer a powerful and expressive new way to reuse functionality between components. ["Building Your Own Hooks"](/docs/hooks-custom.html) provides a glimpse of what's possible. [This article](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889) by a React core team member dives deeper into the new capabilities unlocked by Hooks.
+Hooks 提供了一种强大而富有表现力的新方法，可以在组件之间重用功能。[“建立自己的钩子”](https://zh-hans.reactjs.org/docs/hooks-custom.html) 提供了可能的一瞥。React核心团队成员 [撰写的这篇文章](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889) 深入探讨了 Hooks 所解锁的新功能。
 
-### How much of my React knowledge stays relevant? {#how-much-of-my-react-knowledge-stays-relevant}
+### 我的现有React知识中有多少能保持相关性？{#how-much-of-my-react-knowledge-stays-relevant}
 
-Hooks are a more direct way to use the React features you already know -- such as state, lifecycle, context, and refs. They don't fundamentally change how React works, and your knowledge of components, props, and top-down data flow is just as relevant.
+Hooks给你提供了一种更加直接使用 React 相关功能——例如 state，生命周期，context 和 ref 的方式。但它们并没有从根本上改变 React 的工作方式，因此你对组件，props 和自上而下数据流的了解也同样重要。
 
-Hooks do have a learning curve of their own. If there's something missing in this documentation, [raise an issue](https://github.com/reactjs/reactjs.org/issues/new) and we'll try to help.
+Hooks 确实有自己的学习曲线。如果本文档中缺少某些内容，请[提出issue](https://github.com/reactjs/reactjs.org/issues/new)，我们会尽力提供帮助。
 
-### Should I use Hooks, classes, or a mix of both? {#should-i-use-hooks-classes-or-a-mix-of-both}
+### 我应该使用 Hooks，classes 还是两者兼而有之？ {#should-i-use-hooks-classes-or-a-mix-of-both}
 
-When you're ready, we'd encourage you to start trying Hooks in new components you write. Make sure everyone on your team is on board with using them and familiar with this documentation. We don't recommend rewriting your existing classes to Hooks unless you planned to rewrite them anyway (e.g. to fix bugs).
+当你准备好了，我们鼓励你开始尝试在你新组件中使用Hooks。请确保团队中的每个人都使用它们并熟悉本文档。我们不建议将现有 Class 重写为 Hooks，除非你计划重写它们（例如修复 bugs）。
 
-You can't use Hooks *inside* of a class component, but you can definitely mix classes and function components with Hooks in a single tree. Whether a component is a class or a function that uses Hooks is an implementation detail of that component. In the longer term, we expect Hooks to be the primary way people write React components.
+你不能在类组件*中*使用 Hooks ，但你绝对可以在一棵组件树中将 class 组件和使用 Hooks 的函数组件混合在一起。无论一个组件是 class 还是使用 Hook 的函数，这只是该组件的实现细节。当然从长远来看，我们希望 Hooks 成为人们编写 React 组件的主要方式。
 
-### Do Hooks cover all use cases for classes? {#do-hooks-cover-all-use-cases-for-classes}
+### Hooks涵盖了Class的所有用例吗？{#do-hooks-cover-all-use-cases-for-classes}
 
-Our goal is for Hooks to cover all use cases for classes as soon as possible. There are no Hook equivalents to the uncommon `getSnapshotBeforeUpdate` and `componentDidCatch` lifecycles yet, but we plan to add them soon.
+我们的目标是让Hooks尽快涵盖Class的所有用例。对于不常见`getSnapshotBeforeUpdate`和`componentDidCatch`生命周期目前还没有对应的Hook，但我们计划会很快添加上。
 
-It is an early time for Hooks, and some third-party libraries might not be compatible with Hooks at the moment.
+对于Hook来说，现在还是一个非常早的时期，因此，在当下某些第三方库可能与Hook不兼容。
 
-### Do Hooks replace render props and higher-order components? {#do-hooks-replace-render-props-and-higher-order-components}
+### Hooks会替换render props和高阶组件吗？ {#do-hooks-replace-render-props-and-higher-order-components}
 
-Often, render props and higher-order components render only a single child. We think Hooks are a simpler way to serve this use case. There is still a place for both patterns (for example, a virtual scroller component might have a `renderItem` prop, or a visual container component might have its own DOM structure). But in most cases, Hooks will be sufficient and can help reduce nesting in your tree.
+通常，render props 和高阶组件只渲染一个 children。我们认为使用 Hooks 实现这种用例将会更加简单。就目前而言，这两种模式仍然有其立足之地（例如，虚拟滚动组件可能具有`renderItem`prop，或者可视容器组件可能具有其自己的 DOM 结构）。但在大多数情况下，使用Hooks就足够了，它可以帮助你减少组件树中的嵌套。
 
-### What do Hooks mean for popular APIs like Redux `connect()` and React Router? {#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router}
+### Hook对流行框架的API来说意味着什么（Redux的`connect()`和React Router等）？ {#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router}
 
-You can continue to use the exact same APIs as you always have; they'll continue to work.
+首先，你还可以继续像以往一样使用这些API，没有任何影响。（毕竟函数组件和Class组件本质上没太多区别）
 
-In the future, new versions of these libraries might also export custom Hooks such as `useRedux()` or `useRouter()` that let you use the same features without needing wrapper components.
+其次，在未来这些库的新版本也可能导出自定义Hook，例如，`useRedux()`或者`useRouter()`允许你使用相同的功能而不需要包装器组件。
 
-### Do Hooks work with static typing? {#do-hooks-work-with-static-typing}
+### Hooks可以使用静态类型吗？ {#do-hooks-work-with-static-typing}
 
-Hooks were designed with static typing in mind. Because they're functions, they are easier to type correctly than patterns like higher-order components. The latest Flow and TypeScript React definitions include support for React Hooks.
+Hooks 的设计考虑了静态类型。因为它们是函数，所以它们比高阶组件之类的模式更容易正确键入。最新的 Flow 和 TypeScript 已经包含 React Hooks 的定义。
 
-Importantly, custom Hooks give you the power to constrain React API if you'd like to type them more strictly in some way. React gives you the primitives, but you can combine them in different ways than what we provide out of the box.
+重要的是，如果你想以某种方式更严格地键入React API，则可以考虑使用自定义 Hook，它可以让你有权限制React API。React 为你提供了原语，但你可以采用与我们提供的开箱即用方式所不同的方式将它们组合在一起。
 
-### How to test components that use Hooks? {#how-to-test-components-that-use-hooks}
+### 如何测试使用Hooks的组件？ {#how-to-test-components-that-use-hooks}
 
-From React's point of view, a component using Hooks is just a regular component. If your testing solution doesn't rely on React internals, testing components with Hooks shouldn't be different from how you normally test components.
+从React的角度来看，使用Hooks的组件也只是一个普通的组件。如果你的测试解决方案不依赖于React内部，则测试使用了Hooks的组件应与你正常测试组件的方式相同。
 
-For example, let's say we have this counter component:
+例如，假设我们有这个计数器组件：
 
 ```js
 function Example() {
@@ -137,7 +137,7 @@ function Example() {
 }
 ```
 
-We'll test it using React DOM. To make sure that the behavior matches what happens in the browser, we'll wrap the code rendering and updating it into [`ReactTestUtils.act()`](/docs/test-utils.html#act) calls:
+我们将使用 React DOM 进行测试。为了确保行为与浏览器中发生的行为相匹配，我们将代码的渲染和更新包装进 [`ReactTestUtils.act()`](https://zh-hans.reactjs.org/docs/test-utils.html#act) 调用：
 
 ```js{3,20-22,29-31}
 import React from 'react';
@@ -176,22 +176,22 @@ it('can render and update a counter', () => {
 });
 ```
 
-The calls to `act()` will also flush the effects inside of them.
+`act() `的调用也将刷新它们内部的 effects。
 
-If you need to test a custom Hook, you can do so by creating a component in your test, and using your Hook from it. Then you can test the component you wrote.
+如果你需要测试自定义Hook，可以通过在测试中创建一个组件并使用自定义Hook来实现。然后，你就可以测试你所编写的组件。
 
-To reduce the boilerplate, we recommend using [`react-testing-library`](https://git.io/react-testing-library) which is designed to encourage writing tests that use your components as the end users do.
+为了减少样板，我们建议使用 [`react-testing-library`](https://git.io/react-testing-library) ，这个库旨在鼓励为你的组件编写测试。它们会像呈现给最终用户那样被测试。
 
-### What exactly do the [lint rules](https://www.npmjs.com/package/eslint-plugin-react-hooks) enforce? {#what-exactly-do-the-lint-rules-enforce}
+### [lint规则](https://www.npmjs.com/package/eslint-plugin-react-hooks)究竟强制执行了什么？{#what-exactly-do-the-lint-rules-enforce}
 
-We provide an [ESLint plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) that enforces [rules of Hooks](/docs/hooks-rules.html) to avoid bugs. It assumes that any function starting with "`use`" and a capital letter right after it is a Hook. We recognize this heuristic isn't perfect and there may be some false positives, but without an ecosystem-wide convention there is just no way to make Hooks work well -- and longer names will discourage people from either adopting Hooks or following the convention.
+我们提供了一个 [ESLint插件](https://www.npmjs.com/package/eslint-plugin-react-hooks)，它强制执行 [Hooks规则](/docs/hooks-rules.html) 以避免错误。它假设任何以“ `use`” 开头的函数和紧跟在它之后的大写字母是一个 Hook。我们认识到这种启发式方法并不完美，可能存在一些误报，但如果没有整个生态系统的约定，就没有办法让Hooks 良好的运作 —— 更长的名字会阻止人们采用 Hooks 或遵循其惯例。
 
-In particular, the rule enforces that:
+特别是，该规则强制执行：
 
-* Calls to Hooks are either inside a `PascalCase` function (assumed to be a component) or another `useSomething` function (assumed to be a custom Hook).
-* Hooks are called in the same order on every render.
+- 对 Hooks 的调用要么在*Pascal*命名法（PascalCase）的函数内部（假设是一个组件），要么是另一个`useSomething`函数（假定为自定义Hook）。
+- 在每个渲染上以相同的顺序调用 Hook。
 
-There are a few more heuristics, and they might change over time as we fine-tune the rule to balance finding bugs with avoiding false positives.
+还有一些启发式方法，它们可能会随着时间的推移而改变，因为我们会对规则进行微调以寻求在发现错误和避免误报之间的平衡
 
 ## From Classes to Hooks {#from-classes-to-hooks}
 
