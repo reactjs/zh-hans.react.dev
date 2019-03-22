@@ -477,7 +477,7 @@ useEffect(() => {
 >
 >如果你传入了一个空数组（`[]`），effect 内部的 props 和 state 就会一直拥有其初始值。由于传入 `[]` 作为第二个参数更接近大家更熟悉的 `componentDidMount` 和 `componentWillUnmount` 思维模式，所以我们可以用[更好的](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)[方法](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)来避免过过于频繁的重复调用 effect。除此之外，记住，React 直到浏览器完成画面渲染之后才会延迟调用 `useEffect`，因此做额外的工作不是大问题。
 >
->推荐使用 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 规则来作为我们的 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 的部分内容。他会在错误指定依赖的时候发出警告并给出修复建议。
+>我们推荐启用 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 中的 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 规则。他会在错误指定依赖的时候发出警告并给出修复建议。
 
 ## 下一步 {#next-steps}
 
