@@ -41,7 +41,7 @@ function Example() {
 >
 >如果你熟悉 React class 的生命周期函数，你可以把 `useEffect` Hook 看做 `componentDidMount`，`componentDidUpdate` 和 `componentWillUnmount` 这三个函数的组合。
 
-通常来说在 React 组件中有两种副作用操作：需要清理的和不需要清理的。我们来更仔细地看一下他们之间的区别
+在 React 组件中有两种常见副作用操作：需要清理的和不需要清理的。我们来更仔细地看一下他们之间的区别。
 
 ## 无需清理的 Effect {#effects-without-cleanup}
 
