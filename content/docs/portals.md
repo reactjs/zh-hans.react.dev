@@ -3,7 +3,9 @@ id: portals
 title: Portals
 permalink: docs/portals.html
 ---
+
 Portals 提供了一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案。
+
 ```js
 ReactDOM.createPortal(child, container)
 ```
@@ -24,6 +26,7 @@ render() {
   );
 }
 ```
+
 然而，有时候将子元素插入到 DOM 节点中的不同位置也是有好处的：
 
 ```js{6}
@@ -36,6 +39,7 @@ render() {
   );
 }
 ```
+
 对于 portals 的一个典型用例是当父组件有 `overflow: hidden` 或 `z-index` 样式时，但你需要子组件能够在视觉上“跳出”其容器。例如，对话框、悬浮卡以及提示框：
 
 > 注意:
