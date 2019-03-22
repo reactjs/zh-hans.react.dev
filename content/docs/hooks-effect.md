@@ -333,7 +333,7 @@ function FriendStatusWithCounter(props) {
 }
 ```
 
-**Hook 允许我们按照代码的用途分割他们**，而不是像生命周期函数那样。React 将按照 effect 声明的顺序依次调用组件中的*每一个* effect
+**Hook 允许我们按照代码的用途分割他们**，而不是像生命周期函数那样。React 将按照 effect 声明的顺序依次调用组件中的*每一个* effect。
 
 ### 解释: 为什么每次更新的时候都要运行 Effect {#explanation-why-effects-run-on-each-update}
 
