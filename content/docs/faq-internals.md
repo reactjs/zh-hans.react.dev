@@ -8,7 +8,7 @@ category: FAQ
 
 ### 什么是虚拟 DOM？ {#what-is-the-virtual-dom}
 
-虚拟 DOM 是一种编程概念。在这个概念里，一种想象的，或者说“虚拟的” UI 会被保存于内存中，并通过如 ReactDOM 等类库使之与“真实的” DOM 同步。这一过程叫做[协调](/docs/reconciliation.html)。
+虚拟 DOM 是一种编程概念。在这个概念里， UI 以一种理想化的，或者说“虚拟的”表现形式被保存于内存中，并通过如 ReactDOM 等类库使之与“真实的” DOM 同步。这一过程叫做[协调](/docs/reconciliation.html)。
 
 这种方式采用了 React 的声明式 API：您告诉 React 希望让 UI 是什么状态，React 就确保 DOM 匹配该状态。这使您在构建应用程序时，省去了属性操作、事件处理和手动 DOM 更新。
 
