@@ -16,7 +16,7 @@ category: FAQ
 
 ### 影子 DOM 和虚拟 DOM 是一回事吗？ {#is-the-shadow-dom-the-same-as-the-virtual-dom}
 
-不，他们不一样。影子 DOM 是一种浏览器技术，主要用于在 web 组件中封装变量和 CSS。虚拟 DOM 则是一种概念，由 Javascript 类库基于浏览器 API 实现。
+不，他们不一样。Shadow DOM 是一种浏览器技术，主要用于在 web 组件中封装变量和 CSS。Virtual DOM 则是一种由 Javascript 类库基于浏览器 API 实现的概念。
 
 ### 什么是“React Fiber”？ {#what-is-react-fiber}
 
