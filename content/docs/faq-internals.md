@@ -14,7 +14,7 @@ category: FAQ
 
 由于“虚拟 DOM”相比于特定的技术更像是一种模式，我们提到它有时也代表不同的含义。在 React 世界里，术语“虚拟 DOM”通常与[React 元素](/docs/rendering-elements.html)关联在一起，因为它们都是呈现 UI 的对象。而 React 也使用一个名为“fibers”的内部对象来存放组件树的其他信息。上述二者也被认为是 React 中“虚拟 DOM ”实现的一部分。
 
-### 影子 DOM 和虚拟 DOM 是一回事吗？ {#is-the-shadow-dom-the-same-as-the-virtual-dom}
+### Shadow DOM 和 Virtual DOM 是一回事吗？ {#is-the-shadow-dom-the-same-as-the-virtual-dom}
 
 不，他们不一样。Shadow DOM 是一种浏览器技术，主要用于在 web 组件中封装变量和 CSS。Virtual DOM 则是一种由 Javascript 类库基于浏览器 API 实现的概念。
 
