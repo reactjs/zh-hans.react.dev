@@ -210,7 +210,7 @@ class MouseTracker extends React.Component {
 
 现在，我们提供了一个 `render` 方法 让 `<Mouse>` 能够动态决定什么需要渲染，而不是克隆 `<Mouse>` 组件然后硬编码来解决特定的用例。
 
-更具体地说, **render prop 是一个用于告知组件需要渲染什么内容的函数 prop 。**
+更具体地说，**render prop 是一个用于告知组件需要渲染什么内容的函数 prop。**
 
 这项技术使我们共享行为非常容易。要获得这个行为，只要渲染一个带有 `render` prop 的 `<Mouse>` 组件就能够告诉它当前鼠标坐标 (x, y) 要渲染什么。
 
