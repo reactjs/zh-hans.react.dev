@@ -1,6 +1,6 @@
 ---
 id: faq-internals
-title: 虚拟 DOM 及内核
+title: Virtual DOM 及内核
 permalink: docs/faq-internals.html
 layout: docs
 category: FAQ
