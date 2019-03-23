@@ -256,7 +256,7 @@ function withMouse(Component) {
 </Mouse>
 ```
 
-你将在 [react-motion](https://github.com/chenglou/react-motion) API中看到此技术。
+你将在 [react-motion](https://github.com/chenglou/react-motion) 的 API 中看到此技术。
 
 由于这一技术的特殊性，当你在设计一个类似的 API 时，你或许会要直接地在你的 propTypes 里声明 children 的类型应为一个函数。
 
