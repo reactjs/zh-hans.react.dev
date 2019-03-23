@@ -242,7 +242,7 @@ function withMouse(Component) {
 
 ```js
 <Mouse children={mouse => (
-  <p> 鼠标的位置是{mouse.x}, {mouse.y}</p>
+  <p>鼠标的位置是 {mouse.x}，{mouse.y}</p>
 )}/>
 ```
 
