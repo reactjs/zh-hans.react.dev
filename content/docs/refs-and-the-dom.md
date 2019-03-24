@@ -131,7 +131,7 @@ class AutoFocusTextInput extends React.Component {
 }
 ```
 
-请注意，这仅在 `CustomTextInput` 声明为类时才有效：
+请注意，这仅在 `CustomTextInput` 声明为 class 时才有效：
 
 ```js{1}
 class CustomTextInput extends React.Component {
