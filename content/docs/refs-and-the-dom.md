@@ -251,7 +251,7 @@ class CustomTextInput extends React.Component {
 }
 ```
 
-React 将在组件挂载时，会调用 `ref` 回调函数并传入 DOM 元素，当卸载时调用它并传入 null。在 `componentDidMount` 或 `componentDidUpdate` 触发前，React 会保证refs 一定是最新的。
+React 将在组件挂载时，会调用 `ref` 回调函数并传入 DOM 元素，当卸载时调用它并传入 `null`。在 `componentDidMount` 或 `componentDidUpdate` 触发前，React 会保证 refs 一定是最新的。
 
 你可以在组件间传递回调形式的 refs，就像你可以传递通过 `React.createRef()` 创建的对象 refs 一样。
 
