@@ -138,7 +138,7 @@ class CustomTextInput extends React.Component {
 }
 ```
 
-#### Refs 与函数式组件 {#refs-and-function-components}
+#### Refs 与函数组件 {#refs-and-function-components}
 
 **你不能在函数式组件上使用 ref 属性**，因为它们没有实例：
 
