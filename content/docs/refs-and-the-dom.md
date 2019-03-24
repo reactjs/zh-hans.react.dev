@@ -63,7 +63,7 @@ ref 的值根据节点的类型而有所不同：
 
 - 当 `ref` 属性用于 HTML 元素时，构造函数中使用 `React.createRef()` 创建的 `ref` 接收底层 DOM 元素作为其 `current` 属性。
 - 当 `ref` 属性用于自定义 class 组件时，`ref` 对象接收组件的挂载实例作为其 `current` 属性。
-- **你不能在函数式组件上使用 `ref` 属性**，因为他们没有实例。
+- **你不能在函数组件上使用 `ref` 属性**，因为他们没有实例。
 
 以下例子说明了这些差异。
 
@@ -140,7 +140,7 @@ class CustomTextInput extends React.Component {
 
 #### Refs 与函数组件 {#refs-and-function-components}
 
-**你不能在函数式组件上使用 ref 属性**，因为它们没有实例：
+**你不能在函数组件上使用 ref 属性**，因为它们没有实例：
 
 ```javascript{1,8,13}
 function MyFunctionComponent() {
@@ -163,7 +163,7 @@ class Parent extends React.Component {
 
 如果你需要使用 ref，你应该将组件转化为一个 class，就像当你需要使用生命周期钩子或 state 时一样。
 
-不管怎样，你可以**在函数式组件内部使用 `ref` 属性**，只要它指向一个 DOM 元素或 class 组件：
+不管怎样，你可以**在函数组件内部使用 `ref` 属性**，只要它指向一个 DOM 元素或 class 组件：
 
 ```javascript{2,3,6,13}
 function CustomTextInput(props) {
@@ -193,7 +193,7 @@ function CustomTextInput(props) {
 
 在极少数情况下，你可能希望在父组件中引用子节点的 DOM 节点。通常不建议这样做，因为它会打破组件的封装，但它偶尔可用于触发焦点或测量子 DOM 节点的大小或位置。
 
-虽然你可以[向子组件添加 ref](#adding-a-ref-to-a-class-component)，但这不是一个理想的解决方案，因为你只能获取组件实例而不是 DOM 节点。并且，它还在函数式组件上无效。
+虽然你可以[向子组件添加 ref](#adding-a-ref-to-a-class-component)，但这不是一个理想的解决方案，因为你只能获取组件实例而不是 DOM 节点。并且，它还在函数组件上无效。
 
 如果你使用 16.3 或更高版本的 React, 这种情况下我们推荐使用 [ref 转发](/docs/forwarding-refs.html)。**Ref 转发使组件可以像暴露自己的 ref 一样暴露子组件的 ref**。关于怎样对父组件暴露子组件的 DOM 节点，在 [ref 转发文档](/docs/forwarding-refs.html#forwarding-refs-to-dom-components)中有一个详细的例子。
 
