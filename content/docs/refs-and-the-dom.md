@@ -31,7 +31,7 @@ Refs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法�
 
 你可能首先会想到使用 refs 在你的 app 中“让事情发生”。如果是这种情况，请花一点时间，认真再考虑一下 state 属性应该被安排在哪个组件层中。通常你会想明白，让更高的组件层级拥有这个 state，是更恰当的。查看 [状态提升](/docs/lifting-state-up.html) 以获取更多有关示例。
 
-> 注意：
+> 注意
 >
 > 下面的例子已经更新为使用在 React 16.3 版本引入的 `React.createRef()` API。如果你正在使用一个较早版本的 React，我们推荐你使用[回调形式的 refs](#callback-refs)。
 
