@@ -1,38 +1,38 @@
 ---
-title: “你可能不需要使用派生状态”
+title: "你可能不需要使用派生 state"
 author: [bvaughn]
 ---
 
 React 16.4 版本修复了一个 [getDerivedStateFromProps 的 bug ](/blog/2018/05/23/react-v-16-4.html#bugfix-for-getderivedstatefromprops)，这个 bug 会在 React components 复现一些已知的 bug 。如果这个版本导致出现的问题，导致您在修复过之后还已知出现的话，我们非常抱歉。在这篇文章里，我们会展示一些常见的反面模式，和相对应的，我们推荐的模式。
 
-在很长一段时间内，生命周期函数 `componentWillReceiveProps` 是响应 Props 变化之后进行更新的唯一方式。16.3 版本里, [我们介绍了一个替代版的生命周期函数： `getDerivedStateFromProps`](/blog/2018/03/29/react-v-16-3.html#component-lifecycle-changes) ，尝试用一个更安全的方式达到同样的目的。与此同时，我们意识到人们对如何使用这两种方法存在许多误解，并且我们发现反模式会导致细微而混乱的错误。16.4 版本修复的这个 bug ， [让派生状态（ derived state ）更加可控](https://github.com/facebook/react/issues/12898)，会让滥用导致的 bug 更容易被发现。
+在很长一段时间内，生命周期函数 `componentWillReceiveProps` 是响应 Props 变化之后进行更新的唯一方式。16.3 版本里, [我们介绍了一个替代版的生命周期函数： `getDerivedStateFromProps`](/blog/2018/03/29/react-v-16-3.html#component-lifecycle-changes) ，尝试用一个更安全的方式达到同样的目的。与此同时，我们意识到人们对如何使用这两种方法存在许多误解，并且我们发现反模式会导致细微而混乱的错误。16.4 版本修复的这个 bug ， [让派生 state 更加可控](https://github.com/facebook/react/issues/12898)，会让滥用导致的 bug 更容易被发现。
 
 > 注意
 >
 > 下面所有的反面模式中，`componentWillReceiveProps` 和 `getDerivedStateFromProps` 都是通用的。
 
  这篇blog包含以下主题：
-* [什么时候使用派生状态](#when-to-use-derived-state)
-* [派生状态的常见 bug](#common-bugs-when-using-derived-state)
+* [什么时候使用派生 state ](#when-to-use-derived-state)
+* [派生 state 的常见 bug](#common-bugs-when-using-derived-state)
   * [反面模式 <sup><a href="#note1">[1]</a></sup>：直接复制 props 到 state 上](#anti-pattern-unconditionally-copying-props-to-state)
   * [反面模式：在 props 变化后修改 state ](#anti-pattern-erasing-state-when-props-change)
 * [建议的模式](#preferred-solutions)
 * [尝试一下 memoization ？](#what-about-memoization)
 
-## 什么时候使用派生状态 {#when-to-use-derived-state}
+## 什么时候使用派生 state  {#when-to-use-derived-state}
 
 `getDerivedStateFromProps` 的存在只有一个目的：让组件在 **props 变化**时更新 state 。上一个 blog 展示了一些示例，比如 [props 的 offset 变化时，修改当前的滚动方向](/blog/2018/03/27/update-on-async-rendering.html#updating-state-based-on-props)和[根据 props 变化加载外部数据](/blog/2018/03/27/update-on-async-rendering.html#fetching-external-data-when-props-change)。
 
-我们没有提供很多示例，应为有**保守使用派生状态** 这个规则。大部分使用派生状态导致的问题，不外乎两个原因：1，直接复制 props 到 state 上；2，如果 props 和 state 不一致就更新 state 。下面的示例包含了这两种情况。
+我们没有提供很多示例，应为有**保守使用派生 state ** 这个规则。大部分使用派生 state 导致的问题，不外乎两个原因：1，直接复制 props 到 state 上；2，如果 props 和 state 不一致就更新 state 。下面的示例包含了这两种情况。
 
-* 如果你只是为了缓存（ memoize ）基于当前 props 计算后的结果的话，你就没必要使用派生状态。[尝试一下 memoization ？](#what-about-memoization)。
+* 如果你只是为了缓存（ memoize ）基于当前 props 计算后的结果的话，你就没必要使用派生 state 。[尝试一下 memoization ？](#what-about-memoization)。
 * 如果只是用来保存 props 或者和当前 state 比较之后不一致后更新 state ，那你的组件应该是太频繁的更新了 state 。请继续阅读。
 
-##派生状态的常见bug {#common-bugs-when-using-derived-state}
+##派生 state 的常见 bug {#common-bugs-when-using-derived-state}
 
 名词[“受控”](/docs/forms.html#controlled-components)和[“非受控”](/docs/uncontrolled-components.html)通常用来指代表单的 inputs ，但是也可以用来描述数据频繁更新的组件。用 props 传入数据的话，组件可以被认为是**受控**（因为组件被父级传入的 props 控制）。数据只保存在组件内部的 state 的话，是**非受控**组件（因为外部没办法直接控制 state ）。
 
-常见的错误就是把两者混为一谈。当一个派生状态值也被 `setState` 方法更新时，这个值就不是一个单一来源的值了。[加载外部数据示例](/blog/2018/03/27/update-on-async-rendering.html#fetching-external-data-when-props-change)描述的行为和这个类似，但是有很重要的区别。在加载外部数据示例中，数据 `source` 和 `loading` 都有非常清晰并且唯一的数据来源。当 prop 改变时，`loading` 的状态**一定**会改变。相反，state 只有在 prop 改变时才会改变，除非组件内部还有其他行为改变这个状态。
+常见的错误就是把两者混为一谈。当一个派生 state 值也被 `setState` 方法更新时，这个值就不是一个单一来源的值了。[加载外部数据示例](/blog/2018/03/27/update-on-async-rendering.html#fetching-external-data-when-props-change)描述的行为和这个类似，但是有很重要的区别。在加载外部数据示例中，数据 `source` 和 `loading` 都有非常清晰并且唯一的数据来源。当 prop 改变时，`loading` 的状态**一定**会改变。相反，state 只有在 prop 改变时才会改变，除非组件内部还有其他行为改变这个状态。
 
 上述条件如果有一个不满足，就会导致问题，最常见的就是在两个表单里修改数据。
 
@@ -63,7 +63,7 @@ class EmailInput extends Component {
 
 乍看之下还可以。 state 的初始值是 props 传来的，当在 `<input>` 里输入时，修改 state 。但是如果父组件重新渲染，我们输入的所有东西都会丢失！([查看这个示例](https://codesandbox.io/s/m3w9zn1z8x))，即使在重置 state 前比较 `nextProps.email !== this.state.email` 仍然会导致更新。
 
-这个小例子中，使用 `shouldComponentUpdate` ，比较 props 的 email 是不是修改再决定要不要重新渲染。但是在实践中，一个组件会接收多个prop，任何一个 prop 的改变都会导致重新渲染和不正确的状态重置。加上行内函数和对象 prop ，创建一个完全可靠的 `shouldComponentUpdate` 会变得越来越难。[这个示例展示了这个情况](https://codesandbox.io/s/jl0w6r9w59)。而且 `shouldComponentUpdate` 的最佳实践是用于性能提升，而不是改正不合适的派生状态。
+这个小例子中，使用 `shouldComponentUpdate` ，比较 props 的 email 是不是修改再决定要不要重新渲染。但是在实践中，一个组件会接收多个prop，任何一个 prop 的改变都会导致重新渲染和不正确的状态重置。加上行内函数和对象 prop ，创建一个完全可靠的 `shouldComponentUpdate` 会变得越来越难。[这个示例展示了这个情况](https://codesandbox.io/s/jl0w6r9w59)。而且 `shouldComponentUpdate` 的最佳实践是用于性能提升，而不是改正不合适的派生 state 。
 
 希望以上能解释清楚为什么**直接复制 prop 到 state 是一个非常糟糕的想法**。在寻找解决方案之前，让我们看看一个相关的问题：假如我们只使用 props 中的 email 属性更新组件呢？
 
@@ -221,9 +221,9 @@ refs 在某些情况下很有用，比如这个。但通常我们建议谨慎使
 
 我们上面用到了————仅在输入变化时，重新计算 `render` 需要使用的值————这个技术叫做 [memoization](https://en.wikipedia.org/wiki/Memoization) 。
 
-把派生状态用作 memoization 并不是什么坏事情，但是这并不是好的方法。管理派生状态本来就很复杂，而且这种复杂度是随着需要管理的属性变得越来越庞大。比如，如果我们想在组件 state 里添加第二个派生状态，那就需要写两份跟踪变化的逻辑。
+把派生 state 用作 memoization 并不是什么坏事情，但是这并不是好的方法。管理派生 state 本来就很复杂，而且这种复杂度是随着需要管理的属性变得越来越庞大。比如，如果我们想在组件 state 里添加第二个派生 state ，那就需要写两份跟踪变化的逻辑。
 
-这里有个示例，组件使用一个 prop ————一个列表————并在用户输入查询条件时显示匹配的项，我们可以使用派生状态存储过滤后的列表：
+这里有个示例，组件使用一个 prop ————一个列表————并在用户输入查询条件时显示匹配的项，我们可以使用派生 state 存储过滤后的列表：
 
 ```js
 class Example extends Component {
@@ -299,7 +299,7 @@ class Example extends PureComponent {
 }
 ```
 
-上面的方法比派生状态版本更加清晰明了。只有在过滤很大的列表时，这样做的效率不是很好。当有 prop 改变时 `PureComponent` 不会阻止再次渲染。为了解决这两个问题，我们可以添加 memoization 帮助函数来阻止非必要的过滤：
+上面的方法比派生 state 版本更加清晰明了。只有在过滤很大的列表时，这样做的效率不是很好。当有 prop 改变时 `PureComponent` 不会阻止再次渲染。为了解决这两个问题，我们可以添加 memoization 帮助函数来阻止非必要的过滤：
 
 ```js
 import memoize from "memoize-one";
@@ -332,7 +332,7 @@ class Example extends Component {
 }
 ```
 
-这样更简单，而且和派生状态版本一样好！
+这样更简单，而且和派生 state 版本一样好！
 
 在使用 memoization 时，请记住这些约束：
 
@@ -344,7 +344,7 @@ class Example extends Component {
 
 在实际应用中，组件一般都会有受控组件和非受控组件。这是正常的！不过如果每个值都有明确的来源，就可以避免上面提到的反面模式。
 
-`getDerivedStateFromProps` （以及其他派生状态）是一个高级复杂的功能，应该保守使用，这个再怎么重申也不过分。如果你的用法不属于上述这些模式，请在 [GitHub](https://github.com/reactjs/reactjs.org/issues/new) 或 [Twitter](https://twitter.com/reactjs) 与我们分享！
+`getDerivedStateFromProps` （以及其他派生 state ）是一个高级复杂的功能，应该保守使用，这个再怎么重申也不过分。如果你的用法不属于上述这些模式，请在 [GitHub](https://github.com/reactjs/reactjs.org/issues/new) 或 [Twitter](https://twitter.com/reactjs) 与我们分享！
 
 ---
 
