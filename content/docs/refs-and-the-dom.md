@@ -203,7 +203,7 @@ function CustomTextInput(props) {
 
 ### 回调 Refs {#callback-refs}
 
-React 也支持另一种设置 refs 的方式，称为“回调 refs”。它能助你更精细地控制合适 refs 被设置和解除。
+React 也支持另一种设置 refs 的方式，称为“回调 refs”。它能助你更精细地控制何时 refs 被设置和解除。
 
 不同于传递 `createRef()` 创建的 `ref` 属性，你会传递一个函数。这个函数中接受 React 组件实例或 HTML DOM 元素作为参数，以使它们能在其他地方被存储和访问。
 
