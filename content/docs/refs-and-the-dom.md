@@ -285,6 +285,6 @@ class Parent extends React.Component {
 >
 > 如果你目前还在使用 `this.refs.textInput` 这种方式访问 refs ，我们建议用[回调函数](#callback-refs)或 [`createRef` API](#creating-refs) 的方式代替。
 
-### 关于回调 refs 的警告 {#caveats-with-callback-refs}
+### 关于回调 refs 的说明 {#caveats-with-callback-refs}
 
 如果 `ref` 回调函数是以内联函数的方式定义的，在更新过程中它会被执行两次，第一次传入参数 `null`，然后第二次会传入参数 `DOM` 元素。这是因为在每次渲染时会创建一个新的函数实例，所以 React 清空旧的 ref 并且设置新的。通过将 ref 的回调函数定义成类的绑定函数的方式可以避免上述问题，但是大多数情况下它是无关紧要的。
