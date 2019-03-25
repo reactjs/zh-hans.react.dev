@@ -166,7 +166,7 @@ Hook 就是 JavaScript 函数，但是使用它们会有两个额外的规则：
 * 只能在**函数最外层**调用 Hook。不要在循环、条件判断或者子函数中调用。
 * 只能在 **React 的函数组件**中调用 Hook。不要在其他 JavaScript 函数中调用。（还有一个地方可以调用 Hook —— 就是自定义的 Hook 中，我们稍后会学习到。）
 
-同时，我们提供了 [linter 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks)来自动执行这些规则。这些规则乍看起来会有一些限制和令人困惑，但是它们能使得 Hook 能很好的工作非常重要。
+同时，我们提供了 [linter 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks)来自动执行这些规则。这些规则乍看起来会有一些限制和令人困惑，但是要让 Hook 正常工作，它们至关重要。
 
 >详细说明
 >
