@@ -218,7 +218,7 @@ class MouseTracker extends React.Component {
 
 ```js
 // 如果你出于某种原因真的想要 HOC，那么你可以轻松实现
-// 使用具有 render prop 的常规组件创建一个！
+// 使用具有 render prop 的普通组件创建一个！
 function withMouse(Component) {
   return class extends React.Component {
     render() {
