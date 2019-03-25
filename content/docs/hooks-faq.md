@@ -907,13 +907,8 @@ function Form() {
   const [text, updateText] = useState('');
   const textRef = useRef();
 
-<<<<<<< HEAD
-  useLayoutEffect(() => {
-    textRef.current = text; // 把它写入 ref
-=======
   useEffect(() => {
-    textRef.current = text; // Write it to the ref
->>>>>>> master
+    textRef.current = text; // 把它写入 ref
   });
 
   const handleSubmit = useCallback(() => {
