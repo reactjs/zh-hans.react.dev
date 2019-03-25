@@ -260,7 +260,7 @@ Effect Hook 使用同一个 API 来满足这两种情况。
 
 -------------
 
-**如果你感觉你对 Effect Hook 的机制已经有很好的把握，或者你感到不解，你现在可以跳转到[关于 Hook 规则的下一页](/docs/hooks-rules.html)**
+**如果你感觉你对 Effect Hook 的机制已经有很好的把握，或者暂时难以消化更多内容，你现在就可以跳转到[下一页学习使用 Hook 的规则](/docs/hooks-rules.html)*。*
 
 -------------
 
