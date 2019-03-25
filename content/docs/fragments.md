@@ -18,7 +18,7 @@ render() {
 }
 ```
 
-还有一种新的 [短语法](#short-syntax) 用于声明它们，但尚未得到所有流行工具的支持。
+还有一种新的 [短语法](#short-syntax) 可用于声明它们，但尚未得到所有流行工具的支持。
 
 ## 动机 {#motivation}
 
@@ -38,7 +38,7 @@ class Table extends React.Component {
 }
 ```
 
-`<Columns />` 需要返回多个 `<td>` 元素才能使呈现的 HTML 有效。 如果在 `<Columns />` 的 `render（）` 中使用了父 div，则生成的 HTML 将无效。
+`<Columns />` 需要返回多个 `<td>` 元素才能使呈现的 HTML 有效。 如果在 `<Columns />` 的 `render()` 中使用了父 div，则生成的 HTML 将无效。
 
 ```jsx
 class Columns extends React.Component {
@@ -113,7 +113,7 @@ class Columns extends React.Component {
 
 你可以像使用任何其他元素一样使用 `<> </>`，除了它不支持 key 或属性。
 
-请注意 **[许多工具尚不支持](/blog/2017/11/28/react-v16.2.0-fragment-support.html#support-for-fragment-syntax)** ，所以你可能要使用`<React.Fragment>` 直到工具可以支持。
+请注意 **[许多工具尚不支持](/blog/2017/11/28/react-v16.2.0-fragment-support.html#support-for-fragment-syntax)** ，所以你可能要明确使用`<React.Fragment>` 直到工具可以支持。
 
 ### 带 key 的 Fragments {#keyed-fragments}
 
@@ -139,4 +139,4 @@ function Glossary(props) {
 
 ### 在线 Demo {#live-demo}
 
-你可以使用[CodePen](https://codepen.io/reactjs/pen/VrEbjE?editors=1000)此尝试新的 JSX Fragment 语法 .
+你可以使用[CodePen](https://codepen.io/reactjs/pen/VrEbjE?editors=1000)尝试这个新的 JSX Fragment 语法 .
