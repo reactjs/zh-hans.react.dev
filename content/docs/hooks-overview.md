@@ -236,7 +236,7 @@ function FriendListItem(props) {
 
 >详细说明
 >
->我们会在这一章节介绍更多关于自定义 Hook 的内容： [创建你自己的 Hooks](/docs/hooks-custom.html)。
+>我们会在这一章节介绍更多关于自定义 Hook 的内容： [创建你自己的 Hook](/docs/hooks-custom.html)。
 
 ## 🔌 其他 Hook {#-other-hooks}
 
