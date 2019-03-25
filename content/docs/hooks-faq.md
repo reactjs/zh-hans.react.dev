@@ -23,14 +23,14 @@ prev: hooks-reference.html
   * [我需要重写所有的 class 组件吗？](#do-i-need-to-rewrite-all-my-class-components)
   * [有什么是 Hook 能做而 class 做不到的？](#what-can-i-do-with-hooks-that-i-couldnt-with-classes)
   * [我的 React 知识还有多少是仍然有用的？](#how-much-of-my-react-knowledge-stays-relevant)
-  * [我应该使用 Hook，classes，还是两者混用？](#should-i-use-hooks-classes-or-a-mix-of-both)
-  * [Hook 能否覆盖 classes 的所有使用场景？](#do-hooks-cover-all-use-cases-for-classes)
+  * [我应该使用 Hook，class，还是两者混用？](#should-i-use-hooks-classes-or-a-mix-of-both)
+  * [Hook 能否覆盖 class 的所有使用场景？](#do-hooks-cover-all-use-cases-for-classes)
   * [Hook 会替代 render props 和高阶组件吗？](#do-hooks-replace-render-props-and-higher-order-components)
   * [Hook 对于 Redux connect() 和 React Router 等流行的 API 来说，意味着什么？](#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router)
   * [Hook 能和静态类型一起用吗？](#do-hooks-work-with-static-typing)
   * [如何测试使用了 Hook 的组件？](#how-to-test-components-that-use-hooks)
   * [lint 规则具体强制了哪些内容？](#what-exactly-do-the-lint-rules-enforce)
-* **[从 Classes 迁移到 Hook](#from-classes-to-hooks)**
+* **[从 Class 迁移到 Hook](#from-classes-to-hooks)**
   * [生命周期方法要如何对应到 Hook？](#how-do-lifecycle-methods-correspond-to-hooks)
   * [我该如何使用 Hook 进行数据获取？](#how-can-i-do-data-fetching-with-hooks)
   * [有类似实例变量的东西吗？](#is-there-something-like-instance-variables)
