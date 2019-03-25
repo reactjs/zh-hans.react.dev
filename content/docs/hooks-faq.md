@@ -7,7 +7,7 @@ prev: hooks-reference.html
 
 *Hook* 是 React 16.8 中加入的新特性。它可以让你无需编写 class 就能使用 state 和其它 React 特性。
 
-这一页回答了一些关于 [Hook](/docs/Hook-overview.html) 的常见问题。
+这一页回答了一些关于 [Hook](/docs/hooks-overview.html) 的常见问题。
 
 <!--
   if you ever need to regenerate this, this snippet in the devtools console might help:
@@ -23,14 +23,14 @@ prev: hooks-reference.html
   * [我需要重写所有的 class 组件吗？](#do-i-need-to-rewrite-all-my-class-components)
   * [有什么是 Hook 能做而 class 做不到的？](#what-can-i-do-with-hooks-that-i-couldnt-with-classes)
   * [我的 React 知识还有多少是仍然有用的？](#how-much-of-my-react-knowledge-stays-relevant)
-  * [我应该使用 Hook，classes，还是两者混用？](#should-i-use-hooks-classes-or-a-mix-of-both)
-  * [Hook 能否覆盖 classes 的所有使用场景？](#do-hooks-cover-all-use-cases-for-classes)
+  * [我应该使用 Hook，class，还是两者混用？](#should-i-use-hooks-classes-or-a-mix-of-both)
+  * [Hook 能否覆盖 class 的所有使用场景？](#do-hooks-cover-all-use-cases-for-classes)
   * [Hook 会替代 render props 和高阶组件吗？](#do-hooks-replace-render-props-and-higher-order-components)
   * [Hook 对于 Redux connect() 和 React Router 等流行的 API 来说，意味着什么？](#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router)
   * [Hook 能和静态类型一起用吗？](#do-hooks-work-with-static-typing)
   * [如何测试使用了 Hook 的组件？](#how-to-test-components-that-use-hooks)
   * [lint 规则具体强制了哪些内容？](#what-exactly-do-the-lint-rules-enforce)
-* **[从 Classes 迁移到 Hook](#from-classes-to-hooks)**
+* **[从 Class 迁移到 Hook](#from-classes-to-hooks)**
   * [生命周期方法要如何对应到 Hook？](#how-do-lifecycle-methods-correspond-to-hooks)
   * [我该如何使用 Hook 进行数据获取？](#how-can-i-do-data-fetching-with-hooks)
   * [有类似实例变量的东西吗？](#is-there-something-like-instance-variables)
@@ -86,15 +86,15 @@ Hook 是使用你已经知道的 React 特性的一种更直接的方式 —— 
 
 Hook 确实有它们自己的学习曲线。如果这份文档中遗失了一些什么，[提一个 issue](https://github.com/reactjs/reactjs.org/issues/new)，我们会尽可能地帮你。
 
-### 我应该使用 Hook，classes，还是两者混用？ {#should-i-use-hooks-classes-or-a-mix-of-both}
+### 我应该使用 Hook，class，还是两者混用？ {#should-i-use-hooks-classes-or-a-mix-of-both}
 
-当你准备好了，我们鼓励你在写新组件的时候开始尝试 Hook。请确保你团队中的每个人都愿意使用它们并且熟知这份文档中的内容。我们不推荐用 Hook 重写你已有的 classes，除非你本就打算重写它们。（例如：为了修复bug）。
+当你准备好了，我们鼓励你在写新组件的时候开始尝试 Hook。请确保你团队中的每个人都愿意使用它们并且熟知这份文档中的内容。我们不推荐用 Hook 重写你已有的 class，除非你本就打算重写它们。（例如：为了修复bug）。
 
-你不能在一个 class 组件*中*使用 Hook，但毫无疑问你可以在组件树里混合使用 class 组件和使用了 Hook 的函数组件。不论一个组件是一个 class 还是一个使用了 Hook 的函数，都只是这个组件的实现细节而已。长远来看，我们期望 Hook 能够成为人们编写 React 组件的主要方式。
+你不能在一个 class 组件*中*使用 Hook，但毫无疑问你可以在组件树里混合使用 class 组件和使用了 Hook 的函数组件。不论一个组件是 class 还是一个使用了 Hook 的函数，都只是这个组件的实现细节而已。长远来看，我们期望 Hook 能够成为人们编写 React 组件的主要方式。
 
-### Hook 能否覆盖 classes 的所有使用场景？ {#do-hooks-cover-all-use-cases-for-classes}
+### Hook 能否覆盖 class 的所有使用场景？ {#do-hooks-cover-all-use-cases-for-classes}
 
-我们给 Hook 设定的目标是尽早覆盖 classes 的所有使用场景。目前暂时还没有对应不常用的 `getSnapshotBeforeUpdate` 和 `componentDidCatch` 生命周期的 Hook 等价写法，但我们计划尽早把它们加进来。
+我们给 Hook 设定的目标是尽早覆盖 class 的所有使用场景。目前暂时还没有对应不常用的 `getSnapshotBeforeUpdate` 和 `componentDidCatch` 生命周期的 Hook 等价写法，但我们计划尽早把它们加进来。
 
 目前 Hook 还处于早期阶段，一些第三方的库可能还暂时无法兼容 Hook。
 
@@ -193,7 +193,7 @@ it('can render and update a counter', () => {
 
 还有一些其他的启发方式，但随着我们不断地调优以在发现 Bug 和避免伪真理之前取得平衡，这些方式随时会改变。
 
-## 从 Classes 迁移到 Hook {#from-classes-to-hooks}
+## 从 Class 迁移到 Hook {#from-classes-to-hooks}
 
 ### 生命周期方法要如何对应到 Hook？ {#how-do-lifecycle-methods-correspond-to-hooks}
 
@@ -211,7 +211,7 @@ it('can render and update a counter', () => {
 
 ### 我该如何使用 Hook 进行数据获取？ {#how-can-i-do-data-fetching-with-hooks}
 
-这里有一个 [小 demo](https://codesandbox.io/s/jvvkoo8pq3) 来帮助你开始。想了解更多，请查看 [这篇文章](https://www.robinwieruch.de/react-hooks-fetch-data/) 来了解如何使用 Hook 进行数据获取。
+该 [demo](https://codesandbox.io/s/jvvkoo8pq3) 会帮助你开始理解。欲了解更多，请查阅 [此文章](https://www.robinwieruch.de/react-hooks-fetch-data/) 来了解如何使用 Hook 进行数据获取。
 
 ### 有类似实例变量的东西吗？ {#is-there-something-like-instance-variables}
 
@@ -251,7 +251,7 @@ function Timer() {
 
 ### 我应该使用单个还是多个 state 变量？ {#should-i-use-one-or-many-state-variables}
 
-如果你之前用过 classes，你或许会试图总是在一次 `useState()` 调用中传入一个包含了所有 state 的对象。如果你愿意的话你可以这么做。这里有一个跟踪鼠标移动的组件的例子。我们在本地 state 中记录它的位置和尺寸：
+如果你之前用过 class，你或许会试图总是在一次 `useState()` 调用中传入一个包含了所有 state 的对象。如果你愿意的话你可以这么做。这里有一个跟踪鼠标移动的组件的例子。我们在本地 state 中记录它的位置和尺寸：
 
 ```js
 function Box() {
@@ -831,7 +831,7 @@ function Image(props) {
 
 除此之外，可以认为 Hook 的设计在某些方面更加高效：
 
-* Hook 避免了 classes 需要的额外开支，像是创建类实例和在构造函数中绑定事件处理器的成本。
+* Hook 避免了 class 需要的额外开支，像是创建类实例和在构造函数中绑定事件处理器的成本。
 
 * **符合语言习惯的代码在使用 Hook 时不需要很深的组件树嵌套**。这个现象在使用高阶组件、render props、和 context 的代码库中非常普遍。组件树小了，React 的工作量也随之减少。
 
