@@ -309,7 +309,7 @@ class FriendStatusWithCounter extends React.Component {
 
 可以看到设置 `document.title` 的逻辑是如何被分割到 `componentDidMount` 和 `componentDidUpdate` 中的，订阅逻辑又是如何被分割到 `componentDidMount` 和 `componentWillUnmount` 中。而且 `componentDidMount` 中同时包含了两个不同功能的代码。
 
-那么 Hooks 如何解决这个问题呢？就像[你可以使用多个 *State* Hook](/docs/hooks-state.html#tip-using-multiple-state-variables) 一样，你也可以使用多个 effect。这让我们将不相关的逻辑分到不同的 effect 中
+那么 Hooks 如何解决这个问题呢？就像[你可以使用多个 *State* Hook](/docs/hooks-state.html#tip-using-multiple-state-variables) 一样，你也可以使用多个 effect。这让我们将不相关的逻辑分到不同的 effect 中：
 
 ```js{3,8}
 function FriendStatusWithCounter(props) {
