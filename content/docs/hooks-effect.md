@@ -475,7 +475,7 @@ useEffect(() => {
 >
 >如果你想要执行一个只运行一次的 effect(仅在组件加载和卸载时执行)，你可以传递一个空数组(`[]`)作为第二个参数。这就告诉 React 你的 effect 不依赖于 props 或 state 中的任何值，所以它永远都不需要重复执行。这并不算是一种特殊情况 —— 它依然遵循输入数组的工作方式。
 >
->如果你传入了一个空数组（`[]`），effect 内部的 props 和 state 就会一直拥有其初始值。由于传入 `[]` 作为第二个参数更接近大家更熟悉的 `componentDidMount` 和 `componentWillUnmount` 思维模式，所以我们可以用[更好的](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)[方法](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)来避免过过于频繁的重复调用 effect。除此之外，记住，React 直到浏览器完成画面渲染之后才会延迟调用 `useEffect`，因此做额外的工作不是大问题。
+>如果你传入了一个空数组（`[]`），effect 内部的 props 和 state 就会一直拥有其初始值。尽管传入 `[]` 作为第二个参数更接近大家更熟悉的 `componentDidMount` 和 `componentWillUnmount` 思维模式，但我们有[更好的](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)[方法](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)来避免过过于频繁的重复调用 effect。除此之外，记住，React 直到浏览器完成画面渲染之后才会延迟调用 `useEffect`，因此做额外的工作不是大问题。
 >
 >我们推荐启用 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 中的 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 规则。他会在错误指定依赖的时候发出警告并给出修复建议。
 
