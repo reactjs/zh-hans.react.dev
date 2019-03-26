@@ -20,7 +20,7 @@ permalink: warnings/invalid-hook-call-warning.html
 
 你可能使用的是尚未支持 Hooks 的 `react-dom`（< 16.8.0）或 `react-native`（< 0.59）版本。你可以在应用文件夹中执行 `npm ls react-dom` 或 `npm ls react-native` 来检当前使用的版本。如果你发现不止一个这些依赖，可能也会产生问题（在后面的小节会进行说明）。
 
-## 打破了 Hooks 的使用规则 {#breaking-the-rules-of-hooks}
+## 打破了 Hook 的使用规范 {#breaking-the-rules-of-hooks}
 
 你只能在**当 React 渲染函数组件时**调用 Hooks：
 
