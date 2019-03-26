@@ -18,6 +18,6 @@ Virtual DOM 是一种编程概念。在这个概念里， UI 以一种理想化�
 
 不，他们不一样。Shadow DOM 是一种浏览器技术，主要用于在 web 组件中封装变量和 CSS。Virtual DOM 则是一种由 Javascript 类库基于浏览器 API 实现的概念。
 
-### 什么是“React Fiber”？ {#what-is-react-fiber}
+### 什么是 “React Fiber”？ {#what-is-react-fiber}
 
 Fiber 是 React 16 中新的协调引擎。它的主要目的是使Virtual DOM 可以进行增量式渲染。[了解更多](https://github.com/acdlite/react-fiber-architecture).
