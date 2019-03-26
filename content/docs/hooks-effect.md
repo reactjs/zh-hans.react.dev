@@ -33,7 +33,7 @@ function Example() {
 }
 ```
 
-这段代码是基于[上一页中的计数器示例](/docs/hooks-state.html)修改的，我们为计数器增加了一个小功能：将 document 的 title 设置为一句包含了点击次数的消息
+这段代码是基于[上一页中的计数器示例](/docs/hooks-state.html)修改的，我们为计数器增加了一个小功能：将 document 的 title 设置为一句包含了点击次数的消息。
 
 数据获取，设置订阅以及手动更改 React 组件中的 DOM 都是副作用的示例。无论你知不知道这些操作还有"副作用"这个名字，应该都已经在组件中使用过它们了。
 
@@ -83,7 +83,7 @@ class Example extends React.Component {
 }
 ```
 
-注意，**在这个 class 中我们需要在两个生命周期函数中写重复的代码**
+注意，**在这个 class 中，我们需要在两个生命周期函数中编写重复的代码。**
 
 这是因为很多情况下我们希望在组件加载和更新时执行同样的操作。从概念上说，我们希望它在每次渲染之后执行 —— 但 React 的 class 组件没有提供这样的方法。即使我们提取出一个方法，我们还是要在两个地方调用它。
 
@@ -147,7 +147,7 @@ function Example() {
 
 ### 使用 Class 的示例 {#example-using-classes-1}
 
-在 React class 中，你通常会在 `componentDidMount` 中设置订阅，并在 `componentWillUnmount` 中清理它。 例如，假设我们有一个 `ChatAPI` 模块，它允许我们订阅好友的在线状态。以下是我们如何使用 class 订阅和显示该状态：
+在 React class 中，你通常会在 `componentDidMount` 中设置订阅，并在 `componentWillUnmount` 中清理它。例如，假设我们有一个 `ChatAPI` 模块，它允许我们订阅好友的在线状态。以下是我们如何使用 class 订阅和显示该状态：
 
 ```js{8-26}
 class FriendStatus extends React.Component {
@@ -186,17 +186,17 @@ class FriendStatus extends React.Component {
 }
 ```
 
-你会注意到 `componentDidMount` 和 `componentWillUnmount` 之间相互依赖。生命周期函数让我们只能拆分这些逻辑，即使他们中的代码都是服务于同一个功能。
+你会注意到 `componentDidMount` 和 `componentWillUnmount` 之间相互对应。生命周期函数迫使我们拆分这些逻辑代码，即使这两部分代码都作用于相同的副作用。
 
 >注意
 >
->眼尖的读者可能已经注意到了，这个示例还需要一个 `componentDidUpdate` 方法才是完全正确的。我们先暂时忽略这一点，并在本页的[后面一部分](#explanation-why-effects-run-on-each-update)再关注它。
+>眼尖的读者可能已经注意到了，这个示例还需要编写 `componentDidUpdate` 方法才能保证完全正确。我们先暂时忽略这一点，本页的[后续部分](#explanation-why-effects-run-on-each-update)会继续介绍它。
 
 ### 使用 Hook 的示例
 
-让我们看看我们如何用 Hook 编写这个组件。
+如何使用 Hook 编写这个组件。
 
-您可能认为我们需要单独的 effect 来执行清理工作。但因为添加和删除订阅的代码是如此紧密相关，所以 `useEffect` 的设计是让他们保持在同一个地方。如果你的 effect 返回了一个函数， React 将会在清理的时候执行它。
+你可能认为我们需要单独的 effect 来执行清理工作。但因为添加和删除订阅的代码是如此紧密相关，所以 `useEffect` 的设计是让他们保持在同一个地方。如果你的 effect 返回了一个函数， React 将会在清理的时候执行它。
 
 ```js{6-16}
 import React, { useState, useEffect } from 'react';
@@ -225,7 +225,7 @@ function FriendStatus(props) {
 
 **为什么我们要在 effect 中返回一个函数？**这是 effect 可选的清理机制。每一个 effect 都可以返回一个它的清理函数。这让我们可以将添加和移除订阅的逻辑放在一起。他们都是同一个 effect 的一部分。
 
-**React 什么时候清理一个 effect？**React 在组件卸载的时候执行清理。正如我们之前学到的， effect 在每次渲染的时候都会执行。这就是为什么 React *还会*在执行 effect 之前对上一个 effect 进行清理。我们稍后将讨论[为什么这有助于避免 bug](#explanation-why-effects-run-on-each-update)以及[如何在发生性能问题时选择跳过此行为](#tip-optimizing-performance-by-skipping-effects)。
+**React 什么时候清理一个 effect？**React 在组件卸载的时候执行清理。正如我们之前学到的，effect 在每次渲染的时候都会执行。这就是为什么 React *还会*在执行 effect 之前对上一个 effect 进行清理。我们稍后将讨论[为什么这有助于避免 bug](#explanation-why-effects-run-on-each-update)以及[如何在发生性能问题时选择跳过此行为](#tip-optimizing-performance-by-skipping-effects)。
 
 >注意
 >
@@ -390,7 +390,7 @@ function FriendStatusWithCounter(props) {
   }
 ```
 
-忘记正确地处理 `componentDidUpdate` 是 React 应用中一个常见的错误来源。
+忘记正确地处理 `componentDidUpdate` 是 React 应用中一个常见的 bug 来源。
 
 现在看一下使用 Hook 的这个版本：
 
@@ -481,7 +481,7 @@ useEffect(() => {
 
 ## 下一步 {#next-steps}
 
-恭喜你！这是一个很长的页面，希望最后你关于 effect 的大多数问题都得到了解答。你已经学习了 State Hook 和 Effect Hook，将它们结合起来你可以做很多事情了。它们涵盖了大多数使用 class 的用例 - 如果没有，您可能须要[其他的 Hook](/docs/hooks-reference.html)。
+恭喜你！这是一个很长的页面，希望最后你关于 effect 的大多数问题都得到了解答。你已经学习了 State Hook 和 Effect Hook，将它们结合起来你可以做很多事情了。它们涵盖了大多数使用 class 的用例 —— 如果没有，你可以查看[其他的 Hook](/docs/hooks-reference.html)。
 
 我们也看到了 Hook 如何解决[动机](/docs/hooks-intro.html#motivation)中提到的问题。我们看到 effect 的清理机制如何避免了 `componentDidUpdate` 和 `componentWillUnmount` 中的重复，同时让相关的代码关联更加紧密，帮助我们避免一些 bug。我们还看到了我们如何根据 effect 的功能分隔他们，这是在 class 中无法做到的。
 
