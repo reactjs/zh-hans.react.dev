@@ -22,12 +22,12 @@ permalink: warnings/invalid-hook-call-warning.html
 
 ## 打破了 Hook 的使用规范 {#breaking-the-rules-of-hooks}
 
-你只能在**当 React 渲染函数组件时**调用 Hooks：
+你只能在**当 React 渲染函数组件时**调用 Hook：
 
 * ✅ 在函数组件的顶层调用它们。
 * ✅ 在[自定义 Hook](/docs/hooks-custom.html) 的顶层调用它们。
 
-**查看 [Hooks 的使用规则](/docs/hooks-rules.html)以了解更多内容。**
+**查看 [Hook 的使用规范](/docs/hooks-rules.html)以了解更多内容。**
 
 ```js{2-3,8-9}
 function Counter() {
@@ -43,9 +43,9 @@ function useWindowWidth() {
 }
 ```
 
-为避免困惑，在以下情况中调用 Hooks 是**不**受支持的：
+为避免困惑，在以下情况中调用 Hook 是**不**被支持的：
 
-* 🔴 不要在 class 组件中调用 Hooks。
+* 🔴 不要在 class 组件中调用 Hook。
 * 🔴 不要在 event handlers 中调用。
 * 🔴 不要在 `useMemo`、`useReducer` 或 `useEffect` 的参数函数中调用。
 
@@ -78,20 +78,20 @@ class Bad3 extends React.Component {
 }
 ```
 
-你可以使用 [`eslint-plugin-react-hooks` 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks)来捕捉这些错误。
+你可以使用 [`eslint-plugin-react-hooks` 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks)来捕获这些错误。
 
 > 注意
 >
-> [自定义 Hooks](/docs/hooks-custom.html) *可能会*调用其他 Hooks（这恰好是他们的用途）。这是可行的，因为自定义 Hooks 也应该只在函数组件渲染时被调用。
+> [自定义 Hook](/docs/hooks-custom.html) *可能会*调用其他 Hook（这恰好是他们的用途）。这是可行的，因为自定义 Hook 也应该只在函数组件渲染时被调用。
 
 
 ## 重复的 React {#duplicate-react}
 
-为了使 Hooks 工作，你应用代码中的 `react` 依赖和 `react-dom` 包内部的 `react` 依赖必须解析为同一个模块。
+为了使 Hook 正常工作，你应用代码中的 `react` 依赖以及 `react-dom` 的 package 内部使用的 `react` 依赖，必须解析为同一个模块。
 
-如果这些 `react` 依赖解析为两个不同的导出对象，你就会看到本警告。这可能发生在你**意外地引入了两个 `react` 包的副本**。
+如果这些 `react` 依赖解析为两个不同的导出对象，你就会看到本警告。这可能发生在你**意外地引入了两个 `react` 的 package 副本**。
 
-如果你用的是 Node 作为包管理工具，你可以执行以下代码来检查你的项目文件夹：
+如果你用的是 Node 作为 package 管理工具，你可以执行以下代码来检查你的项目文件夹：
 
     npm ls react
 
