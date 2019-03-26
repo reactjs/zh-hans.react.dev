@@ -12,7 +12,7 @@ Virtual DOM 是一种编程概念。在这个概念里， UI 以一种理想化�
 
 这种方式赋予了 React 声明式的 API：您告诉 React 希望让 UI 是什么状态，React 就确保 DOM 匹配该状态。这使您可以从属性操作、事件处理和手动 DOM 更新这些在构建应用程序时必要的操作中解放出来。
 
-与其将“Virtual DOM”视为一种技术，不如说它是一种模式，人们提到它时经常是要表达不同的东西。在 React 的世界里，术语“Virtual DOM”通常与[React 元素](/docs/rendering-elements.html)关联在一起，因为它们都是代表了用户界面的对象。而 React 也使用一个名为“fibers”的内部对象来存放组件树的附加信息。上述二者也被认为是 React 中“Virtual DOM ”实现的一部分。
+与其将 “Virtual DOM” 视为一种技术，不如说它是一种模式，人们提到它时经常是要表达不同的东西。在 React 的世界里，术语 “Virtual DOM” 通常与 [React 元素](/docs/rendering-elements.html)关联在一起，因为它们都是代表了用户界面的对象。而 React 也使用一个名为 “fibers” 的内部对象来存放组件树的附加信息。上述二者也被认为是 React 中 “Virtual DOM” 实现的一部分。
 
 ### Shadow DOM 和 Virtual DOM 是一回事吗？ {#is-the-shadow-dom-the-same-as-the-virtual-dom}
 
