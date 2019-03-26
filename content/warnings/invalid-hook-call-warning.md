@@ -11,7 +11,7 @@ permalink: warnings/invalid-hook-call-warning.html
 触发这个警告有三种常见的原因：
 
 1. 你的 React 和 React DOM 可能**版本不匹配**。
-2. 你可能**打破了 [Hooks 的使用规则](/docs/hooks-rules.html)**。
+2. 你可能**打破了 [Hook 的使用规范](/docs/hooks-rules.html)**。
 3. 你可能在同一个应用中拥有**多个 React 副本**。
 
 让我们依次来看这些情况。
