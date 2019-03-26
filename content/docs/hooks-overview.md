@@ -6,7 +6,7 @@ next: hooks-state.html
 prev: hooks-intro.html
 ---
 
-*Hook* 是 React 16.8 的新增特性。它可以让你在不使用 class 的情况下使用 state 和一些其他的 React 特性。
+*Hook* 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。
 
 Hook 是[向下兼容的](/docs/hooks-intro.html#no-breaking-changes)。本页面为有经验的 React 用户提供一个对 Hook 的概览。这是一个相当快速的概览，如果你有疑惑，可以参阅下面这样的黄色提示框。
 
@@ -201,9 +201,10 @@ function useFriendStatus(friendID) {
 }
 ```
 
-它将 `friendID` 作为参数，并返回该好友是否在线。
+它将 `friendID` 作为参数，并返回该好友是否在线：
 
 现在我们可以在两个组件中使用它：
+
 
 ```js{2}
 function FriendStatus(props) {
