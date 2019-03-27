@@ -68,7 +68,7 @@ prev: hooks-reference.html
 * React Test Renderer
 * React Shallow Renderer
 
-请注意，**要启用 Hook，所有 React 包都必须升级到 16.8.0 或更高版本**。如果你忘记更新诸如 React DOM 之类的包，Hook 将无法运行。
+请注意，**要启用 Hook，所有 React 相关的 package 都必须升级到 16.8.0 或更高版本**。如果你忘记更新诸如 React DOM 之类的 package，Hook 将无法运行。
 
 React Native 会在它的下一个稳定发行版中全面支持 Hook。
 
