@@ -116,7 +116,7 @@
       - id: hooks-effect
         title: 使用 Effect Hook
       - id: hooks-rules
-        title: Hook 使用规则
+        title: Hook 规则
       - id: hooks-custom
         title: 自定义 Hook
       - id: hooks-reference
