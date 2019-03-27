@@ -78,7 +78,7 @@ React Native 会在它的下一个稳定发行版中全面支持 Hook。
 
 ### 有什么是 Hook 能做而 class 做不到的？ {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
 
-Hook 提供了强大而富有表现力的方式来在组件间复用功能。[「自定义 Hook」](/docs/hooks-custom.html) 允许我们一瞥能做些什么。[这篇文章](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889) 来自一位 React 核心团队的成员，深入剖析了 Hook 解锁了哪些新的能力。
+Hook 提供了强大而富有表现力的方式来在组件间复用功能。通过 [「自定义 Hook」](/docs/hooks-custom.html) 这一节可以了解能用它做些什么。这篇来自一位 React 核心团队的成员的 [文章](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889) 则更加深入地剖析了 Hook 解锁了哪些新的能力。
 
 ### 我的 React 知识还有多少是仍然有用的？ {#how-much-of-my-react-knowledge-stays-relevant}
 
