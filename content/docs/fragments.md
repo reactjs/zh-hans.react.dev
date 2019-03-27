@@ -4,7 +4,7 @@ title: Fragments
 permalink: docs/fragments.html
 ---
 
-React 中的一个常见模式是组件返回多个元素。 Fragments 允许你将子列表分组，而无需向 DOM 添加额外节点.
+React 中的一个常见场景是组件会返回多个元素。Fragments 允许你将子列表分组，而无需向 DOM 添加额外节点。
 
 ```js
 render() {
@@ -18,11 +18,11 @@ render() {
 }
 ```
 
-还有一种新的 [短语法](#short-syntax) 可用于声明它们，但尚未得到所有流行工具的支持。
+还有一种新的[短语法](#short-syntax)可用于声明它们，但尚未得到所有流行工具的支持。
 
 ## 动机 {#motivation}
 
-一种常见的模式是组件返回子项列表。 以此示例 React 片段为例：
+一种常见的模式是组件返回子项列表。以此 React 示例片段为例：
 
 ```jsx
 class Table extends React.Component {
@@ -38,7 +38,7 @@ class Table extends React.Component {
 }
 ```
 
-`<Columns />` 需要返回多个 `<td>` 元素才能使呈现的 HTML 有效。 如果在 `<Columns />` 的 `render()` 中使用了父 div，则生成的 HTML 将无效。
+`<Columns />` 需要返回多个 `<td>` 元素才能使呈现的 HTML 有效。如果在 `<Columns />` 的 `render()` 中使用了父 div，则生成的 HTML 将无效。
 
 ```jsx
 class Columns extends React.Component {
@@ -68,7 +68,7 @@ class Columns extends React.Component {
 
 Fragments 解决了这个问题。
 
-## 使用 {#usage}
+## 用法 {#usage}
 
 ```jsx{4,7}
 class Columns extends React.Component {
@@ -83,7 +83,7 @@ class Columns extends React.Component {
 }
 ```
 
-这样可以正确的输出 `<Table />` :
+这样可以正确的输出 `<Table />`：
 
 ```jsx
 <table>
@@ -96,7 +96,7 @@ class Columns extends React.Component {
 
 ### 短语法 {#short-syntax}
 
-你可以使用一种新的，更短的语法来声明 Fragments。 它看起来像空标签：
+你可以使用一种新的，且更简短的语法来声明 Fragments。它看起来像空标签：
 
 ```jsx{4,7}
 class Columns extends React.Component {
@@ -113,11 +113,11 @@ class Columns extends React.Component {
 
 你可以像使用任何其他元素一样使用 `<> </>`，除了它不支持 key 或属性。
 
-请注意 **[许多工具尚不支持](/blog/2017/11/28/react-v16.2.0-fragment-support.html#support-for-fragment-syntax)** ，所以你可能要明确使用`<React.Fragment>` 直到工具可以支持。
+请注意 **[目前许多工具尚不支持](/blog/2017/11/28/react-v16.2.0-fragment-support.html#support-for-fragment-syntax)** ，所以你可能要使用 `<React.Fragment>` 直到工具支持为止。
 
 ### 带 key 的 Fragments {#keyed-fragments}
 
-使用显式 `<React.Fragment>` 语法声明的片段可能具有 key。 一个使用场景是将一个集合映射到一个 Fragments 数组 - 举个例子，创建一个描述列表：
+使用显式 `<React.Fragment>` 语法声明的片段可能具有 key。一个使用场景是将一个集合映射到一个 Fragments 数组 - 举个例子，创建一个描述列表：
 
 ```jsx
 function Glossary(props) {
@@ -135,8 +135,8 @@ function Glossary(props) {
 }
 ```
 
-`key` 是唯一可以传递给 `Fragment` 的属性。 未来我们可能会添加对其他属性的支持，例如事件。
+`key` 是唯一可以传递给 `Fragment` 的属性。未来我们可能会添加对其他属性的支持，例如事件。
 
 ### 在线 Demo {#live-demo}
 
-你可以使用[CodePen](https://codepen.io/reactjs/pen/VrEbjE?editors=1000)尝试这个新的 JSX Fragment 语法 .
+你可以在 [CodePen](https://codepen.io/reactjs/pen/VrEbjE?editors=1000) 中尝试这个新的 JSX Fragment 语法。
