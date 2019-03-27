@@ -2,7 +2,7 @@
 id: static-type-checking
 title: 静态类型检查
 permalink: docs/static-type-checking.html
-prev: typechecking-with-prototypes.html
+prev: typechecking-with-proptypes.html
 next: refs-and-the-dom.html
 ---
 
@@ -218,8 +218,16 @@ npm install --save-dev typescript
 ### 配置 TypeScript 编译器{#configuring-the-typescript-compiler}
 没有配置项，编译器提供不了任何帮助。在 TypeScript 里，这些配置项都在一个名为 `tsconfig.json` 的特殊文件中定义。可以通过执行以下命令生成该文件：
 
+如果你使用 [Yarn](https://yarnpkg.com/)，执行：
+
 ```bash
-tsc --init
+yarn run tsc --init
+```
+
+如果你使用 [npm](https://www.npmjs.com/)，执行：
+
+```bash
+npx tsc --init
 ```
 
 `tsconfig.json` 文件中，有许多配置项用于配置编译器。查看所有配置项的的详细说明，[请参考此文档](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)。
@@ -324,4 +332,4 @@ JetBrains 专门为 React 社区开发和维护了几个工具：[React bindings
 
 ## 其他语言 {#other-languages}
 
-注意，还有其他静态类型语言可以编译成 JavaScript，也与 React 兼容。例如，和 [elmish-react](https://elmish.github.io/react) 一起使用的 [F＃/Fable](http://fable.io)。查看他们各自的网站以获取更多信息，并欢迎添加更多和与 React 结合的静态类型语言到这个页面！
+注意，还有其他静态类型语言可以编译成 JavaScript，也与 React 兼容。例如，和 [elmish-react](https://elmish.github.io/react) 一起使用的 [F#/Fable](https://fable.io)。查看他们各自的网站以获取更多信息，并欢迎添加更多和与 React 结合的静态类型语言到这个页面！
