@@ -22,7 +22,7 @@ render() {
 
 ## 动机 {#motivation}
 
-一种常见的模式是组件返回子项列表。以此 React 示例片段为例：
+一种常见模式是组件返回一个子元素列表。以此 React 代码片段为例：
 
 ```jsx
 class Table extends React.Component {
