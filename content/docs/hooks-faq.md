@@ -74,7 +74,7 @@ React Native 会在它的下一个稳定发行版中全面支持 Hook。
 
 ### 我需要重写所有的 class 组件吗？ {#do-i-need-to-rewrite-all-my-class-components}
 
-不。我们并 [没有计划](/docs/hooks-intro.html#gradual-adoption-strategy) 从 React 中移除 class —— 我们都需要不断地发布产品，重写不起。我们推荐在新代码中尝试 Hook。
+不。我们并 [没有计划](/docs/hooks-intro.html#gradual-adoption-strategy) 从 React 中移除 class —— 我们也需要不断地发布产品，重写成本较高。我们推荐在新代码中尝试 Hook。
 
 ### 有什么是 Hook 能做而 class 做不到的？ {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
 
