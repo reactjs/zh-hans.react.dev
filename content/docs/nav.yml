@@ -116,11 +116,11 @@
       - id: hooks-effect
         title: 使用 Effect Hook
       - id: hooks-rules
-        title: Hook 规范
+        title: Hook 使用规则
       - id: hooks-custom
         title: 自定义 Hook
       - id: hooks-reference
-        title: Hooks API 参考
+        title: Hook API 索引
       - id: hooks-faq
         title: Hooks FAQ
 - title: 贡献

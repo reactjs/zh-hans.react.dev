@@ -260,7 +260,7 @@ effect Hook 使用同一个 API 来满足这两种情况。
 
 -------------
 
-**如果你对 Effect Hook 的机制已经有很好的把握，或者暂时难以消化更多内容，你现在就可以跳转到[下一章节学习 Hook 的规范](/docs/hooks-rules.html)。**
+**如果你对 Effect Hook 的机制已经有很好的把握，或者暂时难以消化更多内容，你现在就可以跳转到[下一章节学习 Hook 的规则](/docs/hooks-rules.html)。**
 
 -------------
 
@@ -423,7 +423,7 @@ ChatAPI.unsubscribeFromFriendStatus(200, handleStatusChange); // 清除上一个
 ChatAPI.subscribeToFriendStatus(300, handleStatusChange);     // 运行下一个 effect
 
 // Unmount
-ChatAPI.unsubscribeFromFriendStatus(300, handleStatusChange); // 清除最好一个 effect
+ChatAPI.unsubscribeFromFriendStatus(300, handleStatusChange); // 清除最后一个 effect
 ```
 
 此默认行为保证了一致性，避免了在 class 组件中因为没有处理更新逻辑而导致常见的 bug。
@@ -485,4 +485,4 @@ useEffect(() => {
 
 我们看到了 Hook 如何解决[简介章节中动机](/docs/hooks-intro.html#motivation)部分提出的问题。我们也发现 effect 的清除机制可以避免了 `componentDidUpdate` 和 `componentWillUnmount` 中的重复，同时让相关的代码关联更加紧密，帮助我们避免一些 bug。我们还看到了我们如何根据 effect 的功能分隔他们，这是在 class 中无法做到的。
 
-此时你可能会好奇 Hook 是如何工作的。在两次渲染间，React如何知道哪个 `useState` 调用对应于哪个 state 变量？React 又是如何匹配前后两次渲染中的每一个 effect 的？**在下一章节中我们会学习[使用 Hooks 的规则](/docs/hooks-rules.html) —— 这对 Hook 的工作至关重要。**
+此时你可能会好奇 Hook 是如何工作的。在两次渲染间，React如何知道哪个 `useState` 调用对应于哪个 state 变量？React 又是如何匹配前后两次渲染中的每一个 effect 的？**在下一章节中我们会学习[使用 Hook 的规则](/docs/hooks-rules.html) —— 这对 Hook 的工作至关重要。**
