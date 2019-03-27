@@ -430,6 +430,10 @@ x === z; // true
 
 在这个例子中，修改 `x` 后我们得到了一个新的引用，我们可以通过判断引用 `(x === y)` 来验证 `y` 中存的值和原本 `x` 中存的值不同。
 
+<<<<<<< HEAD
 还有两个其他的库可以帮助使用不可变数据，它们是 [seamless-immutable](https://github.com/rtfeldman/seamless-immutable) 和 [immutability-helper](https://github.com/kolodny/immutability-helper)。
+=======
+Other libraries that can help use immutable data include [Immer](https://github.com/mweststrate/immer), [immutability-helper](https://github.com/kolodny/immutability-helper), and [seamless-immutable](https://github.com/rtfeldman/seamless-immutable).
+>>>>>>> 2304fa1a7c34b719c10cca1023003e22bf0fd137
 
 不可变数据结构使你可以方便地追踪对象的变化，这是应用 `shouldComponentUpdate` 所需要的。让性能得以提升。
