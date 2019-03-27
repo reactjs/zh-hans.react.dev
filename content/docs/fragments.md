@@ -38,7 +38,7 @@ class Table extends React.Component {
 }
 ```
 
-`<Columns />` 需要返回多个 `<td>` 元素才能使呈现的 HTML 有效。如果在 `<Columns />` 的 `render()` 中使用了父 div，则生成的 HTML 将无效。
+`<Columns />` 需要返回多个 `<td>` 元素以使渲染的 HTML 有效。如果在 `<Columns />` 的 `render()` 中使用了父 div，则生成的 HTML 将无效。
 
 ```jsx
 class Columns extends React.Component {
