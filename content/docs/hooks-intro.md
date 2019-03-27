@@ -5,7 +5,7 @@ permalink: docs/hooks-intro.html
 next: hooks-overview.html
 ---
 
-*Hook* 是 React 16.8 中新增的特性。它可以让你在不编写 class 组件的情况下，也能使用 state 及其他 React 特性。
+*Hook* 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。
 
 ```js{4,5}
 import React, { useState } from 'react';
@@ -103,7 +103,7 @@ React 没有提供将可复用性行为“附加”到组件的途径（例如�
 
 ## FAQ {#frequently-asked-questions}
 
-我们准备了 [Hook FAQ](/docs/hooks-faq.html) 来解答最常见的关于 Hook 的问题。
+我们准备了 [Hooks FAQ](/docs/hooks-faq.html) 来解答最常见的关于 Hook 的问题。
 
 ## 下一步 {#next-steps}
 

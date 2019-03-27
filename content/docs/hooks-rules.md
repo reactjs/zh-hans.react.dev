@@ -1,6 +1,6 @@
 ---
 id: hooks-rules
-title: Hook 规范
+title: Hook 规则
 permalink: docs/hooks-rules.html
 next: hooks-custom.html
 prev: hooks-effect.html
@@ -8,11 +8,11 @@ prev: hooks-effect.html
 
 *Hook* 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。
 
-Hook 本质就是 JavaScript 函数，但是在使用它时需要遵循两条规范。我们提供了一个 [linter 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks)来强制执行这些规范：
+Hook 本质就是 JavaScript 函数，但是在使用它时需要遵循两条规则。我们提供了一个 [linter 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks)来强制执行这些规则：
 
 ### 只在最顶层使用 Hook {#only-call-hooks-at-the-top-level}
 
-**不要在循环，条件或嵌套函数中调用 Hook，** 确保总是在你的 React 函数的最顶层调用他们。遵守这条规范，你就能确保 Hook 在每一次渲染中都按照同样的顺序被调用。这让 React 能够在多次的 `useState` 和 `useEffect` 调用之间保持 hook 状态的正确。(如果你对此感到好奇，我们在[下面](#explanation)会有更深入的解释。)
+**不要在循环，条件或嵌套函数中调用 Hook，** 确保总是在你的 React 函数的最顶层调用他们。遵守这条规则，你就能确保 Hook 在每一次渲染中都按照同样的顺序被调用。这让 React 能够在多次的 `useState` 和 `useEffect` 调用之间保持 hook 状态的正确。(如果你对此感到好奇，我们在[下面](#explanation)会有更深入的解释。)
 
 ### 只在 React 函数中调用 Hook {#only-call-hooks-from-react-functions}
 
@@ -21,11 +21,11 @@ Hook 本质就是 JavaScript 函数，但是在使用它时需要遵循两条规
 * ✅ 在 React 的函数组件中调用 Hook
 * ✅ 在自定义 Hook 中调用其他 Hook (我们将会在[下一页](/docs/hooks-custom.html) 中学习这个。)
 
-遵循此规范，确保组件的状态逻辑在代码中清晰可见。
+遵循此规则，确保组件的状态逻辑在代码中清晰可见。
 
 ## ESLint 插件 {#eslint-plugin}
 
-我们发布了一个名为 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) 的 ESLint 插件来强制执行这两条规范。如果你想尝试一下，可以将此插件添加到你的项目中：
+我们发布了一个名为 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) 的 ESLint 插件来强制执行这两条规则。如果你想尝试一下，可以将此插件添加到你的项目中：
 
 ```bash
 npm install eslint-plugin-react-hooks
@@ -48,7 +48,7 @@ npm install eslint-plugin-react-hooks
 
 我们打算后续版本默认添加此插件到 Create React App 及其他类似的工具包中。
 
-**现在你可以跳转到下一章节学习如何编写[你自己的 Hook](/docs/hooks-custom.html)。**在本章节中，我们将继续解释这些规范背后的原因。
+**现在你可以跳转到下一章节学习如何编写[你自己的 Hook](/docs/hooks-custom.html)。**在本章节中，我们将继续解释这些规则背后的原因。
 
 ## 说明 {#explanation}
 
@@ -101,7 +101,7 @@ useEffect(updateTitle)     // 4. 替换更新标题的 effect
 只要 Hook 的调用顺序在多次渲染之间保持一致，React 就能正确地将内部 state 和对应的 Hook 进行关联。但如果我们将一个 Hook (例如 `persistForm` effect) 调用放到一个条件语句中会发生什么呢？
 
 ```js
-  // 🔴 在条件语句中使用 Hook 违反第一条规范
+  // 🔴 在条件语句中使用 Hook 违反第一条规则
   if (name !== '') {
     useEffect(function persistForm() {
       localStorage.setItem('formData', name);
@@ -131,7 +131,7 @@ React 不知道第二个 `useState` 的 Hook 应该返回什么。React 会以�
   });
 ```
 
-**注意：如果使用了[提供的 lint 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks)，就无需担心此问题。** 不过你现在知道了为什么 Hook 会这样工作，也知道了这个规范是为了避免什么问题。
+**注意：如果使用了[提供的 lint 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks)，就无需担心此问题。** 不过你现在知道了为什么 Hook 会这样工作，也知道了这个规则是为了避免什么问题。
 
 ## 下一步 {#next-steps}
 

@@ -268,6 +268,6 @@ function Todos() {
 
 嗯，真快！如果你还有什么东西不是很理解或者想要了解更详细的内容，可以继续阅读下一章节：[State Hook](/docs/hooks-state.html)。
 
-你也可以查阅 [Hook API 索引](/docs/hooks-reference.html) 和 [Hook 常见问题](/docs/hooks-faq.html)。
+你也可以查阅 [Hook API 索引](/docs/hooks-reference.html) 和 [Hooks FAQ](/docs/hooks-faq.html)。
 
 最后，不要忘记查阅 [Hook 简介](/docs/hooks-intro.html)，它介绍了我们*为什么*要增加 Hook 以及如何在不重写整个应用的情况下将 Hook 跟 class 组件同时使用。

@@ -11,7 +11,7 @@ permalink: warnings/invalid-hook-call-warning.html
 触发这个警告有三种常见的原因：
 
 1. 你的 React 和 React DOM 可能**版本不匹配**。
-2. 你可能**打破了 [Hook 的使用规范](/docs/hooks-rules.html)**。
+2. 你可能**打破了 [Hook 的规则](/docs/hooks-rules.html)**。
 3. 你可能在同一个应用中拥有**多个 React 副本**。
 
 让我们依次来看这些情况。
@@ -20,14 +20,14 @@ permalink: warnings/invalid-hook-call-warning.html
 
 你可能使用的是尚未支持 Hook 的 `react-dom`（< 16.8.0）或 `react-native`（< 0.59）版本。你可以在应用文件夹中执行 `npm ls react-dom` 或 `npm ls react-native` 来检当前使用的版本。如果你发现不止一个相关的依赖，可能也会产生问题（在后面的小节会进行说明）。
 
-## 打破了 Hook 的使用规范 {#breaking-the-rules-of-hooks}
+## 打破了 Hook 的规则 {#breaking-the-rules-of-hooks}
 
 你只能在**当 React 渲染函数组件时**调用 Hook：
 
 * ✅ 在函数组件的顶层调用它们。
 * ✅ 在[自定义 Hook](/docs/hooks-custom.html) 的顶层调用它们。
 
-**查看 [Hook 的使用规范](/docs/hooks-rules.html)以了解更多内容。**
+**查看 [Hook 的规则](/docs/hooks-rules.html)以了解更多内容。**
 
 ```js{2-3,8-9}
 function Counter() {

@@ -249,4 +249,4 @@ function Todos() {
 }
 ```
 
-在复杂组件中使用 reducer 管理内部 state 的需求很常见，我们已经将 `useReducer` 的 Hook 内置到 React 中。你可以在 [Hook API 参考](/docs/hooks-reference.html)中找到它使用，搭配其他内置的 Hook 一起使用。
+在复杂组件中使用 reducer 管理内部 state 的需求很常见，我们已经将 `useReducer` 的 Hook 内置到 React 中。你可以在 [Hook API 索引](/docs/hooks-reference.html)中找到它使用，搭配其他内置的 Hook 一起使用。
