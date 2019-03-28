@@ -18,7 +18,7 @@ ReactDOM.createPortal(child, container)
 
 ```js{4,6}
 render() {
-  // React mounts a new div and renders the children into it
+  // React 挂载了一个新的 div， 并且把子元素渲染其中
   return (
     <div>
       {this.props.children}
@@ -31,8 +31,8 @@ render() {
 
 ```js{6}
 render() {
-  // React does *not* create a new div. It renders the children into `domNode`.
-  // `domNode` is any valid DOM node, regardless of its location in the DOM.
+  // React 并*没有*创建一个新的 div。它只是把子元素渲染到 `domNode` 中。
+  // 不管 `domNode` 在 DOM 中的位置，它都是任意一个有效的 DOM 节点，。
   return ReactDOM.createPortal(
     this.props.children,
     domNode
@@ -52,7 +52,7 @@ render() {
 
 ## 通过 Portals 进行事件冒泡 {#event-bubbling-through-portals}
 
-尽管 portal 可以被放置在 DOM 树中的任何地方，但在任何其他方面，其行为和普通的 React 子节点行为一致。由于 portal 仍存在于 *React 树*， 且不管 *DOM 树* 中的位置，那么无论其子节点是否是 portal，功能特性比如 context 的工作原理都是不变的。
+尽管 portal 可以被放置在 DOM 树中的任何地方，但在任何其他方面，其行为和普通的 React 子节点行为一致。由于 portal 仍存在于 *React 树*， 且与 *DOM 树* 中的位置无关，那么无论其子节点是否是 portal，像 context 这样的功能特性都是不变的。
 
 这包含事件冒泡。一个从 portal 内部触发的事件会一直冒泡至包含 *React 树*的祖先，即便这些元素并不是 *DOM 树* 中的祖先。假设存在如下 HTML 结构：
 
@@ -68,7 +68,7 @@ render() {
 在 `#app-root` 里的 `Parent` 组件能够捕获到未被捕获的从兄弟节点 `#modal-root` 冒泡上来的事件。
 
 ```js{28-31,42-49,53,61-63,70-71,74}
-// These two containers are siblings in the DOM
+// 在 DOM 中有两个容器是兄弟级 （siblings）
 const appRoot = document.getElementById('app-root');
 const modalRoot = document.getElementById('modal-root');
 
@@ -79,14 +79,14 @@ class Modal extends React.Component {
   }
 
   componentDidMount() {
-    // The portal element is inserted in the DOM tree after
-    // the Modal's children are mounted, meaning that children
-    // will be mounted on a detached DOM node. If a child
-    // component requires to be attached to the DOM tree
-    // immediately when mounted, for example to measure a
-    // DOM node, or uses 'autoFocus' in a descendant, add
-    // state to Modal and only render the children when Modal
-    // is inserted in the DOM tree.
+    // 在 Modal 的所有子元素被挂载后，
+    // 这个 portal 元素会被嵌入到 DOM 树中，这意味着子元素
+    // 将被挂载到一个分离的 DOM 节点中。
+    // 当挂载时，如果一个子组件需要被立即连接回这个 DOM 树时，
+    // 例如衡量一个 DOM 节点，
+    // 或者在后代节点中使用 ‘autoFocus’，
+    // 则需添加 state 到 Modal 中，并且当 Modal 嵌入到 DOM 树时，
+    // 只会渲染子元素。
     modalRoot.appendChild(this.el);
   }
 
@@ -110,9 +110,9 @@ class Parent extends React.Component {
   }
 
   handleClick() {
-    // This will fire when the button in Child is clicked,
-    // updating Parent's state, even though button
-    // is not direct descendant in the DOM.
+    // 当子元素里的按钮被点击时，这个将会被触发
+    // 更新父元素的 state，即使这个按钮
+    // 在 DOM 中不是直接关联的后代（descendant）
     this.setState(state => ({
       clicks: state.clicks + 1
     }));
@@ -137,8 +137,8 @@ class Parent extends React.Component {
 }
 
 function Child() {
-  // The click event on this button will bubble up to parent,
-  // because there is no 'onClick' attribute defined
+  // 这个按钮的点击事件会冒泡到父元素
+  // 因为这里没有定义 'onClick' 属性
   return (
     <div className="modal">
       <button>Click</button>
