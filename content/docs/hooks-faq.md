@@ -176,7 +176,7 @@ it('can render and update a counter', () => {
 });
 ```
 
-对 `act()` 的调用也会清空它们内部的 Effects。
+对 `act()` 的调用也会清空它们内部的 effect。
 
 如果你需要测试一个自定义 Hook，你可以在你的测试代码中创建一个组件并在其中使用你的 Hook。然后你就可以测试你刚写的组件了。
 
