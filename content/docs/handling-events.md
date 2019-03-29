@@ -101,7 +101,7 @@ ReactDOM.render(
 
 ```js{2-6}
 class LoggingButton extends React.Component {
-  // 这种语法确保 `this` 绑定在 `handleClick` 内。
+  // 这种语法确保 `handleClick` 内 `this` 是已经被绑定的。
   // 注意: 这是 *实验性* 语法。
   handleClick = () => {
     console.log('this is:', this);
@@ -128,7 +128,7 @@ class LoggingButton extends React.Component {
   }
 
   render() {
-    // 这种语法确保 `handleClick` 内 `this` 是已经被绑定的
+    // 这种语法确保 `handleClick` 内 `this` 是已经被绑定的。
     return (
       <button onClick={(e) => this.handleClick(e)}>
         Click me
