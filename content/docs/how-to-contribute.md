@@ -16,23 +16,18 @@ Facebook已经采纳的行为守则，我们希望工程的参与者跟随它。
 ### 开放式开发 {#open-development}
 在React进行的所有工作直接发生在[GitHub](https://github.com/facebook/react)上。核心团队成员和外部的贡献者发起拉取代码的请求都是经过同样的审查流程。
 
-### Branch Organization {#branch-organization}
+### 分支组织 {#branch-organization}
+我们将尽我们最大的努力保持[`master` 分支](https://github.com/facebook/react/tree/master)的稳定，确保测试总是通过的。但是为了行动的更快，我们将使做出和你们应用不兼容的改变。我们推荐你使用[React最新的稳定版](/downloads.html).
+如果你们发起一个拉取的请求，请不要在`master`分支上这么做。我们维持稳定分支为主要版本的分别，但我们不能接收直接从它们拉取请求。代替，我们优选非中断性改变从master到最新的稳定版本。
 
-We will do our best to keep the [`master` branch](https://github.com/facebook/react/tree/master) in good shape, with tests passing at all times. But in order to move fast, we will make API changes that your application might not be compatible with. We recommend that you use [the latest stable version of React](/downloads.html).
+### 语义化版本 {#semantic-versioning}
+React遵从[语义化版本](https://semver.org/).我们为修复问题发布补丁版本，最小的版本针对新功能，和主要版本为中断性的改变。当我们做出中断性改变，我们也介绍过期的警告在小版本里以致用户知道即将到来的改变和提前迁移他们的代码。
+我们附加每个拉取请求一个标签，标记这个改变是否在下个[补丁](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-patch)中发布，[最小版本](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-minor)，或者[主要版本](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-major)。我们每几个星期发布新的补丁版本，每几个月发布一个最小版本，和一年两次的主要版本。
+每次重大的改变写在[改变日志文件](https://github.com/facebook/react/blob/master/CHANGELOG.md)里。
 
-If you send a pull request, please do it against the `master` branch. We maintain stable branches for major versions separately but we don't accept pull requests to them directly. Instead, we cherry-pick non-breaking changes from master to the latest stable major version.
+### 问题 {#bugs}
 
-### Semantic Versioning {#semantic-versioning}
-
-React follows [semantic versioning](https://semver.org/). We release patch versions for bugfixes, minor versions for new features, and major versions for any breaking changes. When we make breaking changes, we also introduce deprecation warnings in a minor version so that our users learn about the upcoming changes and migrate their code in advance.
-
-We tag every pull request with a label marking whether the change should go in the next [patch](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-patch), [minor](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-minor), or a [major](https://github.com/facebook/react/pulls?q=is:open+is:pr+label:semver-major) version. We release new patch versions every few weeks, minor versions every few months, and major versions one or two times a year.
-
-Every significant change is documented in the [changelog file](https://github.com/facebook/react/blob/master/CHANGELOG.md).
-
-### Bugs {#bugs}
-
-#### Where to Find Known Issues {#where-to-find-known-issues}
+#### 从哪里发现已知的问题 {#where-to-find-known-issues}
 
 We are using [GitHub Issues](https://github.com/facebook/react/issues) for our public bugs. We keep a close eye on this and try to make it clear when we have an internal fix in progress. Before filing a new task, try to make sure your problem doesn't already exist.
 
