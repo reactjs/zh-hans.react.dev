@@ -8,16 +8,13 @@ redirect_from:
   - "contributing/how-to-contribute.html"
   - "tips/introduction.html"
 ---
+React是Facebook的首先开源项目的一个，它仍然还在开发并且把代码带给每个人。我们仍然在规划操作指南使贡献工程尽可能简单和透明，但是我们做的还不够好。希望这个文档使贡献的步骤清晰和回答一些你们的问题。
 
-React is one of Facebook's first open source projects that is both under very active development and is also being used to ship code to everybody on [facebook.com](https://www.facebook.com). We're still working out the kinks to make contributing to this project as easy and transparent as possible, but we're not quite there yet. Hopefully this document makes the process for contributing clear and answers some questions that you may have.
+### [行为守则](https://code.facebook.com/codeofconduct) {#code-of-conduct}
+Facebook已经采纳的行为守则，我们希望工程的参与者跟随它。请读[完整版](https://code.facebook.com/codeofconduct),以致我们知道什么该做什么不该做。
 
-### [Code of Conduct](https://code.facebook.com/codeofconduct) {#code-of-conduct}
-
-Facebook has adopted a Code of Conduct that we expect project participants to adhere to. Please read [the full text](https://code.facebook.com/codeofconduct) so that you can understand what actions will and will not be tolerated.
-
-### Open Development {#open-development}
-
-All work on React happens directly on [GitHub](https://github.com/facebook/react). Both core team members and external contributors send pull requests which go through the same review process.
+### 开放式开发 {#open-development}
+在React进行的所有工作直接发生在[GitHub](https://github.com/facebook/react)上。核心团队成员和外部的贡献者发起拉取代码的请求都是经过同样的审查流程。
 
 ### Branch Organization {#branch-organization}
 
