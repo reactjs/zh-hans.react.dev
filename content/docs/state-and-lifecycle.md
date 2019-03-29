@@ -72,9 +72,13 @@ ReactDOM.render(
 
 State 与 props 类似，但是 state 是私有的，并且完全受控于当前组件。
 
+<<<<<<< HEAD
 我们[之前提到](/docs/components-and-props.html#functional-and-class-components)过组件如果一个组件用 class 定义时，会包含一些额外的特性。State 是： 仅属于 class 组件的特性。
 
 ## 将函数组件转换成 class 组件 {#converting-a-function-to-a-class}
+=======
+## Converting a Function to a Class {#converting-a-function-to-a-class}
+>>>>>>> d0f2db967a38e358bd59c65e981862cdf38f3d0b
 
 通过以下五步将 `Clock` 的函数组件转成 class 组件：
 
