@@ -32,7 +32,7 @@ render() {
 ```js{6}
 render() {
   // React 并*没有*创建一个新的 div。它只是把子元素渲染到 `domNode` 中。
-  // 不管 `domNode` 在 DOM 中的位置，它都是任意一个有效的 DOM 节点，。
+  // `domNode` 是一个可以在任何位置的有效 DOM 节点。
   return ReactDOM.createPortal(
     this.props.children,
     domNode
@@ -80,13 +80,13 @@ class Modal extends React.Component {
 
   componentDidMount() {
     // 在 Modal 的所有子元素被挂载后，
-    // 这个 portal 元素会被嵌入到 DOM 树中，这意味着子元素
-    // 将被挂载到一个分离的 DOM 节点中。
-    // 当挂载时，如果一个子组件需要被立即连接回这个 DOM 树时，
+    // 这个 portal 元素会被嵌入到 DOM 树中，
+    // 这意味着子元素将被挂载到一个分离的 DOM 节点中。
+    // 如果要求子组件在挂载时可以立刻接入 DOM 树，
     // 例如衡量一个 DOM 节点，
     // 或者在后代节点中使用 ‘autoFocus’，
-    // 则需添加 state 到 Modal 中，并且当 Modal 嵌入到 DOM 树时，
-    // 只会渲染子元素。
+    // 则需添加 state 到 Modal 中，
+    // 仅当 Modal 被插入 DOM 树中才能渲染子元素。
     modalRoot.appendChild(this.el);
   }
 
@@ -110,9 +110,9 @@ class Parent extends React.Component {
   }
 
   handleClick() {
-    // 当子元素里的按钮被点击时，这个将会被触发
-    // 更新父元素的 state，即使这个按钮
-    // 在 DOM 中不是直接关联的后代（descendant）
+    // 当子元素里的按钮被点击时，
+    // 这个将会被触发更新父元素的 state，
+    // 即使这个按钮在 DOM 中不是直接关联的后代
     this.setState(state => ({
       clicks: state.clicks + 1
     }));
