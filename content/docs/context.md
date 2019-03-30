@@ -117,7 +117,7 @@ const MyContext = React.createContext(defaultValue);
 
 创建一个 Context 对象。当 React 渲染一个订阅了这个 Context 对象的组件，这个组件会从组件树中离自身最近的那个匹配的 `Provider` 中读取到当前的 context 值。
 
-只有当组件所处的树中没有匹配到 Provider 时，其 `defaultValue` 参数**才**会生效。这有助于在不使用 Provider 包装组件的情况下对组件进行测试。注意：将 `undefined` 传递个 Provider 时，消费组件的 `defaultValue` 不会生效。
+只有当组件所处的树中没有匹配到 Provider 时，其 `defaultValue` 参数**才**会生效。这有助于在不使用 Provider 包装组件的情况下对组件进行测试。注意：将 `undefined` 传递给 Provider 时，消费组件的 `defaultValue` 不会生效。
 
 ### `Context.Provider` {#contextprovider}
 
