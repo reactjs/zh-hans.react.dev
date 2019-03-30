@@ -48,4 +48,4 @@ _注意此功能并不是 React 的一部分，而是由第三方库提供。_ R
 
 ### 我可以在 React 中实现动画效果吗？ {#can-i-do-animations-in-react}
 
-React 可以被用来实现动画。参见 [React Transition Group](https://reactcommunity.org/react-transition-group/) 和 [React Motion](https://github.com/chenglou/react-motion) 等示例。
+React 可以被用来实现强大的动画效果。参见 [React Transition Group](https://reactcommunity.org/react-transition-group/) 和 [React Motion](https://github.com/chenglou/react-motion) 等示例。
