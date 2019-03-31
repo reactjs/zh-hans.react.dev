@@ -37,7 +37,7 @@ prev: hooks-reference.html
   * [我应该使用单个还是多个 state 变量？](#should-i-use-one-or-many-state-variables)
   * [我可以只在更新时运行 effect 吗？](#can-i-run-an-effect-only-on-updates)
   * [如何获取上一轮的 props 或 state？](#how-to-get-the-previous-props-or-state)
-  * [为什么我会在我会的函数中看到陈旧的 props 和 state ？](#why-am-i-seeing-stale-props-or-state-inside-my-function)
+  * [为什么我会在我的函数中看到陈旧的 props 和 state ？](#why-am-i-seeing-stale-props-or-state-inside-my-function)
   * [我该如何实现 getDerivedStateFromProps？](#how-do-i-implement-getderivedstatefromprops)
   * [有类似 forceUpdate 的东西吗？](#is-there-something-like-forceupdate)
   * [我可以引用一个函数组件吗？](#can-i-make-a-ref-to-a-function-component)
@@ -180,7 +180,7 @@ it('can render and update a counter', () => {
 
 如果你需要测试一个自定义 Hook，你可以在你的测试代码中创建一个组件并在其中使用你的 Hook。然后你就可以测试你刚写的组件了。
 
-为了减少不必要的模板项目，我们推荐使用 [`react-testing-library`](https://git.io/react-testing-library)，该项目被设计用来鼓励编写按照你的终端用户的方式来使用你的组件的测试。
+为了减少不必要的模板项目，我们推荐使用 [`react-testing-library`](https://git.io/react-testing-library)，该项目旨在鼓励你按照终端用户使用组件的方式来编写测试。
 
 ### [lint 规则](https://www.npmjs.com/package/eslint-plugin-react-hooks)具体强制了哪些内容？ {#what-exactly-do-the-lint-rules-enforce}
 
@@ -188,7 +188,7 @@ it('can render and update a counter', () => {
 
 规范尤其强制了以下内容：
 
-* 对 Hook 的调用要么在一个`大驼峰法`命名的函数（视作一个组件）内部或另一个 `useSomething` 函数（视作一个自定义 Hook）中。
+* 对 Hook 的调用要么在一个`大驼峰法`命名的函数（视作一个组件）内部，要么在另一个 `useSomething` 函数（视作一个自定义 Hook）中。
 * Hook 在每次渲染时都按照相同的顺序被调用。
 
 还有一些其他的启发方式，但随着我们不断地调优以在发现 Bug 和避免伪真理之前取得平衡，这些方式随时会改变。
@@ -278,7 +278,7 @@ function Box() {
 
 这是因为当我们更新一个 state 变量，我们会 *替换* 它的值。这和 class 中的 `this.setState` 不一样，后者会把更新后的字段 *合并* 入对象中。
 
-如果你怀念自动合并，你可以写一个自定义的 `useLegacyState` Hook 来合并对象 state 的更新。然而，相反的**我们推荐吧 state 切分成多个 state 变量，每个变量包含的不同值会在同时发生变化。**
+如果你怀念自动合并，你可以写一个自定义的 `useLegacyState` Hook 来合并对象 state 的更新。然而，相反的**我们推荐把 state 切分成多个 state 变量，每个变量包含的不同值会在同时发生变化。**
 
 举个例子，我们可以把组件的 state 拆分为 `position` 和 `size` 两个对象，并永远以非合并的方式去替换 `position`：
 
@@ -312,13 +312,13 @@ function useWindowPosition() {
 }
 ```
 
-注意看我们是如何做到把对 `position` 这个 state 变量的 `useState` 调用和相关的 effect 移动到一个自定义 custom Hook 但不改变它们的代码的。如果所有的 state 都存在同一个对象中，想要抽取出来就比较难了。
+注意看我们是如何做到不改动代码就把对 `position` 这个 state 变量的 `useState` 调用和相关的 effect 移动到一个自定义 Hook 的。如果所有的 state 都存在同一个对象中，想要抽取出来就比较难了。
 
 把所有 state 都放在同一个 `useState` 调用中，或是每一个字段都对应一个 `useState` 调用，这两方式都能跑通。当你在这两个极端之间找到平衡，然后把相关 state 组合到几个独立的 state 变量时，组件就会更加的可读。如果 state 的逻辑开始变得复杂，我们推荐 [用 reducer 来管理它](/docs/hooks-reference.html#usereducer)，或使用自定义 Hook。
 
 ### 我可以只在更新时运行 effect 吗？ {#can-i-run-an-effect-only-on-updates}
 
-这是个比较罕见的使用场景。如果你需要的话，你可以 [使用一个可变的 ref](#is-there-something-like-instance-variables) 来手动存储一个布尔值来表示时首次渲染还是后续渲染，然后在你的 effect 中检查这个标识。（如果你发现自己经常在这么做，你可以为之创建一个自定义 Hook。）
+这是个比较罕见的使用场景。如果你需要的话，你可以 [使用一个可变的 ref](#is-there-something-like-instance-variables) 手动存储一个布尔值来表示是首次渲染还是后续渲染，然后在你的 effect 中检查这个标识。（如果你发现自己经常在这么做，你可以为之创建一个自定义 Hook。）
 
 ### 如何获取上一轮的 props 或 state？ {#how-to-get-the-previous-props-or-state}
 
@@ -371,7 +371,7 @@ function Counter() {
 
 参见 [derived state 推荐模式](#how-do-i-implement-getderivedstatefromprops).
 
-### 为什么我会在我会的函数中看到陈旧的 props 和 state ？ {#why-am-i-seeing-stale-props-or-state-inside-my-function}
+### 为什么我会在我的函数中看到陈旧的 props 和 state ？ {#why-am-i-seeing-stale-props-or-state-inside-my-function}
 
 组件内部的任何函数，包括事件处理函数和 effect，都是从它被创建的那次渲染中被「看到」的。例如，考虑这样的代码：
 
@@ -403,7 +403,7 @@ function Example() {
 
 如果你刻意地想要从某些异步回调中读取 *最新的* state，你可以用 [一个 ref](/docs/hooks-faq.html#is-there-something-like-instance-variables) 来保存它，修改它，并从中读取。
 
-最后，你看到陈旧的 props 和 state 的另一个可能的原因是，如果你使用了「依赖数组」优化但没有正确地指定所有的依赖。举个例子，如果一个 effect 指定了 `[]` 作为第二个参数，但在内部读取了 `someProp`，它会一直「看到」 `someProp` 的初始值。解决办法是要么移除依赖数组，或者修正它。 这是 [你该如何处理函数](#is-it-safe-to-omit-functions-from-the-list-of-dependencies)，而这是关于如何减少 effect 的运行而不必错误的跳过依赖的 [一些常见策略](#what-can-i-do-if-my-effect-dependencies-change-too-often)。
+最后，你看到陈旧的 props 和 state 的另一个可能的原因，是你使用了「依赖数组」优化但没有正确地指定所有的依赖。举个例子，如果一个 effect 指定了 `[]` 作为第二个参数，但在内部读取了 `someProp`，它会一直「看到」 `someProp` 的初始值。解决办法是要么移除依赖数组，要么修正它。 这里介绍了 [你该如何处理函数](#is-it-safe-to-omit-functions-from-the-list-of-dependencies)，而这里介绍了关于如何减少 effect 的运行而不必错误的跳过依赖的 [一些常见策略](#what-can-i-do-if-my-effect-dependencies-change-too-often)。
 
 >注意
 >
@@ -715,7 +715,7 @@ function Example(props) {
 }
 ```
 
-仅当你是在找不到更好办法的时候才这么做，因为依赖于变更会使得组件更难以预测。如果有某些特定的模式无法很好地转化成这样，[发起一个 issue](https://github.com/facebook/react/issues/new) 并配上可运行的实例代码以便，我们会尽可能帮助你。
+仅当你实在找不到更好办法的时候才这么做，因为依赖于变更会使得组件更难以预测。如果有某些特定的模式无法很好地转化成这样，[发起一个 issue](https://github.com/facebook/react/issues/new) 并配上可运行的实例代码以便，我们会尽可能帮助你。
 
 ### 我该如何实现 `shouldComponentUpdate`? {#how-do-i-implement-shouldcomponentupdate}
 
@@ -729,7 +729,7 @@ const Button = React.memo((props) => {
 
 这不是一个 Hook 因为它的写法和 Hook 不同。`React.memo` 等效于 `PureComponent`，但它只比较 props。（你也可以通过第二个参数指定一个自定义的比较函数来比较新旧 props。如果函数返回 true，就会跳过更新。）
 
-`React.memo` 不比较 state 因为没有单一的 state 对象可供比较。但你也可以让子节点变为纯组件，或者 [用 `useMemo` 优化每一个具体的子节点](/docs/hooks-faq.html#how-to-memoize-calculations)。
+`React.memo` 不比较 state，因为没有单一的 state 对象可供比较。但你也可以让子节点变为纯组件，或者 [用 `useMemo` 优化每一个具体的子节点](/docs/hooks-faq.html#how-to-memoize-calculations)。
 
 ### 如何记忆计算结果？ {#how-to-memoize-calculations}
 
@@ -739,11 +739,11 @@ const Button = React.memo((props) => {
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
-这行代码会调用 `computeExpensiveValue(a, b)`。但如果输入 `[a, b]` 自上次值以来没有改变过，`useMemo` 会跳过再一次的调用，简单复用它上一次返回的值。
+这行代码会调用 `computeExpensiveValue(a, b)`。但如果输入值 `[a, b]` 自上次值以来没有改变过，`useMemo` 会跳过二次调用，只是简单复用它上一次返回的值。
 
 记住，传给 `useMemo` 的函数是在渲染期间运行的。不要在其中做任何你通常不会在渲染期间做的事。举个例子，副作用属于 `useEffect`，而不是 `useMemo`。
 
-**你可以把 `useMemo` 作为一种性能优化的手段，但不要把它当做一种语义上的保证。**未来，React 可能会渲染「忘掉」一些之前记住的值并在下一次渲染时重新计算它们，比如为离屏组件释放内存。建议自己编写相关代码以便没有 `useMemo` 也能正常工作 —— 然后把它加入性能优化。（在某些取值必须 *从不* 被重新计算的罕见场景，你可以 [惰性初始化](#how-to-create-expensive-objects-lazily) 一个 ref。）
+**你可以把 `useMemo` 作为一种性能优化的手段，但不要把它当做一种语义上的保证。**未来，React 可能会选择「忘掉」一些之前记住的值并在下一次渲染时重新计算它们，比如为离屏组件释放内存。建议自己编写相关代码以便没有 `useMemo` 也能正常工作 —— 然后把它加入性能优化。（在某些取值必须 *从不* 被重新计算的罕见场景，你可以 [惰性初始化](#how-to-create-expensive-objects-lazily) 一个 ref。）
 
 方便起见，`useMemo` 也允许你跳过一次子节点的昂贵的重新渲染：
 
@@ -822,7 +822,7 @@ function Image(props) {
 }
 ```
 
-这避免了创建一个昂贵的对象直到它首次被真正需要。如果你使用 Flow 或 TypeScript，你还可以为了方便给 `getObserver()` 一个不可为 null 的类型。
+这避免了我们在一个对象被首次真正需要之前就创建它。如果你使用 Flow 或 TypeScript，你还可以为了方便给 `getObserver()` 一个不可为 null 的类型。
 
 
 ### Hook 会因为在渲染时创建函数而变慢吗？ {#are-hooks-slow-because-of-creating-functions-in-render}
@@ -835,7 +835,7 @@ function Image(props) {
 
 * **符合语言习惯的代码在使用 Hook 时不需要很深的组件树嵌套**。这个现象在使用高阶组件、render props、和 context 的代码库中非常普遍。组件树小了，React 的工作量也随之减少。
 
-传统上认为，在 React 中使用内联函数对性能的影响与在每次渲染时传递新的回调是如何破坏子组件的 `shouldComponentUpdate` 优化的有关。 Hook 从三个方面解决了这个问题。
+传统上认为，在 React 中使用内联函数对性能的影响，与每次渲染都传递新的回调会如何破坏子组件的 `shouldComponentUpdate` 优化有关。Hook 从三个方面解决了这个问题。
 
 * [`useCallback`](/docs/hooks-reference.html#usecallback) Hook 允许你在重新渲染之间保持对相同的回调引用以使得 `shouldComponentUpdate` 继续工作：
 
@@ -959,7 +959,7 @@ function useEventCallback(fn, dependencies) {
 }
 ```
 
-无论是和，我们都 **不推荐使用这种模式** 并仅为了文档完整性而把它展示在这里。相反的，我们更倾向于 [避免很深的向下传递回调](#how-to-avoid-passing-callbacks-down)。
+无论如何，我们都 **不推荐使用这种模式** ，只是为了文档的完整性而把它展示在这里。相反的，我们更倾向于 [避免向下深入传递回调](#how-to-avoid-passing-callbacks-down)。
 
 
 ## 底层原理 {#under-the-hood}
@@ -968,7 +968,7 @@ function useEventCallback(fn, dependencies) {
 
 React 保持对当先渲染中的组件的追踪。多亏了 [Hook 规范](/docs/hooks-rules.html)，我们得知 Hook 只会在 React 组件中被调用（或自定义 Hook —— 同样只会在 React 组件中被调用）。
 
-每个组件内部都有一个「记忆单元格」列表。它们只不过是我们用来存储一些数据的 JavaScript 对象。当你用 `useState()` 调用一个 Hook 的时候，它会读取当前的单元格（或在首次渲染时将其初始化），让后把指针移动到下一个。这就是多个 `useState()` 调用会得到各自独立的本地 state 的原因。
+每个组件内部都有一个「记忆单元格」列表。它们只不过是我们用来存储一些数据的 JavaScript 对象。当你用 `useState()` 调用一个 Hook 的时候，它会读取当前的单元格（或在首次渲染时将其初始化），然后把指针移动到下一个。这就是多个 `useState()` 调用会得到各自独立的本地 state 的原因。
 
 ### Hook 使用了哪些现有技术？ {#what-is-the-prior-art-for-hooks}
 
