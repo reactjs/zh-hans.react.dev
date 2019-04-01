@@ -47,7 +47,7 @@ React.createElement(
 )
 ```
 
-如果你想测试一些特定的 JSX 会转换成怎么样的 JavaScript，你可以尝试 [在线的 Babel 编译器](babel://jsx-simple-example)。
+如果你想测试一些特定的 JSX 会转换成怎么样的 JavaScript，你可以尝试使用 [在线的 Babel 编译器](babel://jsx-simple-example)。
 
 ## 指定 React 元素类型 {#specifying-the-react-element-type}
 
@@ -71,11 +71,11 @@ function WarningButton() {
 }
 ```
 
-如果你并不使用 JavaScript 打包工具而是通过 `<script>` 标签加载 React，则必须将 `React` 挂载到全局变量中。
+如果你不使用 JavaScript 打包工具而是直接通过 `<script>` 标签加载 React，则必须将 `React` 挂载到全局变量中。
 
-### 在 JSX 类型中使用点表示法 {#using-dot-notation-for-jsx-type}
+### 在 JSX 类型中使用点语法 {#using-dot-notation-for-jsx-type}
 
-在 JSX 中，你也可以使用点表示法来引用一个 React 组件。当你在一个模块中导出许多 React 组件时，这会非常方便。例如，如果 `MyComponents.DatePicker` 是一个组件，你可以在 JSX 中直接使用：
+在 JSX 中，你也可以使用点语法来引用一个 React 组件。当你在一个模块中导出许多 React 组件时，这会非常方便。例如，如果 `MyComponents.DatePicker` 是一个组件，你可以在 JSX 中直接使用：
 
 ```js{10}
 import React from 'react';
@@ -93,7 +93,7 @@ function BlueDatePicker() {
 
 ### 用户定义的组件必须以大写字母开头 {#user-defined-components-must-be-capitalized}
 
-一个以小写字母开头的元素代表一个 HTML 内置组件，比如 `<div>` 或者 `<span>` 会生成相应的字符串 `'div'` 或者 `'span'` 传递给 `React.createElement`（作为参数）. 大写字母开头的元素则对应着在 JavaScript 导入或定义的组件 ，如 `<Foo />` 会编译为 `React.createElement(Foo)`。
+以小写字母开头的元素代表一个 HTML 内置组件，比如 `<div>` 或者 `<span>` 会生成相应的字符串 `'div'` 或者 `'span'` 传递给 `React.createElement`（作为参数）。大写字母开头的元素则对应着在 JavaScript 引入或自定义的组件，如 `<Foo />` 会编译为 `React.createElement(Foo)`。
 
 我们建议使用大写字母开头命名自定义组件。如果你确实需要一个以小写字母开头的组件，则在 JSX 中使用它之前，必须将它赋值给一个大写字母开头的变量。
 
@@ -133,7 +133,7 @@ function HelloWorld() {
 
 ### 在运行时选择类型 {#choosing-the-type-at-runtime}
 
-你不能将通用表达式作为 React 元素类型。如果你想通过通用表达式来（动态）决定元素类型，你需要首先将它赋值给大写字母开头的变量。这通常用于你想根据 prop 来渲染不同组件的情况:
+你不能将通用表达式作为 React 元素类型。如果你想通过通用表达式来（动态）决定元素类型，你需要首先将它赋值给大写字母开头的变量。这通常用于根据 prop 来渲染不同组件的情况下:
 
 ```js{10,11}
 import React from 'react';
@@ -182,7 +182,7 @@ function Story(props) {
 
 在 `MyComponent` 中，`props.foo` 的值等于 `1 + 2 + 3 + 4` 的执行结果 `10`。
 
-`if` 语句以及 `for` 循环不是 JavaScript 表达式，所以不能在 JSX 中直接使用。但是，你可以用于 JSX 以外的代码中。比如：
+`if` 语句以及 `for` 循环不是 JavaScript 表达式，所以不能在 JSX 中直接使用。但是，你可以用在 JSX 以外的代码中。比如：
 
 ```js{3-7}
 function NumberDescriber(props) {
@@ -218,7 +218,7 @@ function NumberDescriber(props) {
 
 这种行为通常是不重要的，这里只是提醒有这个用法。
 
-### Props 默认值为 "True" {#props-default-to-true}
+### Props 默认值为 “True” {#props-default-to-true}
 
 如果你没给 prop 赋值，它的默认值是 `true`。以下两个 JSX 表达式是等价的：
 
@@ -228,11 +228,11 @@ function NumberDescriber(props) {
 <MyTextBox autocomplete={true} />
 ```
 
-通常，我们不建议这样使用，因为它可能与 [ES6 对象简写](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015)混淆， `{foo}` 是 `{foo: foo}` 的简写，而不是 `{foo: true}`。这样实现只是为了保持和 HTML 中标签属性的行为一致。
+通常，我们不建议这样使用，因为它可能与 [ES6 对象简写](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015)混淆，`{foo}` 是 `{foo: foo}` 的简写，而不是 `{foo: true}`。这样实现只是为了保持和 HTML 中标签属性的行为一致。
 
-### 属性扩散 {#spread-attributes}
+### 属性展开 {#spread-attributes}
 
-如果你已经有了一个 props 对象，你可以使用展开操作符 `...` 来在 JSX 中传递整个 props 对象。以下两个组件是等价的：
+如果你已经有了一个 props 对象，你可以使用展开运算符 `...` 来在 JSX 中传递整个 props 对象。以下两个组件是等价的：
 
 ```js{7}
 function App1() {
@@ -245,7 +245,7 @@ function App2() {
 }
 ```
 
-你还可以仅仅保留选择当前组件需要接收的 props，并使用展开操作符将其他 props 传递下去。
+你还可以选择只保留当前组件需要接收的 props，并使用展开运算符将其他 props 传递下去。
 
 ```js{2}
 const Button = props => {
@@ -265,10 +265,10 @@ const App = () => {
 };
 ```
 
-在上面的例子中，`kind` prop 会被安全的保留，它将*不会*被传递给 DOM 中的 `<button>` 元素。
+在上述例子中，`kind` 的 prop 会被安全的保留，它将*不会*被传递给 DOM 中的 `<button>` 元素。
 所有其他的 props 会通过 `...other` 对象传递，使得这个组件的应用可以非常灵活。你可以看到它传递了一个 `onClick` 和 `children` 属性。
 
-属性扩散在某些情况下很有用，但是也可以很容易的将不必要的 props 传递给与它们不相关的组件，或者将无效的 HTML 属性传递给 DOM。我们建议谨慎的使用该语法。
+属性展开在某些情况下很有用，但是也很容易将不必要的 props 传递给不相关的组件，或者将无效的 HTML 属性传递给 DOM。我们建议谨慎的使用该语法。
 
 ## JSX 中的子元素 {#children-in-jsx}
 
@@ -282,7 +282,7 @@ const App = () => {
 <MyComponent>Hello world!</MyComponent>
 ```
 
-这是一个合法的 JSX，`MyComponent` 中的 `props.children` 是一个简单的未转义字符串 `"Hello world!"`。因此你可以采用写 HTML 的方式来书写 JSX。如下所示：
+这是一个合法的 JSX，`MyComponent` 中的 `props.children` 是一个简单的未转义字符串 `"Hello world!"`。因此你可以采用编写写 HTML 的方式来编写写 JSX。如下所示：
 
 ```html
 <div>This is valid HTML &amp; JSX at the same time.</div>
@@ -319,7 +319,7 @@ JSX 会移除行首尾的空格以及空行。与标签相邻的空行均会被�
 </MyContainer>
 ```
 
-你可以将不同类型的子元素混合在一起，因此你可以将字符串字面量与 JSX 子元素一起使用。这也是 JSX 类似 HTML 的一种表现，所以如下是合法的 JSX 也是合法的 HTML：
+你可以将不同类型的子元素混合在一起，因此你可以将字符串字面量与 JSX 子元素一起使用。这也是 JSX 类似 HTML 的一种表现，所以如下代码是合法的 JSX 并且也是合法的 HTML：
 
 ```html
 <div>
@@ -355,7 +355,7 @@ JavaScript 表达式可以被包裹在 `{}` 中作为子元素。例如，以下
 <MyComponent>{'foo'}</MyComponent>
 ```
 
-这对于展示任意长度的列表是非常有用的。例如，渲染 HTML 列表：
+这对于展示任意长度的列表非常有用。例如，渲染 HTML 列表：
 
 ```js{2,9}
 function Item(props) {
@@ -382,7 +382,7 @@ function Hello(props) {
 
 ### 函数作为子元素 {#functions-as-children}
 
-通常，JSX 中的 JavaScript 表达式将会被计算为字符串、React 元素或者是一个列表。不过，`props.children` 和其他 prop 一样，它可以传递任意类型的数据，而不仅仅是 React 已知的可以渲染的类型。例如，如果你有一个自定义组件，你可以把回调函数作为 `props.children` 进行传递：
+通常，JSX 中的 JavaScript 表达式将会被计算为字符串、React 元素或者是列表。不过，`props.children` 和其他 prop 一样，它可以传递任意类型的数据，而不仅仅是 React 已知的可渲染类型。例如，如果你有一个自定义组件，你可以把回调函数作为 `props.children` 进行传递：
 
 ```js{4,13}
 // 调用子元素回调 numTimes 次，来重复生成组件
@@ -403,7 +403,7 @@ function ListOfTenThings() {
 }
 ```
 
-你可以将任何东西作为子元素传递给自定义组件，只要确保在该组件渲染之前已经被转换成 React 能够理解的对象。这种用法并不常见，但可以用来扩展 JSX。
+你可以将任何东西作为子元素传递给自定义组件，只要确保在该组件渲染之前能够被转换成 React 理解的对象。这种用法并不常见，但可以用于扩展 JSX。
 
 ### 布尔类型、Null 以及 Undefined 将会忽略 {#booleans-null-and-undefined-are-ignored}
 
@@ -423,7 +423,7 @@ function ListOfTenThings() {
 <div>{true}</div>
 ```
 
-这有助于依据特定条件来渲染其他的 React 元素。例如，在以下 JSX 中，仅当 `showHeader` 为 `true` 时，才会渲染 `<Header />`:
+这有助于依据特定条件来渲染其他的 React 元素。例如，在以下 JSX 中，仅当 `showHeader` 为 `true` 时，才会渲染 `<Header />`：
 
 ```js{2}
 <div>
