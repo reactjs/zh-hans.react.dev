@@ -6,7 +6,7 @@ layout: docs
 category: FAQ
 ---
 
-### 如何将事件处理器（比如 onClick）传递给组件？{#如何将事件处理器（比如onClick）传递给组件}
+### 如何将事件处理器（比如 onClick）传递给组件？{#how-do-i-pass-an-event-handler-like-onclick-to-a-component}
 
 可以将事件处理器和其他函数作为 props 传递给子组件：
 
@@ -14,13 +14,13 @@ category: FAQ
 <button onClick={this.handleClick}>
 ```
 
-如果需要在事件处理器中访问父组件，还需要把该函数绑定到组件实例（参见下文）。
+如果需要在事件处理器中访问父组件，还需要为该函数绑定组件实例（参见下文）。
 
-### 如何绑定一个函数到一个组件实例？ {#如何绑定一个函数到一个组件实例？}
+### 如何为函数绑定组件实例？ {#how-do-i-bind-a-function-to-a-component-instance}
 
-有以下几种方式可以确保函数可以访问组件属性，比如像 `this.props` 和 `this.state` ，取决于使用的语法和构建步骤。
+有以下几种方式可以确保函数可以访问组件属性，比如 `this.props` 和 `this.state`，这取决于使用的语法和构建步骤。
 
-#### 在构造函数中绑定（ES2015） {#在构造函数中绑定（ES2015）}
+#### 在构造函数中绑定（ES2015） {#bind-in-constructor-es2015}
 
 ```jsx
 class Foo extends Component {
@@ -37,7 +37,7 @@ class Foo extends Component {
 }
 ```
 
-#### 类属性（第三阶段提案）{#类属性（第三阶段提案）}
+#### class 属性（第三阶段提案）{#class-properties-stage-3-proposal}
 
 ```jsx
 class Foo extends Component {
@@ -51,7 +51,7 @@ class Foo extends Component {
 }
 ```
 
-#### 在 Render 中的绑定 {#在Render中的绑定}
+#### 在 Render 中的绑定 {#bind-in-render}
 
 ```jsx
 class Foo extends Component {
@@ -68,7 +68,7 @@ class Foo extends Component {
 >
 >在 render 方法中使用 `Function.prototype.bind` 会在每次组件渲染时创建一个新的函数，可能会影响性能（参见下文）。
 
-#### 在 Render 中的箭头函数 {#在Render中的箭头函数}
+#### 在 Render 中使用箭头函数 {#arrow-function-in-render}
 
 ```jsx
 class Foo extends Component {
@@ -85,13 +85,13 @@ class Foo extends Component {
 >
 >在 render 方法中使用箭头函数也会在每次组件渲染时创建一个新的函数，可能会影响性能（参见下文）。
 
-### 可以在 render 方法中使用箭头函数吗？{#可以在render方法中使用箭头函数吗？}
+### 可以在 render 方法中使用箭头函数吗？{#is-it-ok-to-use-arrow-functions-in-render-methods}
 
 一般来说是可以的，并且直接箭头函数是向回调函数传递参数的最简单的办法。
 
 但是如果遇到了性能问题，一定要进行优化！
 
-### 为什么绑定是必要的？ {#为什么绑定是必要的？}
+### 为什么绑定是必要的？{#why-is-binding-necessary-at-all}
 
 在JavaScript中，以下两种写法是**不**等价的：
 
@@ -110,7 +110,7 @@ bind 方法确保了第二种写法与第一种写法相同。
 
 [This post by Yehuda Katz](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/) 详细解释了什么是绑定，和函数在 JavaScript 中怎么起作用。
 
-### 为什么我的函数每次组件渲染时都会被调用？{#为什么我的函数每次组件渲染时都会被调用？}
+### 为什么我的函数每次组件渲染时都会被调用？{#why-is-my-function-being-called-every-time-the-component-renders}
 
 确保你没有*调用函数*，在你传递函数给组件时：
 
@@ -144,7 +144,7 @@ render() {
 <button onClick={this.handleClick.bind(this, id)} />
 ```
 
-#### 示例：通过箭头函数传递参数 {#示例：通过箭头函数传递参数}
+#### 示例：通过箭头函数传递参数 {#example-passing-params-using-arrow-functions}
 
 ```jsx
 const A = 65 // ASCII character code
@@ -178,7 +178,7 @@ class Alphabet extends React.Component {
 }
 ```
 
-#### 示例：通过data-属性传递参数{#示例：通过data-属性传递参数}
+#### 示例：通过 data-attributes 传递参数 {#example-passing-params-using-data-attributes}
 
 同样的，也可以使用DOM API来存储事件处理器需要的数据。如果需要优化大量元素或使用依赖于 `React.PureComponent` 相等性检查的渲染树，请考虑使用此方法。
 
@@ -218,7 +218,7 @@ class Alphabet extends React.Component {
 }
 ```
 
-### 怎样阻止函数被调用太快或者太多次？{#怎样阻止函数被调用太快或者太多次？}
+### 怎样阻止函数被调用太快或者太多次？{#how-can-i-prevent-a-function-from-being-called-too-quickly-or-too-many-times-in-a-row}
 
 如果你有一个 `onClick` 或者 `onScroll` 这样的事件处理器，想要阻止回调被触发的太快，那么可以限制执行回调的速度，可以通过以下几种方式做到这点：
 
@@ -232,7 +232,7 @@ class Alphabet extends React.Component {
 >
 > `_.debounce` , `_.throttle` 和 `raf-schd` 都提供了一个 `cancel` 方法来取消延迟回调。 所以要么调用 `componentWillUnmount`，否则需要对代码进行检查来保证在延迟函数有效期间内组件始终挂载。
 
-#### 节流 {#节流}
+#### 节流 {#throttle}
 
 节流阻止函数在给定时间窗口内被调不能超过一次。下面这个例子会节流 “click” 事件处理器每秒钟的只能调用一次。
 
@@ -260,7 +260,7 @@ class LoadMoreButton extends React.Component {
 }
 ```
 
-#### 防抖 {#防抖}
+#### 防抖 {#debounce}
 
 防抖确保函数不会在上一次被调用之后一定量的时间内被执行。当必须进行一些费时的计算来响应快速派发的事件时（比如鼠标滚动或键盘事件时），防抖是非常有用的。下面这个例子以 250ms 的延迟来改变文本输入。
 
@@ -302,7 +302,7 @@ class Searchbox extends React.Component {
 }
 ```
 
-#### `requestAnimationFrame` 节流 {#requestanimationframe-节流}
+#### `requestAnimationFrame` 节流 {#requestanimationframe-throttling}
 
 [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) 是在浏览器中排队等待执行的一种方法，它可以在呈现性能的最佳时间执行。一个函数被 `requestAnimationFrame` 放入队列后将会在下一帧触发。浏览器会努力确保每秒 60 帧（60fps）。然而，如果浏览器无法确保，那么自然会*限制*每秒的帧数。例如，某个设备可能只能处理每秒 30 帧，所以每秒只能得到 30 帧。使用  `requestAnimationFrame` 来节流是一种有用的技术，它可以防止在一秒中进行 60 帧以上的更新。如果要求一秒钟内完成100次更新，则会为浏览器创建额外的负担，而用户无法看到这些工作。
 
@@ -349,6 +349,6 @@ class ScrollListener extends React.Component {
 }
 ```
 
-#### 测试速率限制 {#测试速率限制}
+#### 测试速率限制 {#testing-your-rate-limiting}
 
 在测试速率限制的代码是否正确工作的时候，如果可以（对动画或操作）进行快进将会很有帮助。如果正在使用 [`jest`](https://facebook.github.io/jest/) ，那么可以使用 [`mock timers`](https://facebook.github.io/jest/docs/en/timer-mocks.html) 来快进。如果正在使用  `requestAnimationFrame` 节流，那么就会发现 [raf-stub]([`raf-stub`](https://github.com/alexreardon/raf-stub)) 是一个控制动画帧的十分有用的工具。
