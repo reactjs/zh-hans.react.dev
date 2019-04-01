@@ -42,7 +42,7 @@ render() {
 
 ### 什么是 CSS-in-JS? {#what-is-css-in-js}
 
-“CSS-in-JS” 是指一种模式，其中 CSS 由 JavaScript 生成而不是在外部文件中定义。在[此处](https://github.com/MicheleBertoli/css-in-js)阅读 CSS-in-JS 库的一个比较。
+“CSS-in-JS” 是指一种模式，其中 CSS 由 JavaScript 生成而不是在外部文件中定义。在[此处](https://github.com/MicheleBertoli/css-in-js)阅读 CSS-in-JS 库之间的对比。
 
 _注意此功能并不是 React 的一部分，而是由第三方库提供。_ React 对样式如何定义并没有明确态度；如果有所疑惑，好的方式是和平时一样，在一个单独的 `*.css` 文件定义你的样式，并且通过 [`className`](/docs/dom-elements.html#classname) 指定它们。
 
