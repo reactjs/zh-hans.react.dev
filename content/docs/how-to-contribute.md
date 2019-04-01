@@ -28,66 +28,53 @@ React遵从[语义化版本](https://semver.org/).我们为修复问题发布补
 ### 问题 {#bugs}
 
 #### 从哪里发现已知的问题 {#where-to-find-known-issues}
+我们正在使用[GitHub Issues](https://github.com/facebook/react/issues)管理我们的公共bugs。我们密切关注这个和当我们正在按照进度修复问题的时候使它更清楚。在我们完成任务之前，试着确保问题不在存在。
 
-We are using [GitHub Issues](https://github.com/facebook/react/issues) for our public bugs. We keep a close eye on this and try to make it clear when we have an internal fix in progress. Before filing a new task, try to make sure your problem doesn't already exist.
+#### 报告新的问题 {#reporting-new-issues}
+做好的方式知道你修复的问题是提供一个简化的测试用例。这个[JSFiddle template](https://jsfiddle.net/Luktwrdm/)是一个着手点。
 
-#### Reporting New Issues {#reporting-new-issues}
+#### 安全问题 {#security-bugs}
+Facebook有一个[安全程序](https://www.facebook.com/whitehat/)为安全问题中的安全泄露。请记住，不要发布在公共问题中；请按照那页的处理大纲走。
 
-The best way to get your bug fixed is to provide a reduced test case. This [JSFiddle template](https://jsfiddle.net/Luktwrdm/) is a great starting point.
+### 如何取得联系 {#how-to-get-in-touch}
 
-#### Security Bugs {#security-bugs}
+* 在线聊天系统: [#reactjs on freenode](https://webchat.freenode.net/?channels=reactjs)
+* 论坛: [discuss.reactjs.org](https://discuss.reactjs.org/)
+假如你需要React相关的帮助，在Discard聊天平台上的React用户的交流群也是一种选择。
 
-Facebook has a [bounty program](https://www.facebook.com/whitehat/) for the safe disclosure of security bugs. With that in mind, please do not file public issues; go through the process outlined on that page.
+### 提议一个改变 {#proposing-a-change}
+如果你想要改变一个公共API,或者在实现上做出有意义的改变，我们推荐[发出一个问题](https://github.com/facebook/react/issues/new)。在你付出很大努力之前请让我们在提议上达成一个协议。
+如果你仅仅修复了一个问题，立即提交一个拉取请求是好的，但是我们仍然推荐你发一个正在修复问题的详情。假入我们不接受那个指定的修复，但我们想追踪这个问题，这样将会很有用。
 
-### How to Get in Touch {#how-to-get-in-touch}
+### 你的第一次拉取请求 {#your-first-pull-request}
+你第一次拉取请求吗？你可以从免费的系列视频中学习怎么做：
 
-* IRC: [#reactjs on freenode](https://webchat.freenode.net/?channels=reactjs)
-* Discussion forum: [discuss.reactjs.org](https://discuss.reactjs.org/)
+**[在GitHub上怎么贡献开源项目](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**
+为了帮助你一步一个脚印的熟悉我们的贡献步骤，我们有一个**[好问题](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")** 的列表，那个列表包含相对限制范围的问题。这是一个开始的好地方。
+如果你决定去修复一个问题，请确保检查评论线以防有人正在修复这个问题。如果在那会儿没有人正在修复，请留下一个评论声明你正在修复这个问题，所以其他人不会突然重复你的任务。
+如果有人声明的问题超过两个星期没有跟进它，你可以去接管它，但你仍然要留下一个评论。
 
-There is also [an active community of React users on the Discord chat platform](https://www.reactiflux.com/) in case you need help with React.
+### 正在发送一个拉取请求 {#sending-a-pull-request}
+核心团队正在管理拉取请求。我们将审核你的拉取请求，或者合并它，或者请求改变它，或者关闭它并给出一个解释。针对API的改变，我们可能需要在Facebook.com内部使用它，那将可能引起一些延迟。我们将全程尽最大努力提供更新和反馈。
 
-### Proposing a Change {#proposing-a-change}
+**在提交一个拉取请求之前,** 请确保以下已经完成了:
+1.分叉[代码库](https://github.com/facebook/react)和创建你的分支从`master`。
+2.运行`yarn在库的根目录。
+3.如果你修复一个问题或者添加代码，那些代码应该被测试，添加测试！
+4.确保你的测试套件通过 (`yarn test`)。提示：在开发中`yarn test --watch TestName`是有用的。
+5.运行`yarn test-prod`去测试在产品环境中。它支持和`yarn test`同样的可选项。
+6.如果你需要一个调试器，运行`yarn debug-test --watch TestName`，打开`chrome://inspect`,和按"Inspect"。
+7.格式化你的代码用[prettier](https://github.com/prettier/prettier)这个工具 (`yarn prettier`).
+8. 确保你的代码没有错误 (`yarn lint`). 提示: `yarn linc` 仅仅检查已经改变的文件.
+9. 运行[Flow](https://flowtype.org/) 进行类型检查 (`yarn flow`).
+10.如果你还没有拥有, 完成 CLA.
 
-If you intend to change the public API, or make any non-trivial changes to the implementation, we recommend [filing an issue](https://github.com/facebook/react/issues/new). This lets us reach an agreement on your proposal before you put significant effort into it.
+### 贡献者授权协议(CLA) {#contributor-license-agreement-cla}
+为了去接收你的拉取请求，我们需要你提交一个贡献者授权协议。你仅仅需要做这个一次，如果你已经在另外一个Facebook开源项目中做过，你将会很擅长做它。如果你正在首次提交一个拉取请求，仅仅让我们知道你已经完成贡献者授权协议和我们可以复审你的GitHub用户名。
 
-If you're only fixing a bug, it's fine to submit a pull request right away but we still recommend to file an issue detailing what you're fixing. This is helpful in case we don't accept that specific fix but want to keep track of the issue.
+**[在这儿完成你的贡献者授权协议](https://code.facebook.com/cla)**
 
-### Your First Pull Request {#your-first-pull-request}
-
-Working on your first Pull Request? You can learn how from this free video series:
-
-**[How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**
-
-To help you get your feet wet and get you familiar with our contribution process, we have a list of **[good first issues](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")** that contain bugs that have a relatively limited scope. This is a great place to get started.
-
-If you decide to fix an issue, please be sure to check the comment thread in case somebody is already working on a fix. If nobody is working on it at the moment, please leave a comment stating that you intend to work on it so other people don't accidentally duplicate your effort.
-
-If somebody claims an issue but doesn't follow up for more than two weeks, it's fine to take it over but you should still leave a comment.
-
-### Sending a Pull Request {#sending-a-pull-request}
-
-The core team is monitoring for pull requests. We will review your pull request and either merge it, request changes to it, or close it with an explanation. For API changes we may need to fix our internal uses at Facebook.com, which could cause some delay. We'll do our best to provide updates and feedback throughout the process.
-
-**Before submitting a pull request,** please make sure the following is done:
-
-1. Fork [the repository](https://github.com/facebook/react) and create your branch from `master`.
-2. Run `yarn` in the repository root.
-3. If you've fixed a bug or added code that should be tested, add tests!
-4. Ensure the test suite passes (`yarn test`). Tip: `yarn test --watch TestName` is helpful in development.
-5. Run `yarn test-prod` to test in the production environment. It supports the same options as `yarn test`.
-6. If you need a debugger, run `yarn debug-test --watch TestName`, open `chrome://inspect`, and press "Inspect".
-7. Format your code with [prettier](https://github.com/prettier/prettier) (`yarn prettier`).
-8. Make sure your code lints (`yarn lint`). Tip: `yarn linc` to only check changed files.
-9. Run the [Flow](https://flowtype.org/) typechecks (`yarn flow`).
-10. If you haven't already, complete the CLA.
-
-### Contributor License Agreement (CLA) {#contributor-license-agreement-cla}
-
-In order to accept your pull request, we need you to submit a CLA. You only need to do this once, so if you've done this for another Facebook open source project, you're good to go. If you are submitting a pull request for the first time, just let us know that you have completed the CLA and we can cross-check with your GitHub username.
-
-**[Complete your CLA here.](https://code.facebook.com/cla)**
-
-### Contribution Prerequisites {#contribution-prerequisites}
+### 贡献的先决条件 {#contribution-prerequisites}
 
 * You have [Node](https://nodejs.org) installed at v8.0.0+ and [Yarn](https://yarnpkg.com/en/) at v1.2.0+.
 * You have `gcc` installed or are comfortable installing a compiler if needed. Some of our dependencies may require a compilation step. On OS X, the Xcode Command Line Tools will cover this. On Ubuntu, `apt-get install build-essential` will install the required packages. Similar commands should work on other Linux distros. Windows will require some additional steps, see the [`node-gyp` installation instructions](https://github.com/nodejs/node-gyp#installation) for details.
