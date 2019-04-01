@@ -6,13 +6,13 @@ prev: hooks-custom.html
 next: hooks-faq.html
 ---
 
-*Hook* 是 React 16.8 的新特性。利用它，你无需编写 class 就能使用 state 和其他 React 特性。
+*Hook* 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。
 
-本页面描述 React 内置的 Hook API。
+本页面主要描述 React 中内置的 Hook API。
 
-如果你是 Hook 新手，可能需要先查阅 [概览](/docs/hooks-overview.html) 一章来了解它。还能在 [常见问题](/docs/hooks-faq.html) 一章找到有用的信息。
+如果你刚开始接触 Hook，那么可能需要先查阅 [Hook 概览](/docs/hooks-overview.html)。你也可以在 [Hook FAQ](/docs/hooks-faq.html) 章节中获取有用的信息。
 
-- [基础的 Hook](#basic-hooks)
+- [基础 Hook](#basic-hooks)
   - [`useState`](#usestate)
   - [`useEffect`](#useeffect)
   - [`useContext`](#usecontext)
@@ -25,7 +25,7 @@ next: hooks-faq.html
   - [`useLayoutEffect`](#uselayouteffect)
   - [`useDebugValue`](#usedebugvalue)
 
-## 基础的 Hook {#basic-hooks}
+## 基础 Hook {#basic-hooks}
 
 ### `useState` {#usestate}
 
@@ -33,25 +33,25 @@ next: hooks-faq.html
 const [state, setState] = useState(initialState);
 ```
 
-`useState` 返回一个有状态的值和一个可以更新该值的函数。
+返回一个有状态的值，以及一个更新它的函数。
 
-在组件初始渲染期间，`useState` 会返回和它第一个参数（`initialState`）等值的 state（`state`）。
+在初始渲染期间，返回的状态 (`state`) 与传入的第一个参数 (`initialState`) 值相同。。
 
-`setState` 函数用来更新 state。它接收新的 state 值，然后将组件排入重渲染队列。
+`setState` 函数用于更新 state。它接收一个新的 state 值并将组件的一次重新渲染加入队列。
 
 ```js
 setState(newState);
 ```
 
-在后续的组件重渲染过程中，`useState` 的第一个返回值总是最新的 state。
+在后续的重新渲染中，`useState` 返回的第一个值将始终是更新后最新的 state。
 
 > 注意
 >
 > React 会确保 `setState` 函数的标识是稳定的，并且不会在组件重新渲染时发生变化。这就是为什么可以安全地从 `useEffect` 或 `useCallback` 的依赖列表中省略 `setState`。
 
-#### 函数式的更新 {#functional-updates}
+#### 函数式更新 {#functional-updates}
 
-如果需要基于上一轮的 state 来计算新的 state，可以把一个接收旧值并返回新值的函数传给 `setState`。下面的计数器组件示例使用了 `setState` 的两种用法：
+如果新的 state 需要通过使用先前的 state 计算得出，那么可以将函数传递给 `setState`。该函数将接收先前的 state，并返回一个更新后的值。下面的计数器组件示例展示了 `setState` 的两种用法：
 
 ```js
 function Counter({initialCount}) {
@@ -67,11 +67,11 @@ function Counter({initialCount}) {
 }
 ```
 
-由于需通过上一次的计数来计算新的计数值，「+」「-」按钮采用函数式的 `setState` 去处理更新。而「Reset」按钮则使用普通形式的 `setState`，因为它总是将计数置回 0。
+“+”和“-”按钮使用函数式形式，因为更新的 state 值是基于先前值的。但是“重置”按钮使用普通形式，因为它总是将计数设置回 0。
 
 > 注意
 >
-> 与 class 组件的 `setState` 方法不同，`useState` 返回的 `setState` 函数并不会自动合并两次更新时接收的对象。你可以用函数式的 `setState` 结合对象拓展语法来合并 state 对象。
+> 与 class 组件中的 `setState` 方法不同，`useState` 不会自动合并更新对象。你可以用函数式的 `setState` 结合对象展开语法来达到合并更新对象的效果。
 >
 > ```js
 > setState(prevState => {
@@ -80,11 +80,11 @@ function Counter({initialCount}) {
 > });
 > ```
 >
-> `useReducer` 是另一种可选的方案，但它更适合管理包含多个子状态的 state 对象。
+> `useReducer` 是另一种可选方案，它更适合用于管理包含多个子值的 state 对象。
 
-#### state 的惰性初始化 {#lazy-initial-state}
+#### 惰性的初始 state {#lazy-initial-state}
 
-`initialState` 参数只会在组件的初始渲染中起作用，后续渲染时会被忽略。如果初始化 state 的开销比较大，你可以提供一个返回 state 的函数作为 `initialState` 实参，该函数只在初始渲染时被调用：
+`initialState` 参数只会在组件的初始渲染中起作用，后续渲染时会被忽略。如果初始 state 需要通过复杂计算获得，则可以传入一个计算并返回它的函数，该函数将只会在初始渲染时被调用：
 
 ```js
 const [state, setState] = useState(() => {
@@ -95,7 +95,7 @@ const [state, setState] = useState(() => {
 
 #### 跳过 state 更新 {#bailing-out-of-a-state-update}
 
-假如你在调用 State Hook 的更新函数时，给它传入当前的 state 值，那本次更新将被跳过，React 既不会渲染子组件，也不会执行 effect。（React 使用 [`Object.is` 比较算法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) 来比较 state。）
+假如你在调用 State Hook 的更新函数时，给它传入当前的 state 值，React 将跳过子组件的渲染及副作用的执行。（React 使用 [`Object.is` 比较算法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) 来比较 state。）
 
 注意，React 可能仍需要在跳过渲染前再次渲染该组件。这不应该被当成问题，因为 React 不会对组件树的深层节点进行不必要的渲染。如果你在渲染期间执行了高开销的计算，则可以使用 `useMemo` 进行优化。
 
@@ -105,17 +105,17 @@ const [state, setState] = useState(() => {
 useEffect(didUpdate);
 ```
 
-`useEffect` 接收一个包含命令式的、可能有副作用代码的函数。
+（其）接收一个包含命令式、可能有副作用代码的函数。
 
-在函数组件主体内（这里指在 React 渲染阶段）变更DOM、设置订阅、计时、记录日志，以及执行其他副作用等操作都是不可取的，因为这可能引发令人困扰的 bugs，破坏 UI 的一致性。
+在函数组件主体内（这里指在 React 渲染阶段）改变 DOM、添加订阅、设置定时器、记录日志以及执行其他包含副作用的操作都是不被允许的，因为这可能引发令人困惑的 bug 并破坏 UI 的一致性。
 
-相反，应该使用 `useEffect` 来完成上述操作。传给 `useEffect` 的函数会在组件渲染完成后执行。你可以把 effect 函数看作是从 React 的纯函数世界通往命令式世界的应急通道。
+使用 `useEffect` 来替你完成副作用操作。传递给 `useEffect` 的函数会在组件渲染到屏幕之后才执行。你可以把 effect 看作是从 React 的纯函数式世界通往命令式世界的逃生通道。
 
 默认情况下，effect 将在每轮渲染结束后执行，但你可以选择让它 [在只有某些值改变的时候](#conditionally-firing-an-effect) 才执行。
 
-#### 清理 effect {#cleaning-up-an-effect}
+#### 清除 effect {#cleaning-up-an-effect}
 
-通常，effect 内部会产生诸如订阅或计时器 ID 等资源，必须在组件卸载前清除它们。为此，传给 `useEffect` 的函数可能需要返回一个清理函数。如下，一个创建订阅的例子：
+通常，组件从屏幕卸载前需要将 effect 创建的诸如订阅或计时器 ID 等资源清除。要实现这一点，就需要传入 `useEffect` 的函数返回一个清除函数。以下就是一个创建订阅的例子：
 
 ```js
 useEffect(() => {
@@ -127,23 +127,23 @@ useEffect(() => {
 });
 ```
 
-为防止内存泄漏，清理函数将在组件卸载前执行。另外，如果组件多次渲染（通常如此），**在执行下一轮的 effect 之前，上一轮的 effect 就已经被清理了**。在我们的示例中，意味着组件每一轮更新都会创建新的订阅。若想避免每次都调用 effect，请参阅下一章节。
+为防止内存泄漏，清除函数将在组件从 UI 上卸载前执行。另外，如果组件多次渲染（通常如此），那么，**在执行下一个 effect 之前，前一个 effect 就已经被清除了**。在上述示例中，这意味着组件的每一次更新都会创建新的订阅。若想避免每次更新都触发 effect 的执行，请参阅下一章节。
 
-#### effect 的调用时机 {#timing-of-effects}
+#### effect 的执行时机 {#timing-of-effects}
 
-与 `componentDidMount`、`componentDidUpdate` 不同，在浏览器完成布局与绘制**之后**，传给 `useEffect` 的函数会在一个延迟事件中被调用。这使得 `useEffect` 能跟许多常见的副作用，如订阅设置、事件处理器等搭配使用，因为大多数副作用不应该阻塞视图更新。
+与 `componentDidMount`、`componentDidUpdate` 不同的是，在浏览器完成布局与绘制**之后**，传给 `useEffect` 的函数会在一个延迟事件中被调用。这使得它适用于许多常见的副作用场景，例如设置订阅和事件处理程序，因为大多数类型的工作不应阻塞浏览器更新屏幕。
 
-然而，并非所有 effect 都可以被延迟。例如，在浏览器执行下一次绘制前，用户可见的 DOM 变更就必须同步执行，这样用户才不会感觉到视觉上的不一致。（在概念上类似于被动事件监听器和主动事件监听器的区别。）React 提供了额外的 [`useLayoutEffect`](#uselayouteffect) Hook 来处理这类 effect。它和 `useEffect` 签名相同，区别只是调用时机不同。
+然而，并非所有 effect 都可以被延迟执行。例如，在浏览器执行下一次绘制前，用户可见的 DOM 变更就必须同步执行，这样用户才不会感觉到视觉上的不一致。（概念上类似于被动事件监听器和主动事件监听器的区别。）React 为此提供了一个额外的 [`useLayoutEffect`](#uselayouteffect) Hook 来处理这类 effect。它和 `useEffect` 的签名相同，区别只是调用时机不同。
 
-浏览器绘制完成之后，`useEffect` 会确保在新的组件渲染前调用 effect。React 将在组件更新前刷新上一轮渲染的 effect。
+虽然 `useEffect` 会在浏览器绘制后延迟执行，但其保证会在任何新的渲染前执行。React 将在组件更新前刷新上一轮渲染的 effect。
 
-#### effect 的条件调用 {#conditionally-firing-an-effect}
+#### effect 的条件执行 {#conditionally-firing-an-effect}
 
-默认情况下，effect 会在每轮组件渲染完成后被调用。这样一旦 effect 的依赖发生变化了，它就会被重新创建。
+默认情况下，effect 会在每轮组件渲染完成后执行。这样的话，一旦 effect 的依赖发生变化，它就会被重新创建。
 
-然而，在某些场景下这么做可能过于简单粗暴了。就像上一章节的订阅示例一样，我们不需要在每次组件更新时都创建新的订阅，只要在 `source` props 改变时重新创建就行。
+然而，在某些场景下这么做可能会矫枉过正。比如，在上一章节的订阅示例中，我们不需要在每次组件更新时都创建新的订阅，而是仅需要在 `source` props 改变时重新创建。
 
-为此，可以用数组表示 effect 的依赖项，作为 `useEffect` 的第二个参数。更新后的示例如下:
+要实现这一点，可以给 `useEffect` 传递第二个参数，它是 effect 所依赖的值数组。更新后的示例如下：
 
 ```js
 useEffect(
@@ -157,20 +157,20 @@ useEffect(
 );
 ```
 
-现在，只有当 `props.source` 改变了才会重新创建订阅。
+现在，只有当 `props.source` 改变后才会重新创建订阅。
 
-> 注意
+>注意
 >
-> 如果使用此优化，请确保依赖项数组包含**组件作用域（如 props 和 state）内被 effect 使用的所有随时间变化的值**。否则，你的代码将会引用上一轮渲染的旧数据。了解更多有关 [如何处理函数](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) 和如何处理 [频繁变化的数组值](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) 的信息。
+>如果你要使用此优化方式，请请确保数组中包含了**所有外部作用域中会随时间变化并且在 effect 中使用的变量**，否则你的代码会引用到先前渲染中的旧变量。参阅文档，了解更多关于 [如何处理函数](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) 以及 [数组频繁变化时的措施](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) 的内容。
 >
-> 如果你期望 effect 只会被调用一次和清理一次（在 mount 和 unmount 的时候），可以传一个空数组（`[]`）作为 `useEffect` 第二个参数。这表示你的 effect 不依赖于任何的 props 或 state，所以无需重复调用。它不是一个特例，而是遵循依赖项数组一贯的工作方式。
+>如果你想要执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组（`[]`）作为第二个参数。这就告诉 React 你的 effect 不依赖于 props 或 state 中的任何值，所以它永远都不需要重复执行。这并不算是一种特殊情况 —— 依然遵循输入数组的工作方式。
 >
-> 如果你传了一个空数组（`[]`），effect 内部引用的 props 和 state 将始终维持它们的初始值。将 `[]` 作为第二个参数有点类似于 `componentDidMount` 和 `componentWillUnmount` 的手动模式，但通常来说有 [更好的](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [解决方案](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) 来避免 effect 的频繁调用。另外，不要忘了 React 会把 `useEffect` 延迟到浏览器完成绘制才执行，所以多一些额外的调用也没什么问题。
+>如果你传入了一个空数组（`[]`），effect 内部的 props 和 state 就会一直拥有其初始值。尽管传入 `[]` 作为第二个参数有点类似于 `componentDidMount` 和 `componentWillUnmount` 的思维模式，但我们有 [更好的](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [方式](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) 来避免过于频繁的重复调用 effect。除此之外，请记得 React 会等待浏览器完成画面渲染之后才会延迟调用 `useEffect`，因此会使得额外操作很方便。
 >
 >
-> 我们推荐你把 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 规则作为 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 的一部分来使用。当依赖项指定有误时，它会生成警告并提供修复建议。
+>我们推荐启用 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 中的 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) 规则。此规则会在添加错误依赖时发出警告并给出修复建议。
 
-依赖项数组不会作为参数传给 effect 函数。然而从概念上来说，这表示 effect 函数引用的每个值也应该出现在依赖项数组中。将来，一个足够先进的编译器可以自动创建这个数组。
+依赖项数组不会作为参数传给 effect 函数。虽然从概念上来说它表现为：所有 effect 函数中引用的值都应该出现在依赖项数组中。将来，一个足够先进的编译器能够自动创建这个数组。
 
 ### `useContext` {#usecontext}
 
@@ -178,23 +178,23 @@ useEffect(
 const value = useContext(MyContext);
 ```
 
-`useContext` 接收一个 context 对象（`React.createContext` 的返回值）并返回该 context 的当前值。该值由距离当前组件最近的 `<MyContext.Provider>` 的 `value` prop 确定。
+接收一个 context 对象（`React.createContext` 的返回值）并返回该 context 的当前值。当前的 context 值由上层组件中距离当前组件最近的 `<MyContext.Provider>` 的 `value` prop 决定。
 
-当最近的 `<MyContext.Provider>` 更新时，`useContext` Hook 将使用 `MyContext` provider 的最新 context `value` 触发组件重渲染。
+当最近的上级 `<MyContext.Provider>` 组件更新时，该 Hook 将使用 `MyContext` provider 组件的最新 context `value` 触发组件重渲染。
 
 别忘了 `useContext` 的参数必须是 *context 对象本身*：
 
- * **正确的：** `useContext(MyContext)`
- * **错误的：** `useContext(MyContext.Consumer)`
- * **错误的：** `useContext(MyContext.Provider)`
+ * **正确：** `useContext(MyContext)`
+ * **错误：** `useContext(MyContext.Consumer)`
+ * **错误：** `useContext(MyContext.Provider)`
 
-调用了 `useContext` 的组件总会在 context 值变化时重新渲染。如果重渲染组件的开销较大，你可以 [通过 memoization 手段进行优化](https://github.com/facebook/react/issues/15156#issuecomment-474590693)。
+调用了 `useContext` 的组件总会在 context 值变化时重新渲染。如果重渲染组件的开销较大，你可以 [通过使用 memoization 来优化](https://github.com/facebook/react/issues/15156#issuecomment-474590693)。
 
-> 提示
+>提示
 >
-> 如果你已经对 context API 很熟悉，应该明白 `useContext(MyContext)` 相当于 class 组件中的 `static contextType = MyContext` 或者 `<MyContext.Consumer>`。
+>如果你在接触 Hook 前已经对 context API 比较熟悉，则应当明白 `useContext(MyContext)` 相当于 class 组件中的 `static contextType = MyContext` 或者 `<MyContext.Consumer>`。
 >
-> `useContext(MyContext)` 只是给你提供了 *读取* context 值和订阅 context 变化的功能。你仍然需要在组件树中使用 `<MyContext.Provider>` 为组件 *提供* context 值。
+>`useContext(MyContext)` 只是让你能够*读取* context 的值和订阅 context 的变化。你仍然需要在上层组件树中使用 `<MyContext.Provider>` 来为下层组件*提供*该 context。
 
 ## 额外的 Hook {#additional-hooks}
 
