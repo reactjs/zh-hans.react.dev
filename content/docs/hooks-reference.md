@@ -97,7 +97,7 @@ const [state, setState] = useState(() => {
 
 假如你在调用 State Hook 的更新函数时，给它传入当前的 state 值，React 将跳过子组件的渲染及副作用的执行。（React 使用 [`Object.is` 比较算法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) 来比较 state。）
 
-注意，React 可能仍需要在跳过渲染前再次渲染该组件。这不应该被当成问题，因为 React 不会对组件树的深层节点进行不必要的渲染。如果你在渲染期间执行了高开销的计算，则可以使用 `useMemo` 进行优化。
+需要注意的是，React 可能仍需要在跳过渲染前再次渲染该组件。由于 React 不会对组件树的深层节点进行不必要的渲染，所以大可不必担心。如果你在渲染期间执行了高开销的计算，则可以使用 `useMemo` 来进行优化。
 
 ### `useEffect` {#useeffect}
 
