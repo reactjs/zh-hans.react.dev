@@ -8,7 +8,7 @@ redirect_from:
   - "contributing/how-to-contribute.html"
   - "tips/introduction.html"
 ---
-React是Facebook的首先开源项目的一个，它仍然还在开发并且把代码带给每个人。我们仍然在规划操作指南使贡献工程尽可能简单和透明，但是我们做的还不够好。希望这个文档使贡献的步骤清晰和回答一些你们的问题。
+React是Facebook的第一个开源项目之一，它们都处于非常活跃的开发阶段，并且还用于向facebook.com上的每个人发送代码。我们仍然在规划操作指南使贡献工程尽可能简单和透明，但是我们做的还不够好。希望这个文档使贡献的步骤清晰和回答一些你们的问题。
 
 ### [行为守则](https://code.facebook.com/codeofconduct) {#code-of-conduct}
 Facebook已经采纳的行为守则，我们希望工程的参与者跟随它。请读[完整版](https://code.facebook.com/codeofconduct),以致我们知道什么该做什么不该做。
