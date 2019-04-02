@@ -1,35 +1,35 @@
 ---
 id: reconciliation
-title: Reconciliation
+title: 协调
 permalink: docs/reconciliation.html
 ---
 
-React provides a declarative API so that you don't have to worry about exactly what changes on every update. This makes writing applications a lot easier, but it might not be obvious how this is implemented within React. This article explains the choices we made in React's "diffing" algorithm so that component updates are predictable while being fast enough for high-performance apps.
+React 提供的声明式 API 让开发者可以在对 React 的底层实现没有具体了解的情况下编写应用。在开发者编写应用时虽然保持相对简单的心智，但开发者无法了解内部的实现机制。本文描述了在实现 React 的 "diffing" 算法中我们做出的设计决策以保证组件满足更新具有可预测性，以及在繁杂业务下依然保持应用的高性能性。
 
-## Motivation {#motivation}
+## 设计动力 {#motivation}
 
-When you use React, at a single point in time you can think of the `render()` function as creating a tree of React elements. On the next state or props update, that `render()` function will return a different tree of React elements. React then needs to figure out how to efficiently update the UI to match the most recent tree.
+在某一时间节点调用 React 的 `render()` 方法，会创建一棵由 React 元素组成的树。在下一次 state 或 props 更新时，相同的 `render()` 方法会返回一棵不同的树。React 需要基于这两棵树之间的差别来判断如何有效率的更新 UI 以保证当前 UI 与最新的树保持同步。
 
-There are some generic solutions to this algorithmic problem of generating the minimum number of operations to transform one tree into another. However, the [state of the art algorithms](https://grfia.dlsi.ua.es/ml/algorithms/references/editsurvey_bille.pdf) have a complexity in the order of O(n<sup>3</sup>) where n is the number of elements in the tree.
+这个算法问题有一些通用的解决方案，即生成将一棵树转换成另一棵树的最小操作数。 然而，即使在[最前沿的算法中](http://grfia.dlsi.ua.es/ml/algorithms/references/editsurvey_bille.pdf)，该算法的复杂程度为 O(n<sup> 3 </sup>)，其中 n 是树中元素的数量。
 
-If we used this in React, displaying 1000 elements would require in the order of one billion comparisons. This is far too expensive. Instead, React implements a heuristic O(n) algorithm based on two assumptions:
+如果在 React 中使用了该算法，那么展示 1000 个元素所需要执行的计算量将在十亿的量级范围。这个开销实在是太过高昂。于是 React 在以下两个假设的基础之上提出了一套 O(n) 的启发式算法：
 
-1. Two elements of different types will produce different trees.
-2. The developer can hint at which child elements may be stable across different renders with a `key` prop.
+1. 两个不同类型的元素会产生出不同的树；
+2. 开发者可以通过 `key` prop 来暗示哪些子元素在不同的渲染下能保持稳定；
 
-In practice, these assumptions are valid for almost all practical use cases.
+在实践中，我们发现以上假设在几乎所有实用的场景下都成立。
 
-## The Diffing Algorithm {#the-diffing-algorithm}
+## Diffing 算法 {#the-diffing-algorithm}
 
-When diffing two trees, React first compares the two root elements. The behavior is different depending on the types of the root elements.
+当对比两颗树时，React 首先比较两棵树的根节点。不同类型的根节点元素会有不同的形态。
 
-### Elements Of Different Types {#elements-of-different-types}
+### 比对不同类型的元素 {#elements-of-different-types}
 
-Whenever the root elements have different types, React will tear down the old tree and build the new tree from scratch. Going from `<a>` to `<img>`, or from `<Article>` to `<Comment>`, or from `<Button>` to `<div>` - any of those will lead to a full rebuild.
+当根节点为不同类型的元素时，React 会拆卸原有的树并且建立起新的树。举个例子，当一个元素从 `<a>` 变成 `<img>`，从 `<Article>` 变成 `<Comment>`，或从 `<Button>` 变成 `<div>` 都会触发一个完整的重建流程。
 
-When tearing down a tree, old DOM nodes are destroyed. Component instances receive `componentWillUnmount()`. When building up a new tree, new DOM nodes are inserted into the DOM. Component instances receive `componentWillMount()` and then `componentDidMount()`. Any state associated with the old tree is lost.
+当拆卸一颗树时，对应的 DOM 节点也会被销毁。组件实例将执行 `componentWillUnmount()` 方法。当建立一颗新的树时，对应的 DOM 节点会被创建以及插入到 DOM 中。组件实例将执行 `componentWillMount()` 方法，紧接着 `componentDidMount()` 方法。所有跟之前的树所关联的 state 也会被销毁。
 
-Any components below the root will also get unmounted and have their state destroyed. For example, when diffing:
+在根节点以下的组件也会被卸载，它们的状态会被销毁。比如，当比对以下更变时：
 
 ```xml
 <div>
@@ -41,11 +41,11 @@ Any components below the root will also get unmounted and have their state destr
 </span>
 ```
 
-This will destroy the old `Counter` and remount a new one.
+React 会销毁 `Counter` 组件并且重新装载一个新的组件。
 
-### DOM Elements Of The Same Type {#dom-elements-of-the-same-type}
+### 比对同一类型的元素 {#dom-elements-of-the-same-type}
 
-When comparing two React DOM elements of the same type, React looks at the attributes of both, keeps the same underlying DOM node, and only updates the changed attributes. For example:
+当比对两个相同类型的 React 元素时，React 会保留 DOM 节点，仅比对及更新有改变的属性。比如：
 
 ```xml
 <div className="before" title="stuff" />
@@ -53,9 +53,9 @@ When comparing two React DOM elements of the same type, React looks at the attri
 <div className="after" title="stuff" />
 ```
 
-By comparing these two elements, React knows to only modify the `className` on the underlying DOM node.
+通过比对这两个元素，React 知道只需要修改 DOM 元素上的 `className` 属性。
 
-When updating `style`, React also knows to update only the properties that changed. For example:
+当更新 `style` 属性时，React 仅更新有所更变的属性。比如：
 
 ```xml
 <div style={{color: 'red', fontWeight: 'bold'}} />
@@ -63,21 +63,21 @@ When updating `style`, React also knows to update only the properties that chang
 <div style={{color: 'green', fontWeight: 'bold'}} />
 ```
 
-When converting between these two elements, React knows to only modify the `color` style, not the `fontWeight`.
+通过比对这两个元素，React 知道只需要修改 DOM 元素上的 `color` 样式，无需修改 `fontWeight`。
 
-After handling the DOM node, React then recurses on the children.
+在处理完当前节点之后，React 继续对子节点进行递归。
 
-### Component Elements Of The Same Type {#component-elements-of-the-same-type}
+### 比对同类型的组件元素 {#component-elements-of-the-same-type}
 
-When a component updates, the instance stays the same, so that state is maintained across renders. React updates the props of the underlying component instance to match the new element, and calls `componentWillReceiveProps()` and `componentWillUpdate()` on the underlying instance.
+当一个组件更新时，组件实例保持不变，这样 state 在跨越不同的渲染时保持一致。React 将更新该组件实例的 props 以跟最新的元素保持一致，并且调用该实例的  `componentWillReceiveProps()` 和 `componentWillUpdate()` 方法。
 
-Next, the `render()` method is called and the diff algorithm recurses on the previous result and the new result.
+下一步，调用 `render()` 方法，diff 算法将在之前的结果以及新的结果中进行递归。
 
-### Recursing On Children {#recursing-on-children}
+### 对子节点进行递归 {#recursing-on-children}
 
-By default, when recursing on the children of a DOM node, React just iterates over both lists of children at the same time and generates a mutation whenever there's a difference.
+在默认条件下，当递归 DOM 节点的子元素时，React 会同时遍历两个子元素的列表；当产生差异时，生成一个 mutation。
 
-For example, when adding an element at the end of the children, converting between these two trees works well:
+在子元素列表末尾新增元素时，更变开销比较小。比如：
 
 ```xml
 <ul>
@@ -92,9 +92,9 @@ For example, when adding an element at the end of the children, converting betwe
 </ul>
 ```
 
-React will match the two `<li>first</li>` trees, match the two `<li>second</li>` trees, and then insert the `<li>third</li>` tree.
+React 会先匹配两个 `<li>first</li>` 对应的树，然后匹配第二个元素 `<li>second</li>` 对应的树，最后插入第三个元素的 `<li>third</li>` 树。
 
-If you implement it naively, inserting an element at the beginning has worse performance. For example, converting between these two trees works poorly:
+如果简单实现的话，那么在列表头部插入会很影响性能，那么更变开销会比较大。比如：
 
 ```xml
 <ul>
@@ -109,11 +109,11 @@ If you implement it naively, inserting an element at the beginning has worse per
 </ul>
 ```
 
-React will mutate every child instead of realizing it can keep the `<li>Duke</li>` and `<li>Villanova</li>` subtrees intact. This inefficiency can be a problem.
+React 会针对每个子元素 mutate 而不是保持相同的 `<li>Duke</li>` 和 `<li>Villanova</li>` 子树完成。这种情况下的低效可能会带来性能问题。
 
 ### Keys {#keys}
 
-In order to solve this issue, React supports a `key` attribute. When children have keys, React uses the key to match children in the original tree with children in the subsequent tree. For example, adding a `key` to our inefficient example above can make the tree conversion efficient:
+为了解决以上问题，React 支持 `key` 属性。当子元素拥有 key 时，React 使用 key 来匹配原有树上的子元素以及最新树上的子元素。以下例子在新增 `key` 之后使得之前的低效转换变得高效：
 
 ```xml
 <ul>
@@ -128,30 +128,30 @@ In order to solve this issue, React supports a `key` attribute. When children ha
 </ul>
 ```
 
-Now React knows that the element with key `'2014'` is the new one, and the elements with the keys `'2015'` and `'2016'` have just moved.
+现在 React 知道只有带着 `'2014'` key 的元素是新元素，带着 `'2015'` 以及 `'2016'` key 的元素仅仅移动了。
 
-In practice, finding a key is usually not hard. The element you are going to display may already have a unique ID, so the key can just come from your data:
+现实场景中，产生一个 key 并不困难。你要展现的元素可能已经有了一个唯一 ID，于是 key 可以直接从你的数据中提取：
 
 ```js
 <li key={item.id}>{item.name}</li>
 ```
 
-When that's not the case, you can add a new ID property to your model or hash some parts of the content to generate a key. The key only has to be unique among its siblings, not globally unique.
+当以上情况不成立时，你可以新增一个 ID 字段到你的模型中，或者利用一部分内容作为哈希值来生成一个 key。这个 key 不需要全局唯一，但在列表中需要保持唯一。
 
-As a last resort, you can pass an item's index in the array as a key. This can work well if the items are never reordered, but reorders will be slow.
+最后，你也可以使用元素在数组中的下标作为 key。这个策略在元素不进行重新排序时比较合适，但一旦有顺序修改，diff 就会变得慢。
 
-Reorders can also cause issues with component state when indexes are used as keys. Component instances are updated and reused based on their key. If the key is an index, moving an item changes it. As a result, component state for things like uncontrolled inputs can get mixed up and updated in unexpected ways.
+当基于下标的组件进行重新排序时，组件 state 可能会遇到一些问题。由于组件实例是基于它们的 key 来决定是否更新以及复用，如果 key 是一个下标，那么修改顺序时会修改当前的 key，导致非受控组件的 state（比如输入框）可能相互篡改导致无法预期的变动。
 
-[Here](codepen://reconciliation/index-used-as-key) is an example of the issues that can be caused by using indexes as keys on CodePen, and [here](codepen://reconciliation/no-index-used-as-key) is an updated version of the same example showing how not using indexes as keys will fix these reordering, sorting, and prepending issues.
+[这是](codepen://reconciliation/index-used-as-key) 在 Codepen 上的例子，展示使用下标作为 key 时导致的问题，以及 [这里](codepen://reconciliation/no-index-used-as-key) 是一个不使用下标作为 key 的例子的版本，修复了重新排列，排序，以及在列表头插入的问题。
 
-## Tradeoffs {#tradeoffs}
+## 权衡 {#tradeoffs}
 
-It is important to remember that the reconciliation algorithm is an implementation detail. React could rerender the whole app on every action; the end result would be the same. Just to be clear, rerender in this context means calling `render` for all components, it doesn't mean React will unmount and remount them. It will only apply the differences following the rules stated in the previous sections.
+请谨记协调算法是一个实现细节。React 可以在每个 action 之后对整个应用进行重新渲染，得到的最终结果也会是一样的。在这个上下文下，重新渲染表示在所有组件内调用 `render` 方法，这不代表 React 会卸载或装载它们。React 只会基于以上提到的规则来决定如何进行差异的合并。
 
-We are regularly refining the heuristics in order to make common use cases faster. In the current implementation, you can express the fact that a subtree has been moved amongst its siblings, but you cannot tell that it has moved somewhere else. The algorithm will rerender that full subtree.
+我们经常改善启发性算法让常用的使用用例更有效的执行。在当前的实现中，你可以表达一棵子树在兄弟节点之间移动，但不能表达它移动到其他未知。在这种情况下，算法会重新渲染那棵子树。
 
-Because React relies on heuristics, if the assumptions behind them are not met, performance will suffer.
+由于 React 依赖启发性算法，如果以下假设没有得到满足，性能会有所损耗。
 
-1. The algorithm will not try to match subtrees of different component types. If you see yourself alternating between two component types with very similar output, you may want to make it the same type. In practice, we haven't found this to be an issue.
+1. 该算法不会尝试匹配不同组件类型的子树。如果你发现你在两种不同类型的组件中切换，但输出非常相似的内容，建议把它们改成同一类型。在实践中，我们没有遇到这类问题。
 
-2. Keys should be stable, predictable, and unique. Unstable keys (like those produced by `Math.random()`) will cause many component instances and DOM nodes to be unnecessarily recreated, which can cause performance degradation and lost state in child components.
+2. Keys 应该具有稳定，可预测，以及列表内唯一的特质。不稳定的 key（比如通过 `Math.random()` 生成的）会导致许多组件实例和 DOM 节点被不必要地重新创建，这可能导致性能下降和子组件中的状态丢失。

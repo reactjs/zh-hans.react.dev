@@ -436,7 +436,7 @@ UNSAFE_componentWillMount()
 
 `UNSAFE_componentWillMount()` 在挂载之前被调用。它在 `render()` 之前调用，因此在此方法中同步调用 `setState()` 不会触发额外渲染。通常，我们建议使用 `constructor()` 来初始化 state。
 
-避免在此方法中引入任何副作用或订阅。如遇此种情况，请改用 `componentDidMoun
+避免在此方法中引入任何副作用或订阅。如遇此种情况，请改用 `componentDidMount()`。
 
 此方法是服务端渲染唯一会调用的生命周期函数。
 

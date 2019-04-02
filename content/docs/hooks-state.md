@@ -6,7 +6,7 @@ next: hooks-effect.html
 prev: hooks-overview.html
 ---
 
-*Hook* 是 React 16.8 中新增的功能。它让你不用写 class 也可以使用 state 和其他 React 特性。
+*Hook* 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。
 
 [上一章节](/docs/hooks-intro.html)中使用下面的例子介绍了 Hook：
 
@@ -104,7 +104,7 @@ function Example() {
 
 >注意：
 >
->在组件中有些特殊的规则，规定什么地方能使用 Hook，什么地方不能使用。我们将在 [Hook 规范](/docs/hooks-rules.html)中学习它们。
+>在组件中有些特殊的规则，规定什么地方能使用 Hook，什么地方不能使用。我们将在 [Hook 规则](/docs/hooks-rules.html)中学习它们。
 
 ## 声明 State 变量  {#declaring-a-state-variable}
 
@@ -152,7 +152,7 @@ function Example() {
 >
 >你可能想知道：为什么叫 `useState` 而不叫 `createState`?
 >
->"Create" 可能不是很准确，因为 state 只在组件首次渲染的时候被创建。在下一次重新渲染时，`useState` 返回给我们当前的 state。否则它就不是 “state”了！这也是 Hook 的名字*总是*以 `use` 开头的一个原因。我们将在后面的 [Hook 规范](/docs/hooks-rules.html)中了解原因。
+>"Create" 可能不是很准确，因为 state 只在组件首次渲染的时候被创建。在下一次重新渲染时，`useState` 返回给我们当前的 state。否则它就不是 “state”了！这也是 Hook 的名字*总是*以 `use` 开头的一个原因。我们将在后面的 [Hook 规则](/docs/hooks-rules.html)中了解原因。
 
 ## 读取 State {#reading-state}
 

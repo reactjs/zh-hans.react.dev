@@ -1,14 +1,14 @@
 ---
 id: faq-styling
-title: Styling and CSS
+title: 样式与 CSS
 permalink: docs/faq-styling.html
 layout: docs
 category: FAQ
 ---
 
-### How do I add CSS classes to components? {#how-do-i-add-css-classes-to-components}
+### 如何为组件添加 CSS 的 class？ {#how-do-i-add-css-classes-to-components}
 
-Pass a string as the `className` prop:
+传递一个字符串作为 `className` 属性：
 
 ```jsx
 render() {
@@ -16,7 +16,7 @@ render() {
 }
 ```
 
-It is common for CSS classes to depend on the component props or state:
+CSS 的 class 依赖组件的 props 或 state 的情况很常见：
 
 ```jsx
 render() {
@@ -28,24 +28,24 @@ render() {
 }
 ```
 
->Tip
+>提示
 >
->If you often find yourself writing code like this, [classnames](https://www.npmjs.com/package/classnames#usage-with-reactjs) package can simplify it.
+>如果你经常发现自己写类似这样的代码，[classnames](https://www.npmjs.com/package/classnames#usage-with-reactjs) 的 package 可以简化这一过程。
 
-### Can I use inline styles? {#can-i-use-inline-styles}
+### 可以使用行内样式吗？ {#can-i-use-inline-styles}
 
-Yes, see the docs on styling [here](/docs/dom-elements.html#style).
+可以，在[此处](/docs/dom-elements.html#style)查看关于样式的文档。
 
-### Are inline styles bad? {#are-inline-styles-bad}
+### 行内样式不好 (bad) 吗？ {#are-inline-styles-bad}
 
-CSS classes are generally better for performance than inline styles.
+从性能角度来说，CSS 的 class 通常比行内样式更好。
 
-### What is CSS-in-JS? {#what-is-css-in-js}
+### 什么是 CSS-in-JS? {#what-is-css-in-js}
 
-"CSS-in-JS" refers to a pattern where CSS is composed using JavaScript instead of defined in external files. Read a comparison of CSS-in-JS libraries [here](https://github.com/MicheleBertoli/css-in-js).
+“CSS-in-JS” 是指一种模式，其中 CSS 由 JavaScript 生成而不是在外部文件中定义。在[此处](https://github.com/MicheleBertoli/css-in-js)阅读 CSS-in-JS 库之间的对比。
 
-_Note that this functionality is not a part of React, but provided by third-party libraries._ React does not have an opinion about how styles are defined; if in doubt, a good starting point is to define your styles in a separate `*.css` file as usual and refer to them using [`className`](/docs/dom-elements.html#classname).
+_注意此功能并不是 React 的一部分，而是由第三方库提供。_ React 对样式如何定义并没有明确态度；如果存在疑惑，比较好的方式是和平时一样，在一个单独的 `*.css` 文件定义你的样式，并且通过 [`className`](/docs/dom-elements.html#classname) 指定它们。
 
-### Can I do animations in React? {#can-i-do-animations-in-react}
+### 可以在 React 中实现动画效果吗？ {#can-i-do-animations-in-react}
 
-React can be used to power animations. See [React Transition Group](https://reactcommunity.org/react-transition-group/) and [React Motion](https://github.com/chenglou/react-motion), for example.
+React 可以被用来实现强大的动画效果。参见 [React Transition Group](https://reactcommunity.org/react-transition-group/) 和 [React Motion](https://github.com/chenglou/react-motion) 等示例。

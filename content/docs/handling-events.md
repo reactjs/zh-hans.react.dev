@@ -101,7 +101,7 @@ ReactDOM.render(
 
 ```js{2-6}
 class LoggingButton extends React.Component {
-  // 这种语法确保 `this` 绑定在 `handleClick` 内。
+  // 此语法确保 `handleClick` 内的 `this` 已被绑定。
   // 注意: 这是 *实验性* 语法。
   handleClick = () => {
     console.log('this is:', this);
@@ -128,7 +128,7 @@ class LoggingButton extends React.Component {
   }
 
   render() {
-    // 这种语法确保 `this` 绑定在 `handleClick` 内。
+    // 此语法确保 `handleClick` 内的 `this` 已被绑定。
     return (
       <button onClick={(e) => this.handleClick(e)}>
         Click me
@@ -152,4 +152,3 @@ class LoggingButton extends React.Component {
 上述两种方式是等价的，分别通过[箭头函数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)和 [`Function.prototype.bind`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) 来实现。
 
 在这两种情况下，React 的事件对象 `e` 会被作为第二个参数传递。如果通过箭头函数的方式，事件对象必须显式的进行传递，而通过 `bind` 的方式，事件对象以及更多的参数将会被隐式的进行传递。
-

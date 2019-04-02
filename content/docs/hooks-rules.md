@@ -1,18 +1,18 @@
 ---
 id: hooks-rules
-title: 使用 Hook 的规则
+title: Hook 规则
 permalink: docs/hooks-rules.html
 next: hooks-custom.html
 prev: hooks-effect.html
 ---
 
-*Hook* 是 React 16.8 的新增特性。它可以让你在不使用 class 的情况下使用 state 和一些其他 React 特性。
+*Hook* 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。
 
 Hook 本质就是 JavaScript 函数，但是在使用它时需要遵循两条规则。我们提供了一个 [linter 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks)来强制执行这些规则：
 
 ### 只在最顶层使用 Hook {#only-call-hooks-at-the-top-level}
 
-**不要在循环，条件或嵌套函数中调用 Hook，**确保总是在你的 React 函数的最顶层调用他们。遵守这条规则，你就能确保 Hook 在每一次渲染中都按照同样的顺序被调用。这让 React 能够在多次的 `useState` 和 `useEffect` 调用之间保持 hook 状态的正确。(如果你对此感到好奇，我们在[下面](#explanation)会有更深入的解释。)
+**不要在循环，条件或嵌套函数中调用 Hook，** 确保总是在你的 React 函数的最顶层调用他们。遵守这条规则，你就能确保 Hook 在每一次渲染中都按照同样的顺序被调用。这让 React 能够在多次的 `useState` 和 `useEffect` 调用之间保持 hook 状态的正确。(如果你对此感到好奇，我们在[下面](#explanation)会有更深入的解释。)
 
 ### 只在 React 函数中调用 Hook {#only-call-hooks-from-react-functions}
 
@@ -32,7 +32,7 @@ npm install eslint-plugin-react-hooks
 ```
 
 ```js
-// Your ESLint configuration
+// 你的 ESLint 配置
 {
   "plugins": [
     // ...
@@ -40,8 +40,8 @@ npm install eslint-plugin-react-hooks
   ],
   "rules": {
     // ...
-    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
-    "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
+    "react-hooks/rules-of-hooks": "error", // 检查 Hook 的规则
+    "react-hooks/exhaustive-deps": "warn" // 检查 effect 的依赖
   }
 }
 ```
@@ -80,28 +80,28 @@ function Form() {
 
 ```js
 // ------------
-// First render
+// 首次渲染
 // ------------
-useState('Mary')           // 1. Initialize the name state variable with 'Mary'
-useEffect(persistForm)     // 2. Add an effect for persisting the form
-useState('Poppins')        // 3. Initialize the surname state variable with 'Poppins'
-useEffect(updateTitle)     // 4. Add an effect for updating the title
+useState('Mary')           // 1. 使用 'Mary' 初始化变量名为 name 的 state
+useEffect(persistForm)     // 2. 添加 effect 以保存 form 操作
+useState('Poppins')        // 3. 使用 'Poppins' 初始化变量名为 surname 的 state
+useEffect(updateTitle)     // 4. 添加 effect 以更新标题
 
 // -------------
-// Second render
+// 二次渲染
 // -------------
-useState('Mary')           // 1. Read the name state variable (argument is ignored)
-useEffect(persistForm)     // 2. Replace the effect for persisting the form
-useState('Poppins')        // 3. Read the surname state variable (argument is ignored)
-useEffect(updateTitle)     // 4. Replace the effect for updating the title
+useState('Mary')           // 1. 读取变量名为 name 的 state（参数被忽略）
+useEffect(persistForm)     // 2. 替换保存 form 的 effect
+useState('Poppins')        // 3. 读取变量名为 surname 的 state（参数被忽略）
+useEffect(updateTitle)     // 4. 替换更新标题的 effect
 
 // ...
 ```
 
-只要 Hook 的调用顺序在多次渲染之间保持一致，React 就能正确地将内部 state 和对应的 Hook 关联。但如果我们将一个 Hook (例如 `persistForm` effect) 调用放到一个条件语句中会发生什么呢？
+只要 Hook 的调用顺序在多次渲染之间保持一致，React 就能正确地将内部 state 和对应的 Hook 进行关联。但如果我们将一个 Hook (例如 `persistForm` effect) 调用放到一个条件语句中会发生什么呢？
 
 ```js
-  // 🔴 We're breaking the first rule by using a Hook in a condition
+  // 🔴 在条件语句中使用 Hook 违反第一条规则
   if (name !== '') {
     useEffect(function persistForm() {
       localStorage.setItem('formData', name);
@@ -112,27 +112,27 @@ useEffect(updateTitle)     // 4. Replace the effect for updating the title
 在第一次渲染中 `name !== ''` 这个条件值为 `true`，所以我们会执行这个 Hook。但是下一次渲染时我们可能清空了表单，表达式值变为 `false`。此时的渲染会跳过该 Hook，Hook 的调用顺序发生了改变：
 
 ```js
-useState('Mary')           // 1. Read the name state variable (argument is ignored)
-// useEffect(persistForm)  // 🔴 This Hook was skipped!
-useState('Poppins')        // 🔴 2 (but was 3). Fail to read the surname state variable
-useEffect(updateTitle)     // 🔴 3 (but was 4). Fail to replace the effect
+useState('Mary')           // 1. 读取变量名为 name 的 state（参数被忽略）
+// useEffect(persistForm)  // 🔴 此 Hook 被忽略！
+useState('Poppins')        // 🔴 2 （之前为 3）。读取变量名为 surname 的 state 失败
+useEffect(updateTitle)     // 🔴 3 （之前为 4）。替换更新标题的 effect 失败
 ```
 
-React 不知道第二个 `useState` Hook 应该返回什么了。React 以为在这个组件中第二次 Hook 调用像之前的渲染一样，对应了 `persistForm` effect，但事实上并不是。从这里开始，后面的每次 Hook 调用都被移动了一个顺位，导致 bug 的产生。
+React 不知道第二个 `useState` 的 Hook 应该返回什么。React 会以为在该组件中第二个 Hook 的调用像上次的渲染一样，对应得是 `persistForm` 的 effect，但并非如此。从这里开始，后面的 Hook 调用都被提前执行，导致 bug 的产生。
 
 **这就是为什么 Hook 需要在我们组件的最顶层调用。**如果我们想要有条件地执行一个 effect，可以将判断放到 Hook 的*内部*：
 
 ```js
   useEffect(function persistForm() {
-    // 👍 We're not breaking the first rule anymore
+    // 👍 将条件判断放置在 effect 中
     if (name !== '') {
       localStorage.setItem('formData', name);
     }
   });
 ```
 
-**注意：如果你使用了[上面提供的 lint 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks)，就不需要担心这个问题了。**不过你现在知道了为什么 Hook 会这样工作，也知道了这个规则是为了避免什么问题。
+**注意：如果使用了[提供的 lint 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks)，就无需担心此问题。** 不过你现在知道了为什么 Hook 会这样工作，也知道了这个规则是为了避免什么问题。
 
 ## 下一步 {#next-steps}
 
-最后，我们已经准备好学习[如何编写你自己的 Hook](/docs/hooks-custom.html)了！自定义 Hook 允许你将 React 提供的 Hook 组合到您自己的 Hook 中，复用不同组件之间的常见状态逻辑。
+最后，接下来会学习[如何编写自定义 Hook](/docs/hooks-custom.html)！自定义 Hook 可以将 React 中提供的 Hook 组合到定制的 Hook 中，以复用不同组件之间常见的状态逻辑。
