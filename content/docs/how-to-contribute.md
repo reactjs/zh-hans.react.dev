@@ -58,16 +58,16 @@ Facebook有一个[安全程序](https://www.facebook.com/whitehat/)为安全问�
 核心团队正在管理拉取请求。我们将审核你的拉取请求，或者合并它，或者请求改变它，或者关闭它并给出一个解释。针对API的改变，我们可能需要在Facebook.com内部使用它，那将可能引起一些延迟。我们将全程尽最大努力提供更新和反馈。
 
 **在提交一个拉取请求之前,** 请确保以下已经完成了:
-1.分叉[代码库](https://github.com/facebook/react)和创建你的分支从`master`。
-2.运行`yarn在库的根目录。
-3.如果你修复一个问题或者添加代码，那些代码应该被测试，添加测试！
-4.确保你的测试套件通过 (`yarn test`)。提示：在开发中`yarn test --watch TestName`是有用的。
-5.运行`yarn test-prod`去测试在产品环境中。它支持和`yarn test`同样的可选项。
-6.如果你需要一个调试器，运行`yarn debug-test --watch TestName`，打开`chrome://inspect`,和按"Inspect"。
-7.格式化你的代码用[prettier](https://github.com/prettier/prettier)这个工具 (`yarn prettier`).
+1. 分叉[代码库](https://github.com/facebook/react)和创建你的分支从`master`。
+2. 运行`yarn在库的根目录。
+3. 如果你修复一个问题或者添加代码，那些代码应该被测试，添加测试！
+4. 确保你的测试套件通过 (`yarn test`)。提示：在开发中`yarn test --watch TestName`是有用的。
+5. 运行`yarn test-prod`去测试在产品环境中。它支持和`yarn test`同样的可选项。
+6. 如果你需要一个调试器，运行`yarn debug-test --watch TestName`，打开`chrome://inspect`,和按"Inspect"。
+7. 格式化你的代码用[prettier](https://github.com/prettier/prettier)这个工具 (`yarn prettier`).
 8. 确保你的代码没有错误 (`yarn lint`). 提示: `yarn linc` 仅仅检查已经改变的文件.
 9. 运行[Flow](https://flowtype.org/) 进行类型检查 (`yarn flow`).
-10.如果你还没有拥有, 完成 CLA.
+10. 如果你还没有拥有, 完成 CLA.
 
 ### 贡献者授权协议(CLA) {#contributor-license-agreement-cla}
 为了去接收你的拉取请求，我们需要你提交一个贡献者授权协议。你仅仅需要做这个一次，如果你已经在另外一个Facebook开源项目中做过，你将会很擅长做它。如果你正在首次提交一个拉取请求，仅仅让我们知道你已经完成贡献者授权协议和我们可以复审你的GitHub用户名。
@@ -75,35 +75,29 @@ Facebook有一个[安全程序](https://www.facebook.com/whitehat/)为安全问�
 **[在这儿完成你的贡献者授权协议](https://code.facebook.com/cla)**
 
 ### 贡献的先决条件 {#contribution-prerequisites}
+* 你安装的[Node](https://nodejs.org)版本在v8.0.0+和[Yarn](https://yarnpkg.com/en/)的版本在v1.2.0+。
+* 你已经安装`gcc`或者正在安装合适的编译器。一些依赖可能需要一个编译步骤。在OS X上，这个Xcode 命令行工具将包含这。在Ubuntu上， `apt-get install build-essential` 将安装需要的包。相似的命令应该工作在其他的Linux版本上。Windows将需要额外的步骤，详细情况请看 [`node-gyp` 安装说明](https://github.com/nodejs/node-gyp#installation)。
+*你熟悉Git。
 
-* You have [Node](https://nodejs.org) installed at v8.0.0+ and [Yarn](https://yarnpkg.com/en/) at v1.2.0+.
-* You have `gcc` installed or are comfortable installing a compiler if needed. Some of our dependencies may require a compilation step. On OS X, the Xcode Command Line Tools will cover this. On Ubuntu, `apt-get install build-essential` will install the required packages. Similar commands should work on other Linux distros. Windows will require some additional steps, see the [`node-gyp` installation instructions](https://github.com/nodejs/node-gyp#installation) for details.
-* You are familiar with Git.
+### 开发工作流 {#development-workflow}
+在cloning React代码后，运行`yarn`去刷新它的依赖。
+然后，你可以运行几个命令：
+* `yarn lint` 检查代码样式。
+* `yarn linc` 跟`yarn lint`很像但是更快，因为它仅仅检查在分支上不同的文件。
+* `yarn test` 运行完整的一套测试。
+* `yarn test --watch`运行一个交互式的监视器。
+* `yarn test <pattern>` 运行和文件名匹配的测试。
+* `yarn test-prod`运行产品环境的测试， 它支持和`yarn test`同样的可选项。
+* `yarn debug-test` 跟 `yarn test`一样，但是有一个调试器。打开`chrome://inspect`和按"Inspect"。
+* `yarn flow` 运行[Flow](https://flowtype.org/)进行代码检查。
+* `yarn build`创建一个包含所有包的`build`目录。
+* `yarn build react/index,react-dom/index --type=UMD` 创建Reac和ReactDOM的UMD构建。
+我们推荐运行`yarn test`(或者上面的变量)，为了确保改变代码的时候不会引入任何后悔的操作。不管怎么样在真实应用中很方便构建React。
+首先，运行`yarn build`。在`build`文件里将生成一个预构建的bundles，也在`build/packages`文件夹里准备npm的包。
 
-### Development Workflow {#development-workflow}
+最简单的方式去尝试你的改变是去运行`yarn build react/index,react-dom/index --type=UMD`，然后打开`fixtures/packaging/babel-standalone/dev.html`文件，这个文件已经使用 `build`目录下的`react.development.js`文件，所以它将加载你的改变。
 
-After cloning React, run `yarn` to fetch its dependencies.
-Then, you can run several commands:
-
-* `yarn lint` checks the code style.
-* `yarn linc` is like `yarn lint` but faster because it only checks files that differ in your branch.
-* `yarn test` runs the complete test suite.
-* `yarn test --watch` runs an interactive test watcher.
-* `yarn test <pattern>` runs tests with matching filenames.
-* `yarn test-prod` runs tests in the production environment. It supports all the same options as `yarn test`.
-* `yarn debug-test` is just like `yarn test` but with a debugger. Open `chrome://inspect` and press "Inspect".
-* `yarn flow` runs the [Flow](https://flowtype.org/) typechecks.
-* `yarn build` creates a `build` folder with all the packages.
-* `yarn build react/index,react-dom/index --type=UMD` creates UMD builds of just React and ReactDOM.
-
-We recommend running `yarn test` (or its variations above) to make sure you don't introduce any regressions as you work on your change. However it can be handy to try your build of React in a real project.
-
-First, run `yarn build`. This will produce pre-built bundles in `build` folder, as well as prepare npm packages inside `build/packages`.
-
-The easiest way to try your changes is to run `yarn build react/index,react-dom/index --type=UMD` and then open `fixtures/packaging/babel-standalone/dev.html`. This file already uses `react.development.js` from the `build` folder so it will pick up your changes.
-
-If you want to try your changes in your existing React project, you may copy `build/dist/react.development.js`, `build/dist/react-dom.development.js`, or any other build products into your app and use them instead of the stable version. If your project uses React from npm, you may delete `react` and `react-dom` in its dependencies and use `yarn link` to point them to your local `build` folder:
-
+如果你想在已经存在的工程中尝试你的改变，你可以复制`build/dist/react.development.js`, `build/dist/react-dom.development.js`，或者任何在你应用里的其他构建产品，使用它们来代替稳定版本。如果你的项目使用的React来自npm，你可以在它的依赖中删除`react` 和 `react-dom`，并且使用`yarn link`指向它们在本地的build目录：
 ```sh
 cd ~/path_to_your_react_clone/build/node_modules/react
 yarn link
@@ -112,46 +106,39 @@ yarn link
 cd /path/to/your/project
 yarn link react react-dom
 ```
+每次你在React目录里运行`yarn build`，更新的版本将会显示在工程的`node_modules`文件夹里。你可以重新构建你的工程去试试你的改变。
+我们人让要求你的拉取请求包含为新功能添加的单元测试。这个方式我们可以确保在未来不会损坏你的代码。
 
-Every time you run `yarn build` in the React folder, the updated versions will appear in your project's `node_modules`. You can then rebuild your project to try your changes.
+### 样式指导 {#style-guide}
+我们使用一个叫[Prettier](https://prettier.io/)的自动代码格式器。
+在改变任何代码后，运行`yarn prettier`。
 
-We still require that your pull request contains unit tests for any new functionality. This way we can ensure that we don't break your code in the future.
+然后，我们的linter将找出存在代码中的最多问题。
+你可以简单通过运行`yarn linc`检查你的代码样式状态。
+不管怎么样，仍然有些样式问题而linter找不出来。如果不肯定一些事情，看看[Airbnb的样式指导](https://github.com/airbnb/javascript)将指明你正确的方向。
 
-### Style Guide {#style-guide}
+### 介绍视频 {#introductory-video}
+你可能感兴趣这个[短视频](https://www.youtube.com/watch?v=wUpPsEcGsg8) (26 分钟)，这个视频将介绍怎么贡献React。
 
-We use an automatic code formatter called [Prettier](https://prettier.io/).
-Run `yarn prettier` after making any changes to the code.
+#### 视频高亮: {#video-highlights}
+- [4:12](https://youtu.be/wUpPsEcGsg8?t=4m12s) - 构建和测试本地的React。
+- [6:07](https://youtu.be/wUpPsEcGsg8?t=6m7s) - 创建一个拉取请求
+- [8:25](https://youtu.be/wUpPsEcGsg8?t=8m25s) - 组织代码
+- [14:43](https://youtu.be/wUpPsEcGsg8?t=14m43s) - React npm 登记
+- [19:15](https://youtu.be/wUpPsEcGsg8?t=19m15s) - 添加新的功能。
 
-Then, our linter will catch most issues that may exist in your code.
-You can check the status of your code styling by simply running `yarn linc`.
-
-However, there are still some styles that the linter cannot pick up. If you are unsure about something, looking at [Airbnb's Style Guide](https://github.com/airbnb/javascript) will guide you in the right direction.
-
-### Introductory Video {#introductory-video}
-
-You may be interested in watching [this short video](https://www.youtube.com/watch?v=wUpPsEcGsg8) (26 mins) which gives an introduction on how to contribute to React.
-
-#### Video highlights: {#video-highlights}
-- [4:12](https://youtu.be/wUpPsEcGsg8?t=4m12s) - Building and testing React locally
-- [6:07](https://youtu.be/wUpPsEcGsg8?t=6m7s) - Creating and sending pull requests
-- [8:25](https://youtu.be/wUpPsEcGsg8?t=8m25s) - Organizing code
-- [14:43](https://youtu.be/wUpPsEcGsg8?t=14m43s) - React npm registry
-- [19:15](https://youtu.be/wUpPsEcGsg8?t=19m15s) - Adding new React features
-
+对于第一次贡献React的_感觉_的正式概述，检出[有趣的ReactNYC讨论](https://www.youtube.com/watch?v=GWCcZ6fnpn4).
 For a realistic overview of what it _feels_ like to contribute to React for the first time, check out [this entertaining ReactNYC talk](https://www.youtube.com/watch?v=GWCcZ6fnpn4).
 
-### Request for Comments (RFC) {#request-for-comments-rfc}
+### 评论请求(RFC) {#request-for-comments-rfc}
+很多改变，包括问题修复和文档改善通过正常的GitHub拉取请求工作流可以被实现和预览。
 
-Many changes, including bug fixes and documentation improvements can be implemented and reviewed via the normal GitHub pull request workflow.
+一些改变的想法是重大的，我们要求它们通过一个设计过程并且在React核心团队中间产生共识。
+这个"RFC"(评论请求)过程是想要为工程添加的新功能提供一个稳定和被控制的路径，你们可以贡献通过访问[rfcs库](https://github.com/reactjs/rfcs)。
 
-Some changes though are "substantial", and we ask that these be put through a bit of a design process and produce a consensus among the React core team.
+### 许可证 #license}
+为了贡献React, 你同意你的贡献被MIT许可证许可。
 
-The "RFC" (request for comments) process is intended to provide a consistent and controlled path for new features to enter the project. You can contribute by visiting the [rfcs repository](https://github.com/reactjs/rfcs).
+### 下一个是是什么? {#what-next}
 
-### License {#license}
-
-By contributing to React, you agree that your contributions will be licensed under its MIT license.
-
-### What Next? {#what-next}
-
-Read the [next section](/docs/codebase-overview.html) to learn how the codebase is organized.
+读[下一部分](/docs/codebase-overview.html)去学习基本代码是如何被组织的。
