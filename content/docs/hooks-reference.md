@@ -1,6 +1,6 @@
 ---
 id: hooks-reference
-title: Hooks API 索引
+title: Hook API 索引
 permalink: docs/hooks-reference.html
 prev: hooks-custom.html
 next: hooks-faq.html
@@ -10,7 +10,7 @@ next: hooks-faq.html
 
 本页面主要描述 React 中内置的 Hook API。
 
-如果你刚开始接触 Hook，那么可能需要先查阅 [Hook 概览](/docs/hooks-overview.html)。你也可以在 [Hook FAQ](/docs/hooks-faq.html) 章节中获取有用的信息。
+如果你刚开始接触 Hook，那么可能需要先查阅 [Hook 概览](/docs/hooks-overview.html)。你也可以在 [Hooks FAQ](/docs/hooks-faq.html) 章节中获取有用的信息。
 
 - [基础 Hook](#basic-hooks)
   - [`useState`](#usestate)
