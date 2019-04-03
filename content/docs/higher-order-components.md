@@ -314,7 +314,7 @@ function getDisplayName(WrappedComponent) {
 ```
 
 
-## 警告 {#caveats}
+## 注意事项 {#caveats}
 
 高阶组件有一些需要注意的地方，对于 React 新手来说可能并不容易发现。
 
