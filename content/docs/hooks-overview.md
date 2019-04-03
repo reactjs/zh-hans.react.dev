@@ -151,6 +151,7 @@ function FriendStatusWithCounter(props) {
     setIsOnline(status.isOnline);
   }
   // ...
+}  
 ```
 
 通过使用 Hook，你可以把组件内相关的副作用组织在一起（例如创建订阅及取消订阅），而不要把它们拆分到不同的生命周期函数里。
