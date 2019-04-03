@@ -316,7 +316,7 @@ function getDisplayName(WrappedComponent) {
 
 ## 警告 {#caveats}
 
-如果你是 React 的新手，那么高阶组件导致的警告消息可能并不是很明显。
+高阶组件有一些需要注意的地方，对于 React 新手来说可能并不容易发现。
 
 ### 不要在渲染方法中使用 HOC {#dont-use-hocs-inside-the-render-method}
 
