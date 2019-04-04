@@ -115,7 +115,7 @@ useEffect(didUpdate);
 
 #### 清除 effect {#cleaning-up-an-effect}
 
-通常，组件从屏幕卸载前需要将 effect 创建的诸如订阅或计时器 ID 等资源清除。要实现这一点，就需要传入 `useEffect` 的函数返回一个清除函数。以下就是一个创建订阅的例子：
+通常，组件卸载时需要清除 effect 创建的诸如订阅或计时器 ID 等资源清除。要实现这一点，`useEffect` 函数需返回一个清除函数。以下就是一个创建订阅的例子：
 
 ```js
 useEffect(() => {
@@ -131,11 +131,11 @@ useEffect(() => {
 
 #### effect 的执行时机 {#timing-of-effects}
 
-与 `componentDidMount`、`componentDidUpdate` 不同的是，在浏览器完成布局与绘制**之后**，传给 `useEffect` 的函数会在一个延迟事件中被调用。这使得它适用于许多常见的副作用场景，例如设置订阅和事件处理程序，因为大多数类型的工作不应阻塞浏览器更新屏幕。
+与 `componentDidMount`、`componentDidUpdate` 不同的是，在浏览器完成布局与绘制**之后**，传给 `useEffect` 的函数会延迟调用。这使得它适用于许多常见的副作用场景，比如如设置订阅和事件处理等情况，因此不应在函数中执行阻塞浏览器更新屏幕的操作。
 
-然而，并非所有 effect 都可以被延迟执行。例如，在浏览器执行下一次绘制前，用户可见的 DOM 变更就必须同步执行，这样用户才不会感觉到视觉上的不一致。（概念上类似于被动事件监听器和主动事件监听器的区别。）React 为此提供了一个额外的 [`useLayoutEffect`](#uselayouteffect) Hook 来处理这类 effect。它和 `useEffect` 的签名相同，区别只是调用时机不同。
+然而，并非所有 effect 都可以被延迟执行。例如，在浏览器执行下一次绘制前，用户可见的 DOM 变更就必须同步执行，这样用户才不会感觉到视觉上的不一致。（概念上类似于被动监听事件和主动监听事件的区别。）React 为此提供了一个额外的 [`useLayoutEffect`](#uselayouteffect) Hook 来处理这类 effect。它和 `useEffect` 的结构相同，区别只是调用时机不同。
 
-虽然 `useEffect` 会在浏览器绘制后延迟执行，但其保证会在任何新的渲染前执行。React 将在组件更新前刷新上一轮渲染的 effect。
+虽然 `useEffect` 会在浏览器绘制后延迟执行，但会保证在任何新的渲染前执行。React 将在组件更新前刷新上一轮渲染的 effect。
 
 #### effect 的条件执行 {#conditionally-firing-an-effect}
 
@@ -157,11 +157,11 @@ useEffect(
 );
 ```
 
-现在，只有当 `props.source` 改变后才会重新创建订阅。
+此时，只有当 `props.source` 改变后才会重新创建订阅。
 
 >注意
 >
->如果你要使用此优化方式，请请确保数组中包含了**所有外部作用域中会随时间变化并且在 effect 中使用的变量**，否则你的代码会引用到先前渲染中的旧变量。参阅文档，了解更多关于 [如何处理函数](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) 以及 [数组频繁变化时的措施](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) 的内容。
+>如果你要使用此优化方式，请确保数组中包含了**所有外部作用域中会发生变化且在 effect 中使用的变量**，否则你的代码会引用到先前渲染中的旧变量。请参阅文档，了解更多关于 [如何处理函数](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) 以及 [数组频繁变化时的措施](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) 的内容。
 >
 >如果你想要执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组（`[]`）作为第二个参数。这就告诉 React 你的 effect 不依赖于 props 或 state 中的任何值，所以它永远都不需要重复执行。这并不算是一种特殊情况 —— 依然遵循输入数组的工作方式。
 >
