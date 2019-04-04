@@ -88,7 +88,7 @@ handleSomething() {
 
 ### 为什么 React 不同步地更新 `this.state`？ {#why-doesnt-react-update-thisstate-synchronously}
 
-如前面章节解释的那样，在开始重新渲染之前，React 会有意地进行 “等待”，直到所有在组件的事件处理函数内调用的 `setState()` 完成之后。这样可以通过避免不必要的重新渲染来提升性能。
+如前面章节解释的那样，在开始重新渲染之前，React 会有意地进行“等待”，直到所有在组件的事件处理函数内调用的 `setState()` 完成之后。这样可以通过避免不必要的重新渲染来提升性能。
 
 但是，你可能还是会想，为什么 React 不能只更新 `this.state`，但并不对组件进行重新渲染呢。
 
