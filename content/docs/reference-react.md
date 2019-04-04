@@ -65,15 +65,15 @@ Suspense 使得组件可以“等待”某些操作结束后，再进行渲染�
 - [`React.lazy`](#reactlazy)
 - [`React.Suspense`](#reactsuspense)
 
-### Hooks {#hooks}
+### Hook {#hooks}
 
-*Hooks* 是在 React 16.8 中引入的新概念。Hooks 允许你在不使用 class 组件的情况下使用 state 及其他 React 功能。Hooks 拥有[专属文档章节](/docs/hooks-intro.html)和单独的 API 参考文档：
+*Hook* 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。Hook 拥有[专属文档章节](/docs/hooks-intro.html)和单独的 API 参考文档：
 
-- [基础 Hooks](/docs/hooks-reference.html#basic-hooks)
+- [基础 Hook](/docs/hooks-reference.html#basic-hooks)
   - [`useState`](/docs/hooks-reference.html#usestate)
   - [`useEffect`](/docs/hooks-reference.html#useeffect)
   - [`useContext`](/docs/hooks-reference.html#usecontext)
-- [额外的 Hooks](/docs/hooks-reference.html#additional-hooks)
+- [额外的 Hook](/docs/hooks-reference.html#additional-hooks)
   - [`useReducer`](/docs/hooks-reference.html#usereducer)
   - [`useCallback`](/docs/hooks-reference.html#usecallback)
   - [`useMemo`](/docs/hooks-reference.html#usememo)
