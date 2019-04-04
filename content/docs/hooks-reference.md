@@ -33,7 +33,7 @@ next: hooks-faq.html
 const [state, setState] = useState(initialState);
 ```
 
-返回一个有状态的值，以及一个更新它的函数。
+返回一个 state，以及更新 state 的函数。
 
 在初始渲染期间，返回的状态 (`state`) 与传入的第一个参数 (`initialState`) 值相同。。
 
@@ -67,11 +67,11 @@ function Counter({initialCount}) {
 }
 ```
 
-“+” 和 “-” 按钮采用函数式的表单形式，因为被更新 state 的值基于之前 state 的值。但是“重置”按钮则采用普通形式，因为它总是将计数设置为初始值。
+“+” 和 “-” 按钮采用函数式形式，因为被更新的 state 需要基于之前的 state。但是“重置”按钮则采用普通形式，因为它只需设置初始值即可。
 
 > 注意
 >
-> 与 class 组件中的 `setState` 方法不同，`useState` 不会自动合并更新对象。你可以用函数式的 `setState` 结合对象展开语法来达到合并更新对象的效果。
+> 与 class 组件中的 `setState` 方法不同，`useState` 不会自动合并更新对象。你可以用函数式的 `setState` 结合展开运算符来达到合并更新对象的效果。
 >
 > ```js
 > setState(prevState => {
@@ -82,9 +82,9 @@ function Counter({initialCount}) {
 >
 > `useReducer` 是另一种可选方案，它更适合用于管理包含多个子值的 state 对象。
 
-#### 惰性的初始 state {#lazy-initial-state}
+#### 惰性初始 state {#lazy-initial-state}
 
-`initialState` 参数只会在组件的初始渲染中起作用，后续渲染时会被忽略。如果初始 state 需要通过复杂计算获得，则可以传入一个计算并返回它的函数，该函数将只会在初始渲染时被调用：
+`initialState` 参数只会在组件的初始渲染中起作用，后续渲染时会被忽略。如果初始 state 需要通过复杂计算获得，则可以传入一个函数，在函数中计算并返回初始的 state，此函数只在初始渲染时被调用：
 
 ```js
 const [state, setState] = useState(() => {
@@ -97,7 +97,7 @@ const [state, setState] = useState(() => {
 
 假如你在调用 State Hook 的更新函数时，给它传入当前的 state 值，React 将跳过子组件的渲染及副作用的执行。（React 使用 [`Object.is` 比较算法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) 来比较 state。）
 
-需要注意的是，React 可能仍需要在跳过渲染前再次渲染该组件。由于 React 不会对组件树的深层节点进行不必要的渲染，所以大可不必担心。如果你在渲染期间执行了高开销的计算，则可以使用 `useMemo` 来进行优化。
+需要注意的是，React 可能仍需要在跳过渲染前渲染该组件。不过由于 React 不会对组件树的“深层”节点进行不必要的渲染，所以大可不必担心。如果你在渲染期间执行了高开销的计算，则可以使用 `useMemo` 来进行优化。
 
 ### `useEffect` {#useeffect}
 
@@ -107,9 +107,9 @@ useEffect(didUpdate);
 
 该 Hook 接收一个包含命令式、且可能有副作用代码的函数。
 
-在函数组件主体内（这里指在 React 渲染阶段）改变 DOM、添加订阅、设置定时器、记录日志以及执行其他包含副作用的操作都是不被允许的，因为这可能引发令人困惑的 bug 并破坏 UI 的一致性。
+在函数组件主体内（这里指在 React 渲染阶段）改变 DOM、添加订阅、设置定时器、记录日志以及执行其他包含副作用的操作都是不被允许的，因为这可能会产生莫名其妙的 bug 并破坏 UI 的一致性。
 
-使用 `useEffect` 来替你完成副作用操作。传递给 `useEffect` 的函数会在组件渲染到屏幕之后才执行。你可以把 effect 看作是从 React 的纯函数式世界通往命令式世界的逃生通道。
+使用 `useEffect` 完成副作用操作。赋值给 `useEffect` 的函数会在组件渲染到屏幕之后执行。你可以把 effect 看作从 React 的纯函数式世界通往命令式世界的逃生通道。
 
 默认情况下，effect 将在每轮渲染结束后执行，但你可以选择让它 [在只有某些值改变的时候](#conditionally-firing-an-effect) 才执行。
 
@@ -127,7 +127,7 @@ useEffect(() => {
 });
 ```
 
-为防止内存泄漏，清除函数将在组件从 UI 上卸载前执行。另外，如果组件多次渲染（通常如此），那么，**在执行下一个 effect 之前，前一个 effect 就已经被清除了**。在上述示例中，这意味着组件的每一次更新都会创建新的订阅。若想避免每次更新都触发 effect 的执行，请参阅下一章节。
+为防止内存泄漏，清除函数会在组件卸载前执行。另外，如果组件多次渲染（通常如此），则**在执行下一个 effect 之前，上一个 effect 就已被清除**。在上述示例中，意味着组件的每一次更新都会创建新的订阅。若想避免每次更新都触发 effect 的执行，请参阅下一小节。
 
 #### effect 的执行时机 {#timing-of-effects}
 
@@ -253,7 +253,7 @@ function Counter({initialState}) {
   );
 ```
 
-> 注意
+>注意
 >
 >React 不使用 `state = initialState` 这一由 Redux 推广开来的参数约定。有时候初始值依赖于 props，因此需要在调用 Hook 时指定。如果你特别喜欢上述的参数约定，可以通过调用 `useReducer(reducer, undefined, reducer)` 来模拟 Redux 的行为，但我们不鼓励你这么做。
 
