@@ -20,7 +20,7 @@ category: FAQ
 
 ### 为什么 `setState` 给了我一个错误的值？ {#why-is-setstate-giving-me-the-wrong-value}
 
-在 React 中，`this.props` 和 `this.state` 都代表着 *已经被渲染了的* 值，即当前屏幕上显示的值。
+在 React 中，`this.props` 和 `this.state` 都代表着*已经被渲染了的*值，即当前屏幕上显示的值。
 
 调用 `setState` 其实是异步的 —— 不要指望在调用 `setState` 之后，`this.state` 会立即反射为新的值。如果你需要基于当前的 state 来计算出新的值，那你应该传递一个函数，而不是一个对象（详情见下文）。
 
