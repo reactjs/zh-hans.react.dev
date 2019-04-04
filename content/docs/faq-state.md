@@ -97,7 +97,7 @@ handleSomething() {
 * 这样会破坏掉 `props` 和 `state` 之间的一致性，造成一些难以 debug 的问题。
 * 这样会让一些我们正在实现的新功能变得无法实现。
 
-这个 [GitHub comment](https://github.com/facebook/react/issues/11527#issuecomment-360199710) 深入了该特殊示例。
+这个 [GitHub 评论](https://github.com/facebook/react/issues/11527#issuecomment-360199710) 深入了该特殊示例。
 
 ### 我应该使用一个像 Redux 或 MobX 那样的 state 管理库吗？ {#should-i-use-a-state-management-library-like-redux-or-mobx}
 
