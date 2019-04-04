@@ -12,7 +12,7 @@ category: FAQ
 
 ### `state` 和 `props` 之间的区别是什么？  {#what-is-the-difference-between-state-and-props}
 
-[`props`](/docs/components-and-props.html)（“properties” 的缩写）和 [`state`](/docs/state-and-lifecycle.html) 都是普通的 JavaScript 对象。它们都是用来保存信息的，这些信息可以控制组件的渲染输出，而它们的一个不同点就是：`props` 是传递 *给* 组件的（类似于函数的形参），而 `state` 是在组件 *内* 被组件自己管理的（类似于在一个函数内声明的变量）。
+[`props`](/docs/components-and-props.html)（“properties” 的缩写）和 [`state`](/docs/state-and-lifecycle.html) 都是普通的 JavaScript 对象。它们都是用来保存信息的，这些信息可以控制组件的渲染输出，而它们的一个重要的不同点就是：`props` 是传递*给*组件的（类似于函数的形参），而 `state` 是在组件*内*被组件自己管理的（类似于在一个函数内声明的变量）。
 
 下面是一些不错的资源，可以用来进一步了解使用 `props` 或 `state` 的最佳时机：
 * [Props vs State](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md)
