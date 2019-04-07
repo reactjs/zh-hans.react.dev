@@ -6,9 +6,9 @@ permalink: docs/accessibility.html
 
 ## 为什么我们需要无障碍辅助功能？ {#why-accessibility}
 
-网络无障碍辅助功能（Accessibility，也被称为 [**a11y**](https://en.wiktionary.org/wiki/a11y)，因为以A开头，以Y结尾，一共11个字母）是一种可以帮助所有人获得服务的设计和创造。为了使辅助技术可以正确的解读您的网页，无障碍辅助功能是必要的。
+网络无障碍辅助功能（Accessibility，也被称为 [**a11y**](https://en.wiktionary.org/wiki/a11y)，因为以A开头，以Y结尾，一共11个字母）是一种可以帮助所有人获得服务的设计和创造。无障碍辅助功能是使得辅助技术正确解读网页的必要条件。
 
-React 通常使用标准 HTML 技术来完全支持创建具有可访问性的网站。
+React 对于创建可访问网站有着全面的支持，而这通常是通过标准 HTML 技术实现的。
 
 ## 标准和指引 {#standards-and-guidelines}
 
@@ -26,7 +26,7 @@ React 通常使用标准 HTML 技术来完全支持创建具有可访问性的�
 
 [网络无障碍倡议 - 无障碍互联网应用（Web Accessibility Initiative - Accessible Rich Internet Applications）](https://www.w3.org/WAI/intro/aria) 文件包含了创建完全无障碍 JavaScript 部件所需要的技术。
 
-注意：JSX 支持所有 `aria-*` HTML 属性。虽然大多数 React 的 DOM 变量和属性命名都使用驼峰命名（camelCased），`aria-*`  应该使用带连字符的命名法（也叫诸如 hyphen-cased，kebab-case, lisp-case），就像在 HTML 中一样。
+注意：JSX 支持所有 `aria-*` HTML 属性。虽然大多数 React 的 DOM 变量和属性命名都使用驼峰命名（camelCased），但 aria-* 应该像其在 HTML 中一样使用带连字符的命名法（也叫诸如 hyphen-cased ， kebab-case ， lisp-case )。
 
 ```javascript{3,4}
 <input
@@ -44,7 +44,7 @@ HTML 语义是无障碍辅助功能网络应用的基础。利用多种 HTML 元
 
 - [MDN 的 HTML 元素参照（MDN HTML elements reference）](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 
-在 JSX 中使用  `<div>`  元素来实现我们的 React 代码功能的时候，尤其当我们使用列表（`<ol>`， `<ul>` 和 `<dl>`）和 HTML `<table>` 时，HTML 语义会被破坏。
+有时，HTML 语义会被破坏。比如当在 JSX 中使用  `<div>`  元素来实现 React 代码功能的时候，又或是在使用列表（`<ol>`， `<ul>` 和 `<dl>`）和 HTML `<table>` 时。
 在这种情况下，我们应该使用 [React Fragments](/docs/fragments.html) 来组合各个组件。
 
 举个例子，
@@ -108,7 +108,7 @@ function ListItem({ item }) {
 ## 无障碍表单 {#accessible-forms}
 
 ### 标记 {#labeling}
-所有的 HTML 表单控制，例如 `<input>` 和 `<textarea>` ，都需要标注来实现无障碍辅助功能。我们需要提供屏幕朗读器以解释性标注。
+所有的 HTML 表单控制，例如 `<input>` 和 `<textarea>` ，都需要被标注来实现无障碍辅助功能。我们需要提供屏幕朗读器以解释性标注。
 
 以下资源向我们展示了如何写标注：
 
@@ -132,7 +132,7 @@ function ListItem({ item }) {
 
 ## 控制焦点 {#focus-control}
 
-确保你的网络应用可以在只使用键盘的情况下使用：
+确保你的网络应用在即使只拥有键盘的环境下正常运作。
 
 - [WebAIM 讨论使用键盘进行无障碍访问](https://webaim.org/techniques/keyboard/)
 
