@@ -59,7 +59,7 @@ module.exports = {
           {
             resolve: 'gatsby-remark-code-repls',
             options: {
-              defaultText: '<b>Try it on CodePen</b>',
+              defaultText: '<b>在 CodePen 上尝试</b>',
               directory: `${__dirname}/examples/`,
               externals: [
                 `//unpkg.com/react/umd/react.development.js`,
