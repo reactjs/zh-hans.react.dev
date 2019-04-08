@@ -80,5 +80,4 @@ render() {
 
 `embed:uncontrolled-components/input-type-file.js`
 
-[**在 CodePen 上尝试**](codepen://uncontrolled-components/input-type-file)
-
+[](codepen://uncontrolled-components/input-type-file)
