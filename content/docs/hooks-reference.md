@@ -192,7 +192,7 @@ const value = useContext(MyContext);
 
 >提示
 >
->如果你在接触 Hook 前已经对 context API 比较熟悉，则应当明白 `useContext(MyContext)` 相当于 class 组件中的 `static contextType = MyContext` 或者 `<MyContext.Consumer>`。
+>如果你在接触 Hook 前已经对 context API 比较熟悉，那应该可以理解，`useContext(MyContext)` 相当于 class 组件中的 `static contextType = MyContext` 或者 `<MyContext.Consumer>`。
 >
 >`useContext(MyContext)` 只是让你能够*读取* context 的值以及订阅 context 的变化。你仍然需要在上层组件树中使用 `<MyContext.Provider>` 来为下层组件*提供* context。
 
@@ -208,7 +208,7 @@ const [state, dispatch] = useReducer(reducer, initialArg, init);
 
 [`useState`](#usestate) 的替代方案。它接收一个形如 `(state, action) => newState` 的 reducer，并返回当前的 state 以及与其配套的 `dispatch` 方法。（如果你熟悉 Redux 的话，就已经知道它如何工作了。）
 
-在诸如 state 逻辑较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等场景下，通常 `useReducer` 会比 `useState` 更适用。而且，使用 `useReducer` 还能给那些会触发深更新的组件做性能优化，因为[你可以向子组件传递 `dispatch` 而不是回调函数](/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down) 。
+在某些场景下，`useReducer` 会比 `useState` 更适用，例如 state 逻辑较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等。并且，使用 `useReducer` 还能给那些会触发深更新的组件做性能优化，因为[你可以向子组件传递 `dispatch` 而不是回调函数](/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down) 。
 
 以下是用 reducer 重写 [`useState`](#usestate) 一节的计数器示例：
 
@@ -301,7 +301,7 @@ function Counter({initialCount}) {
 
 如果 Reducer Hook 的返回值与当前 state 相同，React 将跳过子组件的渲染及副作用的执行。（React 使用 [`Object.is` 比较算法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) 来比较 state。）
 
-需要注意的是，React 可能仍需要在跳过渲染前再次渲染该组件。由于 React 不会对组件树的深层节点进行不必要的渲染，所以大可不必担心。如果你在渲染期间执行了高开销的计算，则可以使用 `useMemo` 来进行优化。
+需要注意的是，React 可能仍需要在跳过渲染前再次渲染该组件。不过由于 React 不会对组件树的“深层”节点进行不必要的渲染，所以大可不必担心。如果你在渲染期间执行了高开销的计算，则可以使用 `useMemo` 来进行优化。
 
 ### `useCallback` {#usecallback}
 
