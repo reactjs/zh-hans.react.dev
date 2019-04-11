@@ -4,7 +4,7 @@ title: Portals
 permalink: docs/portals.html
 ---
 
-Portals 提供了一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案。
+Portal 提供了一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案。
 
 ```js
 ReactDOM.createPortal(child, container)
@@ -18,7 +18,7 @@ ReactDOM.createPortal(child, container)
 
 ```js{4,6}
 render() {
-  // React 挂载了一个新的 div， 并且把子元素渲染其中
+  // React 挂载了一个新的 div，并且把子元素渲染其中
   return (
     <div>
       {this.props.children}
@@ -40,17 +40,17 @@ render() {
 }
 ```
 
-对于 portals 的一个典型用例是当父组件有 `overflow: hidden` 或 `z-index` 样式时，但你需要子组件能够在视觉上“跳出”其容器。例如，对话框、悬浮卡以及提示框：
+一个 portal 的典型用例是当父组件有 `overflow: hidden` 或 `z-index` 样式时，但你需要子组件能够在视觉上“跳出”其容器。例如，对话框、悬浮卡以及提示框：
 
 > 注意:
 > 
-> 当在使用 portals 时, 记住[管理键盘焦点](/docs/accessibility.html#programmatically-managing-focus)就变得尤为重要。
+> 当在使用 portal 时, 记住[管理键盘焦点](/docs/accessibility.html#programmatically-managing-focus)就变得尤为重要。
 >
 > 对于模态对话框，通过遵循 [WAI-ARIA 模态开发实践](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal)，来确保每个人都能够运用它。
 
 [**在 CodePen 上试一试**](https://codepen.io/gaearon/pen/yzMaBd)
 
-## 通过 Portals 进行事件冒泡 {#event-bubbling-through-portals}
+## 通过 Portal 进行事件冒泡 {#event-bubbling-through-portals}
 
 尽管 portal 可以被放置在 DOM 树中的任何地方，但在任何其他方面，其行为和普通的 React 子节点行为一致。由于 portal 仍存在于 *React 树*， 且与 *DOM 树* 中的位置无关，那么无论其子节点是否是 portal，像 context 这样的功能特性都是不变的。
 
@@ -151,4 +151,4 @@ ReactDOM.render(<Parent />, appRoot);
 
 [**在 CodePen 上试一试**](https://codepen.io/gaearon/pen/jGBWpE)
 
-在父组件里捕获一个来自 portal 冒泡上来的事件，使之能够在开发时具有不完全依赖于 portals 的更为灵活的抽象。例如，如果你在渲染一个 `<Modal />` 组件，无论其是否采用 portals 实现，父组件都能够捕获其事件。
+在父组件里捕获一个来自 portal 冒泡上来的事件，使之能够在开发时具有不完全依赖于 portal 的更为灵活的抽象。例如，如果你在渲染一个 `<Modal />` 组件，无论其是否采用 portal 实现，父组件都能够捕获其事件。
