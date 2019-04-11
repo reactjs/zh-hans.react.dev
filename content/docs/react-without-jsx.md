@@ -4,9 +4,9 @@ title: 不使用 JSX 的 React
 permalink: docs/react-without-jsx.html
 ---
 
-JSX 不是使用 React 的要求。当你不想在构建环境中配置 JSX 编译时，使用不带 JSX 的 React 特别方便。
+React 并不强制要求使用 JSX。当你不想在构建环境中配置有关 JSX 编译时，不在 React 中使用 JSX 会更加方便。
 
-每个 JSX 元素只是用于调用 `React.createElement(component, props, ...children)` 的语法糖。因此，使用 JSX 可以完成的任何事情都可以通过纯 JavaScript 完成。
+每个 JSX 元素只是调用 `React.createElement(component, props, ...children)` 的语法糖。因此，使用 JSX 可以完成的任何事情都可以通过纯 JavaScript 完成。
 
 例如，用 JSX 编写的代码：
 
