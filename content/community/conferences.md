@@ -12,9 +12,10 @@ Do you know of a local React.js conference? Add it here! (Please keep the list c
 
 ## Upcoming Conferences {#upcoming-conferences}
 
-### React Iran 2019 {#react-iran-2019}
-January 31, 2019 in Tehran, Iran
-[Website](http://reactiran.com) - [Instagram](https://www.instagram.com/reactiran/)
+### Reactathon 2019 {#reactathon-2019}
+March 30-31, 2019 in San Francisco, USA
+
+[Website](https://www.reactathon.com/) - [Twitter](https://twitter.com/reactathon)
 
 ### App.js Conf 2019 {#appjs-conf-2019}
 April 4-5, 2019 in Kraków, Poland
@@ -26,18 +27,44 @@ April 12, 2019 in Amsterdam, The Netherlands
 
 [Website](https://react.amsterdam) - [Twitter](https://twitter.com/reactamsterdam) - [Facebook](https://www.facebook.com/reactamsterdam)
 
+### ReactJS Girls Conference 
+May 3, 2019 in London, UK
+
+[Website](https://reactjsgirls.com/) - [Twitter](https://twitter.com/reactjsgirls)
+
 ### ReactEurope 2019 {#reacteurope-2019}
 May 23-24, 2019 in Paris, France
 
 [Website](https://www.react-europe.org) - [Twitter](https://twitter.com/ReactEurope) - [Facebook](https://www.facebook.com/ReactEurope) - [Videos](https://www.youtube.com/c/ReacteuropeOrgConf)
+
+### React Conf Armenia 2019 {#react-conf-am-19}
+May 25, 2019 in Yerevan, Armenia
+
+[Website](https://reactconf.am/) - [Twitter](https://twitter.com/ReactConfAM) - [Facebook](https://www.facebook.com/reactconf.am/) - [YouTube](https://www.youtube.com/c/JavaScriptConferenceArmenia) - [CFP](http://bit.ly/speakReact)
 
 ### React Norway 2019 {#react-norway-2019}
 June 12, 2019. Larvik, Norway
 
 [Website](https://reactnorway.com) - [Twitter](https://twitter.com/ReactNorway)
 
+### React Loop 2019 {#react-loop-2019}
+June 21, 2019 Chicago, Illinois USA
+
+[Website](https://reactloop.com) - [Twitter](https://twitter.com/ReactLoop)
+
+### Chain React 2019
+July 11-12, 2019. Portland, OR, USA.
+
+[Website](https://infinite.red/ChainReactConf)
+
+### React Rally 2019
+August 22-23, 2019. Salt Lake City, USA.
+
+[Website](https://www.reactrally.com/) - [Twitter](https://twitter.com/ReactRally) - [Instagram](https://www.instagram.com/reactrally/)
+
 ### ComponentsConf 2019 {#componentsconf-2019}
 September 6, 2019 in Melbourne, Australia
+
 [Website](https://www.componentsconf.com.au/) - [Twitter](https://twitter.com/componentsconf)
 
 ### React Native EU 2019 {#react-native-eu-2019}
@@ -54,6 +81,11 @@ September 13th, 2019. New York, USA
 September 26-28, 2019 in Goa, India
 
 [Website](https://www.reactindia.io/) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia)
+
+### React Alicante 2019 {#react-alicante-2019}
+September 26-28, 2019 in Alicante, Spain
+
+[Website](http://reactalicante.es/) - [Twitter](https://twitter.com/reactalicante) - [Facebook](https://www.facebook.com/ReactAlicante)
 
 ## Past Conferences {#past-conferences}
 
@@ -323,3 +355,8 @@ November 4 in Tel Aviv, Israel
 November 30, Berlin, Germany
 
 [Website](https://reactday.berlin) - [Twitter](https://twitter.com/reactdayberlin) - [Facebook](https://www.facebook.com/reactdayberlin/) - [Videos](https://www.youtube.com/channel/UC1EYHmQYBUJjkmL6OtK4rlw)
+
+### React Iran 2019 {#react-iran-2019}
+January 31, 2019 in Tehran, Iran
+
+[Website](http://reactiran.com) - [Instagram](https://www.instagram.com/reactiran/)

@@ -7,7 +7,7 @@ const JS_NPM_URLS = [
 export default class HTML extends React.Component {
   render() {
     return (
-      <html lang="en" {...this.props.htmlAttributes}>
+      <html lang="zh-hans" {...this.props.htmlAttributes}>
         <head>
           {JS_NPM_URLS.map(url => (
             <link key={url} rel="preload" href={url} as="script" />

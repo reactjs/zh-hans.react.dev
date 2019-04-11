@@ -9,7 +9,7 @@
 module.exports = {
   siteMetadata: {
     title: 'React: A JavaScript library for building user interfaces',
-    siteUrl: 'https://reactjs.org',
+    siteUrl: 'https://zh-hans.reactjs.org',
     rssFeedTitle: 'React',
     rssFeedDescription: 'A JavaScript library for building user interfaces',
   },
@@ -59,7 +59,7 @@ module.exports = {
           {
             resolve: 'gatsby-remark-code-repls',
             options: {
-              defaultText: '<b>Try it on CodePen</b>',
+              defaultText: '<b>在 CodePen 上尝试</b>',
               directory: `${__dirname}/examples/`,
               externals: [
                 `//unpkg.com/react/umd/react.development.js`,
