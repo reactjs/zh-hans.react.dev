@@ -39,13 +39,13 @@ React 组件隐藏其实现细节，包括其渲染结果。其他使用 `FancyB
 
 ## 组件库维护者的注意事项 {#note-for-component-library-maintainers}
 
-**当你开始在组件库中使用 `forwardRef` 时，你应当将其作为一个 breaking change，并发布库的一个新的主板本。** 这是因为你的库可能会有明显不同的行为（例如 refs 被分配给了什么，以及导出了什么类型），并且这样可能会导致依赖旧行为的应用和其他库崩溃。
+**当你开始在组件库中使用 `forwardRef` 时，你应当将其作为一个破坏性更改，并发布库的一个新的主板本。** 这是因为你的库可能会有明显不同的行为（例如 refs 被分配给了什么，以及导出了什么类型），并且这样可能会导致依赖旧行为的应用和其他库崩溃。
 
-出于同样的原因，当存在时有条件地应用 `React.forwardRef` 也是不推荐的：其改变了你的库的行为，并在升级 React 自身时破环用户的应用。
+出于同样的原因，当 `React.forwardRef` 存在时有条件地使用它也是不推荐的：它改变了你的库的行为，并在升级 React 自身时破环用户的应用。
 
 ## 在高阶组件中转发 refs {#forwarding-refs-in-higher-order-components}
 
-这个技巧对 [高阶组件](/docs/higher-order-components.html)（也被称为 HOC）特别有用。让我们从一个输出组件 props 到控制台的 HOC 示例开始：
+这个技巧对[高阶组件](/docs/higher-order-components.html)（也被称为 HOC）特别有用。让我们从一个输出组件 props 到控制台的 HOC 示例开始：
 `embed:forwarding-refs/log-props-before.js`
 
 “logProps” HOC 透传（pass through）所有 `props` 到其包裹的组件，所以渲染结果将是相同的。示例：我们可以使用该 HOC 记录所有传递到 “fancy button” 组件的 props：
