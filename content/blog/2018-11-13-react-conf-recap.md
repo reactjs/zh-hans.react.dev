@@ -1,5 +1,5 @@
 ---
-title: "React Conf 会议纪要: Hooks, Suspense, 和 Concurrent Rendering"
+title: "React Conf 会议纪要：Hook，Suspense 和 Concurrent Rendering"
 author: [tomocchino]
 ---
 
