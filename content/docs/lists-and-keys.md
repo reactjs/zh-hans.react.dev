@@ -8,7 +8,7 @@ next: forms.html
 
 首先，让我们看下在 Javascript 中如何转化列表。
 
-如下代码，我们使用 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 函数让数组中的每一项变双倍，然后我们得到了一个新的列表 `doubled`并打印出来：
+如下代码，我们使用 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 函数让数组中的每一项变双倍，然后我们得到了一个新的列表 `doubled` 并打印出来：
 
 ```javascript{2}
 const numbers = [1, 2, 3, 4, 5];
@@ -42,13 +42,13 @@ ReactDOM.render(
 );
 ```
 
-[在 CodePen 上尝试](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
+[**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
 
 这段代码生成了一个 1 到 5 的项目符号列表。
 
 ### 基础列表组件 {#basic-list-component}
 
-通常你需要在一个[组件](/docs/components-and-props.html) 中渲染列表。
+通常你需要在一个[组件](/docs/components-and-props.html)中渲染列表。
 
 我们可以把前面的例子重构成一个组件，这个组件接收 `numbers` 数组作为参数并输出一个元素列表。
 
@@ -70,7 +70,7 @@ ReactDOM.render(
 );
 ```
 
-当我们运行这段代码，将会看到一个警告 `a key should be provided for list items` ，意思是当你创建一个元素时，必须包括一个特殊的 `key` 属性。我们将在下一节讨论这是为什么。
+当我们运行这段代码，将会看到一个警告 `a key should be provided for list items`，意思是当你创建一个元素时，必须包括一个特殊的 `key` 属性。我们将在下一节讨论这是为什么。
 
 让我们来给每个列表元素分配一个 `key` 属性来解决上面的那个警告：
 
@@ -94,7 +94,7 @@ ReactDOM.render(
 );
 ```
 
-[在 CodePen 上尝试](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
+[**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
 
 ## key {#keys}
 
@@ -202,7 +202,7 @@ ReactDOM.render(
 );
 ```
 
-[在 CodePen 上尝试](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
+[**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
 
 一个好的经验法则是：在 `map()` 方法中的元素需要设置 key 属性。
 
@@ -246,7 +246,7 @@ ReactDOM.render(
 );
 ```
 
-[在 CodePen 上尝试](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
+[**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
 
 key 会传递信息给 React ，但不会传递给你的组件。如果你的组件中需要使用 `key` 属性的值，请用其他属性名显式传递这个值：
 
@@ -296,6 +296,6 @@ function NumberList(props) {
 }
 ```
 
-[在 CodePen 上尝试](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
+[**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
 
 这么做有时可以使你的代码更清晰，但有时这种风格也会被滥用。就像在 JavaScript 中一样，何时需要为了可读性提取出一个变量，这完全取决于你。但请记住，如果一个 `map()` 嵌套了太多层级，那可能就是你[提取组件](/docs/components-and-props.html#extracting-components)的一个好时机。
