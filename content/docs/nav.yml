@@ -26,7 +26,7 @@
     - id: conditional-rendering
       title: 条件渲染
     - id: lists-and-keys
-      title: 列表 & Keys
+      title: 列表 & Key
     - id: forms
       title: 表单
     - id: lifting-state-up
