@@ -9,7 +9,7 @@ author: [tomocchino]
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/V-QO-KO90iQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Sophie Alpert 和 Dan Abramov 用以“React 的当下和未来”为主题的演讲，拉开了第一天序幕。在本次演讲中，他们介绍了 [Hooks](/docs/hooks-intro.html)，这个新的提案可以使得开发者在不编写 class 组件的情况下，也能访问诸如状态（state）等功能。 Hooks 这一提案保证会大大简化构成React组件所需要的代码，目前可以在 React alpha 版本中使用。
+Sophie Alpert 和 Dan Abramov 用以 “React 的当下和未来” 为主题的演讲，拉开了第一天序幕。在本次演讲中，他们介绍了 [Hook](/docs/hooks-intro.html)，这个新的提案可以使得开发者在不编写 class 组件的情况下，也能访问诸如状态（state）等功能。Hook 这一提案保证会大大简化构建 React 组件所需要的代码，目前可以在 React alpha 版本中使用。
 
 <br>
 
