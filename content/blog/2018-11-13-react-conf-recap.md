@@ -15,7 +15,7 @@ Sophie Alpert 和 Dan Abramov 用以“React 的当下和未来”为主题的�
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ByBPyMBTzM0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-在大会第二天的早晨, Andrew Clark 和 Brian Vaughn 展示了 React 中的 Concurrent Rendering。Andrew 介绍了最近发布的 [用于代码拆分的 React.lazy API](/blog/2018/10/23/react-v-16-6.html) 并且预览了两个即将推出的功能: concurrent mode 和 Suspense. Brian 展示了如何使用 [React 的新分析器](/blog/2018/09/10/introducing-the-react-profiler.html) 工具来让使用 React 开发的程序运行得更快.
+在大会第二天的早晨，Andrew Clark 和 Brian Vaughn 展示了 React 中的 Concurrent Rendering。Andrew 介绍了最近发布的 [用于代码拆分的 React.lazy API](/blog/2018/10/23/react-v-16-6.html) 并且预览了两个即将推出的功能: concurrent mode 和 Suspense。Brian 展示了如何使用 [React 的新分析器](/blog/2018/09/10/introducing-the-react-profiler.html)工具来让使用 React 开发的程序运行得更快。
 
 <br>
 
