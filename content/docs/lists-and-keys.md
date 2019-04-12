@@ -1,6 +1,6 @@
 ---
 id: lists-and-keys
-title: 列表 & Keys
+title: 列表 & Key
 permalink: docs/lists-and-keys.html
 prev: conditional-rendering.html
 next: forms.html
@@ -18,7 +18,7 @@ console.log(doubled);
 
 代码打印出 `[2, 4, 6, 8, 10]`。
 
-在 React 中，把数组转化为[元素](/docs/rendering-elements.html) 列表的过程是相似的。
+在 React 中，把数组转化为[元素](/docs/rendering-elements.html)列表的过程是相似的。
 
 ### 渲染多个组件 {#rendering-multiple-components}
 
@@ -96,9 +96,9 @@ ReactDOM.render(
 
 [在 CodePen 上尝试](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
 
-## Keys {#keys}
+## key {#keys}
 
-Keys 帮助 React 识别哪些元素改变了，比如被添加或删除。因此你应当给数组中的每一个元素赋予一个确定的标识。
+key 帮助 React 识别哪些元素改变了，比如被添加或删除。因此你应当给数组中的每一个元素赋予一个确定的标识。
 
 ```js{3}
 const numbers = [1, 2, 3, 4, 5];
@@ -130,23 +130,23 @@ const todoItems = todos.map((todo, index) =>
 );
 ```
 
-如果列表项目的顺序可能会变化，我们不建议使用索引来用作键值，因为这样做会导致性能变差，还可能引起组件状态的问题。可以看看 Robin Pokorny 的[深度解析使用索引作为 key 的负面影响](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318) 这一篇文章。如果你选择不指定显式的键值，那么 React 将默认使用索引用作为列表项目的键值。
+如果列表项目的顺序可能会变化，我们不建议使用索引来用作 key 值，因为这样做会导致性能变差，还可能引起组件状态的问题。可以看看 Robin Pokorny 的[深度解析使用索引作为 key 的负面影响](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318) 这一篇文章。如果你选择不指定显式的 key 值，那么 React 将默认使用索引用作为列表项目的 key 值。
 
-要是你有兴趣了解更多的话，这里有一篇文章[深入解析为什么 keys 是必须的](/docs/reconciliation.html#recursing-on-children)可以参考。
+要是你有兴趣了解更多的话，这里有一篇文章[深入解析为什么 key 是必须的](/docs/reconciliation.html#recursing-on-children)可以参考。
 
-### 用 Keys 提取组件 {#extracting-components-with-keys}
+### 用 key 提取组件 {#extracting-components-with-keys}
 
-元素的 Key 只有放在就近的数组上下文中才有意义。
+元素的 key 只有放在就近的数组上下文中才有意义。
 
 比方说，如果你[提取](/docs/components-and-props.html#extracting-components) 出一个 `ListItem` 组件，你应该把 key 保留在数组中的这个 `<ListItem />` 元素上，而不是放在 `ListItem` 组件中的 `<li>` 元素上。
 
-** 例子：不正确的使用键的方式 **
+**例子：不正确的使用 key 的方式**
 
 ```javascript{4,5,14,15}
 function ListItem(props) {
   const value = props.value;
   return (
-    // 错误！你不需要在这里指定 key:
+    // 错误！你不需要在这里指定 key：
     <li key={value.toString()}>
       {value}
     </li>
@@ -173,11 +173,11 @@ ReactDOM.render(
 );
 ```
 
-** 例子：正确的使用键的方式 **
+**例子：正确的使用 key 的方式**
 
 ```javascript{2,3,9,10}
 function ListItem(props) {
-  // 正确！这里不需要指定 key:
+  // 正确！这里不需要指定 key：
   return <li>{props.value}</li>;
 }
 
@@ -204,11 +204,11 @@ ReactDOM.render(
 
 [在 CodePen 上尝试](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
 
-一个好的经验法则是：在 `map()` 方法中的元素需要设置 keys 属性。
+一个好的经验法则是：在 `map()` 方法中的元素需要设置 key 属性。
 
-### 键（Key）只是在兄弟节点之间必须唯一 {#keys-must-only-be-unique-among-siblings}
+### key 只是在兄弟节点之间必须唯一 {#keys-must-only-be-unique-among-siblings}
 
-数组元素中使用的 key 在其兄弟节点之间应该是独一无二的。然而，它们不需要是全局唯一的。当我们生成两个不同的数组时，我们可以使用相同的键：
+数组元素中使用的 key 在其兄弟节点之间应该是独一无二的。然而，它们不需要是全局唯一的。当我们生成两个不同的数组时，我们可以使用相同的 key 值：
 
 ```js{2,5,11,12,19,21}
 function Blog(props) {
