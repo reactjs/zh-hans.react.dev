@@ -48,7 +48,7 @@ render() {
 >
 > 对于模态对话框，通过遵循 [WAI-ARIA 模态开发实践](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal)，来确保每个人都能够运用它。
 
-[**在 CodePen 上试一试**](https://codepen.io/gaearon/pen/yzMaBd)
+[**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/yzMaBd)
 
 ## 通过 Portal 进行事件冒泡 {#event-bubbling-through-portals}
 
@@ -149,6 +149,6 @@ function Child() {
 ReactDOM.render(<Parent />, appRoot);
 ```
 
-[**在 CodePen 上试一试**](https://codepen.io/gaearon/pen/jGBWpE)
+[**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/jGBWpE)
 
 在父组件里捕获一个来自 portal 冒泡上来的事件，使之能够在开发时具有不完全依赖于 portal 的更为灵活的抽象。例如，如果你在渲染一个 `<Modal />` 组件，无论其是否采用 portal 实现，父组件都能够捕获其事件。
