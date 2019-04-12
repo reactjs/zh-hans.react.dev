@@ -122,7 +122,7 @@ try {
 <Button />
 ```
 
-错误边界保留了 React 的声明性质，其行为符合你的预期。例如，即使一个错误发生在 `componentDidUpdate` 方法中，由某一个深层组件树的 `setState` 引起，其仍然能够冒泡到最近的错误边界。
+错误边界保留了 React 的声明性质，其行为符合你的预期。例如，即使一个错误发生在 `componentDidUpdate` 方法中，并且由某一个深层组件树的 `setState` 引起，其仍然能够冒泡到最近的错误边界。
 
 ## 关于事件处理器 {#how-about-event-handlers}
 
