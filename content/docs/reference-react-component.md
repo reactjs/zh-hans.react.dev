@@ -627,9 +627,9 @@ CustomButton.defaultProps = {
 
 ### `props` {#props}
 
-`this.props` 包括被该组件调用者定义的 props。欲了解 props 的详细介绍，请参阅[组件 & Props][组件和props](/docs/components-and-props.html)。
+`this.props` 包括被该组件调用者定义的 props。欲了解 props 的详细介绍，请参阅[组件 & Props](/docs/components-and-props.html)。
 
-需特别注意，`this.props.children` 是一个特殊的 prop，通常由 JSX 表达式中的子组件组成，而不是由组件本身定义。
+需特别注意，`this.props.children` 是一个特殊的 prop，通常由 JSX 表达式中的子组件组成，而非组件本身定义。
 
 ### `state` {#state}
 
