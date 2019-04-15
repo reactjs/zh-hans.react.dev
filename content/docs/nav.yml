@@ -44,7 +44,7 @@
     - id: context
       title: Context
     - id: error-boundaries
-      title: 异常捕获边界
+      title: 错误边界
     - id: forwarding-refs
       title: Refs 转发
     - id: fragments
