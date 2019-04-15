@@ -1,6 +1,6 @@
 ---
 id: error-boundaries
-title: Error Boundaries
+title: 错误边界
 permalink: docs/error-boundaries.html
 ---
 
