@@ -852,7 +852,7 @@ function Image(props) {
 
 ### 如何避免向下传递回调？ {#how-to-avoid-passing-callbacks-down}
 
-我们已经发现大部分人并不喜欢在组件树的每一层手动传递回调。尽管这种写法更明确，但这给人感觉像错综负责的管道工程一样麻烦。
+我们已经发现大部分人并不喜欢在组件树的每一层手动传递回调。尽管这种写法更明确，但这给人感觉像错综复杂的管道工程一样麻烦。
 
 在大型的组件树中，我们推荐的替代方案是通过 context 用 [`useReducer`](/docs/hooks-reference.html#usereducer) 往下传一个 `dispatch` 函数：
 
