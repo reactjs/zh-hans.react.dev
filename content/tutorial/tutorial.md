@@ -716,7 +716,7 @@ function calculateWinner(squares) {
 }
 ```
 
-传入长度为 9 的数组，此函数将判断出获胜者，并根据情况返回 “X”，“0” 或 “null”。
+传入长度为 9 的数组，此函数将判断出获胜者，并根据情况返回 “X”，“O” 或 “null”。
 
 接着，在 Board 组件的 `render` 方法中调用 `calculateWinner(squares)` 检查是否有玩家胜出。一旦有一方玩家胜出，就把获胜玩家的信息显示出来，比如，“胜者：X” 或者“胜者：O”。现在，我们把 Board 的 `render` 函数中的 status 的定义修改为如下代码：
 
