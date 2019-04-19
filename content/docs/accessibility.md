@@ -1,32 +1,31 @@
 ---
 id: accessibility
-title: Accessibility
+title: 无障碍
 permalink: docs/accessibility.html
 ---
 
-## Why Accessibility? {#why-accessibility}
+## 什么是无障碍? {#why-accessibility}
 
-Web accessibility (also referred to as [**a11y**](https://en.wiktionary.org/wiki/a11y)) is the design and creation of websites that can be used by everyone. Accessibility support is necessary to allow assistive technology to interpret web pages.
+Web 可访问性（也称为 [**a11y**](https://en.wiktionary.org/wiki/a11y) ）是创建可供每个人都使用的网站的设计。可访问性的支持是允许辅助技术解释网页的必要条件。
+React 完全支持构建可访问的网站，并通常使用标准 HTML 技术来实现。
 
-React fully supports building accessible websites, often by using standard HTML techniques.
-
-## Standards and Guidelines {#standards-and-guidelines}
+## 标准和指南 {#standards-and-guidelines}
 
 ### WCAG {#wcag}
 
-The [Web Content Accessibility Guidelines](https://www.w3.org/WAI/intro/wcag) provides guidelines for creating accessible web sites.
+该[网页内容无障碍指南](https://www.w3.org/WAI/intro/wcag)提供了创建可访问网站的指导方针。
 
-The following WCAG checklists provide an overview:
+以下 WCAG 清单提供了概述：
 
-- [WCAG checklist from Wuhcag](https://www.wuhcag.com/wcag-checklist/)
-- [WCAG checklist from WebAIM](https://webaim.org/standards/wcag/checklist)
-- [Checklist from The A11Y Project](https://a11yproject.com/checklist.html)
+- [来自 Wuhcag 的 WCAG 清单](https://www.wuhcag.com/wcag-checklist/)
+- [来自 WebAIM 的 WCAG 清单](https://webaim.org/standards/wcag/checklist)
+- [A11Y 项目清单](https://a11yproject.com/checklist.html)
 
 ### WAI-ARIA {#wai-aria}
 
-The [Web Accessibility Initiative - Accessible Rich Internet Applications](https://www.w3.org/WAI/intro/aria) document contains techniques for building fully accessible JavaScript widgets.
+该[网络无障碍倡议-无障碍富互联网应用程序](https://www.w3.org/WAI/intro/aria)文档包含用于构建完全可访问的 JavaScript 部件的技术。
 
-Note that all `aria-*` HTML attributes are fully supported in JSX. Whereas most DOM properties and attributes in React are camelCased, these attributes should be hyphen-cased (also known as kebab-case, lisp-case, etc) as they are in plain HTML:
+请注意，JSX 完全支持所有 `aria- *` HTML 属性。虽然 React 中的大多数 DOM 属性和属性都是 camelCased，但这些属性应该是 hyphen-cased（也称为 kebab-case ， lisp-case 等），因为它们是纯 HTML 格式：
 
 ```javascript{3,4}
 <input
@@ -39,16 +38,16 @@ Note that all `aria-*` HTML attributes are fully supported in JSX. Whereas most 
 />
 ```
 
-## Semantic HTML {#semantic-html}
-Semantic HTML is the foundation of accessibility in a web application. Using the various HTML elements to reinforce the meaning of information
-in our websites will often give us accessibility for free.
+## HTML 语义 {#semantic-html}
 
-- [MDN HTML elements reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+HTML 语义是 Web 应用程序中可访问性的基础。使用各种 HTML 元素来强化网站信息的含义可以很容易的实现无障碍。
 
-Sometimes we break HTML semantics when we add `<div>` elements to our JSX to make our React code work, especially when working with lists (`<ol>`, `<ul>` and `<dl>`) and the HTML `<table>`.
-In these cases we should rather use [React Fragments](/docs/fragments.html) to group together multiple elements.
+- [MDN HTML 元素参考](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 
-For example,
+当我们将 `<div>` 元素添加到 JSX 中以使我们的 React 代码工作时，有时我们会破坏 HTML 语义，特别是在使用列表（`<ol>`，`<ul>`和`<dl>`）和 HTML ` <table>` 时。
+在这些情况下，我们应该使用 [React Fragments](/docs/fragments.html) 将多个元素组合在一起。
+
+例如：
 
 ```javascript{1,5,8}
 import React, { Fragment } from 'react';
@@ -73,7 +72,7 @@ function Glossary(props) {
 }
 ```
 
-You can map a collection of items to an array of fragments as you would any other type of element as well:
+您可以使用 fragments 数组作为集合的 items ，像任何其他类型的元素一样：
 
 ```javascript{6,9}
 function Glossary(props) {
@@ -91,7 +90,7 @@ function Glossary(props) {
 }
 ```
 
-When you don't need any props on the Fragment tag you can use the [short syntax](/docs/fragments.html#short-syntax), if your tooling supports it:
+如果您的工具支持，并且 Fragment 标签上不需要任何 props 时，可以使用[短语法](/docs/fragments.html#short-syntax)：
 
 ```javascript{3,6}
 function ListItem({ item }) {
@@ -104,7 +103,7 @@ function ListItem({ item }) {
 }
 ```
 
-For more info, see [the Fragments documentation](/docs/fragments.html).
+更多信息，参见 [Fragments 文档](/docs/fragments.html).
 
 ## Accessible Forms {#accessible-forms}
 
