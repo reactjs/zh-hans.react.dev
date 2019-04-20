@@ -10,8 +10,8 @@ permalink: docs/error-boundaries.html
 ## 错误边界（Error Boundaries） {#introducing-error-boundaries}
 
 部分 UI 的 JavaScript 错误不应该导致整个应用崩溃，为了解决这个问题，React 16 引入了一个新的概念 —— 错误边界。
-
-错误边界并不会使整个组件树崩溃，它是 **用于捕获子组件树中任意位置的 JavaScript 错误，记录错误并显示一个备用 UI** 的 React 组件。 错误边界在渲染期间、生命周期方法和整个组件树的构造函数中捕获错误。
+ 
+错误边界是一种 React 组件，这种组件**可以捕获并打印发生在其子组件树任何位置的 JavaScript 错误，并且，它会渲染出备用 UI**，而不是渲染那些崩溃了的子组件树。错误边界在渲染期间、生命周期方法和整个组件树的构造函数中捕获错误。
 
 > 注意
 >
