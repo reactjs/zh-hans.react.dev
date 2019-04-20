@@ -161,6 +161,6 @@ class MyComponent extends React.Component {
 
 ## 自 React 15 的命名更改 {#naming-changes-from-react-15}
 
-React 15 中有一个支持有限的错误边界方法 `unstable_handleError`。此方法不再起作用，同时自 React 16 beta 发布起你需要在代码中将其修改为 `componentDidCatch` 。
+React 15 中有一个支持有限的错误边界方法 `unstable_handleError`。此方法不再起作用，同时自 React 16 beta 发布起你需要在代码中将其修改为 `componentDidCatch`。
 
 对此，我们已提供了一个 [codemod](https://github.com/reactjs/react-codemod#error-boundaries) 来帮助你自动迁移你的代码。
