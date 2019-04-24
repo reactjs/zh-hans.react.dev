@@ -28,7 +28,7 @@ Hook 本质就是 JavaScript 函数，但是在使用它时需要遵循两条规
 我们发布了一个名为 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) 的 ESLint 插件来强制执行这两条规则。如果你想尝试一下，可以将此插件添加到你的项目中：
 
 ```bash
-npm install eslint-plugin-react-hooks
+npm install eslint-plugin-react-hooks --save-dev
 ```
 
 ```js
