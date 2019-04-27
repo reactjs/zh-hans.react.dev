@@ -144,7 +144,7 @@ function ListItem({ item }) {
 
 请不要使用 CSS 移除这个轮廓，比如设置 `outline: 0`，除非你将使用其他的方法实现焦点轮廓。
 
-### 跳过一些内容的机制 {#mechanisms-to-skip-to-desired-content}
+### 跳过内容机制 {#mechanisms-to-skip-to-desired-content}
 
 为了帮助和提速键盘导航，我们提供了一种机制，可以帮助用户跳过一些导航段落。
 
