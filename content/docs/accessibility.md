@@ -404,7 +404,7 @@ class BlurExample extends React.Component {
 
 下面介绍的 aXe 和 WAVE 都支持色彩对比度测试并会报告对比度错误。
 
-如果您想扩展对比度测试能力，可以使用以下工具：
+如果你想扩展对比度测试能力，可以使用以下工具：
 
 - [WebAIM —— 色彩对比度检验工具](https://webaim.org/resources/contrastchecker/)
 - [The Paciello Group —— 色彩对比度分析工具](https://www.paciellogroup.com/resources/contrastanalyser/)
