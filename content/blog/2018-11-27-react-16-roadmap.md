@@ -3,15 +3,15 @@ title: "React 16.x 的规划"
 author: [gaearon]
 ---
 
-你可能已经在之前的博客和视频中看到过了“Hooks”，”延迟渲染”和”同步渲染“这三种功能。在这篇文章中，我们会讨论它们将如何整合在React中，以及它们将在何时出现在React的稳定版本中。
+你可能已经在之前的博客和视频中看到过了“Hooks”，”延迟渲染”和”并发渲染“这三种功能。在这篇文章中，我们会讨论它们将如何整合在 React 中，以及它们将在何时出现在React的稳定版本中。
 
 ## 太长不看 {#tldr}
 
-我们计划在如下里程碑中发布React的新功能：
+我们计划在如下里程碑中发布 React 的新功能：
 
 * React 16.6 中包括 [延迟渲染以帮助分割代码](#react-166-shipped-the-one-with-suspense-for-code-splitting) (*已经发布*)
 * 16.x 的一个小更新包括 [React Hooks](#react-16x-q1-2019-the-one-with-hooks) (~2019第一季度)
-* 16.x 的一个小更新包括 [同步模式](#react-16x-q2-2019-the-one-with-concurrent-mode) (~2019第二季度)
+* 16.x 的一个小更新包括 [并发模式](#react-16x-q2-2019-the-one-with-concurrent-mode) (~2019第二季度)
 * 16.x 的一个小更新包括 [延迟渲染以帮助数据获取](#react-16x-mid-2019-the-one-with-suspense-for-data-fetching) (~2019中旬)
 
 *(这篇文章的原始版本包含了具体的版本号。现在我们隐藏了他们，因为我们可能会在其中加入一些其他的小更新)*
@@ -36,7 +36,7 @@ author: [gaearon]
 
 ### [React 16.6](/blog/2018/10/23/react-v-16-6.html) (已发布): 延迟渲染以便拆分代码 {#react-166-shipped-the-one-with-suspense-for-code-splitting}
 
-*延迟渲染* 代表了React的新功能：当组件在等待某些事情时，我们可以“延迟”渲染并显示一个载入指示图标。在React 16.6中，延迟渲染只支持一种情况：使用`React.lazy()` 和 `<React.Suspense>`延迟加载组件。
+*延迟渲染* 代表了React的新功能：当组件在等待某些事情时，我们可以“延迟”渲染并显示一个载入指示图标。在React 16.6中，延迟渲染只支持一种情况：使用 `React.lazy()` 和 `<React.Suspense>` 延迟加载组件。
 
 ```js
 // 这个组件是动态加载的
@@ -55,21 +55,21 @@ function MyComponent() {
 
 使用 `React.lazy()` 和 `<React.Suspense>` 分割代码被记录在 [代码分割指南](/docs/code-splitting.html#reactlazy)中。 你可以在 [这篇文章](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d)中找到另一个实践中的例子。
 
-从2018年7月开始，Facebook就已经开始使用延迟渲染分割代码了，并且期待它是稳定的。在第一个公开版本16.6.0中，这个功能还有一些问题，我们在16.6.3中修复了它们。
+从2018年7月开始，Facebook 就已经开始使用延迟渲染分割代码了，并且期待它是稳定的。在第一个公开版本16.6.0中，这个功能还有一些问题，我们在16.6.3中修复了它们。
 
-代码分割只是延迟渲染的第一步。我们对延迟渲染的的长远规划包括了利用它来获取信息（并集成一些库，比如Apollo）。除了是一个方便的编程模型，在同步模式中，延迟渲染也提供了更好的用户体验。我们会在本文之后的内容中讨论它们。
+代码分割只是延迟渲染的第一步。我们对延迟渲染的的长远规划包括了利用它来获取信息（并集成一些库，比如 Apollo）。除了是一个方便的编程模型，在并发模式中，延迟渲染也提供了更好的用户体验。我们会在本文之后的内容中讨论它们。
 
 **在React DOM中的状态:** 自React 16.6.0 之后的版本支持。
 
 **在React DOM Server中的状态:** 延迟渲染还没有包含在服务器端渲染器中。不是因为我们不关注它，我们已经开始了对一个支持延迟渲染的异步服务器端渲染器的开发工作。这是一个很大的项目，将会占用2019年的大部分时间来完成。
 
-**在React Native中的状态:** 分割Bundle在React Native中不是很有用，不过当一个组件使用Promise时，没有任何技术障碍可以阻止你用`React.lazy()` 和 `<Suspense>`。
+**在React Native中的状态:** 分割 Bundle 在 React Native 中不是很有用，不过当一个组件使用 Promise 时，没有任何技术障碍可以阻止你用 `React.lazy()` 和 `<Suspense>`。
 
-**建议:** 如果你只在客户端渲染，我们强烈建议使用`React.lazy()` 和 `<React.Suspense>`来分割React组件的代码。如果你在服务器端渲染，你需要等到新的服务器端渲染器开发完成再使用它们。
+**建议:** 如果你只在客户端渲染，我们强烈建议使用 `React.lazy()` 和 `<React.Suspense>` 来分割React组件的代码。如果你在服务器端渲染，你需要等到新的服务器端渲染器开发完成再使用它们。
 
 ### React 16.x (~2019第一季度): 包含Hooks的版本 {#react-16x-q1-2019-the-one-with-hooks}
 
-*Hooks* 让你可以在函数组件中使用诸如state和生命周期之类的的功能。它们也可以让你在不在文件数中增加镶嵌的情况下重用带有状态的逻辑。
+*Hooks* 让你可以在函数组件中使用诸如 state 和生命周期之类的的功能。它们也可以让你在不在文件数中增加镶嵌的情况下重用带有状态的逻辑。
 
 ```js
 function Example() {
@@ -87,55 +87,55 @@ function Example() {
 }
 ```
 
-Hooks [介绍](/docs/hooks-intro.html) 和 [综述](/docs/hooks-overview.html) 是好的起点。 观看 [这些演讲](https://www.youtube.com/watch?v=V-QO-KO90iQ) ，这是视频的综述和深入介绍。[问答](/docs/hooks-faq.html) 部分可以解答你的一些问题。 如果想要了解Hooks背后的动机，可以阅读 [这篇文章](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889)。 一些Hooks API设计的原理阐述可以在 [这个RFC帖子](https://github.com/reactjs/rfcs/pull/68#issuecomment-439314884)中找到。
+Hooks [介绍](/docs/hooks-intro.html) 和 [综述](/docs/hooks-overview.html) 是好的起点。 观看 [这些演讲](https://www.youtube.com/watch?v=V-QO-KO90iQ) ，这是视频的综述和深入介绍。[问答](/docs/hooks-faq.html) 部分可以解答你的一些问题。 如果想要了解 Hooks 背后的动机，可以阅读 [这篇文章](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889)。 一些 Hooks API 设计的原理阐述可以在 [这个RFC帖子](https://github.com/reactjs/rfcs/pull/68#issuecomment-439314884)中找到。
 
-自9月以来，我们在Facebook对Hooks进行了内测。我们不认为Hooks中还存在严重漏洞。Hooks只在16.7 alpha版本React中。一些API会在最终版本中改动（在[这个评论](https://github.com/reactjs/rfcs/pull/68#issuecomment-439314884)的底部有详细信息）。也有可能对于Hooks的小更新不在React 16.7版本中。
+自9月以来，我们在 Facebook 对 Hooks 进行了内测。我们不认为 Hooks 中还存在严重漏洞。Hooks 只在 16.7 alpha 版本 React 中。一些 API 会在最终版本中改动（在[这个评论](https://github.com/reactjs/rfcs/pull/68#issuecomment-439314884)的底部有详细信息）。也有可能对于 Hooks 的小更新不在 React 16.7 版本中。
 
-Hooks represent our vision for the future of React. They solve both problems that React users experience directly ("wrapper hell" of render props and higher-order components, duplication of logic in lifecycle methods), and the issues we've encountered optimizing React at scale (such as difficulties in inlining components with a compiler). Hooks don't deprecate classes. However, if Hooks are successful, it is possible that in a future *major* release class support might move to a separate package, reducing the default bundle size of React.
+Hooks 代表了我们对 React 未来的愿景。它解决了 React 用户们直接面对的问题（渲染 props 和高阶组件，以及生命周期方法中的重复逻辑造成的" wrapper 地狱"）和我们在优化 React 大规模化时候遇到的问题（比如用编译器处理内联组件时的困难）。Hooks 不会弃用类。不过，如果 Hooks 很成功，在一个未来的 *主要* 版本中，对类的支持会被转移到一个单独的包中，以减少 React 的默认包大小。
 
-**Status in React DOM:** The first version of `react` and `react-dom` supporting Hooks is `16.7.0-alpha.0`. We expect to publish more alphas over the next months (at the time of writing, the latest one is `16.7.0-alpha.2`). You can try them by installing `react@next` with `react-dom@next`. Don't forget to update `react-dom` -- otherwise Hooks won't work.
+**React DOM 中的进度：** 第一个支持 Hooks 的 `react` 和 `react-dom` 版本是 `16.7.0-alpha.0`。我们期望在未来的几个月中发布更多的 alpha 版本（本文发布时，最新版是 `16.7.0-alpha.2`）。 你可以通过安装 `react@next` 与 `react-dom@next` 来试用。不要忘记更新 `react-dom` —— 如果不更新的话 Hooks 就不会起作用。
 
-**Status in React DOM Server:** The same 16.7 alpha versions of `react-dom` fully support Hooks with `react-dom/server`.
+**React DOM Server 中的进度：** 同样，在 16.7 中，`react-dom` 给予了 `react-dom/server` 对 Hooks 的完全支持。
 
-**Status in React Native:** There is no officially supported way to try Hooks in React Native yet. If you're feeling adventurous, check out [this thread](https://github.com/facebook/react-native/issues/21967) for unofficial instructions. There is a known issue with `useEffect` firing too late which still needs to be solved.
+**React Native 中的进度：** 目前还没有在 React Native 中试用 Hooks 的官方方法。如果你希望探索一下，可以参考[这个帖子](https://github.com/facebook/react-native/issues/21967)来获得一些非官方的步骤。有一个还没有解决的已知问题是 `useEffect` 被触发的太晚了。
 
-**Recommendation:** When you’re ready, we encourage you to start trying Hooks in new components you write. Make sure everyone on your team is on board with using them and familiar with this documentation. We don’t recommend rewriting your existing classes to Hooks unless you planned to rewrite them anyway (e.g. to fix bugs). Read more about the adoption strategy [here](/docs/hooks-faq.html#adoption-strategy).
+**建议：** 如果你准备好了，我们建议您在新写的组件中使用 Hooks。确保您团队中的每个人都同意使用 Hooks 并熟知这个文档。除非您已经打算重写（例如修复 bug）您已有的类，我们不推荐重写它们。您可以在[这里](/docs/hooks-faq.html#adoption-strategy)阅读有关采用 Hooks 的更多信息。
 
-### React 16.x (~Q2 2019): The One with Concurrent Mode {#react-16x-q2-2019-the-one-with-concurrent-mode}
+### React 16.x （大约2019第二季度发布）：带有并发模式的版本 {#react-16x-q2-2019-the-one-with-concurrent-mode}
 
-*Concurrent Mode* lets React apps be more responsive by rendering component trees without blocking the main thread. It is opt-in and allows React to interrupt a long-running render (for example, rendering a new feed story) to handle a high-priority event (for example, text input or hover). Concurrent Mode also improves the user experience of Suspense by skipping unnecessary loading states on fast connections.
+*并发模式* 通过渲染组件树而不阻塞主线程来使得 React 应用的响应更加及时。它是可选的，并允许 React 中断长时间运行的渲染（比如，渲染一个新的时间线故事）以处理一个高优先级事件（比如文本输入或者鼠标悬停）。并发模式也通过跳过网络状况良好的情况下的不必要的加载状态以提供更好的用户体验。
 
->Note
+>注意
 >
->You might have previously heard Concurrent Mode being referred to as ["async mode"](/blog/2018/03/27/update-on-async-rendering.html). We've changed the name to Concurrent Mode to highlight React's ability to perform work on different priority levels. This sets it apart from other approaches to async rendering.
+>你以前可能听说过并发模式被称为[“异步模式”](/blog/2018/03/27/update-on-async-rendering.html)。为了强调 React 可以支持不同优先级的任务，我们把它更名为异步模式。这使得它与可以其他异步渲染方法区别开来。
 
 ```js
-// Two ways to opt in:
+// 两中方法来获得异步模式：
 
-// 1. Part of an app (not final API)
+// 1. 应用的一部分 （不是最终 API）
 <React.unstable_ConcurrentMode>
   <Something />
 </React.unstable_ConcurrentMode>
 
-// 2. Whole app (not final API)
+// 2. 整个应用 （不是最终 API）
 ReactDOM.unstable_createRoot(domNode).render(<App />);
 ```
 
-There is no documentation written for the Concurrent Mode yet. It is important to highlight that the conceptual model will likely be unfamiliar at first. Documenting its benefits, how to use it efficiently, and its pitfalls is a high priority for us, and will be a prerequisite for calling it stable. Until then, [Andrew's talk](https://www.youtube.com/watch?v=ByBPyMBTzM0) is the best introduction available.
+目前还没有针对并发模式的文档。我们需要强调，您很可能一开始对这个概念模型觉得陌生。记录它的优点，如何高效的使用以及它的陷阱是我们高优先级的工作项目，也是推出稳定版本的先决条件。在那之前，[Andrew 的演讲](https://www.youtube.com/watch?v=ByBPyMBTzM0)是最好的介绍。
 
-Concurrent Mode is *much* less polished than Hooks. Some APIs aren't properly "wired up" yet and don't do what they're expected to. At the time of writing this post, we don't recommend using it for anything except very early experimentation. We don't expect many bugs in Concurrent Mode itself, but note that components that produce warnings in [`<React.StrictMode>`](https://reactjs.org/docs/strict-mode.html) may not work correctly. On a separate note, we've seen that Concurrent Mode *surfaces* performance problems in other code which can sometimes be mistaken for performance issues in Concurrent Mode itself. For example, a stray `setInterval(fn, 1)` call that runs every millisecond would have a worse effect in Concurrent Mode. We plan to publish more guidance about diagnosing and fixing issues like this as part of this release's documentation.
+目前，并发模式 *远没有* Hooks 完成度高。一些 API 还没有被正确的“连通”，也不会执行预想中的任务。本文成文时，我们不推荐在除了早期探索的情况下使用它。我们觉得并发模式本生应该没有什么漏洞，但是，请注意，[`<React.StrictMode>`](https://reactjs.org/docs/strict-mode.html)中的错误提示组件可能还不可以正常工作。另外，我们注意到，并行模式会把一些不是并行模式本身的性能问题 *展现* 出来。举个例子，每隔毫秒执行的`setInterval(fn, 1)`会在并发模式中产生更差的影响。我们计划在正式发行并发模式的时候，提供一些发现并解决这类问题的文档。
 
-Concurrent Mode is a big part of our vision for React. For CPU-bound work, it allows non-blocking rendering and keeps your app responsive while rendering complex component trees. That's demoed in the first part of [our JSConf Iceland talk](/blog/2018/03/01/sneak-peek-beyond-react-16.html). Concurrent Mode also makes Suspense better. It lets you avoid flickering a loading indicator if the network is fast enough. It's hard to explain without seeing so [Andrew's talk](https://www.youtube.com/watch?v=ByBPyMBTzM0) is the best resource available today. Concurrent Mode relies on a cooperative main thread [scheduler](https://github.com/facebook/react/tree/master/packages/scheduler), and we are [collaborating with the Chrome team](https://www.youtube.com/watch?v=mDdgfyRB5kg) to eventually move this functionality into the browser itself.
+并发模式是我们对 React 规划中的一个重要部分。对于需要使用大量 CPU 的任务来说，它提供了不被阻挡的渲染，并使得你的应用在渲染复杂的组件树时可响应。在[我们的冰岛 JSConf 演讲](/blog/2018/03/01/sneak-peek-beyond-react-16.html)中我们展示了它。并发模式也使得悬停 （Suspense）更好。它可以使你在网络够快的时候略过显示载入指示器。除非亲眼所见，它很难解释，[Andrew 的演讲](https://www.youtube.com/watch?v=ByBPyMBTzM0)时现今最好的资料。并发模式依靠一个配合的主线程[调度线程](https://github.com/facebook/react/tree/master/packages/scheduler)，我们正在[和 Chome 团队合作](https://www.youtube.com/watch?v=mDdgfyRB5kg)以在未来把这个功能加入到浏览器中。
 
-**Status in React DOM:** A *very* unstable version of Concurrent Mode is available behind an `unstable_` prefix in React 16.6 but we don't recommend trying it unless you're willing to often run into walls or missing features. The 16.7 alphas include `React.ConcurrentMode` and `ReactDOM.createRoot` without an `unstable_` prefix, but we'll likely keep the prefix in 16.7, and only document and mark Concurrent Mode as stable in this future minor release.
+**React DOM中的进度：** React 16.6 包含了一个 *非常* 不稳定的并发模式，你可以通过 `unstable_` 前缀找到它，。但我们并不推荐使用它，除非你愿意常常遇到死路或者未被开发的功能。16.7的 alpha 版本中包含了 `React.ConcurrentMode` 和 `ReactDOM.createRoot`，并且没有 `unstable_` 前缀。不过在正式版本中我们还是会保留这个前缀，我们将会在未来的小版本中提供文档并把并发模式标记为稳定。
 
-**Status in React DOM Server:** Concurrent Mode doesn't directly affect server rendering. It will work with the existing server renderer.
+**React DOM Server中的进度：** 并发模式不会直接影响服务器渲染。现有服务器渲染器将会支持它。
 
-**Status in React Native:** The current plan is to delay enabling Concurrent Mode in React Native until [React Fabric](https://github.com/react-native-community/discussions-and-proposals/issues/4) project is near completion.
+**React Native中的进度：** 目前的计划是延期在 React Native 中发布并行模式直到 [React Fabric](https://github.com/react-native-community/discussions-and-proposals/issues/4) 基本完成。
 
-**Recommendation:** If you wish to adopt Concurrent Mode in the future, wrapping some component subtrees in [`<React.StrictMode>`](https://reactjs.org/docs/strict-mode.html) and fixing the resulting warnings is a good first step. In general it's not expected that legacy code would immediately be compatible. For example, at Facebook we mostly intend to use the Concurrent Mode in the more recently developed codebases, and keep the legacy ones running in the synchronous mode for the near future.
+**建议：** 如果你计划在未来使用并行模式，一个很好的第一步是用 [`<React.StrictMode>`](https://reactjs.org/docs/strict-mode.html) 来包裹一些组件的子树然后修复出现的错误。通常，我们预计古旧的代码不会被立即兼容。 举个例子，在 Facebook，我们更多的在更新开发的代码中使用并发模式，古旧的代码近期还是会在同步模式下运行。
 
-### React 16.x (~mid 2019): The One with Suspense for Data Fetching {#react-16x-mid-2019-the-one-with-suspense-for-data-fetching}
+### React 16.x （大约2019年中旬）： 包含悬挂以数据提取的版本 {#react-16x-mid-2019-the-one-with-suspense-for-data-fetching}
 
 As mentioned earlier, *Suspense* refers to React's ability to "suspend" rendering while components are waiting for something, and display a loading indicator. In the already shipped React 16.6, the only supported use case for Suspense is code splitting. In this future minor release, we'd like to provide officially supported ways to use it for data fetching too. We'll provide a reference implementation of a basic "React Cache" that's compatible with Suspense, but you can also write your own. Data fetching libraries like Apollo and Relay will be able to integrate with Suspense by following a simple specification that we'll document.
 
