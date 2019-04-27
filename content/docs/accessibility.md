@@ -384,7 +384,7 @@ class BlurExample extends React.Component {
 
 ### 设置语言 {#setting-the-language}
 
-为了使屏幕朗读器可以使用正确的语音设置，请在网页上设置正确的人类语言（不是编程语言）：
+为了使屏幕朗读器可以使用正确的语音设置，请在网页上设置正确的人类语言：
 
 - [WebAIM —— 文档语言](https://webaim.org/techniques/screenreader/#language)
 
