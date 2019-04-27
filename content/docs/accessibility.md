@@ -395,7 +395,7 @@ class BlurExample extends React.Component {
 
 - [WCAG —— 理解文档标题的要求](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-title.html)
 
-在 React 中，我们可以使用[React文档标题组件（React Document Title Component）](https://github.com/gaearon/react-document-title)来设置标题。
+在 React 中，我们可以使用 [React 文档标题组件（React Document Title Component）](https://github.com/gaearon/react-document-title)来设置标题。
 
 ### 色彩对比度 {#color-contrast}
 
