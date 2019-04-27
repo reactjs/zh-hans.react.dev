@@ -198,7 +198,8 @@ class CustomTextInput extends React.Component {
  }
  ```
 
-有时，父组件需要把焦点设置在其子组件的一个元素上。我们可以通过在子组件上设置一个特殊的 prop 来[对父组件暴露 DOM refs](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components) 从而把父组件的 ref 传向子节点的 DOM 节点。
+有时，父组件需要把焦点设置在其子组件的一个元素上。
+我们可以通过在子组件上设置一个特殊的 prop 来[对父组件暴露 DOM refs](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components) 从而把父组件的 ref 传向子节点的 DOM 节点。
 
 ```javascript{4,12,16}
 function CustomTextInput(props) {
