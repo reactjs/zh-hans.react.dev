@@ -451,7 +451,7 @@ ESLint 中的 [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-
 
 #### aXe,aXe-core 以及 react-axe {#axe-axe-core-and-react-axe}
 
-Deque 系统提供了 [aXe-core](https://github.com/dequelabs/axe-core) 以对您的应用进行自动及端至端无障碍性测试。这个组件包含了对 Selenium 的集成。
+Deque 系统提供了 [aXe-core](https://github.com/dequelabs/axe-core) 以对你的应用进行自动及端至端无障碍性测试。这个组件包含了对 Selenium 的集成。
 
 [无障碍访问引擎（The Accessibility Engine）](https://www.deque.com/products/axe/)，简称 aXe，是一个基于 `aXe-core` 的无障碍访问性检测器。
 
