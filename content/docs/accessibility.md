@@ -40,7 +40,8 @@ React 对于创建可访问网站有着全面的支持，而这通常是通过�
 ```
 
 ## HTML 语义 {#semantic-html}
-HTML 语义是无障碍辅助功能网络应用的基础。利用多种 HTML 元素来强化您网站中的信息通常可以使您直接获得无障碍辅助功能。
+HTML 语义是无障碍辅助功能网络应用的基础。
+利用多种 HTML 元素来强化您网站中的信息通常可以使您直接获得无障碍辅助功能。
 
 - [MDN 的 HTML 元素参照（MDN HTML elements reference）](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 
