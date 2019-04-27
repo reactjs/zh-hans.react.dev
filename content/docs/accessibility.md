@@ -447,7 +447,7 @@ ESLint 中的 [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-
 
 ### 在浏览器中测试无障碍辅助功能 {#testing-accessibility-in-the-browser}
 
-已有很多工具可以在您的浏览器内进行网页的无障碍性验证。因为它们只能检测您 HTML 的技术无障碍性，所以请将它们与这里提到的无障碍检测工具一起使用。
+已有很多工具可以在您的浏览器内进行网页的无障碍性验证。因为它们只能检测你 HTML 的技术无障碍性，所以请将它们与这里提到的无障碍检测工具一起使用。
 
 #### aXe,aXe-core以及react-axe {#axe-axe-core-and-react-axe}
 
