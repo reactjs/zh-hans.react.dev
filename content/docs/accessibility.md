@@ -394,7 +394,7 @@ class BlurExample extends React.Component {
 
 ### 色彩对比度 {#color-contrast}
 
-为了尽可能让视力障碍用户可以阅读您网站上的所有可读文字，请确保你的文字都有足够的色彩对比度。
+为了尽可能让视力障碍用户可以阅读你网站上的所有可读文字，请确保你的文字都有足够的色彩对比度。
 
 - [WCAG —— 理解色彩对比度要求](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html)
 - [有关色彩对比度的一切以及为何你应该重新考虑它](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
