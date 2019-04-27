@@ -167,7 +167,7 @@ MDN Web Docs 关注了这个问题并解释了我们可以如何搭建[可用键
 
 我们可以用 [DOM 元素的 Refs](/docs/refs-and-the-dom.html) 在 React 中设置焦点。
 
-用以上技术，我们先在一个类的 JSX 中创建一个元素的 ref：
+用以上技术，我们先在一个 class 组件的 JSX 中创建一个元素的 ref：
 
 ```javascript{4-5,8-9,13}
 class CustomTextInput extends React.Component {
