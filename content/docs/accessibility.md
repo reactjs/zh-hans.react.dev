@@ -10,7 +10,7 @@ permalink: docs/accessibility.html
 
 React 对于创建可访问网站有着全面的支持，而这通常是通过标准 HTML 技术实现的。
 
-## 标准和指引 {#standards-and-guidelines}
+## 标准和指南 {#standards-and-guidelines}
 
 ### WCAG {#wcag}
 
