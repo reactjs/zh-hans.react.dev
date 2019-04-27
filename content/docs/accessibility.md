@@ -429,7 +429,7 @@ class BlurExample extends React.Component {
 #### eslint-plugin-jsx-a11y {#eslint-plugin-jsx-a11y}
 
 ESLint 中的 [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y)插件提供为您 JSX 中的无障碍问题提供了 AST 的语法检测反馈。
-许多 IDE 都允许您把这些发现直接集成到代码分析和源文件窗口中。
+许多 IDE 都允许你把这些发现直接集成到代码分析和源文件窗口中。
 
 [创建 React 应用](https://github.com/facebookincubator/create-react-app)中使用了这个插件中的一部分规则。如果您想启用更多的无障碍规则，你可以在项目的根目录中创建一个有如下内容的   `.eslintrc`  文件：
 
