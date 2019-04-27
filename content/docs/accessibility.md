@@ -194,7 +194,7 @@ class CustomTextInput extends React.Component {
  ```javascript
  focus() {
    // 使用原始的 DOM API 明确的聚焦在 text input 上
-   // 注意：我们通过访问 ”current“ 来获得 DOM 节点
+   // 注意：我们通过访问 “current” 来获得 DOM 节点
    this.textInput.current.focus();
  }
  ```
