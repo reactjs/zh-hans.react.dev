@@ -449,7 +449,7 @@ ESLint 中的 [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-
 
 已有很多工具可以在您的浏览器内进行网页的无障碍性验证。因为它们只能检测你 HTML 的技术无障碍性，所以请将它们与这里提到的无障碍检测工具一起使用。
 
-#### aXe,aXe-core以及react-axe {#axe-axe-core-and-react-axe}
+#### aXe,aXe-core 以及 react-axe {#axe-axe-core-and-react-axe}
 
 Deque 系统提供了 [aXe-core](https://github.com/dequelabs/axe-core) 以对您的应用进行自动及端至端无障碍性测试。这个组件包含了对 Selenium 的集成。
 
