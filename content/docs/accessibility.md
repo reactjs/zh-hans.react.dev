@@ -39,13 +39,13 @@ React 对于创建可访问网站有着全面的支持，而这通常是通过�
 />
 ```
 
-## HTML 语义 {#semantic-html}
-HTML 语义是无障碍辅助功能网络应用的基础。
+## 语义化的 HTML {#semantic-html}
+语义化的 HTML 是无障碍辅助功能网络应用的基础。
 利用多种 HTML 元素来强化您网站中的信息通常可以使您直接获得无障碍辅助功能。
 
 - [MDN 的 HTML 元素参照（MDN HTML elements reference）](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 
-有时，HTML 语义会被破坏。比如当在 JSX 中使用  `<div>`  元素来实现 React 代码功能的时候，又或是在使用列表（`<ol>`， `<ul>` 和 `<dl>`）和 HTML `<table>` 时。
+有时，语义化的 HTML 会被破坏。比如当在 JSX 中使用  `<div>`  元素来实现 React 代码功能的时候，又或是在使用列表（`<ol>`， `<ul>` 和 `<dl>`）和 HTML `<table>` 时。
 在这种情况下，我们应该使用 [React Fragments](/docs/fragments.html) 来组合各个组件。
 
 举个例子，
@@ -149,7 +149,8 @@ function ListItem({ item }) {
 
 为了帮助和提速键盘导航，我们提供了一种机制，可以帮助用户跳过一些导航段落。
 
-跳转链接（Skiplinks），或者说跳转导航链接（Skip Navigation Links）是一种隐藏的导航链接，它只会在使用键盘导航时可见。使用网页内部锚点和一些式样可以很容易地实现它：
+跳转链接（Skiplinks），或者说跳转导航链接（Skip Navigation Links）是一种隐藏的导航链接，它只会在使用键盘导航时可见。
+使用网页内部锚点和一些式样可以很容易地实现它：
 
 - [WebAIM - 跳转导航链接（Skip Navigation Links）](https://webaim.org/techniques/skipnav/)
 
@@ -178,7 +179,8 @@ class CustomTextInput extends React.Component {
     this.textInput = React.createRef();
   }
   render() {
-  // 使用 `ref` 回调函数以在实例的一个变量中存储文本输入 DOM 元素 （比如，this.textInput）。
+  // 使用 `ref` 回调函数以在实例的一个变量中存储文本输入 DOM 元素
+  //（比如，this.textInput）。
     return (
       <input
         type="text"
@@ -230,11 +232,14 @@ this.inputElement.current.focus();
 当使用 HOC 来扩展组件时，我们建议使用 React 的 `forwardRef` 函数来向被包裹的组件[转发 ref](/docs/forwarding-refs.html)。
 如果第三方的 HOC 不支持转发 ref，上面的方法仍可以作为一种备选方案。
 
-[react-aria-modal](https://github.com/davidtheclark/react-aria-modal)  提供了一个很好的焦点管理的例子。这是一个少有的完全无障碍的模态窗口的例子。它不仅仅把初始焦点设置在了取消按钮上（防止键盘用户意外激活成功操作）和把键盘焦点固定在了窗口之内，关闭窗口时它也会把键盘焦点重置到打开窗口的那一个元素上。
+[react-aria-modal](https://github.com/davidtheclark/react-aria-modal)  提供了一个很好的焦点管理的例子。
+这是一个少有的完全无障碍的模态窗口的例子。它不仅仅把初始焦点设置在了取消按钮上（防止键盘用户意外激活成功操作）和把键盘焦点固定在了窗口之内，
+关闭窗口时它也会把键盘焦点重置到打开窗口的那一个元素上。
 
 >注意:
 >
->虽然这是一个非常重要的无障碍辅助功能，但它也是一种应该谨慎使用的技术。我们应该在受到干扰时使用它来修复键盘焦点，而不是试图预测用户想要如何使用应用程序。
+>虽然这是一个非常重要的无障碍辅助功能，但它也是一种应该谨慎使用的技术。
+>我们应该在受到干扰时使用它来修复键盘焦点，而不是试图预测用户想要如何使用应用程序。
 
 ## 鼠标和指针事件 {#mouse-and-pointer-events}
 
@@ -324,7 +329,8 @@ class BlurExample extends React.Component {
 
   // 我们在下一个时间点使用 setTimeout 关闭弹窗。
   // 这是必要的，因为失去焦点事件会在新的焦点事件前被触发，
-  // 我们需要通过这个步骤确认这个元素的一个子节点是否得到了焦点。
+  // 我们需要通过这个步骤确认这个元素的一个子节点
+  // 是否得到了焦点。
   onBlurHandler() {
     this.timeOutId = setTimeout(() => {
       this.setState({
@@ -339,7 +345,8 @@ class BlurExample extends React.Component {
   }
 
   render() {
-    // React 通过把失去焦点和获得焦点事件传输给父节点来帮助我们。
+    // React 通过把失去焦点和获得焦点事件传输给父节点
+    // 来帮助我们。
     return (
       <div onBlur={this.onBlurHandler}
            onFocus={this.onFocusHandler}>
@@ -366,11 +373,13 @@ class BlurExample extends React.Component {
 
 <img src="../images/docs/blur-popover-close.gif" alt="一个针对鼠标和键盘用户都正确关闭的弹窗。" />
 
-这只是众多只依赖于鼠标和指针的程序破坏键盘用户的例子之一。始终使用键盘测试会让你迅速发现这些问题，你可以使用适用于键盘的事件处理器来修复这些问题。
+这只是众多只依赖于鼠标和指针的程序破坏键盘用户的例子之一。始终使用键盘测试会让你迅速发现这些问题，
+你可以使用适用于键盘的事件处理器来修复这些问题。
 
 ## 更复杂的部件 {#more-complex-widgets}
 
-一个更加复杂的用户体验并不意味着更加难以访问。通过尽可能接近 HTML 编程，无障碍访问会变得更加容易，即使最复杂的部件也可以实现无障碍访问。
+一个更加复杂的用户体验并不意味着更加难以访问。通过尽可能接近 HTML 编程，无障碍访问会变得更加容易，
+即使最复杂的部件也可以实现无障碍访问。
 
 这里我们需要了解 [ARIA Roles](https://www.w3.org/TR/wai-aria/#roles) 和 [ARIA States and Properties](https://www.w3.org/TR/wai-aria/#states_and_properties) 的知识。
 其中有包含了多种 HTML 属性的工具箱，这些 HTML 属性被 JSX 完全支持并且可以帮助我们搭建完全无障碍，功能强大的 React 组件。
@@ -429,14 +438,16 @@ class BlurExample extends React.Component {
 
 ### 开发辅助 {#development-assistance}
 
-我们可以直接在 JSX 代码中检测一些无障碍复制功能。通常支持 JSX 的 IDE 会针对 ARIA roles，states 和 properties 提供智能检测。我们也可以使用以下工具：
+我们可以直接在 JSX 代码中检测一些无障碍复制功能。通常支持 JSX 的 IDE 会针对 ARIA roles，states 和 properties 提供智能检测。
+我们也可以使用以下工具：
 
 #### eslint-plugin-jsx-a11y {#eslint-plugin-jsx-a11y}
 
 ESLint 中的 [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) 插件为你的 JSX 中的无障碍问题提供了 AST 的语法检测反馈。
 许多 IDE 都允许你把这些发现直接集成到代码分析和源文件窗口中。
 
-[创建 React 应用](https://github.com/facebookincubator/create-react-app)中使用了这个插件中的一部分规则。如果你想启用更多的无障碍规则，你可以在项目的根目录中创建一个有如下内容的 `.eslintrc`  文件：
+[创建 React 应用](https://github.com/facebookincubator/create-react-app)中使用了这个插件中的一部分规则。
+如果你想启用更多的无障碍规则，你可以在项目的根目录中创建一个有如下内容的 `.eslintrc`  文件：
 
   ```json
   {
@@ -447,7 +458,8 @@ ESLint 中的 [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-
 
 ### 在浏览器中测试无障碍辅助功能 {#testing-accessibility-in-the-browser}
 
-已有很多工具可以在您的浏览器内进行网页的无障碍性验证。因为它们只能检测你 HTML 的技术无障碍性，所以请将它们与这里提到的无障碍检测工具一起使用。
+已有很多工具可以在您的浏览器内进行网页的无障碍性验证。
+因为它们只能检测你 HTML 的技术无障碍性，所以请将它们与这里提到的无障碍检测工具一起使用。
 
 #### aXe,aXe-core 以及 react-axe {#axe-axe-core-and-react-axe}
 
@@ -463,7 +475,8 @@ Deque 系统提供了 [aXe-core](https://github.com/dequelabs/axe-core) 以对�
 
 #### 无障碍辅助功能检测器和无障碍辅助功能树 {#accessibility-inspectors-and-the-accessibility-tree}
 
-[无障碍辅助功能树](https://www.paciellogroup.com/blog/2015/01/the-browser-accessibility-tree/)是 DOM 树的一个子集，其中包含了所有 DOM 元素中应该被暴露给无障碍辅助技术（比如屏幕朗读器）的无障碍辅助对象。
+[无障碍辅助功能树](https://www.paciellogroup.com/blog/2015/01/the-browser-accessibility-tree/)是 DOM 树的一个子集，
+其中包含了所有 DOM 元素中应该被暴露给无障碍辅助技术（比如屏幕朗读器）的无障碍辅助对象。
 
 在一些浏览器中，我们可以在无障碍辅助功能树中轻松的看到每个元素的无障碍辅助功能信息：
 
