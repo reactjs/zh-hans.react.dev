@@ -264,7 +264,7 @@ class Square extends React.Component {
 
 接下来，我们希望 Square 组件可以“记住”它被点击过，然后用 “X” 来填充对应的方格。我们用 **state** 来实现所谓“记忆”的功能。
 
-可以通过在 React 组件构的造函数中设置 `this.state` 来初始化 state。`this.state` 应该被视为一个组件的私有属性。我们在 `this.state` 中存储当前每个方格（Square）的值，并且在每次方格被点击的时候改变这个值。
+可以通过在 React 组件的构造函数中设置 `this.state` 来初始化 state。`this.state` 应该被视为一个组件的私有属性。我们在 `this.state` 中存储当前每个方格（Square）的值，并且在每次方格被点击的时候改变这个值。
 
 首先，我们向这个 class 中添加一个构造函数，用来初始化 state：
 
@@ -458,7 +458,7 @@ class Square extends React.Component {
 
 >注意
 >
->因为 DOM 元素 `<button>` 是一个内置组件，因此其 `onClick` 属性在 React 中有特殊的含义。而对于用户自定义的组件来说，命名就可以由用户自己来定义了。我们给 Square 的 `onClick` 和 Board 的 `handleClick` 赋予任意的名称，代码依旧有效。在 React 中，有一个命名规范，通常会将代表事件的的监听 prop 命名为 `on[Event]`，将处理事件的监听方法命名为 `handle[Event]` 这样的格式。
+>因为 DOM 元素 `<button>` 是一个内置组件，因此其 `onClick` 属性在 React 中有特殊的含义。而对于用户自定义的组件来说，命名就可以由用户自己来定义了。我们给 Square 的 `onClick` 和 Board 的 `handleClick` 赋予任意的名称，代码依旧有效。在 React 中，有一个命名规范，通常会将代表事件的监听 prop 命名为 `on[Event]`，将处理事件的监听方法命名为 `handle[Event]` 这样的格式。
 
 这时候我们点击 Square 的时候，浏览器会报错，因为我们还没有定义 `handleClick` 方法。我们现在来向 Board 里添加 `handleClick` 方法：
 
