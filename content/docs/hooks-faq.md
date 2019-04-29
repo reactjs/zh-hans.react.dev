@@ -209,7 +209,11 @@ it('can render and update a counter', () => {
 
 * `componentDidCatch` and `getDerivedStateFromError`：目前还没有这些方法的 Hook 等价写法，但很快会加上。
 
+<<<<<<< HEAD
 ### 我该如何使用 Hook 进行数据获取？ {#how-can-i-do-data-fetching-with-hooks}
+=======
+### How can I do data fetching with Hooks? {#how-can-i-do-data-fetching-with-hooks}
+>>>>>>> b8b3db7acbba117addeea8a7fb86957eb046d7ce
 
 该 [demo](https://codesandbox.io/s/jvvkoo8pq3) 会帮助你开始理解。欲了解更多，请查阅 [此文章](https://www.robinwieruch.de/react-hooks-fetch-data/) 来了解如何使用 Hook 进行数据获取。
 
@@ -653,7 +657,11 @@ function ProductDetails({ fetchProduct })
 
 注意在上面的案例中，我们 **需要** 让函数出现在依赖列表中。这确保了 `ProductPage` 的 `productId` prop 的变化会自动触发 `ProductDetails` 的重新获取。
 
+<<<<<<< HEAD
 ### 如果我的 effect 的依赖频繁变化，我该怎么办？
+=======
+### What can I do if my effect dependencies change too often? {#what-can-i-do-if-my-effect-dependencies-change-too-often}
+>>>>>>> b8b3db7acbba117addeea8a7fb86957eb046d7ce
 
 有时候，你的 effect 会读取一些频繁变化的值。你或许会试图在依赖列表中省略那个 state ，但这通常会引起 Bug：
 
