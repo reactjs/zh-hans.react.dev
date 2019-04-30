@@ -653,7 +653,7 @@ function ProductDetails({ fetchProduct })
 
 注意在上面的案例中，我们 **需要** 让函数出现在依赖列表中。这确保了 `ProductPage` 的 `productId` prop 的变化会自动触发 `ProductDetails` 的重新获取。
 
-### 如果我的 effect 的依赖频繁变化，我该怎么办？
+### 如果我的 effect 的依赖频繁变化，我该怎么办？{#what-can-i-do-if-my-effect-dependencies-change-too-often}
 
 有时候，你的 effect 会读取一些频繁变化的值。你或许会试图在依赖列表中省略那个 state ，但这通常会引起 Bug：
 
