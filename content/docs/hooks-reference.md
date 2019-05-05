@@ -35,7 +35,7 @@ const [state, setState] = useState(initialState);
 
 返回一个 state，以及更新 state 的函数。
 
-在初始渲染期间，返回的状态 (`state`) 与传入的第一个参数 (`initialState`) 值相同。。
+在初始渲染期间，返回的状态 (`state`) 与传入的第一个参数 (`initialState`) 值相同。
 
 `setState` 函数用于更新 state。它接收一个新的 state 值并将组件的一次重新渲染加入队列。
 
