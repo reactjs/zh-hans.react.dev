@@ -251,7 +251,7 @@ render() {
 const NavbarWithRouter = withRouter(Navbar);
 ```
 
-HOC 平常可以接受更多的入参。比如在 Relay 中，一个配置对象用于指定组件的数据依赖：
+HOC 通常可以接收多个参数。比如在 Relay 中，HOC 额外接收了一个配置对象用于指定组件的数据依赖：
 
 ```js
 const CommentWithRelay = Relay.createContainer(Comment, config);
