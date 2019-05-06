@@ -165,7 +165,7 @@ function withSubscription(WrappedComponent, selectData) {
 
 请注意，HOC 不会修改传入的组件，也不会使用继承来复制其行为。相反，HOC 通过将组件*包装*在容器组件中来*组成*新组件。HOC 是纯函数，没有副作用。
 
-就是这样！被包装组件接收来自容器组件的所有 prop，以及新的 prop，`data`。 HOC 不关心数据的使用方式或原因，被包装组件不关心数据的来源。
+就是这样！被包装组件接收来自容器组件的所有 prop，同时也接收一个新的用于 render 的 `data` prop。 HOC 不需要关心数据的使用方式或原因，而被包装组件也不需要关心数据是怎么来的。
 
 因为 `withSubscription` 是一个普通函数，你可以根据需要对参数进行增添或者删除。例如，您可能希望使 `data` prop 的名称可配置，以进一步将 HOC 与包装组件隔离开来。或者你可以接受一个配置 `shouldComponentUpdate` 的参数，或者一个配置数据源的参数。因为 HOC 可以控制组件的定义方式，这一切都变得有可能。
 
