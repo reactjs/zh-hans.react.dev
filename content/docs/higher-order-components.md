@@ -173,7 +173,7 @@ function withSubscription(WrappedComponent, selectData) {
 
 ## 不要改变原始组件。使用组合。 {#dont-mutate-the-original-component-use-composition}
 
-抵制在 HOC 中修改组件原型（或以其他方式改变它）的诱惑。
+不要妄图在 HOC 中修改组件原型（或以其他方式改变它）。
 
 ```js
 function logProps(InputComponent) {
