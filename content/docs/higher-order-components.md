@@ -194,7 +194,7 @@ const EnhancedComponent = logProps(InputComponent);
 
 变异 HOC 是一个糟糕的抽象 - 消费者必须知道如何实施它们以避免与其他 HOC 发生冲突。
 
-HOC 应该使用组合，而不是突变，通过将组件包装在容器组件中：
+HOC 不应该修改传入组件，而应该使用组合，通过将组件包装在容器组件中实现功能：
 
 ```js
 function logProps(WrappedComponent) {
