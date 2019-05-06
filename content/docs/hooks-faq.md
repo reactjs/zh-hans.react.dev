@@ -532,7 +532,7 @@ function Example({ someProp }) {
 }
 ```
 
-要记住 effect 外部的函数使用了哪些 props 和 state 很难。这也是为什么 **通常你会想要在 effect *内部* 去申明它所需要的函数。** 这样就能容易的看出那个 effect 依赖了组件作用域中的哪些值：
+要记住 effect 外部的函数使用了哪些 props 和 state 很难。这也是为什么 **通常你会想要在 effect *内部* 去声明它所需要的函数。** 这样就能容易的看出那个 effect 依赖了组件作用域中的哪些值：
 
 ```js{4,8}
 function Example({ someProp }) {
