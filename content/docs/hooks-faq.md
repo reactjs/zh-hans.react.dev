@@ -808,13 +808,10 @@ function Image(props) {
 
   // ✅ IntersectionObserver 只会被惰性创建一次
   function getObserver() {
-    let observer = ref.current;
-    if (observer !== null) {
-      return observer;
+    if (ref.current === null) {
+      ref.current = new IntersectionObserver(onIntersect);
     }
-    let newObserver = new IntersectionObserver(onIntersect);
-    ref.current = newObserver;
-    return newObserver;
+    return ref.current;
   }
 
   // 当你需要时，调用 getObserver()
