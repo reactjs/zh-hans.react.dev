@@ -100,7 +100,7 @@ class BlogPost extends React.Component {
 }
 ```
 
-`CommentList` 和 `BlogPost` 不相同 - 它们在 `DataSource` 上调用不同的方法，它们呈现不同的输出。但它们的大部分实现都是一样的：
+`CommentList` 和 `BlogPost` 不同 - 它们在 `DataSource` 上调用不同的方法，它们呈现不同的输出。但它们的大部分实现都是一样的：
 
 - 在 mount 时，向 `DataSource` 添加一个更改侦听器。
 - 在侦听器内部，当数据源发生变化时，调用 `setState`。
