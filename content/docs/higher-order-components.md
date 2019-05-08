@@ -219,7 +219,7 @@ function logProps(WrappedComponent) {
 
 HOC 为组件添加功能。自身不应该大幅改变约定。HOC 返回的组件与原组件应保持类似的接口。
 
-HOC 应该透明传递与自身无关的 props。大多数 HOC 都应该包含一个类似于下面的 render 方法：
+HOC 应该透传与自身无关的 props。大多数 HOC 都应该包含一个类似于下面的 render 方法：
 
 ```js
 render() {
