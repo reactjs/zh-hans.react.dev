@@ -378,7 +378,7 @@ function enhance(WrappedComponent) {
 }
 ```
 
-另外一个解法则是单独导出这个静态方法，跟组件无关。
+除了导出组件，另一个可行的方案是再额外导出这个静态方法。
 
 ```js
 // Instead of...
