@@ -318,7 +318,7 @@ function getDisplayName(WrappedComponent) {
 
 高阶组件有一些需要注意的地方，对于 React 新手来说可能并不容易发现。
 
-### 不要在渲染方法中使用 HOC {#dont-use-hocs-inside-the-render-method}
+### 不要在 render 方法中使用 HOC {#dont-use-hocs-inside-the-render-method}
 
 React的 差异算法（称为协调）使用组件标识来确定它是应该更新现有子树还是将其丢弃并挂载新子树。 如果从 `render` 返回的组件与前一个渲染中的组件相同（`===`），则 React 通过将子树与新子进行区分来递归更新子树。 如果它们不相等，则完全卸载前一个子树。
 
