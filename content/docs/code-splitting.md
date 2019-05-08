@@ -213,7 +213,11 @@ const App = () => (
 
 ## 命名导出（Named Exports）{#named-exports}
 
+<<<<<<< HEAD
 `React.lazy` 目前只支持默认导出（default exports）。如果你想被引入的模块使用命名导出（named exports），你可以创建一个中间模块，来重新导出为默认模块。这能保证 treeshaking 不会出错，并且不必引入不需要的组件。
+=======
+`React.lazy` currently only supports default exports. If the module you want to import uses named exports, you can create an intermediate module that reexports it as the default. This ensures that tree shaking keeps working and that you don't pull in unused components.
+>>>>>>> a211417f6680cce5b4e4f036dc1492c03bc588c7
 
 ```js
 // ManyComponents.js
