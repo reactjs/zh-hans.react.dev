@@ -342,7 +342,7 @@ render() {
 
 ### 静态方法必须复制 {#static-methods-must-be-copied-over}
 
-有时在 React 组件上定义静态方法很有用。 例如，Relay 容器公开一个静态方法 `getFragment` 以促进 GraphQL 片段的组合。
+有时在 React 组件上定义静态方法很有用。例如，Relay 容器暴露了一个静态方法 `getFragment` 以方便组合 GraphQL 片段。
 
 但是，当你将 HOC 应用于组件时，原始组件将使用容器组件进行包装。 这意味着新组件没有原始组件的任何静态方法。
 
