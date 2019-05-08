@@ -241,7 +241,7 @@ render() {
 }
 ```
 
-这种约定保证 HOC 的灵活性以及复用性。
+这种约定保证了 HOC 的灵活性以及复用性。
 
 ## 约定：最大化组合性 {#convention-maximizing-composability}
 
