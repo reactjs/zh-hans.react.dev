@@ -243,7 +243,7 @@ render() {
 
 这种约定保证了 HOC 的灵活性以及复用性。
 
-## 约定：最大化组合性 {#convention-maximizing-composability}
+## 约定：最大化可组合性 {#convention-maximizing-composability}
 
 并不是所有的 HOC 都一样。有时候它仅接受一个参数，被包裹的函数：
 
