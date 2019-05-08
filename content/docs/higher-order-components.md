@@ -217,7 +217,7 @@ function logProps(WrappedComponent) {
 
 ## 约定：将不相关的 props 传递给被包裹的组件 {#convention-pass-unrelated-props-through-to-wrapped-component}
 
-HOC 为组件添加功能。自身不应该大幅改变约定。HOC 返回的组件与原组件应保持类似的接口。
+HOC 为组件添加特性。自身不应该大幅改变约定。HOC 返回的组件与原组件应保持类似的接口。
 
 HOC 应该透传与自身无关的 props。大多数 HOC 都应该包含一个类似于下面的 render 方法：
 
