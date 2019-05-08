@@ -34,23 +34,23 @@ class CommentList extends React.Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      // "DataSource" is some global data source
+      // "DataSource" 是一些全局数据
       comments: DataSource.getComments()
     };
   }
 
   componentDidMount() {
-    // Subscribe to changes
+    // 订阅更改
     DataSource.addChangeListener(this.handleChange);
   }
 
   componentWillUnmount() {
-    // Clean up listener
+    // 清除订阅
     DataSource.removeChangeListener(this.handleChange);
   }
 
   handleChange() {
-    // Update component state whenever the data source changes
+    // 当数据源更新时，更新组件状态
     this.setState({
       comments: DataSource.getComments()
     });
@@ -100,7 +100,7 @@ class BlogPost extends React.Component {
 }
 ```
 
-`CommentList` 和 `BlogPost` 不同 - 它们在 `DataSource` 上调用不同的方法，它们呈现不同的输出。但它们的大部分实现都是一样的：
+`CommentList` 和 `BlogPost` 不同 - 它们在 `DataSource` 上调用不同的方法，并渲染不同的结果。但它们的大部分实现都是一样的：
 
 - 在 mount 时，向 `DataSource` 添加一个更改侦听器。
 - 在侦听器内部，当数据源发生变化时，调用 `setState`。
@@ -127,9 +127,9 @@ const BlogPostWithSubscription = withSubscription(
 当渲染 `CommentListWithSubscription` 和 `BlogPostWithSubscription` 时， `CommentList` 和 `BlogPost` 将传递一个 `data` prop，其中包含从 `DataSource` 检索到的最新数据：
 
 ```js
-// This function takes a component...
+// 此函数接收一个组件...
 function withSubscription(WrappedComponent, selectData) {
-  // ...and returns another component...
+  // ...并返回另一个组件...
   return class extends React.Component {
     constructor(props) {
       super(props);
@@ -140,7 +140,7 @@ function withSubscription(WrappedComponent, selectData) {
     }
 
     componentDidMount() {
-      // ... that takes care of the subscription...
+      // ...负责订阅相关的操作...
       DataSource.addChangeListener(this.handleChange);
     }
 
@@ -155,8 +155,8 @@ function withSubscription(WrappedComponent, selectData) {
     }
 
     render() {
-      // ... and renders the wrapped component with the fresh data!
-      // Notice that we pass through any additional props
+      // ... 并使用新数据渲染被包装的组件!
+      // 请注意，我们可能还会传递其他属性
       return <WrappedComponent data={this.state.data} {...this.props} />;
     }
   };
@@ -173,7 +173,7 @@ function withSubscription(WrappedComponent, selectData) {
 
 ## 不要改变原始组件。使用组合。 {#dont-mutate-the-original-component-use-composition}
 
-不要妄图在 HOC 中修改组件原型（或以其他方式改变它）。
+不要试图在 HOC 中修改组件原型（或以其他方式改变它）。
 
 ```js
 function logProps(InputComponent) {
@@ -181,12 +181,11 @@ function logProps(InputComponent) {
     console.log('Current props: ', this.props);
     console.log('Next props: ', nextProps);
   };
-  // The fact that we're returning the original input is a hint that it has
-  // been mutated.
+  // 返回原始的 input 组件，暗示它已经被修改。
   return InputComponent;
 }
 
-// EnhancedComponent will log whenever props are received
+// 每次调用 logProps 时，增强组件都会有 log 输出。
 const EnhancedComponent = logProps(InputComponent);
 ```
 
@@ -211,7 +210,7 @@ function logProps(WrappedComponent) {
 }
 ```
 
-该 HOC 具有与修改组件的版本具有相同的功能，同时避免了冲突的可能性。它同样适用于类和函数组件。而且因为它是一个纯函数，它可以与其他 HOC 组合，甚至可以与其自身组合。
+该 HOC 和上文中修改传入组件的 HOC 功能相同，同时避免了冲突的可能性。它同样适用于 class 组件和函数组件。而且因为它是一个纯函数，它可以与其他 HOC 组合，甚至可以与其自身组合。
 
 您可能已经注意到 HOC 与称为**容器组件模式**之间有相似之处。容器组件分离将高层和低层关注的责任，由容器管理订阅和状态，并将 prop 传递给处理渲染 UI。 HOC 使用容器作为其实现的一部分，你可以将 HOC 视为参数化容器组件。
 
@@ -260,17 +259,16 @@ const CommentWithRelay = Relay.createContainer(Comment, config);
 最常见的 HOC 签名如下：
 
 ```js
-// React Redux's `connect`
+// React Redux 的 `connect` 函数
 const ConnectedComment = connect(commentSelector, commentActions)(CommentList);
 ```
 
 *刚刚发生了什么？！*如果你把它分开，就会更容易看出发生了什么。
 
 ```js
-// connect is a function that returns another function
+// connect 是一个函数，它的返回值为另外一个函数。
 const enhance = connect(commentListSelector, commentListActions);
-// The returned function is a HOC, which returns a component that is connected
-// to the Redux store
+// 返回值为 HOC，它会返回已经连接 Redux store 的组件
 const ConnectedComment = enhance(CommentList);
 ```
 换句话说，`connect` 是一个返回高阶组件的高阶函数！
@@ -278,13 +276,13 @@ const ConnectedComment = enhance(CommentList);
 这种形式可能看起来令人困惑或不必要，但它有一个有用的属性。 像 `connect` 函数返回的单参数 HOC 具有签名 `Component => Component`。 输出类型与输入类型相同的函数很容易组合在一起。
 
 ```js
-// Instead of doing this...
+// 而不是这样...
 const EnhancedComponent = withRouter(connect(commentSelector)(WrappedComponent))
 
-// ... you can use a function composition utility
-// compose(f, g, h) is the same as (...args) => f(g(h(...args)))
+// ... 你可以编写组合工具函数
+// compose(f, g, h) 等同于 (...args) => f(g(h(...args)))
 const enhance = compose(
-  // These are both single-argument HOCs
+  // 这些都是单参数的 HOC
   withRouter,
   connect(commentSelector)
 )
@@ -326,10 +324,10 @@ React 的 diff 算法（称为协调）使用组件标识来确定它是应该�
 
 ```js
 render() {
-  // A new version of EnhancedComponent is created on every render
+  // 每次调用 render 函数都会创建一个新的 EnhancedComponent
   // EnhancedComponent1 !== EnhancedComponent2
   const EnhancedComponent = enhance(MyComponent);
-  // That causes the entire subtree to unmount/remount each time!
+  // 这将导致子树每次渲染都会进行卸载，和重新挂载的操作！
   return <EnhancedComponent />;
 }
 ```
@@ -347,12 +345,12 @@ render() {
 但是，当你将 HOC 应用于组件时，原始组件将使用容器组件进行包装。这意味着新组件没有原始组件的任何静态方法。
 
 ```js
-// Define a static method
+// 定义静态函数
 WrappedComponent.staticMethod = function() {/*...*/}
-// Now apply a HOC
+// 现在使用 HOC
 const EnhancedComponent = enhance(WrappedComponent);
 
-// The enhanced component has no static method
+// 增强组件没有 staticMethod
 typeof EnhancedComponent.staticMethod === 'undefined' // true
 ```
 
@@ -361,7 +359,7 @@ typeof EnhancedComponent.staticMethod === 'undefined' // true
 ```js
 function enhance(WrappedComponent) {
   class Enhance extends React.Component {/*...*/}
-  // Must know exactly which method(s) to copy :(
+  // 必须准确知道应该拷贝哪些方法 :(
   Enhance.staticMethod = WrappedComponent.staticMethod;
   return Enhance;
 }
@@ -381,19 +379,19 @@ function enhance(WrappedComponent) {
 除了导出组件，另一个可行的方案是再额外导出这个静态方法。
 
 ```js
-// Instead of...
+// 使用这种方式代替...
 MyComponent.someFunction = someFunction;
 export default MyComponent;
 
-// ...export the method separately...
+// ...单独导出该方法...
 export { someFunction };
 
-// ...and in the consuming module, import both
+// ...并在要使用的组件中，import 它们
 import MyComponent, { someFunction } from './MyComponent.js';
 ```
 
 ### Refs 不会被传递 {#refs-arent-passed-through}
 
-虽然高阶组件的约定是将所有 props 传递给被包装组件，但这对于 refs 并不适用。 那是因为 `ref` 实际上并不是一个 prop - 就像 `key` 一样，它是由 React 专门处理的。 如果将 ref 添加到 HOC 的返回组件中，则 ref 引用指向容器组件，而不是被包装组件。
+虽然高阶组件的约定是将所有 props 传递给被包装组件，但这对于 refs 并不适用。那是因为 `ref` 实际上并不是一个 prop - 就像 `key` 一样，它是由 React 专门处理的。如果将 ref 添加到 HOC 的返回组件中，则 ref 引用指向容器组件，而不是被包装组件。
 
 这个问题的解决方案是通过使用 `React.forwardRef` API（React 16.3 中引入）。[前往 ref 转发章节了解更多](/docs/forwarding-refs.html)。
