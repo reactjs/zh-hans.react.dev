@@ -26,7 +26,7 @@ HOC 在三方 React 库中很常见，例如 Redux 的 [`connect`](https://githu
 
 组件是 React 中代码复用的基本单元。但你会发现某些模式并不适合传统组件。
 
-例如，假设有一个 `CommentList` 组件，它订阅外部数据源以呈现评论列表：
+例如，假设有一个 `CommentList` 组件，它订阅外部数据源以渲染评论列表：
 
 ```js
 class CommentList extends React.Component {
