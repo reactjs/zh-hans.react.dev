@@ -4,7 +4,7 @@ title: 高阶组件
 permalink: docs/higher-order-components.html
 ---
 
-高阶组件（HOC）是 React 中用于重用组件逻辑的一种高级技巧。 HOC 自身不是 React API 的一部分，它一种基于 React 的组合特性形成的设计模式。
+高阶组件（HOC）是 React 中用于复用组件逻辑的一种高级技巧。HOC 自身不是 React API 的一部分，它是一种基于 React 的组合特性形成的设计模式。
 
 具体而言，**高阶组件是一个获取组件并返回新组件的函数。**
 
