@@ -190,7 +190,7 @@ function logProps(InputComponent) {
 const EnhancedComponent = logProps(InputComponent);
 ```
 
-这样做有些问题。其中一个就是输入组件不能脱离输出组件来使用。更重要的是，如果你将一个会修改 `componentWillReceiveProps` 的 HOC 应用当前组件，第一个 HOC 的功能将被覆盖！ 此 HOC 也不适用于没有生命周期方法的功能组件。
+这样做会产生一些不良后果。其一是输入组件再也无法像 HOC 增强之前那样使用了。更严重的是，如果你再用另一个同样会修改 `componentWillReceiveProps` 的 HOC 增强它，那么前面的 HOC 就会失效！同时，这个 HOC 也无法应用于没有生命周期的函数组件。
 
 HOC 不应修改传入的组件，那是一种糟糕的抽象方式。消费者必须知道他们是如何实现的，以避免与其他 HOC 发生冲突。
 
