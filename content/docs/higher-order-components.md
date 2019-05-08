@@ -392,7 +392,7 @@ export { someFunction };
 import MyComponent, { someFunction } from './MyComponent.js';
 ```
 
-### Refs 没有进行传递 {#refs-arent-pass-through}
+### Refs 不会被传递 {#refs-arent-passed-through}
 
 虽然高阶组件的约定是将所有 props 传递给包装组件，但这对于 refs 并不适用。 那是因为 `ref` 实际上并不是一个 prop - 就像 `key` 一样，它是由 React 专门处理的。 如果将 ref 添加到 HOC 的返回组件中，则 ref 引用指向容器组件，而不是包装组件。
 
