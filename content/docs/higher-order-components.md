@@ -12,7 +12,7 @@ permalink: docs/higher-order-components.html
 const EnhancedComponent = higherOrderComponent(WrappedComponent);
 ```
 
-组件将 props 转换为 UI，而高阶组件将组件转换为另一个组件。
+组件是将 props 转换为 UI，而高阶组件是将组件转换为另一个组件。
 
 HOC 在三方 React 库中很常见，例如 Redux 的 [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) 和 Relay 的 [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html)。
 
