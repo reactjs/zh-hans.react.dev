@@ -356,7 +356,7 @@ const EnhancedComponent = enhance(WrappedComponent);
 typeof EnhancedComponent.staticMethod === 'undefined' // true
 ```
 
-为了解决这个问题，你可以在返回之前拷贝容器上的方法：
+为了解决这个问题，你可以在返回之前把这些方法拷贝到容器组件上：
 
 ```js
 function enhance(WrappedComponent) {
