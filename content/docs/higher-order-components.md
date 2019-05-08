@@ -340,7 +340,7 @@ render() {
 
 在极少数情况下，你需要动态调用 HOC。你可以在组件的生命周期方法或其构造函数中进行调用。
 
-### 静态方法必须复制 {#static-methods-must-be-copied-over}
+### 务必复制静态方法 {#static-methods-must-be-copied-over}
 
 有时在 React 组件上定义静态方法很有用。例如，Relay 容器暴露了一个静态方法 `getFragment` 以方便组合 GraphQL 片段。
 
