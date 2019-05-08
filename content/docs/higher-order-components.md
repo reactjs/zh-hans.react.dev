@@ -367,7 +367,7 @@ function enhance(WrappedComponent) {
 }
 ```
 
-但这样需要你的知道哪些方法需要被拷贝。你可以使用 [提升非 React 静态方法](https://github.com/mridgway/hoist-non-react-statics) 自动拷贝所有非 React 静态方法:
+但要这样做，你需要知道哪些方法应该被拷贝。你可以使用 [hoist-non-react-statics](https://github.com/mridgway/hoist-non-react-statics) 自动拷贝所有非 React 静态方法:
 
 ```js
 import hoistNonReactStatic from 'hoist-non-react-statics';
