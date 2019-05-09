@@ -14,7 +14,7 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
 组件是将 props 转换为 UI，而高阶组件是将组件转换为另一个组件。
 
-HOC 在三方 React 库中很常见，例如 Redux 的 [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) 和 Relay 的 [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html)。
+HOC 在 React 的第三方库中很常见，例如 Redux 的 [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) 和 Relay 的 [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html)。
 
 在本文档中，我们将讨论为什么高阶组件有用，以及如何编写自己的 HOC 函数。
 
