@@ -34,7 +34,7 @@ class CommentList extends React.Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      // "DataSource" 是一些全局数据
+      // 假设 "DataSource" 是个全局范围内的数据源变量
       comments: DataSource.getComments()
     };
   }
