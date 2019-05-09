@@ -4,7 +4,7 @@ title: 高阶组件
 permalink: docs/higher-order-components.html
 ---
 
-高阶组件（HOC）是 React 中用于复用组件逻辑的一种高级技巧。HOC 自身不是 React API 的一部分，它是一种基于 React 的组合特性形成的设计模式。
+高阶组件（HOC）是 React 中用于复用组件逻辑的一种高级技巧。HOC 自身不是 React API 的一部分，它是一种基于 React 的组合特性而形成的设计模式。
 
 具体而言，**高阶组件是参数为组件，返回值为新组件的函数。**
 
@@ -18,15 +18,15 @@ HOC 在 React 的第三方库中很常见，例如 Redux 的 [`connect`](https:/
 
 在本文档中，我们将讨论为什么高阶组件有用，以及如何编写自己的 HOC 函数。
 
-## 使用 HOC 处理横切关注点 {#use-hocs-for-crossing-cutting-concerns}
+## 使用 HOC 解决横切关注点问题 {#use-hocs-for-crossing-cutting-concerns}
 
 > **注意**
 >
-> 我们之前建议使用 mixins 用于处理横切关注点相关的问题。但我们已经意识到 mixins 会产生更多麻烦。[阅读更多](/blog/2016/07/13/mixins-consideration-hazardous.html) 关于我们为什么要抛弃 mixins 以及如何转换现有组件。
+> 我们之前建议使用 mixins 用于解决横切关注点相关的问题。但我们已经意识到 mixins 会产生更多麻烦。[阅读更多](/blog/2016/07/13/mixins-consideration-hazardous.html) 关于我们为什么要抛弃 mixins 以及如何转换现有组件。
 
 组件是 React 中代码复用的基本单元。但你会发现某些模式并不适合传统组件。
 
-例如，假设有一个 `CommentList` 组件，它订阅外部数据源以渲染评论列表：
+例如，假设有一个 `CommentList` 组件，它订阅外部数据源，用以渲染评论列表：
 
 ```js
 class CommentList extends React.Component {
@@ -68,7 +68,7 @@ class CommentList extends React.Component {
 }
 ```
 
-稍后，你编写了一个用于订阅单个博客帖子的组件，该帖子遵循类似的模式：
+稍后，编写了一个用于订阅单个博客帖子的组件，该帖子遵循类似的模式：
 
 ```js
 class BlogPost extends React.Component {
@@ -100,15 +100,15 @@ class BlogPost extends React.Component {
 }
 ```
 
-`CommentList` 和 `BlogPost` 不同 - 它们在 `DataSource` 上调用不同的方法，并渲染不同的结果。但它们的大部分实现都是一样的：
+`CommentList` 和 `BlogPost` 不同 - 它们在 `DataSource` 上调用不同的方法，且渲染不同的结果。但它们的大部分实现都是一样的：
 
-- 在 mount 时，向 `DataSource` 添加一个更改侦听器。
+- 在挂载时，向 `DataSource` 添加一个更改侦听器。
 - 在侦听器内部，当数据源发生变化时，调用 `setState`。
-- 在 unmount 时，删除侦听器。
+- 在卸载时，删除侦听器。
 
 你可以想象，在一个大型应用程序中，这种订阅 `DataSource` 和调用 `setState` 的模式将一次又一次地发生。我们需要一个抽象，允许我们在一个地方定义这个逻辑，并在许多组件之间共享它。这正是高阶组件擅长的地方。
 
-我们可以编写一个创建组件的函数，比如 `CommentList` 和 `BlogPost`，订阅 `DataSource`。该函数将接受一个子组件作为其参数之一，该子组件将订阅数据作为 prop。让我们调用函数 `withSubscription`：
+我们可以编写一个创建组件的函数，比如 `CommentList` 和 `BlogPost`，订阅 `DataSource`。该函数将接受一个子组件作为它的其中一个参数，该子组件将订阅数据作为 prop。让我们调用函数 `withSubscription`：
 
 ```js
 const CommentListWithSubscription = withSubscription(
@@ -122,7 +122,7 @@ const BlogPostWithSubscription = withSubscription(
 );
 ```
 
-第一个参数是被包装组件。第二个参数通过 `DataSource` 和当前的 props 返回我们感兴趣的数据。
+第一个参数是被包装组件。第二个参数通过 `DataSource` 和当前的 props 返回我们需要的数据。
 
 当渲染 `CommentListWithSubscription` 和 `BlogPostWithSubscription` 时， `CommentList` 和 `BlogPost` 将传递一个 `data` prop，其中包含从 `DataSource` 检索到的最新数据：
 
@@ -165,7 +165,7 @@ function withSubscription(WrappedComponent, selectData) {
 
 请注意，HOC 不会修改传入的组件，也不会使用继承来复制其行为。相反，HOC 通过将组件*包装*在容器组件中来*组成*新组件。HOC 是纯函数，没有副作用。
 
-就是这样！被包装组件接收来自容器组件的所有 prop，同时也接收一个新的用于 render 的 `data` prop。 HOC 不需要关心数据的使用方式或原因，而被包装组件也不需要关心数据是怎么来的。
+被包装组件接收来自容器组件的所有 prop，同时也接收一个新的用于 render 的 `data` prop。HOC 不需要关心数据的使用方式或原因，而被包装组件也不需要关心数据是怎么来的。
 
 因为 `withSubscription` 是一个普通函数，你可以根据需要对参数进行增添或者删除。例如，您可能希望使 `data` prop 的名称可配置，以进一步将 HOC 与包装组件隔离开来。或者你可以接受一个配置 `shouldComponentUpdate` 的参数，或者一个配置数据源的参数。因为 HOC 可以控制组件的定义方式，这一切都变得有可能。
 
@@ -191,9 +191,9 @@ const EnhancedComponent = logProps(InputComponent);
 
 这样做会产生一些不良后果。其一是输入组件再也无法像 HOC 增强之前那样使用了。更严重的是，如果你再用另一个同样会修改 `componentWillReceiveProps` 的 HOC 增强它，那么前面的 HOC 就会失效！同时，这个 HOC 也无法应用于没有生命周期的函数组件。
 
-HOC 不应修改传入的组件，那是一种糟糕的抽象方式。消费者必须知道他们是如何实现的，以避免与其他 HOC 发生冲突。
+修改传入组件的 HOC 是一种糟糕的抽象方式。调用者必须知道他们是如何实现的，以避免与其他 HOC 发生冲突。
 
-HOC 不应该修改传入组件，而应该使用组合，通过将组件包装在容器组件中实现功能：
+HOC 不应该修改传入组件，而应该使用组合的方式，通过将组件包装在容器组件中实现功能：
 
 ```js
 function logProps(WrappedComponent) {
@@ -203,16 +203,16 @@ function logProps(WrappedComponent) {
       console.log('Next props: ', nextProps);
     }
     render() {
-      // Wraps the input component in a container, without mutating it. Good!
+      // 将 input 组件包装在容器中，而不对其进行修改。Good!
       return <WrappedComponent {...this.props} />;
     }
   }
 }
 ```
 
-该 HOC 和上文中修改传入组件的 HOC 功能相同，同时避免了冲突的可能性。它同样适用于 class 组件和函数组件。而且因为它是一个纯函数，它可以与其他 HOC 组合，甚至可以与其自身组合。
+该 HOC 与上文中修改传入组件的 HOC 功能相同，同时避免了出现冲突的情况。它同样适用于 class 组件和函数组件。而且因为它是一个纯函数，它可以与其他 HOC 组合，甚至可以与其自身组合。
 
-您可能已经注意到 HOC 与称为**容器组件模式**之间有相似之处。容器组件分离将高层和低层关注的责任，由容器管理订阅和状态，并将 prop 传递给处理渲染 UI。 HOC 使用容器作为其实现的一部分，你可以将 HOC 视为参数化容器组件。
+您可能已经注意到 HOC 与**容器组件模式**之间有相似之处。容器组件担任分离将高层和低层关注的责任，由容器管理订阅和状态，并将 prop 传递给处理渲染 UI。HOC 使用容器作为其实现的一部分，你可以将 HOC 视为参数化容器组件。
 
 ## 约定：将不相关的 props 传递给被包裹的组件 {#convention-pass-unrelated-props-through-to-wrapped-component}
 
@@ -222,15 +222,14 @@ HOC 应该透传与自身无关的 props。大多数 HOC 都应该包含一个�
 
 ```js
 render() {
-  // Filter out extra props that are specific to this HOC and shouldn't be
-  // passed through
+  // 过滤掉非此 HOC 额外的 props，且不要进行透传
   const { extraProp, ...passThroughProps } = this.props;
 
-  // Inject props into the wrapped component. These are usually state values or
-  // instance methods.
+  // 将 props 注入到被包装的组件中。
+  // 通常为 state 的值或者实例方法。
   const injectedProp = someStateOrInstanceMethod;
 
-  // Pass props to wrapped component
+  // 将 props 传递给被包装组件
   return (
     <WrappedComponent
       injectedProp={injectedProp}
@@ -240,7 +239,7 @@ render() {
 }
 ```
 
-这种约定保证了 HOC 的灵活性以及复用性。
+这种约定保证了 HOC 的灵活性以及可复用性。
 
 ## 约定：最大化可组合性 {#convention-maximizing-composability}
 
