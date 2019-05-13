@@ -739,7 +739,7 @@ const Button = React.memo((props) => {
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
-这行代码会调用 `computeExpensiveValue(a, b)`。但如果输入值 `[a, b]` 自上次值以来没有改变过，`useMemo` 会跳过二次调用，只是简单复用它上一次返回的值。
+这行代码会调用 `computeExpensiveValue(a, b)`。但如果依赖数组 `[a, b]` 自上次赋值以来没有改变过，`useMemo` 会跳过二次调用，只是简单复用它上一次返回的值。
 
 记住，传给 `useMemo` 的函数是在渲染期间运行的。不要在其中做任何你通常不会在渲染期间做的事。举个例子，副作用属于 `useEffect`，而不是 `useMemo`。
 
@@ -766,7 +766,7 @@ function Parent({ a, b }) {
 
 ### 如何惰性创建昂贵的对象？ {#how-to-create-expensive-objects-lazily}
 
-如果输入的内容相同，`useMemo` 允许你 [记住一次昂贵的计算](#how-to-memoize-calculations)。但是，这仅作为一种提示，并不 *保证* 计算不会重新运行。但有时候需要确保一个对象仅被创建一次。
+如果依赖数组的值相同，`useMemo` 允许你 [记住一次昂贵的计算](#how-to-memoize-calculations)。但是，这仅作为一种提示，并不 *保证* 计算不会重新运行。但有时候需要确保一个对象仅被创建一次。
 
 **第一个常见的使用场景是当创建初始 state 很昂贵时：**
 
