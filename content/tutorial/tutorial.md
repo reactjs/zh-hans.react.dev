@@ -321,7 +321,7 @@ class Square extends React.Component {
 }
 ```
 
-在 Square 组件 `render` 方法中的 `onCLick` 事件监听函数中调用 `this.setState`，我们就可以在每次 `<button>` 被点击的时候通知 React 去重新渲染 Square 组件。组件更新之后，Square 组件的 `this.state.value` 的值会变为 `'X'`，因此，我们在游戏棋盘上就能看见 `X` 了。点击任意一个方格，`X` 就会出现了。
+在 Square 组件 `render` 方法中的 `onClick` 事件监听函数中调用 `this.setState`，我们就可以在每次 `<button>` 被点击的时候通知 React 去重新渲染 Square 组件。组件更新之后，Square 组件的 `this.state.value` 的值会变为 `'X'`，因此，我们在游戏棋盘上就能看见 `X` 了。点击任意一个方格，`X` 就会出现了。
 
 每次在组件中调用 `setState` 时，React 都会自动更新其子组件。
 
