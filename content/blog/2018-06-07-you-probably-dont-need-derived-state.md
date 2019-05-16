@@ -40,7 +40,7 @@ React 16.4 版本修复了一个 [getDerivedStateFromProps 的 bug](/blog/2018/0
 
 最常见的误解就是 `getDerivedStateFromProps` 和 `componentWillReceiveProps` 只会在 props “改变”时才会调用。实际上只要父级重新渲染时，这两个生命周期函数就会重新调用，不管 props 有没有“变化”。所以，在这两个方法内直接复制（_unconditionally_）props 到 state 是不安全的。**这样做会导致 state 后没有正确渲染**。
 
-重现一下这个问题。这个 `EmailInput` 组件复制 porops 到 state：
+重现一下这个问题。这个 `EmailInput` 组件复制 props 到 state：
 ```js
 class EmailInput extends Component {
   state = { email: this.props.email };
