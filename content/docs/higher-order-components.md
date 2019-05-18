@@ -214,7 +214,7 @@ function logProps(WrappedComponent) {
 
 您可能已经注意到 HOC 与**容器组件模式**之间有相似之处。容器组件担任分离将高层和低层关注的责任，由容器管理订阅和状态，并将 prop 传递给处理渲染 UI。HOC 使用容器作为其实现的一部分，你可以将 HOC 视为参数化容器组件。
 
-## 约定：将不相关的 props 传递给被包裹的组件 {#convention-pass-unrelated-props-through-to-wrapped-component}
+## 约定：过滤掉不相关的 props 传递给被包裹的组件 {#convention-pass-unrelated-props-through-to-wrapped-component}
 
 HOC 为组件添加特性。自身不应该大幅改变约定。HOC 返回的组件与原组件应保持类似的接口。
 
