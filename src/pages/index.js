@@ -15,7 +15,7 @@ import TitleAndMetaTags from 'components/TitleAndMetaTags';
 import Layout from 'components/Layout';
 import {colors, media, sharedStyles} from 'theme';
 import loadScript from 'utils/loadScript';
-import createCanonicalUrl from 'utils/createCanonicalUrl';
+import createOgUrl from 'utils/createOgUrl';
 import {babelURL} from 'site-constants';
 import logoWhiteSvg from 'icons/logo-white.svg';
 
@@ -51,7 +51,7 @@ class Home extends Component {
       <Layout location={location}>
         <TitleAndMetaTags
           title="React &ndash; 用于构建用户界面的 JavaScript 库"
-          canonicalUrl={createCanonicalUrl('/')}
+          ogUrl={createOgUrl('index.html')}
         />
         <div css={{width: '100%'}}>
           <header
