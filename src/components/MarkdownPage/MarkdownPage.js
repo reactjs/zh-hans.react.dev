@@ -15,7 +15,7 @@ import TitleAndMetaTags from 'components/TitleAndMetaTags';
 import findSectionForPath from 'utils/findSectionForPath';
 import toCommaSeparatedList from 'utils/toCommaSeparatedList';
 import {sharedStyles} from 'theme';
-import createCanonicalUrl from 'utils/createCanonicalUrl';
+import createOgUrl from 'utils/createOgUrl';
 
 import type {Node} from 'types';
 
@@ -74,7 +74,7 @@ const MarkdownPage = ({
       }}>
       <TitleAndMetaTags
         ogDescription={ogDescription}
-        canonicalUrl={createCanonicalUrl(markdownRemark.fields.slug)}
+        ogUrl={createOgUrl(markdownRemark.fields.slug)}
         title={`${titlePrefix}${titlePostfix}`}
       />
       <div css={{flex: '1 0 auto'}}>
