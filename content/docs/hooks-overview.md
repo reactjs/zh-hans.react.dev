@@ -178,7 +178,7 @@ Hook 就是 JavaScript 函数，但是使用它们会有两个额外的规则：
 
 前面，我们介绍了一个叫 `FriendStatus` 的组件，它通过调用 `useState` 和 `useEffect` 的 Hook 来订阅一个好友的在线状态。假设我们想在另一个组件里重用这个订阅逻辑。
 
-首页，我们把这个逻辑抽取到一个叫做 `useFriendStatus` 的自定义 Hook 里：
+首先，我们把这个逻辑抽取到一个叫做 `useFriendStatus` 的自定义 Hook 里：
 
 ```js{3}
 import React, { useState, useEffect } from 'react';
