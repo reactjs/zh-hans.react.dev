@@ -843,9 +843,9 @@ function Image(props) {
     }, [a, b]);
     ```
 
-* [`useMemo` Hook](/docs/hooks-faq.html#how-to-memoize-calculations) 使控制具体子节点何时更新变得更容易，减少了对纯组件的需要。
+* [`useMemo`](/docs/hooks-faq.html#how-to-memoize-calculations) Hook 使得控制具体子节点何时更新变得更容易，减少了对纯组件的需要。
 
-* 最后，`useReducer` Hook 减少了对深层传递回调的需要，就如下面解释的那样。
+* 最后，[`useReducer`](/docs/hooks-reference.html#usereducer) Hook 减少了对深层传递回调的依赖，正如下面解释的那样。
 
 ### 如何避免向下传递回调？ {#how-to-avoid-passing-callbacks-down}
 

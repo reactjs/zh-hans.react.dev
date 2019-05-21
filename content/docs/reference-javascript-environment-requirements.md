@@ -11,8 +11,8 @@ React 16 依赖集合类型 [Map](https://developer.mozilla.org/en-US/docs/Web/J
 React 16 使用 core-js 支持老版本浏览器，其 polyfill 环境可能如下：
 
 ```js
-import 'core-js/es6/map';
-import 'core-js/es6/set';
+import 'core-js/es/map';
+import 'core-js/es/set';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

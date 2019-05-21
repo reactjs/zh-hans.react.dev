@@ -153,7 +153,7 @@ new webpack.DefinePlugin({
 new webpack.optimize.UglifyJsPlugin()
 ```
 
-你可以在 [webpack 文档](https://webpack.js.org/guides/production-build/)中了解更多内容。
+你可以在 [webpack 文档](https://webpack.js.org/guides/production/)中了解更多内容。
 
 请注意，你只需要在生产构建时用到它。你不需要在开发中使用 `UglifyJsPlugin` 插件或者 `DefinePlugin` 插件设置 `'production'` 变量，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
 
