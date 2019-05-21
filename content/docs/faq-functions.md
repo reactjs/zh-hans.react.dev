@@ -87,7 +87,7 @@ class Foo extends Component {
 
 ### 可以在 render 方法中使用箭头函数吗？{#is-it-ok-to-use-arrow-functions-in-render-methods}
 
-一般来说是可以的，并且直接箭头函数是向回调函数传递参数的最简单的办法。
+一般来说是可以的，并且使用箭头函数是向回调函数传递参数的最简单的办法。
 
 但是如果遇到了性能问题，一定要进行优化！
 
@@ -108,11 +108,11 @@ bind 方法确保了第二种写法与第一种写法相同。
 
 使用 React，通常只需要绑定*传递*给其他组件的方法。例如，`<button onClick={this.handleClick}>` 是在传递 `this.handleClick` ，所以需要绑定它。但是，没有必要绑定 `render` 方法或生命周期方法：我们并没有将它们传递给其他的组件。
 
-[This post by Yehuda Katz](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/) 详细解释了什么是绑定，和函数在 JavaScript 中怎么起作用。
+[Yehuda Katz 的文章](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/)详细解释了什么是绑定，以及函数在 JavaScript 中怎么起作用。
 
 ### 为什么我的函数每次组件渲染时都会被调用？{#why-is-my-function-being-called-every-time-the-component-renders}
 
-确保你没有*调用函数*，在你传递函数给组件时：
+确保你在传递一个函数给组件时，没有*调用这个函数*：
 
 ```jsx
 render() {
@@ -180,7 +180,7 @@ class Alphabet extends React.Component {
 
 #### 示例：通过 data-attributes 传递参数 {#example-passing-params-using-data-attributes}
 
-同样的，也可以使用DOM API来存储事件处理器需要的数据。如果需要优化大量元素或使用依赖于 `React.PureComponent` 相等性检查的渲染树，请考虑使用此方法。
+同样的，也可以使用 DOM API 来存储事件处理器需要的数据。如果需要优化大量元素或使用依赖于 `React.PureComponent` 相等性检查的渲染树，请考虑使用此方法。
 
 ```jsx
 const A = 65 // ASCII character code
@@ -230,11 +230,11 @@ class Alphabet extends React.Component {
 
 > **注意：**
 >
-> `_.debounce` , `_.throttle` 和 `raf-schd` 都提供了一个 `cancel` 方法来取消延迟回调。 所以要么调用 `componentWillUnmount`，否则需要对代码进行检查来保证在延迟函数有效期间内组件始终挂载。
+> `_.debounce`、`_.throttle` 和 `raf-schd` 都提供了一个 `cancel` 方法来取消延迟回调。你需要在 `componentWillUnmount` 中调用该方法，或者对代码进行检查来保证在延迟函数有效期间内组件始终挂载。
 
 #### 节流 {#throttle}
 
-节流阻止函数在给定时间窗口内被调不能超过一次。下面这个例子会节流 “click” 事件处理器每秒钟的只能调用一次。
+节流阻止函数在给定时间窗口内被调不能超过一次。下面这个例子会节流 “click” 事件处理器，使其每秒钟的只能调用一次。
 
 ```jsx
 import throttle from 'lodash.throttle';
@@ -304,11 +304,11 @@ class Searchbox extends React.Component {
 
 #### `requestAnimationFrame` 节流 {#requestanimationframe-throttling}
 
-[`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) 是在浏览器中排队等待执行的一种方法，它可以在呈现性能的最佳时间执行。一个函数被 `requestAnimationFrame` 放入队列后将会在下一帧触发。浏览器会努力确保每秒 60 帧（60fps）。然而，如果浏览器无法确保，那么自然会*限制*每秒的帧数。例如，某个设备可能只能处理每秒 30 帧，所以每秒只能得到 30 帧。使用  `requestAnimationFrame` 来节流是一种有用的技术，它可以防止在一秒中进行 60 帧以上的更新。如果要求一秒钟内完成100次更新，则会为浏览器创建额外的负担，而用户无法看到这些工作。
+[`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) 是在浏览器中排队等待执行的一种方法，它可以在呈现性能的最佳时间执行。一个函数被 `requestAnimationFrame` 放入队列后将会在下一帧触发。浏览器会努力确保每秒 60 帧（60fps）。然而，如果浏览器无法确保，那么自然会*限制*每秒的帧数。例如，某个设备可能只能处理每秒 30 帧，所以每秒只能得到 30 帧。使用 `requestAnimationFrame` 来节流是一种有用的技术，它可以防止在一秒中进行 60 帧以上的更新。如果一秒钟内完成 100 次更新，则会为浏览器带来额外的负担，而用却户无法感知到这些工作。
 
 >**注意：**
 >
->使用这个方法时只能获取帧中最后发布的值。也可以在 [`MDN`](https://developer.mozilla.org/en-US/docs/Web/Events/scroll) 中看优化的示例。
+>使用这个方法时只能获取某一帧中最后发布的值。也可以在 [`MDN`](https://developer.mozilla.org/en-US/docs/Web/Events/scroll) 中看优化的示例。
 
 ```jsx
 import rafSchedule from 'raf-schd';
@@ -351,4 +351,4 @@ class ScrollListener extends React.Component {
 
 #### 测试速率限制 {#testing-your-rate-limiting}
 
-在测试速率限制的代码是否正确工作的时候，如果可以（对动画或操作）进行快进将会很有帮助。如果正在使用 [`jest`](https://facebook.github.io/jest/) ，那么可以使用 [`mock timers`](https://facebook.github.io/jest/docs/en/timer-mocks.html) 来快进。如果正在使用  `requestAnimationFrame` 节流，那么就会发现 [raf-stub]([`raf-stub`](https://github.com/alexreardon/raf-stub)) 是一个控制动画帧的十分有用的工具。
+在测试速率限制的代码是否正确工作的时候，如果可以（对动画或操作）进行快进将会很有帮助。如果正在使用 [`jest`](https://facebook.github.io/jest/) ，那么可以使用 [`mock timers`](https://facebook.github.io/jest/docs/en/timer-mocks.html) 来快进。如果正在使用  `requestAnimationFrame` 节流，那么就会发现 [`raf-stub`](https://github.com/alexreardon/raf-stub) 是一个控制动画帧的十分有用的工具。
