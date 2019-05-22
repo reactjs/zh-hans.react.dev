@@ -135,7 +135,7 @@ ReactDOM.unstable_createRoot(domNode).render(<App />);
 
 **建议：** 如果你计划在未来使用并行模式，一个很好的第一步是用 [`<React.StrictMode>`](https://reactjs.org/docs/strict-mode.html) 来包裹一些组件的子树然后修复出现的错误。通常，我们预计古旧的代码不会被立即兼容。 举个例子，在 Facebook，我们更多的在更新开发的代码中使用并发模式，古旧的代码近期还是会在同步模式下运行。
 
-### React 16.x （大约2019年中旬）： 包含悬挂以数据提取的版本 {#react-16x-mid-2019-the-one-with-suspense-for-data-fetching}
+### React 16.x （大约2019年中旬）： 包含 Suspense 以数据提取的版本 {#react-16x-mid-2019-the-one-with-suspense-for-data-fetching}
 
 如前所述，*Suspense* 是指 React 在组件等待某些事件的时候，“延缓”渲染并显示一个加载指示器的能力。它已经在 React 16.6 中发布，目前 Suspense 唯一支持的用例是代码拆分。在未来的小更新中，我们将会提供使用 Suspense 来加载数据的官方方法。我们会提供一个支持 Suspense 的基本的 “React Cache” 的例子。不过，你也可以自己来实现它。像 Apollo 和 Relay 这样的数据提取库将能够通过遵循我们将要提供的一个的简单的规范与 Suspense 集成。
 
