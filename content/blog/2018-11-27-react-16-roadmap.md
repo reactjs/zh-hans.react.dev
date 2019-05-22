@@ -3,23 +3,23 @@ title: "React 16.x 的规划"
 author: [gaearon]
 ---
 
-你可能已经在之前的博客和视频中看到过了“Hooks”，”延迟渲染”和”并发渲染“这三种功能。在这篇文章中，我们会讨论它们将如何整合在 React 中，以及它们将在何时出现在React的稳定版本中。
+你可能已经在之前的博客和视频中看到过了“Hooks”，” Suspense ”和”并发渲染“这三种功能。在这篇文章中，我们会讨论它们将如何整合在 React 中，以及它们将在何时出现在React的稳定版本中。
 
 ## 太长不看 {#tldr}
 
 我们计划在如下里程碑中发布 React 的新功能：
 
-* React 16.6 中包括 [延迟渲染以帮助分割代码](#react-166-shipped-the-one-with-suspense-for-code-splitting) (*已经发布*)
+* React 16.6 中包括 [Suspense 以帮助分割代码](#react-166-shipped-the-one-with-suspense-for-code-splitting) (*已经发布*)
 * 16.x 的一个小更新包括 [React Hooks](#react-16x-q1-2019-the-one-with-hooks) (~2019第一季度)
 * 16.x 的一个小更新包括 [并发模式](#react-16x-q2-2019-the-one-with-concurrent-mode) (~2019第二季度)
-* 16.x 的一个小更新包括 [延迟渲染以帮助数据获取](#react-16x-mid-2019-the-one-with-suspense-for-data-fetching) (~2019中旬)
+* 16.x 的一个小更新包括 [Suspense 以帮助数据获取](#react-16x-mid-2019-the-one-with-suspense-for-data-fetching) (~2019中旬)
 
 *(这篇文章的原始版本包含了具体的版本号。现在我们隐藏了他们，因为我们可能会在其中加入一些其他的小更新)*
 
 这些是我们的估计，具体计划会根据情况而定。我们计划在2019年还至少再完成2个项目。它们需要更多的探究，目前还没有加入特定的版本。
 
 * [现代化 React DOM](#modernizing-react-dom)
-* [延迟渲染以帮助服务器渲染](#suspense-for-server-rendering)
+* [Suspense 以帮助服务器渲染](#suspense-for-server-rendering)
 
 我们将会在未来的几个月中研究出更加清晰的时间线。
 
@@ -34,9 +34,9 @@ author: [gaearon]
 
 我们逐步发布的计划可以帮助我们优化API，不过在过渡期一些还不完善的部分会令人费解。我们来看看这些功能将会对你的app产生怎样的影响，这些功能之间的关联，还有你可以在什么时候开始学习并使用它们。
 
-### [React 16.6](/blog/2018/10/23/react-v-16-6.html) (已发布): 延迟渲染以便拆分代码 {#react-166-shipped-the-one-with-suspense-for-code-splitting}
+### [React 16.6](/blog/2018/10/23/react-v-16-6.html) (已发布):  Suspense 以便拆分代码 {#react-166-shipped-the-one-with-suspense-for-code-splitting}
 
-*延迟渲染* 代表了React的新功能：当组件在等待某些事情时，我们可以“延迟”渲染并显示一个载入指示图标。在React 16.6中，延迟渲染只支持一种情况：使用 `React.lazy()` 和 `<React.Suspense>` 延迟加载组件。
+*Suspense* 代表了 React 的新功能：当组件在等待某些事情时，我们可以“延迟”渲染并显示一个载入指示图标。在 React 16.6 中， Suspense 只支持一种情况：使用 `React.lazy()` 和 `<React.Suspense>` 延迟加载组件。
 
 ```js
 // 这个组件是动态加载的
@@ -55,15 +55,15 @@ function MyComponent() {
 
 使用 `React.lazy()` 和 `<React.Suspense>` 分割代码被记录在 [代码分割指南](/docs/code-splitting.html#reactlazy)中。 你可以在 [这篇文章](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d)中找到另一个实践中的例子。
 
-从2018年7月开始，Facebook 就已经开始使用延迟渲染分割代码了，并且期待它是稳定的。在第一个公开版本16.6.0中，这个功能还有一些问题，我们在16.6.3中修复了它们。
+从2018年7月开始，Facebook 就已经开始使用 Suspense 分割代码了，并且期待它是稳定的。在第一个公开版本16.6.0中，这个功能还有一些问题，我们在16.6.3中修复了它们。
 
-代码分割只是延迟渲染的第一步。我们对延迟渲染的的长远规划包括了利用它来获取信息（并集成一些库，比如 Apollo）。除了是一个方便的编程模型，在并发模式中，延迟渲染也提供了更好的用户体验。我们会在本文之后的内容中讨论它们。
+代码分割只是 Suspense 的第一步。我们对 Suspense 的的长远规划包括了利用它来获取信息（并集成一些库，比如 Apollo）。除了是一个方便的编程模型，在并发模式中， Suspense 也提供了更好的用户体验。我们会在本文之后的内容中讨论它们。
 
-**在React DOM中的状态:** 自React 16.6.0 之后的版本支持。
+**在React DOM 中的状态:** 自React 16.6.0 之后的版本支持。
 
-**在React DOM Server中的状态:** 延迟渲染还没有包含在服务器端渲染器中。不是因为我们不关注它，我们已经开始了对一个支持延迟渲染的异步服务器端渲染器的开发工作。这是一个很大的项目，将会占用2019年的大部分时间来完成。
+**在React DOM Server 中的状态:**  Suspense 还没有包含在服务器端渲染器中。不是因为我们不关注它，我们已经开始了对一个支持 Suspense 的异步服务器端渲染器的开发工作。这是一个很大的项目，将会占用2019年的大部分时间来完成。
 
-**在React Native中的状态:** 分割 Bundle 在 React Native 中不是很有用，不过当一个组件使用 Promise 时，没有任何技术障碍可以阻止你用 `React.lazy()` 和 `<Suspense>`。
+**在React Native 中的状态:** 分割 Bundle 在 React Native 中不是很有用，不过当一个组件使用 Promise 时，没有任何技术障碍可以阻止你用 `React.lazy()` 和 `<Suspense>`。
 
 **建议:** 如果你只在客户端渲染，我们强烈建议使用 `React.lazy()` 和 `<React.Suspense>` 来分割React组件的代码。如果你在服务器端渲染，你需要等到新的服务器端渲染器开发完成再使用它们。
 
@@ -127,38 +127,38 @@ ReactDOM.unstable_createRoot(domNode).render(<App />);
 
 并发模式是我们对 React 规划中的一个重要部分。对于需要使用大量 CPU 的任务来说，它提供了不被阻挡的渲染，并使得你的应用在渲染复杂的组件树时可响应。在[我们的冰岛 JSConf 演讲](/blog/2018/03/01/sneak-peek-beyond-react-16.html)中我们展示了它。并发模式也使得悬停 （Suspense）更好。它可以使你在网络够快的时候略过显示载入指示器。除非亲眼所见，它很难解释，[Andrew 的演讲](https://www.youtube.com/watch?v=ByBPyMBTzM0)时现今最好的资料。并发模式依靠一个配合的主线程[调度线程](https://github.com/facebook/react/tree/master/packages/scheduler)，我们正在[和 Chome 团队合作](https://www.youtube.com/watch?v=mDdgfyRB5kg)以在未来把这个功能加入到浏览器中。
 
-**React DOM中的进度：** React 16.6 包含了一个 *非常* 不稳定的并发模式，你可以通过 `unstable_` 前缀找到它，。但我们并不推荐使用它，除非你愿意常常遇到死路或者未被开发的功能。16.7的 alpha 版本中包含了 `React.ConcurrentMode` 和 `ReactDOM.createRoot`，并且没有 `unstable_` 前缀。不过在正式版本中我们还是会保留这个前缀，我们将会在未来的小版本中提供文档并把并发模式标记为稳定。
+**React DOM 中的进度：** React 16.6 包含了一个 *非常* 不稳定的并发模式，你可以通过 `unstable_` 前缀找到它，。但我们并不推荐使用它，除非你愿意常常遇到死路或者未被开发的功能。16.7的 alpha 版本中包含了 `React.ConcurrentMode` 和 `ReactDOM.createRoot`，并且没有 `unstable_` 前缀。不过在正式版本中我们还是会保留这个前缀，我们将会在未来的小版本中提供文档并把并发模式标记为稳定。
 
-**React DOM Server中的进度：** 并发模式不会直接影响服务器渲染。现有服务器渲染器将会支持它。
+**React DOM Server 中的进度：** 并发模式不会直接影响服务器渲染。现有服务器渲染器将会支持它。
 
-**React Native中的进度：** 目前的计划是延期在 React Native 中发布并行模式直到 [React Fabric](https://github.com/react-native-community/discussions-and-proposals/issues/4) 基本完成。
+**React Native 中的进度：** 目前的计划是延期在 React Native 中发布并行模式直到 [React Fabric](https://github.com/react-native-community/discussions-and-proposals/issues/4) 基本完成。
 
 **建议：** 如果你计划在未来使用并行模式，一个很好的第一步是用 [`<React.StrictMode>`](https://reactjs.org/docs/strict-mode.html) 来包裹一些组件的子树然后修复出现的错误。通常，我们预计古旧的代码不会被立即兼容。 举个例子，在 Facebook，我们更多的在更新开发的代码中使用并发模式，古旧的代码近期还是会在同步模式下运行。
 
 ### React 16.x （大约2019年中旬）： 包含悬挂以数据提取的版本 {#react-16x-mid-2019-the-one-with-suspense-for-data-fetching}
 
-As mentioned earlier, *Suspense* refers to React's ability to "suspend" rendering while components are waiting for something, and display a loading indicator. In the already shipped React 16.6, the only supported use case for Suspense is code splitting. In this future minor release, we'd like to provide officially supported ways to use it for data fetching too. We'll provide a reference implementation of a basic "React Cache" that's compatible with Suspense, but you can also write your own. Data fetching libraries like Apollo and Relay will be able to integrate with Suspense by following a simple specification that we'll document.
+如前所述，*Suspense* 是指 React 在组件等待某些事件的时候，“延缓”渲染并显示一个加载指示器的能力。它已经在 React 16.6 中发布，目前 Suspense 唯一支持的用例是代码拆分。在未来的小更新中，我们将会提供使用 Suspense 来加载数据的官方方法。我们会提供一个支持 Suspense 的基本的 “React Cache” 的例子。不过，你也可以自己来实现它。像 Apollo 和 Relay 这样的数据提取库将能够通过遵循我们将要提供的一个的简单的规范与 Suspense 集成。
 
 ```js
-// React Cache for simple data fetching (not final API)
+// 用于简单数据加载的 React Cache （不是最终 API）
 import {unstable_createResource} from 'react-cache';
 
-// Tell React Cache how to fetch your data
+// 告诉 React Cache 如何加载你的数据
 const TodoResource = unstable_createResource(fetchTodo);
 
 function Todo(props) {
-  // Suspends until the data is in the cache
+  // 延缓渲染直到数据存在于缓存中
   const todo = TodoResource.read(props.id);
   return <li>{todo.title}</li>;
 }
 
 function App() {
   return (
-    // Same Suspense component you already use for code splitting
-    // would be able to handle data fetching too.
+    // 你已经用于代码分割的 Suspense 的组件同样可以
+    // 被用于数据加载
     <React.Suspense fallback={<Spinner />}>
       <ul>
-        {/* Siblings fetch in parallel */}
+        {/* 同级的数据将会被同时加载 */}
         <Todo id="1" />
         <Todo id="2" />
       </ul>
@@ -166,36 +166,36 @@ function App() {
   );
 }
 
-// Other libraries like Apollo and Relay can also
-// provide Suspense integrations with similar APIs.
+// 其他的库，比如 Apollo 和 Relay 可以使用类似的 API
+// 来集成 Suspense 。
 ```
 
-There is no official documentation for how to fetch data with Suspense yet, but you can find some early information in [this talk](https://youtu.be/ByBPyMBTzM0?t=1312) and [this small demo](https://github.com/facebook/react/tree/master/fixtures/unstable-async/suspense). We'll write documentation for React Cache (and how to write your own Suspense-compatible library) closer to this React release, but if you're curious, you can find its very early source code [here](https://github.com/facebook/react/blob/master/packages/react-cache/src/ReactCache.js).
+关于如何使用 Suspense 加载数据，目前还没有官方的文档。不过你可以通过[这个演讲](https://youtu.be/ByBPyMBTzM0?t=1312)和[这个小演示](https://github.com/facebook/react/tree/master/fixtures/unstable-async/suspense)来获得一些早期信息。接近这次 React 发布的时候，我们会为 React Cache （以及如何实现你自己的可兼容 Suspense 的库）撰写文档。不过如果你好奇的话，你可以在[这里](https://github.com/facebook/react/blob/master/packages/react-cache/src/ReactCache.js)找到它的早期源代码。
 
-The low-level Suspense mechanism (suspending rendering and showing a fallback) is expected to be stable even in React 16.6. We've used it for code splitting in production for months. However, the higher-level APIs for data fetching are very unstable. React Cache is rapidly changing, and will change at least a few more times. There are some low-level APIs that are [missing](https://github.com/reactjs/rfcs/pull/89) for a good higher-level API to be possible. We don't recommend using React Cache anywhere except very early experiments. Note that React Cache itself isn't strictly tied to React releases, but the current alphas lack basic features as cache invalidation, and you'll run into a wall very soon. We expect to have something usable with this React release.
+Suspense 的底层原理（延迟渲染并显示一个后备组件）在 React 16.6 中就已经处于稳定状态了。在过去几个月中，我们已经使用它来分割代码。但是，用于数据获取的上层 API 还非常不稳定。React Cache 还在快速的改变，并且还将改变几次。为了可以拥有更好的上层 API，有几个底层 API 还[不存在](https://github.com/reactjs/rfcs/pull/89)。除了非常早期的实验，我们不推荐在任何地方使用 React Cache。请注意，React Cache 本身并不严格依赖 React 版本，但当前的 alpha 版本缺少缓存失效的基本功能，如果你使用它，你很快就会碰壁。在本次 React 版本中，我们将会拥有一些可用的更新。
 
-Eventually we'd like most data fetching to happen through Suspense but it will take a long time until all integrations are ready. In practice we expect it to be adopted very incrementally, and often through layers like Apollo or Relay rather than directly. Missing higher level APIs aren't the only obstacle — there are also some important UI patterns we don't support yet such as [showing progress indicator outside of the loading view hierarchy](https://github.com/facebook/react/issues/14248). As always, we will communicate our progress in the release notes on this blog.
+最终我们希望通过 Suspense 来获取大多数数据，但是集成所有的部件需要很长时间。在实践中，我们希望它被可以一步步的引进，多数时候是通过 Apollo 和 Relay，而不是直接使用。缺少一些上层 API 并不是唯一的障碍 —— 我们也不支持一些重要的 UI 模式，比如[显示加载结构之外的进度指示器](https://github.com/facebook/react/issues/14248)。一如往常，我们会在博客中的发行说明中提供我们的进度。
 
-**Status in React DOM and React Native:** Technically, a compatible cache would already work with `<React.Suspense>` in React 16.6. However, we don't expect to have a good cache implementation until this React minor release. If you're feeling adventurous, you can try to write your own cache by looking at the React Cache alphas. However, note that the mental model is sufficiently different that there's a high risk of misunderstanding it until the docs are ready.
+**在 React DOM 和 React Native 中的进度：** 技术上来说，一个与 `<React.Suspense>` 兼容的缓存已经存在于 React 16.6 中了。不过直到这个 React 的小更新，我们不会拥有一个好的缓存实现。如果你想探索一下，你可以参考 React Cache 的 alpha 版本来写你自己的缓存。不过请注意，其中的思路是完全不同的，直到文档完成之前，你将会有很大的可能误解 React Cache 的代码。
 
-**Status in React DOM Server:** Suspense is not available in the server renderer yet. As we mentioned earlier, we've started work on a new asynchronous server renderer that will support Suspense, but it's a large project and will take a good chunk of 2019 to complete.
+**React DOM Server 中的进度：** 服务器端渲染器还不支持 Suspense。正如前文提及的，我们开始了开发一个新的支持 Suspense 的异步服务器端渲染器的工作。不过，这是一个大型项目，我们需要使用2019年的大部分时间来完成它。
 
-**Recommendation:** Wait for this minor React release in order to use Suspense for data fetching. Don’t try to use Suspense features in 16.6 for it; it’s not supported. However, your existing `<Suspense>` components for code splitting will be able to show loading states for data too when Suspense for Data Fetching becomes officially supported.
+**建议：** 等待 React 的小更新以使用 Suspense 来获取数据。不要使用 16.6 中的 Suspense 功能来获取数据，我们还不支持它。不过在将来，当我们官方支持使用 Suspense 来获取数据的时候，你可以现存的用来分割代码的 `<Suspense>` 组件来显示加载指示器。
 
-## Other Projects {#other-projects}
+## 其他项目 {#other-projects}
 
-### Modernizing React DOM {#modernizing-react-dom}
+### 现代化 React DOM {#modernizing-react-dom}
 
-We started an investigation into [simplifying and modernizing](https://github.com/facebook/react/issues/13525) ReactDOM, with a goal of reduced bundle size and aligning closer with the browser behavior. It is still early to say which specific bullet points will "make it" because the project is in an exploratory phase. We will communicate our progress on that issue.
+我们以减少包的大小和更加契合浏览器的行为为目标开始研究 [简化和现代化](https://github.com/facebook/react/issues/13525) ReactDOM。要说有哪些具体的内容会被加入其中现在还为时过早，以为这个项目还在一个探索阶段。我们会在以后提供我们的进展。
 
-### Suspense for Server Rendering {#suspense-for-server-rendering}
+### 服务器渲染中的 Suspense {#suspense-for-server-rendering}
 
-We started designing a new server renderer that supports Suspense (including waiting for asynchronous data on the server without double rendering) and progressively loading and hydrating page content in chunks for best user experience. You can watch an overview of its early prototype in [this talk](https://www.youtube.com/watch?v=z-6JC0_cOns). The new server renderer is going to be our major focus in 2019, but it's too early to say anything about its release schedule. Its development, as always, [will happen on GitHub](https://github.com/facebook/react/pulls?utf8=%E2%9C%93&q=is%3Apr+is%3Aopen+fizz).
+我们已经开始了新的支持 Suspense（包括在服务器等待异步数据而不需要二次渲染）和以逐块的形式加载页面内容已提供更好的用户体验的服务器渲染器的设计。你可以在[这个演讲](https://www.youtube.com/watch?v=z-6JC0_cOns)中看到这个早期原型的一个简介。这个新的服务器渲染器是我们2019年的工作重点，不过具体的时间表还言之过早。和往常一样，它的开发将在[GitHub 上](https://github.com/facebook/react/pulls?utf8=%E2%9C%93&q=is%3Apr+is%3Aopen+fizz)。
 
 -----
 
-And that's about it! As you can see, there's a lot here to keep us busy but we expect much progress in the coming months.
+以上就是全部啦！终于你看到的，我们忙于很多项目，但是我们在未来的几个月中期待很多进展。
 
-We hope this post gives you an idea of what we're working on, what you can use today, and what you can expect to use in the future. While there's a lot of discussion about new features on social media platforms, you won't miss anything important if you read this blog.
+我们希望这篇文章可以让你对我们现在的工作有一些了解，你现在可以使用什么，你可以在未来期待什么。尽管在社交平台中有很多关于新功能的讨论，如果你读了这篇文章，你将不会错过任何重要的内容。
 
-We're always open to feedback, and love to hear from you in the [RFC repository](https://github.com/reactjs/rfcs), [the issue tracker](https://github.com/facebook/react/issues), and [on Twitter](https://mobile.twitter.com/reactjs).
+我们向来欢迎意见和建议。欢迎在 [RFC 知识库](https://github.com/reactjs/rfcs)，[问题跟踪器](https://github.com/facebook/react/issues)，和 [推特](https://mobile.twitter.com/reactjs)中给我们留言。
