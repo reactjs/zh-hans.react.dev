@@ -693,11 +693,7 @@ function Counter() {
 
 在一些更加复杂的场景中（比如一个 state 依赖于另一个 state），尝试用 [`useReducer` Hook](/docs/hooks-reference.html#usereducer) 把 state 更新逻辑移到 effect 之外。[这篇文章](https://adamrackis.dev/state-and-use-reducer/) 提供了一个你该如何做到这一点的案例。 **`useReducer` 的 `dispatch` 的身份永远是稳定的** —— 即使 reducer 函数是定义在组件内部并且依赖 props。
 
-<<<<<<< HEAD
 万不得已的情况下，如果你想要类似 class 中的 `this` 的功能，你可以 [使用一个 ref](/docs/hooks-faq.html#is-there-something-like-instance-variables) 来保存一个可变的变量。然后你就可以对它进行读写了。举个例子：
-=======
-As a last resort, if you want something like `this` in a class, you can [use a ref](/docs/hooks-faq.html#is-there-something-like-instance-variables) to hold a mutable variable. Then you can write and read to it. For example:
->>>>>>> 1f27bba9484f26ec6dab383b09730ad7ed59f732
 
 ```js{2-6,10-11,16}
 function Example(props) {
