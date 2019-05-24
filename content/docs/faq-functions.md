@@ -83,7 +83,7 @@ class Foo extends Component {
 
 >**注意：**
 >
->在 render 方法中使用箭头函数也会在每次组件渲染时创建一个新的函数，可能会影响性能（参见下文）。
+>在 render 方法中使用箭头函数也会在每次组件渲染时创建一个新的函数，这会破坏基于恒等比较的性能优化。
 
 ### 可以在 render 方法中使用箭头函数吗？{#is-it-ok-to-use-arrow-functions-in-render-methods}
 

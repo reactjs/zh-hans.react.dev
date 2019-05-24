@@ -1,6 +1,19 @@
-# zh-hans.reactjs.org
+# [React 中文文档](https://zh-hans.reactjs.org/)
 
-This repo contains the source code and documentation powering [reactjs.org](https://reactjs.org/).
+此仓库包含 [React 中文文档](https://zh-hans.reactjs.org/) 的文档及源码，并由官方实时同步。
+
+## 关于翻译内容反馈
+
+翻译基本接近尾声，但文档中也有可能存在疏漏之处。<br><br>
+如在阅读文档中，遇到文档的问题可直接 PR 修改。<br>也可添加反馈群。我们会及时给出反馈。<br><br>
+当然也可以在群里交流 React 相关的交流心得，非常欢迎。<br><br>
+希望大家共同把这个文档维护好，造福更多 React 开发者。<br>
+
+| 扫码添加 React 文档交流反馈群 | 添加 `docschina-bot` |
+| :---------------: | :------------------: |
+| ![image](https://user-images.githubusercontent.com/13861040/55455847-de942c80-5617-11e9-9762-ae2ed3591969.png) | ![image](https://user-images.githubusercontent.com/13861040/55455900-126f5200-5618-11e9-977a-9c6a0c621eb9.png) | 
+
+> 注：添加机器人成功后（添加时回复没用哟），向机器人回复关键字 `react`，即可加群。
 
 ## 关于中文翻译工作：
 

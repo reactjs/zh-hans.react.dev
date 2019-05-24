@@ -1,20 +1,20 @@
 ---
 id: hooks-state
-title: Using the State Hook
+title: 使用 State Hook
 permalink: docs/hooks-state.html
 next: hooks-effect.html
 prev: hooks-overview.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*Hook* 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。
 
-The [previous page](/docs/hooks-intro.html) introduced Hooks with this example:
+[Hook 简介章节](/docs/hooks-intro.html)中使用下面的例子介绍了 Hook：
 
 ```js{4-5}
 import React, { useState } from 'react';
 
 function Example() {
-  // Declare a new state variable, which we'll call "count"
+  // 声明一个叫 "count" 的 state 变量
   const [count, setCount] = useState(0);
 
   return (
@@ -28,11 +28,11 @@ function Example() {
 }
 ```
 
-We'll start learning about Hooks by comparing this code to an equivalent class example.
+我们将通过将这段代码与一个等价的 class 示例进行比较来开始学习 Hook。
 
-## Equivalent Class Example {#equivalent-class-example}
+## 等价的 class 示例 {#equivalent-class-example}
 
-If you used classes in React before, this code should look familiar:
+如果你之前在 React 中使用过 class，这段代码看起来应该很熟悉：
 
 ```js
 class Example extends React.Component {
@@ -56,39 +56,39 @@ class Example extends React.Component {
 }
 ```
 
-The state starts as `{ count: 0 }`, and we increment `state.count` when the user clicks a button by calling `this.setState()`. We'll use snippets from this class throughout the page.
+state 初始值为 `{ count: 0 }` ，当用户点击按钮后，我们通过调用 `this.setState()` 来增加 `state.count`。整个章节中都将使用该 class 的代码片段做示例。
 
->Note
+>注意
 >
->You might be wondering why we're using a counter here instead of a more realistic example. This is to help us focus on the API while we're still making our first steps with Hooks.
+>你可能想知道为什么我们在这里使用一个计数器例子而不一个更实际的示例。因为我们还只是初步接触 Hook ，这可以帮助我们将注意力集中到 API 本身。
 
-## Hooks and Function Components {#hooks-and-function-components}
+## Hook 和函数组件 {#hooks-and-function-components}
 
-As a reminder, function components in React look like this:
+复习一下， React 的函数组件是这样的：
 
 ```js
 const Example = (props) => {
-  // You can use Hooks here!
+  // 你可以在这使用 Hook
   return <div />;
 }
 ```
 
-or this:
+或是这样：
 
 ```js
 function Example(props) {
-  // You can use Hooks here!
+  // 你可以在这使用 Hook
   return <div />;
 }
 ```
 
-You might have previously known these as "stateless components". We're now introducing the ability to use React state from these, so we prefer the name "function components".
+你之前可能把它们叫做“无状态组件”。但现在我们为它们引入了使用 React state 的能力，所以我们更喜欢叫它"函数组件"。
 
-Hooks **don't** work inside classes. But you can use them instead of writing classes.
+Hook 在 class 内部是**不**起作用的。但你可以使用它们来取代 class 。
 
-## What's a Hook? {#whats-a-hook}
+## Hook 是什么？ {#whats-a-hook}
 
-Our new example starts by importing the `useState` Hook from React:
+在新示例中，首选引入 React 中 `useState` 的 Hook
 
 ```js{1}
 import React, { useState } from 'react';
@@ -98,17 +98,17 @@ function Example() {
 }
 ```
 
-**What is a Hook?** A Hook is a special function that lets you "hook into" React features. For example, `useState` is a Hook that lets you add React state to function components. We'll learn other Hooks later.
+**Hook 是什么？** Hook 是一个特殊的函数，它可以让你“钩入” React 的特性。例如，`useState` 是允许你在 React 函数组件中添加 state 的 Hook。稍后我们将学习其他 Hook。
 
-**When would I use a Hook?** If you write a function component and realize you need to add some state to it, previously you had to convert it to a class. Now you can use a Hook inside the existing function component. We're going to do that right now!
+**什么时候我会用 Hook？** 如果你在编写函数组件并意识到需要向其添加一些 state，以前的做法是必须将其它转化为 class。现在你可以在现有的函数组件中使用 Hook。
 
->Note:
+>注意：
 >
->There are some special rules about where you can and can't use Hooks within a component. We'll learn them in [Rules of Hooks](/docs/hooks-rules.html).
+>在组件中有些特殊的规则，规定什么地方能使用 Hook，什么地方不能使用。我们将在 [Hook 规则](/docs/hooks-rules.html)中学习它们。
 
-## Declaring a State Variable {#declaring-a-state-variable}
+## 声明 State 变量  {#declaring-a-state-variable}
 
-In a class, we initialize the `count` state to `0` by setting `this.state` to `{ count: 0 }` in the constructor:
+在 class 中，我们通过在构造函数中设置 `this.state` 为 `{ count: 0 }` 来初始化 `count` state 为 `0`：
 
 ```js{4-6}
 class Example extends React.Component {
@@ -120,58 +120,58 @@ class Example extends React.Component {
   }
 ```
 
-In a function component, we have no `this`, so we can't assign or read `this.state`. Instead, we call the `useState` Hook directly inside our component:
+在函数组件中，我们没有 `this`，所以我们不能分配或读取 `this.state`。我们直接在组件中调用 `useState` Hook：
 
 ```js{4,5}
 import React, { useState } from 'react';
 
 function Example() {
-  // Declare a new state variable, which we'll call "count"
+  // 声明一个叫 “count” 的 state 变量
   const [count, setCount] = useState(0);
 ```
 
-**What does calling `useState` do?** It declares a "state variable". Our variable is called `count` but we could call it anything else, like `banana`. This is a way to "preserve" some values between the function calls — `useState` is a new way to use the exact same capabilities that `this.state` provides in a class. Normally, variables "disappear" when the function exits but state variables are preserved by React.
+**`调用 useState` 方法的时候做了什么?** 它定义一个 “state 变量”。我们的变量叫 `count`， 但是我们可以叫他任何名字，比如 `banana`。这是一种在函数调用时保存变量的方式 —— `useState` 是一种新方法，它与 class 里面的 `this.state` 提供的功能完全相同。一般来说，在函数退出后变量就就会"消失"，而 state 中的变量会被 React 保留。
 
-**What do we pass to `useState` as an argument?** The only argument to the `useState()` Hook is the initial state. Unlike with classes, the state doesn't have to be an object. We can keep a number or a string if that's all we need. In our example, we just want a number for how many times the user clicked, so pass `0` as initial state for our variable. (If we wanted to store two different values in state, we would call `useState()` twice.)
+**`useState` 需要哪些参数？** `useState()` 方法里面唯一的参数就是初始 state。不同于 class 的是，我们可以按照需要使用数字或字符串对其进行赋值，而不一定是对象。在示例中，只需使用数字来记录用户点击次数，所以我们传了 `0` 作为变量的初始 state。（如果我们想要在 state 中存储两个不同的变量，只需调用 `useState()` 两次即可。）
 
-**What does `useState` return?** It returns a pair of values: the current state and a function that updates it. This is why we write `const [count, setCount] = useState()`. This is similar to `this.state.count` and `this.setState` in a class, except you get them in a pair. If you're not familiar with the syntax we used, we'll come back to it [at the bottom of this page](/docs/hooks-state.html#tip-what-do-square-brackets-mean).
+**`useState` 方法的返回值是什么？** 返回值为：当前 state 以及更新 state 的函数。这就是我们写 `const [count, setCount] = useState()` 的原因。这与 class 里面 `this.state.count` 和 `this.setState` 类似，唯一区别就是你需要成对的获取它们。如果你不熟悉我们使用的语法，我们会在[本章节的底部](/docs/hooks-state.html#tip-what-do-square-brackets-mean)介绍它。
 
-Now that we know what the `useState` Hook does, our example should make more sense:
+既然我们知道了 `useState` 的作用，我们的示例应该更容易理解了：
 
 ```js{4,5}
 import React, { useState } from 'react';
 
 function Example() {
-  // Declare a new state variable, which we'll call "count"
+  // 声明一个叫 "count" 的 state 变量
   const [count, setCount] = useState(0);
 ```
 
-We declare a state variable called `count`, and set it to `0`. React will remember its current value between re-renders, and provide the most recent one to our function. If we want to update the current `count`, we can call `setCount`.
+我们声明了一个叫 `count` 的 state 变量，然后把它设为 `0`。React 会在重复渲染时记住它当前的值，并且提供最新的值给我们的函数。我们可以通过调用 `setCount` 来更新当前的 `count`。
 
->Note
+>注意
 >
->You might be wondering: why is `useState` not named `createState` instead?
+>你可能想知道：为什么叫 `useState` 而不叫 `createState`?
 >
->"Create" wouldn't be quite accurate because the state is only created the first time our component renders. During the next renders, `useState` gives us the current state. Otherwise it wouldn't be "state" at all! There's also a reason why Hook names *always* start with `use`. We'll learn why later in the [Rules of Hooks](/docs/hooks-rules.html).
+>"Create" 可能不是很准确，因为 state 只在组件首次渲染的时候被创建。在下一次重新渲染时，`useState` 返回给我们当前的 state。否则它就不是 “state”了！这也是 Hook 的名字*总是*以 `use` 开头的一个原因。我们将在后面的 [Hook 规则](/docs/hooks-rules.html)中了解原因。
 
-## Reading State {#reading-state}
+## 读取 State {#reading-state}
 
-When we want to display the current count in a class, we read `this.state.count`:
+当我们想在 class 中显示当前的 count，我们读取 `this.state.count`：
 
 ```js
   <p>You clicked {this.state.count} times</p>
 ```
 
-In a function, we can use `count` directly:
+在函数中，我们可以直接用 `count`:
 
 
 ```js
   <p>You clicked {count} times</p>
 ```
 
-## Updating State {#updating-state}
+## 更新 State {#updating-state}
 
-In a class, we need to call `this.setState()` to update the `count` state:
+在 class 中，我们需要调用 `this.setState()` 来更新 `count` 值：
 
 ```js{1}
   <button onClick={() => this.setState({ count: this.state.count + 1 })}>
@@ -179,7 +179,7 @@ In a class, we need to call `this.setState()` to update the `count` state:
   </button>
 ```
 
-In a function, we already have `setCount` and `count` as variables so we don't need `this`:
+在函数中，我们已经有了 `setCount` 和 `count` 变量，所以我们不需要 `this`:
 
 ```js{1}
   <button onClick={() => setCount(count + 1)}>
@@ -187,9 +187,9 @@ In a function, we already have `setCount` and `count` as variables so we don't n
   </button>
 ```
 
-## Recap {#recap}
+## 总结 {#recap}
 
-Let's now **recap what we learned line by line** and check our understanding.
+现在让我们来**仔细回顾一下学到的知识**，看下我们是否真正理解了。
 
 <!--
   I'm not proud of this line markup. Please somebody fix this.
@@ -212,69 +212,69 @@ Let's now **recap what we learned line by line** and check our understanding.
 14:  }
 ```
 
-* **Line 1:** We import the `useState` Hook from React. It lets us keep local state in a function component.
-* **Line 4:** Inside the `Example` component, we declare a new state variable by calling the `useState` Hook. It returns a pair of values, to which we give names. We're calling our variable `count` because it holds the number of button clicks. We initialize it to zero by passing `0` as the only `useState` argument. The second returned item is itself a function. It lets us update the `count` so we'll name it `setCount`.
-* **Line 9:** When the user clicks, we call `setCount` with a new value. React will then re-render the `Example` component, passing the new `count` value to it.
+* **第一行:** 引入 React 中的 `useState` Hook。它让我们在函数组件中存储内部 state。
+* **第四行:** 在 `Example` 组件内部，我们通过调用 `useState` Hook 声明了一个新的 state 变量。它返回一对值给到我们命名的变量上。我们把变量命名为 `count`，因为它存储的是点击次数。我们通过传 `0` 作为 `useState` 唯一的参数来将其初始化为 `0`。第二个返回的值本身就是一个函数。它让我们可以更新 `count` 的值，所以我们叫它 `setCount`。
+* **第九行:** 当用户点击按钮后，我们传递一个新的值给 `setCount`。React 会重新渲染 `Example` 组件，并把最新的 `count` 传给它。
 
-This might seem like a lot to take in at first. Don't rush it! If you're lost in the explanation, look at the code above again and try to read it from top to bottom. We promise that once you try to "forget" how state works in classes, and look at this code with fresh eyes, it will make sense.
+乍一看这似乎有点太多了。不要急于求成！如果你有不理解的地方，请再次查看以上代码并从头到尾阅读。我们保证一旦你试着"忘记" class 里面 state 是如何工作的，并用新的眼光看这段代码，就容易理解了。 
 
-### Tip: What Do Square Brackets Mean? {#tip-what-do-square-brackets-mean}
+### 提示：方括号有什么用？ {#tip-what-do-square-brackets-mean}
 
-You might have noticed the square brackets when we declare a state variable:
+你可能注意到我们用方括号定义了一个 state 变量
 
 ```js
   const [count, setCount] = useState(0);
 ```
 
-The names on the left aren't a part of the React API. You can name your own state variables:
+等号左边名字并不是 React API 的部分，你可以自己取名字：
 
 ```js
   const [fruit, setFruit] = useState('banana');
 ```
 
-This JavaScript syntax is called ["array destructuring"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring). It means that we're making two new variables `fruit` and `setFruit`, where `fruit` is set to the first value returned by `useState`, and `setFruit` is the second. It is equivalent to this code:
+这种 JavaScript 语法叫[数组解构](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring)。它意味着我们同时创建了 `fruit` 和 `setFruit` 两个变量，`fruit` 的值为 `useState` 返回的第一个值，`setFruit` 是返回的第二个值。它等价于下面的代码：
 
 ```js
-  var fruitStateVariable = useState('banana'); // Returns a pair
-  var fruit = fruitStateVariable[0]; // First item in a pair
-  var setFruit = fruitStateVariable[1]; // Second item in a pair
+  var fruitStateVariable = useState('banana'); // 返回一个有两个元素的数组
+  var fruit = fruitStateVariable[0]; // 数组里的第一个值
+  var setFruit = fruitStateVariable[1]; // 数组里的第二个值
 ```
 
-When we declare a state variable with `useState`, it returns a pair — an array with two items. The first item is the current value, and the second is a function that lets us update it. Using `[0]` and `[1]` to access them is a bit confusing because they have a specific meaning. This is why we use array destructuring instead.
+当我们使用 `useSatate` 定义 state 变量时候，它返回一个有两个值的数组。第一个值是当前的 state，第二个值是更新 state 的函数。使用 `[0]` 和 `[1]` 来访问有点令人困惑，因为它们有特定的含义。这就是我们使用数组解构的原因。
 
->Note
+>注意
 >
->You might be curious how React knows which component `useState` corresponds to since we're not passing anything like `this` back to React. We'll answer [this question](/docs/hooks-faq.html#how-does-react-associate-hook-calls-with-components) and many others in the FAQ section.
+>你可能会好奇 React 怎么知道 `useState` 对应的是哪个组件，因为我们并没有传递 `this` 给 React。我们将在 FAQ 部分回答[这个问题](/docs/hooks-faq.html#how-does-react-associate-hook-calls-with-components)以及许多其他问题。
 
-### Tip: Using Multiple State Variables {#tip-using-multiple-state-variables}
+### 提示：使用多个 state 变量 {#tip-using-multiple-state-variables}
 
-Declaring state variables as a pair of `[something, setSomething]` is also handy because it lets us give *different* names to different state variables if we want to use more than one:
+将 state 变量声明为一对 `[something, setSomething]` 也很方便，因为如果我们想使用多个 state 变量，它允许我们给不同的 state 变量取不同的名称：
 
 ```js
 function ExampleWithManyStates() {
-  // Declare multiple state variables!
+  // 声明多个 state 变量
   const [age, setAge] = useState(42);
   const [fruit, setFruit] = useState('banana');
-  const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+  const [todos, setTodos] = useState([{ text: '学习 Hook' }]);
 ```
 
-In the above component, we have `age`, `fruit`, and `todos` as local variables, and we can update them individually:
+在以上组件中，我们有局部变量 `age`，`fruit` 和 `todos`，并且我们可以单独更新它们：
 
 ```js
   function handleOrangeClick() {
-    // Similar to this.setState({ fruit: 'orange' })
+    // 和 this.setState({ fruit: 'orange' }) 类似
     setFruit('orange');
   }
 ```
 
-You **don't have to** use many state variables. State variables can hold objects and arrays just fine, so you can still group related data together. However, unlike `this.setState` in a class, updating a state variable always *replaces* it instead of merging it.
+你**不必**使用多个 state 变量。State 变量可以很好地存储对象和数组，因此，你仍然可以将相关数据分为一组。然而，不像 class 中的 `this.setState`，更新 state 变量总是*替换*它而不是合并它。
 
-We provide more recommendations on splitting independent state variables [in the FAQ](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables).
+我们[在 FAQ 中](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables)提供了更多关于分离独立 state 变量的建议。
 
-## Next Steps {#next-steps}
+## 下一步 {#next-steps}
 
-On this page we've learned about one of the Hooks provided by React, called `useState`. We're also sometimes going to refer to it as the "State Hook". It lets us add local state to React function components -- which we did for the first time ever!
+从上述内容中，我们了解了 React 提供的 `useState` Hook，有时候我们也叫它 “State Hook”。它让我们在 React 函数组件上添加内部 state —— 这是我们首次尝试。
 
-We also learned a little bit more about what Hooks are. Hooks are functions that let you "hook into" React features from function components. Their names always start with `use`, and there are more Hooks we haven't seen yet.
+我们还学到了一些知识比如什么是 Hook。Hook 是能让你在函数组件中“钩入” React 特性的函数。它们名字通常都以 `use` 开始，还有更多 Hook 等着我们去探索。
 
-**Now let's continue by [learning the next Hook: `useEffect`.](/docs/hooks-effect.html)** It lets you perform side effects in components, and is similar to lifecycle methods in classes.
+**现在我们将[学习另一个 Hook: `useEffect`](/docs/hooks-effect.html)。** 它能在函数组件中执行副作用，并且它与 class 中的生命周期函数极为类似。
