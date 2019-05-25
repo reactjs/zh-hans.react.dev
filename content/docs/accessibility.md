@@ -149,12 +149,7 @@ function ListItem({ item }) {
 
 为了帮助和提速键盘导航，我们提供了一种机制，可以帮助用户跳过一些导航段落。
 
-<<<<<<< HEAD
-跳转链接（Skiplinks），或者说跳转导航链接（Skip Navigation Links）是一种隐藏的导航链接，它只会在使用键盘导航时可见。
-使用网页内部锚点和一些式样可以很容易地实现它：
-=======
-Skiplinks or Skip Navigation Links are hidden navigation links that only become visible when keyboard users interact with the page. They are very easy to implement with internal page anchors and some styling:
->>>>>>> 04f3dc58db98b6350912a2eff3abe6d20b31df3a
+跳转链接（Skiplinks），或者说跳转导航链接（Skip Navigation Links）是一种隐藏的导航链接，它只会在使用键盘导航时可见。使用网页内部锚点和一些式样可以很容易地实现它：
 
 - [WebAIM - 跳转导航链接（Skip Navigation Links）](https://webaim.org/techniques/skipnav/)
 
@@ -166,12 +161,7 @@ Skiplinks or Skip Navigation Links are hidden navigation links that only become 
 
 ### 使用程序管理焦点 {#programmatically-managing-focus}
 
-<<<<<<< HEAD
-我们的 React 应用在运行时会持续更改 HTML DOM，有时这将会导致键盘焦点的丢失或者是被设置到了意料之外的元素上。
-为了修复这类问题，我们需要以编程的方式让键盘聚焦到正确的方向上。比方说，在一个弹窗被关闭的时候，重新设置键盘焦点到弹窗的打开按钮上。
-=======
-Our React applications continuously modify the HTML DOM during runtime, sometimes leading to keyboard focus being lost or set to an unexpected element. In order to repair this, we need to programmatically nudge the keyboard focus in the right direction. For example, by resetting keyboard focus to a button that opened a modal window after that modal window is closed.
->>>>>>> 04f3dc58db98b6350912a2eff3abe6d20b31df3a
+我们的 React 应用在运行时会持续更改 HTML DOM，有时这将会导致键盘焦点的丢失或者是被设置到了意料之外的元素上。为了修复这类问题，我们需要以编程的方式让键盘聚焦到正确的方向上。比方说，在一个弹窗被关闭的时候，重新设置键盘焦点到弹窗的打开按钮上。
 
 MDN Web 文档关注了这个问题并向我们解释了可以如何搭建[可用键盘导航的 JavaScript 部件](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets)。
 
@@ -209,12 +199,7 @@ class CustomTextInput extends React.Component {
  }
  ```
 
-<<<<<<< HEAD
-有时，父组件需要把焦点设置在其子组件的一个元素上。
-我们可以通过在子组件上设置一个特殊的 prop 来[对父组件暴露 DOM refs](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components) 从而把父组件的 ref 传向子节点的 DOM 节点。
-=======
-Sometimes a parent component needs to set focus to an element in a child component. We can do this by [exposing DOM refs to parent components](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components) through a special prop on the child component that forwards the parent's ref to the child's DOM node.
->>>>>>> 04f3dc58db98b6350912a2eff3abe6d20b31df3a
+有时，父组件需要把焦点设置在其子组件的一个元素上。我们可以通过在子组件上设置一个特殊的 prop 来[对父组件暴露 DOM refs](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components) 从而把父组件的 ref 传向子节点的 DOM 节点。
 
 ```javascript{4,12,16}
 function CustomTextInput(props) {
@@ -241,19 +226,11 @@ class Parent extends React.Component {
 this.inputElement.current.focus();
 ```
 
-<<<<<<< HEAD
-当使用 HOC 来扩展组件时，我们建议使用 React 的 `forwardRef` 函数来向被包裹的组件[转发 ref](/docs/forwarding-refs.html)。
-如果第三方的 HOC 不支持转发 ref，上面的方法仍可以作为一种备选方案。
+当使用 HOC 来扩展组件时，我们建议使用 React 的 `forwardRef` 函数来向被包裹的组件[转发 ref](/docs/forwarding-refs.html)。如果第三方的 HOC 不支持转发 ref，上面的方法仍可以作为一种备选方案。
 
 [react-aria-modal](https://github.com/davidtheclark/react-aria-modal)  提供了一个很好的焦点管理的例子。
 这是一个少有的完全无障碍的模态窗口的例子。它不仅仅把初始焦点设置在了取消按钮上（防止键盘用户意外激活成功操作）和把键盘焦点固定在了窗口之内，
 关闭窗口时它也会把键盘焦点重置到打开窗口的那一个元素上。
-=======
-When using a HOC to extend components, it is recommended to [forward the ref](/docs/forwarding-refs.html) to the wrapped component using the `forwardRef` function of React. If a third party HOC does not implement ref forwarding, the above pattern can still be used as a fallback.
-
-A great focus management example is the [react-aria-modal](https://github.com/davidtheclark/react-aria-modal). This is a relatively rare example of a fully accessible modal window. Not only does it set initial focus on
-the cancel button (preventing the keyboard user from accidentally activating the success action) and trap keyboard focus inside the modal, it also resets focus back to the element that initially triggered the modal.
->>>>>>> 04f3dc58db98b6350912a2eff3abe6d20b31df3a
 
 >注意:
 >
@@ -262,12 +239,7 @@ the cancel button (preventing the keyboard user from accidentally activating the
 
 ## 鼠标和指针事件 {#mouse-and-pointer-events}
 
-<<<<<<< HEAD
-确保任何可以使用鼠标和指针完成的功能也可以只通过键盘完成。
-只依靠指针会产生很多使键盘用户无法使用你的应用的情况。
-=======
-Ensure that all functionality exposed through a mouse or pointer event can also be accessed using the keyboard alone. Depending only on the pointer device will lead to many cases where keyboard users cannot use your application.
->>>>>>> 04f3dc58db98b6350912a2eff3abe6d20b31df3a
+确保任何可以使用鼠标和指针完成的功能也可以只通过键盘完成。只依靠指针会产生很多使键盘用户无法使用你的应用的情况。
 
 为了说明这一点，让我们看一下由点击事件引起的破坏无障碍访问的典型示例：外部点击模式，用户可以通过点击元素以外的地方来关闭已打开的弹出框。
 
@@ -324,12 +296,7 @@ constructor(props) {
 }
 ```
 
-<<<<<<< HEAD
-当用户使用指针设备，比如鼠标时，这样做没有问题。但是当只使用键盘时，因为 `window` 对象不会接受到 `click` 事件，用户将无法使用 tab 切换到下一个元素。
-这样会导致用户无法使用你应用中的一些内容，导致不完整的用户体验。
-=======
-This may work fine for users with pointer devices, such as a mouse, but operating this with the keyboard alone leads to broken functionality when tabbing to the next element as the `window` object never receives a `click` event. This can lead to obscured functionality which blocks users from using your application.
->>>>>>> 04f3dc58db98b6350912a2eff3abe6d20b31df3a
+当用户使用指针设备，比如鼠标时，这样做没有问题。但是当只使用键盘时，因为 `window` 对象不会接受到 `click` 事件，用户将无法使用 tab 切换到下一个元素。这样会导致用户无法使用你应用中的一些内容，导致不完整的用户体验。
 
 <img src="../images/docs/outerclick-with-keyboard.gif" alt="一个通过按钮打开的使用了外部点击模式的弹窗列表。用键盘操作时，我们可以看到弹窗没有在失去焦点时被关闭，遮挡了屏幕上的其他元素。" />
 
@@ -395,30 +362,15 @@ class BlurExample extends React.Component {
 }
 ```
 
-<<<<<<< HEAD
-以上代码使得键盘和鼠标用户都可以使用我们的功能。请注意我们添加了 `aria-*` props 以服务屏幕朗读器用户。
-作为一个简单的例子，我们没有实现使用`方向键`来与弹窗互动。
-=======
-This code exposes the functionality to both pointer device and keyboard users. Also note the added `aria-*` props to support screen-reader users. For simplicity's sake the keyboard events to enable `arrow key` interaction of the popover options have not been implemented.
->>>>>>> 04f3dc58db98b6350912a2eff3abe6d20b31df3a
+以上代码使得键盘和鼠标用户都可以使用我们的功能。请注意我们添加了 `aria-*` props 以服务屏幕朗读器用户。作为一个简单的例子，我们没有实现使用`方向键`来与弹窗互动。
 
 <img src="../images/docs/blur-popover-close.gif" alt="一个针对鼠标和键盘用户都正确关闭的弹窗。" />
 
-<<<<<<< HEAD
-这只是众多只依赖于鼠标和指针的程序破坏键盘用户的例子之一。始终使用键盘测试会让你迅速发现这些问题，
-你可以使用适用于键盘的事件处理器来修复这些问题。
-=======
-This is one example of many cases where depending on only pointer and mouse events will break functionality for keyboard users. Always testing with the keyboard will immediately highlight the problem areas which can then be fixed by using keyboard aware event handlers.
->>>>>>> 04f3dc58db98b6350912a2eff3abe6d20b31df3a
+这只是众多只依赖于鼠标和指针的程序破坏键盘用户的例子之一。始终使用键盘测试会让你迅速发现这些问题，你可以使用适用于键盘的事件处理器来修复这些问题。
 
 ## 更复杂的部件 {#more-complex-widgets}
 
-<<<<<<< HEAD
-一个更加复杂的用户体验并不意味着更加难以访问。通过尽可能接近 HTML 编程，无障碍访问会变得更加容易，
-即使最复杂的部件也可以实现无障碍访问。
-=======
-A more complex user experience should not mean a less accessible one. Whereas accessibility is most easily achieved by coding as close to HTML as possible, even the most complex widget can be coded accessibly.
->>>>>>> 04f3dc58db98b6350912a2eff3abe6d20b31df3a
+一个更加复杂的用户体验并不意味着更加难以访问。通过尽可能接近 HTML 编程，无障碍访问会变得更加容易，即使最复杂的部件也可以实现无障碍访问。
 
 这里我们需要了解 [ARIA Roles](https://www.w3.org/TR/wai-aria/#roles) 和 [ARIA States and Properties](https://www.w3.org/TR/wai-aria/#states_and_properties) 的知识。
 其中有包含了多种 HTML 属性的工具箱，这些 HTML 属性被 JSX 完全支持并且可以帮助我们搭建完全无障碍，功能强大的 React 组件。
@@ -477,26 +429,13 @@ A more complex user experience should not mean a less accessible one. Whereas ac
 
 ### 开发辅助 {#development-assistance}
 
-<<<<<<< HEAD
-我们可以直接在 JSX 代码中检测一些无障碍复制功能。通常支持 JSX 的 IDE 会针对 ARIA roles，states 和 properties 提供智能检测。
-我们也可以使用以下工具：
+我们可以直接在 JSX 代码中检测一些无障碍复制功能。通常支持 JSX 的 IDE 会针对 ARIA roles，states 和 properties 提供智能检测。我们也可以使用以下工具：
 
 #### eslint-plugin-jsx-a11y {#eslint-plugin-jsx-a11y}
 
-ESLint 中的 [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) 插件为你的 JSX 中的无障碍问题提供了 AST 的语法检测反馈。
-许多 IDE 都允许你把这些发现直接集成到代码分析和源文件窗口中。
+ESLint 中的 [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) 插件为你的 JSX 中的无障碍问题提供了 AST 的语法检测反馈。许多 IDE 都允许你把这些发现直接集成到代码分析和源文件窗口中。
 
-[创建 React 应用](https://github.com/facebookincubator/create-react-app)中使用了这个插件中的一部分规则。
-如果你想启用更多的无障碍规则，你可以在项目的根目录中创建一个有如下内容的 `.eslintrc`  文件：
-=======
-We can check some accessibility features directly in our JSX code. Often intellisense checks are already provided in JSX aware IDE's for the ARIA roles, states and properties. We also have access to the following tool:
-
-#### eslint-plugin-jsx-a11y {#eslint-plugin-jsx-a11y}
-
-The [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) plugin for ESLint provides AST linting feedback regarding accessibility issues in your JSX. Many IDE's allow you to integrate these findings directly into code analysis and source code windows.
-
-[Create React App](https://github.com/facebookincubator/create-react-app) has this plugin with a subset of rules activated. If you want to enable even more accessibility rules, you can create an `.eslintrc` file in the root of your project with this content:
->>>>>>> 04f3dc58db98b6350912a2eff3abe6d20b31df3a
+[Create React App](https://github.com/facebookincubator/create-react-app)中使用了这个插件中的一部分规则。如果你想启用更多的无障碍规则，你可以在项目的根目录中创建一个有如下内容的 `.eslintrc`  文件：
 
   ```json
   {
