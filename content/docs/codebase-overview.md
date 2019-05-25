@@ -213,8 +213,7 @@ Reconciler没有单独的包，因为他们暂时没有公共API。相反，它�
 * 能够从`render()`中返回多个元素。
 * 更好地支持错误边界。
 
-你可以在[这里](https://github.com/acdlite/react-fiber-architecture)和[这里](https://medium.com/react-in-depth/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react-e1c04700ef6e)，深入了解React Fiber架构。
-虽然这已经再React 16中启用了，但是async特性还没有默认启用。
+你可以在[这里](https://github.com/acdlite/react-fiber-architecture)和[这里](https://medium.com/react-in-depth/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react-e1c04700ef6e)，深入了解React Fiber架构。虽然这已经再React 16中启用了，但是async特性还没有默认启用。
 
 他的代码在[`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler)。
 

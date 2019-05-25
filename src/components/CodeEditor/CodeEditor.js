@@ -11,6 +11,12 @@ import {LiveEditor, LiveProvider} from 'react-live';
 import {colors, media} from 'theme';
 import MetaTitle from 'templates/components/MetaTitle';
 
+// Replace unicode to text for other languages
+const unicodeToText = text =>
+  text.replace(/\\u([\dA-F]{4})/gi, (_, p1) =>
+    String.fromCharCode(parseInt(p1, 16)),
+  );
+
 const compileES5 = (
   code, // eslint-disable-next-line no-undef
 ) => Babel.transform(code, {presets: ['es2015', 'react']}).code;
@@ -56,12 +62,11 @@ class CodeEditor extends Component {
     if (showBabelErrorMessage) {
       errorMessage = (
         <span>
-          Babel could not be loaded.
+          Babel 加载失败。
           <br />
           <br />
-          This can be caused by an ad blocker. If you're using one, consider
-          adding reactjs.org to the whitelist so the live code examples will
-          work.
+          这可能是广告拦截器导致的。如果你正在使用此类插件，
+          建议将 reactjs.org 加入白名单，以保证代码示例能够正常工作。
         </span>
       );
     } else if (error != null) {
@@ -271,7 +276,7 @@ class CodeEditor extends Component {
 
       if (showJSX) {
         newState.code = code;
-        newState.compiledES6 = compileES6(code);
+        newState.compiledES6 = unicodeToText(compileES6(code));
       } else {
         newState.compiledES6 = code;
       }
