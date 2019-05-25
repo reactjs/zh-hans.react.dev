@@ -118,12 +118,11 @@ ReactRef.detachRefs = function(
 ```
 
 如果可以的话，新代码应尽量使用 Flow 注释。
-
 你可以运行 `yarn flow`，用 Flow 本地检查你的代码。
 
 ### 动态注入 {#dynamic-injection}
 
-React 在一些模块中使用了动态注入。虽然这一直很明显，但是仍然很不好，因为这阻碍了代码的可理解性。它存在的最主要原因是 React 原本只以支持 DOM 为目标。然而 React Native 开始作为 React 的一个分支之后。我们只好添加一些动态注入让 React Native 覆盖一些行为。
+React 在一些模块中使用了动态注入。虽然它总是显式地，但仍然存在问题，因为这会阻碍对代码的理解。它存在的最主要原因是 React 原本只以支持 DOM 为目标。然而 React Native 开始作为 React 的一个分支之后。我们只好添加一些动态注入让 React Native 覆盖一些行为。
 
 你可能看到过一些模块，像下面这样声明动态依赖：
 
@@ -154,13 +153,13 @@ module.exports = ReactHostComponent;
 
 在代码库中有许多注入点。未来，我们打算抛弃动态注入机制，并且在构建的时候静态地连接所有的碎片。
 
-### 多包 {#multiple-packages}
+### Multiple Packages {#multiple-packages}
 
 React 采用 [monorepo](https://danluu.com/monorepo/) 的管理方式。仓库中包含多个独立的包，以便于更改可以一起联调，并且问题只会出现在同一地方。
 
-### React 核心 {#react-core}
+### React Core {#react-core}
 
-React “核心”包括所有[全局 `React` API](/docs/top-level-api.html#react)，比如：
+React “Core” 中包含所有[全局 `React` API](/docs/top-level-api.html#react)，比如：
 
 * `React.createElement()`
 * `React.Component`
