@@ -149,8 +149,7 @@ function ListItem({ item }) {
 
 为了帮助和提速键盘导航，我们提供了一种机制，可以帮助用户跳过一些导航段落。
 
-跳转链接（Skiplinks），或者说跳转导航链接（Skip Navigation Links）是一种隐藏的导航链接，它只会在使用键盘导航时可见。
-使用网页内部锚点和一些式样可以很容易地实现它：
+跳转链接（Skiplinks），或者说跳转导航链接（Skip Navigation Links）是一种隐藏的导航链接，它只会在使用键盘导航时可见。使用网页内部锚点和一些式样可以很容易地实现它：
 
 - [WebAIM - 跳转导航链接（Skip Navigation Links）](https://webaim.org/techniques/skipnav/)
 
@@ -162,8 +161,7 @@ function ListItem({ item }) {
 
 ### 使用程序管理焦点 {#programmatically-managing-focus}
 
-我们的 React 应用在运行时会持续更改 HTML DOM，有时这将会导致键盘焦点的丢失或者是被设置到了意料之外的元素上。
-为了修复这类问题，我们需要以编程的方式让键盘聚焦到正确的方向上。比方说，在一个弹窗被关闭的时候，重新设置键盘焦点到弹窗的打开按钮上。
+我们的 React 应用在运行时会持续更改 HTML DOM，有时这将会导致键盘焦点的丢失或者是被设置到了意料之外的元素上。为了修复这类问题，我们需要以编程的方式让键盘聚焦到正确的方向上。比方说，在一个弹窗被关闭的时候，重新设置键盘焦点到弹窗的打开按钮上。
 
 MDN Web 文档关注了这个问题并向我们解释了可以如何搭建[可用键盘导航的 JavaScript 部件](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets)。
 
@@ -201,8 +199,7 @@ class CustomTextInput extends React.Component {
  }
  ```
 
-有时，父组件需要把焦点设置在其子组件的一个元素上。
-我们可以通过在子组件上设置一个特殊的 prop 来[对父组件暴露 DOM refs](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components) 从而把父组件的 ref 传向子节点的 DOM 节点。
+有时，父组件需要把焦点设置在其子组件的一个元素上。我们可以通过在子组件上设置一个特殊的 prop 来[对父组件暴露 DOM refs](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components) 从而把父组件的 ref 传向子节点的 DOM 节点。
 
 ```javascript{4,12,16}
 function CustomTextInput(props) {
@@ -229,8 +226,7 @@ class Parent extends React.Component {
 this.inputElement.current.focus();
 ```
 
-当使用 HOC 来扩展组件时，我们建议使用 React 的 `forwardRef` 函数来向被包裹的组件[转发 ref](/docs/forwarding-refs.html)。
-如果第三方的 HOC 不支持转发 ref，上面的方法仍可以作为一种备选方案。
+当使用 HOC 来扩展组件时，我们建议使用 React 的 `forwardRef` 函数来向被包裹的组件[转发 ref](/docs/forwarding-refs.html)。如果第三方的 HOC 不支持转发 ref，上面的方法仍可以作为一种备选方案。
 
 [react-aria-modal](https://github.com/davidtheclark/react-aria-modal)  提供了一个很好的焦点管理的例子。
 这是一个少有的完全无障碍的模态窗口的例子。它不仅仅把初始焦点设置在了取消按钮上（防止键盘用户意外激活成功操作）和把键盘焦点固定在了窗口之内，
@@ -243,8 +239,7 @@ this.inputElement.current.focus();
 
 ## 鼠标和指针事件 {#mouse-and-pointer-events}
 
-确保任何可以使用鼠标和指针完成的功能也可以只通过键盘完成。
-只依靠指针会产生很多使键盘用户无法使用你的应用的情况。
+确保任何可以使用鼠标和指针完成的功能也可以只通过键盘完成。只依靠指针会产生很多使键盘用户无法使用你的应用的情况。
 
 为了说明这一点，让我们看一下由点击事件引起的破坏无障碍访问的典型示例：外部点击模式，用户可以通过点击元素以外的地方来关闭已打开的弹出框。
 
@@ -301,8 +296,7 @@ constructor(props) {
 }
 ```
 
-当用户使用指针设备，比如鼠标时，这样做没有问题。但是当只使用键盘时，因为 `window` 对象不会接受到 `click` 事件，用户将无法使用 tab 切换到下一个元素。
-这样会导致用户无法使用你应用中的一些内容，导致不完整的用户体验。
+当用户使用指针设备，比如鼠标时，这样做没有问题。但是当只使用键盘时，因为 `window` 对象不会接受到 `click` 事件，用户将无法使用 tab 切换到下一个元素。这样会导致用户无法使用你应用中的一些内容，导致不完整的用户体验。
 
 <img src="../images/docs/outerclick-with-keyboard.gif" alt="一个通过按钮打开的使用了外部点击模式的弹窗列表。用键盘操作时，我们可以看到弹窗没有在失去焦点时被关闭，遮挡了屏幕上的其他元素。" />
 
@@ -368,18 +362,15 @@ class BlurExample extends React.Component {
 }
 ```
 
-以上代码使得键盘和鼠标用户都可以使用我们的功能。请注意我们添加了 `aria-*` props 以服务屏幕朗读器用户。
-作为一个简单的例子，我们没有实现使用`方向键`来与弹窗互动。
+以上代码使得键盘和鼠标用户都可以使用我们的功能。请注意我们添加了 `aria-*` props 以服务屏幕朗读器用户。作为一个简单的例子，我们没有实现使用`方向键`来与弹窗互动。
 
 <img src="../images/docs/blur-popover-close.gif" alt="一个针对鼠标和键盘用户都正确关闭的弹窗。" />
 
-这只是众多只依赖于鼠标和指针的程序破坏键盘用户的例子之一。始终使用键盘测试会让你迅速发现这些问题，
-你可以使用适用于键盘的事件处理器来修复这些问题。
+这只是众多只依赖于鼠标和指针的程序破坏键盘用户的例子之一。始终使用键盘测试会让你迅速发现这些问题，你可以使用适用于键盘的事件处理器来修复这些问题。
 
 ## 更复杂的部件 {#more-complex-widgets}
 
-一个更加复杂的用户体验并不意味着更加难以访问。通过尽可能接近 HTML 编程，无障碍访问会变得更加容易，
-即使最复杂的部件也可以实现无障碍访问。
+一个更加复杂的用户体验并不意味着更加难以访问。通过尽可能接近 HTML 编程，无障碍访问会变得更加容易，即使最复杂的部件也可以实现无障碍访问。
 
 这里我们需要了解 [ARIA Roles](https://www.w3.org/TR/wai-aria/#roles) 和 [ARIA States and Properties](https://www.w3.org/TR/wai-aria/#states_and_properties) 的知识。
 其中有包含了多种 HTML 属性的工具箱，这些 HTML 属性被 JSX 完全支持并且可以帮助我们搭建完全无障碍，功能强大的 React 组件。
@@ -438,16 +429,13 @@ class BlurExample extends React.Component {
 
 ### 开发辅助 {#development-assistance}
 
-我们可以直接在 JSX 代码中检测一些无障碍复制功能。通常支持 JSX 的 IDE 会针对 ARIA roles，states 和 properties 提供智能检测。
-我们也可以使用以下工具：
+我们可以直接在 JSX 代码中检测一些无障碍复制功能。通常支持 JSX 的 IDE 会针对 ARIA roles，states 和 properties 提供智能检测。我们也可以使用以下工具：
 
 #### eslint-plugin-jsx-a11y {#eslint-plugin-jsx-a11y}
 
-ESLint 中的 [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) 插件为你的 JSX 中的无障碍问题提供了 AST 的语法检测反馈。
-许多 IDE 都允许你把这些发现直接集成到代码分析和源文件窗口中。
+ESLint 中的 [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) 插件为你的 JSX 中的无障碍问题提供了 AST 的语法检测反馈。许多 IDE 都允许你把这些发现直接集成到代码分析和源文件窗口中。
 
-[创建 React 应用](https://github.com/facebookincubator/create-react-app)中使用了这个插件中的一部分规则。
-如果你想启用更多的无障碍规则，你可以在项目的根目录中创建一个有如下内容的 `.eslintrc`  文件：
+[Create React App](https://github.com/facebookincubator/create-react-app)中使用了这个插件中的一部分规则。如果你想启用更多的无障碍规则，你可以在项目的根目录中创建一个有如下内容的 `.eslintrc`  文件：
 
   ```json
   {
