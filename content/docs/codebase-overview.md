@@ -201,13 +201,13 @@ Reconciler 没有单独的包，因为他们暂时没有公共 API。相反，�
 
 ### Fiber reconciler {#fiber-reconciler}
 
-"fiber" reconciler 是一个新尝试，致力于解决 stack reconciler 中固有的问题，同时解决一些由来已久的问题。Fiber 从 React 16 开始变成了默认的reconciler。
+"fiber" reconciler 是一个新尝试，致力于解决 stack reconciler 中固有的问题，同时解决一些历史遗留问题。Fiber 从 React 16 开始变成了默认的 reconciler。
 
 它的主要目标是：
 
 * 能够把可中断的任务切片处理。
-* 能够确定优先级，重新定位并复用任务。
-* 能够在父元素与子元素之间来回让步，以支持 React 中的布局。
+* 能够调整优先级，重置并复用任务。
+* 能够在父元素与子元素之间交错处理，以支持 React 中的布局。
 * 能够在 `render()` 中返回多个元素。
 * 更好地支持错误边界。
 
