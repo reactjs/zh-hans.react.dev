@@ -422,17 +422,10 @@ class BlurExample extends React.Component {
 
 最最简单也是最最重要的检测是确保你的整个网站都可以被只使用键盘的用户使用和访问。你可以通过如下步骤进行检测：
 
-<<<<<<< HEAD
-1. 拔掉鼠标
+1. 断开鼠标
 1. 使用 `Tab` 和 `Shift+Tab` 来浏览。
 1. 使用 `Enter` 来激活元素。
 1. 当需要时，使用键盘上的方向键来和某些元素互动，比如菜单和下拉选项。
-=======
-1. Disconnecting your mouse.
-1. Using `Tab` and `Shift+Tab` to browse.
-1. Using `Enter` to activate elements.
-1. Where required, using your keyboard arrow keys to interact with some elements, such as menus and dropdowns.
->>>>>>> 23b242edc4c7eeee5798953ba205e36cc71016b8
 
 ### 开发辅助 {#development-assistance}
 
