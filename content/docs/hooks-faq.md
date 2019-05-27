@@ -655,7 +655,11 @@ function ProductDetails({ fetchProduct })
 
 ### 如果我的 effect 的依赖频繁变化，我该怎么办？{#what-can-i-do-if-my-effect-dependencies-change-too-often}
 
+<<<<<<< HEAD
 有时候，你的 effect 会读取一些频繁变化的值。你或许会试图在依赖列表中省略那个 state ，但这通常会引起 Bug：
+=======
+Sometimes, your effect may be using state that changes too often. You might be tempted to omit that state from a list of dependencies, but that usually leads to bugs:
+>>>>>>> 23b242edc4c7eeee5798953ba205e36cc71016b8
 
 ```js{6,9}
 function Counter() {
