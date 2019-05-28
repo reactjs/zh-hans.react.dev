@@ -110,7 +110,7 @@ componentWillUnmount() {
 
 到此已经足够让我们的组件去渲染了，但我们同时希望在值变化的时候被通知到。要做到这点，我们需要在订阅由 Chosen 管理的 `<select>` 上的 jQuery `change` 事件。
 
-我们不直接吧 `this.props.onChange` 传递给 Chosen 是因为 组件的 props 可能随时间而变化，而且这也包括事件处事函数。对应的，我们会定义一个 `handleChange()` 方法来调用 `this.props.onChange`，并且订阅 jQuery `change` 事件：
+我们不直接把 `this.props.onChange` 传递给 Chosen 是因为组件的 props 可能随时变化，并且这也包括事件处理函数。对应的，我们会定义一个 `handleChange()` 方法来调用 `this.props.onChange`，并且订阅 jQuery 的 `change` 事件：
 
 ```js{5,6,10,14-16}
 componentDidMount() {
