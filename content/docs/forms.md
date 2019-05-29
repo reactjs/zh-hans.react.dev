@@ -132,7 +132,7 @@ class EssayForm extends React.Component {
 ```html
 <select>
   <option value="grapefruit">葡萄柚</option>
-  <option value="lime">柠檬</option>
+  <option value="lime">酸橙</option>
   <option selected value="coconut">椰子</option>
   <option value="mango">芒果</option>
 </select>
@@ -166,7 +166,7 @@ class FlavorForm extends React.Component {
           选择你喜欢的风味:
           <select value={this.state.value} onChange={this.handleChange}>
             <option value="grapefruit">葡萄柚</option>
-            <option value="lime">柠檬</option>
+            <option value="lime">酸橙</option>
             <option value="coconut">椰子</option>
             <option value="mango">芒果</option>
           </select>
@@ -297,4 +297,4 @@ setTimeout(function() {
 
 ## 成熟的解决方案 {#fully-fledged-solutions}
 
-如果你想寻找包含验证、追踪访问字段以及处理表单提交的完整解决方案，使用 [Formik](https://jaredpalmer.com/formik) 是不错的选择。然而，它也是建立在受控组件和管理 state 的基础之上——所以不要忽视学习它们。
+如果你想寻找包含验证、追踪访问字段以及处理表单提交的完整解决方案，使用 [Formik](https://jaredpalmer.com/formik) 是不错的选择。然而，它也是建立在受控组件和管理 state 的基础之上 —— 所以不要忽视学习它们。
