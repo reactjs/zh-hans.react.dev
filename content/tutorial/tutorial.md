@@ -1108,7 +1108,7 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 **[查看此步完整代码示例](https://codepen.io/gaearon/pen/PmmXRE?editors=0010)**
 
-因为 `jumpTo` 还未定义，所以你点击列表项的按钮时，会出现报错，。在我们实现 `jumpTo` 之前，我们向 Game 组件的 state 中添加 `stepNumber`，这个值代表我们当前正在查看哪一项历史记录。
+因为 `jumpTo` 还未定义，所以你点击列表项的按钮时，会出现报错。在我们实现 `jumpTo` 之前，我们向 Game 组件的 state 中添加 `stepNumber`，这个值代表我们当前正在查看哪一项历史记录。
 
 首先，我们在 Game 的构造函数 `constructor` 中向初始 state 中添加 `stepNumber: 0`：
 
