@@ -300,11 +300,7 @@ class OuterClickExample extends React.Component {
 
 <img src="../images/docs/outerclick-with-keyboard.gif" alt="一个通过按钮打开的使用了外部点击模式的弹窗列表。用键盘操作时，我们可以看到弹窗没有在失去焦点时被关闭，遮挡了屏幕上的其他元素。" />
 
-<<<<<<< HEAD
 使用正确的事件触发器，比如 `onBlur` 和 `onFocus`，同样可以达成这项功能：
-=======
-The same functionality can be achieved by using appropriate event handlers instead, such as `onBlur` and `onFocus`:
->>>>>>> c93286c071bca17ecba91cd130908fe2e33a4766
 
 ```javascript{19-29,31-34,37-38,40-41}
 class BlurExample extends React.Component {
