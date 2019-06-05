@@ -18,7 +18,7 @@ permalink: docs/render-props.html
 
 在这个文档中，我们将讨论为什么 render prop 是有用的，以及如何写一个自己的 render prop 组件。
 
-## 使用 Render Props 解决来横切关注点（Cross-Cutting Concerns） {#use-render-props-for-cross-cutting-concerns}
+## 使用 Render Props 来解决横切关注点（Cross-Cutting Concerns） {#use-render-props-for-cross-cutting-concerns}
 
 组件是 React 代码复用的主要单元，但如何分享一个组件封装到其他需要相同 state 组件的状态或行为并不总是很容易。
 
