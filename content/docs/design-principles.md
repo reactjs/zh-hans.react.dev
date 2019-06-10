@@ -44,7 +44,7 @@ React 是务实的，Facebook 的产品需求驱使它这样。尽管 React 受�
 
 ### 稳定性 {#stability}
 
-我们重视 API 的稳定性。在 Facebook，我们有超过5万多个组件在使用 React。很多其他公司，包括[Twitter](https://twitter.com/) 和 [Airbnb](https://www.airbnb.com/)也是 React 的重度用户。这就是我们一般不愿意变更公共API或行为的原因。
+我们重视 API 的稳定性。在 Facebook，我们有超过 5 万多个组件在使用 React。很多其他公司，包括 [Twitter](https://twitter.com/) 和 [Airbnb](https://www.airbnb.com/) 也是 React 的重度用户。这就是我们一般不愿意变更公共 API 或行为的原因。
 
 然而我们认为“没有变更”的这种稳定性被高估了，它很快会演变成停滞不前。我们偏向这样理解稳定性：“在生产环境大规模使用，当需要变更时有一个明确的（自动化更好）迁移路径。”。
 
