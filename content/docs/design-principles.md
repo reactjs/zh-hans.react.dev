@@ -142,7 +142,7 @@ Reac t的一个重要设计约束是要渲染引擎无关。这在内部呈现�
 
 React 一些常用的 API 名字很冗长。比如，我们采用`componentDidMount()`而非`didMount()`或者`onMount()`。这是[有意为之](https://github.com/reactjs/react-future/issues/40#issuecomment-142442124)，目的是使得和 React 的交互点很容易被看见。
 
-在像 Facebook 这样庞大的代码库中，能够搜索某些特定 API 的使用很重要。我们重视清晰冗长的名字，特别是在一些需要保守使用的特性上。比如，`dangerouslySetInnerHTML`在代码评审中就很容易被发现。
+在像 Facebook 这样庞大的代码库中，能够搜索某些特定 API 的使用很重要。我们重视清晰冗长的名字，特别是在一些需要保守使用的特性上。比如，`dangerouslySetInnerHTML` 在代码评审中就很容易被发现。
 
 针对搜索优化很重要，因为我们依赖[codemods](https://www.youtube.com/watch?v=d0pOgY8__JM)做不兼容的变更。我们希望非常容易、安全地在代码库中应用大量自动化变更，独特冗长的名字帮助了我们。类似地，独特的命名使得编写自定义 React 用法的[提示规则](https://github.com/yannickcr/eslint-plugin-react)变得很容易，无需担心潜在的错误匹配。
 
