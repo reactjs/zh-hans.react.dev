@@ -36,7 +36,7 @@ redirect_from:
 
 我们总是和社区一起商议这样的优化提议。你可以在 React 问题跟踪的[大局观](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"Type:+Big+Picture")标签上找到一些这样的讨论。
 
-### 紧急出路 {#escape-hatches}
+### 退路 {#escape-hatches}
 
 React 是务实的，Facebook 的产品需求驱使它这样。尽管 React 受一些目前还非主流的编程思想比如函数式编程的影响，这个项目的一个明确目标是广泛地接触具有不同技能和经验的开发者。
 
