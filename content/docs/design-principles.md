@@ -144,7 +144,7 @@ React 一些常用的 API 名字很冗长。比如，我们采用`componentDidMo
 
 在像 Facebook 这样庞大的代码库中，能够搜索某些特定 API 的使用很重要。我们重视清晰冗长的名字，特别是在一些需要保守使用的特性上。比如，`dangerouslySetInnerHTML` 在代码评审中就很容易被发现。
 
-针对搜索优化很重要，因为我们依赖[codemods](https://www.youtube.com/watch?v=d0pOgY8__JM)做不兼容的变更。我们希望非常容易、安全地在代码库中应用大量自动化变更，独特冗长的名字帮助了我们。类似地，独特的命名使得编写自定义 React 用法的[提示规则](https://github.com/yannickcr/eslint-plugin-react)变得很容易，无需担心潜在的错误匹配。
+针对搜索优化很重要，因为我们依赖 [codemods](https://www.youtube.com/watch?v=d0pOgY8__JM) 做不兼容的变更。我们希望非常容易、安全地在代码库中应用大量自动化变更，独特冗长的名字帮助了我们。类似地，独特的命名使得编写自定义 React 用法的[提示规则](https://github.com/yannickcr/eslint-plugin-react)变得很容易，无需担心潜在的错误匹配。
 
 [JSX](/docs/introducing-jsx.html)也类似这样。尽管 React 不强制使用 JSX，在 Facebook 我们大量使用 JSX，因为它既好看有实用。
 
