@@ -14,25 +14,25 @@ redirect_from:
 >
 >文章描述了 React 自身的设计原则，而非 React 组件或应用，阅读者需要对 React 有深入的理解。
 >
->如需 React 的入门文档，查看[React 哲学](/docs/thinking-in-react.html)。
+>如需 React 的入门文档，查看 [React 哲学](/docs/thinking-in-react.html)。
 
 ### 组合 {#composition}
 
 组件之间的组合是 React 的重要特征。不同开发者写的组件应该可以一起正常执行。给一个组件添加功能，而不会对整个代码库造成涟漪似的变化，这对我们很重要。
 
-比如，应该可以在不影响任何使用它的组件的情况下，将一些 local state 引入该组件。类似的，在必要的情况下可以在任何组件里添加一些初始化和销毁的代码。
+比如，应该可以在不影响任何使用它的组件的情况下，将一些内部 state 引入该组件。类似的，在必要的情况下可以在任何组件里添加一些初始化和销毁的代码。
 
-在组件中使用 state 或者生命周期函数没什么不好。跟所有强大的特性一样，应该适度使用它们，我们并不打算移除他们。相反，我们认为他们是 React 之所以好用的一部分。我们未来也许会启用[更多函数模式](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State)，但 local state 和生命周期函数都会在里面。
+在组件中使用 state 或者生命周期函数没什么“不好”。跟所有强大的特性一样，应该适度使用它们，我们并不打算移除他们。相反，我们认为他们是 React 之所以好用的一部分。我们未来也许会启用[更多函数模式](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State)，但内部 state 和生命周期函数都会在里面。
 
-人们常常认为组件“只是函数”，但我们看来组件要好用的话，需要的不止这些。在 React 中，组件描述了任何可组合的行为，包含渲染、生命周期和 state。一些类似[Relay](https://facebook.github.io/relay/)的外部库给组件带来了其他增强功能，比如描述数据之间的依赖关系。有可能这些做法会以某种形式回到 React 中。
+人们常常认为组件“只是函数”，但在我们看来，组件要好用的话，需要的不止这些。在 React 中，组件描述了任何可组合的行为，包含渲染、生命周期和 state。一些类似 [Relay](https://facebook.github.io/relay/) 的外部库给组件带来了其他增强功能，比如描述数据之间的依赖关系。有可能这些做法会以某种形式回到 React 中。
 
 ### 共用抽象 {#common-abstraction}
 
 一般而言我们[拒绝添加](https://www.youtube.com/watch?v=4anAwXYqLG8)一些开发者可以实现的特性。我们不想因为无用的库代码使得大家的应用变的累赘，然而也有特例。
 
-比如，如果 React 不支持 local state 或者生命周期函数，大家会为此创建自己的抽象。当有多种抽象竞争的时候，React 不能强制使用或利用这些抽象中的任何一个。React 必须选择最基本的共同点。
+比如，如果 React 不支持内部 state 或者生命周期函数，大家会为此创建自己的抽象。当有多种抽象竞争的时候，React 不能强制使用或利用这些抽象中的任何一个。React 必须选择最基本的共同点。
 
-这就是我们增加 React 特性的原因。如果我们发现很多组件以不兼容或者不高效的方式实现了某些特性，我们会倾向在 React 中实现它。我们轻易不这样做，只有我们非常确定提高抽象层级有助于整个生态系统时我们才会这样做，State、生命周期函数、跨浏览器事件的正规化都是很好的范例。
+这就是我们增加 React 特性的原因。如果我们发现很多组件以不兼容或者不高效的方式实现了某些特性，我们会倾向在 React 中实现它。我们轻易不这样做，只有我们非常确定提高抽象层级有助于整个生态系统时我们才会这样做。State、生命周期函数、跨浏览器事件的正规化都是很好的范例。
 
 我们总是和社区一起商议这样的优化提议。你可以在 React 问题跟踪的[大局观](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"Type:+Big+Picture")标签上找到一些这样的讨论。
 
@@ -142,21 +142,21 @@ Reac t的一个重要设计约束是要渲染引擎无关。这在内部呈现�
 
 React 一些常用的 API 名字很冗长。比如，我们采用`componentDidMount()`而非`didMount()`或者`onMount()`。这是[有意为之](https://github.com/reactjs/react-future/issues/40#issuecomment-142442124)，目的是使得和 React 的交互点很容易被看见。
 
-在像 Facebook 这样庞大的代码库中，能够搜索某些特定 API 的使用很重要。我们重视清晰冗长的名字，特别是在一些需要保守使用的特性上。比如，`dangerouslySetInnerHTML`在代码评审中就很容易被发现。
+在像 Facebook 这样庞大的代码库中，能够搜索某些特定 API 的使用很重要。我们重视清晰冗长的名字，特别是在一些需要保守使用的特性上。比如，`dangerouslySetInnerHTML` 在代码评审中就很容易被发现。
 
-针对搜索优化很重要，因为我们依赖[codemods](https://www.youtube.com/watch?v=d0pOgY8__JM)做不兼容的变更。我们希望非常容易、安全地在代码库中应用大量自动化变更，独特冗长的名字帮助了我们。类似地，独特的命名使得编写自定义 React 用法的[提示规则](https://github.com/yannickcr/eslint-plugin-react)变得很容易，无需担心潜在的错误匹配。
+针对搜索优化很重要，因为我们依赖 [codemods](https://www.youtube.com/watch?v=d0pOgY8__JM) 做不兼容的变更。我们希望非常容易、安全地在代码库中应用大量自动化变更，独特冗长的名字帮助了我们。类似地，独特的命名使得编写自定义 React 用法的[提示规则](https://github.com/yannickcr/eslint-plugin-react)变得很容易，无需担心潜在的错误匹配。
 
 [JSX](/docs/introducing-jsx.html)也类似这样。尽管 React 不强制使用 JSX，在 Facebook 我们大量使用 JSX，因为它既好看有实用。
 
-在我们的代码库中，JSX 给和 React 元素树打交道的工具提供了明确的提示。这使得构建时优化成为可能，比如[提升常量元素](https://babeljs.io/docs/en/babel-plugin-transform-react-constant-elements/)、安全地进行代码提示、codemod 内部组件用法、在代码警告中[包含JSX源码定位](https://github.com/facebook/react/pull/6771).
+在我们的代码库中，JSX 给和 React 元素树打交道的工具提供了明确的提示。这使得构建时优化成为可能，比如[提升常量元素](https://babeljs.io/docs/en/babel-plugin-transform-react-constant-elements/)、安全地进行代码提示、codemod 内部组件用法、在代码警告中[包含 JSX 源码定位](https://github.com/facebook/react/pull/6771).
 
 ### 内部测试 {#dogfooding}
 
-我们全力解决社区提出的问题。但我们可能会优先处理在Facebook内部遇到的*同样的*问题。也许反直觉，我们认为这是社区相信 React 的主要原因。
+我们全力解决社区提出的问题。但我们可能会优先处理在 Facebook 内部遇到的*同样的*问题。也许这很反直觉，但是我们认为这是社区相信 React 的主要原因。
 
 内部的重度使用使我们坚信 React 不会凭空消失。Facebook 创建了 React 是来解决它的问题的。React 给 Facebook 带来了现实的商业价值，并且在很多产品中使用。在内部测试意味着我们的目光保持敏锐，有着前进的重点方向。
 
-这不代表我们会忽视社区提出的问题。比如，即便我们内部并不依赖他们，我们仍增加了 React 对[web components](/docs/webcomponents.html)和[SVG](https://github.com/facebook/react/pull/6243)的支持。我们倾听者大家的痛点，并全力解决他们。是社区使 React 变得与众不同，所以我们很荣幸可以回报社区。
+这不代表我们会忽视社区提出的问题。比如，即便我们内部并不依赖他们，我们仍增加了 React 对 [web components](/docs/webcomponents.html) 和 [SVG](https://github.com/facebook/react/pull/6243) 的支持。我们倾听者大家的痛点，并全力解决他们。是社区使 React 变得与众不同，所以我们很荣幸可以回报社区。
 
 在 Facebook 发布了很多开源的项目之后，我们学到了让大家都开心的做法会导致项目没有重点，成长不起来。相反，我们发现选择一小部分群体，重点关注如何使他们开心带来了积极的净效应。这正是 React 的做法，到目前为止解决 Facebook 产品团队的问题很好的传递到了开源社区。
 
