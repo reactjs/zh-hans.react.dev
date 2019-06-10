@@ -14,7 +14,7 @@ redirect_from:
 >
 >文章描述了 React 自身的设计原则，而非 React 组件或应用，阅读者需要对 React 有深入的理解。
 >
->如需 React 的入门文档，查看[React 哲学](/docs/thinking-in-react.html)。
+>如需 React 的入门文档，查看 [React 哲学](/docs/thinking-in-react.html)。
 
 ### 组合 {#composition}
 
