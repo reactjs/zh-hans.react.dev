@@ -8,9 +8,9 @@ redirect_from:
   - "contributing/design-principles.html"
 ---
 
-这篇文章是为了让大家对我们如何决定 React 做什么和不做什么，以及对我们的开发理念有更好的了解。尽管我们非常欢迎来自社区的贡献，但我们不太愿意看到违反这些理念的做法。
+编写该文档的目的是，使开发者更易于了解我们如何决策 React（应该做哪些，不应该做哪些），以及我们的开发理念。我们非常欢迎来自社区的贡献，但如若违背这些理念，实非我们所愿。
 
->**注意:**
+>**注意：**
 >
 >文章描述了 React 自身的设计原则，而非 React 组件或应用，阅读者需要对 React 有深入的理解。
 >
@@ -34,13 +34,13 @@ redirect_from:
 
 这就是我们增加 React 特性的原因。如果我们发现很多组件以不兼容或者不高效的方式实现了某些特性，我们会倾向在 React 中实现它。我们轻易不这样做，只有我们非常确定提高抽象层级有助于整个生态系统时我们才会这样做。State、生命周期函数、跨浏览器事件的正规化都是很好的范例。
 
-我们总是和社区一起商议这样的优化提议。你可以在 React 问题跟踪的[大局观](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"Type:+Big+Picture")标签上找到一些这样的讨论。
+我们总是和社区一起商议这样的优化提议。你可以在 React 问题跟踪的 [“big picture”](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"Type:+Big+Picture") 标签上找到一些这样的讨论。
 
-### 退路 {#escape-hatches}
+### 应急方案 {#escape-hatches}
 
 React 是务实的，Facebook 的产品需求驱使它这样。尽管 React 受一些目前还非主流的编程思想比如函数式编程的影响，这个项目的一个明确目标是广泛地接触具有不同技能和经验的开发者。
 
-如果要废弃某个我们不喜欢的模式，我们有责任在废弃之前，考虑所有已知的用例并且教育社区这些模式的[替代做法](/blog/2016/07/13/mixins-considered-harmful.html)。如果某些有助于开发应用的模式很难以声明式的方式表达，我们会提供一个[命令式的API](/docs/more-about-refs.html)。如果我们发现很多应用中必要的模式我们找不到一个完美的API，我们会[提供一个临时欠佳的API](/docs/legacy-context.html)，只要以后可以移除它并且方便后续的优化。
+如果要废弃某个我们不喜欢的模式，我们有责任在废弃之前，考虑所有已知的用例并且教育社区这些模式的[替代做法](/blog/2016/07/13/mixins-considered-harmful.html)。如果某些有助于开发应用的模式很难以声明式的方式表达，我们会提供一个[命令式的 API](/docs/more-about-refs.html)。如果我们发现很多应用中必要的模式我们找不到一个完美的API，我们会[提供一个临时欠佳的 API](/docs/legacy-context.html)，只要以后可以移除它并且方便后续的优化。
 
 ### 稳定性 {#stability}
 
@@ -48,29 +48,29 @@ React 是务实的，Facebook 的产品需求驱使它这样。尽管 React 受�
 
 然而我们认为“没有变更”的这种稳定性被高估了，它很快会演变成停滞不前。我们偏向这样理解稳定性：“在生产环境大规模使用，当需要变更时有一个明确的（自动化更好）迁移路径。”。
 
-当我们废弃一个模式时，我们会研究它在Facebook内部的使用情况并添加废弃警告。这样我们可以评估变更的影响范围。有时觉得时机太早了，我们就不作变更。我们需要更策略化的思考来让代码库准备好这样的变更。
+当我们废弃一个模式时，我们会研究它在 Facebook 内部的使用情况并添加废弃警告。这样我们可以评估变更的影响范围。有时觉得时机太早了，我们就不作变更。我们需要更策略化的思考来让代码库准备好这样的变更。
 
 如果我们自信地认为这次改动破坏性不是非常大，而且迁移策略对所有用户场景都可行，我们会在开源社区发布废弃警告。我们和很多 Facebook 以外的 React 用户联系紧密，而且我们会监控流行的开源项目并指导他们解决这些废弃警告。
 
-只考虑Facebook里的React的代码库大小，成功的内部迁移往往是个好兆头：其他公司迁移也不会有困难。然而时不时会有人提出我们没有考虑到的场景，我们会给他们一个紧急出路，或者反思我们的做法。
+只考虑 Facebook 里的 React 的代码库大小，成功的内部迁移往往是个好兆头：其他公司迁移也不会有困难。然而时不时会有人提出我们没有考虑到的场景，我们会给他们一个紧急出路，或者反思我们的做法。
 
 没有充分的理由我们不会废弃任何特性。我们意识到有时废弃警告会让开发者沮丧，但我们添加废弃警告是因为它们为社区中的很多人认为有价值的优化和新特性扫除了障碍。
 
-例如，我们在 React 15.2.0 中添加了一个[未知DOM属性的警告](/warnings/unknown-prop.html)，很多项目因此受到影响。然而修复这些警告非常重要，因为我们可以在 React 中新增支持[自定义属性](https://github.com/facebook/react/issues/140)。以往的每一次废弃警告都有像这样的考量在里面。
+例如，我们在 React 15.2.0 中添加了一个[未知 DOM 属性的警告](/warnings/unknown-prop.html)，很多项目因此受到影响。然而修复这些警告非常重要，因为我们可以在 React 中新增支持[自定义属性](https://github.com/facebook/react/issues/140)。以往的每一次废弃警告都有像这样的考量在里面。
 
-我们添加废弃警告时会保留到当前大版本，在[下一次大版本中改变行为](/blog/2016/02/19/new-versioning-scheme.html)。如果这其中设计到大量重复性的人力工作，我们会发布一个[代码更改](https://www.youtube.com/watch?v=d0pOgY8__JM)脚本自动化大部分的改动。codemods 使我们能够在庞大的代码库中继续前行，我们也推荐大家使用。
+我们添加废弃警告时会保留到当前大版本，在[下一次大版本中改变行为](/blog/2016/02/19/new-versioning-scheme.html)。如果这其中设计到大量重复性的人力工作，我们会发布一个[代码更改](https://www.youtube.com/watch?v=d0pOgY8__JM)脚本自动化大部分的改动。Codemods 使我们能够在庞大的代码库中继续前行，我们也推荐大家使用。
 
-你可以在[react-codemod](https://github.com/reactjs/react-codemod)仓库中找到我们发布的codemods。
+你可以在 [react-codemod](https://github.com/reactjs/react-codemod) 仓库中找到我们发布的 codemods。
 
-### 互操作 {#interoperability}
+### 互操作性 {#interoperability}
 
-我们很看重与已有系统的互操作性和渐进采用。Facebook有一个庞大的非React的代码库。Facebook的网站混合使用了名为XHP的服务端组件系统、React之前的内部UI库和React。任何产品团队能够[开始在小功能上使用React](https://www.youtube.com/watch?v=BF58ZJ1ZQxY)而不是重写他们的代码，这对我们很重要。
+我们很看重与已有系统的互操作性和渐进式的采用。Facebook 有一个庞大的非 React 的代码库。Facebook 的网站混合使用了名为 XHP 的服务端组件系统、React 之前的内部 UI 库和 React。任何产品团队能够[开始在小功能上使用React](https://www.youtube.com/watch?v=BF58ZJ1ZQxY)而不是重写他们的代码，这对我们很重要。
 
-这就是 React 提供紧急出口的原因：让不同的模型协同工作，让不同的UI库协同工作。你可以把一个已有的命令式UI封装成声明式的组件，反过来也可以。这对渐进采用而言至关重要。
+这就是 React 提供应急方案的原因：让不同的模型协同工作，让不同的 UI 库协同工作。你可以把一个已有的命令式 UI 封装成声明式的组件，反之亦然。这对渐进采用而言至关重要。
 
 ### 调度 {#scheduling}
 
-即便你的组件以 function 的方式声明，在 React 中你并不会直接调用它们。每个组件返回一个该渲染什么的描述，该描述会包含开发者写的组件如 <LikeButton> 和 平台特定的组件如 <div> 。由 React 决定在未来的某个时间点展开 <LikeButton>，并根据组件的渲染结果递归地把这些变更实际应用到 UI 树上。
+即便你的组件以 function 的方式声明，在 React 中你也并不会直接调用它们。每个组件返回一个该渲染什么的描述，该描述会包含开发者写的组件如 `<LikeButton>` 和 平台特定的组件如 `<div>`。由 React 决定在未来的某个时间点展开 `<LikeButton>`，并根据组件的渲染结果递归地把这些变更实际应用到 UI 树上。
 
 虽然只是微小的区别，但这样做意义重大。因为你不需要调用组件方法而是让 React 调用它，这意味着如果必要 React 可以延迟调用。在 React 当前的实现中，React 在单个 tick 周期中递归地走完这棵树，然后调用整个更新后树的渲染方法。但是以后 React 可能会[延迟一些更新操作来防止掉帧](https://github.com/facebook/react/issues/6170)。
 
@@ -84,7 +84,7 @@ React 不是一个常规的数据处理库，它是开发用户界面的库。�
 
 如果我们允许用户使用在一些变体的[函数反应式编程](https://en.wikipedia.org/wiki/Functional_reactive_programming)范式中常见的“推”模式直接拼接视图，我们将会很难获得调度的控制权。
 
-React 的一个关键目标是在把控制权转交给React之前执行的用户代码量最少。这确保React保持调度的能力，并根据它所知道的UI的情况把工作切分成小块处理。
+React 的一个关键目标是在把控制权转交给 React 之前执行的用户代码量最少。这确保 React 保持调度的能力，并根据它所知道的 UI 的情况把工作切分成小块处理。
 
 在团队内部有个笑话，React 本该叫做“调度”因为 React 不想变得完全“反应式（reactive）”。
 
@@ -92,11 +92,11 @@ React 的一个关键目标是在把控制权转交给React之前执行的用户
 
 提供好的开发者体验对我们很重要。
 
-例如，我们维护了[React 开发工具](https://github.com/facebook/react-devtools)，它让大家在 Chrome 和 Firefox 浏览器中可以检查 React 组件树。我们听说它大幅提高了 Facebook 的工程师和社区的生产效率。
+例如，我们维护了 [React DevTools](https://github.com/facebook/react-devtools)，它让大家在 Chrome 和 Firefox 浏览器中可以检查 React 组件树。我们听说它大幅提高了 Facebook 的工程师和社区的生产效率。
 
-我们还提供了有用的开发者警告。比如如果你以浏览器不理解的方式嵌套标签或者你打了API中常见的错别字，React会警告你。开发者警告和相关的检查导致了 React 的开发版本比生产版本速度慢。
+我们还提供了对开发有所帮助的开发者警告。比如你以浏览器不理解的方式嵌套标签或者你在编写 API 时常见的错别字，React 会警告你。开发者警告和相关的检查导致了 React 的开发版本比生产版本速度慢。
 
-Facebook内部的使用模式帮助我们了解常见的错误有哪些，以及如何提前预防。当我们添加新特性时，我们尝试去预测常见的错误并发出警告。
+Facebook 内部的使用模式帮助我们了解常见的错误有哪些，以及如何提前预防。当我们添加新特性时，我们尝试去预测可能会发生的错误并发出警告。
 
 我们一直在寻找提高开发者体验的方法。我们很乐意听取大家的建议，接受大家的贡献，把开发者体验做的更好。
 
@@ -104,31 +104,31 @@ Facebook内部的使用模式帮助我们了解常见的错误有哪些，以及
 
 当发生错误时，你有一些线索可以追溯到代码库中的具体代码，这很重要。在 React 中，props 和 state 就是线索。
 
-当你看到屏幕上出现错误时，你可以打开 React 开发者工具，找到负责渲染的组件，检查它的 props 和 state 是否正确。如果正确，你就知道为题要么在于组件的`render()`方法，要么在于某个被`render()`调用的方法。可见问题被独立出来了。
+当你看到屏幕上出现错误时，你可以打开 React 开发者工具，找到负责渲染的组件，检查它的 props 和 state 是否正确。如果正确，你就知道为题要么在于组件的 `render()` 方法，要么在于某个被 `render()` 调用的方法。可见问题被独立出来了。
 
-如果 state 错误，你就知道问题在于这个文件中的某个`setState()`调用，定位和修复也相对简单，因为在单个文件中`setState()`调用次数很少。
+如果 state 发生错误，你就知道问题在于这个文件中的某个 `setState()` 调用，定位和修复也相对简单，因为在单个文件中 `setState()` 调用次数很少。
 
 如果 props 错误，你可以在检查器中沿着树向上排查，查找到第一个因为向下传递了错误的 props 而“污染了这口井”的组件。
 
-能够以当前的 props 和 state 这种形式追溯到其产生的任何 UI，这种能力对 React 来说非常重要。 确保 state 不会包裹在闭包和组合子中，在 React 中可以直接获取是 React 一个非常明确的设计目标。
+能够以当前的 props 和 state 这种形式追溯到其产生的任何 UI，这种能力对 React 来说非常重要。state 不会包裹在闭包和组合子中，并且在 React 中可以直接获取，这是 React 一个非常明确的设计目标。
 
-尽管UI是动态变化的， 接受 state 和 props 的`render()`方法是同步的，我们认为这使得调试变成了无聊但是有限的步骤，而不是瞎猜。我们在 React 里保留了这个限制，即使它使调试在某些场景下变得更加困难，比如复杂的动画。
+尽管 UI 是动态变化的，但是我们认为 state 和 props 的同步执行的 `render()` 函数使得调试变成了无聊但是有限的步骤，而不是瞎猜。我们在 React 里保留了这个限制，即使它使调试在某些场景下变得更加困难，比如复杂的动画。
 
 ### 配置 {#configuration}
 
 我们发现全局的运行时配置会造成很多问题。
 
-比如我们时常收到这样的请求，实现类似于`React.configure(options)`或者`React.register(component)`的方法。然而这样做会出现很多问题，而我们对此并没有很好的解决方案。
+比如我们时常收到这样的请求，实现类似于 `React.configure(options)` 或者 `React.register(component)` 的方法。然而这样做会出现很多问题，而我们对此并没有很好的解决方案。
 
 如果有人在第三方组件库中调用了这样的方法怎么办？如果一个 React 应用内嵌了另一个 React 应用，而且他们需要的配置不兼容怎么办？一个第三方组件怎么申明它需要某个特定配置呢？我们认为全局的配置与组合搭配效果不好。既然组合是 React 的核心，那么我们不在代码里提供全局的配置。
 
-然而我们在构建层面提供了一些全局的配置。比如我们提供了独立的开发和生产环境的构建。我们后面也许会[增加一个分析构建](https://github.com/facebook/react/issues/6627)。我们保持开放，会考虑其他构建。
+然而我们在构建层面提供了一些全局的配置。比如我们提供了独立的开发和生产环境的构建。我们后面也许会[增加一个分析构建](https://github.com/facebook/react/issues/6627)。我们对考虑使用其他构建参数保持开放态度。
 
-### DOM之外 {#beyond-the-dom}
+### DOM 之外 {#beyond-the-dom}
 
-我们认为 React 的价值在于它使我们写出更少 bug 的组件，而且组件很方便组合。React 当初的渲染目标是 DOM，但[React Native](https://facebook.github.io/react-native/)对 Facebook 和社区来说同样重要。
+我们认为 React 的价值在于它使我们写出更少 bug 的组件，而且组件很方便组合。React 当初的渲染目标是 DOM，但 [React Native](https://facebook.github.io/react-native/) 对 Facebook 和社区来说同样重要。
 
-Reac t的一个重要设计约束是要渲染引擎无关。这在内部呈现增加了一些开销，另一方面，对内核的任何优化将对所有平台都有益。
+React 的一个重要设计约束是要渲染引擎无关。这在内部呈现增加了一些开销，另一方面，对内核的任何优化将对所有平台都有益。
 
 单一的编程模型使我们能够围绕产品形成工程团队，而不是围绕平台。目前来看这样的取舍对我们来说很值得。
 
@@ -140,13 +140,13 @@ Reac t的一个重要设计约束是要渲染引擎无关。这在内部呈现�
 
 ### 针对工具优化 {#optimized-for-tooling}
 
-React 一些常用的 API 名字很冗长。比如，我们采用`componentDidMount()`而非`didMount()`或者`onMount()`。这是[有意为之](https://github.com/reactjs/react-future/issues/40#issuecomment-142442124)，目的是使得和 React 的交互点很容易被看见。
+React 一些常用的 API 名字很冗长。比如，我们采用 `componentDidMount()` 而非 `didMount()` 或者 `onMount()`。这是[有意为之的](https://github.com/reactjs/react-future/issues/40#issuecomment-142442124)，目的是使得和 React 的交互点具有高可见性。
 
 在像 Facebook 这样庞大的代码库中，能够搜索某些特定 API 的使用很重要。我们重视清晰冗长的名字，特别是在一些需要保守使用的特性上。比如，`dangerouslySetInnerHTML` 在代码评审中就很容易被发现。
 
 针对搜索优化很重要，因为我们依赖 [codemods](https://www.youtube.com/watch?v=d0pOgY8__JM) 做不兼容的变更。我们希望非常容易、安全地在代码库中应用大量自动化变更，独特冗长的名字帮助了我们。类似地，独特的命名使得编写自定义 React 用法的[提示规则](https://github.com/yannickcr/eslint-plugin-react)变得很容易，无需担心潜在的错误匹配。
 
-[JSX](/docs/introducing-jsx.html)也类似这样。尽管 React 不强制使用 JSX，在 Facebook 我们大量使用 JSX，因为它既好看有实用。
+[JSX](/docs/introducing-jsx.html) 也类似这样。尽管 React 不强制使用 JSX，在 Facebook 我们大量使用 JSX，因为它既好看有实用。
 
 在我们的代码库中，JSX 给和 React 元素树打交道的工具提供了明确的提示。这使得构建时优化成为可能，比如[提升常量元素](https://babeljs.io/docs/en/babel-plugin-transform-react-constant-elements/)、安全地进行代码提示、codemod 内部组件用法、在代码警告中[包含 JSX 源码定位](https://github.com/facebook/react/pull/6771).
 
