@@ -692,7 +692,7 @@ class Board extends React.Component {
 
 ### 判断出胜者 {#declaring-a-winner}
 
-至此我们就可以看出下一步会轮到哪位玩家，与此同时，我们还需要显示游戏的结果来判定游戏结束。拷贝如下 helper 函数并粘贴到文件底部：
+至此我们就可以看出下一步会轮到哪位玩家，与此同时，我们还需要显示游戏的结果来判定游戏结束。拷贝如下 calculateWinner 函数并粘贴到文件底部：
 
 ```javascript
 function calculateWinner(squares) {
