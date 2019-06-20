@@ -38,11 +38,7 @@ console.log(testRenderer.toJSON());
 //   children: [ 'Facebook' ] }
 ```
 
-<<<<<<< HEAD
-你可以使用 Jest 的快照测试功能来自动保存当前 `JSON` 树结构到一个文件中，并在测试中检查它是否被修改：[了解更多](http://facebook.github.io/jest/blog/2016/07/27/jest-14.html)。
-=======
-You can use Jest's snapshot testing feature to automatically save a copy of the JSON tree to a file and check in your tests that it hasn't changed: [Learn more about it](https://jestjs.io/docs/en/snapshot-testing).
->>>>>>> 899411236d5b1520ab8b8e7fad7d48c681abc69b
+你可以使用 Jest 的快照测试功能来自动保存当前 `JSON` 树结构到一个文件中，并在测试中检查它是否被修改：[了解更多](https://jestjs.io/docs/en/snapshot-testing)。
 
 你也可以通过遍历输出来查找特定节点，并对它们进行断言。
 
