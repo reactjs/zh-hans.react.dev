@@ -1,196 +1,196 @@
 ---
-title: "Introducing the React Profiler"
+title: "React 分析器简介"
 author: [bvaughn]
 ---
-React 16.5 adds support for a new DevTools profiler plugin.
-This plugin uses React's [experimental Profiler API](https://github.com/reactjs/rfcs/pull/51) to collect timing information about each component that's rendered in order to identify performance bottlenecks in React applications.
-It will be fully compatible with our upcoming [time slicing and suspense](/blog/2018/03/01/sneak-peek-beyond-react-16.html) features.
+React 16.5 新增了开发者工具的分析器插件。
+该插件使用 React 的[实验性 Profiler API](https://github.com/reactjs/rfcs/pull/51) 来收集每个组件渲染的耗时，以识别 React 应用程序中的性能瓶颈。
+它将完全兼容我们即将推出的[时间切片和 suspense](/blog/2018/03/01/sneak-peek-beyond-react-16.html) 功能。
 
-This blog post covers the following topics:
-* [Profiling an application](#profiling-an-application)
-* [Reading performance data](#reading-performance-data)
-  * [Browsing commits](#browsing-commits)
-  * [Filtering commits](#filtering-commits)
-  * [Flame chart](#flame-chart)
-  * [Ranked chart](#ranked-chart)
-  * [Component chart](#component-chart)
-  * [Interactions](#interactions)
-* [Troubleshooting](#troubleshooting)
-  * [No profiling data has been recorded for the selected root](#no-profiling-data-has-been-recorded-for-the-selected-root)
-  * [No timing data to display for the selected commit](#no-timing-data-to-display-for-the-selected-commit)
-* [Deep dive video](#deep-dive-video)
+这篇博文涵盖了以下主题：
+* [分析应用程序](#profiling-an-application)
+* [读取性能数据](#reading-performance-data)
+  * [浏览提交](#browsing-commits)
+  * [筛选提交](#filtering-commits)
+  * [火焰图](#flame-chart)
+  * [排行榜](#ranked-chart)
+  * [组件图](#component-chart)
+  * [交互](#interactions)
+* [故障排除](#troubleshooting)
+  * [未记录所选根节点的分析数据](#no-profiling-data-has-been-recorded-for-the-selected-root)
+  * [所选提交无可显示的计时数据](#no-timing-data-to-display-for-the-selected-commit)
+* [深度视频解析](#deep-dive-video)
 
-## Profiling an application {#profiling-an-application}
+## 分析应用程序 {#profiling-an-application}
 
-DevTools will show a "Profiler" tab for applications that support the new profiling API:
+开发者工具将为支持分析 API 的应用程序显示 "Profiler" 选项卡：
 
-![New DevTools "profiler" tab](../images/blog/introducing-the-react-profiler/devtools-profiler-tab.png)
+![新的开发者工具 "profiler" 选项卡](../images/blog/introducing-the-react-profiler/devtools-profiler-tab.png)
 
-> Note:
+> 注意：
 >
-> `react-dom` 16.5+ supports profiling in DEV mode.
-> A production profiling bundle is also available as `react-dom/profiling`.
-> Read more about how to use this bundle at [fb.me/react-profiling](https://fb.me/react-profiling) 
+> `react-dom` 16.5+ 在 DEV 模式下支持性能分析。
+> 也可以使用 `react-dom/profiling` 生产分析代码包，
+> 通过查阅 [fb.me/react-profiling](https://fb.me/react-profiling) 来了解更多关于使用这个包的内容。
 
-The "Profiler" panel will be empty initially. Click the record button to start profiling:
+"Profiler" 面板初始为空，点击记录按钮开始分析：
 
-![Click "record" to start profiling](../images/blog/introducing-the-react-profiler/start-profiling.png)
+![点击 "record" 开始分析](../images/blog/introducing-the-react-profiler/start-profiling.png)
 
-Once you've started recording, DevTools will automatically collect performance information each time your application renders.
-Use your app as you normally would.
-When you are finished profiling, click the "Stop" button.
+一旦你开始录制，开发者工具将在每次应用程序渲染时自动收集性能信息。
+正常使用你的应用，
+当你完成性能分析时，点击 "Stop" 按钮。
 
-![Click "stop" when you are finished profiling](../images/blog/introducing-the-react-profiler/stop-profiling.png)
+![点击 "stop"，当你完成性能分析时](../images/blog/introducing-the-react-profiler/stop-profiling.png)
 
-Assuming your application rendered at least once while profiling, DevTools will show several ways to view the performance data.
-We'll [take a look at each of these below](#reading-performance-data).
+假设你的应用程序在分析时至少渲染一次，开发者工具将提供几种方法查看性能数据。
+我们将[在下面逐一介绍](#reading-performance-data).
 
-## Reading performance data {#reading-performance-data}
+## 读取性能数据 {#reading-performance-data}
 
-### Browsing commits {#browsing-commits}
-Conceptually, React does work in two phases:
+### 浏览提交 {#browsing-commits}
+从概念上讲，React分两个阶段工作：
 
-* The **render** phase determines what changes need to be made to e.g. the DOM. During this phase, React calls `render` and then compares the result to the previous render.
-* The **commit** phase is when React applies any changes. (In the case of React DOM, this is when React inserts, updates, and removes DOM nodes.) React also calls lifecycles like `componentDidMount` and `componentDidUpdate` during this phase.
+* **渲染** 阶段会确定需要进行哪些更改，比如 DOM。在此阶段，React 调用 `render` ，然后将结果与上次渲染的结果进行比较。
+* **提交** 阶段发生在当 React 应用变化时。（对于 React DOM 来说，会发生在 React 插入，更新及删除 DOM 节点的时候。）在此阶段，React 还会调用 `componentDidMount` 和 `componentDidUpdate` 之类的生命周期方法。
 
-The DevTools profiler groups performance info by commit.
-Commits are displayed in a bar chart near the top of the profiler:
+开发者工具的分析器按提交对性能信息进行分组。
+提交展示在分析器顶部附近的条形图中：
 
-![Bar chart of profiled commits](../images/blog/introducing-the-react-profiler/commit-selector.png)
+![提交条形图的简介](../images/blog/introducing-the-react-profiler/commit-selector.png)
 
-Each bar in the chart represents a single commit with the currently selected commit colored black.
-You can click on a bar (or the left/right arrow buttons) to select a different commit.
+图表中的每个条形表示单个提交，当前选定的提交为黑色。
+你可以单击条形图（或左/右箭头按钮）来选择其他提交。
 
-The color and height of each bar corresponds to how long that commit took to render.
-(Taller, yellow bars took longer than shorter, blue bars.)
+每个条形的颜色和高度对应该次提交渲染所需的时间。
+(较高的黄色条形比较短的蓝色条形耗费的时间长。)
 
-### Filtering commits {#filtering-commits}
+### 筛选提交 {#filtering-commits}
 
-The longer you profile, the more times your application will render.
-In some cases you may end up with _too many commits_ to easily process.
-The profiler offers a filtering mechanism to help with this.
-Use it to specify a threshold and the profiler will hide all commits that were _faster_ than that value.
+分析的时间越长，应用程序渲染的次数越多。
+在某些情况下，你可能会因为 _太多的提交_ 而难以处理。
+分析器提供了一种过滤机制来帮助实现这一点。
+使用它来指定阈值，分析器将隐藏所有比该值 _更快_ 的提交。
 
-![Filtering commits by time](../images/blog/introducing-the-react-profiler/filtering-commits.gif)
+![按时间筛选提交](../images/blog/introducing-the-react-profiler/filtering-commits.gif)
 
-### Flame chart {#flame-chart}
+### 火焰图 {#flame-chart}
 
-The flame chart view represents the state of your application for a particular commit.
-Each bar in the chart represents a React component (e.g. `App`, `Nav`).
-The size and color of the bar represents how long it took to render the component and its children.
-(The width of a bar represents how much time was spent _when the component last rendered_ and the color represents how much time was spent _as part of the current commit_.)
+火焰图代表指定提交的应用程序状态。
+图表中的每个条形代表一个 React 组件， (如： `App`, `Nav`)。
+条形的大小和颜色代表渲染该组件及其子组件所需的耗时。
+(条形的宽度代表组件 _上次渲染_ 的耗时，颜色代表 _当前提交_ 的耗时。)
 
-![Example flame chart](../images/blog/introducing-the-react-profiler/flame-chart.png)
+![火焰图示例](../images/blog/introducing-the-react-profiler/flame-chart.png)
 
-> Note:
+> 注意：
 >
-> The width of a bar indicates how long it took to render the component (and its children) when they last rendered.
-> If the component did not re-render as part of this commit, the time represents a previous render.
-> The wider a component is, the longer it took to render.
+> 条形的宽度代表上次渲染组件（及其子组件）时所需的耗时。
+> 如果组件在本次提交中未重新渲染，则代表之前的渲染耗时。
+> 组件越大，渲染耗时越长。
 > 
-> The color of a bar indicates how long the component (and its children) took to render in the selected commit.
-> Yellow components took more time, blue components took less time, and gray components did not render at all during this commit.
+> 条形的颜色指示组件（及其子组件）在所选提交中渲染的耗时。
+> 黄色组件耗时更多，蓝色组件耗时更少，灰色组件则表示在这个提交期间不渲染。
 
-For example, the commit shown above took a total of 18.4ms to render.
-The `Router` component was the "most expensive" to render (taking 18.4ms).
-Most of this time was due to two of its children, `Nav` (8.4ms) and `Route` (7.9ms).
-The rest of the time was divided between its remaining children or spent in the component's own render method.
+例如，上面显示的提交总共需要 18.4ms 进行渲染。
+`Router` 组件是"最昂贵的"渲染（耗时 18.4ms）。
+大部分时间消耗在它的两个子组件上，`Nav` (8.4ms) 和 `Route` (7.9ms)。
+其余时间由剩余的子节点瓜分，或者在组件自己的渲染方法中使用。
 
-You can zoom in or out on a flame chart by clicking on components:
-![Click on a component to zoom in or out](../images/blog/introducing-the-react-profiler/zoom-in-and-out.gif)
+你可以通过单击组件放大或缩小火焰图：
+![单击组件放大或缩小火焰图](../images/blog/introducing-the-react-profiler/zoom-in-and-out.gif)
 
-Clicking on a component will also select it and show information in the right side panel which includes its `props` and `state` at the time of this commit.
-You can drill into these to learn more about what the component actually rendered during the commit:
+单击组件将选中它并同时在右侧面板中其详细信息，其中包括其提交时的 `props` 和 `state`。
+您可以深入了解这些内容，进一步了解提交期间组件实际渲染的内容：
 
-![Viewing a component's props and state for a commit](../images/blog/introducing-the-react-profiler/props-and-state.gif)
+![查看组件提交的 props 和 state](../images/blog/introducing-the-react-profiler/props-and-state.gif)
 
-In some cases, selecting a component and stepping between commits may also provide a hint as to _why_ the component rendered:
+在某些情况下，选择组件并在提交之间单步执行也可能得到关于组件渲染 _原因_ 的提示：
 
-![Seeing which values changed between commits](../images/blog/introducing-the-react-profiler/see-which-props-changed.gif)
+![查看提交之间更改的值](../images/blog/introducing-the-react-profiler/see-which-props-changed.gif)
 
-The above image shows that `state.scrollOffset` changed between commits.
-This is likely what caused the `List` component to re-render.
+上图显示 `state.scrollOffset` 在提交之间发生了变化。 
+这可能是导致 `List` 组件重新渲染的原因。
 
-### Ranked chart {#ranked-chart}
+### 排行榜 {#ranked-chart}
 
-The ranked chart view represents a single commit.
-Each bar in the chart represents a React component (e.g. `App`, `Nav`).
-The chart is ordered so that the components which took the longest to render are at the top.
+排行榜视图表示单个提交。
+图表中的每个条形代表一个 React 组件 (如： `App`，`Nav`)。
+图表按顺序排列，以便渲染耗时最长的组件位于顶部。
 
-![Example ranked chart](../images/blog/introducing-the-react-profiler/ranked-chart.png)
+![排行榜示例](../images/blog/introducing-the-react-profiler/ranked-chart.png)
 
-> Note:
+> 注意：
 >
-> A component's render time includes the time spent rendering its children,
-> so the components which took the longest to render are generally near the top of the tree.
+> 组件的渲染耗时包括渲染其子组件所花费的时间，
+> 因此，渲染耗时最长的组件通常位于树的顶部附近。
 
-As with the flame chart, you can zoom in or out on a ranked chart by clicking on components.
+与火焰图一样，你可以通过单击组件放大或缩小排行榜。
 
-### Component chart {#component-chart}
+### 组件图 {#component-chart}
 
-Sometimes it's useful to see how many times a particular component rendered while you were profiling.
-The component chart provides this information in the form of a bar chart.
-Each bar in the chart represents a time when the component rendered.
-The color and height of each bar corresponds to how long the component took to render _relative to other components_ in a particular commit.
+有时，查看指定组件在分析时渲染的次数非常有用。
+组件图以条形图的方式提供此信息。
+图表中的每个条形表示组件渲染的时间。
+每个条形的颜色和高度对应于组件在指定提交中渲染 _相对于其他组件_ 所需的耗时。
 
-![Example component chart](../images/blog/introducing-the-react-profiler/component-chart.png)
+![组件图示例](../images/blog/introducing-the-react-profiler/component-chart.png)
 
-The chart above shows that the `List` component rendered 11 times.
-It also shows that each time it rendered, it was the most "expensive" component in the commit (meaning that it took the longest).
+上图显示 `List` 组件渲染了11次。
+它还显示了每次渲染时，它都是提交中最"昂贵”的组件（意味着它的耗时最长）。
 
-To view this chart, either double-click on a component _or_ select a component and click on the blue bar chart icon in the right detail pane.
-You can return to the previous chart by clicking the "x" button in the right detail pane.
-You can aso double click on a particular bar to view more information about that commit.
+要查看此图表，请双击组件 _或_ 选择组件，然后单击右侧详细信息窗格中的蓝色条形图图标。
+你可以通过单击右侧详细信息窗格中的 "x" 按钮返回到上一个图表。 
+你还可以双击指定的条形来查看该提交的更多信息
 
-![How to view all renders for a specific component](../images/blog/introducing-the-react-profiler/see-all-commits-for-a-fiber.gif)
+![如何查看指定组件的所有渲染](../images/blog/introducing-the-react-profiler/see-all-commits-for-a-fiber.gif)
 
-If the selected component did not render at all during the profiling session, the following message will be shown:
+如果所选的组件在分析会话期间没有渲染，将显示以下消息：
 
-![No render times for the selected component](../images/blog/introducing-the-react-profiler/no-render-times-for-selected-component.png)
+![所选组件无渲染时间](../images/blog/introducing-the-react-profiler/no-render-times-for-selected-component.png)
 
-### Interactions {#interactions}
+### 交互 {#interactions}
 
-React recently added another [experimental API](https://fb.me/react-interaction-tracing) for tracing the _cause_ of an update.
-"Interactions" traced with this API will also be shown in the profiler:
+React 最近添加了另一个用于跟踪更新 _原因_ 的 [实验性 API](https://fb.me/react-interaction-tracing)。
+跟踪此 API 的"交互"也将显示在分析器中:
 
-![The interactions panel](../images/blog/introducing-the-react-profiler/interactions.png)
+![交互面板](../images/blog/introducing-the-react-profiler/interactions.png)
 
-The image above shows a profiling session that traced four interactions.
-Each row represents an interaction that was traced.
-The colored dots along the row represent commits that were related to that interaction.
+上图显示了跟踪四个交互的分析会话。
+每行表示已跟踪的交互。
+行中的彩色点表示与该交互相关的提交。
 
-You can also see which interactions were traced for a particular commit from the flame chart and ranked chart views as well:
+你还可以从火焰图和排行榜的视图中查看指定提交跟踪了哪些交互：
 
-![List of interactions for a commit](../images/blog/introducing-the-react-profiler/interactions-for-commit.png)
+![提交的交互列表](../images/blog/introducing-the-react-profiler/interactions-for-commit.png)
 
-You can navigate between interactions and commits by clicking on them:
+通过单击交互和提交，可以在交互和提交之间导航：
 
-![Navigate between interactions and commits](../images/blog/introducing-the-react-profiler/navigate-between-interactions-and-commits.gif)
+![在交互和提交之间导航](../images/blog/introducing-the-react-profiler/navigate-between-interactions-and-commits.gif)
 
-The tracing API is still new and we will cover it in more detail in a future blog post.
+新的跟踪 API，我们将在未来的博文中更详细地介绍它。
 
-## Troubleshooting {#troubleshooting}
+## 故障排除 {#troubleshooting}
 
-### No profiling data has been recorded for the selected root {#no-profiling-data-has-been-recorded-for-the-selected-root}
+### 未记录所选根节点的分析数据 {#no-profiling-data-has-been-recorded-for-the-selected-root}
 
-If your application has multiple "roots", you may see the following message after profiling:
-![No profiling data has been recorded for the selected root](../images/blog/introducing-the-react-profiler/no-profiler-data-multi-root.png)
+如果你的应用程序有多个"根”节点，你可能会在分析后看到以下消息：
+![未记录所选根节点的分析数据](../images/blog/introducing-the-react-profiler/no-profiler-data-multi-root.png)
 
-This message indicates that no performance data was recorded for the root that's selected in the "Elements" panel.
-In this case, try selecting a different root in that panel to view profiling information for that root:
+此消息指示未记录在“元素”面板中选择的根节点的性能数据。
+在这种情况下，请尝试在该面板中选择其他根节点来查看性能分析信息：
 
-![Select a root in the "Elements" panel to view its performance data](../images/blog/introducing-the-react-profiler/select-a-root-to-view-profiling-data.gif)
+![在“元素”面板中选择根节点以查看其性能数据](../images/blog/introducing-the-react-profiler/select-a-root-to-view-profiling-data.gif)
 
-### No timing data to display for the selected commit {#no-timing-data-to-display-for-the-selected-commit}
+### 所选提交无可显示的计时数据 {#no-timing-data-to-display-for-the-selected-commit}
 
-Sometimes a commit may be so fast that `performance.now()` doesn't give DevTools any meaningful timing information.
-In this case, the following message will be shown:
+有时提交可能很快，以至于 `performance.now()` 不会给开发者工具任何有意义的计时信息。 在这种情况下，将显示以下消息。
+在这种情况下，将显示以下消息：
 
-![No timing data to display for the selected commit](../images/blog/introducing-the-react-profiler/no-timing-data-for-commit.png)
+![所选提交无可显示的计时数据](../images/blog/introducing-the-react-profiler/no-timing-data-for-commit.png)
 
-## Deep dive video {#deep-dive-video}
+## 深度视频解析 {#deep-dive-video}
 
-The following video demonstrates how the React profiler can be used to detect and improve performance bottlenecks in an actual React application.
+以下视频演示了如何使用 React 分析器来检测和改进实际 React 应用程序中的性能瓶颈。
 
 <br>
 
