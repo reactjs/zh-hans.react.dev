@@ -6,7 +6,7 @@ permalink: docs/accessibility.html
 
 ## 为什么我们需要无障碍辅助功能？ {#why-accessibility}
 
-网络无障碍辅助功能（Accessibility，也被称为 [**a11y**](https://en.wiktionary.org/wiki/a11y)，因为以A开头，以Y结尾，一共11个字母）是一种可以帮助所有人获得服务的设计和创造。无障碍辅助功能是使得辅助技术正确解读网页的必要条件。
+网络无障碍辅助功能（Accessibility，也被称为 [**a11y**](https://en.wiktionary.org/wiki/a11y)，因为以 A 开头，以 Y 结尾，中间一共 11 个字母）是一种可以帮助所有人获得服务的设计和创造。无障碍辅助功能是使得辅助技术正确解读网页的必要条件。
 
 React 对于创建可访问网站有着全面的支持，而这通常是通过标准 HTML 技术实现的。
 
@@ -18,7 +18,7 @@ React 对于创建可访问网站有着全面的支持，而这通常是通过�
 
 下面的 WCAG 检查表提供了一些概览：
 
-- [Wuchang 提供的 WCAG 检查表（WCAG checklist from Wuhcag）](https://www.wuhcag.com/wcag-checklist/)
+- [Wuhcag 提供的 WCAG 检查表（WCAG checklist from Wuhcag）](https://www.wuhcag.com/wcag-checklist/)
 - [WebAIM 提供的 WCAG 检查表（WCAG checklist from WebAIM）](https://webaim.org/standards/wcag/checklist)
 - [A11Y Project 提供的检查表（Checklist from The A11Y Project）](https://a11yproject.com/checklist.html)
 
