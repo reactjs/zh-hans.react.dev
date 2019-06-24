@@ -35,6 +35,7 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
 
 首先，你需要在设计稿上用方框圈出每一个组件（包括它们的子组件），并且以合适的名称命名。如果你是和设计师一起完成此任务，那么他们可能已经做过类似的工作，所以请和他们进行交流！他们的 Photoshop 的图层名称可能最终就是你编写的 React 组件的名称！
 
+<<<<<<< HEAD
 但你如何确定应该将哪些部分划分到一个组件中呢？你可以将组件当作一种函数或者是对象来考虑，根据[单一功能原则](https://en.wikipedia.org/wiki/Single_responsibility_principle)来判定组件的范围。也就是说，一个组件原则上只能负责一个功能。如果它需要负责更多的功能，这时候就应该考虑将它拆分成更小的组件。
 
 在实践中，因为你经常是在向用户展示 JSON 数据模型，所以如果你的模型设计得恰当，UI（或者说组件结构）便会与数据模型一一对应，这是因为 UI 和数据模型都会倾向于遵守相同的*信息结构*。因此，将用户界面划分为组件的工作量就可以忽略不计了。只需使组件完全对应地展现数据模型的某部分即可。
@@ -42,6 +43,15 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
 ![Component diagram](../images/blog/thinking-in-react-components.png)
 
 你会看到我们的简单应用中包含五个组件。我们已经将每个组件展示的数据标注为了斜体。
+=======
+But how do you know what should be its own component? Use the same techniques for deciding if you should create a new function or object. One such technique is the [single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle), that is, a component should ideally only do one thing. If it ends up growing, it should be decomposed into smaller subcomponents.
+
+Since you're often displaying a JSON data model to a user, you'll find that if your model was built correctly, your UI (and therefore your component structure) will map nicely. That's because UI and data models tend to adhere to the same *information architecture*, which means the work of separating your UI into components is often trivial. Break it up into components that represent exactly one piece of your data model.
+
+![Component diagram](../images/blog/thinking-in-react-components.png)
+
+You'll see here that we have five components in our app. We've italicized the data each component represents.
+>>>>>>> 92ad9c2f7abb36a306f563fe48b7f52649929608
 
   1. **`FilterableProductTable` (橙色):** 是整个示例应用的整体
   2. **`SearchBar` (蓝色):** 接受所有的*用户输入*
@@ -51,7 +61,11 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
 
 你可能注意到，`ProductTable` 的表头（包含 "Name" 和 "Price" 的那一部分）并未单独成为一个组件。这仅仅是一种偏好选择，如何处理这一问题也一直存在争论。就这个示例而言，因为表头只起到了渲染*数据集合*的作用——这与 `ProductTable` 是一致的，所以我们仍然将其保留为 `ProductTable` 的一部分。但是，如果表头过于复杂（比如我们需为其添加排序功能），那么将它作为一个独立的 `ProductTableHeader` 组件就显得很有必要了。
 
+<<<<<<< HEAD
 现在我们已经确定了设计稿中应该包含的组件，接下来我们将把它们描述为更加清晰的层级。设计稿中被其他组件包含的子组件，在层级上应该作为其子节点。
+=======
+Now that we've identified the components in our mock, let's arrange them into a hierarchy. Components that appear within another component in the mock should appear as a child in the hierarchy:
+>>>>>>> 92ad9c2f7abb36a306f563fe48b7f52649929608
 
   * `FilterableProductTable`
     * `SearchBar`
@@ -70,9 +84,15 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
 
 你可以自上而下或者自下而上构建应用：自上而下意味着首先编写层级较高的组件（比如 `FilterableProductTable`），自下而上意味着从最基本的组件开始编写（比如 `ProductRow`）。当你的应用比较简单时，使用自上而下的方式更方便；对于较为大型的项目来说，自下而上地构建，并同时为低层组件编写测试是更加简单的方式。
 
+<<<<<<< HEAD
 到此为止，你应该已经有了一个可重用的组件库来渲染你的数据模型。由于我们构建的是静态版本，所以这些组件目前只需提供 `render()` 方法用于渲染。最顶层的组件 `FilterableProductTable` 通过 props 接受你的数据模型。如果你的数据模型发生了改变，再次调用 `ReactDOM.render()`，UI 就会相应地被更新。数据模型变化、调用 `render()` 方法、UI 相应变化，这个过程并不复杂，因此很容易看清楚 UI 是如何被更新的，以及是在哪里被更新的。React **单向数据流**（也叫*单向绑定*）的思想使得组件模块化，易于快速开发。
 
 如果你在完成这一步骤时遇到了困难，可以参阅 [React 文档](/docs/)。
+=======
+At the end of this step, you'll have a library of reusable components that render your data model. The components will only have `render()` methods since this is a static version of your app. The component at the top of the hierarchy (`FilterableProductTable`) will take your data model as a prop. If you make a change to your underlying data model and call `ReactDOM.render()` again, the UI will be updated. You can see how your UI is updated and where to make changes. React's **one-way data flow** (also called *one-way binding*) keeps everything modular and fast.
+
+Refer to the [React docs](/docs/) if you need help executing this step.
+>>>>>>> 92ad9c2f7abb36a306f563fe48b7f52649929608
 
 ### 补充说明: 有关 props 和 state {#a-brief-interlude-props-vs-state}
 
@@ -80,9 +100,15 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
 
 ## 第三步：确定 UI state 的最小（且完整）表示 {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
 
+<<<<<<< HEAD
 想要使你的 UI 具备交互功能，需要有触发基础数据模型改变的能力。React 通过 **state** 来完成这个任务。
 
 为了正确地构建应用，你首先需要找出应用所需的 state 的最小表示，并根据需要计算出其他所有数据。其中的关键正是 [DRY: *Don't Repeat Yourself*](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)。只保留应用所需的可变 state 的最小集合，其他数据均由它们计算产生。比如，你要编写一个任务清单应用，你只需要保存一个包含所有事项的数组，而无需额外保存一个单独的 state 变量（用于存储任务个数）。当你需要展示任务个数时，只需要利用该数组的 length 属性即可。
+=======
+To make your UI interactive, you need to be able to trigger changes to your underlying data model. React achieves this with **state**.
+
+To build your app correctly, you first need to think of the minimal set of mutable state that your app needs. The key here is [DRY: *Don't Repeat Yourself*](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself). Figure out the absolute minimal representation of the state your application needs and compute everything else you need on-demand. For example, if you're building a TODO list, keep an array of the TODO items around; don't keep a separate state variable for the count. Instead, when you want to render the TODO count, take the length of the TODO items array.
+>>>>>>> 92ad9c2f7abb36a306f563fe48b7f52649929608
 
 我们的示例应用拥有如下数据：
 
@@ -91,7 +117,11 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
   * 复选框是否选中的值
   * 经过搜索筛选的产品列表
 
+<<<<<<< HEAD
 通过问自己以下三个问题，你可以逐个检查相应数据是否属于 state：
+=======
+Let's go through each one and figure out which one is state. Ask three questions about each piece of data:
+>>>>>>> 92ad9c2f7abb36a306f563fe48b7f52649929608
 
   1. 该数据是否是由父组件通过 props 传递而来的？如果是，那它应该不是 state。
   2. 该数据是否随时间的推移而保持不变？如果是，那它应该也不是 state。
@@ -114,10 +144,17 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
 
 对于应用中的每一个 state：
 
+<<<<<<< HEAD
   * 找到根据这个 state 进行渲染的所有组件。
   * 找到他们的共同所有者（common owner）组件（在组件层级上高于所有需要该 state 的组件）。
   * 该共同所有者组件或者比它层级更高的组件应该拥有该 state。
   * 如果你找不到一个合适的位置来存放该 state，就可以直接创建一个新的组件来存放该 state，并将这一新组件置于高于共同所有者组件层级的位置。
+=======
+  * Identify every component that renders something based on that state.
+  * Find a common owner component (a single component above all the components that need the state in the hierarchy).
+  * Either the common owner or another component higher up in the hierarchy should own the state.
+  * If you can't find a component where it makes sense to own the state, create a new component solely for holding the state and add it somewhere in the hierarchy above the common owner component.
+>>>>>>> 92ad9c2f7abb36a306f563fe48b7f52649929608
 
 根据以上策略重新考虑我们的示例应用：
 
@@ -135,14 +172,24 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
 
 到目前为止，我们已经借助自上而下传递的 props 和 state 渲染了一个应用。现在，我们将尝试让数据反向传递：处于较低层级的表单组件更新较高层级的 `FilterableProductTable` 中的 state。
 
+<<<<<<< HEAD
 React 通过一种比传统的双向绑定略微繁琐的方法来实现反向数据传递。尽管如此，但这种需要显式声明的方法更利于人们理解程序的运作方式。
+=======
+React makes this data flow explicit to help you understand how your program works, but it does require a little more typing than traditional two-way data binding.
+>>>>>>> 92ad9c2f7abb36a306f563fe48b7f52649929608
 
 如果你在这时尝试在搜索框输入或勾选复选框，React 不会产生任何响应。这是正常的，因为我们之前已经将 `input` 的值设置为了从 `FilterableProductTable` 的 `state` 传递而来的固定值。
 
 让我们重新梳理一下需要实现的功能：每当用户改变表单的值，我们需要改变 state 来反映用户的当前输入。由于 state 只能由拥有它们的组件进行更改，`FilterableProductTable` 必须将一个能够触发 state 改变的回调函数（callback）传递给 `SearchBar`。我们可以使用输入框的 `onChange` 事件来监视用户输入的变化，并通知 `FilterableProductTable` 传递给 `SearchBar` 的回调函数。然后该回调函数将调用 `setState()`，从而更新应用。
 
+<<<<<<< HEAD
 尽管描述起来有点复杂，但实际上只是几行代码而已。你可以清楚地看到你的应用中数据是如何流动的。
 
 ## 这就是全部了 {#and-thats-it}
 
 希望这篇文档能够帮助你建立起构建 React 组件和应用的一般概念。尽管你可能需要编写更多的代码，但是别忘了：比起写，代码更多地是给人看的。我们一起构建的这个模块化示例应用的代码就很适合阅读。当你开始构建更大的组件库时，你会意识到这种代码模块化和清晰度的重要性。并且随着代码重用程度的加深，你的代码行数也会显著地减少。:)
+=======
+## And That's It {#and-thats-it}
+
+Hopefully, this gives you an idea of how to think about building components and applications with React. While it may be a little more typing than you're used to, remember that code is read far more than it's written, and it's less difficult to read this modular, explicit code. As you start to build large libraries of components, you'll appreciate this explicitness and modularity, and with code reuse, your lines of code will start to shrink. :)
+>>>>>>> 92ad9c2f7abb36a306f563fe48b7f52649929608
