@@ -609,7 +609,7 @@ function ProductPage({ productId }) {
 
 这同时也允许你通过 effect 内部的局部变量来处理无序的响应：
 
-```js{2,6,8}
+```js{2,6,10}
   useEffect(() => {
     let ignore = false;
     async function fetchProduct() {
@@ -617,6 +617,8 @@ function ProductPage({ productId }) {
       const json = await response.json();
       if (!ignore) setProduct(json);
     }
+    
+    fetchProduct();
     return () => { ignore = true };
   }, [productId]);
 ```
