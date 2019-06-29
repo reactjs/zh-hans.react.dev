@@ -22,7 +22,7 @@ HOC 在 React 的第三方库中很常见，例如 Redux 的 [`connect`](https:/
 
 > **注意**
 >
-> 我们之前建议使用 mixins 用于解决横切关注点相关的问题。但我们已经意识到 mixins 会产生更多麻烦。[阅读更多](/blog/2016/07/13/mixins-consideration-hazardous.html) 关于我们为什么要抛弃 mixins 以及如何转换现有组件。
+> 我们之前建议使用 mixins 用于解决横切关注点相关的问题。但我们已经意识到 mixins 会产生更多麻烦。[阅读更多](/blog/2016/07/13/mixins-considered-harmful.html) 以了解我们为什么要抛弃 mixins 以及如何转换现有组件。
 
 组件是 React 中代码复用的基本单元。但你会发现某些模式并不适合传统组件。
 
