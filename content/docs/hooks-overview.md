@@ -128,7 +128,7 @@ function FriendStatus(props) {
 }
 ```
 
-在这个示例中，React 会在组件销毁或者后续渲染重新执行副作用函数时取消对 `ChatAPI` 的订阅。（如果传给 `ChatAPI` 的 `props.friend.id` 没有变化，你也可以[告诉 React 跳过重新订阅](/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)。）
+在这个示例中，React 会在组件销毁或者后续渲染时重新执行副作用函数，取消对 `ChatAPI` 的订阅。（如果传给 `ChatAPI` 的 `props.friend.id` 没有变化，你也可以[告诉 React 跳过重新订阅](/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)。）
 
 跟 `useState` 一样，你可以在组件中多次使用 `useEffect` ：
 
