@@ -18,7 +18,11 @@ render() {
 }
 ```
 
+<<<<<<< HEAD
 还有一种新的[短语法](#short-syntax)可用于声明它们，但尚未得到所有流行工具的支持。
+=======
+There is also a new [short syntax](#short-syntax) for declaring them.
+>>>>>>> c024001caf50180a896c09467d06b2ad7b2fb8f4
 
 ## 动机 {#motivation}
 
@@ -113,9 +117,13 @@ class Columns extends React.Component {
 
 你可以像使用任何其他元素一样使用 `<> </>`，除了它不支持 key 或属性。
 
+<<<<<<< HEAD
 请注意 **[目前许多工具尚不支持](/blog/2017/11/28/react-v16.2.0-fragment-support.html#support-for-fragment-syntax)** ，所以直到工具支持之前，你可能要显式的使用 `<React.Fragment>`。
 
 ### 带 key 的 Fragments {#keyed-fragments}
+=======
+### Keyed Fragments {#keyed-fragments}
+>>>>>>> c024001caf50180a896c09467d06b2ad7b2fb8f4
 
 使用显式 `<React.Fragment>` 语法声明的片段可能具有 key。一个使用场景是将一个集合映射到一个 Fragments 数组 - 举个例子，创建一个描述列表：
 
