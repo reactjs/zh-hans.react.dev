@@ -18,7 +18,7 @@ render() {
 }
 ```
 
-还有一种新的[短语法](#short-syntax)可用于声明它们，但尚未得到所有流行工具的支持。
+还有一种新的[短语法](#short-syntax)可用于声明它们。
 
 ## 动机 {#motivation}
 
@@ -112,8 +112,6 @@ class Columns extends React.Component {
 ```
 
 你可以像使用任何其他元素一样使用 `<> </>`，除了它不支持 key 或属性。
-
-请注意 **[目前许多工具尚不支持](/blog/2017/11/28/react-v16.2.0-fragment-support.html#support-for-fragment-syntax)** ，所以直到工具支持之前，你可能要显式的使用 `<React.Fragment>`。
 
 ### 带 key 的 Fragments {#keyed-fragments}
 

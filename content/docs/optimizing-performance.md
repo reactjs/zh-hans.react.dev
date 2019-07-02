@@ -51,14 +51,14 @@ npm run build
 
 ### Brunch {#brunch}
 
-通过安装 [`uglify-js-brunch`](https://github.com/brunch/uglify-js-brunch) 插件，来获得最高效的 Brunch 生产构建：
+通过安装 [`terser-brunch`](https://github.com/brunch/terser-brunch) 插件，来获得最高效的 Brunch 生产构建：
 
 ```
 # 如果你使用 npm
-npm install --save-dev uglify-js-brunch
+npm install --save-dev terser-brunch
 
 # 如果你使用 Yarn
-yarn add --dev uglify-js-brunch
+yarn add --dev terser-brunch
 ```
 
 接着，在 `build` 命令后添加 `-p` 参数，以创建生产构建：
@@ -75,17 +75,17 @@ brunch build -p
 
 ```
 # 如果你使用 npm
-npm install --save-dev envify uglify-js uglifyify 
+npm install --save-dev envify terser uglifyify
 
 # 如果你使用 Yarn
-yarn add --dev envify uglify-js uglifyify 
+yarn add --dev envify terser uglifyify
 ```
 
 为了创建生产构建，确保你添加了以下转换器 **（顺序很重要）**：
 
 * [`envify`](https://github.com/hughsk/envify) 转换器用于设置正确的环境变量。设置为全局 (`-g`)。
 * [`uglifyify`](https://github.com/hughsk/uglifyify) 转换器移除开发相关的引用代码。同样设置为全局 (`-g`)。
-* 最后，将产物传给 [`uglify-js`](https://github.com/mishoo/UglifyJS2) 用以压缩（[为什么要这么做？](https://github.com/hughsk/uglifyify#motivationusage)）。
+* 最后，将产物传给 [`terser`](https://github.com/terser-js/terser) 并进行压缩（[为什么要这么做？](https://github.com/hughsk/uglifyify#motivationusage)）。
 
 举个例子：
 
@@ -93,13 +93,8 @@ yarn add --dev envify uglify-js uglifyify
 browserify ./index.js \
   -g [ envify --NODE_ENV production ] \
   -g uglifyify \
-  | uglifyjs --compress --mangle > ./bundle.js
+  | terser --compress --mangle > ./bundle.js
 ```
-
->**注意：**
->
->虽然这个包的名字叫做 `uglify-js`，但是执行文件叫做 `uglifyjs`。<br>
->这不是拼写错误。
 
 请注意，你只需要在生产构建时用到它。你不需要在开发环境应用这些插件，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
 
@@ -109,17 +104,17 @@ browserify ./index.js \
 
 ```
 # 如果你使用 npm
-npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify 
+npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-terser
 
 # 如果你使用 Yarn
-yarn add --dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify 
+yarn add --dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-terser
 ```
 
 为了创建生产构建，确保你添加了以下插件 **（顺序很重要）**：
 
 * [`replace`](https://github.com/rollup/rollup-plugin-replace) 插件确保环境被正确设置。
 * [`commonjs`](https://github.com/rollup/rollup-plugin-commonjs) 插件用于支持 CommonJS。
-* [`uglify`](https://github.com/TrySound/rollup-plugin-uglify) 插件用于压缩并生成最终的产物。
+* [`terser`](https://github.com/TrySound/rollup-plugin-terser) 插件用于压缩并生成最终的产物。
 
 ```js
 plugins: [
@@ -128,14 +123,14 @@ plugins: [
     'process.env.NODE_ENV': JSON.stringify('production')
   }),
   require('rollup-plugin-commonjs')(),
-  require('rollup-plugin-uglify')(),
+  require('rollup-plugin-terser')(),
   // ...
 ]
 ```
 
 [点击](https://gist.github.com/Rich-Harris/cb14f4bc0670c47d00d191565be36bf0)查看完整的安装示例。
 
-请注意，你只需要在生产构建时用到它。你不需要在开发中使用 `uglify` 插件或者 `replace` 插件替换 `'production'` 变量，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
+请注意，你只需要在生产构建时用到它。你不需要在开发中使用 `terser` 插件或者 `replace` 插件替换 `'production'` 变量，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
 
 ### webpack {#webpack}
 
@@ -144,18 +139,22 @@ plugins: [
 >如果你使用了 Create React App，请跟随[上面的说明](#create-react-app)进行操作。<br>
 >只有当你直接配置了 webpack 才需要参考以下内容。
 
-为了最高效的 webpack 生产构建，确保在你的生产配置中包含这些插件：
+在生产模式下，Webpack v4+ 将默认对代码进行压缩：
 
 ```js
-new webpack.DefinePlugin({
-  'process.env.NODE_ENV': JSON.stringify('production')
-}),
-new webpack.optimize.UglifyJsPlugin()
+const TerserPlugin = require('terser-webpack-plugin');
+
+module.exports = {
+  mode: 'production'
+  optimization: {
+    minimizer: [new TerserPlugin({ /* additional options here */ })],
+  },
+};
 ```
 
 你可以在 [webpack 文档](https://webpack.js.org/guides/production/)中了解更多内容。
 
-请注意，你只需要在生产构建时用到它。你不需要在开发中使用 `UglifyJsPlugin` 插件或者 `DefinePlugin` 插件设置 `'production'` 变量，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
+请注意，你只需要在生产构建时用到它。你不需要在开发中使用 `TerserPlugin` 插件，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
 
 ## 使用 Chrome Performance 标签分析组件 {#profiling-components-with-the-chrome-performance-tab}
 
