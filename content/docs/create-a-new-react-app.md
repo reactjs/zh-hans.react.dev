@@ -39,11 +39,7 @@ React 团队主要推荐这些解决方案：
 
 [Create React App](https://github.com/facebookincubator/create-react-app) 是一个用于**学习 React** 的舒适环境，也是用 React 创建**新的[单页](/docs/glossary.html#single-page-application)应用**的最佳方式。
 
-<<<<<<< HEAD
-它会配置你的开发环境，以便使你能够使用最新的 JavaScript 特性，提供良好的开发体验，并为生产环境优化你的应用程序。你需要在你的机器上安装 Node >= 6 和 npm >= 5.2。要创建项目，请执行：
-=======
-It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimizes your app for production. You’ll need to have Node >= 8.10 and npm >= 5.6 on your machine. To create a project, run:
->>>>>>> c024001caf50180a896c09467d06b2ad7b2fb8f4
+它会配置你的开发环境，以便使你能够使用最新的 JavaScript 特性，提供良好的开发体验，并为生产环境优化你的应用程序。你需要在你的机器上安装 Node >= 8.10 和 npm >= 5.6。要创建项目，请执行：
 
 ```bash
 npx create-react-app my-app

@@ -87,11 +87,7 @@ import("./math").then(math => {
 
 > 注意:
 >
-<<<<<<< HEAD
 > `React.lazy` 和 Suspense 技术还不支持服务端渲染。如果你想要在使用服务端渲染的应用中使用，我们推荐 [Loadable Components](https://github.com/smooth-code/loadable-components) 这个库。它有一个很棒的[服务端渲染打包指南](https://github.com/smooth-code/loadable-components/blob/master/packages/server/README.md)。
-=======
-> `React.lazy` and Suspense are not yet available for server-side rendering. If you want to do code-splitting in a server rendered app, we recommend [Loadable Components](https://github.com/smooth-code/loadable-components). It has a nice [guide for bundle splitting with server-side rendering](https://github.com/smooth-code/loadable-components/blob/master/packages/server/README.md).
->>>>>>> c024001caf50180a896c09467d06b2ad7b2fb8f4
 
 `React.lazy` 函数能让你像渲染常规组件一样处理动态引入（的组件）。
 
