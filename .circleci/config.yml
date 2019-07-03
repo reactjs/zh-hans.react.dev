@@ -21,3 +21,11 @@ jobs:
       - run:
           name: Run deploy scripts
           command: bash ./.circleci/deploy.sh
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+        filters:
+          branches:
+            only: master
