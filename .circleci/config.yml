@@ -20,4 +20,4 @@ jobs:
           key: dependencies-{{ checksum "yarn.lock" }}
       - run:
           name: Run deploy scripts
-          command: bash ./.script/deploy.sh
+          command: bash ./deploy.sh
