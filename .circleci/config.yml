@@ -17,7 +17,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: dependencies-{{ checksum "yarn.lock" }}
+          key: dependencies-{{ checksum "yarn.lock" }}    
       - run:
           name: Run deploy scripts
-          command: bash ./deploy.sh
+          command: bash ./.circleci/deploy.sh
