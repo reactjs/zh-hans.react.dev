@@ -4,6 +4,9 @@ jobs:
     docker:
       - image: circleci/node:8
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "b8:65:3c:86:e2:5c:64:82:d6:49:1f:4d:da:da:00:87"
       - checkout
       - restore_cache:
           keys:
@@ -16,5 +19,5 @@ jobs:
             - node_modules
           key: dependencies-{{ checksum "yarn.lock" }}
       - run:
-          name: Check Prettier, ESLint, Flow
-          command: yarn ci-check
+          name: Run deploy scripts
+          command: bash ./.script/deploy.sh
