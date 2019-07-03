@@ -16,7 +16,11 @@ redirect_from:
 
 ## 课前准备 {#before-we-start-the-tutorial}
 
+<<<<<<< HEAD
 我们将会在这个教程中开发一个小游戏。**你可能并不打算做游戏开发，然后就直接跳过了这个教程——但是不妨尝试一下！**你将在该教程中学到关于构建 React 应用的基础知识，掌握这些知识后，你将会对 React 有更加深刻的理解。
+=======
+We will build a small game during this tutorial. **You might be tempted to skip it because you're not building games -- but give it a chance.** The techniques you'll learn in the tutorial are fundamental to building any React app, and mastering it will give you a deep understanding of React.
+>>>>>>> ed9d73105a93239f94d84c619e84ae8adec43483
 
 >提示
 >
