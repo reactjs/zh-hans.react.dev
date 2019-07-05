@@ -674,7 +674,9 @@ function Counter() {
 }
 ```
 
-指定 `[count]` 作为依赖列表就能修复这个 Bug，但会导致每次改变发生时定时器都被重置。这并不是我们想要的。要解决这个问题，我们可以使用 [`setState` 的函数式更新形式](/docs/hooks-reference.html#functional-updates)。它允许我们指定 state 该 *如何* 改变而不用引用 *当前* state：
+传入空的依赖数组 `[]`，意味着该 hook 只在组件挂载时运行一次，并非重新渲染时。但如此会有问题，在 `setInterval` 的回调中，`count` 的值不会发生变化。因为当 effect 执行时，我们会创建一个闭包，并将 `count` 的值被保存在该闭包当中，且初值为 `0`。每隔一秒，回调就会执行 `setCount(0 + 1)`，因此，`count` 永远不会超过 1。
+
+指定 `[count]` 作为依赖列表就能修复这个 Bug，但会导致每次改变发生时定时器都被重置。事实上，每个 `setInterval` 在被清除前都会调用一次。但这并不是我们想要的。要解决这个问题，我们可以使用 [`setState` 的函数式更新形式](/docs/hooks-reference.html#functional-updates)。它允许我们指定 state 该 *如何* 改变而不用引用 *当前* state：
 
 ```js{6,9}
 function Counter() {
@@ -692,6 +694,8 @@ function Counter() {
 ```
 
 （`setCount` 函数的身份是被确保稳定的，所以可以放心的省略掉）
+
+此时，`setInterval` 的回调依旧每秒调用一次，但每次 `setCount` 内部的回调取到的 `count` 是最新值（在回调中变量命名为 `c`）。
 
 在一些更加复杂的场景中（比如一个 state 依赖于另一个 state），尝试用 [`useReducer` Hook](/docs/hooks-reference.html#usereducer) 把 state 更新逻辑移到 effect 之外。[这篇文章](https://adamrackis.dev/state-and-use-reducer/) 提供了一个你该如何做到这一点的案例。 **`useReducer` 的 `dispatch` 的身份永远是稳定的** —— 即使 reducer 函数是定义在组件内部并且依赖 props。
 
