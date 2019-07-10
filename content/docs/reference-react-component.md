@@ -579,7 +579,7 @@ component.forceUpdate(callback)
 
 调用 `forceUpdate()` 将致使组件调用 `render()` 方法，此操作会跳过该组件的 `shouldComponentUpdate()`。但其子组件会触发正常的生命周期方法，包括 `shouldComponentUpdate()` 方法。如果标记发生变化，React 仍将只更新 DOM。
 
-通常你应该避免使用 `forceUpdate()`，尽量在 `render()` 只使用 `this.props` 和 `this.state`
+通常你应该避免使用 `forceUpdate()`，尽量在 `render()` 中使用 `this.props` 和 `this.state`。
 
 * * *
 
