@@ -469,7 +469,7 @@ Deque 系统提供了 [aXe-core](https://github.com/dequelabs/axe-core) 以对�
 在一些浏览器中，我们可以在无障碍辅助功能树中轻松的看到每个元素的无障碍辅助功能信息：
 
 - [在 Firefox 中使用无障碍辅助功能检测器](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector)
-- [在 Chrome 中激活无障碍辅助功能检测器](https://gist.github.com/marcysutton/0a42f815878c159517a55e6652e3b23a)
+- [在 Chrome 中激活无障碍辅助功能检测器](https://developers.google.com/web/tools/chrome-devtools/accessibility/reference#pane)
 - [在 OS X Safari 中使用无障碍辅助功能检测器](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
 
 ### 屏幕朗读器 {#screen-readers}
