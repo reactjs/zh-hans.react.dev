@@ -244,7 +244,11 @@ class Clock extends React.Component {
   }
 ```
 
+<<<<<<< HEAD
 接下来把计时器的 ID 保存在 `this` 之中。
+=======
+Note how we save the timer ID right on `this` (`this.timerID`).
+>>>>>>> 4af9f2dcd1014c18ea6ce98794ba0d63874ac9d2
 
 尽管 `this.props` 和 `this.state` 是 React 本身设置的，且都拥有特殊的含义，但是其实你可以向 class 中随意添加不参与数据流（比如计时器 ID）的额外字段。
 
