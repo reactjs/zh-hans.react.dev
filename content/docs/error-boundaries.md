@@ -32,18 +32,18 @@ class ErrorBoundary extends React.Component {
   }
 
   static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
+    // 更新 state 使下一次渲染能够显示备用 UI
     return { hasError: true };
   }
 
   componentDidCatch(error, info) {
-    // You can also log the error to an error reporting service
+    // 你同样可以将错误记录到错误报告服务
     logErrorToMyService(error, info);
   }
 
   render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
+      // 你可以渲染任何自定义备用 UI
       return <h1>Something went wrong.</h1>;
     }
 
@@ -142,7 +142,7 @@ class MyComponent extends React.Component {
 
   handleClick() {
     try {
-      // Do something that could throw
+      // 可以抛出一些东西的操作
     } catch (error) {
       this.setState({ error });
     }
