@@ -192,7 +192,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             maxWidth: 200,
             height: 'auto',
             paddingTop: 15
-          }} src="http://static.docschina.org/docschina-qr1.jpeg" />
+          }} src="https://static.docschina.org/docschina-qr1.jpeg" />
         </section>
       </div>
     </Container>
