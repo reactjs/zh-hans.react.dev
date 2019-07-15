@@ -57,6 +57,9 @@ MyComponent.propTypes = {
   // 一个 React 元素。
   optionalElement: PropTypes.element,
 
+  // 一个 React 元素类型（即，MyComponent）。
+  optionalElementType: PropTypes.elementType,
+
   // 你也可以声明 prop 为类的实例，这里使用
   // JS 的 instanceof 操作符。
   optionalMessage: PropTypes.instanceOf(Message),
