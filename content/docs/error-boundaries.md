@@ -32,18 +32,18 @@ class ErrorBoundary extends React.Component {
   }
 
   static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
+    // 更新 state 使下一次渲染能够显示降级后的 UI
     return { hasError: true };
   }
 
   componentDidCatch(error, info) {
-    // You can also log the error to an error reporting service
+    // 你同样可以将错误日志上报给服务器
     logErrorToMyService(error, info);
   }
 
   render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
+      // 你可以自定义降级后的 UI 并渲染
       return <h1>Something went wrong.</h1>;
     }
 
@@ -128,7 +128,7 @@ try {
 
 错误边界**无法**捕获事件处理器内部的错误。
 
-React 不需要错误边界来从事件处理程序的错误中恢复。与 render 方法和生命周期方法不同，事件处理器不会在渲染期间触发。因此，如果它们抛出异常，React 仍然能够知道需要在屏幕上显示什么。
+React 不需要错误边界来捕获事件处理器中的错误。与 render 方法和生命周期方法不同，事件处理器不会在渲染期间触发。因此，如果它们抛出异常，React 仍然能够知道需要在屏幕上显示什么。
 
 如果你需要在事件处理器内部捕获错误，使用普通的 JavaScript `try` / `catch` 语句：
 
@@ -142,7 +142,7 @@ class MyComponent extends React.Component {
 
   handleClick() {
     try {
-      // Do something that could throw
+      // 执行操作，如有错误则会抛出
     } catch (error) {
       this.setState({ error });
     }
