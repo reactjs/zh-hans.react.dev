@@ -6,7 +6,7 @@ permalink: docs/higher-order-components.html
 
 高阶组件（HOC）是 React 中用于复用组件逻辑的一种高级技巧。HOC 自身不是 React API 的一部分，它是一种基于 React 的组合特性而形成的设计模式。
 
-具体而言，**高阶组件是参数为组件，返回值为新组件的函数。**
+具体而言，**高阶组件的参数为组件，返回值为新组件的函数。**
 
 ```js
 const EnhancedComponent = higherOrderComponent(WrappedComponent);
@@ -393,4 +393,4 @@ import MyComponent, { someFunction } from './MyComponent.js';
 
 虽然高阶组件的约定是将所有 props 传递给被包装组件，但这对于 refs 并不适用。那是因为 `ref` 实际上并不是一个 prop - 就像 `key` 一样，它是由 React 专门处理的。如果将 ref 添加到 HOC 的返回组件中，则 ref 引用指向容器组件，而不是被包装组件。
 
-这个问题的解决方案是通过使用 `React.forwardRef` API（React 16.3 中引入）。[前往 ref 转发章节了解更多](/docs/forwarding-refs.html)。
+这个问题的解决方案是通过使用 `React.forwardRef` API（
