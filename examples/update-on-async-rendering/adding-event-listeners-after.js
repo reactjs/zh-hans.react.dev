@@ -7,14 +7,14 @@ class ExampleComponent extends React.Component {
   // highlight-line
   // highlight-range{1-18}
   componentDidMount() {
-    // Event listeners are only safe to add after mount,
-    // So they won't leak if mount is interrupted or errors.
+    // 事件监听器只有在挂载后添加才是安全的，
+    // 因此，如果挂载中断或错误，它们不会泄漏。
     this.props.dataSource.subscribe(
       this.handleSubscriptionChange
     );
 
-    // External values could change between render and mount,
-    // In some cases it may be important to handle this case.
+    // 外部值可能在渲染和挂载期间改变，
+    // 在某些情况下，处理这种情况很重要。
     if (
       this.state.subscribedValue !==
       this.props.dataSource.value
