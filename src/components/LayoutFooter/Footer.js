@@ -179,7 +179,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
               color: colors.subtleOnDark,
               paddingTop: 15,
             }}>
-            Copyright © 2019 Facebook Inc.
+            {`Copyright © ${new Date().getFullYear()} Facebook Inc.`}
           </p>
           <p
             css={{
@@ -188,6 +188,11 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             }}>
             <a href="https://docschina.org/" target="_blank">印记中文</a>
           </p>
+          <img css={{
+            maxWidth: 200,
+            height: 'auto',
+            paddingTop: 15
+          }} src="https://static.docschina.org/docschina-qr1.jpeg" />
         </section>
       </div>
     </Container>

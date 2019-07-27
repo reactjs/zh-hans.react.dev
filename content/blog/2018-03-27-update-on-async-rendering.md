@@ -134,7 +134,7 @@ author: [bvaughn]
 
 尽管上面的代码本身没有问题，但是 `componentWillReceiveProps` 生命周期经常被误用，_会_ 产生问题。因此，该方法将被废弃。
 
-从 16.3 版本开始，当 `props` 变化时，建议使用新的 `static getDerivedStateFromProps` 生命周期更新 `state`。（创建组件以及每次组件接收到新的 props 时都会调用该生命周期）：
+从 16.3 版本开始，当 `props` 变化时，建议使用新的 `static getDerivedStateFromProps` 生命周期更新 `state`。创建组件以及每次组件由于 props 或 state 的改变而重新渲染时都会调用该生命周期：
 `embed:update-on-async-rendering/updating-state-from-props-after.js`
 
 在上面的示例中，你可能会注意到 `props.currentRow` 在 state 中的镜像（`state.lastRow`）。这使得 `getDerivedStateFromProps` 能够像在 `componentWillReceiveProps` 中相同的方式访问上一个 props 的值。
