@@ -255,7 +255,7 @@ HOC 通常可以接收多个参数。比如在 Relay 中，HOC 额外接收了�
 const CommentWithRelay = Relay.createContainer(Comment, config);
 ```
 
-最常见的 HOC 签名如下：
+最常见的 HOC 招牌写法如下：
 
 ```js
 // React Redux 的 `connect` 函数
