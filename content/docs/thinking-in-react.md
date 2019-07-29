@@ -76,7 +76,7 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
 
 ### 补充说明: 有关 props 和 state {#a-brief-interlude-props-vs-state}
 
-在 React 中，有两类“模型”数据：props 和 state。清楚地理解两者的区别是十分重要的；如果你不太有把握，可以参阅 [React 官方文档](/docs/interactivity-and-dynamic-uis.html)。
+在 React 中，有两类“模型”数据：props 和 state。清楚地理解两者的区别是十分重要的；如果你不太有把握，可以参阅 [React 官方文档](/docs/state-and-lifecycle.html)。你也可以查看 [FAQ: state 与 props 的区别是什么？](/docs/faq-state.html#what-is-the-difference-between-state-and-props)
 
 ## 第三步：确定 UI state 的最小（且完整）表示 {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
 
