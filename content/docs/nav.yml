@@ -59,6 +59,8 @@
       title: 性能优化
     - id: portals
       title: Portals
+    - id: profiler
+      title: Profiler
     - id: react-without-es6
       title: 不使用 ES6
     - id: react-without-jsx
@@ -123,6 +125,14 @@
         title: Hook API 索引
       - id: hooks-faq
         title: Hooks FAQ
+- title: 测试
+  items:
+    - id: testing 
+      title: 测试概览
+    - id: testing-recipes
+      title: 测试技巧
+    - id: testing-environments
+      title: 测试环境
 - title: 贡献
   items:
   - id: how-to-contribute
