@@ -180,7 +180,7 @@ it('can render and update a counter', () => {
 
 如果你需要测试一个自定义 Hook，你可以在你的测试代码中创建一个组件并在其中使用你的 Hook。然后你就可以测试你刚写的组件了。
 
-为了减少不必要的模板项目，我们推荐使用 [`react-testing-library`](https://git.io/react-testing-library)，该项目旨在鼓励你按照终端用户使用组件的方式来编写测试。
+为了减少不必要的模板项目，我们推荐使用 [React Testing Library](https://testing-library.com/react)，该项目旨在鼓励你按照终端用户使用组件的方式来编写测试。
 
 ### [lint 规则](https://www.npmjs.com/package/eslint-plugin-react-hooks)具体强制了哪些内容？ {#what-exactly-do-the-lint-rules-enforce}
 

@@ -122,7 +122,9 @@ it('can render and update a counter', () => {
 });
 ```
 
-千万不要忘记，只有将 DOM 容器添加到 `document` 时，触发 DOM 事件才生效。你可以使用类似于 [`react-testing-library`](https://github.com/kentcdodds/react-testing-library) 这样的 helper 来减少样板代码（boilerplate code）。
+千万不要忘记，只有将 DOM 容器添加到 `document` 时，触发 DOM 事件才生效。你可以使用类似于 [React Testing Library](https://testing-library.com/react) 等库来减少样板代码（boilerplate code）。
+
+- [`recipes`](/docs/recipes.html) 文档包含了关于 `act()` 函数的示例、用法及更多详细信息。
 
 * * *
 
@@ -139,7 +141,7 @@ mockComponent(
 
 > 注意：
 >
-> `mockComponent()` 是一个过时的 API，我们推荐使用[浅层渲染](/docs/shallow-renderer.html)或者 [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) 来代替。
+> `mockComponent()` 是一个过时的 API，我们推荐使用 [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) 来代替。
 
 * * *
 
