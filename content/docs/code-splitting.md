@@ -6,7 +6,16 @@ permalink: docs/code-splitting.html
 
 ## 打包 {#bundling}
 
+<<<<<<< HEAD
 大多数 React 应用都会使用 [Webpack](https://webpack.docschina.org) 或 [Browserify](http://browserify.org/) 这类的构建工具来打包文件。打包是一个将文件引入并合并到一个单独文件的过程，最终形成一个 “bundle”。接着在页面上引入该 bundle，整个应用即可一次性加载。
+=======
+Most React apps will have their files "bundled" using tools like
+[Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/) or 
+[Browserify](http://browserify.org/).
+Bundling is the process of following imported files and merging them into a
+single file: a "bundle". This bundle can then be included on a webpage to load
+an entire app at once.
+>>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
 
 #### 示例 {#example}
 

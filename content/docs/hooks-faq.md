@@ -106,7 +106,13 @@ Hook 确实有它们自己的学习曲线。如果这份文档中遗失了一些
 
 你可以继续使用之前使用的 API；它们仍会继续有效。
 
+<<<<<<< HEAD
 在未来，这些库的新版本或许也会导出诸如 `useRedux()` 和 `useRouter()` 的自定义 Hook 以允许你不需要包裹组件也能使用同样的特性。
+=======
+React Redux since v7.1.0 [supports Hooks API](https://react-redux.js.org/api/hooks) and exposes hooks like `useDispatch` or `useSelector`.
+
+Libraries like React Router might support hooks in the future.
+>>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
 
 ### Hook 能和静态类型一起用吗？ {#do-hooks-work-with-static-typing}
 
@@ -118,7 +124,15 @@ Hook 在设计阶段就考虑了静态类型的问题。因为它们是函数，
 
 在 React 看来，一个使用了 Hook 的组件只不过是一个常规组件。如果你的测试方案不依赖于 React 的内部实现，测试带 Hook 的组件应该和你通常测试组件的方式没什么差别。
 
+<<<<<<< HEAD
 举个例子，比如我们有这么个计数器组件：
+=======
+>Note
+>
+>[Testing Recipes](/docs/testing-recipes.html) include many examples that you can copy and paste.
+
+For example, let's say we have this counter component:
+>>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
 
 ```js
 function Example() {
@@ -182,7 +196,13 @@ it('can render and update a counter', () => {
 
 为了减少不必要的模板项目，我们推荐使用 [React Testing Library](https://testing-library.com/react)，该项目旨在鼓励你按照终端用户使用组件的方式来编写测试。
 
+<<<<<<< HEAD
 ### [lint 规则](https://www.npmjs.com/package/eslint-plugin-react-hooks)具体强制了哪些内容？ {#what-exactly-do-the-lint-rules-enforce}
+=======
+For more information, check out [Testing Recipes](/docs/testing-recipes.html).
+
+### What exactly do the [lint rules](https://www.npmjs.com/package/eslint-plugin-react-hooks) enforce? {#what-exactly-do-the-lint-rules-enforce}
+>>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
 
 我们提供了一个 [ESLint 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks) 来强制 [Hook 规范](/docs/hooks-rules.html) 以避免 Bug。它假设任何以 「`use`」 开头并紧跟着一个大写字母的函数就是一个 Hook。我们知道这种启发方式并不完美，甚至存在一些伪真理，但如果没有一个全生态范围的约定就没法让 Hook 很好的工作 —— 而名字太长会让人要么不愿意采用 Hook，要么不愿意遵守约定。
 
@@ -562,7 +582,11 @@ useEffect(() => {
 
 >注意
 >
+<<<<<<< HEAD
 >我们提供了一个 [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) ESLint 规则作为 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) 包的一部分。它会帮助你找出无法一致地处理更新的组件。
+=======
+>We provide the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) ESLint rule as a part of the [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It helps you find components that don't handle updates consistently.
+>>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
 
 让我们来看看这有什么关系。
 
