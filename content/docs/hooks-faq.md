@@ -106,7 +106,7 @@ Hook 确实有它们自己的学习曲线。如果这份文档中遗失了一些
 
 你可以继续使用之前使用的 API；它们仍会继续有效。
 
-React Redux since v7.1.0 [supports Hooks API](https://react-redux.js.org/api/hooks) 并暴露了 `useDispatch` 和 `useSelector` 等 hook。
+React Redux 从 v7.1.0 开始[支持 Hook API](https://react-redux.js.org/api/hooks) 并暴露了 `useDispatch` 和 `useSelector` 等 hook。
 
 诸如 React Router 等第三库也将即将支持 hook。
 
