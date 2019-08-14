@@ -36,9 +36,9 @@ class ErrorBoundary extends React.Component {
     return { hasError: true };
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch(error, errorInfo) {
     // 你同样可以将错误日志上报给服务器
-    logErrorToMyService(error, info);
+    logErrorToMyService(error, errorInfo);
   }
 
   render() {

@@ -106,7 +106,9 @@ Hook 确实有它们自己的学习曲线。如果这份文档中遗失了一些
 
 你可以继续使用之前使用的 API；它们仍会继续有效。
 
-在未来，这些库的新版本或许也会导出诸如 `useRedux()` 和 `useRouter()` 的自定义 Hook 以允许你不需要包裹组件也能使用同样的特性。
+React Redux 从 v7.1.0 开始[支持 Hook API](https://react-redux.js.org/api/hooks) 并暴露了 `useDispatch` 和 `useSelector` 等 hook。
+
+诸如 React Router 等第三库也将即将支持 hook。
 
 ### Hook 能和静态类型一起用吗？ {#do-hooks-work-with-static-typing}
 
@@ -117,6 +119,10 @@ Hook 在设计阶段就考虑了静态类型的问题。因为它们是函数，
 ### 如何测试使用了 Hook 的组件？ {#how-to-test-components-that-use-hooks}
 
 在 React 看来，一个使用了 Hook 的组件只不过是一个常规组件。如果你的测试方案不依赖于 React 的内部实现，测试带 Hook 的组件应该和你通常测试组件的方式没什么差别。
+
+>注意
+>
+>[测试技巧](/docs/testing-recipes.html) 中包含了许多可以拷贝粘贴的示例。
 
 举个例子，比如我们有这么个计数器组件：
 
@@ -181,6 +187,8 @@ it('can render and update a counter', () => {
 如果你需要测试一个自定义 Hook，你可以在你的测试代码中创建一个组件并在其中使用你的 Hook。然后你就可以测试你刚写的组件了。
 
 为了减少不必要的模板项目，我们推荐使用 [React Testing Library](https://testing-library.com/react)，该项目旨在鼓励你按照终端用户使用组件的方式来编写测试。
+
+欲了解更多，请参阅[测试技巧](/docs/testing-recipes.html)一节。
 
 ### [lint 规则](https://www.npmjs.com/package/eslint-plugin-react-hooks)具体强制了哪些内容？ {#what-exactly-do-the-lint-rules-enforce}
 
