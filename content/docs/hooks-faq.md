@@ -64,13 +64,18 @@ prev: hooks-reference.html
 从 16.8.0 开始，React 在以下模块中包含了 React Hook 的稳定实现：
 
 * React DOM
+* React Native
 * React DOM Server
 * React Test Renderer
 * React Shallow Renderer
 
 请注意，**要启用 Hook，所有 React 相关的 package 都必须升级到 16.8.0 或更高版本**。如果你忘记更新诸如 React DOM 之类的 package，Hook 将无法运行。
 
+<<<<<<< HEAD
 React Native 0.59 及更新版本会支持 Hook。
+=======
+[React Native 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059) and above support Hooks.
+>>>>>>> de497e250340ff597ce4964279369f16315b8b4b
 
 ### 我需要重写所有的 class 组件吗？ {#do-i-need-to-rewrite-all-my-class-components}
 

@@ -269,7 +269,7 @@ class CodeEditor extends Component {
 
   _updateState(code, showJSX = true) {
     try {
-      let newState = {
+      const newState = {
         compiled: compileES5(code),
         error: null,
       };

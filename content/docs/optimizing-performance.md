@@ -213,6 +213,7 @@ React 构建并维护了一套内部的 UI 渲染描述。它包含了来自你�
 
 当一个组件的 props 或 state 变更，React 会将最新返回的元素与之前渲染的元素进行对比，以此决定是否有必要更新真实的 DOM。当它们不相同时，React 会更新该 DOM。
 
+<<<<<<< HEAD
 你可以通过 React 开发者工具可视化地查看这些重新渲染的虚拟 DOM：
 
 - [Chrome 浏览器扩展](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
@@ -232,6 +233,9 @@ React 构建并维护了一套内部的 UI 渲染描述。它包含了来自你�
 注意到当我们输入第二个待办事项时，第一个待办事项在每次按键时也一并闪烁了。这意味着输入时，它也被 React 一并重新渲染了。这通常被称作“无用的”渲染。我们知道这是毫无必要的，因为第一个待办事项并没有改变，但是 React 并不知道。
 
 即使 React 只更新改变了的 DOM 节点，重新渲染仍然花费了一些时间。在大部分情况下它并不是问题，不过如果它已经慢到让人注意了，你可以通过覆盖生命周期方法 `shouldComponentUpdate` 来进行提速。该方法会在重新渲染前被触发。其默认实现总是返回 `true`，让 React 执行更新：
+=======
+Even though React only updates the changed DOM nodes, re-rendering still takes some time. In many cases it's not a problem, but if the slowdown is noticeable, you can speed all of this up by overriding the lifecycle function `shouldComponentUpdate`, which is triggered before the re-rendering process starts. The default implementation of this function returns `true`, leaving React to perform the update:
+>>>>>>> de497e250340ff597ce4964279369f16315b8b4b
 
 ```javascript
 shouldComponentUpdate(nextProps, nextState) {
@@ -399,6 +403,7 @@ function updateColorMap(colormap) {
 
 如果你在使用 Create React App，`Object.assign` 以及对象扩展运算符已经默认支持了。
 
+<<<<<<< HEAD
 ## 使用不可变数据结构 {#using-immutable-data-structures}
 
 [Immutable.js](https://github.com/facebook/immutable-js) 是另一种解决方案。它通过结构共享提供了不可变、持久化集合：
@@ -432,3 +437,6 @@ x === z; // true
 还有其他可以帮助实现不可变数据的库，分别是 [Immer](https://github.com/mweststrate/immer)， [immutability-helper](https://github.com/kolodny/immutability-helper) 以及 [seamless-immutable](https://github.com/rtfeldman/seamless-immutable)。
 
 不可变数据结构使你可以方便地追踪对象的变化，这是应用 `shouldComponentUpdate` 所需要的。让性能得以提升。
+=======
+When you deal with deeply nested objects, updating them in an immutable way can feel convoluted. If you run into this problem, check out [Immer](https://github.com/mweststrate/immer) or [immutability-helper](https://github.com/kolodny/immutability-helper). These libraries let you write highly readable code without losing the benefits of immutability.
+>>>>>>> de497e250340ff597ce4964279369f16315b8b4b
