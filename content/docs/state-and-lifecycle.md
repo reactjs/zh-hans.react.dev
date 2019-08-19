@@ -362,7 +362,7 @@ this.setState((state, props) => ({
 }));
 ```
 
-上面使用了[箭头函数](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_function)，不过使用普通的函数也同样可以：
+上面使用了[箭头函数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)，不过使用普通的函数也同样可以：
 
 ```js
 // Correct
