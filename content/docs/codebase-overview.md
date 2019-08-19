@@ -19,7 +19,7 @@ redirect_from:
 
 React 几乎没有外部依赖。通常 `require()` 都会引用 React 源码中的文件。然而，也有个别的例外。
 
-依赖 [fbjs 仓库](https://github.com/facebook/fbjs)是因为 React 需要和一些类似于 [Relay](https://github.com/facebook/relay) 的库共享一些小功能，并且与保持他们同步。我们不依赖 Node 生态系统中同等功能的小模块，因为我们希望 Facebook 工程师能够在必要时做出修改。fbjs 中没有公共 API，他们仅仅用于 Facebook 的项目，比如 React。
+依赖 [fbjs 仓库](https://github.com/facebook/fbjs)是因为 React 需要和一些类似于 [Relay](https://github.com/facebook/relay) 的库共享一些小功能，并且与他们保持同步。我们不依赖 Node 生态系统中同等功能的小模块，因为我们希望 Facebook 工程师能够在必要时做出修改。fbjs 中没有公共 API，他们仅仅用于 Facebook 的项目，比如 React。
 
 ### 顶层目录 {#top-level-folders}
 
