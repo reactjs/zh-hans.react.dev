@@ -124,11 +124,7 @@ it('can render and update a counter', () => {
 
 千万不要忘记，只有将 DOM 容器添加到 `document` 时，触发 DOM 事件才生效。你可以使用类似于 [React Testing Library](https://testing-library.com/react) 等库来减少样板代码（boilerplate code）。
 
-<<<<<<< HEAD
-- [`recipes`](/docs/recipes.html) 文档包含了关于 `act()` 函数的示例、用法及更多详细信息。
-=======
-- The [`recipes`](/docs/testing-recipes.html) document contains more details on how `act()` behaves, with examples and usage.
->>>>>>> de497e250340ff597ce4964279369f16315b8b4b
+- [`recipes`](/docs/testing-recipes.html) 文档包含了关于 `act()` 函数的示例、用法及更多详细信息。
 
 * * *
 

@@ -71,11 +71,7 @@ prev: hooks-reference.html
 
 请注意，**要启用 Hook，所有 React 相关的 package 都必须升级到 16.8.0 或更高版本**。如果你忘记更新诸如 React DOM 之类的 package，Hook 将无法运行。
 
-<<<<<<< HEAD
-React Native 0.59 及更新版本会支持 Hook。
-=======
-[React Native 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059) and above support Hooks.
->>>>>>> de497e250340ff597ce4964279369f16315b8b4b
+[React Native 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059) 及以上版本支持 Hook。
 
 ### 我需要重写所有的 class 组件吗？ {#do-i-need-to-rewrite-all-my-class-components}
 
