@@ -423,7 +423,7 @@ function ListOfTenThings() {
 <div>{true}</div>
 ```
 
-这有助于依据特定条件来渲染其他的 React 元素。例如，在以下 JSX 中，仅当 `showHeader` 为 `true` 时，才会渲染 `<Header />`：
+这有助于依据特定条件来渲染其他的 React 元素。例如，在以下 JSX 中，仅当 `showHeader` 为 `true` 时，才会渲染 `<Header />` 组件：
 
 ```js{2}
 <div>
