@@ -217,11 +217,7 @@ Reconciler 没有单独的包，因为他们暂时没有公共 API。相反，�
 
 ### 事件系统 {#event-system}
 
-<<<<<<< HEAD
-React 实现一个合成事件，这与渲染器无关，它适用于 React DOM 和 React Native。源码在 [`packages/events`](https://github.com/facebook/react/tree/master/packages/events) 目录下。
-=======
-React implements a synthetic event system which is agnostic of the renderers and works both with React DOM and React Native. Its source code is located in [`packages/events`](https://github.com/facebook/react/tree/master/packages/react-events).
->>>>>>> 519a3aec91a426b0c8c9ae59e292d064df48c66a
+React 实现一个合成事件，这与渲染器无关，它适用于 React DOM 和 React Native。源码在 [`packages/events`](https://github.com/facebook/react/tree/master/packages/react-events) 目录下。
 
 这个是一个[深入研究事件系统代码的视频](https://www.youtube.com/watch?v=dRo_egw7tBc)（66分钟）。
 
