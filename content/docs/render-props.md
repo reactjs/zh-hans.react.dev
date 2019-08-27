@@ -14,7 +14,7 @@ permalink: docs/render-props.html
 )}/>
 ```
 
-使用 render prop 的库有 [React Router](https://reacttraining.com/react-router/web/api/Route/render-func) 和 [Downshift](https://github.com/paypal/downshift).
+使用 render prop 的库有 [React Router](https://reacttraining.com/react-router/web/api/Route/render-func)、[Downshift](https://github.com/paypal/downshift) 以及 [Formik](https://github.com/jaredpalmer/formik)。
 
 在这个文档中，我们将讨论为什么 render prop 是有用的，以及如何写一个自己的 render prop 组件。
 
