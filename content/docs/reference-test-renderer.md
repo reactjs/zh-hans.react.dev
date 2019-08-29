@@ -103,7 +103,7 @@ expect(testInstance.findByProps({className: "sub"}).children).toEqual(['Sub']);
 TestRenderer.create(element, options);
 ```
 
-通过传来的 React 元素创建一个 `TestRenderer` 实例。它并不使用真实的 DOM，但是它依然将组件树完整地渲染到内存，以便于你对它进行断言。返回的实例拥有以下的方法和属性。
+通过传来的 React 元素创建一个 `TestRenderer` 实例。它并不使用真实的 DOM，但是它依然将组件树完整地渲染到内存，以便于你对它进行断言。此时将返回一个 [TestRenderer 实例](#testrenderer-instance)。
 
 ### `TestRenderer.act()` {#testrendereract}
 

@@ -213,24 +213,6 @@ React 构建并维护了一套内部的 UI 渲染描述。它包含了来自你�
 
 当一个组件的 props 或 state 变更，React 会将最新返回的元素与之前渲染的元素进行对比，以此决定是否有必要更新真实的 DOM。当它们不相同时，React 会更新该 DOM。
 
-你可以通过 React 开发者工具可视化地查看这些重新渲染的虚拟 DOM：
-
-- [Chrome 浏览器扩展](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
-- [Firefox 浏览器扩展](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
-- [独立 Node 包](https://www.npmjs.com/package/react-devtools)
-
-在开发者控制台的 **React** 标签勾选 **Highlight Updates**：
-
-<center><img src="../images/blog/devtools-highlight-updates.png" style="max-width:100%; margin-top:10px;" alt="如何开启更新高亮" /></center>
-
-当与你的页面进行交互时，你会看到被重新渲染的组件立刻出现了彩色的边框。这能帮助你找到那些没有必要的重新渲染。你可以在 [Ben Edelstein](https://blog.logrocket.com/@edelstein) 的[这篇博客](https://blog.logrocket.com/make-react-fast-again-part-3-highlighting-component-updates-6119e45e6833)中学到更多关于 React 开发者工具的功能。
-
-考虑这种情况：
-
-<center><img src="../images/blog/highlight-updates-example.gif" style="max-width:100%; margin-top:20px;" alt="React 开发者工具更新高亮示例" /></center>
-
-注意到当我们输入第二个待办事项时，第一个待办事项在每次按键时也一并闪烁了。这意味着输入时，它也被 React 一并重新渲染了。这通常被称作“无用的”渲染。我们知道这是毫无必要的，因为第一个待办事项并没有改变，但是 React 并不知道。
-
 即使 React 只更新改变了的 DOM 节点，重新渲染仍然花费了一些时间。在大部分情况下它并不是问题，不过如果它已经慢到让人注意了，你可以通过覆盖生命周期方法 `shouldComponentUpdate` 来进行提速。该方法会在重新渲染前被触发。其默认实现总是返回 `true`，让 React 执行更新：
 
 ```javascript
@@ -399,36 +381,4 @@ function updateColorMap(colormap) {
 
 如果你在使用 Create React App，`Object.assign` 以及对象扩展运算符已经默认支持了。
 
-## 使用不可变数据结构 {#using-immutable-data-structures}
-
-[Immutable.js](https://github.com/facebook/immutable-js) 是另一种解决方案。它通过结构共享提供了不可变、持久化集合：
-
-* *不可变*：一旦创建，一个集合便不能再被修改。
-* *持久化*：对集合进行修改，会创建一个新的集合。之前的集合仍然有效。
-* *结构共享*：新的集合会尽可能复用之前集合的结构，以最小化拷贝操作来提高性能。
-
-不可变数据使得追踪变更非常容易。每次变更都会生成一个新的对象使得我们只需要检查对象的引用是否改变。举个例子，这是一段很常见的 JavaScript 代码：
-
-```javascript
-const x = { foo: 'bar' };
-const y = x;
-y.foo = 'baz';
-x === y; // true
-```
-
-由于 `y` 被指向和 `x` 相同的对象，虽然我们修改了 `y`，但是对比结果还是 `true`。你可以使用 immutable.js 来写相似的代码：
-
-```javascript
-const SomeRecord = Immutable.Record({ foo: null });
-const x = new SomeRecord({ foo: 'bar' });
-const y = x.set('foo', 'baz');
-const z = x.set('foo', 'bar');
-x === y; // false
-x === z; // true
-```
-
-在这个例子中，修改 `x` 后我们得到了一个新的引用，我们可以通过判断引用 `(x === y)` 来验证 `y` 中存的值和原本 `x` 中存的值不同。
-
-还有其他可以帮助实现不可变数据的库，分别是 [Immer](https://github.com/mweststrate/immer)， [immutability-helper](https://github.com/kolodny/immutability-helper) 以及 [seamless-immutable](https://github.com/rtfeldman/seamless-immutable)。
-
-不可变数据结构使你可以方便地追踪对象的变化，这是应用 `shouldComponentUpdate` 所需要的。让性能得以提升。
+当处理深层嵌套对象时，以 immutable （不可变）的方式更新它们令人费解。如遇到此类问题，请参阅 [Immer](https://github.com/mweststrate/immer) 或 [immutability-helper](https://github.com/kolodny/immutability-helper)。这些库会帮助你编写高可读性的代码，且不会失去 immutability （不可变性）带来的好处。
