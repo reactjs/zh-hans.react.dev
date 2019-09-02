@@ -31,13 +31,13 @@ prev: testing-recipes.html
 
 在你 _无法_ 模拟 DOM 环境（例如，在 Node.js 上测试 React Native 组件）的情况下，可以使用 [事件模拟辅助函数](https://reactjs.org/docs/test-utils.html#simulate) 来模拟与元素的交互。或者，你也可以使用 [`@testing-library/react-native`](https://testing-library.com/docs/native-testing-library) 中的 `fireEvent` 辅助函数。
 
-诸如 [Cypress](https://www.cypress.io/)，[puppeteer](https://github.com/GoogleChrome/puppeteer) 和 [webdriver](https://www.seleniumhq.org/projects/webdriver/) 等框架对于运行[端到端测试](#end-to-end-tests-aka-e2e-tests) 都非常有用。
+诸如 [Cypress](https://www.cypress.io/)，[puppeteer](https://github.com/GoogleChrome/puppeteer) 和 [webdriver](https://www.seleniumhq.org/projects/webdriver/) 等框架对于运行[端对端测试](#end-to-end-tests-aka-e2e-tests) 都非常有用。
 
 ### 模拟功能 {#mocking-functions}
 
 在编写测试的时候，我们希望模拟代码在测试环境较真实环境中缺失的等效部分（例如，在 Node.js 中检查 `navigator.onLine` 的状态）。测试还可以监视某些功能，并观察测试的其他部分如何与它们进行交互。有选择的将这些功能模拟为测试友好的版本是很有用的。
 
-这对于数据获取尤其有用。通常最好使用“假”数据进行测试，以避免从实际 API 端获取数据可能导致的缓慢和不稳定[<small>（例子）</small>](/docs/testing-recipes.html#data-fetching)。这样做有助于让测试变得可预测。像 [Jest](https://jestjs.io/) 与 [sinon](https://sinonjs.org/) 这样的类库，支持模拟功能。对于端到端测试，虽然模拟网络可能更加困难，但你可能还想对真实的 API 端进行测试。
+这对于数据获取尤其有用。通常最好使用“假”数据进行测试，以避免从实际 API 端获取数据可能导致的缓慢和不稳定[<small>（例子）</small>](/docs/testing-recipes.html#data-fetching)。这样做有助于让测试变得可预测。像 [Jest](https://jestjs.io/) 与 [sinon](https://sinonjs.org/) 这样的类库，支持模拟功能。对于端对端测试，虽然模拟网络可能更加困难，但你可能还想对真实的 API 端进行测试。
 
 ### 模拟模块 {#mocking-modules}
 
@@ -51,8 +51,8 @@ prev: testing-recipes.html
 
 有些时候可能你不想要模拟计时器。例如，在你测试动画时，或是交互端对时间较为敏感的情况下（如 API 访问速率限制器）。具有计时器模拟的库允许你在每个测试/套件上启用或禁用这个功能，因此你可以明确地选择这些测试的运行方式。
 
-### 端到端测试 {#end-to-end-tests-aka-e2e-tests}
+### 端对端测试 {#end-to-end-tests-aka-e2e-tests}
 
-端到端测试对于测试更长的工作流程非常长有用，特别是当它们对于你的业务（例如付款或注册）特别重要时。对于这些测试，你可能会希望测试真实浏览器如何渲染整个应用、从真实的 API 端获取数据、使用 session 和 cookies 以及在不同的链接间导航等功能。你可能还希望不仅在 DOM 状态上进行断言，而同时也在后端数据上进行校验（例如，验证更新是否已经在数据库中持久化）。
+端对端测试对于测试更长的工作流程非常长有用，特别是当它们对于你的业务（例如付款或注册）特别重要时。对于这些测试，你可能会希望测试真实浏览器如何渲染整个应用、从真实的 API 端获取数据、使用 session 和 cookies 以及在不同的链接间导航等功能。你可能还希望不仅在 DOM 状态上进行断言，而同时也在后端数据上进行校验（例如，验证更新是否已经在数据库中持久化）。
 
 在这种场景下，你可以使用像 [Cypress](https://www.cypress.io/) 这类框架或者如 [puppeteer](https://github.com/GoogleChrome/puppeteer) 这样的库，这样你就可以在多个路由之间导航切换，并且不仅能够在浏览器中对副作用进行断言也能够在后端这么做。
