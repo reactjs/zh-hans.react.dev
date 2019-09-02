@@ -1,40 +1,40 @@
 ---
 id: testing
-title: Testing Overview
+title: 测试概览
 permalink: docs/testing.html
 redirect_from:
   - "community/testing.html"
 next: testing-recipes.html
 ---
 
-You can test React components similar to testing other JavaScript code.
+你可以用像测试其他 JavaScript 代码类似的方式测试 React 组件。
 
-There are a few ways to test React components. Broadly, they divide into two categories:
+现在有许多种测试 React 组件的方法。大体上可以被分为两类：
 
-* **Rendering component trees** in a simplified test environment and asserting on their output.
-* **Running a complete app** in a realistic browser environment (also known as “end-to-end” tests).
+* **渲染组件树** 在一个简化的测试环境中渲染组件树并对它们的输出做断言检查。
+* **运行完整应用** 在一个真实的浏览器环境中运行整个应用（也被称为“端到端（end-to-end）”测试）。
 
-This documentation section focuses on testing strategies for the first case. While full end-to-end tests can be very useful to prevent regressions to important workflows, such tests are not concerned with React components in particular, and are out of scope of this section.
+本章节主要专注于第一种情况下的测试策略。虽然完整的端到端测试在防止对重要工作流的多次回归方面很有价值，但对 React 组件来说这类测试并不怎么需要关注，因此不在本章节的讨论范围之内。
 
-### Tradeoffs {#tradeoffs}
+### 权衡 {#tradeoffs}
 
 
-When choosing testing tools, it is worth considering a few tradeoffs:
+当挑选测试工具的时候，有些细节值得我们权衡考虑：
 
-* **Iteration speed vs Realistic environment:** Some tools offer a very quick feedback loop between making a change and seeing the result, but don't model the browser behavior precisely. Other tools might use a real browser environment, but reduce the iteration speed and are flakier on a continuous integration server.
-* **How much to mock:** With components, the distinction between a "unit" and "integration" test can be blurry. If you're testing a form, should its test also test the buttons inside of it? Or should a button component have its own test suite? Should refactoring a button ever break the form test?
+* **迭代速度 vs 真实环境：** 一些工具在做出改动和看到结果之间提供了非常快速的反馈循环，但没有精确的模拟浏览器的行为。另一些工具，也许使用了真实的浏览器环境，但却降低了迭代速度，而且在持续集成服务器中不太可靠。
+* **mock 到什么程度：** 对组件来说，“单元测试”和“集成测试”之间的差别可能会很模糊。如果你在测试一个表单，用例是否应该也测试表单里的按钮呢？一个按钮组件又需不需要有他自己的测试套件？重构按钮组件是否应该影响表单的测试用例？
 
-Different answers may work for different teams and products.
+不同的团队或产品可能会得出不同的答案。
 
-### Recommended Tools {#tools}
+### 推荐的工具 {#tools}
 
-**[Jest](https://facebook.github.io/jest/)** is a JavaScript test runner that lets you access the DOM via [`jsdom`](/docs/testing-environments.html#mocking-a-rendering-surface). While jsdom is only an approximation of how the browser works, it is often good enough for testing React components. Jest provides a great iteration speed combined with powerful features like mocking [modules](/docs/testing-environments.html#mocking-modules) and [timers](/docs/testing-environments.html#mocking-timers) so you can have more control over how the code executes.
+**[Jest](https://facebook.github.io/jest/)** 是一个 JavaScript 测试运行器。它允许你使用 [`jsdom`](/docs/testing-environments.html#mocking-a-rendering-surface) 操作 DOM 。尽管 jsdom 只是对浏览器工作表现的一个近似模拟，对测试 React 组件来说它通常也已经够用了。Jest 有着十分优秀的迭代速度，同时还提供了若干强大的功能，比如它可以模拟 [modules](/docs/testing-environments.html#mocking-modules) 和 [timers](/docs/testing-environments.html#mocking-timers) 让你更精细的控制代码如何执行。
 
-**[React Testing Library](https://testing-library.com/react)** is a set of helpers that let you test React components without relying on their implementation details. This approach makes refactoring a breeze and also nudges you towards best practices for accessibility. Although it doesn't provide a way to "shallowly" render a component without its children, a test runner like Jest lets you do this by [mocking](/docs/testing-recipes.html#mocking-modules).
+**[React 测试库](https://testing-library.com/react)**是一组能让你不依赖 React 组件具体实现对他们进行测试的辅助工具。它让重构工作变得轻而易举，还会推动你拥抱有关无障碍的最佳实践。虽然它不能让你省略子元素来浅（shallowly）渲染一个组件，但像 Jest 这样的测试运行器可以通过 [mocking](/docs/testing-recipes.html#mocking-modules) 让你做到。
 
-### Learn More {#learn-more}
+### 了解更多 {#learn-more}
 
-This section is divided in two pages:
+这一章节被划分成了两页内容：
 
-- [Recipes](/docs/testing-recipes.html): Common patterns when writing tests for React components.
-- [Environments](/docs/testing-environments.html): What to consider when setting up a testing environment for React components.
+- [技巧](/docs/testing-recipes.html)：为 React 组件编写测试时的常见模式。
+- [环境](/docs/testing-environments.html)：为 React 组件搭建测试环境的时候有哪些要考虑的东西。
