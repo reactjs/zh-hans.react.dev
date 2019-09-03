@@ -337,6 +337,7 @@ this.setState({comment: 'Hello'});
 ```
 
 构造函数是唯一可以给 `this.state` 赋值的地方：
+we can also create a state in class, just like this: state = { ... }
 
 ### State 的更新可能是异步的 {#state-updates-may-be-asynchronous}
 
