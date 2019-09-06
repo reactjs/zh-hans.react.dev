@@ -149,7 +149,7 @@ testRenderer.toJSON()
 testRenderer.toTree()
 ```
 
-返回一个已渲染的的树对象。和 `toJSON()` 不同，它表示的内容比 `toJSON()` 提供的内容要更加详细，并且包含用户编写的组件。除非你要在测试渲染器（test renderer）之上编写自己的断言库，否则你可能并不需要这个方法。
+返回一个已渲染的的树对象。它所表示的内容比 `toJSON()` 提供的内容要更加详细，并且包含用户编写的组件。除非你要在测试渲染器（test renderer）之上编写自己的断言库，否则你可能并不需要这个方法。
 
 ### `testRenderer.update()` {#testrendererupdate}
 
