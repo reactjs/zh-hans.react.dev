@@ -149,11 +149,7 @@ testRenderer.toJSON()
 testRenderer.toTree()
 ```
 
-<<<<<<< HEAD
-返回一个已渲染的的树对象。和 `toJSON()` 不同，它表示的内容比 `toJSON()` 提供的内容要更加详细，并且包含用户编写的组件。除非你要在测试渲染器（test renderer）之上编写自己的断言库，否则你可能并不需要这个方法。
-=======
-Return an object representing the rendered tree. The representation is more detailed than the one provided by `toJSON()`, and includes the user-written components. You probably don't need this method unless you're writing your own assertion library on top of the test renderer.
->>>>>>> 941f54180ef5e652221f54ef6d1f6f2e9e063597
+返回一个已渲染的的树对象。它所表示的内容比 `toJSON()` 提供的内容要更加详细，并且包含用户编写的组件。除非你要在测试渲染器（test renderer）之上编写自己的断言库，否则你可能并不需要这个方法。
 
 ### `testRenderer.update()` {#testrendererupdate}
 

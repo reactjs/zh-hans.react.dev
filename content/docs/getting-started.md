@@ -119,11 +119,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 ## 版本化文档 {#versioned-documentation}
 
-<<<<<<< HEAD
 官方文档会和最新稳定版的 React 保持同步。从 React 16 开始，你可以在[历史版本页面](/versions)找到老版本的 React 文档。注意，老版本的文档是该版本发布时的快照，并不会持续地更新。
-=======
-This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation on a [separate page](/versions). Note that documentation for past versions is snapshotted at the time of the release, and isn't being continuously updated.
->>>>>>> 941f54180ef5e652221f54ef6d1f6f2e9e063597
 
 ## 找不到想要的？ {#something-missing}
 
