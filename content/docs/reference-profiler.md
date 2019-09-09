@@ -98,7 +98,7 @@ function onRenderCallback(
 * **`phase: "mount" | "update"`** -
 判断是组件树的第一次装载引起的重渲染，还是由 props、state 或是 hooks 改变引起的重渲染。
 * **`actualDuration: number`** -
-本次更新在渲染 `Profiler` 和他的子代上花费的时间。
+本次更新在渲染 `Profiler` 和它的子代上花费的时间。
 这个数值表明使用 memoization 之后能表现得多好。（例如 [`React.memo`](/docs/react-api.html#reactmemo)，[`useMemo`](/docs/hooks-reference.html#usememo)，[`shouldComponentUpdate`](/docs/hooks-faq.html#how-do-i-implement-shouldcomponentupdate)）。
 理想情况下，由于子代只会因特定的 prop 改变而重渲染，因此这个值应该在第一次装载之后显著下降。
 * **`baseDuration: number`** -
@@ -110,7 +110,7 @@ function onRenderCallback(
 本次更新中 React commit 阶段结束的时间戳。
 在一次 commit 中这个值在所有的 profiler 之间是共享的，可以将它们按需分组。
 * **`interactions: Set`** -
-["interactions"](http://fb.me/react-interaction-tracing) 的集合用来追踪已经列出的更新。 （例如当 `render` 或者 `setState` 被调用时）。
+["interactions"](http://fb.me/react-interaction-tracing) 的集合用来追踪已经列出的更新。（例如当 `render` 或者 `setState` 被调用时）。
 
 > 注意
 >
