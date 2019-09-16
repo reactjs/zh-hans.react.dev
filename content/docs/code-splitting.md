@@ -97,37 +97,29 @@ import("./math").then(math => {
 
 ```js
 import OtherComponent from './OtherComponent';
-
-function MyComponent() {
-  return (
-    <div>
-      <OtherComponent />
-    </div>
-  );
-}
 ```
 
 **使用之后：**
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
-
-function MyComponent() {
-  return (
-    <div>
-      <OtherComponent />
-    </div>
-  );
-}
 ```
 
+<<<<<<< HEAD
 这个代码将会在渲染组件时，自动导入包含 `OtherComponent` 组件的包。
+=======
+This will automatically load the bundle containing the `OtherComponent` when this component is first rendered.
+>>>>>>> 6dcb963479953586f462ce31fddf35158c0598a0
 
 `React.lazy` 接受一个函数，这个函数需要动态调用 `import()`。它必须返回一个 `Promise`，该 Promise 需要 resolve 一个 `defalut` export 的 React 组件。
 
+<<<<<<< HEAD
 ### Suspense {#suspense}
 
 如果在 `MyComponent` 渲染完成后，包含 `OtherComponent` 的模块还没有被加载完成，我们可以使用加载指示器为此组件做优雅降级。这里我们使用 `Suspense` 组件来解决。
+=======
+The lazy component should then be rendered inside a `Suspense` component, which allows us to show some fallback content (such as a loading indicator) while we're waiting for the lazy component to load.
+>>>>>>> 6dcb963479953586f462ce31fddf35158c0598a0
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
