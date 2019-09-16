@@ -2,7 +2,7 @@
 title: "全新的 React DevTools 简介"
 author: [bvaughn]
 ---
-我们激动地宣布 React 开发者工具发布了新版本，目前可以在 Chrome，Fireox 以及 （Chromium）Edge 中使用！
+我们激动地宣布 React 开发者工具发布了新版本，目前可以在 Chrome，Firefox 以及 （Chromium）Edge 中使用！
 
 ## 有哪些变化？
 
