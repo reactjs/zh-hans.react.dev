@@ -57,7 +57,7 @@ afterEach(() => {
 
 ### `act()` {#act}
 
-在编写 UI 测试时，可以将渲染、用户事件或数据获取等任务视为与用户界面交互的“单元”。React 提供了一个名为 `act()` 的助手，它确保在进行任何断言之前，与这些“单元”相关的所有更新都已处理并应用于 DOM：
+在编写 UI 测试时，可以将渲染、用户事件或数据获取等任务视为与用户界面交互的“单元”。React 提供了一个名为 `act()` 的 helper，它确保在进行任何断言之前，与这些“单元”相关的所有更新都已处理并应用于 DOM：
 
 ```js
 act(() => {
@@ -68,7 +68,7 @@ act(() => {
 
 这有助于使测试运行更接近真实用户在使用应用程序时的体验。这些示例的其余部分使用 `act()` 来作出这些保证。
 
-你可能会发现直接使用 `act()` 有点过于冗长。为了避免一些样板代码，你可以使用 [React 测试库](https://testing-library.com/react)，这些助手是使用 `act()` 函数进行封装的。
+你可能会发现直接使用 `act()` 有点过于冗长。为了避免一些样板代码，你可以使用 [React 测试库](https://testing-library.com/react)，这些 helper 是使用 `act()` 函数进行封装的。
 
 > 注意：
 >
@@ -420,7 +420,7 @@ it("点击时更新值", () => {
 
 > 注意：
 >
-> React 测试库为触发事件提供了一个[更简洁的助手](https://testing-library.com/docs/dom-testing-library/api-events)。
+> React 测试库为触发事件提供了一个[更简洁 helper](https://testing-library.com/docs/dom-testing-library/api-events)。
 
 ---
 
