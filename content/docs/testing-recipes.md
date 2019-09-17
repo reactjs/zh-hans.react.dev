@@ -1,84 +1,84 @@
 ---
 id: testing-recipes
-title: Testing Recipes
+title: 测试技巧
 permalink: docs/testing-recipes.html
 prev: testing.html
 next: testing-environments.html
 ---
 
-Common testing patterns for React components.
+React 组件的常见测试模式。
 
-> Note:
+> 注意：
 >
-> This page assumes you're using [Jest](https://jestjs.io/) as a test runner. If you use a different test runner, you may need to adjust the API, but the overall shape of the solution will likely be the same. Read more details on setting up a testing environment on the [Testing Environments](/docs/testing-environments.html) page.
+> 此章节假设你正在使用 [Jest](https://jestjs.io/) 作为测试运行器。如果你使用不同的测试运行器，你可能需要调整 API，但整体的解决方案是相同的。在[测试环境](/docs/testing-environments.html)章节阅读更多关于设置测试环境的细节。
 
-On this page, we will primarily use function components. However, these testing strategies don't depend on implementation details, and work just as well for class components too.
+在本章中，我们将主要使用函数组件。然而，这些测试策略并不依赖于实现细节，它对于 class 组件也同样有效。
 
-- [Setup/Teardown](#setup--teardown)
+- [创建/清理](#setup--teardown)
 - [`act()`](#act)
-- [Rendering](#rendering)
-- [Data Fetching](#data-fetching)
-- [Mocking Modules](#mocking-modules)
-- [Events](#events)
-- [Timers](#timers)
-- [Snapshot Testing](#snapshot-testing)
-- [Multiple Renderers](#multiple-renderers)
-- [Something Missing?](#something-missing)
+- [渲染](#rendering)
+- [数据获取](#data-fetching)
+- [mock 模块](#mocking-modules)
+- [事件](#events)
+- [计时器](#timers)
+- [快照测试](#snapshot-testing)
+- [多渲染器](#multiple-renderers)
+- [缺少什么?](#something-missing)
 
 ---
 
-### Setup/Teardown {#setup--teardown}
+### 创建/清理 {#setup--teardown}
 
-For each test, we usually want to render our React tree to a DOM element that's attached to `document`. This is important so that it can receive DOM events. When the test ends, we want to "clean up" and unmount the tree from the `document`.
+对于每个测试，我们通常希望将 React 树渲染给附加到 `document`的 DOM 元素。这点很重要，以便它可以接收 DOM 事件。当测试结束时，我们需要“清理”并从 `document` 中卸载树。
 
-A common way to do it is to use a pair of `beforeEach` and `afterEach` blocks so that they'll always run and isolate the effects of a test to itself:
+常见的方法是使用一对 `beforeEach` 和 `afterEach` 块，以便它们一直运行，并隔离测试本身造成的影响：
 
 ```jsx
 import { unmountComponentAtNode } from "react-dom";
 
 let container = null;
 beforeEach(() => {
-  // setup a DOM element as a render target
+  // 创建一个 DOM 元素作为渲染目标
   container = document.createElement("div");
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // cleanup on exiting
+  // 退出时进行清理
   unmountComponentAtNode(container);
   container.remove();
   container = null;
 });
 ```
 
-You may use a different pattern, but keep in mind that we want to execute the cleanup _even if a test fails_. Otherwise, tests can become "leaky", and one test can change the behavior of another test. That makes them difficult to debug.
+你可以使用不同的测试模式，但请注意，_即使测试失败_，也需要执行清理。否则，测试可能会导致“泄漏”，并且一个测试可能会影响另一个测试的行为。这使得其难以调试。
 
 ---
 
 ### `act()` {#act}
 
-When writing UI tests, tasks like rendering, user events, or data fetching can be considered as "units" of interaction with a user interface. React provides a helper called `act()` that makes sure all updates related to these "units" have been processed and applied to the DOM before you make any assertions:
+在编写 UI 测试时，可以将渲染、用户事件或数据获取等任务视为与用户界面交互的“单元”。React 提供了一个名为 `act()` 的 helper，它确保在进行任何断言之前，与这些“单元”相关的所有更新都已处理并应用于 DOM：
 
 ```js
 act(() => {
-  // render components
+  // 渲染组件
 });
-// make assertions
+// 进行断言
 ```
 
-This helps make your tests run closer to what real users would experience when using your application. The rest of these examples use `act()` to make these guarantees.
+这有助于使测试运行更接近真实用户在使用应用程序时的体验。这些示例的其余部分使用 `act()` 来作出这些保证。
 
-You might find using `act()` directly a bit too verbose. To avoid some of the boilerplate, you could use a library like [React Testing Library](https://testing-library.com/react), whose helpers are wrapped with `act()`.
+你可能会发现直接使用 `act()` 有点过于冗长。为了避免一些样板代码，你可以使用 [React 测试库](https://testing-library.com/react)，这些 helper 是使用 `act()` 函数进行封装的。
 
-> Note:
+> 注意：
 >
-> The name `act` comes from the [Arrange-Act-Assert](http://wiki.c2.com/?ArrangeActAssert) pattern.
+> `act` 名称来自 [Arrange-Act-Assert](http://wiki.c2.com/?ArrangeActAssert) 模式。
 
 ---
 
-### Rendering {#rendering}
+### 渲染 {#rendering}
 
-Commonly, you might want to test whether a component renders correctly for given props. Consider a simple component that renders a message based on a prop:
+通常，你可能希望测试组件对于给定的 prop 渲染是否正确。此时应考虑实现基于 prop 渲染消息的简单组件：
 
 ```jsx
 // hello.js
@@ -87,14 +87,14 @@ import React from "react";
 
 export default function Hello(props) {
   if (props.name) {
-    return <h1>Hello, {props.name}!</h1>;
+    return <h1>你好，{props.name}！</h1>;
   } else {
-    return <span>Hey, stranger</span>;
+    return <span>嘿，陌生人</span>;
   }
 }
 ```
 
-We can write a test for this component:
+我们可以为这个组件编写测试：
 
 ```jsx{24-27}
 // hello.test.js
@@ -107,41 +107,41 @@ import Hello from "./hello";
 
 let container = null;
 beforeEach(() => {
-  // setup a DOM element as a render target
+  // 创建一个 DOM 元素作为渲染目标
   container = document.createElement("div");
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // cleanup on exiting
+  // 退出时进行清理
   unmountComponentAtNode(container);
   container.remove();
   container = null;
 });
 
-it("renders with or without a name", () => {
+it("渲染有或无名称", () => {
   act(() => {
     render(<Hello />, container);
   });
-  expect(container.textContent).toBe("Hey, stranger");
+  expect(container.textContent).toBe("嘿，陌生人");
 
   act(() => {
     render(<Hello name="Jenny" />, container);
   });
-  expect(container.textContent).toBe("Hello, Jenny!");
+  expect(container.textContent).toBe("你好，Jenny！");
 
   act(() => {
     render(<Hello name="Margaret" />, container);
   });
-  expect(container.textContent).toBe("Hello, Margaret!");
+  expect(container.textContent).toBe("你好，Margaret！");
 });
 ```
 
 ---
 
-### Data Fetching {#data-fetching}
+### 数据获取 {#data-fetching}
 
-Instead of calling real APIs in all your tests, you can mock requests with dummy data. Mocking data fetching with "fake" data prevents flaky tests due to an unavailable backend, and makes them run faster. Note: you may still want to run a subset of tests using an ["end-to-end"](/docs/testing-environments.html#end-to-end-tests-aka-e2e-tests) framework that tells whether the whole app is working together.
+你可以使用假数据来 mock 请求，而不是在所有测试中调用真正的 API。使用“假”数据 mock 数据获取可以防止由于后端不可用而导致的测试不稳定，并使它们运行得更快。注意：你可能仍然希望使用一个[“端到端”](/docs/testing-environments.html#end-to-end-tests-aka-e2e-tests)的框架来运行测试子集，该框架可显示整个应用程序是否一起工作。
 
 ```jsx
 // user.js
@@ -161,21 +161,21 @@ export default function User(props) {
   }, [props.id]);
 
   if (!user) {
-    return "loading...";
+    return "加载中...";
   }
 
   return (
     <details>
       <summary>{user.name}</summary>
-      <strong>{user.age}</strong> years old
+      <strong>{user.age}</strong> 岁
       <br />
-      lives in {user.address}
+      住在 {user.address}
     </details>
   );
 }
 ```
 
-We can write tests for it:
+我们可以为它编写测试：
 
 ```jsx{23-33,44-45}
 // user.test.js
@@ -187,19 +187,19 @@ import User from "./user";
 
 let container = null;
 beforeEach(() => {
-  // setup a DOM element as a render target
+  // 创建一个 DOM 元素作为渲染目标
   container = document.createElement("div");
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // cleanup on exiting
+  // 退出时进行清理
   unmountComponentAtNode(container);
   container.remove();
   container = null;
 });
 
-it("renders user data", async () => {
+it("渲染用户数据", async () => {
   const fakeUser = {
     name: "Joni Baez",
     age: "32",
@@ -212,7 +212,7 @@ it("renders user data", async () => {
     })
   );
 
-  // Use the asynchronous version of act to apply resolved promises
+  // 使用异步的 act 应用执行成功的 promise
   await act(async () => {
     render(<User id="123" />, container);
   });
@@ -221,18 +221,18 @@ it("renders user data", async () => {
   expect(container.querySelector("strong").textContent).toBe(fakeUser.age);
   expect(container.textContent).toContain(fakeUser.address);
 
-  // remove the mock to ensure tests are completely isolated
+  // 清理 mock 以确保测试完全隔离
   global.fetch.mockRestore();
 });
 ```
 
 ---
 
-### Mocking Modules {#mocking-modules}
+### mock 模块 {#mocking-modules}
 
-Some modules might not work well inside a testing environment, or may not be as essential to the test itself. Mocking out these modules with dummy replacements can make it easier to write tests for your own code.
+有些模块可能在测试环境中不能很好地工作，或者对测试本身不是很重要。使用虚拟数据来 mock 这些模块可以使你为代码编写测试变得更容易。
 
-Consider a `Contact` component that embeds a third-party `GoogleMap` component:
+考虑一个嵌入第三方 `GoogleMap` 组件的 `Contact` 组件：
 
 ```jsx
 // map.js
@@ -257,13 +257,13 @@ function Contact(props) {
   return (
     <div>
       <address>
-        Contact {props.name} via{" "}
+        联系 {props.name}，通过{" "}
         <a data-testid="email" href={"mailto:" + props.email}>
           email
         </a>
-        or on their <a data-testid="site" href={props.site}>
-          website
-        </a>.
+        或者他们的 <a data-testid="site" href={props.site}>
+          网站
+        </a>。
       </address>
       <Map center={props.center} />
     </div>
@@ -271,7 +271,7 @@ function Contact(props) {
 }
 ```
 
-If we don't want to load this component in our tests, we can mock out the dependency itself to a dummy component, and run our tests:
+如果不想在测试中加载这个组件，我们可以将依赖 mock 到一个虚拟组件，然后运行我们的测试：
 
 ```jsx{10-18}
 // contact.test.js
@@ -295,19 +295,19 @@ jest.mock("./map", () => {
 
 let container = null;
 beforeEach(() => {
-  // setup a DOM element as a render target
+  // 创建一个 DOM 元素作为渲染目标
   container = document.createElement("div");
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // cleanup on exiting
+  // 退出时进行清理
   unmountComponentAtNode(container);
   container.remove();
   container = null;
 });
 
-it("should render contact information", () => {
+it("应渲染联系信息", () => {
   const center = { lat: 0, long: 0 };
   act(() => {
     render(
@@ -339,7 +339,7 @@ it("should render contact information", () => {
 
 ### Events {#events}
 
-We recommend dispatching real DOM events on DOM elements, and then asserting on the result. Consider a `Toggle` component:
+我们建议在 DOM 元素上触发真正的 DOM 事件，然后对结果进行断言。考虑一个 `Toggle` 组件：
 
 ```jsx
 // toggle.js
@@ -362,7 +362,7 @@ export default function Toggle(props) {
 }
 ```
 
-We could write tests for it:
+我们可以为它编写测试：
 
 ```jsx{13-14,35,43}
 // toggle.test.js
@@ -375,26 +375,26 @@ import Toggle from "./toggle";
 
 let container = null;
 beforeEach(() => {
-  // setup a DOM element as a render target
+  // 创建一个 DOM 元素作为渲染目标
   container = document.createElement("div");
-  // container *must* be attached to document so events work correctly.
+  // container *必须* 附加到 document，事件才能正常工作。
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // cleanup on exiting
+  // 退出时进行清理
   unmountComponentAtNode(container);
   container.remove();
   container = null;
 });
 
-it("changes value when clicked", () => {
+it("点击时更新值", () => {
   const onChange = jest.fn();
   act(() => {
     render(<Toggle onChange={onChange} />, container);
   });
 
-  // get ahold of the button element, and trigger some clicks on it
+  // 获取按钮元素，并触发点击事件
   const button = document.querySelector("[data-testid=toggle]");
   expect(button.innerHTML).toBe("Turn off");
 
@@ -416,17 +416,17 @@ it("changes value when clicked", () => {
 });
 ```
 
-Different DOM events and their properties are described in [MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent). Note that you need to pass `{ bubbles: true }` in each event you create for it to reach the React listener because React automatically delegates events to the document.
+[MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)描述了不同的 DOM 事件及其属性。注意，你需要在创建的每个事件中传递 `{ bubbles: true }` 才能到达 React 监听器，因为 React 会自动将事件委托给 document。
 
-> Note:
+> 注意：
 >
-> React Testing Library offers a [more concise helper](https://testing-library.com/docs/dom-testing-library/api-events) for firing events.
+> React 测试库为触发事件提供了一个[更简洁 helper](https://testing-library.com/docs/dom-testing-library/api-events)。
 
 ---
 
-### Timers {#timers}
+### 计时器 {#timers}
 
-Your code might use timer-based functions like `setTimeout` to schedule more work in the future. In this example, a multiple choice panel waits for a selection and advances, timing out if a selection isn't made in 5 seconds:
+你的代码可能会使用基于计时器的函数（如 `setTimeout`）来安排将来更多的工作。在这个例子中，多项选择面板等待选择并前进，如果在 5 秒内没有做出选择，则超时：
 
 ```jsx
 // card.js
@@ -455,7 +455,7 @@ export default function Card(props) {
 }
 ```
 
-We can write tests for this component by leveraging [Jest's timer mocks](https://jestjs.io/docs/en/timer-mocks), and testing the different states it can be in.
+我们可以利用 [Jest 的计时器 mock](https://jestjs.io/docs/en/timer-mocks) 为这个组件编写测试，并测试它可能处于的不同状态。
 
 ```jsx{7,31,37,49,59}
 // card.test.js
@@ -468,38 +468,38 @@ jest.useFakeTimers();
 
 let container = null;
 beforeEach(() => {
-  // setup a DOM element as a render target
+  // 创建一个 DOM 元素作为渲染目标
   container = document.createElement("div");
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // cleanup on exiting
+  // 退出时进行清理
   unmountComponentAtNode(container);
   container.remove();
   container = null;
 });
 
-it("should select null after timing out", () => {
+it("超时后应选择 null", () => {
   const onSelect = jest.fn();
   act(() => {
     render(<Card onSelect={onSelect} />, container);
   });
 
-  // move ahead in time by 100ms
+  // 提前 100 毫秒执行
   act(() => {
     jest.advanceTimersByTime(100);
   });
   expect(onSelect).not.toHaveBeenCalled();
 
-  // and then move ahead by 5 seconds
+  // 然后提前 5 秒执行
   act(() => {
     jest.advanceTimersByTime(5000);
   });
   expect(onSelect).toHaveBeenCalledWith(null);
 });
 
-it("should cleanup on being removed", () => {
+it("移除时应进行清理", () => {
   const onSelect = jest.fn();
   act(() => {
     render(<Card onSelect={onSelect} />, container);
@@ -510,7 +510,7 @@ it("should cleanup on being removed", () => {
   });
   expect(onSelect).not.toHaveBeenCalled();
 
-  // unmount the app
+  // 卸载应用程序
   act(() => {
     render(null, container);
   });
@@ -521,7 +521,7 @@ it("should cleanup on being removed", () => {
   expect(onSelect).not.toHaveBeenCalled();
 });
 
-it("should accept selections", () => {
+it("应接受选择", () => {
   const onSelect = jest.fn();
   act(() => {
     render(<Card onSelect={onSelect} />, container);
@@ -537,15 +537,15 @@ it("should accept selections", () => {
 });
 ```
 
-You can use fake timers only in some tests. Above, we enabled them by calling `jest.useFakeTimers()`. The main advantage they provide is that your test doesn't actually have to wait five seconds to execute, and you also didn't need to make the component code more convoluted just for testing.
+你只能在某些测试中使用假计时器。在上面，我们通过调用 `jest.useFakeTimers()` 来启用它们。它们提供的主要优势是，你的测试实际上不需要等待 5 秒来执行，而且你也不需要为了测试而使组件代码更加复杂。
 
 ---
 
-### Snapshot Testing {#snapshot-testing}
+### 快照测试 {#snapshot-testing}
 
-Frameworks like Jest also let you save "snapshots" of data with [`toMatchSnapshot` / `toMatchInlineSnapshot`](https://jestjs.io/docs/en/snapshot-testing). With these, we can "save" the rendered component output and ensure that a change to it has to be explicitly committed as a change to the snapshot.
+像 Jest 这样的框架还允许你使用 [`toMatchSnapshot` / `toMatchInlineSnapshot`](https://jestjs.io/docs/en/snapshot-testing) 保存数据的“快照”。有了这些，我们可以“保存”渲染的组件输出，并确保对它的更新作为对快照的更新显式提交。
 
-In this example, we render a component and format the rendered HTML with the [`pretty`](https://www.npmjs.com/package/pretty) package, before saving it as an inline snapshot:
+在这个示例中，我们渲染一个组件并使用 [`pretty`](https://www.npmjs.com/package/pretty) 包对渲染的 HTML 进行格式化，然后将其保存为内联快照：
 
 ```jsx{29-31}
 // hello.test.js, again
@@ -559,26 +559,26 @@ import Hello from "./hello";
 
 let container = null;
 beforeEach(() => {
-  // setup a DOM element as a render target
+  // 创建一个 DOM 元素作为渲染目标
   container = document.createElement("div");
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  // cleanup on exiting
+  // 退出时进行清理
   unmountComponentAtNode(container);
   container.remove();
   container = null;
 });
 
-it("should render a greeting", () => {
+it("应渲染问候语", () => {
   act(() => {
     render(<Hello />, container);
   });
 
   expect(
     pretty(container.innerHTML)
-  ).toMatchInlineSnapshot(); /* ... gets filled automatically by jest ... */
+  ).toMatchInlineSnapshot(); /* ... 由 jest 自动填充 ... */
 
   act(() => {
     render(<Hello name="Jenny" />, container);
@@ -586,7 +586,7 @@ it("should render a greeting", () => {
 
   expect(
     pretty(container.innerHTML)
-  ).toMatchInlineSnapshot(); /* ... gets filled automatically by jest ... */
+  ).toMatchInlineSnapshot(); /* ... 由 jest 自动填充 ... */
 
   act(() => {
     render(<Hello name="Margaret" />, container);
@@ -594,17 +594,17 @@ it("should render a greeting", () => {
 
   expect(
     pretty(container.innerHTML)
-  ).toMatchInlineSnapshot(); /* ... gets filled automatically by jest ... */
+  ).toMatchInlineSnapshot(); /* ... 由 jest 自动填充 ... */
 });
 ```
 
-It's typically better to make more specific assertions than to use snapshots. These kinds of tests include implementation details so they break easily, and teams can get desensitized to snapshot breakages. Selectively [mocking some child components](#mocking-modules) can help reduce the size of snapshots and keep them readable for the code review.
+通常，进行具体的断言比使用快照更好。这类测试包括实现细节，因此很容易中断，并且团队可能对快照中断不敏感。选择性地 [mock 一些子组件](#mocking-modules)可以帮助减小快照的大小，并使它们在代码评审中保持可读性。
 
 ---
 
-### Multiple Renderers {#multiple-renderers}
+### 多渲染器 {#multiple-renderers}
 
-In rare cases, you may be running a test on a component that uses multiple renderers. For example, you may be running snapshot tests on a component with `react-test-renderer`, that internally uses `ReactDOM.render` inside a child component to render some content. In this scenario, you can wrap updates with `act()`s corresponding to their renderers.
+在极少数情况下，你可能正在使用多个渲染器的组件上运行测试。例如，你可能正在使用 `react-test-renderer` 组件上运行快照测试，该组件内部使用子组件内部的 `ReactDOM.render` 渲染一些内容。在这个场景中，你可以使用与它们的渲染器相对应的 `act()` 来包装更新。
 
 ```jsx
 import { act as domAct } from "react-dom/test-utils";
@@ -621,6 +621,6 @@ expect(root).toMatchSnapshot();
 
 ---
 
-### Something Missing? {#something-missing}
+### 缺少什么？ {#something-missing}
 
-If some common scenario is not covered, please let us know on the [issue tracker](https://github.com/reactjs/reactjs.org/issues) for the documentation website.
+如果有一些常见场景没有覆盖，请在文档网站的 [issue 跟踪器](https://github.com/reactjs/reactjs.org/issues)上告诉我们。
