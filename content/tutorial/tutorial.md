@@ -335,7 +335,7 @@ class Square extends React.Component {
 
 你还可以在 React DevTools 中检查 React 组件的 state 和 props。
 
-安装 React DevTools 之后，右键点击页面的任何一个元素，然后选择“查看”，这样就能打开浏览器的开发者工具了。React 的标签页会出现在顶部标签栏最右边。
+安装 React DevTools 之后，右键点击页面的任何一个元素，然后选择“查看”，这样就能打开浏览器的开发者工具了，并且工具栏最后会多展示一个 React 的选项卡（包含 "⚛️ Components" 和 "⚛️ Profiler"）。你可以使用 "⚛️ Components" 来检查组件树。
 
 **不过，如果你使用的是 CodePen 在线编辑器的话，还需要几步操作才能正确使用开发工具**
 

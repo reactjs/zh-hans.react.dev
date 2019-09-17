@@ -88,13 +88,13 @@ Flow 通过这种类型注释的特殊语法扩展了 JavaScript 语言。但是
 如果你使用 Yarn，执行：
 
 ```bash
-yarn add --dev babel-preset-flow
+yarn add --dev @babel/preset-flow
 ```
 
 如果你使用 npm，执行：
 
 ```bash
-npm install --save-dev babel-preset-flow
+npm install --save-dev @babel/preset-flow
 ```
 
 接下来将 `flow` preset 添加到你的 [Babel 配置](https://babeljs.io/docs/usage/babelrc/) 配置中。例如，如果你通过 `.babelrc` 文件配置 Babel，它可能会如下所示：
@@ -102,7 +102,7 @@ npm install --save-dev babel-preset-flow
 ```js{3}
 {
   "presets": [
-    "flow",
+    "@babel/preset-flow",
     "react"
   ]
 }

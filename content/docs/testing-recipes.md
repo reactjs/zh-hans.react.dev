@@ -16,6 +16,7 @@ React 组件的常见测试模式。
 
 - [创建/清理](#setup--teardown)
 - [`act()`](#act)
+- [渲染](#rendering)
 - [数据获取](#data-fetching)
 - [mock 模块](#mocking-modules)
 - [事件](#events)
