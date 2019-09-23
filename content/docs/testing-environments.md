@@ -13,7 +13,7 @@ prev: testing-recipes.html
 
 像 [Jest](https://jestjs.io/)，[mocha](https://mochajs.org/)，[ava](https://github.com/avajs/ava) 等测试运行器使你能够像常规 JavaScript 一样编写测试套件并将其作为开发过程的一部分运行。此外，测试套件也将作为持续集成的一部分运行。
 
-- Jest 与 React 项目广泛兼容，支持诸如模拟 [模块](#mocking-modules)、[计时器](#mocking-timers) 和 [`jsdom`](#mocking-a-rendering-surface) 等特性。**如果你使用 Create React App，那么 [Jest 已经开箱即用](https://facebook.github.io/create-react-app/docs/running-tests)并包含实用的默认配置项。**
+- Jest 与 React 项目广泛兼容，支持诸如模拟 [模块](#mocking-modules)、[计时器](#mocking-timers) 和 [`jsdom`](#mocking-a-rendering-surface) 等特性。**如果你使用 Create React App，[Jest 已经能够开箱即用](https://facebook.github.io/create-react-app/docs/running-tests)且包含许多实用的默认配置。**
 - 像 [mocha](https://mochajs.org/#running-mocha-in-the-browser) 这样的库在真实浏览器环境下运行良好，并且可以为明确需要它的测试提供帮助。
 - 端到端测试用于测试跨多个页面的长流程，并且需要[不同的设置](#end-to-end-tests-aka-e2e-tests)。
 
