@@ -1,58 +1,58 @@
 ---
 id: testing-environments
-title: Testing Environments
+title: 测试环境
 permalink: docs/testing-environments.html
 prev: testing-recipes.html
 ---
 
-<!-- This document is intended for folks who are comfortable with JavaScript, and have probably written tests with it. It acts as a reference for the differences in testing environments for React components, and how those differences affect the tests that they write. This document also assumes a slant towards web-based react-dom components, but has notes for other renderers. -->
+<!-- 本文档适用于那些熟悉 JavaScript 并且可能已经使用它编写过测试的人。它可以作为 React 组件测试环境差异的参考，以及这些差异会如何影响他们编写的测试。本文档倾向基于 Web 的 react-dom 组件的测试，但也有基于其他渲染器测试的注释。 -->
 
-This document goes through the factors that can affect your environment and recommendations for some scenarios.
+本章节介绍了可能会影响你测试环境的因素，并包含某些场景下的建议。
 
-### Test runners {#test-runners}
+### 测试运行器 {#test-runners}
 
-Test runners like [Jest](https://jestjs.io/), [mocha](https://mochajs.org/), [ava](https://github.com/avajs/ava) let you write test suites as regular JavaScript, and run them as part of your development process. Additionally, test suites are run as part of continuous integration.
+使用 [Jest](https://jestjs.io/)，[mocha](https://mochajs.org/)，[ava](https://github.com/avajs/ava) 等测试运行器能像编写 JavaScript 一样编写测试套件，并将其作为开发过程的环节运行。此外，测试套件也将作为持续集成的环节运行。
 
-- Jest is widely compatible with React projects, supporting features like mocked [modules](#mocking-modules) and [timers](#mocking-timers), and [`jsdom`](#mocking-a-rendering-surface) support. **If you use Create React App, [Jest is already included out of the box](https://facebook.github.io/create-react-app/docs/running-tests) with useful defaults.**
-- Libraries like [mocha](https://mochajs.org/#running-mocha-in-the-browser) work well in real browser environments, and could help for tests that explicitly need it.
-- End-to-end tests are used for testing longer flows across multiple pages, and require a [different setup](#end-to-end-tests-aka-e2e-tests).
+- Jest 与 React 项目广泛兼容，支持诸如模拟 [模块](#mocking-modules)、[计时器](#mocking-timers) 和 [`jsdom`](#mocking-a-rendering-surface) 等特性。**如果你使用 Create React App，[Jest 已经能够开箱即用](https://facebook.github.io/create-react-app/docs/running-tests)且包含许多实用的默认配置。**
+- 像 [mocha](https://mochajs.org/#running-mocha-in-the-browser) 这样的库在真实浏览器环境下运行良好，并且可以为明确需要它的测试提供帮助。
+- 端对端测试用于测试跨多个页面的长流程，并且需要[不同的设置](#end-to-end-tests-aka-e2e-tests)。
 
-### Mocking a rendering surface {#mocking-a-rendering-surface}
+### 模拟渲染表面 {#mocking-a-rendering-surface}
 
-Tests often run in an environment without access to a real rendering surface like a browser. For these environments, we recommend simulating a browser with [`jsdom`](https://github.com/jsdom/jsdom), a lightweight browser implementation that runs inside Node.js.
+测试通常在无法访问真实渲染表面（如浏览器）的环境中运行。对于这些环境，我们建议使用 [`jsdom`](https://github.com/jsdom/jsdom) 来模拟浏览器，这是一个在 Node.js 内运行的轻量级浏览器实现。
 
-In most cases, jsdom behaves like a regular browser would, but doesn't have features like [layout and navigation](https://github.com/jsdom/jsdom#unimplemented-parts-of-the-web-platform). This is still useful for most web-based component tests, since it runs quicker than having to start up a browser for each test. It also runs in the same process as your tests, so you can write code to examine and assert on the rendered DOM.
+在大多数情况下，jsdom 的行为类似于常规浏览器，但不具备如[布局和导航](https://github.com/jsdom/jsdom#unimplemented-parts-of-the-web-platform)的功能。这对于大多数基于 Web 的组件测试仍然有用，因为它的运行比为每个测试启动浏览器的方式效率更高。并且由于它与你编写的测试运行在同一个进程中，所以你能够编写代码来检查和断言渲染的 DOM。
 
-Just like in a real browser, jsdom lets us model user interactions; tests can dispatch events on DOM nodes, and then observe and assert on the side effects of these actions [<small>(example)</small>](/docs/testing-recipes.html#events).
+就像在真实的浏览器中一样，jsdom 让我们模拟用户交互；测试可以在 DOM 节点上派发事件，然后观察并断言这些操作的副作用[<small>(例子)</small>](/docs/testing-recipes.html#events)。
 
-A large portion of UI tests can be written with the above setup: using Jest as a test runner, rendered to jsdom, with user interactions specified as sequences of browser events, powered by the `act()` helper [<small>(example)</small>](/docs/testing-recipes.html). For example, a lot of React's own tests are written with this combination.
+可以使用上述设置编写大部分 UI 测试：使用 Jest 作为测试运行器，渲染到 jsdom，使用 `act()` 辅助函数[<small>(例子)</small>](/docs/testing-recipes.html)提供的能力通过一系列的浏览器事件来模拟用户交互行为。例如，大量 React 自己的测试都是用这种组合编写的。
 
-If you're writing a library that tests mostly browser-specific behavior, and requires native browser behavior like layout or real inputs, you could use a framework like [mocha.](https://mochajs.org/)
+如果您正在编写一个主要测试浏览器特定行为的库，并且需要布局或真实输入等原生浏览器行为，那么你可以使用像 [mocha](https://mochajs.org/) 这样的框架。
 
-In an environment where you _can't_ simulate a DOM (e.g. testing React Native components on Node.js), you could use [event simulation helpers](https://reactjs.org/docs/test-utils.html#simulate) to simulate interactions with elements. Alternately, you could use the `fireEvent` helper from [`@testing-library/react-native`](https://testing-library.com/docs/native-testing-library).
+在你 _无法_ 模拟 DOM 环境（例如，在 Node.js 上测试 React Native 组件）的情况下，可以使用 [事件模拟辅助函数](https://reactjs.org/docs/test-utils.html#simulate) 来模拟与元素的交互。或者，你也可以使用 [`@testing-library/react-native`](https://testing-library.com/docs/native-testing-library) 中的 `fireEvent` 辅助函数。
 
-Frameworks like [Cypress](https://www.cypress.io/), [puppeteer](https://github.com/GoogleChrome/puppeteer) and [webdriver](https://www.seleniumhq.org/projects/webdriver/) are useful for running [end-to-end tests](#end-to-end-tests-aka-e2e-tests).
+诸如 [Cypress](https://www.cypress.io/)，[puppeteer](https://github.com/GoogleChrome/puppeteer) 和 [webdriver](https://www.seleniumhq.org/projects/webdriver/) 等框架对于运行[端对端测试](#end-to-end-tests-aka-e2e-tests) 都非常有用。
 
-### Mocking functions {#mocking-functions}
+### 模拟功能 {#mocking-functions}
 
-When writing tests, we'd like to mock out the parts of our code that don't have equivalents inside our testing environment (e.g. checking `navigator.onLine` status inside Node.js). Tests could also spy on some functions, and observe how other parts of the test interact with them. It is then useful to be able to selectively mock these functions with test-friendly versions.
+在编写测试的时候，我们希望模拟代码在测试环境较真实环境中缺失的等效部分（例如，在 Node.js 中检查 `navigator.onLine` 的状态）。测试还可以监视某些功能，并观察测试的其他部分如何与它们进行交互。有选择的将这些功能模拟为测试友好的版本是很有用的。
 
-This is especially useful for data fetching. It is usually preferable to use "fake" data for tests to avoid the slowness and flakiness due to fetching from real API endpoints [<small>(example)</small>](/docs/testing-recipes.html#data-fetching). This helps make the tests predictable. Libraries like [Jest](https://jestjs.io/) and [sinon](https://sinonjs.org/), among others, support mocked functions. For end-to-end tests, mocking network can be more difficult, but you might also want to test the real API endpoints in them anyway.
+这对于数据获取尤其有用。通常最好使用“假”数据进行测试，以避免从实际 API 端获取数据可能导致的缓慢和不稳定[<small>（例子）</small>](/docs/testing-recipes.html#data-fetching)。这样做有助于让测试变得可预测。像 [Jest](https://jestjs.io/) 与 [sinon](https://sinonjs.org/) 这样的类库，支持模拟功能。对于端对端测试，虽然模拟网络可能更加困难，但你可能还想对真实的 API 端进行测试。
 
-### Mocking modules {#mocking-modules}
+### 模拟模块 {#mocking-modules}
 
-Some components have dependencies for modules that may not work well in test environments, or aren't essential to our tests. It can be useful to selectively mock these modules out with suitable replacements [<small>(example)</small>](/docs/testing-recipes.html#mocking-modules).
+一些组件可能会依赖在测试环境中无法正常运行的模块，或者说这些模块对于我们的测试并不必要。那么，通过选择性地模拟来替换这些模块是很有用的[<small>（例子）</small>](/docs/testing-recipes.html#mocking-modules)。
 
-On Node.js, runners like Jest [support mocking modules](https://jestjs.io/docs/en/manual-mocks). You could also use libraries like [`mock-require`](https://www.npmjs.com/package/mock-require).
+在 Node.js 中，测试运行器如 Jest [支持模拟模块](https://jestjs.io/docs/en/manual-mocks)。你也可以使用像 [`mock-require`](https://www.npmjs.com/package/mock-require) 这样的类库。
 
-### Mocking timers {#mocking-timers}
+### 模拟计时器 {#mocking-timers}
 
-Components might be using time-based functions like `setTimeout`, `setInterval`, or `Date.now`. In testing environments, it can be helpful to mock these functions out with replacements that let you manually "advance" time. This is great for making sure your tests run fast! Tests that are dependent on timers would still resolve in order, but quicker [<small>(example)</small>](/docs/testing-recipes.html#timers). Most frameworks, including [Jest](https://jestjs.io/docs/en/timer-mocks), [sinon](https://sinonjs.org/releases/v7.3.2/fake-timers/) and [lolex](https://github.com/sinonjs/lolex), let you mock timers in your tests.
+组件可能会使用基于时间的函数如 `setTimeout`、`setInterval` 和 `Date.now` 等。在测试环境中，使用可以手动“推进”时间的替代物来模拟这些功能会很有帮助。它会确保你的测试快速运行！依赖于计时器的测试仍将按照顺序解析，但会更快[<small>（例子）</small>](/docs/testing-recipes.html#timers)。大部分测试框架，包括 [Jest](https://jestjs.io/docs/en/timer-mocks)、[sinon](https://sinonjs.org/releases/v7.3.2/fake-timers/) 和 [lolex](https://github.com/sinonjs/lolex) 都允许你在测试中模拟计时器。
 
-Sometimes, you may not want to mock timers. For example, maybe you're testing an animation, or interacting with an endpoint that's sensitive to timing (like an API rate limiter). Libraries with timer mocks let you enable and disable them on a per test/suite basis, so you can explicitly choose how these tests would run.
+有些时候可能你不想要模拟计时器。例如，在你测试动画时，或是交互端对时间较为敏感的情况下（如 API 访问速率限制器）。具有计时器模拟的库允许你在每个测试/套件上启用或禁用这个功能，因此你可以明确地选择这些测试的运行方式。
 
-### End-to-end tests {#end-to-end-tests-aka-e2e-tests}
+### 端对端测试 {#end-to-end-tests-aka-e2e-tests}
 
-End-to-end tests are useful for testing longer workflows, especially when they're critical to your business (such as payments or signups). For these tests, you'd probably want to test both how a real browser renders the whole app, fetches data from the real API endpoints, uses sessions and cookies, navigates between different links. You might also likely want to make assertions not just on the DOM state, but on the backing data as well (e.g. to verify whether the updates have been persisted to the database).
+端对端测试对于测试更长的工作流程非常长有用，特别是当它们对于你的业务（例如付款或注册）特别重要时。对于这些测试，你可能会希望测试真实浏览器如何渲染整个应用、从真实的 API 端获取数据、使用 session 和 cookies 以及在不同的链接间导航等功能。你可能还希望不仅在 DOM 状态上进行断言，而同时也在后端数据上进行校验（例如，验证更新是否已经在数据库中持久化）。
 
-In this scenario, you would use a framework like [Cypress](https://www.cypress.io/) or a library like [puppeteer](https://github.com/GoogleChrome/puppeteer) so you can navigate between multiple routes and assert on side effects not just in the browser, but potentially on the backend as well.
+在这种场景下，你可以使用像 [Cypress](https://www.cypress.io/) 这类框架或者如 [puppeteer](https://github.com/GoogleChrome/puppeteer) 这样的库，这样你就可以在多个路由之间导航切换，并且不仅能够在浏览器中对副作用进行断言也能够在后端这么做。
