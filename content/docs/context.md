@@ -15,6 +15,7 @@ Context 提供了一个无需为每层组件手动添加 props，就能在组件
   - [Context.Provider](#contextprovider)
   - [Class.contextType](#classcontexttype)
   - [Context.Consumer](#contextconsumer)
+  - [Context.displayName](#contextdisplayname)
 - [示例](#examples)
   - [动态 Context](#dynamic-context)
   - [在嵌套组件中更新 Context](#updating-context-from-a-nested-component)
@@ -195,6 +196,20 @@ class MyClass extends React.Component {
 > 注意
 > 
 > 想要了解更多关于“函数作为子元素（function as a child）”模式，详见 [render props](/docs/render-props.html)。
+
+### `Context.displayName` {#contextdisplayname}
+
+context 对象接受一个名为 `displayName` 的 property，类型为字符串。React DevTools 使用该字符串来确定 context 要显示的内容。
+
+示例，下述组件在 DevTools 中将显示为 MyDisplayName：
+
+```js{2}
+const MyContext = React.createContext(/* some value */);
+MyContext.displayName = 'MyDisplayName';
+
+<MyContext.Provider> // "MyDisplayName.Provider" 在 DevTools 中
+<MyContext.Consumer> // "MyDisplayName.Consumer" 在 DevTools 中
+```
 
 ## 示例 {#examples}
 

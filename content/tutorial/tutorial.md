@@ -118,7 +118,7 @@ import './index.css';
 
 ### 寻求帮助 {#help-im-stuck}
 
-如果你遇到了任何困难，可以去查看[社区支持资源](/community/support.html)。你也可以在 [Reactiflux Chat](https://discord.gg/0ZcbPKXt5bZjGY5n) 快速求助。如果通过上述方式还是解决不了你的问题，请给我们提 issue，我们会帮助你的。
+如果你遇到了任何困难，可以去查看[社区支持资源](/community/support.html)。你也可以在 [Reactiflux Chat](https://discord.gg/reactiflux) 快速求助。如果通过上述方式还是解决不了你的问题，请给我们提 issue，我们会帮助你的。
 
 ## 概览 {#overview}
 
