@@ -15,22 +15,13 @@ Context 提供了一个无需为每层组件手动添加 props，就能在组件
   - [Context.Provider](#contextprovider)
   - [Class.contextType](#classcontexttype)
   - [Context.Consumer](#contextconsumer)
-<<<<<<< HEAD
+  - [Context.displayName](#contextdisplayname)
 - [示例](#examples)
   - [动态 Context](#dynamic-context)
   - [在嵌套组件中更新 Context](#updating-context-from-a-nested-component)
   - [使用多个 Context](#consuming-multiple-contexts)
 - [注意事项](#caveats)
 - [废弃的 API](#legacy-api)
-=======
-  - [Context.displayName](#contextdisplayname)
-- [Examples](#examples)
-  - [Dynamic Context](#dynamic-context)
-  - [Updating Context from a Nested Component](#updating-context-from-a-nested-component)
-  - [Consuming Multiple Contexts](#consuming-multiple-contexts)
-- [Caveats](#caveats)
-- [Legacy API](#legacy-api)
->>>>>>> upstream/master
 
 ## 何时使用 Context {#when-to-use-context}
 
@@ -206,25 +197,21 @@ class MyClass extends React.Component {
 > 
 > 想要了解更多关于“函数作为子元素（function as a child）”模式，详见 [render props](/docs/render-props.html)。
 
-<<<<<<< HEAD
-## 示例 {#examples}
-=======
 ### `Context.displayName` {#contextdisplayname}
 
-Context object accepts a `displayName` string property. React DevTools uses this string to determine what to display for the context.
+context 对象接受一个名为 `displayName` 的 property，类型为字符串。React DevTools 使用该字符串来确定 context 要显示的内容。
 
-For example, the following component will appear as MyDisplayName in the DevTools:
+示例，下述组件在 DevTools 中将显示为 MyDisplayName：
 
 ```js{2}
 const MyContext = React.createContext(/* some value */);
 MyContext.displayName = 'MyDisplayName';
 
-<MyContext.Provider> // "MyDisplayName.Provider" in DevTools
-<MyContext.Consumer> // "MyDisplayName.Consumer" in DevTools
+<MyContext.Provider> // "MyDisplayName.Provider" 在 DevTools 中
+<MyContext.Consumer> // "MyDisplayName.Consumer" 在 DevTools 中
 ```
 
-## Examples {#examples}
->>>>>>> upstream/master
+## 示例 {#examples}
 
 ### 动态 Context {#dynamic-context}
 

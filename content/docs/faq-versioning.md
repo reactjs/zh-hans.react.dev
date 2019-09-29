@@ -10,25 +10,15 @@ React 遵循[语义化版本（semver）](https://semver.org/)原则。
 
 也就是说，若当前版本号为 **x.y.z**，则:
 
-<<<<<<< HEAD
-* 当发布**不兼容的改动**时，我们会通过修改 **x** 来发布一个**主版本**（如：15.6.2 至 16.0.0）。
-* 当发布**新功能**时，我们会通过修改 **y** 来发布一个**次版本**（如：15.6.2 至 15.7.0）。
-* 当发布**问题修复**时，我们会通过修改 **z** 来发布一个**修订版本**（如：15.6.2 至 15.6.3）。
-=======
-* When releasing **critical bug fixes**, we make a **patch release** by changing the **z** number (ex: 15.6.2 to 15.6.3).
-* When releasing **new features** or **non-critical fixes**, we make a **minor release** by changing the **y** number (ex: 15.6.2 to 15.7.0).
-* When releasing **breaking changes**, we make a **major release** by changing the **x** number (ex: 15.6.2 to 16.0.0).
->>>>>>> upstream/master
+* 当**出现严重 bug 并修复**时，我们会通过修改 **z** 来发布一个**修订版本**（如：15.6.2 至 15.6.3）。
+* 当发布**新功能**或**修复非严重 bug**时，我们会通过修改 **y** 来发布一个**次要版本**（如：15.6.2 至 15.7.0）。
+* 当发布**破坏性更新**时，我们会通过修改 **x** 来发布一个**主版本**（如：15.6.2 至 16.0.0）。
 
 主版本也可能包含新功能，任何一个版本都可能包含问题修复。
 
-<<<<<<< HEAD
-### 不兼容的改动 {#breaking-changes}
-=======
-Minor releases are the most common type of release.
+次要版本是最常见的版本发布类型。
 
-### Breaking Changes {#breaking-changes}
->>>>>>> upstream/master
+### 不兼容的改动 {#breaking-changes}
 
 不兼容的改动会对所有人造成不便，因此我们会尽可能地减少主版本的发布次数。例如：React 15 在 2016 年 4 月发布，React 16 在 2017 年 9 月发布，而 React 17 在 2019 年才会发布。
 
@@ -57,22 +47,18 @@ Minor releases are the most common type of release.
 
 这条规则的出发点是务实的：我们不想为你造成不便。如果我们因为这些改动而升级了主版本号，那么会出现更多的主版本，为社区制造更多的版本问题，我们也不能快速地去完善 React。
 
-<<<<<<< HEAD
 然而，如果上述列表中的改动会在社区中造成大范围的问题，我们仍会尽全力提供一个逐渐升级的方案。
-=======
-That said, if we expect that a change on this list will cause broad problems in the community, we will still do our best to provide a gradual migration path.
 
-### If a Minor Release Includes No New Features, Why Isn't It a Patch? {#minors-versus-patches}
+### 如果发布了次要版本但没有引入新特性，那为何不发布修订版？{#minors-versus-patches}
 
-It's possible that a minor release will not include new features. [This is allowed by semver](https://semver.org/#spec-item-7), which states **"[a minor version] MAY be incremented if substantial new functionality or improvements are introduced within the private code. It MAY include patch level changes."**
+发布次要版本可能并不会引入新特性。[此规则在 semver 有提及](https://semver.org/#spec-item-7)，**如果在私有代码中引入了实质性的新特性或优化，则[次要版本]会增加。它可能包含修订版本的更改。**
 
-However, it does raise the question of why these releases aren't versioned as patches instead.
+但是，这带来一个问题，即为什么这些发行版本没有发布为修订版。
 
-The answer is that any change to React (or other software) carries some risk of breaking in unexpected ways. Imagine a scenario where a patch release that fixes one bug accidentally introduces a different bug. This would not only be disruptive to developers, but also harm their confidence in future patch releases. It's especially regrettable if the original fix is for a bug that is rarely encountered in practice.
+对于 React（或其他软件）来说，任何的更改都具有意外破坏的风险。想象一下，发布了修复 bug 的版本，但偶然又引入了另一个 bug。这不仅会对开发人员带来麻烦，还会影响他们对修订版本的信心。如果发布的修订版本针对的是实际开发中极少出现的 bug，则更加令人遗憾。
 
-We have a pretty good track record for keeping React releases free of bugs, but patch releases have an even higher bar for reliability because most developers assume they can be adopted without adverse consequences.
+我们在保证 React 发布的版本没有 bug 方面有着良好的记录，但是修订版发布具有更高标准，因为大多数开发者认为使用这些版本不会带来不利的问题。
 
-For these reasons, we reserve patch releases only for the most critical bugs and security vulnerabilities.
+基于以上原因，我们仅针对最严重的 bug 和安全漏洞发布修订版本。
 
-If a release includes non-essential changes — such as internal refactors, changes to implementation details, performance improvements, or minor bugfixes — we will bump the minor version even when there are no new features.
->>>>>>> upstream/master
+如果某个版本包含不必要的更改（例如内部重构，对实现细节的修改，性能优化或较小 bug 的修正），即使没有新特性，我们也会更改次要版本。
