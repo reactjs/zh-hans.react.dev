@@ -10,13 +10,25 @@ React 遵循[语义化版本（semver）](https://semver.org/)原则。
 
 也就是说，若当前版本号为 **x.y.z**，则:
 
+<<<<<<< HEAD
 * 当发布**不兼容的改动**时，我们会通过修改 **x** 来发布一个**主版本**（如：15.6.2 至 16.0.0）。
 * 当发布**新功能**时，我们会通过修改 **y** 来发布一个**次版本**（如：15.6.2 至 15.7.0）。
 * 当发布**问题修复**时，我们会通过修改 **z** 来发布一个**修订版本**（如：15.6.2 至 15.6.3）。
+=======
+* When releasing **critical bug fixes**, we make a **patch release** by changing the **z** number (ex: 15.6.2 to 15.6.3).
+* When releasing **new features** or **non-critical fixes**, we make a **minor release** by changing the **y** number (ex: 15.6.2 to 15.7.0).
+* When releasing **breaking changes**, we make a **major release** by changing the **x** number (ex: 15.6.2 to 16.0.0).
+>>>>>>> upstream/master
 
 主版本也可能包含新功能，任何一个版本都可能包含问题修复。
 
+<<<<<<< HEAD
 ### 不兼容的改动 {#breaking-changes}
+=======
+Minor releases are the most common type of release.
+
+### Breaking Changes {#breaking-changes}
+>>>>>>> upstream/master
 
 不兼容的改动会对所有人造成不便，因此我们会尽可能地减少主版本的发布次数。例如：React 15 在 2016 年 4 月发布，React 16 在 2017 年 9 月发布，而 React 17 在 2019 年才会发布。
 
@@ -45,4 +57,22 @@ React 遵循[语义化版本（semver）](https://semver.org/)原则。
 
 这条规则的出发点是务实的：我们不想为你造成不便。如果我们因为这些改动而升级了主版本号，那么会出现更多的主版本，为社区制造更多的版本问题，我们也不能快速地去完善 React。
 
+<<<<<<< HEAD
 然而，如果上述列表中的改动会在社区中造成大范围的问题，我们仍会尽全力提供一个逐渐升级的方案。
+=======
+That said, if we expect that a change on this list will cause broad problems in the community, we will still do our best to provide a gradual migration path.
+
+### If a Minor Release Includes No New Features, Why Isn't It a Patch? {#minors-versus-patches}
+
+It's possible that a minor release will not include new features. [This is allowed by semver](https://semver.org/#spec-item-7), which states **"[a minor version] MAY be incremented if substantial new functionality or improvements are introduced within the private code. It MAY include patch level changes."**
+
+However, it does raise the question of why these releases aren't versioned as patches instead.
+
+The answer is that any change to React (or other software) carries some risk of breaking in unexpected ways. Imagine a scenario where a patch release that fixes one bug accidentally introduces a different bug. This would not only be disruptive to developers, but also harm their confidence in future patch releases. It's especially regrettable if the original fix is for a bug that is rarely encountered in practice.
+
+We have a pretty good track record for keeping React releases free of bugs, but patch releases have an even higher bar for reliability because most developers assume they can be adopted without adverse consequences.
+
+For these reasons, we reserve patch releases only for the most critical bugs and security vulnerabilities.
+
+If a release includes non-essential changes — such as internal refactors, changes to implementation details, performance improvements, or minor bugfixes — we will bump the minor version even when there are no new features.
+>>>>>>> upstream/master

@@ -29,8 +29,13 @@ channels:
     - title: Discussion 论坛
       to: https://reactjs.org/community/support.html#popular-discussion-forums
       external: true
+<<<<<<< HEAD
     - title: Reactiflux 聊天室
       to: https://discord.gg/0ZcbPKXt5bZjGY5n
+=======
+    - title: Reactiflux Chat
+      to: https://discord.gg/reactiflux
+>>>>>>> upstream/master
       external: true
     - title: DEV 社区
       to: https://dev.to/t/react
