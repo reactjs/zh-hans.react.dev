@@ -109,7 +109,13 @@ Hook 确实有它们自己的学习曲线。如果这份文档中遗失了一些
 
 React Redux 从 v7.1.0 开始[支持 Hook API](https://react-redux.js.org/api/hooks) 并暴露了 `useDispatch` 和 `useSelector` 等 hook。
 
+<<<<<<< HEAD
 诸如 React Router 等第三库也将即将支持 hook。
+=======
+React Router [supports hooks](https://reacttraining.com/react-router/web/api/Hooks) since v5.1.
+
+Other libraries might support hooks in the future too.
+>>>>>>> 647b639259919f96e9b667bf41ec16621e1b84dc
 
 ### Hook 能和静态类型一起用吗？ {#do-hooks-work-with-static-typing}
 
