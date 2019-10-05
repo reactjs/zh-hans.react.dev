@@ -46,10 +46,10 @@ class Calculator extends React.Component {
       <fieldset>
         <legend>Enter temperature in Celsius:</legend>
         <input
-          value={temperature}
+          value={this.state.temperature}
           onChange={this.handleChange} />
         <BoilingVerdict
-          celsius={parseFloat(temperature)} />
+          celsius={parseFloat(this.state.temperature)} />
       </fieldset>
     );
   }
