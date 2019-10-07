@@ -69,13 +69,21 @@ React 从一开始就被设计为逐步采用，并且**你可以根据需要选
 
 在 HTML 页面文件的同级目录下创建一个名为 `like_button.js` 的文件。
 
+<<<<<<< HEAD
 查看**[这段入门代码](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**并把它粘贴到你创建的文件中。
+=======
+Open **[this starter code](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** and paste it into the file you created.
+>>>>>>> 5c371e5e3fd8f92e1d06dfdf1f28edc50fb5d83f
 
 > 提示
 >
 > 这段代码定义了一个名为 `LikeButton` 的 React 组件。如果你还不明白这段代码的意思，不用担心 —— 我们将在后续的[入门教程](/tutorial/tutorial.html)和[核心概念](/docs/hello-world.html)中介绍 React 的构建块。目前，我们先只做到显示！
 
+<<<<<<< HEAD
 在 `like_button.js` 的底部，在**[入门代码](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**之后，加入以下两行代码。
+=======
+After **[the starter code](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**, add two lines to the bottom of `like_button.js`:
+>>>>>>> 5c371e5e3fd8f92e1d06dfdf1f28edc50fb5d83f
 
 ```js{3,4}
 // ... 你粘贴的入门代码 ...
@@ -195,7 +203,11 @@ npx babel --watch src --out-dir . --presets react-app/prod
 
 不要等待它运行结束 —— 这个命令启动了一个对 JSX 的自动监听器。
 
+<<<<<<< HEAD
 如果此时你用这段 **[JSX 入门代码](https://cdn.rawgit.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**创建一个 `src/like_button.js` 文件，监听器会创建一个预处理过的 `like_button.js` 文件，它包含了适用于浏览器的普通 JavaScript 代码。当你编辑带有 JSX 的源文件时，转换过程将自动重新执行。
+=======
+If you now create a file called `src/like_button.js` with this **[JSX starter code](https://gist.github.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**, the watcher will create a preprocessed `like_button.js` with the plain JavaScript code suitable for the browser. When you edit the source file with JSX, the transform will re-run automatically.
+>>>>>>> 5c371e5e3fd8f92e1d06dfdf1f28edc50fb5d83f
 
 这样，在旧浏览器上也能够使用现代 JavaScript 的语法特性，比如 class。我们刚才使用的工具叫 Babel，你可以从[它的文档](https://babeljs.io/docs/en/babel-cli/)中了解更多。
 
