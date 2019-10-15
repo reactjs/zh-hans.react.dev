@@ -196,10 +196,8 @@ const value = useContext(MyContext);
 >
 >`useContext(MyContext)` 只是让你能够*读取* context 的值以及订阅 context 的变化。你仍然需要在上层组件树中使用 `<MyContext.Provider>` 来为下层组件*提供* context。
 
-<<<<<<< HEAD
-## 额外的 Hook {#additional-hooks}
-=======
-**Putting it together with Context.Provider**
+**把如下代码与 Context.Provider 放在一起**
+
 ```js{31-36}
 const themes = {
   light: {
@@ -240,11 +238,10 @@ function ThemedButton() {
   );
 }
 ```
-This example is modified for hooks from a previous example in the [Context Advanced Guide](/docs/context.html), where you can find more information about when and how to use Context.
 
+对先前 [Context 高级指南](/docs/context.md)中的示例使用 hook 进行了修改，你可以在链接中找到有关如何 Context 的更多信息。
 
-## Additional Hooks {#additional-hooks}
->>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
+## 额外的 Hook {#additional-hooks}
 
 以下介绍的 Hook，有些是上一节中基础 Hook 的变体，有些则仅在特殊情况下会用到。不用特意预先学习它们。
 
