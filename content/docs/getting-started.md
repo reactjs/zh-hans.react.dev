@@ -46,7 +46,11 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 ### 创建新的 React 应用 {#create-a-new-react-app}
 
+<<<<<<< HEAD
 当你刚开始一个 React 应用时，[通过 HTML 的 script 标签引入 React](/docs/add-react-to-a-website.html) 依然是最好的选项，因为这能让你的项目立即启动。
+=======
+When starting a React project, a [simple HTML page with script tags](/docs/add-react-to-a-website.html) might still be the best option. It only takes a minute to set up!
+>>>>>>> d2ade76cce133af47ab198188fa2de03fa51834b
 
 但随着应用越来越大，你可能会需要更加集成化的安装方式。我们推荐了[一些 JavaScript 工具链](/docs/create-a-new-react-app.html)，它们适合大型应用。它们只需很少甚至零配置，就能让你充分利用丰富的 React 生态。
 
@@ -115,7 +119,11 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 你也可以在 Twitter 上关注 [@reactjs 账号](https://twitter.com/reactjs)获取更新，但即使不这样做，仅通过官方博客你也不会错过任何必要的信息。
 
+<<<<<<< HEAD
 并非每一个 React 版本都值得我们在博客上发布文章，但你可以在 [React 代码仓库中的 `CHANGELOG.md` 文件](https://github.com/facebook/react/blob/master/CHANGELOG.md)或[更新日志页面](https://github.com/facebook/react/releases)找到每个版本的更新日志。
+=======
+Not every React release deserves its own blog post, but you can find a detailed changelog for every release in the [`CHANGELOG.md` file in the React repository](https://github.com/facebook/react/blob/master/CHANGELOG.md), as well as on the [Releases](https://github.com/facebook/react/releases) page.
+>>>>>>> d2ade76cce133af47ab198188fa2de03fa51834b
 
 ## 版本化文档 {#versioned-documentation}
 
