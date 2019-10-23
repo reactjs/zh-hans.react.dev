@@ -18,6 +18,8 @@ React 遵循[语义化版本（semver）](https://semver.org/)原则。
 
 次要版本是最常见的版本发布类型。
 
+> 此版本控制策略不适用于 Next 或 Experimental channels 中的预览版。[了解更多关于预览版信息](/docs/release-channels.html)。
+
 ### 不兼容的改动 {#breaking-changes}
 
 不兼容的改动会对所有人造成不便，因此我们会尽可能地减少主版本的发布次数。例如：React 15 在 2016 年 4 月发布，React 16 在 2017 年 9 月发布，而 React 17 在 2019 年才会发布。
