@@ -107,8 +107,13 @@
     - id: javascript-environment-requirements
       title: JavaScript 环境要求
     - id: glossary
+<<<<<<< HEAD
       title: 术语表
 - title: Hook（新）
+=======
+      title: Glossary
+- title: Hooks
+>>>>>>> 081bb31226919062938ef924472ba1b4170facfc
   isOrdered: true
   items:
     - id: hooks-intro
@@ -134,8 +139,26 @@
     - id: testing-recipes
       title: 测试技巧
     - id: testing-environments
+<<<<<<< HEAD
       title: 测试环境
 - title: 贡献
+=======
+      title: Testing Environments
+- title: Concurrent Mode (Experimental)
+  isOrdered: true
+  items:
+    - id: concurrent-mode-intro
+      title: Introducing Concurrent Mode
+    - id: concurrent-mode-suspense
+      title: Suspense for Data Fetching
+    - id: concurrent-mode-patterns
+      title: Concurrent UI Patterns
+    - id: concurrent-mode-adoption
+      title: Adopting Concurrent Mode
+    - id: concurrent-mode-reference
+      title: Concurrent Mode API Reference
+- title: Contributing
+>>>>>>> 081bb31226919062938ef924472ba1b4170facfc
   items:
   - id: how-to-contribute
     title: 如何参与
@@ -160,4 +183,8 @@
     - id: faq-structure
       title: 项目文件结构
     - id: faq-internals
+<<<<<<< HEAD
       title: Virtual DOM 及内核
+=======
+      title: Virtual DOM and Internals
+>>>>>>> 081bb31226919062938ef924472ba1b4170facfc
