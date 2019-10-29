@@ -16,11 +16,7 @@ permalink: docs/profiler.html
 > 为了将 profiling 功能加入生产环境中，React 提供了使 profiling 可用的特殊的生产构建环境。
 > 从 [fb.me/react-profiling](https://fb.me/react-profiling)了解更多关于如何使用这个构建环境的信息。
 
-<<<<<<< HEAD
-## 用法
-=======
-## Usage {#usage}
->>>>>>> 081bb31226919062938ef924472ba1b4170facfc
+## 用法 {#usage}
 
 `Profiler` 能添加在 React 树中的任何地方来测量树中这部分渲染所带来的开销。
 它需要两个 prop ：一个是 `id`(string)，一个是当组件树中的组件“提交”更新的时候被React调用的回调函数 `onRender`(function)。
@@ -74,11 +70,7 @@ render(
 >
 > 尽管 `Profiler` 是一个轻量级组件，我们依然应该在需要时才去使用它。对一个应用来说，每添加一些都会给 CPU 和内存带来一些负担。
 
-<<<<<<< HEAD
-## `onRender` 回调
-=======
-## `onRender` Callback {#onrender-callback}
->>>>>>> 081bb31226919062938ef924472ba1b4170facfc
+## `onRender` 回调 {#onrender-callback}
 
 `Profiler` 需要一个 `onRender` 函数作为参数。
 React 会在 profile 包含的组件树中任何组件 “提交” 一个更新的时候调用这个函数。
