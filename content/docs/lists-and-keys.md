@@ -109,7 +109,7 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-一个元素的 key 最好是这个元素在列表中拥有的一个独一无二的字符串。通常，我们使用来自数据 id 来作为元素的 key：
+一个元素的 key 最好是这个元素在列表中拥有的一个独一无二的字符串。通常，我们使用数据的 id 来作为元素的 key：
 
 ```js{2}
 const todoItems = todos.map((todo) =>
