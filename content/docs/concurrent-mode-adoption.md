@@ -1,101 +1,101 @@
 ---
 id: concurrent-mode-adoption
-title: Adopting Concurrent Mode (Experimental)
+title: 使用并发模式（实验性）
 permalink: docs/concurrent-mode-adoption.html
 prev: concurrent-mode-patterns.html
 next: concurrent-mode-reference.html
 ---
 
->Caution:
+>注意：
 >
->This page describes **experimental features that are not yet available in a stable release**. Don't rely on experimental builds of React in production apps. These features may change significantly and without a warning before they become a part of React.
+>本页面描述了一些**稳定版本中尚不可用的实验功能**。不要在生产应用程序中依赖React的实验性版本。 这些功能可能会发生重大变化，并且在成为 React 的一部分之前不会发出警告。
 >
->This documentation is aimed at early adopters and people who are curious. If you're new to React, don't worry about these features -- you don't need to learn them right now.
+>本文档面向早期使用者和对此好奇的人。 如果您不熟悉 React，请不必担心这些功能-您不需要立即学习它们。
 
-- [Installation](#installation)
-  - [Who Is This Experimental Release For?](#who-is-this-experimental-release-for)
-  - [Enabling Concurrent Mode](#enabling-concurrent-mode)
-- [What to Expect](#what-to-expect)
-  - [Migration Step: Blocking Mode](#migration-step-blocking-mode)
-  - [Why So Many Modes?](#why-so-many-modes)
-  - [Feature Comparison](#feature-comparison)
+- [安装](#installation)
+  - [此实验版本适用于谁？](#who-is-this-experimental-release-for)
+  - [开启并发模式](#enabling-concurrent-mode)
+- [有何期望](#what-to-expect)
+  - [迁移步骤：阻止模式](#migration-step-blocking-mode)
+  - [为什么有这么多模式？](#why-so-many-modes)
+  - [特性对比](#feature-comparison)
 
-## Installation {#installation}
+## 安装 {#installation}
 
-Concurrent Mode is only available in the [experimental builds](/blog/2019/10/22/react-release-channels.html#experimental-channel) of React. To install them, run:
+并发模式仅在[实验版本](/blog/2019/10/22/react-release-channels.html#experimental-channel)可用。安装命令：
 
 ```
 npm install react@experimental react-dom@experimental
 ```
 
-**There are no semantic versioning guarantees for the experimental builds.**  
-APIs may be added, changed, or removed with any `@experimental` release.
+**实验版本不保证 API 的语义化。**  
+在 `@experimental` 版本, API 会随时增删改。
 
-**Experimental releases will have frequent breaking changes.**
+**实验版本会常有破坏性的更改**
 
-You can try these builds on personal projects or in a branch, but we don't recommend running them in production. At Facebook, we *do* run them in production, but that's because we're also there to fix bugs when something breaks. You've been warned!
+您可以在个人项目或分支中尝试这些构建，但我们不建议在生产环境中运行它们。在 Facebook，我们“确实”在生产环境中运行它们，但我们也在那里修复 bug 。我们提醒过你了！
 
-### Who Is This Experimental Release For? {#who-is-this-experimental-release-for}
+### 此实验版本适用于谁？ {#who-is-this-experimental-release-for}
 
-This release is primarily aimed at early adopters, library authors, and curious people.
+这个版本主要针对早期使用者、库作者和对此好奇的人。
 
-We're using this code in production (and it works for us) but there are still some bugs, missing features, and gaps in the documentation. We'd like to hear more about what breaks in Concurrent Mode so we can better prepare it for an official stable release in the future.
+我们在生产中使用这段代码(它对我们有用)，但是文档中仍然有一些 bug、缺少的特性和缺陷。我们希望了解更多关于并发模式中的出现的问题，以便更好地为将来正式的稳定版本做准备。
 
-### Enabling Concurrent Mode {#enabling-concurrent-mode}
+### 开启并发模式 {#enabling-concurrent-mode}
 
-Normally, when we add features to React, you can start using them immediately. Fragments, Context, and even Hooks are examples of such features. You can use in new code without making any changes to the existing code.
+通常，当我们给 React 添加功能的时候，你可以立即使用。比如 Fragments， Context，甚至 Hooks。你可以直接在代码里使用，而不用修改之前的代码。
 
-Concurrent Mode is different. It introduces semantic changes to how React works. Otherwise, the [new features](/docs/concurrent-mode-patterns.html) enabled by it *wouldn't be possible*. This is why they're grouped into a new "mode" rather than released one by one in isolation.
+并发模式并不是这样。它给引入了新的语义，改变了 React 的工作方式.否则*不能启用*[这些新功能](/docs/concurrent-mode-patterns.html)。这就是它被分组到了新的模式,而不是相继的释放出来。
 
-You can't opt into Concurrent Mode on a per-subtree basis. Instead, to opt in, you have to do it in the place where today you call `ReactDOM.render()`.
+你不能为某个子树单独启用并发模式。你应该在  `ReactDOM.render()` 里启用它。
 
-**This will enable Concurrent Mode for the whole `<App />` tree:**
+**这会在整个 `<App />` 结构树里启用并发模式：**
 
 ```js
 import ReactDOM from 'react-dom';
 
-// If you previously had:
+// 如果你之前的代码是：
 //
 // ReactDOM.render(<App />, document.getElementById('root'));
 //
-// You can opt into Concurrent Mode by writing:
+// 你可以用下面的代码引入并发模式：
 
 ReactDOM.createRoot(
   document.getElementById('root')
 ).render(<App />);
 ```
 
->Note:
+>注意：
 >
->Concurrent Mode APIs such as `createRoot` only exist in the experimental builds of React.
+>`createRoot` API 只存在于 React 实验版本的并发模式。
 
-In Concurrent Mode, the lifecycle methods [previously marked](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html) as "unsafe" actually *are* unsafe, and lead to bugs even more than in today's React. We don't recommend trying Concurrent Mode until your app is [Strict Mode](https://reactjs.org/docs/strict-mode.html)-compatible.
+在并发模式下，生命周期[之前被标记过](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html)为“不安全”是真的不安全，会比现在的 React 出现更多的 bug。在您的 app 完全兼容[严格模式](https://reactjs.org/docs/strict-mode.html)之前，我们不建议使用并发模式。
 
-## What to Expect {#what-to-expect}
+## 有何期望 {#what-to-expect}
 
-If you have a large existing app, or if your app depends on a lot of third-party packages, please don't expect that you can use the Concurrent Mode immediately. **For example, at Facebook we are using Concurrent Mode for the new website, but we're not planning to enable it on the old website.** This is because our old website still uses unsafe lifecycle methods in the product code, incompatible third-party libraries, and patterns that don't work well with the Concurrent Mode.
+如果你有已完成的大型 app，或着你的 app 有大量第三方依赖，请不要立即使用并发模式。**比如在 Facebook 我们在新网站的开发上使用并发模式，并没有打算在旧的网站开发上使用。** 这是因为我们旧网站的代码里使用了不安全的生命周期方法、不兼容第三方库、与并发模式也不兼容。
 
-In our experience, code that uses idiomatic React patterns and doesn't rely on external state management solutions is the easiest to get running in the Concurrent Mode. We will describe common problems we've seen and the solutions to them separately in the coming weeks.
+根据我们的经验，使用常见的 React 开发模式，并且不依赖外部状态管理的代码最容易切换到并发模式。在接下来的几周内，我们会列出常见的问题和解决方案。
 
-### Migration Step: Blocking Mode {#migration-step-blocking-mode}
+### 迁移步骤：阻止模式 {#migration-step-blocking-mode}
 
-For older codebases, Concurrent Mode might be a step too far. This is why we also provide a new "Blocking Mode" in the experimental React builds. You can try it by substituting `createRoot` with `createBlockingRoot`. It only offers a *small subset* of the Concurrent Mode features, but it is closer to how React works today and can serve as a migration step.
+对于较旧的代码库，“并发模式”可能步子迈的太大。这就是我们在实验版本中提供“阻止模式”的原因。您可以通过使用 `createBlockin gRoot` 代替 `createRoot` 尝试一下。它仅提供了并发模式的*小部分功能*，但它更接近于 React 今天的工作方式，可以作为迁移的一个步骤。
 
-To recap:
+回顾：
 
-* **Legacy Mode:** `ReactDOM.render(<App />, rootNode)`. This is what React apps use today. There are no plans to remove the legacy mode in the observable future — but it won't be able to support these new features.
-* **Blocking Mode:** `ReactDOM.createBlockingRoot(rootNode).render(<App />)`. It is currently experimental. It is intended as a first migration step for apps that want to get a subset of Concurrent Mode features.
-* **Concurrent Mode:** `ReactDOM.createRoot(rootNode).render(<App />)`. It is currently experimental. In the future, after it stabilizes, we intend to make it the default React mode. This mode enables *all* the new features.
+* **传统模式：** `ReactDOM.render(<App />, rootNode)`。这是当前 React app使用的方式。当前没有计划删除本模式，但是这个模式可能不支持这些新功能。
+* **阻止模式：** `ReactDOM.createBlockingRoot(rootNode).render(<App />)`。目前正在实验中。作为迁移到并发模式的第一个步骤。
+* **并发模式：** `ReactDOM.createRoot(rootNode).render(<App />)`。目前在实验中，未来稳定之后，打算作为 React 的默认开发模式。这个模式开启了*所有的*新功能。
 
-### Why So Many Modes? {#why-so-many-modes}
+### 为什么有这么多模式？{#why-so-many-modes}
 
-We think it is better to offer a [gradual migration strategy](/docs/faq-versioning.html#commitment-to-stability) than to make huge breaking changes — or to let React stagnate into irrelevance.
+我们认为提供[渐进的迁移策略](/docs/faq-versioning.html#commitment-to-stability)比进行破坏性的更改或者使 React 停滞不前是更好的选择。
 
-In practice, we expect that most apps using Legacy Mode today should be able to migrate at least to the Blocking Mode (if not Concurrent Mode). This fragmentation can be annoying for libraries that aim to support all Modes in the short term. However, gradually moving the ecosystem away from the Legacy Mode will also *solve* problems that affect major libraries in the React ecosystem, such as [confusing Suspense behavior when reading layout](https://github.com/facebook/react/issues/14536) and [lack of consistent batching guarantees](https://github.com/facebook/react/issues/15080). There's a number of bugs that can't be fixed in Legacy Mode without changing semantics, but don't exist in Blocking and Concurrent Modes.
+实际上，我们希望今天使用传统模式的大多数 app 至少能迁移到阻止模式（如果不能迁移到并发模式）。对于希望在短期内支持所有模式的库而言，碎片化可能是很讨厌的事情。但是组件将生态系统从传统模式中移除，也会*解决*一些影响 React 主要库的问题。比如[获取布局时令人迷惑的 Suspense 行为](https://github.com/facebook/react/issues/14536)和[缺乏一致性的批处理](https://github.com/facebook/react/issues/15080)。传统模式下，如果不修改语义就无法修复的许多错误，在阻止模式和并发模式下就不存。
 
-You can think of the Blocking Mode as a "gracefully degraded" version of the Concurrent Mode. **As a result, in longer term we should be able to converge and stop thinking about different Modes altogether.** But for now, Modes are an important migration strategy. They let everyone decide when a migration is worth it, and upgrade at their own pace.
+你可以把阻止模式当作并发模式的“优雅降级”版本。**所以长远来看，模式的数量会收敛，不用考虑不同的模式。**但就目前而言，模式是一项重要的迁移策略。能让每个人都能决定自己什么时候迁移，并按照自己的速度进行迁移。
 
-### Feature Comparison {#feature-comparison}
+### 特性对比 {#feature-comparison}
 
 <style>
   #feature-table table { border-collapse: collapse; }
@@ -105,7 +105,7 @@ You can think of the Blocking Mode as a "gracefully degraded" version of the Con
 
 <div id="feature-table">
 
-|   |Legacy Mode  |Blocking Mode  |Concurrent Mode  |
+|   |传统模式  |阻止模式  |并发模式  |
 |---  |---  |---  |---  |
 |String Refs  |✅  |🚫**  |🚫**  |
 |Legacy Context |✅  |🚫**  |🚫**  |
@@ -116,7 +116,7 @@ You can think of the Blocking Mode as a "gracefully degraded" version of the Con
 |Progressive Hydration  |🚫  |✅  |✅  |
 |Selective Hydration  |🚫  |🚫  |✅  |
 |Cooperative Multitasking |🚫  |🚫  |✅  |
-|Automatic batching of multiple setStates     |🚫* |✅  |✅  |
+|自动批处理多个 setStates     |🚫* |✅  |✅  |
 |Priority-based Rendering |🚫  |🚫  |✅  |
 |Interruptible Prerendering |🚫  |🚫  |✅  |
 |useTransition  |🚫  |🚫  |✅  |
@@ -125,6 +125,6 @@ You can think of the Blocking Mode as a "gracefully degraded" version of the Con
 
 </div>
 
-\*: Legacy mode has automatic batching in React-managed events but it's limited to one browser task. Non-React events must opt-in using `unstable_batchedUpdates`. In Blocking Mode and Concurrent Mode, all `setState`s are batched by default.
+\*：传统模式在合成事件中有自动批处理的功能，但仅限于一个浏览器任务。非 React 事件想使用这个功能必须使用`unstable_batchedUpdates`。在阻止模式和并发模式下，所有的`setState`在默认情况下都是批处理的。
 
-\*\*: Warns in development.
+\*\*：会在开发中发出警告。
