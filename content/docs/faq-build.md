@@ -1,32 +1,32 @@
 ---
 id: faq-build
-title: Babel, JSX, and Build Steps
+title: Babel，JSX 及构建过程
 permalink: docs/faq-build.html
 layout: docs
 category: FAQ
 ---
 
-### Do I need to use JSX with React? {#do-i-need-to-use-jsx-with-react}
+### 必须在 React 中使用 JSX 吗？ {#do-i-need-to-use-jsx-with-react}
 
-No! Check out ["React Without JSX"](/docs/react-without-jsx.html) to learn more.
+不是必须的！请查阅 [“不使用 JSX”](/docs/react-without-jsx.html) 以了解更多信息。
 
-### Do I need to use ES6 (+) with React? {#do-i-need-to-use-es6--with-react}
+### 必须在 React 中使用 ES6 (+) 吗？ {#do-i-need-to-use-es6--with-react}
 
-No! Check out ["React Without ES6"](/docs/react-without-es6.html) to learn more.
+不是必须的！请查阅 [“不使用 ES6”](/docs/react-without-es6.html) 以了解更多信息。
 
-### How can I write comments in JSX? {#how-can-i-write-comments-in-jsx}
+### 怎样才能在 JSX 中编写注释？ {#how-can-i-write-comments-in-jsx}
 
 ```jsx
 <div>
-  {/* Comment goes here */}
+  {/* 注释写在这里 */}
   Hello, {name}!
 </div>
 ```
 
 ```jsx
 <div>
-  {/* It also works 
-  for multi-line comments. */}
+  {/* 多行注释 
+  也同样有效。 */}
   Hello, {name}! 
 </div>
 ```

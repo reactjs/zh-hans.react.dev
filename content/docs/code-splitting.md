@@ -6,7 +6,9 @@ permalink: docs/code-splitting.html
 
 ## 打包 {#bundling}
 
-大多数 React 应用都会使用 [Webpack](https://webpack.docschina.org) 或 [Browserify](http://browserify.org/) 这类的构建工具来打包文件。打包是一个将文件引入并合并到一个单独文件的过程，最终形成一个 “bundle”。接着在页面上引入该 bundle，整个应用即可一次性加载。
+大多数 React 应用都会使用 [Webpack](https://webpack.docschina.org)，[Rollup](https://rollupjs.org/) 或 [Browserify](http://browserify.org/) 这类的构建工具来打包文件。
+打包是一个将文件引入并合并到一个单独文件的过程，最终形成一个 “bundle”。
+接着在页面上引入该 bundle，整个应用即可一次性加载。
 
 #### 示例 {#example}
 
@@ -48,7 +50,8 @@ console.log(add(16, 26)); // 42
 
 打包是个非常棒的技术，但随着你的应用增长，你的代码包也将随之增长。尤其是在整合了体积巨大的第三方库的情况下。你需要关注你代码包中所包含的代码，以避免因体积过大而导致加载时间过长。
 
-为了避免搞出大体积的代码包，在前期就思考该问题并对代码包进行分割是个不错的选择。代码分割是由诸如 Webpack（[代码分割](https://webpack.docschina.org/guides/code-splitting/)）和 Browserify（[factor-bundle](https://github.com/browserify/factor-bundle)）这类打包器支持的一项技术，能够创建多个包并在运行时动态加载。
+为了避免搞出大体积的代码包，在前期就思考该问题并对代码包进行分割是个不错的选择。
+代码分割是由诸如 [Webpack](https://webpack.docschina.org/guides/code-splitting/)，[Rollup](https://rollupjs.org/guide/en/#code-splitting) 和 Browserify（[factor-bundle](https://github.com/browserify/factor-bundle)）这类打包器支持的一项技术，能够创建多个包并在运行时动态加载。
 
 对你的应用进行代码分割能够帮助你“懒加载”当前用户所需要的内容，能够显著地提高你的应用性能。尽管并没有减少应用整体的代码体积，但你可以避免加载用户永远不需要的代码，并在初始加载的时候减少所需加载的代码量。
 
@@ -87,7 +90,7 @@ import("./math").then(math => {
 
 > 注意:
 >
-> `React.lazy` 和 Suspense 技术还不支持服务端渲染。如果你想要在使用服务端渲染的应用中使用，我们推荐 [Loadable Components](https://github.com/smooth-code/loadable-components) 这个库。它有一个很棒的[服务端渲染打包指南](https://github.com/smooth-code/loadable-components/blob/master/packages/server/README.md)。
+> `React.lazy` 和 Suspense 技术还不支持服务端渲染。如果你想要在使用服务端渲染的应用中使用，我们推荐 [Loadable Components](https://github.com/smooth-code/loadable-components) 这个库。它有一个很棒的[服务端渲染打包指南](https://www.smooth-code.com/open-source/loadable-components/docs/server-side-rendering/)。
 
 `React.lazy` 函数能让你像渲染常规组件一样处理动态引入（的组件）。
 
@@ -95,37 +98,19 @@ import("./math").then(math => {
 
 ```js
 import OtherComponent from './OtherComponent';
-
-function MyComponent() {
-  return (
-    <div>
-      <OtherComponent />
-    </div>
-  );
-}
 ```
 
 **使用之后：**
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
-
-function MyComponent() {
-  return (
-    <div>
-      <OtherComponent />
-    </div>
-  );
-}
 ```
 
-这个代码将会在渲染组件时，自动导入包含 `OtherComponent` 组件的包。
+此代码将会在组件首次渲染时，自动导入包含 `OtherComponent` 组件的包。
 
 `React.lazy` 接受一个函数，这个函数需要动态调用 `import()`。它必须返回一个 `Promise`，该 Promise 需要 resolve 一个 `defalut` export 的 React 组件。
 
-### Suspense {#suspense}
-
-如果在 `MyComponent` 渲染完成后，包含 `OtherComponent` 的模块还没有被加载完成，我们可以使用加载指示器为此组件做优雅降级。这里我们使用 `Suspense` 组件来解决。
+然后应在 `Suspense` 组件中渲染 lazy 组件，如此使得我们可以使用在等待加载 lazy 组件时做优雅降级（如 loading 指示器等）。
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
@@ -213,7 +198,7 @@ const App = () => (
 
 ## 命名导出（Named Exports）{#named-exports}
 
-`React.lazy` 目前只支持默认导出（default exports）。如果你想被引入的模块使用命名导出（named exports），你可以创建一个中间模块，来重新导出为默认模块。这能保证 treeshaking 不会出错，并且不必引入不需要的组件。
+`React.lazy` 目前只支持默认导出（default exports）。如果你想被引入的模块使用命名导出（named exports），你可以创建一个中间模块，来重新导出为默认模块。这能保证 tree shaking 不会出错，并且不必引入不需要的组件。
 
 ```js
 // ManyComponents.js

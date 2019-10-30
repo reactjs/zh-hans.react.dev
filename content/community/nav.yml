@@ -34,8 +34,6 @@
       title: 模型管理
     - id: data-fetching
       title: 数据交互
-    - id: testing
-      title: 测试
     - id: ui-components
       title: UI 组件库
     - id: misc
