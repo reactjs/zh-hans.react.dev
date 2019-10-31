@@ -16,24 +16,24 @@ next: concurrent-mode-reference.html
   - [此实验版本适用于谁？](#who-is-this-experimental-release-for)
   - [开启 concurrent 模式](#enabling-concurrent-mode)
 - [有何期望](#what-to-expect)
-  - [迁移步骤：阻塞模式](#migration-step-blocking-mode)
+  - [迁移步骤： blocking 模式](#migration-step-blocking-mode)
   - [为什么有这么多模式？](#why-so-many-modes)
   - [特性对比](#feature-comparison)
 
 ## 安装 {#installation}
 
- concurrent 模式仅在[实验版本](/blog/2019/10/22/react-release-channels.html#experimental-channel)可用。安装命令：
+concurrent 模式仅在[实验版本](/blog/2019/10/22/react-release-channels.html#experimental-channel)可用。安装命令：
 
 ```
 npm install react@experimental react-dom@experimental
 ```
 
-**实验版本不保证 API 的语义化。**  
+**实验版本不保证版本的语义化。**  
 在 `@experimental` 版本, API 会随时增删改。
 
 **实验版本会常有破坏性的更改**
 
-你可以在个人项目或分支中尝试这些构建，但我们不建议在生产环境中运行它们。在 Facebook，我们“确实”在生产环境中运行它们，但我们也在那里修复 bug 。我们提醒过你了！
+你可以在个人项目或分支中尝试这些构建，但我们不建议在生产环境中运行它们。在 Facebook，我们“确实”在生产环境中运行它们，但我们也在那里修复 bug。我们提醒过你了！
 
 ### 此实验版本适用于谁？ {#who-is-this-experimental-release-for}
 
@@ -45,9 +45,9 @@ npm install react@experimental react-dom@experimental
 
 通常，当我们给 React 添加功能的时候，你可以立即使用。比如 Fragments， Context，甚至 Hooks。你可以直接在代码里使用，而不用修改之前的代码。
 
- concurrent 模式并不是这样。它给引入了新的语义，改变了 React 的工作方式。否则*不能启用*[这些新功能](/docs/concurrent-mode-patterns.html)。这就是它被分组到了新的模式，而不是相继的释放出来。
+concurrent 模式并不是这样。它给引入了新的语义，改变了 React 的工作方式。否则*不能启用*[这些新功能](/docs/concurrent-mode-patterns.html)。这就是它被分组到了新的模式，而不是相继的释放出来。
 
-你不能为某个子树单独启用 concurrent 模式。你应该在  `ReactDOM.render()` 里启用它。
+你不能为某个子树单独启用 concurrent 模式。你应该在 `ReactDOM.render()` 里启用它。
 
 **这会在整个 `<App />` 结构树里启用 concurrent 模式：**
 
@@ -77,23 +77,23 @@ ReactDOM.createRoot(
 
 根据我们的经验，使用常见的 React 开发模式，并且不依赖外部状态管理的代码最容易切换到 concurrent 模式。在接下来的几周内，我们会列出常见的问题和解决方案。
 
-### 迁移步骤：阻塞模式 {#migration-step-blocking-mode}
+### 迁移步骤： blocking 模式 {#migration-step-blocking-mode}
 
-对于较旧的代码库，“ concurrent 模式”可能步子迈的太大。这就是我们在实验版本中提供“阻塞模式”的原因。你可以通过使用 `createBlockingRoot` 代替 `createRoot` 尝试一下。它仅提供了 concurrent 模式的*小部分功能*，但它更接近于 React 今天的工作方式，可以作为迁移的一个步骤。
+对于较旧的代码库，“concurrent 模式”可能步子迈的太大。这就是我们在实验版本中提供“ blocking 模式”的原因。你可以通过使用 `createBlockingRoot` 代替 `createRoot` 尝试一下。它仅提供了 concurrent 模式的*小部分功能*，但它更接近于 React 今天的工作方式，可以作为迁移的一个步骤。
 
 回顾：
 
-* **传统模式：** `ReactDOM.render(<App />, rootNode)`。这是当前 React app 使用的方式。当前没有计划删除本模式，但是这个模式可能不支持这些新功能。
-* **阻塞模式：** `ReactDOM.createBlockingRoot(rootNode).render(<App />)`。目前正在实验中。作为迁移到 concurrent 模式的第一个步骤。
-* ** concurrent 模式：** `ReactDOM.createRoot(rootNode).render(<App />)`。目前在实验中，未来稳定之后，打算作为 React 的默认开发模式。这个模式开启了*所有的*新功能。
+* **legacy 模式：** `ReactDOM.render(<App />, rootNode)`。这是当前 React app 使用的方式。当前没有计划删除本模式，但是这个模式可能不支持这些新功能。
+* **blocking 模式：** `ReactDOM.createBlockingRoot(rootNode).render(<App />)`。目前正在实验中。作为迁移到 concurrent 模式的第一个步骤。
+* **concurrent 模式：** `ReactDOM.createRoot(rootNode).render(<App />)`。目前在实验中，未来稳定之后，打算作为 React 的默认开发模式。这个模式开启了*所有的*新功能。
 
 ### 为什么有这么多模式？{#why-so-many-modes}
 
 我们认为提供[渐进的迁移策略](/docs/faq-versioning.html#commitment-to-stability)比进行破坏性的更改或者使 React 停滞不前是更好的选择。
 
-实际上，我们希望今天使用传统模式的大多数 app 至少能迁移到阻塞模式（如果不能迁移到 concurrent 模式）。对于希望在短期内支持所有模式的库而言，碎片化可能是很讨厌的事情。但是组件将生态系统从传统模式中移除，也会*解决*一些影响 React 主要库的问题。比如[获取布局时令人迷惑的 Suspense 行为](https://github.com/facebook/react/issues/14536)和[缺乏一致性的批处理](https://github.com/facebook/react/issues/15080)。传统模式下，如果不修改语义就无法修复的许多错误，在阻塞模式和 concurrent 模式下就不存。
+实际上，我们希望今天使用 legacy 模式的大多数 app 至少能迁移到 blocking 模式（如果不能迁移到 concurrent 模式）。对于希望在短期内支持所有模式的库而言，碎片化可能是很讨厌的事情。但是组件将生态系统从 legacy 模式中移除，也会*解决*一些影响 React 主要库的问题。比如[获取布局时令人迷惑的 Suspense 行为](https://github.com/facebook/react/issues/14536)和[缺乏一致性的批处理](https://github.com/facebook/react/issues/15080)。 legacy 模式下，如果不修改语义就无法修复的许多错误，在 blocking 模式和 concurrent 模式下就不存。
 
-你可以把阻塞模式当作 concurrent 模式的“优雅降级”版本。**所以长远来看，模式的数量会收敛，不用考虑不同的模式。**但就目前而言，模式是一项重要的迁移策略。能让每个人都能决定自己什么时候迁移，并按照自己的速度进行迁移。
+你可以把 blocking 模式当作 concurrent 模式的“优雅降级”版本。**所以长远来看，模式的数量会收敛，不用考虑不同的模式。**但就目前而言，模式是一项重要的迁移策略。能让每个人都能决定自己什么时候迁移，并按照自己的速度进行迁移。
 
 ### 特性对比 {#feature-comparison}
 
@@ -105,7 +105,7 @@ ReactDOM.createRoot(
 
 <div id="feature-table">
 
-|   |传统模式  |阻塞模式  | concurrent 模式  |
+|   | legacy 模式  | blocking 模式  | concurrent 模式  |
 |---  |---  |---  |---  |
 |String Refs  |✅  |🚫**  |🚫**  |
 |Legacy Context |✅  |🚫**  |🚫**  |
@@ -125,6 +125,6 @@ ReactDOM.createRoot(
 
 </div>
 
-\*：传统模式在合成事件中有自动批处理的功能，但仅限于一个浏览器任务。非 React 事件想使用这个功能必须使用`unstable_batchedUpdates`。在阻塞模式和 concurrent 模式下，所有的`setState`在默认情况下都是批处理的。
+\*：legacy 模式在合成事件中有自动批处理的功能，但仅限于一个浏览器任务。非 React 事件想使用这个功能必须使用 `unstable_batchedUpdates`。在 blocking 模式和 concurrent 模式下，所有的 `setState` 在默认情况下都是批处理的。
 
 \*\*：会在开发中发出警告。
