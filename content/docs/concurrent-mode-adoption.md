@@ -8,9 +8,9 @@ next: concurrent-mode-reference.html
 
 >注意：
 >
->本页面描述了一些**稳定版本中尚不可用的实验功能**。不要在生产应用程序中依赖 React 的实验性版本。 这些功能可能会发生重大变化，并且在成为 React 的一部分之前不会发出警告。
+>本页面描述了一些**稳定版本中尚不可用的实验功能**。不要在生产应用程序中依赖 React 的实验性版本。这些功能可能会发生重大变化，并且在成为 React 的一部分之前不会发出警告。
 >
->本文档面向早期使用者和对此好奇的人。 如果你不熟悉 React，请不必担心这些功能——你不需要立即学习它们。
+>本文档面向早期使用者和对此好奇的人。如果你不熟悉 React，请不必担心这些功能——你不需要立即学习它们。
 
 - [安装](#installation)
   - [此实验版本适用于谁？](#who-is-this-experimental-release-for)
@@ -28,7 +28,7 @@ concurrent 模式仅在[实验版本](/blog/2019/10/22/react-release-channels.ht
 npm install react@experimental react-dom@experimental
 ```
 
-**实验版本不保证版本的语义化。**  
+**实验版本不保证版本的语义化。**
 在 `@experimental` 版本，API 会随时增删改。
 
 **实验版本会常有破坏性的更改**
@@ -43,7 +43,7 @@ npm install react@experimental react-dom@experimental
 
 ### 开启 concurrent 模式 {#enabling-concurrent-mode}
 
-通常，当我们给 React 添加功能的时候，你可以立即使用。比如 Fragments， Context，甚至 Hooks。你可以直接在代码里使用，而不用修改之前的代码。
+通常，当我们给 React 添加功能的时候，你可以立即使用。比如 Fragments，Context，甚至 Hooks。你可以直接在代码里使用，而不用修改之前的代码。
 
 concurrent 模式并不是这样。它给引入了新的语义，改变了 React 的工作方式。否则*不能启用*[这些新功能](/docs/concurrent-mode-patterns.html)。这就是它被分组到了新的模式，而不是相继的发布出来。
 
