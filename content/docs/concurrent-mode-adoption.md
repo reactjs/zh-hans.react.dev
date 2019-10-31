@@ -29,7 +29,7 @@ npm install react@experimental react-dom@experimental
 ```
 
 **实验版本不保证版本的语义化。**  
-在 `@experimental` 版本, API 会随时增删改。
+在 `@experimental` 版本，API 会随时增删改。
 
 **实验版本会常有破坏性的更改**
 
@@ -39,13 +39,13 @@ npm install react@experimental react-dom@experimental
 
 这个版本主要针对早期使用者、库作者和对此好奇的人。
 
-我们在生产中使用这段代码(它对我们有用)，但是文档中仍然有一些 bug、缺少的特性和缺陷。我们希望了解更多关于 concurrent 模式中的出现的问题，以便更好地为将来正式的稳定版本做准备。
+我们在生产中使用这段代码（它对我们有用），但是文档中仍然有一些 bug、缺少的特性和缺陷。我们希望了解更多关于 concurrent 模式中的出现的问题，以便更好地为将来正式的稳定版本做准备。
 
 ### 开启 concurrent 模式 {#enabling-concurrent-mode}
 
 通常，当我们给 React 添加功能的时候，你可以立即使用。比如 Fragments， Context，甚至 Hooks。你可以直接在代码里使用，而不用修改之前的代码。
 
-concurrent 模式并不是这样。它给引入了新的语义，改变了 React 的工作方式。否则*不能启用*[这些新功能](/docs/concurrent-mode-patterns.html)。这就是它被分组到了新的模式，而不是相继的释放出来。
+concurrent 模式并不是这样。它给引入了新的语义，改变了 React 的工作方式。否则*不能启用*[这些新功能](/docs/concurrent-mode-patterns.html)。这就是它被分组到了新的模式，而不是相继的发布出来。
 
 你不能为某个子树单独启用 concurrent 模式。你应该在 `ReactDOM.render()` 里启用它。
 
@@ -79,7 +79,7 @@ ReactDOM.createRoot(
 
 ### 迁移步骤： blocking 模式 {#migration-step-blocking-mode}
 
-对于较旧的代码库，“concurrent 模式”可能步子迈的太大。这就是我们在实验版本中提供“ blocking 模式”的原因。你可以通过使用 `createBlockingRoot` 代替 `createRoot` 尝试一下。它仅提供了 concurrent 模式的*小部分功能*，但它更接近于 React 今天的工作方式，可以作为迁移的一个步骤。
+对于较旧的代码库，concurrent 模式可能步子迈的太大。这就是我们在实验版本中提供“ blocking 模式”的原因。你可以通过使用 `createBlockingRoot` 代替 `createRoot` 尝试一下。它仅提供了 concurrent 模式的*小部分功能*，但它更接近于 React 今天的工作方式，可以作为迁移的一个步骤。
 
 回顾：
 
@@ -91,7 +91,7 @@ ReactDOM.createRoot(
 
 我们认为提供[渐进的迁移策略](/docs/faq-versioning.html#commitment-to-stability)比进行破坏性的更改或者使 React 停滞不前是更好的选择。
 
-实际上，我们希望今天使用 legacy 模式的大多数 app 至少能迁移到 blocking 模式（如果不能迁移到 concurrent 模式）。对于希望在短期内支持所有模式的库而言，碎片化可能是很讨厌的事情。但是组件将生态系统从 legacy 模式中移除，也会*解决*一些影响 React 主要库的问题。比如[获取布局时令人迷惑的 Suspense 行为](https://github.com/facebook/react/issues/14536)和[缺乏一致性的批处理](https://github.com/facebook/react/issues/15080)。 legacy 模式下，如果不修改语义就无法修复的许多错误，在 blocking 模式和 concurrent 模式下就不存。
+实际上，我们希望今天使用 legacy 模式的大多数 app 至少能迁移到 blocking 模式（如果不能迁移到 concurrent 模式）。对于希望在短期内支持所有模式的库而言，碎片化可能是很讨厌的事情。但是组件将生态系统从 legacy 模式中移除，也会*解决*一些影响 React 主要库的问题。比如[获取布局时令人迷惑的 Suspense 行为](https://github.com/facebook/react/issues/14536)和[缺乏一致性的批处理](https://github.com/facebook/react/issues/15080)。legacy 模式下，如果不修改语义就无法修复的许多错误，在 blocking 模式和 concurrent 模式下就不存。
 
 你可以把 blocking 模式当作 concurrent 模式的“优雅降级”版本。**所以长远来看，模式的数量会收敛，不用考虑不同的模式。**但就目前而言，模式是一项重要的迁移策略。能让每个人都能决定自己什么时候迁移，并按照自己的速度进行迁移。
 
