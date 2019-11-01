@@ -35,7 +35,6 @@ npm install react@experimental react-dom@experimental
 
 你可以在个人项目或新分支中尝试这些实验性功能，但我们并不建议在生产环境中使用它们。在 Facebook，我们**确实**在生产环境中使用它们，但我们在使用的同时也修复了 bug。**再次强调，请不要在生产环境使用！**
 
-
 ### 此实验版本适用于谁？ {#who-is-this-experimental-release-for}
 
 这个版本主要针对功能早期使用者、库作者和对此好奇的人。
