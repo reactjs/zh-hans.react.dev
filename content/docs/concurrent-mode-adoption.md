@@ -8,9 +8,9 @@ next: concurrent-mode-reference.html
 
 >注意：
 >
->本页面描述了一些**稳定版本中尚不可用的实验功能**。不要在生产应用程序中依赖 React 的实验性版本。这些功能可能会发生重大变化，并且在成为 React 的一部分之前不会发出警告。
+>本章节所描述的实验功能**在稳定版本中尚不可用**。请不要在应用程序的生产环境中依赖 React 的实验性版本。这些功能可能会发生重大变化，并且在成为 React 的一部分之前不会给出警告。
 >
->本文档面向早期使用者和对此好奇的人。如果你不熟悉 React，请不必担心这些功能——你不需要立即学习它们。
+>本文档面向早期此功能的使用者和对此功能好奇的人。如果你不熟悉 React，请不必担心 —— 你不需要立刻学习这些功能。
 
 - [安装](#installation)
   - [此实验版本适用于谁？](#who-is-this-experimental-release-for)
@@ -22,24 +22,25 @@ next: concurrent-mode-reference.html
 
 ## 安装 {#installation}
 
-concurrent 模式仅在[实验版本](/blog/2019/10/22/react-release-channels.html#experimental-channel)可用。安装命令：
+concurrent 模式目前仅在 React 的[实验版本](/blog/2019/10/22/react-release-channels.html#experimental-channel)可用。安装命令：
 
 ```
 npm install react@experimental react-dom@experimental
 ```
 
-**实验版本不保证版本的语义化。**
+**实验版本与语义版本不同。**
 在 `@experimental` 版本，API 会随时增删改。
 
-**实验版本会常有破坏性的更改**
+**实验版本经常会包含破坏性更改**
 
-你可以在个人项目或分支中尝试这些构建，但我们不建议在生产环境中运行它们。在 Facebook，我们“确实”在生产环境中运行它们，但我们也在那里修复 bug。我们提醒过你了！
+你可以在个人项目或新分支中尝试这些实验性功能，但我们并不建议在生产环境中使用它们。在 Facebook，我们**确实**在生产环境中使用它们，但我们在使用的同时也修复了 bug。**再次强调，请不要在生产环境使用！**
+
 
 ### 此实验版本适用于谁？ {#who-is-this-experimental-release-for}
 
-这个版本主要针对早期使用者、库作者和对此好奇的人。
+这个版本主要针对功能早期使用者、库作者和对此好奇的人。
 
-我们在生产中使用这段代码（它对我们有用），但是文档中仍然有一些 bug、缺少的特性和缺陷。我们希望了解更多关于 concurrent 模式中的出现的问题，以便更好地为将来正式的稳定版本做准备。
+我们在生产中使用这段代码，但是仍然有一些 bug、缺少许多特性，且文档存在缺陷。我们希望了解更多关于 concurrent 模式中的出现的问题，以便更好地为未来发布稳定版本做准备。
 
 ### 开启 concurrent 模式 {#enabling-concurrent-mode}
 
@@ -116,7 +117,7 @@ ReactDOM.createRoot(
 |Progressive Hydration  |🚫  |✅  |✅  |
 |Selective Hydration  |🚫  |🚫  |✅  |
 |Cooperative Multitasking |🚫  |🚫  |✅  |
-|自动批处理多个 setStates     |🚫* |✅  |✅  |
+|Automatic batching of multiple setStates     |🚫* |✅  |✅  |
 |Priority-based Rendering |🚫  |🚫  |✅  |
 |Interruptible Prerendering |🚫  |🚫  |✅  |
 |useTransition  |🚫  |🚫  |✅  |
