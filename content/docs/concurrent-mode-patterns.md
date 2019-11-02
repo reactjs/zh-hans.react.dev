@@ -778,13 +778,13 @@ function ProfileTimeline({ isStale, resource }) {
 
 **[在 CodeSandbox 中运行](https://codesandbox.io/s/vigorous-keller-3ed2b)**
 
-The tradeoff we're making here is that `<ProfileTimeline>` will be inconsistent with other components and potentially show an older item. Click "Next" a few times, and you'll notice it. But thanks to that, we were able to cut down the transition time from 1000ms to 300ms.
+我们所做的权衡是，`<ProfileTimeline>` 会和其他组件不一致并很可能会显示一个过时的内容。多点几次“Next”按钮，你就会发现这个问题。但是也正因如此，我们才能把 transition 的时间从 1000ms 降到 300ms。
 
-Whether or not it's an appropriate tradeoff depends on the situation. But it's a handy tool, especially when the content doesn't change very visible between items, and the user might not even realize they were looking at a stale version for a second.
+这到底是是不是一个合理的权衡取决于具体情况。但这是个很方便的工具，尤其是在界面切换的时候内容变化并不明显的情况，或者用户可能根本不会注意到他看的是一秒前版本的旧数据的情况。
 
-It's worth noting that `useDeferredValue` is not *only* useful for data fetching. It also helps when an expensive component tree causes an interaction (e.g. typing in an input) to be sluggish. Just like we can "defer" a value that takes too long to fetch (and show its old value despite others components updating), we can do this with trees that take too long to render.
+值得注意的是 `useDeferredValue` 并不*仅仅*在获取数据的时候有用。它在更新组件树的工作量过大导致交互（例如：在输入框输入内容）卡顿的情况也是有用的。正如我们可以“延迟”一个花费长时间请求的值（并且显示之前的值而不影响其他组件的更新），我们也可以把它用在组件树需要花费较长时间更新的情况。
 
-For example, consider a filterable list like this:
+举个例子，请考虑像这样的一个可筛选列表：
 
 ```js
 function App() {
@@ -809,9 +809,9 @@ function App() {
 
 **[在 CodeSandbox 中运行](https://codesandbox.io/s/pensive-shirley-wkp46)**
 
-In this example, **every item in `<MySlowList>` has an artificial slowdown -- each of them blocks the thread for a few milliseconds**. We'd never do this in a real app, but this helps us simulate what can happen in a deep component tree with no single obvious place to optimize.
+在这个例子中，**`<MySlowList>` 中的每个项都有一个人为添加的延迟 -- 每个项会延迟渲染进程几毫秒**。我们永远也不会在真实的应用中这样做，但是这是帮助我们模拟在一个已经没有优化余地的深层嵌套的组件树中会发生的事情。
 
-We can see how typing in the input causes stutter. Now let's add `useDeferredValue`:
+我们可以看到往输入框敲内容是如何导致卡顿的。现在我们把 `useDeferredValue` 加进去：
 
 ```js{3-5,18}
 function App() {
@@ -839,17 +839,17 @@ function App() {
 
 **[在 CodeSandbox 中运行](https://codesandbox.io/s/infallible-dewdney-9fkv9)**
 
-Now typing has a lot less stutter -- although we pay for this by showing the results with a lag.
+现在输入已经很少卡顿了 -- 尽管我们是通过延迟显示结果来实现这一点的。
 
-How is this different from debouncing? Our example has a fixed artificial delay (3ms for every one of 80 items), so there is always a delay, no matter how fast our computer is. However, the `useDeferredValue` value only "lags behind" if the rendering takes a while. There is no minimal lag imposed by React. With a more realistic workload, you can expect the lag to adjust to the user’s device. On fast machines, the lag would be smaller or non-existent, and on slow machines, it would be more noticeable. In both cases, the app would remain responsive. That’s the advantage of this mechanism over debouncing or throttling, which always impose a minimal delay and can't avoid blocking the thread while rendering.
+这和 debouncing 有什么区别？我们的例子有一个固定的人为延迟（80个项，每项延迟 3ms），所以它总是会延迟，不论我们的电脑有多快。然而，`useDeferredValue` 的值只会在渲染耗费时间的情况下“滞后”。React 并不会加入一点多余的延迟。在一个更实际的工作负荷，你可以预期这个滞后会根据用户的设备而不同。在较快的机器上，滞后会更少或者根本不存在，在较慢的机器上，它会变得更明显。不论哪种情况，应用都会保持可响应。这就是此机制优于 debouncing 或 throttling 的地方，它们总是会引入最小延迟而且不可避免的会在渲染的时候阻塞进程。
 
-Even though there is an improvement in responsiveness, this example isn't as compelling yet because Concurrent Mode is missing some crucial optimizations for this use case. Still, it is interesting to see that features like `useDeferredValue` (or `useTransition`) are useful regardless of whether we're waiting for network or for computational work to finish.
+尽管在响应性上有所提升，这个例子还并不是很有说服力，因为对于这个用例 Concurrent 模式缺少了一些关键优化。但是，看到像 `useDeferredValue`（或 `useTransition`）这样的特性不论是在我们等待网络还是等待计算工作完成的情况都有用还是很有趣的。
 
 ### SuspenseList {#suspenselist}
 
-`<SuspenseList>` is the last pattern that's related to orchestrating loading states.
+`<SuspenseList>` 是有关组织加载状态的最后一个模式了。
 
-Consider this example:
+请考虑这个例子：
 
 ```js{5-10}
 function ProfilePage({ resource }) {
