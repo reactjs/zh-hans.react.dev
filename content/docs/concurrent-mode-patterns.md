@@ -8,7 +8,7 @@ next: concurrent-mode-adoption.html
 
 >注意：
 >
->本文所述的内容是**稳定版本中 [尚无法使用的](/docs/concurrent-mode-adoption.html) 试验阶段特性**。 请不要再产线应用中使用试验阶段的 React 版本。 这些特性在正式加入 React 之前仍可能会有巨大的变化而官方不会对此做任何通知。
+>本文所述的内容是**稳定版本中 [尚无法使用的](/docs/concurrent-mode-adoption.html) 试验阶段特性**。 请不要在产线应用中使用试验阶段的 React 版本。 这些特性在正式加入 React 之前仍可能会有巨大的变化而官方不会对此做任何通知。
 >
 >本文面向的是新功能的早期使用者和对此好奇的人。如果你是 React 新手，那并不需要担心这些特性 -- 你现在还不需要学习这些。
 
