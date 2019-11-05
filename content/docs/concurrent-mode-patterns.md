@@ -20,21 +20,21 @@ next: concurrent-mode-adoption.html
   - [用 Transition 包裹 setState](#wrapping-setstate-in-a-transition)
   - [添加一个等待提示器](#adding-a-pending-indicator)
   - [回顾更改](#reviewing-the-changes)
-  - [Where Does the Update Happen?](#where-does-the-update-happen)
-  - [Transitions Are Everywhere](#transitions-are-everywhere)
-  - [Baking Transitions Into the Design System](#baking-transitions-into-the-design-system)
-- [The Three Steps](#the-three-steps)
-  - [Default: Receded → Skeleton → Complete](#default-receded-skeleton-complete)
-  - [Preferred: Pending → Skeleton → Complete](#preferred-pending-skeleton-complete)
-  - [Wrap Lazy Features in `<Suspense>`](#wrap-lazy-features-in-suspense)
-  - [Suspense Reveal “Train”](#suspense-reveal-train)
-  - [Delaying a Pending Indicator](#delaying-a-pending-indicator)
-  - [Recap](#recap)
-- [Other Patterns](#other-patterns)
-  - [Splitting High and Low Priority State](#splitting-high-and-low-priority-state)
-  - [Deferring a Value](#deferring-a-value)
+  - [是在那里更新的？](#where-does-the-update-happen)
+  - [很多场景可以使用 transition](#transitions-are-everywhere)
+  - [把 Transition 融合到你应用的设计系统](#baking-transitions-into-the-design-system)
+- [3个阶段](#the-three-steps)
+  - [默认方式：Receded → Skeleton → Complete](#default-receded-skeleton-complete)
+  - [期望方式: Pending → Skeleton → Complete](#preferred-pending-skeleton-complete)
+  - [使用 `<Suspense>` 包裹惰性功能](#wrap-lazy-features-in-suspense)
+  - [Suspense 更新“列车” ](#suspense-reveal-train)
+  - [延迟显示等待提示](#delaying-a-pending-indicator)
+  - [回顾](#recap)
+- [其他模式](#other-patterns)
+  - [根据优先级分割 state](#splitting-high-and-low-priority-state)
+  - [延迟一个值](#deferring-a-value)
   - [SuspenseList](#suspenselist)
-- [Next Steps](#next-steps)
+- [下一步](#next-steps)
 
 ## Transition {#transitions}
 
@@ -188,7 +188,7 @@ function App() {
 
 最后的结果是，点击“Next”按钮不会立刻切换界面到“不受欢迎的”加载中状态，而是停留在前一个界面并同步加载进度。
 
-### Where Does the Update Happen? {#where-does-the-update-happen}
+### 是在那里更新的？ {#where-does-the-update-happen}
 
 这并不是很难实现。但是，如果你已经开始思考这是如何工作的，这可能会有点让人费解。既然我们更新了 state，为什么我们不能立刻看到结果呢？下一个 `<ProfilePage>` 又是在*哪里*渲染的呢？
 
@@ -279,7 +279,7 @@ function ProfilePage() {
 
 这下感觉好多了！点击“Refresh”按钮再也不会打断我们的页面浏览了。我们看到有什么东西正在“内联”加载，并且当数据准备好，它就显示出来了。
 
-### Baking Transitions Into the Design System {#baking-transitions-into-the-design-system}
+### 把 Transition 融合到你应用的设计系统 {#baking-transitions-into-the-design-system}
 
 现在我们知道 `useTransition` 的需求是*非常*常见的。差不多所有导致一个组件 suspend 的按钮点击或交互都需要用 `useTransition` 来避免意外的隐藏了用户正在交互的内容。
 
@@ -459,7 +459,7 @@ function ProfilePage() {
 
 这两个例子唯一的不同就在于第一个使用的是普通 `<button>`，而第二个使用的是我们使用 `useTransition` 定制的 `<Button>` 组件。
 
-### 使用 `<Suspense>` 包裹惰性功能（Lazy Features） {#wrap-lazy-features-in-suspense}
+### 使用 `<Suspense>` 包裹惰性功能 {#wrap-lazy-features-in-suspense}
 
 打开 [这个例子](https://codesandbox.io/s/nameless-butterfly-fkw5q)。当你点击一个按钮时，你会先看到一个持续1秒的 Pending 状态再继续。这个 transition 体验很好而且流畅。
 
@@ -716,7 +716,7 @@ function handleChange(e) {
 
 通过这个更改，它可以正常工作了。我们可以直接在输入框敲字，翻译会在稍后“跟上”我们所输入的内容。
 
-### Deferring a Value {#deferring-a-value}
+### 延迟一个值 {#deferring-a-value}
 
 默认情况下，React 总是渲染一个一致的 UI。思考下面这段代码：
 
@@ -869,11 +869,11 @@ function ProfilePage({ resource }) {
 
 **[在 CodeSandbox 中运行](https://codesandbox.io/s/proud-tree-exg5t)**
 
-The API call duration in this example is randomized. If you keep refreshing it, you will notice that sometimes the posts arrive first, and sometimes the "fun facts" arrive first.
+在这个例子中 API 调用的时长是随机的。如果你持续的刷新，你会发现有的时候文章列表会先到达，有的时候“趣闻”会先到达。
 
-This presents a problem. If the response for fun facts arrives first, we'll see the fun facts below the `<h2>Loading posts...</h2>` fallback for posts. We might start reading them, but then the *posts* response will come back, and shift all the facts down. This is jarring.
+这带来了一个问题。如果趣闻先到达了，我们会发现趣闻展示在文章列表的降级界面 `<h2>Loading posts...</h2>`。我们可能会先开始阅读这些，但是稍后*文章列表*的响应到达，把所有的趣闻推到下面。这感觉很不好。
 
-One way we could fix it is by putting them both in a single boundary:
+其中一种解决办法是我们通过把他们放在同一个 Suspence 边界中：
 
 ```js
 <Suspense fallback={<h2>Loading posts and fun facts...</h2>}>
@@ -884,17 +884,17 @@ One way we could fix it is by putting them both in a single boundary:
 
 **[在 CodeSandbox 中运行](https://codesandbox.io/s/currying-violet-5jsiy)**
 
-The problem with this is that now we *always* wait for both of them to be fetched. However, if it's the *posts* that came back first, there's no reason to delay showing them. When fun facts load later, they won't shift the layout because they're already below the posts.
+这个办法的问题在于现在我们*总是*要等待这两个数据都获取到之后。但是，如果是*文章列表*先到达，我们就不需要延迟显示它们。当趣闻后到达的时候，因为他们本身就在文章列表下方所以他们并不会导致布局抖动。
 
-Other approaches to this, such as composing Promises in a special way, are increasingly difficult to pull off when the loading states are located in different components down the tree.
+另一种解决办法是，比如通过一种特殊的方式组织 Promise，当我们需要从树中多个不同组件中加载 state 的时候会变得越来越难以实现。
 
-To solve this, we will import `SuspenseList`:
+要解决这个问题，我们要用到 `SuspenseList`：
 
 ```js
 import { SuspenseList } from 'react';
 ```
 
-`<SuspenseList>` coordinates the "reveal order" of the closest `<Suspense>` nodes below it:
+`<SuspenseList>` 协调它下面的最接近的 `<Suspense>` 节点的“展开顺序”:
 
 ```js{3,11}
 function ProfilePage({ resource }) {
@@ -914,14 +914,14 @@ function ProfilePage({ resource }) {
 
 **[在 CodeSandbox 中运行](https://codesandbox.io/s/black-wind-byilt)**
 
-The `revealOrder="forwards"` option means that the closest `<Suspense>` nodes inside this list **will only "reveal" their content in the order they appear in the tree -- even if the data for them arrives in a different order**. `<SuspenseList>` has other interesting modes: try changing `"forwards"` to `"backwards"` or `"together"` and see what happens.
+这个 `revealOrder="forwards"` 配置表示这个列表中最接近的 `<Suspense>` **只会根据在树中的显示顺序来“展开”它们的内容 -- 即使它们的数据在不同的顺序到达**。`<SuspenseList>` 还有其他有趣的模式：尝试把 `"forwards"` 换成 `"backwards"` 或 `"together"` 并观察效果。
 
-You can control how many loading states are visible at once with the `tail` prop. If we specify `tail="collapsed"`, we'll see *at most one* fallback at the time. You can play with it [here](https://codesandbox.io/s/adoring-almeida-1zzjh).
+你可以利用 `tail` prop 来控制同时显示多少个加载状态。如果我们制定 `tail="collapsed"`，我们只能看到*最多一个*降级界面。你可以在 [这里](https://codesandbox.io/s/adoring-almeida-1zzjh) 体验一下。
 
-Keep in mind that `<SuspenseList>` is composable, like anything in React. For example, you can create a grid by putting several `<SuspenseList>` rows inside a `<SuspenseList>` table.
+请记住和 React 中的其他东西一样 `<SuspenseList>` 也是可以组合的。例如，你可以做一个 `<SuspenseList>` table 中放着 `<SuspenseList>` row 的表格。
 
-## Next Steps {#next-steps}
+## 下一步 {#next-steps}
 
-Concurrent Mode offers a powerful UI programming model and a set of new composable primitives to help you orchestrate delightful user experiences.
+Concurrent 模式提供了一个强大的 UI 变成模型和一系列的新的可组合的指令集来帮助你构建愉快的用户体验。
 
-It's a result of several years of research and development, but it's not finished. In the section on [adopting Concurrent Mode](/docs/concurrent-mode-adoption.html), we'll describe how you can try it and what you can expect.
+这是通过多年的调查和开发的结果，但它尚未完结。在 [采用 Concurrent 模式](/docs/concurrent-mode-adoption.html) 中，我们会讲如何使用它以及它的效果。
