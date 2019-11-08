@@ -74,7 +74,7 @@ function App() {
 **就这段代码而言，它还什么都做不了。**我们需要使用这个 Hook 的返回值来配置我们的界面切换。从 `useTransition` 返回的有两个值：
 
 * `startTransition` 是一个函数。我们用它来告诉 React 我们希望的延迟的是*哪个* state 的更新。
-* `isPending` 是一个布尔值。它是 React 用来告诉我们这个转换是否正在进行的变量。
+* `isPending` 类型为 boolean。此变量在 React 中用于告知我们该转换是否正在进行。
 
 接下来我们就会用到它们。
 
