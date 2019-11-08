@@ -93,7 +93,7 @@ function App() {
 >
 ```
 
-我们把这个 state 更新包裹在 `startTransition` 中。这就是我们通知 React 如果它会产生不受欢迎的加载中界面 **我们希望 React 延迟这个 state 的更新**：
+我们把这个 state 更新包裹在 `startTransition` 中。这就是我们通知 React 如果它会产生不受欢迎的加载中界面 **我们希望 React 延迟更新此 state**：
 
 ```js{3,6}
 <button
