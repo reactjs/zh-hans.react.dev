@@ -78,7 +78,7 @@ function App() {
 
 接下来我们就会用到它们。
 
-注意我们有给 `useTransition` 传入了一个配置对象。它的 `timeoutMs` 属性指定了**我们希望这个转换在多久之内完成**。通过传入了配置 `{timeoutMs: 3000}`，就等同于是告诉 React “如果下一个页面需要3秒钟以上才能加载好，我们就显示那个加载中提示 -- 但是在那之前，我们先显示前一个界面”。
+注意我们给 `useTransition` 传入了一个配置对象。此对象包含 `timeoutMs` 属性，该属性指定了**我们希望这个转换在多久之内完成**。通过传入了配置 `{timeoutMs: 3000}`，就等同于是告诉 React “如果下一个页面需要 3 秒钟以上才能加载好，就展示加载指示器 —— 但是在那之前，我们先显示前一个界面”。
 
 ### 用 Transition 包裹 setState {#wrapping-setstate-in-a-transition}
 
