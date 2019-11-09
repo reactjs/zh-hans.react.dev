@@ -124,7 +124,7 @@ act(() => {
   root = create(<App value={1}/>)
 });
 
-// 比较根结点
+// 比较根元素
 expect(root.toJSON()).toMatchSnapshot();
 
 // 更新 props
@@ -132,7 +132,7 @@ act(() => {
   root = root.update(<App value={2}/>);
 })
 
-// 比较根结点
+// 比较根元素
 expect(root.toJSON()).toMatchSnapshot();
 ```
 
