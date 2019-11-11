@@ -150,7 +150,8 @@ return (
 
 ### 回顾更改 {#reviewing-the-changes}
 
-我们来再看一下我们基于 [原始例子](https://codesandbox.io/s/infallible-feather-xjtbu) 做出的所有更改：
+我们来回顾基于 [原始示例](https://codesandbox.io/s/infallible-feather-xjtbu) 做出的所有更改：
+
 ```js{3-5,9,11,14,19}
 function App() {
   const [resource, setResource] = useState(initialResource);
