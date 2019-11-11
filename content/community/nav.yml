@@ -17,6 +17,7 @@
     - id: videos
       title: 视频
     - id: external-resources
+<<<<<<< HEAD
       title: 外部资源
 - title: 工具
   items:
@@ -38,3 +39,6 @@
       title: UI 组件库
     - id: misc
       title: 杂项
+=======
+      title: External Resources
+>>>>>>> bbea52211971834d041e76871df8981066c42a3b

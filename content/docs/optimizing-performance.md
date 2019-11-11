@@ -176,7 +176,11 @@ module.exports = {
 
 6. 在 **User Timing** 标签下会显示 React 归类好的事件。
 
+<<<<<<< HEAD
 你可以查阅[这篇文章](https://calibreapp.com/blog/2017-11-28-debugging-react/)以获取更详尽的指导。
+=======
+For a more detailed walkthrough, check out [this article by Ben Schwarz](https://building.calibreapp.com/debugging-react-performance-with-react-16-and-chrome-devtools-c90698a522ad).
+>>>>>>> bbea52211971834d041e76871df8981066c42a3b
 
 需要注意的是**在生产环境中组件会相对渲染得更快些**。当然了，这能帮助你查看是否有不相关的组件被错误地更新，以及 UI 更新的深度和频率。
 
