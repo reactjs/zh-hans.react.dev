@@ -180,7 +180,7 @@ function App() {
 
 **[在 CodeSandbox 中运行](https://codesandbox.io/s/jovial-lalande-26yep)**
 
-我们只用了7行代码来实现这个切换:
+我们只用了 7 行代码来实现这个切换：
 
 * 我们引入了 `useTransition` Hook 并在更新 state 的组件中使用了它。
 * 我们传入了 `{timeoutMs: 3000}` 使得前一个页面在屏幕上最多保持3秒钟。
