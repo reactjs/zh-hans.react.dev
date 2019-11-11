@@ -114,7 +114,7 @@ function App() {
 
 ### 添加一个等待提示器 {#adding-a-pending-indicator}
 
-在 [我们前一个例子](https://codesandbox.io/s/musing-driscoll-6nkie) 中还是有地方体验不友好。是的，最好不要显示一个“糟糕的”加载中状态。**但是如果没有这个过程提示的话体验会更糟糕！**当我们点击 "Next"按钮，什么都没有发生，就好像整个应用坏掉一样。
+在 [我们前一个例子](https://codesandbox.io/s/musing-driscoll-6nkie) 中还是有地方体验不友好。最好不要显示加载中。**但是如果没有这个过程提示的话体验会更糟糕！**当我们点击 "Next"按钮，什么都没有发生，就好像整个应用卡死一样。
 
 我们的 `useTransition()` 调用反悔了两个值：`startTransition` 和 `isPending`。
 
