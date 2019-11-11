@@ -111,8 +111,7 @@ TestRenderer.create(element, options);
 TestRenderer.act(callback);
 ```
 
-与 [`react-dom/test-utils` 中的 `act()`](/docs/test-utils.html#act) 相似，`TestRender.act` 为断言准备一个组件。可以使用 `act()`
-来包装 `TestRenderer.create` 和 `testRenderer.update`。
+与 [`react-dom/test-utils` 中的 `act()`](/docs/test-utils.html#act) 相似，`TestRender.act` 为断言准备一个组件。可以使用 `act()` 来包装 `TestRenderer.create` 和 `testRenderer.update`。
 
 ```javascript
 import {create, act} from 'react-test-renderer';
