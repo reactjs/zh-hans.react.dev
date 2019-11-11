@@ -197,7 +197,7 @@ function App() {
 
 **但是同一个组件的两个版本的是如何同时存在的呢？**
 
-这原因就在于 Concurrent 模式本身。我们 [之前提到](/docs/concurrent-mode-intro.html#intentional-loading-sequences) 它有点像在“branch”上运行的的一个 state 更新。或者我们可以想象成，当我们把 state 更新包裹在 `startTransition` 的时候会在*“另一个宇宙中”*开始渲染，就像科幻电影一样。我们并不能直接看到那个宇宙 -- 但是我们能够从那个宇宙探知一些事情正在发生的事情（`isPending`）。当更新完成的时候，我们的“多个宇宙”合并成一个，我们在屏幕上看到最终的结果！
+这原因就在于 Concurrent 模式本身。我们 [之前提到](/docs/concurrent-mode-intro.html#intentional-loading-sequences) 它有点像在 “branch” 上运行的的一个 state 更新。或者我们可以想象成，当我们把 state 更新包裹在 `startTransition` 的时候会在*“另一个宇宙中”*开始渲染，就像科幻电影一样。我们并不能直接看到那个宇宙 -- 但是我们能够从那个宇宙探知一些事情正在发生的事情（`isPending`）。当更新完成的时候，我们的“多个宇宙”合并成一个，我们在屏幕上看到最终的结果！
 
 在 [示例](https://codesandbox.io/s/jovial-lalande-26yep) 中多练习一下，然后试着想象它正在发生。
 
