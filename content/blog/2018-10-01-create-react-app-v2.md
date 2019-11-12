@@ -19,7 +19,6 @@ Create React App 2.0 已于今天发布，通过单个依赖更新即可获得�
 
 以下是该版本新特性的概要说明：
 
-<<<<<<< HEAD
 * 🎉 更多样式选项：你可以使用 [Sass](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-sass-stylesheet) 以及 [CSS Modules](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-css-modules-stylesheet)。
 * 🐠 升级到了 [Babel 7](https://babeljs.io/blog/2018/08/27/7.0.0)，包含了对 [React fragment syntax](/docs/fragments.html#short-syntax) 的支持以及许多 bug 修复。
 * 📦 升级到了 [webpack 4](https://medium.com/webpack/webpack-4-released-today-6cdb994702d4)，可以更智能的自动拆分 JS 包。
@@ -32,20 +31,6 @@ Create React App 2.0 已于今天发布，通过单个依赖更新即可获得�
 * 🚀 你可以在不破坏构建的情况下使用[为最新版本 Node 编写的包](https://github.com/sindresorhus/ama/issues/446#issuecomment-281014491)。
 * ✂️ 可以为现代浏览器，选择构建更小巧的 CSS 包。
 * 👷‍♀️ 可选 Service workers ，并且内置支持使用 Google 的 [Workbox](https://developers.google.com/web/tools/workbox/)。
-=======
-* 🎉 More styling options: you can use [Sass](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-sass-stylesheet) and [CSS Modules](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-css-modules-stylesheet) out of the box.
-* 🐠 We updated to [Babel 7](https://babeljs.io/blog/2018/08/27/7.0.0), including support for the [React fragment syntax](/docs/fragments.html#short-syntax) and many bugfixes.
-* 📦 We updated to [webpack 4](https://medium.com/webpack/webpack-4-released-today-6cdb994702d4), which automatically splits JS bundles more intelligently.
-* 🃏 We updated to [Jest 23](https://jestjs.io/blog/2018/05/29/jest-23-blazing-fast-delightful-testing.html), which includes an [interactive mode](https://jestjs.io/blog/2018/05/29/jest-23-blazing-fast-delightful-testing#interactive-snapshot-mode) for reviewing snapshots.
-* 💄 We added [PostCSS](https://preset-env.cssdb.org/features#stage-3) so you can use new CSS features in old browsers.
-* 💎 You can use [Apollo](https://github.com/leoasis/graphql-tag.macro#usage), [Relay Modern](https://github.com/facebook/relay/pull/2171#issuecomment-411459604), [MDX](https://github.com/facebook/create-react-app/issues/5149#issuecomment-425396995), and other third-party [Babel Macros](https://babeljs.io/blog/2017/09/11/zero-config-with-babel-macros) transforms.
-* 🌠 You can now [import an SVG as a React component](https://facebook.github.io/create-react-app/docs/adding-images-fonts-and-files#adding-svgs), and use it in JSX.
-* 🐈 You can try the experimental [Yarn Plug'n'Play mode](https://github.com/yarnpkg/rfcs/pull/101) that removes `node_modules`.
-* 🕸 You can now [plug your own proxy implementation](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#configuring-the-proxy-manually) in development to match your backend API.
-* 🚀 You can now use [packages written for latest Node versions](https://github.com/sindresorhus/ama/issues/446#issuecomment-281014491) without breaking the build.
-* ✂️ You can now optionally get a smaller CSS bundle if you only plan to target modern browsers.
-* 👷‍♀️ Service workers are now opt-in and are built using Google's [Workbox](https://developers.google.com/web/tools/workbox/).
->>>>>>> master
 
 **所有的这些功能都是现成的** -- 为了启用它们，请遵循如下说明。
 
