@@ -243,7 +243,7 @@ function ProfilePage() {
 
 我们可以看到在[示例](https://codesandbox.io/s/boring-shadow-100tf)中点击 “Refresh” 是可以正常工作的。`<ProfileDetails>` 和 `<ProfileTimeline>` 组件接收代表新数据的 `resource` prop，它会因为我们尚未得到服务端响应而 “suspend”，所以我们看到了降级方案界面。当服务端响应加载完成，我们看到更新后的文章（我们的伪造接口每 3 秒增加一些文章）。
 
-然而，这种体验让人非常不爽。我们正在浏览页面，但是在我们交互的时候内容被一个加载状态换掉了。这让人困惑。**正如前面那样，要避免显示一个不受欢迎的加载中状态，我们把 state 更新放到 transition 中：**
+然而，这种交互体验极差。用户正在浏览页面，但是在与页面进行交互的时候，内容却被加载状态覆盖。这会让人感觉匪夷所思。**正如前面那样，要避免显示加载中，我们把 state 更新放到 transition 中：**
 
 ```js{2-5,9-11,21}
 function ProfilePage() {
