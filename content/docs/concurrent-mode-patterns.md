@@ -106,7 +106,7 @@ function App() {
 >
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/musing-driscoll-6nkie)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/musing-driscoll-6nkie)**
 
 试试点击 "Next" 几下。注意它的体验已经很不一样了。**当点击时，我们没有直接切换到一个空白的页面，而是在前一个页面停留了一段时间。**当数据加载好的时候 React 会帮我们切换到新的界面。
 
