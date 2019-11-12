@@ -197,6 +197,7 @@ class Board extends React.Component {
   renderSquare(i) {
     return <Square value={i} />;
   }
+}
 ```
 
 修改 Square 组件中的 `render` 方法，把 `{/* TODO */}` 替换为 `{this.props.value}`，以显示上文中传入的值：
