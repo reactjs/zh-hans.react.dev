@@ -278,7 +278,7 @@ function ProfilePage() {
 
 **[在 CodeSandbox 中运行](https://codesandbox.io/s/sleepy-field-mohzb)**
 
-这下感觉好多了！点击“Refresh”按钮再也不会打断我们的页面浏览了。我们看到有什么东西正在“内联”加载，并且当数据准备好，它就显示出来了。
+这下感觉好多了！点击 “Refresh” 按钮不会再阻断页面浏览了。我们会看到有内容正在“内联”加载，并且当数据准备好，它就显示出来了。
 
 ### 把 Transition 融合到你应用的设计系统 {#baking-transitions-into-the-design-system}
 
