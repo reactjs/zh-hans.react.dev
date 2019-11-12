@@ -111,27 +111,27 @@ TestRenderer.create(element, options);
 TestRenderer.act(callback);
 ```
 
-Similar to the [`act()` helper from `react-dom/test-utils`](/docs/test-utils.html#act), `TestRenderer.act` prepares a component for assertions. Use this version of `act()` to wrap calls to `TestRenderer.create` and `testRenderer.update`.
+与 [`react-dom/test-utils` 中的 `act()`](/docs/test-utils.html#act) 相似，`TestRender.act` 为断言准备一个组件。可以使用 `act()` 来包装 `TestRenderer.create` 和 `testRenderer.update`。
 
 ```javascript
 import {create, act} from 'react-test-renderer';
 import App from './app.js'; // The component being tested
 
-// render the component
+// 渲染组件
 let root; 
 act(() => {
   root = create(<App value={1}/>)
 });
 
-// make assertions on root 
+// 对根元素进行断言
 expect(root.toJSON()).toMatchSnapshot();
 
-// update with some different props
+// 更新 props
 act(() => {
   root = root.update(<App value={2}/>);
 })
 
-// make assertions on root 
+// 对根元素进行断言
 expect(root.toJSON()).toMatchSnapshot();
 ```
 
