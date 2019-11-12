@@ -239,7 +239,7 @@ function ProfilePage() {
 
 **[在 CodeSandbox 中运行](https://codesandbox.io/s/boring-shadow-100tf)**
 
-在这个例子中，我们会在加载*和*每次点击“Refresh”按钮的时候开始数据获取。我们把 `fetchUserAndPosts()` 的结果放到 state 中，这样下级的组件可以从我们刚刚发起的请求中读取新的数据。
+在这个例子中，我们会在加载*和*每次点击 “Refresh” 按钮的时候开始数据获取。我们把 `fetchUserAndPosts()` 的结果放到 state 中，这样下级的组件可以从我们刚刚发起的请求中读取新的数据。
 
 我们可以看到在 [这个例子](https://codesandbox.io/s/boring-shadow-100tf) 中点击“Refresh”是可以工作的。 `<ProfileDetails>` 和 `<ProfileTimeline>` 组件接收代表新数据的 `resource` prop，它会因为我们尚未得到服务端响应而“suspend”，所以我们看到了降级方案界面。当服务端响应加载完成，我们看到更新后的文章（我们的伪造接口每3秒增加一些文章）。
 
