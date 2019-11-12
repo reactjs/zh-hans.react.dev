@@ -144,7 +144,7 @@ return (
 );
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/jovial-lalande-26yep)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/jovial-lalande-26yep)**
 
 现在，这感觉好多了！当我们点击 Next 按钮的时候，它变得不可用，因为点击它很多次并没有意义。而且新增的“Loading...”提示让用户知道程序并没有卡住。
 
@@ -178,7 +178,7 @@ function App() {
 }
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/jovial-lalande-26yep)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/jovial-lalande-26yep)**
 
 我们只用了 7 行代码来实现这个切换：
 
@@ -237,7 +237,7 @@ function ProfilePage() {
 }
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/boring-shadow-100tf)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/boring-shadow-100tf)**
 
 在这个例子中，我们会在加载*和*每次点击 “Refresh” 按钮的时候开始数据获取。我们把 `fetchUserAndPosts()` 的结果放到 state 中，这样下级的组件可以从我们刚刚发起的请求中读取新的数据。
 
@@ -276,7 +276,7 @@ function ProfilePage() {
 }
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/sleepy-field-mohzb)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/sleepy-field-mohzb)**
 
 这下感觉好多了！点击 “Refresh” 按钮不会再阻断页面浏览了。我们会看到有内容正在“内联”加载，并且当数据准备好，它就显示出来了。
 
@@ -316,7 +316,7 @@ function Button({ children, onClick }) {
 }
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/modest-ritchie-iufrh)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/modest-ritchie-iufrh)**
 
 需要注意按钮并不关心我们会更新*什么*。它把发生在它 `onClick` 处理器过程中的*任意* state 更新包装到一个 transition 中。这样我们的 `<Button>` 组件来管理 transition 的配置，而 `<ProfilePage>` 组件不在需要单独配置：
 
@@ -342,7 +342,7 @@ function ProfilePage() {
 }
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/modest-ritchie-iufrh)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/modest-ritchie-iufrh)**
 
 当一个按钮点击的时候，它开启一个 transition 并在自身内部调用 `props.onClick()` -- 这会触发 `<ProfilePage>` 组件中的 `handleRefreshClick`。我们开始获取数据，但这并不会触发一个降级界面，因为我们正运行在 transition 中，并且 `useTransition` 调用中指定的10秒钟尚未达到。当一个 transition 等待的时候，这个按钮会显示一个内联的加载中提示。
 
@@ -494,7 +494,7 @@ function ProfileTrivia({ resource }) {
 }
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/focused-mountain-uhkzg)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/focused-mountain-uhkzg)**
 
 如果你现在点击“Open Profile”按钮，你会发现哪里不对劲。它现在要等待整整7秒钟才能完成这个 transition！这是因为我们琐碎的 API 接口响应太慢。假设我们没有办法让这个接口变快。在这个约束条件下我们该如何提升用户体验呢？
 
@@ -518,7 +518,7 @@ function ProfilePage({ resource }) {
 }
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/condescending-shape-s6694)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/condescending-shape-s6694)**
 
 这揭示了一个重要的信息。React 总是倾向尽早的进入 Skeleton 状态。即使我们总是在 transition 中使用很长的超时时间设置，React 为了避免 Receded 状态也不会在 Pending 状态停留多余的时间。
 
@@ -553,7 +553,7 @@ function Button({ children, onClick }) {
 }
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/floral-thunder-iy826)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/floral-thunder-iy826)**
 
 这让用户知道有什么事情正在发生。但是，如果这个 transition 过程相对较短的时候（小于 500ms），它有可能过于分散注意力，并且使得 transition 本身感觉上*更慢*。
 
@@ -587,7 +587,7 @@ return (
 );
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/gallant-spence-l6wbk)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/gallant-spence-l6wbk)**
 
 通过这个更改，即使我们进入了 Pending 状态，在 500ms 过去之前我们都不会给用户显示任何提示。这对于一些 API 响应较慢的情况算不上是很大的改进。但是在 API 响应快的情况下对比感受下 [使用前](https://codesandbox.io/s/thirsty-liskov-1ygph) 和 [使用后](https://codesandbox.io/s/hardcore-http-s18xr)。即使其他的代码并没有更改，通过不在延迟上吸引用户注意，隐藏掉“过快”的加载状态以达到提升感官体验。
 
@@ -647,7 +647,7 @@ function Translation({ resource }) {
 }
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/brave-villani-ypxvf)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/brave-villani-ypxvf)**
 
 请注意当我们在输入框打字的时候，`<Translation>` 组件式如何 suspend 的，并且我们会在得到新的结果之前看到 `<p>Loading...</p>` 这个降级界面。这并不理想。当我们在获取下一个翻译的同时如果我们可以多看一会*上一个*翻译效果应该会更好。
 
@@ -687,7 +687,7 @@ function App() {
 }
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/zen-keldysh-rifos)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/zen-keldysh-rifos)**
 
 现在尝试往输入框里敲字吧。有点不对劲！输入框的更新非常慢。
 
@@ -713,7 +713,7 @@ function handleChange(e) {
 }
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/lively-smoke-fdf93)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/lively-smoke-fdf93)**
 
 通过这个更改，它可以正常工作了。我们可以直接在输入框敲字，翻译会在稍后“跟上”我们所输入的内容。
 
@@ -777,7 +777,7 @@ function ProfileTimeline({ isStale, resource }) {
 }
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/vigorous-keller-3ed2b)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/vigorous-keller-3ed2b)**
 
 我们所做的权衡是，`<ProfileTimeline>` 会和其他组件不一致并很可能会显示一个过时的内容。多点几次“Next”按钮，你就会发现这个问题。但是也正因如此，我们才能把 transition 的时间从 1000ms 降到 300ms。
 
@@ -808,7 +808,7 @@ function App() {
 }
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/pensive-shirley-wkp46)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/pensive-shirley-wkp46)**
 
 在这个例子中，**`<MySlowList>` 中的每个项都有一个人为添加的延迟 -- 每个项会延迟渲染进程几毫秒**。我们永远也不会在真实的应用中这样做，但是这是帮助我们模拟在一个已经没有优化余地的深层嵌套的组件树中会发生的事情。
 
@@ -838,7 +838,7 @@ function App() {
 }
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/infallible-dewdney-9fkv9)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/infallible-dewdney-9fkv9)**
 
 现在输入已经很少卡顿了 -- 尽管我们是通过延迟显示结果来实现这一点的。
 
@@ -868,7 +868,7 @@ function ProfilePage({ resource }) {
 }
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/proud-tree-exg5t)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/proud-tree-exg5t)**
 
 在这个例子中 API 调用的时长是随机的。如果你持续的刷新，你会发现有的时候文章列表会先到达，有的时候“趣闻”会先到达。
 
@@ -883,7 +883,7 @@ function ProfilePage({ resource }) {
 </Suspense>
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/currying-violet-5jsiy)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/currying-violet-5jsiy)**
 
 这个办法的问题在于现在我们*总是*要等待这两个数据都获取到之后。但是，如果是*文章列表*先到达，我们就不需要延迟显示它们。当趣闻后到达的时候，因为他们本身就在文章列表下方所以他们并不会导致布局抖动。
 
@@ -913,7 +913,7 @@ function ProfilePage({ resource }) {
 }
 ```
 
-**[在 CodeSandbox 中运行](https://codesandbox.io/s/black-wind-byilt)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/black-wind-byilt)**
 
 这个 `revealOrder="forwards"` 配置表示这个列表中最接近的 `<Suspense>` **只会根据在树中的显示顺序来“展开”它们的内容 -- 即使它们的数据在不同的顺序到达**。`<SuspenseList>` 还有其他有趣的模式：尝试把 `"forwards"` 换成 `"backwards"` 或 `"together"` 并观察效果。
 
