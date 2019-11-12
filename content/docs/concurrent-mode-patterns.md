@@ -241,7 +241,7 @@ function ProfilePage() {
 
 在这个例子中，我们会在加载*和*每次点击 “Refresh” 按钮的时候开始数据获取。我们把 `fetchUserAndPosts()` 的结果放到 state 中，这样下级的组件可以从我们刚刚发起的请求中读取新的数据。
 
-我们可以看到在 [这个例子](https://codesandbox.io/s/boring-shadow-100tf) 中点击“Refresh”是可以工作的。 `<ProfileDetails>` 和 `<ProfileTimeline>` 组件接收代表新数据的 `resource` prop，它会因为我们尚未得到服务端响应而“suspend”，所以我们看到了降级方案界面。当服务端响应加载完成，我们看到更新后的文章（我们的伪造接口每3秒增加一些文章）。
+我们可以看到在[示例](https://codesandbox.io/s/boring-shadow-100tf)中点击 “Refresh” 是可以正常工作的。`<ProfileDetails>` 和 `<ProfileTimeline>` 组件接收代表新数据的 `resource` prop，它会因为我们尚未得到服务端响应而 “suspend”，所以我们看到了降级方案界面。当服务端响应加载完成，我们看到更新后的文章（我们的伪造接口每 3 秒增加一些文章）。
 
 然而，这种体验让人非常不爽。我们正在浏览页面，但是在我们交互的时候内容被一个加载状态换掉了。这让人困惑。**正如前面那样，要避免显示一个不受欢迎的加载中状态，我们把 state 更新放到 transition 中：**
 
