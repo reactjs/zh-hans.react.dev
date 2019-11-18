@@ -239,7 +239,7 @@ function ThemedButton() {
 }
 ```
 
-对先前 [Context 高级指南](/docs/context.md)中的示例使用 hook 进行了修改，你可以在链接中找到有关如何 Context 的更多信息。
+对先前 [Context 高级指南](/docs/context.html)中的示例使用 hook 进行了修改，你可以在链接中找到有关如何 Context 的更多信息。
 
 ## 额外的 Hook {#additional-hooks}
 
