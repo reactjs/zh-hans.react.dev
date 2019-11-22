@@ -14,87 +14,87 @@ next: concurrent-mode-suspense.html
 
 <div class="scary">
 
->Caution:
+>警告:
 >
->This page describes **experimental features that are [not yet available](/docs/concurrent-mode-adoption.html) in a stable release**. Don't rely on experimental builds of React in production apps. These features may change significantly and without a warning before they become a part of React.
+>本页面描述了**在稳定版本中[尚不可用的](/docs/concurrent-mode-adoption.html)实验性功能**. 请不要在生产环境下的应用中使用. 这些功能可能会发生重大变化并且在正式成为React的一部分之前不会发出警告.
 >
->This documentation is aimed at early adopters and people who are curious. **If you're new to React, don't worry about these features** -- you don't need to learn them right now.
+>本文档针对于早期使用者及对新技术感到好奇的人员. **如果你是React新手, 不必担心这些功能** -- 你现在接触还为时过早.
 
 </div>
 
-This page provides a theoretical overview of Concurrent Mode. **For a more practical introduction, you might want to check out the next sections:**
+本页面提供了 Concurrent 模式的理论概述. **有关更多实用性的介绍, 你可能需要查看以下部分:**
 
-* [Suspense for Data Fetching](/docs/concurrent-mode-suspense.html) describes a new mechanism for fetching data in React components.
-* [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html) shows some UI patterns made possible by Concurrent Mode and Suspense.
-* [Adopting Concurrent Mode](/docs/concurrent-mode-adoption.html) explains how you can try Concurrent Mode in your project.
-* [Concurrent Mode API Reference](/docs/concurrent-mode-reference.html) documents the new APIs available in experimental builds.
+* [Suspense用于数据获取](/docs/concurrent-mode-suspense.html) 描述了一种在React组件中获取数据的新机制.
+* [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html) 展示了一些通过 Concurrent Mode 和 Suspense 实现的UI模式.
+* [采用 Concurrent 模式](/docs/concurrent-mode-adoption.html) 解释了如何在你的项目中尝试 Concurrent 模式.
+* [Concurrent 模式的 API 索引](/docs/concurrent-mode-reference.html) 记录了在实验性版本中可用的新API.
 
-## What Is Concurrent Mode? {#what-is-concurrent-mode}
+## 什么是 Concurrent 模式? {#what-is-concurrent-mode}
 
-Concurrent Mode is a set of new features that help React apps stay responsive and gracefully adjust to the user's device capabilities and network speed.
+Concurrent 模式是一组React的新功能, 可帮助应用保持响应, 并根据用户的设备性能和网速进行适当的调整.
 
-These features are still experimental and are subject to change. They are not yet a part of a stable React release, but you can try them in an experimental build.
+这些功能尚处于试验阶段, 可能会发生改变. 它们还不是稳定的React版本中的一部分, 但是你可以在实验版本中尝试它们.
 
-## Blocking vs Interruptible Rendering {#blocking-vs-interruptible-rendering}
+## 阻塞 vs 可中断渲染 {#blocking-vs-interruptible-rendering}
 
-**To explain Concurrent Mode, we'll use version control as a metaphor.** If you work on a team, you probably use a version control system like Git and work on branches. When a branch is ready, you can merge your work into master so that other people can pull it.
+**为了解释 Concurrent 模式, 我们将使用版本控制作为比喻.** 如果你在团队中工作, 你可能使用了像Git这样的版本控制系统并在分支上进行工作. 当一个分支准备就绪时, 你可以将你的工作合并到master中, 以便他人拉取.
 
-Before version control existed, the development workflow was very different. There was no concept of branches. If you wanted to edit some files, you had to tell everyone not to touch those files until you've finished your work. You couldn't even start working on them concurrently with that person — you were literally *blocked* by them.
+在版本控制存在之前, 开发工作流程有很大的不同. 不存在分支的概念. 如果你想编辑某些文件, 你必须告诉所有人在你完成编辑工作之前不要触碰这些文件. 你甚至不能同时和那个人研究它们 — 实际上, 你被它们 *阻塞* 了.
 
-This illustrates how UI libraries, including React, typically work today. Once they start rendering an update, including creating new DOM nodes and running the code inside components, they can't interrupt this work. We'll call this approach "blocking rendering".
+这说明了包括React在内的UI库在如今通常是如何工作的. 一旦它们开始渲染一次更新, 它们不能中断包括创建新的DOM节点和运行组件中代码在内的工作. 我们称这种方法为 "阻塞渲染".
 
-In Concurrent Mode, rendering is not blocking. It is interruptible. This improves the user experience. It also unlocks new features that weren't possible before. Before we look at concrete examples in the [next](/docs/concurrent-mode-suspense.html) [chapters](/docs/concurrent-mode-patterns.html), we'll do a high-level overview of new features.
+在 Concurrent 模式中, 渲染不是阻塞的. 它是可中断的. 这改善了用户体验. 它同时解锁了以前不可能的新功能. 在我们查看[下一个](/docs/concurrent-mode-suspense.html) [章节](/docs/concurrent-mode-patterns.html)的具体例子之前, 我们将对新功能做一个高级的概述.
 
-### Interruptible Rendering {#interruptible-rendering}
+### 可中断渲染 {#interruptible-rendering}
 
-Consider a filterable product list. Have you ever typed into a list filter and felt that it stutters on every key press? Some of the work to update the product list might be unavoidable, such as creating new DOM nodes or the browser performing layout. However, *when* and *how* we perform that work plays a big role.
+考虑一个可过滤的产品列表. 你是否曾在一个列表筛选器中输入过, 且每一次输入都感觉到并不流畅? 一些更新产品列表的工作是不可避免的, 例如创建新的DOM节点或者浏览器执行布局. 然而, 我们*何时*以及*如何*处理这项工作起着很大的作用.
 
-A common way to work around the stutter is to "debounce" the input. When debouncing, we only update the list *after* the user stops typing. However, it can be frustrating that the UI doesn't update while we're typing. As an alternative, we could "throttle" the input, and update the list with a certain maximum frequency. But then on lower-powered devices we'd still end up with stutter. Both debouncing and throttling create a suboptimal user experience.
+解决卡顿的一种常见方法是对输入进行"防抖"处理. 防抖时, 我们只在用户停止输入*之后*更新列表. 然而, 令人沮丧的是, 在我们键入的时候不会进行更新. 作为一种替代, 我们可以对输入进行"节流", 并以一定的最大频率更新列表. 但是在功率较低的设备上, 还是会发生卡顿现象. 无论防抖还是节流都不会提供最佳的用户体验.
 
-The reason for the stutter is simple: once rendering begins, it can't be interrupted. So the browser can't update the text input right after the key press. No matter how good a UI library (such as React) might look on a benchmark, if it uses blocking rendering, a certain amount of work in your components will always cause stutter. And, often, there is no easy fix.
+产生卡顿的原因很简单: 一旦渲染开始, 就不能被终止. 因此浏览器不能在按键结束后立即更新. 无论UI库(如React)在基准测试中表现得多么出色, 只要它使用阻塞渲染, 组件中总会有一定数量的工作导致卡顿. 并且, 通常没有简单的解决办法.
 
-**Concurrent Mode fixes this fundamental limitation by making rendering interruptible.** This means when the user presses another key, React doesn't need to block the browser from updating the text input. Instead, it can let the browser paint an update to the input, and then continue rendering the updated list *in memory*. When the rendering is finished, React updates the DOM, and changes are reflected on the screen.
+**Concurrent 模式通过使渲染可中断来修复此基本限制.** 这意味着当用户按下另一个按键时, React不需要阻塞浏览器更新文本输入. 相反, 它可以让浏览器绘制输入的更新, 然后*在内存中*渲染更新后的列表. 当渲染完成后, React更新DOM, 并且变化会反映在屏幕上.
 
-Conceptually, you can think of this as React preparing every update "on a branch". Just like you can abandon work in branches or switch between them, React in Concurrent Mode can interrupt an ongoing update to do something more important, and then come back to what it was doing earlier. This technique might also remind you of [double buffering](https://wiki.osdev.org/Double_Buffering) in video games.
+从概念上讲, 你可以将它视为React"在分支上"准备每一次更新. 就像你可以放弃分支上的工作或者在它们之间切换一样, React在 Concurrent 模式中可以中断一项正在执行的更新去做一些更重要的事情, 然后再回到之前正在做的工作. 这项技术也许会使你想起电子游戏中的[双重缓冲](https://wiki.osdev.org/Double_Buffering).
 
-Concurrent Mode techniques reduce the need for debouncing and throttling in UI. Because rendering is interruptible, React doesn't need to artificially *delay* work to avoid stutter. It can start rendering right away, but interrupt this work when needed to keep the app responsive.
+Concurrent 模式减少了防抖和节流在UI中的需求. 因为渲染是可以中断的, React不需要人为地*延迟*工作以避免卡顿. 它可以立即开始渲染, 但是当需要保持应用响应时中断这项工作.
 
-### Intentional Loading Sequences {#intentional-loading-sequences}
+### 有意的加载顺序 {#intentional-loading-sequences}
 
-We've said before that Concurrent Mode is like React working "on a branch". Branches are useful not only for short-term fixes, but also for long-running features. Sometimes you might work on a feature, but it could take weeks before it's in a "good enough state" to merge into master. This side of our version control metaphor applies to rendering too.
+我们之前说过 Concurrent 模式就像React工作"在分支上". 分支不仅对短期修复有用, 对长期运行的功能也很有用. 有时你可能会使用某项功能, 但是它在达到一个"足够好的状态"去合并到master之前, 往往需要好几周的时间. 我们的版本控制比喻在这一方面同样适用于渲染.
 
-Imagine we're navigating between two screens in an app. Sometimes, we might not have enough code and data loaded to show a "good enough" loading state to the user on the new screen. Transitioning to an empty screen or a large spinner can be a jarring experience. However, it's also common that the necessary code and data doesn't take too long to fetch. **Wouldn't it be nicer if React could stay on the old screen for a little longer, and "skip" the "bad loading state" before showing the new screen?**
+想象一下, 我们正在应用的两个屏幕之间导航. 有时, 我们可能没有加载足够的代码和数据在新屏幕上向用户展示"足够好"的加载状态. 这样过渡到一个空白屏或者大型的轮播图会是一个不愉快的体验. 然而, 通常获取所需的代码和数据不会花费太长时间. **如果React可以在旧屏幕上多停留一段时间, 并在展示新屏幕之前"跳过""不够好的加载状态", 不是更好吗?**
 
-While this is possible today, it can be difficult to orchestrate. In Concurrent Mode, this feature is built-in. React starts preparing the new screen in memory first — or, as our metaphor goes, "on a different branch". So React can wait before updating the DOM so that more content can load. In Concurrent Mode, we can tell React to keep showing the old screen, fully interactive, with an inline loading indicator. And when the new screen is ready, React can take us to it.
+虽然这在当前是可以实现的, 但是协调起来会有些困难. 在 Concurrent 模式中, 这些功能是内置的. React首先在内存中准备新屏幕 — 或者, 用我们比喻的说法, "在不同的分支上". 所以React可以在更新DOM之前进行等待, 以便加载更多内容. 在 Concurrent 模式中, 我们可以让React继续显示完全互动, 带有内联加载指示器的旧屏幕. 当新屏幕准备就绪之后, React可以带我们到新屏幕.
 
-### Concurrency {#concurrency}
+### 并发 {#concurrency}
 
-Let's recap the two examples above and see how Concurrent Mode unifies them. **In Concurrent Mode, React can work on several state updates *concurrently*** — just like branches let different team members work independently:
+让我们回顾一下上面的两个例子然后看一下 Concurrent 模式是如何将它们联合起来的. **在 Concurrent 模式中, React可以*同时*更新多个状态** — 就像分支可以让不同的团队成员独立地工作一样:
 
-* For CPU-bound updates (such as creating DOM nodes and running component code), concurrency means that a more urgent update can "interrupt" rendering that has already started.
-* For IO-bound updates (such as fetching code or data from the network), concurrency means that React can start rendering in memory even before all the data arrives, and skip showing jarring empty loading states.
+* 对于 CPU-bound 的更新 (例如创建新的DOM节点和运行组件中的代码), 并发意味着一个更急迫的更新可以"中断"已经开始的渲染.
+* 对于 IO-bound 的更新 (例如从网络加载代码或数据), 并发意味着React甚至可以在全部数据到达之前就在内存中开始渲染, 然后跳过令人不愉快的空白加载状态.
 
-Importantly, the way you *use* React is the same. Concepts like components, props, and state fundamentally work the same way. When you want to update the screen, you set the state.
+重要的是, 你*使用*React的方式是相同的. components, props, 和state等概念的基本工作方式是相同的. 当你想更新屏幕, 设置state.
 
-React uses a heuristic to decide how "urgent" an update is, and lets you adjust it with a few lines of code so that you can achieve the desired user experience for every interaction.
+React使用一种启发式方法决定更新的"紧急性", 并且允许你用几行代码对其进行调整, 以便你可以在每次交互中实现理想的用户体验.
 
-## Putting Research into Production {#putting-research-into-production}
+## 将研究投入生产 {#putting-research-into-production}
 
-There is a common theme around Concurrent Mode features. **Its mission is to help integrate the findings from the Human-Computer Interaction research into real UIs.**
+围绕 Concurrent 模式有一个共同的主题. **它的任务是帮助将人机交互研究的结果整合到真实的UI中.**
 
-For example, research shows that displaying too many intermediate loading states when transitioning between screens makes a transition feel *slower*. This is why Concurrent Mode shows new loading states on a fixed "schedule" to avoid jarring and too frequent updates.
+例如, 研究表明, 在屏幕之间切换时显示过多的中间加载状态会使切换的速度*变慢*. 这就是为什么 Concurrent 模式在一个固定的"时间表"上显示新的加载状态, 用于避免不愉快的和过多的更新.
 
-Similarly, we know from research that interactions like hover and text input need to be handled within a very short period of time, while clicks and page transitions can wait a little longer without feeling laggy. The different "priorities" that Concurrent Mode uses internally roughly correspond to the interaction categories in the human perception research.
+类似的, 我们从研究得知悬停和文本输入之类的交互需要在很短的时间内处理, 而点击和页面转换可以等待稍长时间而不会感到迟缓. Concurrent 模式在内部使用的不同"优先级"大致对应于人类感知研究中的交互类别.
 
-Teams with a strong focus on user experience sometimes solve similar problems with one-off solutions. However, those solutions rarely survive for a long time, as they're hard to maintain. With Concurrent Mode, our goal is to bake the UI research findings into the abstraction itself, and provide idiomatic ways to use them. As a UI library, React is well-positioned to do that.
+专注于用户体验的团队有时会通过一次性解决方案来解决类似的问题. 然而, 这些解决方案难以维护所以很少能长期存活. 使用 Concurrent 模式, 我们的目标是将UI的研究结果纳入抽象本身, 并提供使用它们的惯用方法. 作为一个UI库, React很适合这样做.
 
-## Next Steps {#next-steps}
+## 下一步 {#next-steps}
 
-Now you know what Concurrent Mode is all about!
+现在你已经知道 Concurrent 模式是什么了!
 
-On the next pages, you'll learn more details about specific topics:
+在之后的页面中, 你将学习更多特定主题的详细信息:
 
-* [Suspense for Data Fetching](/docs/concurrent-mode-suspense.html) describes a new mechanism for fetching data in React components.
-* [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html) shows some UI patterns made possible by Concurrent Mode and Suspense.
-* [Adopting Concurrent Mode](/docs/concurrent-mode-adoption.html) explains how you can try Concurrent Mode in your project.
-* [Concurrent Mode API Reference](/docs/concurrent-mode-reference.html) documents the new APIs available in experimental builds.
+* [Suspense用于数据获取](/docs/concurrent-mode-suspense.html) 描述了一种在React组件中获取数据的新机制.
+* [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html) 展示了一些通过 Concurrent Mode 和 Suspense 实现的UI模式.
+* [采用 Concurrent 模式](/docs/concurrent-mode-adoption.html) 解释了如何在你的项目中尝试 Concurrent 模式.
+* [Concurrent 模式的 API 索引](/docs/concurrent-mode-reference.html) 记录了在实验性版本中可用的新API.
