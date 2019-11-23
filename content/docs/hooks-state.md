@@ -88,7 +88,7 @@ Hook 在 class 内部是**不**起作用的。但你可以使用它们来取代 
 
 ## Hook 是什么？ {#whats-a-hook}
 
-在新示例中，首选引入 React 中 `useState` 的 Hook
+在新示例中，首先引入 React 中 `useState` 的 Hook
 
 ```js{1}
 import React, { useState } from 'react';
