@@ -1,21 +1,21 @@
 ---
 id: concurrent-mode-reference
-title: Concurrent Mode API Reference (Experimental)
+title: concurrent 模式 API 参考（实验版）
 permalink: docs/concurrent-mode-reference.html
 prev: concurrent-mode-adoption.html
 ---
 
->Caution:
+>注意：
 >
->This page describes **experimental features that are [not yet available](/docs/concurrent-mode-adoption.html) in a stable release**. Don't rely on experimental builds of React in production apps. These features may change significantly and without a warning before they become a part of React.
+>本章节所描述的**实验功能在稳定版本中[尚不可用](/docs/concurrent-mode-adoption.html)**。请不要在应用程序的生产环境中依赖 React 的实验性版本。这些功能可能会发生重大变化，并且在成为 React 的一部分之前不会给出警告。
 >
->This documentation is aimed at early adopters and people who are curious. If you're new to React, don't worry about these features -- you don't need to learn them right now.
+>本文档面向早期此功能的使用者和对此功能好奇的人。如果你不熟悉 React，请不必担心 —— 你不需要立刻学习这些功能。
 
-This page is an API reference for the React [Concurrent Mode](/docs/concurrent-mode-intro.html). If you're looking for a guided introduction instead, check out [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html).
+本章节为 [concurrent 模式](/docs/concurrent-mode-intro.html)的 React API 参考。如果你想找导览，请查看 [concurrent UI 模式](/docs/concurrent-mode-patterns.html)。
 
-**Note: This is a Community Preview and not the final stable version. There will likely be future changes to these APIs. Use at your own risk!**
+**注意：这是社区的预览版，并不是最终的稳定版本。这些 API 将来可能会发生变化。请自行承担风险！**
 
-- [Enabling Concurrent Mode](#concurrent-mode)
+- [启用 concurrent 模式](#concurrent-mode)
     - [`createRoot`](#createroot)
     - [`createBlockingRoot`](#createblockingroot)
 - [Suspense](#suspense)
@@ -24,7 +24,7 @@ This page is an API reference for the React [Concurrent Mode](/docs/concurrent-m
     - [`useTransition`](#usetransition)
     - [`useDeferredValue`](#usedeferredvalue)
 
-## Enabling Concurrent Mode {#concurrent-mode}
+## 启用 concurrent 模式 {#concurrent-mode}
 
 ### `createRoot` {#createroot}
 
@@ -32,9 +32,9 @@ This page is an API reference for the React [Concurrent Mode](/docs/concurrent-m
 ReactDOM.createRoot(rootNode).render(<App />);
 ```
 
-Replaces `ReactDOM.render(<App />, rootNode)` and enables Concurrent Mode.
+替换 `ReactDOM.render(<App />, rootNode)` 并启用 concurrent 模式。
 
-For more information on Concurrent Mode, check out the [Concurrent Mode documentation.](/docs/concurrent-mode-intro.html)
+更多有关 concurrent 模式的信息，请查看 [concurrent 模式文档](/docs/concurrent-mode-intro.html)
 
 ### `createBlockingRoot` {#createblockingroot}
 
@@ -42,61 +42,61 @@ For more information on Concurrent Mode, check out the [Concurrent Mode document
 ReactDOM.createBlockingRoot(rootNode).render(<App />)
 ```
 
-Replaces `ReactDOM.render(<App />, rootNode)` and enables [Blocking Mode](/docs/concurrent-mode-adoption.html#migration-step-blocking-mode).
+替换 `ReactDOM.render(<App />, rootNode)` 并启用 [blocking 模式](/docs/concurrent-mode-adoption.html#migration-step-blocking-mode)。
 
-Opting into Concurrent Mode introduces semantic changes to how React works. This means that you can't use Concurrent Mode in just a few components. Because of this, some apps may not be able to migrate directly to Concurrent Mode. 
+选择 concurrent 模式会对 React 的工作方式带来语义上的变化。这意味着你不能只在一些组件中使用 concurrent 模式。因此，一些应用程序可能无法直接迁移到 concurrent 模式。
 
-Blocking Mode only contains a small subset of Concurrent Mode features and is intended as an intermediary migration step for apps that are unable to migrate directly.
+blocking 模式只包含了 concurrent 模式的小部分功能，它为无法直接迁移的应用程序提供了中间的迁移步骤。
 
 ## Suspense API {#suspense}
 
 ### `Suspense` {#suspensecomponent}
 
 ```js
-<Suspense fallback={<h1>Loading...</h1>}>
+<Suspense fallback={<h1>加载中...</h1>}>
   <ProfilePhoto />
   <ProfileDetails />
 </Suspense>
 ```
 
-`Suspense` lets your components "wait" for something before they can render, showing a fallback while waiting.
+`Suspense` 让你的组件在渲染之前进行“等待”，并在等待时显示 fallback 的内容。
 
-In this example, `ProfileDetails` is waiting for an asynchronous API call to fetch some data. While we wait for `ProfileDetails` and `ProfilePhoto`, we will show the `Loading...` fallback instead. It is important to note that until all children inside `<Suspense>` has loaded, we will continue to show the fallback.
+在这个示例中，`ProfileDetails` 正在等待异步 API 调用来获取某些数据。在等待 `ProfileDetails` 和 `ProfilePhoto` 时，我们将显示`加载中...`的 fallback。请注意，在 `<Suspense>` 中的所有子组件都加载之前，我们将继续显示这个 fallback。
 
-`Suspense` takes two props:
-* **fallback** takes a loading indicator. The fallback is shown until all of the children of the `Suspense` component have finished rendering.
-* **unstable_avoidThisFallback** takes a boolean. It tells React whether to "skip" revealing this boundary during the initial load. This API will likely be removed in a future release.
+`Suspense` 接受两个 props：
+* **fallback** 接受一个加载指示器。 这个 fallback 将会显示，直到 `Suspense` 所有子组件完成渲染。
+* **unstable_avoidThisFallback** 接受一个布尔值。它告诉 React 是否在初始加载时“跳过”显示这个边界，这个 API 可能会在以后的版本中删除。
 
 ### `<SuspenseList>` {#suspenselist}
 
 ```js
 <SuspenseList revealOrder="forwards">
-  <Suspense fallback={'Loading...'}>
+  <Suspense fallback={'加载中...'}>
     <ProfilePicture id={1} />
   </Suspense>
-  <Suspense fallback={'Loading...'}>
+  <Suspense fallback={'加载中...'}>
     <ProfilePicture id={2} />
   </Suspense>
-  <Suspense fallback={'Loading...'}>
+  <Suspense fallback={'加载中...'}>
     <ProfilePicture id={3} />
   </Suspense>
   ...
 </SuspenseList>
 ```
 
-`SuspenseList` helps coordinate many components that can suspend by orchestrating the order in which these components are revealed to the user.
+`SuspenseList` 通过编排向用户显示这些组件的顺序，来帮助协调许多可以暂停的组件。
 
-When multiple components need to fetch data, this data may arrive in an unpredictable order. However, if you wrap these items in a `SuspenseList`, React will not show an item in the list until previous items have been displayed (this behavior is adjustable).
+当多个组件需要获取数据时，这些数据可能会以不可预知的顺序到达。不过，如果你将这些项目包装在 `SuspenseList` 中，React 将不会在列表中显示这个项目，直到它之前的项目已经显示（此行为可调整）。
 
-`SuspenseList` takes two props:
-* **revealOrder (forwards, backwards, together)** defines the order in which the `SuspenseList` children should be revealed.
-  * `together` reveals *all* of them when they're ready instead of one by one.
-* **tail (collapsed, hidden)** dictates how unloaded items in a `SuspenseList` is shown. 
-    * By default, `SuspenseList` will show all fallbacks in the list.
-    * `collapsed` shows only the next fallback in the list.
-    * `hidden` doesn't show any unloaded items.
+`SuspenseList` 接受两个 props：
+* **revealOrder (forwards, backwards, together)** 定义了 `SuspenseList` 子组件应该显示的顺序。
+  * `together` 显示*所有*的子组件，当它们都准备好了的时候，而不是一个接着一个显示。
+* **tail (collapsed, hidden)** 指定如何显示 `SuspenseList` 中未加载的项目。
+    * 默认情况下，`SuspenseList` 将显示列表中的所有 fallback。
+    * `collapsed` 仅显示列表中下一个 fallback。
+    * `hidden` 未加载的项目不显示任何信息。
 
-Note that `SuspenseList` only operates on the closest `Suspense` and `SuspenseList` components below it. It does not search for boundaries deeper than one level. However, it is possible to nest multiple `SuspenseList` components in each other to build grids.
+请注意，`SuspenseList` 只对其下方最近的 `Suspense` 和 `SuspenseList` 组件进行操作。它不会搜索比一层更深的边界。不过，可以将多个 `SuspenseList` 组件相互嵌套来构建网格。
 
 ### `useTransition` {#usetransition}
 
@@ -106,13 +106,13 @@ const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 const [startTransition, isPending] = useTransition(SUSPENSE_CONFIG);
 ```
 
-`useTransition` allows components to avoid undesirable loading states by waiting for content to load before **transitioning to the next screen**. It also allows components to defer slower, data fetching updates until subsequent renders so that more crucial updates can be rendered immediately.
+`useTransition` 允许组件在**切换到下一个界面**之前等待内容加载，从而避免不必要的加载状态。它还允许组件将速度较慢的数据获取更新推迟到随后渲染，以便能够立即渲染更重要的更新。
 
-The `useTransition` hook returns two values in an array.
-* `startTransition` is a function that takes a callback. We can use it to tell React which state we want to defer.
-* `isPending` is a boolean. It's React's way of informing us whether we're waiting for the transition to finish.
+`useTransition` hook 返回两个值的数组。
+* `startTransition` 是一个接受回调的函数。我们用它来告诉 React 需要推迟的 state。
+* `isPending` 是一个布尔值。这是 React 通知我们是否正在等待过渡的完成的方式。
 
-**If some state update causes a component to suspend, that state update should be wrapped in a transition.**
+**如果某个 state 更新导致组件挂起，则该 state 更新应包装在切换中**
 
 ```js
 const SUSPENSE_CONFIG = {timeoutMs: 2000 };
@@ -133,7 +133,7 @@ function App() {
       >
         Next
       </button>
-      {isPending ? " Loading..." : null}
+      {isPending ? " 加载中..." : null}
       <Suspense fallback={<Spinner />}>
         <ProfilePage resource={resource} />
       </Suspense>
@@ -142,21 +142,21 @@ function App() {
 }
 ```
 
-In this code, we've wrapped our data fetching with `startTransition`. This allows us to start fetching the profile data right away, while deferring the render of the next profile page and its associated `Spinner` for 2 seconds (the time shown in `timeoutMs`).
+在这段代码中，我们使用 `startTransition` 包装了我们的数据获取。这使我们可以立即开始获取用户资料的数据，同时推迟下一个用户资料页面以及其关联的 `Spinner` 的渲染 2 秒钟（`timeoutMs` 中显示的时间）。
 
-The `isPending` boolean lets React know that our component is transitioning, so we are able to let the user know this by showing some loading text on the previous profile page.
+`isPending` 布尔值让 React 知道我们的组件正在切换，因此我们可以通过在之前的用户资料页面上显示一些加载文本来让用户知道这一点。
 
-**For an in-depth look at transitions, you can read [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html#transitions).**
+**深入了解切换，可以阅读 [concurrent UI 模式](/docs/concurrent-mode-patterns.html#transitions).**
 
-#### useTransition Config {#usetransition-config}
+#### useTransition 配置 {#usetransition-config}
 
 ```js
 const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 ```
 
-`useTransition` accepts an **optional Suspense Config** with a `timeoutMs`. This timeout (in milliseconds) tells React how long to wait before showing the next state (the new Profile Page in the above example).
+`useTransition` 接受带有 `timeoutMs` 的**可选的 Suspense 配置**。 此超时（毫秒）告诉 React 在显示下一个状态（上例中为新的用户资料页面）之前等待多长时间。
 
-**Note: We recommend that you share Suspense Config between different modules.**
+**注意：我们建议你在不同的模块之间共享 Suspense 配置。**
 
 
 ### `useDeferredValue` {#usedeferredvalue}
@@ -165,11 +165,11 @@ const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 const deferredValue = useDeferredValue(value, { timeoutMs: 2000 });
 ```
 
-Returns a deferred version of the value that may "lag behind" it for at most `timeoutMs`.
+返回一个延迟的值，该值可能“延后”于最长的时间 `timeoutMs`。
 
-This is commonly used to keep the interface responsive when you have something that renders immediately based on user input and something that needs to wait for a data fetch.
+这通常用于在具有基于用户输入立即渲染的内容，以及需要等待数据获取的内容时，保持接口的可响应性。
 
-A good example of this is a text input.
+一个很好的例子是文本输入。
 
 ```js
 function App() {
@@ -178,26 +178,26 @@ function App() {
 
   return (
     <div className="App">
-      {/* Keep passing the current text to the input */}
+      {/* 保持将当前文本传递给输入 */}
       <input value={text} onChange={handleChange} />
       ...
-      {/* But the list is allowed to "lag behind" when necessary */}
+      {/* 但在必要时可以将列表“延后” */}
       <MySlowList text={deferredText} />
     </div>
   );
  }
 ```
 
-This allows us to start showing the new text for the `input` immediately, which allows the webpage to feel responsive. Meanwhile, `MySlowList` "lag behind" for up to 2 seconds according to the `timeoutMs` before updating, allowing it to render with the current text in the background.
+这让我们可以立即显示 `input` 的新文本，从而感觉到网页的响应。同时，`MySlowList` “延后” 2 秒，根据 `timeoutMs` ，更新之前，允许它在后台渲染当前文本。
 
-**For an in-depth look at deferring values, you can read [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html#deferring-a-value).**
+**深入了解延迟值，可以阅读 [concurrent UI 模式](/docs/concurrent-mode-patterns.html#deferring-a-value)。**
 
-#### useDeferredValue Config {#usedeferredvalue-config}
+#### useDeferredValue 配置 {#usedeferredvalue-config}
 
 ```js
 const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 ```
 
-`useDeferredValue` accepts an **optional Suspense Config** with a `timeoutMs`. This timeout (in milliseconds) tells React how long the deferred value is allowed to lag behind.
+`useDeferredValue` 接受带有 `timeoutMs` 的**可选的 Suspense 配置**。此超时（以毫秒为单位）表示延迟的值允许延后多长时间。
 
-React will always try to use a shorter lag when network and device allows it.
+当网络和设备允许时，React 始终会尝试使用较短的延迟。
