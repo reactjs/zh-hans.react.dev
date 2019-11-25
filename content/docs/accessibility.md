@@ -493,7 +493,11 @@ Deque 系统提供了 [aXe-core](https://github.com/dequelabs/axe-core) 以对�
 
 VoiceOver 是苹果设备的自带屏幕朗读器。
 
+<<<<<<< HEAD
 想要了解如何激活以及使用 VoiceOver，请参考下面的指南：
+=======
+Refer to the following guides on how to activate and use VoiceOver:
+>>>>>>> 99b790188735016c72a9265a42dbfc87c3221729
 
 - [WebAIM —— 使用 VoiceOver 来评估网络的可无障碍访问性](https://webaim.org/articles/voiceover/)
 - [Deque —— OS X 中的 VoiceOver 键盘快捷键](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)
