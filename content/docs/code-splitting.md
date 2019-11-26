@@ -75,12 +75,7 @@ import("./math").then(math => {
 });
 ```
 
-> 注意:
->
-> 动态 `import()` 语法目前只是一个 ECMAScript (JavaScript) [提案](https://github.com/tc39/proposal-dynamic-import)，
-> 而不是正式的语法标准。预计在不远的将来就会被正式接受。
-
-当 Webpack 解析到该语法时，它会自动地开始进行代码分割。如果你使用 Create React App，该功能已配置好，你能[立刻使用](https://facebook.github.io/create-react-app/docs/code-splitting)这个特性。[Next.js](https://github.com/zeit/next.js/#dynamic-import) 也已支持该特性而无需再配置。
+当 Webpack 解析到该语法时，会自动进行代码分割。如果你使用 Create React App，该功能已开箱即用，你可以[立刻使用](https://facebook.github.io/create-react-app/docs/code-splitting)该特性。[Next.js](https://github.com/zeit/next.js/#dynamic-import) 也已支持该特性而无需进行配置。
 
 如果你自己配置 Webpack，你可能要阅读下 Webpack 关于[代码分割](https://webpack.docschina.org/guides/code-splitting/)的指南。你的 Webpack 配置应该[类似于此](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269)。
 
