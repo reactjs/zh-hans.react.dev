@@ -55,7 +55,7 @@ React 中的所有更改在发布之前都需进行大量的内部测试。但�
 
 如果你是 React 第三方框架，库，开发者工具或类似基础设施项目的作者，则可以通过定期针对最新版本运行的测试用例，帮助我们一起维持 React 稳定，为你的用户和整个 React 社区保驾护航。如果你对此有兴趣，请按照下列步骤进行操作：
 
-- 如果你喜欢在持续集成平台设置 cron job。[CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) 和 [Travis CI](https://docs.travis-ci.com/user/cron-jobs/) 均支持 cron job。
+- 在你喜欢的持续集成平台上设置 cron job。[CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) 和 [Travis CI](https://docs.travis-ci.com/user/cron-jobs/) 均支持 cron job。
 - 在 cron job 中，使用 npm 的 `next` 标签将 React 版本更新至 Next 渠道中的最新版本。使用 npm cli：
 
   ```
