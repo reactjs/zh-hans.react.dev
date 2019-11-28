@@ -99,4 +99,4 @@ Next.js 使用了此工作流。你可以将它们 [CircleCI 配置](https://git
 
 当我们准备发布新的实验内容时，我们会发布到 React 博客中，但这并不意味着我们将公开发布每个实验内容。
 
-你可以参考公开 Github 仓库的[历史记录](https://github.com/facebook/react/commits/master)以全面了解所有的 CHANGELOG。
+你可以参考 Github 公开仓库的[历史记录](https://github.com/facebook/react/commits/master)以查看完整的变更列表。
