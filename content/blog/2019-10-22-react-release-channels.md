@@ -7,7 +7,7 @@ author: [acdlite]
 
 > 此文章与从事框架，库或开发工具的开发人员息息相关。而主要使用 React 来构建应用程序的开发者无需担心此预发布渠道。
 
-React 依靠强大的开源社区收集错误报告，提交 pull request 以及[提交 RFC](https://github.com/reactjs/rfcs)。为了鼓励大家反馈，我们可能会共享一些特殊的 React 版本，其中包括未发布的功能哟！
+React 依靠强大的开源社区收集错误报告，提交 pull request 以及[提交 RFC](https://github.com/reactjs/rfcs)。为了鼓励大家反馈，我们可能会共享一些特殊的 React 版本，其中包括未发布的功能。
 
 由于 React 的实际来源是[公开的 Github 仓库](https://github.com/facebook/react)，因此你始终可以通过此仓库构建一个包含最新修改的 React 副本。但是，对于开发者来说，使用 npm 安装 React 会更加容易，因此我们会时常发布预发布版本到 npm 的注册表中。最近的示例是 16.7 Alpha 版，其中包括 Hooks API 的早期版本。
 
