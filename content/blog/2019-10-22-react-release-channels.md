@@ -71,7 +71,7 @@ React 中的所有更改在发布之前都需进行大量的内部测试。但�
 - 如果均通过，那么恭喜你！你的项目可以与下个小版本的 React 一起使用。
 - 如果发生意外中断，请通过[提交 issus](https://github.com/facebook/react/issues) 告知我们。
 
-使用此工作流的项目是 Next.js。你可以将它们 [CircleCI 配置](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml) 作为示例进行参考。
+Next.js 使用了此工作流。你可以将它们 [CircleCI 配置](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml) 作为示例进行参考。
 
 ### 实验阶段渠道 {#experimental-channel}
 
