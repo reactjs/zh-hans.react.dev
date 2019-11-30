@@ -64,7 +64,7 @@ blocking 模式只包含了 concurrent 模式的小部分功能，它为无法�
 在这个示例中，`ProfileDetails` 正在等待异步 API 调用来获取某些数据。在等待 `ProfileDetails` 和 `ProfilePhoto` 时，我们将显示`加载中...`的 fallback。请注意，在 `<Suspense>` 中的所有子组件都加载之前，我们将继续显示这个 fallback。
 
 `Suspense` 接受两个 props：
-* **fallback** 接受一个加载指示器。 这个 fallback 将会显示，直到 `Suspense` 所有子组件完成渲染。
+* **fallback** 接受一个加载指示器。 这个 fallback 在 `Suspense` 所有子组件完成渲染之前将会一直显示。
 * **unstable_avoidThisFallback** 接受一个布尔值。它告诉 React 是否在初始加载时“跳过”显示这个边界，这个 API 可能会在以后的版本中删除。
 
 ### `<SuspenseList>` {#suspenselist}
@@ -84,13 +84,13 @@ blocking 模式只包含了 concurrent 模式的小部分功能，它为无法�
 </SuspenseList>
 ```
 
-`SuspenseList` 通过编排向用户显示这些组件的顺序，来帮助协调许多可以暂停的组件。
+`SuspenseList` 通过编排向用户显示这些组件的顺序，来帮助协调许多可以挂起的组件。
 
 当多个组件需要获取数据时，这些数据可能会以不可预知的顺序到达。不过，如果你将这些项目包装在 `SuspenseList` 中，React 将不会在列表中显示这个项目，直到它之前的项目已经显示（此行为可调整）。
 
 `SuspenseList` 接受两个 props：
 * **revealOrder (forwards, backwards, together)** 定义了 `SuspenseList` 子组件应该显示的顺序。
-  * `together` 显示*所有*的子组件，当它们都准备好了的时候，而不是一个接着一个显示。
+  * `together` 在*所有*的子组件都准备好了的时候显示它们，而不是一个接着一个显示。
 * **tail (collapsed, hidden)** 指定如何显示 `SuspenseList` 中未加载的项目。
     * 默认情况下，`SuspenseList` 将显示列表中的所有 fallback。
     * `collapsed` 仅显示列表中下一个 fallback。
@@ -112,7 +112,7 @@ const [startTransition, isPending] = useTransition(SUSPENSE_CONFIG);
 * `startTransition` 是一个接受回调的函数。我们用它来告诉 React 需要推迟的 state。
 * `isPending` 是一个布尔值。这是 React 通知我们是否正在等待过渡的完成的方式。
 
-**如果某个 state 更新导致组件挂起，则该 state 更新应包装在切换中**
+**如果某个 state 更新导致组件挂起，则该 state 更新应包装在 transition 中**
 
 ```js
 const SUSPENSE_CONFIG = {timeoutMs: 2000 };
@@ -146,7 +146,7 @@ function App() {
 
 `isPending` 布尔值让 React 知道我们的组件正在切换，因此我们可以通过在之前的用户资料页面上显示一些加载文本来让用户知道这一点。
 
-**深入了解切换，可以阅读 [concurrent UI 模式](/docs/concurrent-mode-patterns.html#transitions).**
+**深入了解 transition，可以阅读 [concurrent UI 模式](/docs/concurrent-mode-patterns.html#transitions).**
 
 #### useTransition 配置 {#usetransition-config}
 
@@ -169,7 +169,7 @@ const deferredValue = useDeferredValue(value, { timeoutMs: 2000 });
 
 这通常用于在具有基于用户输入立即渲染的内容，以及需要等待数据获取的内容时，保持接口的可响应性。
 
-一个很好的例子是文本输入。
+文本输入框是个不错的例子。
 
 ```js
 function App() {
@@ -178,7 +178,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* 保持将当前文本传递给输入 */}
+      {/* 保持将当前文本传递给 input */}
       <input value={text} onChange={handleChange} />
       ...
       {/* 但在必要时可以将列表“延后” */}
