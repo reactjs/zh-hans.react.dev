@@ -282,7 +282,7 @@ const App = () => {
 <MyComponent>Hello world!</MyComponent>
 ```
 
-这是一个合法的 JSX，`MyComponent` 中的 `props.children` 是一个简单的未转义字符串 `"Hello world!"`。因此你可以采用编写写 HTML 的方式来编写写 JSX。如下所示：
+这是一个合法的 JSX，`MyComponent` 中的 `props.children` 是一个简单的未转义字符串 `"Hello world!"`。因此你可以采用编写 HTML 的方式来编写 JSX。如下所示：
 
 ```html
 <div>This is valid HTML &amp; JSX at the same time.</div>

@@ -6,11 +6,22 @@ prev: concurrent-mode-patterns.html
 next: concurrent-mode-reference.html
 ---
 
+<style>
+.scary > blockquote {
+  background-color: rgba(237, 51, 21, 0.2);
+  border-left-color: #ed3315;
+}
+</style>
+
+<div class="scary">
+
 >注意：
 >
 >本章节所描述的实验功能**在稳定版本中尚不可用**。请不要在应用程序的生产环境中依赖 React 的实验性版本。这些功能可能会发生重大变化，并且在成为 React 的一部分之前不会给出警告。
 >
 >本文档面向早期此功能的使用者和对此功能好奇的人。如果你不熟悉 React，请不必担心 —— 你不需要立刻学习这些功能。
+
+</div>
 
 - [安装](#installation)
   - [此实验版本适用于谁？](#who-is-this-experimental-release-for)
@@ -107,21 +118,21 @@ ReactDOM.createRoot(
 
 |   | legacy 模式  | blocking 模式  | concurrent 模式  |
 |---  |---  |---  |---  |
-|String Refs  |✅  |🚫**  |🚫**  |
-|Legacy Context |✅  |🚫**  |🚫**  |
-|findDOMNode  |✅  |🚫**  |🚫**  |
-|Suspense |✅  |✅  |✅  |
-|SuspenseList |🚫  |✅  |✅  |
+|[String Refs](/docs/refs-and-the-dom.html#legacy-api-string-refs)  |✅  |🚫**  |🚫**  |
+|[Legacy Context](/docs/legacy-context.html) |✅  |🚫**  |🚫**  |
+|[findDOMNode](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)  |✅  |🚫**  |🚫**  |
+|[Suspense](/docs/concurrent-mode-suspense.html#what-is-suspense-exactly) |✅  |✅  |✅  |
+|[SuspenseList](/docs/concurrent-mode-patterns.html#suspenselist) |🚫  |✅  |✅  |
 |Suspense SSR + Hydration |🚫  |✅  |✅  |
 |Progressive Hydration  |🚫  |✅  |✅  |
 |Selective Hydration  |🚫  |🚫  |✅  |
 |Cooperative Multitasking |🚫  |🚫  |✅  |
 |Automatic batching of multiple setStates     |🚫* |✅  |✅  |
-|Priority-based Rendering |🚫  |🚫  |✅  |
-|Interruptible Prerendering |🚫  |🚫  |✅  |
-|useTransition  |🚫  |🚫  |✅  |
-|useDeferredValue |🚫  |🚫  |✅  |
-|Suspense Reveal "Train"  |🚫  |🚫  |✅  |
+|[Priority-based Rendering](/docs/concurrent-mode-patterns.html#splitting-high-and-low-priority-state) |🚫  |🚫  |✅  |
+|[Interruptible Prerendering](/docs/concurrent-mode-intro.html#interruptible-rendering) |🚫  |🚫  |✅  |
+|[useTransition](/docs/concurrent-mode-patterns.html#transitions)  |🚫  |🚫  |✅  |
+|[useDeferredValue](/docs/concurrent-mode-patterns.html#deferring-a-value) |🚫  |🚫  |✅  |
+|[Suspense Reveal "Train"](/docs/concurrent-mode-patterns.html#suspense-reveal-train)  |🚫  |🚫  |✅  |
 
 </div>
 
