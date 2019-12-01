@@ -197,6 +197,7 @@ class Board extends React.Component {
   renderSquare(i) {
     return <Square value={i} />;
   }
+}
 ```
 
 修改 Square 组件中的 `render` 方法，把 `{/* TODO */}` 替换为 `{this.props.value}`，以显示上文中传入的值：
@@ -425,7 +426,7 @@ Board 组件当前的 `renderSquare` 方法看起来像下面这样：
 >
 >为了提高可读性，我们把返回的 React 元素拆分成了多行，同时在最外层加了小括号，这样 JavaScript 解析的时候就不会在 `return` 的后面自动插入一个分号从而破坏代码结构了。
 
-现在我们从 Board 组件向 Square 组件中传递两个 props 参数：`value` 和 `onClick`。`onClick` prop 是一个 Square 组件点击事件监听函数。接下来，我们需要修改代 Square 的代码：
+现在我们从 Board 组件向 Square 组件中传递两个 props 参数：`value` 和 `onClick`。`onClick` prop 是一个 Square 组件点击事件监听函数。接下来，我们需要修改 Square 的代码：
 
 * 将 Square 组件的 `render` 方法中的 `this.state.value` 替换为 `this.props.value` 。
 * 将 Square 组件的 `render` 方法中的 `this.setState()` 替换为 `this.props.onClick()` 。

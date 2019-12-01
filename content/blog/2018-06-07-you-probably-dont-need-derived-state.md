@@ -23,7 +23,7 @@ React 16.4 版本修复了一个 [getDerivedStateFromProps 的 bug](/blog/2018/0
 
 `getDerivedStateFromProps` 的存在只有一个目的：让组件在 **props 变化**时更新 state。上一个 blog 展示了一些示例，比如 [props 的 offset 变化时，修改当前的滚动方向](/blog/2018/03/27/update-on-async-rendering.html#updating-state-based-on-props)和[根据 props 变化加载外部数据](/blog/2018/03/27/update-on-async-rendering.html#fetching-external-data-when-props-change)。
 
-我们没有提供很多示例，应为有**保守使用派生 state ** 这个规则。大部分使用派生 state 导致的问题，不外乎两个原因：1，直接复制 props 到 state 上；2，如果 props 和 state 不一致就更新 state。下面的示例包含了这两种情况。
+我们没有提供很多示例，因为有**保守使用派生 state** 这个规则。大部分使用派生 state 导致的问题，不外乎两个原因：1，直接复制 props 到 state 上；2，如果 props 和 state 不一致就更新 state。下面的示例包含了这两种情况。
 
 * 如果你只是为了缓存（memoize）基于当前 props 计算后的结果的话，你就没必要使用派生 state。[尝试一下 memoization？](#what-about-memoization)。
 * 如果只是用来保存 props 或者和当前 state 比较之后不一致后更新 state，那你的组件应该是太频繁的更新了 state。请继续阅读。

@@ -37,6 +37,11 @@ April 23 - 24, 2020 in Kraków, Poland
 
 [Website](http://appjs.co/react) - [Twitter](https://twitter.com/appjsconf)
 
+### React Day Bangalore 2020 {#react-day-bangalore-2020}
+April 25, 2020 in Bangalore, India
+
+[Website](https://reactday.in) - [Twitter](https://twitter.com/ReactDayIn)
+
 ### render(ATL) 2020 {#render-atlanta-2020}
 May 4-6, 2020. Atlanta, GA, USA.
 
@@ -56,6 +61,11 @@ May 26-29 in Helsinki, Finland
 June 15, 2020. Tel Aviv, Israel.
 
 [Website](https://react-next.com/) - [Twitter](https://twitter.com/reactnext) - [Facebook](https://www.facebook.com/ReactNext2016/) 
+
+### React Loop 2020 {#react-loop-2020}
+June 19, 2020. Chicago, Illinois, USA.
+
+[Website](https://reactloop.com) - [Twitter](https://twitter.com/ReactLoop)
 
 ### React Week NY 2020 {#react-week-ny-2020}
 July 17, 2020. New York City, USA.

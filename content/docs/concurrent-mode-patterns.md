@@ -6,11 +6,22 @@ prev: concurrent-mode-suspense.html
 next: concurrent-mode-adoption.html
 ---
 
+<style>
+.scary > blockquote {
+  background-color: rgba(237, 51, 21, 0.2);
+  border-left-color: #ed3315;
+}
+</style>
+
+<div class="scary">
+
 >注意：
 >
->本章节所描述的实验功能**在稳定版本中尚不可用**。请不要在应用程序的生产环境中依赖 React 的实验性版本。这些功能可能会发生重大变化，并且在成为 React 的一部分之前不会给出警告。
+>本章节所描述的实验性功能**在稳定版本中[尚不可用](/docs/concurrent-mode-adoption.html)**。请不要在应用程序的生产环境中使用。这些功能可能会发生重大变化，并且在正式成为 React 的一部分之前不会给出警告。
 >
->本文档面向早期此功能的使用者和对此功能好奇的人。如果你不熟悉 React，请不必担心 —— 你不需要立刻学习这些功能。
+>本文档面向早期此功能的使用者以及对此功能好奇的开发者。**如果你并不熟悉 React，请不必担心** —— 你不需要立刻学习这些功能。
+
+</div>
 
 通常，当我们更新 state 的时候，我们会期望这些变化立刻反映到屏幕上。我们期望应用能够持续响应用户的输入，这是符合常理的。但是，有时我们会期望**更新延迟响应在屏幕上**。
 
