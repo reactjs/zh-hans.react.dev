@@ -377,7 +377,7 @@ function ProfilePage() {
 
 打开[此示例](https://codesandbox.io/s/prod-grass-g1lh5)并点击 “Open Profile”。你会陆续看到几种显示状态：
 
-* **Receded（后退）**： 第一秒，你会看到 `<h1>Loading the app...</h1>` 降级界面。
+* **Receded（后退）**：第一秒，你会看到 `<h1>Loading the app...</h1>` 降级界面。
 * **Skeleton：** 你会看到 `<ProfilePage>` 组件中显示着 `<h2>Loading posts...</h2>` .
 * **Complete:** 你会看到 `<ProfilePage>` 组件不再显示降级界面。所有内容获取完毕。
 
