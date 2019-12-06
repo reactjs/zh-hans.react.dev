@@ -293,7 +293,7 @@ function ProfilePage() {
 
 ### 把 Transition 融合到你应用的设计系统 {#baking-transitions-into-the-design-system}
 
-现在我们知道 `useTransition` 的需求是*非常*常见的。差不多所有导致一个组件 suspend 的按钮点击或交互都需要用 `useTransition` 来避免意外的隐藏了用户正在交互的内容。
+`useTransition` 是*非常*常见的需求。几乎所有可能导致组件挂机按钮点击或交互的操作都需要使用 `useTransition`，以避免意外隐藏用户正在交互的内容。
 
 这将导致非常多的遍布各个组件的代码重复。这正是**我们通常建议把 `useTransition` 融合到你应用的*设计系统*组件中去**。例如，我们可以吧 transition 逻辑抽取到我们自己的 `<Button>` 组件中：
 
