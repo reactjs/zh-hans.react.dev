@@ -375,7 +375,7 @@ function ProfilePage() {
 
 ### 默认方式：Receded → Skeleton → Complete {#default-receded-skeleton-complete}
 
-打开 [这个例子](https://codesandbox.io/s/prod-grass-g1lh5) 并点击“Open Profile”。你会陆续看到几个显示状态：
+打开[此示例](https://codesandbox.io/s/prod-grass-g1lh5)并点击 “Open Profile”。你会陆续看到几种显示状态：
 
 * **Receded（后退）**： 第一秒，你会看到 `<h1>Loading the app...</h1>` 降级界面。
 * **Skeleton：** 你会看到 `<ProfilePage>` 组件中显示着 `<h2>Loading posts...</h2>` .
