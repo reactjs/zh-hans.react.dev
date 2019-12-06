@@ -379,7 +379,7 @@ function ProfilePage() {
 
 * **Receded（后退）**：第一秒，你会看到 `<h1>Loading the app...</h1>` 降级界面。
 * **Skeleton：** 你会看到 `<ProfilePage>` 组件中显示着 `<h2>Loading posts...</h2>` .
-* **Complete:** 你会看到 `<ProfilePage>` 组件不再显示降级界面。所有内容获取完毕。
+* **Complete：** 你会看到 `<ProfilePage>` 组件不再显示降级界面。所有内容获取完毕。
 
 我们如何区分 Receded 和 Skeleton 状态呢？它们之间的区别在于 **Receded** 感觉像是面向用户“向后退一步”，而 **Skeleton** 模式感觉像是在我们的进程中“向前走一步”来展示更多的内容。
 
