@@ -359,7 +359,7 @@ function ProfilePage() {
 
 我们现在可以看出 Concurrent 模式能够帮助我们在不牺牲组件的独立性和模块性的同时达成更好的用户体验。由 React 来协调 transition。
 
-## 3个阶段 {#the-three-steps}
+## 3 个阶段 {#the-three-steps}
 
 到此我们已经讨论了一个更新可能经历的所有的不同的显示状态。在这一节中，我们我们会给它们命名并讨论它们之间的关联。
 
