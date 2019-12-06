@@ -383,7 +383,7 @@ function ProfilePage() {
 
 我们如何区分 Receded 和 Skeleton 状态呢？它们之间的区别在于 **Receded** 感觉像是面向用户“向后退一步”，而 **Skeleton** 模式感觉像是在我们的进程中“向前走一步”来展示更多的内容。
 
-在这个例子中，我们从 `<HomePage>` 开始我们的旅程：
+在此示例中，我们从 `<HomePage>` 开始我们的旅程：
 
 ```js
 <Suspense fallback={...}>
