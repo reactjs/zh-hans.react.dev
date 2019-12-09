@@ -57,7 +57,7 @@ React 提供了一个新的内置的 `useTransition()` 的 Hook 可以实现这�
 
 我们通过 3 个步骤来实现它。
 
-首先，我们我们要确保我们正在使用 Concurrent 模式。我们会在稍后讨论如何 [采用 Concurrent 模式](/docs/concurrent-mode-adoption.html)，但是就现在而言，我们要让这个特性工作只要知道需要使用 `ReactDOM.createRoot()` 而非 `ReactDOM.render()` 就足够了：
+首先，要确保项目中正在使用 Concurrent 模式。我们会在稍后讨论如何 [采用 Concurrent 模式](/docs/concurrent-mode-adoption.html)，但是就现在而言，我们要让这个特性工作只要知道需要使用 `ReactDOM.createRoot()` 而非 `ReactDOM.render()` 就足够了：
 
 ```js
 const rootElement = document.getElementById("root");
