@@ -406,7 +406,7 @@ function ProfilePage() {
 </Suspense>
 ```
 
-`<ProfileDetails>` 和 `<ProfileTimeline>` 都需要数据来渲染，所以他们 suspend：
+`<ProfileDetails>` 和 `<ProfileTimeline>` 都需要数据来渲染，所以它们将被 suspend：
 
 ```js{4,6}
 <Suspense fallback={...}>
