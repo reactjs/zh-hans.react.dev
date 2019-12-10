@@ -420,7 +420,7 @@ function ProfilePage() {
 </Suspense>
 ```
 
-当一个组件 suspend，React 需要显示最近的那个降级界面。但是对 `<ProfileDetails>` 来说最近的降级界面就已经是最顶层了：
+当组件被 suspend 时，React 需要显示最近的那个降级界面。但是对 `<ProfileDetails>` 来说最近的降级界面就已经是最顶层了：
 
 ```js{2,3,7}
 <Suspense fallback={
