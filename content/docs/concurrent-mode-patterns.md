@@ -355,7 +355,7 @@ function ProfilePage() {
 
 **[在 CodeSandbox 中尝试](https://codesandbox.io/s/modest-ritchie-iufrh)**
 
-当一个按钮点击的时候，它开启一个 transition 并在自身内部调用 `props.onClick()` -- 这会触发 `<ProfilePage>` 组件中的 `handleRefreshClick`。我们开始获取数据，但这并不会触发一个降级界面，因为我们正运行在 transition 中，并且 `useTransition` 调用中指定的10秒钟尚未达到。当一个 transition 等待的时候，这个按钮会显示一个内联的加载中提示。
+当一个按钮点击的时候，它开启一个 transition 并在 transition 内部调用 `props.onClick()` —— 这会触发 `<ProfilePage>` 组件中的 `handleRefreshClick`。我们开始获取最新数据，但这并不会触发一个降级界面，因为我们正运行在 transition 中，并且 `useTransition` 调用时指定的 10 秒钟尚未达到。当一个 transition 等待的时候，这个按钮会内联显示加载中的提示。
 
 我们现在可以看出 Concurrent 模式能够帮助我们在不牺牲组件的独立性和模块性的同时达成更好的用户体验。由 React 来协调 transition。
 
