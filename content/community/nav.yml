@@ -1,7 +1,13 @@
 - title: 社区资源
   items:
     - id: support
+<<<<<<< HEAD
       title: 技术支持
+=======
+      title: Support
+    - id: team
+      title: Team
+>>>>>>> 1dd4e325f070ce198aed69fd9cc5467563679e54
     - id: courses
       title: 课程
     - id: examples
