@@ -110,10 +110,18 @@ function onRenderCallback(
 本次更新中 React commit 阶段结束的时间戳。
 在一次 commit 中这个值在所有的 profiler 之间是共享的，可以将它们按需分组。
 * **`interactions: Set`** -
+<<<<<<< HEAD
 ["interactions"](http://fb.me/react-interaction-tracing) 的集合用来追踪已经列出的更新。（例如当 `render` 或者 `setState` 被调用时）。
+=======
+Set of ["interactions"](https://fb.me/react-interaction-tracing) that were being traced the update was scheduled (e.g. when `render` or `setState` were called).
+>>>>>>> 5b6ad388804aaa5cf5504ccd04329f52960e17ae
 
 > 注意
 >
 > Interactions 能用来识别更新是由什么引起的，尽管这个追踪更新的 API 依然是实验性质的。
 >
+<<<<<<< HEAD
 > 从 [fb.me/react-interaction-tracing](http://fb.me/react-interaction-tracing) 了解更多
+=======
+> Learn more about it at [fb.me/react-interaction-tracing](https://fb.me/react-interaction-tracing)
+>>>>>>> 5b6ad388804aaa5cf5504ccd04329f52960e17ae
