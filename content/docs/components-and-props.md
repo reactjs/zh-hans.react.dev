@@ -150,6 +150,10 @@ function Comment(props) {
     </div>
   );
 }
+const author = {"avatarUrl":"https://oneanime.reallct.com/acg","name":"tinmin"};
+ReactDOM.render(
+    <Comment author={author}/>,
+    document.getElementById('root'));
 ```
 
 [](codepen://components-and-props/extracting-components)
