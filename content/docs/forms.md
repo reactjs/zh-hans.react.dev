@@ -278,7 +278,7 @@ this.setState(partialState);
 
 ## 受控输入空值 {#controlled-input-null-value}
 
-在[受控组件](/docs/forms.html#controlled-components)上指定 value 的 prop 可以防止用户更改输入。如果指定了 `value`，但输入仍可编辑，则可能是意外地将`value` 设置为  `undefined` 或 `null`。
+在[受控组件](/docs/forms.html#controlled-components)上指定 value 的 prop 会阻止用户更改输入。如果你指定了 `value`，但输入仍可编辑，则可能是你意外地将`value` 设置为  `undefined` 或 `null`。
 
 下面的代码演示了这一点。（输入最初被锁定，但在短时间延迟后变为可编辑。）
 
