@@ -48,7 +48,11 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 当你刚开始一个 React 应用时，[通过 HTML 的 script 标签引入 React](/docs/add-react-to-a-website.html) 依然是最好的选项，因为这能让你的项目立即启动。
 
+<<<<<<< HEAD
 但随着应用越来越大，你可能会需要更加集成化的安装方式。我们推荐了[一些 JavaScript 工具链](/docs/create-a-new-react-app.html)，它们适合大型应用。它们只需很少甚至零配置，就能让你充分利用丰富的 React 生态。
+=======
+As your application grows, you might want to consider a more integrated setup. There are several JavaScript toolchains we recommend for larger applications. Each of them can work with little to no configuration and lets you take full advantage of the rich React ecosystem. [Learn how.](/docs/create-a-new-react-app.html)
+>>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 ## 学习 React {#learn-react}
 
