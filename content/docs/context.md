@@ -135,7 +135,7 @@ Provider 接收一个 `value` 属性，传递给消费组件。一个 Provider �
 通过新旧值检测来确定变化，使用了与 [`Object.is`](//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) 相同的算法。
 
 > 注意
-> 
+>
 > 当传递对象给 `value` 时，检测变化的方式会导致一些问题：详见[注意事项](#caveats)。
 
 ### `Class.contextType` {#classcontexttype}
@@ -194,8 +194,8 @@ class MyClass extends React.Component {
 这需要[函数作为子元素（function as a child）](/docs/render-props.html#using-props-other-than-render)这种做法。这个函数接收当前的 context 值，返回一个 React 节点。传递给函数的 `value` 值等同于往上组件树离这个 context 最近的 Provider 提供的 `value` 值。如果没有对应的 Provider，`value` 参数等同于传递给 `createContext()` 的 `defaultValue`。
 
 > 注意
-> 
-> 想要了解更多关于“函数作为子元素（function as a child）”模式，详见 [render props](/docs/render-props.html)。
+>
+> 想要了解更多关于 “函数作为子元素（function as a child）” 模式，详见 [render props](/docs/render-props.html)。
 
 ### `Context.displayName` {#contextdisplayname}
 
@@ -253,7 +253,6 @@ MyContext.displayName = 'MyDisplayName';
 
 `embed:context/reference-caveats-problem.js`
 
-
 为了防止这种情况，将 value 状态提升到父节点的 state 里：
 
 `embed:context/reference-caveats-solution.js`
@@ -263,4 +262,3 @@ MyContext.displayName = 'MyDisplayName';
 > 注意
 >
 > 先前 React 使用实验性的 context API 运行，旧的 API 将会在所有 16.x 版本中得到支持，但用到它的应用应该迁移到新版本。过时的 API 将在未来的 React 版本中被移除。阅读[过时的 context 文档](/docs/legacy-context.html)了解更多。
-
