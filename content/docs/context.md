@@ -106,11 +106,7 @@ function Page(props) {
 
 这种模式足够覆盖很多场景了，在这些场景下你需要将子组件和直接关联的父组件解耦。如果子组件需要在渲染前和父组件进行一些交流，你可以进一步使用 [render props](/docs/render-props.html)。
 
-<<<<<<< HEAD
 但是，有的时候在组件树中很多不同层级的组件需要访问同样的一批数据。Context 能让你将这些数据向组件树下所有的组件进行“广播”，所有的组件都能访问到这些数据，也能访问到后续的数据更新。使用 context 的通用的场景包括管理当前的 locale，theme，或者一些缓存数据，这比替代方案要简单的多。
-=======
-However, sometimes the same data needs to be accessible by many components in the tree, and at different nesting levels. Context lets you "broadcast" such data, and changes to it, to all components below. Common examples where using context might be simpler than the alternatives include managing the current locale, theme, or a data cache.
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 ## API {#api}
 
@@ -134,23 +130,13 @@ const MyContext = React.createContext(defaultValue);
 
 Provider 接收一个 `value` 属性，传递给消费组件。一个 Provider 可以和多个消费组件有对应关系。多个 Provider 也可以嵌套使用，里层的会覆盖外层的数据。
 
-<<<<<<< HEAD
 当 Provider 的 `value` 值发生变化时，它内部的所有消费组件都会重新渲染。Provider 及其内部 consumer 组件都不受制于 `shouldComponentUpdate` 函数，因此当 consumer 组件在其祖先组件退出更新的情况下也能更新。
 
 通过新旧值检测来确定变化，使用了与 [`Object.is`](//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) 相同的算法。
 
 > 注意
-> 
-> 当传递对象给 `value` 时，检测变化的方式会导致一些问题：详见[注意事项](#caveats)。
-=======
-All consumers that are descendants of a Provider will re-render whenever the Provider's `value` prop changes. The propagation from Provider to its descendant consumers (including [`.contextType`](#classcontexttype) and [`useContext`](/docs/hooks-reference.html#usecontext)) is not subject to the `shouldComponentUpdate` method, so the consumer is updated even when an ancestor component skips an update.
-
-Changes are determined by comparing the new and old values using the same algorithm as [`Object.is`](//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).
-
-> Note
 >
-> The way changes are determined can cause some issues when passing objects as `value`: see [Caveats](#caveats).
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
+> 当传递对象给 `value` 时，检测变化的方式会导致一些问题：详见[注意事项](#caveats)。
 
 ### `Class.contextType` {#classcontexttype}
 
@@ -207,15 +193,9 @@ class MyClass extends React.Component {
 
 这需要[函数作为子元素（function as a child）](/docs/render-props.html#using-props-other-than-render)这种做法。这个函数接收当前的 context 值，返回一个 React 节点。传递给函数的 `value` 值等同于往上组件树离这个 context 最近的 Provider 提供的 `value` 值。如果没有对应的 Provider，`value` 参数等同于传递给 `createContext()` 的 `defaultValue`。
 
-<<<<<<< HEAD
 > 注意
-> 
-> 想要了解更多关于“函数作为子元素（function as a child）”模式，详见 [render props](/docs/render-props.html)。
-=======
-> Note
 >
-> For more information about the 'function as a child' pattern, see [render props](/docs/render-props.html).
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
+> 想要了解更多关于 “函数作为子元素（function as a child）” 模式，详见 [render props](/docs/render-props.html)。
 
 ### `Context.displayName` {#contextdisplayname}
 
@@ -261,11 +241,7 @@ MyContext.displayName = 'MyDisplayName';
 
 ### 消费多个 Context {#consuming-multiple-contexts}
 
-<<<<<<< HEAD
 为了确保 context 快速进行重渲染，React 需要使每一个 consumers 组件的 context 在组件树中成为一个单独的节点。
-=======
-To keep context re-rendering fast, React needs to make each context consumer a separate node in the tree.
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 `embed:context/multiple-contexts.js`
 
@@ -277,7 +253,6 @@ To keep context re-rendering fast, React needs to make each context consumer a s
 
 `embed:context/reference-caveats-problem.js`
 
-
 为了防止这种情况，将 value 状态提升到父节点的 state 里：
 
 `embed:context/reference-caveats-solution.js`
@@ -287,11 +262,3 @@ To keep context re-rendering fast, React needs to make each context consumer a s
 > 注意
 >
 > 先前 React 使用实验性的 context API 运行，旧的 API 将会在所有 16.x 版本中得到支持，但用到它的应用应该迁移到新版本。过时的 API 将在未来的 React 版本中被移除。阅读[过时的 context 文档](/docs/legacy-context.html)了解更多。
-
-<<<<<<< HEAD
-=======
-> Note
->
-> React previously shipped with an experimental context API. The old API will be supported in all 16.x releases, but applications using it should migrate to the new version. The legacy API will be removed in a future major React version. Read the [legacy context docs here](/docs/legacy-context.html).
-
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4

@@ -465,11 +465,7 @@ function ScrollView({row}) {
 
 ### 我该如何测量 DOM 节点？ {#how-can-i-measure-a-dom-node}
 
-<<<<<<< HEAD
-要想测量一个 DOM 节点的位置或是尺寸，你可以使用 [callback ref](/docs/refs-and-the-dom.html#callback-refs)。每当 ref 被附加到一个另一个节点，React 就会调用 callback。这里有一个 [小 demo](https://codesandbox.io/s/l7m0v5x4v9):
-=======
-One rudimentary way to measure the position or size of a DOM node is to use a [callback ref](/docs/refs-and-the-dom.html#callback-refs). React will call that callback whenever the ref gets attached to a different node. Here is a [small demo](https://codesandbox.io/s/l7m0v5x4v9):
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
+获取 DOM 节点的位置或是大小的基本方式是使用 [callback ref](/docs/refs-and-the-dom.html#callback-refs)。每当 ref 被附加到一个另一个节点，React 就会调用 callback。这里有一个 [小 demo](https://codesandbox.io/s/l7m0v5x4v9):
 
 ```js{4-8,12}
 function MeasureExample() {
@@ -494,13 +490,9 @@ function MeasureExample() {
 
 注意到我们传递了 `[]` 作为 `useCallback` 的依赖列表。这确保了 ref callback 不会在再次渲染时改变，因此 React 不会在非必要的时候调用它。
 
-<<<<<<< HEAD
-如果你愿意，你可以 [把这个逻辑抽取出来作为](https://codesandbox.io/s/m5o42082xy) 一个可复用的 Hook:
-=======
 In this example, the callback ref will be called only when the component mounts and unmounts, since the rendered `<h1>` component stays present throughout any rerenders. If you want to be notified any time a component resizes, you may want to use [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) or a third-party Hook built on it.
 
-If you want, you can [extract this logic](https://codesandbox.io/s/m5o42082xy) into a reusable Hook:
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
+如果你愿意，你可以 [把这个逻辑抽取出来作为](https://codesandbox.io/s/m5o42082xy) 一个可复用的 Hook:
 
 ```js{2}
 function MeasureExample() {
@@ -724,13 +716,8 @@ function Counter() {
 
 ```js{2-6,10-11,16}
 function Example(props) {
-<<<<<<< HEAD
   // 把最新的 props 保存在一个 ref 中
-  let latestProps = useRef(props);
-=======
-  // Keep latest props in a ref.
   const latestProps = useRef(props);
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
   useEffect(() => {
     latestProps.current = props;
   });
