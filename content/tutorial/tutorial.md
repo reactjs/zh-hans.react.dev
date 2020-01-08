@@ -81,7 +81,7 @@ npx create-react-app my-app
 3. 删除掉新项目中 `src/` 文件夹下的所有文件。
 
 > 注意：
-> 
+>
 > **不要删除整个 `src` 文件夹，删除里面的源文件**。我们会在接下来的步骤中使用示例代码替换默认源文件。
 
 ```bash
@@ -554,7 +554,7 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 #### 跟踪数据的改变 {#detecting-changes}
 
-如果直接修改数据，那么就很难跟踪到数据的改变。跟踪数据的改变需要可变对象可以与之改变之前的版本进行对比，这样整个对象树都需要被遍历一次。
+如果直接修改数据，那么就很难跟踪到数据的改变。跟踪数据的改变需要可变对象可以与改变之前的版本进行对比，这样整个对象树都需要被遍历一次。
 
 跟踪不可变数据的变化相对来说就容易多了。如果发现对象变成了一个新对象，那么我们就可以说对象发生改变了。
 
@@ -801,7 +801,7 @@ history = [
 
 ### 再次提升状态 {#lifting-state-up-again}
 
-我们希望顶层 Game 组件展示出一个历史步骤的列表。这个功能需要访问 `history` 的数据，因此我们把 `history` 这个 state 放在顶层 Game 组件中。 
+我们希望顶层 Game 组件展示出一个历史步骤的列表。这个功能需要访问 `history` 的数据，因此我们把 `history` 这个 state 放在顶层 Game 组件中。
 
 我们把 `history` state 放在了 Game 组件中，这样就可以从它的子组件 Board 里面删除掉 `square` 中的 state。正如我们把 Square 组件的[状态提升](#lifting-state-up)到 Board 组件一样，现在我们来把 state 从 Board 组件提升到顶层的 Game 组件里。这样，Game 组件就拥有了对 Board 组件数据的完全控制权，除此之外，还可以让 Game 组件控制 Board 组件，并根据 `history` 渲染历史步骤。
 
