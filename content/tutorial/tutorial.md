@@ -375,7 +375,7 @@ class Board extends React.Component {
   }
 ```
 
-当我们填充棋盘后，`this.state.squares` 数组的值可能像下面这样：
+当我们填充棋盘后，`this.state.squares` 数组的值可能如下所示：
 
 ```javascript
 [
