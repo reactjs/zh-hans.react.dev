@@ -396,14 +396,14 @@ it("点击时更新值", () => {
 
   // 获取按钮元素，并触发点击事件
   const button = document.querySelector("[data-testid=toggle]");
-  expect(button.innerHTML).toBe("Turn off");
+  expect(button.innerHTML).toBe("Turn on");
 
   act(() => {
     button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
   });
 
   expect(onChange).toHaveBeenCalledTimes(1);
-  expect(button.innerHTML).toBe("Turn on");
+  expect(button.innerHTML).toBe("Turn off");
 
   act(() => {
     for (let i = 0; i < 5; i++) {
