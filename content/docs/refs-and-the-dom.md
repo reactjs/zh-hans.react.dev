@@ -140,11 +140,7 @@ class CustomTextInput extends React.Component {
 
 #### Refs 与函数组件 {#refs-and-function-components}
 
-<<<<<<< HEAD
-**你不能在函数组件上使用 ref 属性**，因为它们没有实例：
-=======
-By default, **you may not use the `ref` attribute on function components** because they don't have instances:
->>>>>>> 99a18287c163e328f87709cb224742ccac3e113a
+默认情况下，**你不能在函数组件上使用 `ref` 属性**，因为它们没有实例：
 
 ```javascript{1,8,13}
 function MyFunctionComponent() {
@@ -165,11 +161,7 @@ class Parent extends React.Component {
 }
 ```
 
-<<<<<<< HEAD
-如果你需要使用 ref，你应该将组件转化为一个 class，就像当你需要使用生命周期钩子或 state 时一样。
-=======
-If you want to allow people to take a `ref` to your function component, you can use [`forwardRef`](https://reactjs.org/docs/forwarding-refs.html) (possibly in conjunction with [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle)), or you can convert the component to a class.
->>>>>>> 99a18287c163e328f87709cb224742ccac3e113a
+如果要在函数组件中使用 `ref`，你可以使用 [`forwardRef`](https://reactjs.org/docs/forwarding-refs.html)（可与 [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle) 结合使用），或者可以将该组件转化为 class 组件。
 
 不管怎样，你可以**在函数组件内部使用 `ref` 属性**，只要它指向一个 DOM 元素或 class 组件：
 
