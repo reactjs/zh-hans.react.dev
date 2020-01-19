@@ -6,25 +6,25 @@ layout: docs
 category: installation
 ---
 
-React 依靠强大的开源社区收集 bug 报告，pull request 和 [提交 RFC](https://github.com/reactjs/rfcs)。为了鼓励大家反馈，我们打算共享一些特殊的 React 版本，其中可能包括未发布的功能。
+React 依靠强大的开源社区收集 bug 报告，发起 pull request 和 [提交 RFC](https://github.com/reactjs/rfcs)。为了鼓励大家反馈，我们打算共享一些特殊的 React 版本，其中包括未发布的功能。
 
-> 这篇文章与框架、库或者开发者工具的开发人员息息相关。而主要使用 React 来构建面向用户的应用程序的开发人员无需担心我们的预发布通道。 
+> 此文章与从事框架，库或开发工具的开发人员息息相关。而主要使用 React 来构建应用程序的开发者无需担心此预发布渠道。
 
 React 的每个发布渠道都是针对不同的用例进行设计的：
 
-- [**最新版**](#latest-channel)渠道用于稳定的 semver React 版本发布。它通过 npm 安装 React，是目前大家已经在用的方式。**其主要用于所有面向用户的 React 应用程序。**
-- [**Next**](#next-channel) 渠道主要用于追踪 React 源码仓库的 master 分支。我们会将其视为下一个次要版本发布的候选版本。使用它可以进行 React 与第三方项目间的集成测试。
-- [**实验版**](#experimental-channel)渠道包含不在稳定版本中提供的实验阶段的 API 与功能。同时它也追踪了 master 分支，但启用了附加新功能的标志。使用此渠道可以尝试即将发布的功能。
+- [**最新**](#latest-channel)版本用于稳定的 semver React 版本。此版本可通过 npm 安装获取。此渠道为目前大家已经在用的方式。**其主要用于所有面向用户的 React 应用程序。**
+- [**Next**](#next-channel) 版本主要用于追踪 React 源码仓库的 master 分支。我们会将其视为下一个次要版本发布的候选版本。使用它可以进行 React 与第三方项目间的集成测试。
+- [**实验阶段**](#experimental-channel)版本包含稳定版本中不提供的实验阶段的 API 与功能。同时它也追踪了 master 分支，但启用了附加新功能的标志。使用此渠道可以尝试即将发布的功能。
 
 所有版本都将发布到 npm，但只有最新版本遵循[语义版本控制](/docs/faq-versioning.html)。预发布版本（应用于 Next 和实验渠道的版本）会根据其内容的哈希值生成版本，例如，Next 的版本为 `0.0.0-1022ee0ec`，实验版为 `0.0.0-experimental-1022ee0ec`。
 
-**最新版本是面向用户的应用程序的唯一官方支持的发布渠道**。提供 Next 和实验版本的目的是用于测试，我们并不保证功能在这两个版本中不发生变化。因为它们并不遵循用于最新版本发布的 semver 协议。
+**最新版是面向用户应用程序的唯一官方支持发布渠道**。提供 Next 和实验版本的目的是用于测试，我们并不保证功能在这两个版本中不发生变化。因为它们并不遵循用于最新版发布的 semver 协议。
 
 将预发布版本发布到与稳定版本相同的注册表，我们可以利用许多支持 npm 工作流的工具，比如：[unpkg](https://unpkg.com) 和 [CodeSandbox](https://codesandbox.io)。
 
 ### 最新版渠道 {#latest-channel}
 
-最新版用于稳定的 React 版本。它对应于 npm 中的 `latest` 标签，是所有 React 应用发布给实际用户的推荐通道。
+最新版是用于稳定 React 版本的渠道。它对应是 npm 中 `latest` 标签。此版本是所有交付给真实用户的 React 应用程序的推荐版本。
 
 **如果你不确定应该使用哪个版本，那就用最新版**。如果你是 React 开发人员，那么这就是你正确的选择。
 
@@ -40,13 +40,13 @@ Next 属于预发布渠道，用于追踪 React 仓库的 master 分支。我们
 
 Next 渠道中的预发布版本在 npm 中携带 `next` 标签发布。版本号是根据其构建内容的哈希值生成的，例如：`0.0.0-1022ee0ec`。
 
-#### U使用 Next 渠道进行集成测试 {#using-the-next-channel-for-integration-testing}
+#### 使用 Next 渠道进行集成测试 {#using-the-next-channel-for-integration-testing}
 
 Next 渠道用于支持 React 与其他项目之间的集成测试。
 
 React 的所有更改在发布之前都要经过大量的内部测试。然而，React 的整个生态系统使用了无数的环境和配置，我们不可能针对每一项进行测试。
 
-如果你是第三方 React 框架、库、开发者工具或类似基础框架项目的作者，可以针对最近的更新，定期运行测试用例，帮助我们一起维持 React 稳定，为你的用户和整个 React 社区保驾护航。如果你感兴趣，请按照以下步骤进行操作：
+如果你是 React 第三方框架，库，开发者工具或类似基础设施项目的作者，则可以通过定期针对最新版本运行的测试用例，帮助我们一起维持 React 稳定，为你的用户和整个 React 社区保驾护航。如果你对此有兴趣，请按照下列步骤进行操作：
 
 - 在你喜欢的持续集成平台上设置 cron job。[CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) 和 [Travis CI](https://docs.travis-ci.com/user/cron-jobs/) 均支持 cron job。
 - 在 cron job 中，使用 npm 的 `next` 标签将 React 版本更新至 Next 渠道中的最新版本。使用 npm cli：
@@ -64,7 +64,7 @@ React 的所有更改在发布之前都要经过大量的内部测试。然而�
 - 如果均通过，那么恭喜你！你的项目可以与下个小版本的 React 一起使用。
 - 如果发生意外中断，请通过[提交 issus](https://github.com/facebook/react/issues) 告知我们。
 
-Next.js 项目使用了这个工作流。（不开玩笑，这是真的！）你可以参考他们的 [CircleCI 配置](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml)作为示例。
+Next.js 项目使用了这个工作流。你可以参考他们的 [CircleCI 配置](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml)作为示例。
 
 ### 实验版渠道 {#experimental-channel}
 
@@ -92,4 +92,4 @@ E实验性的功能可能会有文档，也可能不会有文档。通常，在�
 
 当我们准备发布新的实验内容时，我们会发布到 [React 博客](/blog)中，但这并不意味着我们将公开发布每个实验的内容。
 
-如果你想查看完整的变更列表，请参考我们的公共 GitHub 库的[历史记录](https://github.com/facebook/react/commits/master)。
+你可以参考 Github 公开仓库的[历史记录](https://github.com/facebook/react/commits/master)以查看完整的变更列表。
