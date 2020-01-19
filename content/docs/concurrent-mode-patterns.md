@@ -1,6 +1,6 @@
 ---
 id: concurrent-mode-patterns
-title: Concurrent UI Patterns (Experimental)
+title: Concurrent UI 模式 (试验阶段)
 permalink: docs/concurrent-mode-patterns.html
 prev: concurrent-mode-suspense.html
 next: concurrent-mode-adoption.html
@@ -15,63 +15,63 @@ next: concurrent-mode-adoption.html
 
 <div class="scary">
 
->Caution:
+>注意：
 >
->This page describes **experimental features that are [not yet available](/docs/concurrent-mode-adoption.html) in a stable release**. Don't rely on experimental builds of React in production apps. These features may change significantly and without a warning before they become a part of React.
+>本章节所描述的实验性功能**在稳定版本中[尚不可用](/docs/concurrent-mode-adoption.html)**。请不要在应用程序的生产环境中使用。这些功能可能会发生重大变化，并且在正式成为 React 的一部分之前不会给出警告。
 >
->This documentation is aimed at early adopters and people who are curious. **If you're new to React, don't worry about these features** -- you don't need to learn them right now. For example, if you're looking for a data fetching tutorial that works today, read [this article](https://www.robinwieruch.de/react-hooks-fetch-data/) instead.
+>本文档面向早期此功能的使用者以及对此功能好奇的开发者。**如果你并不熟悉 React，请不必担心** —— 你不需要立刻学习这些功能。
 
 </div>
 
-Usually, when we update the state, we expect to see changes on the screen immediately. This makes sense because we want to keep our app responsive to user input. However, there are cases where we might prefer to **defer an update from appearing on the screen**.
+通常，当我们更新 state 的时候，我们会期望这些变化立刻反映到屏幕上。我们期望应用能够持续响应用户的输入，这是符合常理的。但是，有时我们会期望**更新延迟响应在屏幕上**。
 
-For example, if we switch from one page to another, and none of the code or data for the next screen has loaded yet, it might be frustrating to immediately see a blank page with a loading indicator. We might prefer to stay longer on the previous screen. Implementing this pattern has historically been difficult in React. Concurrent Mode offers a new set of tools to do that.
+举个例子，假如我们从一个页面切换到另一个页面，但是在下一页面中代码和数据还没有加载好，则会看到空白页，并显示着加载中的加载指示器，这会让人很不舒服。这种情况下我们可能更希望在前一个页面多停留一会儿。在 React 中实现这个功能在之前是很难做到的。Concurrent 模式提供了一系列的新工具使之成为可能。
 
-- [Transitions](#transitions)
-  - [Wrapping setState in a Transition](#wrapping-setstate-in-a-transition)
-  - [Adding a Pending Indicator](#adding-a-pending-indicator)
-  - [Reviewing the Changes](#reviewing-the-changes)
-  - [Where Does the Update Happen?](#where-does-the-update-happen)
-  - [Transitions Are Everywhere](#transitions-are-everywhere)
-  - [Baking Transitions Into the Design System](#baking-transitions-into-the-design-system)
-- [The Three Steps](#the-three-steps)
-  - [Default: Receded → Skeleton → Complete](#default-receded-skeleton-complete)
-  - [Preferred: Pending → Skeleton → Complete](#preferred-pending-skeleton-complete)
-  - [Wrap Lazy Features in `<Suspense>`](#wrap-lazy-features-in-suspense)
-  - [Suspense Reveal “Train”](#suspense-reveal-train)
-  - [Delaying a Pending Indicator](#delaying-a-pending-indicator)
-  - [Recap](#recap)
-- [Other Patterns](#other-patterns)
-  - [Splitting High and Low Priority State](#splitting-high-and-low-priority-state)
-  - [Deferring a Value](#deferring-a-value)
+- [Transition](#transitions)
+  - [用 Transition 包裹 setState](#wrapping-setstate-in-a-transition)
+  - [添加一个等待提示器](#adding-a-pending-indicator)
+  - [回顾更改](#reviewing-the-changes)
+  - [是在那里更新的？](#where-does-the-update-happen)
+  - [很多场景可以使用 transition](#transitions-are-everywhere)
+  - [把 Transition 融合到你应用的设计系统](#baking-transitions-into-the-design-system)
+- [3个阶段](#the-three-steps)
+  - [默认方式：Receded → Skeleton → Complete](#default-receded-skeleton-complete)
+  - [期望方式: Pending → Skeleton → Complete](#preferred-pending-skeleton-complete)
+  - [使用 `<Suspense>` 包裹惰性功能](#wrap-lazy-features-in-suspense)
+  - [Suspense 更新“列车” ](#suspense-reveal-train)
+  - [延迟显示等待提示](#delaying-a-pending-indicator)
+  - [回顾](#recap)
+- [其他模式](#other-patterns)
+  - [根据优先级分割 state](#splitting-high-and-low-priority-state)
+  - [延迟一个值](#deferring-a-value)
   - [SuspenseList](#suspenselist)
-- [Next Steps](#next-steps)
+- [下一步](#next-steps)
 
-## Transitions {#transitions}
+## Transition {#transitions}
 
-Let's revisit [this demo](https://codesandbox.io/s/infallible-feather-xjtbu) from the previous page about [Suspense for Data Fetching](/docs/concurrent-mode-suspense.html).
+我们先来回顾一下前一篇关于 [Suspense 用于数据获取](/docs/concurrent-mode-suspense.html) 文章中的 [这个示例](https://codesandbox.io/s/infallible-feather-xjtbu)。
 
-When we click the "Next" button to switch the active profile, the existing page data immediately disappears, and we see the loading indicator for the whole page again. We can call this an "undesirable" loading state. **It would be nice if we could "skip" it and wait for some content to load before transitioning to the new screen.**
+当我们点击 "Next" 按钮来切换激活的页面，现存的页面立刻消失了，然后我们看到整个页面只有一个加载提示。可以说这是一个“不受欢迎”的加载状态。**如果我们可以“跳过”这个过程，并且等到内容加载后再过渡到新的页面，效果会更好**
 
-React offers a new built-in `useTransition()` Hook to help with this.
+React 提供了一个新的内置的 `useTransition()` 的 Hook 可以实现这个设计。
 
-We can use it in three steps.
+我们通过 3 个步骤来实现它。
 
-First, we'll make sure that we're actually using Concurrent Mode. We'll talk more about [adopting Concurrent Mode](/docs/concurrent-mode-adoption.html) later, but for now it's sufficient to know that we need to use `ReactDOM.createRoot()` rather than `ReactDOM.render()` for this feature to work:
+首先，要确保项目中正在使用 Concurrent 模式。我们会在稍后讨论如何 [采用 Concurrent 模式](/docs/concurrent-mode-adoption.html)，但是就现在而言，我们要让这个特性工作只要知道需要使用 `ReactDOM.createRoot()` 而非 `ReactDOM.render()` 就足够了：
 
 ```js
 const rootElement = document.getElementById("root");
-// Opt into Concurrent Mode
+// 进入 Concurrent 模式
 ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
-Next, we'll add an import for the `useTransition` Hook from React:
+接下来，我们需要增加一个从 React 引入 `useTransition` Hook 的 import：
 
 ```js
 import React, { useState, useTransition, Suspense } from "react";
 ```
 
-Finally, we'll use it inside the `App` component:
+最后，我们在 `App` 组件中使用它：
 
 ```js{3-5}
 function App() {
@@ -82,18 +82,18 @@ function App() {
   // ...
 ```
 
-**By itself, this code doesn't do anything yet.** We will need to use this Hook's return values to set up our state transition. There are two values returned from `useTransition`:
+**就这段代码而言，它还什么都做不了。**我们需要使用这个 Hook 的返回值来配置我们的界面切换。`useTransition` 包含两个返回值：
 
-* `startTransition` is a function. We'll use it to tell React *which* state update we want to defer.
-* `isPending` is a boolean. It's React telling us whether that transition is ongoing at the moment.
+* `startTransition` 类型为函数。我们用它来告诉 React 我们希望的延迟的是*哪个* state 的更新。
+* `isPending` 类型为 boolean。此变量在 React 中用于告知我们该转换是否正在进行。
 
-We will use them right below.
+接下来我们就会用到它们。
 
-Note we passed a configuration object to `useTransition`. Its `timeoutMs` property specifies **how long we're willing to wait for the transition to finish**. By passing `{timeoutMs: 3000}`, we say "If the next profile takes more than 3 seconds to load, show the big spinner -- but before that timeout it's okay to keep showing the previous screen".
+注意我们给 `useTransition` 传入了一个配置对象。此对象包含 `timeoutMs` 属性，该属性指定了**我们希望这个转换在多久之内完成**。通过传入了配置 `{timeoutMs: 3000}`，就等同于是告诉 React “如果下一个页面需要 3 秒钟以上才能加载好，就展示加载指示器 —— 但是在那之前，我们先显示前一个界面”。
 
-### Wrapping setState in a Transition {#wrapping-setstate-in-a-transition}
+### 用 Transition 包裹 setState {#wrapping-setstate-in-a-transition}
 
-Our "Next" button click handler sets the state that switches the current profile in the state:
+我们的 "Next" 按钮的点击事件处理器能够引起触发切换页面的 state 更新：
 
 ```js{4}
 <button
@@ -104,7 +104,7 @@ Our "Next" button click handler sets the state that switches the current profile
 >
 ```
 
- We'll wrap that state update into `startTransition`. That's how we tell React **we don't mind React delaying that state update** if it leads to an undesirable loading state:
+我们把这个 state 更新包裹在 `startTransition` 中。这就是我们通知 React 如果它会产生不受欢迎的加载中界面 **我们希望 React 延迟更新此 state**：
 
 ```js{3,6}
 <button
@@ -117,23 +117,23 @@ Our "Next" button click handler sets the state that switches the current profile
 >
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/musing-driscoll-6nkie)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/musing-driscoll-6nkie)**
 
-Press "Next" a few times. Notice it already feels very different. **Instead of immediately seeing an empty screen on click, we now keep seeing the previous page for a while.** When the data has loaded, React transitions us to the new screen.
+试试点击 "Next" 几下。注意它的体验已经很不一样了。**当点击时，我们没有直接切换到一个空白的页面，而是在前一个页面停留了一段时间。**当数据加载好的时候 React 会帮我们切换到新的界面。
 
-If we make our API responses take 5 seconds, [we can confirm](https://codesandbox.io/s/relaxed-greider-suewh) that now React "gives up" and transitions anyway to the next screen after 3 seconds. This is because we passed `{timeoutMs: 3000}` to `useTransition()`. For example, if we passed `{timeoutMs: 60000}` instead, it would wait a whole minute.
+如果我们把 API 接口的响应时间调整到 5 秒钟，[我们就可以确认](https://codesandbox.io/s/relaxed-greider-suewh) React “放弃”停留并在 3 秒后转换到了新的页面。这是因为我们给 `useTransition()` 传入的配置 `{timeoutMs: 3000}`。假如，我们传入的是 `{timeoutMs: 60000}` 那么它会等上整整一分钟。
 
-### Adding a Pending Indicator {#adding-a-pending-indicator}
+### 添加一个等待提示器 {#adding-a-pending-indicator}
 
-There's still something that feels broken about [our last example](https://codesandbox.io/s/musing-driscoll-6nkie). Sure, it's nice not to see a "bad" loading state. **But having no indication of progress at all feels even worse!** When we click "Next", nothing happens and it feels like the app is broken.
+在 [我们前一个例子](https://codesandbox.io/s/musing-driscoll-6nkie) 中还是有地方体验不友好。最好不要显示加载中。**但是如果没有这个过程提示的话体验会更糟糕！**当我们点击 "Next"按钮，什么都没有发生，就好像整个应用卡死一样。
 
-Our `useTransition()` call returns two values: `startTransition` and `isPending`.
+调用 `useTransition()` 包含两个值返回值：`startTransition` 和 `isPending`。
 
 ```js
   const [startTransition, isPending] = useTransition({ timeoutMs: 3000 });
 ```
 
-We've already used `startTransition` to wrap the state update. Now we're going to use `isPending` too. React gives this boolean to us so we can tell whether **we're currently waiting for this transition to finish**. We'll use it to indicate that something is happening:
+我们已经使用了 `startTransition` 来包裹 state 更新。现在我们要使用 `isPending` 了。React 提供了这个布尔值来告诉我们当前**我们是否正在等待界面切换完成**。我们会用它来指示是不是有什么事情正在发生：
 
 ```js{4,14}
 return (
@@ -155,13 +155,13 @@ return (
 );
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/jovial-lalande-26yep)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/jovial-lalande-26yep)**
 
-Now, this feels a lot better! When we click Next, it gets disabled because clicking it multiple times doesn't make sense. And the new "Loading..." tells the user that the app didn't freeze.
+现在，这感觉好多了！当我们点击 Next 按钮的时候，它变得不可用，因为点击它很多次并没有意义。而且新增的“Loading...”提示让用户知道程序并没有卡住。
 
-### Reviewing the Changes {#reviewing-the-changes}
+### 回顾更改 {#reviewing-the-changes}
 
-Let's take another look at all the changes we've made since the [original example](https://codesandbox.io/s/infallible-feather-xjtbu):
+我们来回顾基于 [原始示例](https://codesandbox.io/s/infallible-feather-xjtbu) 做出的所有更改：
 
 ```js{3-5,9,11,14,19}
 function App() {
@@ -189,40 +189,40 @@ function App() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/jovial-lalande-26yep)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/jovial-lalande-26yep)**
 
-It took us only seven lines of code to add this transition:
+我们只用了 7 行代码来实现这个切换：
 
-* We've imported the `useTransition` Hook and used it the component that updates the state.
-* We've passed `{timeoutMs: 3000}` to stay on the previous screen for at most 3 seconds.
-* We've wrapped our state update into `startTransition` to tell React it's okay to delay it.
-* We're using `isPending` to communicate the state transition progress to the user and to disable the button.
+* 我们引入了 `useTransition` Hook 并在更新 state 的组件中使用了它。
+* 我们传入了 `{timeoutMs: 3000}` 使得前一个页面在屏幕上最多保持3秒钟。
+* 我们把 state 更新包裹在 `startTransition` 中，以通知 React 可以延迟这个更新。
+* 我们使用 `isPending` 来告诉用户界面切换的进展并禁用按钮。
 
-As a result, clicking "Next" doesn't perform an immediate state transition to an "undesirable" loading state, but instead stays on the previous screen and communicates progress there.
+最后的结果是，点击 “Next” 按钮不会立刻切换界面并展示加载中，而是停留在前一个界面并同步加载进度。
 
-### Where Does the Update Happen? {#where-does-the-update-happen}
+### 是在哪里更新的？ {#where-does-the-update-happen}
 
-This wasn't very difficult to implement. However, if you start thinking about how this could possibly work, it might become a little mindbending. If we set the state, how come we don't see the result right away? *Where* is the next `<ProfilePage>` rendering?
+这并不是很难实现。但是，如果你已经开始思考这是如何工作的，它可能会让你感到费解。既然我们更新了 state，为什么我们不能立刻看到结果呢？而下一个 `<ProfilePage>` 又是在*哪里*渲染的呢？
 
-Clearly, both "versions" of `<ProfilePage>` exist at the same time. We know the old one exists because we see it on the screen and even display a progress indicator on it. And we know the new version also exists *somewhere*, because it's the one that we're waiting for!
+很显然，两个“版本”的 `<ProfilePage>` 同时存在了。我们知道旧的存在是因为它在界面上，而且它还显示了一个进度提示。我们也知道新的存在于*某个地方*，因为它就是我们正在等待的那个界面！
 
-**But how can two versions of the same component exist at the same time?**
+**但是同一个组件的两个版本的是如何同时存在的呢？**
 
-This gets at the root of what Concurrent Mode is. We've [previously said](/docs/concurrent-mode-intro.html#intentional-loading-sequences) it's a bit like React working on state update on a "branch". Another way we can conceptualize is that wrapping a state update in `startTransition` begins rendering it *"in a different universe"*, much like in science fiction movies. We don't "see" that universe directly -- but we can get a signal from it that tells us something is happening (`isPending`). When the update is ready, our "universes" merge back together, and we see the result on the screen!
+这原因就在于 Concurrent 模式本身。我们 [之前提到](/docs/concurrent-mode-intro.html#intentional-loading-sequences) 它有点像在 “branch” 上运行的的一个 state 更新。或者我们可以想象成，当我们把 state 更新包裹在 `startTransition` 的时候会在*“另一个宇宙中”*开始渲染，就像科幻电影一样。我们并不能直接看到那个宇宙 -- 但是我们能够从那个宇宙探知一些事情正在发生的事情（`isPending`）。当更新完成的时候，我们的“多个宇宙”合并成一个，我们在屏幕上看到最终的结果！
 
-Play a bit more with the [demo](https://codesandbox.io/s/jovial-lalande-26yep), and try to imagine it happening.
+在 [示例](https://codesandbox.io/s/jovial-lalande-26yep) 中多练习一下，然后试着想象它正在发生。
 
-Of course, two versions of the tree rendering *at the same time* is an illusion, just like the idea that all programs run on your computer at the same time is an illusion. An operating system switches between different applications very fast. Similarly, React can switch between the version of the tree you see on the screen and the version that it's "preparing" to show next.
+当然，两个版本的树*同时*渲染只是个假象，正如所有程序同时在你电脑上运行的想法也同样是假象。操作系统会在不同的应用之间快速的切换。类似的，React 可以在不同版本的树上进行切换，一个是你屏幕上看到的那个版本，另一个是它“准备”接下来给你显示的版本。
 
-An API like `useTransition` lets you focus on the desired user experience, and not think about the mechanics of how it's implemented. Still, it can be a helpful metaphor to imagine that updates wrapped in `startTransition` happen "on a branch" or "in a different world".
+一个 `useTransition` 这样的 API 可以让你专注于期望的用户体验，而不需要思考这些机制是如何实现的。仍然，想象 `startTransition` 包裹的更新是“在一个分支上”或者“在另一个世界”发生的，是个很有帮助的比喻。
 
-### Transitions Are Everywhere {#transitions-are-everywhere}
+### 很多场景可以使用 transition {#transitions-are-everywhere}
 
-As we learned from the [Suspense walkthrough](/docs/concurrent-mode-suspense.html), any component can "suspend" any time if some data it needs is not ready yet. We can strategically place `<Suspense>` boundaries in different parts of the tree to handle this, but it won't always be enough.
+正如我们从 [Suspense 走读](/docs/concurrent-mode-suspense.html) 所学，所有所需数据没有准备好的组件都可以“suspend”一段时间。我们可以从策略上用 `<Suspense>` 把树的不同部分圈起来处理，但这并不总是足够的。
 
-Let's get back to our [first Suspense demo](https://codesandbox.io/s/frosty-hermann-bztrp) where there was just one profile. Currently, it fetches the data only once. We'll add a "Refresh" button to check for server updates.
+我们回到 [第一个 Suspense 示例](https://codesandbox.io/s/frosty-hermann-bztrp) 那时还是只有一个界面的。现在我们增加一个“Refresh”按钮，用来检查服务端的数据更新。
 
-Our first attempt might look like this:
+我们的第一次尝试大概看起来是这样的：
 
 ```js{6-8,13-15}
 const initialResource = fetchUserAndPosts();
@@ -248,13 +248,13 @@ function ProfilePage() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/boring-shadow-100tf)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/boring-shadow-100tf)**
 
-In this example, we start data fetching at the load *and* every time you press "Refresh". We put the result of calling `fetchUserAndPosts()` into state so that components below can start reading the new data from the request we just kicked off.
+在这个例子中，我们会在加载*和*每次点击 “Refresh” 按钮的时候开始数据获取。我们把 `fetchUserAndPosts()` 的结果放到 state 中，这样下级的组件可以从我们刚刚发起的请求中读取新的数据。
 
-We can see in [this example](https://codesandbox.io/s/boring-shadow-100tf) that pressing "Refresh" works. The `<ProfileDetails>` and `<ProfileTimeline>` components receive a new `resource` prop that represents the fresh data, they "suspend" because we don't have a response yet, and we see the fallbacks. When the response loads, we can see the updated posts (our fake API adds them every 3 seconds).
+我们可以看到在[示例](https://codesandbox.io/s/boring-shadow-100tf)中点击 “Refresh” 是可以正常工作的。`<ProfileDetails>` 和 `<ProfileTimeline>` 组件接收代表新数据的 `resource` prop，它会因为我们尚未得到服务端响应而 “suspend”，所以我们看到了降级方案界面。当服务端响应加载完成，我们看到更新后的文章（我们的伪造接口每 3 秒增加一些文章）。
 
-However, the experience feels really jarring. We were browsing a page, but it got replaced by a loading state right as we were interacting with it. It's disorienting. **Just like before, to avoid showing an undesirable loading state, we can wrap the state update in a transition:**
+然而，这种交互体验极差。用户正在浏览页面，但是在与页面进行交互的时候，内容却被加载状态覆盖。这会让人感觉匪夷所思。**正如前面那样，要避免显示加载中，我们把 state 更新放到 transition 中：**
 
 ```js{2-5,9-11,21}
 function ProfilePage() {
@@ -287,15 +287,15 @@ function ProfilePage() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/sleepy-field-mohzb)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/sleepy-field-mohzb)**
 
-This feels a lot better! Clicking "Refresh" doesn't pull us away from the page we're browsing anymore. We see something is loading "inline", and when the data is ready, it's displayed.
+这下感觉好多了！点击 “Refresh” 按钮不会再阻断页面浏览了。我们会看到有内容正在“内联”加载，并且当数据准备好，它就显示出来了。
 
-### Baking Transitions Into the Design System {#baking-transitions-into-the-design-system}
+### 把 Transition 融合到你应用的设计系统 {#baking-transitions-into-the-design-system}
 
-We can now see that the need for `useTransition` is *very* common. Pretty much any button click or interaction that can lead to a component suspending needs to be wrapped in `useTransition` to avoid accidentally hiding something the user is interacting with.
+`useTransition` 是*非常*常见的需求。几乎所有可能导致组件挂机按钮点击或交互的操作都需要使用 `useTransition`，以避免意外隐藏用户正在交互的内容。
 
-This can lead to a lot of repetitive code across components. This is why **we generally recommend to bake `useTransition` into the *design system* components of your app**. For example, we can extract the transition logic into our own `<Button>` component:
+这可能会导致组件存在大量重复代码。这正是**我们通常建议把 `useTransition` 融合到你应用的*设计系统*组件中**的原因。例如，我们可以把 transition 逻辑抽取到我们自己的 `<Button>` 组件中：
 
 ```js{7-9,20,24}
 function Button({ children, onClick }) {
@@ -327,9 +327,9 @@ function Button({ children, onClick }) {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/modest-ritchie-iufrh)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/modest-ritchie-iufrh)**
 
-Note that the button doesn't care *what* state we're updating. It's wrapping *any* state updates that happen during its `onClick` handler into a transition. Now that our `<Button>` takes care of setting up the transition, the `<ProfilePage>` component doesn't need to set up its own:
+需要注意按钮并不关心我们会更新*什么*。它把发生在它 `onClick` 处理器过程中的*任意* state 更新包装到一个 transition 中。这样我们的 `<Button>` 组件来管理 transition 的配置，而 `<ProfilePage>` 组件不在需要单独配置：
 
 ```js{4-6,11-13}
 function ProfilePage() {
@@ -353,37 +353,37 @@ function ProfilePage() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/modest-ritchie-iufrh)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/modest-ritchie-iufrh)**
 
-When a button gets clicked, it starts a transition and calls `props.onClick()` inside of it -- which triggers `handleRefreshClick` in the `<ProfilePage>` component. We start fetching the fresh data, but it doesn't trigger a fallback because we're inside a transition, and the 10 second timeout specified in the `useTransition` call hasn't passed yet. While a transition is pending, the button displays an inline loading indicator.
+当一个按钮点击的时候，它开启一个 transition 并在 transition 内部调用 `props.onClick()` —— 这会触发 `<ProfilePage>` 组件中的 `handleRefreshClick`。我们开始获取最新数据，但这并不会触发一个降级界面，因为我们正运行在 transition 中，并且 `useTransition` 调用时指定的 10 秒钟尚未达到。当一个 transition 等待的时候，这个按钮会内联显示加载中的提示。
 
-We can see now how Concurrent Mode helps us achieve a good user experience without sacrificing isolation and modularity of components. React coordinates the transition.
+我们现在可以看出 Concurrent 模式能够帮助我们在不牺牲组件的独立性和模块性的同时达成更好的用户体验。由 React 来协调 transition。
 
-## The Three Steps {#the-three-steps}
+## 3 个阶段 {#the-three-steps}
 
-By now we have discussed all of the different visual states that an update may go through. In this section, we will give them names and talk about the progression between them.
+至此我们已经讨论了更新时可能经历的所有不同的显示状态。在这一节中，我们会给它们命名并讨论它们之间的关联。
 
 <br>
 
 <img src="../images/docs/cm-steps-simple.png" alt="Three steps" />
 
-At the very end, we have the **Complete** state. That's where we want to eventually get to. It represents the moment when the next screen is fully rendered and isn't loading more data.
+在最后，我们达到 **Complete（完成）** 状态。那是我们最终想要达到的状态。它代表着下一个界面完全渲染并且不再加载新数据的时刻。
 
-But before our screen can be Complete, we might need to load some data or code. When we're on the next screen, but some parts of it are still loading, we call that a **Skeleton** state.
+但是在屏幕完全展示之前，我们可能需要加载一些数据或代码。当我们已经在下一个界面，但它的某些部分还在加载中，我们称此状态为 **Skeleton（骨架）**。
 
-Finally, there are two primary ways that lead us to the Skeleton state. We will illustrate the difference between them with a concrete example.
+最后，有两种主要方式可以使我们进入骨架状态。我们会通过具体的示例详细描述它们之间的区别。
 
-### Default: Receded → Skeleton → Complete {#default-receded-skeleton-complete}
+### 默认方式：Receded → Skeleton → Complete {#default-receded-skeleton-complete}
 
-Open [this example](https://codesandbox.io/s/prod-grass-g1lh5) and click "Open Profile". You will see several visual states one by one:
+打开[此示例](https://codesandbox.io/s/prod-grass-g1lh5)并点击 “Open Profile”。你会陆续看到几种显示状态：
 
-* **Receded**: For a second, you will see the `<h1>Loading the app...</h1>` fallback.
-* **Skeleton:** You will see the `<ProfilePage>` component with `<h2>Loading posts...</h2>` inside.
-* **Complete:** You will see the `<ProfilePage>` component with no fallbacks inside. Everything was fetched.
+* **Receded（后退）**：第一秒，你会看到 `<h1>Loading the app...</h1>` 降级界面。
+* **Skeleton：** 你会看到 `<ProfilePage>` 组件中显示着 `<h2>Loading posts...</h2>` .
+* **Complete：** 你会看到 `<ProfilePage>` 组件不再显示降级界面。所有内容获取完毕。
 
-How do we separate the Receded and the Skeleton states? The difference between them is that the **Receded** state feels like "taking a step back" to the user, while the **Skeleton** state feels like "taking a step forward" in our progress to show more content.
+我们如何区分 Receded 和 Skeleton 状态呢？它们之间的区别在于 **Receded** 感觉像是面向用户“向后退一步”，而 **Skeleton** 模式感觉像是在我们的进程中“向前走一步”来展示更多的内容。
 
-In this example, we started our journey on the `<HomePage>`:
+在此示例中，我们从 `<HomePage>` 开始我们的旅程：
 
 ```js
 <Suspense fallback={...}>
@@ -392,7 +392,7 @@ In this example, we started our journey on the `<HomePage>`:
 </Suspense>
 ```
 
-After the click, React started rendering the next screen:
+点击之后，React 开始渲染下一个界面：
 
 ```js
 <Suspense fallback={...}>
@@ -406,7 +406,7 @@ After the click, React started rendering the next screen:
 </Suspense>
 ```
 
-Both `<ProfileDetails>` and `<ProfileTimeline>` need data to render, so they suspend:
+`<ProfileDetails>` 和 `<ProfileTimeline>` 都需要数据来渲染，所以它们将被 suspend：
 
 ```js{4,6}
 <Suspense fallback={...}>
@@ -420,11 +420,11 @@ Both `<ProfileDetails>` and `<ProfileTimeline>` need data to render, so they sus
 </Suspense>
 ```
 
-When a component suspends, React needs to show the closest fallback. But the closest fallback to `<ProfileDetails>` is at the top level:
+当组件被 suspend 时，React 需要显示最近的那个降级界面。但是对 `<ProfileDetails>` 来说最近的降级界面就已经是最顶层了：
 
 ```js{2,3,7}
 <Suspense fallback={
-  // We see this fallback now because of <ProfileDetails>
+  // 我们现在看到这个降级界面是由 <ProfileDetails> 导致
   <h1>Loading the app...</h1>
 }>
   {/* next screen */}
@@ -437,17 +437,17 @@ When a component suspends, React needs to show the closest fallback. But the clo
 </Suspense>
 ```
 
-This is why when we click the button, it feels like we've "taken a step back". The `<Suspense>` boundary which was previously showing useful content (`<HomePage />`) had to "recede" to showing the fallback (`<h1>Loading the app...</h1>`). We call that a **Receded** state.
+这就是当我们点击按钮之后，它感觉像是我们“后退了一步”。`<Suspense>` 范围本来显示的有用内容（`<HomePage />`）必须“后退”并显示降级界面（`<h1>Loading the app...</h1>`）。我们称之为**Receded（后退）**状态。
 
-As we load more data, React will retry rendering, and `<ProfileDetails>` can render successfully. Finally, we're in the **Skeleton** state. We see the new page with missing parts:
+当我们加载了更多内容的时候，React 会重新尝试渲染，这时 `<ProfileDetails>` 能够成功渲染。最终，我们进入 **Skeleton** 状态。我们看到了尚未完全渲染的新的页面。
 
 ```js{6,7,9}
 <Suspense fallback={...}>
-  {/* next screen */}
+  {/* 下一屏 */}
   <ProfilePage>
     <ProfileDetails />
     <Suspense fallback={
-      // We see this fallback now because of <ProfileTimeline>
+      // 我们看到此降级界面是由 <ProfileTimeline> 导致
       <h2>Loading posts...</h2>
     }>
       <ProfileTimeline /> {/* suspends! */}
@@ -456,26 +456,26 @@ As we load more data, React will retry rendering, and `<ProfileDetails>` can ren
 </Suspense>
 ```
 
-Eventually, they load too, and we get to the **Complete** state.
+最终，它们也加载好了，然后我们达到 **Complete** 状态
 
-This scenario (Receded → Skeleton → Complete) is the default one. However, the Receded state is not very pleasant because it "hides" existing information. This is why React lets us opt into a different sequence (**Pending** → Skeleton → Complete) with `useTransition`.
+这个剧情（Receded → Skeleton → Complete）是默认情况。但是 Receded 状态是非常不友好的，因为它“隐藏”了已经存在的信息。这正是 React 让我们通过 `useTransition` 进入另一个序列（**Pending（等待）** → Skeleton → Complete）的原因。
 
-### Preferred: Pending → Skeleton → Complete {#preferred-pending-skeleton-complete}
+### 期望方式: Pending → Skeleton → Complete {#preferred-pending-skeleton-complete}
 
-When we `useTransition`, React will let us "stay" on the previous screen -- and show a progress indicator there. We call that a **Pending** state. It feels much better than the Receded state because none of our existing content disappears, and the page stays interactive.
+当我们使用 `useTransition` 的时候，React 会让我们“停留”在前一个页面 -- 并在那显示一个进度提示。我们称它为一个**Pending（暂停）**状态。这种的体验会比 Receded 状态好很多，因为我们已经显示的信息不会消失，而且页面仍可以交互。
 
-You can compare these two examples to feel the difference:
+你可以对比这两个例子来体验其中的差异：
 
-* Default: [Receded → Skeleton → Complete](https://codesandbox.io/s/prod-grass-g1lh5)
-* **Preferred: [Pending → Skeleton → Complete](https://codesandbox.io/s/focused-snow-xbkvl)**
+* 默认方式: [Receded → Skeleton → Complete](https://codesandbox.io/s/prod-grass-g1lh5)
+* **期望方式: [Pending → Skeleton → Complete](https://codesandbox.io/s/focused-snow-xbkvl)**
 
-The only difference between these two examples is that the first uses regular `<button>`s, but the second one uses our custom `<Button>` component with `useTransition`.
+这两个例子唯一的不同就在于第一个使用的是普通 `<button>`，而第二个使用的是我们使用 `useTransition` 定制的 `<Button>` 组件。
 
-### Wrap Lazy Features in `<Suspense>` {#wrap-lazy-features-in-suspense}
+### 使用 `<Suspense>` 包裹惰性功能 {#wrap-lazy-features-in-suspense}
 
-Open [this example](https://codesandbox.io/s/nameless-butterfly-fkw5q). When you press a button, you'll see the Pending state for a second before moving on. This transition feels nice and fluid.
+打开 [这个例子](https://codesandbox.io/s/nameless-butterfly-fkw5q)。当你点击一个按钮时，你会先看到一个持续1秒的 Pending 状态再继续。这个 transition 体验很好而且流畅。
 
-We will now add a brand new feature to the profile page -- a list of fun facts about a person:
+我们现在需要给详情页面增加一个新特性 -- 某人的趣闻列表
 
 ```js{8,13-25}
 function ProfilePage({ resource }) {
@@ -505,13 +505,13 @@ function ProfileTrivia({ resource }) {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/focused-mountain-uhkzg)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/focused-mountain-uhkzg)**
 
-If you press "Open Profile" now, you can tell something is wrong. It takes whole seven seconds to make the transition now! This is because our trivia API is too slow. Let's say we can't make the API faster. How can we improve the user experience with this constraint?
+如果你现在点击“Open Profile”按钮，你会发现哪里不对劲。它现在要等待整整7秒钟才能完成这个 transition！这是因为我们琐碎的 API 接口响应太慢。假设我们没有办法让这个接口变快。在这个约束条件下我们该如何提升用户体验呢？
 
-If we don't want to stay in the Pending state for too long, our first instinct might be to set `timeoutMs` in `useTransition` to something smaller, like `3000`. You can try this [here](https://codesandbox.io/s/practical-kowalevski-kpjg4). This lets us escape the prolonged Pending state, but we still don't have anything useful to show!
+如果我们不想在 Pending 状态等待太久，我们第一直觉应该是调整 `useTransition` 中 `timeoutMs` 参数到一个更小的值，比如 `3000`。你可以体验一下 [这个](https://codesandbox.io/s/practical-kowalevski-kpjg4)。这样我们就不用在 Pending 状态长时间等待了，但是这个时候我们还没有有用的内容给用户展示！
 
-There is a simpler way to solve this. **Instead of making the transition shorter, we can "disconnect" the slow component from the transition** by wrapping it into `<Suspense>`:
+还有一种简单的方法可以解决这个问题。**与其把 transition 时间缩短，我们不如把慢组件从 transition “分离”出来**，通过把它封装在 `<Suspense>` 中：
 
 ```js{8,10}
 function ProfilePage({ resource }) {
@@ -529,21 +529,21 @@ function ProfilePage({ resource }) {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/condescending-shape-s6694)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/condescending-shape-s6694)**
 
-This reveals an important insight. React always prefers to go to the Skeleton state as soon as possible. Even if we use transitions with long timeouts everywhere, React will not stay in the Pending state for longer than necessary to avoid the Receded state.
+这揭示了一个重要的信息。React 总是倾向尽早的进入 Skeleton 状态。即使我们总是在 transition 中使用很长的超时时间设置，React 为了避免 Receded 状态也不会在 Pending 状态停留多余的时间。
 
-**If some feature isn't a vital part of the next screen, wrap it in `<Suspense>` and let it load lazily.** This ensures we can show the rest of the content as soon as possible. Conversely, if a screen is *not worth showing* without some component, such as `<ProfileDetails>` in our example, do *not* wrap it in `<Suspense>`. Then the transitions will "wait" for it to be ready.
+**如果有些特性并不是下个界面所必要的部分，用 `<Suspense>` 把它包裹起来使其惰性加载。**这样就确保了我们能够尽可能快的给用户显示其他的内容，相反的，如果有些组件缺少了这个界面就*不值得显示*，例如我们例子中的 `<ProfileDetails>`，就*不要*用 `<Suspense>` 包裹它。这样 transition 就会“等待”直到它准备好。
 
-### Suspense Reveal "Train" {#suspense-reveal-train}
+### Suspense 更新“列车” {#suspense-reveal-train}
 
-When we're already on the next screen, sometimes the data needed to "unlock" different `<Suspense>` boundaries arrives in quick succession. For example, two different responses might arrive after 1000ms and 1050ms, respectively. If you've already waited for a second, waiting another 50ms is not going to be perceptible. This is why React reveals `<Suspense>` boundaries on a schedule, like a "train" that arrives periodically. This trades a small delay for reducing the layout thrashing and the number of visual changes presented to the user.
+当我们已经到达下一个界面，有的时用来“解锁”不同 `<Suspense>` 区域的数据在短时间内陆续到达。例如，两个请求响应分别在 1000ms 和 1050ms 到达。如果你已经等待了1秒钟，再等 50ms 也并不容易察觉。这就是 React 在一个计划中显示 `<Suspense>` 区域的原因，就像一趟间隔指定时间到达的“列车”一样。这样就可以用一个较低的延迟换取展示给用户更少的布局变化和视觉变化次数。
 
-You can see a demo of this [here](https://codesandbox.io/s/admiring-mendeleev-y54mk). The "posts" and "fun facts" responses come within 100ms of each other. But React coalesces them and "reveals" their Suspense boundaries together. 
+你可以在 [这里](https://codesandbox.io/s/admiring-mendeleev-y54mk) 查看这个示例。“文章”和“趣闻”响应相差了 100ms。但是 React 把他们的变化合并在一起并同时更新了他们的 Suspense 的区域。
 
-### Delaying a Pending Indicator {#delaying-a-pending-indicator}
+### 延迟显示等待提示 {#delaying-a-pending-indicator}
 
-Our `Button` component will immediately show the Pending state indicator on click:
+当我们点击 `Button` 组件时它会立刻显示一个 Pending 状态提示：
 
 ```js{2,13}
 function Button({ children, onClick }) {
@@ -564,11 +564,11 @@ function Button({ children, onClick }) {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/floral-thunder-iy826)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/floral-thunder-iy826)**
 
-This signals to the user that some work is happening. However, if the transition is relatively short (less than 500ms), it might be too distracting and make the transition itself feel *slower*.
+这让用户知道有什么事情正在发生。但是，如果这个 transition 过程相对较短的时候（小于 500ms），它有可能过于分散注意力，并且使得 transition 本身感觉上*更慢*。
 
-One possible solution to this is to *delay the spinner itself* from displaying:
+一个可能的方法就是*延迟等待提示*的显示：
 
 ```css
 .DelayedSpinner {
@@ -598,29 +598,29 @@ return (
 );
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/gallant-spence-l6wbk)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/gallant-spence-l6wbk)**
 
-With this change, even though we're in the Pending state, we don't display any indication to the user until 500ms has passed. This may not seem like much of an improvement when the API responses are slow. But compare how it feels [before](https://codesandbox.io/s/thirsty-liskov-1ygph) and [after](https://codesandbox.io/s/hardcore-http-s18xr) when the API call is fast. Even though the rest of the code hasn't changed, suppressing a "too fast" loading state improves the perceived performance by not calling attention to the delay.
+通过这个更改，即使我们进入了 Pending 状态，在 500ms 过去之前我们都不会给用户显示任何提示。这对于一些 API 响应较慢的情况算不上是很大的改进。但是在 API 响应快的情况下对比感受下 [使用前](https://codesandbox.io/s/thirsty-liskov-1ygph) 和 [使用后](https://codesandbox.io/s/hardcore-http-s18xr)。即使其他的代码并没有更改，通过不在延迟上吸引用户注意，隐藏掉“过快”的加载状态以达到提升感官体验。
 
-### Recap {#recap}
+### 回顾 {#recap}
 
-The most important things we learned so far are:
+到此我们所学的虽重要的东西如下：
 
-* By default, our loading sequence is Receded → Skeleton → Complete.
-* The Receded state doesn't feel very nice because it hides existing content.
-* With `useTransition`, we can opt into showing a Pending state first instead. This will keep us on the previous screen while the next screen is being prepared.
-* If we don't want some component to delay the transition, we can wrap it in its own `<Suspense>` boundary.
-* Instead of doing `useTransition` in every other component, we can build it into our design system.
+* 默认情况下，我们的加载顺序是 Receded → Skeleton → Complete.
+* Receded 状态的体验并不友好，因为它会隐藏内容。
+* 通过 `useTransition`，我们可以切换到首先进入 Pending 状态而非 Receded。这让我们可以在下一个界面准备好之前停留在前一个页面上。
+* 如果我们不想因为一部分组件延迟整个 transition，我们可以把他们各自用 `<Suspense>` 区域包裹起来。
+* 与其在每个不同组件中使用 `useTransition`，我们不如把它组织到系统设计中。
 
-## Other Patterns {#other-patterns}
+## 其他模式 {#other-patterns}
 
-Transitions are probably the most common Concurrent Mode pattern you'll encounter, but there are a few more patterns you might find useful.
+Transition 大概是你能遇到的最常见的 Concurrent 模式了，但是还有一些其他的模式你有可能用得着。
 
-### Splitting High and Low Priority State {#splitting-high-and-low-priority-state}
+### 根据优先级分割 state {#splitting-high-and-low-priority-state}
 
-When you design React components, it is usually best to find the "minimal representation" of state. For example, instead of keeping `firstName`, `lastName`, and `fullName` in state, it's usually better keep only `firstName` and `lastName`, and then calculate `fullName` during rendering. This lets us avoid mistakes where we update one state but forget the other state.
+当你设计 React 组件的时候，找到 state 的“极小表示法”通常是最好的方式。例如，与其在 state 中保存 `firstName`、`lastName` 和 `fullName`，不如只保存 `firstName` 和 `lastName` 这样通常会更好，然后在渲染时通过计算得到 `fullName`。这可以避免我们只更新了某个 state 却忘记了更新关联 state 所导致的错误。
 
-However, in Concurrent Mode there are cases where you might *want* to "duplicate" some data in different state variables. Consider this tiny translation app:
+然而，在 Concurrent 模式中有些情况下你会*想要*把一些数据*冗余*到不同的 state 变量中。请考虑这个小 translation 应用：
 
 ```js
 const initialQuery = "Hello, world";
@@ -658,21 +658,24 @@ function Translation({ resource }) {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/brave-villani-ypxvf)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/brave-villani-ypxvf)**
 
-Notice how when you type into the input, the `<Translation>` component suspends, and we see the `<p>Loading...</p>` fallback until we get fresh results. This is not ideal. It would be better if we could see the *previous* translation for a bit while we're fetching the next one.
+请注意当我们在输入框打字的时候，`<Translation>` 组件式如何 suspend 的，并且我们会在得到新的结果之前看到 `<p>Loading...</p>` 这个降级界面。这并不理想。当我们在获取下一个翻译的同时如果我们可以多看一会*上一个*翻译效果应该会更好。
 
-In fact, if we open the console, we'll see a warning:
+事实上，如果我们打开控制台，我们会看到一则警告：
 
 ```
 Warning: App triggered a user-blocking update that suspended.
+# Warning: App 触发了一个会 suspend 的 user-blocking 更新。
 
 The fix is to split the update into multiple parts: a user-blocking update to provide immediate feedback, and another update that triggers the bulk of the changes.
+# 修复方法是把更新分离到不同的部分：一个用于提供直接反馈的 user-blocking 更新，和一个用于触发主体变化的更新。
 
 Refer to the documentation for useTransition to learn how to implement this pattern.
+# 参考 useTransition 的文档来了解如何实现这个模式。
 ```
 
-As we mentioned earlier, if some state update causes a component to suspend, that state update should be wrapped in a transition. Let's add `useTransition` to our component:
+正如我们之前提到的，如果一个 state 更新会导致一个组件 suspend，那么这个 state 更新就应该用 transition 包裹起来。我们来把 `useTransition` 添加到我们的组件中：
 
 ```js{4-6,10,13}
 function App() {
@@ -695,17 +698,17 @@ function App() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/zen-keldysh-rifos)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/zen-keldysh-rifos)**
 
-Try typing into the input now. Something's wrong! The input is updating very slowly.
+现在尝试往输入框里敲字吧。有点不对劲！输入框的更新非常慢。
 
-We've fixed the first problem (suspending outside of a transition). But now because of the transition, our state doesn't update immediately, and it can't "drive" a controlled input!
+我们解决了第一个问题（没有使用 transition 的 suspend）。但是因为这个 transition，我们的 state 无法立刻更新，而且无法“驱动”一个受控的输入框！
 
-The answer to this problem **is to split the state in two parts:** a "high priority" part that updates immediately, and a "low priority" part that may wait for a transition.
+这个问题的解决方法是**把 state 分离到两个不同的部分：**一个“高优先级”的直接更新的部分，一个“低优先级的”等待 transition 的部分。
 
-In our example, we already have two state variables. The input text is in `query`, and we read the translation from `resource`. We want changes to the `query` state to happen immediately, but changes to the `resource` (i.e. fetching a new translation) should trigger a transition.
+在我们的例子中，我们已经有两个 state 变量了。输入框文本在 `query` 变量中，和我们从中读取翻译的 `resource` 变量。我们希望 `query` state 的变化可以立刻发生，但是对 `resource` 的变化（例如获取一个新的翻译）应当触发一个 transition。
 
-So the correct fix is to put `setQuery` (which doesn't suspend) *outside* the transition, but `setResource` (which will suspend) *inside* of it.
+所以正确的解决办法是把（不会 suspend 的）`setQuery` 放到 transition *外面*，但保持（会 suspend 的）`setResource` 仍在 transition *里面*。
 
 ```js{4,5}
 function handleChange(e) {
@@ -721,13 +724,13 @@ function handleChange(e) {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/lively-smoke-fdf93)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/lively-smoke-fdf93)**
 
-With this change, it works as expected. We can type into the input immediately, and the translation later "catches up" to what we have typed.
+通过这个更改，它可以正常工作了。我们可以直接在输入框敲字，翻译会在稍后“跟上”我们所输入的内容。
 
-### Deferring a Value {#deferring-a-value}
+### 延迟一个值 {#deferring-a-value}
 
-By default, React always renders a consistent UI. Consider code like this:
+默认情况下，React 总是渲染一个一致的 UI。思考下面这段代码：
 
 ```js
 <>
@@ -736,11 +739,11 @@ By default, React always renders a consistent UI. Consider code like this:
 </>
 ```
 
-React guarantees that whenever we look at these components on the screen, they will reflect data from the same `user`. If a different `user` is passed down because of a state update, you would see them changing together. You can't ever record a screen and find a frame where they would show values from different `user`s. (If you ever run into a case like this, file a bug!)
+React 保证不论什么时候你去看屏幕上的这两个组件，他们所反映的数据来自同一个 `user`。如果一个不同的 `user` 因为 state 更新传递下来，你会发现他们同时变化。你无法通过录屏找到某一帧显示着不同的 `user`。（你要是真的发现了，请提交一个BUG！）
 
-This makes sense in the vast majority of situations. Inconsistent UI is confusing and can mislead users. (For example, it would be terrible if a messenger's Send button and the conversation picker pane "disagreed" about which thread is currently selected.)
+这在绝大多数情况下是合理的。不一致的 UI 会让人困惑并误导用户。（例如，如果一个通讯软件的发送按钮和对话内容界面当前选择的会话“不一致”的话是非常糟糕的。）
 
-However, sometimes it might be helpful to intentionally introduce an inconsistency. We could do it manually by "splitting" the state like above, but React also offers a built-in Hook for this:
+然而，有些时候故意引入不一致可能是有帮助的。我们可以像上面那样把 state “分离”开，但 React 也提供了一个内置的 Hook 来做这件事：
 
 ```js
 import { useDeferredValue } from 'react';
@@ -749,12 +752,11 @@ const deferredValue = useDeferredValue(value, {
   timeoutMs: 5000
 });
 ```
+要演示这个特性，我们要用到 [详情页切换示例](https://codesandbox.io/s/musing-ramanujan-bgw2o)。点击“Next”按钮并注意它是如何使用1秒钟完成 transition 的。
 
-To demonstrate this feature, we'll use [the profile switcher example](https://codesandbox.io/s/musing-ramanujan-bgw2o). Click the "Next" button and notice how it takes 1 second to do a transition.
+假设我们获取用户详情是非常快的，只需要 300 毫秒。现在，因为我们要等待用户信息和文章列表并保持详情页显示的一致性，我们等待了整整1秒。但是如果我们只是希望详情能更快的显示出来呢？
 
-Let's say that fetching the user details is very fast and only takes 300 milliseconds. Currently, we're waiting a whole second because we need both user details and posts to display a consistent profile page. But what if we want to show the details faster?
-
-If we're willing to sacrifice consistency, we could **pass potentially stale data to the components that delay our transition**. That's what `useDeferredValue()` lets us do:
+如果你希望牺牲一致性，我们可以通过**给拖延我们 transition 的组件传递可能过时的数据**来实现。那正是 `useDeferredValue()` 可以帮我们做的事情：
 
 ```js{2-4,10,11,21}
 function ProfilePage({ resource }) {
@@ -786,15 +788,15 @@ function ProfileTimeline({ isStale, resource }) {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/vigorous-keller-3ed2b)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/vigorous-keller-3ed2b)**
 
-The tradeoff we're making here is that `<ProfileTimeline>` will be inconsistent with other components and potentially show an older item. Click "Next" a few times, and you'll notice it. But thanks to that, we were able to cut down the transition time from 1000ms to 300ms.
+我们所做的权衡是，`<ProfileTimeline>` 会和其他组件不一致并很可能会显示一个过时的内容。多点几次“Next”按钮，你就会发现这个问题。但是也正因如此，我们才能把 transition 的时间从 1000ms 降到 300ms。
 
-Whether or not it's an appropriate tradeoff depends on the situation. But it's a handy tool, especially when the content doesn't change very visible between items, and the user might not even realize they were looking at a stale version for a second.
+这到底是是不是一个合理的权衡取决于具体情况。但这是个很方便的工具，尤其是在界面切换的时候内容变化并不明显的情况，或者用户可能根本不会注意到他看的是一秒前版本的旧数据的情况。
 
-It's worth noting that `useDeferredValue` is not *only* useful for data fetching. It also helps when an expensive component tree causes an interaction (e.g. typing in an input) to be sluggish. Just like we can "defer" a value that takes too long to fetch (and show its old value despite others components updating), we can do this with trees that take too long to render.
+值得注意的是 `useDeferredValue` 并不*仅仅*在获取数据的时候有用。它在更新组件树的工作量过大导致交互（例如：在输入框输入内容）卡顿的情况也是有用的。正如我们可以“延迟”一个花费长时间请求的值（并且显示之前的值而不影响其他组件的更新），我们也可以把它用在组件树需要花费较长时间更新的情况。
 
-For example, consider a filterable list like this:
+举个例子，请考虑像这样的一个可筛选列表：
 
 ```js
 function App() {
@@ -817,11 +819,11 @@ function App() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/pensive-shirley-wkp46)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/pensive-shirley-wkp46)**
 
-In this example, **every item in `<MySlowList>` has an artificial slowdown -- each of them blocks the thread for a few milliseconds**. We'd never do this in a real app, but this helps us simulate what can happen in a deep component tree with no single obvious place to optimize.
+在这个例子中，**`<MySlowList>` 中的每个项都有一个人为添加的延迟 -- 每个项会延迟渲染进程几毫秒**。我们永远也不会在真实的应用中这样做，但是这是帮助我们模拟在一个已经没有优化余地的深层嵌套的组件树中会发生的事情。
 
-We can see how typing in the input causes stutter. Now let's add `useDeferredValue`:
+我们可以看到往输入框敲内容是如何导致卡顿的。现在我们把 `useDeferredValue` 加进去：
 
 ```js{3-5,18}
 function App() {
@@ -847,19 +849,19 @@ function App() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/infallible-dewdney-9fkv9)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/infallible-dewdney-9fkv9)**
 
-Now typing has a lot less stutter -- although we pay for this by showing the results with a lag.
+现在输入已经很少卡顿了 -- 尽管我们是通过延迟显示结果来实现这一点的。
 
-How is this different from debouncing? Our example has a fixed artificial delay (3ms for every one of 80 items), so there is always a delay, no matter how fast our computer is. However, the `useDeferredValue` value only "lags behind" if the rendering takes a while. There is no minimal lag imposed by React. With a more realistic workload, you can expect the lag to adjust to the user’s device. On fast machines, the lag would be smaller or non-existent, and on slow machines, it would be more noticeable. In both cases, the app would remain responsive. That’s the advantage of this mechanism over debouncing or throttling, which always impose a minimal delay and can't avoid blocking the thread while rendering.
+这和 debouncing 有什么区别？我们的例子有一个固定的人为延迟（80个项，每项延迟 3ms），所以它总是会延迟，不论我们的电脑有多快。然而，`useDeferredValue` 的值只会在渲染耗费时间的情况下“滞后”。React 并不会加入一点多余的延迟。在一个更实际的工作负荷，你可以预期这个滞后会根据用户的设备而不同。在较快的机器上，滞后会更少或者根本不存在，在较慢的机器上，它会变得更明显。不论哪种情况，应用都会保持可响应。这就是此机制优于 debouncing 或 throttling 的地方，它们总是会引入最小延迟而且不可避免的会在渲染的时候阻塞进程。
 
-Even though there is an improvement in responsiveness, this example isn't as compelling yet because Concurrent Mode is missing some crucial optimizations for this use case. Still, it is interesting to see that features like `useDeferredValue` (or `useTransition`) are useful regardless of whether we're waiting for network or for computational work to finish.
+尽管在响应性上有所提升，这个例子还并不是很有说服力，因为对于这个用例 Concurrent 模式缺少了一些关键优化。但是，看到像 `useDeferredValue`（或 `useTransition`）这样的特性不论是在我们等待网络还是等待计算工作完成的情况都有用还是很有趣的。
 
 ### SuspenseList {#suspenselist}
 
-`<SuspenseList>` is the last pattern that's related to orchestrating loading states.
+`<SuspenseList>` 是有关组织加载状态的最后一个模式了。
 
-Consider this example:
+请考虑这个例子：
 
 ```js{5-10}
 function ProfilePage({ resource }) {
@@ -877,13 +879,13 @@ function ProfilePage({ resource }) {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/proud-tree-exg5t)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/proud-tree-exg5t)**
 
-The API call duration in this example is randomized. If you keep refreshing it, you will notice that sometimes the posts arrive first, and sometimes the "fun facts" arrive first.
+在这个例子中 API 调用的时长是随机的。如果你持续的刷新，你会发现有的时候文章列表会先到达，有的时候“趣闻”会先到达。
 
-This presents a problem. If the response for fun facts arrives first, we'll see the fun facts below the `<h2>Loading posts...</h2>` fallback for posts. We might start reading them, but then the *posts* response will come back, and shift all the facts down. This is jarring.
+这带来了一个问题。如果趣闻先到达了，我们会发现趣闻展示在文章列表的降级界面 `<h2>Loading posts...</h2>`。我们可能会先开始阅读这些，但是稍后*文章列表*的响应到达，把所有的趣闻推到下面。这感觉很不好。
 
-One way we could fix it is by putting them both in a single boundary:
+其中一种解决办法是我们通过把他们放在同一个 Suspence 边界中：
 
 ```js
 <Suspense fallback={<h2>Loading posts and fun facts...</h2>}>
@@ -892,19 +894,19 @@ One way we could fix it is by putting them both in a single boundary:
 </Suspense>
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/currying-violet-5jsiy)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/currying-violet-5jsiy)**
 
-The problem with this is that now we *always* wait for both of them to be fetched. However, if it's the *posts* that came back first, there's no reason to delay showing them. When fun facts load later, they won't shift the layout because they're already below the posts.
+这个办法的问题在于现在我们*总是*要等待这两个数据都获取到之后。但是，如果是*文章列表*先到达，我们就不需要延迟显示它们。当趣闻后到达的时候，因为他们本身就在文章列表下方所以他们并不会导致布局抖动。
 
-Other approaches to this, such as composing Promises in a special way, are increasingly difficult to pull off when the loading states are located in different components down the tree.
+另一种解决办法是，比如通过一种特殊的方式组织 Promise，当我们需要从树中多个不同组件中加载 state 的时候会变得越来越难以实现。
 
-To solve this, we will import `SuspenseList`:
+要解决这个问题，我们要用到 `SuspenseList`：
 
 ```js
 import { SuspenseList } from 'react';
 ```
 
-`<SuspenseList>` coordinates the "reveal order" of the closest `<Suspense>` nodes below it:
+`<SuspenseList>` 协调它下面的最接近的 `<Suspense>` 节点的“展开顺序”:
 
 ```js{3,11}
 function ProfilePage({ resource }) {
@@ -922,16 +924,16 @@ function ProfilePage({ resource }) {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/black-wind-byilt)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/black-wind-byilt)**
 
-The `revealOrder="forwards"` option means that the closest `<Suspense>` nodes inside this list **will only "reveal" their content in the order they appear in the tree -- even if the data for them arrives in a different order**. `<SuspenseList>` has other interesting modes: try changing `"forwards"` to `"backwards"` or `"together"` and see what happens.
+这个 `revealOrder="forwards"` 配置表示这个列表中最接近的 `<Suspense>` **只会根据在树中的显示顺序来“展开”它们的内容 -- 即使它们的数据在不同的顺序到达**。`<SuspenseList>` 还有其他有趣的模式：尝试把 `"forwards"` 换成 `"backwards"` 或 `"together"` 并观察效果。
 
-You can control how many loading states are visible at once with the `tail` prop. If we specify `tail="collapsed"`, we'll see *at most one* fallback at the time. You can play with it [here](https://codesandbox.io/s/adoring-almeida-1zzjh).
+你可以利用 `tail` prop 来控制同时显示多少个加载状态。如果我们制定 `tail="collapsed"`，我们只能看到*最多一个*降级界面。你可以在 [这里](https://codesandbox.io/s/adoring-almeida-1zzjh) 体验一下。
 
-Keep in mind that `<SuspenseList>` is composable, like anything in React. For example, you can create a grid by putting several `<SuspenseList>` rows inside a `<SuspenseList>` table.
+请记住和 React 中的其他东西一样 `<SuspenseList>` 也是可以组合的。例如，你可以做一个 `<SuspenseList>` table 中放着 `<SuspenseList>` row 的表格。
 
-## Next Steps {#next-steps}
+## 下一步 {#next-steps}
 
-Concurrent Mode offers a powerful UI programming model and a set of new composable primitives to help you orchestrate delightful user experiences.
+Concurrent 模式提供了一个强大的 UI 变成模型和一系列的新的可组合的指令集来帮助你构建愉快的用户体验。
 
-It's a result of several years of research and development, but it's not finished. In the section on [adopting Concurrent Mode](/docs/concurrent-mode-adoption.html), we'll describe how you can try it and what you can expect.
+这是通过多年的调查和开发的结果，但它尚未完结。在 [采用 Concurrent 模式](/docs/concurrent-mode-adoption.html) 中，我们会讲如何使用它以及它的效果。
