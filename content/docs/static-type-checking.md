@@ -175,7 +175,7 @@ Create React App 内置了对 TypeScript 的支持。
 需要创建一个使用 TypeScript 的**新项目**，在终端运行：
 
 ```bash
-npx create-react-app my-app --typescript
+npx create-react-app my-app --template typescript
 ```
 
 如需将 TypeScript 添加到**现有的 Create React App 项目**中，[请参考此文档](https://facebook.github.io/create-react-app/docs/adding-typescript).

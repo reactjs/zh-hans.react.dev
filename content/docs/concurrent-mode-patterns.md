@@ -792,7 +792,11 @@ function ProfileTimeline({ isStale, resource }) {
 
 我们所做的权衡是，`<ProfileTimeline>` 会和其他组件不一致并很可能会显示一个过时的内容。多点几次“Next”按钮，你就会发现这个问题。但是也正因如此，我们才能把 transition 的时间从 1000ms 降到 300ms。
 
+<<<<<<< HEAD
 这到底是是不是一个合理的权衡取决于具体情况。但这是个很方便的工具，尤其是在界面切换的时候内容变化并不明显的情况，或者用户可能根本不会注意到他看的是一秒前版本的旧数据的情况。
+=======
+Whether or not it's an appropriate tradeoff depends on the situation. But it's a handy tool, especially when the content doesn't change noticeably between items, and the user might not even realize they were looking at a stale version for a second.
+>>>>>>> c8aef5dc0dc340e800fbb7963a94adb97da9803b
 
 值得注意的是 `useDeferredValue` 并不*仅仅*在获取数据的时候有用。它在更新组件树的工作量过大导致交互（例如：在输入框输入内容）卡顿的情况也是有用的。正如我们可以“延迟”一个花费长时间请求的值（并且显示之前的值而不影响其他组件的更新），我们也可以把它用在组件树需要花费较长时间更新的情况。
 

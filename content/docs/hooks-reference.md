@@ -143,7 +143,11 @@ useEffect(() => {
 
 默认情况下，effect 会在每轮组件渲染完成后执行。这样的话，一旦 effect 的依赖发生变化，它就会被重新创建。
 
+<<<<<<< HEAD
 然而，在某些场景下这么做可能会矫枉过正。比如，在上一章节的订阅示例中，我们不需要在每次组件更新时都创建新的订阅，而是仅需要在 `source` props 改变时重新创建。
+=======
+However, this may be overkill in some cases, like the subscription example from the previous section. We don't need to create a new subscription on every update, only if the `source` prop has changed.
+>>>>>>> c8aef5dc0dc340e800fbb7963a94adb97da9803b
 
 要实现这一点，可以给 `useEffect` 传递第二个参数，它是 effect 所依赖的值数组。更新后的示例如下：
 
