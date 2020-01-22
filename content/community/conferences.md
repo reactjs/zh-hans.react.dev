@@ -22,6 +22,11 @@ February 27 & 28, 2020 in Sydney, Australia
 
 [Website](https://reactconfau.com/) - [Twitter](https://twitter.com/reactconfau) - [Facebook](https://www.facebook.com/reactconfau) - [Instagram](https://www.instagram.com/reactconfau/)
 
+### ReactConf Japan 2020 {#reactconfjp-2020}
+March 21, 2020 in Tokyo, Japan
+
+[Website](https://reactconf.jp/) - [Twitter](https://twitter.com/reactjapanconf)
+
 ### Reactathon 2020 {#reactathon-2020}
 March 30 - 31, 2020 in San Francisco, CA
 
@@ -40,7 +45,7 @@ April 23 - 24, 2020 in Kraków, Poland
 ### React Day Bangalore 2020 {#react-day-bangalore-2020}
 April 25, 2020 in Bangalore, India
 
-[Website](https://reactday.in) - [Twitter](https://twitter.com/ReactDayIn)
+[Website](https://reactday.in) - [Twitter](https://twitter.com/ReactDayIn) - [LinkedIn](https://www.linkedin.com/company/react-day/)
 
 ### render(ATL) 2020 {#render-atlanta-2020}
 May 4-6, 2020. Atlanta, GA, USA.
@@ -71,6 +76,11 @@ June 19, 2020. Chicago, Illinois, USA.
 July 17, 2020. New York City, USA.
 
 [Website](https://reactweek.nyc/) - [Twitter](https://twitter.com/reactweek) - [Facebook](https://www.facebook.com/reactweek)
+
+### React La Conferencia 2020 {#react-la-conferencia-2020}
+July 18, 2020. Medellín, Colombia.
+
+[Website](https://reactlaconf.co/) - [Twitter](https://twitter.com/reactlaconf)
 
 ### ComponentsConf 2020 {#components20}
 September 1, 2020 in Melbourne, Australia
