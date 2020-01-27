@@ -158,8 +158,6 @@ const BasicExample = () => (
 
 只要 `contextTypes` 被定义为函数的一个属性，函数组件也能够引用 `context`。下面的代码展示了一个函数组件写法的 `Button` 组件。
 
-<br/>
-
 ```javascript
 import PropTypes from 'prop-types';
 
@@ -177,7 +175,7 @@ Button.contextTypes = {color: PropTypes.string};
 
 不要这样做。
 
-React 有一个 API 可以更新 context，但它基本上是坏的，你不应该使用它。
+React 有一个 API 可以更新 context，但它基本上是不靠谱的，你不应该使用它。
 
 当 state 或者 props 改变的时候，`getChildContext` 函数就会被调用。为了更新 context 里的数据，使用 `this.setState` 触发当前 state 的更新。这样会产生一个新的 context 并且子组件会接收到变化。
 
@@ -216,4 +214,4 @@ MediaQuery.childContextTypes = {
 };
 ```
 
-问题是，如果组件提供的一个 context 发生了变化，而中间父组件的 `shouldComponentUpdate` 返回 `false`，那么使用到该值的后代组件不会进行更新。使用了 context 的组件则完全失控，所以基本上没有办法能够可靠的更新 context。[这篇博客文章](https://medium.com/@mweststrate/how-to-safely-use-react-context-b7e343eff076)很好地解释了为什么这是一个问题，以及你该如何规避它。
+问题是，如果组件提供的一个 context 发生了变化，而中间父组件的 `shouldComponentUpdate` 返回 `false`，那么使用到该值的后代组件不会进行更新。使用了 context 的组件则完全失控，所以基本上没有办法能够可靠的更新 context。[这篇博客文章](https://medium.com/@mweststrate/how-to-safely-use-react-context-b7e343eff076)很好地解释了为何会出现此类问题，以及你该如何规避它。
