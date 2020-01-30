@@ -1,6 +1,6 @@
 ---
 id: concurrent-mode-adoption
-title: 使用 concurrent 模式（实验性）
+title: 使用 Concurrent 模式（实验性）
 permalink: docs/concurrent-mode-adoption.html
 prev: concurrent-mode-patterns.html
 next: concurrent-mode-reference.html
@@ -17,9 +17,9 @@ next: concurrent-mode-reference.html
 
 >注意：
 >
->本章节所描述的实验功能**在稳定版本中尚不可用**。请不要在应用程序的生产环境中依赖 React 的实验性版本。这些功能可能会发生重大变化，并且在成为 React 的一部分之前不会给出警告。
+>本章节所描述的实验性功能**在稳定版本中[尚不可用](/docs/concurrent-mode-adoption.html)**。请不要在应用程序的生产环境中使用。这些功能可能会发生重大变化，并且在正式成为 React 的一部分之前不会给出警告。
 >
->本文档面向早期此功能的使用者和对此功能好奇的人。如果你不熟悉 React，请不必担心 —— 你不需要立刻学习这些功能。
+>本文档面向早期此功能的使用者以及对此功能好奇的开发者。**如果你并不熟悉 React，请不必担心** —— 你不需要立刻学习这些功能。
 
 </div>
 
