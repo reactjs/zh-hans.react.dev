@@ -9,7 +9,7 @@
     - id: cdn-links
       title: CDN 链接
     - id: release-channels
-      title: Release Channels
+      title: 发布渠道
 - title: 核心概念
   isOrdered: true
   items:
@@ -143,7 +143,7 @@
     - id: concurrent-mode-suspense
       title: Suspense 用于数据获取
     - id: concurrent-mode-patterns
-      title: Concurrent UI Patterns
+      title: Concurrent UI 模式
     - id: concurrent-mode-adoption
       title: 采用 Concurrent 模式
     - id: concurrent-mode-reference
