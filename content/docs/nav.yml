@@ -147,7 +147,7 @@
     - id: concurrent-mode-adoption
       title: 采用 Concurrent 模式
     - id: concurrent-mode-reference
-      title: Concurrent 模式 API Reference
+      title: Concurrent 模式 API 参考
 - title: 贡献
   items:
   - id: how-to-contribute
