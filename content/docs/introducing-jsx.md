@@ -181,4 +181,4 @@ const element = {
 
 >**提示：**
 >
-> 我们推荐在你使用的编辑器中，使用 [“Babel” 提供的语言定义](https://babeljs.io/docs/editors)，来正确地高亮显示 ES6 和 JSX 代码。本网站使用与其兼容的 [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) 配色方案。
+> 我们推荐在你使用的编辑器中，使用 [“Babel” 提供的语言定义](https://babeljs.io/docs/editors)，来正确地高亮显示 ES6 和 JSX 代码。本网站使用与其兼容的 [Oceanic Next](https://github.com/voronianski/oceanic-next-color-scheme/) 配色方案。

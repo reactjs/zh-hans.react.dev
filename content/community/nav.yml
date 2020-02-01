@@ -2,6 +2,8 @@
   items:
     - id: support
       title: 技术支持
+    - id: team
+      title: 团队介绍
     - id: courses
       title: 课程
     - id: examples

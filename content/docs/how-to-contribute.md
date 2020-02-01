@@ -104,6 +104,7 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 ### 必要条件 {#contribution-prerequisites}
 
 * [Node](https://nodejs.org) v8.0.0+、[Yarn](https://yarnpkg.com/en/) v1.2.0+。
+* 已安装 [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 * 你已安装 `gcc`（或者你在有必要安装编译器的情况下也不觉得麻烦），因为一些依赖可能得经过编译，而在 OS X，Xcode 命令行工具会帮你处理；在 Ubuntu，`apt-get install build-essential` 会安装所需的 package（其它 Linux 发行版的类似命令也有效）；在 Windows 上得做些额外步骤，请参考 [`node-gyp` 安装步骤](https://github.com/nodejs/node-gyp#installation)。
 * 熟悉 Git。
 
@@ -153,19 +154,6 @@ yarn link react react-dom
 你可以运行 `yarn linc` 来检查代码风格状态。
 
 不过，linter 也有不能搞定的一些风格。如果有些东西不确定，请查看 [Airbnb's Style Guide](https://github.com/airbnb/javascript) 来指导自己。
-
-### 入门视频 {#introductory-video}
-
-你可能有兴趣看[此视频](https://www.youtube.com/watch?v=wUpPsEcGsg8)（26 分钟），它介绍了如何去贡献 React。
-
-#### 重点： {#video-highlights}
-- [4:12](https://youtu.be/wUpPsEcGsg8?t=4m12s) - 本地环境构建和测试 React
-- [6:07](https://youtu.be/wUpPsEcGsg8?t=6m7s) - 创建和提交 pull request
-- [8:25](https://youtu.be/wUpPsEcGsg8?t=8m25s) - 组织代码
-- [14:43](https://youtu.be/wUpPsEcGsg8?t=14m43s) - React npm registry
-- [19:15](https://youtu.be/wUpPsEcGsg8?t=19m15s) - 为 React 增加新特性
-
-看看这个风趣的 [ReactNYC talk](https://www.youtube.com/watch?v=GWCcZ6fnpn4) 来大致了解体验对 React 首次做贡献。
 
 ### 请求意见稿（RFC） {#request-for-comments-rfc}
 

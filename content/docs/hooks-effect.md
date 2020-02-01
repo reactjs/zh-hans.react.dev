@@ -338,7 +338,7 @@ function FriendStatusWithCounter(props) {
 
 ### 解释: 为什么每次更新的时候都要运行 Effect {#explanation-why-effects-run-on-each-update}
 
-如果你已经习惯了使用 class，那么你可能会想知道为什么 effect 在每次重渲染时都会执行，而不是只在卸载组件的时候执行一次。让我们看一个实际的例子，看看为什么这个设计可以帮助我们创建 bug 更少的组件。
+如果你已经习惯了使用 class，那么你或许会疑惑为什么 effect 的清除阶段在每次重新渲染时都会执行，而不是只在卸载组件的时候执行一次。让我们看一个实际的例子，看看为什么这个设计可以帮助我们创建 bug 更少的组件。
 
 在[本章节开始时](#example-using-classes-1)，我们介绍了一个用于显示好友是否在线的 `FriendStatus` 组件。从 class 中 props 读取 `friend.id`，然后在组件挂载后订阅好友的状态，并在卸载组件的时候取消订阅：
 

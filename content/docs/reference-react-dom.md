@@ -36,7 +36,7 @@ React 支持所有的现代浏览器，包括 IE9 及以上版本，但是需要
 ReactDOM.render(element, container[, callback])
 ```
 
-在提供的 `container` 里渲染一个 React 元素，并返回对该组件的[引用](/docs/more-about-refs.html)（或者针对[无状态组件](/docs/components-and-props.html#functional-and-class-components)返回 `null`）。
+在提供的 `container` 里渲染一个 React 元素，并返回对该组件的[引用](/docs/more-about-refs.html)（或者针对[无状态组件](/docs/components-and-props.html#function-and-class-components)返回 `null`）。
 
 如果 React 元素之前已经在 `container` 里渲染过，这将会对其执行更新操作，并仅会在必要时改变 DOM 以映射最新的 React 元素。
 

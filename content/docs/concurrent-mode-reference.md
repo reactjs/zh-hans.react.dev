@@ -126,7 +126,7 @@ const [startTransition, isPending] = useTransition(SUSPENSE_CONFIG);
 **如果某个 state 更新导致组件挂起，则该 state 更新应包装在 transition 中**
 
 ```js
-const SUSPENSE_CONFIG = {timeoutMs: 2000 };
+const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 
 function App() {
   const [resource, setResource] = useState(initialResource);
