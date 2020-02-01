@@ -175,7 +175,7 @@ yarn link react react-dom
 
 请求意见稿让新特性的合并入库经过一致且受控的流程。你可以前往 [rfcs repository](https://github.com/reactjs/rfcs) 去贡献。
 
-### 协议 {#license}
+### License {#license}
 
 你贡献 React 的同时也就同意了你的贡献部分使用了 MIT 协议。
 
