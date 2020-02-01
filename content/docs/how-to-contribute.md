@@ -167,7 +167,7 @@ yarn link react react-dom
 
 看看这个风趣的 [ReactNYC talk](https://www.youtube.com/watch?v=GWCcZ6fnpn4) 来大致了解体验对 React 首次做贡献。
 
-### 请求意见稿（Request for Comments） {#request-for-comments-rfc}
+### 请求意见稿（RFC） {#request-for-comments-rfc}
 
 许多更改（包括修复 bug 和完善文档）会经过通常所用的 GitHub pull request 工作流程来评审。
 
