@@ -1,6 +1,6 @@
 ---
 id: how-to-contribute
-title: How to Contribute
+title: 贡献流程
 layout: contributing
 permalink: docs/how-to-contribute.html
 next: codebase-overview.html
@@ -9,128 +9,128 @@ redirect_from:
   - "tips/introduction.html"
 ---
 
-React is one of Facebook's first open source projects that is both under very active development and is also being used to ship code to everybody on [facebook.com](https://www.facebook.com). We're still working out the kinks to make contributing to this project as easy and transparent as possible, but we're not quite there yet. Hopefully this document makes the process for contributing clear and answers some questions that you may have.
+React 是 Facebook 首批开源项目中的一员，开发状态保持活跃，并在 [facebook.com](https://www.facebook.com) 上为我们提供了源代码。现在，我们正不断解决若干个问题以使参与贡献 React 尽可能容易和公开透明，虽然目前还差得很远。我们希望本篇文章能够解释清楚贡献的流程，回答你可能会有的一些问题。
 
-### [Code of Conduct](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) {#code-of-conduct}
+### [行为规范](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) {#code-of-conduct}
 
-Facebook has adopted the [Contributor Covenant](https://www.contributor-covenant.org/) as its Code of Conduct, and we expect project participants to adhere to it. Please read [the full text](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
+Facebook 将[参与者公约](https://www.contributor-covenant.org/zh-cn/version/1/4/code-of-conduct)作为行为规范，我们希望参与项目的各位严格遵守。请阅读[全文](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md)去了解什么行为允许，什么行为不允许。
 
-### Open Development {#open-development}
+### 人人皆可开发 {#open-development}
 
-All work on React happens directly on [GitHub](https://github.com/facebook/react). Both core team members and external contributors send pull requests which go through the same review process.
+React 的一切工作在 [GitHub](https://github.com/facebook/react) 上完成，核心团队及其以外的贡献者发送 pull requests，其代码评审流程皆为一致。
 
-### Semantic Versioning {#semantic-versioning}
+### 语义化版本 {#semantic-versioning}
 
-React follows [semantic versioning](https://semver.org/). We release patch versions for critical bugfixes, minor versions for new features or non-essential changes, and major versions for any breaking changes. When we make breaking changes, we also introduce deprecation warnings in a minor version so that our users learn about the upcoming changes and migrate their code in advance. Learn more about our commitment to stability and incremental migration in [our versioning policy](https://reactjs.org/docs/faq-versioning.html).
+React 遵循[语义化版本](https://semver.org/lang/zh-CN/)。我们对重要的漏洞修复发布修订号；对新特性或不重要的变更发布次版本号；对重大且不兼容的变更发布主版本号。我们在开发重大且不兼容的变更时，还会在次版本号用 deprecation warnings 让用户得知将来的变更并提前迁移代码。请查看[版本号规则](https://zh-hans.reactjs.org/docs/faq-versioning.html)来了解更多我们在稳定性和渐进迁移方面要做哪些事情。
 
-Every significant change is documented in the [changelog file](https://github.com/facebook/react/blob/master/CHANGELOG.md).
+每一个重要变更参见 [changelog file](https://github.com/facebook/react/blob/master/CHANGELOG.md)。
 
-### Branch Organization {#branch-organization}
+### 分支管理 {#branch-organization}
 
-Submit all changes directly to the [`master branch`](https://github.com/facebook/react/tree/master). We don't use separate branches for development or for upcoming releases. We do our best to keep `master` in good shape, with all tests passing.
+请直接提交你的变更至 [`master branch`](https://github.com/facebook/react/tree/master)。对于开发或即将推出的版本，我们不会另建分支。我们尽力保持 `master` 不出问题，并通过所有测试。
 
-Code that lands in `master` must be compatible with the latest stable release. It may contain additional features, but no breaking changes. We should be able to release a new minor version from the tip of `master` at any time.
+合并进入 `master` 的代码必须与最新稳定版本兼容，可以有额外特性，但不能有重大变更。我们应从 `master` 随时能发布新的次版本号。
 
-### Feature Flags {#feature-flags}
+### 特性切换（Feature Flags）{#feature-flags}
 
-To keep the `master` branch in a releasable state, breaking changes and experimental features must be gated behind a feature flag.
+我们为了使 `master` 能够发布，要求重大且不兼容的变更和实验性的特性必须用特性切换。
 
-Feature flags are defined in [`packages/shared/ReactFeatureFlags.js`](https://github.com/facebook/react/blob/master/packages/shared/ReactFeatureFlags.js). Some builds of React may enable different sets of feature flags; for example, the React Native build may be configured differently than React DOM. These flags are found in [`packages/shared/forks`](https://github.com/facebook/react/tree/master/packages/shared/forks). Feature flags are statically typed by Flow, so you can run `yarn flow` to confirm that you've updated all the necessary files.
+[`packages/shared/ReactFeatureFlags.js`](https://github.com/facebook/react/blob/master/packages/shared/ReactFeatureFlags.js) 中定义了特性切换。React 的一些版本可能启用了不同的特性切换；比如，React Native 可能与 React DOM 有不同的配置。这些特性切换见于 [`packages/shared/forks`](https://github.com/facebook/react/tree/master/packages/shared/forks)。特性切换使用了静态类型检查器 Flow，因此你可以运行 `yarn flow` 来确认所有必要文件已更新。
 
-React's build system will strip out disabled feature branches before publishing. A continuous integration job runs on every commit to check for changes in bundle size. You can use the change in size as a signal that a feature was gated correctly.
+React 的构建系统（Build System）会先删去禁用的特性分支，之后再发布。每次 commit 都会运行持续集成（Continuous Integration）来检查包（Bundle）大小的变化。包大小的变化可以用来表明某特性正确合并。
 
-### Bugs {#bugs}
+### 漏洞 {#bugs}
 
-#### Where to Find Known Issues {#where-to-find-known-issues}
+#### 何处查找已知 issue {#where-to-find-known-issues}
 
-We are using [GitHub Issues](https://github.com/facebook/react/issues) for our public bugs. We keep a close eye on this and try to make it clear when we have an internal fix in progress. Before filing a new task, try to make sure your problem doesn't already exist.
+我们用 [GitHub Issues](https://github.com/facebook/react/issues) 来公开漏洞。我们密切关注该版块，内部解决 bug 时也会想办法说明清楚。在你提交 issue 前，请确定没有重复 issue 出现。
 
-#### Reporting New Issues {#reporting-new-issues}
+#### 报告新的 issue {#reporting-new-issues}
 
-The best way to get your bug fixed is to provide a reduced test case. This [JSFiddle template](https://jsfiddle.net/Luktwrdm/) is a great starting point.
+修复 bug 的最佳方法是给出缩略版的测试用例。这个 [JSFiddle 模板](https://jsfiddle.net/Luktwrdm/)是个不错的起点。
 
-#### Security Bugs {#security-bugs}
+#### 安全漏洞 {#security-bugs}
 
-Facebook has a [bounty program](https://www.facebook.com/whitehat/) for the safe disclosure of security bugs. With that in mind, please do not file public issues; go through the process outlined on that page.
+为了发现安全漏洞，Facebook 实行了漏洞[举报奖励制度](https://www.facebook.com/whitehat/)（Bounty Program）。为此，请不要将这类漏洞提交到 public issues，而要遵循举报奖励制度页面所描述的流程。
 
-### How to Get in Touch {#how-to-get-in-touch}
+### 如何联系我们 {#how-to-get-in-touch}
 
-* IRC: [#reactjs on freenode](https://webchat.freenode.net/?channels=reactjs)
-* [Discussion forums](https://reactjs.org/community/support.html#popular-discussion-forums)
+- 因特网中继聊天（IRC）： [#reactjs on freenode](https://webchat.freenode.net/?channels=reactjs)
+- [论坛](https://reactjs.org/community/support.html#popular-discussion-forums)
 
-There is also [an active community of React users on the Discord chat platform](https://www.reactiflux.com/) in case you need help with React.
+你如果需要有关 React 的帮助，还可以前往 Discord 聊天平台，这里建有 React 用户们的[活跃社区](https://www.reactiflux.com/)。
 
-### Proposing a Change {#proposing-a-change}
+### 提出变更 {#proposing-a-change}
 
-If you intend to change the public API, or make any non-trivial changes to the implementation, we recommend [filing an issue](https://github.com/facebook/react/issues/new). This lets us reach an agreement on your proposal before you put significant effort into it.
+如果你想改变公开的 API，或者对实现有不小的变更，我们建议你[发起 issue](https://github.com/facebook/react/issues/new)，这会让我们先对你的提议达成一致，然后你再着手工作。
 
-If you're only fixing a bug, it's fine to submit a pull request right away but we still recommend to file an issue detailing what you're fixing. This is helpful in case we don't accept that specific fix but want to keep track of the issue.
+如果只是修复漏洞，你当然可以立即提交 pull request，不过我们还是建议先去提出 issue 来说明你修复了什么，这就对一种情况来说就很方便：我们没有接受特定 bug 的修复但想跟进该 issue 的情况。
 
-### Your First Pull Request {#your-first-pull-request}
+### 首个 Pull Request {#your-first-pull-request}
 
-Working on your first Pull Request? You can learn how from this free video series:
+在写第一个 Pull Request？你可以从这一系列视频中学习怎么做：
 
 **[How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**
 
-To help you get your feet wet and get you familiar with our contribution process, we have a list of **[good first issues](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")** that contain bugs that have a relatively limited scope. This is a great place to get started.
+为了使你能够快速上手和熟悉贡献流程，我们这里有个列表 **[good first issues](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")**，里面有相对没那么笼统的漏洞，从这开始是个不错的选择。
 
-If you decide to fix an issue, please be sure to check the comment thread in case somebody is already working on a fix. If nobody is working on it at the moment, please leave a comment stating that you intend to work on it so other people don't accidentally duplicate your effort.
+如果你想解决一个 issue，请确定检查了该 issue 下的评论以防有人正在处理它。如果目前没人在处理该 issue，那么请留下评论去表明你想处理该 issue 以便其他人不会意外重复你的工作。
 
-If somebody claims an issue but doesn't follow up for more than two weeks, it's fine to take it over but you should still leave a comment.
+如果有人留言表明要处理该 issue 但是超过两周没有跟进，你可以接手工作，不过也应该留言说明。
 
-### Sending a Pull Request {#sending-a-pull-request}
+### 提交 Pull Request {#sending-a-pull-request}
 
-The core team is monitoring for pull requests. We will review your pull request and either merge it, request changes to it, or close it with an explanation. For API changes we may need to fix our internal uses at Facebook.com, which could cause some delay. We'll do our best to provide updates and feedback throughout the process.
+核心团队时刻关注 pull requests，我们会先评审你的 pull request，之后可能会合并，可能会要求再次更改，也可能会关闭该 pull request 并对此作出解释。对于 API 上的变更，我们可能得确认在 Facebook.com 上的内部 API 使用方法，因此该变更可能会推迟。我们会尽力全程更新和反馈。
 
-**Before submitting a pull request,** please make sure the following is done:
+**提交 pull request 前**，请确保完成以下步骤：
 
-1. Fork [the repository](https://github.com/facebook/react) and create your branch from `master`.
-2. Run `yarn` in the repository root.
-3. If you've fixed a bug or added code that should be tested, add tests!
-4. Ensure the test suite passes (`yarn test`). Tip: `yarn test --watch TestName` is helpful in development.
-5. Run `yarn test-prod` to test in the production environment. It supports the same options as `yarn test`.
-6. If you need a debugger, run `yarn debug-test --watch TestName`, open `chrome://inspect`, and press "Inspect".
-7. Format your code with [prettier](https://github.com/prettier/prettier) (`yarn prettier`).
-8. Make sure your code lints (`yarn lint`). Tip: `yarn linc` to only check changed files.
-9. Run the [Flow](https://flowtype.org/) typechecks (`yarn flow`).
-10. If you haven't already, complete the CLA.
+1. Fork [此仓库](https://github.com/facebook/react)，从 `master` 创建分支。
+2. 在仓库根目录下执行 `yarn`。
+3. 如果你修复了 bug 或者添加了代码，而这些内容需要测试，请添加测试！
+4. 确保通过测试套件（`yarn test`）。提示：开发环境下，`yarn test --watch TestName` 很有用。
+5. 生产环境下，执行 `yarn test-prod`  来进行测试，该命令支持和 `yarn test` 一样的选项。
+6. 如果需要调试，请执行 `yarn debug-test --watch TestName`，打开 `chrome://inspect`， 之后再打开 “审查”。
+7. 使用 [prettier](https://github.com/prettier/prettier)（`yarn prettier`）来格式化代码。
+8. 确保 lint 校验代码（`yarn lint`）。提示：执行 `yarn linc` 去只检查更改过的文件。
+9. 运行 [Flow](https://flowtype.org/) 来类型检查（`yarn flow`）。
+10. 请签订贡献者许可证协议（Contributor License Agreement）。
 
-### Contributor License Agreement (CLA) {#contributor-license-agreement-cla}
+### 贡献者许可证协议 {#contributor-license-agreement-cla}
 
-In order to accept your pull request, we need you to submit a CLA. You only need to do this once, so if you've done this for another Facebook open source project, you're good to go. If you are submitting a pull request for the first time, just let us know that you have completed the CLA and we can cross-check with your GitHub username.
+为了让你的 pull request 得到接受，你得提交贡献者许可证协议。你只需提交该协议一次，所以如果你曾经对另一个 Facebook 开源项目提交过，那么你已经准备好了。如果你是第一次提交 pull request，请让我们得知你已提交协议，这样我们能多方核对你的 GitHub 用户名。
 
-**[Complete your CLA here.](https://code.facebook.com/cla)**
+**[请在这里签订贡献者许可证协议](https://code.facebook.com/cla)**
 
-### Contribution Prerequisites {#contribution-prerequisites}
+### 必要条件 {#contribution-prerequisites}
 
-* You have [Node](https://nodejs.org) installed at v8.0.0+ and [Yarn](https://yarnpkg.com/en/) at v1.2.0+.
-* You have [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) installed.
-* You have `gcc` installed or are comfortable installing a compiler if needed. Some of our dependencies may require a compilation step. On OS X, the Xcode Command Line Tools will cover this. On Ubuntu, `apt-get install build-essential` will install the required packages. Similar commands should work on other Linux distros. Windows will require some additional steps, see the [`node-gyp` installation instructions](https://github.com/nodejs/node-gyp#installation) for details.
-* You are familiar with Git.
+* [Node](https://nodejs.org) v8.0.0+、[Yarn](https://yarnpkg.com/en/) v1.2.0+。
+* 已安装 [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
+* 你已安装 `gcc`（或者你在有必要安装编译器的情况下也不觉得麻烦），因为一些依赖可能得经过编译，而在 OS X，Xcode 命令行工具会帮你处理；在 Ubuntu，`apt-get install build-essential` 会安装所需的 package（其它 Linux 发行版的类似命令也有效）；在 Windows 上得做些额外步骤，请参考 [`node-gyp` 安装步骤](https://github.com/nodejs/node-gyp#installation)。
+* 熟悉 Git。
 
-### Development Workflow {#development-workflow}
+### 开发工作流程 {#development-workflow}
 
-After cloning React, run `yarn` to fetch its dependencies.
-Then, you can run several commands:
+克隆 React 项目后，执行 `yarn` 来获取依赖。
+之后，你可以执行以下命令：
 
-* `yarn lint` checks the code style.
-* `yarn linc` is like `yarn lint` but faster because it only checks files that differ in your branch.
-* `yarn test` runs the complete test suite.
-* `yarn test --watch` runs an interactive test watcher.
-* `yarn test <pattern>` runs tests with matching filenames.
-* `yarn test-prod` runs tests in the production environment. It supports all the same options as `yarn test`.
-* `yarn debug-test` is just like `yarn test` but with a debugger. Open `chrome://inspect` and press "Inspect".
-* `yarn flow` runs the [Flow](https://flowtype.org/) typechecks.
-* `yarn build` creates a `build` folder with all the packages.
-* `yarn build react/index,react-dom/index --type=UMD` creates UMD builds of just React and ReactDOM.
+* `yarn lint` 检查代码风格。
+* `yarn linc` 和 `yarn lint` 差不多，但是运行地更快，因为只检查了分支中的不同文件。
+* `yarn test` 运行完整的测试套装。
+* `yarn test --watch` 运行交互式的测试监听器。
+* `yarn test <pattern>` 匹配文件名，运行响应测试。
+* `yarn test-prod` 在生产环境下运行测试，支持和 `yarn test`  一样的选项。
+* `yarn debug-test` 和 `yarn test` 差不多，不过多了个调试器，你可以打开 `chrome://inspect` 并审查。
+* `yarn flow` 运行 [Flow](https://flowtype.org/) 进行类型检查。
+* `yarn build` 新建涉及所有包的 `build` 文件夹。
+* `yarn build react/index,react-dom/index --type=UMD` 生成只有 React 和 ReactDOM 的 UMD 版本。
 
-We recommend running `yarn test` (or its variations above) to make sure you don't introduce any regressions as you work on your change. However it can be handy to try your build of React in a real project.
+我们建议运行 `yarn test` 或前文提及的变体以确保你的代码没有引入回归，不管怎样，这有助于尝试你的 React 构建版本。
 
-First, run `yarn build`. This will produce pre-built bundles in `build` folder, as well as prepare npm packages inside `build/packages`.
+首先，运行 `yarn build`，这会于 `build` 文件夹中生成预先构建的 bundle，还会于 `build/packages` 中生成 npm 包。
 
-The easiest way to try your changes is to run `yarn build react/index,react-dom/index --type=UMD` and then open `fixtures/packaging/babel-standalone/dev.html`. This file already uses `react.development.js` from the `build` folder so it will pick up your changes.
+想测试你做出的更改的话，最简单的方法就是运行 `yarn build react/index,react-dom/index --type=UMD`，之后再打开 `fixtures/packaging/babel-standalone/dev.html`，该文件已使用 `build` 文件夹内的 `react.development.js` 来搞定你的更改。
 
-If you want to try your changes in your existing React project, you may copy `build/dist/react.development.js`, `build/dist/react-dom.development.js`, or any other build products into your app and use them instead of the stable version. If your project uses React from npm, you may delete `react` and `react-dom` in its dependencies and use `yarn link` to point them to your local `build` folder:
+如果你想测试你对已有 React 项目做出的更改，你可以复制 `build/dist/react.development.js` 和 `build/dist/react-dom.development.js` 或其它构建版本，放入你的应用中并使用这些构建版本而非稳定版。如果你的项目用 npm，你可以从依赖中删去 `react` 和 `react-dom`，使用 `yarn link` 将其指向本地文件夹 `build`：
 
 ```sh
 cd ~/path_to_your_react_clone/build/node_modules/react
@@ -141,32 +141,32 @@ cd /path/to/your/project
 yarn link react react-dom
 ```
 
-Every time you run `yarn build` in the React folder, the updated versions will appear in your project's `node_modules`. You can then rebuild your project to try your changes.
+每当你在项目文件夹下运行 `yarn build`，更新版本会出现在 `node_modules` 文件夹，之后可以重新构建项目来测试更改。
 
-We still require that your pull request contains unit tests for any new functionality. This way we can ensure that we don't break your code in the future.
+我们仍要求：`pull request` 得包括新功能对应的单元测试。这样，我们能确保以后你的代码不出问题。
 
-### Style Guide {#style-guide}
+### 风格指南 {#style-guide}
 
-We use an automatic code formatter called [Prettier](https://prettier.io/).
-Run `yarn prettier` after making any changes to the code.
+我们使用自动化代码格式化软件 [Prettier](https://prettier.io/)。
+对代码做出更改后，运行 `yarn prettier`。
 
-Then, our linter will catch most issues that may exist in your code.
-You can check the status of your code styling by simply running `yarn linc`.
+之后，linter 会捕获代码中可能出现的多数问题。
+你可以运行 `yarn linc` 来检查代码风格状态。
 
-However, there are still some styles that the linter cannot pick up. If you are unsure about something, looking at [Airbnb's Style Guide](https://github.com/airbnb/javascript) will guide you in the right direction.
+不过，linter 也有不能搞定的一些风格。如果有些东西不确定，请查看 [Airbnb's Style Guide](https://github.com/airbnb/javascript) 来指导自己。
 
-### Request for Comments (RFC) {#request-for-comments-rfc}
+### 请求意见稿（RFC） {#request-for-comments-rfc}
 
-Many changes, including bug fixes and documentation improvements can be implemented and reviewed via the normal GitHub pull request workflow.
+许多更改（包括修复 bug 和完善文档）会经过通常所用的 GitHub pull request 工作流程来评审。
 
-Some changes though are "substantial", and we ask that these be put through a bit of a design process and produce a consensus among the React core team.
+不过有些更改较大，对此，我们要求这些更改得经过一番设计流程， 并在核心团队中达成共识。
 
-The "RFC" (request for comments) process is intended to provide a consistent and controlled path for new features to enter the project. You can contribute by visiting the [rfcs repository](https://github.com/reactjs/rfcs).
+请求意见稿让新特性的合并入库经过一致且受控的流程。你可以前往 [rfcs repository](https://github.com/reactjs/rfcs) 去贡献。
 
 ### License {#license}
 
-By contributing to React, you agree that your contributions will be licensed under its MIT license.
+你贡献 React 的同时也就同意了你的贡献部分使用了 MIT 协议。
 
-### What Next? {#what-next}
+### 接下来做什么？ {#what-next}
 
-Read the [next section](/docs/codebase-overview.html) to learn how the codebase is organized.
+请阅读[下一部分](/docs/codebase-overview.html)来学习代码库是如何组织的.
