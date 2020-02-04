@@ -6,8 +6,8 @@ class ExampleComponent extends React.Component {
 
   // highlight-range{1-13}
   static getDerivedStateFromProps(props, state) {
-    // Store prevId in state so we can compare when props change.
-    // Clear out previously-loaded data (so we don't render stale stuff).
+    // 保存 prevId 在 state 中，以便我们在 props 变化时进行对比。
+    // 清除之前加载的数据（这样我们就不会渲染旧的内容）。
     if (props.id !== state.prevId) {
       return {
         externalData: null,
@@ -15,7 +15,7 @@ class ExampleComponent extends React.Component {
       };
     }
 
-    // No state update necessary
+    // 无需更新 state
     return null;
   }
 
@@ -38,9 +38,9 @@ class ExampleComponent extends React.Component {
 
   render() {
     if (this.state.externalData === null) {
-      // Render loading state ...
+      // 渲染加载状态 ...
     } else {
-      // Render real UI ...
+      // 渲染真实 UI ...
     }
   }
 

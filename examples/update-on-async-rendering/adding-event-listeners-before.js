@@ -6,7 +6,7 @@ class ExampleComponent extends React.Component {
       subscribedValue: this.props.dataSource.value,
     });
 
-    // This is not safe; it can leak!
+    // 这是不安全的，它会导致内存泄漏！
     this.props.dataSource.subscribe(
       this.handleSubscriptionChange
     );
