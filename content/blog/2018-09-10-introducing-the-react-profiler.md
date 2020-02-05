@@ -56,7 +56,7 @@ React 16.5 添加了对开发者工具的 Profiler 插件的支持。
 开发者工具的 profiler 是在提交阶段收集性能数据的。
 每次提交都会被展示在 profiler 界面顶部的条形图中：
 
-![提交条形图的简介](../images/blog/introducing-the-react-profiler/commit-selector.png)
+![已分析的提交记录](../images/blog/introducing-the-react-profiler/commit-selector.png)
 
 在条形图中，每一列都表示单次提交的数据，当前选中的提交会变成黑色。
 你可以点击各个列（或者是左/右切换按钮）来查看不同的提交的数据。
@@ -167,7 +167,7 @@ React 最近添加了一个用于跟踪更新_原因_的[实验性 API](https://
 
 ![在交互动作和提交记录之间切换](../images/blog/introducing-the-react-profiler/navigate-between-interactions-and-commits.gif)
 
-跟踪 API 是新的特性，我们会在未来的博文中更详细地介绍它。
+tracing API 是新的特性，我们会在未来的博文中更详细地介绍它。
 
 ## 常见问题 {#troubleshooting}
 
