@@ -1,20 +1,20 @@
 ---
 id: legacy-context
-title: Legacy Context
+title: 过时的 Context
 permalink: docs/legacy-context.html
 ---
 
-> Note:
+> 注意：
 >
-> The legacy context API will be removed in a future major version.
-> Use the [new context API](/docs/context.html) introduced with version 16.3.
-> The legacy API will continue working for all 16.x releases.
+> 过时的 context API 会在未来的主要版本中被移除。
+> 使用 16.3 版本中引入的 [新的 context API](/docs/context.html)。
+> 过时的 API 将会继续在所有 16.x 版本中工作。
 
-## How To Use Context {#how-to-use-context}
+## 如何使用 Context {#how-to-use-context}
 
-> This section documents a legacy API. See the [new API](/docs/context.html).
+> 本节记录一个过时的 API。查看 [新的 API](/docs/context.html)。
 
-Suppose you have a structure like:
+假设你有这样一个结构：
 
 ```javascript
 class Button extends React.Component {
@@ -48,7 +48,7 @@ class MessageList extends React.Component {
 }
 ```
 
-In this example, we manually thread through a `color` prop in order to style the `Button` and `Message` components appropriately. Using context, we can pass this through the tree automatically:
+在这个示例中，我们手动传递一个 `color` 属性来设置 `Button` 和 `Message` 组件的样式。使用 context，我们可以通过组件树自动传递属性：
 
 ```javascript{6,13-15,21,28-30,40-42}
 import PropTypes from 'prop-types';
@@ -95,21 +95,21 @@ MessageList.childContextTypes = {
 };
 ```
 
-By adding `childContextTypes` and `getChildContext` to `MessageList` (the context provider), React passes the information down automatically and any component in the subtree (in this case, `Button`) can access it by defining `contextTypes`.
+通过给 `MessageList`（context 的生产者）添加 `childContextTypes` 和 `getChildContext`，React 自动向下传递信息，子树上的所有组件（在这个例子中是 `Button`）可以通过定义 `contextTypes` 来访问 context。
 
-If `contextTypes` is not defined, then `context` will be an empty object.
+如果 `contextTypes` 没有被定义，`context` 就会是个空对象。
 
-> Note:
+> 注意：
 >
-> `React.PropTypes` has moved into a different package since React v15.5. Please use [the `prop-types` library instead](https://www.npmjs.com/package/prop-types) to define `contextTypes`.
+> 自从 React 15.5 版本之后，`React.PropTypes` 已经转移到了另一个包。请改用 [`prop-types` 库](https://www.npmjs.com/package/prop-types) 来定义 `contextTypes`。
 >
-> We provide [a codemod script](/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes) to automate the conversion.
+> 我们提供了 [一个 codemod 脚本](/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes) 来自动转换。
 
-### Parent-Child Coupling {#parent-child-coupling}
+### 父-子 结合 {#parent-child-coupling}
 
-> This section documents a legacy API. See the [new API](/docs/context.html).
+> 本节记录一个过时的 API。查看 [新的 API](/docs/context.html)。
 
-Context can also let you build an API where parents and children communicate. For example, one library that works this way is [React Router V4](https://reacttraining.com/react-router):
+Context 也能让你构建一个父子组件通信的 API。例如，[React Router V4](https://reacttraining.com/react-router) 这个库就是这样工作的：
 
 ```javascript
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
@@ -133,30 +133,30 @@ const BasicExample = () => (
 );
 ```
 
-By passing down some information from the `Router` component, each `Link` and `Route` can communicate back to the containing `Router`.
+通过从 `Router` 组件向下传递一些信息，每一个 `Link` 和 `Route` 能够与包含它的 `Router` 通信。
 
-Before you build components with an API similar to this, consider if there are cleaner alternatives. For example, you can pass entire React components as props if you'd like to.
+在你构建类似的 API 的组件之前，先考虑是否有更简洁的方式。例如，如果你愿意的话，你可以将整个 React 组件作为 props。
 
-### Referencing Context in Lifecycle Methods {#referencing-context-in-lifecycle-methods}
+### 在生命周期方法中引用 Context {#referencing-context-in-lifecycle-methods}
 
-> This section documents a legacy API. See the [new API](/docs/context.html).
+> 本节记录一个过时的 API。查看 [新的 API](/docs/context.html)。
 
-If `contextTypes` is defined within a component, the following [lifecycle methods](/docs/react-component.html#the-component-lifecycle) will receive an additional parameter, the `context` object:
+如果一个组件内定义了 `contextTypes`，下面的 [生命周期方法](/docs/react-component.html#the-component-lifecycle) 会接收一个额外参数，就是 `context` 对象：
 
 - [`constructor(props, context)`](/docs/react-component.html#constructor)
 - [`componentWillReceiveProps(nextProps, nextContext)`](/docs/react-component.html#componentwillreceiveprops)
 - [`shouldComponentUpdate(nextProps, nextState, nextContext)`](/docs/react-component.html#shouldcomponentupdate)
 - [`componentWillUpdate(nextProps, nextState, nextContext)`](/docs/react-component.html#componentwillupdate)
 
-> Note:
+> 注意：
 >
-> As of React 16, `componentDidUpdate` no longer receives `prevContext`.
+> 从 React 16 开始，`componentDidUpdate` 不再接收 `prevContext`。
 
-### Referencing Context in Stateless Function Components {#referencing-context-in-stateless-function-components}
+### 在函数组件中引用 Context {#referencing-context-in-stateless-function-components}
 
-> This section documents a legacy API. See the [new API](/docs/context.html).
+> 本节记录一个过时的 API。查看 [新的 API](/docs/context.html)。
 
-Stateless function components are also able to reference `context` if `contextTypes` is defined as a property of the function. The following code shows a `Button` component written as a stateless function component.
+只要 `contextTypes` 被定义为函数的一个属性，函数组件也能够引用 `context`。下面的代码展示了一个函数组件写法的 `Button` 组件。
 
 ```javascript
 import PropTypes from 'prop-types';
@@ -169,15 +169,15 @@ const Button = ({children}, context) =>
 Button.contextTypes = {color: PropTypes.string};
 ```
 
-### Updating Context {#updating-context}
+### 更新 Context {#updating-context}
 
-> This section documents a legacy API. See the [new API](/docs/context.html).
+> 本节记录一个过时的 API。查看 [新的 API](/docs/context.html)。
 
-Don't do it.
+不要这样做。
 
-React has an API to update context, but it is fundamentally broken and you should not use it.
+React 有一个 API 可以更新 context，但它基本上是不靠谱的，你不应该使用它。
 
-The `getChildContext` function will be called when the state or props changes. In order to update data in the context, trigger a local state update with `this.setState`. This will trigger a new context and changes will be received by the children.
+当 state 或者 props 改变的时候，`getChildContext` 函数就会被调用。为了更新 context 里的数据，使用 `this.setState` 触发当前 state 的更新。这样会产生一个新的 context 并且子组件会接收到变化。
 
 ```javascript
 import PropTypes from 'prop-types';
@@ -214,4 +214,4 @@ MediaQuery.childContextTypes = {
 };
 ```
 
-The problem is, if a context value provided by component changes, descendants that use that value won't update if an intermediate parent returns `false` from `shouldComponentUpdate`. This is totally out of control of the components using context, so there's basically no way to reliably update the context. [This blog post](https://medium.com/@mweststrate/how-to-safely-use-react-context-b7e343eff076) has a good explanation of why this is a problem and how you might get around it.
+问题是，如果组件提供的一个 context 发生了变化，而中间父组件的 `shouldComponentUpdate` 返回 `false`，那么使用到该值的后代组件不会进行更新。使用了 context 的组件则完全失控，所以基本上没有办法能够可靠的更新 context。[这篇博客文章](https://medium.com/@mweststrate/how-to-safely-use-react-context-b7e343eff076)很好地解释了为何会出现此类问题，以及你该如何规避它。

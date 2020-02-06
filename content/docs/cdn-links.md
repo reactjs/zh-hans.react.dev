@@ -1,6 +1,6 @@
 ---
 id: cdn-links
-title: CDN Links
+title: CDN 链接
 permalink: docs/cdn-links.html
 prev: create-a-new-react-app.html
 next: hello-world.html

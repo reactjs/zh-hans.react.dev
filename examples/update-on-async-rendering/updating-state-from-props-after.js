@@ -1,7 +1,7 @@
 // After
 class ExampleComponent extends React.Component {
-  // Initialize state in constructor,
-  // Or with a property initializer.
+  // 在构造函数中初始化 state，
+  // 或者使用属性初始化器。
   // highlight-range{1-4}
   state = {
     isScrollingDown: false,
@@ -17,7 +17,7 @@ class ExampleComponent extends React.Component {
       };
     }
 
-    // Return null to indicate no change to state.
+    // 返回 null 表示无需更新 state。
     return null;
   }
 }

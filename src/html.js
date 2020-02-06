@@ -7,7 +7,7 @@ const JS_NPM_URLS = [
 export default class HTML extends React.Component {
   render() {
     return (
-      <html lang="en" {...this.props.htmlAttributes}>
+      <html lang="zh-hans" {...this.props.htmlAttributes}>
         <head>
           {JS_NPM_URLS.map(url => (
             <link key={url} rel="preload" href={url} as="script" />
@@ -19,6 +19,11 @@ export default class HTML extends React.Component {
             content="width=device-width, initial-scale=1.0"
           />
           <link rel="icon" href="/favicon.ico" />
+
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <link rel="apple-touch-icon" href="/logo-180x180.png" />
+          <meta name="apple-mobile-web-app-title" content="React" />
+
           {this.props.headComponents}
         </head>
         <body {...this.props.bodyAttributes}>

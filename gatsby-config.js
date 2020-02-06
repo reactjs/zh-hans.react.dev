@@ -9,7 +9,7 @@
 module.exports = {
   siteMetadata: {
     title: 'React: A JavaScript library for building user interfaces',
-    siteUrl: 'https://reactjs.org',
+    siteUrl: 'https://zh-hans.reactjs.org',
     rssFeedTitle: 'React',
     rssFeedDescription: 'A JavaScript library for building user interfaces',
   },
@@ -55,11 +55,12 @@ module.exports = {
               maxWidth: 840,
             },
           },
+          'gatsby-remark-external-links',
           'gatsby-remark-header-custom-ids',
           {
             resolve: 'gatsby-remark-code-repls',
             options: {
-              defaultText: '<b>Try it on CodePen</b>',
+              defaultText: '<b>在 CodePen 上尝试</b>',
               directory: `${__dirname}/examples/`,
               externals: [
                 `//unpkg.com/react/umd/react.development.js`,
@@ -158,5 +159,20 @@ module.exports = {
     },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'React Docs',
+        short_name: 'React', // eg. React [%LANG_CODE%]
+        // Translators: please change this and two above options (see https://www.gatsbyjs.org/packages/gatsby-plugin-manifest/#feature-configuration---optional)
+        lang: 'en',
+        start_url: '/',
+        background_color: '#20232a',
+        theme_color: '#20232a',
+        display: 'standalone',
+        icon: 'static/logo-512x512.png',
+        legacy: true,
+      },
+    },
   ],
 };
