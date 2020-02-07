@@ -1,6 +1,6 @@
 ---
 id: concurrent-mode-suspense
-title: Suspense for Data Fetching (Experimental)
+title: Suspense 用于数据获取（试验版）
 permalink: docs/concurrent-mode-suspense.html
 prev: concurrent-mode-intro.html
 next: concurrent-mode-patterns.html
@@ -15,50 +15,50 @@ next: concurrent-mode-patterns.html
 
 <div class="scary">
 
->Caution:
+> **注意**：
 >
->This page describes **experimental features that are [not yet available](/docs/concurrent-mode-adoption.html) in a stable release**. Don't rely on experimental builds of React in production apps. These features may change significantly and without a warning before they become a part of React.
+> 本章节所描述的**实验性功能在稳定版本中[尚不可用](/docs/concurrent-mode-adoption.html)**。请不要在应用程序的生产环境中使用。这些功能可能会发生重大变化，并且在正式成为 React 的一部分之前不会给出警告。
 >
->This documentation is aimed at early adopters and people who are curious. **If you're new to React, don't worry about these features** -- you don't need to learn them right now. For example, if you're looking for a data fetching tutorial that works today, read [this article](https://www.robinwieruch.de/react-hooks-fetch-data/) instead.
+> 本文档面向早期此功能的使用者以及对此功能好奇的开发者。**如果你并不熟悉 React，请不必担心** —— 你不需要立刻学习这些功能。稳定版本中有相应的替代实现方式。举个例子，如果你在找和数据获取相关且当下可用的教程，可以改阅[这篇文档](https://www.robinwieruch.de/react-hooks-fetch-data/)。
 
 </div>
 
-React 16.6 added a `<Suspense>` component that lets you "wait" for some code to load and declaratively specify a loading state (like a spinner) while we're waiting:
+React 16.6 新增了 `<Suspense>` 组件 , 让你可以“等待”目标代码的下载，并且可以直接指定一个加载的界面（像是个 spinner），让它在用户等待的时候显示：
 
 ```jsx
-const ProfilePage = React.lazy(() => import('./ProfilePage')); // Lazy-loaded
+const ProfilePage = React.lazy(() => import('./ProfilePage')); // 懒加载
 
-// Show a spinner while the profile is loading
+// 在 ProfilePage 组件处于下载阶段时显示一个 spinner
 <Suspense fallback={<Spinner />}>
   <ProfilePage />
-</Suspense>
+</Suspense>;
 ```
 
-Suspense for Data Fetching is a new feature that lets you also use `<Suspense>` to **declaratively "wait" for anything else, including data.** This page focuses on the data fetching use case, but it can also wait for images, scripts, or other asynchronous work.
+通过 Suspense 来实现数据获取是 React 的一个新功能，**等待数据获取只是它的能力之一**，你可以直接声明 `<Suspense>` **等待任何你需要的东西**。本文着重介绍的是 `<Suspense>` 应用在数据获取的实现，但这并不意味着它只局限于数据获取，任何其他的异步操作，比如说等待图片、脚本的加载，它都是适用的。
 
-- [What Is Suspense, Exactly?](#what-is-suspense-exactly)
-  - [What Suspense Is Not](#what-suspense-is-not)
-  - [What Suspense Lets You Do](#what-suspense-lets-you-do)
-- [Using Suspense in Practice](#using-suspense-in-practice)
-  - [What If I Don’t Use Relay?](#what-if-i-dont-use-relay)
-  - [For Library Authors](#for-library-authors)
-- [Traditional Approaches vs Suspense](#traditional-approaches-vs-suspense)
-  - [Approach 1: Fetch-on-Render (not using Suspense)](#approach-1-fetch-on-render-not-using-suspense)
-  - [Approach 2: Fetch-Then-Render (not using Suspense)](#approach-2-fetch-then-render-not-using-suspense)
-  - [Approach 3: Render-as-You-Fetch (using Suspense)](#approach-3-render-as-you-fetch-using-suspense)
-- [Start Fetching Early](#start-fetching-early)
-  - [We’re Still Figuring This Out](#were-still-figuring-this-out)
-- [Suspense and Race Conditions](#suspense-and-race-conditions)
-  - [Race Conditions with useEffect](#race-conditions-with-useeffect)
-  - [Race Conditions with componentDidUpdate](#race-conditions-with-componentdidupdate)
-  - [The Problem](#the-problem)
-  - [Solving Race Conditions with Suspense](#solving-race-conditions-with-suspense)
-- [Handling Errors](#handling-errors)
-- [Next Steps](#next-steps)
+- [究竟什么是 Suspense ?](#what-is-suspense-exactly)
+  - [Suspense 不是什么](#what-suspense-is-not)
+  - [Suspense 提供了什么](#what-suspense-lets-you-do)
+- [在实践中使用 Suspense](#using-suspense-in-practice)
+  - [如果我不用 Relay ?](#what-if-i-dont-use-relay)
+  - [致库作者](#for-library-authors)
+- [传统实现方法 vs Suspense](#traditional-approaches-vs-suspense)
+  - [方法 1: 渲染之后获取数据（不使用 Suspense）](#approach-1-fetch-on-render-not-using-suspense)
+  - [方法 2: 接收到全部数据之后渲染（不使用 Suspense）](#approach-2-fetch-then-render-not-using-suspense)
+  - [方法 3: 获取数据之后渲染（使用 Suspense）](#approach-3-render-as-you-fetch-using-suspense)
+- [尽早开始获取数据](#start-fetching-early)
+  - [我们仍在寻求方法中](#were-still-figuring-this-out)
+- [Suspense 和 Race Conditions](#suspense-and-race-conditions)
+  - [涉及 useEffect 的 Race Conditions](#race-conditions-with-useeffect)
+  - [涉及 componentDidUpdate 的 Race Conditions](#race-conditions-with-componentdidupdate)
+  - [Race Conditions 问题](#the-problem)
+  - [借助 Suspense 消除 Race Condition](#solving-race-conditions-with-suspense)
+- [错误处理](#handling-errors)
+- [下一步](#next-steps)
 
-## What Is Suspense, Exactly? {#what-is-suspense-exactly}
+## 究竟什么是 Suspense ? {#what-is-suspense-exactly}
 
-Suspense lets your components "wait" for something before they can render. In [this example](https://codesandbox.io/s/frosty-hermann-bztrp), two components wait for an asynchronous API call to fetch some data:
+Suspense 让你的组件“等待”某个异步操作，直到该异步操作的结果可以被渲染。在下面[例子](https://codesandbox.io/s/frosty-hermann-bztrp)中，两个组件都在等待一个获取数据的异步 API 的返回：
 
 ```js
 const resource = fetchProfileData();
@@ -75,13 +75,13 @@ function ProfilePage() {
 }
 
 function ProfileDetails() {
-  // Try to read user info, although it might not have loaded yet
+  // 尝试读取用户信息，尽管该数据可能尚未加载
   const user = resource.user.read();
   return <h1>{user.name}</h1>;
 }
 
 function ProfileTimeline() {
-  // Try to read posts, although they might not have loaded yet
+  // 尝试读取博文信息，尽管该部分数据可能尚未加载
   const posts = resource.posts.read();
   return (
     <ul>
@@ -93,91 +93,91 @@ function ProfileTimeline() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/frosty-hermann-bztrp)**
+**[去 CodeSandbox 尝试](https://codesandbox.io/s/frosty-hermann-bztrp)**
 
-This demo is a teaser. Don't worry if it doesn't quite make sense yet. We'll talk more about how it works below. Keep in mind that Suspense is more of a *mechanism*, and particular APIs like `fetchProfileData()` or `resource.posts.read()` in the above example are not very important. If you're curious, you can find their definitions right in the [demo sandbox](https://codesandbox.io/s/frosty-hermann-bztrp).
+上面的 demo 只是个示意。如果里头代码让你摸不着头脑，别担心。我们后面会详细说明这部分代码的运作方式。需要记住的是，Suspense 它其实更像是一个*机制*，而 demo 中 那些具体的 APIs ，像是`fetchProfileData()` 或者 `resource.posts.read()` ，这些 APIs 本身并不重要。不过，如果你还是对它们很好奇，可以在这个 [demo sandbox](https://codesandbox.io/s/frosty-hermann-bztrp) 里头找到它们的定义。
 
-Suspense is not a data fetching library. It's a **mechanism for data fetching libraries** to communicate to React that *the data a component is reading is not ready yet*. React can then wait for it to be ready and update the UI. At Facebook, we use Relay and its [new Suspense integration](https://relay.dev/docs/en/experimental/step-by-step). We expect that other libraries like Apollo can provide similar integrations.
+Suspense 不是一个获取数据的库，而是一个机制。这个**机制是用来给获取数据的库**向 React 沟通说明*某个组件正在读取的数据当前仍不可用*。沟通之后，React 可以继续等待数据的返回并更新 UI。 在 Facebook, 我们用了 Relay 和它那[支持 Suspense 的新功能](https://relay.dev/docs/en/experimental/step-by-step) 。我们期望其他的库，像 Apollo 之类的，也能支持 Suspense.
 
-In the long term, we intend Suspense to become the primary way to read asynchronous data from components -- no matter where that data is coming from.
+从长远上说，我们想让 Suspense 成为组件读取异步数据的主要方式 —— 无论数据来自何方。
 
-### What Suspense Is Not {#what-suspense-is-not}
+### Suspense 不是什么 {#what-suspense-is-not}
 
-Suspense is significantly different from existing approaches to these problems, so reading about it for the first time often leads to misconceptions. Let's clarify the most common ones:
+Suspense 和当下其他解决异步问题的方法很不一样，因而，第一次接触 Suspense 容易让人产生误解。下面我们阐述下常见的误解：
 
- * **It is not a data fetching implementation.** It does not assume that you use GraphQL, REST, or any other particular data format, library, transport, or protocol.
+- **它不是数据获取的一种实现**。它并不假定你使用 GraphQL, REST, 或者任何其他特定的数据格式、库、数据传输方式、协议。
 
- * **It is not a ready-to-use client.** You can't "replace" `fetch` or Relay with Suspense. But you can use a library that's integrated with Suspense (for example, [new Relay APIs](https://relay.dev/docs/en/experimental/api-reference)).
+- **它不是可以直接用于数据获取的客户端**。你不能用 Suspense 来替代 `fetch` 或者 Relay. 不过你可以使用整合了 Suspense 的库（比如说，[新的 Relay APIs](https://relay.dev/docs/en/experimental/api-reference)）
 
- * **It does not couple data fetching to the view layer.** It helps orchestrate displaying the loading states in your UI, but it doesn't tie your network logic to React components.
+- **它不使数据获取与视觉层代码耦合**。它协助安排 UI 中加载状态的显示，但它并不将你的网络逻辑捆绑到 React 组件中。
 
-### What Suspense Lets You Do {#what-suspense-lets-you-do}
+### Suspense 提供了什么 {#what-suspense-lets-you-do}
 
-So what's the point of Suspense? There's a few ways we can answer this:
+说了那么多，Suspense 到底有什么用呢？对于这个问题，我们可以从不同的角度来回答：
 
-* **It lets data fetching libraries deeply integrate with React.** If a data fetching library implements Suspense support, using it from React components feels very natural.
+- **它能让数据获取库与 React 紧密整合**。如果一个获取数据的库实现了对 Suspense 的支持，那么，在 React 中使用 Suspense 将会是自然不过的事。
 
-* **It lets you orchestrate intentionally designed loading states.** It doesn't say _how_ the data is fetched, but it lets you closely control the visual loading sequence of your app.
+- **它能让你有针对性地安排加载状态的展示**。它并不干涉数据被获取的方式，但它可以让你对应用的视觉加载流程有更大的控制权。
 
-* **It helps you avoid race conditions.** Even with `await`, asynchronous code is often error-prone. Suspense feels more like reading data *synchronously* — as if it was already loaded.
+- **它能够消除 race conditions**。即便是用上 `await`， 异步代码还是很容易出错。相比之下，Suspense 更给人*同步*读取数据的感觉 —— 假定数据已经加载完毕。
 
-## Using Suspense in Practice {#using-suspense-in-practice}
+## 在实践中使用 Suspense {#using-suspense-in-practice}
 
-At Facebook, so far we have only used the Relay integration with Suspense in production. **If you're looking for a practical guide to get started today, [check out the Relay Guide](https://relay.dev/docs/en/experimental/step-by-step)!** It demonstrates patterns that have already worked well for us in production.
+在 Facebook 中，我们目前只在生产环境使用整合了 Suspense 的 Relay。**如果当前你在找一份实质性的指引来上手 Suspense，[可以看 Relay 的这份指引](https://relay.dev/docs/en/experimental/step-by-step)**！指引里头写明了当前运行在我们在生产环境中的可用模式。
 
-**The code demos on this page use a "fake" API implementation rather than Relay.** This makes them easier to understand if you're not familiar with GraphQL, but they won't tell you the "right way" to build an app with Suspense. This page is more conceptual and is intended to help you see *why* Suspense works in a certain way, and which problems it solves.
+**上面的 demo 代码里用到的 API 其实是“假“的实现，不是 Relay**。我们这样做的目的是想让代码本身更易懂些，让不熟悉 GraphQL 的读者也能看懂代码。也正因为里头 API 是假的，demo 的代码本身并不是在应用中使用 Suspense 的 ”正确方式“。可以说，本文是从概念上出发，目的是帮你厘清*为什么* Suspense 是以特定方式运行，以及 Suspense 解决了哪些问题这两件事情。
 
-### What If I Don't Use Relay? {#what-if-i-dont-use-relay}
+### 如果我不用 Relay ？{#what-if-i-dont-use-relay}
 
-If you don't use Relay today, you might have to wait before you can really try Suspense in your app. So far, it's the only implementation that we tested in production and are confident in.
+如果你当下并不使用 Relay，那么你暂时无法在应用中试用 Suspense 。因为迄今为止，在实现了 Suspense 的库中，Relay 是我们唯一在生产环境测试过，且对它的运作有把握的一个库。
 
-Over the next several months, many libraries will appear with different takes on Suspense APIs. **If you prefer to learn when things are more stable, you might prefer to ignore this work for now, and come back when the Suspense ecosystem is more mature.**
+在接下来的几个月里，许许多多的库将会实现它们各自支持 Suspense 的 APIs。**如果你倾向于等到技术更加稳定之后才开始学习，那大概率你会先不看这部分文档，等到 Suspense 的生态更成熟之后再回来学习。**
 
-You can also write your own integration for a data fetching library, if you'd like.
+如果你有兴趣的话，也可以自己开发，然后将你对 Suspense 的实现整合到某个数据获取的库中。
 
-### For Library Authors {#for-library-authors}
+### 致库作者 {#for-library-authors}
 
-We expect to see a lot of experimentation in the community with other libraries. There is one important thing to note for data fetching library authors.
+我们很期待看到社区中其他库对 Suspense 进行试验。对于数据获取库的作者，有一件重要的事情需要你们引起注意。
 
-Although it's technically doable, Suspense is **not** currently intended as a way to start fetching data when a component renders. Rather, it lets components express that they're "waiting" for data that is *already being fetched*. **[Building Great User Experiences with Concurrent Mode and Suspense](/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html) describes why this matters and how to implement this pattern in practice.**
+尽管实现对 Suspense 的支持从技术上是可行的，Suspense 当前**并不**作为在组件渲染的时候开始获取数据的方式。反而，它让组件表达出它们在正在 “等待”*已经发出获取行为的*数据。**[使用 Concurrent 模式和 Suspense 来构建优秀的用户体验](/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html) 一文说明了这一点的重要性，以及如何在实践中实现这个模式。**
 
-Unless you have a solution that helps prevent waterfalls, we suggest to prefer APIs that favor or enforce fetching before render. For a concrete example, you can look at how [Relay Suspense API](https://relay.dev/docs/en/experimental/api-reference#usepreloadedquery) enforces preloading. Our messaging about this hasn't been very consistent in the past. Suspense for Data Fetching is still experimental, so you can expect our recommendations to change over time as we learn more from production usage and understand the problem space better.
+除非你有现成的解决方法来避免 waterfalls，我们建议采用支持在渲染之前就能先获取数据的 APIs。关于实现这类 API 的确切例子，你可以查看 [Relay Suspense API](https://relay.dev/docs/en/experimental/api-reference#usepreloadedquery) 实现预加载的方式。对于这方面的信息，我们当前给出的和过去给出的并不完全一致。因为 Suspense 用于数据获取还处于试验阶段，我们的推荐会随着我们对 Suspense 在生产环境中使用的习得和对 waterfalls 这个问题的理解深度不同，而发生变化。
 
-## Traditional Approaches vs Suspense {#traditional-approaches-vs-suspense}
+## 传统实现方式 vs Suspense {#traditional-approaches-vs-suspense}
 
-We could introduce Suspense without mentioning the popular data fetching approaches. However, this makes it more difficult to see which problems Suspense solves, why these problems are worth solving, and how Suspense is different from the existing solutions.
+我们可以完全不提及当前主流的数据获取方式，只介绍 Suspense。但这样做的话，以下 3 件事情：Suspense 解决了的问题、为什么这些问题需要被处理、以及 Suspense 和其他现存方法的不同，会更难厘清。
 
-Instead, we'll look at Suspense as a logical next step in a sequence of approaches:
+因此，我们把 Suspense 看作是一系列解决方法的下一步逻辑演化。从这个角度对其展开介绍：
 
-* **Fetch-on-render (for example, `fetch` in `useEffect`):** Start rendering components. Each of these components may trigger data fetching in their effects and lifecycle methods. This approach often leads to "waterfalls".
-* **Fetch-then-render (for example, Relay without Suspense):** Start fetching all the data for the next screen as early as possible. When the data is ready, render the new screen. We can't do anything until the data arrives.
-* **Render-as-you-fetch (for example, Relay with Suspense):** Start fetching all the required data for the next screen as early as possible, and start rendering the new screen *immediately — before we get a network response*. As data streams in, React retries rendering components that still need data until they're all ready.
+- **渲染之后获取数据（比如，在 useEffect 里获取数据）**：先开始渲染组件，然后每个完成渲染的组件可能会在它们的 effects 或者生命周期函数中获取数据。这种方式经常导致 “waterfalls“。
+- **接收到全部数据之后渲染（比如，使用 Relay 但不使用 Suspense）**: 先尽早获取下一屏需要的所有数据，当数据拿到之后，渲染新的屏幕。但在数据拿到之前，我们什么事也做不了。
+- **获取数据之后渲染（比如，使用 Relay 且使用 Suspense）**：先尽早获取下一屏需要的所有数据，然后*马上* 着手渲染新的屏幕 ——*在我们接收到返回数据之前就开始*。一旦返回数据开始流入，React 再次渲染需要数据的那部分组件，直到数据全部接收完毕。
 
->Note
+> **注意**
 >
->This is a bit simplified, and in practice solutions tend to use a mix of different approaches. Still, we will look at them in isolation to better contrast their tradeoffs.
+> 这部分流程经过了简化处理，在实际应用中，真正被采用的方法通常是由不同方法混合而成。但是，我们接下来还是会逐一审视这些方法，因为这样可以让我们更好理解它们各自的优劣。
 
-To compare these approaches, we'll implement a profile page with each of them.
+为了对比这 3 个方法，我们分别用它们实现一个 profile 页面。
 
-### Approach 1: Fetch-on-Render (not using Suspense) {#approach-1-fetch-on-render-not-using-suspense}
+### 方法 1: 渲染之后获取数据（不使用 Suspense）{#approach-1-fetch-on-render-not-using-suspense}
 
-A common way to fetch data in React apps today is to use an effect:
+目前 React 应用中常用的数据获取方式是使用 effect:
 
 ```js
-// In a function component:
+// 在函数组件中:
 useEffect(() => {
   fetchSomething();
 }, []);
 
-// Or, in a class component:
+// 或者，在 class 组件里:
 componentDidMount() {
   fetchSomething();
 }
 ```
 
-We call this approach "fetch-on-render" because it doesn't start fetching until *after* the component has rendered on the screen. This leads to a problem known as a "waterfall".
+我们称这种方法为”渲染之后获取数据“（fetch-on-render），因为数据的获取是发生在组件被渲染到屏幕*之后*。这种方法会导致一个问题叫”waterfall“。
 
-Consider these `<ProfilePage>` and `<ProfileTimeline>` components:
+仔细看下面的 `<ProfilePage>` 和 `<ProfileTimeline>` 组件：
 
 ```js{4-6,22-24}
 function ProfilePage() {
@@ -218,42 +218,42 @@ function ProfileTimeline() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/fragrant-glade-8huj6)**
+**[去 CodeSandbox 尝试](https://codesandbox.io/s/fragrant-glade-8huj6)**
 
-If you run this code and watch the console logs, you'll notice the sequence is:
+如果你运行上面代码，你会发现 console 里头打印如下信息：
 
-1. We start fetching user details
-2. We wait...
-3. We finish fetching user details
-4. We start fetching posts
-5. We wait...
-6. We finish fetching posts
+1. We start fetching user details（我们开始获取用户信息）
+2. We wait...（我们处于等待中）
+3. We finish fetching user details（我们接收完所有的用户信息）
+4. We start fetching posts（我们开始获取博文数据）
+5. We wait...（我们处于等待中）
+6. We finish fetching posts（我们接收完所有的博文数据）
 
-If fetching user details takes three seconds, we'll only *start* fetching the posts after three seconds! That's a "waterfall": an unintentional *sequence* that should have been parallelized.
+假设获取用户信息总共需要 3 秒，那么在这个方法中，我们就只能在 3 秒之后，才*开始*获取博文数据。而这，就是上面提到的“waterfall“问题：本该并行发出的请求被无意地*串联*发送出去。
 
-Waterfalls are common in code that fetches data on render. They're possible to solve, but as the product  grows, many people prefer to use a solution that guards against this problem.
+在渲染之后再获取数据是引发 waterfall 的常见原因。虽然这种情况下的 waterfall 问题可以被解决，但随着项目代码的增多，开发者更倾向于选用其他不会引发这个问题的数据获取方法。
 
-### Approach 2: Fetch-Then-Render (not using Suspense) {#approach-2-fetch-then-render-not-using-suspense}
+### 方法 2: 接收到全部数据之后渲染（不使用 Suspense）{#approach-2-fetch-then-render-not-using-suspense}
 
-Libraries can prevent waterfalls by offering a more centralized way to do data fetching. For example, Relay solves this problem by moving the information about the data a component needs to statically analyzable *fragments*, which later get composed into a single query.
+通过提供更集中化的方式来实现数据获取，库可以避免 waterfall 的出现。比如说，Relay 是通过把组件所需的数据转移到可静态分析的*fragments*上，*fragments*随后会被整合进一个单一的请求。
 
-On this page, we don't assume knowledge of Relay, so we won't be using it for this example. Instead, we'll write something similar manually by combining our data fetching methods:
+在本文中，我们不假定读者了解 Relay ，因而我们不会在方法 2 的示例代码中使用它。我们做的，是手动把获取数据的方法合并到一起，来模拟 Relay 的行为：
 
 ```js
 function fetchProfileData() {
   return Promise.all([
-    fetchUser(),
+    fetchUser(), 
     fetchPosts()
-  ]).then(([user, posts]) => {
+    ]).then(([user, posts]) => {
     return {user, posts};
   })
 }
 ```
 
-In this example,  `<ProfilePage>` waits for both requests but starts them in parallel:
+在下面例子中，`<ProfilePage>` 等待两个并行发出的请求：
 
 ```js{1,2,8-13}
-// Kick off fetching as early as possible
+// 尽早开始获取数据
 const promise = fetchProfileData();
 
 function ProfilePage() {
@@ -278,7 +278,7 @@ function ProfilePage() {
   );
 }
 
-// The child doesn't trigger fetching anymore
+// 子组件不再触发数据请求
 function ProfileTimeline({ posts }) {
   if (posts === null) {
     return <h2>Loading posts...</h2>;
@@ -293,38 +293,38 @@ function ProfileTimeline({ posts }) {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/wandering-morning-ev6r0)**
+**[去 CodeSandbox 尝试](https://codesandbox.io/s/wandering-morning-ev6r0)**
 
-The event sequence now becomes like this:
+在方法 2 中，console 打印的信息变成这样：
 
-1. We start fetching user details
-2. We start fetching posts
-3. We wait...
-4. We finish fetching user details
-5. We finish fetching posts
+1. We start fetching user details（我们开始获取用户信息）
+2. We start fetching posts（我们开始获取博文数据）
+3. We wait...（我们处于等待中）
+4. We finish fetching user details（我们接收完所有的用户信息）
+5. We finish fetching posts（我们接收完所有的博文数据）
 
-We've solved the previous network "waterfall", but accidentally introduced a different one. We wait for *all* data to come back with `Promise.all()` inside `fetchProfileData`, so now we can't render profile details until the posts have been fetched too. We have to wait for both.
+这里，我们解决了方法 1 中出现的网络”waterfall“问题，却又不经意引出另外一个问题。我们在 `fetchProfileData` 里用 `Promise.all()` 来等待*所有*数据，这就导致了，即便我们先接收完用户信息的数据，我们也不能先渲染 `ProfileDetails` 这个组件，还得等到博文信息也接收完才行。在这个方法中，我们必须等到两份数据都接收完毕。
 
-Of course, this is possible to fix in this particular example. We could remove the `Promise.all()` call, and wait for both Promises separately. However, this approach gets progressively more difficult as the complexity of our data and component tree grows. It's hard to write reliable components when arbitrary parts of the data tree may be missing or stale. So fetching all data for the new screen and *then* rendering is often a more practical option.
+不难看出，在当前这个例子中，上述问题是可解的。我们可以去掉 `Promise.all()` , 改用分别等待两个 Promises 的方式来解决。但随着我们所需数据的复杂度的上升和组件树的扩大，这个方法的短板会逐渐显现出来。我们很难写出健壮可靠的组件，因为数据树中可能出现部分数据的缺失或者过期。因此，一次性拿到新屏幕所需的全部数据之后，*再*去渲染页面是个更加切合实际的方式。
 
-### Approach 3: Render-as-You-Fetch (using Suspense) {#approach-3-render-as-you-fetch-using-suspense}
+### 方法 3: 获取数据之后渲染（使用 Suspense） {#approach-3-render-as-you-fetch-using-suspense}
 
-In the previous approach, we fetched data before we called `setState`:
+在上面方法 2 中，我们是在调用 `setState` 之前就开始获取数据：
 
-1. Start fetching
-2. Finish fetching
-3. Start rendering
+1. 开始获取数据
+2. 结束获取数据
+3. 开始渲染
 
-With Suspense, we still start fetching first, but we flip the last two steps around:
+有了 Suspense，我们依然可以先获取数据，而且可以给上面流程的 2、3 步骤调换顺序：
 
-1. Start fetching
-2. **Start rendering**
-3. **Finish fetching**
+1. 开始获取数据
+2. **开始渲染**
+3. **结束获取数据**
 
-**With Suspense, we don't wait for the response to come back before we start rendering.** In fact, we start rendering *pretty much immediately* after kicking off the network request:
+**有了 Suspense, 我们不必等到数据全部返回才开始渲染**。实际上，我们是一发送网络请求，*就马上*开始渲染：
 
 ```js{2,17,23}
-// This is not a Promise. It's a special object from our Suspense integration.
+// 这不是一个 Promise。这是一个支持 Suspense 的特殊对象。
 const resource = fetchProfileData();
 
 function ProfilePage() {
@@ -339,13 +339,13 @@ function ProfilePage() {
 }
 
 function ProfileDetails() {
-  // Try to read user info, although it might not have loaded yet
+  // 尝试读取用户信息，尽管信息可能未下载完毕
   const user = resource.user.read();
   return <h1>{user.name}</h1>;
 }
 
 function ProfileTimeline() {
-  // Try to read posts, although they might not have loaded yet
+  // 尝试读取博文数据，尽管数据可能未下载完毕
   const posts = resource.posts.read();
   return (
     <ul>
@@ -357,60 +357,62 @@ function ProfileTimeline() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/frosty-hermann-bztrp)**
+**[去 CodeSandbox 尝试](https://codesandbox.io/s/frosty-hermann-bztrp)**
 
-Here's what happens when we render `<ProfilePage>` on the screen:
+以下是方法 3 中当我们渲染 `<ProfilePage>` 时会发生的事情：
 
-1. We've already kicked off the requests in `fetchProfileData()`. It gave us a special "resource" instead of a Promise. In a realistic example, it would be provided by our data library's Suspense integration, like Relay.
-2. React tries to render `<ProfilePage>`. It returns `<ProfileDetails>` and `<ProfileTimeline>` as children.
-3. React tries to render `<ProfileDetails>`. It calls `resource.user.read()`. None of the data is fetched yet, so this component "suspends". React skips over it, and tries rendering other components in the tree.
-4. React tries to render `<ProfileTimeline>`. It calls `resource.posts.read()`. Again, there's no data yet, so this component also "suspends". React skips over it too, and tries rendering other components in the tree.
-5. There's nothing left to try rendering. Because `<ProfileDetails>` suspended, React shows the closest `<Suspense>` fallback above it in the tree: `<h1>Loading profile...</h1>`. We're done for now.
+1. 我们一开始就通过 `fetchProfileData()` 发出请求。这个方法返回给我们一个特殊的对象 “resource"，而不是一个 Promise。在现实的案例中，这个对象是由像 Relay 这样的数据获取库通过整合 Suspense 来提供给我们的。
+2. React 尝试渲染 `<ProfilePage>` 。 该组件返回两个子组件：`<ProfileDetails>` 和 `<ProfileTimeline>`。
+3. React 尝试渲染 `<ProfileDetails>` 。 该组件调用了 `resource.user.read()`， 但因为读取的数据还没被获取完毕，所以组件会处于一个 “挂起” 的状态。 React 会跳过这个组件，转去渲染组件树中的其他组件。
+4. React 尝试渲染 `<ProfileTimeline>` 。该组件调用了 `resource.posts.read()`， 和上面一样，数据还没获取完毕，所以这个组件也是处在 “挂起” 的状态。 React 同样跳过这个组件，去渲染组件树中的其他组件。
+5. 组件树中已经没有其他东西需要渲染了。因为 `<ProfileDetails>` 组件处于 “挂起” 状态，React 则是渲染出距该组件最近的上游 `<Suspense>` fallback 给它：`<h1>Loading profile...</h1>` 。渲染到这里就结束了。
 
-This `resource` object represents the data that isn't there yet, but might eventually get loaded. When we call `read()`, we either get the data, or the component "suspends".
+这里的 `resource` 对象代表的数据虽然还没到位，但大概率它最终会被下载完。所以，当我们读取 `read()` 的时候，我们要么拿到数据，要么拿到一个处于“挂起” 状态的组件。
 
-**As more data streams in, React will retry rendering, and each time it might be able to progress "deeper".** When `resource.user` is fetched, the `<ProfileDetails>` component will render successfully and we'll no longer need the `<h1>Loading profile...</h1>` fallback. Eventually, we'll get all the data, and there will be no fallbacks on the screen.
+**当返回数据开始流入的时候，React 会重新开始渲染，每一次渲染它都可能渲染出更加完整的组件树。**当 `resource.user` 的数据获取完毕之后， `<ProfileDetails>` 组件就能被顺利渲染出来，这时，我们就不再需要展示 `<h1>Loading profile...</h1>` 这个 fallback 了。当我们拿到全部数据之后，所有的 fallbacks 就都可以不展示了。
 
-This has an interesting implication. Even if we use a GraphQL client that collects all data requirements in a single request, *streaming the response lets us show more content sooner*. Because we render-*as-we-fetch* (as opposed to *after* fetching), if `user` appears in the response earlier than `posts`, we'll be able to "unlock" the outer `<Suspense>` boundary before the response even finishes. We might have missed this earlier, but even the fetch-then-render solution contained a waterfall: between fetching and rendering. Suspense doesn't inherently suffer from this waterfall, and libraries like Relay take advantage of this.
+这个过程暗含着一个有意思的点，那就是，虽然我们是用 GraphQL 客户端来通过一个单一的请求来获取所有需要的数据，*但因为响应报文是数据流的格式，我们因此能够更早地展示出接收到的数据*。因为我们的采用的方法是“获取数据之后渲染” （render-as-we-fetch）（而非渲染之后才获取数据），我们能够在响应报文接收完毕之前就先 ”解锁“ 最外层的 `<Suspense>` 。我们在方法 2 里头没谈到这一点：即便是在方法 2 “接收到全部数据之后渲染”（fetch-then-render）中，在获取数据和渲染之间也有 waterfall 问题。而 Suspense 并不会导致这个 waterfall , 数据获取库像是 Relay 就抓住了 Suspense 的这个优势。
 
-Note how we eliminated the `if (...)` "is loading" checks from our components. This doesn't only remove boilerplate code, but it also simplifies making quick design changes. For example, if we wanted profile details and posts to always "pop in" together, we could delete the `<Suspense>` boundary between them. Or we could make them independent from each other by giving each *its own* `<Suspense>` boundary. Suspense lets us change the granularity of our loading states and orchestrate their sequencing without invasive changes to our code.
+这里需要注意我们是如何在代码中去掉方法 2 中的 `if (…)` “is loading”这个检查分支。方法 3 不单单删去了 if 分支，还简化了代码设计快速转变的流程。举个例子，如果我们想让 `<ProfileDetails>` 组件和 `<ProfileTimeline>` 组件一直同时“弹出”，我们可以删去上面代码中的内层 `<Suspense>` 。又或者，我们可以通过*分别给它们都包上一层*`<Suspense>` 来让两者的渲染展示独立于彼此。Suspense 赋予了我们对加载状态的精细控制力，让我们可以在不对代码进行大改的前提下，控制安排组件间的加载状态和显示顺序。
 
-## Start Fetching Early {#start-fetching-early}
+## 尽早开始获取数据 {#start-fetching-early}
 
-If you're working on a data fetching library, there's a crucial aspect of Render-as-You-Fetch you don't want to miss. **We kick off fetching _before_ rendering.** Look at this code example closer:
+如果你正在开发获取数据的库，对于“获取数据之后渲染”这个方法，你会想知道一件至关重要的事情：**我们是在渲染*之前*就进行数据获取**。可以仔细观察下面代码：
 
 ```js
-// Start fetching early!
+// 一早就开始数据获取，在渲染之前！
 const resource = fetchProfileData();
 
 // ...
 
 function ProfileDetails() {
-  // Try to read user info
+  // 尝试读取用户信息
   const user = resource.user.read();
   return <h1>{user.name}</h1>;
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/frosty-hermann-bztrp)**
+**[去 CodeSandbox 尝试](https://codesandbox.io/s/frosty-hermann-bztrp)**
 
-Note that the `read()` call in this example doesn't *start* fetching. It only tries to read the data that is **already being fetched**. This difference is crucial to creating fast applications with Suspense. We don't want to delay loading data until a component starts rendering. As a data fetching library author, you can enforce this by making it impossible to get a `resource` object without also starting a fetch. Every demo on this page using our "fake API" enforces this.
+需要注意的是，上面代码中 `read()` 本身并不触发数据获取这个行为。它做的事情仅仅是**在数据获取之后**，去读取数据。这个区别对于用 Suspense 创建敏捷应用而言，相当重要。我们并不想把数据获取推迟到组件渲染之后。因此，作为数据获取库的作者，你得实现这一点，让用户能拿到 `resource` 这个对象而不触发数据获取的行为。本文中所有的 demo 都通过使用 “假 API” 来实现这点。
 
-You might object that fetching "at the top level" like in this example is impractical. What are we going to do if we navigate to another profile's page? We might want to fetch based on props. The answer to this is **we want to start fetching in the event handlers instead**. Here is a simplified example of navigating between user's pages:
+你可能已经察觉到，像上面例子那样直接在”最外层“获取数据的操作很不实际。现实情况中，如果我们要跳转到另外一个 profile 页面，该怎么实现？我们可能打算基于 props 来做数据获取。所以这个问题的答案是：**我们想实现在事件处理函数中开始获取数据，而不是在 “最外层”**。下面是实现了在两个 profile 页面中跳转的简化代码示例：
 
 ```js{1,2,10,11}
-// First fetch: as soon as possible
+// 初始数据获取，越快越好
 const initialResource = fetchProfileData(0);
 
 function App() {
   const [resource, setResource] = useState(initialResource);
   return (
     <>
-      <button onClick={() => {
-        const nextUserId = getNextId(resource.userId);
-        // Next fetch: when the user clicks
-        setResource(fetchProfileData(nextUserId));
-      }}>
+      <button
+        onClick={() => {
+          const nextUserId = getNextId(resource.userId);
+          // 下一次数据获取：在用户点击之后
+          setResource(fetchProfileData(nextUserId));
+        }}
+      >
         Next
       </button>
       <ProfilePage resource={resource} />
@@ -419,29 +421,29 @@ function App() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/infallible-feather-xjtbu)**
+**[去 CodeSandbox 尝试](https://codesandbox.io/s/infallible-feather-xjtbu)**
 
-With this approach, we can **fetch code and data in parallel**. When we navigate between pages, we don't need to wait for a page's code to load to start loading its data. We can start fetching both code and data at the same time (during the link click), delivering a much better user experience.
+通过上面代码中的方法，我们可以**并行获取代码和数据**。当我们在不同页面间跳转的时候，不需要等到页面对应的代码加载完之后才开始获取数据。我们可以实现在获取代码的同时（在点击链接的时候）也开始获取数据，从而提供更好的用户体验。
 
-This poses a question of how do we know *what* to fetch before rendering the next screen. There are several ways to solve this (for example, by integrating data fetching closer with your routing solution). If you work on a data fetching library, [Building Great User Experiences with Concurrent Mode and Suspense](/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html) presents a deep dive on how to accomplish this and why it's important.
+这个方法本身提出了一个问题：我们在渲染下个页面之前，怎么知道要获取*什么*数据？对于这个问题，有几个不同的解决方法（像是，通过将数据获取的相关代码整合到你的路由逻辑中来解决）。如果你在开发数据获取库，[使用 Concurrent 模式和 Suspense 来构建优秀的用户体验](/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html) 一文深入介绍了如何解决这个问题，以及问题本身的重要性。
 
-### We're Still Figuring This Out {#were-still-figuring-this-out}
+### 我们仍在寻求方法中 {#were-still-figuring-this-out}
 
-Suspense itself as a mechanism is flexible and doesn't have many constraints. Product code needs to be more constrained to ensure no waterfalls, but there are different ways to provide these guarantees. Some questions that we're currently exploring include:
+Suspense 本身作为一个机制而言，它灵活可变并且没有太多的限制。而产品的代码需要足够多的限制来保障代码中不会有 waterfall。关于如何提供保障这一点，目前是有不同的实现方式。当下，我们仍在探索以下问题：
 
-* Fetching early can be cumbersome to express. How do we make it easier to avoid waterfalls?
-* When we fetch data for a page, can the API encourage including data for instant transitions *from* it?
-* What is the lifetime of a response? Should caching be global or local? Who manages the cache?
-* Can Proxies help express lazy-loaded APIs without inserting `read()` calls everywhere?
-* What would the equivalent of composing GraphQL queries look like for arbitrary Suspense data?
+- 尽早地获取数据用代码表达起来会显得笨重。我们该如何让避免 waterfall 这个过程更加容易实现？
+- 我们给某个页面获取数据时，当想快速地*从*该页面过渡切换出去，对应的 API 支持带上数据吗？
+- 响应报文的有效时长是多少？缓存是要处理成全局还是本地？谁来操控相应的缓存？
+- 可以不通过插入 `read()` , 让代理协助表示懒加载的 APIs 吗？
+- 对于任意的 Suspense 数据，什么能作为复合 GraphQL queries 的等效替代？
 
-Relay has its own answers to some of these questions. There is certainly more than a single way to do it, and we're excited to see what new ideas the React community comes up with.
+Relay 对于以上的问题有自己的一套答案。但上述问题的答案绝对不止一种，我们很期待看到 React 社区中解决这些问题的新思路。
 
-## Suspense and Race Conditions {#suspense-and-race-conditions}
+## Suspense 和 Race Conditions {#suspense-and-race-conditions}
 
-Race conditions are bugs that happen due to incorrect assumptions about the order in which our code may run. Fetching data in the `useEffect` Hook or in class lifecycle methods like `componentDidUpdate` often leads to them. Suspense can help here, too — let's see how.
+Race conditions 是 bug 的一类，它的出现是源于开发人员对代码运行顺序的错误推算。在 `useEffect` Hook 或在 class 组件的生命周期函数中调用 `componentDidUpdate` 方法是导致 race conditions 的常见原因。对这类问题，Suspense 也能帮得上忙——下面谈谈具体做法。
 
-To demonstrate the issue, we will add a top-level `<App>` component that renders our `<ProfilePage>` with a button that lets us **switch between different profiles**:
+为了说明这类问题，我们增加一个最外层组件 `<App>`，它渲染出我们上面的`<ProfilePage>` 组件, 外加一个按钮，让我们可以**在不同的 profiles 页面之间切换**。
 
 ```js{9-11}
 function getNextId(id) {
@@ -461,11 +463,11 @@ function App() {
 }
 ```
 
-Let's compare how different data fetching strategies deal with this requirement.
+接下来，我们对比下不同的数据获取方法分别是如何实现页面切换。
 
-### Race Conditions with `useEffect` {#race-conditions-with-useeffect}
+### 涉及 `useEffect` 的 Race Conditions {#race-conditions-with-useeffect}
 
-First, we'll try a version of our original "fetch in effect" example. We'll modify it to pass an `id` parameter from the `<ProfilePage>` props to `fetchUser(id)` and `fetchPosts(id)`:
+我们先直接复制上面方法 1 的代码，然后做些修改：给 `<ProfilePage>` 组件传入个参数 `id` ，并把这个 `id` 传给 `fetchUser(id)` 和 `fetchPosts(id)`， 如下：
 
 ```js{1,5,6,14,19,23,24}
 function ProfilePage({ id }) {
@@ -506,19 +508,19 @@ function ProfileTimeline({ id }) {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/nervous-glade-b5sel)**
+**[去 CodeSandbox 尝试](https://codesandbox.io/s/nervous-glade-b5sel)**
 
-Note how we also changed the effect dependencies from `[]` to `[id]` — because we want the effect to re-run when the `id` changes. Otherwise, we wouldn't refetch new data.
+需要注意代码中 effect 的依赖从 `[]` 变成了 `[id]`——因为我们想在 `id` 变化之后，effect 紧接着再次运行，不然的话，我们就拿不到最新的数据。
 
-If we try this code, it might seem like it works at first. However, if we randomize the delay time in our "fake API" implementation and press the "Next" button fast enough, we'll see from the console logs that something is going very wrong. **Requests from the previous profiles may sometimes "come back" after we've already switched the profile to another ID -- and in that case they can overwrite the new state with a stale response for a different ID.**
+如果我们运行上面的代码，咋一看会觉得它应该可以正常运行。然而，如果我们在 `fetchUser` 和 `fetchPosts` 这两个 “假 API“ 里头都做延迟处理，且延迟的时间随机赋值，接着快速点击按钮“Next“，我们就能从 console 的打印信息看出程序有 bug。**在我们已经切换到新的 profile 页面之后，旧页面发出的请求会时不时”杀回来“——那时，回来的过期响应报文就会用另外一个 ID 的过期数据重写当前正确且新鲜的 state。**
 
-This problem is possible to fix (you could use the effect cleanup function to either ignore or cancel stale requests), but it's unintuitive and difficult to debug.
+这个问题是可以解决的（通过在 effect 里头配置 cleanup 函数来过滤、或者取消过期请求），但它依然是个反直觉的问题，且难以检测。
 
-### Race Conditions with `componentDidUpdate` {#race-conditions-with-componentdidupdate}
+### 涉及 componentDidUpdate 的 Race Conditions {#race-conditions-with-componentdidupdate}
 
-One might think that this is a problem specific to `useEffect` or Hooks. Maybe if we port this code to classes or use convenient syntax like `async` / `await`, it will solve the problem?
+有的人可能认为 race conditions 这个问题只跟 `useEffect` 有关系，或者只和 Hooks 有关。如果我们把上面代码改用 class 组件来实现，或者用 `async / await` 来写，可能就能避开这个问题？
 
-Let's try that:
+先一起试试看：
 
 ```js
 class ProfilePage extends React.Component {
@@ -584,19 +586,19 @@ class ProfileTimeline extends React.Component {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/trusting-clarke-8twuq)**
+**[去 CodeSandbox 尝试](https://codesandbox.io/s/trusting-clarke-8twuq)**
 
-This code is deceptively easy to read.
+上面代码看似简单易读，实则暗含同样的问题。
 
-Unfortunately, neither using a class nor the `async` / `await` syntax helped us solve this problem. This version suffers from exactly the same race conditions, for the same reasons.
+所以很不幸，无论是改用 class 组件，还是改用 `async / await` 都没能解决 race conditions。上面代码和用 Hooks 一样都有问题，问题的源头也一样。
 
-### The Problem {#the-problem}
+### Race Conditions 问题 {#the-problem}
 
-React components have their own "lifecycle". They may receive props or update state at any point in time. However, each asynchronous request *also* has its own "lifecycle". It starts when we kick it off, and finishes when we get a response. The difficulty we're experiencing is "synchronizing" several processes in time that affect each other. This is hard to think about.
+React 组件有它们自己的“生命周期”。组件可能在任意时间点接收到 props 或者更新 state。然而，每一个异步请求*同样也*有自己的”生命周期“ 。异步请求的生命周期开始于我们发出请求，结束于我们收到响应报文。这里我们面临的问题是，如何在这两类生命周期之间及时进行”同步“。这个问题很是棘手。
 
-### Solving Race Conditions with Suspense {#solving-race-conditions-with-suspense}
+### 借助 Suspense 消除 Race Condition {#solving-race-conditions-with-suspense}
 
-Let's rewrite this example again, but using Suspense only:
+我们再来重写上面代码，但这次我们只用 Suspense 来写：
 
 ```js
 const initialResource = fetchProfileData(0);
@@ -606,9 +608,9 @@ function App() {
   return (
     <>
       <button onClick={() => {
-        const nextUserId = getNextId(resource.userId);
-        setResource(fetchProfileData(nextUserId));
-      }}>
+          const nextUserId = getNextId(resource.userId);
+          setResource(fetchProfileData(nextUserId));
+        }}>
         Next
       </button>
       <ProfilePage resource={resource} />
@@ -644,9 +646,9 @@ function ProfileTimeline({ resource }) {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/infallible-feather-xjtbu)**
+**[去 CodeSandbox 尝试](https://codesandbox.io/s/infallible-feather-xjtbu)**
 
-In the previous Suspense example, we only had one `resource`, so we held it in a top-level variable. Now that we have multiple resources, we moved it to the `<App>`'s component state:
+在这个用上 Suspense 的示例中，我们只需要获取一个数据 `resource`， 所以我们把它提到最外层，作为<u>顶层变量</u>。考虑到我们有多个 resources，我们把这个变量放入 `<App>` 组件的 state。
 
 ```js{4}
 const initialResource = fetchProfileData(0);
@@ -655,34 +657,34 @@ function App() {
   const [resource, setResource] = useState(initialResource);
 ```
 
-When we click "Next", the `<App>` component kicks off a request for the next profile, and passes *that* object down to the `<ProfilePage>` component:
+当我们点击 “Next” 按钮，`<App>` 组件便开始发出获取下一个 profile 的请求， 并把*请求返回的*对象下传给 `<ProfilePage>` 组件。
 
 ```js{4,8}
-  <>
-    <button onClick={() => {
+<>
+  <button onClick={() => {
       const nextUserId = getNextId(resource.userId);
       setResource(fetchProfileData(nextUserId));
     }}>
-      Next
-    </button>
-    <ProfilePage resource={resource} />
-  </>
+    Next
+  </button>
+  <ProfilePage resource={resource} />
+</>
 ```
 
-Again, notice that **we're not waiting for the response to set the state. It's the other way around: we set the state (and start rendering) immediately after kicking off a request**. As soon as we have more data, React "fills in" the content inside `<Suspense>` components.
+再次申明，要注意**这里我们并不是干等到响应报文被接收之后，才去更新 state，而是反过来：我们发出请求之后，马上就开始更新 state（外加开始渲染）**。一旦收到响应，React 就把可用的数据用到 `<Suspense>` 组件里头。
 
-This code is very readable, but unlike the examples earlier, the Suspense version doesn't suffer from race conditions. You might be wondering why. The answer is that in the Suspense version, we don't have to think about *time* as much in our code. Our original code with race conditions needed to set the state *at the right moment later*, or otherwise it would be wrong. But with Suspense, we set the state *immediately* -- so it's harder to mess it up.
+和之前的两版一样，这版代码的可读性也很强，但它和之前的有所不同，Suspense 的这版不会有 race conditions 问题。你可能好奇为什么不会有，这是因为，相比之前的两版，在 Suspense 的这版里，我们不需要太怎么考虑*时机*这个事情。在第一版有 race conditions 问题的代码中，state 需要*在准确的时机*设置，否则就会出错。然而在 Suspense 版本里，我们是都是在获取数据之后，立马就设置 state —— 因此大大降低出错的概率。
 
-## Handling Errors {#handling-errors}
+## 错误处理 {#handling-errors}
 
-When we write code with Promises, we might use `catch()` to handle errors. How does this work with Suspense, given that we don't *wait* for Promises to start rendering?
+每当使用 Promises，大概率我们会用 `catch()` 来做错误处理。但当我们用 Suspense 时，我们不*等待* Promises 就直接开始渲染, 这时 `catch()` 就不适用了。这种情况下，错误处理该怎么进行呢？
 
-With Suspense, handling fetching errors works the same way as handling rendering errors -- you can render an [error boundary](/docs/error-boundaries.html) anywhere to "catch" errors in components below.
+在 Suspense 中，获取数据时抛出的错误和组件渲染时的报错处理方式一样——你可以在需要的层级渲染一个 [错误边界](/docs/error-boundaries.html) 组件来“捕捉” 层级下面的所有的报错信息。
 
-First, we'll define an error boundary component to use across our project:
+首先，给我们的项目定义一个错误边界组件：
 
 ```js
-// Error boundaries currently have to be classes.
+// 目前，错误边界组件只支持通过 class 组件定义。
 class ErrorBoundary extends React.Component {
   state = { hasError: false, error: null };
   static getDerivedStateFromError(error) {
@@ -700,7 +702,7 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
-And then we can put it anywhere in the tree to catch errors:
+其次，我们将它放到组件树中任意我们想要的地方来捕捉错误：
 
 ```js{5,9}
 function ProfilePage() {
@@ -717,20 +719,20 @@ function ProfilePage() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/adoring-goodall-8wbn7)**
+**[去 CodeSandbox 尝试](https://codesandbox.io/s/adoring-goodall-8wbn7)**
 
-It would catch both rendering errors *and* errors from Suspense data fetching. We can have as many error boundaries as we like but it's best to [be intentional](https://aweary.dev/fault-tolerance-react/) about their placement.
+上面代码中的错误边界组件既能捕捉渲染过程的报错，*也*能捕捉 Suspense 里头数据获取的报错。理论上，我们在组件树中插入多少个错误边界组件都是可以的，但这并不是推荐的做法，错误边界组件的位置最好是深思熟虑之后再确定。
 
-## Next Steps {#next-steps}
+## 下一步 {#next-steps}
 
-We've now covered the basics of Suspense for Data Fetching! Importantly, we now better understand *why* Suspense works this way, and how it fits into the data fetching space.
+到这里，我们已经介绍完当 Suspense 用于数据获取时的基本内容。更重要的是，我们现在对 Suspense 有自己运作方式的*原因*，以及它是如何在数据获取这个领域中发挥自己的作用这两点有更好的理解。
 
-Suspense answers some questions, but it also poses new questions of its own:
+Suspense 本身解答了一些问题，但同时它也引出一些新的问题：
 
-* If some component "suspends", does the app freeze? How to avoid this?
-* What if we want to show a spinner in a different place than "above" the component in a tree?
-* If we intentionally *want* to show an inconsistent UI for a small period of time, can we do that?
-* Instead of showing a spinner, can we add a visual effect like "greying out" the current screen?
-* Why does our [last Suspense example](https://codesandbox.io/s/infallible-feather-xjtbu) log a warning when clicking the "Next" button?
+- 如果部分组件处于“挂起“状态，整个应用会卡死吗？该怎么避免这个问题？
+- 如果我们不想在目标组件的上层，而想在其他地方展示 spinner，可以实现吗？
+- 如果我们*想*有计划地在一个短的时间内展示不同的 UI，能够实现吗？
+- 除了展示个 spinner，我们能添加额外的视觉效果吗？像是给现有界面加上蒙层之类的？
+- 在[最后一个 Suspense 的代码示例中](https://codesandbox.io/s/infallible-feather-xjtbu)，为什么在点击了“Next”按钮之后，会报出警告？
 
-To answer these questions, we will refer to the next section on [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html).
+对于上述问题的解答，我们将交由下一章节 [Concurrent UI 模式](/docs/concurrent-mode-patterns.html) 处理。
