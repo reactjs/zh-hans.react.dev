@@ -93,7 +93,7 @@ function ProfileTimeline() {
 }
 ```
 
-**[去 CodeSandbox 尝试](https://codesandbox.io/s/frosty-hermann-bztrp)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/frosty-hermann-bztrp)**
 
 上面的 demo 只是个示意。如果里头代码让你摸不着头脑，别担心。我们后面会详细说明这部分代码的运作方式。需要记住的是，Suspense 它其实更像是一个*机制*，而 demo 中 那些具体的 APIs ，像是`fetchProfileData()` 或者 `resource.posts.read()` ，这些 APIs 本身并不重要。不过，如果你还是对它们很好奇，可以在这个 [demo sandbox](https://codesandbox.io/s/frosty-hermann-bztrp) 里头找到它们的定义。
 
@@ -218,7 +218,7 @@ function ProfileTimeline() {
 }
 ```
 
-**[去 CodeSandbox 尝试](https://codesandbox.io/s/fragrant-glade-8huj6)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/fragrant-glade-8huj6)**
 
 如果你运行上面代码，你会发现 console 里头打印如下信息：
 
@@ -293,7 +293,7 @@ function ProfileTimeline({ posts }) {
 }
 ```
 
-**[去 CodeSandbox 尝试](https://codesandbox.io/s/wandering-morning-ev6r0)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/wandering-morning-ev6r0)**
 
 在方法 2 中，console 打印的信息变成这样：
 
@@ -357,7 +357,7 @@ function ProfileTimeline() {
 }
 ```
 
-**[去 CodeSandbox 尝试](https://codesandbox.io/s/frosty-hermann-bztrp)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/frosty-hermann-bztrp)**
 
 以下是方法 3 中当我们渲染 `<ProfilePage>` 时会发生的事情：
 
@@ -392,7 +392,7 @@ function ProfileDetails() {
 }
 ```
 
-**[去 CodeSandbox 尝试](https://codesandbox.io/s/frosty-hermann-bztrp)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/frosty-hermann-bztrp)**
 
 需要注意的是，上面代码中 `read()` 本身并不触发数据获取这个行为。它做的事情仅仅是**在数据获取之后**，去读取数据。这个区别对于用 Suspense 创建敏捷应用而言，相当重要。我们并不想把数据获取推迟到组件渲染之后。因此，作为数据获取库的作者，你得实现这一点，让用户能拿到 `resource` 这个对象而不触发数据获取的行为。本文中所有的 demo 都通过使用 “假 API” 来实现这点。
 
@@ -406,13 +406,11 @@ function App() {
   const [resource, setResource] = useState(initialResource);
   return (
     <>
-      <button
-        onClick={() => {
+      <button onClick={() => {
           const nextUserId = getNextId(resource.userId);
           // 下一次数据获取：在用户点击之后
           setResource(fetchProfileData(nextUserId));
-        }}
-      >
+        }}>
         Next
       </button>
       <ProfilePage resource={resource} />
@@ -421,7 +419,7 @@ function App() {
 }
 ```
 
-**[去 CodeSandbox 尝试](https://codesandbox.io/s/infallible-feather-xjtbu)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/infallible-feather-xjtbu)**
 
 通过上面代码中的方法，我们可以**并行获取代码和数据**。当我们在不同页面间跳转的时候，不需要等到页面对应的代码加载完之后才开始获取数据。我们可以实现在获取代码的同时（在点击链接的时候）也开始获取数据，从而提供更好的用户体验。
 
@@ -508,7 +506,7 @@ function ProfileTimeline({ id }) {
 }
 ```
 
-**[去 CodeSandbox 尝试](https://codesandbox.io/s/nervous-glade-b5sel)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/nervous-glade-b5sel)**
 
 需要注意代码中 effect 的依赖从 `[]` 变成了 `[id]`——因为我们想在 `id` 变化之后，effect 紧接着再次运行，不然的话，我们就拿不到最新的数据。
 
@@ -586,7 +584,7 @@ class ProfileTimeline extends React.Component {
 }
 ```
 
-**[去 CodeSandbox 尝试](https://codesandbox.io/s/trusting-clarke-8twuq)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/trusting-clarke-8twuq)**
 
 上面代码看似简单易读，实则暗含同样的问题。
 
@@ -646,7 +644,7 @@ function ProfileTimeline({ resource }) {
 }
 ```
 
-**[去 CodeSandbox 尝试](https://codesandbox.io/s/infallible-feather-xjtbu)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/infallible-feather-xjtbu)**
 
 在这个用上 Suspense 的示例中，我们只需要获取一个数据 `resource`， 所以我们把它提到最外层，作为<u>顶层变量</u>。考虑到我们有多个 resources，我们把这个变量放入 `<App>` 组件的 state。
 
@@ -719,7 +717,7 @@ function ProfilePage() {
 }
 ```
 
-**[去 CodeSandbox 尝试](https://codesandbox.io/s/adoring-goodall-8wbn7)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/adoring-goodall-8wbn7)**
 
 上面代码中的错误边界组件既能捕捉渲染过程的报错，*也*能捕捉 Suspense 里头数据获取的报错。理论上，我们在组件树中插入多少个错误边界组件都是可以的，但这并不是推荐的做法，错误边界组件的位置最好是深思熟虑之后再确定。
 
