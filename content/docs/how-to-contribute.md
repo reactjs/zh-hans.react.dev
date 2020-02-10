@@ -21,7 +21,11 @@ React 的一切工作在 [GitHub](https://github.com/facebook/react) 上完成�
 
 ### 语义化版本 {#semantic-versioning}
 
+<<<<<<< HEAD
 React 遵循[语义化版本](https://semver.org/lang/zh-CN/)。我们对重要的漏洞修复发布修订号；对新特性或不重要的变更发布次版本号；对重大且不兼容的变更发布主版本号。我们在开发重大且不兼容的变更时，还会在次版本号用 deprecation warnings 让用户得知将来的变更并提前迁移代码。请查看[版本号规则](https://zh-hans.reactjs.org/docs/faq-versioning.html)来了解更多我们在稳定性和渐进迁移方面要做哪些事情。
+=======
+React follows [semantic versioning](https://semver.org/). We release patch versions for critical bugfixes, minor versions for new features or non-essential changes, and major versions for any breaking changes. When we make breaking changes, we also introduce deprecation warnings in a minor version so that our users learn about the upcoming changes and migrate their code in advance. Learn more about our commitment to stability and incremental migration in [our versioning policy](/docs/faq-versioning.html).
+>>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 
 每一个重要变更参见 [changelog file](https://github.com/facebook/react/blob/master/CHANGELOG.md)。
 
@@ -55,8 +59,13 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 
 ### 如何联系我们 {#how-to-get-in-touch}
 
+<<<<<<< HEAD
 - 因特网中继聊天（IRC）： [#reactjs on freenode](https://webchat.freenode.net/?channels=reactjs)
 - [论坛](https://reactjs.org/community/support.html#popular-discussion-forums)
+=======
+* IRC: [#reactjs on freenode](https://webchat.freenode.net/?channels=reactjs)
+* [Discussion forums](/community/support.html#popular-discussion-forums)
+>>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 
 你如果需要有关 React 的帮助，还可以前往 Discord 聊天平台，这里建有 React 用户们的[活跃社区](https://www.reactiflux.com/)。
 

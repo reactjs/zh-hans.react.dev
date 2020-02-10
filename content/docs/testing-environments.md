@@ -29,7 +29,11 @@ prev: testing-recipes.html
 
 如果您正在编写一个主要测试浏览器特定行为的库，并且需要布局或真实输入等原生浏览器行为，那么你可以使用像 [mocha](https://mochajs.org/) 这样的框架。
 
+<<<<<<< HEAD
 在你 _无法_ 模拟 DOM 环境（例如，在 Node.js 上测试 React Native 组件）的情况下，可以使用 [事件模拟辅助函数](https://reactjs.org/docs/test-utils.html#simulate) 来模拟与元素的交互。或者，你也可以使用 [`@testing-library/react-native`](https://testing-library.com/docs/native-testing-library) 中的 `fireEvent` 辅助函数。
+=======
+In an environment where you _can't_ simulate a DOM (e.g. testing React Native components on Node.js), you could use [event simulation helpers](/docs/test-utils.html#simulate) to simulate interactions with elements. Alternately, you could use the `fireEvent` helper from [`@testing-library/react-native`](https://testing-library.com/docs/native-testing-library).
+>>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 
 诸如 [Cypress](https://www.cypress.io/)，[puppeteer](https://github.com/GoogleChrome/puppeteer) 和 [webdriver](https://www.seleniumhq.org/projects/webdriver/) 等框架对于运行[端对端测试](#end-to-end-tests-aka-e2e-tests) 都非常有用。
 
