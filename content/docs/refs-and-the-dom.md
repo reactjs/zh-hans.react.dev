@@ -161,11 +161,7 @@ class Parent extends React.Component {
 }
 ```
 
-<<<<<<< HEAD
-如果要在函数组件中使用 `ref`，你可以使用 [`forwardRef`](https://reactjs.org/docs/forwarding-refs.html)（可与 [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle) 结合使用），或者可以将该组件转化为 class 组件。
-=======
-If you want to allow people to take a `ref` to your function component, you can use [`forwardRef`](/docs/forwarding-refs.html) (possibly in conjunction with [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle)), or you can convert the component to a class.
->>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
+如果要在函数组件中使用 `ref`，你可以使用 [`forwardRef`](/docs/forwarding-refs.html)（可与 [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle) 结合使用），或者可以将该组件转化为 class 组件。
 
 不管怎样，你可以**在函数组件内部使用 `ref` 属性**，只要它指向一个 DOM 元素或 class 组件：
 

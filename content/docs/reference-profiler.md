@@ -6,21 +6,12 @@ category: Reference
 permalink: docs/profiler.html
 ---
 
-<<<<<<< HEAD
 `Profiler` 测量渲染一个 React 应用多久渲染一次以及渲染一次的“代价”。
 它的目的是识别出应用中渲染较慢的部分，或是可以使用[类似 memoization 优化](/docs/hooks-faq.html#how-to-memoize-calculations)的部分，并从相关优化中获益。
-=======
-The `Profiler` measures how often a React application renders and what the "cost" of rendering is.
-Its purpose is to help identify parts of an application that are slow and may benefit from [optimizations such as memoization](/docs/hooks-faq.html#how-to-memoize-calculations).
->>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 
 > 注意：
 >
-<<<<<<< HEAD
 > Profiling 增加了额外的开支，所以**它在[生产构建](/docs/optimizing-performance.html#use-the-production-build)中会被禁用**。
-=======
-> Profiling adds some additional overhead, so **it is disabled in [the production build](/docs/optimizing-performance.html#use-the-production-build)**.
->>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 >
 > 为了将 profiling 功能加入生产环境中，React 提供了使 profiling 可用的特殊的生产构建环境。
 > 从 [fb.me/react-profiling](https://fb.me/react-profiling)了解更多关于如何使用这个构建环境的信息。

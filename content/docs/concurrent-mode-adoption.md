@@ -80,11 +80,7 @@ ReactDOM.createRoot(
 >
 > concurrent 模式 API 如 `createRoot` 只存在于 React 实验版本。
 
-<<<<<<< HEAD
-在 concurrent 模式下，生命周期[之前被标记过](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html)为“不安全”是真的不安全，会比现在的 React 出现更多的 bug。在你的 app 完全兼容[严格模式](https://reactjs.org/docs/strict-mode.html)之前，我们不建议使用 concurrent 模式。
-=======
-In Concurrent Mode, the lifecycle methods [previously marked](/blog/2018/03/27/update-on-async-rendering.html) as "unsafe" actually *are* unsafe, and lead to bugs even more than in today's React. We don't recommend trying Concurrent Mode until your app is [Strict Mode](/docs/strict-mode.html)-compatible.
->>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
+在 concurrent 模式下，生命周期[之前被标记过](/blog/2018/03/27/update-on-async-rendering.html)为“不安全”是真的不安全，会比现在的 React 出现更多的 bug。在你的 app 完全兼容[严格模式](https://reactjs.org/docs/strict-mode.html)之前，我们不建议使用 concurrent 模式。
 
 ## 有何期望 {#what-to-expect}
 
