@@ -9,7 +9,7 @@ author: [gaearon]
 >
 > 你可以在 [React 16.9 版本的博客](/blog/2019/08/08/react-v16.9.0.html#an-update-to-the-roadmap)中找到关于路线图更新的内容。
 
-## 太长不看 {#tldr}
+## 简介 {#tldr}
 
 我们计划在如下里程碑中发布 React 的新功能：
 
