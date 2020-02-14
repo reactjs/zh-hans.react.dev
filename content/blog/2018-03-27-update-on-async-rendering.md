@@ -97,8 +97,7 @@ author: [bvaughn]
 >
 > 一些高级用例（例如像 Relay 这样的库）可能想要尝试急切地预取异步数据。[这里](https://gist.github.com/bvaughn/89700e525ff423a75ffb63b1b1e30a8f)有一个如何做到这一点的例子。
 >
-> 从长远来看，在 React 组件中获取数据的规范方式可能基于[在冰岛 JSConf 引入的](/blog/2018/03/01/sneak-peek-beyond-react-16.html) “suspense” API。简单的数据提取解决方案像 Apollo 和 Relay 这样的库都可以在引擎盖下使用它。
-它比上述任何一种解决方案都要简单得多，但不会在 16.3 版本中及时完成。
+> 从长远来看，在 React 组件中获取数据的规范方式可能基于[在冰岛 JSConf 引入的](/blog/2018/03/01/sneak-peek-beyond-react-16.html) “suspense” API。简单的数据提取解决方案像 Apollo 和 Relay 这样的库都可以在引擎盖下使用它。它比上述任何一种解决方案都要简单得多，但不会在 16.3 版本中及时完成。
 >
 > 当支持服务端渲染时，有必要同步地提供数据 —— `componentWillMount` 通常用于此目的，但构造函数可用作替换。即将推出的 suspense API 将使异步数据获取对客户端和服务端渲染都成为可能。
 
@@ -121,7 +120,7 @@ author: [bvaughn]
 `embed:update-on-async-rendering/adding-event-listeners-create-subscription.js`
 
 > 注意
-> 
+>
 > 像 Relay/Apollo 这样的库应该使用与 `create-subscription` 在底层使用的相同技术手动管理订阅（如[此处](https://gist.github.com/bvaughn/d569177d70b50b58bff69c3c4a5353f3)所述），以最适合其库使用的方式进行优化。
 
 ### 基于 props 更新 `state`{#updating-state-based-on-props}
