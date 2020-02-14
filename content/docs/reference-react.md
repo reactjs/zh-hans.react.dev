@@ -65,15 +65,15 @@ Suspense 使得组件可以“等待”某些操作结束后，再进行渲染�
 - [`React.lazy`](#reactlazy)
 - [`React.Suspense`](#reactsuspense)
 
-### Hooks {#hooks}
+### Hook {#hooks}
 
-*Hooks* 是在 React 16.8 中引入的新概念。Hooks 允许你在不使用 class 组件的情况下使用 state 及其他 React 功能。Hooks 拥有[专属文档章节](/docs/hooks-intro.html)和单独的 API 参考文档：
+*Hook* 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。Hook 拥有[专属文档章节](/docs/hooks-intro.html)和单独的 API 参考文档：
 
-- [基础 Hooks](/docs/hooks-reference.html#basic-hooks)
+- [基础 Hook](/docs/hooks-reference.html#basic-hooks)
   - [`useState`](/docs/hooks-reference.html#usestate)
   - [`useEffect`](/docs/hooks-reference.html#useeffect)
   - [`useContext`](/docs/hooks-reference.html#usecontext)
-- [额外的 Hooks](/docs/hooks-reference.html#additional-hooks)
+- [额外的 Hook](/docs/hooks-reference.html#additional-hooks)
   - [`useReducer`](/docs/hooks-reference.html#usereducer)
   - [`useCallback`](/docs/hooks-reference.html#usecallback)
   - [`useMemo`](/docs/hooks-reference.html#usememo)
@@ -127,6 +127,8 @@ const MyComponent = React.memo(function MyComponent(props) {
 `React.memo` 为[高阶组件](/docs/higher-order-components.html)。它与 [`React.PureComponent`](#reactpurecomponent) 非常相似，但它适用于函数组件，但不适用于 class 组件。
 
 如果你的函数组件在给定相同 props 的情况下渲染相同的结果，那么你可以通过将其包装在 `React.memo` 中调用，以此通过记忆组件渲染结果的方式来提高组件的性能表现。这意味着在这种情况下，React 将跳过渲染组件的操作并直接复用最近一次渲染的结果。
+
+`React.memo` 仅影响 props 变更。如果函数组件被 `React.memo` 包裹，且其实现中拥有 [`useState`](/docs/hooks-state.html) 或 [`useContext`](/docs/hooks-reference.html#usecontext) 的 Hook，当 context 发生变化时，它仍会重新渲染。
 
 默认情况下其只会对复杂对象做浅层对比，如果你想要控制对比过程，那么请将自定义的比较函数通过第二个参数传入来实现。
 
@@ -198,7 +200,7 @@ React.cloneElement(
 React.createFactory(type)
 ```
 
-返回用于生成指定类型 React 元素的函数。与 [`React.createElement()`](#createElement) 相似的是，类型参数既可以是标签名字符串（像是 `'div'` 或 `'span'`），也可以是 [React 组件](/docs/components-and-props.html) 类型 （class 组件或函数组件），或是 [React fragment](#reactfragment) 类型。
+返回用于生成指定类型 React 元素的函数。与 [`React.createElement()`](#createelement) 相似的是，类型参数既可以是标签名字符串（像是 `'div'` 或 `'span'`），也可以是 [React 组件](/docs/components-and-props.html) 类型 （class 组件或函数组件），或是 [React fragment](#reactfragment) 类型。
 
 此辅助函数已废弃，建议使用 JSX 或直接调用 `React.createElement()` 来替代它。
 

@@ -3,8 +3,8 @@ class ScrollingList extends React.Component {
 
   // highlight-range{1-10}
   getSnapshotBeforeUpdate(prevProps, prevState) {
-    // Are we adding new items to the list?
-    // Capture the scroll position so we can adjust scroll later.
+    // 我们正在向列表中添加新项吗？
+    // 捕获滚动位置，以便我们稍后可以调整滚动位置。
     if (prevProps.list.length < this.props.list.length) {
       return (
         this.listRef.scrollHeight - this.listRef.scrollTop
@@ -15,9 +15,9 @@ class ScrollingList extends React.Component {
 
   // highlight-range{1-8}
   componentDidUpdate(prevProps, prevState, snapshot) {
-    // If we have a snapshot value, we've just added new items.
-    // Adjust scroll so these new items don't push the old ones out of view.
-    // (snapshot here is the value returned from getSnapshotBeforeUpdate)
+    // 如果我们刚刚添加了新项，并且有了快照值。
+    // 调整滚动位置，以便这些新项不会把旧项挤出视图。
+    // （此处的快照是从 getSnapshotBeforeUpdate 返回的值）
     if (snapshot !== null) {
       this.listRef.scrollTop =
         this.listRef.scrollHeight - snapshot;
@@ -27,7 +27,7 @@ class ScrollingList extends React.Component {
   render() {
     return (
       <div ref={this.setListRef}>
-        {/* ...contents... */}
+        {/* ...内容... */}
       </div>
     );
   }

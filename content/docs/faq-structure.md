@@ -1,18 +1,18 @@
 ---
 id: faq-structure
-title: File Structure
+title: 项目文件结构
 permalink: docs/faq-structure.html
 layout: docs
 category: FAQ
 ---
 
-### Is there a recommended way to structure React projects? {#is-there-a-recommended-way-to-structure-react-projects}
+### 是否有一种推荐的方式来组织 React 的项目文件结构呢？ {#is-there-a-recommended-way-to-structure-react-projects}
 
-React doesn't have opinions on how you put files into folders. That said there are a few common approaches popular in the ecosystem you may want to consider.
+React 对如何将文件放入文件夹中没有意见。也就是说，你可以参考使用生态系统中一些常见的组织项目文件结构的方式。
 
-#### Grouping by features or routes {#grouping-by-features-or-routes}
+#### 按功能或路由组织 {#grouping-by-features-or-routes}
 
-One common way to structure projects is locate CSS, JS, and tests together inside folders grouped by feature or route.
+组织项目文件结构的一种常见方法是将 CSS、JS 和测试文件一起按照功能或路由进行组织。
 
 ```
 common/
@@ -35,11 +35,11 @@ profile/
   ProfileAPI.js
 ```
 
-The definition of a "feature" is not universal, and it is up to you to choose the granularity. If you can't come up with a list of top-level folders, you can ask the users of your product what major parts it consists of, and use their mental model as a blueprint.
+一个“功能”的定义因人而异，你可以自行选择其粒度。如果你想不出如何设计顶层目录，则可以通过向产品用户询问这个产品所包含的主要部分，并将反馈的想法用作设计蓝本。
 
-#### Grouping by file type {#grouping-by-file-type}
+#### 按文件类型组织 {#grouping-by-file-type}
 
-Another popular way to structure projects is to group similar files together, for example:
+另一种组织项目文件结构的常用方法是将类似的文件组织在一起，例如：
 
 ```
 api/
@@ -59,16 +59,16 @@ components/
   ProfileHeader.css
 ```
 
-Some people also prefer to go further, and separate components into different folders depending on their role in the application. For example, [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) is a design methodology built on this principle. Remember that it's often more productive to treat such methodologies as helpful examples rather than strict rules to follow.
+一些人还喜欢更进一步，他们根据组件在应用程序中的角色将组件文件组织到不同的目录中去。例如，[原子设计](http://bradfrost.com/blog/post/atomic-web-design/)就是一种基于此原理的设计方法。请记住，将这些方法作为有用的示例而非必须严格遵守的规则，通常会更富成效。
 
-#### Avoid too much nesting {#avoid-too-much-nesting}
+#### 避免多层嵌套 {#avoid-too-much-nesting}
 
-There are many pain points associated with deep directory nesting in JavaScript projects. It becomes harder to write relative imports between them, or to update those imports when the files are moved. Unless you have a very compelling reason to use a deep folder structure, consider limiting yourself to a maximum of three or four nested folders within a single project. Of course, this is only a recommendation, and it may not be relevant to your project.
+JavaScript 项目中的深层目录嵌套会带来许多痛点。在编写相对路径导入，或是在文件移动后更新这些导入将变得更加困难。除非你有非常令人信服的理由来使用深层目录嵌套，否则请考虑将单个项目中的目录嵌套控制在最多三到四个层级内。当然，这只是一个建议，它可能与你的项目无关。
 
-#### Don't overthink it {#dont-overthink-it}
+#### 不要过度思考 {#dont-overthink-it}
 
-If you're just starting a project, [don't spend more than five minutes](https://en.wikipedia.org/wiki/Analysis_paralysis) on choosing a file structure. Pick any of the above approaches (or come up with your own) and start writing code! You'll likely want to rethink it anyway after you've written some real code.
+如果你刚刚开始一个项目，[不要花超过五分钟](https://en.wikipedia.org/wiki/Analysis_paralysis)在选择项目文件组织结构上。选择上述任何方式（或提出自己的方式）并开始编写代码！因为，在你编写了一些真正的代码之后，你将很有可能会重新考虑它。
 
-If you feel completely stuck, start by keeping all files in a single folder. Eventually it will grow large enough that you will want to separate some files from the rest. By that time you'll have enough knowledge to tell which files you edit together most often. In general, it is a good idea to keep files that often change together close to each other. This principle is called "colocation".
+如果您感觉完全卡住，请先将所有文件保存在同一个文件夹中。它最终会变得足够大，以至于让你想要将其中一些文件拆分出去。到那时，你将有足够的知识去区分你最频繁编辑的文件。通常，将经常一起变化的文件组织在一起是个好主意。这个原则被称为 “colocation”。
 
-As projects grow larger, they often use a mix of both of the above approaches in practice. So choosing the "right" one in the beginning isn't very important.
+随着项目规模的扩大，人们通常会在实践中混搭使用上述这些方式。因此，在开始时选择“正确”的那个方式并不是很重要。

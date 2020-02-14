@@ -132,7 +132,7 @@ class EssayForm extends React.Component {
 ```html
 <select>
   <option value="grapefruit">葡萄柚</option>
-  <option value="lime">柠檬</option>
+  <option value="lime">酸橙</option>
   <option selected value="coconut">椰子</option>
   <option value="mango">芒果</option>
 </select>
@@ -166,7 +166,7 @@ class FlavorForm extends React.Component {
           选择你喜欢的风味:
           <select value={this.state.value} onChange={this.handleChange}>
             <option value="grapefruit">葡萄柚</option>
-            <option value="lime">柠檬</option>
+            <option value="lime">酸橙</option>
             <option value="coconut">椰子</option>
             <option value="mango">芒果</option>
           </select>
@@ -278,7 +278,7 @@ this.setState(partialState);
 
 ## 受控输入空值 {#controlled-input-null-value}
 
-在[受控组件](/docs/forms.html#controlled-components)上指定 value 的 prop 可以防止用户更改输入。如果指定了 `value`，但输入仍可编辑，则可能是意外地将`value` 设置为  `undefined` 或 `null`。
+在[受控组件](/docs/forms.html#controlled-components)上指定 value 的 prop 会阻止用户更改输入。如果你指定了 `value`，但输入仍可编辑，则可能是你意外地将`value` 设置为  `undefined` 或 `null`。
 
 下面的代码演示了这一点。（输入最初被锁定，但在短时间延迟后变为可编辑。）
 
@@ -297,4 +297,4 @@ setTimeout(function() {
 
 ## 成熟的解决方案 {#fully-fledged-solutions}
 
-如果你想寻找包含验证、追踪访问字段以及处理表单提交的完整解决方案，使用 [Formik](https://jaredpalmer.com/formik) 是不错的选择。然而，它也是建立在受控组件和管理 state 的基础之上——所以不要忽视学习它们。
+如果你想寻找包含验证、追踪访问字段以及处理表单提交的完整解决方案，使用 [Formik](https://jaredpalmer.com/formik) 是不错的选择。然而，它也是建立在受控组件和管理 state 的基础之上 —— 所以不要忽视学习它们。

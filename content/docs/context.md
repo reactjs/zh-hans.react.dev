@@ -15,6 +15,7 @@ Context 提供了一个无需为每层组件手动添加 props，就能在组件
   - [Context.Provider](#contextprovider)
   - [Class.contextType](#classcontexttype)
   - [Context.Consumer](#contextconsumer)
+  - [Context.displayName](#contextdisplayname)
 - [示例](#examples)
   - [动态 Context](#dynamic-context)
   - [在嵌套组件中更新 Context](#updating-context-from-a-nested-component)
@@ -117,7 +118,7 @@ const MyContext = React.createContext(defaultValue);
 
 创建一个 Context 对象。当 React 渲染一个订阅了这个 Context 对象的组件，这个组件会从组件树中离自身最近的那个匹配的 `Provider` 中读取到当前的 context 值。
 
-只有当组件所处的树中没有匹配到 Provider 时，其 `defaultValue` 参数**才**会生效。这有助于在不使用 Provider 包装组件的情况下对组件进行测试。注意：将 `undefined` 传递个 Provider 时，消费组件的 `defaultValue` 不会生效。
+**只有**当组件所处的树中没有匹配到 Provider 时，其 `defaultValue` 参数才会生效。这有助于在不使用 Provider 包装组件的情况下对组件进行测试。注意：将 `undefined` 传递给 Provider 的 value 时，消费组件的 `defaultValue` 不会生效。
 
 ### `Context.Provider` {#contextprovider}
 
@@ -134,7 +135,7 @@ Provider 接收一个 `value` 属性，传递给消费组件。一个 Provider �
 通过新旧值检测来确定变化，使用了与 [`Object.is`](//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) 相同的算法。
 
 > 注意
-> 
+>
 > 当传递对象给 `value` 时，检测变化的方式会导致一些问题：详见[注意事项](#caveats)。
 
 ### `Class.contextType` {#classcontexttype}
@@ -193,8 +194,22 @@ class MyClass extends React.Component {
 这需要[函数作为子元素（function as a child）](/docs/render-props.html#using-props-other-than-render)这种做法。这个函数接收当前的 context 值，返回一个 React 节点。传递给函数的 `value` 值等同于往上组件树离这个 context 最近的 Provider 提供的 `value` 值。如果没有对应的 Provider，`value` 参数等同于传递给 `createContext()` 的 `defaultValue`。
 
 > 注意
-> 
-> 想要了解更多关于“函数作为子元素（function as a child）”模式，详见 [render props](/docs/render-props.html)。
+>
+> 想要了解更多关于 “函数作为子元素（function as a child）” 模式，详见 [render props](/docs/render-props.html)。
+
+### `Context.displayName` {#contextdisplayname}
+
+context 对象接受一个名为 `displayName` 的 property，类型为字符串。React DevTools 使用该字符串来确定 context 要显示的内容。
+
+示例，下述组件在 DevTools 中将显示为 MyDisplayName：
+
+```js{2}
+const MyContext = React.createContext(/* some value */);
+MyContext.displayName = 'MyDisplayName';
+
+<MyContext.Provider> // "MyDisplayName.Provider" 在 DevTools 中
+<MyContext.Consumer> // "MyDisplayName.Consumer" 在 DevTools 中
+```
 
 ## 示例 {#examples}
 
@@ -238,7 +253,6 @@ class MyClass extends React.Component {
 
 `embed:context/reference-caveats-problem.js`
 
-
 为了防止这种情况，将 value 状态提升到父节点的 state 里：
 
 `embed:context/reference-caveats-solution.js`
@@ -248,4 +262,3 @@ class MyClass extends React.Component {
 > 注意
 >
 > 先前 React 使用实验性的 context API 运行，旧的 API 将会在所有 16.x 版本中得到支持，但用到它的应用应该迁移到新版本。过时的 API 将在未来的 React 版本中被移除。阅读[过时的 context 文档](/docs/legacy-context.html)了解更多。
-

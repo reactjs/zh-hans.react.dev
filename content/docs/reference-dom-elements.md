@@ -110,7 +110,7 @@ React 会自动添加 ”px” 后缀到内联样式为数字的属性后。如�
 
 ### suppressContentEditableWarning {#suppresscontenteditablewarning}
 
-通常，当拥有子节点的元素被标记为 `contentEditable` 时，React 会发出一个警告，因为这不会生效。此属性会触发警告信息。尽量不要使用该属性，除非你要构建一个类似 [Draft.js](https://facebook.github.io/draft-js/) 的手动管理 `contentEditable` 属性的库。
+通常，当拥有子节点的元素被标记为 `contentEditable` 时，React 会发出一个警告，因为这不会生效。该属性将禁止此警告。尽量不要使用该属性，除非你要构建一个类似 [Draft.js](https://facebook.github.io/draft-js/) 的手动管理 `contentEditable` 属性的库。
 
 ### suppressHydrationWarning {#suppresshydrationwarning}
 

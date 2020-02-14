@@ -81,7 +81,7 @@ npx create-react-app my-app
 3. 删除掉新项目中 `src/` 文件夹下的所有文件。
 
 > 注意：
-> 
+>
 > **不要删除整个 `src` 文件夹，删除里面的源文件**。我们会在接下来的步骤中使用示例代码替换默认源文件。
 
 ```bash
@@ -118,7 +118,7 @@ import './index.css';
 
 ### 寻求帮助 {#help-im-stuck}
 
-如果你遇到了任何困难，可以去查看[社区支持资源](/community/support.html)。你也可以在 [Reactiflux Chat](https://discord.gg/0ZcbPKXt5bZjGY5n) 快速求助。如果通过上述方式还是解决不了你的问题，请给我们提 issue，我们会帮助你的。
+如果你遇到了任何困难，可以去查看[社区支持资源](/community/support.html)。你也可以在 [Reactiflux Chat](https://discord.gg/reactiflux) 快速求助。如果通过上述方式还是解决不了你的问题，请给我们提 issue，我们会帮助你的。
 
 ## 概览 {#overview}
 
@@ -149,7 +149,7 @@ class ShoppingList extends React.Component {
 // 用法示例: <ShoppingList name="Mark" />
 ```
 
-我们马上会讨论这些有奇怪、又像 XML 的标签。我们通过使用组件来告诉 React 我们希望在屏幕上看到什么。当数据发生改变时，React 会高效地更新并重新渲染我们的组件。
+我们马上会讨论这些又奇怪、又像 XML 的标签。我们通过使用组件来告诉 React 我们希望在屏幕上看到什么。当数据发生改变时，React 会高效地更新并重新渲染我们的组件。
 
 其中，ShoppingList 是一个 **React 组件类**，或者说是一个 **React 组件类型**。一个组件接收一些参数，我们把这些参数叫做 `props`（“props” 是 “properties” 简写），然后通过 `render` 方法返回需要展示在屏幕上的视图的层次结构。
 
@@ -166,7 +166,7 @@ return React.createElement('div', {className: 'shopping-list'},
 
 如果你对这个比较感兴趣，可以查阅 [API 文档](/docs/react-api.html#createelement)了解有关 `createElement()` 更详细的用法。但在接下来的教程中，我们并不会直接使用这个方法，而是继续使用 JSX。
 
-在 JSX 中你可以任意使用 JavaScript 表达式，只需要用一个大括号把表达式括起来。每一个 React 元素事实上都一个 JavaScript 对象，你可以在你的程序中把它当保存在变量中或者作为参数传递。
+在 JSX 中你可以任意使用 JavaScript 表达式，只需要用一个大括号把表达式括起来。每一个 React 元素事实上都是一个 JavaScript 对象，你可以在你的程序中把它当保存在变量中或者作为参数传递。
 
 前文中的 `ShoppingList` 组件只会渲染一些内置的 DOM 组件，如`<div />`、`<li />`等。但是你也可以组合和渲染自定义的 React 组件。例如，你可以通过 `<ShoppingList />` 来表示整个购物清单组件。每个组件都是封装好的，并且可以单独运行，这样你就可以通过组合简单的组件来构建复杂的 UI 界面。
 
@@ -197,6 +197,7 @@ class Board extends React.Component {
   renderSquare(i) {
     return <Square value={i} />;
   }
+}
 ```
 
 修改 Square 组件中的 `render` 方法，把 `{/* TODO */}` 替换为 `{this.props.value}`，以显示上文中传入的值：
@@ -264,7 +265,7 @@ class Square extends React.Component {
 
 接下来，我们希望 Square 组件可以“记住”它被点击过，然后用 “X” 来填充对应的方格。我们用 **state** 来实现所谓“记忆”的功能。
 
-可以通过在 React 组件构的造函数中设置 `this.state` 来初始化 state。`this.state` 应该被视为一个组件的私有属性。我们在 `this.state` 中存储当前每个方格（Square）的值，并且在每次方格被点击的时候改变这个值。
+可以通过在 React 组件的构造函数中设置 `this.state` 来初始化 state。`this.state` 应该被视为一个组件的私有属性。我们在 `this.state` 中存储当前每个方格（Square）的值，并且在每次方格被点击的时候改变这个值。
 
 首先，我们向这个 class 中添加一个构造函数，用来初始化 state：
 
@@ -321,7 +322,7 @@ class Square extends React.Component {
 }
 ```
 
-在 Square 组件 `render` 方法中的 `onCLick` 事件监听函数中调用 `this.setState`，我们就可以在每次 `<button>` 被点击的时候通知 React 去重新渲染 Square 组件。组件更新之后，Square 组件的 `this.state.value` 的值会变为 `'X'`，因此，我们在游戏棋盘上就能看见 `X` 了。点击任意一个方格，`X` 就会出现了。
+在 Square 组件 `render` 方法中的 `onClick` 事件监听函数中调用 `this.setState`，我们就可以在每次 `<button>` 被点击的时候通知 React 去重新渲染 Square 组件。组件更新之后，Square 组件的 `this.state.value` 的值会变为 `'X'`，因此，我们在游戏棋盘上就能看见 `X` 了。点击任意一个方格，`X` 就会出现了。
 
 每次在组件中调用 `setState` 时，React 都会自动更新其子组件。
 
@@ -335,7 +336,7 @@ class Square extends React.Component {
 
 你还可以在 React DevTools 中检查 React 组件的 state 和 props。
 
-安装 React DevTools 之后，右键点击页面的任何一个元素，然后选择“查看”，这样就能打开浏览器的开发者工具了。React 的标签页会出现在顶部标签栏最右边。
+安装 React DevTools 之后，右键点击页面的任何一个元素，然后选择“查看”，这样就能打开浏览器的开发者工具了，并且工具栏最后会多展示一个 React 的选项卡（包含 "⚛️ Components" 和 "⚛️ Profiler"）。你可以使用 "⚛️ Components" 来检查组件树。
 
 **不过，如果你使用的是 CodePen 在线编辑器的话，还需要几步操作才能正确使用开发工具**
 
@@ -374,7 +375,7 @@ class Board extends React.Component {
   }
 ```
 
-当我们填满整个棋盘时，`this.state.squares` 数组的值如下所示：
+当我们填充棋盘后，`this.state.squares` 数组的值可能如下所示：
 
 ```javascript
 [
@@ -425,7 +426,7 @@ Board 组件当前的 `renderSquare` 方法看起来像下面这样：
 >
 >为了提高可读性，我们把返回的 React 元素拆分成了多行，同时在最外层加了小括号，这样 JavaScript 解析的时候就不会在 `return` 的后面自动插入一个分号从而破坏代码结构了。
 
-现在我们从 Board 组件向 Square 组件中传递两个 props 参数：`value` 和 `onClick`。`onClick` prop 是一个 Square 组件点击事件监听函数。接下来，我们需要修改代 Square 的代码：
+现在我们从 Board 组件向 Square 组件中传递两个 props 参数：`value` 和 `onClick`。`onClick` prop 是一个 Square 组件点击事件监听函数。接下来，我们需要修改 Square 的代码：
 
 * 将 Square 组件的 `render` 方法中的 `this.state.value` 替换为 `this.props.value` 。
 * 将 Square 组件的 `render` 方法中的 `this.setState()` 替换为 `this.props.onClick()` 。
@@ -458,7 +459,7 @@ class Square extends React.Component {
 
 >注意
 >
->因为 DOM 元素 `<button>` 是一个内置组件，因此其 `onClick` 属性在 React 中有特殊的含义。而对于用户自定义的组件来说，命名就可以由用户自己来定义了。我们给 Square 的 `onClick` 和 Board 的 `handleClick` 赋予任意的名称，代码依旧有效。在 React 中，有一个命名规范，通常会将代表事件的的监听 prop 命名为 `on[Event]`，将处理事件的监听方法命名为 `handle[Event]` 这样的格式。
+>因为 DOM 元素 `<button>` 是一个内置组件，因此其 `onClick` 属性在 React 中有特殊的含义。而对于用户自定义的组件来说，命名就可以由用户自己来定义了。我们给 Square 的 `onClick` 和 Board 的 `handleClick` 赋予任意的名称，代码依旧有效。在 React 中，有一个命名规范，通常会将代表事件的监听 prop 命名为 `on[Event]`，将处理事件的监听方法命名为 `handle[Event]` 这样的格式。
 
 这时候我们点击 Square 的时候，浏览器会报错，因为我们还没有定义 `handleClick` 方法。我们现在来向 Board 里添加 `handleClick` 方法：
 
@@ -553,7 +554,7 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 #### 跟踪数据的改变 {#detecting-changes}
 
-如果直接修改数据，那么就很难跟踪到数据的改变。跟踪数据的改变需要可变对象可以与之改变之前的版本进行对比，这样整个对象树都需要被遍历一次。
+如果直接修改数据，那么就很难跟踪到数据的改变。跟踪数据的改变需要可变对象可以与改变之前的版本进行对比，这样整个对象树都需要被遍历一次。
 
 跟踪不可变数据的变化相对来说就容易多了。如果发现对象变成了一个新对象，那么我们就可以说对象发生改变了。
 
@@ -692,7 +693,7 @@ class Board extends React.Component {
 
 ### 判断出胜者 {#declaring-a-winner}
 
-至此我们就可以看出下一步会轮到哪位玩家，与此同时，我们还需要显示游戏的结果来判定游戏结束。拷贝如下 helper 函数并粘贴到文件底部：
+至此我们就可以看出下一步会轮到哪位玩家，与此同时，我们还需要显示游戏的结果来判定游戏结束。拷贝如下 calculateWinner 函数并粘贴到文件底部：
 
 ```javascript
 function calculateWinner(squares) {
@@ -716,7 +717,7 @@ function calculateWinner(squares) {
 }
 ```
 
-传入长度为 9 的数组，此函数将判断出获胜者，并根据情况返回 “X”，“0” 或 “null”。
+传入长度为 9 的数组，此函数将判断出获胜者，并根据情况返回 “X”，“O” 或 “null”。
 
 接着，在 Board 组件的 `render` 方法中调用 `calculateWinner(squares)` 检查是否有玩家胜出。一旦有一方玩家胜出，就把获胜玩家的信息显示出来，比如，“胜者：X” 或者“胜者：O”。现在，我们把 Board 的 `render` 函数中的 status 的定义修改为如下代码：
 
@@ -800,7 +801,7 @@ history = [
 
 ### 再次提升状态 {#lifting-state-up-again}
 
-我们希望顶层 Game 组件展示出一个历史步骤的列表。这个功能需要访问 `history` 的数据，因此我们把 `history` 这个 state 放在顶层 Game 组件中。 
+我们希望顶层 Game 组件展示出一个历史步骤的列表。这个功能需要访问 `history` 的数据，因此我们把 `history` 这个 state 放在顶层 Game 组件中。
 
 我们把 `history` state 放在了 Game 组件中，这样就可以从它的子组件 Board 里面删除掉 `square` 中的 state。正如我们把 Square 组件的[状态提升](#lifting-state-up)到 Board 组件一样，现在我们来把 state 从 Board 组件提升到顶层的 Game 组件里。这样，Game 组件就拥有了对 Board 组件数据的完全控制权，除此之外，还可以让 Game 组件控制 Board 组件，并根据 `history` 渲染历史步骤。
 
@@ -1108,7 +1109,7 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 **[查看此步完整代码示例](https://codepen.io/gaearon/pen/PmmXRE?editors=0010)**
 
-因为 `jumpTo` 还未定义，所以你点击列表项的按钮时，会出现报错，。在我们实现 `jumpTo` 之前，我们向 Game 组件的 state 中添加 `stepNumber`，这个值代表我们当前正在查看哪一项历史记录。
+因为 `jumpTo` 还未定义，所以你点击列表项的按钮时，会出现报错。在我们实现 `jumpTo` 之前，我们向 Game 组件的 state 中添加 `stepNumber`，这个值代表我们当前正在查看哪一项历史记录。
 
 首先，我们在 Game 的构造函数 `constructor` 中向初始 state 中添加 `stepNumber: 0`：
 

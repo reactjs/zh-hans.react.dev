@@ -19,9 +19,9 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 使用 npm 的方�
 
 > 注意：
 >
-> 我们推荐使用 [`react-testing-library`](https://git.io/react-testing-library)，它使得对组件编写测试用例就像终端用户在使用它一样方便。
+> 我们推荐使用 [React Testing Library](https://testing-library.com/react)，它使得针对组件编写测试用例就像终端用户在使用它一样方便。
 >
-> 另外，Airbnb 发布了一款叫作 [Enzyme]([Enzyme](https://airbnb.io/enzyme/)) 的测试工具，通过它能够轻松对 React 组件的输出进行断言、操控和遍历。
+> 另外，Airbnb 发布了一款叫作 [Enzyme](https://airbnb.io/enzyme/) 的测试工具，通过它能够轻松对 React 组件的输出进行断言、操控和遍历。
 
  - [`act()`](#act)
  - [`mockComponent()`](#mockcomponent)
@@ -122,7 +122,9 @@ it('can render and update a counter', () => {
 });
 ```
 
-千万不要忘记，只有将 DOM 容器添加到 `document` 时，触发 DOM 事件才生效。你可以使用类似于 [`react-testing-library`](https://github.com/kentcdodds/react-testing-library) 这样的 helper 来减少样板代码（boilerplate code）。
+千万不要忘记，只有将 DOM 容器添加到 `document` 时，触发 DOM 事件才生效。你可以使用类似于 [React Testing Library](https://testing-library.com/react) 等库来减少样板代码（boilerplate code）。
+
+- [`recipes`](/docs/testing-recipes.html) 文档包含了关于 `act()` 函数的示例、用法及更多详细信息。
 
 * * *
 
@@ -139,7 +141,7 @@ mockComponent(
 
 > 注意：
 >
-> `mockComponent()` 是一个过时的 API，我们推荐使用[浅层渲染](/docs/shallow-renderer.html)或者 [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) 来代替。
+> `mockComponent()` 是一个过时的 API，我们推荐使用 [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) 来代替。
 
 * * *
 

@@ -38,7 +38,7 @@ console.log(testRenderer.toJSON());
 //   children: [ 'Facebook' ] }
 ```
 
-你可以使用 Jest 的快照测试功能来自动保存当前 `JSON` 树结构到一个文件中，并在测试中检查它是否被修改：[了解更多](http://facebook.github.io/jest/blog/2016/07/27/jest-14.html)。
+你可以使用 Jest 的快照测试功能来自动保存当前 `JSON` 树结构到一个文件中，并在测试中检查它是否被修改：[了解更多](https://jestjs.io/docs/en/snapshot-testing)。
 
 你也可以通过遍历输出来查找特定节点，并对它们进行断言。
 
@@ -70,6 +70,7 @@ expect(testInstance.findByProps({className: "sub"}).children).toEqual(['Sub']);
 ### TestRenderer {#testrenderer}
 
 * [`TestRenderer.create()`](#testrenderercreate)
+* [`TestRenderer.act()`](#testrendereract)
 
 ### TestRenderer instance {#testrenderer-instance}
 
@@ -102,7 +103,37 @@ expect(testInstance.findByProps({className: "sub"}).children).toEqual(['Sub']);
 TestRenderer.create(element, options);
 ```
 
-通过传来的 React 元素创建一个 `TestRenderer` 实例。它并不使用真实的 DOM，但是它依然将组件树完整地渲染到内存，以便于你对它进行断言。返回的实例拥有以下的方法和属性。
+通过传来的 React 元素创建一个 `TestRenderer` 实例。它并不使用真实的 DOM，但是它依然将组件树完整地渲染到内存，以便于你对它进行断言。此时将返回一个 [TestRenderer 实例](#testrenderer-instance)。
+
+### `TestRenderer.act()` {#testrendereract}
+
+```javascript
+TestRenderer.act(callback);
+```
+
+与 [`react-dom/test-utils` 中的 `act()`](/docs/test-utils.html#act) 相似，`TestRender.act` 为断言准备一个组件。可以使用 `act()` 来包装 `TestRenderer.create` 和 `testRenderer.update`。
+
+```javascript
+import {create, act} from 'react-test-renderer';
+import App from './app.js'; // The component being tested
+
+// 渲染组件
+let root; 
+act(() => {
+  root = create(<App value={1}/>)
+});
+
+// 对根元素进行断言
+expect(root.toJSON()).toMatchSnapshot();
+
+// 更新 props
+act(() => {
+  root = root.update(<App value={2}/>);
+})
+
+// 对根元素进行断言
+expect(root.toJSON()).toMatchSnapshot();
+```
 
 ### `testRenderer.toJSON()` {#testrenderertojson}
 
@@ -118,7 +149,7 @@ testRenderer.toJSON()
 testRenderer.toTree()
 ```
 
-返回一个已渲染的的树对象。和 `toJSON()` 不同，它表示的内容比 `toJSON()` 提供的内容要更加详细，并且包含用户编写的组件。除非你要在测试渲染器（test renderer）之上编写自己的断言库，否则你可能并不需要这个方法。
+返回一个已渲染的的树对象。它所表示的内容比 `toJSON()` 提供的内容要更加详细，并且包含用户编写的组件。除非你要在测试渲染器（test renderer）之上编写自己的断言库，否则你可能并不需要这个方法。
 
 ### `testRenderer.update()` {#testrendererupdate}
 

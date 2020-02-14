@@ -2,6 +2,8 @@
   items:
     - id: support
       title: 技术支持
+    - id: team
+      title: 团队介绍
     - id: courses
       title: 课程
     - id: examples
@@ -18,25 +20,3 @@
       title: 视频
     - id: external-resources
       title: 外部资源
-- title: 工具
-  items:
-    - id: debugging-tools
-      title: 调试
-    - id: component-workbenches
-      title: 组件工具集
-    - id: jsx-integrations
-      title: JSX 集成
-    - id: starter-kits
-      title: 脚手架
-    - id: routing
-      title: 路由
-    - id: model-management
-      title: 模型管理
-    - id: data-fetching
-      title: 数据交互
-    - id: testing
-      title: 测试
-    - id: ui-components
-      title: UI 组件库
-    - id: misc
-      title: 杂项

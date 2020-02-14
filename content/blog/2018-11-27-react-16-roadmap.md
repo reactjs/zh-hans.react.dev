@@ -5,6 +5,11 @@ author: [gaearon]
 
 你可能已经在之前的博客和视频中看到过了 “Hook”，”Suspense” 和 ”并发渲染“ 这三种功能。在这篇文章中，我们会讨论它们将如何整合在 React 中，以及它们将在何时出现在 React 的稳定版本中。
 
+> An Update from August, 2019
+>
+> You can find an update to this roadmap in the [React 16.9 release blog post](/blog/2019/08/08/react-v16.9.0.html#an-update-to-the-roadmap).
+
+
 ## 太长不看 {#tldr}
 
 我们计划在如下里程碑中发布 React 的新功能：
@@ -170,7 +175,7 @@ function App() {
 // 来集成 Suspense 。
 ```
 
-关于如何使用 Suspense 加载数据，目前还没有官方的文档。不过你可以通过[这个演讲](https://youtu.be/ByBPyMBTzM0?t=1312)和[这个小演示](https://github.com/facebook/react/tree/master/fixtures/unstable-async/suspense)来获得一些早期信息。接近这次 React 发布的时候，我们会为 React Cache（以及如何实现你自己的可兼容 Suspense 的库）撰写文档。不过如果你好奇的话，你可以在[这里](https://github.com/facebook/react/blob/master/packages/react-cache/src/ReactCache.js)找到它的早期源码。
+关于如何使用 Suspense 加载数据，目前还没有官方的文档。不过你可以通过[这个演讲](https://youtu.be/ByBPyMBTzM0?t=1312)和[这个小演示](https://github.com/facebook/react/blob/master/packages/react-devtools/CHANGELOG.md#suspense-toggle)来获得一些早期信息。接近这次 React 发布的时候，我们会为 React Cache（以及如何实现你自己的可兼容 Suspense 的库）撰写文档。不过如果你好奇的话，你可以在[这里](https://github.com/facebook/react/blob/master/packages/react-cache/src/ReactCache.js)找到它的早期源码。
 
 Suspense 的底层原理（延迟渲染并显示一个后备组件）在 React 16.6 中就已经处于稳定状态了。在过去几个月中，我们已经使用它来分割代码。但是，用于数据获取的上层 API 还非常不稳定。React Cache 还在快速的改变，并且还将改变几次。为了可以拥有更好的上层 API，有几个底层 API 还[不存在](https://github.com/reactjs/rfcs/pull/89)。除了非常早期的实验，我们不推荐在任何地方使用 React Cache。请注意，React Cache 本身并不严格依赖 React 版本，但当前的 alpha 版本缺少缓存失效的基本功能，如果你使用它，你很快就会碰壁。在本次 React 版本中，我们将会拥有一些可用的更新。
 
