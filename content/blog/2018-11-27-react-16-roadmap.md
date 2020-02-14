@@ -5,10 +5,9 @@ author: [gaearon]
 
 你可能已经在之前的博客和视频中看到过了 “Hook”，”Suspense” 和 ”并发渲染“ 这三种功能。在这篇文章中，我们会讨论它们将如何整合在 React 中，以及它们将在何时出现在 React 的稳定版本中。
 
-> An Update from August, 2019
+> 2019 年 8 月更新
 >
-> You can find an update to this roadmap in the [React 16.9 release blog post](/blog/2019/08/08/react-v16.9.0.html#an-update-to-the-roadmap).
-
+> 你可以在 [React 16.9 版本的博客](/blog/2019/08/08/react-v16.9.0.html#an-update-to-the-roadmap)中找到关于路线图更新的内容。
 
 ## 太长不看 {#tldr}
 
