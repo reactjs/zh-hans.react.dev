@@ -16,7 +16,7 @@ author: [gaearon]
 
 *(这篇文章的原始版本包含了具体的版本号。现在我们隐藏了他们，因为我们可能会在其中加入一些其他的小更新)*
 
-这些是我们的估计，具体计划会根据情况而定。我们计划在2019年还至少再完成2个项目。它们需要更多的探究，目前还没有加入特定的版本。
+这些是我们的估计，具体计划会根据情况而定。我们计划在 2019 年还至少再完成 2 个项目。它们需要更多的探究，目前还没有加入特定的版本。
 
 * [现代化 React DOM](#modernizing-react-dom)
 * [Suspense 以帮助服务器渲染](#suspense-for-server-rendering)
@@ -199,6 +199,7 @@ Suspense 的底层原理（延迟渲染并显示一个后备组件）在 React 1
 我们希望这篇文章可以让你对我们现在的工作有一些了解，你现在可以使用什么，你可以在未来期待什么。尽管在社交平台中有很多关于新功能的讨论，如果你读了这篇文章，你将不会错过任何重要的内容。
 
 我们向来欢迎意见和建议。欢迎在 [RFC 知识库](https://github.com/reactjs/rfcs)，[issues](https://github.com/facebook/react/issues)，以及[推特](https://mobile.twitter.com/reactjs)中给我们留言。
+
 
 
 
