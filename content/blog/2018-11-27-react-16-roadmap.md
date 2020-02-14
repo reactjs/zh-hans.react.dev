@@ -200,9 +200,9 @@ Suspense 的底层原理（延迟渲染并显示一个后备组件）在 React 1
 
 以上就是全部啦！终于你看到的，我们忙于很多项目，但是我们在未来的几个月中期待很多进展。
 
-我们希望这篇文章可以让你对我们现在的工作有一些了解，你现在可以使用什么，你可以在未来期待什么。尽管在社交平台中有很多关于新功能的讨论，如果你读了这篇文章，你将不会错过任何重要的内容。
+我们希望这篇文章可以让你对我们现在的工作有一些了解，现在可以使用什么，在未来可以期待什么。尽管在社交平台中有很多关于新功能的讨论，如果你读了这篇文章，你将不会错过任何重要的内容。
 
-我们向来欢迎意见和建议。欢迎在 [RFC 知识库](https://github.com/reactjs/rfcs)，[issues](https://github.com/facebook/react/issues)，以及[推特](https://mobile.twitter.com/reactjs)中给我们留言。
+我们非常希望收到建议和反馈。欢迎在 [RFC 知识库](https://github.com/reactjs/rfcs)，[issues](https://github.com/facebook/react/issues)，以及[推特](https://mobile.twitter.com/reactjs)中给我们留言。
 
 
 
