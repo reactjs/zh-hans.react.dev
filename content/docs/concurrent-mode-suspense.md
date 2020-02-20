@@ -28,17 +28,17 @@ React 16.6 新增了 `<Suspense>` 组件，让你可以“等待”目标代码�
 ```jsx
 const ProfilePage = React.lazy(() => import('./ProfilePage')); // 懒加载
 
-// 在 ProfilePage 组件处于下载阶段时显示一个 spinner
+// 在 ProfilePage 组件处于加载阶段时显示一个 spinner
 <Suspense fallback={<Spinner />}>
   <ProfilePage />
-</Suspense>;
+</Suspense>
 ```
 
 通过 Suspense 来实现数据获取是 React 的一个新功能，**等待数据获取只是它的能力之一**，你可以直接声明 `<Suspense>` **等待任何你需要的东西**。本文着重介绍的是 `<Suspense>` 应用在数据获取的实现，但这并不意味着它只局限于数据获取，任何其他的异步操作，比如说等待图片、脚本的加载，它都是适用的。
 
 - [究竟什么是 Suspense？](#what-is-suspense-exactly)
-  - [Suspense 不是什么](#what-suspense-is-not)
-  - [Suspense 提供了什么](#what-suspense-lets-you-do)
+  - [什么不是 Suspense](#what-suspense-is-not)
+  - [Suspense 可以做什么](#what-suspense-lets-you-do)
 - [在实践中使用 Suspense](#using-suspense-in-practice)
   - [如果我不用 Relay？](#what-if-i-dont-use-relay)
   - [致库作者](#for-library-authors)
@@ -56,9 +56,9 @@ const ProfilePage = React.lazy(() => import('./ProfilePage')); // 懒加载
 - [错误处理](#handling-errors)
 - [下一步](#next-steps)
 
-## 究竟什么是 Suspense？{#what-is-suspense-exactly}
+## 何为 Suspense？{#what-is-suspense-exactly}
 
-Suspense 让你的组件“等待”某个异步操作，直到该异步操作的结果可以被渲染。在下面[例子](https://codesandbox.io/s/frosty-hermann-bztrp)中，两个组件都在等待一个获取数据的异步 API 的返回：
+Suspense 让组件“等待”某个异步操作，直到该异步操作结束即可渲染。在下面[例子](https://codesandbox.io/s/frosty-hermann-bztrp)中，两个组件都会等待异步 API 的返回值：
 
 ```js
 const resource = fetchProfileData();
@@ -95,7 +95,7 @@ function ProfileTimeline() {
 
 **[在 CodeSandbox 中尝试](https://codesandbox.io/s/frosty-hermann-bztrp)**
 
-上面的 demo 只是个示意。如果里头代码让你摸不着头脑，别担心。我们后面会详细说明这部分代码的运作方式。需要记住的是，Suspense 它其实更像是一个*机制*，而 demo 中那些具体的 APIs，像是`fetchProfileData()` 或者 `resource.posts.read()`，这些 APIs 本身并不重要。不过，如果你还是对它们很好奇，可以在这个 [demo sandbox](https://codesandbox.io/s/frosty-hermann-bztrp) 里头找到它们的定义。
+上面的 demo 只是个示意。如果示例代码让你摸不着头脑，别担心。我们后面会详细说明这部分代码的运作方式。需要记住的是，Suspense 其实更像是一种*机制*，而 demo 中那些具体的 API，如 `fetchProfileData()` 或者 `resource.posts.read()`，这些 API 本身并不重要。不过，如果你还是对它们很好奇，可以在这个 [demo sandbox](https://codesandbox.io/s/frosty-hermann-bztrp) 中找到它们的定义。
 
 Suspense 不是一个获取数据的库，而是一个机制。这个**机制是用来给获取数据的库**向 React 沟通说明*某个组件正在读取的数据当前仍不可用*。沟通之后，React 可以继续等待数据的返回并更新 UI。 在 Facebook，我们用了 Relay 和它那[支持 Suspense 的新功能](https://relay.dev/docs/en/experimental/step-by-step) 。我们期望其他的库，像 Apollo 之类的，也能支持 Suspense。
 
@@ -109,9 +109,9 @@ Suspense 和当下其他解决异步问题的方法很不一样，因而，第�
 
 - **它不是可以直接用于数据获取的客户端**。你不能用 Suspense 来替代 `fetch` 或者 Relay。不过你可以使用整合了 Suspense 的库（比如说，[新的 Relay APIs](https://relay.dev/docs/en/experimental/api-reference)）
 
-- **它不使数据获取与视觉层代码耦合**。它协助安排 UI 中加载状态的显示，但它并不将你的网络逻辑捆绑到 React 组件中。
+-  * **它不使数据获取与视图层代码耦合**。它协助编排加载状态在 UI 中的显示，但它并不将你的网络逻辑捆绑到 React 组件。
 
-### Suspense 提供了什么 {#what-suspense-lets-you-do}
+### Suspense 可以做什么 {#what-suspense-lets-you-do}
 
 说了那么多，Suspense 到底有什么用呢？对于这个问题，我们可以从不同的角度来回答：
 
@@ -127,11 +127,11 @@ Suspense 和当下其他解决异步问题的方法很不一样，因而，第�
 
 **上面的 demo 代码里用到的 API 其实是“假”的实现，不是 Relay**。我们这样做的目的是想让代码本身更易懂些，让不熟悉 GraphQL 的读者也能看懂代码。也正因为里头 API 是假的，demo 的代码本身并不是在应用中使用 Suspense 的“正确方式”。可以说，本文是从概念上出发，目的是帮你厘清*为什么* Suspense 是以特定方式运行，以及 Suspense 解决了哪些问题这两件事情。
 
-### 如果我不用 Relay？{#what-if-i-dont-use-relay}
+### 如果我不使用 Relay 怎么办？{#what-if-i-dont-use-relay}
 
 如果你当下并不使用 Relay，那么你暂时无法在应用中试用 Suspense。因为迄今为止，在实现了 Suspense 的库中，Relay 是我们唯一在生产环境测试过，且对它的运作有把握的一个库。
 
-在接下来的几个月里，许许多多的库将会实现它们各自支持 Suspense 的 APIs。**如果你倾向于等到技术更加稳定之后才开始学习，那大概率你会先不看这部分文档，等到 Suspense 的生态更成熟之后再回来学习。**
+在接下来的几个月里，许多库将会实现它们各自支持 Suspense 的 API。**如果你倾向于等到技术更加稳定之后才开始学习，那大概率你会先不看这部分文档，等到 Suspense 的生态更成熟之后再回来学习。**
 
 如果你有兴趣的话，也可以自己开发，然后将你对 Suspense 的实现整合到某个数据获取的库中。
 
