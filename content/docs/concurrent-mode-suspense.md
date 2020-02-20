@@ -23,7 +23,7 @@ next: concurrent-mode-patterns.html
 
 </div>
 
-React 16.6 新增了 `<Suspense>` 组件，让你可以“等待”目标代码的下载，并且可以直接指定一个加载的界面（像是个 spinner），让它在用户等待的时候显示：
+React 16.6 新增了 `<Suspense>` 组件，让你可以“等待”目标代码加载，并且可以直接指定一个加载的界面（像是个 spinner），让它在用户等待的时候显示：
 
 ```jsx
 const ProfilePage = React.lazy(() => import('./ProfilePage')); // 懒加载
@@ -36,11 +36,11 @@ const ProfilePage = React.lazy(() => import('./ProfilePage')); // 懒加载
 
 通过 Suspense 来实现数据获取是 React 的一个新功能，**等待数据获取只是它的能力之一**，你可以直接声明 `<Suspense>` **等待任何你需要的东西**。本文着重介绍的是 `<Suspense>` 应用在数据获取的实现，但这并不意味着它只局限于数据获取，任何其他的异步操作，比如说等待图片、脚本的加载，它都是适用的。
 
-- [究竟什么是 Suspense？](#what-is-suspense-exactly)
+- [何为 Suspense？](#what-is-suspense-exactly)
   - [什么不是 Suspense](#what-suspense-is-not)
   - [Suspense 可以做什么](#what-suspense-lets-you-do)
 - [在实践中使用 Suspense](#using-suspense-in-practice)
-  - [如果我不用 Relay？](#what-if-i-dont-use-relay)
+  - [如果我不使用 Relay 怎么办？](#what-if-i-dont-use-relay)
   - [致库作者](#for-library-authors)
 - [传统实现方法 vs Suspense](#traditional-approaches-vs-suspense)
   - [方法 1：渲染之后获取数据（不使用 Suspense）](#approach-1-fetch-on-render-not-using-suspense)
@@ -101,7 +101,7 @@ Suspense 不是一个获取数据的库，而是一个机制。这个**机制是
 
 从长远上说，我们想让 Suspense 成为组件读取异步数据的主要方式——无论数据来自何方。
 
-### Suspense 不是什么 {#what-suspense-is-not}
+### 什么不是 Suspense {#what-suspense-is-not}
 
 Suspense 和当下其他解决异步问题的方法很不一样，因而，第一次接触 Suspense 容易让人产生误解。下面我们阐述下常见的误解：
 
