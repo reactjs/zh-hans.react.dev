@@ -507,7 +507,11 @@ function ProfileTrivia({ resource }) {
 
 **[在 CodeSandbox 中尝试](https://codesandbox.io/s/focused-mountain-uhkzg)**
 
+<<<<<<< HEAD
 如果你现在点击“Open Profile”按钮，你会发现哪里不对劲。它现在要等待整整7秒钟才能完成这个 transition！这是因为我们琐碎的 API 接口响应太慢。假设我们没有办法让这个接口变快。在这个约束条件下我们该如何提升用户体验呢？
+=======
+If you press "Open Profile" now, you can tell something is wrong. It takes a whole seven seconds to make the transition now! This is because our trivia API is too slow. Let's say we can't make the API faster. How can we improve the user experience with this constraint?
+>>>>>>> 821e20726266bc8113353d0c2b6d885f82e584a8
 
 如果我们不想在 Pending 状态等待太久，我们第一直觉应该是调整 `useTransition` 中 `timeoutMs` 参数到一个更小的值，比如 `3000`。你可以体验一下 [这个](https://codesandbox.io/s/practical-kowalevski-kpjg4)。这样我们就不用在 Pending 状态长时间等待了，但是这个时候我们还没有有用的内容给用户展示！
 
