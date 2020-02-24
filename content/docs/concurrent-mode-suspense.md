@@ -220,7 +220,7 @@ function ProfileTimeline() {
 
 **[在 CodeSandbox 中尝试](https://codesandbox.io/s/fragrant-glade-8huj6)**
 
-如果你运行上面代码，你会发现 console 里头打印如下信息：
+如果你运行上面的代码，你会发现 console 打印如下信息：
 
 1. We start fetching user details（我们开始获取用户信息）
 2. We wait...（我们处于等待中）
@@ -229,7 +229,7 @@ function ProfileTimeline() {
 5. We wait...（我们处于等待中）
 6. We finish fetching posts（我们接收完所有的博文数据）
 
-假设获取用户信息总共需要 3 秒，那么在这个方法中，我们就只能在 3 秒之后，才*开始*获取博文数据。而这，就是上面提到的“瀑布”问题：本该并行发出的请求被无意地*串联*发送出去。
+假设获取用户信息需要 3 秒，那么在这个方法中，我们只能在 3 秒之后，才*开始*获取博文数据。这就是上面提到的“瀑布”问题：本该并行发出的请求无意中被*串行*发送出去。
 
 在渲染之后再获取数据是引发“瀑布”问题的常见原因。虽然这种情况下的“瀑布”问题可以被解决，但随着项目代码的增多，开发者更倾向于选用其他不会引发这个问题的数据获取方法。
 
@@ -242,9 +242,9 @@ function ProfileTimeline() {
 ```js
 function fetchProfileData() {
   return Promise.all([
-    fetchUser(), 
+    fetchUser(),
     fetchPosts()
-    ]).then(([user, posts]) => {
+  ]).then(([user, posts]) => {
     return {user, posts};
   })
 }
@@ -303,7 +303,7 @@ function ProfileTimeline({ posts }) {
 4. We finish fetching user details（我们接收完所有的用户信息）
 5. We finish fetching posts（我们接收完所有的博文数据）
 
-这里，我们解决了方法 1 中出现的网络“瀑布”问题，却又不经意引出另外一个问题。我们在 `fetchProfileData` 里用 `Promise.all()` 来等待*所有*数据，这就导致了，即便我们先接收完用户信息的数据，我们也不能先渲染 `ProfileDetails` 这个组件，还得等到博文信息也接收完才行。在这个方法中，我们必须等到两份数据都接收完毕。
+这里，我们解决了之前出现的网络“瀑布”问题，却意外引出另外一个问题。我们在 `fetchProfileData` 方法里利用 `Promise.all()` 来等待*所有*数据，那么现在，即便我们先接收完用户信息的数据，我们也不能先渲染 `ProfileDetails` 这个组件，还得等到博文信息也接收完才行。在这个方法中，我们必须等到两份数据都接收完毕。
 
 不难看出，在当前这个例子中，上述问题是可解的。我们可以去掉 `Promise.all()`，改用分别等待两个 Promises 的方式来解决。但随着我们所需数据的复杂度的上升和组件树的扩大，这个方法的短板会逐渐显现出来。因为数据树中可能出现部分数据的缺失或者过期，我们很难写出健壮可靠的组件。因此，一次性拿到新屏幕所需的全部数据之后，*再*去渲染页面是个更加切合实际的方式。
 
@@ -339,13 +339,13 @@ function ProfilePage() {
 }
 
 function ProfileDetails() {
-  // 尝试读取用户信息，尽管信息可能未下载完毕
+  // 尝试读取用户信息，尽管信息可能未加载完毕
   const user = resource.user.read();
   return <h1>{user.name}</h1>;
 }
 
 function ProfileTimeline() {
-  // 尝试读取博文数据，尽管数据可能未下载完毕
+  // 尝试读取博文数据，尽管数据可能未加载完毕
   const posts = resource.posts.read();
   return (
     <ul>
@@ -363,17 +363,17 @@ function ProfileTimeline() {
 
 1. 我们一开始就通过 `fetchProfileData()` 发出请求。这个方法返回给我们一个特殊的对象“resource”，而不是一个 Promise。在现实的案例中，这个对象是由像 Relay 集成 Suspense 来提供给我们的。
 2. React 尝试渲染 `<ProfilePage>`。该组件返回两个子组件：`<ProfileDetails>` 和 `<ProfileTimeline>`。
-3. React 尝试渲染 `<ProfileDetails>`。该组件调用了 `resource.user.read()`，但因为读取的数据还没被获取完毕，所以组件会处于一个“挂起”的状态。React 会跳过这个组件，转去渲染组件树中的其他组件。
+3. React 尝试渲染 `<ProfileDetails>`。该组件调用了 `resource.user.read()`，但因为读取的数据还没被获取完毕，所以组件会处于一个“挂起”的状态。React 会跳过这个组件，继续渲染组件树中的其他组件。
 4. React 尝试渲染 `<ProfileTimeline>`。该组件调用了 `resource.posts.read()`，和上面一样，数据还没获取完毕，所以这个组件也是处在“挂起”的状态。React 同样跳过这个组件，去渲染组件树中的其他组件。
 5. 组件树中已经没有其他东西需要渲染了。因为 `<ProfileDetails>` 组件处于“挂起”状态，React 则是渲染出距该组件最近的上游 `<Suspense>` fallback 给它：`<h1>Loading profile...</h1>` 。渲染到这里就结束了。
 
 这里的 `resource` 对象代表的数据虽然还没到位，但大概率它最终会被下载完。所以，当我们读取 `read()` 的时候，我们要么拿到数据，要么拿到一个处于“挂起”状态的组件。
 
-**当返回数据开始流入的时候，React 会重新开始渲染，每一次渲染它都可能渲染出更加完整的组件树。**当 `resource.user` 的数据获取完毕之后，`<ProfileDetails>` 组件就能被顺利渲染出来，这时，我们就不再需要展示 `<h1>Loading profile...</h1>` 这个 fallback 了。当我们拿到全部数据之后，所有的 fallbacks 就都可以不展示了。
+**随着更多数据的到来，React 将尝试重新渲染，并且每次都可能渲染出更加完整的组件树。**当 `resource.user` 的数据获取完毕之后，`<ProfileDetails>` 组件就能被顺利渲染出来，这时，我们就不再需要展示 `<h1>Loading profile...</h1>` 这个 fallback 了。当我们拿到全部数据之后，所有的 fallbacks 就都可以不展示了。
 
 这个过程暗含着一个有意思的点，那就是，虽然我们是用 GraphQL 客户端来通过一个单一的请求来获取所有需要的数据，*但因为响应报文是数据流的格式，我们因此能够更早地展示出接收到的数据*。因为我们的采用的方法是“获取数据之后渲染”（render-as-we-fetch）（而非渲染之后才获取数据），我们能够在响应报文接收完毕之前就先“解锁”最外层的 `<Suspense>`。我们在方法 2 中没谈到这一点：即便是在方法 2 “接收到全部数据之后渲染”（fetch-then-render）中，在获取数据和渲染之间也有“瀑布”问题。而 Suspense 并不会导致“瀑布”，数据获取库像是 Relay 就抓住了 Suspense 的这个优势。
 
-这里需要注意我们是如何在代码中去掉方法 2 中的 `if (…)` “is loading”这个检查分支。方法 3 不单单删去了 if 分支，还简化了代码设计快速转变的流程。举个例子，如果我们想让 `<ProfileDetails>` 组件和 `<ProfileTimeline>` 组件一直同时“弹出”，我们可以删去上面代码中的内层 `<Suspense>`。又或者，我们可以通过*分别给它们都包上一层*`<Suspense>` 来让两者的渲染展示独立于彼此。Suspense 赋予了我们对加载状态的精细控制力，让我们可以在不对代码进行大改的前提下，控制安排组件间的加载状态和显示顺序。
+请注意，我们是如何在组件中去掉 `if (…)`“is loading” 这个检查的。这不仅删除了样板代码，还简化了代码设计快速转变的流程。举个例子，如果我们想同时“弹出” `<ProfileDetails>` 组件和 `<ProfileTimeline>` 组件，只需删除两者之间的 `<Suspense>`。或者，我们可以通过*给它们各自的*`<Suspense>` 来让两者彼此独立。通过Suspense，我们可以更改加载状态的粒度并控制顺序，而无需调整代码。
 
 ## 尽早开始获取数据 {#start-fetching-early}
 
