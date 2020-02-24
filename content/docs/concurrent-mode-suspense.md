@@ -34,7 +34,7 @@ const ProfilePage = React.lazy(() => import('./ProfilePage')); // 懒加载
 </Suspense>
 ```
 
-通过 Suspense 来实现数据获取是 React 的一个新功能，**等待数据获取只是它的能力之一**，你可以直接声明 `<Suspense>` **等待任何你需要的东西**。本文着重介绍的是 `<Suspense>` 应用在数据获取的实现，但这并不意味着它只局限于数据获取，任何其他的异步操作，比如说等待图片、脚本的加载，它都是适用的。
+Suspense 用于数据获取，它是一个新特性，你可以使用 `<Suspense>` **以声明的方式来“等待”任何内容，包括数据。**本文重点介绍它在数据获取的用例，它也可以用于等待图像、脚本或其他异步的操作。
 
 - [何为 Suspense？](#what-is-suspense-exactly)
   - [什么不是 Suspense](#what-suspense-is-not)
@@ -43,9 +43,9 @@ const ProfilePage = React.lazy(() => import('./ProfilePage')); // 懒加载
   - [如果我不使用 Relay，怎么办？](#what-if-i-dont-use-relay)
   - [致库作者](#for-library-authors)
 - [传统实现方法 vs Suspense](#traditional-approaches-vs-suspense)
-  - [方法 1：渲染之后获取数据（不使用 Suspense）](#approach-1-fetch-on-render-not-using-suspense)
-  - [方法 2：接收到全部数据之后渲染（不使用 Suspense）](#approach-2-fetch-then-render-not-using-suspense)
-  - [方法 3：获取数据之后渲染（使用 Suspense）](#approach-3-render-as-you-fetch-using-suspense)
+  - [方法 1：Fetch-on-render（渲染之后获取数据，不使用 Suspense）](#approach-1-fetch-on-render-not-using-suspense)
+  - [方法 2：Fetch-then-render（接收到全部数据之后渲染，不使用 Suspense）](#approach-2-fetch-then-render-not-using-suspense)
+  - [方法 3：Render-as-you-fetch（获取数据之后渲染，使用 Suspense）](#approach-3-render-as-you-fetch-using-suspense)
 - [尽早开始获取数据](#start-fetching-early)
   - [我们仍在寻求方法中](#were-still-figuring-this-out)
 - [Suspense 和 Race Conditions](#suspense-and-race-conditions)
@@ -149,9 +149,9 @@ Suspense 和当下其他解决异步问题的方法很不一样，因而，第�
 
 因此，我们把 Suspense 看作是一系列解决方法的下一步逻辑演化。从这个角度对其展开介绍：
 
-* **渲染之后获取数据（如：在 `useEffect` 中 `fetch`）：**先开始渲染组件，每个完成渲染的组件都可能在它们的 effects 或者生命周期函数中获取数据。这种方式经常导致“瀑布”问题。
-* **接收到全部数据之后渲染（如：不使用 Suspense 的 Relay）：**先尽早获取下一屏需要的所有数据，当数据拿到之后，渲染新的屏幕。但在数据拿到之前，我们什么事也做不了。
-* **获取数据之后渲染（如：使用了 Suspense 的 Relay）：**先尽早获取下一屏需要的所有数据，然后*马上*着手渲染新的屏幕——*在网络响应可用之前就开始*。在接收到数据的过程中，React迭代地渲染需要数据的组件，直到渲染完所有内容为止。
+* **Fetch-on-render（渲染之后获取数据，如：在 `useEffect` 中 `fetch`）：**先开始渲染组件，每个完成渲染的组件都可能在它们的 effects 或者生命周期函数中获取数据。这种方式经常导致“瀑布”问题。
+* **Fetch-then-render（接收到全部数据之后渲染，如：不使用 Suspense 的 Relay）：**先尽早获取下一屏需要的所有数据，数据准备好后，渲染新的屏幕。但在数据拿到之前，我们什么事也做不了。
+* **Render-as-you-fetch（获取数据之后渲染，如：使用了 Suspense 的 Relay）：**先尽早获取下一屏需要的所有数据，然后*立刻*渲染新的屏幕——*在网络响应可用之前就开始*。在接收到数据的过程中，React迭代地渲染需要数据的组件，直到渲染完所有内容为止。
 
 >**注意**
 >
@@ -159,7 +159,7 @@ Suspense 和当下其他解决异步问题的方法很不一样，因而，第�
 
 为了对比这 3 个方法，我们分别用它们实现一个 profile 页面。
 
-### 方法 1：渲染之后获取数据（不使用 Suspense）{#approach-1-fetch-on-render-not-using-suspense}
+### 方法 1：Fetch-on-render（渲染之后获取数据，不使用 Suspense）{#approach-1-fetch-on-render-not-using-suspense}
 
 目前 React 应用中常用的数据获取方式是使用 effect：
 
@@ -175,7 +175,7 @@ componentDidMount() {
 }
 ```
 
-我们称这种方法为“渲染之后获取数据”（fetch-on-render），因为数据的获取是发生在组件被渲染到屏幕*之后*。这种方法会导致“瀑布”的问题。
+我们称这种方法为“fetch-on-render”（渲染之后获取数据），因为数据的获取是发生在组件被渲染到屏幕*之后*。这种方法会导致“瀑布”的问题。
 
 仔细看下面的 `<ProfilePage>` 和 `<ProfileTimeline>` 组件：
 
@@ -233,7 +233,7 @@ function ProfileTimeline() {
 
 在渲染之后再获取数据是引发“瀑布”问题的常见原因。虽然这种情况下的“瀑布”问题可以被解决，但随着项目代码的增多，开发者更倾向于选用其他不会引发这个问题的数据获取方法。
 
-### 方法 2：接收到全部数据之后渲染（不使用 Suspense）{#approach-2-fetch-then-render-not-using-suspense}
+### 方法 2：Fetch-then-render（接收到全部数据之后渲染，不使用 Suspense）{#approach-2-fetch-then-render-not-using-suspense}
 
 通过提供更集中化的方式来实现数据获取，库可以避免“瀑布”问题。比如说，Relay 是通过把组件所需的数据转移到可静态分析的*fragments*上，*fragments*随后会被整合进一个单一的请求。
 
@@ -303,11 +303,11 @@ function ProfileTimeline({ posts }) {
 4. We finish fetching user details（我们接收完所有的用户信息）
 5. We finish fetching posts（我们接收完所有的博文数据）
 
-这里，我们解决了之前出现的网络“瀑布”问题，却意外引出另外一个问题。我们在 `fetchProfileData` 方法里利用 `Promise.all()` 来等待*所有*数据，那么现在，即便我们先接收完用户信息的数据，我们也不能先渲染 `ProfileDetails` 这个组件，还得等到博文信息也接收完才行。在这个方法中，我们必须等到两份数据都接收完毕。
+这里，我们解决了之前出现的网络“瀑布”问题，却意外引出另外一个问题。我们在 `fetchProfileData` 方法里利用 `Promise.all()` 来等待*所有*数据，这就导致了，即便我们先接收完用户信息的数据，我们也不能先渲染 `ProfileDetails` 这个组件，还得等到博文信息也接收完才行。在这个方法中，我们必须等到两份数据都接收完毕。
 
-不难看出，在当前这个例子中，上述问题是可解的。我们可以去掉 `Promise.all()`，改用分别等待两个 Promises 的方式来解决。但随着我们所需数据的复杂度的上升和组件树的扩大，这个方法的短板会逐渐显现出来。因为数据树中可能出现部分数据的缺失或者过期，我们很难写出健壮可靠的组件。因此，一次性拿到新屏幕所需的全部数据之后，*再*去渲染页面是个更加切合实际的方式。
+当然，这个例子的问题是可以解决的。我们可以去掉 `Promise.all()` ，改用分别等待两个 Promise 的方式来解决。但随着数据和组件树复杂度的增加，这个方法的缺点会逐渐显现出来。如果数据树中出现部分数据的缺失或者过时，则很难写出健壮可靠的组件。因此，在拿到新屏幕所需的全部数据之后，*再*去渲染页面通常是一个比较现实的选择。
 
-### 方法 3：获取数据之后渲染（使用 Suspense） {#approach-3-render-as-you-fetch-using-suspense}
+### 方法 3：Render-as-you-fetch（获取数据之后渲染，使用 Suspense）{#approach-3-render-as-you-fetch-using-suspense}
 
 在上面方法 2 中，我们是在调用 `setState` 之前就开始获取数据：
 
@@ -361,17 +361,17 @@ function ProfileTimeline() {
 
 以下是方法 3 中当我们渲染 `<ProfilePage>` 时会发生的事情：
 
-1. 我们一开始就通过 `fetchProfileData()` 发出请求。这个方法返回给我们一个特殊的对象“resource”，而不是一个 Promise。在现实的案例中，这个对象是由像 Relay 集成 Suspense 来提供给我们的。
+1. 我们一开始就通过 `fetchProfileData()` 发出请求。这个方法返回给我们一个特殊的对象“resource”，而不是一个 Promise。在现实的案例中，这个对象是由 Relay 通过集成了 Suspense 来提供的。
 2. React 尝试渲染 `<ProfilePage>`。该组件返回两个子组件：`<ProfileDetails>` 和 `<ProfileTimeline>`。
 3. React 尝试渲染 `<ProfileDetails>`。该组件调用了 `resource.user.read()`，但因为读取的数据还没被获取完毕，所以组件会处于一个“挂起”的状态。React 会跳过这个组件，继续渲染组件树中的其他组件。
 4. React 尝试渲染 `<ProfileTimeline>`。该组件调用了 `resource.posts.read()`，和上面一样，数据还没获取完毕，所以这个组件也是处在“挂起”的状态。React 同样跳过这个组件，去渲染组件树中的其他组件。
-5. 组件树中已经没有其他东西需要渲染了。因为 `<ProfileDetails>` 组件处于“挂起”状态，React 则是渲染出距该组件最近的上游 `<Suspense>` fallback 给它：`<h1>Loading profile...</h1>` 。渲染到这里就结束了。
+5. 组件树中已经没有其他组件需要渲染了。因为 `<ProfileDetails>` 组件处于“挂起”状态，React 则是显示出距其上游最近的 `<Suspense>` fallback：`<h1>Loading profile...</h1>` 。渲染到这里就结束了。
 
-这里的 `resource` 对象代表的数据虽然还没到位，但大概率它最终会被下载完。所以，当我们读取 `read()` 的时候，我们要么拿到数据，要么拿到一个处于“挂起”状态的组件。
+这里的 `resource` 对象表示尚未存在但最终将被加载的数据。当我们调用 `read()` 的时候，我们要么获取数据，要么组件处于“挂起”状态。
 
 **随着更多数据的到来，React 将尝试重新渲染，并且每次都可能渲染出更加完整的组件树。**当 `resource.user` 的数据获取完毕之后，`<ProfileDetails>` 组件就能被顺利渲染出来，这时，我们就不再需要展示 `<h1>Loading profile...</h1>` 这个 fallback 了。当我们拿到全部数据之后，所有的 fallbacks 就都可以不展示了。
 
-这个过程暗含着一个有意思的点，那就是，虽然我们是用 GraphQL 客户端来通过一个单一的请求来获取所有需要的数据，*但因为响应报文是数据流的格式，我们因此能够更早地展示出接收到的数据*。因为我们的采用的方法是“获取数据之后渲染”（render-as-we-fetch）（而非渲染之后才获取数据），我们能够在响应报文接收完毕之前就先“解锁”最外层的 `<Suspense>`。我们在方法 2 中没谈到这一点：即便是在方法 2 “接收到全部数据之后渲染”（fetch-then-render）中，在获取数据和渲染之间也有“瀑布”问题。而 Suspense 并不会导致“瀑布”，数据获取库像是 Relay 就抓住了 Suspense 的这个优势。
+这意味着一个有趣的事实，即使我们使用 GraphQL 客户端来收集单个请求中需要的所有数据，*流式响应也可以使我们尽早显示更多的内容*。*在数据获取时（render-as-we-fetch）*（而不是全部数据获取*后*）渲染，因此，如果 `user` 在响应中比 `posts` 出现得更早，我们则可以在响应结束之前“解锁”外层的 `<Suspense>` 边界。我们之前并没有意识到这一点，即便是 fetch-then-render（接收到全部数据之后渲染）这个解决方案，在数据获取和渲染之间也有“瀑布”问题。Suspense 没有这个“瀑布”问题，像 Relay 这样的库就利用了这个优势。
 
 请注意，我们是如何在组件中去掉 `if (…)`“is loading” 这个检查的。这不仅删除了样板代码，还简化了代码设计快速转变的流程。举个例子，如果我们想同时“弹出” `<ProfileDetails>` 组件和 `<ProfileTimeline>` 组件，只需删除两者之间的 `<Suspense>`。或者，我们可以通过*给它们各自的*`<Suspense>` 来让两者彼此独立。通过Suspense，我们可以更改加载状态的粒度并控制顺序，而无需调整代码。
 
