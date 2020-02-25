@@ -142,11 +142,7 @@ React 会针对每个子元素 mutate 而不是保持相同的 `<li>Duke</li>` �
 
 当基于下标的组件进行重新排序时，组件 state 可能会遇到一些问题。由于组件实例是基于它们的 key 来决定是否更新以及复用，如果 key 是一个下标，那么修改顺序时会修改当前的 key，导致非受控组件的 state（比如输入框）可能相互篡改导致无法预期的变动。
 
-<<<<<<< HEAD
-[这是](codepen://reconciliation/index-used-as-key) 在 Codepen 上的例子，展示使用下标作为 key 时导致的问题，以及 [这里](codepen://reconciliation/no-index-used-as-key) 是一个不使用下标作为 key 的例子的版本，修复了重新排列，排序，以及在列表头插入的问题。
-=======
-Here is [an example of the issues that can be caused by using indexes as keys](codepen://reconciliation/index-used-as-key) on CodePen, and here is [an updated version of the same example showing how not using indexes as keys will fix these reordering, sorting, and prepending issues](codepen://reconciliation/no-index-used-as-key).
->>>>>>> 821e20726266bc8113353d0c2b6d885f82e584a8
+在 Codepen 有两个例子，分别为 [展示使用下标作为 key 时导致的问题](codepen://reconciliation/index-used-as-key)，以及[不使用下标作为 key 的例子的版本，修复了重新排列，排序，以及在列表头插入的问题](codepen://reconciliation/no-index-used-as-key) 。
 
 ## 权衡 {#tradeoffs}
 
