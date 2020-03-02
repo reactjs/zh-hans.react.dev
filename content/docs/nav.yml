@@ -100,8 +100,11 @@
       title: 合成事件
     - id: test-utils
       title: Test Utilities
+<<<<<<< HEAD
     - id: shallow-renderer
       title: 浅层渲染
+=======
+>>>>>>> 2ab1ca5007a37ca509863a212293f1c6b26d0afc
     - id: test-renderer
       title: Test Renderer
     - id: javascript-environment-requirements
@@ -173,4 +176,8 @@
     - id: faq-structure
       title: 项目文件结构
     - id: faq-internals
+<<<<<<< HEAD
       title: Virtual DOM 及内核
+=======
+      title: Virtual DOM and Internals
+>>>>>>> 2ab1ca5007a37ca509863a212293f1c6b26d0afc
