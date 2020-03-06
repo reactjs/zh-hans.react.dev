@@ -100,8 +100,6 @@
       title: 合成事件
     - id: test-utils
       title: Test Utilities
-    - id: shallow-renderer
-      title: 浅层渲染
     - id: test-renderer
       title: Test Renderer
     - id: javascript-environment-requirements
