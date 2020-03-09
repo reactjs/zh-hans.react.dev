@@ -107,7 +107,11 @@ Hook 代表了我们对 React 未来的愿景。它解决了 React 用户们直�
 
 ### React 16.x （大约 2019 第二季度发布）：带有并发模式的版本 {#react-16x-q2-2019-the-one-with-concurrent-mode}
 
+<<<<<<< HEAD
 *并发模式* 通过渲染组件树而不阻塞主线程来使得 React 应用的响应更加及时。它是可选的，并允许 React 中断长时间运行的渲染（比如，渲染一个新的时间线故事）以处理一个高优先级事件（比如文本输入或者鼠标悬停）。并发模式也通过跳过网络状况良好的情况下的不必要的加载状态以提供更好的用户体验。
+=======
+*Concurrent Mode* lets React apps be more responsive by rendering component trees without blocking the main thread. It is opt-in and allows React to interrupt a long-running render (for example, rendering a news feed story) to handle a high-priority event (for example, text input or hover). Concurrent Mode also improves the user experience of Suspense by skipping unnecessary loading states on fast connections.
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 >注意
 >

@@ -199,7 +199,11 @@ function App() {
  }
 ```
 
+<<<<<<< HEAD
 这让我们可以立即显示 `input` 的新文本，从而感觉到网页的响应。同时，`MySlowList` “延后” 2 秒，根据 `timeoutMs` ，更新之前，允许它在后台渲染当前文本。
+=======
+This allows us to start showing the new text for the `input` immediately, which allows the webpage to feel responsive. Meanwhile, `MySlowList` "lags behind" for up to 2 seconds according to the `timeoutMs` before updating, allowing it to render with the current text in the background.
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 **深入了解延迟值，可以阅读 [Concurrent UI 模式](/docs/concurrent-mode-patterns.html#deferring-a-value)。**
 

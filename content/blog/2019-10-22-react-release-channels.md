@@ -51,7 +51,11 @@ Next 渠道中的发行版本在 npm 中携带 `next` 标签发布。版本会�
 
 Next 渠道旨在支持 React 与其他项目直接的集成测试。
 
+<<<<<<< HEAD
 React 中的所有更改在发布之前都需进行大量的内部测试。但是，在整个 React 生态系统中使用了无数的环境与配置，因此我们不可能针对每一项进行测试。
+=======
+All changes to React go through extensive internal testing before they are released to the public. However, there are myriad environments and configurations used throughout the React ecosystem, and it's not possible for us to test against every single one.
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 如果你是 React 第三方框架，库，开发者工具或类似基础设施项目的作者，则可以通过定期针对最新版本运行的测试用例，帮助我们一起维持 React 稳定，为你的用户和整个 React 社区保驾护航。如果你对此有兴趣，请按照下列步骤进行操作：
 

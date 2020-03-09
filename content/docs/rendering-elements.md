@@ -34,7 +34,11 @@ const element = <h1>Hello, world</h1>;
 
 仅使用 React 构建的应用通常只有单一的根 DOM 节点。如果你在将 React 集成进一个已有应用，那么你可以在应用中包含任意多的独立根 DOM 节点。
 
+<<<<<<< HEAD
 想要将一个 React 元素渲染到根 DOM 节点中，只需把它们一起传入 `ReactDOM.render()`：
+=======
+To render a React element into a root DOM node, pass both to [`ReactDOM.render()`](/docs/react-dom.html#render):
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 `embed:rendering-elements/render-an-element.js`
 
@@ -46,7 +50,11 @@ const element = <h1>Hello, world</h1>;
 
 React 元素是[不可变对象](https://en.wikipedia.org/wiki/Immutable_object)。一旦被创建，你就无法更改它的子元素或者属性。一个元素就像电影的单帧：它代表了某个特定时刻的 UI。
 
+<<<<<<< HEAD
 根据我们已有的知识，更新 UI 唯一的方式是创建一个全新的元素，并将其传入 `ReactDOM.render()`。
+=======
+With our knowledge so far, the only way to update the UI is to create a new element, and pass it to [`ReactDOM.render()`](/docs/react-dom.html#render).
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 考虑一个计时器的例子：
 
@@ -54,11 +62,19 @@ React 元素是[不可变对象](https://en.wikipedia.org/wiki/Immutable_object)
 
 [](codepen://rendering-elements/update-rendered-element)
 
+<<<<<<< HEAD
 这个例子会在 [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) 回调函数，每秒都调用 `ReactDOM.render()`。
+=======
+It calls [`ReactDOM.render()`](/docs/react-dom.html#render) every second from a [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback.
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 >**注意：**
 >
+<<<<<<< HEAD
 >在实践中，大多数 React 应用只会调用一次 `ReactDOM.render()`。在下一个章节，我们将学习如何将这些代码封装到[有状态组件](/docs/state-and-lifecycle.html)中。
+=======
+>In practice, most React apps only call [`ReactDOM.render()`](/docs/react-dom.html#render) once. In the next sections we will learn how such code gets encapsulated into [stateful components](/docs/state-and-lifecycle.html).
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 >
 >我们建议你不要跳跃着阅读，因为每个话题都是紧密联系的。
 
@@ -72,4 +88,8 @@ React DOM 会将元素和它的子元素与它们之前的状态进行比较，�
 
 尽管每一秒我们都会新建一个描述整个 UI 树的元素，React DOM 只会更新实际改变了的内容，也就是例子中的文本节点。
 
+<<<<<<< HEAD
 根据我们的经验，考虑 UI 在任意给定时刻的状态，而不是随时间变化的过程，能够消灭一整类的 bug。
+=======
+In our experience, thinking about how the UI should look at any given moment, rather than how to change it over time, eliminates a whole class of bugs.
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504

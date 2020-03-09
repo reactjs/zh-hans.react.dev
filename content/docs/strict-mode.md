@@ -99,10 +99,18 @@ class MyComponent extends React.Component {
 
 严格模式不能自动检测到你的副作用，但它可以帮助你发现它们，使它们更具确定性。通过故意重复调用以下方法来实现的该操作：
 
+<<<<<<< HEAD
 * class 组件的 `constructor` 方法
 * `render` 方法
 * `setState` 更新函数 (第一个参数）
 * 静态的 `getDerivedStateFromProps` 生命周期方法
+=======
+* Class component `constructor` method
+* The `render` method
+* `setState` updater functions (the first argument)
+* The static `getDerivedStateFromProps` lifecycle
+* The `shouldComponentUpdate` method
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 > 注意：
 >
