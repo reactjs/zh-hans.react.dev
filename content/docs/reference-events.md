@@ -183,9 +183,9 @@ onChange onInput onInvalid onReset onSubmit
 
 * * *
 
-### Generic Events {#generic-events}
+### 通用事件 {#generic-events}
 
-Event names:
+事件名称：
 
 ```
 onError onLoad

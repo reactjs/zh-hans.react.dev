@@ -91,19 +91,11 @@ Hook 确实有它们自己的学习曲线。如果这份文档中遗失了一些
 
 当你准备好了，我们鼓励你在写新组件的时候开始尝试 Hook。请确保你团队中的每个人都愿意使用它们并且熟知这份文档中的内容。我们不推荐用 Hook 重写你已有的 class，除非你本就打算重写它们。（例如：为了修复bug）。
 
-<<<<<<< HEAD
-你不能在一个 class 组件*中*使用 Hook，但毫无疑问你可以在组件树里混合使用 class 组件和使用了 Hook 的函数组件。不论一个组件是 class 还是一个使用了 Hook 的函数，都只是这个组件的实现细节而已。长远来看，我们期望 Hook 能够成为人们编写 React 组件的主要方式。
-=======
-You can't use Hooks *inside* a class component, but you can definitely mix classes and function components with Hooks in a single tree. Whether a component is a class or a function that uses Hooks is an implementation detail of that component. In the longer term, we expect Hooks to be the primary way people write React components.
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+你不能在 class 组件*内部*使用 Hook，但毫无疑问你可以在组件树里混合使用 class 组件和使用了 Hook 的函数组件。不论一个组件是 class 还是一个使用了 Hook 的函数，都只是这个组件的实现细节而已。长远来看，我们期望 Hook 能够成为人们编写 React 组件的主要方式。
 
 ### Hook 能否覆盖 class 的所有使用场景？ {#do-hooks-cover-all-use-cases-for-classes}
 
-<<<<<<< HEAD
-我们给 Hook 设定的目标是尽早覆盖 class 的所有使用场景。目前暂时还没有对应不常用的 `getSnapshotBeforeUpdate` 和 `componentDidCatch` 生命周期的 Hook 等价写法，但我们计划尽早把它们加进来。
-=======
-Our goal is for Hooks to cover all use cases for classes as soon as possible. There are no Hook equivalents to the uncommon `getSnapshotBeforeUpdate`, `getDerivedStateFromError` and `componentDidCatch` lifecycles yet, but we plan to add them soon.
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+我们给 Hook 设定的目标是尽早覆盖 class 的所有使用场景。目前暂时还没有对应不常用的 `getSnapshotBeforeUpdate`，`getDerivedStateFromError` 和 `componentDidCatch` 生命周期的 Hook 等价写法，但我们计划尽早把它们加进来。
 
 目前 Hook 还处于早期阶段，一些第三方的库可能还暂时无法兼容 Hook。
 
@@ -226,11 +218,7 @@ it('can render and update a counter', () => {
 
 * `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`：[`useEffect` Hook](/docs/hooks-reference.html#useeffect) 可以表达所有这些(包括 [不那么](#can-i-skip-an-effect-on-updates) [常见](#can-i-run-an-effect-only-on-updates) 的场景)的组合。
 
-<<<<<<< HEAD
-* `componentDidCatch` and `getDerivedStateFromError`：目前还没有这些方法的 Hook 等价写法，但很快会加上。
-=======
-* `getSnapshotBeforeUpdate`, `componentDidCatch` and `getDerivedStateFromError`: There are no Hook equivalents for these methods yet, but they will be added soon.
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+* `getSnapshotBeforeUpdate`，`componentDidCatch` 以及 `getDerivedStateFromError`：目前还没有这些方法的 Hook 等价写法，但很快会被添加。
 
 ### 我该如何使用 Hook 进行数据获取？ {#how-can-i-do-data-fetching-with-hooks}
 
@@ -301,11 +289,7 @@ function Box() {
 
 这是因为当我们更新一个 state 变量，我们会 *替换* 它的值。这和 class 中的 `this.setState` 不一样，后者会把更新后的字段 *合并* 入对象中。
 
-<<<<<<< HEAD
-如果你怀念自动合并，你可以写一个自定义的 `useLegacyState` Hook 来合并对象 state 的更新。然而，相反的**我们推荐把 state 切分成多个 state 变量，每个变量包含的不同值会在同时发生变化。**
-=======
-If you miss automatic merging, you could write a custom `useLegacyState` Hook that merges object state updates. However, **we recommend to split state into multiple state variables based on which values tend to change together.**
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+如果你错过自动合并，你可以写一个自定义的 `useLegacyState` Hook 来合并对象 state 的更新。然而，**我们推荐把 state 切分成多个 state 变量，每个变量包含的不同值会在同时发生变化。**
 
 举个例子，我们可以把组件的 state 拆分为 `position` 和 `size` 两个对象，并永远以非合并的方式去替换 `position`：
 
@@ -595,11 +579,7 @@ useEffect(() => {
 
 让我们来看看这有什么关系。
 
-<<<<<<< HEAD
-如果你指定了一个 [依赖列表](/docs/hooks-reference.html#conditionally-firing-an-effect) 作为 `useEffect`、`useMemo`、`useCallback` 或 `useImperativeHandle` 的最后一个参数，它必须包含参与那次 React 数据流的所有值。这就包含了 props、state，以及任何由它们衍生而来的东西。
-=======
-If you specify a [list of dependencies](/docs/hooks-reference.html#conditionally-firing-an-effect) as the last argument to `useEffect`, `useMemo`, `useCallback`, or `useImperativeHandle`, it must include all values that are used inside the callback and participate in the React data flow. That includes props, state, and anything derived from them.
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+如果你指定了一个 [依赖列表](/docs/hooks-reference.html#conditionally-firing-an-effect) 作为 `useEffect`、`useMemo`、`useCallback` 或 `useImperativeHandle` 的最后一个参数，它必须包含回调中的所有值，并参与 React 数据流。这就包括 props、state，以及任何由它们衍生而来的东西。
 
 **只有** 当函数（以及它所调用的函数）不引用 props、state 以及由它们衍生而来的值时，你才能放心地把它们从依赖列表中省略。下面这个案例有一个 Bug：
 

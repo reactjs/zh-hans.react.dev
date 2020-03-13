@@ -69,11 +69,7 @@ function Counter({initialCount}) {
 
 “+” 和 “-” 按钮采用函数式形式，因为被更新的 state 需要基于之前的 state。但是“重置”按钮则采用普通形式，因为它总是把 count 设置回初始值。
 
-<<<<<<< HEAD
-如果你的更新函数返回值完全相同，则随后的重新渲染会被完全跳过。
-=======
-If your update function returns the exact same value as the current state, the subsequent rerender will be skipped completely.
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+如果你的更新函数返回值与当前 state 完全相同，则随后的重渲染会被完全跳过。
 
 > 注意
 >
@@ -442,11 +438,7 @@ function TextInputWithFocusButton() {
 useImperativeHandle(ref, createHandle, [deps])
 ```
 
-<<<<<<< HEAD
-`useImperativeHandle` 可以让你在使用 `ref` 时自定义暴露给父组件的实例值。在大多数情况下，应当避免使用 ref 这样的命令式代码。`useImperativeHandle` 应当与 `forwardRef` 一起使用：
-=======
-`useImperativeHandle` customizes the instance value that is exposed to parent components when using `ref`. As always, imperative code using refs should be avoided in most cases. `useImperativeHandle` should be used with [`forwardRef`](/docs/react-api.html#reactforwardref):
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+`useImperativeHandle` 可以让你在使用 `ref` 时自定义暴露给父组件的实例值。在大多数情况下，应当避免使用 ref 这样的命令式代码。`useImperativeHandle` 应当与 [`forwardRef`](/docs/react-api.html#reactforwardref) 一起使用：
 
 ```js
 function FancyInput(props, ref) {

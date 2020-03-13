@@ -44,11 +44,7 @@ class Welcome extends React.Component {
 
 上述两个组件在 React 里是等效的。
 
-<<<<<<< HEAD
-我们将在[下一章节](/docs/state-and-lifecycle.html)中讨论关于 class 的额外特性。在那之前，为了保持示例简单明了，将使用函数组件。
-=======
-Function and Class components both have some additional features that we will discuss in the [next sections](/docs/state-and-lifecycle.html).
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+我们将在[下一章节](/docs/state-and-lifecycle.html)中讨论关于函数组件和 class 组件的额外特性。
 
 ## 渲染组件 {#rendering-a-component}
 
@@ -64,11 +60,7 @@ const element = <div />;
 const element = <Welcome name="Sara" />;
 ```
 
-<<<<<<< HEAD
-当 React 元素为用户自定义组件时，它会将 JSX 所接收的属性（attributes）转换为单个对象传递给组件，这个对象被称之为 “props”。
-=======
-When React sees an element representing a user-defined component, it passes JSX attributes and children to this component as a single object. We call this object "props".
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+当 React 元素为用户自定义组件时，它会将 JSX 所接收的属性（attributes）以及子组件（children）转换为单个对象传递给组件，这个对象被称之为 “props”。
 
 例如，这段代码会在页面上渲染 “Hello, Sara”：
 
