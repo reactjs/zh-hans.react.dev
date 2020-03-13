@@ -86,10 +86,10 @@ class Mouse extends React.Component {
 class MouseTracker extends React.Component {
   render() {
     return (
-      <div>
+      <>
         <h1>移动鼠标!</h1>
         <Mouse />
-      </div>
+      </>
     );
   }
 }

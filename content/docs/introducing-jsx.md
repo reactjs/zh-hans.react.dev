@@ -177,7 +177,7 @@ const element = {
 
 这些对象被称为 “React 元素”。它们描述了你希望在屏幕上看到的内容。React 通过读取这些对象，然后使用它们来构建 DOM 以及保持随时更新。
 
-我们将在下一章节中探讨如何将 React 元素渲染为 DOM。
+我们将在[下一章节](/docs/rendering-elements.html)中探讨如何将 React 元素渲染为 DOM。
 
 >**提示：**
 >

@@ -54,7 +54,7 @@ npm install react@experimental react-dom@experimental
 
 ### 开启 concurrent 模式 {#enabling-concurrent-mode}
 
-通常，当我们给 React 添加功能的时候，你可以立即使用。比如 Fragments，Context，甚至 Hooks。你可以直接在代码里使用，而不用修改之前的代码。
+通常，当我们给 React 添加功能的时候，你可以立即使用。比如 Fragments，Context，甚至 Hook。你都可以直接在代码里使用他们，而不用修改之前的代码。
 
 concurrent 模式并不是这样。它给引入了新的语义，改变了 React 的工作方式。否则*不能启用*[这些新功能](/docs/concurrent-mode-patterns.html)。这就是它被分组到了新的模式，而不是相继的发布出来。
 
