@@ -103,6 +103,7 @@ class MyComponent extends React.Component {
 * `render` 方法
 * `setState` 更新函数 (第一个参数）
 * 静态的 `getDerivedStateFromProps` 生命周期方法
+* `shouldComponentUpdate` 方法
 
 > 注意：
 >
