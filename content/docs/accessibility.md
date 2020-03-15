@@ -378,7 +378,7 @@ class BlurExample extends React.Component {
 每一种部件都有一种特定的设计模式，并且用户和用户代理都会期待使用相似的方法使用它：
 
 - [WAI-ARIA 创作实践 —— 设计模式和部件](https://www.w3.org/TR/wai-aria-practices/#aria_ex)
-- [Heydon Pickering - ARIA Examples](https://heydonworks.com/practical_aria_examples/)
+- [Heydon Pickering - ARIA Examples](https://heydonworks.com/article/practical-aria-examples/)
 - [包容性组件（Inclusive Components）](https://inclusive-components.design/)
 
 ## 其他考虑因素 {#other-points-for-consideration}
