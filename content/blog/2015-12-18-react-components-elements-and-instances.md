@@ -237,10 +237,8 @@ const Form = ({ isSubmitted, buttonText }) => {
 我们让 React 创建，更新，销毁实例。我们通过组件返回的元素*描述*他们，而 React 负责管理这些实例。
 
 ### 组件可以是类或函数 {#components-can-be-classes-or-functions}
-### Components Can Be Classes or Functions {#components-can-be-classes-or-functions}
 
 在之前的代码中，`Form`, `Message` 和 `Button` 是 React 组件。他们既可以像此前那样被写作函数，也可以通过`React.Component`写作类。这三种声明组件的方式几乎是等效的：
-In the code above, `Form`, `Message`, and `Button` are React components. They can either be written as functions, like above, or as classes descending from `React.Component`. These three ways to declare a component are mostly equivalent:
 
 ```js
 // 1) 作为一个带 props 的函数
