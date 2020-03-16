@@ -55,7 +55,7 @@ class Form extends TraditionalObjectOrientedView {
 
 ## 元素描述了树 {#elements-describe-the-tree}
 
-这正是 React 希望 *元素* 施展拳脚之处。**元素是一个用来*描述*组件实例或 DOM 节点及其需要属性的普通对象**。它只包含组件类型（比如 `Button`），其属性（比如`color`）以及所有其下子元素的相关信息。
+这正是 React 希望*元素*施展拳脚之处。**元素是一个用来*描述*组件实例或 DOM 节点及其需要属性的普通对象**。它只包含组件类型（比如 `Button`），其属性（比如`color`）以及所有其下子元素的相关信息。
 
 一个元素不是一个确切的实例。他是一种告诉 React 你*想要*在屏幕上看到什么的方法。你不能在元素上调用任何方法。它只是一个携有 `type: (string | ReactClass)` 和 `props: Object`[^1] 字段的不可变描述对象
 
