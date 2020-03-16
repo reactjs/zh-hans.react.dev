@@ -373,7 +373,7 @@ React 负责为每个类组件创建一个实例，所以你可以用面向对�
 
 函数组件根本没有实例。类组件才有实例，但你永远不需要去直接创建组件实例——React 会负责这些。
 
-最后，要新建一个元素，使用[`React.createElement()`](/docs/top-level-api.html#react.createelement)， [JSX](/docs/jsx-in-depth.html), 或[element factory helper](/docs/top-level-api.html#react.createfactory). 不要在真实代码中将元素写作普通对象——知道他们是处于底层的普通对象足矣。
+最后，要新建一个元素，使用[`React.createElement()`](/docs/top-level-api.html#react.createelement)， [JSX](/docs/jsx-in-depth.html), 或 [element factory helper](/docs/top-level-api.html#react.createfactory)。不要在真实代码中将元素写作普通对象——知道他们是处于底层的普通对象足矣。
 
 ## 拓展阅读 {#further-reading}
 
