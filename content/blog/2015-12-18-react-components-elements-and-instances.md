@@ -166,7 +166,7 @@ const DeleteAccount = () => (
 
 * `Button` 是一个被指定部分属性的 DOM `<button>`。
 * `DangerButton` 是一个被指定部分属性的 `Button`。
-* `DeleteAccount` 包含一个 `Button` 和一个 `DangerButton` 在一个 `<div>`.
+* `DeleteAccount` 在一个 `<div>`中包含一个 `Button` 和一个 `DangerButton` 。
 
 ### 组件封装元素树 {#components-encapsulate-element-trees}
 
