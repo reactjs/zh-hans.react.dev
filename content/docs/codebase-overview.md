@@ -15,6 +15,7 @@ redirect_from:
 
 我们并不推荐在 React 应用中遵循这些约定。有许多约定是历史原因，并且之后也许会有所修改。
 
+<<<<<<< HEAD
 ### 外部依赖 {#external-dependencies}
 
 React 几乎没有外部依赖。通常 `require()` 都会引用 React 源码中的文件。然而，也有个别的例外。
@@ -22,6 +23,9 @@ React 几乎没有外部依赖。通常 `require()` 都会引用 React 源码中
 依赖 [fbjs 仓库](https://github.com/facebook/fbjs)是因为 React 需要和一些类似于 [Relay](https://github.com/facebook/relay) 的库共享一些小功能，并且与他们保持同步。我们不依赖 Node 生态系统中同等功能的小模块，因为我们希望 Facebook 工程师能够在必要时做出修改。fbjs 中没有公共 API，他们仅仅用于 Facebook 的项目，比如 React。
 
 ### 顶层目录 {#top-level-folders}
+=======
+### Top-Level Folders {#top-level-folders}
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 当克隆 [React 仓库](https://github.com/facebook/react)之后，你们将看到一些顶层目录：
 
@@ -171,7 +175,11 @@ React 核心代码在源码的 [`packages/react`](https://github.com/facebook/re
 
 ### 渲染器 {#renderers}
 
+<<<<<<< HEAD
 React 最初只是服务于 DOM，但是这之后被改编成也能同时支持原生平台的 [React Native](https://facebook.github.io/react-native/)。因此，在 React 内部机制中引入了“渲染器”这个概念。
+=======
+React was originally created for the DOM but it was later adapted to also support native platforms with [React Native](https://reactnative.dev/). This introduced the concept of "renderers" to React internals.
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 **渲染器用于管理一棵 React 树，使其根据底层平台进行不同的调用。**
 

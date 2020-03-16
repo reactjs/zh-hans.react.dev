@@ -71,7 +71,11 @@ prev: hooks-reference.html
 
 请注意，**要启用 Hook，所有 React 相关的 package 都必须升级到 16.8.0 或更高版本**。如果你忘记更新诸如 React DOM 之类的 package，Hook 将无法运行。
 
+<<<<<<< HEAD
 [React Native 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059) 及以上版本支持 Hook。
+=======
+[React Native 0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059) and above support Hooks.
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 ### 我需要重写所有的 class 组件吗？ {#do-i-need-to-rewrite-all-my-class-components}
 
@@ -588,7 +592,11 @@ function ProductPage({ productId }) {
   const [product, setProduct] = useState(null);
 
   async function fetchProduct() {
+<<<<<<< HEAD
     const response = await fetch('http://myapi/product' + productId); // 使用了 productId prop
+=======
+    const response = await fetch('http://myapi/product/' + productId); // Uses productId prop
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
     const json = await response.json();
     setProduct(json);
   }
@@ -609,7 +617,7 @@ function ProductPage({ productId }) {
   useEffect(() => {
     // 把这个函数移动到 effect 内部后，我们可以清楚地看到它用到的值。
     async function fetchProduct() {
-      const response = await fetch('http://myapi/product' + productId);
+      const response = await fetch('http://myapi/product/' + productId);
       const json = await response.json();
       setProduct(json);
     }

@@ -126,7 +126,11 @@ Facebook 内部的使用模式帮助我们了解常见的错误有哪些，以�
 
 ### DOM 之外 {#beyond-the-dom}
 
+<<<<<<< HEAD
 我们认为 React 的价值在于它使我们写出更少 bug 的组件，而且组件很方便组合。React 当初的渲染目标是 DOM，但 [React Native](https://facebook.github.io/react-native/) 对 Facebook 和社区来说同样重要。
+=======
+We see the value of React in the way it allows us to write components that have fewer bugs and compose together well. DOM is the original rendering target for React but [React Native](https://reactnative.dev/) is just as important both to Facebook and the community.
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 React 的一个重要设计约束是要渲染引擎无关。这在内部呈现增加了一些开销，另一方面，对内核的任何优化将对所有平台都有益。
 
