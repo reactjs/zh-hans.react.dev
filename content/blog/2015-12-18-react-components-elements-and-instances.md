@@ -112,7 +112,7 @@ React 元素易于遍历，无需解析。此外他们比起真实的 DOM 元素
 
 **一个用于描述组件的元素也是一个元素，就像一个用于描述 DOM 节点的元素一样。他们可以彼此嵌套，互相混合。**
 
-该特性让你可以将 `DangerButton` 组件定义为一个被指定 `color` 值的 `Button`，而你完全不必关心 `Button` 是渲染成一个 `button`、`div` 或其他什么 DOM。
+该特性让你可以将 `DangerButton` 组件定义为一个被指定 `color` 值的 `Button`，而你完全不必关心 `Button` 是渲染成一个 DOM `<button>`、`<div>` 或其他东西。
 
 ```js
 const DangerButton = ({ children }) => ({
