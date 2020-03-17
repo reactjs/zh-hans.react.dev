@@ -134,7 +134,7 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 
 如果你的项目用 npm，你可以从依赖中删去 `react` 和 `react-dom`，使用 `yarn link` 将其指向本地文件夹的 `build` 目录。请注意，**当请在构建时，传递 `--type=NODE`，而不是 `--type=UMD`。同时，你还需要构建 `scheduler` 的 package：
 
-```sh
+```bash
 cd ~/path_to_your_react_clone/
 yarn build react/index,react-dom/index,scheduler --type=NODE
 
