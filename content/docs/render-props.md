@@ -41,7 +41,7 @@ class MouseTracker extends React.Component {
 
   render() {
     return (
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
         <h1>移动鼠标!</h1>
         <p>当前的鼠标位置是 ({this.state.x}, {this.state.y})</p>
       </div>
@@ -74,7 +74,7 @@ class Mouse extends React.Component {
 
   render() {
     return (
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
 
         {/* ...但我们如何渲染 <p> 以外的东西? */}
         <p>The current mouse position is ({this.state.x}, {this.state.y})</p>
@@ -127,7 +127,7 @@ class MouseWithCat extends React.Component {
 
   render() {
     return (
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
 
         {/*
           我们可以在这里换掉 <p> 的 <Cat>   ......
@@ -182,7 +182,7 @@ class Mouse extends React.Component {
 
   render() {
     return (
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
 
         {/*
           Instead of providing a static representation of what <Mouse> renders,

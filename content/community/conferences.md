@@ -12,11 +12,6 @@ Do you know of a local React.js conference? Add it here! (Please keep the list c
 
 ## Upcoming Conferences {#upcoming-conferences}
 
-### ReactConf Japan 2020 {#reactconfjp-2020}
-March 21, 2020 in Tokyo, Japan
-
-[Website](https://reactconf.jp/) - [Twitter](https://twitter.com/reactjp)
-
 ### Reactathon 2020 {#reactathon-2020}
 March 30 - 31, 2020 in San Francisco, CA
 
@@ -41,11 +36,6 @@ April 25, 2020 in Bangalore, India
 May 1, 2020. Streamed online on YouTube.
 
 [Website](https://www.bytesized.xyz) - [Twitter](https://twitter.com/bytesizedcode) - [YouTube](https://www.youtube.com/channel/UC046lFvJZhiwSRWsoH8SFjg)
-
-### render(ATL) 2020 {#render-atlanta-2020}
-May 4-6, 2020. Atlanta, GA, USA.
-
-[Website](https://renderatl.com) - [Twitter](https://twitter.com/renderATL) - [Instagram](https://www.instagram.com/renderatl/) - [Facebook](https://www.facebook.com/renderatl/)
 
 ### ReactEurope 2020 {#reacteurope-2020}
 May 14-15, 2020 in Paris, France
@@ -81,6 +71,11 @@ July 18, 2020. Medellín, Colombia.
 July 29-30, 2020. Portland, Oregon, USA.
 
 [Website](https://infinite.red/ChainReactConf) - [Twitter](https://twitter.com/ChainReactConf)
+
+### render(ATL) 2020 {#render-atlanta-2020} 
+August 24-26, 2020. Atlanta, GA, USA.
+
+[Website](https://renderatl.com) - [Twitter](https://twitter.com/renderATL) - [Instagram](https://www.instagram.com/renderatl/) - [Facebook](https://www.facebook.com/renderatl/) - [LinkedIn](https://www.linkedin.com/company/renderatl)
 
 ### ComponentsConf 2020 {#components20}
 September 1, 2020 in Melbourne, Australia
