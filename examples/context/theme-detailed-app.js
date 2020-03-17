@@ -31,7 +31,7 @@ class App extends React.Component {
     // highlight-range{1-3}
     // 在 ThemeProvider 内部的 ThemedButton 按钮组件使用 state 中的 theme 值，
     // 而外部的组件使用默认的 theme 值
-    //highlight-range{3-5,7}
+    // highlight-range{3-5, 7}
     return (
       <Page>
         <ThemeContext.Provider value={this.state.theme}>
