@@ -21,10 +21,6 @@ Sophie Alpert 和 Dan Abramov 用以 “React 的当下和未来” 为主题的
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UcqRXTriUVI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<<<<<<< HEAD
-当天下午，Parashuram N 详细讲了关于 React Native 的新架构体系，React Native 团队在去年[六月宣布了这个长期项目](https://facebook.github.io/react-native/blog/2018/06/14/state-of-react-native-2018)，并且花费了一年时间努力开发。这个项目在提高性能，简化与其他库的互操作性以及为 React Native 的未来奠定坚实基础的方面有着无穷的潜力，我们为此感到非常兴奋。
-=======
-In the afternoon, Parashuram N spoke in detail about React Native’s New Architecture, a long-term project that the React Native team has been working on over the past year and [announced in June](https://reactnative.dev/blog/2018/06/14/state-of-react-native-2018). We’re really excited about the potential of this project to improve performance, simplify interoperability with other libraries, and set a strong foundation for the future of React Native.
->>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
+当天下午，Parashuram N 详细讲了关于 React Native 的新架构体系，React Native 团队在去年[六月宣布了这个长期项目](https://reactnative.dev/blog/2018/06/14/state-of-react-native-2018)，并且花费了一年时间努力开发。这个项目在提高性能，简化与其他库的互操作性以及为 React Native 的未来奠定坚实基础的方面有着无穷的潜力，我们为此感到非常兴奋。
 
 如今大会已经结束了，28 场会议视频都可以[在线观看](https://www.youtube.com/playlist?list=PLPxbbTqCLbGE5AihOSExAa4wUM-P42EIJ)。这两天的大会涌现许多伟大的发言，我们万分期待明年的大会！

@@ -18,14 +18,8 @@ class App extends React.Component {
 }
 
 // highlight-range{1,2}
-<<<<<<< HEAD
 // 中间的组件再也不必指明往下传递 theme 了。
-function Toolbar(props) {
-=======
-// A component in the middle doesn't have to
-// pass the theme down explicitly anymore.
 function Toolbar() {
->>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
   return (
     <div>
       <ThemedButton />

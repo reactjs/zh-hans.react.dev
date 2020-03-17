@@ -130,13 +130,9 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 
 想测试你做出的更改的话，最简单的方法就是运行 `yarn build react/index,react-dom/index --type=UMD`，之后再打开 `fixtures/packaging/babel-standalone/dev.html`，该文件已使用 `build` 文件夹内的 `react.development.js` 来搞定你的更改。
 
-<<<<<<< HEAD
-如果你想测试你对已有 React 项目做出的更改，你可以复制 `build/dist/react.development.js` 和 `build/dist/react-dom.development.js` 或其它构建版本，放入你的应用中并使用这些构建版本而非稳定版。如果你的项目用 npm，你可以从依赖中删去 `react` 和 `react-dom`，使用 `yarn link` 将其指向本地文件夹 `build`：
-=======
-If you want to try your changes in your existing React project, you may copy `build/dist/react.development.js`, `build/dist/react-dom.development.js`, or any other build products into your app and use them instead of the stable version. 
+如果你想测试你对已有 React 项目做出的更改，你可以复制 `build/dist/react.development.js` 和 `build/dist/react-dom.development.js` 或其它构建版本，放入你的应用中并使用这些构建版本而非稳定版。
 
-If your project uses React from npm, you may delete `react` and `react-dom` in its dependencies and use `yarn link` to point them to your local `build` folder. Note that **instead of `--type=UMD` you'll want to pass `--type=NODE` when building**. You'll also need to build the `scheduler` package:
->>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
+如果你的项目用 npm，你可以从依赖中删去 `react` 和 `react-dom`，使用 `yarn link` 将其指向本地文件夹的 `build` 目录。请注意，**当请在构建时，传递 `--type=NODE`，而不是 `--type=UMD`。同时，你还需要构建 `scheduler` 的 package：
 
 ```sh
 cd ~/path_to_your_react_clone/
@@ -153,13 +149,9 @@ yarn link react react-dom
 
 每当你在项目文件夹下运行 `yarn build`，更新版本会出现在 `node_modules` 文件夹，之后可以重新构建项目来测试更改。
 
-<<<<<<< HEAD
-我们仍要求：`pull request` 得包括新功能对应的单元测试。这样，我们能确保以后你的代码不出问题。
-=======
-If some package is still missing (e.g. maybe you use `react-dom/server` in your project), you can always do a full build with `yarn build`. Note that running `yarn build` without options takes a long time.
+如果依然缺少某些 package（例如，可能在项目中使用到 `react-dom/server`），则应始终执行 `yarn build` 进行完整构建。请注意，不带选项运行 `yarn build` 会耗费很长时间。
 
-We still require that your pull request contains unit tests for any new functionality. This way we can ensure that we don't break your code in the future.
->>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
+我们仍要求：`pull request` 得包括新功能对应的单元测试。这样，我们能确保以后你的代码不出问题。
 
 ### 风格指南 {#style-guide}
 
