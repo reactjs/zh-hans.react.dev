@@ -88,7 +88,7 @@ class Form extends TraditionalObjectOrientedView {
 </button>
 ```
 
-注意元素是如何嵌套的。按照惯例，当我们要创建一棵元素树时，我们指定一或多个子元素作为其 `children` 成员。
+注意元素是如何嵌套的。按照惯例，当我们要创建一棵 element tree 时，我们指定一或多个子元素作为其 `children` 成员。
 
 重要的是子元素和父元素*仅仅作为描述而不是真正的实例*。当你创建了它们，它们并不代表任何屏幕上的东西。你可以创建、丢弃它们，不必担心什么。
 
@@ -124,7 +124,7 @@ const DangerButton = ({ children }) => ({
 });
 ```
 
-你可以混合和匹配 DOM 及组件元素在一个单独的元素树中：
+你可以混合和匹配 DOM 及组件元素在一个单独的 element tree 中：
 
 ```js
 const DeleteAccount = () => ({
@@ -168,7 +168,7 @@ const DeleteAccount = () => (
 * `DangerButton` 是一个被指定部分属性的 `Button`。
 * `DeleteAccount` 在一个 `<div>`中包含一个 `Button` 和一个 `DangerButton` 。
 
-### 组件封装元素树 {#components-encapsulate-element-trees}
+### 组件封装 element trees {#components-encapsulate-element-trees}
 
 当 React 遇到一个带有函数或类 `type` 的元素时，它知道要问*那个*组件它要呈现什么元素，并给出相应的 `props`。
 
@@ -230,9 +230,9 @@ const Form = ({ isSubmitted, buttonText }) => {
 };
 ```
 
-这就是它！对于一个 React 组件，props 就是输入，元素树就是输出。
+这就是它！对于一个 React 组件，props 就是输入，element tree 就是输出。
 
-**返回的元素树可以包含描述 DOM 节点的元素，描述其他组件的元素。这使你可以组成 UI 的独立部分，而无需依赖其内部 DOM 结构。**
+**返回的 element tree 可以包含描述 DOM 节点的元素，描述其他组件的元素。这使你可以组成 UI 的独立部分，而无需依赖其内部 DOM 结构。**
 
 我们让 React 创建，更新，销毁实例。我们通过组件返回的元素*描述*它们，而 React 负责管理这些实例。
 
@@ -314,7 +314,7 @@ ReactDOM.render({
 }, document.getElementById('root'));
 ```
 
-React 将会询问 `Form` 组件会返回什么元素，提供那些 `props`。它将通过更简单的”基元“逐步完善对组件树的理解：
+React 先将那些 `props` 传入 `Form` 组件，随后等待返回 element tree。它将通过更简单的”基元“逐步完善对组件树的理解：
 
 ```js
 // React: 你告诉了我这...
@@ -365,7 +365,7 @@ React 负责为每个类组件创建一个实例，所以你可以用面向对�
 
 一个*元素*是一个普通的对象。它被用来描述什么需要在屏幕上显示，根据 DOM 节点还是其他组件。元素可以在它们的 props 里包含其他元素。创建一个 React 元素很廉价。一旦一个元素被创建了，它就不再改变。
 
-一个*组件*可以通过多种不同的方式声明。它可以是一个带有 `render()` 方法的类。或者，更简单些，它可以被定义成一个函数。不论何种方式，它都需要 props 作为输入，返回一个元素树作为输出。
+一个*组件*可以通过多种不同的方式声明。它可以是一个带有 `render()` 方法的类。或者，更简单些，它可以被定义成一个函数。不论何种方式，它都需要 props 作为输入，返回一个 element tree 作为输出。
 
 当一个组件收到一些 props 作为输入，其必是因为某个父组件返回了一个带有它 `type` 和这些 props 的元素。这就是为什么在 React 中人们说 props 是单向流：从父级到子级。
 
