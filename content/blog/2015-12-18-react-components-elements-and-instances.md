@@ -168,7 +168,7 @@ const DeleteAccount = () => (
 * `DangerButton` 是一个被指定部分属性的 `Button`。
 * `DeleteAccount` 在一个 `<div>`中包含一个 `Button` 和一个 `DangerButton` 。
 
-### 组件封装 element trees {#components-encapsulate-element-trees}
+### 组件封装 Element Trees {#components-encapsulate-element-trees}
 
 当 React 遇到一个带有函数或类 `type` 的元素时，它知道要问*那个*组件它要呈现什么元素，并给出相应的 `props`。
 
