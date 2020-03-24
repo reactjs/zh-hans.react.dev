@@ -407,10 +407,10 @@ function App() {
   return (
     <>
       <button onClick={() => {
-          const nextUserId = getNextId(resource.userId);
-          // 再次获取数据：用户点击时
-          setResource(fetchProfileData(nextUserId));
-        }}>
+        const nextUserId = getNextId(resource.userId);
+        // 再次获取数据：用户点击时
+        setResource(fetchProfileData(nextUserId));
+      }}>
         Next
       </button>
       <ProfilePage resource={resource} />
@@ -439,7 +439,7 @@ Suspense 本身作为一个机制而言，它灵活可变并且没有太多的�
 
 ## Suspense 和 Race Conditions {#suspense-and-race-conditions}
 
-Race conditions 是 bug 的一类，它的出现是源于开发人员对代码运行顺序的错误推算。在 `useEffect` Hook 或在 class 组件的生命周期函数中调用 `componentDidUpdate` 方法是导致 race conditions 的常见原因。对这类问题，Suspense 也能帮得上忙——下面谈谈具体做法。
+Race Conditions 是由于对代码运行顺序的错误假设而导致的 bug。使用生命周期方法（如：`useEffect` Hook  和类的 `componentDidUpdate` 方法）获取数据经常会导致这种情况。Suspense 在这里很有用，让我们看看如何实现。
 
 为了说明问题，我们增加一个顶层组件 `<App>` 来渲染 `<ProfilePage>` ，并放置一个可以**在不同的 profile 页面之间切换**的按钮：
 
@@ -658,15 +658,15 @@ function App() {
 当我们点击“Next”按钮，`<App>` 组件便开始发出获取下一个 profile 的请求，并把*请求返回的*对象下传给 `<ProfilePage>` 组件。
 
 ```js{4,8}
-<>
-  <button onClick={() => {
+  <>
+    <button onClick={() => {
       const nextUserId = getNextId(resource.userId);
       setResource(fetchProfileData(nextUserId));
     }}>
-    Next
-  </button>
-  <ProfilePage resource={resource} />
-</>
+      Next
+    </button>
+    <ProfilePage resource={resource} />
+  </>
 ```
 
 再次申明，要注意**这里我们并不是干等到响应报文被接收之后，才去更新 state，而是反过来：我们发出请求之后，马上就开始更新 state（外加开始渲染）**。一旦收到响应，React 就把可用的数据用到 `<Suspense>` 组件里头。
