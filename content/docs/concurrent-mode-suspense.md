@@ -606,9 +606,9 @@ function App() {
   return (
     <>
       <button onClick={() => {
-          const nextUserId = getNextId(resource.userId);
-          setResource(fetchProfileData(nextUserId));
-        }}>
+        const nextUserId = getNextId(resource.userId);
+        setResource(fetchProfileData(nextUserId));
+      }}>
         Next
       </button>
       <ProfilePage resource={resource} />
