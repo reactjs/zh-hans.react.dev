@@ -1,6 +1,6 @@
 ---
 id: concurrent-mode-suspense
-title: Suspense 用于数据获取（试验版）
+title: 用于数据获取的 Suspense（试验阶段）
 permalink: docs/concurrent-mode-suspense.html
 prev: concurrent-mode-intro.html
 next: concurrent-mode-patterns.html
@@ -34,7 +34,7 @@ const ProfilePage = React.lazy(() => import('./ProfilePage')); // 懒加载
 </Suspense>
 ```
 
-Suspense 用于数据获取，它是一个新特性，你可以使用 `<Suspense>` **以声明的方式来“等待”任何内容，包括数据。**本文重点介绍它在数据获取的用例，它也可以用于等待图像、脚本或其他异步的操作。
+用于数据获取的 Suspense 是一个新特性，你可以使用 `<Suspense>` **以声明的方式来“等待”任何内容，包括数据。**本文重点介绍它在数据获取的用例，它也可以用于等待图像、脚本或其他异步的操作。
 
 - [何为 Suspense？](#what-is-suspense-exactly)
   - [什么不是 Suspense](#what-suspense-is-not)
@@ -441,7 +441,7 @@ Suspense 本身作为一个机制而言，它灵活可变并且没有太多的�
 
 Race conditions 是 bug 的一类，它的出现是源于开发人员对代码运行顺序的错误推算。在 `useEffect` Hook 或在 class 组件的生命周期函数中调用 `componentDidUpdate` 方法是导致 race conditions 的常见原因。对这类问题，Suspense 也能帮得上忙——下面谈谈具体做法。
 
-为了说明这类问题，我们增加一个最外层组件 `<App>`，它渲染出我们上面的`<ProfilePage>` 组件，外加一个按钮，让我们可以**在不同的 profiles 页面之间切换**。
+为了说明问题，我们增加一个顶层组件 `<App>` 来渲染 `<ProfilePage>` ，并放置一个可以**在不同的 profile 页面之间切换**的按钮：
 
 ```js{9-11}
 function getNextId(id) {
@@ -461,11 +461,11 @@ function App() {
 }
 ```
 
-接下来，我们对比下不同的数据获取方法分别是如何实现页面切换。
+让我们比较一下不同的数据获取方法如何实现这个需求。
 
 ### 涉及 `useEffect` 的 Race Conditions {#race-conditions-with-useeffect}
 
-我们先直接复制上面方法 1 的代码，然后做些修改：给 `<ProfilePage>` 组件传入个参数 `id`，并把这个 `id` 传给 `fetchUser(id)` 和 `fetchPosts(id)`，如下：
+首先，我们将尝试使用原始的“在 effect 中获取数据”示例，重写在 `<ProfilePage>` props 中传递的 `id` 参数，以传给 `fetchUser(id)` 和 `fetchPosts(id)`：
 
 ```js{1,5,6,14,19,23,24}
 function ProfilePage({ id }) {
@@ -508,9 +508,9 @@ function ProfileTimeline({ id }) {
 
 **[在 CodeSandbox 中尝试](https://codesandbox.io/s/nervous-glade-b5sel)**
 
-需要注意代码中 effect 的依赖从 `[]` 变成了 `[id]`——因为我们想在 `id` 变化之后，effect 紧接着再次运行，不然的话，我们就拿不到最新的数据。
+请注意，我们将 effect 的依赖从 `[]` 更改为 `[id]`——因为我们希望每次 `id` 更改时都重新运行 effect。 如果不这样做，我们将无法再次获取到新的数据。
 
-如果我们运行上面的代码，咋一看会觉得它应该可以正常运行。然而，如果我们在 `fetchUser` 和 `fetchPosts` 这两个“伪 API”里头都做延迟处理，且延迟的时间随机赋值，接着快速点击按钮“Next”，我们就能从 console 的打印信息看出程序有 bug。**在我们已经切换到新的 profile 页面之后，旧页面发出的请求会时不时“杀回来”——那时，回来的过期响应报文就会用另外一个 ID 的过期数据重写当前正确且新鲜的 state。**
+如果我们尝试运行此代码，一开始看起来运行得很好。但是，如果我们将“伪 API”实现的延迟时间随机化，快速点击“Next”按钮，就会发现控制台日志中有些问题。**有时，在把 profile 页面切换成别的 ID 后，旧的 profile 的请求会“返回”——这种情况下，其他 ID 用的旧响应会覆盖新的 state。**
 
 这个问题是可以解决的（通过在 effect 里头配置 cleanup 函数来过滤、或者取消过期请求），但它依然是个反直觉的问题，且难以检测。
 
