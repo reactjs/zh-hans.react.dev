@@ -265,7 +265,7 @@ class CounterButton extends React.Component {
       <button
         color={this.props.color}
         onClick={() => this.setState(state => ({count: state.count + 1}))}
-        Count: {this.state.count}
+        Count: {this.state.count}>
       </button>
     );
   }
@@ -286,7 +286,7 @@ class CounterButton extends React.PureComponent {
       <button
         color={this.props.color}
         onClick={() => this.setState(state => ({count: state.count + 1}))}
-        Count: {this.state.count}
+        Count: {this.state.count}>
       </button>
     );
   }
