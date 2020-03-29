@@ -185,7 +185,7 @@ class EmailInput extends Component {
 
 #### 选项二：使用实例方法重置非受控组件 {#alternative-2-reset-uncontrolled-component-with-an-instance-method}
 
-更少见的情况是，即使没有合适的 `key`，我们也想重新创建组件。一种解决方案是给一个随机值或者递增的值当作 `key`，另外一种是用示例方法强制重置内部状态：
+更少见的情况是，即使没有合适的 `key`，我们也想重新创建组件。一种解决方案是给一个随机值或者递增的值当作 `key`，另外一种是用实例方法强制重置内部状态：
 
 ```js
 class EmailInput extends Component {
