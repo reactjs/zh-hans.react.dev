@@ -97,23 +97,13 @@ class MyComponent extends React.Component {
 
 因为上述方法可能会被多次调用，所以不要在它们内部编写副作用相关的代码，这点非常重要。忽略此规则可能会导致各种问题的产生，包括内存泄漏和或出现无效的应用程序状态。不幸的是，这些问题很难被发现，因为它们通常具有[非确定性](https://en.wikipedia.org/wiki/Deterministic_algorithm)。
 
-<<<<<<< HEAD
-严格模式不能自动检测到你的副作用，但它可以帮助你发现它们，使它们更具确定性。通过故意重复调用以下方法来实现的该操作：
+严格模式不能自动检测到你的副作用，但它可以帮助你发现它们，使它们更具确定性。通过故意重复调用以下函数来实现的该操作：
 
-* class 组件的 `constructor` 方法
-* `render` 方法
+* class 组件的 `constructor`，`render` 以及 `shouldComponent` 方法
+* class 组件的生命周期方法 `getDerivedStateFromProps`
+* 函数组件体
 * `setState` 更新函数 (第一个参数）
-* 静态的 `getDerivedStateFromProps` 生命周期方法
-* `shouldComponentUpdate` 方法
-=======
-Strict mode can't automatically detect side effects for you, but it can help you spot them by making them a little more deterministic. This is done by intentionally double-invoking the following functions:
-
-* Class component `constructor`, `render`, and `shouldComponent` methods
-* Class component static `getDerivedStateFromProps` method
-* Function component bodies
-* State updater functions (the first argument to `setState`)
-* Functions passed to `useState`, `useMemo`, or `useReducer`
->>>>>>> 9e5a358cb24a665fc48615ae224f26a4f2191b32
+* 函数组件通过使用 `useState`，`useMemo` 或者 `useReducer`
 
 > 注意：
 >
