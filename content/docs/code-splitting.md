@@ -75,7 +75,14 @@ import("./math").then(math => {
 });
 ```
 
+<<<<<<< HEAD
 当 Webpack 解析到该语法时，会自动进行代码分割。如果你使用 Create React App，该功能已开箱即用，你可以[立刻使用](https://facebook.github.io/create-react-app/docs/code-splitting)该特性。[Next.js](https://github.com/zeit/next.js/#dynamic-import) 也已支持该特性而无需进行配置。
+=======
+When Webpack comes across this syntax, it automatically starts code-splitting
+your app. If you're using Create React App, this is already configured for you
+and you can [start using it](https://facebook.github.io/create-react-app/docs/code-splitting) immediately. It's also supported
+out of the box in [Next.js](https://nextjs.org/docs/advanced-features/dynamic-import).
+>>>>>>> 9e5a358cb24a665fc48615ae224f26a4f2191b32
 
 如果你自己配置 Webpack，你可能要阅读下 Webpack 关于[代码分割](https://webpack.docschina.org/guides/code-splitting/)的指南。你的 Webpack 配置应该[类似于此](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269)。
 
