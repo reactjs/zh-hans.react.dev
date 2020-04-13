@@ -14,7 +14,11 @@ next: testing-recipes.html
 * **渲染组件树** 在一个简化的测试环境中渲染组件树并对它们的输出做断言检查。
 * **运行完整应用** 在一个真实的浏览器环境中运行整个应用（也被称为“端到端（end-to-end）”测试）。
 
+<<<<<<< HEAD
 本章节主要专注于第一种情况下的测试策略。虽然完整的端到端测试在防止对重要工作流的多次回归方面很有价值，但对 React 组件来说这类测试并不怎么需要关注，因此不在本章节的讨论范围之内。
+=======
+This documentation section focuses on testing strategies for the first case. While full end-to-end tests can be very useful to prevent regressions to important workflows, such tests are not concerned with React components in particular, and are out of the scope of this section.
+>>>>>>> b3c7f041586b71b31f556403426fcd7cab342535
 
 ### 权衡 {#tradeoffs}
 
