@@ -89,7 +89,7 @@ ReactDOM.render(
 >
 >React 会将以小写字母开头的组件视为原生 DOM 标签。例如，`<div />` 代表 HTML 的 div 标签，而 `<Welcome />` 则代表一个组件，并且需在作用域内使用 `Welcome`。
 >
->你可以在[深入 JSX](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized)中了解更多关于此规范的原因。
+>你可以在[深入 JSX](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized) 中了解更多关于此规范的原因。
 
 ## 组合组件 {#composing-components}
 
