@@ -437,7 +437,7 @@ Suspense 本身作为一个机制而言，它灵活可变并且没有太多的�
 
 对于这些问题，Relay 有自己的答案。当然，解决这些问题的方法不止一种，我们很期待看到即将出现在 React 社区的新想法
 
-## Suspense 和 竞争条件（race condition） {#suspense-and-race-conditions}
+## Suspense 和 Race Conditions {#suspense-and-race-conditions}
 
 Race Conditions 是由于对代码运行顺序的错误假设而导致的 bug。使用生命周期方法（如：`useEffect` Hook  和类的 `componentDidUpdate` 方法）获取数据经常会导致这种情况。Suspense 在这里很有用，让我们看看如何实现。
 
