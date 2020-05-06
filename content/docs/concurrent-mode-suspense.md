@@ -105,7 +105,7 @@ Suspense 不是一个数据请求的库，而是一个机制。这个**机制是
 
 Suspense 和当下其他解决异步问题的方法存在明显差异，因而，第一次接触 Suspense 容易让人产生误解。下面我们阐述下常见的误解：
 
-* **它不是数据获取的一种实现。**它并不假定你使用 GraphQL，REST，或者任何其他特定的数据格式、库、数据传输方式、协议。
+ * **它不是数据获取的一种实现。**它并不假定你使用 GraphQL，REST，或者任何其他特定的数据格式、库、数据传输方式、协议。
 
 * **它不是一个可以直接用于数据获取的客户端。**你不能用 Suspense 来“替代” `fetch` 或者 Relay。不过你可以使用集成 Suspense 的库（比如说，[新的 Relay API](https://relay.dev/docs/en/experimental/api-reference)）。
 
