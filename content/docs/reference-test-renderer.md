@@ -128,7 +128,7 @@ expect(root.toJSON()).toMatchSnapshot();
 
 // 更新 props
 act(() => {
-  root = root.update(<App value={2}/>);
+  root.update(<App value={2}/>);
 })
 
 // 对根元素进行断言

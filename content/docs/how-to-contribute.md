@@ -21,7 +21,7 @@ React 的一切工作在 [GitHub](https://github.com/facebook/react) 上完成�
 
 ### 语义化版本 {#semantic-versioning}
 
-React 遵循[语义化版本](https://semver.org/lang/zh-CN/)。我们对重要的漏洞修复发布修订号；对新特性或不重要的变更发布次版本号；对重大且不兼容的变更发布主版本号。我们在开发重大且不兼容的变更时，还会在次版本号用 deprecation warnings 让用户得知将来的变更并提前迁移代码。请查看[版本号规则](https://zh-hans.reactjs.org/docs/faq-versioning.html)来了解更多我们在稳定性和渐进迁移方面要做哪些事情。
+React 遵循[语义化版本](https://semver.org/lang/zh-CN/)。我们对重要的漏洞修复发布修订号；对新特性或不重要的变更发布次版本号；对重大且不兼容的变更发布主版本号。我们在开发重大且不兼容的变更时，还会在次版本号用 deprecation warnings 让用户得知将来的变更并提前迁移代码。请查看[版本号规则](/docs/faq-versioning.html)来了解更多我们在稳定性和渐进迁移方面要做哪些事情。
 
 每一个重要变更参见 [changelog file](https://github.com/facebook/react/blob/master/CHANGELOG.md)。
 
@@ -56,7 +56,7 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 ### 如何联系我们 {#how-to-get-in-touch}
 
 - 因特网中继聊天（IRC）： [#reactjs on freenode](https://webchat.freenode.net/?channels=reactjs)
-- [论坛](https://reactjs.org/community/support.html#popular-discussion-forums)
+- [论坛](/community/support.html#popular-discussion-forums)
 
 你如果需要有关 React 的帮助，还可以前往 Discord 聊天平台，这里建有 React 用户们的[活跃社区](https://www.reactiflux.com/)。
 
@@ -130,18 +130,26 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 
 想测试你做出的更改的话，最简单的方法就是运行 `yarn build react/index,react-dom/index --type=UMD`，之后再打开 `fixtures/packaging/babel-standalone/dev.html`，该文件已使用 `build` 文件夹内的 `react.development.js` 来搞定你的更改。
 
-如果你想测试你对已有 React 项目做出的更改，你可以复制 `build/dist/react.development.js` 和 `build/dist/react-dom.development.js` 或其它构建版本，放入你的应用中并使用这些构建版本而非稳定版。如果你的项目用 npm，你可以从依赖中删去 `react` 和 `react-dom`，使用 `yarn link` 将其指向本地文件夹 `build`：
+如果你想测试你对已有 React 项目做出的更改，你可以复制 `build/dist/react.development.js` 和 `build/dist/react-dom.development.js` 或其它构建版本，放入你的应用中并使用这些构建版本而非稳定版。
 
-```sh
-cd ~/path_to_your_react_clone/build/node_modules/react
+如果你的项目用 npm，你可以从依赖中删去 `react` 和 `react-dom`，使用 `yarn link` 将其指向本地文件夹的 `build` 目录。请注意，**当请在构建时，传递 `--type=NODE`，而不是 `--type=UMD`。同时，你还需要构建 `scheduler` 的 package：
+
+```bash
+cd ~/path_to_your_react_clone/
+yarn build react/index,react-dom/index,scheduler --type=NODE
+
+cd build/node_modules/react
 yarn link
-cd ~/path_to_your_react_clone/build/node_modules/react-dom
+cd build/node_modules/react-dom
 yarn link
-cd /path/to/your/project
+
+cd ~/path/to/your/project
 yarn link react react-dom
 ```
 
 每当你在项目文件夹下运行 `yarn build`，更新版本会出现在 `node_modules` 文件夹，之后可以重新构建项目来测试更改。
+
+如果依然缺少某些 package（例如，可能在项目中使用到 `react-dom/server`），则应始终执行 `yarn build` 进行完整构建。请注意，不带选项运行 `yarn build` 会耗费很长时间。
 
 我们仍要求：`pull request` 得包括新功能对应的单元测试。这样，我们能确保以后你的代码不出问题。
 

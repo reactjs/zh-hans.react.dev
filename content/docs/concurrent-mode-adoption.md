@@ -54,7 +54,7 @@ npm install react@experimental react-dom@experimental
 
 ### 开启 concurrent 模式 {#enabling-concurrent-mode}
 
-通常，当我们给 React 添加功能的时候，你可以立即使用。比如 Fragments，Context，甚至 Hooks。你可以直接在代码里使用，而不用修改之前的代码。
+通常，当我们给 React 添加功能的时候，你可以立即使用。比如 Fragments，Context，甚至 Hook。你都可以直接在代码里使用他们，而不用修改之前的代码。
 
 concurrent 模式并不是这样。它给引入了新的语义，改变了 React 的工作方式。否则*不能启用*[这些新功能](/docs/concurrent-mode-patterns.html)。这就是它被分组到了新的模式，而不是相继的发布出来。
 
@@ -80,7 +80,7 @@ ReactDOM.createRoot(
 >
 > concurrent 模式 API 如 `createRoot` 只存在于 React 实验版本。
 
-在 concurrent 模式下，生命周期[之前被标记过](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html)为“不安全”是真的不安全，会比现在的 React 出现更多的 bug。在你的 app 完全兼容[严格模式](https://reactjs.org/docs/strict-mode.html)之前，我们不建议使用 concurrent 模式。
+在 concurrent 模式下，生命周期[之前被标记过](/blog/2018/03/27/update-on-async-rendering.html)为“不安全”是真的不安全，会比现在的 React 出现更多的 bug。在你的 app 完全兼容[严格模式](https://reactjs.org/docs/strict-mode.html)之前，我们不建议使用 concurrent 模式。
 
 ## 有何期望 {#what-to-expect}
 

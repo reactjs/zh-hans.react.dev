@@ -41,6 +41,7 @@ React 16.4 版本修复了一个 [getDerivedStateFromProps 的 bug](/blog/2018/0
 最常见的误解就是 `getDerivedStateFromProps` 和 `componentWillReceiveProps` 只会在 props “改变”时才会调用。实际上只要父级重新渲染时，这两个生命周期函数就会重新调用，不管 props 有没有“变化”。所以，在这两个方法内直接复制（_unconditionally_）props 到 state 是不安全的。**这样做会导致 state 后没有正确渲染**。
 
 重现一下这个问题。这个 `EmailInput` 组件复制 props 到 state：
+
 ```js
 class EmailInput extends Component {
   state = { email: this.props.email };
@@ -184,7 +185,7 @@ class EmailInput extends Component {
 
 #### 选项二：使用实例方法重置非受控组件 {#alternative-2-reset-uncontrolled-component-with-an-instance-method}
 
-更少见的情况是，即使没有合适的 `key`，我们也想重新创建组件。一种解决方案是给一个随机值或者递增的值当作 `key`，另外一种是用示例方法强制重置内部状态：
+更少见的情况是，即使没有合适的 `key`，我们也想重新创建组件。一种解决方案是给一个随机值或者递增的值当作 `key`，另外一种是用实例方法强制重置内部状态：
 
 ```js
 class EmailInput extends Component {

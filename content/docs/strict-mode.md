@@ -32,7 +32,7 @@ permalink: docs/strict-mode.html
 
 ![](../images/blog/strict-mode-unsafe-lifecycles-warning.png)
 
-*此时*解决项目中严格模式所识别出来的问题，会使得在未来的 React 版本中使用异步渲染变得更容易。
+*此时*解决项目中严格模式所识别出来的问题，会使得在未来的 React 版本中使用 concurrent 渲染变得更容易。
 
 ### 关于使用过时字符串 ref API 的警告 {#warning-about-legacy-string-ref-api-usage}
 
@@ -83,7 +83,7 @@ class MyComponent extends React.Component {
 * **渲染** 阶段会确定需要进行哪些更改，比如 DOM。在此阶段，React 调用 `render`，然后将结果与上次渲染的结果进行比较。
 * **提交** 阶段发生在当 React 应用变化时。（对于 React DOM 来说，会发生在 React 插入，更新及删除 DOM 节点的时候。）在此阶段，React 还会调用 `componentDidMount` 和 `componentDidUpdate` 之类的生命周期方法。
 
-提交阶段通常会很快，但渲染过程可能很慢。因此，即将推出的异步模式 (默认情况下未启用) 将渲染工作分解为多个部分，对任务进行暂停和恢复操作以避免阻塞浏览器。这意味着 React 可以在提交之前多次调用渲染阶段生命周期的方法，或者在不提交的情况下调用它们（由于出现错误或更高优先级的任务使其中断）。
+提交阶段通常会很快，但渲染过程可能很慢。因此，即将推出的 concurrent 模式 (默认情况下未启用) 将渲染工作分解为多个部分，对任务进行暂停和恢复操作以避免阻塞浏览器。这意味着 React 可以在提交之前多次调用渲染阶段生命周期的方法，或者在不提交的情况下调用它们（由于出现错误或更高优先级的任务使其中断）。
 
 渲染阶段的生命周期包括以下 class 组件方法：
 * `constructor`
@@ -97,12 +97,13 @@ class MyComponent extends React.Component {
 
 因为上述方法可能会被多次调用，所以不要在它们内部编写副作用相关的代码，这点非常重要。忽略此规则可能会导致各种问题的产生，包括内存泄漏和或出现无效的应用程序状态。不幸的是，这些问题很难被发现，因为它们通常具有[非确定性](https://en.wikipedia.org/wiki/Deterministic_algorithm)。
 
-严格模式不能自动检测到你的副作用，但它可以帮助你发现它们，使它们更具确定性。通过故意重复调用以下方法来实现的该操作：
+严格模式不能自动检测到你的副作用，但它可以帮助你发现它们，使它们更具确定性。通过故意重复调用以下函数来实现的该操作：
 
-* class 组件的 `constructor` 方法
-* `render` 方法
-* `setState` 更新函数 (第一个参数）
-* 静态的 `getDerivedStateFromProps` 生命周期方法
+* class 组件的 `constructor`，`render` 以及 `shouldComponentUpdate` 方法
+* class 组件的生命周期方法 `getDerivedStateFromProps`
+* 函数组件体
+* 状态更新函数 (即 `setState` 的第一个参数）
+* 函数组件通过使用 `useState`，`useMemo` 或者 `useReducer`
 
 > 注意：
 >

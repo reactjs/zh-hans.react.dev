@@ -218,7 +218,7 @@ function App() {
 
 ### 很多场景可以使用 transition {#transitions-are-everywhere}
 
-正如我们从 [Suspense 走读](/docs/concurrent-mode-suspense.html) 所学，所有所需数据没有准备好的组件都可以“suspend”一段时间。我们可以从策略上用 `<Suspense>` 把树的不同部分圈起来处理，但这并不总是足够的。
+正如我们从 [Suspense 简介](/docs/concurrent-mode-suspense.html) 中所了解，所有所需数据没有准备好的组件都可以 “suspend” 一段时间。我们可以从策略上用 `<Suspense>` 把树的不同部分圈起来处理，但这并不总是足够的。
 
 我们回到 [第一个 Suspense 示例](https://codesandbox.io/s/frosty-hermann-bztrp) 那时还是只有一个界面的。现在我们增加一个“Refresh”按钮，用来检查服务端的数据更新。
 
@@ -293,7 +293,7 @@ function ProfilePage() {
 
 ### 把 Transition 融合到你应用的设计系统 {#baking-transitions-into-the-design-system}
 
-`useTransition` 是*非常*常见的需求。几乎所有可能导致组件挂机按钮点击或交互的操作都需要使用 `useTransition`，以避免意外隐藏用户正在交互的内容。
+`useTransition` 是*非常*常见的需求。几乎所有可能导致组件挂起的点击或交互操作都需要使用 `useTransition`，以避免意外隐藏用户正在交互的内容。
 
 这可能会导致组件存在大量重复代码。这正是**我们通常建议把 `useTransition` 融合到你应用的*设计系统*组件中**的原因。例如，我们可以把 transition 逻辑抽取到我们自己的 `<Button>` 组件中：
 
@@ -507,7 +507,7 @@ function ProfileTrivia({ resource }) {
 
 **[在 CodeSandbox 中尝试](https://codesandbox.io/s/focused-mountain-uhkzg)**
 
-如果你现在点击“Open Profile”按钮，你会发现哪里不对劲。它现在要等待整整7秒钟才能完成这个 transition！这是因为我们琐碎的 API 接口响应太慢。假设我们没有办法让这个接口变快。在这个约束条件下我们该如何提升用户体验呢？
+如果你现在点击 “Open Profile” 按钮，你会发现哪里不对劲。它现在要等待整整 7 秒钟才能完成这个 transition！这是因为我们琐碎的 API 接口响应太慢。假设我们没有办法让这个接口变快。在这个约束条件下我们该如何提升用户体验呢？
 
 如果我们不想在 Pending 状态等待太久，我们第一直觉应该是调整 `useTransition` 中 `timeoutMs` 参数到一个更小的值，比如 `3000`。你可以体验一下 [这个](https://codesandbox.io/s/practical-kowalevski-kpjg4)。这样我们就不用在 Pending 状态长时间等待了，但是这个时候我们还没有有用的内容给用户展示！
 
