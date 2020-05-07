@@ -137,8 +137,8 @@ class Parent extends React.Component {
 }
 
 function Child() {
-  // 这个按钮的点击事件会冒泡到父元素
-  // 因为这里没有定义 'onClick' 属性
+  // 这个按钮的点击事件会冒泡到 <Parent/> 组件返回的 DOM 层级中的父元素
+  // 除非在这里定义 'onClick' 属性并阻止事件冒泡
   return (
     <div className="modal">
       <button>Click</button>
