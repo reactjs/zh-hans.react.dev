@@ -185,8 +185,10 @@ function NumberList(props) {
   const numbers = props.numbers;
   const listItems = numbers.map((number) =>
     // 正确！key 应该在数组的上下文中被指定
-    <ListItem key={number.toString()}
-              value={number} />
+    <ListItem
+      key={number.toString()}
+      value={number}
+    />
   );
   return (
     <ul>
@@ -255,7 +257,8 @@ const content = posts.map((post) =>
   <Post
     key={post.id}
     id={post.id}
-    title={post.title} />
+    title={post.title}
+  />
 );
 ```
 
@@ -269,8 +272,10 @@ const content = posts.map((post) =>
 function NumberList(props) {
   const numbers = props.numbers;
   const listItems = numbers.map((number) =>
-    <ListItem key={number.toString()}
-              value={number} />
+    <ListItem
+      key={number.toString()}
+      value={number}
+    />
   );
   return (
     <ul>
@@ -288,8 +293,10 @@ function NumberList(props) {
   return (
     <ul>
       {numbers.map((number) =>
-        <ListItem key={number.toString()}
-                  value={number} />
+        <ListItem
+          key={number.toString()}
+          value={number}
+        />
       )}
     </ul>
   );
