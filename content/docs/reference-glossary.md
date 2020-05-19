@@ -35,7 +35,7 @@ CDN 代表内容分发网络（Content Delivery Network）。CDN 会通过一个
 
 ## JSX {#jsx}
 
-JSX 是一个 JavaScript 语法扩展。它类似于模板语言，但它具有 JavaScript 的全部能力。JSX 最终会被编译为 `React.createElement()` 函数调用，返回称为 “React 元素” 的普通 JavaScript 对象。通过[查看这篇文档](/docs/introducing-jsx.html)获取 JSX 语法的基本介绍，在[这篇文档]中可以找到 JSX 语法的更多深入教程。
+JSX 是一个 JavaScript 语法扩展。它类似于模板语言，但它具有 JavaScript 的全部能力。JSX 最终会被编译为 `React.createElement()` 函数调用，返回称为 “React 元素” 的普通 JavaScript 对象。通过[查看这篇文档](/docs/introducing-jsx.html)获取 JSX 语法的基本介绍，在[这篇文档](/docs/jsx-in-depth.html)中可以找到 JSX 语法的更多深入教程。
 
 React DOM 使用 camelCase（驼峰式命名）来定义属性的名称，而不使用 HTML 属性名称的命名约定。例如，HTML 的 `tabindex` 属性变成了 JSX 的 `tabIndex`。而 `class` 属性则变为 `className`，这是因为 `class` 是 JavaScript 中的保留字：
 
