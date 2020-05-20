@@ -20,7 +20,7 @@ permalink: docs/render-props.html
 
 ## 使用 Render Props 来解决横切关注点（Cross-Cutting Concerns） {#use-render-props-for-cross-cutting-concerns}
 
-组件是 React 代码复用的主要单元，但如何分享一个组件封装到其他需要相同 state 组件的状态或行为并不总是很容易。
+组件是 React 代码复用的主要单元，但如何将一个组件封装的状态或行为共享给其他需要相同状态的组件并不总是显而易见。
 
 例如，以下组件跟踪 Web 应用程序中的鼠标位置：
 
