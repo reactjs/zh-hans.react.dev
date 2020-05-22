@@ -15,7 +15,7 @@ redirect_from:
 
 在这篇文章中，我想总结我过去几个月来对 React Hooks 使用，分享我对它的看法以及我认为的最佳实践，供大家参考。
 
-本文假定读者已经对 React-Hooks 及其使用方式有了初步的了解。您可以通过 [官方文档](https://zhreactjs.org/docs/hooks-intro.html) 进行学习。
+本文假定读者已经对 React-Hooks 及其使用方式有了初步的了解。您可以通过 [官方文档](/docs/hooks-intro.html) 进行学习。
 
 ## 函数式组件
 
