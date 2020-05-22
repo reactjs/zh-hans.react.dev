@@ -7,6 +7,8 @@ redirect_from:
 
 ![](https://p1.music.126.net/ONBvYa_yYg6QWEEn9KmWoQ==/109951164867829503.jpg)
 
+> 本文发布自 [网易云音乐前端团队](https://github.com/x-orpheus)，文章未经授权禁止任何形式的转载。团队持续招人中，如果你恰好准备换工作，又恰好喜欢云音乐，那就 [加入我们](mailto:grp.music-fe@corp.netease.com)！
+
 ## 写在前面
 
 在过去的几个月里，React Hooks 在我们的项目中得到了充分利用。在实际使用过程中，我发现 React Hooks 除了带来简洁的代码外，也存在对其使用不当的情况。
@@ -849,5 +851,3 @@ const setRatio = useCallback(
 ## 相关资料
 
 [A Complete Guide to useEffect](https://overreacted.io/a-complete-guide-to-useeffect/)
-
-> 本文发布自 [网易云音乐前端团队](https://github.com/x-orpheus)，文章未经授权禁止任何形式的转载。我们一直在招人，如果你恰好准备换工作，又恰好喜欢云音乐，那就 [加入我们](mailto:grp.music-fe@corp.netease.com)！
