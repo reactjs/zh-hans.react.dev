@@ -154,7 +154,7 @@ class MouseTracker extends React.Component {
 
 这种方法适用于我们的特定用例，但我们还没有达到以可复用的方式真正封装行为的目标。现在，每当我们想要鼠标位置用于不同的用例时，我们必须创建一个新的组件（本质上是另一个 `<MouseWithCat>` ），它专门为该用例呈现一些东西.
 
-这也是 render prop 的来历：我们可以提供一个带有函数 prop 的 `<Mouse>` 组件，它能够动态决定什么需要渲染的，而不是将 `<Cat>` 硬编码到 `<Mouse>` 组件里，并有效地改变它的渲染结果。
+这也是 render prop 的来历：相比于直接将 `<Cat>` 写死在 `<Mouse>` 组件中，并且有效地更改渲染的结果，我们可以为 `<Mouse>` 提供一个函数 prop 来动态的确定要渲染什么 —— 一个 render prop。
 
 ```js
 class Cat extends React.Component {
@@ -185,8 +185,8 @@ class Mouse extends React.Component {
       <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
 
         {/*
-          Instead of providing a static representation of what <Mouse> renders,
-          use the `render` prop to dynamically determine what to render.
+          使用 `render`prop 动态决定要渲染的内容，
+          而不是给出一个 <Mouse> 渲染结果的静态表示
         */}
         {this.props.render(this.state)}
       </div>
