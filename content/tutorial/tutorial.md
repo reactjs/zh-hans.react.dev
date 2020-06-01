@@ -1195,7 +1195,11 @@ class Game extends React.Component {
 * 能够记录游戏进程
 * 允许玩家查看游戏的历史记录，也可以查看任意一个历史版本的游戏棋盘状态
 
+<<<<<<< HEAD
 干的不错！我们希望你至此已经基本掌握了 React 的使用。
+=======
+Nice work! We hope you now feel like you have a decent grasp of how React works.
+>>>>>>> b4b59062e59d56da37274c6de1fa4a134d2d8f49
 
 在这里可以查看最终的游戏代码:**[最终成果](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**.
 
