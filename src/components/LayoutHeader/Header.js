@@ -47,7 +47,7 @@ const Header = ({location}: {location: Location}) => (
             height: 80,
           },
         }}>
-        黑人的命也是命。{' '}
+        黑人的生命同样珍贵。{' '}
         <a
           style={{color: colors.brand}}
           target="_blank"
