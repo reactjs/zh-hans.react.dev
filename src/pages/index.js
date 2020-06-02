@@ -53,7 +53,12 @@ class Home extends Component {
           title="React &ndash; 用于构建用户界面的 JavaScript 库"
           canonicalUrl={createCanonicalUrl('/')}
         />
-        <div css={{width: '100%'}}>
+        <div
+          css={{
+            width: '100%',
+            marginTop: 60, // BLM
+            filter: 'grayscale(100%)', // BLM
+          }}>
           <header
             css={{
               backgroundColor: colors.dark,
