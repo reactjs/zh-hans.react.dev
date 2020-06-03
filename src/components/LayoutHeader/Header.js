@@ -47,14 +47,14 @@ const Header = ({location}: {location: Location}) => (
             height: 80,
           },
         }}>
-        黑人的命也是命。{' '}
+        关注黑人生命。{' '}
         <a
           style={{color: colors.brand}}
           target="_blank"
           rel="noopener"
           rel="noreferrer"
           href="https://support.eji.org/give/153413/#!/donation/checkout">
-          支持公正司法倡议。
+          支持司法公正。
         </a>
       </div>
     </Container>
