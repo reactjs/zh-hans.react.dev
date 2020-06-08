@@ -41,10 +41,14 @@ const Header = ({location}: {location: Location}) => (
           padding: 20,
           textAlign: 'center',
           [media.between('small', 'large')]: {
+            fontSize: 22,
             height: 60,
           },
           [media.lessThan('small')]: {
             height: 80,
+          },
+          [media.greaterThan('medium')]: {
+            fontSize: 25,
           },
         }}>
         关注黑人生命。{' '}
@@ -52,13 +56,12 @@ const Header = ({location}: {location: Location}) => (
           style={{color: colors.brand}}
           target="_blank"
           rel="noopener"
-          rel="noreferrer"
           href="https://support.eji.org/give/153413/#!/donation/checkout">
           支持司法公正。
         </a>
       </div>
     </Container>
-    <Container grayscale={true}>
+    <Container>
       <div
         css={{
           display: 'flex',
