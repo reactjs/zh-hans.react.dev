@@ -12,7 +12,11 @@ React 对如何将文件放入文件夹中没有意见。也就是说，你可�
 
 #### 按功能或路由组织 {#grouping-by-features-or-routes}
 
+<<<<<<< HEAD
 组织项目文件结构的一种常见方法是将 CSS、JS 和测试文件一起按照功能或路由进行组织。
+=======
+One common way to structure projects is to locate CSS, JS, and tests together inside folders grouped by feature or route.
+>>>>>>> e548bd7e65086a8206fee46bd9e24b18b68bf045
 
 ```
 common/
