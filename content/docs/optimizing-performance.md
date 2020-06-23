@@ -371,13 +371,15 @@ function updateColorMap(colormap) {
 
 现在 `updateColorMap` 返回了一个新的对象，而不是修改老对象。`Object.assign` 是 ES6 的方法，需要 polyfill。
 
-这里有一个 JavaScript 的提案，旨在添加[对象扩展属性](https://github.com/sebmarkbage/ecmascript-rest-spread)以使得更新不可变对象变得更方便：
+这里有一个 JavaScript 的提案，旨在添加[对象扩展属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)以使得更新不可变对象变得更方便：
 
 ```js
 function updateColorMap(colormap) {
   return {...colormap, right: 'blue'};
 }
 ```
+
+此特性已被收录在 JavaScript 的 ES2018 中。
 
 如果你在使用 Create React App，`Object.assign` 以及对象扩展运算符已经默认支持了。
 
