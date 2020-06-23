@@ -371,11 +371,7 @@ function updateColorMap(colormap) {
 
 现在 `updateColorMap` 返回了一个新的对象，而不是修改老对象。`Object.assign` 是 ES6 的方法，需要 polyfill。
 
-<<<<<<< HEAD
-这里有一个 JavaScript 的提案，旨在添加[对象扩展属性](https://github.com/sebmarkbage/ecmascript-rest-spread)以使得更新不可变对象变得更方便：
-=======
-[Object spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) makes it easier to update objects without mutation as well:
->>>>>>> e548bd7e65086a8206fee46bd9e24b18b68bf045
+这里有一个 JavaScript 的提案，旨在添加[对象扩展属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)以使得更新不可变对象变得更方便：
 
 ```js
 function updateColorMap(colormap) {
@@ -383,12 +379,8 @@ function updateColorMap(colormap) {
 }
 ```
 
-<<<<<<< HEAD
-如果你在使用 Create React App，`Object.assign` 以及对象扩展运算符已经默认支持了。
-=======
-This feature was added to JavaScript in ES2018. 
+此特性已被收录在 JavaScript 的 ES2018 中。
 
-If you're using Create React App, both `Object.assign` and the object spread syntax are available by default.
->>>>>>> e548bd7e65086a8206fee46bd9e24b18b68bf045
+如果你在使用 Create React App，`Object.assign` 以及对象扩展运算符已经默认支持了。
 
 当处理深层嵌套对象时，以 immutable （不可变）的方式更新它们令人费解。如遇到此类问题，请参阅 [Immer](https://github.com/mweststrate/immer) 或 [immutability-helper](https://github.com/kolodny/immutability-helper)。这些库会帮助你编写高可读性的代码，且不会失去 immutability （不可变性）带来的好处。
