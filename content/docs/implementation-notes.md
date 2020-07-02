@@ -402,7 +402,6 @@ class DOMComponent {
 * 公共实例，如果元素的类型是类
 * 单一渲染后的内部实例。它可以是 `DOMComponent` 或 `CompositeComponent`。
 
-
 宿主内部实例需要存储：
 
 * 当前元素。
@@ -598,6 +597,7 @@ class CompositeComponent {
 接下来，我们可以看一下渲染元素的 `type`。如果 `type` 自上次渲染后没有改变，之后的组件也可以就地更新。
 
 例如，如果第一次返回 `<Button color="red" />`，第二次返回 `<Button color="blue" />`，我们可以只告诉相应的内部实例 `receive()` 下一个元素：
+
 ```js
     // ...
 
@@ -849,6 +849,7 @@ mountTree(<App />, rootEl);
 ```
 
 这些是 React 内部工作原理的基础知识。
+
 ### 我们遗漏了什么 {#what-we-left-out}
 
 与真实代码库相比，本文档得到了简化。我们没有解决几个重要方面：
@@ -879,7 +880,6 @@ mountTree(<App />, rootEl);
 * [`instantiateReactComponent`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/instantiateReactComponent.js) 包含选择要为元素构造的正确内部实例类的开关。它相当于本教程中的 `instantiateComponent()`.
 
 * [`ReactReconciler`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/Reactreconciler.js) 是一个包含 `mountComponent()`、`receiveComponent()` 和 `unmountComponent()` 方法的包装器。它调用内部实例上的底层实现，但也包括一些由所有内部实例实现共享的代码。
-
 
 * [`ReactChildReconciler`](https://github.com/facebook/react/blob/83381c1673d14cd16cf747e34c945291e5518a86/src/renderers/shared/stack/reconciler/ReactChildreconciler.js) 实现根据子元素的 `key` 挂载、更新和卸载子级的逻辑。
 
