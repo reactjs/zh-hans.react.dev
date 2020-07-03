@@ -83,7 +83,7 @@ class MyComponent extends React.Component {
 }
 ```
 
-Here is the equivalent with [Hooks](https://reactjs.org/docs/hooks-intro.html): 
+这是用了 [Hooks](/docs/hooks-intro.html) 的等效实现:
 
 ```js
 function MyComponent() {
@@ -91,9 +91,7 @@ function MyComponent() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
-  // Note: the empty deps array [] means
-  // this useEffect will run once
-  // similar to componentDidMount()
+  // 注意：空的依赖数组 [] 表示这个 useEffect 会类似于 componentDidMount() 只运行一次
   useEffect(() => {
     fetch("https://api.example.com/items")
       .then(res => res.json())
@@ -102,9 +100,8 @@ function MyComponent() {
           setIsLoaded(true);
           setItems(result.items);
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+        // 注意：在这里不用 catch() 块处理错误很重要，
+        // 这样我们就不会吞掉组件中实际 bug 产生的异常。
         (error) => {
           setIsLoaded(true);
           setError(error);
