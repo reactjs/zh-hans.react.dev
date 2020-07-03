@@ -100,8 +100,9 @@ function MyComponent() {
           setIsLoaded(true);
           setItems(result.items);
         },
-        // 注意：在这里不用 catch() 块处理错误很重要，
-        // 这样我们就不会吞掉组件中实际 bug 产生的异常。
+        // 注意：需要在此处处理错误
+        // 而不是使用 catch() 去捕获错误
+        // 因为使用 catch 去捕获异常会掩盖掉组件本身可能产生的 bug
         (error) => {
           setIsLoaded(true);
           setError(error);
