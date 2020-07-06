@@ -19,7 +19,7 @@ stack reconciler 是在 React 15 以及更早的版本中被采用。它的源�
 
 ### 视频：从零开始构建 React {#video-building-react-from-scratch}
 
-[Paul O'Shannessy](https://twitter.com/zpao) 讲解的[从零开始构建 React](https://www.youtube.com/watch?v=_MAD4Oly9yg)对本文档有较大的启发。
+[Paul O'Shannessy](https://twitter.com/zpao) 讲解的[从零开始构建 React](https://www.youtube.com/watch?v=_MAD4Oly9yg) 对本文档有较大的启发。
 
 本文档和他的讲解都是对实际代码库的简化，所以你能通过熟悉它们来获得更好的理解。
 
