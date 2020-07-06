@@ -83,7 +83,7 @@ class MyComponent extends React.Component {
 }
 ```
 
-这是用了 [Hooks](/docs/hooks-intro.html) 的等效实现:
+这里与 [Hook](/docs/hooks-intro.html) 的实现相同：
 
 ```js
 function MyComponent() {
