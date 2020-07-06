@@ -4,6 +4,8 @@ title: 发布渠道
 permalink: docs/release-channels.html
 layout: docs
 category: installation
+prev: cdn-links.html
+next: hello-world.html
 ---
 
 React 依靠强大的开源社区收集 bug 报告，发起 pull request 和 [提交 RFC](https://github.com/reactjs/rfcs)。为了鼓励大家反馈，我们打算共享一些特殊的 React 版本，其中包括未发布的功能。
