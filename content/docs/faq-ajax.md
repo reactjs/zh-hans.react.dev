@@ -91,7 +91,9 @@ function MyComponent() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
-  // 注意：空的依赖数组 [] 表示这个 useEffect 会类似于 componentDidMount() 只运行一次
+  // 注意：空的依赖数组 []
+  // 表示这个 useEffect
+  // 与 componentDidMount() 类似，只运行一次
   useEffect(() => {
     fetch("https://api.example.com/items")
       .then(res => res.json())
