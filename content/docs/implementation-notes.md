@@ -13,7 +13,7 @@ redirect_from:
 
 这部分比较具有技术性，需要对 React 公共 API，以及 React 是如何将其分为 core、renderer 和 reconciler 的具有较好的理解。如果你对源码库还不是很熟悉，请先阅读[源码总览](/docs/codebase-overview.html)。
 
-这部分还要求了解[React 组件及其实例和元素之间的不同](/blog/2015/12/18/react-components-elements-and-instances.html)。
+这部分还要求了解 [React 组件及其实例和元素之间的不同](/blog/2015/12/18/react-components-elements-and-instances.html)。
 
 stack reconciler 是在 React 15 以及更早的版本中被采用。它的源码位于 [src/renderers/shared/stack/reconciler](https://github.com/facebook/react/tree/15-stable/src/renderers/shared/stack/reconciler)。
 
