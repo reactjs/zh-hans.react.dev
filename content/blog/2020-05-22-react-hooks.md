@@ -570,7 +570,7 @@ function Example(props) {
 }
 ```
 
-假设 `<Item>` 组件，其自身的 render 消耗较多的时间。默认情况下，每次 setCount 改变 count 的值，便会重新对 `<Example>` 进行 render，其返回的 React Elements 中3个 `<Item>` 也重新 render，其耗时的操作阻塞了 UI 的渲染。导致按下 "setCount" 按钮后出现了明显的卡顿。
+假设 `<Item>` 组件，其自身的 render 消耗较多的时间。默认情况下，每次 setCount 改变 count 的值，便会重新对 `<Example>` 进行 render，其返回的 React Elements 中5个 `<Item>` 也重新 render，其耗时的操作阻塞了 UI 的渲染。导致按下 "setCount" 按钮后出现了明显的卡顿。
 
 为了优化性能，我们可以将 `main` 变量这一部分单独作为一个组件 `<Main>`，拆分出去，并对  `<Main>` 使用诸如 `React.memo` , `shouldComponentUpdate` 的方式，使 `count` 属性变化时，`<Main>` 不重复 render。
 
@@ -580,10 +580,10 @@ const Main = React.memo((props) => {
     return (
         <div>
             <Item key={1} x={1} foo={foo} />
-                <Item key={2} x={2} foo={foo} />
-                <Item key={3} x={3} foo={foo} />
-                <Item key={4} x={4} foo={foo} />
-                <Item key={5} x={5} foo={foo} />
+            <Item key={2} x={2} foo={foo} />
+            <Item key={3} x={3} foo={foo} />
+            <Item key={4} x={4} foo={foo} />
+            <Item key={5} x={5} foo={foo} />
         </div>
     );
 });
