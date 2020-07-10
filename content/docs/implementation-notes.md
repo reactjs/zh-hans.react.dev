@@ -25,7 +25,7 @@ stack reconciler 是在 React 15 以及更早的版本中被采用。它的源�
 
 ### 概览 {#overview}
 
-reconciler 本身没有公共的 API。像 React DOM 和 React Native 这样的 [renderer](/docs/codebase-overview.html#stack-renderers) 使用它来根据用户写的 React 组件来高效地更新用户界面。
+reconciler 本身没有公共的 API。像 React DOM 和 React Native 这样的 [renderer](/docs/codebase-overview.html#renderers) 使用它来根据用户写的 React 组件来高效地更新用户界面。
 
 ### 挂载是递归过程 {#mounting-as-a-recursive-process}
 

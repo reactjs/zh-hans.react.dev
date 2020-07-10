@@ -15,7 +15,7 @@ import TitleAndMetaTags from 'components/TitleAndMetaTags';
 import Layout from 'components/Layout';
 import {colors, media, sharedStyles} from 'theme';
 import loadScript from 'utils/loadScript';
-import createOgUrl from 'utils/createOgUrl';
+import createCanonicalUrl from 'utils/createCanonicalUrl';
 import {babelURL} from 'site-constants';
 import logoWhiteSvg from 'icons/logo-white.svg';
 
@@ -51,9 +51,13 @@ class Home extends Component {
       <Layout location={location}>
         <TitleAndMetaTags
           title="React &ndash; 用于构建用户界面的 JavaScript 库"
-          ogUrl={createOgUrl('index.html')}
+          canonicalUrl={createCanonicalUrl('/')}
         />
-        <div css={{width: '100%'}}>
+        <div
+          css={{
+            width: '100%',
+            marginTop: 60, // BLM
+          }}>
           <header
             css={{
               backgroundColor: colors.dark,
@@ -62,7 +66,7 @@ class Home extends Component {
             <div
               css={{
                 paddingTop: 45,
-                paddingBottom: 20,
+                paddingBottom: 10,
 
                 [media.greaterThan('small')]: {
                   paddingTop: 60,
@@ -137,8 +141,11 @@ class Home extends Component {
                   </p>
                   <Flex
                     valign="center"
+                    halign="center"
                     css={{
                       paddingTop: 40,
+                      flexWrap: 'wrap',
+                      justifyContent: 'center',
 
                       [media.greaterThan('xlarge')]: {
                         paddingTop: 65,
@@ -279,10 +286,16 @@ class Home extends Component {
               background: colors.dark,
               color: colors.white,
               paddingTop: 45,
-              paddingBottom: 45,
+              paddingBottom: 25,
             }}>
             <Container>
-              <Flex valign="center">
+              <Flex
+                valign="center"
+                halign="center"
+                css={{
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
+                }}>
                 <CtaItem>
                   <ButtonLink to="/docs/getting-started.html" type="primary">
                     快速开始
@@ -312,8 +325,6 @@ Home.propTypes = {
 const CtaItem = ({children, primary = false}) => (
   <div
     css={{
-      width: '50%',
-
       [media.between('small', 'large')]: {
         paddingLeft: 20,
       },
@@ -324,12 +335,21 @@ const CtaItem = ({children, primary = false}) => (
 
       '&:first-child': {
         textAlign: 'right',
-        paddingRight: 15,
+        paddingRight: 7,
+        paddingLeft: 7,
+        [media.lessThan('small')]: {
+          marginBottom: 10,
+        },
       },
 
       '&:nth-child(2)': {
+        paddingRight: 7,
+        paddingLeft: 7,
         [media.greaterThan('small')]: {
           paddingLeft: 15,
+        },
+        [media.lessThan('small')]: {
+          marginBottom: 10,
         },
       },
     }}>

@@ -14,6 +14,9 @@ import {version} from 'site-constants';
 import ExternalLinkSvg from 'templates/components/ExternalLinkSvg';
 import DocSearch from './DocSearch';
 
+// $FlowFixMe
+import navHeader from '../../../content/headerNav.yml';
+
 import logoSvg from 'icons/logo.svg';
 
 const Header = ({location}: {location: Location}) => (
@@ -26,7 +29,38 @@ const Header = ({location}: {location: Location}) => (
       width: '100%',
       top: 0,
       left: 0,
+      '@media print': {
+        display: 'none',
+      },
     }}>
+    <Container>
+      <div
+        css={{
+          height: 60,
+          fontSize: 20,
+          padding: 20,
+          textAlign: 'center',
+          [media.between('small', 'large')]: {
+            fontSize: 22,
+            height: 60,
+          },
+          [media.lessThan('small')]: {
+            height: 80,
+          },
+          [media.greaterThan('medium')]: {
+            fontSize: 25,
+          },
+        }}>
+        关注黑人生命。{' '}
+        <a
+          style={{color: colors.brand}}
+          target="_blank"
+          rel="noopener"
+          href="https://support.eji.org/give/153413/#!/donation/checkout">
+          支持司法公正。
+        </a>
+      </div>
+    </Container>
     <Container>
       <div
         css={{
@@ -120,26 +154,14 @@ const Header = ({location}: {location: Location}) => (
                 'linear-gradient(to right, transparent, black 20px, black 90%, transparent)',
             },
           }}>
-          <HeaderLink
-            isActive={location.pathname.includes('/docs/')}
-            title="文档"
-            to="/docs/getting-started.html"
-          />
-          <HeaderLink
-            isActive={location.pathname.includes('/tutorial/')}
-            title="教程"
-            to="/tutorial/tutorial.html"
-          />
-          <HeaderLink
-            isActive={location.pathname.includes('/blog')}
-            title="博客"
-            to="/blog/"
-          />
-          <HeaderLink
-            isActive={location.pathname.includes('/community/')}
-            title="社区"
-            to="/community/support.html"
-          />
+          {navHeader.items.map(link => (
+            <HeaderLink
+              key={link.title}
+              isActive={location.pathname.includes(link.activeSelector)}
+              title={link.title}
+              to={link.to}
+            />
+          ))}
         </nav>
 
         <DocSearch />

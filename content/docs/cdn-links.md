@@ -1,9 +1,9 @@
 ---
 id: cdn-links
-title: CDN Links
+title: CDN 链接
 permalink: docs/cdn-links.html
 prev: create-a-new-react-app.html
-next: hello-world.html
+next: release-channels.html
 ---
 
 可以通过 CDN 获得 React 和 ReactDOM 的 UMD 版本。
