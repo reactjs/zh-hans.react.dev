@@ -735,7 +735,7 @@ useSomething = (inputCount) => {
 
 [![Edit useSlider 问题](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/useslider-wenti-imji7?fontsize=14&hidenavigation=1&module=%2Fsrc%2FuseSlider.js&theme=dark)
 
-当前的问题是，`useEffect` 涉及到多个 state 的获取与计算。导致鼠标按下、移动、弹起的几个操作中因为对 stata 的修改，`useEffect` 频繁刷新，且涉及到了鼠标按下、移动、弹起事件监听的取消与重新绑定，这带来了性能问题以及较难观察到的 BUG。
+当前的问题是，`useEffect` 涉及到多个 state 的获取与计算。导致鼠标按下、移动、弹起的几个操作中因为对 state 的修改，`useEffect` 频繁刷新，且涉及到了鼠标按下、移动、弹起事件监听的取消与重新绑定，这带来了性能问题以及较难观察到的 BUG。
 
 和前面的 `setInterval` 例子相似，我们不希望在状态变动时，刷新 `useEffect`。由于此处涉及到多个状态：是否滑动中、鼠标位置、上一次鼠标的问题、选择器的可滑动宽度，如果整合到一个 `state` 中，会面临代码不清晰，缺少内聚性的问题，我们尝试用 `useReducer` 做一次替换。
 
