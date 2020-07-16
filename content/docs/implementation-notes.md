@@ -48,9 +48,9 @@ reconciler 检查 `App` 是一个类还是一个函数。
 
 如果 `App` 是类，那么 reconciler 会通过 `new App(props)` 来实例化 `App`，并调用生命周期方法 `componentWillMount()`，之后调用 `render()` 方法来获取渲染的元素。
 
-无论哪种方式，reconciler 都会探悉 `App` 渲染的元素。
+无论哪种方式，reconciler 都会探悉 `App` 的内容并渲染。
 
-这个过程是递归的。`App` 可能会渲染某个 `<Greeting />`，`Greeting` 可能会渲染某个 `<Button />`，以此类推。当它探悉各个组件渲染的元素时，reconciler 会通过用户定义的组件递归地“向下钻取”。
+这个过程是递归的。`App` 可能会渲染某个 `<Greeting />`，`Greeting` 可能会渲染某个 `<Button />`，以此类推。当它探悉各个组件渲染的元素时，reconciler 会通过用户定义的组件递归地 "向下探索"。
 
 通过以下伪代码想象一下这个过程：
 
@@ -203,7 +203,7 @@ function mountHost(element) {
     // 我们还是递归挂载他们
     var childNode = mount(childElement);
 
-    // 这一行代码也是特定于 renderer。
+    // 这一行代码也是特殊的 renderer。
     // 根据 renderer 不同，方式也不同：
     node.appendChild(childNode);
   });
@@ -376,7 +376,7 @@ class DOMComponent {
 
 `mountHost()` 重构后主要的区别是我们保存了与内部 DOM 组件实例关联的 `this.node` 和 `this.renderedChildren`。在将来我们还使用他们来进行非破坏性更新。
 
-因此，每个内部实例，组合或者宿主，现在都指向了它的子内部实例。为了更可视化，如果一个函数组件 `<App>` 渲染一个类组件 `<Button>`，并且 `Button` 渲染一个 `<div>`，内部实例树将如下所示:
+因此，每个内部实例，组合或者宿主，现在都指向了它的子内部实例。为帮你更直观的了解，假设有函数组件 `<App>` 会渲染类组件 `<Button>`，并且 `Button` 渲染一个 `<div>`，其内部实例树将如下所示:
 
 ```js
 [object CompositeComponent] {
@@ -399,8 +399,8 @@ class DOMComponent {
 组合内部实例需要存储：
 
 * 当前元素。
-* 公共实例，如果元素的类型是类
-* 单一渲染后的内部实例。它可以是 `DOMComponent` 或 `CompositeComponent`。
+* 如果元素的类型是类的公共实例
+* 单次渲染后的内部实例。它可以是 `DOMComponent` 或 `CompositeComponent`。
 
 宿主内部实例需要存储：
 
@@ -408,11 +408,11 @@ class DOMComponent {
 * DOM 节点.
 * 所有子内部实例。它们中的每一个都可以是 `DOMComponent` 或` CompositeComponent`。
 
-如果您难以想象内部实例树在更复杂的应用程序中的结构, [React DevTools](https://github.com/facebook/react-devtools) 可以给你一个相似的结果，因为它突出显示了具有灰色的宿主实例,并且紫色的组合实例。
+如果你难以想象内部实例树在较为复杂的应用程序中的结构，[React DevTools](https://github.com/facebook/react-devtools) 可以给你一个相似的结果，因为它突出呈现了灰色的宿主实例，以及紫色的组合实例。
 
  <img src="../images/docs/implementation-notes-tree.png" width="500" style="max-width: 100%" alt="React DevTools tree" />
 
-为了完成重构，我们将引入一个函数，它将完整的树挂载到容器节点中，就像 `ReactDOM.render()` 一样。它返回公共实例，也像`ReactDOM.render()`:
+为了完成重构，我们将引入一个函数，它将完整的树挂载到容器节点中，就像 `ReactDOM.render()` 一样。它返回公共实例，也像 `ReactDOM.render()`：
 
 ```js
 function mountTree(element, containerNode) {
@@ -489,7 +489,7 @@ function unmountTree(containerNode) {
 }
 ```
 
-为了使其工作，我们需要从 DOM 节点读取内部根实例。我们将修改 `mountTree()` 增加 `_internalInstance` 属性来添加 DOM 根节点，我们还将教导 `mountTree()` 销毁任何现有的树, 以便它可以被多次调用:
+为了使其工作，我们需要从 DOM 节点读取内部根实例。我们将修改 `mountTree()` 为其增加 `_internalInstance` 属性来添加 DOM 根节点，我们还将在 `mountTree()` 中实现销毁任何现有的树的功能, 以便它可以被多次调用:
 
 ```js
 function mountTree(element, containerNode) {
@@ -514,11 +514,11 @@ function mountTree(element, containerNode) {
 }
 ```
 
-现在，运行 `unmountTree()` 或重复运行 `mountTree()`，删除旧树并在组件上运行 `componentWillUnmount()` 生命周期方法。
+现在，运行 `unmountTree()` 或重复运行 `mountTree()`，都会删除旧树并在组件上运行 `componentWillUnmount()` 生命周期方法。
 
 ### 更新 {#updating}
 
-在上一个章节，我们实现了卸载。但是，如果每个 prop 更改都卸载并挂载整个树，那么 react 就不会奏效了。reconciler 的目标是尽可能重用现有实例来保留 DOM 和状态：
+在上一个章节，我们实现了卸载。但是，如果每个 prop 更改都卸载整棵树，并重新挂载，那么 react 就不再高效了。reconciler 的目标是尽可能复用现有实例来保留 DOM 和状态：
 
 ```js
 var rootEl = document.getElementById('root');
@@ -550,7 +550,7 @@ class DOMComponent {
 
 它的工作是尽一切可能使组件（及其任何子组件）与 `nextElement` 提供的描述一起更新。
 
-这是通常被描述为“虚拟 DOM 差异比对”的部分，尽管真正发生的情况是，我们递归遍历内部树，让每个内部实例接收更新。
+这通常被称为 "virtual DOM diffing" 的部分，但实际发生的情况是，我们递归遍历内部树，让每个内部实例接收更新。
 
 ### 更新组合组件 {#updating-composite-components}
 
@@ -611,9 +611,9 @@ class CompositeComponent {
     // ...
 ```
 
-但是，如果下一个渲染元素的 `type` 与先前渲染的元素不同，则无法更新内部实例。`<button>`不能“变成”`<input>`。
+但是，如果下一个渲染元素的 `type` 与先前渲染的元素不同，则无法更新内部实例。`<button>` 不能 “变成” `<input>`。
 
-相反，我们必须卸载现有的内部实例并挂载与渲染元素 `type` 相对应的新实例。例如，当先前渲染 `<button />` 的组件再渲染 `<input />` 时，会发生这种情况：
+相反，我们必须卸载现有的内部实例，然后挂载并渲染元素 `type` 对应的新实例。例如，当先前渲染 `<button />` 的组件再渲染 `<input />` 时，会发生这种情况：
 
 ```js
     // ...
@@ -642,7 +642,7 @@ class CompositeComponent {
 
 综上所述，当组合组件收到新元素时，它可以将更新委派给其渲染的内部实例，或者卸载它并在其位置挂载新元素。
 
-还有另一种情况，组件将重新挂载而不是接收元素，即元素的 `key` 已更改。在当前文档中，我们不讨论 `key` 处理，因为它增加了已经复杂的教程的复杂性。
+还有另一种情况，组件将重新挂载而非接收元素，即元素的 `key` 已更改。在当前文档中，我们不讨论 `key` 处理，因为它增加了复杂教程的复杂性。
 
 请注意，我们需要向内部实例添加名为 `getHostNode()` 的方法，以便可以在更新期间找到平台特定的节点并替换它。对于两个类，其实现都非常简单:
 
@@ -699,7 +699,7 @@ class DOMComponent {
 
 然后宿主组件需要更新其子组件。与组合组件不同，它们可能包含多个子组件。
 
-在此简化的示例中，我们使用内部实例数组并遍历它，根据接收的 `type` 是否与以前的 `type` 匹配更新或替换内部实例。真正的 reconciler 还会在描述中获取元素的 `key`，并跟踪除了插入和删除之外的移动，但我们这里将省略此逻辑。
+在此简化的示例中，我们使用内部实例数组并遍历它，根据接收的 `type` 是否与以前的 `type` 匹配更新或替换内部实例。真正的 reconciler 还会在描述中获取元素的 `key`，并存储和跟踪除了插入和删除之外的移动，但我们这里将省略此逻辑。
 
 我们在列表中收集子组件的 DOM 操作，以便可以批量执行它们:
 
@@ -722,7 +722,7 @@ class DOMComponent {
     // 当我们迭代子组件时，我们将向数组添加相应操作。
     var operationQueue = [];
 
-    // 注意:以下部分非常简化!
+    // 注意：以下部分非常简化!
     // 它不处理重新排序、带空洞或有 key 的子组件。
     // 它的存在只是为了说明整个流程，而不是细节。
 
@@ -860,7 +860,7 @@ mountTree(<App />, rootEl);
 
 * 除了组合和宿主内部实例类外，还有用于“文本”和“空”组件的类。它们表示文本节点和通过渲染 `null` 获得 “空插槽”。
 
-* renderer 使用[注入](/docs/codebase-overview.html#dynamic-injection)将宿主内部类传递给 reconciler. 例如，React DOM 告诉 reconciler 使用 `ReactDOMComponent` 作为宿主内部实例实现。
+* renderer 使用[注入](/docs/codebase-overview.html#dynamic-injection)的方式将宿主内部类传递给 reconciler. 例如，React DOM 告诉 reconciler 使用 `ReactDOMComponent` 作为宿主内部实例实现。
 
 * 更新子列表的逻辑被提取到一个名为 `ReactMultiChild` 的 mixin 中，它由 React DOM 和 React Native 中的宿主内部实例类实现使用。
 
