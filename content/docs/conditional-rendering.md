@@ -122,7 +122,7 @@ ReactDOM.render(
 
 ### 与运算符 && {#inline-if-with-logical--operator}
 
-通过花括号包裹代码，你可以[在 JSX 中嵌入任何表达式](/docs/introducing-jsx.html#embedding-expressions-in-jsx)。这也包括 JavaScript 中的逻辑与 (&&) 运算符。它可以很方便地进行元素的条件渲染。
+通过花括号包裹代码，你可以[在 JSX 中嵌入表达式](/docs/introducing-jsx.html#embedding-expressions-in-jsx)。这也包括 JavaScript 中的逻辑与 (&&) 运算符。它可以很方便地进行元素的条件渲染：
 
 ```js{6-10}
 function Mailbox(props) {
