@@ -122,7 +122,11 @@ ReactDOM.render(
 
 ### 与运算符 && {#inline-if-with-logical--operator}
 
+<<<<<<< HEAD
 通过花括号包裹代码，你可以[在 JSX 中嵌入任何表达式](/docs/introducing-jsx.html#embedding-expressions-in-jsx)。这也包括 JavaScript 中的逻辑与 (&&) 运算符。它可以很方便地进行元素的条件渲染。
+=======
+You may [embed expressions in JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) by wrapping them in curly braces. This includes the JavaScript logical `&&` operator. It can be handy for conditionally including an element:
+>>>>>>> ee75c297574468f888574aae2d9620d64bb5b5a1
 
 ```js{6-10}
 function Mailbox(props) {
