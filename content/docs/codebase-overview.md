@@ -35,6 +35,7 @@ redirect_from:
 
 ### warning 和 invariant {#warnings-and-invariants}
 
+<<<<<<< HEAD
 React 源码采用 `warning` 模块展示警告。
 
 ```js
@@ -62,6 +63,13 @@ if (!didWarnAboutMath) {
     'Math is not working today.'
   );
   didWarnAboutMath = true;
+=======
+The React codebase uses `console.error` to display warnings:
+
+```js
+if (__DEV__) {
+  console.error('Something is wrong.');
+>>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 }
 ```
 
@@ -114,6 +122,7 @@ ReactRef.detachRefs = function(
 如果可以的话，新代码应尽量使用 Flow 注释。
 你可以运行 `yarn flow`，用 Flow 本地检查你的代码。
 
+<<<<<<< HEAD
 ### 动态注入 {#dynamic-injection}
 
 React 在一些模块中使用了动态注入。虽然它总是显式地，但仍然存在问题，因为这会阻碍对代码的理解。它存在的最主要原因是 React 原本只以支持 DOM 为目标。然而 React Native 开始作为 React 的一个分支之后。我们只好添加一些动态注入让 React Native 覆盖一些行为。
@@ -147,6 +156,8 @@ module.exports = ReactHostComponent;
 
 在代码库中有许多注入点。未来，我们打算抛弃动态注入机制，并且在构建的时候静态地连接所有的碎片。
 
+=======
+>>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 ### Multiple Packages {#multiple-packages}
 
 React 采用 [monorepo](https://danluu.com/monorepo/) 的管理方式。仓库中包含多个独立的包，以便于更改可以一起联调，并且问题只会出现在同一地方。
@@ -211,9 +222,13 @@ Reconciler 没有单独的包，因为他们暂时没有公共 API。相反，�
 
 ### 事件系统 {#event-system}
 
+<<<<<<< HEAD
 React 实现一个合成事件，这与渲染器无关，它适用于 React DOM 和 React Native。源码在 [`packages/legacy-events`](https://github.com/facebook/react/tree/master/packages/legacy-events) 目录下。
 
 这个是一个[深入研究事件系统代码的视频](https://www.youtube.com/watch?v=dRo_egw7tBc)（66分钟）。
+=======
+React implements a layer over native events to smooth out cross-browser differences. Its source code is located in [`packages/react-dom/src/events`](https://github.com/facebook/react/tree/master/packages/react-dom/src/events).
+>>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 
 ### 下一章节学习什么？ {#what-next}
 

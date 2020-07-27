@@ -88,7 +88,11 @@ Next.js 项目使用了这个工作流。你可以参考他们的 [CircleCI 配�
 
 #### 如何了解有关实验功能的更多信息？ {#how-can-i-learn-more-about-experimental-features}
 
+<<<<<<< HEAD
 实验性的功能可能会有文档，也可能不会有文档。通常，在实验渠道的内容发布到 Next 或 Stable 中之前，才会编写文档。
+=======
+Experimental features may or may not be documented. Usually, experiments aren't documented until they are close to shipping in Next or Latest.
+>>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 
 如果找不到文档，则可能会附有 [RFC](https://github.com/reactjs/rfcs) 说明。
 
