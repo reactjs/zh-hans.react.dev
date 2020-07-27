@@ -23,7 +23,7 @@ React DevTools v4 中发生了很多变化！
 * `16.x`：支持
 
 **`react-native`**
-* `0`-`0.61`：不支持
+* `0`-`0.61.x`：不支持
 * `0.62`：将得到支持 （当 0.62 版本发布时）
 
 ## 如何获取最新的 DevTools {#how-do-i-get-the-new-devtools}

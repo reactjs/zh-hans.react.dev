@@ -42,7 +42,7 @@ console.log(add(16, 26)); // 42
 >
 > 最终你的打包文件看起来会和上面的例子区别很大。
 
-如果你正在使用 [Create React App](https://github.com/facebookincubator/create-react-app)，[Next.js](https://github.com/zeit/next.js/)，[Gatsby](https://www.gatsbyjs.org/)，或者类似的工具，你会拥有一个可以直接使用的 Webpack 配置来进行打包工作。
+如果你正在使用 [Create React App](https://create-react-app.dev)，[Next.js](https://nextjs.org/)，[Gatsby](https://www.gatsbyjs.org/)，或者类似的工具，你可以直接使用的 Webpack 配置来构建你的应用。
 
 如果你没有使用这类工具，你就需要自己来进行配置。例如，查看 Webpack 文档上的[安装](https://webpack.docschina.org/guides/installation/)和[入门教程](https://webpack.docschina.org/guides/getting-started/)。
 

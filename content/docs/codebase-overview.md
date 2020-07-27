@@ -35,33 +35,11 @@ redirect_from:
 
 ### warning 和 invariant {#warnings-and-invariants}
 
-React 源码采用 `warning` 模块展示警告。
+React 代码库直接使用 `console.error` 来展示 warnings：
 
 ```js
-var warning = require('warning');
-
-warning(
-  2 + 2 === 4,
-  'Math is not working today.'
-);
-```
-
-**警告会在 `warning` 的条件为 false 时出现。**
-
-`warning` 机制可以理解为，当编写判定条件的时候，应当使用符合正常逻辑的条件判断，这样出现异常的时候就会触发 warning，注意判定条件不要用反了。
-
-我们应当注意避免大量打印重复的 warning：
-
-```js
-var warning = require('warning');
-
-var didWarnAboutMath = false;
-if (!didWarnAboutMath) {
-  warning(
-    2 + 2 === 4,
-    'Math is not working today.'
-  );
-  didWarnAboutMath = true;
+if (__DEV__) {
+  console.error('Something is wrong.');
 }
 ```
 
@@ -113,39 +91,6 @@ ReactRef.detachRefs = function(
 
 如果可以的话，新代码应尽量使用 Flow 注释。
 你可以运行 `yarn flow`，用 Flow 本地检查你的代码。
-
-### 动态注入 {#dynamic-injection}
-
-React 在一些模块中使用了动态注入。虽然它总是显式地，但仍然存在问题，因为这会阻碍对代码的理解。它存在的最主要原因是 React 原本只以支持 DOM 为目标。然而 React Native 开始作为 React 的一个分支之后。我们只好添加一些动态注入让 React Native 覆盖一些行为。
-
-你可能看到过一些模块，像下面这样声明动态依赖：
-
-```js
-// 动态注入
-var textComponentClass = null;
-
-// 依赖动态注入的值
-function createInstanceForText(text) {
-  return new textComponentClass(text);
-}
-
-var ReactHostComponent = {
-  createInstanceForText,
-
-  // 提供动态注入的入口
-  injection: {
-    injectTextComponentClass: function(componentClass) {
-      textComponentClass = componentClass;
-    },
-  },
-};
-
-module.exports = ReactHostComponent;
-```
-
-`injection` 字段并没有用某种特别的方式处理。但是按照惯例，这意味着这模块在运行时想要注入一些（很可能是平台特定的）依赖。
-
-在代码库中有许多注入点。未来，我们打算抛弃动态注入机制，并且在构建的时候静态地连接所有的碎片。
 
 ### Multiple Packages {#multiple-packages}
 
@@ -211,9 +156,7 @@ Reconciler 没有单独的包，因为他们暂时没有公共 API。相反，�
 
 ### 事件系统 {#event-system}
 
-React 实现一个合成事件，这与渲染器无关，它适用于 React DOM 和 React Native。源码在 [`packages/legacy-events`](https://github.com/facebook/react/tree/master/packages/legacy-events) 目录下。
-
-这个是一个[深入研究事件系统代码的视频](https://www.youtube.com/watch?v=dRo_egw7tBc)（66分钟）。
+React 在原生事件基础上进行了封装，以抹平浏览器间差异。其源码在 [`packages/react-dom/src/events`](https://github.com/facebook/react/tree/master/packages/react-dom/src/events) 目录下。
 
 ### 下一章节学习什么？ {#what-next}
 
