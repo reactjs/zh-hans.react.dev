@@ -560,11 +560,7 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 #### 确定在 React 中何时重新渲染 {#determining-when-to-re-render-in-react}
 
-<<<<<<< HEAD
 不可变性最主要的优势在于它可以帮助我们在 React 中创建 _pure components_。我们可以很轻松的确定不可变数据是否发生了改变，从而确定何时对组件进行重新渲染。
-=======
-The main benefit of immutability is that it helps you build _pure components_ in React. Immutable data can easily determine if changes have been made, which helps to determine when a component requires re-rendering.
->>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 
 查阅[性能优化](/docs/optimizing-performance.html#examples)章节，以了解更多有关 `shouldComponentUpdate()` 函数及如何构建 *pure components* 的内容。
 
