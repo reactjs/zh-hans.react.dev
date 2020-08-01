@@ -8,10 +8,10 @@
 
 module.exports = {
   siteMetadata: {
-    title: 'React: A JavaScript library for building user interfaces',
+    title: 'React 中文文档: 用于构建用户界面的 JavaScript 库',
     siteUrl: 'https://zh-hans.reactjs.org',
     rssFeedTitle: 'React',
-    rssFeedDescription: 'A JavaScript library for building user interfaces',
+    rssFeedDescription: '用于构建用户界面的 JavaScript 库',
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',

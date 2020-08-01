@@ -50,7 +50,7 @@ class Home extends Component {
     return (
       <Layout location={location}>
         <TitleAndMetaTags
-          title="React &ndash; 用于构建用户界面的 JavaScript 库"
+          title="React 官方中文文档 &ndash; 用于构建用户界面的 JavaScript 库"
           canonicalUrl={createCanonicalUrl('/')}
         />
         <div
