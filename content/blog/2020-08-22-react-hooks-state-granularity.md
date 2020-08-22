@@ -251,7 +251,7 @@ class TodoList {
 
 然后就会变成这样：
 
-![图片来源网络](1_yJyHd9CKkqgToX7DtI6fcg.png)
+![](../images/blog/hooks/1_yJyHd9CKkqgToX7DtI6fcg.png)
 
 好在 hook 能比较合理地去解决这种嵌套问题。
 
@@ -261,6 +261,6 @@ class TodoList {
 
 在实际的业务里，比这复杂的多的事情天天在发生，远不是太细了合一合、太粗了分一分这么简单，大部分时候我们面对的是这样的情况：
 
-![](Jietu20200222-133557@2x.png)
+![](../images/blog/hooks/Jietu20200222-133557@2x.png)
 
 5 个状态 4 个组合操作，怎么设计粒度更合理，就慢慢折腾去吧。
