@@ -2,6 +2,7 @@
 id: code-splitting
 title: 代码分割
 permalink: docs/code-splitting.html
+prev: accessibility.html
 ---
 
 ## 打包 {#bundling}

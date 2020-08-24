@@ -2,6 +2,8 @@
 id: portals
 title: Portals
 permalink: docs/portals.html
+prev: fragments.html
+next: error-boundaries.html
 ---
 
 Portal 提供了一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案。

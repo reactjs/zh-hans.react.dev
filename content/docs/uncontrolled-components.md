@@ -2,6 +2,8 @@
 id: uncontrolled-components
 title: 非受控组件
 permalink: docs/uncontrolled-components.html
+prev: refs-and-the-dom.html
+next: optimizing-performance.html
 ---
 
 在大多数情况下，我们推荐使用 [受控组件](/docs/forms.html#controlled-components) 来处理表单数据。在一个受控组件中，表单数据是由 React 组件来管理的。另一种替代方案是使用非受控组件，这时表单数据将交由 DOM 节点来处理。

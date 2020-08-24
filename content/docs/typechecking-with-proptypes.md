@@ -2,6 +2,8 @@
 id: typechecking-with-proptypes
 title: 使用 PropTypes 进行类型检查
 permalink: docs/typechecking-with-proptypes.html
+prev: jsx-in-depth.html
+next: static-type-checking.html
 redirect_from:
   - "docs/react-api.html#typechecking-with-proptypes"
 ---
@@ -29,6 +31,8 @@ Greeting.propTypes = {
   name: PropTypes.string
 };
 ```
+
+在此示例中，我们使用的是 class 组件，但是同样的功能也可用于函数组件，或者是由 [`React.memo`](/docs/react-api.html#reactmemo)/[`React.forwardRef`](/docs/react-api.html#reactforwardref) 创建的组件。
 
 `PropTypes` 提供一系列验证器，可用于确保组件接收到的数据类型是有效的。在本例中, 我们使用了 `PropTypes.string`。当传入的 `prop` 值类型不正确时，JavaScript 控制台将会显示警告。出于性能方面的考虑，`propTypes` 仅在开发模式下进行检查。
 

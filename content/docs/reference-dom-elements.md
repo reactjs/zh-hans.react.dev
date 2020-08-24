@@ -56,7 +56,8 @@ function MyComponent() {
 
 ### selected {#selected}
 
-`<option>` 组件支持 `selected` 属性。你可以使用该属性设置组件是否被选择。这对构建受控组件很有帮助。
+如果要将 `<option>` 标记为已选中状态，请在 `select` 的 `value` 中引用该选项的值。
+请查阅 ["select 标签"](/docs/forms.html#the-select-tag) 了解更多详情。
 
 ### style {#style}
 
@@ -120,7 +121,7 @@ React 会自动添加 ”px” 后缀到内联样式为数字的属性后。如�
 
 ### value {#value}
 
-`<input>` 和 `<textarea>` 组件支持 `value` 属性。你可以使用它为组件设置 value。这对于构建受控组件是非常有帮助。`defaultValue` 属性对应的是非受控组件的属性，用于设置组件第一次挂载时的 value。
+`<input>`、`<select>` 和 `<textarea>` 组件支持 `value` 属性。你可以使用它为组件设置 value。这对于构建受控组件是非常有帮助。`defaultValue` 属性对应的是非受控组件的属性，用于设置组件第一次挂载时的 value。
 
 ## All Supported HTML Attributes {#all-supported-html-attributes}
 

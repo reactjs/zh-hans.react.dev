@@ -2,6 +2,8 @@
 id: render-props
 title: Render Props
 permalink: docs/render-props.html
+prev: higher-order-components.html
+next: integrating-with-other-libraries.html
 ---
 
 术语 ["render prop"](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce) 是指一种在 React 组件之间使用一个值为函数的 prop 共享代码的简单技术
