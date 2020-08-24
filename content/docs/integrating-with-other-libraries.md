@@ -2,6 +2,8 @@
 id: integrating-with-other-libraries
 title: 与第三方库协同
 permalink: docs/integrating-with-other-libraries.html
+prev: render-props.html
+next: accessibility.html
 ---
 
 React 可以被用于任何 web 应用中。它可以被嵌入到其他应用，且需要注意，其他的应用也可以被嵌入到 React。本指南将介绍一些更常见的用例，专注于与 [jQuery](https://jquery.com/) 和 [Backbone](http://backbonejs.org/) 进行整合，同样的思路还可以应用于将组件与任意现有代码集成。

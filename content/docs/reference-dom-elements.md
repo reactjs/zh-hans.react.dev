@@ -56,7 +56,12 @@ function MyComponent() {
 
 ### selected {#selected}
 
+<<<<<<< HEAD
 `<option>` 组件支持 `selected` 属性。你可以使用该属性设置组件是否被选择。这对构建受控组件很有帮助。
+=======
+If you want to mark an `<option>` as selected, reference the value of that option in the `value` of its `<select>` instead.
+Check out ["The select Tag"](/docs/forms.html#the-select-tag) for detailed instructions.
+>>>>>>> d16f1ee7958b5f80ef790265ba1b8711d4f228d6
 
 ### style {#style}
 
@@ -120,7 +125,11 @@ React 会自动添加 ”px” 后缀到内联样式为数字的属性后。如�
 
 ### value {#value}
 
+<<<<<<< HEAD
 `<input>` 和 `<textarea>` 组件支持 `value` 属性。你可以使用它为组件设置 value。这对于构建受控组件是非常有帮助。`defaultValue` 属性对应的是非受控组件的属性，用于设置组件第一次挂载时的 value。
+=======
+The `value` attribute is supported by `<input>`, `<select>` and `<textarea>` components. You can use it to set the value of the component. This is useful for building controlled components. `defaultValue` is the uncontrolled equivalent, which sets the value of the component when it is first mounted.
+>>>>>>> d16f1ee7958b5f80ef790265ba1b8711d4f228d6
 
 ## All Supported HTML Attributes {#all-supported-html-attributes}
 

@@ -62,13 +62,14 @@ module.exports = {
             options: {
               defaultText: '<b>在 CodePen 上尝试</b>',
               directory: `${__dirname}/examples/`,
-              externals: [
-                `//unpkg.com/react/umd/react.development.js`,
-                `//unpkg.com/react-dom/umd/react-dom.development.js`,
-              ],
-              dependencies: [`react`, `react-dom`],
-              redirectTemplate: `${__dirname}/src/templates/codepen-example.js`,
               target: '_blank',
+              codepen: {
+                redirectTemplate: `${__dirname}/src/templates/codepen-example.js`,
+                externals: [
+                  `//unpkg.com/react/umd/react.development.js`,
+                  `//unpkg.com/react-dom/umd/react-dom.development.js`,
+                ],
+              },
             },
           },
           {
