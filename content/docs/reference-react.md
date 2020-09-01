@@ -124,15 +124,9 @@ const MyComponent = React.memo(function MyComponent(props) {
 });
 ```
 
-<<<<<<< HEAD
-`React.memo` 为[高阶组件](/docs/higher-order-components.html)。它与 [`React.PureComponent`](#reactpurecomponent) 非常相似，但只适用于函数组件，而不适用 class 组件。
+`React.memo` 为[高阶组件](/docs/higher-order-components.html)。
 
-如果你的函数组件在给定相同 props 的情况下渲染相同的结果，那么你可以通过将其包装在 `React.memo` 中调用，以此通过记忆组件渲染结果的方式来提高组件的性能表现。这意味着在这种情况下，React 将跳过渲染组件的操作并直接复用最近一次渲染的结果。
-=======
-`React.memo` is a [higher order component](/docs/higher-order-components.html).
-
-If your component renders the same result given the same props, you can wrap it in a call to `React.memo` for a performance boost in some cases by memoizing the result. This means that React will skip rendering the component, and reuse the last rendered result.
->>>>>>> 25cc703d1f23f1782ff96c5c7882a806f8741ec4
+如果你的组件在相同 props 的情况下渲染相同的结果，那么你可以通过将其包装在 `React.memo` 中调用，以此通过记忆组件渲染结果的方式来提高组件的性能表现。这意味着在这种情况下，React 将跳过渲染组件的操作并直接复用最近一次渲染的结果。
 
 `React.memo` 仅检查 props 变更。如果函数组件被 `React.memo` 包裹，且其实现中拥有 [`useState`](/docs/hooks-state.html) 或 [`useContext`](/docs/hooks-reference.html#usecontext) 的 Hook，当 context 发生变化时，它仍会重新渲染。
 
