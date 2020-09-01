@@ -71,7 +71,7 @@ import ReactDOM from 'react-dom';
 //
 // 你可以用下面的代码引入 concurrent 模式：
 
-ReactDOM.createRoot(
+ReactDOM.unstable_createRoot(
   document.getElementById('root')
 ).render(<App />);
 ```
