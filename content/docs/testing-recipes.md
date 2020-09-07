@@ -57,7 +57,11 @@ afterEach(() => {
 
 ### `act()` {#act}
 
+<<<<<<< HEAD
 在编写 UI 测试时，可以将渲染、用户事件或数据获取等任务视为与用户界面交互的“单元”。React 提供了一个名为 `act()` 的 helper，它确保在进行任何断言之前，与这些“单元”相关的所有更新都已处理并应用于 DOM：
+=======
+When writing UI tests, tasks like rendering, user events, or data fetching can be considered as "units" of interaction with a user interface. `react-dom/test-utils` provides a helper called [`act()`](/docs/test-utils.html#act) that makes sure all updates related to these "units" have been processed and applied to the DOM before you make any assertions:
+>>>>>>> 657658aa1f19c65e35055ddca4452c98d569552f
 
 ```js
 act(() => {
