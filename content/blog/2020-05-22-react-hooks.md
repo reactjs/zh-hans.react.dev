@@ -696,7 +696,7 @@ const Comp = () => {
 
 ```jsx
 useSomething = (inputCount) => {
-    const [ count, setCount ] = setState(inputCount);
+    const [ count, setCount ] = useState(inputCount);
 };
 ```
 
@@ -708,7 +708,7 @@ useSomething = (inputCount) => {
 
 ```jsx
 useSomething = (inputCount) => {
-    const [ count, setCount ] = setState(inputCount);
+    const [ count, setCount ] = useState(inputCount);
     setCount(inputCount);
 };
 ```
