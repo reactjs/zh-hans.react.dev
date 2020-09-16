@@ -170,11 +170,7 @@ return React.createElement('div', {className: 'shopping-list'},
 
 前文中的 `ShoppingList` 组件只会渲染一些内置的 DOM 组件，如`<div />`、`<li />`等。但是你也可以组合和渲染自定义的 React 组件。例如，你可以通过 `<ShoppingList />` 来表示整个购物清单组件。每个组件都是封装好的，并且可以单独运行，这样你就可以通过组合简单的组件来构建复杂的 UI 界面。
 
-<<<<<<< HEAD
 ### 阅读初始代码 {#inspecting-the-starter-code}
-=======
-### Inspecting the Starter Code {#inspecting-the-starter-code}
->>>>>>> 954a16f1d358009505ae881afaefe463dc6388a5
 
 如果你要在**浏览器**中学习该教程，在新标签页中打开**[初始代码](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**。如果你在本地环境中学习开发该教程的内容，就在你的工程文件夹下打开 `src/index.js`（你已经在前面的[环境准备](#setup-for-the-tutorial)中创建过这个文件了）。
 
