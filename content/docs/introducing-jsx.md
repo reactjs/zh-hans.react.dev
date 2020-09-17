@@ -6,7 +6,7 @@ prev: hello-world.html
 next: rendering-elements.html
 ---
 
-考虑如下变量声明：
+设想如下变量声明：
 
 ```js
 const element = <h1>Hello, world!</h1>;
