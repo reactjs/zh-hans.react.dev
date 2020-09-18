@@ -982,7 +982,7 @@ function useEventCallback(fn, dependencies) {
 
 ### React 是如何把对 Hook 的调用和组件联系起来的？ {#how-does-react-associate-hook-calls-with-components}
 
-React 保持对当先渲染中的组件的追踪。多亏了 [Hook 规范](/docs/hooks-rules.html)，我们得知 Hook 只会在 React 组件中被调用（或自定义 Hook —— 同样只会在 React 组件中被调用）。
+React 保持对当前渲染中的组件的追踪。多亏了 [Hook 规范](/docs/hooks-rules.html)，我们得知 Hook 只会在 React 组件中被调用（或自定义 Hook —— 同样只会在 React 组件中被调用）。
 
 每个组件内部都有一个「记忆单元格」列表。它们只不过是我们用来存储一些数据的 JavaScript 对象。当你用 `useState()` 调用一个 Hook 的时候，它会读取当前的单元格（或在首次渲染时将其初始化），然后把指针移动到下一个。这就是多个 `useState()` 调用会得到各自独立的本地 state 的原因。
 
