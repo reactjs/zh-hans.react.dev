@@ -36,6 +36,7 @@ const Header = ({location}: {location: Location}) => (
     <Container>
       <div
         css={{
+<<<<<<< HEAD
           height: 60,
           fontSize: 20,
           padding: 20,
@@ -64,6 +65,8 @@ const Header = ({location}: {location: Location}) => (
     <Container>
       <div
         css={{
+=======
+>>>>>>> 1becaff62ae228d909b83ef6d08f48c01660300f
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',

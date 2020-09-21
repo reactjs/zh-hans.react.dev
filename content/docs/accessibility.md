@@ -2,8 +2,6 @@
 id: accessibility
 title: 无障碍辅助功能
 permalink: docs/accessibility.html
-prev: integrating-with-other-libraries.html
-next: code-splitting.html
 ---
 
 ## 为什么我们需要无障碍辅助功能？ {#why-accessibility}
