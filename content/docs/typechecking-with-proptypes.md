@@ -2,8 +2,6 @@
 id: typechecking-with-proptypes
 title: 使用 PropTypes 进行类型检查
 permalink: docs/typechecking-with-proptypes.html
-prev: jsx-in-depth.html
-next: static-type-checking.html
 redirect_from:
   - "docs/react-api.html#typechecking-with-proptypes"
 ---

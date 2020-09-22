@@ -2,8 +2,6 @@
 id: react-without-es6
 title: 不使用 ES6
 permalink: docs/react-without-es6.html
-prev: optimizing-performance.html
-next: react-without-jsx.html
 ---
 
 通常我们会用 JavaScript 的 `class` 关键字来定义 React 组件：
