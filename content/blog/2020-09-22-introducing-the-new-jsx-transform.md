@@ -1,19 +1,19 @@
 ---
-title: "介绍全新的 JSX 转换器"
+title: "介绍全新的 JSX 转换"
 author: [lunaruan]
 ---
 
-虽然 React 17 [并未包含新特性](/blog/2020/08/10/react-v17-rc.html)，但它将提供一个全新版本的 JSX 转换器。本文中，我们将为你描述它是什么以及如何使用。
+虽然 React 17 [并未包含新特性](/blog/2020/08/10/react-v17-rc.html)，但它将提供一个全新版本的 JSX 转换。本文中，我们将为你描述它是什么以及如何使用。
 
 ## 何为 JSX 转换？ {#whats-a-jsx-transform}
 
 在浏览器中无法直接使用 JSX，所以大多数 React 开发者需依靠 Babel 或 TypeScript 来**将 JSX 代码转换为 JavaScript**。许多包含预配置的工具，例如 Create React App 或 Next.js，在其内部也引入了 JSX 转换。
 
-React 17 发布在即，尽管我们想对 JSX 的转换进行改进，但我们不想打破现有的配置。这就是我们与 [Babel](https://babeljs.io/blog/2020/03/16/7.9.0#a-new-jsx-transform-11154httpsgithubcombabelbabelpull11154) 合作的原因，为想要升级的开发者**提供一个全新版本的，重构过的 JSX 转换器**。
+React 17 发布在即，尽管我们想对 JSX 的转换进行改进，但我们不想打破现有的配置。这就是我们与 [Babel](https://babeljs.io/blog/2020/03/16/7.9.0#a-new-jsx-transform-11154httpsgithubcombabelbabelpull11154) 合作的原因，为想要升级的开发者**提供一个全新版本的，重构过的 JSX 转换**。
 
-升级至全新的转换器完全是可选的，但升级它会为你带来一些好处：
+升级至全新的转换完全是可选的，但升级它会为你带来一些好处：
 
-* 使用全新的转换器，你可以**单独使用 JSX 而无需引入 React**。
+* 使用全新的转换，你可以**单独使用 JSX 而无需引入 React**。
 * 根据你的配置，JSX 的编译输出可能会**略微改善 bundle 的大小**。
 * 它将**减少你需要学习 React 概念的数量**，以备未来之需。
 
@@ -50,7 +50,7 @@ function App() {
 
 >注意
 >
->**无需改变源码**。我们将介绍 JSX 转换器如何将你的 JSX 源码变成浏览器可以理解的 JavaScript 代码。
+>**无需改变源码**。我们将介绍 JSX 转换如何将你的 JSX 源码变成浏览器可以理解的 JavaScript 代码。
 
 然而，这并不完美：
 
@@ -78,15 +78,15 @@ function App() {
 
 注意，此时源代码**无需引入 React** 即可使用 JSX 了！（但仍需引入 React，以便使用 React 提供的 Hook 或其他导出。）
 
-**此变化与所有现有 JSX 代码兼容**，所以你无需修改组件。如果你对此感兴趣，你可以查看 [RFC](https://github.com/reactjs/rfcs/blob/createlement-rfc/text/0000-create-element-changes.md#detailed-design) 了解全新转换器工作的具体细节。
+**此变化与所有现有 JSX 代码兼容**，所以你无需修改组件。如果你对此感兴趣，你可以查看 [RFC](https://github.com/reactjs/rfcs/blob/createlement-rfc/text/0000-create-element-changes.md#detailed-design) 了解全新转换工作的具体细节。
 
 > 注意
 >
 > `react/jsx-runtime` 和 `react/jsx-dev-runtime` 中的函数只能由编译器转换使用。如果你需要在代码中手动创建元素，你可以继续使用 `React.createElement`。它将继续工作，不会消失。
 
-## 如何升级至新的转换器 {#how-to-upgrade-to-the-new-jsx-transform}
+## 如何升级至新的转换 {#how-to-upgrade-to-the-new-jsx-transform}
 
-如果你还没准备好升级为全新的 JSX 转换器，或者你正在为其他库使用 JSX，请不要担心，旧的转换不会被移除，并将继续支持。
+如果你还没准备好升级为全新的 JSX 转换，或者你正在为其他库使用 JSX，请不要担心，旧的转换不会被移除，并将继续支持。
 
 如果你想升级，你需要准备两件事：
 
@@ -212,7 +212,7 @@ npx react-codemod update-react-imports
 
 运行 codemod 会执行如下操作：
 
-* 升级到新的 JSX 转换器，删除所有未使用的 React 引入。
+* 升级到新的 JSX 转换，删除所有未使用的 React 引入。
 * 改变所有 React 的默认引入将被改为解构命名引入（例如，`import React from "react"` 会变成 `import { useState } from "react"`），这将成为未来开发的首选风格。codemod **不会** 影响现有的命名空间引入方式（即 `import * as React from "react"`），这也是一种有效的风格，默认的引入将在 React 17 中继续工作，但从长远来看，我们建议尽量不使用它们。
 
 示例：
