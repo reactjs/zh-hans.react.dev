@@ -9,7 +9,7 @@ author: [lunaruan]
 
 在浏览器中无法直接使用 JSX，所以大多数 React 开发者需依靠 Babel 或 TypeScript 来**将 JSX 代码转换为 JavaScript**。许多包含预配置的工具，例如 Create React App 或 Next.js，在其内部也引入了 JSX 转换。
 
-React 17 发布在即，尽管我们想对 JSX 的转换进行改进，但我们不想打破现有的配置。这就是我们与 [Babel](https://babeljs.io/blog/2020/03/16/7.9.0#a-new-jsx-transform-11154httpsgithubcombabelbabelpull11154) 合作的原因，为想要升级的开发者**提供一个全新版本的，重构过的 JSX 转换**。
+React 17 发布在即，尽管我们想对 JSX 的转换进行改进，但我们不想打破现有的配置。于是我们选择与 [Babel](https://babeljs.io/blog/2020/03/16/7.9.0#a-new-jsx-transform-11154httpsgithubcombabelbabelpull11154) 合作，为想要升级的开发者**提供了一个全新版本的，重构过的 JSX 转换**。
 
 升级至全新的转换完全是可选的，但升级它会为你带来一些好处：
 
