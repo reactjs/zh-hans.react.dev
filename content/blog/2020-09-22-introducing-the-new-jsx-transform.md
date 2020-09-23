@@ -101,11 +101,11 @@ Create React App 已[对其做兼容支持](https://github.com/facebook/create-r
 
 ### Next.js {#next-js}
 
-Next.js 的 [v9.5.3](https://github.com/vercel/next.js/releases/tag/v9.5.3)+ 会使用心得转换来兼容 React 版本。
+Next.js 的 [v9.5.3](https://github.com/vercel/next.js/releases/tag/v9.5.3)+ 会使用新的转换来兼容 React 版本。
 
 ### Gatsby {#gatsby}
 
-Gatsby 的 [v2.24.5](https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby/CHANGELOG.md#22452-2020-08-28)+ 会使用心得转换来兼容 React 版本。
+Gatsby 的 [v2.24.5](https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby/CHANGELOG.md#22452-2020-08-28)+ 会使用新的转换来兼容 React 版本。
 
 >注意
 >
