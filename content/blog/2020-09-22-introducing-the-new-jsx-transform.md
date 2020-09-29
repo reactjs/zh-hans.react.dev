@@ -5,11 +5,7 @@ author: [lunaruan]
 
 虽然 React 17 [并未包含新特性](/blog/2020/08/10/react-v17-rc.html)，但它将提供一个全新版本的 JSX 转换。本文中，我们将为你描述它是什么以及如何使用。
 
-<<<<<<< HEAD
 ## 何为 JSX 转换？ {#whats-a-jsx-transform}
-=======
-## What's a JSX Transform? {#whats-a-jsx-transform}
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
 
 在浏览器中无法直接使用 JSX，所以大多数 React 开发者需依靠 Babel 或 TypeScript 来**将 JSX 代码转换为 JavaScript**。许多包含预配置的工具，例如 Create React App 或 Next.js，在其内部也引入了 JSX 转换。
 
@@ -24,19 +20,11 @@ React 17 发布在即，尽管我们想对 JSX 的转换进行改进，但我们
 **此次升级不会改变 JSX 语法，也并非必须**。旧的 JSX 转换将继续工作，没有计划取消对它的支持。
 
 
-<<<<<<< HEAD
 [React 17 的 RC 版本](/blog/2020/08/10/react-v17-rc.html) 已经引入了对新转换的支持，所以你可以尝试一下！为了让大家更容易使用，在 React 17 正式发布后，我们还计划将其支持 React 16.x，React 15.x 以及 React 0.14x。你可以在[下方](#how-to-upgrade-to-the-new-jsx-transform)找到不同工具的升级说明。
-=======
-[React 17 RC](/blog/2020/08/10/react-v17-rc.html) already includes support for the new transform, so go give it a try! To make it easier to adopt, after React 17 is released, we also plan to backport its support to React 16.x, React 15.x, and React 0.14.x. You can find the upgrade instructions for different tools [below](#how-to-upgrade-to-the-new-jsx-transform).
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
 
 接下来，我们来仔细对比新旧转换的区别。
 
-<<<<<<< HEAD
-## 新的转换有何不同？ {#what-different-in-the-new-jsx-transform}
-=======
-## What’s Different in the New Transform? {#whats-different-in-the-new-transform}
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
+## 新的转换有何不同？ {#whats-different-in-the-new-transform}
 
 当你使用 JSX 时，编译器会将其转换为浏览器可以理解的 React 函数调用。**旧的 JSX 转换**会把 JSX 转换为 `React.createElement(...)` 调用。
 
@@ -69,13 +57,9 @@ function App() {
 * 如果使用 JSX，则需在 `React` 的环境下，因为 JSX 将被编译成 `React.createElement`。
 * 有一些 `React.createElement` 无法做到的[性能优化和简化](https://github.com/reactjs/rfcs/blob/createlement-rfc/text/0000-create-element-changes.md#motivation)。
 
-<<<<<<< HEAD
-为了解决这些问题，React 17 在 React 的 package 中引入了两个新入口，这些入口只会被 Babel 和 TypeScript 等编译器使用。新的 JSX 转换**不会将 JSX 转换为 `React.createElement`**，而是自动从 React 的 package 中引入新的入口函数并调用。例如：
-=======
-To solve these issues, React 17 introduces two new entry points to the React package that are intended to only be used by compilers like Babel and TypeScript. Instead of transforming JSX to `React.createElement`, **the new JSX transform** automatically imports special functions from those new entry points in the React package and calls them.
+为了解决这些问题，React 17 在 React 的 package 中引入了两个新入口，这些入口只会被 Babel 和 TypeScript 等编译器使用。新的 JSX 转换**不会将 JSX 转换为 `React.createElement`**，而是自动从 React 的 package 中引入新的入口函数并调用。
 
-Let's say that your source code looks like this:
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
+假设你的源代码如下：
 
 ```js
 function App() {
@@ -83,11 +67,7 @@ function App() {
 }
 ```
 
-<<<<<<< HEAD
-现在将转换为：
-=======
-This is what the new JSX transform compiles it to:
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
+下方是新 JSX 被转换编译后的结果：
 
 ```js
 // 由编译器引入（禁止自己引入！）
@@ -106,11 +86,7 @@ function App() {
 >
 > `react/jsx-runtime` 和 `react/jsx-dev-runtime` 中的函数只能由编译器转换使用。如果你需要在代码中手动创建元素，你可以继续使用 `React.createElement`。它将继续工作，不会消失。
 
-<<<<<<< HEAD
 ## 如何升级至新的 JSX 转换 {#how-to-upgrade-to-the-new-jsx-transform}
-=======
-## How to Upgrade to the New JSX Transform {#how-to-upgrade-to-the-new-jsx-transform}
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
 
 如果你还没准备好升级为全新的 JSX 转换，或者你正在为其他库使用 JSX，请不要担心，旧的转换不会被移除，并将继续支持。
 
@@ -123,15 +99,9 @@ function App() {
 
 ### Create React App {#create-react-app}
 
-<<<<<<< HEAD
-Create React App 已[对其做兼容支持](https://github.com/facebook/create-react-app/pull/9645)，并将在[即将发布的 v4.0 版本](https://gist.github.com/iansu/282dbe3d722bd7231fa3224c0f403fa1)中提供，该版本处于 beta 测试阶段。
-
-### Next.js {#next-js}
-=======
-Create React App support [has been added](https://github.com/facebook/create-react-app/pull/9645) and will be available in the [upcoming v4.0 release](https://gist.github.com/iansu/4fab7a9bfa5fa6ebc87a908c62f5340b) which is currently in beta testing.
+Create React App 已[对其做兼容支持](https://github.com/facebook/create-react-app/pull/9645)，并将在[即将发布的 v4.0 版本](https://gist.github.com/iansu/4fab7a9bfa5fa6ebc87a908c62f5340b)中提供，该版本处于 beta 测试阶段。
 
 ### Next.js {#nextjs}
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
 
 Next.js 的 [v9.5.3](https://github.com/vercel/next.js/releases/tag/v9.5.3)+ 会使用新的转换来兼容 React 版本。
 
@@ -143,11 +113,7 @@ Gatsby 的 [v2.24.5](https://github.com/gatsbyjs/gatsby/blob/master/packages/gat
 >
 >如果你在 [Gatsby 中遇到 error](https://github.com/gatsbyjs/gatsby/issues/26979)，请升级至 `17.0.0-rc.2`，运行 `npm update` 解决此问题。
 
-<<<<<<< HEAD
 ### 手动设置 Babel {#manual-babel-setup}
-=======
-### Manual Babel Setup {#manual-babel-setup}
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
 
 Babel 的 [v7.9.0](https://babeljs.io/blog/2020/03/16/7.9.0) 及以上版本可支持全新的 JSX 转换。
 
@@ -230,11 +196,7 @@ TypeScript 将在 [v4.1 beta](https://devblogs.microsoft.com/typescript/announci
 
 Flow 将在 [v0.126.0](https://github.com/facebook/flow/releases/tag/v0.126.0) 中支持新的 JSX 转换。
 
-<<<<<<< HEAD
 ## 移除未使用的 React 引入 {#removing-unused-react-imports}
-=======
-## Removing Unused React Imports {#removing-unused-react-imports}
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
 
 因为新的 JSX 转换会自动引入必要的 `react/jsx-runtime` 函数，因此当你使用 JSX 时，将无需再引入 React。将可能会导致你代码中有未使用到的 React 引入。保留它们也无伤大雅，但如果你想删除它们，我们建议运行 [“codemod”](https://medium.com/@cpojer/effective-javascript-codemods-5a6686bb46fb) 脚本来自动删除它们：
 
@@ -299,10 +261,6 @@ function App() {
 
 除了清理未使用的引入外，此工具还可帮你为未来 React 主要版本（不是 React 17 版本）做铺垫，该版本将支持 ES 模块，并且没有默认导出。
 
-<<<<<<< HEAD
 ## 鸣谢 {#thanks}
-=======
-## Thanks {#thanks}
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
 
 我们要感谢 Babel，TypeScript，Create React App，Next.js，Gatsby，ESLint 以及 Flow 的主要维护者为新 JSX 转换提供的实现和整合。我们还要感谢 React 社区对相关 [RFC](https://github.com/reactjs/rfcs/pull/107) 提供的反馈和讨论。
