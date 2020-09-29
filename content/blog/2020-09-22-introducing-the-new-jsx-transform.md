@@ -24,7 +24,7 @@ React 17 发布在即，尽管我们想对 JSX 的转换进行改进，但我们
 
 接下来，我们来仔细对比新旧转换的区别。
 
-## 新的转换有何不同？ {#what-different-in-the-new-jsx-transform}
+## 新的转换有何不同？ {#whats-different-in-the-new-transform}
 
 当你使用 JSX 时，编译器会将其转换为浏览器可以理解的 React 函数调用。**旧的 JSX 转换**会把 JSX 转换为 `React.createElement(...)` 调用。
 
@@ -57,7 +57,9 @@ function App() {
 * 如果使用 JSX，则需在 `React` 的环境下，因为 JSX 将被编译成 `React.createElement`。
 * 有一些 `React.createElement` 无法做到的[性能优化和简化](https://github.com/reactjs/rfcs/blob/createlement-rfc/text/0000-create-element-changes.md#motivation)。
 
-为了解决这些问题，React 17 在 React 的 package 中引入了两个新入口，这些入口只会被 Babel 和 TypeScript 等编译器使用。新的 JSX 转换**不会将 JSX 转换为 `React.createElement`**，而是自动从 React 的 package 中引入新的入口函数并调用。例如：
+为了解决这些问题，React 17 在 React 的 package 中引入了两个新入口，这些入口只会被 Babel 和 TypeScript 等编译器使用。新的 JSX 转换**不会将 JSX 转换为 `React.createElement`**，而是自动从 React 的 package 中引入新的入口函数并调用。
+
+假设你的源代码如下：
 
 ```js
 function App() {
@@ -65,7 +67,7 @@ function App() {
 }
 ```
 
-现在将转换为：
+下方是新 JSX 被转换编译后的结果：
 
 ```js
 // 由编译器引入（禁止自己引入！）
@@ -97,9 +99,9 @@ function App() {
 
 ### Create React App {#create-react-app}
 
-Create React App 已[对其做兼容支持](https://github.com/facebook/create-react-app/pull/9645)，并将在[即将发布的 v4.0 版本](https://gist.github.com/iansu/282dbe3d722bd7231fa3224c0f403fa1)中提供，该版本处于 beta 测试阶段。
+Create React App 已[对其做兼容支持](https://github.com/facebook/create-react-app/pull/9645)，并将在[即将发布的 v4.0 版本](https://gist.github.com/iansu/4fab7a9bfa5fa6ebc87a908c62f5340b)中提供，该版本处于 beta 测试阶段。
 
-### Next.js {#next-js}
+### Next.js {#nextjs}
 
 Next.js 的 [v9.5.3](https://github.com/vercel/next.js/releases/tag/v9.5.3)+ 会使用新的转换来兼容 React 版本。
 
@@ -241,7 +243,7 @@ function App() {
 import React from 'react';
 
 function App() {
-  const [text, useText] = React.useState('Hello World');
+  const [text, setText] = React.useState('Hello World');
   return <h1>{text}</h1>;
 }
 ```
@@ -252,7 +254,7 @@ function App() {
 import { useState } from 'react';
 
 function App() {
-  const [text, useText] = useState('Hello World');
+  const [text, setText] = useState('Hello World');
   return <h1>{text}</h1>;
 }
 ```
