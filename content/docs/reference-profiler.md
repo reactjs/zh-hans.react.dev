@@ -48,8 +48,9 @@ render(
 );
 ```
 
-嵌套使用 `Profiler` 组件来测量相同一个子树下的不同组件。
-```js{2,6,8}
+嵌套使用 `Profiler` 组件来测量相同一个子树下的不同组件：
+
+```js{3,5,8}
 render(
   <App>
     <Profiler id="Panel" onRender={callback}>

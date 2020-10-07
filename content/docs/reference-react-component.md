@@ -39,7 +39,7 @@ class Welcome extends React.Component {
 
 ### 组件的生命周期 {#the-component-lifecycle}
 
-每个组件都包含“生命周期方法”，你可以重写这些方法，以便于在运行过程中特定的阶段执行这些方法。**你可以使用此[生命周期图谱](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)作为速查表**。在下述列表中，常用的生命周期方法会被加粗。其余生命周期函数的使用则相对罕见。
+每个组件都包含 “生命周期方法”，你可以重写这些方法，以便于在运行过程中特定的阶段执行这些方法。**你可以使用此[生命周期图谱](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)作为速查表**。在下述列表中，常用的生命周期方法会被加粗。其余生命周期函数的使用则相对罕见。
 
 #### 挂载 {#mounting}
 
@@ -109,7 +109,7 @@ class Welcome extends React.Component {
 
 ### 常用的生命周期方法 {#commonly-used-lifecycle-methods}
 
-本节中的方法涵盖了创建 React 组件时能遇到的绝大多数用例。**想要更好了解这些方法，可以参考[生命周期图谱](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)。**
+本节中的方法涵盖了创建 React 组件时能遇到的绝大多数用例。**想要更好了解这些方法，可以参考[生命周期图谱](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)。**
 
 ### `render()` {#render}
 
@@ -245,7 +245,7 @@ componentWillUnmount()
 
 ### 不常用的生命周期方法 {#rarely-used-lifecycle-methods}
 
-本节中的生命周期方法并不太常用。它们偶尔会很方便，但是大部分情况下组件可能都不需要它们。你可以在[生命周期图谱](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)中，选择“显示不常用的生命周期”复选框，即可看到下述相关方法。
+本节中的生命周期方法并不太常用。它们偶尔会很方便，但是大部分情况下组件可能都不需要它们。你可以在[生命周期图谱](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)中，选择“显示不常用的生命周期”复选框，即可看到下述相关方法。
 
 
 ### `shouldComponentUpdate()` {#shouldcomponentupdate}
@@ -324,7 +324,7 @@ getSnapshotBeforeUpdate(prevProps, prevState)
 欲了解更多详细信息，请参阅 [*React 16 中的错误处理*](/blog/2017/07/26/error-handling-in-react-16.html)。
 
 > 注意
-> 
+>
 > Error boundaries 仅捕获组件树中**以下**组件中的错误。但它本身的错误无法捕获。
 
 ### `static getDerivedStateFromError()` {#static-getderivedstatefromerror}
@@ -353,7 +353,7 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
@@ -408,13 +408,13 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
 
 > 注意
-> 
+>
 > 如果发生错误，你可以通过调用 `setState` 使用 `componentDidCatch()` 渲染降级 UI，但在未来的版本中将不推荐这样做。
 > 可以使用静态 `getDerivedStateFromError()` 来处理降级渲染。
 
