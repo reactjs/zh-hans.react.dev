@@ -120,7 +120,7 @@ export default function Banner() {
             css={{
               marginRight: '0.5rem',
             }}>
-            We want to hear from you!
+            为社区建设略尽绵薄之力！
           </span>
 
           <a
@@ -135,7 +135,7 @@ export default function Banner() {
             target="_blank"
             rel="noopener">
             <span css={{color: colors.brand}}>
-              Take our 2020 Community Survey!
+              参与 0202 社区问卷调查！
             </span>
             <ExternalLinkSvg
               cssProps={{
