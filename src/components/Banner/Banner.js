@@ -135,7 +135,7 @@ export default function Banner() {
             target="_blank"
             rel="noopener">
             <span css={{color: colors.brand}}>
-              参与 0202 社区问卷调查！
+              参与 2020 社区问卷调查！
             </span>
             <ExternalLinkSvg
               cssProps={{
