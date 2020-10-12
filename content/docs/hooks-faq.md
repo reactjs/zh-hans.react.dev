@@ -920,7 +920,7 @@ function DeepChild(props) {
 
 ```js{6,10}
 function Form() {
-  const [text, updateText] = useState('');
+  const [text, setText] = useState('');
   const textRef = useRef();
 
   useEffect(() => {
@@ -934,7 +934,7 @@ function Form() {
 
   return (
     <>
-      <input value={text} onChange={e => updateText(e.target.value)} />
+      <input value={text} onChange={e => setText(e.target.value)} />
       <ExpensiveTree onSubmit={handleSubmit} />
     </>
   );
@@ -945,7 +945,7 @@ function Form() {
 
 ```js{4,16}
 function Form() {
-  const [text, updateText] = useState('');
+  const [text, setText] = useState('');
   // 即便 `text` 变了也会被记住:
   const handleSubmit = useEventCallback(() => {
     alert(text);
@@ -953,7 +953,7 @@ function Form() {
 
   return (
     <>
-      <input value={text} onChange={e => updateText(e.target.value)} />
+      <input value={text} onChange={e => setText(e.target.value)} />
       <ExpensiveTree onSubmit={handleSubmit} />
     </>
   );
