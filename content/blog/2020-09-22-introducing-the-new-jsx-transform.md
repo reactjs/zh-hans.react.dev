@@ -54,13 +54,8 @@ function App() {
 
 然而，这并不完美：
 
-<<<<<<< HEAD
 * 如果使用 JSX，则需在 `React` 的环境下，因为 JSX 将被编译成 `React.createElement`。
 * 有一些 `React.createElement` 无法做到的[性能优化和简化](https://github.com/reactjs/rfcs/blob/createlement-rfc/text/0000-create-element-changes.md#motivation)。
-=======
-* Because JSX was compiled into `React.createElement`, `React` needed to be in scope if you used JSX.
-* There are some [performance improvements and simplifications](https://github.com/reactjs/rfcs/blob/createlement-rfc/text/0000-create-element-changes.md#motivation) that `React.createElement` does not allow.
->>>>>>> bd0c9d8c5f5e78e0bd1066b46024ba98f4daac84
 
 为了解决这些问题，React 17 在 React 的 package 中引入了两个新入口，这些入口只会被 Babel 和 TypeScript 等编译器使用。新的 JSX 转换**不会将 JSX 转换为 `React.createElement`**，而是自动从 React 的 package 中引入新的入口函数并调用。
 
