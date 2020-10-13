@@ -92,7 +92,7 @@ React 的一个关键目标是在把控制权转交给 React 之前执行的用�
 
 提供好的开发者体验对我们很重要。
 
-例如，我们维护了 [React DevTools](https://github.com/facebook/react-devtools)，它让大家在 Chrome 和 Firefox 浏览器中可以检查 React 组件树。我们听说它大幅提高了 Facebook 的工程师和社区的生产效率。
+例如，我们维护了 [React DevTools](https://github.com/facebook/react/tree/master/packages/react-devtools)，它让大家在 Chrome 和 Firefox 浏览器中可以检查 React 组件树。我们听说它大幅提高了 Facebook 的工程师和社区的生产效率。
 
 我们还提供了对开发有所帮助的开发者警告。比如你以浏览器不理解的方式嵌套标签或者你在编写 API 时常见的错别字，React 会警告你。开发者警告和相关的检查导致了 React 的开发版本比生产版本速度慢。
 
