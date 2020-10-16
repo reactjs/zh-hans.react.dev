@@ -20,11 +20,7 @@ React 17 发布在即，尽管我们想对 JSX 的转换进行改进，但我们
 **此次升级不会改变 JSX 语法，也并非必须**。旧的 JSX 转换将继续工作，没有计划取消对它的支持。
 
 
-<<<<<<< HEAD
-[React 17 的 RC 版本](/blog/2020/08/10/react-v17-rc.html) 已经引入了对新转换的支持，所以你可以尝试一下！为了让大家更容易使用，在 React 17 正式发布后，我们还计划将其支持 React 16.x，React 15.x 以及 React 0.14x。你可以在[下方](#how-to-upgrade-to-the-new-jsx-transform)找到不同工具的升级说明。
-=======
-[React 17 RC](/blog/2020/08/10/react-v17-rc.html) already includes support for the new transform, so go give it a try! To make it easier to adopt, **we've also backported its support** to React 16.14.0, React 15.7.0, and React 0.14.10. You can find the upgrade instructions for different tools [below](#how-to-upgrade-to-the-new-jsx-transform).
->>>>>>> upstream/master
+[React 17 的 RC 版本](/blog/2020/08/10/react-v17-rc.html) 已经引入了对新转换的支持，所以你可以尝试一下！为了让大家更容易使用，在 React 17 正式发布后，我们还此支持移植到了 React 16.14.0，React 15.7.0 以及 React 0.14.10。你可以在[下方](#how-to-upgrade-to-the-new-jsx-transform)找到不同工具的升级说明。
 
 接下来，我们来仔细对比新旧转换的区别。
 
@@ -96,13 +92,8 @@ function App() {
 
 如果你想升级，你需要准备两件事：
 
-<<<<<<< HEAD
-* **支持新转换的 React 版本**（目前，只有 [React 17 的 RC 版本](/blog/2020/08/10/react-v17-rc.html) 支持它，但是 React 17.0 发布后，我们计划针对 0.14.x、15.x 以及 16.x 做兼容。）
+* **支持新转换的 React 版本**（[React 17 的 RC 版本](/blog/2020/08/10/react-v17-rc.html) 及更高版本支持它，但是我们也发布了 React 16.14.0，React 15.7.0 以及 0.14.10 等主要版本，以供还在使用旧版本的开发者使用它们）
 * **一个兼容新转换的编译器**（请看下面关于不同工具的说明）。
-=======
-* **A version of React that supports the new transform** ([React 17 RC](/blog/2020/08/10/react-v17-rc.html) and higher supports it, but we've also released React 16.14.0, React 15.7.0, and React 0.14.10 for people who are still on the older major versions).
-* **A compatible compiler** (see instructions for different tools below).
->>>>>>> upstream/master
 
 由于新的 JSX 转换不依赖 React 环境，[我们准备了一个自动脚本](#removing-unused-react-imports)，用于移除你代码中不必要的引入。
 
@@ -120,11 +111,7 @@ Gatsby 的 [v2.24.5](https://github.com/gatsbyjs/gatsby/blob/master/packages/gat
 
 >注意
 >
-<<<<<<< HEAD
->如果你在 [Gatsby 中遇到 error](https://github.com/gatsbyjs/gatsby/issues/26979)，请升级至 `17.0.0-rc.2`，运行 `npm update` 解决此问题。
-=======
->If you get [this Gatsby error](https://github.com/gatsbyjs/gatsby/issues/26979) after upgrading to React 17 RC, run `npm update` to fix it.
->>>>>>> upstream/master
+>如果你在 [Gatsby 中遇到 error](https://github.com/gatsbyjs/gatsby/issues/26979)，请升级至 React 17 的 RC 版本，运行 `npm update` 解决此问题。
 
 ### 手动设置 Babel {#manual-babel-setup}
 
