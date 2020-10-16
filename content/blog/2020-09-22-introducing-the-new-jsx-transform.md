@@ -20,7 +20,7 @@ React 17 发布在即，尽管我们想对 JSX 的转换进行改进，但我们
 **此次升级不会改变 JSX 语法，也并非必须**。旧的 JSX 转换将继续工作，没有计划取消对它的支持。
 
 
-[React 17 的 RC 版本](/blog/2020/08/10/react-v17-rc.html) 已经引入了对新转换的支持，所以你可以尝试一下！为了让大家更容易使用，在 React 17 正式发布后，我们还此支持移植到了 React 16.14.0，React 15.7.0 以及 React 0.14.10。你可以在[下方](#how-to-upgrade-to-the-new-jsx-transform)找到不同工具的升级说明。
+[React 17 的 RC 版本](/blog/2020/08/10/react-v17-rc.html) 已经引入了对新转换的支持，所以你可以尝试一下！为了让大家更容易使用，在 React 17 正式发布后，我们还将此支持移植到了 React 16.14.0，React 15.7.0 以及 React 0.14.10。你可以在[下方](#how-to-upgrade-to-the-new-jsx-transform)找到不同工具的升级说明。
 
 接下来，我们来仔细对比新旧转换的区别。
 
