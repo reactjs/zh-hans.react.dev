@@ -171,7 +171,13 @@ yarn upgrade @babel/core @babel/preset-react
 
 > 注意
 >
+<<<<<<< HEAD
 > 如果你在使用 JSX 时，使用 React 以外的库，你可以使用 [`importSource` 选项](https://babeljs.io/docs/en/babel-preset-react#importsource)从该库中引入 — 前提是它提供了必要的入口。或者你可以继续使用经典的转换，它会继续被支持。
+=======
+> If you use JSX with a library other than React, you can use [the `importSource` option](https://babeljs.io/docs/en/babel-preset-react#importsource) to import from that library instead -- as long as it provides the necessary entry points. Alternatively, you can keep using the classic transform which will continue to be supported.
+>
+> If you're a library author and you are implementing the `/jsx-runtime` entry point for your library, keep in mind that [there is a case](https://github.com/facebook/react/issues/20031#issuecomment-710346866) in which even the new transform has to fall back to `createElement` for backwards compatibility. In that case, it will auto-import `createElement` directly from the *root* entry point specified by `importSource`.
+>>>>>>> 4e6cee1f82737aa915afd87de0cd4a8393de3fc8
 
 ### ESLint {#eslint}
 
