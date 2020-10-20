@@ -172,6 +172,8 @@ yarn upgrade @babel/core @babel/preset-react
 > 注意
 >
 > 如果你在使用 JSX 时，使用 React 以外的库，你可以使用 [`importSource` 选项](https://babeljs.io/docs/en/babel-preset-react#importsource)从该库中引入 — 前提是它提供了必要的入口。或者你可以继续使用经典的转换，它会继续被支持。
+>
+> 如果你是库的作者并且需要为你的库实现 `/jsx-runtime` 的入口，需注意[一种情况](https://github.com/facebook/react/issues/20031#issuecomment-710346866)，在此情况下，为了向下兼容，即使使用了新的 jsx 转换，也必须考虑 `createElement`。在上述情况中，将直接从 `importSource` 的根入口中自动引入 `createElement`。
 
 ### ESLint {#eslint}
 
