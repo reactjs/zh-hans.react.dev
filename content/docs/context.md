@@ -191,7 +191,7 @@ class MyClass extends React.Component {
 
 一个 React 组件可以订阅 context 的变更，这让你在[函数式组件](/docs/components-and-props.html#function-and-class-components)中可以订阅 context。
 
-这种方法需要一个[函数作为子元素（function as a child）](/docs/render-props.html#using-props-other-than-render)。这个函数接收当前的 context 值，并返回一个 React 节点。传递给函数的 `value` 值等等价于组件树上方离这个 context 最近的 Provider 提供的 `value` 值。如果没有对应的 Provider，`value` 参数等同于传递给 `createContext()` 的 `defaultValue`。
+这种方法需要一个[函数作为子元素（function as a child）](/docs/render-props.html#using-props-other-than-render)。这个函数接收当前的 context 值，并返回一个 React 节点。传递给函数的 `value` 值等价于组件树上方离这个 context 最近的 Provider 提供的 `value` 值。如果没有对应的 Provider，`value` 参数等同于传递给 `createContext()` 的 `defaultValue`。
 
 > 注意
 >
