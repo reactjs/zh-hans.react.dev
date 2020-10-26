@@ -43,8 +43,8 @@ npm run build
 我们提供了可以在生产环境使用的单文件版 React 和 React DOM：
 
 ```html
-<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
 ```
 
 注意只有以 `.production.min.js` 为结尾的 React 文件适用于生产。
@@ -74,10 +74,17 @@ brunch build -p
 为了最高效的生产构建，需要安装一些插件：
 
 ```
+<<<<<<< HEAD
 # 如果你使用 npm
 npm install --save-dev envify terser uglifyify
 
 # 如果你使用 Yarn
+=======
+# If you use npm
+npm install --save-dev envify terser uglifyify
+
+# If you use Yarn
+>>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 yarn add --dev envify terser uglifyify
 ```
 
@@ -379,7 +386,11 @@ function updateColorMap(colormap) {
 }
 ```
 
+<<<<<<< HEAD
 此特性已被收录在 JavaScript 的 ES2018 中。
+=======
+This feature was added to JavaScript in ES2018.
+>>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
 如果你在使用 Create React App，`Object.assign` 以及对象扩展运算符已经默认支持了。
 
