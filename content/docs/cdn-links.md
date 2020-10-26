@@ -20,11 +20,7 @@ next: release-channels.html
 <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
 ```
 
-<<<<<<< HEAD
-如果需要加载指定版本的 `react` 和 `react-dom`，可以把 `16` 替换成所需加载的版本号。
-=======
-To load a specific version of `react` and `react-dom`, replace `17` with the version number.
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
+如果需要加载指定版本的 `react` 和 `react-dom`，可以把 `17` 替换成所需加载的版本号。
 
 ### 为什么要使用 `crossorigin` 属性? {#why-the-crossorigin-attribute}
 

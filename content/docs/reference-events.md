@@ -34,42 +34,11 @@ string type
 
 > 注意：
 >
-<<<<<<< HEAD
-> 截止 v0.14，当事件处理函数返回 `false` 时，不再阻止事件冒泡。你可以选择使用 `e.stopPropagation()` 或者 `e.preventDefault()` 替代。
-
-### 事件池 {#event-pooling}
-
-`SyntheticEvent` 是合并而来。这意味着 `SyntheticEvent` 对象可能会被重用，而且在事件回调函数被调用后，所有的属性都会无效。出于性能考虑，你不能通过异步访问事件。
-
-```javascript
-function onClick(event) {
-  console.log(event); // => nullified object.
-  console.log(event.type); // => "click"
-  const eventType = event.type; // => "click"
-
-  setTimeout(function() {
-    console.log(event.type); // => null
-    console.log(eventType); // => "click"
-  }, 0);
-
-  // 不起作用，this.state.clickEvent 的值将会只包含 null
-  this.setState({clickEvent: event});
-
-  // 你仍然可以导出事件属性
-  this.setState({eventType: event.type});
-}
-```
-=======
-> As of v17, `e.persist()` doesn't do anything because the `SyntheticEvent` is no longer [pooled](/docs/legacy-event-pooling.html).
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
+> 从 v17 开始，`e.persist()` 将不再生效，因为 `SyntheticEvent` 不再是[事件池](/docs/legacy-event-pooling.html)。
 
 > 注意：
 >
-<<<<<<< HEAD
-> 如果你想异步访问事件属性，你需在事件上调用 `event.persist()`，此方法会从池中移除合成事件，允许用户代码保留对事件的引用。
-=======
-> As of v0.14, returning `false` from an event handler will no longer stop event propagation. Instead, `e.stopPropagation()` or `e.preventDefault()` should be triggered manually, as appropriate.
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
+> 从 v0.14 开始，事件处理器返回 `false` 时，不再阻止事件传递。你可以酌情使用 `e.stopPropagation()` 或 `e.preventDefault()` 作为替代方案。
 
 ## 支持的事件 {#supported-events}
 
@@ -385,15 +354,11 @@ DOMTouchList touches
 onScroll
 ```
 
-<<<<<<< HEAD
-属性：
-=======
->Note
+>注意
 >
->Starting with React 17, the `onScroll` event **does not bubble** in React. This matches the browser behavior and prevents the confusion when a nested scrollable element fires events on a distant parent.
+>从 React 17 开始，`onScroll` 事件在 React 中**不再冒泡**。这与浏览器的行为一致，并且避免了当一个嵌套且可滚动的元素在其父元素触发事件时造成混乱。
 
-Properties:
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
+属性：
 
 ```javascript
 number detail

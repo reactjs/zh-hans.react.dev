@@ -52,17 +52,10 @@ React 从一开始就被设计为逐步采用，并且**你可以根据需要选
 ```html{5,6,9}
   <!-- ... 其它 HTML ... -->
 
-<<<<<<< HEAD
   <!-- 加载 React。-->
   <!-- 注意: 部署时，将 "development.js" 替换为 "production.min.js"。-->
-  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-=======
-  <!-- Load React. -->
-  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
   <!-- 加载我们的 React 组件。-->
   <script src="like_button.js"></script>
@@ -91,11 +84,7 @@ const domContainer = document.querySelector('#like_button_container');
 ReactDOM.render(e(LikeButton), domContainer);
 ```
 
-<<<<<<< HEAD
 这两行代码会找到我们在步骤 1 中添加到 HTML 里的 `<div>`，然后在它内部显示我们的 React 组件 “Like” 按钮。
-=======
-These two lines of code find the `<div>` we added to our HTML in the first step, and then display our "Like" button React component inside of it.
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
 ### 就是这么简单！ {#thats-it}
 
