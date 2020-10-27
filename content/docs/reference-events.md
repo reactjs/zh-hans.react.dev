@@ -34,11 +34,11 @@ string type
 
 > 注意：
 >
-> 从 v17 开始，`e.persist()` 将不再生效，因为 `SyntheticEvent` 不再是[事件池](/docs/legacy-event-pooling.html)。
+> 从 v17 开始，`e.persist()` 将不再生效，因为 `SyntheticEvent` 不再放入[事件池](/docs/legacy-event-pooling.html)中。
 
 > 注意：
 >
-> 从 v0.14 开始，事件处理器返回 `false` 时，不再阻止事件传递。你可以酌情使用 `e.stopPropagation()` 或 `e.preventDefault()` 作为替代方案。
+> 从 v0.14 开始，事件处理器返回 `false` 时，不再阻止事件传递。你可以酌情手动调用 `e.stopPropagation()` 或 `e.preventDefault()` 作为替代方案。
 
 ## 支持的事件 {#supported-events}
 
