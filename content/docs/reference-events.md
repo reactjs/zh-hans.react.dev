@@ -146,9 +146,9 @@ onFocus onBlur
 DOMEventTarget relatedTarget
 ```
 
-#### onFocus
+#### onFocus {#onfocus}
 
-The `onFocus` event is called when the element (or some element inside of it) receives focus. For example, it's called when the user clicks on a text input.
+`onFocus` 事件在元素（或其内部某些元素）聚焦时被调用。例如，当用户点击文本输入框时，就会调用该事件。
 
 ```javascript
 function Example() {
@@ -163,9 +163,9 @@ function Example() {
 }
 ```
 
-#### onBlur
+#### onBlur {#onblur}
 
-The `onBlur` event handler is called when focus has left the element (or left some element inside of it). For example, it's called when the user clicks outside of a focused text input.
+`onBlur` 事件处理程序在元素（或元素内某些元素）失去焦点时被调用。例如，当用户在已聚焦的文本输入框外点击时，就会被调用。
 
 ```javascript
 function Example() {
@@ -180,9 +180,9 @@ function Example() {
 }
 ```
 
-#### Detecting Focus Entering and Leaving
+#### 监听焦点的进入与离开 {#detecting-focus-entering-and-leaving}
 
-You can use the `currentTarget` and `relatedTarget` to differentiate if the focusing or blurring events originated from _outside_ of the parent element. Here is a demo you can copy and paste that shows how to detect focusing a child, focusing the element itself, and focus entering or leaving the whole subtree.
+你可以使用 `currentTarget` 和 `relatedTarget` 来区分聚焦和失去焦点是否来自父元素_外部_。这里有个 DEMO，你可以复制并在本地运行，它展示了如何监听一个子元素的聚焦，元素本身的聚焦，以及整个子树进入焦点或离开焦点。
 
 ```javascript
 function Example() {
