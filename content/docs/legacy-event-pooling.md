@@ -24,6 +24,7 @@ function handleChange(e) {
 ```
 
 如果你需要在事件处理函数运行之后获取事件对象的属性，你需要调用 `e.persist()`：
+
 ```javascript
 function handleChange(e) {
   // Prevents React from resetting its properties:
