@@ -377,7 +377,6 @@ let container = null;
 beforeEach(() => {
   // 创建一个 DOM 元素作为渲染目标
   container = document.createElement("div");
-  // container *必须* 附加到 document，事件才能正常工作。
   document.body.appendChild(container);
 });
 
@@ -416,7 +415,7 @@ it("点击时更新值", () => {
 });
 ```
 
-[MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)描述了不同的 DOM 事件及其属性。注意，你需要在创建的每个事件中传递 `{ bubbles: true }` 才能到达 React 监听器，因为 React 会自动将事件委托给 document。
+[MDN](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent)描述了不同的 DOM 事件及其属性。注意，你需要在创建的每个事件中传递 `{ bubbles: true }` 才能到达 React 监听器，因为 React 会自动将事件委托给 root。
 
 > 注意：
 >

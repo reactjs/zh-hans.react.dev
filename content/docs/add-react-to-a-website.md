@@ -54,8 +54,8 @@ React 从一开始就被设计为逐步采用，并且**你可以根据需要选
 
   <!-- 加载 React。-->
   <!-- 注意: 部署时，将 "development.js" 替换为 "production.min.js"。-->
-  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
 
   <!-- 加载我们的 React 组件。-->
   <script src="like_button.js"></script>
@@ -115,8 +115,8 @@ ReactDOM.render(e(LikeButton), domContainer);
 如果你已经压缩了应用代码，如果你确保已部署的 HTML 加载了以 `production.min.js` 结尾的 React 版本，那么**你的网站是生产就绪（production-ready）的**：
 
 ```js
-<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 如果你没有一个代码压缩的步骤，[这有一个配置它的方式](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3)。
@@ -184,7 +184,7 @@ return (
 创建一个名为 `src` 的文件夹并执行这个终端命令：
 
 ```
-npx babel --watch src --out-dir . --presets react-app/prod 
+npx babel --watch src --out-dir . --presets react-app/prod
 ```
 
 > 注意：
