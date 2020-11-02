@@ -99,7 +99,7 @@ function App() {
 
 ### Create React App {#create-react-app}
 
-Create React App 已[对其做兼容支持](https://github.com/facebook/create-react-app/pull/9645)，并将在[即将发布的 v4.0 版本](https://gist.github.com/iansu/4fab7a9bfa5fa6ebc87a908c62f5340b)中提供，该版本处于 beta 测试阶段。
+Create React App [4.0.0](https://github.com/facebook/create-react-app/releases/tag/v4.0.0)+ 使用了兼容 React 版本的 JSX 转换。
 
 ### Next.js {#nextjs}
 
@@ -143,7 +143,7 @@ npm update @babel/core @babel/preset-react
 yarn upgrade @babel/core @babel/preset-react
 ```
 
-目前，旧的转换的默认选项为（`"runtime": "classic"`）。如需启用新的转换，你可以使用 `{"runtime": "automatic"}` 作为 `@babel/plugin-transform-react-jsx` 或 `@babel/preset-react` 的选项：
+目前，旧的转换的默认选项为 `{"runtime": "classic"}`。如需启用新的转换，你可以使用 `{"runtime": "automatic"}` 作为 `@babel/plugin-transform-react-jsx` 或 `@babel/preset-react` 的选项：
 
 ```js
 // 如果你使用的是 @babel/preset-react
@@ -212,7 +212,6 @@ npx react-codemod update-react-imports
 >如果你在运行 codemod 时出现错误，请尝试使用 `npx react-codemod update-react-imports` 选择不同的 JavaScript 环境。尤其是选择 "JavaScript with Flow" 时，即使你未使用 Flow，也可以选择它，因为它比 JavaScript 支持更新的语法。如果遇到问题，请[告知我们](https://github.com/reactjs/react-codemod/issues)。
 >
 >请注意，codemod 的输出可能与你的代码风格并不匹配，因此你可能需要再 codemod 完成后运行 [Prettier](https://prettier.io/) 以保证格式一致。
-
 
 运行 codemod 会执行如下操作：
 
