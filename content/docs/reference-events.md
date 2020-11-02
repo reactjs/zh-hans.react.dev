@@ -180,7 +180,11 @@ function Example() {
 }
 ```
 
+<<<<<<< HEAD
 #### 监听焦点的进入与离开 {#detecting-focus-entering-and-leaving}
+=======
+#### Detecting Focus Entering and Leaving {#detecting-focus-entering-and-leaving}
+>>>>>>> 30baecf59de28a8cd3c91a2cd878e3822f864061
 
 你可以使用 `currentTarget` 和 `relatedTarget` 来区分聚焦和失去焦点是否来自父元素_外部_。这里有个 DEMO，你可以复制并在本地运行，它展示了如何监听一个子元素的聚焦，元素本身的聚焦，以及整个子树进入焦点或离开焦点。
 
@@ -218,7 +222,6 @@ function Example() {
   );
 }
 ```
-
 
 * * *
 
