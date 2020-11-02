@@ -36,11 +36,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 ### 在线体验 {#online-playgrounds}
 
-<<<<<<< HEAD
-如果你对体验 React 感兴趣，可以尝试在线代码编辑器。从 [CodePen](codepen://hello-world)，[CodeSandbox](https://codesandbox.io/s/new)，[Glitch](https://glitch.com/edit/#!/remix/starter-react-template), 或者 [Stackblitz](https://stackblitz.com/fork/react) 开始一个 React 版本的 Hello World 模版。
-=======
-If you're interested in playing around with React, you can use an online code playground. Try a Hello World template on [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new), or [Stackblitz](https://stackblitz.com/fork/react).
->>>>>>> 30baecf59de28a8cd3c91a2cd878e3822f864061
+如果你对体验 React 感兴趣，可以尝试在线代码编辑器。从 [CodePen](codepen://hello-world)，[CodeSandbox](https://codesandbox.io/s/new)，或者 [Stackblitz](https://stackblitz.com/fork/react) 开始一个 React 版本的 Hello World 模版。
 
 如果你喜欢使用自己的文本编辑器，也可以[下载这个 HTML 文件](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html)，然后编辑文件内容，最后再用浏览器从本地文件系统打开文件，预览页面效果。注意：这个文件中包含一个低效率的运行时代码转换脚本，所以我们推荐仅在简单的演示项目中使用。
 

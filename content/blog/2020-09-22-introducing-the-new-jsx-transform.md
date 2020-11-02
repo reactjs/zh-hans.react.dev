@@ -99,11 +99,7 @@ function App() {
 
 ### Create React App {#create-react-app}
 
-<<<<<<< HEAD
-Create React App 已[对其做兼容支持](https://github.com/facebook/create-react-app/pull/9645)，并将在[即将发布的 v4.0 版本](https://gist.github.com/iansu/4fab7a9bfa5fa6ebc87a908c62f5340b)中提供，该版本处于 beta 测试阶段。
-=======
-Create React App [4.0.0](https://github.com/facebook/create-react-app/releases/tag/v4.0.0)+ uses the new transform for compatible React versions.
->>>>>>> 30baecf59de28a8cd3c91a2cd878e3822f864061
+Create React App [4.0.0](https://github.com/facebook/create-react-app/releases/tag/v4.0.0)+ 使用了兼容 React 版本的 JSX 转换。
 
 ### Next.js {#nextjs}
 
@@ -147,11 +143,7 @@ npm update @babel/core @babel/preset-react
 yarn upgrade @babel/core @babel/preset-react
 ```
 
-<<<<<<< HEAD
-目前，旧的转换的默认选项为（`"runtime": "classic"`）。如需启用新的转换，你可以使用 `{"runtime": "automatic"}` 作为 `@babel/plugin-transform-react-jsx` 或 `@babel/preset-react` 的选项：
-=======
-Currently, the old transform `{"runtime": "classic"}` is the default option. To enable the new transform, you can pass `{"runtime": "automatic"}` as an option to `@babel/plugin-transform-react-jsx` or `@babel/preset-react`:
->>>>>>> 30baecf59de28a8cd3c91a2cd878e3822f864061
+目前，旧的转换的默认选项为 `{"runtime": "classic"}`。如需启用新的转换，你可以使用 `{"runtime": "automatic"}` 作为 `@babel/plugin-transform-react-jsx` 或 `@babel/preset-react` 的选项：
 
 ```js
 // 如果你使用的是 @babel/preset-react
@@ -200,19 +192,11 @@ Currently, the old transform `{"runtime": "classic"}` is the default option. To 
 
 ### TypeScript {#typescript}
 
-<<<<<<< HEAD
 TypeScript 将在 [v4.1 beta](https://devblogs.microsoft.com/typescript/announcing-typescript-4-1-beta/#jsx-factories) 版本中支持新的 JSX 转换。
 
 ### Flow {#flow}
 
 Flow 将在 [v0.126.0](https://github.com/facebook/flow/releases/tag/v0.126.0) 中支持新的 JSX 转换。
-=======
-TypeScript supports the new JSX transform in [v4.1 beta](https://devblogs.microsoft.com/typescript/announcing-typescript-4-1-beta/#jsx-factories).
-
-### Flow {#flow}
-
-Flow supports the new JSX transform in [v0.126.0](https://github.com/facebook/flow/releases/tag/v0.126.0) and up, by adding `react.runtime=automatic` to your Flow configuration options. 
->>>>>>> 30baecf59de28a8cd3c91a2cd878e3822f864061
 
 ## 移除未使用的 React 引入 {#removing-unused-react-imports}
 
@@ -229,12 +213,7 @@ npx react-codemod update-react-imports
 >
 >请注意，codemod 的输出可能与你的代码风格并不匹配，因此你可能需要再 codemod 完成后运行 [Prettier](https://prettier.io/) 以保证格式一致。
 
-<<<<<<< HEAD
-
 运行 codemod 会执行如下操作：
-=======
-Running this codemod will:
->>>>>>> 30baecf59de28a8cd3c91a2cd878e3822f864061
 
 * 升级到新的 JSX 转换，删除所有未使用的 React 引入。
 * 所有 React 的默认引入将被改为解构命名引入（例如，`import React from "react"` 会变成 `import { useState } from "react"`），这将成为未来开发的首选风格。codemod **不会** 影响现有的命名空间引入方式（即 `import * as React from "react"`），这也是一种有效的风格。默认的引入将在 React 17 中继续工作，但从长远来看，我们建议尽量不使用它们。

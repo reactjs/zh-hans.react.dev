@@ -128,11 +128,7 @@ const MyContext = React.createContext(defaultValue);
 
 每个 Context 对象都会返回一个 Provider React 组件，它允许消费组件订阅 context 的变化。
 
-<<<<<<< HEAD
 Provider 接收一个 `value` 属性，传递给消费组件。一个 Provider 可以和多个消费组件有对应关系。多个 Provider 也可以嵌套使用，里层的会覆盖外层的数据。
-=======
-The Provider component accepts a `value` prop to be passed to consuming components that are descendants of this Provider. One Provider can be connected to many consumers. Providers can be nested to override values deeper within the tree.
->>>>>>> 30baecf59de28a8cd3c91a2cd878e3822f864061
 
 当 Provider 的 `value` 值发生变化时，它内部的所有消费组件都会重新渲染。Provider 及其内部 consumer 组件都不受制于 `shouldComponentUpdate` 函数，因此当 consumer 组件在其祖先组件退出更新的情况下也能更新。
 

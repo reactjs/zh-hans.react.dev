@@ -193,17 +193,10 @@ function App() {
 
 我们只用了 7 行代码来实现这个切换：
 
-<<<<<<< HEAD
 * 我们引入了 `useTransition` Hook 并在更新 state 的组件中使用了它。
 * 我们传入了 `{timeoutMs: 3000}` 使得前一个页面在屏幕上最多保持3秒钟。
 * 我们把 state 更新包裹在 `startTransition` 中，以通知 React 可以延迟这个更新。
 * 我们使用 `isPending` 来告诉用户界面切换的进展并禁用按钮。
-=======
-* We've imported the `useTransition` Hook and used it in the component that updates the state.
-* We've passed `{timeoutMs: 3000}` to stay on the previous screen for at most 3 seconds.
-* We've wrapped our state update into `startTransition` to tell React it's okay to delay it.
-* We're using `isPending` to communicate the state transition progress to the user and to disable the button.
->>>>>>> 30baecf59de28a8cd3c91a2cd878e3822f864061
 
 最后的结果是，点击 “Next” 按钮不会立刻切换界面并展示加载中，而是停留在前一个界面并同步加载进度。
 
