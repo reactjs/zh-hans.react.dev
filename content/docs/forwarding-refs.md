@@ -51,7 +51,7 @@ React 组件隐藏其实现细节，包括其渲染结果。其他使用 `FancyB
 “logProps” HOC 透传（pass through）所有 `props` 到其包裹的组件，所以渲染结果将是相同的。例如：我们可以使用该 HOC 记录所有传递到 “fancy button” 组件的 props：
 `embed:forwarding-refs/fancy-button.js`
 
-上面的示例有一点需要注意：refs 将不会透传下去。这是因为 `ref` 不是 prop 属性。就像 `key` 一样，其被 React 进行了特殊处理。如果你对 HOC 添加 ref，该 ref 将引用最外层的容器组件，而不是被包裹的组件。
+下面的示例有一点需要注意：refs 将不会透传下去。这是因为 `ref` 不是 prop 属性。就像 `key` 一样，其被 React 进行了特殊处理。如果你对 HOC 添加 ref，该 ref 将引用最外层的容器组件，而不是被包裹的组件。
 
 这意味着用于我们 `FancyButton` 组件的 refs 实际上将被挂载到 `LogProps` 组件：
 `embed:forwarding-refs/fancy-button-ref.js`
