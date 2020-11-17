@@ -413,6 +413,12 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
+React 的开发和生产构建版本在 `componentDidCatch()` 的方式上有轻微差别。
+
+在开发模式下，错误会冒泡至 `window`，这意味着任何 `window.onerror` 或 `window.addEventListener('error', callback)` 会中断这些已经被 `componentDidCatch()` 捕获的错误。
+
+相反，在开发模式下，错误不会冒泡，这意味着任何根错误处理器只会接受那些没有显式地被 `componentDidCatch()` 捕获的错误。
+
 > 注意
 >
 > 如果发生错误，你可以通过调用 `setState` 使用 `componentDidCatch()` 渲染降级 UI，但在未来的版本中将不推荐这样做。

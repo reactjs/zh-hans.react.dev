@@ -99,7 +99,7 @@ MyComponent.propTypes = {
   // 这个 prop 没有被提供时，会打印警告信息。
   requiredFunc: PropTypes.func.isRequired,
 
-  // 任意类型的数据
+  // 任意类型的必需数据
   requiredAny: PropTypes.any.isRequired,
 
   // 你可以指定一个自定义验证器。它在验证失败时应返回一个 Error 对象。

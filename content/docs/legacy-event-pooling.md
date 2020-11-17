@@ -12,7 +12,7 @@ permalink: docs/legacy-event-pooling.html
 >
 >[查看更多](/blog/2020/08/10/react-v17-rc.html#no-event-pooling)关于 React 17 中的相关改动。
 
-[`SyntheticEvent`](/docs/events.html) 对象会被放入池中统一管理。这意味着 `SyntheticEvent` 可以被复用，当所有事件处理函数被调用之后，其所有属性都会被置空。例如，以下代码是无效的：
+[`SyntheticEvent`](/docs/events.html) 对象会被放入池中统一管理。这意味着 `SyntheticEvent` 对象可以被复用，当所有事件处理函数被调用之后，其所有属性都会被置空。例如，以下代码是无效的：
 
 ```javascript
 function handleChange(e) {
