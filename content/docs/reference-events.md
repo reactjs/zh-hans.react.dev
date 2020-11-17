@@ -308,7 +308,7 @@ boolean isPrimary
 
 并非每个浏览器都支持指针事件（在写这篇文章时，已支持的浏览器有：Chrome，Firefox，Edge 和 Internet Explorer）。React 故意不通过 polyfill 的方式适配其他浏览器，主要是符合标准的 polyfill 会显著增加 react-dom 的 bundle 大小。
 
-如果你的应用要求指针事件，我们推荐添加第三方的指针事件 polyfil 。
+如果你的应用要求指针事件，我们推荐添加第三方的指针事件 polyfill 。
 
 * * *
 
