@@ -192,7 +192,11 @@ yarn upgrade @babel/core @babel/preset-react
 
 ### TypeScript {#typescript}
 
+<<<<<<< HEAD
 TypeScript 将在 [v4.1 beta](https://devblogs.microsoft.com/typescript/announcing-typescript-4-1-beta/#jsx-factories) 版本中支持新的 JSX 转换。
+=======
+TypeScript supports the new JSX transform in [v4.1](https://devblogs.microsoft.com/typescript/announcing-typescript-4-1/#jsx-factories) and up.
+>>>>>>> 8f9ef00db1b36ee3e5a0e6072eb601257a6f8ccb
 
 ### Flow {#flow}
 
