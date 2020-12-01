@@ -62,13 +62,8 @@ MyComponent.propTypes = {
   // 一个 React 元素类型（即，MyComponent）。
   optionalElementType: PropTypes.elementType,
 
-<<<<<<< HEAD
   // 你也可以声明 prop 为类的实例，这里使用
   // JS 的 instanceof 操作符。
-=======
-  // You can also declare that a prop is an instance of a class. This uses
-  // JS's instanceof operator.
->>>>>>> 5e437a10ed4e89cd5eaf990ce4f43e0857592b53
   optionalMessage: PropTypes.instanceOf(Message),
 
   // 你可以让你的 prop 只能是特定的值，指定它为
@@ -98,7 +93,7 @@ MyComponent.propTypes = {
   optionalObjectWithStrictShape: PropTypes.exact({
     name: PropTypes.string,
     quantity: PropTypes.number
-  }),   
+  }),
 
   // 你可以在任何 PropTypes 属性后面加上 `isRequired` ，确保
   // 这个 prop 没有被提供时，会打印警告信息。
@@ -199,16 +194,13 @@ class Greeting extends React.Component {
 }
 ```
 
-<<<<<<< HEAD
 `defaultProps` 用于确保 `this.props.name` 在父组件没有指定其值时，有一个默认值。`propTypes` 类型检查发生在 `defaultProps` 赋值后，所以类型检查也适用于 `defaultProps`。
-=======
-The `defaultProps` will be used to ensure that `this.props.name` will have a value if it was not specified by the parent component. The `propTypes` typechecking happens after `defaultProps` are resolved, so typechecking will also apply to the `defaultProps`.
 
-### Function Components
+### 函数组件 {#function-components}
 
-If you are using function components in your regular development, you may want to make some small changes to allow PropTypes to be proper applied.
+如果你在常规开发中使用函数组件，那你可能需要做一些小改动，以保证 PropsTypes 应用正常。
 
-Let's say you have a component like this:
+假设你有如下组件：
 
 ```javascript
 export default function HelloWorldComponent({ name }) {
@@ -218,7 +210,7 @@ export default function HelloWorldComponent({ name }) {
 }
 ```
 
-To add PropTypes, you may want to declare the component in a separate function before exporting, like this:
+如果要添加 PropTypes，你可能需要在导出之前以单独声明的一个函数的形式，声明该组件，具体代码如下：
 
 ```javascript
 function HelloWorldComponent({ name }) {
@@ -230,7 +222,7 @@ function HelloWorldComponent({ name }) {
 export default HelloWorldComponent
 ```
 
-Then, you can add PropTypes directly to the `HelloWorldComponent`:
+接着，可以直接在 `HelloWorldComponent` 上添加 PropTypes：
 
 ```javascript
 import PropTypes from 'prop-types'
@@ -247,4 +239,3 @@ HelloWorldComponent.propTypes = {
 
 export default HelloWorldComponent
 ```
->>>>>>> 5e437a10ed4e89cd5eaf990ce4f43e0857592b53
