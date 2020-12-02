@@ -88,12 +88,12 @@ MyComponent.propTypes = {
     color: PropTypes.string,
     fontSize: PropTypes.number
   }),
-  
+
   // An object with warnings on extra properties
   optionalObjectWithStrictShape: PropTypes.exact({
     name: PropTypes.string,
     quantity: PropTypes.number
-  }),   
+  }),
 
   // 你可以在任何 PropTypes 属性后面加上 `isRequired` ，确保
   // 这个 prop 没有被提供时，会打印警告信息。
@@ -195,3 +195,47 @@ class Greeting extends React.Component {
 ```
 
 `defaultProps` 用于确保 `this.props.name` 在父组件没有指定其值时，有一个默认值。`propTypes` 类型检查发生在 `defaultProps` 赋值后，所以类型检查也适用于 `defaultProps`。
+
+### 函数组件 {#function-components}
+
+如果你在常规开发中使用函数组件，那你可能需要做一些小改动，以保证 PropsTypes 应用正常。
+
+假设你有如下组件：
+
+```javascript
+export default function HelloWorldComponent({ name }) {
+  return (
+    <div>Hello, {name}</div>
+  )
+}
+```
+
+如果要添加 PropTypes，你可能需要在导出之前以单独声明的一个函数的形式，声明该组件，具体代码如下：
+
+```javascript
+function HelloWorldComponent({ name }) {
+  return (
+    <div>Hello, {name}</div>
+  )
+}
+
+export default HelloWorldComponent
+```
+
+接着，可以直接在 `HelloWorldComponent` 上添加 PropTypes：
+
+```javascript
+import PropTypes from 'prop-types'
+
+function HelloWorldComponent({ name }) {
+  return (
+    <div>Hello, {name}</div>
+  )
+}
+
+HelloWorldComponent.propTypes = {
+  name: PropTypes.string
+}
+
+export default HelloWorldComponent
+```

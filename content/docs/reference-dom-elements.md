@@ -130,7 +130,7 @@ React 会自动添加 ”px” 后缀到内联样式为数字的属性后。如�
 React 为 DOM 提供了一套以 JavaScript 为中心的 API。由于 React 组件经常采用自定义或和 DOM 相关的 props 的关系，React 采用了`小驼峰命名`的方式，正如 DOM APIs 那样：
 
 ```js
-<div tabIndex="-1" />      // Just like node.tabIndex DOM API
+<div tabIndex={-1} />      // Just like node.tabIndex DOM API
 <div className="Button" /> // Just like node.className DOM API
 <input readOnly={true} />  // Just like node.readOnly DOM API
 ```
