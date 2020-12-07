@@ -22,7 +22,11 @@ React 遵循[语义化版本（semver）](https://semver.org/)原则。
 
 ### 不兼容的改动 {#breaking-changes}
 
+<<<<<<< HEAD
 不兼容的改动会对所有人造成不便，因此我们会尽可能地减少主版本的发布次数。例如：React 15 在 2016 年 4 月发布，React 16 在 2017 年 9 月发布，而 React 17 在 2020 年的某个时候才会发布。
+=======
+Breaking changes are inconvenient for everyone, so we try to minimize the number of major releases – for example, React 15 was released in April 2016 and React 16 was released in September 2017, and React 17 was released in October 2020.
+>>>>>>> 4fc709d0576d0f0f1f8ea8b6bb341a12944b5510
 
 实际上，我们会在次版本中发布新功能。次版本相比主版本更加有趣和吸引人，尽管它的名字没这么说。
 
