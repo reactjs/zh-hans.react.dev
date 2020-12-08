@@ -116,6 +116,10 @@ class MyComponent extends React.Component {
 
 严格模式采用故意重复调用方法（如组件的构造函数）的方式，使得这种 bug 更容易被发现。
 
+> 注意：
+>
+> 从 React 17 开始，React 会自动修改 console 的方法，例如 `console.log()`，以在对生命周期函数的第二次调用中静默日志。然而，在某些[可以使用替代解决方案](https://github.com/facebook/react/issues/20090#issuecomment-715927125)的情况下，这可能会导致一些不期望的行为的发生。
+
 ### 检测过时的 context API {#detecting-legacy-context-api}
 
 过时的 context API 容易出错，将在未来的主要版本中删除。在所有 16.x 版本中它仍然有效，但在严格模式下，将显示以下警告：
