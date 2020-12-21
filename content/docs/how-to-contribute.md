@@ -124,7 +124,11 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 * `yarn build` 新建涉及所有包的 `build` 文件夹。
 * `yarn build react/index,react-dom/index --type=UMD` 生成只有 React 和 ReactDOM 的 UMD 版本。
 
+<<<<<<< HEAD
 我们建议运行 `yarn test` 或前文提及的变体以确保你的代码没有引入回归，不管怎样，这有助于尝试你的 React 构建版本。
+=======
+We recommend running `yarn test` (or its variations above) to make sure you don't introduce any regressions as you work on your change. However, it can be handy to try your build of React in a real project.
+>>>>>>> 923629258fce174a89231c88c90805d9e5b0278d
 
 首先，运行 `yarn build`，这会于 `build` 文件夹中生成预先构建的 bundle，还会于 `build/packages` 中生成 npm 包。
 
