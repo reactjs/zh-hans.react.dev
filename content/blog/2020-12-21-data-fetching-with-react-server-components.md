@@ -1,24 +1,24 @@
 ---
-title: "Introducing Zero-Bundle-Size React Server Components"
+title: "介绍零构建的 React 服务组件"
 author: [gaearon,laurentan,josephsavona,sebmarkbage]
 ---
 
-2020 has been a long year. As it comes to an end we wanted to share a special Holiday Update on our research into zero-bundle-size **React Server Components**.
+2020 是漫长的一年。在今年即将结束之际，我们想分享一个特别的假日更新，介绍下我们对零构建的 **React 服务组件**的研究。
 
-To introduce React Server Components, we have prepared a talk and a demo. If you want, you can check them out during the holidays, or later when work picks back up in the new year.
+为了介绍 React 服务组件，我们特别准备了一场分享和一个 Demo。如果时间方便，可以在假期期间研究它们，或者在新年恢复工作后再查看。
 
 <br>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TQQPAU21ZUw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-**React Server Components are still in research and development.** We are sharing this work in the spirit of transparency and to get initial feedback from the React community. There will be plenty of time for that, so **don't feel like you have to catch up right now!**
+**React 服务组件仍在研发中**。我们本着透明公开的原则分享这份工作的情况，并从 React 社区中汲取相应的反馈。时间会很充裕，因此，大家**不必惊慌，并非现在就要学**！
 
-If you want to check them out, we recommend to go in the following order:
+如果你想了解它们，建议按如下顺序学习：
 
-1. **Watch the talk** to learn about React Server Components and see the demo.
+1. **观看分享**，以学习了解 React 服务组件并学习 Demo。
 
-2. **[Clone the demo](http://github.com/reactjs/server-components-demo)** to play with React Server Components on your computer.
+2. **[clone 此 Demo](http://github.com/reactjs/server-components-demo)** 并在本机运行 React 服务组件。
 
-3. **[Read the RFC (with FAQ at the end)](https://github.com/reactjs/rfcs/pull/188)** for a deeper technical breakdown and to provide feedback.
+3. **[阅读 RFC（包含常见问题）](https://github.com/reactjs/rfcs/pull/188)**进行更深层次的技术分享，并反馈给我们。
 
-We are excited to hear from you on the RFC or in replies to the [@reactjs](https://twitter.com/reactjs) Twitter handle. Happy holidays, stay safe, and see you next year!
+我们非常希望你能在 RFC 上回复或 [@reactjs](https://twitter.com/reactjs) 的 Twitter 说出你的想法。节日快乐，明年见！
