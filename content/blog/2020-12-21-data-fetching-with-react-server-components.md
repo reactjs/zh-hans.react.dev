@@ -9,7 +9,7 @@ author: [gaearon,laurentan,josephsavona,sebmarkbage]
 
 <br>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TQQPAU21ZUw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://v.qq.com/txp/iframe/player.html?vid=a32141wmu46" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 **React 服务端组件仍在研发中**。我们本着透明公开的原则分享这份工作的情况，并从 React 社区中汲取相应的反馈。时间会很充裕，因此，大家**不必惊慌，并非现在就要学**！
 
