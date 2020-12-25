@@ -101,7 +101,7 @@ MessageList.childContextTypes = {
 
 > 注意：
 >
-> 自从 React 15.5 版本之后，`React.PropTypes` 已经转移到了另一个包。请改用 [`prop-types` 库](https://www.npmjs.com/package/prop-types) 来定义 `contextTypes`。
+> 自从 React 15.5 版本之后，`React.PropTypes` 已经转移到了另一个包。请改用 [`prop-types` 库](https://www.npmjs.com/package/prop-types) 来定义 `PropTypes`。
 >
 > 我们提供了 [一个 codemod 脚本](/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes) 来自动转换。
 
