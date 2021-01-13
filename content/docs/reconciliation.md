@@ -27,7 +27,7 @@ React 提供的声明式 API 让开发者可以在对 React 的底层实现没�
 
 当根节点为不同类型的元素时，React 会拆卸原有的树并且建立起新的树。举个例子，当一个元素从 `<a>` 变成 `<img>`，从 `<Article>` 变成 `<Comment>`，或从 `<Button>` 变成 `<div>` 都会触发一个完整的重建流程。
 
-当拆卸一棵树时，对应的 DOM 节点也会被销毁。组件实例将执行 `componentWillUnmount()` 方法。当建立一棵新的树时，对应的 DOM 节点会被创建以及插入到 DOM 中。组件实例将执行 `componentWillMount()` 方法，紧接着 `componentDidMount()` 方法。所有跟之前的树所关联的 state 也会被销毁。
+当拆卸一棵树时，对应的 DOM 节点也会被销毁。组件实例将执行 `componentWillUnmount()` 方法。当建立一棵新的树时，对应的 DOM 节点会被创建以及插入到 DOM 中。组件实例将执行 `UNSAFE_componentWillMount()` 方法，紧接着 `componentDidMount()` 方法。所有跟之前的树所关联的 state 也会被销毁。
 
 在根节点以下的组件也会被卸载，它们的状态会被销毁。比如，当比对以下更变时：
 
@@ -42,6 +42,12 @@ React 提供的声明式 API 让开发者可以在对 React 的底层实现没�
 ```
 
 React 会销毁 `Counter` 组件并且重新装载一个新的组件。
+
+>注意：
+>
+>这些方法被认为是过时的，在新的代码中应该[避免使用它们](/blog/2018/03/27/update-on-async-rendering.html)：
+>
+>- `UNSAFE_componentWillMount()`
 
 ### 对比同一类型的元素 {#dom-elements-of-the-same-type}
 
@@ -69,9 +75,16 @@ React 会销毁 `Counter` 组件并且重新装载一个新的组件。
 
 ### 对比同类型的组件元素 {#component-elements-of-the-same-type}
 
-当一个组件更新时，组件实例保持不变，这样 state 在跨越不同的渲染时保持一致。React 将更新该组件实例的 props 以跟最新的元素保持一致，并且调用该实例的  `componentWillReceiveProps()` 和 `componentWillUpdate()` 方法。
+当一个组件更新时，组件实例保持不变，这样 state 在跨越不同的渲染时保持一致。React 将更新该组件实例的 props 以跟最新的元素保持一致，并且调用该实例的  `UNSAFE_componentWillReceiveProps()`、`UNSAFE_componentWillUpdate()` 以及 `componentDidUpdate()` 方法。
 
 下一步，调用 `render()` 方法，diff 算法将在之前的结果以及新的结果中进行递归。
+
+>注意：
+>
+>这些方法已过时，在新代码中应避免[使用它们](/blog/2018/03/27/update-on-async-rendering.html)：
+>
+>- `UNSAFE_componentWillUpdate()`
+>- `UNSAFE_componentWillReceiveProps()`
 
 ### 对子节点进行递归 {#recursing-on-children}
 
