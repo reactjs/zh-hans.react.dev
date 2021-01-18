@@ -84,6 +84,7 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 
 **提交 pull request 前**，请确保完成以下步骤：
 
+<<<<<<< HEAD
 1. Fork [此仓库](https://github.com/facebook/react)，从 `master` 创建分支。
 2. 在仓库根目录下执行 `yarn`。
 3. 如果你修复了 bug 或者添加了代码，而这些内容需要测试，请添加测试！
@@ -94,6 +95,18 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 8. 确保 lint 校验代码（`yarn lint`）。提示：执行 `yarn linc` 去只检查更改过的文件。
 9. 运行 [Flow](https://flowtype.org/) 来类型检查（`yarn flow`）。
 10. 请签订贡献者许可证协议（Contributor License Agreement）。
+=======
+1. Fork [the repository](https://github.com/facebook/react) and create your branch from `master`.
+2. Run `yarn` in the repository root.
+3. If you've fixed a bug or added code that should be tested, add tests!
+4. Ensure the test suite passes (`yarn test`). Tip: `yarn test --watch TestName` is helpful in development.
+5. Run `yarn test --prod` to test in the production environment.
+6. If you need a debugger, run `yarn debug-test --watch TestName`, open `chrome://inspect`, and press "Inspect".
+7. Format your code with [prettier](https://github.com/prettier/prettier) (`yarn prettier`).
+8. Make sure your code lints (`yarn lint`). Tip: `yarn linc` to only check changed files.
+9. Run the [Flow](https://flowtype.org/) typechecks (`yarn flow`).
+10. If you haven't already, complete the CLA.
+>>>>>>> 3844da103db4c2dea4783f5b3a2a0b53708d04ab
 
 ### 贡献者许可证协议 {#contributor-license-agreement-cla}
 
@@ -113,6 +126,7 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 克隆 React 项目后，执行 `yarn` 来获取依赖。
 之后，你可以执行以下命令：
 
+<<<<<<< HEAD
 * `yarn lint` 检查代码风格。
 * `yarn linc` 和 `yarn lint` 差不多，但是运行地更快，因为只检查了分支中的不同文件。
 * `yarn test` 运行完整的测试套装。
@@ -123,6 +137,18 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 * `yarn flow` 运行 [Flow](https://flowtype.org/) 进行类型检查。
 * `yarn build` 新建涉及所有包的 `build` 文件夹。
 * `yarn build react/index,react-dom/index --type=UMD` 生成只有 React 和 ReactDOM 的 UMD 版本。
+=======
+* `yarn lint` checks the code style.
+* `yarn linc` is like `yarn lint` but faster because it only checks files that differ in your branch.
+* `yarn test` runs the complete test suite.
+* `yarn test --watch` runs an interactive test watcher.
+* `yarn test --prod` runs tests in the production environment.
+* `yarn test <pattern>` runs tests with matching filenames.
+* `yarn debug-test` is just like `yarn test` but with a debugger. Open `chrome://inspect` and press "Inspect".
+* `yarn flow` runs the [Flow](https://flowtype.org/) typechecks.
+* `yarn build` creates a `build` folder with all the packages.
+* `yarn build react/index,react-dom/index --type=UMD` creates UMD builds of just React and ReactDOM.
+>>>>>>> 3844da103db4c2dea4783f5b3a2a0b53708d04ab
 
 我们建议运行 `yarn test`（或上述命令）以确保你的代码没有引入回归，不管怎样，这有助于尝试你的 React 构建版本。
 

@@ -31,7 +31,7 @@ redirect_from:
 
 例如，如果我们想让前一个示例在提交时打印出名称，我们可以将表单写为受控组件：
 
-```javascript{4,10-12,24}
+```javascript{4,10-12,21,24}
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
