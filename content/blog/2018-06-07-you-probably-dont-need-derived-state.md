@@ -268,7 +268,7 @@ class Example extends Component {
 }
 ```
 
-这个实现避免了重复计算 `filteredList`，但是过于复杂。因为它必须单独追踪并检测 prop 和 state 的变化，在能及时的更新过滤后的 list。我们可以使用 `PureComponent`，把过滤操作放到 render 方法里来简化这个组件：
+这个实现避免了重复计算 `filteredList`，但是过于复杂。因为它必须单独追踪并检测 prop 和 state 的变化，才能及时的更新过滤后的 list。我们可以使用 `PureComponent`，把过滤操作放到 render 方法里来简化这个组件：
 
 ```js
 // PureComponents 只会在 state 或者 prop 的值修改时才会再次渲染。
