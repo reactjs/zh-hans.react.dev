@@ -885,7 +885,7 @@ function ProfilePage({ resource }) {
 
 这带来了一个问题。如果趣闻先到达了，我们会发现趣闻展示在文章列表的降级界面 `<h2>Loading posts...</h2>`。我们可能会先开始阅读这些，但是稍后*文章列表*的响应到达，把所有的趣闻推到下面。这感觉很不好。
 
-其中一种解决办法是我们通过把他们放在同一个 Suspence 边界中：
+其中一种解决办法是我们通过把他们放在同一个 Suspense 边界中：
 
 ```js
 <Suspense fallback={<h2>Loading posts and fun facts...</h2>}>
@@ -934,6 +934,6 @@ function ProfilePage({ resource }) {
 
 ## 下一步 {#next-steps}
 
-Concurrent 模式提供了一个强大的 UI 变成模型和一系列的新的可组合的指令集来帮助你构建愉快的用户体验。
+Concurrent 模式提供了一个强大的 UI 编程模型和一系列的新的可组合的指令集来帮助你构建愉快的用户体验。
 
 这是通过多年的调查和开发的结果，但它尚未完结。在 [采用 Concurrent 模式](/docs/concurrent-mode-adoption.html) 中，我们会讲如何使用它以及它的效果。
