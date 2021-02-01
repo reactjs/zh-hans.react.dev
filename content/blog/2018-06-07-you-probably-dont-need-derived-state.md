@@ -309,7 +309,7 @@ class Example extends Component {
   // state 只需要保存当前的 filter 值：
   state = { filterText: "" };
 
-  // 在 list 或者 filter 变化时，重新运行 filter：
+  // 在 list 或者 filterText 变化时，重新运行 filter：
   filter = memoize(
     (list, filterText) => list.filter(item => item.text.includes(filterText))
   );
