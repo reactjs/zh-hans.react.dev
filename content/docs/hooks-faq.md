@@ -642,7 +642,7 @@ function ProductPage({ productId }) {
 >
 >看看 [这个小 demo](https://codesandbox.io/s/jvvkoo8pq3) 和 [这篇文章](https://www.robinwieruch.de/react-hooks-fetch-data/) 来了解更多关于如何用 Hook 进行数据获取。
 
-**如果处于某些原因你 _无法_ 把一个函数移动到 effect 内部，还有一些其他办法：**
+**如果出于某些原因你 _无法_ 把一个函数移动到 effect 内部，还有一些其他办法：**
 
 * **你可以尝试把那个函数移动到你的组件之外**。那样一来，这个函数就肯定不会依赖任何 props 或 state，并且也不用出现在依赖列表中了。
 * 如果你所调用的方法是一个纯计算，并且可以在渲染时调用，你可以 **转而在 effect 之外调用它，** 并让 effect 依赖于它的返回值。
