@@ -70,7 +70,7 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 
 在写第一个 Pull Request？你可以从这一系列视频中学习怎么做：
 
-**[How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**
+**[How to Contribute to an Open Source Project on GitHub](https://app.egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)**
 
 为了使你能够快速上手和熟悉贡献流程，我们这里有个列表 **[good first issues](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")**，里面有相对没那么笼统的漏洞，从这开始是个不错的选择。
 
@@ -136,7 +136,7 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 
 ```bash
 cd ~/path_to_your_react_clone/
-yarn build react/index,react-dom/index,scheduler --type=NODE
+yarn build react/index,react/jsx,react-dom/index,scheduler --type=NODE
 
 cd build/node_modules/react
 yarn link
