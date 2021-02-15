@@ -198,7 +198,11 @@ class Greeting extends React.Component {
 
 ### 函数组件 {#function-components}
 
+<<<<<<< HEAD
 如果你在常规开发中使用函数组件，那你可能需要做一些小改动，以保证 PropsTypes 应用正常。
+=======
+If you are using function components in your regular development, you may want to make some small changes to allow PropTypes to be properly applied.
+>>>>>>> 888d9eae7a33ec1a48c18f28e82c26d048d885be
 
 假设你有如下组件：
 
