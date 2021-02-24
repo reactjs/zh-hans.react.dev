@@ -6,7 +6,7 @@ permalink: docs/context.html
 
 Context 提供了一个无需为每层组件手动添加 props，就能在组件树间进行数据传递的方法。
 
-在一个典型的 React 应用中，数据是通过 props 属性自上而下（由父及子）进行传递的，但这种做法对于某些类型的属性而言是极其繁琐的（例如：地区偏好，UI 主题），这些属性是应用程序中许多组件都需要的。Context 提供了一种在组件之间共享此类值的方式，而不必显式地通过组件树的逐层传递 props。
+在一个典型的 React 应用中，数据是通过 props 属性自上而下（由父及子）进行传递的，但此种用法对于某些类型的属性而言是极其繁琐的（例如：地区偏好，UI 主题），这些属性是应用程序中许多组件都需要的。Context 提供了一种在组件之间共享此类值的方式，而不必显式地通过组件树的逐层传递 props。
 
 - [何时使用 Context](#when-to-use-context)
 - [使用 Context 之前的考虑](#before-you-use-context)
@@ -118,7 +118,7 @@ const MyContext = React.createContext(defaultValue);
 
 创建一个 Context 对象。当 React 渲染一个订阅了这个 Context 对象的组件，这个组件会从组件树中离自身最近的那个匹配的 `Provider` 中读取到当前的 context 值。
 
-**只有**当组件所处的树中没有匹配到 Provider 时，其 `defaultValue` 参数才会生效。这有助于在不使用 Provider 包装组件的情况下对组件进行测试。注意：将 `undefined` 传递给 Provider 的 value 时，消费组件的 `defaultValue` 不会生效。
+**只有**当组件所处的树中没有匹配到 Provider 时，其 `defaultValue` 参数才会生效。此默认值有助于在不使用 Provider 包装组件的情况下对组件进行测试。注意：将 `undefined` 传递给 Provider 的 value 时，消费组件的 `defaultValue` 不会生效。
 
 ### `Context.Provider` {#contextprovider}
 
@@ -162,7 +162,7 @@ class MyClass extends React.Component {
 MyClass.contextType = MyContext;
 ```
 
-挂载在 class 上的 `contextType` 属性会被重赋值为一个由 [`React.createContext()`](#reactcreatecontext) 创建的 Context 对象。这能让你使用 `this.context` 来消费最近 Context 上的那个值。你可以在任何生命周期中访问到它，包括 render 函数中。
+挂载在 class 上的 `contextType` 属性会被重赋值为一个由 [`React.createContext()`](#reactcreatecontext) 创建的 Context 对象。此属性能让你使用 `this.context` 来消费最近 Context 上的那个值。你可以在任何生命周期中访问到它，包括 render 函数中。
 
 > 注意：
 >
@@ -189,7 +189,7 @@ class MyClass extends React.Component {
 </MyContext.Consumer>
 ```
 
-一个 React 组件可以订阅 context 的变更，这让你在[函数式组件](/docs/components-and-props.html#function-and-class-components)中可以订阅 context。
+一个 React 组件可以订阅 context 的变更，此组件可以让你在[函数式组件](/docs/components-and-props.html#function-and-class-components)中可以订阅 context。
 
 这种方法需要一个[函数作为子元素（function as a child）](/docs/render-props.html#using-props-other-than-render)。这个函数接收当前的 context 值，并返回一个 React 节点。传递给函数的 `value` 值等价于组件树上方离这个 context 最近的 Provider 提供的 `value` 值。如果没有对应的 Provider，`value` 参数等同于传递给 `createContext()` 的 `defaultValue`。
 
