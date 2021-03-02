@@ -130,7 +130,7 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 
 想测试你做出的更改的话，最简单的方法就是运行 `yarn build react/index,react-dom/index --type=UMD`，之后再打开 `fixtures/packaging/babel-standalone/dev.html`，该文件已使用 `build` 文件夹内的 `react.development.js` 来搞定你的更改。
 
-如果你想测试你对已有 React 项目做出的更改，你可以复制 `build/dist/react.development.js` 和 `build/dist/react-dom.development.js` 或其它构建版本，放入你的应用中并使用这些构建版本而非稳定版。
+如果你想测试你对已有 React 项目做出的更改，你可以复制 `build/node_modules/react/umd/react.development.js` 和 `build/node_modules/react-dom/umd/react-dom.development.js` 或其它构建版本，放入你的应用中并使用这些构建版本而非稳定版。
 
 如果你的项目用 npm，你可以从依赖中删去 `react` 和 `react-dom`，使用 `yarn link` 将其指向本地文件夹的 `build` 目录。请注意，**当请在构建时，传递 `--type=NODE`，而不是 `--type=UMD`。同时，你还需要构建 `scheduler` 的 package：
 
