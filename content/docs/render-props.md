@@ -321,4 +321,4 @@ class MouseTracker extends React.Component {
 }
 ```
 
-如果你无法静态定义 prop（例如，因为你需要关闭组件的 props 和/或 state），则 `<Mouse>` 应该继承 `React.Component`。
+如果你无法静态定义 prop（例如，因为你需要关闭组件的 props 和/或 state），则 `<Mouse>` 应该继承自 `React.Component`。

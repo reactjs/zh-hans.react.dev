@@ -70,7 +70,7 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 
 在写第一个 Pull Request？你可以从这一系列视频中学习怎么做：
 
-**[How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**
+**[How to Contribute to an Open Source Project on GitHub](https://app.egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)**
 
 为了使你能够快速上手和熟悉贡献流程，我们这里有个列表 **[good first issues](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")**，里面有相对没那么笼统的漏洞，从这开始是个不错的选择。
 
@@ -88,7 +88,7 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 2. 在仓库根目录下执行 `yarn`。
 3. 如果你修复了 bug 或者添加了代码，而这些内容需要测试，请添加测试！
 4. 确保通过测试套件（`yarn test`）。提示：开发环境下，`yarn test --watch TestName` 很有用。
-5. 生产环境下，执行 `yarn test-prod`  来进行测试，该命令支持和 `yarn test` 一样的选项。
+5. 生产环境下，执行 `yarn test --prod`  来进行测试。
 6. 如果需要调试，请执行 `yarn debug-test --watch TestName`，打开 `chrome://inspect`， 之后再打开 “审查”。
 7. 使用 [prettier](https://github.com/prettier/prettier)（`yarn prettier`）来格式化代码。
 8. 确保 lint 校验代码（`yarn lint`）。提示：执行 `yarn linc` 去只检查更改过的文件。
@@ -117,8 +117,8 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 * `yarn linc` 和 `yarn lint` 差不多，但是运行地更快，因为只检查了分支中的不同文件。
 * `yarn test` 运行完整的测试套装。
 * `yarn test --watch` 运行交互式的测试监听器。
+* `yarn test --prod` 在生产环境下运行测试。
 * `yarn test <pattern>` 匹配文件名，运行响应测试。
-* `yarn test-prod` 在生产环境下运行测试，支持和 `yarn test`  一样的选项。
 * `yarn debug-test` 和 `yarn test` 差不多，不过多了个调试器，你可以打开 `chrome://inspect` 并审查。
 * `yarn flow` 运行 [Flow](https://flowtype.org/) 进行类型检查。
 * `yarn build` 新建涉及所有包的 `build` 文件夹。
@@ -130,13 +130,13 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 
 想测试你做出的更改的话，最简单的方法就是运行 `yarn build react/index,react-dom/index --type=UMD`，之后再打开 `fixtures/packaging/babel-standalone/dev.html`，该文件已使用 `build` 文件夹内的 `react.development.js` 来搞定你的更改。
 
-如果你想测试你对已有 React 项目做出的更改，你可以复制 `build/dist/react.development.js` 和 `build/dist/react-dom.development.js` 或其它构建版本，放入你的应用中并使用这些构建版本而非稳定版。
+如果你想测试你对已有 React 项目做出的更改，你可以复制 `build/node_modules/react/umd/react.development.js` 和 `build/node_modules/react-dom/umd/react-dom.development.js` 或其它构建版本，放入你的应用中并使用这些构建版本而非稳定版。
 
 如果你的项目用 npm，你可以从依赖中删去 `react` 和 `react-dom`，使用 `yarn link` 将其指向本地文件夹的 `build` 目录。请注意，**当请在构建时，传递 `--type=NODE`，而不是 `--type=UMD`。同时，你还需要构建 `scheduler` 的 package：
 
 ```bash
 cd ~/path_to_your_react_clone/
-yarn build react/index,react-dom/index,scheduler --type=NODE
+yarn build react/index,react/jsx,react-dom/index,scheduler --type=NODE
 
 cd build/node_modules/react
 yarn link
