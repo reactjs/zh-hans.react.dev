@@ -32,7 +32,7 @@ React 团队主要推荐这些解决方案：
 
 - 如果你是在**学习 React** 或**创建一个新的[单页](/docs/glossary.html#single-page-application)应用**，请使用 [Create React App](#create-react-app)。
 - 如果你是在**用 Node.js 构建服务端渲染的网站**，试试 [Next.js](#nextjs)。
-- 如果你是在构建**面向内容的静态网站**，试试 [Gatsby](#gatsby)。
+- 如果你是在构建**内容主导的静态网站**，试试 [Gatsby](#gatsby)。
 - 如果你是在打造**组件库**或**将 React 集成到现有代码仓库**，尝试[更灵活的工具链](#more-flexible-toolchains)。
 
 ### Create React App {#create-react-app}
