@@ -10,7 +10,7 @@ next: create-a-new-react-app.html
 
 根据需要选择性地使用 React。
 
-React 从一开始就被设计为逐步采用，并且**你可以根据需要选择性地使用 React**。可能你只想在现有页面中“局部地添加交互性”。使用 React 组件是一种不错的方式。
+React 在设计之初就可以被渐进式适配，并且**你可以根据需要选择性地使用 React**。可能你只想在现有页面中“局部地添加交互性”。使用 React 组件是一种不错的方式。
 
 大多数网站不是、也不需要是单页应用程序。通过**仅仅几行代码并且无需使用构建工具**，试试在你的网站的一小部分中使用 React。然后，你可以逐步扩展它的存在，或只将其涵盖在少数动态部件中。
 
@@ -25,7 +25,7 @@ React 从一开始就被设计为逐步采用，并且**你可以根据需要选
 
 不会涉及复杂的工具或安装需求 —— **完成这一节的内容，你只需要连接到网络，以及一分钟的时间。**
 
-可选：[下载完整示例（2KB zipped）](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
+可选：[下载完整示例（2KB 压缩包）](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
 
 ### 步骤 1： 添加一个 DOM 容器到 HTML {#step-1-add-a-dom-container-to-the-html}
 
@@ -69,16 +69,16 @@ React 从一开始就被设计为逐步采用，并且**你可以根据需要选
 
 在 HTML 页面文件的同级目录下创建一个名为 `like_button.js` 的文件。
 
-查看**[这段入门代码](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**并把它粘贴到你创建的文件中。
+查看**[这段模板代码](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**并把它粘贴到你创建的文件中。
 
 > 提示
 >
 > 这段代码定义了一个名为 `LikeButton` 的 React 组件。如果你还不明白这段代码的意思，不用担心 —— 我们将在后续的[入门教程](/tutorial/tutorial.html)和[核心概念](/docs/hello-world.html)中介绍 React 的构建块。目前，我们先只做到显示！
 
-在 `like_button.js` 的底部，在**[入门代码](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**之后，加入以下两行代码。
+在 `like_button.js` 的底部，在**[模板代码](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**之后，加入以下两行代码。
 
 ```js{3,4}
-// ... 你粘贴的入门代码 ...
+// ... 此前粘贴的代码 ...
 
 const domContainer = document.querySelector('#like_button_container');
 ReactDOM.render(e(LikeButton), domContainer);
@@ -94,7 +94,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 **[查看完整的示例源码](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605)**
 
-**[下载完整示例（2KB zipped）](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
+**[下载完整示例（2KB 压缩包）](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
 
 ### 提示：重用一个组件 {#tip-reuse-a-component}
 
@@ -102,7 +102,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 [查看完整的示例源码](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda)
 
-[下载完整示例（2KB zipped）](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
+[下载完整示例（2KB 压缩包）](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
 
 > 注意
 >
@@ -136,7 +136,7 @@ return e(
 );
 ```
 
-但是，React 还提供了一种用 [JSX](/docs/introducing-jsx.html) 来代替实现的选择：
+然而，React 还提供了一种使用 [JSX](/docs/introducing-jsx.html) 编写界面的方式：
 
 ```js
 // 显示一个 "Like" <button>
