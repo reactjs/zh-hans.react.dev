@@ -87,7 +87,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 ### 一步步学习指南 {#step-by-step-guide}
 
-如果你喜欢**一步步学习概念**，我们的 [Hello World](/docs/hello-world.html) 是最好的开始。指南里的每一章节都基于前一章节已学的内容，这样一步步过来你不会错过任何知识。
+如果你喜欢**一步步学习概念**，我们的 [核心概念简介](/docs/hello-world.html) 是最好的开始。指南里的每一章节都基于前一章节已学的内容，这样一步步过来你不会错过任何知识。
 
 ### React 哲学 {#thinking-in-react}
 
@@ -105,9 +105,9 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 当你想深入学习特定 React API 细节时，该章节将会变得非常有用。举个例子：[`React.Component` API 参考](/docs/react-component.html)能够介绍 `setState()` 方法是如何工作的，以及不同生命周期方法的使用场景。
 
-### 词汇表与常见问题 {#glossary-and-faq}
+### 术语表与常见问题 {#glossary-and-faq}
 
-[词汇表](/docs/glossary.html)中包含了 React 文档中最常见术语的概览。常见问题章节致力于简短解答一些大家普遍遇到的问题，包括[发送 AJAX 请求](/docs/faq-ajax.html)，[组件状态](/docs/faq-state.html)以及[文件结构](/docs/faq-structure.html) 等。
+[术语表](/docs/glossary.html)中包含了 React 文档中最常见术语的概览。常见问题章节致力于简短解答一些大家普遍遇到的问题，包括[发送 AJAX 请求](/docs/faq-ajax.html)，[组件状态](/docs/faq-state.html)以及[文件结构](/docs/faq-structure.html) 等。
 
 ## 获取最新消息 {#staying-informed}
 
