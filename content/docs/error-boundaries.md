@@ -71,7 +71,11 @@ class ErrorBoundary extends React.Component {
 
 ## 错误边界应该放置在哪？ {#where-to-place-error-boundaries}
 
+<<<<<<< HEAD
 错误边界的粒度由你来决定，可以将其包装在最顶层的路由组件并为用户展示一个 “Something went wrong” 的错误信息，就像服务端框架经常处理崩溃一样。你也可以将单独的部件包装在错误边界以保护应用其他部分不崩溃。 
+=======
+The granularity of error boundaries is up to you. You may wrap top-level route components to display a “Something went wrong” message to the user, just like how server-side frameworks often handle crashes. You may also wrap individual widgets in an error boundary to protect them from crashing the rest of the application.
+>>>>>>> df2fbde3b52336229eee550debd692184c427691
 
 
 ## 未捕获错误（Uncaught Errors）的新行为 {#new-behavior-for-uncaught-errors}
@@ -130,7 +134,11 @@ try {
 
 React 不需要错误边界来捕获事件处理器中的错误。与 render 方法和生命周期方法不同，事件处理器不会在渲染期间触发。因此，如果它们抛出异常，React 仍然能够知道需要在屏幕上显示什么。
 
+<<<<<<< HEAD
 如果你需要在事件处理器内部捕获错误，使用普通的 JavaScript `try` / `catch` 语句：
+=======
+If you need to catch an error inside an event handler, use the regular JavaScript `try` / `catch` statement:
+>>>>>>> df2fbde3b52336229eee550debd692184c427691
 
 ```js{9-13,17-20}
 class MyComponent extends React.Component {
