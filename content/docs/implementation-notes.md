@@ -117,7 +117,7 @@ rootEl.appendChild(node);
 
 如果我们没有渲染某些东西输出到电脑屏幕，这个过程将会是无用的。
 
-除了用户定义的（“组合”）组件，React 元素也可能表示为平台专属（“宿主”）组件。例如，`Button` 可能会从 render 方法返回一个 `<div />`。
+除了用户定义的（“复合”）组件，React 元素也可能表示为平台专属（“宿主”）组件。例如，`Button` 可能会从 render 方法返回一个 `<div />`。
 
 如果元素的 `type` 属性是字符串，我们处理的就是宿主元素：
 
@@ -130,7 +130,7 @@ console.log(<div />);
 
 当 reconciler 遇到宿主元素时，它会让 renderer 负责挂载它。例如，React DOM 会创建一个 DOM 节点。
 
-如果宿主元素拥有子元素，reconciler 会根据上文提到的算法对其进行递归地挂载。无论子元素是宿主（像 `<div><hr /><div>`），还是组合（像 `<div><Button /></div>`），两者都无所谓。
+如果宿主元素拥有子元素，reconciler 会根据上文提到的算法对其进行递归地挂载。无论子元素是宿主（像 `<div><hr /><div>`），还是复合（像 `<div><Button /></div>`），两者都无所谓。
 
 子组件生成的 DOM 节点会附加在父 DOM 节点上，递归地完成整个 DOM 结构的组装。
 
@@ -149,7 +149,7 @@ function isClass(type) {
   );
 }
 
-// 此函数仅处理组合类型的元素
+// 此函数仅处理复合类型的元素
 // 例如，处理 <App /> 和 <Button />, 但不处理 <div />
 function mountComposite(element) {
   var type = element.type;
@@ -171,7 +171,7 @@ function mountComposite(element) {
     renderedElement = type(props);
   }
 
-  // 这是递归的，但是当元素是宿主(例如： <div />)而不是组合(例如 <App />)时，
+  // 这是递归的，但是当元素是宿主(例如： <div />)而不是复合(例如 <App />)时，
   // 我们最终会到达递归的底部：
   return mount(renderedElement);
 }
@@ -199,7 +199,7 @@ function mountHost(element) {
 
   // 挂载子元素
   children.forEach(childElement => {
-    // 子元素可能是宿主(例如：<div />)或者组合 (例如：<Button />).
+    // 子元素可能是宿主(例如：<div />)或者复合 (例如：<Button />).
     // 我们还是递归挂载他们
     var childNode = mount(childElement);
 
@@ -273,7 +273,7 @@ class CompositeComponent {
   }
 
   getPublicInstance() {
-    // 对于组合组件，公共类实例
+    // 对于复合组件，公共类实例
     return this.publicInstance;
   }
 
@@ -376,7 +376,7 @@ class DOMComponent {
 
 `mountHost()` 重构后主要的区别是我们保存了与内部 DOM 组件实例关联的 `this.node` 和 `this.renderedChildren`。在将来我们还使用他们来进行非破坏性更新。
 
-因此，每个内部实例，组合或者宿主，现在都指向了它的子内部实例。为帮你更直观的了解，假设有函数组件 `<App>` 会渲染类组件 `<Button>`，并且 `Button` 渲染一个 `<div>`，其内部实例树将如下所示:
+因此，每个内部实例，复合或者宿主，现在都指向了它的子内部实例。为帮你更直观的了解，假设有函数组件 `<App>` 会渲染类组件 `<Button>`，并且 `Button` 渲染一个 `<div>`，其内部实例树将如下所示:
 
 ```js
 [object CompositeComponent] {
@@ -394,9 +394,9 @@ class DOMComponent {
 }
 ```
 
-在 DOM 中, 你只能看到 `<div>`。但是在内部实例树包含了组合和宿主的内部实例。
+在 DOM 中, 你只能看到 `<div>`。但是在内部实例树包含了复合和宿主的内部实例。
 
-组合内部实例需要存储：
+复合内部实例需要存储：
 
 * 当前元素。
 * 如果元素的类型是类的公共实例
@@ -408,7 +408,7 @@ class DOMComponent {
 * DOM 节点.
 * 所有子内部实例。它们中的每一个都可以是 `DOMComponent` 或` CompositeComponent`。
 
-如果你难以想象内部实例树在较为复杂的应用程序中的结构，[React DevTools](https://github.com/facebook/react-devtools) 可以给你一个相似的结果，因为它突出呈现了灰色的宿主实例，以及紫色的组合实例。
+如果你难以想象内部实例树在较为复杂的应用程序中的结构，[React DevTools](https://github.com/facebook/react-devtools) 可以给你一个相似的结果，因为它突出呈现了灰色的宿主实例，以及紫色的复合实例。
 
  <img src="../images/docs/implementation-notes-tree.png" width="500" style="max-width: 100%" alt="React DevTools tree" />
 
@@ -434,7 +434,7 @@ mountTree(<App />, rootEl);
 
 ### 卸载 {#unmounting}
 
-现在，我们有内部实例，以保留其子节点和 DOM 节点，我们可以实现卸载。对于组合组件，卸载调用生命周期方法和递归。
+现在，我们有内部实例，以保留其子节点和 DOM 节点，我们可以实现卸载。对于复合组件，卸载调用生命周期方法和递归。
 
 ```js
 class CompositeComponent {
@@ -552,9 +552,9 @@ class DOMComponent {
 
 这通常被称为 "virtual DOM diffing" 的部分，但实际发生的情况是，我们递归遍历内部树，让每个内部实例接收更新。
 
-### 更新组合组件 {#updating-composite-components}
+### 更新复合组件 {#updating-composite-components}
 
-当一个组合组件接收一个新的元素时，我们将运行生命周期方法 `componentWillUpdate()`。
+当一个复合组件接收一个新的元素时，我们将运行生命周期方法 `componentWillUpdate()`。
 
 然后我们使用新的 prop 重新渲染组件, 并获取下一次渲染的元素：
 
@@ -640,7 +640,7 @@ class CompositeComponent {
 }
 ```
 
-综上所述，当组合组件收到新元素时，它可以将更新委派给其渲染的内部实例，或者卸载它并在其位置挂载新元素。
+综上所述，当复合组件收到新元素时，它可以将更新委派给其渲染的内部实例，或者卸载它并在其位置挂载新元素。
 
 还有另一种情况，组件将重新挂载而非接收元素，即元素的 `key` 已更改。在当前文档中，我们不讨论 `key` 处理，因为它增加了复杂教程的复杂性。
 
@@ -652,7 +652,7 @@ class CompositeComponent {
 
   getHostNode() {
     // 要求渲染组件提供它。
-    // 递归深入任意组合组件。
+    // 递归深入任意复合组件。
     return this.renderedComponent.getHostNode();
   }
 }
@@ -697,7 +697,7 @@ class DOMComponent {
     // ...
 ```
 
-然后宿主组件需要更新其子组件。与组合组件不同，它们可能包含多个子组件。
+然后宿主组件需要更新其子组件。与复合组件不同，它们可能包含多个子组件。
 
 在此简化的示例中，我们使用内部实例数组并遍历它，根据接收的 `type` 是否与以前的 `type` 匹配更新或替换内部实例。真正的 reconciler 还会在描述中获取元素的 `key`，并存储和跟踪除了插入和删除之外的移动，但我们这里将省略此逻辑。
 
@@ -858,15 +858,15 @@ mountTree(<App />, rootEl);
 
 * reconciler 还从元素中读取 `key`，并使用它来确定哪个内部实例对应于数组中的哪个元素。实际 React 实现中的大部分复杂性与此相关。
 
-* 除了组合和宿主内部实例类外，还有用于“文本”和“空”组件的类。它们表示文本节点和通过渲染 `null` 获得 “空插槽”。
+* 除了复合和宿主内部实例类外，还有用于“文本”和“空”组件的类。它们表示文本节点和通过渲染 `null` 获得 “空插槽”。
 
 * renderer 使用[注入](/docs/codebase-overview.html#dynamic-injection)的方式将宿主内部类传递给 reconciler. 例如，React DOM 告诉 reconciler 使用 `ReactDOMComponent` 作为宿主内部实例实现。
 
 * 更新子列表的逻辑被提取到一个名为 `ReactMultiChild` 的 mixin 中，它由 React DOM 和 React Native 中的宿主内部实例类实现使用。
 
-* reconciler 还在组合组件中实现对 `setState()` 的支持。事件处理程序内的多个更新将被批处理为单一更新。
+* reconciler 还在复合组件中实现对 `setState()` 的支持。事件处理程序内的多个更新将被批处理为单一更新。
 
-* reconciler 还负责将 refs 附加和分离到组合组件和宿主节点。
+* reconciler 还负责将 refs 附加和分离到复合组件和宿主节点。
 
 * 在 DOM 准备好之后调用的生命周期方法，例如 `componentDidMount()` 和 `componentDidUpdate()`，被收集到“回调队列”中并在一个批处理中执行。
 

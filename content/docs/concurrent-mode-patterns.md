@@ -930,10 +930,10 @@ function ProfilePage({ resource }) {
 
 你可以利用 `tail` prop 来控制同时显示多少个加载状态。如果我们制定 `tail="collapsed"`，我们只能看到*最多一个*降级界面。你可以在 [这里](https://codesandbox.io/s/adoring-almeida-1zzjh) 体验一下。
 
-请记住和 React 中的其他东西一样 `<SuspenseList>` 也是可以组合的。例如，你可以做一个 `<SuspenseList>` table 中放着 `<SuspenseList>` row 的表格。
+请记住和 React 中的其他东西一样 `<SuspenseList>` 也是可以复合的。例如，你可以做一个 `<SuspenseList>` table 中放着 `<SuspenseList>` row 的表格。
 
 ## 下一步 {#next-steps}
 
-Concurrent 模式提供了一个强大的 UI 编程模型和一系列的新的可组合的指令集来帮助你构建愉快的用户体验。
+Concurrent 模式提供了一个强大的 UI 编程模型和一系列的新的可复合的指令集来帮助你构建愉快的用户体验。
 
 这是通过多年的调查和开发的结果，但它尚未完结。在 [采用 Concurrent 模式](/docs/concurrent-mode-adoption.html) 中，我们会讲如何使用它以及它的效果。

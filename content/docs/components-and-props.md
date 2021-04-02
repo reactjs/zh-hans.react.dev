@@ -91,7 +91,7 @@ ReactDOM.render(
 >
 >你可以在[深入 JSX](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized) 中了解更多关于此规范的原因。
 
-## 组合组件 {#composing-components}
+## 复合组件 {#composing-components}
 
 组件可以在其输出中引用其他组件。这就可以让我们用同一组件来抽象出任意层次的细节。按钮，表单，对话框，甚至整个屏幕的内容：在 React 应用程序中，这些通常都会以组件的形式表示。
 

@@ -31,7 +31,7 @@ class Welcome extends React.Component {
 
 在 `React.Component` 的子类中有个必须定义的 [`render()`](#render) 函数。本章节介绍其他方法均为可选。
 
-**我们强烈建议你不要创建自己的组件基类。** 在 React 组件中，[代码重用的主要方式是组合而不是继承](/docs/composition-vs-inheritance.html)。
+**我们强烈建议你不要创建自己的组件基类。** 在 React 组件中，[代码重用的主要方式是复合而不是继承](/docs/composition-vs-inheritance.html)。
 
 >注意:
 >

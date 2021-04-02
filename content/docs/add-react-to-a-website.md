@@ -106,7 +106,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 > 注意
 >
-> 当页面中以 React 驱动的不同部分是相互独立的时候，这种策略通常非常有用。在 React 代码中，使用[组件组合（component composition）](/docs/components-and-props.html#composing-components) 来实现会更容易。
+> 当页面中以 React 驱动的不同部分是相互独立的时候，这种策略通常非常有用。在 React 代码中，使用[组件复合（component composition）](/docs/components-and-props.html#composing-components) 来实现会更容易。
 
 ### 提示：为生产环境压缩 JavaScript 代码 {#tip-minify-javascript-for-production}
 

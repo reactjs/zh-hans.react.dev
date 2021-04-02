@@ -17,7 +17,8 @@ permalink: warnings/unknown-prop.html
 
 ---
 
-要解决这个问题，组合组件应该“消费掉”任何只用于复合组件而不是子组件的 prop。例如：
+要解决这个问题，复合组件应该“消费掉”任何只用于复合组件而不是子组件的 prop。例如：
+ prop。例如：
 
 **Bad：** `layout` prop 意外转发给了 `div` 标签。
 

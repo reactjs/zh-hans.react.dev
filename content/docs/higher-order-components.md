@@ -4,7 +4,7 @@ title: 高阶组件
 permalink: docs/higher-order-components.html
 ---
 
-高阶组件（HOC）是 React 中用于复用组件逻辑的一种高级技巧。HOC 自身不是 React API 的一部分，它是一种基于 React 的组合特性而形成的设计模式。
+高阶组件（HOC）是 React 中用于复用组件逻辑的一种高级技巧。HOC 自身不是 React API 的一部分，它是一种基于 React 的复合特性而形成的设计模式。
 
 具体而言，**高阶组件是参数为组件，返回值为新组件的函数。**
 
@@ -171,7 +171,7 @@ function withSubscription(WrappedComponent, selectData) {
 
 与组件一样，`withSubscription` 和包装组件之间的契约完全基于之间传递的 props。这种依赖方式使得替换 HOC 变得容易，只要它们为包装的组件提供相同的 prop 即可。例如你需要改用其他库来获取数据的时候，这一点就很有用。
 
-## 不要改变原始组件。使用组合。 {#dont-mutate-the-original-component-use-composition}
+## 不要改变原始组件。使用复合。 {#dont-mutate-the-original-component-use-composition}
 
 不要试图在 HOC 中修改组件原型（或以其他方式改变它）。
 
@@ -193,7 +193,7 @@ const EnhancedComponent = logProps(InputComponent);
 
 修改传入组件的 HOC 是一种糟糕的抽象方式。调用者必须知道他们是如何实现的，以避免与其他 HOC 发生冲突。
 
-HOC 不应该修改传入组件，而应该使用组合的方式，通过将组件包装在容器组件中实现功能：
+HOC 不应该修改传入组件，而应该使用复合的方式，通过将组件包装在容器组件中实现功能：
 
 ```js
 function logProps(WrappedComponent) {
@@ -210,7 +210,7 @@ function logProps(WrappedComponent) {
 }
 ```
 
-该 HOC 与上文中修改传入组件的 HOC 功能相同，同时避免了出现冲突的情况。它同样适用于 class 组件和函数组件。而且因为它是一个纯函数，它可以与其他 HOC 组合，甚至可以与其自身组合。
+该 HOC 与上文中修改传入组件的 HOC 功能相同，同时避免了出现冲突的情况。它同样适用于 class 组件和函数组件。而且因为它是一个纯函数，它可以与其他 HOC 复合，甚至可以与其自身复合。
 
 您可能已经注意到 HOC 与**容器组件模式**之间有相似之处。容器组件担任将高级和低级关注点分离的责任，由容器管理订阅和状态，并将 prop 传递给处理 UI 的组件。HOC 使用容器作为其实现的一部分，你可以将 HOC 视为参数化容器组件。
 
@@ -241,7 +241,7 @@ render() {
 
 这种约定保证了 HOC 的灵活性以及可复用性。
 
-## 约定：最大化可组合性 {#convention-maximizing-composability}
+## 约定：最大化可复合性 {#convention-maximizing-composability}
 
 并不是所有的 HOC 都一样。有时候它仅接受一个参数，也就是被包裹的组件：
 
@@ -272,13 +272,13 @@ const ConnectedComment = enhance(CommentList);
 ```
 换句话说，`connect` 是一个返回高阶组件的高阶函数！
 
-这种形式可能看起来令人困惑或不必要，但它有一个有用的属性。 像 `connect` 函数返回的单参数 HOC 具有签名 `Component => Component`。 输出类型与输入类型相同的函数很容易组合在一起。
+这种形式可能看起来令人困惑或不必要，但它有一个有用的属性。 像 `connect` 函数返回的单参数 HOC 具有签名 `Component => Component`。 输出类型与输入类型相同的函数很容易复合在一起。
 
 ```js
 // 而不是这样...
 const EnhancedComponent = withRouter(connect(commentSelector)(WrappedComponent))
 
-// ... 你可以编写组合工具函数
+// ... 你可以编写复合工具函数
 // compose(f, g, h) 等同于 (...args) => f(g(h(...args)))
 const enhance = compose(
   // 这些都是单参数的 HOC
@@ -339,7 +339,7 @@ render() {
 
 ### 务必复制静态方法 {#static-methods-must-be-copied-over}
 
-有时在 React 组件上定义静态方法很有用。例如，Relay 容器暴露了一个静态方法 `getFragment` 以方便组合 GraphQL 片段。
+有时在 React 组件上定义静态方法很有用。例如，Relay 容器暴露了一个静态方法 `getFragment` 以方便复合 GraphQL 片段。
 
 但是，当你将 HOC 应用于组件时，原始组件将使用容器组件进行包装。这意味着新组件没有原始组件的任何静态方法。
 

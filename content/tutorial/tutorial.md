@@ -126,7 +126,7 @@ import './index.css';
 
 ### React 是什么？ {#what-is-react}
 
-React 是一个声明式，高效且灵活的用于构建用户界面的 JavaScript 库。使用 React 可以将一些简短、独立的代码片段组合成复杂的 UI 界面，这些代码片段被称作“组件”。
+React 是一个声明式，高效且灵活的用于构建用户界面的 JavaScript 库。使用 React 可以将一些简短、独立的代码片段复合成复杂的 UI 界面，这些代码片段被称作“组件”。
 
 React 中拥有多种不同类型的组件，我们先从 `React.Component` 的子类开始介绍：
 
@@ -168,7 +168,7 @@ return React.createElement('div', {className: 'shopping-list'},
 
 在 JSX 中你可以任意使用 JavaScript 表达式，只需要用一个大括号把表达式括起来。每一个 React 元素事实上都是一个 JavaScript 对象，你可以在你的程序中把它当保存在变量中或者作为参数传递。
 
-前文中的 `ShoppingList` 组件只会渲染一些内置的 DOM 组件，如`<div />`、`<li />`等。但是你也可以组合和渲染自定义的 React 组件。例如，你可以通过 `<ShoppingList />` 来表示整个购物清单组件。每个组件都是封装好的，并且可以单独运行，这样你就可以通过组合简单的组件来构建复杂的 UI 界面。
+前文中的 `ShoppingList` 组件只会渲染一些内置的 DOM 组件，如`<div />`、`<li />`等。但是你也可以复合和渲染自定义的 React 组件。例如，你可以通过 `<ShoppingList />` 来表示整个购物清单组件。每个组件都是封装好的，并且可以单独运行，这样你就可以通过复合简单的组件来构建复杂的 UI 界面。
 
 ### 阅读初始代码 {#inspecting-the-starter-code}
 

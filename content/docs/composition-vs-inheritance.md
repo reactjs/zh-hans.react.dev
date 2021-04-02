@@ -1,6 +1,6 @@
 ---
 id: composition-vs-inheritance
-title: 组合 vs 继承
+title: 复合 vs 继承
 permalink: docs/composition-vs-inheritance.html
 redirect_from:
   - "docs/multiple-components.html"
@@ -8,9 +8,9 @@ prev: lifting-state-up.html
 next: thinking-in-react.html
 ---
 
-React 有十分强大的组合模式。我们推荐使用组合而非继承来实现组件间的代码重用。
+React 有十分强大的复合模式。我们推荐使用复合而非继承来实现组件间的代码重用。
 
-在这篇文档中，我们将考虑初学 React 的开发人员使用继承时经常会遇到的一些问题，并展示如何通过组合思想来解决这些问题。
+在这篇文档中，我们将考虑初学 React 的开发人员使用继承时经常会遇到的一些问题，并展示如何通过复合思想来解决这些问题。
 
 ## 包含关系 {#containment}
 
@@ -86,7 +86,7 @@ function App() {
 
 有些时候，我们会把一些组件看作是其他组件的特殊实例，比如 `WelcomeDialog` 可以说是 `Dialog` 的特殊实例。
 
-在 React 中，我们也可以通过组合来实现这一点。“特殊”组件可以通过 props 定制并渲染“一般”组件：
+在 React 中，我们也可以通过复合来实现这一点。“特殊”组件可以通过 props 定制并渲染“一般”组件：
 
 ```js{5,8,16-18}
 function Dialog(props) {
@@ -113,7 +113,7 @@ function WelcomeDialog() {
 
 [**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/kkEaOZ?editors=0010)
 
-组合也同样适用于以 class 形式定义的组件。
+复合也同样适用于以 class 形式定义的组件。
 
 ```js{10,27-31}
 function Dialog(props) {
@@ -167,6 +167,6 @@ class SignUpDialog extends React.Component {
 
 在 Facebook，我们在成百上千个组件中使用 React。我们并没有发现需要使用继承来构建组件层次的情况。
 
-Props 和组合为你提供了清晰而安全地定制组件外观和行为的灵活方式。注意：组件可以接受任意 props，包括基本数据类型，React 元素以及函数。
+Props 和复合为你提供了清晰而安全地定制组件外观和行为的灵活方式。注意：组件可以接受任意 props，包括基本数据类型，React 元素以及函数。
 
 如果你想要在组件间复用非 UI 的功能，我们建议将其提取为一个单独的 JavaScript 模块，如函数、对象或者类。组件可以直接引入（import）而无需通过 extend 继承它们。
