@@ -156,6 +156,7 @@ module.exports = {
 
 请注意，你只需要在生产构建时用到它。你不需要在开发中使用 `TerserPlugin` 插件，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
 
+<<<<<<< HEAD
 ## 使用 Chrome Performance 标签分析组件 {#profiling-components-with-the-chrome-performance-tab}
 
 在**开发**模式下，你可以通过支持的浏览器可视化地了解组件是如何 挂载、更新以及卸载的。例如：
@@ -183,6 +184,9 @@ module.exports = {
 目前只有 Chrome、Edge 和 IE 支持该功能，但是我们使用的是标准的[用户计时 API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API)。我们期待有更多浏览器能支持它。
 
 ## 使用开发者工具中的分析器对组件进行分析 {#profiling-components-with-the-devtools-profiler}
+=======
+## Profiling Components with the DevTools Profiler {#profiling-components-with-the-devtools-profiler}
+>>>>>>> 968f09159512b59afd5246a928789ae52592c923
 
 `react-dom` 16.5+ 和 `react-native` 0.57+ 加强了分析能力。在开发模式下，React 开发者工具会出现分析器标签。
 你可以在[《介绍 React 分析器》](/blog/2018/09/10/introducing-the-react-profiler.html)这篇博客中了解概述。
@@ -199,7 +203,16 @@ module.exports = {
 >`react-dom` 的生产分析包也可以在 `react-dom/profiling` 中找到。
 >通过查阅 [fb.me/react-profiling](https://fb.me/react-profiling) 来了解更多关于使用这个包的内容。
 
+<<<<<<< HEAD
 ## 虚拟化长列表 {#virtualize-long-lists}
+=======
+> Note
+>
+> Before React 17, we use the standard [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) to profile components with the chrome performance tab. 
+> For a more detailed walkthrough, check out [this article by Ben Schwarz](https://calibreapp.com/blog/react-performance-profiling-optimization).
+
+## Virtualize Long Lists {#virtualize-long-lists}
+>>>>>>> 968f09159512b59afd5246a928789ae52592c923
 
 如果你的应用渲染了长列表（上百甚至上千的数据），我们推荐使用“虚拟滚动”技术。这项技术会在有限的时间内仅渲染有限的内容，并奇迹般地降低重新渲染组件消耗的时间，以及创建 DOM 节点的数量。
 
