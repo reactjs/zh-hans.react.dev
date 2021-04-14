@@ -235,7 +235,7 @@ onChange onInput onInvalid onReset onSubmit
 
 ### 通用事件 {#generic-events}
 
-事件名称：
+事件名：
 
 ```
 onError onLoad
@@ -243,9 +243,9 @@ onError onLoad
 
 * * *
 
-### Mouse Events {#mouse-events}
+### 鼠标事件 {#mouse-events}
 
-鼠标事件：
+事件名：
 
 ```
 onClick onContextMenu onDoubleClick onDrag onDragEnd onDragEnter onDragExit
