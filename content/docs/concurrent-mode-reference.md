@@ -28,7 +28,6 @@ prev: concurrent-mode-adoption.html
 
 - [启用 Concurrent 模式](#concurrent-mode)
     - [`createRoot`](#createroot)
-    - [`createBlockingRoot`](#createblockingroot)
 - [Suspense](#suspense)
     - [`Suspense`](#suspensecomponent)
     - [`SuspenseList`](#suspenselist)
@@ -47,6 +46,7 @@ ReactDOM.createRoot(rootNode).render(<App />);
 
 欲了解有关 Concurrent 模式的更多信息，请查阅 [Concurrent 模式文档](/docs/concurrent-mode-intro.html)
 
+<<<<<<< HEAD
 ### `createBlockingRoot` {#createblockingroot}
 
 ```js
@@ -59,6 +59,8 @@ ReactDOM.createBlockingRoot(rootNode).render(<App />)
 
 Blocking 模式只包含了 Concurrent 模式的小部分功能，目的是为无法直接迁移的应用程序提供过渡方案。
 
+=======
+>>>>>>> 5119600cf6f7a5dcbd4d2cc23f6b4ff55d2969b2
 ## Suspense API {#suspense}
 
 ### `Suspense` {#suspensecomponent}

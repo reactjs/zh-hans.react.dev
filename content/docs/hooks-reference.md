@@ -76,6 +76,7 @@ function Counter({initialCount}) {
 > 与 class 组件中的 `setState` 方法不同，`useState` 不会自动合并更新对象。你可以用函数式的 `setState` 结合展开运算符来达到合并更新对象的效果。
 >
 > ```js
+> const [state, setState] = useState({});
 > setState(prevState => {
 >   // 也可以使用 Object.assign
 >   return {...prevState, ...updatedValues};
