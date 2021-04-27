@@ -46,21 +46,6 @@ ReactDOM.createRoot(rootNode).render(<App />);
 
 欲了解有关 Concurrent 模式的更多信息，请查阅 [Concurrent 模式文档](/docs/concurrent-mode-intro.html)
 
-<<<<<<< HEAD
-### `createBlockingRoot` {#createblockingroot}
-
-```js
-ReactDOM.createBlockingRoot(rootNode).render(<App />)
-```
-
-使用上述代码替换 `ReactDOM.render(<App />, rootNode)` 并启用 [Blocking 模式](/docs/concurrent-mode-adoption.html#migration-step-blocking-mode)。
-
-选择 Concurrent 模式会对 React 的工作方式带来语义上的变化。这意味着你不能只在部分组件中使用 concurrent 模式。因此，一些应用程序可能无法直接迁移到 Concurrent 模式。
-
-Blocking 模式只包含了 Concurrent 模式的小部分功能，目的是为无法直接迁移的应用程序提供过渡方案。
-
-=======
->>>>>>> 5119600cf6f7a5dcbd4d2cc23f6b4ff55d2969b2
 ## Suspense API {#suspense}
 
 ### `Suspense` {#suspensecomponent}
