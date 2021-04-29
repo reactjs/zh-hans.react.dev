@@ -196,20 +196,20 @@ function Example() {
   But if GitHub got away with it for years we can cheat.
 -->
 ```js{1,4,9}
- 1:  import React, { useState } from 'react';
- 2:
- 3:  function Example() {
- 4:    const [count, setCount] = useState(0);
- 5:
- 6:    return (
- 7:      <div>
- 8:        <p>You clicked {count} times</p>
- 9:        <button onClick={() => setCount(count + 1)}>
-10:         Click me
-11:        </button>
-12:      </div>
-13:    );
-14:  }
+import React, { useState } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+   );
+}
 ```
 
 * **第一行:** 引入 React 中的 `useState` Hook。它让我们在函数组件中存储内部 state。
