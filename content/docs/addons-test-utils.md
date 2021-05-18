@@ -21,7 +21,7 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 使用 npm 的方�
 >
 > 我们推荐使用 [React Testing Library](https://testing-library.com/react)，它使得针对组件编写测试用例就像终端用户在使用它一样方便。
 >
-> 另外，Airbnb 发布了一款叫作 [Enzyme](https://airbnb.io/enzyme/) 的测试工具，通过它能够轻松对 React 组件的输出进行断言、操控和遍历。
+> 当使用的 React 版本 <= 16 时，可以使用 [Enzyme](https://airbnb.io/enzyme/) 的测试工具，通过它能够轻松对 React 组件的输出进行断言、操控和遍历。
 
  - [`act()`](#act)
  - [`mockComponent()`](#mockcomponent)
