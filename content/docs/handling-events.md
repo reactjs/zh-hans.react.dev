@@ -29,11 +29,7 @@ React 元素的事件处理和 DOM 元素的很相似，但是有一点语法上
 </button>
 ```
 
-<<<<<<< HEAD
-在 React 中另一个不同点是你不能通过返回 `false` 的方式阻止默认行为。你必须显式的使用 `preventDefault` 。例如，传统的 HTML 中阻止链接默认打开一个新页面，你可以这样写：
-=======
-Another difference is that you cannot return `false` to prevent default behavior in React. You must call `preventDefault` explicitly. For example, with plain HTML, to prevent the default form behavior of submitting, you can write:
->>>>>>> ec2d0adcb44d6394f4e6282d8bf52f0e25dbfec3
+在 React 中另一个不同点是你不能通过返回 `false` 的方式阻止默认行为。你必须显式的使用 `preventDefault` 。例如，传统的 HTML 中阻止表单的默认提交行为，你可以这样写：
 
 ```html
 <form onsubmit="console.log('You clicked submit.'); return false">
