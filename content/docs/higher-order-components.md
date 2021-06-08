@@ -294,7 +294,7 @@ const EnhancedComponent = enhance(WrappedComponent)
 
 ## 约定：包装显示名称以便轻松调试 {#convention-wrap-the-display-name-for-easy-debugging}
 
-HOC 创建的容器组件会与任何其他组件一样，会显示在 [React Developer Tools](https://github.com/facebook/react-devtools) 中。为了方便调试，请选择一个显示名称，以表明它是 HOC 的产物。
+HOC 创建的容器组件会与任何其他组件一样，会显示在 [React Developer Tools](https://github.com/facebook/react/tree/master/packages/react-devtools) 中。为了方便调试，请选择一个显示名称，以表明它是 HOC 的产物。
 
 最常见的方式是用 HOC 包住被包装组件的显示名称。比如高阶组件名为 `withSubscription`，并且被包装组件的显示名称为 `CommentList`，显示名称应该为 `WithSubscription(CommentList)`：
 
