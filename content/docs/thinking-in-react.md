@@ -84,11 +84,7 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
 
 为了正确地构建应用，你首先需要找出应用所需的 state 的最小表示，并根据需要计算出其他所有数据。其中的关键正是 [DRY: *Don't Repeat Yourself*](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)。只保留应用所需的可变 state 的最小集合，其他数据均由它们计算产生。比如，你要编写一个任务清单应用，你只需要保存一个包含所有事项的数组，而无需额外保存一个单独的 state 变量（用于存储任务个数）。当你需要展示任务个数时，只需要利用该数组的 length 属性即可。
 
-<<<<<<< HEAD
 我们的示例应用拥有如下数据：
-=======
-Think of all the pieces of data in our example application. We have:
->>>>>>> 68e4efcf93b6e589355f6aa3cbc3f3c811c0ad37
 
   * 包含所有产品的原始列表
   * 用户输入的搜索词

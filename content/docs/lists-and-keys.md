@@ -207,11 +207,7 @@ ReactDOM.render(
 
 ### key 只是在兄弟节点之间必须唯一 {#keys-must-only-be-unique-among-siblings}
 
-<<<<<<< HEAD
 数组元素中使用的 key 在其兄弟节点之间应该是独一无二的。然而，它们不需要是全局唯一的。当我们生成两个不同的数组时，我们可以使用相同的 key 值：
-=======
-Keys used within arrays should be unique among their siblings. However, they don't need to be globally unique. We can use the same keys when we produce two different arrays:
->>>>>>> 68e4efcf93b6e589355f6aa3cbc3f3c811c0ad37
 
 ```js{2,5,11,12,19,21}
 function Blog(props) {

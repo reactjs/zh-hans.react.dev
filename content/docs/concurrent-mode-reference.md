@@ -59,11 +59,7 @@ ReactDOM.createRoot(rootNode).render(<App />);
 
 `Suspense` 让你的组件在渲染之前进行“等待”，并在等待时显示 fallback 的内容。
 
-<<<<<<< HEAD
 在这个示例中，`ProfileDetails` 正在等待异步 API 调用来获取某些数据。在等待 `ProfileDetails` 和 `ProfilePhoto` 时，我们将显示`加载中...`的 fallback。请注意，在 `<Suspense>` 中的所有子组件都加载之前，我们将继续显示这个 fallback。
-=======
-In this example, `ProfileDetails` is waiting for an asynchronous API call to fetch some data. While we wait for `ProfileDetails` and `ProfilePhoto`, we will show the `Loading...` fallback instead. It is important to note that until all children inside `<Suspense>` have loaded, we will continue to show the fallback.
->>>>>>> 68e4efcf93b6e589355f6aa3cbc3f3c811c0ad37
 
 `Suspense` 接受两个 props：
 * **fallback** 接受一个加载指示器。这个 fallback 在 `Suspense` 所有子组件完成渲染之前将会一直显示。

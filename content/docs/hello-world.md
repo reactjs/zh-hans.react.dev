@@ -40,11 +40,7 @@ React 是一个 JavaScript 库，所以我们假设你对 JavaScript 语言已�
 
 >注意
 >
-<<<<<<< HEAD
 >本指南的示例中偶尔会使用一些 JavaScript 新语法。如果你在过去几年中并没有使用过 JavaScript，大多数情况下[这三点](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c)应该能帮到你。
-=======
->This guide occasionally uses some newer JavaScript syntax in the examples. If you haven't worked with JavaScript in the last few years, [these three points](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) should get you most of the way.
->>>>>>> 68e4efcf93b6e589355f6aa3cbc3f3c811c0ad37
 
 
 ## 让我们开始吧！ {#lets-get-started}
