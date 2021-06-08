@@ -436,4 +436,4 @@ ReactDOM.render(
 
 [**在 CodePen 上运行**](http://codepen.io/gaearon/pen/PmWwwa?editors=0010)
 
-这个技术并不仅限于 Backbone。你可以通过在生命周期方法中订阅其更改并，并选择性地，拷贝数据到本地 React state，来将 React 用于任何 model 库。
+这个技术并不仅限于 Backbone。你可以通过在生命周期方法中订阅其更改，并选择性地，拷贝数据到本地 React state，来将 React 用于任何 model 库。
