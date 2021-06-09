@@ -132,6 +132,7 @@
     - id: testing-recipes
       title: 测试技巧
     - id: testing-environments
+<<<<<<< HEAD
       title: 测试环境
 - title: Concurrent 模式（实验阶段）
   isOrdered: true
@@ -147,6 +148,10 @@
     - id: concurrent-mode-reference
       title: Concurrent 模式 API 参考
 - title: 贡献
+=======
+      title: Testing Environments
+- title: Contributing
+>>>>>>> upstream/master
   items:
   - id: how-to-contribute
     title: 如何参与

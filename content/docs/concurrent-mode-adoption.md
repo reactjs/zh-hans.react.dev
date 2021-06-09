@@ -17,6 +17,7 @@ next: concurrent-mode-reference.html
 
 >注意：
 >
+<<<<<<< HEAD
 >本章节所描述的实验性功能**在稳定版本中[尚不可用](/docs/concurrent-mode-adoption.html)**。请不要在应用程序的生产环境中使用。这些功能可能会发生重大变化，并且在正式成为 React 的一部分之前不会给出警告。
 >
 >本文档面向早期此功能的使用者以及对此功能好奇的开发者。**如果你并不熟悉 React，请不必担心** —— 你不需要立刻学习这些功能。
@@ -24,6 +25,14 @@ next: concurrent-mode-reference.html
 >注意事项：
 >
 >下面所有关于 “blocking 模式” 和 `createBlockingRoot` 的说法都已过时，应忽略。
+=======
+>This page was about experimental features that aren't yet available in a stable release. It was aimed at early adopters and people who are curious.
+>
+>Much of the information on this page is now outdated and exists only for archival purposes. **Please refer to the [React 18 Alpha announcement post](/blog/2021/06/08/the-plan-for-react-18.html
+) for the up-to-date information.**
+>
+>Before React 18 is released, we will replace this page with stable documentation.
+>>>>>>> upstream/master
 
 </div>
 
