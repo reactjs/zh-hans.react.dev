@@ -17,18 +17,11 @@ next: concurrent-mode-adoption.html
 
 >注意：
 >
-<<<<<<< HEAD
->本章节所描述的实验性功能**在稳定版本中[尚不可用](/docs/concurrent-mode-adoption.html)**。请不要在应用程序的生产环境中使用。这些功能可能会发生重大变化，并且在正式成为 React 的一部分之前不会给出警告。
+>本章节所描述的功能还处于实验阶段，在稳定版本中尚不可用。它面向的人群是早期使用者以及好奇心较强的人。
 >
->本文档面向早期此功能的使用者以及对此功能好奇的开发者。**如果你并不熟悉 React，请不必担心** —— 你不需要立刻学习这些功能。
-=======
->This page was about experimental features that aren't yet available in a stable release. It was aimed at early adopters and people who are curious.
+>本页面中许多信息现已过时，仅仅是为了存档而存在。欲了解最新信息，**请参阅 [React 18 Alpha 版公告](/blog/2021/06/08/the-plan-for-react-18.html)**。
 >
->Much of the information on this page is now outdated and exists only for archival purposes. **Please refer to the [React 18 Alpha announcement post](/blog/2021/06/08/the-plan-for-react-18.html
-) for the up-to-date information.**
->
->Before React 18 is released, we will replace this page with stable documentation.
->>>>>>> upstream/master
+>在 React 18 发布前，我们将用稳定的文档替代此章节。
 
 </div>
 
