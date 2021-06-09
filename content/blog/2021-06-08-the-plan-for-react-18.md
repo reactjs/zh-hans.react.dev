@@ -11,7 +11,7 @@ React 团队非常激动地与你分享一些最新的工作进展：
 
 目前这些更新主要面向第三方库的维护者。如果你正在学习、教学或使用 React 来构建面向用户的应用程序，你可以忽略此博客。但如果你出于好奇，我们同样欢迎你关注 React 18 工作组的讨论！
 
-## React 18 中的内容 {#whats-coming-in-react-18}
+## React 18 带来了什么 {#whats-coming-in-react-18}
 
 当 React 18 发布时，它将包含开箱即用的改进（如 [automatic batching](https://github.com/reactwg/react-18/discussions/21))，全新的 API（如 [`startTransition`](https://github.com/reactwg/react-18/discussions/41)）以及内置了支持 `React.lazy` 的 [全新 SSR 架构](https://github.com/reactwg/react-18/discussions/37)。
 
