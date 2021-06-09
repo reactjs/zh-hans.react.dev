@@ -133,19 +133,6 @@
       title: 测试技巧
     - id: testing-environments
       title: 测试环境
-- title: Concurrent 模式（实验阶段）
-  isOrdered: true
-  items:
-    - id: concurrent-mode-intro
-      title: 介绍 Concurrent 模式
-    - id: concurrent-mode-suspense
-      title: Suspense 用于数据获取
-    - id: concurrent-mode-patterns
-      title: Concurrent UI 模式
-    - id: concurrent-mode-adoption
-      title: 采用 Concurrent 模式
-    - id: concurrent-mode-reference
-      title: Concurrent 模式 API 参考
 - title: 贡献
   items:
   - id: how-to-contribute
