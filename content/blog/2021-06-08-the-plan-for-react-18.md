@@ -1,59 +1,59 @@
 ---
-title: "The Plan for React 18"
+title: "React 18 发布计划"
 author: [acdlite, bvaughn, abernathyca, gaearon, rachelnabors, rickhanlonii, sebmarkbage, sethwebster]
 ---
 
-The React team is excited to share a few updates:
+React 团队与你分享一些工作进展：
 
-1. We’ve started work on the React 18 release, which will be our next major version.
-2. We’ve created a Working Group to prepare the community for gradual adoption of new features in React 18.
-3. We’ve published a React 18 Alpha so that library authors can try it and provide feedback.
+1. 我们已经开始了 React 18 版本的工作，这将是我们的下一个主要版本。
+2. 我们创建了工作组，为社区逐步采用 React 18 的新特性做准备。
+3. 我们已经发布了 React 18 的 Alpha 版本，便于库作者尝试它并为我们提出相应反馈。
 
-These updates are primarily aimed at maintainers of third-party libraries. If you’re learning, teaching, or using React to build user-facing applications, you can safely ignore this post. But you are welcome to follow the discussions in the React 18 Working Group if you're curious!
+目前这些更新主要是面向的是第三方库的维护者。如果你正在学习、教学或使用 React 来构建面向用户的应用程序，你可以安心地忽略此博客。但如果你出于好奇，我们同样欢迎你关注 React 18 工作组的讨论！
 
-## What’s coming in React 18
+## React 18 中的内容 {#whats-coming-in-react-18}
 
-When it’s released, React 18 will include out-of-the-box improvements (like [automatic batching](https://github.com/reactwg/react-18/discussions/21)), new APIs (like [`startTransition`](https://github.com/reactwg/react-18/discussions/41)), and a [new streaming server renderer](https://github.com/reactwg/react-18/discussions/37) with built-in support for `React.lazy`.
+当 React 18 发布时，它将包含开箱即用的改进（如 [automatic batching](https://github.com/reactwg/react-18/discussions/21))，全新的 API（如 [`startTransition`](https://github.com/reactwg/react-18/discussions/41)）以及内置支持 `React.lazy` 的 [全新 SSR 架构](https://github.com/reactwg/react-18/discussions/37)。
 
-These features are possible thanks to a new opt-in mechanism we’re adding in React 18. It’s called “concurrent rendering” and it lets React prepare multiple versions of the UI at the same time. This change is mostly behind-the-scenes, but it unlocks new possibilities to improve both real and perceived performance of your app.
+这些功能之所以能够实现，要归功于我们在 React 18 中加入的全新且可选的 “并发渲染（concurrent rendering）” 机制。它使得 React 可以同时为多个 UI 做准备。这一变化主要在幕后，但它为 React 开启了新可能，以助你改善应用程序真实和感知的性能。
 
-If you've been following our research into the future of React (we don't expect you to!), you might have heard of something called “concurrent mode” or that it might break your app. In response to this feedback from the community, we’ve redesigned the upgrade strategy for gradual adoption. Instead of an all-or-nothing “mode”, concurrent rendering will only be enabled for updates triggered by one of the new features. In practice, this means **you will be able to adopt React 18 without rewrites and try the new features at your own pace.**
+如果你一直在关注我们对 React 未来的研究（我们不希望你这样做！），你可能已经听说过一种 “并发模式（concurrent mode）” 的东西，使用它可能会破坏你的应用程序。为了回应社区这方面的反馈，我们重新设计了升级策略，以便大家渐进式升级。并且这种策略并非全有或全无的 “模式”，并发模式将只由新特性之一触发的更新而启用。在实践中，这意味着 **你将能直接使用 React 18 而无需重写代码，并按自己的节奏来尝试新特性**。
 
-## A gradual adoption strategy
+## 循序渐进的采用策略 {#a-gradual-adoption-strategy}
 
-Since concurrency in React 18 is opt-in, there are no significant out-of-the-box breaking changes to component behavior. **You can upgrade to React 18 with minimal or no changes to your application code, with a level of effort comparable to a typical major React release**. Based on our experience converting several apps to React 18, we expect that many users will be able to upgrade within a single afternoon.
+由于 React 18 中的并发性是可选功能，所以对于组件行为来说，并没有重大的开箱即用的突破性变化。**你可以直接升级到 React 18，只需对你应用程序中的代码进行很少的改动，甚至无需任何改动，这与其他 React 主要版本的表现是一致的**。根据我们将几个应用程序转换为 React 18 的经验来看，预计许多用户能在一个下午的时间内完成升级工作。
 
-We successfully shipped concurrent features to tens of thousands of components at Facebook, and in our experience, we've found that most React components “just work” without additional changes. We're committed to making sure this is a smooth upgrade for the entire community, so today we're announcing the React 18 Working Group.
+我们在 Facebook 成功地将并发功能交付给了数以万计的组件，根据我们的经验来看，我们发现大多数 React 组件 “正常工作”，无需额外的更改。我们致力于确保这对整个社区来说都是一次非常顺利的升级，所以今天我们宣布成立了 React 18 工作组。
 
-## Working with the community
+## 与社区合作 {#working-with-the-community}
 
-We’re trying something new for this release: We've invited a panel of experts, developers, library authors, and educators from across the React community to participate in our [React 18 Working Group](https://github.com/reactwg/react-18) to provide feedback, ask questions, and collaborate on the release. We couldn't invite everyone we wanted to this initial, small group, but if this experiment works out, we hope there will be more in the future!
+我们正在这一版本尝试一些新的可能：我们邀请了来自整个 React 社区的专家、开发者、库作者和教育者参与我们的 [React 18 工作组](https://github.com/reactwg/react-18)，以提供反馈，提出问题，甚至为该版本做贡献。我们无法邀请所有我们想邀请的人来参加这个最初的小团体，但如果实验成功，我们希望将来会有更多的人参与！
 
-**The goal of the React 18 Working Group is to prepare the ecosystem for a smooth, gradual adoption of React 18 by existing applications and libraries.** The Working Group is hosted on [GitHub Discussions](https://github.com/reactwg/react-18/discussions) and is available for the public to read. Members of the working group can leave feedback, ask questions, and share ideas. The core team will also use the discussions repo to share our research findings. As the stable release gets closer, any important information will also be posted on this blog.
+**React 18 工作组的目标是为生态做好准备，使现有的应用程序和库能够顺利、逐步地采用 React 18**。该工作组托管在 [GitHub Discussions](https://github.com/reactwg/react-18/discussions)，以供公众阅读。工作组成员可以留下反馈，提出问题，并分享想法。核心团队也将使用 repo 的讨论区来分享我们的研究成果。随着稳定版的发布越来越近，任何重要的信息我们也会在博客上发布。
 
-For more information on upgrading to React 18, or additional resources about the release, see the [React 18 announcement post](https://github.com/reactwg/react-18/discussions/4).
+欲了解关于升级到 React 18 的更多信息，或关于该版本的其他资源，请参阅 [React 18 公告](https://github.com/reactwg/react-18/discussions/4).
 
-## Accessing the React 18 Working Group
+## 访问 React 18 工作组 {#accessing-the-react-18-working-group}
 
-Everyone can read the discussions in the [React 18 Working Group repo](https://github.com/reactwg/react-18).
+大家可以在 [React 18 工作组仓库](https://github.com/reactwg/react-18) 中阅读相关讨论的情况。
 
-Because we expect an initial surge of interest in the Working Group, only invited members will be allowed to create or comment on threads. However, the threads are fully visible to the public, so everyone has access to the same information. We believe this is a good compromise between creating a productive environment for working group members, while maintaining transparency with the wider community.
+因为我们预计工作组最初的兴趣会激增，所以只有被邀请的成员可以创建或评论主题。然而，这些过程对公众是完全可见的，所以每个人都可以获得相同的信息，我们相信这是一个很好的折衷方案，既能为工作组成员创造一个富有成效的环境，又能保持对广大社区的透明度。
 
-As always, you can submit bug reports, questions, and general feedback to our [issue tracker](https://github.com/facebook/react/issues).
+其他依旧，你可以在我们的 [issue](https://github.com/facebook/react/issues) 中提交错误报告、问题和反馈。
 
-## How to try React 18 Alpha today
+## 如何尝试 React 18 Alpha {#how-to-try-react-18-alpha-today}
 
-New alphas are [regularly published to npm using the `@alpha` tag](https://github.com/reactwg/react-18/discussions/9). These releases are built using the most recent commit to our main repo. When a feature or bugfix is merged, it will appear in an alpha the following weekday.
+新的 alpha 版本通过 [`@alpha` 标签定期发布到 npm 中](https://github.com/reactwg/react-18/discussions/9)。这些版本是由仓库的主分支的最新提交构建而来。当一个特性或 bug 修复被合并时，它将在下一个工作日出现在 alpha 版本中。
 
-There may be significant behavioral or API changes between alpha releases. Please remember that **alpha releases are not recommended for user-facing, production applications**.
+在 alpha 版本之间可能会有重大的变更或 API 变化。请谨记，**alpha 版本不建议用于面向用户的生产应用中**。
 
-## Projected React 18 release timeline
+## 预计 React 18 的发布时间 {#projected-react-18-release-timeline}
 
-We don't have a specific release date scheduled, but we expect it will take several months of feedback and iteration before React 18 is ready for most production applications.
+我们没有安排具体的发布时间，但我们预计需要几个月的反馈和迭代时间，React 18 才能做好准备，以应用于大多数生产项目。
 
-* Library Alpha: Available today
-* Public Beta: At least several months
-* Release Candidate (RC): At least several weeks after Beta
-* General Availability: At least several weeks after RC
+* 库的 Alpha 版本：今天可用
+* 公开的 Beta 版：至少几个月
+* RC 版本：至少在 Beta 版发布后的几周
+* 正式版：至少在 RC 版本发布之后的几周
 
-More details about our projected release timeline are [available in the Working Group](https://github.com/reactwg/react-18/discussions/9). We'll post updates on this blog when we're closer to a public release.
+关于发布时间表的更多细节，[可以关注工作组](https://github.com/reactwg/react-18/discussions/9)。当临近公开发布时，我们会在这个博客上发布更新。
