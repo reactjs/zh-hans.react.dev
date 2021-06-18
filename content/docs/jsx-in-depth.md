@@ -431,7 +431,7 @@ function ListOfTenThings() {
 </div>
 ```
 
-值得注意的是有一些 ["falsy" 值](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)，如数字 `0`，仍然会被 React 渲染。例如，以下代码并不会像你预期那样工作，因为当 `props.messages` 是空数组时，`0` 仍然会被渲染：
+值得注意的是有一些 ["false" 值](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)，如数字 `0`，仍然会被 React 渲染。例如，以下代码并不会像你预期那样工作，因为当 `props.messages` 是空数组时，`0` 仍然会被渲染：
 
 ```js{2}
 <div>
