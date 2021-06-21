@@ -190,6 +190,7 @@ var SetIntervalMixin = {
     this.intervals.push(setInterval.apply(null, arguments));
   },
   componentWillUnmount: function() {
+  //此处等价于 this.intervals.forEach(item=>clearInterval(item))
     this.intervals.forEach(clearInterval);
   }
 };
