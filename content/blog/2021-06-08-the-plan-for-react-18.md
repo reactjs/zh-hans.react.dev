@@ -15,7 +15,7 @@ React 团队非常激动地与你分享一些最新的工作进展：
 
 当 React 18 发布时，它将包含开箱即用的改进（如 [automatic batching](https://github.com/reactwg/react-18/discussions/21))，全新的 API（如 [`startTransition`](https://github.com/reactwg/react-18/discussions/41)）以及内置支持了 `React.lazy` 的 [全新 SSR 架构](https://github.com/reactwg/react-18/discussions/37)。
 
-这些功能之所以能够实现，要归功于我们在 React 18 中新加入的可选的 “并发渲染（concurrent rendering）” 机制。它使得 React 可以同时准备多个版本的 UI。这个机制主要发生在幕后，但它为 React 解锁了非常多新的可能性，来帮助你提高你应用程序的实际与感知性能。
+这些功能之所以能够实现，要归功于我们在 React 18 中新加入的可选的 “并发渲染（concurrent rendering）” 机制。它使得 React 可以同时准备多个版本的 UI。这个机制主要发生在幕后，但它为 React 解锁了非常多新的可能性，来帮助你提高你应用程序的真实性能与感知性能。
 
 如果你一直在关注我们对 React 未来的研究（我们并不期待你这么做！），你可能已经听说过 “并发模式（concurrent mode）”，或许还听过它可能会搞坏你的应用程序。为了回应社区对此的反馈，我们重新设计了可渐进的升级策略。相比于之前要么不升要么全升的一刀切方式，只有由新特性触发的更新会启用并发渲染。在实践中，这意味着 **你无需重写代码即可直接使用 React 18，且可以根据自己的节奏和需要来尝试新特性**。
 
