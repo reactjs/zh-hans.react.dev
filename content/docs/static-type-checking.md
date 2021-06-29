@@ -312,15 +312,9 @@ declare module 'querystring' {
 
 你现在已做好编码准备了！我们建议你查看以下资源来了解有关 TypeScript 的更多知识：
 
-<<<<<<< HEAD
-* [TypeScript 文档：基本类型](https://www.typescriptlang.org/docs/handbook/basic-types.html)
+* [TypeScript 文档：常用类型](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
 * [TypeScript 文档：JavaScript 迁移](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
 * [TypeScript 文档：React 与 Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
-=======
-* [TypeScript Documentation: Everyday Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
-* [TypeScript Documentation: Migrating from JavaScript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
-* [TypeScript Documentation: React and Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
->>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
 ## Reason {#reason}
 

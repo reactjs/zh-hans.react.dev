@@ -180,11 +180,7 @@ module.exports = {
 
 ## 虚拟化长列表 {#virtualize-long-lists}
 
-<<<<<<< HEAD
 如果你的应用渲染了长列表（上百甚至上千的数据），我们推荐使用“虚拟滚动”技术。这项技术会在有限的时间内仅渲染有限的内容，并奇迹般地降低重新渲染组件消耗的时间，以及创建 DOM 节点的数量。
-=======
-If your application renders long lists of data (hundreds or thousands of rows), we recommend using a technique known as "windowing". This technique only renders a small subset of your rows at any given time, and can dramatically reduce the time it takes to re-render the components as well as the number of DOM nodes created.
->>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
 [react-window](https://react-window.now.sh/) 和 [react-virtualized](https://bvaughn.github.io/react-virtualized/) 是热门的虚拟滚动库。
 它们提供了多种可复用的组件，用于展示列表、网格和表格数据。
