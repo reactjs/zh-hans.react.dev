@@ -12,7 +12,11 @@ React DevTools v4 中发生了很多变化！
 
 ![DevTools version 4 screenshot](../images/blog/devtools-v4-screenshot.png)
 
+<<<<<<< HEAD
 [访问互动教程](https://react-devtools-tutorial.now.sh/)试用新版本或 [参阅 changelog](https://github.com/facebook/react/blob/master/packages/react-devtools/CHANGELOG.md#400-august-15-2019)，以了解相关演示视频及更多信息。
+=======
+[Visit the interactive tutorial](https://react-devtools-tutorial.now.sh/) to try out the new version or [see the changelog](https://github.com/facebook/react/blob/main/packages/react-devtools/CHANGELOG.md#400-august-15-2019) for demo videos and more details.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ## 支持哪些版本的 React？{#which-versions-of-react-are-supported}
 

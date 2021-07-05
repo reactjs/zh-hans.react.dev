@@ -122,7 +122,11 @@ Learn more about this codemod on the [16.9.0 release post.](https://reactjs.org/
 因此，添加监听器/订阅的推荐方法是使用 `componentDidMount` 生命周期：
 `embed:update-on-async-rendering/adding-event-listeners-after.js`
 
+<<<<<<< HEAD
 有时，更新订阅来响应属性变更非常重要。如果你正在使用像 Redux 或 MobX 这样的库，库的容器组件应该为你处理了这个问题。对于应用程序作者，我们创建了一个小型库，[`create-subscription`](https://github.com/facebook/react/tree/master/packages/create-subscription)，来帮助解决这个问题。我们将它与 React 16.3 一起发布。
+=======
+Sometimes it is important to update subscriptions in response to property changes. If you're using a library like Redux or MobX, the library's container component should handle this for you. For application authors, we've created a small library, [`create-subscription`](https://github.com/facebook/react/tree/main/packages/create-subscription), to help with this. We'll publish it along with React 16.3.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 我们可以使用 `create-subscription` 来传递订阅的值，而不是像上面示例那样传递一个可订阅的 `dataSource` prop：
 

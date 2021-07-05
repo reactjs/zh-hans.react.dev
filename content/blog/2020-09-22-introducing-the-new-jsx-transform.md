@@ -107,7 +107,11 @@ Next.js 的 [v9.5.3](https://github.com/vercel/next.js/releases/tag/v9.5.3)+ 会
 
 ### Gatsby {#gatsby}
 
+<<<<<<< HEAD
 Gatsby 的 [v2.24.5](https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby/CHANGELOG.md#22452-2020-08-28)+ 会使用新的转换来兼容 React 版本。
+=======
+Gatsby [v2.24.5](https://github.com/gatsbyjs/gatsby/blob/main/packages/gatsby/CHANGELOG.md#22452-2020-08-28)+ uses the new transform for compatible React versions.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 >注意
 >

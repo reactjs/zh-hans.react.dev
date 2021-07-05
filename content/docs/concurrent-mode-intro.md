@@ -39,7 +39,11 @@ Concurrent 模式是一组 React 的新功能，可帮助应用保持响应，�
 
 ## 阻塞 vs 可中断渲染 {#blocking-vs-interruptible-rendering}
 
+<<<<<<< HEAD
 **为了解释 Concurrent 模式，我们将使用版本控制作为比喻。** 如果你在团队中工作，你可能使用了像 Git 这样的版本控制系统并在分支上进行工作。当一个分支准备就绪时，你可以将你的工作合并到 master 中，以便他人拉取。
+=======
+**To explain Concurrent Mode, we'll use version control as a metaphor.** If you work on a team, you probably use a version control system like Git and work on branches. When a branch is ready, you can merge your work into main so that other people can pull it.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 在版本控制存在之前，开发工作流程有很大的不同。不存在分支的概念。如果你想编辑某些文件，你必须告诉所有人在你完成编辑工作之前不要触碰这些文件。你甚至不能同时和那个人研究它们 —— 实际上, 你被它们 *阻塞* 了。
 
@@ -63,7 +67,11 @@ Concurrent 模式减少了防抖和节流在 UI 中的需求。因为渲染是�
 
 ### 有意的加载顺序 {#intentional-loading-sequences}
 
+<<<<<<< HEAD
 我们之前说过 Concurrent 模式就像 React 工作“在分支上”。分支不仅对短期修复有用，对长期的功能开发也很有用。有时你可能会开发某项功能，但是在它达到一个“足够好的状态”以合并到 master 之前，往往需要好几周的时间。我们的版本控制比喻在这一方面同样适用于渲染。
+=======
+We've said before that Concurrent Mode is like React working "on a branch". Branches are useful not only for short-term fixes, but also for long-running features. Sometimes you might work on a feature, but it could take weeks before it's in a "good enough state" to merge into main. This side of our version control metaphor applies to rendering too.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 想象一下，我们正在应用的两个屏幕之间导航。有时，我们可能没有加载足够的代码和数据在新屏幕上向用户展示“足够好”的加载状态。这样过渡到一个空白屏或者大型的轮播图会是一个不愉快的体验。然而，通常获取所需的代码和数据不会花费太长时间。**如果 React 可以在旧屏幕上多停留一段时间，并在展示新屏幕之前“跳过”“不够好的加载状态”，不是更好吗？**
 

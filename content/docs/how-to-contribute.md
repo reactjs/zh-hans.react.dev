@@ -11,9 +11,15 @@ redirect_from:
 
 React 是 Facebook 首批开源项目中的一员，开发状态保持活跃，并在 [facebook.com](https://www.facebook.com) 上为我们提供了源代码。现在，我们正不断解决若干个问题以使参与贡献 React 尽可能容易和公开透明，虽然目前还差得很远。我们希望本篇文章能够解释清楚贡献的流程，回答你可能会有的一些问题。
 
+<<<<<<< HEAD
 ### [行为规范](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) {#code-of-conduct}
 
 Facebook 将[参与者公约](https://www.contributor-covenant.org/zh-cn/version/1/4/code-of-conduct)作为行为规范，我们希望参与项目的各位严格遵守。请阅读[全文](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md)去了解什么行为允许，什么行为不允许。
+=======
+### [Code of Conduct](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md) {#code-of-conduct}
+
+Facebook has adopted the [Contributor Covenant](https://www.contributor-covenant.org/) as its Code of Conduct, and we expect project participants to adhere to it. Please read [the full text](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ### 人人皆可开发 {#open-development}
 
@@ -23,19 +29,35 @@ React 的一切工作在 [GitHub](https://github.com/facebook/react) 上完成�
 
 React 遵循[语义化版本](https://semver.org/lang/zh-CN/)。我们对重要的漏洞修复发布修订号；对新特性或不重要的变更发布次版本号；对重大且不兼容的变更发布主版本号。我们在开发重大且不兼容的变更时，还会在次版本号用 deprecation warnings 让用户得知将来的变更并提前迁移代码。请查看[版本号规则](/docs/faq-versioning.html)来了解更多我们在稳定性和渐进迁移方面要做哪些事情。
 
+<<<<<<< HEAD
 每一个重要变更参见 [changelog file](https://github.com/facebook/react/blob/master/CHANGELOG.md)。
+=======
+Every significant change is documented in the [changelog file](https://github.com/facebook/react/blob/main/CHANGELOG.md).
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ### 分支管理 {#branch-organization}
 
+<<<<<<< HEAD
 请直接提交你的变更至 [`master branch`](https://github.com/facebook/react/tree/master)。对于开发或即将推出的版本，我们不会另建分支。我们尽力保持 `master` 不出问题，并通过所有测试。
 
 合并进入 `master` 的代码必须与最新稳定版本兼容，可以有额外特性，但不能有重大变更。我们应从 `master` 随时能发布新的次版本号。
+=======
+Submit all changes directly to the [`main branch`](https://github.com/facebook/react/tree/main). We don't use separate branches for development or for upcoming releases. We do our best to keep `main` in good shape, with all tests passing.
+
+Code that lands in `main` must be compatible with the latest stable release. It may contain additional features, but no breaking changes. We should be able to release a new minor version from the tip of `main` at any time.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ### 特性切换（Feature Flags）{#feature-flags}
 
+<<<<<<< HEAD
 我们为了使 `master` 能够发布，要求重大且不兼容的变更和实验性的特性必须用特性切换。
 
 [`packages/shared/ReactFeatureFlags.js`](https://github.com/facebook/react/blob/master/packages/shared/ReactFeatureFlags.js) 中定义了特性切换。React 的一些版本可能启用了不同的特性切换；比如，React Native 可能与 React DOM 有不同的配置。这些特性切换见于 [`packages/shared/forks`](https://github.com/facebook/react/tree/master/packages/shared/forks)。特性切换使用了静态类型检查器 Flow，因此你可以运行 `yarn flow` 来确认所有必要文件已更新。
+=======
+To keep the `main` branch in a releasable state, breaking changes and experimental features must be gated behind a feature flag.
+
+Feature flags are defined in [`packages/shared/ReactFeatureFlags.js`](https://github.com/facebook/react/blob/main/packages/shared/ReactFeatureFlags.js). Some builds of React may enable different sets of feature flags; for example, the React Native build may be configured differently than React DOM. These flags are found in [`packages/shared/forks`](https://github.com/facebook/react/tree/main/packages/shared/forks). Feature flags are statically typed by Flow, so you can run `yarn flow` to confirm that you've updated all the necessary files.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 React 的构建系统（Build System）会先删去禁用的特性分支，之后再发布。每次 commit 都会运行持续集成（Continuous Integration）来检查包（Bundle）大小的变化。包大小的变化可以用来表明某特性正确合并。
 
@@ -84,6 +106,7 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 
 **提交 pull request 前**，请确保完成以下步骤：
 
+<<<<<<< HEAD
 1. Fork [此仓库](https://github.com/facebook/react)，从 `master` 创建分支。
 2. 在仓库根目录下执行 `yarn`。
 3. 如果你修复了 bug 或者添加了代码，而这些内容需要测试，请添加测试！
@@ -94,6 +117,18 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 8. 确保 lint 校验代码（`yarn lint`）。提示：执行 `yarn linc` 去只检查更改过的文件。
 9. 运行 [Flow](https://flowtype.org/) 来类型检查（`yarn flow`）。
 10. 请签订贡献者许可证协议（Contributor License Agreement）。
+=======
+1. Fork [the repository](https://github.com/facebook/react) and create your branch from `main`.
+2. Run `yarn` in the repository root.
+3. If you've fixed a bug or added code that should be tested, add tests!
+4. Ensure the test suite passes (`yarn test`). Tip: `yarn test --watch TestName` is helpful in development.
+5. Run `yarn test --prod` to test in the production environment.
+6. If you need a debugger, run `yarn debug-test --watch TestName`, open `chrome://inspect`, and press "Inspect".
+7. Format your code with [prettier](https://github.com/prettier/prettier) (`yarn prettier`).
+8. Make sure your code lints (`yarn lint`). Tip: `yarn linc` to only check changed files.
+9. Run the [Flow](https://flowtype.org/) typechecks (`yarn flow`).
+10. If you haven't already, complete the CLA.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ### 贡献者许可证协议 {#contributor-license-agreement-cla}
 

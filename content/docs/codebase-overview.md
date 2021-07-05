@@ -19,9 +19,15 @@ redirect_from:
 
 当克隆 [React 仓库](https://github.com/facebook/react)之后，你们将看到项目根目录的信息：
 
+<<<<<<< HEAD
 * [`packages`](https://github.com/facebook/react/tree/master/packages) 包含元数据（比如 `package.json`）和 React 仓库中所有 package 的源码（子目录 `src`）。**如果你需要修改源代码, 那么每个包的 `src` 子目录是你最需要花费精力的地方。**
 * [`fixtures`](https://github.com/facebook/react/tree/master/fixtures) 包含一些给贡献者准备的小型 React 测试项目。
 * `build` 是 React 的输出目录。源码仓库中并没有这个目录，但是它会在你克隆 React 并且第一次[构建它](/docs/how-to-contribute.html#development-workflow)之后出现。
+=======
+* [`packages`](https://github.com/facebook/react/tree/main/packages) contains metadata (such as `package.json`) and the source code (`src` subdirectory) for all packages in the React repository. **If your change is related to the code, the `src` subdirectory of each package is where you'll spend most of your time.**
+* [`fixtures`](https://github.com/facebook/react/tree/main/fixtures) contains a few small React test applications for contributors.
+* `build` is the build output of React. It is not in the repository but it will appear in your React clone after you [build it](/docs/how-to-contribute.html#development-workflow) for the first time.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 文档位于 [React 仓库之外的一个独立仓库中](https://github.com/reactjs/reactjs.org)。
 
@@ -106,7 +112,11 @@ React “Core” 中包含所有[全局 `React` API](/docs/top-level-api.html#re
 
 **React 核心只包含定义组件必要的 API**。它不包含[协调](/docs/reconciliation.html)算法或者其他平台特定的代码。它同时适用于 React DOM 和 React Native 组件。
 
+<<<<<<< HEAD
 React 核心代码在源码的 [`packages/react`](https://github.com/facebook/react/tree/master/packages/react) 目录中。在 npm 上发布为 [`react`](https://www.npmjs.com/package/react) 包。相应的独立浏览器构建版本称为 `react.js`，它会导出一个称为 `React` 的全局对象。
+=======
+The code for React core is located in [`packages/react`](https://github.com/facebook/react/tree/main/packages/react) in the source tree. It is available on npm as the [`react`](https://www.npmjs.com/package/react) package. The corresponding standalone browser build is called `react.js`, and it exports a global called `React`.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ### 渲染器 {#renderers}
 
@@ -114,6 +124,7 @@ React 最初只是服务于 DOM，但是这之后被改编成也能同时支持�
 
 **渲染器用于管理一棵 React 树，使其根据底层平台进行不同的调用。**
 
+<<<<<<< HEAD
 渲染器同样位于 [`packages/`](https://github.com/facebook/react/tree/master/packages/) 目录下：
 
 * [React DOM Renderer](https://github.com/facebook/react/tree/master/packages/react-dom) 将 React 组件渲染成 DOM。它实现了全局 [`ReactDOM`API](/docs/react-dom.html)，这在npm上作为 [`react-dom`](https://www.npmjs.com/package/react-dom) 包。这也可以作为单独浏览器版本使用，称为 `react-dom.js`，导出一个 `ReactDOM` 的全局对象.
@@ -121,10 +132,23 @@ React 最初只是服务于 DOM，但是这之后被改编成也能同时支持�
 * [React Test Renderer](https://github.com/facebook/react/tree/master/packages/react-test-renderer) 将 React 组件渲染为 JSON 树。这用于 [Jest](https://facebook.github.io/jest) 的[快照测试](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html)特性。在 npm 上作为 [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) 包发布。
 
 另外一个官方支持的渲染器的是 [`react-art`](https://github.com/facebook/react/tree/master/packages/react-art)。它曾经是一个独立的 [GitHub 仓库](https://github.com/reactjs/react-art)，但是现在我们将此加入了主源代码树。
+=======
+Renderers are also located in [`packages/`](https://github.com/facebook/react/tree/main/packages/):
+
+* [React DOM Renderer](https://github.com/facebook/react/tree/main/packages/react-dom) renders React components to the DOM. It implements [top-level `ReactDOM` APIs](/docs/react-dom.html) and is available as [`react-dom`](https://www.npmjs.com/package/react-dom) npm package. It can also be used as standalone browser bundle called `react-dom.js` that exports a `ReactDOM` global.
+* [React Native Renderer](https://github.com/facebook/react/tree/main/packages/react-native-renderer) renders React components to native views. It is used internally by React Native.
+* [React Test Renderer](https://github.com/facebook/react/tree/main/packages/react-test-renderer) renders React components to JSON trees. It is used by the [Snapshot Testing](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html) feature of [Jest](https://facebook.github.io/jest) and is available as [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) npm package.
+
+The only other officially supported renderer is [`react-art`](https://github.com/facebook/react/tree/main/packages/react-art). It used to be in a separate [GitHub repository](https://github.com/reactjs/react-art) but we moved it into the main source tree for now.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 >**注意:**
 >
+<<<<<<< HEAD
 >严格说来，[`react-native-renderer`](https://github.com/facebook/react/tree/master/packages/react-native-renderer) 实现了 React 和 React Native 的连接。真正渲染 Native 视图的平台特定代码及组件都存储在 [React Native 仓库](https://github.com/facebook/react-native)中。
+=======
+>Technically the [`react-native-renderer`](https://github.com/facebook/react/tree/main/packages/react-native-renderer) is a very thin layer that teaches React to interact with React Native implementation. The real platform-specific code managing the native views lives in the [React Native repository](https://github.com/facebook/react-native) together with its components.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ### reconcilers {#reconcilers}
 
@@ -152,11 +176,19 @@ Reconciler 没有单独的包，因为他们暂时没有公共 API。相反，�
 
 你可以在[这里](https://github.com/acdlite/react-fiber-architecture)和[这里](https://medium.com/react-in-depth/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react-e1c04700ef6e)，深入了解 React Fiber 架构。虽然这已经在 React 16 中启用了，但是 async 特性还没有默认开启。
 
+<<<<<<< HEAD
 源代码在 [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler) 目录下。
+=======
+Its source code is located in [`packages/react-reconciler`](https://github.com/facebook/react/tree/main/packages/react-reconciler).
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ### 事件系统 {#event-system}
 
+<<<<<<< HEAD
 React 在原生事件基础上进行了封装，以抹平浏览器间差异。其源码在 [`packages/react-dom/src/events`](https://github.com/facebook/react/tree/master/packages/react-dom/src/events) 目录下。
+=======
+React implements a layer over native events to smooth out cross-browser differences. Its source code is located in [`packages/react-dom/src/events`](https://github.com/facebook/react/tree/main/packages/react-dom/src/events).
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ### 下一章节学习什么？ {#what-next}
 

@@ -990,6 +990,7 @@ React 保持对当前渲染中的组件的追踪。多亏了 [Hook 规范](/docs
 
 Hook 由不同的来源的多个想法构成：
 
+<<<<<<< HEAD
 * [react-future](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State) 这个仓库中包含我们对函数式 API 的老旧实验。
 * React 社区对 render prop API 的实验，其中包括 [Ryan Florence](https://github.com/ryanflorence) 的 [Reactions Component](https://github.com/reactions/component) 。
 * [Dominic Gannaway](https://github.com/trueadm) 的用 [`adopt` 关键字](https://gist.github.com/trueadm/17beb64288e30192f3aa29cad0218067) 作为 render props 的语法糖的提案。
@@ -997,5 +998,14 @@ Hook 由不同的来源的多个想法构成：
 * ReasonReact 中的 [Reducer components](https://reasonml.github.io/reason-react/docs/en/state-actions-reducer.html)。
 * Rx 中的 [Subscriptions](http://reactivex.io/rxjs/class/es6/Subscription.js~Subscription.html)。
 * Multicore OCaml 提到的 [Algebraic effects](https://github.com/ocamllabs/ocaml-effects-tutorial#2-effectful-computations-in-a-pure-setting)。
+=======
+* Our old experiments with functional APIs in the [react-future](https://github.com/reactjs/react-future/tree/main/07%20-%20Returning%20State) repository.
+* React community's experiments with render prop APIs, including [Ryan Florence](https://github.com/ryanflorence)'s [Reactions Component](https://github.com/reactions/component).
+* [Dominic Gannaway](https://github.com/trueadm)'s [`adopt` keyword](https://gist.github.com/trueadm/17beb64288e30192f3aa29cad0218067) proposal as a sugar syntax for render props.
+* State variables and state cells in [DisplayScript](http://displayscript.org/introduction.html).
+* [Reducer components](https://reasonml.github.io/reason-react/docs/en/state-actions-reducer.html) in ReasonReact.
+* [Subscriptions](http://reactivex.io/rxjs/class/es6/Subscription.js~Subscription.html) in Rx.
+* [Algebraic effects](https://github.com/ocamllabs/ocaml-effects-tutorial#2-effectful-computations-in-a-pure-setting) in Multicore OCaml.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 [Sebastian Markbåge](https://github.com/sebmarkbage) 想到了 Hook 最初的设计，后来经过 [Andrew Clark](https://github.com/acdlite)，[Sophie Alpert](https://github.com/sophiebits)，[Dominic Gannaway](https://github.com/trueadm)，和 React 团队的其它成员的提炼。

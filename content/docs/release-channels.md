@@ -14,9 +14,15 @@ React 依靠强大的开源社区收集 bug 报告，发起 pull request 和 [�
 
 React 的每个发布渠道都是针对不同的用例进行设计的：
 
+<<<<<<< HEAD
 - [**最新**](#latest-channel)版本用于稳定的 semver React 版本。此版本可通过 npm 安装获取。此渠道为目前大家已经在用的方式。**其主要用于所有面向用户的 React 应用程序。**
 - [**Next**](#next-channel) 版本主要用于追踪 React 源码仓库的 master 分支。我们会将其视为下一个次要版本发布的候选版本。使用它可以进行 React 与第三方项目间的集成测试。
 - [**实验阶段**](#experimental-channel)版本包含稳定版本中不提供的实验阶段的 API 与功能。同时它也追踪了 master 分支，但启用了附加新功能的标志。使用此渠道可以尝试即将发布的功能。
+=======
+- [**Latest**](#latest-channel) is for stable, semver React releases. It's what you get when you install React from npm. This is the channel you're already using today. **Use this for all user-facing React applications.**
+- [**Next**](#next-channel) tracks the main branch of the React source code repository. Think of these as release candidates for the next minor semver release. Use this for integration testing between React and third party projects.
+- [**Experimental**](#experimental-channel) includes experimental APIs and features that aren't available in the stable releases. These also track the main branch, but with additional feature flags turned on. Use this to try out upcoming features before they are released.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 所有版本都将发布到 npm，但只有最新版本遵循[语义版本控制](/docs/faq-versioning.html)。预发布版本（应用于 Next 和实验渠道的版本）会根据其内容的哈希值和提交日期生成版本号，例如，Next 的版本为 `0.0.0-68053d940-20210623`，实验版则为 `0.0.0-experimental-68053d940-20210623`。
 
@@ -34,7 +40,11 @@ React 的每个发布渠道都是针对不同的用例进行设计的：
 
 ### Next 渠道 {#next-channel}
 
+<<<<<<< HEAD
 Next 属于预发布渠道，用于追踪 React 仓库的 master 分支。我们使用在 Next 渠道的预发布版本作为最新版发布渠道的候选版本。你可以将 Next 视为最新版的超集，它的更新频率更高。
+=======
+The Next channel is a prerelease channel that tracks the main branch of the React repository. We use prereleases in the Next channel as release candidates for the Latest channel. You can think of Next as a superset of Latest that is updated more frequently.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 最近的 Next 版本和最近的最新版本之间的变化程度，与两个次要的 semver 版本之间的变化程度大致相同。但是，**Next 渠道不遵循语义版本控制。**在 Next 渠道中，你应该预期到后续的版本中偶尔会有不兼容的改动。
 
@@ -70,7 +80,11 @@ Next.js 项目使用了这个工作流。你可以参考他们的 [CircleCI 配�
 
 ### 实验版渠道 {#experimental-channel}
 
+<<<<<<< HEAD
 与 Next 相似，实验版渠道是一个预发布渠道，用于追踪 React 仓库 master 分支。但不同于 Next 的是，实验版包含尚未准备好广泛推广的功能及 API。
+=======
+Like Next, the Experimental channel is a prerelease channel that tracks the main branch of the React repository. Unlike Next, Experimental releases include additional features and APIs that are not ready for wider release.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 通常，对 Next 更新时也会对实验版本进行更新。它们基于相同的源，但是构建时会使用不同的功能标记。
 
@@ -94,4 +108,8 @@ Next.js 项目使用了这个工作流。你可以参考他们的 [CircleCI 配�
 
 当我们准备发布新的实验内容时，我们会发布到 [React 博客](/blog)中，但这并不意味着我们将公开发布每个实验的内容。
 
+<<<<<<< HEAD
 你可以参考 Github 公开仓库的[历史记录](https://github.com/facebook/react/commits/master)以查看完整的变更列表。
+=======
+You can always refer to our public GitHub repository's [history](https://github.com/facebook/react/commits/main) for a comprehensive list of changes.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
