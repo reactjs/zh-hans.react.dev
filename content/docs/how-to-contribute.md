@@ -11,9 +11,9 @@ redirect_from:
 
 React 是 Facebook 首批开源项目中的一员，开发状态保持活跃，并在 [facebook.com](https://www.facebook.com) 上为我们提供了源代码。现在，我们正不断解决若干个问题以使参与贡献 React 尽可能容易和公开透明，虽然目前还差得很远。我们希望本篇文章能够解释清楚贡献的流程，回答你可能会有的一些问题。
 
-### [行为规范](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) {#code-of-conduct}
+### [行为规范](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md) {#code-of-conduct}
 
-Facebook 将[参与者公约](https://www.contributor-covenant.org/zh-cn/version/1/4/code-of-conduct)作为行为规范，我们希望参与项目的各位严格遵守。请阅读[全文](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md)去了解什么行为允许，什么行为不允许。
+Facebook 将[参与者公约](https://www.contributor-covenant.org/zh-cn/version/1/4/code-of-conduct)作为行为规范，我们希望参与项目的各位严格遵守。请阅读[全文](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md)去了解什么行为允许，什么行为不允许。
 
 ### 人人皆可开发 {#open-development}
 
@@ -23,19 +23,19 @@ React 的一切工作在 [GitHub](https://github.com/facebook/react) 上完成�
 
 React 遵循[语义化版本](https://semver.org/lang/zh-CN/)。我们对重要的漏洞修复发布修订号；对新特性或不重要的变更发布次版本号；对重大且不兼容的变更发布主版本号。我们在开发重大且不兼容的变更时，还会在次版本号用 deprecation warnings 让用户得知将来的变更并提前迁移代码。请查看[版本号规则](/docs/faq-versioning.html)来了解更多我们在稳定性和渐进迁移方面要做哪些事情。
 
-每一个重要变更参见 [changelog file](https://github.com/facebook/react/blob/master/CHANGELOG.md)。
+每一个重要变更参见 [changelog file](https://github.com/facebook/react/blob/main/CHANGELOG.md)。
 
 ### 分支管理 {#branch-organization}
 
-请直接提交你的变更至 [`master branch`](https://github.com/facebook/react/tree/master)。对于开发或即将推出的版本，我们不会另建分支。我们尽力保持 `master` 不出问题，并通过所有测试。
+请直接提交你的变更至 [`main branch`](https://github.com/facebook/react/tree/main)。对于开发或即将推出的版本，我们不会另建分支。我们尽力保持 `main` 不出问题，并通过所有测试。
 
-合并进入 `master` 的代码必须与最新稳定版本兼容，可以有额外特性，但不能有重大变更。我们应从 `master` 随时能发布新的次版本号。
+合并进入 `main` 的代码必须与最新稳定版本兼容，可以有额外特性，但不能有重大变更。我们应从 `main` 随时能发布新的次版本号。
 
 ### 特性切换（Feature Flags）{#feature-flags}
 
-我们为了使 `master` 能够发布，要求重大且不兼容的变更和实验性的特性必须用特性切换。
+我们为了使 `main` 能够发布，要求重大且不兼容的变更和实验性的特性必须用特性切换。
 
-[`packages/shared/ReactFeatureFlags.js`](https://github.com/facebook/react/blob/master/packages/shared/ReactFeatureFlags.js) 中定义了特性切换。React 的一些版本可能启用了不同的特性切换；比如，React Native 可能与 React DOM 有不同的配置。这些特性切换见于 [`packages/shared/forks`](https://github.com/facebook/react/tree/master/packages/shared/forks)。特性切换使用了静态类型检查器 Flow，因此你可以运行 `yarn flow` 来确认所有必要文件已更新。
+[`packages/shared/ReactFeatureFlags.js`](https://github.com/facebook/react/blob/main/packages/shared/ReactFeatureFlags.js) 中定义了特性切换。React 的一些版本可能启用了不同的特性切换；比如，React Native 可能与 React DOM 有不同的配置。这些特性切换见于 [`packages/shared/forks`](https://github.com/facebook/react/tree/main/packages/shared/forks)。特性切换使用了静态类型检查器 Flow，因此你可以运行 `yarn flow` 来确认所有必要文件已更新。
 
 React 的构建系统（Build System）会先删去禁用的特性分支，之后再发布。每次 commit 都会运行持续集成（Continuous Integration）来检查包（Bundle）大小的变化。包大小的变化可以用来表明某特性正确合并。
 
@@ -84,7 +84,7 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 
 **提交 pull request 前**，请确保完成以下步骤：
 
-1. Fork [此仓库](https://github.com/facebook/react)，从 `master` 创建分支。
+1. Fork [此仓库](https://github.com/facebook/react)，从 `main` 创建分支。
 2. 在仓库根目录下执行 `yarn`。
 3. 如果你修复了 bug 或者添加了代码，而这些内容需要测试，请添加测试！
 4. 确保通过测试套件（`yarn test`）。提示：开发环境下，`yarn test --watch TestName` 很有用。

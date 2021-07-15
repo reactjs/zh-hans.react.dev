@@ -19,7 +19,7 @@ Create React App 2.0 已于今天发布，通过单个依赖更新即可获得�
 
 以下是该版本新特性的概要说明：
 
-* 🎉 更多样式选项：你可以使用 [Sass](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-sass-stylesheet) 以及 [CSS Modules](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-css-modules-stylesheet)。
+* 🎉 更多样式选项：你可以使用 [Sass](https://github.com/facebook/create-react-app/blob/main/packages/react-scripts/template/README.md#adding-a-sass-stylesheet) 以及 [CSS Modules](https://github.com/facebook/create-react-app/blob/main/packages/react-scripts/template/README.md#adding-a-css-modules-stylesheet)。
 * 🐠 升级到了 [Babel 7](https://babeljs.io/blog/2018/08/27/7.0.0)，包含了对 [React fragment syntax](/docs/fragments.html#short-syntax) 的支持以及许多 bug 修复。
 * 📦 升级到了 [webpack 4](https://medium.com/webpack/webpack-4-released-today-6cdb994702d4)，可以更智能的自动拆分 JS 包。
 * 🃏 升级到了 [Jest 23](https://jestjs.io/blog/2018/05/29/jest-23-blazing-fast-delightful-testing.html)，支持以[交互模式](https://jestjs.io/blog/2018/05/29/jest-23-blazing-fast-delightful-testing#interactive-snapshot-mode)查看快照。
@@ -27,7 +27,7 @@ Create React App 2.0 已于今天发布，通过单个依赖更新即可获得�
 * 💎 你可以使用 [Apollo](https://github.com/leoasis/graphql-tag.macro#usage)、[Relay Modern](https://github.com/facebook/relay/pull/2171#issuecomment-411459604)、[MDX](https://github.com/facebook/create-react-app/issues/5149#issuecomment-425396995) 以及其他三方的基于 [Babel Macros](https://babeljs.io/blog/2017/09/11/zero-config-with-babel-macros) 的转换器。
 * 🌠 你可以[将 SVG 作为组件导入](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-svgs)，并且可以在 JSX 中使用。
 * 🐈 你可以尝试使用实验性的 [Yarn Plug'n'Play 模式](https://github.com/yarnpkg/rfcs/pull/101) 来移除 `node_modules`.
-* 🕸 你可以在开发模式下[注入你自己的代理实现](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#configuring-the-proxy-manually) 来匹配你的后端 API。
+* 🕸 你可以在开发模式下[注入你自己的代理实现](https://github.com/facebook/create-react-app/blob/main/packages/react-scripts/template/README.md#configuring-the-proxy-manually) 来匹配你的后端 API。
 * 🚀 你可以在不破坏构建的情况下使用[为最新版本 Node 编写的包](https://github.com/sindresorhus/ama/issues/446#issuecomment-281014491)。
 * ✂️ 可以为现代浏览器，选择构建更小巧的 CSS 包。
 * 👷‍♀️ 可选 Service workers ，并且内置支持使用 Google 的 [Workbox](https://developers.google.com/web/tools/workbox/)。
@@ -59,7 +59,7 @@ Create React App 2.0 已于今天发布，通过单个依赖更新即可获得�
 
 **当你升级之后第一次运行 `npm start`** 你将会看到一个控制台提示询问你打算要支持的浏览器。请输入 `y` 来选择默认的那一个。你的选择将会被写入到 `package.json`，之后你可以随时修改它们。Create React App 会根据这个信息来为你的现代浏览器提供更小的 CSS 捆绑包，或者为老旧浏览器提供 css polyfill。
 
-**当 `npm start` 在升级之后仍不能完全工作，** [请先仔细检查发布日志中的升级说明](https://github.com/facebook/create-react-app/releases/tag/v2.0.3)。在本次发布中有一些破坏性变更，但它们的影响返回是有限的，它们不需要花几个小时来整理。注意，为了减少垫片的大小，[支持老旧浏览器 (https://github.com/facebook/create-react-app/blob/master/packages/react-app-polyfill/README.md) 当前是**可选功能**。
+**当 `npm start` 在升级之后仍不能完全工作，** [请先仔细检查发布日志中的升级说明](https://github.com/facebook/create-react-app/releases/tag/v2.0.3)。在本次发布中有一些破坏性变更，但它们的影响返回是有限的，它们不需要花几个小时来整理。注意，为了减少垫片的大小，[支持老旧浏览器](https://github.com/facebook/create-react-app/blob/main/packages/react-app-polyfill/README.md) 当前是**可选功能**。
 
 **如果你之前选择了弹出配置，现在又想升级，** 一个通用的方案是先回退到你弹出时的版本（以及任何更改配置的后续提交），然后升级，随后视情况把你之后的更改再注入一次。很有可能你扩充的功能当前已经支持了。
 
@@ -72,7 +72,7 @@ Create React App 2.0 已于今天发布，通过单个依赖更新即可获得�
 本次发布中的破坏性变更如下：
 
 * 不在支持 Node 6。
-* 通过可选的 [独立包](https://github.com/facebook/create-react-app/tree/master/packages/react-app-polyfill) 支持了老旧浏览器(IE 9 ~ IE 11)。
+* 通过可选的 [独立包](https://github.com/facebook/create-react-app/tree/main/packages/react-app-polyfill) 支持了老旧浏览器(IE 9 ~ IE 11)。
 * 使用 `import()` 来实现代码分割更接近规范，一段时候后 `require.ensure()` 将被禁用。
 * 默认的 Jest 运行环境包含 jsdom。
 * 使用自定义代理模块来代替 `proxy` 对象配置。

@@ -257,7 +257,7 @@ npx tsc --init
 }
 ```
 
-很好！现在，当我们运行构建脚本时，编译器会将生成的 javascript 输出到 `build` 文件夹。 [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json) 提供了一套默认的 `tsconfig.json` 帮助你快速上手。
+很好！现在，当我们运行构建脚本时，编译器会将生成的 javascript 输出到 `build` 文件夹。 [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/main/tsconfig.json) 提供了一套默认的 `tsconfig.json` 帮助你快速上手。
 
 通常情况下，你不希望将编译后生成的 JavaScript 文件保留在版本控制内。因此，应该把构建文件夹添加到 `.gitignore` 中。
 
@@ -316,11 +316,11 @@ declare module 'querystring' {
 * [TypeScript 文档：JavaScript 迁移](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
 * [TypeScript 文档：React 与 Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
 
-## Reason {#reason}
+## ReScript {#rescript}
 
-[Reason](https://reasonml.github.io/) 不是一种新的语言；它是一种新的语法和工具链，底层使用的是经过实战验证的 [OCaml](https://ocaml.org/) 语言。Reason 在 OCaml 之上提供了 JavaScript 程序员的熟悉语法，而且集成了现有的 NPM/Yarn 工作流。
+[ReScript](https://rescript-lang.org/) 是一门类型语言，可编译为 JavaScript。它的部分核心功能是为了保证 100% 的类型覆盖，完美支持 JSX 和[独有的 React 绑定](https://rescript-lang.org/docs/react/latest/introduction)，以允许开发者无缝集成到现有的 JS/TS 的 React 代码库中。
 
-Reason 是由 Facebook 开发，并且运用在一些现有产品中比如 Messager。虽然它有一定的实验性质，但它拥有由 Facebook 维护的[专门的 React 绑定](https://reasonml.github.io/reason-react/)和一个[活跃的社区](https://reasonml.github.io/docs/en/community.html)。
+你可以在[此处](https://rescript-lang.org/docs/manual/latest/installation#integrate-into-an-existing-js-project)。了解更多关于如何将 ReScript 集成到现有的 JS / React 代码库的信息。
 
 ## Kotlin {#kotlin}
 
