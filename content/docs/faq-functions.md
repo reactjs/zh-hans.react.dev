@@ -223,7 +223,7 @@ class Alphabet extends React.Component {
 
 - **节流**：基于时间的频率来进行抽样更改 (例如 [`_.throttle`](https://lodash.com/docs#throttle))
 - **防抖**：一段时间的不活动之后发布更改 (例如 [`_.debounce`](https://lodash.com/docs#debounce))
-- **`requestAnimationFrame` 节流**：基于 requestAnimationFrame 的抽样更改 (例如 [raf-schd]([`raf-schd`](https://github.com/alexreardon/raf-schd)))
+- **`requestAnimationFrame` 节流**：基于 requestAnimationFrame 的抽样更改 (例如 [`raf-schd`](https://github.com/alexreardon/raf-schd))
 
 可以看这个比较 throttle 和 debounce 的[可视化页面](http://demo.nimius.net/debounce_throttle/)
 
