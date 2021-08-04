@@ -87,7 +87,7 @@ function getGreeting(user) {
 }
 ```
 
-### JSX 特定属性 {#specifying-attributes-with-jsx}
+### 在JSX中指定属性 {#specifying-attributes-with-jsx}
 
 你可以通过使用引号，来将属性值指定为字符串字面量：
 
