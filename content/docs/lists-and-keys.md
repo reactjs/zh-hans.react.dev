@@ -205,7 +205,7 @@ ReactDOM.render(
 
 一个好的经验法则是：在 `map()` 方法中的元素需要设置 key 属性。
 
-### key 只是在兄弟节点之间必须唯一 {#keys-must-only-be-unique-among-siblings}
+### key 值在兄弟节点之间必须唯一 {#keys-must-only-be-unique-among-siblings}
 
 数组元素中使用的 key 在其兄弟节点之间应该是独一无二的。然而，它们不需要是全局唯一的。当我们生成两个不同的数组时，我们可以使用相同的 key 值：
 
