@@ -39,7 +39,7 @@ Context 主要应用场景在于*很多*不同层级的组件需要访问同样�
 
 **如果你只是想避免层层传递一些属性，[组件组合（component composition）](/docs/composition-vs-inheritance.html)有时候是一个比 context 更好的解决方案。**
 
-比如，考虑这样一个 `Page` 组件，它层层向下传递 `user` 和 `avatarSize` 属性，从而深度嵌套的 `Link` 和 `Avatar` 组件可以读取到这些属性：
+比如，考虑这样一个 `Page` 组件，它层层向下传递 `user` 和 `avatarSize` 属性，从而让深度嵌套的 `Link` 和 `Avatar` 组件可以读取到这些属性：
 
 ```js
 <Page user={user} avatarSize={avatarSize} />
