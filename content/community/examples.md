@@ -13,6 +13,7 @@ If you add a project, please commit to keeping it up to date with the latest ver
 ## Small Examples {#small-examples}
 
 * **[Calculator](https://github.com/ahfarmer/calculator)** Implementation of the iOS calculator built in React
+* **[Calculator-with-hooks](https://github.com/Dreamerryao/react-calculator)** A calculator with hooks.
 * **[Emoji Search](https://github.com/ahfarmer/emoji-search)** React app for searching emoji
 * **[Snap Shot](https://github.com/Yog9/SnapShot)** A photo gallery with search
 * **[BMI Calculator](https://github.com/GermaVinsmoke/bmi-calculator)** A React Hooks app for calculating BMI
