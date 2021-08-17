@@ -123,11 +123,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 ## 可选：使用 React 和 JSX {#optional-try-react-with-jsx}
 
-<<<<<<< HEAD
 在上面的示例中，我们只依赖了浏览器原生支持的特性。这就是为什么我们使用了 JavaScript 函数调用来告诉 React 要显示什么：
-=======
-In the examples above, we only relied on features that are natively supported by browsers. This is why we used a JavaScript function call to tell React what to display:
->>>>>>> 95e15d063b205007a92c52efb5311f76ad5a0b6c
 
 ```js
 const e = React.createElement;

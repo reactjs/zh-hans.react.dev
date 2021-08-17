@@ -14,11 +14,7 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
 组件是将 props 转换为 UI，而高阶组件是将组件转换为另一个组件。
 
-<<<<<<< HEAD
-HOC 在 React 的第三方库中很常见，例如 Redux 的 [`connect`](https://github.com/reduxjs/react-redux/blob/main/docs/api/connect.md#connect) 和 Relay 的 [`createFragmentContainer`](https://relay.dev/docs/v10.1.3/fragment-container/#createfragmentcontainer)。
-=======
-HOCs are common in third-party React libraries, such as Redux's [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) and Relay's [`createFragmentContainer`](https://relay.dev/docs/v10.1.3/fragment-container/#createfragmentcontainer).
->>>>>>> 95e15d063b205007a92c52efb5311f76ad5a0b6c
+HOC 在 React 的第三方库中很常见，例如 Redux 的 [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) 和 Relay 的 [`createFragmentContainer`](https://relay.dev/docs/v10.1.3/fragment-container/#createfragmentcontainer)。
 
 在本文档中，我们将讨论为什么高阶组件有用，以及如何编写自己的 HOC 函数。
 
@@ -298,11 +294,7 @@ const EnhancedComponent = enhance(WrappedComponent)
 
 ## 约定：包装显示名称以便轻松调试 {#convention-wrap-the-display-name-for-easy-debugging}
 
-<<<<<<< HEAD
-HOC 创建的容器组件会与任何其他组件一样，会显示在 [React Developer Tools](https://github.com/facebook/react/tree/master/packages/react-devtools) 中。为了方便调试，请选择一个显示名称，以表明它是 HOC 的产物。
-=======
-The container components created by HOCs show up in the [React Developer Tools](https://github.com/facebook/react/tree/main/packages/react-devtools) like any other component. To ease debugging, choose a display name that communicates that it's the result of a HOC.
->>>>>>> 95e15d063b205007a92c52efb5311f76ad5a0b6c
+HOC 创建的容器组件会与任何其他组件一样，会显示在 [React Developer Tools](https://github.com/facebook/react/tree/main/packages/react-devtools) 中。为了方便调试，请选择一个显示名称，以表明它是 HOC 的产物。
 
 最常见的方式是用 HOC 包住被包装组件的显示名称。比如高阶组件名为 `withSubscription`，并且被包装组件的显示名称为 `CommentList`，显示名称应该为 `WithSubscription(CommentList)`：
 
