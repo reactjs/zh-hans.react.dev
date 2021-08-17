@@ -257,7 +257,7 @@ npx tsc --init
 }
 ```
 
-很好！现在，当我们运行构建脚本时，编译器会将生成的 javascript 输出到 `build` 文件夹。 [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/main/tsconfig.json) 提供了一套默认的 `tsconfig.json` 帮助你快速上手。
+很好！现在，当我们运行构建脚本时，编译器会将生成的 javascript 输出到 `build` 文件夹。 [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json) 提供了一套默认的 `tsconfig.json` 帮助你快速上手。
 
 通常情况下，你不希望将编译后生成的 JavaScript 文件保留在版本控制内。因此，应该把构建文件夹添加到 `.gitignore` 中。
 

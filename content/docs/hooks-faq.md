@@ -990,7 +990,7 @@ React 保持对当前渲染中的组件的追踪。多亏了 [Hook 规范](/docs
 
 Hook 由不同的来源的多个想法构成：
 
-* [react-future](https://github.com/reactjs/react-future/tree/main/07%20-%20Returning%20State) 这个仓库中包含我们对函数式 API 的老旧实验。
+* [react-future](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State) 这个仓库中包含我们对函数式 API 的老旧实验。
 * React 社区对 render prop API 的实验，其中包括 [Ryan Florence](https://github.com/ryanflorence) 的 [Reactions Component](https://github.com/reactions/component) 。
 * [Dominic Gannaway](https://github.com/trueadm) 的用 [`adopt` 关键字](https://gist.github.com/trueadm/17beb64288e30192f3aa29cad0218067) 作为 render props 的语法糖的提案。
 * [DisplayScript](http://displayscript.org/introduction.html) 中的 state 变量和 state 单元格。
