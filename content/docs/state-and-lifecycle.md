@@ -336,7 +336,7 @@ this.state.comment = 'Hello';
 this.setState({comment: 'Hello'});
 ```
 
-构造函数是唯一可以给 `this.state` 赋值的地方：
+构造函数是唯一可以给 `this.state` 赋值的地方。
 
 ### State 的更新可能是异步的 {#state-updates-may-be-asynchronous}
 
