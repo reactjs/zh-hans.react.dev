@@ -906,7 +906,7 @@ function DeepChild(props) {
 
 总而言之，从维护的角度来这样看更加方便（不用不断转发回调），同时也避免了回调的问题。像这样向下传递 `dispatch` 是处理深度更新的推荐模式。
 
-注意，你依然可以选择是要把应用的 *state* 作为 props 向下传递（更显明确）还是作为 context（对很深的更新而言更加方便）。如果你也使用 context 来向下传递 state，请使用两种不同的 context 类型 —— `dispatch` context 永远不会变，因此组件通过读取它就不需要重新渲染了，除非它们还需要应用的 state。
+注意，你依然可以选择是将应用的 *state* 作为 props（更显明确）向下传递还是使用 context（对很深的更新而言更加方便）向下传递。如果你也使用 context 来向下传递 state，请使用两种不同的 context 类型 —— `dispatch` context 永远不会变，因此组件通过读取它就不需要重新渲染了，除非它们还需要应用的 state。
 
 ### 如何从 `useCallback` 读取一个经常变化的值？ {#how-to-read-an-often-changing-value-from-usecallback}
 
