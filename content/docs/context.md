@@ -162,7 +162,7 @@ class MyClass extends React.Component {
 MyClass.contextType = MyContext;
 ```
 
-挂载在 class 上的 `contextType` 属性会被重赋值为一个由 [`React.createContext()`](#reactcreatecontext) 创建的 Context 对象。此属性能让你使用 `this.context` 来消费最近 Context 上的那个值。你可以在任何生命周期中访问到它，包括 render 函数中。
+挂载在 class 上的 `contextType` 属性可以赋值为由 [`React.createContext()`](#reactcreatecontext) 创建的 Context 对象。此属性可以让你使用 `this.context` 来获取最近 Context 上的值。你可以在任何生命周期中访问到它，包括 render 函数中。
 
 > 注意：
 >
