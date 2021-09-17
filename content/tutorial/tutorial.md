@@ -524,7 +524,11 @@ class Board extends React.Component {
 
 ### 为什么不可变性在 React 中非常重要 {#why-immutability-is-important}
 
+<<<<<<< HEAD
 在上一节内容当中，我们建议使用 `.slice()` 函数对数组进行拷贝，而非直接修改现有的数组。接下来我们来学习不可变性以及不可变性的重要性。
+=======
+In the previous code example, we suggested that you create a copy of the `squares` array using the `slice()` method instead of modifying the existing array. We'll now discuss immutability and why immutability is important to learn.
+>>>>>>> a88b1e1331126287ccf03f2f4ec25ec38513b911
 
 一般来说，有两种改变数据的方式。第一种方式是直接*修改*变量的值，第二种方式是使用新的一份数据替换旧数据。
 
