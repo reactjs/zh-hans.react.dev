@@ -226,11 +226,7 @@ class Parent extends React.Component {
 this.inputElement.current.focus();
 ```
 
-<<<<<<< HEAD
-当使用 HOC 来扩展组件时，我们建议使用 React 的 `forwardRef` 函数来向被包裹的组件[转发 ref](/docs/forwarding-refs.html)。如果第三方的 HOC 不支持转发 ref，上面的方法仍可以作为一种备选方案。
-=======
-When using a [HOC](/docs/higher-order-components.html) to extend components, it is recommended to [forward the ref](/docs/forwarding-refs.html) to the wrapped component using the `forwardRef` function of React. If a third party HOC does not implement ref forwarding, the above pattern can still be used as a fallback.
->>>>>>> f0a9793dff9f8e86ec365bfadb0b4b23c6f618ce
+当使用 [HOC](/docs/higher-order-components.html) 来扩展组件时，我们建议使用 React 的 `forwardRef` 函数来向被包裹的组件[转发 ref](/docs/forwarding-refs.html)。如果第三方的 HOC 不支持转发 ref，上面的方法仍可以作为一种备选方案。
 
 [react-aria-modal](https://github.com/davidtheclark/react-aria-modal)  提供了一个很好的焦点管理的例子。
 这是一个少有的完全无障碍的模态窗口的例子。它不仅仅把初始焦点设置在了取消按钮上（防止键盘用户意外激活成功操作）和把键盘焦点固定在了窗口之内，
