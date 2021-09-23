@@ -261,7 +261,7 @@ class Square extends React.Component {
 >}
 >```
 >
->注意：此处使用了 `onClick={() => console.log('click')}` 的方式向 `onClick` 这个 prop 传入一个*函数*。 React 将在单击时调用此函数。但很多人经常忘记编写 `() =>`，而写成了 `onClick={console.log('click')}`，这种常见的错误会导致每次这个组件渲染的时候都会触发弹出框。
+>注意：此处使用了 `onClick={() => console.log('click')}` 的方式向 `onClick` 这个 prop 传入一个*函数*。 React 将在单击时调用此函数。但很多人经常忘记编写 `() =>`，而写成了 `onClick={console.log('click')}`，这种常见的错误会导致每次这个组件渲染的时候都会触发控制台输出。
 
 接下来，我们希望 Square 组件可以“记住”它被点击过，然后用 “X” 来填充对应的方格。我们用 **state** 来实现所谓“记忆”的功能。
 
