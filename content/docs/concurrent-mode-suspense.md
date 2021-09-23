@@ -99,7 +99,7 @@ function ProfileTimeline() {
 
 上面的 demo 只是个示意。别担心看不懂代码。我们后面会详细说明这部分代码的运作方式。需要记住的是，Suspense 其实更像是一种*机制*，而 demo 中那些具体的 API，如 `fetchProfileData()` 或者 `resource.posts.read()`，这些 API 本身并不重要。不过，如果你还是对它们很好奇，可以在这个 [demo sandbox](https://codesandbox.io/s/frosty-hermann-bztrp) 中找到它们的定义。
 
-Suspense 不是一个数据请求的库，而是一个机制。这个**机制是用来给数据请求库**向 React 通信说明*某个组件正在读取的数据当前仍不可用*。通信之后，React 可以继续等待数据的返回并更新 UI。在 Facebook，我们用了 Relay 和它的[集成 Suspense 新功能](https://relay.dev/docs/en/experimental/step-by-step) 。我们期望其他的库，如 Apollo，也能支持类似的集成。
+Suspense 不是一个数据请求的库，而是一个机制。这个**机制是用来给数据请求库**向 React 通信说明*某个组件正在读取的数据当前仍不可用*。通信之后，React 可以继续等待数据的返回并更新 UI。在 Facebook，我们用了 Relay 和它的[集成 Suspense 新功能](docs/getting-started/step-by-step-guide/) 。我们期望其他的库，如 Apollo，也能支持类似的集成。
 
 从长远来看，我们想让 Suspense 成为组件读取异步数据的主要方式——无论数据来自何方。
 
@@ -107,9 +107,9 @@ Suspense 不是一个数据请求的库，而是一个机制。这个**机制是
 
 Suspense 和当下其他解决异步问题的方法存在明显差异，因而，第一次接触 Suspense 容易让人产生误解。下面我们阐述下常见的误解：
 
- * **它不是数据获取的一种实现。**它并不假定你使用 GraphQL，REST，或者任何其他特定的数据格式、库、数据传输方式、协议。
+* **它不是数据获取的一种实现。**它并不假定你使用 GraphQL，REST，或者任何其他特定的数据格式、库、数据传输方式、协议。
 
-* **它不是一个可以直接用于数据获取的客户端。**你不能用 Suspense 来“替代” `fetch` 或者 Relay。不过你可以使用集成 Suspense 的库（比如说，[新的 Relay API](https://relay.dev/docs/en/experimental/api-reference)）。
+* **它不是一个可以直接用于数据获取的客户端。**你不能用 Suspense 来“替代” `fetch` 或者 Relay。不过你可以使用集成 Suspense 的库（比如说，[新的 Relay API](https://relay.dev/docs/api-reference/relay-environment-provider/)）。
 
 * **它不使数据获取与视图层代码耦合。**它协助编排加载状态在 UI 中的显示，但它并不将你的网络逻辑捆绑到 React 组件。
 
@@ -125,7 +125,7 @@ Suspense 和当下其他解决异步问题的方法存在明显差异，因而�
 
 ## 在实践中使用 Suspense {#using-suspense-in-practice}
 
-在 Facebook 中，我们目前只在生产环境使用集成了 Suspense 的 Relay。**如果你正在找一份实用指南来上手 Suspense，[可以看这份 Relay 指南](https://relay.dev/docs/en/experimental/step-by-step)**！指南中写明了当前运行在我们在生产环境中的可用模式。
+在 Facebook 中，我们目前只在生产环境使用集成了 Suspense 的 Relay。**如果你正在找一份实用指南来上手 Suspense，[可以看这份 Relay 指南](https://relay.dev/docs/getting-started/step-by-step-guide/)**！指南中写明了当前运行在我们在生产环境中的可用模式。
 
 **本文所有演示代码均使用“伪”API 实现，而不是 Relay。**我们这样做的目的是想让代码本身更易懂些，让不熟悉 GraphQL 的读者也能看懂代码。也正因为示例代码使用“伪 API”，示例代码本身并不是在应用中使用 Suspense 的“正确方式”。可以说，本文是从概念上出发，目的是帮你了解*为什么* Suspense 是以特定方式运行，以及 Suspense 解决了哪些问题这两件事情。
 
@@ -143,7 +143,7 @@ Suspense 和当下其他解决异步问题的方法存在明显差异，因而�
 
 尽管实现对 Suspense 的支持从技术上是可行的，Suspense 当前**并不**作为在组件渲染的时候开始获取数据的方式。反而，它让组件表达出它们在正在“等待”*已经发出获取行为的*数据。**[使用 Concurrent 模式和 Suspense 来构建优秀的用户体验](/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html)一文说明了这一点的重要性，以及如何在实践中实现这个模式。**
 
-除非你有现成的解决方法来避免瀑布（waterfall）问题，我们建议采用支持在渲染之前就能先获取数据的 API。关于实现这类 API 的具体例子，你可以查看 [Relay Suspense API](https://relay.dev/docs/en/experimental/api-reference#usepreloadedquery) 实现预加载的方式。对于这方面的信息，我们当前给出的和过去给出的并不完全一致。因为 Suspense 用于数据获取还处于试验阶段，我们的建议会随着我们对 Suspense 在生产环境中的使用习得和对瀑布问题的理解，而发生变化。
+除非你有现成的解决方法来避免瀑布（waterfall）问题，我们建议采用支持在渲染之前就能先获取数据的 API。关于实现这类 API 的具体例子，你可以查看 [Relay Suspense API](https://relay.dev/docs/api-reference/use-preloaded-query/) 实现预加载的方式。对于这方面的信息，我们当前给出的和过去给出的并不完全一致。因为 Suspense 用于数据获取还处于试验阶段，我们的建议会随着我们对 Suspense 在生产环境中的使用习得和对瀑布问题的理解，而发生变化。
 
 ## 传统实现方式 vs Suspense {#traditional-approaches-vs-suspense}
 

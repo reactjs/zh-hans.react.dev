@@ -98,7 +98,7 @@ React 采用 [monorepo](https://danluu.com/monorepo/) 的管理方式。仓库�
 
 ### React Core {#react-core}
 
-React “Core” 中包含所有[全局 `React` API](/docs/top-level-api.html#react)，比如：
+React “Core” 中包含所有[全局 `React` API](/docs/react-api.html#react)，比如：
 
 * `React.createElement()`
 * `React.Component`
