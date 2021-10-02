@@ -150,7 +150,7 @@
     - id: faq-build
       title: Babel, JSX, 及构建过程
     - id: faq-functions
-      title: 在组件中使用事件处理函数
+      title: 传递函数给组件
     - id: faq-state
       title: 组件状态
     - id: faq-styling
