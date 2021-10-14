@@ -454,7 +454,7 @@ class Square extends React.Component {
 1. 向 DOM 内置元素 `<button>` 添加 `onClick` prop，让 React 开启对点击事件的监听。
 2. 当 button 被点击时，React 会调用 Square 组件的 `render()` 方法中的 `onClick` 事件处理函数。
 3. 事件处理函数触发了传入其中的 `this.props.onClick()` 方法。这个方法是由 Board 传递给 Square 的。
-4. 由于 Board 把 `onClick={() => this.handleClick(i)}` 传递给了 Square，所以当 Square 中的事件处理函数触发时，其实就是触发的 Board 当中的 `this.handleClick(i)` 方法。
+4. 由于 Board 把 `onClick={() => this.handleClick(i)}` 传递给了 Square，所以当 Square 中的事件处理函数触发时，其实就是触发的 Board 当中的 `handleClick(i)` 方法。
 5. 现在我们还尚未定义 `handleClick()` 方法，所以代码还不能正常工作。如果此时点击 Square，你会在屏幕上看到红色的错误提示，提示内容为：“this.handleClick is not a function”。
 
 >注意
@@ -1044,6 +1044,8 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 ```
 
 **[查看此步完整代码示例](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
+
+当我们遍历 `history` 数组时，`step` 变量指向的是当前 `history` 元素的值，而 `move` 则指向的是 `history` 元素的索引。此处，我们只对 `move` 感兴趣，因此未对 `step` 做任何处理。
 
 对于井字棋历史记录的每一步，我们都创建出了一个包含按钮 `<button>` 元素的 `<li>` 的列表。这些按钮拥有一个 `onClick` 事件处理函数，在这个函数里调用了 `this.jumpTo()` 方法。但是我们还没有实现 `jumpTo()` 方法。到目前为止，我们可以看到一个游戏历史步骤的列表，以及开发者工具控制台的警告信息，警告信息如下：
 
