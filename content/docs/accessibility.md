@@ -455,11 +455,7 @@ Deque 系统提供了 [aXe-core](https://github.com/dequelabs/axe-core) 以对�
 
 [无障碍访问引擎（The Accessibility Engine）](https://www.deque.com/products/axe/)，简称 aXe，是一个基于 `aXe-core` 的无障碍访问性检测器。
 
-<<<<<<< HEAD
-在开发和 debug 时，你也可以使用 [react-axe](https://github.com/dylanb/react-axe) 组件直接把无障碍访问的发现显示在控制台中。
-=======
-You can also use the [@axe-core/react](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/react) module to report these accessibility findings directly to the console while developing and debugging.
->>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
+在开发和 debug 时，你也可以使用 [@axe-core/react](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/react) 组件直接把无障碍访问的发现显示在控制台中。
 
 #### WebAIM WAVE {#webaim-wave}
 

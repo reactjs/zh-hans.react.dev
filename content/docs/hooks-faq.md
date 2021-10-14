@@ -912,13 +912,7 @@ function DeepChild(props) {
 
 >注意
 >
-<<<<<<< HEAD
 >我们推荐 [在 context 中向下传递 `dispatch`](#how-to-avoid-passing-callbacks-down) 而非在 props 中使用独立的回调。下面的方法仅仅出于文档完整性考虑，以及作为一条出路在此提及。
->
->同时也请注意这种模式在 [并行模式](/blog/2018/03/27/update-on-async-rendering.html) 下可能会导致一些问题。我们计划在未来提供一个更加合理的替代方案，但当下最安全的解决方案是，如果回调所依赖的值变化了，总是让回调失效。
-=======
->We recommend to [pass `dispatch` down in context](#how-to-avoid-passing-callbacks-down) rather than individual callbacks in props. The approach below is only mentioned here for completeness and as an escape hatch.
->>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
 在某些罕见场景中，你可能会需要用 [`useCallback`](/docs/hooks-reference.html#usecallback) 记住一个回调，但由于内部函数必须经常重新创建，记忆效果不是很好。如果你想要记住的函数是一个事件处理器并且在渲染期间没有被用到，你可以 [把 ref 当做实例变量](#is-there-something-like-instance-variables) 来用，并手动把最后提交的值保存在它当中：
 
