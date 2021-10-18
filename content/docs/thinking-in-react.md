@@ -72,11 +72,7 @@ React 最棒的部分之一是引导我们思考如何构建一个应用。在�
 
 到此为止，你应该已经有了一个可重用的组件库来渲染你的数据模型。由于我们构建的是静态版本，所以这些组件目前只需提供 `render()` 方法用于渲染。最顶层的组件 `FilterableProductTable` 通过 props 接受你的数据模型。如果你的数据模型发生了改变，再次调用 `ReactDOM.render()`，UI 就会相应地被更新。数据模型变化、调用 `render()` 方法、UI 相应变化，这个过程并不复杂，因此很容易看清楚 UI 是如何被更新的，以及是在哪里被更新的。React **单向数据流**（也叫*单向绑定*）的思想使得组件模块化，易于快速开发。
 
-<<<<<<< HEAD
-如果你在完成这一步骤时遇到了困难，可以参阅 [React 文档](/docs/)。
-=======
-Refer to the [React docs](/docs/getting-started.html) if you need help executing this step.
->>>>>>> 4133943e718a77f11627888db2f59f6cb7a73403
+如果你在完成这一步骤时遇到了困难，可以参阅 [React 文档](/docs/getting-started.html)。
 
 ### 补充说明: 有关 props 和 state {#a-brief-interlude-props-vs-state}
 
