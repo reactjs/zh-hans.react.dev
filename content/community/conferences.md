@@ -1,6 +1,6 @@
 ---
 id: conferences
-title: Conferences
+title: 会议
 layout: community
 sectionid: community
 permalink: community/conferences.html
@@ -8,9 +8,9 @@ redirect_from:
   - "docs/conferences.html"
 ---
 
-Do you know of a local React.js conference? Add it here! (Please keep the list chronological)
+你知道当地有哪些 React.js 会议嘛？在这里添加它！（请保证列表始终按时间排序）
 
-## Upcoming Conferences {#upcoming-conferences}
+## 即将举行的会议 {#upcoming-conferences}
 
 ### React Brussels 2021 {#react-brussels-2021} 
 October 15, 2021 - remote event
@@ -43,7 +43,7 @@ November 12-14, 2021 - remote event
 
 [Website](https://www.reactindia.io) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia/) - [LinkedIn](https://www.linkedin.com/showcase/14545585) - [YouTube](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w/videos)
 
-## Past Conferences {#past-conferences}
+## 往届会议 {#past-conferences}
 
 ### render(ATL) 2021 {#render-atlanta-2021} 
 September 13-15, 2021. Atlanta, GA, USA
