@@ -1,12 +1,12 @@
 ---
 id: meetups
-title: Meetups Around the World
+title: 世界各地的见面会
 layout: community
 sectionid: community
 permalink: community/meetups.html
 ---
 
-Do you have a local React.js meetup? Add it here! (Please keep the list alphabetical)
+你有一个当地的 React 见面会嘛？请在这里添加它！（请保持列表中始终按字母排序）
 
 ## Albania {#albania}
 * [Tirana](https://www.meetup.com/React-User-Group-Albania/)
