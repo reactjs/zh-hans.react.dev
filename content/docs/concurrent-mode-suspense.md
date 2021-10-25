@@ -99,7 +99,11 @@ function ProfileTimeline() {
 
 上面的 demo 只是个示意。别担心看不懂代码。我们后面会详细说明这部分代码的运作方式。需要记住的是，Suspense 其实更像是一种*机制*，而 demo 中那些具体的 API，如 `fetchProfileData()` 或者 `resource.posts.read()`，这些 API 本身并不重要。不过，如果你还是对它们很好奇，可以在这个 [demo sandbox](https://codesandbox.io/s/frosty-hermann-bztrp) 中找到它们的定义。
 
+<<<<<<< HEAD
 Suspense 不是一个数据请求的库，而是一个机制。这个**机制是用来给数据请求库**向 React 通信说明*某个组件正在读取的数据当前仍不可用*。通信之后，React 可以继续等待数据的返回并更新 UI。在 Facebook，我们用了 Relay 和它的[集成 Suspense 新功能](docs/getting-started/step-by-step-guide/) 。我们期望其他的库，如 Apollo，也能支持类似的集成。
+=======
+Suspense is not a data fetching library. It's a **mechanism for data fetching libraries** to communicate to React that *the data a component is reading is not ready yet*. React can then wait for it to be ready and update the UI. At Facebook, we use Relay and its [new Suspense integration](https://relay.dev/docs/getting-started/step-by-step-guide/). We expect that other libraries like Apollo can provide similar integrations.
+>>>>>>> f2158e36715acc001c8317e20dc4f45f9e2089f3
 
 从长远来看，我们想让 Suspense 成为组件读取异步数据的主要方式——无论数据来自何方。
 
