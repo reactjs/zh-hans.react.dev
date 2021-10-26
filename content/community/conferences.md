@@ -48,16 +48,12 @@ November 12-14, 2021 - remote event
 
 [Website](https://www.reactindia.io) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia/) - [LinkedIn](https://www.linkedin.com/showcase/14545585) - [YouTube](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w/videos)
 
-<<<<<<< HEAD
-## 往届会议 {#past-conferences}
-=======
 ### render(ATL) 2022 {#render-atlanta-2022} 
 June 2-4, 2022. Atlanta, GA, USA
 
 [Website](https://renderatl.com) - [Twitter](https://twitter.com/renderATL) - [Instagram](https://www.instagram.com/renderatl/) - [Facebook](https://www.facebook.com/renderatl/) - [LinkedIn](https://www.linkedin.com/company/renderatl)
 
-## Past Conferences {#past-conferences}
->>>>>>> f2158e36715acc001c8317e20dc4f45f9e2089f3
+## 往届会议 {#past-conferences}
 
 ### render(ATL) 2021 {#render-atlanta-2021} 
 September 13-15, 2021. Atlanta, GA, USA

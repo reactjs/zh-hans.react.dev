@@ -61,15 +61,8 @@
     "node": "12.x.x || 14.x.x || 15.x.x",
     "yarn": "^1.3.2"
   },
-<<<<<<< HEAD
   "homepage": "https://zh-hans.reactjs.org/",
-  "keywords": [
-    "gatsby"
-  ],
-=======
-  "homepage": "https://reactjs.org/",
   "keywords": [],
->>>>>>> f2158e36715acc001c8317e20dc4f45f9e2089f3
   "license": "CC",
   "main": "n/a",
   "repository": {
