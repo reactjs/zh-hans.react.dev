@@ -1,30 +1,30 @@
 ---
-title: Adding Interactivity
+title: 添加交互
 ---
 
 <Intro>
 
-Some things on the screen update in response to user input. For example, clicking an image gallery switches the active image. In React, data that changes over time is called *state.* You can add state to any component, and update it as needed. In this chapter, you'll learn how to write components that handle interactions, update their state, and display different output over time.
+界面上的控件会根据用户的输入而更新。例如，点击按钮切换轮播图的展示。在 React 中，随时间变化的数据被称为状态（state）。你可以向任何组件添加状态，并按需进行更新。在本章节中，你将学习如何编写处理交互的组件，更新它们的状态，并根据时间变化展示显示不同的效果。
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to handle user-initiated events](/learn/responding-to-events)
-* [How to make components "remember" information with state](/learn/state-a-components-memory)
-* [How React updates the UI in two phases](/learn/render-and-commit)
-* [Why state doesn't update right after you change it](/learn/state-as-a-snapshot)
-* [How to queue multiple state updates](/learn/queueing-a-series-of-state-updates)
-* [How to update an object in state](/learn/updating-objects-in-state)
-* [How to update an array in state](/learn/updating-arrays-in-state)
+* [如何处理用户发起的事件](/learn/responding-to-events)
+* [如何用状态使组件“记住”信息](/learn/state-a-components-memory)
+* [React 是如何分两个阶段更新 UI 的](/learn/render-and-commit)
+* [为什么状态在你改变后没有立即更新](/learn/state-as-a-snapshot)
+* [如何排队进行多个状态的更新](/learn/queueing-a-series-of-state-updates)
+* [如何更新状态中的对象](/learn/updating-objects-in-state)
+* [如何更新状态中的数组](/learn/updating-arrays-in-state)
 
 </YouWillLearn>
 
-## Responding to events {/*responding-to-events*/}
+## 响应事件 {#responding-to-events}
 
-React lets you add *event handlers* to your JSX. Event handlers are your own functions that will be triggered in response to user interactions like clicking, hovering, focusing on form inputs, and so on.
+React 允许你向 JSX 中添加事件处理程序。事件处理程序是你自己的函数，它将在用户交互时被触发，如点击、悬停、焦点在表单输入框上等等。
 
-Built-in components like `<button>` only support built-in browser events like `onClick`. However, you can also create your own components, and give their event handler props any application-specific names that you like.
+`<button>` 等内置组件只支持内置浏览器事件，如 `onClick`。但是，你也可以创建你自己的组件，并给它们的事件处理程序 props 指定你喜欢的任何特定于应用的名称。
 
 <Sandpack>
 
@@ -68,22 +68,22 @@ button { margin-right: 10px; }
 
 <LearnMore path="/learn/responding-to-events">
 
-Read **[Responding to Events](/learn/responding-to-events)** to learn how to add event handlers.
+阅读 **[响应事件](/learn/responding-to-events)** 了解如何添加事件处理程序。
 
 </LearnMore>
 
-## State: a component's memory {/*state-a-components-memory*/}
+## State: 组件的记忆 {#state-a-components-memory}
 
-Components often need to change what's on the screen as a result of an interaction. Typing into the form should update the input field, clicking "next" on an image carousel should change which image is displayed, clicking "buy" puts a product in the shopping cart. Components need to "remember" things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called *state.*
+组件通常需要根据交互改变屏幕上的内容。在表单中键入更新输入栏，在轮播图上点击“下一个”改变显示的图片，点击“购买”将产品放入购物车。组件需要“记住”一些东西：当前的输入值、当前的图片、购物车。在 React 中，这种特定于组件的记忆被称为状态。
 
-You can add state to a component with a [`useState`](/apis/react/useState) Hook. *Hooks* are special functions that let your components use React features (state is one of those features). The `useState` Hook lets you declare a state variable. It takes the initial state and returns a pair of values: the current state, and a state setter function that lets you update it.
+你可以用 [`useState`](/reference/usestate) Hook 为组件添加状态。Hook 是能让你的组件使用 React 功能的特殊函数（状态是这些功能之一）。`useState` Hook 让你声明一个状态变量。它接收初始状态并返回一对值：当前状态，以及一个让你更新状态的状态设置函数。
 
 ```js
 const [index, setIndex] = useState(0);
 const [showMore, setShowMore] = useState(false);
 ```
 
-Here is how an image gallery uses and updates state on click:
+下面是一个图库，演示如何使用并在点击时更新状态：
 
 <Sandpack>
 
@@ -224,43 +224,43 @@ button {
 
 <LearnMore path="/learn/state-a-components-memory">
 
-Read **[State: A Component's Memory](/learn/state-a-components-memory)** to learn how to remember a value and update it on interaction.
+阅读 **[State: 组件的记忆](/learn/state-a-components-memory)** 了解如何记住一个值并在交互时更新它。
 
 </LearnMore>
 
-## Render and commit {/*render-and-commit*/}
+## 渲染和提交 {#render-and-commit}
 
-Before your components are displayed on the screen, they must be rendered by React. Understanding the steps in this process will help you think about how your code executes and explain its behavior.
+在你的组件显示在屏幕上之前，它们必须由 React 进行渲染。理解这个过程中的步骤有助于你思考你的代码如何执行并解释其行为。
 
-Imagine that your components are cooks in the kitchen, assembling tasty dishes from ingredients. In this scenario, React is the waiter who puts in requests from customers and brings them their orders. This process of requesting and serving UI has three steps:
+想象一下，你的组件是厨房里的厨师，用食材制作出美味的菜肴。在这个场景中，React 是服务员，负责提出顾客的要求，并带来他们订单。这个请求和服务 UI 的过程有三个步骤：
 
-1. **Triggering** a render (delivering the diner's order to the kitchen)
-2. **Rendering** the component (preparing the order in the kitchen)
-3. **Committing** to the DOM (placing the order on the table)
+1. **触发**渲染（将食客的订单送到厨房）
+2. **渲染**组件（接到厨房的订单）
+3. **提交**到 DOM（将订单送到桌前）
 
 <IllustrationBlock sequential>
-  <Illustration caption="Trigger" alt="React as a server in a restaurant, fetching orders from the users and delivering them to the Component Kitchen." src="/images/docs/illustrations/i_render-and-commit1.png" />
-  <Illustration caption="Render" alt="The Card Chef gives React a fresh Card component." src="/images/docs/illustrations/i_render-and-commit2.png" />
-  <Illustration caption="Commit" alt="React delivers the Card to the user at their table." src="/images/docs/illustrations/i_render-and-commit3.png" />
+  <Illustration caption="Trigger" alt="React 就像一个餐厅的服务员，从用户那里获取订单，并将它们送到组件厨房。" src="/images/docs/illustrations/i_render-and-commit1.png" />
+  <Illustration caption="Render" alt="Card 厨师给 React 提供了一个新鲜的 Card 组件。" src="/images/docs/illustrations/i_render-and-commit2.png" />
+  <Illustration caption="Commit" alt="React 将 Card 送到用户桌前。" src="/images/docs/illustrations/i_render-and-commit3.png" />
 </IllustrationBlock>
 
 <LearnMore path="/learn/render-and-commit">
 
-Read **[Render and Commit](/learn/render-and-commit)** to learn the lifecycle of a UI update.
+阅读 **[渲染和提交](/learn/render-and-commit)** 了解 UI 更新的生命周期。
 
 </LearnMore>
 
-## State as a snapshot {/*state-as-a-snapshot*/}
+## 作为快照的状态 {#state-as-a-snapshot}
 
-Unlike regular JavaScript variables, React state behaves more like a snapshot. Setting it does not change the state variable you already have, but instead triggers a re-render. This can be surprising at first!
+与普通 JavaScript 变量不同，React 状态的行为更像一个快照。设置它并不改变你已有的状态变量，而是触发一次重新渲染。这在一开始可能会让人感到惊讶！
 
 ```js
 console.log(count);  // 0
-setCount(count + 1); // Request a re-render with 1
-console.log(count);  // Still 0!
+setCount(count + 1); // 请求用 1 重新渲染
+console.log(count);  // 仍然是 0！
 ```
 
-React works this way to help you avoid subtle bugs. Here is a little chat app. Try to guess what happens if you press "Send" first and *then* change the recipient to Bob. Whose name will appear in the `alert` five seconds later?
+React 这样工作是为了帮助你避免微妙的 bug。这里有一个小的聊天应用程序。试着猜一猜，如果先按下“发送”，然后再把收件人改为 Bob，会发生什么？五秒钟后，谁的名字会出现在 `alert` 中？
 
 <Sandpack>
 
@@ -309,13 +309,13 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 <LearnMore path="/learn/state-as-a-snapshot">
 
-Read **[State as a Snapshot](/learn/state-as-a-snapshot)** to learn why state appears "fixed" and unchanging inside the event handlers.
+阅读 **[作为快照的状态](/learn/state-as-a-snapshot)** 了解为什么状态在事件处理程序中是“固定的”和不变的。
 
 </LearnMore>
 
-## Queueing a series of state updates {/*queueing-a-series-of-state-updates*/}
+## 排队一系列状态更改 {#queueing-a-series-of-state-changes}
 
-This component is buggy: clicking "+3" increments the score only once.
+这个组件有问题：点击“+3”只能增加一次分数。
 
 <Sandpack>
 
@@ -349,7 +349,7 @@ button { display: inline-block; margin: 10px; font-size: 20px; }
 
 </Sandpack>
 
-[State as a Snapshot](/learn/state-as-a-snapshot) explains why this is happening. Setting state requests a new re-render, but does not change it in the already running code. So `score` continues to be `0` right after you call `setScore(score + 1)`.
+[作为快照的状态](/learn/state-as-a-snapshot) 解释了为什么会出现这种情况。设置状态会请求一个新的重新渲染，但不会在已运行的代码中更改它。所以在你调用 `setScore(score + 1)` 后，`score` 仍然是 `0`。
 
 ```js
 console.log(score);  // 0
@@ -361,7 +361,7 @@ setScore(score + 1); // setScore(0 + 1);
 console.log(score);  // 0
 ```
 
-You can fix this by passing an *updater function* when setting state. Notice how replacing `setScore(score + 1)` with `setScore(s => s + 1)` fixes the "+3" button. This is handy if you need to queue multiple state updates.
+你可以通过在设置状态时传递一个 *更新器函数* 来解决这个问题。注意用 `setScore(s => s + 1)` 替换 `setScore(score + 1)` 是如何修复“+3”按钮的。如果你需要排队进行多次状态更新，那么这非常方便。
 
 <Sandpack>
 
@@ -397,15 +397,15 @@ button { display: inline-block; margin: 10px; font-size: 20px; }
 
 <LearnMore path="/learn/queueing-a-series-of-state-updates">
 
-Read **[Queueing a Series of State Updates](/learn/queueing-a-series-of-state-updates)** to learn how to queue multiple updates before the next render.
+阅读 **[排队一系列状态更改](/learn/queueing-a-series-of-state-changes)** 了解如何在下一次渲染前排队多个更新。
 
 </LearnMore>
 
-## Updating objects in state {/*updating-objects-in-state*/}
+## 更新状态中的对象 {#updating-objects-in-state}
 
-State can hold any kind of JavaScript value, including objects. But you shouldn't change objects and arrays that you hold in the React state directly. Instead, when you want to update an object and array, you need to create a new one (or make a copy of an existing one), and then update the state to use that copy.
+状态可以持有任何类型的 JavaScript 值，包括对象。但你不应该直接改变你在 React 状态中持有的对象和数组。相反，当你想更新一个对象和数组时，你需要创建一个新的对象（或复制现有的对象），然后更新状态以使用该副本。
 
-Usually, you will use the `...` spread syntax to copy objects and arrays that you want to change. For example, updating a nested object could look like this:
+通常情况下，你会使用 `...` 展开语法来复制你想改变的对象和数组。例如，更新一个嵌套对象可以是这样的：
 
 <Sandpack>
 
@@ -513,7 +513,7 @@ img { width: 200px; height: 200px; }
 
 </Sandpack>
 
-If copying objects in code gets tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer) to reduce repetitive code:
+如果在代码中复制对象感觉乏味，可以使用 [Immer](https://github.com/immerjs/use-immer) 之类的库来减少重复代码：
 
 <Sandpack>
 
@@ -628,13 +628,13 @@ img { width: 200px; height: 200px; }
 
 <LearnMore path="/learn/updating-objects-in-state">
 
-Read **[Updating Objects in State](/learn/updating-objects-in-state)** to learn how to update objects correctly.
+阅读 **[更新状态中的对象](/learn/updating-objects-in-state)** 了解如何正确地更新对象。
 
 </LearnMore>
 
-## Updating arrays in state {/*updating-arrays-in-state*/}
+## 更新状态中的数组 {#updating-arrays-in-state}
 
-Arrays are another type of mutable JavaScript objects you can store in state and should treat as read-only. Just like with objects, when you want to update an array stored in state, you need to create a new one (or make a copy of an existing one), and then set state to use the new array:
+数组是另一种可以存在状态中的可变 JavaScript 对象，应将其视为只读。就像对象一样，当你想更新存在状态中的数组时，你需要创建一个新数组（或者复制现有数组），然后设置状态以使用新数组：
 
 <Sandpack>
 
@@ -701,7 +701,7 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-If copying arrays in code gets tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer) to reduce repetitive code:
+如果在代码中复制数组感觉乏味，可以使用 [Immer](https://github.com/immerjs/use-immer) 之类的库来减少重复代码：
 
 <Sandpack>
 
@@ -786,12 +786,12 @@ function ItemList({ artworks, onToggle }) {
 
 <LearnMore path="/learn/updating-arrays-in-state">
 
-Read **[Updating Arrays in State](/learn/updating-arrays-in-state)** to learn how to update arrays correctly.
+阅读 **[更新状态中的数组](/learn/updating-arrays-in-state)** 了解如何正确地更新数组。
 
 </LearnMore>
 
-## What's next? {/*whats-next*/}
+## 下节预告 {#whats-next}
 
-Head over to [Responding to Events](/learn/responding-to-events) to start reading this chapter page by page!
+前往 [响应事件](/learn/responding-to-events) 开始逐页阅读本章！
 
-Or, if you're already familiar with these topics, why not read about [Managing State](/learn/managing-state)?
+或者，如果你已经熟悉这些主题，不妨看看 [状态管理](/learn/managing-state)
