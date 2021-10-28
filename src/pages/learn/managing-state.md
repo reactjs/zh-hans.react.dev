@@ -12,13 +12,14 @@ title: 状态管理
 
 <YouWillLearn>
 
-- [如何将 UI 变更当做状态变更](/learn/reacting-to-input-with-state)
-- [如何组织好的状态](/learn/choosing-the-state-structure)
-- [“状态提升”如何在组件之间共享状态](/learn/sharing-state-between-components)
-- [如何控制状态的保留或重置](/learn/preserving-and-resetting-state)
-- [如何在函数中整合复杂的状态逻辑](/learn/extracting-state-logic-into-a-reducer)
-- [如何避免使用“prop drilling”传递数据](/learn/passing-data-deeply-with-context)
-- [如何随着应用的增长去扩展状态管理](/learn/scaling-up-with-reducer-and-context)
+* [如何将 UI 变更当做状态变更](/learn/reacting-to-input-with-state)
+* [如何组织好的状态](/learn/choosing-the-state-structure)
+* [“状态提升”如何在组件之间共享状态](/learn/sharing-state-between-components)
+* [如何控制状态的保留或重置](/learn/preserving-and-resetting-state)
+* [如何在函数中整合复杂的状态逻辑](/learn/extracting-state-logic-into-a-reducer)
+* [如何避免使用“逐层props”传递数据](/learn/passing-data-deeply-with-context)
+* [如何随着应用的增长去扩展状态管理](/learn/scaling-up-with-reducer-and-context)
+
 
 </YouWillLearn>
 
@@ -31,7 +32,7 @@ title: 状态管理
 <Sandpack>
 
 ```js
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function FeedbackForm() {
   const [message, setMessage] = useState('');
@@ -39,7 +40,7 @@ export default function FeedbackForm() {
   const [status, setStatus] = useState('typing');
 
   if (status === 'success') {
-    return <h1>感谢您！</h1>;
+    return <h1>感谢您！</h1>
   }
 
   async function handleSubmit(e) {
@@ -66,10 +67,17 @@ export default function FeedbackForm() {
         disabled={status === 'submitting'}
       />
       <br />
-      <button disabled={message.length === 0 || status === 'submitting'}>
+      <button disabled={
+        message.length === 0 ||
+        status === 'submitting'
+      }>
         提交
       </button>
-      {error !== null && <p className="Error">{error.message}</p>}
+      {error !== null &&
+        <p className="Error">
+          {error.message}
+        </p>
+      }
     </form>
   );
 }
@@ -90,9 +98,7 @@ function submitForm() {
 ```
 
 ```css
-.Error {
-  color: red;
-}
+.Error { color: red; }
 ```
 
 </Sandpack>
@@ -112,7 +118,7 @@ function submitForm() {
 <Sandpack>
 
 ```js
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Form() {
   const [firstName, setFirstName] = useState('');
@@ -132,22 +138,29 @@ export default function Form() {
   return (
     <>
       <label>
-        名： <input value={firstName} onChange={handleFirstNameChange} />
+        名： {' '}
+        <input
+          value={firstName}
+          onChange={handleFirstNameChange}
+        />
       </label>
       <label>
-        姓： <input value={lastName} onChange={handleLastNameChange} />
+        姓： {' '}
+        <input
+          value={lastName}
+          onChange={handleLastNameChange}
+        />
       </label>
-      <h3>您的全名是：{fullName}</h3>
+      <h3>
+        您的全名是：{fullName}
+      </h3>
     </>
   );
 }
 ```
 
 ```css
-label {
-  display: block;
-  margin-bottom: 5px;
-}
+label { display: block; margin-bottom: 5px; }
 ```
 
 </Sandpack>
@@ -157,7 +170,7 @@ label {
 <Sandpack>
 
 ```js
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Form() {
   const [firstName, setFirstName] = useState('');
@@ -176,22 +189,29 @@ export default function Form() {
   return (
     <>
       <label>
-        名： <input value={firstName} onChange={handleFirstNameChange} />
+        名：{' '}
+        <input
+          value={firstName}
+          onChange={handleFirstNameChange}
+        />
       </label>
       <label>
-        姓： <input value={lastName} onChange={handleLastNameChange} />
+        姓： {' '}
+        <input
+          value={lastName}
+          onChange={handleLastNameChange}
+        />
       </label>
-      <h3>您的全名是：{fullName}</h3>
+      <h3>
+        您的全名是：{fullName}
+      </h3>
     </>
   );
 }
 ```
 
 ```css
-label {
-  display: block;
-  margin-bottom: 5px;
-}
+label { display: block; margin-bottom: 5px; }
 ```
 
 </Sandpack>
@@ -211,7 +231,7 @@ label {
 <Sandpack>
 
 ```js
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Accordion() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -220,34 +240,45 @@ export default function Accordion() {
       <Panel
         title="Ingredients"
         isActive={activeIndex === 0}
-        onShow={() => setActiveIndex(0)}>
-        牛奶、茶包和肉桂棒。
+        onShow={() => setActiveIndex(0)}
+      >
+        牛奶、茶包和一根肉桂棒。
       </Panel>
       <Panel
         title="Recipe"
         isActive={activeIndex === 1}
-        onShow={() => setActiveIndex(1)}>
-        把牛奶加热，然后把茶包放进锅里。 加入肉桂棒。
+        onShow={() => setActiveIndex(1)}
+      >
+        把牛奶加热，然后把茶包放进锅里。 
+        加入肉桂棒。
       </Panel>
     </>
   );
 }
 
-function Panel({title, children, isActive, onShow}) {
+function Panel({
+  title,
+  children,
+  isActive,
+  onShow
+}) {
   return (
     <section className="panel">
       <h3>{title}</h3>
-      {isActive ? <p>{children}</p> : <button onClick={onShow}>显示</button>}
+      {isActive ? (
+        <p>{children}</p>
+      ) : (
+        <button onClick={onShow}>
+          显示
+        </button>
+      )}
     </section>
   );
 }
 ```
 
 ```css
-h3,
-p {
-  margin: 5px 0px;
-}
+h3, p { margin: 5px 0px; }
 .panel {
   padding: 10px;
   border: 1px solid #aaa;
@@ -271,7 +302,7 @@ p {
 <Sandpack>
 
 ```js App.js
-import {useState} from 'react';
+import { useState } from 'react';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
 
@@ -282,35 +313,38 @@ export default function Messenger() {
       <ContactList
         contacts={contacts}
         selectedContact={to}
-        onSelect={(contact) => setTo(contact)}
+        onSelect={contact => setTo(contact)}
       />
       <Chat contact={to} />
     </div>
-  );
+  )
 }
 
 const contacts = [
-  {name: 'Taylor', email: 'taylor@mail.com'},
-  {name: 'Alice', email: 'alice@mail.com'},
-  {name: 'Bob', email: 'bob@mail.com'},
+  { name: 'Taylor', email: 'taylor@mail.com' },
+  { name: 'Alice', email: 'alice@mail.com' },
+  { name: 'Bob', email: 'bob@mail.com' }
 ];
 ```
 
 ```js ContactList.js
-export default function ContactList({selectedContact, contacts, onSelect}) {
+export default function ContactList({
+  selectedContact,
+  contacts,
+  onSelect
+}) {
   return (
     <section className="contact-list">
       <ul>
-        {contacts.map((contact) => (
+        {contacts.map(contact =>
           <li key={contact}>
-            <button
-              onClick={() => {
-                onSelect(contact);
-              }}>
+            <button onClick={() => {
+              onSelect(contact);
+            }}>
               {contact.name}
             </button>
           </li>
-        ))}
+        )}
       </ul>
     </section>
   );
@@ -318,16 +352,16 @@ export default function ContactList({selectedContact, contacts, onSelect}) {
 ```
 
 ```js Chat.js
-import {useState} from 'react';
+import { useState } from 'react';
 
-export default function Chat({contact}) {
+export default function Chat({ contact }) {
   const [text, setText] = useState('');
   return (
     <section className="chat">
       <textarea
         value={text}
         placeholder={'Chat to ' + contact.name}
-        onChange={(e) => setText(e.target.value)}
+        onChange={e => setText(e.target.value)}
       />
       <br />
       <button>发送给 {contact.email}</button>
@@ -337,13 +371,11 @@ export default function Chat({contact}) {
 ```
 
 ```css
-.chat,
-.contact-list {
+.chat, .contact-list {
   float: left;
   margin-bottom: 20px;
 }
-ul,
-li {
+ul, li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -360,12 +392,14 @@ textarea {
 
 </Sandpack>
 
-React 允许你覆盖默认行为，可通过向组件传递一个唯一 `key`（如 `<Chat key={email}/>` 来 _强制_ 重置其状态。这告诉 React ，如果收件人不同，应将其作为一个 _不同的_ `Chat` 组件，需要使用新数据和 UI（比如输入框）来重新创建它。现在，在接收者之间切换时就会重置输入框——即使渲染的是同一个组件。
+React 允许你覆盖默认行为，可通过向组件传递一个唯一 `key`（如 `<Chat key={email}/>` 来 _强制_ 重置其状态。
+
+这告诉 React ，如果收件人不同，应将其作为一个 _不同的_ `Chat` 组件，需要使用新数据和 UI（比如输入框）来重新创建它。现在，在接收者之间切换时就会重置输入框——即使渲染的是同一个组件。
 
 <Sandpack>
 
 ```js App.js
-import {useState} from 'react';
+import { useState } from 'react';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
 
@@ -376,35 +410,38 @@ export default function Messenger() {
       <ContactList
         contacts={contacts}
         selectedContact={to}
-        onSelect={(contact) => setTo(contact)}
+        onSelect={contact => setTo(contact)}
       />
       <Chat key={to.email} contact={to} />
     </div>
-  );
+  )
 }
 
 const contacts = [
-  {name: 'Taylor', email: 'taylor@mail.com'},
-  {name: 'Alice', email: 'alice@mail.com'},
-  {name: 'Bob', email: 'bob@mail.com'},
+  { name: 'Taylor', email: 'taylor@mail.com' },
+  { name: 'Alice', email: 'alice@mail.com' },
+  { name: 'Bob', email: 'bob@mail.com' }
 ];
 ```
 
 ```js ContactList.js
-export default function ContactList({selectedContact, contacts, onSelect}) {
+export default function ContactList({
+  selectedContact,
+  contacts,
+  onSelect
+}) {
   return (
     <section className="contact-list">
       <ul>
-        {contacts.map((contact) => (
+        {contacts.map(contact =>
           <li key={contact}>
-            <button
-              onClick={() => {
-                onSelect(contact);
-              }}>
+            <button onClick={() => {
+              onSelect(contact);
+            }}>
               {contact.name}
             </button>
           </li>
-        ))}
+        )}
       </ul>
     </section>
   );
@@ -412,16 +449,16 @@ export default function ContactList({selectedContact, contacts, onSelect}) {
 ```
 
 ```js Chat.js
-import {useState} from 'react';
+import { useState } from 'react';
 
-export default function Chat({contact}) {
+export default function Chat({ contact }) {
   const [text, setText] = useState('');
   return (
     <section className="chat">
       <textarea
         value={text}
         placeholder={'Chat to ' + contact.name}
-        onChange={(e) => setText(e.target.value)}
+        onChange={e => setText(e.target.value)}
       />
       <br />
       <button>发送给 {contact.email}</button>
@@ -431,13 +468,11 @@ export default function Chat({contact}) {
 ```
 
 ```css
-.chat,
-.contact-list {
+.chat, .contact-list {
   float: left;
   margin-bottom: 20px;
 }
-ul,
-li {
+ul, li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -467,12 +502,15 @@ textarea {
 <Sandpack>
 
 ```js App.js
-import {useReducer} from 'react';
+import { useReducer } from 'react';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 
 export default function TaskBoard() {
-  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+  const [tasks, dispatch] = useReducer(
+    tasksReducer,
+    initialTasks
+  );
 
   function handleAddTask(text) {
     dispatch({
@@ -485,20 +523,22 @@ export default function TaskBoard() {
   function handleChangeTask(task) {
     dispatch({
       type: 'changed',
-      task: task,
+      task: task
     });
   }
 
   function handleDeleteTask(taskId) {
     dispatch({
       type: 'deleted',
-      id: taskId,
+      id: taskId
     });
   }
 
   return (
     <>
-      <AddTask onAddTask={handleAddTask} />
+      <AddTask
+        onAddTask={handleAddTask}
+      />
       <TaskList
         tasks={tasks}
         onChangeTask={handleChangeTask}
@@ -511,17 +551,14 @@ export default function TaskBoard() {
 function tasksReducer(tasks, action) {
   switch (action.type) {
     case 'added': {
-      return [
-        ...tasks,
-        {
-          id: action.id,
-          text: action.text,
-          done: false,
-        },
-      ];
+      return [...tasks, {
+        id: action.id,
+        text: action.text,
+        done: false
+      }];
     }
     case 'changed': {
-      return tasks.map((t) => {
+      return tasks.map(t => {
         if (t.id === action.task.id) {
           return action.task;
         } else {
@@ -530,7 +567,7 @@ function tasksReducer(tasks, action) {
       });
     }
     case 'deleted': {
-      return tasks.filter((t) => t.id !== action.id);
+      return tasks.filter(t => t.id !== action.id);
     }
     default: {
       throw Error('未知操作：' + action.type);
@@ -540,52 +577,57 @@ function tasksReducer(tasks, action) {
 
 let nextId = 3;
 const initialTasks = [
-  {id: 0, text: '买牛奶', done: true},
-  {id: 1, text: '吃玉米饼', done: false},
-  {id: 2, text: '泡茶', done: false},
+  { id: 0, text: '买牛奶', done: true },
+  { id: 1, text: '吃玉米饼', done: false },
+  { id: 2, text: '泡茶', done: false },
 ];
 ```
 
 ```js AddTask.js hidden
-import {useState} from 'react';
+import { useState } from 'react';
 
-export default function AddTask({onAddTask}) {
+export default function AddTask({ onAddTask }) {
   const [text, setText] = useState('');
   return (
     <>
       <input
         placeholder="添加任务"
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={e => setText(e.target.value)}
       />
-      <button
-        onClick={() => {
-          setText('');
-          onAddTask(text);
-        }}>
-        添加
-      </button>
+      <button onClick={() => {
+        setText('');
+        onAddTask(text);
+      }}>添加</button>
     </>
-  );
+  )
 }
 ```
 
 ```js TaskList.js hidden
-import {useState} from 'react';
+import { useState } from 'react';
 
-export default function TaskList({tasks, onChangeTask, onDeleteTask}) {
+export default function TaskList({
+  tasks,
+  onChangeTask,
+  onDeleteTask
+  }) {
   return (
     <ul>
-      {tasks.map((task) => (
+      {tasks.map(task => (
         <li key={task.id}>
-          <Task task={task} onChange={onChangeTask} onDelete={onDeleteTask} />
+          <Task
+            task={task}
+            onChange={onChangeTask}
+            onDelete={onDeleteTask}
+          />
         </li>
       ))}
     </ul>
   );
 }
 
-function Task({task, onChange, onDelete}) {
+function Task({ task, onChange, onDelete }) {
   const [isEditing, setIsEditing] = useState(false);
   let taskContent;
   if (isEditing) {
@@ -593,21 +635,24 @@ function Task({task, onChange, onDelete}) {
       <>
         <input
           value={task.text}
-          onChange={(e) => {
+          onChange={e => {
             onChange({
               ...task,
-              text: e.target.value,
+              text: e.target.value
             });
-          }}
-        />
-        <button onClick={() => setIsEditing(false)}>保存</button>
+          }} />
+        <button onClick={() => setIsEditing(false)}>
+          保存
+        </button>
       </>
     );
   } else {
     taskContent = (
       <>
         {task.text}
-        <button onClick={() => setIsEditing(true)}>编辑</button>
+        <button onClick={() => setIsEditing(true)}>
+          编辑
+        </button>
       </>
     );
   }
@@ -616,32 +661,26 @@ function Task({task, onChange, onDelete}) {
       <input
         type="checkbox"
         checked={task.done}
-        onChange={(e) => {
+        onChange={e => {
           onChange({
             ...task,
-            done: e.target.checked,
+            done: e.target.checked
           });
         }}
       />
       {taskContent}
-      <button onClick={() => onDelete(task.id)}>删除</button>
+      <button onClick={() => onDelete(task.id)}>
+        删除
+      </button>
     </label>
   );
 }
 ```
 
 ```css
-button {
-  margin: 5px;
-}
-li {
-  list-style-type: none;
-}
-ul,
-li {
-  margin: 0;
-  padding: 0;
-}
+button { margin: 5px; }
+li { list-style-type: none; }
+ul, li { margin: 0; padding: 0; }
 ```
 
 </Sandpack>
@@ -689,10 +728,10 @@ export default function Page() {
 ```
 
 ```js Section.js
-import {useContext} from 'react';
-import {LevelContext} from './LevelContext.js';
+import { useContext } from 'react';
+import { LevelContext } from './LevelContext.js';
 
-export default function Section({children}) {
+export default function Section({ children }) {
   const level = useContext(LevelContext);
   return (
     <section className="section">
@@ -705,10 +744,10 @@ export default function Section({children}) {
 ```
 
 ```js Heading.js
-import {useContext} from 'react';
-import {LevelContext} from './LevelContext.js';
+import { useContext } from 'react';
+import { LevelContext } from './LevelContext.js';
 
-export default function Heading({children}) {
+export default function Heading({ children }) {
   const level = useContext(LevelContext);
   switch (level) {
     case 0:
@@ -732,7 +771,7 @@ export default function Heading({children}) {
 ```
 
 ```js LevelContext.js
-import {createContext} from 'react';
+import { createContext } from 'react';
 
 export const LevelContext = createContext(0);
 ```
@@ -754,7 +793,7 @@ export const LevelContext = createContext(0);
 
 </LearnMore>
 
-## 使用 Reducer 和 Context 进行扩展
+## 使用 Reducer 和 Context 进行状态扩展
 
 Reducer 帮助你合并组件的状态更新逻辑。Context 帮助你将信息深入传递给其他组件。你可以将 reducers 和 context 组合在一起使用，以管理复杂应用的状态。
 
@@ -765,7 +804,7 @@ Reducer 帮助你合并组件的状态更新逻辑。Context 帮助你将信息�
 ```js App.js
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
-import {TasksProvider} from './TaskBoardContext.js';
+import { TasksProvider } from './TaskBoardContext.js';
 
 export default function TaskBoard() {
   return (
@@ -778,18 +817,27 @@ export default function TaskBoard() {
 ```
 
 ```js TaskBoardContext.js
-import {createContext, useContext, useReducer} from 'react';
+import {
+  createContext,
+  useContext,
+  useReducer
+} from 'react';
 
 const TaskBoardContext = createContext(null);
 
 const TasksDispatchContext = createContext(null);
 
-export function TasksProvider({children}) {
-  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+export function TasksProvider({ children }) {
+  const [tasks, dispatch] = useReducer(
+    tasksReducer,
+    initialTasks
+  );
 
   return (
     <TaskBoardContext.Provider value={tasks}>
-      <TasksDispatchContext.Provider value={dispatch}>
+      <TasksDispatchContext.Provider
+        value={dispatch}
+      >
         {children}
       </TasksDispatchContext.Provider>
     </TaskBoardContext.Provider>
@@ -807,17 +855,14 @@ export function useTasksDispatch() {
 function tasksReducer(tasks, action) {
   switch (action.type) {
     case 'added': {
-      return [
-        ...tasks,
-        {
-          id: action.id,
-          text: action.text,
-          done: false,
-        },
-      ];
+      return [...tasks, {
+        id: action.id,
+        text: action.text,
+        done: false
+      }];
     }
     case 'changed': {
-      return tasks.map((t) => {
+      return tasks.map(t => {
         if (t.id === action.task.id) {
           return action.task;
         } else {
@@ -826,7 +871,7 @@ function tasksReducer(tasks, action) {
       });
     }
     case 'deleted': {
-      return tasks.filter((t) => t.id !== action.id);
+      return tasks.filter(t => t.id !== action.id);
     }
     default: {
       throw Error('未知操作：' + action.type);
@@ -835,17 +880,17 @@ function tasksReducer(tasks, action) {
 }
 
 const initialTasks = [
-  {id: 0, text: '买牛奶', done: true},
-  {id: 1, text: '吃玉米饼', done: false},
-  {id: 2, text: '泡茶', done: false},
+  { id: 0, text: '买牛奶', done: true },
+  { id: 1, text: '吃玉米饼', done: false },
+  { id: 2, text: '泡茶', done: false },
 ];
 ```
 
 ```js AddTask.js
-import {useState, useContext} from 'react';
-import {useTasksDispatch} from './TaskBoardContext.js';
+import { useState, useContext } from 'react';
+import { useTasksDispatch } from './TaskBoardContext.js';
 
-export default function AddTask({onAddTask}) {
+export default function AddTask({ onAddTask }) {
   const [text, setText] = useState('');
   const dispatch = useTasksDispatch();
   return (
@@ -853,19 +898,16 @@ export default function AddTask({onAddTask}) {
       <input
         placeholder="添加任务"
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={e => setText(e.target.value)}
       />
-      <button
-        onClick={() => {
+      <button onClick={() => {
           setText('');
           dispatch({
             type: 'added',
             id: nextId++,
             text: text,
           });
-        }}>
-        添加
-      </button>
+        }}>添加</button>
     </>
   );
 }
@@ -874,14 +916,14 @@ let nextId = 3;
 ```
 
 ```js TaskList.js
-import {useState, useContext} from 'react';
-import {useTasks, useTasksDispatch} from './TaskBoardContext.js';
+import { useState, useContext } from 'react';
+import { useTasks, useTasksDispatch } from './TaskBoardContext.js';
 
 export default function TaskList() {
   const tasks = useTasks();
   return (
     <ul>
-      {tasks.map((task) => (
+      {tasks.map(task => (
         <li key={task.id}>
           <Task task={task} />
         </li>
@@ -890,7 +932,7 @@ export default function TaskList() {
   );
 }
 
-function Task({task}) {
+function Task({ task }) {
   const [isEditing, setIsEditing] = useState(false);
   const dispatch = useTasksDispatch();
   let taskContent;
@@ -899,24 +941,27 @@ function Task({task}) {
       <>
         <input
           value={task.text}
-          onChange={(e) => {
+          onChange={e => {
             dispatch({
               type: 'changed',
               task: {
                 ...task,
-                text: e.target.value,
-              },
+                text: e.target.value
+              }
             });
-          }}
-        />
-        <button onClick={() => setIsEditing(false)}>保存</button>
+          }} />
+        <button onClick={() => setIsEditing(false)}>
+          保存
+        </button>
       </>
     );
   } else {
     taskContent = (
       <>
         {task.text}
-        <button onClick={() => setIsEditing(true)}>编辑</button>
+        <button onClick={() => setIsEditing(true)}>
+          编辑
+        </button>
       </>
     );
   }
@@ -925,25 +970,24 @@ function Task({task}) {
       <input
         type="checkbox"
         checked={task.done}
-        onChange={(e) => {
+        onChange={e => {
           dispatch({
             type: 'changed',
             task: {
               ...task,
-              done: e.target.checked,
-            },
+              done: e.target.checked
+            }
           });
         }}
       />
       {taskContent}
-      <button
-        onClick={() => {
+      <button onClick={() => {
           dispatch({
             type: 'deleted',
-            id: task.id,
+            id: task.id
           });
         }}>
-        删除
+          删除
       </button>
     </label>
   );
@@ -951,20 +995,13 @@ function Task({task}) {
 ```
 
 ```css
-button {
-  margin: 5px;
-}
-li {
-  list-style-type: none;
-}
-ul,
-li {
-  margin: 0;
-  padding: 0;
-}
+button { margin: 5px; }
+li { list-style-type: none; }
+ul, li { margin: 0; padding: 0; }
 ```
 
 </Sandpack>
+
 
 <LearnMore path="/learn/scaling-up-with-reducer-and-context">
 
@@ -976,4 +1013,4 @@ li {
 
 前往 [使用状态响应输入](/learn/reacting-to-input-with-state) 开始一页一页地阅读本章节！
 
-或者，如果你已经熟悉了这些内容，可以去阅读 [Escape Hatches](/learn/escape-hatches)?
+或者，如果你已经熟悉了这些内容，可以去读一读 [Escape Hatches](/learn/escape-hatches)?
