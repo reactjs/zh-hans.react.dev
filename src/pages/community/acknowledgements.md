@@ -48,19 +48,19 @@ React 最初由 [Jordan Walke](https://github.com/jordwalke) 创立。如今，R
 
 ## React 文档 {#react-docs}
 
-### 文档
+### 文档 {#documentation}
 
 * [Rachel Nabors](https://twitter.com/RachelNabors)：编辑，写作，插画
 * [Dan Abramov](https://twitter.com/dan_abramov)：写作，课程设计
 * [Sylwia Vargas](https://twitter.com/SylwiaVargas)：示例代码
 
-### 设计
+### 设计 {#design}
 
 * [Dan Lebowitz](https://twitter.com/lebo)：设计
 * [Razvan Gradinar](https://dribbble.com/GradinarRazvan)：设计
 * [Maggie Appleton](https://maggieappleton.com/)：图解系统
 
-### 开发
+### 开发 {#development}
 
 * [Jared Palmer](https://twitter.com/jaredpalmer)：网站开发
 * [ThisDotLabs](https://www.thisdot.co/) ([Dane Grant](https://twitter.com/danecando), [Dustin Goodman](https://twitter.com/dustinsgoodman))：网站开发
