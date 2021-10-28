@@ -20,7 +20,6 @@ title: 状态管理
 * [如何避免使用“逐层props”传递数据](/learn/passing-data-deeply-with-context)
 * [如何随着应用的增长去扩展状态管理](/learn/scaling-up-with-reducer-and-context)
 
-
 </YouWillLearn>
 
 ## 使用状态响应输入
