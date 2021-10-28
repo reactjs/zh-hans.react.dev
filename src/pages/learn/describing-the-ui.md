@@ -233,7 +233,7 @@ body > div > div { padding: 20px; }
 
 ## 将`props`传递给一个组件
 
-React 组件使用*props*来相互交流。每个父组件都可以通过给它的子组件提供 props 来传递一些信息。props 可能会让你想起 HTML 属性，但你可以通过它们传递任何 JavaScript 值，包括对象、数组、函数、甚至是 JSX!
+React 组件使用 *props* 来相互交流。每个父组件都可以通过给它的子组件提供 props 来传递一些信息。props 可能会让你想起 HTML 属性，但你可以通过它们传递任何 JavaScript 值，包括对象、数组、函数、甚至是 JSX!
 
 <Sandpack>
 
@@ -493,7 +493,7 @@ export default function TeaSet() {
 
 </Sandpack>
 
-你可以通过传递一个`props`而不是修改一个预先存在的变量来使这个组件变得纯粹：
+你可以通过传递一个 `props` 而不是修改一个预先存在的变量来使这个组件变得纯粹：
 
 <Sandpack>
 
