@@ -5,6 +5,7 @@ title: 安装
 <Intro>
 
 React 从一开始就被设计为渐进式的，你可以根据你的需要使用少量或大量的 React。无论你是想体验一下 React 给 HTML 页面添加一些交互性，还是开始一个复杂的由 React 驱动的应用，本章节将帮助你开始。
+
 </Intro>
 
 <YouWillLearn>
