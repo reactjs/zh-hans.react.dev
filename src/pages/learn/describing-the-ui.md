@@ -308,7 +308,7 @@ export function getImageUrl(person, size = 's') {
 
 <LearnMore path="/learn/passing-props-to-a-component">
 
-阅读 **[Passing Props to a Component](/learn/passing-props-to-a-component)** 如何传递并读取 props。
+阅读 **[向组件传递 props](/learn/passing-props-to-a-component)** 如何传递并读取 props。
 
 </LearnMore>
 
@@ -521,7 +521,7 @@ export default function TeaSet() {
 
 </LearnMore>
 
-## What's next
+## 下节预告
 
 请访问 [你的第一个组件](/learn/your-first-component) 开始逐页阅读本章节!
 
