@@ -86,6 +86,6 @@ Sebastian majored in psychology. He's usually quiet. Even when he says something
 
 Seth 从小就学习编程，在亚利桑那州图森市长大。放学后，他沉浸在音乐的殿堂里，在回归工作岗位前，他做了大约 10 年的巡回音乐人，后来就职于 Intuit。在业余时，他喜欢 [摄影](https://www.sethwebster.com) 还会参与美国东北部的动物救援机构。
 
-## Past contributors {#past-contributors}
+## 历史贡献者 {#past-contributors}
 
 你可以在 [acknowledgements](/community/acknowledgements) 页面中找到团队的历史成员和其他多年来为 React 做出过重大贡献的人。
