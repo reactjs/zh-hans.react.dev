@@ -5,15 +5,14 @@ title: 状态管理
 <Intro>
 
 随着你的应用不断变大，去刻意的关注应用状态如何组织，以及数据如何在组件之间流动会对你很有帮助。冗余或重复的状态往往是缺陷的根源。
-
-在本章中，你将学习如何组织好状态，如何保持状态更新逻辑的可维护性，以及如何跨组件共享状态。
+在本节中，你将学习如何组织好状态，如何保持状态更新逻辑的可维护性，以及如何跨组件共享状态。
 
 </Intro>
 
 <YouWillLearn>
 
-* [如何将 UI 变更当做状态变更](/learn/reacting-to-input-with-state)
-* [如何组织好的状态](/learn/choosing-the-state-structure)
+* [如何将 UI 变更视为状态变更](/learn/reacting-to-input-with-state)
+* [如何组织好状态](/learn/choosing-the-state-structure)
 * [“状态提升”如何在组件之间共享状态](/learn/sharing-state-between-components)
 * [如何控制状态的保留或重置](/learn/preserving-and-resetting-state)
 * [如何在函数中整合复杂的状态逻辑](/learn/extracting-state-logic-into-a-reducer)
@@ -22,11 +21,11 @@ title: 状态管理
 
 </YouWillLearn>
 
-## 使用状态响应输入
+## 使用状态响应输入 {#reacting-to-input-with-state}
 
 使用 React，你不用直接从代码层面修改 UI。例如，不用编写诸如“禁用按钮”、“启用按钮”、“显示成功消息”等命令。相反，你只需要描述组件在不同状态（“初始状态”、“输入状态”、“成功状态”）下希望展现的 UI，然后根据用户输入触发状态更改。这和设计师对 UI 的理解很相似。
 
-下面是一个使用 React 编写的反馈表单。请注意看它是如何使用 `status` 这个状态变量来决定是否启用或禁用提交按钮，以及是否显示成功消息的。
+下面是一个使用 React 编写的反馈表单。请注意看它是如何使用 `status` 这个状态变量来决定启用或禁用提交按钮，以及是否显示成功消息的。
 
 <Sandpack>
 
@@ -108,7 +107,7 @@ function submitForm() {
 
 </LearnMore>
 
-## 选择状态结构
+## 选择状态结构 {#choosing-the-state-structure}
 
 良好的状态组织可以把易于修改和调试的组件与频繁出问题的组件区分开来。最重要的原则是，状态不应包含冗余或重复的信息。如果包含一些多余的状态，我们会很容易忘记去更新它，从而导致问题产生！
 
@@ -221,7 +220,7 @@ label { display: block; margin-bottom: 5px; }
 
 </LearnMore>
 
-## 在组件间共享状态
+## 在组件间共享状态 {#sharing-state-between-components}
 
 有时候，你希望两个组件的状态始终同步更改。要实现这一点，可以将相关状态从这两个组件上移除，并把状态放到它们的公共父级，再通过属性将状态传递给这两个组件。这被称为“状态提升”，这是编写 React 代码时常做的事。
 
@@ -292,7 +291,7 @@ h3, p { margin: 5px 0px; }
 
 </LearnMore>
 
-## 保留和重置状态
+## 保留和重置状态 {#preserving-and-resetting-state}
 
 当你重新渲染一个组件时， React 需要决定组件树中的哪些部分要保留和更新，以及丢弃或重新创建。在大多数情况下， React 的自动处理机制已经做得足够好了。默认情况下，React 会保留树中与先前渲染的组件树“匹配”的部分。
 
@@ -391,9 +390,8 @@ textarea {
 
 </Sandpack>
 
-React 允许你覆盖默认行为，可通过向组件传递一个唯一 `key`（如 `<Chat key={email}/>` 来 _强制_ 重置其状态。
-
-这告诉 React ，如果收件人不同，应将其作为一个 _不同的_ `Chat` 组件，需要使用新数据和 UI（比如输入框）来重新创建它。现在，在接收者之间切换时就会重置输入框——即使渲染的是同一个组件。
+React 允许你覆盖默认行为，可通过向组件传递一个唯一 `key`（如 `<Chat key={email}/>` 来 *强制* 重置其状态。
+这告诉 React ，如果收件人不同，应将其作为一个 *不同的* `Chat` 组件，需要使用新数据和 UI（比如输入框）来重新创建它。现在，在接收者之间切换时就会重置输入框——即使渲染的是同一个组件。
 
 <Sandpack>
 
@@ -494,7 +492,7 @@ textarea {
 
 </LearnMore>
 
-## 提取状态逻辑到 reducer 中
+## 提取状态逻辑到 reducer 中 {#extracting-state-logic-into-a-reducer}
 
 具有跨多个事件处理程序的多状态更新组件可能会令人不知所措。对于这种情况，你可以将组件外部的所有状态更新逻辑合并到一个称为“reducer”的函数中。这样，事件处理程序就会变得简洁，因为它们只需要指定用户的“操作”。在文件的底部，reducer 函数指定状态应该如何更新以响应每个操作！
 
@@ -690,7 +688,7 @@ ul, li { margin: 0; padding: 0; }
 
 </LearnMore>
 
-## 使用 Context 进行深层数据传递
+## 使用 Context 进行深层数据传递 {#passing-data-deeply-with-context}
 
 通常，你会通过 props 将信息从父组件传递给子组件。但是，如果要在树中深入传递一些 prop，或者 UI 树中的许多组件需要相同的 prop，那么传递 prop 可能会变得很麻烦。Context 允许父组件将一些信息提供给它下面的任何组件，不管它有多深，而无需通过 props 显式传递。
 
@@ -792,7 +790,7 @@ export const LevelContext = createContext(0);
 
 </LearnMore>
 
-## 使用 Reducer 和 Context 进行状态扩展
+## 使用 Reducer 和 Context 进行状态扩展 {#scaling-up-with-reducer-and-context}
 
 Reducer 帮助你合并组件的状态更新逻辑。Context 帮助你将信息深入传递给其他组件。你可以将 reducers 和 context 组合在一起使用，以管理复杂应用的状态。
 
@@ -900,13 +898,13 @@ export default function AddTask({ onAddTask }) {
         onChange={e => setText(e.target.value)}
       />
       <button onClick={() => {
-          setText('');
-          dispatch({
-            type: 'added',
-            id: nextId++,
-            text: text,
-          });
-        }}>添加</button>
+        setText('');
+        dispatch({
+          type: 'added',
+          id: nextId++,
+          text: text,
+        });
+      }}>添加</button>
     </>
   );
 }
@@ -981,12 +979,12 @@ function Task({ task }) {
       />
       {taskContent}
       <button onClick={() => {
-          dispatch({
-            type: 'deleted',
-            id: task.id
-          });
-        }}>
-          删除
+        dispatch({
+          type: 'deleted',
+          id: task.id
+        });
+      }}>
+        删除
       </button>
     </label>
   );
@@ -1008,8 +1006,8 @@ ul, li { margin: 0; padding: 0; }
 
 </LearnMore>
 
-## 下一步是什么？
+## 下节预告 {#what-is-next}
 
-前往 [使用状态响应输入](/learn/reacting-to-input-with-state) 开始一页一页地阅读本章节！
+跳转到 [使用状态响应输入](/learn/reacting-to-input-with-state) 这一节并开始一页页的阅读！
 
-或者，如果你已经熟悉了这些内容，可以去读一读 [Escape Hatches](/learn/escape-hatches)?
+当然，如果你已经熟悉了这些内容，可以去读一读 [Escape Hatches](/learn/escape-hatches)?
