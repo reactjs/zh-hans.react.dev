@@ -475,7 +475,7 @@ h1 { margin: 5px; font-size: 18px; }
 
 问题在于 `Profile` 组件写入了一个预先存在的 `currentPerson` 变量，而 `Header` 和 `Avatar` 组件从中读取了这个变量。这使得*所有三个*组件都不纯并且难以预测。
 
-要修复这个 bug，需要删除 `currentPerson` 变量。然后以 props 作为替代，将所有信息从 `Profile` 传递到 `Header` 和 `Avatar` 中。您需要向两个组件添加一个 `person` 属性并将其一直向下传递。
+要修复这个 bug，需要删除 `currentPerson` 变量。然后以 props 作为替代，将所有信息从 `Profile` 传递到 `Header` 和 `Avatar` 中。你需要向两个组件添加一个 `person` 属性并将其一直向下传递。
 
 <Sandpack>
 
@@ -569,13 +569,13 @@ h1 { margin: 5px; font-size: 18px; }
 
 </Sandpack>
 
-记住 React 不能保证组件函数会以任何特定的顺序执行，因此您无法通过设置变量在它们之间进行通信。所有的交流都必须通过 props 进行。
+记住 React 不能保证组件函数会以任何特定的顺序执行，因此你无法通过设置变量在它们之间进行通信。所有的交流都必须通过 props 进行。
 
 </Solution>
 
 ### Fix a broken story tray
 
-你所在公司的 CEO 要求你在你的在线时钟 app 中添加“故事”，您不能拒绝。您已经编写了一个 `StoryTray` 组件，它接受一个 `stories` 列表，后跟一个 “Create Story” 占位符。
+你所在公司的 CEO 要求你在你的在线时钟 app 中添加“故事”，你不能拒绝。你已经编写了一个 `StoryTray` 组件，它接受一个 `stories` 列表，后跟一个 “Create Story” 占位符。
 
 你通过在作为 props 的 `stories` 数组末尾 push 一个假故事来实现 “Create Story” 占位符。但出于某种原因，“Create Story” 出现了不止一次。请修复这个问题。
 
@@ -761,7 +761,7 @@ li {
 
 </Sandpack>
 
-或者，您可以在将 item 项 push 进去之前创建一个 _新_ 数组（通过复制现有数组）：
+或者，你可以在将 item 项 push 进去之前创建一个 _新_ 数组（通过复制现有数组）：
 
 <Sandpack>
 
@@ -853,7 +853,7 @@ li {
 
 </Sandpack>
 
-这使您的突变保持在局部，并使您的渲染函数保持纯净。但你仍然需要小心：例如，当你想要更改数组的任意项时，必须先对其进行拷贝。
+这使你的突变保持在局部，并使你的渲染函数保持纯净。但你仍然需要小心：例如，当你想要更改数组的任意项时，必须先对其进行拷贝。
 
 记住数组上的哪些操作会修改原始数组，将会非常有用。例如，`push`、`pop`、`reverse` 和`sort` 会改变原始数组，但 `slice`、`filter` 和 `map` 则会另外创建一个新数组。
 
