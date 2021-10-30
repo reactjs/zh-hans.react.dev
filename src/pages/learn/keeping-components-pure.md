@@ -1,29 +1,29 @@
 ---
-title: 保持组件的纯度
+title: 保持组件的纯净
 ---
 
 <Intro>
 
-一些 JavaScript 函数是“纯”的。纯函数只执行计算，仅此而已。通过严格将组件编写为纯函数，你可以避免随着代码库的增长而出现一整类令人困扰的 bugs 和不可预测的行为。但是，为了获得这些益处，你必须遵守一些规则。
+一些 JavaScript 函数是“纯”的。纯函数仅仅执行计算，不做其他事情。将组件严格编写为纯函数，你可以避免随着代码库的增长而出现一整类令人困扰的 bugs 和不可预测的行为。但为了获得这些好处，你需要遵循一些规则。
 
 </Intro>
 
 <YouWillLearn>
 
-* ”纯度“是什么，以及它如何帮助你避免 bugs
-* 如何将更改置于渲染阶段外，以保持组件的纯度
-* 如何使用严格模式发现组件中的错误
+* 纯函数是什么，以及它如何帮助你避免 bugs
+* 如何将更改置于渲染阶段外，以保持组件的纯净
+* 如何使用严格模式找到组件中的错误
 
 </YouWillLearn>
 
-## 纯度：作为公式的组件
+## 纯函数：组件作为公式
 
-在计算机科学中（尤其是函数式编程的世界中），一个 [纯函数](https://wikipedia.org/wiki/Pure_function) 具有如下特征：
+在计算机科学中（尤其是函数式编程的世界中），一个[纯函数](https://wikipedia.org/wiki/Pure_function)具有如下特征：
 
-* **不管闲事**。它不会更改在该函数调用前便存在的对象或变量。
+* **只负责自己的任务**。它不会更改在该函数调用前便存在的对象或变量。
 * **输入相同，则输出相同**。给定相同的输入，纯函数应总是返回相同的结果。
 
-你也许早已熟悉纯函数的一个典型例子：数学公式。
+你也许已经熟悉了纯函数的一个例子：数学中的公式。
 
 考虑如下数学公式：<Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>。
 
@@ -31,7 +31,7 @@ title: 保持组件的纯度
 
 若 <Math><MathI>x</MathI> = 3</Math> 则 <Math><MathI>y</MathI> = 6</Math>。 永远如此。
 
-若 <Math><MathI>x</MathI> = 3</Math>，<MathI>y</MathI> 也不会受当前时段或股市状况影响，而等于 <Math>9</Math> 或 <Math>–1</Math> 或 <Math>2.5</Math>。 
+若 <Math><MathI>x</MathI> = 3</Math>，那么 <MathI>y</MathI> 不会受当前时段或股市状况影响，而等于 <Math>9</Math> 或 <Math>–1</Math> 或 <Math>2.5</Math>。 
 
 若 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> 且 <Math><MathI>x</MathI> = 3</Math>, 那么 <MathI>y</MathI> _永远_ 等于 <Math>6</Math>. 
 
@@ -81,13 +81,13 @@ export default function App() {
 
 就像数学公式一样。
 
-你可以把你的组件当作食谱：如果你遵循它们，并且在烹饪过程中不引入新食材，你每次都会得到相同的菜肴。那道“菜肴”就是组件用于 React [渲染](render-and-commit) 的 JSX。
+你可以把你的组件当作食谱：如果你遵循它们，并且在烹饪过程中不引入新食材，你每次都会得到相同的菜肴。那道“菜肴”就是组件用于 React [渲染](render-and-commit)的 JSX。
 
 <Illustration src="/images/docs/illustrations/i_puritea-recipe.png" alt="A tea recipe for x people: take x cups of water, add 2x spoons of spices, and x spoons of tea!" />
 
 ## 副作用：（无）意识后果
 
-React 的渲染过程必须始终是纯的。组件应该只*返回*它们的 JSX，而不*改变*在渲染前存在的任何对象或变量——这将会使它们变得不纯！
+React 的渲染过程必须始终是纯的。组件应该只*返回* 它们的 JSX，而不*改变* 在渲染前存在的任何对象或变量——这将会使它们变得不纯！
 
 以下是违反这一规则的组件示例：
 
@@ -115,11 +115,11 @@ export default function TeaSet() {
 
 </Sandpack>
 
-该组件正在读写在其外部声明的 `guest` 变量。这意味着**多次调用这个组件会产生不同的 JSX！** 并且，如果其他组件读取 `guest` ，它们也会产生不同的 JSX，其结果取决于它们何时被渲染！这是不可预测的。
+该组件正在读写在其外部声明的 `guest` 变量。这意味着**多次调用这个组件会产生不同的 JSX！**并且，如果其他组件读取 `guest` ，它们也会产生不同的 JSX，其结果取决于它们何时被渲染！这是不可预测的。
 
-回到我们的公式 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> ，现在即使 <Math><MathI>x</MathI> = 2</Math> ，我们也不能笃定 <Math><MathI>y</MathI> = 4</Math> 。我们的测试可能会失败，我们的用户可能会感到困扰，飞机可能会从天空坠毁——你将看到这会引发多么扑朔迷离的 bugs！
+回到我们的公式 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> ，现在即使 <Math><MathI>x</MathI> = 2</Math> ，我们也不能相信 <Math><MathI>y</MathI> = 4</Math> 。我们的测试可能会失败，我们的用户可能会感到困扰，飞机可能会从天空坠毁——你将看到这会引发多么扑朔迷离的 bugs！
 
-你可以 [将 `guest` 作为 prop 传入](/learn/passing-props-to-a-component) 来修复此组件：
+你可以[将 `guest` 作为 prop 传入](/learn/passing-props-to-a-component)来修复此组件：
 
 <Sandpack>
 
@@ -143,27 +143,27 @@ export default function TeaSet() {
 
 现在你的组件就是纯的了，因为它返回的 JSX 只依赖于 `guest` prop。
 
-一般来说，你不应该期望你的组件以任何特定的顺序被渲染。调用 <Math><MathI>y</MathI> = 5<MathI>x</MathI></Math> 和 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> 的先后顺序并不重要：这两个公式相互独立。同样，每个组件也应该“独立思考”，而不是在渲染过程中试图与其他组件协调，或者依赖于其他组件。渲染过程就像是一场学校考试：每个组件都应该自己计算 JSX！
+一般来说，你不应该期望你的组件以任何特定的顺序被渲染。调用 <Math><MathI>y</MathI> = 5<MathI>x</MathI></Math> 和 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> 的先后顺序并不重要：这两个公式相互独立。同样地，每个组件也应该“独立思考”，而不是在渲染过程中试图与其他组件协调，或者依赖于其他组件。渲染过程就像是一场学校考试：每个组件都应该自己计算 JSX！
 
-<DeepDive title="Detecting impure calculations with StrictMode">
+<DeepDive title="使用严格模式检测不纯的计算">
 
-尽管你可能还没有全部使用它们，但在 React 中，你可以在渲染时读取三种输入：[props](/learn/passing-props-to-a-component), [state](/learn/state-a-components-memory), 和 [context](/learn/passing-data-deeply-with-context)。你应该始终将这些输入视为只读。
+尽管你可能还没有全部使用过它们，但在 React 中，你可以在渲染时读取三种输入：[props](/learn/passing-props-to-a-component), [state](/learn/state-a-components-memory), 和 [context](/learn/passing-data-deeply-with-context)。你应该始终将这些输入视为只读。
 
 当你想根据用户输入更改某些内容时，你应该[设置状态](/learn/state-a-components-memory)而不是写入变量。当你的组件正在渲染时，你永远不应该改变预先存在的变量或对象。
 
 React 提供了“严格模式”，在严格模式下开发时，它将两次调用组件函数。**通过重复调用组件函数，严格模式有助于找到违反这些规则的组件**。
 
-我们注意到，原始示例显示的是“Guest #2”、“Guest #4”和“Guest #6”，而不是“Guest #1”、“Guest #2”和“Guest #3”。这是因为原来的函数是不纯的，调用它两次破坏了它。但对于固定的纯函数版本，即使调用该函数两次也能得到正确结果。**纯函数仅仅负责计算，因此两次调用它们不会改变任何东西**——就像两次调用 `double(2)` 不会改变返回的内容，两次求解 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> 不会改变 <MathI>y</MathI> 的值一样。相同的输入，总是返回相同的输出。
+我们注意到，原始示例显示的是“Guest #2”、“Guest #4”和“Guest #6”，而不是“Guest #1”、“Guest #2”和“Guest #3”。原来的函数是不纯的，调用它两次破坏了它。但对于固定的纯函数版本，即使调用该函数两次也能得到正确结果。**纯函数仅仅执行计算，因此两次调用它们不会改变任何东西**——就像两次调用 `double(2)` 不会改变返回的内容，两次求解 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> 不会改变 <MathI>y</MathI> 的值一样。相同的输入，总是返回相同的输出。
 
-严格模式在生产环境下不起作用，因此它不会降低应用程序的速度。如需引入严格模式，你可以将根组件包装到 `<React.StrictMode>` 中。一些框架会默认这样做。
+严格模式在生产环境下会失效，因此它不会降低应用程序的速度。如需引入严格模式，你可以将根组件包装到 `<React.StrictMode>` 中。一些框架会默认这样做。
 
 </DeepDive>
 
-### 局部突变：组件的小秘密
+### 局部 mutation：组件的小秘密
 
-上述例子里，问题出在渲染过程中，组件改变了 *preexisting* 变量的值。这种行为通常被称为 **“mutation”** ，以使其听起来更骇人。纯函数不会 mutate 函数作用域外的变量或在函数调用前创建的对象——这使它们变得不纯！
+上述例子里，问题出在渲染过程中，组件改变了 *preexisting* 变量的值。这种行为通常被称为 **“mutation”** ，以使其听起来更可怕。纯函数不会改变函数作用域外的变量或在函数调用前创建的对象——这使它们变得不纯！
 
-但是，**在渲染时更改你*刚刚* 创建的变量和对象完全没问题**。在本例中，你创建一个 `[]` 数组，将其分配给一个 `cups` 变量，然后 `push` cups 进去：
+但是，**在渲染时更改你 *刚刚* 创建的变量和对象完全没问题**。在本例中，你创建一个 `[]` 数组，将其分配给一个 `cups` 变量，然后 `push` 一打 cups 进去：
 
 <Sandpack>
 
@@ -185,19 +185,19 @@ export default function TeaGathering() {
 
 如果 `cups` 变量或 `[]` 数组是在 `TeaGathering` 函数之外创建的，这将是一个巨大的问题！你调用的数组 push 方法将更改*预先存在的* 对象。
 
-但是，这里不会有影响，因为每次渲染时，你都是在 `TeaGathering` 函数内部创建的它们。 `TeaGathering` 之外的代码不会知道发生了什么。这就被称为 **“局部突变”** ——如同藏在组件里的小秘密。
+但是，这里不会有影响，因为每次渲染时，你都是在 `TeaGathering` 函数内部创建的它们。 `TeaGathering` 之外的代码不会知道发生了什么。这就被称为 **“局部 mutation”** ——如同藏在组件里的小秘密。
 
 ## 哪里可能引发副作用
 
-函数式编程在很大程度上依赖于纯度，但某些东西在一定情况下不得不发生改变。这就是编程的要义！这些更改——更新屏幕、启动动画、更改数据——被称为 **副作用**。它们是 _“额外”_ 发生的事情，与渲染过程无关。
+函数式编程在很大程度上依赖于纯函数，但某些事物在特定情况下不得不发生改变。这是编程的要义！这些变动——更新屏幕、启动动画、更改数据——被称为**副作用**。它们是 _“额外”_ 发生的事情，与渲染过程无关。
 
-在 React 中，**副作用通常属于 [事件处理程序](/learn/responding-to-events)。** 事件处理程序是 React 在你执行某些操作——例如，当单击按钮时——运行的函数。即使事件处理程序是在你的组件*内部* 定义的，它们也不会在渲染期间运行！ **因此事件处理程序不需要是纯的。**
+在 React 中，**副作用通常属于[事件处理程序](/learn/responding-to-events)。** 事件处理程序是 React 在你执行某些操作——例如，当单击按钮时——运行的函数。即使事件处理程序是在你的组件*内部* 定义的，它们也不会在渲染期间运行！ **因此事件处理程序不需要是纯函数。**
 
-如果你用尽一切选项，仍无法为副作用找到合适的事件处理程序的话，你还可以使用组件中的 [`useEffect`](/reference/useeffect) 调用将其附加到返回的 JSX。这告诉 React 在渲染结束后执行它。 **然而，这种方法应该是你最后的手段。 **
+如果你用尽一切选项，仍无法为副作用找到合适的事件处理程序的话，你还可以调用组件中的 [`useEffect`](/reference/useeffect) 方法将其附加到返回的 JSX 中。这告诉 React 在渲染结束后执行它。**然而，这种方法应该是你最后的手段。**
 
-如果可能，请尝试仅通过渲染来表达你的逻辑。你会惊讶于这能带你走多远！
+如果可能，请尝试仅通过渲染过程来表达你的逻辑。你会惊讶于这能带给你多少好处！
 
-<DeepDive title="React 为什么关注纯度？">
+<DeepDive title="React 为什么关注纯函数？">
 
 编写纯函数需要一些习惯和纪律。但它也带来了绝妙的机会：
 
@@ -205,17 +205,17 @@ export default function TeaGathering() {
 * 对于输入未更改的组件，你可以[跳过渲染](/learn/skiping-unchanged-trees)来提高性能。这是安全的做法，因为纯函数总是返回相同的结果，所以它们可以安全地缓存。
 * 如果在渲染深层组件树的过程中某些数据发生了变化，React 可以重新开始渲染，而不会浪费时间完成过时的渲染。纯函数使得它可以随时安全地停止计算。
 
-我们正在构建的每个 React 新功能都利用到了纯度。从数据获取到动画再到性能，保持组件的纯度可以释放 React 范式的能力。
+我们正在构建的每个 React 新功能都利用到了纯函数。从数据获取到动画再到性能，保持组件的纯净可以充分释放 React 范式的能力。
 
 </DeepDive>
 
 <Recap>
 
 * 一个组件必须是纯的，意味着：
-  * **不管闲事。** 不应更改渲染前存在的任何对象或变量。
+  * **只负责自己的任务。** 不应更改渲染前存在的任何对象或变量。
   * **输入相同，则输出相同。** 给定相同的输入，组件应该总是返回相同的 JSX。
 * 渲染随时可能发生，因此组件不应依赖于彼此的渲染顺序。
-* 你不应该改变组件用于渲染的输入。这包括 props、state 和 context。如需更新界面，["设置"状态](reacting-to-input-with-state)而不是改变预先存在的对象。
+* 你不应该改变组件用于渲染的输入。这包括 props、state 和 context。如需更新界面，["设置"状态](reacting-to-input-with-state) 而不是改变预先存在的对象。
 * 努力在你返回的 JSX 中表达你的组件逻辑。当你需要“改变事物”时，你通常希望在事件处理程序中进行。作为最后的手段，你可以使用 `useEffect`。
 * 编写纯函数需要一些练习，但它充分释放了 React 范式的能力。
 
@@ -225,16 +225,15 @@ export default function TeaGathering() {
   
 <Challenges>
 
-### 修理坏掉的时钟
+### 修复坏掉的时钟
 
 该组件尝试将 `<h1>` 的 CSS 类设置为从午夜到早上 6 小时的时间为 `"night"`，而在所有其他时间为 `"day"`。但它不起作用。你能修复这个组件吗？
 
-你可以临时更改计算机的时区来验证你的解决方案是否有效。当前时间在午夜到早上六点之间时，时钟应该有相反的颜色！
+你可以临时更改计算机的时区来验证你的解决方案是否有效。当前时间位于午夜至早上六点之间时，时钟应该有相反的颜色！
 
 <Hint>
 
-渲染是一种*计算过程* ，它不应该试图“做”其他事。你能用不同的方式表达同样的想法吗？
-Rendering is a *calculation*, it shouldn't try to "do" things. Can you express the same idea differently?
+渲染是一种*计算过程* ，它不应该试图“做”其他事情。你能用其他方式表达和这一样的想法吗？
 
 </Hint>
 
@@ -298,8 +297,7 @@ body > * {
 
 <Solution>
 
-你可以计算 className，并将其包含在渲染的输出中，以此实现该组件的修复：
-You can fix this component by calculating the `className` and including it in the render output:
+你可以计算 className，并将其包含在渲染的输出中，以此实现对组件的修复：
 
 <Sandpack>
 
@@ -364,15 +362,15 @@ body > * {
 
 </Solution>
 
-### Fix a broken profile
+### 修复损坏的名片
 
-两个 `Profile` 组件使用不同的数据并排呈现。在第一个配置文件上按 “Collapse”，然后 “Expand” 它。你会看到两个资料页现在显示的是同一个人。这是一个 bug。
+两个 `Profile` 组件使用不同的数据并排呈现。在第一张名片上点击“Collapse”折叠，然后点击“Expand”展开它。你会看到两张名片现在显示的是同一个人。这是一个 bug。
 
 找出产生 bug 的原因，并修复它。
 
 <Hint>
 
-问题代码在 `Profile.js` 中。一定要从上到下读完所有内容！
+问题代码出现在 `Profile.js` 中。一定要从上到下读完所有内容！
 
 </Hint>
 
@@ -473,7 +471,7 @@ h1 { margin: 5px; font-size: 18px; }
 
 <Solution>
 
-问题在于 `Profile` 组件写入了一个预先存在的 `currentPerson` 变量，而 `Header` 和 `Avatar` 组件从中读取了这个变量。这使得*所有三个*组件都不纯并且难以预测。
+问题在于 `Profile` 组件写入了一个预先存在的 `currentPerson` 变量，而 `Header` 和 `Avatar` 组件从中读取了这个变量。这使得*所有三个* 组件都变得不纯并且难以预测。
 
 要修复这个 bug，需要删除 `currentPerson` 变量。然后以 props 作为替代，将所有信息从 `Profile` 传递到 `Header` 和 `Avatar` 中。你需要向两个组件添加一个 `person` 属性并将其一直向下传递。
 
@@ -569,15 +567,15 @@ h1 { margin: 5px; font-size: 18px; }
 
 </Sandpack>
 
-记住 React 不能保证组件函数会以任何特定的顺序执行，因此你无法通过设置变量在它们之间进行通信。所有的交流都必须通过 props 进行。
+请记住，React 无法保证组件函数以任何特定的顺序执行，因此你无法通过设置变量在它们之间进行通信。所有的交流都必须通过 props 进行。
 
 </Solution>
 
-### Fix a broken story tray
+### 修复损坏的故事托盘
 
 你所在公司的 CEO 要求你在你的在线时钟 app 中添加“故事”，你不能拒绝。你已经编写了一个 `StoryTray` 组件，它接受一个 `stories` 列表，后跟一个 “Create Story” 占位符。
 
-你通过在作为 props 的 `stories` 数组末尾 push 一个假故事来实现 “Create Story” 占位符。但出于某种原因，“Create Story” 出现了不止一次。请修复这个问题。
+你在作为 props 的 `stories` 数组末尾 push 了一个假故事来实现 “Create Story” 占位符。但出于某种原因，“Create Story” 出现了不止一次。请修复这个问题。
 
 <Sandpack>
 
@@ -673,11 +671,11 @@ li {
 
 <Solution>
 
-请注意，每当时钟更新时，“Create Story” 都会被添加*两次*。这暗示我们在渲染过程中发生了 mutation ——严格模式调用组件两次可以使这些问题更加明显。
+请注意，每当时钟更新时，“Create Story” 都会被添加*两次*。这暗示我们在渲染过程中发生了 mutation——严格模式调用组件两次可以使这些问题更加明显。
 
-`StoryTray` 功能不纯。通过在接收到的 `stories` 数组（一个 prop！）上调用 `push` 方法，它正在改变一个在 `StoryTray` 开始渲染*之前* 创建的对象。这使得它有问题并且难以预测。
+`StoryTray` 的功能不纯。通过在接收到的 `stories` 数组（一个 prop！）上调用 `push` 方法，它正改变着一个在 `StoryTray` 渲染*之前* 创建的对象。这使得它有问题并且难以预测。
 
-最简单的解决方式是完全不接触数组，单独渲染 “Create Story”：
+最简单的解决方案是完全不碰数组，单独渲染 “Create Story”：
 
 <Sandpack>
 
@@ -853,9 +851,9 @@ li {
 
 </Sandpack>
 
-这使你的突变保持在局部，并使你的渲染函数保持纯净。但你仍然需要小心：例如，当你想要更改数组的任意项时，必须先对其进行拷贝。
+这使你的 mutation 保持在局部，并使你的渲染函数保持纯净。但你仍然需要小心：例如，当你想要更改数组的任意项时，必须先对其进行拷贝。
 
-记住数组上的哪些操作会修改原始数组，将会非常有用。例如，`push`、`pop`、`reverse` 和`sort` 会改变原始数组，但 `slice`、`filter` 和 `map` 则会另外创建一个新数组。
+记住数组上的哪些操作会修改原始数组，将会非常有用。例如，`push`、`pop`、`reverse` 和`sort` 会改变原始数组，但 `slice`、`filter` 和 `map` 则会创建一个新数组。
 
 </Solution>
 
