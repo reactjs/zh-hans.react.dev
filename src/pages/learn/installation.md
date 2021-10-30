@@ -35,7 +35,7 @@ export default function App() {
 
 </Sandpack>
 
-我们在这些文档中使用在线代码编辑器作为教学辅助工具。它可以帮助你熟悉 React 的工作方式，并帮助你决定 React 是否适合你。在 React 文档之外，还有许多支持 React 的在线代码编辑器：例如[CodeSandbox](https://codesandbox.io/s/new)，[Stackblitz](https://stackblitz.com/fork/react)，或者 [CodePen](
+我们在教学文档中将使用在线代码编辑器作为教学辅助工具。它可以帮助你熟悉 React 的工作方式，并帮助你决定 React 是否适合你。在 React 文档之外，还有许多支持 React 的在线代码编辑器：例如[CodeSandbox](https://codesandbox.io/s/new)，[Stackblitz](https://stackblitz.com/fork/react)，或者 [CodePen](
 https://codepen.io/pen/?template=wvdqJJm).
 
 ### 本地尝试 React 
