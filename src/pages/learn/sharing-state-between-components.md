@@ -91,7 +91,7 @@ And instead, add `isActive` to the `Panel`'s list of props:
 function Panel({ title, children, isActive }) {
 ```
 
-现在，`Panel` 的父组件就可以通过 [向下传递 prop](/learn/passing-props-to-a-component) 来 *控制* `isActive`。这样就反过来了，`Panel` 组件对`isActive` 的值 *没有控制权* ——现在完全由父组件决定！
+现在，`Panel` 的父组件就可以通过 [向下传递 prop](/learn/passing-props-to-a-component) 来 *控制* `isActive`。这样就反过来了，`Panel` 组件对 `isActive` 的值 *没有控制权* ——现在完全由父组件决定！
 
 ### 第 2 步: 从公共父级传递硬编码数据 {#pass-hardcoded-data-from-the-common-parent}
 
@@ -177,7 +177,7 @@ const [activeIndex, setActiveIndex] = useState(0);
 </Panel>
 ```
 
-现在 `Panel` 组件中的 `<button>` 现在将使用 `onShow` 这个属性作为其点击事件的处理程序：
+现在 `Panel` 组件中的 `<button>` 将使用 `onShow` 这个属性作为其点击事件的处理程序：
 
 <Sandpack>
 
