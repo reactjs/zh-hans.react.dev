@@ -52,4 +52,4 @@ https://codepen.io/pen/?template=wvdqJJm).
 
 ## 下节预告 {#next-steps}
 
-你从哪里开始学习，取决于你喜欢如何学习，你需要完成什么，以及你下一步想去哪里! 不妨读一下[React 哲学](/learn/thinking-in-react)--我们的介绍性教程？或者你可以跳到 [描述用户界面](/learn/describing-the-ui) 来尝试更多的例子，一步一步地学习每个主题。这是一个学习 React 不错的方法。
+你从哪里开始学习，取决于你喜欢如何学习，你需要完成什么，以及你下一步想去哪里! 不妨读一下[React 哲学](/learn/thinking-in-react)——我们的介绍性教程？或者你可以跳到 [描述用户界面](/learn/describing-the-ui) 来尝试更多的例子，一步一步地学习每个主题。这是一个学习 React 不错的方法。
