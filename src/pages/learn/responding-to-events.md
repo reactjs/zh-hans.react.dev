@@ -487,7 +487,7 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-您可以调用事件对象上的 `e.preventDefault()` 来阻止这种情况发生：
+你可以调用事件对象上的 `e.preventDefault()` 来阻止这种情况发生：
 
 <Sandpack>
 
