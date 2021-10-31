@@ -5,7 +5,7 @@ layout: API
 
 <Intro>
 
-“render”可以将一段 [JSX](/learn/writing-markup-with-jsx)（"React 元素"）渲染到浏览器 DOM 容器节点中。它可以让 React 改变“container”内的 DOM ，使其与传递的 JSX 相匹配。
+“render”可以将一段 [JSX](/learn/writing-markup-with-jsx)（“React 元素”）渲染到浏览器 DOM 容器节点中。它可以让 React 改变“container”内的 DOM ，使其与传递的 JSX 相匹配。
 
 ```js
 render(<App />, container);
@@ -39,7 +39,7 @@ render(<App />, container);
 
 </APIAnatomy>
 
-在完全由 React 构建的应用程序中，你将在你的应用程序的顶层做一次这样的工作 —— 渲染 "root" 组件。
+在完全由 React 构建的应用程序中，你将在你的应用程序的顶层做一次这样的工作 —— 渲染"root"组件。
 
 <Sandpack>
 
@@ -70,7 +70,7 @@ export default function App() {
 ```html public/index.html
 <nav id="navigation"></nav>
 <main>
-  <p>这一段没有被React渲染（可以打开 index.html 来验证）。</p>
+  <p>这一段没有被 React 渲染（可以打开 index.html 来验证）。</p>
   <section id="comments"></section>
 </main>
 ```
@@ -137,7 +137,7 @@ nav ul li { display: inline-block; margin-right: 20px; }
 
 ## 更新已渲染的 DOM
 
-你可以在同一个 DOM 节点上多次调用“render”。只要组件树结构与之前渲染的内容一致，React 就会 [保留这个状态](/learn/preserving-and-resetting-state)。请注意你书写代码的方式：
+你可以在同一个 DOM 节点上多次调用“render”。只要组件树结构与之前渲染的内容一致，React 就会 [保留这个状态](/learn/preserving-and-resetting-state) 。请注意你书写代码的方式：
 
 <Sandpack>
 
@@ -174,7 +174,7 @@ export default function App({counter}) {
 
 ## 何时不使用它
 
-* 如果你的应用程序使用服务器渲染并在服务器上生成HTML，请使用 [“hydrate”](TODO) 而不是“render”。
+* 如果你的应用程序使用服务器渲染并在服务器上生成 HTML ，请使用 [“hydrate”](TODO) 而不是“render”。
 * 如果你的应用程序是完全用 React 构建的，你应该不需要多次使用“render”。如果你想在 DOM 树的不同部分渲染一些东西（例如，modal 或者 tooltip），那么请使用 [“createPortal”](TODO) 来代替。
 
 <br />
@@ -182,8 +182,8 @@ export default function App({counter}) {
 
 ## 使用细节
 
-在你第一次调用“render”时，“container”内的任何现有 DOM 元素都会被替换。如果你再次调用 “render”，React 将会通过 ["匹配"](/learn/preserving-and-resetting-state) 与先前渲染的组件树来决定 DOM 的哪些部分可以重用，哪些需要重新创建。重复调用“render”与调用“setState” —— 在这两种情况下，React 都会避免不必要的 DOM 更新。
+在你第一次调用“render”时，“container”内的任何现有 DOM 元素都会被替换。如果你再次调用“render”，React 将会通过 ["匹配"](/learn/preserving-and-resetting-state) 与先前渲染的组件树来决定 DOM 的哪些部分可以重用，哪些需要重新创建。重复调用“render”与调用“setState” —— 在这两种情况下，React 都会避免不必要的 DOM 更新。
 
 你可以传递一个回调函数作为第三个参数。React 会在你的组件出现在 DOM 中后调用它。
 
-如果你渲染“<MyComponent />”，并且“MyComponent”是一个类组件，“render”将返回该类的实例。在其他情况下，它将返回“null”。
+如果你渲染 `<MyComponent />` ，并且“MyComponent”是一个类组件，“render”将返回该类的实例。在其他情况下，它将返回“null”。
