@@ -42,7 +42,7 @@ https://codepen.io/pen/?template=wvdqJJm)。
 
 如果你喜欢使用自己的文本编辑器，也可以 [下载这个 HTML](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html) 文件，然后编辑修改文件内容，最后直接用浏览器打开。
 
-## 将 React 添加到页面 {#add-react-to-a-page}
+## 将 React 添加到已有页面 {#add-react-to-a-page}
 
 如果你正在维护一个已有的网站，只需要添加一部分 React，你可以 [使用 script 标签添加 React](/learn/add-react-to-a-website)。
 
