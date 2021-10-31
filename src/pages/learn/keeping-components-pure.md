@@ -16,7 +16,7 @@ title: 保持组件的纯净
 
 </YouWillLearn>
 
-## 纯函数：组件作为公式
+## 纯函数：组件作为公式 {#purity-components-as-formulas}
 
 在计算机科学中（尤其是函数式编程的世界中），一个[纯函数](https://wikipedia.org/wiki/Pure_function)具有如下特征：
 
@@ -85,7 +85,7 @@ export default function App() {
 
 <Illustration src="/images/docs/illustrations/i_puritea-recipe.png" alt="A tea recipe for x people: take x cups of water, add 2x spoons of spices, and x spoons of tea!" />
 
-## 副作用：（无）意识后果
+## 副作用：（无）意识后果 {#side-effects-unintended-consequences}
 
 React 的渲染过程必须始终是纯的。组件应该只*返回* 它们的 JSX，而不*改变* 在渲染前存在的任何对象或变量——这将会使它们变得不纯！
 
@@ -159,7 +159,7 @@ React 提供了“严格模式”，在严格模式下开发时，它将两次�
 
 </DeepDive>
 
-### 局部 mutation：组件的小秘密
+### 局部 mutation：组件的小秘密 {#local-mutation-your-components-little-secret}
 
 上述例子里，问题出在渲染过程中，组件改变了 *preexisting* 变量的值。这种行为通常被称为 **“mutation”** ，以使其听起来更可怕。纯函数不会改变函数作用域外的变量或在函数调用前创建的对象——这使它们变得不纯！
 
@@ -187,7 +187,7 @@ export default function TeaGathering() {
 
 但是，这里不会有影响，因为每次渲染时，你都是在 `TeaGathering` 函数内部创建的它们。 `TeaGathering` 之外的代码不会知道发生了什么。这就被称为 **“局部 mutation”** ——如同藏在组件里的小秘密。
 
-## 哪里可能引发副作用
+## 哪里可能引发副作用 {#where-you-can-cause-side-effects}
 
 函数式编程在很大程度上依赖于纯函数，但某些事物在特定情况下不得不发生改变。这是编程的要义！这些变动——更新屏幕、启动动画、更改数据——被称为**副作用**。它们是 _“额外”_ 发生的事情，与渲染过程无关。
 
