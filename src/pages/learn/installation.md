@@ -40,7 +40,7 @@ https://codepen.io/pen/?template=wvdqJJm)。
 
 ### 本地尝试 React 
 
-如果你喜欢使用自己的文本编辑器，也可以[下载这个 HTML](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html)文件，然后编辑文件内容，最后再用浏览器从本地文件系统打开文件。
+如果你喜欢使用自己的文本编辑器，也可以 [下载这个 HTML](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html) 文件，然后编辑修改文件内容，最后直接用浏览器打开。
 
 ## 将 React 添加到页面 {#add-react-to-a-page}
 
