@@ -38,7 +38,7 @@ export default function App() {
 我们将在线代码编辑器集成到了文档之中，将其作为教学辅助工具。它可以帮助你熟悉 React 的工作方式，同时帮助你检测 React 与你的契合度。在 React 文档之外，还存在许多支持 React 的在线代码编辑器：例如 [CodeSandbox](https://codesandbox.io/s/new)，[Stackblitz](https://stackblitz.com/fork/react)，或者 [CodePen](
 https://codepen.io/pen/?template=wvdqJJm)。
 
-### 本地尝试 React 
+### 本地尝试 React {#try-react-locally}
 
 如果你喜欢使用自己的文本编辑器，也可以 [下载这个 HTML](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html) 文件，然后编辑修改文件内容，最后直接用浏览器打开。
 
