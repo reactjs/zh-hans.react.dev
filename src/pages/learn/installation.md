@@ -11,7 +11,7 @@ React 从诞生之初就是可被逐步采用的，因而你可以按需引入�
 <YouWillLearn>
 
 * [如何将 React 添加到页面中](/learn/add-react-to-a-website)
-* [如何启动一个独立的 React 项目](/learn/start-a-new-react-project)
+* [如何启动一个全新的 React 项目](/learn/start-a-new-react-project)
 * [如何配置你的编辑器](/learn/editor-setup)
 * [如何安装 React 开发工具](/learn/react-developer-tools)
 
