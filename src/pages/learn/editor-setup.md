@@ -50,4 +50,4 @@ title: 编辑器设置
 4. 在搜索栏, 输入 "format on save"
 5. 确保勾选 "format on save" 选项！
 
-> Prettier 有时会与其他 linter 发生冲突。 但通常有一个方法可以让它们很好地一起运行。 例如，如果你要一起使用 Prettier 和 ESLint，你可以用 [eslint-prettier](https://github.com/prettier/eslint-plugin-prettier) 插件将 prettier 作为 ESLint 规则运行。
+> Prettier 有时会与其他 linter 发生冲突。但通常有一个方法可以让它们很好地一起运行。例如，如果你要一起使用 Prettier 和 ESLint，你可以用 [eslint-prettier](https://github.com/prettier/eslint-plugin-prettier) 插件将 Prettier 作为 ESLint 规则运行。
