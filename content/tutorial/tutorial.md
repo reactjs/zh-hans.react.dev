@@ -1147,7 +1147,8 @@ class Game extends React.Component {
     // 这个方法无更改
   }
 ```
-Notice in `jumpTo` method, we haven't updated history property of the state. That is because state updates are merged or in more simple words react will update only the properties mentioned in `setState` method leaving the remaining state as that is. For more info **[see the documentation](https://reactjs.org/docs/state-and-lifecycle.html#state-updates-are-merged)**
+
+Notice in `jumpTo` method, we haven't updated `history` property of the state. That is because state updates are merged or in more simple words React will update only the properties mentioned in `setState` method leaving the remaining state as that is. For more info **[see the documentation](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
 
 接下来，我们还要修改 Game 组件的 `handleClick` 方法，当你点击方格的时候触发该方法。
 
