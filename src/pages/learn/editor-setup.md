@@ -36,7 +36,7 @@ title: 编辑器设置
 你可以安装 [Prettier 扩展在 VSCode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) 通过以下步骤：
 
 1. 启动 VS Code
-2. 使用快速打开 （使用快捷键 `CTRL/CMD + P`）
+2. 使用快速打开（使用快捷键 `CTRL/CMD + P`）
 3. 粘贴 `ext install esbenp.prettier-vscode`
 4. 按回车键
 
