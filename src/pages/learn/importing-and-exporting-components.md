@@ -18,7 +18,7 @@ title: 组件的导入和导出
 
 </YouWillLearn>
 
-## The root component file
+## 根组件文件 {#the-root-component-file}
 
 在 [你的第一个组件](/learn/your-first-component) 中，你创建了一个 `Profile` 组件，并且渲染在 `Gallery` 组件里。
 
