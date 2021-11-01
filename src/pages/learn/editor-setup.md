@@ -16,7 +16,7 @@ title: 编辑器设置
 
 * [WebStorm](https://www.jetbrains.com/webstorm/) — 专为 JavaScript 设计的集成开发环境。
 * [Sublime Text](https://www.sublimetext.com/) — 支持 JSX 和 TypeScript，内置语法高亮和代码自动补全功能。
-* [Vim](https://www.vim.org/) — 一个高度可配置的文本编辑器，可以非常高效地创建和更改任何类型的文本。 它作为 “vi” 包含在大多数 UNIX 系统和 Apple OS X 中。
+* [Vim](https://www.vim.org/) — 一个高度可配置的文本编辑器，可以非常高效地创建和更改任何类型的文本。它作为 “vi” 包含在大多数 UNIX 系统和 Apple OS X 中。
 
 ## 推荐的文本编辑器功能 {#recommended-text-editor-features}
 
