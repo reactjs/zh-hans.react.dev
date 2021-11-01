@@ -10,7 +10,7 @@ title: 编辑器设置
 
 ## 你的编辑器 {#your-editor}
 
-[VS Code](https://code.visualstudio.com/) 是现如今最流行的编辑器之一。 它拥有庞大的扩展市场，并能集成像 GitHub 这样的流行服务。 下面列出的大多数功能也可以作为扩展添加到 VS Code 中，使其具有更高的可配置性！
+[VS Code](https://code.visualstudio.com/) 是现如今最流行的编辑器之一。它拥有庞大的扩展市场，同时能集成像 GitHub 这样的流行服务。下面列出的大多数功能都可以作为扩展添加到 VS Code 中，使其具有极高的可配置性！
 
 其他 React 社区里比较流行的文本编辑器包括：
 
