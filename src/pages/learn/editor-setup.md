@@ -42,7 +42,7 @@ title: 编辑器设置
 
 #### 保存并自动格式化 {#formatting-on-save}
 
-最理想情况，你应该在每次保存时自动格式化代码。 VS Code 也有这个配置!
+理想情况下，你应该在每次保存时自动格式化代码。VS Code 就有这个配置!
 
 1. 在 VS Code, 按快捷键 `CTRL/CMD + SHIFT + P`.
 2. 输入 "settings"
