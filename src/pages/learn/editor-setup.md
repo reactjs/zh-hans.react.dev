@@ -31,7 +31,7 @@ title: 编辑器设置
 
 ### 格式化 {#formatting}
 
-与其他贡献者共享代码时，你最不想做的事就是讨论代码缩进使用 [tabs 还是空格](https://www.google.com/search?q=tabs+vs+spaces) ！幸好，[Prettier](https://prettier.io/) 将以预设的配置规则重新格式化代码以保证代码整洁。运行 Prettier，你的所有 tabs 将转换为空格，缩进、引号等也将全部更改为你预先配置好的。理想状态就是，当你保存文件时，Prettier 将自动运行格式化操作。
+与其他贡献者共享代码时，你最不想做的事就是争论代码缩进应该使用 [tabs 还是空格](https://www.google.com/search?q=tabs+vs+spaces) ！幸好，[Prettier](https://prettier.io/) 会以预设的配置规则重新格式化代码以保证代码整洁。运行 Prettier，你的所有 tabs 将转换为空格——缩进、引号等将全部根据你的配置改变。理想状态下，当你保存文件时，Prettier 会自动运行格式化操作。
 
 你可以安装 [Prettier 扩展在 VSCode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) 通过以下步骤：
 
