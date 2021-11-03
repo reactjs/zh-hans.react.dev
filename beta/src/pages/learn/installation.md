@@ -1,7 +1,7 @@
 ---
 title: 安装
 translators:
-- ChelesteWang
+  - ChelesteWang
 ---
 
 <Intro>
