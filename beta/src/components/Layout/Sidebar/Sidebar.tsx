@@ -4,7 +4,7 @@
 
 import * as React from 'react';
 import cn from 'classnames';
-import {SidebarContext} from 'components/Layout/useRouteMeta';
+import {SidebarContext, RouteItem} from 'components/Layout/useRouteMeta';
 import {MenuContext} from 'components/useMenu';
 import {useMediaQuery} from '../useMediaQuery';
 import {SidebarRouteTree} from './SidebarRouteTree';
