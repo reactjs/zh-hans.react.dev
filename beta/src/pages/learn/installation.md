@@ -1,25 +1,27 @@
 ---
-title: Installation
+title: 安装
+translators:
+- ChelesteWang
 ---
 
 <Intro>
 
-React has been designed from the start for gradual adoption, and you can use as little or as much React as you need. Whether you want to get a taste of React, add some interactivity to an HTML page, or start a complex React-powered app, this section will help you get started.
+React 从诞生之初就是可被逐步采用的，因此你可以选择性地使用 React 特性。不管你是想体验下 React，用它为简单的 HTML 页面增加交互，还是重新搭建一个由 React 驱动的复杂应用，本章节内容都能帮你快速入门。
 
 </Intro>
 
 <YouWillLearn>
 
-* [How add React to an HTML page](/learn/add-react-to-a-website)
-* [How to start a standalone React project](/learn/start-a-new-react-project)
-* [How to set up your editor](/learn/editor-setup)
-* [How to install React Developer Tools](/learn/react-developer-tools)
+* [如何将 React 添加到页面中](/learn/add-react-to-a-website)
+* [如何启动一个全新的 React 项目](/learn/start-a-new-react-project)
+* [如何配置你的编辑器](/learn/editor-setup)
+* [如何安装 React 开发工具](/learn/react-developer-tools)
 
 </YouWillLearn>
 
-## Try React
+## 尝试 React {#try-react}
 
-You don't need to install anything to play with React. Try editing this sandbox!
+无需进行任何安装，即可体验：
 
 <Sandpack>
 
@@ -35,21 +37,21 @@ export default function App() {
 
 </Sandpack>
 
-We use sandboxes throughout these docs as teaching aids. Sandboxes can help familiarize you with how React works and help you decide if React is right for you. Outside of the React documentation, there are many online sandboxes that support React: for example, [CodeSandbox](https://codesandbox.io/s/new), [Stackblitz](https://stackblitz.com/fork/react), or [CodePen](
-https://codepen.io/pen/?template=wvdqJJm).
+我们将在线代码编辑器集成到了文档之中，将其作为教学辅助工具。它可以帮助你熟悉 React 的工作方式，同时帮助你检测 React 与你的契合度。在 React 文档之外，还存在许多支持 React 的在线代码编辑器：例如 [CodeSandbox](https://codesandbox.io/s/new)，[Stackblitz](https://stackblitz.com/fork/react)，或者 [CodePen](
+https://codepen.io/pen/?template=wvdqJJm)。
 
-### Try React locally
+### 本地尝试 React {#try-react-locally}
 
-To try React locally on your computer, [download this HTML page](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html). Open it in your editor and in your browser!
+如果你喜欢使用自己的文本编辑器，也可以 [下载这个 HTML](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html) 文件，然后编辑修改文件内容，最后直接用浏览器打开。
 
-## Add React to a page
+## 将 React 添加到已有页面 {#add-react-to-a-page}
 
-If you're working with an existing site and just need to add a little bit of React, you can [add React with a script tag.](/learn/add-react-to-a-website)
+如果你正在维护一个已有的网站，只需要添加一部分 React，你可以 [使用 script 标签添加 React](/learn/add-react-to-a-website)。
 
-## Start a React project
+## 开始一个 React 项目 {#start-a-react-project}
 
-If you're ready to [start a standalone project](/learn/start-a-new-react-project) with React, you can set up a minimal toolchain for a pleasant developer experience. You can also start with a framework that makes a lot of decisions for you out of the box.
+如果你准备好使用 React [启动一个独立的项目](/learn/start-a-new-react-project) ，你可以建立一个最小的工具链以获得愉快的开发体验。你也可以从一个框架开始，它为你做了很多开箱即用的设定。
 
-## Next steps
+## 下一步 {#next-steps}
 
-Where you start depends on how you like to learn, what you need to accomplish, and where you want to go next! Why not read [Thinking in React](/learn/thinking-in-react)--our introductory tutorial? Or you can jump to [Describing the UI](/learn/describing-the-ui) to play with more examples and learn each topic step by step. There is no wrong way to learn React!
+你从哪里开始学习，这完全取决于你的学习习惯，你的学习目标，如果毫无头绪，不妨读一下 [React 哲学](/learn/thinking-in-react) —— 这是我们的入门级教程。或者你可以直接跳到 [描述用户界面](/learn/describing-the-ui) 来尝试更多的示例，逐步学习每个主题。总有一种适合你。
