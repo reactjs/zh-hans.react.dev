@@ -1,7 +1,7 @@
 ---
 title: 响应事件
 translators:
- - Jiacheng787
+  - Jiacheng787
 ---
 
 <Intro>
