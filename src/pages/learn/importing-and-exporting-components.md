@@ -1,5 +1,7 @@
 ---
 title: 组件的导入和导出
+translators:
+  - Alienover
 ---
 
 <Intro>
