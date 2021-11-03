@@ -2,8 +2,6 @@
 id: static-type-checking
 title: 静态类型检查
 permalink: docs/static-type-checking.html
-prev: typechecking-with-proptypes.html
-next: refs-and-the-dom.html
 ---
 
 像 [Flow](https://flow.org/) 和 [TypeScript](https://www.typescriptlang.org/) 等这些静态类型检查器，可以在运行前识别某些类型的问题。他们还可以通过增加自动补全等功能来改善开发者的工作流程。出于这个原因，我们建议在大型代码库中使用 Flow 或 TypeScript 来代替 `PropTypes`。
@@ -88,13 +86,13 @@ Flow 通过这种类型注释的特殊语法扩展了 JavaScript 语言。但是
 如果你使用 Yarn，执行：
 
 ```bash
-yarn add --dev babel-preset-flow
+yarn add --dev @babel/preset-flow
 ```
 
 如果你使用 npm，执行：
 
 ```bash
-npm install --save-dev babel-preset-flow
+npm install --save-dev @babel/preset-flow
 ```
 
 接下来将 `flow` preset 添加到你的 [Babel 配置](https://babeljs.io/docs/usage/babelrc/) 配置中。例如，如果你通过 `.babelrc` 文件配置 Babel，它可能会如下所示：
@@ -102,7 +100,7 @@ npm install --save-dev babel-preset-flow
 ```js{3}
 {
   "presets": [
-    "flow",
+    "@babel/preset-flow",
     "react"
   ]
 }
@@ -177,7 +175,7 @@ Create React App 内置了对 TypeScript 的支持。
 需要创建一个使用 TypeScript 的**新项目**，在终端运行：
 
 ```bash
-npx create-react-app my-app --typescript
+npx create-react-app my-app --template typescript
 ```
 
 如需将 TypeScript 添加到**现有的 Create React App 项目**中，[请参考此文档](https://facebook.github.io/create-react-app/docs/adding-typescript).
@@ -292,7 +290,7 @@ npm run build
 
 __Bundled__ - 该库包含了自己的声明文件。这样很好，因为我们只需要安装这个库，就可以立即使用它了。要知道一个库是否包含类型，看库中是否有 `index.d.ts` 文件。有些库会在 `package.json` 文件的 `typings` 或 `types` 属性中指定类型文件。
 
-__[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)__ - DefinitelyTyped 是一个庞大的声明仓库，为没有声明文件的 JavaScript 库提供类型定义。这些类型定义通过众包的方式完成，并由微信和开源贡献者一起管理。例如，React 库并没有自己的声明文件。但我们可以从 DefinitelyTyped 获取它的声明文件。只要执行以下命令。
+__[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)__ - DefinitelyTyped 是一个庞大的声明仓库，为没有声明文件的 JavaScript 库提供类型定义。这些类型定义通过众包的方式完成，并由微软和开源贡献者一起管理。例如，React 库并没有自己的声明文件。但我们可以从 DefinitelyTyped 获取它的声明文件。只要执行以下命令。
 
 ```bash
 # yarn
@@ -314,15 +312,15 @@ declare module 'querystring' {
 
 你现在已做好编码准备了！我们建议你查看以下资源来了解有关 TypeScript 的更多知识：
 
-* [TypeScript 文档：基本类型](https://www.typescriptlang.org/docs/handbook/basic-types.html)
+* [TypeScript 文档：常用类型](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html)
 * [TypeScript 文档：JavaScript 迁移](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
 * [TypeScript 文档：React 与 Webpack](https://www.typescriptlang.org/docs/handbook/react-&-webpack.html)
 
-## Reason {#reason}
+## ReScript {#rescript}
 
-[Reason](https://reasonml.github.io/) 不是一种新的语言；它是一种新的语法和工具链，底层使用的是经过实战验证的 [OCaml](https://ocaml.org/) 语言。Reason 在 OCaml 之上提供了 JavaScript 程序员的熟悉语法，而且集成了现有的 NPM/Yarn 工作流。
+[ReScript](https://rescript-lang.org/) 是一门类型语言，可编译为 JavaScript。它的部分核心功能是为了保证 100% 的类型覆盖，完美支持 JSX 和[独有的 React 绑定](https://rescript-lang.org/docs/react/latest/introduction)，以允许开发者无缝集成到现有的 JS/TS 的 React 代码库中。
 
-Reason 是由 Facebook 开发，并且运用在一些现有产品中比如 Messager。虽然它有一定的实验性质，但它拥有由 Facebook 维护的[专门的 React 绑定](https://reasonml.github.io/reason-react/)和一个[活跃的社区](https://reasonml.github.io/docs/en/community.html)。
+你可以在[此处](https://rescript-lang.org/docs/manual/latest/installation#integrate-into-an-existing-js-project)。了解更多关于如何将 ReScript 集成到现有的 JS / React 代码库的信息。
 
 ## Kotlin {#kotlin}
 

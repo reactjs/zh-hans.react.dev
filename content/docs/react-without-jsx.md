@@ -40,7 +40,7 @@ ReactDOM.render(
 
 如果你想了解更多 JSX 转换为 JavaScript 的示例，可以尝试使用 [在线 Babel 编译器](babel://jsx-simple-example)。
 
-组件可以是字符串，也可以是 `React.Component` 的子类。当组件为无状态组件时，它也可以是一个普通的函数。
+组件可以是字符串，也可以是 `React.Component` 的子类，它还能是一个普通的函数。
 
 如果你不想每次都键入 `React.createElement`，通常的做法是创建快捷方式：
 

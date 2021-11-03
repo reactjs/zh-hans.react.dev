@@ -6,7 +6,7 @@ permalink: docs/context.html
 
 Context 提供了一个无需为每层组件手动添加 props，就能在组件树间进行数据传递的方法。
 
-在一个典型的 React 应用中，数据是通过 props 属性自上而下（由父及子）进行传递的，但这种做法对于某些类型的属性而言是极其繁琐的（例如：地区偏好，UI 主题），这些属性是应用程序中许多组件都需要的。Context 提供了一种在组件之间共享此类值的方式，而不必显式地通过组件树的逐层传递 props。
+在一个典型的 React 应用中，数据是通过 props 属性自上而下（由父及子）进行传递的，但此种用法对于某些类型的属性而言是极其繁琐的（例如：地区偏好，UI 主题），这些属性是应用程序中许多组件都需要的。Context 提供了一种在组件之间共享此类值的方式，而不必显式地通过组件树的逐层传递 props。
 
 - [何时使用 Context](#when-to-use-context)
 - [使用 Context 之前的考虑](#before-you-use-context)
@@ -15,6 +15,7 @@ Context 提供了一个无需为每层组件手动添加 props，就能在组件
   - [Context.Provider](#contextprovider)
   - [Class.contextType](#classcontexttype)
   - [Context.Consumer](#contextconsumer)
+  - [Context.displayName](#contextdisplayname)
 - [示例](#examples)
   - [动态 Context](#dynamic-context)
   - [在嵌套组件中更新 Context](#updating-context-from-a-nested-component)
@@ -38,7 +39,7 @@ Context 主要应用场景在于*很多*不同层级的组件需要访问同样�
 
 **如果你只是想避免层层传递一些属性，[组件组合（component composition）](/docs/composition-vs-inheritance.html)有时候是一个比 context 更好的解决方案。**
 
-比如，考虑这样一个 `Page` 组件，它层层向下传递 `user` 和 `avatarSize` 属性，从而深度嵌套的 `Link` 和 `Avatar` 组件可以读取到这些属性：
+比如，考虑这样一个 `Page` 组件，它层层向下传递 `user` 和 `avatarSize` 属性，从而让深度嵌套的 `Link` 和 `Avatar` 组件可以读取到这些属性：
 
 ```js
 <Page user={user} avatarSize={avatarSize} />
@@ -117,7 +118,7 @@ const MyContext = React.createContext(defaultValue);
 
 创建一个 Context 对象。当 React 渲染一个订阅了这个 Context 对象的组件，这个组件会从组件树中离自身最近的那个匹配的 `Provider` 中读取到当前的 context 值。
 
-只有当组件所处的树中没有匹配到 Provider 时，其 `defaultValue` 参数**才**会生效。这有助于在不使用 Provider 包装组件的情况下对组件进行测试。注意：将 `undefined` 传递给 Provider 时，消费组件的 `defaultValue` 不会生效。
+**只有**当组件所处的树中没有匹配到 Provider 时，其 `defaultValue` 参数才会生效。此默认值有助于在不使用 Provider 包装组件的情况下对组件进行测试。注意：将 `undefined` 传递给 Provider 的 value 时，消费组件的 `defaultValue` 不会生效。
 
 ### `Context.Provider` {#contextprovider}
 
@@ -129,12 +130,12 @@ const MyContext = React.createContext(defaultValue);
 
 Provider 接收一个 `value` 属性，传递给消费组件。一个 Provider 可以和多个消费组件有对应关系。多个 Provider 也可以嵌套使用，里层的会覆盖外层的数据。
 
-当 Provider 的 `value` 值发生变化时，它内部的所有消费组件都会重新渲染。Provider 及其内部 consumer 组件都不受制于 `shouldComponentUpdate` 函数，因此当 consumer 组件在其祖先组件退出更新的情况下也能更新。
+当 Provider 的 `value` 值发生变化时，它内部的所有消费组件都会重新渲染。从 Provider 到其内部 consumer 组件（包括 [.contextType](#classcontexttype) 和 [useContext](/docs/hooks-reference.html#usecontext)）的传播不受制于 `shouldComponentUpdate` 函数，因此当 consumer 组件在其祖先组件跳过更新的情况下也能更新。
 
 通过新旧值检测来确定变化，使用了与 [`Object.is`](//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) 相同的算法。
 
 > 注意
-> 
+>
 > 当传递对象给 `value` 时，检测变化的方式会导致一些问题：详见[注意事项](#caveats)。
 
 ### `Class.contextType` {#classcontexttype}
@@ -161,7 +162,7 @@ class MyClass extends React.Component {
 MyClass.contextType = MyContext;
 ```
 
-挂载在 class 上的 `contextType` 属性会被重赋值为一个由 [`React.createContext()`](#reactcreatecontext) 创建的 Context 对象。这能让你使用 `this.context` 来消费最近 Context 上的那个值。你可以在任何生命周期中访问到它，包括 render 函数中。
+挂载在 class 上的 `contextType` 属性可以赋值为由 [`React.createContext()`](#reactcreatecontext) 创建的 Context 对象。此属性可以让你使用 `this.context` 来获取最近 Context 上的值。你可以在任何生命周期中访问到它，包括 render 函数中。
 
 > 注意：
 >
@@ -188,19 +189,33 @@ class MyClass extends React.Component {
 </MyContext.Consumer>
 ```
 
-这里，React 组件也可以订阅到 context 变更。这能让你在[函数式组件](/docs/components-and-props.html#function-and-class-components)中完成订阅 context。
+一个 React 组件可以订阅 context 的变更，此组件可以让你在[函数式组件](/docs/components-and-props.html#function-and-class-components)中可以订阅 context。
 
-这需要[函数作为子元素（function as a child）](/docs/render-props.html#using-props-other-than-render)这种做法。这个函数接收当前的 context 值，返回一个 React 节点。传递给函数的 `value` 值等同于往上组件树离这个 context 最近的 Provider 提供的 `value` 值。如果没有对应的 Provider，`value` 参数等同于传递给 `createContext()` 的 `defaultValue`。
+这种方法需要一个[函数作为子元素（function as a child）](/docs/render-props.html#using-props-other-than-render)。这个函数接收当前的 context 值，并返回一个 React 节点。传递给函数的 `value` 值等价于组件树上方离这个 context 最近的 Provider 提供的 `value` 值。如果没有对应的 Provider，`value` 参数等同于传递给 `createContext()` 的 `defaultValue`。
 
 > 注意
-> 
-> 想要了解更多关于“函数作为子元素（function as a child）”模式，详见 [render props](/docs/render-props.html)。
+>
+> 想要了解更多关于 “函数作为子元素（function as a child）” 模式，详见 [render props](/docs/render-props.html)。
+
+### `Context.displayName` {#contextdisplayname}
+
+context 对象接受一个名为 `displayName` 的 property，类型为字符串。React DevTools 使用该字符串来确定 context 要显示的内容。
+
+示例，下述组件在 DevTools 中将显示为 MyDisplayName：
+
+```js{2}
+const MyContext = React.createContext(/* some value */);
+MyContext.displayName = 'MyDisplayName';
+
+<MyContext.Provider> // "MyDisplayName.Provider" 在 DevTools 中
+<MyContext.Consumer> // "MyDisplayName.Consumer" 在 DevTools 中
+```
 
 ## 示例 {#examples}
 
 ### 动态 Context {#dynamic-context}
 
-对于上面的 theme 例子，使用动态值（dynamic values）后更复杂的用法：
+一个更加复杂的方案是对上面的 theme 例子使用动态值（dynamic values）：
 
 **theme-context.js**
 `embed:context/theme-detailed-theme-context.js`
@@ -234,10 +249,9 @@ class MyClass extends React.Component {
 
 ## 注意事项 {#caveats}
 
-因为 context 会使用参考标识（reference identity）来决定何时进行渲染，这里可能会有一些陷阱，当 provider 的父组件进行重渲染时，可能会在 consumers 组件中触发意外的渲染。举个例子，当每一次 Provider 重渲染时，以下的代码会重渲染所有下面的 consumers 组件，因为 `value` 属性总是被赋值为新的对象：
+因为 context 会根据引用标识来决定何时进行渲染（本质上是 `value` 属性值的浅比较），所以这里可能存在一些陷阱，当 provider 的父组件进行重渲染时，可能会在 consumers 组件中触发意外的渲染。举个例子，当每一次 Provider 重渲染时，以下的代码会重渲染所有下面的 consumers 组件，因为 `value` 属性总是被赋值为新的对象：
 
 `embed:context/reference-caveats-problem.js`
-
 
 为了防止这种情况，将 value 状态提升到父节点的 state 里：
 
@@ -248,4 +262,3 @@ class MyClass extends React.Component {
 > 注意
 >
 > 先前 React 使用实验性的 context API 运行，旧的 API 将会在所有 16.x 版本中得到支持，但用到它的应用应该迁移到新版本。过时的 API 将在未来的 React 版本中被移除。阅读[过时的 context 文档](/docs/legacy-context.html)了解更多。
-

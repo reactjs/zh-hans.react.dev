@@ -6,7 +6,7 @@ prev: hello-world.html
 next: rendering-elements.html
 ---
 
-考虑如下变量声明：
+设想如下变量声明：
 
 ```js
 const element = <h1>Hello, world!</h1>;
@@ -14,7 +14,7 @@ const element = <h1>Hello, world!</h1>;
 
 这个有趣的标签语法既不是字符串也不是 HTML。
 
-它被称为 JSX，是一个 JavaScript 的语法扩展。我们建议在 React 中配合使用 JSX，JSX 可以很好地描述 UI 应该呈现出它应有交互的本质形式。JSX 可能会使人联想到模版语言，但它具有 JavaScript 的全部功能。
+它被称为 JSX，是一个 JavaScript 的语法扩展。我们建议在 React 中配合使用 JSX，JSX 可以很好地描述 UI 应该呈现出它应有交互的本质形式。JSX 可能会使人联想到模板语言，但它具有 JavaScript 的全部功能。
 
 JSX 可以生成 React “元素”。我们将在[下一章节](/docs/rendering-elements.html)中探讨如何将这些元素渲染为 DOM。下面我们看下学习 JSX 所需的基础知识。
 
@@ -87,7 +87,7 @@ function getGreeting(user) {
 }
 ```
 
-### JSX 特定属性 {#specifying-attributes-with-jsx}
+### JSX 中指定属性 {#specifying-attributes-with-jsx}
 
 你可以通过使用引号，来将属性值指定为字符串字面量：
 
@@ -177,8 +177,8 @@ const element = {
 
 这些对象被称为 “React 元素”。它们描述了你希望在屏幕上看到的内容。React 通过读取这些对象，然后使用它们来构建 DOM 以及保持随时更新。
 
-我们将在下一章节中探讨如何将 React 元素渲染为 DOM。
+我们将在[下一章节](/docs/rendering-elements.html)中探讨如何将 React 元素渲染为 DOM。
 
 >**提示：**
 >
-> 我们推荐在你使用的编辑器中，使用 [“Babel” 提供的语言定义](https://babeljs.io/docs/editors)，来正确地高亮显示 ES6 和 JSX 代码。本网站使用与其兼容的 [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) 配色方案。
+> 我们推荐在你使用的编辑器中，使用 [“Babel” 提供的语言定义](https://babeljs.io/docs/en/next/editors)，来正确地高亮显示 ES6 和 JSX 代码。

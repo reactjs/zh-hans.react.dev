@@ -10,7 +10,7 @@ next: create-a-new-react-app.html
 
 根据需要选择性地使用 React。
 
-React 从一开始就被设计为逐步采用，并且**你可以根据需要选择性地使用 React**。可能你只想在现有页面中“局部地添加交互性”。使用 React 组件是一种不错的方式。
+React 在设计之初就可以被渐进式适配，并且**你可以根据需要选择性地使用 React**。可能你只想在现有页面中“局部地添加交互性”。使用 React 组件是一种不错的方式。
 
 大多数网站不是、也不需要是单页应用程序。通过**仅仅几行代码并且无需使用构建工具**，试试在你的网站的一小部分中使用 React。然后，你可以逐步扩展它的存在，或只将其涵盖在少数动态部件中。
 
@@ -25,7 +25,7 @@ React 从一开始就被设计为逐步采用，并且**你可以根据需要选
 
 不会涉及复杂的工具或安装需求 —— **完成这一节的内容，你只需要连接到网络，以及一分钟的时间。**
 
-可选：[下载完整示例（2KB zipped）](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
+可选：[下载完整示例（2KB 压缩包）](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
 
 ### 步骤 1： 添加一个 DOM 容器到 HTML {#step-1-add-a-dom-container-to-the-html}
 
@@ -54,8 +54,8 @@ React 从一开始就被设计为逐步采用，并且**你可以根据需要选
 
   <!-- 加载 React。-->
   <!-- 注意: 部署时，将 "development.js" 替换为 "production.min.js"。-->
-  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
 
   <!-- 加载我们的 React 组件。-->
   <script src="like_button.js"></script>
@@ -69,16 +69,16 @@ React 从一开始就被设计为逐步采用，并且**你可以根据需要选
 
 在 HTML 页面文件的同级目录下创建一个名为 `like_button.js` 的文件。
 
-查看**[这段入门代码](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**并把它粘贴到你创建的文件中。
+查看**[这段模板代码](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**并把它粘贴到你创建的文件中。
 
 > 提示
 >
 > 这段代码定义了一个名为 `LikeButton` 的 React 组件。如果你还不明白这段代码的意思，不用担心 —— 我们将在后续的[入门教程](/tutorial/tutorial.html)和[核心概念](/docs/hello-world.html)中介绍 React 的构建块。目前，我们先只做到显示！
 
-在 `like_button.js` 的底部，在**[入门代码](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**之后，加入以下两行代码。
+在 `like_button.js` 的底部，在**[模板代码](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**之后，加入以下两行代码。
 
 ```js{3,4}
-// ... 你粘贴的入门代码 ...
+// ... 此前粘贴的代码 ...
 
 const domContainer = document.querySelector('#like_button_container');
 ReactDOM.render(e(LikeButton), domContainer);
@@ -94,7 +94,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 **[查看完整的示例源码](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605)**
 
-**[下载完整示例（2KB zipped）](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
+**[下载完整示例（2KB 压缩包）](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
 
 ### 提示：重用一个组件 {#tip-reuse-a-component}
 
@@ -102,7 +102,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 [查看完整的示例源码](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda)
 
-[下载完整示例（2KB zipped）](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
+[下载完整示例（2KB 压缩包）](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
 
 > 注意
 >
@@ -115,8 +115,8 @@ ReactDOM.render(e(LikeButton), domContainer);
 如果你已经压缩了应用代码，如果你确保已部署的 HTML 加载了以 `production.min.js` 结尾的 React 版本，那么**你的网站是生产就绪（production-ready）的**：
 
 ```js
-<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 如果你没有一个代码压缩的步骤，[这有一个配置它的方式](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3)。
@@ -136,7 +136,7 @@ return e(
 );
 ```
 
-但是，React 还提供了一种用 [JSX](/docs/introducing-jsx.html) 来代替实现的选择：
+然而，React 还提供了一种使用 [JSX](/docs/introducing-jsx.html) 编写界面的方式：
 
 ```js
 // 显示一个 "Like" <button>
@@ -149,7 +149,7 @@ return (
 
 这两段代码是等价的。虽然 **JSX [完全是可选的](/docs/react-without-jsx.html)**，但是多数人觉得这样编写 UI 代码更方便 —— 无论是使用 React 还是其它库。
 
-你可以用[这个在线转换器](https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cstage-3&prettier=true&targets=Node-6.12&version=6.26.0&envVersion=)来试试 JSX。
+你可以通过[在线编译器](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.15.7)试用 JSX。
 
 ### 快速尝试 JSX {#quickly-try-jsx}
 
@@ -159,7 +159,7 @@ return (
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 ```
 
-现在，你可以在任何 `<script>` 标签内使用 JSX，方法是在为其添加 `type="text/babel"` 属性。这是[一个使用了 JSX 的 HTML 文件的例子](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html)，你可以下载并尝试使用。
+现在，你可以在任何 `<script>` 标签内使用 JSX，方法是在为其添加 `type="text/babel"` 属性。这是[一个使用了 JSX 的 HTML 文件的例子](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html)，你可以下载并尝试使用。
 
 这种方式适合于学习和创建简单的示例。然而，它会使你的网站变慢，并且**不适用于生产环境**。当你准备好更进一步时，删除你添加的这个新的 `<script>` 标签以及`type="text/babel"` 属性。取而代之的，在下一小节中，你将设置一个 JSX 预处理器来自动转换所有 `<script>` 标签的内容。
 
@@ -184,7 +184,7 @@ return (
 创建一个名为 `src` 的文件夹并执行这个终端命令：
 
 ```
-npx babel --watch src --out-dir . --presets react-app/prod 
+npx babel --watch src --out-dir . --presets react-app/prod
 ```
 
 > 注意：
@@ -195,7 +195,7 @@ npx babel --watch src --out-dir . --presets react-app/prod
 
 不要等待它运行结束 —— 这个命令启动了一个对 JSX 的自动监听器。
 
-如果此时你用这段 **[JSX 入门代码](https://cdn.rawgit.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**创建一个 `src/like_button.js` 文件，监听器会创建一个预处理过的 `like_button.js` 文件，它包含了适用于浏览器的普通 JavaScript 代码。当你编辑带有 JSX 的源文件时，转换过程将自动重新执行。
+如果此时你用这段 **[JSX 入门代码](https://gist.github.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**创建一个 `src/like_button.js` 文件，监听器会创建一个预处理过的 `like_button.js` 文件，它包含了适用于浏览器的普通 JavaScript 代码。当你编辑带有 JSX 的源文件时，转换过程将自动重新执行。
 
 这样，在旧浏览器上也能够使用现代 JavaScript 的语法特性，比如 class。我们刚才使用的工具叫 Babel，你可以从[它的文档](https://babeljs.io/docs/en/babel-cli/)中了解更多。
 

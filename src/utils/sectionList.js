@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
+ * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * @emails react-core
  * @flow
@@ -12,19 +12,15 @@ import navDocs from '../../content/docs/nav.yml';
 // $FlowExpectedError
 import navTutorial from '../../content/tutorial/nav.yml';
 
-const sectionListDocs = navDocs.map(
-  (item: Object): Object => ({
-    ...item,
-    directory: 'docs',
-  }),
-);
+const sectionListDocs = navDocs.map((item: Object): Object => ({
+  ...item,
+  directory: 'docs',
+}));
 
-const sectionListCommunity = navCommunity.map(
-  (item: Object): Object => ({
-    ...item,
-    directory: 'community',
-  }),
-);
+const sectionListCommunity = navCommunity.map((item: Object): Object => ({
+  ...item,
+  directory: 'community',
+}));
 
 export {
   sectionListCommunity,

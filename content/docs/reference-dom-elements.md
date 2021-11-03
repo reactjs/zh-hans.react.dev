@@ -56,7 +56,8 @@ function MyComponent() {
 
 ### selected {#selected}
 
-`<option>` 组件支持 `selected` 属性。你可以使用该属性设置组件是否被选择。这对构建受控组件很有帮助。
+如果要将 `<option>` 标记为已选中状态，请在 `select` 的 `value` 中引用该选项的值。
+请查阅 ["select 标签"](/docs/forms.html#the-select-tag) 了解更多详情。
 
 ### style {#style}
 
@@ -110,7 +111,7 @@ React 会自动添加 ”px” 后缀到内联样式为数字的属性后。如�
 
 ### suppressContentEditableWarning {#suppresscontenteditablewarning}
 
-通常，当拥有子节点的元素被标记为 `contentEditable` 时，React 会发出一个警告，因为这不会生效。此属性会触发警告信息。尽量不要使用该属性，除非你要构建一个类似 [Draft.js](https://facebook.github.io/draft-js/) 的手动管理 `contentEditable` 属性的库。
+通常，当拥有子节点的元素被标记为 `contentEditable` 时，React 会发出一个警告，因为这不会生效。该属性将禁止此警告。尽量不要使用该属性，除非你要构建一个类似 [Draft.js](https://facebook.github.io/draft-js/) 的手动管理 `contentEditable` 属性的库。
 
 ### suppressHydrationWarning {#suppresshydrationwarning}
 
@@ -120,7 +121,7 @@ React 会自动添加 ”px” 后缀到内联样式为数字的属性后。如�
 
 ### value {#value}
 
-`<input>` 和 `<textarea>` 组件支持 `value` 属性。你可以使用它为组件设置 value。这对于构建受控组件是非常有帮助。`defaultValue` 属性对应的是非受控组件的属性，用于设置组件第一次挂载时的 value。
+`<input>`、`<select>` 和 `<textarea>` 组件支持 `value` 属性。你可以使用它为组件设置 value。这对于构建受控组件是非常有帮助。`defaultValue` 属性对应的是非受控组件的属性，用于设置组件第一次挂载时的 value。
 
 ## All Supported HTML Attributes {#all-supported-html-attributes}
 
@@ -129,7 +130,7 @@ React 会自动添加 ”px” 后缀到内联样式为数字的属性后。如�
 React 为 DOM 提供了一套以 JavaScript 为中心的 API。由于 React 组件经常采用自定义或和 DOM 相关的 props 的关系，React 采用了`小驼峰命名`的方式，正如 DOM APIs 那样：
 
 ```js
-<div tabIndex="-1" />      // Just like node.tabIndex DOM API
+<div tabIndex={-1} />      // Just like node.tabIndex DOM API
 <div className="Button" /> // Just like node.className DOM API
 <input readOnly={true} />  // Just like node.readOnly DOM API
 ```

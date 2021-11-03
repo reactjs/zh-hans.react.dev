@@ -122,7 +122,7 @@ ReactDOM.render(
 
 ### 与运算符 && {#inline-if-with-logical--operator}
 
-通过花括号包裹代码，你可以[在 JSX 中嵌入任何表达式](/docs/introducing-jsx.html#embedding-expressions-in-jsx)。这也包括 JavaScript 中的逻辑与 (&&) 运算符。它可以很方便地进行元素的条件渲染。
+通过花括号包裹代码，你可以[在 JSX 中嵌入表达式](/docs/introducing-jsx.html#embedding-expressions-in-jsx)。这也包括 JavaScript 中的逻辑与 (&&) 运算符。它可以很方便地进行元素的条件渲染：
 
 ```js{6-10}
 function Mailbox(props) {
@@ -152,6 +152,19 @@ ReactDOM.render(
 
 因此，如果条件是 `true`，`&&` 右侧的元素就会被渲染，如果是 `false`，React 会忽略并跳过它。
 
+请注意，返回 false 的表达式会使 `&&` 后面的元素被跳过，但会返回 false 表达式。在下面示例中，render 方法的返回值是 `<div>0</div>`。
+
+```javascript{2,5}
+render() {
+  const count = 0;
+  return (
+    <div>
+      { count && <h1>Messages: {count}</h1>}
+    </div>
+  );
+}
+```
+
 ### 三目运算符 {#inline-if-else-with-conditional-operator}
 
 另一种内联条件渲染的方法是使用 JavaScript 中的三目运算符 [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)。
@@ -176,11 +189,10 @@ render() {
   const isLoggedIn = this.state.isLoggedIn;
   return (
     <div>
-      {isLoggedIn ? (
-        <LogoutButton onClick={this.handleLogoutClick} />
-      ) : (
-        <LoginButton onClick={this.handleLoginClick} />
-      )}
+      {isLoggedIn
+        ? <LogoutButton onClick={this.handleLogoutClick} />
+        : <LoginButton onClick={this.handleLoginClick} />
+      }
     </div>
   );
 }

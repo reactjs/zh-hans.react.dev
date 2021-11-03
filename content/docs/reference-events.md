@@ -12,7 +12,7 @@ category: Reference
 
 `SyntheticEvent` 实例将被传递给你的事件处理函数，它是浏览器的原生事件的跨浏览器包装器。除兼容所有浏览器外，它还拥有和浏览器原生事件相同的接口，包括 `stopPropagation()` 和 `preventDefault()`。
 
-如果因为某些原因，当你需要使用浏览器的底层事件时，只需要使用 `nativeEvent` 属性来获取即可。每个 `SyntheticEvent` 对象都包含以下属性：
+如果因为某些原因，当你需要使用浏览器的底层事件时，只需要使用 `nativeEvent` 属性来获取即可。合成事件与浏览器的原生事件不同，也不会直接映射到原生事件。例如，在 `onMouseLeave` 事件中 `event.nativeEvent` 将指向 `mouseout` 事件。每个 `SyntheticEvent` 对象都包含以下属性：
 
 ```javascript
 boolean bubbles
@@ -26,6 +26,7 @@ void preventDefault()
 boolean isDefaultPrevented()
 void stopPropagation()
 boolean isPropagationStopped()
+void persist()
 DOMEventTarget target
 number timeStamp
 string type
@@ -33,34 +34,11 @@ string type
 
 > 注意：
 >
-> 截止 v0.14，当事件处理函数返回 `false` 时，不再阻止事件冒泡。你可以选择使用 `e.stopPropagation()` 或者 `e.preventDefault()` 替代。
-
-### 事件池 {#event-pooling}
-
-`SyntheticEvent` 是合并而来。这意味着 `SyntheticEvent` 对象可能会被重用，而且在事件回调函数被调用后，所有的属性都会无效。出于性能考虑，你不能通过异步访问事件。
-
-```javascript
-function onClick(event) {
-  console.log(event); // => nullified object.
-  console.log(event.type); // => "click"
-  const eventType = event.type; // => "click"
-
-  setTimeout(function() {
-    console.log(event.type); // => null
-    console.log(eventType); // => "click"
-  }, 0);
-
-  // 不起作用，this.state.clickEvent 的值将会只包含 null
-  this.setState({clickEvent: event});
-
-  // 你仍然可以导出事件属性
-  this.setState({eventType: event.type});
-}
-```
+> 从 v17 开始，`e.persist()` 将不再生效，因为 `SyntheticEvent` 不再放入[事件池](/docs/legacy-event-pooling.html)中。
 
 > 注意：
 >
-> 如果你想异步访问事件属性，你需在事件上调用 `event.persist()`，此方法会从池中移除合成事件，允许用户代码保留对事件的引用。
+> 从 v0.14 开始，事件处理器返回 `false` 时，不再阻止事件传递。你可以酌情手动调用 `e.stopPropagation()` 或 `e.preventDefault()` 作为替代方案。
 
 ## 支持的事件 {#supported-events}
 
@@ -73,6 +51,7 @@ React 通过将事件 normalize 以让他们在不同浏览器中拥有一致的
 - [Keyboard Events](#keyboard-events)
 - [Focus Events](#focus-events)
 - [Form Events](#form-events)
+- [Generic Events](#generic-events)
 - [Mouse Events](#mouse-events)
 - [Pointer Events](#pointer-events)
 - [Selection Events](#selection-events)
@@ -163,8 +142,81 @@ onFocus onBlur
 
 属性：
 
-```javascript
+```js
 DOMEventTarget relatedTarget
+```
+
+#### onFocus {#onfocus}
+
+`onFocus` 事件在元素（或其内部某些元素）聚焦时被调用。例如，当用户点击文本输入框时，就会调用该事件。
+
+```javascript
+function Example() {
+  return (
+    <input
+      onFocus={(e) => {
+        console.log('Focused on input');
+      }}
+      placeholder="onFocus is triggered when you click this input."
+    />
+  )
+}
+```
+
+#### onBlur {#onblur}
+
+`onBlur` 事件处理程序在元素（或元素内某些元素）失去焦点时被调用。例如，当用户在已聚焦的文本输入框外点击时，就会被调用。
+
+```javascript
+function Example() {
+  return (
+    <input
+      onBlur={(e) => {
+        console.log('Triggered because this input lost focus');
+      }}
+      placeholder="onBlur is triggered when you click this input and then you click outside of it."
+    />
+  )
+}
+```
+
+#### 监听焦点的进入与离开 {#detecting-focus-entering-and-leaving}
+
+你可以使用 `currentTarget` 和 `relatedTarget` 来区分聚焦和失去焦点是否来自父元素_外部_。这里有个 DEMO，你可以复制并在本地运行，它展示了如何监听一个子元素的聚焦，元素本身的聚焦，以及整个子树进入焦点或离开焦点。
+
+```javascript
+function Example() {
+  return (
+    <div
+      tabIndex={1}
+      onFocus={(e) => {
+        if (e.currentTarget === e.target) {
+          console.log('focused self');
+        } else {
+          console.log('focused child', e.target);
+        }
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          // Not triggered when swapping focus between children
+          console.log('focus entered self');
+        }
+      }}
+      onBlur={(e) => {
+        if (e.currentTarget === e.target) {
+          console.log('unfocused self');
+        } else {
+          console.log('unfocused child', e.target);
+        }
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          // Not triggered when swapping focus between children
+          console.log('focus left self');
+        }
+      }}
+    >
+      <input id="1" />
+      <input id="2" />
+    </div>
+  );
+}
 ```
 
 * * *
@@ -174,16 +226,26 @@ DOMEventTarget relatedTarget
 事件名：
 
 ```
-onChange onInput onInvalid onSubmit
+onChange onInput onInvalid onReset onSubmit 
 ```
 
 想了解 onChange 事件的更多信息，查看 [Forms](/docs/forms.html) 。
 
 * * *
 
-### Mouse Events {#mouse-events}
+### 通用事件 {#generic-events}
 
-鼠标事件：
+事件名：
+
+```
+onError onLoad
+```
+
+* * *
+
+### 鼠标事件 {#mouse-events}
+
+事件名：
 
 ```
 onClick onContextMenu onDoubleClick onDrag onDragEnd onDragEnter onDragExit
@@ -246,7 +308,7 @@ boolean isPrimary
 
 并非每个浏览器都支持指针事件（在写这篇文章时，已支持的浏览器有：Chrome，Firefox，Edge 和 Internet Explorer）。React 故意不通过 polyfill 的方式适配其他浏览器，主要是符合标准的 polyfill 会显著增加 react-dom 的 bundle 大小。
 
-如果你的应用要求指针事件，我们推荐添加第三方的指针事件 polyfil 。
+如果你的应用要求指针事件，我们推荐添加第三方的指针事件 polyfill。
 
 * * *
 
@@ -290,6 +352,10 @@ DOMTouchList touches
 ```
 onScroll
 ```
+
+>注意
+>
+>从 React 17 开始，`onScroll` 事件在 React 中**不再冒泡**。这与浏览器的行为一致，并且避免了当一个嵌套且可滚动的元素在其父元素触发事件时造成混乱。
 
 属性：
 

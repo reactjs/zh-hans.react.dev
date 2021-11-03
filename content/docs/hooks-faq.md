@@ -64,13 +64,14 @@ prev: hooks-reference.html
 从 16.8.0 开始，React 在以下模块中包含了 React Hook 的稳定实现：
 
 * React DOM
+* React Native
 * React DOM Server
 * React Test Renderer
 * React Shallow Renderer
 
 请注意，**要启用 Hook，所有 React 相关的 package 都必须升级到 16.8.0 或更高版本**。如果你忘记更新诸如 React DOM 之类的 package，Hook 将无法运行。
 
-React Native 会在它的下一个稳定发行版中全面支持 Hook。
+[React Native 0.59](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059) 及以上版本支持 Hook。
 
 ### 我需要重写所有的 class 组件吗？ {#do-i-need-to-rewrite-all-my-class-components}
 
@@ -90,11 +91,11 @@ Hook 确实有它们自己的学习曲线。如果这份文档中遗失了一些
 
 当你准备好了，我们鼓励你在写新组件的时候开始尝试 Hook。请确保你团队中的每个人都愿意使用它们并且熟知这份文档中的内容。我们不推荐用 Hook 重写你已有的 class，除非你本就打算重写它们。（例如：为了修复bug）。
 
-你不能在一个 class 组件*中*使用 Hook，但毫无疑问你可以在组件树里混合使用 class 组件和使用了 Hook 的函数组件。不论一个组件是 class 还是一个使用了 Hook 的函数，都只是这个组件的实现细节而已。长远来看，我们期望 Hook 能够成为人们编写 React 组件的主要方式。
+你不能在 class 组件*内部*使用 Hook，但毫无疑问你可以在组件树里混合使用 class 组件和使用了 Hook 的函数组件。不论一个组件是 class 还是一个使用了 Hook 的函数，都只是这个组件的实现细节而已。长远来看，我们期望 Hook 能够成为人们编写 React 组件的主要方式。
 
 ### Hook 能否覆盖 class 的所有使用场景？ {#do-hooks-cover-all-use-cases-for-classes}
 
-我们给 Hook 设定的目标是尽早覆盖 class 的所有使用场景。目前暂时还没有对应不常用的 `getSnapshotBeforeUpdate` 和 `componentDidCatch` 生命周期的 Hook 等价写法，但我们计划尽早把它们加进来。
+我们给 Hook 设定的目标是尽早覆盖 class 的所有使用场景。目前暂时还没有对应不常用的 `getSnapshotBeforeUpdate`，`getDerivedStateFromError` 和 `componentDidCatch` 生命周期的 Hook 等价写法，但我们计划尽早把它们加进来。
 
 目前 Hook 还处于早期阶段，一些第三方的库可能还暂时无法兼容 Hook。
 
@@ -106,7 +107,11 @@ Hook 确实有它们自己的学习曲线。如果这份文档中遗失了一些
 
 你可以继续使用之前使用的 API；它们仍会继续有效。
 
-在未来，这些库的新版本或许也会导出诸如 `useRedux()` 和 `useRouter()` 的自定义 Hook 以允许你不需要包裹组件也能使用同样的特性。
+React Redux 从 v7.1.0 开始[支持 Hook API](https://react-redux.js.org/api/hooks) 并暴露了 `useDispatch` 和 `useSelector` 等 hook。
+
+React Router 从 v5.1 开始[支持 hook](https://reacttraining.com/react-router/web/api/Hooks)。
+
+其它第三库也将即将支持 hook。
 
 ### Hook 能和静态类型一起用吗？ {#do-hooks-work-with-static-typing}
 
@@ -117,6 +122,10 @@ Hook 在设计阶段就考虑了静态类型的问题。因为它们是函数，
 ### 如何测试使用了 Hook 的组件？ {#how-to-test-components-that-use-hooks}
 
 在 React 看来，一个使用了 Hook 的组件只不过是一个常规组件。如果你的测试方案不依赖于 React 的内部实现，测试带 Hook 的组件应该和你通常测试组件的方式没什么差别。
+
+>注意
+>
+>[测试技巧](/docs/testing-recipes.html) 中包含了许多可以拷贝粘贴的示例。
 
 举个例子，比如我们有这么个计数器组件：
 
@@ -180,7 +189,9 @@ it('can render and update a counter', () => {
 
 如果你需要测试一个自定义 Hook，你可以在你的测试代码中创建一个组件并在其中使用你的 Hook。然后你就可以测试你刚写的组件了。
 
-为了减少不必要的模板项目，我们推荐使用 [`react-testing-library`](https://git.io/react-testing-library)，该项目旨在鼓励你按照终端用户使用组件的方式来编写测试。
+为了减少不必要的模板项目，我们推荐使用 [React Testing Library](https://testing-library.com/react)，该项目旨在鼓励你按照终端用户使用组件的方式来编写测试。
+
+欲了解更多，请参阅[测试技巧](/docs/testing-recipes.html)一节。
 
 ### [lint 规则](https://www.npmjs.com/package/eslint-plugin-react-hooks)具体强制了哪些内容？ {#what-exactly-do-the-lint-rules-enforce}
 
@@ -207,7 +218,7 @@ it('can render and update a counter', () => {
 
 * `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`：[`useEffect` Hook](/docs/hooks-reference.html#useeffect) 可以表达所有这些(包括 [不那么](#can-i-skip-an-effect-on-updates) [常见](#can-i-run-an-effect-only-on-updates) 的场景)的组合。
 
-* `componentDidCatch` and `getDerivedStateFromError`：目前还没有这些方法的 Hook 等价写法，但很快会加上。
+* `getSnapshotBeforeUpdate`，`componentDidCatch` 以及 `getDerivedStateFromError`：目前还没有这些方法的 Hook 等价写法，但很快会被添加。
 
 ### 我该如何使用 Hook 进行数据获取？ {#how-can-i-do-data-fetching-with-hooks}
 
@@ -278,7 +289,7 @@ function Box() {
 
 这是因为当我们更新一个 state 变量，我们会 *替换* 它的值。这和 class 中的 `this.setState` 不一样，后者会把更新后的字段 *合并* 入对象中。
 
-如果你怀念自动合并，你可以写一个自定义的 `useLegacyState` Hook 来合并对象 state 的更新。然而，相反的**我们推荐把 state 切分成多个 state 变量，每个变量包含的不同值会在同时发生变化。**
+如果你还怀念自动合并，你可以写一个自定义的 `useLegacyState` Hook 来合并对象 state 的更新。然而，**我们推荐把 state 切分成多个 state 变量，每个变量包含的不同值会在同时发生变化。**
 
 举个例子，我们可以把组件的 state 拆分为 `position` 和 `size` 两个对象，并永远以非合并的方式去替换 `position`：
 
@@ -362,7 +373,7 @@ function usePrevious(value) {
 function Counter() {
   const [count, setCount] = useState(0);
 
-  const calculation = count * 100;
+  const calculation = count + 100;
   const prevCalculation = usePrevious(calculation);
   // ...
 ```
@@ -399,7 +410,7 @@ function Example() {
 }
 ```
 
-如果你先点击「Show alert」然后增加计数器的计数，那这个 alert 会 **在你点击『Show alert』按钮时** 显示 `count` 变量。这避免了那些因为假设 props 和 state 没有改变的代码引起问题。
+如果你先点击「Show alert」然后增加计数器的计数，那这个 alert 会显示**在你点击『Show alert』按钮时**的 `count` 变量。这避免了那些因为假设 props 和 state 没有改变的代码引起问题。
 
 如果你刻意地想要从某些异步回调中读取 *最新的* state，你可以用 [一个 ref](/docs/hooks-faq.html#is-there-something-like-instance-variables) 来保存它，修改它，并从中读取。
 
@@ -417,8 +428,8 @@ function Example() {
 
 ```js
 function ScrollView({row}) {
-  let [isScrollingDown, setIsScrollingDown] = useState(false);
-  let [prevRow, setPrevRow] = useState(null);
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
+  const [prevRow, setPrevRow] = useState(null);
 
   if (row !== prevRow) {
     // Row 自上次渲染以来发生过改变。更新 isScrollingDown。
@@ -454,7 +465,7 @@ function ScrollView({row}) {
 
 ### 我该如何测量 DOM 节点？ {#how-can-i-measure-a-dom-node}
 
-要想测量一个 DOM 节点的位置或是尺寸，你可以使用 [callback ref](/docs/refs-and-the-dom.html#callback-refs)。每当 ref 被附加到一个另一个节点，React 就会调用 callback。这里有一个 [小 demo](https://codesandbox.io/s/l7m0v5x4v9):
+获取 DOM 节点的位置或是大小的基本方式是使用 [callback ref](/docs/refs-and-the-dom.html#callback-refs)。每当 ref 被附加到一个另一个节点，React 就会调用 callback。这里有一个 [小 demo](https://codesandbox.io/s/l7m0v5x4v9):
 
 ```js{4-8,12}
 function MeasureExample() {
@@ -478,6 +489,8 @@ function MeasureExample() {
 在这个案例中，我们没有选择使用 `useRef`，因为当 ref 是一个对象时它并不会把当前 ref 的值的 *变化* 通知到我们。使用 callback ref 可以确保 [即便子组件延迟显示被测量的节点](https://codesandbox.io/s/818zzk8m78) (比如为了响应一次点击)，我们依然能够在父组件接收到相关的信息，以便更新测量结果。
 
 注意到我们传递了 `[]` 作为 `useCallback` 的依赖列表。这确保了 ref callback 不会在再次渲染时改变，因此 React 不会在非必要的时候调用它。
+
+在此示例中，当且仅当组件挂载和卸载时，callback ref 才会被调用，因为渲染的 `<h1>` 组件在整个重新渲染期间始终存在。如果你希望在每次组件调整大小时都收到通知，则可能需要使用 [`ResizeObserver`](https://developer.mozilla.org/zh-CN/docs/Web/API/ResizeObserver) 或基于其构建的第三方 Hook。
 
 如果你愿意，你可以 [把这个逻辑抽取出来作为](https://codesandbox.io/s/m5o42082xy) 一个可复用的 Hook:
 
@@ -532,7 +545,7 @@ function Example({ someProp }) {
 }
 ```
 
-要记住 effect 外部的函数使用了哪些 props 和 state 很难。这也是为什么 **通常你会想要在 effect *内部* 去申明它所需要的函数。** 这样就能容易的看出那个 effect 依赖了组件作用域中的哪些值：
+要记住 effect 外部的函数使用了哪些 props 和 state 很难。这也是为什么 **通常你会想要在 effect *内部* 去声明它所需要的函数。** 这样就能容易的看出那个 effect 依赖了组件作用域中的哪些值：
 
 ```js{4,8}
 function Example({ someProp }) {
@@ -566,7 +579,7 @@ useEffect(() => {
 
 让我们来看看这有什么关系。
 
-如果你指定了一个 [依赖列表](/docs/hooks-reference.html#conditionally-firing-an-effect) 作为 `useEffect`、`useMemo`、`useCallback` 或 `useImperativeHandle` 的最后一个参数，它必须包含参与那次 React 数据流的所有值。这就包含了 props、state，以及任何由它们衍生而来的东西。
+如果你指定了一个 [依赖列表](/docs/hooks-reference.html#conditionally-firing-an-effect) 作为 `useEffect`、`useLayoutEffect`、`useMemo`、`useCallback` 或 `useImperativeHandle` 的最后一个参数，它必须包含回调中的所有值，并参与 React 数据流。这就包括 props、state，以及任何由它们衍生而来的东西。
 
 **只有** 当函数（以及它所调用的函数）不引用 props、state 以及由它们衍生而来的值时，你才能放心地把它们从依赖列表中省略。下面这个案例有一个 Bug：
 
@@ -575,7 +588,7 @@ function ProductPage({ productId }) {
   const [product, setProduct] = useState(null);
 
   async function fetchProduct() {
-    const response = await fetch('http://myapi/product' + productId); // 使用了 productId prop
+    const response = await fetch('http://myapi/product/' + productId); // 使用了 productId prop
     const json = await response.json();
     setProduct(json);
   }
@@ -596,7 +609,7 @@ function ProductPage({ productId }) {
   useEffect(() => {
     // 把这个函数移动到 effect 内部后，我们可以清楚地看到它用到的值。
     async function fetchProduct() {
-      const response = await fetch('http://myapi/product' + productId);
+      const response = await fetch('http://myapi/product/' + productId);
       const json = await response.json();
       setProduct(json);
     }
@@ -609,7 +622,7 @@ function ProductPage({ productId }) {
 
 这同时也允许你通过 effect 内部的局部变量来处理无序的响应：
 
-```js{2,6,8}
+```js{2,6,10}
   useEffect(() => {
     let ignore = false;
     async function fetchProduct() {
@@ -617,6 +630,8 @@ function ProductPage({ productId }) {
       const json = await response.json();
       if (!ignore) setProduct(json);
     }
+
+    fetchProduct();
     return () => { ignore = true };
   }, [productId]);
 ```
@@ -627,7 +642,7 @@ function ProductPage({ productId }) {
 >
 >看看 [这个小 demo](https://codesandbox.io/s/jvvkoo8pq3) 和 [这篇文章](https://www.robinwieruch.de/react-hooks-fetch-data/) 来了解更多关于如何用 Hook 进行数据获取。
 
-**如果处于某些原因你 _无法_ 把一个函数移动到 effect 内部，还有一些其他办法：**
+**如果出于某些原因你 _无法_ 把一个函数移动到 effect 内部，还有一些其他办法：**
 
 * **你可以尝试把那个函数移动到你的组件之外**。那样一来，这个函数就肯定不会依赖任何 props 或 state，并且也不用出现在依赖列表中了。
 * 如果你所调用的方法是一个纯计算，并且可以在渲染时调用，你可以 **转而在 effect 之外调用它，** 并让 effect 依赖于它的返回值。
@@ -643,7 +658,7 @@ function ProductPage({ productId }) {
   return <ProductDetails fetchProduct={fetchProduct} />;
 }
 
-function ProductDetails({ fetchProduct })
+function ProductDetails({ fetchProduct }) {
   useEffect(() => {
     fetchProduct();
   }, [fetchProduct]); // ✅ useEffect 的所有依赖都被指定了
@@ -653,9 +668,9 @@ function ProductDetails({ fetchProduct })
 
 注意在上面的案例中，我们 **需要** 让函数出现在依赖列表中。这确保了 `ProductPage` 的 `productId` prop 的变化会自动触发 `ProductDetails` 的重新获取。
 
-### 如果我的 effect 的依赖频繁变化，我该怎么办？
+### 如果我的 effect 的依赖频繁变化，我该怎么办？{#what-can-i-do-if-my-effect-dependencies-change-too-often}
 
-有时候，你的 effect 会读取一些频繁变化的值。你或许会试图在依赖列表中省略那个 state ，但这通常会引起 Bug：
+有时候，你的 effect 可能会使用一些频繁变化的值。你可能会忽略依赖列表中 state，但这通常会引起 Bug：
 
 ```js{6,9}
 function Counter() {
@@ -672,7 +687,9 @@ function Counter() {
 }
 ```
 
-指定 `[count]` 作为依赖列表就能修复这个 Bug，但会导致内部每次改变时都被重置。这并不是我们想要的。要解决这个问题，我们可以使用 [`setState` 的函数式更新形式](/docs/hooks-reference.html#functional-updates)。它允许我们指定 state 该 *如何* 改变而不用引用 *当前* state：
+传入空的依赖数组 `[]`，意味着该 hook 只在组件挂载时运行一次，并非重新渲染时。但如此会有问题，在 `setInterval` 的回调中，`count` 的值不会发生变化。因为当 effect 执行时，我们会创建一个闭包，并将 `count` 的值被保存在该闭包当中，且初值为 `0`。每隔一秒，回调就会执行 `setCount(0 + 1)`，因此，`count` 永远不会超过 1。
+
+指定 `[count]` 作为依赖列表就能修复这个 Bug，但会导致每次改变发生时定时器都被重置。事实上，每个 `setInterval` 在被清除前（类似于 `setTimeout`）都会调用一次。但这并不是我们想要的。要解决这个问题，我们可以使用 [`setState` 的函数式更新形式](/docs/hooks-reference.html#functional-updates)。它允许我们指定 state 该 *如何* 改变而不用引用 *当前* state：
 
 ```js{6,9}
 function Counter() {
@@ -683,7 +700,7 @@ function Counter() {
       setCount(c => c + 1); // ✅ 在这不依赖于外部的 `count` 变量
     }, 1000);
     return () => clearInterval(id);
-  }, []); // ✅ 我们的 effect 不适用组件作用域中的任何变量
+  }, []); // ✅ 我们的 effect 不使用组件作用域中的任何变量
 
   return <h1>{count}</h1>;
 }
@@ -691,14 +708,16 @@ function Counter() {
 
 （`setCount` 函数的身份是被确保稳定的，所以可以放心的省略掉）
 
-在一些更加复杂的场景中（例如鳄鱼共一个 state 依赖于另一个 state），尝试用 [`useReducer` Hook](/docs/hooks-reference.html#usereducer) 把 state 更新逻辑一道 effect 之外。[这篇文章](https://adamrackis.dev/state-and-use-reducer/) 提供了一个你该如何做到这一点的案例。 **`useReducer` 的 `dispatch` 的身份永远是稳定的** —— 即使 reducer 函数是定义在组件内部并且依赖 props。
+此时，`setInterval` 的回调依旧每秒调用一次，但每次 `setCount` 内部的回调取到的 `count` 是最新值（在回调中变量命名为 `c`）。
+
+在一些更加复杂的场景中（比如一个 state 依赖于另一个 state），尝试用 [`useReducer` Hook](/docs/hooks-reference.html#usereducer) 把 state 更新逻辑移到 effect 之外。[这篇文章](https://adamrackis.dev/state-and-use-reducer/) 提供了一个你该如何做到这一点的案例。 **`useReducer` 的 `dispatch` 的身份永远是稳定的** —— 即使 reducer 函数是定义在组件内部并且依赖 props。
 
 万不得已的情况下，如果你想要类似 class 中的 `this` 的功能，你可以 [使用一个 ref](/docs/hooks-faq.html#is-there-something-like-instance-variables) 来保存一个可变的变量。然后你就可以对它进行读写了。举个例子：
 
 ```js{2-6,10-11,16}
 function Example(props) {
   // 把最新的 props 保存在一个 ref 中
-  let latestProps = useRef(props);
+  const latestProps = useRef(props);
   useEffect(() => {
     latestProps.current = props;
   });
@@ -739,7 +758,7 @@ const Button = React.memo((props) => {
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
-这行代码会调用 `computeExpensiveValue(a, b)`。但如果输入值 `[a, b]` 自上次值以来没有改变过，`useMemo` 会跳过二次调用，只是简单复用它上一次返回的值。
+这行代码会调用 `computeExpensiveValue(a, b)`。但如果依赖数组 `[a, b]` 自上次赋值以来没有改变过，`useMemo` 会跳过二次调用，只是简单复用它上一次返回的值。
 
 记住，传给 `useMemo` 的函数是在渲染期间运行的。不要在其中做任何你通常不会在渲染期间做的事。举个例子，副作用属于 `useEffect`，而不是 `useMemo`。
 
@@ -766,7 +785,7 @@ function Parent({ a, b }) {
 
 ### 如何惰性创建昂贵的对象？ {#how-to-create-expensive-objects-lazily}
 
-如果输入的内容相同，`useMemo` 允许你 [记住一次昂贵的计算](#how-to-memoize-calculations)。但是，这仅作为一种提示，并不 *保证* 计算不会重新运行。但有时候需要确保一个对象仅被创建一次。
+如果依赖数组的值相同，`useMemo` 允许你 [记住一次昂贵的计算](#how-to-memoize-calculations)。但是，这仅作为一种提示，并不 *保证* 计算不会重新运行。但有时候需要确保一个对象仅被创建一次。
 
 **第一个常见的使用场景是当创建初始 state 很昂贵时：**
 
@@ -808,13 +827,10 @@ function Image(props) {
 
   // ✅ IntersectionObserver 只会被惰性创建一次
   function getObserver() {
-    let observer = ref.current;
-    if (observer !== null) {
-      return observer;
+    if (ref.current === null) {
+      ref.current = new IntersectionObserver(onIntersect);
     }
-    let newObserver = new IntersectionObserver(onIntersect);
-    ref.current = newObserver;
-    return newObserver;
+    return ref.current;
   }
 
   // 当你需要时，调用 getObserver()
@@ -846,13 +862,13 @@ function Image(props) {
     }, [a, b]);
     ```
 
-* [`useMemo` Hook](/docs/hooks-faq.html#how-to-memoize-calculations) 使控制具体子节点何时更新变得更容易，减少了对纯组件的需要。
+* [`useMemo`](/docs/hooks-faq.html#how-to-memoize-calculations) Hook 使得控制具体子节点何时更新变得更容易，减少了对纯组件的需要。
 
-* 最后，`useReducer` Hook 减少了对深层传递回调的需要，就如下面解释的那样。
+* 最后，[`useReducer`](/docs/hooks-reference.html#usereducer) Hook 减少了对深层传递回调的依赖，正如下面解释的那样。
 
 ### 如何避免向下传递回调？ {#how-to-avoid-passing-callbacks-down}
 
-我们已经发现大部分人并不喜欢在组件树的每一层手动传递回调。尽管这种写法更明确，但这给人感觉像错综负责的管道工程一样麻烦。
+我们已经发现大部分人并不喜欢在组件树的每一层手动传递回调。尽管这种写法更明确，但这给人感觉像错综复杂的管道工程一样麻烦。
 
 在大型的组件树中，我们推荐的替代方案是通过 context 用 [`useReducer`](/docs/hooks-reference.html#usereducer) 往下传一个 `dispatch` 函数：
 
@@ -890,15 +906,13 @@ function DeepChild(props) {
 
 总而言之，从维护的角度来这样看更加方便（不用不断转发回调），同时也避免了回调的问题。像这样向下传递 `dispatch` 是处理深度更新的推荐模式。
 
-注意，你依然可以选择是要把应用的 *state* 作为 props 向下传递（更显明确）还是作为作为 context（对很深的更新而言更加方便）。如果你也使用 context 来向下传递 state，请使用两种不同的 context 类型 —— `dispatch` context 永远不会变，因此组件通过读取它就不需要重新渲染了，除非它们还需要应用的 state。
+注意，你依然可以选择将应用的 *state* 作为 props（更显明确）向下传递或者使用 context（对很深的更新而言更加方便）向下传递。如果你选择使用 context 来向下传递 state，请使用两种不同的 context 类型传递 state 和 dispatch —— 由于 `dispatch` context 永远不会变，因此读取它的组件不需要重新渲染，除非这些组件也需要用到应用程序的 state。
 
 ### 如何从 `useCallback` 读取一个经常变化的值？ {#how-to-read-an-often-changing-value-from-usecallback}
 
 >注意
 >
 >我们推荐 [在 context 中向下传递 `dispatch`](#how-to-avoid-passing-callbacks-down) 而非在 props 中使用独立的回调。下面的方法仅仅出于文档完整性考虑，以及作为一条出路在此提及。
->
->同时也请注意这种模式在 [并行模式](/blog/2018/03/27/update-on-async-rendering.html) 下可能会导致一些问题。我们计划在未来提供一个更加合理的替代方案，但当下最安全的解决方案是，如果回调所依赖的值变化了，总是让回调失效。
 
 在某些罕见场景中，你可能会需要用 [`useCallback`](/docs/hooks-reference.html#usecallback) 记住一个回调，但由于内部函数必须经常重新创建，记忆效果不是很好。如果你想要记住的函数是一个事件处理器并且在渲染期间没有被用到，你可以 [把 ref 当做实例变量](#is-there-something-like-instance-variables) 来用，并手动把最后提交的值保存在它当中：
 
@@ -966,7 +980,7 @@ function useEventCallback(fn, dependencies) {
 
 ### React 是如何把对 Hook 的调用和组件联系起来的？ {#how-does-react-associate-hook-calls-with-components}
 
-React 保持对当先渲染中的组件的追踪。多亏了 [Hook 规范](/docs/hooks-rules.html)，我们得知 Hook 只会在 React 组件中被调用（或自定义 Hook —— 同样只会在 React 组件中被调用）。
+React 保持对当前渲染中的组件的追踪。多亏了 [Hook 规范](/docs/hooks-rules.html)，我们得知 Hook 只会在 React 组件中被调用（或自定义 Hook —— 同样只会在 React 组件中被调用）。
 
 每个组件内部都有一个「记忆单元格」列表。它们只不过是我们用来存储一些数据的 JavaScript 对象。当你用 `useState()` 调用一个 Hook 的时候，它会读取当前的单元格（或在首次渲染时将其初始化），然后把指针移动到下一个。这就是多个 `useState()` 调用会得到各自独立的本地 state 的原因。
 
@@ -982,4 +996,4 @@ Hook 由不同的来源的多个想法构成：
 * Rx 中的 [Subscriptions](http://reactivex.io/rxjs/class/es6/Subscription.js~Subscription.html)。
 * Multicore OCaml 提到的 [Algebraic effects](https://github.com/ocamllabs/ocaml-effects-tutorial#2-effectful-computations-in-a-pure-setting)。
 
-[Sebastian Markbåge](https://github.com/sebmarkbage) 想到了 Hook 最初的设计，后来经过 [Andrew Clark](https://github.com/acdlite)，[Sophie Alpert](https://github.com/sophiebits)，[Dominic Gannaway](https://github.com/trueadm)，和 React 团队的其它成员的提炼。
+[Sebastian Markbåge](https://github.com/sebmarkbage) 想到了 Hook 最初的设计，后来经过 [Andrew Clark](https://github.com/acdlite)，[Sophie Alpert](https://github.com/sophiebits)，[Dominic Gannaway](https://github.com/trueadm)，和 React 团队的其他成员的提炼。

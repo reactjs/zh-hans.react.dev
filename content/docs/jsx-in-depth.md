@@ -42,12 +42,11 @@ React.createElement(
 ```js
 React.createElement(
   'div',
-  {className: 'sidebar'},
-  null
+  {className: 'sidebar'}
 )
 ```
 
-如果你想测试一些特定的 JSX 会转换成怎么样的 JavaScript，你可以尝试使用 [在线的 Babel 编译器](babel://jsx-simple-example)。
+如果你想测试一些特定的 JSX 会转换成什么样的 JavaScript，你可以尝试使用 [在线的 Babel 编译器](babel://jsx-simple-example)。
 
 ## 指定 React 元素类型 {#specifying-the-react-element-type}
 
@@ -228,7 +227,7 @@ function NumberDescriber(props) {
 <MyTextBox autocomplete={true} />
 ```
 
-通常，我们不建议这样使用，因为它可能与 [ES6 对象简写](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015)混淆，`{foo}` 是 `{foo: foo}` 的简写，而不是 `{foo: true}`。这样实现只是为了保持和 HTML 中标签属性的行为一致。
+通常，我们不建议不传递 value 给 prop，因为这可能与 [ES6 对象简写](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015)混淆，`{foo}` 是 `{foo: foo}` 的简写，而不是 `{foo: true}`。这样实现只是为了保持和 HTML 中标签属性的行为一致。
 
 ### 属性展开 {#spread-attributes}
 
@@ -282,7 +281,7 @@ const App = () => {
 <MyComponent>Hello world!</MyComponent>
 ```
 
-这是一个合法的 JSX，`MyComponent` 中的 `props.children` 是一个简单的未转义字符串 `"Hello world!"`。因此你可以采用编写写 HTML 的方式来编写写 JSX。如下所示：
+这是一个合法的 JSX，`MyComponent` 中的 `props.children` 是一个简单的未转义字符串 `"Hello world!"`。因此你可以采用编写 HTML 的方式来编写 JSX。如下所示：
 
 ```html
 <div>This is valid HTML &amp; JSX at the same time.</div>
@@ -423,7 +422,7 @@ function ListOfTenThings() {
 <div>{true}</div>
 ```
 
-这有助于依据特定条件来渲染其他的 React 元素。例如，在以下 JSX 中，仅当 `showHeader` 为 `true` 时，才会渲染 `<Header />`：
+这有助于依据特定条件来渲染其他的 React 元素。例如，在以下 JSX 中，仅当 `showHeader` 为 `true` 时，才会渲染 `<Header />` 组件：
 
 ```js{2}
 <div>

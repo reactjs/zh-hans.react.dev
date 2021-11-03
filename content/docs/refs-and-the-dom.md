@@ -1,6 +1,7 @@
 ---
 id: refs-and-the-dom
 title: Refs and the DOM
+permalink: docs/refs-and-the-dom.html
 redirect_from:
   - "docs/working-with-the-browser.html"
   - "docs/more-about-refs.html"
@@ -8,7 +9,6 @@ redirect_from:
   - "docs/more-about-refs-zh-CN.html"
   - "tips/expose-component-functions.html"
   - "tips/children-undefined.html"
-permalink: docs/refs-and-the-dom.html
 ---
 
 Refs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素。
@@ -140,7 +140,7 @@ class CustomTextInput extends React.Component {
 
 #### Refs 与函数组件 {#refs-and-function-components}
 
-**你不能在函数组件上使用 ref 属性**，因为它们没有实例：
+默认情况下，**你不能在函数组件上使用 `ref` 属性**，因为它们没有实例：
 
 ```javascript{1,8,13}
 function MyFunctionComponent() {
@@ -161,14 +161,14 @@ class Parent extends React.Component {
 }
 ```
 
-如果你需要使用 ref，你应该将组件转化为一个 class，就像当你需要使用生命周期钩子或 state 时一样。
+如果要在函数组件中使用 `ref`，你可以使用 [`forwardRef`](/docs/forwarding-refs.html)（可与 [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle) 结合使用），或者可以将该组件转化为 class 组件。
 
 不管怎样，你可以**在函数组件内部使用 `ref` 属性**，只要它指向一个 DOM 元素或 class 组件：
 
 ```javascript{2,3,6,13}
 function CustomTextInput(props) {
   // 这里必须声明 textInput，这样 ref 才可以引用它
-  let textInput = React.createRef();
+  const textInput = useRef(null);
 
   function handleClick() {
     textInput.current.focus();

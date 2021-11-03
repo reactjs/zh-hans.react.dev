@@ -43,22 +43,22 @@ npm run build
 我们提供了可以在生产环境使用的单文件版 React 和 React DOM：
 
 ```html
-<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
 ```
 
 注意只有以 `.production.min.js` 为结尾的 React 文件适用于生产。
 
 ### Brunch {#brunch}
 
-通过安装 [`uglify-js-brunch`](https://github.com/brunch/uglify-js-brunch) 插件，来获得最高效的 Brunch 生产构建：
+通过安装 [`terser-brunch`](https://github.com/brunch/terser-brunch) 插件，来获得最高效的 Brunch 生产构建：
 
 ```
 # 如果你使用 npm
-npm install --save-dev uglify-js-brunch
+npm install --save-dev terser-brunch
 
 # 如果你使用 Yarn
-yarn add --dev uglify-js-brunch
+yarn add --dev terser-brunch
 ```
 
 接着，在 `build` 命令后添加 `-p` 参数，以创建生产构建：
@@ -75,17 +75,17 @@ brunch build -p
 
 ```
 # 如果你使用 npm
-npm install --save-dev envify uglify-js uglifyify 
+npm install --save-dev envify terser uglifyify
 
 # 如果你使用 Yarn
-yarn add --dev envify uglify-js uglifyify 
+yarn add --dev envify terser uglifyify
 ```
 
 为了创建生产构建，确保你添加了以下转换器 **（顺序很重要）**：
 
 * [`envify`](https://github.com/hughsk/envify) 转换器用于设置正确的环境变量。设置为全局 (`-g`)。
 * [`uglifyify`](https://github.com/hughsk/uglifyify) 转换器移除开发相关的引用代码。同样设置为全局 (`-g`)。
-* 最后，将产物传给 [`uglify-js`](https://github.com/mishoo/UglifyJS2) 用以压缩（[为什么要这么做？](https://github.com/hughsk/uglifyify#motivationusage)）。
+* 最后，将产物传给 [`terser`](https://github.com/terser-js/terser) 并进行压缩（[为什么要这么做？](https://github.com/hughsk/uglifyify#motivationusage)）。
 
 举个例子：
 
@@ -93,13 +93,8 @@ yarn add --dev envify uglify-js uglifyify
 browserify ./index.js \
   -g [ envify --NODE_ENV production ] \
   -g uglifyify \
-  | uglifyjs --compress --mangle > ./bundle.js
+  | terser --compress --mangle > ./bundle.js
 ```
-
->**注意：**
->
->虽然这个包的名字叫做 `uglify-js`，但是执行文件叫做 `uglifyjs`。<br>
->这不是拼写错误。
 
 请注意，你只需要在生产构建时用到它。你不需要在开发环境应用这些插件，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
 
@@ -109,17 +104,17 @@ browserify ./index.js \
 
 ```
 # 如果你使用 npm
-npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify 
+npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-terser
 
 # 如果你使用 Yarn
-yarn add --dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify 
+yarn add --dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-terser
 ```
 
 为了创建生产构建，确保你添加了以下插件 **（顺序很重要）**：
 
 * [`replace`](https://github.com/rollup/rollup-plugin-replace) 插件确保环境被正确设置。
 * [`commonjs`](https://github.com/rollup/rollup-plugin-commonjs) 插件用于支持 CommonJS。
-* [`uglify`](https://github.com/TrySound/rollup-plugin-uglify) 插件用于压缩并生成最终的产物。
+* [`terser`](https://github.com/TrySound/rollup-plugin-terser) 插件用于压缩并生成最终的产物。
 
 ```js
 plugins: [
@@ -128,14 +123,14 @@ plugins: [
     'process.env.NODE_ENV': JSON.stringify('production')
   }),
   require('rollup-plugin-commonjs')(),
-  require('rollup-plugin-uglify')(),
+  require('rollup-plugin-terser')(),
   // ...
 ]
 ```
 
 [点击](https://gist.github.com/Rich-Harris/cb14f4bc0670c47d00d191565be36bf0)查看完整的安装示例。
 
-请注意，你只需要在生产构建时用到它。你不需要在开发中使用 `uglify` 插件或者 `replace` 插件替换 `'production'` 变量，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
+请注意，你只需要在生产构建时用到它。你不需要在开发中使用 `terser` 插件或者 `replace` 插件替换 `'production'` 变量，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
 
 ### webpack {#webpack}
 
@@ -144,44 +139,22 @@ plugins: [
 >如果你使用了 Create React App，请跟随[上面的说明](#create-react-app)进行操作。<br>
 >只有当你直接配置了 webpack 才需要参考以下内容。
 
-为了最高效的 webpack 生产构建，确保在你的生产配置中包含这些插件：
+在生产模式下，Webpack v4+ 将默认对代码进行压缩：
 
 ```js
-new webpack.DefinePlugin({
-  'process.env.NODE_ENV': JSON.stringify('production')
-}),
-new webpack.optimize.UglifyJsPlugin()
+const TerserPlugin = require('terser-webpack-plugin');
+
+module.exports = {
+  mode: 'production',
+  optimization: {
+    minimizer: [new TerserPlugin({ /* additional options here */ })],
+  },
+};
 ```
 
-你可以在 [webpack 文档](https://webpack.js.org/guides/production-build/)中了解更多内容。
+你可以在 [webpack 文档](https://webpack.js.org/guides/production/)中了解更多内容。
 
-请注意，你只需要在生产构建时用到它。你不需要在开发中使用 `UglifyJsPlugin` 插件或者 `DefinePlugin` 插件设置 `'production'` 变量，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
-
-## 使用 Chrome Performance 标签分析组件 {#profiling-components-with-the-chrome-performance-tab}
-
-在**开发**模式下，你可以通过支持的浏览器可视化地了解组件是如何 挂载、更新以及卸载的。例如：
-
-<center><img src="../images/blog/react-perf-chrome-timeline.png" style="max-width:100%" alt="在 Chrome 时间线中的 React 组件" /></center>
-
-在 Chrome 中进行如下操作：
-
-1. 临时**禁用所有的 Chrome 扩展，尤其是 React 开发者工具**。他们会严重干扰度量结果！
-
-2. 确保你是在 React 的开发模式下运行应用。
-
-3. 打开 Chrome 开发者工具的 **[Performance](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool)** 标签并按下 **Record**。
-
-4. 对你想分析的行为进行复现。尽量在 20 秒内完成以避免 Chrome 卡住。
-
-5. 停止记录。
-
-6. 在 **User Timing** 标签下会显示 React 归类好的事件。
-
-你可以查阅[这篇文章](https://calibreapp.com/blog/2017-11-28-debugging-react/)以获取更详尽的指导。
-
-需要注意的是**在生产环境中组件会相对渲染得更快些**。当然了，这能帮助你查看是否有不相关的组件被错误地更新，以及 UI 更新的深度和频率。
-
-目前只有 Chrome、Edge 和 IE 支持该功能，但是我们使用的是标准的[用户计时 API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API)。我们期待有更多浏览器能支持它。
+请注意，你只需要在生产构建时用到它。你不需要在开发中使用 `TerserPlugin` 插件，因为这会隐藏有用的 React 警告信息并使得构建速度变慢。
 
 ## 使用开发者工具中的分析器对组件进行分析 {#profiling-components-with-the-devtools-profiler}
 
@@ -200,6 +173,11 @@ new webpack.optimize.UglifyJsPlugin()
 >`react-dom` 的生产分析包也可以在 `react-dom/profiling` 中找到。
 >通过查阅 [fb.me/react-profiling](https://fb.me/react-profiling) 来了解更多关于使用这个包的内容。
 
+> 注意
+>
+> 在 React 17 之前，我们使用了标准的 [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API)，用 chrome 的 performance 性能选项卡来配置组件。
+> 更详细的攻略，请参阅 [Ben Schwarz 的文章](https://calibreapp.com/blog/react-performance-profiling-optimization)。
+
 ## 虚拟化长列表 {#virtualize-long-lists}
 
 如果你的应用渲染了长列表（上百甚至上千的数据），我们推荐使用“虚拟滚动”技术。这项技术会在有限的时间内仅渲染有限的内容，并奇迹般地降低重新渲染组件消耗的时间，以及创建 DOM 节点的数量。
@@ -213,24 +191,6 @@ new webpack.optimize.UglifyJsPlugin()
 React 构建并维护了一套内部的 UI 渲染描述。它包含了来自你的组件返回的 React 元素。该描述使得 React 避免创建 DOM 节点以及没有必要的节点访问，因为 DOM 操作相对于 JavaScript 对象操作更慢。虽然有时候它被称为“虚拟 DOM”，但是它在 React Native 中拥有相同的工作原理。
 
 当一个组件的 props 或 state 变更，React 会将最新返回的元素与之前渲染的元素进行对比，以此决定是否有必要更新真实的 DOM。当它们不相同时，React 会更新该 DOM。
-
-你可以通过 React 开发者工具可视化地查看这些重新渲染的虚拟 DOM：
-
-- [Chrome 浏览器扩展](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
-- [Firefox 浏览器扩展](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
-- [独立 Node 包](https://www.npmjs.com/package/react-devtools)
-
-在开发者控制台的 **React** 标签勾选 **Highlight Updates**：
-
-<center><img src="../images/blog/devtools-highlight-updates.png" style="max-width:100%; margin-top:10px;" alt="如何开启更新高亮" /></center>
-
-当与你的页面进行交互时，你会看到被重新渲染的组件立刻出现了彩色的边框。这能帮助你找到那些没有必要的重新渲染。你可以在 [Ben Edelstein](https://blog.logrocket.com/@edelstein) 的[这篇博客](https://blog.logrocket.com/make-react-fast-again-part-3-highlighting-component-updates-6119e45e6833)中学到更多关于 React 开发者工具的功能。
-
-考虑这种情况：
-
-<center><img src="../images/blog/highlight-updates-example.gif" style="max-width:100%; margin-top:20px;" alt="React 开发者工具更新高亮示例" /></center>
-
-注意到当我们输入第二个待办事项时，第一个待办事项在每次按键时也一并闪烁了。这意味着输入时，它也被 React 一并重新渲染了。这通常被称作“无用的”渲染。我们知道这是毫无必要的，因为第一个待办事项并没有改变，但是 React 并不知道。
 
 即使 React 只更新改变了的 DOM 节点，重新渲染仍然花费了一些时间。在大部分情况下它并不是问题，不过如果它已经慢到让人注意了，你可以通过覆盖生命周期方法 `shouldComponentUpdate` 来进行提速。该方法会在重新渲染前被触发。其默认实现总是返回 `true`，让 React 执行更新：
 
@@ -390,7 +350,7 @@ function updateColorMap(colormap) {
 
 现在 `updateColorMap` 返回了一个新的对象，而不是修改老对象。`Object.assign` 是 ES6 的方法，需要 polyfill。
 
-这里有一个 JavaScript 的提案，旨在添加[对象扩展属性](https://github.com/sebmarkbage/ecmascript-rest-spread)以使得更新不可变对象变得更方便：
+这里有一个 JavaScript 的提案，旨在添加[对象扩展属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)以使得更新不可变对象变得更方便：
 
 ```js
 function updateColorMap(colormap) {
@@ -398,38 +358,8 @@ function updateColorMap(colormap) {
 }
 ```
 
+此特性已被收录在 JavaScript 的 ES2018 中。
+
 如果你在使用 Create React App，`Object.assign` 以及对象扩展运算符已经默认支持了。
 
-## 使用不可变数据结构 {#using-immutable-data-structures}
-
-[Immutable.js](https://github.com/facebook/immutable-js) 是另一种解决方案。它通过结构共享提供了不可变、持久化集合：
-
-* *不可变*：一旦创建，一个集合便不能再被修改。
-* *持久化*：对集合进行修改，会创建一个新的集合。之前的集合仍然有效。
-* *结构共享*：新的集合会尽可能复用之前集合的结构，以最小化拷贝操作来提高性能。
-
-不可变数据使得追踪变更非常容易。每次变更都会生成一个新的对象使得我们只需要检查对象的引用是否改变。举个例子，这是一段很常见的 JavaScript 代码：
-
-```javascript
-const x = { foo: 'bar' };
-const y = x;
-y.foo = 'baz';
-x === y; // true
-```
-
-由于 `y` 被指向和 `x` 相同的对象，虽然我们修改了 `y`，但是对比结果还是 `true`。你可以使用 immutable.js 来写相似的代码：
-
-```javascript
-const SomeRecord = Immutable.Record({ foo: null });
-const x = new SomeRecord({ foo: 'bar' });
-const y = x.set('foo', 'baz');
-const z = x.set('foo', 'bar');
-x === y; // false
-x === z; // true
-```
-
-在这个例子中，修改 `x` 后我们得到了一个新的引用，我们可以通过判断引用 `(x === y)` 来验证 `y` 中存的值和原本 `x` 中存的值不同。
-
-还有其他可以帮助实现不可变数据的库，分别是 [Immer](https://github.com/mweststrate/immer)， [immutability-helper](https://github.com/kolodny/immutability-helper) 以及 [seamless-immutable](https://github.com/rtfeldman/seamless-immutable)。
-
-不可变数据结构使你可以方便地追踪对象的变化，这是应用 `shouldComponentUpdate` 所需要的。让性能得以提升。
+当处理深层嵌套对象时，以 immutable （不可变）的方式更新它们令人费解。如遇到此类问题，请参阅 [Immer](https://github.com/mweststrate/immer) 或 [immutability-helper](https://github.com/kolodny/immutability-helper)。这些库会帮助你编写高可读性的代码，且不会失去 immutability （不可变性）带来的好处。

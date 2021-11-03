@@ -8,7 +8,7 @@ prev: hooks-overview.html
 
 *Hook* 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。
 
-[上一章节](/docs/hooks-intro.html)中使用下面的例子介绍了 Hook：
+[Hook 简介章节](/docs/hooks-intro.html)中使用下面的例子介绍了 Hook：
 
 ```js{4-5}
 import React, { useState } from 'react';
@@ -60,7 +60,7 @@ state 初始值为 `{ count: 0 }` ，当用户点击按钮后，我们通过调�
 
 >注意
 >
->你可能想知道为什么我们在这里使用一个计数器例子而不一个更实际的示例。因为我们还只是初步接触 Hook ，这可以帮助我们将注意力集中到 API 本身。
+>你可能想知道为什么我们在这里使用一个计数器例子而不是一个更实际的示例。因为我们还只是初步接触 Hook ，这可以帮助我们将注意力集中到 API 本身。
 
 ## Hook 和函数组件 {#hooks-and-function-components}
 
@@ -88,7 +88,7 @@ Hook 在 class 内部是**不**起作用的。但你可以使用它们来取代 
 
 ## Hook 是什么？ {#whats-a-hook}
 
-在新示例中，首选引入 React 中 `useState` 的 Hook
+在新示例中，首先引入 React 中 `useState` 的 Hook
 
 ```js{1}
 import React, { useState } from 'react';
@@ -100,7 +100,7 @@ function Example() {
 
 **Hook 是什么？** Hook 是一个特殊的函数，它可以让你“钩入” React 的特性。例如，`useState` 是允许你在 React 函数组件中添加 state 的 Hook。稍后我们将学习其他 Hook。
 
-**什么时候我会用 Hook？** 如果你在编写函数组件并意识到需要向其添加一些 state，以前的做法是必须将其它转化为 class。现在你可以在现有的函数组件中使用 Hook。
+**什么时候我会用 Hook？** 如果你在编写函数组件并意识到需要向其添加一些 state，以前的做法是必须将其转化为 class。现在你可以在现有的函数组件中使用 Hook。
 
 >注意：
 >
@@ -130,7 +130,7 @@ function Example() {
   const [count, setCount] = useState(0);
 ```
 
-**`调用 useState` 方法的时候做了什么?** 它定义一个 “state 变量”。我们的变量叫 `count`， 但是我们可以叫他任何名字，比如 `banana`。这是一种在函数调用时保存变量的方式 —— `useState` 是一种新方法，它与 class 里面的 `this.state` 提供的功能完全相同。一般来说，在函数退出后变量就就会"消失"，而 state 中的变量会被 React 保留。
+**`调用 useState` 方法的时候做了什么?** 它定义一个 “state 变量”。我们的变量叫 `count`， 但是我们可以叫他任何名字，比如 `banana`。这是一种在函数调用时保存变量的方式 —— `useState` 是一种新方法，它与 class 里面的 `this.state` 提供的功能完全相同。一般来说，在函数退出后变量就会"消失"，而 state 中的变量会被 React 保留。
 
 **`useState` 需要哪些参数？** `useState()` 方法里面唯一的参数就是初始 state。不同于 class 的是，我们可以按照需要使用数字或字符串对其进行赋值，而不一定是对象。在示例中，只需使用数字来记录用户点击次数，所以我们传了 `0` 作为变量的初始 state。（如果我们想要在 state 中存储两个不同的变量，只需调用 `useState()` 两次即可。）
 
@@ -240,7 +240,7 @@ function Example() {
   var setFruit = fruitStateVariable[1]; // 数组里的第二个值
 ```
 
-当我们使用 `useSatate` 定义 state 变量时候，它返回一个有两个值的数组。第一个值是当前的 state，第二个值是更新 state 的函数。使用 `[0]` 和 `[1]` 来访问有点令人困惑，因为它们有特定的含义。这就是我们使用数组解构的原因。
+当我们使用 `useState` 定义 state 变量时候，它返回一个有两个值的数组。第一个值是当前的 state，第二个值是更新 state 的函数。使用 `[0]` 和 `[1]` 来访问有点令人困惑，因为它们有特定的含义。这就是我们使用数组解构的原因。
 
 >注意
 >
@@ -267,7 +267,7 @@ function ExampleWithManyStates() {
   }
 ```
 
-你**不必**使用多个 state 变量。State 变量可以很好的存储对象和数组，因此，你仍然可以将相关数据分为一组。然而，不像 class 中的 `this.setState`，更新 state 变量总是*替换*它而不是合并它。
+你**不必**使用多个 state 变量。State 变量可以很好地存储对象和数组，因此，你仍然可以将相关数据分为一组。然而，不像 class 中的 `this.setState`，更新 state 变量总是*替换*它而不是合并它。
 
 我们[在 FAQ 中](/docs/hooks-faq.html#should-i-use-one-or-many-state-variables)提供了更多关于分离独立 state 变量的建议。
 

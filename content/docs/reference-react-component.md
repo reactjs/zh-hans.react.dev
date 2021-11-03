@@ -39,7 +39,7 @@ class Welcome extends React.Component {
 
 ### 组件的生命周期 {#the-component-lifecycle}
 
-每个组件都包含“生命周期方法”，你可以重写这些方法，以便于在运行过程中特定的阶段执行这些方法。**你可以使用此[生命周期图谱](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)作为速查表**。在下述列表中，常用的生命周期方法会被加粗。其余生命周期函数的使用则相对罕见。
+每个组件都包含 “生命周期方法”，你可以重写这些方法，以便于在运行过程中特定的阶段执行这些方法。**你可以使用此[生命周期图谱](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)作为速查表**。在下述列表中，常用的生命周期方法会被加粗。其余生命周期函数的使用则相对罕见。
 
 #### 挂载 {#mounting}
 
@@ -109,7 +109,7 @@ class Welcome extends React.Component {
 
 ### 常用的生命周期方法 {#commonly-used-lifecycle-methods}
 
-本节中的方法涵盖了创建 React 组件时能遇到的绝大多数用例。**想要更好了解这些方法，可以参考[生命周期图谱](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)。**
+本节中的方法涵盖了创建 React 组件时能遇到的绝大多数用例。**想要更好了解这些方法，可以参考[生命周期图谱](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)。**
 
 ### `render()` {#render}
 
@@ -198,7 +198,7 @@ componentDidMount()
 
 这个方法是比较适合添加订阅的地方。如果添加了订阅，请不要忘记在 `componentWillUnmount()` 里取消订阅
 
-你可以在 `componentDidMount()` 里**可以直接调用 `setState()`**。它将触发额外渲染，但此渲染会发生在浏览器更新屏幕之前。如此保证了即使在 `render()` 两次调用的情况下，用户也不会看到中间状态。请谨慎使用该模式，因为它会导致性能问题。通常，你应该在 `constructor()` 中初始化 state。如果你的渲染依赖于 DOM 节点的大小或位置，比如实现 modals 和 tooltips 等情况下，你可以使用此方式处理
+你可以在 `componentDidMount()` 里**直接调用 `setState()`**。它将触发额外渲染，但此渲染会发生在浏览器更新屏幕之前。如此保证了即使在 `render()` 两次调用的情况下，用户也不会看到中间状态。请谨慎使用该模式，因为它会导致性能问题。通常，你应该在 `constructor()` 中初始化 state。如果你的渲染依赖于 DOM 节点的大小或位置，比如实现 modals 和 tooltips 等情况下，你可以使用此方式处理
 
 * * *
 
@@ -221,7 +221,7 @@ componentDidUpdate(prevProps) {
 }
 ```
 
-你也可以在 `componentDidUpdate()` 中**直接调用 `setState()`**，但请注意**它必须被包裹在一个条件语件里**，正如上述的例子那样进行处理，否则会导致死循环。它还会导致额外的重新渲染，虽然用户不可见，但会影响组件性能。不要将 props “镜像”给 state，请考虑直接使用 props。 欲了解更多有关内容，请参阅[为什么 props 复制给 state 会产生 bug](/blog/2018/06/07/you-probably-dont-need-derived-state.html)。
+你也可以在 `componentDidUpdate()` 中**直接调用 `setState()`**，但请注意**它必须被包裹在一个条件语句里**，正如上述的例子那样进行处理，否则会导致死循环。它还会导致额外的重新渲染，虽然用户不可见，但会影响组件性能。不要将 props “镜像”给 state，请考虑直接使用 props。 欲了解更多有关内容，请参阅[为什么 props 复制给 state 会产生 bug](/blog/2018/06/07/you-probably-dont-need-derived-state.html)。
 
 如果组件实现了 `getSnapshotBeforeUpdate()` 生命周期（不常用），则它的返回值将作为 `componentDidUpdate()` 的第三个参数 “snapshot” 参数传递。否则此参数将为 undefined。
 
@@ -245,7 +245,7 @@ componentWillUnmount()
 
 ### 不常用的生命周期方法 {#rarely-used-lifecycle-methods}
 
-本节中的生命周期方法并不太常用。它们偶尔会很方便，但是大部分情况下组件可能都不需要它们。你可以在[生命周期图谱](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)中，选择“显示不常用的生命周期”复选框，即可看到下述相关方法。
+本节中的生命周期方法并不太常用。它们偶尔会很方便，但是大部分情况下组件可能都不需要它们。你可以在[生命周期图谱](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)中，选择“显示不常用的生命周期”复选框，即可看到下述相关方法。
 
 
 ### `shouldComponentUpdate()` {#shouldcomponentupdate}
@@ -274,7 +274,7 @@ shouldComponentUpdate(nextProps, nextState)
 static getDerivedStateFromProps(props, state)
 ```
 
-`getDerivedStateFromProps` 会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用。它应返回一个对象来更新 state，如果返回 null 则不更新任何内容。
+`getDerivedStateFromProps` 会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用。它应返回一个对象来更新 state，如果返回 `null` 则不更新任何内容。
 
 此方法适用于[罕见的用例](/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state)，即 state 的值在任何时候都取决于 props。例如，实现 `<Transition>` 组件可能很方便，该组件会比较当前组件与下一组件，以决定针对哪些组件进行转场动画。
 
@@ -299,7 +299,7 @@ static getDerivedStateFromProps(props, state)
 getSnapshotBeforeUpdate(prevProps, prevState)
 ```
 
-`getSnapshotBeforeUpdate()` 在最近一次渲染输出（提交到 DOM 节点）之前调用。它使得组件能在发生更改之前从 DOM 中捕获一些信息（例如，滚动位置）。此生命周期的任何返回值将作为参数传递给 `componentDidUpdate()`。
+`getSnapshotBeforeUpdate()` 在最近一次渲染输出（提交到 DOM 节点）之前调用。它使得组件能在发生更改之前从 DOM 中捕获一些信息（例如，滚动位置）。此生命周期方法的任何返回值将作为参数传递给 `componentDidUpdate()`。
 
 此用法并不常见，但它可能出现在 UI 处理中，如需要以特殊方式处理滚动位置的聊天线程等。
 
@@ -324,7 +324,7 @@ getSnapshotBeforeUpdate(prevProps, prevState)
 欲了解更多详细信息，请参阅 [*React 16 中的错误处理*](/blog/2017/07/26/error-handling-in-react-16.html)。
 
 > 注意
-> 
+>
 > Error boundaries 仅捕获组件树中**以下**组件中的错误。但它本身的错误无法捕获。
 
 ### `static getDerivedStateFromError()` {#static-getderivedstatefromerror}
@@ -353,7 +353,7 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
@@ -408,13 +408,19 @@ class ErrorBoundary extends React.Component {
       return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 ```
 
+React 的开发和生产构建版本在 `componentDidCatch()` 的方式上有轻微差别。
+
+在开发模式下，错误会冒泡至 `window`，这意味着任何 `window.onerror` 或 `window.addEventListener('error', callback)` 会中断这些已经被 `componentDidCatch()` 捕获的错误。
+
+相反，在生产模式下，错误不会冒泡，这意味着任何根错误处理器只会接受那些没有显式地被 `componentDidCatch()` 捕获的错误。
+
 > 注意
-> 
+>
 > 如果发生错误，你可以通过调用 `setState` 使用 `componentDidCatch()` 渲染降级 UI，但在未来的版本中将不推荐这样做。
 > 可以使用静态 `getDerivedStateFromError()` 来处理降级渲染。
 
@@ -501,7 +507,7 @@ UNSAFE_componentWillUpdate(nextProps, nextState)
 ### `setState()` {#setstate}
 
 ```javascript
-setState(updater[, callback])
+setState(updater, [callback])
 ```
 
 `setState()` 将对组件 state 的更改排入队列，并通知 React 需要使用更新后的 state 重新渲染此组件及其子组件。这是用于更新用户界面以响应事件处理器和处理服务器数据的主要方式
@@ -579,7 +585,7 @@ component.forceUpdate(callback)
 
 调用 `forceUpdate()` 将致使组件调用 `render()` 方法，此操作会跳过该组件的 `shouldComponentUpdate()`。但其子组件会触发正常的生命周期方法，包括 `shouldComponentUpdate()` 方法。如果标记发生变化，React 仍将只更新 DOM。
 
-通常你应该避免使用 `forceUpdate()`，尽量在 `render()` 只使用 `this.props` 和 `this.state`
+通常你应该避免使用 `forceUpdate()`，尽量在 `render()` 中使用 `this.props` 和 `this.state`。
 
 * * *
 
@@ -587,7 +593,7 @@ component.forceUpdate(callback)
 
 ### `defaultProps` {#defaultprops}
 
-`defaultProps` 可以为 Class 组件添加默认 props。这一般用于 props 未赋值，但又不能为 null 的情况。例如：
+`defaultProps` 可以为 Class 组件添加默认 props。这一般用于 props 未赋值，但又不能为 `null` 的情况。例如：
 
 ```js
 class CustomButton extends React.Component {
@@ -627,9 +633,9 @@ CustomButton.defaultProps = {
 
 ### `props` {#props}
 
-`this.props` 包括被该组件调用者定义的 props。欲了解 props 的详细介绍，请参阅[组件 & Props][组件和props](/docs/components-and-props.html)。
+`this.props` 包括被该组件调用者定义的 props。欲了解 props 的详细介绍，请参阅[组件 & Props](/docs/components-and-props.html)。
 
-需特别注意，`this.props.children` 是一个特殊的 prop，通常由 JSX 表达式中的子组件组成，而不是由组件本身定义。
+需特别注意，`this.props.children` 是一个特殊的 prop，通常由 JSX 表达式中的子组件组成，而非组件本身定义。
 
 ### `state` {#state}
 

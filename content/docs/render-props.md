@@ -6,7 +6,7 @@ permalink: docs/render-props.html
 
 术语 ["render prop"](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce) 是指一种在 React 组件之间使用一个值为函数的 prop 共享代码的简单技术
 
-具有 render prop 的组件接受一个函数，该函数返回一个 React 元素并调用它而不是实现自己的渲染逻辑。
+具有 render prop 的组件接受一个返回 React 元素的函数，并在组件内部通过调用此函数来实现自己的渲染逻辑。
 
 ```jsx
 <DataProvider render={data => (
@@ -14,13 +14,13 @@ permalink: docs/render-props.html
 )}/>
 ```
 
-使用 render prop 的库有 [React Router](https://reacttraining.com/react-router/web/api/Route/render-func) 和 [Downshift](https://github.com/paypal/downshift).
+使用 render prop 的库有 [React Router](https://reacttraining.com/react-router/web/api/Route/render-func)、[Downshift](https://github.com/paypal/downshift) 以及 [Formik](https://github.com/jaredpalmer/formik)。
 
 在这个文档中，我们将讨论为什么 render prop 是有用的，以及如何写一个自己的 render prop 组件。
 
-## 使用 Render Props 解决来横切关注点（Cross-Cutting Concerns） {#use-render-props-for-cross-cutting-concerns}
+## 使用 Render Props 来解决横切关注点（Cross-Cutting Concerns） {#use-render-props-for-cross-cutting-concerns}
 
-组件是 React 代码复用的主要单元，但如何分享一个组件封装到其他需要相同 state 组件的状态或行为并不总是很容易。
+组件是 React 代码复用的主要单元，但如何将一个组件封装的状态或行为共享给其他需要相同状态的组件并不总是显而易见。
 
 例如，以下组件跟踪 Web 应用程序中的鼠标位置：
 
@@ -41,7 +41,7 @@ class MouseTracker extends React.Component {
 
   render() {
     return (
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
         <h1>移动鼠标!</h1>
         <p>当前的鼠标位置是 ({this.state.x}, {this.state.y})</p>
       </div>
@@ -74,7 +74,7 @@ class Mouse extends React.Component {
 
   render() {
     return (
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
 
         {/* ...但我们如何渲染 <p> 以外的东西? */}
         <p>The current mouse position is ({this.state.x}, {this.state.y})</p>
@@ -86,10 +86,10 @@ class Mouse extends React.Component {
 class MouseTracker extends React.Component {
   render() {
     return (
-      <div>
+      <>
         <h1>移动鼠标!</h1>
         <Mouse />
-      </div>
+      </>
     );
   }
 }
@@ -97,7 +97,7 @@ class MouseTracker extends React.Component {
 
 现在  `<Mouse>` 组件封装了所有关于监听 `mousemove` 事件和存储鼠标 (x, y) 位置的行为，但其仍不是真正的可复用。
 
-举个例子，假设我们有一个 <Cat> 组件，它可以呈现一张在屏幕上追逐鼠标的猫的图片。我们或许会使用 `<Cat mouse={{ x, y }}` prop 来告诉组件鼠标的坐标以让它知道图片应该在屏幕哪个位置。
+举个例子，假设我们有一个 `<Cat>` 组件，它可以呈现一张在屏幕上追逐鼠标的猫的图片。我们或许会使用 `<Cat mouse={{ x, y }}` prop 来告诉组件鼠标的坐标以让它知道图片应该在屏幕哪个位置。
 
 首先, 你或许会像这样，尝试在 `<Mouse>` 内部的渲染方法渲染 `<Cat>` 组件：:
 
@@ -127,7 +127,7 @@ class MouseWithCat extends React.Component {
 
   render() {
     return (
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
 
         {/*
           我们可以在这里换掉 <p> 的 <Cat>   ......
@@ -154,7 +154,7 @@ class MouseTracker extends React.Component {
 
 这种方法适用于我们的特定用例，但我们还没有达到以可复用的方式真正封装行为的目标。现在，每当我们想要鼠标位置用于不同的用例时，我们必须创建一个新的组件（本质上是另一个 `<MouseWithCat>` ），它专门为该用例呈现一些东西.
 
-这也是 render prop 的来历：我们可以提供一个带有函数 prop 的 `<Mouse>` 组件，它能够动态决定什么需要渲染的，而不是将 `<Cat>` 硬编码到 `<Mouse>` 组件里，并有效地改变它的渲染结果。
+这也是 render prop 的来历：相比于直接将 `<Cat>` 写死在 `<Mouse>` 组件中，并且有效地更改渲染的结果，我们可以为 `<Mouse>` 提供一个函数 prop 来动态的确定要渲染什么 —— 一个 render prop。
 
 ```js
 class Cat extends React.Component {
@@ -182,11 +182,11 @@ class Mouse extends React.Component {
 
   render() {
     return (
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
 
         {/*
-          Instead of providing a static representation of what <Mouse> renders,
-          use the `render` prop to dynamically determine what to render.
+          使用 `render`prop 动态决定要渲染的内容，
+          而不是给出一个 <Mouse> 渲染结果的静态表示
         */}
         {this.props.render(this.state)}
       </div>
@@ -321,4 +321,4 @@ class MouseTracker extends React.Component {
 }
 ```
 
-如果你无法静态定义 prop（例如，因为你需要关闭组件的 props 和/或 state），则 `<Mouse>` 应该扩展 `React.Component`。
+如果你无法静态定义 prop（例如，因为你需要控制组件 props 和/或 state 的暴露程度），则 `<Mouse>` 应该继承自 `React.Component`。

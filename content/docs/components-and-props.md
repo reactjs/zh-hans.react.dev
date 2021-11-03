@@ -44,7 +44,7 @@ class Welcome extends React.Component {
 
 上述两个组件在 React 里是等效的。
 
-我们将在[下一章节](/docs/state-and-lifecycle.html)中讨论关于 class 的额外特性。在那之前，为了保持示例简单明了，将使用函数组件。
+我们将在[下一章节](/docs/state-and-lifecycle.html)中讨论关于函数组件和 class 组件的额外特性。
 
 ## 渲染组件 {#rendering-a-component}
 
@@ -60,7 +60,7 @@ const element = <div />;
 const element = <Welcome name="Sara" />;
 ```
 
-当 React 元素为用户自定义组件时，它会将 JSX 所接收的属性（attributes）转换为单个对象传递给组件，这个对象被称之为 “props”。
+当 React 元素为用户自定义组件时，它会将 JSX 所接收的属性（attributes）以及子组件（children）转换为单个对象传递给组件，这个对象被称之为 “props”。
 
 例如，这段代码会在页面上渲染 “Hello, Sara”：
 
@@ -89,7 +89,7 @@ ReactDOM.render(
 >
 >React 会将以小写字母开头的组件视为原生 DOM 标签。例如，`<div />` 代表 HTML 的 div 标签，而 `<Welcome />` 则代表一个组件，并且需在作用域内使用 `Welcome`。
 >
->你可以在[深入 JSX](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized)中了解更多关于此规范的原因。
+>你可以在[深入 JSX](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized) 中了解更多关于此规范的原因。
 
 ## 组合组件 {#composing-components}
 
@@ -233,7 +233,7 @@ function Comment(props) {
 
 [](codepen://components-and-props/extracting-components-continued)
 
-最初看上去，提取组件可能是一件繁重的工作，但是，在大型应用中，构建可复用组件库是完全值得的。根据经验来看，如果 UI 中有一部分被多次使用（`Button`，`Panel`，`Avatar`），或者组件本身就足够复杂（`App`，`FeedStory`，`Comment`），那么它就是一个可复用组件的候选项。
+最初看上去，提取组件可能是一件繁重的工作，但是，在大型应用中，构建可复用组件库是完全值得的。根据经验来看，如果 UI 中有一部分被多次使用（`Button`，`Panel`，`Avatar`），或者组件本身就足够复杂（`App`，`FeedStory`，`Comment`），那么它就是一个可提取出独立组件的候选项。
 
 ## Props 的只读性 {#props-are-read-only}
 

@@ -40,7 +40,7 @@ function Example() {
 
 在这里，`useState` 就是一个 *Hook* （等下我们会讲到这是什么意思）。通过在函数组件里调用它来给组件添加一些内部 state。React 会在重复渲染时保留这个 state。`useState` 会返回一对值：**当前**状态和一个让你更新它的函数，你可以在事件处理函数中或其他一些地方调用这个函数。它类似 class 组件的 `this.setState`，但是它不会把新的 state 和旧的 state 进行合并。（我们会在[使用 State Hook](/docs/hooks-state.html) 里展示一个对比 `useState` 和 `this.state` 的例子）。
 
-`useState` 唯一的参数就是初始 state。在上面的例子中，我们的计数器是从零开始的，所以初始 state 就是 `0`。值得注意的是，不同于 `this.state`，这里的 state 不一定要是一个对象 —— 如果你有需要，它也可以是。这个初始 state 参数只有在第一次渲染的会被用到。
+`useState` 唯一的参数就是初始 state。在上面的例子中，我们的计数器是从零开始的，所以初始 state 就是 `0`。值得注意的是，不同于 `this.state`，这里的 state 不一定要是一个对象 —— 如果你有需要，它也可以是。这个初始 state 参数只有在第一次渲染时会被用到。
 
 #### 声明多个 state 变量 {#declaring-multiple-state-variables}
 
@@ -128,7 +128,7 @@ function FriendStatus(props) {
 }
 ```
 
-在这个示例中，React 会在组件销毁或者后续渲染重新执行副作用函数时取消对 `ChatAPI` 的订阅。（如果传给 `ChatAPI` 的 `props.friend.id` 没有变化，你也可以[告诉 React 跳过重新订阅](/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)。）
+在这个示例中，React 会在组件销毁时取消对 `ChatAPI` 的订阅，然后在后续渲染时重新执行副作用函数。（如果传给 `ChatAPI` 的 `props.friend.id` 没有变化，你也可以[告诉 React 跳过重新订阅](/docs/hooks-effect.html#tip-optimizing-performance-by-skipping-effects)。）
 
 跟 `useState` 一样，你可以在组件中多次使用 `useEffect` ：
 
@@ -178,7 +178,7 @@ Hook 就是 JavaScript 函数，但是使用它们会有两个额外的规则：
 
 前面，我们介绍了一个叫 `FriendStatus` 的组件，它通过调用 `useState` 和 `useEffect` 的 Hook 来订阅一个好友的在线状态。假设我们想在另一个组件里重用这个订阅逻辑。
 
-首页，我们把这个逻辑抽取到一个叫做 `useFriendStatus` 的自定义 Hook 里：
+首先，我们把这个逻辑抽取到一个叫做 `useFriendStatus` 的自定义 Hook 里：
 
 ```js{3}
 import React, { useState, useEffect } from 'react';
@@ -229,7 +229,7 @@ function FriendListItem(props) {
 }
 ```
 
-这两个组件的 state 是完全独立的。Hook 是一种复用*状态逻辑*的方式，它不复用 state 本身。事实上 Hook 的每次*调用*都有一个完全独立的 state —— 因此你可以在单个组件中多次调用同一个自定义 Hook。
+每个组件间的 state 是完全独立的。Hook 是一种复用*状态逻辑*的方式，它不复用 state 本身。事实上 Hook 的每次*调用*都有一个完全独立的 state —— 因此你可以在单个组件中多次调用同一个自定义 Hook。
 
 自定义 Hook 更像是一种约定而不是功能。如果函数的名字以 “`use`” 开头并调用其他 Hook，我们就说这是一个自定义 Hook。 `useSomething` 的命名约定可以让我们的 linter 插件在使用 Hook 的代码中找到 bug。
 

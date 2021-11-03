@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
+ * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * @providesModule theme
  * @flow
@@ -55,9 +55,7 @@ const media = {
       if (SIZES[largeKey].max === Infinity) {
         return `@media (min-width: ${SIZES[smallKey].min}px)`;
       } else {
-        return `@media (min-width: ${SIZES[smallKey].min}px) and (max-width: ${
-          SIZES[largeKey].max
-        }px)`;
+        return `@media (min-width: ${SIZES[smallKey].min}px) and (max-width: ${SIZES[largeKey].max}px)`;
       }
     }
   },
@@ -170,17 +168,43 @@ const sharedStyles = {
         zIndex: 2,
       },
     },
-
+    feedbackButton: {
+      border: 0,
+      background: 'none',
+      cursor: 'pointer',
+      ':focus': {
+        color: colors.text,
+        borderColor: colors.text,
+        '& svg': {
+          fill: colors.text,
+        },
+      },
+      ':hover': {
+        color: colors.text,
+        borderColor: colors.text,
+        '& svg': {
+          fill: colors.text,
+        },
+      },
+      '& svg': {
+        height: '1.5em',
+        width: '1.5em',
+        fill: colors.subtle,
+        transition: 'fill 0.2s ease',
+      },
+    },
     editLink: {
-      color: colors.subtle,
+      color: colors.lighter,
       borderColor: colors.divider,
-      transition: 'all 0.2s ease',
-      transitionPropery: 'color, border-color',
+      transition: 'color 0.2s ease, border-color 0.2s ease',
       whiteSpace: 'nowrap',
       borderBottomWidth: 1,
       borderBottomStyle: 'solid',
-
       ':hover': {
+        color: colors.text,
+        borderColor: colors.text,
+      },
+      ':focus': {
         color: colors.text,
         borderColor: colors.text,
       },
@@ -285,15 +309,24 @@ const sharedStyles = {
     },
 
     '& h2': {
-      borderTop: `1px solid ${colors.divider}`,
-      marginTop: 44,
-      paddingTop: 40,
+      '::before': {
+        content: ' ',
+        display: 'block',
+        borderBottom: `1px solid ${colors.divider}`,
+        paddingTop: 44,
+        marginBottom: 40,
+      },
+
       lineHeight: 1.2,
 
       ':first-child': {
-        borderTop: 0,
-        marginTop: 0,
-        paddingTop: 0,
+        '::before': {
+          content: ' ',
+          display: 'block',
+          borderBottom: 0,
+          paddingTop: 40,
+          marginTop: -80,
+        },
       },
 
       [media.lessThan('large')]: {
@@ -310,7 +343,12 @@ const sharedStyles = {
     },
 
     '& h3': {
-      paddingTop: 45,
+      '::before': {
+        content: ' ',
+        display: 'block',
+        paddingTop: 90,
+        marginTop: -45,
+      },
 
       [media.lessThan('small')]: {
         overflowWrap: 'break-word',
@@ -324,14 +362,25 @@ const sharedStyles = {
     },
 
     '& h2 + h3, & h2 + h3:first-of-type': {
-      paddingTop: 30,
+      '::before': {
+        content: ' ',
+        display: 'block',
+        paddingTop: 60,
+        marginTop: -30,
+      },
     },
 
     '& h4': {
+      '::before': {
+        content: ' ',
+        display: 'block',
+        paddingTop: 100,
+        marginTop: -50,
+      },
+
       fontSize: 20,
       color: colors.subtle,
       lineHeight: 1.3,
-      marginTop: 50,
       fontWeight: 400,
     },
 
@@ -413,6 +462,15 @@ const sharedStyles = {
 
     '& .gatsby-highlight + blockquote': {
       marginTop: 40,
+    },
+
+    '& .gatsby-highlight + h4': {
+      '::before': {
+        content: ' ',
+        display: 'block',
+        paddingTop: 85,
+        marginTop: -60,
+      },
     },
   },
 };

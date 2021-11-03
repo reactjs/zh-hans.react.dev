@@ -116,9 +116,9 @@ function Example() {
 
 **`useEffect` 做了什么？** 通过使用这个 Hook，你可以告诉 React 组件需要在渲染后执行某些操作。React 会保存你传递的函数（我们将它称之为 “effect”），并且在执行 DOM 更新之后调用它。在这个 effect 中，我们设置了 document 的 title 属性，不过我们也可以执行数据获取或调用其他命令式的 API。
 
-**为什么在组件内部调用 `useEffect`？** 将 `useEffect` 放在组件内部让我们可以在 effect 中直接访问 `count` state 变量（或其他 props）。我们不需要特殊的 API 来读取它 —— 它已经保存函数作用域中。Hook 使用了 JavaScript 的闭包机制，而不用在 JavaScript 已经提供了解决方案的情况下，还引入特定的 React API。
+**为什么在组件内部调用 `useEffect`？** 将 `useEffect` 放在组件内部让我们可以在 effect 中直接访问 `count` state 变量（或其他 props）。我们不需要特殊的 API 来读取它 —— 它已经保存在函数作用域中。Hook 使用了 JavaScript 的闭包机制，而不用在 JavaScript 已经提供了解决方案的情况下，还引入特定的 React API。
 
-**`useEffect` 会在每次渲染后都执行吗？** 是的，默认情况下，它在第一次渲染之后*和*每次更新之后都会执行。（我们稍后会谈到[如何控制它](#tip-optimizing-performance-by-skipping-effects)。）你可能会更容易接受 effect 发生在“渲染之后”这种概念，不用再去考虑“挂载”还是“更新”。React 保证了每次运行 effect 的时，DOM 都已经更新完毕。
+**`useEffect` 会在每次渲染后都执行吗？** 是的，默认情况下，它在第一次渲染之后*和*每次更新之后都会执行。（我们稍后会谈到[如何控制它](#tip-optimizing-performance-by-skipping-effects)。）你可能会更容易接受 effect 发生在“渲染之后”这种概念，不用再去考虑“挂载”还是“更新”。React 保证了每次运行 effect 的同时，DOM 都已经更新完毕。
 
 ### 详细说明 {#detailed-explanation}
 
@@ -131,11 +131,12 @@ function Example() {
   useEffect(() => {
     document.title = `You clicked ${count} times`;
   });
+}
 ```
 
 我们声明了 `count` state 变量，并告诉 React 我们需要使用 effect。紧接着传递函数给 `useEffect` Hook。此函数就是我们的 effect。然后使用 `document.title` 浏览器 API 设置 document 的 title。我们可以在 effect 中获取到最新的 `count` 值，因为他在函数的作用域内。当 React 渲染组件时，会保存已使用的 effect，并在更新完 DOM 后执行它。这个过程在每次渲染时都会发生，包括首次渲染。
 
-经验丰富的 JavaScript 开发人员可能会注意到，传递给 `useEffect` 的函数在每次渲染中都会有所不同，这是刻意为之的。事实上这正是我们可以在 effect 中获取最新的 `count` 的值，而不用担心其过期的原因。每次我们重新渲染，都会生成_新的_ effect，替换掉之前的。某种意义上讲，effect 更像是渲染结果的一部分 —— 每个 effect “属于”一次特定的渲染。我们将在[本章节后续部分(#explanation-why-effects-run-on-each-update)]更清楚地了解这样做的意义。
+经验丰富的 JavaScript 开发人员可能会注意到，传递给 `useEffect` 的函数在每次渲染中都会有所不同，这是刻意为之的。事实上这正是我们可以在 effect 中获取最新的 `count` 的值，而不用担心其过期的原因。每次我们重新渲染，都会生成_新的_ effect，替换掉之前的。某种意义上讲，effect 更像是渲染结果的一部分 —— 每个 effect “属于”一次特定的渲染。我们将在[本章节后续部分](#explanation-why-effects-run-on-each-update)更清楚地了解这样做的意义。
 
 >提示
 >
@@ -337,7 +338,7 @@ function FriendStatusWithCounter(props) {
 
 ### 解释: 为什么每次更新的时候都要运行 Effect {#explanation-why-effects-run-on-each-update}
 
-如果你已经习惯了使用 class，那么你可能会想知道为什么 effect 在每次重渲染时都会执行，而不是只在卸载组件的时候执行一次。让我们看一个实际的例子，看看为什么这个设计可以帮助我们创建 bug 更少的组件。
+如果你已经习惯了使用 class，那么你或许会疑惑为什么 effect 的清除阶段在每次重新渲染时都会执行，而不是只在卸载组件的时候执行一次。让我们看一个实际的例子，看看为什么这个设计可以帮助我们创建 bug 更少的组件。
 
 在[本章节开始时](#example-using-classes-1)，我们介绍了一个用于显示好友是否在线的 `FriendStatus` 组件。从 class 中 props 读取 `friend.id`，然后在组件挂载后订阅好友的状态，并在卸载组件的时候取消订阅：
 
@@ -473,7 +474,7 @@ useEffect(() => {
 >
 >如果你要使用此优化方式，请确保数组中包含了**所有外部作用域中会随时间变化并且在 effect 中使用的变量**，否则你的代码会引用到先前渲染中的旧变量。参阅文档，了解更多关于[如何处理函数](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)以及[数组频繁变化时的措施](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)内容。
 >
->如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组（`[]`）作为第二个参数。这就告诉 React 你的 effect 不依赖于 props 或 state 中的任何值，所以它永远都不需要重复执行。这并不属于特殊情况 —— 它依然遵循输入数组的工作方式。
+>如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组（`[]`）作为第二个参数。这就告诉 React 你的 effect 不依赖于 props 或 state 中的任何值，所以它永远都不需要重复执行。这并不属于特殊情况 —— 它依然遵循依赖数组的工作方式。
 >
 >如果你传入了一个空数组（`[]`），effect 内部的 props 和 state 就会一直拥有其初始值。尽管传入 `[]` 作为第二个参数更接近大家更熟悉的 `componentDidMount` 和 `componentWillUnmount` 思维模式，但我们有[更好的](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies)[方式](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often)来避免过于频繁的重复调用 effect。除此之外，请记得 React 会等待浏览器完成画面渲染之后才会延迟调用 `useEffect`，因此会使得额外操作很方便。
 >
@@ -483,6 +484,6 @@ useEffect(() => {
 
 恭喜你！完成本章节学习，希望关于 effect 的大多数问题都得到了解答。你已经学习了 State Hook 和 Effect Hook，将它们结合起来你可以做很多事情了。它们涵盖了大多数使用 class 的用例 —— 如果没有，你可以查看[其他的 Hook](/docs/hooks-reference.html)。
 
-我们看到了 Hook 如何解决[简介章节中动机](/docs/hooks-intro.html#motivation)部分提出的问题。我们也发现 effect 的清除机制可以避免了 `componentDidUpdate` 和 `componentWillUnmount` 中的重复，同时让相关的代码关联更加紧密，帮助我们避免一些 bug。我们还看到了我们如何根据 effect 的功能分隔他们，这是在 class 中无法做到的。
+我们看到了 Hook 如何解决[简介章节中动机部分](/docs/hooks-intro.html#motivation)提出的问题。我们也发现 effect 的清除机制可以避免 `componentDidUpdate` 和 `componentWillUnmount` 中的重复，同时让相关的代码关联更加紧密，帮助我们避免一些 bug。我们还看到了我们如何根据 effect 的功能分隔他们，这是在 class 中无法做到的。
 
 此时你可能会好奇 Hook 是如何工作的。在两次渲染间，React如何知道哪个 `useState` 调用对应于哪个 state 变量？React 又是如何匹配前后两次渲染中的每一个 effect 的？**在下一章节中我们会学习[使用 Hook 的规则](/docs/hooks-rules.html) —— 这对 Hook 的工作至关重要。**

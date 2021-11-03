@@ -36,9 +36,9 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 ### 在线体验 {#online-playgrounds}
 
-如果你对体验 React 感兴趣，可以尝试在线代码编辑器。从 [CodePen](codepen://hello-world) 或 [CodeSandbox](https://codesandbox.io/s/new) 开始一个 React 版本的 Hello World 模版。
+如果你对体验 React 感兴趣，可以尝试在线代码编辑器。从 [CodePen](codepen://hello-world)，[CodeSandbox](https://codesandbox.io/s/new)，或者 [Stackblitz](https://stackblitz.com/fork/react) 开始一个 React 版本的 Hello World 模板。
 
-如果你喜欢使用自己的文本编辑器，也可以[下载这个 HTML 文件](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html)，然后编辑文件内容，最后再用浏览器从本地文件系统打开文件，预览页面效果。注意：这个文件中包含一个低效率的运行时代码转换脚本，所以我们推荐仅在简单的演示项目中使用。
+如果你喜欢使用自己的文本编辑器，也可以[下载这个 HTML 文件](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html)，然后编辑文件内容，最后再用浏览器从本地文件系统打开文件，预览页面效果。注意：这个文件中包含一个低效率的运行时代码转换脚本，所以我们推荐仅在简单的演示项目中使用。
 
 ### 在网站中添加 React {#add-react-to-a-website}
 
@@ -48,7 +48,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 当你刚开始一个 React 应用时，[通过 HTML 的 script 标签引入 React](/docs/add-react-to-a-website.html) 依然是最好的选项，因为这能让你的项目立即启动。
 
-但随着应用越来越大，你可能会需要更加集成化的安装方式。我们推荐了[一些 JavaScript 工具链](/docs/create-a-new-react-app.html)，它们适合大型应用。它们只需很少甚至零配置，就能让你充分利用丰富的 React 生态。
+但随着应用越来越大，你可能会需要更加集成化的安装方式。我们推荐了一些 JavaScript 工具链，它们适合大型应用。它们只需很少甚至零配置，就能让你充分利用丰富的 React 生态。[立即尝试](/docs/create-a-new-react-app.html)。
 
 ## 学习 React {#learn-react}
 
@@ -83,11 +83,11 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 ### 实践教程 {#practical-tutorial}
 
-如果你喜欢**边做边学**，请参考我们的[实践教程](/tutorial/tutorial.html)。在这篇教程中，我们用 React 构建了一个井字棋游戏。你可能想要跳过这部分，因为你并不是游戏开发者。但请给它一次机会，这篇教程中所涉及的技术是构建*任何* React 应用的基础，掌握它们将让你对 React 有更深的理解。
+如果你喜欢**边做边学**，请参考我们的[实践教程](/tutorial/tutorial.html)。在这篇教程中，我们用 React 构建了一个井字棋游戏。即使你对游戏开发并不感兴趣而想要跳过这部分，但还请给它一次机会。这篇教程中所涉及的技术是构建*任何* React 应用的基础，掌握它们将让你对 React 有更深的理解。
 
 ### 一步步学习指南 {#step-by-step-guide}
 
-如果你喜欢**一步步学习概念**，我们的 [Hello World](/docs/hello-world.html) 是最好的开始。指南里的每一章节都基于前一章节已学的内容，这样一步步过来你不会错过任何知识。
+如果你喜欢**一步步学习概念**，我们的 [核心概念简介](/docs/hello-world.html) 是最好的开始。指南里的每一章节都基于前一章节已学的内容，这样一步步过来你不会错过任何知识。
 
 ### React 哲学 {#thinking-in-react}
 
@@ -99,15 +99,15 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 ### 高级概念 {#advanced-concepts}
 
-一旦你已经熟知 React 的[主要概念](#main-concepts)，并且已经在项目中小试牛刀，你可能会对更高级的话题感兴趣。该章节内容将会介绍一些强大但并不常用的 React 特性，举个例子：[context](/docs/context.html) 和 [refs](/docs/refs-and-the-dom.html)。
+一旦你已经熟知 React 的[主要概念](/docs/hello-world.html)，并且已经在项目中小试牛刀，你可能会对更高级的话题感兴趣。该章节内容将会介绍一些强大但并不常用的 React 特性，比如：[context](/docs/context.html) 和 [refs](/docs/refs-and-the-dom.html)。
 
 ### API 参考 {#api-reference}
 
 当你想深入学习特定 React API 细节时，该章节将会变得非常有用。举个例子：[`React.Component` API 参考](/docs/react-component.html)能够介绍 `setState()` 方法是如何工作的，以及不同生命周期方法的使用场景。
 
-### 词汇表与常见问题 {#glossary-and-faq}
+### 术语表与常见问题 {#glossary-and-faq}
 
-[词汇表](/docs/glossary.html)中包含了 React 文档中最常见术语的概览。常见问题章节致力于简短解答一些大家普遍遇到的问题，包括[发送 AJAX 请求](/docs/faq-ajax.html)，[组件状态](/docs/faq-state.html)以及[文件结构](/docs/faq-structure.html) 等。
+[术语表](/docs/glossary.html)中包含了 React 文档中最常见术语的概览。常见问题章节致力于简短解答一些大家普遍遇到的问题，包括[发送 AJAX 请求](/docs/faq-ajax.html)，[组件状态](/docs/faq-state.html)以及[文件结构](/docs/faq-structure.html) 等。
 
 ## 获取最新消息 {#staying-informed}
 
@@ -115,7 +115,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 你也可以在 Twitter 上关注 [@reactjs 账号](https://twitter.com/reactjs)获取更新，但即使不这样做，仅通过官方博客你也不会错过任何必要的信息。
 
-并非每一个 React 版本都值得我们在博客上发布文章，但你可以在 [React 代码仓库中的 `CHANGELOG.md` 文件](https://github.com/facebook/react/blob/master/CHANGELOG.md)或[更新日志页面](https://github.com/facebook/react/releases)找到每个版本的更新日志。
+并非每一个 React 版本都值得我们在博客上发布文章，但你可以在 [React 代码仓库中的 `CHANGELOG.md` 文件](https://github.com/facebook/react/blob/main/CHANGELOG.md)或[更新日志页面](https://github.com/facebook/react/releases)找到每个版本的更新日志。
 
 ## 版本化文档 {#versioned-documentation}
 

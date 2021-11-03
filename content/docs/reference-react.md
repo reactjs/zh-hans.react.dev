@@ -124,9 +124,11 @@ const MyComponent = React.memo(function MyComponent(props) {
 });
 ```
 
-`React.memo` 为[高阶组件](/docs/higher-order-components.html)。它与 [`React.PureComponent`](#reactpurecomponent) 非常相似，但它适用于函数组件，但不适用于 class 组件。
+`React.memo` 为[高阶组件](/docs/higher-order-components.html)。
 
-如果你的函数组件在给定相同 props 的情况下渲染相同的结果，那么你可以通过将其包装在 `React.memo` 中调用，以此通过记忆组件渲染结果的方式来提高组件的性能表现。这意味着在这种情况下，React 将跳过渲染组件的操作并直接复用最近一次渲染的结果。
+如果你的组件在相同 props 的情况下渲染相同的结果，那么你可以通过将其包装在 `React.memo` 中调用，以此通过记忆组件渲染结果的方式来提高组件的性能表现。这意味着在这种情况下，React 将跳过渲染组件的操作并直接复用最近一次渲染的结果。
+
+`React.memo` 仅检查 props 变更。如果函数组件被 `React.memo` 包裹，且其实现中拥有 [`useState`](/docs/hooks-state.html)，[`useReducer`](/docs/hooks-reference.html#usereducer) 或 [`useContext`](/docs/hooks-reference.html#usecontext) 的 Hook，当 state 或 context 发生变化时，它仍会重新渲染。
 
 默认情况下其只会对复杂对象做浅层对比，如果你想要控制对比过程，那么请将自定义的比较函数通过第二个参数传入来实现。
 
@@ -173,12 +175,12 @@ React.createElement(
 ```
 React.cloneElement(
   element,
-  [props],
+  [config],
   [...children]
 )
 ```
 
-以 `element` 元素为样板克隆并返回新的 React 元素。返回元素的 props 是将新的 props 与原始元素的 props 浅层合并后的结果。新的子元素将取代现有的子元素，而来自原始元素的 `key` 和 `ref` 将被保留。
+以 `element` 元素为样板克隆并返回新的 React 元素。`config` 中应包含新的 props，`key` 或 `ref`。返回元素的 props 是将新的 props 与原始元素的 props 浅层合并后的结果。新的子元素将取代现有的子元素，如果在 `config` 中未出现 `key` 或 `ref`，那么原始元素的 `key` 和 `ref` 将被保留。
 
 `React.cloneElement()` 几乎等同于：
 
@@ -186,7 +188,7 @@ React.cloneElement(
 <element.type {...element.props} {...props}>{children}</element.type>
 ```
 
-但是，这也保留了组件的 `ref`。这意味着当通过 `ref` 获取子节点时，你将不会意外地从你祖先节点上窃取它。相同的 `ref` 将添加到克隆后的新元素中。
+但是，这也保留了组件的 `ref`。这意味着当通过 `ref` 获取子节点时，你将不会意外地从你祖先节点上窃取它。相同的 `ref` 将添加到克隆后的新元素中。如果存在新的 `ref` 或 `key` 将覆盖之前的。
 
 引入此 API 是为了替换已弃用的 `React.addons.cloneWithProps()`。
 
@@ -198,7 +200,7 @@ React.cloneElement(
 React.createFactory(type)
 ```
 
-返回用于生成指定类型 React 元素的函数。与 [`React.createElement()`](#createElement) 相似的是，类型参数既可以是标签名字符串（像是 `'div'` 或 `'span'`），也可以是 [React 组件](/docs/components-and-props.html) 类型 （class 组件或函数组件），或是 [React fragment](#reactfragment) 类型。
+返回用于生成指定类型 React 元素的函数。与 [`React.createElement()`](#createelement) 相似的是，类型参数既可以是标签名字符串（像是 `'div'` 或 `'span'`），也可以是 [React 组件](/docs/components-and-props.html) 类型 （class 组件或函数组件），或是 [React fragment](#reactfragment) 类型。
 
 此辅助函数已废弃，建议使用 JSX 或直接调用 `React.createElement()` 来替代它。
 

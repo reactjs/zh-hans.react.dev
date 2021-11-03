@@ -1,3 +1,7 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ */
+
 const readFileSync = require('fs').readFileSync;
 const resolve = require('path').resolve;
 const safeLoad = require('js-yaml').safeLoad;
@@ -19,11 +23,13 @@ exports.onPostBuild = async ({store}) => {
   );
 
   // versions.yml structure is [{path: string, url: string, ...}, ...]
-  createRedirects(
-    versions.filter(version => version.path && version.url).map(version => ({
-      fromPath: version.path,
-      toPath: version.url,
-    })),
+  await createRedirects(
+    versions
+      .filter(version => version.path && version.url)
+      .map(version => ({
+        fromPath: version.path,
+        toPath: version.url,
+      })),
     redirectsFilePath,
   );
 };

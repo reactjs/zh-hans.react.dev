@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
+ * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * @emails react-core
  * @flow
@@ -30,7 +30,7 @@ const AllBlogPosts = ({data, location}: Props) => (
         <div css={sharedStyles.articleLayout.content}>
           <Header>All Posts</Header>
           <TitleAndMetaTags
-            ogUrl={`${urlRoot}/blog/all.html`}
+            canonicalUrl={`${urlRoot}/blog/all.html`}
             title="React - All Posts"
           />
           <ul

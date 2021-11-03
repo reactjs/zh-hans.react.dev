@@ -36,7 +36,7 @@ React 支持所有的现代浏览器，包括 IE9 及以上版本，但是需要
 ReactDOM.render(element, container[, callback])
 ```
 
-在提供的 `container` 里渲染一个 React 元素，并返回对该组件的[引用](/docs/more-about-refs.html)（或者针对[无状态组件](/docs/components-and-props.html#functional-and-class-components)返回 `null`）。
+在提供的 `container` 里渲染一个 React 元素，并返回对该组件的[引用](/docs/more-about-refs.html)（或者针对[无状态组件](/docs/components-and-props.html#function-and-class-components)返回 `null`）。
 
 如果 React 元素之前已经在 `container` 里渲染过，这将会对其执行更新操作，并仅会在必要时改变 DOM 以映射最新的 React 元素。
 
@@ -50,7 +50,7 @@ ReactDOM.render(element, container[, callback])
 >
 > `ReactDOM.render()` 目前会返回对根组件 `ReactComponent` 实例的引用。
 > 但是，目前应该避免使用返回的引用，因为它是历史遗留下来的内容，而且在未来版本的 React 中，组件渲染在某些情况下可能会是异步的。
-> 如果你真的需要获得对根组件 `ReactComponent` 实例的引用，那么推荐为根元素添加 [callback ref](/docs/more-about-refs.html#the-ref-callback-attribute)。
+> 如果你真的需要获得对根组件 `ReactComponent` 实例的引用，那么推荐为根元素添加 [callback ref](/docs/refs-and-the-dom.html#callback-refs)。
 >
 > 使用 `ReactDOM.render()` 对服务端渲染容器进行 hydrate 操作的方式已经被废弃，并且会在 React 17 被移除。作为替代，请使用 [`hydrate()`](#hydrate)。
 

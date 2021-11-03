@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013-present, Facebook, Inc.
+ * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * @emails react-core
  */
@@ -8,10 +8,10 @@
 
 module.exports = {
   siteMetadata: {
-    title: 'React: A JavaScript library for building user interfaces',
+    title: 'React 中文文档: 用于构建用户界面的 JavaScript 库',
     siteUrl: 'https://zh-hans.reactjs.org',
     rssFeedTitle: 'React',
-    rssFeedDescription: 'A JavaScript library for building user interfaces',
+    rssFeedDescription: '用于构建用户界面的 JavaScript 库',
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',
@@ -55,19 +55,21 @@ module.exports = {
               maxWidth: 840,
             },
           },
+          'gatsby-remark-external-links',
           'gatsby-remark-header-custom-ids',
           {
             resolve: 'gatsby-remark-code-repls',
             options: {
               defaultText: '<b>在 CodePen 上尝试</b>',
               directory: `${__dirname}/examples/`,
-              externals: [
-                `//unpkg.com/react/umd/react.development.js`,
-                `//unpkg.com/react-dom/umd/react-dom.development.js`,
-              ],
-              dependencies: [`react`, `react-dom`],
-              redirectTemplate: `${__dirname}/src/templates/codepen-example.js`,
               target: '_blank',
+              codepen: {
+                redirectTemplate: `${__dirname}/src/templates/codepen-example.js`,
+                externals: [
+                  `//unpkg.com/react/umd/react.development.js`,
+                  `//unpkg.com/react-dom/umd/react-dom.development.js`,
+                ],
+              },
             },
           },
           {
@@ -158,5 +160,20 @@ module.exports = {
     },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'React Docs',
+        short_name: 'React', // eg. React [%LANG_CODE%]
+        // Translators: please change this and two above options (see https://www.gatsbyjs.org/packages/gatsby-plugin-manifest/#feature-configuration---optional)
+        lang: 'en',
+        start_url: '/',
+        background_color: '#20232a',
+        theme_color: '#20232a',
+        display: 'standalone',
+        icon: 'static/logo-512x512.png',
+        legacy: true,
+      },
+    },
   ],
 };

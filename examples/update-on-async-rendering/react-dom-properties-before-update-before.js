@@ -4,8 +4,8 @@ class ScrollingList extends React.Component {
 
   // highlight-range{1-8}
   componentWillUpdate(nextProps, nextState) {
-    // Are we adding new items to the list?
-    // Capture the scroll position so we can adjust scroll later.
+    // 我们正在向列表中添加新项吗？
+    // 捕获滚动位置，以便我们稍后可以调整滚动位置。
     if (this.props.list.length < nextProps.list.length) {
       this.previousScrollOffset =
         this.listRef.scrollHeight - this.listRef.scrollTop;
@@ -14,8 +14,8 @@ class ScrollingList extends React.Component {
 
   // highlight-range{1-10}
   componentDidUpdate(prevProps, prevState) {
-    // If previousScrollOffset is set, we've just added new items.
-    // Adjust scroll so these new items don't push the old ones out of view.
+    // 如果我们刚刚添加了新项，并且设置了 previousScrollOffset。
+    // 调整滚动位置，以便这些新项不会把旧项挤出视图。
     if (this.previousScrollOffset !== null) {
       this.listRef.scrollTop =
         this.listRef.scrollHeight -
@@ -27,7 +27,7 @@ class ScrollingList extends React.Component {
   render() {
     return (
       <div ref={this.setListRef}>
-        {/* ...contents... */}
+        {/* ...内容... */}
       </div>
     );
   }

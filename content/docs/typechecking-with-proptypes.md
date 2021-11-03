@@ -30,6 +30,8 @@ Greeting.propTypes = {
 };
 ```
 
+在此示例中，我们使用的是 class 组件，但是同样的功能也可用于函数组件，或者是由 [`React.memo`](/docs/react-api.html#reactmemo)/[`React.forwardRef`](/docs/react-api.html#reactforwardref) 创建的组件。
+
 `PropTypes` 提供一系列验证器，可用于确保组件接收到的数据类型是有效的。在本例中, 我们使用了 `PropTypes.string`。当传入的 `prop` 值类型不正确时，JavaScript 控制台将会显示警告。出于性能方面的考虑，`propTypes` 仅在开发模式下进行检查。
 
 ### PropTypes {#proptypes}
@@ -56,6 +58,9 @@ MyComponent.propTypes = {
 
   // 一个 React 元素。
   optionalElement: PropTypes.element,
+
+  // 一个 React 元素类型（即，MyComponent）。
+  optionalElementType: PropTypes.elementType,
 
   // 你也可以声明 prop 为类的实例，这里使用
   // JS 的 instanceof 操作符。
@@ -84,15 +89,21 @@ MyComponent.propTypes = {
     fontSize: PropTypes.number
   }),
 
+  // An object with warnings on extra properties
+  optionalObjectWithStrictShape: PropTypes.exact({
+    name: PropTypes.string,
+    quantity: PropTypes.number
+  }),
+
   // 你可以在任何 PropTypes 属性后面加上 `isRequired` ，确保
   // 这个 prop 没有被提供时，会打印警告信息。
   requiredFunc: PropTypes.func.isRequired,
 
-  // 任意类型的数据
+  // 任意类型的必需数据
   requiredAny: PropTypes.any.isRequired,
 
   // 你可以指定一个自定义验证器。它在验证失败时应返回一个 Error 对象。
-  // 请不要使用 `console.warn` 或抛出异常，因为这在 `onOfType` 中不会起作用。
+  // 请不要使用 `console.warn` 或抛出异常，因为这在 `oneOfType` 中不会起作用。
   customProp: function(props, propName, componentName) {
     if (!/matchme/.test(props[propName])) {
       return new Error(
@@ -167,7 +178,7 @@ ReactDOM.render(
 );
 ```
 
-如果你正在使用像 [transform-class-properties](https://babeljs.io/docs/plugins/transform-class-properties/) 的 Babel 转换工具，你也可以在 React 组件类中声明 `defaultProps` 作为静态属性。此语法提案还没有最终确定，需要进行编译后才能在浏览器中运行。要了解更多信息，请查阅 [class fields proposal](https://github.com/tc39/proposal-class-fields)。
+如果你正在使用像 [plugin-proposal-class-properties](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties/)（之前名为 _plugin-transform-class-properties_）的 Babel 转换工具，你也可以在 React 组件类中声明 `defaultProps` 作为静态属性。此语法提案还没有最终确定，需要进行编译后才能在浏览器中运行。要了解更多信息，请查阅 [class fields proposal](https://github.com/tc39/proposal-class-fields)。
 
 ```javascript
 class Greeting extends React.Component {
@@ -184,3 +195,47 @@ class Greeting extends React.Component {
 ```
 
 `defaultProps` 用于确保 `this.props.name` 在父组件没有指定其值时，有一个默认值。`propTypes` 类型检查发生在 `defaultProps` 赋值后，所以类型检查也适用于 `defaultProps`。
+
+### 函数组件 {#function-components}
+
+如果你在常规开发中使用函数组件，那你可能需要做一些适当的改动，以保证 PropsTypes 应用正常。
+
+假设你有如下组件：
+
+```javascript
+export default function HelloWorldComponent({ name }) {
+  return (
+    <div>Hello, {name}</div>
+  )
+}
+```
+
+如果要添加 PropTypes，你可能需要在导出之前以单独声明的一个函数的形式，声明该组件，具体代码如下：
+
+```javascript
+function HelloWorldComponent({ name }) {
+  return (
+    <div>Hello, {name}</div>
+  )
+}
+
+export default HelloWorldComponent
+```
+
+接着，可以直接在 `HelloWorldComponent` 上添加 PropTypes：
+
+```javascript
+import PropTypes from 'prop-types'
+
+function HelloWorldComponent({ name }) {
+  return (
+    <div>Hello, {name}</div>
+  )
+}
+
+HelloWorldComponent.propTypes = {
+  name: PropTypes.string
+}
+
+export default HelloWorldComponent
+```

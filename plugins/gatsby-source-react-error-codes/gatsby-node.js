@@ -1,7 +1,11 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ */
+
 const request = require('request-promise');
 
 const errorCodesUrl =
-  'https://raw.githubusercontent.com/facebook/react/master/scripts/error-codes/codes.json';
+  'https://raw.githubusercontent.com/facebook/react/main/scripts/error-codes/codes.json';
 
 exports.sourceNodes = async ({actions}) => {
   const {createNode} = actions;
@@ -20,9 +24,7 @@ exports.sourceNodes = async ({actions}) => {
     });
   } catch (error) {
     console.error(
-      `The gatsby-source-react-error-codes plugin has failed:\n${
-        error.message
-      }`,
+      `The gatsby-source-react-error-codes plugin has failed:\n${error.message}`,
     );
 
     process.exit(1);
