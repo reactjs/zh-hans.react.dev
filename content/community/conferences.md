@@ -42,7 +42,7 @@ June 17 & 21, 2022. In-person in Amsterdam, Netherlands + remote first interacti
 
 [Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
 
-## Past Conferences {#past-conferences}
+## 往届会议 {#past-conferences}
 
 ### React Advanced 2021 {#react-advanced-2021}
 October 22-23, 2021. In-person in London, UK + remote (hybrid event)
@@ -57,11 +57,7 @@ October 16, 2021 - remote event
 ### React Brussels 2021 {#react-brussels-2021} 
 October 15, 2021 - remote event
 
-<<<<<<< HEAD
-## 往届会议 {#past-conferences}
-=======
 [Website](https://www.react.brussels/) - [Twitter](https://twitter.com/BrusselsReact) - [LinkedIn](https://www.linkedin.com/events/6805708233819336704/)
->>>>>>> bac7292df6c4a9f40dcb8bc97d88fd0a83a7b31d
 
 ### render(ATL) 2021 {#render-atlanta-2021} 
 September 13-15, 2021. Atlanta, GA, USA

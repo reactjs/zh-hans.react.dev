@@ -75,11 +75,7 @@ Create React App 不会处理后端逻辑或操纵数据库；它只是创建一
 
 - **[Nx](https://nx.dev/react)** 是针对全栈 monorepo 的开发工具包，其内置了 React，Next.js，[Express](https://expressjs.com/) 等。
 
-<<<<<<< HEAD
-- **[Parcel](https://parceljs.org/)** 是一个快速的、零配置的网页应用打包器，并且可以[搭配 React 一起工作](https://parceljs.org/recipes.html#react)。
-=======
-- **[Parcel](https://parceljs.org/)** is a fast, zero configuration web application bundler that [works with React](https://parceljs.org/recipes/react/).
->>>>>>> bac7292df6c4a9f40dcb8bc97d88fd0a83a7b31d
+- **[Parcel](https://parceljs.org/)** 是一个快速的、零配置的网页应用打包器，并且可以[搭配 React 一起工作](https://parceljs.org/recipes/react/)。
 
 - **[Razzle](https://github.com/jaredpalmer/razzle)** 是一个无需配置的服务端渲染框架，但它提供了比 Next.js 更多的灵活性。
 
