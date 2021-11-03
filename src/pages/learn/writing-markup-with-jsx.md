@@ -3,8 +3,8 @@ title: 使用 JSX 书写标记语言
 ---
 
 <Intro>
-
-JSX 是一个 JavaScript 语法扩展，可以让我们在 JavaScript 文件中书写类似 HTML 的标记。虽然还有其他方式可以编写组件，但大部分 React 开发者都喜爱 JSX 的简洁性，并且在大部分代码库中使用这种方式。
+  
+JSX 是一个 JavaScript 语法扩展，可以让你在 JavaScript 文件中书写类似 HTML 的标记。虽然还有其它方式可以编写组件，但大部分 React 开发者更喜欢 JSX 的简洁性，并且在大部分代码库中使用它。
 
 </Intro>
 
