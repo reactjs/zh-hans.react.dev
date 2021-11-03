@@ -1,26 +1,28 @@
 ---
-title: Importing and Exporting Components
+title: 组件的导入和导出
+translators:
+  - Alienover
 ---
 
 <Intro>
 
-The magic of components lies in their reusability: you can create components that are composed of other components. But as you nest more and more components, it often makes sense to start splitting them into different files. This lets you keep your files easy to scan and reuse components in more places.
+组件的神奇之处在于它们的可重用性：你可以创建一个由其他组件构成的组件。但当你嵌套了越来越多的组件，这时则需要开始要将它们拆分成不同的文件。这样可以使得你更容易去找到这些文件，并且在其他更多的地方复用这些组件。
 
 </Intro>
 
 <YouWillLearn>
 
-* What a root component file is
-* How to import and export a component
-* When to use default and named imports and exports
-* How to import and export multiple components from one file
-* How to split components into multiple files
+* 何为根组件
+* 如何导入和导出一个组件
+* 何时使用默认和命名导入导出
+* 如何在一个文件里导入和导出多个组件
+* 如何将组件拆分成多个文件
 
 </YouWillLearn>
 
-## The root component file
+## 根组件文件 {#the-root-component-file}
 
-In [Your First Component](/learn/your-first-component), you made a `Profile` component and a `Gallery` component that renders it:
+在 [你的第一个组件](/learn/your-first-component) 中，你创建了一个 `Profile` 组件，并且渲染在 `Gallery` 组件里。
 
 <Sandpack>
 
@@ -37,7 +39,7 @@ function Profile() {
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>了不起的科学家们</h1>
       <Profile />
       <Profile />
       <Profile />
@@ -52,17 +54,17 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-These currently live in a **root component file,** named `App.js` in this example. In [Create React App](https://create-react-app.dev/), your app lives in `src/App.js`. Depending on your setup, your root component could be in another file, though. If you use a framework with file-based routing, such as Next.js, your root component will be different for every page.
+在这个例子中，这些组件目前都定义在一个名为 `App.js` 的 **根组件文件** 中，在 [Create React App](https://create-react-app.dev/) 中，你的应用定义在 `src/App.js`。但取决于你的配置，你的根组件可能会在其他文件里。如果你使用的框架是基于文件进行路由的，如 Next.js，那你每个页面的根组件都会不一样。
 
-## Exporting and importing a component
+## 导出和导入一个组件 {#exporting-and-importing-a-component}
 
-What if you want to change the landing screen in the future and put a list of science books there? Or place all the profiles somewhere else? It makes sense to move `Gallery` and `Profile` out of the root component file. This will make them more modular and reusable in other files. You can move a component in three steps:
+假如将来你想在首页加入一个关于科学书籍的列表？或者将所有的资料信息都放到其他地方？这时将 `Gallery` 和 `Profile` 组件移出根组件文件会更合理点。这会让这些组件更加模块化，并且可在其他文件里重复使用。你可以根据以下三个步骤去拆分你的组件：
 
-1. **Make** a new JS file to put the components in.
-2. **Export** your function component from that file (using either [default](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_the_default_export) or [named](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_named_exports) exports).
-3. **Import** it in the file where you’ll use the component (using the corresponding technique for importing [default](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import#importing_defaults) or [named](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import#import_a_single_export_from_a_module) exports).
+1. **创建** 一个新的 JS 文件来放这个组件。
+2. **导出** 该文件里的函数组件（可以使用 [默认导出](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_the_default_export) 或 [命名导出](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_named_exports)）
+3. **导入** 到你将会用到该组件的文件里 (可以根据相应的导出方式使用 [默认导入](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import#importing_defaults) 或 [命名导入](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import#import_a_single_export_from_a_module)).
 
-Here both `Profile` and `Gallery` have been moved out of `App.js` into a new file called `Gallery.js`. Now you can change `App.js` to import `Gallery` from `Gallery.js`:
+这里 `Profile` 和 `Gallery` 均从 `App.js` 移到一个名为 `Gallery.js` 的文件了。现在你可以在 `App.js` 里，从 `Gallery.js` 导入 `Gallery` 组件:
 
 <Sandpack>
 
@@ -89,7 +91,7 @@ function Profile() {
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>了不起的科学家们</h1>
       <Profile />
       <Profile />
       <Profile />
@@ -104,54 +106,54 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-Notice how this example is broken down into two component files now:
+这个例子里需要注意的是，如何将组件拆分成两个文件：
 
 1. `Gallery.js`:
-     - Defines the `Profile` component which is only used within the same file and is not exported.
-     - Exports the `Gallery` component as a **default export**.
+     - 定义了 `Profile` 组件，它仅在同一个文件内使用，没有被导出。
+     - 用 **默认导出** 的方式，将 `Gallery` 组件导出
 2. `App.js`:
-     - Imports `Gallery` as a **default import** from `Gallery.js`.
-     - Exports the root `App` component as a **default export**.
+     - 用 **默认导入** 的方式，将 `Gallery` 组件从 `Gallery.js` 里导入。
+     - 用 **默认导出** 的方式，将根组件 `App` 导出。
 
 
 <Note>
 
-You may encounter files that leave off the `.js` file extension like so:
+你可能会遇到一些文件是没有 `.js` 文件后缀的，如下所示：
 
 ```js 
 import Gallery from './Gallery';
 ```
 
-Either `'./Gallery.js'` or `'./Gallery'` will work with React, though the former is closer to how [native ES Modules](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules) work.
+不管是 `'Gallery.js'` 还是 `'.Gallery'`，在 React 里都能正常使用，只是前者更符合 [原生 ES 模块](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules)。
 
 </Note>
 
-<DeepDive title="Default vs Named Exports">
+<DeepDive title="默认导出 vs 命名导出">
 
-There are two primary ways to export values with JavaScript: default exports and named exports. So far, our examples have only used default exports. But you can use one or both of them in the same file. **A file can have no more than one _default_ export, but it can have as many _named_ exports as you like.**
+这是 JavaScript 里两个主要用来导出值的方法：默认导出和命名导出。到目前为止，我们的例子里仅仅是用到了默认导出。但你可以在一个文件里，使用其中一种或两种都使用。**一个文件里有且仅有一个 _默认_ 导出，但是可以有任意多个 _命名_ 导出。**
 
 ![Default and named exports](/images/docs/illustrations/i_import-export.svg)
 
-How you export your component dictates how you must import it. You will get an error if you try to import a default export the same way you would a named export! This chart can help you keep track:
+你组件的导出方式决定了你导入它的方式。当你用默认导入的方法去导入一个命名导出的组件，就会出现报错。你可以通过下面的表格来更好地理解：
 
-| Syntax           | Export statement                           | Import statement                          |
-| -----------      | -----------                                | -----------                               |
-| Default  | `export default function Button() {}` | `import Button from './button.js';`     |
-| Named    | `export function Button() {}`         | `import { Button } from './button.js';` |
+| 语法           | 导出语句                           | 导入语句                          |
+| -----------    | -----------                        | -----------                       |
+| 默认  | `export default function Button() {}` | `import Button from './button.js';`     |
+| 命名  | `export function Button() {}`         | `import { Button } from './button.js';` |
 
-When you write a _default_ import, you can put any name you want after `import`. For example, you could write `import Banana from './button.js'` instead and it would still provide you with the same default export. In contrast, with named imports, the name has to match on both sides. That's why they are called _named_ imports!
+当你用默认导入时，你可以在 `import` 语句后面起任何的名字。比如 `import Banana from './button.js'`，这样你还是能得到跟默认导出一样的内容。相反，对于命名导入，导入和导出的名字必须一致。这也是为什么叫 _命名_ 导入的原因！
 
-**People often use default exports if the file exports only one component, and use named exports if it exports multiple components and values.** Regardless of which coding style you prefer, always give meaningful names to your component functions and the files that contain them. Components without names, like `export default () => {}`, are discouraged because they make debugging harder.
+**通常文件里只有一个组件时，人们会使用默认导出，而当文件里有多个组件或值需要导出时，则使用命名导出。** 不管你使用哪种方式，请记得给你的组件和相应的文件起一个有意义的名字。我们不建议创建没有命名的组件，比如 `export default () => {}`，因为这样会使得调试变得更加困难。
 
 </DeepDive>
 
-## Exporting and importing multiple components from the same file
+## 从一个文件里导出和导入多个组件 {#exporting-and-importing-multiple-components-from-the-same-file}
 
-What if you want to show just one `Profile` instead of a gallery? You can export the `Profile` component, too. But `Gallery.js` already has a *default* export, and you can't have _two_ default exports. You could create a new file with a default export, or you could add a *named* export for `Profile`. **A file can only have one default export, but it can have numerous named exports!**
+假如你只想展示一个 `Profile` 而不展示整个图集呢？你也可以导出 `Profile` 组件。但 `Gallery.js` 里已经有一个 *默认* 导出了，你不能定义 _两个_ 默认导出。你可以在一个新文件里用默认导出，或者将 `Profile` 用 *命名* 导出。**一个文件里，有且仅有一个默认导出，但可以有多个命名导出！**
 
-> To reduce the potential confusion between default and named exports, some teams choose to only stick to one style (default or named), or avoid mixing them in a single file. It's a matter of preference. Do what works best for you!
+> 为了减少在默认导出和命名导出之间的混淆，一些团队会选择只使用一种风格（默认或者命名），或者禁止在单个文件内混合使用。这因人而异，选择最适合你的即可！
 
-First, **export** `Profile` from `Gallery.js` using a named export (no `default` keyword):
+首先，用命名导出的方法从 `Gallery.js` **导出** `Profile` 组件（没有 `default` 关键字）：
 
 ```js
 export function Profile() {
@@ -159,13 +161,13 @@ export function Profile() {
 }
 ```
 
-Then, **import** `Profile` from `Gallery.js` to `App.js` using a named import (with the curly braces):
+然后，用命名导入的方法从 `Gallery.js` **导入** `Profile` 组件（用大括号）:
 
 ```js
 import { Profile } from './Gallery.js';
 ```
 
-Finally, **render** `<Profile />` from the `App` component:
+最后，在 `App` 组件里 **渲染** `<Profile />`：
 
 ```js
 export default function App() {
@@ -173,7 +175,7 @@ export default function App() {
 }
 ```
 
-Now `Gallery.js` contains two exports: a default `Gallery` export, and a named `Profile` export. `App.js` imports both of them. Try editing `<Profile />` to `<Gallery />` and back in this example:
+现在，`Gallery.js` 里两个导出：一个是默认导出的 `Gallery`，和一个命名导出的 `Profile`。`App.js` 里都导入了这两个组件。尝试将 `<Profile />` 改成 `<Gallery />`，然后回到这个例子里：
 
 <Sandpack>
 
@@ -201,7 +203,7 @@ export function Profile() {
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>了不起的科学家们</h1>
       <Profile />
       <Profile />
       <Profile />
@@ -216,24 +218,24 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-Now you're using a mix of default and named exports:
+现在你正在混合使用默认导出和命名导出：
 
 * `Gallery.js`:
-  - Exports the `Profile` component as a **named export called `Profile`**.
-  - Exports the `Gallery` component as a **default export**.
+  - 用 **命名导出** 的方式，将 `Profile` 组件导出，并取名为 `Profile`。
+  - 用 **默认导出** 的方式，将 `Gallery` 组件导出。
 * `App.js`:
-  - Imports `Profile` as a **named import called `Profile`** from `Gallery.js`.
-  - Imports `Gallery` as a **default import** from `Gallery.js`.
-  - Exports the root `App` component as a **default export**.
+  - 用 **命名导入** 的方式，从 `Gallery.js` 导入 `Profile` 组件，并取名为 `Profile`。
+  - 用 **默认导入** 的方式，从 `Gallery.js` 导入 `Gallery` 组件。
+  - 用 **默认导出** 的方式，将根组件 `App` 导出。
 
 <Recap>
 
-On this page you learned:
+在这个页面里，你学到了：
 
-* What a root component file is
-* How to import and export a component
-* When and how to use default and named imports and exports
-* How to export multiple components from the same file
+* 何为根组件
+* 如何导入和导出一个组件
+* 何时和如何使用默认和命名导入导出
+* 如何在一个文件里导出多个组件
 
 </Recap>
 
@@ -241,22 +243,22 @@ On this page you learned:
 
 <Challenges>
 
-### Split the components further
+### 进一步拆分组件
 
-Currently, `Gallery.js` exports both `Profile` and `Gallery`, which is a bit confusing.
+现在，`Gallery.js` 同时导出了 `Profile` 和 `Gallery`，这会让人感到有点混淆。
 
-Move the `Profile` component to its own `Profile.js`, and then change the `App` component to render both `<Profile />` and `<Gallery />` one after another.
+尝试将 `Profile` 组件移动到一个新的文件 `Profile.js`，然后更新 `App` 组件，依次渲染 `<Profile />` 和 `<Gallery />` 。
 
-You may use either a default or a named export for `Profile`, but make sure that you use the corresponding import syntax in both `App.js` and `Gallery.js`! You can refer to the table from the deep dive above:
+你也许会使用默认导出或者命名导出的方式来导出 `Profile` 组件，但请记住在 `App.js` 和 `Gallery.js` 里使用相应的导入语句！你可以参考下面的表格：
 
-| Syntax           | Export statement                           | Import statement                          |
-| -----------      | -----------                                | -----------                               |
-| Default  | `export default function Button() {}` | `import Button from './button.js';`     |
-| Named    | `export function Button() {}`         | `import { Button } from './button.js';` |
+| 语法           | 导出语句                           | 导入语句                          |
+| -----------    | -----------                        | -----------                       |
+| 默认  | `export default function Button() {}` | `import Button from './button.js';`     |
+| 命名  | `export function Button() {}`         | `import { Button } from './button.js';` |
 
 <Hint>
 
-Don't forget to import your components where they are called. Doesn't `Gallery` use `Profile`, too?
+不要忘记在调用它们的地方导入你的组件。`Gallery` 里不也调用了 `Profile` 吗？
 
 </Hint>
 
@@ -289,7 +291,7 @@ export function Profile() {
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>了不起的科学家们</h1>
       <Profile />
       <Profile />
       <Profile />
@@ -307,11 +309,11 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-After you get it working with one kind of exports, make it work with the other kind.
+在你使用其中一种导出方式完成以上问题后，请尝试使用另一种导出方式实现。
 
 <Solution>
 
-This is the solution with named exports:
+这是用了命名导出的解决方案：
 
 <Sandpack>
 
@@ -335,7 +337,7 @@ import { Profile } from './Profile.js';
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>了不起的科学家们</h1>
       <Profile />
       <Profile />
       <Profile />
@@ -361,7 +363,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-This is the solution with default exports:
+这是用了默认导出的解决方案：
 
 <Sandpack>
 
@@ -385,7 +387,7 @@ import Profile from './Profile.js';
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>了不起的科学家们</h1>
       <Profile />
       <Profile />
       <Profile />
