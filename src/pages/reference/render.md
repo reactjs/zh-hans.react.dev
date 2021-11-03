@@ -1,6 +1,8 @@
 ---
 title: render()
 layout: API
+translators:
+  - liu-jin-yi
 ---
 
 <Intro>
