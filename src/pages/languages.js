@@ -54,9 +54,7 @@ const Languages = ({location}: Props) => (
           />
 
           <div css={sharedStyles.markdown}>
-            <p>
-              React 文档提供了以下语言版本：
-            </p>
+            <p>React 文档提供了以下语言版本：</p>
 
             <LanguagesGrid languages={complete} />
 

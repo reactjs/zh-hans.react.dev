@@ -70,7 +70,7 @@ exports.onRenderBody = ({setHeadComponents}, pluginOptions) => {
       var s = document.getElementsByTagName("script")[0]; 
       s.parentNode.insertBefore(hm, s);
     })();
-  `
+  `;
 
   const style = icon ? (
     <style key="gatsby-remark-header-custom-ids-style" type="text/css">
