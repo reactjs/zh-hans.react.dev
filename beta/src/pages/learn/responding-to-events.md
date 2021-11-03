@@ -20,7 +20,7 @@ React 允许你在 JSX 中添加事件处理函数。事件处理函数是你自
 
 ## 添加事件处理函数 {#adding-event-handlers}
 
-要添加一个事件处理函数，你需要先定义一个函数，然后 [将它作为 prop 传入](/learn/passing-props-to-a-component) 合适的 JSX 标签。例如，这是一个尚未执行任何操作的按钮：
+如需添加一个事件处理函数，你需要先定义一个函数，然后 [将其作为 prop 传入](/learn/passing-props-to-a-component) 合适的 JSX 标签。例如，这里有一个没绑定任何事件的按钮：
 
 <Sandpack>
 
@@ -28,7 +28,7 @@ React 允许你在 JSX 中添加事件处理函数。事件处理函数是你自
 export default function Button() {
   return (
     <button>
-      我什么都不做
+      未绑定任何事件
     </button>
   );
 }
@@ -36,11 +36,11 @@ export default function Button() {
 
 </Sandpack>
 
-你可以通过以下三个步骤使它在用户点击时显示消息：
+按照如下三个步骤，即可让它在用户点击时显示消息：
 
 1. 在 `Button` 组件 *内部* 声明一个名为 `handleClick` 的函数。
 2. 实现函数内部的逻辑（使用 `alert` 来显示消息）。
-3. 添加 `onClick={handleClick}` 到 `<button>` JSX 。
+3. 添加 `onClick={handleClick}` 到 `<button>` JSX 中。
 
 <Sandpack>
 
