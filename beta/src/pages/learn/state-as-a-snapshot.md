@@ -1,6 +1,6 @@
 ---
 title: State 作为快照
-Translators:
+translators:
   - 7ooz
 ---
 
