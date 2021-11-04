@@ -20,7 +20,7 @@ translators:
 
 ## 选择性地返回 JSX {#conditionally-returning-jsx}
 
-假设有一个 `PackingList` 组件，里面渲染多个 `Item` 组件，每个物品均可被标记为已被打包与否：
+假设有一个 `PackingList` 组件，里面渲染多个 `Item` 组件，每个物品可标记为打包与否：
 
 <Sandpack>
 
@@ -54,9 +54,9 @@ export default function PackingList() {
 
 </Sandpack>
 
-可以注意到的是，有些 `Item` 组件的 `isPacked` 属性是被设为 `true` 而不是 `false`。你想在那些满足 `isPacked={true}` 条件的物品旁加上一个勾选符号（✔）。
+需要注意的是，有些 `Item` 组件的 `isPacked` 属性是被设为 `true` 而不是 `false`。你可以在那些满足 `isPacked={true}` 条件的物品旁加上一个勾选符号（✔）。
 
-你可以用 [if/else 语句](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) 去实现：
+你可以用 [if/else 语句](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) 去判断：
 
 ```js
 if (isPacked) {
