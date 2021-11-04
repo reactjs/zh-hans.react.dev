@@ -1045,11 +1045,7 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 **[查看此步完整代码示例](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
 
-<<<<<<< HEAD
 当我们遍历 `history` 数组时，`step` 变量指向的是当前 `history` 元素的值，而 `move` 则指向的是 `history` 元素的索引。此处，我们只对 `move` 感兴趣，因此未对 `step` 做任何处理。
-=======
-As we iterate through `history` array, `step` variable refers to the current `history` element value, and `move` refers to the current `history` element index. We are only interested in `move` here, hence `step` is not getting assigned to anything.
->>>>>>> f848b3d3756d92e183e67553e1a4cdde040c56f4
 
 对于井字棋历史记录的每一步，我们都创建出了一个包含按钮 `<button>` 元素的 `<li>` 的列表。这些按钮拥有一个 `onClick` 事件处理函数，在这个函数里调用了 `this.jumpTo()` 方法。但是我们还没有实现 `jumpTo()` 方法。到目前为止，我们可以看到一个游戏历史步骤的列表，以及开发者工具控制台的警告信息，警告信息如下：
 
