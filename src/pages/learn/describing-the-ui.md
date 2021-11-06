@@ -315,7 +315,7 @@ export function getImageUrl(person, size = 's') {
 
 </LearnMore>
 
-## 条件渲染
+## 条件渲染 {#conditional-rendering}
 
 你的组件经常需要根据不同的条件来显示不同的东西。在 React 中，你可以使用 JavaScript 语法，如`if`语句、`&&`和`? :`操作符有条件地渲染 JSX。
 
