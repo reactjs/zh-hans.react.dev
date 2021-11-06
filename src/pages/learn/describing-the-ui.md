@@ -117,7 +117,7 @@ img { margin: 0 10px 10px 0; }
 阅读 **[导入与导出组件](/learn/importing-and-exporting-components)** 去学习如何切分组件。
 </LearnMore>
 
-## 使用 JSX 编写标记
+## 使用 JSX 编写标记 {#writing-markup-with-jsx}
 
 每个 React 组件都是一个 JavaScript 函数，它可能包含一些标记，React 会将其渲染到浏览器中。React 组件使用一种叫做 JSX 的语法扩展来表示该标记。JSX 看起来很像 HTML，但它更严格一些，可以显示动态信息。
 
