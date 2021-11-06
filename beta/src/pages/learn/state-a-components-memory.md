@@ -1,15 +1,22 @@
 ---
 title: "State: A Component's Memory"
+translators:
+  - 7ooz
 ---
 
 <Intro>
 
+作为交互的结果，组件通常需要更改屏幕上的内容。输入表单应该更新输入字段，单击图片轮播上的“下一张”应该更改显示的图片，单击“购买”应该将商品放入购物车。组件需要“记忆”信息：当前输入值、当前图片、购物车。在 React 中，这种组件特有的内存称为 **state**。
 Components often need to change what's on the screen as a result of an interaction. Typing into the form should update the input field, clicking "next" on an image carousel should change which image is displayed, clicking "buy" should put a product in the shopping cart. Components need to "remember" things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called **state**.
 
 </Intro>
 
 <YouWillLearn>
 
+* 如何使用 [`useState`](/reference/usestate) Hook 添加 state 变量
+* `useState` Hook 返回哪一对值
+* 如何添加多个 state 变量
+* 为什么 state 被称作局部的
 * How to add a state variable with the [`useState`](/reference/usestate) Hook
 * What pair of values the `useState` Hook returns
 * How to add more than one state variable
@@ -19,6 +26,7 @@ Components often need to change what's on the screen as a result of an interacti
 
 ## When a regular variable isn’t enough
 
+以下是一个渲染雕塑图片的组件。单击“下一步”按钮应该将 `index` 更改为 `1`，再次点击更改为 `2`，以此类推显示下一个雕塑。但是，这**行不通**（你可以尝试一下！）：
 Here's a component that renders a sculpture image. Clicking the "Next" button should show the next sculpture by changing the `index` to `1`, then `2`, and so on. However, this **won't work** (you can try it!):
 
 <Sandpack>
@@ -151,45 +159,61 @@ button {
 
 </Sandpack>
 
+`handleClick()` 事件处理函数正在更新局部变量 `index`。但是有两件事阻止了这种变化是可见的：
 The `handleClick()` event handler is updating a local variable, `index`. But two things prevent that change from being visible:
 
+1. **局部变量不会在多次渲染间保存。** 当 React 第二次渲染这个组件时，它会从头开始渲染——不考虑对局部变量的任何更改。
+2. **对局部变量的更改不会触发渲染。** React 没有意识到它需要使用新数据再次渲染组件。
 1. **Local variables don't persist between renders.** When React renders this component a second time, it renders it from scratch—it doesn't consider any changes to the local variables.
 2. **Changes to local variables won't trigger renders.** React doesn't realize it needs to render the component again with the new data.
 
+要使用新数据更新组件，需要做两件事：
 To update a component with new data, two things need to happen:
 
+1. **保留**渲染之间的数据。
+2. **触发** React 使用新数据渲染组件（重新渲染）。
 1. **Retain** the data between renders.
 2. **Trigger** React to render the component with new data (re-rendering).
 
+[`useState`](/reference/usestate) Hook 提供了这两个功能：
 The [`useState`](/reference/usestate) Hook provides those two things:
 
+1. **State 变量** 用于保留渲染之间的数据。
+2. **State setter 函数** 更新变量并触发 React 再次渲染组件。
 1. A **state variable** to retain the data between renders.
 2. A **state setter function** to update the variable and trigger React to render the component again.
 
 ## Adding a state variable
 
+要添加 state 变量，请从文件顶部的 React 导入 `useState`：
 To add a state variable, import `useState` from React at the top of the file:
 
 ```js
 import { useState } from 'react';
 ```
 
+然后，替换掉这一行：
 Then, replace this line:
 
 ```js
 let index = 0;
 ```
 
+修改为
 with
 
 ```js
 const [index, setIndex] = useState(0);
-````
+```
 
+`index` 是一个 state 变量，`setIndex` 是 setter 函数。
 `index` is a state variable and `setIndex` is the setter function.
 
+
+> 这里的 `[` 和 `]` 语法称为[数组解构](/learn/a-javascript-refresher#array-destructuring)，它允许你从数组中读取值。 `useState` 返回的数组总是正好有两个项。
 > The `[` and `]` syntax here is called [array destructuring](/learn/a-javascript-refresher#array-destructuring) and it lets you read values from an array. The array returned by `useState` always has exactly two items.
 
+以下展示了它们在 `handleClick()` 中是如何协同工作的：
 This is how they work together in `handleClick()`:
 
 ```js
@@ -198,6 +222,7 @@ function handleClick() {
 }
 ```
 
+现在点击“下一步”按钮切换当前雕塑：
 Now clicking the "Next" button switches the current sculpture:
 
 <Sandpack>
@@ -333,43 +358,59 @@ button {
 
 ### Meet your first Hook
 
+在 React 中，`useState` 以及任何其他以“`use`”开头的函数都被称为 **Hook**。
 In React, `useState`, as well as any other function starting with "`use`," is called a **Hook**.
 
+Hooks 是特殊的函数，只有在 React [渲染](/learn/render-and-commit#step-1-trigger-a-render) 时才可用（我们将在下一节详细介绍）。它们让你“hook into”到不同的 React 特性。
 Hooks are special functions that are only available while React is [rendering](/learn/render-and-commit#step-1-trigger-a-render) (which we'll get into in more detail on the next page). They let you "hook into" different React features.
 
+State 只是这些功能之一，但你稍后会遇到其他 Hook。
 State is just one of those features, but you will meet the other Hooks later.
 
 <Gotcha>
 
+**Hooks——以`use`开头的函数——只能在组件或[自定义 Hooks](/learn/reusing-logic-with-custom-hooks)的顶层调用。**你不能调用条件、循环或其他嵌套函数内的 Hooks。Hooks 是函数，但将它们视为关于组件需求的无条件声明会很有帮助。你在组件顶部“使用”React 功能类似于在文件顶部“导入”模块的方式。
 **Hooks—functions starting with `use`—can only be called at the top level of your components or [your own Hooks](/learn/reusing-logic-with-custom-hooks).** You can't call Hooks inside conditions, loops, or other nested functions. Hooks are functions, but it's helpful to think of them as unconditional declarations about your component's needs. You "use" React features at the top of your component similar to how you "import" modules at the top of your file.
 
 </Gotcha>
 
 ### Anatomy of `useState`
 
+当你调用 [`useState`](/reference/usestate) 时，你是在告诉 React 你想让这个组件记住一些东西：
 When you call [`useState`](/reference/usestate), you are telling React that you want this component to remember something:
 
 ```js
 const [index, setIndex] = useState(0);
 ```
 
+在这个例子里，你希望 React 记住 `index`。
 In this case, you want React to remember `index`.
 
+> 惯例是将这对命名为 `const [thing, setThing]`。你可以将其命名为任何你喜欢的名称，但约定俗成能使跨项目的事情更容易理解。
 > The convention is to name this pair like `const [thing, setThing]`. You could name it anything you like, but conventions make things easier to understand across projects.
 
+`useState` 的唯一参数是状态变量的**初始值**。在这个例子中，`index` 的初始值被设置为 `useState(0)` 的 `0`。
 The only argument to `useState` is the **initial value** of your state variable. In this example, the `index`'s initial value is set to `0` with `useState(0)`. 
 
+每次你的组件渲染时，`useState` 都会给你一个包含两个值的数组：
 Every time your component renders, `useState` gives you an array containing two values:
 
+1. **state 变量** (`index`) 与你存储的值。
+2. **state setter 函数** (`setIndex`) 可以更新状态变量并触发 React 重新渲染组件。
 1. The **state variable** (`index`) with the value you stored.
 2. The **state setter function** (`setIndex`) which can update the state variable and trigger React to render the component again.
 
+这是实际发生的情况：
 Here's how that happens in action:
 
 ```js
 const [index, setIndex] = useState(0);
 ```
 
+1. **组件第一次渲染。** 因为你将 `0` 作为 `index` 的初始值传递给 `useState`，它将返回 `[0, setIndex]`。 React 记得 `0` 是最新的状态值。
+2. **你更新了状态。**当用户点击按钮时，它会调用`setIndex(index + 1)`。 `index` 是 `0`，所以它是 `setIndex(1)`。这告诉 React 现在记住 `index` 是 `1` 并触发另一个渲染。
+3. **组件第二次渲染。** React 仍然看到 `useState(0)`，但是因为 React *记住* 你将 `index` 设置为 `1`，它返回 `[1, setIndex]`。
+4. 以此类推！
 1. **Your component renders the first time.** Because you passed `0` to `useState` as the initial value for `index`, it will return `[0, setIndex]`. React remembers `0` is the latest state value.
 2. **You update the state.** When a user clicks the button, it calls `setIndex(index + 1)`. `index` is `0`, so it's `setIndex(1)`. This tells React to remember `index` is `1` now and triggers another render.
 3. **Your component's second render.** React still sees `useState(0)`, but because React *remembers* that you set `index` to `1`, it returns `[1, setIndex]` instead.
@@ -377,6 +418,7 @@ const [index, setIndex] = useState(0);
 
 ## Giving a component multiple state variables
 
+您可以在一个组件中拥有任意多种类型的状态变量。该组件有两个状态变量，一个数字 `index` 和一个布尔值 `showMore`，当您单击“显示详细信息”时会切换该变量：
 You can have as many state variables of as many types as you like in one component. This component has two state variables, a number `index` and a boolean `showMore` that's toggled when you click "Show details":
 
 <Sandpack>
@@ -516,16 +558,21 @@ button {
 
 </Sandpack>
 
+如果它们的 state 不相关，那么拥有多个 state 变量是一个好主意，例如本例中的 `index` 和 `showMore`。但是，如果您发现经常一起更改两个 state 变量，则最好将它们合并为一个。例如，如果您有一个包含多个字段的表单，那么拥有一个保存对象的单个 state 变量比每个字段的 state 变量更方便。 [Choosing the State Structure](/learn/choosing-the-state-structure)在这方面有更多提示。
 It is a good idea to have multiple state variables if their state is unrelated, like `index` and `showMore` in this example. But if you find that you often change two state variables together, it might be better to combine them into a single one. For example, if you have a form with many fields, it's more convenient to have a single state variable that holds an object than state variable per field. [Choosing the State Structure](/learn/choosing-the-state-structure) has more tips on this.
 
 <DeepDive title="How does React know which state to return?">
 
+您可能已经注意到，`useState` 调用没有收到关于它引用的*哪个* state 变量的任何信息。没有传递给`useState` 的“标识符”，那么它如何知道要返回哪个 state 变量呢？它是否依赖于解析函数之类的魔法？答案是否。
 You might have noticed that the `useState` call does not receive any information about *which* state variable it refers to. There is no "identifier" that is passed to `useState`, so how does it know which of the state variables to return? Does it rely on some magic like parsing your functions? The answer is no.
 
+相反，为了启用其简洁的语法，Hooks **依赖于同一组件的每次渲染**的稳定调用顺序。这在实践中很有效，因为如果你遵循上面的规则（“只在顶层调用 Hooks”），Hooks 将始终以相同的顺序被调用。此外，[linter 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks) 可以捕获大多数错误。
 Instead, to enable their concise syntax, Hooks **rely on a stable call order on every render of the same component**. This works well in practice because if you follow the rule above ("only call Hooks at the top level"), Hooks will always be called in the same order. Additionally, a [linter plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) catches most mistakes.
 
+在内部，React 为每个组件保存了一个成对 state 数组。它还维护当前对索引，在渲染之前将其设置为“0”。每次调用 useState 时，React 都会为您提供下一个状态对并增加索引。您可以在 [React Hooks: Not Magic, Just Arrays](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e) 中阅读有关此机制的更多信息。
 Internally, React holds an array of state pairs for every component. It also maintains the current pair index, which is set to `0` before rendering. Each time you call `useState`, React gives you the next state pair and increments the index. You can read more about this mechanism in [React Hooks: Not Magic, Just Arrays](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e).
 
+这个例子**不使用 React**，但它让你了解 `useState` 在内部是如何工作的：
 This example **doesn't use React** but it gives you an idea of how `useState` works internally:
 
 <Sandpack>
@@ -718,14 +765,17 @@ button { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
+你不必理解它就可以使用 React，但你可能会发现这是一个有用的心智模型。
 You don't have to understand it to use React, but you might find this a helpful mental model.
 
 </DeepDive>
 
 ## State is isolated and private
 
+State 是屏幕上组件实例内部的状态。换句话说，**如果你渲染同一个组件两次，每个副本都会有完全隔离的 state！**改变其中一个不会影响另一个。
 State is local to a component instance on the screen. In other words, **if you render the same component twice, each copy will have completely isolated state!** Changing one of them will not affect the other.
 
+在这个例子中，之前的 `Gallery` 组件被渲染了两次，其逻辑没有改变。尝试单击每个画廊内的按钮。请注意，它们的 state 是独立的：
 In this example, the `Gallery` component from earlier is rendered twice with no changes to its logic. Try clicking the buttons inside each of the galleries. Notice that their state is independent:
 
 <Sandpack>
@@ -885,14 +935,24 @@ button {
 
 </Sandpack>
 
+这就是 state 与您可能在模块顶部声明的常规变量不同的原因。 State 与特定的函数调用或代码中的某个位置无关，但它是屏幕上特定位置的“本地”。你渲染了两个 `<Gallery />` 组件，所以它们的 state 是分开存储的。
 This is what makes state different from regular variables that you might declare at the top of your module. State is not tied to a particular function call or a place in the code, but it's "local" to the specific place on the screen. You rendered two `<Gallery />` components, so their state is stored separately.
 
+还要注意 `Page` 组件如何“不知道”关于 `Gallery` state 的任何信息，甚至不知道它是否有任何 state。与 props 不同，**state 对于声明它的组件来说是完全私有的**。父组件无法更改它。这使您可以向任何组件添加状态或将其删除，而不会影响其余组件。
 Also notice how the `Page` component doesn't "know" anything about the `Gallery` state or even whether it has any. Unlike props, **state is fully private to the component declaring it**. The parent component can't change it. This lets you add state to any component or remove it without impacting the rest of the components.
 
+如果您希望两个画廊保持其 states 同步怎么办？在 React 中执行此操作的正确方法是从子组件中*删除* state 并将其添加到它们最近的共享父组件中。接下来的几页将专注于组织单个组件的状态，但我们将在 [组件间共享状态](/learn/sharing-state-between-components) 中回到这个主题。
 What if you wanted both galleries to keep their states in sync? The right way to do it in React is to *remove* state from child components and add it to their closest shared parent. The next few pages will focus on organizing state of a single component, but we will return to this topic in [Sharing State Between Components](/learn/sharing-state-between-components).
 
 <Recap>
 
+* 当组件需要在渲染之间“记住”一些信息时使用状态变量。
+* 状态变量是通过调用`useState` Hook 来声明的。
+* Hooks 是以 `use` 开头的特殊函数。它们让你“连接”到像状态这样的 React 特性。
+* Hooks 可能会让你想起导入：它们需要被无条件调用。调用 Hooks，包括 `useState`，仅在组件或另一个 Hook 的顶层有效。
+* `useState` Hook 返回一对值：当前状态和更新它的函数。
+* 您可以拥有多个状态变量。在内部，React 按顺序匹配它们。
+* 状态是组件私有的。如果你在两个地方渲染它，每个副本都有自己的状态。
 * Use a state variable when a component needs to "remember" some information between renders.
 * State variables are declared by calling the `useState` Hook.
 * Hooks are special functions that start with `use`. They let you "hook into" React features like state.
