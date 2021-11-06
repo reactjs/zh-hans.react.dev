@@ -363,7 +363,7 @@ export default function PackingList() {
 
 </LearnMore>
 
-## 渲染列表
+## 渲染列表 {#rendering-lists}
 
 你通常希望显示来自数据集合的多个类似组件。你可以使用 JavaScript 的 `filter()` 和`map()` 和 React 来过滤和转换你的数据数组为一个组件数组。
 
