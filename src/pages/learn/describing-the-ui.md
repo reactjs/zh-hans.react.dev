@@ -463,7 +463,7 @@ h2 { font-size: 20px; }
 
 </LearnMore>
 
-## 保持组件的纯粹
+## 保持组件的纯粹 {#keeping-components-pure}
 
 有些 JavaScript 函数是 "纯粹"的。一个纯函数：
 
