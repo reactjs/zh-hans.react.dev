@@ -65,8 +65,8 @@ class CodeEditor extends Component {
           Babel 加载失败。
           <br />
           <br />
-          这可能是广告拦截器导致的。如果你正在使用此类插件，
-          建议将 reactjs.org 加入白名单，以保证代码示例能够正常工作。
+          这可能是广告拦截器导致的。如果你正在使用此类插件，建议将 reactjs.org
+          加入白名单，以保证代码示例能够正常工作。
         </span>
       );
     } else if (error != null) {
