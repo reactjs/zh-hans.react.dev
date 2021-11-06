@@ -1,52 +1,52 @@
 ---
-title: Updating Arrays in State
+title: 修改 State 中的数组
 ---
 
 <Intro>
 
-Arrays are another type of mutable JavaScript objects you can store in state and should treat as immutable. Just like with objects, when you want to update an array stored in state, you need to create a new one (or make a copy of an existing one), and then set state to use the new array.
+数组是另外一种可以存储在 state 中的 JavaScript 对象，它虽然是可变的，但是却应该被视为不可变的。同对象一样，当你想要更新 state 中的数组的时候，你需要创建一个新的数组（或者将已有的数组复制成一个新的数组），并将这个新数组设置到 state 上。
 
 </Intro>
 
 <YouWillLearn>
 
-- How to add, remove, or change items in an array in React state
-- How to update an object inside of an array
-- How to make array copying less repetitive with Immer
+- 如何添加、删除或者修改 React state 中的数组中某个元素的值
+- 如何更新数组中某个类型为对象的元素
+- 如何使用 Immer 来降低数组重复复制的次数
 
 </YouWillLearn>
 
-## Updating arrays without mutation
+## 不使用 mutation 的情况下更新数组
 
-In JavaScript, arrays are just another kind of object. [Like with objects](/learn/updating-objects-in-state), **you should treat arrays in React state as read-only**. This means that you shouldn't reassign items inside an array like `arr[0] = 'bird'`, and you also shouldn't use methods that mutate the array, such as `push()` and `pop()`.
+在 JavaScript 中，数组就是对象的一种. [同对象一样](/learn/updating-objects-in-state), **你需要将 React state 中的数组视为只读的**。这意味着你不应该使用类似于 `arr[0] = 'bird'` 这样的方式来修改数组中的某个元素，你也不应该使用会改变原始数组的方法，例如 `push()` 和 `pop()`。
 
-Instead, every time you want to update an array, you'll want to pass a *new* array to your state setting function. To do that, you can create a new array from the original array in your state by calling its non-mutating methods like `filter()` and `map()`. Then you can set your state to the resulting new array.
+取而代之的，每次你想要更新一个数组时，你需要把一个*新*的数组传入 state 的 setting 方法中。为了实现这一点，你可以通过使用一些不会改变原始数组的方法，例如 `filter()` 和 `map()` ，从原始数组创建一个新的数组。之后你就可以把这个新创建的数组设置到 state 上。
 
-Here is a reference table of common array operations. When dealing with arrays inside React state, you will need to avoid the methods in the left column, and instead prefer the methods in the right column:
+这里是数组相关操作的一张参考表。当你对 React state 中的数组进行操作时，你需要避免使用表格左侧的方法，而尽量使用表格右侧的方法：
 
-|         | avoid (mutates the array) | prefer (returns a new array) |
+|         | 避免使用 (会改变原始数组) | 推荐使用 (会返回一个新数组） |
 |---------|----------------|-------------------|
-| adding    | `push`, `unshift` | `concat`, `[...arr]` spread syntax ([example](#adding-to-an-array))|
-| removing | `pop`, `shift`, `splice` | `filter`, `slice` ([example](#removing-from-an-array))
-|replacing| `splice`, `arr[i] = ...` assignment | `map` ([example](#replacing-items-in-an-array))          |
-|sorting| `reverse`, `sort` | copy the array first ([example](#making-other-changes-to-an-array)) |
+| 添加元素 | `push` ， `unshift` | `concat` ， `[...arr]` 展开语法 （[例子](#向数组中添加元素)）|
+| 删除元素 | `pop` ， `shift` ， `splice` | `filter` ， `slice` （[例子](#从数组中删除元素)）
+| 替换元素 | `splice` ， `arr[i] = ...` 赋值 | `map` （[例子](#替换数组中的元素)） |
+| 排序 | `reverse` ， `sort` | 先将数组复制一份 （[例子](#其他改变数组的情况)） |
 
-Alternatively, you can [use Immer](#write-concise-update-logic-with-immer) which lets you use methods from both columns.
+或者，你可以[使用 Immer](#使用-Immer-编写简洁的更新逻辑) ，这样你便可以使用表格中的所有方法了。
 
 <Gotcha>
 
-Unfortunately, [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) and [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) are named similarly but are very different:
+不幸的是，[`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 和 [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 虽然名字相似，但是却迥然不同：
 
-* `slice` lets you copy an array or a part of it.
-* `splice` **mutates** the array (to insert or delete items).
+* `slice` 使得你可以复制数组或者它的子数组。
+* `splice` **会改变** 原始数组（插入或者删除元素）。
 
-In React, you will be using `slice` (no `p`!) a lot more often because you don't want to mutate objects or arrays in state. [Updating Objects](/learn/updating-objects-in-state) explains what mutation is and why it's not recommended for state.
+在 React 中，更多情况下你会使用 `slice` （没有 `p` ！），因为你不想改变 state 中的对象或数组。[更新对象](/learn/updating-objects-in-state)这一章节解释了什么是 mutation 以及为什么不推荐在 state 里使用它。
 
 </Gotcha>
 
-### Adding to an array
+### 向数组中添加元素
 
-`push()` will mutate an array, which you don't want:
+`push()` 会改变原始数组，你应该避免使用它：
 
 <Sandpack>
 
@@ -61,7 +61,7 @@ export default function List() {
 
   return (
     <>
-      <h1>Inspiring sculptors:</h1>
+      <h1>令人惊叹的雕塑家们：</h1>
       <input
         value={name}
         onChange={e => setName(e.target.value)}
@@ -72,7 +72,7 @@ export default function List() {
           id: nextId++,
           name: name,
         });
-      }}>Add</button>
+      }}>添加</button>
       <ul>
         {artists.map(artist => (
           <li key={artist.id}>{artist.name}</li>
@@ -89,18 +89,20 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-Instead, create a *new* array which contains the existing items *and* a new item at the end. There are multiple ways to do this, but the easiest one is to use the `...` [array spread](a-javascript-refresher#array-spread) syntax:
+取而代之的，创建一个*新*数组，新数组包含了原始数组的所有元素并在末尾添加了一个新的元素。这一步的实现有很多种不同的方法，其中最简单的就是使用
+
+Instead, create a *new* array which contains the existing items *and* a new item at the end. There are multiple ways to do this, but the easiest one is to use the `...` [数组展开](a-javascript-refresher#array-spread)语法:
 
 ```js
-setArtists( // Replace the state
-  [ // with a new array
-    ...artists, // that contains all the old items
-    { id: nextId++, name: name } // and one new item at the end
+setArtists( // 使用新数组
+  [ // 替代原数组
+    ...artists, // 新数组包含原数组的所有元素
+    { id: nextId++, name: name } // 并在末尾添加了一个新的元素
   ]
 );
 ```
 
-Now it works correctly:
+现在代码可以正常运行了：
 
 <Sandpack>
 
@@ -115,7 +117,7 @@ export default function List() {
 
   return (
     <>
-      <h1>Inspiring sculptors:</h1>
+      <h1>令人惊叹的雕塑家们：</h1>
       <input
         value={name}
         onChange={e => setName(e.target.value)}
@@ -126,7 +128,7 @@ export default function List() {
           ...artists,
           { id: nextId++, name: name }
         ]);
-      }}>Add</button>
+      }}>添加</button>
       <ul>
         {artists.map(artist => (
           <li key={artist.id}>{artist.name}</li>
@@ -143,20 +145,20 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-The array spread operator also lets you prepend an item by placing it *before* the original `...artists`:
+使用数组展开运算符，也可以做到把新添加的元素放在原数组 `...artists` 的前面：
 
 ```js
 setArtists([
   { id: nextId++, name: name },
-  ...artists // Put old items at the end
+  ...artists // 将原数组中的元素放在后面
 ]);
 ```
 
-In this way, spread can do the job of both `push()` by adding to the beginning of an array and `unshift()` by adding to the end of an array. Try it in the sandbox above!
+这样一来，展开操作既可以实现类似于 `push()` 的操作，将新元素添加到原数组的末尾，也可以实现类似于 `unshift()` 的操作，将新元素插入到原数组开头。你可以在下面的 sandbox 中尝试一下！
 
-### Removing from an array
+### #从数组中删除元素
 
-The easiest way to remove an item from an array is to *filter it out*. In other words, you will produce a new array that will not contain that item. To do this, use the `filter` method, for example:
+从数组中删除一个元素最简单的方法就是将它*过滤出去*。换句话说，你需要创建一个不包含这个元素的新数组。为了实现这一点，可以使用 `filter` 方法，例如：
 
 <Sandpack>
 
@@ -176,7 +178,7 @@ export default function List() {
 
   return (
     <>
-      <h1>Inspiring sculptors:</h1>
+      <h1>令人惊叹的雕塑家们：</h1>
       <ul>
         {artists.map(artist => (
           <li key={artist.id}>
@@ -188,7 +190,7 @@ export default function List() {
                 )
               );
             }}>
-              Delete
+              删除
             </button>
           </li>
         ))}
@@ -200,7 +202,7 @@ export default function List() {
 
 </Sandpack>
 
-Click the "Delete" button a few times, and look at its click handler.
+点击几次“删除”按钮，再查看一下处理点击事件的代码。
 
 ```js
 setArtists(
@@ -208,13 +210,13 @@ setArtists(
 );
 ```
 
-Here, `artists.filter(s => s.id !== artist.id)` means "create an array that consists of those `artists` whose IDs are different from `artist.id`." In other words, each artist's "Delete" button will filter _that_ artist out of the array, and then request a re-render with the resulting array. Note that `filter` does not modify the original array.
+在这里，`artists.filter(s => s.id !== artist.id)` 这段代码表示 “创建一个新的数组，数组中的 `artists` 的id不同于 `artist.id` ”。换句话说，每个 artist 的“删除”按钮会把这位 artist 从原始数组中过滤掉，并使用新生成的数组再次进行渲染。值得注意的是，`filter` 不会改变原始数组。
 
-### Transforming an array
+### 变换一个数组
 
-If you want to change some or all items of the array, you can use `map()` to create a **new** array. The function you will pass to `map` can decide what to do with each item, based on its data or its index (or both).
+如果你想改变数组中的某些或全部元素，你可以使用 `map()` 方法来创建一个新数组。你传入 `map` 方法的函数可以决定该如何依照每个元素的数组和索引对他们进行处理。
 
-In this example, an array holds coordinates of two circles and a square. When you press the button, it moves only the circles down by 100 pixels. It does this by producing a new array of data using `map()`:
+在下面的例子中，数组中存储了两个圆形和一个正方形的坐标，当你点击按钮时，会将所有的原型向下移动100个像素的长度。这是通过使用 `map()` 方法创建一个新数组来实现的。
 
 <Sandpack>
 
@@ -252,7 +254,7 @@ export default function ShapeEditor() {
   return (
     <>
       <button onClick={handleClick}>
-        Move circles down!
+        所有圆形向下移动！
       </button>
       {shapes.map(shape => (
         <div style={{
@@ -278,11 +280,11 @@ body { height: 300px; }
 
 </Sandpack>
 
-### Replacing items in an array
+### 替换数组中的元素
 
-It is particularly common to want to replace one or more items in an array. Assignments like `arr[0] = 'bird'` are mutating the original array, so instead you'll want to use `map` for this as well.
+替换数组中一个或多个元素是非常常见的操作。类似 `arr[0] = 'bird'` 这样的赋值语句会改变原始数组，所以这种情况下，你也应该考虑使用 `map` 方法。
 
-To replace an item, create a new array with `map`. Inside your `map` call, you will receive the item index as the second argument. Use it to decide whether to return the original item (the first argument) or something else:
+想要替换一个元素，需要使用 `map` 方法创建一个新数组。在传入 `map` 方法的函数里，第二个参数是元素的索引。使用索引来判断最终是返回当前元素还是替换成其他的东西：
 
 <Sandpack>
 
@@ -332,11 +334,11 @@ button { margin: 5px; }
 
 </Sandpack>
 
-### Inserting into an array
+### 向数组中插入元素
 
-Sometimes, you may want to insert an item at a particular position that's neither at the beginning nor at the end. To do this, you can use the `...` array spread operator together with the `slice()` method. The `slice()` method lets you cut a "slice" of the array. To insert an item, you will create an array that spreads the slice _before_ the insertion point, then the new item, and then the rest of the original array.
+有时，你需要向数组中特定位置插入一个元素，这个位置既不是数组开头，也不是数组的末尾。为了实现这个操作，你可以将数组展开运算符 `...` 和 `slice()` 方法结合起来使用。`slice()` 方法使得你可以从数组中取出一部分。为了将元素插入数组，你需要三个部分，第一部分是原数组在插入点之前的部分，第二部分是要插入的元素，第三部分是原数组在插入点之后的部分，将这三部分结合起来就构成了我们需要的最终数组。
 
-In this example, the Insert button always inserts at the index `1`:
+下面的例子中，插入按钮总是会将元素插入到数组中索引为 `1` 的地方。
 
 <Sandpack>
 
@@ -378,7 +380,7 @@ export default function List() {
         onChange={e => setName(e.target.value)}
       />
       <button onClick={handleClick}>
-        Insert
+        插入
       </button>
       <ul>
         {artists.map(artist => (
