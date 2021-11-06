@@ -524,7 +524,7 @@ export default function TeaSet() {
 
 </LearnMore>
 
-## 下节预告
+## 下节预告 {#what's-next}
 
 请访问 [你的第一个组件](/learn/your-first-component) 开始逐页阅读本章节!
 
