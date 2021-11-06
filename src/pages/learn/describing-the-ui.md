@@ -1,5 +1,7 @@
 ---
 title: 描述用户界面
+translators:
+  - ChelesteWang
 ---
 
 <Intro>
