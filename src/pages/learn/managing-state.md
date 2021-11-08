@@ -1,5 +1,7 @@
 ---
 title: 状态管理
+translators:
+  - qinhua
 ---
 
 <Intro>

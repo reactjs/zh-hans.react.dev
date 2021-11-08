@@ -1,5 +1,7 @@
 ---
 title: 在组件间共享状态
+translators:
+  - qinhua
 ---
 
 <Intro>
