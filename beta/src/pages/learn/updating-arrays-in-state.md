@@ -398,13 +398,13 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-### Making other changes to an array
+### 其他改变数组的情况
 
-There are some things you can't do with the spread operator and non-mutating methods like `map()` and `filter()` alone. For example, you may want to reverse or sort an array. The JavaScript `reverse()` and `sort()` methods are mutating the original array, so you can't use them directly.
+有些时候，你无法仅仅依靠扩展运算符和 `map()` 或者 `filter()` 等不会改变原数组的方法来达到想要的结果。例如，你可能想实现反转数组的操作。而 JavaScript 中的 `reverse()` 和 `sort()` 方法会改变原数组，所以你不能直接地使用他们。
 
-**However, you can copy the array first, and then make changes to it.**
+**但是，你可以先将数组复制一份，再执行对应的操作。**
 
-For example:
+例如：
 
 <Sandpack>
 
@@ -430,7 +430,7 @@ export default function List() {
   return (
     <>
       <button onClick={handleClick}>
-        Reverse
+        反转
       </button>
       <ul>
         {list.map(artwork => (
@@ -444,27 +444,27 @@ export default function List() {
 
 </Sandpack>
 
-Here, you use the `[...list]` spread operator to create a copy of the original array first. Now that you have a copy, you can use mutating methods like `nextList.reverse()` or `nextList.sort()`, or even assign individual items with `nextList[0] = "something"`.
+在这段代码中，你先使用 `[...list]` 扩展运算符创建了数组的一份拷贝。当你创建了一个新数组之后，便可以对新的数组实行 `nextList.reverse()` 或 `nextList.sort()` 的操作。你甚至还可以直接使用 `nextList[0] = "something"` 对数组中某个元素进行赋值。
 
-However, **even if you copy an array, you can't mutate existing items _inside_ of it directly**. This is because copying is shallow--the new array will contain the same items as the original one. So if you modify an object inside the copied array, you are mutating the existing state. For example, code like this is a problem.
+然而，即便你将数组拷贝了一份，你还是不能直接改变其中的元素。这是因为数组的拷贝是浅拷贝，新的数组中也包含了原数组中的元素。因此，如果你修改了拷贝后数组中某个类型为对象的元素，也会改变当前的 state 。例如，下面的代码会造成一些问题。
 
 ```js
 const nextList = [...list];
-nextList[0].seen = true; // Problem: mutates list[0]
+nextList[0].seen = true; // 问题所在：会改变 list[0] 的值
 setList(nextList);
 ```
 
-Although `nextList` and `list` are two different arrays, **`nextList[0]` and `list[0]` point to the same object**. So by changing `nextList[0].seen`, you are also changing `list[0].seen`. This is a state mutation, which you should avoid! You can solve this issue in a similar way to [updating nested JavaScript objects](docs/updating-objects-in-state#updating-a-nested-object)--by copying individual items you want to change instead of mutating them. Here's how.
+虽然 `nextList` 和 `list` 是两个不同的数组，**`nextList[0]` 和 `list[0]` 却指向了同一个对象**。因此，当你修改 `nextList[0].seen` 的时候，也会改变 `list[0].seen` 的值。这就是 state mutation ，你应该避免这种操作！你可以用[更新嵌套的 JavaScript 对象](docs/updating-objects-in-state#updating-a-nested-object)中提到的方法来解决这个问题，方法就是将你想要修改的那个元素拷贝一份出来，并进行修改。下面是具体的操作。
 
-## Updating objects inside arrays
+## 更新数组中的对象
 
-Objects are not _really_ located "inside" arrays. They might appear to be "inside" in code, but each object in an array is a separate value, to which the array "points". This is why you need to be careful when changing nested fields like `list[0]`. Another person's artwork list may point to the same element of the array!
+对象并不是_真的_包含在数组中。他们在代码层面看起来是在数组中，但是数组中的每个对象都有着额外的值，数组中的元素只是指向了这个值。这就是当你在处理类似于 `list[0]` 这样的嵌套字段时需要格外注意的原因。两个数组中的不同元素可能指向了同一个对象！
 
 <!-- TODOODLE -->
 
-**When updating nested state, you need to create copies from the point where you want to update, and all the way up to the top level.** Let's see how this works.
+**当你更新一个嵌套的 state 时，你需要从需要更新的地方开始自底向上创建一份完整的拷贝。** 让我们看一下具体是怎么操作的。
 
-In this example, two separate artwork lists have the same initial state. They are supposed to be isolated, but because of a mutation, their state is accidentally shared, and checking a box in one list affects the other list:
+在下面的例子中，两个不同的艺术品列表有着相同的初始 state 。他们本应该互不影响，但是因为 mutation 的存在，他们共享了同一个 state ，改变其中的一个对象的某个属性，也会影响另外一个对象：
 
 <Sandpack>
 
@@ -544,34 +544,34 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-The problem is in code like this:
+问题出在下面这段代码中:
 
 ```js
 const myNextList = [...myList];
 const artwork = myNextList.find(a => a.id === artworkId);
-artwork.seen = nextSeen; // Problem: mutates an existing item
+artwork.seen = nextSeen; // 问题在于: mutates an existing item
 setMyList(myNextList);
 ```
 
-Although the `myNextList` array itself is new, the *items themselves* are the same as in the original `myList` array. So changing `artwork.seen` changes the *original* artwork item. That artwork item is also in `yourArtworks`, which causes the bug. Bugs like this can be difficult to think about, but thankfully they disappear if you avoid mutating state.
+虽然 `myNextList` 这个数组是新创建的，但是其*内部的元素*与原数组 `myList` 是相同的。因此，当修改 `artwork.seen` 的值时，也会改变原数组中对应的 artwork 对象。而 `yourArtworks` 中指向的也是同一个 artwork 对象，这样就会带来问题。这样的问题有时很难被察觉到，但庆幸的是，如果你避免改变 state，它们就会消失。
 
-**You can use `map` to substitute an old item with its updated version without mutation.**
+**你可以使用 `map` 方法在不触及 mutation 的情况下将一个旧的元素替换成新的值**
 
 ```js
 setMyList(myList.map(artwork => {
   if (artwork.id === artworkId) {
-    // Create a *new* object with changes
+    // 创建一个全新的对象
     return { ...artwork, seen: nextSeen };
   } else {
-    // No changes
+    // 不做任何改变
     return artwork;
   }
 });
 ```
 
-Here, `...` is the object spread syntax used to [create a copy of an object](/learn/updating-objects-in-state#copying-objects-with-the-spread-syntax).
+此处的 `...` 是一个对象展开语法，用来[创建一个对象的拷贝](/learn/updating-objects-in-state#copying-objects-with-the-spread-syntax).
 
-With this approach, none of the existing state items are being mutated, and the bug is fixed:
+通过这种方式，没有任何现有的 state 中的元素会被改变，也就不会再产生任何问题了。
 
 <Sandpack>
 
@@ -594,10 +594,10 @@ export default function BucketList() {
   function handleToggleMyList(artworkId, nextSeen) {
     setMyList(myList.map(artwork => {
       if (artwork.id === artworkId) {
-        // Create a *new* object with changes
+        // 创建一个全新的对象
         return { ...artwork, seen: nextSeen };
       } else {
-        // No changes
+        // 不做任何改变
         return artwork;
       }
     }));
@@ -606,10 +606,10 @@ export default function BucketList() {
   function handleToggleYourList(artworkId, nextSeen) {
     setYourList(yourList.map(artwork => {
       if (artwork.id === artworkId) {
-        // Create a *new* object with changes
+        // 创建一个全新的对象
         return { ...artwork, seen: nextSeen };
       } else {
-        // No changes
+        // 不做任何改变
         return artwork;
       }
     }));
@@ -657,16 +657,17 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-In general, **you should only mutate objects that you have just created.** If you were inserting a *new* artwork, you could mutate it, but if you're dealing with something that's already in state, you need to make a copy.
+通常来讲，**你应该只改变你刚刚创建的对象**。如果你向数组中插入了一个新的 artwork，你可以修改它，但是如果你想要改变的是 state 中已经存在的东西，你就需要先拷贝一份了。
 
-### Write concise update logic with Immer
+### 使用 Immer 编写简洁的更新逻辑
 
-Updating nested arrays without mutation can get a little bit repetitive. [Just as with objects](/learn/updating-objects-in-state#write-concise-update-logic-with-immer):
+在不产生 mutation 的情况下更新嵌套数可能变得有点重复。[如同对象中一样](/learn/updating-objects-in-state#write-concise-update-logic-with-immer):
 
-- Generally, you shouldn't need to update state more than a couple of levels deep. If your state objects are very deep, you might want to [restructure them differently](/learn/choosing-the-state-structure#avoid-deeply-nested-state) so that they are flat.
-- If you don't want to change your state structure, you might prefer to use [Immer](https://github.com/immerjs/use-immer), which lets you write using the convenient but mutating syntax and takes care of producing the copies for you.
+- 通常情况下，你应该不需要更新处于非常深的层级的 state 。如果你有此类需求，你或许需要[调整一下数据的结构](/learn/choosing-the-state-structure#avoid-deeply-nested-state)，让数据变得扁平一些。
 
-Here is the Art Bucket List example rewritten with Immer:
+- 如果你不想改变 state 中的数据结构，你可以使用 [Immer](https://github.com/immerjs/use-immer) ，它使得你可以继续使用便捷但会产生 mutation 的语法，并帮你自动处理好需要拷贝的地方。
+
+下面是我们用 Immer 来重写的 Art Bucket List 的例子：
 
 <Sandpack>
 
@@ -767,7 +768,7 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-Note how with Immer, **mutation like `artwork.seen = nextSeen` is now okay:**
+请注意当使用了 Immer 时，**类似于 `artwork.seen = nextSeen` 这种会产生 mutation 的语法不会再有任何问题了：**
 
 ```js
 updateMyTodos(draft => {
@@ -776,17 +777,17 @@ updateMyTodos(draft => {
 });
 ```
 
-This is because you're not mutating the _original_ state, but you're mutating a special `draft` object provided by Immer. Similarly, you can apply mutating methods like `push()` and `pop()` to the content of the `draft`.
+这是因为你并没有直接修改*原本的*state ，你修改的是 Immer 为你提供的一个特殊的 `draft` 对象。同样地，你也可以使用 `push()` 和 `pop()` 这些会改变原数组的方法来操作 `draft` 对象。
 
-Behind the scenes, Immer always constructs the next state from scratch according to the changes that you've done to the `draft`. This keeps your event handlers very concise without ever mutating state.
+这背后的原理是，Immer 总是会根据你对 `draft` 的修改来从头重新构建下一个 state 。这可以使得你的事件处理代码更为简洁，同时也不会修改 state 。
 
 <Recap>
 
-- You can put arrays into state, but you can't change them.
-- Instead of mutating an array, create a *new* version of it, and update the state to it.
-- You can use the `[...arr, newItem]` array spread syntax to create arrays with new items.
-- You can use `filter()` and `map()` to create new arrays with filtered or transformed items.
-- You can use Immer to keep your code concise.
+- 你可以把数组放入 state 中，但你不应该直接修改它。
+- 不要直接修改数组，而是创建他的一份*新的*拷贝，然后使用新的数组来更新它的状态。
+- 你可以使用 `[...arr, newItem]` 这样的数组展开语法来向数组中添加元素。
+- 你可以使用 `filter()` 和 `map()` 来创建一个经过过滤或者变换的数组。
+- 你可以使用 Immer 来保持代码的简洁。
 
 </Recap>
 
@@ -794,9 +795,9 @@ Behind the scenes, Immer always constructs the next state from scratch according
 
 <Challenges>
 
-### Update an item in the shopping cart
+### 更新购物车中的商品
 
-Fill in the `handleIncreaseClick` logic so that pressing "+" increases the corresponding number:
+填写 `handleIncreaseClick` 的代码，实现当点击“+”号时数字加一的功能：
 
 <Sandpack>
 
@@ -854,7 +855,7 @@ button { margin: 5px; }
 
 <Solution>
 
-You can use the `map` function to create a new array, and then use the `...` object spread syntax to create a copy of the changed object for the new array:
+你可以使用 `map` 方法来创建一个新的数组，然后使用 `...` 对象展开语法来创建一个修改后的对象并插入到新的数组中：
 
 <Sandpack>
 
@@ -921,9 +922,9 @@ button { margin: 5px; }
 
 </Solution>
 
-### Remove an item from the shopping cart
+### 删除购物车中的商品
 
-This shopping cart has a working "+" button, but the "–" button doesn't do anything. You need to add an event handler to it so that pressing it decreases the `count` of the corresponding product. If you press "–" when the count is 1, the product should automatically get removed from the cart. Make sure it never shows 0.
+现在购物车有了一个可以使用的“+”按钮，但是“-”却没有起到任何作用。你需要给这个按钮添加一个事件处理函数，使得它能够在被点击时可以减少对应商品的 `数量` 。如果在点击按钮前数字是 1 ，那么需要在点击后把商品从购物车中删除掉。确保商品数量不出现 0 。
 
 <Sandpack>
 
@@ -993,7 +994,7 @@ button { margin: 5px; }
 
 <Solution>
 
-You can first use `map` to produce a new array, and then `filter` to remove products with a `count` set to `0`:
+你可以先使用 `map` 方法来创建一个新数组，然后使用 `filter` 方法删除掉 `count` 值为 `0` 的商品
 
 <Sandpack>
 
@@ -1082,9 +1083,9 @@ button { margin: 5px; }
 
 </Solution>
 
-### Fix the mutations using non-mutative methods
+### 使用不会产生 mutation 的方法解决下面的问题
 
-In this example, all of the event handlers in `App.js` use mutation. As a result, editing and deleting todos doesn't work. Rewrite `handleAddTodo`, `handleChangeTodo`, and `handleDeleteTodo` to use the non-mutative methods:
+在下面的例子中，`App.js` 中所有的事件处理函数都会产生 mutation 。这就造成了编辑和删除任意 todo 都没有反应。 你需要通过重写 `handleAddTodo`, `handleChangeTodo`, 和 `handleDeleteTodo` 这三个函数来解决这个问题：
 
 <Sandpack>
 
@@ -1247,7 +1248,7 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution>
 
-In `handleAddTodo`, you can use the array spread syntax. In `handleChangeTodo`, you can create a new array with `map`. In `handleDeleteTodo`, you can create a new array with `filter`. Now the list works correctly:
+在 `handleAddTodo` 函数中，你可以使用数组展开语法。在 `handleChangeTodo` 函数中，你可以使用 `map` 方法创建一个新数组。在 `handleDeleteTodo` 函数中，你可以使用 `filter` 方法创建一个新数组。现在列表可以正常工作了：
 
 <Sandpack>
 
@@ -1415,9 +1416,9 @@ ul, li { margin: 0; padding: 0; }
 </Solution>
 
 
-### Fix the mutations using Immer
+### 使用 Immer 修复 mutation 的问题
 
-This is the same example as in the previous challenge. This time, fix the mutations by using Immer. For your convenience, `useImmer` is already imported, so you need to change the `todos` state variable to use it.
+下面的例子和上一个挑战相同。这次，你需要使用 Immer 来解决 mutation 的问题。为了你的方便，`useImmer` 已经被引入了，因此你需要通过改变 `todos` 的 state 来使用它。
 
 <Sandpack>
 
@@ -1599,7 +1600,7 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution>
 
-With Immer, you can write code in the mutative fashion, as long as you're only mutating parts of the `draft` that Immer gives you. Here, all mutations are performed on the `draft` so the code works:
+通过使用 Immer ，你可以写出会产生 mutation 的代码，前提是你只修改 Immer 提供给你的那部分 `draft` 。这里所有的 mutation 都是在 `draft` 上操作的，因此代码可以正常运行：
 
 <Sandpack>
 
@@ -1785,9 +1786,9 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-You can also mix and match the mutative and non-mutative approaches with Immer.
+你也可以在 Immer 中将会产生和不会产生 mutation 的方法混合使用。
 
-For example, in this version `handleAddTodo` is implemented by mutating the Immer `draft`, while `handleChangeTodo` and `handleDeleteTodo` use the non-mutative `map` and `filter` methods:
+例如，在下面的代码中，`handleAddTodo`是通过改变 Immer 的 `draft` 来实现的，而 `handleChangeTodo` 和 `handleDeleteTodo` 则使用了不会产生 mutation 的 `map` 和 `filter` 方法：
 
 <Sandpack>
 
@@ -1970,7 +1971,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-With Immer, you can pick the style that feels the most natural for each separate case.
+通过使用 Immer ，你可以选择在不同情况下最为自然的代码风格。
 
 </Solution>
 
