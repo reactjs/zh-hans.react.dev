@@ -1,57 +1,57 @@
 ---
-title: Updating Objects in State
+title: 更新 state 中的对象
 ---
 
 <Intro>
 
-State can hold any kind of JavaScript value, including objects. But you shouldn't change objects that you hold in the React state directly. Instead, when you want to update an object, you need to create a new one (or make a copy of an existing one), and then set the state to use that copy.
+state 中可以存放任意种类的 JavaScript 值，当然也包括对象。但是您不应该直接修改存放在 React 的 state 中的对象。取而代之的，当您想要更新一个对象时，您需要创建一个新的对象（或者依照当前对象复制出一份新的），然后把这个新的对象设置到 state 上。
 
 </Intro>
 
 <YouWillLearn>
 
-- How to correctly update an object in React state
-- How to update a nested object without mutating it
-- What immutability is, and how not to break it
-- How to make object copying less repetitive with Immer
+- 如何正确地更新 React state 中的对象
+- 如何在不产生 mutation 的情况下更新一个嵌套对象
+- 什么事不可变性，以及如何不破坏它
+- 如何使用 Immer 来减少对象重复复制的次数
 
 </YouWillLearn>
 
 ## What's a mutation?
 
-You can store any kind of JavaScript value in state.
+您可以在 state 中存放任何类型的 JavaScript 值。
 
 ```js
 const [x, setX] = useState(0);
 ```
 
-So far you've been working with numbers, strings, and booleans. These kinds of JavaScript values are "immutable," meaning unchangeable or "read-only." You can trigger a re-render to _replace_ a value:
+到目前为止，您已经尝试过在 state 中存放数组、字符串和布尔类型的值。这些类型的数据都是“不可变的”，意味着它们不能被改变，是只读的。您可以通过触发一次重渲染来改变他们的值：
 
 ```js
 setX(5);
 ```
 
-The `x` state changed from `0` to `5`, but the _number `0` itself_ did not change. It's not possible to make any changes to the built-in primitive values like numbers, strings, and booleans in JavaScript.
+变量 `x` 的 state 从 `0` 变为 `5` ，但是*数字 `0` 本身*并没有发生改变。在JavaScript中，不可能对内置的原始值如数字、字符串和布尔值进行任何改变。
 
-Now consider an object in state:
+现在考虑一下 state 中存放对象时的情况：
 
 ```js
 const [position, setPosition] = useState({ x: 0, y: 0 });
 ```
 
-Technically, it is possible to change the contents of _the object itself_. **This is called a mutation:**
+从技术上来说，是可以直接改变*对象本身*的内容的。**当您这样做时，就制造了一个 mutation。**
 
 ```js
 position.x = 5;
 ```
 
-However, although objects in React state are technically mutable, you should treat them **as if** they were immutable--like numbers, booleans, and strings. Instead of mutating them, you should always replace them.
+然而，虽然 React state 中存放的对象从技术上来讲是可变的，您应该像对待数字、布尔值和字符串一样去对待它们，视它们为不可变的。您不应该直接修改它们，而是应该总是用新的状态去替换旧的状态。
 
-## Treat state as read-only
+## 将 state 视为只读的
 
-In other words, you should **treat any JavaScript object that you put into state as read-only.**
+换句话说，您应该**把所有存放在 state 中的 JavaScript 对象都视为只读的**。
 
-This example holds an object in state to represent the current pointer position. The red dot is supposed to move when you touch or move the cursor over the preview area. But the dot stays in the initial position:
+在下面的例子中，我们用一个存放在 state 中的对象来表示指针当前的位置。当您在预览区触摸或移动光标时，红色的点应该会移动。但是实际上红点仍停留在原处：
 
 <Sandpack>
 
@@ -94,7 +94,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 </Sandpack>
 
-The problem is with this bit of code.
+问题出在下面这段代码中。
 
 ```js
 onPointerMove={e => {
@@ -103,9 +103,9 @@ onPointerMove={e => {
 }}
 ```
 
-This code modifies the object assigned to `position` from [the previous render](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time). But without using the state setting function, React has no idea that object has changed. So React does not do anything in response. It's like trying to change the order after you've already eaten the meal. While mutating state can work in some cases, we don't recommend it. You should treat the state value you have access to in a render as read-only.
+这段代码直接修改了[上一次渲染中](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time)分配给 `position` 的对象。但是因为并没有使用 state 的 setting 函数，所以 React 并不知道对象已经改变了。所以 React 并没有做出任何回应。这就像您在吃完后之后才尝试去改变要点的菜一样。虽然在一些情况下，直接修改 state 可以正常工作，但是我们并不推荐这么做。您应该把在渲染过程中访问到的 state 视为只读的。
 
-To actually [trigger a re-render](/learn/state-as-a-snapshot#setting-state-triggers-renders) in this case, **create a *new* object and pass it to the state setting function:**
+在这种情况下，为了真正地[触发渲染](/learn/state-as-a-snapshot#setting-state-triggers-renders)，**您需要创建一个*新*对象并把它传递给 state 的 setting 函数**
 
 ```js
 onPointerMove={e => {
@@ -116,12 +116,12 @@ onPointerMove={e => {
 }}
 ```
 
-With `setPosition`, you're telling React:
+通过使用 `setPosition` ，您在告诉 React：
 
-* Replace `position` with this new object
-* And render this component again
+* 使用这个新的对象替代 `position` 的值
+* 再次渲染这个组件
 
-Notice how the red dot now follows your pointer when you touch or hover over the preview area:
+现在您可以看到，当您在预览区触摸或移动光标时，红点会跟随着您的指针移动：
 
 <Sandpack>
 
@@ -168,14 +168,14 @@ body { margin: 0; padding: 0; height: 250px; }
 
 <DeepDive title="Local mutation is fine">
 
-Code like this is a problem because it modifies an *existing* object in state:
+下面这样的代码会产生一些问题，因为它改变的是 state 中*存在*的对象：
 
 ```js
 position.x = e.clientX;
 position.y = e.clientY;
 ```
 
-But code like this is **absolutely fine** because you're mutating a fresh object you have *just created*:
+但是下面的代码就**没有任何问题**，因为您改变的是您刚刚创建的一个新的对象：
 
 ```js
 const nextPosition = {};
@@ -184,7 +184,7 @@ nextPosition.y = e.clientY;
 setPosition(nextPosition);
 ````
 
-In fact, it is completely equivalent to writing this:
+事实上，它完全等同于下面这种写法：
 
 ```js
 setPosition({
@@ -193,15 +193,15 @@ setPosition({
 });
 ```
 
-Mutation is only a problem when you change *existing* objects that are already in state. Mutating an object you've just created is okay because *no other code references it yet.* Changing it isn't going to accidentally impact something that depends on it. This is called a "local mutation." You can even do local mutation [while rendering](/learn/keeping-components-pure#local-mutation-your-components-little-secret). Very convenient and completely okay!
+当您尝试改变 state 中已经存在的对象时，mutation 是唯一的问题。而修改一个您刚刚创建的对象就不会出现任何问题，因为*还没有其他的代码在引用它*。改变它并不会意外地影响到依赖它的东西。这叫做“局部 mutation ”。您甚至可以[在渲染的过程中](/learn/keeping-components-pure#local-mutation-your-components-little-secret)进行“局部 mutation”的操作。这种操作既便捷又没有任何问题！
 
 </DeepDive>  
 
-## Copying objects with the spread syntax
+## 使用展开语法来复制对象
 
-In the previous example, the `position` object is always created fresh from the current cursor position. But often, you will want to include *existing* data as a part of the new object you're creating. For example, you may want to update *only one* field in a form, but keep the previous values for all other fields.
+在之前的例子中，`position` 对象总是会依据指针的位置创建一个全新的对象。但是更多的时候，我们希望创建的新对象中仍然包含之前的一部分数据。例如，您可能只想要更新表单中的*一个*字段，其他的字段仍然使用之前的值。
 
-These input fields don't work because the `onChange` handlers mutate the state:
+下面的代码中，输入框并不会正常工作，因为 `onChange` 直接修改了 state ：
 
 <Sandpack>
 
@@ -267,23 +267,23 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-For example, this line mutates the state from a past render:
+例如，下面这行代码修改了上一次渲染中的 state ：
 
 ```js
 person.firstName = e.target.value;
 ```
 
-The reliable way to get the behavior you're looking for is to create a new object and pass it to `setPerson`. But here, you want to also **copy the existing data into it** because only one of the fields has changed:
+想要实现您的需求，最可靠的办法就是创建一个新的对象并将它传递给 `setPerson` 。但是在这里，您也想要**把当前的数据复制到新对象中**，因为您只改变了其中一个字段：
 
 ```js
 setPerson({
-  firstName: e.target.value, // New first name from the input
+  firstName: e.target.value, // 输入的新的 first name
   lastName: person.lastName,
   email: person.email
 });
 ```
 
-You can use the `...` [object spread](a-javascript-refresher#object-spread) syntax so that you don't need to copy every property separately.
+您可以使用 `...` [对象展开](a-javascript-refresher#object-spread)语法，这样您就不需要把每个属性单独复制一次了。
 
 ```js
 setPerson({
@@ -292,9 +292,9 @@ setPerson({
 });
 ```
 
-Now the form works! 
+现在表单可以正常工作了！
 
-Notice how you didn't declare a separate state variable for each input field. For large forms, keeping all data grouped in an object is very convenient--as long as you update it correctly!
+您可以看到，对于每一个输入框您并没有单独声明一个 state 。对于数据量大的表单，将所有的数据都存放在同一个对象中是非常方便的 —— 前提是您能够正确地更新它！
 
 <Sandpack>
 
@@ -369,11 +369,11 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-Note that the `...` spread syntax is "shallow"--it only copies things one level deep. This makes it fast, but it also means that if you want to update a nested property, you'll have to use it more than once. 
+请注意 `...` 展开语法是浅拷贝的，它只会复制一层。虽然它的语法更为简洁，但是这也意味着当您想要更新一个嵌套属性的值时，您可能不得不在每一层都使用一次展开语法来达到目的。
 
-<DeepDive title="Using a single event handler for multiple fields">
+<DeepDive title="使用一个事件处理函数来更新多个字段">
 
-You can also use the `[` and `]` braces inside your object definition to specify a property with dynamic name. Here is the same example, but with a single event handler instead of three different ones:
+您也可以在对象的定义中使用 `[` 和 `]` 括号来实现属性的动态命名。下面是一个例子，它使用了一个事件处理函数而不是三个：
 
 <Sandpack>
 
@@ -437,13 +437,13 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-Here, `e.target.name` refers to the `name` property given to the `<input>` DOM element.
+在这里， `e.target.name` 指的是 `<input>` 这个 DOM 元素的 `name` 属性。
 
 </DeepDive>
 
-## Updating a nested object
+## 更新一个嵌套对象
 
-Consider a nested object structure like this:
+考虑下面这种结构的嵌套对象：
 
 ```js
 const [person, setPerson] = useState({
@@ -456,13 +456,13 @@ const [person, setPerson] = useState({
 });
 ```
 
-If you wanted to update `person.artwork.city`, it's clear how to do it with mutation:
+如果您想要更新 `person.artwork.city` 的值，如何用 mutation 的方法来实现非常清晰：
 
 ```js
 person.artwork.city = 'New Delhi';
 ```
 
-But in React, you treat state as immutable! In order to change `city`, you would first need to produce the new `artwork` object (pre-populated with data from the previous one), and then produce the new `person` object which points at the new `artwork`:
+但是在 React 中，您需要将 state 视为不可变的！为了修改 `city` 的值，您首先需要创建一个新的 `artwork` 对象（其中预先填充了之前的数据），然后创建一个新的 `person` 对象，并使得其中的 `artwork` 属性指向新创建的 `artwork` 对象：
 
 ```js
 const nextArtwork = { ...person.artwork, city: 'New Delhi' };
@@ -470,19 +470,21 @@ const nextPerson = { ...person, artwork: nextArtwork };
 setPerson(nextPerson);
 ```
 
+或者，使用一个函数来完成这一切操作
+
 Or, written as a single function call:
 
 ```js
 setPerson({
-  ...person, // Copy other fields
-  artwork: { // but replace the artwork
-    ...person.artwork, // with the same one
-    city: 'New Delhi' // but in New Delhi!
+  ...person, // 复制其他字段的数据
+  artwork: { // 替换 artwork 字段
+    ...person.artwork, // 复制之前 person.artwork 中的数据
+    city: 'New Delhi' // 但是将 city 的值替换为 New Delhi！
   }
 });
 ```
 
-This gets a bit wordy, but it works fine for many cases:
+这虽然看起来有点冗长，但对于很多情况都能有效地解决问题：
 
 <Sandpack>
 
@@ -592,7 +594,7 @@ img { width: 200px; height: 200px; }
 
 <DeepDive title="Objects are not really nested">
 
-An object like this appears "nested" in code:
+下面这个对象从代码上来看是“嵌套”的：
 
 ```js
 let obj = {
@@ -605,7 +607,7 @@ let obj = {
 };
 ```
 
-However, "nesting" is an inaccurate way to think about how objects behave. When the code executes, there is no such thing as a "nested" object. You are really looking at two different objects:
+然而，当我们思考对象的行为时，“嵌套”并不是一个非常准确的方式。当这段代码运行的时候，并没有什么“嵌套”的对象。您实际上会看到两个不同的对象：
 
 ```js
 let obj1 = {
@@ -620,7 +622,7 @@ let obj2 = {
 };
 ```
 
-The `obj1` object is not "inside" `obj2`. For example, `obj3` could "point" at `obj1` too:
+`obj1` 这个对象并不存放在 `obj2` 这个对象中。例如，下面的代码中，`obj3` 这个对象中的属性也可以指向 `obj1` 这个对象：
 
 ```js
 let obj1 = {
@@ -640,13 +642,13 @@ let obj3 = {
 };
 ```
 
-If you were to mutate `obj3.artwork.city`, it would affect both `obj2.artwork.city` and `obj1.city`. This is because `obj3.artwork`, `obj2.artwork`, and `obj1` are the same object. This is difficult to see when you think of objects as "nested". Instead, they are separate objects "pointing" at each other with properties.
+如果您直接修改 `obj3.artwork.city` ，它会同时影响到 `obj2.artwork.city` 和 `obj1.city` 。这是因为 `obj3.artwork` 、 `obj2.artwork` 和 `obj1.city` 都指向同一个对象。当您用“嵌套”的方式去思考对象的时候，很难看出这一点。取而代之的，它们是相互独立的对象，只不过其中的某个属性的值指向了另外一个对象。
 
 </DeepDive>  
 
-### Write concise update logic with Immer
+### 使用 Immer 写出简洁的更新逻辑
 
-If your state is deeply nested, you might want to consider [flattening it](/learn/choosing-the-state-structure#avoid-deeply-nested-state). But, if you don't want to change your state structure, you might prefer a shortcut to nested spreads. [Immer](https://github.com/immerjs/use-immer) is a popular library that lets you write using the convenient but mutating syntax and takes care of producing the copies for you. With Immer, the code you write looks like you are "breaking the rules" and mutating an object:
+如果您的 state 有多层的嵌套，您获取应该考虑[使它扁平一些](/learn/choosing-the-state-structure#avoid-deeply-nested-state)。但是，如果您不想改变 state 的数据结构，您也可以采取一个更简单的方法。[Immer](https://github.com/immerjs/use-immer) 是一个非常流行的库，它使得您可以使用简便的直接修改的语法，并会帮您处理好复制的过程。通过使用 Immer ，您写出的代码看起来似乎是“打破了规则”并直接修改了对象：
 
 ```js
 updatePerson(draft => {
@@ -654,21 +656,21 @@ updatePerson(draft => {
 });
 ```
 
-But unlike a regular mutation, it doesn't overwrite the past state!
+但是不同于一般的 mutation ，它并不会覆盖之前的 state ！
 
 <DeepDive title="How does Immer work?">
 
-The `draft` provided by Immer is a special type of object, called a [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy), that "records" what you do with it. This is why you can mutate it freely as much as you like! Under the hood, Immer figures out which parts of the `draft` have been changed, and produces a completely new object that contains your edits.
+`draft` 是 Immer 提供的一种特殊的对象，被称为[代理](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)，他会记录您的操作。这就是您能够自由自在地直接修改对象的原因所在！本质上说， Immer 知道了 `draft` 对象哪些部分被改变了，并会依照您的修改创建出一个全新的对象。
 
 </DeepDive>
 
-To try Immer:
+使用 Immer 的步骤：
 
-1. Add `use-immer` to your `package.json` as a dependency
-2. Run `npm install`
-3. Then replace `import { useState } from 'react'` with `import { useImmer } from 'use-immer'`
+1. 在 `package.json` 添加 `use-immer` 这个依赖
+2. 运行 `npm install`
+3. 用 `import { useImmer } from 'use-immer'` 替换掉 `import { useState } from 'react'`
 
-Here is the above example converted to Immer:
+下面我们把上面的例子用 Immer 实现一下：
 
 <Sandpack>
 
@@ -781,19 +783,19 @@ img { width: 200px; height: 200px; }
 
 </Sandpack>
 
-Notice how much more concise the event handlers have become. You can mix and match `useState` and `useImmer` in a single component as much as you like. Immer is a great way to keep the update handlers concise, especially if there's nesting in your state, and copying objects leads to repetitive code.
+可以看到，事件处理函数变得更简洁了。只要您想，您可以在一个组件中同时使用 `useState` and `useImmer`。当您想要写出更简洁的处理函数时， Immer 会是一个不错的选择，尤其是当您的 state 中有嵌套，复制对象会引发大量重复的代码时。
 
-<DeepDive title="Why is mutating state not recommended in React?">
+<DeepDive title="为什么在 React 中不推荐直接修改 state">
 
-There are a few reasons:
+有以下几个原因：
 
-* **Debugging:** If you use `console.log` and don't mutate state, your past logs won't get clobbered by the more recent state changes. So you can clearly see how state has changed between renders.
-* **Optimizations:** Common React [optimization strategies](/learn/skipping-unchanged-trees) rely on skipping work if previous props or state are the same as the next ones. If you never mutate state, it is very fast to check whether there were any changes. If `prevObj === obj`, you can be sure that nothing could have changed inside of it.
-* **New Features:** The new React features we're building rely on state being [treated like a snapshot](/learn/state-as-a-snapshot). If you're mutating past versions of state, that may prevent you from using the new features.
-* **Requirement Changes:** Some application features, like implementing Undo/Redo, showing a history of changes, or letting the user reset a form to earlier values, are easier to do when nothing is mutated. This is because you can keep past copies of state in memory, and reuse them when appropriate. If you start with a mutative approach, features like this can be difficult to add later on.
-* **Simpler Implementation:** Because React does not rely on mutation, it does not need to do anything special with your objects. It does not need to hijack their properties, always wrap them into Proxies, or do other work at initialization as many "reactive" solutions do. This is also why React lets you put any object into state--no matter how large--without additional performance or correctness pitfalls.
+* **调试：** 如果您使用 `console.log` 调试，并且没有直接修改 state，您之前 log 中的 state 的值不会被新的 state 的值影响。因此您可以清楚地看到两次渲染之间 state 的值发生了什么变化。
+* **优化：** React 最基本的优化策略依赖于，如果先前一次的 prop 或者 state 的值和下一次相同就会跳过渲染。如果您从未直接修改 state ，查看 state 发生了哪些变化就会变得非常容易。如果 `prevObj === obj` ，那么可以肯定的是这个对象并没有发生改变。
+* **新特性：** 我们正在构建的 React 的新特性依赖于 state 被[视为类似于快照](/learn/state-as-a-snapshot)的理念。如果您直接修改 state ，可能会影响您使用这些新特性。
+* **需求变更：** 一些应用的特性，需要实现撤销/重做的功能，展示修改的历史，或是实现用户可以回滚到某个特定历史值的功能。如果没有直接修改 state ，这一切都会变得十分容易。因为您可以把 state 的历史记录复制到内存中，并在适当的时候再次使用它。如果您一开始就用了直接修改 state 的方式，那么后面要实现这样的功能就会变得非常困难。
+* **更简单的实现** 因为 React 并不依赖于 mutation ，所以您不需要额外对对象进行任何操作。它不需要劫持对象的属性、用代理的方式包裹对象或者做一些其他“响应式”的解决方案需要做的事。这是因为 React 允许您把任何对象存放在 state 中，不管对象有多么巨大，都不会有任何额外的性能问题和正确性的陷阱。
 
-In practice, you can often "get away" with mutating state in React, but we strongly advise you not to do that so that you can use new React features developed with this approach in mind. Future contributors and perhaps even your future self will thank you!
+在练习中，您经常可以“侥幸”使用直接修改 state 的方式而不会报错，但是我们强烈建议您不要这样做，以便您可以使用以这种方法开发的新 React 功能。未来的贡献者甚至是您自己在未来也会感谢自己这样做了的！
 
 </DeepDive>
 
