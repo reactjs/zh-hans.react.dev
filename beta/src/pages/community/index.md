@@ -9,7 +9,11 @@ React 拥有数百万开发者的社区。本章节将为你列出一些与 Reac
 
 </Intro>
 
+<<<<<<< HEAD
 ## 行为准则 {#code-of-conduct}
+=======
+## Code of Conduct {#code-of-conduct}
+>>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
 
 在参与 React 社区前，[请阅读我们的行为准则](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md)。我们制订了 [贡献者公约](https://www.contributor-covenant.org/)，我们希望所有社区成员都能遵守其中的准则。
 
@@ -21,7 +25,11 @@ Stack Overflow 是非常受欢迎的论坛，在论坛中，你可以提出代�
 
 TODO: decide on the criteria for inclusion before uncommenting.
 
+<<<<<<< HEAD
 ## 热门讨论区 {#popular-discussion-forums}
+=======
+## Popular Discussion Forums {#popular-discussion-forums}
+>>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
 
 许多论坛是讨论最佳实践、应用架构以及 React 新特性的好地方。但如果你想讨论的是代码级问题，通常 Stack Overflow 会更合适。
 
@@ -34,6 +42,10 @@ TODO: decide on the criteria for inclusion before uncommenting.
 
 -->
 
+<<<<<<< HEAD
 ## 新闻 {#news}
+=======
+## News {#news}
+>>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
 
 关于 React 的最新消息，请在 Twitter 上关注 [**@reactjs**](https://twitter.com/reactjs)，同时关注本站中的 [React 的官方博客](/blog/)。
