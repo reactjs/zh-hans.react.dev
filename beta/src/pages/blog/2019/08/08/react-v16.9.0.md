@@ -1,6 +1,10 @@
 ---
+<<<<<<< HEAD
 title: 'React v16.9.0 发布及 Roadmap 最新进展'
 layout: Post
+=======
+title: 'React v16.9.0 and the Roadmap Update'
+>>>>>>> eb84de744493373859f6830a9ea34f9bfdc1a561
 author: [gaearon, bvaughn]
 ---
 

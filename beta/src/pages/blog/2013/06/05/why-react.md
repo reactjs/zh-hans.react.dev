@@ -1,6 +1,10 @@
 ---
+<<<<<<< HEAD
 title: 我们为什么要构建 React?
 layout: Post
+=======
+title: Why did we build React?
+>>>>>>> eb84de744493373859f6830a9ea34f9bfdc1a561
 author: [petehunt]
 ---
 

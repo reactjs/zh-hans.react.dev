@@ -1,6 +1,10 @@
 ---
+<<<<<<< HEAD
 title: '在 Python 应用程序中使用 React 与 JSX'
 layout: Post
+=======
+title: 'Use React and JSX in Python Applications'
+>>>>>>> eb84de744493373859f6830a9ea34f9bfdc1a561
 author: [kmeht]
 ---
 

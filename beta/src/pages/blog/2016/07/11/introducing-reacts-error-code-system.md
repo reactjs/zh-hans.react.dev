@@ -1,6 +1,10 @@
 ---
+<<<<<<< HEAD
 title: "推出 React 错误代码系统"
 layout: Post
+=======
+title: "Introducing React's Error Code System"
+>>>>>>> eb84de744493373859f6830a9ea34f9bfdc1a561
 author: [keyanzhang]
 ---
 

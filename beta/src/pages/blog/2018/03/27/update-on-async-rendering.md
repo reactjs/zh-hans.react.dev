@@ -1,6 +1,10 @@
 ---
+<<<<<<< HEAD
 title: 异步渲染之更新
 layout: Post
+=======
+title: Update on Async Rendering
+>>>>>>> eb84de744493373859f6830a9ea34f9bfdc1a561
 author: [bvaughn]
 ---
 

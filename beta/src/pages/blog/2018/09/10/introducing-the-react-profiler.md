@@ -1,5 +1,9 @@
 ---
+<<<<<<< HEAD
 title: "React Profiler 介绍"
+=======
+title: 'Introducing the React Profiler'
+>>>>>>> eb84de744493373859f6830a9ea34f9bfdc1a561
 author: [bvaughn]
 ---
 

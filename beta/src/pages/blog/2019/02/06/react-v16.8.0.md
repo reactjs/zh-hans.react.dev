@@ -1,6 +1,10 @@
 ---
+<<<<<<< HEAD
 title: "React v16.8：Hook 发布"
 layout: Post
+=======
+title: "React v16.8: The One With Hooks"
+>>>>>>> eb84de744493373859f6830a9ea34f9bfdc1a561
 author: [gaearon]
 ---
 

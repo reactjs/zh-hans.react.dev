@@ -1,6 +1,10 @@
 ---
+<<<<<<< HEAD
 title: 'React v16.6.0：lazy，memo 以及 contextType'
 layout: Post
+=======
+title: 'React v16.6.0: lazy, memo and contextType'
+>>>>>>> eb84de744493373859f6830a9ea34f9bfdc1a561
 author: [sebmarkbage]
 ---
 

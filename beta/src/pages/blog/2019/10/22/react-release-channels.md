@@ -1,6 +1,10 @@
 ---
+<<<<<<< HEAD
 title: '使用 React 预发布版为新功能打基础'
 layout: Post
+=======
+title: 'Preparing for the Future with React Prereleases'
+>>>>>>> eb84de744493373859f6830a9ea34f9bfdc1a561
 author: [acdlite]
 ---
 
