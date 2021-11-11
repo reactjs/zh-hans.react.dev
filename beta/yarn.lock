@@ -1435,11 +1435,7 @@ browserify-zlib@0.2.0:
   dependencies:
     pako "~1.0.5"
 
-<<<<<<< HEAD
-browserslist@4.16.6, browserslist@^4.12.0, browserslist@^4.16.6, browserslist@^4.6.4:
-=======
 browserslist@4.16.6:
->>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
   version "4.16.6"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.16.6.tgz#d7901277a5a88e554ed305b183ec9b0c08f66fa2"
   integrity sha512-Wspk/PqO+4W9qp5iUTJsa1B/QrYn1keNCcEP5OvP7WBwT4KaDly0uONYmC6Xa3Z5IqnUgS0KcgLYu1l74x0ZXQ==
@@ -1450,8 +1446,6 @@ browserslist@4.16.6:
     escalade "^3.1.1"
     node-releases "^1.1.71"
 
-<<<<<<< HEAD
-=======
 browserslist@^4.12.0, browserslist@^4.17.5, browserslist@^4.6.4:
   version "4.17.6"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.17.6.tgz#c76be33e7786b497f66cad25a73756c8b938985d"
@@ -1463,7 +1457,6 @@ browserslist@^4.12.0, browserslist@^4.17.5, browserslist@^4.6.4:
     node-releases "^2.0.1"
     picocolors "^1.0.0"
 
->>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
 buffer-xor@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/buffer-xor/-/buffer-xor-1.0.3.tgz#26e61ed1422fb70dd42e6e36729ed51d855fe8d9"
@@ -1505,17 +1498,10 @@ camelcase-css@2.0.1, camelcase-css@^2.0.1:
   resolved "https://registry.yarnpkg.com/camelcase-css/-/camelcase-css-2.0.1.tgz#ee978f6947914cc30c6b44741b6ed1df7f043fd5"
   integrity sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==
 
-<<<<<<< HEAD
-caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001202, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001243:
-  version "1.0.30001275"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001275.tgz#26f5076629fe4e52bbd245f9046ad7b90aafdf57"
-  integrity sha512-ihJVvj8RX0kn9GgP43HKhb5q9s2XQn4nEQhdldEJvZhCsuiB2XOq6fAMYQZaN6FPWfsr2qU0cdL0CSbETwbJAg==
-=======
 caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001202, caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001228, caniuse-lite@^1.0.30001272, caniuse-lite@^1.0.30001274:
   version "1.0.30001278"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001278.tgz#51cafc858df77d966b17f59b5839250b24417fff"
   integrity sha512-mpF9KeH8u5cMoEmIic/cr7PNS+F5LWBk0t2ekGT60lFf0Wq+n9LspAj0g3P+o7DQhD3sUdlMln4YFAWhFYn9jg==
->>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
 
 ccount@^1.0.0:
   version "1.1.0"
@@ -1715,11 +1701,7 @@ color@^4.0.1:
     color-convert "^2.0.1"
     color-string "^1.6.0"
 
-<<<<<<< HEAD
-colorette@^1.2.1, colorette@^1.2.2:
-=======
 colorette@^1.2.2:
->>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.4.0.tgz#5190fbb87276259a86ad700bff2c6d6faa3fca40"
   integrity sha512-Y2oEozpomLn7Q3HFP7dpww7AtMJplbM9lGZP6RDfHqmbeRjiwRg4n6VM6j4KLmRke85uWEI7JqF17f3pqdRA0g==
@@ -2086,17 +2068,10 @@ editions@^2.2.0:
     errlop "^2.0.0"
     semver "^6.3.0"
 
-<<<<<<< HEAD
-electron-to-chromium@^1.3.723:
-  version "1.3.887"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.887.tgz#b36aeed12a28aaa19460a467823f5bbe1f3c6f06"
-  integrity sha512-QQUumrEjFDKSVYVdaeBmFdyQGoaV+fCSMyWHvfx/u22bRHSTeBQYt6P4jMY+gFd4kgKB9nqk7RMtWkDB49OYPA==
-=======
 electron-to-chromium@^1.3.723, electron-to-chromium@^1.3.886:
   version "1.3.889"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.889.tgz#0b7c6f7628559592d5406deda281788f37107790"
   integrity sha512-suEUoPTD1mExjL9TdmH7cvEiWJVM2oEiAi+Y1p0QKxI2HcRlT44qDTP2c1aZmVwRemIPYOpxmV7CxQCOWcm4XQ==
->>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
 
 elliptic@^6.5.3:
   version "6.5.4"
@@ -2641,21 +2616,11 @@ get-symbol-description@^1.0.0:
     get-intrinsic "^1.1.1"
 
 github-slugger@^1.3.0:
-<<<<<<< HEAD
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/github-slugger/-/github-slugger-1.3.0.tgz#9bd0a95c5efdfc46005e82a906ef8e2a059124c9"
-  integrity sha512-gwJScWVNhFYSRDvURk/8yhcFBee6aFjye2a7Lhb2bUyRulpIoek9p0I9Kt7PT67d/nUlZbFu8L9RLiA0woQN8Q==
-  dependencies:
-    emoji-regex ">=6.0.0 <=6.1.1"
-
-glob-parent@^5.0.0, glob-parent@^5.1.0, glob-parent@^5.1.2, glob-parent@~5.1.0, glob-parent@~5.1.2:
-=======
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/github-slugger/-/github-slugger-1.4.0.tgz#206eb96cdb22ee56fdc53a28d5a302338463444e"
   integrity sha512-w0dzqw/nt51xMVmlaV1+JRzN+oCa1KfcgGEWhxUG16wbdA+Xnt/yoFO8Z8x/V82ZcZ0wy6ln9QDup5avbhiDhQ==
 
 glob-parent@^5.0.0, glob-parent@^5.1.2, glob-parent@~5.1.0, glob-parent@~5.1.2:
->>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
   integrity sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==
@@ -2912,8 +2877,6 @@ hosted-git-info@^2.1.4:
   version "2.8.9"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
   integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
-<<<<<<< HEAD
-=======
 
 hsl-regex@^1.0.0:
   version "1.0.0"
@@ -2924,7 +2887,6 @@ hsla-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/hsla-regex/-/hsla-regex-1.0.0.tgz#c1ce7a3168c8c6614033a4b5f7877f3b225f9c38"
   integrity sha1-wc56MWjIxmFAM6S194d/OyJfnDg=
->>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
 
 html-tags@^3.1.0:
   version "3.1.0"
@@ -3221,11 +3183,7 @@ is-generator-function@^1.0.7:
   dependencies:
     has-tostringtag "^1.0.0"
 
-<<<<<<< HEAD
-is-glob@^4.0.0, is-glob@^4.0.1, is-glob@~4.0.1:
-=======
 is-glob@^4.0.0, is-glob@^4.0.1, is-glob@^4.0.3, is-glob@~4.0.1:
->>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-4.0.3.tgz#64f61e42cbbb2eec2071a9dac0b28ba1e65d5084"
   integrity sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==
@@ -3887,14 +3845,11 @@ node-releases@^1.1.71:
   version "1.1.77"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.77.tgz#50b0cfede855dd374e7585bf228ff34e57c1c32e"
   integrity sha512-rB1DUFUNAN4Gn9keO2K1efO35IDK7yKHCdCaIMvFO7yUYmmZYeDjnGKle26G4rwj+LKRQpjyUUvMkPglwGCYNQ==
-<<<<<<< HEAD
-=======
 
 node-releases@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.1.tgz#3d1d395f204f1f2f29a54358b9fb678765ad2fc5"
   integrity sha512-CqyzN6z7Q6aMeF/ktcMVTzhAHCEpf8SOarwpzpf8pNBY2k5/oM34UHldUwp8VKI7uxct2HxSRdJjBaZeESzcxA==
->>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
 
 normalize-package-data@^2.3.2:
   version "2.5.0"
@@ -4223,16 +4178,6 @@ path-parse@^1.0.6:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.7.tgz#fbc114b60ca42b30d9daf5858e4bd68bbedb6735"
   integrity sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==
-<<<<<<< HEAD
-
-path-type@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/path-type/-/path-type-2.0.0.tgz#f012ccb8415b7096fc2daa1054c3d72389594c73"
-  integrity sha1-8BLMuEFbcJb8LaoQVMPXI4lZTHM=
-  dependencies:
-    pify "^2.0.0"
-=======
->>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
 
 path-type@^3.0.0:
   version "3.0.0"

@@ -8,11 +8,7 @@ React 的开发工作由 Facebook 专门工作小组全职领导。它也接受�
 
 </Intro>
 
-<<<<<<< HEAD
 ## React 核心团队 {#react-core}
-=======
-## React Core {#react-core}
->>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
 
 React 团队成员全职专注于从事核心组件 API、React DOM 和 React Native 的引擎、React DevTools 以及 React 文档等工作。
 
@@ -90,12 +86,6 @@ Sebastian majored in psychology. He's usually quiet. Even when he says something
 
 Seth 从小就学习编程，在亚利桑那州图森市长大。放学后，他沉浸在音乐的殿堂里，在回归工作岗位前，他做了大约 10 年的巡回音乐人，后来就职于 Intuit。在业余时，他喜欢 [摄影](https://www.sethwebster.com) 还会参与美国东北部的动物救援机构。
 
-<<<<<<< HEAD
 ## 历史贡献者 {#past-contributors}
-=======
-## Past contributors {#past-contributors}
-
-You can find the past team members and other people who significantly contributed to React over the years on the [acknowledgements](/community/acknowledgements) page.
->>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
 
 你可以在 [acknowledgements](/community/acknowledgements) 页面中找到团队的历史成员和其他多年来为 React 做出过重大贡献的人。

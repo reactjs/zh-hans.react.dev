@@ -46,35 +46,21 @@ React 最初由 [Jordan Walke](https://github.com/jordwalke) 创立。如今，R
 
 我们要特别感谢 [Tom Occhino](https://github.com/tomocchino) 和 [Adam Wolff](https://github.com/wolffiex)，感谢他们多年来的指导和支持。我们还要感谢所有 [将 React 翻译为其他语言的志愿者们](https://translations.reactjs.org/)。
 
-<<<<<<< HEAD
 ## React 文档 {#react-docs}
 
 ### 文档 {#documentation}
-=======
-## React Docs {#react-docs}
-
-### Documentation {#documentation}
->>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
 
 * [Rachel Nabors](https://twitter.com/RachelNabors)：编辑，写作，插画
 * [Dan Abramov](https://twitter.com/dan_abramov)：写作，课程设计
 * [Sylwia Vargas](https://twitter.com/SylwiaVargas)：示例代码
 
-<<<<<<< HEAD
 ### 设计 {#design}
-=======
-### Design {#design}
->>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
 
 * [Dan Lebowitz](https://twitter.com/lebo)：设计
 * [Razvan Gradinar](https://dribbble.com/GradinarRazvan)：设计
 * [Maggie Appleton](https://maggieappleton.com/)：图解系统
 
-<<<<<<< HEAD
 ### 开发 {#development}
-=======
-### Development {#development}
->>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
 
 * [Jared Palmer](https://twitter.com/jaredpalmer)：网站开发
 * [ThisDotLabs](https://www.thisdot.co/) ([Dane Grant](https://twitter.com/danecando), [Dustin Goodman](https://twitter.com/dustinsgoodman))：网站开发
@@ -83,11 +69,7 @@ React 最初由 [Jordan Walke](https://github.com/jordwalke) 创立。如今，R
 
 我们还要感谢无数参与 alpha 测试的测试者和社区成员，他们为我们提供了很多宝贵的意见。
 
-<<<<<<< HEAD
 ## 额外鸣谢 {#additional-thanks}
-=======
-## Additional Thanks {#additional-thanks}
->>>>>>> 0b7fd7b7a44bd1ea54a2103b52d9189d9e88abd3
 
 此外，我们还要感谢：
 
