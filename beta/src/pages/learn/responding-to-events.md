@@ -1,5 +1,6 @@
 ---
 title: 响应事件
+layout: Learn
 translators:
   - Jiacheng787
 ---

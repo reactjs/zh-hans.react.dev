@@ -38,15 +38,12 @@ const Versions = ({location}: Props) => (
                 rel="noopener">
                 在 GitHub 上
               </a>
-              可以获取 React 完整版本历史记录
-              。<br />
+              可以获取 React 完整版本历史记录 。<br />
               最新版本的文档也可以在下方找到。
             </p>
             <p>
               欲了解有关{' '}
-              <a href="/docs/faq-versioning.html">
-                版本政策和稳定性承诺
-              </a>
+              <a href="/docs/faq-versioning.html">版本政策和稳定性承诺</a>
               的信息，请查阅 FAQ。
             </p>
             {versions.map(version => (
