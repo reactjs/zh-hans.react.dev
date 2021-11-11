@@ -134,9 +134,7 @@ export default function Banner() {
             {...linkProps}
             target="_blank"
             rel="noopener">
-            <span css={{color: colors.brand}}>
-              参与 2021 社区问卷调查！
-            </span>
+            <span css={{color: colors.brand}}>参与 2021 社区问卷调查！</span>
             <ExternalLinkSvg
               cssProps={{
                 verticalAlign: -2,
