@@ -65,7 +65,7 @@ button { margin-right: 10px; }
 
 </Sandpack>
 
-你定义了 `handleClick` 函数然后 [将它作为 prop 传入](/learn/passing-props-to-a-component) `<button>` 。`handleClick` 是一个 **事件处理函数** 。事件处理函数:
+你可以定义 `handleClick` 函数然后 [将其作为 prop 传入](/learn/passing-props-to-a-component) `<button>`。其中 `handleClick` 是一个 **事件处理函数** 。事件处理函数有如下特点:
 
 * 通常在你的组件 *内部* 定义。
 * 名称以 `handle` 开头，后跟事件名称。
