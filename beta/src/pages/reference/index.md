@@ -24,10 +24,10 @@ npm install react
 </TerminalBlock>
 
 ```js
-// 导入一个特定的 API ：
+// 如何引入一个特定的 API ：
 import { useState } from 'react';
 
-// 将所有的 API 一起导入：
+// 如何将所有的 API 一起引入：
 import * as React from 'react';
 ```
 
