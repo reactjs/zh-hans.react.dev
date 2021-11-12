@@ -1,6 +1,10 @@
 ---
+<<<<<<< HEAD
 title: JSFiddle 集成
 layout: Post
+=======
+title: JSFiddle Integration
+>>>>>>> 7254849aded3663f480316aa669e88ba1a5b8f86
 author: [vjeux]
 ---
 

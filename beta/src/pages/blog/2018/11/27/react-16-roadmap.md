@@ -1,6 +1,10 @@
 ---
+<<<<<<< HEAD
 title: 'React 16.x 的规划'
 layout: Post
+=======
+title: 'React 16.x Roadmap'
+>>>>>>> 7254849aded3663f480316aa669e88ba1a5b8f86
 author: [gaearon]
 ---
 

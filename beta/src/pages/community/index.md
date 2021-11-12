@@ -1,6 +1,10 @@
 ---
+<<<<<<< HEAD
 title: 社区
 layout: Home
+=======
+title: Community
+>>>>>>> 7254849aded3663f480316aa669e88ba1a5b8f86
 ---
 
 <Intro>

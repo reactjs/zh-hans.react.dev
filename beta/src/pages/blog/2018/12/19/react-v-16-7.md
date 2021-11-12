@@ -1,6 +1,10 @@
 ---
+<<<<<<< HEAD
 title: 'React v16.7：不包含 Hook 的版本'
 layout: Post
+=======
+title: 'React v16.7: No, This Is Not the One With Hooks'
+>>>>>>> 7254849aded3663f480316aa669e88ba1a5b8f86
 author: [acdlite]
 ---
 

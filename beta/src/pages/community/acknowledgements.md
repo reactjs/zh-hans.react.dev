@@ -1,6 +1,10 @@
 ---
+<<<<<<< HEAD
 title: 鸣谢
 layout: Home
+=======
+title: Acknowledgements
+>>>>>>> 7254849aded3663f480316aa669e88ba1a5b8f86
 ---
 
 ## React {#react}

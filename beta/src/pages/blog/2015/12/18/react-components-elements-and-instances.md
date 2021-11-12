@@ -1,6 +1,10 @@
 ---
+<<<<<<< HEAD
 title: 'React 组件，元素和实例'
 layout: Post
+=======
+title: 'React Components, Elements, and Instances'
+>>>>>>> 7254849aded3663f480316aa669e88ba1a5b8f86
 author: [gaearon]
 ---
 

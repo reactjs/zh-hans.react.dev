@@ -1,6 +1,10 @@
 ---
+<<<<<<< HEAD
 title: "React v17.0 RC 版本发布：没有新特性"
 layout: Post
+=======
+title: "React v17.0 Release Candidate: No New Features"
+>>>>>>> 7254849aded3663f480316aa669e88ba1a5b8f86
 author: [gaearon,rachelnabors]
 ---
 

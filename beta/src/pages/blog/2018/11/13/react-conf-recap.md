@@ -1,6 +1,10 @@
 ---
+<<<<<<< HEAD
 title: 'React Conf 会议纪要：Hook，Suspense 和 Concurrent Rendering'
 layout: Post
+=======
+title: 'React Conf recap: Hooks, Suspense, and Concurrent Rendering'
+>>>>>>> 7254849aded3663f480316aa669e88ba1a5b8f86
 author: [tomocchino]
 ---
 
