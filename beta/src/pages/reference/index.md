@@ -1,6 +1,8 @@
 ---
 title: React APIs
 layout: API
+translators:
+  - liu-jin-yi
 ---
 
 <Intro>
