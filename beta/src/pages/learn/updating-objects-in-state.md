@@ -1,5 +1,6 @@
 ---
 title: 更新 state 中的对象
+layout: Learn
 ---
 
 <Intro>
@@ -17,7 +18,7 @@ state 中可以存放任意种类的 JavaScript 值，当然也包括对象。�
 
 </YouWillLearn>
 
-## What's a mutation?
+## What's a mutation? {#whats-a-mutation}
 
 您可以在 state 中存放任何类型的 JavaScript 值。
 
@@ -47,7 +48,7 @@ position.x = 5;
 
 然而，虽然 React state 中存放的对象从技术上来讲是可变的，您应该像对待数字、布尔值和字符串一样去对待它们，视它们为不可变的。您不应该直接修改它们，而是应该总是用新的状态去替换旧的状态。
 
-## 将 state 视为只读的
+## 将 state 视为只读的 {#treat-state-as-read-only}
 
 换句话说，您应该**把所有存放在 state 中的 JavaScript 对象都视为只读的**。
 
@@ -197,7 +198,7 @@ setPosition({
 
 </DeepDive>  
 
-## 使用展开语法来复制对象
+## 使用展开语法来复制对象 {#copying-objects-with-the-spread-syntax}
 
 在之前的例子中，`position` 对象总是会依据指针的位置创建一个全新的对象。但是更多的时候，我们希望创建的新对象中仍然包含之前的一部分数据。例如，您可能只想要更新表单中的*一个*字段，其他的字段仍然使用之前的值。
 
@@ -441,7 +442,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </DeepDive>
 
-## 更新一个嵌套对象
+## 更新一个嵌套对象 {#updating-a-nested-object}
 
 考虑下面这种结构的嵌套对象：
 
@@ -646,7 +647,7 @@ let obj3 = {
 
 </DeepDive>  
 
-### 使用 Immer 写出简洁的更新逻辑
+### 使用 Immer 写出简洁的更新逻辑 {#write-concise-update-logic-with-immer}
 
 如果您的 state 有多层的嵌套，您获取应该考虑[使它扁平一些](/learn/choosing-the-state-structure#avoid-deeply-nested-state)。但是，如果您不想改变 state 的数据结构，您也可以采取一个更简单的方法。[Immer](https://github.com/immerjs/use-immer) 是一个非常流行的库，它使得您可以使用简便的直接修改的语法，并会帮您处理好复制的过程。通过使用 Immer ，您写出的代码看起来似乎是“打破了规则”并直接修改了对象：
 
@@ -815,7 +816,7 @@ img { width: 200px; height: 200px; }
 
 <Challenges>
 
-### 修复错误的 state 更新代码
+### 修复错误的 state 更新代码 {#fix-incorrect-state-updates}
 
 下面的表单是有问题的。试着点击几次增加分数的按钮。你会注意到分数并没有增加。然后试着修改一下 first name 字段，你会注意到分数的值“突然”发生了变化。最后，试着修改一下 last name 字段，你会发现分数完全消失了。
 
@@ -963,7 +964,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Solution>
 
-### 发现并修复 mutation
+### 发现并修复 mutation {#find-and-fix-the-mutation}
 
 在静止的背景上有一个可以拖动的方形。你可以使用下拉框来修改方形的颜色。
 
@@ -1278,7 +1279,7 @@ select { margin-bottom: 10px; }
 
 </Solution>
 
-### 使用 Immer 更新对象
+### 使用 Immer 更新对象 {#update-an-object-with-immer}
 
 这里的例子和上面那段有问题的代码是相同的。这次，试着用 Immer 来修复 mutation 的问题。为了你的便捷，`useImmer` 已经被引入了，因此你只需要修改 `shape` 这个 state 来使用它。
 

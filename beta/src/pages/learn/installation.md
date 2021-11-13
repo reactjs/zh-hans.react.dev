@@ -1,5 +1,6 @@
 ---
 title: 安装
+layout: Learn
 translators:
   - ChelesteWang
 ---
