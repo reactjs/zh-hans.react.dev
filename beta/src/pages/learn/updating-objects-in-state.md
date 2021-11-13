@@ -801,13 +801,13 @@ img { width: 200px; height: 200px; }
 
 <Recap>
 
-* Treat all state in React as immutable.
-* When you store objects in state, mutating them will not trigger renders and will change the state in previous render "snapshots."
-* Instead of mutating an object, create a *new* version of it, and trigger a re-render by setting state to it.
-* You can use the `{...obj, something: 'newValue'}` object spread syntax to create copies of objects.
-* Spread syntax is shallow: it only copies one level deep.
-* To update a nested object, you need to create copies all the way up from the place you're updating.
-* To reduce repetitive copying code, use Immer.
+* 在 React 中，将所有 state 都视为不可直接修改的
+* 当你在 state 中存放对象时，直接修改对象并不会触发重渲染，并且还会改变前一次渲染的“快照”中的值。
+* 不要直接修改对象，而要创建一个*新的*对象，并通过 state 的 setting 函数来出发重渲染。
+* 你可以使用类似 `{...obj, something: 'newValue'}` 这种对象展开语法来创建对象的拷贝。
+* 展开语法是浅拷贝的：它只会复制一层
+* 想要更新嵌套对象，你需要从需要更新的位置开始自底向上为每一层都创建新的拷贝。
+* 想要减少重复的拷贝代码，可以使用 Immer 。
 
 </Recap>
 
@@ -815,11 +815,11 @@ img { width: 200px; height: 200px; }
 
 <Challenges>
 
-### Fix incorrect state updates
+### 修复错误的 state 更新代码
 
-This form has a few bugs. Click the button that increases the score a few times. Notice that it does not increase. Then edit the first name, and notice that the score has suddenly "caught up" with your changes. Finally, edit the last name, and notice that the score has disappeared completely.
+下面的表单是有问题的。试着点击几次增加分数的按钮。你会注意到分数并没有增加。然后试着修改一下 first name 字段，你会注意到分数的值“突然”发生了变化。最后，试着修改一下 last name 字段，你会发现分数完全消失了。
 
-Your task is to fix all of these bugs. As you fix them, explain why each of them happens.
+你的任务就是修复这些问题。当你修复他们之后，解释一下每个问题产生的原因。
 
 <Sandpack>
 
@@ -887,7 +887,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 <Solution>
 
-Here is a version with both bugs fixed:
+下面是两个问题都得到修复后的代码：
 
 <Sandpack>
 
@@ -957,19 +957,19 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-The problem with `handlePlusClick` was that it mutated the `player` object. As a result, React did not know that there's a reason to re-render, and did not update the score on the screen. This is why, when you edited the first name, the state got updated, triggering a re-render which _also_ updated the score on the screen.
+代码中 `handlePlusClick` 函数的问题在于它直接修改了 `player` 对象。这就造成了 React 并不知道需要重渲染，也就没有更新屏幕上分数的值。因此，当你修改 first name 字段的时候，state 发生了更新，触发了重渲染，*同时也*更新了屏幕上分数显示的值。
 
-The problem with `handleLastNameChange` was that it did not copy the existing `...player` fields into the new object. This is why the score got lost after you edited the last name.
+代码中 `handleLastNameChange` 的问题在于它没有把 `...player` 中已经包含的属性复制到新的对象中。因此，当你编辑 last name 字段时，分数的值就丢失了。
 
 </Solution>
 
-### Find and fix the mutation
+### 发现并修复 mutation
 
-There is a draggable box on a static background. You can change the box's color using the select input.
+在静止的背景上有一个可以拖动的方形。你可以使用下拉框来修改方形的颜色。
 
-But there is a bug. If you move the box first, and then change its color, the background (which isn't supposed to move!) will "jump" to the box position. But this should not happen: the `Background`'s `position` prop is set to `initialPosition`, which is `{ x: 0, y: 0 }`. Why is the background moving after the color change?
+但是这里有个问题。当你先移动了方形，再去修改它的颜色时，背景会突然“跳”到方形所在的位置（实际上背景的位置并不应该发生变化！）。但是这并不是我们想要的，背景的 `position` 属性被设置为 `initialPosition` ，也就是 `{ x: 0, y: 0 }` 。为什么当修改颜色时，背景会移动呢？
 
-Find the bug and fix it.
+找到问题所在并修复它。
 
 <Hint>
 
@@ -1123,9 +1123,9 @@ select { margin-bottom: 10px; }
 
 <Solution>
 
-The problem was in the mutation inside `handleMove`. It mutated `shape.position`, but that's the same object that `initialPosition` points at. This is why both the shape and the background move. (It's a mutation, so the change doesn't reflect on the screen until an unrelated update--the color change--triggers a re-render.)
+问题出在 `handleMove` 中的 mutation 。它直接修改了 `shape.position` ，但是此时 `initialPosition` 所指向的也是同一个对象。因此方形和背景都发生了移动。（因为是 mutation ，所以变化并没有立即反映到屏幕上，而是等到最近一次相关的更新，也就是颜色变化，才触发了一次重渲染。）
 
-The fix is to remove the mutation from `handleMove`, and use the spread operator to copy the shape. Note that `+=` is a mutation, so you need to rewrite it to use a regular `+` operation.
+修复问题的方法就是从 `handleMove` 中移除这个 mutation ，然后用展开运算符来复制方形对象。请注意 `+=` 是 mutation 的一种，所以你需要用正常的 “+” 来重写。
 
 <Sandpack>
 
@@ -1278,9 +1278,9 @@ select { margin-bottom: 10px; }
 
 </Solution>
 
-### Update an object with Immer
+### 使用 Immer 更新对象
 
-This is the same buggy example as in the previous challenge. This time, fix the mutation by using Immer. For your convenience, `useImmer` is already imported, so you need to change the `shape` state variable to use it.
+这里的例子和上面那段有问题的代码是相同的。这次，试着用 Immer 来修复 mutation 的问题。为了你的便捷，`useImmer` 已经被引入了，因此你只需要修改 `shape` 这个 state 来使用它。
 
 <Sandpack>
 
@@ -1447,7 +1447,7 @@ select { margin-bottom: 10px; }
 
 <Solution>
 
-This is the solution rewritten with Immer. Notice how the event handlers are written in a mutating fashion, but the bug does not occur. This is because under the hood, Immer never mutates the existing objects.
+下面的代码是使用 Immer 重写的。请注意代码中的事件处理函数仍然是以直接修改对象的方式书写的，但是代码不会产生任何问题了。这是因为从本质上来说，Immer 从来没有直接修改现有的对象。
 
 <Sandpack>
 
