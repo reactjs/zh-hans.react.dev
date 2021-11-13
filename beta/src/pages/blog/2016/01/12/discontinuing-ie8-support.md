@@ -1,10 +1,5 @@
 ---
-<<<<<<< HEAD
-title: '停止 React DOM 对 IE 8 的支持'
-layout: Post
-=======
-title: 'Discontinuing IE 8 Support in React DOM'
->>>>>>> 7254849aded3663f480316aa669e88ba1a5b8f86
+title: 'React DOM 不再支持 IE 8'
 author: [sophiebits]
 ---
 

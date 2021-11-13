@@ -1,10 +1,5 @@
 ---
-<<<<<<< HEAD
 title: '全新的 React DevTools 简介'
-layout: Post
-=======
-title: 'Introducing the New React DevTools'
->>>>>>> 7254849aded3663f480316aa669e88ba1a5b8f86
 author: [bvaughn]
 ---
 

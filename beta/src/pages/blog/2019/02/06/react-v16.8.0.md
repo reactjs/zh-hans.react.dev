@@ -1,10 +1,5 @@
 ---
-<<<<<<< HEAD
 title: "React v16.8：Hook 发布"
-layout: Post
-=======
-title: "React v16.8: The One With Hooks"
->>>>>>> 7254849aded3663f480316aa669e88ba1a5b8f86
 author: [gaearon]
 ---
 

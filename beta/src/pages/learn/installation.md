@@ -1,12 +1,7 @@
 ---
-<<<<<<< HEAD
 title: 安装
-layout: Learn
 translators:
   - ChelesteWang
-=======
-title: Installation
->>>>>>> 7254849aded3663f480316aa669e88ba1a5b8f86
 ---
 
 <Intro>

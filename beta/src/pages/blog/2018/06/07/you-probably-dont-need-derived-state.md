@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
 title: "你可能不需要使用派生 state"
-=======
-title: "You Probably Don't Need Derived State"
->>>>>>> 7254849aded3663f480316aa669e88ba1a5b8f86
 author: [bvaughn]
 ---
 
