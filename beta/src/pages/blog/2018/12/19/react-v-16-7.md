@@ -1,6 +1,5 @@
 ---
 title: 'React v16.7：不包含 Hook 的版本'
-layout: Post
 author: [acdlite]
 ---
 

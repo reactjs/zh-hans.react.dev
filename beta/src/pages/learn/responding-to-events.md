@@ -1,6 +1,5 @@
 ---
 title: 响应事件
-layout: Learn
 translators:
   - Jiacheng787
 ---
@@ -315,7 +314,7 @@ button { margin-right: 10px; }
 
 </Sandpack>
 
-请注意 `App` 组件不需要知道 `Toolbar` 将会对 `onPlayMovie` 和 `onUploadImage` 做 *什么* 。上面是一个 `Toobar` 的实现细节。在这里，`Toolbar` 将它们作为 `onClick` 处理函数向下传递给它的 `Button` ，但也可以稍后通过快捷键触发它们。用应用程序特定的交互方式（如 `onPlayMovie`）来命名 prop ，可以让你灵活地更改以后使用它们的方式。
+请注意 `App` 组件不需要知道 `Toolbar` 将会对 `onPlayMovie` 和 `onUploadImage` 做 *什么* 。上面是一个 `Toolbar` 的实现细节。在这里，`Toolbar` 将它们作为 `onClick` 处理函数向下传递给它的 `Button` ，但也可以稍后通过快捷键触发它们。用应用程序特定的交互方式（如 `onPlayMovie`）来命名 prop ，可以让你灵活地更改以后使用它们的方式。
 
 ## 事件传播 {#event-propagation}
 

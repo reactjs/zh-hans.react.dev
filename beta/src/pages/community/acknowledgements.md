@@ -1,6 +1,5 @@
 ---
 title: 鸣谢
-layout: Home
 ---
 
 ## React {#react}

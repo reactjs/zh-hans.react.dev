@@ -1,6 +1,5 @@
 ---
 title: "React v16.8：Hook 发布"
-layout: Post
 author: [gaearon]
 ---
 

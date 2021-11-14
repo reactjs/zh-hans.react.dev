@@ -1,6 +1,5 @@
 ---
 title: '全新的 React DevTools 简介'
-layout: Post
 author: [bvaughn]
 ---
 

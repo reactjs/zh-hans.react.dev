@@ -1,6 +1,5 @@
 ---
 title: 异步渲染之更新
-layout: Post
 author: [bvaughn]
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: 'React v16.9.0 发布及 Roadmap 最新进展'
-layout: Post
 author: [gaearon, bvaughn]
 ---
 

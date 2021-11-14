@@ -1,6 +1,5 @@
 ---
 title: 社区
-layout: Home
 ---
 
 <Intro>

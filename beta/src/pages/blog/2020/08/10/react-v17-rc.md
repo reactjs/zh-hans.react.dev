@@ -1,6 +1,5 @@
 ---
 title: "React v17.0 RC 版本发布：没有新特性"
-layout: Post
 author: [gaearon,rachelnabors]
 ---
 
