@@ -1,6 +1,5 @@
 ---
 title: 'React 16.x 的规划'
-layout: Post
 author: [gaearon]
 ---
 

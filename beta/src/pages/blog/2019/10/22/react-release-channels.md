@@ -1,6 +1,5 @@
 ---
 title: '使用 React 预发布版为新功能打基础'
-layout: Post
 author: [acdlite]
 ---
 

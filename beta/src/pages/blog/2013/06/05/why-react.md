@@ -1,6 +1,5 @@
 ---
 title: 我们为什么要构建 React?
-layout: Post
 author: [petehunt]
 ---
 

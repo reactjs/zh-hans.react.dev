@@ -1,6 +1,5 @@
 ---
 title: 'React 组件，元素和实例'
-layout: Post
 author: [gaearon]
 ---
 
