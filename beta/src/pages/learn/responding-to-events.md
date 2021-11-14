@@ -69,9 +69,9 @@ button { margin-right: 10px; }
 * 通常在你的组件 *内部* 定义。
 * 名称以 `handle` 开头，后跟事件名称。
 
-> 虽然事件处理函数没有专门的命名规则，但是按照惯例用 `handle` 后跟事件名称的形式来命名他们。你将会经常看到 `onClick={handleClick}` 、`onMouseEnter={handleMouseEnter}` 等等。
+> 虽然事件处理函数没有专门的命名规则，但大家习惯以 `handle` 为前缀，后接事件名来进行命名。你经常会看到类似 `onClick={handleClick}` 、`onMouseEnter={handleMouseEnter}` 的命名等等。
 
-此外，你可以在 JSX 中定义一个内联的事件处理函数：
+此外，你还可以在 JSX 中定义一个内联的事件处理函数：
 
 ```jsx
 <button onClick={function handleClick() {
@@ -79,7 +79,7 @@ button { margin-right: 10px; }
 }}>
 ```
 
-或者，更简洁地，使用箭头函数：
+或者，直接使用更为简洁箭头函数：
 
 ```jsx
 <button onClick={() => {
@@ -87,28 +87,28 @@ button { margin-right: 10px; }
 }}>
 ```
 
-以上所有方式都是等效的。内联事件处理函数对于短函数很方便。
+以上所有方式都是等效的。当函数体较短时，内联事件处理函数会很方便。
 
 <Gotcha>
 
-传递给事件处理函数的函数必须被传递，而不是被调用。例如：
+传递给事件处理函数的函数应直接传递，而非调用。例如：
 
 | 传递一个函数（正确）           | 调用一个函数（错误） |
 |----------------------------------------|--------------------------------|
 | `<button onClick={handleClick}>` | `<button onClick={handleClick()}>` |
 
-区别很微妙。在第一个例子中，`handleClick` 函数作为 `onClick` 事件处理函数传递。这让 React 记住它并且只在用户点击按钮时调用你的函数。
+区别很微妙。在第一个示例中，`handleClick` 函数作为 `onClick` 事件处理函数传递。这会让 React 记住它，并且只在用户点击按钮时调用你的函数。
 
-在第二个例子中，`handleClick()` 最后的 `()` 在 [渲染](/learn/render-and-commit) 过程中 *立即* 触发函数，即使没有任何点击。这是因为在 [JSX `{` 和 `}`](/learn/javascript-in-jsx-with-curly-braces) 内部的 JavaScript 会立即执行。
+在第二个示例中，`handleClick()` 中最后的 `()` 会在 [渲染](/learn/render-and-commit) 过程中 *立即* 触发函数，即使没有任何点击。这是因为在 [JSX `{` 和 `}`](/learn/javascript-in-jsx-with-curly-braces) 之间的 JavaScript 会立即执行。
 
-当你编写内联代码时，同样的陷阱以不同的方式呈现：
+当你编写内联代码时，同样的陷阱可能会以不同的方式出现：
 
 | 传递一个函数（正确）           | 调用一个函数（错误） |
 |----------------------------------------|--------------------------------|
 | `<button onClick={() => alert('...')}>` | `<button onClick={alert('...')}>` |
 
 
-像这样传递内联代码不会在点击时触发———每次组件渲染时都会触发：
+如果按如下方式传递内联代码，并不会在点击时触发，而是会在每次组件渲染时触发：
 
 ```jsx
 // 这个 alert 在组件渲染时触发，而不是点击时触发！
@@ -121,7 +121,7 @@ button { margin-right: 10px; }
 <button onClick={() => alert('你点击了我！')}>
 ```
 
-这里创建了一个稍后调用的函数，而不是在每次渲染时执行内部代码。
+这里创建了一个稍后调用的函数，而不会在每次渲染时执行其内部代码。
 
 在这两种情况下，你要传递的是一个函数：
 
@@ -167,7 +167,7 @@ button { margin-right: 10px; }
 
 </Sandpack>
 
-这让两个按钮展示不同的消息。尝试更改传递给他们的消息。
+此处有两个按钮，会展示不同的消息。你可以尝试更改传递给他们的消息。
 
 ### 将事件处理函数作为 props 传递 {#passing-event-handlers-as-props}
 
