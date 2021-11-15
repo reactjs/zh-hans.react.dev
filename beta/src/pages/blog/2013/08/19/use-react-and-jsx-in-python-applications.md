@@ -5,11 +5,7 @@ author: [kmeht]
 
 今天我们很高兴能发布 [PyReact](https://github.com/facebook/react-python) 的初始版本，它可以让你在 Python 应用程序中更简单的使用 React 与 JSX。它被设计为一个将 JSX 文件转换为 JavaScript 的 API，同时提供最新 React 源文件的访问。
 
-<<<<<<< HEAD
-## 使用 {#usage}
-=======
-## Usage {/*usage*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+## 使用 {/*usage*/}
 
 通过我们提供的 `jsx` 模块转换多个 JSX 文件：
 
@@ -44,11 +40,7 @@ PIPELINE_COMPILERS = (
 )
 ```
 
-<<<<<<< HEAD
-## 安装 {#installation}
-=======
-## Installation {/*installation*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+## 安装 {/*installation*/}
 
 PyReact 托管于 PyPI, 并可以使用 `pip` 安装:
 

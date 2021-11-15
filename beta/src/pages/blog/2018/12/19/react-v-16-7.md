@@ -5,21 +5,13 @@ author: [acdlite]
 
 我们最新的发布版本包括了一个关于 `React.lazy` 的重要性能问题修复。尽管发布里不包括 API 的更改，我们还是以次要版本而不是修订版本的形式发布了。
 
-<<<<<<< HEAD
-## 这个问题修复为什么是次要版本而不是修订版本？ {#why-is-this-bugfix-a-minor-instead-of-a-patch}
-=======
-## Why Is This Bugfix a Minor Instead of a Patch? {/*why-is-this-bugfix-a-minor-instead-of-a-patch*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+## 这个问题修复为什么是次要版本而不是修订版本？ {/*why-is-this-bugfix-a-minor-instead-of-a-patch*/}
 
 React 遵循 [语义化版本](/docs/faq-versioning)的原则。一般来说这意味着问题修复会发布成修订版，而新功能（不兼容的改动）会发布成次要版本。不过即使没有新功能，我们仍保留发布次要版的权力。这么做的目的是要确保修订版里的更动有着最小的破坏性影响。修订版是发布版本里最重要的一个版本，因为它时常包括了紧急问题的修复。所以修订版对可靠性的要求更高。而修订版带来更多的问题是不能被接受的。因为当大家开始不信任修订版时，我们即时解决紧急问题的能力也被影响了 — 比如说解决安全漏洞。
 
 我们从不会蓄意提交有问题的发布。React 稳定的声誉来之不易，我们也打算继续维持。在发布前我们都会仔细测试每个新的版本。这包括了单元测试, 生成 (fuzzy) 测试, 集成测试, 以及内部 dogfooding 几万个组件。但是，我们也是会出错的。这就是为什么从现在开始，我们的政策就是如果新的发布包含了非无足轻重的改动，我们将递增次版本号, 即使外在行为不变。当更改有 `unstable_` 前缀的 API 过后我们也会递增次版本号。
 
-<<<<<<< HEAD
-## 我可以使用 Hook 了吗? {#can-i-use-hooks-yet}
-=======
-## Can I Use Hooks Yet? {/*can-i-use-hooks-yet*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+## 我可以使用 Hook 了吗? {/*can-i-use-hooks-yet*/}
 
 暂时还不行, 不过很快了!
 
@@ -35,11 +27,9 @@ React 遵循 [语义化版本](/docs/faq-versioning)的原则。一般来说这�
 
 想了解更多 [我们的规划](/blog/2018/11/27/react-16-roadmap) 参考上篇博文。
 
-<<<<<<< HEAD
+## 安装 {/*installation*/}
+
 React v16.7.0 已经在 npm 上发布。
-=======
-## Installation {/*installation*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 使用 Yarn 来安装 React 16，执行：
 
@@ -68,11 +58,7 @@ npm install --save react@^16.7.0 react-dom@^16.7.0
 
 请参考文档的[详细安装指南](/docs/installation).
 
-<<<<<<< HEAD
-## 更新日志 {#changelog}
-=======
-## Changelog {/*changelog*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+## 更新日志 {/*changelog*/}
 
 ### React DOM {/*react-dom*/}
 
@@ -81,11 +67,7 @@ npm install --save react@^16.7.0 react-dom@^16.7.0
 - 修复当共用 `react-dom/server@16.6` 和 `react@<16.6` 时 SSR 和 context 的问题。 ([@gaearon](http://github.com/gaearon) 在 [#14291](https://github.com/facebook/react/pull/14291))
 - 修复一个 profiling mode 的性能回退。 ([@bvaughn](http://github.com/bvaughn) 在 [#14383](https://github.com/facebook/react/pull/14383))
 
-<<<<<<< HEAD
-### 调度器 (试验阶段) {#scheduler-experimental}
-=======
-### Scheduler (Experimental) {/*scheduler-experimental*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+### 调度器 (试验阶段) {/*scheduler-experimental*/}
 
 - 提交到 MessageChannel 来代替 window。([@acdlite](http://github.com/acdlite) 提交在 [#14234](https://github.com/facebook/react/pull/14234))
 - 减少序列化的成本。([@developit](http://github.com/developit) 提交在 [#14249](https://github.com/facebook/react/pull/14249))

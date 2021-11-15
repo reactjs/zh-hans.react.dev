@@ -17,11 +17,7 @@ const MyComponent = React.memo(function MyComponent(props) {
 });
 ```
 
-<<<<<<< HEAD
-## [`React.lazy`](/docs/code-splitting#reactlazy): 依赖 `Suspense` 进行代码分割 {#reactlazy-code-splitting-with-suspense}
-=======
-## [`React.lazy`](/docs/code-splitting#reactlazy): Code-Splitting with `Suspense` {/*reactlazy-code-splitting-with-suspense*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+## [`React.lazy`](/docs/code-splitting#reactlazy): 依赖 `Suspense` 进行代码分割 {/*reactlazy-code-splitting-with-suspense*/}
 
 您可能已经阅读过了 [Dan 在冰岛的 JSConf 上关于 React Suspense 的演讲](/blog/2018/03/01/sneak-peek-beyond-react-16)。现在，您可以通过 `React.lazy()` 包装动态加载的组件的方式使用 Suspense 来进行 [代码分割](/docs/code-splitting#reactlazy) 了。
 
@@ -84,11 +80,7 @@ React 16 引入了[错误边界](/blog/2017/07/26/error-handling-in-react-16)来
 
 > 注意: `getDerivedStateFromError()` 尚不可用于服务端渲染。它被设计为在将来的版本中支持服务端渲染。我们提前发布，只是为了让您可以开始准备如何使用它。
 
-<<<<<<< HEAD
-## 在 StrictMode 中被弃用的 {#deprecations-in-strictmode}
-=======
-## Deprecations in StrictMode {/*deprecations-in-strictmode*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+## 在 StrictMode 中被弃用的 {/*deprecations-in-strictmode*/}
 
 在 [16.3](/blog/2018/03/29/react-v-16-3#strictmode-component) 中我们介绍了 [`StrictMode`](/docs/strict-mode) 组件。它允许您选择对可能在将来导致问题的模式进行提前预警。
 
@@ -99,11 +91,7 @@ React 16 引入了[错误边界](/blog/2017/07/26/error-handling-in-react-16)来
 
 如果您在升级时遇到问题，我们希望听到您的反馈意见。
 
-<<<<<<< HEAD
-## 安装 {#installation}
-=======
-## Installation {/*installation*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+## 安装 {/*installation*/}
 
 npm 的源中提供了 React v16.6.0。
 
@@ -134,11 +122,7 @@ npm install --save react@^16.6.0 react-dom@^16.6.0
 
 更详细 [安装说明](/docs/installation)，请参阅文档。
 
-<<<<<<< HEAD
-## 更新日志 {#changelog}
-=======
-## Changelog {/*changelog*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+## 更新日志 {/*changelog*/}
 
 ### React {/*react*/}
 
@@ -162,11 +146,7 @@ npm install --save react@^16.6.0 react-dom@^16.6.0
 - 添加 `React.memo()` 支持。 ([@alexmckenley](https://github.com/alexmckenley) 在 [#13855](https://github.com/facebook/react/pull/13855))
 - 添加 `contextType` 支持。 ([@alexmckenley](https://github.com/alexmckenley) 和 [@sebmarkbage](https://github.com/sebmarkbage) 在 [#13889](https://github.com/facebook/react/pull/13889))
 
-<<<<<<< HEAD
-### Scheduler (实验阶段) {#scheduler-experimental}
-=======
-### Scheduler (Experimental) {/*scheduler-experimental*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+### Scheduler (实验阶段) {/*scheduler-experimental*/}
 
 - 将包重命名为 `scheduler`。 ([@gaearon](https://github.com/gaearon) 在 [#13683](https://github.com/facebook/react/pull/13683))
 - 支持优先级，延续和包装回调。 ([@acdlite](https://github.com/acdlite) 在 [#13720](https://github.com/facebook/react/pull/13720) and [#13842](https://github.com/facebook/react/pull/13842))

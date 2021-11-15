@@ -5,15 +5,9 @@ author: [gaearon, bvaughn]
 
 今天我们发布了 React 16.9。它包含几个新功能，bug 修复以及新的弃用警告，以助于筹备接下来的主要版本。
 
-<<<<<<< HEAD
-## 新的弃用 {#new-deprecations}
+## 新的弃用 {/*new-deprecations*/}
 
-### 重命名 Unsafe 的生命周期方法 {#renaming-unsafe-lifecycle-methods}
-=======
-## New Deprecations {/*new-deprecations*/}
-
-### Renaming Unsafe Lifecycle Methods {/*renaming-unsafe-lifecycle-methods*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+### 重命名 Unsafe 的生命周期方法 {/*renaming-unsafe-lifecycle-methods*/}
 
 [一年前](/blog/2018/03/27/update-on-async-rendering)，我们宣布新的 unsafe 的生命周期方法正在进行重命名：
 
@@ -44,11 +38,7 @@ __（请注意，这里使用了 `npx`，而非 `npm`。`npx` 是 Node 6+ 默认
 >
 >了解更多关于 [版本策略及对稳定性的承诺](/docs/faq-versioning#commitment-to-stability)。
 
-<<<<<<< HEAD
-### 废弃 `javascript:` 形式的 URL {#deprecating-javascript-urls}
-=======
-### Deprecating `javascript:` URLs {/*deprecating-javascript-urls*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+### 废弃 `javascript:` 形式的 URL {/*deprecating-javascript-urls*/}
 
 以 `javascript:` 开头的 URL 非常容易遭受攻击，因为它很容易在诸如 `<a href>` 之类的标签中引入未经过处理的输出并会造成安全漏洞：
 
@@ -64,11 +54,7 @@ const userProfile = {
 
 **未来的主要版本中，** 如果遇到 `javascript:` 形式的 URL，React 将抛出错误。
 
-<<<<<<< HEAD
-### 废弃 "Factory" 组件 {#deprecating-factory-components}
-=======
-### Deprecating "Factory" Components {/*deprecating-factory-components*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+### 废弃 "Factory" 组件 {/*deprecating-factory-components*/}
 
 在使用 Babel 编译 JavaScript Class 成为主流前，React 支持 "factory" 组件，该组件使用 `render` 方法返回一个对象：
 
@@ -88,15 +74,9 @@ function FactoryComponent() {
 
 我们不希望大多数代码库受到此影响。
 
-<<<<<<< HEAD
-## 新特性 {#new-features}
+## 新特性 {/*new-features*/}
 
-### 用于测试的异步函数 [`act()`](/docs/test-utils#act) {#async-act-for-testing}
-=======
-## New Features {/*new-features*/}
-
-### Async [`act()`](/docs/test-utils#act) for Testing {/*async-act-for-testing*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+### 用于测试的异步函数 [`act()`](/docs/test-utils#act) {/*async-act-for-testing*/}
 
 [React 16.8](/blog/2019/02/06/react-v16.8.0) 引入了名为 [`act()`](/docs/test-utils#act) 的新测试实用工具来帮助你编写更符合浏览器行为的测试代码。例如，单个 `act()` 中的多个状态更新会进行批处理。这与 React 在处理真实浏览器事件时的工作方式相匹配，并有助于为将来 React 更频繁地批量更新组件做准备。
 
@@ -120,11 +100,7 @@ await act(async () => {
 
 如果你遇到 `act()` 的相关问题，请提出 [issue](https://github.com/facebook/react/issues) 告知我们，我们会尽力提供帮助。
 
-<<<<<<< HEAD
-### 使用 [`<React.Profiler>`](/docs/profiler) 进行性能评估 {#performance-measurements-with-reactprofiler}
-=======
-### Performance Measurements with [`<React.Profiler>`](/docs/profiler) {/*performance-measurements-with-reactprofiler*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+### 使用 [`<React.Profiler>`](/docs/profiler) 进行性能评估 {/*performance-measurements-with-reactprofiler*/}
 
 在 React 16.5 中，我们推出了新的 [React Profiler for DevTools](/blog/2018/09/10/introducing-the-react-profiler)，它可以帮你找出应用程序中的性能瓶颈。**在 React 16.9 中，我们还提供了一种通过*编程*的方式来收集测量你的代码**，这种方式被称为 `<React.Profiler>`。我们预计大多数较小的应用都不会使用它，但在较大的应用中追踪性能回归可能会很方便。
 
@@ -153,11 +129,7 @@ render(
 > 如果想要在生产环境进行性能分析，React 提供了一个特殊的生成构建，并启用了分析模式。
 > 在 [fb.me/react-profiling](https://fb.me/react-profiling) 中阅读有关如何使用此构建的更多信息。
 
-<<<<<<< HEAD
-## 值得注意的 bug 修复 {#notable-bugfixes}
-=======
-## Notable Bugfixes {/*notable-bugfixes*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+## 值得注意的 bug 修复 {/*notable-bugfixes*/}
 
 此版本包含一些其他显著的改进：
 
@@ -169,11 +141,7 @@ render(
 
 感谢所有帮助解决这些问题的贡献者。你可以在[此处](#changelog)找到完整的更新日志。
 
-<<<<<<< HEAD
-## Roadmap 的进展 {#an-update-to-the-roadmap}
-=======
-## An Update to the Roadmap {/*an-update-to-the-roadmap*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+## Roadmap 的进展 {/*an-update-to-the-roadmap*/}
 
 [2018 年 11 月](/blog/2018/11/27/react-16-roadmap)我们发布了 16.x 版本的 roadmap：
 
@@ -191,11 +159,7 @@ render(
 
 望大家理解，这就是我们接下来的计划。
 
-<<<<<<< HEAD
-### 一个版本而不是两个版本 {#one-release-instead-of-two}
-=======
-### One Release Instead of Two {/*one-release-instead-of-two*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+### 一个版本而不是两个版本 {/*one-release-instead-of-two*/}
 
 Concurrent Mode 和 Suspense [驱动了 Facebook 新网站的研发](https://developers.facebook.com/videos/2019/building-the-new-facebookcom-with-react-graphql-and-relay/)，这个项目目前在积极的开发中，因此我们可以很自信的说，从技术上讲，Concurrent Mode 和 Suspense 已近乎稳定了。同时，我们也更加清楚，在它们被开源使用之前我们应该具体做哪些步骤。
 
@@ -203,37 +167,21 @@ Concurrent Mode 和 Suspense [驱动了 Facebook 新网站的研发](https://dev
 
 我们不想再次过度承诺发布日期。考虑到我们在生产环境的代码中同时依赖了这两者，我们期望今年的 16.x 的某个版本中，支持可以选择性的使用它们。
 
-<<<<<<< HEAD
-### Data Fetching 的进展 {#an-update-on-data-fetching}
-=======
-### An Update on Data Fetching {/*an-update-on-data-fetching*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+### Data Fetching 的进展 {/*an-update-on-data-fetching*/}
 
 虽然 React 没有规定你如何请求数据，但是第一版用来请求数据的 Suspense 很有可能专注于集成 __固定的数据请求库__。比如，在 Facebook，我们正在使用即将发布的集成了 Suspense 的 Relay APIs。我们也将会给出对其他库（比如 Apollo）做类似的整合的文档。
 
 在第一个版本中，我们 __并没有__ 打算专注于我们在早期演示中（也称为“React Cache”）使用的临时 “触发HTTP请求” 解决方案。但是，我们希望我们和 React 社区将在首次发布后的几个月内仍会在这个领域继续探索。
 
-<<<<<<< HEAD
-### 服务端渲染的进展 {#an-update-on-server-rendering}
-=======
-### An Update on Server Rendering {/*an-update-on-server-rendering*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+### 服务端渲染的进展 {/*an-update-on-server-rendering*/}
 
 我们已经开始研究[新的支持 Suspense 的服务器端渲染引擎](/blog/2018/11/27/react-16-roadmap#suspense-for-server-rendering)，但是我们 __不认为__ 它在并发模式的最初版本将会就绪。然而，这个版本将会提供一个临时的解决方案，这个方案可以让现有的服务端渲染引擎在 Suspense 的回调函数中立即生成 HTML，然后在客户端渲染出真正的内容。这就是我们在流式渲染引擎就绪之前，当前在 Facebook 内部使用的方案。
 
-<<<<<<< HEAD
-### 为什么要花费这么久时间？{#why-is-it-taking-so-long}
-=======
-### Why Is It Taking So Long? {/*why-is-it-taking-so-long*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+### 为什么要花费这么久时间？ {/*why-is-it-taking-so-long*/}
 
 随着每个单独的部件趋于稳定，我们将它们迁移到了并发模式中，其中包括了 [新的 context API](/blog/2018/03/29/react-v-16-3)、[含有 Suspense 的懒加载](/blog/2018/10/23/react-v-16-6) 以及 [Hook](/blog/2019/02/06/react-v16.8.0)。我们也十分期望发布其他缺失的部分，但是[大规模尝试它们](/docs/design-principles#dogfooding)是这个过程中一个很重要的部分。坦诚地说，我们比最开始预想投入了更多的工作。我们会一如既往，感谢你在 [Twitter](https://twitter.com/reactjs) 和 [问题跟踪](https://github.com/facebook/react/issues) 中提出的问题和反馈。
 
-<<<<<<< HEAD
-## 安装 {#installation}
-=======
-## Installation {/*installation*/}
->>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
+## 安装 {/*installation*/}
 
 ### React {/*react*/}
 
