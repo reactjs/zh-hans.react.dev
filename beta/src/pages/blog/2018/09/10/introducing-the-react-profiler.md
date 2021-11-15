@@ -22,7 +22,7 @@ React 16.5 添加了对开发者工具的 Profiler 插件的支持。
   - [选中的提交记录没可展示的时间数据](#no-timing-data-to-display-for-the-selected-commit)
 - [视频解析](#deep-dive-video)
 
-## 分析应用程序 {#profiling-an-application}
+## 分析应用程序 {/*profiling-an-application*/}
 
 开发者工具将会对支持新的分析 API 的应用程序添加一个“Profiler”选项卡：
 
@@ -47,9 +47,9 @@ React 16.5 添加了对开发者工具的 Profiler 插件的支持。
 假设你的应用程序在分析时至少渲染一次，开发者工具将提供几种方法查看性能数据。
 我们将会[在接下来介绍它们](#reading-performance-data)。
 
-## 查看性能数据 {#reading-performance-data}
+## 查看性能数据 {/*reading-performance-data*/}
 
-### 浏览提交记录 {#browsing-commits}
+### 浏览提交记录 {/*browsing-commits*/}
 
 从概念上讲，React 分两个阶段工作：
 
@@ -67,7 +67,7 @@ React 16.5 添加了对开发者工具的 Profiler 插件的支持。
 这些列的颜色和高度对应该次提交渲染所需的时间。
 (较高的黄色的列比较短的蓝色的列耗费的时间长。)
 
-### 筛选提交记录 {#filtering-commits}
+### 筛选提交记录 {/*filtering-commits*/}
 
 你分析的时间越长，应用程序渲染的次数就越多。
 有时候，你可能会因为_过多的提交记录_而感觉难以处理。
@@ -76,7 +76,7 @@ profiler 提供了一个筛选功能，帮助你解决这个问题。
 
 ![按时间筛选提交记录](/images/blog/introducing-the-react-profiler/filtering-commits.gif)
 
-### 火焰图 {#flame-chart}
+### 火焰图 {/*flame-chart*/}
 
 火焰图会展示你所指定的那一次提交的应用程序的信息，
 图中的每一列都代表了一个 React 组件，（如：`App`，`Nav`）。
@@ -114,7 +114,7 @@ profiler 提供了一个筛选功能，帮助你解决这个问题。
 上图表示 `state.scrollOffset` 在提交之间被改变了。 
 这可能是导致 `List` 组件重新渲染的原因。
 
-### 排序图 {#ranked-chart}
+### 排序图 {/*ranked-chart*/}
 
 同火焰图一样，排序图也会展示你所指定的那一次提交的信息，
 图中的每一列都代表了一个 React 组件（如：`App`，`Nav`）。
@@ -129,7 +129,7 @@ profiler 提供了一个筛选功能，帮助你解决这个问题。
 
 与火焰图一样，你可以通过单击组件放大或缩小排序图。
 
-### 组件图 {#component-chart}
+### 组件图 {/*component-chart*/}
 
 在你分析的过程中，使用该图来查看某一组件在多次提交中的渲染时间有时候是非常有用的。
 组件图会以一个列的形式展示，
@@ -151,7 +151,7 @@ profiler 提供了一个筛选功能，帮助你解决这个问题。
 
 ![所选组件无渲染时间](/images/blog/introducing-the-react-profiler/no-render-times-for-selected-component.png)
 
-### 交互动作 {#interactions}
+### 交互动作 {/*interactions*/}
 
 React 最近添加了一个用于跟踪更新_原因_的[实验性 API](https://fb.me/react-interaction-tracing)。
 被这些 API 跟踪的“交互动作”也会显示在 profiler 中:
@@ -172,9 +172,9 @@ React 最近添加了一个用于跟踪更新_原因_的[实验性 API](https://
 
 tracing API 是新的特性，我们会在未来的博文中更详细地介绍它。
 
-## 常见问题 {#troubleshooting}
+## 常见问题 {/*troubleshooting*/}
 
-### 选择的根元素下没有分析数据被记录 {#no-profiling-data-has-been-recorded-for-the-selected-root}
+### 选择的根元素下没有分析数据被记录 {/*no-profiling-data-has-been-recorded-for-the-selected-root*/}
 
 如果你的应用程序有多个“根”节点，你可能会在分析后看到以下消息：
 ![选择的根元素下没有分析数据被记录](/images/blog/introducing-the-react-profiler/no-profiler-data-multi-root.png)
@@ -184,14 +184,14 @@ tracing API 是新的特性，我们会在未来的博文中更详细地介绍�
 
 ![在“Elements”界面中选择根节点来查看它的性能数据](/images/blog/introducing-the-react-profiler/select-a-root-to-view-profiling-data.gif)
 
-### 选中的提交记录没可展示的时间数据 {#no-timing-data-to-display-for-the-selected-commit}
+### 选中的提交记录没可展示的时间数据 {/*no-timing-data-to-display-for-the-selected-commit*/}
 
 有时提交的速度可能很快，以至于 `performance.now()` 无法给开发者工具任何有意义的数据。
 在这种情况下，将显示以下的消息：
 
 ![选中的提交记录没可展示的时间数据](/images/blog/introducing-the-react-profiler/no-timing-data-for-commit.png)
 
-## 视频解析 {#deep-dive-video}
+## 视频解析 {/*deep-dive-video*/}
 
 以下视频演示了如何使用 React profiler 来检测和改进实际 React 应用程序中的性能瓶颈。
 

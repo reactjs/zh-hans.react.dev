@@ -18,7 +18,7 @@ translators:
 
 </YouWillLearn>
 
-## 添加事件处理函数 {#adding-event-handlers}
+## 添加事件处理函数 {/*adding-event-handlers*/}
 
 如需添加一个事件处理函数，你需要先定义一个函数，然后 [将其作为 prop 传入](/learn/passing-props-to-a-component) 合适的 JSX 标签。例如，这里有一个没绑定任何事件的按钮：
 
@@ -132,7 +132,7 @@ button { margin-right: 10px; }
 
 </Gotcha>
 
-### 在事件处理函数中读取 props {#reading-props-in-event-handlers}
+### 在事件处理函数中读取 props {/*reading-props-in-event-handlers*/}
 
 因为事件处理函数是在组件内部声明的，所以他们可以访问组件的 props 。下面是一个按钮，在点击时会显示带有其 `message` prop 的 alert ：
 
@@ -169,7 +169,7 @@ button { margin-right: 10px; }
 
 此处有两个按钮，会展示不同的消息。你可以尝试更改传递给他们的消息。
 
-### 将事件处理函数作为 props 传递 {#passing-event-handlers-as-props}
+### 将事件处理函数作为 props 传递 {/*passing-event-handlers-as-props*/}
 
 通常，你会希望让父组件指定子组件的事件处理函数。考虑按钮：根据你使用 `Button` 组件的位置，你可能想要执行不同的功能——也许一个播放电影，另一个上传图片。
 
@@ -231,7 +231,7 @@ button { margin-right: 10px; }
 
 如果你使用一个 [设计系统](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969)，按钮等组件通常包含样式但不指定行为。相反，类似 `PlayButton` 和 `UploadButton` 的组件会向下传递事件处理函数。
 
-### 命名事件处理函数 prop {#naming-event-handler-props}
+### 命名事件处理函数 prop {/*naming-event-handler-props*/}
 
 内置组件例如 `<button>` 和 `<div>` 仅支持 [浏览器事件名称](/reference/reactdom-api) ，例如 `onClick` 。但是，当你构建自己的组件时，你可以按你喜欢的任何方式命名它们的事件处理函数 props 。
 
@@ -316,7 +316,7 @@ button { margin-right: 10px; }
 
 请注意 `App` 组件不需要知道 `Toolbar` 将会对 `onPlayMovie` 和 `onUploadImage` 做 *什么* 。上面是一个 `Toolbar` 的实现细节。在这里，`Toolbar` 将它们作为 `onClick` 处理函数向下传递给它的 `Button` ，但也可以稍后通过快捷键触发它们。用应用程序特定的交互方式（如 `onPlayMovie`）来命名 prop ，可以让你灵活地更改以后使用它们的方式。
 
-## 事件传播 {#event-propagation}
+## 事件传播 {/*event-propagation*/}
 
 <!--
 // TODO illo
@@ -363,7 +363,7 @@ button { margin: 5px; }
 
 </Gotcha>
 
-### 停止传播 {#stopping-propagation}
+### 停止传播 {/*event-propagation*/}
 
 事件处理函数接收一个 **事件对象** 作为它们唯一的参数。按照惯例，它通常被称为 `e` ，代表 "event"（事件）。你可以使用此对象来读取有关事件的信息。
 
@@ -445,7 +445,7 @@ button { margin: 5px; }
 
 </DeepDive>
 
-### 传递处理函数作为传播的替代方案 {#passing-handlers-as-alternative-to-propagation}
+### 传递处理函数作为传播的替代方案 {/*passing-handlers-as-alternative-to-propagation*/}
 
 注意这个点击事件处理函数如何执行一行代码 _然后_ 调用父组件传递的 `onClick` prop ：
 
@@ -466,7 +466,7 @@ function Button({ onClick, children }) {
 
 如果你依赖于传播，而且很难追踪哪些处理程序在执行，以及执行的原因，可以试试这种方法。
 
-### 阻止默认行为 {#preventing-default-behavior}
+### 阻止默认行为 {/*preventing-default-behavior*/}
 
 某些浏览器事件具有与其关联的默认行为。例如，点击 `<form>` 表单内部的按钮会触发表单提交事件，默认情况下将重新加载整个页面：
 
@@ -518,7 +518,7 @@ button { margin-left: 5px; }
 * [`e.stopPropagation()`](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation) 停止触发附加到标签之外的事件处理函数。
 * [`e.preventDefault()` ](https://developer.mozilla.org/docs/Web/API/Event/preventDefault) 阻止少数事件的默认浏览器行为。
 
-## 事件处理函数可以包含副作用吗？ {#can-event-handlers-have-side-effects}
+## 事件处理函数可以包含副作用吗？ {/*can-event-handlers-have-side-effects*/}
 
 当然了！事件处理函数是产生副作用的最佳位置。
 
@@ -542,7 +542,7 @@ button { margin-left: 5px; }
 
 <Challenges>
 
-### 修复一个事件处理函数 {#fix-an-event-handler}
+### 修复一个事件处理函数 {/*fix-an-event-handler*/}
 
 点击这个按钮应该可以在白色和黑色之间切换页面背景。然而，当你点击它时，什么也没有发生。解决这个问题。（不用担心 `handleClick` 里面的逻辑——那部分很好。）
 
@@ -623,7 +623,7 @@ export default function LightSwitch() {
 
 </Solution>
 
-### 连接事件 {#wire-up-the-events}
+### 连接事件 {/*wire-up-the-events*/}
 
 这个 `ColorSwitch` 组件渲染一个按钮。它应该改变页面颜色。将它与从父组件接收的 `onChangeColor` 事件处理函数 prop 连接，以便在点击按钮时改变颜色。
 
