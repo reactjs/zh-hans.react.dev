@@ -363,7 +363,7 @@ button { margin: 5px; }
 
 </Gotcha>
 
-### 停止传播 {/*event-propagation*/}
+### 停止传播 {/*stopping-propagation*/}
 
 事件处理函数接收一个 **事件对象** 作为它们唯一的参数。按照惯例，它通常被称为 `e` ，代表 "event"（事件）。你可以使用此对象来读取有关事件的信息。
 
