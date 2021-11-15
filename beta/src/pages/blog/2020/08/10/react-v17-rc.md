@@ -5,7 +5,11 @@ author: [gaearon,rachelnabors]
 
 今天，我们发布了 React 17 的第一个 RC 版本。自 [React 上一个主要版本](/blog/2017/09/26/react-v16.0)至今已经两年半了，按照我们的标准，时间跨度有些长了！在此篇博客中，我们将讲解此次主要版本的职责，对你的影响以及如何试用此版本。
 
+<<<<<<< HEAD
 ## 无新特性 {#no-new-features}
+=======
+## No New Features {/*no-new-features*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 React 17 的版本是非比寻常的，因为它没有添加任何面向开发人员的新功能。而主要侧重于**升级简化 React 本身**。
 
@@ -13,7 +17,11 @@ React 17 的版本是非比寻常的，因为它没有添加任何面向开发�
 
 此版本之所以特殊，你可以认为**React 17 是 "垫脚石" 版本**，它会使得由一个 React 版本管理的 tree 嵌入到另一个 React 版本管理的 tree 中时会更加安全。
 
+<<<<<<< HEAD
 ## 逐步升级 {#gradual-upgrades}
+=======
+## Gradual Upgrades {/*gradual-upgrades*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 在过去 7 年里，React 一直遵循 "all-or-nothing" 的升级策略。你可以继续使用旧版本，也可以将整个应用程序升级至新版本。但没有介于两者之间的情况。
 
@@ -29,7 +37,11 @@ React 17 的版本是非比寻常的，因为它没有添加任何面向开发�
 
 为了实现逐步升级，我们需要对 React 事件系统进行一些更改。而这些更改可能会对代码产生影响，这也是 React 17 成为主要版本的原因。实际上，10 万个以上的组件中受影响的组件不超过 20 个，因此，**我们希望大多数应用程序都可以升级到 React 17，而不会产生太多影响**。如果你遇到问题，请[联系我们](https://github.com/facebook/react/issues)。
 
+<<<<<<< HEAD
 ### 逐步升级 Demo {#demo-of-gradual-upgrades}
+=======
+### Demo of Gradual Upgrades {/*demo-of-gradual-upgrades*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 我们准备了一个[示例 repo](https://github.com/reactjs/react-gradual-upgrade-demo/)，展示了如何在必要时延迟加载旧版本的 React。此 demo 使用了 Create React App 进行构建，但对其他工具采用类似的方法应该也适用。我们欢迎使用其他工具的开发者编写 demo 并提交 PR。
 
@@ -37,7 +49,11 @@ React 17 的版本是非比寻常的，因为它没有添加任何面向开发�
 >
 >我们已将**其他更改推迟**到 React 17 之后。此版本的目标是实现逐步升级。如果升级 React 17 太困难，则此目标会无法实现。
 
+<<<<<<< HEAD
 ## 更改事件委托 {#changes-to-event-delegation}
+=======
+## Changes to Event Delegation {/*changes-to-event-delegation*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 从技术上讲，始终可以在应用程序中嵌套不同版本的 React。但是，由于 React 事件系统的工作原理，这很难实现。
 
@@ -85,7 +101,11 @@ ReactDOM.render(<App />, rootNode);
 >
 >你可能想知道这是否会破坏根 DOM 容器之外的 [Portals](/docs/portals.html)。答案是 React 还会监听 portals 容器上的事件，所以这不是问题。
 
+<<<<<<< HEAD
 #### 解决隐患 {#fixing-potential-issues}
+=======
+#### Fixing Potential Issues {/*fixing-potential-issues*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 与其他重大更改一样，可能需要对代码进行调整。在 Facebook，我们在成千上万个模块中，大约调整了 10 个模块以适应此更改。
 
@@ -109,11 +129,19 @@ document.addEventListener('click', function() {
 
 请注意，此策略在全局上具有更好的适应性。例如，它可能会修复代码中现有的错误，这些错误在 React 事件处理器外部调用 `e.stopPropagation()` 发生。换句话说，**React 17 的事件冒泡更接近常规 DOM**。
 
+<<<<<<< HEAD
 ## 其他重大更改 {#other-breaking-changes}
+=======
+## Other Breaking Changes {/*other-breaking-changes*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 我们将 React 17 中的重大更改保持在最低水平。例如，它不会删除以前版本中弃用的任务方法。但是，它的确包含一些其他重大更改，根据经验，这些更改会相对安全。总体而言，由于这些因素的存在，在 10 万个以上的组件中受影响的组件不超过 20 个。
 
+<<<<<<< HEAD
 ### 对标浏览器 {#aligning-with-browsers}
+=======
+### Aligning with Browsers {/*aligning-with-browsers*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 我们对事件系统进行了一些较小的更改：
 
@@ -127,7 +155,11 @@ document.addEventListener('click', function() {
 >
 >尽管 React 17 **底层**已将 `onFocus` 事件从 `focus` 切换为 `focusin`，但请注意，这并未影响冒泡行为。在 React 中，`onFocus` 事件总是冒泡的，在 React 17 中会继续保持，因为通常它是一个更有用的默认值。请参阅 [sandbox](https://codesandbox.io/s/strange-albattani-7tqr7?file=/src/App.js)，以了解为不同特定用例添加不同检查。
 
+<<<<<<< HEAD
 ### 去除事件池 {#no-event-pooling}
+=======
+### No Event Pooling {/*no-event-pooling*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 React 17 中移除了 "event pooling（事件池）"。它并不会提高现代浏览器的性能，甚至还会使经验丰富的开发者一头雾水：
 
@@ -147,7 +179,11 @@ function handleChange(e) {
 
 这改变了行为，因此我们将其标记为重大更改，但在实践中我们没有看到它在 Facebook 上造成影响。（甚至还修复了一些错误！）请注意，`e.persist()` 在 React 事件对象中仍然可用，只是无效果罢了。
 
+<<<<<<< HEAD
 ### 副作用清理时间 {#effect-cleanup-timing}
+=======
+### Effect Cleanup Timing {/*effect-cleanup-timing*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 我们将使 `useEffect` 和清理函数的时间保持一致。
 
@@ -174,7 +210,11 @@ useEffect(() => {
 
 此外，React 17 将在运行任何新副作用之前执行所有副作用的清理函数（针对所有组件）。React 16 只对组件内的 effect 保证这种顺序。
 
+<<<<<<< HEAD
 #### 隐患 {#potential-issues}
+=======
+#### Potential Issues {/*potential-issues*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 可复用的库可能需要对此情况进行深度测试，但我们只遇到了几个组件会因为这次改变出现问题。有问题的代码的其中一个示例如下所示：
 
@@ -201,7 +241,11 @@ useEffect(() => {
 
 我们不希望此问题对大家造成影响，我们提供了 [`eslint-plugin-react-hooks/exhaustive-deps` 的 lint 规则](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)（请确保在项目中使用它）会对此情况发出警告。
 
+<<<<<<< HEAD
 ### 返回一致的 undefined 错误 {#consistent-errors-for-returning-undefined}
+=======
+### Consistent Errors for Returning Undefined {/*consistent-errors-for-returning-undefined*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 在 React 16 及更早版本中，返回 `undefined` 始终是一个错误：
 
@@ -241,7 +285,11 @@ let Button = memo(() => {
 
 对于不想进行任何渲染的情况，请返回 `null`。
 
+<<<<<<< HEAD
 ### 原生组件栈 {#native-component-stacks}
+=======
+### Native Component Stacks {/*native-component-stacks*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 当你在浏览器中遇到错误时，浏览器会为你提供带有 JavaScript 函数的名称及位置的调用栈信息。然而，JavaScript 调用栈通常不足以诊断问题，因为 React 树的层次结构可能同样重要。你不仅要知道哪个 `Button` 抛出了错误，而且还想知道 `Button` 在 React 树中的哪个位置。
 
@@ -255,7 +303,11 @@ React 实现这一点的方式有点非常规。目前，浏览器无法提供�
 
 构成重大变化的部分是，要使此功能正常工作，React 将在捕获错误后在调用栈中重新执行上面某些函数和某些 class 构造函数的部分。由于渲染函数和 class 构造函数不应具有副作用（这对于 SSR 也很重要），因此这不会造成任何实际问题。
 
+<<<<<<< HEAD
 ### 移除私有导出 {#removing-private-exports}
+=======
+### Removing Private Exports {/*removing-private-exports*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 最后，值得注意的重大变化时我们删除了一些以前暴露给其他项目的 React 内部组件。特别是，[React Native for Web](https://github.com/necolas/react-native-web) 过去常常依赖于事件系统的某些内部组件，但这种依赖关系很脆弱且经常被破坏。
 
@@ -265,7 +317,11 @@ React 实现这一点的方式有点非常规。目前，浏览器无法提供�
 
 另外，我们删除了 `ReactTestUtils.SimulateNative` 的 helper 方法。他们从未被记录，没有按照他们名字所暗示的那样去做，也没有处理我们对事件系统所做的更改。如果你想要一种简便的方式来触发测试中原生浏览器的事件，请改用 [React Testing Library](https://testing-library.com/docs/dom-testing-library/api-events)。
 
+<<<<<<< HEAD
 ## 安装 {#installation}
+=======
+## Installation {/*installation*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 我们鼓励你尽快尝试 React 17.0 RC 版本，在迁移过程中遇到任何问题都可以向我们[提出](https://github.com/facebook/react/issues)。**请注意，候选版本没有稳定版本稳定，因此请不要将其部署到生产环境。**
 
@@ -290,9 +346,9 @@ yarn add react@17.0.0-rc.0 react-dom@17.0.0-rc.0
 
 有关[详细安装说明](/docs/installation.html)，请参阅文档。
 
-## Changelog {#changelog}
+## Changelog {/*changelog*/}
 
-### React {#react}
+### React {/*react*/}
 
 * 为全新的 [JSX 转换器](https://babeljs.io/blog/2020/03/16/7.9.0#a-new-jsx-transform-11154-https-githubcom-babel-babel-pull-11154)添加 `react/jsx-runtime` 和 `react/jsx-dev-runtime`。（[@lunaruan](https://github.com/lunaruan) 提交于 [#18299](https://github.com/facebook/react/pull/18299)）
 * 根据原生框架构建组件调用栈。（[@sebmarkbage](https://github.com/sebmarkbage) 提交于 [#18561](https://github.com/facebook/react/pull/18561)）
@@ -300,7 +356,7 @@ yarn add react@17.0.0-rc.0 react-dom@17.0.0-rc.0
 * 防止 `'use strict'` 从 UMD 的 bundles 中泄露。（[@koba04](https://github.com/koba04) 提交于 [#19614](https://github.com/facebook/react/pull/19614)）
 * 停止使用 `fb.me` 进行重定向。（[@cylim](https://github.com/cylim) 提交于 [#19598](https://github.com/facebook/react/pull/19598)）
 
-### React DOM {#react-dom}
+### React DOM {/*react-dom*/}
 
 * 将事件委托从 `document` 切换为 root。（[@trueadm](https://github.com/trueadm) 提交于 [#18195](https://github.com/facebook/react/pull/18195) 及[其他](https://github.com/facebook/react/pulls?q=is%3Apr+author%3Atrueadm+modern+event+is%3Amerged)）
 * 在运行下一个副作用前，请清理所有副作用。（[@bvaughn](https://github.com/bvaughn) 提交于 [#17947](https://github.com/facebook/react/pull/17947)）
@@ -340,13 +396,14 @@ yarn add react@17.0.0-rc.0 react-dom@17.0.0-rc.0
 * 使用委托处理 `onSubmit` 和 `onReset` 事件。（[@gaearon](https://github.com/gaearon) 提交于 [#19333](https://github.com/facebook/react/pull/19333)）
 * 提高内存使用率。（[@trueadm](https://github.com/trueadm) 提交于 [#18970](https://github.com/facebook/react/pull/18970)）
 
-### React DOM Server {#react-dom-server}
+### React DOM Server {/*react-dom-server*/}
 
 * 使用服务端渲染的 `useCallback` 与 `useMemo` 一致。（[@alexmckenley](https://github.com/alexmckenley)提交于 [#18783](https://github.com/facebook/react/pull/18783)）
 * 修复函数组件抛出异常时状态泄露的问题。（[@pmaccart](https://github.com/pmaccart) 提交于 [#19212](https://github.com/facebook/react/pull/19212)）
 
-### React Test Renderer {#react-test-renderer}
+### React Test Renderer {/*react-test-renderer*/}
 
+<<<<<<< HEAD
 * 改善 `findByType` 错误信息。（[@henryqdineen](https://github.com/henryqdineen) 提交于 [#17439](https://github.com/facebook/react/pull/17439)）
 
 ### Concurrent Mode（实验阶段） {#concurrent-mode-experimental}
@@ -374,3 +431,28 @@ yarn add react@17.0.0-rc.0 react-dom@17.0.0-rc.0
 * 修复 `useMutableSource` 中的 bug，此 bug 可能在 `getSnapshot` 更改时出现。（[@bvaughn](https://github.com/bvaughn) 提交于 [#18297](https://github.com/facebook/react/pull/18297)）
 * 修复 `useMutableSource` 令人恶心的 bug。（[@bvaughn](https://github.com/bvaughn) 提交于 [#18912](https://github.com/facebook/react/pull/18912)）
 * 如果外部渲染且提交之前调用 `setState`，会发出警告。（[@sebmarkbage](https://github.com/sebmarkbage) 提交于 [#18838](https://github.com/facebook/react/pull/18838)）
+=======
+* Improve `findByType` error message. ([@henryqdineen](https://github.com/henryqdineen) in [#17439](https://github.com/facebook/react/pull/17439))
+
+### Concurrent Mode (Experimental) {/*concurrent-mode-experimental*/}
+
+* Revamp the priority batching heuristics. ([@acdlite](https://github.com/acdlite) in [#18796](https://github.com/facebook/react/pull/18796))
+* Add the `unstable_` prefix before the experimental APIs. ([@acdlite](https://github.com/acdlite) in [#18825](https://github.com/facebook/react/pull/18825))
+* Remove `unstable_discreteUpdates` and `unstable_flushDiscreteUpdates`. ([@trueadm](https://github.com/trueadm) in [#18825](https://github.com/facebook/react/pull/18825))
+* Disable `<div hidden />` prerendering in favor of a different future API. ([@acdlite](https://github.com/acdlite) in [#18917](https://github.com/facebook/react/pull/18917))
+* Add an experimental `unstable_useOpaqueIdentifier` Hook. ([@lunaruan](https://github.com/lunaruan) in [#17322](https://github.com/facebook/react/pull/17322))
+* Using `act` in the test renderer no longer flushes Suspense fallbacks. ([@acdlite](https://github.com/acdlite) in [#18596](https://github.com/facebook/react/pull/18596))
+* Clear the existing root content before mounting. ([@bvaughn](https://github.com/bvaughn) in [#18730](https://github.com/facebook/react/pull/18730))
+* Fix a bug with error boundaries. ([@acdlite](https://github.com/acdlite) in [#18265](https://github.com/facebook/react/pull/18265))
+* Fix a bug causing dropped updates in a suspended tree. ([@acdlite](https://github.com/acdlite) in [#18384](https://github.com/facebook/react/pull/18384) and [#18457](https://github.com/facebook/react/pull/18457))
+* Fix a bug causing dropped render phase updates. ([@acdlite](https://github.com/acdlite) in [#18537](https://github.com/facebook/react/pull/18537))
+* Fix a bug in SuspenseList. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18412](https://github.com/facebook/react/pull/18412))
+* Fix a bug causing Suspense fallback to show too early. ([@acdlite](https://github.com/acdlite) in [#18411](https://github.com/facebook/react/pull/18411))
+* Fix a bug with class components inside SuspenseList. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18448](https://github.com/facebook/react/pull/18448))
+* Fix a bug with inputs that may cause updates to be dropped. ([@jddxf](https://github.com/jddxf) in [#18515](https://github.com/facebook/react/pull/18515) and [@acdlite](https://github.com/acdlite) in [#18535](https://github.com/facebook/react/pull/18535))
+* Fix a bug causing Suspense fallback to get stuck.  ([@acdlite](https://github.com/acdlite) in [#18663](https://github.com/facebook/react/pull/18663))
+* Don't cut off the tail of a SuspenseList if hydrating. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18854](https://github.com/facebook/react/pull/18854))
+* Fix a bug in `useMutableSource` that may happen when `getSnapshot` changes. ([@bvaughn](https://github.com/bvaughn) in [#18297](https://github.com/facebook/react/pull/18297))
+* Fix a tearing bug in `useMutableSource`. ([@bvaughn](https://github.com/bvaughn) in [#18912](https://github.com/facebook/react/pull/18912))
+* Warn if calling setState outside of render but before commit. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18838](https://github.com/facebook/react/pull/18838))
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979

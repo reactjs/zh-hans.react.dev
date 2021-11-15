@@ -15,7 +15,11 @@ Create React App 2.0 已于今天发布，通过单个依赖更新即可获得�
 >
 >不要害怕升级。如果您对当前的功能、性能和可靠性感到满意，可以继续使用当前的版本。当 2.0 版本更稳定的时候，再用于生产环境也是不错的注意。
 
+<<<<<<< HEAD
 ## 有什么新特性 {#whats-new}
+=======
+## What's New {/*whats-new*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 以下是该版本新特性的概要说明：
 
@@ -34,13 +38,21 @@ Create React App 2.0 已于今天发布，通过单个依赖更新即可获得�
 
 **所有的这些功能都是现成的** -- 为了启用它们，请遵循如下说明。
 
+<<<<<<< HEAD
 ## 使用 Create React App 2.0 来启动项目 {#starting-a-project-with-create-react-app-20}
+=======
+## Starting a Project with Create React App 2.0 {/*starting-a-project-with-create-react-app-20*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 你无须做任何更改。从今天开始，当你运行 `create-react-app` 时，它将以 2.0 版本作为默认模板。玩的开心！
 
 由于一些原因，如果你想 **使用 1.x 的模板**，你可以给 `create-react-app` 传递参数 `--scripts-version=react-scripts@1.x`。
 
+<<<<<<< HEAD
 ## 更新项目到 Create React App 2.0 {#updating-a-project-to-create-react-app-20}
+=======
+## Updating a Project to Create React App 2.0 {/*updating-a-project-to-create-react-app-20*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 升级一个非弹出模式的项目到 Create React App 2.0 通常是非常直接的。打开 `package.json` 文件，在根节点中，找到 `react-scripts` 的地方。
 
@@ -67,7 +79,11 @@ Create React App 2.0 已于今天发布，通过单个依赖更新即可获得�
 >
 >由于 NPM 的 Bug，你可能会在 unsatisfied 的对等依赖中发现警告。建议忽略该警告。据我们所知，目前 Yarn 没有该问题。
 
+<<<<<<< HEAD
 ## 破坏性变更 {#breaking-changes}
+=======
+## Breaking Changes {/*breaking-changes*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 本次发布中的破坏性变更如下：
 
@@ -81,7 +97,11 @@ Create React App 2.0 已于今天发布，通过单个依赖更新即可获得�
 
 如果这些变更对你有影响，[2.0.3 发布说明](https://github.com/facebook/create-react-app/releases/tag/v2.0.3) 有更详细的说明。
 
+<<<<<<< HEAD
 ## 了解更多 {#learn-more}
+=======
+## Learn More {/*learn-more*/}
+>>>>>>> 4022f9774b8dd93d863fd6bca6447b1f03ae3979
 
 你可以在[发布说明](https://github.com/facebook/create-react-app/releases/tag/v2.0.3)中找到完整的变更日志。这是一个大的发布，我们可能会遗漏一些事情。请通过[问题跟踪器](https://github.com/facebook/create-react-app/issues/new) 反馈给我们，我们将尽可能的给予帮助。
 
@@ -89,6 +109,6 @@ Create React App 2.0 已于今天发布，通过单个依赖更新即可获得�
 >
 >如果你使用 2.x 的早期版本，我们提供了 [独立的迁移说明](https://gist.github.com/gaearon/8650d1c70e436e5eff01f396dffc4114)。
 
-## Thanks {#thanks}
+## Thanks {/*thanks*/}
 
 如果没有我们优秀的贡献者社区，这个版本是不可能发布的。感谢 [Andreas Cederström](https://github.com/andriijas), [Clement Hoang](https://github.com/clemmy), [Brian Ng](https://github.com/existentialism), [Kent C. Dodds](https://github.com/kentcdodds), [Ade Viankakrisna Fadlil](https://github.com/viankakrisna), [Andrey Sitnik](https://github.com/ai), [Ro Savage](https://github.com/ro-savage), [Fabiano Brito](https://github.com/Fabianopb), [Ian Sutherland](https://github.com/iansu), [Pete Nykänen](https://github.com/petetnt), [Jeffrey Posnick](https://github.com/jeffposnick), [Jack Zhao](https://github.com/bugzpodder), [Tobias Koppers](https://github.com/sokra), [Henry Zhu](https://github.com/hzoo), [Maël Nison](https://github.com/arcanis), [XiaoYan Li](https://github.com/lixiaoyan), [Marko Trebizan](https://github.com/themre), [Marek Suscak](https://github.com/mareksuscak), [Mikhail Osher](https://github.com/miraage)以及其他为该版本提供反馈和测试贡献者。
