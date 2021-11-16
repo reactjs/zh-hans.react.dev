@@ -134,7 +134,7 @@ button { margin-right: 10px; }
 
 ### 在事件处理函数中读取 props {/*reading-props-in-event-handlers*/}
 
-因为事件处理函数是在组件内部声明的，所以他们可以访问组件的 props 。下面是一个按钮，在点击时会显示带有其 `message` prop 的 alert ：
+由于事件处理函数是声明于组件内部，因此他们可以直接访问组件的 props。示例中的按钮，当点击时会弹出带有 `message` prop 的 alert：
 
 <Sandpack>
 
@@ -171,9 +171,9 @@ button { margin-right: 10px; }
 
 ### 将事件处理函数作为 props 传递 {/*passing-event-handlers-as-props*/}
 
-通常，你会希望让父组件指定子组件的事件处理函数。考虑按钮：根据你使用 `Button` 组件的位置，你可能想要执行不同的功能——也许一个播放电影，另一个上传图片。
+通常，我们会在父组件中定义子组件的事件处理函数。比如：置于不同位置的 `Button` 组件，可能最终执行的功能也不同 —— 也许是播放电影，也许是上传图片。
 
-为此，将组件从其父组件接收的 prop 作为事件处理函数传递，如下所示：
+为此，将组件从父组件接收的 prop 作为事件处理函数传递，如下所示：
 
 <Sandpack>
 
@@ -222,22 +222,22 @@ button { margin-right: 10px; }
 
 </Sandpack>
 
-在这里，`Toolbar` 组件渲染了一个 `PlayButton` 组件和 `UploadButton` 组件：
+示例中，`Toolbar` 组件渲染了一个 `PlayButton` 组件和 `UploadButton` 组件：
 
 - `PlayButton` 将 `handlePlayClick` 作为 `onClick` prop 传入 `Button` 组件内部。
 - `UploadButton` 将 `() => alert('正在上传！')` 作为 `onClick` prop 传入 `Button` 组件内部。
 
-最后，你的 `Button` 组件接收一个名为 `onClick` 的 prop 。它直接将这个 prop 以 `onClick={onClick}` 方式传递给浏览器内置的 `<button>` 。这告诉 React 在点击时调用传入的函数。
+最后，你的 `Button` 组件接收一个名为 `onClick` 的 prop。它直接将这个 prop 以 `onClick={onClick}` 方式传递给浏览器内置的 `<button>`。当点击按钮时，React 会调用传入的函数。
 
-如果你使用一个 [设计系统](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969)，按钮等组件通常包含样式但不指定行为。相反，类似 `PlayButton` 和 `UploadButton` 的组件会向下传递事件处理函数。
+如果你遵循某个 [设计系统](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969) 时，类似于按钮这类的组件，通常会包含样式但不指定行为。而类似 `PlayButton` 和 `UploadButton` 这类的组件则会向下传递事件处理函数。
 
 ### 命名事件处理函数 prop {/*naming-event-handler-props*/}
 
-内置组件例如 `<button>` 和 `<div>` 仅支持 [浏览器事件名称](/reference/reactdom-api) ，例如 `onClick` 。但是，当你构建自己的组件时，你可以按你喜欢的任何方式命名它们的事件处理函数 props 。
+内置组件（`<button>` 和 `<div>`）仅支持 [浏览器事件名称](/reference/reactdom-api)，例如 `onClick`。但是，当你构建自己的组件时，你可以按你个人喜好命名事件处理函数的 prop。
 
 > 按照惯例，事件处理函数 props 应该以 `on` 开头，后跟一个大写字母。
 
-例如，这个 `Button` 组件的 `onClick` prop 可以被命名为 `onSmash` ：
+例如，`Button` 组件的 `onClick` prop 可以被命名为 `onSmash`：
 
 <Sandpack>
 
@@ -270,9 +270,9 @@ button { margin-right: 10px; }
 
 </Sandpack>
 
-在这里例子中，`<button onClick={onSmash}>` 表明浏览器内置的 `<button>`（小写）仍然需要一个 `onClick` prop ，但是你自定义的 `Button` 组件接收到的 prop 名称由你决定！
+上述示例中，`<button onClick={onSmash}>` 代表浏览器内置的 `<button>`（小写）仍然需要使用 `onClick` prop，而自定义的 `Button` 组件接收到的 prop 名称可由你决定！
 
-当你的组件支持多种交互时，你可以用应用程序特定的概念命名事件处理函数 prop 。例如，一个 `Toolbar` 组件接收 `onPlayMovie` 和 `onUploadImage` 两个事件处理函数：
+当你的组件支持多种交互时，你可以根据不同的应用程序命名事件处理函数 prop。例如，一个 `Toolbar` 组件接收 `onPlayMovie` 和 `onUploadImage` 两个事件处理函数：
 
 <Sandpack>
 
@@ -314,7 +314,7 @@ button { margin-right: 10px; }
 
 </Sandpack>
 
-请注意 `App` 组件不需要知道 `Toolbar` 将会对 `onPlayMovie` 和 `onUploadImage` 做 *什么* 。上面是一个 `Toolbar` 的实现细节。在这里，`Toolbar` 将它们作为 `onClick` 处理函数向下传递给它的 `Button` ，但也可以稍后通过快捷键触发它们。用应用程序特定的交互方式（如 `onPlayMovie`）来命名 prop ，可以让你灵活地更改以后使用它们的方式。
+请注意，`App` 组件并不需要知道 `Toolbar` 将会对 `onPlayMovie` 和 `onUploadImage` 做 **什么** 。上述示例是 `Toolbar` 的实现细节。其中，`Toolbar` 将它们作为 `onClick` 处理函数传递给了 `Button` 组件，其实还可以通过键盘快捷键来触发它们。根据应用程序特定的交互方式（如 `onPlayMovie`）来命名 prop ，可以让你灵活地更改以后使用它们的方式。
 
 ## 事件传播 {/*event-propagation*/}
 
@@ -322,9 +322,9 @@ button { margin-right: 10px; }
 // TODO illo
 -->
 
-事件处理函数还将捕获来自组件可能拥有的任何子组件的事件。我们说一个事件“冒泡”或“传播”到树的上方：它从事件发生的地方开始，然后沿着树向上传播。
+事件处理函数还将捕获任何来自子组件的事件。通常，我们会说事件“冒泡”或“传播”到树的上方：它从事件发生的地方开始，然后沿着树向上传播。
 
-下面这个 `<div>` 包含两个按钮。`<div>` *和* 每个按钮都有自己的 `onClick` 处理函数。你认为点击按钮时会触发哪些处理函数？
+下面这个 `<div>` 包含两个按钮。`<div>` **和** 每个按钮都有自己的 `onClick` 处理函数。你认为点击按钮时会触发哪些处理函数？
 
 <Sandpack>
 
@@ -355,19 +355,19 @@ button { margin: 5px; }
 
 </Sandpack>
 
-如果你点击任一按钮，它自身的 `onClick` 将首先执行，然后是父级 `<div>` 的 `onClick` 。所以会出现两条消息。如果你点击 toolbar 本身，只有父级 `<div>` 的 `onClick` 会执行。
+如果你点击任一按钮，它自身的 `onClick` 将首先执行，然后是父级 `<div>` 的 `onClick`。因此会出现两条消息。如果你点击 toolbar 本身，将只有父级 `<div>` 的 `onClick` 会执行。
 
 <Gotcha>
 
-在 React 中所有事件都会传播，除了 `onScroll` ，它仅适用于你附加到的 JSX 标签。
+在 React 中所有事件都会传播，除了 `onScroll`，它仅适用于你附加到的 JSX 标签。
 
 </Gotcha>
 
-### 停止传播 {/*stopping-propagation*/}
+### 阻止传播 {/*stopping-propagation*/}
 
-事件处理函数接收一个 **事件对象** 作为它们唯一的参数。按照惯例，它通常被称为 `e` ，代表 "event"（事件）。你可以使用此对象来读取有关事件的信息。
+事件处理函数接收一个 **事件对象** 作为唯一的参数。按照惯例，它通常被称为 `e` ，代表 "event"（事件）。你可以使用此对象来读取有关事件的信息。
 
-这个事件对象还允许你停止传播。如果你想阻止一个事件到达父组件，你需要像下面 `Button` 组件那样调用 `e.stopPropagation()` ：
+这个事件对象还允许你阻止传播。如果你想阻止一个事件到达父组件，你需要像下面 `Button` 组件那样调用 `e.stopPropagation()` ：
 
 <Sandpack>
 
@@ -413,12 +413,12 @@ button { margin: 5px; }
 
 1. React 调用了传递给 `<button>` 的 `onClick` 处理函数。
 2. 定义在 `Button` 中的处理函数执行了如下操作：
-   * 调用 `e.stopPropagation()` ，防止事件进一步冒泡。
-   * 调用 `onClick` 函数，它是从 `Toolbar` 组件传递过来的 prop 。
-3. 在 `Toolbar` 组件中定义的函数，显示按钮对应的 alert 。
-4. 由于传播被停止，父级 `<div>` 的 `onClick` 处理函数不会执行。
+   * 调用 `e.stopPropagation()`，阻止事件进一步冒泡。
+   * 调用 `onClick` 函数，它是从 `Toolbar` 组件传递过来的 prop。
+3. 在 `Toolbar` 组件中定义的函数，显示按钮对应的 alert。
+4. 由于传播被阻止，父级 `<div>` 的 `onClick` 处理函数不会执行。
 
-由于 `e.stopPropagation()` ，点击按钮现在仅显示一个 alert（来自 `<button>`）而不是其中的两个（来自 `<button>` 和父级 toolbar `<div>`）。点击按钮与点击周围的 toolbar 不同，因此停止传播对这个 UI 是有意义的。
+由于调用了 `e.stopPropagation()`，点击按钮现在将只显示一个 alert（来自 `<button>`），而并非两个（分别来自 `<button>` 和父级 toolbar `<div>`）。点击按钮与点击周围的 toolbar 不同，因此阻止传播对这个 UI 是有意义的。
 
 <DeepDive title="捕获阶段的事件">
 
@@ -426,7 +426,7 @@ button { margin: 5px; }
 // TODO Illo
 -->
 
-极少数情况下，你可能需要捕获子元素上的所有事件，*即使它们停止了传播* 。例如，你可能希望将每次点击记录到分析中，而不管传播逻辑是什么。你可以通过在事件名称末尾添加 `Capture` 来实现：
+极少数情况下，你可能需要捕获子元素上的所有事件，**即便它们阻止了传播**。例如，你可能希望将每次点击进行埋点记录中，而不管传播逻辑是什么。你可以通过在事件名称末尾添加 `Capture` 来实现：
 
 ```js
 <div onClickCapture={() => { /* 这会首先执行 */ }}>
@@ -445,9 +445,9 @@ button { margin: 5px; }
 
 </DeepDive>
 
-### 传递处理函数作为传播的替代方案 {/*passing-handlers-as-alternative-to-propagation*/}
+### 传递处理函数作为事件传播的替代方案 {/*passing-handlers-as-alternative-to-propagation*/}
 
-注意这个点击事件处理函数如何执行一行代码 _然后_ 调用父组件传递的 `onClick` prop ：
+注意，此处的点击事件处理函数先执行了一行代码，**然后**调用了父组件传递的 `onClick` prop：
 
 ```js {4,5}
 function Button({ onClick, children }) {
