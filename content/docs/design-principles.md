@@ -58,7 +58,7 @@ React 是务实的，Facebook 的产品需求驱使它这样。尽管 React 受�
 
 例如，我们在 React 15.2.0 中添加了一个[未知 DOM 属性的警告](/warnings/unknown-prop.html)，很多项目因此受到影响。然而修复这些警告非常重要，因为我们可以在 React 中新增支持[自定义属性](https://github.com/facebook/react/issues/140)。以往的每一次废弃警告都有像这样的考量在里面。
 
-我们添加废弃警告时会保留到当前大版本，在[下一次大版本中改变行为](/blog/2016/02/19/new-versioning-scheme.html)。如果这其中设计到大量重复性的人力工作，我们会发布一个[代码更改](https://www.youtube.com/watch?v=d0pOgY8__JM)脚本自动化大部分的改动。Codemods 使我们能够在庞大的代码库中继续前行，我们也推荐大家使用。
+我们添加废弃警告时会保留到当前大版本，在[下一次大版本中改变行为](/blog/2016/02/19/new-versioning-scheme.html)。如果这其中涉及到大量重复性的人力工作，我们会发布一个[代码更改](https://www.youtube.com/watch?v=d0pOgY8__JM)脚本自动化大部分的改动。Codemods 使我们能够在庞大的代码库中继续前行，我们也推荐大家使用。
 
 你可以在 [react-codemod](https://github.com/reactjs/react-codemod) 仓库中找到我们发布的 codemods。
 
