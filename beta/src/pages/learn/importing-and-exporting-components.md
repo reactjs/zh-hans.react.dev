@@ -1,5 +1,5 @@
 ---
-title: 组件的导入和导出
+title: 组件的导入与导出
 translators:
   - Alienover
 ---
