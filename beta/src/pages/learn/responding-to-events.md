@@ -462,13 +462,13 @@ function Button({ onClick, children }) {
 }
 ```
 
-你也可以在调用父元素 `onClick` 函数之前向这个处理函数添加更多代码。此模式为传播提供了一个 *替代方案* 。它让子组件处理事件，同时也让父组件指定一些额外的行为。与传播不同，它不是自动的。但是这种模式的好处是，你可以清楚地跟踪作为某个事件执行的整个调用链。
+你也可以在调用父元素 `onClick` 函数之前，向这个处理函数添加更多代码。此模式是事件传播的另一种 *替代方案* 。它让子组件处理事件，同时也让父组件指定一些额外的行为。与事件传播不同，它并非自动。但是使用这种模式的好处是，你可以清楚地追踪某个事件的结果，以及整个调用链的执行。
 
-如果你依赖于传播，而且很难追踪哪些处理程序在执行，以及执行的原因，可以试试这种方法。
+如果你依赖于事件传播，而且很难追踪哪些处理程序在执行，及其执行的原因，可以尝试这种方法。
 
 ### 阻止默认行为 {/*preventing-default-behavior*/}
 
-某些浏览器事件具有与其关联的默认行为。例如，点击 `<form>` 表单内部的按钮会触发表单提交事件，默认情况下将重新加载整个页面：
+某些浏览器事件具有与事件相关联的默认行为。例如，点击 `<form>` 表单内部的按钮会触发表单提交事件，默认情况下将重新加载整个页面：
 
 <Sandpack>
 
@@ -489,7 +489,7 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-你可以调用事件对象上的 `e.preventDefault()` 来阻止这种情况发生：
+你可以调用事件对象中的 `e.preventDefault()` 来阻止这种情况发生：
 
 <Sandpack>
 
@@ -513,14 +513,14 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-不要混淆 `e.stopPropagation()` 和 `e.preventDefault()` 。它们都很有用，但是不相关：
+不要混淆 `e.stopPropagation()` 和 `e.preventDefault()`。它们都很有用，但是不相关：
 
 * [`e.stopPropagation()`](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation) 停止触发附加到标签之外的事件处理函数。
-* [`e.preventDefault()` ](https://developer.mozilla.org/docs/Web/API/Event/preventDefault) 阻止少数事件的默认浏览器行为。
+* [`e.preventDefault()`](https://developer.mozilla.org/docs/Web/API/Event/preventDefault) 阻止少数事件的默认浏览器行为。
 
 ## 事件处理函数可以包含副作用吗？ {/*can-event-handlers-have-side-effects*/}
 
-当然了！事件处理函数是产生副作用的最佳位置。
+当然可以！事件处理函数是产生副作用的最佳位置。
 
 与渲染函数不同，事件处理函数不需要是 [纯函数](/learn/keeping-components-pure) ，因此它是 *更改* 某些内容的好地方——例如，更改输入值以响应键入，或者更改列表以响应按钮按下。但是，为了更改某些信息，你首先需要某种方式存储它。在 React 中，这是通过 [state, a component's memory](/learn/state-a-components-memory) 来完成的。你将在下一页了解所有相关信息。
 
