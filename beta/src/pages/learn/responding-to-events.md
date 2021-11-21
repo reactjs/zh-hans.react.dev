@@ -522,19 +522,19 @@ button { margin-left: 5px; }
 
 当然可以！事件处理函数是产生副作用的最佳位置。
 
-与渲染函数不同，事件处理函数不需要是 [纯函数](/learn/keeping-components-pure) ，因此它是 *更改* 某些内容的好地方——例如，更改输入值以响应键入，或者更改列表以响应按钮按下。但是，为了更改某些信息，你首先需要某种方式存储它。在 React 中，这是通过 [state, a component's memory](/learn/state-a-components-memory) 来完成的。你将在下一页了解所有相关信息。
+与渲染函数不同，事件处理函数不需要是 [纯函数](/learn/keeping-components-pure)，因此它是 *更改* 某些内容的绝佳之选。例如，更改输入框的值以响应键入，或者更改列表以响应按钮的触发。但是，为了更改某些信息，你首先需要某种方式存储它。在 React 中，这是通过 [state（�组件的缓存）](/learn/state-a-components-memory) 来完成的。你将在下一章节了解所有相关信息。
 
 <Recap>
 
 * 你可以通过将函数作为 prop 传递给元素如 `<button>` 来处理事件。
-* 必须传递事件处理函数，**而不是调用！** `onClick={handleClick}` ，不是 `onClick={handleClick()}` 。
+* 必须传递事件处理函数，**而非函数调用！** `onClick={handleClick}` ，不是 `onClick={handleClick()}`。
 * 你可以单独或者内联定义事件处理函数。
-* 事件处理函数在组件内部定义，所以它们可以访问 props 。
-* 你可以在父组件中定义一个事件处理函数，并将其作为 prop 传递给子元素。
-* 你可以使用应用程序特定的名称定义自己的事件处理函数 prop 。
-* 事件向上传播。在第一个参数上调用 `e.stopPropagation()` 来防止这种情况。
+* 事件处理函数在组件内部定义，所以它们可以访问 props。
+* 你可以在父组件中定义一个事件处理函数，并将其作为 prop 传递给子组件。
+* 你可以根据特定于应用程序的名称定义事件处理函数的 prop。
+* 事件向上传播。通过事件的第一个参数调用 `e.stopPropagation()` 来防止这种情况。
 * 事件可能具有不需要的浏览器默认行为。调用 `e.preventDefault()` 来阻止这种情况。
-* 从子组件显式调用事件处理函数 prop 是传播的一个很好的替代方案。
+* 从子组件显式调用事件处理函数 prop 是事件传播的另一种优秀替代方案。
 
 </Recap>
 
@@ -544,7 +544,7 @@ button { margin-left: 5px; }
 
 ### 修复一个事件处理函数 {/*fix-an-event-handler*/}
 
-点击这个按钮应该可以在白色和黑色之间切换页面背景。然而，当你点击它时，什么也没有发生。解决这个问题。（不用担心 `handleClick` 里面的逻辑——那部分很好。）
+点击此按钮理论上应该在黑白主题之间切换页面背景。然而，当你点击它时，什么也没有发生。解决这个问题。（无需担心 `handleClick` 的内部逻辑。）
 
 <Sandpack>
 
@@ -571,7 +571,7 @@ export default function LightSwitch() {
 
 <Solution>
 
-这是由于 `<button onClick={handleClick()}>` 在渲染过程中 _调用_ 了 `handleClick` 函数而不是 _传递_ 它。移除 `()` 调用改为 `<button onClick={handleClick}>` 进而修复问题：
+这是由于 `<button onClick={handleClick()}>` 在渲染过程中 _调用_ 了 `handleClick` 函数，而没有将其进行 _传递_。移除 `()` 调用改为 `<button onClick={handleClick}>` 进而修复问题：
 
 <Sandpack>
 
@@ -623,7 +623,7 @@ export default function LightSwitch() {
 
 </Solution>
 
-### 连接事件 {/*wire-up-the-events*/}
+### 关联事件 {/*wire-up-the-events*/}
 
 这个 `ColorSwitch` 组件渲染一个按钮。它应该改变页面颜色。将它与从父组件接收的 `onChangeColor` 事件处理函数 prop 连接，以便在点击按钮时改变颜色。
 
