@@ -625,7 +625,7 @@ export default function LightSwitch() {
 
 ### 关联事件 {/*wire-up-the-events*/}
 
-这个 `ColorSwitch` 组件渲染一个按钮。它应该改变页面颜色。将它与从父组件接收的 `onChangeColor` 事件处理函数 prop 连接，以便在点击按钮时改变颜色。
+`ColorSwitch` 组件渲染了一个按钮。它应该改变页面颜色。将它与从父组件接收的 `onChangeColor` 事件处理函数关联，以便在点击按钮时改变颜色。
 
 在你这样做了之后，你会发现点击按钮也会增加页面点击计数器的值。编写父组件的同事坚持 `onChangeColor` 不会增加计数器的值。还发生了什么呢？修复它，使点击按钮 *只* 改变颜色，并且 _不_ 增加计数器。
 
