@@ -20,7 +20,7 @@ translators:
 
 </YouWillLearn>
 
-## 根组件文件 {#the-root-component-file}
+## 根组件文件 {/*the-root-component-file*/}
 
 在 [你的第一个组件](/learn/your-first-component) 中，你创建了一个 `Profile` 组件，并且渲染在 `Gallery` 组件里。
 
@@ -56,7 +56,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 在这个例子中，这些组件目前都定义在一个名为 `App.js` 的 **根组件文件** 中，在 [Create React App](https://create-react-app.dev/) 中，你的应用定义在 `src/App.js`。但取决于你的配置，你的根组件可能会在其他文件里。如果你使用的框架是基于文件进行路由的，如 Next.js，那你每个页面的根组件都会不一样。
 
-## 导出和导入一个组件 {#exporting-and-importing-a-component}
+## 导出和导入一个组件 {/*exporting-and-importing-a-component*/}
 
 假如将来你想在首页加入一个关于科学书籍的列表？或者将所有的资料信息都放到其他地方？这时将 `Gallery` 和 `Profile` 组件移出根组件文件会更合理点。这会让这些组件更加模块化，并且可在其他文件里重复使用。你可以根据以下三个步骤去拆分你的组件：
 
@@ -147,7 +147,7 @@ import Gallery from './Gallery';
 
 </DeepDive>
 
-## 从一个文件里导出和导入多个组件 {#exporting-and-importing-multiple-components-from-the-same-file}
+## 从一个文件里导出和导入多个组件 {/*exporting-and-importing-multiple-components-from-the-same-file*/}
 
 假如你只想展示一个 `Profile` 而不展示整个图集呢？你也可以导出 `Profile` 组件。但 `Gallery.js` 里已经有一个 *默认* 导出了，你不能定义 _两个_ 默认导出。你可以在一个新文件里用默认导出，或者将 `Profile` 用 *命名* 导出。**一个文件里，有且仅有一个默认导出，但可以有多个命名导出！**
 
@@ -243,7 +243,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <Challenges>
 
-### 进一步拆分组件
+### 进一步拆分组件 {/*split-the-components-further*/}
 
 现在，`Gallery.js` 同时导出了 `Profile` 和 `Gallery`，这会让人感到有点混淆。
 
