@@ -3,15 +3,11 @@ title: "React 18 发布计划"
 author: [acdlite, bvaughn, abernathyca, gaearon, rachelnabors, rickhanlonii, sebmarkbage, sethwebster]
 ---
 
-<<<<<<< HEAD
-React 团队非常激动地与你分享一些最新的工作进展：
-=======
-> Update Nov. 15th, 2021
+> 2021 年 11 月 15 日更新
 >
-> React 18 is now in beta. More information about the status of the release is [available in the React 18 Working Group post](https://github.com/reactwg/react-18/discussions/112).
+> React 18 已进入 Beta 阶段。有关该版本的更多信息，可以在 [React 18 工作组相关的文章中找到](https://github.com/reactwg/react-18/discussions/112).
 
-The React team is excited to share a few updates:
->>>>>>> 17ad2cbc71f4c1fcc3f3f9ae528bfd292a9fced7
+React 团队非常激动地与你分享一些最新的工作进展：
 
 1. 我们已经开始了 React 18 版本的发布工作，这将是我们的下一个主要版本。
 2. 我们创建了工作组，为社区逐步采用 React 18 的新特性做准备。
