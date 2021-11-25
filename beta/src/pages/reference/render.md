@@ -2,6 +2,7 @@
 title: render()
 translators:
   - liu-jin-yi
+  - QC-L
 ---
 
 <Intro>
