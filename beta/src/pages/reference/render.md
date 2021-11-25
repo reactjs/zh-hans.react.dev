@@ -187,4 +187,4 @@ export default function App({counter}) {
 
 你可以将一个回调函数，作为 `render` 的第三个参数。React 会在你的组件在 DOM 中出现后，调用它。
 
-如果你渲染 `<MyComponent />` ，并且“MyComponent”是一个类组件，“render”将返回该类的实例。在其他情况下，它将返回“null”。
+如果需要渲染 `<MyComponent />` ，并且 `MyComponent` 是一个类组件，`render` 函数将返回该类的实例。在其他情况下，它将返回 `null`。
