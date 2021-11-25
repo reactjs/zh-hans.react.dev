@@ -175,7 +175,7 @@ export default function App({counter}) {
 
 ## 何时不使用它 {/*when-not-to-use-it*/}
 
-* 如果你的应用程序使用服务器渲染并在服务器上生成 HTML ，请使用 [“hydrate”](TODO) 而不是“render”。
+* 如果你的应用程序使用服务器渲染，并会在服务器上生成 HTML，请使用 [`hydrate`](TODO) 函数，而非 `render` 函数。
 * 如果你的应用程序是完全用 React 构建的，你应该不需要多次使用“render”。如果你想在 DOM 树的不同部分渲染一些东西（例如，modal 或者 tooltip），那么请使用 [“createPortal”](TODO) 来代替。
 
 <br />
