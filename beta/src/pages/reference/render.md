@@ -1,6 +1,5 @@
 ---
 title: render()
-layout: API
 translators:
   - liu-jin-yi
 ---
@@ -16,7 +15,7 @@ render(<App />, container, callback);
 
 </Intro>
 
-## 渲染根组件
+## 渲染根组件 {/*rendering-the-root-component*/}
 
 想要调用“render”，你需要一段 JSX 和一个 DOM 容器：
 
@@ -63,7 +62,7 @@ export default function App() {
 
 <br />
 
-## 渲染多个根组件
+## 渲染多个根组件 {/*rendering-multiple-roots*/}
 
 不管你在哪里使用 React 的 ["sprinkles"](/learn/add-react-to-a-website) ，你都应该为每个由 React 管理的顶层 UI 组件调用“render”进行渲染。
 
@@ -137,7 +136,7 @@ nav ul li { display: inline-block; margin-right: 20px; }
 
 <br />
 
-## 更新已渲染的 DOM
+## 更新已渲染的 DOM {/*updating-the-rendered-tree*/}
 
 你可以在同一个 DOM 节点上多次调用“render”。只要组件树结构与之前渲染的内容一致，React 就会 [保留这个状态](/learn/preserving-and-resetting-state) 。请注意你书写代码的方式：
 
@@ -174,7 +173,7 @@ export default function App({counter}) {
 
 <br />
 
-## 何时不使用它
+## 何时不使用它 {/*when-not-to-use-it*/}
 
 * 如果你的应用程序使用服务器渲染并在服务器上生成 HTML ，请使用 [“hydrate”](TODO) 而不是“render”。
 * 如果你的应用程序是完全用 React 构建的，你应该不需要多次使用“render”。如果你想在 DOM 树的不同部分渲染一些东西（例如，modal 或者 tooltip），那么请使用 [“createPortal”](TODO) 来代替。
@@ -182,7 +181,7 @@ export default function App({counter}) {
 <br />
 
 
-## 使用细节
+## 使用细节 {/*behavior-in-detail*/}
 
 在你第一次调用“render”时，“container”内的任何现有 DOM 元素都会被替换。如果你再次调用“render”，React 将会通过 ["匹配"](/learn/preserving-and-resetting-state) 与先前渲染的组件树来决定 DOM 的哪些部分可以重用，哪些需要重新创建。重复调用“render”与调用“setState” —— 在这两种情况下，React 都会避免不必要的 DOM 更新。
 
