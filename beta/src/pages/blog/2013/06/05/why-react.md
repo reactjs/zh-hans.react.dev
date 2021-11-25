@@ -1,19 +1,18 @@
 ---
 title: 我们为什么要构建 React?
-layout: Post
 author: [petehunt]
 ---
 
 现在有很多 JavaScript MVC 框架。我们为什么还要构建 React，
 你又为什么会使用它？
 
-## React 不是一个 MVC 框架。 {#react-isnt-an-mvc-framework}
+## React 不是一个 MVC 框架。 {/*react-isnt-an-mvc-framework*/}
 
 React 是一个用于构建可组合用户界面的库。
 它鼓励创建那些用于呈现随时间变化数据的、可复用的
 UI 组件。
 
-## React 不使用模板。 {#react-doesnt-use-templates}
+## React 不使用模板。 {/*react-isnt-an-mvc-framework*/}
 
 在以往，web 应用程序的 UI 都是使用模板或者 HTML 指令构建的。
 这些模板决定了你可以用来构建
@@ -34,7 +33,7 @@ UI 的全套抽象。
 相比原生 JavaScript，如果你更喜欢 HTML 的高可读性，
 我们创造了 [JSX](/docs/jsx-in-depth.html)，一种可选的语法扩展。
 
-## 响应式更新非常简单。 {#reactive-updates-are-dead-simple}
+## 响应式更新非常简单。 {/*reactive-updates-are-dead-simple*/}
 
 当你的数据随时间变化的时候，React 表现得真的很出色。
 
@@ -64,7 +63,7 @@ AngularJS 甚至通过指令和数据绑定的提供声明式接口，
 所以开发者不需要显式地指定数据绑定。
 我们发现这种方式可以更轻松地构建应用程序。
 
-## HTML 只是开始。 {#html-is-just-the-beginning}
+## HTML 只是开始。 {/*html-is-just-the-beginning*/}
 
 因为 React 有它自己对于文档的轻量化表示，
 所以我们可以用它做一些非常酷的事情：
