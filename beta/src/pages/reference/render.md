@@ -71,7 +71,7 @@ export default function App() {
 ```html public/index.html
 <nav id="navigation"></nav>
 <main>
-  <p>这一段没有被 React 渲染（可以打开 index.html 来验证）。</p>
+  <p>这一段没有被 React 渲染（可以查看 index.html 进行验证）。</p>
   <section id="comments"></section>
 </main>
 ```
