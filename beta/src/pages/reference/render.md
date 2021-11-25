@@ -64,7 +64,7 @@ export default function App() {
 
 ## 渲染多个根组件 {/*rendering-multiple-roots*/}
 
-不管你在哪里使用 React 的 ["sprinkles"](/learn/add-react-to-a-website) ，你都应该为每个由 React 管理的顶层 UI 组件调用“render”进行渲染。
+不管你用 ["哪种方式"](/learn/add-react-to-a-website)  使用 React，你都需为每个由 React 管理的顶层 UI 组件调用 `render` 函数进行渲染。
 
 <Sandpack>
 
