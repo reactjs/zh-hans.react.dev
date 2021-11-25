@@ -29,7 +29,7 @@ render(<App />, container, callback);
 
 <AnatomyStep title="DOM container">
 
-你如果想把你的 UI 界面渲染到 DOM 节点中去。那么容器是不能被修改的，只能修改它的子节点。
+用于渲染 UI 界面的 DOM 节点。该容器不能被修改，只能修改它的子节点。
 
 </AnatomyStep>
 
