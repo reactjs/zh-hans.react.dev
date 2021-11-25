@@ -185,6 +185,6 @@ export default function App({counter}) {
 
 在你第一次调用 `render` 时，`container` 内的任何已有 DOM 元素都会被替换。如果你再次调用 `render` 时，React 将会通过与先前渲染的组件树 ["匹配"](/learn/preserving-and-resetting-state) 的方式，来决定 DOM 的哪些部分可以重用，哪些需要重新创建。重复调用 `render` 与调用 `setState` 效果类似。无论哪种情况，React 都会避免不必要的 DOM 更新。
 
-你可以传递一个回调函数作为第三个参数。React 会在你的组件出现在 DOM 中后调用它。
+你可以将一个回调函数，作为 `render` 的第三个参数。React 会在你的组件在 DOM 中出现后，调用它。
 
 如果你渲染 `<MyComponent />` ，并且“MyComponent”是一个类组件，“render”将返回该类的实例。在其他情况下，它将返回“null”。
