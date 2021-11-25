@@ -40,7 +40,7 @@ render(<App />, container);
 
 </APIAnatomy>
 
-在完全由 React 构建的应用程序中，你将在你的应用程序的顶层做一次这样的工作 —— 渲染"root"组件。
+在完全由 React 构建的应用程序中，你需要在你的应用程序的入口文件执行该操作（渲染 "root" 组件）。
 
 <Sandpack>
 
