@@ -17,7 +17,7 @@ render(<App />, container, callback);
 
 ## 渲染根组件 {/*rendering-the-root-component*/}
 
-想要调用“render”，你需要一段 JSX 和一个 DOM 容器：
+如需调用 `render`，需要编写一段 JSX 代码以及一个 DOM 容器：
 
 <APIAnatomy>
 
