@@ -138,7 +138,7 @@ nav ul li { display: inline-block; margin-right: 20px; }
 
 ## 更新已渲染的 DOM {/*updating-the-rendered-tree*/}
 
-你可以在同一个 DOM 节点上多次调用“render”。只要组件树结构与之前渲染的内容一致，React 就会 [保留这个状态](/learn/preserving-and-resetting-state) 。请注意你书写代码的方式：
+你可以在同一 DOM 节点上多次调用 `render`。只要组件树结构与之前渲染的内容一致，React 就会 [保留该状态](/learn/preserving-and-resetting-state) 。请仔细观察在输入框中输入内容后的效果：
 
 <Sandpack>
 
