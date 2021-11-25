@@ -183,7 +183,7 @@ export default function App({counter}) {
 
 ## 行为细节 {/*behavior-in-detail*/}
 
-在你第一次调用“render”时，“container”内的任何现有 DOM 元素都会被替换。如果你再次调用“render”，React 将会通过 ["匹配"](/learn/preserving-and-resetting-state) 与先前渲染的组件树来决定 DOM 的哪些部分可以重用，哪些需要重新创建。重复调用“render”与调用“setState” —— 在这两种情况下，React 都会避免不必要的 DOM 更新。
+在你第一次调用 `render` 时，`container` 内的任何已有 DOM 元素都会被替换。如果你再次调用 `render` 时，React 将会通过与先前渲染的组件树 ["匹配"](/learn/preserving-and-resetting-state) 的方式，来决定 DOM 的哪些部分可以重用，哪些需要重新创建。重复调用 `render` 与调用 `setState` 效果类似。无论哪种情况，React 都会避免不必要的 DOM 更新。
 
 你可以传递一个回调函数作为第三个参数。React 会在你的组件出现在 DOM 中后调用它。
 
