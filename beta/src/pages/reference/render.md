@@ -6,7 +6,7 @@ translators:
 
 <Intro>
 
-“render”可以将一段 [JSX](/learn/writing-markup-with-jsx)（“React 元素”）渲染到浏览器 DOM 容器节点中。它可以让 React 改变“container”内的 DOM ，使其与传递的 JSX 相匹配。
+`render` 函数会将 [JSX](/learn/writing-markup-with-jsx)（“React 元素”）渲染到浏览器 DOM 容器节点中。它可以让 React 改变 `container` 中 DOM，使其与传递的 JSX 相匹配。
 
 ```js
 render(<App />, container);
