@@ -23,7 +23,7 @@ render(<App />, container, callback);
 
 <AnatomyStep title="React element">
 
-你想渲染的 UI 界面。
+需要渲染的 UI 界面。
 
 </AnatomyStep>
 
