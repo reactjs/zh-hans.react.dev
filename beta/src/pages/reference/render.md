@@ -169,7 +169,7 @@ export default function App({counter}) {
 
 </Sandpack>
 
-你可以使用 [“unmountComponentAtNode()”](TODO) 销毁已渲染的 DOM 树。
+你可以使用 [`unmountComponentAtNode()`](TODO) 来销毁已渲染的 DOM 树。
 
 <br />
 
