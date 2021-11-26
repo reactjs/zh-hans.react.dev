@@ -26,7 +26,7 @@ React 社区中其他较为流行的文本编辑器包括：
 
 ### 代码检查（Linting） {/*linting*/}
 
-代码检查（Code linters）在你编写代码时会发现代码中的问题，帮你尽早修复这些问题。[ESLint](https://eslint.org/) 是一种流行的、开源的 JavaScript 代码检查工具。
+代码检查（Code linters）可以在你编写代码时，发现代码中的问题，以帮你尽早修复。[ESLint](https://eslint.org/) 是一款流行且开源的 JavaScript 代码检查工具。
 
 * [使用 React 的推荐配置安装 ESLint](https://www.npmjs.com/package/eslint-config-react-app) （确保你已经安装了 [Node](https://nodejs.org/en/download/current/) ）
 * [安装 VSCode 中的官方 ESLint 扩展](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
