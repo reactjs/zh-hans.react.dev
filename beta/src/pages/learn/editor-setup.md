@@ -2,6 +2,7 @@
 title: 编辑器设置
 translators:
   - dahui4dev
+  - QC-L
 ---
 
 <Intro>
