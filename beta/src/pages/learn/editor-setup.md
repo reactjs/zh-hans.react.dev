@@ -35,7 +35,7 @@ React 社区中其他较为流行的文本编辑器包括：
 
 与其他贡献者共享代码时，你最不想做的事就是争论代码缩进应该使用 [tabs 还是空格](https://www.google.com/search?q=tabs+vs+spaces)！幸好，[Prettier](https://prettier.io/) 会根据预设配置的规则重新格式化代码，以保证代码整洁。运行 Prettier，你的所有 tabs 都将转换为空格，同时缩进、引号等也都将根据你的配置而改变。理想状态下，当你保存文件时，Prettier 会自动执行格式化操作。
 
-你可以安装 [Prettier 扩展在 VSCode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) 通过以下步骤：
+你可以为 [VSCode 安装 Prettier 扩展](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)，具体步骤如下：
 
 1. 启动 VS Code
 2. 使用快速打开（使用快捷键 `CTRL/CMD + P`）
