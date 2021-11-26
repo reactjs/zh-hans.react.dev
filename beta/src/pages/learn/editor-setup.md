@@ -1,7 +1,7 @@
 ---
 title: 编辑器设置
 translators:
-- dahui4dev
+  - dahui4dev
 ---
 
 <Intro>
