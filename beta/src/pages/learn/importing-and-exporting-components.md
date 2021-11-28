@@ -363,7 +363,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-这是用了默认导出的解决方案：
+默认导出的解决方案：
 
 <Sandpack>
 
