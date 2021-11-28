@@ -113,7 +113,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
      - 使用 **默认导出** 的方式，将 `Gallery` 组件导出
 2. `App.js`:
      - 使用 **默认导入** 的方式，从 `Gallery.js` 中导入 `Gallery` 组件。
-     - 用 **默认导出** 的方式，将根组件 `App` 导出。
+     - 使用 **默认导出** 的方式，将根组件 `App` 导出。
 
 
 <Note>
