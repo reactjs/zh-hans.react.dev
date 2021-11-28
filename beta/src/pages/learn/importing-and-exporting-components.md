@@ -141,7 +141,7 @@ import Gallery from './Gallery';
 | 默认  | `export default function Button() {}` | `import Button from './button.js';`     |
 | 具名  | `export function Button() {}`         | `import { Button } from './button.js';` |
 
-当你用默认导入时，你可以在 `import` 语句后面起任何的名字。比如 `import Banana from './button.js'`，这样你还是能得到跟默认导出一样的内容。相反，对于命名导入，导入和导出的名字必须一致。这也是为什么叫 _命名_ 导入的原因！
+当使用默认导入时，你可以在 `import` 语句后面进行任意命名。比如 `import Banana from './button.js'`，如此你能获得与默认导出一致的内容。相反，对于具名导入，导入和导出的名字必须一致。这也是为什么称其为 _具名_ 导入的原因！
 
 **通常文件里只有一个组件时，人们会使用默认导出，而当文件里有多个组件或值需要导出时，则使用命名导出。** 不管你使用哪种方式，请记得给你的组件和相应的文件起一个有意义的名字。我们不建议创建没有命名的组件，比如 `export default () => {}`，因为这样会使得调试变得更加困难。
 
