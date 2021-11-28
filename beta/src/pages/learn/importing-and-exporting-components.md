@@ -124,7 +124,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 import Gallery from './Gallery';
 ```
 
-不管是 `'Gallery.js'` 还是 `'.Gallery'`，在 React 里都能正常使用，只是前者更符合 [原生 ES 模块](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules)。
+无论是 `'./Gallery.js'` 还是 `'./Gallery'`，在 React 里都能正常使用，只是前者更符合 [原生 ES 模块](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules)。
 
 </Note>
 
