@@ -58,7 +58,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 ## 导出和导入一个组件 {/*exporting-and-importing-a-component*/}
 
-假如将来你想在首页加入一个关于科学书籍的列表？或者将所有的资料信息都放到其他地方？这时将 `Gallery` 和 `Profile` 组件移出根组件文件会更合理点。这会让这些组件更加模块化，并且可在其他文件里重复使用。你可以根据以下三个步骤去拆分你的组件：
+如果将来需要在首页添加关于科学书籍的列表，亦或者需要将所有的资料信息移动到其他文件。这时将 `Gallery` 组件和 `Profile` 组件移出根组件文件会更加合理。这会使组件更加模块化，并且可在其他文件中复用。你可以根据以下三个步骤对组件进行拆分：
 
 1. **创建** 一个新的 JS 文件来放这个组件。
 2. **导出** 该文件里的函数组件（可以使用 [默认导出](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_the_default_export) 或 [命名导出](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_named_exports)）
