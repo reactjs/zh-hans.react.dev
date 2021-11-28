@@ -130,7 +130,7 @@ import Gallery from './Gallery';
 
 <DeepDive title="默认导出 vs 具名导出">
 
-这是 JavaScript 里两个主要用来导出值的方法：默认导出和命名导出。到目前为止，我们的例子里仅仅是用到了默认导出。但你可以在一个文件里，使用其中一种或两种都使用。**一个文件里有且仅有一个 _默认_ 导出，但是可以有任意多个 _命名_ 导出。**
+这是 JavaScript 里两个主要用来导出值的方式：默认导出和具名导出。到目前为止，我们的示例中只用到了默认导出。但你可以在一个文件中，选择使用其中一种，或者两种都使用。**一个文件里有且仅有一个 _默认_ 导出，但是可以有任意多个 _具名_ 导出。**
 
 ![Default and named exports](/images/docs/illustrations/i_import-export.svg)
 
