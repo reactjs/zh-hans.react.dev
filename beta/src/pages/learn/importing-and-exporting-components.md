@@ -118,7 +118,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <Note>
 
-你可能会遇到一些文件是没有 `.js` 文件后缀的，如下所示：
+引入过程中，你可能会遇到一些文件并未添加 `.js` 文件后缀，如下所示：
 
 ```js 
 import Gallery from './Gallery';
