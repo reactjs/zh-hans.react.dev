@@ -147,13 +147,13 @@ import Gallery from './Gallery';
 
 </DeepDive>
 
-## 从一个文件里导出和导入多个组件 {/*exporting-and-importing-multiple-components-from-the-same-file*/}
+## 从同一文件中导出和导入多个组件 {/*exporting-and-importing-multiple-components-from-the-same-file*/}
 
-假如你只想展示一个 `Profile` 而不展示整个图集呢？你也可以导出 `Profile` 组件。但 `Gallery.js` 里已经有一个 *默认* 导出了，你不能定义 _两个_ 默认导出。你可以在一个新文件里用默认导出，或者将 `Profile` 用 *命名* 导出。**一个文件里，有且仅有一个默认导出，但可以有多个命名导出！**
+如果你只想展示一个 `Profile` 组，而不展示整个图集。你也可以导出 `Profile` 组件。但 `Gallery.js` 中已包含 *默认* 导出，此时，你不能定义 _两个_ 默认导出。但你可以将其在新文件中进行默认导出，或者将 `Profile` 进行 *具名* 导出。**同一文件中，有且仅有一个默认导出，但可以有多个具名导出！**
 
-> 为了减少在默认导出和命名导出之间的混淆，一些团队会选择只使用一种风格（默认或者命名），或者禁止在单个文件内混合使用。这因人而异，选择最适合你的即可！
+> 为了减少在默认导出和具名导出之间的混淆，一些团队会选择只使用一种风格（默认或者具名），或者禁止在单个文件内混合使用。这因人而异，选择最适合你的即可！
 
-首先，用命名导出的方法从 `Gallery.js` **导出** `Profile` 组件（没有 `default` 关键字）：
+首先，用具名导出的方式，将 `Profile` 组件从 `Gallery.js` **导出**（不使用 `default` 关键字）：
 
 ```js
 export function Profile() {
@@ -161,7 +161,7 @@ export function Profile() {
 }
 ```
 
-然后，用命名导入的方法从 `Gallery.js` **导入** `Profile` 组件（用大括号）:
+接着，用具名导入的方式，从 `Gallery.js` 文件中 **导入** `Profile` 组件（用大括号）:
 
 ```js
 import { Profile } from './Gallery.js';
@@ -175,7 +175,7 @@ export default function App() {
 }
 ```
 
-现在，`Gallery.js` 里两个导出：一个是默认导出的 `Gallery`，和一个命名导出的 `Profile`。`App.js` 里都导入了这两个组件。尝试将 `<Profile />` 改成 `<Gallery />`，然后回到这个例子里：
+现在，`Gallery.js` 包含两个导出：一个是默认导出的 `Gallery`，另一个是具名导出的 `Profile`。`App.js` 中均导入了这两个组件。尝试将 `<Profile />` 改成 `<Gallery />`，回到示例中：
 
 <Sandpack>
 
@@ -218,19 +218,19 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-现在你正在混合使用默认导出和命名导出：
+示例中混合使用了默认导出和具名导出：
 
 * `Gallery.js`:
-  - 用 **命名导出** 的方式，将 `Profile` 组件导出，并取名为 `Profile`。
-  - 用 **默认导出** 的方式，将 `Gallery` 组件导出。
+  - 使用 **具名导出** 的方式，将 `Profile` 组件导出，并取名为 `Profile`。
+  - 使用 **默认导出** 的方式，将 `Gallery` 组件导出。
 * `App.js`:
-  - 用 **命名导入** 的方式，从 `Gallery.js` 导入 `Profile` 组件，并取名为 `Profile`。
-  - 用 **默认导入** 的方式，从 `Gallery.js` 导入 `Gallery` 组件。
-  - 用 **默认导出** 的方式，将根组件 `App` 导出。
+  - 使用 **命名导入** 的方式，从 `Gallery.js` 中导入 `Profile` 组件，并取名为 `Profile`。
+  - 使用 **默认导入** 的方式，从 `Gallery.js` 中导入 `Gallery` 组件。
+  - 使用 **默认导出** 的方式，将根组件 `App` 导出。
 
 <Recap>
 
-在这个页面里，你学到了：
+在本章节中，你学到了：
 
 * 何为根组件
 * 如何导入和导出一个组件
@@ -247,18 +247,18 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 现在，`Gallery.js` 同时导出了 `Profile` 和 `Gallery`，这会让人感到有点混淆。
 
-尝试将 `Profile` 组件移动到一个新的文件 `Profile.js`，然后更新 `App` 组件，依次渲染 `<Profile />` 和 `<Gallery />` 。
+尝试将 `Profile` 组件移动到 `Profile.js` 文件中，然后更新 `App` 组件，依次渲染 `<Profile />` 和 `<Gallery />` 。
 
-你也许会使用默认导出或者命名导出的方式来导出 `Profile` 组件，但请记住在 `App.js` 和 `Gallery.js` 里使用相应的导入语句！你可以参考下面的表格：
+你也许会使用默认导出或者具名导出的方式，来导出 `Profile` 组件，但请保证在 `App.js` 和 `Gallery.js` 里使用相应的导入语句！具体可以参考下面的表格：
 
 | 语法           | 导出语句                           | 导入语句                          |
 | -----------    | -----------                        | -----------                       |
 | 默认  | `export default function Button() {}` | `import Button from './button.js';`     |
-| 命名  | `export function Button() {}`         | `import { Button } from './button.js';` |
+| 具名  | `export function Button() {}`         | `import { Button } from './button.js';` |
 
 <Hint>
 
-不要忘记在调用它们的地方导入你的组件。`Gallery` 里不也调用了 `Profile` 吗？
+不要忘记在调用它们的地方导入你的组件。因为 `Gallery` 中也调用了 `Profile` 组件。
 
 </Hint>
 
@@ -309,11 +309,11 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-在你使用其中一种导出方式完成以上问题后，请尝试使用另一种导出方式实现。
+当你使用其中一种导出方式完成以上任务后，请尝试使用另一种导出方式实现。
 
 <Solution>
 
-这是用了命名导出的解决方案：
+具名导出的解决方案：
 
 <Sandpack>
 
