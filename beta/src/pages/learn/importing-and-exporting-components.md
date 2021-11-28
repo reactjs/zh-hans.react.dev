@@ -139,7 +139,7 @@ import Gallery from './Gallery';
 | 语法           | 导出语句                           | 导入语句                          |
 | -----------    | -----------                        | -----------                       |
 | 默认  | `export default function Button() {}` | `import Button from './button.js';`     |
-| 命名  | `export function Button() {}`         | `import { Button } from './button.js';` |
+| 具名  | `export function Button() {}`         | `import { Button } from './button.js';` |
 
 当你用默认导入时，你可以在 `import` 语句后面起任何的名字。比如 `import Banana from './button.js'`，这样你还是能得到跟默认导出一样的内容。相反，对于命名导入，导入和导出的名字必须一致。这也是为什么叫 _命名_ 导入的原因！
 
