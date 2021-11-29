@@ -29,7 +29,7 @@ translators:
 
 ## Context：传递 props 的另一种方法 {/*context-an-alternative-to-passing-props*/}
 
-Context 可以让父组件向它下面的整个组件树提供数据。Context 有很多种用途。这里就有一个示例。考虑一下这个 `Heading` 组件，它接受一个 `level` 参数来决定它标题的尺寸：
+Context 可以让父组件向它下面的整个组件树提供数据。Context 有很多种用途。这里就有一个示例。考虑一下 `Heading` 组件接受一个 `level` 参数来决定它标题尺寸的情况：
 
 <Sandpack>
 
