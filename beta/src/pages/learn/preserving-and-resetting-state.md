@@ -1,10 +1,12 @@
 ---
 title: 如何控制状态的保留或重置
+translators:
+  - YogaLin
 ---
 
 <Intro>
 
-状态与组件之间是隔离的。根据组件在 UI 树中的位置，React 可以跟踪组件所属的状态。你可以控制在 re-render 之间保留还是重置状态。
+状态与组件之间是隔离的。根据组件在 UI 树中的位置，React 可以跟踪组件所属的状态。你可以控制重新渲染时状态是保留还是重置。
 
 </Intro>
 
@@ -13,15 +15,15 @@ title: 如何控制状态的保留或重置
 * React 眼中的组件结构
 * React 保留或重置状态的条件
 * 如何强制 React 重置组件的状态
-* Key 和组件切换对状态保留的影响
+* Key 和组件类型变化对状态保留的影响
 
 </YouWillLearn>
 
 ## UI 树 {/*the-ui-tree*/}
 
-浏览器使用许多树形结构来建模 UI 。[DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) 用于表示 HTML 元素，[CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model) 则表示 CSS 元素。甚至还有 [Accessibility tree](https://developer.mozilla.org/docs/Glossary/Accessibility_tree)！
+浏览器使用许多树形结构来构建 UI 。[DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) 用于表示 HTML 元素，[CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model) 则表示 CSS 元素。甚至还有 [Accessibility tree](https://developer.mozilla.org/docs/Glossary/Accessibility_tree)！
 
-React 也使用树形结构来对你创造的 UI 进行管理和建模。React 根据 JSX 生成了 **UI 树** 。React DOM 根据 UI 树去更新浏览器的 DOM 元素。（React Native 则在不同的移动端平台将 UI 树转换为相应的元素）
+React 也使用树形结构来对你创造的 UI 进行管理和构建。React 根据 JSX 生成了 **UI 树** 。React DOM 根据 UI 树去更新浏览器的 DOM 元素。（React Native 则在不同的移动端平台将 UI 树转换为相应的元素）
 
 <img alt="React 获取组件后将它们转换为 UI 树结构，然后 ReactDOM 在浏览器中使用 DOM 将它们转换为 HTML。" src="/images/docs/sketches/s_react-dom-tree.png" />
 
@@ -98,7 +100,7 @@ label {
 
 <img alt="JSX 被转换为一棵树" src="/images/docs/sketches/s_jsx-to-tree.png" />
 
-**这是两个独立的 counter，因为它们在树中被渲染在了各自的位置** 一般情况下你不用去考虑这些位置来使用 React，但知道它们是如何工作的是很有用的。
+**这是两个独立的 counter，因为它们在树中被渲染在了各自的位置。** 一般情况下你不用去考虑这些位置来使用 React，但知道它们是如何工作会很有用。
 
 在 React 中，屏幕中的每个组件都有完全独立的状态。举个例子，当你并排渲染了两个 `Counter` 组件时，它们都拥有各自独立的 `score` 和 `hover` 状态。
 
@@ -160,7 +162,7 @@ function Counter() {
 
 </Sandpack>
 
-只有当相同的组件被渲染在了相同的位置，React 才会一直保留着组件的状态。想要验证这一点，可以增加两个计数器的值，清除“渲染第二个计数器”的复选框，然后重新勾选：
+只有当相同的组件被渲染在了相同的位置，React 才会一直保留着组件的状态。想要验证这一点，可以增加两个计数器的值，取消勾选“渲染第二个计数器”的复选框，然后重新勾选：
 
 <Sandpack>
 
@@ -236,7 +238,7 @@ label {
 
 注意，当停止渲染第二个计数器的那一刻，它的状态完全消失了。这是因为当 React 删除一个组件时， React 会销毁它的状态。
 
-<img alt="React 从树中移出组件的时候，也会同时移除它的状态" src="/images/docs/sketches/s_remove-ui.png" />
+<img alt="React 从树中移出组件的时候，也会同时销毁它的状态" src="/images/docs/sketches/s_remove-ui.png" />
 
 当你重新勾选“渲染第二个计数器”复选框时，另一个计数器及其状态从头开始初始化（`score = 0`）并添加到 DOM 中。
 
@@ -336,9 +338,9 @@ label {
 <img alt="React 只关注组件以及它在 UI 树中渲染的位置。" src="/images/docs/sketches/s_ui-swap.png" />
 
 
-在相同位置的同一个组件，所以对 React 来说，它是同一个计数器。
+位于相同位置的相同组件，所以对 React 来说，它是同一个计数器。
 
-<Illustration src="/images/docs/illustrations/i_react-is-blind-to-ui-swap.png" alt="尽管两个组件颜色不同，React 比较两个组件后仍然认为它们是相同的。" />
+<Illustration src="/images/docs/illustrations/i_react-is-blind-to-ui-swap.png" alt="尽管两个组件颜色不同，React 比较后仍然认为它们是相同的。" />
 
 <Gotcha>
 
@@ -440,7 +442,7 @@ label {
 
 </Sandpack>
 
-你可能认为当你勾选复选框的时候状态会被重置，但它没有！这是因为**两个 `<Counter />` 标签被渲染在了相同的位置。** React 不知道你的函数里是如何进行条件判断的，它只关注你返回的树。在这两种条件下，`App` 组件都返回了一个包裹着 `<Counter />` 作为第一个子元素的 `div`。这就是 React 认为它们是 _同一个_ `<Counter />` 的原因。
+你可能认为当你勾选复选框的时候状态会被重置，但它没有！这是因为 **两个 `<Counter />` 标签被渲染在了相同的位置。** React 不知道你的函数里是如何进行条件判断的，它只关注你返回的树。在这两种条件下，`App` 组件都返回了一个包裹着 `<Counter />` 作为第一个子元素的 `div`。这就是 React 认为它们是 _同一个_ `<Counter />` 的原因。
 
 你可以认为它们有相同的“地址”：根节点的第一个子节点的第一个子节点。不管你的逻辑是怎么组织的，这就是 React 在上下两次渲染间将它们匹配的方式。
 
@@ -525,7 +527,7 @@ label {
 
 </Sandpack>
 
-示例中，你在相同位置用 _不同类型_ 的组件进行切换。初始化时，`<div>` 的第一个子元素是一个 `Counter`。但是当你切换成一个 `p` 时，React 将 `Counter` 从 UI 树中移除并销毁了它的状态。
+示例中，你在相同位置用 _不同类型_ 的组件进行切换。初始化时， `<div>` 的第一个子元素是一个 `Counter` 。但是当你切换成一个 `p` 时，React 将 `Counter` 从 UI 树中移除并销毁了它的状态。
 
 <img alt="将一个组件从 UI 树中移除会销毁它的状态。" src="/images/docs/sketches/s_ui-component-swap.png" />
 
@@ -618,15 +620,15 @@ label {
 
 </Sandpack>
 
-当你勾选复选框后计数器的状态被重置了。即使只是渲染一个 `Counter` ， `div` 的第一个子元素从 `div` 变成了 `section` 。当子 `div` 被从 DOM 中移除的时候，它底下的整颗树（包含 `Counter` 以及它的状态）也都被销毁了。
+当你勾选复选框后计数器的状态被重置了。即使你渲染了一个 `Counter` ， `div` 的第一个子元素从 `div` 变成了 `section` 。当子 `div` 从 DOM 中被移除的时候，它底下的整颗树（包含 `Counter` 以及它的状态）也都被销毁了。
 
-<img alt="如果第一个子元素不同，就回不去了！" src="/images/docs/sketches/s_ui-components-swap.png" />
+<img alt="如果第一个子元素不同了，就回不去了！" src="/images/docs/sketches/s_ui-components-swap.png" />
 
-一般来说，**如果你想在重新渲染之间保持状态，树的结构应该“匹配”** 于两次渲染之间。如果结构不同会导致状态的销毁，因为 React 会在组件从树中移除后销毁它的状态。
+一般来说，**如果你想在重新渲染之间保持状态，树的结构应该“匹配”** 于两次渲染之间。结构不同会导致状态的销毁，因为 React 会在组件从树中移除后销毁它的状态。
 
 <Gotcha>
 
-以下是为什么不应将组件的定义进行嵌套的原因。
+以下是为什么不应将组件嵌套定义的原因。
 
 示例中， `MyTextField` 组件被定义在了 `MyComponent` 内：
 
@@ -709,7 +711,7 @@ function Counter({ person }) {
       onPointerEnter={() => setHover(true)}
       onPointerLeave={() => setHover(false)}
     >
-      <h1>{person}的分数：{score}</h1>
+      <h1>{person} 的分数：{score}</h1>
       <button onClick={() => setScore(score + 1)}>
         加一
       </button>
@@ -743,9 +745,9 @@ h1 {
 
 <Illustration src="/images/docs/illustrations/i_react-is-blind-to-ui-swap.png" alt="React 比较这两个组件，虽然他们的颜色不同，但依然认为它们是相同的。" />
 
-概念上讲，这个应用的两个计数器应该是分离的。它们虽然 UI 上的位置相同，但是一个是 Taylor 的技术，一个是 Sarah 的计数器。
+概念上讲，这个应用的两个计数器应该是分离的。它们虽然 UI 上的位置相同，但是一个是 Taylor 的计数器，一个是 Sarah 的计数器。
 
-有两个方法可以在它们之间切换时重置状态：
+有两个方法可以让它们之间切换时重置状态：
 
 1. 将组件渲染在不同的位置
 2. 给每个组件一个明确的标识 `key`
@@ -794,7 +796,7 @@ function Counter({ person }) {
       onPointerEnter={() => setHover(true)}
       onPointerLeave={() => setHover(false)}
     >
-      <h1>{person}'s score: {score}</h1>
+      <h1>{person} 的分数：{score}</h1>
       <button onClick={() => setScore(score + 1)}>
         加一
       </button>
@@ -837,7 +839,7 @@ h1 {
 
 还有另一种更通用的方法来重置组件的状态。
 
-你可能已经在[列表渲染](/learn/rendering-lists#keeping-list-items-in-order-with-key)章节看过了 `key` 。但 key 不只是用于列表！你可以使用 key 来让 React 区分任何组件。默认情况下，React 使用父级中的顺序（“第一个计数器”、“第二个计数器”）来区分组件。但是 key 可以告诉 React 这不仅仅是 *第一个* 或者 *第二个* 计数器，而是一个特定的计数器————例如，*Taylor* 的计数器。这样不管它出现在哪里 React 都会知道它是 *Taylor* 的计数器！
+你可能已经在 [列表渲染](/learn/rendering-lists#keeping-list-items-in-order-with-key) 章节看过了 `key` 。但 key 不只是用于列表！你可以使用 key 来让 React 区分任何组件。默认情况下，React 使用父级中的顺序（“第一个计数器”、“第二个计数器”）来区分组件。但是 key 可以告诉 React 这不仅仅是 *第一个* 或者 *第二个* 计数器，而是一个特定的计数器————例如，*Taylor* 的计数器。这样不管它出现在哪里 React 都会知道它是 *Taylor* 的计数器！
 
 在这个例子中，两个 `<Counter />` 不会共享状态，即使它们出现在 JSX 中的相同位置：
 
@@ -879,7 +881,7 @@ function Counter({ person }) {
       onPointerEnter={() => setHover(true)}
       onPointerLeave={() => setHover(false)}
     >
-      <h1>{person}的分数：{score}</h1>
+      <h1>{person} 的分数：{score}</h1>
       <button onClick={() => setScore(score + 1)}>
         加一
       </button>
@@ -919,7 +921,7 @@ h1 {
 )}
 ```
 
-指定 `key` 告诉 React 去使用 `key` 作为其位置信息的一部分，而不是它们在父元素中的顺序。这就是为什么尽管你用 JSX 将组件渲染在相同位置，但在 React 看来它们是两个不同的计数器。因此它们不会共享状态。每次一个计数器出现在屏幕上时，它的状态会被创建。每次它被移除了，它的状态会被销毁。在它们之间切换会一次又一次地重置它们的状态。
+指定 `key` 告诉 React 使用 `key` 作为其位置信息的一部分，而不是它们在父元素中的顺序。这就是为什么尽管你用 JSX 将组件渲染在相同位置，但在 React 看来它们是两个不同的计数器。因此它们不会共享状态。每次一个计数器出现在屏幕上时，它的状态会被创建。每次它被移除了，它的状态会被销毁。在它们之间切换会一次又一次地重置它们的状态。
 
 <Illustration src="/images/docs/illustrations/i_keys-in-trees.png" alt="React distinguishes between components with different keys, even if they are of the same type." />
 
@@ -1135,7 +1137,7 @@ textarea {
 
 - 你可以渲染 _所有_ 的聊天而不只是当前这一个，但是用 CSS 隐藏其他的。这些聊天不会从树中移除，所以它们的内部状态会被保留下来。这种方法对于简单 UI 非常有效。但如果隐藏的树节点很大且包含了大量的 DOM 节点，那么性能会变得很差。
 - 你可以进行 [状态提升](/learn/sharing-state-between-components) 并在父组件中保存每个收件人的草稿消息。这样即使子组件被移除了也无所谓，因为保留重要信息的是父组件。这是最常见的方法。
-- 除了 React 的状态，你也可以使用其他数据源。例如，即使用户不小心关闭页面后你也希望消息草稿持久化。要实现这一点，你可以让 `Chat` 组件从 [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) 读取数据进行初始化，并把草稿保存到 localStorage 。
+- 除了 React 的状态，你也可以使用其他数据源。例如，即使用户不小心关闭页面后你也希望草稿消息持久化。要实现这一点，你可以让 `Chat` 组件从 [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) 读取数据进行初始化，并把草稿保存到 localStorage 。
 
 无论采取哪种策略，与 Alice 的聊天在概念上都不同于与 Bob 的聊天，因此根据当前收件人为 `<Chat>` 树指定一个 `key` 是有意义的。
 
@@ -1156,7 +1158,7 @@ textarea {
 
 ### 修复丢失的输入文本 {/*fix-disappearing-input-text*/}
 
-这个例子在你按了按钮后会展示一条消息，但同时也会意外地重置输入文本。为什么会发生这种情况？修复它，使按下按钮不再重置输入文本。
+这个例子在你按了按钮后会展示一条消息，但同时也会意外地重置输入文本。为什么会发生这种情况？修复它，使按下按钮不再重置输入的文本。
 
 <Sandpack>
 
@@ -1307,9 +1309,9 @@ textarea { display: block; margin: 10px 0; }
 
 ### 交换两个表单字段 {/*swap-two-form-fields*/}
 
-这个表单可以让你输入姓氏和名字。它还有一个复选框控制哪个字段放在前面。勾选复选框时，“姓氏”字段将出现在“姓名”字段之前。
+这个表单可以让你输入姓氏和名字。它还有一个复选框控制哪个字段放在前面。勾选复选框时，“姓氏”字段将出现在“名字”字段之前。
 
-它几乎可以工作，但有一个 bug 。如果你填写了“名字”输入框并勾选复选框，文本将保留在第一个输入(现在变成了“姓氏”)。修复它，当你反转顺序时输入文本 *也* 会跟着移动。
+它差不多可以正常工作，但有一个 bug 。如果你填写了“名字”输入框并勾选复选框，文本将保留在第一个输入(现在变成了“姓氏”)。修复它，当你反转顺序时输入文本 *也* 会跟着移动。
 
 <Hint>
 
@@ -1441,9 +1443,9 @@ label { display: block; margin: 10px 0; }
 
 ### 重置详情表单 {/*reset-a-detail-form*/}
 
-这是一个可编辑的联系人列表。你您可以编辑所选联系人的详细信息，然后点击“保存”更新它或点击“重置”来撤消你的修改。
+这是一个可编辑的联系人列表。你您可以编辑所选联系人的详细信息，然后点击“保存”进行更新或点击“重置”来撤消你的修改。
 
-当你选中另一个联系人（比如， Alice ），状态会更新，但表单会一直显示前一个联系人的详细信息。修复它，使选定的联系人改变时，表单获得重置时。
+当你选中另一个联系人（比如， Alice），状态会更新，但表单会一直显示前一个联系人的详细信息。修复它，使选定的联系人改变时，表单获得重置时。
 
 <Sandpack>
 
@@ -1750,7 +1752,7 @@ button {
 
 ### 清除加载中的图片 {/*clear-an-image-while-its-loading*/}
 
-当你点击“下一张”时，浏览器开始加载下一张图片。但因为它显示在相同的 `<img>` 标签中，默认情况下在下一张图片加载完成前你都会看到上一张图片。如果文案与图片的匹配很重要，那么这可能不是我们想要的。调整它，当你点击“下一张”，上一张图片就被立即清除。
+当点击“下一张”时，浏览器开始加载下一张图片。但因为它显示在相同的 `<img>` 标签中，默认情况下在下一张图片加载完成前你都会看到上一张图片。如果文案与图片一一对应很重要，那么这可能不是我们想要的。调整它使得你点击“下一张”时上一张图片立即被清除。
 
 <Hint>
 
@@ -1824,7 +1826,7 @@ img { width: 150px; height: 150px; }
 
 <Solution>
 
-你可以为 `<img>` 提供一个 `key` 。当 `key` 更改时，React 将从头开始重新创建 `<img>` DOM 节点。这样在每张图片加载时会导致一个短暂的闪白，所以你不会希望应用的每张图片都这样子。但是如果你想确保图片与文本始终匹配，那这么做是有意义的。
+你可以为 `<img>` 提供一个 `key` 。当 `key` 更改时，React 将从头开始重新创建 `<img>` DOM 节点。这样会导致在每张图片加载时一个短暂的闪白，所以你不会希望应用里的每张图片都这样子。但是如果你想确保图片与文本始终匹配，那这么做是有意义的。
 
 <Sandpack>
 
