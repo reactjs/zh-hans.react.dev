@@ -18,9 +18,13 @@ Stack Overflow 是非常受欢迎的论坛，在论坛中，你可以提出代�
 
 <!--
 
-TODO: decide on the criteria for inclusion before uncommenting.
+TODO: decide on the criteria for inclusion before uncommenting. (Change Popular Discussion Forums into heading while un-commenting)
 
+<<<<<<< HEAD
 ## 热门讨论区 {/*popular-discussion-forums*/}
+=======
+Popular Discussion Forums
+>>>>>>> f625b86a48309a430b90d92d233d93c010de62da
 
 许多论坛是讨论最佳实践、应用架构以及 React 新特性的好地方。但如果你想讨论的是代码级问题，通常 Stack Overflow 会更合适。
 
