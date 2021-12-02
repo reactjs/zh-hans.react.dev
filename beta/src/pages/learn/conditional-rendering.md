@@ -18,7 +18,7 @@ translators:
 
 </YouWillLearn>
 
-## 选择性地返回 JSX {#conditionally-returning-jsx}
+## Conditionally returning JSX {/*conditionally-returning-jsx*/}
 
 假设有一个 `PackingList` 组件，里面渲染多个 `Item` 组件，每个物品可标记为打包与否：
 
@@ -106,7 +106,7 @@ export default function PackingList() {
 
 留意这里你是怎么使用 JavaScript 的 `if` 和 `return` 语句来写分支逻辑。在 React，是由 JavaScript 来处理控制流的（比如条件)。
 
-### 选择性地返回 `null` {#conditionally-returning-nothing-with-null}
+### 选择性地返回 `null` {/*conditionally-returning-nothing-with-null*/}
 
 在一些情况下，你不想有任何东西进行渲染。比如，假设你不想显示已经打包好的物品。但一个组件必须返回一些东西。这种情况下，你可以直接返回 `null`。
 
@@ -156,7 +156,7 @@ export default function PackingList() {
 
 实际上，在组件里返回 `null` 并不常见，因为这样会让想使用它的开发者感觉奇怪。通常，你可以在父组件里选择是否要渲染该组件。让我们接着往下看吧！
 
-## 选择性地包含 JSX {#conditionally-including-jsx}
+## 选择性地包含 JSX {/*conditionally-including-jsx*/}
 
 在之前的例子里，你通过在组件内部控制哪些 JSX 树（如果有的话！）会返回。你可能已经发现了在渲染输出里会有一些重复的内容：
 
@@ -181,7 +181,7 @@ return <li className="item">{name}</li>;
 
 虽然这些重复的内容没什么害处，但这样可能会导致你的代码更难维护。比如你想更改 `className`？你就需要修改两个地方！针对这种情况，你可以通过选择性地包含一小段 JSX 来让你的代码更加 [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)。
 
-### 三目运算符（`? :`）{#conditionally-operator}
+### 三目运算符（`? :`）{/*conditional-ternary-operator--*/}
 
 JavaScript 有一种紧凑型语法来实现条件判断表达式 -- [条件运算符](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) 又称“三目运算符”。
 
@@ -258,7 +258,7 @@ export default function PackingList() {
 
 对于简单的条件判断，这样的风格可以很好地实现，但需要适量使用。如果你的组件里有很多的嵌套式条件表达式，则需要考虑通过提取为子组件来简化这些嵌套表达式。在 React 里，标记也是你代码中的一部分，所以你可以使用变量和函数来整理一些复杂的表达式。
 
-### 与运算符（`&&`）{#logical-and-operator}
+### 与运算符（`&&`）{/*logical-and-operator-*/}
 
 你会遇到的另一个常见的快捷表达式是 [JavaScript 与（`&&`）运算符](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND#:~:text=The%20logical%20AND%20(%20%26%26%20)%20operator,it%20returns%20a%20Boolean%20value.)。在 React 组件里，通常用在当条件成立时，你想渲染一些 JSX，**或者不做任何渲染**。使用 `&&`，你也可以实现仅当 `isPacked=true` 时，渲染勾选符号。
 
@@ -325,7 +325,7 @@ JavaScript 会自动将左侧的值转换成布尔类型以判断条件成立与
 
 </Gotcha>
 
-### 选择性地将 JSX 赋值给变量 {#conditionally-assigning-jsx-to-a-variable}
+### 选择性地将 JSX 赋值给变量 {/*conditionally-assigning-jsx-to-a-variable*/}
 
 当这些快捷方式妨碍写普通代码时，可以考虑使用 `if` 语句和变量。因为你可以使用 [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) 进行重复赋值，所以一开始你可以将你想展示的（这里指的是物品的名字）作为默认值赋予给该变量。
 
@@ -454,7 +454,7 @@ export default function PackingList() {
 
 <Challenges>
 
-### 用 `? :` 给未完成的物品加上图标
+### 用 `? :` 给未完成的物品加上图标 {/*show-an-icon-for-incomplete-items-with--*/}
 
 当 `isPacked` 不为 `true` 时，使用条件运算符 （`cond ? a : b`） 来渲染 ❌
 
@@ -534,7 +534,7 @@ export default function PackingList() {
 
 </Solution>
 
-### 用 `&&` 展示物品的重要性
+### 用 `&&` 展示物品的重要性 {/*show-the-item-importance-with-*/}
 
 在这个例子里，每个 `Item` 接收一个名为 `importance` 的数字类型属性。使用 `&&` 运算符渲染 “_（重要性：X）_”，以斜体呈现，但仅作用于那些难度值为非零的物品。你的物品列表后最终应该如下：
 
@@ -630,7 +630,7 @@ export default function PackingList() {
 
 </Solution>
 
-### 用 `if` 和变量重构多余的 `? :`
+### 用 `if` 和变量重构多余的 `? :` {/*refactor-a-series-of---to-if-and-variables*/}
 
 这个 `Drink` 组件使用了一系列的 `? :` 条件语句，根据 `name` 属性是 `"tea"` 还是 `"coffee"` 来显示不同的信息。问题是，每个饮品的信息是在不同的条件判断里的。请去掉那三个 `? :` 条件，使用一个 `if` 语句来重构这段代码。
 
