@@ -1,6 +1,5 @@
 ---
 title: 'React Conf 会议纪要：Hook，Suspense 和 Concurrent Rendering'
-layout: Post
 author: [tomocchino]
 ---
 
