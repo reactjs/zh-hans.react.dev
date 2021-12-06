@@ -36,7 +36,7 @@ JSX 是一个 JavaScript 语法扩展，可以让你在 JavaScript 文件中书�
 
 </Note>
 
-## 将 HTML 转化为 JSX
+## 将 HTML 转化为 JSX {/*converting-html-to-jsx*/}
 
 假设你现在有一些（完全有效的）HTML 标记：
 
