@@ -23,7 +23,7 @@ translators:
 
 </YouWillLearn>
 
-## 使用状态响应输入 {#reacting-to-input-with-state}
+## 使用状态响应输入 {/*reacting-to-input-with-state*/}
 
 使用 React，你不用直接从代码层面修改 UI。例如，不用编写诸如“禁用按钮”、“启用按钮”、“显示成功消息”等命令。相反，你只需要描述组件在不同状态（“初始状态”、“输入状态”、“成功状态”）下希望展现的 UI，然后根据用户输入触发状态更改。这和设计师对 UI 的理解很相似。
 
@@ -109,7 +109,7 @@ function submitForm() {
 
 </LearnMore>
 
-## 选择状态结构 {#choosing-the-state-structure}
+## 选择状态结构 {/*choosing-the-state-structure*/}
 
 良好的状态组织可以把易于修改和调试的组件与频繁出问题的组件区分开来。最重要的原则是，状态不应包含冗余或重复的信息。如果包含一些多余的状态，我们会很容易忘记去更新它，从而导致问题产生！
 
@@ -222,7 +222,7 @@ label { display: block; margin-bottom: 5px; }
 
 </LearnMore>
 
-## 在组件间共享状态 {#sharing-state-between-components}
+## 在组件间共享状态 {/*sharing-state-between-components*/}
 
 有时候，你希望两个组件的状态始终同步更改。要实现这一点，可以将相关状态从这两个组件上移除，并把状态放到它们的公共父级，再通过属性将状态传递给这两个组件。这被称为“状态提升”，这是编写 React 代码时常做的事。
 
@@ -293,7 +293,7 @@ h3, p { margin: 5px 0px; }
 
 </LearnMore>
 
-## 保留和重置状态 {#preserving-and-resetting-state}
+## 保留和重置状态 {/*preserving-and-resetting-state*/}
 
 当你重新渲染一个组件时， React 需要决定组件树中的哪些部分要保留和更新，以及丢弃或重新创建。在大多数情况下， React 的自动处理机制已经做得足够好了。默认情况下，React 会保留树中与先前渲染的组件树“匹配”的部分。
 
@@ -494,7 +494,7 @@ textarea {
 
 </LearnMore>
 
-## 提取状态逻辑到 reducer 中 {#extracting-state-logic-into-a-reducer}
+## 提取状态逻辑到 reducer 中 {/*extracting-state-logic-into-a-reducer*/}
 
 具有跨多个事件处理程序的多状态更新组件可能会令人不知所措。对于这种情况，你可以将组件外部的所有状态更新逻辑合并到一个称为“reducer”的函数中。这样，事件处理程序就会变得简洁，因为它们只需要指定用户的“操作”。在文件的底部，reducer 函数指定状态应该如何更新以响应每个操作！
 
@@ -690,7 +690,7 @@ ul, li { margin: 0; padding: 0; }
 
 </LearnMore>
 
-## 使用 Context 进行深层数据传递 {#passing-data-deeply-with-context}
+## 使用 Context 进行深层数据传递 {/*passing-data-deeply-with-context*/}
 
 通常，你会通过 props 将信息从父组件传递给子组件。但是，如果要在树中深入传递一些 prop，或者 UI 树中的许多组件需要相同的 prop，那么传递 prop 可能会变得很麻烦。Context 允许父组件将一些信息提供给它下面的任何组件，不管它有多深，而无需通过 props 显式传递。
 
@@ -792,7 +792,7 @@ export const LevelContext = createContext(0);
 
 </LearnMore>
 
-## 使用 Reducer 和 Context 进行状态扩展 {#scaling-up-with-reducer-and-context}
+## 使用 Reducer 和 Context 进行状态扩展 {/*scaling-up-with-reducer-and-context*/}
 
 Reducer 帮助你合并组件的状态更新逻辑。Context 帮助你将信息深入传递给其他组件。你可以将 reducers 和 context 组合在一起使用，以管理复杂应用的状态。
 
@@ -1008,7 +1008,7 @@ ul, li { margin: 0; padding: 0; }
 
 </LearnMore>
 
-## 下节预告 {#what-is-next}
+## 下节预告 {/*whats-next*/}
 
 跳转到 [使用状态响应输入](/learn/reacting-to-input-with-state) 这一节并开始一页页的阅读！
 
