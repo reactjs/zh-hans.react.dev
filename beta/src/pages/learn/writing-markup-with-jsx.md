@@ -141,7 +141,7 @@ img { height: 90px }
 </>
 ```
 
-这个空标签被称作 *[React fragment](TODO)*. React fragments 允许你将子元素分组，而无需向 DOM 添加额外节点。
+这个空标签被称作 *[React fragment](TODO)*. React fragments 允许你将子元素分组，而不会在 HTML 结构中添加额外节点。
 
 <DeepDive title="为什么多个 JSX 标签需要被一个父元素包裹？">
 
