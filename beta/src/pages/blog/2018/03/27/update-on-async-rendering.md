@@ -1,6 +1,5 @@
 ---
 title: 异步渲染之更新
-layout: Post
 author: [bvaughn]
 ---
 
@@ -14,7 +13,7 @@ author: [bvaughn]
 
 这些生命周期方法经常被误解和滥用；此外，我们预计，在异步渲染中，它们潜在的误用问题可能更大。我们将在即将发布的版本中为这些生命周期添加 “UNSAFE\_” 前缀。（这里的 “unsafe” 不是指安全性，而是表示使用这些生命周期的代码在 React 的未来版本中更有可能出现 bug，尤其是在启用异步渲染之后。）
 
-## 逐步迁移路径 {#gradual-migration-path}
+## 逐步迁移路径 {/*gradual-migration-path*/}
 
 [React 遵循语义版本控制](/blog/2016/02/19/new-versioning-scheme)，因此这种变化将是逐步的。我们目前的计划是：
 
@@ -37,7 +36,7 @@ Learn more about this codemod on the [16.9.0 release post.](https://reactjs.org/
 
 ---
 
-## 迁移过时的生命周期 {#migrating-from-legacy-lifecycles}
+## 迁移过时的生命周期 {/*migrating-from-legacy-lifecycles*/}
 
 如果你想开始使用 React 16.3 中引入的新组件 API（或者如果你是维护人员，希望提前更新你的库），下面是一些示例，我们希望它们将帮助你开始以不同的方式思考组件。随着时间的推移，我们计划在文档中添加额外的“方法”，来说明如何以避免有问题的生命周期的方式执行常见任务。
 
@@ -46,7 +45,7 @@ Learn more about this codemod on the [16.9.0 release post.](https://reactjs.org/
 - 我们将**添加以下生命周期别名**：`UNSAFE_componentWillMount`、`UNSAFE_componentWillReceiveProps` 和 `UNSAFE_componentWillUpdate`。（将同时支持旧的生命周期名称和新别名。）
 - 我们将**引入两个新的生命周期**，静态的 `getDerivedStateFromProps` 和 `getSnapshotBeforeUpdate`。
 
-### 新的生命周期：`getDerivedStateFromProps` {#new-lifecycle-getderivedstatefromprops}
+### 新的生命周期：`getDerivedStateFromProps` {/*new-lifecycle-getderivedstatefromprops*/}
 
 `embed:update-on-async-rendering/definition-getderivedstatefromprops.js`
 
@@ -58,7 +57,7 @@ Learn more about this codemod on the [16.9.0 release post.](https://reactjs.org/
 >
 > 旧的 `componentWillReceiveProps` 和新的 `getDerivedStateFromProps` 方法都会增加组件的复杂性。这经常会导致 [bug](/blog/2018/06/07/you-probably-dont-need-derived-state#common-bugs-when-using-derived-state)。考虑使用 **[派生 state 的简单替代方法](/blog/2018/06/07/you-probably-dont-need-derived-state)** 让组件可预测且可维护。
 
-### 新的生命周期：`getSnapshotBeforeUpdate` {#new-lifecycle-getsnapshotbeforeupdate}
+### 新的生命周期：`getSnapshotBeforeUpdate` {/*new-lifecycle-getsnapshotbeforeupdate*/}
 
 `embed:update-on-async-rendering/definition-getsnapshotbeforeupdate.js`
 
@@ -70,7 +69,7 @@ Learn more about this codemod on the [16.9.0 release post.](https://reactjs.org/
 
 下面我们将介绍如何使用这两个生命周期的示例。
 
-## 示例 {#examples}
+## 示例 {/*examples*/}
 
 - [初始化 state](#initializing-state)
 - [获取外部数据](#fetching-external-data)
@@ -85,7 +84,7 @@ Learn more about this codemod on the [16.9.0 release post.](https://reactjs.org/
 >
 > 为了简洁起见，以下示例是使用实验性的类属性转换编写的，但是相同的迁移策略在没有它的情况下也适用。
 
-### 初始化 state {#initializing-state}
+### 初始化 state {/*initializing-state*/}
 
 这个例子显示了组件在 `componentWillMount` 中调用 `setState`：
 `embed:update-on-async-rendering/initializing-state-before.js`
@@ -93,7 +92,7 @@ Learn more about this codemod on the [16.9.0 release post.](https://reactjs.org/
 对于这种类型的组件，最简单的重构是将 state 的初始化，移到构造函数或属性的初始化器内，如下所示：
 `embed:update-on-async-rendering/initializing-state-after.js`
 
-### 获取外部数据 {#fetching-external-data}
+### 获取外部数据 {/*fetching-external-data*/}
 
 以下是使用 `componentWillMount` 获取外部数据的组件的示例：
 `embed:update-on-async-rendering/fetching-external-data-before.js`
@@ -113,7 +112,7 @@ Learn more about this codemod on the [16.9.0 release post.](https://reactjs.org/
 >
 > 当支持服务器渲染时，需要同步获取数据——`componentWillMount` 经常用于此目的，也可以用构造函数替代。即将推出的 suspense API 将使异步数据获取对于客户端和服务器渲染都是完全有可能的。
 
-### 添加事件监听器（或订阅） {#adding-event-listeners-or-subscriptions}
+### 添加事件监听器（或订阅） {/*adding-event-listeners-or-subscriptions*/}
 
 下面是一个示例，在组件挂载时订阅了外部事件：
 `embed:update-on-async-rendering/adding-event-listeners-before.js`
@@ -135,7 +134,7 @@ Learn more about this codemod on the [16.9.0 release post.](https://reactjs.org/
 >
 > 像 Relay/Apollo 这样的库，内部应该使用了与 `create-subscription` 相同的技术，用最适合他们库使用的方式手动管理订阅（参考[这里](https://gist.github.com/bvaughn/d569177d70b50b58bff69c3c4a5353f3)）。
 
-### 基于 `props` 更新 `state` {#updating-state-based-on-props}
+### 基于 `props` 更新 `state` {/*updating-state-based-on-props*/}
 
 >注意：
 >
@@ -160,7 +159,7 @@ Learn more about this codemod on the [16.9.0 release post.](https://reactjs.org/
 >
 > 如果你正在编写共享组件，[`react-lifecycles-compat`](https://github.com/reactjs/react-lifecycles-compat) polyfill 可以在旧版本的 React 里面使用新的 `getDerivedStateFromProps` 生命周期。[在下面了解更多如何使用。](#open-source-project-maintainers)
 
-### 调用外部回调 {#invoking-external-callbacks}
+### 调用外部回调 {/*invoking-external-callbacks*/}
 
 下面是一个组件的示例，它在内部 state 发生变化时调用了外部函数：
 `embed:update-on-async-rendering/invoking-external-callbacks-before.js`
@@ -170,7 +169,7 @@ Learn more about this codemod on the [16.9.0 release post.](https://reactjs.org/
 不管怎样，在异步模式下使用 `componentWillUpdate` 都是不安全的，因为外部回调可能会在一次更新中被多次调用。相反，应该使用 `componentDidUpdate` 生命周期，因为它保证每次更新只调用一次：
 `embed:update-on-async-rendering/invoking-external-callbacks-after.js`
 
-### props 更新的副作用 {#side-effects-on-props-change}
+### props 更新的副作用 {/*side-effects-on-props-change*/}
 
 类似于[上面的例子](#invoking-external-callbacks)，有时候组件在 `props` 发生变化时会产生副作用。
 
@@ -180,7 +179,7 @@ Learn more about this codemod on the [16.9.0 release post.](https://reactjs.org/
 
 `embed:update-on-async-rendering/side-effects-when-props-change-after.js`
 
-### `props` 更新时获取外部数据 {#fetching-external-data-when-props-change}
+### `props` 更新时获取外部数据 {/*fetching-external-data-when-props-change*/}
 
 下面是一个组件的示例，它根据 `props` 的值获取外部数据：
 `embed:update-on-async-rendering/updating-external-data-when-props-change-before.js`
@@ -192,7 +191,7 @@ Learn more about this codemod on the [16.9.0 release post.](https://reactjs.org/
 >
 > 如果你正在使用支持取消的 HTTP 库，例如 [axios](https://www.npmjs.com/package/axios) 那么在卸载时取消正在进行的请求非常简单。对于原生的 Promise，你可以使用类似[此处所示](https://gist.github.com/bvaughn/982ab689a41097237f6e9860db7ca8d6)的方法。
 
-### 更新前读取 DOM 属性 {#reading-dom-properties-before-an-update}
+### 更新前读取 DOM 属性 {/*reading-dom-properties-before-an-update*/}
 
 下面是一个组件的示例，该组件在更新之前从 DOM 中读取属性，以便在列表中保持滚动的位置：
 `embed:update-on-async-rendering/react-dom-properties-before-update-before.js`
@@ -209,11 +208,11 @@ Learn more about this codemod on the [16.9.0 release post.](https://reactjs.org/
 >
 > 如果你正在编写共享组件，那么 [`react-lifecycles-compat`](https://github.com/reactjs/react-lifecycles-compat) polyfill 可以使新的 `getSnapshotBeforeUpdate` 生命周期与旧版本的 React 一起使用。[在下面了解更多如何使用。](#open-source-project-maintainers)
 
-## 其他场景 {#other-scenarios}
+## 其他场景 {/*other-scenarios*/}
 
 尽管我们试图在这篇博文中涵盖最常见的用例，但是我们意识到依然可能会遗漏其中的一些用例。如果你正在以本博文未涵盖的方式使用 `componentWillMount`、`componentWillUpdate` 或者 `componentWillReceiveProps`，并且不确定如何迁移这些过时的生命周期，请[根据我们的文档提交一个新的 issue](https://github.com/reactjs/reactjs.org/issues/new)，附上你的代码示例，并提供尽可能多的背景信息。当出现新的替代用例时，我们将用它们更新此文档。
 
-## 开源项目维护者 {#open-source-project-maintainers}
+## 开源项目维护者 {/*open-source-project-maintainers*/}
 
 开源维护者可能想知道这些变化对共享组件意味着什么。如果你实现了上述建议，那么依赖于新的静态 `getDerivedStateFromProps` 生命周期的组件会发生什么情况呢？你是否还必须发布一个新的主要版本，删除 React 16.2 以及更旧版本的兼容代码？
 

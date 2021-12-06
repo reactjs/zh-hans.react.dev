@@ -31,8 +31,7 @@ function Hit({hit, children}: any) {
 function Kbd(props: {children?: React.ReactNode}) {
   return (
     <kbd
-      className="border border-transparent mr-1 bg-wash dark:bg-wash-dark text-gray-30 align-middle p-0 inline-flex justify-center items-center  text-xs text-center rounded"
-      style={{width: '2.25em', height: '2.25em'}}
+      className="h-6 w-6 border border-transparent mr-1 bg-wash dark:bg-wash-dark text-gray-30 align-middle p-0 inline-flex justify-center items-center  text-xs text-center rounded"
       {...props}
     />
   );
@@ -42,7 +41,6 @@ const options = {
   appId: siteConfig.algolia.appId,
   apiKey: siteConfig.algolia.apiKey,
   indexName: siteConfig.algolia.indexName,
-  rednerModal: true,
 };
 let DocSearchModal: any = null;
 export const Search: React.FC<SearchProps> = ({
@@ -120,6 +118,7 @@ export const Search: React.FC<SearchProps> = ({
         createPortal(
           <DocSearchModal
             {...options}
+            initialScrollY={window.scrollY}
             searchParameters={searchParameters}
             onClose={onClose}
             navigator={{

@@ -24,7 +24,7 @@ React 是一个用于构建用户界面的 JavaScript 库 ， 用户界面由按
 
 </YouWillLearn>
 
-## 你的第一个组件 {#your-first-component}
+## 你的第一个组件 {/*your-first-component*/}
 
 React 应用程序是由被称为"组件"的孤立的 UI 片段构建的。一个 React 组件就是一个包含一些标记的 JavaScript 函数。组件可以小到一个按钮，也可以大到整个页面。这是一个 `Gallery` 组件，用于渲染三个 `Profile` 组件：
 
@@ -64,7 +64,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </LearnMore>
 
-## 导入与导出组件 {#importing-and-exporting-components}
+## 导入与导出组件 {/*importing-and-exporting-components*/}
 
 你可以在一个文件中声明许多组件，但大文件会变得难以浏览。为了解决这个问题，你可以把一个组件*导出*到，然后再从另一个文件中*导入*该组件：
 
@@ -117,7 +117,7 @@ img { margin: 0 10px 10px 0; }
 阅读 **[导入与导出组件](/learn/importing-and-exporting-components)** 去学习如何切分组件。
 </LearnMore>
 
-## 使用 JSX 编写标记 {#writing-markup-with-jsx}
+## 使用 JSX 编写标记 {/*writing-markup-with-jsx*/}
 
 每个 React 组件都是一个 JavaScript 函数，它可能包含一些标记，React 会将其渲染到浏览器中。React 组件使用一种叫做 JSX 的语法扩展来表示该标记。JSX 看起来很像 HTML，但它更严格一些，可以显示动态信息。
 
@@ -186,7 +186,7 @@ img { height: 90px; }
 
 </LearnMore>
 
-## 在 JSX 中使用大括号的 JavaScript {#javascript-in-jsx-with-curly-braces}
+## 在 JSX 中使用大括号的 JavaScript {/*javascript-in-jsx-with-curly-braces*/}
 
 JSX 可以让你在 JavaScript 文件中编写类似 HTML 的标记，使渲染逻辑和内容保持在同一个地方。有时你会想在标记中添加一点 JavaScript 逻辑或引用一个动态属性。在这种情况下，你可以在 JSX 中使用大括号来为 JavaScript "打开一个窗口"：
 
@@ -234,7 +234,7 @@ body > div > div { padding: 20px; }
 
 </LearnMore>
 
-## 将`props`传递给一个组件 {#passing-props-to-a-component}
+## 将`props`传递给一个组件 {/*passing-props-to-a-component*/}
 
 React 组件使用 *props* 来相互交流。每个父组件都可以通过给它的子组件提供 props 来传递一些信息。props 可能会让你想起 HTML 属性，但你可以通过它们传递任何 JavaScript 值，包括对象、数组、函数、甚至是 JSX!
 
@@ -315,7 +315,7 @@ export function getImageUrl(person, size = 's') {
 
 </LearnMore>
 
-## 条件渲染 {#conditional-rendering}
+## 条件渲染 {/*conditional-rendering*/}
 
 你的组件经常需要根据不同的条件来显示不同的东西。在 React 中，你可以使用 JavaScript 语法，如`if`语句、`&&`和`? :`操作符有条件地渲染 JSX。
 
@@ -363,7 +363,7 @@ export default function PackingList() {
 
 </LearnMore>
 
-## 渲染列表 {#rendering-lists}
+## 渲染列表 {/*rendering-lists*/}
 
 你通常希望显示来自数据集合的多个类似组件。你可以使用 JavaScript 的 `filter()` 和`map()` 和 React 来过滤和转换你的数据数组为一个组件数组。
 
@@ -463,7 +463,7 @@ h2 { font-size: 20px; }
 
 </LearnMore>
 
-## 保持组件的纯粹 {#keeping-components-pure}
+## 保持组件的纯粹 {/*keeping-components-pure*/}
 
 有些 JavaScript 函数是 "纯粹"的。一个纯函数：
 
@@ -524,7 +524,7 @@ export default function TeaSet() {
 
 </LearnMore>
 
-## 下节预告 {#what's-next}
+## 下节预告 {/*whats-next*/}
 
 请访问 [你的第一个组件](/learn/your-first-component) 开始逐页阅读本章节!
 

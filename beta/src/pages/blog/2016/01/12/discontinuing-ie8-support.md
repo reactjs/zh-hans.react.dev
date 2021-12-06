@@ -1,6 +1,5 @@
 ---
-title: '停止 React DOM 对 IE 8 的支持'
-layout: Post
+title: 'React DOM 不再支持 IE 8'
 author: [sophiebits]
 ---
 
