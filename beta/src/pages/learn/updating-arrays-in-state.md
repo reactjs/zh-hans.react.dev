@@ -1,6 +1,5 @@
 ---
 title: 修改 State 中的数组
-layout: Learn
 ---
 
 <Intro>
@@ -17,7 +16,7 @@ layout: Learn
 
 </YouWillLearn>
 
-## 不使用 mutation 的情况下更新数组 {#updating-arrays-without-mutation}
+## 不使用 mutation 的情况下更新数组 {/*updating-arrays-without-mutation*/}
 
 在 JavaScript 中，数组就是对象的一种. [同对象一样](/learn/updating-objects-in-state), **你需要将 React state 中的数组视为只读的**。这意味着你不应该使用类似于 `arr[0] = 'bird'` 这样的方式来修改数组中的某个元素，你也不应该使用会改变原始数组的方法，例如 `push()` 和 `pop()`。
 
@@ -45,7 +44,7 @@ layout: Learn
 
 </Gotcha>
 
-### 向数组中添加元素 {#adding-to-an-array}
+### 向数组中添加元素 {/*adding-to-an-array*/}
 
 `push()` 会改变原始数组，你应该避免使用它：
 
@@ -157,7 +156,7 @@ setArtists([
 
 这样一来，展开操作既可以实现类似于 `push()` 的操作，将新元素添加到原数组的末尾，也可以实现类似于 `unshift()` 的操作，将新元素插入到原数组开头。你可以在下面的 sandbox 中尝试一下！
 
-### 从数组中删除元素 {#removing-from-an-array}
+### 从数组中删除元素 {/*removing-from-an-array*/}
 
 从数组中删除一个元素最简单的方法就是将它*过滤出去*。换句话说，你需要创建一个不包含这个元素的新数组。为了实现这一点，可以使用 `filter` 方法，例如：
 
@@ -213,7 +212,7 @@ setArtists(
 
 在这里，`artists.filter(s => s.id !== artist.id)` 这段代码表示 “创建一个新的数组，数组中的 `artists` 的id不同于 `artist.id` ”。换句话说，每个 artist 的“删除”按钮会把这位 artist 从原始数组中过滤掉，并使用新生成的数组再次进行渲染。值得注意的是，`filter` 不会改变原始数组。
 
-### 变换一个数组 {#transforming-an-array}
+### 变换一个数组 {/*transforming-an-array*/}
 
 如果你想改变数组中的某些或全部元素，你可以使用 `map()` 方法来创建一个新数组。你传入 `map` 方法的函数可以决定该如何依照每个元素的数组和索引对他们进行处理。
 
@@ -281,7 +280,7 @@ body { height: 300px; }
 
 </Sandpack>
 
-### 替换数组中的元素 {#replacing-items-in-an-array}
+### 替换数组中的元素 {/*replacing-items-in-an-array*/}
 
 替换数组中一个或多个元素是非常常见的操作。类似 `arr[0] = 'bird'` 这样的赋值语句会改变原始数组，所以这种情况下，你也应该考虑使用 `map` 方法。
 
@@ -335,7 +334,7 @@ button { margin: 5px; }
 
 </Sandpack>
 
-### 向数组中插入元素 {#inserting-into-an-array}
+### 向数组中插入元素 {/*inserting-into-an-array*/}
 
 有时，你需要向数组中特定位置插入一个元素，这个位置既不是数组开头，也不是数组的末尾。为了实现这个操作，你可以将数组展开运算符 `...` 和 `slice()` 方法结合起来使用。`slice()` 方法使得你可以从数组中取出一部分。为了将元素插入数组，你需要三个部分，第一部分是原数组在插入点之前的部分，第二部分是要插入的元素，第三部分是原数组在插入点之后的部分，将这三部分结合起来就构成了我们需要的最终数组。
 
@@ -399,7 +398,7 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-### 其他改变数组的情况 {#making-other-changes-to-an-array}
+### 其他改变数组的情况 {/*making-other-changes-to-an-array*/}
 
 有些时候，你无法仅仅依靠扩展运算符和 `map()` 或者 `filter()` 等不会改变原数组的方法来达到想要的结果。例如，你可能想实现反转数组的操作。而 JavaScript 中的 `reverse()` 和 `sort()` 方法会改变原数组，所以你不能直接地使用他们。
 
@@ -457,7 +456,7 @@ setList(nextList);
 
 虽然 `nextList` 和 `list` 是两个不同的数组，**`nextList[0]` 和 `list[0]` 却指向了同一个对象**。因此，当你修改 `nextList[0].seen` 的时候，也会改变 `list[0].seen` 的值。这就是 state mutation ，你应该避免这种操作！你可以用[更新嵌套的 JavaScript 对象](docs/updating-objects-in-state#updating-a-nested-object)中提到的方法来解决这个问题，方法就是将你想要修改的那个元素拷贝一份出来，并进行修改。下面是具体的操作。
 
-## 更新数组中的对象 {#updating-objects-inside-arrays}
+## 更新数组中的对象 {/*updating-objects-inside-arrays*/}
 
 对象并不是_真的_包含在数组中。他们在代码层面看起来是在数组中，但是数组中的每个对象都有着额外的值，数组中的元素只是指向了这个值。这就是当你在处理类似于 `list[0]` 这样的嵌套字段时需要格外注意的原因。两个数组中的不同元素可能指向了同一个对象！
 
@@ -660,7 +659,7 @@ function ItemList({ artworks, onToggle }) {
 
 通常来讲，**你应该只改变你刚刚创建的对象**。如果你向数组中插入了一个新的 artwork，你可以修改它，但是如果你想要改变的是 state 中已经存在的东西，你就需要先拷贝一份了。
 
-### 使用 Immer 编写简洁的更新逻辑 {#write-concise-update-logic-with-immer}
+### 使用 Immer 编写简洁的更新逻辑 {/*write-concise-update-logic-with-immer*/}
 
 在不产生 mutation 的情况下更新嵌套数可能变得有点重复。[如同对象中一样](/learn/updating-objects-in-state#write-concise-update-logic-with-immer):
 
@@ -796,7 +795,7 @@ updateMyTodos(draft => {
 
 <Challenges>
 
-### 更新购物车中的商品 {#update-an-item-in-the-shopping-cart}
+### 更新购物车中的商品 {/*update-an-item-in-the-shopping-cart*/}
 
 填写 `handleIncreaseClick` 的代码，实现当点击“+”号时数字加一的功能：
 
@@ -923,7 +922,7 @@ button { margin: 5px; }
 
 </Solution>
 
-### 删除购物车中的商品 {#remove-an-item-from-the-shopping-cart}
+### 删除购物车中的商品 {/*remove-an-item-from-the-shopping-cart*/}
 
 现在购物车有了一个可以使用的“+”按钮，但是“-”却没有起到任何作用。你需要给这个按钮添加一个事件处理函数，使得它能够在被点击时可以减少对应商品的 `数量` 。如果在点击按钮前数字是 1 ，那么需要在点击后把商品从购物车中删除掉。确保商品数量不出现 0 。
 
@@ -1084,7 +1083,7 @@ button { margin: 5px; }
 
 </Solution>
 
-### 使用不会产生 mutation 的方法解决下面的问题 {#fix-the-mutations-using-non-mutative-methods}
+### 使用不会产生 mutation 的方法解决下面的问题 {/*fix-the-mutations-using-non-mutative-methods*/}
 
 在下面的例子中，`App.js` 中所有的事件处理函数都会产生 mutation 。这就造成了编辑和删除任意 todo 都没有反应。 你需要通过重写 `handleAddTodo`, `handleChangeTodo`, 和 `handleDeleteTodo` 这三个函数来解决这个问题：
 
@@ -1417,7 +1416,7 @@ ul, li { margin: 0; padding: 0; }
 </Solution>
 
 
-### 使用 Immer 修复 mutation 的问题 {#fix-the-mutations-using-immer}
+### 使用 Immer 修复 mutation 的问题 {/*fix-the-mutations-using-immer*/}
 
 下面的例子和上一个挑战相同。这次，你需要使用 Immer 来解决 mutation 的问题。为了你的方便，`useImmer` 已经被引入了，因此你需要通过改变 `todos` 的 state 来使用它。
 
