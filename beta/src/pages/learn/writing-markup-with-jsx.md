@@ -149,7 +149,7 @@ JSX 虽然看起来很像 HTML，但在底层其实被转化为了 JavaScript �
 
 </DeepDive>
 
-### 2. 标签必须闭合
+### 2. 标签必须闭合 {/*2-close-all-the-tags*/}
 
 JSX 要求标签必须正确闭合。像 `<img>` 这样的自闭合标签必须书写成 `<img />`，而像 `<li>oranges` 这样只有开始标签的元素必须带有闭合标签，需要改为 `<li>oranges</li>`。
 
