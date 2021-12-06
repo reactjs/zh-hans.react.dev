@@ -16,7 +16,7 @@ JSX 是一个 JavaScript 语法扩展，可以让你在 JavaScript 文件中书�
 
 </YouWillLearn>
 
-## JSX: 将标记引入 JavaScript
+## JSX: 将标记引入 JavaScript {/*jsx-putting-markup-into-javascript*/}
 
 网页是构建在 HTML、CSS 和 JavaScript 之上的。多年以来，web 开发者都是将网页内容存放在 HTML 中，样式放在 CSS 中，而逻辑则放在 JavaScript 中 —— 通常是在不同的文件中！页面的内容通过标记语言描述并存放在 HTML 文件中，而逻辑则单独存放在 JavaScript 文件中。
 
