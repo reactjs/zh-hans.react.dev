@@ -102,7 +102,7 @@ img { height: 90px }
 
 </Note>
 
-## JSX 规则
+## JSX 规则 {/*the-rules-of-jsx*/}
 
 ### 1. 只能返回一个根元素 {/*1-return-a-single-root-element*/}
 
