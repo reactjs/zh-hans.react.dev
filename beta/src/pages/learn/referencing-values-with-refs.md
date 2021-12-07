@@ -44,7 +44,7 @@ const ref = useRef(0);
 
 <Illustration src="/images/docs/illustrations/i_ref.png" alt="An arrow with 'current' written on it stuffed into a pocket with 'ref' written on it." />
 
-你可以用 `ref.current` 属性访问该 ref 的当前值。 这个值是有意设置为可变的，意味着你既可以读取也可以写入它。（这就是让它成为 React 单向数据流的 “应急方案” 的原因 —— 详见下文！）
+你可以用 `ref.current` 属性访问该 ref 的当前值。 这个值是有意被设置为可变的，意味着你既可以读取它也可以写入它。（这就是让它成为 React 单向数据流的 “应急方案” 的原因 —— 详见下文！）
 
 这里，每次点击按钮时会增加 `ref.current`：
 
