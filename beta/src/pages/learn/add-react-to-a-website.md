@@ -10,11 +10,11 @@ React 在设计之初就可以被渐进式适配，并且你可以根据需要�
 
 </Intro>
 
-## 一分钟用上 React {#add-react-in-one-minute}
+## 一分钟用上 React {/*add-react-in-one-minute*/}
 
 在本小节中，我们会展示如何将 React 组件添加到现有的 HTML 页面中。你可以基于你自己的网站，或者创建一个 [空的 HTML 文件](https://gist.github.com/rachelnabors/7b33305bf33776354797a2e3c1445186/archive/859eac2f7079c9e1f0a6eb818a9684a464064d80.zip) 来进行练习。你只需要连接到网络，和一个像 Notepad 的文本编辑器（也可以是 vscode，可以查看我们的文档来 [设置你自己的编辑器](/learn/editor-setup/)） ！
 
-### 步骤 1：添加一个 DOM 容器到 HTML
+### 步骤 1：添加一个 DOM 容器到 HTML {/*step-1-add-an-element-to-the-html*/}
 
 首先，打开你想要编辑的 HTML 页面，添加一个带有唯一 `id` 属性的 `<div>` 标签，用于标记你想要用 React 显示内容的位置。
 
@@ -28,7 +28,7 @@ React 在设计之初就可以被渐进式适配，并且你可以根据需要�
 <!-- ... 其它 HTML ... -->
 ```
 
-### 步骤 2：添加 Script 标签
+### 步骤 2：添加 Script 标签 {/*step-2-add-the-script-tags*/}
 
 在 `</body>` 结束标签之前，向 HTML 页面中添三个 `<script>` 标签用于加载以下文件：
 
@@ -50,7 +50,7 @@ React 在设计之初就可以被渐进式适配，并且你可以根据需要�
 </body>
 ```
 
-### 步骤 3：创建一个 React 组件
+### 步骤 3：创建一个 React 组件 {/*step-3-create-a-react-component*/}
 
 在 HTML 页面文件的同级目录下创建一个名为 **like_button.js** 的文件, 并将下面的代码片段添加到文件中。这段代码定义了一个名为 LikeButton 的 React 组件。[你可以在这里了解更多关于如何创建一个组件。](/learn/your-first-component)
 
@@ -74,7 +74,7 @@ function LikeButton() {
 }
 ```
 
-### 步骤 4： 把你的 React 组件添加到网站中
+### 步骤 4： 把你的 React 组件添加到网站中 {/*step-4-add-your-react-component-to-the-page*/}
 
 最后, 在 **like_button.js** 底部添加以下两行代码。这两行代码会找到我们在步骤 1 中添加到 HTML 里的 `<div>`，然后在它内部显示我们的 React 组件 “like” 按钮。
 
@@ -88,7 +88,7 @@ ReactDOM.render(React.createElement(LikeButton), domContainer);
 - [查看完整的示例源码](https://gist.github.com/rachelnabors/c64b3aeace8a191cf5ea6fb5202e66c9)
 - [下载完整示例（2KB 压缩包）](https://gist.github.com/rachelnabors/c64b3aeace8a191cf5ea6fb5202e66c9/archive/7b41a88cb1027c9b5d8c6aff5212ecd3d0493504.zip)
 
-#### 你可以重复使用你的组件!
+#### 你可以重复使用你的组件! {/*you-can-reuse-components*/}
 
 你可能希望在 HTML 页面的多个位置展示同一个 React 组件。你可以多次调用 `ReactDOM.render()` 来实现这个想法。 当页面中以 React 驱动的不同部分是相互独立的，这种策略通常是非常有用的。
 
@@ -109,7 +109,7 @@ ReactDOM.render(
 
 这有[一个示例，它显示了三次 “Like” 按钮，并向各自传入了一些数据](https://gist.github.com/rachelnabors/c0ea05cc33fbe75ad9bbf78e9044d7f8)!
 
-### 步骤 5: 为生产环境压缩 JavaScript 代码
+### 步骤 5: 为生产环境压缩 JavaScript 代码 {/*step-5-minify-javascript-for-production*/}
 
 未经压缩的 JavaScript 可能会显著降低用户的访问速度。在将你的网站部署到生产环境之前，最好的方式是对你的脚本文件进行压缩。
 
@@ -121,7 +121,7 @@ ReactDOM.render(
 <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
-## 使用 React 和 JSX {#try-react-with-jsx}
+## 使用 React 和 JSX {/*try-react-with-jsx*/}
 
 在上面的示例中，我们只依赖了浏览器原生支持的特性。 这就是为什么我们在 **like_button.js** 中调用了 一个 JavaScript 函数来告诉 React 要显示什么：
 
@@ -139,7 +139,7 @@ return <button onClick={() => setLiked(true)}>Like</button>;
 
 > 你可以通过 [在线编译器](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.4.3) 试用 JSX。
 
-### 尝试 JSX
+### 尝试 JSX {/*try-jsx*/}
 
 在项目中尝试 JSX 最快的方法是在页面中添加这几个 `<script>` 标签：
 
@@ -194,7 +194,7 @@ return React.createElement(
 
 这种方式适合于学习和创建简单的示例。然而，它会使你的网站变慢，并且不适用**于生产环境**。当你准备好更进一步时，删除你添加的这个新的 `<script>` 标签以及 `type="text/babel"` 属性。取而代之的，在下一小节中，你将设置一个 JSX 预处理器来自动转换所有 `<script>` 标签的内容。
 
-### 将 JSX 添加到项目
+### 将 JSX 添加到项目 {/*add-jsx-to-a-project*/}
 
 将 JSX 添加到项目中并不需要诸如打包工具像 [bundler](/learn/start-a-new-react-project#custom-toolchains) 或开发服务器那样复杂的工具。本质上，添加 JSX 就像添加 CSS 预处理器一样。
 
@@ -207,7 +207,7 @@ return React.createElement(
 
 恭喜！你刚刚为你的项目加入了一个 **生产就绪（production-ready）的 JSX 配置环境**。
 
-### 运行 JSX 预处理器
+### 运行 JSX 预处理器 {/*run-the-jsx-preprocessor*/}
 
 当你编辑保存带有 JSX 的源文件时，这个转换过程将自动重新执行，并把 JSX 文件转换成普通的 JavaScript 文件。
 
