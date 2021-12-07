@@ -17,7 +17,7 @@ translators:
 
 </YouWillLearn>
 
-## 举例说明一下状态提升 {#lifting-state-up-by-example}
+## 举例说明一下状态提升 {/*lifting-state-up-by-example*/}
 
 在这个例子中，父组件 `Accordion` 渲染了 2 个独立的 `Panel` 组件。
 
@@ -89,7 +89,7 @@ h3, p { margin: 5px 0px; }
 
 <img alt="左侧是两个独立的组件，每个组件都有自己的状态值。右侧是一个包含两个子组件的父组件，它同时拥有两个子组件的状态值。" src="/images/docs/sketches/s_lifting-state-up.png" />
 
-### 第 1 步: 从子组件中移除状态 {#remove-state-from-the-child-components}
+### 第 1 步: 从子组件中移除状态 {/*remove-state-from-the-child-components*/}
 
 你将把 `Panel` 组件对 `isActive` 的控制权交给他们的父组件。然后再把这个状态通过 `props` 传给子组件。我们先从 `Panel` 组件中 **删除这一行**：
 
@@ -105,7 +105,7 @@ function Panel({ title, children, isActive }) {
 
 现在，`Panel` 的父组件就可以通过 [向下传递 prop](/learn/passing-props-to-a-component) 来 *控制* `isActive`。这样就反过来了，`Panel` 组件对 `isActive` 的值 *没有控制权* ——现在完全由父组件决定！
 
-### 第 2 步: 从公共父组件传递硬编码数据 {#pass-hardcoded-data-from-the-common-parent}
+### 第 2 步: 从公共父组件传递硬编码数据 {/*pass-hardcoded-data-from-the-common-parent*/}
 
 为了实现状态提升，必须找到 *两个* 子组件最近的公共父组件：
 
@@ -162,7 +162,7 @@ h3, p { margin: 5px 0px; }
 
 尝试修改 `Accordion` 组件中 `isActive` 的值，并在屏幕上查看结果。
 
-### 第 3 步: 为公共父组件添加状态 {#add-state-to-the-common-parent}
+### 第 3 步: 为公共父组件添加状态 {/*add-state-to-the-common-parent*/}
 
 状态提升通常会改变原状态的数据存储类型。
 
@@ -272,7 +272,7 @@ h3, p { margin: 5px 0px; }
 
 </DeepDive>
 
-## 每个状态都对应唯一的数据源 {#a-single-source-of-truth-for-each-state}
+## 每个状态都对应唯一的数据源 {/*a-single-source-of-truth-for-each-state*/}
 
 在 React 应用中，很多组件都有自己的状态。一些状态可能“活跃”在叶子组件（如输入框）附近。其它状态可能在应用程序顶部附近“活动”。例如，路由器通常也是通过将当前路由存储在 React 状态中并通过 props 将其传递下去来实现的！
 
@@ -293,7 +293,7 @@ h3, p { margin: 5px 0px; }
 
 <Challenges>
 
-### 同步输入状态 {#synced-inputs}
+### 同步输入状态 {/*synced-inputs*/}
 
 现在有两个独立的输入框。为了让它们的状态保持同步：编辑一个输入框时应使用相同的文本更新另一个输入框，反之亦然。你需要将它们的状态提升到父组件中。
 
@@ -399,7 +399,7 @@ label { display: block; }
 
 </Solution>
 
-### 列表过滤 {#filtering-a-list}
+### 列表过滤 {/*filtering-a-list*/}
 
 在这个例子中，`SearchBar` 组件拥有一个用来控制输入框的 `query` 状态，它的父组件中展示了一个 `List` 组件，但是没有考虑搜索条件。
 
