@@ -27,7 +27,7 @@ translators:
 import { useRef } from 'react';
 ```
 
-然后，用它在你的组件中声明一个 ref：
+然后，在你的组件中使用它声明一个 ref：
 
 ```js
 const myRef = useRef(null);
