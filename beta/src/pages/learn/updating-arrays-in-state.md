@@ -662,7 +662,6 @@ function ItemList({ artworks, onToggle }) {
 在不产生 mutation 的情况下更新嵌套数可能变得有点重复。[如同对象中一样](/learn/updating-objects-in-state#write-concise-update-logic-with-immer):
 
 - 通常情况下，你应该不需要更新处于非常深的层级的 state 。如果你有此类需求，你或许需要[调整一下数据的结构](/learn/choosing-the-state-structure#avoid-deeply-nested-state)，让数据变得扁平一些。
-
 - 如果你不想改变 state 中的数据结构，你可以使用 [Immer](https://github.com/immerjs/use-immer) ，它使得你可以继续使用便捷但会产生 mutation 的语法，并帮你自动处理好需要拷贝的地方。
 
 下面是我们用 Immer 来重写的 Art Bucket List 的例子：
