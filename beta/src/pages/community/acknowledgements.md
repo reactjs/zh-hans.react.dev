@@ -4,7 +4,11 @@ title: 鸣谢
 
 ## React {/*react*/}
 
+<<<<<<< HEAD
 React 最初由 [Jordan Walke](https://github.com/jordwalke) 创立。如今，React 已拥有 [专门的团队在全职从事这项工作](/community/team.html)，同时社区拥有超过 1k+ 的 [开源贡献者](https://github.com/facebook/react/blob/main/AUTHORS) 参与，我们想表彰一些人，他们在过去对 React 及其文档方面做出了重大贡献，并且多年来一直帮助维护它们：
+=======
+React was originally created by [Jordan Walke](https://github.com/jordwalke). Today, React has a [dedicated full-time team working on it](/community/meet-the-team), as well as over a thousand [open source contributors](https://github.com/facebook/react/blob/main/AUTHORS). We'd like to recognize a few people who have made significant contributions to React and its documentation in the past and have helped maintain them over the years:
+>>>>>>> 29627aec7675c0d9d823d28e6119b569a417c674
 
 * [Almero Steyn](https://github.com/AlmeroSteyn)
 * [Andreas Svensson](https://github.com/syranide)

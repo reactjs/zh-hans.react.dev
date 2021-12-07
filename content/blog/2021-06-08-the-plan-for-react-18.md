@@ -15,7 +15,11 @@ React 团队非常激动地与你分享一些最新的工作进展：
 
 目前这些更新主要面向第三方库的维护者。如果你正在学习、教学或使用 React 来构建面向用户的应用程序，你可以忽略这篇博客。但如果你出于好奇，我们同样欢迎你关注 React 18 工作组中的讨论！
 
+<<<<<<< HEAD
 ## React 18 带来了什么 {#whats-coming-in-react-18}
+=======
+## What’s coming in React 18 {#whats-coming-in-react-18}
+>>>>>>> 29627aec7675c0d9d823d28e6119b569a417c674
 
 当 React 18 发布时，它将包含开箱即用的改进（如 [automatic batching](https://github.com/reactwg/react-18/discussions/21))，全新的 API（如 [`startTransition`](https://github.com/reactwg/react-18/discussions/41)）以及内置支持了 `React.lazy` 的 [全新 SSR 架构](https://github.com/reactwg/react-18/discussions/37)。
 
@@ -23,13 +27,21 @@ React 团队非常激动地与你分享一些最新的工作进展：
 
 如果你一直在关注我们对 React 未来的研究（我们并不期待你这么做！），你可能已经听说过 “并发模式（concurrent mode）”，或许还听过它可能会搞坏你的应用程序。为了回应社区对此的反馈，我们重新设计了可渐进的升级策略。相比于之前要么不升要么全升的一刀切方式，只有由新特性触发的更新会启用并发渲染。在实践中，这意味着 **你无需重写代码即可直接使用 React 18，且可以根据自己的节奏和需要来尝试新特性**。
 
+<<<<<<< HEAD
 ## 循序渐进的采用策略 {#a-gradual-adoption-strategy}
+=======
+## A gradual adoption strategy {#a-gradual-adoption-strategy}
+>>>>>>> 29627aec7675c0d9d823d28e6119b569a417c674
 
 由于 React 18 中的并发性是可选功能，所以并不会立刻对组件行为带来任何明显的破坏性变化。**你几乎不需要对应用程序中的代码进行任何改动就可以直接升级到 React 18，并不会比以往的 React 版本升级要困难**。根据我们自己将几个应用程序升级到 React 18 的经验来看，预计许多用户能在一个下午的时间内完成升级工作。
 
 我们在 Facebook 成功地将并发功能交付给了数以万计的组件，根据我们的经验来看，我们发现大多数 React 组件无需任何改动就能 “正常工作”。我们致力于确保整个社区都能平滑的升级，所以今天我们宣布了 React 18 工作组的成立。
 
+<<<<<<< HEAD
 ## 与社区合作 {#working-with-the-community}
+=======
+## Working with the community {#working-with-the-community}
+>>>>>>> 29627aec7675c0d9d823d28e6119b569a417c674
 
 我们正在这个版本中尝试一些新的可能：我们邀请了来自整个 React 社区的专家、开发者、库作者和教育者参与我们的 [React 18 工作组](https://github.com/reactwg/react-18)，以提供反馈，提出问题，并就发布工作进行合作。我们无法邀请所有我们想邀请的人来参加这个最初的小团体，但如果实验成功，我们希望将来会有更多的人参与！
 
@@ -37,7 +49,11 @@ React 团队非常激动地与你分享一些最新的工作进展：
 
 欲了解关于升级到 React 18 的更多信息，或关于该版本的其他资源，请参阅 [React 18 公告](https://github.com/reactwg/react-18/discussions/4).
 
+<<<<<<< HEAD
 ## 访问 React 18 工作组 {#accessing-the-react-18-working-group}
+=======
+## Accessing the React 18 Working Group {#accessing-the-react-18-working-group}
+>>>>>>> 29627aec7675c0d9d823d28e6119b569a417c674
 
 大家可以在 [React 18 工作组仓库](https://github.com/reactwg/react-18) 中阅读相关讨论的情况。
 
@@ -45,13 +61,21 @@ React 团队非常激动地与你分享一些最新的工作进展：
 
 其他依旧，你可以在我们的 [issue](https://github.com/facebook/react/issues) 中提交错误报告、问题和反馈。
 
+<<<<<<< HEAD
 ## 如何尝试 React 18 Alpha {#how-to-try-react-18-alpha-today}
+=======
+## How to try React 18 Alpha today {#how-to-try-react-18-alpha-today}
+>>>>>>> 29627aec7675c0d9d823d28e6119b569a417c674
 
 新的 alpha 版本通过 [`@alpha` 标签定期发布到 npm 中](https://github.com/reactwg/react-18/discussions/9)。这些版本是由仓库的主分支的最新提交构建而来。当一个特性或 bug 修复被合并时，它将在下一个工作日出现在 alpha 版本中。
 
 在 alpha 版本之间可能会有重大的变更或 API 变化。请谨记，**alpha 版本不建议用于面向用户的生产应用中**。
 
+<<<<<<< HEAD
 ## 预计 React 18 的发布时间 {#projected-react-18-release-timeline}
+=======
+## Projected React 18 release timeline {#projected-react-18-release-timeline}
+>>>>>>> 29627aec7675c0d9d823d28e6119b569a417c674
 
 我们没有安排具体的发布时间，但我们预计需要几个月的反馈和迭代时间，React 18 才能做好准备，以应用于大多数生产项目。
 
