@@ -89,9 +89,7 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-取而代之的，创建一个*新*数组，新数组包含了原始数组的所有元素并在末尾添加了一个新的元素。这一步的实现有很多种不同的方法，其中最简单的就是使用
-
-Instead, create a *new* array which contains the existing items *and* a new item at the end. There are multiple ways to do this, but the easiest one is to use the `...` [数组展开](a-javascript-refresher#array-spread)语法:
+取而代之的，创建一个*新*数组，新数组包含了原始数组的所有元素并在末尾添加了一个新的元素。这一步的实现有很多种不同的方法，其中最简单的就是使用[数组展开](a-javascript-refresher#array-spread)语法:
 
 ```js
 setArtists( // 使用新数组
