@@ -231,7 +231,7 @@ img { height: 90px }
 现在你知道了为什么我们需要 JSX 以及如何在组件中使用它：
 
 * 由于渲染逻辑和标记是紧密相关的，所以 React 将它们存放在一个组件中。
-* JSX 类似 HTML，不过有一些区别。如果需要的话可以使用 [转化器](https://transform.tools/html-to-jsx) 将不同标记互相转化。
+* JSX 类似 HTML，不过有一些区别。如果需要的话可以使用 [转化器](https://transform.tools/html-to-jsx) 将 HTML 转化为 JSX。
 * 错误提示通常会指引你将标记修改为正确的格式。
 
 </Recap>
