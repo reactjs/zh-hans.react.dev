@@ -640,4 +640,4 @@ td {
 
 ## 自此该往何处 {/*where-to-go-from-here*/}
 
-本章只是一个概述, 旨在告诉你如何使用 React 如何进行思考构建组件和应用程序。你可以即刻 [开始一个 React 项目](/learn/installation), 或者 [深潜于在教程中使用到的所有语法](/learn/describing-the-ui)。
+本章只是一个概述, 旨在告诉你如何使用 React 如何进行思考构建组件和应用程序。你可以即刻 [开始一个 React 项目](/learn/installation), 或者 [深入了解在教程中用到的所有语法](/learn/describing-the-ui)。
