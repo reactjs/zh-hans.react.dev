@@ -4,7 +4,7 @@ title: 在 JSX 的花括号内使用 JavaScript
 
 <Intro>
 
-JSX 允许你在 JavaScript 中编写类似 HTML 的标记，让渲染逻辑和内容在同一处地方。有些情况下，你想在一处标记中添加一些 JavaScript 逻辑或者引用动态属性。这种情况下，你可以在 JSX 的花括号内来编写 JavaScript。
+JSX 允许你在 JavaScript 中编写类似 HTML 的标记，从而使渲染的逻辑和内容可以写在一起。有时候，你可能想要在标记中添加一些 JavaScript 逻辑或者引用动态的属性。这种情况下，你可以在 JSX 的花括号内来编写 JavaScript。
 
 </Intro>
 
@@ -19,7 +19,7 @@ JSX 允许你在 JavaScript 中编写类似 HTML 的标记，让渲染逻辑和�
 
 ## 使用引号传递字符串 {/*passing-strings-with-quotes*/}
 
-当你想传递一个字符串属性给 JSX 时，把它放到单引号或双引号中：
+当你想把一个字符串属性传递给 JSX 时，把它放到单引号或双引号中：
 
 <Sandpack>
 
@@ -41,9 +41,9 @@ export default function Avatar() {
 
 </Sandpack>
 
-在此处，`"https://i.imgur.com/7vQD0fPs.jpg"` 和 `"Gregorio Y. Zara"` 作为字符串被传递。
+这里的 `"https://i.imgur.com/7vQD0fPs.jpg"` 和 `"Gregorio Y. Zara"` 就是被作为字符串传递的。
 
-但是如果你想动态指定 `src` 或 `alt` 该怎么办？你可以**使用 `{` 和 `}` 替代 `"` 和 `"` 来引用 JavaScript 的一个值**：
+但是如果你想要动态地指定 `src` 或 `alt` 的值呢？你可以 **用 `{` 和 `}` 替代 `"` 和 `"` 以使用 JavaScript 变量** ：
 
 <Sandpack>
 
@@ -67,7 +67,7 @@ export default function Avatar() {
 
 </Sandpack>
 
-注意 `className="avatar"` 和 `src={avatar}` 之间的区别，`className="avatar"` 声明了一个叫 `"avatar"` 的 CSS 类名让图片变圆，而 `src={avatar}` 读取了 JavaScript 中一个叫做 `avatar` 的变量的值。正是因为花括号让 JavaScript 可以在你的标记中生效！
+请注意 `className="avatar"` 和 `src={avatar}` 之间的区别，`className="avatar"` 指定了一个就叫 `"avatar"` 的使图片在样式上变圆的 CSS 类名，而 `src={avatar}` 这种写法会去读取 JavaScript 中 `avatar` 这个变量的值。这是因为花括号可以使你直接在标签中使用 JavaScript！
 
 ## 使用花括号：一扇进入 JavaScript 世界的窗户 {/*using-curly-braces-a-window-into-the-javascript-world*/}
 
