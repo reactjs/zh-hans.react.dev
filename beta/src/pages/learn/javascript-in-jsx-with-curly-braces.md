@@ -71,7 +71,7 @@ export default function Avatar() {
 
 ## 使用花括号：一扇进入 JavaScript 世界的窗户 {/*using-curly-braces-a-window-into-the-javascript-world*/}
 
-JSX 是一种编写 JavaScript 的特殊方式。它意味着在花括号 `{ }` 中使用 JavaScript 成为可能。下面的例子中声明了科学家的名字，`name`，然后在 `<h1>` 后的花括号内嵌入它：
+JSX 是一种编写 JavaScript 的特殊方式。这为在花括号 `{ }` 中使用 JavaScript 带来了可能。下面的例子中声明了科学家的名字，`name`，然后在 `<h1>` 后的花括号内嵌入它：
 
 <Sandpack>
 
@@ -86,9 +86,9 @@ export default function TodoList() {
 
 </Sandpack>
 
-尝试将 `name` 的值从 `'Gregorio Y. Zara'` 更改成 `'Hedy Lamarr'`。看看这个 To Do List 的标题如何变化？
+试着将 `name` 的值从 `'Gregorio Y. Zara'` 更改成 `'Hedy Lamarr'`。看看这个 To Do List 的标题将如何变化？
 
-任何花括号内的 JavaScript 表达式都会工作，包括 像 `formatDate()` 这样的函数调用：
+花括号内的任何 JavaScript 表达式都能正常运行，包括像 `formatDate()` 这样的函数调用：
 
 <Sandpack>
 
@@ -116,13 +116,13 @@ export default function TodoList() {
 在 JSX 中只能以下面两种方式使用花括号：
 
 1. 用作 JSX 标签内的**文本**：`<h1>{name}'s To Do List</h1>` 是有效的，但是 `<{tag}>Gregorio Y. Zara's To Do List</{tag}>` 无效。
-2. 用作紧跟在 `=` 符号后的**属性**：`src={avatar}` 会读取 `avatar` 的值，但是 `src="{avatar}"` 会传一个叫做 `{avatar}` 的字符串的值。
+2. 用作紧跟在 `=` 符号后的 **属性**：`src={avatar}` 会读取 `avatar` 变量，但是 `src="{avatar}"` 只会传一个字符串 `{avatar}`。
 
 ## 使用 "双花括号"：JSX 中的 CSS 和 对象 {/*using-double-curlies-css-and-other-objects-in-jsx*/}
 
-除了字符串、数字和其它 JavaScript 表达式，你甚至可以在 JSX 中传递对象。对象也用花括号表示，例如 `{ name: "Hedy Lamarr", inventions: 5 }`。因此，为了在 JSX 中传递对象，你必须用另一对花括号包裹对象：`person={{ name: "Hedy Lamarr", inventions: 5 }}`。
+除了字符串、数字和其它 JavaScript 表达式，你甚至可以在 JSX 中传递对象。对象也用花括号表示，例如 `{ name: "Hedy Lamarr", inventions: 5 }`。因此，为了能在 JSX 中传递，你必须用另一对额外的花括号包裹对象：`person={{ name: "Hedy Lamarr", inventions: 5 }}`。
 
-你也许看到了内联在 JSX 中的 CSS 样式。React 不强制你使用内联样式（CSS 类适用于大多数情况）。但是当你需要内联样式的时候，你可以传递一个对象给 `style` 属性：
+你可能在 JSX 的内联 CSS 样式中就已经见过这种写法了。React 不要求你使用内联样式（使用 CSS 类就能满足大部分情况）。但是当你需要内联样式的时候，你可以给 `style` 属性传递一个对象：
 
 <Sandpack>
 
@@ -148,9 +148,9 @@ ul { padding: 20px 20px 20px 40px; margin: 0; }
 
 </Sandpack>
 
-尝试更改 `backgroundColor` 和 `color` 的值。
+试着更改一下 `backgroundColor` 和 `color` 的值。
 
-当你像下面的例子那样写时，你真的可以发现花括号内的对象：
+当你写成这样时，你可以很清楚地看到花括号里包着的对象：
 
 ```js {2-5}
 <ul style={
@@ -161,7 +161,7 @@ ul { padding: 20px 20px 20px 40px; margin: 0; }
 }>
 ```
 
-当你下次在 JSX 中看到 `{{` 和 `}}`，要知道它只不过是 JSX 花括号里的一个对象！
+所以当你下次在 JSX 中看到 `{{` 和 `}}`时，就知道它只不过是包在花括号里的一个对象罢了！
 
 <Gotcha>
 
@@ -171,7 +171,7 @@ ul { padding: 20px 20px 20px 40px; margin: 0; }
 
 ## JavaScript 对象 和 花括号的更多可能 {/*more-fun-with-javascript-objects-and-curly-braces*/}
 
-你可以将多个表达式合并到一个对象中，在 JSX 内的花括号内引用它们：
+你可以将多个表达式合并到一个对象中，在 JSX 的花括号内分别使用它们：
 
 <Sandpack>
 
@@ -211,7 +211,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-在这个例子中，`person` JavaScript 对象包含 `name` 字符串和 `theme` 对象：
+在这个例子里，`person` JavaScript 对象包含 `name` 中存储的字符串和 `theme` 对象：
 
 ```js
 const person = {
@@ -230,16 +230,16 @@ const person = {
   <h1>{person.name}'s Todos</h1>
 ```
 
-JSX 是一个十分简洁的模板语言，因为它允许你使用 JavaScript 组织数据和逻辑。
+JSX 是一种模板语言的最小实现，因为它允许你通过 JavaScript 来组织数据和逻辑。
 
 <Recap>
 
-现在你几乎了解了 JSX 的一切：
+现在你几乎了解了有关 JSX 的一切：
 
-* JSX 引号内的值作为字符串传递给属性。
-* 花括号让你可以将 JavaScript 的逻辑和变量带入你的标记中。
-* 它们在 JSX 标签中的内容或紧随属性后的 `=` 有效。
-* `{{` 和 `}}` 不是特殊语法：它是在 JSX 花括号内的 JavaScript 对象。
+* JSX 引号内的值会作为字符串传递给属性。
+* 花括号让你可以将 JavaScript 的逻辑和变量带入到标签中。
+* 它们会在 JSX 标签中的内容区域或紧随属性的 `=` 后起作用。
+* `{{` 和 `}}` 并不是什么特殊的语法：它只是包在 JSX 花括号内的 JavaScript 对象。
 
 </Recap>
 
@@ -247,7 +247,7 @@ JSX 是一个十分简洁的模板语言，因为它允许你使用 JavaScript �
 
 ### 修复错误 {/*fix-the-mistake*/}
 
-此代码崩溃并显示 `Objects are not valid as a React child`：
+这段代码崩溃了，并打印出这样一个错误 `Objects are not valid as a React child`：
 
 <Sandpack>
 
@@ -287,13 +287,13 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-你能找到问题吗？
+你能找到问题出在哪吗？
 
-<Hint>看看花括号内的内容。我们放那的东西对吗？</Hint>
+<Hint>注意看花括号里的内容，我们放在那的东西有没有什么问题？</Hint>
 
 <Solution>
 
-之所以发生这样的问题是因为例子尝试把*一个对象*渲染进标记内而不是一个字符串：`<h1>{person}'s Todos</h1>` 尝试渲染整个 `person` 对象！未经处理的对象作为文本内容将会抛出错误，因为 React 不知道你想如何显示它们。
+之所以会出现这个问题是因为示例中的代码尝试把 *一个对象* 而不是一个字符串渲染在标签内：`<h1>{person}'s Todos</h1>` 在试图渲染整个 `person` 对象！将未经处理的对象作为文本内容使用会抛出错误，因为 React 并不知道你想如何展示它们。
 
 要修复它，请把 `<h1>{person}'s Todos</h1>` 替换成 `<h1>{person.name}'s Todos</h1>`：
 
@@ -339,7 +339,7 @@ body > div > div { padding: 20px; }
 
 ### 提取信息到对象中 {/*extract-information-into-an-object*/}
 
-提取图片 URL 信息到 `person` 对象中。
+把图片的 URL 信息提取到 `person` 对象中。
 
 <Sandpack>
 
@@ -381,7 +381,7 @@ body > div > div { padding: 20px; }
 
 <Solution>
 
-把图片 URL 移到一个叫做 `person.imageUrl` 的属性中并在 `<img>` 标签中的花括号中读取它：
+把图片 URL 移到 `person.imageUrl` 这个属性中并在 `<img>` 标签中的花括号中读取它：
 
 <Sandpack>
 
@@ -426,7 +426,7 @@ body > div > div { padding: 20px; }
 
 ### 在 JSX 花括号内写一个表达式 {/*write-an-expression-inside-jsx-curly-braces*/}
 
-在下面的对象中，完整的图片 URL 分成四部分：base URL、 `imageId`、 `imageSize` 和文件拓展名。
+在下面的对象中，完整的图片 URL 被分成了四个部分：base URL、 `imageId`、 `imageSize` 和文件拓展名。
 
 我们希望这些属性组合成图片的 URL：base URL（一直是 `'https://i.imgur.com/'`）、`imageId`（`'7vQD0fP'`）、`imageSize`（`'s'`）和文件拓展（总是 `'.jpg'`）。但是，`<img>` 标签 `src` 指明的方式是有问题的。
 
@@ -474,14 +474,14 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-要检查你的修复是否成功，尝试吧 `imageSize` 的值改成 `'b'`。在你编辑后图像应该会调整大小。
+要检查你的修复是否成功，可以尝试把 `imageSize` 的值改成 `'b'`。这张图片的大小理应随着你的修改而发生变化。
 
 <Solution>
 
-你可以这样写 `src={baseUrl + person.imageId + person.imageSize + '.jpg'}`。
+你可以把它写成 `src={baseUrl + person.imageId + person.imageSize + '.jpg'}` 这样。
 
 1. `{` 开启 JavaScript 表达式
-2. `baseUrl + person.imageId + person.imageSize + '.jpg'` 提供正确的 URL 字符串
+2. `baseUrl + person.imageId + person.imageSize + '.jpg'` 会生成正确的 URL 字符串
 3. `}` 结束 JavaScript 表达式
 
 <Sandpack>
