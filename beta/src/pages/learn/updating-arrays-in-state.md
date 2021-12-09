@@ -148,7 +148,7 @@ button { margin-left: 5px; }
 ```js
 setArtists([
   { id: nextId++, name: name },
-  ...artists // 将原数组中的元素放在后面
+  ...artists // 将原数组中的元素放在末尾
 ]);
 ```
 
@@ -357,7 +357,7 @@ export default function List() {
   );
 
   function handleClick() {
-    const insertAt = 1; // Could be any index
+    const insertAt = 1; // 可能是任何一个位置
     const nextArtists = [
       // 在插入位置之前的元素:
       ...artists.slice(0, insertAt),
@@ -547,7 +547,7 @@ function ItemList({ artworks, onToggle }) {
 ```js
 const myNextList = [...myList];
 const artwork = myNextList.find(a => a.id === artworkId);
-artwork.seen = nextSeen; // 问题在于: mutates an existing item
+artwork.seen = nextSeen; // 问题在于: 直接改变了已有的元素
 setMyList(myNextList);
 ```
 
