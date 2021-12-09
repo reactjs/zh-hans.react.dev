@@ -148,7 +148,7 @@ export default function FeedbackForm() {
   );
 }
 
-// Pretend to send a message.
+// 假装发送消息。
 function sendMessage(text) {
   return new Promise(resolve => {
     setTimeout(resolve, 2000);
@@ -205,7 +205,7 @@ export default function FeedbackForm() {
   );
 }
 
-// Pretend to send a message.
+// 假装发送消息。
 function sendMessage(text) {
   return new Promise(resolve => {
     setTimeout(resolve, 2000);
@@ -367,8 +367,8 @@ function Message({ messageColor }) {
 
 ```js
 function Message({ initialColor }) {
-  // The `color` state variable holds the *first* value of `initialColor`.
-  // Further changes to the `initialColor` prop are ignored.
+  // 这个 `color` state 变量用于保存 `initialColor` 的 *初始值* 值。
+  // 对于 `initialColor` 这个 prop 它的进一步更改将被忽略。
   const [color, setColor] = useState(initialColor);
 ```
 
@@ -1128,14 +1128,14 @@ export const initialTravelPlan = {
 
 </Sandpack>
 
-**Now that the state is "flat" (also known as "normalized"), updating nested items becomes easier.**
+**现在状态是“扁平化”（也称为“规范化”），更新嵌套项目变得更容易。**
 
-In order to remove a place now, you only need to update two levels of state:
+现在为了去掉一个地方，你只需要更新两个级别的状态:
 
-- The updated version of its *parent* place should exclude the removed ID from its `childIds` array.
-- The updated version of the root "table" object should include the updated version of the parent place.
+- 它的 *parent* 地方的更新版本应该从它的 `childIds` 数组中删去已经被移除的ID。
+- root “table” 对象的更新版本应包括父地方的更新版本。
 
-Here is an example of how you could go about it:
+下面是一个你可以尝试如何做的例子:
 
 <Sandpack>
 
@@ -1148,17 +1148,17 @@ export default function TravelPlan() {
 
   function handleComplete(parentId, childId) {
     const parent = plan[parentId];
-    // Create a new version of the parent place
-    // that doesn't include this child ID.
+    // 创建父位置的新版本
+    // 并不包括这个 child 的 ID。
     const nextParent = {
       ...parent,
       childIds: parent.childIds
         .filter(id => id !== childId)
     };
-    // Update the root state object...
+    // 更新 root state 对象...
     setPlan({
       ...plan,
-      // ...so that it has the updated parent.
+      // ...以便它具有更新的 parent。
       [parentId]: nextParent
     });
   }
@@ -1475,11 +1475,11 @@ button { margin: 10px; }
 
 </Sandpack>
 
-You can nest state as much as you like, but making it "flat" can solve numerous problems. It makes state easier to update, and it helps ensure you don't have duplication in different parts of a nested object.
+你可以随心所欲地嵌套状态，但使其“扁平化”可以解决许多问题。它使 state 更容易更新，并有助于确保你在一个嵌套对象的不同部分不会有重复。
 
 <DeepDive title="Improving memory usage">
 
-Ideally, you would also remove the deleted items (and their children!) from the "table" object to improve memory usage. This version does that. It also [uses Immer](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) to make the update logic more concise.
+理想情况下，你也会从“table”对象中删除被删除的项目（以及它们的子项！），以提高内存使用率。这个版本就是这样做的。它还 [使用Immer](/learn/updating-objects-in-state#write-concis-update-logic-with-immer) 来使更新逻辑更加简洁。
 
 <Sandpack>
 
@@ -1492,12 +1492,12 @@ export default function TravelPlan() {
 
   function handleComplete(parentId, childId) {
     updatePlan(draft => {
-      // Remove from the parent place's child IDs.
+      // 从 parent 节点中的 child ID 中删除。
       const parent = draft[parentId];
       parent.childIds = parent.childIds
         .filter(id => id !== childId);
 
-      // Forget this place and all its subtree.
+      // 忽略这个节点以及它的所有子树
       deleteAllChildren(childId);
       function deleteAllChildren(id) {
         const place = draft[id];
@@ -2546,11 +2546,11 @@ import Letter from './Letter.js';
 export default function MailClient() {
   const [selectedId, setSelectedId] = useState(null);
 
-  // TODO: allow multiple selection
+  // TODO: 允许多选
   const selectedCount = 1;
 
   function handleToggle(toggledId) {
-    // TODO: allow multiple selection
+    // TODO: 允许多选
     setSelectedId(toggledId);
   }
 
@@ -2563,7 +2563,7 @@ export default function MailClient() {
             key={letter.id}
             letter={letter}
             isSelected={
-              // TODO: allow multiple selection
+              // TODO: 允许多选
               letter.id === selectedId
             }
             onToggle={handleToggle}
@@ -2648,14 +2648,14 @@ export default function MailClient() {
   const selectedCount = selectedIds.length;
 
   function handleToggle(toggledId) {
-    // Was it previously selected?
+    // 是之前选的吗？
     if (selectedIds.includes(toggledId)) {
-      // Then remove this ID from the array.
+      // 然后从数组中删除此 ID。
       setSelectedIds(selectedIds.filter(id =>
         id !== toggledId
       ));
     } else {
-      // Otherwise, add this ID to the array.
+      // 否则，将此 ID 添加到数组中。
       setSelectedIds([
         ...selectedIds,
         toggledId
@@ -2758,7 +2758,7 @@ export default function MailClient() {
   const selectedCount = selectedIds.size;
 
   function handleToggle(toggledId) {
-    // Create a copy (to avoid mutation).
+    // 创建一个拷贝（以避免突变）。
     const nextIds = new Set(selectedIds);
     if (nextIds.has(toggledId)) {
       nextIds.delete(toggledId);
