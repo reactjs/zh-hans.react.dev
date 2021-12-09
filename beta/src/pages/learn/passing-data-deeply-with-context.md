@@ -13,7 +13,7 @@ translators:
 
 <YouWillLearn>
 
-- 什么是“逐层 props”
+- 什么是“prop 逐级透传”
 - 如何使用 context 代替重复的参数传递
 - context 的常见用法
 - context 的常见替代方案
@@ -26,11 +26,11 @@ translators:
 
 <img alt="状态提升 vs 逐层 props" src="/images/docs/sketches/s_prop-drilling.png" />
 
-要是有一种方法可以在不传递 props 的情况下将数据“传送”到组件树中需要它的组件，那可就太好了。React 的 context 功能可以满足我们的这个心愿。
+要是有一种方法可以在组件树中不需要 props 将数据“直达”到所需的组件中，那可就太好了。React 的 context 功能可以满足我们的这个心愿。
 
 ## Context：传递 props 的另一种方法 {/*context-an-alternative-to-passing-props*/}
 
-Context 可以让父组件向它下面的整个组件树提供数据。Context 有很多种用途。这里就有一个示例。考虑一下 `Heading` 组件接受一个 `level` 参数来决定它标题尺寸的情况：
+Context 让父组件可以为它下面的整个组件树提供数据。Context 有很多种用途。这里就有一个示例。思考一下这个 `Heading` 组件接收一个 `level` 参数来决定它标题尺寸的场景：
 
 <Sandpack>
 
@@ -41,12 +41,12 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section>
-      <Heading level={1}>大标题</Heading>
-      <Heading level={2}>标题</Heading>
-      <Heading level={3}>小标题</Heading>
-      <Heading level={4}>小小标题</Heading>
-      <Heading level={5}>小小小标题</Heading>
-      <Heading level={6}>小小小小标题</Heading>
+      <Heading level={1}>主标题</Heading>
+      <Heading level={2}>副标题</Heading>
+      <Heading level={3}>子标题</Heading>
+      <Heading level={4}>子子标题</Heading>
+      <Heading level={5}>子子子标题</Heading>
+      <Heading level={6}>子子子子标题</Heading>
     </Section>
   );
 }
@@ -105,19 +105,19 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section>
-      <Heading level={1}>大标题</Heading>
+      <Heading level={1}>主标题</Heading>
       <Section>
-        <Heading level={2}>标题</Heading>
-        <Heading level={2}>标题</Heading>
-        <Heading level={2}>标题</Heading>
+        <Heading level={2}>副标题</Heading>
+        <Heading level={2}>副标题</Heading>
+        <Heading level={2}>副标题</Heading>
         <Section>
-          <Heading level={3}>小标题</Heading>
-          <Heading level={3}>小标题</Heading>
-          <Heading level={3}>小标题</Heading>
+          <Heading level={3}>子标题</Heading>
+          <Heading level={3}>子标题</Heading>
+          <Heading level={3}>子标题</Heading>
           <Section>
-            <Heading level={4}>小小标题</Heading>
-            <Heading level={4}>小小标题</Heading>
-            <Heading level={4}>小小标题</Heading>
+            <Heading level={4}>子子标题</Heading>
+            <Heading level={4}>子子标题</Heading>
+            <Heading level={4}>子子标题</Heading>
           </Section>
         </Section>
       </Section>
@@ -188,7 +188,7 @@ export default function Heading({ level, children }) {
 </Section>
 ```
 
-但是 `<Heading>` 组件是如何知道离它最近的 `<Section>` 的 level 的呢？**这需要子组件可以通过某种方式“询问”到组件树中某处在其上层的数据。**
+但是 `<Heading>` 组件是如何知道离它最近的 `<Section>` 的 level 的呢？**这需要子组件可以通过某种方式“访问”到组件树中某处在其上层的数据。**
 
 你不能只通过 props 来实现它。这就是 context 大显身手的地方。你可以通过以下三个步骤来实现它：
 
@@ -202,7 +202,7 @@ Context 可以让父节点，甚至是很远的父节点都可以为其内部的
 
 ### Step 1：创建 context {/*step-1-create-the-context*/}
 
-首先，你需要创建这个 context。你需要先 **将其从一个文件中导出**，这样你的组件才可以使用它：
+首先，你需要创建这个 context，并 **将其从一个文件中导出**，这样你的组件才可以使用它：
 
 <Sandpack>
 
@@ -213,19 +213,19 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section>
-      <Heading level={1}>大标题</Heading>
+      <Heading level={1}>主标题</Heading>
       <Section>
-        <Heading level={2}>标题</Heading>
-        <Heading level={2}>标题</Heading>
-        <Heading level={2}>标题</Heading>
+        <Heading level={2}>副标题</Heading>
+        <Heading level={2}>副标题</Heading>
+        <Heading level={2}>副标题</Heading>
         <Section>
-          <Heading level={3}>小标题</Heading>
-          <Heading level={3}>小标题</Heading>
-          <Heading level={3}>小标题</Heading>
+          <Heading level={3}>子标题</Heading>
+          <Heading level={3}>子标题</Heading>
+          <Heading level={3}>子标题</Heading>
           <Section>
-            <Heading level={4}>小小标题</Heading>
-            <Heading level={4}>小小标题</Heading>
-            <Heading level={4}>小小标题</Heading>
+            <Heading level={4}>子子标题</Heading>
+            <Heading level={4}>子子标题</Heading>
+            <Heading level={4}>子子标题</Heading>
           </Section>
         </Section>
       </Section>
@@ -282,7 +282,7 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-`createContext` 只需要 _default_（默认值）这么一个参数。在这里, `1` 表示最大的标题级别，但是你可以传递任何类型的值（甚至可以传入一个对象）。你将在下一个步骤中见识到默认值的意义。
+`createContext` 只需_默认值_这么一个参数。在这里, `1` 表示最大的标题级别，但是你可以传递任何类型的值（甚至可以传入一个对象）。你将在下一个步骤中见识到默认值的意义。
 
 ### Step 2：使用 Context {/*step-2-use-the-context*/}
 
@@ -316,9 +316,9 @@ export default function Heading({ children }) {
 
 ```js
 <Section>
-  <Heading level={4}>小小标题</Heading>
-  <Heading level={4}>小小标题</Heading>
-  <Heading level={4}>小小标题</Heading>
+  <Heading level={4}>子子标题</Heading>
+  <Heading level={4}>子子标题</Heading>
+  <Heading level={4}>子子标题</Heading>
 </Section>
 ```
 
@@ -326,9 +326,9 @@ export default function Heading({ children }) {
 
 ```jsx
 <Section level={4}>
-  <Heading>小小标题</Heading>
-  <Heading>小小标题</Heading>
-  <Heading>小小标题</Heading>
+  <Heading>子子标题</Heading>
+  <Heading>子子标题</Heading>
+  <Heading>子子标题</Heading>
 </Section>
 ```
 
@@ -343,19 +343,19 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section level={1}>
-      <Heading>大标题</Heading>
+      <Heading>主标题</Heading>
       <Section level={2}>
-        <Heading>标题</Heading>
-        <Heading>标题</Heading>
-        <Heading>标题</Heading>
+        <Heading>副标题</Heading>
+        <Heading>副标题</Heading>
+        <Heading>副标题</Heading>
         <Section level={3}>
-          <Heading>小标题</Heading>
-          <Heading>小标题</Heading>
-          <Heading>小标题</Heading>
+          <Heading>子标题</Heading>
+          <Heading>子标题</Heading>
+          <Heading>子标题</Heading>
           <Section level={4}>
-            <Heading>小小标题</Heading>
-            <Heading>小小标题</Heading>
-            <Heading>小小标题</Heading>
+            <Heading>子子标题</Heading>
+            <Heading>子子标题</Heading>
+            <Heading>子子标题</Heading>
           </Section>
         </Section>
       </Section>
@@ -461,19 +461,19 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section level={1}>
-      <Heading>大标题</Heading>
+      <Heading>主标题</Heading>
       <Section level={2}>
-        <Heading>标题</Heading>
-        <Heading>标题</Heading>
-        <Heading>标题</Heading>
+        <Heading>副标题</Heading>
+        <Heading>副标题</Heading>
+        <Heading>副标题</Heading>
         <Section level={3}>
-          <Heading>小标题</Heading>
-          <Heading>小标题</Heading>
-          <Heading>小标题</Heading>
+          <Heading>子标题</Heading>
+          <Heading>子标题</Heading>
+          <Heading>子标题</Heading>
           <Section level={4}>
-            <Heading>小小标题</Heading>
-            <Heading>小小标题</Heading>
-            <Heading>小小标题</Heading>
+            <Heading>子子标题</Heading>
+            <Heading>子子标题</Heading>
+            <Heading>子子标题</Heading>
           </Section>
         </Section>
       </Section>
@@ -538,11 +538,11 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-这与原始代码的运行结果相同，但是你不需要向每个 `Heading` 组件传递 `level` 参数了！相反，它通过询问上层最近的 `Section` 来“断定”它的标题级别：
+这与原始代码的运行结果相同，但是你不需要向每个 `Heading` 组件传递 `level` 参数了！取而代之的是，它通过访问上层最近的 `Section` 来“断定”它的标题级别：
 
 1. 你将一个 `level` 参数传递给 `<Section>`。
 2. `Section` 把它的子元素包在 `<LevelContext.Provider value={level}>` 里面。
-3. `Header` 使用 `useContext(LevelContext)` 询问上层最近的 `LevelContext` 提供的值。
+3. `Header` 使用 `useContext(LevelContext)` 访问上层最近的 `LevelContext` 提供的值。
 
 ## 在相同的组件中使用并提供 context {/*using-and-providing-context-from-the-same-component*/}
 
@@ -578,7 +578,7 @@ export default function Section({ children }) {
 }
 ```
 
-这样修改之后，你不用将 `level` 参数传给 `<Section>` *或者是* `<Heading>`：
+这样修改之后，你不用将 `level` 参数传给 `<Section>` *或者是* `<Heading>` 了：
 
 <Sandpack>
 
@@ -589,19 +589,19 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section>
-      <Heading>大标题</Heading>
+      <Heading>主标题</Heading>
       <Section>
-        <Heading>标题</Heading>
-        <Heading>标题</Heading>
-        <Heading>标题</Heading>
+        <Heading>副标题</Heading>
+        <Heading>副标题</Heading>
+        <Heading>副标题</Heading>
         <Section>
-          <Heading>小标题</Heading>
-          <Heading>小标题</Heading>
-          <Heading>小标题</Heading>
+          <Heading>子标题</Heading>
+          <Heading>子标题</Heading>
+          <Heading>子标题</Heading>
           <Section>
-            <Heading>小小标题</Heading>
-            <Heading>小小标题</Heading>
-            <Heading>小小标题</Heading>
+            <Heading>子子标题</Heading>
+            <Heading>子子标题</Heading>
+            <Heading>子子标题</Heading>
           </Section>
         </Section>
       </Section>
@@ -670,7 +670,7 @@ export const LevelContext = createContext(0);
 
 </Sandpack>
 
- 现在，`Heading` 和 `Section` 都通过读取 `LevelContext` 来判断它们的深度。而且 `Section` 把它的子组件都包在 `LevelContext` 中来指定其中的任何内容都处于一个“更深”的级别。
+现在，`Heading` 和 `Section` 都通过读取 `LevelContext` 来判断它们的深度。而且 `Section` 把它的子组件都包在 `LevelContext` 中来指定其中的任何内容都处于一个“更深”的级别。
 
 >本示例使用标题级别来展示，因为它们直观地显示了嵌套组件如何覆盖 context。但是 context 对于许多其他的场景也很有用。你可以用它来传递整个子树需要的任何信息：当前的颜色主题、当前登录的用户等。
 
@@ -803,13 +803,13 @@ export const LevelContext = createContext(0);
 
 </Sandpack>
 
-你没有做任何特别的事情来让它运行。`Section` 为它内部的树指定一个 context，所以你可以在任何地方插入一个 `<Heading>`，而且它会有正确的尺寸。在上边的沙箱中尝试一下！
+你不需要做任何特殊的操作。`Section` 为它内部的树指定一个 context，所以你可以在任何地方插入一个 `<Heading>`，而且它会有正确的尺寸。在上边的沙箱中尝试一下！
 
 **Context 让你可以编写“适应周围环境”的组件，并且根据 _在哪_ （或者说 _在哪个 context 中_）来渲染它们不同的样子。**
 
 Context 的工作方式可能会让你想起 [CSS 属性继承](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance)。在 CSS 中，你可以为一个 `<div>` 手动指定 `color: blue`，并且其中的任何 DOM 节点，无论多深，都会继承那个颜色，除非中间的其他 DOM 节点用 `color: green` 来覆盖它。类似地，在 React 中，覆盖来自上层的某些 context 的唯一方法是将子组件包裹到一个提供不同值的 context provider 中。
 
-在 CSS 中，诸如 `color` 和 `background-color` 之类的不同属性不会覆盖彼此。你可以设置所有 `<div>` 的 `color` 为红色，而不会影像 `background-color`。类似地，**不同的 React context 不会覆盖彼此**。你通过 `createContext()` 创建的每个 context 都和其他 context 完全分离，只有使用和提供 *那个特定的* context 的组件才会联系在一起。一个组件可以轻松地使用或者提供许多不同的 context。
+在 CSS 中，诸如 `color` 和 `background-color` 之类的不同属性不会覆盖彼此。你可以设置所有 `<div>` 的 `color` 为红色，而不会影响 `background-color`。类似地，**不同的 React context 不会覆盖彼此**。你通过 `createContext()` 创建的每个 context 都和其他 context 完全分离，只有使用和提供 *那个特定的* context 的组件才会联系在一起。一个组件可以轻松地使用或者提供许多不同的 context。
 
 ## 写在你使用 context 之前 {/*before-you-use-context*/}
 
@@ -818,18 +818,18 @@ Context 的工作方式可能会让你想起 [CSS 属性继承](https://develope
 在使用 context 之前，你可以考虑以下几种替代方案：
 
 1. **从 [传递 props](/learn/passing-props-to-a-component) 开始。** 如果你的组件看起来不起眼，那么通过十几个组件向下传递一堆 props 并不罕见。这有点像是在埋头苦干，但是这样做可以让哪些组件用了哪些数据变得十分清晰！维护你代码的人会很高兴你用 props 让数据流变得更加清晰。
-2. **抽象组件并 [将 JSX 作为 `children` 传递](/learn/passing-props-to-a-component#passing-jsx-as-children) 给它们。** 如果你通过很多层不使用该数据的中间组件（并且只会向下传递）来传递数据，这通常意味着你在此过程中忘记了抽象组件。举个例子，你可能想传递一些像 `posts` 的数据 props 到不会直接使用这个参数的组件，类似 `<Layout posts={posts} />`。相反，让 `Layout` 把 `children` 当做一个参数，然后渲染 `<Layout><Posts posts={posts} /></Layout>`。这样就减少了定义数据的组件和使用数据的组件之间的层级。
+2. **抽象组件并 [将 JSX 作为 `children` 传递](/learn/passing-props-to-a-component#passing-jsx-as-children) 给它们。** 如果你通过很多层不使用该数据的中间组件（并且只会向下传递）来传递数据，这通常意味着你在此过程中忘记了抽象组件。举个例子，你可能想传递一些像 `posts` 的数据 props 到不会直接使用这个参数的组件，类似 `<Layout posts={posts} />`。取而代之的是，让 `Layout` 把 `children` 当做一个参数，然后渲染 `<Layout><Posts posts={posts} /></Layout>`。这样就减少了定义数据的组件和使用数据的组件之间的层级。
 
 如果这两种方法都不适合你，再考虑使用 context。
 
 ## Context 的使用场景 {/*use-cases-for-context*/}
 
 * **主题：** 如果你的应用允许用户更改其外观（例如暗夜模式），你可以在应用顶层放一个 context provider，并在需要调整其外观的组件中使用该 context。
-* **当前账户：** 许多组件可能需要知道当前登录的用户信息。将它放到 context 中可以方便地在书中的任何位置读取它。某些应用还允许你同事操作多个账户（例如，以不同用户的身份发表评论）。在这些情况下，将 UI 的一部分包裹到具有不同账户数据的 provider 中会很方便。
+* **当前账户：** 许多组件可能需要知道当前登录的用户信息。将它放到 context 中可以方便地在书中的任何位置读取它。某些应用还允许你同时操作多个账户（例如，以不同用户的身份发表评论）。在这些情况下，将 UI 的一部分包裹到具有不同账户数据的 provider 中会很方便。
 * **路由：** 大多数路由解决方案在其内部使用 context 来保存当前路由。这就是每个链接“知道”它是否处于活动状态的方式。如果你创建自己的路由库，你可能也会这么做。
-* **状态管理：** 随着你的应用的增长，你最终可能在靠近应用顶部的位置有很多 state。下层的许多遥远的组件可能想要修改他们。通常 [将 reducer 与 context 搭配使用](/learn/scaling-up-with-reducer-and-context)来管理复杂的状态并将其传递给深层的组件而不会有太多麻烦。
+* **状态管理：** 随着你的应用的增长，最终在靠近应用顶部的位置可能会有很多 state。许多遥远的下层组件可能想要修改它们。通常 [将 reducer 与 context 搭配使用](/learn/scaling-up-with-reducer-and-context)来管理复杂的状态并将其传递给深层的组件来避免过多的麻烦。
   
-Context 不局限于静态值。如果你在下一次渲染时传递不同的值，React 将会更新下层读取它的所有组件！这就是 context 经常和 state 结合使用的原因。
+Context 不局限于静态值。如果你在下一次渲染时传递不同的值，React 将会更新读取它的所有下层组件！这就是 context 经常和 state 结合使用的原因。
 
 一般而言，如果树中不同部分的远距离组件需要某些信息，context 将会对你大有帮助。
 
@@ -932,7 +932,7 @@ function PlaceImage({ place, imageSize }) {
 ```js data.js
 export const places = [{
   id: 0,
-  name: '南非开普敦的海角上方',
+  name: '南非开普敦的波卡普区',
   description: '为房屋选择亮色的传统始于 20 世纪后期。',
   imageId: 'K9HVAGH'
 }, {
@@ -1071,7 +1071,7 @@ export const ImageSizeContext = createContext(500);
 ```js data.js
 export const places = [{
   id: 0,
-  name: '南非开普敦的海角上方',
+  name: '南非开普敦的波卡普区',
   description: '为房屋选择亮色的传统始于 20 世纪后期。',
   imageId: 'K9HVAGH'
 }, {
@@ -1130,7 +1130,7 @@ li {
 
 </Sandpack>
 
-请注意中间的组件是怎样不再需要传递 `imageSize` 的。
+请注意中间的组件是怎样实现不用传入 `imageSize` 参数的。
 
 </Solution>
 
