@@ -26,12 +26,12 @@ title: 修改 State 中的数组
 
 |         | 避免使用 (会改变原始数组) | 推荐使用 (会返回一个新数组） |
 |---------|----------------|-------------------|
-| 添加元素 | `push` ， `unshift` | `concat` ， `[...arr]` 展开语法 （[例子](#向数组中添加元素)）|
-| 删除元素 | `pop` ， `shift` ， `splice` | `filter` ， `slice` （[例子](#从数组中删除元素)）
-| 替换元素 | `splice` ， `arr[i] = ...` 赋值 | `map` （[例子](#替换数组中的元素)） |
-| 排序 | `reverse` ， `sort` | 先将数组复制一份 （[例子](#其他改变数组的情况)） |
+| 添加元素 | `push` ， `unshift` | `concat` ， `[...arr]` 展开语法 （[例子](#adding-to-an-array)）|
+| 删除元素 | `pop` ， `shift` ， `splice` | `filter` ， `slice` （[例子](#removing-from-an-array)）
+| 替换元素 | `splice` ， `arr[i] = ...` 赋值 | `map` （[例子](#replacing-items-in-an-array)） |
+| 排序 | `reverse` ， `sort` | 先将数组复制一份 （[例子](#making-other-changes-to-an-array)） |
 
-或者，你可以[使用 Immer](#使用-Immer-编写简洁的更新逻辑) ，这样你便可以使用表格中的所有方法了。
+或者，你可以[使用 Immer](#write-concise-update-logic-with-immer) ，这样你便可以使用表格中的所有方法了。
 
 <Gotcha>
 
@@ -235,17 +235,17 @@ export default function ShapeEditor() {
   function handleClick() {
     const nextShapes = shapes.map(shape => {
       if (shape.type === 'square') {
-        // No change
+        // 不改变
         return shape;
       } else {
-        // Return a new circle 50px below
+        // 返回一个圆形，位置在下方 50px 处
         return {
           ...shape,
           y: shape.y + 50,
         };
       }
     });
-    // Re-render with the new array
+    // 使用新的数组重渲染
     setShapes(nextShapes);
   }
 
@@ -301,10 +301,10 @@ export default function CounterList() {
   function handleIncrementClick(index) {
     const nextCounters = counters.map((c, i) => {
       if (i === index) {
-        // Increment the clicked counter
+        // 计数器数字加一
         return c + 1;
       } else {
-        // The rest haven't changed
+        // 其余部分不发生变化
         return c;
       }
     });
@@ -359,11 +359,11 @@ export default function List() {
   function handleClick() {
     const insertAt = 1; // Could be any index
     const nextArtists = [
-      // Items before the insertion point:
+      // 在插入位置之前的元素:
       ...artists.slice(0, insertAt),
-      // New item:
+      // 新的元素:
       { id: nextId++, name: name },
-      // Items after the insertion point:
+      // 在插入位置之后的元素:
       ...artists.slice(insertAt)
     ];
     setArtists(nextArtists);
