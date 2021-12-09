@@ -2,6 +2,7 @@
 title: 使用 Context 深层传递参数
 translators: 
   - KeanuoLeung
+  - rottenpen
 ---
 
 <Intro>
