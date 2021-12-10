@@ -677,7 +677,7 @@ li {
 
 `StoryTray` 的功能不纯。通过在接收到的 `stories` 数组（一个 prop！）上调用 `push` 方法，它正改变着一个在 `StoryTray` 渲染 *之前* 创建的对象。这使得它有问题并且难以预测。
 
-最简单的解决方案是完全不碰数组，单独渲染 “Create Story”：
+最简单的解决方案是完全不碰数组，单独渲染“Create Story”：
 
 <Sandpack>
 
