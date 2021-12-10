@@ -299,7 +299,7 @@ body > * {
 
 <Solution>
 
-你可以计算 className，并将其包含在渲染的输出中，以此实现对组件的修复：
+你可以计算 `className`，并将其包含在渲染的输出中，以此实现对组件的修复：
 
 <Sandpack>
 
