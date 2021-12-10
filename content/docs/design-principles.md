@@ -58,7 +58,7 @@ React 是务实的，Facebook 的产品需求驱使它这样。尽管 React 受�
 
 例如，我们在 React 15.2.0 中添加了一个[未知 DOM 属性的警告](/warnings/unknown-prop.html)，很多项目因此受到影响。然而修复这些警告非常重要，因为我们可以在 React 中新增支持[自定义属性](https://github.com/facebook/react/issues/140)。以往的每一次废弃警告都有像这样的考量在里面。
 
-我们添加废弃警告时会保留到当前大版本，在[下一次大版本中改变行为](/blog/2016/02/19/new-versioning-scheme.html)。如果这其中设计到大量重复性的人力工作，我们会发布一个[代码更改](https://www.youtube.com/watch?v=d0pOgY8__JM)脚本自动化大部分的改动。Codemods 使我们能够在庞大的代码库中继续前行，我们也推荐大家使用。
+我们添加废弃警告时会保留到当前大版本，在[下一次大版本中改变行为](/blog/2016/02/19/new-versioning-scheme.html)。如果这其中涉及到大量重复性的人力工作，我们会发布一个[代码更改](https://www.youtube.com/watch?v=d0pOgY8__JM)脚本自动化大部分的改动。Codemods 使我们能够在庞大的代码库中继续前行，我们也推荐大家使用。
 
 你可以在 [react-codemod](https://github.com/reactjs/react-codemod) 仓库中找到我们发布的 codemods。
 
@@ -146,7 +146,7 @@ React 一些常用的 API 名字很冗长。比如，我们采用 `componentDidM
 
 针对搜索优化很重要，因为我们依赖 [codemods](https://www.youtube.com/watch?v=d0pOgY8__JM) 做不兼容的变更。我们希望非常容易、安全地在代码库中应用大量自动化变更，独特冗长的名字帮助了我们。类似地，独特的命名使得编写自定义 React 用法的[提示规则](https://github.com/yannickcr/eslint-plugin-react)变得很容易，无需担心潜在的错误匹配。
 
-[JSX](/docs/introducing-jsx.html) 也类似这样。尽管 React 不强制使用 JSX，在 Facebook 我们大量使用 JSX，因为它既好看有实用。
+[JSX](/docs/introducing-jsx.html) 也类似这样。尽管 React 不强制使用 JSX，在 Facebook 我们大量使用 JSX，因为它既好看又实用。
 
 在我们的代码库中，JSX 给和 React 元素树打交道的工具提供了明确的提示。这使得构建时优化成为可能，比如[提升常量元素](https://babeljs.io/docs/en/babel-plugin-transform-react-constant-elements/)、安全地进行代码提示、codemod 内部组件用法、在代码警告中[包含 JSX 源码定位](https://github.com/facebook/react/pull/6771).
 
