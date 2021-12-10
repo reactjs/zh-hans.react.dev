@@ -121,7 +121,7 @@ export default function TeaSet() {
 
 回到我们的公式 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> ，现在即使 <Math><MathI>x</MathI> = 2</Math> ，我们也不能相信 <Math><MathI>y</MathI> = 4</Math> 。我们的测试可能会失败，我们的用户可能会感到困扰，飞机可能会从天空坠毁——你将看到这会引发多么扑朔迷离的 bugs！
 
-你可以[将 `guest` 作为 prop 传入](/learn/passing-props-to-a-component)来修复此组件：
+你可以 [将 `guest` 作为 prop 传入](/learn/passing-props-to-a-component) 来修复此组件：
 
 <Sandpack>
 
