@@ -151,7 +151,7 @@ export default function TeaSet() {
 
 尽管你可能还没有全部使用过它们，但在 React 中，你可以在渲染时读取三种输入：[props](/learn/passing-props-to-a-component), [state](/learn/state-a-components-memory), 和 [context](/learn/passing-data-deeply-with-context)。你应该始终将这些输入视为只读。
 
-当你想根据用户输入更改某些内容时，你应该[设置状态](/learn/state-a-components-memory)而不是写入变量。当你的组件正在渲染时，你永远不应该改变预先存在的变量或对象。
+当你想根据用户输入 *更改* 某些内容时，你应该 [设置状态](/learn/state-a-components-memory) ，而不是写入变量。当你的组件正在渲染时，你永远不应该改变预先存在的变量或对象。
 
 React 提供了“严格模式”，在严格模式下开发时，它将两次调用组件函数。**通过重复调用组件函数，严格模式有助于找到违反这些规则的组件**。
 
