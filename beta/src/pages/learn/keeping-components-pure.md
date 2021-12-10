@@ -185,7 +185,7 @@ export default function TeaGathering() {
 
 </Sandpack>
 
-如果 `cups` 变量或 `[]` 数组是在 `TeaGathering` 函数之外创建的，这将是一个巨大的问题！你调用的数组 push 方法将更改*预先存在的* 对象。
+如果 `cups` 变量或 `[]` 数组是在 `TeaGathering` 函数之外创建的，这将是一个巨大的问题！因为如果那样的话，你调用的数组 push 方法将更改 *预先存在的* 对象。
 
 但是，这里不会有影响，因为每次渲染时，你都是在 `TeaGathering` 函数内部创建的它们。 `TeaGathering` 之外的代码不会知道发生了什么。这就被称为 **“局部 mutation”** ——如同藏在组件里的小秘密。
 
