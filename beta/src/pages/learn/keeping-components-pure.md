@@ -87,7 +87,7 @@ export default function App() {
 
 <Illustration src="/images/docs/illustrations/i_puritea-recipe.png" alt="A tea recipe for x people: take x cups of water, add 2x spoons of spices, and x spoons of tea!" />
 
-## 副作用：（无）意识后果 {#side-effects-unintended-consequences}
+## 副作用：（非）预期的后果 {#side-effects-unintended-consequences}
 
 React 的渲染过程必须始终是纯的。组件应该只*返回* 它们的 JSX，而不*改变* 在渲染前存在的任何对象或变量——这将会使它们变得不纯！
 
