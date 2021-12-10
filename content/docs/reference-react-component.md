@@ -194,7 +194,7 @@ constructor(props) {
 componentDidMount()
 ```
 
-`componentDidMount()` 会在组件挂载后（插入 DOM 树中）立即调用。依赖于 DOM 节点的初始化应该放在这里。如需通过网络请求获取数据，此处是实例化请求的好地方。
+`componentDidMount()` 会在组件挂载后（在他自己的容器中挂载完成了，并不代表已经挂载到DOM树）立即调用。依赖于 DOM 节点的初始化应该放在这里。如需通过网络请求获取数据，此处是实例化请求的好地方。
 
 这个方法是比较适合添加订阅的地方。如果添加了订阅，请不要忘记在 `componentWillUnmount()` 里取消订阅
 
