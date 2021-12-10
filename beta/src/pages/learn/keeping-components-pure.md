@@ -117,7 +117,7 @@ export default function TeaSet() {
 
 </Sandpack>
 
-该组件正在读写在其外部声明的 `guest` 变量。这意味着**多次调用这个组件会产生不同的 JSX！**并且，如果其他组件读取 `guest` ，它们也会产生不同的 JSX，其结果取决于它们何时被渲染！这是不可预测的。
+该组件正在读写在其外部声明的 `guest` 变量。这意味着**多次调用这个组件会产生不同的 JSX！**并且，如果 _其他_ 组件读取 `guest` ，它们也会产生不同的 JSX，其结果取决于它们何时被渲染！这是不可预测的。
 
 回到我们的公式 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> ，现在即使 <Math><MathI>x</MathI> = 2</Math> ，我们也不能相信 <Math><MathI>y</MathI> = 4</Math> 。我们的测试可能会失败，我们的用户可能会感到困扰，飞机可能会从天空坠毁——你将看到这会引发多么扑朔迷离的 bugs！
 
