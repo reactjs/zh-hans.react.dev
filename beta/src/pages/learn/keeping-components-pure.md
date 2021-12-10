@@ -33,7 +33,7 @@ translators:
 
 若 <Math><MathI>x</MathI> = 3</Math> 则 <Math><MathI>y</MathI> = 6</Math>。 永远如此。
 
-若 <Math><MathI>x</MathI> = 3</Math>，那么 <MathI>y</MathI> 不会受当前时段或股市状况影响，而等于 <Math>9</Math> 或 <Math>–1</Math> 或 <Math>2.5</Math>。 
+若 <Math><MathI>x</MathI> = 3</Math>，那么 <MathI>y</MathI> 并不会因为时间或股市的影响，而有时等于 <Math>9</Math> 、 <Math>–1</Math> 或 <Math>2.5</Math>。 
 
 若 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> 且 <Math><MathI>x</MathI> = 3</Math>, 那么 <MathI>y</MathI> _永远_ 等于 <Math>6</Math>. 
 
