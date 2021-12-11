@@ -190,7 +190,7 @@ Reducer 是处理状态的另一种方式。你可以通过三个步骤从 `useS
 2. **编写** 一个 reducer 函数；
 3. 在你的组件中 **使用** reducer。
 
-### 第 1 步: 将设置状态的相关逻辑移动到调度操作中 {/*move-from-setting-state-to-dispatching-actions*/}
+### 第 1 步: 将设置状态的相关逻辑移动到派发操作中 {/*step-1-move-from-setting-state-to-dispatching-actions*/}
 
 你的事件处理程序目前是通过设置状态来实现逻辑的：
 
@@ -282,7 +282,7 @@ dispatch({
 
 </Convention>
 
-### 第 2 步: 编写一个 reducer 函数 {/*write-a-reducer-function*/}
+### 第 2 步: 编写一个 reducer 函数 {/*step-2-write-a-reducer-function*/}
 
 reducer 函数就是你放置状态逻辑的地方。它接受两个参数，当前 state 和 action 对象，并返回下一个 state：
 
@@ -453,7 +453,7 @@ export default function tasksReducer(
 
 </DeepDive>
 
-### 第 3 步: 在组件中使用 reducer {/*use-the-reducer-from-your-component*/}
+### 第 3 步: 在组件中使用 reducer {/*step-3-use-the-reducer-from-your-component*/}
 
 最后，你需要将 `tasksReducer` 导入到组件中。记得先从 React 中导入 `useReducer` 钩子：
 
@@ -871,7 +871,7 @@ ul, li { margin: 0; padding: 0; }
 
 分离关注点可以让我们更容易地理解组件逻辑。现在事件处理程序只通过派发 `actions` 来指定 *发生了什么*，而 `reducer` 函数决定了 *状态如何更新* 来响应它们。
 
-## `useState` 和 `useReducer` 的对比 {/*Comparing-useState-and-useReducer*/}
+## `useState` 和 `useReducer` 的对比 {/*comparing-usestate-and-usereducer*/}
 
 Reducers 并非没有缺点！你可以从这些角度去对比它们：
 
@@ -883,7 +883,7 @@ Reducers 并非没有缺点！你可以从这些角度去对比它们：
 
 如果你在修改某些组件状态时经常出现问题或者想给组件添加更多逻辑时，我们建议你还是使用 reducer。当然，你也不必整个项目都用 reducer，这是可以自由搭配的。你甚至可以在一个组件中同时使用 `useState` 和 `useReducer`。
 
-## 编写更好的 reducers {/*writing-reducers-well*/}
+## 编写一个好的 reducers {/*writing-reducers-well*/}
 
 编写 `reducers` 时最好牢记以下两点：
 
@@ -1983,9 +1983,9 @@ case 'changed_selection': {
   };
 ```
 
-This is because you don't want to share a single message draft between several recipients. But it would be better if your app "remembered" a draft for each contact separately, restoring them when you switch contacts.
+这是因为你不希望在多个收件人之间共享单个邮件草稿。但如果你的应用程序能单独 “记住” 每个联系人的草稿，并在你切换联系人时恢复，那就更好了。
 
-Your task is to change the way the state is structured so that you remember a separate message draft _per contact_. You would need to make a few changes to the reducer, the initial state, and the components.
+你的任务是改变状态的组织形式，以便能记住 _每个联系人_ 的消息草稿。你需要对 reducer、初始状态和组件进行一些修改。
 
 <Hint>
 
@@ -1995,8 +1995,8 @@ Your task is to change the way the state is structured so that you remember a se
 export const initialState = {
   selectedId: 0,
   messages: {
-    0: 'Hello, Taylor', // Draft for contactId = 0
-    1: 'Hello, Alice' // Draft for contactId = 1
+    0: 'Hello, Taylor', // contactId = 0 的草稿
+    1: 'Hello, Alice' // contactId = 1 的草稿
   }
 };
 ```
@@ -2385,7 +2385,7 @@ textarea {
 
 </Solution>
 
-### 从零开始实现 `useReducer` {/*implement-use-reducer-from-scratch*/}
+### 从零开始实现 `useReducer` {/*implement-usereducer-from-scratch*/}
 
 在前面的例子中，你从 React 中导入了 `useReducer` 钩子。这一次，你将自己实现 `useReducer` 钩子。这里有一个模板，你可以从它开始。它不应该超过 10 行代码。
 

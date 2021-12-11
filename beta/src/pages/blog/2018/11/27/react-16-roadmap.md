@@ -1,6 +1,5 @@
 ---
 title: 'React 16.x 的规划'
-layout: Post
 author: [gaearon]
 ---
 
@@ -10,7 +9,7 @@ author: [gaearon]
 >
 > 你可以在 [React 16.9 版本的博客](/blog/2019/08/08/react-v16.9.0#an-update-to-the-roadmap)中找到关于路线图更新的内容。
 
-## 简介 {#tldr}
+## 简介 {/*tldr*/}
 
 我们计划在如下里程碑中发布 React 的新功能：
 
@@ -32,13 +31,13 @@ _(这篇文章的原始版本包含了具体的版本号。现在我们隐藏了
 >
 >这篇文章只是一个计划 —— 其中并没有需要立即注意的内容。未来在每个新功能发布的时候我们会撰写详细的博客文章来解释它们。
 
-## 发行计划 {#release-timeline}
+## 发行计划 {/*release-timeline*/}
 
 我们对于这些功能有一个总体的规划，但是我们将会在完成每个功能的时候发布它，以便大家可以尽早测试和使用。当你单独看一些API的设计的时候，它们不总是合理的。为了方便你在全局的角度理解我们的计划，这篇文章整理了我们计划中的重要组成部分。（参见 [版本规则](/docs/faq-versioning) 来了解我们对稳定性的承诺）
 
 我们逐步发布的计划可以帮助我们优化API，不过在过渡期一些还不完善的部分会令人费解。我们来看看这些功能将会对你的app产生怎样的影响，这些功能之间的关联，还有你可以在什么时候开始学习并使用它们。
 
-### [React 16.6](/blog/2018/10/23/react-v-16-6) (已发布)：Suspense 以便拆分代码 {#react-166-shipped-the-one-with-suspense-for-code-splitting}
+### [React 16.6](/blog/2018/10/23/react-v-16-6) (已发布)：Suspense 以便拆分代码 {/*react-166-shipped-the-one-with-suspense-for-code-splitting*/}
 
 _Suspense_ 代表了 React 的新功能：当组件在等待某些事情时，我们可以 “延迟” 渲染并显示一个载入指示图标。在 React 16.6 中， Suspense 只支持一种情况：使用 `React.lazy()` 和 `<React.Suspense>` 延迟加载组件。
 
@@ -71,7 +70,7 @@ function MyComponent() {
 
 **建议：** 如果你只在客户端渲染，我们强烈建议使用 `React.lazy()` 和 `<React.Suspense>` 来分割React组件的代码。如果你在服务器端渲染，你需要等到新的服务器端渲染器开发完成再使用它们。
 
-### React 16.x (~2019 第一季度): 包含 Hook 的版本 {#react-16x-q1-2019-the-one-with-hooks}
+### React 16.x (~2019 第一季度): 包含 Hook 的版本 {/*react-16x-q1-2019-the-one-with-hooks*/}
 
 _Hook_ 让你可以在函数组件中使用诸如 state 和生命周期之类的的功能。它们也可以让你在不在文件数中增加镶嵌的情况下重用带有状态的逻辑。
 
@@ -103,7 +102,7 @@ Hook 代表了我们对 React 未来的愿景。它解决了 React 用户们直�
 
 **建议：** 如果你准备好了，我们建议您在新写的组件中使用 Hook。确保您团队中的每个人都同意使用 Hook 并熟知这个文档。除非您已经打算重写（例如修复 bug）您已有的类，我们不推荐重写它们。您可以在[这里](/docs/hooks-faq#adoption-strategy)阅读有关采用 Hook 的更多信息。
 
-### React 16.x （大约 2019 第二季度发布）：带有并发模式的版本 {#react-16x-q2-2019-the-one-with-concurrent-mode}
+### React 16.x （大约 2019 第二季度发布）：带有并发模式的版本 {/*react-16x-q2-2019-the-one-with-concurrent-mode*/}
 
 _Concurrent 模式_ 通过渲染组件树而不阻塞主线程来使得 React 应用的响应更加及时。它是可选的，并允许 React 中断长时间运行的渲染（比如，渲染一个新的 news feed story）以处理一个高优先级事件（比如文本输入或者鼠标悬停）。并发模式也通过跳过网络状况良好的情况下的不必要的加载状态以提供更好的用户体验。
 
@@ -137,7 +136,7 @@ ReactDOM.unstable_createRoot(domNode).render(<App />);
 
 **建议：** 如果你计划在未来使用并行模式，一个很好的第一步是用 [`<React.StrictMode>`](https://reactjs.org/docs/strict-mode) 来包裹一些组件的子树然后修复出现的错误。通常，我们预计古旧的代码不会被立即兼容。 举个例子，在 Facebook，我们更多的在更新开发的代码中使用并发模式，古旧的代码近期还是会在同步模式下运行。
 
-### React 16.x （大约2019年中旬）： 包含 Suspense 以数据提取的版本 {#react-16x-mid-2019-the-one-with-suspense-for-data-fetching}
+### React 16.x （大约2019年中旬）： 包含 Suspense 以数据提取的版本 {/*react-16x-mid-2019-the-one-with-suspense-for-data-fetching*/}
 
 如前所述，__Suspense__ 是指 React 在组件等待某些事件的时候，“延缓”渲染并显示一个加载指示器的能力。它已经在 React 16.6 中发布，目前 Suspense 唯一支持的用例是代码拆分。在未来的小更新中，我们将会提供使用 Suspense 来加载数据的官方方法。我们会提供一个支持 Suspense 的基本的 “React Cache” 的例子。不过，你也可以自己来实现它。像 Apollo 和 Relay 这样的数据提取库将能够通过遵循我们将要提供的一个的简单的规范与 Suspense 集成。
 
@@ -184,13 +183,13 @@ Suspense 的底层原理（延迟渲染并显示一个后备组件）在 React 1
 
 **建议：** 等待 React 的小更新以使用 Suspense 来获取数据。不要使用 16.6 中的 Suspense 功能来获取数据，我们还不支持它。不过在将来，当我们官方支持使用 Suspense 来获取数据的时候，你可以现存的用来分割代码的 `<Suspense>` 组件来显示加载指示器。
 
-## 其他项目 {#other-projects}
+## 其他项目 {/*other-projects*/}
 
-### 现代化 React DOM {#modernizing-react-dom}
+### 现代化 React DOM {/*modernizing-react-dom*/}
 
 我们以减少包的大小和更加契合浏览器的行为为目标开始研究[简化和现代化](https://github.com/facebook/react/issues/13525)ReactDOM。要说有哪些具体的内容会被加入其中现在还为时过早，以为这个项目还在一个探索阶段。我们会在以后提供我们的进展。
 
-### 服务器渲染中的 Suspense {#suspense-for-server-rendering}
+### 服务器渲染中的 Suspense {/*suspense-for-server-rendering*/}
 
 我们已经开始了新的支持 Suspense（包括在服务器等待异步数据而不需要二次渲染）和以逐块的形式加载页面内容已提供更好的用户体验的服务器渲染器的设计。你可以在[这个演讲](https://www.youtube.com/watch?v=z-6JC0_cOns)中看到这个早期原型的简介。这个新的服务器渲染器是我们2019年的工作重点，不过具体的时间表还言之过早。和往常一样，它的开发将在 [GitHub 上](https://github.com/facebook/react/pulls?utf8=%E2%9C%93&q=is%3Apr+is%3Aopen+fizz)。
 
