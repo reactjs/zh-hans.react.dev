@@ -82,16 +82,16 @@ h3, p { margin: 5px 0px; }
 要协调好这两个面板，我们需要分 3 步将状态“提升”到他们的父组件中。
 
 1. 从子组件中 **移除** 状态。
-2. 从父组件 **传递** 硬编码数据 
-3. 为父组件添加状态并将其与事件处理函数一起向下传递
+2. 从父组件 **传递** 硬编码数据。 
+3. 为共同的父组件添加状态，并将其与事件处理函数一起向下传递。
 
 这样，`Accordion` 组件就可以控制 2 个 `Panel` 组件，保证同一时间只能展开一个。
 
 <img alt="左侧是两个独立的组件，每个组件都有自己的状态值。右侧是一个包含两个子组件的父组件，它同时拥有两个子组件的状态值。" src="/images/docs/sketches/s_lifting-state-up.png" />
 
-### 第 1 步: 从子组件中移除状态 {/*remove-state-from-the-child-components*/}
+### 第 1 步: 从子组件中移除状态 {/*step-1-remove-state-from-the-child-components*/}
 
-你将把 `Panel` 组件对 `isActive` 的控制权交给他们的父组件。然后再把这个状态通过 `props` 传给子组件。我们先从 `Panel` 组件中 **删除这一行**：
+你将把 `Panel` 组件对 `isActive` 的控制权交给他们的父组件。这意味着，父组件会将 `isActive` 作为 prop 传给子组件 `Panel`。我们可以先从 `Panel` 组件中 **删除这一行** 开始：
 
 ```js
 const [isActive, setIsActive] = useState(false);
@@ -103,17 +103,17 @@ And instead, add `isActive` to the `Panel`'s list of props:
 function Panel({ title, children, isActive }) {
 ```
 
-现在，`Panel` 的父组件就可以通过 [向下传递 prop](/learn/passing-props-to-a-component) 来 *控制* `isActive`。这样就反过来了，`Panel` 组件对 `isActive` 的值 *没有控制权* ——现在完全由父组件决定！
+现在 `Panel` 的父组件就可以通过 [向下传递 prop](/learn/passing-props-to-a-component) 来 *控制* `isActive`。但相反地，`Panel` 组件对 `isActive` 的值 *没有控制权* ——现在完全由父组件决定！
 
-### 第 2 步: 从公共父组件传递硬编码数据 {/*pass-hardcoded-data-from-the-common-parent*/}
+### 第 2 步: 从公共父组件传递硬编码数据 {/*step-2-pass-hardcoded-data-from-the-common-parent*/}
 
-为了实现状态提升，必须找到 *两个* 子组件最近的公共父组件：
+为了实现状态提升，必须定位到你想协调的 *两个* 子组件最近的公共父组件：
 
 * `Accordion` *(最近的公共父组件)*
   - `Panel`
   - `Panel`
 
-在这个例子中，公共父组件是 `Accordion`。因为它位于两个面板之上，可以控制它们的 props，所以它将成为当前激活的面板的“真相之源”。通过 `Accordion` 组件将硬编码值 `isActive`（例如 `true` ）传递给两个面板：
+在这个例子中，公共父组件是 `Accordion`。因为它位于两个面板之上，可以控制它们的 props，所以它将成为当前激活面板的“控制之源”。通过 `Accordion` 组件将硬编码值 `isActive`（例如 `true` ）传递给两个面板：
 
 <Sandpack>
 
@@ -160,15 +160,15 @@ h3, p { margin: 5px 0px; }
 
 </Sandpack>
 
-尝试修改 `Accordion` 组件中 `isActive` 的值，并在屏幕上查看结果。
+你可以尝试修改 `Accordion` 组件中 `isActive` 的值，并在屏幕上查看结果。
 
-### 第 3 步: 为公共父组件添加状态 {/*add-state-to-the-common-parent*/}
+### 第 3 步: 为公共父组件添加状态 {/*step-3-add-state-to-the-common-parent*/}
 
 状态提升通常会改变原状态的数据存储类型。
 
 <img alt="The parent component passes the state setting function to both child components." src="/images/docs/sketches/s_passing-functions-down.png" />
 
-在这个例子中，一次只能激活一个面板。这意味着 `Accordion` 这个父组件需要追踪 *哪个* 面板是活动面板。我们可以用个数字来代表当前活动的 `Panel` 的索引，而不是 `boolean` 值：
+在这个例子中，一次只能激活一个面板。这意味着 `Accordion` 这个父组件需要记录 *哪个* 面板是被激活的面板。我们可以用数字作为当前被激活 `Panel` 的索引，而不是 `boolean` 值：
 
 ```js
 const [activeIndex, setActiveIndex] = useState(0);
@@ -176,7 +176,7 @@ const [activeIndex, setActiveIndex] = useState(0);
 
 当 `activeIndex` 为 `0` 时，激活第一个面板，为 `1` 时，激活第二个面板。
 
-点击 `Panel` 中的“显示”按钮需要更改 `Accordion` 中的活动索引。 `Panel` 中无法直接设置`activeIndex` 的值，因为它是在 `Accordion` 组件中定义的。 `Accordion` 组件需要 *明确地允许* `Panel` 组件通过 [将事件处理程序作为 prop 向下传递](/learn/responding-to-events#passing-event-handlers-as-props) 来更改其状态：
+在任意一个 `Panel` 中点击“显示”按钮都需要更改 `Accordion` 中的激活索引值。 `Panel` 中无法直接设置状态 `activeIndex` 的值，因为该状态是在 `Accordion` 组件内部定义的。 `Accordion` 组件需要 *显式允许* `Panel` 组件通过 [将事件处理程序作为 prop 向下传递](/learn/responding-to-events#passing-event-handlers-as-props) 来更改其状态：
 
 ```js
 <>
@@ -256,29 +256,29 @@ h3, p { margin: 5px 0px; }
 
 </Sandpack>
 
-这样，我们就完成了对状态的提升！把状态移到公共父组件中可以让你更好的管理这两个面板。使用活动索引代替之前的 `是否显示` 标识确保了一次只能激活一个面板。而通过向下传递事件处理函数可以让子组件修改父组件中的状态。
+这样，我们就完成了对状态的提升！将状态移至公共父组件中可以让你更好的管理这两个面板。使用激活索引值代替之前的 `是否显示` 标识确保了一次只能激活一个面板。而通过向下传递事件处理函数可以让子组件修改父组件的状态。
 
 <DeepDive title="受控组件和非受控组件">
 
-通常我们把包含“不受控制”的状态的组件称为“非受控组件”。例如，原本带有 `isActive` 状态变量的 `Panel` 组件是不受控制的，因为其父组件无法改变面板的激活状态。
+通常我们把包含“不受控制”状态的组件称为“非受控组件”。例如，最开始带有 `isActive` 状态变量的 `Panel` 组件就是不受控制的，因为其父组件无法控制面板的激活状态。
 
 相反，当组件中的重要信息是由 props 而不是其自身状态驱动时，就可以认为该组件是“受控组件”。这就允许父组件完全指定其行为。最后带有 `isActive` 属性的 `Panel` 组件是由 `Accordion` 组件控制的。
 
 非受控组件通常很简单，因为它们不需要太多配置。但是当你想把它们组合在一起使用时，就不那么灵活了。受控组件具有最大的灵活性，但它们需要父组件使用 props 对其进行配置。
 
-事实上，“受控”和“非受控”并不是严格的技术术语——通常每个组件都同时拥有内部状态和 props。然而，这是讨论组件如何设计以及提供什么功能的一种有用方式。
+在实践中，“受控”和“非受控”并不是严格的技术术语——通常每个组件都同时拥有内部状态和 props。然而，这对于组件该如何设计和提供什么样功能的讨论是有帮助的。
 
-当编写一个组件时，你应该考虑哪些信息应该受控制（通过 props），哪些信息不应该受控制（通过 state）。不过你后面可以随时更改并重构。
+当编写一个组件时，你应该考虑哪些信息应该受控制（通过 props），哪些信息不应该受控制（通过 state）。当然，你可以随时改变主意并重构代码。
 
 </DeepDive>
 
 ## 每个状态都对应唯一的数据源 {/*a-single-source-of-truth-for-each-state*/}
 
-在 React 应用中，很多组件都有自己的状态。一些状态可能“活跃”在叶子组件（如输入框）附近。其它状态可能在应用程序顶部附近“活动”。例如，路由器通常也是通过将当前路由存储在 React 状态中并通过 props 将其传递下去来实现的！
+在 React 应用中，很多组件都有自己的状态。一些状态可能“活跃”在叶子组件（树形结构最底层的组件）附近，例如输入框。另一些状态可能在应用程序顶部“活动”。例如，客户端路由库也是通过将当前路由存储在 React 状态中，利用 props 将状态层层传递下去来实现的！
 
-**对于每个唯一的状态，都应该有与它对应的组件**。这一原则也被称为拥有[“可信单一数据源”](https://en.wikipedia.org/wiki/Single_source_of_truth)。它并不意味着所有状态都活跃在一个地方——但对每个状态来说，都有一个特定的组成部分来保存这些信息。与复制组件之间的共享状态不同，你需要 *将其提升* 到公共父级，并 *将其传递* 到需要它的子级中。
+**对于每个独一无二的状态，都应该存在拥有该状态的组件**。这一原则也被称为拥有 [“可信单一数据源”](https://en.wikipedia.org/wiki/Single_source_of_truth)。它并不意味着所有状态都活跃在一个地方——对每个状态来说，都需要一个特定的组件来保存这些状态信息。你应该 *将状态提升* 到公共父级，或 *将状态传递* 到需要它的子级中，而不是在组件之间复制共享的状态。
 
-你的应用状态会随着操作而改变。通常，当你在处理每个状态的“活跃”位置时，会进行移除或备份操作。这是整个过程的一部分！
+你的应用会随着你的操作而变化。当你将状态上下移动时，你依然会想要确定每个状态在哪里“活跃”。这都是过程的一部分！
 
 想了解在更多组件中的实践，请阅读 [React 思维](/learn/thinking-in-react).
 
@@ -287,7 +287,7 @@ h3, p { margin: 5px 0px; }
 * 当你想要整合两个组件时，将它们的状态移动到共同的父组件中。
 * 然后在父组件中通过 props 把信息传递下去。
 * 最后，向下传递事件处理程序，以便子组件可以改变父组件的状态。
-* 将组件视为“受控”（由属性驱动）或“不受控”（由状态驱动）是很有用的。
+* 考虑该将组件视为“受控”（由属性驱动）或是“不受控”（由状态驱动）是十分有益的。
 
 </Recap>
 
@@ -295,7 +295,7 @@ h3, p { margin: 5px 0px; }
 
 ### 同步输入状态 {/*synced-inputs*/}
 
-现在有两个独立的输入框。为了让它们的状态保持同步：编辑一个输入框时应使用相同的文本更新另一个输入框，反之亦然。你需要将它们的状态提升到父组件中。
+现在有两个独立的输入框。为了让它们保持同步：即编辑一个输入框时，另一个输入框也会更新相同的文本，反之亦然。
 
 <Hint>
 
@@ -403,7 +403,7 @@ label { display: block; }
 
 在这个例子中，`SearchBar` 组件拥有一个用来控制输入框的 `query` 状态，它的父组件中展示了一个 `List` 组件，但是没有考虑搜索条件。
 
-使用 `filterItems(foods, query)` 方法来通过搜索条件过滤列表项。为了测试你的修改，请在输入框中输入 “寿” 来验证是否能过滤出 “寿司”。
+使用 `filterItems(foods, query)` 方法来通过搜索条件过滤列表项。为了测试修改是否正确，请尝试在输入框中输入 “寿司” ，“烤肉串” 或 “点心”。
 
 可以看到 `filterItems` 已经自动引入了，所以不需要我们自己再引入了。
 

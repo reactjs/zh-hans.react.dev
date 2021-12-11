@@ -1,12 +1,11 @@
 ---
 title: 'React 组件，元素和实例'
-layout: Post
 author: [gaearon]
 ---
 
 许多 React 初学者对**组件、其实例以及元素**之间的区别感到困惑。为什么有三个不同的术语来指代屏幕上绘制的内容？
 
-## 管理实例 {#managing-the-instances}
+## 管理实例 {/*managing-the-instances*/}
 
 如果你不熟悉 React，那么此前你可能仅仅工作用到过组件类和实例。例如，你可能通过新建一个 class 来声明 `Button` _组件_。当 app 运行起来以后，你可能会有若干个拥有自己属性和本地 state 的 _实例_ 运行在屏幕上。这是传统的面向对象 UI 编程。那为什么要引入 _元素_？
 
@@ -54,13 +53,13 @@ class Form extends TraditionalObjectOrientedView {
 
 所以 React 有何不同呢？
 
-## 元素描述了树 {#elements-describe-the-tree}
+## 元素描述了树 {/*elements-describe-the-tree*/}
 
 这正是 React 希望 _元素_ 施展拳脚之处。**元素是一个用来 _描述_ 组件实例或 DOM 节点及其需要属性的普通对象**。它只包含组件类型（比如 `Button`），其属性（比如`color`）以及所有其下子元素的相关信息。
 
 一个元素不是一个确切的实例。他是一种告诉 React 你 _想要_ 在屏幕上看到什么的方法。你不能在元素上调用任何方法。它只是一个携有 `type: (string | ReactClass)` 和 `props: Object`[^1] 字段的不可变描述对象。
 
-### DOM 元素 {#dom-elements}
+### DOM 元素 {/*dom-elements*/}
 
 当一个元素的 `type` 是字符串时，它代表了一个具有该标签名称的 DOM 节点。`props` 对应于它的属性。React 这就是 React 将呈现的内容。举个例子：
 
@@ -95,7 +94,7 @@ class Form extends TraditionalObjectOrientedView {
 
 React 元素易于遍历，无需解析。此外它们比起真实的 DOM 元素更轻——它们只是对象！
 
-### 组件元素 {#component-elements}
+### 组件元素 {/*component-elements*/}
 
 然而，元素的 `type` 究竟是一个函数还是一个类则视 React 组件而定：
 
@@ -169,7 +168,7 @@ const DeleteAccount = () => (
 - `DangerButton` 是一个被指定部分属性的 `Button`。
 - `DeleteAccount` 在一个 `<div>` 中包含一个 `Button` 和一个 `DangerButton` 。
 
-### 组件封装 Element Trees {#components-encapsulate-element-trees}
+### 组件封装 Element Trees {/*components-encapsulate-element-trees*/}
 
 当 React 遇到一个带有函数或类 `type` 的元素时，它知道要问 _那个_ 组件它要呈现什么元素，并给出相应的 `props`。
 
@@ -237,7 +236,7 @@ const Form = ({isSubmitted, buttonText}) => {
 
 我们让 React 创建，更新，销毁实例。我们通过组件返回的元素 _描述_ 它们，而 React 负责管理这些实例。
 
-### 组件可以是类或函数 {#components-can-be-classes-or-functions}
+### 组件可以是类或函数 {/*components-can-be-classes-or-functions*/}
 
 在之前的代码中，`Form`, `Message` 和 `Button` 是 React 组件。它们既可以像此前那样被写作函数，也可以通过`React.Component`写作类。这三种声明组件的方式几乎是等效的：
 
@@ -301,7 +300,7 @@ class Button extends React.Component {
 
 **然而，不论函数或类，根本上来说它们都是 React 组件。它们将 props 作为输入，返回元素作为输出。**
 
-### 自上而下的的协调 {#top-down-reconciliation}
+### 自上而下的的协调 {/*top-down-reconciliation*/}
 
 当你调用：
 
@@ -364,8 +363,7 @@ React 先将那些 `props` 传入 `Form` 组件，随后等待返回 element tre
 
 React 负责为每个类组件创建一个实例，所以你可以用面向对象的方法写一个带有方法和本地状态的组件。但除此之外，在 React 的编程模型中实例并不十分重要，而且这些都由它自己管理。
 
-## 总结 {#summary}
-## Summary {#summary}
+## 总结 {/*summary*/}
 
 一个 _元素_ 是一个普通的对象。它被用来描述什么需要在屏幕上显示，根据 DOM 节点还是其他组件。元素可以在它们的 props 里包含其他元素。创建一个 React 元素很廉价。一旦一个元素被创建了，它就不再改变。
 
@@ -379,7 +377,7 @@ _实例_ 是你在编写组件类中称为 `this` 的东西。它在[保存本�
 
 最后，要新建一个元素，使用[`React.createElement()`](/docs/top-level-api.html#react.createelement)， [JSX](/docs/jsx-in-depth.html), 或 [element factory helper](/docs/top-level-api.html#react.createfactory)。不要在真实代码中将元素写作普通对象——知道它们是处于底层的普通对象足矣。
 
-## 拓展阅读 {#further-reading}
+## 拓展阅读 {/*further-reading*/}
 
 - [Introducing React Elements](/blog/2014/10/14/introducing-react-elements.html)
 - [Streamlining React Elements](/blog/2015/02/24/streamlining-react-elements.html)
