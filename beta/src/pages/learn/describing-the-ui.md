@@ -360,7 +360,7 @@ export default function PackingList() {
 
 <LearnMore path="/learn/conditional-rendering">
 
-阅读 **[条件渲染](/learn/conditional-rendering)** 来学习有条件渲染内容的不同方法。
+阅读 **[条件渲染](/learn/conditional-rendering)** 来学习使用不同的方法去有条件地渲染内容。
 
 </LearnMore>
 
