@@ -238,14 +238,14 @@ export default function Accordion() {
   return (
     <>
       <Panel
-        title="Ingredients"
+        title="原料"
         isActive={activeIndex === 0}
         onShow={() => setActiveIndex(0)}
       >
         牛奶、茶包和一根肉桂棒。
       </Panel>
       <Panel
-        title="Recipe"
+        title="配方"
         isActive={activeIndex === 1}
         onShow={() => setActiveIndex(1)}
       >
