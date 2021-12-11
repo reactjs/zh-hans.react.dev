@@ -6,7 +6,7 @@ translators:
 
 <Intro>
 
-随着你的应用不断变大，去刻意的关注应用状态如何组织，以及数据如何在组件之间流动会对你很有帮助。冗余或重复的状态往往是缺陷的根源。
+随着你的应用不断变大，更有意识的去关注应用状态如何组织，以及数据如何在组件之间流动会对你很有帮助。冗余或重复的状态往往是缺陷的根源。
 在本节中，你将学习如何组织好状态，如何保持状态更新逻辑的可维护性，以及如何跨组件共享状态。
 
 </Intro>
@@ -15,10 +15,10 @@ translators:
 
 * [如何将 UI 变更视为状态变更](/learn/reacting-to-input-with-state)
 * [如何组织好状态](/learn/choosing-the-state-structure)
-* [“状态提升”如何在组件之间共享状态](/learn/sharing-state-between-components)
+* [如何使用“状态提升”在组件之间共享状态](/learn/sharing-state-between-components)
 * [如何控制状态的保留或重置](/learn/preserving-and-resetting-state)
 * [如何在函数中整合复杂的状态逻辑](/learn/extracting-state-logic-into-a-reducer)
-* [如何避免使用“逐层props”传递数据](/learn/passing-data-deeply-with-context)
+* [如何避免数据通过 prop 逐级透传](/learn/passing-data-deeply-with-context)
 * [如何随着应用的增长去扩展状态管理](/learn/scaling-up-with-reducer-and-context)
 
 </YouWillLearn>
@@ -111,7 +111,7 @@ function submitForm() {
 
 ## 选择状态结构 {/*choosing-the-state-structure*/}
 
-良好的状态组织可以把易于修改和调试的组件与频繁出问题的组件区分开来。最重要的原则是，状态不应包含冗余或重复的信息。如果包含一些多余的状态，我们会很容易忘记去更新它，从而导致问题产生！
+良好的状态组织，可以区分开易于修改和调试的组件与频繁出问题的组件。最重要的原则是，状态不应包含冗余或重复的信息。如果包含一些多余的状态，我们会很容易忘记去更新它，从而导致问题产生！
 
 例如，这个表单有一个多余的 `fullName` 状态变量：
 
@@ -203,7 +203,7 @@ export default function Form() {
         />
       </label>
       <h3>
-        您的全名是：{fullName}
+        您的全名是：{lastName + firstName}
       </h3>
     </>
   );
@@ -218,15 +218,15 @@ label { display: block; margin-bottom: 5px; }
 
 <LearnMore path="/learn/choosing-the-state-structure">
 
-阅读 **[选择状态结构](/learn/choosing-the-state-structure)** 来学习如何简化状态更新并避开常见问题。
+阅读 **[选择状态结构](/learn/choosing-the-state-structure)** 来学习如何组织状态并避开错误。
 
 </LearnMore>
 
 ## 在组件间共享状态 {/*sharing-state-between-components*/}
 
-有时候，你希望两个组件的状态始终同步更改。要实现这一点，可以将相关状态从这两个组件上移除，并把状态放到它们的公共父级，再通过属性将状态传递给这两个组件。这被称为“状态提升”，这是编写 React 代码时常做的事。
+有时候你希望两个组件的状态始终同步更改。要实现这一点，可以将相关状态从这两个组件上移除，并把这些状态移到最近的父级组件，然后通过 props 将状态传递给这两个组件。这被称为“状态提升”，这是编写 React 代码时常做的事。
 
-在以下示例中，要求每次只能激活一个面板。要实现这一点，父组件将保留状态并为其子组件指定属性，而不是将活动状态保留在每个面板中。
+在以下示例中，要求每次只能激活一个面板。要实现这一点，父组件将管理激活状态并为其子组件指定 prop，而不是将激活状态保留在各自的子组件中。
 
 <Sandpack>
 
@@ -496,7 +496,7 @@ textarea {
 
 ## 提取状态逻辑到 reducer 中 {/*extracting-state-logic-into-a-reducer*/}
 
-具有跨多个事件处理程序的多状态更新组件可能会令人不知所措。对于这种情况，你可以将组件外部的所有状态更新逻辑合并到一个称为“reducer”的函数中。这样，事件处理程序就会变得简洁，因为它们只需要指定用户的“操作”。在文件的底部，reducer 函数指定状态应该如何更新以响应每个操作！
+对于那些需要更新多个状态的组件来说，过于分散的事件处理程序可能会令人不知所措。对于这种情况，你可以在组件外部将所有状态更新逻辑合并到一个称为“reducer”的函数中。这样，事件处理程序就会变得简洁，因为它们只需要指定用户的“操作”。在文件的底部，reducer 函数指定状态应该如何更新以响应每个操作！
 
 <Sandpack>
 
@@ -692,9 +692,9 @@ ul, li { margin: 0; padding: 0; }
 
 ## 使用 Context 进行深层数据传递 {/*passing-data-deeply-with-context*/}
 
-通常，你会通过 props 将信息从父组件传递给子组件。但是，如果要在树中深入传递一些 prop，或者 UI 树中的许多组件需要相同的 prop，那么传递 prop 可能会变得很麻烦。Context 允许父组件将一些信息提供给它下面的任何组件，不管它有多深，而无需通过 props 显式传递。
+通常，你会通过 props 将信息从父组件传递给子组件。但是，如果要在组件树中深入传递一些 prop，或者树里的许多组件需要使用相同的 prop，那么传递 prop 可能会变得很麻烦。Context 允许父组件将一些信息提供给它下层的任何组件，不管该组件多深层也无需通过 props 逐层透传。
 
-这里，`Heading` 组件通过“询问”最近的 `Section` 来确定其标题级别。每个 `Section` 通过询问父 `Section` 并向其添加一个来跟踪自己的级别。每个 `Section` 都向它下面的所有组件提供信息，而不需要传递 props——它是通过 Context 来实现的。
+这里的 `Heading` 组件通过“询问”最近的 `Section` 来确定其标题级别。每个 `Section` 的级别是通过给父 `Section` 添加的级别来确定的。每个 `Section` 都向它下层的所有组件提供信息，不需要逐层传递 props，而是通过 Context 来实现。
 
 <Sandpack>
 
@@ -788,7 +788,7 @@ export const LevelContext = createContext(0);
 
 <LearnMore path="/learn/passing-data-deeply-with-context">
 
-阅读 **[使用 Context 进行深层数据传递](/learn/passing-data-deeply-with-context)** 来学习如何使用上下文代替属性传递。
+阅读 **[使用 Context 进行深层数据传递](/learn/passing-data-deeply-with-context)** 来学习如何使用 Context 来代替传递 props。
 
 </LearnMore>
 
@@ -796,7 +796,7 @@ export const LevelContext = createContext(0);
 
 Reducer 帮助你合并组件的状态更新逻辑。Context 帮助你将信息深入传递给其他组件。你可以将 reducers 和 context 组合在一起使用，以管理复杂应用的状态。
 
-基于这种方法，使用 reducer 来管理一个具有复杂状态的父组件。组件树中任意位置的其他组件都可以通过上下文读取其状态。还可以派发操作来更新状态。
+基于这种想法，使用 reducer 来管理一个具有复杂状态的父组件。组件树中任何深度的其他组件都可以通过 context 读取其状态。还可以 dispatch 一些 action 来更新状态。
 
 <Sandpack>
 
