@@ -578,7 +578,7 @@ let nextId = 3;
 const initialTasks = [
   { id: 0, text: '买牛奶', done: true },
   { id: 1, text: '吃玉米饼', done: false },
-  { id: 2, text: '泡茶', done: false },
+  { id: 2, text: '泡茶', done: false }
 ];
 ```
 
@@ -881,7 +881,7 @@ function tasksReducer(tasks, action) {
 const initialTasks = [
   { id: 0, text: '买牛奶', done: true },
   { id: 1, text: '吃玉米饼', done: false },
-  { id: 2, text: '泡茶', done: false },
+  { id: 2, text: '泡茶', done: false }
 ];
 ```
 
