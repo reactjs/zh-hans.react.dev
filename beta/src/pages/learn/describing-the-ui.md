@@ -366,7 +366,7 @@ export default function PackingList() {
 
 ## 渲染列表 {/*rendering-lists*/}
 
-你通常希望显示来自数据集合的多个类似组件。你可以使用 JavaScript 的 `filter()` 和`map()` 和 React 来过滤和转换你的数据数组为一个组件数组。
+你通常希望从数据集合来显示来多个类似组件。你可以在React中使用 JavaScript 的 `filter()` 和`map()` 来过滤和转换，让你的数据数组成为一个组件数组。
 
 对于每个数组项，你需要指定一个 `key`。通常你需要使用数据库中的 ID 作为 `key`。即使列表发生了变化，React 也可以通过键来跟踪每个项目在列表中的位置。
 
