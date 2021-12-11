@@ -231,7 +231,7 @@ body > div > div { padding: 20px; }
 
 <LearnMore path="/learn/javascript-in-jsx-with-curly-braces">
 
-阅读 **[在 JSX 中使用大括号的 JavaScript](/learn/javascript-in-jsx-with-curly-braces)** 来学习如何从 JSX 中访问 JavaScript 数据。
+阅读 **[在 JSX 中使用花括号来编写 JavaScript](/learn/javascript-in-jsx-with-curly-braces)** 来学习如何从 JSX 中访问 JavaScript 数据。
 
 </LearnMore>
 
