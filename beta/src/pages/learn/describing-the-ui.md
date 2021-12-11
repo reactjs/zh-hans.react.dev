@@ -21,7 +21,7 @@ React 是一个用于构建用户界面（UI）的 JavaScript 库 ，用户界�
 * [如何用 props 配置组件](/learn/passing-props-to-a-component)
 * [如何有条件地渲染组件](/learn/conditional-rendering)
 * [如何在同一时间渲染多个组件](/learn/rendering-lists)
-* [如何通过保持组件的纯粹性来避免混乱的错误](/learn/keeping-components-pure)
+* [如何通过保持组件的纯粹性来避免令人困惑的错误](/learn/keeping-components-pure)
 
 </YouWillLearn>
 
