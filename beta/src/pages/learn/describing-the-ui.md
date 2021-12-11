@@ -14,7 +14,7 @@ React 是一个用于构建用户界面（UI）的 JavaScript 库 ，用户界�
 
 <YouWillLearn>
 
-* [如何去写你的第一个组件](/learn/your-first-component)
+* [如何创建你的第一个组件](/learn/your-first-component)
 * [在什么时候创建多文件组件以及如何创建多文件组件](/learn/importing-and-exporting-components)
 * [如何使用 JSX 为 JavaScript 添加标记](/learn/writing-markup-with-jsx)
 * [如何在 JSX 中使用大括号的来从组件中使用 JavaScript 功能](/learn/javascript-in-jsx-with-curly-braces)
