@@ -1,27 +1,27 @@
 ---
-title: Quick Start
+title: 开始
 ---
 
 <Intro>
 
-Welcome to the React documentation! Here is an overview of what you can find on this site.
+欢迎阅读 React 文档! 此文档是您在本站点能找到的信息的概览。
 
 </Intro>
 
 <YouWillLearn>
 
-* [How to set up React](/learn/installation)
-* [How to think about building user interfaces with React](/learn/thinking-in-react)
-* [How to get something rendering on the screen](/learn/describing-the-ui)
-* [How to make your user interface respond to interactions](/learn/adding-interactivity)
-* [How to keep your logic maintainable as your app grows](/learn/managing-state)
-* [How to step outside React when necessary](/learn/escape-hatches)
+* [如何安装 React](/learn/installation)
+* [如何思考用 React 构建用户界面](/learn/thinking-in-react)
+* [如何在屏幕中渲染内容](/learn/describing-the-ui)
+* [如何让您的用户界面响应交互](/learn/adding-interactivity)
+* [随着您的应用的增长，如何保持逻辑的可维护性](/learn/managing-state)
+* [必要时如何使用安全舱逃离 React](/learn/escape-hatches)
 
 </YouWillLearn>
 
-## Introduction {/*introduction*/}
+## 介绍
 
-This is a tiny React app. To get your first taste of React, **edit the code below** and make it display your name:
+这是一个最基本的 React 应用。用于让您第一次品尝 React，**编辑下面的代码** 然后让它显示您的名字：
 
 <Sandpack>
 
@@ -43,29 +43,29 @@ export default function App() {
 
 </Sandpack>
 
-### What is React? {/*what-is-react*/}
+### React 是什么？
 
-React is a JavaScript library for building user interfaces.
+React 是一个用于构建用户界面的 JavaScript 库
 
-React stands at the intersection of design and programming. **It lets you take a complex user interface, and break it down into nestable and reusable pieces called ["components"](/learn/your-first-component) that fit well together.** If you have a programming background, this might remind you of making a program out of functions. If you're a designer, this might remind you of composing a design out of layers. If you're new to both disciplines, that's okay! Many people get into them with React. Using React might also remind you of building a castle out of toy bricks. Sometimes, it's even fun.
+React 擅长交互设计和编程。**他让您创建复杂的用户界面，并且将其分解为[组件](/learn/your-first-component)，指的是可嵌套和可重用的部分，可以很好的进行组合。** 如果您已经有编程的背景，这可能会让您想起用函数来编程。如果您是一名设计师，它可能会让您联想到图层组合设计。如果您对这两门学科都是新手，那也没关系。很多人会通过 React 去掌握他们。使用 React 也许还会让您想起用玩具砖块来建造城堡。有时候，他甚至非常有趣。
 
-React does not prescribe how you build your entire application. It helps you define and compose components, but stays out of your way in other questions. This means that you will either pick one of the ecosystem solutions for problems like routing, styling, and data fetching, or [use a framework](/learn/start-a-new-react-project#building-with-react-and-a-framework) that provides great defaults.
+React 没有规定要如何构建整个应用程序。它能帮助您定义和组合组件，但在其他问题中不会妨碍您。这意味您可以选择一个生态系统解决方案来解决路由、样式和数据获取等问题，或者您也可以 [使用一个提供了很多内置功能的框架](/learn/start-a-new-react-project#building-with-react-and-a-framework)
 
-### What can you do with React? {/*what-can-you-do-with-react*/}
+### 您可以用 React 做什么？
 
-Quite a lot, really! People use React to create all kinds of user interfaces--from small controls like buttons and dropdowns to entire apps. **These docs will teach you to use React on the web.** However, most of what you'll learn here applies equally for [React Native](https://reactnative.dev/) which lets you build apps for Android, iOS, and even [Windows and macOS](https://microsoft.github.io/react-native-windows/).
+实际上，大量开发者们使用 React 来创建各种用户界面——从像按钮和下拉菜单这样的小控件到整个应用程序。 **这些文档将教您在网络上使用 React。** 然而，您在这里学到的大部分内容同样适用于 [React Native](https://reactnative.dev/)，它可以让您为 Android、iOS，甚至 [Windows 和 macOS](https://microsoft.github.io/react-native-windows/) 构建应用程序。
 
-If you're curious which products you use everyday are built with React, you can install the [React Developer Tools](/learn/react-developer-tools). Whenever you visit an app or a website built with React (like this one!), its icon will light up in the toolbar.
+如果您好奇您日常使用的哪些产品是用 React 构建的，您可以安装 [React Developer Tools](/learn/react-developer-tools)。 每当您访问使用 React 构建的应用程序或网站时（就像这个文档网站！），它的图标会在工具栏中亮起。
 
-### React uses JavaScript {/*react-uses-javascript*/}
+### React 使用 JavaScript
 
-With React, you will describe your visual logic in JavaScript. This takes some practice. If you're learning JavaScript and React at the same time, you're not alone--but at times, it will be a little bit more challenging! On the upside, **much of learning React is really learning JavaScript,** which means you will take your learnings far beyond React.
+使用 React，您将在 JavaScript 中可视化地描述您的逻辑。这需要一些练习。如果您同时学习 JavaScript 和 React，很多人都这么干，但有时，它会更具挑战性！ 从好的方面来说，**大部分学习 React 都是在学习 JavaScript，** 这意味着您将学到的东西远远超出 React。
 
-Check your knowledge level with [this JavaScript overview](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript). It will take you between 30 minutes and an hour but you will feel more confident learning React. [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [javascript.info](https://javascript.info/) are two great resources to use as a reference.
+使用 [此 JavaScript 概述](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) 检查您的知识水平。这将花费您 30 分钟到一个小时，但您会更有信心学习 React。 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) 和 [javascript.info](https://javascript.info/) 是两个很好的参考资源。
 
-<DeepDive title="Installation (optional)">
+<DeepDive title="安装 (可选)">
 
-If you're just starting to learn React, you don't need to install anything. Instead, we recommend to follow along using the interactive sandboxes that appear throughout this site. They look like this:
+如果您刚开始学习 React，您不需要安装任何东西。相反，我们建议您继续使用本网站中出现的 CodeSandbox。 它们看起来像这样：
 
 <Sandpack>
 
@@ -81,23 +81,23 @@ export default function App() {
 
 </Sandpack>
 
-When you're ready to start a project, there are several options. You can write React code online and save your work in an environment like [CodeSandbox](https://react.new/). You can add React as a `<script>` tag to any HTML file to try it for a small part of your existing webpage. Or you can create a whole new React app, with or without a framework. **Use the [Installation](/learn/installation) page to pick what works best for you--but you can skip it for now.**
+当您准备好开始一个项目时，有多种选择。您可以在线编写 React 代码并将您的代码保存在类似 [CodeSandbox](https://react.new/) 的环境中。您也可以将 React 作为 `<script>` 标签添加到任何 HTML 文件中，以便于在现有网页的一小部分中试用它。或者您可以创建一个全新的 React 应用程序，有或没有框架都行。**使用 [安装](/learn/installation) 页面选择最适合您的方法——但您现在可以跳过它。**
 
 </DeepDive>
 
-## Learn React {/*learn-react*/}
+## 学习 React
 
-There are a few ways to get started:
+有几种方法可以开始：
 
-- If you're **feeling impatient and learn by example,** head straight to **[Thinking in React](/learn/thinking-in-react)**. This tutorial doesn't explain the syntax in detail, but it will give you an idea of what it feels like to build user interfaces with React.
-- If you're **familiar with the concepts and want to browse the available APIs**, check out **[the API reference](/reference)**.
-- The rest of this documentation is organized in chapters that **introduce each concept step by step**--with many interactive examples, detailed explanations, and challenges to check your understanding. You don't have to read them sequentially, but each next page assumes you're familiar with concepts from the previous pages.
+- 如果您**觉得迫不及待并通过例子学习**直接前往 **[React 哲学](/learn/thinking-in-react)**。 本教程不会详细解释语法，但它会让您了解使用 React 构建用户界面的感受。
+- 如果您**熟悉这些概念并希望浏览可用的 API**，请查看 **[API 参考](/reference)**。
+- 本文档的其余部分按章节组织，**逐步介绍每个概念**--带有许多交互式例子、详细说明和挑战以保证您的理解。 您不必按顺序阅读它们，但每个下一页都假设您熟悉前几页中的概念。
 
-To save you time, we provide **a brief overview of each chapter** below.
+为了节省您的时间，我们在下面提供**每章的简要概述**。 
 
-### Chapter 1 overview: Describing the UI {/*chapter-1-overview-describing-the-ui*/}
+### 第 1 章概述：描述 UI
 
-React applications are built from isolated pieces of UI called ["components"](/learn/your-first-component). A React component is a JavaScript function that you can sprinkle with markup. Components can be as small as a button, or as large as an entire page. Here, a *parent* `Gallery` component renders three *child* `Profile` components:
+React 应用程序由称为 ["components"](/learn/your-first-component) 的独立 UI 部分构建。 React 组件是一个 JavaScript 函数，您可以在其中添加标记。 组件可以小到一个按钮，也可以大到整个页面。下面的例子中，一个*父*组件 `Gallery` 渲染了三个*子*组件 `Profile` ：
 
 <Sandpack>
 
@@ -115,7 +115,7 @@ function Profile() {
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>了不起的科学家</h1>
       <Profile />
       <Profile />
       <Profile />
@@ -131,9 +131,9 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-The markup in the example above looks a lot like HTML. This syntax is called [JSX](/learn/writing-markup-with-jsx), and it is a bit stricter (for example, you have to close all the tags). Note that the CSS class is specified as `className` in JSX.
+上面例子中的标记看起来很像 HTML。 这种语法叫做 [JSX](/learn/writing-markup-with-jsx)，它更严格一些（例如，所有标签必须闭合）。请注意，CSS 类在 JSX 中指定为 `className`。
 
-Just like you can pass some information to the browser `<img>` tag, you can also pass information to your own components like `<Profile>`. Such information is called [_props_](/learn/passing-props-to-a-component). Here, three `<Profile>`s receive different props:
+就像你可以将一些信息传递给浏览器`<img>` 标签一样，你也可以将信息传递给你自己的组件，比如`<Profile>`。 此类信息称为 [_props_](/learn/passing-props-to-a-component)。 下面的例子中，三个 `<Profile>` 接收不同的 props：
 
 <Sandpack>
 
@@ -151,7 +151,7 @@ function Profile({ name, imageUrl }) {
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>了不起的科学家</h1>
       <Profile
         name="Lin Lanying"
         imageUrl="https://i.imgur.com/1bX5QH6.jpg"
@@ -176,9 +176,9 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-You might wonder why `className="avatar"` uses quotes but `src={imageUrl}` uses curly braces. In JSX, curly braces are like a ["window into JavaScript"](/learn/javascript-in-jsx-with-curly-braces). They let you run a bit of JavaScript right in your markup! So `src={imageUrl}` reads the `imageUrl` prop declared on the first line and passed from the parent `Gallery` component.
+你可能想知道为什么 `className="avatar"` 使用引号，而 `src={imageUrl}` 使用花括号。在 JSX 中，花括号就像一个 ["进入 JavaScript 的窗口"](/learn/javascript-in-jsx-with-curly-braces)。 它们让您可以在标记中直接运行一些 JavaScript！所以 `src={imageUrl}` 读取第一行声明的 `imageUrl` prop，并从父组件 `Gallery` 传递过来。
 
-In the above example, all the data was written directly in markup. However, you'll often want to keep it separately. Here, the data is kept in an array. In React, you use JavaScript functions like [`map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) to [render lists](/learn/rendering-lists) of things.
+在上面的例子中，所有的数据都是直接写在标记中的。但是，您通常希望将其单独保存。下面的例子，数据保存在一个数组中。在 React 中，你使用 JavaScript 函数，如 [`map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 来[渲染列表](/learn/rendering-lists) 的东西。 
 
 <Sandpack>
 
@@ -189,7 +189,7 @@ import Profile from './Profile.js';
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>了不起的科学家</h1>
       {people.map(person => (
         <Profile
           key={person.id}
@@ -252,24 +252,24 @@ img { margin: 0 10px 10px 0; }
 
 <LearnMore path="/learn/describing-the-ui">
 
-Read **[Describing the UI](/learn/describing-the-ui)** to learn how to make things appear on the screen, including declaring components, importing them, writing JSX with the curly braces, and writing conditions and lists.
+阅读**[描述 UI](/learn/describing-the-ui)** 了解如何让东西出现在屏幕上，包括声明组件、导入它们、用大括号编写 JSX 以及编写条件和列表。
 
 </LearnMore>
 
-### Chapter 2 overview: Adding interactivity {/*chapter-2-overview-adding-interactivity*/}
+### 第 2 章概述：添加交互性
 
-Components often need to change what’s on the screen as a result of an interaction. Typing into the form should update the input field, clicking “next” on an image carousel should change which image is displayed, clicking “buy” puts a product in the shopping cart. Components need to “remember” things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called [*state*](/learn/state-a-components-memory).
+作为交互的结果，组件通常需要更改屏幕上的内容。输入表单应该更新输入字段，单击图像轮播上的“下一步”应该更改显示的图像，单击“购买”将产品放入购物车。组件需要“记住”一些东西：当前输入值、当前图像、购物车。在 React 中，这种特定于组件的内存称为 [*state*](/learn/state-a-components-memory)。
 
-You can add state to a component with a [`useState`](/reference/usestate) Hook. Hooks are special functions that let your components use React features (state is one of those features). The `useState` Hook lets you declare a state variable. It takes the initial state and returns a pair of values: the current state, and a state setter function that lets you update it.
+您可以使用 [`useState`](/reference/usestate) Hook 向组件添加 state。 Hooks 是一种特殊的函数，可以让你的组件使用 React 特性（state 是这些特性之一）。`useState` Hook 允许你声明一个 state 变量。它接受初始 state 并返回一对值：当前 state 和一个允许您更新它的 state 设置器函数。
 
-This `Gallery` component needs to remember two things: the current image index (initially, `0`), and whether the user has toggled "Show details" (initially, `false`):
+这个 `Gallery` 组件需要记住两件事：当前图像索引（默认值为 `0`），以及用户是否切换了“显示详细信息”（默认值为 `false`）： 
 
 ```js
 const [index, setIndex] = useState(0);
 const [showMore, setShowMore] = useState(false);
 ```
 
-Notice how clicking the buttons updates the screen:
+请注意单击按钮如何更新屏幕：
 
 <Sandpack>
 
@@ -293,17 +293,16 @@ export default function Gallery() {
   return (
     <>
       <button onClick={handleNextClick}>
-        Next
+        下一个
       </button>
       <h2>
-        <i>{sculpture.name} </i>
-        by {sculpture.artist}
+        {sculpture.artist} 的 <i>{sculpture.name} </i>
       </h2>
       <h3>
-        ({index + 1} of {sculptureList.length})
+        ({index + 1} / {sculptureList.length})
       </h3>
       <button onClick={handleMoreClick}>
-        {showMore ? 'Hide' : 'Show'} details
+        {showMore ? '隐藏' : '显示'} 详情
       </button>
       {showMore && <p>{sculpture.description}</p>}
       <img
@@ -367,7 +366,7 @@ export const sculptureList = [{
 }, {
   name: 'Terracotta Army',
   artist: 'Unknown Artist',
-  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
+  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consited of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
   url: 'https://i.imgur.com/HMFmH6m.jpg',
   alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
 }, {
@@ -408,7 +407,7 @@ button {
 
 </Sandpack>
 
-State can hold complex values, too. For example, if you're implementing a form, you can keep an object in state with different fields. The `...` syntax in the below example lets you [create new objects based on existing ones](/learn/updating-objects-in-state).
+State 也可以保存复杂的值。例如，如果您正在实现一个表单，您可以在 state 中保持一个具有不同字段的对象。 下面示例中的 `...` 语法允许您[基于现有对象创建新对象](/learn/updating-objects-in-state)。
 
 <Sandpack>
 
@@ -446,14 +445,14 @@ export default function Form() {
   return (
     <>
       <label>
-        First name:
+        名：
         <input
           value={person.firstName}
           onChange={handleFirstNameChange}
         />
       </label>
       <label>
-        Last name:
+        姓：
         <input
           value={person.lastName}
           onChange={handleLastNameChange}
@@ -483,7 +482,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-You can also hold arrays in state. This lets you add, remove, or change things in a list in response to user interactions. Depending on what you want to do, there are [different ways to make new arrays from existing ones](/learn/updating-arrays-in-state).
+您还可以将数组保持在 state。 这允许您添加、删除或更改列表中的内容以响应用户交互。根据您想要做什么，这里有[从现有数组创建新数组的不同方法](/learn/updating-arrays-in-state)。
 
 <Sandpack>
 
@@ -498,7 +497,7 @@ export default function List() {
 
   return (
     <>
-      <h1>Inspiring sculptors:</h1>
+      <h1>鼓舞人心的雕塑家：</h1>
       <input
         value={name}
         onChange={e => setName(e.target.value)}
@@ -509,7 +508,7 @@ export default function List() {
           ...artists,
           { id: nextId++, name: name }
         ]);
-      }}>Add</button>
+      }}>添加</button>
       <ul>
         {artists.map(artist => (
           <li key={artist.id}>{artist.name}</li>
@@ -524,15 +523,15 @@ export default function List() {
 
 <LearnMore path="/learn/adding-interactivity">
 
-Read **[Adding Interactivity](/learn/adding-interactivity)** to learn how to update the screen on interaction, including adding event handlers, declaring and updating state, and the different ways to update objects and arrays in state.
+阅读**[添加交互性](/learn/adding-interactivity)** 了解如何在交互时更新屏幕，包括添加事件处理程序、声明和更新 state，以及在 state 中更新对象和数组的不同方法。
 
 </LearnMore>
 
-### Chapter 3 overview: Managing state {/*chapter-3-overview-managing-state*/}
+### 第 3 章概述： 管理 State
 
-You'll often face a choice of _what exactly_ to put into state. Should you use one state variable or many? An object or an array? How should you [structure your state](/learn/choosing-the-state-structure)? The most important principle is to **avoid redundant state**. If some information never changes, it shouldn't be in state. If some information is received from parent by props, it shouldn't be in state. And if you can compute something from other props or state, it shouldn't be in state either!
+您经常会面临选择_究竟_要放入 state 的问题。 您应该使用一个 state 变量还是多个 state 变量？ 对象还是数组？ 你应该如何[构建你的 state](/learn/choosing-the-state-structure)？ 最重要的原则是**避免冗余 state**。 如果某些信息永远不会改变，它就不应该处于 state。 如果通过 props 从父组件收到一些信息，它不应该处于 state 中。 如果你可以从其他 props 或 state 计算出一些东西，它也不应该处于 state 中！
 
-For example, this form has a **redundant** `fullName` state variable:
+例如，这个表单有一个多余的 `fullName` state 变量：
 
 <Sandpack>
 
@@ -556,24 +555,23 @@ export default function Form() {
 
   return (
     <>
-      <h2>Let’s check you in</h2>
       <label>
-        First name:{' '}
+        名：{' '}
         <input
           value={firstName}
           onChange={handleFirstNameChange}
         />
       </label>
       <label>
-        Last name:{' '}
+        姓：{' '}
         <input
           value={lastName}
           onChange={handleLastNameChange}
         />
       </label>
-      <p>
-        Your ticket will be issued to: <b>{fullName}</b>
-      </p>
+      <h3>
+        您的姓名是：{fullName}
+      </h3>
     </>
   );
 }
@@ -585,7 +583,7 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-You can remove it and simplify the code by calculating `fullName` while the component is rendering:
+您可以通过在组件渲染时计算 `fullName` 来删除它并简化代码：
 
 <Sandpack>
 
@@ -608,24 +606,23 @@ export default function Form() {
 
   return (
     <>
-      <h2>Let’s check you in</h2>
       <label>
-        First name:{' '}
+        名：{' '}
         <input
           value={firstName}
           onChange={handleFirstNameChange}
         />
       </label>
       <label>
-        Last name:{' '}
+        姓：{' '}
         <input
           value={lastName}
           onChange={handleLastNameChange}
         />
       </label>
-      <p>
-        Your ticket will be issued to: <b>{fullName}</b>
-      </p>
+      <h3>
+        您的姓名是：{fullName}
+      </h3>
     </>
   );
 }
@@ -637,9 +634,7 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-This might seem like a small change, but many bugs in React apps are fixed this way!
-
-Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as ["lifting state up"](/learn/sharing-state-between-components), and it's one of the most common things you will do writing React code. For example, in an accordion like below, only one panel should be active at a time. Instead of keeping the active state inside each individual panel, the parent component holds the state and specifies the props for its children.
+有时，您希望两个组件的 state 始终一起更改。要做到这一点，在它们两个中都删除该 state，将它移动到它们最近的公共父节点，然后通过 props 将它传递给它们。 这被称为["提升 state"](/learn/sharing-state-between-components)，这是编写 React 代码时最常见的事情之一。 例如，在像下面这样的手风琴中，一次应该只有一个面板处于激活状态。父组件不应该将激活 state 保存在每个单独的面板内，而是保存在父组件的 state 中并通过 props 指定给子组件。
 
 <Sandpack>
 
@@ -650,20 +645,20 @@ export default function Accordion() {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <>
-      <h2>Almaty, Kazakhstan</h2>
       <Panel
-        title="About"
+        title="配料"
         isActive={activeIndex === 0}
         onShow={() => setActiveIndex(0)}
       >
-        With a population of about 2 million, Almaty is Kazakhstan's largest city. From 1929 to 1997, it was its capital city.
+        牛奶，茶包和肉桂棒。
       </Panel>
       <Panel
-        title="Etymology"
+        title="食谱"
         isActive={activeIndex === 1}
         onShow={() => setActiveIndex(1)}
       >
-        The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for "apple" and is often translated as "full of apples". In fact, the region surrounding Almaty is thought to be the ancestral home of the apple, and the wild <i lang="la">Malus sieversii</i> is considered a likely candidate for the ancestor of the modern domestic apple.
+        加热牛奶，将茶包放入锅中。
+        加入肉桂棒。
       </Panel>
     </>
   );
@@ -682,7 +677,7 @@ function Panel({
         <p>{children}</p>
       ) : (
         <button onClick={onShow}>
-          Show
+          展示
         </button>
       )}
     </section>
@@ -702,18 +697,18 @@ h3, p { margin: 5px 0px; }
 
 <LearnMore path="/learn/managing-state">
 
-Read **[Managing State](/learn/managing-state)** to learn how to keep your components maintainable, including how to structure state well, how to share it between components, and how to pass it deep into the tree.
+阅读 **[管理 State](/learn/managing-state)** 了解如何保持组件的可维护性，包括如何很好地构建 state，如何在组件之间共享 state，以及如何将 state 传递到树的深处。
 
 </LearnMore>
 
-## Next steps {/*next-steps*/}
+## 下一步
 
-This page was fast-paced! If you've read this far, you have already seen 80% of React you will use on a daily basis.
+这个页面是快节奏的！如果读到这里，您已经看到了日常使用 React 的 80%。
 
-Your next steps depend on what you'd like to do:
+您接下来的步骤取决于您想做什么：
 
-* Go to [Installation](/learn/installation) if you'd like to set up a React project locally.
-* Read [Thinking in React](/learn/thinking-in-react) if you'd like to see what building a UI in React feels like in practice.
-* Or, start with [Describing the UI](/learn/describing-the-ui) to get a closer look at the first chapter.
+* 如果您想在本地设置 React 项目，请转到 [安装](/learn/installation)。
+* 如果您想了解在 React 中构建 UI 在实践中是什么感觉，请阅读 [React 哲学](/learn/thinking-in-react)。
+* 或者，从 [描述 UI](/learn/describing-the-ui) 开始，仔细阅读第一章。
 
-And don't forget to check the [API Reference](/reference) when you need the API without the fluff!
+当您需要了解 API 必要的细节时，不要忘记阅读 [API 参考](/reference)！
