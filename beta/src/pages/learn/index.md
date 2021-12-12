@@ -11,7 +11,7 @@ title: 开始
 <YouWillLearn>
 
 * [如何安装 React](/learn/installation)
-* [如何思考用 React 构建用户界面](/learn/thinking-in-react)
+* [如何用 React 的思考方式构建用户界面](/learn/thinking-in-react)
 * [如何在屏幕中渲染内容](/learn/describing-the-ui)
 * [如何让您的用户界面响应交互](/learn/adding-interactivity)
 * [随着您的应用的增长，如何保持逻辑的可维护性](/learn/managing-state)
@@ -47,13 +47,13 @@ export default function App() {
 
 React 是一个用于构建用户界面的 JavaScript 库
 
-React 擅长交互设计和编程。**他让您创建复杂的用户界面，并且将其分解为[组件](/learn/your-first-component)，指的是可嵌套和可重用的部分，可以很好的进行组合。** 如果您已经有编程的背景，这可能会让您想起用函数来编程。如果您是一名设计师，它可能会让您联想到图层组合设计。如果您对这两门学科都是新手，那也没关系。很多人会通过 React 去掌握他们。使用 React 也许还会让您想起用玩具砖块来建造城堡。有时候，他甚至非常有趣。
+React 擅长交互设计和编程。**它让您可以将一个复杂的用户界面，分解为可嵌套和可重用的片段，我们称之为[组件](/learn/your-first-component)，它们可以很好的进行组合。** 如果您已经有编程的背景，这可能会让您想起用函数来编程。如果您是一名设计师，它可能会让您联想到图层组合设计。如果您对这两门学科都是新手，那也没关系。很多人都是在接触 React 的过程中才熟悉它们的。使用 React 也许还会让您想起用玩具砖块来建造城堡。有时候，它甚至非常有趣。
 
 React 没有规定要如何构建整个应用程序。它能帮助您定义和组合组件，但在其他问题中不会妨碍您。这意味您可以选择一个生态系统解决方案来解决路由、样式和数据获取等问题，或者您也可以 [使用一个提供了很多内置功能的框架](/learn/start-a-new-react-project#building-with-react-and-a-framework)
 
 ### 您可以用 React 做什么？
 
-实际上，大量开发者们使用 React 来创建各种用户界面——从像按钮和下拉菜单这样的小控件到整个应用程序。 **这些文档将教您在网络上使用 React。** 然而，您在这里学到的大部分内容同样适用于 [React Native](https://reactnative.dev/)，它可以让您为 Android、iOS，甚至 [Windows 和 macOS](https://microsoft.github.io/react-native-windows/) 构建应用程序。
+实际上，大量开发者们使用 React 来创建各种用户界面——从像按钮和下拉菜单这样的小控件到整个应用程序。 **这些文档将教您在 web 平台上使用 React。** 然而，您在这里学到的大部分内容同样适用于 [React Native](https://reactnative.dev/)，它可以让您为 Android、iOS，甚至 [Windows 和 macOS](https://microsoft.github.io/react-native-windows/) 构建应用程序。
 
 如果您好奇您日常使用的哪些产品是用 React 构建的，您可以安装 [React Developer Tools](/learn/react-developer-tools)。 每当您访问使用 React 构建的应用程序或网站时（就像这个文档网站！），它的图标会在工具栏中亮起。
 
@@ -529,7 +529,7 @@ export default function List() {
 
 ### 第 3 章概述： 管理 State
 
-您经常会面临选择_究竟_要放入 state 的问题。 您应该使用一个 state 变量还是多个 state 变量？ 对象还是数组？ 你应该如何[构建你的 state](/learn/choosing-the-state-structure)？ 最重要的原则是**避免冗余 state**。 如果某些信息永远不会改变，它就不应该处于 state。 如果通过 props 从父组件收到一些信息，它不应该处于 state 中。 如果你可以从其他 props 或 state 计算出一些东西，它也不应该处于 state 中！
+您经常会面临选择_究竟要把什么_放进 state 的问题。 您应该使用一个 state 变量还是多个 state 变量？ 对象还是数组？ 你应该如何[构建你的 state](/learn/choosing-the-state-structure)？ 最重要的原则是**避免冗余 state**。 如果某些信息永远不会改变，它就不应该处于 state。 如果某些信息是通过 props 从父组件收到的，它不应该处于 state 中。 如果某些信息可以从其他 props 或 state 计算得出，它也不应该处于 state 中！
 
 例如，这个表单有一个多余的 `fullName` state 变量：
 
@@ -634,7 +634,7 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-有时，您希望两个组件的 state 始终一起更改。要做到这一点，在它们两个中都删除该 state，将它移动到它们最近的公共父节点，然后通过 props 将它传递给它们。 这被称为["提升 state"](/learn/sharing-state-between-components)，这是编写 React 代码时最常见的事情之一。 例如，在像下面这样的手风琴中，一次应该只有一个面板处于激活状态。父组件不应该将激活 state 保存在每个单独的面板内，而是保存在父组件的 state 中并通过 props 指定给子组件。
+有时，您希望两个组件的 state 始终一起更改。要做到这一点，在它们两个中都删除该 state，将它移动到它们最近的公共父节点，然后通过 props 将它传递给它们。 这被称为["提升 state"](/learn/sharing-state-between-components)，这是编写 React 代码时最常见的事情之一。 例如，在像下面这样的手风琴组件中，一次应该只有一个面板处于激活状态。父组件不应该将激活 state 保存在每个单独的面板内，而是保存在父组件的 state 中并通过 props 指定给子组件。
 
 <Sandpack>
 
@@ -707,7 +707,7 @@ h3, p { margin: 5px 0px; }
 
 您接下来的步骤取决于您想做什么：
 
-* 如果您想在本地设置 React 项目，请转到 [安装](/learn/installation)。
+* 如果您想在本地创建一个 React 项目，请转到 [安装](/learn/installation)。
 * 如果您想了解在 React 中构建 UI 在实践中是什么感觉，请阅读 [React 哲学](/learn/thinking-in-react)。
 * 或者，从 [描述 UI](/learn/describing-the-ui) 开始，仔细阅读第一章。
 
