@@ -2,11 +2,12 @@
 title: 将 Props 传递给组件
 translators: 
   - SylviaZ89
+  - rottenpen
 ---
 
 <Intro>
 
-React 组件使用 **props** 来互相通信。 每个父组件都可以提供 props 给它的子组件，从而将一些信息传递给它。 Props 可能会让你想起 HTML 属性，但你可以通过它们传递任何 JavaScript 值，包括对象、数组和函数。
+React 组件使用 **props** 来互相通信。每个父组件都可以提供 props 给它的子组件，从而将一些信息传递给它。Props 可能会让你想起 HTML 属性，但你可以通过它们传递任何 JavaScript 值，包括对象、数组和函数。
 
 </Intro>
 
@@ -22,7 +23,7 @@ React 组件使用 **props** 来互相通信。 每个父组件都可以提供 p
 
 ## 熟悉的 props
 
-Props 是你传递给 JSX 标签的信息。 例如，`className`、`src`、`alt`、`width` 和 `height` 便是一些可以传递给 `<img>` 的 props ：
+Props 是你传递给 JSX 标签的信息。例如，`className`、`src`、`alt`、`width` 和 `height` 便是一些可以传递给 `<img>` 的 props：
 
 <Sandpack>
 
@@ -354,7 +355,7 @@ export function getImageUrl(person, size = 's') {
 
 ## Props 如何随时间变化
 
-下面的 `Clock` 组件从其父组件接收两个 props：`color` 和 `time` 。（父组件的代码被省略，因为它使用 [state](/learn/state-a-components-memory) ，我们暂时不会深入研究。）
+下面的 `Clock` 组件从其父组件接收两个 props：`color` 和 `time`。（父组件的代码被省略，因为它使用 [state](/learn/state-a-components-memory)，我们暂时不会深入研究。）
 
 尝试在下面的选择框中更改颜色：
 
@@ -406,7 +407,7 @@ export default function App() {
 
 </Sandpack>
 
-这个例子说明，**一个组件可能会随着时间的推移收到不同的 props 。** Props 并不总是静态的！在这里，`time` prop 每秒都在变化。当你选择另一种颜色时，`color` prop 也改变了。Props 反映了组件在任何时间点的数据，并不仅仅是在开始时。
+这个例子说明，**一个组件可能会随着时间的推移收到不同的 props。** Props 并不总是静态的！在这里，`time` prop 每秒都在变化。当你选择另一种颜色时，`color` prop 也改变了。Props 反映了组件在任何时间点的数据，并不仅仅是在开始时。
 
 然而，props 是 [不可变的](https://en.wikipedia.org/wiki/Immutable_object)（一个计算机科学术语，意思是 “不可改变”）。当一个组件需要改变它的 props（例如，响应用户交互或新数据）时，它不得不 “请求” 它的父组件传递 _不同的 props_ —— 一个新对象！它的旧 props 将被丢弃，最终 JavaScript 引擎将回收它们占用的内存。
 
@@ -414,7 +415,7 @@ export default function App() {
 
 <Recap>
 
-* 要传递 props，请将它们添加到 JSX ，就像使用 HTML 属性一样。
+* 要传递 props，请将它们添加到 JSX，就像使用 HTML 属性一样。
 * 要读取 props，请使用 `function Avatar({ person, size })` 解构语法。
 * 你可以指定一个默认值，如 `size = 100`，用于缺少值或值为 `undefined` 的 props 。
 * 你可以使用 `<Avatar {...props} />` JSX 展开语法转发所有 props ，但不要过度使用它！
@@ -629,7 +630,7 @@ li { margin: 5px; }
 
 </Sandpack>
 
-请注意，如果 `awards` 是一个数组，则不需要单独的 `awardCount` prop 。 你可以用 `awards.length` 来统计奖励的数量。请记住，props 可以接受任何值，也包括数组！
+请注意，如果 `awards` 是一个数组，则不需要单独的 `awardCount` prop。 你可以用 `awards.length` 来统计奖励的数量。请记住，props 可以接受任何值，也包括数组！
 
 另一种解决方案与本页前面的示例更相似，是将一个人的所有信息组合到一个对象中，并将该对象作为一个 prop 传递：
 
@@ -732,7 +733,7 @@ li { margin: 5px; }
 
 ### 根据 props 调整图像大小
 
-在这个例子中，`Avatar` 接收一个数字 `size` prop ，它决定了 `<img>` 的宽度和高度。在此示例中，`size` prop 设为 `40`。但是，如果你在新选项卡中打开图像，你会注意到图像本身更大（`160` 像素）。实际图像大小由你请求的缩略图大小决定。
+在这个例子中，`Avatar` 接收一个数字 `size` prop，它决定了 `<img>` 的宽度和高度。在此示例中，`size` prop 设为 `40`。但是，如果你在新选项卡中打开图像，你会注意到图像本身更大（`160` 像素）。实际图像大小由你请求的缩略图大小决定。
 
 更改 `Avatar` 组件，根据 `size` prop 请求最接近的图像尺寸。具体来说，如果 `size` 小于 `90`，则将 `'s'`（“small”）而不是 `'b'`（“big”）传给 `getImageUrl` 函数。 通过渲染不同 `size` prop 值的头像并在新选项卡中打开图像，来验证你的更改是否有效。
 
@@ -922,7 +923,7 @@ Props 可以让你将这样的逻辑封装在 `Avatar` 组件中（并在需要�
 
 </Solution>
 
-### 在 `children` prop 中传递
+### 在 `children` prop 中传递 JSX 代码
 
 从下面的标记中提取一个 `Card` 组件，并使用 `children` prop 将不同的 JSX 传递给它：
 
@@ -1050,7 +1051,7 @@ h1 {
 
 </Sandpack>
 
-如果你希望每个 `Card` 都有一个标题，你还可以将 `title` 设为一个单独的prop：
+如果你希望每个 `Card` 都有一个标题，你还可以将 `title` 设为一个单独的 prop：
 
 <Sandpack>
 
