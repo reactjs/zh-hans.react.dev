@@ -78,7 +78,7 @@ export default function Form() {
 要实现这一点：
 
 1. 使用 `useRef` Hook 声明 `inputRef`。
-2. 将其用作 `<input ref={inputRef}>` 传递。这告诉 React **将这个 `<input>` 的 DOM 节点放入 `inputRef.current`。**
+2. 像 `<input ref={inputRef}>` 这样传递它。这告诉 React **将这个 `<input>` 的 DOM 节点放入 `inputRef.current`。**
 3. 在 `handleClick` 函数中，从 `inputRef.current` 读取 input DOM 节点并使用 `inputRef.current.focus()` 调用它的 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)。
 4. 用 `onClick` 将 `handleClick` 事件处理器传递给 `<button>`。
 
@@ -86,7 +86,7 @@ export default function Form() {
 
 ### 示例: 滚动至一个元素
 
-一个组件中可以有多个 ref。在这个例子中，有一个由三张图片和三个按钮组成的轮播，通过调用浏览器的 [`scrollIntoView()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView) 方法，在相应的 DOM 节点上将它们居中显示在视口中：
+一个组件中可以有多个 ref。在这个例子中，有一个由三张图片和三个按钮组成的轮播，点击按钮会调用浏览器的 [`scrollIntoView()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView) 方法，在相应的 DOM 节点上将它们居中显示在视口中：
 
 <Sandpack>
 
@@ -195,7 +195,7 @@ li {
 
 <DeepDive title="如何使用 ref 回调管理 refs 列表">
 
-在上面的例子中，有一个预定义数量的 refs。但有时候，你可能需要ref 指向列表中的每个项目，而你又不知道会有多少个。像这样做**是行不通的**：
+在上面的例子中，ref 的数量是预先确定的。但有时候，你可能需要为列表中的每一项都绑定 ref ，而你又不知道会有多少项。像下面这样做**是行不通的**：
 
 ```js
 <ul>
@@ -207,9 +207,9 @@ li {
 </ul>
 ```
 
-这是因为 **Hooks 只能在组件的顶层被调用。** 不能在循环、条件判断或 `map()` 函数中调用 `useRef`。
+这是因为 **Hooks 只能在组件的顶层被调用。** 不能在循环语句、条件语句或 `map()` 函数中调用 `useRef`。
 
-相反，解决方案是**将函数传递给 `ref` 属性**。这称为 “ ref 回调”。当需要设置 ref 时，React 将使用 DOM 节点调用你的 ref 回调，并在需要清除它时使用 `null` 来调用。这使你可以维护自己的数组或 [Map](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map)，并通过其索引或某种类型的 ID 访问任何 ref。
+相反，解决方案是**将函数传递给 `ref` 属性**。这称为 “ ref 回调”。当需要设置 ref 时，React 将传入 DOM 节点来调用你的 ref 回调，并在需要清除它时传入 `null` 。这使你可以维护自己的数组或 [Map](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map)，并通过其索引或某种类型的 ID 访问任何 ref。
 
 此示例展示了如何使用此方法滚动到长列表中的任意节点： 
 
@@ -389,7 +389,7 @@ const MyInput = forwardRef((props, ref) => {
 
 它是这样工作的:
 
-1. `<MyInput ref={inputRef} />` 告诉 React 将对应的 DOM 节点放入 `inputRef.current` 中。但是，由 `MyInput` 组件传参进来 —— 默认情况下，它不会。
+1. `<MyInput ref={inputRef} />` 告诉 React 将对应的 DOM 节点放入 `inputRef.current` 中。但是，这取决于 `MyInput` 组件允许这种行为 —— 默认情况下，它不会。
 2. `MyInput` 组件是使用 `forwardRef` 声明的。 **这让从上面接收的 `inputRef` 作为第二个 `ref` 参数传参进入组件**，它在 `props` 之后声明。
 3. `MyInput` 本身将它接收到的 `ref` 传递给它内部的 `<input>`。
 
@@ -470,7 +470,7 @@ export default function Form() {
 
 </Sandpack>
 
-这里，`MyInput` 中的 `realInputRef` 保存了实际的输入 DOM 节点。 但是，`useImperativeHandle` 指示 React 提供你自己的特殊对象作为父组件的 ref 值。 所以 `Form` 组件内的 `inputRef.current` 将只有 `focus` 方法。在这种情况下，ref “句柄” 不是 DOM 节点，而是你在 `useImperativeHandle` 调用中创建的自定义对象。
+这里，`MyInput` 中的 `realInputRef` 保存了实际的 input DOM 节点。 但是，`useImperativeHandle` 指示 React 将你自己指定的对象作为父组件的 ref 值。 所以 `Form` 组件内的 `inputRef.current` 将只有 `focus` 方法。在这种情况下，ref “句柄” 不是 DOM 节点，而是你在 `useImperativeHandle` 调用中创建的自定义对象。
 
 </DeepDive>
 
@@ -626,7 +626,7 @@ Refs 是一个应急方案。你应该只在你必须 “跳出 React” 时使�
 
 如果你坚持聚焦和滚动等非破坏性操作，应该不会遇到任何问题。但是，如果你尝试手动**修改** DOM，则可能会与 React 所做的更改发生冲突。
 
-为了说明这个问题，这个例子包括一条欢迎消息和两个按钮。第一个按钮使用 [条件渲染](/learn/conditional-rendering) 和 [state](/learn/state-a-components-memory) 切换它的存在，就像你通常在 React 中所做的那样。第二个按钮使用 [`remove()` DOM API](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/remove) 将其从 React 控制之外的 DOM 中强行移除.
+为了说明这个问题，这个例子包括一条欢迎消息和两个按钮。第一个按钮使用 [条件渲染](/learn/conditional-rendering) 和 [state](/learn/state-a-components-memory) 切换它的显示和隐藏，就像你通常在 React 中所做的那样。第二个按钮使用 [`remove()` DOM API](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/remove) 将其从 React 控制之外的 DOM 中强行移除.
 
 尝试按几次 “通过 setState 切换”。该消息会消失并再次出现。然后按 “从 DOM 中删除”。这将强行删除它。最后，按 “通过 setState 切换”：
 
@@ -671,7 +671,7 @@ button {
 
 在你手动删除 DOM 元素后，尝试使用 `setState` 再次显示它会导致崩溃。这是因为你更改了 DOM，而 React 不知道如何继续正确管理它。
 
-**避免更改由 React 管理的 DOM 节点。** 修改、向 React 管理的元素添加子元素、从中删除子元素会导致不一致的视觉结果，或与上述类似的崩溃。
+**避免更改由 React 管理的 DOM 节点。** 对 React 管理的元素进行修改、添加子元素、从中删除子元素会导致不一致的视觉结果，或与上述类似的崩溃。
 
 但是，这并不意味着你完全不能这样做。它需要谨慎。 **你可以安全地修改 React _没有理由_ 更新的部分 DOM。** 例如，如果某些 `<div>` 在 JSX 中始终为空，React 将没有理由去变动其子列表。 因此，在那里手动增删元素是安全的。
 
@@ -1073,7 +1073,7 @@ img {
 
 <Hint>
 
-你需要 `forwardRef` 来通过传参从你自己的组件中暴露一个 DOM 节点，比如 `SearchInput`。
+你需要 `forwardRef` 来主动从你自己的组件中暴露一个 DOM 节点，比如 `SearchInput`。
 
 </Hint>
 
@@ -1123,7 +1123,7 @@ button { display: block; margin-bottom: 10px; }
 
 <Solution>
 
-你需要向 `SearchButton` 添加一个`onClick` 属性，并让  `SearchButton` 将其向下传递给浏览器 `<button>`。你还要向下传递一个 ref 给 `<SearchInput>`，它将转发给真正的 `<input>` 并填充它。最后，在单击处理器中，你将对存储在该 ref 中的 DOM 节点调用 `focus`。
+你需要向 `SearchButton` 添加一个`onClick` 属性，`SearchButton` 会将其向下传递给浏览器原生 `<button>`。你还要向下传递一个 ref 给 `<SearchInput>`，`<SearchInput>` 将转发 ref 给真正的 `<input>` 并对它进行赋值。最后，在单击事件处理器中，你将能对存储在该 ref 中的 DOM 节点调用 `focus`。
 
 <Sandpack>
 
