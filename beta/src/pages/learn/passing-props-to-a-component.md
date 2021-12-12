@@ -72,7 +72,7 @@ export default function Profile() {
 
 ### 步骤 1: 将 props 传递给子组件
 
-首先，将一些 props 传递给 `Avatar` 。 例如，让我们传递两个 props ：`person`（一个对象）和 `size`（一个数字）：
+首先，将一些 props 传递给 `Avatar`。例如，让我们传递两个 props：`person`（一个对象）和 `size`（一个数字）：
 
 ```js
 export default function Profile() {
@@ -91,7 +91,7 @@ export default function Profile() {
 
 ### 步骤 2: 在子组件中读取 props
 
-你可以通过在 `function Avatar` 之后直接列出它们的名字 `person, size` 来读取这些 props。这些 props 在 `({` 和 `})` 之间，并由逗号分隔。 这样，你可以在 `Avatar` 的代码中使用它们，就像使用变量一样。
+你可以通过在 `function Avatar` 之后直接列出它们的名字 `person, size` 来读取这些 props。这些 props 在 `({` 和 `})` 之间，并由逗号分隔。这样，你可以在 `Avatar` 的代码中使用它们，就像使用变量一样。
 
 ```js
 function Avatar({ person, size }) {
@@ -101,7 +101,7 @@ function Avatar({ person, size }) {
 
 向使用 `person` 和 `size` props 渲染的 `Avatar` 添加一些逻辑，你就完成了。
 
-现在你可以配置 `Avatar` ，使用不同的 props 以多种不同的方式进行渲染。 尝试变换值吧！
+现在你可以配置 `Avatar` ，通过不同的 props，使它能以多种不同的方式进行渲染。尝试变换值吧！
 
 <Sandpack>
 
@@ -171,7 +171,6 @@ Props 使你独立思考父组件和子组件。 例如，你可以改变 `Profi
 
 你可以将 props 想象成可以调整的 “旋钮”。它们的作用与函数的参数相同 —— 事实上，props _正是_ 组件的唯一参数！ React 组件函数接受一个参数，一个 `props` 对象：
 
-
 ```js
 function Avatar(props) {
   let person = props.person;
@@ -180,7 +179,7 @@ function Avatar(props) {
 }
 ```
 
-通常你不需要整个 `props` 对象，所以可以将它解构为单独的 props 。
+通常你不需要整个 `props` 对象，所以可以将它解构为单独的 props。
 
 <Gotcha>
 
@@ -237,7 +236,7 @@ function Profile({ person, size, isSepia, thickBorder }) {
 }
 ```
 
-重复代码没有错（它可以更清晰）。 但有时你可能会重视简洁。 一些组件将它们所有的 props 转发给子组件，正如 `Profile` 转给 `Avatar` 那样。 因为它们不直接使用它们任何 props，所以使用更简洁的 “展开” 语法是有意义的：
+重复代码没有错（它可以更清晰）。但有时你可能会重视简洁。一些组件将它们所有的 props 转发给子组件，正如 `Profile` 转给 `Avatar` 那样。因为它们不直接使用它们任何 props，所以使用更简洁的 “展开” 语法是有意义的：
 
 ```js
 function Profile(props) {
@@ -418,10 +417,10 @@ export default function App() {
 * 要传递 props，请将它们添加到 JSX，就像使用 HTML 属性一样。
 * 要读取 props，请使用 `function Avatar({ person, size })` 解构语法。
 * 你可以指定一个默认值，如 `size = 100`，用于缺少值或值为 `undefined` 的 props 。
-* 你可以使用 `<Avatar {...props} />` JSX 展开语法转发所有 props ，但不要过度使用它！
-* 像 `<Card><Avatar /></Card>` 这样的嵌套 JSX ，将被视为 `Card` 组件的 `children` prop 。
-* Props 是只读的时间快照：每次渲染都会收到新版本的 props 。
-* 你不能改变 props 。当你需要交互性时，你可以设置 state 。
+* 你可以使用 `<Avatar {...props} />` JSX 展开语法转发所有 props，但不要过度使用它！
+* 像 `<Card><Avatar /></Card>` 这样的嵌套 JSX，将被视为 `Card` 组件的 `children` prop。
+* Props 是只读的时间快照：每次渲染都会收到新版本的 props。
+* 你不能改变 props。当你需要交互性时，你可以设置 state。
 
 </Recap>
 
@@ -431,7 +430,7 @@ export default function App() {
 
 ### 提取一个组件
 
-这个 `Gallery` 组件包含两份个人资料，其中有一些非常相似的标记。从中提取一个 `Profile` 组件以减少重复。你需要选择要传递哪些 props 。 
+这个 `Gallery` 组件包含两份个人资料，其中有一些非常相似的标记。从中提取一个 `Profile` 组件以减少重复。你需要选择要传递哪些 props。
 
 <Sandpack>
 
@@ -727,7 +726,7 @@ li { margin: 5px; }
 
 </Sandpack>
 
-尽管语法看起来略有不同，因为你用的是 JavaScript 对象的属性而不是 JSX 属性的集合，但这些示例大多是等效的，您可以选择任何一种方法。
+尽管因为在你描述组件特性时用的是 JavaScript 对象而非 JSX 的属性，使得语法看起来略有不同，但这些示例大多都是等效的，你可以选择任意一种方法
 
 </Solution>
 
@@ -735,7 +734,7 @@ li { margin: 5px; }
 
 在这个例子中，`Avatar` 接收一个数字 `size` prop，它决定了 `<img>` 的宽度和高度。在此示例中，`size` prop 设为 `40`。但是，如果你在新选项卡中打开图像，你会注意到图像本身更大（`160` 像素）。实际图像大小由你请求的缩略图大小决定。
 
-更改 `Avatar` 组件，根据 `size` prop 请求最接近的图像尺寸。具体来说，如果 `size` 小于 `90`，则将 `'s'`（“small”）而不是 `'b'`（“big”）传给 `getImageUrl` 函数。 通过渲染不同 `size` prop 值的头像并在新选项卡中打开图像，来验证你的更改是否有效。
+更改 `Avatar` 组件，根据 `size` prop 请求最接近的图像尺寸。具体来说，如果 `size` 小于 `90`，则将 `'s'`（“small”）而不是 `'b'`（“big”）传给 `getImageUrl` 函数。通过渲染不同 `size` prop 值的头像并在新选项卡中打开图像，来验证你的更改是否有效。
 
 <Sandpack>
 
@@ -925,7 +924,7 @@ Props 可以让你将这样的逻辑封装在 `Avatar` 组件中（并在需要�
 
 ### 在 `children` prop 中传递 JSX 代码
 
-从下面的标记中提取一个 `Card` 组件，并使用 `children` prop 将不同的 JSX 传递给它：
+从下面的代码中提取一个 `Card` 组件，并使用 `children` prop 将不同的 JSX 传递给它：
 
 <Sandpack>
 
