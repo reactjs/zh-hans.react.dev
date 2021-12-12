@@ -19,7 +19,7 @@ translators:
 
 </YouWillLearn>
 
-## 获取指向节点的 ref
+## 获取指向节点的 ref {/*getting-a-ref-to-the-node*/}
 
 要访问由 React 管理的 DOM 节点，首先，引入 `useRef` Hook：
 
@@ -46,7 +46,7 @@ const myRef = useRef(null);
 myRef.current.scrollIntoView();
 ```
 
-### 示例: 使文本输入框获得焦点
+### 示例: 使文本输入框获得焦点 {/*example-focusing-a-text-input*/}
 
 在本例中，单击按钮将使输入框获得焦点：
 
@@ -84,7 +84,7 @@ export default function Form() {
 
 虽然 DOM 操作是 refs 最常见的用例，但 `useRef` Hook 可用于存储 React 之外的其他内容，例如计时器 ID。与 state 类似，refs 能在渲染之间保留。你甚至可以将 refs 视为设置它们时不会触发重新渲染的 state 变量！你可以在 [使用 Refs 引用值](/learn/referencing-values-with-refs) 中了解有关 refs 的更多信息。
 
-### 示例: 滚动至一个元素
+### 示例: 滚动至一个元素 {/*example-scrolling-to-an-element*/}
 
 一个组件中可以有多个 ref。在这个例子中，有一个由三张图片和三个按钮组成的轮播，点击按钮会调用浏览器的 [`scrollIntoView()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView) 方法，在相应的 DOM 节点上将它们居中显示在视口中：
 
@@ -338,7 +338,7 @@ li {
 
 </DeepDive>
 
-## 访问另一个组件的 DOM 节点
+## 访问另一个组件的 DOM 节点 {/*accessing-another-components-dom-nodes*/}
 
 当你将 ref 放在像 `<input />` 这样输出浏览器元素的内置组件上时，React 会将该 ref 的 `current` 属性设置为相应的 DOM 节点（例如浏览器中实际的 `<input />` ）。
 
@@ -474,7 +474,7 @@ export default function Form() {
 
 </DeepDive>
 
-## React 何时添加 refs 
+## React 何时添加 refs {/*when-react-attaches-the-refs*/}
 
 在 React 中，每次更新都分为 [两个阶段](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom)：
 
@@ -620,7 +620,7 @@ for (let i = 0; i < 20; i++) {
 
 </DeepDive>
 
-## 使用 refs 操作 DOM 的最佳实践
+## 使用 refs 操作 DOM 的最佳实践 {/*best-practices-for-dom-manipulation-with-refs*/}
 
 Refs 是一个应急方案。你应该只在你必须 “跳出 React” 时使用它们。这方面的常见示例包括管理焦点、滚动位置或调用 React 未暴露的浏览器 API。
 
@@ -690,7 +690,7 @@ button {
 
 <Challenges>
 
-### 播放和暂停视频
+### 播放和暂停视频 {/*play-and-pause-the-video*/}
 
 在此示例中，按钮切换 state 变量以在播放和暂停状态之间切换。 然而，为了实际播放或暂停视频，切换状态是不够的。你还需要在 `<video>` 的 DOM 元素上调用 [`play()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/play) 和 [`pause()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/pause)。 向它添加一个 ref，并使按钮起作用。
 
@@ -777,7 +777,7 @@ button { display: block }
 
 </Solution>
 
-### 使搜索域获得焦点
+### 使搜索域获得焦点 {/*focus-the-search-field*/}
 
 做到单击 “搜索” 按钮时，将焦点放在搜索域上。
 
@@ -841,7 +841,7 @@ button { display: block; margin-bottom: 10px; }
 
 </Solution>
 
-### 滚动图像轮播
+### 滚动图像轮播 {/*scrolling-an-image-carousel*/}
 
 此图像轮播有一个 “下一个” 按钮，可以切换激活的图像。单击时使图库水平滚动到激活的图像。你需要在激活的图像的 DOM 节点上调用 [`scrollIntoView()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView)：
 
@@ -1067,7 +1067,7 @@ img {
 
 </Solution>
 
-### 使分开的组件中的搜索域获得焦点
+### 使分开的组件中的搜索域获得焦点 {/*focus-the-search-field-with-separate-components*/}
 
 做到单击 “搜索” 按钮将焦点放在搜索域上。请注意，每个组件都在单独的文件中定义，并且不能将其移出。如何将它们连接在一起？
 
