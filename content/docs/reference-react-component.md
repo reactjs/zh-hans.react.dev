@@ -145,7 +145,7 @@ constructor(props)
 
 **如果不初始化 state 或不进行方法绑定，则不需要为 React 组件实现构造函数。**
 
-在 React 组件挂载之前，会调用它的构造函数。在为 React.Component 子类实现构造函数时，应在其他语句之前前调用  `super(props)`。否则，`this.props` 在构造函数中可能会出现未定义的 bug。
+在 React 组件挂载之前，会调用它的构造函数。在为 React.Component 子类实现构造函数时，应在其他语句之前调用  `super(props)`。否则，`this.props` 在构造函数中可能会出现未定义的 bug。
 
 通常，在 React 中，构造函数仅用于以下两种情况：
 
