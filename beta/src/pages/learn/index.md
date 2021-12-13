@@ -19,7 +19,7 @@ title: 开始
 
 </YouWillLearn>
 
-## 介绍
+## 介绍 {/*introduction*/}
 
 这是一个最基本的 React 应用。要获得React的初体验，**编辑下面的代码** 然后让它显示您的名字：
 
@@ -43,7 +43,7 @@ export default function App() {
 
 </Sandpack>
 
-### React 是什么？
+### React 是什么？{/*what-is-react*/}
 
 React 是一个用于构建用户界面的 JavaScript 库。
 
@@ -51,13 +51,13 @@ React 擅长交互设计和编程。**它让您可以将一个复杂的用户界
 
 React 没有规定要如何构建整个应用程序。它能帮助您定义和组合组件，但在其他问题中不会妨碍您。这意味您可以选择一个生态系统解决方案来解决路由、样式和数据获取等问题，或者您也可以 [使用一个提供了很多内置功能的框架](/learn/start-a-new-react-project#building-with-react-and-a-framework)。
 
-### 您可以用 React 做什么？
+### 您可以用 React 做什么？{/*what-can-you-do-with-react*/}
 
 实际上，大量开发者们使用 React 来创建各种用户界面——从像按钮和下拉菜单这样的小控件到整个应用程序。 **这些文档将教您在 web 平台上使用 React。** 然而，您在这里学到的大部分内容同样适用于 [React Native](https://reactnative.dev/)，它可以让您为 Android、iOS，甚至 [Windows 和 macOS](https://microsoft.github.io/react-native-windows/) 构建应用程序。
 
 如果您好奇您日常使用的哪些产品是用 React 构建的，您可以安装 [React Developer Tools](/learn/react-developer-tools)。 每当您访问使用 React 构建的应用程序或网站时（就像这个文档网站！），它的图标会在工具栏中亮起。
 
-### React 使用 JavaScript
+### React 使用 JavaScript {/*react-uses-javascript*/}
 
 使用 React，您将在 JavaScript 中可视化地描述您的逻辑。这需要一些练习。如果您同时学习 JavaScript 和 React，很多人都这么干，但有时，它会更具挑战性！ 从好的方面来说，**大部分学习 React 都是在学习 JavaScript，** 这意味着您将学到的东西远远超出 React。
 
@@ -85,7 +85,7 @@ export default function App() {
 
 </DeepDive>
 
-## 学习 React
+## 学习 React {/*learn-react*/}
 
 有几种方法可以开始：
 
@@ -95,7 +95,7 @@ export default function App() {
 
 为了节省您的时间，我们在下面提供**每章的简要概述**。 
 
-### 第 1 章概述：描述 UI
+### 第 1 章概述：描述 UI {/*chapter-1-overview-describing-the-ui*/}
 
 React 应用程序由被称为 ["components"](/learn/your-first-component) 的独立 UI 部分构建。 React 组件是一个 JavaScript 函数，您可以在其中添加标记。 组件可以小到一个按钮，也可以大到整个页面。下面的例子中，一个*父*组件 `Gallery` 渲染了三个*子*组件 `Profile` ：
 
@@ -256,7 +256,7 @@ img { margin: 0 10px 10px 0; }
 
 </LearnMore>
 
-### 第 2 章概述：添加交互性
+### 第 2 章概述：添加交互性 {/*chapter-2-overview-adding-interactivity*/}
 
 作为交互的结果，组件通常需要更改屏幕上的内容。输入表单应该更新输入字段，单击图像轮播上的“下一步”应该更改显示的图像，单击“购买”将产品放入购物车。组件需要“记住”一些东西：当前输入值、当前图像、购物车。在 React 中，这种特定于组件的内存称为 [*state*](/learn/state-a-components-memory)。
 
@@ -527,7 +527,7 @@ export default function List() {
 
 </LearnMore>
 
-### 第 3 章概述： 管理 State
+### 第 3 章概述： 管理 State {/*chapter-3-overview-managing-state*/}
 
 您经常会面临选择_究竟要把什么_放进 state 的问题。 您应该使用一个 state 变量还是多个 state 变量？ 对象还是数组？ 你应该如何[构建你的 state](/learn/choosing-the-state-structure)？ 最重要的原则是**避免冗余 state**。 如果某些信息永远不会改变，它就不应该处于 state。 如果某些信息是通过 props 从父组件收到的，它不应该处于 state 中。 如果某些信息可以从其他 props 或 state 计算得出，它也不应该处于 state 中！
 
@@ -701,7 +701,7 @@ h3, p { margin: 5px 0px; }
 
 </LearnMore>
 
-## 下一步
+## 下一步 {/*next-steps*/}
 
 这个页面是快节奏的！如果读到这里，您已经看到了日常使用 React 的 80%。
 
