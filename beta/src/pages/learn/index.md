@@ -12,16 +12,16 @@ title: 开始
 
 * [如何安装 React](/learn/installation)
 * [如何用 React 的思考方式构建用户界面](/learn/thinking-in-react)
-* [如何在屏幕中渲染内容](/learn/describing-the-ui)
+* [如何在屏幕上渲染内容](/learn/describing-the-ui)
 * [如何让您的用户界面响应交互](/learn/adding-interactivity)
 * [随着您的应用的增长，如何保持逻辑的可维护性](/learn/managing-state)
-* [必要时如何使用安全舱逃离 React](/learn/escape-hatches)
+* [必要时如何退出 React](/learn/escape-hatches)
 
 </YouWillLearn>
 
 ## 介绍
 
-这是一个最基本的 React 应用。用于让您第一次品尝 React，**编辑下面的代码** 然后让它显示您的名字：
+这是一个最基本的 React 应用。要获得React的初体验，**编辑下面的代码** 然后让它显示您的名字：
 
 <Sandpack>
 
@@ -45,11 +45,11 @@ export default function App() {
 
 ### React 是什么？
 
-React 是一个用于构建用户界面的 JavaScript 库
+React 是一个用于构建用户界面的 JavaScript 库。
 
 React 擅长交互设计和编程。**它让您可以将一个复杂的用户界面，分解为可嵌套和可重用的片段，我们称之为[组件](/learn/your-first-component)，它们可以很好的进行组合。** 如果您已经有编程的背景，这可能会让您想起用函数来编程。如果您是一名设计师，它可能会让您联想到图层组合设计。如果您对这两门学科都是新手，那也没关系。很多人都是在接触 React 的过程中才熟悉它们的。使用 React 也许还会让您想起用玩具砖块来建造城堡。有时候，它甚至非常有趣。
 
-React 没有规定要如何构建整个应用程序。它能帮助您定义和组合组件，但在其他问题中不会妨碍您。这意味您可以选择一个生态系统解决方案来解决路由、样式和数据获取等问题，或者您也可以 [使用一个提供了很多内置功能的框架](/learn/start-a-new-react-project#building-with-react-and-a-framework)
+React 没有规定要如何构建整个应用程序。它能帮助您定义和组合组件，但在其他问题中不会妨碍您。这意味您可以选择一个生态系统解决方案来解决路由、样式和数据获取等问题，或者您也可以 [使用一个提供了很多内置功能的框架](/learn/start-a-new-react-project#building-with-react-and-a-framework)。
 
 ### 您可以用 React 做什么？
 
@@ -61,7 +61,7 @@ React 没有规定要如何构建整个应用程序。它能帮助您定义和�
 
 使用 React，您将在 JavaScript 中可视化地描述您的逻辑。这需要一些练习。如果您同时学习 JavaScript 和 React，很多人都这么干，但有时，它会更具挑战性！ 从好的方面来说，**大部分学习 React 都是在学习 JavaScript，** 这意味着您将学到的东西远远超出 React。
 
-使用 [此 JavaScript 概述](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) 检查您的知识水平。这将花费您 30 分钟到一个小时，但您会更有信心学习 React。 [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) 和 [javascript.info](https://javascript.info/) 是两个很好的参考资源。
+使用 [此 JavaScript 概述](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript) 检查您的知识水平。这将花费您 30 分钟到一个小时，但您会更有信心学习 React。 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript) 和 [javascript.info](https://zh.javascript.info/) 是两个很好的参考资源。
 
 <DeepDive title="安装 (可选)">
 
