@@ -89,7 +89,7 @@ export default function App() {
 
 有几种方法可以开始：
 
-- 如果您**觉得迫不及待并通过例子学习**直接前往 **[React 哲学](/learn/thinking-in-react)**。 本教程不会详细解释语法，但它会让您了解使用 React 构建用户界面的感受。
+- 如果您**觉得迫不及待并通过例子学习**，直接前往 **[React 哲学](/learn/thinking-in-react)**。 该教程不会详细解释语法，但它会让您了解使用 React 构建用户界面的感受。
 - 如果您**熟悉这些概念并希望浏览可用的 API**，请查看 **[API 参考](/reference)**。
 - 本文档的其余部分按章节组织，**逐步介绍每个概念**--带有许多交互式例子、详细说明和挑战以保证您的理解。 您不必按顺序阅读它们，但每个下一页都假设您熟悉前几页中的概念。
 
@@ -97,7 +97,7 @@ export default function App() {
 
 ### 第 1 章概述：描述 UI
 
-React 应用程序由称为 ["components"](/learn/your-first-component) 的独立 UI 部分构建。 React 组件是一个 JavaScript 函数，您可以在其中添加标记。 组件可以小到一个按钮，也可以大到整个页面。下面的例子中，一个*父*组件 `Gallery` 渲染了三个*子*组件 `Profile` ：
+React 应用程序由被称为 ["components"](/learn/your-first-component) 的独立 UI 部分构建。 React 组件是一个 JavaScript 函数，您可以在其中添加标记。 组件可以小到一个按钮，也可以大到整个页面。下面的例子中，一个*父*组件 `Gallery` 渲染了三个*子*组件 `Profile` ：
 
 <Sandpack>
 
