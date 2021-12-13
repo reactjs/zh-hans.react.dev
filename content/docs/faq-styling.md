@@ -48,4 +48,8 @@ _注意此功能并不是 React 的一部分，而是由第三方库提供。_ R
 
 ### 可以在 React 中实现动画效果吗？ {#can-i-do-animations-in-react}
 
+<<<<<<< HEAD
 React 可以被用来实现强大的动画效果。参见 [React Transition Group](https://reactcommunity.org/react-transition-group/)、[React Motion](https://github.com/chenglou/react-motion) 以及 [React Spring](https://github.com/react-spring/react-spring) 等示例。
+=======
+React can be used to power animations. See [React Transition Group](https://reactcommunity.org/react-transition-group/), [React Motion](https://github.com/chenglou/react-motion), [React Spring](https://github.com/react-spring/react-spring), or [Framer Motion](https://framer.com/motion), for example.
+>>>>>>> 014f4890dc30a3946c63f83b06883241ddc9bc75
