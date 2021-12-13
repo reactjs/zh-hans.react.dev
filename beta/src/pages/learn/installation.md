@@ -12,17 +12,10 @@ React 从诞生之初就是可被逐步采用的，因此你可以选择性地�
 
 <YouWillLearn>
 
-<<<<<<< HEAD
 * [如何将 React 添加到页面中](/learn/add-react-to-a-website)
 * [如何启动一个全新的 React 项目](/learn/start-a-new-react-project)
 * [如何配置你的编辑器](/learn/editor-setup)
 * [如何安装 React 开发工具](/learn/react-developer-tools)
-=======
-* [How to add React to an HTML page](/learn/add-react-to-a-website)
-* [How to start a standalone React project](/learn/start-a-new-react-project)
-* [How to set up your editor](/learn/editor-setup)
-* [How to install React Developer Tools](/learn/react-developer-tools)
->>>>>>> 014f4890dc30a3946c63f83b06883241ddc9bc75
 
 </YouWillLearn>
 
