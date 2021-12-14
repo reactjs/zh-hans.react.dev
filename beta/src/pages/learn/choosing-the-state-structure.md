@@ -12,7 +12,7 @@ translators:
 
 <YouWillLearn>
 
-* 何时使用单个 state 变量与多个 state 变量
+* 单个 state 变量 vs 多个 state 变量的使用时机
 * 组织 state 时应避免的事项
 * 如何解决 state 结构中的常见问题
 
@@ -20,15 +20,15 @@ translators:
 
 ## state 结构的原则 {/*principles-for-structuring-state*/}
 
-当你写一个含有一些 state 的组件时，你必须对使用多少个 state 变量以及它们怎样的数据模型做出选择。尽管使用次优的 state 结构也有可能写出正确的程序，但有一些原则可以指导你做出更好的选择：
+当你写一个含有一些 state 的组件时，你必须对使用多少个 state 变量以及它们是怎样的数据结构做出抉择。尽管使用次优的 state 结构也有可能写出正确的程序，但有一些原则可以指导你做出更好的决策：
 
 1. **组合关联的 state。** 如果你总是同时更新两个或更多的 state 变量，可以考虑将它们合并为一个 state 变量。
-2. **避免 state 之间出现矛盾。** 当 state 是由几个相互矛盾或"不一致"的 state 构建而成的时候，你就可能为此会留下隐患。尽量避免这种情况。
-3. **避免冗余的 state。** 如果你能在渲染过程中从组件的 props 或其现有的 state 变量中计算出一些信息，你就不应该把这些信息放到该组件的 state 中。
-4. **避免重复的 state。** 当同一数据在多个 state 变量之间或嵌套对象中重复时，会很难保持它们同步。所以尽可能减少重复。
-5. **避免深度嵌套的 state。** 深层次的 state 更新起来不是很方便。如果可能的话，要更倾向于以扁平的方式构造 state。
+2. **避免 state 之间出现矛盾。** 当 state 是由几个相互矛盾或“不一致”的 state 构建而成的时候，你就可能为此会留下隐患。你应当尽量避免这种情况。
+3. **避免冗余的 state。** 如果你能在渲染过程中从组件的 props 或其现有的 state 变量中计算出一些信息，就不应该把这些信息放到该组件的 state 中。
+4. **避免重复的 state。** 当同一数据在多个 state 变量之间或嵌套对象中重复时，会很难保持它们一致。所以你应当尽可能减少重复。
+5. **避免深度嵌套的 state。** 深层次的 state 更新起来不是很方便。如果可能的话，要更倾向于以扁平的方式构建 state。
 
-这些原则背后的目标是 *使 state 易于更新而不引入错误*。从 state 中删除冗余和重复数据有助于确保它的不同部分不会失去同步。这类似于数据库工程师可能希望将 [数据库结构“规范化”](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description)，以减少出现错误的机会。用爱因斯坦的话说， **“让你的状态尽可能简单，但不要更简单。”**
+这些原则背后的目标是 *使 state 易于更新而不引入错误*。从 state 中删除冗余和重复数据有助于确保它的不同部分不会失去同步。这类似于数据库工程师可能希望将 [数据库结构“规范化”](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description)，以减少出现错误的机会。用爱因斯坦的话说，**“让你的状态尽可能简单，但不要太简化。”**
 
 现在让我们来看看这些原则在实际中是如何应用的。
 
@@ -49,7 +49,7 @@ const [y, setY] = useState(0);
 const [position, setPosition] = useState({ x: 0, y: 0 });
 ```
 
-从技术上讲，你可以使用这些方法中的任何一种。但是 **如果某些两个 state 变量总是一起变化，把它们统一成一个 state 变量可能是个好主意**。这样你就不会忘记始终保持它们的同步，就像在这个例子中，移动光标时会更新红点的两个坐标：
+从技术上讲，你可以使用其中任意一种方法。但是 **如果某些两个 state 变量总是一起变化，把它们统一成一个 state 变量可能更好**。这样你就不会忘记始终保持它们的同步，就像在这个例子中，移动光标时会更新红点的两个坐标：
 
 <Sandpack>
 
@@ -94,7 +94,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 </Sandpack>
 
-另一种将数据分组到一个对象或一个数组中的情况是，当你不知道需要多少个不同的 state 片段时。 例如，当你有一个用户可以添加自定义字段的表单时，这会很有帮助。
+另一种情况是，你将数据分组到一个对象或一个数组中时，你不知道需要多少个不同的 state 片段。例如，当你有一个用户可以添加自定义字段的表单时，这将会很有帮助。
 
 <Gotcha>
 
@@ -104,7 +104,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 ## 避免 state 之间出现矛盾 {/*avoid-contradictions-in-state*/}
 
-下面是一个带有 `isSending` 和 `isSent` 两个 state 变量的表单：
+下面是一个带有 `isSending` 和 `isSent` 两个 state 变量的酒店反馈表单：
 
 <Sandpack>
 
@@ -158,7 +158,7 @@ function sendMessage(text) {
 
 </Sandpack>
 
-尽管这段代码是有效的，但它为"不可能"的 state 留下了大门。例如，如果你忘记同时调用 `setIsSent` 和 `setIsSending`，这就可能会出现 `isSending` 和 `isSent` 同时为 `true` 的情况。你的组件越复杂，就越难理解发生了什么。
+尽管这段代码是有效的，但它为这些”不可能“的 states 留下了大门。例如，如果你忘记同时调用 `setIsSent` 和 `setIsSending`，这就可能会出现 `isSending` 和 `isSent` 同时为 `true` 的情况。你的组件越复杂，就越难理解发生了什么。
 
 **因为 `isSending` 和 `isSent` 不应该同时为 `true`，所以最好用一个 `status` 变量来代替它们，这个 state 变量可以采取 *三种* 有效状态之一：**`'typing'` (初始), `'sending'`, 和 `'sent'`:
 
@@ -222,7 +222,7 @@ const isSending = status === 'sending';
 const isSent = status === 'sent';
 ```
 
-但它们不是 state 变量，所以你不需要担心它们会互相不同步。
+但它们不是 state 变量，所以你不需要担心它们之间互相不同步。
 
 ## 避免冗余的 state {/*avoid-redundant-state*/}
 
@@ -421,7 +421,7 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-目前，它将所选菜作为对象存储在 `selectedItem` state 变量中。 然而，这不是很好：**`selectedItem` 的内容与 `items` 列表中的项目之一是同一个对象。**这意味着关于项目本身的信息在两个地方重复。
+目前，它将所选菜作为对象存储在 `selectedItem` state 变量中。 然而，这不是很好：**`selectedItem` 的内容与 `items` 列表中的项目之一是同一个对象。**这意味着关于项目本身的信息在两个地方产生了重复。
 
 为什么这是个问题？ 让我们使每个项目都可以编辑：
 
@@ -571,7 +571,7 @@ state 过去常常是这样复制的：
 
 ## 避免深度嵌套的 state {/*avoid-deeply-nested-state*/}
 
-想象一下一个任务可以任意嵌套的待办事项列表。你可能想用嵌套的对象和数组来构造它的 state，就像在这个例子：
+想象一下一个任务可以任意嵌套的待办事项列表。你可能想用嵌套的对象和数组来构建它的 state，就像在这个例子：
 
 <Sandpack>
 
@@ -1845,7 +1845,7 @@ button { margin: 10px; }
 
 * 如果两个 state 变量总是一起更新，可以考虑将它们合并为一个变量。
 * 仔细选择你的 state 变量以避免产生 "不可能" 的 state。
-* 用一种能减少你在更新 state 时出错的机会的方式来构造你的 state。
+* 用一种能减少你在更新 state 时出错的机会的方式来构建你的 state。
 * 避免冗余的和重复的 state，这样你就不需要保持同步了。
 * 不要把 props *保存到* state 中，除非你特别想阻止更新。
 * 对于像选择这样的 UI 模式，在 state 中保留 ID 或索引而不是对象本身。
@@ -2308,7 +2308,7 @@ ul, li { margin: 0; padding: 0; }
 
 state 中有一个 `letters` 列表。当你悬停或聚焦特定字母时，它会突出显示。当前突出显示的字母存储在 `highlightedLetter` state 变量中。你可以为单个字母 `加星标` 和 `取消星标`，这会更新 state 中的 `letters` 数组。
 
-这段代码可以工作，但有一个小小的 UI 故障。当你按下 "Star "或 "Unstar" 时，高亮显示会消失一会。但是，只要你移动你的指针或用键盘切换到另一个字母，它就会重新出现。为什么会这样？修复它吧，使高亮显示在点击按钮后不会消失。
+这段代码是有效的，但有一个小小的 UI 故障。当你按下”Star“或“Unstar”时，高亮显示会消失一会。但是，只要你移动你的指针或用键盘切换到另一个字母，它就会重新出现。为什么会这样？修复它吧，使高亮显示在点击按钮后不会消失。
 
 <Sandpack>
 
@@ -2846,7 +2846,7 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 现在每个项目都会做一个 `selectedIds.has(letter.id)` 检查，这非常快。
 
-请记住，你[不应该改变 state 中的对象](/learn/updating-objects-in-state)，这也包括 Sets。这就是为什么 `handleToggle` 函数首先创建一个 Set 的 *副本*，然后更新这个副本。
+请记住，你[不应该改变 state 中的对象](/learn/updating-objects-in-state)，这也包括 Sets。这就是为什么 `handleToggle` 函数首先创建了一个 Set 的 *副本*，然后再更新这个副本。
 
 </Solution>
 
