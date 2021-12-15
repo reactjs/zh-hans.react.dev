@@ -12,7 +12,7 @@ translators:
 
 <YouWillLearn>
 
-* React 眼中的组件结构
+* React 怎样“看待”组件结构
 * React 保留或重置状态的条件
 * 如何强制 React 重置组件的状态
 * Key 和组件类型变化对状态保留的影响
