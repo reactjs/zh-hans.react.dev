@@ -12,7 +12,7 @@ React 在设计之初就可以被渐进式适配，并且你可以根据需要�
 
 ## 一分钟用上 React {/*add-react-in-one-minute*/}
 
-在本小节中，我们会展示如何将 React 组件添加到现有的 HTML 页面中。你可以在你自己的网站上尝试，或者创建一个 [空的 HTML 文件](https://gist.github.com/rachelnabors/7b33305bf33776354797a2e3c1445186/archive/859eac2f7079c9e1f0a6eb818a9684a464064d80.zip) 来进行练习。你只需要连接到网络，使用一个像 Notepad 的文本编辑器（也可以是 VSCode，可以查看我们的文档来学习 [如何设置你的编辑器](/learn/editor-setup/)） ！
+在本小节中，我们会展示如何将 React 组件添加到现有的 HTML 页面中。你可以在你自己的网站上尝试，或者创建一个 [空的 HTML 文件](https://gist.github.com/rachelnabors/7b33305bf33776354797a2e3c1445186/archive/859eac2f7079c9e1f0a6eb818a9684a464064d80.zip) 来进行练习。你只需要连接到网络，使用一个像 Notepad 的文本编辑器（也可以是 VSCode，可以查看我们的文档来学习 [如何设置你的编辑器](/learn/editor-setup/)）！
 
 ### 步骤 1：添加一个 DOM 容器到 HTML {/*step-1-add-an-element-to-the-html*/}
 
