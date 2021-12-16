@@ -2,6 +2,7 @@
 title: 在网站中添加 React
 translators:
   - Atrist
+  - yyyang1996
 ---
 
 <Intro>
@@ -38,7 +39,7 @@ React 在设计之初就可以被渐进式适配，并且你可以根据需要�
 
 <Gotcha>
 
-部署时，你需要将 "development.js" 替换为 "production.min.js"。
+部署时，你需要将 “development.js” 替换为 “production.min.js”。
 
 </Gotcha>
 
@@ -88,7 +89,7 @@ ReactDOM.render(React.createElement(LikeButton), domContainer);
 - [查看完整的示例源码](https://gist.github.com/rachelnabors/c64b3aeace8a191cf5ea6fb5202e66c9)
 - [下载完整示例（2KB 压缩包）](https://gist.github.com/rachelnabors/c64b3aeace8a191cf5ea6fb5202e66c9/archive/7b41a88cb1027c9b5d8c6aff5212ecd3d0493504.zip)
 
-#### 你可以重复使用你的组件! {/*you-can-reuse-components*/}
+#### 你可以重复使用你的组件！{/*you-can-reuse-components*/}
 
 你可能希望在同一 HTML 页面的多个位置展示 React 组件。你可以多次调用 `ReactDOM.render()` 来实现这个想法。当页面中以 React 驱动的不同部分是相互独立的，这种策略通常是非常有用的。
 
@@ -113,7 +114,7 @@ ReactDOM.render(
 
 未经压缩的 JavaScript 可能会显著降低用户的访问速度。在将你的网站部署到生产环境之前，一个好主意是对你的脚本文件进行压缩。
 
-- **如果你没有一个代码压缩的步骤**,[这有一个配置它的方式](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3)。
+- **如果你没有一个代码压缩的步骤**，[这有一个配置它的方式](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3)。
 - **如果你已经压缩了** 应用代码，并且你确保已部署的 HTML 加载了以 `production.min.js` 结尾的 React 版本，那么你的网站是生产就绪（production-ready）的：
 
 ```html
@@ -164,7 +165,7 @@ return <button onClick={() => setLiked(true)}>Like</button>;
 </script>
 ```
 
-使用 JSX 编写 **like_button.js**:
+使用 JSX 编写 **like_button.js**：
 
 1. 在 **like_button.js** 文件中，用
 
@@ -184,13 +185,13 @@ return React.createElement(
 
 
 
-2. 在 **index.html** 文件中，为 link_button_js 的 `script` 标签添加 `type="text/babel"` 属性:
+2. 在 **index.html** 文件中，为 link_button_js 的 `script` 标签添加 `type="text/babel"` 属性：
 
 ```html
 <script src="like_button.js" type="text/babel"></script>
 ```
 
-这是 [一个使用了 JSX 的 HTML 文件的例子](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html) ，你可以下载并尝试使用。
+这是 [一个使用了 JSX 的 HTML 文件的例子](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html)，你可以下载并尝试使用。
 
 这种方式适合于学习和创建简单的示例。然而，它会使你的网站变慢，并且**不适用于生产环境**。当你准备好更进一步时，删除你添加的这个新的 `<script>` 标签以及 `type="text/babel"` 属性。取而代之的是，在下一小节中，你将通过设置一个 JSX 预处理器来自动转换所有 `<script>` 标签的内容。
 
