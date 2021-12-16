@@ -244,7 +244,7 @@ function Hello(props) {
 ReactDOM.render(<Hello toWhat="World" />, document.getElementById('root'));
 ```
 
-如果使用 `React.createElement()`, 将会是这样:
+如果使用 `React.createElement()`，将会是这样：
 
 ```js
 function Hello(props) {
