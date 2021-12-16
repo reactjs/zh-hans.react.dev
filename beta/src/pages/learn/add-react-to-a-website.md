@@ -225,7 +225,7 @@ return React.createElement(
 
 这样，在旧浏览器上也能够使用现代 JavaScript 的语法特性，比如 class。我们刚才使用的工具叫 Babel，你可以从 [它的文档](https://babeljs.io/docs/en/babel-cli/) 中了解更多。
 
-如果你认为你已经习惯了构建工具，并希望它们能为你做更多事, [我们在这描述了一些最流行和易上手的工具链](/learn/start-a-new-react-project).
+如果你认为你已经习惯了构建工具，并希望它们能为你做更多事，[我们在这描述了一些最流行和易上手的工具链](/learn/start-a-new-react-project)。
 
 <DeepDive title="React without JSX">
 
