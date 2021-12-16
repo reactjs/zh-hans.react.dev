@@ -198,7 +198,7 @@ return React.createElement(
 
 将 JSX 添加到项目中并不需要诸如 [打包工具](/learn/start-a-new-react-project#custom-toolchains) 或开发服务器那样复杂的工具。本质上，添加 JSX 就像添加 CSS 预处理器一样。
 
-在终端上进入你的项目文件夹，然后粘贴这两个命令：(**确保你的计算机安装了 [Node.js](https://nodejs.org/) !**):
+在终端上进入你的项目文件夹，然后粘贴这两个命令：(**确保你的计算机安装了 [Node.js](https://nodejs.org/)！**)：
 
 1. `npm init -y` (如果失败，[这是修复办法](https://gist.github.com/gaearon/246f6380610e262f8a648e3e51cad40d))
 2. `npm install babel-cli@6 babel-preset-react-app@3`
