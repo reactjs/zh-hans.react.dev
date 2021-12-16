@@ -92,7 +92,7 @@ ReactDOM.render(React.createElement(LikeButton), domContainer);
 
 你可能希望在同一 HTML 页面的多个位置展示 React 组件。你可以多次调用 `ReactDOM.render()` 来实现这个想法。当页面中以 React 驱动的不同部分是相互独立的，这种策略通常是非常有用的。
 
-1. 在 **index.html**,添加另外一个的容器元素 `<div id="component-goes-here-too"></div>`.
+1. 在 **index.html**，添加另外一个的容器元素 `<div id="component-goes-here-too"></div>`。
 2. 在 **like_button.js**,为新的容器元素添加 `ReactDOM.render()`:
 
 ```js {6,7,8,9}
