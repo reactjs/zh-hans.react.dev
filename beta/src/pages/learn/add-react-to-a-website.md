@@ -213,7 +213,7 @@ return React.createElement(
 
 1. 创建一个名为 `src` 的文件夹
 2. 在终端执行这个命令： `npx babel --watch src --out-dir . --presets react-app/prod ` （不要等待它运行结束 —— 这个命令启动了一个对 JSX 的自动监听器。）
-3. 把包含 JSX 语法的 **like_button_js** 文件移动到新创建的 **src** 文件夹中(或者在 **src**文件夹中创建一个包含[此段代码](https://gist.githubusercontent.com/rachelnabors/ffbc9a0e33665a58d4cfdd1676f05453/raw/652003ff54d2dab8a1a1e5cb3bb1e28ff207c1a6/like_button.js))的 **like_button_js** 的文件)
+3. 把包含 JSX 语法的 **like_button_js** 文件移动到新创建的 **src** 文件夹中（或者在 **src**文件夹中创建一个包含 [此段代码](https://gist.githubusercontent.com/rachelnabors/ffbc9a0e33665a58d4cfdd1676f05453/raw/652003ff54d2dab8a1a1e5cb3bb1e28ff207c1a6/like_button.js) 的 **like_button_js** 的文件）
 
 监听器会创建一个预处理过的 **like_button.js** 文件，它包含了适用于浏览器的普通 JavaScript 代码.
 
