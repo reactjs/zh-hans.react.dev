@@ -52,7 +52,7 @@ React 在设计之初就可以被渐进式适配，并且你可以根据需要�
 
 ### 步骤 3：创建一个 React 组件 {/*step-3-create-a-react-component*/}
 
-在 HTML 页面文件的同级目录下创建一个名为 **like_button.js** 的文件,并将下面的代码片段添加到文件中。这段代码定义了一个名为 LikeButton 的 React 组件。[你可以在这里了解更多关于如何创建一个组件。](/learn/your-first-component)
+在 HTML 页面文件的同级目录下创建一个名为 **like_button.js** 的文件，并将下面的代码片段添加到文件中。这段代码定义了一个名为 LikeButton 的 React 组件。[你可以在这里了解更多关于如何创建一个组件。](/learn/your-first-component)
 
 ```js
 'use strict';
