@@ -107,7 +107,7 @@ ReactDOM.render(
 );
 ```
 
-这有[一个示例，它显示了三次 “Like” 按钮，并向各自传入了一些数据](https://gist.github.com/rachelnabors/c0ea05cc33fbe75ad9bbf78e9044d7f8)!
+这有 [一个示例，它显示了三次 “Like” 按钮，并向各自传入了一些数据](https://gist.github.com/rachelnabors/c0ea05cc33fbe75ad9bbf78e9044d7f8)！
 
 ### 步骤 5：为生产环境压缩 JavaScript 代码 {/*step-5-minify-javascript-for-production*/}
 
