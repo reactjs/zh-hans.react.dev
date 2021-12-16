@@ -156,7 +156,7 @@ return <button onClick={() => setLiked(true)}>Like</button>;
 <!-- ... 其他 <body> ... -->
 ```
 
-现在，你可以在任何添加了 `type="text/babel"` 属性的 `<script>` 标签内使用 JSX。举一个例子：
+现在，你可以在任何添加了 `type="text/babel"` 属性的 `<script>` 标签内使用 JSX。示例如下：
 
 ```jsx {1}
 <script type="text/babel">
@@ -191,7 +191,7 @@ return React.createElement(
 <script src="like_button.js" type="text/babel"></script>
 ```
 
-这是 [一个使用了 JSX 的 HTML 文件的例子](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html)，你可以下载并尝试使用。
+这是 [一个使用了 JSX 的 HTML 文件示例](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html)，你可以下载并尝试使用。
 
 这种方式适合于学习和创建简单的示例。然而，它会使你的网站变慢，并且**不适用于生产环境**。当你准备好更进一步时，删除你添加的这个新的 `<script>` 标签以及 `type="text/babel"` 属性。取而代之的是，在下一小节中，你将通过设置一个 JSX 预处理器来自动转换所有 `<script>` 标签的内容。
 
