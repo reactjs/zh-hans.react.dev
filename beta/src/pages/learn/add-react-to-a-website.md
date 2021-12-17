@@ -77,7 +77,7 @@ function LikeButton() {
 
 ### 步骤 4： 把你的 React 组件添加到页面中 {/*step-4-add-your-react-component-to-the-page*/}
 
-最后,在 **like_button.js** 底部添加以下两行代码。这两行代码会找到我们在步骤 1 中添加到 HTML 里的 `<div>`，然后在它内部显示我们的 React 组件 “like” 按钮。
+最后，在 **like_button.js** 底部添加以下两行代码。这两行代码会找到我们在步骤 1 中添加到 HTML 里的 `<div>`，然后在它内部显示我们的 React 组件 “like” 按钮。
 
 ```js
 const domContainer = document.getElementById('component-goes-here');
