@@ -1,6 +1,8 @@
 ---
 title: 开始
----
+translator:
+ - x-cold
+ - sooia（刘俊）
 
 <Intro>
 
