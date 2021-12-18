@@ -1,5 +1,8 @@
 ---
 title: 在 JSX 的花括号内使用 JavaScript
+translators:
+  - flynn-eye
+  - Megrax
 ---
 
 <Intro>
