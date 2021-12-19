@@ -10,29 +10,32 @@ Reducer 可以整合组件的状态更新逻辑。Context 可以将信息深入�
 
 <YouWillLearn>
 
-- 如何结合使用 reducer 和 context
-- 如何去避免通过 props 传递 state 和 dispatch
-- 如何将 context 和状态逻辑保存在一个单独的文件中
+* 如何结合使用 reducer 和 context
+* 如何去避免通过 props 传递 state 和 dispatch
+* 如何将 context 和状态逻辑保存在一个单独的文件中
 
 </YouWillLearn>
 
-## 结合使用 reducer 和 context {/_combining-a-reducer-with-context_/}
+## 结合使用 reducer 和 context {/*combining-a-reducer-with-context*/}
 
 在 [reducer 介绍](/learn/extracting-state-logic-into-a-reducer) 的例子里面，状态被 reducer 所管理。reducer 函数包含了所有的状态更新逻辑并在此文件的底部声明：
 
 <Sandpack>
 
 ```js App.js
-import { useReducer } from "react";
-import AddTask from "./AddTask.js";
-import TaskList from "./TaskList.js";
+import { useReducer } from 'react';
+import AddTask from './AddTask.js';
+import TaskList from './TaskList.js';
 
 export default function TaskBoard() {
-  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+  const [tasks, dispatch] = useReducer(
+    tasksReducer,
+    initialTasks
+  );
 
   function handleAddTask(text) {
     dispatch({
-      type: "added",
+      type: 'added',
       id: nextId++,
       text: text,
     });
@@ -40,22 +43,24 @@ export default function TaskBoard() {
 
   function handleChangeTask(task) {
     dispatch({
-      type: "changed",
-      task: task,
+      type: 'changed',
+      task: task
     });
   }
 
   function handleDeleteTask(taskId) {
     dispatch({
-      type: "deleted",
-      id: taskId,
+      type: 'deleted',
+      id: taskId
     });
   }
 
   return (
     <>
       <h1>Day off in Kyoto</h1>
-      <AddTask onAddTask={handleAddTask} />
+      <AddTask
+        onAddTask={handleAddTask}
+      />
       <TaskList
         tasks={tasks}
         onChangeTask={handleChangeTask}
@@ -67,18 +72,15 @@ export default function TaskBoard() {
 
 function tasksReducer(tasks, action) {
   switch (action.type) {
-    case "added": {
-      return [
-        ...tasks,
-        {
-          id: action.id,
-          text: action.text,
-          done: false,
-        },
-      ];
+    case 'added': {
+      return [...tasks, {
+        id: action.id,
+        text: action.text,
+        done: false
+      }];
     }
-    case "changed": {
-      return tasks.map((t) => {
+    case 'changed': {
+      return tasks.map(t => {
         if (t.id === action.task.id) {
           return action.task;
         } else {
@@ -86,57 +88,61 @@ function tasksReducer(tasks, action) {
         }
       });
     }
-    case "deleted": {
-      return tasks.filter((t) => t.id !== action.id);
+    case 'deleted': {
+      return tasks.filter(t => t.id !== action.id);
     }
     default: {
-      throw Error("Unknown action: " + action.type);
+      throw Error('Unknown action: ' + action.type);
     }
   }
 }
 
 let nextId = 3;
 const initialTasks = [
-  { id: 0, text: "Philosopher’s Path", done: true },
-  { id: 1, text: "Visit the temple", done: false },
-  { id: 2, text: "Drink matcha", done: false },
+  { id: 0, text: 'Philosopher’s Path', done: true },
+  { id: 1, text: 'Visit the temple', done: false },
+  { id: 2, text: 'Drink matcha', done: false }
 ];
 ```
 
 ```js AddTask.js
-import { useState } from "react";
+import { useState } from 'react';
 
 export default function AddTask({ onAddTask }) {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   return (
     <>
       <input
         placeholder="Add task"
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={e => setText(e.target.value)}
       />
-      <button
-        onClick={() => {
-          setText("");
-          onAddTask(text);
-        }}
-      >
-        Add
-      </button>
+      <button onClick={() => {
+        setText('');
+        onAddTask(text);
+      }}>Add</button>
     </>
-  );
+  )
 }
 ```
 
 ```js TaskList.js
-import { useState } from "react";
+import { useState } from 'react';
 
-export default function TaskList({ tasks, onChangeTask, onDeleteTask }) {
+export default function TaskList({
+  tasks,
+  onChangeTask,
+  onDeleteTask
+}) {
   return (
     <ul>
-      {tasks.map((task) => (
+      {tasks.map(task => (
         <li key={task.id}>
-          <Task task={task} onChange={onChangeTask} onDelete={onDeleteTask} />
+          <Task
+            task={task}
+            onChange={onChangeTask}
+            onDelete={onDeleteTask}
+          />
         </li>
       ))}
     </ul>
@@ -151,21 +157,24 @@ function Task({ task, onChange, onDelete }) {
       <>
         <input
           value={task.text}
-          onChange={(e) => {
+          onChange={e => {
             onChange({
               ...task,
-              text: e.target.value,
+              text: e.target.value
             });
-          }}
-        />
-        <button onClick={() => setIsEditing(false)}>Save</button>
+          }} />
+        <button onClick={() => setIsEditing(false)}>
+          Save
+        </button>
       </>
     );
   } else {
     taskContent = (
       <>
         {task.text}
-        <button onClick={() => setIsEditing(true)}>Edit</button>
+        <button onClick={() => setIsEditing(true)}>
+          Edit
+        </button>
       </>
     );
   }
@@ -174,32 +183,26 @@ function Task({ task, onChange, onDelete }) {
       <input
         type="checkbox"
         checked={task.done}
-        onChange={(e) => {
+        onChange={e => {
           onChange({
             ...task,
-            done: e.target.checked,
+            done: e.target.checked
           });
         }}
       />
       {taskContent}
-      <button onClick={() => onDelete(task.id)}>Delete</button>
+      <button onClick={() => onDelete(task.id)}>
+        Delete
+      </button>
     </label>
   );
 }
 ```
 
 ```css
-button {
-  margin: 5px;
-}
-li {
-  list-style-type: none;
-}
-ul,
-li {
-  margin: 0;
-  padding: 0;
-}
+button { margin: 5px; }
+li { list-style-type: none; }
+ul, li { margin: 0; padding: 0; }
 ```
 
 </Sandpack>
@@ -219,7 +222,11 @@ reducer 有助于事件处理程序简短明了。但随着应用越来越大，
 `TaskList` 将事件处理器传递给 `Task`：
 
 ```js
-<Task task={task} onChange={onChangeTask} onDelete={onDeleteTask} />
+<Task
+  task={task}
+  onChange={onChangeTask}
+  onDelete={onDeleteTask}
+/>
 ```
 
 他能工作的非常好在诸如这样的小例子中，但是如果你有成千上百个组件时，传递所有状态和函数会让人非常烦恼！
@@ -236,7 +243,7 @@ reducer 有助于事件处理程序简短明了。但随着应用越来越大，
 2. 将 state 和 dispatch **放入** context。
 3. 在组件树的任何地方 **使用** context。
 
-### 第一步: 创建 context {/_step-1-create-the-context_/}
+### 第一步: 创建 context {/*step-1-create-the-context*/}
 
 `useReducer` 返回当前的 `tasks` 和 `dispatch` 函数来让你更新它们：
 
@@ -254,16 +261,19 @@ const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 <Sandpack>
 
 ```js App.js
-import { useReducer } from "react";
-import AddTask from "./AddTask.js";
-import TaskList from "./TaskList.js";
+import { useReducer } from 'react';
+import AddTask from './AddTask.js';
+import TaskList from './TaskList.js';
 
 export default function TaskBoard() {
-  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+  const [tasks, dispatch] = useReducer(
+    tasksReducer,
+    initialTasks
+  );
 
   function handleAddTask(text) {
     dispatch({
-      type: "added",
+      type: 'added',
       id: nextId++,
       text: text,
     });
@@ -271,22 +281,24 @@ export default function TaskBoard() {
 
   function handleChangeTask(task) {
     dispatch({
-      type: "changed",
-      task: task,
+      type: 'changed',
+      task: task
     });
   }
 
   function handleDeleteTask(taskId) {
     dispatch({
-      type: "deleted",
-      id: taskId,
+      type: 'deleted',
+      id: taskId
     });
   }
 
   return (
     <>
       <h1>Day off in Kyoto</h1>
-      <AddTask onAddTask={handleAddTask} />
+      <AddTask
+        onAddTask={handleAddTask}
+      />
       <TaskList
         tasks={tasks}
         onChangeTask={handleChangeTask}
@@ -298,18 +310,15 @@ export default function TaskBoard() {
 
 function tasksReducer(tasks, action) {
   switch (action.type) {
-    case "added": {
-      return [
-        ...tasks,
-        {
-          id: action.id,
-          text: action.text,
-          done: false,
-        },
-      ];
+    case 'added': {
+      return [...tasks, {
+        id: action.id,
+        text: action.text,
+        done: false
+      }];
     }
-    case "changed": {
-      return tasks.map((t) => {
+    case 'changed': {
+      return tasks.map(t => {
         if (t.id === action.task.id) {
           return action.task;
         } else {
@@ -317,64 +326,68 @@ function tasksReducer(tasks, action) {
         }
       });
     }
-    case "deleted": {
-      return tasks.filter((t) => t.id !== action.id);
+    case 'deleted': {
+      return tasks.filter(t => t.id !== action.id);
     }
     default: {
-      throw Error("Unknown action: " + action.type);
+      throw Error('Unknown action: ' + action.type);
     }
   }
 }
 
 let nextId = 3;
 const initialTasks = [
-  { id: 0, text: "Philosopher’s Path", done: true },
-  { id: 1, text: "Visit the temple", done: false },
-  { id: 2, text: "Drink matcha", done: false },
+  { id: 0, text: 'Philosopher’s Path', done: true },
+  { id: 1, text: 'Visit the temple', done: false },
+  { id: 2, text: 'Drink matcha', done: false }
 ];
 ```
 
 ```js TasksContext.js active
-import { createContext } from "react";
+import { createContext } from 'react';
 
 export const TasksContext = createContext(null);
 export const TasksDispatchContext = createContext(null);
 ```
 
 ```js AddTask.js
-import { useState } from "react";
+import { useState } from 'react';
 
 export default function AddTask({ onAddTask }) {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   return (
     <>
       <input
         placeholder="Add task"
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={e => setText(e.target.value)}
       />
-      <button
-        onClick={() => {
-          setText("");
-          onAddTask(text);
-        }}
-      >
-        Add
-      </button>
+      <button onClick={() => {
+        setText('');
+        onAddTask(text);
+      }}>Add</button>
     </>
-  );
+  )
 }
 ```
 
 ```js TaskList.js
-import { useState } from "react";
+import { useState } from 'react';
 
-export default function TaskList({ tasks, onChangeTask, onDeleteTask }) {
+export default function TaskList({
+  tasks,
+  onChangeTask,
+  onDeleteTask
+}) {
   return (
     <ul>
-      {tasks.map((task) => (
+      {tasks.map(task => (
         <li key={task.id}>
-          <Task task={task} onChange={onChangeTask} onDelete={onDeleteTask} />
+          <Task
+            task={task}
+            onChange={onChangeTask}
+            onDelete={onDeleteTask}
+          />
         </li>
       ))}
     </ul>
@@ -389,21 +402,24 @@ function Task({ task, onChange, onDelete }) {
       <>
         <input
           value={task.text}
-          onChange={(e) => {
+          onChange={e => {
             onChange({
               ...task,
-              text: e.target.value,
+              text: e.target.value
             });
-          }}
-        />
-        <button onClick={() => setIsEditing(false)}>Save</button>
+          }} />
+        <button onClick={() => setIsEditing(false)}>
+          Save
+        </button>
       </>
     );
   } else {
     taskContent = (
       <>
         {task.text}
-        <button onClick={() => setIsEditing(true)}>Edit</button>
+        <button onClick={() => setIsEditing(true)}>
+          Edit
+        </button>
       </>
     );
   }
@@ -412,44 +428,38 @@ function Task({ task, onChange, onDelete }) {
       <input
         type="checkbox"
         checked={task.done}
-        onChange={(e) => {
+        onChange={e => {
           onChange({
             ...task,
-            done: e.target.checked,
+            done: e.target.checked
           });
         }}
       />
       {taskContent}
-      <button onClick={() => onDelete(task.id)}>Delete</button>
+      <button onClick={() => onDelete(task.id)}>
+        Delete
+      </button>
     </label>
   );
 }
 ```
 
 ```css
-button {
-  margin: 5px;
-}
-li {
-  list-style-type: none;
-}
-ul,
-li {
-  margin: 0;
-  padding: 0;
-}
+button { margin: 5px; }
+li { list-style-type: none; }
+ul, li { margin: 0; padding: 0; }
 ```
 
 </Sandpack>
 
 在这里，您将 `null` 作为默认值传递给两个 context。实际值将由 `TaskBoard` 组件提供。
 
-### 第二步: 将 state 和 dispatch 函数 放入 context {/_step-2-put-state-and-dispatch-into-context_/}
+### 第二步: 将 state 和 dispatch 函数 放入 context {/*step-2-put-state-and-dispatch-into-context*/}
 
 现在，您可以将所有的 context 导入 `TaskBoard` 组件。获取 `useReducer()` 返回的 `tasks` 和 `dispatch` 并将它们 [提供](/learn/passing-data-deeply-with-context#step-3-provide-the-context) 给整个组件树：
 
 ```js {4,7-8}
-import { TasksContext, TasksDispatchContext } from "./TasksContext.js";
+import { TasksContext, TasksDispatchContext } from './TasksContext.js';
 
 export default function TaskBoard() {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
@@ -469,17 +479,20 @@ export default function TaskBoard() {
 <Sandpack>
 
 ```js App.js
-import { useReducer } from "react";
-import AddTask from "./AddTask.js";
-import TaskList from "./TaskList.js";
-import { TasksContext, TasksDispatchContext } from "./TasksContext.js";
+import { useReducer } from 'react';
+import AddTask from './AddTask.js';
+import TaskList from './TaskList.js';
+import { TasksContext, TasksDispatchContext } from './TasksContext.js';
 
 export default function TaskBoard() {
-  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+  const [tasks, dispatch] = useReducer(
+    tasksReducer,
+    initialTasks
+  );
 
   function handleAddTask(text) {
     dispatch({
-      type: "added",
+      type: 'added',
       id: nextId++,
       text: text,
     });
@@ -487,15 +500,15 @@ export default function TaskBoard() {
 
   function handleChangeTask(task) {
     dispatch({
-      type: "changed",
-      task: task,
+      type: 'changed',
+      task: task
     });
   }
 
   function handleDeleteTask(taskId) {
     dispatch({
-      type: "deleted",
-      id: taskId,
+      type: 'deleted',
+      id: taskId
     });
   }
 
@@ -503,7 +516,9 @@ export default function TaskBoard() {
     <TasksContext.Provider value={tasks}>
       <TasksDispatchContext.Provider value={dispatch}>
         <h1>Day off in Kyoto</h1>
-        <AddTask onAddTask={handleAddTask} />
+        <AddTask
+          onAddTask={handleAddTask}
+        />
         <TaskList
           tasks={tasks}
           onChangeTask={handleChangeTask}
@@ -516,18 +531,15 @@ export default function TaskBoard() {
 
 function tasksReducer(tasks, action) {
   switch (action.type) {
-    case "added": {
-      return [
-        ...tasks,
-        {
-          id: action.id,
-          text: action.text,
-          done: false,
-        },
-      ];
+    case 'added': {
+      return [...tasks, {
+        id: action.id,
+        text: action.text,
+        done: false
+      }];
     }
-    case "changed": {
-      return tasks.map((t) => {
+    case 'changed': {
+      return tasks.map(t => {
         if (t.id === action.task.id) {
           return action.task;
         } else {
@@ -535,64 +547,68 @@ function tasksReducer(tasks, action) {
         }
       });
     }
-    case "deleted": {
-      return tasks.filter((t) => t.id !== action.id);
+    case 'deleted': {
+      return tasks.filter(t => t.id !== action.id);
     }
     default: {
-      throw Error("Unknown action: " + action.type);
+      throw Error('Unknown action: ' + action.type);
     }
   }
 }
 
 let nextId = 3;
 const initialTasks = [
-  { id: 0, text: "Philosopher’s Path", done: true },
-  { id: 1, text: "Visit the temple", done: false },
-  { id: 2, text: "Drink matcha", done: false },
+  { id: 0, text: 'Philosopher’s Path', done: true },
+  { id: 1, text: 'Visit the temple', done: false },
+  { id: 2, text: 'Drink matcha', done: false }
 ];
 ```
 
 ```js TasksContext.js
-import { createContext } from "react";
+import { createContext } from 'react';
 
 export const TasksContext = createContext(null);
 export const TasksDispatchContext = createContext(null);
 ```
 
 ```js AddTask.js
-import { useState } from "react";
+import { useState } from 'react';
 
 export default function AddTask({ onAddTask }) {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   return (
     <>
       <input
         placeholder="Add task"
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={e => setText(e.target.value)}
       />
-      <button
-        onClick={() => {
-          setText("");
-          onAddTask(text);
-        }}
-      >
-        Add
-      </button>
+      <button onClick={() => {
+        setText('');
+        onAddTask(text);
+      }}>Add</button>
     </>
-  );
+  )
 }
 ```
 
 ```js TaskList.js
-import { useState } from "react";
+import { useState } from 'react';
 
-export default function TaskList({ tasks, onChangeTask, onDeleteTask }) {
+export default function TaskList({
+  tasks,
+  onChangeTask,
+  onDeleteTask
+}) {
   return (
     <ul>
-      {tasks.map((task) => (
+      {tasks.map(task => (
         <li key={task.id}>
-          <Task task={task} onChange={onChangeTask} onDelete={onDeleteTask} />
+          <Task
+            task={task}
+            onChange={onChangeTask}
+            onDelete={onDeleteTask}
+          />
         </li>
       ))}
     </ul>
@@ -607,21 +623,24 @@ function Task({ task, onChange, onDelete }) {
       <>
         <input
           value={task.text}
-          onChange={(e) => {
+          onChange={e => {
             onChange({
               ...task,
-              text: e.target.value,
+              text: e.target.value
             });
-          }}
-        />
-        <button onClick={() => setIsEditing(false)}>Save</button>
+          }} />
+        <button onClick={() => setIsEditing(false)}>
+          Save
+        </button>
       </>
     );
   } else {
     taskContent = (
       <>
         {task.text}
-        <button onClick={() => setIsEditing(true)}>Edit</button>
+        <button onClick={() => setIsEditing(true)}>
+          Edit
+        </button>
       </>
     );
   }
@@ -630,39 +649,33 @@ function Task({ task, onChange, onDelete }) {
       <input
         type="checkbox"
         checked={task.done}
-        onChange={(e) => {
+        onChange={e => {
           onChange({
             ...task,
-            done: e.target.checked,
+            done: e.target.checked
           });
         }}
       />
       {taskContent}
-      <button onClick={() => onDelete(task.id)}>Delete</button>
+      <button onClick={() => onDelete(task.id)}>
+        Delete
+      </button>
     </label>
   );
 }
 ```
 
 ```css
-button {
-  margin: 5px;
-}
-li {
-  list-style-type: none;
-}
-ul,
-li {
-  margin: 0;
-  padding: 0;
-}
+button { margin: 5px; }
+li { list-style-type: none; }
+ul, li { margin: 0; padding: 0; }
 ```
 
 </Sandpack>
 
 在下一步中，你将删除通过 props 传递的代码。
 
-### Step 3: 在组件树中的任何地方使用 context {/_step-3-use-context-anywhere-in-the-tree_/}
+### Step 3: 在组件树中的任何地方使用 context {/*step-3-use-context-anywhere-in-the-tree*/}
 
 现在你不需要将 tasks 和事件处理程序在组件树中传递：
 
@@ -709,13 +722,16 @@ export default function AddTask({ onAddTask }) {
 <Sandpack>
 
 ```js App.js
-import { useReducer } from "react";
-import AddTask from "./AddTask.js";
-import TaskList from "./TaskList.js";
-import { TasksContext, TasksDispatchContext } from "./TasksContext.js";
+import { useReducer } from 'react';
+import AddTask from './AddTask.js';
+import TaskList from './TaskList.js';
+import { TasksContext, TasksDispatchContext } from './TasksContext.js';
 
 export default function TaskBoard() {
-  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+  const [tasks, dispatch] = useReducer(
+    tasksReducer,
+    initialTasks
+  );
 
   return (
     <TasksContext.Provider value={tasks}>
@@ -730,18 +746,15 @@ export default function TaskBoard() {
 
 function tasksReducer(tasks, action) {
   switch (action.type) {
-    case "added": {
-      return [
-        ...tasks,
-        {
-          id: action.id,
-          text: action.text,
-          done: false,
-        },
-      ];
+    case 'added': {
+      return [...tasks, {
+        id: action.id,
+        text: action.text,
+        done: false
+      }];
     }
-    case "changed": {
-      return tasks.map((t) => {
+    case 'changed': {
+      return tasks.map(t => {
         if (t.id === action.task.id) {
           return action.task;
         } else {
@@ -749,55 +762,51 @@ function tasksReducer(tasks, action) {
         }
       });
     }
-    case "deleted": {
-      return tasks.filter((t) => t.id !== action.id);
+    case 'deleted': {
+      return tasks.filter(t => t.id !== action.id);
     }
     default: {
-      throw Error("Unknown action: " + action.type);
+      throw Error('Unknown action: ' + action.type);
     }
   }
 }
 
 const initialTasks = [
-  { id: 0, text: "Philosopher’s Path", done: true },
-  { id: 1, text: "Visit the temple", done: false },
-  { id: 2, text: "Drink matcha", done: false },
+  { id: 0, text: 'Philosopher’s Path', done: true },
+  { id: 1, text: 'Visit the temple', done: false },
+  { id: 2, text: 'Drink matcha', done: false }
 ];
 ```
 
 ```js TasksContext.js
-import { createContext } from "react";
+import { createContext } from 'react';
 
 export const TasksContext = createContext(null);
 export const TasksDispatchContext = createContext(null);
 ```
 
 ```js AddTask.js
-import { useState, useContext } from "react";
-import { TasksDispatchContext } from "./TasksContext.js";
+import { useState, useContext } from 'react';
+import { TasksDispatchContext } from './TasksContext.js';
 
 export default function AddTask({ onAddTask }) {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const dispatch = useContext(TasksDispatchContext);
   return (
     <>
       <input
         placeholder="Add task"
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={e => setText(e.target.value)}
       />
-      <button
-        onClick={() => {
-          setText("");
-          dispatch({
-            type: "added",
-            id: nextId++,
-            text: text,
-          });
-        }}
-      >
-        Add
-      </button>
+      <button onClick={() => {
+        setText('');
+        dispatch({
+          type: 'added',
+          id: nextId++,
+          text: text,
+        }); 
+      }}>Add</button>
     </>
   );
 }
@@ -806,14 +815,14 @@ let nextId = 3;
 ```
 
 ```js TaskList.js active
-import { useState, useContext } from "react";
-import { TasksContext, TasksDispatchContext } from "./TasksContext.js";
+import { useState, useContext } from 'react';
+import { TasksContext, TasksDispatchContext } from './TasksContext.js';
 
 export default function TaskList() {
   const tasks = useContext(TasksContext);
   return (
     <ul>
-      {tasks.map((task) => (
+      {tasks.map(task => (
         <li key={task.id}>
           <Task task={task} />
         </li>
@@ -831,24 +840,27 @@ function Task({ task }) {
       <>
         <input
           value={task.text}
-          onChange={(e) => {
+          onChange={e => {
             dispatch({
-              type: "changed",
+              type: 'changed',
               task: {
                 ...task,
-                text: e.target.value,
-              },
+                text: e.target.value
+              }
             });
-          }}
-        />
-        <button onClick={() => setIsEditing(false)}>Save</button>
+          }} />
+        <button onClick={() => setIsEditing(false)}>
+          Save
+        </button>
       </>
     );
   } else {
     taskContent = (
       <>
         {task.text}
-        <button onClick={() => setIsEditing(true)}>Edit</button>
+        <button onClick={() => setIsEditing(true)}>
+          Edit
+        </button>
       </>
     );
   }
@@ -857,25 +869,23 @@ function Task({ task }) {
       <input
         type="checkbox"
         checked={task.done}
-        onChange={(e) => {
+        onChange={e => {
           dispatch({
-            type: "changed",
+            type: 'changed',
             task: {
               ...task,
-              done: e.target.checked,
-            },
+              done: e.target.checked
+            }
           });
         }}
       />
       {taskContent}
-      <button
-        onClick={() => {
-          dispatch({
-            type: "deleted",
-            id: task.id,
-          });
-        }}
-      >
+      <button onClick={() => {
+        dispatch({
+          type: 'deleted',
+          id: task.id
+        });
+      }}>
         Delete
       </button>
     </label>
@@ -884,29 +894,21 @@ function Task({ task }) {
 ```
 
 ```css
-button {
-  margin: 5px;
-}
-li {
-  list-style-type: none;
-}
-ul,
-li {
-  margin: 0;
-  padding: 0;
-}
+button { margin: 5px; }
+li { list-style-type: none; }
+ul, li { margin: 0; padding: 0; }
 ```
 
 </Sandpack>
 
 **state 仍然"存在于"顶层 `TaskBoard` 组件中，由 `useReducer` 进行管理。** 不过，组件树里的组件只要导入这些 context 之后就可以获取 `tasks` 和 `dispatch`。
 
-## 将所有的连接部分放入一个文件 {/_moving-all-wiring-into-a-single-file_/}
+## 将所有的连接部分放入一个文件 {/*moving-all-wiring-into-a-single-file*/}
 
 虽然不是必要的，但你可以通过将 reducer 和 context 移动到单个文件中来进一步整理组件。目前，"TasksContext.js"仅包含两个 context 声明：
 
 ```js
-import { createContext } from "react";
+import { createContext } from 'react';
 
 export const TasksContext = createContext(null);
 export const TasksDispatchContext = createContext(null);
@@ -937,9 +939,9 @@ export function TasksProvider({ children }) {
 <Sandpack>
 
 ```js App.js
-import AddTask from "./AddTask.js";
-import TaskList from "./TaskList.js";
-import { TasksProvider } from "./TasksContext.js";
+import AddTask from './AddTask.js';
+import TaskList from './TaskList.js';
+import { TasksProvider } from './TasksContext.js';
 
 export default function TaskBoard() {
   return (
@@ -953,13 +955,16 @@ export default function TaskBoard() {
 ```
 
 ```js TasksContext.js
-import { createContext, useReducer } from "react";
+import { createContext, useReducer } from 'react';
 
 export const TasksContext = createContext(null);
 export const TasksDispatchContext = createContext(null);
 
 export function TasksProvider({ children }) {
-  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+  const [tasks, dispatch] = useReducer(
+    tasksReducer,
+    initialTasks
+  );
 
   return (
     <TasksContext.Provider value={tasks}>
@@ -972,18 +977,15 @@ export function TasksProvider({ children }) {
 
 function tasksReducer(tasks, action) {
   switch (action.type) {
-    case "added": {
-      return [
-        ...tasks,
-        {
-          id: action.id,
-          text: action.text,
-          done: false,
-        },
-      ];
+    case 'added': {
+      return [...tasks, {
+        id: action.id,
+        text: action.text,
+        done: false
+      }];
     }
-    case "changed": {
-      return tasks.map((t) => {
+    case 'changed': {
+      return tasks.map(t => {
         if (t.id === action.task.id) {
           return action.task;
         } else {
@@ -991,48 +993,44 @@ function tasksReducer(tasks, action) {
         }
       });
     }
-    case "deleted": {
-      return tasks.filter((t) => t.id !== action.id);
+    case 'deleted': {
+      return tasks.filter(t => t.id !== action.id);
     }
     default: {
-      throw Error("Unknown action: " + action.type);
+      throw Error('Unknown action: ' + action.type);
     }
   }
 }
 
 const initialTasks = [
-  { id: 0, text: "Philosopher’s Path", done: true },
-  { id: 1, text: "Visit the temple", done: false },
-  { id: 2, text: "Drink matcha", done: false },
+  { id: 0, text: 'Philosopher’s Path', done: true },
+  { id: 1, text: 'Visit the temple', done: false },
+  { id: 2, text: 'Drink matcha', done: false }
 ];
 ```
 
 ```js AddTask.js
-import { useState, useContext } from "react";
-import { TasksDispatchContext } from "./TasksContext.js";
+import { useState, useContext } from 'react';
+import { TasksDispatchContext } from './TasksContext.js';
 
 export default function AddTask({ onAddTask }) {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const dispatch = useContext(TasksDispatchContext);
   return (
     <>
       <input
         placeholder="Add task"
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={e => setText(e.target.value)}
       />
-      <button
-        onClick={() => {
-          setText("");
-          dispatch({
-            type: "added",
-            id: nextId++,
-            text: text,
-          });
-        }}
-      >
-        Add
-      </button>
+      <button onClick={() => {
+        setText('');
+        dispatch({
+          type: 'added',
+          id: nextId++,
+          text: text,
+        }); 
+      }}>Add</button>
     </>
   );
 }
@@ -1041,14 +1039,14 @@ let nextId = 3;
 ```
 
 ```js TaskList.js
-import { useState, useContext } from "react";
-import { TasksContext, TasksDispatchContext } from "./TasksContext.js";
+import { useState, useContext } from 'react';
+import { TasksContext, TasksDispatchContext } from './TasksContext.js';
 
 export default function TaskList() {
   const tasks = useContext(TasksContext);
   return (
     <ul>
-      {tasks.map((task) => (
+      {tasks.map(task => (
         <li key={task.id}>
           <Task task={task} />
         </li>
@@ -1066,24 +1064,27 @@ function Task({ task }) {
       <>
         <input
           value={task.text}
-          onChange={(e) => {
+          onChange={e => {
             dispatch({
-              type: "changed",
+              type: 'changed',
               task: {
                 ...task,
-                text: e.target.value,
-              },
+                text: e.target.value
+              }
             });
-          }}
-        />
-        <button onClick={() => setIsEditing(false)}>Save</button>
+          }} />
+        <button onClick={() => setIsEditing(false)}>
+          Save
+        </button>
       </>
     );
   } else {
     taskContent = (
       <>
         {task.text}
-        <button onClick={() => setIsEditing(true)}>Edit</button>
+        <button onClick={() => setIsEditing(true)}>
+          Edit
+        </button>
       </>
     );
   }
@@ -1092,25 +1093,23 @@ function Task({ task }) {
       <input
         type="checkbox"
         checked={task.done}
-        onChange={(e) => {
+        onChange={e => {
           dispatch({
-            type: "changed",
+            type: 'changed',
             task: {
               ...task,
-              done: e.target.checked,
-            },
+              done: e.target.checked
+            }
           });
         }}
       />
       {taskContent}
-      <button
-        onClick={() => {
-          dispatch({
-            type: "deleted",
-            id: task.id,
-          });
-        }}
-      >
+      <button onClick={() => {
+        dispatch({
+          type: 'deleted',
+          id: task.id
+        });
+      }}>
         Delete
       </button>
     </label>
@@ -1119,17 +1118,9 @@ function Task({ task }) {
 ```
 
 ```css
-button {
-  margin: 5px;
-}
-li {
-  list-style-type: none;
-}
-ul,
-li {
-  margin: 0;
-  padding: 0;
-}
+button { margin: 5px; }
+li { list-style-type: none; }
+ul, li { margin: 0; padding: 0; }
 ```
 
 </Sandpack>
@@ -1158,9 +1149,9 @@ const dispatch = useTasksDispatch();
 <Sandpack>
 
 ```js App.js
-import AddTask from "./AddTask.js";
-import TaskList from "./TaskList.js";
-import { TasksProvider } from "./TasksContext.js";
+import AddTask from './AddTask.js';
+import TaskList from './TaskList.js';
+import { TasksProvider } from './TasksContext.js';
 
 export default function TaskBoard() {
   return (
@@ -1174,14 +1165,17 @@ export default function TaskBoard() {
 ```
 
 ```js TasksContext.js
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer } from 'react';
 
 const TasksContext = createContext(null);
 
 const TasksDispatchContext = createContext(null);
 
 export function TasksProvider({ children }) {
-  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
+  const [tasks, dispatch] = useReducer(
+    tasksReducer,
+    initialTasks
+  );
 
   return (
     <TasksContext.Provider value={tasks}>
@@ -1202,18 +1196,15 @@ export function useTasksDispatch() {
 
 function tasksReducer(tasks, action) {
   switch (action.type) {
-    case "added": {
-      return [
-        ...tasks,
-        {
-          id: action.id,
-          text: action.text,
-          done: false,
-        },
-      ];
+    case 'added': {
+      return [...tasks, {
+        id: action.id,
+        text: action.text,
+        done: false
+      }];
     }
-    case "changed": {
-      return tasks.map((t) => {
+    case 'changed': {
+      return tasks.map(t => {
         if (t.id === action.task.id) {
           return action.task;
         } else {
@@ -1221,48 +1212,44 @@ function tasksReducer(tasks, action) {
         }
       });
     }
-    case "deleted": {
-      return tasks.filter((t) => t.id !== action.id);
+    case 'deleted': {
+      return tasks.filter(t => t.id !== action.id);
     }
     default: {
-      throw Error("Unknown action: " + action.type);
+      throw Error('Unknown action: ' + action.type);
     }
   }
 }
 
 const initialTasks = [
-  { id: 0, text: "Philosopher’s Path", done: true },
-  { id: 1, text: "Visit the temple", done: false },
-  { id: 2, text: "Drink matcha", done: false },
+  { id: 0, text: 'Philosopher’s Path', done: true },
+  { id: 1, text: 'Visit the temple', done: false },
+  { id: 2, text: 'Drink matcha', done: false }
 ];
 ```
 
 ```js AddTask.js
-import { useState, useContext } from "react";
-import { useTasksDispatch } from "./TasksContext.js";
+import { useState, useContext } from 'react';
+import { useTasksDispatch } from './TasksContext.js';
 
 export default function AddTask({ onAddTask }) {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const dispatch = useTasksDispatch();
   return (
     <>
       <input
         placeholder="Add task"
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={e => setText(e.target.value)}
       />
-      <button
-        onClick={() => {
-          setText("");
-          dispatch({
-            type: "added",
-            id: nextId++,
-            text: text,
-          });
-        }}
-      >
-        Add
-      </button>
+      <button onClick={() => {
+        setText('');
+        dispatch({
+          type: 'added',
+          id: nextId++,
+          text: text,
+        }); 
+      }}>Add</button>
     </>
   );
 }
@@ -1271,14 +1258,14 @@ let nextId = 3;
 ```
 
 ```js TaskList.js active
-import { useState, useContext } from "react";
-import { useTasks, useTasksDispatch } from "./TasksContext.js";
+import { useState, useContext } from 'react';
+import { useTasks, useTasksDispatch } from './TasksContext.js';
 
 export default function TaskList() {
   const tasks = useTasks();
   return (
     <ul>
-      {tasks.map((task) => (
+      {tasks.map(task => (
         <li key={task.id}>
           <Task task={task} />
         </li>
@@ -1296,24 +1283,27 @@ function Task({ task }) {
       <>
         <input
           value={task.text}
-          onChange={(e) => {
+          onChange={e => {
             dispatch({
-              type: "changed",
+              type: 'changed',
               task: {
                 ...task,
-                text: e.target.value,
-              },
+                text: e.target.value
+              }
             });
-          }}
-        />
-        <button onClick={() => setIsEditing(false)}>Save</button>
+          }} />
+        <button onClick={() => setIsEditing(false)}>
+          Save
+        </button>
       </>
     );
   } else {
     taskContent = (
       <>
         {task.text}
-        <button onClick={() => setIsEditing(true)}>Edit</button>
+        <button onClick={() => setIsEditing(true)}>
+          Edit
+        </button>
       </>
     );
   }
@@ -1322,25 +1312,23 @@ function Task({ task }) {
       <input
         type="checkbox"
         checked={task.done}
-        onChange={(e) => {
+        onChange={e => {
           dispatch({
-            type: "changed",
+            type: 'changed',
             task: {
               ...task,
-              done: e.target.checked,
-            },
+              done: e.target.checked
+            }
           });
         }}
       />
       {taskContent}
-      <button
-        onClick={() => {
-          dispatch({
-            type: "deleted",
-            id: task.id,
-          });
-        }}
-      >
+      <button onClick={() => {
+        dispatch({
+          type: 'deleted',
+          id: task.id
+        });
+      }}>
         Delete
       </button>
     </label>
@@ -1349,17 +1337,9 @@ function Task({ task }) {
 ```
 
 ```css
-button {
-  margin: 5px;
-}
-li {
-  list-style-type: none;
-}
-ul,
-li {
-  margin: 0;
-  padding: 0;
-}
+button { margin: 5px; }
+li { list-style-type: none; }
+ul, li { margin: 0; padding: 0; }
 ```
 
 </Sandpack>
@@ -1374,12 +1354,13 @@ li {
 
 - 你可以将 reducer 与 context 相结合，让任何组件读取和更新它的状态。
 - 为子组件提供 state 和 dispatch 函数：
-    1. 创建两个 context (一个用于 state,一个用于 dispatch 函数)。
-    2. 让组件的 context 使用 reducer。
-    3. 使用组件中需要读取的 context。
+  1. 创建两个 context (一个用于 state,一个用于 dispatch 函数)。
+  2. 让组件的 context 使用 reducer。
+  3. 使用组件中需要读取的 context。
 - 你可以通过将所有传递信息的代码移动到单个文件中来进一步整理组件。
-    - 你可以导出一个像 `TasksProvider` 可以提供 context 的组件。
-    - 你也可以导出自定义钩子像 `useTasks` 和 `useTasksDispatch` 。
+  - 你可以导出一个像 `TasksProvider` 可以提供 context 的组件。
+  - 你也可以导出自定义钩子像 `useTasks` 和 `useTasksDispatch` 。
 - 你可以在你的应用程序中大量配合使用 context 和 reducer。
 
 </Recap>
+
