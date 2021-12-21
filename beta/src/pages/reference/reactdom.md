@@ -43,7 +43,7 @@ ReactDOM 支持所有流行的浏览器，包括 Internet Explorer 9 及以上�
 
 <YouWillLearnCard title="render" path="/reference/render">
 
-可以将一段 JSX （"React 元素"）渲染到浏览器 DOM 容器中。
+可以将一段 JSX （“React 元素”）渲染到浏览器 DOM 容器节点中。
 
 </YouWillLearnCard>
 
