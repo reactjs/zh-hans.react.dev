@@ -7,7 +7,7 @@ translators:
 
 <Intro>
 
-ReactDOM 包能够让你在页面上渲染 React 组件。
+ReactDOM package 能够让你在页面上渲染 React 组件。
 
 </Intro>
 
