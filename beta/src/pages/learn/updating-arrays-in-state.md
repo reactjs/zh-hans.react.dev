@@ -372,7 +372,7 @@ export default function List() {
 
   return (
     <>
-      <h1>Inspiring sculptors:</h1>
+      <h1>振奋人心的雕塑家们：</h1>
       <input
         value={name}
         onChange={e => setName(e.target.value)}
@@ -502,12 +502,12 @@ export default function BucketList() {
 
   return (
     <>
-      <h1>Art Bucket List</h1>
-      <h2>My list of art to see:</h2>
+      <h1>艺术愿望清单</h1>
+      <h2>我想看的艺术清单：</h2>
       <ItemList
         artworks={myList}
         onToggle={handleToggleMyList} />
-      <h2>Your list of art to see:</h2>
+      <h2>你想看的艺术清单：</h2>
       <ItemList
         artworks={yourList}
         onToggle={handleToggleYourList} />
@@ -615,12 +615,12 @@ export default function BucketList() {
 
   return (
     <>
-      <h1>Art Bucket List</h1>
-      <h2>My list of art to see:</h2>
+      <h1>艺术愿望清单</h1>
+      <h2>我想看的艺术清单：</h2>
       <ItemList
         artworks={myList}
         onToggle={handleToggleMyList} />
-      <h2>Your list of art to see:</h2>
+      <h2>你想看的艺术清单：</h2>
       <ItemList
         artworks={yourList}
         onToggle={handleToggleYourList} />
@@ -707,12 +707,12 @@ export default function BucketList() {
 
   return (
     <>
-      <h1>Art Bucket List</h1>
-      <h2>My list of art to see:</h2>
+      <h1>艺术愿望清单</h1>
+      <h2>我想看的艺术清单：</h2>
       <ItemList
         artworks={myList}
         onToggle={handleToggleMyList} />
-      <h2>Your list of art to see:</h2>
+      <h2>你想看的艺术清单：</h2>
       <ItemList
         artworks={yourArtworks}
         onToggle={handleToggleYourList} />
@@ -1156,7 +1156,7 @@ export default function AddTodo({ onAddTodo }) {
       <button onClick={() => {
         setTitle('');
         onAddTodo(title);
-      }}>Add</button>
+      }}>添加</button>
     </>
   )
 }
@@ -1200,7 +1200,7 @@ function Task({ todo, onChange, onDelete }) {
             });
           }} />
         <button onClick={() => setIsEditing(false)}>
-          Save
+          保存
         </button>
       </>
     );
@@ -1209,7 +1209,7 @@ function Task({ todo, onChange, onDelete }) {
       <>
         {todo.title}
         <button onClick={() => setIsEditing(true)}>
-          Edit
+          编辑
         </button>
       </>
     );
@@ -1228,7 +1228,7 @@ function Task({ todo, onChange, onDelete }) {
       />
       {todoContent}
       <button onClick={() => onDelete(todo.id)}>
-        Delete
+        删除
       </button>
     </label>
   );
@@ -1323,7 +1323,7 @@ export default function AddTodo({ onAddTodo }) {
       <button onClick={() => {
         setTitle('');
         onAddTodo(title);
-      }}>Add</button>
+      }}>添加</button>
     </>
   )
 }
@@ -1367,7 +1367,7 @@ function Task({ todo, onChange, onDelete }) {
             });
           }} />
         <button onClick={() => setIsEditing(false)}>
-          Save
+          保存
         </button>
       </>
     );
@@ -1376,7 +1376,7 @@ function Task({ todo, onChange, onDelete }) {
       <>
         {todo.title}
         <button onClick={() => setIsEditing(true)}>
-          Edit
+          编辑
         </button>
       </>
     );
@@ -1395,7 +1395,7 @@ function Task({ todo, onChange, onDelete }) {
       />
       {todoContent}
       <button onClick={() => onDelete(todo.id)}>
-        Delete
+        删除
       </button>
     </label>
   );
@@ -1490,7 +1490,7 @@ export default function AddTodo({ onAddTodo }) {
       <button onClick={() => {
         setTitle('');
         onAddTodo(title);
-      }}>Add</button>
+      }}>添加</button>
     </>
   )
 }
@@ -1534,7 +1534,7 @@ function Task({ todo, onChange, onDelete }) {
             });
           }} />
         <button onClick={() => setIsEditing(false)}>
-          Save
+          保存
         </button>
       </>
     );
@@ -1543,7 +1543,7 @@ function Task({ todo, onChange, onDelete }) {
       <>
         {todo.title}
         <button onClick={() => setIsEditing(true)}>
-          Edit
+          编辑
         </button>
       </>
     );
@@ -1562,7 +1562,7 @@ function Task({ todo, onChange, onDelete }) {
       />
       {todoContent}
       <button onClick={() => onDelete(todo.id)}>
-        Delete
+        删除
       </button>
     </label>
   );
@@ -1678,7 +1678,7 @@ export default function AddTodo({ onAddTodo }) {
       <button onClick={() => {
         setTitle('');
         onAddTodo(title);
-      }}>Add</button>
+      }}>添加</button>
     </>
   )
 }
@@ -1722,7 +1722,7 @@ function Task({ todo, onChange, onDelete }) {
             });
           }} />
         <button onClick={() => setIsEditing(false)}>
-          Save
+          保存
         </button>
       </>
     );
@@ -1731,7 +1731,7 @@ function Task({ todo, onChange, onDelete }) {
       <>
         {todo.title}
         <button onClick={() => setIsEditing(true)}>
-          Edit
+          编辑
         </button>
       </>
     );
@@ -1750,7 +1750,7 @@ function Task({ todo, onChange, onDelete }) {
       />
       {todoContent}
       <button onClick={() => onDelete(todo.id)}>
-        Delete
+        删除
       </button>
     </label>
   );
@@ -1863,7 +1863,7 @@ export default function AddTodo({ onAddTodo }) {
       <button onClick={() => {
         setTitle('');
         onAddTodo(title);
-      }}>Add</button>
+      }}>添加</button>
     </>
   )
 }
@@ -1907,7 +1907,7 @@ function Task({ todo, onChange, onDelete }) {
             });
           }} />
         <button onClick={() => setIsEditing(false)}>
-          Save
+          保存
         </button>
       </>
     );
@@ -1916,7 +1916,7 @@ function Task({ todo, onChange, onDelete }) {
       <>
         {todo.title}
         <button onClick={() => setIsEditing(true)}>
-          Edit
+          编辑
         </button>
       </>
     );
@@ -1935,7 +1935,7 @@ function Task({ todo, onChange, onDelete }) {
       />
       {todoContent}
       <button onClick={() => onDelete(todo.id)}>
-        Delete
+        删除
       </button>
     </label>
   );
