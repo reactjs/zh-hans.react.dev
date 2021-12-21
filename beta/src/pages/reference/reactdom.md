@@ -24,7 +24,7 @@ npm install react-dom
 </TerminalBlock>
 
 ```js
-// 如何引入一个特定的 API ：
+// 如何引入一个特定的 API：
 import { render } from 'react-dom';
 
 // 如何将所有的 API 一起引入：
