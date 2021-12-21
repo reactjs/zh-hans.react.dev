@@ -39,7 +39,7 @@ import * as React from 'react';
 
 <YouWillLearnCard title="useState" path="/reference/usestate">
 
-这个 React Hook 可以让组件 "记住" 一些信息（因此返回的值被称为 state）。
+一个让组件“记住”某些信息（称为 state）的 React Hook 。
 
 </YouWillLearnCard>
 
