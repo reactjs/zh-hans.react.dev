@@ -639,6 +639,8 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
+这可能看起来像一个小变化，但在 React 应用中很多 bug 都是这么修复的。
+
 有时，您希望两个组件的 state 始终一起更改。要做到这一点，在它们两个中都删除该 state，将它移动到它们最近的公共父节点，然后通过 props 将它传递给它们。 这被称为["提升 state"](/learn/sharing-state-between-components)，这是编写 React 代码时最常见的事情之一。 例如，在像下面这样的手风琴组件中，一次应该只有一个面板处于激活状态。父组件不应该将激活 state 保存在每个单独的面板内，而是保存在父组件的 state 中并通过 props 指定给子组件。
 
 <Sandpack>
