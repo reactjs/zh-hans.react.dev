@@ -298,6 +298,7 @@ export default function Gallery() {
         下一个
       </button>
       <h2>
+        <i>{sculpture.name} </i>
         {sculpture.artist} 的 <i>{sculpture.name} </i>
       </h2>
       <h3>
