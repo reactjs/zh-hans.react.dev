@@ -573,9 +573,9 @@ export default function Form() {
           onChange={handleLastNameChange}
         />
       </label>
-      <h3>
+      <p>
         您的姓名是：{fullName}
-      </h3>
+      </p>
     </>
   );
 }
@@ -625,9 +625,9 @@ export default function Form() {
           onChange={handleLastNameChange}
         />
       </label>
-      <h3>
+      <p>
         您的姓名是：{fullName}
-      </h3>
+      </p>
     </>
   );
 }
