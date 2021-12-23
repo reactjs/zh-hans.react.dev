@@ -610,6 +610,7 @@ export default function Form() {
 
   return (
     <>
+      <h2>Let’s check you in</h2>
       <label>
         名：{' '}
         <input
