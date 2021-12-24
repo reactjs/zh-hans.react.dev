@@ -23,7 +23,7 @@ translator:
 
 ## 介绍 {/*introduction*/}
 
-这是一个最基本的 React 应用。要获得React的初体验，**编辑下面的代码** 然后让它显示您的名字：
+这是一个最基本的 React 应用。可以 **编辑下面的代码** 并让它显示你的名字，以获得 React 的初体验：
 
 <Sandpack>
 
