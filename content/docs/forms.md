@@ -132,7 +132,7 @@ class EssayForm extends React.Component {
 </select>
 ```
 
-请注意，由于 `selected` 属性的缘故，椰子选项默认被选中。React 并不会使用 `selected` 属性，而是在根 `select` 标签上使用 `value` 属性。这在受控组件中更便捷，因为您只需要在根标签中更新它。例如：
+请注意，由于 `selected` 属性的缘故，叶子选项默认被选中。React 并不会使用 `selected` 属性，而是在根 `select` 标签上使用 `value` 属性。这在受控组件中更便捷，因为您只需要在根标签中更新它。例如：
 
 ```javascript{4,10-12,24}
 class FlavorForm extends React.Component {
