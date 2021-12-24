@@ -58,7 +58,7 @@ React 没有规定要如何构建整个应用程序。它能帮助你定义和�
 
 应用场景很广泛！开发者们使用 React 来创建各种用户界面——从像按钮和下拉菜单这样的小控件到整个应用程序。 **这些文档将教你在 web 平台上使用 React。** 然而，你在这里学到的大部分内容同样适用于 [React Native](https://reactnative.dev/)，它可以让你为 Android、iOS，甚至 [Windows 和 macOS](https://microsoft.github.io/react-native-windows/) 构建应用程序。
 
-如果您好奇您日常使用的哪些产品是用 React 构建的，您可以安装 [React Developer Tools](/learn/react-developer-tools)。 每当您访问使用 React 构建的应用程序或网站时（就像这个文档网站！），它的图标会在工具栏中亮起。
+如果你好奇你日常使用的哪些产品是用 React 构建的，你可以安装 [React Developer Tools](/learn/react-developer-tools)。 每当你访问使用 React 构建的应用程序或网站时（比如说这个文档！），它的图标就会在工具栏中亮起来。
 
 ### React 使用 JavaScript {/*react-uses-javascript*/}
 
