@@ -53,7 +53,7 @@ React 擅长交互设计和编程。**它让你可以将一个复杂的用户界
 
 React 没有规定要如何构建整个应用程序。它能帮助您定义和组合组件，但在其他问题中不会妨碍您。这意味您可以选择一个生态系统解决方案来解决路由、样式和数据获取等问题，或者您也可以 [使用一个提供了很多内置功能的框架](/learn/start-a-new-react-project#building-with-react-and-a-framework)。
 
-### 您可以用 React 做什么？{/*what-can-you-do-with-react*/}
+### 你可以用 React 做什么？{/*what-can-you-do-with-react*/}
 
 实际上，大量开发者们使用 React 来创建各种用户界面——从像按钮和下拉菜单这样的小控件到整个应用程序。 **这些文档将教您在 web 平台上使用 React。** 然而，您在这里学到的大部分内容同样适用于 [React Native](https://reactnative.dev/)，它可以让您为 Android、iOS，甚至 [Windows 和 macOS](https://microsoft.github.io/react-native-windows/) 构建应用程序。
 
