@@ -16,7 +16,7 @@ translator:
 * [如何用 React 的思考方式构建用户界面](/learn/thinking-in-react)
 * [如何在屏幕上渲染内容](/learn/describing-the-ui)
 * [如何让您的用户界面响应交互](/learn/adding-interactivity)
-* [随着您的应用的增长，如何保持逻辑的可维护性](/learn/managing-state)
+* [随着应用的增长，如何保持逻辑的可维护性](/learn/managing-state)
 * [必要时如何退出 React](/learn/escape-hatches)
 
 </YouWillLearn>
