@@ -83,7 +83,7 @@ export default function App() {
 
 </Sandpack>
 
-当您准备好开始一个项目时，有多种选择。您可以在线编写 React 代码并将您的代码保存在类似 [CodeSandbox](https://react.new/) 的环境中。您也可以将 React 作为 `<script>` 标签添加到任何 HTML 文件中，以便于在现有网页的一小部分中试用它。或者您可以创建一个全新的 React 应用程序，有或没有框架都行。**使用 [安装](/learn/installation) 页面选择最适合您的方法——但您现在可以跳过它。**
+当你准备好开始一个项目时，有多种选择。你可以在线编写 React 代码并将你的代码保存在类似 [CodeSandbox](https://react.new/) 的环境中。你也可以将 React 作为 `<script>` 标签添加到任何 HTML 文件中，以便于在现有网页的一小部分中试用它。或者你可以创建一个全新的 React 应用程序，有或没有框架都行。**请查阅 [安装](/learn/installation) 页面选择最适合你的方法——但现在你可以跳过它。**
 
 </DeepDive>
 
