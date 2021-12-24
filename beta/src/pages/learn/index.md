@@ -4,7 +4,6 @@ translator:
  - x-cold
  - sooia
 ---
----
 
 <Intro>
 
