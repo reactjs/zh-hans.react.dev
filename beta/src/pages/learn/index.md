@@ -5,7 +5,6 @@ translator:
  - sooia
 ---
 ---
----
 
 <Intro>
 
