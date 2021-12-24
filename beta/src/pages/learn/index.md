@@ -133,7 +133,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-上面例子中的标记看起来很像 HTML。 这种语法叫做 [JSX](/learn/writing-markup-with-jsx)，它更严格一些（例如，所有标签必须闭合）。请注意，CSS 类在 JSX 中指定为 `className`。
+上面例子中的标记看起来很像 HTML。这种语法叫做 [JSX](/learn/writing-markup-with-jsx)，它更严格一些（例如，所有标签必须闭合）。请注意，CSS 类在 JSX 中指定为 `className`。
 
 就像你可以将一些信息传递给浏览器`<img>` 标签一样，你也可以将信息传递给你自己的组件，比如`<Profile>`。 此类信息称为 [_props_](/learn/passing-props-to-a-component)。下面的例子中，三个 `<Profile>` 接收不同的 props：
 
