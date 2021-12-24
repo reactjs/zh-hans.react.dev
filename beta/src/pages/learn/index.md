@@ -61,7 +61,7 @@ React 没有规定要如何构建整个应用程序。它能帮助你定义和�
 
 ### React 使用 JavaScript {/*react-uses-javascript*/}
 
-使用 React，您将在 JavaScript 中可视化地描述您的逻辑。这需要一些练习。如果您同时学习 JavaScript 和 React，很多人都这么干，但有时，它会更具挑战性！ 从好的方面来说，**大部分学习 React 都是在学习 JavaScript，** 这意味着您将学到的东西远远超出 React。
+在 React 中，你会用 JavaScript 来可视化地描述你的逻辑。这需要一定的练习。如果你同时学习 JavaScript 和 React——很多人都这么干——但有时，它会更具挑战！不过还好，**大部分 React 的学习其实都是 JavaScript 的学习，** 也就是说你将学到远远超出 React 的内容。
 
 使用 [此 JavaScript 概述](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript) 检查您的知识水平。这将花费您 30 分钟到一个小时，但您会更有信心学习 React。 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript) 和 [javascript.info](https://zh.javascript.info/) 是两个很好的参考资源。
 
