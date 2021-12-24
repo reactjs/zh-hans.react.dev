@@ -3,6 +3,7 @@ title: 开始
 translator:
  - x-cold
  - sooia
+---
 
 <Intro>
 
