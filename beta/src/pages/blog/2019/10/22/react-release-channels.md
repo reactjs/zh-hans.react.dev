@@ -1,104 +1,103 @@
 ---
-title: 'Preparing for the Future with React Prereleases'
-layout: Post
+title: '使用 React 预发布版为新功能打基础'
 author: [acdlite]
 ---
 
-To share upcoming changes with our partners in the React ecosystem, we're establishing official prerelease channels. We hope this process will help us make changes to React with confidence, and give developers the opportunity to try out experimental features.
+为了与 React 生态系统的合作伙伴共享即将发生的变化，我们正式建立了预发布的渠道。我们希望通过这一过程有助于我们胸有成竹地对 React 进行更改，并为开发人员提供尝试试验阶段功能的机会。
 
-> This post will be most relevant to developers who work on frameworks, libraries, or developer tooling. Developers who use React primarily to build user-facing applications should not need to worry about our prerelease channels.
+> 此文章与从事框架，库或开发工具的开发人员息息相关。而主要使用 React 来构建应用程序的开发者无需担心此预发布渠道。
 
-React relies on a thriving open source community to file bug reports, open pull requests, and [submit RFCs](https://github.com/reactjs/rfcs). To encourage feedback, we sometimes share special builds of React that include unreleased features.
+React 依靠强大的开源社区收集错误报告，pull request 以及 [RFC](https://github.com/reactjs/rfcs)。为了鼓励大家反馈，我们打算共享一些特殊的 React 版本，其中可能包括未发布的功能。
 
-Because the source of truth for React is our [public GitHub repository](https://github.com/facebook/react), it's always been possible to build a copy of React that includes the latest changes. However it's much easier for developers to install React from npm, so we occasionally publish prerelease builds to the npm registry. A recent example is the 16.7 alpha, which included an early version of the Hooks API.
+由于 React 的实际来源是[Github 公有库](https://github.com/facebook/react)，因此你始终可以通过此仓库构建一个包含最新修改的 React 副本。但是，对于开发者来说，使用 npm 安装 React 会更加容易，因此我们会时常发布预发布版本到 npm registry 中。最新的示例是 16.7 Alpha 版，其中包括 Hook API 的早期版本。
 
-We would like to make it even easier for developers to test prerelease builds of React, so we're formalizing our process with three separate release channels.
+我们期望开发者更容易地测试 React 的预发布版本，因此我们将通过三个单独的发布渠道来规范我们的流程。
 
-## Release Channels {#release-channels}
+## 发布渠道 {/*release-channels*/}
 
-> The information in this post is also available on our [Release Channels](/docs/release-channels) page. We will update that document whenever there are changes to our release process.
+> 本文中的相关信息可以查阅[发布渠道](/docs/release-channels)章节。每次我们的发布流程发生变化，我们都会更新该流程。
 
-Each of React's release channels is designed for a distinct use case:
+React 的每个发布渠道都是针对不同的用例进行设计地：
 
-- [**Latest**](#latest-channel) is for stable, semver React releases. It's what you get when you install React from npm. This is the channel you're already using today. **Use this for all user-facing React applications.**
-- [**Next**](#next-channel) tracks the master branch of the React source code repository. Think of these as release candidates for the next minor semver release. Use this for integration testing between React and third party projects.
-- [**Experimental**](#experimental-channel) includes experimental APIs and features that aren't available in the stable releases. These also track the master branch, but with additional feature flags turned on. Use this to try out upcoming features before they are released.
+- [**最新**](#latest-channel)版本用于稳定的 semver React 版本。此版本可通过 npm 安装获取。此渠道为目前大家已经在用的方式。**其主要用于所有面向用户的 React 应用程序。**
+- [**Next**](#next-channel) 版本主要用于追踪 React 源码仓库的 main 分支。我们会将其视为下一个次要版本发布的候选版本。使用它可以进行 React 与第三方项目间的集成测试。
+- [**实验阶段**](#experimental-channel)版本包含稳定版本中不提供的实验阶段的 API 与功能。同时它也追踪了 main 分支，但启用了附加新功能的标志。使用此渠道可以尝试即将发布的功能。
 
-All releases are published to npm, but only Latest uses [semantic versioning](/docs/faq-versioning). Prereleases (those in the Next and Experimental channels) have versions generated from a hash of their contents, e.g. `0.0.0-1022ee0ec` for Next and `0.0.0-experimental-1022ee0ec` for Experimental.
+所有版本都将发布到 npm，但只要最新版本遵循[语义版本控制](/docs/faq-versioning)。预发布版本（应用于 Next 版本和实验渠道的版本）会根据其内容的哈希值生成版本，例如，Next 的版本为 `0.0.0-1022ee0ec`，实验版为 `0.0.0-experimental-1022ee0ec`。
 
-**The only officially supported release channel for user-facing applications is Latest**. Next and Experimental releases are provided for testing purposes only, and we provide no guarantees that behavior won't change between releases. They do not follow the semver protocol that we use for releases from Latest.
+**最新版是面向用户应用程序的唯一官方支持发布渠道**。提供 Next 和实验版本的目的是用于测试，我们并不保证功能在这两个版本中不发生变化。因为它们并不遵循用于最新版发布的 semver 协议。
 
-By publishing prereleases to the same registry that we use for stable releases, we are able to take advantage of the many tools that support the npm workflow, like [unpkg](https://unpkg.com) and [CodeSandbox](https://codesandbox.io).
+通过将预发布版发布到与稳定版同一注册表中，我们可以利用许多支持 npm 工作流的工具，诸如 [unpkg](https://unpkg.com) 和 [CodeSandbox](https://codesandbox.io)。 
 
-### Latest Channel {#latest-channel}
+### 最新版渠道 {/*latest-channel*/}
 
-Latest is the channel used for stable React releases. It corresponds to the `latest` tag on npm. It is the recommended channel for all React apps that are shipped to real users.
+最新版是用于稳定 React 版本的渠道。它对应是 npm 中 `latest` 标签。此版本是所有交付给真实用户的 React 应用程序的推荐版本。
 
-**If you're not sure which channel you should use, it's Latest.** If you're a React developer, this is what you're already using.
+**如果你不确定使用哪个版本，则选择最新版本。**如果你是 React 开发者，那这就是你正确的选择。
 
-You can expect updates to Latest to be extremely stable. Versions follow the semantic versioning scheme. Learn more about our commitment to stability and incremental migration in our [versioning policy](/docs/faq-versioning).
+你可以希望最新版的更新足够稳定。版本遵循语义版本控制方案。你可以在[版本政策](/docs/faq-versioning)中详细了解我们对稳定性和增量迁移的承诺。
 
-### Next Channel {#next-channel}
+### Next 版渠道 {/*next-channel*/}
 
-The Next channel is a prerelease channel that tracks the master branch of the React repository. We use prereleases in the Next channel as release candidates for the Latest channel. You can think of Next as a superset of Latest that is updated more frequently.
+Next 属于预发布渠道，用于追踪 React 仓库的 main 分支。我们在 Next 渠道中使用预发布版本作为最新版发布渠道的候选版本。你可以将 Next 视为最新版的超集，它的更新频率更高。
 
-The degree of change between the most recent Next release and the most recent Latest release is approximately the same as you would find between two minor semver releases. However, **the Next channel does not conform to semantic versioning.** You should expect occasional breaking changes between successive releases in the Next channel.
+最新的 Next 发布版与最新的最新发布版之间的更改程度，大致与两个 semver 次版本之间的更改程度相同。但是，**Next 发布渠道不遵循语义版本控制**。你可能希望在 Next 渠道中的后续发布版本之间偶尔有重大更改。
 
-**Do not use prereleases in user-facing applications.**
+**不要在面向用户的应用程序中使用预发布版本。**
 
-Releases in Next are published with the `next` tag on npm. Versions are generated from a hash of the build's contents, e.g. `0.0.0-1022ee0ec`.
+Next 渠道中的发行版本在 npm 中携带 `next` 标签发布。版本会根据构建内容的哈希值生成，例如 `0.0.0-1022ee0ec`。
 
-#### Using the Next Channel for Integration Testing {#using-the-next-channel-for-integration-testing}
+#### 使用 Next 渠道版本进行集成测试 {/*using-the-next-channel-for-integration-testing*/}
 
-The Next channel is designed to support integration testing between React and other projects.
+Next 渠道旨在支持 React 与其他项目直接的集成测试。
 
-All changes to React go through extensive internal testing before they are released to the public. However, there are myriad environments and configurations used throughout the React ecosystem, and it's not possible for us to test against every single one.
+React 中的所有更改在发布之前都需进行大量的内部测试。但是，在整个 React 生态系统中使用了无数的环境与配置，因此我们不可能针对每一项进行测试。
 
-If you're the author of a third party React framework, library, developer tool, or similar infrastructure-type project, you can help us keep React stable for your users and the entire React community by periodically running your test suite against the most recent changes. If you're interested, follow these steps:
+如果你是 React 第三方框架，库，开发者工具或类似基础设施项目的作者，则可以通过定期针对最新版本运行的测试用例，帮助我们一起维持 React 稳定，为你的用户和整个 React 社区保驾护航。如果你对此有兴趣，请按照下列步骤进行操作：
 
-- Set up a cron job using your preferred continuous integration platform. Cron jobs are supported by both [CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) and [Travis CI](https://docs.travis-ci.com/user/cron-jobs/).
-- In the cron job, update your React packages to the most recent React release in the Next channel, using `next` tag on npm. Using the npm cli:
+- 在你喜欢的持续集成平台上设置 cron job。[CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) 和 [Travis CI](https://docs.travis-ci.com/user/cron-jobs/) 均支持 cron job。
+- 在 cron job 中，使用 npm 的 `next` 标签将 React 版本更新至 Next 渠道中的最新版本。使用 npm cli：
 
   ```
   npm update react@next react-dom@next
   ```
 
-  Or yarn:
+  或者使用 yarn：
 
   ```
   yarn upgrade react@next react-dom@next
   ```
 
-- Run your test suite against the updated packages.
-- If everything passes, great! You can expect that your project will work with the next minor React release.
-- If something breaks unexpectedly, please let us know by [filing an issue](https://github.com/facebook/react/issues).
+- 针对更新的 packages 执行测试用例。
+- 如果均通过，那么恭喜你！你的项目可以与下个小版本的 React 一起使用。
+- 如果发生意外中断，请通过[提交 issus](https://github.com/facebook/react/issues) 告知我们。
 
-A project that uses this workflow is Next.js. (No pun intended! Seriously!) You can refer to their [CircleCI configuration](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml) as an example.
+Next.js 使用了此工作流。你可以将它们 [CircleCI 配置](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml) 作为示例进行参考。
 
-### Experimental Channel {#experimental-channel}
+### 实验阶段渠道 {/*experimental-channel*/}
 
-Like Next, the Experimental channel is a prerelease channel that tracks the master branch of the React repository. Unlike Next, Experimental releases include additional features and APIs that are not ready for wider release.
+与 Next 相似，实验阶段通道是一个预发布通道，用于追踪 React 仓库 main 分支。但不同于 Next 的是，实验阶段的发布版本包含尚未准备好广泛推广的功能及 API。
 
-Usually, an update to Next is accompanied by a corresponding update to Experimental. They are based on the same source revision, but are built using a different set of feature flags.
+通常，对 Next 更新时也会对实验版本进行更新。它们基于相同的源，但是构建时会使用不同的功能标记。
 
-Experimental releases may be significantly different than releases to Next and Latest. **Do not use Experimental releases in user-facing applications.** You should expect frequent breaking changes between releases in the Experimental channel.
+实验阶段发布的版本可能与 Next 和最新版本的发布均不相同。**不要在面向用户的应用程序中使用实验阶段版本。** 你应该能够想象到实验渠道中发布的版本会频繁进行破坏性更新。
 
-Releases in Experimental are published with the `experimental` tag on npm. Versions are generated from a hash of the build's contents, e.g. `0.0.0-experimental-1022ee0ec`.
+实验版本会在 npm 上会以 `experimental` 标签的形式发布。版本会根据构建内容的哈希值生成，例如，`0.0.0-experimental-1022ee0ec`。
 
-#### What Goes Into an Experimental Release? {#what-goes-into-an-experimental-release}
+#### 实验阶段发布包含哪些内容？ {/*what-goes-into-an-experimental-release*/}
 
-Experimental features are ones that are not ready to be released to the wider public, and may change drastically before they are finalized. Some experiments may never be finalized -- the reason we have experiments is to test the viability of proposed changes.
+实验阶段功能并未打算公开发布，在最终确定之前可能会发生巨大变化。有些实验功能可能永远不会完成 —— 我们进行实验的目的是为了测试变更提案的可行性。
 
-For example, if the Experimental channel had existed when we announced Hooks, we would have released Hooks to the Experimental channel weeks before they were available in Latest.
+例如，如果我们在宣布发布 Hook 时，其已经存在在实验渠道中，我们会在最新版本发布 Hook 之前几周，将其发布到实验渠道中。
 
-You may find it valuable to run integration tests against Experimental. This is up to you. However, be advised that Experimental is even less stable than Next. **We do not guarantee any stability between Experimental releases.**
+你可能会发现针对实验阶段进行集成测试很有必要。但是，请注意，实验阶段版本的稳定性是不如 Next 版本的。**我们并不保证实验版本之间的稳定性。**
 
-#### How Can I Learn More About Experimental Features? {#how-can-i-learn-more-about-experimental-features}
+#### 如何了解有关实验功能的更多信息？ {/*how-can-i-learn-more-about-experimental-features*/}
 
-Experimental features may or may not be documented. Usually, experiments aren't documented until they are close to shipping in Next or Stable.
+实验性的功能可能会有文档，也可能不会有文档。通常，在实验渠道的内容发布到 Next 或 Stable 中之前，才会编写文档。
 
-If a feature is not documented, they may be accompanied by an [RFC](https://github.com/reactjs/rfcs).
+如果找不到文档，则可能会附有 [RFC](https://github.com/reactjs/rfcs) 说明。
 
-We will post to the React blog when we're ready to announce new experiments, but that doesn't mean we will publicize every experiment.
+当我们准备发布新的实验内容时，我们会发布到 React 博客中，但这并不意味着我们将公开发布每个实验内容。
 
-You can always refer to our public GitHub repository's [history](https://github.com/facebook/react/commits/master) for a comprehensive list of changes.
+欲查看完整的变更列表，你可以参考 Github 公有库中的[历史记录](https://github.com/facebook/react/commits/main)。

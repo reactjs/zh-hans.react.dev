@@ -1,5 +1,5 @@
 {
-  "title": "Home",
+  "title": "首页",
   "heading": true,
   "path": "/",
   "routes": [
@@ -8,17 +8,17 @@
       "path": "",
       "routes": [
         {
-          "title": "Overview",
+          "title": "概览",
           "path": "/"
         },
         {
-          "title": "Community",
+          "title": "社区",
           "path": "/community",
           "routes": [{
-            "title": "Acknowledgements",
+            "title": "鸣谢",
             "path": "/community/acknowledgements"
           }, {
-            "title": "Meet the Team",
+            "title": "走进 React 团队",
             "path": "/community/meet-the-team"
           }]
         }

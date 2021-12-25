@@ -21,7 +21,7 @@ React 组件使用 **props** 来互相通信。每个父组件都可以提供 pr
 
 </YouWillLearn>
 
-## 熟悉的 props
+## 熟悉的 props {/*familiar-props*/}
 
 Props 是你传递给 JSX 标签的信息。例如，`className`、`src`、`alt`、`width` 和 `height` 便是一些可以传递给 `<img>` 的 props：
 
@@ -56,7 +56,7 @@ body { min-height: 120px; }
 
 你可以传递给 `<img>` 标签的 props 是预定义的（ReactDOM 符合 [HTML 标准](https://www.w3.org/TR/html52/semantics-embedded-content.html#the-img-element)）。但是你可以将任何 props 传递给 *你自己的* 组件，例如 `<Avatar>` ，以便自定义它们。 就像这样！
 
-## 向组件传递 props
+## 向组件传递 props {/*passing-props-to-a-component*/}
 
 在这段代码中， `Profile` 组件没有向它的子组件 `Avatar` 传递任何 props ：
 
@@ -70,7 +70,7 @@ export default function Profile() {
 
 你可以分两步给 `Avatar` 一些 props。
 
-### 步骤 1: 将 props 传递给子组件
+### 步骤 1: 将 props 传递给子组件 {/*step-1-pass-props-to-the-child-component*/}
 
 首先，将一些 props 传递给 `Avatar`。例如，让我们传递两个 props：`person`（一个对象）和 `size`（一个数字）：
 
@@ -89,7 +89,7 @@ export default function Profile() {
 
 现在，你可以在 `Avatar` 组件中读取这些 props 了。
 
-### 步骤 2: 在子组件中读取 props
+### 步骤 2: 在子组件中读取 props {/*step-2-read-props-inside-the-child-component*/}
 
 你可以通过在 `function Avatar` 之后直接列出它们的名字 `person, size` 来读取这些 props。这些 props 在 `({` 和 `})` 之间，并由逗号分隔。这样，你可以在 `Avatar` 的代码中使用它们，就像使用变量一样。
 
@@ -203,7 +203,7 @@ function Avatar(props) {
 
 </Gotcha>
 
-## 给 prop 指定一个默认值
+## 给 prop 指定一个默认值 {/*specifying-a-default-value-for-a-prop*/}
 
 如果你想在没有指定值的情况下给 prop 一个默认值，你可以通过在参数后面写 `=` 和默认值来进行解构：
 
@@ -217,7 +217,7 @@ function Avatar({ person, size = 100 }) {
 
 默认值仅在缺少 `size` prop 或 `size={undefined}` 时生效。 但是如果你传递了 `size={null}` 或 `size={0}`，默认值将 **不** 被使用。
 
-## 使用 JSX 展开语法传递 props
+## 使用 JSX 展开语法传递 props {/*forwarding-props-with-the-jsx-spread-syntax*/}
 
 有时候，传递 props 会变得非常重复：
 
@@ -252,7 +252,7 @@ function Profile(props) {
 
 **请克制地使用展开语法。** 如果你在所有其他组件中都使用它，那就有问题了。 通常，它表示你应该拆分组件，并将子组件作为 JSX 传递。 接下来会详细介绍！
 
-## 将 JSX 作为子组件传递
+## 将 JSX 作为子组件传递 {/*passing-jsx-as-children*/}
 
 嵌套浏览器内置标签是很常见的：
 
@@ -352,7 +352,7 @@ export function getImageUrl(person, size = 's') {
 
 <Illustration src="/images/docs/illustrations/i_children-prop.png" alt='A puzzle-like Card tile with a slot for "children" pieces like text and Avatar' />
 
-## Props 如何随时间变化
+## Props 如何随时间变化 {/*how-props-change-over-time*/}
 
 下面的 `Clock` 组件从其父组件接收两个 props：`color` 和 `time`。（父组件的代码被省略，因为它使用 [state](/learn/state-a-components-memory)，我们暂时不会深入研究。）
 
@@ -428,7 +428,7 @@ export default function App() {
 
 <Challenges>
 
-### 提取一个组件
+### 提取一个组件 {/*extract-a-component*/}
 
 这个 `Gallery` 组件包含两份个人资料，其中有一些非常相似的标记。从中提取一个 `Profile` 组件以减少重复。你需要选择要传递哪些 props。
 
@@ -730,7 +730,7 @@ li { margin: 5px; }
 
 </Solution>
 
-### 根据 props 调整图像大小
+### 根据 props 调整图像大小 {/*adjust-the-image-size-based-on-a-prop*/}
 
 在这个例子中，`Avatar` 接收一个数字 `size` prop，它决定了 `<img>` 的宽度和高度。在此示例中，`size` prop 设为 `40`。但是，如果你在新选项卡中打开图像，你会注意到图像本身更大（`160` 像素）。实际图像大小由你请求的缩略图大小决定。
 
@@ -922,7 +922,7 @@ Props 可以让你将这样的逻辑封装在 `Avatar` 组件中（并在需要�
 
 </Solution>
 
-### 在 `children` prop 中传递 JSX 代码
+### 在 `children` prop 中传递 JSX 代码 {/*passing-jsx-in-a-children-prop*/}
 
 从下面的代码中提取一个 `Card` 组件，并使用 `children` prop 将不同的 JSX 传递给它：
 
