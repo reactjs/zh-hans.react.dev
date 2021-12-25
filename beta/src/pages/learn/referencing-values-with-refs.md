@@ -19,7 +19,7 @@ translators:
 
 </YouWillLearn>
 
-## 给你的组件添加 ref
+## 给你的组件添加 ref {/*adding-a-ref-to-your-component*/}
 
 你可以通过从 React 导入 `useRef` Hook 来为你的组件添加一个 ref：
 
@@ -75,7 +75,7 @@ export default function Counter() {
 
 请注意，**组件不会在每次递增时重新渲染。** 与 state 一样，React 会在每次重新渲染之间保留 refs。但是，设置 state 会重新渲染组件，更改 ref 不会！
 
-## 示例：制作秒表
+## 示例：制作秒表 {/*example-building-a-stopwatch*/}
 
 在单个组件中，你可以组合使用 refs 和 state。例如，让我们制作一个秒表，用户可以按下按钮来启动或停止。为了展示从用户按下 “开始” 以来过去了多久，你需要追踪按下 “开始” 按钮的时间和当前时间。**此信息用于渲染，所以你将使用 state 存储：**
 
@@ -84,7 +84,7 @@ const [startTime, setStartTime] = useState(null);
 const [now, setNow] = useState(null);
 ```
 
-当用户按下 “开始” 时，你将用 [`setInterval`](https://developer.mozilla.org/docs/Web/API/setInterval) 每 10 毫秒更新一次时间：
+当用户按下 “开始” 时，你将用 [`setInterval`](https://developer.mozilla.org/docs/Web/API/setInterval) 每 100 毫秒更新一次时间：
 
 <Sandpack>
 
@@ -103,7 +103,7 @@ export default function Stopwatch() {
     setInterval(() => {
       // 每 10ms 更新一次当前时间。
       setNow(Date.now());
-    }, 10);
+    }, 100);
   }
 
   let secondsPassed = 0;
@@ -171,7 +171,7 @@ export default function Stopwatch() {
 
 当一条信息用于渲染时，将它保存在 state 中。 当一条信息仅被事件处理器需要，并且更改它不会重新渲染时，使用 ref 可能更有效。 
 
-## Refs 和 state 的不同之处
+## Refs 和 state 的不同之处 {/*differences-between-refs-and-state*/}
 
 也许你觉得 refs 似乎没有 state 那样 “严格” —— 例如，你可以改变它们而非总是必须使用 state 设置函数。但在大多数情况下，你会想要使用 state。Refs 是你不经常需要的 “应急方案”。 以下是 state 和 refs 的对比：
 
@@ -253,7 +253,7 @@ React 提供了一个内置版本的 `useRef`，因为它在实践中很常见�
 
 </DeepDive>
 
-## 何时使用 refs
+## 何时使用 ref {/*when-to-use-refs*/}
 
 通常，当你的组件需要 “跳出” React 并与外部 API 通信时，你会用到 ref —— 通常是不会影响组件外观的浏览器 API。 以下是一些罕见的情况：
 
@@ -263,7 +263,7 @@ React 提供了一个内置版本的 `useRef`，因为它在实践中很常见�
 
 如果你的组件需要存储一些值，但不影响渲染逻辑，请选择 refs。
 
-## Refs 的最佳实践
+## Ref 的最佳实践 {/*best-practices-for-refs*/}
 
 遵循这些原则将使你的组件更具可预测性：
 
@@ -281,7 +281,7 @@ console.log(ref.current); // 5
 
 当你使用 ref 时，也无需担心 [避免突变](/learn/updating-objects-in-state)。只要你改变的对象不用于渲染，React 就不会关心你对 ref 或其内容做了什么。
 
-## Refs 和 DOM
+## Ref 和 DOM {/*refs-and-the-dom*/}
 
 你可以将 ref 指向任何值。但是，ref 最常见的用法是访问 DOM 元素。 例如，如果你想以编程方式令输入框获得焦点，这很方便。 当你将 ref 传递给 JSX 中的 `ref` 属性时，比如 `<div ref={myRef}>`，React 会将相应的 DOM 元素放入 `myRef.current` 中。你可以在 [使用 Refs 操作 DOM](/learn/manipulating-the-dom-with-refs) 中阅读更多相关信息。
 
@@ -300,7 +300,7 @@ console.log(ref.current); // 5
 
 <Challenges>
 
-### 修复坏掉的聊天输入框
+### 修复坏掉的聊天输入框 {/*fix-a-broken-chat-input*/}
 
 输入消息并单击 “发送”。 你会注意到，在看到 “已发送！” 提示框之前有 3 秒的延迟。在此延迟期间，你可以看到一个 “撤消” 按钮。点击它。这个 “撤消” 按钮应该打断“发送！” 消息弹出。它通过调用 [`clearTimeout`](https://developer.mozilla.org/en-US/docs/Web/API/clearTimeout) 来做到这点，这一步骤需要使用在 `handleSend` 时保存的 timeout ID。但是，即使在单击 “撤消” 后，“已发送！” 消息仍然出现。找出它不起作用的原因，然后修复它。
 
@@ -411,7 +411,7 @@ export default function Chat() {
 </Solution>
 
 
-### 修复无法重新渲染的组件
+### 修复无法重新渲染的组件 {/*fix-a-component-failing-to-re-render*/}
 
 这个按钮本该在显示 “开” 和 “关” 之间切换。但是，它始终显示 “关”。 这段代码有什么问题？ 修复它。
 
@@ -461,7 +461,7 @@ export default function Toggle() {
 
 </Solution>
 
-### 修复防抖
+### 修复防抖 {/*fix-debouncing*/}
 
 在这个例子中，所有按钮点击处理器都是 ["防抖的"](https://redd.one/blog/debounce-vs-throttle)。 要了解这意味着什么，请按下其中一个按钮。注意消息在一秒后显示。如果你在等待消息时按下按钮，计时器将重置。如果你多次快速单击同一个按钮，则直到你停止单击 *之后* 1 秒钟，该消息才会显示。 防抖可以让你延迟一些动作，直到用户 “停止动作”。
 
@@ -578,7 +578,7 @@ button { display: block; margin: 10px; }
 
 </Solution>
 
-### 读取最新的 state
+### 读取最新的 state {/*read-the-latest-state*/}
 
 在此示例中，当你按下 “发送” 后，在显示消息之前会有一小段延迟。输入 “你好”，按下发送，然后再次快速编辑输入。尽管你进行了编辑，提示框仍会显示 “你好”（这是按钮被点击 [那一刻](/learn/state-as-a-snapshot#state-over-time) state 的值）。
 

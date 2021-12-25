@@ -1,96 +1,95 @@
 ---
-title: "React v17.0 Release Candidate: No New Features"
-layout: Post
+title: "React v17.0 RC 版本发布：没有新特性"
 author: [gaearon,rachelnabors]
 ---
 
-Today, we are publishing the first Release Candidate for React 17. It has been two and a half years since [the previous major release of React](/blog/2017/09/26/react-v16.0.html), which is a long time even by our standards! In this blog post, we will describe the role of this major release, what changes you can expect in it, and how you can try this release.
+今天，我们发布了 React 17 的第一个 RC 版本。自 [React 上一个主要版本](/blog/2017/09/26/react-v16.0)至今已经两年半了，按照我们的标准，时间跨度有些长了！在此篇博客中，我们将讲解此次主要版本的职责，对你的影响以及如何试用此版本。
 
-## No New Features {#no-new-features}
+## 无新特性 {/*no-new-features*/}
 
-The React 17 release is unusual because it doesn't add any new developer-facing features. Instead, this release is primarily focused on **making it easier to upgrade React itself**.
+React 17 的版本是非比寻常的，因为它没有添加任何面向开发人员的新功能。而主要侧重于**升级简化 React 本身**。
 
-We're actively working on the new React features, but they're not a part of this release. The React 17 release is a key part of our strategy to roll them out without leaving anyone behind.
+我们正在积极开发 React 的新功能，但它们并不属于此版本。React 17 是我们进行深度推广战略的关键所在。
 
-In particular, **React 17 is a "stepping stone" release** that makes it safer to embed a tree managed by one version of React inside a tree managed by a different version of React.
+此版本之所以特殊，你可以认为**React 17 是 "垫脚石" 版本**，它会使得由一个 React 版本管理的 tree 嵌入到另一个 React 版本管理的 tree 中时会更加安全。
 
-## Gradual Upgrades {#gradual-upgrades}
+## 逐步升级 {/*gradual-upgrades*/}
 
-For the past seven years, React upgrades have been "all-or-nothing". Either you stay on an old version, or you upgrade your whole app to a new version. There was no in-between.
+在过去 7 年里，React 一直遵循 "all-or-nothing" 的升级策略。你可以继续使用旧版本，也可以将整个应用程序升级至新版本。但没有介于两者之间的情况。
 
-This has worked out so far, but we are running into the limits of the "all-or-nothing" upgrade strategy. Some API changes, for example, deprecating the [legacy context API](/docs/legacy-context.html), are impossible to do in an automated way. Even though most apps written today don't ever use them, we still support them in React. We have to choose between supporting them in React indefinitely or leaving some apps behind on an old version of React. Both of these options aren't great.
+此方式持续至今，但是我们遇到了 "all-or-nothing" 升级策略的局限性。许多 API 的变更，例如，弃用[旧版 context API](/docs/legacy-context.html) 时，并不能以自动化的方式来完成。至今可能大多数应用程序从未使用过它们，但我们仍然选择在 React 中支持它们。我们必须在无限期支持过时的 API 或针对某些应用仍使用旧版本 React 间进行选择。但这两个方案都不合适。
 
-So we wanted to provide another option.
+因此，我们想提供另一种方案。
 
-**React 17 enables gradual React upgrades.** When you upgrade from React 15 to 16 (or, soon, from React 16 to 17), you would usually upgrade your whole app at once. This works well for many apps. But it can get increasingly challenging if the codebase was written more than a few years ago and isn't actively maintained. And while it's possible to use two versions of React on the page, until React 17 this has been fragile and caused problems with events.
+**React 17 开始支持逐步升级 React 版本**。当从 React 15 升级至 16 时（或者从 React 16 升级至 17时），通常会一次升级整个应用程序。这适用于大部分应用程序。但是，如果代码库是在几年前编写的，并且并没有得到很好的维护，那么升级它会变得越来越有挑战性。尽管可以在页面上使用两个版本的 React，但是直到 React 17 依旧有事件问题出现。
 
-We're fixing many of those problems with React 17. This means that **when React 18 and the next future versions come out, you will now have more options**. The first option will be to upgrade your whole app at once, like you might have done before. But you will also have an option to upgrade your app piece by piece. For example, you might decide to migrate most of your app to React 18, but keep some lazy-loaded dialog or a subroute on React 17.
+我们使用 React 17 解决了许多诸如此类的问题。这将意味着**当 React 18 或未来版本问世时，你将有更多选择**。首选还是像以前一样，一次升级整个应用程序。但你也可以选择逐步升级你的应用程序。例如，你可能会将大部分应用程序迁移至 React 18，但在 React 17 上保留一些延迟加载的对话框或子路由。
 
-This doesn't mean you *have to* do gradual upgrades. For most apps, upgrading all at once is still the best solution. Loading two versions of React -- even if one of them is loaded lazily on demand -- is still not ideal. However, for larger apps that aren't actively maintained, this option may make sense to consider, and React 17 enables those apps to not get left behind.
+但这不意味着你*必须*逐步升级。对于大部分应用程序来说，一次全量升级仍是最好的解决方案。加载两个 React 版本，即使其中一个是按需延迟加载的，仍然不太理想。但是，对于没有积极维护的大型应用来说，可以考虑此种方案，并且 React 17 开始可以保证这些应用程序不落伍。
 
-To enable gradual updates, we've needed to make some changes to the React event system. React 17 is a major release because these changes are potentially breaking. In practice, we've only had to change fewer than twenty components out of 100,000+ so **we expect that most apps can upgrade to React 17 without too much trouble**. [Tell us](https://github.com/facebook/react/issues) if you run into problems.
+为了实现逐步升级，我们需要对 React 事件系统进行一些更改。而这些更改可能会对代码产生影响，这也是 React 17 成为主要版本的原因。实际上，10 万个以上的组件中受影响的组件不超过 20 个，因此，**我们希望大多数应用程序都可以升级到 React 17，而不会产生太多影响**。如果你遇到问题，请[联系我们](https://github.com/facebook/react/issues)。
 
-### Demo of Gradual Upgrades {#demo-of-gradual-upgrades}
+### 逐步升级 Demo {/*demo-of-gradual-upgrades*/}
 
-We've prepared an [example repository](https://github.com/reactjs/react-gradual-upgrade-demo/) demonstrating how to lazy-load an older version of React if necessary. This demo uses Create React App, but it should be possible to follow a similar approach with any other tool. We welcome demos using other tooling as pull requests.
+我们准备了一个[示例 repo](https://github.com/reactjs/react-gradual-upgrade-demo/)，展示了如何在必要时延迟加载旧版本的 React。此 demo 使用了 Create React App 进行构建，但对其他工具采用类似的方法应该也适用。我们欢迎使用其他工具的开发者编写 demo 并提交 PR。
 
->Note
+>注意
 >
->We've **postponed other changes** until after React 17. The goal of this release is to enable gradual upgrades. If upgrading to React 17 were too difficult, it would defeat its purpose.
+>我们已将**其他更改推迟**到 React 17 之后。此版本的目标是实现逐步升级。如果升级 React 17 太困难，则此目标会无法实现。
 
-## Changes to Event Delegation {#changes-to-event-delegation}
+## 更改事件委托 {/*changes-to-event-delegation*/}
 
-Technically, it has always been possible to nest apps developed with different versions of React. However, it was rather fragile because of how the React event system worked.
+从技术上讲，始终可以在应用程序中嵌套不同版本的 React。但是，由于 React 事件系统的工作原理，这很难实现。
 
 
-In React components, you usually write event handlers inline:
+在 React 组件中，通常会内联编写事件处理：
 
 ```js
 <button onClick={handleClick}>
 ```
 
-The vanilla DOM equivalent to this code is something like:
+与此代码等效的原生 DOM 操作如下：
 
 ```js
 myButton.addEventListener('click', handleClick);
 ```
 
-However, for most events, React doesn't actually attach them to the DOM nodes on which you declare them. Instead, React attaches one handler per event type directly at the `document` node. This is called [event delegation](https://davidwalsh.name/event-delegate). In addition to its performance benefits on large application trees, it also makes it easier to add new features like [replaying events](https://twitter.com/dan_abramov/status/1200118229697486849).
+但是，对大多数事件来说，React 实际上并不会将它们附加到 DOM 节点上。相反，React 会直接在 `document` 节点上为每种事件类型附加一个处理器。这被称为[事件委托](https://davidwalsh.name/event-delegate)。除了在大型应用程序上具有性能优势外，它还使添加类似于 [replaying events](https://twitter.com/dan_abramov/status/1200118229697486849) 这样的新特性变得更加容易。
 
-React has been doing event delegation automatically since its first release. When a DOM event fires on the document, React figures out which component to call, and then the React event "bubbles" upwards through your components. But behind the scenes, the native event has already bubbled up to the `document` level, where React installs its event handlers.
+自从其发布以来，React 一直自动进行事件委托。当 document 上触发 DOM 事件时，React 会找出调用的组件，然后 React 事件会在组件中向上 “冒泡”。但实际上，原生事件已经冒泡出了 `document` 级别，React 在其中安装了事件处理器。
 
-However, this is a problem for gradual upgrades.
+但是，这就是逐步升级的困难所在。
 
-If you have multiple React versions on the page, they all register event handlers at the top. This breaks `e.stopPropagation()`: if a nested tree has stopped propagation of an event, the outer tree would still receive it. This made it difficult to nest different versions of React. This concern is not hypothetical -- for example, the Atom editor [ran into this](https://github.com/facebook/react/pull/8117) four years ago.
+如果页面上有多个 React 版本，他们都将在顶层注册事件处理器。这会破坏 `e.stopPropagation()`：如果嵌套树结构中阻止了事件冒泡，但外部树依然能接收到它。这会使不同版本 React 嵌套变得困难重重。这种担忧并不是没有根据的 —— 例如，四年前 Atom 编辑器就遇到了[相同的问题](https://github.com/facebook/react/pull/8117)。
 
-This is why we're changing how React attaches events to the DOM under the hood.
+这也是我们为什么要改变 React 底层附加事件方式的原因。
 
-**In React 17, React will no longer attach event handlers at the `document` level. Instead, it will attach them to the root DOM container into which your React tree is rendered:**
+**在 React 17 中，React 将不再向 `document` 附加事件处理器。而会将事件处理器附加到渲染 React 树的根 DOM 容器中：**
 
 ```js
 const rootNode = document.getElementById('root');
 ReactDOM.render(<App />, rootNode);
 ```
 
-In React 16 and earlier, React would do `document.addEventListener()` for most events. React 17 will call `rootNode.addEventListener()` under the hood instead.
+在 React 16 或更早版本中，React 会对大多数事件执行 `document.addEventListener()`。React 17 将会在底层调用 `rootNode.addEventListener()`。
 
 ![A diagram showing how React 17 attaches events to the roots rather than to the document](../images/blog/react-v17-rc/react_17_delegation.png)
 
-Thanks to this change, **it is now safer to embed a React tree managed by one version inside a tree managed by a different React version**. Note that for this to work, both of the versions would need to be 17 or higher, which is why upgrading to React 17 is important. In a way, React 17 is a "stepping stone" release that makes next gradual upgrades feasible.
+由于此更改，**现在可以更加安全地进行新旧版本 React 树的嵌套**。请注意，要使其正常工作，两个版本都必须为 17 或更高版本，这就是为什么强烈建议升级到 React 17 的根本原因。从某种意义上讲，React 17 是一个 "垫脚石" 版本，使逐步升级成为可能。
 
-This change also **makes it easier to embed React into apps built with other technologies**. For example, if the outer "shell" of your app is written in jQuery, but the newer code inside of it is written with React, `e.stopPropagation()` inside the React code would now prevent it from reaching the jQuery code -- as you would expect. This also works in the other direction. If you no longer like React and want to rewrite your app -- for example, in jQuery -- you can start converting the outer shell from React to jQuery without breaking the event propagation.
+此更改还使得**将 React 嵌入使用其他技术构建的应用程序变得更加容易**。例如，如果应用程序的“外壳”是用 jQuery 编写的，但其中较新的代码是用 React 编写的，则 React 代码中的 `e.stopPropagation()` 会阻止它影响 jQuery 的代码 —— 这符合预期。换个角度来说，如果你不再喜欢 React 并想重写应用程序（比如，用 jQuery），则可以从外壳开始将 React 转换为 jQuery，而不会破坏事件冒泡。
 
-We've confirmed that [numerous](https://github.com/facebook/react/issues/7094) [problems](https://github.com/facebook/react/issues/8693) [reported](https://github.com/facebook/react/issues/12518) [over](https://github.com/facebook/react/issues/13451) [the](https://github.com/facebook/react/issues/4335) [years](https://github.com/facebook/react/issues/1691) [on](https://github.com/facebook/react/issues/285#issuecomment-253502585) [our](https://github.com/facebook/react/pull/8117) [issue](https://github.com/facebook/react/issues/11530) [tracker](https://github.com/facebook/react/issues/7128) related to integrating React with non-React code have been fixed by the new behavior.
+经核实，多年来在 [issue](https://github.com/facebook/react/issues/7094) [追踪器](https://github.com/facebook/react/issues/8693) 上[报告](https://github.com/facebook/react/issues/12518)的[许多](https://github.com/facebook/react/issues/13451)[问题](https://github.com/facebook/react/issues/4335)[都](https://github.com/facebook/react/issues/1691)[已](https://github.com/facebook/react/issues/285#issuecomment-253502585)[被](https://github.com/facebook/react/pull/8117)[新特性](https://github.com/facebook/react/issues/11530)[解决](https://github.com/facebook/react/issues/7128)，这些问题大多都与将 React 与非 React 代码集成有关。
 
->Note
+>注意
 >
->You might be wondering whether this breaks [Portals](/docs/portals.html) outside of the root container. The answer is that React *also* listens to events on portal containers, so this is not an issue.
+>你可能想知道这是否会破坏根 DOM 容器之外的 [Portals](/docs/portals.html)。答案是 React 还会监听 portals 容器上的事件，所以这不是问题。
 
-#### Fixing Potential Issues {#fixing-potential-issues}
+#### 解决隐患 {/*fixing-potential-issues*/}
 
-As with any breaking change, it is likely some code would need to be adjusted. At Facebook, we had to adjust about 10 modules in total (out of many thousands) to work with this change.
+与其他重大更改一样，可能需要对代码进行调整。在 Facebook，我们在成千上万个模块中，大约调整了 10 个模块以适应此更改。
 
-For example, if you add manual DOM listeners with `document.addEventListener(...)`, you might expect them to catch all React events. In React 16 and earlier, even if you call `e.stopPropagation()` in a React event handler, your custom `document` listeners would still receive them because the native event is *already* at the document level. With React 17, the propagation *would* stop (as requested!), so your `document` handlers would not fire:
+例如，如果模块中使用 `document.addEventListener(...)` 手动添加了 DOM 监听，你可能希望能捕获到所有 React 事件。在 React 16 或更早版本中，即使你在 React 事件处理器中调用 `e.stopPropagation()`，你创建的 DOM 监听仍会触发，这是因为原生事件已经处于 document 级别。使用 React 17 冒泡将被阻止（按需），因此你的 `document` 级别的事件监听不会触发：
 
 ```js
 document.addEventListener('click', function() {
@@ -99,7 +98,7 @@ document.addEventListener('click', function() {
 });
 ```
 
-You can fix code like this by converting your listener to use the [capture phase](https://javascript.info/bubbling-and-capturing#capturing). To do this, you can pass `{ capture: true }` as the third argument to `document.addEventListener`:
+你可以将监听转换为使用[捕获](https://javascript.info/bubbling-and-capturing#capturing)来修复此类代码。为此，你可以将 `{ capture: true }` 作为 `document.addEventListener` 的第三个参数传递：
 
 ```js
 document.addEventListener('click', function() {
@@ -108,29 +107,29 @@ document.addEventListener('click', function() {
 }, { capture: true });
 ```
 
-Note how this strategy is more resilient overall -- for example, it will probably fix existing bugs in your code that happen when `e.stopPropagation()` is called outside of a React event handler. In other words, **event propagation in React 17 works closer to the regular DOM**.
+请注意，此策略在全局上具有更好的适应性。例如，它可能会修复代码中现有的错误，这些错误在 React 事件处理器外部调用 `e.stopPropagation()` 发生。换句话说，**React 17 的事件冒泡更接近常规 DOM**。
 
-## Other Breaking Changes {#other-breaking-changes}
+## 其他重大更改 {/*other-breaking-changes*/}
 
-We've kept the breaking changes in React 17 to the minimum. For example, it doesn't remove any of the methods that have been deprecated in the previous releases. However, it does include a few other breaking changes that have been relatively safe in our experience. In total, we've had to adjust fewer than 20 out of 100,000+ our components because of them.
+我们将 React 17 中的重大更改保持在最低水平。例如，它不会删除以前版本中弃用的任务方法。但是，它的确包含一些其他重大更改，根据经验，这些更改会相对安全。总体而言，由于这些因素的存在，在 10 万个以上的组件中受影响的组件不超过 20 个。
 
-### Aligning with Browsers {#aligning-with-browsers}
+### 对标浏览器 {/*aligning-with-browsers*/}
 
-We've made a couple of smaller changes related to the event system:
+我们对事件系统进行了一些较小的更改：
 
-* The `onScroll` event **no longer bubbles** to prevent [common confusion](https://github.com/facebook/react/issues/15723).
-* React `onFocus` and `onBlur` events have switched to using the native `focusin` and `focusout` events under the hood, which more closely match React's existing behavior and sometimes provide extra information.
-* Capture phase events (e.g. `onClickCapture`) now use real browser capture phase listeners.
+* `onScroll` 事件**不再冒泡**，以防止[出现常见的混淆](https://github.com/facebook/react/issues/15723)。
+* React 的 `onFocus` 和 `onBlur` 事件已在底层切换为原生的 `focusin` 和 `focusout` 事件。它们更接近 React 现有行为，有时还会提供额外的信息。
+* 捕获事件（例如，`onClickCapture`）现在使用的是实际浏览器中的捕获监听器。
 
-These changes align React closer with the browser behavior and improve interoperability.
+这些更改会使 React 与浏览器行为更接近，并提高了互操作性。
 
->Note
+>注意：
 >
->Although React 17 switched from `focus` to `focusin` *under the hood* for the `onFocus` event, note that this has **not** affected the bubbling behavior. In React, `onFocus` event has always bubbled, and it continues to do so in React 17 because generally it is a more useful default. See [this sandbox](https://codesandbox.io/s/strange-albattani-7tqr7?file=/src/App.js) for the different checks you can add for different particular use cases.
+>尽管 React 17 **底层**已将 `onFocus` 事件从 `focus` 切换为 `focusin`，但请注意，这并未影响冒泡行为。在 React 中，`onFocus` 事件总是冒泡的，在 React 17 中会继续保持，因为通常它是一个更有用的默认值。请参阅 [sandbox](https://codesandbox.io/s/strange-albattani-7tqr7?file=/src/App.js)，以了解为不同特定用例添加不同检查。
 
-### No Event Pooling {#no-event-pooling}
+### 去除事件池 {/*no-event-pooling*/}
 
-React 17 removes the "event pooling" optimization from React. It doesn't improve performance in modern browsers and confuses even experienced React users:
+React 17 中移除了 "event pooling（事件池）"。它并不会提高现代浏览器的性能，甚至还会使经验丰富的开发者一头雾水：
 
 ```js
 function handleChange(e) {
@@ -142,15 +141,15 @@ function handleChange(e) {
 }
 ```
 
-This is because React reused the event objects between different events for performance in old browsers, and set all event fields to `null` in between them. With React 16 and earlier, you have to call `e.persist()` to properly use the event, or read the property you need earlier.
+这是因为 React 在旧浏览器中重用了不同事件的事件对象，以提高性能，并将所有事件字段在它们之前设置为 `null`。在 React 16 及更早版本中，使用者必须调用 `e.persist()` 才能正确的使用该事件，或者正确读取需要的属性。
 
-**In React 17, this code works as you would expect. The old event pooling optimization has been fully removed, so you can read the event fields whenever you need them.**
+**在 React 17 中，此代码可以按照预期效果执行。旧的事件池优化操作已被完成删除，因此，使用者可以在需要时读取事件字段。**
 
-This is a behavior change, which is why we're marking it as breaking, but in practice we haven't seen it break anything at Facebook. (Maybe it even fixed a few bugs!) Note that `e.persist()` is still available on the React event object, but now it doesn't do anything.
+这改变了行为，因此我们将其标记为重大更改，但在实践中我们没有看到它在 Facebook 上造成影响。（甚至还修复了一些错误！）请注意，`e.persist()` 在 React 事件对象中仍然可用，只是无效果罢了。
 
-### Effect Cleanup Timing {#effect-cleanup-timing}
+### 副作用清理时间 {/*effect-cleanup-timing*/}
 
-We are making the timing of the `useEffect` cleanup function more consistent.
+我们将使 `useEffect` 和清理函数的时间保持一致。
 
 ```js {3-5}
 useEffect(() => {
@@ -161,23 +160,23 @@ useEffect(() => {
 });
 ```
 
-Most effects don't need to delay screen updates, so React runs them asynchronously soon after the update has been reflected on the screen. (For the rare cases where you need an effect to block paint, e.g. to measure and position a tooltip, prefer `useLayoutEffect`.)
+大多数副作用（effect）不需要延迟屏幕更新，因此 React 在屏幕上反映出更新后立即异步执行它们。（在极少数情况下，你需要一种副作用来阻止绘制，例如，如果需要获取尺寸和位置，请使用 `useLayoutEffect`。）
 
-However, the effect *cleanup* function, when it exists, used to run synchronously in React 16. We've found that, similar to `componentWillUnmount` being synchronous in classes, this is not ideal for larger apps because it slows down large screen transitions (e.g. switching tabs).
+然而，当组件被卸载时，副作用**清理**函数（类似于在 class 组件中同步调用 `componentWillUnmount`）同步运行。我们发现，对于大型应用程序来说，这不是理想选择，因为同步会减缓屏幕的过渡（例如，切换标签）。
 
-**In React 17, the effect cleanup function also runs asynchronously -- for example, if the component is unmounting, the cleanup will run _after_ the screen has been updated.**
+**在 React 17 中，副作用清理函数总会异步执行 —— 如果要卸载组件，则清理会在屏幕更新 __后__ 运行。**
 
-This mirrors how the effects themselves run more closely. In the  rare cases where you might want to rely on the synchronous execution, you can switch to `useLayoutEffect` instead.
+这反映了副作用本身如何更紧密地运行。在极少数情况下，你可能希望依靠同步执行，可以改用 `useLayoutEffect`。
 
->Note
+>注意
 >
->You might be wondering whether this means that you'll now be unable to fix warnings about `setState` on unmounted components. Don't worry -- React specifically checks for this case, and does *not* fire `setState` warnings in the short gap between unmounting and the cleanup. **So code cancelling requests or intervals can almost always stay the same.**
+>你可能想知道这是否意味着你现在将无法修复有关未挂载组件上的 `setState` 的警告。不必担心，React 专门处理了这种情况，并且不会在卸载和清理之间短暂间隔内发出 `setState` 的警告。**因此，取消代码的请求或间隔几乎总是可以保存不变的。**
 
-Additionally, React 17 executes the cleanup functions in the same order as the effects, according to their position in the tree. Previously, this order was occasionally different.
+此外，React 17 将在运行任何新副作用之前执行所有副作用的清理函数（针对所有组件）。React 16 只对组件内的 effect 保证这种顺序。
 
-#### Potential Issues {#potential-issues}
+#### 隐患 {/*potential-issues*/}
 
-We've only seen a couple of components break with this change, although reusable libraries may need to test it more thoroughly. One example of problematic code may look like this:
+可复用的库可能需要对此情况进行深度测试，但我们只遇到了几个组件会因为这次改变出现问题。有问题的代码的其中一个示例如下所示：
 
 ```js
 useEffect(() => {
@@ -188,7 +187,7 @@ useEffect(() => {
 });
 ```
 
-The problem is that `someRef.current` is mutable, so by the time the cleanup function runs, it may have been set to `null`. The solution is to capture any mutable values *inside* the effect:
+问题在于 `someRef.current` 是可变的，因此在运行清除函数时，它可能已经设置为 `null`。解决方案是在副作用**内部**存储会发生变化的值：
 
 ```js
 useEffect(() => {
@@ -200,11 +199,11 @@ useEffect(() => {
 });
 ```
 
-We don't expect this to be a common problem because [our `eslint-plugin-react-hooks/exhaustive-deps` lint rule](https://github.com/facebook/react/tree/master/packages/eslint-plugin-react-hooks) (make sure you use it!) has always warned about this.
+我们不希望此问题对大家造成影响，我们提供了 [`eslint-plugin-react-hooks/exhaustive-deps` 的 lint 规则](https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks)（请确保在项目中使用它）会对此情况发出警告。
 
-### Consistent Errors for Returning Undefined {#consistent-errors-for-returning-undefined}
+### 返回一致的 undefined 错误 {/*consistent-errors-for-returning-undefined*/}
 
-In React 16 and earlier, returning `undefined` has always been an error:
+在 React 16 及更早版本中，返回 `undefined` 始终是一个错误：
 
 ```js
 function Button() {
@@ -212,7 +211,7 @@ function Button() {
 }
 ```
 
-This is in part because it’s easy to return `undefined` unintentionally:
+部分原因是这很容易无意间返回 `undefined`：
 
 ```js
 function Button() {
@@ -222,9 +221,9 @@ function Button() {
 }
 ```
 
-Previously, React only did this for class and function components, but did not check the return values of `forwardRef` and `memo` components. This was due to a coding mistake.
+以前，React 只对 class 和函数组件执行此操作，但并不会检查 `forwardRef` 和 `memo` 组件的返回值。这是由于编码错误导致。
 
-**In React 17, the behavior for `forwardRef` and `memo` components is consistent with regular function and class components. Returning `undefined` from them is an error.**
+**在 React 17 中，`forwardRef` 和 `memo` 组件的行为会与常规函数组件和 class 组件保持一致。在返回 `undefined` 时会报错**
 
 ```js
 let Button = forwardRef(() => {
@@ -240,126 +239,138 @@ let Button = memo(() => {
 });
 ```
 
-For the cases where you want to render nothing intentionally, return `null` instead.
+对于不想进行任何渲染的情况，请返回 `null`。
 
-### Native Component Stacks {#native-component-stacks}
+### 原生组件栈 {/*native-component-stacks*/}
 
-When you throw an error in the browser, the browser gives you a stack trace with JavaScript function names and their locations. However, JavaScript stacks are often not enough to diagnose a problem because the React tree hierarchy can be just as important. You want to know not just that a `Button` threw an error, but *where in the React tree* that `Button` is.
+当你在浏览器中遇到错误时，浏览器会为你提供带有 JavaScript 函数的名称及位置的调用栈信息。然而，JavaScript 调用栈通常不足以诊断问题，因为 React 树的层次结构可能同样重要。你不仅要知道哪个 `Button` 抛出了错误，而且还想知道 `Button` 在 React 树中的哪个位置。
 
-To solve this, React 16 started printing "component stacks" when you have an error. Still, they used to be inferior to the native JavaScript stacks. In particular, they were not clickable in the console because React didn't know where the function was declared in the source code. Additionally, they were [mostly useless in production](https://github.com/facebook/react/issues/12757). Unlike regular minified JavaScript stacks which can be automatically restored to the original function names with a sourcemap, with React component stacks you had to choose between production stacks and bundle size.
+为了解决这个问题，当你遇到错误时，从 React 16 开始会打印 "组件栈" 信息。尽管如此，它们仍然不如原生的 JavaScript 调用栈。特别是，它们在控制台中不可点击，因为 React 不知道函数在源代码中的声明位置。此外，它们在生产中[几乎无用](https://github.com/facebook/react/issues/12757)。不同于常规压缩后的 JavaScript 调用栈，它们可以通过 sourcemap 的形式自动恢复到原始函数的位置，而使用  React 组件栈，在生产环境下必须在调用栈信息和 bundle 大小间进行选择。
 
-**In React 17, the component stacks are generated using a different mechanism that stitches them together from the regular native JavaScript stacks. This lets you get the fully symbolicated React component stack traces in a production environment.**
+**在 React 17 中，使用了不同的机制生成组件调用栈，该机制会将它们与常规的原生 JavaScript 调用栈缝合在一起。这使得你可以在生产环境中获得完全符号化的 React 组件调用栈信息。**
 
-The way React implements this is somewhat unorthodox. Currently, the browsers don't provide a way to get a function's stack frame (source file and location). So when React catches an error, it will now *reconstruct* its component stack by throwing (and catching) a temporary error from inside each of the components above, when it is possible. This adds a small performance penalty for crashes, but it only happens once per component type.
+React 实现这一点的方式有点非常规。目前，浏览器无法提供获取函数调用栈框架（源文件和位置）的方法。因此，当 React 捕获到错误时，将通过组件上述组件内部抛出的临时错误（并捕获）来重建其组件调用栈信息。这会增加崩溃时的性能损失，但每个组件类型只会发生一次。
 
-If you're curious, you can read more details in [this pull request](https://github.com/facebook/react/pull/18561), but for the most part this exact mechanism shouldn't affect your code. From your perspective, the new feature is that component stacks are now clickable (because they rely on the native browser stack frames), and that you can decode them in production like you would with regular JavaScript errors.
+如果你对此感兴趣，可以在[这个 PR](https://github.com/facebook/react/pull/18561) 中阅读更多详细信息，但是在大多数情况下，这种机制不会影响你的代码。从使用者的角度来看，新功能就是可以单击组件调用栈（因为它们依赖于本机浏览器调用栈框架），并且可以像常规 JavaScript 错误那样在生产中进行解码。
 
-The part that constitutes a breaking change is that for this to work, React re-executes parts of some of the React functions and React class constructors above in the stack after an error is captured. Since render functions and class constructors shouldn't have side effects (which is also important for server rendering), this should not pose any practical problems.
+构成重大变化的部分是，要使此功能正常工作，React 将在捕获错误后在调用栈中重新执行上面某些函数和某些 class 构造函数的部分。由于渲染函数和 class 构造函数不应具有副作用（这对于 SSR 也很重要），因此这不会造成任何实际问题。
 
-### Removing Private Exports {#removing-private-exports}
+### 移除私有导出 {/*removing-private-exports*/}
 
-Finally, the last notable breaking change is that we've removed some React internals that were previously exposed to other projects. In particular, [React Native for Web](https://github.com/necolas/react-native-web) used to depend on some internals of the event system, but that dependency was fragile and used to break.
+最后，值得注意的重大变化时我们删除了一些以前暴露给其他项目的 React 内部组件。特别是，[React Native for Web](https://github.com/necolas/react-native-web) 过去常常依赖于事件系统的某些内部组件，但这种依赖关系很脆弱且经常被破坏。
 
-**In React 17, these private exports have been removed. As far as we're aware, React Native for Web was the only project using them, and they have already completed a migration to a different approach that doesn't depend on those private exports.**
+**在 React 17 中，这些私有导出已被移除。据我们所知，React Native for Web 是唯一使用它们的项目，它们已经完成了向不依赖那些私有导出函数的其他方法迁移。**
 
-This means that the older versions of React Native for Web won't be compatible with React 17, but the newer versions will work with it. In practice, this doesn't change much because React Native for Web had to release new versions to adapt to internal React changes anyway.
+这意味着旧版本的 React Native for Web 不会与 React 17 兼容，但是新版本可以使用它。实际上，并没有太大的变化，因为 React Native for Web 必须发布新版本以适应其内部 React 的变化。
 
-Additionally, we've removed the `ReactTestUtils.SimulateNative` helper methods. They have never been documented, didn't do quite what their names implied, and didn't work with the changes we've made to the event system. If you want a convenient way to fire native browser events in tests, check out the [React Testing Library](https://testing-library.com/docs/dom-testing-library/api-events) instead.
+另外，我们删除了 `ReactTestUtils.SimulateNative` 的 helper 方法。他们从未被记录，没有按照他们名字所暗示的那样去做，也没有处理我们对事件系统所做的更改。如果你想要一种简便的方式来触发测试中原生浏览器的事件，请改用 [React Testing Library](https://testing-library.com/docs/dom-testing-library/api-events)。
 
-## Installation {#installation}
+## 安装 {/*installation*/}
 
-We encourage you to try React 17.0 Release Candidate soon and [raise any issues](https://github.com/facebook/react/issues) for the problems you might encounter in the migration. **Keep in mind that a release candidate is more likely to contain bugs than a stable release, so don't deploy it to production yet.**
+我们鼓励你尽快尝试 React 17.0 RC 版本，在迁移过程中遇到任何问题都可以向我们[提出](https://github.com/facebook/react/issues)。**请注意，候选版本没有稳定版本稳定，因此请不要将其部署到生产环境。**
 
-To install React 17 RC with npm, run:
+通过 npm 安装 React 17 RC 版，请执行：
 
 ```bash
 npm install react@17.0.0-rc.0 react-dom@17.0.0-rc.0
 ```
 
-To install React 17 RC with Yarn, run:
+通过 yarn 安装 React 17 RC 版，请执行：
 
 ```bash
 yarn add react@17.0.0-rc.0 react-dom@17.0.0-rc.0
 ```
 
-We also provide UMD builds of React via a CDN:
+我们还通过 CDN 提供了 React RC 的 UMD 构建版本：
 
 ```html
 <script crossorigin src="https://unpkg.com/react@17.0.0-rc.0/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@17.0.0-rc.0/umd/react-dom.production.min.js"></script>
 ```
 
-Refer to the documentation for [detailed installation instructions](/docs/installation.html).
+有关[详细安装说明](/docs/installation.html)，请参阅文档。
 
-## Changelog {#changelog}
+## Changelog {/*changelog*/}
 
-### React {#react}
+### React {/*react*/}
 
-* Add `react/jsx-runtime` and `react/jsx-dev-runtime` for the [new JSX transform](https://babeljs.io/blog/2020/03/16/7.9.0#a-new-jsx-transform-11154-https-githubcom-babel-babel-pull-11154). ([@lunaruan](https://github.com/lunaruan) in [#18299](https://github.com/facebook/react/pull/18299))
-* Build component stacks from native error frames. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18561](https://github.com/facebook/react/pull/18561))
-* Allow to specify `displayName` on context for improved stacks. ([@eps1lon](https://github.com/eps1lon) in [#18224](https://github.com/facebook/react/pull/18224))
+* 为全新的 [JSX 转换器](https://babeljs.io/blog/2020/03/16/7.9.0#a-new-jsx-transform-11154-https-githubcom-babel-babel-pull-11154)添加 `react/jsx-runtime` 和 `react/jsx-dev-runtime`。（[@lunaruan](https://github.com/lunaruan) 提交于 [#18299](https://github.com/facebook/react/pull/18299)）
+* 根据原生框架构建组件调用栈。（[@sebmarkbage](https://github.com/sebmarkbage) 提交于 [#18561](https://github.com/facebook/react/pull/18561)）
+* 可以在 context 中设置 `displayName` 以改善调用栈信息。（[@eps1lon](https://github.com/eps1lon) 提交于 [#18224](https://github.com/facebook/react/pull/18224)）
+* 防止 `'use strict'` 从 UMD 的 bundles 中泄露。（[@koba04](https://github.com/koba04) 提交于 [#19614](https://github.com/facebook/react/pull/19614)）
+* 停止使用 `fb.me` 进行重定向。（[@cylim](https://github.com/cylim) 提交于 [#19598](https://github.com/facebook/react/pull/19598)）
 
-### React DOM {#react-dom}
+### React DOM {/*react-dom*/}
 
-* Delegate events to roots instead of `document`. ([@trueadm](https://github.com/trueadm) in [#18195](https://github.com/facebook/react/pull/18195) and [others](https://github.com/facebook/react/pulls?q=is%3Apr+author%3Atrueadm+modern+event+is%3Amerged))
-* Clean up all effects before running any next effects. ([@bvaughn](https://github.com/bvaughn) in [#17947](https://github.com/facebook/react/pull/17947))
-* Run `useEffect` cleanup functions asynchronously. ([@bvaughn](https://github.com/bvaughn) in [#17925](https://github.com/facebook/react/pull/17925))
-* Use browser `focusin` and `focusout` for `onFocus` and `onBlur`. ([@trueadm](https://github.com/trueadm) in [#19186](https://github.com/facebook/react/pull/19186))
-* Make all `Capture` events use the browser capture phase. ([@trueadm](https://github.com/trueadm) in [#19221](https://github.com/facebook/react/pull/19221))
-* Don't emulate bubbling of the `onScroll` event. ([@gaearon](https://github.com/gaearon) in [#19464](https://github.com/facebook/react/pull/19464))
-* Throw if `forwardRef` or `memo` component returns `undefined`. ([@gaearon](https://github.com/gaearon) in [#19550](https://github.com/facebook/react/pull/19550))
-* Remove event pooling. ([@trueadm](https://github.com/trueadm) in [#18969](https://github.com/facebook/react/pull/18969))
-* Stop exposing internals that won’t be needed by React Native Web. ([@necolas](https://github.com/necolas) in [#18483](https://github.com/facebook/react/pull/18483))
-* Disable `console` in the second render pass of DEV mode double render. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18547](https://github.com/facebook/react/pull/18547))
-* Deprecate the undocumented and misleading `ReactTestUtils.SimulateNative` API. ([@gaearon](https://github.com/gaearon) in [#13407](https://github.com/facebook/react/pull/13407))
-* Rename private field names used in the internals. ([@gaearon](https://github.com/gaearon) in [#18377](https://github.com/facebook/react/pull/18377))
-* Don't call User Timing API in development. ([@gaearon](https://github.com/gaearon) in [#18417](https://github.com/facebook/react/pull/18417))
-* Disable console during the repeated render in Strict Mode. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18547](https://github.com/facebook/react/pull/18547))
-* In Strict Mode, double-render components without Hooks too. ([@eps1lon](https://github.com/eps1lon) in [#18430](https://github.com/facebook/react/pull/18430))
-* Allow calling `ReactDOM.flushSync` during lifecycle methods (but warn). ([@sebmarkbage](https://github.com/sebmarkbage) in [#18759](https://github.com/facebook/react/pull/18759))
-* Add the `code` property to the keyboard event objects. ([@bl00mber](https://github.com/bl00mber) in [#18287](https://github.com/facebook/react/pull/18287))
-* Add the `disableRemotePlayback` property for `video` elements. ([@tombrowndev](https://github.com/tombrowndev) in [#18619](https://github.com/facebook/react/pull/18619))
-* Add the `enterKeyHint` property for `input` elements. ([@eps1lon](https://github.com/eps1lon) in [#18634](https://github.com/facebook/react/pull/18634))
-* Warn when no `value` is provided to `<Context.Provider>`. ([@charlie1404](https://github.com/charlie1404) in [#19054](https://github.com/facebook/react/pull/19054))
-* Warn when `memo` or `forwardRef` components return `undefined`. ([@bvaughn](https://github.com/bvaughn) in [#19550](https://github.com/facebook/react/pull/19550))
-* Improve the error message for invalid updates. ([@JoviDeCroock](https://github.com/JoviDeCroock) in [#18316](https://github.com/facebook/react/pull/18316))
-* Exclude forwardRef and memo from stack frames. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18559](https://github.com/facebook/react/pull/18559))
-* Improve the error message when switching between controlled and uncontrolled inputs. ([@vcarl](https://github.com/vcarl) in [#17070](https://github.com/facebook/react/pull/17070))
-* Fix `setState` hanging in development inside a closed iframe. ([@gaearon](https://github.com/gaearon) in [#19220](https://github.com/facebook/react/pull/19220))
-* Fix rendering bailout for lazy components with `defaultProps`. ([@jddxf](https://github.com/jddxf) in [#18539](https://github.com/facebook/react/pull/18539))
-* Fix a false positive warning when `dangerouslySetInnerHTML` is `undefined`. ([@eps1lon](https://github.com/eps1lon) in [#18676](https://github.com/facebook/react/pull/18676))
-* Fix Test Utils with non-standard `require` implementation. ([@just-boris](https://github.com/just-boris) in [#18632](https://github.com/facebook/react/pull/18632))
-* Fix `onBeforeInput` reporting an incorrect `event.type`. ([@eps1lon](https://github.com/eps1lon) in [#19561](https://github.com/facebook/react/pull/19561))
-* Use delegation for `onSubmit` and `onReset` events. ([@gaearon](https://github.com/gaearon) in [#19333](https://github.com/facebook/react/pull/19333))
-* Improve memory usage. ([@trueadm](https://github.com/trueadm) in [#18970](https://github.com/facebook/react/pull/18970))
+* 将事件委托从 `document` 切换为 root。（[@trueadm](https://github.com/trueadm) 提交于 [#18195](https://github.com/facebook/react/pull/18195) 及[其他](https://github.com/facebook/react/pulls?q=is%3Apr+author%3Atrueadm+modern+event+is%3Amerged)）
+* 在运行下一个副作用前，请清理所有副作用。（[@bvaughn](https://github.com/bvaughn) 提交于 [#17947](https://github.com/facebook/react/pull/17947)）
+* 异步运行 `useEffect` 清理函数。（[@bvaughn](https://github.com/bvaughn) 提交于 [#17925](https://github.com/facebook/react/pull/17925)）
+* 使用浏览器的 `focusin` 和 `focusout` 替换 `onFocus` 和 `onBlur` 的底层实现。（[@trueadm](https://github.com/trueadm) 提交于 [#19186](https://github.com/facebook/react/pull/19186)）
+* 将所有 `Capture` 事件都使用浏览器的捕获阶段实现。（[@trueadm](https://github.com/trueadm) 提交于 [#19221](https://github.com/facebook/react/pull/19221)）
+* 禁止在 `onScroll` 事件时冒泡。（[@gaearon](https://github.com/gaearon) 提交于 [#19464](https://github.com/facebook/react/pull/19464))
+* 如果 `forwardRef` 或 `memo` 组件的返回值为 `undefined`，则抛出异常。（[@gaearon](https://github.com/gaearon) 提交于 [#19550](https://github.com/facebook/react/pull/19550)）
+* 移除事件池。（[@trueadm](https://github.com/trueadm) 提交于 [#18969](https://github.com/facebook/react/pull/18969)）
+* 移除 React Native Web 不需要的内部组件。（[@necolas](https://github.com/necolas) 提交于 [#18483](https://github.com/facebook/react/pull/18483))
+* 当挂载 root 时，附加所有已知的事件监听器。（[@gaearon](https://github.com/gaearon) 提交于 [#19659](https://github.com/facebook/react/pull/19659)）
+* 在 Dev 模式下，禁用第二次渲染过程中的 `console`。（[@sebmarkbage](https://github.com/sebmarkbage) 提交于 [#18547](https://github.com/facebook/react/pull/18547)）
+* 弃用为记录且具有误导性的 `ReactTestUtils.SimulateNative` API。（[@gaearon](https://github.com/gaearon) 提交于 [#13407](https://github.com/facebook/react/pull/13407))
+* 重命名内部使用的私有字段（[@gaearon](https://github.com/gaearon) 提交于 [#18377](https://github.com/facebook/react/pull/18377)）
+* 不在开发环境调用 User Timing API。（[@gaearon](https://github.com/gaearon) 提交于 [#18417](https://github.com/facebook/react/pull/18417)）
+* 在严格模式下重复渲染期间禁用 console。（[@sebmarkbage](https://github.com/sebmarkbage) 提交于 [#18547](https://github.com/facebook/react/pull/18547)）
+* 在严格模式下，二次渲染组件也不使用 Hook。（[@eps1lon](https://github.com/eps1lon) 提交于 [#18430](https://github.com/facebook/react/pull/18430)）
+* 允许在生命周期函数中调用 `ReactDOM.flushSync`（但会发出警告）。（[@sebmarkbage](https://github.com/sebmarkbage) 提交于 [#18759](https://github.com/facebook/react/pull/18759)）
+* 将 `code` 属性添加到键盘事件对象中。（[@bl00mber](https://github.com/bl00mber) 提交于 [#18287](https://github.com/facebook/react/pull/18287)）
+* 为 `video` 元素添加 `disableRemotePlayback` 属性。（[@tombrowndev](https://github.com/tombrowndev) 提交于 [#18619](https://github.com/facebook/react/pull/18619)）
+* 为 `input` 元素添加 `enterKeyHint` 属性。（[@eps1lon](https://github.com/eps1lon) 提交于 [#18634](https://github.com/facebook/react/pull/18634)）
+* 当没有给 `<Context.Provider>` 提供任何值时，会发出警告。（[@charlie1404](https://github.com/charlie1404) 提交于 [#19054](https://github.com/facebook/react/pull/19054)）
+* 如果 `forwardRef` 或 `memo` 组件的返回值为 `undefined`，则抛出警告。（[@bvaughn](https://github.com/bvaughn) 提交于 [#19550](https://github.com/facebook/react/pull/19550)）
+* 为无效更新改进错误信息。（[@JoviDeCroock](https://github.com/JoviDeCroock) 提交于 [#18316](https://github.com/facebook/react/pull/18316)）
+* 从调用栈信息中忽略 forwardRef 和 memo。（[@sebmarkbage](https://github.com/sebmarkbage) 提交于 [#18559](https://github.com/facebook/react/pull/18559)）
+* 在受控输入与非受控输入间切换时，改善错误消息。（[@vcarl](https://github.com/vcarl) 提交于 [#17070](https://github.com/facebook/react/pull/17070)）
+* 保持 `onTouchStart`、`onTouchMove` 和 `onWheel` 默认为 passive。（[@gaearon](https://github.com/gaearon) 提交于 [#19654](https://github.com/facebook/react/pull/19654)）
+* 修复在 development 模式下 iframe 关闭时，`setState` 挂起的问题。（[@gaearon](https://github.com/gaearon) 提交于 [#19220](https://github.com/facebook/react/pull/19220)）
+* 使用 `defaultProps` 修复拉架子组件在渲染时的问题。（[@jddxf](https://github.com/jddxf) 提交于 [#18539](https://github.com/facebook/react/pull/18539)）
+* 修复当 `dangerouslySetInnerHTML` 为 `undefined` 时，误报警告的问题。（[@eps1lon](https://github.com/eps1lon) 提交于 [#18676](https://github.com/facebook/react/pull/18676)）
+* 使用非标准的 `require` 实现来修复 Test Utils。（[@just-boris](https://github.com/just-boris) 提交于 [#18632](https://github.com/facebook/react/pull/18632)）
+* 修复 `onBeforeInput` 报告错误的 `event.type`。（[@eps1lon](https://github.com/eps1lon) 提交于 [#19561](https://github.com/facebook/react/pull/19561)）
+* 修复 Firefox 中 `event.relatedTarget` 输出为 `undefined` 的问题。（[@claytercek](https://github.com/claytercek) 提交于 [#19607](https://github.com/facebook/react/pull/19607)）
+* 修复 IE11 中 "unspecified error" 的问题。（[@hemakshis](https://github.com/hemakshis) 提交于 [#19664](https://github.com/facebook/react/pull/19664)）
+* 修复 shadow root 中的渲染问题。（[@Jack-Works](https://github.com/Jack-Works) 提交于 [#15894](https://github.com/facebook/react/pull/15894)）
+* 使用事件捕获修复 `movementX/Y` polyfill 的问题。（[@gaearon](https://github.com/gaearon) 提交于 [#19672](https://github.com/facebook/react/pull/19672)）
+* 使用委托处理 `onSubmit` 和 `onReset` 事件。（[@gaearon](https://github.com/gaearon) 提交于 [#19333](https://github.com/facebook/react/pull/19333)）
+* 提高内存使用率。（[@trueadm](https://github.com/trueadm) 提交于 [#18970](https://github.com/facebook/react/pull/18970)）
 
-### React DOM Server {#react-dom-server}
+### React DOM Server {/*react-dom-server*/}
 
-* Make `useCallback` behavior consistent with `useMemo` for the server renderer. ([@alexmckenley](https://github.com/alexmckenley) in [#18783](https://github.com/facebook/react/pull/18783))
-* Fix state leaking when a function component throws. ([@pmaccart](https://github.com/pmaccart) in [#19212](https://github.com/facebook/react/pull/19212))
+* 使用服务端渲染的 `useCallback` 与 `useMemo` 一致。（[@alexmckenley](https://github.com/alexmckenley)提交于 [#18783](https://github.com/facebook/react/pull/18783)）
+* 修复函数组件抛出异常时状态泄露的问题。（[@pmaccart](https://github.com/pmaccart) 提交于 [#19212](https://github.com/facebook/react/pull/19212)）
 
-### React Test Renderer {#react-test-renderer}
+### React Test Renderer {/*react-test-renderer*/}
 
-* Improve `findByType` error message. ([@henryqdineen](https://github.com/henryqdineen) in [#17439](https://github.com/facebook/react/pull/17439))
+* 改善 `findByType` 错误信息。（[@henryqdineen](https://github.com/henryqdineen) 提交于 [#17439](https://github.com/facebook/react/pull/17439)）
 
-### Concurrent Mode (Experimental) {#concurrent-mode-experimental}
+### Concurrent Mode（实验阶段） {/*concurrent-mode-experimental*/}
 
-* Revamp the priority batching heuristics. ([@acdlite](https://github.com/acdlite) in [#18796](https://github.com/facebook/react/pull/18796))
-* Add the `unstable_` prefix before the experimental APIs. ([@acdlite](https://github.com/acdlite) in [#18825](https://github.com/facebook/react/pull/18825))
-* Remove `unstable_discreteUpdates` and `unstable_flushDiscreteUpdates`. ([@trueadm](https://github.com/trueadm) in [#18825](https://github.com/facebook/react/pull/18825))
-* Disable `<div hidden />` prerendering in favor of a different future API. ([@acdlite](https://github.com/acdlite) in [#18917](https://github.com/facebook/react/pull/18917))
-* Add an experimental `unstable_useOpaqueIdentifier` Hook. ([@lunaruan](https://github.com/lunaruan) in [#17322](https://github.com/facebook/react/pull/17322))
-* Using `act` in the test renderer no longer flushes Suspense fallbacks. ([@acdlite](https://github.com/acdlite) in [#18596](https://github.com/facebook/react/pull/18596))
-* Clear the existing root content before mounting. ([@bvaughn](https://github.com/bvaughn) in [#18730](https://github.com/facebook/react/pull/18730))
-* Fix a bug with error boundaries. ([@acdlite](https://github.com/acdlite) in [#18265](https://github.com/facebook/react/pull/18265))
-* Fix a bug causing dropped updates in a suspended tree. ([@acdlite](https://github.com/acdlite) in [#18384](https://github.com/facebook/react/pull/18384) and [#18457](https://github.com/facebook/react/pull/18457))
-* Fix a bug causing dropped render phase updates. ([@acdlite](https://github.com/acdlite) in [#18537](https://github.com/facebook/react/pull/18537))
-* Fix a bug in SuspenseList. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18412](https://github.com/facebook/react/pull/18412))
-* Fix a bug causing Suspense fallback to show too early. ([@acdlite](https://github.com/acdlite) in [#18411](https://github.com/facebook/react/pull/18411))
-* Fix a bug with class components inside SuspenseList. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18448](https://github.com/facebook/react/pull/18448))
-* Fix a bug with inputs that may cause updates to be dropped. ([@jddxf](https://github.com/jddxf) in [#18515](https://github.com/facebook/react/pull/18515) and [@acdlite](https://github.com/acdlite) in [#18535](https://github.com/facebook/react/pull/18535))
-* Fix a bug causing Suspense fallback to get stuck.  ([@acdlite](https://github.com/acdlite) in [#18663](https://github.com/facebook/react/pull/18663))
-* Don't cut off the tail of a SuspenseList if hydrating. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18854](https://github.com/facebook/react/pull/18854))
-* Fix a bug in `useMutableSource` that may happen when `getSnapshot` changes. ([@bvaughn](https://github.com/bvaughn) in [#18297](https://github.com/facebook/react/pull/18297))
-* Fix a tearing bug in `useMutableSource`. ([@bvaughn](https://github.com/bvaughn) in [#18912](https://github.com/facebook/react/pull/18912))
-* Warn if calling setState outside of render but before commit. ([@sebmarkbage](https://github.com/sebmarkbage) in [#18838](https://github.com/facebook/react/pull/18838))
+* 改进启发式更新算法。（[@acdlite](https://github.com/acdlite) 提交于 [#18796](https://github.com/facebook/react/pull/18796)）
+* 在实现性 API 前添加 `unstable_` 前缀。 ([@acdlite](https://github.com/acdlite) 提交于 [#18825](https://github.com/facebook/react/pull/18825))
+* 移除 `unstable_discreteUpdates` 和 `unstable_flushDiscreteUpdates`。（[@trueadm](https://github.com/trueadm) 提交于 [#18825](https://github.com/facebook/react/pull/18825)）
+* 移除了 `timeoutMs` 参数。（[@acdlite](https://github.com/acdlite) 提交于 [#19703](https://github.com/facebook/react/pull/19703)）
+* 禁用 `<div hidden />` 预渲染，以支持未来的 API。（[@acdlite](https://github.com/acdlite) 提交于 [#18917](https://github.com/facebook/react/pull/18917)）
+* 为 Suspense 添加了 `unstable_expectedLoadTime`，用于 CPU-bound 树。（[@acdlite](https://github.com/acdlite) 提交于 [#19936](https://github.com/facebook/react/pull/19936)）
+* 添加了一个实现性的 `unstable_useOpaqueIdentifier` Hook。（[@lunaruan](https://github.com/lunaruan) 提交于 [#17322](https://github.com/facebook/react/pull/17322)）
+* 添加了一个实验性的 `unstable_startTransition` API. ([@rickhanlonii](https://github.com/rickhanlonii) 提交于 [#19696](https://github.com/facebook/react/pull/19696))
+* 在测试渲染器中使用 `act` 后，不在刷新 Suspense 的 fallback。（[@acdlite](https://github.com/acdlite) 提交于 [#18596](https://github.com/facebook/react/pull/18596)）
+* 将全局渲染的 timeout 用于 CPU Suspense。（[@sebmarkbage](https://github.com/sebmarkbage) 提交于 [#19643](https://github.com/facebook/react/pull/19643)）
+* 挂载前，清除现有根目录的内容。（[@bvaughn](https://github.com/bvaughn) 提交于 [#18730](https://github.com/facebook/react/pull/18730)）
+* 修复带有错误边界的 bug。（[@acdlite](https://github.com/acdlite) 提交于 [#18265](https://github.com/facebook/react/pull/18265)）
+* 修复了导致挂起树更新丢失的 bug。（[@acdlite](https://github.com/acdlite) 提交于 [#18384](https://github.com/facebook/react/pull/18384) 以及 [#18457](https://github.com/facebook/react/pull/18457)）
+* 修复导致渲染阶段更新丢失的 bug。（[@acdlite](https://github.com/acdlite) 提交于 [#18537](https://github.com/facebook/react/pull/18537)）
+* 修复 SuspenseList 的 bug。（[@sebmarkbage](https://github.com/sebmarkbage) 提交于 [#18412](https://github.com/facebook/react/pull/18412)）
+* 修复导致 Suspense fallback 过早显示的 bug。（[@acdlite](https://github.com/acdlite) 提交于 [#18411](https://github.com/facebook/react/pull/18411)）
+* 修复 SuspenseList 中使用 class 组件异常的 bug。（[@sebmarkbage](https://github.com/sebmarkbage) 提交于 [#18448](https://github.com/facebook/react/pull/18448)）
+* 修复输入内容可能被更新被丢弃的 bug。（[@jddxf](https://github.com/jddxf) 提交于 [#18515](https://github.com/facebook/react/pull/18515) 以及 [@acdlite](https://github.com/acdlite) 提交于 [#18535](https://github.com/facebook/react/pull/18535)）
+* 修复暂挂 Suspense fallback 后卡住的错误。（[@acdlite](https://github.com/acdlite) 提交于 [#18663](https://github.com/facebook/react/pull/18663)）
+* 如果 hydrate 中，不要切断 SuspenseList 的尾部。（[@sebmarkbage](https://github.com/sebmarkbage) 提交于 [#18854](https://github.com/facebook/react/pull/18854)）
+* 修复 `useMutableSource` 中的 bug，此 bug 可能在 `getSnapshot` 更改时出现。（[@bvaughn](https://github.com/bvaughn) 提交于 [#18297](https://github.com/facebook/react/pull/18297)）
+* 修复 `useMutableSource` 令人恶心的 bug。（[@bvaughn](https://github.com/bvaughn) 提交于 [#18912](https://github.com/facebook/react/pull/18912)）
+* 如果外部渲染且提交之前调用 `setState`，会发出警告。（[@sebmarkbage](https://github.com/sebmarkbage) 提交于 [#18838](https://github.com/facebook/react/pull/18838)）

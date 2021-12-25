@@ -1,89 +1,88 @@
 ---
-title: Why did we build React?
-layout: Post
+title: 我们为什么要构建 React?
 author: [petehunt]
 ---
 
-There are a lot of JavaScript MVC frameworks out there. Why did we build React
-and why would you want to use it?
+现在有很多 JavaScript MVC 框架。我们为什么还要构建 React，
+你又为什么会使用它？
 
-## React isn't an MVC framework. {#react-isnt-an-mvc-framework}
+## React 不是一个 MVC 框架。 {/*react-isnt-an-mvc-framework*/}
 
-React is a library for building composable user interfaces. It encourages
-the creation of reusable UI components which present data that changes over
-time.
+React 是一个用于构建可组合用户界面的库。
+它鼓励创建那些用于呈现随时间变化数据的、可复用的
+UI 组件。
 
-## React doesn't use templates. {#react-doesnt-use-templates}
+## React 不使用模板。 {/*react-isnt-an-mvc-framework*/}
 
-Traditionally, web application UIs are built using templates or HTML directives.
-These templates dictate the full set of abstractions that you are allowed to use
-to build your UI.
+在以往，web 应用程序的 UI 都是使用模板或者 HTML 指令构建的。
+这些模板决定了你可以用来构建
+UI 的全套抽象。
 
-React approaches building user interfaces differently by breaking them into
-**components**. This means React uses a real, full featured programming language
-to render views, which we see as an advantage over templates for a few reasons:
+而 React 用了不同的方式构建 UI，把它们拆成**组件**。
+这意味着 React 使用了一种真实的、具有各种特性的编程语言来渲染视图，
+我们认为它相较于模板而言是一种优势的理由如下:
 
-- **JavaScript is a flexible, powerful programming language** with the ability
-  to build abstractions. This is incredibly important in large applications.
-- By unifying your markup with its corresponding view logic, React can actually
-  make views **easier to extend and maintain**.
-- By baking an understanding of markup and content into JavaScript, there's
-  **no manual string concatenation** and therefore less surface area for XSS
-  vulnerabilities.
+- **JavaScript 是一种灵活、强大的编程语言**，具有构建抽象的能力，
+  这在大型应用中非常重要。
+- 通过将你的标记和其相对应的视图逻辑统一起来，
+  React 实际上可以让视图变得**更容易扩展和维护**。
+- 通过把一种对标记和内容的理解融入 JavaScript，
+  **不用手动连接字符串**，因此 XSS
+  漏洞的表面积也更小。
 
-We've also created [JSX](/docs/jsx-in-depth.html), an optional syntax
-extension, in case you prefer the readability of HTML to raw JavaScript.
+相比原生 JavaScript，如果你更喜欢 HTML 的高可读性，
+我们创造了 [JSX](/docs/jsx-in-depth.html)，一种可选的语法扩展。
 
-## Reactive updates are dead simple. {#reactive-updates-are-dead-simple}
+## 响应式更新非常简单。 {/*reactive-updates-are-dead-simple*/}
 
-React really shines when your data changes over time.
+当你的数据随时间变化的时候，React 表现得真的很出色。
 
-In a traditional JavaScript application, you need to look at what data changed
-and imperatively make changes to the DOM to keep it up-to-date. Even AngularJS,
-which provides a declarative interface via directives and data binding [requires
-a linking function to manually update DOM nodes](https://code.angularjs.org/1.0.8/docs/guide/directive#reasonsbehindthecompilelinkseparation).
+在一个传统的 JavaScript 应用中，你需要观察数据发生了什么变化，
+并且为了让 DOM 保持最新的状态还必须对它进行更改。
+AngularJS 甚至通过指令和数据绑定的提供声明式接口，
+还[需要一个链接函数来手动更新 DOM 节点](https://code.angularjs.org/1.0.8/docs/guide/directive#reasonsbehindthecompilelinkseparation) 。
 
-React takes a different approach.
+但 React 采用了不同的方式。
 
-When your component is first initialized, the `render` method is called,
-generating a lightweight representation of your view. From that representation,
-a string of markup is produced, and injected into the document. When your data
-changes, the `render` method is called again. In order to perform updates as
-efficiently as possible, we diff the return value from the previous call to
-`render` with the new one, and generate a minimal set of changes to be applied
-to the DOM.
+当你的组件首次初始化，组件的 `render` 方法会被调用，
+对你的视图生成一个轻量化的表示。从那个表示生成一串标记，
+并注入到文档中。当你的数据发生了变化，
+`render` 方法会再次被调用。为了尽可能高效地执行更新，
+我们会对前一次调用 `render` 方法返回的结果和新的调用结果进行区分，
+并生成一个要应用于 DOM
+的最小更改集合。
 
-> The data returned from `render` is neither a string nor a DOM node -- it's a
-> lightweight description of what the DOM should look like.
+> `render` 返回的数据既不是一串字符串也不是一个 DOM 节点 —— 而是一种表示
+> DOM 应该是什么样子的轻量化描述。
 
-We call this process **reconciliation**. Check out
-[this jsFiddle](http://jsfiddle.net/2h6th4ju/) to see an example of
-reconciliation in action.
+我们把这个过程称为**协调**。 查看
+[这个 jsFiddle](http://jsfiddle.net/2h6th4ju/)
+可以看到实际的协调示例。
 
-Because this re-render is so fast (around 1ms for TodoMVC), the developer
-doesn't need to explicitly specify data bindings. We've found this approach
-makes it easier to build apps.
+因为这样的重渲染实在太快了（对于 TodoMVC 而言大概就 1ms），
+所以开发者不需要显式地指定数据绑定。
+我们发现这种方式可以更轻松地构建应用程序。
 
-## HTML is just the beginning. {#html-is-just-the-beginning}
+## HTML 只是开始。 {/*html-is-just-the-beginning*/}
 
-Because React has its own lightweight representation of the document, we can do
-some pretty cool things with it:
+因为 React 有它自己对于文档的轻量化表示，
+所以我们可以用它做一些非常酷的事情：
 
-- Facebook has dynamic charts that render to `<canvas>` instead of HTML.
-- Instagram is a "single page" web app built entirely with React and
-  `Backbone.Router`. Designers regularly contribute React code with JSX.
-- We've built internal prototypes that run React apps in a web worker and use
-  React to drive **native iOS views** via an Objective-C bridge.
-- You can run React
-  [on the server](https://github.com/petehunt/react-server-rendering-example)
-  for SEO, performance, code sharing and overall flexibility.
-- Events behave in a consistent, standards-compliant way in all browsers
-  (including IE8) and automatically use
-  [event delegation](http://davidwalsh.name/event-delegate).
+- Facebook 有些动态的图表会渲染成 `<canvas>` 而不是 HTML。
+- Instagram 是一个完全用 React 和 `Backbone.Router` 构建的“单页”web 应用程序。
+  设计师经常使用 JSX 来提供 React 代码。
+- 我们已经构建了在 web worker 中运行 React 应用程序的内部原型，并且用
+  React 通过一个 Objective-C 桥接器来驱动 **原生 iOS 视图**。
+- 你可以
+  [在服务器上](https://github.com/petehunt/react-server-rendering-example)
+  运行 React 以获得 SEO、性能、代码共享和整体的灵活性。
+- 事件在所有浏览器（包括 IE8）中以一致的、符合标准的方式运行，
+  并且自动使用了
+  [事件委托](http://davidwalsh.name/event-delegate) 。
 
-Head on over to [https://reactjs.org](https://reactjs.org) to check out what we have
-built. Our documentation is geared towards building apps with the framework,
-but if you are interested in the nuts and bolts
-[get in touch](/support.html) with us!
+前往 [https://reactjs.org](https://reactjs.org) 可以查看我们已经构建的内容。
+我们的文档旨在用框架构建应用程序，
+但是如果你对具体细节感兴趣，
+请与我们[联系](/support.html)！
 
-Thanks for reading!
+感谢阅读！

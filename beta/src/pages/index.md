@@ -1,37 +1,36 @@
 ---
 id: home
-layout: Home
 title: React Docs Beta
 permalink: index.html
 ---
 
 <HomepageHero />
 
-## What is this site?
+## 这是什么网站? {/*what-is-this-site*/}
 
-We are rewriting the React documentation with a few differences:
+我们正在重写 React 的文档，但又有些差异：
 
-- All explanations are **written using Hooks** rather than classes.
-- We've added **interactive examples** and visual diagrams.
-- Guides include **challenges (with solutions!)** to check your understanding.
+- 所有的讲解都 **使用 Hook 进行编写**，而未使用类。
+- 我们增加了 **可交互的示例** 以及可视化图解。
+- 指南中增加了 **挑战（包含解决方案）** 以帮助你查验你的掌握情况。
 
-This beta website contains the current draft of the new docs.
+该站点目前还处于 beta 阶段，同时，相关文档也处于草案阶段。
 
-## This is a work in progress!
+## 这项工作仍在进行中 {/*this-is-a-work-in-progress*/}
 
-This is a **beta website**. There will be bugs, performance issues, and missing content.
+由于此站点仍处于 **beta 阶段**。可能会存在 bug，性能问题甚至是内容缺失等情况。
 
-## How much content is ready?
+## 有多少内容已就绪？ {/*how-much-content-is-ready*/}
 
-* [Learn React](/learn): ~70% finished.
-* [API Reference](/reference): ~5% finished.
+* [Learn React](/learn): 已完成近 70%。
+* [API Reference](/reference): 已完成近 5%。
 
-You can track our progress [on GitHub](https://github.com/reactjs/reactjs.org/issues/3308).
+你可以 [在 Github 上](https://github.com/reactjs/reactjs.org/issues/3308) 追踪我们的进度。
 
-## How can I provide feedback?
+## 如何提供反馈? {/*how-can-i-provide-feedback*/}
 
-Please use [this GitHub issue](https://github.com/reactjs/reactjs.org/issues/3308) or [this anonymous form](https://www.surveymonkey.co.uk/r/Y6GH986) for high-level feedback. Additionally, each page has a Feedback button in the corner. If you spot something that doesn't make sense, please tell us!
+请提交到 [这个 GitHub issue](https://github.com/reactjs/reactjs.org/issues/3308) 或 [填写这个匿名表格](https://www.surveymonkey.co.uk/r/Y6GH986) 进行反馈。此外，每个页面都设有反馈按钮。如果你发现任何不合理的地方，请告诉我们！
 
-## Will this site replace the main site?
+## 此站点是否会取代主站点？ {/*will-this-site-replace-the-main-site*/}
 
-We aim to switch this site to be the main one once we reach content parity with the [existing React documentation](https://reactjs.org/). The old React website will be archived at a subdomain so you'll still be able to access it. Old content links will redirect to the archived subdomain, which will have a notice about outdated content.
+我们的目标是，当此站点的内容与 [现有 React 文档](https://reactjs.org/) 一致时。就会把此站点切为主站，而旧的 React 官网将被归档到子域下，你仍可访问它。旧的内容链接将重定向到归档的子域中，其中会包含过时的提示。

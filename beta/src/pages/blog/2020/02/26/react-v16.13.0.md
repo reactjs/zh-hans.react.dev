@@ -1,30 +1,29 @@
 ---
 title: 'React v16.13.0'
-layout: Post
 author: [threepointone]
 redirect_from:
   - 'blog/2020/03/02/react-v16.13.0'
 ---
 
-Today we are releasing React 16.13.0. It contains bugfixes and new deprecation warnings to help prepare for a future major release.
+今天我们发布了 React 16.13.0。此版本修复了部分 bug 并添加了新的弃用警告，以助力接下来的主要版本。
 
-## New Warnings {#new-warnings}
+## 新的警告 {/*new-warnings*/}
 
-### Warnings for some updates during render {#warnings-for-some-updates-during-render}
+### Render 期间更新的警告 {/*warnings-for-some-updates-during-render*/}
 
-A React component should not cause side effects in other components during rendering.
+React 组件不应在 render 期间对其他组件产生副作用。
 
-It is supported to call `setState` during render, but [only for _the same component_](/docs/hooks-faq#how-do-i-implement-getderivedstatefromprops). If you call `setState` during a render on a different component, you will now see a warning:
+在 render 期间调用 `setState` 是被支持的，但是 [仅仅适用于*同一个组件*](/docs/hooks-faq#how-do-i-implement-getderivedstatefromprops)。 如果你在另一个组件 render 期间调用 `setState`，现在你将会看到一条警告。
 
 ```
 Warning: Cannot update a component from inside the function body of a different component.
 ```
 
-**This warning will help you find application bugs caused by unintentional state changes.** In the rare case that you intentionally want to change the state of another component as a result of rendering, you can wrap the `setState` call into `useEffect`.
+**这些警告将会帮助你找到应用中由意外的状态改变引起的 bug。** 在极少数情况下，由于渲染，你有意要更改另一个组件的状态，你可以将 `setState` 调用包装为  `useEffect`。
 
-### Warnings for conflicting style rules {#warnings-for-conflicting-style-rules}
+### 冲突的样式规则警告 {/*warnings-for-conflicting-style-rules*/}
 
-When dynamically applying a `style` that contains longhand and shorthand versions of CSS properties, particular combinations of updates can cause inconsistent styling. For example:
+当动态地应用包含了全写和简写的 `style` 版本的 CSS 属性时，特定的更新组合可能会导致样式不一致。例如：
 
 ```js
 <div
@@ -37,23 +36,23 @@ When dynamically applying a `style` that contains longhand and shorthand version
 </div>
 ```
 
-You might expect this `<div>` to always have a red background, no matter the value of `toggle`. However, on alternating the value of `toggle` between `true` and `false`, the background color start as `red`, then alternates between `transparent` and `blue`, [as you can see in this demo](https://codesandbox.io/s/suspicious-sunset-g3jub).
+你可能期待这个 `<div>` 总是拥有红色背景，不论 `toggle` 的值是什么。然而，在 `true` 和 `false`之间交替使用`toggle`时，背景色开始是 `red`，然后在 `transparent` 和 `blue`之间交替，[正如你能在这个 demo 中看到的](https://codesandbox.io/s/suspicious-sunset-g3jub)。
 
-**React now detects conflicting style rules and logs a warning.** To fix the issue, don't mix shorthand and longhand versions of the same CSS property in the `style` prop.
+**React 现在检测到冲突的样式规则并打印出警告**。要解决此问题，请不要在 `style` 属性中混合使用同一CSS属性的简写和全写版本。
 
-### Warnings for some deprecated string refs {#warnings-for-some-deprecated-string-refs}
+### 某些废弃字符串 ref 的警告 {/*warnings-for-some-deprecated-string-refs*/}
 
-[String Refs is an old legacy API](/docs/refs-and-the-dom#legacy-api-string-refs) which is discouraged and is going to be deprecated in the future:
+[字符串 ref 是过时的 API](/docs/refs-and-the-dom#legacy-api-string-refs) 这是不可取的，将来将被弃用：
 
 ```js
 <Button ref="myRef" />
 ```
 
-(Don't confuse String Refs with refs in general, which **remain fully supported**.)
+(不要将字符串 ref 与一般的 ref 混淆，后者**仍然完全受支持**。)
 
-In the future, we will provide an automated script (a "codemod") to migrate away from String Refs. However, some rare cases can't be migrated automatically. This release adds a new warning **only for those cases** in advance of the deprecation.
+在将来，我们将提供一个自动脚本（“codemod”），以从字符串 ref 中迁移。然而，一些罕见的案例不能自动迁移。此版本在弃用之前添加了一个新的警告**仅适用于那些情况**。
 
-For example, it will fire if you use String Refs together with the Render Prop pattern:
+例如，如果将字符串 ref 与 Render Prop 模式一起使用，则它将触发：
 
 ```jsx
 class ClassWithRenderProp extends React.Component {
@@ -74,9 +73,9 @@ class ClassParent extends React.Component {
 }
 ```
 
-Code like this often indicates bugs. (You might expect the ref to be available on `ClassParent`, but instead it gets placed on `ClassWithRenderProp`).
+这样的代码通常暗含 bug。（你可能希望 ref 在 `ClassParent` 上可用，但是它被放在 `ClassWithRenderProp` 上）。
 
-**You most likely don't have code like this**. If you do and it is intentional, convert it to [`React.createRef()`](/docs/refs-and-the-dom#creating-refs) instead:
+**你很可能没有这样的代码**。如果是有意为之，请将其转换为 [`React.createRef()`](/docs/refs-and-the-dom#creating-refs)：
 
 ```jsx
 class ClassWithRenderProp extends React.Component {
@@ -102,75 +101,75 @@ class ClassParent extends React.Component {
 
 > Note
 >
-> To see this warning, you need to have the [babel-plugin-transform-react-jsx-self](https://babeljs.io/docs/en/babel-plugin-transform-react-jsx-self) installed in your Babel plugins. It must _only_ be enabled in development mode.
+> 要查看此警告，你需要在你的 Babel plugins 中安装 [babel-plugin-transform-react-jsx-self](https://babeljs.io/docs/en/babel-plugin-transform-react-jsx-self)。它必须 __只__ 在开发模式下启用。 
 >
-> If you use Create React App or have the "react" preset with Babel 7+, you already have this plugin installed by default.
+> 如果你使用 Create React App 或者用 babel 7+ 的 React preset，那么默认情况下已经安装了这个插件。
 
-### Deprecating `React.createFactory` {#deprecating-reactcreatefactory}
+### 弃用 `React.createFactory` {/*deprecating-reactcreatefactory*/}
 
-[`React.createFactory`](/docs/react-api#createfactory) is a legacy helper for creating React elements. This release adds a deprecation warning to the method. It will be removed in a future major version.
+[`React.createFactory`](/docs/react-api#createfactory)为 React 创建一个帮助器元素。此版本向该方法添加了一个弃用警告。它将在未来的主要版本中删除。
 
-Replace usages of `React.createFactory` with regular JSX. Alternately, you can copy and paste this one-line helper or publish it as a library:
+把 `React.createFactory` 替换为普通的 JSX 。或者可以复制并粘贴此单行辅助对象或将其发布为库：
 
 ```jsx
 let createFactory = (type) => React.createElement.bind(null, type);
 ```
 
-It does exactly the same thing.
+它的作用完全相同。
 
-### Deprecating `ReactDOM.unstable_createPortal` in favor of `ReactDOM.createPortal` {#deprecating-reactdomunstable_createportal-in-favor-of-reactdomcreateportal}
+### 弃用 `ReactDOM.unstable_createPortal` 推荐 `ReactDOM.createPortal` {/*deprecating-reactdomunstable_createportal-in-favor-of-reactdomcreateportal*/}
 
-When React 16 was released, `createPortal` became an officially supported API.
+当 React 16 发布时，`createPortal` 成为一个官方支持的 API。
 
-However, we kept `unstable_createPortal` as a supported alias to keep the few libraries that adopted it working. We are now deprecating the unstable alias. Use `createPortal` directly instead of `unstable_createPortal`. It has exactly the same signature.
+但是，我们保留了 `unstable_createPortal` 作为受支持的别名，以使采用它的少数库正常工作。我们现在反对使用 unstable 别名。直接使用 `createPortal` 而不是 `unstable_createPortal`。它有完全相同的签名。
 
-## Other Improvements {#other-improvements}
+## 其他改进 {/*other-improvements*/}
 
-### Component stacks in hydration warnings {#component-stacks-in-hydration-warnings}
+### Hydration 过程中组件堆栈的警告 {/*component-stacks-in-hydration-warnings*/}
 
-React adds component stacks to its development warnings, enabling developers to isolate bugs and debug their programs. This release adds component stacks to a number of development warnings that didn't previously have them. As an example, consider this hydration warning from the previous versions:
+React 将组件堆栈添加到其开发警告中，使开发人员能够隔离 bug 并调试他们的程序。此版本将组件堆栈添加到许多以前没有的开发警告中。举个例子，考虑一下以前版本中的 hydration 警告：
 
-![A screenshot of the console warning, simply stating the nature of the hydration mismatch: "Warning: Expected server HTML to contain a matching div in div."](/images/blog/react-v16.13.0/hydration-warning-before.png)
+![控制台警告的屏幕截图，简单地说明 hydration 不匹配的性质："Warning: Expected server HTML to contain a matching div in div."](/images/blog/react-v16.13.0/hydration-warning-before.png)
 
-While it's pointing out an error with the code, it's not clear where the error exists, and what to do next. This release adds a component stack to this warning, which makes it look like this:
+虽然它指出了代码中的一个错误，但不清楚错误在哪里存在，以及下一步该怎么做。此版本向此警告添加了一个组件堆栈，使其看起来如下所示：
 
-![A screenshot of the console warning, stating the nature of the hydration mismatch, but also including a component stack : "Warning: Expected server HTML to contain a matching div in div, in div (at pages/index.js:4)..."](/images/blog/react-v16.13.0/hydration-warning-after.png)
+![控制台警告的屏幕截图，说明 hydration 不匹配的性质，但也包括组件堆栈："Warning: Expected server HTML to contain a matching div in div, in div (at pages/index.js:4)..."](/images/blog/react-v16.13.0/hydration-warning-after.png)
 
-This makes it clear where the problem is, and lets you locate and fix the bug faster.
+这样可以清楚地看出问题所在，并让你更快地找到并修复错误。
 
-### Notable bugfixes {#notable-bugfixes}
+### 值得注意的错误修复 {/*notable-bugfixes*/}
 
-This release contains a few other notable improvements:
+此版本包含其他一些值得注意的改进：
 
-- In Strict Development Mode, React calls lifecycle methods twice to flush out any possible unwanted side effects. This release adds that behaviour to `shouldComponentUpdate`. This shouldn't affect most code, unless you have side effects in `shouldComponentUpdate`. To fix this, move the code with side effects into `componentDidUpdate`.
+- 在严格的开发模式下，React 调用生命周期方法两次，以清除任何可能不需要的副作用。此版本将此行为添加到 `shouldComponentUpdate` 中。这不会影响大多数代码，除非在 `shouldComponentUpdate` 中有副作用。要解决此问题，请将具有副作用的代码移到 `componentDidUpdate` 中。
 
-- In Strict Development Mode, the warnings for usage of the legacy context API didn't include the stack for the component that triggered the warning. This release adds the missing stack to the warning.
+- 在严格开发模式下，使用遗留上下文 API 的警告不包括触发警告的组件堆栈。此版本将丢失的堆栈添加到警告中。
 
-- `onMouseEnter` now doesn't trigger on disabled `<button>` elements.
+- `onMouseEnter` 现在在被禁用的 `<button>` 对象上不能被触发。
 
-- ReactDOM was missing a `version` export since we published v16. This release adds it back. We don't recommend using it in your application logic, but it's useful when debugging issues with mismatching / multiple versions of ReactDOM on the same page.
+- 自从我们发布 v16 以来，ReactDOM 缺少一个 `version` 导出。这个版本又添加了它。我们不建议在应用程序逻辑中使用它，但是在调试同一页面上的 ReactDOM 的不匹配/多个版本时，它非常有用。
 
-We’re thankful to all the contributors who helped surface and fix these and other issues. You can find the full changelog [below](#changelog).
+我们感谢所有帮助揭示和解决这些和其他问题的贡献者。你可以找到完整的变更日志 [如下](#changelog)。
 
-## Installation {#installation}
+## 安装 {/*installation*/}
 
-### React {#react}
+### React {/*react*/}
 
-React v16.13.0 is available on the npm registry.
+React v16.13.0 现在在 npm 库中已经可用。
 
-To install React 16 with Yarn, run:
+用 Yarn 安装 React 16，运行：
 
 ```bash
 yarn add react@^16.13.0 react-dom@^16.13.0
 ```
 
-To install React 16 with npm, run:
+用 npm 安装 React 16，运行：
 
 ```bash
 npm install --save react@^16.13.0 react-dom@^16.13.0
 ```
 
-We also provide UMD builds of React via a CDN:
+我们也通过 CDN 提供了 React 的 UMD 版本：
 
 ```html
 <script
@@ -183,34 +182,34 @@ We also provide UMD builds of React via a CDN:
 ></script>
 ```
 
-Refer to the documentation for [detailed installation instructions](/docs/installation).
+参考这篇文档 [详细安装说明](/docs/installation)。
 
-## Changelog {#changelog}
+## 变更日志 {/*changelog*/}
 
-### React {#react}
+### React {/*react*/}
 
-- Warn when a string ref is used in a manner that's not amenable to a future codemod ([@lunaruan](https://github.com/lunaruan) in [#17864](https://github.com/facebook/react/pull/17864))
-- Deprecate `React.createFactory()` ([@trueadm](https://github.com/trueadm) in [#17878](https://github.com/facebook/react/pull/17878))
+- 当字符串 ref 的使用方式不符合将来的代码模式时发出警告 ([@lunaruan](https://github.com/lunaruan) in [#17864](https://github.com/facebook/react/pull/17864))
+- 弃用 `React.createFactory()` ([@trueadm](https://github.com/trueadm) in [#17878](https://github.com/facebook/react/pull/17878))
 
-### React DOM {#react-dom}
+### React DOM {/*react-dom*/}
 
-- Warn when changes in `style` may cause an unexpected collision ([@sophiebits](https://github.com/sophiebits) in [#14181](https://github.com/facebook/react/pull/14181), [#18002](https://github.com/facebook/react/pull/18002))
-- Warn when a function component is updated during another component's render phase ([@acdlite](<(https://github.com/acdlite)>) in [#17099](https://github.com/facebook/react/pull/17099))
-- Deprecate `unstable_createPortal` ([@trueadm](https://github.com/trueadm) in [#17880](https://github.com/facebook/react/pull/17880))
-- Fix `onMouseEnter` being fired on disabled buttons ([@AlfredoGJ](https://github.com/AlfredoGJ) in [#17675](https://github.com/facebook/react/pull/17675))
-- Call `shouldComponentUpdate` twice when developing in `StrictMode` ([@bvaughn](https://github.com/bvaughn) in [#17942](https://github.com/facebook/react/pull/17942))
-- Add `version` property to ReactDOM ([@ealush](https://github.com/ealush) in [#15780](https://github.com/facebook/react/pull/15780))
-- Don't call `toString()` of `dangerouslySetInnerHTML` ([@sebmarkbage](https://github.com/sebmarkbage) in [#17773](https://github.com/facebook/react/pull/17773))
-- Show component stacks in more warnings ([@gaearon](https://github.com/gaearon) in [#17922](https://github.com/facebook/react/pull/17922), [#17586](https://github.com/facebook/react/pull/17586))
+- `style` 中的更改可能导致意外冲突时发出警告 ([@sophiebits](https://github.com/sophiebits) 在 [#14181](https://github.com/facebook/react/pull/14181)，[#18002](https://github.com/facebook/react/pull/18002))
+- 在另一个组件的 render 阶段更新 function 组件时发出警告 ([@acdlite](<(https://github.com/acdlite)>) 在 [#17099](https://github.com/facebook/react/pull/17099))
+- 弃用 `unstable_createPortal` ([@trueadm](https://github.com/trueadm) 在 [#17880](https://github.com/facebook/react/pull/17880))
+- 修复 `onMouseEnter` 在被禁用的按钮上被触发 ([@AlfredoGJ](https://github.com/AlfredoGJ) 在 [#17675](https://github.com/facebook/react/pull/17675))
+- 在 `StrictMode` 下调用 `shouldComponentUpdate` 两次 ([@bvaughn](https://github.com/bvaughn) 在 [#17942](https://github.com/facebook/react/pull/17942))
+- 增加 ReactDOM `version` 属性 ([@ealush](https://github.com/ealush) 在 [#15780](https://github.com/facebook/react/pull/15780))
+- 不要调用 `dangerouslySetInnerHTML` 的 `toString()` 方法 ([@sebmarkbage](https://github.com/sebmarkbage) 在 [#17773](https://github.com/facebook/react/pull/17773))
+- 在组件堆栈中展示更多警告 ([@gaearon](https://github.com/gaearon) 在 [#17922](https://github.com/facebook/react/pull/17922)，[#17586](https://github.com/facebook/react/pull/17586))
 
-### Concurrent Mode (Experimental) {#concurrent-mode-experimental}
+### 并发模式（实验） {/*concurrent-mode-experimental*/}
 
-- Warn for problematic usages of `ReactDOM.createRoot()` ([@trueadm](https://github.com/trueadm) in [#17937](https://github.com/facebook/react/pull/17937))
-- Remove `ReactDOM.createRoot()` callback params and added warnings on usage ([@bvaughn](https://github.com/bvaughn) in [#17916](https://github.com/facebook/react/pull/17916))
-- Don't group Idle/Offscreen work with other work ([@sebmarkbage](https://github.com/sebmarkbage) in [#17456](https://github.com/facebook/react/pull/17456))
-- Adjust `SuspenseList` CPU bound heuristic ([@sebmarkbage](https://github.com/sebmarkbage) in [#17455](https://github.com/facebook/react/pull/17455))
-- Add missing event plugin priorities ([@trueadm](https://github.com/trueadm) in [#17914](https://github.com/facebook/react/pull/17914))
-- Fix `isPending` only being true when transitioning from inside an input event ([@acdlite](https://github.com/acdlite) in [#17382](https://github.com/facebook/react/pull/17382))
-- Fix `React.memo` components dropping updates when interrupted by a higher priority update ([@acdlite](https://github.com/acdlite) in [#18091](https://github.com/facebook/react/pull/18091))
-- Don't warn when suspending at the wrong priority ([@gaearon](https://github.com/gaearon) in [#17971](https://github.com/facebook/react/pull/17971))
-- Fix a bug with rebasing updates ([@acdlite](https://github.com/acdlite) and [@sebmarkbage](https://github.com/sebmarkbage) in [#17560](https://github.com/facebook/react/pull/17560), [#17510](https://github.com/facebook/react/pull/17510), [#17483](https://github.com/facebook/react/pull/17483), [#17480](https://github.com/facebook/react/pull/17480))
+- 警告有问题的用法 `ReactDOM.createRoot()` ([@trueadm](https://github.com/trueadm) 在 [#17937](https://github.com/facebook/react/pull/17937))
+- 移除 `ReactDOM.createRoot()` 回调传参并且在用法上增加了警告 ([@bvaughn](https://github.com/bvaughn) 在 [#17916](https://github.com/facebook/react/pull/17916))
+- 不要将空闲/屏幕外的工作与其他工作分组 ([@sebmarkbage](https://github.com/sebmarkbage) 在 [#17456](https://github.com/facebook/react/pull/17456))
+- 调整 `SuspenseList` CPU 边界启发式 ([@sebmarkbage](https://github.com/sebmarkbage) 在 [#17455](https://github.com/facebook/react/pull/17455))
+- 增加丢失事件插件属性 ([@trueadm](https://github.com/trueadm) 在 [#17914](https://github.com/facebook/react/pull/17914))
+- 修复 `isPending` 仅当从输入事件内部转换时为 true ([@acdlite](https://github.com/acdlite) 在 [#17382](https://github.com/facebook/react/pull/17382))
+- 修复 `React.memo` 组件在被更高优先级的更新中断时删除更新 ([@acdlite](https://github.com/acdlite) 在 [#18091](https://github.com/facebook/react/pull/18091))
+- 以错误的优先级暂停时不发出警告 ([@gaearon](https://github.com/gaearon) 在 [#17971](https://github.com/facebook/react/pull/17971))
+- 用重定基更新修复一个 bug ([@acdlite](https://github.com/acdlite) 和 [@sebmarkbage](https://github.com/sebmarkbage) 在 [#17560](https://github.com/facebook/react/pull/17560)，[#17510](https://github.com/facebook/react/pull/17510)，[#17483](https://github.com/facebook/react/pull/17483)，[#17480](https://github.com/facebook/react/pull/17480))
