@@ -6,22 +6,22 @@ translators:
 
 <Intro>
 
-对于那些需要更新多个状态的组件来说，过于分散的事件处理程序可能会令人不知所措。对于这种情况，你可以将组件外部的所有状态更新逻辑整合到一个称为 `reducer` 的函数中。
+对于拥有许多状态更新逻辑的组件来说，过于分散的事件处理程序可能会令人不知所措。对于这种情况，你可以将组件的所有状态更新逻辑整合到一个外部函数中，这个函数叫作 “reducer”。
 
 </Intro>
 
 <YouWillLearn>
 
 - 什么是 reducer 函数
-- 如何使用 `useReducer` 重构 `useState`
-- 什么时候用 reducer
+- 如何将 `useState` 重构成 `useReducer`
+- 什么时候使用 reducer
 - 如何编写一个好的 reducer
 
 </YouWillLearn>
 
 ## 使用 reducer 整合状态逻辑 {/*consolidate-state-logic-with-a-reducer*/}
 
-随着组件复杂度的增加，你将很难一眼看清组件进行状态更新的实现方式。例如，下面的 `TaskBoard` 组件有一个数组类型的状态 `task`，并通过三个不同的事件处理程序来实现添加、删除和修改:
+随着组件复杂度的增加，你将很难一眼看清所有组件的状态更新逻辑。例如，下面的 `TaskBoard` 组件有一个数组类型的状态 `tasks`，并通过三个不同的事件处理程序来实现添加、删除和修改：
 
 <Sandpack>
 
@@ -182,7 +182,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-它的每个事件处理程序都通过 `setTasks` 来更新状态。随着这个组件的不断迭代，其中的状态逻辑数量也在增加。为了降低这种复杂性并将所有逻辑保持在一个容易访问的地方，你可以将该状态逻辑移到组件之外的一个称为 **reducer** 的函数中。
+这个组件的每个事件处理程序都通过 `setTasks` 来更新状态。随着这个组件的不断迭代，其状态逻辑也会越来越多。为了降低复杂度，且让所有逻辑都可以存放在一个易于理解的地方，你可以将这些状态逻辑移到组件之外的一个称为 **reducer** 的函数中。
 
 Reducer 是处理状态的另一种方式。你可以通过三个步骤从 `useState` 迁移到 `useReducer`：
 
@@ -1796,7 +1796,7 @@ textarea {
 
 这样当你点击 “发送” 按钮时就会清空输入框。
 
-然而，从用户的角度来看，发送消息与编辑字段是不同的操作。为了体现这一点，你可以创建一个名为 `sent_message` 的 *新动作*，并在 reducer 中单独处理：
+然而，从用户的角度来看，发送消息与编辑字段是不同的操作。为了体现这一点，你可以创建一个名为 `sent_message` 的新 *action*，并在 reducer 中单独处理：
 
 <Sandpack>
 
@@ -1966,13 +1966,13 @@ textarea {
 
 结果虽然是一样的。但请记住，action 的类型应该准确描述 “用户做了什么”，而不是 “你希望状态如何改变”。这使得以后添加更多特性变的容易。
 
-在任何一种解决方案中，最重要的是你 **不要** 把 `alert` 放置在 reducer 中。reducer 必须是一个纯函数——它应该只计算下一个状态。而不应该 “做” 其它事情，包括向用户显示消息。这应该在事件处理程序中处理。（为了便于捕获这样的错误，React 会在严格模式下多次调用你的 reducer。这就是为什么当你在 reducer 中加入一个 alert，它会触发两次的原因。）
+不管是哪一种解决方案，最重要的是你 **不要** 把 `alert` 放置在 reducer 中。reducer 必须是一个纯函数——它应该只计算下一个状态。而不应该 “做” 其它事情，包括向用户显示消息。这应该在事件处理程序中处理。（为了便于捕获这样的错误，React 会在严格模式下多次调用你的 reducer。这就是为什么当你在 reducer 中加入一个 alert，它会触发两次的原因。）
 
 </Solution>
 
 ### 切换 tab 时重置输入框内容 {/*restore-input-values-when-switching-between-tabs*/}
 
-In this example, switching between different recipients always clears the text input:
+在这个示例中，切换收件人时总是会清空输入框。
 
 ```js
 case 'changed_selection': {
@@ -2381,7 +2381,7 @@ textarea {
 
 </Sandpack>
 
-显然，为了实现不同行为，你不需要修改任何事件处理程序。但如果没使用 reducer 的话，你不得不在每个事件处理程序中去更新状态。
+显然，你不再需要通过修改任何事件处理程序来实现不同的行为。但如果没使用 reducer 的话，你不得不在每个事件处理程序中去更新状态。
 
 </Solution>
 
@@ -2600,7 +2600,7 @@ textarea {
 
 <Solution>
 
-派发一个 action 去调用一个具有当前 state 和 action 的 reducer，并将结果存储为下一个 state。下面是它在代码中的样子：
+dispatch 一个 action 去调用一个具有当前 state 和 action 的 reducer，并将结果存储为下一个 state。下面是它在代码中的样子：
 
 <Sandpack>
 
