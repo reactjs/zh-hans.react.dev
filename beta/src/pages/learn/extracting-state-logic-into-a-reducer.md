@@ -1,5 +1,5 @@
 ---
- title: 把状态逻辑移到 Reducer 中
+title: 把状态逻辑移到 Reducer 中
 translators:
   - qinhua
 ---
