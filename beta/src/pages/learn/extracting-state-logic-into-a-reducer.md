@@ -2,6 +2,7 @@
 title: 把状态逻辑移到 Reducer 中
 translators:
   - qinhua
+  - yyyang1996
 ---
 
 <Intro>
@@ -184,7 +185,7 @@ ul, li { margin: 0; padding: 0; }
 
 这个组件的每个事件处理程序都通过 `setTasks` 来更新状态。随着这个组件的不断迭代，其状态逻辑也会越来越多。为了降低复杂度，且让所有逻辑都可以存放在一个易于理解的地方，你可以将这些状态逻辑移到组件之外的一个称为 **reducer** 的函数中。
 
-Reducer 是处理状态的另一种方式。你可以通过三个步骤从 `useState` 迁移到 `useReducer`：
+Reducer 是处理状态的另一种方式。你可以通过三个步骤将 `useState` 迁移到 `useReducer`：
 
 1. 将设置状态的逻辑 **修改** 成 dispatch 一个 action；
 2. **编写** 一个 reducer 函数；
@@ -226,7 +227,7 @@ function handleDeleteTask(taskId) {
 * `handleChangeTask(task)` 在用户切换任务或点击 “保存” 时被调用。
 * `handleDeleteTask(taskId)` 在用户点击 “删除” 时被调用。
 
-使用 reducers 管理状态与直接设置状态略有不同。它不是通过设置状态告诉 React “要做什么”，而是通过从事件处理程序派发 “动作” 来指明 “用户刚刚做了什么”。(状态更新逻辑在其他地方！)
+使用 reducers 管理状态与直接设置状态略有不同。它不是通过设置状态告诉 React “要做什么”，而是通过事件处理程序 dispatch 一个 “action” 来指明 “用户刚刚做了什么”。(状态更新逻辑在其他地方！)
 因此，我们不再通过事件处理器直接“设置任务”，而是 dispatch 一个 “添加/修改/删除任务” 的 action。这更加符合用户的思维。
 
 ```js
@@ -873,11 +874,11 @@ ul, li { margin: 0; padding: 0; }
 
 ## `useState` 和 `useReducer` 的对比 {/*comparing-usestate-and-usereducer*/}
 
-Reducers 并非没有缺点！你可以从这些角度去对比它们：
+Reducers 并非没有缺点！以下是比较它们的几种方法：
 
 - **代码体积：** 通常，在使用 `useState` 时，一开始只需要编写少量代码。而 `useReducer` 必须提前编写 reducer 函数和需要调度的 actions。但是，当多个事件处理程序以相似的方式修改 state 时，`useReducer` 可以减少代码量。
-- **可读性：** 当状态更新逻辑足够简单时，`useState` 的可读性还行。但是，一旦逻辑变得复杂起来，它们会使组件变得臃肿且难以扫描。在这种情况下，`useReducer` 允许你将状态更新逻辑与事件处理程序分离开来。
-- **可调试性：** 当使用 `useState` 出现问题时, 你很难发现具体原因以及为什么。 而使用 `useReducer` 时， 你可以在 reducer 函数中通过打印日志的方式来观察每个状态的更新，以及为什么要更新 (来自哪个 `action`)。 如果所有 `action` 都没问题，你就知道问题出在了 reducer 本身的逻辑中。 然而，与使用 `useState` 相比，你必须单步执行更多的代码。
+- **可读性：** 当状态更新逻辑足够简单时，`useState` 的可读性还行。但是，一旦逻辑变得复杂起来，它们会使组件变得臃肿且难以阅读。在这种情况下，`useReducer` 允许你将状态更新逻辑与事件处理程序分离开来。
+- **可调试性：** 当使用 `useState` 出现问题时, 你很难发现具体原因以及为什么。 而使用 `useReducer` 时， 你可以在 reducer 函数中通过打印日志的方式来观察每个状态的更新，以及为什么要更新（来自哪个 `action`）。 如果所有 `action` 都没问题，你就知道问题出在了 reducer 本身的逻辑中。 然而，与使用 `useState` 相比，你必须单步执行更多的代码。
 - **可测试性：** reducer 是一个不依赖于组件的纯函数。这就意味着你可以单独对它进行测试。一般来说，我们最好是在真实环境中测试组件，但对于复杂的状态更新逻辑，针对特定的初始状态和 `action`，断言 reducer 返回的特定状态会很有帮助。
 - **个人偏好：** 并不是所有人都喜欢用 reducer，没关系，这是个人偏好问题。你可以随时在 `useState` 和 `useReducer` 之间切换，它们能做的事情是一样的！
 
@@ -888,7 +889,7 @@ Reducers 并非没有缺点！你可以从这些角度去对比它们：
 编写 `reducers` 时最好牢记以下两点：
 
 - **reducers 必须是纯净的。** 这一点和 [状态更新函数](/learn/queueing-a-series-of-state-updates) 是相似的，`reducers` 在是在渲染时运行的！（actions 会排队直到下一次渲染)。 这就意味着 `reducers` [必须纯净](/learn/keeping-components-pure)，即当输入相同时，输出也是相同的。它们不应该包含异步请求、定时器或者任何副作用（对组件外部有影响的操作）。它们应该以不可变值的方式去更新 [对象](/learn/updating-objects-in-state) 和 [数组](/learn/updating-arrays-in-state)。
-- **actions 用来述 “发生了什么” ，而不是 “做什么”** 举个例子，如果用户在一个由 `reducer` 管理的表单（包含五个表单项）中点击了 `重置按钮`，那么派发一个 `reset_form` 操作比派发五个单独的 `set_field` 操作将更加合理。如果你在一个 `reducer` 中打印了所有的 `action` 日志，那么这个日志应该是很清晰的，它能让你以某种步骤复现已发生的交互或响应。这对代码调试很有帮助！
+- **actions 用来描述 “发生了什么” ，而不是 “做什么”。** 举个例子，如果用户在一个由 `reducer` 管理的表单（包含五个表单项）中点击了 `重置按钮`，那么 dispatch 一个 `reset_form` 的 action 比 dispatch 五个单独的 `set_field` 的 action 更加合理。如果你在一个 `reducer` 中打印了所有的 `action` 日志，那么这个日志应该是很清晰的，它能让你以某种步骤复现已发生的交互或响应。这对代码调试很有帮助！
 
 ## 使用 Immer 简化 reducers {/*writing-concise-reducers-with-immer*/}
 
@@ -1136,7 +1137,7 @@ case 'changed_selection': {
 }
 ```
 
-这表示你的 `action` 对象应该有一个 `type: 'changed_selection'`。同时你也可以看到 `action.contactId` 被使用到了，所以你需要传入一个 `contactId` 属性到你的 action 对象中。
+这表示你的 `action` 对象应该有一个 `type: 'changed_selection'`。同时你也可以看到代码中用到了 `action.contactId`，所以你需要传入一个 `contactId` 属性到你的 action 对象中。
 
 </Hint>
 
@@ -1528,7 +1529,7 @@ export function messengerReducer(
   state,
   action
 ) {
-    switch (action.type) {
+  switch (action.type) {
     case 'changed_selection': {
       return {
         ...state,
@@ -1985,7 +1986,7 @@ case 'changed_selection': {
 
 这是因为你不希望在多个收件人之间共享单个邮件草稿。但如果你的应用程序能单独 “记住” 每个联系人的草稿，并在你切换联系人时恢复，那就更好了。
 
-你的任务是改变状态的组织形式，以便能记住 _每个联系人_ 的消息草稿。你需要对 reducer、初始状态和组件进行一些修改。
+你的任务是改变状态的组织形式，以便能记住 *每个联系人* 的消息草稿。你需要对 reducer、初始状态和组件进行一些修改。
 
 <Hint>
 
@@ -2001,7 +2002,7 @@ export const initialState = {
 };
 ```
 
- 这种 `[key]: value` [计算属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names) 可以帮你更新 `messages` 对象：
+这种 `[key]: value` [计算属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names) 可以帮你更新 `messages` 对象：
 
 ```js
 {
@@ -2387,7 +2388,7 @@ textarea {
 
 ### 从零开始实现 `useReducer` {/*implement-usereducer-from-scratch*/}
 
-在前面的例子中，你从 React 中导入了 `useReducer` 钩子。这一次，你将自己实现 `useReducer` 钩子。这里有一个模板，你可以从它开始。它不应该超过 10 行代码。
+在前面的例子中，你从 React 中导入了 `useReducer` Hook。现在，你将学习自己实现 `useReducer` Hook。你可以从这个模板开始，它不会超过 10 行代码。
 
 为了验证你的修改，试着在输入框中输入文字或选择联系人。
 
@@ -2568,7 +2569,7 @@ export default function Chat({
       <button onClick={() => {
         alert(`正在发送 "${message}" 到 ${contact.email}`);
         dispatch({
-           type: 'sent_message',
+          type: 'sent_message',
         });
       }}>发送到 {contact.email}</button>
     </section>
@@ -2800,7 +2801,7 @@ function dispatch(action) {
 }
 ```
 
-这是因为被派发的 actions 在下一次渲染之前都是处于排队状态的，[和更新函数类似](/learn/queueing-a-series-of-state-updates)。
+这是因为被派发的 actions 在下一次渲染之前都是处于排队状态的，这和 [状态更新函数](/learn/queueing-a-series-of-state-updates) 类似。
 
 </Solution>
 
