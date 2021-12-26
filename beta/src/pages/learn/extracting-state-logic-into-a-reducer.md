@@ -186,11 +186,11 @@ ul, li { margin: 0; padding: 0; }
 
 Reducer 是处理状态的另一种方式。你可以通过三个步骤从 `useState` 迁移到 `useReducer`：
 
-1. 将设置状态的相关逻辑 **移动** 到派发操作中；
+1. 将设置状态的逻辑 **修改** 成 dispatch 一个 action；
 2. **编写** 一个 reducer 函数；
 3. 在你的组件中 **使用** reducer。
 
-### 第 1 步: 将设置状态的相关逻辑移动到派发操作中 {/*step-1-move-from-setting-state-to-dispatching-actions*/}
+### 第 1 步: 将设置状态的逻辑修改成 dispatch 一个 action {/*step-1-move-from-setting-state-to-dispatching-actions*/}
 
 你的事件处理程序目前是通过设置状态来实现逻辑的：
 
@@ -227,7 +227,7 @@ function handleDeleteTask(taskId) {
 * `handleDeleteTask(taskId)` 在用户点击 “删除” 时被调用。
 
 使用 reducers 管理状态与直接设置状态略有不同。它不是通过设置状态告诉 React “要做什么”，而是通过从事件处理程序派发 “动作” 来指明 “用户刚刚做了什么”。(状态更新逻辑在其他地方！)
-因此，不是通过事件处理器“设置任务”，而是调度一个 “添加/修改/删除任务” 的动作。这更加符合用户的思维。
+因此，我们不再通过事件处理器直接“设置任务”，而是 dispatch 一个 “添加/修改/删除任务” 的 action。这更加符合用户的思维。
 
 ```js
 function handleAddTask(text) {
@@ -253,7 +253,7 @@ function handleDeleteTask(taskId) {
 }
 ```
 
-你传递给 `dispatch` 的对象叫做 "action:"
+你传递给 `dispatch` 的对象叫做 "action"：
 
 ```js {3-7}
 function handleDeleteTask(taskId) {
@@ -267,10 +267,10 @@ function handleDeleteTask(taskId) {
 }
 ```
 
-它是一个普通的 JavaScript 对象。里面放什么由你决定，但通常它应该至少包含 *事件发生* 的信息。（你将在后面的步骤中把它添加到 `dispatch` 函数中。）
+它是一个普通的 JavaScript 对象。它的结构是由你决定的，但通常来说，它应该至少包含可以表明 *发生了什么事情* 的信息。（在后面的步骤中，你将会学习如何添加一个 `dispatch` 函数。）
 <Convention conventionFor="action objects">
 
-action 对象可以有多种形式。按照约定，通常给 `type` 字段一个字符串来描述发生了什么，并通过其它字段传递附加信息。`type` 是特定于组件的，所以，在这个例子中 `added` 和 `addded_task` 都可以。选一个能描述清楚事情的名字！
+action 对象可以有多种结构。按照惯例，我们通常会添加一个字符串类型的 `type` 字段来描述发生了什么，并通过其它字段传递额外的信息。`type` 是特定于组件的，在这个例子中 `added` 和 `addded_task` 都可以。选一个能描述清楚发生的事件的名字！
 
 ```js
 dispatch({
@@ -284,11 +284,11 @@ dispatch({
 
 ### 第 2 步: 编写一个 reducer 函数 {/*step-2-write-a-reducer-function*/}
 
-reducer 函数就是你放置状态逻辑的地方。它接受两个参数，当前 state 和 action 对象，并返回下一个 state：
+reducer 函数就是你放置状态逻辑的地方。它接受两个参数，分别为当前 state 和 action 对象，并且返回的是更新后的 state：
 
 ```js
 function yourReducer(state, action) {
-  // 给 React 返回下一个状态
+  // 给 React 返回更新后的状态
 }
 ```
 
@@ -329,7 +329,7 @@ function tasksReducer(tasks, action) {
 > 由于 `reducer` 函数接受 `state`（tasks）作为参数，因此你可以 **在组件之外声明它**。**这减少了代码的缩进级别，提升了代码的可读性。
 <Convention conventionFor="reducer functions">
 
-上面的代码使用了 `if/else` 语句，但是在 reducers 中使用 [switch 语句](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/switch) 是一种约定。结果是相同的，但 `switch` 语句读起来一目了然。我们将在本文档的后面部分像这样使用它们：
+上面的代码使用了 `if/else` 语句，但是在 reducers 中使用 [switch 语句](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/switch) 是一种惯例。两种方式结果是相同的，但 `switch` 语句读起来一目了然。在本文档的后面部分我们会像这样使用：
 
 ```js
 function tasksReducer(tasks, action) {
@@ -360,9 +360,9 @@ function tasksReducer(tasks, action) {
 }
 ```
 
-我们建议将每个 `case` 块包装到 `{` 和 `}` 花括号中，这样在不同 `case` 中声明的变量就不会互相冲突。此外，`case` 通常应该以 `return` 结尾。如果你忘了 `return`，代码就会 `进入` 到下一个 `case`，这就会导致错误!
+我们建议将每个 `case` 块包装到 `{` 和 `}` 花括号中，这样在不同 `case` 中声明的变量就不会互相冲突。此外，`case` 通常应该以 `return` 结尾。如果你忘了 `return`，代码就会 `进入` 到下一个 `case`，这就会导致错误！
 
-如果你还不熟悉 `switch` 语句，可以使用 `if/else`。
+如果你还不熟悉 `switch` 语句，使用 `if/else` 也是可以的。
 
 </Convention>
 
@@ -370,9 +370,9 @@ function tasksReducer(tasks, action) {
 <DeepDive title="为什么叫它 reducer 呢？">
 
 
-尽管 `reducer` 可以 “减少” 组件内的代码量，但它实际上是以你可以在数组上执行的 [`reduce()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) 操作命名的。
+尽管 `reducer` 可以 “减少” 组件内的代码量，但它实际上是以数组上的 [`reduce()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) 方法命名的。
 
-`reduce()` 操作允许你从数组中 “累加” 一个值：
+`reduce()` 允许你将数组中的多个值 “累加” 成一个值：
 
 ```
 const arr = [1, 2, 3, 4, 5];
@@ -381,7 +381,7 @@ const sum = arr.reduce(
 ); // 1 + 2 + 3 + 4 + 5
 ```
 
-你传递给 `reduce` 的函数被称为 “reducer”。它接受 `目前的结果` 和 `当前的值`，然后返回 `下一个结果`。React 中的 `reducer` 和这个是一样的：它们都接受 `目前的状态` 和 `action` ，然后返回 `下一个状态`。通过这种方式，随着时间的推移，将 `actions` 积累到状态中。
+你传递给 `reduce` 的函数被称为 “reducer”。它接受 `目前的结果` 和 `当前的值`，然后返回 `下一个结果`。React 中的 `reducer` 和这个是一样的：它们都接受 `目前的状态` 和 `action` ，然后返回 `下一个状态`。这样，action 会随着时间推移累积到状态中。
 
 你甚至可以使用 `reduce()` 方法以及 `initialState` 和 `actions` 数组，通过传递你的 `reducer` 函数来计算最终的状态：
 
@@ -455,7 +455,7 @@ export default function tasksReducer(
 
 ### 第 3 步: 在组件中使用 reducer {/*step-3-use-the-reducer-from-your-component*/}
 
-最后，你需要将 `tasksReducer` 导入到组件中。记得先从 React 中导入 `useReducer` 钩子：
+最后，你需要将 `tasksReducer` 导入到组件中。记得先从 React 中导入 `useReducer` Hook：
 
 ```js
 import { useReducer } from 'react';
@@ -473,7 +473,7 @@ with `useReducer` like so:
 const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 ```
 
-`useReducer` 和 `useState` 是相似的。你必须给它传递一个初始状态，它会返回一个有状态的值和一个设置该状态的函数（在这个例子中就是 dispatch 函数）。但是，它们两个之间还是有点差异的。
+`useReducer` 和 `useState` 很相似——你必须给它传递一个初始状态，它会返回一个有状态的值和一个设置该状态的函数（在这个例子中就是 dispatch 函数）。但是，它们两个之间还是有点差异的。
 
 `useReducer` 钩子接受 2 个参数：
 
@@ -869,7 +869,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-分离关注点可以让我们更容易地理解组件逻辑。现在事件处理程序只通过派发 `actions` 来指定 *发生了什么*，而 `reducer` 函数决定了 *状态如何更新* 来响应它们。
+当像这样分离关注点时，我们可以更容易地理解组件逻辑。现在，事件处理程序只通过派发 `action` 来指定 *发生了什么*，而 `reducer` 函数通过响应 `actions` 来决定 *状态如何更新*。
 
 ## `useState` 和 `useReducer` 的对比 {/*comparing-usestate-and-usereducer*/}
 
@@ -877,9 +877,9 @@ Reducers 并非没有缺点！你可以从这些角度去对比它们：
 
 - **代码体积：** 通常，在使用 `useState` 时，一开始只需要编写少量代码。而 `useReducer` 必须提前编写 reducer 函数和需要调度的 actions。但是，当多个事件处理程序以相似的方式修改 state 时，`useReducer` 可以减少代码量。
 - **可读性：** 当状态更新逻辑足够简单时，`useState` 的可读性还行。但是，一旦逻辑变得复杂起来，它们会使组件变得臃肿且难以扫描。在这种情况下，`useReducer` 允许你将状态更新逻辑与事件处理程序分离开来。
-- **可调试性：** 当使用 `useState` 出现问题时, 你很难发现具体原因以及为什么。 而使用 `useReducer` 时， 你可以在 reducer 函数中通过打印日志的方式来观察每个状态的更新，以及为什么要更新 (来自哪个 `action`)。 如果所有 `action` 都没问题，你就知道问题出在了 reducer 本身的逻辑中。 然而，与使用 `useState` 相比，你必须遍历更多的代码。
-- **可测试性：** reducer 是一个不依赖于组件的纯函数。这就意味着你可以单独对它进行测试。一般来说，我们最好是在真实环境中测试组件，但对于复杂的状态更新逻辑，把 reducer 断言为特定的初始状态和 `action` 可能会很有帮助。
-- **个人偏好：** 并不是所有人都喜欢用 reducer，没关系，这是个人偏好问题。你可以随时在 `useState` 和 `useReducer` 之间切换，他们是等价的！
+- **可调试性：** 当使用 `useState` 出现问题时, 你很难发现具体原因以及为什么。 而使用 `useReducer` 时， 你可以在 reducer 函数中通过打印日志的方式来观察每个状态的更新，以及为什么要更新 (来自哪个 `action`)。 如果所有 `action` 都没问题，你就知道问题出在了 reducer 本身的逻辑中。 然而，与使用 `useState` 相比，你必须单步执行更多的代码。
+- **可测试性：** reducer 是一个不依赖于组件的纯函数。这就意味着你可以单独对它进行测试。一般来说，我们最好是在真实环境中测试组件，但对于复杂的状态更新逻辑，针对特定的初始状态和 `action`，断言 reducer 返回的特定状态会很有帮助。
+- **个人偏好：** 并不是所有人都喜欢用 reducer，没关系，这是个人偏好问题。你可以随时在 `useState` 和 `useReducer` 之间切换，它们能做的事情是一样的！
 
 如果你在修改某些组件状态时经常出现问题或者想给组件添加更多逻辑时，我们建议你还是使用 reducer。当然，你也不必整个项目都用 reducer，这是可以自由搭配的。你甚至可以在一个组件中同时使用 `useState` 和 `useReducer`。
 
@@ -887,7 +887,7 @@ Reducers 并非没有缺点！你可以从这些角度去对比它们：
 
 编写 `reducers` 时最好牢记以下两点：
 
-- **reducers 必须是纯净的。** 这一点和 [状态更新函数](/learn/queueing-a-series-of-state-updates) 是相似的，`reducers` 在是在渲染时运行的！（actions 会排队直到下一次渲染)。 这就意味着 `reducers` [必须纯净](/learn/keeping-components-pure)，即当输入一定时，输出也是一定的。 (operations that impact things outside the component).它们不应该包含异步请求、定时器或者任何副作用（对组件外部有影响的操作）。它们应该以不可变值的方式去修改 [对象](/learn/updating-objects-in-state) 和 [数组](/learn/updating-arrays-in-state)。
+- **reducers 必须是纯净的。** 这一点和 [状态更新函数](/learn/queueing-a-series-of-state-updates) 是相似的，`reducers` 在是在渲染时运行的！（actions 会排队直到下一次渲染)。 这就意味着 `reducers` [必须纯净](/learn/keeping-components-pure)，即当输入相同时，输出也是相同的。它们不应该包含异步请求、定时器或者任何副作用（对组件外部有影响的操作）。它们应该以不可变值的方式去更新 [对象](/learn/updating-objects-in-state) 和 [数组](/learn/updating-arrays-in-state)。
 - **actions 用来述 “发生了什么” ，而不是 “做什么”** 举个例子，如果用户在一个由 `reducer` 管理的表单（包含五个表单项）中点击了 `重置按钮`，那么派发一个 `reset_form` 操作比派发五个单独的 `set_field` 操作将更加合理。如果你在一个 `reducer` 中打印了所有的 `action` 日志，那么这个日志应该是很清晰的，它能让你以某种步骤复现已发生的交互或响应。这对代码调试很有帮助！
 
 ## 使用 Immer 简化 reducers {/*writing-concise-reducers-with-immer*/}
@@ -1098,32 +1098,32 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-Reducers 应该是纯净的，所以它们不应该去修改 state。而 Immer 为你提供了一种特殊的 `draft` 对象，你可以用它安全的修改 state。在底层，Immer 会基于当前 state 创建一个副本。这就是为什么通过 `useImmerReducer` 来管理 reducers 时可以修改第一个参数，但不需要返回一个新的 state 的原因。
+Reducers 应该是纯净的，所以它们不应该去修改 state。而 Immer 为你提供了一种特殊的 `draft` 对象，你可以通过它安全的修改 state。在底层，Immer 会基于当前 state 创建一个副本。这就是为什么通过 `useImmerReducer` 来管理 reducers 时，可以修改第一个参数，且不需要返回一个新的 state 的原因。
 
 <Recap>
 
 * 把 `useState` 转化为 `useReducer`：
-  1. 通过事件处理函数派发 actions；
+  1. 通过事件处理函数 dispatch actions；
   2. 编写一个 reducer 函数，它接受传入的 state 和一个 action，并返回一个新的 state；
   3. 使用 `useReducer` 替换 `useState`；
 * Reducers 可能需要你写更多的代码，但是这有利于代码的调试和测试。
 * Reducers 必须是纯净的。
 * Actions 描述的是 “发生了什么” 而不是 “要做什么”。
-* 使用 Immer 来帮你编写变更风格的 reducers。
+* 使用 Immer 来帮助你在 reducer 里直接修改状态。
 
 </Recap>
 
 <Challenges>
 
-### 通过事件处理函数派发 actions {/*dispatch-actions-from-event-handlers*/}
+### 通过事件处理函数 dispatch actions {/*dispatch-actions-from-event-handlers*/}
 
 目前，`ContactList.js` 和 `Chat.js` 中的事件处理程序包含 `// TODO` 注释。这就是为什么输入不起作用，点击按钮也不会改变收件人的原因。
 
-将这两个 `// TODO` 替换为 `dispatch` 相应的操作。如果要查看 actions 对于的参数和类型，请阅读 `messerreducer.js` 中的 reducer。reducer 已经写好了，不需要修改它。你只需要在 `ContactList.js` 和 `Chat.js` 中派发动作即可。
+将这两个 `// TODO` 替换为 `dispatch` 相应的 action。如果要查看 action 的结构和类型，请查看 `messerreducer.js` 中的 reducer。reducer 已经写好了，你不需要再修改它。你只需要在 `ContactList.js` 和 `Chat.js` 中 dispatch 相应的 action 即可。
 
 <Hint>
 
-`dispatch` 函数在这两个组件中都是可用的，因为它已经以 prop 的形式传递进来了。所以你需要用相应的 action 对象来调用 `dispatch` 函数。
+`dispatch` 函数在这两个组件中都是可用的，因为它已经以 prop 的形式传递进来了。因此你需要通过传入相应的 action 对象来调用 `dispatch` 函数。
 
 要检查 action 的对象结构，你可以查看 reducer，看看它需要哪些字段。例如，reducer 中的 `changed_selection` 是这样的：
 
@@ -1136,7 +1136,7 @@ case 'changed_selection': {
 }
 ```
 
-这表示你的 `action` 对象应该有一个 `type: 'changed_selection'`。同时你也可以看到 `action.contactId` 被使用到了，所以你需要传入一个 `contactId` 属性到你的动作中。
+这表示你的 `action` 对象应该有一个 `type: 'changed_selection'`。同时你也可以看到 `action.contactId` 被使用到了，所以你需要传入一个 `contactId` 属性到你的 action 对象中。
 
 </Hint>
 
@@ -1292,7 +1292,7 @@ textarea {
 
 <Solution>
 
-通过 reducer 的代码，你可以推断出 actions 需要像下面这样：
+从 reducer 函数的代码中，你可以推断出 actions 需要像下面这样：
 
 ```js
 // 当用户点击 "Alice"
@@ -1631,7 +1631,7 @@ textarea {
 
 <Solution>
 
-在 “发送” 按钮的事件处理程序中，有很多方法可以用来清空输入框。一种方法是显示一个 alert，然后派发一个带有空 `message` 的 `edited_message` 操作：
+在 “发送” 按钮的事件处理程序中，有很多方法可以用来清空输入框。一种方法是显示一个 alert，然后 dispatch 一个名为 `edited_message` 且带有空 `message` 的 action：
 
 <Sandpack>
 
