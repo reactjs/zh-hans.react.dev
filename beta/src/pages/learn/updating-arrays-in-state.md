@@ -208,7 +208,7 @@ setArtists(
 );
 ```
 
-这里，`artists.filter(s => s.id !== artist.id)` 表示 “创建一个新的数组，该数组由那些 ID 与 `artists.id` 不同的 `artists` 组成”。换句话说，每个 artist 的“删除”按钮会把_那一个_ artist 从原始数组中过滤掉，并使用过滤后的数组再次进行渲染。注意，`filter` 并不会改变原始数组。
+这里，`artists.filter(s => s.id !== artist.id)` 表示 “创建一个新的数组，该数组由那些 ID 与 `artists.id` 不同的 `artists` 组成”。换句话说，每个 artist 的“删除”按钮会把 _那一个_ artist 从原始数组中过滤掉，并使用过滤后的数组再次进行渲染。注意，`filter` 并不会改变原始数组。
 
 ### 转换数组 {/*transforming-an-array*/}
 
