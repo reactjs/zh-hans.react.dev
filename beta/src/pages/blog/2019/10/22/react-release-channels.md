@@ -1,6 +1,5 @@
 ---
 title: '使用 React 预发布版为新功能打基础'
-layout: Post
 author: [acdlite]
 ---
 
@@ -14,7 +13,7 @@ React 依靠强大的开源社区收集错误报告，pull request 以及 [RFC](
 
 我们期望开发者更容易地测试 React 的预发布版本，因此我们将通过三个单独的发布渠道来规范我们的流程。
 
-## 发布渠道 {#release-channels}
+## 发布渠道 {/*release-channels*/}
 
 > 本文中的相关信息可以查阅[发布渠道](/docs/release-channels)章节。每次我们的发布流程发生变化，我们都会更新该流程。
 
@@ -30,7 +29,7 @@ React 的每个发布渠道都是针对不同的用例进行设计地：
 
 通过将预发布版发布到与稳定版同一注册表中，我们可以利用许多支持 npm 工作流的工具，诸如 [unpkg](https://unpkg.com) 和 [CodeSandbox](https://codesandbox.io)。 
 
-### 最新版渠道 {#latest-channel}
+### 最新版渠道 {/*latest-channel*/}
 
 最新版是用于稳定 React 版本的渠道。它对应是 npm 中 `latest` 标签。此版本是所有交付给真实用户的 React 应用程序的推荐版本。
 
@@ -38,7 +37,7 @@ React 的每个发布渠道都是针对不同的用例进行设计地：
 
 你可以希望最新版的更新足够稳定。版本遵循语义版本控制方案。你可以在[版本政策](/docs/faq-versioning)中详细了解我们对稳定性和增量迁移的承诺。
 
-### Next 版渠道 {#next-channel}
+### Next 版渠道 {/*next-channel*/}
 
 Next 属于预发布渠道，用于追踪 React 仓库的 main 分支。我们在 Next 渠道中使用预发布版本作为最新版发布渠道的候选版本。你可以将 Next 视为最新版的超集，它的更新频率更高。
 
@@ -48,7 +47,7 @@ Next 属于预发布渠道，用于追踪 React 仓库的 main 分支。我们�
 
 Next 渠道中的发行版本在 npm 中携带 `next` 标签发布。版本会根据构建内容的哈希值生成，例如 `0.0.0-1022ee0ec`。
 
-#### 使用 Next 渠道版本进行集成测试 {#using-the-next-channel-for-integration-testing}
+#### 使用 Next 渠道版本进行集成测试 {/*using-the-next-channel-for-integration-testing*/}
 
 Next 渠道旨在支持 React 与其他项目直接的集成测试。
 
@@ -75,7 +74,7 @@ React 中的所有更改在发布之前都需进行大量的内部测试。但�
 
 Next.js 使用了此工作流。你可以将它们 [CircleCI 配置](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml) 作为示例进行参考。
 
-### 实验阶段渠道 {#experimental-channel}
+### 实验阶段渠道 {/*experimental-channel*/}
 
 与 Next 相似，实验阶段通道是一个预发布通道，用于追踪 React 仓库 main 分支。但不同于 Next 的是，实验阶段的发布版本包含尚未准备好广泛推广的功能及 API。
 
@@ -85,7 +84,7 @@ Next.js 使用了此工作流。你可以将它们 [CircleCI 配置](https://git
 
 实验版本会在 npm 上会以 `experimental` 标签的形式发布。版本会根据构建内容的哈希值生成，例如，`0.0.0-experimental-1022ee0ec`。
 
-#### 实验阶段发布包含哪些内容？ {#what-goes-into-an-experimental-release}
+#### 实验阶段发布包含哪些内容？ {/*what-goes-into-an-experimental-release*/}
 
 实验阶段功能并未打算公开发布，在最终确定之前可能会发生巨大变化。有些实验功能可能永远不会完成 —— 我们进行实验的目的是为了测试变更提案的可行性。
 
@@ -93,7 +92,7 @@ Next.js 使用了此工作流。你可以将它们 [CircleCI 配置](https://git
 
 你可能会发现针对实验阶段进行集成测试很有必要。但是，请注意，实验阶段版本的稳定性是不如 Next 版本的。**我们并不保证实验版本之间的稳定性。**
 
-#### 如何了解有关实验功能的更多信息？{#how-can-i-learn-more-about-experimental-features}
+#### 如何了解有关实验功能的更多信息？ {/*how-can-i-learn-more-about-experimental-features*/}
 
 实验性的功能可能会有文档，也可能不会有文档。通常，在实验渠道的内容发布到 Next 或 Stable 中之前，才会编写文档。
 

@@ -1,12 +1,11 @@
 ---
 title: "React v16.8：Hook 发布"
-layout: Post
 author: [gaearon]
 ---
 
 从 React 16.8 开始，[React Hook](/docs/hooks-intro.html) 稳定版本正式发布啦！
 
-## 什么是 Hook？{#what-are-hooks}
+## 什么是 Hook？ {/*what-are-hooks*/}
 
 Hook 允许你在不使用 class 的情况下使用 state 和 React 其他特性。你可以 **编写自定义的 Hook** 来在不同的组件中共享有状态的逻辑。
 
@@ -20,11 +19,11 @@ Hook 允许你在不使用 class 的情况下使用 state 和 React 其他特性
 
 **你并不是必须现在就学习 Hook**。Hook 并没有突破性的改变，并且我们并没有要删除 React class 的计划。其中 [Hook FAQ](/docs/hooks-faq.html) 描述了逐步采纳策略。
 
-## 不需要大型重写 {#no-big-rewrites}
+## 不需要大型重写 {/*no-big-rewrites*/}
 
 我们不建议立马重写你的项目以在其中使用 Hook。相反，试着在一些新的组件中使用 Hook，并且告诉我们你的想法。使用 Hook 的代码可以和已经存在的使用 class 的的代码 [一起使用](/docs/hooks-intro.html#gradual-adoption-strategy)。
 
-## 我今天可以使用 Hook 吗？{#can-i-use-hooks-today}
+## 我今天可以使用 Hook 吗？ {/*can-i-use-hooks-today*/}
 
 可以！从 16.8.0 开始，React 为以下几个功能引入了 React Hook 的稳定实现：
 
@@ -37,11 +36,11 @@ Hook 允许你在不使用 class 的情况下使用 state 和 React 其他特性
 
 **React Native 会在 [0.59 版本](https://github.com/react-native-community/react-native-releases/issues/79#issuecomment-457735214) 支持 Hook。**
 
-## 工具支持 {#tooling-support}
+## 工具支持 {/*tooling-support*/}
 
 React DevTools 现在已经支持 React Hook。目前最新版的 Flow 和 TypeScript 定义也为 React 提供了支持。我们强烈建议使用新的 [`eslint-plugin-react-hooks` 提示规范](https://www.npmjs.com/package/eslint-plugin-react-hooks) 来加强对 Hook 的使用。这个功能马上就会被加到 Create React App 的默认配置里。
 
-## 下一步 {#whats-next}
+## 下一步 {/*whats-next*/}
 
 我们在最近发布的 [React 路线图](/blog/2018/11/27/react-16-roadmap.html) 里描述了下几个月的计划。
 
@@ -49,7 +48,7 @@ React DevTools 现在已经支持 React Hook。目前最新版的 Flow 和 TypeS
 
 尽管在 Hook 处于 alpha 测试阶段的时候，React 社区已经开发了很多有趣的 [示例](https://codesandbox.io/react-hooks) 和 [方法](https://usehooks.com) 来使用 Hook 开发动画、表单、订阅、和其他库结合使用等等。我们对 Hook 把代码复用变得简单、帮助你用一种更简单的方式来编写你的组件、并且有着更好的用户体验这件事上感到非常的激动。我们已经迫不及待地想看到你将要创造出什么了！
 
-## 测试 Hook {#testing-hooks}
+## 测试 Hook {/*testing-hooks*/}
 
 我们在这次发布中已经添加了一个新的叫 `ReactTestUtils.act()` 的 API。它保证了在测试中的表现会与在浏览器中的行为会非常的接近。我们建议把所有渲染和触发更新的代码用 `act()` 方法包起来。测试框架也可以把他们的 API 用它包起来（例如，[`react-testing-library`](https://testing-library.com/react) 的 `render` 和 `fireEvent` 方法就是这样做的）。
 
@@ -98,13 +97,13 @@ it('can render and update a counter', () => {
 
 为了减少样板代码，我们建议使用 [`react-testing-library`](https://testing-library.com/react)，它鼓励你像终端用户一样使用你的组件写测试代码。
 
-## 谢谢 {#thanks}
+## 致谢 {/*thanks*/}
 
 我们非常感谢所有在 [Hook RFC](https://github.com/reactjs/rfcs/pull/68) 上发布并分享反馈的用户。我们已经阅读了你们所有的评论并且依此给我们最终的 API 做了一些调整。
 
-## 安装 {#installation}
+## 安装 {/*installation*/}
 
-### React {#react}
+### React {/*react*/}
 
 React v16.8.0 已经在 npm 上发布。
 
@@ -129,7 +128,7 @@ npm install --save react@^16.8.0 react-dom@^16.8.0
 
 请参考文档的 [详细安装指南](/docs/installation.html)。
 
-### React Hook 的 ESLint 插件 {#eslint-plugin-for-react-hooks}
+### React Hook 的 ESLint 插件 {/*eslint-plugin-for-react-hooks*/}
 
 > 注意
 >
@@ -162,14 +161,14 @@ yarn add eslint-plugin-react-hooks --dev
 }
 ```
 
-## 更新日志 {#changelog}
+## 更新日志 {/*changelog*/}
 
-### React {#react-1}
+### React {/*react-1*/}
 
 * 添加 [Hook](https://reactjs.org/docs/hooks-intro.html) — 一个不用编写 class 就能使用 state 和其他 React 特性的方法。（[@acdlite](https://github.com/acdlite) et al. in [#13968](https://github.com/facebook/react/pull/13968)）
 * 改善 `useReducer` Hook 懒初始化 API。（[@acdlite](https://github.com/acdlite) in [#14723](https://github.com/facebook/react/pull/14723)）
 
-### React DOM {#react-dom}
+### React DOM {/*react-dom*/}
 
 * 为 `useState` 和 `useReducer` Hook 在相同的值下进行渲染。（[@acdlite](https://github.com/acdlite) in [#14569](https://github.com/facebook/react/pull/14569)）
 * 不要比较传给 `useEffect`/`useMemo`/`useCallback` Hook 的第一个参数。（[@acdlite](https://github.com/acdlite) in [#14594](https://github.com/facebook/react/pull/14594)）
@@ -179,19 +178,19 @@ yarn add eslint-plugin-react-hooks --dev
 * 在开发的时候 Hook 顺序匹配错误的警告。（[@threepointone](https://github.com/threepointone) in [#14585](https://github.com/facebook/react/pull/14585) and [@acdlite](https://github.com/acdlite) in [#14591](https://github.com/facebook/react/pull/14591)）
 * Effect clean-up 方法必须返回 `undefined` 或者一个方法。其他的值，包括 `null`，都不被允许。[@acdlite](https://github.com/acdlite) in [#14119](https://github.com/facebook/react/pull/14119)
 
-### React 测试渲染器 {#react-test-renderer}
+### React 测试渲染器 {/*react-test-renderer*/}
 
 * 在浅层渲染中支持 Hook。（[@trueadm](https://github.com/trueadm) in [#14567](https://github.com/facebook/react/pull/14567)）
 * 为浅层渲染修复与 `shouldComponentUpdate` 和 `getDerivedStateFromProps` 共同的 state。（[@chenesan](https://github.com/chenesan) in [#14613](https://github.com/facebook/react/pull/14613)）
 * 为批量更新添加 `ReactTestRenderer.act()` 和 `ReactTestUtils.act()` 方法，因此测试可以和真实的行为变得更加相符。（[@threepointone](https://github.com/threepointone) in [#14744](https://github.com/facebook/react/pull/14744)）
 
-### ESLint 插件：React Hook {#eslint-plugin-react-hooks}
+### ESLint 插件：React Hook {/*eslint-plugin-react-hooks*/}
 
 * 初次 [发版](https://www.npmjs.com/package/eslint-plugin-react-hooks)。（[@calebmer](https://github.com/calebmer) in [#13968](https://github.com/facebook/react/pull/13968)）
 * 修复在进入循环后的报告。（[@calebmer](https://github.com/calebmer) and [@Yurickh](https://github.com/Yurickh) in [#14661](https://github.com/facebook/react/pull/14661)）
 * 不要认为抛出异常是违反规范的行为。（[@sophiebits](https://github.com/sophiebits) in [#14040](https://github.com/facebook/react/pull/14040)）
 
-## 在 Alpha 版本后的 Hook 的更新日志 {#hooks-changelog-since-alpha-versions}
+## 在 Alpha 版本后的 Hook 的更新日志 {/*hooks-changelog-since-alpha-versions*/}
 
 上面的更新日志包括所有自上一个**稳定**版本（16.7.0）后的显著的更改。[和我们每次的小版本改动一样](/docs/faq-versioning.html)，所有的更改都没有打破向后兼容。
 

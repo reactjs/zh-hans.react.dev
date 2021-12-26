@@ -23,15 +23,14 @@ function HomepageHero() {
       <section className="my-8 sm:my-10 grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-4">
         <div className="flex flex-col justify-center">
           <YouWillLearnCard title="学习 React" path="/learn">
-            <p>
-              通过逐步讲解和可交互的示例来学习用 React 思维方式思考。
-            </p>
+            <p>通过逐步讲解和可交互的示例来学习用 React 思维方式思考。</p>
           </YouWillLearnCard>
         </div>
         <div className="flex flex-col justify-center">
           <YouWillLearnCard title="API Reference" path="/reference">
             <p>
-              查阅 React Hooks 的 API 签名，并通过可视化的代码图解来学习如何使用。
+              查阅 React Hooks 的 API
+              签名，并通过可视化的代码图解来学习如何使用。
             </p>
           </YouWillLearnCard>
         </div>
