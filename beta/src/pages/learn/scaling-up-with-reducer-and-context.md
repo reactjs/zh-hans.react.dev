@@ -207,7 +207,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-reducer 有助于事件处理程序简短明了。但随着应用越来越大，你有可能会遇到别的困难。 **目前，`tasks` 状态和 `dispatch` 函数仅在顶级 `TaskBoard` 组件中可用** 若要让其他组件读取 `tasks`状态或对其进行更改，必须以 props 的形式显式 [传递](/learn/passing-props-to-a-component) 它。
+Reducer 有助于事件处理程序简短明了。但随着应用越来越规模庞大，你就可能会遇到别的困难。 **目前，`tasks` 状态和 `dispatch` 函数仅在顶级 `TaskBoard` 组件中可用。** 若要让其他组件读取 `tasks`状态或对其进行更改，必须以 props 的形式显式 [传递](/learn/passing-props-to-a-component) 它。
 
 例如，`TaskBoard` 将 `tasks` 和事件处理程序传递给 `TaskList`：
 
@@ -219,7 +219,7 @@ reducer 有助于事件处理程序简短明了。但随着应用越来越大，
 />
 ```
 
-`TaskList` 将事件处理器传递给 `Task`：
+`TaskList` 将事件处理程序传递给 `Task`：
 
 ```js
 <Task
@@ -229,7 +229,7 @@ reducer 有助于事件处理程序简短明了。但随着应用越来越大，
 />
 ```
 
-他能工作的非常好在诸如这样的小例子中，但是如果你有成千上百个组件时，传递所有状态和函数会让人非常烦恼！
+在这样的小例子里他可能问题不大，但是如果你有成千上百个组件时，传递所有状态和函数就会让你非常烦恼！
 
 <!--(TODO: illustration of prop drilling)-->
 
@@ -251,7 +251,7 @@ reducer 有助于事件处理程序简短明了。但随着应用越来越大，
 const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 ```
 
-为了将他们从组件树往下传，你将 [创建](/learn/passing-data-deeply-with-context#step-2-use-the-context) 两个不同的 context：
+为了将它们从组件树往下传，你将 [创建](/learn/passing-data-deeply-with-context#step-2-use-the-context) 两个不同的 context：
 
 - `TasksContext` 提供当前的 tasks 列表。
 - `TasksDispatchContext` 提供了一个函数可以让组件分发动作。
@@ -452,11 +452,11 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-在这里，您将 `null` 作为默认值传递给两个 context。实际值将由 `TaskBoard` 组件提供。
+在这里，你把 `null` 作为默认值传递给两个 context。实际值是由 `TaskBoard` 组件提供的。
 
 ### 第二步: 将 state 和 dispatch 函数 放入 context {/*step-2-put-state-and-dispatch-into-context*/}
 
-现在，您可以将所有的 context 导入 `TaskBoard` 组件。获取 `useReducer()` 返回的 `tasks` 和 `dispatch` 并将它们 [提供](/learn/passing-data-deeply-with-context#step-3-provide-the-context) 给整个组件树：
+现在，你可以将所有的 context 导入 `TaskBoard` 组件。获取 `useReducer()` 返回的 `tasks` 和 `dispatch` 并将它们 [提供](/learn/passing-data-deeply-with-context#step-3-provide-the-context) 给整个组件树：
 
 ```js {4,7-8}
 import { TasksContext, TasksDispatchContext } from './TasksContext.js';
@@ -474,7 +474,7 @@ export default function TaskBoard() {
 }
 ```
 
-现在，您可以同时通过 props 和 context 传递信息：
+现在，你可以同时通过 props 和 context 传递信息：
 
 <Sandpack>
 
@@ -1144,7 +1144,7 @@ const tasks = useTasks();
 const dispatch = useTasksDispatch();
 ```
 
-这不会以任何方式改变行为，但它允许您稍后进一步分割这些 context 或向这些函数添加一些逻辑。**现在所有的 context 和 reducer 连接部分都在 `TasksContext.js`中。这保持了组件的干净和整洁，让我们专注于它们显示的内容，而不是它们从哪里获得数据：**
+这不会改变任何行为，但它会允许你之后进一步分割这些 context 或向这些函数添加一些逻辑。**现在所有的 context 和 reducer 连接部分都在 `TasksContext.js` 中。这保持了组件的干净和整洁，让我们专注于它们显示的内容，而不是它们从哪里获得数据：**
 
 <Sandpack>
 
@@ -1359,7 +1359,7 @@ ul, li { margin: 0; padding: 0; }
   3. 使用组件中需要读取的 context。
 - 你可以通过将所有传递信息的代码移动到单个文件中来进一步整理组件。
   - 你可以导出一个像 `TasksProvider` 可以提供 context 的组件。
-  - 你也可以导出自定义钩子像 `useTasks` 和 `useTasksDispatch` 。
+  - 你也可以导出自定义钩子像 `useTasks` 和 `useTasksDispatch`。
 - 你可以在你的应用程序中大量配合使用 context 和 reducer。
 
 </Recap>
