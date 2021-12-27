@@ -103,14 +103,14 @@ ReactDOM.createRoot(rootNode).render(<App />);
 ```js
 const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 
-const [startTransition, isPending] = useTransition(SUSPENSE_CONFIG);
+const [isPending, startTransition] = useTransition(SUSPENSE_CONFIG);
 ```
 
 `useTransition` 允许组件在**切换到下一个界面**之前等待内容加载，从而避免不必要的加载状态。它还允许组件将速度较慢的数据获取更新推迟到随后渲染，以便能够立即渲染更重要的更新。
 
 `useTransition` hook 返回两个值的数组。
-* `startTransition` 是一个接受回调的函数。我们用它来告诉 React 需要推迟的 state。
 * `isPending` 是一个布尔值。这是 React 通知我们是否正在等待过渡的完成的方式。
+* `startTransition` 是一个接受回调的函数。我们用它来告诉 React 需要推迟的 state。
 
 **如果某个 state 更新导致组件挂起，则该 state 更新应包装在 transition 中**
 
@@ -119,7 +119,7 @@ const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 
 function App() {
   const [resource, setResource] = useState(initialResource);
-  const [startTransition, isPending] = useTransition(SUSPENSE_CONFIG);
+  const [isPending, startTransition] = useTransition(SUSPENSE_CONFIG);
   return (
     <>
       <button

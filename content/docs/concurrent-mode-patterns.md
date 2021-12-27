@@ -78,7 +78,7 @@ import React, { useState, useTransition, Suspense } from "react";
 ```js{3-5}
 function App() {
   const [resource, setResource] = useState(initialResource);
-  const [startTransition, isPending] = useTransition({
+  const [isPending, startTransition] = useTransition({
     timeoutMs: 3000
   });
   // ...
@@ -86,8 +86,8 @@ function App() {
 
 **就这段代码而言，它还什么都做不了。**我们需要使用这个 Hook 的返回值来配置我们的界面切换。`useTransition` 包含两个返回值：
 
-* `startTransition` 类型为函数。我们用它来告诉 React 我们希望的延迟的是*哪个* state 的更新。
 * `isPending` 类型为 boolean。此变量在 React 中用于告知我们该转换是否正在进行。
+* `startTransition` 类型为函数。我们用它来告诉 React 我们希望的延迟的是*哪个* state 的更新。
 
 接下来我们就会用到它们。
 
@@ -129,10 +129,10 @@ function App() {
 
 在 [我们前一个例子](https://codesandbox.io/s/musing-driscoll-6nkie) 中还是有地方体验不友好。最好不要显示加载中。**但是如果没有这个过程提示的话体验会更糟糕！**当我们点击 "Next"按钮，什么都没有发生，就好像整个应用卡死一样。
 
-调用 `useTransition()` 包含两个值返回值：`startTransition` 和 `isPending`。
+调用 `useTransition()` 包含两个值返回值：`isPending` 和 `startTransition`。
 
 ```js
-  const [startTransition, isPending] = useTransition({ timeoutMs: 3000 });
+  const [isPending, startTransition] = useTransition({ timeoutMs: 3000 });
 ```
 
 我们已经使用了 `startTransition` 来包裹 state 更新。现在我们要使用 `isPending` 了。React 提供了这个布尔值来告诉我们当前**我们是否正在等待界面切换完成**。我们会用它来指示是不是有什么事情正在发生：
@@ -168,7 +168,7 @@ return (
 ```js{3-5,9,11,14,19}
 function App() {
   const [resource, setResource] = useState(initialResource);
-  const [startTransition, isPending] = useTransition({
+  const [isPending, startTransition] = useTransition({
     timeoutMs: 3000
   });
   return (
@@ -260,7 +260,7 @@ function ProfilePage() {
 
 ```js{2-5,9-11,21}
 function ProfilePage() {
-  const [startTransition, isPending] = useTransition({
+  const [isPending, startTransition] = useTransition({
     // Wait 10 seconds before fallback
     timeoutMs: 10000
   });
@@ -301,7 +301,7 @@ function ProfilePage() {
 
 ```js{7-9,20,24}
 function Button({ children, onClick }) {
-  const [startTransition, isPending] = useTransition({
+  const [isPending, startTransition] = useTransition({
     timeoutMs: 10000
   });
 
@@ -549,7 +549,7 @@ function ProfilePage({ resource }) {
 
 ```js{2,13}
 function Button({ children, onClick }) {
-  const [startTransition, isPending] = useTransition({
+  const [isPending, startTransition] = useTransition({
     timeoutMs: 10000
   });
 
@@ -683,7 +683,7 @@ Refer to the documentation for useTransition to learn how to implement this patt
 function App() {
   const [query, setQuery] = useState(initialQuery);
   const [resource, setResource] = useState(initialResource);
-  const [startTransition, isPending] = useTransition({
+  const [isPending, startTransition] = useTransition({
     timeoutMs: 5000
   });
 
