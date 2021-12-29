@@ -559,7 +559,7 @@ export default function Form() {
 
   return (
     <>
-      <h2>Let’s check you in</h2>
+      <h2>让我帮您登记</h2>
       <label>
         名：{' '}
         <input
@@ -611,7 +611,7 @@ export default function Form() {
 
   return (
     <>
-      <h2>Let’s check you in</h2>
+      <h2>让我帮您登记</h2>
       <label>
         名：{' '}
         <input
@@ -653,20 +653,20 @@ export default function Accordion() {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <>
+      <h2>阿拉木图, 哈萨克斯坦</h2>
       <Panel
-        title="配料"
+        title="关于"
         isActive={activeIndex === 0}
         onShow={() => setActiveIndex(0)}
       >
-        牛奶，茶包和肉桂棒。
+        阿拉木图有大约 200 万人口，是哈萨克斯坦最大的城市。从 1929 年到 1997 年，它是哈萨克斯坦的首都。
       </Panel>
       <Panel
-        title="食谱"
+        title="词源"
         isActive={activeIndex === 1}
         onShow={() => setActiveIndex(1)}
       >
-        加热牛奶，将茶包放入锅中。
-        加入肉桂棒。
+        这个名字源自 <span lang="kk-KZ">алма</span>，哈萨克语中的“苹果”一词，通常被翻译为“苹果之城”。 事实上，阿拉木图周边地区被认为是苹果的祖先家园，而野生<i lang="la">Malus Siversii (天山野苹果)</i> 可能是现代家养苹果祖先。
       </Panel>
     </>
   );
