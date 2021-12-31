@@ -19,7 +19,7 @@ translators:
 
 </YouWillLearn>
 
-想象一下，您的组件是厨房里的厨师，用食材“组装”成美味的菜肴。在这种假想的情况下，React 是一名服务员，他接收客户的请求并给用户们带回完成的订单。请求和提供 UI 的过程总共包括三个步骤： 
+想象一下，您的组件是厨房里的厨师，用食材“组装”成美味的菜肴。在这种场景下，React 是一名服务员，他接收客户的请求并给用户们带回完成的订单。请求和提供 UI 的过程总共包括三个步骤： 
 
 1. 渲染 **触发中** (传递客户的订单到厨房)
 2. 组件 **渲染中** (从厨房取得完成的订单)
@@ -69,7 +69,7 @@ export default function Image() {
 
 试着注释掉 `ReactDOM.render`，然后您将会看到组件消失。
 
-### 状态更新时发生的重渲染 {/*re-renders-when-state-updates*/}
+### 状态更新时重新渲染 {/*re-renders-when-state-updates*/}
 
 一旦组件被渲染初始化后，您可以通过使用 [`setState`](reference/setstate) 更新其状态来触发之后的渲染。更新组件的状态会自动将渲染送入队列。（您可以想象这种情况为餐厅客人于第一次下单之后点了一份茶或点心或各种东西，具体取决于他们的状态现在是饿了或是渴了。）
 
@@ -136,7 +136,6 @@ img { margin: 0 10px 10px 0; }
 <Gotcha>
 
 渲染必须总是一次 [纯计算](/learn/keeping-components-pure):
-Rendering must always be a [pure calculation](/learn/keeping-components-pure):
 
 * **一些输入，一些输出。** 给定相同的输入，组件应始终返回相同的 JSX。（当有人点了西红柿沙拉时，他们不应该收到洋葱沙拉！）
 * **管好它自己的事情。** 它不应更改渲染之前存在的任何对象或变量。（一个订单不应更改其他任何人的订单。）
@@ -147,7 +146,7 @@ Rendering must always be a [pure calculation](/learn/keeping-components-pure):
 
 <DeepDive title="性能优化">
 
-如果更新的组件在树中的位置非常高，渲染所有嵌套的组件并且带有更新后的组件这种默认行为不是性能上的最佳选择。如果您遇到了性能问题，有几种选择加入的方法来解决它在 [性能](/learn/performance) 部分进行了描述。**不要过早优化！**
+如果更新的组件在树中的位置非常高，渲染所有嵌套的组件并且带有更新后的组件这种默认行为不是性能上的最佳选择。如果您遇到了性能问题，[性能](/learn/performance) 章节描述了几种可选的解决方案 。**不要过早优化！**
 
 </DeepDive>
 
@@ -198,7 +197,7 @@ export default function App() {
 
 </Sandpack>
 
-这是有效的是因为在最后一步中，React 只使用新的 `time` 更新 `<h1>` 标签的内容。它看到 `<input>` 标签出现在 JSX 中与上次相同的位置，因此 React 不会触碰 `<input>` 标签或它的 `value`！
+这是有效的是因为在最后一步中，React 只使用最新的 `time` 更新 `<h1>` 标签的内容。它看到 `<input>` 标签出现在 JSX 中与上次相同的位置，因此 React 不会触碰 `<input>` 标签或它的 `value`！
 ## 尾声：浏览器绘制 {/*epilogue-browser-paint*/}
 
 在渲染完成之后 React 会更新 DOM，浏览器会重绘这个屏幕，尽管这个过程被称之为 “浏览器重绘” ("browser rendering")，我们将它称为 “绘制” ("painting")，以避免在这些文档的其余部分中混淆。
@@ -212,7 +211,7 @@ export default function App() {
   2. 渲染
   3. 提交
 * 您可以使用严格模式去找到组件中的错误
-* React 不会去触碰重渲染结果与上次一样的 DOM
+* React 不会去修改重渲染结果与上次一样的 DOM
 
 </Recap>
 
