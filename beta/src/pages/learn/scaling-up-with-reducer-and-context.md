@@ -905,7 +905,7 @@ ul, li { margin: 0; padding: 0; }
 
 ## 将相关逻辑迁移到一个文件当中 {/*moving-all-wiring-into-a-single-file*/}
 
-虽然不是必要的，但你可以通过将 reducer 和 context 移动到单个文件中来进一步整理组件。目前，"TasksContext.js"仅包含两个 context 声明：
+这不是必须的，但你可以通过将 reducer 和 context 移动到单个文件中来进一步整理组件。目前，“TasksContext.js” 仅包含两个 context 声明：
 
 ```js
 import { createContext } from 'react';
