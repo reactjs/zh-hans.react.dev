@@ -1346,7 +1346,7 @@ ul, li { margin: 0; padding: 0; }
 
 你可以将 `TasksProvider` 视为页面的一部分，它知道如何处理 tasks。`useTasks` 用来读取它们，`useTasksDispatch` 用来从组件树下的任何组件更新它们。
 
-> 像 `useTasks` 和 `useTasksDispatch` 被称为 **[自定义钩子](/learn/reusing-logic-with-custom-hooks).** 如果你的函数名以 `use` 开头，它就被认为是一个自定义钩子。这让你可以使用其他 Hook，比如 `useContext`。
+> 像 `useTasks` 和 `useTasksDispatch` 这样的函数被称为 **[自定义 Hook](/learn/reusing-logic-with-custom-hooks)。** 如果你的函数名以 `use` 开头，它就被认为是一个自定义 Hook。这让你可以使用其他 Hook，比如 `useContext`。
 
 随着应用的增长，你可能会有许多这样的 context 和 reducer 的组合。这是一种强大的拓展应用并 [提升状态](/learn/sharing-state-between-components) 的方式，让你在组件树深处访问数据时无需进行太多工作。
 
