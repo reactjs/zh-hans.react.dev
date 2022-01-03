@@ -697,7 +697,7 @@ export default function TaskList() {
   // ...
 ```
 
-要更新任务列表，任何组件都可以从 context 中读取 `dispatch` 函数并调用它：
+任何组件都可以从 context 中读取 `dispatch` 函数并调用它，从而更新任务列表：
 
 ```js {3,9-13}
 export default function AddTask({ onAddTask }) {
