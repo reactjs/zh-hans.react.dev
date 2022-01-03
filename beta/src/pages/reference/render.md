@@ -66,7 +66,7 @@ export default function App() {
 
 ## 渲染多个根组件 {/*rendering-multiple-roots*/}
 
-如果你在多个地方都撒了 React ["碎片"](/learn/add-react-to-a-website)，那么你就得为每个由 React 管理的顶层 UI 组件调用 `render` 函数进行渲染。
+如果你在多个地方都撒了 React ["碎片"](/learn/add-react-to-a-website)，那么你就得为每个由 React 管理的顶层 UI 组件调用 `render` 函数。
 
 <Sandpack>
 
@@ -178,14 +178,14 @@ export default function App({counter}) {
 ## 何时不使用它 {/*when-not-to-use-it*/}
 
 * 如果你的应用程序使用服务器渲染，并会在服务器上生成 HTML，请使用 [`hydrate`](TODO) 函数，而非 `render` 函数。
-* 如果你的应用程序完全基于 React 构建，你大概不需要多次使用 `render` 函数。如果你想在 DOM 树的其他位置渲染内容（例如，modal 或者 tooltip），那么请使用 [`createPortal`](TODO) 来代替。
+* 如果你的应用程序完全基于 React 构建，那么你其实不需要多次使用 `render` 函数。如果你想在 DOM 树的其他位置渲染内容（例如，modal 或者 tooltip），那么请使用 [`createPortal`](TODO) 来代替。
 
 <br />
 
 
 ## 细节特性 {/*behavior-in-detail*/}
 
-在你第一次调用 `render` 时，`container` 内任何已有的 DOM 元素都会被替换。如果你再次调用 render 的话，React 会为了体现最新的 JSX 而进行必要的 DOM 更新。React 会通过将 DOM 与先前渲染的组件树进行“匹配”的方式，来决定 DOM 的哪些部分可以复用、哪些部分需要重新创建。重复调用 render 与调用 setState 相似——在这两种情况下，React 都会避免不必要的 DOM 更新。
+在你第一次调用 `render` 时，`container` 内任何已有的 DOM 元素都会被替换。如果你再次调用 render 的话，React 会为了体现最新的 JSX 而进行必要的 DOM 更新。React 会通过将 DOM 与先前渲染的组件树进行“匹配”的方式来决定 DOM 的哪些部分可以复用、哪些部分需要重新创建。重复调用 render 与调用 setState 相似——在这两种情况下，React 都会避免不必要的 DOM 更新。
 
 你可以将一个回调函数作为第三个参数传递给 render。React 会在你的组件在 DOM 中出现后调用它。
 
