@@ -903,7 +903,7 @@ ul, li { margin: 0; padding: 0; }
 
 **state 仍然"存在于"顶层 `TaskBoard` 组件中，由 `useReducer` 进行管理。** 不过，组件树里的组件只要导入这些 context 之后就可以获取 `tasks` 和 `dispatch`。
 
-## 将所有的连接部分放入一个文件 {/*moving-all-wiring-into-a-single-file*/}
+## 将相关逻辑迁移到一个文件当中 {/*moving-all-wiring-into-a-single-file*/}
 
 虽然不是必要的，但你可以通过将 reducer 和 context 移动到单个文件中来进一步整理组件。目前，"TasksContext.js"仅包含两个 context 声明：
 
