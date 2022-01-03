@@ -13,7 +13,7 @@ translators:
 
 <YouWillLearn>
 
-* React 怎样“看待”组件结构
+* React 如何“处理”组件结构
 * React 何时选择保留或重置 state
 * 如何强制 React 重置组件的 state
 * key 和组件类型如何影响 state 是否被保留
