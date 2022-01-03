@@ -1137,7 +1137,7 @@ export function useTasksDispatch() {
 }
 ```
 
-当一个组件需要读取 context，它可以通过以下函数实现：
+组件可以通过以下函数读取 context：
 
 ```js {5-7}
 const tasks = useTasks();
