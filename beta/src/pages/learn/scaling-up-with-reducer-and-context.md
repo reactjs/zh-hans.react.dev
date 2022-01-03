@@ -1344,7 +1344,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-你可能会想 `TasksProvider` 作为页面的一部分是如何处理 tasks 的，`useTasks` 用来读取它们，`useTasksDispatch` 用来从组件树下的任何组件更新它们。
+你可以将 `TasksProvider` 视为页面的一部分，它知道如何处理 tasks。`useTasks` 用来读取它们，`useTasksDispatch` 用来从组件树下的任何组件更新它们。
 
 > 像 `useTasks` 和 `useTasksDispatch` 被称为 **[自定义钩子](/learn/reusing-logic-with-custom-hooks).** 如果你的函数名以 `use` 开头，它就被认为是一个自定义钩子。这让你可以使用其他 Hook，比如 `useContext`。
 
