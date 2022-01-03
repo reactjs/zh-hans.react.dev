@@ -918,7 +918,7 @@ export const TasksDispatchContext = createContext(null);
 
 1. 它将管理 reducer 的状态。
 2. 它将提供所有的 context 给组件树。
-3. 它将 [把子元素作为 prop](/learn/passing-props-to-a-component#passing-jsx-as-children)，所以你可以传递 JSX。
+3. 它将 [把 `children` 作为 prop](/learn/passing-props-to-a-component#passing-jsx-as-children)，所以你可以传递 JSX。
 
 ```js
 export function TasksProvider({ children }) {
