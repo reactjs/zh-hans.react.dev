@@ -66,7 +66,7 @@ export default function App() {
 
 ## 渲染多个根组件 {/*rendering-multiple-roots*/}
 
-如果你在多个地方都撒了 React ["碎片"](/learn/add-react-to-a-website)，那么你就得为每个由 React 管理的顶层 UI 组件调用 `render` 函数。
+如果你在多个地方都散布了 React ["碎片"](/learn/add-react-to-a-website)，那么你就得为每个由 React 管理的顶层 UI 组件调用 `render` 函数。
 
 <Sandpack>
 
