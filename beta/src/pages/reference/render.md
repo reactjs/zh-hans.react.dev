@@ -12,7 +12,7 @@ translators:
 
 ```js
 render(<App />, container);
-render(<App />, container, callback);方法·
+render(<App />, container, callback);
 ```
 
 </Intro>
