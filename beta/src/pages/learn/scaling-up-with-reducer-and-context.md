@@ -1360,7 +1360,7 @@ ul, li { margin: 0; padding: 0; }
 - 你可以通过将所有传递信息的代码移动到单个文件中来进一步整理组件。
   - 你可以导出一个像 `TasksProvider` 可以提供 context 的组件。
   - 你也可以导出自定义钩子像 `useTasks` 和 `useTasksDispatch`。
-- 你可以在你的应用程序中大量配合使用 context 和 reducer。
+- 你可以在你的应用程序中大量使用 context 和 reducer 的组合。
 
 </Recap>
 
