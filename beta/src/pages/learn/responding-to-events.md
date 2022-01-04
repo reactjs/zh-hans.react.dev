@@ -2,6 +2,8 @@
 title: 响应事件
 translators:
   - Jiacheng787
+  - QC-L
+  - Neo42
 ---
 
 <Intro>
@@ -69,7 +71,7 @@ button { margin-right: 10px; }
 * 通常在你的组件 *内部* 定义。
 * 名称以 `handle` 开头，后跟事件名称。
 
-> 虽然事件处理函数没有特殊的语法，但大家习惯以 handle 为前缀，后接事件名来对它们进行命名。你经常会看到类似 `onClick={handleClick}` 、`onMouseEnter={handleMouseEnter}` 的命名等等。
+> 虽然事件处理函数没有特殊的语法，但大家习惯以 `handle` 为前缀，后接事件名来对它们进行命名。你经常会看到类似 `onClick={handleClick}` 、`onMouseEnter={handleMouseEnter}` 的命名等等。
 
 或者，你也可以在 JSX 中定义一个内联的事件处理函数：
 
@@ -355,7 +357,7 @@ button { margin: 5px; }
 
 </Sandpack>
 
-如果你点击任一按钮，它自身的 `onClick` 将首先执行，然后父级 <div> 的 onClick 会接着执行。因此会出现两条消息。如果你点击 toolbar 本身，将只有父级 `<div>` 的 `onClick` 会执行。
+如果你点击任一按钮，它自身的 `onClick` 将首先执行，然后父级 <div> 的 `onClick` 会接着执行。因此会出现两条消息。如果你点击 toolbar 本身，将只有父级 `<div>` 的 `onClick` 会执行。
 
 <Gotcha>
 
@@ -513,7 +515,7 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-不要混淆 `e.stopPropagation()` 和 `e.preventDefault()`。它们都很有用，但是不相关：
+不要混淆 `e.stopPropagation()` 和 `e.preventDefault()`。它们都很有用，但二者并不相关：
 
 * [`e.stopPropagation()`](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation) 阻止触发绑定在外层标签上的事件处理函数。
 * [`e.preventDefault()`](https://developer.mozilla.org/docs/Web/API/Event/preventDefault) 阻止少数事件的默认浏览器行为。
@@ -522,7 +524,7 @@ button { margin-left: 5px; }
 
 当然可以！事件处理函数是执行副作用的最佳位置。
 
-与渲染函数不同，事件处理函数不需要是 [纯函数](/learn/keeping-components-pure)，因此它是用来 *更改* 某些值的绝佳位置。例如，更改输入框的值以响应键入，或者更改列表以响应按钮的触发。但是，为了更改某些信息，你首先需要某种方式存储它。在 React 中，这是通过 [state（�组件的缓存）](/learn/state-a-components-memory) 来完成的。你将在下一章节了解所有相关信息。
+与渲染函数不同，事件处理函数不需要是 [纯函数](/learn/keeping-components-pure)，因此它是用来 *更改* 某些值的绝佳位置。例如，更改输入框的值以响应键入，或者更改列表以响应按钮的触发。但是，为了更改某些信息，你首先需要某种方式存储它。在 React 中，这是通过 [state（组件的记忆）](/learn/state-a-components-memory) 来完成的。你将在下一章节了解所有相关信息。
 
 <Recap>
 
