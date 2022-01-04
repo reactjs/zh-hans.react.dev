@@ -2,7 +2,7 @@
 title: 对 state 进行保留和重置
 translators:
   - Neo42
-  - YogaLin
+  - Neo42
 ---
 
 <Intro>
