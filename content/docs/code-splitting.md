@@ -38,7 +38,7 @@ console.log(add(16, 26)); // 42
 
 > 注意：
 >
-> 最终你的打包文件看起来会和上面的例子区别很大。
+> 最终你打包后的文件可能看起来会和上面的例子区别很大。
 
 如果你正在使用 [Create React App](https://create-react-app.dev)，[Next.js](https://nextjs.org/)，[Gatsby](https://www.gatsbyjs.org/)，或者类似的工具，你可以直接使用内置的 Webpack 配置来构建你的应用。
 
