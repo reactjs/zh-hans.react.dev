@@ -914,10 +914,10 @@ export const TasksContext = createContext(null);
 export const TasksDispatchContext = createContext(null);
 ```
 
-这个文件即将变得臃肿！你将会把 reducer 移动到同一文件中。然后，你将在这个文件中声明一个新的 `TasksProvider` 组件。此组件将所有部分连接在一起：
+来给这个文件添加更多代码！将 reducer 移动到此文件中，然后声明一个新的 `TasksProvider` 组件。此组件将所有部分连接在一起：
 
 1. 它将管理 reducer 的状态。
-2. 它将提供所有的 context 给组件树。
+2. 它将提供现有的 context 给组件树。
 3. 它将 [把 `children` 作为 prop](/learn/passing-props-to-a-component#passing-jsx-as-children)，所以你可以传递 JSX。
 
 ```js
@@ -934,7 +934,7 @@ export function TasksProvider({ children }) {
 }
 ```
 
-**这将从你的 `TaskBoard` 组件中移除所有错综复杂的东西：**
+**这将使 TaskBoard 组件更加直观：**
 
 <Sandpack>
 
