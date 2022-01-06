@@ -3,6 +3,7 @@ title: 渲染和提交
 translators:
   - oceanlvr
   - KimYangOfCat
+  - Neo42
 ---
 
 <Intro>
@@ -132,7 +133,7 @@ img { margin: 0 10px 10px 0; }
 </Sandpack>
 
 * **在初次渲染中，** React 将会为`<section>`、`<h1>` 和三个 `<img>` 标签 [创建 DOM 节点](https://developer.mozilla.org/docs/Web/API/Document/createElement)。
-* **在一次重渲染过程中,** React 将计算它们的哪些属性（如果有）自上次渲染以来已更改。在下一步（提交阶段）之前，它不会对这些信息执行任何操作。
+* **在一次重渲染过程中,** React 将计算它们的哪些属性（如果有的话）自上次渲染以来已更改。在下一步（提交阶段）之前，它不会对这些信息执行任何操作。
 
 <Gotcha>
 
@@ -198,7 +199,7 @@ export default function App() {
 
 </Sandpack>
 
-这个例子之所以会正常运行，是因为在最后一步中，React 只会使用最新的 `time` 更新 `<h1>` 标签的内容。它看到 `<input>` 标签出现在 JSX 中与上次相同的位置，因此 React 不会动 `<input>` 标签或它的 `value`！
+这个例子之所以会正常运行，是因为在最后一步中，React 只会使用最新的 `time` 更新 `<h1>` 标签的内容。它看到 `<input>` 标签出现在 JSX 中与上次相同的位置，因此 React 不会修改 `<input>` 标签或它的 `value`！
 ## 尾声：浏览器绘制 {/*epilogue-browser-paint*/}
 
 在渲染完成并且 React 更新 DOM 之后，浏览器就会重新绘制屏幕。尽管这个过程被称为“浏览器渲染”（“browser rendering”)，但我们还是将它称为“绘制”（“painting”），以避免在这些文档的其余部分中出现混淆。
