@@ -2,6 +2,7 @@
 title: 渲染和提交
 translators:
   - oceanlvr
+  - KimYangOfCat
 ---
 
 <Intro>
@@ -15,30 +16,30 @@ translators:
 * 在 React 中渲染的含义是什么
 * 为什么以及什么时候 React 会渲染一个组件
 * 在屏幕上显示组件所涉及的步骤
-* 为什么渲染不总是伴随着 DOM 更新
+* 为什么渲染并不总会导致 DOM 更新
 
 </YouWillLearn>
 
-想象一下，您的组件是厨房里的厨师，用食材“组装”成美味的菜肴。在这种场景下，React 是一名服务员，他接收客户的请求并给用户们带回完成的订单。请求和提供 UI 的过程总共包括三个步骤： 
+想象一下，您的组件是厨房里的厨师，把食材烹制成美味的菜肴。在这种场景下，React 就是一名服务员，他会帮客户们下单并为他们送来所点的菜品。请求和提供 UI 的过程总共包括三个步骤： 
 
-1. 渲染 **触发中** (传递客户的订单到厨房)
-2. 组件 **渲染中** (从厨房取得完成的订单)
-3. 修改 **提交中** (将订单放在桌子上)
+1. **触发**一次渲染（把客人的点单分发到厨房）
+2. **渲染**组件（从厨房取得所点的菜品）
+3. **提交**到 DOM（将菜品放在桌子上）
 
 <IllustrationBlock sequential>
-  <Illustration caption="触发" alt="React as a server in a restaurant, fetching orders from the users and delivering them to the Component Kitchen." src="/images/docs/illustrations/i_render-and-commit1.png" />
-  <Illustration caption="渲染" alt="The Card Chef gives React a fresh Card component." src="/images/docs/illustrations/i_render-and-commit2.png" />
-  <Illustration caption="提交" alt="React delivers the Card to the user at their table." src="/images/docs/illustrations/i_render-and-commit3.png" />
+  <Illustration caption="触发" alt="React 作为餐厅里的服务员，从用户那里获取点单并把它们分发到组件厨房。" src="/images/docs/illustrations/i_render-and-commit1.png" />
+  <Illustration caption="渲染" alt="Card 主厨交给 React 一个新鲜的 Card 组件。" src="/images/docs/illustrations/i_render-and-commit2.png" />
+  <Illustration caption="提交" alt="React 把 Card 送到用户桌上。" src="/images/docs/illustrations/i_render-and-commit3.png" />
 </IllustrationBlock>
 
 ## 步骤 1: 触发一次渲染 {/*step-1-trigger-a-render*/}
 
 有两种原因会导致组件的渲染:
 
-1. 组件的 **初始化渲染。**
+1. 组件的 **初始渲染。**
 2. 组件的 **状态发生了改变。**
 
-### 初始化渲染 {/*initial-render*/}
+### 初始渲染 {/*initial-render*/}
 
 当应用启动时，会触发初始渲染。框架和沙箱有时会隐藏这部分代码，但这是通过使用根组件和目标 DOM 节点调用 `ReactDOM.render` 来达成的：
 
@@ -74,19 +75,19 @@ export default function Image() {
 一旦组件被渲染初始化后，您可以通过使用 [`setState`](reference/setstate) 更新其状态来触发之后的渲染。更新组件的状态会自动将渲染送入队列。（您可以想象这种情况为餐厅客人于第一次下单之后点了一份茶或点心或各种东西，具体取决于他们的状态现在是饿了或是渴了。）
 
 <IllustrationBlock sequential>
-  <Illustration caption="状态更新..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. They patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
-  <Illustration caption="...触发..." alt="React returns to the Component Kitchen and tells the Card Chef they need a pink Card." src="/images/docs/illustrations/i_rerender2.png" />
-  <Illustration caption="...渲染!" alt="The Card Chef gives React the pink Card." src="/images/docs/illustrations/i_rerender3.png" />
+  <Illustration caption="状态更新..." alt="React 作为餐厅服务员将一份 Card UI 送到用户那里，用户用头部是光标的顾客表示。顾客说她想要一个粉色的 Card，而不是黑色的。" src="/images/docs/illustrations/i_rerender1.png" />
+  <Illustration caption="...触发..." alt="React 回到组件厨房并告诉 Card 主厨他们需要一个粉色 Card。" src="/images/docs/illustrations/i_rerender2.png" />
+  <Illustration caption="...渲染!" alt="Card 主厨把粉色 Card 交给 React。" src="/images/docs/illustrations/i_rerender3.png" />
 </IllustrationBlock>
 
 ## 步骤 2: React 渲染您的组件 {/*step-2-react-renders-your-components*/}
 
 在你触发渲染后，React 会调用你的组件来确定要在屏幕上显示的内容。**"渲染中" 即 React 在调用您的组件。** 
 
-* **当第一次渲染,** React 会调用根组件
-* **对于后续的渲染,** React 将调用其状态更新触发了渲染的函数组件。
+* **在进行初次渲染时,** React 会调用根组件。
+* **对于后续的渲染,** React 会调用内部状态更新触发了渲染的函数组件。
 
-这个处理是递归的：如果更新组件返回了一些其他的组件，React 接下来将会渲染 _那个_ 组件，同时如果那个组件也返回一些其他的组件，接下来也会渲染 _那个_ 组件，返回如此。这个过程会持续下去直到没有更多的嵌套组件而 React 也就会确切地知道哪些东西应该显示到屏幕上了。
+这个过程是递归的：如果更新后的组件会返回某个另外的组件，那么 React 接下来就会渲染 _那个_ 组件，而如果那个组件又返回了某个组件，那么 React 接下来就会渲染 _那个_ 组件，以此类推。这个过程会持续下去，直到没有更多的嵌套组件并且 React 确切知道哪些东西应该显示到屏幕上为止。
 
 在接下来的例子中，React 将会调用 `Gallery()` 和 `Image()` 若干次：
 
@@ -130,15 +131,15 @@ img { margin: 0 10px 10px 0; }
 
 </Sandpack>
 
-* **在初次渲染中，** React 将会为`<section>`，`<h1>` 和三个 `<img>` 标签 [创建 DOM 节点](https://developer.mozilla.org/docs/Web/API/Document/createElement)。
+* **在初次渲染中，** React 将会为`<section>`、`<h1>` 和三个 `<img>` 标签 [创建 DOM 节点](https://developer.mozilla.org/docs/Web/API/Document/createElement)。
 * **在一次重渲染过程中,** React 将计算它们的哪些属性（如果有）自上次渲染以来已更改。在下一步（提交阶段）之前，它不会对这些信息执行任何操作。
 
 <Gotcha>
 
-渲染必须总是一次 [纯计算](/learn/keeping-components-pure):
+渲染必须始终是一次 [纯计算](/learn/keeping-components-pure):
 
-* **一些输入，一些输出。** 给定相同的输入，组件应始终返回相同的 JSX。（当有人点了西红柿沙拉时，他们不应该收到洋葱沙拉！）
-* **管好它自己的事情。** 它不应更改渲染之前存在的任何对象或变量。（一个订单不应更改其他任何人的订单。）
+* **输入相同，输出相同。** 给定相同的输入，组件应始终返回相同的 JSX。（当有人点了西红柿沙拉时，他们不应该收到洋葱沙拉！）
+* **管好它自己的事情。** 它不应更改任何存在于渲染之前的对象或变量。（一个订单不应更改其他任何人的订单。）
 
 否则，随着代码库复杂性的增加，您可能会遇到令人困惑的错误和不可预测的行为。在"严格模式"下开发时，React 会调用每个组件的函数两次，这可以帮助发现由不纯函数引起的错误。
 
@@ -146,18 +147,18 @@ img { margin: 0 10px 10px 0; }
 
 <DeepDive title="性能优化">
 
-如果更新的组件在树中的位置非常高，渲染所有嵌套的组件并且带有更新后的组件这种默认行为不是性能上的最佳选择。如果您遇到了性能问题，[性能](/learn/performance) 章节描述了几种可选的解决方案 。**不要过早优化！**
+如果更新的组件在树中的位置非常高，渲染更新后的组件内部所有嵌套组件的默认行为不是性能上的最佳选择。如果您遇到了性能问题，[性能](/learn/performance) 章节描述了几种可选的解决方案 。**不要过早进行优化！**
 
 </DeepDive>
 
-## 步骤 3: React 提交更改到 DOM 上 {/*step-3-react-commits-changes-to-the-dom*/}
+## 步骤 3: React 把更改提交到 DOM 上 {/*step-3-react-commits-changes-to-the-dom*/}
 
-在（调用）渲染你的组件之后，React 将会修改 DOM。
+在渲染（调用）你的组件之后，React 将会修改 DOM。
 
-* **对于初次渲染，** React 会使用 [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) DOM API 以将其创建的所有 DOM 节点并放在屏幕上。
-* **对于重渲染，** React 将应用最少的必要操作（在渲染时计算！），以使 DOM 与最新的渲染输出匹配。
+* **对于初次渲染，** React 会使用 [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) DOM API 将其创建的所有 DOM 节点放在屏幕上。
+* **对于重渲染，** React 将应用最少的必要操作（在渲染时计算！），以使得 DOM 与最新的渲染输出相互匹配。
 
-**React 仅在渲染之间存在差异时更改 DOM 节点。** 例如，有一个组件，它每秒使用从父组件传递下来的不同属性重新渲染。注意，您如果添加一些文本到 `<input>` 标签，更新它的 `value`，但是文本不会在组件重渲染时消失：
+**React 仅在渲染之间存在差异时才会更改 DOM 节点。**例如，有一个组件，它每秒使用从父组件传递下来的不同属性重新渲染一次。注意，您可以添加一些文本到 `<input>` 标签，更新它的 `value`，但是文本不会在组件重渲染时消失：
 
 <Sandpack>
 
@@ -197,12 +198,12 @@ export default function App() {
 
 </Sandpack>
 
-这是有效的是因为在最后一步中，React 只使用最新的 `time` 更新 `<h1>` 标签的内容。它看到 `<input>` 标签出现在 JSX 中与上次相同的位置，因此 React 不会触碰 `<input>` 标签或它的 `value`！
+这个例子之所以会正常运行，是因为在最后一步中，React 只会使用最新的 `time` 更新 `<h1>` 标签的内容。它看到 `<input>` 标签出现在 JSX 中与上次相同的位置，因此 React 不会动 `<input>` 标签或它的 `value`！
 ## 尾声：浏览器绘制 {/*epilogue-browser-paint*/}
 
-在渲染完成之后 React 会更新 DOM，浏览器会重绘这个屏幕，尽管这个过程被称之为 “浏览器重绘” ("browser rendering")，我们将它称为 “绘制” ("painting")，以避免在这些文档的其余部分中混淆。
+在渲染完成并且 React 更新 DOM 之后，浏览器就会重新绘制屏幕。尽管这个过程被称为“浏览器渲染”（“browser rendering”)，但我们还是将它称为“绘制”（“painting”），以避免在这些文档的其余部分中出现混淆。
 
-<Illustration alt="A browser painting 'still life with card element'." src="/images/docs/illustrations/i_browser-paint.png" />
+<Illustration alt="浏览器正在绘制《静物：Card 元素》" src="/images/docs/illustrations/i_browser-paint.png" />
 
 <Recap>
 
@@ -211,7 +212,7 @@ export default function App() {
   2. 渲染
   3. 提交
 * 您可以使用严格模式去找到组件中的错误
-* React 不会去修改重渲染结果与上次一样的 DOM
+* 如果渲染结果与上次一样，那么 React 将不会修改 DOM
 
 </Recap>
 
