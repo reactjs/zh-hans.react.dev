@@ -2,6 +2,7 @@
 title: 保持组件的纯净
 translators:
   - 7ooz
+  - Hyuain
 ---
 
 <Intro>
