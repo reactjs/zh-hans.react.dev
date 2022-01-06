@@ -37,12 +37,12 @@ translators:
 
 有两种原因会导致组件的渲染:
 
-1. 组件的 **初始渲染。**
+1. 组件的 **初次渲染。**
 2. 组件的 **状态发生了改变。**
 
-### 初始渲染 {/*initial-render*/}
+### 初次渲染 {/*initial-render*/}
 
-当应用启动时，会触发初始渲染。框架和沙箱有时会隐藏这部分代码，但这是通过使用根组件和目标 DOM 节点调用 `ReactDOM.render` 来达成的：
+当应用启动时，会触发初次渲染。框架和沙箱有时会隐藏这部分代码，但这是通过使用根组件和目标 DOM 节点调用 `ReactDOM.render` 来达成的：
 
 <Sandpack>
 
@@ -73,7 +73,7 @@ export default function Image() {
 
 ### 状态更新时重新渲染 {/*re-renders-when-state-updates*/}
 
-一旦组件被初始渲染，您就可以通过使用 [`setState`](reference/setstate) 更新其状态来触发之后的渲染。更新组件的状态会自动将一次渲染送入队列。（您可以想象这种情况成餐厅客人在第一次下单之后又点了茶、点心和各种东西，具体取决于他们的胃口。）
+一旦组件被初次渲染，您就可以通过使用 [`setState`](reference/setstate) 更新其状态来触发之后的渲染。更新组件的状态会自动将一次渲染送入队列。（您可以想象这种情况成餐厅客人在第一次下单之后又点了茶、点心和各种东西，具体取决于他们的胃口。）
 
 <IllustrationBlock sequential>
   <Illustration caption="状态更新..." alt="React 作为餐厅服务员将一份 Card UI 送到用户那里，用户用头部是光标的顾客表示。顾客说她想要一个粉色的 Card，而不是黑色的。" src="/images/docs/illustrations/i_rerender1.png" />
@@ -83,7 +83,7 @@ export default function Image() {
 
 ## 步骤 2: React 渲染您的组件 {/*step-2-react-renders-your-components*/}
 
-在你触发渲染后，React 会调用你的组件来确定要在屏幕上显示的内容。**"渲染中" 即 React 在调用您的组件。** 
+在您触发渲染后，React 会调用您的组件来确定要在屏幕上显示的内容。**"渲染中" 即 React 在调用您的组件。** 
 
 * **在进行初次渲染时,** React 会调用根组件。
 * **对于后续的渲染,** React 会调用内部状态更新触发了渲染的函数组件。
@@ -154,7 +154,7 @@ img { margin: 0 10px 10px 0; }
 
 ## 步骤 3: React 把更改提交到 DOM 上 {/*step-3-react-commits-changes-to-the-dom*/}
 
-在渲染（调用）你的组件之后，React 将会修改 DOM。
+在渲染（调用）您的组件之后，React 将会修改 DOM。
 
 * **对于初次渲染，** React 会使用 [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) DOM API 将其创建的所有 DOM 节点放在屏幕上。
 * **对于重渲染，** React 将应用最少的必要操作（在渲染时计算！），以使得 DOM 与最新的渲染输出相互匹配。
