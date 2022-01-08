@@ -229,11 +229,11 @@ Reducer 有助于保持事件处理程序的简短明了。但随着应用规模
 />
 ```
 
-在像这样的小示例里这样做没什么问题，但是如果你有成千上百个组件，传递所有状态和函数就会让你非常烦恼！
+在像这样的小示例里这样做没什么问题，但是如果你有成千上百个组件，传递所有状态和函数可能会非常麻烦！
 
 <!--(TODO: illustration of prop drilling)-->
 
-这就是为什么，比起通过 props 传递它们，你可能想把 `tasks` 状态和 `dispatch` 函数都 [放入 context](/learn/passing-data-deeply-with-context)。**这样，所有的在 `TaskBoard` 组件树之下的组件都不必一直往下传 props 而可以直接读取 tasks 和 dispatch 函数。**
+这就是为什么，比起通过 props 传递它们，你可能会想把 `tasks` 状态和 `dispatch` 函数都 [放入 context](/learn/passing-data-deeply-with-context)。**这样，所有的在 `TaskBoard` 组件树之下的组件都不必重复往下传 props 而可以直接读取 tasks 和 dispatch 函数。**
 
 <!--(TODO: illustration of context)-->
 
@@ -251,10 +251,10 @@ Reducer 有助于保持事件处理程序的简短明了。但随着应用规模
 const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 ```
 
-为了将它们从组件树往下传，你将 [创建](/learn/passing-data-deeply-with-context#step-2-use-the-context) 两个不同的 context：
+为了将它们从组件树往下传，你将 [创建](/learn/passing-data-deeply-with-context#step-2-use-the-context) 两个独立的 context：
 
 - `TasksContext` 提供当前的 tasks 列表。
-- `TasksDispatchContext` 提供了一个函数可以让组件分发动作。
+- `TasksDispatchContext` 提供了一个函数，以便让组件分发动作。
 
 将它们从单独的文件导出，以便以后可以从其他文件导入它们：
 
@@ -1358,7 +1358,7 @@ ul, li { margin: 0; padding: 0; }
   2. 让组件的 context 使用 reducer。
   3. 使用组件中需要读取的 context。
 - 你可以通过将所有传递信息的代码移动到单个文件中来进一步整理组件。
-  - 你可以导出一个像 `TasksProvider` 可以提供 context 的组件。
+  - 你可以导出一个例如 `TasksProvider` 这样可以提供 context 的组件。
   - 你也可以导出像 `useTasks` 和 `useTasksDispatch` 这样的自定义 Hook。
 - 你可以在你的应用程序中大量使用 context 和 reducer 的组合。
 
