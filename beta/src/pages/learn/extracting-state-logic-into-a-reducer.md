@@ -1,5 +1,5 @@
 ---
-title: 把状态逻辑移到 Reducer 中
+title: 迁移状态逻辑至 Reducer 中
 translators:
   - qinhua
   - yyyang1996
@@ -60,7 +60,7 @@ export default function TaskBoard() {
 
   return (
     <>
-      <h1>布拉格的行程</h1>
+      <h1>布拉格的行程安排</h1>
       <AddTask
         onAddTask={handleAddTask}
       />
@@ -77,7 +77,7 @@ let nextId = 3;
 const initialTasks = [
   { id: 0, text: '参观卡夫卡博物馆', done: true },
   { id: 1, text: '看木偶戏', done: false },
-  { id: 2, text: '列侬墙图片', done: false },
+  { id: 2, text: '打卡列侬墙', done: false },
 ];
 ```
 
@@ -227,8 +227,7 @@ function handleDeleteTask(taskId) {
 * `handleChangeTask(task)` 在用户切换任务或点击 “保存” 时被调用。
 * `handleDeleteTask(taskId)` 在用户点击 “删除” 时被调用。
 
-使用 reducers 管理状态与直接设置状态略有不同。它不是通过设置状态告诉 React “要做什么”，而是通过事件处理程序 dispatch 一个 “action” 来指明 “用户刚刚做了什么”。(状态更新逻辑在其他地方！)
-因此，我们不再通过事件处理器直接“设置任务”，而是 dispatch 一个 “添加/修改/删除任务” 的 action。这更加符合用户的思维。
+使用 reducers 管理状态与直接设置状态略有不同。它不是通过设置状态告诉 React “要做什么”，而是通过事件处理程序 dispatch 一个 “action” 来指明 “用户刚刚做了什么”。(状态更新逻辑在其他地方！)因此，我们不再通过事件处理器直接“设置任务”，而是 dispatch 一个 “添加/修改/删除任务” 的 action。这更加符合用户的思维。
 
 ```js
 function handleAddTask(text) {
@@ -269,6 +268,7 @@ function handleDeleteTask(taskId) {
 ```
 
 它是一个普通的 JavaScript 对象。它的结构是由你决定的，但通常来说，它应该至少包含可以表明 *发生了什么事情* 的信息。（在后面的步骤中，你将会学习如何添加一个 `dispatch` 函数。）
+
 <Convention conventionFor="action objects">
 
 action 对象可以有多种结构。按照惯例，我们通常会添加一个字符串类型的 `type` 字段来描述发生了什么，并通过其它字段传递额外的信息。`type` 是特定于组件的，在这个例子中 `added` 和 `addded_task` 都可以。选一个能描述清楚发生的事件的名字！
@@ -328,6 +328,7 @@ function tasksReducer(tasks, action) {
 ```
 
 > 由于 `reducer` 函数接受 `state`（tasks）作为参数，因此你可以 **在组件之外声明它**。**这减少了代码的缩进级别，提升了代码的可读性。
+
 <Convention conventionFor="reducer functions">
 
 上面的代码使用了 `if/else` 语句，但是在 reducers 中使用 [switch 语句](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/switch) 是一种惯例。两种方式结果是相同的，但 `switch` 语句读起来一目了然。在本文档的后面部分我们会像这样使用：
@@ -370,7 +371,6 @@ function tasksReducer(tasks, action) {
 
 <DeepDive title="为什么叫它 reducer 呢？">
 
-
 尽管 `reducer` 可以 “减少” 组件内的代码量，但它实际上是以数组上的 [`reduce()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) 方法命名的。
 
 `reduce()` 允许你将数组中的多个值 “累加” 成一个值：
@@ -396,7 +396,7 @@ let actions = [
   { type: 'added', id: 1, text: '参观卡夫卡博物馆' },
   { type: 'added', id: 2, text: '看木偶戏' },
   { type: 'deleted', id: 1 },
-  { type: 'added', id: 3, text: '列侬墙图片' },
+  { type: 'added', id: 3, text: '打卡列侬墙' },
 ];
 
 let finalState = actions.reduce(
@@ -525,7 +525,7 @@ export default function TaskBoard() {
 
   return (
     <>
-      <h1>布拉格的行程</h1>
+      <h1>布拉格的行程安排</h1>
       <AddTask
         onAddTask={handleAddTask}
       />
@@ -569,7 +569,7 @@ let nextId = 3;
 const initialTasks = [
   { id: 0, text: '参观卡夫卡博物馆', done: true },
   { id: 1, text: '看木偶戏', done: false },
-  { id: 2, text: '列侬墙图片', done: false }
+  { id: 2, text: '打卡列侬墙', done: false }
 ];
 ```
 
@@ -715,7 +715,7 @@ export default function TaskBoard() {
 
   return (
     <>
-      <h1>布拉格的行程</h1>
+      <h1>布拉格的行程安排</h1>
       <AddTask
         onAddTask={handleAddTask}
       />
@@ -732,7 +732,7 @@ let nextId = 3;
 const initialTasks = [
   { id: 0, text: '参观卡夫卡博物馆', done: true },
   { id: 1, text: '看木偶戏', done: false },
-  { id: 2, text: '列侬墙图片', done: false },
+  { id: 2, text: '打卡列侬墙', done: false },
 ];
 ```
 
@@ -876,11 +876,11 @@ ul, li { margin: 0; padding: 0; }
 
 Reducers 并非没有缺点！以下是比较它们的几种方法：
 
-- **代码体积：** 通常，在使用 `useState` 时，一开始只需要编写少量代码。而 `useReducer` 必须提前编写 reducer 函数和需要调度的 actions。但是，当多个事件处理程序以相似的方式修改 state 时，`useReducer` 可以减少代码量。
-- **可读性：** 当状态更新逻辑足够简单时，`useState` 的可读性还行。但是，一旦逻辑变得复杂起来，它们会使组件变得臃肿且难以阅读。在这种情况下，`useReducer` 允许你将状态更新逻辑与事件处理程序分离开来。
-- **可调试性：** 当使用 `useState` 出现问题时, 你很难发现具体原因以及为什么。 而使用 `useReducer` 时， 你可以在 reducer 函数中通过打印日志的方式来观察每个状态的更新，以及为什么要更新（来自哪个 `action`）。 如果所有 `action` 都没问题，你就知道问题出在了 reducer 本身的逻辑中。 然而，与使用 `useState` 相比，你必须单步执行更多的代码。
-- **可测试性：** reducer 是一个不依赖于组件的纯函数。这就意味着你可以单独对它进行测试。一般来说，我们最好是在真实环境中测试组件，但对于复杂的状态更新逻辑，针对特定的初始状态和 `action`，断言 reducer 返回的特定状态会很有帮助。
-- **个人偏好：** 并不是所有人都喜欢用 reducer，没关系，这是个人偏好问题。你可以随时在 `useState` 和 `useReducer` 之间切换，它们能做的事情是一样的！
+* **代码体积：** 通常，在使用 `useState` 时，一开始只需要编写少量代码。而 `useReducer` 必须提前编写 reducer 函数和需要调度的 actions。但是，当多个事件处理程序以相似的方式修改 state 时，`useReducer` 可以减少代码量。
+* **可读性：** 当状态更新逻辑足够简单时，`useState` 的可读性还行。但是，一旦逻辑变得复杂起来，它们会使组件变得臃肿且难以阅读。在这种情况下，`useReducer` 允许你将状态更新逻辑与事件处理程序分离开来。
+* **可调试性：** 当使用 `useState` 出现问题时, 你很难发现具体原因以及为什么。 而使用 `useReducer` 时， 你可以在 reducer 函数中通过打印日志的方式来观察每个状态的更新，以及为什么要更新（来自哪个 `action`）。 如果所有 `action` 都没问题，你就知道问题出在了 reducer 本身的逻辑中。 然而，与使用 `useState` 相比，你必须单步执行更多的代码。
+* **可测试性：** reducer 是一个不依赖于组件的纯函数。这就意味着你可以单独对它进行测试。一般来说，我们最好是在真实环境中测试组件，但对于复杂的状态更新逻辑，针对特定的初始状态和 `action`，断言 reducer 返回的特定状态会很有帮助。
+* **个人偏好：** 并不是所有人都喜欢用 reducer，没关系，这是个人偏好问题。你可以随时在 `useState` 和 `useReducer` 之间切换，它们能做的事情是一样的！
 
 如果你在修改某些组件状态时经常出现问题或者想给组件添加更多逻辑时，我们建议你还是使用 reducer。当然，你也不必整个项目都用 reducer，这是可以自由搭配的。你甚至可以在一个组件中同时使用 `useState` 和 `useReducer`。
 
@@ -958,7 +958,7 @@ export default function TaskBoard() {
 
   return (
     <>
-      <h1>布拉格的行程</h1>
+      <h1>布拉格的行程安排</h1>
       <AddTask
         onAddTask={handleAddTask}
       />
@@ -975,7 +975,7 @@ let nextId = 3;
 const initialTasks = [
   {id: 0, text: '参观卡夫卡博物馆', done: true},
   {id: 1, text: '看木偶戏', done: false},
-  {id: 2, text: '列侬墙图片', done: false},
+  {id: 2, text: '打卡列侬墙', done: false},
 ];
 ```
 
