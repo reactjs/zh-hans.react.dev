@@ -207,7 +207,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-Reducer 有助于保持事件处理程序的简短明了。但随着应用规模越来越庞大，你就可能会遇到别的困难。 **目前，`tasks` 状态和 `dispatch` 函数仅在顶级 `TaskBoard` 组件中可用。** 若要让其他组件读取 `tasks` 状态或对其进行更改，必须以 props 的形式显式 [传递](/learn/passing-props-to-a-component) 它。
+Reducer 有助于保持事件处理程序的简短明了。但随着应用规模越来越庞大，你就可能会遇到别的困难。**目前，`tasks` 状态和 `dispatch` 函数仅在顶级 `TaskBoard` 组件中可用。** 若要让其他组件读取 `tasks` 状态或对其进行更改，必须以 props 的形式显式 [传递](/learn/passing-props-to-a-component) 它。
 
 例如，`TaskBoard` 将 `tasks` 和事件处理程序传递给 `TaskList`：
 
