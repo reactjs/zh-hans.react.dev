@@ -5,6 +5,7 @@ translators:
   - KimYangOfCat
   - Neo42
   - TinaaaaP
+  - KnowsCount
 ---
 
 <Intro>
