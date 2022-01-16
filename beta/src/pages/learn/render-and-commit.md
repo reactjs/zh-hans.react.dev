@@ -4,6 +4,7 @@ translators:
   - oceanlvr
   - KimYangOfCat
   - Neo42
+  - TinaaaaP
 ---
 
 <Intro>
@@ -17,11 +18,11 @@ translators:
 * 在 React 中渲染的含义是什么
 * 为什么以及什么时候 React 会渲染一个组件
 * 在屏幕上显示组件所涉及的步骤
-* 为什么渲染并不总会导致 DOM 更新
+* 为什么渲染并不一定会导致 DOM 更新
 
 </YouWillLearn>
 
-想象一下，您的组件是厨房里的厨师，把食材烹制成美味的菜肴。在这种场景下，React 就是一名服务员，他会帮客户们下单并为他们送来所点的菜品。请求和提供 UI 的过程总共包括三个步骤： 
+想象一下，您的组件是厨房里的厨师，把食材烹制成美味的菜肴。在这种场景下，React 就是一名服务员，他会帮客户们下单并为他们送来所点的菜品。这种请求和提供 UI 的过程总共包括三个步骤： 
 
 1. **触发** 一次渲染（把客人的点单分发到厨房）
 2. **渲染** 组件（从厨房取得所点的菜品）
@@ -76,7 +77,7 @@ export default function Image() {
 一旦组件被初次渲染，您就可以通过使用 [`setState`](reference/setstate) 更新其状态来触发之后的渲染。更新组件的状态会自动将一次渲染送入队列。（您可以想象这种情况成餐厅客人在第一次下单之后又点了茶、点心和各种东西，具体取决于他们的胃口。）
 
 <IllustrationBlock sequential>
-  <Illustration caption="状态更新..." alt="React 作为餐厅服务员将一份 Card UI 送到用户那里，用户用头部是光标的顾客表示。顾客说她想要一个粉色的 Card，而不是黑色的。" src="/images/docs/illustrations/i_rerender1.png" />
+  <Illustration caption="状态更新..." alt="React 作为餐厅服务员将一份 Card UI 送到用户那里，这里的用户以头部为光标的顾客表示。顾客说她想要一个粉色的 Card，而不是黑色的。" src="/images/docs/illustrations/i_rerender1.png" />
   <Illustration caption="...触发..." alt="React 回到组件厨房并告诉 Card 主厨他们需要一个粉色 Card。" src="/images/docs/illustrations/i_rerender2.png" />
   <Illustration caption="...渲染!" alt="Card 主厨把粉色 Card 交给 React。" src="/images/docs/illustrations/i_rerender3.png" />
 </IllustrationBlock>
@@ -148,7 +149,7 @@ img { margin: 0 10px 10px 0; }
 
 <DeepDive title="性能优化">
 
-如果更新的组件在树中的位置非常高，渲染更新后的组件内部所有嵌套组件的默认行为不是性能上的最佳选择。如果您遇到了性能问题，[性能](/learn/performance) 章节描述了几种可选的解决方案 。**不要过早进行优化！**
+如果更新的组件在树中的位置非常高，渲染更新后的组件内部所有嵌套组件的默认行为将不会获得最佳性能。如果您遇到了性能问题，[性能](/learn/performance) 章节描述了几种可选的解决方案 。**不要过早进行优化！**
 
 </DeepDive>
 
