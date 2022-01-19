@@ -275,10 +275,10 @@ const ConnectedComment = enhance(CommentList);
 这种形式可能看起来令人困惑或不必要，但它有一个有用的属性。 像 `connect` 函数返回的单参数 HOC 具有签名 `Component => Component`。 输出类型与输入类型相同的函数很容易组合在一起。
 
 ```js
-// 建议不要这样写...
+// 不推荐如下写法...
 const EnhancedComponent = withRouter(connect(commentSelector)(WrappedComponent))
 
-// ... 而是编写组合工具函数
+// ... 建议编写组合工具函数
 // compose(f, g, h) 等同于 (...args) => f(g(h(...args)))
 const enhance = compose(
   // 这些都是单参数的 HOC
