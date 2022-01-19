@@ -33,11 +33,7 @@ function MyDiv(props) {
 }
 ```
 
-<<<<<<< HEAD
 **Good：** 展开运算符能从 props 中剥离变量，并将剩余的 props 放到一个新变量中。
-=======
-**Good:** The spread syntax can be used to pull variables off props, and put the remaining props into a variable.
->>>>>>> 9ed29b0df612b66d4802dba8085b5ef9d52722c8
 
 ```js
 function MyDiv(props) {
