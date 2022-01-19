@@ -357,7 +357,7 @@ button { margin: 5px; }
 
 </Sandpack>
 
-如果你点击任一按钮，它自身的 `onClick` 将首先执行，然后父级 <div> 的 `onClick` 会接着执行。因此会出现两条消息。如果你点击 toolbar 本身，将只有父级 `<div>` 的 `onClick` 会执行。
+如果你点击任一按钮，它自身的 `onClick` 将首先执行，然后父级 `<div>` 的 `onClick` 会接着执行。因此会出现两条消息。如果你点击 toolbar 本身，将只有父级 `<div>` 的 `onClick` 会执行。
 
 <Gotcha>
 
