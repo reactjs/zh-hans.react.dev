@@ -3,6 +3,7 @@ title: 更新 state 中的数组
 translators:
   - yliaz
   - takeItIzzy
+  - KnowsCount
 ---
 
 <Intro>
