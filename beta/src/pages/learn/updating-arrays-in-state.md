@@ -1,5 +1,8 @@
 ---
-title: 修改 State 中的数组
+title: 更新 state 中的数组
+translators:
+  - yliaz
+  - takeItIzzy
 ---
 
 <Intro>
@@ -35,7 +38,7 @@ title: 修改 State 中的数组
 
 <Gotcha>
 
-不幸的是，虽然 [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 和 [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 的名字相似，但作用却迥然不同：
+不幸的是，虽然 [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) 和 [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 的名字相似，但作用却迥然不同：
 
 * `slice` 让你可以拷贝数组或是数组的一部分。
 * `splice` **会直接修改** 原始数组（插入或者删除元素）。
@@ -46,7 +49,7 @@ title: 修改 State 中的数组
 
 ### 向数组中添加元素 {/*adding-to-an-array*/}
 
-`push()` 会直接修改原始数组，这是你所不希望的：
+`push()` 会直接修改原始数组，而你不希望这样：
 
 <Sandpack>
 
@@ -89,7 +92,7 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-相反，你应该创建一个*新*数组，其包含了原始数组的所有元素*以及*一个在末尾的新元素。这可以通过很多种方法实现，最简单的一种就是使用 `...` [数组展开](a-javascript-refresher#array-spread) 语法：
+相反，你应该创建一个 *新* 数组，其包含了原始数组的所有元素 *以及* 一个在末尾的新元素。这可以通过很多种方法实现，最简单的一种就是使用 `...` [数组展开](a-javascript-refresher#array-spread) 语法：
 
 ```js
 setArtists( // 替换 state
@@ -200,7 +203,7 @@ export default function List() {
 
 </Sandpack>
 
-点击“删除”按钮几次，并且查看按钮处理点击事件的代码。
+点击 “删除” 按钮几次，并且查看按钮处理点击事件的代码。
 
 ```js
 setArtists(
@@ -214,7 +217,7 @@ setArtists(
 
 如果你想改变数组中的某些或全部元素，你可以用 `map()` 创建一个**新**数组。你传入 `map` 的函数决定了要根据每个元素的值或索引（或二者都要）对元素做何处理。
 
-在下面的例子中，数组中记录了两个圆形和一个正方形的坐标。当你点击按钮时，仅有两个圆形会向下移动 100 像素。这是通过使用 `map()` 生成一个新数组实现的。
+在下面的例子中，一个数组记录了两个圆形和一个正方形的坐标。当你点击按钮时，仅有两个圆形会向下移动 100 像素。这是通过使用 `map()` 生成一个新数组实现的。
 
 <Sandpack>
 
@@ -235,17 +238,17 @@ export default function ShapeEditor() {
   function handleClick() {
     const nextShapes = shapes.map(shape => {
       if (shape.type === 'square') {
-        // 不改变
+        // 不作改变
         return shape;
       } else {
-        // 返回一个圆形，位置在下方 50px 处
+        // 返回一个新的圆形，位置在下方 50px 处
         return {
           ...shape,
           y: shape.y + 50,
         };
       }
     });
-    // 使用新的数组重渲染
+    // 使用新的数组进行重渲染
     setShapes(nextShapes);
   }
 
@@ -280,7 +283,7 @@ body { height: 300px; }
 
 ### 替换数组中的元素 {/*replacing-items-in-an-array*/}
 
-替换数组中一个或多个元素是非常常见的操作。类似 `arr[0] = 'bird'` 这样的赋值语句会改变原始数组，所以这种情况下，你也应该考虑使用 `map` 方法。
+想要替换数组中一个或多个元素是非常常见的。类似 `arr[0] = 'bird'` 这样的赋值语句会直接修改原始数组，所以在这种情况下，你也应该使用 `map`。
 
 要替换一个元素，请使用 `map` 创建一个新数组。在你的 `map` 回调里，第二个参数是元素的索引。使用索引来判断最终是返回原始的元素（即回调的第一个参数）还是替换成其他值：
 
@@ -301,7 +304,7 @@ export default function CounterList() {
   function handleIncrementClick(index) {
     const nextCounters = counters.map((c, i) => {
       if (i === index) {
-        // 点击计数器递增
+        // 递增被点击的计数器数值
         return c + 1;
       } else {
         // 其余部分不发生变化
@@ -400,7 +403,7 @@ button { margin-left: 5px; }
 
 总会有一些事，是你仅仅依靠展开运算符和 `map()` 或者 `filter()` 等不会直接修改原值的方法所无法做到的。例如，你可能想翻转数组，或是对数组排序。而 JavaScript 中的 `reverse()` 和 `sort()` 方法会改变原数组，所以你无法直接使用它们。
 
-**但是，你可以先将数组复制一份，再执行对应的操作。**
+**然而，你可以先拷贝这个数组，再改变这个拷贝后的值。**
 
 例如：
 
@@ -444,11 +447,11 @@ export default function List() {
 
 在这段代码中，你先使用 `[...list]` 展开运算符创建了一份数组的拷贝值。当你有了这个拷贝值后，你就可以使用像 `nextList.reverse()` 或 `nextList.sort()` 这样直接修改原数组的方法。你甚至可以通过 `nextList[0] = "something"` 这样的方式对数组中的特定元素进行赋值。
 
-然而，**即使你拷贝了数组，你还是不能直接修改其_内部_的元素**。这是因为数组的拷贝是浅拷贝——新的数组中依然保留了与原始数组相同的元素。因此，如果你修改了拷贝数组内部的某个对象，其实你正在直接修改当前的 state 。举个例子，像下面的代码就会带来问题。
+然而，**即使你拷贝了数组，你还是不能直接修改其_内部_的元素**。这是因为数组的拷贝是浅拷贝——新的数组中依然保留了与原始数组相同的元素。因此，如果你修改了拷贝数组内部的某个对象，其实你正在直接修改当前的 state。举个例子，像下面的代码就会带来问题。
 
 ```js
 const nextList = [...list];
-nextList[0].seen = true; // 问题：改变了 list[0] 的值
+nextList[0].seen = true; // 问题：直接修改了 list[0] 的值
 setList(nextList);
 ```
 
@@ -460,7 +463,7 @@ setList(nextList);
 
 <!-- TODOODLE -->
 
-**当你更新一个嵌套的 state 时，你需要从需要更新的地方开始自底向上创建一份完整的拷贝。** 让我们看一下具体是怎么操作的。
+**当你更新一个嵌套的 state 时，你需要从想要更新的地方创建拷贝值，一直这样，直到顶层。** 让我们看一下这该怎么做。
 
 在下面的例子中，两个不同的艺术品清单有着相同的初始 state。他们本应该互不影响，但是因为一次 mutation，他们的 state 被意外地共享了，勾选一个清单中的事项会影响另外一个清单：
 
@@ -655,14 +658,14 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-通常来讲，**你应该只直接修改你刚刚创建的对象**。如果你在插入一个*新*的 artwork，你可以修改它，但是如果你想要改变的是 state 中已经存在的东西，你就需要先拷贝一份了。
+通常来讲，**你应该只直接修改你刚刚创建的对象**。如果你正在插入一个*新*的 artwork，你可以修改它，但是如果你想要改变的是 state 中已经存在的东西，你就需要先拷贝一份了。
 
 ### 使用 Immer 编写简洁的更新逻辑 {/*write-concise-update-logic-with-immer*/}
 
 在没有 mutation 的前提下更新嵌套数组可能会变得有点重复。[就像对对象一样](/learn/updating-objects-in-state#write-concise-update-logic-with-immer):
 
-- 通常情况下，你应该不需要更新处于非常深的层级的 state 。如果你有此类需求，你或许需要[调整一下数据的结构](/learn/choosing-the-state-structure#avoid-deeply-nested-state)，让数据变得扁平一些。
-- 如果你不想改变 state 中的数据结构，你也许会更喜欢使用 [Immer](https://github.com/immerjs/use-immer) ，它让你可以继续使用方便的，但会直接修改原值的语法，并负责为你生成拷贝值。
+- 通常情况下，你应该不需要更新处于非常深层级的 state 。如果你有此类需求，你或许需要[调整一下数据的结构](/learn/choosing-the-state-structure#avoid-deeply-nested-state)，让数据变得扁平一些。
+- 如果你不想改变 state 的数据结构，你也许会更喜欢使用 [Immer](https://github.com/immerjs/use-immer) ，它让你可以继续使用方便的，但会直接修改原值的语法，并负责为你生成拷贝值。
 
 下面是我们用 Immer 来重写的 Art Bucket List 的例子：
 
@@ -774,14 +777,14 @@ updateMyTodos(draft => {
 });
 ```
 
-这是因为你并不是在直接修改_原始的_ state ，而是在修改 Immer 提供的一个特殊的 `draft` 对象。同理，你也可以为 `draft` 的内容使用 `push()` 和 `pop()` 这些会直接修改原值的方法。
+这是因为你并不是在直接修改_原始的_ state，而是在修改 Immer 提供的一个特殊的 `draft` 对象。同理，你也可以为 `draft` 的内容使用 `push()` 和 `pop()` 这些会直接修改原值的方法。
 
 在幕后，Immer 总是会根据你对 `draft` 的修改来从头开始构建下一个 state。这使得你的事件处理程序非常的简洁，同时也不会直接修改 state。
 
 <Recap>
 
 - 你可以把数组放入 state 中，但你不应该直接修改它。
-- 不要直接修改数组，而是创建它的一份*新的*拷贝，然后使用新的数组来更新它的状态。
+- 不要直接修改数组，而是创建它的一份 *新的* 拷贝，然后使用新的数组来更新它的状态。
 - 你可以使用 `[...arr, newItem]` 这样的数组展开语法来向数组中添加元素。
 - 你可以使用 `filter()` 和 `map()` 来创建一个经过过滤或者变换的数组。
 - 你可以使用 Immer 来保持代码简洁。
@@ -794,7 +797,7 @@ updateMyTodos(draft => {
 
 ### 更新购物车中的商品 {/*update-an-item-in-the-shopping-cart*/}
 
-填入 `handleIncreaseClick` 的逻辑，以便按下“+”时对应数字递增：
+填写 `handleIncreaseClick` 的逻辑，以便按下“+”时递增对应数字：
 
 <Sandpack>
 
@@ -1082,7 +1085,7 @@ button { margin: 5px; }
 
 ### 使用不会直接修改原始值的方法修复 mutation 的问题 {/*fix-the-mutations-using-non-mutative-methods*/}
 
-在下面的例子中，`App.js` 中所有的事件处理函数都会产生 mutation 。这就造成了编辑和删除任意 todo 都没有反应。 你需要通过重写 `handleAddTodo`, `handleChangeTodo`, 和 `handleDeleteTodo` 这三个函数来解决这个问题：
+在下面的例子中，`App.js` 中所有的事件处理程序都会产生 mutation。这导致编辑和删除待办事项的功能无法正常运行。使用不会直接修改原始值的方法重写 `handleAddTodo`、`handleChangeTodo` 和 `handleDeleteTodo` 这三个函数：
 
 <Sandpack>
 
@@ -1245,7 +1248,7 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution>
 
-在 `handleAddTodo` 中，你可以使用数组展开语法。在 `handleChangeTodo` 中，你可以使用 `map` 创建一个新数组。在 `handleDeleteTodo` 中，你可以使用 `filter` 创建一个新数组。现在列表可以正常工作了：
+在 `handleAddTodo` 中，你可以使用数组展开语法；在 `handleChangeTodo` 中，你可以使用 `map` 创建一个新数组；在 `handleDeleteTodo` 中，你可以使用 `filter` 创建一个新数组。现在列表可以正常工作了：
 
 <Sandpack>
 
@@ -1415,7 +1418,7 @@ ul, li { margin: 0; padding: 0; }
 
 ### 使用 Immer 修复 mutation 的问题 {/*fix-the-mutations-using-immer*/}
 
-下面的例子和上一个挑战的相同。这次，你需要使用 Immer 来修复 mutation 的问题。为了你的方便，`useImmer` 已经被引入了，你需要使用它来替换 `todos` 的 state 变量。
+下面的例子和上一个挑战的相同。这次，你需要使用 Immer 来修复 mutation 的问题。为了方便，`useImmer` 已经被引入了，你需要使用它来替换 `todos` 的 state 变量。
 
 <Sandpack>
 
@@ -1783,7 +1786,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-你也可以在 Immer 中将会产生和不会产生 mutation 的方法混合使用。
+你还可以在 Immer 中混合使用会改变和不会改变原始值的方法。
 
 例如，在下面的代码中，`handleAddTodo`是通过直接修改 Immer 的 `draft` 实现的，而 `handleChangeTodo` 和 `handleDeleteTodo` 则使用了不会直接修改原始值的 `map` 和 `filter` 方法：
 
