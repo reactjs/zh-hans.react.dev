@@ -2,6 +2,7 @@
 title: 状态管理
 translators:
   - qinhua
+  - KnowsCount
 ---
 
 <Intro>
@@ -34,20 +35,20 @@ translators:
 ```js
 import { useState } from 'react';
 
-export default function FeedbackForm() {
-  const [message, setMessage] = useState('');
+export default function Form() {
+  const [answer, setAnswer] = useState('');
   const [error, setError] = useState(null);
   const [status, setStatus] = useState('typing');
 
   if (status === 'success') {
-    return <h1>感谢您！</h1>
+    return <h1>答对了！</h1>
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
     setStatus('submitting');
     try {
-      await submitForm();
+      await submitForm(answer);
       setStatus('success');
     } catch (err) {
       setStatus('typing');
@@ -56,39 +57,45 @@ export default function FeedbackForm() {
   }
 
   function handleTextareaChange(e) {
-    setMessage(e.target.value);
+    setAnswer(e.target.value);
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <textarea
-        value={message}
-        onChange={handleTextareaChange}
-        disabled={status === 'submitting'}
-      />
-      <br />
-      <button disabled={
-        message.length === 0 ||
-        status === 'submitting'
-      }>
-        提交
-      </button>
-      {error !== null &&
-        <p className="Error">
-          {error.message}
-        </p>
-      }
-    </form>
+    <>
+      <h2>城市测验</h2>
+      <p>
+        哪个城市有把空气变成饮用水的广告牌？
+      </p>
+      <form onSubmit={handleSubmit}>
+        <textarea
+          value={answer}
+          onChange={handleTextareaChange}
+          disabled={status === 'submitting'}
+        />
+        <br />
+        <button disabled={
+          answer.length === 0 ||
+          status === 'submitting'
+        }>
+          提交
+        </button>
+        {error !== null &&
+          <p className="Error">
+            {error.message}
+          </p>
+        }
+      </form>
+    </>
   );
 }
 
-function submitForm() {
+function submitForm(answer) {
   // 模拟接口请求
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      let shouldError = Math.random() > 0.5;
+      let shouldError = answer.toLowerCase() !== 'lima'
       if (shouldError) {
-        reject(new Error('出错了'));
+        reject(new Error('猜的不错，但答案不对。再试试看吧！'));
       } else {
         resolve();
       }
@@ -137,23 +144,24 @@ export default function Form() {
 
   return (
     <>
+      <h2>让我们帮你登记</h2>
       <label>
-        名： {' '}
+        名：{' '}
         <input
           value={firstName}
           onChange={handleFirstNameChange}
         />
       </label>
       <label>
-        姓： {' '}
+        姓：{' '}
         <input
           value={lastName}
           onChange={handleLastNameChange}
         />
       </label>
-      <h3>
-        您的全名是：{fullName}
-      </h3>
+      <p>
+        你的票据将签发给：<b>{fullName}</b>
+      </p>
     </>
   );
 }
@@ -188,6 +196,7 @@ export default function Form() {
 
   return (
     <>
+      <h2>让我们帮你登记</h2>
       <label>
         名：{' '}
         <input
@@ -196,15 +205,15 @@ export default function Form() {
         />
       </label>
       <label>
-        姓： {' '}
+        姓：{' '}
         <input
           value={lastName}
           onChange={handleLastNameChange}
         />
       </label>
-      <h3>
-        您的全名是：{lastName + firstName}
-      </h3>
+      <p>
+        你的票将发给：<b>{fullName}</b>
+      </p>
     </>
   );
 }
@@ -216,6 +225,7 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
+这看起来似乎只是一个小改动，但却可以避免很多潜在的问题。
 <LearnMore path="/learn/choosing-the-state-structure">
 
 阅读 **[选择状态结构](/learn/choosing-the-state-structure)** 来学习如何组织状态并避开错误。
@@ -237,21 +247,21 @@ export default function Accordion() {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <>
+      <h2>Almaty, Kazakhstan</h2>
       <Panel
-        title="原料"
+        title="关于"
         isActive={activeIndex === 0}
         onShow={() => setActiveIndex(0)}
       >
-        牛奶、茶包和一根肉桂棒。
+        阿拉木图人口约200万，是哈萨克斯坦最大的城市。在1929年至1997年之间，它是该国首都。
       </Panel>
       <Panel
-        title="配方"
+        title="词源"
         isActive={activeIndex === 1}
         onShow={() => setActiveIndex(1)}
       >
-        把牛奶加热，然后把茶包放进锅里。 
-        加入肉桂棒。
-      </Panel>
+        这个名字源于哈萨克语 <span lang="kk-KZ">алма</span>，是“苹果”的意思，通常被翻译成“满是苹果”。事实上，阿拉木图周围的地区被认为是苹果的祖籍，<i lang="la">Malus sieversii</i> 被认为是目前本土苹果的祖先。
+        </Panel>
     </>
   );
 }
@@ -496,7 +506,7 @@ textarea {
 
 ## 提取状态逻辑到 reducer 中 {/*extracting-state-logic-into-a-reducer*/}
 
-对于那些需要更新多个状态的组件来说，过于分散的事件处理程序可能会令人不知所措。对于这种情况，你可以在组件外部将所有状态更新逻辑合并到一个称为“reducer”的函数中。这样，事件处理程序就会变得简洁，因为它们只需要指定用户的“操作”。在文件的底部，reducer 函数指定状态应该如何更新以响应每个操作！
+对于那些需要更新多个状态的组件来说，过于分散的事件处理程序可能会令人不知所措。对于这种情况，你可以在组件外部将所有状态更新逻辑合并到一个称为“reducer”的函数中。这样，事件处理程序就会变得简洁，因为它们只需要指定用户的“actions”。在文件的底部，reducer 函数指定状态应该如何更新以响应每个 action！
 
 <Sandpack>
 
@@ -535,6 +545,7 @@ export default function TaskBoard() {
 
   return (
     <>
+      <h1>布拉格行程</h1>
       <AddTask
         onAddTask={handleAddTask}
       />
@@ -576,9 +587,9 @@ function tasksReducer(tasks, action) {
 
 let nextId = 3;
 const initialTasks = [
-  { id: 0, text: '买牛奶', done: true },
-  { id: 1, text: '吃玉米饼', done: false },
-  { id: 2, text: '泡茶', done: false }
+  { id: 0, text: '参观卡夫卡博物馆', done: true },
+  { id: 1, text: '看木偶戏', done: false },
+  { id: 2, text: '列侬墙图片', done: false }
 ];
 ```
 
@@ -705,19 +716,19 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section>
-      <Heading>Title</Heading>
+      <Heading>大标题</Heading>
       <Section>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
+        <Heading>一级标题</Heading>
+        <Heading>一级标题</Heading>
+        <Heading>一级标题</Heading>
         <Section>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
+          <Heading>二级标题</Heading>
+          <Heading>二级标题</Heading>
+          <Heading>二级标题</Heading>
           <Section>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
+            <Heading>三级标题</Heading>
+            <Heading>三级标题</Heading>
+            <Heading>三级标题</Heading>
           </Section>
         </Section>
       </Section>
@@ -750,7 +761,7 @@ export default function Heading({ children }) {
   const level = useContext(LevelContext);
   switch (level) {
     case 0:
-      throw Error('Heading must be inside a Section!');
+      throw Error('标题必须在 Section 内！');
     case 1:
       return <h1>{children}</h1>;
     case 2:
@@ -803,11 +814,12 @@ Reducer 帮助你合并组件的状态更新逻辑。Context 帮助你将信息�
 ```js App.js
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
-import { TasksProvider } from './TaskBoardContext.js';
+import { TasksProvider } from './TasksContext.js';
 
 export default function TaskBoard() {
   return (
     <TasksProvider>
+      <h1>在京都休息一天</h1>
       <AddTask />
       <TaskList />
     </TasksProvider>
@@ -815,15 +827,10 @@ export default function TaskBoard() {
 }
 ```
 
-```js TaskBoardContext.js
-import {
-  createContext,
-  useContext,
-  useReducer
-} from 'react';
+```js TasksContext.js
+import { createContext, useContext, useReducer } from 'react';
 
-const TaskBoardContext = createContext(null);
-
+const TasksContext = createContext(null);
 const TasksDispatchContext = createContext(null);
 
 export function TasksProvider({ children }) {
@@ -833,18 +840,18 @@ export function TasksProvider({ children }) {
   );
 
   return (
-    <TaskBoardContext.Provider value={tasks}>
+    <TasksContext.Provider value={tasks}>
       <TasksDispatchContext.Provider
         value={dispatch}
       >
         {children}
       </TasksDispatchContext.Provider>
-    </TaskBoardContext.Provider>
+    </TasksContext.Provider>
   );
 }
 
 export function useTasks() {
-  return useContext(TaskBoardContext);
+  return useContext(TasksContext);
 }
 
 export function useTasksDispatch() {
@@ -879,9 +886,9 @@ function tasksReducer(tasks, action) {
 }
 
 const initialTasks = [
-  { id: 0, text: '买牛奶', done: true },
-  { id: 1, text: '吃玉米饼', done: false },
-  { id: 2, text: '泡茶', done: false }
+  { id: 0, text: '哲学家之路', done: true },
+  { id: 1, text: '参观寺庙', done: false },
+  { id: 2, text: '喝抹茶', done: false }
 ];
 ```
 
@@ -916,7 +923,7 @@ let nextId = 3;
 
 ```js TaskList.js
 import { useState, useContext } from 'react';
-import { useTasks, useTasksDispatch } from './TaskBoardContext.js';
+import { useTasks, useTasksDispatch } from './TasksContext.js';
 
 export default function TaskList() {
   const tasks = useTasks();
