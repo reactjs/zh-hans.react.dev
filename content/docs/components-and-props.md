@@ -76,7 +76,7 @@ ReactDOM.render(
 );
 ```
 
-**[Try it on CodePen](https://codepen.io/gaearon/pen/YGYmEG?editors=1010)**
+**[在 CodePen 上试试](https://codepen.io/gaearon/pen/YGYmEG?editors=1010)**
 
 让我们来回顾一下这个例子中发生了什么：
 
@@ -118,7 +118,7 @@ ReactDOM.render(
 );
 ```
 
-**[Try it on CodePen](https://codepen.io/gaearon/pen/KgQKPr?editors=1010)**
+**[在 CodePen 上试试](https://codepen.io/gaearon/pen/KgQKPr?editors=1010)**
 
 通常来说，每个新的 React 应用程序的顶层组件都是 `App` 组件。但是，如果你将 React 集成到现有的应用程序中，你可能需要使用像 `Button` 这样的小组件，并自下而上地将这类组件逐步应用到视图层的每一处。
 
@@ -152,7 +152,7 @@ function Comment(props) {
 }
 ```
 
-**[Try it on CodePen](https://codepen.io/gaearon/pen/VKQwEo?editors=1010)**
+**[在 CodePen 上试试](https://codepen.io/gaearon/pen/VKQwEo?editors=1010)**
 
 该组件用于描述一个社交媒体网站上的评论功能，它接收 `author`（对象），`text` （字符串）以及 `date`（日期）作为 props。
 
@@ -231,7 +231,7 @@ function Comment(props) {
 }
 ```
 
-**[Try it on CodePen](https://codepen.io/gaearon/pen/rrJNJY?editors=1010)**
+**[在 CodePen 上试试](https://codepen.io/gaearon/pen/rrJNJY?editors=1010)**
 
 最初看上去，提取组件可能是一件繁重的工作，但是，在大型应用中，构建可复用组件库是完全值得的。根据经验来看，如果 UI 中有一部分被多次使用（`Button`，`Panel`，`Avatar`），或者组件本身就足够复杂（`App`，`FeedStory`，`Comment`），那么它就是一个可提取出独立组件的候选项。
 

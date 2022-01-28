@@ -38,7 +38,7 @@ const element = <h1>Hello, world</h1>;
 
 `embed:rendering-elements/render-an-element.js`
 
-**[Try it on CodePen](https://codepen.io/gaearon/pen/ZpvBNJ?editors=1010)**
+**[在 CodePen 上试试](https://codepen.io/gaearon/pen/ZpvBNJ?editors=1010)**
 
 页面上会展示出 "Hello, world"。
 
@@ -52,7 +52,7 @@ React 元素是[不可变对象](https://en.wikipedia.org/wiki/Immutable_object)
 
 `embed:rendering-elements/update-rendered-element.js`
 
-**[Try it on CodePen](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)**
+**[在 CodePen 上试试](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)**
 
 这个例子会在 [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) 回调函数，每秒都调用 [`ReactDOM.render()`](/docs/react-dom.html#render)。
 
@@ -66,11 +66,7 @@ React 元素是[不可变对象](https://en.wikipedia.org/wiki/Immutable_object)
 
 React DOM 会将元素和它的子元素与它们之前的状态进行比较，并只会进行必要的更新来使 DOM 达到预期的状态。
 
-<<<<<<< HEAD
-你可以使用浏览器的检查元素工具查看[上一个例子](codepen://rendering-elements/update-rendered-element)来确认这一点。
-=======
-You can verify by inspecting the [last example](https://codepen.io/gaearon/pen/gwoJZk?editors=1010) with the browser tools:
->>>>>>> 53d279e3701f199afc3fcb0edb205a92b776caa0
+你可以通过查看 [上一个例子](https://codepen.io/gaearon/pen/gwoJZk?editors=1010) 来确认这一点。
 
 ![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
 
