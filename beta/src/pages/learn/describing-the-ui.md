@@ -151,7 +151,7 @@ img { height: 90px; }
 
 </Sandpack>
 
-如果你有这样的现有 HTML，你可以使用 [converter](https://transform.tools/html-to-jsx)：
+如果你有像这样的现有的 HTML片段，你可以使用它进行语法转换 [converter](https://transform.tools/html-to-jsx)：
 
 <Sandpack>
 
