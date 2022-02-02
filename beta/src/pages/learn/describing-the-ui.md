@@ -27,7 +27,7 @@ React 是一个用于构建用户界面（UI）的 JavaScript 库 ，用户界�
 
 ## 你的第一个组件 {/*your-first-component*/}
 
-React 应用程序是由被称为"组件"的孤立的 UI 片段构建的。一个 React 组件就是一个包含一些标记的 JavaScript 函数。组件可以小到一个按钮，也可以大到整个页面。这是一个 `Gallery` 组件，用于渲染三个 `Profile` 组件：
+React 应用是由被称为“组件”的独立UI 片段构建的。React 组件就是你可以任意添加标记的 JavaScript 函数。组件可以小到一个按钮，也可以大到是整个页面。这是一个 `Gallery` 组件，用于渲染三个 `Profile` 组件：
 
 <Sandpack>
 
