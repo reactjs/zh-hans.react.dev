@@ -189,7 +189,7 @@ img { height: 90px; }
 
 ## 在 JSX 中使用大括号的 JavaScript {/*javascript-in-jsx-with-curly-braces*/}
 
-JSX 可以让你在 JavaScript 文件中编写类似 HTML 的标记，使渲染逻辑和内容保持在同一个地方。有时你会想在标记中添加一点 JavaScript 逻辑或引用一个动态属性。在这种情况下，你可以在 JSX 中使用大括号来为 JavaScript "打开一个窗口"：
+JSX 可以让你在 JavaScript 文件中编写类似 HTML 的标记语法，使渲染逻辑和内容保持在同一个地方。有时你会想在标记中添加一点 JavaScript 逻辑或引用一个动态属性。在这种情况下，你可以在 JSX 中使用花括号来为 JavaScript "打开一个窗口"：
 
 <Sandpack>
 
