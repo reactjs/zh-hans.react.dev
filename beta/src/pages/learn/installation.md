@@ -10,7 +10,7 @@ React 从诞生之初就是可被逐步采用的，因此你可以选择性地�
 
 </Intro>
 
-<YouWillLearn>
+<YouWillLearn isChapter={true}>
 
 * [如何将 React 添加到页面中](/learn/add-react-to-a-website)
 * [如何启动一个全新的 React 项目](/learn/start-a-new-react-project)

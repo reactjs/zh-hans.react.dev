@@ -47,7 +47,11 @@ permalink: community/courses.html
 
 - [React Training: 高级 React.js](https://courses.reacttraining.com/p/advanced-react) - 将你的 React 水平提高到一个新的 level。
 
+<<<<<<< HEAD
 - [Tyler McGinnis](https://tylermcginnis.com/courses) - Tyler McGinnis 以月费的方式提供他课程的使用权。课程包括 "React 基础知识" 和 "通用的 React".
+=======
+- [Tyler McGinnis](https://ui.dev/) - Tyler McGinnis provides access to his courses for a monthly fee. Courses include "React Fundamentals" and "Universal React".
+>>>>>>> eb0ae240c3e99e6bdd658fc490dd767699b124d1
 
 - [Mastering React](https://codewithmosh.com/p/mastering-react/) - 用 React 构建专业的交互式应用程序。
 
