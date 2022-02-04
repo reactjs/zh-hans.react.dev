@@ -22,8 +22,13 @@ permalink: index.html
 
 ## 有多少内容已就绪？ {/*how-much-content-is-ready*/}
 
+<<<<<<< HEAD
 * [Learn React](/learn): 已完成近 70%。
 * [API Reference](/reference): 已完成近 5%。
+=======
+* [Learn React](/learn): ~70% finished.
+* [API Reference](/apis): ~5% finished.
+>>>>>>> 6ebae122a4d881c3dcd731ec3350c1833ad3f168
 
 你可以 [在 Github 上](https://github.com/reactjs/reactjs.org/issues/3308) 追踪我们的进度。
 
