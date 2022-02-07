@@ -6,9 +6,7 @@ translators:
 
 <Intro>
 
-React 是一个用于构建用户界面（UI）的 JavaScript 库 ，用户界面由按钮、文本和图像等小单元内容构建而成。React 帮助你把它们组合成可重用、可嵌套的*组件*。从 web 端网站到移动端应用，屏幕上的所有内容都可以被分解成组件。在本章节中，你将学习如何创建、定制以及有条件地显示 React 组件。
-
- 
+React 是一个用于构建用户界面（UI）的 JavaScript 库，用户界面由按钮、文本和图像等小单元内容构建而成。React 帮助你把它们组合成可重用、可嵌套的*组件*。从 web 端网站到移动端应用，屏幕上的所有内容都可以被分解成组件。在本章节中，你将学习如何创建、定制以及有条件地显示 React 组件。
 
 </Intro>
 
@@ -27,7 +25,7 @@ React 是一个用于构建用户界面（UI）的 JavaScript 库 ，用户界�
 
 ## 你的第一个组件 {/*your-first-component*/}
 
-React 应用是由被称为“组件”的独立UI 片段构建的。React 组件就是你可以任意添加标记的 JavaScript 函数。组件可以小到一个按钮，也可以大到是整个页面。这是一个 `Gallery` 组件，用于渲染三个 `Profile` 组件：
+React 应用是由被称为 “组件” 的独立 UI 片段构建而成。React 组件本质上是可以任意添加标记的 JavaScript 函数。组件可以小到一个按钮，也可以大到是整个页面。这是一个 `Gallery` 组件，用于渲染三个 `Profile` 组件：
 
 <Sandpack>
 
@@ -61,7 +59,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <LearnMore path="/learn/your-first-component">
 
-阅读 **[你的第一个组件](/learn/your-first-component)** 去学习如何声明并使用 React 组件
+请参阅 **[你的第一个组件](/learn/your-first-component)** 以学习如何声明并使用 React 组件
 
 </LearnMore>
 
@@ -115,14 +113,14 @@ img { margin: 0 10px 10px 0; }
 
 <LearnMore path="/learn/importing-and-exporting-components">
 
-阅读 **[导入与导出组件](/learn/importing-and-exporting-components)** 去学习如何切分组件。
+请参阅 **[导入与导出组件](/learn/importing-and-exporting-components)** 以学习如何切分组件。
 </LearnMore>
 
 ## 使用 JSX 编写标记 {/*writing-markup-with-jsx*/}
 
-每个 React 组件都是一个 JavaScript 函数，它可能包含一些标记，React 会将其渲染到浏览器中。React 组件使用一种叫做 JSX 的语法扩展来表示该标记。JSX 看起来很像 HTML，但它更严格一些，可以显示动态信息。
+每个 React 组件都是一个 JavaScript 函数，它可能包含一些标记，React 会将其渲染到浏览器中。React 组件使用一种叫做 JSX 的语法扩展来表示该标记。JSX 看起来很像 HTML，但它更为严格，可以显示动态信息。
 
-因此如果我们把现有的 HTML 标记粘贴到 React 组件中，它并不一定能工作：
+如果我们把现有的 HTML 标记粘贴到 React 组件中，它并不一定能工作：
 
 <Sandpack>
 
@@ -151,7 +149,7 @@ img { height: 90px; }
 
 </Sandpack>
 
-如果你有像这样的现有的 HTML片段，你可以使用它进行语法转换 [converter](https://transform.tools/html-to-jsx)：
+如果你有像这样的现有的 HTML 片段，你可以使用它进行语法转换 [converter](https://transform.tools/html-to-jsx)：
 
 <Sandpack>
 
@@ -183,13 +181,13 @@ img { height: 90px; }
 
 <LearnMore path="/learn/writing-markup-with-jsx">
 
-阅读 **[使用 JSX 编写标记](/learn/writing-markup-with-jsx)** 学习如何编写有效的 JSX。
+请参阅 **[使用 JSX 编写标记](/learn/writing-markup-with-jsx)** 以学习如何编写有效的 JSX。
 
 </LearnMore>
 
-## 在 JSX 中使用大括号的 JavaScript {/*javascript-in-jsx-with-curly-braces*/}
+## 在 JSX 中使用大括号编写 JavaScript {/*javascript-in-jsx-with-curly-braces*/}
 
-JSX 可以让你在 JavaScript 文件中编写类似 HTML 的标记语法，使渲染逻辑和内容保持在同一个地方。有时你会想在标记中添加一点 JavaScript 逻辑或引用一个动态属性。在这种情况下，你可以在 JSX 中使用花括号来为 JavaScript "打开一个窗口"：
+JSX 可以让你在 JavaScript 文件中编写类似 HTML 的标记语法，使渲染逻辑和内容展示维护在同一个地方。有时你会想在标记中添加一点 JavaScript 逻辑或引用一个动态属性。在这种情况下，你可以在 JSX 中使用花括号来为 JavaScript "开辟通道"：
 
 <Sandpack>
 
@@ -231,13 +229,13 @@ body > div > div { padding: 20px; }
 
 <LearnMore path="/learn/javascript-in-jsx-with-curly-braces">
 
-阅读 **[在 JSX 中使用花括号来编写 JavaScript](/learn/javascript-in-jsx-with-curly-braces)** 来学习如何从 JSX 中访问 JavaScript 数据。
+请参阅 **[在 JSX 中使用大括号编写 JavaScript](/learn/javascript-in-jsx-with-curly-braces)** 以学习如何从 JSX 中访问 JavaScript 数据。
 
 </LearnMore>
 
-## 将`props`传递给一个组件 {/*passing-props-to-a-component*/}
+## 将 `props` 传递给一个组件 {/*passing-props-to-a-component*/}
 
-React 组件使用 *props* 来进行组件之间的通讯。每个父组件都可以通过给它的子组件提供 props 来传递一些信息。props 可能会让你想起 HTML 属性，但你可以通过它们传递任何 JavaScript 值，包括对象、数组、函数、甚至是 JSX!
+React 组件使用 *props* 来进行组件之间的通讯。每个父组件都可以通过为子组件提供 props 的方式来传递信息。props 可能会让你想起 HTML 属性，但你可以通过它们传递任何 JavaScript 的值，包括对象、数组、函数、甚至是 JSX!
 
 <Sandpack>
 
@@ -312,15 +310,15 @@ export function getImageUrl(person, size = 's') {
 
 <LearnMore path="/learn/passing-props-to-a-component">
 
-阅读 **[向组件传递 props](/learn/passing-props-to-a-component)** 如何传递并读取 props。
+请参阅 **[向组件传递 props](/learn/passing-props-to-a-component)** 以了解如何传递并读取 props。
 
 </LearnMore>
 
 ## 条件渲染 {/*conditional-rendering*/}
 
-你的组件经常需要根据不同的条件来显示不同的东西。在 React 中，你可以使用 JavaScript 语法，如`if`语句、`&&`和`? :`操作符有条件地渲染 JSX。
+你的组件经常需要根据不同的条件来显示不同的东西。在 React 中，你可以使用 JavaScript 语法，如 `if` 语句、`&&` 和 `? :` 操作符有条件地渲染 JSX。
 
-在这个例子中，JavaScript 的`&&`操作符被用来有条件地呈现一个复选标记：
+在这个示例中，JavaScript 的 `&&` 操作符将会条件渲染一个复选标记：
 
 <Sandpack>
 
@@ -360,15 +358,15 @@ export default function PackingList() {
 
 <LearnMore path="/learn/conditional-rendering">
 
-阅读 **[条件渲染](/learn/conditional-rendering)** 来学习使用不同的方法去有条件地渲染内容。
+请参阅 **[条件渲染](/learn/conditional-rendering)** 以学习使用不同的方法对内容进行条件渲染。
 
 </LearnMore>
 
 ## 渲染列表 {/*rendering-lists*/}
 
-你通常希望从数据集合来显示来多个类似组件。你可以在React中使用 JavaScript 的 `filter()` 和`map()` 来过滤和转换，让你的数据数组成为一个组件数组。
+通常，你需要根据数据集合来渲染多个较为类似的组件。你可以在 React 中使用 JavaScript 的 `filter()` 和 `map()` 来实现数组的过滤和转换，将数据数组转换为组件数组。
 
-对于每个数组项，你需要指定一个 `key`。通常你需要使用数据库中的 ID 作为 `key`。即使列表发生了变化，React 也可以通过键来跟踪每个项目在列表中的位置。
+对于数组的每个元素项，你需要指定一个 `key`。通常你需要使用数据库中的 ID 作为 `key`。即使列表发生了变化，React 也可以通过 key 来跟踪每个元素在列表中的位置。
 
 <Sandpack>
 
@@ -460,18 +458,18 @@ h2 { font-size: 20px; }
 
 <LearnMore path="/learn/rendering-lists">
 
-阅读 **[渲染列表](/learn/rendering-lists)** 来学习如何渲染一个组件列表，以及如何选择一个`key`。
+请参阅 **[渲染列表](/learn/rendering-lists)** 以学习如何渲染一个组件列表，以及如何选择一个 `key`。
 
 </LearnMore>
 
 ## 保持组件的纯粹 {/*keeping-components-pure*/}
 
-有些 JavaScript 函数是 "纯粹"的。一个纯函数：
+有些 JavaScript 函数是 "纯粹" 的。纯函数的基本定义：
 
-* **管好自己的事** 在它被调用之前它不会改变任何已经存在的对象或变量。
-* **输入相同，输出就相同.** 在输入相同的情况下，一个纯函数应该总是返回相同的结果。
+* **管好自己的事** 在函数调用前，它不会改变任何已经存在的对象或变量。
+* **输入相同，输出也相同** 在输入相同的情况下，对纯函数来说应总是返回相同的结果。
 
-通过严格地把你的组件写成纯函数，可以在你的代码库增长时避免一些令人困惑的错误和不可预测的行为。下面是一个非纯函数组件的例子：
+严格遵循纯函数的定义编写组件，可以让代码库体量增长时，避免一些令人困惑的错误和不可预测的行为。下面是一个非纯函数组件的示例：
 
 <Sandpack>
 
@@ -497,7 +495,7 @@ export default function TeaSet() {
 
 </Sandpack>
 
-你可以通过传递一个 `props` 而不是修改一个预先存在的变量来使这个组件变得纯粹：
+你可以通过传递一个 `props` 来使这个组件变得纯粹，而非修改已经存在的变量：
 
 <Sandpack>
 
@@ -521,7 +519,7 @@ export default function TeaSet() {
 
 <LearnMore path="/learn/keeping-components-pure">
 
-阅读 **[保持组件的纯粹](/learn/keeping-components-pure)** 来学习如何将组件写成纯粹的、可预测的函数。
+请参阅 **[保持组件的纯粹](/learn/keeping-components-pure)** 以学习如何将组件写成纯粹且可预测的函数。
 
 </LearnMore>
 
@@ -529,4 +527,4 @@ export default function TeaSet() {
 
 请访问 [你的第一个组件](/learn/your-first-component) 开始逐页阅读本章节!
 
-或者，如果你已经熟悉这些主题，不妨读一读 [增加交互性](/learn/adding-interactivity)?
+如若你已熟悉这些主题，可直接阅读 [增加交互](/learn/adding-interactivity) 一节。
