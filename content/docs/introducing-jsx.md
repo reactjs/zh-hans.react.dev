@@ -68,7 +68,7 @@ ReactDOM.render(
 );
 ```
 
-[](codepen://introducing-jsx)
+**[在 CodePen 上试试](https://codepen.io/gaearon/pen/PGEjdG?editors=1010)**
 
 为了便于阅读，我们会将 JSX 拆分为多行。同时，我们建议将内容包裹在括号中，虽然这样做不是强制要求的，但是这可以避免遇到[自动插入分号](http://stackoverflow.com/q/2846283)陷阱。
 
@@ -92,7 +92,7 @@ function getGreeting(user) {
 你可以通过使用引号，来将属性值指定为字符串字面量：
 
 ```js
-const element = <div tabIndex="0"></div>;
+const element = <a href="https://www.reactjs.org"> link </a>;
 ```
 
 也可以使用大括号，来在属性值中插入一个 JavaScript 表达式：

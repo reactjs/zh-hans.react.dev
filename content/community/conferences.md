@@ -17,6 +17,25 @@ January 27th - 30th, 2022. In-person in Dornbirn and Lech Austria
 
 [Website](https://agent.sh/) - [Twitter](https://twitter.com/AgentConf) - [Instagram](https://www.instagram.com/teamagent/)
 
+### React Live 2022 {#react-live-2022}
+April 1st, 2022. Amsterdam, The Netherlands
+
+[Website](https://www.reactlive.nl/) - [Twitter](https://twitter.com/reactlivenl)
+
+### < React Global > by Geekle {#react-global-2022}
+April 21-22, 2022 - Online Summit
+
+[Website](https://events.geekle.us/react2/) - [LinkedIn](https://www.linkedin.com/events/reactglobalonlinesummit-226887417664541614081/) 
+
+### React Miami 2022 🌴 {#react-miami-2022}
+April 18th - 19th, 2022. Miami, Florida
+[Website](https://www.reactmiami.com/)
+
+### Reactathon 2022 {#reactathon-2022} 
+May 3 - 5, 2022. Berkeley, CA
+
+[Website](https://reactathon.com) - [Twitter](https://twitter.com/reactathon) -[YouTube](https://www.youtube.com/watch?v=-YG5cljNXIA)
+
 ### render(ATL) 2022 {#render-atlanta-2022} 
 June 2-4, 2022. Atlanta, GA, USA
 
@@ -26,6 +45,11 @@ June 2-4, 2022. Atlanta, GA, USA
 June 17 & 21, 2022. In-person in Amsterdam, Netherlands + remote first interactivity (hybrid event)
 
 [Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
+
+### React India 2022 {#react-india-2022}
+September 22 - 24, 2022. In-person in Goa, India + remote (hybrid event)
+
+[Website](https://www.reactindia.io) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia) - [Videos](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w)
 
 ## 往届会议 {#past-conferences}
 
