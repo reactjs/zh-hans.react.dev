@@ -46,16 +46,12 @@ June 17 & 21, 2022. In-person in Amsterdam, Netherlands + remote first interacti
 
 [Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
 
-<<<<<<< HEAD
-## 往届会议 {#past-conferences}
-=======
 ### React India 2022 {#react-india-2022}
 September 22 - 24, 2022. In-person in Goa, India + remote (hybrid event)
 
 [Website](https://www.reactindia.io) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia) - [Videos](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w)
 
-## Past Conferences {#past-conferences}
->>>>>>> 20f0fe280f3c122df7541256b983c46e21e33b20
+## 往届会议 {#past-conferences}
 
 ### React Conf 2021 {#react-conf-2021}
 December 8, 2021 - remote event (replay event on December 9)
