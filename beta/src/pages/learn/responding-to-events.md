@@ -235,7 +235,7 @@ button { margin-right: 10px; }
 
 ### 命名事件处理函数 prop {/*naming-event-handler-props*/}
 
-内置组件（`<button>` 和 `<div>`）仅支持 [浏览器事件名称](/reference/reactdom-api)，例如 `onClick`。但是，当你构建自己的组件时，你可以按你个人喜好命名事件处理函数的 prop。
+内置组件（`<button>` 和 `<div>`）仅支持 [浏览器事件名称](/apis/reactdom-api)，例如 `onClick`。但是，当你构建自己的组件时，你可以按你个人喜好命名事件处理函数的 prop。
 
 > 按照惯例，事件处理函数 props 应该以 `on` 开头，后跟一个大写字母。
 
