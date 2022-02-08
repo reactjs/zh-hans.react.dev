@@ -207,7 +207,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-Reducer 有助于保持事件处理程序的简短明了。但随着应用规模越来越庞大，你就可能会遇到别的困难。 **目前，`tasks` 状态和 `dispatch` 函数仅在顶级 `TaskBoard` 组件中可用。** 若要让其他组件读取 `tasks` 状态或对其进行更改，必须以 props 的形式显式 [传递](/learn/passing-props-to-a-component) 它。
+Reducer 有助于保持事件处理程序的简短明了。但随着应用规模越来越庞大，你就可能会遇到别的困难。**目前，`tasks` 状态和 `dispatch` 函数仅在顶级 `TaskBoard` 组件中可用**。若要让其他组件读取 `tasks` 状态或对其进行更改，必须以 props 的形式显式 [传递](/learn/passing-props-to-a-component) 它。
 
 例如，`TaskBoard` 将 `tasks` 和事件处理程序传递给 `TaskList`：
 
@@ -233,7 +233,7 @@ Reducer 有助于保持事件处理程序的简短明了。但随着应用规模
 
 <!--(TODO: illustration of prop drilling)-->
 
-这就是为什么，比起通过 props 传递它们，你可能想把 `tasks` 状态和 `dispatch` 函数都 [放入 context](/learn/passing-data-deeply-with-context)。**这样，所有的在 `TaskBoard` 组件树之下的组件都不必一直往下传 props 而可以直接读取 tasks 和 dispatch 函数。**
+这就是为什么，比起通过 props 传递它们，你可能想把 `tasks` 状态和 `dispatch` 函数都 [放入 context](/learn/passing-data-deeply-with-context)。**这样，所有的在 `TaskBoard` 组件树之下的组件都不必一直往下传 props 而可以直接读取 tasks 和 dispatch 函数**。
 
 <!--(TODO: illustration of context)-->
 
@@ -901,7 +901,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-**state 仍然"存在于"顶层 `TaskBoard` 组件中，由 `useReducer` 进行管理。** 不过，组件树里的组件只要导入这些 context 之后就可以获取 `tasks` 和 `dispatch`。
+**state 仍然 “存在于” 顶层 `TaskBoard` 组件中，由 `useReducer` 进行管理**。不过，组件树里的组件只要导入这些 context 之后就可以获取 `tasks` 和 `dispatch`。
 
 ## 将相关逻辑迁移到一个文件当中 {/*moving-all-wiring-into-a-single-file*/}
 
