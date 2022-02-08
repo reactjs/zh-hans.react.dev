@@ -22,7 +22,7 @@ JSX 是一个 JavaScript 语法扩展，可以让你在 JavaScript 文件中书�
 
 ![HTML and JavaScript living in separate files](/images/docs/illustrations/i_html_js.svg)
 
-但是随着网页交互复杂度的提升，逻辑愈发决定了内容的展示。 JavaScript 开始主导 HTML 显示的内容！这就是为什么 **在 React 中渲染逻辑和标记存放在一个相同的地方 —— 组件！**
+但是随着网页交互复杂度的提升，逻辑愈发决定了内容的展示。JavaScript 开始主导 HTML 显示的内容！这就是为什么 **在 React 中渲染逻辑和标记存放在一个相同的地方 —— 组件！**
 
 ![JavaScript functions sprinkled with markup](/images/docs/illustrations/i_jsx.svg)
 
