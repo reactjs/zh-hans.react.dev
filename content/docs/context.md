@@ -55,7 +55,7 @@ Context 主要应用场景在于*很多*不同层级的组件需要访问同样�
 
 如果在最后只有 `Avatar` 组件真的需要 `user` 和 `avatarSize`，那么层层传递这两个 props 就显得非常冗余。而且一旦 `Avatar` 组件需要更多从来自顶层组件的 props，你还得在中间层级一个一个加上去，这将会变得非常麻烦。
 
-一种**无需 context** 的解决方案是[将 `Avatar` 组件自身传递下去](/docs/composition-vs-inheritance.html#containment)，因而中间组件无需知道 `user` 或者 `avatarSize` 等 props：
+一种 **无需 context** 的解决方案是[将 `Avatar` 组件自身传递下去](/docs/composition-vs-inheritance.html#containment)，因为中间组件无需知道 `user` 或者 `avatarSize` 等 props：
 
 ```js
 function Page(props) {
@@ -249,7 +249,7 @@ MyContext.displayName = 'MyDisplayName';
 
 ## 注意事项 {#caveats}
 
-因为 context 会根据引用标识来决定何时进行渲染（本质上是 `value` 属性值的浅比较），所以这里可能存在一些陷阱，当 provider 的父组件进行重渲染时，可能会在 consumers 组件中触发意外的渲染。举个例子，当每一次 Provider 重渲染时，以下的代码会重渲染所有下面的 consumers 组件，因为 `value` 属性总是被赋值为新的对象：
+因为 context 会根据引用标识来决定何时进行渲染（本质上是 `value` 属性值的浅比较），所以这里可能存在一些陷阱，当 provider 的父组件进行重渲染时，可能会在 consumers 组件中触发意外的渲染。举个例子，当每一次 Provider 重渲染时，由于 `value` 属性总是被赋值为新的对象，以下的代码会重新渲染下面所有的 consumers 组件：
 
 `embed:context/reference-caveats-problem.js`
 

@@ -27,7 +27,7 @@ import { useReducer } from 'react';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, dispatch] = useReducer(
     tasksReducer,
     initialTasks
@@ -207,9 +207,10 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-Reducer 有助于保持事件处理程序的简短明了。但随着应用规模越来越庞大，你就可能会遇到别的困难。**目前，`tasks` 状态和 `dispatch` 函数仅在顶级 `TaskBoard` 组件中可用**。若要让其他组件读取 `tasks` 状态或对其进行更改，必须以 props 的形式显式 [传递](/learn/passing-props-to-a-component) 它。
+Reducer 有助于保持事件处理程序的简短明了。但随着应用规模越来越庞大，你就可能会遇到别的困难。**目前，`tasks` 状态和 `dispatch` 函数仅在顶级 `TaskApp` 组件中可用。** 要让其他组件读取任务列表或更改它，你必须显式 [传递](/learn/passing-props-to-a-component) 当前状态和将其更改为 props 的事件处理程序。
 
-例如，`TaskBoard` 将 `tasks` 和事件处理程序传递给 `TaskList`：
+例如，`TaskApp` 将 一系列 task 和事件处理程序传递给 `TaskList`：
+For example, `TaskApp` passes a list of tasks and the event handlers to `TaskList`:
 
 ```js
 <TaskList
@@ -233,7 +234,7 @@ Reducer 有助于保持事件处理程序的简短明了。但随着应用规模
 
 <!--(TODO: illustration of prop drilling)-->
 
-这就是为什么，比起通过 props 传递它们，你可能想把 `tasks` 状态和 `dispatch` 函数都 [放入 context](/learn/passing-data-deeply-with-context)。**这样，所有的在 `TaskBoard` 组件树之下的组件都不必一直往下传 props 而可以直接读取 tasks 和 dispatch 函数**。
+这就是为什么，比起通过 props 传递它们，你可能想把 `tasks` 状态和 `dispatch` 函数都 [放入 context](/learn/passing-data-deeply-with-context)。**这样，所有的在 `TaskApp` 组件树之下的组件都不必一直往下传 props 而可以直接读取 tasks 和 dispatch 函数**。
 
 <!--(TODO: illustration of context)-->
 
@@ -265,7 +266,7 @@ import { useReducer } from 'react';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, dispatch] = useReducer(
     tasksReducer,
     initialTasks
@@ -452,16 +453,16 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-在这里，你把 `null` 作为默认值传递给两个 context。实际值是由 `TaskBoard` 组件提供的。
+在这里，你把 `null` 作为默认值传递给两个 context。实际值是由 `TaskApp` 组件提供的。
 
 ### 第二步: 将 state 和 dispatch 函数 放入 context {/*step-2-put-state-and-dispatch-into-context*/}
 
-现在，你可以将所有的 context 导入 `TaskBoard` 组件。获取 `useReducer()` 返回的 `tasks` 和 `dispatch` 并将它们 [提供](/learn/passing-data-deeply-with-context#step-3-provide-the-context) 给整个组件树：
+现在，你可以将所有的 context 导入 `TaskApp` 组件。获取 `useReducer()` 返回的 `tasks` 和 `dispatch` 并将它们 [提供](/learn/passing-data-deeply-with-context#step-3-provide-the-context) 给整个组件树：
 
 ```js {4,7-8}
 import { TasksContext, TasksDispatchContext } from './TasksContext.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
   // ...
   return (
@@ -484,7 +485,7 @@ import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 import { TasksContext, TasksDispatchContext } from './TasksContext.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, dispatch] = useReducer(
     tasksReducer,
     initialTasks
@@ -717,7 +718,7 @@ export default function AddTask({ onAddTask }) {
     // ...
 ```
 
-**`TaskBoard` 组件不会向下传递任何事件处理程序， `TaskList` 也不会。** 每个组件都会读取它需要的 context：
+**`TaskApp` 组件不会向下传递任何事件处理程序， `TaskList` 也不会。** 每个组件都会读取它需要的 context：
 
 <Sandpack>
 
@@ -727,7 +728,7 @@ import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 import { TasksContext, TasksDispatchContext } from './TasksContext.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   const [tasks, dispatch] = useReducer(
     tasksReducer,
     initialTasks
@@ -901,7 +902,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-**state 仍然 “存在于” 顶层 `TaskBoard` 组件中，由 `useReducer` 进行管理**。不过，组件树里的组件只要导入这些 context 之后就可以获取 `tasks` 和 `dispatch`。
+**state 仍然 “存在于” 顶层 `Task` 组件中，由 `useReducer` 进行管理**。不过，组件树里的组件只要导入这些 context 之后就可以获取 `tasks` 和 `dispatch`。
 
 ## 将相关逻辑迁移到一个文件当中 {/*moving-all-wiring-into-a-single-file*/}
 
@@ -934,7 +935,7 @@ export function TasksProvider({ children }) {
 }
 ```
 
-**这将使 TaskBoard 组件更加直观：**
+**这将使 `TaskApp` 组件更加直观：**
 
 <Sandpack>
 
@@ -943,7 +944,7 @@ import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 import { TasksProvider } from './TasksContext.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   return (
     <TasksProvider>
       <h1>Day off in Kyoto</h1>
@@ -1153,7 +1154,7 @@ import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 import { TasksProvider } from './TasksContext.js';
 
-export default function TaskBoard() {
+export default function TaskApp() {
   return (
     <TasksProvider>
       <h1>Day off in Kyoto</h1>
