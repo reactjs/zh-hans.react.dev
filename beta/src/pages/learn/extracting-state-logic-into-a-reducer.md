@@ -23,7 +23,11 @@ translators:
 
 ## 使用 reducer 整合状态逻辑 {/*consolidate-state-logic-with-a-reducer*/}
 
+<<<<<<< HEAD
 随着组件复杂度的增加，你将很难一眼看清所有的组件状态更新逻辑。例如，下面的 `TaskApp` 组件有一个数组类型的状态 `tasks`，并通过三个不同的事件处理程序来实现任务的添加、删除和修改：
+=======
+As your components grow in complexity, it can get harder to see at a glance all the different ways in which a component's state gets updated. For example, the `TaskApp` component below holds an array of `tasks` in state and uses three different event handlers to add, remove, and edit tasks:
+>>>>>>> d7dfc5d20363140db5f46e7d85735fef743bf295
 
 <Sandpack>
 
@@ -228,7 +232,11 @@ function handleDeleteTask(taskId) {
 * `handleChangeTask(task)` 在用户切换任务或点击 “保存” 时被调用。
 * `handleDeleteTask(taskId)` 在用户点击 “删除” 时被调用。
 
+<<<<<<< HEAD
 使用 reducers 管理状态与直接设置状态略有不同。它不是通过设置状态来告诉 React “要做什么”，而是通过事件处理程序 dispatch 一个 “action” 来指明 “用户刚刚做了什么”。（而状态更新逻辑则保存在其他地方！）因此，我们不再通过事件处理器直接 “设置 `task`”，而是 dispatch 一个 “添加/修改/删除任务” 的 action。这更加符合用户的思维。
+=======
+Managing state with reducers is slightly different from directly setting state. Instead of telling React "what to do" by setting state, you specify "what the user just did" by dispatching "actions" from your event handlers. (The state update logic will live elsewhere!) So instead of "setting `tasks`" via an event handler, you're dispatching an "added/changed/deleted a task" action. This is more descriptive of the user's intent.
+>>>>>>> d7dfc5d20363140db5f46e7d85735fef743bf295
 
 ```js
 function handleAddTask(text) {
