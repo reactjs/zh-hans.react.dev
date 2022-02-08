@@ -278,7 +278,7 @@ export default function Bio() {
 
 </Sandpack>
 
-你可以手动转化或者使用转化器。
+你可以随意在手动转化或者使用转化器中选择！
 
 <Solution>
 
