@@ -121,7 +121,7 @@ To change the state, call the state setter function with the next state value. R
 
 <AnatomyStep title="Render state in the UI">
 
-Use the state in your JSX.
+Use the state in your JSX or component logic.
 
 </AnatomyStep>
 
@@ -371,7 +371,7 @@ Read [state as a snapshot](/learn/state-as-a-snapshot) and [queueing a series of
 
 <DeepDive title="Is using an updater always preferred?">
 
-You might hear a recomendation to always write code like `setCount(c => c + 1)` if the state you're setting is calculated from the previous state. There is no harm in it, but it is also not always necessary.
+You might hear a recommendation to always write code like `setCount(c => c + 1)` if the state you're setting is calculated from the previous state. There is no harm in it, but it is also not always necessary.
 
 In most cases, there is no difference between these two approaches. React always makes sure that for intentional user actions, like clicks, the `count` state variable would be updated before the next click. This means there is no risk of a click handler seeing a "stale" `count` at the beginning of the event handler.
 
