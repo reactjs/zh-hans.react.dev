@@ -3,6 +3,7 @@ title: 开始
 translator:
  - x-cold
  - sooia
+ - KnowsCount
 ---
 
 <Intro>
@@ -94,13 +95,13 @@ export default function App() {
 
 - 如果你 **迫不及待并适合通过例子学习**，直接前往 **[React 哲学](/learn/thinking-in-react)**。该教程不会详细解释语法，但它会让你了解使用 React 构建用户界面的感受。
 - 如果你 **熟悉这些概念并希望浏览可用的 API**，请查看 **[API 参考](/reference)**。
-- 本文档的其余部分按章节组织，**逐步介绍每个概念**--带有许多交互式例子、详细说明和挑战以保证您的理解。 您不必按顺序阅读它们，但每个下一页都假设您熟悉前几页中的概念。
+- 本文档的其余部分按章节组织，**逐步介绍每个概念** —— 带有许多交互式例子、详细说明和挑战以保证你的理解。 你不一定要按顺序阅读它们，但是每个主题都需要你熟悉前几页中的概念。
 
-为了节省您的时间，我们在下面提供**每章的简要概述**。 
+为了节省您的时间，我们在下面提供 **每章的简要概述**。 
 
 ### 第 1 章概述：描述 UI {/*chapter-1-overview-describing-the-ui*/}
 
-React 应用程序由被称为 ["components"](/learn/your-first-component) 的独立 UI 部分构建。 React 组件是一个 JavaScript 函数，您可以在其中添加标记。 组件可以小到一个按钮，也可以大到整个页面。下面的例子中，一个*父*组件 `Gallery` 渲染了三个*子*组件 `Profile` ：
+React 应用程序由被称为 ["组件"](/learn/your-first-component) 的独立 UI 部分构建。 React 组件是一个 JavaScript 函数，您可以在其中添加标记。 组件可以小到一个按钮，也可以大到整个页面。下面的例子中，一个 *父* 组件 `Gallery` 渲染了三个 *子* 组件 `Profile` ：
 
 <Sandpack>
 
@@ -179,9 +180,9 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
-你可能想知道为什么 `className="avatar"` 使用引号，而 `src={imageUrl}` 使用花括号。在 JSX 中，花括号就像一个 ["进入 JavaScript 的窗口"](/learn/javascript-in-jsx-with-curly-braces)。 它们让您可以在标记中直接运行一些 JavaScript！所以 `src={imageUrl}` 读取第一行声明的 `imageUrl` prop，并从父组件 `Gallery` 传递过来。
+你可能想知道为什么 `className="avatar"` 使用引号，而 `src={imageUrl}` 就使用花括号。在 JSX 中，花括号就像一个 ["进入 JavaScript 的窗口"](/learn/javascript-in-jsx-with-curly-braces)。 它们让你可以在标记中直接运行一些 JavaScript！所以 `src={imageUrl}` 读取第一行声明的 `imageUrl` prop，并从父组件 `Gallery` 传递过来。
 
-在上面的例子中，所有的数据都是直接写在标记中的。但是，您通常希望将其单独保存。下面的例子，数据保存在一个数组中。在 React 中，你使用 JavaScript 函数，如 [`map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 来[渲染列表](/learn/rendering-lists) 的东西。 
+在上面的例子中，所有的数据都是直接写在标记中的。但是，很多情况下我们想将其分开存储。下面的例子，数据保存在一个数组中。在 React 中，一般使用例如 [`map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)  的 JavaScript 函数，来 [渲染一个列表](/learn/rendering-lists) 的东西。 
 
 <Sandpack>
 
@@ -255,7 +256,7 @@ img { margin: 0 10px 10px 0; }
 
 <LearnMore path="/learn/describing-the-ui">
 
-阅读**[描述 UI](/learn/describing-the-ui)** 了解如何让东西出现在屏幕上，包括声明组件、导入它们、用大括号编写 JSX 以及编写条件和列表。
+阅读 **[描述 UI](/learn/describing-the-ui)** 了解如何让东西出现在屏幕上，引用声明组件、导入它们、用大括号编写 JSX 以及编写条件和列表。
 
 </LearnMore>
 
@@ -263,7 +264,7 @@ img { margin: 0 10px 10px 0; }
 
 作为交互的结果，组件通常需要更改屏幕上的内容。输入表单应该更新输入字段，单击图像轮播上的“下一步”应该更改显示的图像，单击“购买”将产品放入购物车。组件需要“记住”一些东西：当前输入值、当前图像、购物车。在 React 中，这种特定于组件的内存称为 [*state*](/learn/state-a-components-memory)。
 
-您可以使用 [`useState`](/reference/usestate) Hook 向组件添加 state。 Hooks 是一种特殊的函数，可以让你的组件使用 React 特性（state 是这些特性之一）。`useState` Hook 允许你声明一个 state 变量。它接受初始 state 并返回一对值：当前 state 和一个允许您更新它的 state 设置器函数。
+你可以使用 [`useState`](/reference/usestate) Hook 向组件添加 state。 Hooks 是一种特殊的函数，可以让你的组件使用 React 特性（state 是这些特性之一）。`useState` Hook 允许你声明一个 state 变量。它接受初始 state 并返回一对值：当前 state 以及一个允许你更新它的 state 设置器函数。
 
 这个 `Gallery` 组件需要记住两件事：当前图像索引（默认值为 `0`），以及用户是否切换了“显示详细信息”（默认值为 `false`）： 
 
@@ -411,7 +412,7 @@ button {
 
 </Sandpack>
 
-State 也可以保存复杂的值。例如，如果您正在实现一个表单，您可以在 state 中保持一个具有不同字段的对象。 下面示例中的 `...` 语法允许您[基于现有对象创建新对象](/learn/updating-objects-in-state)。
+State 也可以保存复杂的值。例如，如果你正在实现一个表单，你就可以在 state 中保持一个具有不同字段的对象。 下面示例中的 `...` 语法允许你 [基于现有对象创建新对象](/learn/updating-objects-in-state)。
 
 <Sandpack>
 
@@ -486,7 +487,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-您还可以将数组保持在 state。 这允许您添加、删除或更改列表中的内容以响应用户交互。根据您想要做什么，这里有[从现有数组创建新数组的不同方法](/learn/updating-arrays-in-state)。
+你还可以将数组保持在 state。 这允许你添加、删除或更改列表中的内容以响应用户交互。按照你的需求，有不同的 [从现有数组创建新数组的方法](/learn/updating-arrays-in-state)。
 
 <Sandpack>
 
@@ -527,7 +528,7 @@ export default function List() {
 
 <LearnMore path="/learn/adding-interactivity">
 
-阅读**[添加交互性](/learn/adding-interactivity)** 了解如何在交互时更新屏幕，包括添加事件处理程序、声明和更新 state，以及在 state 中更新对象和数组的不同方法。
+阅读 **[添加交互性](/learn/adding-interactivity)** 了解如何在交互时更新屏幕，包括添加事件处理程序、声明和更新 state，以及在 state 中更新对象和数组的不同方法。
 
 </LearnMore>
 
@@ -642,7 +643,7 @@ label { display: block; margin-bottom: 5px; }
 
 这可能看起来像一个小变化，但在 React 应用中很多 bug 都是这么修复的。
 
-有时，您希望两个组件的 state 始终一起更改。要做到这一点，在它们两个中都删除该 state，将它移动到它们最近的公共父节点，然后通过 props 将它传递给它们。 这被称为["提升 state"](/learn/sharing-state-between-components)，这是编写 React 代码时最常见的事情之一。 例如，在像下面这样的手风琴组件中，一次应该只有一个面板处于激活状态。父组件不应该将激活 state 保存在每个单独的面板内，而是保存在父组件的 state 中并通过 props 指定给子组件。
+你有的时候可能需要两个组件的 state 同时更改。要做到这一点，在它们两个中都删除该 state，将它移动到它们最近的公共父节点，然后通过 props 将它传递给它们。这被称为 ["提升 state"](/learn/sharing-state-between-components)，这是编写 React 代码时最常见的事情之一。例如，在像下面这样的手风琴组件中，一次应该只有一个面板处于激活状态。父组件不应该将激活 state 保存在每个单独的面板内，而是保存在父组件的 state 中并通过 props 指定给子组件。
 
 <Sandpack>
 
@@ -711,12 +712,12 @@ h3, p { margin: 5px 0px; }
 
 ## 下一步 {/*next-steps*/}
 
-这个页面是快节奏的！如果读到这里，您已经看到了日常使用 React 的 80%。
+这一章节奏很快！如果已经读到这里，你就已经读了 React 80% 的日常使用内容。
 
-您接下来的步骤取决于您想做什么：
+接下来的步骤取决于你：
 
-* 如果您想在本地创建一个 React 项目，请转到 [安装](/learn/installation)。
-* 如果您想了解在 React 中构建 UI 在实践中是什么感觉，请阅读 [React 哲学](/learn/thinking-in-react)。
+* 如果你想在本地创建一个 React 项目，请参考 [安装](/learn/installation)。
+* 如果你想了解在 React 中构建 UI 在实践中是什么感觉，请阅读 [React 哲学](/learn/thinking-in-react)。
 * 或者，从 [描述 UI](/learn/describing-the-ui) 开始，仔细阅读第一章。
 
-当您需要了解 API 必要的细节时，不要忘记阅读 [API 参考](/reference)！
+当你需要了解 API 必要的细节时，不要忘记阅读 [API 参考](/reference)！
