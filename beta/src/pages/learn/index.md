@@ -534,7 +534,7 @@ export default function List() {
 
 ### 第 3 章概述： 管理 State {/*chapter-3-overview-managing-state*/}
 
-您经常会面临选择_究竟要把什么_放进 state 的问题。 您应该使用一个 state 变量还是多个 state 变量？ 对象还是数组？ 你应该如何[构建你的 state](/learn/choosing-the-state-structure)？ 最重要的原则是**避免冗余 state**。 如果某些信息永远不会改变，它就不应该处于 state。 如果某些信息是通过 props 从父组件收到的，它不应该处于 state 中。 如果某些信息可以从其他 props 或 state 计算得出，它也不应该处于 state 中！
+你经常会面临选择 _究竟要把什么_ 放进 state 的问题。你应该使用一个 state 变量还是多个 state 变量？对象还是数组？你应该如何 [构建你的 state](/learn/choosing-the-state-structure)？最重要的原则是 **避免冗余 state**。如果某些信息永远不会改变，它就不应该处于 state。如果某些信息是通过 props 从父组件收到的，它不应该处于 state 中。如果某些信息可以从其他 props 或 state 计算得出，它也不应该处于 state 中！
 
 例如，这个表单有一个多余的 `fullName` state 变量：
 
@@ -589,7 +589,7 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-您可以通过在组件渲染时计算 `fullName` 来删除它并简化代码：
+你可以通过在组件渲染时计算 `fullName` 来删除它并简化代码：
 
 <Sandpack>
 
