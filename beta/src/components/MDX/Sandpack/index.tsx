@@ -107,7 +107,7 @@ function Sandpack(props: SandpackProps) {
         );
       }
       result[filePath] = {
-        code: props.children as string,
+        code: (props.children as string).trim(),
         hidden: fileHidden,
         active: fileActive,
       };
@@ -127,7 +127,9 @@ function Sandpack(props: SandpackProps) {
       <SandpackProvider
         template="react"
         customSetup={{...setup, files: files}}
-        autorun={autorun}>
+        autorun={autorun}
+        initMode="user-visible"
+        initModeObserverOptions={{rootMargin: '1400px 0px'}}>
         <CustomPreset
           isSingleFile={isSingleFile}
           showDevTools={showDevTools}
