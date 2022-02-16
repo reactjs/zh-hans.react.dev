@@ -1,34 +1,62 @@
 ---
+<<<<<<< HEAD
 title: render()
 translators:
   - liu-jin-yi
   - QC-L
   - Neo42
+=======
+title: render
+>>>>>>> a2138f2e63afae65fba10219a0fccbfd80bc4768
 ---
 
 <Intro>
 
+<<<<<<< HEAD
 `render` 函数会将一段 [JSX](/learn/writing-markup-with-jsx)（“React 元素”）渲染到浏览器 DOM 容器节点中。它会指引 React 改变 `container` 中的 DOM，使其与所传递的 JSX 相匹配。
+=======
+`render` renders a piece of [JSX](/learn/writing-markup-with-jsx) ("React node") into a browser DOM node.
+>>>>>>> a2138f2e63afae65fba10219a0fccbfd80bc4768
 
 ```js
-render(<App />, container);
-render(<App />, container, callback);
+render(reactNode, domNode, callback?)
 ```
 
 </Intro>
 
+<<<<<<< HEAD
 ## 渲染根组件 {/*rendering-the-root-component*/}
 
 如需调用 `render`，你需要编写一段 JSX 代码以及一个 DOM 容器：
+=======
+- [Usage](#usage)
+  - [Rendering the root component](#rendering-the-root-component)
+  - [Rendering multiple roots](#rendering-multiple-roots)
+  - [Updating the rendered tree](#updating-the-rendered-tree)
+- [Reference](#reference)
+  - [`render(reactNode, domNode, callback?)`](#render)
 
-<APIAnatomy>
+---
+>>>>>>> a2138f2e63afae65fba10219a0fccbfd80bc4768
 
+## Usage {/*usage*/}
+
+<<<<<<< HEAD
 <AnatomyStep title="React 元素">
 
 需要渲染的 UI 界面。
+=======
+Call `render` to display a <CodeStep step={1}>React component</CodeStep> inside a <CodeStep step={2}>browser DOM node</CodeStep>.
 
-</AnatomyStep>
+```js [[1, 4, "<App />"], [2, 4, "document.getElementById('root')"]]
+import {render} from 'react-dom';
+import App from './App.js';
+>>>>>>> a2138f2e63afae65fba10219a0fccbfd80bc4768
 
+render(<App />, document.getElementById('root'));
+````
+
+<<<<<<< HEAD
 <AnatomyStep title="DOM 容器">
 
 用于渲染 UI 界面的 DOM 节点。容器本身不会被修改，只有其子节点会被修改。
@@ -43,6 +71,11 @@ render(<App />, container);
 </APIAnatomy>
 
 在完全使用 React 构建的应用程序中，你需要在应用程序的最顶层执行一次该操作——渲染“根”组件。
+=======
+### Rendering the root component {/*rendering-the-root-component*/}
+
+In apps fully built with React, **you will usually only do this once at startup**--to render the "root" component.
+>>>>>>> a2138f2e63afae65fba10219a0fccbfd80bc4768
 
 <Sandpack>
 
@@ -62,11 +95,19 @@ export default function App() {
 
 </Sandpack>
 
-<br />
+Usually you shouldn't need to call `render` again or to call it in more places. From this point on, React will be managing the DOM of your application. If you want to update the UI, your components can do this by [using state](/apis/usestate).
 
+<<<<<<< HEAD
 ## 渲染多个根组件 {/*rendering-multiple-roots*/}
 
 如果你在多个地方都散布了 React ["碎片"](/learn/add-react-to-a-website)，那么你就得为每个由 React 管理的顶层 UI 组件调用 `render` 函数。
+=======
+---
+
+### Rendering multiple roots {/*rendering-multiple-roots*/}
+
+If your page [isn't fully built with React](/learn/add-react-to-a-website), call `render` for each top-level piece of UI managed by React.
+>>>>>>> a2138f2e63afae65fba10219a0fccbfd80bc4768
 
 <Sandpack>
 
@@ -136,16 +177,25 @@ nav ul li { display: inline-block; margin-right: 20px; }
 
 </Sandpack>
 
-<br />
+You can destroy the rendered trees with [`unmountComponentAtNode()`](TODO).
 
+<<<<<<< HEAD
 ## 更新已渲染的组件树 {/*updating-the-rendered-tree*/}
 
 你可以在同一 DOM 节点上多次调用 `render`。只要组件树结构与之前渲染的内容一致，React 就会 [保留 state](/learn/preserving-and-resetting-state)。请仔细观察在输入框中输入内容后的效果：
+=======
+---
+
+### Updating the rendered tree {/*updating-the-rendered-tree*/}
+
+You can call `render` more than once on the same DOM node. As long as the component tree structure matches up with what was previously rendered, React will [preserve the state](/learn/preserving-and-resetting-state). Notice how you can type in the input, which means that the updates from repeated `render` calls every second in this example are not destructive:
+>>>>>>> a2138f2e63afae65fba10219a0fccbfd80bc4768
 
 <Sandpack>
 
 ```js index.js active
 import {render} from 'react-dom';
+import './styles.css';
 import App from './App.js';
 
 let i = 0;
@@ -171,18 +221,48 @@ export default function App({counter}) {
 
 </Sandpack>
 
+<<<<<<< HEAD
 你可以使用 [`unmountComponentAtNode()`](TODO) 来销毁已被渲染的组件树。
+=======
+It is uncommon to call `render` multiple times. Usually, you'll [update state](/apis/usestate) inside one of the components instead.
+>>>>>>> a2138f2e63afae65fba10219a0fccbfd80bc4768
 
-<br />
+---
 
+<<<<<<< HEAD
 ## 何时不使用它 {/*when-not-to-use-it*/}
 
 * 如果你的应用程序使用服务器渲染，并会在服务器上生成 HTML，请使用 [`hydrate`](TODO) 函数，而非 `render` 函数。
 * 如果你的应用程序完全基于 React 构建，那么你其实不需要多次使用 `render` 函数。如果你想在 DOM 树的其他位置渲染内容（例如，modal 或者 tooltip），那么请使用 [`createPortal`](TODO) 来代替。
+=======
+## Reference {/*reference*/}
 
-<br />
+### `render(reactNode, domNode, callback?)` {/*render*/}
+>>>>>>> a2138f2e63afae65fba10219a0fccbfd80bc4768
+
+Call `render` to display a React component inside a browser DOM element.
+
+```js
+const domNode = document.getElementById('root');
+render(<App />, domNode);
+```
+
+React will display `<App />` in the `domNode`, and take over managing the DOM inside it.
+
+An app fully built with React will usually only have one `render` call with its root component.  A page that uses "sprinkles" of React for parts of the page may have as many `render` calls as needed.
+
+[See examples above.](#usage)
+
+#### Parameters {/*parameters*/}
+
+* `reactNode`: A *React node* that you want to display. This will usually be a piece of JSX like `<App />`, but you can also pass a React element constructed with [`createElement()`](/TODO), a string, a number, `null`, or `undefined`. 
+
+* `domNode`: A [DOM element](https://developer.mozilla.org/en-US/docs/Web/API/Element). React will display the `reactNode` you pass inside this DOM element. From this moment, React will manage the DOM inside the `domNode` and update it when your React tree changes.
+
+* **optional** `callback`: A function. If passed, React will call it after your component is placed into the DOM.
 
 
+<<<<<<< HEAD
 ## 细节特性 {/*behavior-in-detail*/}
 
 在你第一次调用 `render` 时，`container` 内任何已有的 DOM 元素都会被替换。如果你再次调用 render 的话，React 会为了体现最新的 JSX 而进行必要的 DOM 更新。React 会通过将 DOM 与先前渲染的组件树进行“匹配”的方式来决定 DOM 的哪些部分可以复用、哪些部分需要重新创建。重复调用 render 与调用 setState 相似——在这两种情况下，React 都会避免不必要的 DOM 更新。
@@ -190,3 +270,18 @@ export default function App({counter}) {
 你可以将一个回调函数作为第三个参数传递给 render。React 会在你的组件在 DOM 中出现后调用它。
 
 如果你渲染了一个 `<MyComponent />` ，并且 `MyComponent` 是一个类组件，那么 `render` 函数就会返回该类的实例。在其他情况下，它将返回 `null`。
+=======
+#### Returns {/*returns*/}
+
+`render` usually returns `null`. However, if the `reactNode` you pass is a *class component*, then it will return an instance of that component.
+
+#### Caveats {/*caveats*/}
+
+* The first time you call `render`, React will clear all the existing HTML content inside the `domNode` before rendering the React component into it. If your `domNode` contains HTML generated by React on the server or during the build, use [`hydrate()`](/TODO) instead, which attaches the event handlers to the existing HTML.
+
+* If you call `render` on the same `domNode` more than once, React will update the DOM as necessary to reflect the latest JSX you passed. React will decide which parts of the DOM can be reused and which need to be recreated by ["matching it up"](/learn/preserving-and-resetting-state) with the previously rendered tree. Calling `render` on the same `domNode` again is similar to calling the [`set` function](/apis/usestate#setstate) on the root component: React avoids unnecessary DOM updates.
+
+* If your app is fully built with React, you'll likely have only one `render` call in your app. (If you use a framework, it might do this call for you.) When you want to render a piece of JSX in a different part of the DOM tree that isn't a child of your component (for example, a modal or a tooltip), use [`createPortal`](TODO) instead of `render`.
+
+---
+>>>>>>> a2138f2e63afae65fba10219a0fccbfd80bc4768
