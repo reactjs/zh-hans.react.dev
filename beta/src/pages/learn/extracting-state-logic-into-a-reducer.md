@@ -889,13 +889,8 @@ Reducers 并非没有缺点！以下是比较它们的几种方法：
 
 编写 `reducers` 时最好牢记以下两点：
 
-<<<<<<< HEAD
 * **reducers 必须是纯净的。** 这一点和 [状态更新函数](/learn/queueing-a-series-of-state-updates) 是相似的，`reducers` 在是在渲染时运行的！（actions 会排队直到下一次渲染)。 这就意味着 `reducers` [必须纯净](/learn/keeping-components-pure)，即当输入相同时，输出也是相同的。它们不应该包含异步请求、定时器或者任何副作用（对组件外部有影响的操作）。它们应该以不可变值的方式去更新 [对象](/learn/updating-objects-in-state) 和 [数组](/learn/updating-arrays-in-state)。
-* **actions 用来描述 “发生了什么” ，而不是 “做什么”。** 举个例子，如果用户在一个由 `reducer` 管理的表单（包含五个表单项）中点击了 `重置按钮`，那么 dispatch 一个 `reset_form` 的 action 比 dispatch 五个单独的 `set_field` 的 action 更加合理。如果你在一个 `reducer` 中打印了所有的 `action` 日志，那么这个日志应该是很清晰的，它能让你以某种步骤复现已发生的交互或响应。这对代码调试很有帮助！
-=======
-* **Reducers must be pure.** Similar to [state updater functions](/learn/queueing-a-series-of-state-updates), reducers run during rendering! (Actions are queued until the next render.) This means that reducers [must be pure](/learn/keeping-components-pure)—same inputs always result in the same output. They should not send requests, schedule timeouts, or perform any side effects (operations that impact things outside the component). They should update [objects](/learn/updating-objects-in-state) and [arrays](/learn/updating-arrays-in-state) without mutations.
-* **Each action describes a single user interaction, even if that leads to multiple changes in the data.** For example, if a user presses "Reset" on a form with five fields managed by a reducer, it makes more sense to dispatch one `reset_form` action rather than five separate `set_field` actions. If you log every action in a reducer, that log should be clear enough for you to reconstruct what interactions or responses happened in what order. This helps with debugging!
->>>>>>> a2138f2e63afae65fba10219a0fccbfd80bc4768
+* **每个 action 都描述了一个单一的用户交互，即使它会引发数据的多个变化。** 举个例子，如果用户在一个由 `reducer` 管理的表单（包含五个表单项）中点击了 `重置按钮`，那么 dispatch 一个 `reset_form` 的 action 比 dispatch 五个单独的 `set_field` 的 action 更加合理。如果你在一个 `reducer` 中打印了所有的 `action` 日志，那么这个日志应该是很清晰的，它能让你以某种步骤复现已发生的交互或响应。这对代码调试很有帮助！
 
 ## 使用 Immer 简化 reducers {/*writing-concise-reducers-with-immer*/}
 
@@ -1109,25 +1104,14 @@ Reducers 应该是纯净的，所以它们不应该去修改 state。而 Immer �
 
 <Recap>
 
-<<<<<<< HEAD
 * 把 `useState` 转化为 `useReducer`：
   1. 通过事件处理函数 dispatch actions；
   2. 编写一个 reducer 函数，它接受传入的 state 和一个 action，并返回一个新的 state；
   3. 使用 `useReducer` 替换 `useState`；
 * Reducers 可能需要你写更多的代码，但是这有利于代码的调试和测试。
 * Reducers 必须是纯净的。
-* Actions 描述的是 “发生了什么” 而不是 “要做什么”。
+* 每个 action 都描述了一个单一的用户交互。
 * 使用 Immer 来帮助你在 reducer 里直接修改状态。
-=======
-* To convert from `useState` to `useReducer`:
-  1. Dispatch actions from event handlers.
-  2. Write a reducer function that returns the next state for a given state and action.
-  3. Replace `useState` with `useReducer`.
-* Reducers require you to write a bit more code, but they help with debugging and testing.
-* Reducers must be pure.
-* Each action describes a single user interaction.
-* Use Immer if you want to write reducers in a mutating style.
->>>>>>> a2138f2e63afae65fba10219a0fccbfd80bc4768
 
 </Recap>
 
