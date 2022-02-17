@@ -97,8 +97,6 @@ Hook 确实有它们自己的学习曲线。如果这份文档中遗失了一些
 
 我们给 Hook 设定的目标是尽早覆盖 class 的所有使用场景。目前暂时还没有对应不常用的 `getSnapshotBeforeUpdate`，`getDerivedStateFromError` 和 `componentDidCatch` 生命周期的 Hook 等价写法，但我们计划尽早把它们加进来。
 
-目前 Hook 还处于早期阶段，一些第三方的库可能还暂时无法兼容 Hook。
-
 ### Hook 会替代 render props 和高阶组件吗？ {#do-hooks-replace-render-props-and-higher-order-components}
 
 通常，render props 和高阶组件只渲染一个子节点。我们认为让 Hook 来服务这个使用场景更加简单。这两种模式仍有用武之地，（例如，一个虚拟滚动条组件或许会有一个 `renderItem` 属性，或是一个可见的容器组件或许会有它自己的 DOM 结构）。但在大部分场景下，Hook 足够了，并且能够帮助减少嵌套。
