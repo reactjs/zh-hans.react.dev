@@ -17,9 +17,15 @@ translators:
 
 React 社区中其他较为流行的文本编辑器包括：
 
+<<<<<<< HEAD
 * [WebStorm](https://www.jetbrains.com/webstorm/) — 专为 JavaScript 设计的集成开发环境。
 * [Sublime Text](https://www.sublimetext.com/) — 支持 JSX 和 TypeScript，内置语法高亮和代码自动补全功能。
 * [Vim](https://www.vim.org/) — 一个高度可配置的文本编辑器，可以非常高效地创建和更改任何类型的文本。它作为 “vi” 包含在大多数 UNIX 系统和 Apple OS X 中。
+=======
+* [WebStorm](https://www.jetbrains.com/webstorm/)—an integrated development environment designed specifically for JavaScript.
+* [Sublime Text](https://www.sublimetext.com/)—has support for JSX and TypeScript, [syntax highlighting](https://stackoverflow.com/a/70960574/458193) and autocomplete built in.
+* [Vim](https://www.vim.org/)—a highly configurable text editor built to make creating and changing any kind of text very efficient. It is included as "vi" with most UNIX systems and with Apple OS X.
+>>>>>>> 5b8a720ece8dc7e055b6ff16ef409ccbc1f3ab4d
 
 ## 推荐的文本编辑器功能 {/*recommended-text-editor-features*/}
 
