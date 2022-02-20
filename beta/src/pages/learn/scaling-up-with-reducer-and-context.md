@@ -1,5 +1,10 @@
 ---
 title: 使用 Reducer 和 Context 来拓展你的应用
+translator: 
+  - Ikaite 
+  - KnowsCount 
+  - TinaaaaP 
+  - yyyang1996
 ---
 
 <Intro>
