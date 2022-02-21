@@ -12,7 +12,34 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('/fonts/SourceCodePro-Regular.ttf') format('truetype');
+    src: url('/fonts/Source-Code-Pro-Regular.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Optimistic Display';
+    src: url('https://conf.reactjs.org/fonts/Optimistic_Display_W_Lt.woff2')
+      format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Optimistic Display';
+    src: url('https://conf.reactjs.org/fonts/Optimistic_Display_W_Md.woff2')
+      format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Optimistic Display';
+    src: url('https://conf.reactjs.org/fonts/Optimistic_Display_W_Bd.woff2')
+      format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
   }
 
   /* Write your own custom base styles here */
@@ -164,15 +191,6 @@
   html.dark .no-bg-scrollbar::-webkit-scrollbar-thumb:active {
     background-color: rgba(255, 255, 255, 0.35) !important;
   }
-}
-
-#_hj_feedback_container > div > button:not([aria-label='Close']) {
-  display: none;
-}
-
-#_hj_feedback_container > div {
-  --hjFeedbackAccentColor: rgb(230, 247, 255) !important;
-  --hjFeedbackAccentTextColor: rgb(73, 119, 171) !important;
 }
 
 .code-step * {
