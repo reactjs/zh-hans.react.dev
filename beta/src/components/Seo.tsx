@@ -82,7 +82,27 @@ export const Seo = withRouter(
         key="twitter:image"
         content={`https://beta.reactjs.org${image}`}
       />
-
+      <link
+        rel="preload"
+        href="/fonts/Source-Code-Pro-Regular.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        href="https://conf.reactjs.org/fonts/Optimistic_Display_W_Md.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        href="https://conf.reactjs.org/fonts/Optimistic_Display_W_Bd.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
       {children}
     </Head>
   )
