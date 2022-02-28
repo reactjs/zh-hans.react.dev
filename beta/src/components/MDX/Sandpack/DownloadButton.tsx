@@ -7,18 +7,22 @@ import {useSandpack} from '@codesandbox/sandpack-react';
 import {IconArrowSmall} from '../../Icon/IconArrowSmall';
 export interface DownloadButtonProps {}
 
+let initialIsSupported = false;
+
 export const DownloadButton: React.FC<DownloadButtonProps> = () => {
   const {sandpack} = useSandpack();
-  const [supported, setSupported] = React.useState(false);
+  const [supported, setSupported] = React.useState(initialIsSupported);
   React.useEffect(() => {
     // This detection will work in Chrome 97+
     if (
+      !supported &&
       (HTMLScriptElement as any).supports &&
       (HTMLScriptElement as any).supports('importmap')
     ) {
       setSupported(true);
+      initialIsSupported = true;
     }
-  }, []);
+  }, [supported]);
 
   if (!supported) {
     return null;
@@ -74,7 +78,7 @@ ${css}
     <button
       className="text-sm text-primary dark:text-primary-dark inline-flex items-center hover:text-link duration-100 ease-in transition mx-1"
       onClick={downloadHTML}
-      title="Refresh Sandpack"
+      title="Download Sandbox"
       type="button">
       <IconArrowSmall
         displayDirection="down"

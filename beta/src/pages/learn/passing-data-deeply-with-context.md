@@ -12,8 +12,8 @@ Usually, you will pass information from a parent component to a child component 
 
 - What "prop drilling" is
 - How to replace repetitive prop passing with context
-- What the common use cases are for context
-- What the common alternatives are to context
+- Common use cases for context
+- Common alternatives to context
 
 </YouWillLearn>
 

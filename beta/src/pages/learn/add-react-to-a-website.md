@@ -234,7 +234,7 @@ return <button onClick={() => setLiked(true)}>Like</button>;
 最初引入 JSX 是为了想让 React 编写组件的感觉就像编写 HTML 一样简单，但总有例外，你不想或者不能使用 JSX，此时可以参考其他两种解决方案：
 
 - 使用像 [htm](https://github.com/developit/htm) 这样的 JSX 替代品，它不使用编译器——它使用 JavaScript 原生的带标签的模板字符串。
-- 使用 [`React.createElement()`](/reference/createelement)，它具有下面解释的特殊结构。
+- 使用 [`React.createElement()`](/apis/createelement)，它具有下面解释的特殊结构。
 
 用 JSX 编写的代码：
 

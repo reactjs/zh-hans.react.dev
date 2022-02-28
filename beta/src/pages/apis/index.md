@@ -34,10 +34,29 @@ If you use React on the web, you'll also need the same version of [ReactDOM](/ap
 
 ## Exports {/*exports*/}
 
-<YouWillLearnCard title="useState" path="/reference/usestate">
+<YouWillLearnCard title="useState" path="/apis/usestate">
 
-A React Hook that lets a component "remember" some information (called state).
+Declares a state variable.
+
+```js
+function MyComponent() {
+  const [age, setAge] = useState(42);
+  // ...
+```
 
 </YouWillLearnCard>
+
+<YouWillLearnCard title="useRef" path="/apis/useref">
+
+Declares a ref.
+
+```js
+function MyComponent() {
+  const inputRef = useRef(null);
+  // ...
+```
+
+</YouWillLearnCard>
+
 
 This section is incomplete and is still being written!

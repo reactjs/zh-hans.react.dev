@@ -10,8 +10,11 @@ import {
   useActiveCode,
   SandpackCodeEditor,
   SandpackThemeProvider,
+  SandpackReactDevTools,
 } from '@codesandbox/sandpack-react';
 import scrollIntoView from 'scroll-into-view-if-needed';
+
+import cn from 'classnames';
 
 import {IconChevron} from 'components/Icon/IconChevron';
 import {NavigationBar} from './NavigationBar';
@@ -20,10 +23,14 @@ import {CustomTheme} from './Themes';
 
 export function CustomPreset({
   isSingleFile,
-  onReset,
+  showDevTools,
+  onDevToolsLoad,
+  devToolsLoaded,
 }: {
   isSingleFile: boolean;
-  onReset: () => void;
+  showDevTools: boolean;
+  devToolsLoaded: boolean;
+  onDevToolsLoad: () => void;
 }) {
   const lineCountRef = React.useRef<{[key: string]: number}>({});
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -37,45 +44,30 @@ export function CustomPreset({
   }
   const lineCount = lineCountRef.current[activePath];
   const isExpandable = lineCount > 16 || isExpanded;
-  const editorHeight = isExpandable ? lineCount * 24 + 24 : 'auto'; // shown lines * line height (24px)
-  const getHeight = () => {
-    if (!isExpandable) {
-      return editorHeight;
-    }
-    return isExpanded ? editorHeight : 406;
-  };
 
   return (
     <>
       <div
         className="shadow-lg dark:shadow-lg-dark rounded-lg"
         ref={containerRef}>
-        <NavigationBar showDownload={isSingleFile} onReset={onReset} />
+        <NavigationBar showDownload={isSingleFile} />
         <SandpackThemeProvider theme={CustomTheme}>
           <div
             ref={sandpack.lazyAnchorRef}
-            className="sp-layout rounded-t-none"
-            style={{
-              // Prevent it from collapsing below the initial (non-loaded) height.
-              // There has to be some better way to do this...
-              minHeight: 216,
-            }}>
+            className={cn(
+              'sp-layout sp-custom-layout',
+              showDevTools && devToolsLoaded && 'sp-layout-devtools',
+              isExpanded && 'sp-layout-expanded'
+            )}>
             <SandpackCodeEditor
-              customStyle={{
-                height: getHeight(),
-                maxHeight: isExpanded ? '' : 406,
-              }}
               showLineNumbers
               showInlineErrors
               showTabs={false}
+              showRunButton={false}
             />
             <Preview
-              isExpanded={isExpanded}
               className="order-last xl:order-2"
-              customStyle={{
-                height: getHeight(),
-                maxHeight: isExpanded ? '' : 406,
-              }}
+              isExpanded={isExpanded}
             />
             {isExpandable && (
               <button
@@ -104,6 +96,10 @@ export function CustomPreset({
               </button>
             )}
           </div>
+
+          {showDevTools && (
+            <SandpackReactDevTools onLoadModule={onDevToolsLoad} />
+          )}
         </SandpackThemeProvider>
       </div>
     </>

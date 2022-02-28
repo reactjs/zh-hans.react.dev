@@ -3,8 +3,8 @@
  */
 
 import * as React from 'react';
+import cn from 'classnames';
 
-import {APIAnatomy, AnatomyStep} from './APIAnatomy';
 import CodeBlock from './CodeBlock';
 import {CodeDiagram} from './CodeDiagram';
 import ConsoleBlock from './ConsoleBlock';
@@ -25,6 +25,24 @@ import YouWillLearnCard from './YouWillLearnCard';
 import {Challenges, Hint, Solution} from './Challenges';
 import {IconNavArrow} from '../Icon/IconNavArrow';
 import ButtonLink from 'components/ButtonLink';
+
+function CodeStep({children, step}: {children: any; step: number}) {
+  return (
+    <span
+      data-step={step}
+      className={cn(
+        'code-step bg-opacity-10 dark:bg-opacity-20 relative rounded px-[6px] py-[1.5px] border-b-[2px] border-opacity-60',
+        {
+          'bg-blue-40 border-blue-40': step === 1,
+          'bg-yellow-40 border-yellow-40': step === 2,
+          'bg-green-40 border-green-40': step === 3,
+          'bg-purple-40 border-purple-40': step === 4,
+        }
+      )}>
+      {children}
+    </span>
+  );
+}
 
 const P = (p: JSX.IntrinsicElements['p']) => (
   <p className="whitespace-pre-wrap my-4" {...p} />
@@ -135,8 +153,15 @@ function MathI({children}: {children: any}) {
   );
 }
 
-function YouWillLearn({children}: {children: any}) {
-  return <SimpleCallout title="You will learn">{children}</SimpleCallout>;
+function YouWillLearn({
+  children,
+  isChapter,
+}: {
+  children: any;
+  isChapter?: boolean;
+}) {
+  let title = isChapter ? 'In this chapter' : 'You will learn';
+  return <SimpleCallout title={title}>{children}</SimpleCallout>;
 }
 
 // TODO: typing.
@@ -336,9 +361,6 @@ export const MDXComponents = {
   code: CodeBlock,
   // The code block renders <pre> so we just want a div here.
   pre: (p: JSX.IntrinsicElements['div']) => <div {...p} />,
-  // Scary: dynamic(() => import('./Scary')),
-  APIAnatomy,
-  AnatomyStep,
   CodeDiagram,
   ConsoleBlock,
   Convention,
@@ -366,4 +388,5 @@ export const MDXComponents = {
   Challenges,
   Hint,
   Solution,
+  CodeStep,
 };

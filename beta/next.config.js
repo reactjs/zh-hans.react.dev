@@ -11,16 +11,11 @@ module.exports = {
   experimental: {
     plugins: true,
     // TODO: this doesn't work because https://github.com/vercel/next.js/issues/30714
-    // concurrentFeatures: true,
+    concurrentFeatures: false,
     scrollRestoration: true,
   },
   async redirects() {
     return redirects.redirects;
-  },
-  env: {
-    // @todo Remove when https://github.com/vercel/next.js/pull/16529 lands
-    GA_TRACKING_ID: 'XXXX',
-    NEXT_PUBLIC_GA_TRACKING_ID: 'XXX',
   },
   rewrites() {
     return [
@@ -32,7 +27,7 @@ module.exports = {
   },
   webpack: (config, {dev, isServer, ...options}) => {
     if (process.env.ANALYZE) {
-      const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+      const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
       config.plugins.push(
         new BundleAnalyzerPlugin({
           analyzerMode: 'static',

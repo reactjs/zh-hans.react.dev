@@ -12,13 +12,40 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url('/fonts/SourceCodePro-Regular.ttf') format('truetype');
+    src: url('/fonts/Source-Code-Pro-Regular.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Optimistic Display';
+    src: url('https://conf.reactjs.org/fonts/Optimistic_Display_W_Lt.woff2')
+      format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Optimistic Display';
+    src: url('https://conf.reactjs.org/fonts/Optimistic_Display_W_Md.woff2')
+      format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Optimistic Display';
+    src: url('https://conf.reactjs.org/fonts/Optimistic_Display_W_Bd.woff2')
+      format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
   }
 
   /* Write your own custom base styles here */
   html {
     color-scheme: light;
-    
+
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-tap-highlight-color: transparent;
   }
@@ -57,12 +84,12 @@
   }
 
   a > code {
-    color: #087EA4 !important; /* blue-50 */
+    color: #087ea4 !important; /* blue-50 */
     text-decoration: none !important;
   }
 
   html.dark a > code {
-    color: #149ECA !important; /* blue-40 */
+    color: #149eca !important; /* blue-40 */
   }
 
   .text-code {
@@ -108,8 +135,12 @@
   }
 
   @keyframes nav-fadein {
-    from { opacity: 0.5; }
-    to   { opacity: 1; }
+    from {
+      opacity: 0.5;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   /*
@@ -162,11 +193,13 @@
   }
 }
 
-#_hj_feedback_container > div > button:not([aria-label="Close"]) {
-  display: none;
+.code-step * {
+  color: black !important;
 }
-
-#_hj_feedback_container > div  {
-  --hjFeedbackAccentColor: rgb(230, 247, 255) !important;
-  --hjFeedbackAccentTextColor: rgb(73, 119, 171) !important;
+.code-step code {
+  background: none !important;
+  padding: 2px !important;
+}
+html.dark .code-step * {
+  color: white !important;
 }
