@@ -19,6 +19,8 @@ import Link from './Link';
 import {PackageImport} from './PackageImport';
 import Recap from './Recap';
 import Sandpack from './Sandpack';
+import Diagram from './Diagram';
+import DiagramGroup from './DiagramGroup';
 import SimpleCallout from './SimpleCallout';
 import TerminalBlock from './TerminalBlock';
 import YouWillLearnCard from './YouWillLearnCard';
@@ -198,14 +200,12 @@ function Illustration({
   alt,
   author,
   authorLink,
-  children,
 }: {
   caption: string;
   src: string;
   alt: string;
   author: string;
   authorLink: string;
-  children: any;
 }) {
   return (
     <div className="my-16 mx-0 2xl:mx-auto max-w-4xl 2xl:max-w-6xl">
@@ -369,6 +369,8 @@ export const MDXComponents = {
     title: string;
     excerpt: string;
   }) => <ExpandableExample {...props} type="DeepDive" />,
+  Diagram,
+  DiagramGroup,
   Gotcha,
   HomepageHero,
   Illustration,
