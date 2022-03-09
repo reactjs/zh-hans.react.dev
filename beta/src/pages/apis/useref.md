@@ -15,11 +15,14 @@ const ref = useRef(initialValue)
 - [Usage](#usage)
   - [Referencing a value with a ref](#referencing-a-value-with-a-ref)
   - [Manipulating the DOM with a ref](#manipulating-the-dom-with-a-ref)
+  - [Exposing a ref from your component](#exposing-a-ref-from-your-component)
   - [Avoiding recreating the ref contents](#avoiding-recreating-the-ref-contents)
 - [Reference](#reference)
   - [`useRef(initialValue)`](#useref)
 - [Troubleshooting](#troubleshooting)
   - [I can’t get a ref to a custom component](#i-cant-get-a-ref-to-a-custom-component)
+
+---
 
 ## Usage {/*usage*/}
 
