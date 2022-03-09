@@ -8,7 +8,6 @@ import {Nav} from './Nav';
 import {RouteItem, SidebarContext} from './useRouteMeta';
 import {Sidebar} from './Sidebar';
 import {Footer} from './Footer';
-import SocialBanner from '../SocialBanner';
 interface PageProps {
   children: React.ReactNode;
   routeTree: RouteItem;
@@ -17,7 +16,6 @@ interface PageProps {
 export function Page({routeTree, children}: PageProps) {
   return (
     <>
-      <SocialBanner />
       <MenuProvider>
         <SidebarContext.Provider value={routeTree}>
           <div className="h-auto lg:h-screen flex flex-row">
