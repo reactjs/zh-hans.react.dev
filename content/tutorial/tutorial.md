@@ -1175,7 +1175,7 @@ class Game extends React.Component {
   }
 ```
 
-最后，修改 Game 组件的 `render` 方法，将代码从始终根据最后一次移动渲染修改为根据当前 `stepNumber` 渲染。
+最后，修改 Game 组件的 `render` 方法，将代码从始至终根据最后一次移动渲染修改为根据当前 `stepNumber` 渲染。
 
 ```javascript{3}
   render() {
