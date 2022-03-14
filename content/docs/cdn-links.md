@@ -30,7 +30,7 @@ next: release-channels.html
 <script crossorigin src="..."></script>
 ```
 
-我们同时建议你验证使用的 CDN 是否设置了 `Access-Control-Allow-Origin: *` HTTP 请求头：
+我们同时建议你验证使用的 CDN 是否设置了 `Access-Control-Allow-Origin: *` HTTP 响应头：
 
 ![Access-Control-Allow-Origin: *](../images/docs/cdn-cors-header.png)
 
