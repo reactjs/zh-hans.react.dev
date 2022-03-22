@@ -86,7 +86,16 @@ Sebastian majored in psychology. He's usually quiet. Even when he says something
 
 Seth 从小就学习编程，在亚利桑那州图森市长大。放学后，他沉浸在音乐的殿堂里，在回归工作岗位前，他做了大约 10 年的巡回音乐人，后来就职于 Intuit。在业余时，他喜欢 [摄影](https://www.sethwebster.com) 还会参与美国东北部的动物救援机构。
 
+### Xuan Huang {#xuan-huang}
+
+![Xuan](../images/team/huxpro.jpg)
+
+[@huxpro on GitHub](https://github.com/huxpro) &middot; [@huxpro on Twitter](https://twitter.com/huxpro)
+
+黄玄在童年时候学习了制作 Flash 游戏，这是他与编程相遇的契机。他在大学时候学习了数字媒体艺术，现在在 React 团队从事编译器相关的工作。工作之余，他爱好做拿铁，玩网球以及乒乓球。
+
 ## 鸣谢 {#acknowledgements}
+
 
 React 最初由 [Jordan Walke](https://github.com/jordwalke) 创立。如今，React 已拥有超过 1k+ 的开源贡献者，我们想表彰一些人，他们在过去对 React 及其文档方面做出了重大贡献，并且多年来一直帮助维护它们：
 
