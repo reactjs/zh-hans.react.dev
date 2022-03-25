@@ -220,11 +220,7 @@ function ProfileTimeline() {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/fragrant-glade-8huj6)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/fast-glade-rqnhtt)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/fast-glade-rqnhtt)**
 
 如果你运行上面的代码，你会发现 console 打印如下信息：
 
@@ -299,11 +295,7 @@ function ProfileTimeline({ posts }) {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/wandering-morning-ev6r0)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/hopeful-lake-loddz9)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/hopeful-lake-loddz9)**
 
 在方法 2 中，console 打印的信息变成这样：
 
@@ -429,11 +421,7 @@ function App() {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/infallible-feather-xjtbu)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/sparkling-field-41z4r3)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/sparkling-field-41z4r3)**
 
 通过这种方法，我们可以**并行获取代码和数据**。在页面之间导航时，我们不必等待页面上的代码加载就可以开始加载页面数据。我们可以同时开始获取代码和数据（单击链接时），从而提供更好的用户体验。
 
@@ -520,11 +508,7 @@ function ProfileTimeline({ id }) {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/nervous-glade-b5sel)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/beautiful-mendeleev-qwyxzg)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/beautiful-mendeleev-qwyxzg)**
 
 请注意，我们将 effect 的依赖从 `[]` 更改为 `[id]`——因为我们希望每次 `id` 更改时都重新运行 effect。 如果不这样做，我们将无法再次获取到新的数据。
 
@@ -602,11 +586,7 @@ class ProfileTimeline extends React.Component {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/trusting-clarke-8twuq)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/async-wind-9o4ojn)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/async-wind-9o4ojn)**
 
 上面代码看似简单易读，实则暗含同样的问题。
 
@@ -666,11 +646,7 @@ function ProfileTimeline({ resource }) {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/infallible-feather-xjtbu)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/sparkling-field-41z4r3)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/sparkling-field-41z4r3)**
 
 在这个用上 Suspense 的示例中，我们只需要获取一个数据 `resource`，所以我们把它提到最外层，作为<u>顶层变量</u>。考虑到我们有多个 resources，我们把这个变量放入 `<App>` 组件的 state。
 
@@ -743,11 +719,7 @@ function ProfilePage() {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/adoring-goodall-8wbn7)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/sparkling-rgb-r5vfhs)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/sparkling-rgb-r5vfhs)**
 
 上面代码中的错误边界组件既能捕捉渲染过程的报错，*也*能捕捉 Suspense 里头数据获取的报错。理论上，我们在组件树中插入多少个错误边界组件都是可以的，但这并不是推荐的做法，错误边界组件的位置最好是深思熟虑之后再确定。
 
@@ -757,18 +729,10 @@ function ProfilePage() {
 
 Suspense 本身解答了一些问题，但同时它也引出一些新的问题：
 
-<<<<<<< HEAD
 * 如果部分组件处于“挂起”状态，整个应用会卡死吗？该怎么避免这个问题？
 * 如果我们不想在目标组件的上层，而想在其他地方展示 spinner，可以实现吗？
 * 如果我们*想*有计划地在一个短的时间内展示不同的 UI，能够实现吗？
 * 除了展示个 spinner，我们能添加额外的视觉效果吗？像是给现有界面加上蒙层之类的？
-* 在[最后一个 Suspense 的代码示例中](https://codesandbox.io/s/infallible-feather-xjtbu)，为什么在点击了“Next”按钮之后，会报出警告？
-=======
-* If some component "suspends", does the app freeze? How to avoid this?
-* What if we want to show a spinner in a different place than "above" the component in a tree?
-* If we intentionally *want* to show an inconsistent UI for a small period of time, can we do that?
-* Instead of showing a spinner, can we add a visual effect like "greying out" the current screen?
-* Why does our [last Suspense example](https://codesandbox.io/s/sparkling-field-41z4r3) log a warning when clicking the "Next" button?
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+- 在[最后一个 Suspense 的代码示例中](https://codesandbox.io/s/sparkling-field-41z4r3)，为什么在点击了“Next”按钮之后，会报出警告？
 
 对于上述问题的解答，我们将交由下一章节 [Concurrent UI 模式](/docs/concurrent-mode-patterns.html)处理。

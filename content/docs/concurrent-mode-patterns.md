@@ -51,11 +51,7 @@ next: concurrent-mode-adoption.html
 
 ## Transition {#transitions}
 
-<<<<<<< HEAD
-我们先来回顾一下前一篇关于 [Suspense 用于数据获取](/docs/concurrent-mode-suspense.html) 文章中的 [这个示例](https://codesandbox.io/s/infallible-feather-xjtbu)。
-=======
-Let's revisit [this demo](https://codesandbox.io/s/sparkling-field-41z4r3) from the previous page about [Suspense for Data Fetching](/docs/concurrent-mode-suspense.html).
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+我们先来回顾一下前一篇关于 [Suspense 用于数据获取](/docs/concurrent-mode-suspense.html) 文章中的 [这个示例](https://codesandbox.io/s/sparkling-field-41z4r3)。
 
 当我们点击 "Next" 按钮来切换激活的页面，现存的页面立刻消失了，然后我们看到整个页面只有一个加载提示。可以说这是一个“不受欢迎”的加载状态。**如果我们可以“跳过”这个过程，并且等到内容加载后再过渡到新的页面，效果会更好**
 
@@ -123,27 +119,15 @@ function App() {
 >
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/musing-driscoll-6nkie)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/vigilant-feynman-kpjy8w)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/vigilant-feynman-kpjy8w)**
 
 试试点击 "Next" 几下。注意它的体验已经很不一样了。**当点击时，我们没有直接切换到一个空白的页面，而是在前一个页面停留了一段时间。**当数据加载好的时候 React 会帮我们切换到新的界面。
 
-<<<<<<< HEAD
-如果我们把 API 接口的响应时间调整到 5 秒钟，[我们就可以确认](https://codesandbox.io/s/relaxed-greider-suewh) React “放弃”停留并在 3 秒后转换到了新的页面。这是因为我们给 `useTransition()` 传入的配置 `{timeoutMs: 3000}`。假如，我们传入的是 `{timeoutMs: 60000}` 那么它会等上整整一分钟。
-=======
-If we make our API responses take 5 seconds, [we can confirm](https://codesandbox.io/s/heuristic-leftpad-9hit59) that now React "gives up" and transitions anyway to the next screen after 3 seconds. This is because we passed `{timeoutMs: 3000}` to `useTransition()`. For example, if we passed `{timeoutMs: 60000}` instead, it would wait a whole minute.
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+如果我们把 API 接口的响应时间调整到 5 秒钟，[我们就可以确认](https://codesandbox.io/s/heuristic-leftpad-9hit59) React “放弃”停留并在 3 秒后转换到了新的页面。这是因为我们给 `useTransition()` 传入的配置 `{timeoutMs: 3000}`。假如，我们传入的是 `{timeoutMs: 60000}` 那么它会等上整整一分钟。
 
 ### 添加一个等待提示器 {#adding-a-pending-indicator}
 
-<<<<<<< HEAD
-在 [我们前一个例子](https://codesandbox.io/s/musing-driscoll-6nkie) 中还是有地方体验不友好。最好不要显示加载中。**但是如果没有这个过程提示的话体验会更糟糕！**当我们点击 "Next"按钮，什么都没有发生，就好像整个应用卡死一样。
-=======
-There's still something that feels broken about [our last example](https://codesandbox.io/s/vigilant-feynman-kpjy8w). Sure, it's nice not to see a "bad" loading state. **But having no indication of progress at all feels even worse!** When we click "Next", nothing happens and it feels like the app is broken.
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+在 [我们前一个例子](https://codesandbox.io/s/vigilant-feynman-kpjy8w) 中还是有地方体验不友好。最好不要显示加载中。**但是如果没有这个过程提示的话体验会更糟糕！**当我们点击 "Next"按钮，什么都没有发生，就好像整个应用卡死一样。
 
 调用 `useTransition()` 包含两个值返回值：`startTransition` 和 `isPending`。
 
@@ -173,21 +157,13 @@ return (
 );
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/jovial-lalande-26yep)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/frosty-haslett-ds0h9h)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/frosty-haslett-ds0h9h)**
 
 现在，这感觉好多了！当我们点击 Next 按钮的时候，它变得不可用，因为点击它很多次并没有意义。而且新增的“Loading...”提示让用户知道程序并没有卡住。
 
 ### 回顾更改 {#reviewing-the-changes}
 
-<<<<<<< HEAD
-我们来回顾基于 [原始示例](https://codesandbox.io/s/infallible-feather-xjtbu) 做出的所有更改：
-=======
-Let's take another look at all the changes we've made since the [original example](https://codesandbox.io/s/nice-shadow-zvosx0):
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+我们来回顾基于 [原始示例](https://codesandbox.io/s/nice-shadow-zvosx0) 做出的所有更改：
 
 ```js{3-5,9,11,14,19}
 function App() {
@@ -215,11 +191,7 @@ function App() {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/jovial-lalande-26yep)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/frosty-haslett-ds0h9h)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/frosty-haslett-ds0h9h)**
 
 我们只用了 7 行代码来实现这个切换：
 
@@ -240,11 +212,7 @@ function App() {
 
 这原因就在于 Concurrent 模式本身。我们 [之前提到](/docs/concurrent-mode-intro.html#intentional-loading-sequences) 它有点像在 “branch” 上运行的的一个 state 更新。或者我们可以想象成，当我们把 state 更新包裹在 `startTransition` 的时候会在*“另一个宇宙中”*开始渲染，就像科幻电影一样。我们并不能直接看到那个宇宙 -- 但是我们能够从那个宇宙探知一些事情正在发生的事情（`isPending`）。当更新完成的时候，我们的“多个宇宙”合并成一个，我们在屏幕上看到最终的结果！
 
-<<<<<<< HEAD
-在 [示例](https://codesandbox.io/s/jovial-lalande-26yep) 中多练习一下，然后试着想象它正在发生。
-=======
-Play a bit more with the [demo](https://codesandbox.io/s/frosty-haslett-ds0h9h), and try to imagine it happening.
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+在 [示例](https://codesandbox.io/s/frosty-haslett-ds0h9h) 中多练习一下，然后试着想象它正在发生。
 
 当然，两个版本的树*同时*渲染只是个假象，正如所有程序同时在你电脑上运行的想法也同样是假象。操作系统会在不同的应用之间快速的切换。类似的，React 可以在不同版本的树上进行切换，一个是你屏幕上看到的那个版本，另一个是它“准备”接下来给你显示的版本。
 
@@ -282,19 +250,11 @@ function ProfilePage() {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/boring-shadow-100tf)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/trusting-brown-6hj0m0)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/trusting-brown-6hj0m0)**
 
 在这个例子中，我们会在加载*和*每次点击 “Refresh” 按钮的时候开始数据获取。我们把 `fetchUserAndPosts()` 的结果放到 state 中，这样下级的组件可以从我们刚刚发起的请求中读取新的数据。
 
-<<<<<<< HEAD
-我们可以看到在[示例](https://codesandbox.io/s/boring-shadow-100tf)中点击 “Refresh” 是可以正常工作的。`<ProfileDetails>` 和 `<ProfileTimeline>` 组件接收代表新数据的 `resource` prop，它会因为我们尚未得到服务端响应而 “suspend”，所以我们看到了降级方案界面。当服务端响应加载完成，我们看到更新后的文章（我们的伪造接口每 3 秒增加一些文章）。
-=======
-We can see in [this example](https://codesandbox.io/s/trusting-brown-6hj0m0) that pressing "Refresh" works. The `<ProfileDetails>` and `<ProfileTimeline>` components receive a new `resource` prop that represents the fresh data, they "suspend" because we don't have a response yet, and we see the fallbacks. When the response loads, we can see the updated posts (our fake API adds them every 3 seconds).
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+我们可以看到在[示例](https://codesandbox.io/s/trusting-brown-6hj0m0)中点击 “Refresh” 是可以正常工作的。`<ProfileDetails>` 和 `<ProfileTimeline>` 组件接收代表新数据的 `resource` prop，它会因为我们尚未得到服务端响应而 “suspend”，所以我们看到了降级方案界面。当服务端响应加载完成，我们看到更新后的文章（我们的伪造接口每 3 秒增加一些文章）。
 
 然而，这种交互体验极差。用户正在浏览页面，但是在与页面进行交互的时候，内容却被加载状态覆盖。这会让人感觉匪夷所思。**正如前面那样，要避免显示加载中，我们把 state 更新放到 transition 中：**
 
@@ -329,11 +289,7 @@ function ProfilePage() {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/sleepy-field-mohzb)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/zealous-mccarthy-fiiwu2)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/zealous-mccarthy-fiiwu2)**
 
 这下感觉好多了！点击 “Refresh” 按钮不会再阻断页面浏览了。我们会看到有内容正在“内联”加载，并且当数据准备好，它就显示出来了。
 
@@ -373,11 +329,7 @@ function Button({ children, onClick }) {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/modest-ritchie-iufrh)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/heuristic-cerf-8bo4rk)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/heuristic-cerf-8bo4rk)**
 
 需要注意按钮并不关心我们会更新*什么*。它把发生在它 `onClick` 处理器过程中的*任意* state 更新包装到一个 transition 中。这样我们的 `<Button>` 组件来管理 transition 的配置，而 `<ProfilePage>` 组件不在需要单独配置：
 
@@ -403,11 +355,7 @@ function ProfilePage() {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/modest-ritchie-iufrh)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/heuristic-cerf-8bo4rk)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/heuristic-cerf-8bo4rk)**
 
 当一个按钮点击的时候，它开启一个 transition 并在 transition 内部调用 `props.onClick()` —— 这会触发 `<ProfilePage>` 组件中的 `handleRefreshClick`。我们开始获取最新数据，但这并不会触发一个降级界面，因为我们正运行在 transition 中，并且 `useTransition` 调用时指定的 10 秒钟尚未达到。当一个 transition 等待的时候，这个按钮会内联显示加载中的提示。
 
@@ -429,11 +377,7 @@ function ProfilePage() {
 
 ### 默认方式：Receded → Skeleton → Complete {#default-receded-skeleton-complete}
 
-<<<<<<< HEAD
-打开[此示例](https://codesandbox.io/s/prod-grass-g1lh5)并点击 “Open Profile”。你会陆续看到几种显示状态：
-=======
-Open [this example](https://codesandbox.io/s/xenodochial-breeze-khk2fh) and click "Open Profile". You will see several visual states one by one:
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+打开[此示例](https://codesandbox.io/s/xenodochial-breeze-khk2fh)并点击 “Open Profile”。你会陆续看到几种显示状态：
 
 * **Receded（后退）**：第一秒，你会看到 `<h1>Loading the app...</h1>` 降级界面。
 * **Skeleton：** 你会看到 `<ProfilePage>` 组件中显示着 `<h2>Loading posts...</h2>` .
@@ -524,23 +468,14 @@ Open [this example](https://codesandbox.io/s/xenodochial-breeze-khk2fh) and clic
 
 你可以对比这两个例子来体验其中的差异：
 
-<<<<<<< HEAD
-* 默认方式: [Receded → Skeleton → Complete](https://codesandbox.io/s/prod-grass-g1lh5)
-* **期望方式: [Pending → Skeleton → Complete](https://codesandbox.io/s/focused-snow-xbkvl)**
-=======
-* Default: [Receded → Skeleton → Complete](https://codesandbox.io/s/xenodochial-breeze-khk2fh)
-* **Preferred: [Pending → Skeleton → Complete](https://codesandbox.io/s/serene-pascal-w3no1l)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+- 默认方式: [Receded → Skeleton → Complete](https://codesandbox.io/s/xenodochial-breeze-khk2fh)
+- **期望方式: [Pending → Skeleton → Complete](https://codesandbox.io/s/serene-pascal-w3no1l)**
 
 这两个例子唯一的不同就在于第一个使用的是普通 `<button>`，而第二个使用的是我们使用 `useTransition` 定制的 `<Button>` 组件。
 
 ### 使用 `<Suspense>` 包裹惰性功能 {#wrap-lazy-features-in-suspense}
 
-<<<<<<< HEAD
-打开 [这个例子](https://codesandbox.io/s/nameless-butterfly-fkw5q)。当你点击一个按钮时，你会先看到一个持续1秒的 Pending 状态再继续。这个 transition 体验很好而且流畅。
-=======
-Open [this example](https://codesandbox.io/s/crazy-browser-0tdg6m). When you press a button, you'll see the Pending state for a second before moving on. This transition feels nice and fluid.
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+打开 [这个例子](https://codesandbox.io/s/crazy-browser-0tdg6m)。当你点击一个按钮时，你会先看到一个持续1秒的 Pending 状态再继续。这个 transition 体验很好而且流畅。
 
 我们现在需要给详情页面增加一个新特性 -- 某人的趣闻列表
 
@@ -572,19 +507,11 @@ function ProfileTrivia({ resource }) {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/focused-mountain-uhkzg)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/agitated-snowflake-m3scjk)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/agitated-snowflake-m3scjk)**
 
 如果你现在点击 “Open Profile” 按钮，你会发现哪里不对劲。它现在要等待整整 7 秒钟才能完成这个 transition！这是因为我们琐碎的 API 接口响应太慢。假设我们没有办法让这个接口变快。在这个约束条件下我们该如何提升用户体验呢？
 
-<<<<<<< HEAD
-如果我们不想在 Pending 状态等待太久，我们第一直觉应该是调整 `useTransition` 中 `timeoutMs` 参数到一个更小的值，比如 `3000`。你可以体验一下 [这个](https://codesandbox.io/s/practical-kowalevski-kpjg4)。这样我们就不用在 Pending 状态长时间等待了，但是这个时候我们还没有有用的内容给用户展示！
-=======
-If we don't want to stay in the Pending state for too long, our first instinct might be to set `timeoutMs` in `useTransition` to something smaller, like `3000`. You can try this [here](https://codesandbox.io/s/nervous-galileo-ln6pbh). This lets us escape the prolonged Pending state, but we still don't have anything useful to show!
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+如果我们不想在 Pending 状态等待太久，我们第一直觉应该是调整 `useTransition` 中 `timeoutMs` 参数到一个更小的值，比如 `3000`。你可以体验一下 [这个](https://codesandbox.io/s/nervous-galileo-ln6pbh)。这样我们就不用在 Pending 状态长时间等待了，但是这个时候我们还没有有用的内容给用户展示！
 
 还有一种简单的方法可以解决这个问题。**与其把 transition 时间缩短，我们不如把慢组件从 transition “分离”出来**，通过把它封装在 `<Suspense>` 中：
 
@@ -604,11 +531,7 @@ function ProfilePage({ resource }) {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/condescending-shape-s6694)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/mutable-silence-wffd1t)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/mutable-silence-wffd1t)**
 
 这揭示了一个重要的信息。React 总是倾向尽早的进入 Skeleton 状态。即使我们总是在 transition 中使用很长的超时时间设置，React 为了避免 Receded 状态也不会在 Pending 状态停留多余的时间。
 
@@ -618,11 +541,7 @@ function ProfilePage({ resource }) {
 
 当我们已经到达下一个界面，有的时候用来“解锁”不同 `<Suspense>` 区域的数据在短时间内陆续到达。例如，两个请求响应分别在 1000ms 和 1050ms 到达。如果你已经等待了1秒钟，再等 50ms 也并不容易察觉。这就是 React 在一个计划中显示 `<Suspense>` 区域的原因，就像一趟间隔指定时间到达的“列车”一样。这样就可以用一个较低的延迟换取展示给用户更少的布局变化和视觉变化次数。
 
-<<<<<<< HEAD
-你可以在 [这里](https://codesandbox.io/s/admiring-mendeleev-y54mk) 查看这个示例。“文章”和“趣闻”响应相差了 100ms。但是 React 把他们的变化合并在一起并同时更新了他们的 Suspense 的区域。
-=======
-You can see a demo of this [here](https://codesandbox.io/s/ecstatic-sammet-zeddc4). The "posts" and "fun facts" responses come within 100ms of each other. But React coalesces them and "reveals" their Suspense boundaries together. 
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+你可以在 [这里](https://codesandbox.io/s/ecstatic-sammet-zeddc4) 查看这个示例。“文章”和“趣闻”响应相差了 100ms。但是 React 把他们的变化合并在一起并同时更新了他们的 Suspense 的区域。
 
 ### 延迟显示等待提示 {#delaying-a-pending-indicator}
 
@@ -647,11 +566,7 @@ function Button({ children, onClick }) {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/floral-thunder-iy826)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/jolly-http-n94od0)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/jolly-http-n94od0)**
 
 这让用户知道有什么事情正在发生。但是，如果这个 transition 过程相对较短的时候（小于 500ms），它有可能过于分散注意力，并且使得 transition 本身感觉上*更慢*。
 
@@ -685,15 +600,9 @@ return (
 );
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/gallant-spence-l6wbk)**
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/optimistic-night-4td1me)**
 
-通过这个更改，即使我们进入了 Pending 状态，在 500ms 过去之前我们都不会给用户显示任何提示。这对于一些 API 响应较慢的情况算不上是很大的改进。但是在 API 响应快的情况下对比感受下 [使用前](https://codesandbox.io/s/thirsty-liskov-1ygph) 和 [使用后](https://codesandbox.io/s/hardcore-http-s18xr)。即使其他的代码并没有更改，通过不在延迟上吸引用户注意，隐藏掉“过快”的加载状态以达到提升感官体验。
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/optimistic-night-4td1me)**
-
-With this change, even though we're in the Pending state, we don't display any indication to the user until 500ms has passed. This may not seem like much of an improvement when the API responses are slow. But compare how it feels [before](https://codesandbox.io/s/priceless-water-yw7zw4) and [after](https://codesandbox.io/s/mystifying-noether-tnxftn) when the API call is fast. Even though the rest of the code hasn't changed, suppressing a "too fast" loading state improves the perceived performance by not calling attention to the delay.
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+通过这个更改，即使我们进入了 Pending 状态，在 500ms 过去之前我们都不会给用户显示任何提示。这对于一些 API 响应较慢的情况算不上是很大的改进。但是在 API 响应快的情况下对比感受下 [使用前](https://codesandbox.io/s/priceless-water-yw7zw4) 和 [使用后](https://codesandbox.io/s/mystifying-noether-tnxftn)。即使其他的代码并没有更改，通过不在延迟上吸引用户注意，隐藏掉“过快”的加载状态以达到提升感官体验
 
 ### 回顾 {#recap}
 
@@ -751,11 +660,7 @@ function Translation({ resource }) {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/brave-villani-ypxvf)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/boring-frost-t5ijqm)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/boring-frost-t5ijqm)**
 
 请注意当我们在输入框打字的时候，`<Translation>` 组件式如何 suspend 的，并且我们会在得到新的结果之前看到 `<p>Loading...</p>` 这个降级界面。这并不理想。当我们在获取下一个翻译的同时如果我们可以多看一会*上一个*翻译效果应该会更好。
 
@@ -795,11 +700,7 @@ function App() {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/zen-keldysh-rifos)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/wizardly-swirles-476m52)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/wizardly-swirles-476m52)**
 
 现在尝试往输入框里敲字吧。有点不对劲！输入框的更新非常慢。
 
@@ -825,11 +726,7 @@ function handleChange(e) {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/lively-smoke-fdf93)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/elegant-kalam-dhlrkz)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/elegant-kalam-dhlrkz)**
 
 通过这个更改，它可以正常工作了。我们可以直接在输入框敲字，翻译会在稍后“跟上”我们所输入的内容。
 
@@ -857,13 +754,9 @@ const deferredValue = useDeferredValue(value, {
   timeoutMs: 5000
 });
 ```
-要演示这个特性，我们要用到 [详情页切换示例](https://codesandbox.io/s/musing-ramanujan-bgw2o)。点击“Next”按钮并注意它是如何使用1秒钟完成 transition 的。
+要演示这个特性，我们要用到 [详情页切换示例](https://codesandbox.io/s/quirky-carson-vs6g0i)。点击“Next”按钮并注意它是如何使用1秒钟完成 transition 的。
 
-<<<<<<< HEAD
 假设我们获取用户详情是非常快的，只需要 300 毫秒。现在，因为我们要等待用户信息和文章列表并保持详情页显示的一致性，我们等待了整整1秒。但是如果我们只是希望详情能更快的显示出来呢？
-=======
-To demonstrate this feature, we'll use [the profile switcher example](https://codesandbox.io/s/quirky-carson-vs6g0i). Click the "Next" button and notice how it takes 1 second to do a transition.
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
 
 如果你希望牺牲一致性，我们可以通过**给拖延我们 transition 的组件传递可能过时的数据**来实现。那正是 `useDeferredValue()` 可以帮我们做的事情：
 
@@ -897,11 +790,7 @@ function ProfileTimeline({ isStale, resource }) {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/vigorous-keller-3ed2b)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/dazzling-fog-o6ovhr)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/dazzling-fog-o6ovhr)**
 
 我们所做的权衡是，`<ProfileTimeline>` 会和其他组件不一致并很可能会显示一个过时的内容。多点几次“Next”按钮，你就会发现这个问题。但是也正因如此，我们才能把 transition 的时间从 1000ms 降到 300ms。
 
@@ -932,11 +821,7 @@ function App() {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/pensive-shirley-wkp46)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/runtime-pine-kl2yff)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/runtime-pine-kl2yff)**
 
 在这个例子中，**`<MySlowList>` 中的每个项都有一个人为添加的延迟 -- 每个项会延迟渲染进程几毫秒**。我们永远也不会在真实的应用中这样做，但是这是帮助我们模拟在一个已经没有优化余地的深层嵌套的组件树中会发生的事情。
 
@@ -966,11 +851,7 @@ function App() {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/infallible-dewdney-9fkv9)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/charming-goldwasser-6kuh4m)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/charming-goldwasser-6kuh4m)**
 
 现在输入已经很少卡顿了 -- 尽管我们是通过延迟显示结果来实现这一点的。
 
@@ -1000,11 +881,7 @@ function ProfilePage({ resource }) {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/proud-tree-exg5t)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/hardcore-river-14ecuq)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/hardcore-river-14ecuq)**
 
 在这个例子中 API 调用的时长是随机的。如果你持续的刷新，你会发现有的时候文章列表会先到达，有的时候“趣闻”会先到达。
 
@@ -1019,11 +896,7 @@ function ProfilePage({ resource }) {
 </Suspense>
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/currying-violet-5jsiy)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/quirky-meadow-w1c61p)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/quirky-meadow-w1c61p)**
 
 这个办法的问题在于现在我们*总是*要等待这两个数据都获取到之后。但是，如果是*文章列表*先到达，我们就不需要延迟显示它们。当趣闻后到达的时候，因为他们本身就在文章列表下方所以他们并不会导致布局抖动。
 
@@ -1053,19 +926,11 @@ function ProfilePage({ resource }) {
 }
 ```
 
-<<<<<<< HEAD
-**[在 CodeSandbox 中尝试](https://codesandbox.io/s/black-wind-byilt)**
-=======
-**[Try it on CodeSandbox](https://codesandbox.io/s/empty-leaf-lp7eom)**
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+**[在 CodeSandbox 中尝试](https://codesandbox.io/s/empty-leaf-lp7eom)**
 
 这个 `revealOrder="forwards"` 配置表示这个列表中最接近的 `<Suspense>` **只会根据在树中的显示顺序来“展开”它们的内容 -- 即使它们的数据在不同的顺序到达**。`<SuspenseList>` 还有其他有趣的模式：尝试把 `"forwards"` 换成 `"backwards"` 或 `"together"` 并观察效果。
 
-<<<<<<< HEAD
-你可以利用 `tail` prop 来控制同时显示多少个加载状态。如果我们制定 `tail="collapsed"`，我们只能看到*最多一个*降级界面。你可以在 [这里](https://codesandbox.io/s/adoring-almeida-1zzjh) 体验一下。
-=======
-You can control how many loading states are visible at once with the `tail` prop. If we specify `tail="collapsed"`, we'll see *at most one* fallback at a time. You can play with it [here](https://codesandbox.io/s/keen-leaf-gccxd8).
->>>>>>> 61a6cd7722d6a8243f73a4d394e7ed4379bfdbcd
+你可以利用 `tail` prop 来控制同时显示多少个加载状态。如果我们制定 `tail="collapsed"`，我们只能看到*最多一个*降级界面。你可以在 [这里](https://codesandbox.io/s/keen-leaf-gccxd8) 体验一下。
 
 请记住和 React 中的其他东西一样 `<SuspenseList>` 也是可以组合的。例如，你可以做一个 `<SuspenseList>` table 中放着 `<SuspenseList>` row 的表格。
 
