@@ -86,19 +86,15 @@ Sebastian majored in psychology. He's usually quiet. Even when he says something
 
 Seth 从小就学习编程，在亚利桑那州图森市长大。放学后，他沉浸在音乐的殿堂里，在回归工作岗位前，他做了大约 10 年的巡回音乐人，后来就职于 Intuit。在业余时，他喜欢 [摄影](https://www.sethwebster.com) 还会参与美国东北部的动物救援机构。
 
-<<<<<<< HEAD
 ## 鸣谢 {#acknowledgements}
-=======
+
 ### Xuan Huang {#xuan-huang}
 
 ![Xuan](../images/team/huxpro.jpg)
 
-[@huxpro on GitHub](https://github.com/huxpro) &middot; [@huxpro on Twitter](https://twitter.com/huxpro)
+[@huxpro 的 GitHub](https://github.com/huxpro) &middot; [@huxpro 的 Twitter](https://twitter.com/huxpro)
 
-Xuan met with programming in childhood to make games in Flash. He did digital media arts in college but eventually got tricked into making compilers, and somehow React needs one. Out of work, he pours terrible latte arts and plays tennis either on or off a table.
-
-## Acknowledgements {#acknowledgements}
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
+Xuan 小时候接触过编程，用 Flash 制作游戏。他在大学里从事数字媒体艺术，但最终制作编译器吸引住了——正好 React 需要一个。工作之余，他喜欢在拿铁上画一言难尽的图案，并在桌子上或桌下打乒乓球。
 
 React 最初由 [Jordan Walke](https://github.com/jordwalke) 创立。如今，React 已拥有超过 1k+ 的开源贡献者，我们想表彰一些人，他们在过去对 React 及其文档方面做出了重大贡献，并且多年来一直帮助维护它们：
 
@@ -139,8 +135,4 @@ React 最初由 [Jordan Walke](https://github.com/jordwalke) 创立。如今，R
 
 这份名单并不详尽。
 
-<<<<<<< HEAD
-我们要特别感谢 [Tom Occhino](https://github.com/tomocchino) 和 [Adam Wolff](https://github.com/wolffiex)，感谢他们多年来的指导和支持。我们还要感谢所有 [将 React 翻译为其他语言的志愿者们](https://translations.reactjs.org/)。
-=======
-We'd like to give special thanks to [Tom Occhino](https://github.com/tomocchino) and [Adam Wolff](https://github.com/wolffiex) for their guidance and support over the years. We'd also like to thank all the volunteers who [translated React into other languages](https://translations.reactjs.org/).
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
+我们要特别感谢 [Tom Occhino](https://github.com/tomocchino) 和 [Adam Wolff](https://github.com/wolffiex) 多年来的指导和支持。我们还要感谢所有 [将 React 翻译为其他语言的志愿者们](https://translations.reactjs.org/)。

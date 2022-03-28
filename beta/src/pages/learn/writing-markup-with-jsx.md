@@ -40,13 +40,13 @@ But as the Web became more interactive, logic increasingly determined content. J
 
 <DiagramGroup>
 
-<Diagram name="writing_jsx_sidebar" height={330} width={325} alt="React component with HTML and JavaScript from previous examples mixed. Function name is Sidebar which calls the function isLoggedIn, highlighted in yellow. Nested inside the function highlighted in purple is the p tag from before, and a Form tag referencing the component shown in the next diagram.">
+<Diagram name="writing_jsx_sidebar" height={330} width={325} alt="React 组件与之前示例中混合的 HTML 和 JavaScript。函数名称是 Sidebar，它调用了函数 isLoggedIn，以黄色突出显示。嵌套在以紫色突出显示的函数内的是之前的 p 标记，以及一个引用下图中显示的组件的 Form 标记。">
 
 Sidebar.js
 
 </Diagram>
 
-<Diagram name="writing_jsx_form" height={330} width={325} alt="React component with HTML and JavaScript from previous examples mixed. Function name is Form containing two handlers onClick and onSubmit highlighted in yellow. Following the handlers is HTML highlighted in purple. The HTML contains a form element with a nested input element, each with an onClick prop.">
+<Diagram name="writing_jsx_form" height={330} width={325} alt="React 组件与之前示例中的 HTML 和 JavaScript 混合使用。函数名称是 Form，其中包含两个处理程序 onClick 和 onSubmit，以黄色突出显示。在处理程序之后是以紫色突出显示的 HTML。HTML 包含一个带有嵌套输入元素的表单元素，每个元素都有一个 onClick 属性。">
 
 Form.js
 

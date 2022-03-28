@@ -1148,21 +1148,13 @@ class Game extends React.Component {
   }
 ```
 
-<<<<<<< HEAD
-在 `jumpTo` 方法中, 我们没有更新 state 中的 `history` 属性。这是因为 state 更新被合并了，或者用更简单的话说，React 不会更新 `setState` 方法中未提到的属性。 **[这篇文档](/docs/state-and-lifecycle.html#state-updates-are-merged)**对此有更详细的介绍。
-=======
-Notice in `jumpTo` method, we haven't updated `history` property of the state. That is because state updates are merged or in more simple words React will update only the properties mentioned in `setState` method leaving the remaining state as is. For more info **[see the documentation](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
+在 `jumpTo` 方法中, 我们没有更新 state 中的 `history` 属性。这是因为 state 更新被合并了，或者用更简单的话说，React 只会更新 `setState` 方法中提到的属性，其余的 state 保持不变。 **[这篇文档](/docs/state-and-lifecycle.html#state-updates-are-merged)** 对此有更详细的介绍。
 
 接下来，我们还要修改 Game 组件的 `handleClick` 方法，当你点击方格的时候触发该方法。
 
 新添加的 `stepNumber` state 用于给用户展示当前的步骤。每当我们落下一颗新棋子的时候，我们需要调用 `this.setState` 并传入参数 `stepNumber: history.length`，以更新 `stepNumber`。这就保证了保证每走一步 `stepNumber` 会跟着改变。
 
-<<<<<<< HEAD
-我们还把读取 `this.state.history` 换成了读取 `this.state.history.slice(0, this.state.stepNumber + 1)` 的值。如果我们“回到过去”，然后再走一步新棋子，原来的“未来”历史记录就不正确了，这个替换可以保证我们把这些“未来”的不正确的历史记录丢弃掉。
-=======
 We will also replace reading `this.state.history` with `this.state.history.slice(0, this.state.stepNumber + 1)`. This ensures that if we "go back in time" and then make a new move from that point, we throw away all the "future" history that would now be incorrect.
->>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 ```javascript{2,13}
   handleClick(i) {
