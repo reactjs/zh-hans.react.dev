@@ -32,10 +32,15 @@ reconciler 本身没有公共的 API。像 React DOM 和 React Native 这样的 
 让我们考虑第一次挂载组件时：
 
 ```js
-ReactDOM.render(<App />, rootEl);
+const root = ReactDOM.createRoot(rootEl);
+root.render(<App />);
 ```
 
+<<<<<<< HEAD
 React DOM 把 `<App />` 传递给 reconciler。请记住，`<App />` 是一个 React 元素，也就是对要渲染的*内容*的描述。可以把它视为普通的对象：
+=======
+`root.render` will pass `<App />` along to the reconciler. Remember that `<App />` is a React element, that is, a description of *what* to render. You can think about it as a plain object:
+>>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
 
 ```js
 console.log(<App />);
@@ -236,9 +241,15 @@ rootEl.appendChild(node);
 React 的关键特点是你可以重新渲染所有内容，并且不会重新生成 DOM 或重置 state：
 
 ```js
+<<<<<<< HEAD
 ReactDOM.render(<App />, rootEl);
 // 应该重用已经存在的 DOM：
 ReactDOM.render(<App />, rootEl);
+=======
+root.render(<App />);
+// Should reuse the existing DOM:
+root.render(<App />);
+>>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
 ```
 
 然而，之前的实现只是知道如何挂载最初的树。由于它没有储存所有的必要信息，例如所有的 `publicInstance`，或 DOM 节点属于哪个组件，所以它不能完成更新操作。
@@ -412,7 +423,11 @@ class DOMComponent {
 
  <img src="../images/docs/implementation-notes-tree.png" width="500" style="max-width: 100%" alt="React DevTools tree" />
 
+<<<<<<< HEAD
 为了完成重构，我们将引入一个函数，它将完整的树挂载到容器节点中，就像 `ReactDOM.render()` 一样。它返回公共实例，也像 `ReactDOM.render()`：
+=======
+To complete this refactoring, we will introduce a function that mounts a complete tree into a container node and a public instance:
+>>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
 
 ```js
 function mountTree(element, containerNode) {

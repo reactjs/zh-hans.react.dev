@@ -190,9 +190,15 @@ class Chosen extends React.Component {
 
 ## 和其他视图库集成 {#integrating-with-other-view-libraries}
 
+<<<<<<< HEAD
 得益于 [`ReactDOM.render()`](/docs/react-dom.html#render) 的灵活性 React 可以被嵌入到其他的应用中。
 
 虽然 React 通常被用来在启动的时候加载一个单独的根 React 组件到 DOM 上，`ReactDOM.render()` 同样可以在 UI 的独立部分上多次调用，这些部分可以小到一个按钮，也可以大到一个应用。
+=======
+React can be embedded into other applications thanks to the flexibility of [`createRoot()`](/docs/react-dom-client.html#createRoot).
+
+Although React is commonly used at startup to load a single root React component into the DOM, `root.render()` can also be called multiple times for independent parts of the UI which can be as small as a button, or as large as an app.
+>>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
 
 事实上，这正是 Facebook 如何使用 React 的。这让我们小块小块地在应用中使用 React，并且把他们结合到我们现存的服务端产生的模板和其他客户端代码中。
 
@@ -216,15 +222,9 @@ function Button() {
   return <button id="btn">Say Hello</button>;
 }
 
-ReactDOM.render(
-  <Button />,
-  document.getElementById('container'),
-  function() {
-    $('#btn').click(function() {
-      alert('Hello!');
-    });
-  }
-);
+$('#btn').click(function() {
+  alert('Hello!');
+});
 ```
 
 从这起你可开始以把更多的逻辑移动到组件中，并且开始应用更多通用 React 实践。例如，在组件中最好不要依赖 ID 因为同一个组件可能会被渲染多次。相反的，我们会使用 [React 事件系统](/docs/handling-events.html) 并且直接注册 click 处理函数到 React `<button>` 元素：
@@ -240,24 +240,27 @@ function HelloButton() {
   }
   return <Button onClick={handleClick} />;
 }
-
-ReactDOM.render(
-  <HelloButton />,
-  document.getElementById('container')
-);
 ```
 
 [**在 CodePen 上运行**](http://codepen.io/gaearon/pen/RVKbvW?editors=1010)
 
+<<<<<<< HEAD
 只要你喜欢你可以有不限数量的这种独立组件，并且使用 `ReactDOM.render()` 把他们渲染到不同的容器中。逐渐的，随着你把越来越多的应用转换到 React，你就可以把它们结合成更大的组件，并且把 `ReactDOM.render()` 的调用移动到更上层的结构。
+=======
+You can have as many such isolated components as you like, and use `ReactDOM.createRoot()` to render them to different DOM containers. Gradually, as you convert more of your app to React, you will be able to combine them into larger components, and move some of the `ReactDOM.createRoot()` calls up the hierarchy.
+>>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
 
 ### 把 React 嵌入到 Backbone 视图 {#embedding-react-in-a-backbone-view}
 
 [Backbone](http://backbonejs.org/) 视图通常使用 HTML 字符串，或者产生字符串的模板函数，来创建 DOM 元素的内容。这个过程，同样的，可以通过渲染一个 React 组件来替换掉。
 
+<<<<<<< HEAD
 如下，我们会创建一个名为 `ParagraphView` 的 Backbone 视图。他会重载 Backbone 的 `render()` 函数来渲染一个 React `<Paragraph>` 组件到 Backbone (`this.el`) 提供的 DOM 元素中。这里，同样的，我们将会使用 [`ReactDOM.render()`](/docs/react-dom.html#render)：
+=======
+Below, we will create a Backbone view called `ParagraphView`. It will override Backbone's `render()` function to render a React `<Paragraph>` component into the DOM element provided by Backbone (`this.el`). Here, too, we are using [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot):
+>>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
 
-```js{1,5,8,12}
+```js{1,5,8-9,13}
 function Paragraph(props) {
   return <p>{props.text}</p>;
 }
@@ -265,11 +268,12 @@ function Paragraph(props) {
 const ParagraphView = Backbone.View.extend({
   render() {
     const text = this.model.get('text');
-    ReactDOM.render(<Paragraph text={text} />, this.el);
+    this.root = ReactDOM.createRoot(this.el);
+    this.root.render(<Paragraph text={text} />);
     return this;
   },
   remove() {
-    ReactDOM.unmountComponentAtNode(this.el);
+    this.root.unmount();
     Backbone.View.prototype.remove.call(this);
   }
 });
@@ -277,7 +281,11 @@ const ParagraphView = Backbone.View.extend({
 
 [**在 CodePen 上运行**](http://codepen.io/gaearon/pen/gWgOYL?editors=0010)
 
+<<<<<<< HEAD
 在 `remove` 方法中我们也需要调用 `ReactDOM.unmountComponentAtNode()` 以便在它解除的时候 React 清理组件树相关的事件处理的注册和其他的资源，这点是是很重要的。
+=======
+It is important that we also call `root.unmount()` in the `remove` method so that React unregisters event handlers and other resources associated with the component tree when it is detached.
+>>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
 
 当一个组件在 React 树中*从内部*删除的时候，清理工作是自动完成的，但是因为我们现在手动移除整个树，我们必须调用这个方法。
 
@@ -428,10 +436,8 @@ function Example(props) {
 }
 
 const model = new Backbone.Model({ firstName: 'Frodo' });
-ReactDOM.render(
-  <Example model={model} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Example model={model} />);
 ```
 
 [**在 CodePen 上运行**](http://codepen.io/gaearon/pen/PmWwwa?editors=0010)

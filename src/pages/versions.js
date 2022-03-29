@@ -38,9 +38,21 @@ const Versions = ({location}: Props) => (
                 rel="noopener">
                 在 GitHub 上
               </a>
+<<<<<<< HEAD
               可以获取 React 完整版本历史记录 。<br />
               最新版本的文档也可以在下方找到。
+=======
+              .<br />
+              Changelogs for recent releases can also be found below.
+>>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
             </p>
+            <blockquote>
+              <p>Note</p>
+              <p>
+                The current docs are for React 18. For React 17, see{' '}
+                <a href="https://17.reactjs.org">https://17.reactjs.org.</a>
+              </p>
+            </blockquote>
             <p>
               欲了解有关{' '}
               <a href="/docs/faq-versioning.html">版本政策和稳定性承诺</a>

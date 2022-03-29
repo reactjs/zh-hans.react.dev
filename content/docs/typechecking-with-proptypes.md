@@ -171,11 +171,17 @@ Greeting.defaultProps = {
   name: 'Stranger'
 };
 
+<<<<<<< HEAD
 // 渲染出 "Hello, Stranger"：
 ReactDOM.render(
   <Greeting />,
   document.getElementById('example')
 );
+=======
+// Renders "Hello, Stranger":
+const root = ReactDOM.createRoot(document.getElementById('example')); 
+root.render(<Greeting />);
+>>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
 ```
 
 如果你正在使用像 [plugin-proposal-class-properties](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties/)（之前名为 _plugin-transform-class-properties_）的 Babel 转换工具，你也可以在 React 组件类中声明 `defaultProps` 作为静态属性。此语法提案还没有最终确定，需要进行编译后才能在浏览器中运行。要了解更多信息，请查阅 [class fields proposal](https://github.com/tc39/proposal-class-fields)。

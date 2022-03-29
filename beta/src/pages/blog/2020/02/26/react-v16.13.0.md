@@ -36,7 +36,11 @@ Warning: Cannot update a component from inside the function body of a different 
 </div>
 ```
 
+<<<<<<< HEAD
 你可能期待这个 `<div>` 总是拥有红色背景，不论 `toggle` 的值是什么。然而，在 `true` 和 `false`之间交替使用`toggle`时，背景色开始是 `red`，然后在 `transparent` 和 `blue`之间交替，[正如你能在这个 demo 中看到的](https://codesandbox.io/s/suspicious-sunset-g3jub)。
+=======
+You might expect this `<div>` to always have a red background, no matter the value of `toggle`. However, on alternating the value of `toggle` between `true` and `false`, the background color start as `red`, then alternates between `transparent` and `blue`, [as you can see in this demo](https://codesandbox.io/s/blue-water-ghx8mi).
+>>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
 
 **React 现在检测到冲突的样式规则并打印出警告**。要解决此问题，请不要在 `style` 属性中混合使用同一CSS属性的简写和全写版本。
 
