@@ -34,7 +34,7 @@ const element = <h1>Hello, world</h1>;
 
 仅使用 React 构建的应用通常只有单一的根 DOM 节点。如果你在将 React 集成进一个已有应用，那么你可以在应用中包含任意多的独立根 DOM 节点。
 
-想要将一个 React 元素渲染到根 DOM 节点中，只需把它们一起传入 [`ReactDOM.render()`](/docs/react-dom.html#render)：
+想要将一个 React 元素渲染到根 DOM 节点中，只需把它们一起传入 [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot)：
 
 `embed:rendering-elements/render-an-element.js`
 
@@ -46,7 +46,7 @@ const element = <h1>Hello, world</h1>;
 
 React 元素是[不可变对象](https://en.wikipedia.org/wiki/Immutable_object)。一旦被创建，你就无法更改它的子元素或者属性。一个元素就像电影的单帧：它代表了某个特定时刻的 UI。
 
-根据我们已有的知识，更新 UI 唯一的方式是创建一个全新的元素，并将其传入 [`ReactDOM.render()`](/docs/react-dom.html#render)。
+根据我们已有的知识，更新 UI 唯一的方式是创建一个全新的元素，并将其传入 `root.render()`。
 
 考虑一个计时器的例子：
 
@@ -54,11 +54,11 @@ React 元素是[不可变对象](https://en.wikipedia.org/wiki/Immutable_object)
 
 **[在 CodePen 上试试](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)**
 
-这个例子会在 [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) 回调函数，每秒都调用 [`ReactDOM.render()`](/docs/react-dom.html#render)。
+这个例子会在 [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) 回调函数，每秒都调用 [`root.render()`](/docs/react-dom.html#render)。
 
 >**注意：**
 >
->在实践中，大多数 React 应用只会调用一次 [`ReactDOM.render()`](/docs/react-dom.html#render)。在下一个章节，我们将学习如何将这些代码封装到[有状态组件](/docs/state-and-lifecycle.html)中。
+>在实践中，大多数 React 应用只会调用一次 `root.render()`。在下一个章节，我们将学习如何将这些代码封装到[有状态组件](/docs/state-and-lifecycle.html)中。
 >
 >我们建议你不要跳跃着阅读，因为每个话题都是紧密联系的。
 
