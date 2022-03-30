@@ -15,22 +15,13 @@ permalink: docs/strict-mode.html
 
 在上述的示例中，*不*会对 `Header` 和 `Footer` 组件运行严格模式检查。但是，`ComponentOne` 和 `ComponentTwo` 以及它们的所有后代元素都将进行检查。
 
-<<<<<<< HEAD
 `StrictMode` 目前有助于：
 * [识别不安全的生命周期](#identifying-unsafe-lifecycles)
 * [关于使用过时字符串 ref API 的警告](#warning-about-legacy-string-ref-api-usage)
 * [关于使用废弃的 findDOMNode 方法的警告](#warning-about-deprecated-finddomnode-usage)
 * [检测意外的副作用](#detecting-unexpected-side-effects)
 * [检测过时的 context API](#detecting-legacy-context-api)
-=======
-`StrictMode` currently helps with:
-* [Identifying components with unsafe lifecycles](#identifying-unsafe-lifecycles)
-* [Warning about legacy string ref API usage](#warning-about-legacy-string-ref-api-usage)
-* [Warning about deprecated findDOMNode usage](#warning-about-deprecated-finddomnode-usage)
-* [Detecting unexpected side effects](#detecting-unexpected-side-effects)
-* [Detecting legacy context API](#detecting-legacy-context-api)
-* [Detecting unsafe effects](#detecting-unsafe-effects)
->>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
+* [检测不安全的副作用](#detecting-unsafe-effects)
 
 未来的 React 版本将添加更多额外功能。
 
@@ -136,21 +127,18 @@ class MyComponent extends React.Component {
 
 ![](../images/blog/warn-legacy-context-in-strict-mode.png)
 
-<<<<<<< HEAD
 阅读[新的 context API 文档](/docs/context.html)以帮助你迁移到新版本。
-=======
-Read the [new context API documentation](/docs/context.html) to help migrate to the new version.
 
 
-### Ensuring reusable state {#ensuring-reusable-state}
+### 确保可复用的 state {#ensuring-reusable-state}
 
-In the future, we’d like to add a feature that allows React to add and remove sections of the UI while preserving state. For example, when a user tabs away from a screen and back, React should be able to immediately show the previous screen. To do this, React support remounting trees using the same component state used before unmounting.
+在未来，我们希望增加一个功能，允许 React 在保留 state 的同时对 UI 进行增删。例如，当用户从当前屏幕的标签离开并返回时，React 应该能立即展示之前屏幕的内容。为了做到这一点，React 支持使用卸载前已有的组件状态重新挂载到树上。
 
-This feature will give React better performance out-of-the-box, but requires components to be resilient to effects being mounted and destroyed multiple times. Most effects will work without any changes, but some effects do not properly clean up subscriptions in the destroy callback, or implicitly assume they are only mounted or destroyed once.
+该特性会给 React 带来更好的开箱即用性能，但需要组件对多次挂载和销毁的副作用具有弹性。大多数副作用将在不做任何改变的情况下工作，但有些副作用可能会在销毁回调中未正确的清理订阅，或者隐示的认为它们只被挂载或销毁一次。
 
-To help surface these issues, React 18 introduces a new development-only check to Strict Mode. This new check will automatically unmount and remount every component, whenever a component mounts for the first time, restoring the previous state on the second mount.
+为了帮助解决这些问题，React 18 为严格模式引入了一个全新的仅用于开发环境的检查操作。每当第一次安装组件时，这个新的检查将自动卸载并重新安装每个组件，并在第二次挂载时恢复之前的 state。
 
-To demonstrate the development behavior you'll see in Strict Mode with this feature, consider what happens when React mounts a new component. Without this change, when a component mounts, React creates the effects:
+为了演示你在严格模式下看到的具有这一特性的开发行为，考虑一下当 React 挂载一个新组件时会发生什么？如果没有这个变化，当一个组件挂载时，React 会创建副作用：
 
 ```
 * React mounts the component.
@@ -158,7 +146,7 @@ To demonstrate the development behavior you'll see in Strict Mode with this feat
   * Effects are created.
 ```
 
-With Strict Mode starting in React 18, whenever a component mounts in development, React will simulate immediately unmounting and remounting the component:
+从 React 18 开始的严格模式，每当组件在开发中挂载时，React 会模拟立即卸载和重新挂载组件：
 
 ```
 * React mounts the component.
@@ -172,9 +160,9 @@ With Strict Mode starting in React 18, whenever a component mounts in developmen
     * Effect setup code runs
 ```
 
-On the second mount, React will restore the state from the first mount. This feature simulates user behavior such as a user tabbing away from a screen and back, ensuring that code will properly handle state restoration.
+在第二次挂载时，React 将恢复第一次装载时的状态。这个功能模拟了用户的行为，比如用户从屏幕上切换标签再回来，确保代码能正确处理状态恢复。
 
-When the component unmounts, effects are destroyed as normal:
+当组件卸载时，副作用会如常销毁：
 
 ```
 * React unmounts the component.
@@ -182,10 +170,9 @@ When the component unmounts, effects are destroyed as normal:
   * Effect effects are destroyed.
 ```
 
-> Note:
+> 注意：
 >
-> This only applies to development mode, _production behavior is unchanged_.
+> 这只适用于开发模式，_生产环境没有变化_。
 
-For help supporting common issues, see:
-  - [How to support Reusable State in Effects](https://github.com/reactwg/react-18/discussions/18)
->>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
+如需了解更多常见问题，请参阅：
+  - [如何在 Effects 中支持可复用的 state](https://github.com/reactwg/react-18/discussions/18)

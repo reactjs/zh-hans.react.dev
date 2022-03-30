@@ -190,15 +190,9 @@ class Chosen extends React.Component {
 
 ## 和其他视图库集成 {#integrating-with-other-view-libraries}
 
-<<<<<<< HEAD
-得益于 [`ReactDOM.render()`](/docs/react-dom.html#render) 的灵活性 React 可以被嵌入到其他的应用中。
+得益于 [`createRoot()`](/docs/react-dom-client.html#createRoot) 的灵活性 React 可以被嵌入到其他的应用中。
 
-虽然 React 通常被用来在启动的时候加载一个单独的根 React 组件到 DOM 上，`ReactDOM.render()` 同样可以在 UI 的独立部分上多次调用，这些部分可以小到一个按钮，也可以大到一个应用。
-=======
-React can be embedded into other applications thanks to the flexibility of [`createRoot()`](/docs/react-dom-client.html#createRoot).
-
-Although React is commonly used at startup to load a single root React component into the DOM, `root.render()` can also be called multiple times for independent parts of the UI which can be as small as a button, or as large as an app.
->>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
+虽然 React 通常被用来在启动的时候加载一个单独的根 React 组件到 DOM 上，`root.render()` 同样可以在 UI 的独立部分上多次调用，这些部分可以小到一个按钮，也可以大到一个应用。
 
 事实上，这正是 Facebook 如何使用 React 的。这让我们小块小块地在应用中使用 React，并且把他们结合到我们现存的服务端产生的模板和其他客户端代码中。
 
@@ -244,21 +238,13 @@ function HelloButton() {
 
 [**在 CodePen 上运行**](http://codepen.io/gaearon/pen/RVKbvW?editors=1010)
 
-<<<<<<< HEAD
-只要你喜欢你可以有不限数量的这种独立组件，并且使用 `ReactDOM.render()` 把他们渲染到不同的容器中。逐渐的，随着你把越来越多的应用转换到 React，你就可以把它们结合成更大的组件，并且把 `ReactDOM.render()` 的调用移动到更上层的结构。
-=======
-You can have as many such isolated components as you like, and use `ReactDOM.createRoot()` to render them to different DOM containers. Gradually, as you convert more of your app to React, you will be able to combine them into larger components, and move some of the `ReactDOM.createRoot()` calls up the hierarchy.
->>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
+只要你喜欢你可以有不限数量的这种独立组件，并且使用 `ReactDOM.createRoot()` 把他们渲染到不同的容器中。逐渐的，随着你把越来越多的应用转换到 React，你就可以把它们结合成更大的组件，并且把 `ReactDOM.createRoot()` 的调用移动到更上层的结构。
 
 ### 把 React 嵌入到 Backbone 视图 {#embedding-react-in-a-backbone-view}
 
 [Backbone](http://backbonejs.org/) 视图通常使用 HTML 字符串，或者产生字符串的模板函数，来创建 DOM 元素的内容。这个过程，同样的，可以通过渲染一个 React 组件来替换掉。
 
-<<<<<<< HEAD
-如下，我们会创建一个名为 `ParagraphView` 的 Backbone 视图。他会重载 Backbone 的 `render()` 函数来渲染一个 React `<Paragraph>` 组件到 Backbone (`this.el`) 提供的 DOM 元素中。这里，同样的，我们将会使用 [`ReactDOM.render()`](/docs/react-dom.html#render)：
-=======
-Below, we will create a Backbone view called `ParagraphView`. It will override Backbone's `render()` function to render a React `<Paragraph>` component into the DOM element provided by Backbone (`this.el`). Here, too, we are using [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot):
->>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
+如下，我们会创建一个名为 `ParagraphView` 的 Backbone 视图。他会重载 Backbone 的 `render()` 函数来渲染一个 React `<Paragraph>` 组件到 Backbone (`this.el`) 提供的 DOM 元素中。这里，同样的，我们将会使用 [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot)：
 
 ```js{1,5,8-9,13}
 function Paragraph(props) {
@@ -281,11 +267,7 @@ const ParagraphView = Backbone.View.extend({
 
 [**在 CodePen 上运行**](http://codepen.io/gaearon/pen/gWgOYL?editors=0010)
 
-<<<<<<< HEAD
-在 `remove` 方法中我们也需要调用 `ReactDOM.unmountComponentAtNode()` 以便在它解除的时候 React 清理组件树相关的事件处理的注册和其他的资源，这点是是很重要的。
-=======
-It is important that we also call `root.unmount()` in the `remove` method so that React unregisters event handlers and other resources associated with the component tree when it is detached.
->>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
+在 `remove` 方法中我们也需要调用 `root.unmount()` 以便在它解除的时候 React 清理组件树相关的事件处理的注册和其他的资源，这点是是很重要的。
 
 当一个组件在 React 树中*从内部*删除的时候，清理工作是自动完成的，但是因为我们现在手动移除整个树，我们必须调用这个方法。
 

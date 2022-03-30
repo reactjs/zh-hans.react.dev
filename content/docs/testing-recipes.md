@@ -605,11 +605,7 @@ it("应渲染问候语", () => {
 
 ### 多渲染器 {#multiple-renderers}
 
-<<<<<<< HEAD
-在极少数情况下，你可能正在使用多个渲染器的组件上运行测试。例如，你可能正在使用 `react-test-renderer` 组件上运行快照测试，该组件内部使用子组件内部的 `ReactDOM.render` 渲染一些内容。在这个场景中，你可以使用与它们的渲染器相对应的 `act()` 来包装更新。
-=======
-In rare cases, you may be running a test on a component that uses multiple renderers. For example, you may be running snapshot tests on a component with `react-test-renderer`, that internally uses `render` from `react-dom` inside a child component to render some content. In this scenario, you can wrap updates with `act()`s corresponding to their renderers.
->>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
+在极少数情况下，你可能正在使用多个渲染器的组件上运行测试。例如，你可能正在使用 `react-test-renderer` 组件上运行快照测试，该组件内部使用 `react-dom` 的 `render` 来渲染子组件的一些内容。在这个场景中，你可以使用与它们的渲染器相对应的 `act()` 来包装更新。
 
 ```jsx
 import { act as domAct } from "react-dom/test-utils";

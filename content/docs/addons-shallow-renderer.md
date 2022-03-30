@@ -59,11 +59,7 @@ expect(result.props.children).toEqual([
 
 你可以把 shallowRenderer 看作用来渲染测试中组件的“容器”，且可以从容器中取到该组件的输出内容。
 
-<<<<<<< HEAD
-`shallowRenderer.render()` 和 [`ReactDOM.render()`](/docs/react-dom.html#render) 很像，但是它不依赖 DOM 且只渲染一层。这意味着你可以对组件和其子组件的实现进行隔离测试。
-=======
-`shallowRenderer.render()` is similar to [`root.render()`](/docs/react-dom-client.html#createroot) but it doesn't require DOM and only renders a single level deep. This means you can test components isolated from how their children are implemented.
->>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
+`shallowRenderer.render()` 和 [`ReactDOM.render()`](/docs/react-dom-client.html#createroot) 很像，但是它不依赖 DOM 且只渲染一层。这意味着你可以对组件和其子组件的实现进行隔离测试。
 
 ### `shallowRenderer.getRenderOutput()` {#shallowrenderergetrenderoutput}
 

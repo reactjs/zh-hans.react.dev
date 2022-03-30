@@ -77,24 +77,15 @@ React 在设计之初就可以被渐进式适配，并且**你可以根据需要
 
 在 `like_button.js` 的底部，在**[模板代码](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**之后，加入以下两行代码。
 
-<<<<<<< HEAD
-```js{3,4}
-// ... 此前粘贴的代码 ...
-=======
 ```js{3,4,5}
-// ... the starter code you pasted ...
->>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
+// ... 此前粘贴的代码 ...
 
 const domContainer = document.querySelector('#like_button_container');
 const root = ReactDOM.createRoot(domContainer);
 root.render(e(LikeButton));
 ```
 
-<<<<<<< HEAD
-这两行代码会找到我们在步骤 1 中添加到 HTML 里的 `<div>`，然后在它内部显示我们的 React 组件 “Like” 按钮。
-=======
-These three lines of code find the `<div>` we added to our HTML in the first step, create a React app with it, and then display our "Like" button React component inside of it.
->>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
+这三行代码会找到我们在步骤 1 中添加在 HTML 里的 `<div>`，用它创建一个 React 应用，然后在其内部显示我们 “Like” 按钮的 React 组件。
 
 ### 就是这么简单！ {#thats-it}
 

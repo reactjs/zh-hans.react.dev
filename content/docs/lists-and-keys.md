@@ -33,11 +33,7 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-<<<<<<< HEAD
-我们把整个 `listItems` 插入到 `<ul>` 元素中，然后[渲染进 DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom)：
-=======
-Then, we can include the entire `listItems` array inside a `<ul>` element:
->>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
+然后，我们可以将整个 `listItems` 插入到 `<ul>` 元素中：
 
 ```javascript{2}
 <ul>{listItems}</ul>

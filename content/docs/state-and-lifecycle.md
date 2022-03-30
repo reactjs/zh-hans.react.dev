@@ -10,11 +10,7 @@ next: handling-events.html
 
 本页面介绍了 React 组件中 state 和生命周期的概念。你可以查阅[详细的组件 API 参考文档](/docs/react-component.html)。
 
-<<<<<<< HEAD
-请参考[前一章节](/docs/rendering-elements.html#updating-the-rendered-element)中时钟的例子。在[元素渲染](/docs/rendering-elements.html#rendering-an-element-into-the-dom)章节中，我们只了解了一种更新 UI 界面的方法。通过调用 `ReactDOM.render()` 来修改我们想要渲染的元素：
-=======
-Consider the ticking clock example from [one of the previous sections](/docs/rendering-elements.html#updating-the-rendered-element). In [Rendering Elements](/docs/rendering-elements.html#rendering-an-element-into-the-dom), we have only learned one way to update the UI. We call `root.render()` to change the rendered output:
->>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
+请参考[前一章节](/docs/rendering-elements.html#updating-the-rendered-element)中时钟的例子。在[元素渲染](/docs/rendering-elements.html#rendering-an-element-into-the-dom)章节中，我们只了解了一种更新 UI 界面的方法。通过调用 `root.render()` 来修改我们想要渲染的元素：
 
 ```js{10}
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -298,11 +294,7 @@ root.render(<Clock />);
 
 让我们来快速概括一下发生了什么和这些方法的调用顺序：
 
-<<<<<<< HEAD
-1) 当 `<Clock />` 被传给 `ReactDOM.render()`的时候，React 会调用 `Clock` 组件的构造函数。因为 `Clock` 需要显示当前的时间，所以它会用一个包含当前时间的对象来初始化 `this.state`。我们会在之后更新 state。
-=======
-1) When `<Clock />` is passed to `root.render()`, React calls the constructor of the `Clock` component. Since `Clock` needs to display the current time, it initializes `this.state` with an object including the current time. We will later update this state.
->>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
+1) 当 `<Clock />` 被传给 `root.render()`的时候，React 会调用 `Clock` 组件的构造函数。因为 `Clock` 需要显示当前的时间，所以它会用一个包含当前时间的对象来初始化 `this.state`。我们会在之后更新 state。
 
 2) 之后 React 会调用组件的 `render()` 方法。这就是 React 确定该在页面上展示什么的方式。然后 React 更新 DOM 来匹配 `Clock` 渲染的输出。
 

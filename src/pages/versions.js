@@ -38,13 +38,9 @@ const Versions = ({location}: Props) => (
                 rel="noopener">
                 在 GitHub 上
               </a>
-<<<<<<< HEAD
-              可以获取 React 完整版本历史记录 。<br />
+              可以获取 React 完整版本历史记录。
+              <br />
               最新版本的文档也可以在下方找到。
-=======
-              .<br />
-              Changelogs for recent releases can also be found below.
->>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
             </p>
             <blockquote>
               <p>Note</p>

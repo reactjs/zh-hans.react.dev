@@ -81,15 +81,7 @@ import("./math").then(math => {
 
 ## `React.lazy` {#reactlazy}
 
-<<<<<<< HEAD
-> 注意:
->
-> `React.lazy` 和 Suspense 技术还不支持服务端渲染。如果你想要在使用服务端渲染的应用中使用，我们推荐 [Loadable Components](https://github.com/gregberge/loadable-components) 这个库。它有一个很棒的[服务端渲染打包指南](https://loadable-components.com/docs/server-side-rendering/)。
-
 `React.lazy` 函数能让你像渲染常规组件一样处理动态引入（的组件）。
-=======
-The `React.lazy` function lets you render a dynamic import as a regular component.
->>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
 
 **使用之前：**
 
@@ -147,13 +139,11 @@ function MyComponent() {
 }
 ```
 
-<<<<<<< HEAD
-### 异常捕获边界（Error boundaries）{#error-boundaries}
-=======
-### Avoiding fallbacks {#avoiding-fallbacks}
-Any component may suspend as a result of rendering, even components that were already shown to the user. In order for screen content to always be consistent, if an already shown component suspends, React has to hide its tree up to the closest `<Suspense>` boundary. However, from the user's perspective, this can be disorienting.
+### 避免兜底 {#avoiding-fallbacks}
 
-Consider this tab switcher:
+任何组件都可能因渲染而暂停，甚至是已经展示给用户的组件。为了使屏幕内容始终一致，如果一个已经显示的组件暂停，React 必须隐藏它的树，直到最近的 `<Suspense>` 边界。然而，从用户的角度来看，这可能会使人很困惑。
+
+参考这个标签切换的示例：
 
 ```js
 import React, { Suspense } from 'react';
@@ -182,9 +172,9 @@ function MyComponent() {
 
 ```
 
-In this example, if tab gets changed from `'photos'` to `'comments'`, but `Comments` suspends, the user will see a glimmer. This makes sense because the user no longer wants to see `Photos`, the `Comments` component is not ready to render anything, and React needs to keep the user experience consistent, so it has no choice but to show the `Glimmer` above.
+在这个示例中，如果标签从 `'photos'` 切换为 `'comments'`，但 `Comments` 会暂停，用户会看到屏幕闪烁。这符合常理，因为用户不想看到 `'photos'`，而 `Comments` 组件还没有准备好渲染其内容，而 React 为了保证用户体验的一致性，只能显示上面的 `Glimmer`，别无选择。
 
-However, sometimes this user experience is not desirable. In particular, it is sometimes better to show the "old" UI while the new UI is being prepared. You can use the new [`startTransition`](/docs/react-api.html#starttransition) API to make React do this:
+然而，有时这种用户体验并不可取。特别是在准备新 UI 时，展示 "旧" 的 UI 会体验更好。你可以尝试使用新的 [`startTransition`](/docs/react-api.html#starttransition) API 来让 React 实现这一点：
 
 ```js
 function handleTabSelect(tab) {
@@ -194,10 +184,9 @@ function handleTabSelect(tab) {
 }
 ```
 
-Here, you tell React that setting tab to `'comments'` is not an urgent update, but is a [transition](/docs/react-api.html#transitions) that may take some time. React will then keep the old UI in place and interactive, and will switch to showing `<Comments />` when it is ready. See [Transitions](/docs/react-api.html#transitions) for more info.
+此处代码会告知 React，将标签设置为 `'comments'`，并非一个紧急更新。而是一个 [transition](/docs/react-api.html#transitions)，可能需要一些实际。然后 React 会保留旧的 UI 并进行交互，当它准备好时，会切换为 `<Comments />`，具体请参阅 [Transitions](/docs/react-api.html#transitions) 以了解更多相关信息。
 
-### Error boundaries {#error-boundaries}
->>>>>>> 41c3ca570f007fed216e83ea7d06be6f3fa9fbdc
+### 异常捕获边界（Error boundaries）{#error-boundaries}
 
 如果模块加载失败（如网络问题），它会触发一个错误。你可以通过[异常捕获边界（Error boundaries）](/docs/error-boundaries.html)技术来处理这些情况，以显示良好的用户体验并管理恢复事宜。
 
