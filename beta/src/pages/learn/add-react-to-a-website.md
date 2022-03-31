@@ -34,9 +34,15 @@ React 从一开始就是为渐进式开发而生，你可以根据需要选择�
 
 在 HTML 页面的 `</body>` 结束标签之前，添加三个 `<script>` 标签用于加载以下文件：
 
+<<<<<<< HEAD
 - [**react.development.js**](https://unpkg.com/react@17/umd/react.development.js) React 的核心代码文件
 - [**react-dom.development.js**](https://unpkg.com/react-dom@17/umd/react-dom.development.js) 这个脚本文件可以让 React 将 HTML 元素渲染到 [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model) 中。
 - **like_button.js** 步骤 3 中编写的组件脚本文件。
+=======
+- [**react.development.js**](https://unpkg.com/react@18/umd/react.development.js) loads the core of React
+- [**react-dom.development.js**](https://unpkg.com/react-dom@18/umd/react-dom.development.js) lets React render HTML elements to the [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model).
+- **like_button.js** is where you'll write your component in step 3!
+>>>>>>> c77e2f2422562cf967b2d60080d042974a31555f
 
 <Gotcha>
 
@@ -45,9 +51,15 @@ React 从一开始就是为渐进式开发而生，你可以根据需要选择�
 </Gotcha>
 
 ```html
+<<<<<<< HEAD
   <!-- 其他内容 -->
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+=======
+  <!-- end of the page -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+>>>>>>> c77e2f2422562cf967b2d60080d042974a31555f
   <script src="like_button.js"></script>
 </body>
 ```
@@ -120,8 +132,8 @@ root2.render(React.createElement(LikeButton));
 - 如果你已完成了 **对应用代码的压缩**，并且确保已部署的 HTML 加载的是以 `production.min.js` 结尾的 React 版本，那么你的网站就已完成生产部署（production-ready）：
 
 ```html
-<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 ## 尝试使用 JSX 编写 React {/*try-react-with-jsx*/}
@@ -149,8 +161,8 @@ return <button onClick={() => setLiked(true)}>Like</button>;
 ```html {6}
 <!-- ... 其他 <head> ... -->
 
-<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
