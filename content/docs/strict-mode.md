@@ -119,13 +119,9 @@ class MyComponent extends React.Component {
 
 > 注意：
 >
-<<<<<<< HEAD
-> 从 React 17 开始，React 会自动修改 console 的方法，例如 `console.log()`，以在对生命周期函数的第二次调用中静默日志。然而，在某些[可以使用替代解决方案](https://github.com/facebook/react/issues/20090#issuecomment-715927125)的情况下，这可能会导致一些不期望的行为的发生。
-=======
-> In React 17, React automatically modifies the console methods like `console.log()` to silence the logs in the second call to lifecycle functions. However, it may cause undesired behavior in certain cases where [a workaround can be used](https://github.com/facebook/react/issues/20090#issuecomment-715927125).
+> 在 React 17 中，React 自动修改了 console 方法，如 `console.log()`，在第二次调用生命周期函数时，会对 log 进行静默操作。然而，在某些情况下，可能会造成不符合预期的行为，这时，你可以使用 [其他解决方案](https://github.com/facebook/react/issues/20090#issuecomment-715927125).
 >
-> Starting from React 18, React does not suppress any logs. However, if you have React DevTools installed, the logs from the second call will appear slightly dimmed. React DevTools also offers a setting (off by default) to suppress them completely.
->>>>>>> 0982707a9853e2324191bb621aa4692130bf347c
+> 从 React 18 开始，React 不会静默任何日志。然而，如果你安装了 React DevTools，第二次调用 log 会出现淡化效果。React DevTools 也提供了一个设置（默认为关闭）来完全抑制它们。
 
 ### 检测过时的 context API {#detecting-legacy-context-api}
 

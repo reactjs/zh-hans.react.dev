@@ -34,15 +34,9 @@ React 从一开始就是为渐进式开发而生，你可以根据需要选择�
 
 在 HTML 页面的 `</body>` 结束标签之前，添加三个 `<script>` 标签用于加载以下文件：
 
-<<<<<<< HEAD
-- [**react.development.js**](https://unpkg.com/react@17/umd/react.development.js) React 的核心代码文件
-- [**react-dom.development.js**](https://unpkg.com/react-dom@17/umd/react-dom.development.js) 这个脚本文件可以让 React 将 HTML 元素渲染到 [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model) 中。
+- [**react.development.js**](https://unpkg.com/react@18/umd/react.development.js) React 的核心代码文件
+- [**react-dom.development.js**](https://unpkg.com/react-dom@18/umd/react-dom.development.js) 这个脚本文件可以让 React 将 HTML 元素渲染到 [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model) 中。
 - **like_button.js** 步骤 3 中编写的组件脚本文件。
-=======
-- [**react.development.js**](https://unpkg.com/react@18/umd/react.development.js) loads the core of React
-- [**react-dom.development.js**](https://unpkg.com/react-dom@18/umd/react-dom.development.js) lets React render HTML elements to the [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model).
-- **like_button.js** is where you'll write your component in step 3!
->>>>>>> 0982707a9853e2324191bb621aa4692130bf347c
 
 <Gotcha>
 
@@ -51,15 +45,9 @@ React 从一开始就是为渐进式开发而生，你可以根据需要选择�
 </Gotcha>
 
 ```html
-<<<<<<< HEAD
-  <!-- 其他内容 -->
-  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-=======
-  <!-- end of the page -->
+  <!-- 页面结束 -->
   <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
->>>>>>> 0982707a9853e2324191bb621aa4692130bf347c
   <script src="like_button.js"></script>
 </body>
 ```
