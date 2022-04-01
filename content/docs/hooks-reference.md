@@ -528,20 +528,21 @@ useDebugValue(date, date => date.toDateString());
 const [deferredValue] = useDeferredValue(value);
 ```
 
-`useDeferredValue` accepts a value and returns a new copy of the value that will defer to more urgent updates. If the current render is the result of an urgent update, like user input, React will return the previous value and then render the new value after the urgent render has completed.
+`useDeferredValue` 接收一个值并返回接收值的拷贝副本，该副本将推迟到更紧急的更新。如果当前呈现是紧急更新的结果(如用户输入)，那么React将返回先前的值，然后在紧急呈现完成后呈现新值。
 
-This hook is similar to user-space hooks which use debouncing or throttling to defer updates. The benefits to using `useDeferredValue` is that React will work on the update as soon as other work finishes (instead of waiting for an arbitrary amount of time), and like [`startTransition`](/docs/react-api.html#starttransition), deferred values can suspend without triggering an unexpected fallback for existing content.
+这个hook类似user-space钩子，被用来做防抖或节流延迟更新。
+
+使用 `useDeferredValue` 的好处是，React将在其他工作完成后立即进行更新(而不是等待任意的一段时间),如同 [`startTransition`](/docs/react-api.html#starttransition)，deferred values可以挂起，而不会触发原有内容的意外回退。
 
 #### Memoizing deferred children {#memoizing-deferred-children}
-`useDeferredValue` only defers the value that you pass to it. If you want to prevent a child component from re-rendering during an urgent update, you must also memoize that component with [`React.memo`](/docs/react-api.html#reactmemo) or [`React.useMemo`](/docs/hooks-reference.html#usememo):
+`useDeferredValue` 只会推迟您传递给它的值。如果要防止子组件在紧急更新期间重新呈现，还必须使用 memoize 的组件比如  [`React.memo`](/docs/react-api.html#reactmemo) 或者 [`React.useMemo`](/docs/hooks-reference.html#usememo):
 
 ```js
 function Typeahead() {
   const query = useSearchQuery('');
   const deferredQuery = useDeferredValue(query);
 
-  // Memoizing tells React to only re-render when deferredQuery changes,
-  // not when query changes.
+  // useMemo 告诉 React 当 deferredQuery 变化时再重新渲染， query变化时不会重新渲染
   const suggestions = useMemo(() =>
     <SearchSuggestions query={deferredQuery} />,
     [deferredQuery]
@@ -558,7 +559,8 @@ function Typeahead() {
 }
 ```
 
-Memoizing the children tells React that it only needs to re-render them when `deferredQuery` changes and not when `query` changes. This caveat is not unique to `useDeferredValue`, and it's the same pattern you would use with similar hooks that use debouncing or throttling.
+Memoizing the children告诉React，它只需要在 `deferredQuery` 更改时而不是 `query` 变化才重新渲染，这一警告并不是 `useDeferredValue` 独有的，它跟你用类似的防抖或者节流的hooks是一样的。
+
 
 ### `useTransition` {#usetransition}
 
@@ -566,9 +568,9 @@ Memoizing the children tells React that it only needs to re-render them when `de
 const [isPending, startTransition] = useTransition();
 ```
 
-Returns a stateful value for the pending state of the transition, and a function to start it.
+返回判断pending的状态值，并返回启动转换的函数。
 
-`startTransition` lets you mark updates in the provided callback as transitions:
+`startTransition` 允许您将提供的回调中的更新标记为转换：
 
 ```js
 startTransition(() => {
@@ -576,7 +578,7 @@ startTransition(() => {
 })
 ```
 
-`isPending` indicates when a transition is active to show a pending state:
+`isPending` 指示转换何时处于活动状态以显示挂起状态：
 
 ```js
 function App() {
@@ -598,11 +600,11 @@ function App() {
 }
 ```
 
-> Note:
+> 注意:
 >
-> Updates in a transition yield to more urgent updates such as clicks.
+> 过渡中的更新会导致更紧急的更新，如点击。
 >
-> Updates in a transitions will not show a fallback for re-suspended content. This allows the user to continue interacting with the current content while rendering the update.
+> 转换的更新不会显示重新挂起的内容的备用。这允许用户在渲染更新的同时继续与当前内容交互。
 
 ### `useId` {#useid}
 
