@@ -63,13 +63,13 @@ ReactDOMServer.renderToStaticMarkup(element)
 ReactDOMServer.renderToPipeableStream(element, options)
 ```
 
-Render a React element to its initial HTML. Returns a [Control object](https://github.com/facebook/react/blob/3f8990898309c61c817fbf663f5221d9a00d0eaa/packages/react-dom/src/server/ReactDOMFizzServerNode.js#L49-L54) that allows you to pipe the output or abort the request. Fully supports Suspense and streaming of HTML with "delayed" content blocks "popping in" later through javascript execution. [Read more](https://github.com/reactwg/react-18/discussions/37)
+将 React 元素渲染成初始 HTML。React 将返回一个 [Control object](https://github.com/facebook/react/blob/3f8990898309c61c817fbf663f5221d9a00d0eaa/packages/react-dom/src/server/ReactDOMFizzServerNode.js#L49-L54)，这个对象允许我们对输出进行管理或中止请求。同时完全支持 Suspense 和 HTML 的流式传输，随后通过 javascript 执行来“延迟”内容块的“弹出”。[了解更多](https://github.com/reactwg/react-18/discussions/37)。
 
-If you call [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
+如果你在已有服务端渲染标记的节点上调用 [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) 方法，React 将会保留该节点且只进行事件处理绑定，从而让你有一个非常高性能的首次加载体验。
 
-> Note:
+> 注意:
 >
-> This is a Node.js specific API and modern server environments should use renderToReadableStream instead.
+> 这是 Node.js 中特定的 API，在浏览器环境中应该使用 `renderToReadableStream` 来代替。
 >
 
 ```
@@ -99,9 +99,9 @@ const {pipe, abort} = renderToPipeableStream(
     ReactDOMServer.renderToReadableStream(element, options);
 ```
 
-Streams a React element to its initial HTML. Returns a [Readable Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream). Fully supports Suspense and streaming of HTML. [Read more](https://github.com/reactwg/react-18/discussions/127)
+将一个 React 元素渲染成初始 HTML。React 将返回一个 [可读流](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)。这个可读流支持 Suspense 和 HTML 的流式传输。[了解更多](https://github.com/reactwg/react-18/discussions/127)
 
-If you call [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
+如果你在已有服务端渲染标记的节点上调用 [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) 方法，React 将会保留该节点且只进行事件处理绑定，从而让你有一个非常高性能的首次加载体验。
 
 ```
 let controller = new AbortController();
