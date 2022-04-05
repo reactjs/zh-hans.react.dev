@@ -12,11 +12,6 @@ redirect_from:
 
 ## 即将举行的会议 {#upcoming-conferences}
 
-### React Live 2022 {#react-live-2022}
-April 1, 2022. Amsterdam, The Netherlands
-
-[Website](https://www.reactlive.nl/) - [Twitter](https://twitter.com/reactlivenl)
-
 ### React Miami 2022 🌴 {#react-miami-2022}
 April 18 - 19, 2022. Miami, Florida
 [Website](https://www.reactmiami.com/)
@@ -35,6 +30,11 @@ May 3 - 5, 2022. Berkeley, CA
 June 1 - 4, 2022. Atlanta, GA, USA
 
 [Website](https://renderatl.com) - [Discord](https://www.renderatl.com/discord) - [Twitter](https://twitter.com/renderATL) - [Instagram](https://www.instagram.com/renderatl/) - [Facebook](https://www.facebook.com/renderatl/) - [LinkedIn](https://www.linkedin.com/company/renderatl) - [Podcast](https://www.renderatl.com/culture-and-code#/)
+
+### React Day Bangalore 2022 {#reactday-bangalore-2022}
+June 8 - 9, 2022.  Remote
+
+[Website](https://reactday.in/) - [Twitter](https://twitter.com/ReactDayIn) - [Linkedin](https://www.linkedin.com/company/react-day/) - [YouTube](https://www.youtube.com/reactify_in)
 
 ### App.js Conf 2022 {#appjs-conf-2022}
 June 8 - 10, 2022. In-person in Kraków, Poland + remote
@@ -55,6 +55,11 @@ September 1-2, 2022 - Remote event
 [Facebook](https://www.facebook.com/reactnativeeu/) - 
 [Instagram](https://www.instagram.com/reactnative_eu/)
 
+### React Finland 2022 {#react-finland-2022}
+September 12 - 16, 2022. In-person in Helsinki, Finland
+
+[Website](https://react-finland.fi/) - [Twitter](https://twitter.com/ReactFinland) - [Schedule](https://react-finland.fi/schedule/) - [Speakers](https://react-finland.fi/speakers/)
+
 ### React India 2022 {#react-india-2022}
 September 22 - 24, 2022. In-person in Goa, India + remote (hybrid event)
 
@@ -66,6 +71,11 @@ September 29 - October 1, 2022. In-person in Alicante, Spain + remote (hybrid ev
 [Website](http://reactalicante.es/) - [Twitter](https://twitter.com/reactalicante) - [Facebook](https://www.facebook.com/ReactAlicante) - [Videos](https://www.youtube.com/channel/UCaSdUaITU1Cz6PvC97A7e0w)
 
 ## 往届会议 {#past-conferences}
+
+### React Live 2022 {#react-live-2022}
+April 1, 2022. Amsterdam, The Netherlands
+
+[Website](https://www.reactlive.nl/) - [Twitter](https://twitter.com/reactlivenl)
 
 ### AgentConf 2022 {#agent-conf-2022} 
 
