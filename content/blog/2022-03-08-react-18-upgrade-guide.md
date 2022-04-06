@@ -224,7 +224,7 @@ React 18 还引入了其它用于并发渲染的新 API，如 `startTransition`�
 
 当你第一次更新你的测试以使用 `createRoot` 时，你可能会在测试控制台看到这个警告：
 
-> The current testing environment is not configured to support act(...)
+> The current testing environment is not configured to support act(...)  
 > 翻译：目前的测试环境没有被配置为支持行为(...)
 
 为了解决这个问题，在运行测试之前，将 `globalThis.IS_REACT_ACT_ENVIRONMENT` 设置为 `true`：
