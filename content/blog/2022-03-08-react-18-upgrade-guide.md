@@ -7,7 +7,7 @@ author: [rickhanlonii]
 
 请 [报告你在升级到 React 18 时遇到的任何问题](https://github.com/facebook/react/issues/new/choose)。
 
-* React Native 用户注意：React 18 将在 React Native 的未来版本中搭载。这是因为 React 18 依赖于新的 React Native 架构，以受益于本博文中提出的新功能。更多信息，请参阅 [React Conf keynote here](https://www.youtube.com/watch?v=FZ0cG47msEk&t=1530s)。*
+*React Native 用户注意：React 18 将在 React Native 的未来版本中搭载。这是因为 React 18 依赖于新的 React Native 架构，以受益于本博文中提出的新功能。更多信息，请参阅 [React Conf keynote here](https://www.youtube.com/watch?v=FZ0cG47msEk&t=1530s)。*
 
 ## 安装 {#installing}
 
@@ -27,7 +27,7 @@ yarn add react react-dom
 
 当你第一次安装 React 18 时，你会在控制台看到一个警告：
 
-> ReactDOM.render is no longer supported in React 18. Use createRoot instead. Until you switch to the new API, your app will behave as if it's running React 17. Learn more: https://reactjs.org/link/switch-to-createroot
+> ReactDOM.render is no longer supported in React 18. Use createRoot instead. Until you switch to the new API, your app will behave as if it's running React 17. Learn more: https://reactjs.org/link/switch-to-createroot  
 > 翻译：ReactDOM.render 在 React 18 中不再被支持。使用 createRoot 代替。在你切换到新的 API 之前，你的应用程序将表现得像运行 React 17 一样。了解更多：https://reactjs.org/link/switch-to-createroot
 
 React 18 引入了一个新的 root API，为管理根元素提供了更好的机制。新的 root API 还启用了新的并发渲染器，它允许你选择进入并发功能。
