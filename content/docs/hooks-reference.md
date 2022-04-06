@@ -525,7 +525,7 @@ useDebugValue(date, date => date.toDateString());
 ### `useDeferredValue` {#usedeferredvalue}
 
 ```js
-const [deferredValue] = useDeferredValue(value);
+const deferredValue = useDeferredValue(value);
 ```
 
 `useDeferredValue` accepts a value and returns a new copy of the value that will defer to more urgent updates. If the current render is the result of an urgent update, like user input, React will return the previous value and then render the new value after the urgent render has completed.
@@ -611,6 +611,10 @@ const id = useId();
 ```
 
 `useId` is a hook for generating unique IDs that are stable across the server and client, while avoiding hydration mismatches.
+
+> Note
+>
+> `useId` is **not** for generating [keys in a list](/docs/lists-and-keys.html#keys). Keys should be generated from your data.
 
 For a basic example, pass the `id` directly to the elements that need it:
 
