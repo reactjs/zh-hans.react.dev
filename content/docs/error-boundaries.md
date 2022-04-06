@@ -76,7 +76,7 @@ class ErrorBoundary extends React.Component {
 
 ## 未捕获错误（Uncaught Errors）的新行为 {#new-behavior-for-uncaught-errors}
 
-这一改变具有重要意义，**自 React 16 起，任何未被错误边界捕获的错误将会导致整个 React 组件树被卸载。**
+这一改变具有重要意义。**自 React 16 起，任何未被错误边界捕获的错误将会导致整个 React 组件树被卸载。**
 
 我们对这一决定有过一些争论，但根据我们的经验，把一个错误的 UI 留在那比完全移除它要更糟糕。例如，在类似 Messenger 的产品中，把一个异常的 UI 展示给用户可能会导致用户将信息错发给别人。同样，对于支付类应用而言，显示错误的金额也比不呈现任何内容更糟糕。
 
