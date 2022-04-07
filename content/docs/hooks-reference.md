@@ -108,6 +108,14 @@ const [state, setState] = useState(() => {
 
 需要注意的是，React 可能仍需要在跳过渲染前渲染该组件。不过由于 React 不会对组件树的“深层”节点进行不必要的渲染，所以大可不必担心。如果你在渲染期间执行了高开销的计算，则可以使用 `useMemo` 来进行优化。
 
+#### Batching of state updates {#batching-of-state-updates}
+
+React may group several state updates into a single re-render to improve performance. Normally, this improves performance and shouldn't affect your application's behavior.
+
+Before React 18, only updates inside React event handlers were batched. Starting with React 18, [batching is enabled for all updates by default](/blog/2022/03/08/react-18-upgrade-guide.html#automatic-batching). Note that React makes sure that updates from several *different* user-initiated events -- for example, clicking a button twice -- are always processed separately and do not get batched. This prevents logical mistakes.
+
+In the rare case that you need to force the DOM update to be applied synchronously, you may wrap it in [`flushSync`](/docs/react-dom.html#flushsync). However, this can hurt performance so do this only where needed.
+
 ### `useEffect` {#useeffect}
 
 ```js
@@ -525,7 +533,7 @@ useDebugValue(date, date => date.toDateString());
 ### `useDeferredValue` {#usedeferredvalue}
 
 ```js
-const [deferredValue] = useDeferredValue(value);
+const deferredValue = useDeferredValue(value);
 ```
 
 `useDeferredValue` accepts a value and returns a new copy of the value that will defer to more urgent updates. If the current render is the result of an urgent update, like user input, React will return the previous value and then render the new value after the urgent render has completed.
@@ -611,6 +619,10 @@ const id = useId();
 ```
 
 `useId` is a hook for generating unique IDs that are stable across the server and client, while avoiding hydration mismatches.
+
+> Note
+>
+> `useId` is **not** for generating [keys in a list](/docs/lists-and-keys.html#keys). Keys should be generated from your data.
 
 For a basic example, pass the `id` directly to the elements that need it:
 
