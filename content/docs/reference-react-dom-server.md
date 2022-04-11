@@ -32,55 +32,17 @@ var ReactDOMServer = require('react-dom/server');
 - [`renderToString()`](#rendertostring)
 - [`renderToStaticMarkup()`](#rendertostaticmarkup)
 
-<<<<<<< HEAD
-下述附加方法依赖一个**只能在服务端使用**的 package（`stream`）。它们在浏览器中不起作用。
-
-- [`renderToPipeableStream()`](#rendertopipeablestream)
-- [`renderToReadableStream()`](#rendertoreadablestream)
-- [`renderToNodeStream()`](#rendertonodestream) (Deprecated)
-- [`renderToStaticNodeStream()`](#rendertostaticnodestream)
-
-* * *
-
 ## 参考 {#reference}
 
-### `renderToString()` {#rendertostring}
-
-```javascript
-ReactDOMServer.renderToString(element)
-```
-
-将 React 元素渲染为初始 HTML。React 将返回一个 HTML 字符串。你可以使用此方法在服务端生成 HTML，并在首次请求时将标记下发，以加快页面加载速度，并允许搜索引擎爬取你的页面以达到 SEO 优化的目的。
-
-如果你在已有服务端渲染标记的节点上调用 [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) 方法，React 将会保留该节点且只进行事件处理绑定，从而让你有一个非常高性能的首次加载体验。
-
-* * *
-
-### `renderToStaticMarkup()` {#rendertostaticmarkup}
-
-```javascript
-ReactDOMServer.renderToStaticMarkup(element)
-```
-
-此方法与 [`renderToString`](#rendertostring) 相似，但此方法不会在 React 内部创建的额外 DOM 属性，例如 `data-reactroot`。如果你希望把 React 当作静态页面生成器来使用，此方法会非常有用，因为去除额外的属性可以节省一些字节。
-
-如果你计划在前端使用 React 以使得标记可交互，请不要使用此方法。你可以在服务端上使用 [`renderToString`](#rendertostring) 或在前端上使用 [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) 来代替此方法。
-
-* * *
-
-=======
-## Reference {#reference}
-
->>>>>>> b2d16e5ac669e0e8fe5c0076fb9c908d2d730105
 ### `renderToPipeableStream()` {#rendertopipeablestream}
 
 ```javascript
 ReactDOMServer.renderToPipeableStream(element, options)
 ```
 
-Render a React element to its initial HTML. Returns a stream with a `pipe(res)` method to pipe the output and `abort()` to abort the request. Fully supports Suspense and streaming of HTML with "delayed" content blocks "popping in" via inline `<script>` tags later. [Read more](https://github.com/reactwg/react-18/discussions/37)
+将 React 元素渲染为其初始 HTML。返回一个流，使用 `pipe(res)` 方法来管道输出，并使用 `abort()` 中止请求。完全支持 HTML 的悬念和流式处理，稍后通过内联 `<script>` 标签 “弹出” “延迟” 内容块。[阅读更多](https://github.com/reactwg/react-18/discussions/37)
 
-If you call [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
+如果你在已经具有此服务器渲染标记的节点上调用 [`ReactDOM.hydraRoot()`](/docs/react-dom-client.html#hydraroot)，React 将保留它并仅附加事件处理程序，使首次加载体验性能十足。
 
 ```javascript
 let didError = false;
@@ -118,11 +80,11 @@ const stream = renderToPipeableStream(
 );
 ```
 
-See the [full list of options](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-dom/src/server/ReactDOMFizzServerNode.js#L36-L46).
+请参阅 [完整选项列表](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-dom/src/server/ReactDOMFizzServerNode.js#L36-L46)。
 
-> Note:
+> 注意：
 >
-> This is a Node.js-specific API. Environments with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), like Deno and modern edge runtimes, should use [`renderToReadableStream`](#rendertoreadablestream) instead.
+> 这是一个仅 Node.js 的 API。 具有 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的环境，例如 Deno 和前沿运行时，应该使用 [`renderToReadableStream`](#rendertoreadablestream) 代替。
 >
 
 * * *
@@ -133,9 +95,9 @@ See the [full list of options](https://github.com/facebook/react/blob/14c2be8dac
 ReactDOMServer.renderToReadableStream(element, options);
 ```
 
-Streams a React element to its initial HTML. Returns a Promise that resolves to a [Readable Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream). Fully supports Suspense and streaming of HTML. [Read more](https://github.com/reactwg/react-18/discussions/127)
+将 React 元素流式传输到其初始 HTML。返回解析为 [Readable Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) 的 Promise。完全支持 HTML 的 Suspense 和流式传输。[阅读更多](https://github.com/reactwg/react-18/discussions/127)
 
-If you call [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
+如果你在已经具有此服务器渲染标记的节点上调用 [`ReactDOM.hydraRoot()`](/docs/react-dom-client.html#hydraroot)，React 将保留它并仅附加事件处理程序，使首次加载体验性能十足。
 
 ```javascript
 let controller = new AbortController();
@@ -175,11 +137,11 @@ try {
 }
 ```
 
-See the [full list of options](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-dom/src/server/ReactDOMFizzServerBrowser.js#L27-L35).
+请参阅 [完整选项列表](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-dom/src/server/ReactDOMFizzServerBrowser.js#L27-L35)。
 
-> Note:
+> 注意:
 >
-> This API depends on [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API). For Node.js, use [`renderToPipeableStream`](#rendertopipeablestream) instead.
+> 这个 API 需要 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)。在 Node.js 下，使用[`renderToPipeableStream`](#rendertopipeablestream)。
 >
 
 * * *
@@ -218,10 +180,7 @@ ReactDOMServer.renderToStaticNodeStream(element)
 >
 > 此 API 仅限于服务端使用，在浏览器中是不可用的。
 >
-<<<<<<< HEAD
 > 通过本方法返回的流会返回一个由 utf-8 编码的字节流。如果你需要另一种编码的流，请查看像 [iconv-lite](https://www.npmjs.com/package/iconv-lite) 这样的项目，它为转换文本提供了转换流。
-=======
-> The stream returned from this method will return a byte stream encoded in utf-8. If you need a stream in another encoding, take a look at a project like [iconv-lite](https://www.npmjs.com/package/iconv-lite), which provides transform streams for transcoding text.
 
 * * *
 
@@ -231,15 +190,15 @@ ReactDOMServer.renderToStaticNodeStream(element)
 ReactDOMServer.renderToString(element)
 ```
 
-Render a React element to its initial HTML. React will return an HTML string. You can use this method to generate HTML on the server and send the markup down on the initial request for faster page loads and to allow search engines to crawl your pages for SEO purposes.
+将一个 React 元素渲染成其初始 HTML。React 会返回一个 HTML 字符串。你可以使用本方法在服务器上生成 HTML，并在初始请求时将标记下发，以加快页面加载速度，并允许搜索引擎抓取你的页面以达到 SEO 优化的目的。
 
-If you call [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on a node that already has this server-rendered markup, React will preserve it and only attach event handlers, allowing you to have a very performant first-load experience.
+如果你在已经具有此服务器渲染标记的节点上调用 [`ReactDOM.hydraRoot()`](/docs/react-dom-client.html#hydraroot)，React 将保留它并仅附加事件处理程序，使首次加载体验性能十足。
 
-> Note
+> 注意
 >
-> This API has limited Suspense support and does not support streaming.
+> 此 API 对 Suspense 的支持有限，并且不支持流式传输。
 >
-> On the sever, it is recommended to use either [`renderToPipeableStream`](#rendertopipeablestream) (for Node.js) or [`renderToReadableStream`](#rendertoreadablestream) (for Web Streams) instead.
+> 在服务器上，建议使用 [`renderToPipeableStream`](#rendertopipeablestream)（对于 Node.js）或 [`renderToReadableStream`](#rendertoreadablestream)（对于 Web Stream）。
 
 * * *
 
@@ -249,7 +208,6 @@ If you call [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) 
 ReactDOMServer.renderToStaticMarkup(element)
 ```
 
-Similar to [`renderToString`](#rendertostring), except this doesn't create extra DOM attributes that React uses internally, such as `data-reactroot`. This is useful if you want to use React as a simple static page generator, as stripping away the extra attributes can save some bytes.
+与 [`renderToString`](#rendertostring) 相仿，不过这不会创建 React 内部使用的额外 DOM 属性，比如 `data-reactroot`。如果你打算把 React 用作简单的静态页面生成器，这很有用，因为剥离额外的属性可以节省一些空间。
 
-If you plan to use React on the client to make the markup interactive, do not use this method. Instead, use [`renderToString`](#rendertostring) on the server and [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) on the client.
->>>>>>> b2d16e5ac669e0e8fe5c0076fb9c908d2d730105
+如果你打算在客户端使用 React 来使标记交互，请不要使用此方法。相反，在服务器上使用 [`renderToString`](#rendertostring) 并在客户端上使用 [`ReactDOM.hydraRoot()`](/docs/react-dom-client.html#hydraroot)。

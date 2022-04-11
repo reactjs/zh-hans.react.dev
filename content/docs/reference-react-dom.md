@@ -62,7 +62,6 @@ createPortal(child, container)
 flushSync(callback)
 ```
 
-<<<<<<< HEAD
 强制 React 同步刷新提供的回调函数中的任何更新。这保证了 DOM 会被立即更新。
 
 ```javascript
