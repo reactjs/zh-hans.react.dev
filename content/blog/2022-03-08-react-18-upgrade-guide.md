@@ -218,7 +218,7 @@ React 18 还引入了其它用于并发渲染的新 API，如 `startTransition`�
     * Effect setup code runs
 ```
 
-更多信息，请参见工作组的帖子：[Adding Reusable State to StrictMode](https://github.com/reactwg/react-18/discussions/19) 和 [How to support Reusable State in Effects](https://github.com/reactwg/react-18/discussions/18)。
+更多信息，请参见工作组的帖子：[为 StrictMode 加入可复用状态](https://github.com/reactwg/react-18/discussions/19) 和 [如何在 Effects 中支持可复用状态](https://github.com/reactwg/react-18/discussions/18)。
 
 ## 配置你的测试环境 {#configuring-your-testing-environment}
 
