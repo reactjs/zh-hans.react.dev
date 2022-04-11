@@ -52,17 +52,10 @@ React 在设计之初就可以被渐进式适配，并且**你可以根据需要
 ```html{5,6,9}
   <!-- ... 其它 HTML ... -->
 
-<<<<<<< HEAD
   <!-- 加载 React。-->
   <!-- 注意: 部署时，将 "development.js" 替换为 "production.min.js"。-->
-  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-=======
-  <!-- Load React. -->
-  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
   <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
->>>>>>> b2d16e5ac669e0e8fe5c0076fb9c908d2d730105
 
   <!-- 加载我们的 React 组件。-->
   <script src="like_button.js"></script>

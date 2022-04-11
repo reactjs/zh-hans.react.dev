@@ -108,14 +108,13 @@ const [state, setState] = useState(() => {
 
 需要注意的是，React 可能仍需要在跳过渲染前渲染该组件。不过由于 React 不会对组件树的“深层”节点进行不必要的渲染，所以大可不必担心。如果你在渲染期间执行了高开销的计算，则可以使用 `useMemo` 来进行优化。
 
-#### Batching of state updates {#batching-of-state-updates}
+#### 状态更新批处理 {#batching-of-state-updates}
 
-React may group several state updates into a single re-render to improve performance. Normally, this improves performance and shouldn't affect your application's behavior.
+React 可以将多个状态组合在一起重新渲染来提高性能。一般情况下，这会提高性能而且不会影响你应用程序的行为。
 
-Before React 18, only updates inside React event handlers were batched. Starting with React 18, [batching is enabled for all updates by default](/blog/2022/03/08/react-18-upgrade-guide.html#automatic-batching). Note that React makes sure that updates from several *different* user-initiated events -- for example, clicking a button twice -- are always processed separately and do not get batched. This prevents logical mistakes.
+在 React 18 之前，只有 React 事件处理程序内部的更新会被批处理。而从 React 18 开始，[所有更新都默认启用批处理](/blog/2022/03/08/react-18-upgrade-guide.html#automatic-batching)。注意，React 确保的是来自多个 *不同* 用户启动事件的更新——比如一个按钮被点击两次——是会被单独处理儿不会被批处理。这可以防止逻辑错误。
 
-In the rare case that you need to force the DOM update to be applied synchronously, you may wrap it in [`flushSync`](/docs/react-dom.html#flushsync). However, this can hurt performance so do this only where needed.
-
+在你需要强制同步应用 DOM 更新的极端情况下，你可以将它们包在 [`flushSync`](/docs/react-dom.html#flushsync) 里。但是，这可能会损害性能，所以非必要不要这样做。
 ### `useEffect` {#useeffect}
 
 ```js

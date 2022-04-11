@@ -17,21 +17,17 @@ var ReactDOMServer = require('react-dom/server');
 
 ## 概览 {#overview}
 
-<<<<<<< HEAD
-下述方法可以被使用在服务端和浏览器环境。
-=======
-These methods are only available in the **environments with [Node.js Streams](https://nodejs.dev/learn/nodejs-streams):**
+以下方法仅在 **带有 [Node.js Streams](https://nodejs.dev/learn/nodejs-streams) 的环境下** 有效：
 
 - [`renderToPipeableStream()`](#rendertopipeablestream)
 - [`renderToNodeStream()`](#rendertonodestream) (Deprecated)
 - [`renderToStaticNodeStream()`](#rendertostaticnodestream)
 
-These methods are only available in the **environments with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)** (this includes browsers, Deno, and some modern edge runtimes):
+以下方法仅在 **有 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的环境下** 有效（这包括浏览器、Deno 以及一些前沿的运行时）
 
 - [`renderToReadableStream()`](#rendertoreadablestream)
 
-The following methods can be used in the environments that don't support streams:
->>>>>>> b2d16e5ac669e0e8fe5c0076fb9c908d2d730105
+以下方法可以在不支持 streams 的环境中使用：
 
 - [`renderToString()`](#rendertostring)
 - [`renderToStaticMarkup()`](#rendertostaticmarkup)
@@ -194,11 +190,7 @@ See the [full list of options](https://github.com/facebook/react/blob/14c2be8dac
 ReactDOMServer.renderToNodeStream(element)
 ```
 
-<<<<<<< HEAD
-将一个 React 元素渲染成其初始 HTML。返回一个可输出 HTML 字符串的[可读流](https://nodejs.org/api/stream.html#stream_readable_streams)。通过可读流输出的 HTML 完全等同于 [`ReactDOMServer.renderToString`](#rendertostring) 返回的 HTML。你可以使用本方法在服务器上生成 HTML，并在初始请求时将标记下发，以加快页面加载速度，并允许搜索引擎抓取你的页面以达到 SEO 优化的目的。
-=======
-Render a React element to its initial HTML. Returns a [Node.js Readable stream](https://nodejs.org/api/stream.html#stream_readable_streams) that outputs an HTML string. The HTML output by this stream is exactly equal to what [`ReactDOMServer.renderToString`](#rendertostring) would return. You can use this method to generate HTML on the server and send the markup down on the initial request for faster page loads and to allow search engines to crawl your pages for SEO purposes.
->>>>>>> b2d16e5ac669e0e8fe5c0076fb9c908d2d730105
+将一个 React 元素渲染成其初始 HTML。返回一个可输出 HTML 字符串的 [Node.js 可读流](https://nodejs.org/api/stream.html#stream_readable_streams)。通过可读流输出的 HTML 完全等同于 [`ReactDOMServer.renderToString`](#rendertostring) 返回的 HTML。你可以使用本方法在服务器上生成 HTML，并在初始请求时将标记下发，以加快页面加载速度，并允许搜索引擎抓取你的页面以达到 SEO 优化的目的。
 
 如果你在已有服务端渲染标记的节点上调用 [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) 方法，React 将会保留该节点且只进行事件处理绑定，从而让你有一个非常高性能的首次加载体验。
 
