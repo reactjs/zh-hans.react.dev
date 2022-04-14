@@ -372,7 +372,7 @@ function MyComponent() {
 
 #### 服务端渲染中的 `React.Suspense` {#reactsuspense-in-server-side-rendering}
 在服务端渲染过程中，Suspense 边界允许你挂起，通过较小的块来刷新应用程序。
-当组件挂起时，我们会安排一个低优先级的任务来渲染最近的 Suspense 边界的 fallback。如果组件在我们刷新 fallback 之前取消挂起，那么我们会发烧实际内容并丢弃 fallback。
+当组件挂起时，我们会安排一个低优先级的任务来渲染最近的 Suspense 边界的 fallback。如果组件在我们刷新 fallback 之前取消挂起，那么我们会发送实际内容并丢弃 fallback。
 
 #### hydrate 过程中的 `React.Suspense` {#reactsuspense-during-hydration}
 Suspense 边界依赖于它们的父边界，在它们可以 hydrate 前被 hydrate，但是它们可以独立于兄弟边界进行 hydrate。边界 hydrate 前发生的事件将导致边界 hydrate 的优先级高于相邻边界的优先级。具体请参阅[讨论](https://github.com/reactwg/react-18/discussions/130)。
