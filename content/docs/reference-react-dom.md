@@ -82,7 +82,7 @@ render(element, container[, callback])
 
 > 注意：
 >
-> 在 React 18 中，`render` 函数已被 `createRoot` 函索所取代。具体请参阅 [createRoot](/docs/react-dom-client.html#createroot) 以了解更多。
+> 在 React 18 中，`render` 函数已被 `createRoot` 函数所取代。具体请参阅 [createRoot](/docs/react-dom-client.html#createroot) 以了解更多。
 
 在提供的 `container` 里渲染一个 React 元素，并返回对该组件的[引用](/docs/more-about-refs.html)（或者针对[无状态组件](/docs/components-and-props.html#function-and-class-components)返回 `null`）。
 
