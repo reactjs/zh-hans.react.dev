@@ -9,13 +9,12 @@ import {MenuContext} from 'components/useMenu';
 import {useMediaQuery} from '../useMediaQuery';
 import {SidebarRouteTree} from './SidebarRouteTree';
 import {Search} from 'components/Search';
-import {Button} from 'components/Button';
 import {MobileNav} from '../Nav/MobileNav';
 import {Feedback} from '../Feedback';
 
 const SIDEBAR_BREAKPOINT = 1023;
 
-export function Sidebar({isMobileOnly}: {isMobileOnly?: boolean}) {
+export function Sidebar() {
   const {menuRef, isOpen} = React.useContext(MenuContext);
   const isMobileSidebar = useMediaQuery(SIDEBAR_BREAKPOINT);
   let routeTree = React.useContext(SidebarContext);
@@ -28,18 +27,18 @@ export function Sidebar({isMobileOnly}: {isMobileOnly?: boolean}) {
   return (
     <aside
       className={cn(
-        `lg:flex-grow lg:flex flex-col w-full pt-4 pb-8 lg:pb-0 lg:max-w-xs fixed lg:sticky bg-wash dark:bg-wash-dark z-10 top-0`,
+        `lg:grow lg:flex flex-col w-full pt-4 pb-8 lg:pb-0 lg:max-w-xs fixed lg:sticky bg-wash dark:bg-wash-dark z-10 top-0`,
         isOpen ? 'block z-40' : 'hidden lg:block'
       )}
       aria-hidden={isHidden}>
-      <div className="px-5">
+      <div className="px-5 pt-16 sm:pt-10 lg:pt-0">
         <Search />
       </div>
       <nav
         role="navigation"
         ref={menuRef}
         style={{'--bg-opacity': '.2'} as React.CSSProperties} // Need to cast here because CSS vars aren't considered valid in TS types (cuz they could be anything)
-        className="w-full h-screen lg:h-auto flex-grow pr-0 lg:pr-5 pt-6 pb-44 lg:pb-0 lg:py-6 md:pt-4 lg:pt-4 overflow-y-scroll lg:overflow-y-auto scrolling-touch scrolling-gpu">
+        className="w-full h-screen lg:h-auto grow pr-0 lg:pr-5 pt-6 pb-44 lg:pb-0 lg:py-6 md:pt-4 lg:pt-4 overflow-y-scroll lg:overflow-y-auto scrolling-touch scrolling-gpu">
         {isMobileSidebar ? (
           <MobileNav />
         ) : (

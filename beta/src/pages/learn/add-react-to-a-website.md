@@ -78,11 +78,12 @@ function LikeButton() {
 
 ### 步骤 4： 把你的 React 组件添加到页面中 {/*step-4-add-your-react-component-to-the-page*/}
 
-最后，在 **like_button.js** 底部添加以下两行代码。这两行代码会找到我们在步骤 1 中添加到 HTML 里的 `<div>`，然后在它内部显示我们的 React 组件 “like” 按钮。
+最后，在 **like_button.js** 底部添加以下三行代码。这三行代码会找到我们在步骤 1 中添加到 HTML 里的 `<div>`，接着创建一个 React 应用，最后在其内部显示我们的 React 组件 “like” 按钮。
 
 ```js
 const domContainer = document.getElementById('component-goes-here');
-ReactDOM.render(React.createElement(LikeButton), domContainer);
+const root = ReactDOM.createRoot(domContainer);
+root.render(React.createElement(LikeButton));
 ```
 
 **恭喜！你刚刚已成功将第一个 React 组件添加到你的网站当中**！
@@ -92,21 +93,21 @@ ReactDOM.render(React.createElement(LikeButton), domContainer);
 
 #### 复用你的组件 {/*you-can-reuse-components*/}
 
-你可能需要在同一 HTML 页面的多个位置展示相同的 React 组件。你可以通过多次调用 `ReactDOM.render()` 来实现这个想法。当页面中依赖 React 的部分相互独立时，这种策略通常非常有效。
+你可能需要在同一 HTML 页面的多个位置展示相同的 React 组件。你可以通过多次调用 `ReactDOM.createRoot()` 来实现这个想法。当页面中依赖 React 的部分相互独立时，这种策略通常非常有效。
 
 1. 在 **index.html**，添加另外一个的容器元素 `<div id="component-goes-here-too"></div>`。
 2. 在 **like_button.js**，为新的容器元素添加 `ReactDOM.render()`：
 
 ```js {6,7,8,9}
-ReactDOM.render(
-  React.createElement(LikeButton),
+const root1 = ReactDOM.createRoot(
   document.getElementById('component-goes-here')
 );
+root1.render(React.createElement(LikeButton));
 
-ReactDOM.render(
-  React.createElement(LikeButton),
+const root2 = ReactDOM.createRoot(
   document.getElementById('component-goes-here-too')
 );
+root2.render(React.createElement(LikeButton));
 ```
 
 具体请参阅此 [示例，它展示了三次 “Like” 按钮，并向分别向按钮中传递了一些数据](https://gist.github.com/rachelnabors/c0ea05cc33fbe75ad9bbf78e9044d7f8)！
@@ -161,8 +162,8 @@ return <button onClick={() => setLiked(true)}>Like</button>;
 
 ```jsx {1}
 <script type="text/babel">
-  ReactDOM.render(
-  <h1>Hello, world!</h1>, document.getElementById('root') );
+  const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(<h1>Hello, world!</h1>);
 </script>
 ```
 

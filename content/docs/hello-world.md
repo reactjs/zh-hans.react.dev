@@ -8,11 +8,10 @@ next: introducing-jsx.html
 
 最简易的 React 示例如下：
 
-```js
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root')
-);
+```jsx
+ReactDOM
+  .createRoot(document.getElementById('root'))
+  .render(<h1>Hello, world!</h1>);
 ```
 
 它将在页面上展示一个 "Hello, world!" 的标题。
