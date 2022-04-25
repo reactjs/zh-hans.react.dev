@@ -103,10 +103,17 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 
 ### 必要条件 {#contribution-prerequisites}
 
+<<<<<<< HEAD
 * [Node](https://nodejs.org) v8.0.0+、[Yarn](https://yarnpkg.com/en/) v1.2.0+。
 * 已安装 [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 * 你已安装 `gcc`（或者你在有必要安装编译器的情况下也不觉得麻烦），因为一些依赖可能得经过编译，而在 OS X，Xcode 命令行工具会帮你处理；在 Ubuntu，`apt-get install build-essential` 会安装所需的 package（其它 Linux 发行版的类似命令也有效）；在 Windows 上得做些额外步骤，请参考 [`node-gyp` 安装步骤](https://github.com/nodejs/node-gyp#installation)。
 * 熟悉 Git。
+=======
+* You have [Node](https://nodejs.org) installed at LTS and [Yarn](https://yarnpkg.com/en/) at v1.2.0+.
+* You have [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) installed.
+* You have `gcc` installed or are comfortable installing a compiler if needed. Some of our dependencies may require a compilation step. On OS X, the Xcode Command Line Tools will cover this. On Ubuntu, `apt-get install build-essential` will install the required packages. Similar commands should work on other Linux distros. Windows will require some additional steps, see the [`node-gyp` installation instructions](https://github.com/nodejs/node-gyp#installation) for details.
+* You are familiar with Git.
+>>>>>>> 1d21630e126af0f4c04ff392934dcee80fc54892
 
 ### 开发工作流程 {#development-workflow}
 

@@ -192,7 +192,11 @@ class Chosen extends React.Component {
 
 得益于 [`createRoot()`](/docs/react-dom-client.html#createRoot) 的灵活性 React 可以被嵌入到其他的应用中。
 
+<<<<<<< HEAD
 虽然 React 通常被用来在启动的时候加载一个单独的根 React 组件到 DOM 上，`root.render()` 同样可以在 UI 的独立部分上多次调用，这些部分可以小到一个按钮，也可以大到一个应用。
+=======
+Although React is commonly used at startup to load a single root React component into the DOM, `createRoot()` can also be called multiple times for independent parts of the UI which can be as small as a button, or as large as an app.
+>>>>>>> 1d21630e126af0f4c04ff392934dcee80fc54892
 
 事实上，这正是 Facebook 如何使用 React 的。这让我们小块小块地在应用中使用 React，并且把他们结合到我们现存的服务端产生的模板和其他客户端代码中。
 

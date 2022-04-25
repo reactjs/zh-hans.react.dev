@@ -34,9 +34,15 @@ React 从一开始就是为渐进式开发而生，你可以根据需要选择�
 
 在 HTML 页面的 `</body>` 结束标签之前，添加三个 `<script>` 标签用于加载以下文件：
 
+<<<<<<< HEAD
 - [**react.development.js**](https://unpkg.com/react@17/umd/react.development.js) React 的核心代码文件
 - [**react-dom.development.js**](https://unpkg.com/react-dom@17/umd/react-dom.development.js) 这个脚本文件可以让 React 将 HTML 元素渲染到 [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model) 中。
 - **like_button.js** 步骤 3 中编写的组件脚本文件。
+=======
+- [**react.development.js**](https://unpkg.com/react@18/umd/react.development.js) loads the core of React
+- [**react-dom.development.js**](https://unpkg.com/react-dom@18/umd/react-dom.development.js) lets React render HTML elements to the [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model).
+- **like_button.js** is where you'll write your component in step 3!
+>>>>>>> 1d21630e126af0f4c04ff392934dcee80fc54892
 
 <Gotcha>
 
@@ -45,9 +51,15 @@ React 从一开始就是为渐进式开发而生，你可以根据需要选择�
 </Gotcha>
 
 ```html
+<<<<<<< HEAD
   <!-- 其他内容 -->
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+=======
+  <!-- end of the page -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+>>>>>>> 1d21630e126af0f4c04ff392934dcee80fc54892
   <script src="like_button.js"></script>
 </body>
 ```
@@ -120,8 +132,8 @@ root2.render(React.createElement(LikeButton));
 - 如果你已完成了 **对应用代码的压缩**，并且确保已部署的 HTML 加载的是以 `production.min.js` 结尾的 React 版本，那么你的网站就已完成生产部署（production-ready）：
 
 ```html
-<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 ## 尝试使用 JSX 编写 React {/*try-react-with-jsx*/}
@@ -140,7 +152,11 @@ return <button onClick={() => setLiked(true)}>Like</button>;
 
 这两段代码是等价的。JSX 是一种在 JavaScript 中描述标签的语法。多数人觉得这样编写 UI 代码更方便 —— 无论是使用 React 还是其它库。你可能会在其他项目中看到 “混在 JavaScript 代码中的标签”！
 
+<<<<<<< HEAD
 > 你可以通过 [在线转换器](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.4.3) 试用 JSX。
+=======
+> You can play with transforming HTML markup into JSX using [this online converter](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.17).
+>>>>>>> 1d21630e126af0f4c04ff392934dcee80fc54892
 
 ### 试用 JSX {/*try-jsx*/}
 
@@ -149,8 +165,8 @@ return <button onClick={() => setLiked(true)}>Like</button>;
 ```html {6}
 <!-- ... 其他 <head> ... -->
 
-<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
