@@ -113,7 +113,7 @@ class MyComponent extends React.Component {
 例如，请考虑以下代码：
 `embed:strict-mode/side-effects-in-constructor.js`
 
-这段代码看起来似乎没有问题。但是如果 `SharedApplicationState.recordEvent` 不是[幂等](https://en.wikipedia.org/wiki/Idempotence#Computer_science_meaning)的情况下，多次实例化此组件可能会导致应用程序状态无效。这种小 bug 可能在开发过程中可能不会表现出来，或者说表现出来但并不明显，并因此被忽视。
+这段代码看起来似乎没有问题。但是如果 `SharedApplicationState.recordEvent` 不是[幂等](https://en.wikipedia.org/wiki/Idempotence#Computer_science_meaning)的情况下，多次实例化此组件可能会导致应用程序状态无效。这种小 bug 可能在开发过程中不会表现出来，或者说表现出来但并不明显，并因此被忽视。
 
 严格模式采用故意重复调用方法（如组件的构造函数）的方式，使得这种 bug 更容易被发现。
 
