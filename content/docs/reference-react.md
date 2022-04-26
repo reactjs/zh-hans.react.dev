@@ -386,8 +386,8 @@ React.startTransition(callback)
 
 > 注意：
 >
-> 过渡期的更新会产生更紧急的更新，如点击操作。
+> 过渡期的更新会被更紧急的更新取代，如点击操作。
 >
-> 转成中的更新不会显示重新挂起内容的 fallback，允许用户在渲染更新时继续进行交互。
+> 过渡期的更新不会显示重新挂起内容的 fallback，允许用户在渲染更新时继续进行交互。
 >
 > `React.startTransition` 不提供 `isPending` 的标志。要跟踪过渡的待定状态，请参阅 [`React.useTransition`](/docs/hooks-reference.html#usetransition)。
