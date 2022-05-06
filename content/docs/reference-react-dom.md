@@ -62,11 +62,27 @@ createPortal(child, container)
 flushSync(callback)
 ```
 
+<<<<<<< HEAD
 强制 React 同步刷新提供的回调函数中的任何更新。该方法对于能够立即读取更新结果的场景很有效。
+=======
+Force React to flush any updates inside the provided callback synchronously. This ensures that the DOM is updated immediately.
+
+```javascript
+// Force this state update to be synchronous.
+flushSync(() => {
+  setCount(count + 1);
+});
+// By this point, DOM is updated.
+```
+>>>>>>> dfe5080e2b47a0af17b425a4f15f05298bbe8d65
 
 > 注意：
 > 
+<<<<<<< HEAD
 > `flushSync` 会对性能产生很大影响。尽量少用。
+=======
+> `flushSync` can significantly hurt performance. Use sparingly.
+>>>>>>> dfe5080e2b47a0af17b425a4f15f05298bbe8d65
 > 
 > `flushSync` 可能会迫使悬而未决的 Suspense 边界显示其 `fallback` 的状态。
 > 

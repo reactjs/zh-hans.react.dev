@@ -66,7 +66,11 @@ class ErrorBoundary extends React.Component {
 
 ## 在线演示 {#live-demo}
 
+<<<<<<< HEAD
 查看使用 [React 16](/blog/2017/09/26/react-v16.0.html) [定义和使用错误边界的例子](https://codepen.io/gaearon/pen/wqvxGa?editors=0010)。
+=======
+Check out [this example of declaring and using an error boundary](https://codepen.io/gaearon/pen/wqvxGa?editors=0010).
+>>>>>>> dfe5080e2b47a0af17b425a4f15f05298bbe8d65
 
 
 ## 错误边界应该放置在哪？ {#where-to-place-error-boundaries}
