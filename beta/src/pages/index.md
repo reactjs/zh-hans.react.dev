@@ -22,14 +22,23 @@ permalink: index.html
 
 ## 有多少内容已就绪？ {/*how-much-content-is-ready*/}
 
+<<<<<<< HEAD
 * [Learn React](/learn): 已完成近 70%。
 * [API Reference](/apis): 已完成近 5%。
+=======
+* [Learn React](/learn): ~70% finished.
+* [API Reference](/apis): ~20% finished.
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
 
 你可以 [在 Github 上](https://github.com/reactjs/reactjs.org/issues/3308) 追踪我们的进度。
 
 ## 如何提供反馈? {/*how-can-i-provide-feedback*/}
 
+<<<<<<< HEAD
 请提交到 [这个 GitHub issue](https://github.com/reactjs/reactjs.org/issues/3308) 或 [填写这个匿名表格](https://www.surveymonkey.co.uk/r/Y6GH986) 进行反馈。此外，每个页面都设有反馈按钮。如果你发现任何不合理的地方，请告诉我们！
+=======
+Please use [this GitHub issue](https://github.com/reactjs/reactjs.org/issues/3308) or [this anonymous form](https://www.surveymonkey.co.uk/r/Y6GH986) for high-level feedback. If you spot something that doesn't make sense, please tell us! Additionally, each page has thumbs up/down buttons in the corner.
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
 
 ## 此站点是否会取代主站点？ {/*will-this-site-replace-the-main-site*/}
 

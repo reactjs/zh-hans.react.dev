@@ -25,9 +25,15 @@ translators:
 
 想象一下，您的组件是厨房里的厨师，把食材烹制成美味的菜肴。在这种场景下，React 就是一名服务员，他会帮客户们下单并为他们送来所点的菜品。这种请求和提供 UI 的过程总共包括三个步骤： 
 
+<<<<<<< HEAD
 1. **触发** 一次渲染（把客人的点单分发到厨房）
 2. **渲染** 组件（从厨房取得所点的菜品）
 3. **提交** 到 DOM（将菜品放在桌子上）
+=======
+1. **Triggering** a render (delivering the guest's order to the kitchen)
+2. **Rendering** the component (preparing the order in the kitchen)
+3. **Committing** to the DOM (placing the order on the table)
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
 
 <IllustrationBlock sequential>
   <Illustration caption="触发" alt="React 作为餐厅里的服务员，从用户那里获取点单并把它们分发到组件厨房。" src="/images/docs/illustrations/i_render-and-commit1.png" />

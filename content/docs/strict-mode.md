@@ -15,6 +15,7 @@ permalink: docs/strict-mode.html
 
 在上述的示例中，*不*会对 `Header` 和 `Footer` 组件运行严格模式检查。但是，`ComponentOne` 和 `ComponentTwo` 以及它们的所有后代元素都将进行检查。
 
+<<<<<<< HEAD
 `StrictMode` 目前有助于：
 * [识别不安全的生命周期](#identifying-unsafe-lifecycles)
 * [关于使用过时字符串 ref API 的警告](#warning-about-legacy-string-ref-api-usage)
@@ -22,6 +23,15 @@ permalink: docs/strict-mode.html
 * [检测意外的副作用](#detecting-unexpected-side-effects)
 * [检测过时的 context API](#detecting-legacy-context-api)
 * [检测不安全的副作用](#detecting-unsafe-effects)
+=======
+`StrictMode` currently helps with:
+* [Identifying components with unsafe lifecycles](#identifying-unsafe-lifecycles)
+* [Warning about legacy string ref API usage](#warning-about-legacy-string-ref-api-usage)
+* [Warning about deprecated findDOMNode usage](#warning-about-deprecated-finddomnode-usage)
+* [Detecting unexpected side effects](#detecting-unexpected-side-effects)
+* [Detecting legacy context API](#detecting-legacy-context-api)
+* [Ensuring reusable state](#ensuring-reusable-state)
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
 
 未来的 React 版本将添加更多额外功能。
 
@@ -119,7 +129,13 @@ class MyComponent extends React.Component {
 
 > 注意：
 >
+<<<<<<< HEAD
 > 从 React 17 开始，React 会自动修改 console 的方法，例如 `console.log()`，以在对生命周期函数的第二次调用中静默日志。然而，在某些[可以使用替代解决方案](https://github.com/facebook/react/issues/20090#issuecomment-715927125)的情况下，这可能会导致一些不期望的行为的发生。
+=======
+> In React 17, React automatically modifies the console methods like `console.log()` to silence the logs in the second call to lifecycle functions. However, it may cause undesired behavior in certain cases where [a workaround can be used](https://github.com/facebook/react/issues/20090#issuecomment-715927125).
+>
+> Starting from React 18, React does not suppress any logs. However, if you have React DevTools installed, the logs from the second call will appear slightly dimmed. React DevTools also offers a setting (off by default) to suppress them completely.
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
 
 ### 检测过时的 context API {#detecting-legacy-context-api}
 
@@ -170,7 +186,19 @@ class MyComponent extends React.Component {
   * Effect effects are destroyed.
 ```
 
+<<<<<<< HEAD
 > 注意：
+=======
+Unmounting and remounting includes:
+
+- `componentDidMount`
+- `componentWillUnmount`
+- `useEffect`
+- `useLayoutEffect`
+- `useInsertionEffect`
+
+> Note:
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
 >
 > 这只适用于开发模式，_生产环境没有变化_。
 

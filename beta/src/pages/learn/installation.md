@@ -6,7 +6,11 @@ translators:
 
 <Intro>
 
+<<<<<<< HEAD
 React 从诞生之初就是可被逐步采用的，因此你可以选择性地使用 React 特性。不管你是想体验下 React，用它为简单的 HTML 页面增加交互，还是重新搭建一个由 React 驱动的复杂应用，本章节内容都能帮你快速入门。
+=======
+React has been designed from the start for gradual adoption. You can use as little or as much React as you need. Whether you want to get a taste of React, add some interactivity to an HTML page, or start a complex React-powered app, this section will help you get started.
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
 
 </Intro>
 
@@ -37,8 +41,14 @@ export default function App() {
 
 </Sandpack>
 
+<<<<<<< HEAD
 我们将在线代码编辑器集成到了文档之中，将其作为教学辅助工具。它可以帮助你熟悉 React 的工作方式，同时帮助你检测 React 与你的契合度。在 React 文档之外，还存在许多支持 React 的在线代码编辑器：例如 [CodeSandbox](https://codesandbox.io/s/new)，[Stackblitz](https://stackblitz.com/fork/react)，或者 [CodePen](
 https://codepen.io/pen/?template=wvdqJJm)。
+=======
+You can edit it directly or open it in a new tab by pressing the "Fork" button in the upper right corner.
+
+Most pages in the React documentation contain sandboxes like this. Outside of the React documentation, there are many online sandboxes that support React: for example, [CodeSandbox](https://codesandbox.io/s/new), [StackBlitz](https://stackblitz.com/fork/react), or [CodePen](https://codepen.io/pen?&editors=0010&layout=left&prefill_data_id=3f4569d1-1b11-4bce-bd46-89090eed5ddb).
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
 
 ### 本地尝试 React {/*try-react-locally*/}
 
@@ -46,7 +56,11 @@ https://codepen.io/pen/?template=wvdqJJm)。
 
 ## 将 React 添加到已有页面 {/*add-react-to-a-page*/}
 
+<<<<<<< HEAD
 如果你正在维护一个已有的网站，只需要添加一部分 React，你可以 [使用 script 标签添加 React](/learn/add-react-to-a-website)。
+=======
+If you're working with an existing site and need to add a little bit of React, you can [add React with a script tag.](/learn/add-react-to-a-website)
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
 
 ## 开始一个 React 项目 {/*start-a-react-project*/}
 
@@ -54,4 +68,9 @@ https://codepen.io/pen/?template=wvdqJJm)。
 
 ## 下一步 {/*next-steps*/}
 
+<<<<<<< HEAD
 你从哪里开始学习，这完全取决于你的学习习惯，你的学习目标，如果毫无头绪，不妨读一下 [React 哲学](/learn/thinking-in-react) —— 这是我们的入门级教程。或者你可以直接跳到 [描述用户界面](/learn/describing-the-ui) 来尝试更多的示例，逐步学习每个主题。总有一种适合你。
+=======
+Head to the [Quick Start](/learn) guide for a tour of the most important React concepts you will encounter every day.
+
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
