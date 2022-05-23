@@ -145,6 +145,7 @@ permalink: community/meetups.html
 
 ## Poland {#poland}
 * [Warsaw](https://www.meetup.com/React-js-Warsaw/)
+* [Wrocław](https://www.meetup.com/ReactJS-Wroclaw/)
 
 ## Portugal {#portugal}
 * [Lisbon](https://www.meetup.com/JavaScript-Lisbon/)
