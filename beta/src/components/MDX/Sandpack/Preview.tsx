@@ -6,14 +6,17 @@
 import * as React from 'react';
 import {useSandpack, LoadingOverlay} from '@codesandbox/sandpack-react';
 import cn from 'classnames';
-
 import {Error} from './Error';
-import {computeViewportSize, generateRandomId} from './utils';
+import type {LintDiagnostic} from './useSandpackLint';
+
+const generateRandomId = (): string =>
+  Math.floor(Math.random() * 10000).toString();
 
 type CustomPreviewProps = {
   className?: string;
   customStyle?: Record<string, unknown>;
   isExpanded: boolean;
+  lintErrors: LintDiagnostic;
 };
 
 function useDebounced(value: any): any {
@@ -32,6 +35,7 @@ export function Preview({
   customStyle,
   isExpanded,
   className,
+  lintErrors,
 }: CustomPreviewProps) {
   const {sandpack, listen} = useSandpack();
   const [isReady, setIsReady] = React.useState(false);
@@ -56,6 +60,19 @@ export function Preview({
     // Work around a noisy internal error.
     rawError = null;
   }
+
+  if (lintErrors.length > 0) {
+    if (rawError == null || rawError.title === 'Runtime Exception') {
+      // When there's a lint error, show it -- even over a runtime error.
+      // (However, when there's a build error, we keep showing the build one.)
+      const {line, column, message} = lintErrors[0];
+      rawError = {
+        title: 'Lint Error',
+        message: `${line}:${column} - ${message}`,
+      };
+    }
+  }
+
   // It changes too fast, causing flicker.
   const error = useDebounced(rawError);
 
@@ -100,7 +117,6 @@ export function Preview({
     [status === 'idle']
   );
 
-  const viewportStyle = computeViewportSize('auto', 'portrait');
   const overrideStyle = error
     ? {
         // Don't collapse errors
@@ -130,7 +146,6 @@ export function Preview({
       style={{
         // TODO: clean up this mess.
         ...customStyle,
-        ...viewportStyle,
         ...overrideStyle,
       }}>
       <div
