@@ -152,7 +152,7 @@ ReactDOM.render(
 
 因此，如果条件是 `true`，`&&` 右侧的元素就会被渲染，如果是 `false`，React 会忽略并跳过它。
 
-请注意，[falsy表达式](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)会使 `&&` 后面的元素被跳过，但会返回 falsy表达式的值。在下面示例中，render 方法的返回值是 `<div>0</div>`。
+请注意，[falsy 表达式](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) 会使 `&&` 后面的元素被跳过，但会返回 falsy 表达式的值。在下面示例中，render 方法的返回值是 `<div>0</div>`。
 
 ```javascript{2,5}
 render() {
