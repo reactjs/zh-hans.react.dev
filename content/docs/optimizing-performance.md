@@ -175,13 +175,8 @@ module.exports = {
 
 > 注意
 >
-<<<<<<< HEAD
 > 在 React 17 之前，我们使用了标准的 [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API)，用 chrome 的 performance 性能选项卡来配置组件。
 > 更详细的攻略，请参阅 [Ben Schwarz 的文章](https://calibreapp.com/blog/react-performance-profiling-optimization)。
-=======
-> Before React 17, we use the standard [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) to profile components with the chrome performance tab.
-> For a more detailed walkthrough, check out [this article by Ben Schwarz](https://calibreapp.com/blog/react-performance-profiling-optimization).
->>>>>>> f1f545c72904d6836638b86b4ff58ee42cdb4da0
 
 ## 虚拟化长列表 {#virtualize-long-lists}
 
