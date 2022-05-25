@@ -21,7 +21,7 @@ permalink: docs/strict-mode.html
 * [关于使用废弃的 findDOMNode 方法的警告](#warning-about-deprecated-finddomnode-usage)
 * [检测意外的副作用](#detecting-unexpected-side-effects)
 * [检测过时的 context API](#detecting-legacy-context-api)
-* [检测不安全的副作用](#detecting-unsafe-effects)
+* [确保可复用的状态](#ensuring-reusable-state)
 
 未来的 React 版本将添加更多额外功能。
 
@@ -119,7 +119,9 @@ class MyComponent extends React.Component {
 
 > 注意：
 >
-> 从 React 17 开始，React 会自动修改 console 的方法，例如 `console.log()`，以在对生命周期函数的第二次调用中静默日志。然而，在某些[可以使用替代解决方案](https://github.com/facebook/react/issues/20090#issuecomment-715927125)的情况下，这可能会导致一些不期望的行为的发生。
+> 在 React 17 中，React 会自动修改 console 的方法，例如 `console.log()`，在第二次调用生命周期函数时，将日志静默。然而，在某些情况下，这可能会导致一些不符合期望的行为发生，此时，[可以使用替代解决方案](https://github.com/facebook/react/issues/20090#issuecomment-715927125)。
+>
+> 从 React 18 开始，React 不会抑制任何日志。不过，如果你安装了 React Dev Tools，第二次调用的日志会出现被轻微淡化。React DevTools 也提供了一个设置（默认关闭）来完全抑制它们。
 
 ### 检测过时的 context API {#detecting-legacy-context-api}
 
@@ -169,6 +171,14 @@ class MyComponent extends React.Component {
   * Layout effects are destroyed.
   * Effect effects are destroyed.
 ```
+
+卸载和重新挂载的函数，包括：
+
+- `componentDidMount`
+- `componentWillUnmount`
+- `useEffect`
+- `useLayoutEffect`
+- `useInsertionEffect`
 
 > 注意：
 >

@@ -6,7 +6,7 @@ translators:
 
 <Intro>
 
-React 从诞生之初就是可被逐步采用的，因此你可以选择性地使用 React 特性。不管你是想体验下 React，用它为简单的 HTML 页面增加交互，还是重新搭建一个由 React 驱动的复杂应用，本章节内容都能帮你快速入门。
+React 从诞生之初就是可被渐进式使用的。因此你可以选择性地使用 React 特性。不管你是想体验下 React，用它为简单的 HTML 页面增加交互，还是重新搭建一个由 React 驱动的复杂应用，本章节内容都能帮你快速入门。
 
 </Intro>
 
@@ -37,8 +37,9 @@ export default function App() {
 
 </Sandpack>
 
-我们将在线代码编辑器集成到了文档之中，将其作为教学辅助工具。它可以帮助你熟悉 React 的工作方式，同时帮助你检测 React 与你的契合度。在 React 文档之外，还存在许多支持 React 的在线代码编辑器：例如 [CodeSandbox](https://codesandbox.io/s/new)，[Stackblitz](https://stackblitz.com/fork/react)，或者 [CodePen](
-https://codepen.io/pen/?template=wvdqJJm)。
+你可以直接对它进行编辑，或点击右上角的 "Fork" 按钮在一个新的标签页中打开。
+
+React 文档中的大部分页面都包含这样的 sandbox。除 React 文档以外，还存在许多支持 React 的在线代码编辑器：例如 [CodeSandbox](https://codesandbox.io/s/new)，[StackBlitz](https://stackblitz.com/fork/react)，或者 [CodePen](https://codepen.io/pen?&editors=0010&layout=left&prefill_data_id=3f4569d1-1b11-4bce-bd46-89090eed5ddb)。
 
 ### 本地尝试 React {/*try-react-locally*/}
 
@@ -46,12 +47,12 @@ https://codepen.io/pen/?template=wvdqJJm)。
 
 ## 将 React 添加到已有页面 {/*add-react-to-a-page*/}
 
-如果你正在维护一个已有的网站，只需要添加一部分 React，你可以 [使用 script 标签添加 React](/learn/add-react-to-a-website)。
+如果你正在维护一个已有的网站，需要添加少量 React 代码，你可以 [使用 script 标签添加 React](/learn/add-react-to-a-website)。
 
 ## 开始一个 React 项目 {/*start-a-react-project*/}
 
 如果你准备好使用 React [启动一个独立的项目](/learn/start-a-new-react-project) ，你可以建立一个最小的工具链以获得愉快的开发体验。你也可以从一个框架开始，它为你做了很多开箱即用的设定。
 
-## 下一步 {/*next-steps*/}
+## 下一节 {/*next-steps*/}
 
-你从哪里开始学习，这完全取决于你的学习习惯，你的学习目标，如果毫无头绪，不妨读一下 [React 哲学](/learn/thinking-in-react) —— 这是我们的入门级教程。或者你可以直接跳到 [描述用户界面](/learn/describing-the-ui) 来尝试更多的示例，逐步学习每个主题。总有一种适合你。
+前往 [快速入门](/learn) 章节。以学习你每天都会遇到且最为重要的 React 概念。

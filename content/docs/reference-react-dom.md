@@ -62,7 +62,15 @@ createPortal(child, container)
 flushSync(callback)
 ```
 
-强制 React 同步刷新提供的回调函数中的任何更新。该方法对于能够立即读取更新结果的场景很有效。
+强制 React 同步刷新提供的回调函数中的任何更新。这确保了 DOM 会被立即 更新。
+
+```javascript
+// Force this state update to be synchronous.
+flushSync(() => {
+  setCount(count + 1);
+});
+// By this point, DOM is updated.
+```
 
 > 注意：
 > 

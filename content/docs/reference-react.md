@@ -367,7 +367,7 @@ function MyComponent() {
 它已被收录在了我们的[代码分割指南](/docs/code-splitting.html#reactlazy)中。请注意，`lazy` 组件可以位于 `Suspense` 组件树的深处——它不必包装树中的每一个延迟加载组件。最佳实践是将 `<Suspense>` 置于你想展示加载指示器（loading indicator）的位置，而 `lazy()` 则可被放置于任何你想要做代码分割的地方。
 
 > 注意
-> 
+>
 > 对于已经展示给用户的内容来说，在切换回去时，展示加载指示器可能会让人困惑。有时，在准备新的 UI 时，展示 "旧" 的 UI 可能会更加友好。要做到这一点，你可以使用新的 transition API [`startTransition`](#starttransition) 和 [`useTransition`](/docs/hooks-reference.html#usetransition) 来将标记更新为 transitions，同时避免意外的兜底方案。
 
 #### 服务端渲染中的 `React.Suspense` {#reactsuspense-in-server-side-rendering}
@@ -388,6 +388,6 @@ React.startTransition(callback)
 >
 > 过渡期的更新会产生更紧急的更新，如点击操作。
 >
-> 转成中的更新不会显示重新挂起内容的 fallback，允许用户在渲染更新时继续进行交互。
+> transition 内的更新不会显示重新挂起内容的 fallback，允许用户在渲染更新时继续进行交互。
 >
 > `React.startTransition` 不提供 `isPending` 的标志。要跟踪过渡的待定状态，请参阅 [`React.useTransition`](/docs/hooks-reference.html#usetransition)。
