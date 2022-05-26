@@ -43,8 +43,8 @@ npm run build
 我们提供了可以在生产环境使用的单文件版 React 和 React DOM：
 
 ```html
-<script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 ```
 
 注意只有以 `.production.min.js` 为结尾的 React 文件适用于生产。

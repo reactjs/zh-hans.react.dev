@@ -28,7 +28,7 @@ React 是一个用于构建用户界面（UI）的 JavaScript 库，用户界面
 
 ## 你的第一个组件 {/*your-first-component*/}
 
-React 应用是由被称为 “组件” 的独立 UI 片段构建而成。React 组件本质上是可以任意添加标记的 JavaScript 函数。组件可以小到一个按钮，也可以大到是整个页面。这是一个 `Gallery` 组件，用于渲染三个 `Profile` 组件：
+React 应用是由被称为 **组件** 的独立 UI 片段构建而成。React 组件本质上是可以任意添加标记的 JavaScript 函数。组件可以小到一个按钮，也可以大到是整个页面。这是一个 `Gallery` 组件，用于渲染三个 `Profile` 组件：
 
 <Sandpack>
 
@@ -467,7 +467,7 @@ h2 { font-size: 20px; }
 
 ## 保持组件的纯粹 {/*keeping-components-pure*/}
 
-有些 JavaScript 函数是 "纯粹" 的。纯函数的基本定义：
+有些 JavaScript 函数是 **纯粹** 的。纯函数的基本定义：
 
 * **管好自己的事**。 在函数调用前，它不会改变任何已经存在的对象或变量。
 * **输入相同，输出也相同**。 在输入相同的情况下，对纯函数来说应总是返回相同的结果。
