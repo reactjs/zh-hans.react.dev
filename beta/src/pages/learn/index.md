@@ -33,7 +33,7 @@ React 组件是返回标记的 JavaScript 函数：
 ```js
 function MyButton() {
   return (
-    <button>Click me</button>
+    <button>I'm a button</button>
   );
 }
 ```
@@ -61,7 +61,7 @@ export default function MyApp() {
 function MyButton() {
   return (
     <button>
-      Click me
+      I'm a button
     </button>
   );
 }
