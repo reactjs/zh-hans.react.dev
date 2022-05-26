@@ -87,7 +87,7 @@ function NumberList(props) {
 
 ## key {#keys}
 
-key 帮助 React 识别哪些元素改变了，比如被添加或删除。因此你应当给数组中的每一个元素赋予一个确定的标识。
+key 帮助 React 识别哪些元素改变了，比如被添加或删除。因此你应当给列表中的每一个元素赋予一个确定的标识。
 
 ```js{3}
 const numbers = [1, 2, 3, 4, 5];
