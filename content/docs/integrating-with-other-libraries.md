@@ -145,7 +145,7 @@ componentDidUpdate(prevProps) {
 }
 ```
 
-通过这种方法，当由 React 管理的 `<select>` children 改变时， Chosen 会知道如何更新它的 DOM 元素。。
+通过这种方法，当由 React 管理的 `<select>` children 改变时， Chosen 会知道如何更新它的 DOM 元素。
 
 `Chosen` 组件的完整实现看起来是这样的：
 
