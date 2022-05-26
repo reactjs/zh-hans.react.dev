@@ -3,6 +3,7 @@ title: 对 state 进行保留和重置
 translators:
   - YogaLin
   - Neo42
+  - QC-L
 ---
 
 <Intro>
@@ -26,7 +27,15 @@ translators:
 
 React 也使用树形结构来对你创造的 UI 进行管理和建模。React 根据你的 JSX 生成 **UI 树**。React DOM 根据 UI 树去更新浏览器的 DOM 元素。（React Native 则将这些 UI 树转译成移动平台上特有的元素。）
 
-<img alt="React 获取组件后将它们转换为 UI 树结构，然后 ReactDOM 在浏览器中使用 DOM 将它们转换为 HTML。" src="/images/docs/sketches/s_react-dom-tree.png" />
+<DiagramGroup>
+
+<Diagram name="preserving_state_dom_tree" height={193} width={864} alt="Diagram with three sections arranged horizontally. In the first section, there are three rectangles stacked vertically, with labels 'Component A', 'Component B', and 'Component C'. Transitioning to the next pane is an arrow with the React logo on top labeled 'React'. The middle section contains a tree of components, with the root labeled 'A' and two children labeled 'B' and 'C'. The next section is again transitioned using an arrow with the React logo on top labeled 'React'. The third and final section is a wireframe of a browser, containing a tree of 8 nodes, which has only a subset highlighted (indicating the subtree from the middle section).">
+
+React 会根据组件创建了一棵 UI 树，React DOM 用它来渲染 DOM
+
+</Diagram>
+
+</DiagramGroup>
 
 ## state 与树中的某个位置相关联 {/*state-is-tied-to-a-position-in-the-tree*/}
 
@@ -97,9 +106,17 @@ label {
 
 </Sandpack>
 
-下面是它们的树形结构的样子：
+下面是它们的树形结构的样子：   
 
-<img alt="JSX 被转换为一个树形结构" src="/images/docs/sketches/s_jsx-to-tree.png" />
+<DiagramGroup>
+
+<Diagram name="preserving_state_tree" height={248} width={395} alt="Diagram of a tree of React components. The root node is labeled 'div' and has two children. Each of the children are labeled 'Counter' and both contain a state bubble labeled 'count' with value 0.">
+
+React 树
+
+</Diagram>
+
+</DiagramGroup>
 
 **这是两个独立的 counter，因为它们在树中被渲染在了各自的位置。** 一般情况下你不用去考虑这些位置来使用 React，但知道它们是如何工作会很有用。
 
@@ -163,7 +180,21 @@ function Counter() {
 
 </Sandpack>
 
-只有当相同的组件被渲染在了相同的位置，React 才会一直保留着组件的 state。想要验证这一点，可以增加两个计数器的值，清空“渲染第二个计数器”复选框，然后再次勾选它：
+如你所见，当一个计数器被更新时，只有该组件的状态会被更新：
+
+
+<DiagramGroup>
+
+<Diagram name="preserving_state_increment" height={248} width={441} alt="Diagram of a tree of React components. The root node is labeled 'div' and has two children. The left child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The right child is labeled 'Counter' and contains a state bubble labeled 'count' with value 1. The state bubble of the right child is highlighted in yellow to indicate its value has updated.">
+
+Updating state
+
+</Diagram>
+
+</DiagramGroup>
+
+
+只有当你在相同的位置渲染相同的组件时，React 才会一直保留着组件的 state。想要验证这一点，可以将两个计数器的值递增，取消勾选 “渲染第二个计数器” 复选框，然后再次勾选它：
 
 <Sandpack>
 
@@ -239,11 +270,27 @@ label {
 
 注意，当你停止渲染第二个计数器的那一刻，它的 state 完全消失了。这是因为 React 在移除一个组件时，也会销毁它的 state。
 
-<img alt="React 从树中移除一个组件时，也会销毁它的 state" src="/images/docs/sketches/s_remove-ui.png" />
+<DiagramGroup>
+
+<Diagram name="preserving_state_remove_component" height={253} width={422} alt="Diagram of a tree of React components. The root node is labeled 'div' and has two children. The left child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The right child is missing, and in its place is a yellow 'poof' image, highlighting the component being deleted from the tree.">
+
+删除组件
+
+</Diagram>
+
+</DiagramGroup>
 
 当你重新勾选“渲染第二个计数器”复选框时，另一个计数器及其 state 将从头开始初始化（`score = 0`）并被添加到 DOM 中。
 
-<img alt="在新增 UI 到 DOM 树时，React 会用新的 state 进行初始化。" src="/images/docs/sketches/s_add-back-ui.png" />
+<DiagramGroup>
+
+<Diagram name="preserving_state_add_component" height={258} width={500} alt="Diagram of a tree of React components. The root node is labeled 'div' and has two children. The left child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The right child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The entire right child node is highlighted in yellow, indicating that it was just added to the tree.">
+
+添加组件
+
+</Diagram>
+
+</DiagramGroup>
 
 **只要一个组件还被渲染在 UI 树的相同位置，React 就会保留它的 state。** 如果它被移除，或者一个不同的组件被渲染在相同的位置，那么 React 就会丢掉它的 state。
 
@@ -336,12 +383,18 @@ label {
 
 当你勾选或清空复选框的时候，计数器 state 并没有被重置。不管 `isFancy` 是 `true` 还是 `false`，根组件 `App` 返回的 `div` 的第一个子组件都是 `<Counter />`：
 
-<img alt="React 只关注组件以及它在 UI 树中渲染的位置。" src="/images/docs/sketches/s_ui-swap.png" />
+<DiagramGroup>
+
+<Diagram name="preserving_state_same_component" height={461} width={600} alt="Diagram with two sections separated by an arrow transitioning between them. Each section contains a layout of components with a parent labeled 'App' containing a state bubble labeled isFancy. This component has one child labeled 'div', which leads to a prop bubble containing isFancy (highlighted in purple) passed down to the only child. The last child is labeled 'Counter' and contains a state bubble with label 'count' and value 3 in both diagrams. In the left section of the diagram, nothing is highlighted and the isFancy parent state value is false. In the right section of the diagram, the isFancy parent state value has changed to true and it is highlighted in yellow, and so is the props bubble below, which has also changed its isFancy value to true.">
+
+更新 `App` 的状态不会重置 `Counter`，因为 `Counter` 始终保持在同一位置。
+
+</Diagram>
+
+</DiagramGroup>
 
 
 它是位于相同位置的相同组件，所以对 React 来说，它是同一个计数器。
-
-<Illustration src="/images/docs/illustrations/i_react-is-blind-to-ui-swap.png" alt="尽管两个组件颜色不同，React 比较后仍然认为它们是相同的。" />
 
 <Gotcha>
 
@@ -530,7 +583,25 @@ label {
 
 示例中，你在相同位置对 _不同_ 的组件类型进行切换。刚开始 `<div>` 的第一个子组件是一个 `Counter`。但是当你切换成 `p` 时，React 将 `Counter` 从 UI 树中移除了并销毁了它的状态。
 
-<img alt="将一个组件从 UI 树中移除会销毁它的 state。" src="/images/docs/sketches/s_ui-component-swap.png" />
+<DiagramGroup>
+
+<Diagram name="preserving_state_diff_pt1" height={290} width={753} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'Counter' containing a state bubble labeled 'count' with value 3. The middle section has the same 'div' parent, but the child component has now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'p', highlighted in yellow.">
+
+当 `Counter` 变为 `p` 时，`Counter` 会被移除，同时 `p` 被添加。
+
+</Diagram>
+
+</DiagramGroup>
+
+<DiagramGroup>
+
+<Diagram name="preserving_state_diff_pt2" height={290} width={753} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'p'. The middle section has the same 'div' parent, but the child component has now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, highlighted in yellow.">
+
+当切换回来时，`p` 会被删除，而 `Counter` 会被添加
+
+</Diagram>
+
+</DiagramGroup>
 
 并且，**当你在相同位置渲染不同的组件时，组件的整个子树都会被重置**。要验证这一点，可以增加计数器的值然后勾选复选框：
 
@@ -623,7 +694,25 @@ label {
 
 当你勾选复选框后计数器的 state 被重置了。虽然你渲染了一个 `Counter`，但是 `div` 的第一个子组件从 `div` 变成了 `section`。当子组件 `div` 从 DOM 中被移除的时候，它底下的整棵树（包含 `Counter` 以及它的 state）也都被销毁了。
 
-<img alt="如果第一个子组件不一样了的话，就忘了它吧！" src="/images/docs/sketches/s_ui-components-swap.png" />
+<DiagramGroup>
+
+<Diagram name="preserving_state_diff_same_pt1" height={350} width={794} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'section', which has a single child labeled 'Counter' containing a state bubble labeled 'count' with value 3. The middle section has the same 'div' parent, but the child components have now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'div', highlighted in yellow, also with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, all highlighted in yellow.">
+
+当 `section` 变为 `div` 时，`section` 会被删除，新的 `div` 被添加
+
+</Diagram>
+
+</DiagramGroup>
+
+<DiagramGroup>
+
+<Diagram name="preserving_state_diff_same_pt2" height={350} width={794} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'div', which has a single child labeled 'Counter' containing a state bubble labeled 'count' with value 0. The middle section has the same 'div' parent, but the child components have now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'section', highlighted in yellow, also with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, all highlighted in yellow.">
+
+当切换回来时，`div` 会被删除，新的 `section` 被添加
+
+</Diagram>
+
+</DiagramGroup>
 
 一般来说，**如果你想在重新渲染时保留 state，几次渲染中的树形结构就应该相互“匹配”**。结构不同就会导致 state 的销毁，因为 React 会在将一个组件从树中移除时销毁它的 state。
 
@@ -744,8 +833,6 @@ h1 {
 
 目前当你切换玩家时，分数会被保留下来。这两个 `Counter` 出现在相同的位置，所以 React 会认为它们是 _同一个_ `Counter`，只是传了不同的 `person` prop。
 
-<Illustration src="/images/docs/illustrations/i_react-is-blind-to-ui-swap.png" alt="虽然两个组件的颜色不同，但 React 在比较它们时依然会认为它们是相同的。" />
-
 但是从概念上讲，这个应用中的两个计数器应该是各自独立的。虽然它们在 UI 中的位置相同，但是一个是 Taylor 的计数器，一个是 Sarah 的计数器。
 
 有两个方法可以在它们相互切换时重置 state：
@@ -830,7 +917,27 @@ h1 {
 * 起初 `isPlayerA` 的值是 `true`。所以第一个位置包含了 `Counter` 的 state，而第二个位置是空的。
 * 当你点击“下一位玩家”按钮时，第一个位置会被清空，而第二个位置现在包含了一个 `Counter`。
 
-<img alt=" " src="/images/docs/sketches/s_placeholder-ui.png" />
+<DiagramGroup>
+
+<Diagram name="preserving_state_diff_position_p1" height={375} width={504} alt="Diagram with a tree of React components. The parent is labeled 'Scoreboard' with a state bubble labeled isPlayerA with value 'true'. The only child, arranged to the left, is labeled Counter with a state bubble labeled 'count' and value 0. All of the left child is highlighted in yellow, indicating it was added.">
+
+Initial state
+
+</Diagram>
+
+<Diagram name="preserving_state_diff_position_p2" height={375} width={504} alt="Diagram with a tree of React components. The parent is labeled 'Scoreboard' with a state bubble labeled isPlayerA with value 'false'. The state bubble is highlighted in yellow, indicating that it has changed. The left child is replaced with a yellow 'poof' image indicating that it has been deleted and there is a new child on the right, highlighted in yellow indicating that it was added. The new child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0.">
+
+Clicking "next"
+
+</Diagram>
+
+<Diagram name="preserving_state_diff_position_p3" height={375} width={504} alt="Diagram with a tree of React components. The parent is labeled 'Scoreboard' with a state bubble labeled isPlayerA with value 'true'. The state bubble is highlighted in yellow, indicating that it has changed. There is a new child on the left, highlighted in yellow indicating that it was added. The new child is labeled 'Counter' and contains a state bubble labeled 'count' with value 0. The right child is replaced with a yellow 'poof' image indicating that it has been deleted.">
+
+Clicking "next" again
+
+</Diagram>
+
+</DiagramGroup>
 
 > 每次一个 `Counter` 被从 DOM 中移除时，它的 state 就会被销毁。这就是每次你点击按钮时它们就会被重置的原因。
 
@@ -924,9 +1031,7 @@ h1 {
 
 指定一个 `key` 能够让 React 将 `key` 本身而非它们在父组件中的顺序作为位置的一部分。这就是为什么尽管你用 JSX 将组件渲染在相同位置，但在 React 看来它们是两个不同的计数器。因此它们永远都不会共享 state。每当一个计数器出现在屏幕上时，它的 state 会被创建出来。每当它被移除时，它的 state 就会被销毁。在它们之间切换会一次又一次地使它们的 state 重置。
 
-<Illustration src="/images/docs/illustrations/i_keys-in-trees.png" alt="React 会区分 key 不同的组件，即使组件属于同一类型。" />
-
-> 请记住 key 不是全局唯一的。它们只能指定 *父组件内部* 的顺序。
+> 请记住 key 不是全局唯一的。它们只能指定 **父组件内部** 的顺序。
 
 ### 使用 key 重置表单 {/*resetting-a-form-with-a-key*/}
 

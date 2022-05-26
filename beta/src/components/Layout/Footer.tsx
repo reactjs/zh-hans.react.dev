@@ -89,11 +89,11 @@ export function Footer() {
               </FooterLink>
             </div>
             <div className="flex flex-col">
-              <FooterLink href="/reference" isHeader={true}>
+              <FooterLink href="/apis" isHeader={true}>
                 API Reference
               </FooterLink>
-              <FooterLink href="/reference">React APIs</FooterLink>
-              <FooterLink href="/reference/reactdom">React DOM APIs</FooterLink>
+              <FooterLink href="/apis">React APIs</FooterLink>
+              <FooterLink href="/apis/reactdom">React DOM APIs</FooterLink>
             </div>
             <div className="flex flex-col sm:col-start-2 xl:col-start-4">
               <FooterLink href="/" isHeader={true}>
@@ -126,11 +126,13 @@ export function Footer() {
               </FooterLink>
               <div className="flex flex-row mt-8 gap-x-2">
                 <ExternalLink
+                  aria-label="React on Facebook"
                   href="https://www.facebook.com/react"
                   className={socialLinkClasses}>
                   <IconFacebookCircle />
                 </ExternalLink>
                 <ExternalLink
+                  aria-label="React on Twitter"
                   href="https://twitter.com/reactjs"
                   className={socialLinkClasses}>
                   <IconTwitter />
