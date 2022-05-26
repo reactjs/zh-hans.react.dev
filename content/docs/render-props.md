@@ -130,9 +130,9 @@ class MouseWithCat extends React.Component {
       <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
 
         {/*
-          我们可以在这里换掉 <p> 的 <Cat>   ......
-          但是接着我们需要创建一个单独的 <MouseWithSomethingElse>
-          每次我们需要使用它时，<MouseWithCat> 是不是真的可以重复使用.
+          在这里，我们可以简单地使用 <Cat> 来替换 <p>。但是如果这样
+          做的话，当我们每次遇到这样的情况时，就需要创建一个单独的
+          <MouseWithSomethingElse>。所以 <MouseWithCat> 并不是真正的可复用组件。
         */}
         <Cat mouse={this.state} />
       </div>
