@@ -4,7 +4,7 @@
 
 html .sp-wrapper {
   color-scheme: inherit;
-  
+
   /* palette */
   --sp-colors-fg-active: #24292e !important;
   --sp-colors-fg-default: #959da5 !important;
@@ -28,29 +28,30 @@ html .sp-wrapper {
   --theme-string: #032f62;
 }
 html.dark .sp-wrapper {
-  --sp-colors-fg-active: #FFFFFF !important;
+  --sp-colors-fg-active: #ffffff !important;
   --sp-colors-fg-default: #999999 !important;
   --sp-colors-fg-inactive: #343434 !important;
   --sp-colors-bg-active: #343434 !important;
-  --sp-colors-bg-default: #16181D !important;
-  --sp-colors-bg-default-overlay: #16181D !important;
+  --sp-colors-bg-default: #16181d !important;
+  --sp-colors-bg-default-overlay: #16181d !important;
   --sp-colors-bg-input: #242424 !important;
   --sp-colors-accent: #6caedd !important;
   --sp-colors-bg-error: #ffcdca !important;
   --sp-colors-fg-error: #811e18 !important;
   /* syntax */
-  --theme-plain: #FFFFFF;
+  --theme-plain: #ffffff;
   --theme-comment: #757575;
-  --theme-keyword: #77B7D7;
-  --theme-tag: #DFAB5C;
+  --theme-keyword: #77b7d7;
+  --theme-tag: #dfab5c;
   --theme-punctuation: #ffffff;
-  --theme-definition: #86D9CA;
-  --theme-property: #77B7D7;
-  --theme-static: #C64640;
-  --theme-string: #977CDC;
+  --theme-definition: #86d9ca;
+  --theme-property: #77b7d7;
+  --theme-static: #c64640;
+  --theme-string: #977cdc;
 }
 
-.sp-tabs, .sp-tab-button:hover {
+.sp-tabs,
+.sp-tab-button:hover {
   background: none !important;
 }
 
@@ -87,8 +88,11 @@ html.dark .sp-tabs .sp-tab-button[data-active='true'] {
 }
 
 .sp-code-editor .cm-errorLine {
-  background-color: rgba(255, 107, 99, 0.10);
+  background-color: rgba(255, 107, 99, 0.1);
   position: relative;
+  padding-right: 2em !important;
+  display: inline-block;
+  min-width: 100%;
 }
 
 .sp-code-editor .cm-errorLine:after {
@@ -97,8 +101,21 @@ html.dark .sp-tabs .sp-tab-button[data-active='true'] {
   top: 0;
   content: '\26A0';
   font-size: 22px;
-  line-height: 16px;
+  line-height: 20px;
   color: #ff3d3d;
+}
+.sp-code-editor .cm-tooltip {
+  border: 0;
+  max-width: 200px;
+}
+html.dark .sp-code-editor .cm-diagnostic {
+  color: var(--sp-colors-bg-default);
+}
+.sp-code-editor .cm-diagnostic-error {
+  @apply border-red-40;
+}
+.sp-code-editor .cm-diagnostic-warning {
+  border-left: 5px solid orange;
 }
 
 /*
@@ -112,14 +129,6 @@ html.dark .sp-tabs .sp-tab-button[data-active='true'] {
  *
  * If you know a better way to keep them from diverging, send a PR.
  */
-.sp-layout {
-  border-bottom-left-radius: 0.5rem !important;
-  border-bottom-right-radius: 0.5rem !important;
-}
-.sp-stack {
-  height: initial !important;
-  width: fit-content !important;
-}
 .sp-cm {
   -webkit-text-size-adjust: none !important;
   padding: 0 !important;
@@ -136,7 +145,6 @@ html.dark .sp-tabs .sp-tab-button[data-active='true'] {
   font-size: 13.6px !important;
   line-height: 24px !important;
   height: 100%;
-  overflow: scroll;
 }
 .text-xl .sp-pre-placeholder {
   font-size: 16px !important;
@@ -150,17 +158,29 @@ html.dark .sp-tabs .sp-tab-button[data-active='true'] {
   background-color: var(--sp-colors-bg-default);
   z-index: 1;
 }
-.sp-layout {
-  overflow: initial !important;
-  border: 0px solid transparent !important;
-  border-top-left-radius: 0px !important;
-  border-top-right-radius: 0px !important;
+.sp-wrapper {
+  width: 100% !important;
+}
+.sp-wrapper .sp-custom-layout {
+  overflow: initial;
+  border: 0px solid transparent;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+.sp-wrapper .sp-layout-devtools {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 html.dark .sp-layout > :not(:first-child) {
   border-color: #343a46;
 }
 html.dark .sp-layout {
   background-color: #343a46;
+}
+html .sp-loading {
+  background-color: transparent;
 }
 html.dark .sp-loading {
   background-color: #23272f;
@@ -170,6 +190,45 @@ html.dark .sp-loading {
   .sp-tabs .sp-tab-button {
     margin: 0 12px 0 0;
   }
+}
+
+/* Devtools */
+.sp-devtools {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  overflow: hidden;
+}
+.sp-devtools > div {
+  --color-background: var(--sp-colors-bg-default) !important;
+  --color-background-inactive: var(--sp-colors-fg-inactive) !important;
+  --color-background-selected: #087ea4 !important;
+  --color-background-hover: transparent !important;
+  --color-modal-background: #ffffffd2 !important;
+
+  --color-tab-selected-border: #087ea4 !important;
+
+  --color-component-name: var(--theme-definition) !important;
+  --color-attribute-name: var(--theme-property) !important;
+  --color-attribute-value: var(--theme-string) !important;
+  --color-attribute-editable-value: var(--theme-property) !important;
+  --color-attribute-name-not-editable: var(--sp-colors-fg-default) !important;
+  --color-button-background-focus: var(--sp-colors-fg-inactive) !important;
+
+  --color-button-active: #087ea4 !important;
+  --color-button-background: transparent !important;
+  --color-button: var(--sp-colors-fg-default) !important;
+  --color-button-hover: var(--sp-colors-fg-active) !important;
+
+  --color-border: var(--sp-colors-fg-inactive) !important;
+  --color-text: rgb(35, 39, 47) !important;
+}
+html.dark .sp-devtools > div {
+  --color-text: var(--sp-colors-fg-default) !important;
+  --color-modal-background: #16181de0 !important;
+}
+
+.sp-devtools table td {
+  border: 1px solid var(--sp-colors-fg-inactive);
 }
 
 /* Make focus rings work */
@@ -184,7 +243,6 @@ html.dark .sp-loading {
 }
 .sp-cm:focus-visible {
   box-shadow: inset 0 0 0 4px rgba(20, 158, 202, 0.4) !important;
-  padding-left: 0px !important;
 }
 .cm-line {
   padding: 0 var(--sp-space-3) !important;
@@ -203,5 +261,63 @@ html.dark .sp-loading {
     .DocSearch-Input {
       font-size: initial;
     }
-  } 
+  }
+}
+
+.sp-cm {
+  padding-left: 8px !important;
+}
+.sp-layout {
+  min-height: 216px;
+}
+.sp-layout > .sp-stack:nth-child(1) {
+  /* Force vertical if there isn't enough space. */
+  min-width: 431px;
+  /* No min height on mobile because we know code in advance. */
+  /* Max height is needed to avoid too long files. */
+  max-height: 40vh;
+}
+.sp-layout > .sp-stack:nth-child(2) {
+  /* Force vertical if there isn't enough space. */
+  min-width: 431px;
+  /* Keep preview a fixed size on mobile to avoid jumps. */
+  /* This is because we don't know its content in advance. */
+  min-height: 40vh;
+  max-height: 40vh;
+}
+.sp-layout.sp-layout-expanded > .sp-stack:nth-child(1) {
+  /* Clicking "show more" lets mobile editor go full height. */
+  max-height: unset;
+  height: auto;
+}
+.sp-layout.sp-layout-expanded > .sp-stack:nth-child(2) {
+  /* Clicking "show more" lets mobile preview go full height. */
+  max-height: unset;
+  height: auto;
+}
+@media (min-width: 1280px) {
+  .sp-layout > .sp-stack:nth-child(1) {
+    /* On desktop, clamp height by pixels instead. */
+    height: auto;
+    min-height: unset;
+    max-height: 406px;
+  }
+  .sp-layout > .sp-stack:nth-child(2) {
+    /* On desktop, clamp height by pixels instead. */
+    height: auto;
+    min-height: unset;
+    max-height: 406px;
+  }
+  .sp-layout.sp-layout-expanded > .sp-stack:nth-child(1) {
+    max-height: unset;
+  }
+  .sp-layout.sp-layout-expanded > .sp-stack:nth-child(2) {
+    max-height: unset;
+  }
+}
+
+.expandable-callout .sp-stack:nth-child(2) {
+  min-width: 431px;
+  min-height: 40vh;
+  max-height: 40vh;
 }
