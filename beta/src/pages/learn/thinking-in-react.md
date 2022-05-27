@@ -7,7 +7,7 @@ translators:
 
 <Intro>
 
-React 可以改变你对可见设计和应用构建的思考。曾经你可能已见过成片的森林，在与 React 工作为伴后，你将更享受其中每一颗独立的树。React 使思考设计系统和 UI 状态更加容易。在本篇教程中，我们将带你领略使用 React 进行构建可搜索产品数据表格的全过程。
+React 可以改变你对可见设计和应用构建的思考。打个比方，或许你对成片的森林赞不绝口，使用了 React 之后，你赞叹于其中的每一棵树都光彩夺目。使用 React 使得设计用户视图、管理系统状态变得更容易。在本篇教程中，我们将带你领略使用 React 构建可搜索产品数据表格的全过程。
 
 </Intro>
 
@@ -46,7 +46,7 @@ JSON API 返回如下的数据:
 
 如果你的 JSON 结构非常棒，经常会发现其映射到 UI 中的组件结构是一件自然而然的事情。那是因为 UI 和原型常拥有相同的信息结构--即，相同的形状。将你的 UI 分割到组件，每个组件匹配到原型中的每个部分。
 
-在屏幕中展示了五个组件:
+以下展示了五个组件:
 
 <FullWidth>
 
@@ -74,7 +74,7 @@ JSON API 返回如下的数据:
         * `ProductCategoryRow`
         * `ProductRow`
 
-## 步骤二: 使用 React 中构建一个静态版本 {/*step-2-build-a-static-version-in-react*/}
+## 步骤二: 使用 React 构建一个静态版本 {/*step-2-build-a-static-version-in-react*/}
 
 现在你已经拥有了你自己的组件层级结构，是时候实现你的应用程序了。最直接的办法是根据你的数据模型，构建一个不带任何交互的 UI 渲染代码版本...经常是先构建一个静态版本比较简单，然后再一个个添加交互。构建一个静态版本需要写大量的代码，并不需要什么思考; 但添加交互需要大量的思考，却不需要大量的代码。
 
@@ -251,7 +251,7 @@ Props 和 state 是不同的，但它们可以共同工作。父组件将经常�
 
 ## 步骤四: 验证 state 应该被放置在哪里 {/*step-4-identify-where-your-state-should-live*/}
 
-在验证你应用程序中的最小 state 数据之后，你需要验证哪个组件是通过改变 state 实现可响应的，或者 *拥有* 这个 state。记住：React 使用单向数据流，通过组件层级结构从父组件传递数据至子组件。这可能不能立马知晓哪个组件拥有什么 state。如果你是第一次阅读此章节可能会感到有挑战性，但可以通过下面的步骤搞定它!
+在验证你应用程序中的最小 state 数据之后，你需要验证哪个组件是通过改变 state 实现可响应的，或者 *拥有* 这个 state。记住：React 使用单向数据流，通过组件层级结构从父组件传递数据至子组件。要搞清楚哪个组件拥有哪个 state。如果你是第一次阅读此章节，可能会很有挑战，但可以通过下面的步骤搞定它!
 
 为你应用程序中的每一个 state:
 
@@ -274,7 +274,7 @@ Props 和 state 是不同的，但它们可以共同工作。父组件将经常�
 
 所以 state 将被放置在 `FilterableProductTable`。
 
-Add state to the component with the [`useState()` Hook](/apis/usestate). Hooks let you "hook into" a component's [render cycle](/learn/render-and-commit). Add two state variables at the top of `FilterableProductTable` and specify the initial state of your application:
+用 [`useState()` Hook](/apis/usestate) 为组件添加 state。Hook 可以 "钩住" 组件的 [渲染周期](/learn/render-and-commit)。在 `FilterableProductTable` 的顶部添加两个 state 变量，用于指定你应用程序的初始 state：
 
 ```js
 function FilterableProductTable({ products }) {
@@ -296,7 +296,7 @@ function FilterableProductTable({ products }) {
 </div>
 ```
 
-你可以看见应用程序如何反应。在下面的沙盒代码，过修改`useState('')` 为 `useState('fruit')` 以编辑 `filterText` 的初始值，将会看到搜索输入值和表格更新:
+你可以查看你应用程序的表现。在下面的沙盒代码中，通过修改`useState('')` 为 `useState('fruit')` 以编辑 `filterText` 的初始值，你将会发现搜索输入框和表格发生更新:
 
 <Sandpack>
 
@@ -438,8 +438,7 @@ td {
 
 </Sandpack>
 
-在上面的沙盒中，`ProductTable` 和 `SearchBar` 读取 `filterText` 和 `inStockOnly` props 以渲染表格、输入、复选框。
-举个例子，里展示了 `SearchBar` 如何填充输入的值:
+在上面的沙盒中，`ProductTable` 和 `SearchBar` 读取 `filterText` 和 `inStockOnly` props 以渲染表格、输入、复选框。举个例子，这里展示了 `SearchBar` 如何填充输入的值:
 
 ```js {1,6}
 function SearchBar({ filterText, inStockOnly }) {
@@ -461,7 +460,6 @@ function SearchBar({ filterText, inStockOnly }) {
 React 使数据流显式展示，是与双向数据绑定相比，需要更多的输入。如果你尝试在上述的例子中输入或者勾选复选框，发现 React 忽视了你的输入。这点是有意为之的。通过 `<input value={filterText} />`，已经设置了 `input` 的 `value` 属性，使之恒等于从 `FilterableProductTable` 传递的 `filterText` state。只要 `filterText` state 不设置，入的值就不会改变。
 
 当用户更改表单输入时， state 将更新以反映这些更改。state 由 `FilterableProductTable` 所拥有，以只有它可以调用 `setFilterText` 和 `setInStockOnly`。使 `SearchBar` 更新 `FilterableProductTable` 的 state，需要将这些函数传递到 `SearchBar`:
-
 
 ```js {2,3,10,11}
 function FilterableProductTable({ products }) {
@@ -639,6 +637,6 @@ td {
 
 你可以在 [添加交互](/learn/adding-interactivity) 这一章节，学习到所有处理事件和更新 state 的内容。
 
-## 自此该往何处 {/*where-to-go-from-here*/}
+## 下一节，我该做什么？ {/*where-to-go-from-here*/}
 
-本章只是一个概述，旨在告诉你如何使用 React 如何进行思考构建组件和应用程序。你可以即刻 [开始一个 React 项目](/learn/installation)，或者 [深入了解在教程中用到的所有语法](/learn/describing-the-ui)。
+本章只是一个概述，旨在告诉你如何使用 React 如何进行思考构建组件和应用程序。你可以即刻 [开始一个 React 项目](/learn/installation)，或者在本教程中 [深入了解所有语法](/learn/describing-the-ui)。
