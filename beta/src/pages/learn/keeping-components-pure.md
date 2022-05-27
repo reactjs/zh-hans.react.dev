@@ -3,6 +3,7 @@ title: 保持组件纯粹
 translators:
   - 7ooz
   - Hyuain
+  - QC-L
 ---
 
 <Intro>
