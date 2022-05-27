@@ -4,7 +4,7 @@ title: 'Referencing Values with Refs'
 
 <Intro>
 
-When you want a component to "remember" some information, but you don't want that information to [trigger new renders](/learn/render-and-commit), you can use a **ref**—it's like a secret "pocket" for storing information in your component!
+When you want a component to "remember" some information, but you don't want that information to [trigger new renders](/learn/render-and-commit), you can use a *ref*.
 
 </Intro>
 
@@ -42,7 +42,7 @@ const ref = useRef(0);
 
 <Illustration src="/images/docs/illustrations/i_ref.png" alt="An arrow with 'current' written on it stuffed into a pocket with 'ref' written on it." />
 
-You can access the current value of that ref through the `ref.current` property. This value is intentionally mutable, meaning you can both read and write to it. (This is what makes it an "escape hatch" from React's one-way data flow--more on that below!)
+You can access the current value of that ref through the `ref.current` property. This value is intentionally mutable, meaning you can both read and write to it. It's like a secret pocket of your component that React doesn't track. (This is what makes it an "escape hatch" from React's one-way data flow--more on that below!)
 
 Here, a button will increment `ref.current` on every click:
 
@@ -99,9 +99,9 @@ export default function Stopwatch() {
     setNow(Date.now());
 
     setInterval(() => {
-      // Update the current time every 100ms.
+      // Update the current time every 10ms.
       setNow(Date.now());
-    }, 100);
+    }, 10);
   }
 
   let secondsPassed = 0;
@@ -137,6 +137,8 @@ export default function Stopwatch() {
   function handleStart() {
     setStartTime(Date.now());
     setNow(Date.now());
+
+    clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
       setNow(Date.now());
     }, 10);

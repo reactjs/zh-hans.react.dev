@@ -198,7 +198,7 @@ td {
 
 </Sandpack>
 
-**如果示例看起来很吓人，不要感到烦躁！**在本篇指南中，我们将更关注于概念而非代码。收藏 [描述 UI](/learn/describing-the-ui) 的内容，将会帮助你填补短板、理解代码。
+(If this code looks intimidating, go through the [Quick Start](/learn/) first!)
 
 在构建你的组件之后，即拥有一个渲染数据模型的可复用组件库。因为这是一个静态应用程序，组件仅返回 JSX。最顶层组件 (`FilterableProductTable`) 将接收你的数据模型作为其 prop。这被称之为 _单向数据流_，因为数据从树的顶层组件传递到下面的组件。
 
@@ -274,7 +274,7 @@ Props 和 state 是不同的，但它们可以共同工作。父组件将经常�
 
 所以 state 将被放置在 `FilterableProductTable`。
 
-通过 [`useState()` 钩子](/reference/usestate) 为组件添加 state。钩子使你 "勾入" 组件的 [渲染周期](/learn/render-and-commit)。在 `FilterableProductTable` 上面添加两个 state 变量，并在你的应用程序中指定初始值:
+Add state to the component with the [`useState()` Hook](/apis/usestate). Hooks let you "hook into" a component's [render cycle](/learn/render-and-commit). Add two state variables at the top of `FilterableProductTable` and specify the initial state of your application:
 
 ```js
 function FilterableProductTable({ products }) {

@@ -38,7 +38,7 @@ console.log(add(16, 26)); // 42
 
 > 注意：
 >
-> 最终你的打包文件看起来会和上面的例子区别很大。
+> 最终你打包后的文件可能看起来会和上面的例子区别很大。
 
 如果你正在使用 [Create React App](https://create-react-app.dev)，[Next.js](https://nextjs.org/)，[Gatsby](https://www.gatsbyjs.org/)，或者类似的工具，你可以直接使用内置的 Webpack 配置来构建你的应用。
 
@@ -80,10 +80,6 @@ import("./math").then(math => {
 当使用 [Babel](https://babeljs.io/) 时，你要确保 Babel 能够解析动态 import 语法而不是将其进行转换。对于这一要求你需要 [@babel/plugin-syntax-dynamic-import](https://classic.yarnpkg.com/en/package/@babel/plugin-syntax-dynamic-import) 插件。
 
 ## `React.lazy` {#reactlazy}
-
-> 注意:
->
-> `React.lazy` 和 Suspense 技术还不支持服务端渲染。如果你想要在使用服务端渲染的应用中使用，我们推荐 [Loadable Components](https://github.com/gregberge/loadable-components) 这个库。它有一个很棒的[服务端渲染打包指南](https://loadable-components.com/docs/server-side-rendering/)。
 
 `React.lazy` 函数能让你像渲染常规组件一样处理动态引入（的组件）。
 
@@ -143,6 +139,53 @@ function MyComponent() {
 }
 ```
 
+### 避免兜底 {#avoiding-fallbacks}
+
+任何组件都可能因渲染而暂停，甚至是已经展示给用户的组件。为了使屏幕内容始终一致，如果一个已经显示的组件暂停，React 必须隐藏它的树，直到最近的 `<Suspense>` 边界。然而，从用户的角度来看，这可能会使人很困惑。
+
+参考这个标签切换的示例：
+
+```js
+import React, { Suspense } from 'react';
+import Tabs from './Tabs';
+import Glimmer from './Glimmer';
+
+const Comments = React.lazy(() => import('./Comments'));
+const Photos = React.lazy(() => import('./Photos'));
+
+function MyComponent() {
+  const [tab, setTab] = React.useState('photos');
+  
+  function handleTabSelect(tab) {
+    setTab(tab);
+  };
+
+  return (
+    <div>
+      <Tabs onTabSelect={handleTabSelect} />
+      <Suspense fallback={<Glimmer />}>
+        {tab === 'photos' ? <Photos /> : <Comments />}
+      </Suspense>
+    </div>
+  );
+}
+
+```
+
+在这个示例中，如果标签从 `'photos'` 切换为 `'comments'`，但 `Comments` 会暂停，用户会看到屏幕闪烁。这符合常理，因为用户不想看到 `'photos'`，而 `Comments` 组件还没有准备好渲染其内容，而 React 为了保证用户体验的一致性，只能显示上面的 `Glimmer`，别无选择。
+
+然而，有时这种用户体验并不可取。特别是在准备新 UI 时，展示 "旧" 的 UI 会体验更好。你可以尝试使用新的 [`startTransition`](/docs/react-api.html#starttransition) API 来让 React 实现这一点：
+
+```js
+function handleTabSelect(tab) {
+  startTransition(() => {
+    setTab(tab);
+  });
+}
+```
+
+此处代码会告知 React，将标签切换为 `'comments'` 不会标记为紧急更新，而是标记为需要一些准备时间的 [transition](/docs/react-api.html#transitions)。然后 React 会保留旧的 UI 并进行交互，当它准备好时，会切换为 `<Comments />`，具体请参阅 [Transitions](/docs/react-api.html#transitions) 以了解更多相关信息。
+
 ### 异常捕获边界（Error boundaries）{#error-boundaries}
 
 如果模块加载失败（如网络问题），它会触发一个错误。你可以通过[异常捕获边界（Error boundaries）](/docs/error-boundaries.html)技术来处理这些情况，以显示良好的用户体验并管理恢复事宜。
@@ -174,11 +217,11 @@ const MyComponent = () => (
 
 一个不错的选择是从路由开始。大多数网络用户习惯于页面之间能有个加载切换过程。你也可以选择重新渲染整个页面，这样您的用户就不必在渲染的同时再和页面上的其他元素进行交互。
 
-这里是一个例子，展示如何在你的应用中使用 `React.lazy` 和 [React Router](https://react-router.docschina.org/) 这类的第三方库，来配置基于路由的代码分割。
+这里是一个例子，展示如何在你的应用中使用 `React.lazy` 和 [React Router](https://reactrouter.com/) 这类的第三方库，来配置基于路由的代码分割。
 
 ```js
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const Home = lazy(() => import('./routes/Home'));
 const About = lazy(() => import('./routes/About'));
@@ -186,10 +229,10 @@ const About = lazy(() => import('./routes/About'));
 const App = () => (
   <Router>
     <Suspense fallback={<div>Loading...</div>}>
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/about" component={About}/>
-      </Switch>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </Suspense>
   </Router>
 );
