@@ -3,6 +3,7 @@ title: 状态管理
 translators:
   - qinhua
   - KnowsCount
+  - QC-L
 ---
 
 <Intro>
@@ -260,7 +261,7 @@ export default function Accordion() {
         onShow={() => setActiveIndex(1)}
       >
         这个名字源于哈萨克语 <span lang="kk-KZ">алма</span>，是“苹果”的意思，通常被翻译成“满是苹果”。事实上，阿拉木图周围的地区被认为是苹果的祖籍，<i lang="la">Malus sieversii</i> 被认为是目前本土苹果的祖先。
-        </Panel>
+      </Panel>
     </>
   );
 }
@@ -401,8 +402,7 @@ textarea {
 
 </Sandpack>
 
-React 允许你覆盖默认行为，可通过向组件传递一个唯一 `key`（如 `<Chat key={email}/>` 来 *强制* 重置其状态。
-这告诉 React ，如果收件人不同，应将其作为一个 *不同的* `Chat` 组件，需要使用新数据和 UI（比如输入框）来重新创建它。现在，在接收者之间切换时就会重置输入框——即使渲染的是同一个组件。
+React 允许你覆盖默认行为，可通过向组件传递一个唯一 `key`（如 `<Chat key={email}/>` 来 *强制* 重置其状态。这会告诉 React ，如果收件人不同，应将其作为一个 **不同的** `Chat` 组件，需要使用新数据和 UI（比如输入框）来重新创建它。现在，在接收者之间切换时就会重置输入框——即使渲染的是同一个组件。
 
 <Sandpack>
 
@@ -893,7 +893,7 @@ const initialTasks = [
 
 ```js AddTask.js
 import { useState, useContext } from 'react';
-import { useTasksDispatch } from './TaskBoardContext.js';
+import { useTasksDispatch } from './TasksContext.js';
 
 export default function AddTask({ onAddTask }) {
   const [text, setText] = useState('');
