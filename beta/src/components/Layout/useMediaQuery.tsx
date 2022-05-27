@@ -7,7 +7,7 @@ import {useState, useCallback, useEffect} from 'react';
 const useMediaQuery = (width: number) => {
   const [targetReached, setTargetReached] = useState(false);
 
-  const updateTarget = useCallback((e) => {
+  const updateTarget = useCallback((e: MediaQueryListEvent) => {
     if (e.matches) {
       setTargetReached(true);
     } else {
@@ -17,14 +17,29 @@ const useMediaQuery = (width: number) => {
 
   useEffect(() => {
     const media = window.matchMedia(`(max-width: ${width}px)`);
-    media.addListener(updateTarget);
+
+    try {
+      // Chrome & Firefox
+      media.addEventListener('change', updateTarget);
+    } catch {
+      // @deprecated method - Safari <= iOS12
+      media.addListener(updateTarget);
+    }
 
     // Check on mount (callback is not called until a change occurs)
     if (media.matches) {
       setTargetReached(true);
     }
 
-    return () => media.removeListener(updateTarget);
+    return () => {
+      try {
+        // Chrome & Firefox
+        media.removeEventListener('change', updateTarget);
+      } catch {
+        // @deprecated method - Safari <= iOS12
+        media.removeListener(updateTarget);
+      }
+    };
   }, [updateTarget, width]);
 
   return targetReached;

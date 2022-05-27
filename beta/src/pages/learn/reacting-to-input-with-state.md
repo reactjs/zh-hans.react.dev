@@ -16,7 +16,7 @@ React uses a declarative way to manipulate the UI. Instead of manipulating indiv
 
 </YouWillLearn>
 
-## How declarative UI compares to imperative
+## How declarative UI compares to imperative {/*how-declarative-ui-compares-to-imperative*/}
 
 When you design UI interactions, you probably think about how the UI *changes* in response to user actions. Consider a form that lets the user submit an answer:
 
@@ -139,7 +139,7 @@ In React, you don't directly manipulate the UI--meaning you don't enable, disabl
 
 <Illustration src="/images/docs/illustrations/i_declarative-ui-programming.png" alt="In a car driven by React, a passenger asks to be taken to a specific place on the map. React figures out how to do that." />
 
-## Thinking about UI declaratively
+## Thinking about UI declaratively {/*thinking-about-ui-declaratively*/}
 
 You've seen how to implement a form imperatively above. To better understand how to think in React, you'll walk through reimplementing this UI in React below:
 
@@ -149,7 +149,7 @@ You've seen how to implement a form imperatively above. To better understand how
 4. **Remove** any non-essential state variables
 5. **Connect** the event handlers to set the state
 
-### Step 1: Identify your component's different visual states
+### Step 1: Identify your component's different visual states {/*step-1-identify-your-components-different-visual-states*/}
 
 In computer science, you may hear about a ["state machine"](https://en.wikipedia.org/wiki/Finite-state_machine) being in one of several “states”. If you work with a designer, you may have seen mockups for different "visual states". React stands at the intersection of design and computer science, so both of these ideas are sources of inspiration.
 
@@ -309,7 +309,7 @@ Pages like this are often called "living styleguides" or "storybooks."
 
 </DeepDive>
 
-### Step 2: Determine what triggers those state changes
+### Step 2: Determine what triggers those state changes {/*step-2-determine-what-triggers-those-state-changes*/}
 
 <IllustrationBlock title="Types of inputs">
   <Illustration caption="Human inputs" alt="A finger." src="/images/docs/illustrations/i_inputs1.png" />
@@ -332,11 +332,19 @@ In both cases, **you must set [state variables](/learn/state-a-components-memory
 
 To help visualize this flow, try drawing each state on paper as a labeled circle, and each change between two states as an arrow. You can sketch out many flows this way and sort out bugs long before implementation.
 
-<img alt="A flow chart showing states and transitions between them" src="/images/docs/sketches/s_flow-chart.jpg" />
+<DiagramGroup>
 
-### Step 3: Represent the state in memory with `useState`
+<Diagram name="responding_to_input_flow" height={350} width={688} alt="Flow chart moving left to right with 5 nodes. The first node labeled 'empty' has one edge labeled 'start typing' connected to a node labeled 'typing'. That node has one edge labeled 'press submit' connected to a node labeled 'submitting', which has two edges. The left edge is labeled 'network error' connecting to a node labeled 'error'. The right edge is labeled 'network success' connecting to a node labeled 'success'.">
 
-Next you'll need to represent the visual states of your component in memory with [`useState`](/reference/usestate). Simplicity is key: each piece of state is a "moving piece", and **you want as few "moving pieces" as possible**. More complexity leads to more bugs!
+Form states
+
+</Diagram>
+
+</DiagramGroup>
+
+### Step 3: Represent the state in memory with `useState` {/*step-3-represent-the-state-in-memory-with-usestate*/}
+
+Next you'll need to represent the visual states of your component in memory with [`useState`](/apis/usestate). Simplicity is key: each piece of state is a "moving piece", and **you want as few "moving pieces" as possible**. More complexity leads to more bugs!
 
 Start with the state that *absolutely must* be there. For example, you'll need to store the `answer` for the input, and the `error` (if it exists) to store the last error:
 
@@ -359,14 +367,14 @@ const [isError, setIsError] = useState(false);
 
 Your first idea likely won't be the best, but that's ok--refactoring state is a part of the process!
 
-### Step 4: Remove any non-essential state variables
+### Step 4: Remove any non-essential state variables {/*step-4-remove-any-non-essential-state-variables*/}
 
 You want to avoid duplication in the state content so you're only tracking what is essential. Spending a little time on refactoring your state structure will make your components easier to understand, reduce duplication, and avoid unintended meanings. Your goal is to **prevent the cases where the state in memory doesn't represent any valid UI that you'd want a user to see.** (For example, you never want to show an error message and disable the input at the same time, or the user won't be able to correct the error!)
 
 Here are some questions you can ask about your state variables:
 
 * **Does this state cause a paradox?** For example, `isTyping` and `isSubmitting` can't both be `true`. A paradox usually means that the state is not constrained enough. There are four possible combinations of two booleans, but only three correspond to valid states. To remove the "impossible" state, you can combine these into a `status` that must be one of three values: `'typing'`, `'submitting'`, or `'success'`. 
-* **Is the same information available in another state variable already?** Another paradox: `isEmpty` and `isTyping` can't be `true` at the same time. By making them separate state variables, you risk them going out of sync and causing bugs. Fortunately, you can remove `isEmpty` and instead check `message.length === 0`.
+* **Is the same information available in another state variable already?** Another paradox: `isEmpty` and `isTyping` can't be `true` at the same time. By making them separate state variables, you risk them going out of sync and causing bugs. Fortunately, you can remove `isEmpty` and instead check `answer.length === 0`.
 * **Can you get the same information from the inverse of another state variable?** `isError` is not needed because you can check `error !== null` instead.
 
 After this clean-up, you're left with 3 (down from 7!) *essential* state variables:
@@ -385,7 +393,7 @@ These three variables are a good enough representation of this form's state. How
 
 </DeepDive>
 
-### Step 5: Connect the event handlers to set state
+### Step 5: Connect the event handlers to set state {/*step-5-connect-the-event-handlers-to-set-state*/}
 
 Lastly, create event handlers to set the state variables. Below is the final form, with all event handlers wired up:
 
@@ -487,7 +495,7 @@ Although this code is longer than the original imperative example, it is much le
 
 <Challenges>
 
-### Add and remove a CSS class
+### Add and remove a CSS class {/*add-and-remove-a-css-class*/}
 
 Make it so that clicking on the picture *removes* the `background--active` CSS class from the outer `<div>`, but *adds* the `picture--active` class to the `<img>`. Clicking the background again should restore the original CSS classes.
 
@@ -633,6 +641,7 @@ export default function Picture() {
           className="picture picture--active"
           alt="Rainbow houses in Kampung Pelangi, Indonesia"
           src="https://i.imgur.com/5qwVYb1.jpeg"
+          onClick={e => e.stopPropagation()}
         />
       </div>
     );
@@ -684,7 +693,7 @@ Keep in mind that if two different JSX chunks describe the same tree, their nest
 
 </Solution>
 
-### Profile editor
+### Profile editor {/*profile-editor*/}
 
 Here is a small form implemented with plain JavaScript and DOM. Play with it to understand its behavior:
 
@@ -886,7 +895,7 @@ Compare this solution to the original imperative code. How are they different?
 
 </Solution>
 
-### Refactor the imperative solution without React
+### Refactor the imperative solution without React {/*refactor-the-imperative-solution-without-react*/}
 
 Here is the original sandbox from the previous challenge, written imperatively without React:
 

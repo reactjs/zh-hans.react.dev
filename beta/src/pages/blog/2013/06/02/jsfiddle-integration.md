@@ -1,6 +1,5 @@
 ---
 title: JSFiddle 集成
-layout: Post
 author: [vjeux]
 ---
 

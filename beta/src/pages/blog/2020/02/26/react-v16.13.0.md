@@ -1,6 +1,5 @@
 ---
 title: 'React v16.13.0'
-layout: Post
 author: [threepointone]
 redirect_from:
   - 'blog/2020/03/02/react-v16.13.0'
@@ -8,9 +7,9 @@ redirect_from:
 
 今天我们发布了 React 16.13.0。此版本修复了部分 bug 并添加了新的弃用警告，以助力接下来的主要版本。
 
-## 新的警告 {#new-warnings}
+## 新的警告 {/*new-warnings*/}
 
-### Render 期间更新的警告 {#warnings-for-some-updates-during-render}
+### Render 期间更新的警告 {/*warnings-for-some-updates-during-render*/}
 
 React 组件不应在 render 期间对其他组件产生副作用。
 
@@ -22,7 +21,7 @@ Warning: Cannot update a component from inside the function body of a different 
 
 **这些警告将会帮助你找到应用中由意外的状态改变引起的 bug。** 在极少数情况下，由于渲染，你有意要更改另一个组件的状态，你可以将 `setState` 调用包装为  `useEffect`。
 
-### 冲突的样式规则警告 {#warnings-for-conflicting-style-rules}
+### 冲突的样式规则警告 {/*warnings-for-conflicting-style-rules*/}
 
 当动态地应用包含了全写和简写的 `style` 版本的 CSS 属性时，特定的更新组合可能会导致样式不一致。例如：
 
@@ -37,11 +36,11 @@ Warning: Cannot update a component from inside the function body of a different 
 </div>
 ```
 
-你可能期待这个 `<div>` 总是拥有红色背景，不论 `toggle` 的值是什么。然而，在 `true` 和 `false`之间交替使用`toggle`时，背景色开始是 `red`，然后在 `transparent` 和 `blue`之间交替，[正如你能在这个 demo 中看到的](https://codesandbox.io/s/suspicious-sunset-g3jub)。
-  
+你可能期待这个 `<div>` 总是拥有红色背景，不论 `toggle` 的值是什么。然而，在 `true` 和 `false`之间交替使用`toggle`时，背景色开始是 `red`，然后在 `transparent` 和 `blue`之间交替，[正如你能在这个 demo 中看到的](https://codesandbox.io/s/blue-water-ghx8mi)。
+
 **React 现在检测到冲突的样式规则并打印出警告**。要解决此问题，请不要在 `style` 属性中混合使用同一CSS属性的简写和全写版本。
 
-### 某些废弃字符串 ref 的警告 {#warnings-for-some-deprecated-string-refs}
+### 某些废弃字符串 ref 的警告 {/*warnings-for-some-deprecated-string-refs*/}
 
 [字符串 ref 是过时的 API](/docs/refs-and-the-dom#legacy-api-string-refs) 这是不可取的，将来将被弃用：
 
@@ -106,7 +105,7 @@ class ClassParent extends React.Component {
 >
 > 如果你使用 Create React App 或者用 babel 7+ 的 React preset，那么默认情况下已经安装了这个插件。
 
-### 弃用 `React.createFactory` {#deprecating-reactcreatefactory}
+### 弃用 `React.createFactory` {/*deprecating-reactcreatefactory*/}
 
 [`React.createFactory`](/docs/react-api#createfactory)为 React 创建一个帮助器元素。此版本向该方法添加了一个弃用警告。它将在未来的主要版本中删除。
 
@@ -118,15 +117,15 @@ let createFactory = (type) => React.createElement.bind(null, type);
 
 它的作用完全相同。
 
-### 弃用 `ReactDOM.unstable_createPortal` 推荐 `ReactDOM.createPortal`{#deprecating-reactdomunstable_createportal-in-favor-of-reactdomcreateportal}
+### 弃用 `ReactDOM.unstable_createPortal` 推荐 `ReactDOM.createPortal` {/*deprecating-reactdomunstable_createportal-in-favor-of-reactdomcreateportal*/}
 
 当 React 16 发布时，`createPortal` 成为一个官方支持的 API。
 
 但是，我们保留了 `unstable_createPortal` 作为受支持的别名，以使采用它的少数库正常工作。我们现在反对使用 unstable 别名。直接使用 `createPortal` 而不是 `unstable_createPortal`。它有完全相同的签名。
 
-## 其他改进 {#other-improvements}
+## 其他改进 {/*other-improvements*/}
 
-### Hydration 过程中组件堆栈的警告 {#component-stacks-in-hydration-warnings}
+### Hydration 过程中组件堆栈的警告 {/*component-stacks-in-hydration-warnings*/}
 
 React 将组件堆栈添加到其开发警告中，使开发人员能够隔离 bug 并调试他们的程序。此版本将组件堆栈添加到许多以前没有的开发警告中。举个例子，考虑一下以前版本中的 hydration 警告：
 
@@ -138,7 +137,7 @@ React 将组件堆栈添加到其开发警告中，使开发人员能够隔离 b
 
 这样可以清楚地看出问题所在，并让你更快地找到并修复错误。
 
-### 值得注意的错误修复 {#notable-bugfixes}
+### 值得注意的错误修复 {/*notable-bugfixes*/}
 
 此版本包含其他一些值得注意的改进：
 
@@ -152,9 +151,9 @@ React 将组件堆栈添加到其开发警告中，使开发人员能够隔离 b
 
 我们感谢所有帮助揭示和解决这些和其他问题的贡献者。你可以找到完整的变更日志 [如下](#changelog)。
 
-## 安装 {#installation}
+## 安装 {/*installation*/}
 
-### React {#react}
+### React {/*react*/}
 
 React v16.13.0 现在在 npm 库中已经可用。
 
@@ -185,14 +184,14 @@ npm install --save react@^16.13.0 react-dom@^16.13.0
 
 参考这篇文档 [详细安装说明](/docs/installation)。
 
-## 变更日志 {#changelog}
+## 变更日志 {/*changelog*/}
 
-### React {#react}
+### React {/*react*/}
 
 - 当字符串 ref 的使用方式不符合将来的代码模式时发出警告 ([@lunaruan](https://github.com/lunaruan) in [#17864](https://github.com/facebook/react/pull/17864))
 - 弃用 `React.createFactory()` ([@trueadm](https://github.com/trueadm) in [#17878](https://github.com/facebook/react/pull/17878))
 
-### React DOM {#react-dom}
+### React DOM {/*react-dom*/}
 
 - `style` 中的更改可能导致意外冲突时发出警告 ([@sophiebits](https://github.com/sophiebits) 在 [#14181](https://github.com/facebook/react/pull/14181)，[#18002](https://github.com/facebook/react/pull/18002))
 - 在另一个组件的 render 阶段更新 function 组件时发出警告 ([@acdlite](<(https://github.com/acdlite)>) 在 [#17099](https://github.com/facebook/react/pull/17099))
@@ -203,7 +202,7 @@ npm install --save react@^16.13.0 react-dom@^16.13.0
 - 不要调用 `dangerouslySetInnerHTML` 的 `toString()` 方法 ([@sebmarkbage](https://github.com/sebmarkbage) 在 [#17773](https://github.com/facebook/react/pull/17773))
 - 在组件堆栈中展示更多警告 ([@gaearon](https://github.com/gaearon) 在 [#17922](https://github.com/facebook/react/pull/17922)，[#17586](https://github.com/facebook/react/pull/17586))
 
-### 并发模式（实验） {#concurrent-mode-experimental}
+### 并发模式（实验） {/*concurrent-mode-experimental*/}
 
 - 警告有问题的用法 `ReactDOM.createRoot()` ([@trueadm](https://github.com/trueadm) 在 [#17937](https://github.com/facebook/react/pull/17937))
 - 移除 `ReactDOM.createRoot()` 回调传参并且在用法上增加了警告 ([@bvaughn](https://github.com/bvaughn) 在 [#17916](https://github.com/facebook/react/pull/17916))

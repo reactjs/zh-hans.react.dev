@@ -19,7 +19,7 @@ export function Toc({
   return (
     <nav
       role="navigation"
-      className="pt-6 fixed top-0 right-0"
+      className="pt-6 fixed top-10 right-0"
       style={{
         // This keeps the layout fixed width instead of adjusting for content.
         width: 'inherit',
@@ -28,7 +28,7 @@ export function Toc({
       <h2 className="mb-3 lg:mb-3 uppercase tracking-wide font-bold text-sm text-secondary dark:text-secondary-dark px-4 w-full">
         On this page
       </h2>
-      <div className="toc h-full overflow-y-auto pl-4">
+      <div className="h-full overflow-y-auto pl-4 max-h-[calc(100vh-7.5rem)]">
         <ul className="space-y-2 pb-16">
           {headings &&
             headings.length > 0 &&
@@ -41,7 +41,7 @@ export function Toc({
                 <li
                   key={`heading-${h.url}-${i}`}
                   className={cx(
-                    'text-sm px-2 py-1 rounded-l-lg',
+                    'text-sm px-2 rounded-l-lg',
                     selectedIndex === i
                       ? 'bg-highlight dark:bg-highlight-dark'
                       : null,
@@ -55,7 +55,7 @@ export function Toc({
                       selectedIndex === i
                         ? 'text-link dark:text-link-dark font-bold'
                         : 'text-secondary dark:text-secondary-dark',
-                      'block hover:text-link dark:hover:text-link-dark'
+                      'block hover:text-link dark:hover:text-link-dark leading-normal py-2'
                     )}
                     href={h.url}>
                     {h.text}
@@ -65,17 +65,6 @@ export function Toc({
             })}
         </ul>
       </div>
-      <style jsx global>{`
-        .toc {
-          /** Screen - nav - toc offset */
-          max-height: calc(100vh - 7.5rem);
-        }
-        .toc-link > code {
-          overflow-wrap: break-word;
-          white-space: pre-wrap;
-          font-size: 90%;
-        }
-      `}</style>
     </nav>
   );
 }

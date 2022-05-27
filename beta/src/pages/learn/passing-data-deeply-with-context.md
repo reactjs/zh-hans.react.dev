@@ -4,7 +4,7 @@ title: Passing Data Deeply with Context
 
 <Intro>
 
-Usually, you will pass information from a parent component to a child component via props. But passing props can become verbose and inconvenient if you have to pass them through many components in the middle, or if many components in your app need the same information. Context lets the parent component make some information available to any component in the tree below it—no matter how deep—without passing it explicitly through props.
+Usually, you will pass information from a parent component to a child component via props. But passing props can become verbose and inconvenient if you have to pass them through many components in the middle, or if many components in your app need the same information. *Context* lets the parent component make some information available to any component in the tree below it—no matter how deep—without passing it explicitly through props.
 
 </Intro>
 
@@ -12,20 +12,35 @@ Usually, you will pass information from a parent component to a child component 
 
 - What "prop drilling" is
 - How to replace repetitive prop passing with context
-- What the common use cases are for context
-- What the common alternatives are to context
+- Common use cases for context
+- Common alternatives to context
 
 </YouWillLearn>
 
-## The problem with passing props
+## The problem with passing props {/*the-problem-with-passing-props*/}
 
-[Passing props](/learn/passing-props-to-a-component) is a great way to explicitly pipe data through your UI tree to the components that use it. But it can become verbose and inconvenient when you need to pass some prop deeply through the tree, or if many components need the same prop. The nearest common ancestor could be far removed from the components that need data, and [lifting state up](/learn/sharing-state-between-components) that high can lead to a situation sometimes called "prop drilling."
+[Passing props](/learn/passing-props-to-a-component) is a great way to explicitly pipe data through your UI tree to the components that use it.
 
-<img alt="Lifting state up vs prop drilling" src="/images/docs/sketches/s_prop-drilling.png" />
+But passing props can become verbose and inconvenient when you need to pass some prop deeply through the tree, or if many components need the same prop. The nearest common ancestor could be far removed from the components that need data, and [lifting state up](/learn/sharing-state-between-components) that high can lead to a situation sometimes called "prop drilling."
+
+<DiagramGroup>
+
+<Diagram name="passing_data_lifting_state" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in purple. The value flows down to each of the two children, both highlighted in purple." >
+
+Lifting state up
+
+</Diagram>
+<Diagram name="passing_data_prop_drilling" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root node contains a bubble representing a value highlighted in purple. The value flows down through the two children, each of which pass the value but do not contain it. The left child passes the value down to two children which are both highlighted purple. The right child of the root passes the value through to one of its two children - the right one, which is highlighted purple. That child passed the value through its single child, which passes it down to both of its two children, which are highlighted purple.">
+
+Prop drilling
+
+</Diagram>
+
+</DiagramGroup>
 
 Wouldn't it be great if there were a way to "teleport" data to the components in the tree that need it without passing props? With React's context feature, there is!
 
-## Context: an alternative to passing props
+## Context: an alternative to passing props {/*context-an-alternative-to-passing-props*/}
 
 Context lets a parent component provide data to the entire tree below it. There are many uses for context. Here is one example. Consider this `Heading` component that accepts a `level` for its size:
 
@@ -195,9 +210,23 @@ You can't do it with props alone. This is where context comes into play. You wil
 
 Context lets a parent--even a distant one!--provide some data to the entire tree inside of it.
 
-<img alt="Context provides data to the entire tree" src="/images/docs/sketches/s_providing-context.png" />
+<DiagramGroup>
 
-### Step 1: Create the context
+<Diagram name="passing_data_context_close" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in orange which projects down to the two children, each highlighted in orange." >
+
+Using context in close children
+
+</Diagram>
+
+<Diagram name="passing_data_context_far" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root parent node contains a bubble representing a value highlighted in orange. The value projects down directly to four leaves and one intermediate component in the tree, which are all highlighted in orange. None of the other intermediate components are highlighted.">
+
+Using context in distant children
+
+</Diagram>
+
+</DiagramGroup>
+
+### Step 1: Create the context {/*step-1-create-the-context*/}
 
 First, you need to create the context. You'll need to **export it from a file** so that your components can use it:
 
@@ -281,7 +310,7 @@ export const LevelContext = createContext(1);
 
 The only argument to `createContext` is the _default_ value. Here, `1` refers to the biggest heading level, but you could pass any kind of value (even an object). You will see the significance of the default value in the next step.
 
-### Step 2: Use the context
+### Step 2: Use the context {/*step-2-use-the-context*/}
 
 Import the `useContext` Hook from React and your context:
 
@@ -417,7 +446,7 @@ Notice this example doesn't quite work, yet! All the headers have the same size 
 
 If you don't provide the context, React will use the default value you've specified in the previous step. In this example, you specified `1` as the argument to `createContext`, so `useContext(LevelContext)` returns `1`, setting all those headings to `<h1>`. Let's fix this problem by having each `Section` provide its own context.
 
-### Step 3: Provide the context
+### Step 3: Provide the context {/*step-3-provide-the-context*/}
 
 The `Section` component currently renders its children:
 
@@ -541,7 +570,7 @@ It's the same result as the original code, but you did not need to pass the `lev
 2. `Section` wraps its children into `<LevelContext.Provider value={level}>`.
 3. `Header` asks the closest value of `LevelContext` above with `useContext(LevelContext)`.
 
-## Using and providing context from the same component
+## Using and providing context from the same component {/*using-and-providing-context-from-the-same-component*/}
 
 Currently, you still have to specify each section's `level` manually:
 
@@ -670,7 +699,7 @@ Now both `Heading` and `Section` read the `LevelContext` to figure out how "deep
 
 >This example uses heading levels because they show visually how nested components can override context. But context is useful for many other use cases too. You can use it to pass down any information needed by the entire subtree: the current color theme, the currently logged in user, and so on.
 
-## Context passes through intermediate components
+## Context passes through intermediate components {/*context-passes-through-intermediate-components*/}
 
 You can insert as many components as you like between the component that provides context and the one that uses it. This includes both built-in components like `<div>` and components you might build yourself.
 
@@ -807,7 +836,7 @@ How context works might remind you of [CSS property inheritance](https://develop
 
 In CSS, different properties like `color` and `background-color` don't override each other. You can set all  `<div>`'s `color` to red without impacting `background-color`. Similarly, **different React contexts don't override each other**. Each context that you make with `createContext()` is completely separate from other ones, and ties together components using and providing *that particular* context. One component may use or provide many different contexts without a problem.
 
-## Before you use context
+## Before you use context {/*before-you-use-context*/}
 
 Context is very tempting to use! However, this also means it's too easy to overuse it. **Just because you need to pass some props several levels deep doesn't mean you should put that information into context.**
 
@@ -818,7 +847,7 @@ Here's a few alternatives you should consider before using context:
 
 If neither of these approaches works well for you, consider context.
 
-## Use cases for context
+## Use cases for context {/*use-cases-for-context*/}
 
 * **Theming:** If your app lets the user change its appearance (e.g. dark mode), you can put a context provider at the top of your app, and use that context in components that need to adjust their visual look.
 * **Current account:** Many components might need to know the currently logged in user. Putting it in context makes it convenient to read it anywhere in the tree. Some apps also let you operate multiple accounts at the same time (e.g. to leave a comment as a different user). In those cases, it can be convenient to wrap a part of the UI into a nested provider with a different current account value.
@@ -828,8 +857,6 @@ If neither of these approaches works well for you, consider context.
 Context is not limited to static values. If you pass a different value on the next render, React will update all the components reading it below! This is why context is often used in combination with state.
 
 In general, if some information is needed by distant components in different parts of the tree, it's a good indication that context will help you.
-
-<img alt="Context provides data to the entire tree" src="/images/docs/sketches/s_lifting-v-providing.png" />
 
 <Recap>
 
@@ -846,7 +873,7 @@ In general, if some information is needed by distant components in different par
 
 <Challenges>
 
-### Replace prop drilling with context
+### Replace prop drilling with context {/*replace-prop-drilling-with-context*/}
 
 In this example, toggling the checkbox changes the `imageSize` prop passed to each `<PlaceImage>`. The checkbox state is held in the top-level `App` component, but each `<PlaceImage>` needs to be aware of it.
 

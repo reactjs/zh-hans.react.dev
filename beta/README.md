@@ -16,10 +16,12 @@ This repo contains the source code and documentation powering [reactjs.org](http
 ### Installation
 
 1. `cd reactjs.org` to go into the project root
-1. `yarn` to install the website's npm dependencies
+1. `cd beta` to open the beta website
+3. `yarn` to install the website's npm dependencies
 
 ### Running locally
 
+1. Make sure you're in the `beta` folder
 1. `yarn dev` to start the development server (powered by [Next.js](https://nextjs.org/))
 1. `open http://localhost:3000` to open the site in your favorite browser
 
@@ -46,7 +48,7 @@ The documentation is divided into several sections with a different tone and pur
 ### Test the change
 
 1. If possible, test any visual changes in all latest versions of common browsers, on both desktop and mobile.
-1. Run `yarn check-all` from the project root. (This will run Prettier, ESLint, and Flow.)
+2. Run `yarn check-all` from the `beta` folder. (This will run Prettier, ESLint and validate types.)
 
 ### Push it
 
@@ -54,7 +56,7 @@ The documentation is divided into several sections with a different tone and pur
 1. `git push my-fork-name the-name-of-my-branch`
 1. Go to the [reactjs.org repo](https://github.com/reactjs/reactjs.org) and you should see recently pushed branches.
 1. Follow GitHub's instructions.
-1. If possible, include screenshots of visual changes. A [Netlify](https://www.netlify.com/) build will also be automatically created once you make your PR so other people can see your change.
+1. If possible, include screenshots of visual changes. A preview build is triggered after your changes are pushed to GitHub.
 
 ## Translation
 

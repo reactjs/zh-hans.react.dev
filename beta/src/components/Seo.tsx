@@ -25,10 +25,7 @@ export const Seo = withRouter(
     <Head>
       {/* DEFAULT */}
 
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
-      />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       {title != null && <title key="title">{title}</title>}
       {description != null && (
@@ -85,7 +82,27 @@ export const Seo = withRouter(
         key="twitter:image"
         content={`https://beta.reactjs.org${image}`}
       />
-
+      <link
+        rel="preload"
+        href="/fonts/Source-Code-Pro-Regular.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        href="https://beta.reactjs.org/fonts/Optimistic_Display_W_Md.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+      <link
+        rel="preload"
+        href="https://beta.reactjs.org/fonts/Optimistic_Display_W_Bd.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
       {children}
     </Head>
   )

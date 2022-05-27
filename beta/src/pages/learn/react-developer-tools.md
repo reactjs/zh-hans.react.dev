@@ -10,7 +10,13 @@ translators:
 
 </Intro>
 
-## 浏览器扩展 {#browser-extension}
+<YouWillLearn>
+
+* 如何安装 React 开发者工具
+
+</YouWillLearn>
+
+## 浏览器扩展 {/*browser-extension*/}
 
 调试 React 构建的网站最简单的办法就是安装 React 开发者工具浏览器扩展。它可用于几种流行的浏览器：
 
@@ -22,7 +28,7 @@ translators:
 
 ![React Developer Tools extension](/images/docs/react-devtools-extension.png)
 
-### Safari 和其他浏览器 {#safari-and-other-browsers}
+### Safari 和其他浏览器 {/*safari-and-other-browsers*/}
 为其他浏览器（比如，Safari），安装 [`react-devtools`](https://www.npmjs.com/package/react-devtools) npm 包:
 ```bash
 # Yarn
@@ -48,7 +54,7 @@ react-devtools
 
 ![React Developer Tools standalone](/images/docs/react-devtools-standalone.png)
 
-## 移动端（React Native）{#mobile-react-native}
+## 移动端（React Native） {/*mobile-react-native*/}
 React 开发者工具同样可检查用 [React Native](https://reactnative.dev/) 构建的应用程序。
 
 使用 React 开发者工具最简单的办法就是全局安装它：

@@ -1,6 +1,5 @@
 ---
 title: "推出 React 错误代码系统"
-layout: Post
 author: [keyanzhang]
 ---
 

@@ -4,7 +4,7 @@ title: 'Manipulating the DOM with Refs'
 
 <Intro>
 
-Because React handles updating the [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) to match your render output, your components won't often need to manipulate the DOM. However, sometimes you might need access to the DOM elements managed by React--for example, to focus a node, scroll to it, or measure its size and position. There is no built-in way to do those things in React, so you will need a [ref](/learn/referencing-values-with-refs#refs-and-the-dom) to the DOM node.
+React automatically updates the [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) to match your render output, so your components won't often need to manipulate it. However, sometimes you might need access to the DOM elements managed by React--for example, to focus a node, scroll to it, or measure its size and position. There is no built-in way to do those things in React, so you will need a *ref* to the DOM node.
 
 </Intro>
 
@@ -17,7 +17,7 @@ Because React handles updating the [DOM](https://developer.mozilla.org/docs/Web/
 
 </YouWillLearn>
 
-## Getting a ref to the node
+## Getting a ref to the node {/*getting-a-ref-to-the-node*/}
 
 To access a DOM node managed by React, first, import the `useRef` Hook:
 
@@ -44,7 +44,7 @@ The `useRef` Hook returns an object with a single property called `current`. Ini
 myRef.current.scrollIntoView();
 ```
 
-### Example: Focusing a text input
+### Example: Focusing a text input {/*example-focusing-a-text-input*/}
 
 In this example, clicking the button will focus the input:
 
@@ -80,11 +80,11 @@ To implement this:
 3. In the `handleClick` function, read the input DOM node from `inputRef.current` and call [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) on it with `inputRef.current.focus()`.
 4. Pass the `handleClick` event handler to `<button>` with `onClick`.
 
-While DOM manipulation is the most common use case for refs, the `useRef` Hook can be used for storing other things outside React, like timer IDs. Similarly to state, refs remain between renders. You can even think of refs as state variables that don't trigger re-renders when you set them! You can learn more about refs in [Referencing Values with Refs](/learn/referencing-values-with-refs).
+While DOM manipulation is the most common use case for refs, the `useRef` Hook can be used for storing other things outside React, like timer IDs. Similarly to state, refs remain between renders. Refs are like state variables that don't trigger re-renders when you set them. For an introduction to refs, see [Referencing Values with Refs](/learn/referencing-values-with-refs).
 
-### Example: Scrolling to an element
+### Example: Scrolling to an element {/*example-scrolling-to-an-element*/}
 
-You can have more than a single ref in a component. In this example, there is a carousel of three images and three buttons to center them in the view port by calling the browser [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) method the corresponding DOM node:
+You can have more than a single ref in a component. In this example, there is a carousel of three images. Each button centers an image by calling the browser [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) method the corresponding DOM node:
 
 <Sandpack>
 
@@ -207,7 +207,9 @@ In the above examples, there is a predefined number of refs. However, sometimes 
 
 This is because **Hooks must only be called at the top-level of your component.** You can't call `useRef` in a loop, in a condition, or inside a `map()` call.
 
-Instead, the solution is to **pass a function to the `ref` attribute**. This is called a "ref callback". React will call your ref callback with the DOM node when it's time to set the ref, and with `null` when it's time to clear it. This lets you maintain your own array or a [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), and access any ref by its index or some kind of ID.
+One possible way around this is to get a single ref to their parent element, and then use DOM manipulation methods like [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) to "find" the individual child nodes from it. However, this is brittle and can break if your DOM structure changes.
+
+Another solution is to **pass a function to the `ref` attribute**. This is called a "ref callback". React will call your ref callback with the DOM node when it's time to set the ref, and with `null` when it's time to clear it. This lets you maintain your own array or a [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), and access any ref by its index or some kind of ID.
 
 This example shows how you can use this approach to scroll to an arbitrary node in a long list:
 
@@ -336,7 +338,7 @@ This lets you read individual DOM nodes from the Map later.
 
 </DeepDive>
 
-## Accessing another component's DOM nodes
+## Accessing another component's DOM nodes {/*accessing-another-components-dom-nodes*/}
 
 When you put a ref on a built-in component that outputs a browser element like `<input />`, React will set that ref's `current` property to the corresponding DOM node (such as the actual `<input />` in the browser).
 
@@ -373,7 +375,11 @@ export default function MyForm() {
 
 Clicking the button will print an error message to the console:
 
-> Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
+<ConsoleBlock level="error">
+
+Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
+
+</ConsoleBlock>
 
 This happens because by default React does not let a component access the DOM nodes of other components. Not even for its own children! This is intentional. Refs are an escape hatch that should be used sparingly. Manually manipulating _another_ component's DOM nodes makes your code even more fragile.
 
@@ -472,7 +478,7 @@ Here, `realInputRef` inside `MyInput` holds the actual input DOM node. However, 
 
 </DeepDive>
 
-## When React attaches the refs
+## When React attaches the refs {/*when-react-attaches-the-refs*/}
 
 In React, every update is split in [two phases](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom):
 
@@ -618,7 +624,7 @@ for (let i = 0; i < 20; i++) {
 
 </DeepDive>
 
-## Best practices for DOM manipulation with refs
+## Best practices for DOM manipulation with refs {/*best-practices-for-dom-manipulation-with-refs*/}
 
 Refs are an escape hatch. You should only use them when you have to "step outside React." Common examples of this include managing focus, scroll position, or calling browser APIs that React does not expose.
 
@@ -688,7 +694,7 @@ However, this doesn't mean that you can't do it at all. It requires caution. **Y
 
 <Challenges>
 
-### Play and pause the video
+### Play and pause the video {/*play-and-pause-the-video*/}
 
 In this example, the button toggles a state variable to switch between a playing and a paused state. However, in order to actually play or pause the video, toggling state is not enough. You also need to call [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) and [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause) on the DOM element for the `<video>`. Add a ref to it, and make the button work.
 
@@ -707,25 +713,27 @@ export default function VideoPlayer() {
 
   return (
     <>
+      <button onClick={handleClick}>
+        {isPlaying ? 'Pause' : 'Play'}
+      </button>
       <video width="250">
         <source
           src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
           type="video/mp4"
         />
       </video>
-      <button onClick={handleClick}>
-        {isPlaying ? 'Pause' : 'Play'}
-      </button>
     </>
   )
 }
 ```
 
 ```css
-button { display: block }
+button { display: block; margin-bottom: 20px; }
 ```
 
 </Sandpack>
+
+For an extra challenge, keep the "Play" button in sync with whether the video is playing even if the user right-clicks the video and plays it using the built-in browser media controls. You might want to listen to `onPlay` and `onPause` on the video to do that.
 
 <Solution>
 
@@ -753,29 +761,36 @@ export default function VideoPlayer() {
 
   return (
     <>
-      <video width="250" ref={ref}>
+      <button onClick={handleClick}>
+        {isPlaying ? 'Pause' : 'Play'}
+      </button>
+      <video
+        width="250"
+        ref={ref}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+      >
         <source
           src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
           type="video/mp4"
         />
       </video>
-      <button onClick={handleClick}>
-        {isPlaying ? 'Pause' : 'Play'}
-      </button>
     </>
   )
 }
 ```
 
 ```css
-button { display: block }
+button { display: block; margin-bottom: 20px; }
 ```
 
 </Sandpack>
 
+In order to handle the built-in browser controls, you can add `onPlay` and `onPause` handlers to the `<video>` element and call `setIsPlaying` from them. This way, if the user plays the video using the browser controls, the state will adjust accordingly.
+
 </Solution>
 
-### Focus the search field
+### Focus the search field {/*focus-the-search-field*/}
 
 Make it so that clicking the "Search" button puts focus into the field.
 
@@ -839,7 +854,7 @@ button { display: block; margin-bottom: 10px; }
 
 </Solution>
 
-### Scrolling an image carousel
+### Scrolling an image carousel {/*scrolling-an-image-carousel*/}
 
 This image carousel has a "Next" button that switches the active image. Make the gallery scroll horizontally to the active image on click. You will want to call [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) on the DOM node of the active image:
 
@@ -1065,7 +1080,7 @@ img {
 
 </Solution>
 
-### Focus the search field with separate components
+### Focus the search field with separate components {/*focus-the-search-field-with-separate-components*/}
 
 Make it so that clicking the "Search" button puts focus into the field. Note that each component is defined in a separate file and shouldn't be moved out of it. How do you connect them together?
 

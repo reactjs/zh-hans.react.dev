@@ -17,7 +17,7 @@ function Link({
   const classes =
     'inline text-link dark:text-link-dark break-normal border-b border-link border-opacity-0 hover:border-opacity-100 duration-100 ease-in transition leading-normal';
   const modifiedChildren = React.Children.toArray(children).map(
-    (child: any, idx: number) => {
+    (child: any) => {
       if (child.props?.mdxType && child.props?.mdxType === 'inlineCode') {
         return React.cloneElement(child, {
           isLink: true,
@@ -34,28 +34,20 @@ function Link({
   return (
     <>
       {href.startsWith('https://') ? (
-        <ExternalLink
-          href={href}
-          className={cn(classes, className)}
-          {...props}
-          children={modifiedChildren}
-        />
+        <ExternalLink href={href} className={cn(classes, className)} {...props}>
+          {modifiedChildren}
+        </ExternalLink>
       ) : href.startsWith('#') ? (
         // eslint-disable-next-line jsx-a11y/anchor-has-content
-        <a
-          className={cn(classes, className)}
-          href={href}
-          {...props}
-          children={modifiedChildren}
-        />
+        <a className={cn(classes, className)} href={href} {...props}>
+          {modifiedChildren}
+        </a>
       ) : (
         <NextLink href={href.replace('.html', '')}>
           {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
-          <a
-            className={cn(classes, className)}
-            {...props}
-            children={modifiedChildren}
-          />
+          <a className={cn(classes, className)} {...props}>
+            {modifiedChildren}
+          </a>
         </NextLink>
       )}
     </>

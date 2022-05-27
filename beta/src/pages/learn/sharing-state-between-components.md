@@ -4,7 +4,7 @@ title: Sharing State Between Components
 
 <Intro>
 
-Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as "lifting state up", and it's one of the most common things you will do writing React code.
+Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as *lifting state up,* and it's one of the most common things you will do writing React code.
 
 </Intro>
 
@@ -15,7 +15,7 @@ Sometimes, you want the state of two components to always change together. To do
 
 </YouWillLearn>
 
-## Lifting state up by example
+## Lifting state up by example {/*lifting-state-up-by-example*/}
 
 In this example, a parent `Accordion` component renders two separate `Panel`s:
 
@@ -75,6 +75,22 @@ h3, p { margin: 5px 0px; }
 
 Notice how pressing one panel's button does not affect the other panel--they are independent.
 
+<DiagramGroup>
+
+<Diagram name="sharing_state_child" height={367} width={477} alt="Diagram showing a tree of three components, one parent labeled Accordion and two children labeled Panel. Both Panel components contain isActive with value false.">
+
+Initially, each `Panel`'s `isActive` state is `false`, so they both appear collapsed
+
+</Diagram>
+
+<Diagram name="sharing_state_child_clicked" height={367} width={480} alt="The same diagram as the previous, with the isActive of the first child Panel component highlighted indicating a click with the isActive value set to true. The second Panel component still contains value false." >
+
+Clicking either `Panel`'s button will only update that `Panel`'s `isActive` state alone
+
+</Diagram>
+
+</DiagramGroup>
+
 **But now let's say you want to change it so that only one panel is expanded at any given time.** With that design, expanding the second panel should collapse the first one. How would you do that?
 
 To coordinate these two panels, you need to "lift their state up" to a parent component in three steps:
@@ -85,9 +101,7 @@ To coordinate these two panels, you need to "lift their state up" to a parent co
 
 This will allow the `Accordion` component to coordinate both `Panel`s and only expand one at a time.
 
-<img alt="On the left are two components each owning their own state values. On the right, they are the children of a parent component that owns both their state values." src="/images/docs/sketches/s_lifting-state-up.png" />
-
-### Step 1: Remove state from the child components
+### Step 1: Remove state from the child components {/*step-1-remove-state-from-the-child-components*/}
 
 You will give control of the `Panel`'s `isActive` to its parent component. This means that the parent component will pass `isActive` to `Panel` as a prop instead. Start by **removing this line** from the `Panel` component:
 
@@ -103,7 +117,7 @@ function Panel({ title, children, isActive }) {
 
 Now the `Panel`'s parent component can *control* `isActive` by [passing it down as a prop](/learn/passing-props-to-a-component). Conversely, the `Panel` component now has *no control* over the value of `isActive`--it's now up to the parent component!
 
-### Step 2: Pass hardcoded data from the common parent
+### Step 2: Pass hardcoded data from the common parent {/*step-2-pass-hardcoded-data-from-the-common-parent*/}
 
 To lift state up, you must locate the closest common parent component of *both* of the child components that you want to coordinate:
 
@@ -160,13 +174,11 @@ h3, p { margin: 5px 0px; }
 
 Try editing the hardcoded `isActive` values in the `Accordion` component and see the result on the screen.
 
-### Step 3: Add state to the common parent
+### Step 3: Add state to the common parent {/*step-3-add-state-to-the-common-parent*/}
 
 Lifting state up often changes the nature of what you're storing as state.
 
-<img alt="The parent component passes the state setting function to both child components." src="/images/docs/sketches/s_passing-functions-down.png" />
-
-In this case, only one panel should be active at a time. This means that the `Accordion` common parent component needs to keep track of *which* panel is the active one. Instead of a `boolean` value, it could use an number as the index of the active `Panel` for the state variable:
+In this case, only one panel should be active at a time. This means that the `Accordion` common parent component needs to keep track of *which* panel is the active one. Instead of a `boolean` value, it could use a number as the index of the active `Panel` for the state variable:
 
 ```js
 const [activeIndex, setActiveIndex] = useState(0);
@@ -256,6 +268,22 @@ h3, p { margin: 5px 0px; }
 
 This completes lifting state up! Moving state into the common parent component allowed you to coordinate the two panels. Using the active index instead of two "is shown" flags ensured that only one panel is active at a given time. And passing down the event handler to the child allowed the child to change the parent's state.
 
+<DiagramGroup>
+
+<Diagram name="sharing_state_parent" height={385} width={487} alt="Diagram showing a tree of three components, one parent labeled Accordion and two children labeled Panel. Accordion contains an activeIndex value of zero which turns into isActive value of true passed to the first Panel, and isActive value of false passed to the second Panel." >
+
+Initially, `Accordion`'s `activeIndex` is `0`, so the first `Panel` receives `isActive = true`
+
+</Diagram>
+
+<Diagram name="sharing_state_parent_clicked" height={385} width={521} alt="The same diagram as the previous, with the activeIndex value of the parent Accordion component highlighted indicating a click with the value changed to one. The flow to both of the children Panel components is also highlighted, and the isActive value passed to each child is set to the opposite: false for the first Panel and true for the second one." >
+
+When `Accordion`'s `activeIndex` state changes to `1`, the second `Panel` receives `isActive = true` instead
+
+</Diagram>
+
+</DiagramGroup>
+
 <DeepDive title="Controlled and Uncontrolled Components">
 
 It is common to call a component with some local state "uncontrolled". For example, the original `Panel` component with an `isActive` state variable is uncontrolled because its parent cannot influence whether the panel is active or not.
@@ -270,7 +298,7 @@ When writing a component, consider which information in it should be controlled 
 
 </DeepDive>
 
-## A single source of truth for each state
+## A single source of truth for each state {/*a-single-source-of-truth-for-each-state*/}
 
 In a React application, many components will have their own state. Some state may "live" close to the leaf components (components at the bottom of the tree) like inputs. Other state may "live" closer to the top of the app. For example, even client-side routing libraries are usually implemented by storing the current route in the React state, and passing it down by props!
 
@@ -291,7 +319,7 @@ To see what this feels like in practice with a few more components, read [Thinki
 
 <Challenges>
 
-### Synced inputs
+### Synced inputs {/*synced-inputs*/}
 
 These two inputs are independent. Make them stay in sync: editing one input should update the other input with the same text, and vice versa. 
 
@@ -397,7 +425,7 @@ label { display: block; }
 
 </Solution>
 
-### Filtering a list
+### Filtering a list {/*filtering-a-list*/}
 
 In this example, the `SearchBar` has its own `query` state that controls the text input. Its parent `FilterableList` component displays a `List` of items, but it doesn't take the search query into account.
 
