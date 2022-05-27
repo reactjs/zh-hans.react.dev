@@ -2,11 +2,13 @@
 title: 响应事件
 translators:
   - Jiacheng787
+  - QC-L
+  - Neo42
 ---
 
 <Intro>
 
-使用 React 可以在 JSX 中添加事件处理函数。其中事件处理函数为自定义函数，它将在响应用户交互（如点击、悬停、表单输入框获得焦点等）时触发。
+使用 React 可以在 JSX 中添加 **事件处理函数**。其中事件处理函数为自定义函数，它将在响应交互（如点击、悬停、表单输入框获得焦点等）时触发。
 
 </Intro>
 
@@ -69,9 +71,9 @@ button { margin-right: 10px; }
 * 通常在你的组件 *内部* 定义。
 * 名称以 `handle` 开头，后跟事件名称。
 
-> 虽然事件处理函数没有专门的命名规则，但大家习惯以 `handle` 为前缀，后接事件名来进行命名。你经常会看到类似 `onClick={handleClick}` 、`onMouseEnter={handleMouseEnter}` 的命名等等。
+> 按照惯例，通常将事件处理程序命名为 `handle`，后接事件名。你会经常看到 `onClick={handleClick}`，`onMouseEnter={handleMouseEnter}` 等。
 
-此外，你还可以在 JSX 中定义一个内联的事件处理函数：
+或者，你也可以在 JSX 中定义一个内联的事件处理函数：
 
 ```jsx
 <button onClick={function handleClick() {
@@ -123,7 +125,7 @@ button { margin-right: 10px; }
 
 这里创建了一个稍后调用的函数，而不会在每次渲染时执行其内部代码。
 
-在这两种情况下，你要传递的是一个函数：
+在这两种情况下，你都应该传递一个函数：
 
 * `<button onClick={handleClick}>` 传递了 `handleClick` 函数。
 * `<button onClick={() => alert('...')}>` 传递了 `() => alert('...')` 函数。
@@ -134,7 +136,7 @@ button { margin-right: 10px; }
 
 ### 在事件处理函数中读取 props {/*reading-props-in-event-handlers*/}
 
-由于事件处理函数是声明于组件内部，因此他们可以直接访问组件的 props。示例中的按钮，当点击时会弹出带有 `message` prop 的 alert：
+由于事件处理函数声明于组件内部，因此它们可以直接访问组件的 props。示例中的按钮，当点击时会弹出带有 `message` prop 的 alert：
 
 <Sandpack>
 
@@ -167,7 +169,7 @@ button { margin-right: 10px; }
 
 </Sandpack>
 
-此处有两个按钮，会展示不同的消息。你可以尝试更改传递给他们的消息。
+此处有两个按钮，会展示不同的消息。你可以尝试更改传递给它们的消息。
 
 ### 将事件处理函数作为 props 传递 {/*passing-event-handlers-as-props*/}
 
@@ -229,15 +231,15 @@ button { margin-right: 10px; }
 
 最后，你的 `Button` 组件接收一个名为 `onClick` 的 prop。它直接将这个 prop 以 `onClick={onClick}` 方式传递给浏览器内置的 `<button>`。当点击按钮时，React 会调用传入的函数。
 
-如果你遵循某个 [设计系统](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969) 时，类似于按钮这类的组件，通常会包含样式但不指定行为。而类似 `PlayButton` 和 `UploadButton` 这类的组件则会向下传递事件处理函数。
+如果你遵循某个 [设计系统](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969) 时，按钮之类的组件通常会包含样式，但不会指定行为。而 `PlayButton` 和 `UploadButton` 之类的组件则会向下传递事件处理函数。
 
 ### 命名事件处理函数 prop {/*naming-event-handler-props*/}
 
-内置组件（`<button>` 和 `<div>`）仅支持 [浏览器事件名称](/reference/reactdom-api)，例如 `onClick`。但是，当你构建自己的组件时，你可以按你个人喜好命名事件处理函数的 prop。
+内置组件（`<button>` 和 `<div>`）仅支持 [浏览器事件名称](/apis/reactdom-api)，例如 `onClick`。但是，当你构建自己的组件时，你可以按你个人喜好命名事件处理函数的 prop。
 
 > 按照惯例，事件处理函数 props 应该以 `on` 开头，后跟一个大写字母。
 
-例如，`Button` 组件的 `onClick` prop 可以被命名为 `onSmash`：
+例如，`Button` 组件的 `onClick` prop 本来也可以被命名为 `onSmash`：
 
 <Sandpack>
 
@@ -322,7 +324,7 @@ button { margin-right: 10px; }
 // TODO illo
 -->
 
-事件处理函数还将捕获任何来自子组件的事件。通常，我们会说事件“冒泡”或“传播”到树的上方：它从事件发生的地方开始，然后沿着树向上传播。
+事件处理函数还将捕获任何来自子组件的事件。通常，我们会说事件会沿着树向上“冒泡”或“传播”：它从事件发生的地方开始，然后沿着树向上传播。
 
 下面这个 `<div>` 包含两个按钮。`<div>` **和** 每个按钮都有自己的 `onClick` 处理函数。你认为点击按钮时会触发哪些处理函数？
 
@@ -355,7 +357,7 @@ button { margin: 5px; }
 
 </Sandpack>
 
-如果你点击任一按钮，它自身的 `onClick` 将首先执行，然后是父级 `<div>` 的 `onClick`。因此会出现两条消息。如果你点击 toolbar 本身，将只有父级 `<div>` 的 `onClick` 会执行。
+如果你点击任一按钮，它自身的 `onClick` 将首先执行，然后父级 `<div>` 的 `onClick` 会接着执行。因此会出现两条消息。如果你点击 toolbar 本身，将只有父级 `<div>` 的 `onClick` 会执行。
 
 <Gotcha>
 
@@ -426,7 +428,7 @@ button { margin: 5px; }
 // TODO Illo
 -->
 
-极少数情况下，你可能需要捕获子元素上的所有事件，**即便它们阻止了传播**。例如，你可能希望将每次点击进行埋点记录中，而不管传播逻辑是什么。你可以通过在事件名称末尾添加 `Capture` 来实现：
+极少数情况下，你可能需要捕获子元素上的所有事件，**即便它们阻止了传播**。例如，你可能想对每次点击进行埋点记录，传播逻辑暂且不论。那么你可以通过在事件名称末尾添加 `Capture` 来实现这一点：
 
 ```js
 <div onClickCapture={() => { /* 这会首先执行 */ }}>
@@ -441,7 +443,7 @@ button { margin: 5px; }
 2. 它执行被点击元素的 `onClick` 处理函数。 
 3. 它向上传播，调用所有的 `onClick` 处理函数。
 
-捕获事件对于路由器或分析等代码很有用，但你可能不会在应用程序代码中使用它们。
+捕获事件对于路由或数据分析之类的代码很有用，但你可能不会在应用程序代码中使用它们。
 
 </DeepDive>
 
@@ -462,7 +464,7 @@ function Button({ onClick, children }) {
 }
 ```
 
-你也可以在调用父元素 `onClick` 函数之前，向这个处理函数添加更多代码。此模式是事件传播的另一种 *替代方案* 。它让子组件处理事件，同时也让父组件指定一些额外的行为。与事件传播不同，它并非自动。但是使用这种模式的好处是，你可以清楚地追踪某个事件的结果，以及整个调用链的执行。
+你也可以在调用父元素 `onClick` 函数之前，向这个处理函数添加更多代码。此模式是事件传播的另一种 *替代方案* 。它让子组件处理事件，同时也让父组件指定一些额外的行为。与事件传播不同，它并非自动。但使用这种模式的好处是你可以清楚地追踪因某个事件的触发而执行的整条代码链。
 
 如果你依赖于事件传播，而且很难追踪哪些处理程序在执行，及其执行的原因，可以尝试这种方法。
 
@@ -513,16 +515,16 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-不要混淆 `e.stopPropagation()` 和 `e.preventDefault()`。它们都很有用，但是不相关：
+不要混淆 `e.stopPropagation()` 和 `e.preventDefault()`。它们都很有用，但二者并不相关：
 
-* [`e.stopPropagation()`](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation) 停止触发附加到标签之外的事件处理函数。
+* [`e.stopPropagation()`](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation) 阻止触发绑定在外层标签上的事件处理函数。
 * [`e.preventDefault()`](https://developer.mozilla.org/docs/Web/API/Event/preventDefault) 阻止少数事件的默认浏览器行为。
 
 ## 事件处理函数可以包含副作用吗？ {/*can-event-handlers-have-side-effects*/}
 
-当然可以！事件处理函数是产生副作用的最佳位置。
+当然可以！事件处理函数是执行副作用的最佳位置。
 
-与渲染函数不同，事件处理函数不需要是 [纯函数](/learn/keeping-components-pure)，因此它是 *更改* 某些内容的绝佳之选。例如，更改输入框的值以响应键入，或者更改列表以响应按钮的触发。但是，为了更改某些信息，你首先需要某种方式存储它。在 React 中，这是通过 [state（�组件的缓存）](/learn/state-a-components-memory) 来完成的。你将在下一章节了解所有相关信息。
+与渲染函数不同，事件处理函数不需要是 [纯函数](/learn/keeping-components-pure)，因此它是用来 *更改* 某些值的绝佳位置。例如，更改输入框的值以响应键入，或者更改列表以响应按钮的触发。但是，为了更改某些信息，你首先需要某种方式存储它。在 React 中，这是通过 [state（组件的记忆）](/learn/state-a-components-memory) 来完成的。你将在下一章节了解所有相关信息。
 
 <Recap>
 
@@ -532,7 +534,7 @@ button { margin-left: 5px; }
 * 事件处理函数在组件内部定义，所以它们可以访问 props。
 * 你可以在父组件中定义一个事件处理函数，并将其作为 prop 传递给子组件。
 * 你可以根据特定于应用程序的名称定义事件处理函数的 prop。
-* 事件向上传播。通过事件的第一个参数调用 `e.stopPropagation()` 来防止这种情况。
+* 事件会向上传播。通过事件的第一个参数调用 `e.stopPropagation()` 来防止这种情况。
 * 事件可能具有不需要的浏览器默认行为。调用 `e.preventDefault()` 来阻止这种情况。
 * 从子组件显式调用事件处理函数 prop 是事件传播的另一种优秀替代方案。
 

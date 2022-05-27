@@ -199,7 +199,7 @@ function NumberDescriber(props) {
 
 ### 字符串字面量 {#string-literals}
 
-你可以将字符串字面量赋值给 prop. 如下两个 JSX 表达式是等价的：
+你可以将字符串字面量赋值给 prop。如下两个 JSX 表达式是等价的：
 
 ```js
 <MyComponent message="hello world" />

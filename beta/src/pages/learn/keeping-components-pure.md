@@ -1,5 +1,5 @@
 ---
-title: 保持组件的纯净
+title: 保持组件纯粹
 translators:
   - 7ooz
   - Hyuain
@@ -7,7 +7,7 @@ translators:
 
 <Intro>
 
-一些 JavaScript 函数是“纯”的。纯函数仅仅执行计算，不做其他事情。通过将组件严格编写为纯函数，你可以避免一些随着代码库的增长而出现的、令人困扰的 bugs 和不可预测的行为。但为了获得这些好处，你需要遵循一些规则。
+部分 JavaScript 函数是 **纯粹** 的，通常被称为纯函数。纯函数仅仅执行计算，不做其他事情。通过将组件严格编写为纯函数，你可以避免一些随着代码库的增长而出现的、令人困扰的 bugs 和不可预测的行为。但为了获得这些好处，你需要遵循一些规则。
 
 </Intro>
 
@@ -19,7 +19,7 @@ translators:
 
 </YouWillLearn>
 
-## 纯函数：组件作为公式 {#purity-components-as-formulas}
+## 纯函数：组件作为公式 {/*purity-components-as-formulas*/}
 
 在计算机科学中（尤其是函数式编程的世界中），一个[纯函数](https://wikipedia.org/wiki/Pure_function)具有如下特征：
 
@@ -88,7 +88,7 @@ export default function App() {
 
 <Illustration src="/images/docs/illustrations/i_puritea-recipe.png" alt="A tea recipe for x people: take x cups of water, add 2x spoons of spices, and x spoons of tea!" />
 
-## 副作用：（非）预期的后果 {#side-effects-unintended-consequences}
+## 副作用：（非）预期的后果 {/*side-effects-unintended-consequences*/}
 
 React 的渲染过程必须始终是纯的。组件应该只*返回* 它们的 JSX，而不*改变* 在渲染前存在的任何对象或变量——这将会使它们变得不纯！
 
@@ -162,7 +162,7 @@ React 提供了“严格模式”，在严格模式下开发时，它将会调�
 
 </DeepDive>
 
-### 局部 mutation：组件的小秘密 {#local-mutation-your-components-little-secret}
+### 局部 mutation：组件的小秘密 {/*local-mutation-your-components-little-secret*/}
 
 上述例子里，问题出在渲染过程中，组件改变了 *预先存在的* 变量的值。为了让它听起来更可怕一点，我们将这种现象称为 **突变（mutation）** 。纯函数不会改变函数作用域外的变量、或在函数调用前创建的对象——这使函数变得不纯！
 
@@ -190,13 +190,13 @@ export default function TeaGathering() {
 
 但是，这里不会有影响，因为每次渲染时，你都是在 `TeaGathering` 函数内部创建的它们。 `TeaGathering` 之外的代码不会知道发生了什么。这就被称为 **“局部 mutation”** ——如同藏在组件里的小秘密。
 
-## 哪些地方 _可能_ 引发副作用 {#where-you-can-cause-side-effects}
+## 哪些地方 _可能_ 引发副作用 {/*where-you-can-cause-side-effects*/}
 
 函数式编程在很大程度上依赖于纯函数，但 _某些事物_ 在特定情况下不得不发生改变。这是编程的要义！这些变动——更新屏幕、启动动画、更改数据——被称为**副作用**。它们是 _“额外”_ 发生的事情，与渲染过程无关。
 
 在 React 中，**副作用通常属于 [事件处理程序](/learn/responding-to-events)。** 事件处理程序是 React 在你执行某些操作——例如，当单击按钮时——运行的函数。即使事件处理程序是在你的组件 *内部* 定义的，它们也不会在渲染期间运行！ **因此事件处理程序不需要是纯函数。**
 
-如果你用尽一切选项，仍无法为副作用找到合适的事件处理程序的话，你还可以调用组件中的 [`useEffect`](/reference/useeffect) 方法将其附加到返回的 JSX 中。这告诉 React 在渲染结束后执行它。**然而，这种方法应该是你最后的手段。**
+如果你用尽一切选项，仍无法为副作用找到合适的事件处理程序的话，你还可以调用组件中的 [`useEffect`](/apis/useeffect) 方法将其附加到返回的 JSX 中。这告诉 React 在渲染结束后执行它。**然而，这种方法应该是你最后的手段。**
 
 如果可能，请尝试仅通过渲染过程来表达你的逻辑。你会惊讶于这能带给你多少好处！
 
@@ -228,7 +228,7 @@ export default function TeaGathering() {
   
 <Challenges>
 
-### 修复坏掉的时钟
+### 修复坏掉的时钟 {/*修复坏掉的时钟*/}
 
 该组件尝试在午夜到早上 6 点期间，将 `<h1>` 的 CSS 类设置为 `"night"`，而在其他时间都设置为 `"day"`。但它不起作用。你能修复这个组件吗？
 
@@ -365,7 +365,7 @@ body > * {
 
 </Solution>
 
-### 修复损坏的名片
+### 修复损坏的名片 {/*修复损坏的名片*/}
 
 两个 `Profile` 组件使用不同的数据并排呈现。在第一张名片上点击“Collapse”折叠，然后点击“Expand”展开它。你会看到两张名片现在显示的是同一个人。这是一个 bug。
 
@@ -574,7 +574,7 @@ h1 { margin: 5px; font-size: 18px; }
 
 </Solution>
 
-### 修复损坏的故事托盘
+### 修复损坏的故事托盘 {/*修复损坏的故事托盘*/}
 
 你所在公司的 CEO 要求你在你的在线时钟 app 中添加“故事”，你不能拒绝。你已经编写了一个 `StoryTray` 组件，它接受一个 `stories` 列表，后跟一个 “Create Story” 占位符。
 
