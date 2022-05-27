@@ -24,7 +24,7 @@ translators:
 * [安装 **Firefox** 扩展](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
 * [安装 **Edge** 扩展](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil)
 
-现在，如果你访问一个用 **React 构建** 的网站，你将看到 _Components_ 和 _Profiler_ 面板。
+现在，如果你访问一个用 **React 构建** 的网站，你将看到 **Components** 和 **Profiler** 面板。
 
 ![React Developer Tools extension](/images/docs/react-devtools-extension.png)
 
@@ -75,4 +75,4 @@ react-devtools
 
 > 如果几秒钟后开发者工具未连接，请尝试重新加载应用程序。
 
-[了解有关调试 React Native 的更多信息。](https://reactnative.dev/docs/debugging)
+[了解有关调试 React Native 的更多信息](https://reactnative.dev/docs/debugging)。
