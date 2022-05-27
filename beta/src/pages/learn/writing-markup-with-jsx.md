@@ -1,5 +1,10 @@
 ---
 title: 使用 JSX 书写标记语言
+translators:
+  - songhn233
+  - fqd511
+  - KnowsCount
+  - QC-L
 ---
 
 <Intro>
