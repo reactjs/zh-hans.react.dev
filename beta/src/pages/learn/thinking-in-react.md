@@ -3,6 +3,8 @@ title: React 哲学
 translators:
   - HerbertHe
   - KnowsCount
+  - mophia
+  - QC-L
 ---
 
 <Intro>
