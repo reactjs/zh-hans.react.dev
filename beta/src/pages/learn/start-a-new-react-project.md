@@ -6,30 +6,32 @@ translators:
 
 <Intro>
 
-如果你正在学习 React 或考虑将其添加到现有项目中，你可以通过 [使用脚本标签添加 React 到任意的 HTML 页面](/learn/add-react-to-a-website) 快速入门。如果你的项目需要很多组件和文件，那么是时候考虑下面的选项了！
+If you're starting a new project, we recommend to use a toolchain or a framework. These tools provide a comfortable development environment but require a local Node.js installation.
 
 </Intro>
 
-## 选择你的冒险 {/*choose-your-own-adventure*/}
+<YouWillLearn>
 
-React 是一个允许你将 UI 代码有效地组织称为组件的框架。React 不关注路由或者数据管理。对于这些特性，你需要使用第三方库或者书写自己的解决方案。这意味着有几种方法可以启动一个新的 React 项目：
+* How toolchains are different from frameworks
+* How to start a project with a minimal toolchain
+* How to start a project with a fully-featured framework
+* What's inside popular toolchains and frameworks
 
-- 从**最小工具链开始，**如有必要添加新特性到你的项目中。
-- 从一个已经内置了通用功能的**固执己见的框架**开始。
+</YouWillLearn>
 
-无论你刚刚入门、想要构建大型项目，或者想构建自己的工具链，本指南都会为你指明正确的道路。
+## Choose your own adventure {/*choose-your-own-adventure*/}
 
-## 使用 React 工具链入门 {/*getting-started-with-a-react-toolchain*/}
+React is a library that lets you organize UI code by breaking it apart into pieces called components. React doesn't take care of routing or data management. This means there are several ways to start a new React project:
 
-如果你刚开始使用 React，我们推荐 [Create React App](https://create-react-app.dev/)，这是试用 React 特性的一种流行方式，也是构建一个单页面，客户端的好办法。Create React App 是一个专为 React 配置坚持己见的工具链。工具链有助于处理以下事情：
+* [Start with an **HTML file and a script tag**.](/learn/add-react-to-a-website) This doesn't require Node.js setup but offers limited features.
+* Start with a **minimal toolchain,** adding more features to your project as you go. (Great for learning!)
+* Start with an **opinionated framework** that has common features like data fetching and routing built-in.
 
-- 允许扩展许多文件和组件
-- 使用来自 npm 的第三方库
-- 及早地发现常见错误
-- 开发过程中的实时编辑 CSS 和 JS
-- 优化生产输出
+## Getting started with a minimal toolchain {/*getting-started-with-a-minimal-toolchain*/}
 
-你可以在终端通过 Create React App 一行代码来开始构建你的应用！(**确保你已经安装 [Node.js](https://nodejs.org/)！**)
+If you're **learning React,** we recommend [Create React App](https://create-react-app.dev/). It is the most popular way to try out React and build a new single-page, client-side application. It's made for React but isn't opinionated about routing or data fetching.
+
+First, install [Node.js](https://nodejs.org/en/). Then open your terminal and run this line to create a project:
 
 <TerminalBlock>
 
@@ -48,35 +50,36 @@ npm start
 
 想了解更多信息，请 [查阅官方指南](https://create-react-app.dev/docs/getting-started)。
 
-> Create React App 不处理后端逻辑或者数据库；它只是创建了一个前端构建管道。这意味着你可以将它与你想要的任何后端一起使用。但是你正在寻找更多特性，比如路由和服务端渲染逻辑，请继续往下阅读！
+> Create React App doesn't handle backend logic or databases. You can use it with any backend. When you build a project, you'll get a folder with static HTML, CSS and JS. Because Create React App can't take advantage of the server, it doesn't provide the best performance. If you're looking for faster loading times and built-in features like routing and server-side logic, we recommend using a framework instead.
 
-### 其它选项 {/*other-options-1*/}
+### Popular alternatives {/*popular-alternatives*/}
 
-Create React App 非常适合开始使用 React，但如果你想要更轻量级的工具链，可以尝试以下流行的工具链：
+* [Vite](https://vitejs.dev/guide/)
+* [Parcel](https://parceljs.org/)
 
-- [Vite](https://vitejs.dev/guide/)
-- [Parcel](https://parceljs.org/)
-- [Snowpack](https://www.snowpack.dev/tutorials/react)
+## Building with a full-featured framework {/*building-with-a-full-featured-framework*/}
 
-## 使用 React 和框架构建 {/*building-with-react-and-a-framework*/}
+If you're looking to **start a production-ready project,** [Next.js](https://nextjs.org/) is a great place to start. Next.js is a popular, lightweight framework for static and server‑rendered applications built with React. It comes pre-packaged with features like routing, styling, and server-side rendering, getting your project up and running quickly. 
 
-如果你想开始一个大规模、生产可用的项目，[Next.js](https://nextjs.org/) 是一个很好的起点。Next.js 是一个流行的，轻量的使用 React 构建的静态和服务端渲染框架。它预先打包了路由，样式，服务端渲染等特性，可用快速地开始你的项目。
+The [Next.js Foundations](https://nextjs.org/learn/foundations/about-nextjs) tutorial is a great introduction to building with React and Next.js.
 
-使用官方指南来 [入门 Next.js](https://nextjs.org/docs/getting-started)。
+### Popular alternatives {/*popular-alternatives*/}
 
-### 其它选项 {/*other-options-2*/}
-
-- [Gatsby](https://www.gatsbyjs.org/) 允许你使用 React 和 GraphQL 生成静态站点。
-- [Razzle](https://razzlejs.org/) 是一个无需任何配置的服务端渲染框架，它提供了比 Next.js 更多的灵活性。
+* [Gatsby](https://www.gatsbyjs.org/)
+* [Remix](https://remix.run/)
+* [Razzle](https://razzlejs.org/)
 
 ## 自定义工具链 {/*custom-toolchains*/}
 
-你可能更喜欢创建和配置自己的工具链。一个 JavaScript 构建工具链通常包括：
+You may prefer to create and configure your own toolchain. A toolchain typically consists of:
 
-- 一个**包管理器**——允许你安装，更新和管理第三方包。[Yarn](https://yarnpkg.com/) 和 [npm](https://www.npmjs.com/) 是两个流行的包管理器。
-- 一个**打包器**——允许你编写模块化代码并将其捆绑到更小的包中来优化加载时间。[Webpack](https://webpack.js.org/)，[Snowpack](https://www.snowpack.dev/)，[Parcel](https://parceljs.org/) 是几个流行的打包器。
-- 一个**编译器**——允许你编写在旧浏览器中可以正常运行的现代 JavaScript 代码。[Babel](https://babeljs.io/) 是其中的一个例子。
+* A **package manager** lets you install, update, and manage third-party packages. Popular package managers: [npm](https://www.npmjs.com/) (built into Node.js), [Yarn](https://yarnpkg.com/), [pnpm](https://pnpm.io/).
+* A **compiler** lets you compile modern language features and additional syntax like JSX or type annotations for the browsers. Popular compilers: [Babel](https://babeljs.io/), [TypeScript](http://typescript.org/), [swc](https://swc.rs/).
+* A **bundler** lets you write modular code and bundle it together into small packages to optimize load time. Popular bundlers: [webpack](https://webpack.js.org/), [Parcel](https://parceljs.org/), [esbuild](https://esbuild.github.io/), [swc](https://swc.rs/).
+* A **minifier** makes your code more compact so that it loads faster. Popular minifiers: [Terser](https://terser.org/), [swc](https://swc.rs/).
+* A **server** handles server requests so that you can render components to HTML. Popular servers: [Express](https://expressjs.com/).
+* A **linter** checks your code for common mistakes. Popular linters: [ESLint](https://eslint.org/).
+* A **test runner** lets you run tests against your code. Popular test runners: [Jest](https://jestjs.io/).
 
-在一个大型项目中，你可以需要一个工具来管理单个存储库中的多个包。[Nx](https://nx.dev/react) 是这种工具的例子。
+If you prefer to set up your own JavaScript toolchain from scratch, [check out this guide](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658) that re-creates some of the Create React App functionality. A framework will usually also provide a routing and a data fetching solution. In a larger project, you might also want to manage multiple packages in a single repository with a tool like [Nx](https://nx.dev/react).
 
-如果你更喜欢从头开始设置自己的 JavaScript 工具链，对于以函数方式重新创建 React 应用可以 [查阅指南](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658)。

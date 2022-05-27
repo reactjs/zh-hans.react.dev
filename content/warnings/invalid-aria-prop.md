@@ -8,7 +8,7 @@ permalink: warnings/invalid-aria-prop.html
 
 1. 如果你认为你使用的是合法的属性，仔细检查拼写。`aria-labelledby` 和 `aria-activedescendant` 常常会被拼错。
 
-2. React 还无法识别你指定的属性。这可能会在 React 的未来版本中被修复。但是，React 目前会去除所有未知属性，因此即使在 React 应用中指定这些属性也无法使它们渲染。
+2. React 还无法识别你指定的属性。这可能会在 React 的未来版本中被修复。
 
 **译注：**
  

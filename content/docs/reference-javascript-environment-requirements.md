@@ -6,26 +6,13 @@ category: Reference
 permalink: docs/javascript-environment-requirements.html
 ---
 
-React 16 依赖集合类型 [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) 和 [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) 。如果你要支持无法原生提供这些能力（例如 IE < 11）或实现不规范（例如 IE 11）的旧浏览器与设备，考虑在你的应用库中包含一个全局的 polyfill ，例如 [core-js](https://github.com/zloirock/core-js)。
+React 18 支持所有现代浏览器（Edge, Firefox, Chrome, Safari 等）。
 
-React 16 使用 core-js 支持老版本浏览器，其 polyfill 环境可能如下：
+如果你支持旧的浏览器和设备，如果 Internet Explorer，它们没有提供原生的现代浏览器特性，或有些不符合标准的实现，你可以考虑在应用程序中引入一个全局的 polyfill。
 
-```js
-import 'core-js/es/map';
-import 'core-js/es/set';
+以下是 React 18 使用的现代浏览器特性的列表：
+- [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [`Symbol`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
+- [`Object.assign`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root')
-);
-```
-
-React 同时还依赖于 `requestAnimationFrame`（甚至包括测试环境）。
-你可以使用 [raf](https://www.npmjs.com/package/raf) 的 package 增添 `requestAnimationFrame` 的 shim：
-
-```js
-import 'raf/polyfill';
-```
+这些特性的 polyfill 取决于你的环境，对于大部分用户来说，你可以配置你的 [Browserlist](https://github.com/browserslist/browserslist)。对于其他用户，你可能需要直接引入类似于 [`core-js`](https://github.com/zloirock/core-js) 这样的 polyfills。

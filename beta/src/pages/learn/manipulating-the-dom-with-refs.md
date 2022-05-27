@@ -4,7 +4,7 @@ title: 'Manipulating the DOM with Refs'
 
 <Intro>
 
-Because React handles updating the [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) to match your render output, your components won't often need to manipulate the DOM. However, sometimes you might need access to the DOM elements managed by React--for example, to focus a node, scroll to it, or measure its size and position. There is no built-in way to do those things in React, so you will need a [ref](/learn/referencing-values-with-refs#refs-and-the-dom) to the DOM node.
+React automatically updates the [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) to match your render output, so your components won't often need to manipulate it. However, sometimes you might need access to the DOM elements managed by React--for example, to focus a node, scroll to it, or measure its size and position. There is no built-in way to do those things in React, so you will need a *ref* to the DOM node.
 
 </Intro>
 
@@ -80,11 +80,11 @@ To implement this:
 3. In the `handleClick` function, read the input DOM node from `inputRef.current` and call [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) on it with `inputRef.current.focus()`.
 4. Pass the `handleClick` event handler to `<button>` with `onClick`.
 
-While DOM manipulation is the most common use case for refs, the `useRef` Hook can be used for storing other things outside React, like timer IDs. Similarly to state, refs remain between renders. You can even think of refs as state variables that don't trigger re-renders when you set them! You can learn more about refs in [Referencing Values with Refs](/learn/referencing-values-with-refs).
+While DOM manipulation is the most common use case for refs, the `useRef` Hook can be used for storing other things outside React, like timer IDs. Similarly to state, refs remain between renders. Refs are like state variables that don't trigger re-renders when you set them. For an introduction to refs, see [Referencing Values with Refs](/learn/referencing-values-with-refs).
 
 ### Example: Scrolling to an element {/*example-scrolling-to-an-element*/}
 
-You can have more than a single ref in a component. In this example, there is a carousel of three images and three buttons to center them in the view port by calling the browser [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) method the corresponding DOM node:
+You can have more than a single ref in a component. In this example, there is a carousel of three images. Each button centers an image by calling the browser [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) method the corresponding DOM node:
 
 <Sandpack>
 
@@ -207,7 +207,9 @@ In the above examples, there is a predefined number of refs. However, sometimes 
 
 This is because **Hooks must only be called at the top-level of your component.** You can't call `useRef` in a loop, in a condition, or inside a `map()` call.
 
-Instead, the solution is to **pass a function to the `ref` attribute**. This is called a "ref callback". React will call your ref callback with the DOM node when it's time to set the ref, and with `null` when it's time to clear it. This lets you maintain your own array or a [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), and access any ref by its index or some kind of ID.
+One possible way around this is to get a single ref to their parent element, and then use DOM manipulation methods like [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) to "find" the individual child nodes from it. However, this is brittle and can break if your DOM structure changes.
+
+Another solution is to **pass a function to the `ref` attribute**. This is called a "ref callback". React will call your ref callback with the DOM node when it's time to set the ref, and with `null` when it's time to clear it. This lets you maintain your own array or a [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), and access any ref by its index or some kind of ID.
 
 This example shows how you can use this approach to scroll to an arbitrary node in a long list:
 
@@ -373,7 +375,11 @@ export default function MyForm() {
 
 Clicking the button will print an error message to the console:
 
-> Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
+<ConsoleBlock level="error">
+
+Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
+
+</ConsoleBlock>
 
 This happens because by default React does not let a component access the DOM nodes of other components. Not even for its own children! This is intentional. Refs are an escape hatch that should be used sparingly. Manually manipulating _another_ component's DOM nodes makes your code even more fragile.
 
@@ -707,25 +713,27 @@ export default function VideoPlayer() {
 
   return (
     <>
+      <button onClick={handleClick}>
+        {isPlaying ? 'Pause' : 'Play'}
+      </button>
       <video width="250">
         <source
           src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
           type="video/mp4"
         />
       </video>
-      <button onClick={handleClick}>
-        {isPlaying ? 'Pause' : 'Play'}
-      </button>
     </>
   )
 }
 ```
 
 ```css
-button { display: block }
+button { display: block; margin-bottom: 20px; }
 ```
 
 </Sandpack>
+
+For an extra challenge, keep the "Play" button in sync with whether the video is playing even if the user right-clicks the video and plays it using the built-in browser media controls. You might want to listen to `onPlay` and `onPause` on the video to do that.
 
 <Solution>
 
@@ -753,25 +761,32 @@ export default function VideoPlayer() {
 
   return (
     <>
-      <video width="250" ref={ref}>
+      <button onClick={handleClick}>
+        {isPlaying ? 'Pause' : 'Play'}
+      </button>
+      <video
+        width="250"
+        ref={ref}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+      >
         <source
           src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
           type="video/mp4"
         />
       </video>
-      <button onClick={handleClick}>
-        {isPlaying ? 'Pause' : 'Play'}
-      </button>
     </>
   )
 }
 ```
 
 ```css
-button { display: block }
+button { display: block; margin-bottom: 20px; }
 ```
 
 </Sandpack>
+
+In order to handle the built-in browser controls, you can add `onPlay` and `onPause` handlers to the `<video>` element and call `setIsPlaying` from them. This way, if the user plays the video using the browser controls, the state will adjust accordingly.
 
 </Solution>
 

@@ -65,7 +65,14 @@ Suspense 使得组件可以“等待”某些操作结束后，再进行渲染�
 - [`React.lazy`](#reactlazy)
 - [`React.Suspense`](#reactsuspense)
 
-### Hook {#hooks}
+### Transitions {#transitions}
+
+*Transitions* 是 React 18 引入的一个全新的并发特性。它允许你将标记更新作为一个 transitions，这会告诉 React 它们可以被中断执行，并避免回到已经可见内容的 Suspense 降级方案。
+
+- [`React.startTransition`](#starttransition)
+- [`React.useTransition`](/docs/hooks-reference.html#usetransition)
+
+### Hooks {#hooks}
 
 *Hook* 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。Hook 拥有[专属文档章节](/docs/hooks-intro.html)和单独的 API 参考文档：
 
@@ -81,6 +88,12 @@ Suspense 使得组件可以“等待”某些操作结束后，再进行渲染�
   - [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle)
   - [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect)
   - [`useDebugValue`](/docs/hooks-reference.html#usedebugvalue)
+  - [`useDeferredValue`](/docs/hooks-reference.html#usedeferredvalue)
+  - [`useTransition`](/docs/hooks-reference.html#usetransition)
+  - [`useId`](/docs/hooks-reference.html#useid)
+- [Library Hooks](/docs/hooks-reference.html#library-hooks)
+  - [`useSyncExternalStore`](/docs/hooks-reference.html#usesyncexternalstore)
+  - [`useInsertionEffect`](/docs/hooks-reference.html#useinsertioneffect)
 
 * * *
 
@@ -329,13 +342,11 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 
 请注意，渲染 `lazy` 组件依赖该组件渲染树上层的 `<React.Suspense>` 组件。这是指定加载指示器（loading indicator）的方式。
 
-> **注意**
->
-> 使用 `React.lazy` 的动态引入特性需要 JS 环境支持 Promise。在 IE11 及以下版本的浏览器中需要通过引入 polyfill 来使用该特性。
-
 ### `React.Suspense` {#reactsuspense}
 
-`React.Suspense` 可以指定加载指示器（loading indicator），以防其组件树中的某些子组件尚未具备渲染条件。目前，懒加载组件是 `<React.Suspense>` 支持的**唯一**用例：
+`React.Suspense` 可以指定加载指示器（loading indicator），以防其组件树中的某些子组件尚未具备渲染条件。在未来，我们计划让 `Suspense` 处理更多的场景，如数据获取等。你可以在 [我们的路线图](/blog/2018/11/27/react-16-roadmap.html) 了解这一点。
+
+如今，懒加载组件是 `<React.Suspense>` 支持的唯一用例：
 
 ```js
 // 该组件是动态加载的
@@ -355,8 +366,28 @@ function MyComponent() {
 
 它已被收录在了我们的[代码分割指南](/docs/code-splitting.html#reactlazy)中。请注意，`lazy` 组件可以位于 `Suspense` 组件树的深处——它不必包装树中的每一个延迟加载组件。最佳实践是将 `<Suspense>` 置于你想展示加载指示器（loading indicator）的位置，而 `lazy()` 则可被放置于任何你想要做代码分割的地方。
 
-虽然目前尚未支持其它特性，但未来我们计划让 `Suspense` 支持包括数据获取在内的更多场景。你可以在 [roadmap](/blog/2018/11/27/react-16-roadmap.html) 中了解相关信息。
-
->注意:
+> 注意
 >
->`React.lazy()` 和 `<React.Suspense>` 尚未在 `ReactDOMServer` 中支持。这是已知问题，将会在未来解决。
+> 对于已经展示给用户的内容来说，在切换回去时，展示加载指示器可能会让人困惑。有时，在准备新的 UI 时，展示 "旧" 的 UI 可能会更加友好。要做到这一点，你可以使用新的 transition API [`startTransition`](#starttransition) 和 [`useTransition`](/docs/hooks-reference.html#usetransition) 来将标记更新为 transitions，同时避免意外的兜底方案。
+
+#### 服务端渲染中的 `React.Suspense` {#reactsuspense-in-server-side-rendering}
+在服务端渲染过程中，Suspense 边界允许你挂起，通过较小的块来刷新应用程序。
+当组件挂起时，我们会安排一个低优先级的任务来渲染最近的 Suspense 边界的 fallback。如果组件在我们刷新 fallback 之前取消挂起，那么我们会发送实际内容并丢弃 fallback。
+
+#### hydrate 过程中的 `React.Suspense` {#reactsuspense-during-hydration}
+Suspense 边界依赖于它们的父边界，在它们可以 hydrate 前被 hydrate，但是它们可以独立于兄弟边界进行 hydrate。边界 hydrate 前发生的事件将导致边界 hydrate 的优先级高于相邻边界的优先级。具体请参阅[讨论](https://github.com/reactwg/react-18/discussions/130)。
+
+### `React.startTransition` {#starttransition}
+
+```js
+React.startTransition(callback)
+```
+`React.startTransition` 让你把提供的 fallback 里面的更新标记为 transitions。这个方法是为了在 [`React.useTransition`](/docs/hooks-reference.html#usetransition) 不可用时使用。
+
+> 注意：
+>
+> 过渡期的更新会被更紧急的更新取代，如点击操作。
+>
+> 过渡期的更新不会显示重新挂起内容的 fallback，允许用户在渲染更新时继续进行交互。
+>
+> `React.startTransition` 不提供 `isPending` 的标志。要跟踪过渡的待定状态，请参阅 [`React.useTransition`](/docs/hooks-reference.html#usetransition)。
