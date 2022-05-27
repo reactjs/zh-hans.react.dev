@@ -203,7 +203,7 @@ JSX 要求标签必须正确闭合。像 `<img>` 这样的自闭合标签必须�
 </>
 ```
 
-### 3. 使用驼峰式命名法给 <s>所有</s> 大部分属性命名！{/*3-camelcase-salls-most-of-the-things*/}
+### 3. 使用驼峰式命名法给 <s>所有</s> 大部分属性命名！ {/*3-camelcase-salls-most-of-the-things*/}
 
 JSX 最终会被转化为 JavaScript，而 JSX 中的属性也会变成 JavaScript 对象中的键值对。在你自己的组件中，经常会遇到需要用变量的方式读取这些属性的时候。但 JavaScript 对变量的命名有限制。例如，变量名称不能包含 `-` 符号或者像 `class` 这样的保留字。
 

@@ -12,7 +12,7 @@
           "path": "/learn/installation",
           "routes": [
             {
-              "title": "开始一个新的 React 项目",
+              "title": "启动一个新的 React 项目",
               "path": "/learn/start-a-new-react-project"
             },
             {
