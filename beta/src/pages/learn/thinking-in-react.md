@@ -200,7 +200,7 @@ td {
 
 </Sandpack>
 
-(If this code looks intimidating, go through the [Quick Start](/learn/) first!)
+（如果你无法理解这段代码，请先阅读 [快速入门](/learn/) 章节！)
 
 在构建你的组件之后，即拥有一个渲染数据模型的可复用组件库。因为这是一个静态应用程序，组件仅返回 JSX。最顶层组件 (`FilterableProductTable`) 将接收你的数据模型作为其 prop。这被称之为 _单向数据流_，因为数据从树的顶层组件传递到下面的组件。
 
