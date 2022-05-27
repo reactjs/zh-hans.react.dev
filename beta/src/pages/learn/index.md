@@ -1,6 +1,6 @@
 ---
 title: 快速入门
-translator:
+translators:
  - x-cold
  - sooia
  - KnowsCount
