@@ -266,7 +266,7 @@ Props 和 state 是不同的，但它们可以共同工作。父组件将经常�
 
 现在为这个 state 贯彻我们的策略:
 
-1. **验证组件使用 state:**
+1. **验证使用 state 的组件:**
     * `ProductTable` 需要基于 state (搜索文本和复选框值) 过滤产品列表。
     * `SearchBar` 需要展示 state (搜索文本和复选框值)。
 2. **寻找它们的父组件:** 它们的第一个共同父组件为 `FilterableProductTable`。
