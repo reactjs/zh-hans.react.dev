@@ -161,7 +161,7 @@ No errors!
 [TypeScript](https://www.typescriptlang.org/) 是一种由微软开发的编程语言。它是 JavaScript 的一个类型超集，包含独立的编译器。作为一种类型语言，TypeScript 可以在构建时发现 bug 和错误，这样程序运行时就可以避免此类错误。您可以通过[此文档](https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter) 了解更多有关在 React 中使用 TypeScript 的知识。
 
 完成以下步骤，便可开始使用 TypeScript：
-* 将 TypeScript 添加到你的项目依赖中。
+* 将 TypeScript 添加到你的项目依赖中
 * 配置 TypeScript 编译选项
 * 使用正确的文件扩展名
 * 为你使用的库添加定义

@@ -11,11 +11,11 @@ import sidebarHome from '../../../sidebarHome.json';
 import sidebarLearn from '../../../sidebarLearn.json';
 import sidebarReference from '../../../sidebarReference.json';
 
-function inferSection(pathname: string): 'learn' | 'reference' | 'home' {
+function inferSection(pathname: string): 'learn' | 'apis' | 'home' {
   if (pathname.startsWith('/learn')) {
     return 'learn';
-  } else if (pathname.startsWith('/reference')) {
-    return 'reference';
+  } else if (pathname.startsWith('/apis')) {
+    return 'apis';
   } else {
     return 'home';
   }
@@ -33,7 +33,7 @@ export function MobileNav() {
     case 'learn':
       tree = sidebarLearn.routes[0];
       break;
-    case 'reference':
+    case 'apis':
       tree = sidebarReference.routes[0];
       break;
   }
@@ -52,12 +52,15 @@ export function MobileNav() {
           Learn
         </TabButton>
         <TabButton
-          isActive={section === 'reference'}
-          onClick={() => setSection('reference')}>
+          isActive={section === 'apis'}
+          onClick={() => setSection('apis')}>
           API
         </TabButton>
       </div>
-      <SidebarRouteTree routeTree={tree as RouteItem} isMobile={true} />
+      {/* No fallback UI so need to be careful not to suspend directly inside. */}
+      <React.Suspense fallback={null}>
+        <SidebarRouteTree routeTree={tree as RouteItem} isMobile={true} />
+      </React.Suspense>
     </>
   );
 }

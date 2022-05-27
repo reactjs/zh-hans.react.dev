@@ -4,7 +4,7 @@ title: 使用 JSX 书写标记语言
 
 <Intro>
   
-JSX 是一个 JavaScript 语法扩展，可以让你在 JavaScript 文件中书写类似 HTML 的标记。虽然还有其它方式可以编写组件，但大部分 React 开发者更喜欢 JSX 的简洁性，并且在大部分代码库中使用它。
+**JSX** 是 JavaScript 语法扩展，可以让你在 JavaScript 文件中书写类似 HTML 的标记。虽然还有其它方式可以编写组件，但大部分 React 开发者更喜欢 JSX 的简洁性，并且在大部分代码库中使用它。
 
 </Intro>
 
@@ -20,11 +20,39 @@ JSX 是一个 JavaScript 语法扩展，可以让你在 JavaScript 文件中书�
 
 网页是构建在 HTML、CSS 和 JavaScript 之上的。多年以来，web 开发者都是将网页内容存放在 HTML 中，样式放在 CSS 中，而逻辑则放在 JavaScript 中 —— 通常是在不同的文件中！页面的内容通过标记语言描述并存放在 HTML 文件中，而逻辑则单独存放在 JavaScript 文件中。
 
-![HTML and JavaScript living in separate files](/images/docs/illustrations/i_html_js.svg)
+<DiagramGroup>
 
-但是随着网页交互复杂度的提升，逻辑愈发决定了内容的展示。JavaScript 开始主导 HTML 显示的内容！这就是为什么 **在 React 中渲染逻辑和标记存放在一个相同的地方 —— 组件！**
+<Diagram name="writing_jsx_html" height={237} width={325} alt="HTML markup with purple background and a div with two child tags: p and form. ">
 
-![JavaScript functions sprinkled with markup](/images/docs/illustrations/i_jsx.svg)
+HTML
+
+</Diagram>
+
+<Diagram name="writing_jsx_js" height={237} width={325} alt="Three JavaScript handlers with yellow background: onSubmit, onLogin, and onClick.">
+
+JavaScript
+
+</Diagram>
+
+</DiagramGroup>
+
+But as the Web became more interactive, logic increasingly determined content. JavaScript was in charge of the HTML! This is why **in React, rendering logic and markup live together in the same place—components.**
+
+<DiagramGroup>
+
+<Diagram name="writing_jsx_sidebar" height={330} width={325} alt="React component with HTML and JavaScript from previous examples mixed. Function name is Sidebar which calls the function isLoggedIn, highlighted in yellow. Nested inside the function highlighted in purple is the p tag from before, and a Form tag referencing the component shown in the next diagram.">
+
+`Sidebar.js` React component
+
+</Diagram>
+
+<Diagram name="writing_jsx_form" height={330} width={325} alt="React component with HTML and JavaScript from previous examples mixed. Function name is Form containing two handlers onClick and onSubmit highlighted in yellow. Following the handlers is HTML highlighted in purple. The HTML contains a form element with a nested input element, each with an onClick prop.">
+
+`Form.js` React component
+
+</Diagram>
+
+</DiagramGroup>
 
 将一个按钮的渲染逻辑和标记放在一起可以确保它们在每次编辑时都能保持互相同步。反之，彼此无关的细节是互相隔离的，例如按钮的标记和侧边栏的标记。这样我们在修改其中任意一个组件时会更安全。
 
