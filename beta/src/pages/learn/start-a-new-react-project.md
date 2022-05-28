@@ -74,6 +74,7 @@ npm start
 
 你可能喜欢创建和配置你自己的工具链，一个工具链通常由以下部分组成：
 
+<<<<<<< HEAD
 * 一款 **包管理器（package manager）** 可以让你安装、更新并管理第三方软件包。主流的包管理器有：[npm](https://www.npmjs.com/)（内置于 Node.js）中，[Yarn](https://yarnpkg.com/)，[pnpm](https://pnpm.io/)。
 * 一款 **编译器（compiler）** 可以让你编译现代语法特性和额外语法特性，如 JSX 或浏览器的类型注释。主流的编译器有：[Babel](https://babeljs.io/)，[TypeScript](http://typescript.org/)，[swc](https://swc.rs/)。
 * 一款 **捆绑器（bundler）** 可以编写模块化代码并将其进行捆绑到小包中，以优化加载时间。主流的捆绑器有：[webpack](https://webpack.js.org/)，[Parcel](https://parceljs.org/)，[esbuild](https://esbuild.github.io/)，[swc](https://swc.rs/).
@@ -81,5 +82,16 @@ npm start
 * 一款 **服务端框架** 处理服务器请求，以便于将组件渲染成 HTML。主流的服务端框架有：[Express](https://expressjs.com/)。
 * 一款 **代码检查工具（linter）** 用于检查你的代码是否包含常见错误。主流的代码检查工具有： [ESLint](https://eslint.org/)。
 * 一款 **测试框架（test runner）** 用于对你的代码进行测试。主流测测试框架：[Jest](https://jestjs.io/)。
+=======
+* A **package manager** lets you install, update, and manage third-party packages. Popular package managers: [npm](https://www.npmjs.com/) (built into Node.js), [Yarn](https://yarnpkg.com/), [pnpm](https://pnpm.io/).
+* A **compiler** lets you compile modern language features and additional syntax like JSX or type annotations for the browsers. Popular compilers: [Babel](https://babeljs.io/), [TypeScript](http://typescript.org/), [swc](https://swc.rs/).
+* A **bundler** lets you write modular code and bundle it together into small packages to optimize load time. Popular bundlers: [webpack](https://webpack.js.org/), [Parcel](https://parceljs.org/), [esbuild](https://esbuild.github.io/), [swc](https://swc.rs/).
+* A **minifier** makes your code more compact so that it loads faster. Popular minifiers: [Terser](https://terser.org/), [swc](https://swc.rs/).
+* A **server** handles server requests so that you can render components to HTML. Popular servers: [Express](https://expressjs.com/).
+* A **linter** checks your code for common mistakes. Popular linters: [ESLint](https://eslint.org/).
+* A **test runner** lets you run tests against your code. Popular test runners: [Jest](https://jestjs.io/).
+
+If you prefer to set up your own JavaScript toolchain from scratch, [check out this guide](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658) that re-creates some of the Create React App functionality. A framework will usually also provide a routing and a data fetching solution. In a larger project, you might also want to manage multiple packages in a single repository with a tool like [Nx](https://nx.dev/react) or [Turborepo](https://turborepo.org/).
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
 
 如果你喜欢从 0 开始搭建自己的 JavaScript 工具链，[请参阅这篇指南](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658)，它重新编写了 Create React App 的功能。一个框架通常也会提供路由和数据获取的解决方案。在一个较大的项目中，你可能还需要用到类似 [Nx](https://nx.dev/react) 这样的工具来管理一个仓库中的多个包。
