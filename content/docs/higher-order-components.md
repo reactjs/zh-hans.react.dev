@@ -124,7 +124,7 @@ const BlogPostWithSubscription = withSubscription(
 
 第一个参数是被包装组件。第二个参数通过 `DataSource` 和当前的 props 返回我们需要的数据。
 
-当渲染 `CommentListWithSubscription` 和 `BlogPostWithSubscription` 时， `CommentList` 和 `BlogPost` 将传递一个 `data` prop，其中包含从 `DataSource` 检索到的最新数据：
+当渲染 `CommentListWithSubscription` 和 `BlogPostWithSubscription` 时， 将有一个 `data` prop会传递给 `CommentList` 和 `BlogPost`，该`data`是通過 `DataSource` 检索到的最新数据：
 
 ```js
 // 此函数接收一个组件...
