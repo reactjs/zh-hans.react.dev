@@ -82,4 +82,4 @@ npm start
 * 一款 **代码检查工具（linter）** 用于检查你的代码是否包含常见错误。主流的代码检查工具有： [ESLint](https://eslint.org/)。
 * 一款 **测试框架（test runner）** 用于对你的代码进行测试。主流测测试框架：[Jest](https://jestjs.io/)。
 
-如果你喜欢从 0 开始搭建自己的 JavaScript 工具链，[请参阅这篇指南](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658)，它重新编写了 Create React App 的功能。一个框架通常也会提供路由和数据获取的解决方案。在一个较大的项目中，你可能还需要用到类似 [Nx](https://nx.dev/react) 这样的工具来管理一个仓库中的多个包。
+如果你喜欢从 0 开始搭建自己的 JavaScript 工具链，[请参阅这篇指南](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658)，它重新编写了 Create React App 的功能。一个框架通常也会提供路由和数据获取的解决方案。在一个较大的项目中，你可能还需要用到类似 [Nx](https://nx.dev/react) 或者 [Turborepo](https://turborepo.org/) 这样的工具来管理一个仓库中的多个包。
