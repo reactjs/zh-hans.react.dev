@@ -117,7 +117,7 @@ React 会自动添加 ”px” 后缀到内联样式为数字的属性后。如�
 
 如果你使用 React 服务端渲染，通常会在当服务端与客户端渲染不同的内容时发出警告。但是，在一些极少数的情况下，很难甚至于不可能保证内容的一致性。例如，在服务端和客户端上，时间戳通常是不同的。 
 
-如果设置 `suppressHydrationWarning` 为 `true`，React 将不会警告你属性与元素内容不一致。它只会对元素一级深度有效，并且打算作为应急方案。因此不要过度使用它。你可以在 [`ReactDOM.hydrate()` 文档](/docs/react-dom.html#hydrate) 中了解更多关于 hydration 的信息。
+如果设置 `suppressHydrationWarning` 为 `true`，React 将不会警告你属性与元素内容不一致。它只会对元素一级深度有效，并且打算作为应急方案。因此不要过度使用它。你可以在 [`ReactDOM.hydrateRoot()` 文档](/docs/react-dom-client.html#hydrateroot) 中了解更多关于 hydration 的信息。
 
 ### value {#value}
 

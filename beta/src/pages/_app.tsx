@@ -4,34 +4,48 @@
 
 import * as React from 'react';
 import {AppProps} from 'next/app';
+import {useRouter} from 'next/router';
+import {ga} from '../utils/analytics';
 import '@docsearch/css';
-import '../styles/fonts.css';
 import '../styles/algolia.css';
 import '../styles/index.css';
 import '../styles/sandpack.css';
 import '@codesandbox/sandpack-react/dist/index.css';
-import {hotjar} from 'utils/hotjar';
+
+const EmptyAppShell = ({children}: {children: React.ReactNode}) => (
+  <>{children}</>
+);
+
 if (typeof window !== 'undefined') {
-  hotjar(process.env.NEXT_PUBLIC_HJ_SITE_ID, process.env.NEXT_PUBLIC_HJ_SITE_V);
+  if (process.env.NODE_ENV === 'production') {
+    ga('create', process.env.NEXT_PUBLIC_GA_TRACKING_ID, 'auto');
+  }
+  const terminationEvent = 'onpagehide' in window ? 'pagehide' : 'unload';
+  window.addEventListener(terminationEvent, function () {
+    ga('send', 'timing', 'JS Dependencies', 'unload');
+  });
 }
 
-const EmptyAppShell: React.FC = ({children}) => <>{children}</>;
-
 export default function MyApp({Component, pageProps}: AppProps) {
+  const router = useRouter();
+  React.useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      ga('set', 'page', url);
+      ga('send', 'pageview');
+    };
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
+
   let AppShell = (Component as any).appShell || EmptyAppShell;
   // In order to make sidebar scrolling between pages work as expected
   // we need to access the underlying MDX component.
   if ((Component as any).isMDXComponent) {
     AppShell = (Component as any)({}).props.originalType.appShell;
   }
-  React.useEffect(() => {
-    // Monkey patch Google Tag Manager in development to just log to the console
-    if (process.env.NODE_ENV !== 'production') {
-      (window as any).gtag = (...args: any[]) => {
-        console.log('gtag: ', ...args);
-      };
-    }
-  }, []);
+
   return (
     <AppShell>
       <Component {...pageProps} />

@@ -6,7 +6,7 @@ translators:
 
 <Intro>
 
-组件是 React 的核心概念之一。它们是构建用户界面（UI）的基础，是你开始 React 之旅的最佳起点！
+**组件**是 React 的核心概念之一。它们是构建用户界面（UI）的基础，是你开始 React 之旅的最佳起点！
 
 </Intro>
 
@@ -104,7 +104,7 @@ React 组件是常规的 JavaScript 函数，但**组件的名称必须以大写
 return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
 ```
 
-但是，如果你的标记和返回语句不在同一行，则必须把它包裹在一对括号中，如下所示：
+但是，如果你的标记和 `return` 关键字不在同一行，则必须把它包裹在一对括号中，如下所示：
 
 ```js
 return (

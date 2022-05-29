@@ -33,13 +33,10 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-我们把整个 `listItems` 插入到 `<ul>` 元素中，然后[渲染进 DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom)：
+然后，我们可以将整个 `listItems` 插入到 `<ul>` 元素中：
 
 ```javascript{2}
-ReactDOM.render(
-  <ul>{listItems}</ul>,
-  document.getElementById('root')
-);
+<ul>{listItems}</ul>
 ```
 
 [**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
@@ -64,10 +61,8 @@ function NumberList(props) {
 }
 
 const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<NumberList numbers={numbers} />);
 ```
 
 当我们运行这段代码，将会看到一个警告 `a key should be provided for list items`，意思是当你创建一个元素时，必须包括一个特殊的 `key` 属性。我们将在下一节讨论这是为什么。
@@ -86,12 +81,6 @@ function NumberList(props) {
     <ul>{listItems}</ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
@@ -165,12 +154,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 **例子：正确的使用 key 的方式**
@@ -193,12 +176,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
@@ -239,10 +216,9 @@ const posts = [
   {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
   {id: 2, title: 'Installation', content: 'You can install React from npm.'}
 ];
-ReactDOM.render(
-  <Blog posts={posts} />,
-  document.getElementById('root')
-);
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Blog posts={posts} />);
 ```
 
 [**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
