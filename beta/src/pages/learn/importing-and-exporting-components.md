@@ -2,6 +2,7 @@
 title: 组件的导入与导出
 translators:
   - Alienover
+  - QC-L
 ---
 
 <Intro>
