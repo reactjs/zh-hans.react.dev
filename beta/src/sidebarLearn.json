@@ -43,7 +43,7 @@
           "path": "/learn/describing-the-ui",
           "routes": [
             {
-              "title": "第一个组件",
+              "title": "你的第一个组件",
               "path": "/learn/your-first-component"
             },
             {
