@@ -277,10 +277,10 @@ this.setState(partialState);
 下面的代码演示了这一点。（输入最初被锁定，但在短时间延迟后变为可编辑。）
 
 ```javascript
-ReactDOM.render(<input value="hi" />, mountNode);
+ReactDOM.createRoot(mountNode).render(<input value="hi" />);
 
 setTimeout(function() {
-  ReactDOM.render(<input value={null} />, mountNode);
+  ReactDOM.createRoot(mountNode).render(<input value={null} />);
 }, 1000);
 
 ```

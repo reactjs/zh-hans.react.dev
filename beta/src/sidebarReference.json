@@ -1,7 +1,7 @@
 {
   "title": "API Reference",
   "heading": true,
-  "path": "/reference",
+  "path": "/apis",
   "routes": [
     {
       "heading": true,
@@ -9,21 +9,37 @@
       "routes": [
         {
           "title": "React APIs",
-          "path": "/reference",
+          "path": "/apis",
           "routes": [
             {
+              "title": "createContext()",
+              "path": "/apis/createcontext"
+            },
+            {
+              "title": "useContext()",
+              "path": "/apis/usecontext"
+            },
+            {
+              "title": "useReducer()",
+              "path": "/apis/usereducer"
+            },
+            {
+              "title": "useRef()",
+              "path": "/apis/useref"
+            },
+            {
               "title": "useState()",
-              "path": "/reference/usestate"
+              "path": "/apis/usestate"
             }
           ]
         },
         {
           "title": "ReactDOM APIs",
-          "path": "/reference/reactdom",
+          "path": "/apis/reactdom",
           "routes": [
             {
               "title": "render()",
-              "path": "/reference/render"
+              "path": "/apis/render"
             }
           ]
         }

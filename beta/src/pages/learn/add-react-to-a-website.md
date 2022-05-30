@@ -1,56 +1,75 @@
 ---
-title: Add React to a Website
+title: 在网站中添加 React
+translators:
+  - Atrist
+  - yyyang1996
+  - QC-L
 ---
 
 <Intro>
 
-React has been designed from the start for gradual adoption, and you can use as little or as much React as you need. Whether you're working with micro-frontends, an existing system, or just giving React a try, you can start adding interactive React components to an HTML page with just a few lines of code—and no build tooling!
+无需使用 React 重构你的站点。只需花一分钟，将 React 添加到 HTML 中，且无需安装，即可立即开始编写交互式组件。
 
 </Intro>
 
-## Add React in one minute {/*add-react-in-one-minute*/}
+<YouWillLearn>
 
-You can add a React component to an existing HTML page in under a minute. Try this out with your own website or [an empty HTML file](https://gist.github.com/rachelnabors/7b33305bf33776354797a2e3c1445186/archive/859eac2f7079c9e1f0a6eb818a9684a464064d80.zip)—all you need is an internet connection and a text editor like Notepad (or VSCode—check out our guide on [how to set yours up](/learn/editor-setup/))!
+* 如何 1 分钟内将 React 添加到 HTML 中
+* JSX 语法是什么及其用法
+* 如果设置可用于生产环境的 JSX 预处理器
 
-### Step 1: Add an element to the HTML {/*step-1-add-an-element-to-the-html*/}
+</YouWillLearn>
 
-In the HTML page you want to edit, add an HTML element like an empty `<div>` tag with a unique `id` to mark the spot where you want to display something with React.
+## 1 分钟拥有 React {/*add-react-in-one-minute*/}
 
-You can place a "container" element like this `<div>` anywhere inside the `<body>` tag. React will replace any existing content inside HTML elements, so they are usually empty. You can have as many of these HTML elements on one page as you need.
+React 从一开始就是为渐进式开发而生。大多数网站并没有（也不需要）完全使用 React 进行构建。本小节中，我们将向你展示如何在现有 HTML 页面中添加交互式组件的方法。
+
+你可以在你自己的网站上尝试，或者创建一个 [空的 HTML 文件](https://gist.github.com/gaearon/edf814aeee85062bc9b9830aeaf27b88/archive/3b31c3cdcea7dfcfd38a81905a0052dd8e5f71ec.zip) 来进行练习。只需将电脑连接到网络并安装一款文本编辑器即可，如 Notepad 或者 VSCode。（如需语法高亮，可以通过 [如何配置你的编辑器](/learn/editor-setup/) 章节来实现！)
+
+### 步骤 1：添加一个根标签 {/*step-1-add-a-root-html-tag*/}
+
+首先，打开你需要编辑的 HTML 页面。在你想用 React 展示内容的地方添加一个空的 `<div>` 标签。并给这个 `<div>` 标签一个唯一的 `id` 属性值。例如：
 
 ```html {3}
-<!-- ... existing HTML ... -->
+<!-- ... 其它 HTML ... -->
 
-<div id="component-goes-here"></div>
+<div id="like-button-root"></div>
 
-<!-- ... existing HTML ... -->
+<!-- ... 其它 HTML ... -->
 ```
 
-### Step 2: Add the Script Tags {/*step-2-add-the-script-tags*/}
+它被称为"根"，因为这是 React 树开始的地方。你可以在 `<body>` 标签中的任何位置放置一个类似的根 HTML 标签。让它为内容留白。因为 React 会用你编写的 React 组件来替换它的内容。
 
-In the HTML page, right before the closing `</body>` tag, add three `<script>` tags for the following files:
+你可以根据需要，在一个页面上设置多个根 HTML 标签。
 
-- [**react.development.js**](https://unpkg.com/react@17/umd/react.development.js) loads the core of React
-- [**react-dom.development.js**](https://unpkg.com/react-dom@17/umd/react-dom.development.js) lets React render HTML elements to the [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model).
-- **like_button.js** is where you'll write your component in step 3!
+### 步骤 2：添加 script 标签 {/*step-2-add-the-script-tags*/}
+
+在 HTML 页面的 `</body>` 结束标签之前，添加三个 `<script>` 标签用于加载以下文件：
+
+- [`react.development.js`](https://unpkg.com/react@18/umd/react.development.js) 可以让你定义 React 组件。
+- [`react-dom.development.js`](https://unpkg.com/react-dom@18/umd/react-dom.development.js) 让 React 可以将 HTML 元素渲染到 [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model) 中。
+- **`like-button.js`** 是你在步骤 3 中编写组件的地方！
+
+你的 HTML 文件的结尾处，应该如下所示：
+
+```html
+    <!-- end of the page -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="like-button.js"></script>
+  </body>
+</html>
+```
 
 <Gotcha>
 
-When deploying, replace "development.js" with "production.min.js".
+部署时，你需要将 “development.js” 替换为 “production.min.js”！React 的 development 版本中内置了很多有用的错误信息，但同时也会降低你网站的访问速度。
 
 </Gotcha>
 
-```html
-  <!-- end of the page -->
-  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-  <script src="like_button.js"></script>
-</body>
-```
+### 步骤 3：创建一个 React 组件 {/*step-3-create-a-react-component*/}
 
-### Step 3: Create a React component {/*step-3-create-a-react-component*/}
-
-Create a file called **like_button.js** next to your HTML page, add this code snippet, and save the file. This code defines a React component called `LikeButton`. [You can learn more about making components in our guides.](/learn/your-first-component)
+在 HTML 页面文件的同级目录下创建一个名为 **`like_button.js`** 的文件，并将如下代码片段添加到该文件中。这段代码定义了一个名为 LikeButton 的 React 组件。（在 [快速入门](/learn) 中，了解更多关于编写组件的信息。)
 
 ```js
 'use strict';
@@ -72,99 +91,79 @@ function LikeButton() {
 }
 ```
 
-### Step 4: Add your React Component to the page {/*step-4-add-your-react-component-to-the-page*/}
+### 步骤 4：把你的 React 组件添加到页面中 {/*step-4-add-your-react-component-to-the-page*/}
 
-Lastly, add two lines to the bottom of **like_button.js**. These two lines of code find the `<div>` you added to your HTML in the first step and then display the "Like" button React component inside of it.
+最后，在 **`like_button.js`** 底部添加以下三行代码。这几行代码会找到我们在步骤 1 中添加到 HTML 里的 `<div>`，接着创建了一个React 的根，最后在其内部展示了我们的 React 组件 —— "Like" 按钮：
 
 ```js
-const domContainer = document.getElementById('component-goes-here');
-ReactDOM.render(React.createElement(LikeButton), domContainer);
+const rootNode = document.getElementById('like-button-root');
+const root = ReactDOM.createRoot(rootNode);
+root.render(React.createElement(LikeButton));
 ```
 
-**Congratulations! You have just rendered your first React component to your website!**
+**恭喜！你刚刚已成功将第一个 React 组件添加到你的网站当中**！
 
-- [View the full example source code](https://gist.github.com/rachelnabors/c64b3aeace8a191cf5ea6fb5202e66c9)
-- [Download the full example (2KB zipped)](https://gist.github.com/rachelnabors/c64b3aeace8a191cf5ea6fb5202e66c9/archive/7b41a88cb1027c9b5d8c6aff5212ecd3d0493504.zip)
+- [查看完整的示例源码](https://gist.github.com/gaearon/0b535239e7f39c524f9c7dc77c44f09e)
+- [下载完整示例（2KB 压缩包）](https://gist.github.com/gaearon/0b535239e7f39c524f9c7dc77c44f09e/archive/651935b26a48ac68b2de032d874526f2d0896848.zip)
 
-#### You can reuse components! {/*you-can-reuse-components*/}
+#### 复用你的组件 {/*you-can-reuse-components*/}
 
-You might want to display a React component in multiple places on the same HTML page. This is most useful while React-powered parts of the page are isolated from each other. You can do this by calling `ReactDOM.render()` multiple times with multiple container elements.
+你可能需要在同一 HTML 页面中的多个位置展示 React 组件。如果页面中由 React 驱动的部分相互独立，那复用就显得非常必要。你可以通过在你的 HTML 中放置多个根标签，然后用 `ReactDOM.createRoot()` 在每个根标签中渲染 React 组件来实现这一点。例如：
 
-1. In **index.html**, add an additional container element `<div id="component-goes-here-too"></div>`.
-2. In **like_button.js**, add an additional `ReactDOM.render()` for the new container element:
+1. 在 **`index.html`** 中，添加另外一个的容器元素 `<div id="another-root"></div>`。
+2. 在 **`like-button.js`** 文件最后，再添加以下三行代码：
 
 ```js {6,7,8,9}
-ReactDOM.render(
-  React.createElement(LikeButton),
-  document.getElementById('component-goes-here')
-);
-
-ReactDOM.render(
-  React.createElement(LikeButton),
-  document.getElementById('component-goes-here-too')
-);
+const anotherRootNode = document.getElementById('another-root');
+const anotherRoot = ReactDOM.createRoot(anotherRootNode);
+anotherRoot.render(React.createElement(LikeButton));
 ```
 
-Check out [an example that displays the "Like" button three times and passes some data to it](https://gist.github.com/rachelnabors/c0ea05cc33fbe75ad9bbf78e9044d7f8)!
+如果你需要在很多地方渲染同一个组件，你可以为每个根的指定一个 `class`，而不是 `id`，然后再把它们找出来。这是 [一个显示三个 "Like" 按钮，并向每个按钮内传递了数据的示例](https://gist.github.com/gaearon/779b12e05ffd5f51ffadd50b7ded5bc8)。
 
-### Step 5: Minify JavaScript for production {/*step-5-minify-javascript-for-production*/}
+### 步骤 5：为生产环境压缩 JavaScript 代码 {/*step-5-minify-javascript-for-production*/}
 
-Unminified JavaScript can significantly slow down page load times for your users. Before deploying your website to production, it's a good idea to minify its scripts.
+未经压缩的 JavaScript 可能会极大降低用户的访问速度。在将你的网站部署到生产环境之前，请务必对你的脚本文件进行压缩。
 
-- **If you don't have a minification step** for your scripts, [here's one way to set it up](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
-- **If you already minify** your application scripts, your site will be production-ready if you ensure that the deployed HTML loads the versions of React ending in `production.min.js` like so:
+- **如果你不知道如何进行压缩**，[请参考该配置教程](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3)。
+- 如果你已完成了 **对应用代码的压缩**，并且确保已部署的 HTML 加载的是以 `production.min.js` 结尾的 React 版本，那么你的网站就已完成生产部署（production-ready）：
 
 ```html
-<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
-## Try React with JSX {/*try-react-with-jsx*/}
+## 尝试使用 JSX 编写 React {/*try-react-with-jsx*/}
 
-The examples above rely on features that are natively supported by browsers. This is why **like_button.js** uses a JavaScript function call to tell React what to display:
+在上面的示例中，依靠的是浏览器原生就支持的特性。这也就是为什么我们在 **`like_button.js`** 中要调用 JavaScript 的函数，用以告知 React 要显示的内容：
 
 ```js
 return React.createElement('button', {onClick: () => setLiked(true)}, 'Like');
 ```
 
-However, React also offers an option to use [JSX](/learn/writing-markup-with-jsx), an HTML-like JavaScript syntax, instead:
+然而，React 还提供了一种使用 [JSX](/learn/writing-markup-with-jsx) 编写界面的方式，一种类似 HTML 的 JavaScript 语法：
 
 ```jsx
 return <button onClick={() => setLiked(true)}>Like</button>;
 ```
 
-These two code snippets are equivalent. JSX is popular syntax for describing markup in JavaScript. Many people find it familiar and helpful for writing UI code--both with React and with other libraries. You might see "markup sprinkled throughout your JavaScript" in other projects!
+这两段代码是等价的。JSX 是一种在 JavaScript 中描述标签的语法。多数人觉得这样编写 UI 代码更方便 —— 无论是使用 React 还是其它库。
 
-> You can play with transforming HTML markup into JSX using [this online converter](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.4.3).
+> 你可以通过 [在线转换器](https://babeljs.io/en/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=DwIwrgLhD2B2AEcDCAbAlgYwNYF4DeAFAJTw4B88EAFmgM4B0tAphAMoQCGETBe86WJgBMAXJQBOYJvAC-RGWQBQ8FfAAyaQYuAB6cFDhkgA&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.4.3) 试用 JSX。
 
-### Try JSX {/*try-jsx*/}
+### 试用 JSX {/*try-jsx*/}
 
-The quickest way to try JSX in your project is to add the Babel compiler to your page's `<head>` along with React and ReactDOM like so:
+试用 JSX 的最快方法是将 Babel 编译器作为 `<script>` 标签引入页面中。把它放置在 **`like-button.js`** 之前，然后在 **`like-button.js`** 的 `script` 标签上添加 `type="text/babel"` 属性：
 
-```html {6}
-<!-- ... rest of <head> ... -->
-
-<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
-
-<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-
-</head>
-<!-- ... rest of <body> ... -->
+```html {3,4}
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="like-button.js" type="text/babel"></script>
+</body>
 ```
 
-Now you can use JSX in any `<script>` tag by adding `type="text/babel"` attribute to it. For instance:
-
-```jsx {1}
-<script type="text/babel">
-  ReactDOM.render(
-  <h1>Hello, world!</h1>, document.getElementById('root') );
-</script>
-```
-
-To convert **like_button.js** to use JSX:
-
-1. In **like_button.js**, replace
+现在你可以编辑 **`like-button.js`**，并将
 
 ```js
 return React.createElement(
@@ -176,99 +175,105 @@ return React.createElement(
 );
 ```
 
-with:
+替换为等效的 JSX 代码：
 
 ```jsx
-return <button onClick={() => setLiked(true)}>Like</button>;
+return (
+  <button onClick={() => setLiked(true)}>
+    Like
+  </button>
+);
 ```
 
-2. In **index.html**, add `type="text/babel"` to the like button's script tag:
-
-```html
-<script src="like_button.js" type="text/babel"></script>
-```
-
-Here is [an example HTML file with JSX](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html) that you can download and play with.
-
-This approach is fine for learning and creating simple demos. However, it makes your website slow and **isn't suitable for production**. When you're ready to move forward, remove this new `<script>` tag and the `type="text/babel"` attributes you've added. Instead, in the next section you will set up a JSX preprocessor to convert all your `<script>` tags automatically.
-
-### Add JSX to a project {/*add-jsx-to-a-project*/}
-
-Adding JSX to a project doesn't require complicated tools like a [bundler](/learn/start-a-new-react-project#custom-toolchains) or a development server. Adding a JSX preprocessor is a lot like adding a CSS preprocessor.
-
-Go to your project folder in the terminal, and paste these two commands (**Be sure you have [Node.js](https://nodejs.org/) installed!**):
-
-1. `npm init -y` (if it fails, [here's a fix](https://gist.github.com/gaearon/246f6380610e262f8a648e3e51cad40d))
-2. `npm install babel-cli@6 babel-preset-react-app@3`
-
-You only need npm to install the JSX preprocessor. You won't need it for anything else. Both React and the application code can stay as `<script>` tags with no changes.
-
-Congratulations! You just added a **production-ready JSX setup** to your project.
-
-### Run the JSX Preprocessor {/*run-the-jsx-preprocessor*/}
-
-You can preprocess JSX so that every time you save a file with JSX in it, the transform will be re-run, converting the JSX file into a new, plain JavaScript file.
-
-1. Create a folder called **src**
-2. In your terminal, run this command: `npx babel --watch src --out-dir . --presets react-app/prod ` (Don't wait for it to finish! This command starts an automated watcher for JSX.)
-3. Move your JSX-ified **like_button.js** to the new **src** folder (or create a **like_button.js** containing this [JSX starter code](https://gist.githubusercontent.com/rachelnabors/ffbc9a0e33665a58d4cfdd1676f05453/raw/652003ff54d2dab8a1a1e5cb3bb1e28ff207c1a6/like_button.js))
-
-The watcher will create a preprocessed **like_button.js** with the plain JavaScript code suitable for the browser.
+一开始，你可能会觉得将 JS 和标记混合在一起会有些奇怪，但后面你会慢慢爱上它的！欲了解更多，请参阅 [用 JSX 编写标记](/learn/writing-markup-with-jsx) 的介绍。这是 [一个使用了 JSX 的 HTML 文件示例](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html)，你可以下载并尝试使用。
 
 <Gotcha>
 
-If you see an error message saying "You have mistakenly installed the `babel` package", you might have missed [the previous step](#add-jsx-to-a-project). Perform it in the same folder, and then try again.
+引入 Babel 的 `<script>` 编译器对于学习和创建简单的示例是很便捷的。但是，**它会使网站变慢，并不适用于生产环境**。当你准备好更进一步时，应该删除 Babel 的 `<script>` 标签，并移除在这一步中添加的 `type="text/babel"` 属性。作为替代方案，在下一小节中，我们将设置一个 JSX 的预处理器，将所有的 `<script>` 标签从 JSX 转为 JS。
 
 </Gotcha>
 
-As a bonus, this also lets you use modern JavaScript syntax features like classes without worrying about breaking older browsers. The tool we just used is called Babel, and you can learn more about it from [its documentation](https://babeljs.io/docs/en/babel-cli/).
+### 将 JSX 添加到项目 {/*add-jsx-to-a-project*/}
 
-If you're getting comfortable with build tools and want them to do more for you, [we cover some of the most popular and approachable toolchains here](/learn/start-a-new-react-project).
+将 JSX 添加到项目中并不需要诸如 [打包工具](/learn/start-a-new-react-project#custom-toolchains) 或开发服务器那样复杂的工具。本质上，添加 JSX 就像添加 CSS 预处理器一样。
+
+在终端上进入你的项目文件夹，然后执行如下两个命令：(**确保你的计算机安装了 [Node.js](https://nodejs.org/)！**)：
+
+1. `npm init -y`（如果失败，请参阅 [修复方案](https://gist.github.com/gaearon/246f6380610e262f8a648e3e51cad40d)）
+2. `npm install babel-cli@6 babel-preset-react-app@3`
+
+此处使用 npm 只是用于安装 JSX 预处理器，之后便不再需要它。React 和应用程序代码都可以继续使用 `<script>` 标签而不做任何更改。
+
+恭喜！你为你的项目成功添加了 **生产环境（production-ready）的 JSX 配置**。
+
+### 运行 JSX 预处理器 {/*run-the-jsx-preprocessor*/}
+
+你可以对 JSX 文件进行预处理。当你编辑保存带有 JSX 的源文件时，这个转换过程将自动重新执行，并把 JSX 文件转换为一个全新的，浏览器可以识别的普通 JavaScript 文件，以下是设置方式：
+
+1. 创建一个名为 **`src`** 的文件夹
+2. 在终端执行这个命令： `npx babel --watch src --out-dir . --presets react-app/prod ` （无需等待运行结果 —— 这个命令会自动启动一个观察器，观察对 `src` 内 JSX 的编辑。）
+3. 将已经 JSX 化的 **`like-button.js`**（[它看起来应该像这样！](https://gist.githubusercontent.com/gaearon/1884acf8834f1ef9a574a953f77ed4d8/raw/dfc664bbd25992c5278c3bf3d8504424c1104ecf/like-button.js)）文件移动到新的 **`src`** 目录下。
+
+监听器会创建一个预处理过的 **`like_button.js`** 文件，它包含了适用于浏览器的普通 JavaScript 代码.
+
+<Gotcha>
+
+如果你看到一个错误消息显示为：“You have mistakenly installed the `babel` package”，原因可能是未按照 [上一步骤](#add-jsx-to-a-project) 进行操作。在同一个文件夹中执行上一步骤中的命令，然后重试。
+
+</Gotcha>
+
+我们刚才使用的工具叫 Babel，你可以从 [它的文档](https://babeljs.io/docs/en/babel-cli/) 中了解更多。除了 JSX 以外，它还可以让你使用最新的 JavaScript 语法特性，而无需担心不适配旧的浏览器。
+
+如果你认为你已经习惯了构建工具，并希望它们能为你做更多事，[我们在这描述了一些最流行和易上手的工具链](/learn/start-a-new-react-project)。
 
 <DeepDive title="React without JSX">
 
-Originally JSX was introduced to make writing components with React feel as familiar as writing HTML. Since then, the syntax has become widespread. However, there may be instances where you do not want to use or cannot use JSX. You have two options:
+最初引入 JSX 是为了想让 React 编写组件的感觉就像编写 HTML 一样简单，但总有例外，你不想或者不能使用 JSX，此时可以参考其他两种解决方案：
 
-- Use a JSX alternative like [htm](https://github.com/developit/htm) which doesn't use a compiler—it uses JavaScript's native Tagged Templates.
-- Use [`React.createElement()`](/reference/createelement), which has a special structure explained below.
+- 使用像 [htm](https://github.com/developit/htm) 这样的 JSX 替代品，它使用 JavaScript 的 [模板字符串](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) 来取代编译器。
+- 使用 [`React.createElement()`](/apis/createelement)，它具有下面解释的特殊结构。
 
-With JSX, you would write a component like so:
+用 JSX 编写的代码：
 
 ```jsx
 function Hello(props) {
   return <div>Hello {props.toWhat}</div>;
 }
 
-ReactDOM.render(<Hello toWhat="World" />, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Hello toWhat="World" />, );
 ```
 
-With `React.createElement()`, you would write it like this:
+如果使用 `React.createElement()`，将会是这样：
 
 ```js
 function Hello(props) {
-  return React.createElement('div', null, `Hello ${props.toWhat}`);
+  return React.createElement('div', null, 'Hello ', props.toWhat);
 }
 
-ReactDOM.render(
-  React.createElement(Hello, {toWhat: 'World'}, null),
-  document.getElementById('root')
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  React.createElement(Hello, { toWhat: 'World' }, null)
 );
 ```
 
-It accepts three arguments: `React.createElement(component, props, children)`. Here's how they work:
+`React.createElement(component, props, ...children)`，它接受三个参数。
 
-1. A **component**, which can be a string representing an HTML element or a function component
-2. An object of any [**props** you want to pass](/learn/passing-props-to-a-component)
-3. An object of any **children** the component might have, such as text strings
+以下是它的工作原理：
 
-If you get tired of typing `React.createElement()`, one common pattern is to assign a shorthand:
+1. 一个**组件**，它既可以是一个表示 HTML 标签名的字符串，也可以是一个函数组件。
+2. 一个对象，包含 [你想传递给组件的 **props**](/learn/passing-props-to-a-component)。
+3. 其余的参数代表该组件可能拥有多个子元素，比如文本字符串或其他元素。
+
+如果你不想每次都键入 `React.createElement`，通常的做法是使用简写：
 
 ```js
 const e = React.createElement;
 
-ReactDOM.render(e('div', null, 'Hello World'), document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(e('div', null, 'Hello World'));
 ```
 
-If you use this shorthand form for `React.createElement()`, it can be almost as convenient to use React without JSX.
+然后，如果你喜欢这种风格，如此编写也可以和 JSX 一样方便。
 
 </DeepDive>
