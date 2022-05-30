@@ -2,6 +2,8 @@
 title: 你的第一个组件
 translators:
   - fine-bot
+  - nmsn
+  - QC-L
 ---
 
 <Intro>
@@ -82,7 +84,7 @@ img { height: 200px; }
 
 ### 第一步：导出组件 {/*step-1-export-the-component*/}
 
-`export default` 前缀是一种 [JavaScript 标准语法](https://developer.mozilla.org/docs/web/javascript/reference/statements/export)（非 React 的特性）。它允许你标记一个文件中的主要函数以便你以后可以从其他文件引入它。（在 [引入和导出组件](/learn/importing-and-exporting-components) 中详细了解如何引入！）
+`export default` 前缀是一种 [JavaScript 标准语法](https://developer.mozilla.org/docs/web/javascript/reference/statements/export)（非 React 的特性）。它允许你标记一个文件中的主要函数以便你以后可以从其他文件引入它。（欲了解更多关于导入的内容，请参阅 [组件的导入与导出](/learn/importing-and-exporting-components) 章节！）
 
 ### 第二步：定义函数 {/*step-2-define-the-function*/}
 
@@ -116,13 +118,13 @@ return (
 
 <Gotcha>
 
-没有括号，`return` 后下一行的任何代码都 [将被忽略](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)！
+没有括号包裹的话，任何在 `return` 下一行的代码都 [将被忽略](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)！
 
 </Gotcha>
 
 ## 使用组件 {/*using-a-component*/}
 
-现在你已经定义了 `Profile` 组件，你可以将它嵌套在其他组件中。例如，你可以导出使用了多个 `Profile` 组件的 `Gallery` 组件：
+现在你已经定义了 `Profile` 组件，你可以在其他组件中使用它。例如，你可以导出一个内部使用了多个 `Profile` 组件的 `Gallery` 组件：
 
 <Sandpack>
 
