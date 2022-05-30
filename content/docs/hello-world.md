@@ -8,16 +8,14 @@ next: introducing-jsx.html
 
 最简易的 React 示例如下：
 
-```js
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root')
-);
+```jsx
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<h1>Hello, world!</h1>);
 ```
 
 它将在页面上展示一个 "Hello, world!" 的标题。
 
-[](codepen://hello-world)
+**[在 CodePen 上试试](https://codepen.io/gaearon/pen/rrpgNB?editors=1010)**
 
 点击链接打开在线编辑器。随意更改内容，查看它们会怎样影响展示。本指南中的大多数页面都有像这样的可编辑的示例。
 

@@ -3,6 +3,7 @@
  */
 
 import * as React from 'react';
+import cn from 'classnames';
 import {RouteItem} from 'components/Layout/useRouteMeta';
 import {useRouter} from 'next/router';
 import {removeFromLast} from 'utils/removeFromLast';
@@ -10,6 +11,7 @@ import {useRouteMeta} from '../useRouteMeta';
 import {SidebarLink} from './SidebarLink';
 import useCollapse from 'react-collapsed';
 import {useLayoutEffect} from 'react';
+import usePendingRoute from 'hooks/usePendingRoute';
 
 interface SidebarRouteTreeProps {
   isMobile?: boolean;
@@ -59,8 +61,8 @@ function CollapseWrapper({
   return (
     <div
       ref={ref}
+      className={cn(isExpanded ? 'opacity-100' : 'opacity-50')}
       style={{
-        opacity: isExpanded ? 1 : 0.5,
         transition: `opacity ${duration}ms ease-in-out`,
         animation: `nav-fadein ${duration}ms ease-in-out`,
       }}>
@@ -76,8 +78,9 @@ export function SidebarRouteTree({
 }: SidebarRouteTreeProps) {
   const {breadcrumbs} = useRouteMeta(routeTree);
   const {pathname} = useRouter();
-  const slug = pathname;
+  const pendingRoute = usePendingRoute();
 
+  const slug = pathname;
   const currentRoutes = routeTree.routes as RouteItem[];
   const expandedPath = currentRoutes.reduce(
     (acc: string | undefined, curr: RouteItem) => {
@@ -120,6 +123,7 @@ export function SidebarRouteTree({
               <SidebarLink
                 key={`${title}-${path}-${level}-link`}
                 href={pagePath}
+                isPending={pendingRoute === pagePath}
                 selected={selected}
                 level={level}
                 title={title}
@@ -142,6 +146,7 @@ export function SidebarRouteTree({
         return (
           <li key={`${title}-${path}-${level}-link`}>
             <SidebarLink
+              isPending={pendingRoute === pagePath}
               href={pagePath}
               selected={selected}
               level={level}

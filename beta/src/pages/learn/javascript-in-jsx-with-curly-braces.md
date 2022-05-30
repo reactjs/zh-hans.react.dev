@@ -168,7 +168,7 @@ ul { padding: 20px 20px 20px 40px; margin: 0; }
 
 <Gotcha>
 
-内联 `style` 属性 使用驼峰命名法编写。例如，HTML `<ul style="background-color: black"`> 在你的组件里应该写成 `<ul style={{ backgroundColor: 'black' }}>`。
+内联 `style` 属性 使用驼峰命名法编写。例如，HTML `<ul style="background-color: black">` 在你的组件里应该写成 `<ul style={{ backgroundColor: 'black' }}>`。
 
 </Gotcha>
 

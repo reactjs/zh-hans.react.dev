@@ -85,6 +85,14 @@ Sebastian majored in psychology. He's usually quiet. Even when he says something
 
 Seth 从小就学习编程，在亚利桑那州图森市长大。放学后，他沉浸在音乐的殿堂里，在回归工作岗位前，他做了大约 10 年的巡回音乐人，后来就职于 Intuit。在业余时，他喜欢 [摄影](https://www.sethwebster.com) 还会参与美国东北部的动物救援机构。
 
+### Xuan Huang {/*xuan-huang*/}
+
+![Xuan](../images/team/huxpro.jpg)
+
+[@huxpro on GitHub](https://github.com/huxpro) &middot; [@huxpro on Twitter](https://twitter.com/huxpro)
+
+Xuan 小时候接触过编程，用 Flash 制作游戏。他在大学里从事数字媒体艺术，但最终制作编译器吸引住了——正好 React 需要一个。工作之余，喜欢拿铁艺术，热爱网球和乒乓球。
+
 ## 历史贡献者 {/*past-contributors*/}
 
 你可以在 [acknowledgements](/community/acknowledgements) 页面中找到团队的历史成员和其他多年来为 React 做出过重大贡献的人。

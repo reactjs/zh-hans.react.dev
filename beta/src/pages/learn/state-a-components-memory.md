@@ -4,13 +4,13 @@ title: "State: A Component's Memory"
 
 <Intro>
 
-Components often need to change what's on the screen as a result of an interaction. Typing into the form should update the input field, clicking "next" on an image carousel should change which image is displayed, clicking "buy" should put a product in the shopping cart. Components need to "remember" things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called **state**.
+Components often need to change what's on the screen as a result of an interaction. Typing into the form should update the input field, clicking "next" on an image carousel should change which image is displayed, clicking "buy" should put a product in the shopping cart. Components need to "remember" things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called *state*.
 
 </Intro>
 
 <YouWillLearn>
 
-* How to add a state variable with the [`useState`](/reference/usestate) Hook
+* How to add a state variable with the [`useState`](/apis/usestate) Hook
 * What pair of values the `useState` Hook returns
 * How to add more than one state variable
 * Why state is called local
@@ -110,7 +110,7 @@ export const sculptureList = [{
 }, {
   name: 'Terracotta Army',
   artist: 'Unknown Artist',
-  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consited of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
+  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
   url: 'https://i.imgur.com/HMFmH6m.jpg',
   alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
 }, {
@@ -161,7 +161,7 @@ To update a component with new data, two things need to happen:
 1. **Retain** the data between renders.
 2. **Trigger** React to render the component with new data (re-rendering).
 
-The [`useState`](/reference/usestate) Hook provides those two things:
+The [`useState`](/apis/usestate) Hook provides those two things:
 
 1. A **state variable** to retain the data between renders.
 2. A **state setter function** to update the variable and trigger React to render the component again.
@@ -290,7 +290,7 @@ export const sculptureList = [{
 }, {
   name: 'Terracotta Army',
   artist: 'Unknown Artist',
-  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consited of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
+  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
   url: 'https://i.imgur.com/HMFmH6m.jpg',
   alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
 }, {
@@ -333,9 +333,9 @@ button {
 
 ### Meet your first Hook {/*meet-your-first-hook*/}
 
-In React, `useState`, as well as any other function starting with "`use`," is called a **Hook**.
+In React, `useState`, as well as any other function starting with "`use`," is called a Hook.
 
-Hooks are special functions that are only available while React is [rendering](/learn/render-and-commit#step-1-trigger-a-render) (which we'll get into in more detail on the next page). They let you "hook into" different React features.
+*Hooks* are special functions that are only available while React is [rendering](/learn/render-and-commit#step-1-trigger-a-render) (which we'll get into in more detail on the next page). They let you "hook into" different React features.
 
 State is just one of those features, but you will meet the other Hooks later.
 
@@ -347,7 +347,7 @@ State is just one of those features, but you will meet the other Hooks later.
 
 ### Anatomy of `useState` {/*anatomy-of-usestate*/}
 
-When you call [`useState`](/reference/usestate), you are telling React that you want this component to remember something:
+When you call [`useState`](/apis/usestate), you are telling React that you want this component to remember something:
 
 ```js
 const [index, setIndex] = useState(0);
@@ -355,7 +355,7 @@ const [index, setIndex] = useState(0);
 
 In this case, you want React to remember `index`.
 
-> The convention is to name this pair like `const [thing, setThing]`. You could name it anything you like, but conventions make things easier to understand across projects.
+> The convention is to name this pair like `const [something, setSomething]`. You could name it anything you like, but conventions make things easier to understand across projects.
 
 The only argument to `useState` is the **initial value** of your state variable. In this example, the `index`'s initial value is set to `0` with `useState(0)`. 
 
@@ -475,7 +475,7 @@ export const sculptureList = [{
 }, {
   name: 'Terracotta Army',
   artist: 'Unknown Artist',
-  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consited of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
+  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
   url: 'https://i.imgur.com/HMFmH6m.jpg',
   alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
 }, {
@@ -669,7 +669,7 @@ let sculptureList = [{
 }, {
   name: 'Terracotta Army',
   artist: 'Unknown Artist',
-  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consited of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
+  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
   url: 'https://i.imgur.com/HMFmH6m.jpg',
   alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
 }, {
@@ -838,7 +838,7 @@ export const sculptureList = [{
 }, {
   name: 'Terracotta Army',
   artist: 'Unknown Artist',
-  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consited of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
+  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
   url: 'https://i.imgur.com/HMFmH6m.jpg',
   alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
 }, {
@@ -1009,7 +1009,7 @@ export const sculptureList = [{
 }, {
   name: 'Terracotta Army',
   artist: 'Unknown Artist',
-  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consited of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
+  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
   url: 'https://i.imgur.com/HMFmH6m.jpg',
   alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
 }, {
@@ -1171,7 +1171,7 @@ export const sculptureList = [{
 }, {
   name: 'Terracotta Army',
   artist: 'Unknown Artist',
-  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consited of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
+  description: 'The Terracotta Army is a collection of terracotta sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
   url: 'https://i.imgur.com/HMFmH6m.jpg',
   alt: '12 terracotta sculptures of solemn warriors, each with a unique facial expression and armor.'
 }, {
