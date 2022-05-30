@@ -400,7 +400,7 @@ img { margin: 0 10px 10px 0; }
 
 </Solution>
 
-### 你自己的组件 {/*your-own-component*/}
+### 自定义组件 {/*your-own-component*/}
 
 从头开始编写一个组件。你可以为它指定任何有效名称然后返回任何标记。如果你没有什么想法的话，你可以写一个显示 `<h1>干得漂亮！</h1>` 的 `Congratulations` 组件。不要忘了导出它！
 
