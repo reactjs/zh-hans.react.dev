@@ -75,7 +75,7 @@ npm start
 你可能喜欢创建和配置你自己的工具链，一个工具链通常由以下部分组成：
 
 * 一款 **包管理器（package manager）** 可以让你安装、更新并管理第三方软件包。主流的包管理器有：[npm](https://www.npmjs.com/)（内置于 Node.js）中，[Yarn](https://yarnpkg.com/)，[pnpm](https://pnpm.io/)。
-* 一款 **编译器（compiler）** 可以让你编译现代语法特性和额外语法特性，如 JSX 或浏览器的类型注释。主流的编译器有：[Babel](https://babeljs.io/)，[TypeScript](http://typescript.org/)，[swc](https://swc.rs/)。
+* 一款 **编译器（compiler）** 可以让你编译现代语法特性和额外语法特性，如 JSX 或浏览器的类型注释。主流的编译器有：[Babel](https://babeljs.io/)，[TypeScript](https://www.typescriptlang.org/)，[swc](https://swc.rs/)。
 * 一款 **捆绑器（bundler）** 可以编写模块化代码并将其进行捆绑到小包中，以优化加载时间。主流的捆绑器有：[webpack](https://webpack.js.org/)，[Parcel](https://parceljs.org/)，[esbuild](https://esbuild.github.io/)，[swc](https://swc.rs/).
 * 一款 **压缩工具（minifier）** 可以使你的代码体积更小，从而提高加载速度。主流的压缩工具有：[Terser](https://terser.org/)，[swc](https://swc.rs/)。
 * 一款 **服务端框架** 处理服务器请求，以便于将组件渲染成 HTML。主流的服务端框架有：[Express](https://expressjs.com/)。
