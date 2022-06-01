@@ -474,7 +474,7 @@ function FancyInput(props, ref) {
 FancyInput = forwardRef(FancyInput);
 ```
 
-在本例中，渲染 `<FancyInput ref={inputRef} />` 的父组件可以调用 `inputRef.current.focus()`。
+在本例中，渲染 `<FancyInput ref={anotherRef} />` 的父组件可以调用 `anotherRef.current.focus()`。
 
 ### `useLayoutEffect` {#uselayouteffect}
 
