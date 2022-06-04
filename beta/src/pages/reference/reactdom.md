@@ -11,7 +11,7 @@ ReactDOM package 能够让你在页面上渲染 React 组件。
 
 </Intro>
 
-通常情况下，你会在你的应用程序的顶层使用 ReactDOM 来展示你的组件。你要么直接使用它，要么交由 [框架](/learn/start-a-new-react-project#building-with-react-and-a-framework) 为你使用。你的大部分组件应该 *不* 需要导入这个模块。
+通常情况下，你会在你的应用程序的顶层使用 ReactDOM 来展示你的组件。你要么直接使用它，要么让 [框架](/learn/start-a-new-react-project#building-with-react-and-a-framework) 为你所用。你的大部分组件应该 *不* 需要导入这个模块。
 
 ## 安装
 
