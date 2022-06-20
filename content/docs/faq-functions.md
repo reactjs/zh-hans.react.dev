@@ -37,14 +37,17 @@ class Foo extends Component {
 }
 ```
 
+<<<<<<< HEAD
 #### class 属性（第三阶段提案）{#class-properties-stage-3-proposal}
+=======
+#### Class Properties (ES2022) {#class-properties-es2022}
+>>>>>>> fb65da64ac31a3a7a941fd197a4ccb4a0f76cff7
 
 ```jsx
 class Foo extends Component {
-  // Note: this syntax is experimental and not standardized yet.
   handleClick = () => {
     console.log('Click happened');
-  }
+  };
   render() {
     return <button onClick={this.handleClick}>Click Me</button>;
   }
