@@ -542,7 +542,11 @@ var player = {score: 1, name: 'Jeff'};
 var newPlayer = Object.assign({}, player, {score: 2});
 // player 的值没有改变, 但是 newPlayer 的值是 {score: 2, name: 'Jeff'}
 
+<<<<<<< HEAD
 // 使用对象展开语法，就可以写成：
+=======
+// Or if you are using object spread syntax, you can write:
+>>>>>>> c1c3d1db304adfa5446accb0312e60d515188414
 // var newPlayer = {...player, score: 2};
 ```
 
