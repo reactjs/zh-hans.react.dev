@@ -108,11 +108,7 @@ render(element, container[, callback])
 > 但是，目前应该避免使用返回的引用，因为它是历史遗留下来的内容，而且在未来版本的 React 中，组件渲染在某些情况下可能会是异步的。
 > 如果你真的需要获得对根组件 `ReactComponent` 实例的引用，那么推荐为根元素添加 [callback ref](/docs/refs-and-the-dom.html#callback-refs)。
 >
-<<<<<<< HEAD
-> 使用 `render()` 对服务端渲染容器进行 hydrate 操作的方式已经被废弃，并且会在 React 17 被移除。作为替代，请使用 [`hydrateRoot()`](#hydrateroot)。
-=======
-> Using `render()` to hydrate a server-rendered container is deprecated. Use [`hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) instead.
->>>>>>> eca969cd1f4d1841b21c8ea183180ec58c90eec4
+> 使用 `render()` 对服务端渲染容器进行 hydrate 操作的方式已经被废弃，并且会在 React 17 被移除。作为替代，请使用 [`hydrateRoot()`](/docs/react-dom-client.html#hydrateroot)。
 
 * * *
 
