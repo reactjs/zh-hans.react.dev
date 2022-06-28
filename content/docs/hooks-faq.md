@@ -331,31 +331,30 @@ function useWindowPosition() {
 
 ### 如何获取上一轮的 props 或 state？ {#how-to-get-the-previous-props-or-state}
 
+<<<<<<< HEAD
 目前，你可以 [通过 ref](#is-there-something-like-instance-variables) 来手动实现：
+=======
+There are two cases in which you might want to get previous props or state.
+>>>>>>> d8171faacafb5f1dfb02fb93b2091da298de651c
 
-```js{6,8}
-function Counter() {
-  const [count, setCount] = useState(0);
+Sometimes, you need previous props to **clean up an effect.** For example, you might have an effect that subscribes to a socket based on the `userId` prop. If the `userId` prop changes, you want to unsubscribe from the _previous_ `userId` and subscribe to the _next_ one. You don't need to do anything special for this to work:
 
-  const prevCountRef = useRef();
-  useEffect(() => {
-    prevCountRef.current = count;
-  });
-  const prevCount = prevCountRef.current;
-
-  return <h1>Now: {count}, before: {prevCount}</h1>;
-}
+```js
+useEffect(() => {
+  ChatAPI.subscribeToSocket(props.userId);
+  return () => ChatAPI.unsubscribeFromSocket(props.userId);
+}, [props.userId]);
 ```
 
+<<<<<<< HEAD
 这或许有一点错综复杂，但你可以把它抽取成一个自定义 Hook：
+=======
+In the above example, if `userId` changes from `3` to `4`, `ChatAPI.unsubscribeFromSocket(3)` will run first, and then `ChatAPI.subscribeToSocket(4)` will run. There is no need to get "previous" `userId` because the cleanup function will capture it in a closure.
+>>>>>>> d8171faacafb5f1dfb02fb93b2091da298de651c
 
-```js{3,7}
-function Counter() {
-  const [count, setCount] = useState(0);
-  const prevCount = usePrevious(count);
-  return <h1>Now: {count}, before: {prevCount}</h1>;
-}
+Other times, you might need to **adjust state based on a change in props or other state**. This is rarely needed and is usually a sign you have some duplicate or redundant state. However, in the rare case that you need this pattern, you can [store previous state or props in state and update them during rendering](#how-do-i-implement-getderivedstatefromprops).
 
+<<<<<<< HEAD
 function usePrevious(value) {
   const ref = useRef();
   useEffect(() => {
@@ -379,6 +378,9 @@ function Counter() {
 考虑到这是一个相对常见的使用场景，很可能在未来 React 会自带一个 `usePrevious` Hook。
 
 参见 [derived state 推荐模式](#how-do-i-implement-getderivedstatefromprops).
+=======
+We have previously suggested a custom Hook called `usePrevious` to hold the previous value. However, we've found that most use cases fall into the two patterns described above. If your use case is different, you can [hold a value in a ref](#is-there-something-like-instance-variables) and manually update it when needed. Avoid reading and updating refs during rendering because this makes your component's behavior difficult to predict and understand.
+>>>>>>> d8171faacafb5f1dfb02fb93b2091da298de651c
 
 ### 为什么我会在我的函数中看到陈旧的 props 和 state ？ {#why-am-i-seeing-stale-props-or-state-inside-my-function}
 
