@@ -331,9 +331,9 @@ function useWindowPosition() {
 
 ### 如何获取上一轮的 props 或 state？ {#how-to-get-the-previous-props-or-state}
 
-There are two cases in which you might want to get previous props or state.
+在以下两种场景下，你可以能会需要获取上一轮的 props 或 state。
 
-Sometimes, you need previous props to **clean up an effect.** For example, you might have an effect that subscribes to a socket based on the `userId` prop. If the `userId` prop changes, you want to unsubscribe from the _previous_ `userId` and subscribe to the _next_ one. You don't need to do anything special for this to work:
+有时，你需要获取之前的 props 来 **进行副作用的清理**。例如，你可能有这样一个副作用，依赖 `userId` props 来订阅 socket。如果 `userId` 发生了变化，你需要取消 **之前** `userId` 的订阅，再进行后续订阅。这种情况下，你无需做额外操作即可实现：
 
 ```js
 useEffect(() => {
@@ -342,11 +342,11 @@ useEffect(() => {
 }, [props.userId]);
 ```
 
-In the above example, if `userId` changes from `3` to `4`, `ChatAPI.unsubscribeFromSocket(3)` will run first, and then `ChatAPI.subscribeToSocket(4)` will run. There is no need to get "previous" `userId` because the cleanup function will capture it in a closure.
+在上述示例中，如果 `userId` 从 `3` 变为 `4`，`ChatAPI.unsubscribeFromSocket(3)` 将会优先运行，然后才会执行 `ChatAPI.subscribeToSocket(4)`。这种情况下，你没必要获取之前的 `userId`，因为清理函数将在闭包中捕获它，
 
-Other times, you might need to **adjust state based on a change in props or other state**. This is rarely needed and is usually a sign you have some duplicate or redundant state. However, in the rare case that you need this pattern, you can [store previous state or props in state and update them during rendering](#how-do-i-implement-getderivedstatefromprops).
+其他情况下，你可能需要 **根据 props 或其他 state 的变化来调整 state**。但这一般并不常用，出现这种情况说明你代码中存在重复或多余的 state。然而，如果你需要应对这种场景，你可以在 [状态中存储之前的 state 或 props，并在渲染时更新它们](#how-do-i-implement-getderivedstatefromprops)。
 
-We have previously suggested a custom Hook called `usePrevious` to hold the previous value. However, we've found that most use cases fall into the two patterns described above. If your use case is different, you can [hold a value in a ref](#is-there-something-like-instance-variables) and manually update it when needed. Avoid reading and updating refs during rendering because this makes your component's behavior difficult to predict and understand.
+我们之前曾建议使用 `usePrevious` 的自定义 Hook 来保持前值。然后，我们发现大多数用例，都属于上述两种场景。如果你的用例与上述两种情况不同，你可以在 [Ref 中对该值进行存储](#is-there-something-like-instance-variables) 并在需要时手动更新它。注意，应避免在渲染过程中读取和更新 refs，因为这使得你组件的行为难以预测，且难以理解。
 
 ### 为什么我会在我的函数中看到陈旧的 props 和 state ？ {#why-am-i-seeing-stale-props-or-state-inside-my-function}
 
