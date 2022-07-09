@@ -62,7 +62,15 @@ createPortal(child, container)
 flushSync(callback)
 ```
 
-强制 React 同步刷新提供的回调函数中的任何更新。该方法对于能够立即读取更新结果的场景很有效。
+强制 React 同步刷新提供的回调函数中的任何更新。这确保了 DOM 会被立即 更新。
+
+```javascript
+// Force this state update to be synchronous.
+flushSync(() => {
+  setCount(count + 1);
+});
+// By this point, DOM is updated.
+```
 
 > 注意：
 > 
@@ -82,7 +90,7 @@ render(element, container[, callback])
 
 > 注意：
 >
-> 在 React 18 中，`render` 函数已被 `createRoot` 函索所取代。具体请参阅 [createRoot](/docs/react-dom-client.html#createroot) 以了解更多。
+> 在 React 18 中，`render` 函数已被 `createRoot` 函数所取代。具体请参阅 [createRoot](/docs/react-dom-client.html#createroot) 以了解更多。
 
 在提供的 `container` 里渲染一个 React 元素，并返回对该组件的[引用](/docs/more-about-refs.html)（或者针对[无状态组件](/docs/components-and-props.html#function-and-class-components)返回 `null`）。
 
@@ -100,7 +108,7 @@ render(element, container[, callback])
 > 但是，目前应该避免使用返回的引用，因为它是历史遗留下来的内容，而且在未来版本的 React 中，组件渲染在某些情况下可能会是异步的。
 > 如果你真的需要获得对根组件 `ReactComponent` 实例的引用，那么推荐为根元素添加 [callback ref](/docs/refs-and-the-dom.html#callback-refs)。
 >
-> 使用 `render()` 对服务端渲染容器进行 hydrate 操作的方式已经被废弃，并且会在 React 17 被移除。作为替代，请使用 [`hydrateRoot()`](#hydrateroot)。
+> 使用 `render()` 对服务端渲染容器进行 hydrate 操作的方式已经被废弃，并且会在 React 17 被移除。作为替代，请使用 [`hydrateRoot()`](/docs/react-dom-client.html#hydrateroot)。
 
 * * *
 

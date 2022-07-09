@@ -17,9 +17,7 @@ function validateHeaderId(line) {
   const match = /\{\/\*(.*?)\*\/}/.exec(line);
   const id = match;
   if (!id) {
-    console.error(
-      'Run yarn fix-headings to generate headings.'
-    );
+    console.error('Run yarn fix-headings to generate headings.');
     process.exit(1);
   }
 }

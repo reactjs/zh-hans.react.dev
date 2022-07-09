@@ -367,12 +367,12 @@ function MyComponent() {
 它已被收录在了我们的[代码分割指南](/docs/code-splitting.html#reactlazy)中。请注意，`lazy` 组件可以位于 `Suspense` 组件树的深处——它不必包装树中的每一个延迟加载组件。最佳实践是将 `<Suspense>` 置于你想展示加载指示器（loading indicator）的位置，而 `lazy()` 则可被放置于任何你想要做代码分割的地方。
 
 > 注意
-> 
+>
 > 对于已经展示给用户的内容来说，在切换回去时，展示加载指示器可能会让人困惑。有时，在准备新的 UI 时，展示 "旧" 的 UI 可能会更加友好。要做到这一点，你可以使用新的 transition API [`startTransition`](#starttransition) 和 [`useTransition`](/docs/hooks-reference.html#usetransition) 来将标记更新为 transitions，同时避免意外的兜底方案。
 
 #### 服务端渲染中的 `React.Suspense` {#reactsuspense-in-server-side-rendering}
 在服务端渲染过程中，Suspense 边界允许你挂起，通过较小的块来刷新应用程序。
-当组件挂起时，我们会安排一个低优先级的任务来渲染最近的 Suspense 边界的 fallback。如果组件在我们刷新 fallback 之前取消挂起，那么我们会发烧实际内容并丢弃 fallback。
+当组件挂起时，我们会安排一个低优先级的任务来渲染最近的 Suspense 边界的 fallback。如果组件在我们刷新 fallback 之前取消挂起，那么我们会发送实际内容并丢弃 fallback。
 
 #### hydrate 过程中的 `React.Suspense` {#reactsuspense-during-hydration}
 Suspense 边界依赖于它们的父边界，在它们可以 hydrate 前被 hydrate，但是它们可以独立于兄弟边界进行 hydrate。边界 hydrate 前发生的事件将导致边界 hydrate 的优先级高于相邻边界的优先级。具体请参阅[讨论](https://github.com/reactwg/react-18/discussions/130)。
@@ -386,8 +386,8 @@ React.startTransition(callback)
 
 > 注意：
 >
-> 过渡期的更新会产生更紧急的更新，如点击操作。
+> 过渡期的更新会被更紧急的更新取代，如点击操作。
 >
-> 转成中的更新不会显示重新挂起内容的 fallback，允许用户在渲染更新时继续进行交互。
+> 过渡期的更新不会显示重新挂起内容的 fallback，允许用户在渲染更新时继续进行交互。
 >
 > `React.startTransition` 不提供 `isPending` 的标志。要跟踪过渡的待定状态，请参阅 [`React.useTransition`](/docs/hooks-reference.html#usetransition)。

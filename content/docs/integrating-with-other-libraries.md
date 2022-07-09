@@ -145,7 +145,7 @@ componentDidUpdate(prevProps) {
 }
 ```
 
-通过这种方法，当由 React 管理的 `<select>` children 改变时， Chosen 会知道如何更新它的 DOM 元素。。
+通过这种方法，当由 React 管理的 `<select>` children 改变时， Chosen 会知道如何更新它的 DOM 元素。
 
 `Chosen` 组件的完整实现看起来是这样的：
 
@@ -192,7 +192,7 @@ class Chosen extends React.Component {
 
 得益于 [`createRoot()`](/docs/react-dom-client.html#createRoot) 的灵活性 React 可以被嵌入到其他的应用中。
 
-虽然 React 通常被用来在启动的时候加载一个单独的根 React 组件到 DOM 上，`root.render()` 同样可以在 UI 的独立部分上多次调用，这些部分可以小到一个按钮，也可以大到一个应用。
+虽然 React 通常被用来在启动的时候加载一个单独的根 React 组件到 DOM 上，`createRoot()` 同样可以在 UI 的独立部分上多次调用，这些部分可以小到一个按钮，也可以大到一个应用。
 
 事实上，这正是 Facebook 如何使用 React 的。这让我们小块小块地在应用中使用 React，并且把他们结合到我们现存的服务端产生的模板和其他客户端代码中。
 
@@ -246,20 +246,22 @@ function HelloButton() {
 
 如下，我们会创建一个名为 `ParagraphView` 的 Backbone 视图。他会重载 Backbone 的 `render()` 函数来渲染一个 React `<Paragraph>` 组件到 Backbone (`this.el`) 提供的 DOM 元素中。这里，同样的，我们将会使用 [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot)：
 
-```js{1,5,8-9,13}
+```js{7,11,15}
 function Paragraph(props) {
   return <p>{props.text}</p>;
 }
 
 const ParagraphView = Backbone.View.extend({
+  initialize(options) {
+    this.reactRoot = ReactDOM.createRoot(this.el);
+  },
   render() {
     const text = this.model.get('text');
-    this.root = ReactDOM.createRoot(this.el);
-    this.root.render(<Paragraph text={text} />);
+    this.reactRoot.render(<Paragraph text={text} />);
     return this;
   },
   remove() {
-    this.root.unmount();
+    this.reactRoot.unmount();
     Backbone.View.prototype.remove.call(this);
   }
 });

@@ -11,15 +11,22 @@ translators:
 
 </Intro>
 
+<YouWillLearn>
+
+* 最受欢迎的编辑器是哪些
+* 如果自动格式化你的代码
+
+</YouWillLearn>
+
 ## 你的编辑器 {/*your-editor*/}
 
 [VS Code](https://code.visualstudio.com/) 是现如今最流行的编辑器之一。它拥有庞大的扩展市场，同时可以与 GitHub 等流行服务完美集成。下面列出的大多数功能都可以作为扩展添加到 VS Code 中，使其具有极高的可配置性！
 
 React 社区中其他较为流行的文本编辑器包括：
 
-* [WebStorm](https://www.jetbrains.com/webstorm/) — 专为 JavaScript 设计的集成开发环境。
-* [Sublime Text](https://www.sublimetext.com/) — 支持 JSX 和 TypeScript，内置[语法高亮](https://stackoverflow.com/a/70960574/458193)和代码自动补全功能。
-* [Vim](https://www.vim.org/) — 一个高度可配置的文本编辑器，可以非常高效地创建和更改任何类型的文本。它作为 “vi” 包含在大多数 UNIX 系统和 Apple OS X 中。
+* [WebStorm](https://www.jetbrains.com/webstorm/) 是专为 JavaScript 设计的集成开发环境。
+* [Sublime Text](https://www.sublimetext.com/) 支持 JSX 和 TypeScript，内置[语法高亮](https://stackoverflow.com/a/70960574/458193)和代码自动补全功能。
+* [Vim](https://www.vim.org/) 是一个高度可配置的文本编辑器，可以非常高效地创建和更改任何类型的文本。它作为 “vi” 包含在大多数 UNIX 系统和 Apple OS X 中。
 
 ## 推荐的文本编辑器功能 {/*recommended-text-editor-features*/}
 
@@ -39,7 +46,7 @@ React 社区中其他较为流行的文本编辑器包括：
 你可以为 [VSCode 安装 Prettier 扩展](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)，具体步骤如下：
 
 1. 启动 VS Code
-2. 使用快速打开（使用快捷键 `CTRL/CMD + P`）
+2. 使用快速打开（使用快捷键 `Ctrl/Cmd + P`）
 3. 粘贴 `ext install esbenp.prettier-vscode`
 4. 按回车键
 
@@ -47,10 +54,10 @@ React 社区中其他较为流行的文本编辑器包括：
 
 理想情况下，你应该在每次保存时自动格式化代码。VS Code 就包含该配置!
 
-1. 在 VS Code, 按快捷键 `CTRL/CMD + SHIFT + P`.
+1. 在 VS Code, 按快捷键 `Ctrl/Cmd + Shift + P`.
 2. 输入 "settings"
 3. 按回车键
 4. 在搜索栏, 输入 "format on save"
 5. 确保勾选 "format on save" 选项！
 
-> Prettier 有时会与其他 linter 发生冲突。但通常有一个方法可以让它们很好地一起运行。例如，如果你需要将 Prettier 和 ESLint 搭配使用，你可以用 [eslint-prettier](https://github.com/prettier/eslint-plugin-prettier) 插件将 Prettier 作为 ESLint 规则运行。
+> 如果你的 ESLint 预设包含格式化规则，它们可能会与 Prettier 发生冲突。我们建议使用[`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier) 禁用你 ESLint 预设中的所有格式化规则，这样 ESLint 就只用于捕捉逻辑错误。如果你想在合并 PR 前强制执行文件的格式化，请在你的 CI 中使用 [`prettier --check`](https://prettier.io/docs/en/cli.html#--check) 命令。

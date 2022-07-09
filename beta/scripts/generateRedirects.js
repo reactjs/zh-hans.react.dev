@@ -42,7 +42,7 @@ function writeRedirectsFile(redirects, redirectsFilePath) {
    * Make sure we dont have the same redirect already
    */
   oldConfigContent.redirects.forEach((data) => {
-    if(vercelRedirects[data.source]){
+    if (vercelRedirects[data.source]) {
       delete vercelRedirects[data.source];
     }
   });
