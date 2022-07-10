@@ -538,7 +538,7 @@ const deferredValue = useDeferredValue(value);
 
 `useDeferredValue` 接受一个值，并返回该值的新副本，该副本将推迟到更紧急地更新之后。如果当前渲染是一个紧急更新的结果，比如用户输入，React 将返回之前的值，然后在紧急渲染完成后渲染新的值。
 
-该 hook 与使用防抖和节流去延迟更新的用户空间 hooks 类似。使用 `useDeferredValue` 的好处是，React 将在其他工作完成（而不是等待任意时间）后立即进行更新，并且像 [`startTransition`](/docs/react-api.html#starttransition) 一样, 延迟值可以暂停，而不会触发现有内容的意外降级。
+该 hook 与使用防抖和节流去延迟更新的用户空间 hooks 类似。使用 `useDeferredValue` 的好处是，React 将在其他工作完成（而不是等待任意时间）后立即进行更新，并且像 [`startTransition`](/docs/react-api.html#starttransition) 一样，延迟值可以暂停，而不会触发现有内容的意外降级。
 
 #### Memoizing deferred children {#memoizing-deferred-children}
 `useDeferredValue` 仅延迟你传递给它的值。如果你想要在紧急更新期间防止子组件重新渲染，则还必须使用 React.memo 或 React.useMemo 记忆该子组件：
@@ -610,7 +610,7 @@ function App() {
 >
 > 过渡任务中触发的更新会让更紧急地更新先进行，比如点击。
 >
-> 过渡任务中的更新将不会展示由于再次挂起而导致降级的内容。这个机制允许用户在 React 渲染本次更新的时候继续与当前内容进行交互。
+> 过渡任务中的更新将不会展示由于再次挂起而导致降级的内容。这个机制允许用户在 React 渲染更新的时候继续与当前内容进行交互。
 
 ### `useId` {#useid}
 
@@ -661,7 +661,7 @@ function NameFields() {
 
 > 注意：
 > 
-> `useId` 生成一个包含 `:` 的字符串令牌。这有助于确保令牌是唯一的，但在 CSS 选择器或 `querySelectorAll` 等 API 中不受支持。
+> `useId` 生成一个包含 `:` 的字符串 token。这有助于确保 token 是唯一的，但在 CSS 选择器或 `querySelectorAll` 等 API 中不受支持。
 > 
 > `useId` 支持 `identifierPrefix` 以防止在多个根应用的程序中发生冲突。 要进行配置，请参阅 [`hydrateRoot`](/docs/react-dom-client.html#hydrateroot) 和 [`ReactDOMServer`](/docs/react-dom-server.html) 的选项。
 
@@ -678,7 +678,6 @@ const state = useSyncExternalStore(subscribe, getSnapshot[, getServerSnapshot]);
 `useSyncExternalStore` 是一个推荐用于读取和订阅外部数据源的 hook，其方式与选择性的 hydration 和时间切片等并发渲染功能兼容。
 
 此方法返回存储的值并接受三个参数：
-
 - `subscribe`：用于注册一个回调函数，当存储值发生更改时被调用。
 - `getSnapshot`： 返回当前存储值的函数。
 - `getServerSnapshot`：返回服务端渲染期间使用的存储值的函数
@@ -698,7 +697,7 @@ const selectedField = useSyncExternalStore(
 );
 ```
 
-当服务端渲染的时候，你必须序列化在服务端使用的存储值，并将其提供给 `usencexternalSternore`。 React 将在 hydration 过程中使用此快照来防止服务端不匹配：
+当服务端渲染的时候，你必须序列化在服务端使用的存储值，并将其提供给 `usencexternalSternore`。React 将在 hydration 过程中使用此快照来防止服务端不匹配：
 
 ```js
 const selectedField = useSyncExternalStore(
@@ -714,7 +713,7 @@ const selectedField = useSyncExternalStore(
 > 
 > 提供了一个楔子，发布为 `use-sync-external-store/shim`，用于支持多种版本的 React。如果可用，楔子将首选 `useSyncExternalStore`，如果不可用，则降级选择用户空间的实现。
 > 
-> 为了方便起见，我们还提供了一个版本的 API，该 API 发布为 `use-sync-external-store/with selector`，其自动支持记忆 getSnapshot 的结果。
+> 为了方便起见，我们还提供了一个版本的 API，该 API 发布为 `use-sync-external-store/with-selector`，其自动支持记忆 getSnapshot 的结果。
 
 ### `useInsertionEffect` {#useinsertioneffect}
 
@@ -722,7 +721,7 @@ const selectedField = useSyncExternalStore(
 useInsertionEffect(didUpdate);
 ```
 
-该签名与 `useEffect` 相同，但它在所有 DOM 突变*之前*同步触发。使用它在读取 [`useLayoutEffect`](#useLayoutEffect) 中的布局之前将样式注入 DOM。 由于这个 hook 的作用域有限，所以这个 hook 不能访问 refs，也不能安排更新。
+该签名与 `useEffect` 相同，但它在所有 DOM 突变 *之前* 同步触发。使用它在读取 [`useLayoutEffect`](#useLayoutEffect) 中的布局之前将样式注入 DOM。由于这个 hook 的作用域有限，所以这个 hook 不能访问 refs，也不能安排更新。
 
 > 注意：
 >
