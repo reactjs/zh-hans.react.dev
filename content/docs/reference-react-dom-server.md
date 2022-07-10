@@ -63,7 +63,7 @@ ReactDOMServer.renderToStaticMarkup(element)
 ReactDOMServer.renderToPipeableStream(element, options)
 ```
 
-将 React 元素渲染成初始 HTML。React 将返回一个 [Control object](https://github.com/facebook/react/blob/3f8990898309c61c817fbf663f5221d9a00d0eaa/packages/react-dom/src/server/ReactDOMFizzServerNode.js#L49-L54)，这个对象允许我们对输出进行管理或中止请求。同时完全支持 Suspense 和 HTML 的流式传输，随后通过 javascript 执行来“延迟”内容块的“弹出”。[了解更多](https://github.com/reactwg/react-18/discussions/37)。
+将 React 元素渲染成初始 HTML。React 将返回一个 [Control object](https://github.com/facebook/react/blob/3f8990898309c61c817fbf663f5221d9a00d0eaa/packages/react-dom/src/server/ReactDOMFizzServerNode.js#L49-L54)，这个对象允许我们对输出进行管理或中止请求。同时完全支持 Suspense 和 HTML 的流式传输，随后通过执行 javascript 来“延迟”内容块的“弹出”。[了解更多](https://github.com/reactwg/react-18/discussions/37)。
 
 如果你在已有服务端渲染标记的节点上调用 [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot) 方法，React 将会保留该节点且只进行事件处理绑定，从而让你有一个非常高性能的首次加载体验。
 
