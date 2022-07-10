@@ -129,7 +129,7 @@ ReactDOM.unstable_createRoot(domNode).render(<App />);
 
 目前，并发模式 *远没有* Hook 完成度高。一些 API 还没有被正确的“连通”，也不会执行预想中的任务。本文成文时，我们不推荐在除了早期探索的情况下使用它。我们觉得并发模式本生应该没有什么漏洞，但是，请注意，[`<React.StrictMode>`](https://reactjs.org/docs/strict-mode.html)中的错误提示组件可能还不可以正常工作。另外，我们注意到，并行模式会把一些不是并行模式本身的性能问题 *展现* 出来。举个例子，每隔毫秒执行的`setInterval(fn, 1)`会在并发模式中产生更差的影响。我们计划在正式发行并发模式的时候，提供一些发现并解决这类问题的文档。
 
-并发模式是我们对 React 规划中的一个重要部分。对于需要使用大量 CPU 的任务来说，它提供了不被阻挡的渲染，并使得你的应用在渲染复杂的组件树时可响应。在[我们的冰岛 JSConf 演讲](/blog/2018/03/01/sneak-peek-beyond-react-16.html)中我们展示了它。并发模式也使得悬停 （Suspense）更好。它可以使你在网络够快的时候略过显示载入指示器。除非亲眼所见，它很难解释，[Andrew 的演讲](https://www.youtube.com/watch?v=ByBPyMBTzM0)时现今最好的资料。并发模式依靠一个配合的主线程[调度线程](https://github.com/facebook/react/tree/main/packages/scheduler)，我们正在[和 Chome 团队合作](https://www.youtube.com/watch?v=mDdgfyRB5kg)以在未来把这个功能加入到浏览器中。
+并发模式是我们对 React 规划中的一个重要部分。对于需要使用大量 CPU 的任务来说，它提供了不被阻挡的渲染，并使得你的应用在渲染复杂的组件树时可响应。在[我们的冰岛 JSConf 演讲](/blog/2018/03/01/sneak-peek-beyond-react-16.html)中我们展示了它。并发模式也使得悬停 （Suspense）更好。它可以使你在网络够快的时候略过显示载入指示器。除非亲眼所见，它很难解释，[Andrew 的演讲](https://www.youtube.com/watch?v=ByBPyMBTzM0)时现今最好的资料。并发模式依靠一个配合的主线程[调度线程](https://github.com/facebook/react/tree/main/packages/scheduler)，我们正在[和 Chrome 团队合作](https://www.youtube.com/watch?v=mDdgfyRB5kg)以在未来把这个功能加入到浏览器中。
 
 **React DOM 中的进度：** React 16.6 包含了一个 *非常* 不稳定的并发模式，你可以通过 `unstable_` 前缀找到它，。但我们并不推荐使用它，除非你愿意常常遇到死路或者未被开发的功能。16.7的 alpha 版本中包含了 `React.ConcurrentMode` 和 `ReactDOM.createRoot`，并且没有 `unstable_` 前缀。不过在正式版本中我们还是会保留这个前缀，我们将会在未来的小版本中提供文档并把并发模式标记为稳定。
 

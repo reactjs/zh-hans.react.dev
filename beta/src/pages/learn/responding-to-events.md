@@ -8,7 +8,7 @@ translators:
 
 <Intro>
 
-使用 React 可以在 JSX 中添加事件处理函数。其中事件处理函数为自定义函数，它将在响应用户交互（如点击、悬停、表单输入框获得焦点等）时触发。
+使用 React 可以在 JSX 中添加 **事件处理函数**。其中事件处理函数为自定义函数，它将在响应交互（如点击、悬停、表单输入框获得焦点等）时触发。
 
 </Intro>
 
@@ -71,7 +71,7 @@ button { margin-right: 10px; }
 * 通常在你的组件 *内部* 定义。
 * 名称以 `handle` 开头，后跟事件名称。
 
-> 虽然事件处理函数没有特殊的语法，但大家习惯以 `handle` 为前缀，后接事件名来对它们进行命名。你经常会看到类似 `onClick={handleClick}` 、`onMouseEnter={handleMouseEnter}` 的命名等等。
+> 按照惯例，通常将事件处理程序命名为 `handle`，后接事件名。你会经常看到 `onClick={handleClick}`，`onMouseEnter={handleMouseEnter}` 等。
 
 或者，你也可以在 JSX 中定义一个内联的事件处理函数：
 

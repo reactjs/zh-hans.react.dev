@@ -15,7 +15,7 @@
 
 1. 挑选你想要翻译或校对的文章 [New Chinese Website: TODOs](https://github.com/reactjs/zh-hans.reactjs.org/issues/4) 
 2. 请 fork 这个仓库
-3. 基于 fork 后的仓库中 master 分支拉取一个新的分支（名字自取）
+3. 基于 fork 后的仓库中 main 分支拉取一个新的分支（名字自取）
 4. 翻译(校对)你所选择的文章，提交到新的分支
 5. 此时提交 Pull Request 到该仓库
 6. 会有专人 Review 该 Pull Request，当两人以上通过该 Pull Request 时，你的翻译将被合并到仓库中
@@ -34,13 +34,13 @@
 2. 同步 git fetch 上游代码
 
 	```
-	$ git checkout master && git fetch upstream
+	$ git checkout main && git fetch upstream
 	```
 	
-3. 将上游代码合并至你 fork 后的仓库(master 分支)中，保证你的 master 分支永远是最新版本
+3. 将上游代码合并至你 fork 后的仓库(main 分支)中，保证你的 main 分支永远是最新版本
 
 	```
-	$ git merge upstream/master
+	$ git merge upstream/main
 	```
 	
 4. 重复翻译流程
@@ -63,7 +63,7 @@
 
 1. Choose the article you want to translate or proofread [New Chinese Website: TODOs](https://github.com/reactjs/zh-hans.reactjs.org/issues/4)
 2. Please fork this repo
-3. In the repo after fork, create a new branch (custom branch name) based on the master branch.
+3. In the repo after fork, create a new branch (custom branch name) based on the main branch.
 4. Translation or proofread article, and commit your branch
 5. Commit your PR to this repo
 6. Please wait for Review.
@@ -83,10 +83,10 @@
 	```
 	$ git fetch upstream
 	```
-3. Merge upstream/master to your repo/master
+3. Merge upstream/main to your repo/main
 	
 	```
-	$ git checkout master && git merge upstream/master
+	$ git checkout main && git merge upstream/main
 	```
 4. Re-execute the translation process
 
@@ -96,7 +96,7 @@
 
 1. Git
 1. Node: any 12.x version starting with v12.0.0 or greater
-1. Yarn: See [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/)
+1. Yarn v1: See [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/)
 1. A fork of the repo (for any contributions)
 1. A clone of the [reactjs.org repo](https://github.com/reactjs/reactjs.org) on your local machine
 
