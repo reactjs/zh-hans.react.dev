@@ -29,7 +29,7 @@ React 元素的事件处理和 DOM 元素的很相似，但是有一点语法上
 </button>
 ```
 
-在 React 中另一个不同点是你不能通过返回 `false` 的方式阻止默认行为。你必须显式的使用 `preventDefault`。例如，传统的 HTML 中阻止表单的默认提交行为，你可以这样写：
+在 React 中另一个不同点是你不能通过返回 `false` 的方式阻止默认行为。你必须显式地使用 `preventDefault`。例如，传统的 HTML 中阻止表单的默认提交行为，你可以这样写：
 
 ```html
 <form onsubmit="console.log('You clicked submit.'); return false">
