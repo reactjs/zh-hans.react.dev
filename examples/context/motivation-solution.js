@@ -34,6 +34,6 @@ class ThemedButton extends React.Component {
   // 在这个例子中，当前的 theme 值为 “dark”。
   static contextType = ThemeContext;
   render() {
-    return <Button theme={this.context} />;
+    return <Button theme={this.contextType} />;
   }
 }
