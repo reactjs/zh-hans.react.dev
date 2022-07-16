@@ -52,7 +52,7 @@ class MouseTracker extends React.Component {
 
 当光标在屏幕上移动时，组件在 `<p>` 中显示其（x，y）坐标。
 
-现在的问题是：我们如何在另一个组件中复用这个行为？换个说法，若另一个组件需要知道鼠标位置，我们能否封装这一行为，以便轻松地与其他组件共享它？？
+现在的问题是：我们如何在另一个组件中复用这个行为？换个说法，若另一个组件需要知道鼠标位置，我们能否封装这一行为，以便轻松地与其他组件共享它？
 
 由于组件是 React 中最基础的代码复用单元，现在尝试重构一部分代码使其能够在 `<Mouse>` 组件中封装我们需要共享的行为。
 
@@ -99,7 +99,7 @@ class MouseTracker extends React.Component {
 
 举个例子，假设我们有一个 `<Cat>` 组件，它可以呈现一张在屏幕上追逐鼠标的猫的图片。我们或许会使用 `<Cat mouse={{ x, y }}` prop 来告诉组件鼠标的坐标以让它知道图片应该在屏幕哪个位置。
 
-首先, 你或许会像这样，尝试在 `<Mouse>` 内部的渲染方法渲染 `<Cat>` 组件：:
+首先, 你或许会像这样，尝试在 `<Mouse>` 内部的渲染方法渲染 `<Cat>` 组件：
 
 ```js
 class Cat extends React.Component {
@@ -130,9 +130,9 @@ class MouseWithCat extends React.Component {
       <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
 
         {/*
-          我们可以在这里换掉 <p> 的 <Cat>   ......
-          但是接着我们需要创建一个单独的 <MouseWithSomethingElse>
-          每次我们需要使用它时，<MouseWithCat> 是不是真的可以重复使用.
+          在这里，我们可以简单地使用 <Cat> 来替换 <p>。但是如果这样
+          做的话，当我们每次遇到这样的情况时，就需要创建一个单独的
+          <MouseWithSomethingElse>。所以 <MouseWithCat> 并不是真正的可复用组件。
         */}
         <Cat mouse={this.state} />
       </div>
@@ -152,7 +152,7 @@ class MouseTracker extends React.Component {
 }
 ```
 
-这种方法适用于我们的特定用例，但我们还没有达到以可复用的方式真正封装行为的目标。现在，每当我们想要鼠标位置用于不同的用例时，我们必须创建一个新的组件（本质上是另一个 `<MouseWithCat>` ），它专门为该用例呈现一些东西.
+这种方法适用于我们的特定用例，但我们还没有达到以可复用的方式真正封装行为的目标。现在，每当我们想要鼠标位置用于不同的用例时，我们必须创建一个新的组件（本质上是另一个 `<MouseWithCat>` ），它专门为该用例呈现一些东西。
 
 这也是 render prop 的来历：相比于直接将 `<Cat>` 写死在 `<Mouse>` 组件中，并且有效地更改渲染的结果，我们可以为 `<Mouse>` 提供一个函数 prop 来动态的确定要渲染什么 —— 一个 render prop。
 
@@ -236,7 +236,7 @@ function withMouse(Component) {
 
 ## 使用 Props 而非 `render` {#using-props-other-than-render}
 
-重要的是要记住，render prop 是因为模式才被称为 *render* prop ，你不一定要用名为 `render` 的 prop 来使用这种模式。事实上， [*任何*被用于告知组件需要渲染什么内容的函数 prop 在技术上都可以被称为 “render prop”](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce).
+重要的是要记住，render prop 是因为模式才被称为 *render* prop ，你不一定要用名为 `render` 的 prop 来使用这种模式。事实上， [*任何*被用于告知组件需要渲染什么内容的函数 prop 在技术上都可以被称为 “render prop”](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce)。
 
 尽管之前的例子使用了 `render`，我们也可以简单地使用 `children` prop！
 

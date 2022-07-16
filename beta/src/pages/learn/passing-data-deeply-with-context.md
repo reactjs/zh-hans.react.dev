@@ -4,7 +4,7 @@ title: Passing Data Deeply with Context
 
 <Intro>
 
-Usually, you will pass information from a parent component to a child component via props. But passing props can become verbose and inconvenient if you have to pass them through many components in the middle, or if many components in your app need the same information. Context lets the parent component make some information available to any component in the tree below it—no matter how deep—without passing it explicitly through props.
+Usually, you will pass information from a parent component to a child component via props. But passing props can become verbose and inconvenient if you have to pass them through many components in the middle, or if many components in your app need the same information. *Context* lets the parent component make some information available to any component in the tree below it—no matter how deep—without passing it explicitly through props.
 
 </Intro>
 
@@ -12,16 +12,31 @@ Usually, you will pass information from a parent component to a child component 
 
 - What "prop drilling" is
 - How to replace repetitive prop passing with context
-- What the common use cases are for context
-- What the common alternatives are to context
+- Common use cases for context
+- Common alternatives to context
 
 </YouWillLearn>
 
 ## The problem with passing props {/*the-problem-with-passing-props*/}
 
-[Passing props](/learn/passing-props-to-a-component) is a great way to explicitly pipe data through your UI tree to the components that use it. But it can become verbose and inconvenient when you need to pass some prop deeply through the tree, or if many components need the same prop. The nearest common ancestor could be far removed from the components that need data, and [lifting state up](/learn/sharing-state-between-components) that high can lead to a situation sometimes called "prop drilling."
+[Passing props](/learn/passing-props-to-a-component) is a great way to explicitly pipe data through your UI tree to the components that use it.
 
-<img alt="Lifting state up vs prop drilling" src="/images/docs/sketches/s_prop-drilling.png" />
+But passing props can become verbose and inconvenient when you need to pass some prop deeply through the tree, or if many components need the same prop. The nearest common ancestor could be far removed from the components that need data, and [lifting state up](/learn/sharing-state-between-components) that high can lead to a situation sometimes called "prop drilling."
+
+<DiagramGroup>
+
+<Diagram name="passing_data_lifting_state" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in purple. The value flows down to each of the two children, both highlighted in purple." >
+
+Lifting state up
+
+</Diagram>
+<Diagram name="passing_data_prop_drilling" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root node contains a bubble representing a value highlighted in purple. The value flows down through the two children, each of which pass the value but do not contain it. The left child passes the value down to two children which are both highlighted purple. The right child of the root passes the value through to one of its two children - the right one, which is highlighted purple. That child passed the value through its single child, which passes it down to both of its two children, which are highlighted purple.">
+
+Prop drilling
+
+</Diagram>
+
+</DiagramGroup>
 
 Wouldn't it be great if there were a way to "teleport" data to the components in the tree that need it without passing props? With React's context feature, there is!
 
@@ -91,7 +106,7 @@ export default function Heading({ level, children }) {
 
 </Sandpack>
 
-Let's say you want multiple headers within the same `Section` to always have the same size:
+Let's say you want multiple headings within the same `Section` to always have the same size:
 
 <Sandpack>
 
@@ -190,12 +205,26 @@ But how can the `<Heading>` component know the level of its closest `<Section>`?
 You can't do it with props alone. This is where context comes into play. You will do it in three steps:
 
 1. **Create** a context. (You can call it `LevelContext`, since it's for the heading level.)
-2. **Use** that context from the component that needs the data. (`Header` will use `LevelContext`.)
+2. **Use** that context from the component that needs the data. (`Heading` will use `LevelContext`.)
 3. **Provide** that context from the component that specifies the data. (`Section` will provide `LevelContext`.)
 
 Context lets a parent--even a distant one!--provide some data to the entire tree inside of it.
 
-<img alt="Context provides data to the entire tree" src="/images/docs/sketches/s_providing-context.png" />
+<DiagramGroup>
+
+<Diagram name="passing_data_context_close" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in orange which projects down to the two children, each highlighted in orange." >
+
+Using context in close children
+
+</Diagram>
+
+<Diagram name="passing_data_context_far" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root parent node contains a bubble representing a value highlighted in orange. The value projects down directly to four leaves and one intermediate component in the tree, which are all highlighted in orange. None of the other intermediate components are highlighted.">
+
+Using context in distant children
+
+</Diagram>
+
+</DiagramGroup>
 
 ### Step 1: Create the context {/*step-1-create-the-context*/}
 
@@ -413,7 +442,7 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-Notice this example doesn't quite work, yet! All the headers have the same size because **even though you're *using* the context, you have not *provided* it yet.** React doesn't know where to get it!
+Notice this example doesn't quite work, yet! All the headings have the same size because **even though you're *using* the context, you have not *provided* it yet.** React doesn't know where to get it!
 
 If you don't provide the context, React will use the default value you've specified in the previous step. In this example, you specified `1` as the argument to `createContext`, so `useContext(LevelContext)` returns `1`, setting all those headings to `<h1>`. Let's fix this problem by having each `Section` provide its own context.
 
@@ -539,7 +568,7 @@ It's the same result as the original code, but you did not need to pass the `lev
 
 1. You pass a `level` prop to the `<Section>`.
 2. `Section` wraps its children into `<LevelContext.Provider value={level}>`.
-3. `Header` asks the closest value of `LevelContext` above with `useContext(LevelContext)`.
+3. `Heading` asks the closest value of `LevelContext` above with `useContext(LevelContext)`.
 
 ## Using and providing context from the same component {/*using-and-providing-context-from-the-same-component*/}
 
@@ -828,8 +857,6 @@ If neither of these approaches works well for you, consider context.
 Context is not limited to static values. If you pass a different value on the next render, React will update all the components reading it below! This is why context is often used in combination with state.
 
 In general, if some information is needed by distant components in different parts of the tree, it's a good indication that context will help you.
-
-<img alt="Context provides data to the entire tree" src="/images/docs/sketches/s_lifting-v-providing.png" />
 
 <Recap>
 

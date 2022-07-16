@@ -58,13 +58,13 @@ React 中的所有更改在发布之前都需进行大量的内部测试。但�
 - 在你喜欢的持续集成平台上设置 cron job。[CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) 和 [Travis CI](https://docs.travis-ci.com/user/cron-jobs/) 均支持 cron job。
 - 在 cron job 中，使用 npm 的 `next` 标签将 React 版本更新至 Next 渠道中的最新版本。使用 npm cli：
 
-  ```
+  ```console
   npm update react@next react-dom@next
   ```
 
   或者使用 yarn：
 
-  ```
+  ```console
   yarn upgrade react@next react-dom@next
   ```
 - 针对更新的 packages 执行测试用例。

@@ -4,22 +4,38 @@
 
 import * as React from 'react';
 import {useSandpack} from '@codesandbox/sandpack-react';
-import {IconArrowSmall} from '../../Icon/IconArrowSmall';
+import {IconDownload} from '../../Icon/IconDownload';
 export interface DownloadButtonProps {}
+
+let supportsImportMap: boolean | void;
+
+function useSupportsImportMap() {
+  function subscribe() {
+    // It never updates.
+    return () => {};
+  }
+  function getCurrentValue() {
+    if (supportsImportMap === undefined) {
+      supportsImportMap =
+        (HTMLScriptElement as any).supports &&
+        (HTMLScriptElement as any).supports('importmap');
+    }
+    return supportsImportMap;
+  }
+  function getServerSnapshot() {
+    return false;
+  }
+
+  return React.useSyncExternalStore(
+    subscribe,
+    getCurrentValue,
+    getServerSnapshot
+  );
+}
 
 export const DownloadButton: React.FC<DownloadButtonProps> = () => {
   const {sandpack} = useSandpack();
-  const [supported, setSupported] = React.useState(false);
-  React.useEffect(() => {
-    // This detection will work in Chrome 97+
-    if (
-      (HTMLScriptElement as any).supports &&
-      (HTMLScriptElement as any).supports('importmap')
-    ) {
-      setSupported(true);
-    }
-  }, []);
-
+  const supported = useSupportsImportMap();
   if (!supported) {
     return null;
   }
@@ -74,13 +90,9 @@ ${css}
     <button
       className="text-sm text-primary dark:text-primary-dark inline-flex items-center hover:text-link duration-100 ease-in transition mx-1"
       onClick={downloadHTML}
-      title="Refresh Sandpack"
+      title="Download Sandbox"
       type="button">
-      <IconArrowSmall
-        displayDirection="down"
-        className="inline mb-0.5 mr-1 mt-1"
-      />{' '}
-      Download
+      <IconDownload className="inline mr-1" /> Download
     </button>
   );
 };

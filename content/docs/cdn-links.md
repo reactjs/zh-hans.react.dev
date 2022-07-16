@@ -9,18 +9,18 @@ next: release-channels.html
 可以通过 CDN 获得 React 和 ReactDOM 的 UMD 版本。
 
 ```html
-<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 ```
 
 上述版本仅用于开发环境，不适合用于生产环境。压缩优化后可用于生产的 React 版本可通过如下方式引用：
 
 ```html
-<script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 ```
 
-如果需要加载指定版本的 `react` 和 `react-dom`，可以把 `17` 替换成所需加载的版本号。
+如果需要加载指定版本的 `react` 和 `react-dom`，可以把 `18` 替换成所需加载的版本号。
 
 ### 为什么要使用 `crossorigin` 属性? {#why-the-crossorigin-attribute}
 
