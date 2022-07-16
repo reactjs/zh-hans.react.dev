@@ -184,7 +184,7 @@ function handleTabSelect(tab) {
 }
 ```
 
-此处代码会告知 React，将标签设置为 `'comments'`，并非一个紧急更新。而是一个 [transition](/docs/react-api.html#transitions)，可能需要一些实际。然后 React 会保留旧的 UI 并进行交互，当它准备好时，会切换为 `<Comments />`，具体请参阅 [Transitions](/docs/react-api.html#transitions) 以了解更多相关信息。
+此处代码会告知 React，将标签切换为 `'comments'` 不会标记为紧急更新，而是标记为需要一些准备时间的 [transition](/docs/react-api.html#transitions)。然后 React 会保留旧的 UI 并进行交互，当它准备好时，会切换为 `<Comments />`，具体请参阅 [Transitions](/docs/react-api.html#transitions) 以了解更多相关信息。
 
 ### 异常捕获边界（Error boundaries）{#error-boundaries}
 

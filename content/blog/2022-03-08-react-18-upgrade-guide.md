@@ -40,9 +40,8 @@ render(<App tab="home" />, container);
 // After
 import { createRoot } from 'react-dom/client';
 const container = document.getElementById('app');
-const root = createRoot(container);
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
 root.render(<App tab="home" />);
-
 ```
 
 We’ve also changed `unmountComponentAtNode` to `root.unmount`:
@@ -60,7 +59,7 @@ We've also removed the callback from render, since it usually does not have the 
 ```js
 // Before
 const container = document.getElementById('app');
-ReactDOM.render(<App tab="home" />, container, () => {
+render(<App tab="home" />, container, () => {
   console.log('rendered');
 });
 
@@ -70,15 +69,17 @@ function AppWithCallbackAfterRender() {
     console.log('rendered');
   });
 
-return <App tab="home" />
+  return <App tab="home" />
 }
 
 const container = document.getElementById('app');
-const root = ReactDOM.createRoot(container);
+const root = createRoot(container);
 root.render(<AppWithCallbackAfterRender />);
 ```
 
-> Note: There is no one-to-one replacement for the old render callback API — it depends on your use case. See the working group post for [Replacing render with createRoot](https://github.com/reactwg/react-18/discussions/5) for more information.
+> Note:
+> 
+> There is no one-to-one replacement for the old render callback API — it depends on your use case. See the working group post for [Replacing render with createRoot](https://github.com/reactwg/react-18/discussions/5) for more information.
 
 Finally, if your app uses server-side rendering with hydration, upgrade `hydrate` to `hydrateRoot`:
 
@@ -96,6 +97,10 @@ const root = hydrateRoot(container, <App tab="home" />);
 ```
 
 For more information, see the [working group discussion here](https://github.com/reactwg/react-18/discussions/5).
+
+> Note
+> 
+> **If your app doesn't work after upgrading, check whether it's wrapped in `<StrictMode>`.** [Strict Mode has gotten stricter in React 18](#updates-to-strict-mode), and not all your components may be resilient to the new checks it adds in development mode. If removing Strict Mode fixes your app, you can remove it during the upgrade, and then add it back (either at the top or for a part of the tree) after you fix the issues that it's pointing out.
 
 ## Updates to Server Rendering APIs {#updates-to-server-rendering-apis}
 
@@ -119,6 +124,21 @@ Finally, this API will continue to work for rendering e-mails:
 * `renderToStaticNodeStream`
 
 For more information on the changes to server rendering APIs, see the working group post on [Upgrading to React 18 on the server](https://github.com/reactwg/react-18/discussions/22), a [deep dive on the new Suspense SSR Architecture](https://github.com/reactwg/react-18/discussions/37), and [Shaundai Person’s](https://twitter.com/shaundai) talk on [Streaming Server Rendering with Suspense](https://www.youtube.com/watch?v=pj5N-Khihgc) at React Conf 2021.
+
+## Updates to TypeScript definitions
+
+If your project uses TypeScript, you will need to update your `@types/react` and `@types/react-dom` dependencies to the latest versions. The new types are safer and catch issues that used to be ignored by the type checker. The most notable change is that the `children` prop now needs to be listed explicitly when defining props, for example:
+
+```typescript{3}
+interface MyButtonProps {
+  color: string;
+  children?: React.ReactNode;
+}
+```
+
+See the [React 18 typings pull request](https://github.com/DefinitelyTyped/DefinitelyTyped/pull/56210) for a full list of type-only changes. It links to example fixes in library types so you can see how to adjust your code. You can use the [automated migration script](https://github.com/eps1lon/types-react-codemod) to help port your application code to the new and safer typings faster.
+
+If you find a bug in the typings, please [file an issue](https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/new?category=issues-with-a-types-package) in the DefinitelyTyped repo.
 
 ## Automatic Batching {#automatic-batching}
 
@@ -276,7 +296,7 @@ If you need to support Internet Explorer we recommend you stay with React 17.
 ### React DOM Server {#react-dom-server}
 
 * **`renderToString`:** Will no longer error when suspending on the server. Instead, it will emit the fallback HTML for the closest `<Suspense>` boundary and then retry rendering the same content on the client. It is still recommended that you switch to a streaming API like `renderToPipeableStream` or `renderToReadableStream` instead.
-* **`renderToStaticMarkup`:** Will no longer error when suspending on the server. Instead, it will emit the fallback HTML for the closest `<Suspense>` boundary and retry rendering on the client.
+* **`renderToStaticMarkup`:** Will no longer error when suspending on the server. Instead, it will emit the fallback HTML for the closest `<Suspense>` boundary.
 
 ## Changelog {#changelog}
 

@@ -145,15 +145,13 @@ permalink: community/meetups.html
 
 ## Poland {#poland}
 * [Warsaw](https://www.meetup.com/React-js-Warsaw/)
+* [Wrocław](https://www.meetup.com/ReactJS-Wroclaw/)
 
 ## Portugal {#portugal}
 * [Lisbon](https://www.meetup.com/JavaScript-Lisbon/)
 
 ## Scotland (UK) {#scotland-uk}
 * [Edinburgh](https://www.meetup.com/React-Scotland/)
-
-## Singapore {#singapore}
-* [Singapore - React Knowledgeable](https://reactknowledgeable.org/)
 
 ## Spain {#spain}
 * [Barcelona](https://www.meetup.com/ReactJS-Barcelona/)

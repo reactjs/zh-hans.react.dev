@@ -774,7 +774,7 @@ export const initialTravelPlan = {
         childPlaces: [],
       }, {
         id: 41,
-        title: 'New Zeland',
+        title: 'New Zealand',
         childPlaces: [],
       }, {
         id: 42,
@@ -1050,7 +1050,7 @@ export const initialTravelPlan = {
   35: {
     id: 35,
     title: 'Oceania',
-    childIds: [36, 37, 38, 39, 40, 41,, 42],   
+    childIds: [36, 37, 38, 39, 40, 41, 42],   
   },
   36: {
     id: 36,
@@ -1079,7 +1079,7 @@ export const initialTravelPlan = {
   },
   41: {
     id: 41,
-    title: 'New Zeland',
+    title: 'New Zealand',
     childIds: []
   },
   42: {
@@ -1422,7 +1422,7 @@ export const initialTravelPlan = {
   },
   41: {
     id: 41,
-    title: 'New Zeland',
+    title: 'New Zealand',
     childIds: []
   },
   42: {
@@ -1766,7 +1766,7 @@ export const initialTravelPlan = {
   },
   41: {
     id: 41,
-    title: 'New Zeland',
+    title: 'New Zealand',
     childIds: []
   },
   42: {
@@ -2019,7 +2019,7 @@ export default function App() {
 
 ### Fix a broken packing list {/*fix-a-broken-packing-list*/}
 
-This packing list has a footer that shows how many items are packed, and how many items there are overall. It seems to work at first, but it is buggy. For example, if you mark a place as completed and then delete it, the counter will not be updated correctly. Fix the counter so that it's always correct.
+This packing list has a footer that shows how many items are packed, and how many items there are overall. It seems to work at first, but it is buggy. For example, if you mark an item as packed and then delete it, the counter will not be updated correctly. Fix the counter so that it's always correct.
 
 <Hint>
 

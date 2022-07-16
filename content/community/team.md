@@ -92,7 +92,7 @@ Seth 从小就学习编程，在亚利桑那州图森市长大。放学后，他
 
 [@huxpro on GitHub](https://github.com/huxpro) &middot; [@huxpro on Twitter](https://twitter.com/huxpro)
 
-Xuan 在童年时与编程结缘，最初使用 Flash 做游戏。他大学主修的是数字媒体技术，最终被忽悠去做了编译器，但不知为何 React 需要。工作之余，喜欢拿铁艺术，热爱网球和乒乓球。
+Xuan 小时候接触过编程，用 Flash 制作游戏。他在大学里从事数字媒体艺术，但最终制作编译器吸引住了——正好 React 需要一个。工作之余，喜欢拿铁艺术，热爱网球和乒乓球。
 
 ## 鸣谢 {#acknowledgements}
 
