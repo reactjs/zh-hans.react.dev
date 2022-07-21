@@ -3,7 +3,7 @@ title: "React Labs: What We've Been Working On – June 2022"
 author: [acdlite,gaearon,kassens,josephsavona,joshcstory,laurentan,lunaruan,mengdichen,rickhanlonii,robertzhang,gsathya,sebmarkbage,huxpro]
 ---
 
-[React 18](https://reactjs.org/blog/2022/03/29/react-v18.html)  已经酝酿多年，它为 React 团队带来了宝贵的经验。它的发布是多年的研究和多种路线探索的结果。其中一些路线是成功的；更多的是进入了死胡同。我们学到的一个教训是，社区一直在等待新功能的发布，却没有深入了解我们正在探索的这些路线，这让我们很沮丧。
+[React 18](https://reactjs.org/blog/2022/03/29/react-v18.html)  已经酝酿多年，它为 React 团队带来了宝贵的经验。它的发布是多年的研究和众多路线探索的结果。其中一些路线是成功的；更多的则是在进入了死胡同后换来了新的洞见。我们学到的一个教训是，社区一直在等待新功能的发布，却没有深入了解我们正在探索的这些路线，这让我们很沮丧。
 
 通常，在任何时候，我们都有许多项目在同时进行，从更具实验性的到明确定义的。以后，我们希望开始定期分享更多我们在这些项目中与社区相关的内容。
 
@@ -13,27 +13,27 @@ author: [acdlite,gaearon,kassens,josephsavona,joshcstory,laurentan,lunaruan,meng
 
 我们于 2020 年 12 月宣布了  [React 服务器组件 (RSC) 的实验性方案](https://reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html) 。从那时起，我们就一直在 React 18 里去完成对他的支持，并致力于根据实验反馈对他进行改进。
 
-特别是，我们放弃了使用 I/O libraries（例如 react-fetch）的想法，而是采用 async/await 模型以获得更好的兼容性。这在技术上并不会 block RSC 的发布，因为你还可以使用 routers 来获取数据。另一个变化是我们已经不用文件扩展名这种方式，转而支持 [注释边界 annotating boundaries](https://github.com/reactjs/rfcs/pull/189#issuecomment-1116482278)。
+特别是，我们放弃了使用 I/O libraries（例如 react-fetch）的想法，而是采用 async/await 模型以获得更好的兼容性。这在技术上并不会阻碍 RSC 的发布，因为你还可以使用 routers 来获取数据。另一个变化是我们已经不用文件扩展名这种方式，转而支持 [注释边界（annotating boundaries）](https://github.com/reactjs/rfcs/pull/189#issuecomment-1116482278)。
 
-我们正在与 Vercel 和 Shopify 合作，统一 bundler 对 Webpack 和 Vite 中共享语义（shared semantics）的支持。在发布之前，我们希望确保 RSC 的语义在整个 React 生态系统中是相同的，这样才能达到稳定。
+我们正在与 Vercel 和 Shopify 合作，在 Webpack 与 Vite 中找到通用的语义来统一 bundler 的支持。在发布之前，我们希望确保 RSC 的语义在整个 React 生态系统中是相同的，这样才能达到稳定。
 
 ## 资产加载 {#asset-loading}
 
-目前，脚本、外部样式、字体和图像等资产通常是使用外部系统预加载或者实时加载的。这会使跨新环境（如流、服务器组件等）进行协调变得很棘手。我们正在考虑通过适用于所有 React 环境的 React API 的方式，再添加一些 API 以预加载和加载去重的外部资产。
+目前，脚本、外部样式、字体和图像等资产通常是使用外部系统预加载或者实时加载的。这会使跨新环境（如流、服务器组件等）进行协调变得很棘手。我们正在考虑添加新的 API 使得预加载与去重加载外部资产可以在任何 React 环境中通过 React 第一方的 API 表达。
 
-我们也在考虑让他们支持 Suspense，这样你就可以让图像、CSS 和字体在加载之前阻止显示，但不会阻止流式传输（streaming）和并发渲染（concurrent rendering）。这有助于避免在视觉效果和布局发生变化时出现 [“爆米花“](https://twitter.com/sebmarkbage/status/1516852731251724293)。
+我们也在考虑让他们支持 Suspense，这样你就可以让图像、CSS 和字体在加载之前阻塞显示，但不会阻塞流式传输（streaming）和并发渲染（concurrent rendering）。这有助于避免在视觉效果和布局发生变化时出现 [“爆米花“](https://twitter.com/sebmarkbage/status/1516852731251724293)。
 
-## 静态服务器渲染优化 {#static-server-rendering-optimizations}
+## 静态服务端渲染优化 {#static-server-rendering-optimizations}
 
-静态站点生成 (SSG) 和增量静态重新生成 (ISR) 是获得可缓存页面性能的好方法，但我们认为我们可以添加功能来提高动态服务器端渲染 (SSR) 的性能——特别是当大多数内容是可缓存的时候。我们正在探索利用编译（compilation）和静态通道（static passes）优化服务器渲染的方法。
+静态站点生成 (SSG) 和增量静态重新生成 (ISR) 是获得可缓存页面性能的好方法，但我们认为我们可以添加功能来提高动态服务器端渲染 (SSR) 的性能——特别是当大多数内容是可缓存的时候。我们正在探索利用编译（compilation）静态优化服务器渲染的方法。
 
 ## React 优化编译器 {#react-compiler}
 
-我们在 React Conf 2021 上对 React Forget 进行了 [预告](https://www.youtube.com/watch?v=lGEMwh32soc) 。它是一个编译器，可以自动生成等价的 useMemo 和 useCallback 调用，以最小化重新渲染的成本，同时不改变 React 原有的编码方式。
+我们在 React Conf 2021 上[预告](https://www.youtube.com/watch?v=lGEMwh32soc) 了 React Forget 项目。它是一个可以自动生成等效于 useMemo 和 useCallback 代码的编译器，旨在保持 React 现有的编程模型的前提下最小化重新渲染的成本。
 
-最近，我们完成了对编译器的重写，使其更加可靠和强大。这种新架构使我们能够分析和缓存更复杂的模式，例如使用 [局部突变 local mutations](https://beta.reactjs.org/learn/keeping-components-pure#local-mutation-your-components-little-secret)，并开辟了许多新的编译时优化的机会，而不仅仅使用缓存这么简单。
+最近，我们完成了对编译器的重写，使其更加可靠和强大。这种新架构使我们能够分析和缓存例如用了 [局部可变数据（local mutations）](https://beta.reactjs.org/learn/keeping-components-pure#local-mutation-your-components-little-secret) 等更复杂模式的代码，并开辟了许多新的编译时优化的机会，而不仅仅局限于现有 Hooks 能做的优化。
 
-我们还在开发一个用于探索编译器许多方面的 Playground 。虽然 Playground 的目标是使编译器的开发更容易，但我们认为它将更容易调试和交互，并让编译器的功能变的直观可见。它揭示了它如何在后台工作的各种原理，并在你编写代码时实时呈现编译器的输出。这将在发布时与编译器一起提供。
+我们还在开发一个用于探索编译器许多方面的 Playground 。虽然 Playground 的主要目标是使编译器的开发本身更容易，但我们认为它也将方便大家上手 Forget 以及了解 Forget 做了什么。它揭示了 Forget 背后的一些原理，并且可以实时渲染编译器的生成代码。它会编译器一起发布。
 
 ## 离屏 {#offscreen}
 
@@ -43,7 +43,7 @@ author: [acdlite,gaearon,kassens,josephsavona,joshcstory,laurentan,lunaruan,meng
 
 Offscreen 引入了第三种选择：在视觉上隐藏 UI，但降低其内容渲染的优先级。这个想法在本质上类似于 `content-visibility` CSS 属性：当内容被隐藏时，它不需要与 UI 的其余部分保持同步。React 可以推迟渲染工作，直到应用程序的其余部分空闲，或者直到内容再次可见。
 
-Offscreen 只是一个小能力，他的目的是解锁更高级的功能。与 React 的其他并发特性类似 `startTransition`，在大多数情况下，你不会直接与 Offscreen API 交互，而是通过一个完善的框架来实现以下模式：
+Offscreen 只是一个底层能力，他的目的是解锁更高级的功能。与 React 的其他并发特性类似 `startTransition`，在大多数情况下，你不会直接与 Offscreen API 交互，而是通过一个完善的框架来实现以下模式：
 
 * **即时过渡（Instant transitions）**： 一些路由框架已经可以通过预加载数据来加速后续导航，例如悬停在链接上时。使用 Offscreen，他们还可以在后台预渲染下一个屏幕。
 * **可重用状态（Reusable state）**： 同样，在路线或选项卡之间导航时，你可以使用 Offscreen 来保留前一个屏幕的状态，以便你可以切换回来并从中断处继续。
@@ -52,7 +52,7 @@ Offscreen 只是一个小能力，他的目的是解锁更高级的功能。与 
 
 ## 过渡跟踪 {#transition-tracing}
 
-目前，React 有两个分析工具。[Original Profiler](https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)  显示了分析会话中所有提交的概览。对于每次提交，它还显示所有渲染的组件以及渲染它们所花费的时间。我们还有一个在 React 18 中引入的 [Timeline Profiler](https://github.com/reactwg/react-18/discussions/76) 的 beta 版本，它显示组件何时安排更新以及 React 何时处理这些更新。这两个分析器都可以帮助开发人员识别代码中的性能问题。
+目前，React 有两个分析工具。[最早的 Profiler](https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)  显示了分析会话中所有提交的概览。对于每次提交，它还显示所有渲染的组件以及渲染它们所花费的时间。我们还有一个在 React 18 中引入的 [时间线（Timeline） Profiler](https://github.com/reactwg/react-18/discussions/76) 的 beta 版本，它显示组件何时安排更新以及 React 何时处理这些更新。这两个分析器都可以帮助开发人员识别代码中的性能问题。
 
 我们已经意识到，开发人员并没有发现，其实了解单个缓慢的提交或脱离上下文的组件是很有用的。了解导致缓慢提交的真正原因会更有用。并且开发人员希望能够跟踪特定的交互（例如按钮单击、初始加载或页面导航）以观察性能回归并了解交互缓慢的原因以及如何去修复它。
 
