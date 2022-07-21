@@ -17,7 +17,7 @@ author: [acdlite,gaearon,kassens,josephsavona,joshcstory,laurentan,lunaruan,meng
 
 我们正在与 Vercel 和 Shopify 合作，在 Webpack 与 Vite 中找到通用的语义来统一 bundler 的支持。在发布之前，我们希望确保 RSC 的语义在整个 React 生态系统中是相同的，这样才能达到稳定。
 
-## 资产加载 {#asset-loading}
+## 静态资源加载 {#asset-loading}
 
 目前，脚本、外部样式、字体和图像等资产通常是使用外部系统预加载或者实时加载的。这会使跨新环境（如流、服务器组件等）进行协调变得很棘手。我们正在考虑添加新的 API 使得预加载与去重加载外部资产可以在任何 React 环境中通过 React 第一方的 API 表达。
 
