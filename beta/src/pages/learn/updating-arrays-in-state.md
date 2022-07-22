@@ -65,7 +65,7 @@ export default function List() {
 
   return (
     <>
-      <h1>令人惊叹的雕塑家们：</h1>
+      <h1>振奋人心的雕塑家们：</h1>
       <input
         value={name}
         onChange={e => setName(e.target.value)}
@@ -119,7 +119,7 @@ export default function List() {
 
   return (
     <>
-      <h1>令人惊叹的雕塑家们：</h1>
+      <h1>振奋人心的雕塑家们：</h1>
       <input
         value={name}
         onChange={e => setName(e.target.value)}
@@ -180,7 +180,7 @@ export default function List() {
 
   return (
     <>
-      <h1>令人惊叹的雕塑家们：</h1>
+      <h1>振奋人心的雕塑家们：</h1>
       <ul>
         {artists.map(artist => (
           <li key={artist.id}>
@@ -204,7 +204,7 @@ export default function List() {
 
 </Sandpack>
 
-点击 “删除” 按钮几次，并且查看按钮处理点击事件的代码。
+点击“删除”按钮几次，并且查看按钮处理点击事件的代码。
 
 ```js
 setArtists(
@@ -212,7 +212,7 @@ setArtists(
 );
 ```
 
-这里，`artists.filter(s => s.id !== artist.id)` 表示 “创建一个新的数组，该数组由那些 ID 与 `artists.id` 不同的 `artists` 组成”。换句话说，每个 artist 的“删除”按钮会把 _那一个_ artist 从原始数组中过滤掉，并使用过滤后的数组再次进行渲染。注意，`filter` 并不会改变原始数组。
+这里，`artists.filter(s => s.id !== artist.id)` 表示“创建一个新的数组，该数组由那些 ID 与 `artists.id` 不同的 `artists` 组成”。换句话说，每个 artist 的“删除”按钮会把 _那一个_ artist 从原始数组中过滤掉，并使用过滤后的数组再次进行渲染。注意，`filter` 并不会改变原始数组。
 
 ### 转换数组 {/*transforming-an-array*/}
 
@@ -363,11 +363,11 @@ export default function List() {
   function handleClick() {
     const insertAt = 1; // 可能是任何索引
     const nextArtists = [
-      // 插入点之前的元素:
+      // 插入点之前的元素：
       ...artists.slice(0, insertAt),
-      // 新的元素:
+      // 新的元素：
       { id: nextId++, name: name },
-      // 插入点之后的元素:
+      // 插入点之后的元素：
       ...artists.slice(insertAt)
     ];
     setArtists(nextArtists);
