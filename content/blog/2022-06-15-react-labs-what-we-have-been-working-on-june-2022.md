@@ -13,7 +13,7 @@ author: [acdlite,gaearon,kassens,josephsavona,joshcstory,laurentan,lunaruan,meng
 
 我们于 2020 年 12 月宣布了  [React 服务端组件 (RSC) 的实验性方案](https://reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html) 。从那时起，我们就一直在尽力完成 React 18 中 RSC 所依赖的一些能力，并致力于根据实验情况做一些改进。
 
-值得一提得是，我们放弃了必须使用 react-fetch 这样专用 I/O 库的路线，而是决定采用一个兼容 async/await 的路线。严格得说，这个改动并不会阻碍 RSC 的发布，目前你仍然可以继续用路由（routers）来获取数据。另一个变化是我们已经决定不用文件扩展名这种方式，而是转而考虑使用 [标注来确定边界（annotating boundaries）](https://github.com/reactjs/rfcs/pull/189#issuecomment-1116482278)。
+值得一提得是，我们放弃了必须使用 react-fetch 这样专用 I/O 库的路线，而是决定采用一个兼容 async/await 的路线。严格地说，这个改动并不会阻碍 RSC 的发布，目前你仍然可以继续用路由（routers）来获取数据。另一个变化是我们已经决定不用文件扩展名这种方式，而是转而考虑使用 [标注来确定边界（annotating boundaries）](https://github.com/reactjs/rfcs/pull/189#issuecomment-1116482278)。
 
 我们正在与 Vercel 和 Shopify 合作，在 Webpack 与 Vite 中找到一种通用的语义来统一 bundler 上的的支持。在发布之前，我们希望确保 RSC 的语义在整个 React 生态系统中是相同的，这样才能达到稳定。
 
