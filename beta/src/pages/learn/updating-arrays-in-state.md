@@ -668,7 +668,7 @@ function ItemList({ artworks, onToggle }) {
 - 通常情况下，你应该不需要更新处于非常深层级的 state 。如果你有此类需求，你或许需要[调整一下数据的结构](/learn/choosing-the-state-structure#avoid-deeply-nested-state)，让数据变得扁平一些。
 - 如果你不想改变 state 的数据结构，你也许会更喜欢使用 [Immer](https://github.com/immerjs/use-immer) ，它让你可以继续使用方便的，但会直接修改原值的语法，并负责为你生成拷贝值。
 
-下面是我们用 Immer 来重写的 Art Bucket List 的例子：
+下面是我们用 Immer 来重写的艺术愿望清单的例子：
 
 <Sandpack>
 
