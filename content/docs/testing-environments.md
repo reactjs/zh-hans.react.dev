@@ -47,7 +47,11 @@ prev: testing-recipes.html
 
 ### 模拟计时器 {#mocking-timers}
 
+<<<<<<< HEAD
 组件可能会使用基于时间的函数如 `setTimeout`、`setInterval` 和 `Date.now` 等。在测试环境中，使用可以手动“推进”时间的替代物来模拟这些功能会很有帮助。它会确保你的测试快速运行！依赖于计时器的测试仍将按照顺序解析，但会更快[<small>（例子）</small>](/docs/testing-recipes.html#timers)。大部分测试框架，包括 [Jest](https://jestjs.io/docs/en/timer-mocks)、[sinon](https://sinonjs.org/releases/v7.3.2/fake-timers/) 和 [lolex](https://github.com/sinonjs/lolex) 都允许你在测试中模拟计时器。
+=======
+Components might be using time-based functions like `setTimeout`, `setInterval`, or `Date.now`. In testing environments, it can be helpful to mock these functions out with replacements that let you manually "advance" time. This is great for making sure your tests run fast! Tests that are dependent on timers would still resolve in order, but quicker [<small>(example)</small>](/docs/testing-recipes.html#timers). Most frameworks, including [Jest](https://jestjs.io/docs/en/timer-mocks), [sinon](https://sinonjs.org/releases/latest/fake-timers) and [lolex](https://github.com/sinonjs/lolex), let you mock timers in your tests.
+>>>>>>> b162ea203c4eb2ad43e254a57670ea1223150a9c
 
 有些时候可能你不想要模拟计时器。例如，在你测试动画时，或是交互端对时间较为敏感的情况下（如 API 访问速率限制器）。具有计时器模拟的库允许你在每个测试/套件上启用或禁用这个功能，因此你可以明确地选择这些测试的运行方式。
 

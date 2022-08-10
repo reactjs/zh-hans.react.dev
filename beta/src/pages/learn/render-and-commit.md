@@ -144,7 +144,11 @@ img { margin: 0 10px 10px 0; }
 * **输入相同，输出相同。** 给定相同的输入，组件应始终返回相同的 JSX。（当有人点了西红柿沙拉时，他们不应该收到洋葱沙拉！）
 * **管好它自己的事情。** 它不应更改任何存在于渲染之前的对象或变量。（一个订单不应更改其他任何人的订单。）
 
+<<<<<<< HEAD
 否则，随着代码库复杂性的增加，您可能会遇到令人困惑的错误和不可预测的行为。在"严格模式"下开发时，React 会调用每个组件的函数两次，这可以帮助发现由不纯函数引起的错误。
+=======
+Otherwise, you can encounter confusing bugs and unpredictable behavior as your codebase grows in complexity. When developing in "Strict Mode", React calls each component's function twice, which can help surface mistakes caused by impure functions.
+>>>>>>> b162ea203c4eb2ad43e254a57670ea1223150a9c
 
 </Gotcha>
 

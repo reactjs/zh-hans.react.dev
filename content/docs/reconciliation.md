@@ -45,7 +45,11 @@ React 会销毁 `Counter` 组件并且重新装载一个新的组件。
 
 >注意：
 >
+<<<<<<< HEAD
 >这些方法被认为是过时的，在新的代码中应该[避免使用它们](/blog/2018/03/27/update-on-async-rendering.html)：
+=======
+>This method is considered legacy and you should [avoid it](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>>>>>>> b162ea203c4eb2ad43e254a57670ea1223150a9c
 >
 >- `UNSAFE_componentWillMount()`
 
