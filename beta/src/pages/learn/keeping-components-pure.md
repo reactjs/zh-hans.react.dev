@@ -215,6 +215,7 @@ export default function TeaGathering() {
 
 <Recap>
 
+<<<<<<< HEAD
 * 一个组件必须是纯粹的，就意味着：
   * **只负责自己的任务。** 不应更改渲染前存在的任何对象或变量。
   * **输入相同，则输出相同。** 给定相同的输入，组件应该总是返回相同的 JSX。
@@ -222,6 +223,15 @@ export default function TeaGathering() {
 * 你不应该改变组件用于渲染的任何输入。这包括 props、state 和 context。通过 [“设置” state](reacting-to-input-with-state) 来更新界面，而不要改变预先存在的对象。
 * 努力在你返回的 JSX 中表达你的组件逻辑。当你需要“改变事物”时，你通常希望在事件处理程序中进行。作为最后的手段，你可以使用 `useEffect`。
 * 编写纯函数需要一些练习，但它充分释放了 React 范式的能力。
+=======
+* A component must be pure, meaning:
+  * **Mind its own business.** It should not change any objects or variables that existed before rendering.
+  * **Same inputs, same output.** Given the same inputs, a component should always return the same JSX. 
+* Rendering can happen at any time, so components should not depend on each others' rendering sequence.
+* You should not mutate any of the inputs that your components use for rendering. That includes props, state, and context. To update the screen, ["set" state](reacting-to-input-with-state) instead of mutating preexisting objects.
+* Strive to express your component's logic in the JSX you return. When you need to "change things", you'll usually want to do it in an event handler. As a last resort, you can `useEffect`.
+* Writing pure functions takes a bit of practice, but it unlocks the power of React's paradigm.
+>>>>>>> 5fed75dac5f4e208369b102a1337d76944111b33
 
 </Recap>
 
