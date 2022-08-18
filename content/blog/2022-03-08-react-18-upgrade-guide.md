@@ -160,6 +160,7 @@ setTimeout(() => {
 }, 1000);
 ```
 
+
 在 React 18 通过 `createRoot` ，所有更新会自动批处理，无论更新的来源。这意味着 Promise、setTimeout、native event handler，或者其他事件中的更新，会和 React 事件一样做批处理：
 
 ```js
