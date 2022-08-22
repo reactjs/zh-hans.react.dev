@@ -307,7 +307,11 @@ function MyButton() {
 
 通常，你会希望你的组件 "记住" 一些信息并展示出来。例如，也许你想计算一个按钮被点击的次数。要做到这一点，你需要在你的组件中添加 **state**。
 
+<<<<<<< HEAD
 首先，从 React 引入 [`useState`](/apis/usestate)：
+=======
+First, import [`useState`](/apis/react/useState) from React:
+>>>>>>> caaf3c724572ccbef9fcaace9469117e05d49cf1
 
 ```js {1,4}
 import { useState } from 'react';
@@ -387,9 +391,15 @@ button {
 
 ## 使用 Hook {/*using-hooks*/}
 
+<<<<<<< HEAD
 以 `use` 开头的函数被称为 **Hook**。`useState` 是 React 提供的一个内置 Hook。你可以在 [React API 参考](/apis) 中找到其他内置的 Hook。你也可以通过组合现有的 Hook 来编写属于你自己的 Hook。
 
 Hook 比普通函数更为严格。你只能在你的组件（或其他 Hook）的 **顶层** 调用 Hook。如果你想在一个条件或循环中调用 `useState`，请提取一个新的组件并在组件内部使用它。
+=======
+Functions starting with `use` are called *Hooks*. `useState` is a built-in Hook provided by React. You can find other built-in Hooks in the [React API reference](/apis/react). You can also write your own Hooks by combining the existing ones.
+
+Hooks are more restrictive than regular functions. You can only call Hooks *at the top level* of your components (or other Hooks). If you want to use `useState` in a condition or a loop, extract a new component and put it there.
+>>>>>>> caaf3c724572ccbef9fcaace9469117e05d49cf1
 
 ## 组件间共享数据 {/*sharing-data-between-components*/}
 

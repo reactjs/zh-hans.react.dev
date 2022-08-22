@@ -75,7 +75,11 @@ export default function Image() {
 
 ### 状态更新时重新渲染 {/*re-renders-when-state-updates*/}
 
+<<<<<<< HEAD
 一旦组件被初次渲染，您就可以通过使用 [`set` 函数](/apis/usestate#setstate) 更新其状态来触发之后的渲染。更新组件的状态会自动将一次渲染送入队列。（您可以想象这种情况成餐厅客人在第一次下单之后又点了茶、点心和各种东西，具体取决于他们的胃口。）
+=======
+Once the component has been initially rendered, you can trigger further renders by updating its state with the [`set` function](/apis/react/useState#setstate). Updating your component's state automatically queues a render. (You can imagine these as a restaurant guest ordering tea, dessert, and all sorts of things after putting in their first order, depending on the state of their thirst or hunger.)
+>>>>>>> caaf3c724572ccbef9fcaace9469117e05d49cf1
 
 <IllustrationBlock sequential>
   <Illustration caption="状态更新..." alt="React 作为餐厅服务员将一份 Card UI 送到用户那里，这里的用户以头部为光标的顾客表示。顾客说她想要一个粉色的 Card，而不是黑色的。" src="/images/docs/illustrations/i_rerender1.png" />
@@ -144,7 +148,11 @@ img { margin: 0 10px 10px 0; }
 * **输入相同，输出相同。** 给定相同的输入，组件应始终返回相同的 JSX。（当有人点了西红柿沙拉时，他们不应该收到洋葱沙拉！）
 * **管好它自己的事情。** 它不应更改任何存在于渲染之前的对象或变量。（一个订单不应更改其他任何人的订单。）
 
+<<<<<<< HEAD
 否则，随着代码库复杂性的增加，您可能会遇到令人困惑的错误和不可预测的行为。在"严格模式"下开发时，React 会调用每个组件的函数两次，这可以帮助发现由不纯函数引起的错误。
+=======
+Otherwise, you can encounter confusing bugs and unpredictable behavior as your codebase grows in complexity. When developing in "Strict Mode", React calls each component's function twice, which can help surface mistakes caused by impure functions.
+>>>>>>> caaf3c724572ccbef9fcaace9469117e05d49cf1
 
 </Gotcha>
 
