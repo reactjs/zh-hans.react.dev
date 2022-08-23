@@ -610,7 +610,11 @@ function App() {
 >
 > 过渡任务中触发的更新会让更紧急地更新先进行，比如点击。
 >
+<<<<<<< HEAD
 > 过渡任务中的更新将不会展示由于再次挂起而导致降级的内容。这个机制允许用户在 React 渲染更新的时候继续与当前内容进行交互。
+=======
+> Updates in a transition will not show a fallback for re-suspended content. This allows the user to continue interacting with the current content while rendering the update.
+>>>>>>> 605ad373c4cbdd2ba134584f3f09ff3676ca75c8
 
 ### `useId` {#useid}
 
