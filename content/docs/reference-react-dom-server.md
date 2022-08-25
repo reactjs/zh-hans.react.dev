@@ -27,7 +27,7 @@ var ReactDOMServer = require('react-dom/server');
 
 - [`renderToReadableStream()`](#rendertoreadablestream)
 
-以下方法可以在不支持 Steam 的环境中使用：
+以下方法可以在不支持 Stream 的环境中使用：
 
 - [`renderToString()`](#rendertostring)
 - [`renderToStaticMarkup()`](#rendertostaticmarkup)
