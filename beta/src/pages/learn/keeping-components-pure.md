@@ -197,7 +197,11 @@ export default function TeaGathering() {
 
 在 React 中，**副作用通常属于 [事件处理程序](/learn/responding-to-events)**。事件处理程序是 React 在你执行某些操作（如单击按钮）时运行的函数。即使事件处理程序是在你的组件 **内部** 定义的，它们也不会在渲染期间运行！ **因此事件处理程序无需是纯函数**。
 
+<<<<<<< HEAD
 如果你用尽一切办法，仍无法为副作用找到合适的事件处理程序，你还可以调用组件中的 [`useEffect`](/apis/useeffect) 方法将其附加到返回的 JSX 中。这会告诉 React 在渲染结束后执行它。**然而，这种方法应该是你最后的手段**。
+=======
+If you've exhausted all other options and can't find the right event handler for your side effect, you can still attach it to your returned JSX with a [`useEffect`](/apis/react/useEffect) call in your component. This tells React to execute it later, after rendering, when side effects are allowed. **However, this approach should be your last resort.**
+>>>>>>> f829d8da088cf2c1e46aca4333920646fa0ebf4c
 
 如果可能，请尝试仅通过渲染过程来表达你的逻辑。你会惊讶于这能带给你多少好处！
 
@@ -215,6 +219,7 @@ export default function TeaGathering() {
 
 <Recap>
 
+<<<<<<< HEAD
 * 一个组件必须是纯粹的，就意味着：
   * **只负责自己的任务。** 不应更改渲染前存在的任何对象或变量。
   * **输入相同，则输出相同。** 给定相同的输入，组件应该总是返回相同的 JSX。
@@ -222,6 +227,15 @@ export default function TeaGathering() {
 * 你不应该改变组件用于渲染的任何输入。这包括 props、state 和 context。通过 [“设置” state](reacting-to-input-with-state) 来更新界面，而不要改变预先存在的对象。
 * 努力在你返回的 JSX 中表达你的组件逻辑。当你需要“改变事物”时，你通常希望在事件处理程序中进行。作为最后的手段，你可以使用 `useEffect`。
 * 编写纯函数需要一些练习，但它充分释放了 React 范式的能力。
+=======
+* A component must be pure, meaning:
+  * **Mind its own business.** It should not change any objects or variables that existed before rendering.
+  * **Same inputs, same output.** Given the same inputs, a component should always return the same JSX. 
+* Rendering can happen at any time, so components should not depend on each others' rendering sequence.
+* You should not mutate any of the inputs that your components use for rendering. That includes props, state, and context. To update the screen, ["set" state](reacting-to-input-with-state) instead of mutating preexisting objects.
+* Strive to express your component's logic in the JSX you return. When you need to "change things", you'll usually want to do it in an event handler. As a last resort, you can `useEffect`.
+* Writing pure functions takes a bit of practice, but it unlocks the power of React's paradigm.
+>>>>>>> f829d8da088cf2c1e46aca4333920646fa0ebf4c
 
 </Recap>
 
