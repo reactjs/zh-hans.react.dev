@@ -8,9 +8,15 @@ permalink: warnings/invalid-aria-prop.html
 
 1. 如果你认为你使用的是合法的属性，仔细检查拼写。`aria-labelledby` 和 `aria-activedescendant` 常常会被拼错。
 
+<<<<<<< HEAD
 2. React 还无法识别你指定的属性。这可能会在 React 的未来版本中被修复。
 
 **译注：**
  
 <a name="note1"></a> [1] WAI：Web Accessibility Initiative，Web 无障碍计划<br>
 <a name="note2"></a> [2] ARIA：Accessible Rich Internet Application，无障碍丰富互联网应用程序
+=======
+2. If you wrote `aria-role`, you may have meant `role`.
+
+3. Otherwise, if you're on the latest version of React DOM and verified that you're using a valid property name listed in the ARIA specification, please [report a bug](https://github.com/facebook/react/issues/new/choose).
+>>>>>>> 98d6aec603fa8bbd2131f282cb5db53a092eb393
