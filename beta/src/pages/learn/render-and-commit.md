@@ -39,21 +39,12 @@ translators:
 
 有两种原因会导致组件的渲染:
 
-<<<<<<< HEAD
 1. 组件的 **初次渲染。**
-2. 组件的 **状态发生了改变。**
-=======
-1. It's the component's **initial render.**
-2. The component's (or one of its ancestors') **state has been updated.**
->>>>>>> ea9e9ab2817c8b7eff5ff60e8fe9b649fd747606
+2. 组件（或者其祖先之一）的 **状态发生了改变。**
 
 ### 初次渲染 {/*initial-render*/}
 
-<<<<<<< HEAD
-当应用启动时，会触发初次渲染。框架和沙箱有时会隐藏这部分代码，但这是通过使用根组件和目标 DOM 节点调用 `ReactDOM.render` 来达成的：
-=======
-When your app starts, you need to trigger the initial render. Frameworks and sandboxes sometimes hide this code, but it's done by calling [`createRoot`](https://beta.reactjs.org/apis/react-dom/client/createRoot) with the target DOM node, and then calling its `render` method with your component:
->>>>>>> ea9e9ab2817c8b7eff5ff60e8fe9b649fd747606
+当应用启动时，会触发初次渲染。框架和沙箱有时会隐藏这部分代码，但它是通过调用目标 DOM 节点的 [`createRoot`](https://beta.reactjs.org/apis/react-dom/client/createRoot)，然后用你的组件调用 `render` 函数完成的：
 
 <Sandpack>
 
@@ -78,19 +69,11 @@ export default function Image() {
 
 </Sandpack>
 
-<<<<<<< HEAD
-试着注释掉 `ReactDOM.render`，然后您将会看到组件消失。
-=======
-Try commenting out the `root.render()` call and see the component disappear!
->>>>>>> ea9e9ab2817c8b7eff5ff60e8fe9b649fd747606
+试着注释掉 `root.render()`，然后您将会看到组件消失。
 
 ### 状态更新时重新渲染 {/*re-renders-when-state-updates*/}
 
-<<<<<<< HEAD
-一旦组件被初次渲染，您就可以通过使用 [`set` 函数](/apis/usestate#setstate) 更新其状态来触发之后的渲染。更新组件的状态会自动将一次渲染送入队列。（您可以想象这种情况成餐厅客人在第一次下单之后又点了茶、点心和各种东西，具体取决于他们的胃口。）
-=======
-Once the component has been initially rendered, you can trigger further renders by updating its state with the [`set` function](/apis/react/useState#setstate). Updating your component's state automatically queues a render. (You can imagine these as a restaurant guest ordering tea, dessert, and all sorts of things after putting in their first order, depending on the state of their thirst or hunger.)
->>>>>>> ea9e9ab2817c8b7eff5ff60e8fe9b649fd747606
+一旦组件被初次渲染，您就可以通过使用 [`set` 函数](/apis/react/useState#setstate) 更新其状态来触发之后的渲染。更新组件的状态会自动将一次渲染送入队列。（您可以想象这种情况成餐厅客人在第一次下单之后又点了茶、点心和各种东西，具体取决于他们的胃口。）
 
 <IllustrationBlock sequential>
   <Illustration caption="状态更新..." alt="React 作为餐厅服务员将一份 Card UI 送到用户那里，这里的用户以头部为光标的顾客表示。顾客说她想要一个粉色的 Card，而不是黑色的。" src="/images/docs/illustrations/i_rerender1.png" />
@@ -157,11 +140,7 @@ img { margin: 0 10px 10px 0; }
 * **输入相同，输出相同。** 给定相同的输入，组件应始终返回相同的 JSX。（当有人点了西红柿沙拉时，他们不应该收到洋葱沙拉！）
 * **管好它自己的事情。** 它不应更改任何存在于渲染之前的对象或变量。（一个订单不应更改其他任何人的订单。）
 
-<<<<<<< HEAD
-否则，随着代码库复杂性的增加，您可能会遇到令人困惑的错误和不可预测的行为。在"严格模式"下开发时，React 会调用每个组件的函数两次，这可以帮助发现由不纯函数引起的错误。
-=======
-Otherwise, you can encounter confusing bugs and unpredictable behavior as your codebase grows in complexity. When developing in "Strict Mode", React calls each component's function twice, which can help surface mistakes caused by impure functions.
->>>>>>> ea9e9ab2817c8b7eff5ff60e8fe9b649fd747606
+否则，随着代码库复杂性的增加，您可能会遇到令人困惑的错误和不可预测的行为。在 "严格模式" 下开发时，React 会调用每个组件的函数两次，这可以帮助发现由不纯函数引起的错误。
 
 </Gotcha>
 
