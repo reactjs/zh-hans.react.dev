@@ -56,7 +56,7 @@ npm start
 ### 主流备选方案 {/*popular-alternatives*/}
 
 * [Vite](https://vitejs.dev/guide/)
-* [Parcel](https://parceljs.org/)
+* [Parcel](https://parceljs.org/getting-started/webapp/)
 
 ## 使用开箱即用的框架来构建 {/*building-with-a-full-featured-framework*/}
 
