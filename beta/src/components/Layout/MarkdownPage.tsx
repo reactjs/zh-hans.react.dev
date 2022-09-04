@@ -116,8 +116,13 @@ export function MarkdownPage<
   flushWrapper('last');
 
   return (
+<<<<<<< HEAD
     <article className="h-full mx-auto relative w-full min-w-0">
       <div className="lg:pt-0 sm:pt-10 pl-0 lg:pl-80 2xl:px-80 ">
+=======
+    <>
+      <div className="lg:pt-0 pt-20 pl-0 lg:pl-80 2xl:px-80 ">
+>>>>>>> ccf8576ab40919c3fd4928ea329897e95e4e00b2
         <Seo title={title} />
         {!isHomePage && (
           <PageHeading
@@ -142,6 +147,6 @@ export function MarkdownPage<
       <div className="w-full lg:max-w-xs hidden 2xl:block">
         {!isHomePage && anchors.length > 0 && <Toc headings={anchors} />}
       </div>
-    </article>
+    </>
   );
 }
