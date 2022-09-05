@@ -273,7 +273,11 @@ img { height: 90px }
 
 <Challenges>
 
+<<<<<<< HEAD
 ### 将 HTML 转化为 JSX {/*convert-some-html-to-jsx*/}
+=======
+#### Convert some HTML to JSX {/*convert-some-html-to-jsx*/}
+>>>>>>> e9faee62db6981e26a1cdabad6ae39620a1d2e3e
 
 下方的 HTML 是直接被复制到组件中的，所以并不是有效的 JSX，来尝试修复它吧：
 

@@ -248,7 +248,11 @@ JSX 是一种模板语言的最小实现，因为它允许你通过 JavaScript �
 
 <Challenges>
 
+<<<<<<< HEAD
 ### 修复错误 {/*fix-the-mistake*/}
+=======
+#### Fix the mistake {/*fix-the-mistake*/}
+>>>>>>> e9faee62db6981e26a1cdabad6ae39620a1d2e3e
 
 这段代码崩溃了，并打印出这样一个错误 `Objects are not valid as a React child`：
 
@@ -340,7 +344,11 @@ body > div > div { padding: 20px; }
 
 </Solution>
 
+<<<<<<< HEAD
 ### 提取信息到对象中 {/*extract-information-into-an-object*/}
+=======
+#### Extract information into an object {/*extract-information-into-an-object*/}
+>>>>>>> e9faee62db6981e26a1cdabad6ae39620a1d2e3e
 
 把图片的 URL 信息提取到 `person` 对象中。
 
@@ -427,7 +435,11 @@ body > div > div { padding: 20px; }
 
 </Solution>
 
+<<<<<<< HEAD
 ### 在 JSX 大括号内编写表达式 {/*write-an-expression-inside-jsx-curly-braces*/}
+=======
+#### Write an expression inside JSX curly braces {/*write-an-expression-inside-jsx-curly-braces*/}
+>>>>>>> e9faee62db6981e26a1cdabad6ae39620a1d2e3e
 
 在下面的对象中，完整的图片 URL 被分成了四个部分：base URL、`imageId`、`imageSize` 和文件拓展名。
 

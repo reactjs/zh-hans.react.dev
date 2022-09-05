@@ -544,7 +544,11 @@ button { margin-left: 5px; }
 
 <Challenges>
 
+<<<<<<< HEAD
 ### 修复事件处理函数 {/*fix-an-event-handler*/}
+=======
+#### Fix an event handler {/*fix-an-event-handler*/}
+>>>>>>> e9faee62db6981e26a1cdabad6ae39620a1d2e3e
 
 点击此按钮理论上应该在黑白主题之间切换页面背景。然而，当你点击它时，什么也没有发生。解决这个问题。（无需担心 `handleClick` 的内部逻辑。）
 
@@ -625,7 +629,11 @@ export default function LightSwitch() {
 
 </Solution>
 
+<<<<<<< HEAD
 ### 关联事件 {/*wire-up-the-events*/}
+=======
+#### Wire up the events {/*wire-up-the-events*/}
+>>>>>>> e9faee62db6981e26a1cdabad6ae39620a1d2e3e
 
 `ColorSwitch` 组件渲染了一个按钮。它应该改变页面颜色。将它与从父组件接收的 `onChangeColor` 事件处理函数关联，以便在点击按钮时改变颜色。
 

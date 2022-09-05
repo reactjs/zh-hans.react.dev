@@ -1263,7 +1263,11 @@ textarea {
 
 <Challenges>
 
+<<<<<<< HEAD
 ### 修复丢失的输入框文本 {/*fix-disappearing-input-text*/}
+=======
+#### Fix disappearing input text {/*fix-disappearing-input-text*/}
+>>>>>>> e9faee62db6981e26a1cdabad6ae39620a1d2e3e
 
 这个例子在你按下按钮时会展示一条消息，但同时也会意外地重置输入框。为什么会发生这种情况？修复它，使按下按钮不再导致输入框文本重置。
 
@@ -1414,7 +1418,11 @@ textarea { display: block; margin: 10px 0; }
 
 </Solution>
 
+<<<<<<< HEAD
 ### 交换两个表单字段 {/*swap-two-form-fields*/}
+=======
+#### Swap two form fields {/*swap-two-form-fields*/}
+>>>>>>> e9faee62db6981e26a1cdabad6ae39620a1d2e3e
 
 这个表单可以让你输入姓氏和名字。它还有一个复选框控制哪个字段放在前面。当你勾选复选框时，“姓氏”字段将出现在“名字”字段之前。
 
@@ -1548,7 +1556,11 @@ label { display: block; margin: 10px 0; }
 
 </Solution>
 
+<<<<<<< HEAD
 ### 重置详情表单 {/*reset-a-detail-form*/}
+=======
+#### Reset a detail form {/*reset-a-detail-form*/}
+>>>>>>> e9faee62db6981e26a1cdabad6ae39620a1d2e3e
 
 这是一个可编辑的联系人列表。你可以编辑所选联系人的详细信息，然后点击“保存”进行更新或点击“重置”来撤消你的修改。
 
@@ -1857,7 +1869,11 @@ button {
 
 </Solution>
 
+<<<<<<< HEAD
 ### 清除正在加载的图片 {/*clear-an-image-while-its-loading*/}
+=======
+#### Clear an image while it's loading {/*clear-an-image-while-its-loading*/}
+>>>>>>> e9faee62db6981e26a1cdabad6ae39620a1d2e3e
 
 当你点击“下一张”时，浏览器会开始加载下一张图片。但因为它是在相同的 `<img>` 标签中显示的，所以默认情况下，你在下一张图片加载完成前都会看到上一张图片。如果文本必须始终与图片一一对应，那么这种特性可能并不是我们想要的。调整它使得上一张图片在你点击“下一张”时立即被清除。
 
@@ -2001,7 +2017,11 @@ img { width: 150px; height: 150px; }
 
 </Solution>
 
+<<<<<<< HEAD
 ### 修复列表中错位的 state {/*fix-misplaced-state-in-the-list*/}
+=======
+#### Fix misplaced state in the list {/*fix-misplaced-state-in-the-list*/}
+>>>>>>> e9faee62db6981e26a1cdabad6ae39620a1d2e3e
 
 在这个列表中每个 `Contact` 都有个 state 表示它的“显示邮箱”按钮是否已经按过了。点击 Alice 的“显示邮箱”按钮，然后勾选“以相反的顺序显示”复选框。你会注意到现在展开的是 _Taylor 的_ 邮箱，而 Alice 的邮箱已经被移到底部并被收起了。
 

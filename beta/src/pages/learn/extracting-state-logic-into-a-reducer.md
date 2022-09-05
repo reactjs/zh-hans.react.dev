@@ -1117,7 +1117,11 @@ Reducers 应该是纯净的，所以它们不应该去修改 state。而 Immer �
 
 <Challenges>
 
+<<<<<<< HEAD
 ### 通过事件处理函数 dispatch actions {/*dispatch-actions-from-event-handlers*/}
+=======
+#### Dispatch actions from event handlers {/*dispatch-actions-from-event-handlers*/}
+>>>>>>> e9faee62db6981e26a1cdabad6ae39620a1d2e3e
 
 目前，`ContactList.js` 和 `Chat.js` 中的事件处理程序包含 `// TODO` 注释。这就是为什么输入不起作用，点击按钮也不会改变收件人的原因。
 
@@ -1469,7 +1473,11 @@ textarea {
 
 </Solution>
 
+<<<<<<< HEAD
 ### 发送消息时清空输入框 {/*clear-the-input-on-sending-a-message*/}
+=======
+#### Clear the input on sending a message {/*clear-the-input-on-sending-a-message*/}
+>>>>>>> e9faee62db6981e26a1cdabad6ae39620a1d2e3e
 
 目前，点击 `发送` 没有任何反应。我们需要给 `发送` 按钮添加一个事件处理程序，它将：
 
@@ -1972,7 +1980,11 @@ textarea {
 
 </Solution>
 
+<<<<<<< HEAD
 ### 切换 tab 时重置输入框内容 {/*restore-input-values-when-switching-between-tabs*/}
+=======
+#### Restore input values when switching between tabs {/*restore-input-values-when-switching-between-tabs*/}
+>>>>>>> e9faee62db6981e26a1cdabad6ae39620a1d2e3e
 
 在这个示例中，切换收件人时总是会清空输入框。
 
@@ -2387,7 +2399,11 @@ textarea {
 
 </Solution>
 
+<<<<<<< HEAD
 ### 从零开始实现 `useReducer` {/*implement-usereducer-from-scratch*/}
+=======
+#### Implement `useReducer` from scratch {/*implement-usereducer-from-scratch*/}
+>>>>>>> e9faee62db6981e26a1cdabad6ae39620a1d2e3e
 
 在前面的例子中，你从 React 中导入了 `useReducer` Hook。现在，你将学习自己实现 `useReducer` Hook。你可以从这个模板开始，它不会超过 10 行代码。
 

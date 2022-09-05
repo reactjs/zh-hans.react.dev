@@ -244,7 +244,11 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <Challenges>
 
+<<<<<<< HEAD
 ### 进一步拆分组件 {/*split-the-components-further*/}
+=======
+#### Split the components further {/*split-the-components-further*/}
+>>>>>>> e9faee62db6981e26a1cdabad6ae39620a1d2e3e
 
 现在，`Gallery.js` 同时导出了 `Profile` 和 `Gallery`，这会让人感到有点混淆。
 
