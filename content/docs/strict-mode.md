@@ -134,7 +134,11 @@ class MyComponent extends React.Component {
 
 ### 确保可复用的 state {#ensuring-reusable-state}
 
+<<<<<<< HEAD
 在未来，我们希望增加一个功能，允许 React 在保留 state 的同时对 UI 进行增删。例如，当用户从当前屏幕的标签离开并返回时，React 应该能立即展示之前屏幕的内容。为了做到这一点，React 支持使用卸载前已有的组件状态重新挂载到树上。
+=======
+In the future, we’d like to add a feature that allows React to add and remove sections of the UI while preserving state. For example, when a user tabs away from a screen and back, React should be able to immediately show the previous screen. To do this, React will support remounting trees using the same component state used before unmounting.
+>>>>>>> 6e21a2e5a86ed7ab03d78ad6963feadb648273f0
 
 该特性会给 React 带来更好的开箱即用性能，但需要组件对多次挂载和销毁的副作用具有弹性。大多数副作用将在不做任何改变的情况下工作，但有些副作用可能会在销毁回调中未正确的清理订阅，或者隐示的认为它们只被挂载或销毁一次。
 
