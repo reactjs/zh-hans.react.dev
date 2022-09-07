@@ -1145,7 +1145,7 @@ export function useTasksDispatch() {
 
 组件可以通过以下函数读取 context：
 
-```js {5-7}
+```js
 const tasks = useTasks();
 const dispatch = useTasksDispatch();
 ```

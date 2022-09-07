@@ -66,7 +66,11 @@ button { margin-right: 10px; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 你可以定义 `handleClick` 函数然后 [将其作为 prop 传入](/learn/passing-props-to-a-component) `<button>`。其中 `handleClick` 是一个 **事件处理函数** 。事件处理函数有如下特点:
+=======
+You defined the `handleClick` function and then [passed it as a prop](/learn/passing-props-to-a-component) to `<button>`.  `handleClick` is an **event handler.** Event handler functions:
+>>>>>>> 48032f51cbaaf81f4172c2ab2fd6e856481065dd
 
 * 通常在你的组件 *内部* 定义。
 * 名称以 `handle` 开头，后跟事件名称。
@@ -367,7 +371,11 @@ button { margin: 5px; }
 
 ### 阻止传播 {/*stopping-propagation*/}
 
+<<<<<<< HEAD
 事件处理函数接收一个 **事件对象** 作为唯一的参数。按照惯例，它通常被称为 `e` ，代表 "event"（事件）。你可以使用此对象来读取有关事件的信息。
+=======
+Event handlers receive an **event object** as their only argument. By convention, it's usually called `e`, which stands for "event". You can use this object to read information about the event.
+>>>>>>> 48032f51cbaaf81f4172c2ab2fd6e856481065dd
 
 这个事件对象还允许你阻止传播。如果你想阻止一个事件到达父组件，你需要像下面 `Button` 组件那样调用 `e.stopPropagation()` ：
 

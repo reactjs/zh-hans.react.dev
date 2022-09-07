@@ -2,7 +2,6 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 import React from 'react';
-// @ts-ignore
 import {flushSync} from 'react-dom';
 import {
   useSandpack,
@@ -11,7 +10,6 @@ import {
   SandpackThemeProvider,
   SandpackReactDevTools,
 } from '@codesandbox/sandpack-react';
-import scrollIntoView from 'scroll-into-view-if-needed';
 import cn from 'classnames';
 
 import {IconChevron} from 'components/Icon/IconChevron';
@@ -24,15 +22,15 @@ import {useSandpackLint} from './useSandpackLint';
 const emptyArray: Array<any> = [];
 
 export function CustomPreset({
-  isSingleFile,
   showDevTools,
   onDevToolsLoad,
   devToolsLoaded,
+  providedFiles,
 }: {
-  isSingleFile: boolean;
   showDevTools: boolean;
   devToolsLoaded: boolean;
   onDevToolsLoad: () => void;
+  providedFiles: Array<string>;
 }) {
   const {lintErrors, lintExtensions} = useSandpackLint();
   const lineCountRef = React.useRef<{[key: string]: number}>({});
@@ -53,7 +51,7 @@ export function CustomPreset({
       <div
         className="shadow-lg dark:shadow-lg-dark rounded-lg"
         ref={containerRef}>
-        <NavigationBar showDownload={isSingleFile} />
+        <NavigationBar providedFiles={providedFiles} />
         <SandpackThemeProvider theme={CustomTheme}>
           <div
             ref={sandpack.lazyAnchorRef}
@@ -85,11 +83,16 @@ export function CustomPreset({
                     setIsExpanded(nextIsExpanded);
                   });
                   if (!nextIsExpanded && containerRef.current !== null) {
-                    scrollIntoView(containerRef.current, {
-                      scrollMode: 'if-needed',
-                      block: 'nearest',
-                      inline: 'nearest',
-                    });
+                    // @ts-ignore
+                    if (containerRef.current.scrollIntoViewIfNeeded) {
+                      // @ts-ignore
+                      containerRef.current.scrollIntoViewIfNeeded();
+                    } else {
+                      containerRef.current.scrollIntoView({
+                        block: 'nearest',
+                        inline: 'nearest',
+                      });
+                    }
                   }
                 }}>
                 <span className="flex p-2 focus:outline-none text-primary dark:text-primary-dark">

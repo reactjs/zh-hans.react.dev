@@ -147,7 +147,11 @@ export default function TeaSet() {
 
 现在你的组件就是纯粹的，因为它返回的 JSX 只依赖于 `guest` prop。
 
+<<<<<<< HEAD
 一般来说，你不应该期望你的组件以任何特定的顺序被渲染。调用 <Math><MathI>y</MathI> = 5<MathI>x</MathI></Math> 和 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> 的先后顺序并不重要：这两个公式相互独立。同样地，每个组件也应该“独立思考”，而不是在渲染过程中试图与其他组件协调，或者依赖于其他组件。渲染过程就像是一场学校考试：每个组件都应该自己计算 JSX！
+=======
+In general, you should not expect your components to be rendered in any particular order. It doesn't matter if you call <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> before or after <Math><MathI>y</MathI> = 5<MathI>x</MathI></Math>: both formulas will resolve independently of each other. In the same way, each component should only "think for itself", and not attempt to coordinate with or depend upon others during rendering. Rendering is like a school exam: each component should calculate JSX on their own!
+>>>>>>> 48032f51cbaaf81f4172c2ab2fd6e856481065dd
 
 <DeepDive title="使用严格模式检测不纯的计算">
 
@@ -193,7 +197,11 @@ export default function TeaGathering() {
 
 ## 哪些地方 **可能** 引发副作用 {/*where-you-can-cause-side-effects*/}
 
+<<<<<<< HEAD
 函数式编程在很大程度上依赖于纯函数，但 **某些事物** 在特定情况下不得不发生改变。这是编程的要义！这些变动包括更新屏幕、启动动画、更改数据等，它们被称为 **副作用**。它们是 **“额外”** 发生的事情，与渲染过程无关。
+=======
+While functional programming relies heavily on purity, at some point, somewhere, _something_ has to change. That's kind of the point of programming! These changes—updating the screen, starting an animation, changing the data—are called **side effects.** They're things that happen _"on the side"_, not during rendering.
+>>>>>>> 48032f51cbaaf81f4172c2ab2fd6e856481065dd
 
 在 React 中，**副作用通常属于 [事件处理程序](/learn/responding-to-events)**。事件处理程序是 React 在你执行某些操作（如单击按钮）时运行的函数。即使事件处理程序是在你的组件 **内部** 定义的，它们也不会在渲染期间运行！ **因此事件处理程序无需是纯函数**。
 
@@ -205,9 +213,15 @@ export default function TeaGathering() {
 
 编写纯函数需要遵循一些习惯和规程。但它开启了绝妙的机遇：
 
+<<<<<<< HEAD
 * 你的组件可以在不同的环境下运行 — 例如，在服务器上！由于它们针对相同的输入，总是返回相同的结果，因此一个组件可以满足多个用户请求。
 * 你可以为那些输入未更改的组件来 [跳过渲染](/learn/skipping-unchanged-trees)，以提高性能。这是安全的做法，因为纯函数总是返回相同的结果，所以可以安全地缓存它们。
 * 如果在渲染深层组件树的过程中，某些数据发生了变化，React 可以重新开始渲染，而不会浪费时间完成过时的渲染。纯粹性使得它随时可以安全地停止计算。
+=======
+* Your components could run in a different environment—for example, on the server! Since they return the same result for the same inputs, one component can serve many user requests.
+* You can improve performance by [skipping rendering](TODO:/learn/skipping-unchanged-trees) components whose inputs have not changed. This is safe because pure functions always return the same results, so they are safe to cache.
+* If some data changes in the middle of rendering a deep component tree, React can restart rendering without wasting time to finish the outdated render. Purity makes it safe to stop calculating at any time.
+>>>>>>> 48032f51cbaaf81f4172c2ab2fd6e856481065dd
 
 我们正在构建的每个 React 新特性都利用到了纯函数。从数据获取到动画再到性能，保持组件的纯粹可以充分释放 React 范式的能力。
 

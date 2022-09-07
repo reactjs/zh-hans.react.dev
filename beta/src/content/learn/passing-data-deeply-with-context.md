@@ -21,7 +21,7 @@ Usually, you will pass information from a parent component to a child component 
 
 [Passing props](/learn/passing-props-to-a-component) is a great way to explicitly pipe data through your UI tree to the components that use it.
 
-But passing props can become verbose and inconvenient when you need to pass some prop deeply through the tree, or if many components need the same prop. The nearest common ancestor could be far removed from the components that need data, and [lifting state up](/learn/sharing-state-between-components) that high can lead to a situation sometimes called "prop drilling."
+But passing props can become verbose and inconvenient when you need to pass some prop deeply through the tree, or if many components need the same prop. The nearest common ancestor could be far removed from the components that need data, and [lifting state up](/learn/sharing-state-between-components) that high can lead to a situation sometimes called "prop drilling".
 
 <DiagramGroup>
 
@@ -834,7 +834,7 @@ You didn't do anything special for this to work. A `Section` specifies the conte
 
 How context works might remind you of [CSS property inheritance](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance). In CSS, you can specify `color: blue` for a `<div>`, and any DOM node inside of it, no matter how deep, will inherit that color unless some other DOM node in the middle overrides it with `color: green`. Similarly, in React, the only way to override some context coming from above is to wrap children into a context provider with a different value.
 
-In CSS, different properties like `color` and `background-color` don't override each other. You can set all  `<div>`'s `color` to red without impacting `background-color`. Similarly, **different React contexts don't override each other**. Each context that you make with `createContext()` is completely separate from other ones, and ties together components using and providing *that particular* context. One component may use or provide many different contexts without a problem.
+In CSS, different properties like `color` and `background-color` don't override each other. You can set all  `<div>`'s `color` to red without impacting `background-color`. Similarly, **different React contexts don't override each other.** Each context that you make with `createContext()` is completely separate from other ones, and ties together components using and providing *that particular* context. One component may use or provide many different contexts without a problem.
 
 ## Before you use context {/*before-you-use-context*/}
 
@@ -866,7 +866,7 @@ In general, if some information is needed by distant components in different par
   2. Pass it to the `useContext(MyContext)` Hook to read it in any child component, no matter how deep.
   3. Wrap children into `<MyContext.Provider value={...}>` to provide it from a parent.
 * Context passes through any components in the middle.
-* Context lets you write components that "adapt to their surroundings."
+* Context lets you write components that "adapt to their surroundings".
 * Before you use context, try passing props or passing JSX as `children`.
 
 </Recap>
@@ -1110,7 +1110,7 @@ export const places = [{
 }, {
   id: 3, 
   name: 'Selarón Staircase in Rio de Janeiro, Brazil',
-  description: 'This landmark was created by Jorge Selarón, a Chilean-born artist, as a "tribute to the Brazilian people."',
+  description: 'This landmark was created by Jorge Selarón, a Chilean-born artist, as a "tribute to the Brazilian people".',
   imageId: 'aeO3rpI'
 }, {
   id: 4, 

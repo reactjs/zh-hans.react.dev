@@ -309,7 +309,7 @@ function MyButton() {
 
 首先，从 React 引入 [`useState`](/apis/react/useState)：
 
-```js {1,4}
+```js
 import { useState } from 'react';
 ```
 
