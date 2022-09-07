@@ -137,13 +137,8 @@ img { margin: 0 10px 10px 0; }
 
 渲染必须始终是一次 [纯计算](/learn/keeping-components-pure):
 
-<<<<<<< HEAD:beta/src/pages/learn/render-and-commit.md
 * **输入相同，输出相同。** 给定相同的输入，组件应始终返回相同的 JSX。（当有人点了西红柿沙拉时，他们不应该收到洋葱沙拉！）
-* **管好它自己的事情。** 它不应更改任何存在于渲染之前的对象或变量。（一个订单不应更改其他任何人的订单。）
-=======
-* **Same inputs, same output.** Given the same inputs, a component should always return the same JSX. (When someone orders a salad with tomatoes, they should not receive a salad with onions!)
-* **It minds its own business.** It should not change any objects or variables that existed before rendering. (One order should not change anyone else's order.)
->>>>>>> 6b217bf289e38816ef44d1afd6bf554b65b7a41c:beta/src/content/learn/render-and-commit.md
+* **只做它自己的事情。** 它不应更改任何存在于渲染之前的对象或变量。（一个订单不应更改其他任何人的订单。）
 
 否则，随着代码库复杂性的增加，您可能会遇到令人困惑的错误和不可预测的行为。在 "严格模式" 下开发时，React 会调用每个组件的函数两次，这可以帮助发现由不纯函数引起的错误。
 

@@ -209,11 +209,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <Challenges>
 
-<<<<<<< HEAD:beta/src/pages/learn/your-first-component.md
-### 导出组件 {/*export-the-component*/}
-=======
-#### Export the component {/*export-the-component*/}
->>>>>>> 6b217bf289e38816ef44d1afd6bf554b65b7a41c:beta/src/content/learn/your-first-component.md
+#### 导出组件 {/*export-the-component*/}
 
 这个沙箱不起作用，因为根组件没有导出：
 
@@ -265,11 +261,7 @@ img { height: 181px; }
 
 </Solution>
 
-<<<<<<< HEAD:beta/src/pages/learn/your-first-component.md
-### 修复返回语句 {/*fix-the-return-statement*/}
-=======
-#### Fix the return statement {/*fix-the-return-statement*/}
->>>>>>> 6b217bf289e38816ef44d1afd6bf554b65b7a41c:beta/src/content/learn/your-first-component.md
+#### 修复返回语句 {/*fix-the-return-statement*/}
 
 这个 `return` 语句不太对，你能修复它吗？
 
@@ -336,11 +328,7 @@ img { height: 180px; }
 
 </Solution>
 
-<<<<<<< HEAD:beta/src/pages/learn/your-first-component.md
-### 发现错误 {/*spot-the-mistake*/}
-=======
-#### Spot the mistake {/*spot-the-mistake*/}
->>>>>>> 6b217bf289e38816ef44d1afd6bf554b65b7a41c:beta/src/content/learn/your-first-component.md
+#### 发现错误 {/*spot-the-mistake*/}
 
 下面 `Profile` 组件的声明和使用存在问题。你能指出其中的错误所在吗？（试着想起 React 是如何区分组件和常规的 HTML 标签的！）
 
@@ -412,11 +400,7 @@ img { margin: 0 10px 10px 0; }
 
 </Solution>
 
-<<<<<<< HEAD:beta/src/pages/learn/your-first-component.md
-### 自定义组件 {/*your-own-component*/}
-=======
-#### Your own component {/*your-own-component*/}
->>>>>>> 6b217bf289e38816ef44d1afd6bf554b65b7a41c:beta/src/content/learn/your-first-component.md
+#### 自定义组件 {/*your-own-component*/}
 
 从头开始编写一个组件。你可以为它指定任何有效名称然后返回任何标记。如果你没有什么想法的话，你可以写一个显示 `<h1>干得漂亮！</h1>` 的 `Congratulations` 组件。不要忘了导出它！
 

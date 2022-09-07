@@ -24,13 +24,8 @@ translators:
 
 在计算机科学中（尤其是函数式编程的世界中），[纯函数](https://wikipedia.org/wiki/Pure_function) 通常具有如下特征：
 
-<<<<<<< HEAD:beta/src/pages/learn/keeping-components-pure.md
 * **只负责自己的任务**。它不会更改在该函数调用前，就已存在的对象或变量。
 * **输入相同，则输出相同**。给定相同的输入，纯函数应总是返回相同的结果。
-=======
-* **It minds its own business.** It does not change any objects or variables that existed before it was called.
-* **Same inputs, same output.** Given the same inputs, a pure function should always return the same result.
->>>>>>> 6b217bf289e38816ef44d1afd6bf554b65b7a41c:beta/src/content/learn/keeping-components-pure.md
 
 举个你非常熟悉的纯函数示例：数学中的公式。
 
@@ -220,7 +215,6 @@ export default function TeaGathering() {
 
 <Recap>
 
-<<<<<<< HEAD:beta/src/pages/learn/keeping-components-pure.md
 * 一个组件必须是纯粹的，就意味着：
   * **只负责自己的任务。** 不应更改渲染前存在的任何对象或变量。
   * **输入相同，则输出相同。** 给定相同的输入，组件应该总是返回相同的 JSX。
@@ -228,15 +222,6 @@ export default function TeaGathering() {
 * 你不应该改变组件用于渲染的任何输入。这包括 props、state 和 context。通过 [“设置” state](reacting-to-input-with-state) 来更新界面，而不要改变预先存在的对象。
 * 努力在你返回的 JSX 中表达你的组件逻辑。当你需要“改变事物”时，你通常希望在事件处理程序中进行。作为最后的手段，你可以使用 `useEffect`。
 * 编写纯函数需要一些练习，但它充分释放了 React 范式的能力。
-=======
-* A component must be pure, meaning:
-  * **It minds its own business.** It should not change any objects or variables that existed before rendering.
-  * **Same inputs, same output.** Given the same inputs, a component should always return the same JSX. 
-* Rendering can happen at any time, so components should not depend on each others' rendering sequence.
-* You should not mutate any of the inputs that your components use for rendering. That includes props, state, and context. To update the screen, ["set" state](reacting-to-input-with-state) instead of mutating preexisting objects.
-* Strive to express your component's logic in the JSX you return. When you need to "change things", you'll usually want to do it in an event handler. As a last resort, you can `useEffect`.
-* Writing pure functions takes a bit of practice, but it unlocks the power of React's paradigm.
->>>>>>> 6b217bf289e38816ef44d1afd6bf554b65b7a41c:beta/src/content/learn/keeping-components-pure.md
 
 </Recap>
 
@@ -244,11 +229,7 @@ export default function TeaGathering() {
   
 <Challenges>
 
-<<<<<<< HEAD:beta/src/pages/learn/keeping-components-pure.md
-### 修复坏掉的时钟 {/*fix-a-broken-clock*/}
-=======
-#### Fix a broken clock {/*fix-a-broken-clock*/}
->>>>>>> 6b217bf289e38816ef44d1afd6bf554b65b7a41c:beta/src/content/learn/keeping-components-pure.md
+#### 修复坏掉的时钟 {/*fix-a-broken-clock*/}
 
 该组件尝试在午夜到早上 6 点期间，将 `<h1>` 的 CSS 类设置为 `"night"`，而在其他时间都设置为 `"day"`。但它不起作用。你能修复这个组件吗？
 
@@ -385,11 +366,7 @@ body > * {
 
 </Solution>
 
-<<<<<<< HEAD:beta/src/pages/learn/keeping-components-pure.md
-### 修复损坏的资料 {/*fix-a-broken-profile*/}
-=======
-#### Fix a broken profile {/*fix-a-broken-profile*/}
->>>>>>> 6b217bf289e38816ef44d1afd6bf554b65b7a41c:beta/src/content/learn/keeping-components-pure.md
+#### 修复损坏的资料 {/*fix-a-broken-profile*/}
 
 两个 `Profile` 组件使用不同的数据并排呈现。在第一个资料中点击 “Collapse” 折叠，然后点击 “Expand” 展开它。你会看到两个资料现在显示的是同一个人。这是一个 bug。
 
@@ -598,11 +575,7 @@ h1 { margin: 5px; font-size: 18px; }
 
 </Solution>
 
-<<<<<<< HEAD:beta/src/pages/learn/keeping-components-pure.md
-### 修复损坏的故事集 {/*fix-a-broken-story-tray*/}
-=======
-#### Fix a broken story tray {/*fix-a-broken-story-tray*/}
->>>>>>> 6b217bf289e38816ef44d1afd6bf554b65b7a41c:beta/src/content/learn/keeping-components-pure.md
+#### 修复损坏的故事集 {/*fix-a-broken-story-tray*/}
 
 你所在公司的 CEO 要求你在在线时钟 app 中添加 “故事”，你不能拒绝。你编写了一个 `StoryTray` 组件，它接受一个 `stories` 列表，后跟一个 “Create Story” 占位符。
 

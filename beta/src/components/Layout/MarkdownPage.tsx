@@ -33,13 +33,8 @@ export function MarkdownPage<
   }
   const isHomePage = route?.path === '/';
   return (
-<<<<<<< HEAD
-    <article className="h-full mx-auto relative w-full min-w-0">
-      <div className="lg:pt-0 sm:pt-10 pl-0 lg:pl-80 2xl:px-80 ">
-=======
     <>
-      <div className="lg:pt-0 pt-20 pl-0 lg:pl-80 2xl:px-80 ">
->>>>>>> 6b217bf289e38816ef44d1afd6bf554b65b7a41c
+      <div className="lg:pt-0 sm:pt-10 pl-0 lg:pl-80 2xl:px-80 ">
         <Seo title={title} />
         {!isHomePage && (
           <PageHeading

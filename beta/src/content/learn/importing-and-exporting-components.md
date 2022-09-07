@@ -244,11 +244,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <Challenges>
 
-<<<<<<< HEAD:beta/src/pages/learn/importing-and-exporting-components.md
-### 进一步拆分组件 {/*split-the-components-further*/}
-=======
-#### Split the components further {/*split-the-components-further*/}
->>>>>>> 6b217bf289e38816ef44d1afd6bf554b65b7a41c:beta/src/content/learn/importing-and-exporting-components.md
+#### 进一步拆分组件 {/*split-the-components-further*/}
 
 现在，`Gallery.js` 同时导出了 `Profile` 和 `Gallery`，这会让人感到有点混淆。
 

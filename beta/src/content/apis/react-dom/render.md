@@ -23,16 +23,7 @@ render(reactNode, domNode, callback?)
 
 </Intro>
 
-<<<<<<< HEAD:beta/src/pages/apis/react-dom/render.md
-- [用法](#usage)
-  - [渲染根组件](#rendering-the-root-component)
-  - [渲染多个根组件](#rendering-multiple-roots)
-  - [更新渲染树](#updating-the-rendered-tree)
-- [参考](#reference)
-  - [`render(reactNode, domNode, callback?)`](#render)
-=======
 <InlineToc />
->>>>>>> 6b217bf289e38816ef44d1afd6bf554b65b7a41c:beta/src/content/apis/react-dom/render.md
 
 ---
 
