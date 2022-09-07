@@ -10,6 +10,10 @@ import {RouteItem, SidebarContext} from './useRouteMeta';
 import {useActiveSection} from 'hooks/useActiveSection';
 import {Sidebar} from './Sidebar';
 import {Footer} from './Footer';
+import sidebarHome from '../../sidebarHome.json';
+import sidebarLearn from '../../sidebarLearn.json';
+import sidebarReference from '../../sidebarReference.json';
+
 interface PageProps {
   children: React.ReactNode;
 }
