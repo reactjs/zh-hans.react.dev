@@ -9,7 +9,11 @@ translators:
 
 <Intro>
 
+<<<<<<< HEAD
 React 可以改变你对可见设计和应用构建的思考。打个比方，或许你对成片的森林赞不绝口，使用了 React 之后，你赞叹于其中的每一棵树都光彩夺目。使用 React 使得设计用户视图、管理系统状态变得更容易。在本篇教程中，我们将带你领略使用 React 构建可搜索产品数据表格的全过程。
+=======
+React can change how you think about the designs you look at and the apps you build. When you build a user interface with React, you will first break it apart into pieces called *components.* Then, you will describe the different visual states for each of your components. Finally, you will connect your components together so that the data flows through them. In this tutorial, we'll guide you through the thought process of building a searchable product data table with React.
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 </Intro>
 
@@ -233,10 +237,17 @@ td {
 
 让我们再次一条条验证它们:
 
+<<<<<<< HEAD
 1. 原始列表中的产品 **被作为 props 传递，所以不是 state**。
 2. 搜索文本随着时间推移保持不变，似乎是 state，并不能被计算。
 3. 复选框的值随着时间推移保持不变，似乎是 state，并不能被计算。
 4. 过滤后列表中的产品 **不是 state，因为可以通过被原始列表中的产品，根据搜索框文本和复选框的值进行计算**。
+=======
+1. The original list of products is **passed in as props, so it's not state.** 
+2. The search text seems to be state since it changes over time and can't be computed from anything.
+3. The value of the checkbox seems to be state since it changes over time and can't be computed from anything.
+4. The filtered list of products **isn't state because it can be computed** by taking the original list of products and filtering it according to the search text and value of the checkbox.
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 这就意味着只有搜索文本和复选框的值是 state！非常好!
 
@@ -440,7 +451,19 @@ td {
 
 </Sandpack>
 
+<<<<<<< HEAD
 在上面的沙盒中，`ProductTable` 和 `SearchBar` 读取 `filterText` 和 `inStockOnly` props 以渲染表格、输入、复选框。举个例子，这里展示了 `SearchBar` 如何填充输入的值:
+=======
+Notice that editing the form doesn't work yet. There is a console error in the sandbox above explaining why:
+
+<ConsoleBlock level="error">
+
+You provided a \`value\` prop to a form field without an \`onChange\` handler. This will render a read-only field.
+
+</ConsoleBlock>
+
+In the sandbox above, `ProductTable` and `SearchBar` read the `filterText` and `inStockOnly` props to render the table, the input, and the checkbox. For example, here is how `SearchBar` populates the input value:
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 ```js {1,6}
 function SearchBar({ filterText, inStockOnly }) {
@@ -452,8 +475,12 @@ function SearchBar({ filterText, inStockOnly }) {
         placeholder="Search..."/>
 ```
 
+However, you haven't added any code to respond to the user actions like typing yet. This will be your final step.
 
+<<<<<<< HEAD
 参照 [管理 State](/learn/managing-state) 去深度了解 React 如何使用 state ，如何在你的应用程序中组织。
+=======
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 ## 步骤五: 添加反向数据流 {/*step-5-add-inverse-data-flow*/}
 

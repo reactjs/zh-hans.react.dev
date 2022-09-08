@@ -280,7 +280,11 @@ label {
 
 </DiagramGroup>
 
+<<<<<<< HEAD
 当你重新勾选“渲染第二个计数器”复选框时，另一个计数器及其 state 将从头开始初始化（`score = 0`）并被添加到 DOM 中。
+=======
+When you tick "Render the second counter", a second `Counter` and its state are initialized from scratch (`score = 0`) and added to the DOM.
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 <DiagramGroup>
 
@@ -603,7 +607,11 @@ label {
 
 </DiagramGroup>
 
+<<<<<<< HEAD
 并且，**当你在相同位置渲染不同的组件时，组件的整个子树都会被重置**。要验证这一点，可以增加计数器的值然后勾选复选框：
+=======
+Also, **when you render a different component in the same position, it resets the state of its entire subtree.** To see how this works, increment the counter and then tick the checkbox:
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 <Sandpack>
 
@@ -1859,7 +1867,11 @@ button {
 
 #### 清除正在加载的图片 {/*clear-an-image-while-its-loading*/}
 
+<<<<<<< HEAD
 当你点击“下一张”时，浏览器会开始加载下一张图片。但因为它是在相同的 `<img>` 标签中显示的，所以默认情况下，你在下一张图片加载完成前都会看到上一张图片。如果文本必须始终与图片一一对应，那么这种特性可能并不是我们想要的。调整它使得上一张图片在你点击“下一张”时立即被清除。
+=======
+When you press "Next", the browser starts loading the next image. However, because it's displayed in the same `<img>` tag, by default you would still see the previous image until the next one loads. This may be undesirable if it's important for the text to always match the image. Change it so that the moment you press "Next", the previous image immediately clears.
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 <Hint>
 

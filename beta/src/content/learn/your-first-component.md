@@ -37,7 +37,11 @@ translators:
 
 `<article>` 表示这篇文章，`<h1>` 表示文章的标题，`<ol>` 以有序列表的形式表示文章的（缩写的）目录。每一个侧边栏、头像、模态框、下拉框的背后是都是像这样的（结合了用于样式的 CSS 和用于交互的 JavaScript的）标记——你在 Web 上看到的每一个 UI 模块。
 
+<<<<<<< HEAD
 React 允许你将标记、CSS 和 JavaScript 组合成自定义“组件”，即**应用程序中可复用的 UI 元素。** 上文中表示目录的代码可以改写成一个能够在每个页面中渲染的 `<TableOfContents />` 组件。实际上，使用的依然是 `<article>`、`<h1>` 等相同的 HTML 标签。
+=======
+React lets you combine your markup, CSS, and JavaScript into custom "components", **reusable UI elements for your app.** The table of contents code you saw above could be turned into a `<TableOfContents />` component you could render on every page. Under the hood, it still uses the same HTML tags like `<article>`, `<h1>`, etc.
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 就像使用 HTML 标签一样，你可以组合、排序和嵌套组件来绘制整个页面。例如，你正在阅读的文档页面就是由 React 组件构成的：
 
@@ -59,7 +63,11 @@ React 允许你将标记、CSS 和 JavaScript 组合成自定义“组件”，�
 
 ## 定义组件 {/*defining-a-component*/}
 
+<<<<<<< HEAD
 一直以来，创建网页时，Web 开发人员会用标记描述内容，然后通过 JavaScript 来增加交互。这种在 Web 上添加交互的方式能产生出色的效果。现在许多网站和全部应用都需要交互。React 最为重视交互性且使用了相同的处理方式：** React 组件是一段可以 使用标记进行扩展 的 JavaScript 函数**。如下所示（你可以编辑下面的示例）：
+=======
+Traditionally when creating web pages, web developers marked up their content and then added interaction by sprinkling on some JavaScript. This worked great when interaction was a nice-to-have on the web. Now it is expected for many sites and all apps. React puts interactivity first while still using the same technology: **a React component is a JavaScript function that you can _sprinkle with markup_.** Here's what that looks like (you can edit the example below):
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 <Sandpack>
 
@@ -180,7 +188,11 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 因为 `Profile` 组件在 `Gallery` 组件中渲染——甚至好几次！——我们可以认为 `Gallery` 是一个 **父组件，** 将每个 `Profile` 渲染为一个“孩子”。这是 React 的神奇之处：你可以只定义组件一次，然后按需多处和多次使用。
 
+<<<<<<< HEAD
 <DeepDive title="只有组件">
+=======
+<DeepDive title="Components all the way down">
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 你的 React 应用程序从“根”组件开始。通常，它会在启动新项目时自动创建。例如，如果你使用 [CodeSandbox](https://codesandbox.io/) 或 [Create React App](https://create-react-app.dev/)，根组件定义在 `src/App.js` 中。如果使用 [Next.js](https://nextjs.org/) 框架，根组件定义在 `pages/index.js` 中。在这些示例中，一直有导出根组件。
 

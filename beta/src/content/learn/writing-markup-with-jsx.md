@@ -65,7 +65,11 @@ But as the Web became more interactive, logic increasingly determined content. J
 
 <Note>
 
+<<<<<<< HEAD
 [JSX and React 是相互独立的](/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform) 你 _可以_ 单独使用它们中的任意一个。
+=======
+JSX and React are two separate things. They're often used together, but you *can* [use them independently](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform) of each other. JSX is a syntax extension, while React is a JavaScript library.
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 </Note>
 
@@ -139,7 +143,11 @@ img { height: 90px }
 
 ### 1. 只能返回一个根元素 {/*1-return-a-single-root-element*/}
 
+<<<<<<< HEAD
 如果想要在一个组件中包含多个元素，**需要用一个父标签把它们包裹起来**。
+=======
+To return multiple elements from a component, **wrap them with a single parent tag.**
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 例如，你可以使用一个 `<div>` 标签：
 
@@ -174,7 +182,11 @@ img { height: 90px }
 </>
 ```
 
+<<<<<<< HEAD
 这个空标签被称作 *[React fragment](TODO)*. React fragments 允许你将子元素分组，而不会在 HTML 结构中添加额外节点。
+=======
+This empty tag is called a *[React fragment](/apis/react/Fragment)*. React fragments let you group things without leaving any trace in the browser HTML tree.
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 <DeepDive title="为什么多个 JSX 标签需要被一个父元素包裹？">
 

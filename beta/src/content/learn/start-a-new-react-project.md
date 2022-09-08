@@ -24,9 +24,15 @@ translators:
 
 React 是一个库，可以让你通过将 UI 代码分解成一个个组件的方式来组织它。但 React 并不负责路由或者数据管理。这意味着有几种方案来启动一个 React 新项目：
 
+<<<<<<< HEAD
 * 从 [**HTML 文件和 script 标签开始**](/learn/add-react-to-a-website)。这种方案无需 Node.js 配置，但提供的功能有限。
 * 从一款 **极简的工具链** 开始，可以在你的项目中加入更多的功能。（非常适合学习入门！）
 * 从一款 **功能齐全的框架** 开始，它内置了数据获取以及路由等常见功能。
+=======
+* [Start with an **HTML file and a script tag.**](/learn/add-react-to-a-website) This doesn't require Node.js setup but offers limited features.
+* Start with a **minimal toolchain,** adding more features to your project as you go. (Great for learning!)
+* Start with an **opinionated framework** that has common features like data fetching and routing built-in.
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 ## 快速入门极简工具链 {/*getting-started-with-a-minimal-toolchain*/}
 

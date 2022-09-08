@@ -146,7 +146,11 @@ img { margin: 0 10px 10px 0; }
 
 <DeepDive title="性能优化">
 
+<<<<<<< HEAD
 如果更新的组件在树中的位置非常高，渲染更新后的组件内部所有嵌套组件的默认行为将不会获得最佳性能。如果您遇到了性能问题，[性能](/learn/performance) 章节描述了几种可选的解决方案 。**不要过早进行优化！**
+=======
+The default behavior of rendering all components nested within the updated component is not optimal for performance if the updated component is very high in the tree. If you run into a performance issue, there are several opt-in ways to solve it described in the [Performance](https://reactjs.org/docs/optimizing-performance.html#gatsby-focus-wrapper) section. **Don't optimize prematurely!**
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 </DeepDive>
 

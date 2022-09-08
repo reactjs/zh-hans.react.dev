@@ -93,7 +93,11 @@ function LikeButton() {
 
 ### 步骤 4：把你的 React 组件添加到页面中 {/*step-4-add-your-react-component-to-the-page*/}
 
+<<<<<<< HEAD
 最后，在 **`like_button.js`** 底部添加以下三行代码。这几行代码会找到我们在步骤 1 中添加到 HTML 里的 `<div>`，接着创建了一个React 的根，最后在其内部展示了我们的 React 组件 —— "Like" 按钮：
+=======
+Lastly, add three lines to the bottom of **`like-button.js`.** These lines of code find the `<div>` you added to the HTML in the first step, create a React root, and then display the "Like" button React component inside of it:
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 ```js
 const rootNode = document.getElementById('like-button-root');
@@ -110,8 +114,13 @@ root.render(React.createElement(LikeButton));
 
 你可能需要在同一 HTML 页面中的多个位置展示 React 组件。如果页面中由 React 驱动的部分相互独立，那复用就显得非常必要。你可以通过在你的 HTML 中放置多个根标签，然后用 `ReactDOM.createRoot()` 在每个根标签中渲染 React 组件来实现这一点。例如：
 
+<<<<<<< HEAD
 1. 在 **`index.html`** 中，添加另外一个的容器元素 `<div id="another-root"></div>`。
 2. 在 **`like-button.js`** 文件最后，再添加以下三行代码：
+=======
+1. In **`index.html`,** add an additional container element `<div id="another-root"></div>`.
+2. In **`like-button.js`,** add three more lines at the end:
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 ```js {6,7,8,9}
 const anotherRootNode = document.getElementById('another-root');
@@ -153,7 +162,11 @@ return <button onClick={() => setLiked(true)}>Like</button>;
 
 ### 试用 JSX {/*try-jsx*/}
 
+<<<<<<< HEAD
 试用 JSX 的最快方法是将 Babel 编译器作为 `<script>` 标签引入页面中。把它放置在 **`like-button.js`** 之前，然后在 **`like-button.js`** 的 `script` 标签上添加 `type="text/babel"` 属性：
+=======
+The quickest way to try JSX is to add the Babel compiler as a `<script>` tag to the page. Put it before **`like-button.js`,** and then add `type="text/babel"` attribute to the `<script>` tag for **`like-button.js`**:
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 ```html {3,4}
   <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
@@ -189,7 +202,11 @@ return (
 
 <Gotcha>
 
+<<<<<<< HEAD
 引入 Babel 的 `<script>` 编译器对于学习和创建简单的示例是很便捷的。但是，**它会使网站变慢，并不适用于生产环境**。当你准备好更进一步时，应该删除 Babel 的 `<script>` 标签，并移除在这一步中添加的 `type="text/babel"` 属性。作为替代方案，在下一小节中，我们将设置一个 JSX 的预处理器，将所有的 `<script>` 标签从 JSX 转为 JS。
+=======
+The Babel `<script>` compiler is fine for learning and creating simple demos. However, **it makes your website slow and isn't suitable for production.** When you're ready to move forward, remove the Babel `<script>` tag and remove the `type="text/babel"` attribute you've added in this step. Instead, in the next section you will set up a JSX preprocessor to convert all your `<script>` tags from JSX to JS.
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 </Gotcha>
 
@@ -210,9 +227,15 @@ return (
 
 你可以对 JSX 文件进行预处理。当你编辑保存带有 JSX 的源文件时，这个转换过程将自动重新执行，并把 JSX 文件转换为一个全新的，浏览器可以识别的普通 JavaScript 文件，以下是设置方式：
 
+<<<<<<< HEAD
 1. 创建一个名为 **`src`** 的文件夹
 2. 在终端执行这个命令： `npx babel --watch src --out-dir . --presets react-app/prod ` （无需等待运行结果 —— 这个命令会自动启动一个观察器，观察对 `src` 内 JSX 的编辑。）
 3. 将已经 JSX 化的 **`like-button.js`**（[它看起来应该像这样！](https://gist.githubusercontent.com/gaearon/1884acf8834f1ef9a574a953f77ed4d8/raw/dfc664bbd25992c5278c3bf3d8504424c1104ecf/like-button.js)）文件移动到新的 **`src`** 目录下。
+=======
+1. Create a folder called **`src`.**
+2. In your terminal, run this command: `npx babel --watch src --out-dir . --presets react-app/prod ` (Don't wait for it to finish! This command starts an automated watcher for edits to JSX inside `src`.)
+3. Move your JSX-ified **`like-button.js`** ([it should look like this!](https://gist.githubusercontent.com/gaearon/1884acf8834f1ef9a574a953f77ed4d8/raw/dfc664bbd25992c5278c3bf3d8504424c1104ecf/like-button.js)) to the new **`src`** folder.
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 监听器会创建一个预处理过的 **`like_button.js`** 文件，它包含了适用于浏览器的普通 JavaScript 代码.
 
@@ -261,9 +284,15 @@ root.render(
 
 以下是它的工作原理：
 
+<<<<<<< HEAD
 1. 一个**组件**，它既可以是一个表示 HTML 标签名的字符串，也可以是一个函数组件。
 2. 一个对象，包含 [你想传递给组件的 **props**](/learn/passing-props-to-a-component)。
 3. 其余的参数代表该组件可能拥有多个子元素，比如文本字符串或其他元素。
+=======
+1. A **component,** which can be a string representing an HTML element or a function component
+2. An object of any [**props** you want to pass](/learn/passing-props-to-a-component)
+3. The rest are **children** the component might have, such as text strings or other elements
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 如果你不想每次都键入 `React.createElement`，通常的做法是使用简写：
 

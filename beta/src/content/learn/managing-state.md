@@ -347,7 +347,7 @@ export default function ContactList({
     <section className="contact-list">
       <ul>
         {contacts.map(contact =>
-          <li key={contact}>
+          <li key={contact.email}>
             <button onClick={() => {
               onSelect(contact);
             }}>
@@ -442,7 +442,7 @@ export default function ContactList({
     <section className="contact-list">
       <ul>
         {contacts.map(contact =>
-          <li key={contact}>
+          <li key={contact.email}>
             <button onClick={() => {
               onSelect(contact);
             }}>
@@ -505,7 +505,11 @@ textarea {
 
 ## 提取状态逻辑到 reducer 中 {/*extracting-state-logic-into-a-reducer*/}
 
+<<<<<<< HEAD
 对于那些需要更新多个状态的组件来说，过于分散的事件处理程序可能会令人不知所措。对于这种情况，你可以在组件外部将所有状态更新逻辑合并到一个称为“reducer”的函数中。这样，事件处理程序就会变得简洁，因为它们只需要指定用户的“actions”。在文件的底部，reducer 函数指定状态应该如何更新以响应每个 action！
+=======
+Components with many state updates spread across many event handlers can get overwhelming. For these cases, you can consolidate all the state update logic outside your component in a single function, called "reducer". Your event handlers become concise because they only specify the user "actions". At the bottom of the file, the reducer function specifies how the state should update in response to each action!
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 <Sandpack>
 

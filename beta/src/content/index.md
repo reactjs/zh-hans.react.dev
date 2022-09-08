@@ -18,7 +18,11 @@ permalink: index.html
 
 ## 这项工作仍在进行中 {/*this-is-a-work-in-progress*/}
 
+<<<<<<< HEAD
 由于此站点仍处于 **beta 阶段**。可能会存在 bug，性能问题甚至是内容缺失等情况。
+=======
+This is a **beta website.** There will be bugs, performance issues, and missing content.
+>>>>>>> b6d597dba30fcec25944395883714eba27e997bd
 
 ## 有多少内容已就绪？ {/*how-much-content-is-ready*/}
 
