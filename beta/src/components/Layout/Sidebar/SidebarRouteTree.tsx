@@ -77,10 +77,10 @@ export function SidebarRouteTree({
   level = 0,
 }: SidebarRouteTreeProps) {
   const {breadcrumbs} = useRouteMeta(routeTree);
-  const {pathname} = useRouter();
+  const cleanedPath = useRouter().asPath.split('?')[0];
   const pendingRoute = usePendingRoute();
 
-  const slug = pathname;
+  const slug = cleanedPath;
   const currentRoutes = routeTree.routes as RouteItem[];
   const expandedPath = currentRoutes.reduce(
     (acc: string | undefined, curr: RouteItem) => {
@@ -89,8 +89,8 @@ export function SidebarRouteTree({
       if (breadcrumb) {
         return curr.path;
       }
-      if (curr.path === pathname) {
-        return pathname;
+      if (curr.path === cleanedPath) {
+        return cleanedPath;
       }
       return undefined;
     },
@@ -100,7 +100,7 @@ export function SidebarRouteTree({
   const expanded = expandedPath;
   return (
     <ul>
-      {currentRoutes.map(({path, title, routes, heading}) => {
+      {currentRoutes.map(({path, title, routes, wip, heading}) => {
         const pagePath = path && removeFromLast(path, '.');
         const selected = slug === pagePath;
 
@@ -127,6 +127,7 @@ export function SidebarRouteTree({
                 selected={selected}
                 level={level}
                 title={title}
+                wip={wip}
                 isExpanded={isExpanded}
                 isBreadcrumb={expandedPath === path}
                 hideArrow={isMobile}
@@ -151,6 +152,7 @@ export function SidebarRouteTree({
               selected={selected}
               level={level}
               title={title}
+              wip={wip}
             />
           </li>
         );
