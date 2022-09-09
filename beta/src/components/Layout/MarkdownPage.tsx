@@ -4,12 +4,10 @@
 
 import * as React from 'react';
 import {DocsPageFooter} from 'components/DocsFooter';
-import {MDXComponents} from 'components/MDX/MDXComponents';
 import {Seo} from 'components/Seo';
 import PageHeading from 'components/PageHeading';
 import {useRouteMeta} from './useRouteMeta';
 import {TocContext} from '../MDX/TocContext';
-import {Toc} from './Toc';
 
 export interface MarkdownProps<Frontmatter> {
   meta: Frontmatter & {description?: string};
@@ -34,7 +32,11 @@ export function MarkdownPage<
   const isHomePage = route?.path === '/';
   return (
     <>
+<<<<<<< HEAD
       <div className="lg:pt-0 sm:pt-10 pl-0 lg:pl-80 2xl:px-80 ">
+=======
+      <div className="pl-0">
+>>>>>>> de4c6b1013c40413c3b043c91082918ecdfc50e1
         <Seo title={title} />
         {!isHomePage && (
           <PageHeading
@@ -53,9 +55,6 @@ export function MarkdownPage<
             prevRoute={prevRoute}
           />
         </div>
-      </div>
-      <div className="w-full lg:max-w-xs hidden 2xl:block">
-        {!isHomePage && toc.length > 0 && <Toc headings={toc} />}
       </div>
     </>
   );

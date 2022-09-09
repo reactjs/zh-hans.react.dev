@@ -184,7 +184,11 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 这个组件的每个事件处理程序都通过 `setTasks` 来更新状态。随着这个组件的不断迭代，其状态逻辑也会越来越多。为了降低这种复杂度，并让所有逻辑都可以存放在一个易于理解的地方，你可以将这些状态逻辑移到组件之外的一个称为 **reducer** 的函数中。
+=======
+Each of its event handlers calls `setTasks` in order to update the state. As this component grows, so does the amount of state logic sprinkled throughout it. To reduce this complexity and keep all your logic in one easy-to-access place, you can move that state logic into a single function outside your component, **called a "reducer".**
+>>>>>>> de4c6b1013c40413c3b043c91082918ecdfc50e1
 
 Reducer 是处理状态的另一种方式。你可以通过三个步骤将 `useState` 迁移到 `useReducer`：
 
@@ -254,7 +258,11 @@ function handleDeleteTask(taskId) {
 }
 ```
 
+<<<<<<< HEAD
 你传递给 `dispatch` 的对象叫做 "action"：
+=======
+The object you pass to `dispatch` is called an "action":
+>>>>>>> de4c6b1013c40413c3b043c91082918ecdfc50e1
 
 ```js {3-7}
 function handleDeleteTask(taskId) {
@@ -2802,7 +2810,11 @@ function dispatch(action) {
 }
 ```
 
+<<<<<<< HEAD
 这是因为被派发的 actions 在下一次渲染之前都是处于排队状态的，这和 [状态更新函数](/learn/queueing-a-series-of-state-updates) 类似。
+=======
+This is because the dispatched actions are queued until the next render, [similar to the updater functions.](/learn/queueing-a-series-of-state-updates)
+>>>>>>> de4c6b1013c40413c3b043c91082918ecdfc50e1
 
 </Solution>
 
