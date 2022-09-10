@@ -9,7 +9,11 @@ translators:
 
 <Intro>
 
+<<<<<<< HEAD
 React 可以改变你对可见设计和应用构建的思考。打个比方，或许你对成片的森林赞不绝口，使用了 React 之后，你赞叹于其中的每一棵树都光彩夺目。使用 React 使得设计用户视图、管理系统状态变得更容易。在本篇教程中，我们将带你领略使用 React 构建可搜索产品数据表格的全过程。
+=======
+React can change how you think about the designs you look at and the apps you build. When you build a user interface with React, you will first break it apart into pieces called *components.* Then, you will describe the different visual states for each of your components. Finally, you will connect your components together so that the data flows through them. In this tutorial, we'll guide you through the thought process of building a searchable product data table with React.
+>>>>>>> fbde52c523a4a7f997282422437fa154c155eb45
 
 </Intro>
 
@@ -80,7 +84,11 @@ JSON API 返回如下的数据:
 
 现在你已经拥有了你自己的组件层级结构，是时候实现你的应用程序了。最直接的办法是根据你的数据模型，构建一个不带任何交互的 UI 渲染代码版本...经常是先构建一个静态版本比较简单，然后再一个个添加交互。构建一个静态版本需要写大量的代码，并不需要什么思考; 但添加交互需要大量的思考，却不需要大量的代码。
 
+<<<<<<< HEAD
 构建应用程序的静态版本来渲染你的数据模型，将构建 [组件](/learn/your-first-component) 并复用其它的组件，然后使用 [props](/learn/passing-props-to-a-component) 进行传递数据。Props 是从父组件向子组件传递数据的一种方式。(如果你对 [state](/learn/state-a-components-memory) 章节很熟悉，不要在静态版本中使用 state 进行构建。state 只是为交互提供的保留功能，即数据会随着时间变化。因为这是一个静态应用程序，所以并不需要。)
+=======
+To build a static version of your app that renders your data model, you'll want to build [components](/learn/your-first-component) that reuse other components and pass data using [props.](/learn/passing-props-to-a-component) Props are a way of passing data from parent to child. (If you're familiar with the concept of [state](/learn/state-a-components-memory), don't use state at all to build this static version. State is reserved only for interactivity, that is, data that changes over time. Since this is a static version of the app, you don't need it.)
+>>>>>>> fbde52c523a4a7f997282422437fa154c155eb45
 
 你既可以通过从层次结构更高层组件 (如 `FilterableProductTable`) 开始 "自上而下" 构建，也可以通过从更低层级组件 (如 `ProductRow`) "自下而上" 进行构建。在简单的例子中，自上而下构建通常更简单；而在大型项目中，自下而上构建更简单。
 
@@ -214,7 +222,11 @@ td {
 
 为了使 UI 可交互，你需要用户更改潜在的数据结构。你将可以使用 *state* 进行实现。
 
+<<<<<<< HEAD
 考虑将 state 作为应用程序需要记住改变数据的最小集合。组织 state 最重要的一条原则是保持它 [DRY(不要自我重复)](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)。计算出你应用程序需要的绝对精简 state 表示，按需计算其它一切。举个例子，如果你正在构建一个购物列表，你可将他们在 state 中存储为数组。如果你同时想展示列表中物品数量，不需要将其另存为一个新的 state。取而代之，可以通过读取你数组的长度来实现。
+=======
+Think of state as the minimal set of changing data that your app needs to remember. The most important principle for structuring state is to keep it [DRY (Don't Repeat Yourself).](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) Figure out the absolute minimal representation of the state your application needs and compute everything else on-demand. For example, if you're building a shopping list, you can store the items as an array in state. If you want to also display the number of items in the list, don't store the number of items as another state value--instead, read the length of your array.
+>>>>>>> fbde52c523a4a7f997282422437fa154c155eb45
 
 现在考虑示例应用程序中的每一条数据:
 
@@ -233,10 +245,17 @@ td {
 
 让我们再次一条条验证它们:
 
+<<<<<<< HEAD
 1. 原始列表中的产品 **被作为 props 传递，所以不是 state**。
 2. 搜索文本随着时间推移保持不变，似乎是 state，并不能被计算。
 3. 复选框的值随着时间推移保持不变，似乎是 state，并不能被计算。
 4. 过滤后列表中的产品 **不是 state，因为可以通过被原始列表中的产品，根据搜索框文本和复选框的值进行计算**。
+=======
+1. The original list of products is **passed in as props, so it's not state.** 
+2. The search text seems to be state since it changes over time and can't be computed from anything.
+3. The value of the checkbox seems to be state since it changes over time and can't be computed from anything.
+4. The filtered list of products **isn't state because it can be computed** by taking the original list of products and filtering it according to the search text and value of the checkbox.
+>>>>>>> fbde52c523a4a7f997282422437fa154c155eb45
 
 这就意味着只有搜索文本和复选框的值是 state！非常好!
 
@@ -276,7 +295,11 @@ Props 和 state 是不同的，但它们可以共同工作。父组件将经常�
 
 所以 state 将被放置在 `FilterableProductTable`。
 
+<<<<<<< HEAD
 用 [`useState()` Hook](/apis/react/useState) 为组件添加 state。Hook 可以 "钩住" 组件的 [渲染周期](/learn/render-and-commit)。在 `FilterableProductTable` 的顶部添加两个 state 变量，用于指定你应用程序的初始 state：
+=======
+Add state to the component with the [`useState()` Hook.](/apis/react/useState) Hooks let you "hook into" a component's [render cycle.](/learn/render-and-commit) Add two state variables at the top of `FilterableProductTable` and specify the initial state of your application:
+>>>>>>> fbde52c523a4a7f997282422437fa154c155eb45
 
 ```js
 function FilterableProductTable({ products }) {
@@ -440,7 +463,19 @@ td {
 
 </Sandpack>
 
+<<<<<<< HEAD
 在上面的沙盒中，`ProductTable` 和 `SearchBar` 读取 `filterText` 和 `inStockOnly` props 以渲染表格、输入、复选框。举个例子，这里展示了 `SearchBar` 如何填充输入的值:
+=======
+Notice that editing the form doesn't work yet. There is a console error in the sandbox above explaining why:
+
+<ConsoleBlock level="error">
+
+You provided a \`value\` prop to a form field without an \`onChange\` handler. This will render a read-only field.
+
+</ConsoleBlock>
+
+In the sandbox above, `ProductTable` and `SearchBar` read the `filterText` and `inStockOnly` props to render the table, the input, and the checkbox. For example, here is how `SearchBar` populates the input value:
+>>>>>>> fbde52c523a4a7f997282422437fa154c155eb45
 
 ```js {1,6}
 function SearchBar({ filterText, inStockOnly }) {
@@ -452,8 +487,12 @@ function SearchBar({ filterText, inStockOnly }) {
         placeholder="Search..."/>
 ```
 
+However, you haven't added any code to respond to the user actions like typing yet. This will be your final step.
 
+<<<<<<< HEAD
 参照 [管理 State](/learn/managing-state) 去深度了解 React 如何使用 state ，如何在你的应用程序中组织。
+=======
+>>>>>>> fbde52c523a4a7f997282422437fa154c155eb45
 
 ## 步骤五: 添加反向数据流 {/*step-5-add-inverse-data-flow*/}
 

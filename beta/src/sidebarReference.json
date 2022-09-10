@@ -114,6 +114,11 @@
               "wip": true
             },
             {
+              "title": "useEvent",
+              "path": "/apis/react/useEvent",
+              "wip": true
+            },
+            {
               "title": "useId",
               "path": "/apis/react/useId",
               "wip": true
@@ -130,8 +135,7 @@
             },
             {
               "title": "useMemo",
-              "path": "/apis/react/useMemo",
-              "wip": true
+              "path": "/apis/react/useMemo"
             },
             {
               "title": "useReducer",

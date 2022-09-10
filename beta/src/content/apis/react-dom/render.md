@@ -136,7 +136,11 @@ nav ul li { display: inline-block; margin-right: 20px; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 你可以使用 [`unmountComponentAtNode()`](TODO) 来销毁已被渲染的组件树。
+=======
+You can destroy the rendered trees with [`unmountComponentAtNode()`](/apis/react-dom/unmountComponentAtNode).
+>>>>>>> fbde52c523a4a7f997282422437fa154c155eb45
 
 ## 更新已渲染的组件树 {/*updating-the-rendered-tree*/}
 
@@ -214,6 +218,10 @@ React 将在 `domNode` 中展示 `<App />` 组件，并对该 DOM 中的内容�
 
 * 如果你在同一个 `domNode` 上多次调用 `render` 函数，React 会按需更新 DOM 以响应你传递的最新 JSX。React 会通过与之前渲染的树 ["匹配"](/learn/preserving-and-resetting-state) 的方式来决定 DOM 的哪些部分可以被重用，哪些需要重新创建。多次在同一个 `domNode` 上调用 `render`，类似于在根组件上调用 [`set` 函数](/apis/react/useState#setstate)：React 会避免不必要的 DOM 更新。
 
+<<<<<<< HEAD
 * 如果你的应用程序是完全基于 React 构建，那么你其实不需要多次使用 `render` 函数。（如果你使用框架，它可能已帮你完成该调用。）当你想在 DOM 树的不同部分渲染一段 JSX 时，而不是你组件的 children（例如，modal 或者 tooltip），那么请使用 [`createPortal`](TODO) 来代替。
+=======
+* If your app is fully built with React, you'll likely have only one `render` call in your app. (If you use a framework, it might do this call for you.) When you want to render a piece of JSX in a different part of the DOM tree that isn't a child of your component (for example, a modal or a tooltip), use [`createPortal`](/apis/react-dom/createPortal) instead of `render`.
+>>>>>>> fbde52c523a4a7f997282422437fa154c155eb45
 
 ---
