@@ -104,7 +104,7 @@ These two components work fine, but the duplication in logic between them is unf
 
 ### Extracting your own custom Hook from a component {/*extracting-your-own-custom-hook-from-a-component*/}
 
-Imagine for a moment that, similar to [`useState`](/apis/react/useState) and [`useEffect`](/apis/useEffect), there was a built-in `useOnlineStatus` Hook. Then both of these components could be simplified and you could remove the duplication between them:
+Imagine for a moment that, similar to [`useState`](/apis/react/useState) and [`useEffect`](/apis/react/useEffect), there was a built-in `useOnlineStatus` Hook. Then both of these components could be simplified and you could remove the duplication between them:
 
 ```js {2,7}
 function StatusBar() {
@@ -127,7 +127,7 @@ function SaveButton() {
 }
 ```
 
-Although there is no such built-in Hook, you can write it yourself. Declare a function called `useOnlineStatus()` and move all the duplicated code into it from the components you wrote earlier:
+Although there is no such built-in Hook, you can write it yourself. Declare a function called `useOnlineStatus` and move all the duplicated code into it from the components you wrote earlier:
 
 ```js {2-16}
 function useOnlineStatus() {
@@ -230,7 +230,7 @@ This convention guarantees that you can always look at a component and know wher
 
 <Note>
 
-If your linter is [configured for React](/learn/editor-setup#linting), it will enforce this naming convention. Scroll up to the sandbox above and rename `useOnlineStatus` to `getOnlineStatus`. Notice that the linter won't allow you to call `useState` or `useEffect` inside of it anymore. Only Hooks and components can call other Hooks!
+If your linter is [configured for React,](/learn/editor-setup#linting) it will enforce this naming convention. Scroll up to the sandbox above and rename `useOnlineStatus` to `getOnlineStatus`. Notice that the linter won't allow you to call `useState` or `useEffect` inside of it anymore. Only Hooks and components can call other Hooks!
 
 </Note>
 
@@ -1346,7 +1346,7 @@ export function useOnlineStatus() {
 
 </Sandpack>
 
-In the above example, `useOnlineStatus` is implemented with a pair of [`useState`](/apis/react/useState) and [`useEffect`](/apis/react/useEffect). However, this isn't the best possible solution. There is a number of edge cases it doesn't consider. For example, it assumes that when the component mounts, `isOnline` is already `true`, but this may be wrong if the network already went offline. You can use the browser [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API to check for that, but using it directly would break if you run your React app on the server to generate the initial HTML. In short, this code could be improved.
+In the above example, `useOnlineStatus` is implemented with a pair of [`useState`](/apis/react/useState) and [`useEffect`.](/apis/react/useEffect) However, this isn't the best possible solution. There is a number of edge cases it doesn't consider. For example, it assumes that when the component mounts, `isOnline` is already `true`, but this may be wrong if the network already went offline. You can use the browser [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API to check for that, but using it directly would break if you run your React app on the server to generate the initial HTML. In short, this code could be improved.
 
 Luckily, React 18 includes a dedicated API called [`useSyncExternalStore`](/apis/react/useSyncExternalStore) which takes care of all of these problems for you. Here is how your `useOnlineStatus` Hook, rewritten to take advantage of this new API:
 
@@ -1828,7 +1828,7 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-Effects let you connect React to external systems. The more coordination between Effects is needed (for example, to chain multiple animations), the more it makes sense to extract that logic out of Effects and Hooks *completely* like in the sandbox above. Then, the code you extracted *becomes* the "external system." This lets your Effects stay simple because they only need to send messages to the system you've moved outside React.
+Effects let you connect React to external systems. The more coordination between Effects is needed (for example, to chain multiple animations), the more it makes sense to extract that logic out of Effects and Hooks *completely* like in the sandbox above. Then, the code you extracted *becomes* the "external system". This lets your Effects stay simple because they only need to send messages to the system you've moved outside React.
 
 The examples above assume that the fade-in logic needs to be written in JavaScript. However, this particular fade-in animation is both simpler and much more efficient to implement with a plain [CSS Animation:](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations)
 
