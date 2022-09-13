@@ -10,7 +10,11 @@ React 拥有数百万开发者的社区。本章节将为你列出一些与 Reac
 
 ## 行为准则 {/*code-of-conduct*/}
 
+<<<<<<< HEAD
 在参与 React 社区前，[请阅读我们的行为准则](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md)。我们制订了 [贡献者公约](https://www.contributor-covenant.org/)，我们希望所有社区成员都能遵守其中的准则。
+=======
+Before participating in React's communities, [please read our Code of Conduct.](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md) We have adopted the [Contributor Covenant](https://www.contributor-covenant.org/) and we expect that all community members adhere to the guidelines within.
+>>>>>>> e4aa5076c2f8b9bf2b035c24a28cb80e6166333f
 
 ## Stack Overflow {/*stack-overflow*/}
 
