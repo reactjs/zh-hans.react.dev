@@ -46,7 +46,7 @@ export default function StatusBar() {
     window.addEventListener('offline', handleOffline);
     return () => {
       window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);      
+      window.removeEventListener('offline', handleOffline);
     };
   }, []);
 
@@ -80,7 +80,7 @@ export default function SaveButton() {
     window.addEventListener('offline', handleOffline);
     return () => {
       window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);      
+      window.removeEventListener('offline', handleOffline);
     };
   }, []);
 
@@ -104,7 +104,7 @@ These two components work fine, but the duplication in logic between them is unf
 
 ### Extracting your own custom Hook from a component {/*extracting-your-own-custom-hook-from-a-component*/}
 
-Imagine for a moment that, similar to [`useState`](/apis/react/useState) and [`useEffect`](/apis/useEffect), there was a built-in `useOnlineStatus` Hook. Then both of these components could be simplified and you could remove the duplication between them:
+Imagine for a moment that, similar to [`useState`](/apis/react/useState) and [`useEffect`](/apis/react/useEffect), there was a built-in `useOnlineStatus` Hook. Then both of these components could be simplified and you could remove the duplication between them:
 
 ```js {2,7}
 function StatusBar() {
@@ -127,7 +127,7 @@ function SaveButton() {
 }
 ```
 
-Although there is no such built-in Hook, you can write it yourself. Declare a function called `useOnlineStatus()` and move all the duplicated code into it from the components you wrote earlier:
+Although there is no such built-in Hook, you can write it yourself. Declare a function called `useOnlineStatus` and move all the duplicated code into it from the components you wrote earlier:
 
 ```js {2-16}
 function useOnlineStatus() {
@@ -143,7 +143,7 @@ function useOnlineStatus() {
     window.addEventListener('offline', handleOffline);
     return () => {
       window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);      
+      window.removeEventListener('offline', handleOffline);
     };
   }, []);
   return isOnline;
@@ -202,7 +202,7 @@ export function useOnlineStatus() {
     window.addEventListener('offline', handleOffline);
     return () => {
       window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);      
+      window.removeEventListener('offline', handleOffline);
     };
   }, []);
   return isOnline;
@@ -230,7 +230,7 @@ This convention guarantees that you can always look at a component and know wher
 
 <Note>
 
-If your linter is [configured for React](/learn/editor-setup#linting), it will enforce this naming convention. Scroll up to the sandbox above and rename `useOnlineStatus` to `getOnlineStatus`. Notice that the linter won't allow you to call `useState` or `useEffect` inside of it anymore. Only Hooks and components can call other Hooks!
+If your linter is [configured for React,](/learn/editor-setup#linting) it will enforce this naming convention. Scroll up to the sandbox above and rename `useOnlineStatus` to `getOnlineStatus`. Notice that the linter won't allow you to call `useState` or `useEffect` inside of it anymore. Only Hooks and components can call other Hooks!
 
 </Note>
 
@@ -628,7 +628,7 @@ export default function ChatRoom({ roomId }) {
 
   useChatRoom({
     roomId: roomId,
-    serverUrl: serverUrl 
+    serverUrl: serverUrl
   });
 
   return (
@@ -686,7 +686,7 @@ export default function ChatRoom({ roomId }) {
 
   useChatRoom({
     roomId: roomId,
-    serverUrl: serverUrl 
+    serverUrl: serverUrl
   });
 
   return (
@@ -815,7 +815,7 @@ export default function ChatRoom({ roomId }) {
 
   useChatRoom({
     roomId: roomId,
-    serverUrl: serverUrl 
+    serverUrl: serverUrl
   });
   // ...
 ```
@@ -828,7 +828,7 @@ export default function ChatRoom({ roomId }) {
 
   useChatRoom({
     roomId: roomId,
-    serverUrl: serverUrl 
+    serverUrl: serverUrl
   });
   // ...
 ```
@@ -1337,7 +1337,7 @@ export function useOnlineStatus() {
     window.addEventListener('offline', handleOffline);
     return () => {
       window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);      
+      window.removeEventListener('offline', handleOffline);
     };
   }, []);
   return isOnline;
@@ -1346,7 +1346,7 @@ export function useOnlineStatus() {
 
 </Sandpack>
 
-In the above example, `useOnlineStatus` is implemented with a pair of [`useState`](/apis/react/useState) and [`useEffect`](/apis/react/useEffect). However, this isn't the best possible solution. There is a number of edge cases it doesn't consider. For example, it assumes that when the component mounts, `isOnline` is already `true`, but this may be wrong if the network already went offline. You can use the browser [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API to check for that, but using it directly would break if you run your React app on the server to generate the initial HTML. In short, this code could be improved.
+In the above example, `useOnlineStatus` is implemented with a pair of [`useState`](/apis/react/useState) and [`useEffect`.](/apis/react/useEffect) However, this isn't the best possible solution. There is a number of edge cases it doesn't consider. For example, it assumes that when the component mounts, `isOnline` is already `true`, but this may be wrong if the network already went offline. You can use the browser [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API to check for that, but using it directly would break if you run your React app on the server to generate the initial HTML. In short, this code could be improved.
 
 Luckily, React 18 includes a dedicated API called [`useSyncExternalStore`](/apis/react/useSyncExternalStore) which takes care of all of these problems for you. Here is how your `useOnlineStatus` Hook, rewritten to take advantage of this new API:
 
@@ -1828,7 +1828,7 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-Effects let you connect React to external systems. The more coordination between Effects is needed (for example, to chain multiple animations), the more it makes sense to extract that logic out of Effects and Hooks *completely* like in the sandbox above. Then, the code you extracted *becomes* the "external system." This lets your Effects stay simple because they only need to send messages to the system you've moved outside React.
+Effects let you connect React to external systems. The more coordination between Effects is needed (for example, to chain multiple animations), the more it makes sense to extract that logic out of Effects and Hooks *completely* like in the sandbox above. Then, the code you extracted *becomes* the "external system". This lets your Effects stay simple because they only need to send messages to the system you've moved outside React.
 
 The examples above assume that the fade-in logic needs to be written in JavaScript. However, this particular fade-in animation is both simpler and much more efficient to implement with a plain [CSS Animation:](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations)
 
@@ -1873,7 +1873,7 @@ html, body { min-height: 300px; }
   font-size: 50px;
   background-image: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 
-  animation: fadeIn 1000ms; 
+  animation: fadeIn 1000ms;
 }
 
 @keyframes fadeIn {
@@ -2161,7 +2161,7 @@ export function useInterval(onTick, delay) {
   useEffect(() => {
     const id = setInterval(onTick, delay);
     return () => clearInterval(id);
-  }, [onTick, delay]); 
+  }, [onTick, delay]);
 }
 ```
 
@@ -2187,7 +2187,7 @@ For some reason, the callback that updates the page background never runs. Add s
       console.log('❌ Clearing an interval with delay ', delay)
       clearInterval(id);
     };
-  }, [onTick, delay]); 
+  }, [onTick, delay]);
 ```
 
 Do the logs match what you expect to happen? If some of your Effects seem to re-synchronize unnecessarily, can you guess which dependency is causing that to happen? Is there some way to [remove that dependency](/learn/removing-effect-dependencies) from your Effect?
@@ -2241,7 +2241,7 @@ export function useInterval(onTick, delay) {
     return () => {
       clearInterval(id);
     };
-  }, [onTick, delay]); 
+  }, [onTick, delay]);
 }
 ```
 
@@ -2345,7 +2345,7 @@ export function useEvent(fn) {
 
 In this example, the `usePointerPosition()` Hook tracks the current pointer position. Try moving your cursor or your finger over the preview area and see the red dot follow your movement. Its position is saved in the `pos1` variable.
 
-In fact, there are five (!) different red dots being rendered. You don't see them because currently they all appear at the same position. This is what you need to fix. What you want to implement instead is a "staggered" movement: each next dot should "follow" the previous dot's path. For example, if you quickly move your cursor, the first dot should follow it immediately, the second dot should follow the first dot with a small delay, the third dot should follow the second dot, and so on.
+In fact, there are five (!) different red dots being rendered. You don't see them because currently they all appear at the same position. This is what you need to fix. What you want to implement instead is a "staggered" movement: each dot should "follow" the previous dot's path. For example, if you quickly move your cursor, the first dot should follow it immediately, the second dot should follow the first dot with a small delay, the third dot should follow the second dot, and so on.
 
 You need to implement the `useDelayedValue` custom Hook. Its current implementation returns the `value` provided to it. Instead, you want to return the value back from `delay` milliseconds ago. You might need some state and an Effect to do this.
 

@@ -66,7 +66,11 @@ button { margin-right: 10px; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 你可以定义 `handleClick` 函数然后 [将其作为 prop 传入](/learn/passing-props-to-a-component) `<button>`。其中 `handleClick` 是一个 **事件处理函数** 。事件处理函数有如下特点:
+=======
+You defined the `handleClick` function and then [passed it as a prop](/learn/passing-props-to-a-component) to `<button>`.  `handleClick` is an **event handler.** Event handler functions:
+>>>>>>> 841d3d1b75491ce153a53d1887ab020458090bbd
 
 * 通常在你的组件 *内部* 定义。
 * 名称以 `handle` 开头，后跟事件名称。
@@ -130,7 +134,11 @@ button { margin-right: 10px; }
 * `<button onClick={handleClick}>` 传递了 `handleClick` 函数。
 * `<button onClick={() => alert('...')}>` 传递了 `() => alert('...')` 函数。
 
+<<<<<<< HEAD
 > 查看 [JavaScript Refresher](a-javascript-refresher#arrow-functions) 了解更多箭头函数的信息。
+=======
+> Check out the [JavaScript Refresher](TODO:/learn/a-javascript-refresher#arrow-functions) for more on arrow functions.
+>>>>>>> 841d3d1b75491ce153a53d1887ab020458090bbd
 
 </Gotcha>
 
@@ -235,7 +243,11 @@ button { margin-right: 10px; }
 
 ### 命名事件处理函数 prop {/*naming-event-handler-props*/}
 
+<<<<<<< HEAD
 内置组件（`<button>` 和 `<div>`）仅支持 [浏览器事件名称](/apis/react-dom/events)，例如 `onClick`。但是，当你构建自己的组件时，你可以按你个人喜好命名事件处理函数的 prop。
+=======
+Built-in components like `<button>` and `<div>` only support [browser event names](TODO:/apis/react-dom/events) like `onClick`. However, when you're building your own components, you can name their event handler props any way that you like.
+>>>>>>> 841d3d1b75491ce153a53d1887ab020458090bbd
 
 > 按照惯例，事件处理函数 props 应该以 `on` 开头，后跟一个大写字母。
 
@@ -367,7 +379,11 @@ button { margin: 5px; }
 
 ### 阻止传播 {/*stopping-propagation*/}
 
+<<<<<<< HEAD
 事件处理函数接收一个 **事件对象** 作为唯一的参数。按照惯例，它通常被称为 `e` ，代表 "event"（事件）。你可以使用此对象来读取有关事件的信息。
+=======
+Event handlers receive an **event object** as their only argument. By convention, it's usually called `e`, which stands for "event". You can use this object to read information about the event.
+>>>>>>> 841d3d1b75491ce153a53d1887ab020458090bbd
 
 这个事件对象还允许你阻止传播。如果你想阻止一个事件到达父组件，你需要像下面 `Button` 组件那样调用 `e.stopPropagation()` ：
 
@@ -524,7 +540,11 @@ button { margin-left: 5px; }
 
 当然可以！事件处理函数是执行副作用的最佳位置。
 
+<<<<<<< HEAD
 与渲染函数不同，事件处理函数不需要是 [纯函数](/learn/keeping-components-pure)，因此它是用来 *更改* 某些值的绝佳位置。例如，更改输入框的值以响应键入，或者更改列表以响应按钮的触发。但是，为了更改某些信息，你首先需要某种方式存储它。在 React 中，这是通过 [state（组件的记忆）](/learn/state-a-components-memory) 来完成的。你将在下一章节了解所有相关信息。
+=======
+Unlike rendering functions, event handlers don't need to be [pure](/learn/keeping-components-pure), so it's a great place to *change* something—for example, change an input's value in response to typing, or change a list in response to a button press. However, in order to change some information, you first need some way to store it. In React, this is done by using [state, a component's memory.](/learn/state-a-components-memory) You will learn all about it on the next page.
+>>>>>>> 841d3d1b75491ce153a53d1887ab020458090bbd
 
 <Recap>
 
