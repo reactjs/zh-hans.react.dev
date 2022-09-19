@@ -18,14 +18,25 @@ permalink: index.html
 
 ## 这项工作仍在进行中 {/*this-is-a-work-in-progress*/}
 
+<<<<<<< HEAD
 由于此站点仍处于 **beta 阶段**。可能会存在 bug，性能问题甚至是内容缺失等情况。
+=======
+This is a **beta website.** There will be bugs, performance issues, and missing content.
+>>>>>>> a05062186e29efc9270f574a7f89a486f8a0a601
 
 ## 有多少内容已就绪？ {/*how-much-content-is-ready*/}
 
+<<<<<<< HEAD
 * [Learn React](/learn): 已完成近 95%。
 * [API Reference](/apis): 已完成近 30%。
 
 你可以 [在 Github 上](https://github.com/reactjs/reactjs.org/issues/3308) 追踪我们的进度。
+=======
+* [Learn React](/learn): ~95% finished.
+* [API Reference](/apis): ~60% finished.
+
+You can track our progress [on GitHub.](https://github.com/reactjs/reactjs.org/issues/3308)
+>>>>>>> a05062186e29efc9270f574a7f89a486f8a0a601
 
 ## 如何提供反馈? {/*how-can-i-provide-feedback*/}
 
@@ -33,4 +44,8 @@ permalink: index.html
 
 ## 此站点是否会取代主站点？ {/*will-this-site-replace-the-main-site*/}
 
+<<<<<<< HEAD
 我们的目标是，当此站点的内容与 [现有 React 文档](https://reactjs.org/) 一致时。就会把此站点切为主站，而旧的 React 官网将被归档到子域下，你仍可访问它。旧的内容链接将重定向到归档的子域中，其中会包含过时的提示。
+=======
+We aim to switch this site to be the main one once we reach content parity with the [existing React documentation.](https://reactjs.org/) The old React website will be archived at a subdomain so you'll still be able to access it. Old content links will redirect to the archived subdomain, which will have a notice about outdated content.
+>>>>>>> a05062186e29efc9270f574a7f89a486f8a0a601

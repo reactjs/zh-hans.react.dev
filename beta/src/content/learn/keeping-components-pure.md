@@ -47,7 +47,11 @@ function double(number) {
 }
 ```
 
+<<<<<<< HEAD
 上述例子中，`double()` 就是一个 **纯函数**。如果你传入 `3` ，它将总是返回 `6` 。
+=======
+In the above example, `double` is a **pure function.** If you pass it `3`, it will return `6`. Always.
+>>>>>>> a05062186e29efc9270f574a7f89a486f8a0a601
 
 React 便围绕着这个概念进行设计。**React 假设你编写的所有组件都是纯函数**。也就是说，对于相同的输入，你所编写的 React 组件必须总是返回相同的 JSX。
 
@@ -85,7 +89,11 @@ export default function App() {
 
 就像数学公式一样。
 
+<<<<<<< HEAD
 你可以把你的组件当作食谱：如果你遵循它们，并且在烹饪过程中不引入新食材，你每次都会得到相同的菜肴。那这道 “菜肴” 就是组件用于 React [渲染](render-and-commit) 的 JSX。
+=======
+You could think of your components as recipes: if you follow them and don't introduce new ingredients during the cooking process, you will get the same dish every time. That "dish" is the JSX that the component serves to React to [render.](render-and-commit)
+>>>>>>> a05062186e29efc9270f574a7f89a486f8a0a601
 
 <Illustration src="/images/docs/illustrations/i_puritea-recipe.png" alt="A tea recipe for x people: take x cups of water, add 2x spoons of spices, and x spoons of tea!" />
 
@@ -147,11 +155,19 @@ export default function TeaSet() {
 
 现在你的组件就是纯粹的，因为它返回的 JSX 只依赖于 `guest` prop。
 
+<<<<<<< HEAD
 一般来说，你不应该期望你的组件以任何特定的顺序被渲染。调用 <Math><MathI>y</MathI> = 5<MathI>x</MathI></Math> 和 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> 的先后顺序并不重要：这两个公式相互独立。同样地，每个组件也应该“独立思考”，而不是在渲染过程中试图与其他组件协调，或者依赖于其他组件。渲染过程就像是一场学校考试：每个组件都应该自己计算 JSX！
+=======
+In general, you should not expect your components to be rendered in any particular order. It doesn't matter if you call <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> before or after <Math><MathI>y</MathI> = 5<MathI>x</MathI></Math>: both formulas will resolve independently of each other. In the same way, each component should only "think for itself", and not attempt to coordinate with or depend upon others during rendering. Rendering is like a school exam: each component should calculate JSX on their own!
+>>>>>>> a05062186e29efc9270f574a7f89a486f8a0a601
 
 <DeepDive title="使用严格模式检测不纯的计算">
 
+<<<<<<< HEAD
 尽管你可能还没使用过，但在 React 中，你可以在渲染时读取三种输入：[props](/learn/passing-props-to-a-component)，[state](/learn/state-a-components-memory) 和 [context](/learn/passing-data-deeply-with-context)。你应该始终将这些输入视为只读。
+=======
+Although you might not have used them all yet, in React there are three kinds of inputs that you can read while rendering: [props](/learn/passing-props-to-a-component), [state](/learn/state-a-components-memory), and [context.](/learn/passing-data-deeply-with-context) You should always treat these inputs as read-only.
+>>>>>>> a05062186e29efc9270f574a7f89a486f8a0a601
 
 当你想根据用户输入 *更改* 某些内容时，你应该 [设置状态](/learn/state-a-components-memory)，而不是直接写入变量。当你的组件正在渲染时，你永远不应该改变预先存在的变量或对象。
 
@@ -193,9 +209,15 @@ export default function TeaGathering() {
 
 ## 哪些地方 **可能** 引发副作用 {/*where-you-can-cause-side-effects*/}
 
+<<<<<<< HEAD
 函数式编程在很大程度上依赖于纯函数，但 **某些事物** 在特定情况下不得不发生改变。这是编程的要义！这些变动包括更新屏幕、启动动画、更改数据等，它们被称为 **副作用**。它们是 **“额外”** 发生的事情，与渲染过程无关。
 
 在 React 中，**副作用通常属于 [事件处理程序](/learn/responding-to-events)**。事件处理程序是 React 在你执行某些操作（如单击按钮）时运行的函数。即使事件处理程序是在你的组件 **内部** 定义的，它们也不会在渲染期间运行！ **因此事件处理程序无需是纯函数**。
+=======
+While functional programming relies heavily on purity, at some point, somewhere, _something_ has to change. That's kind of the point of programming! These changes—updating the screen, starting an animation, changing the data—are called **side effects.** They're things that happen _"on the side"_, not during rendering.
+
+In React, **side effects usually belong inside [event handlers.](/learn/responding-to-events)** Event handlers are functions that React runs when you perform some action—for example, when you click a button. Even though event handlers are defined *inside* your component, they don't run *during* rendering! **So event handlers don't need to be pure.**
+>>>>>>> a05062186e29efc9270f574a7f89a486f8a0a601
 
 如果你用尽一切办法，仍无法为副作用找到合适的事件处理程序，你还可以调用组件中的 [`useEffect`](/apis/react/useEffect) 方法将其附加到返回的 JSX 中。这会告诉 React 在渲染结束后执行它。**然而，这种方法应该是你最后的手段**。
 
@@ -205,9 +227,15 @@ export default function TeaGathering() {
 
 编写纯函数需要遵循一些习惯和规程。但它开启了绝妙的机遇：
 
+<<<<<<< HEAD
 * 你的组件可以在不同的环境下运行 — 例如，在服务器上！由于它们针对相同的输入，总是返回相同的结果，因此一个组件可以满足多个用户请求。
 * 你可以为那些输入未更改的组件来 [跳过渲染](/learn/skipping-unchanged-trees)，以提高性能。这是安全的做法，因为纯函数总是返回相同的结果，所以可以安全地缓存它们。
 * 如果在渲染深层组件树的过程中，某些数据发生了变化，React 可以重新开始渲染，而不会浪费时间完成过时的渲染。纯粹性使得它随时可以安全地停止计算。
+=======
+* Your components could run in a different environment—for example, on the server! Since they return the same result for the same inputs, one component can serve many user requests.
+* You can improve performance by [skipping rendering](TODO:/learn/skipping-unchanged-trees) components whose inputs have not changed. This is safe because pure functions always return the same results, so they are safe to cache.
+* If some data changes in the middle of rendering a deep component tree, React can restart rendering without wasting time to finish the outdated render. Purity makes it safe to stop calculating at any time.
+>>>>>>> a05062186e29efc9270f574a7f89a486f8a0a601
 
 我们正在构建的每个 React 新特性都利用到了纯函数。从数据获取到动画再到性能，保持组件的纯粹可以充分释放 React 范式的能力。
 
@@ -215,6 +243,7 @@ export default function TeaGathering() {
 
 <Recap>
 
+<<<<<<< HEAD
 * 一个组件必须是纯粹的，就意味着：
   * **只负责自己的任务。** 不应更改渲染前存在的任何对象或变量。
   * **输入相同，则输出相同。** 给定相同的输入，组件应该总是返回相同的 JSX。
@@ -222,6 +251,15 @@ export default function TeaGathering() {
 * 你不应该改变组件用于渲染的任何输入。这包括 props、state 和 context。通过 [“设置” state](reacting-to-input-with-state) 来更新界面，而不要改变预先存在的对象。
 * 努力在你返回的 JSX 中表达你的组件逻辑。当你需要“改变事物”时，你通常希望在事件处理程序中进行。作为最后的手段，你可以使用 `useEffect`。
 * 编写纯函数需要一些练习，但它充分释放了 React 范式的能力。
+=======
+* A component must be pure, meaning:
+  * **It minds its own business.** It should not change any objects or variables that existed before rendering.
+  * **Same inputs, same output.** Given the same inputs, a component should always return the same JSX. 
+* Rendering can happen at any time, so components should not depend on each others' rendering sequence.
+* You should not mutate any of the inputs that your components use for rendering. That includes props, state, and context. To update the screen, ["set" state](/learn/state-a-components-memory) instead of mutating preexisting objects.
+* Strive to express your component's logic in the JSX you return. When you need to "change things", you'll usually want to do it in an event handler. As a last resort, you can `useEffect`.
+* Writing pure functions takes a bit of practice, but it unlocks the power of React's paradigm.
+>>>>>>> a05062186e29efc9270f574a7f89a486f8a0a601
 
 </Recap>
 

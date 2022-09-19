@@ -12,15 +12,6 @@ redirect_from:
 
 ## 即将举行的会议 {#upcoming-conferences}
 
-### React Native EU 2022: Powered by {callstack} {#react-native-eu-2022-powered-by-callstack}
-September 1-2, 2022 - Remote event
-
-[Website](https://www.react-native.eu/?utm_campaign=React_Native_EU&utm_source=referral&utm_content=reactjs_community_conferences) -
-[Twitter](https://twitter.com/react_native_eu) -
-[Linkedin](https://www.linkedin.com/showcase/react-native-eu) -
-[Facebook](https://www.facebook.com/reactnativeeu/) - 
-[Instagram](https://www.instagram.com/reactnative_eu/)
-
 ### React Finland 2022 {#react-finland-2022}
 September 12 - 16, 2022. In-person in Helsinki, Finland
 
@@ -41,6 +32,11 @@ October 14, 2022. In-person in Brussels, Belgium + remote (hybrid event)
 
 [Website](https://www.react.brussels/) - [Twitter](https://twitter.com/BrusselsReact) - [LinkedIn](https://www.linkedin.com/events/6938421827153088512/) - [Facebook](https://www.facebook.com/events/1289080838167252/) - [Videos](https://www.youtube.com/channel/UCvES7lMpnx-t934qGxD4w4g)
 
+### ReactJS Day 2022 {#reactjs-day-2022}
+October 21, 2022 in Verona, Italy
+
+[Website](https://2022.reactjsday.it/) - [Twitter](https://twitter.com/reactjsday) - [LinkedIn](https://www.linkedin.com/company/grusp/) - [Facebook](https://www.facebook.com/reactjsday/) - [Videos](https://www.youtube.com/c/grusp)
+
 ### React Advanced 2022 {#react-advanced-2022}
 October 21 & 25, 2022. In-person in London, UK + remote (hybrid event)
 
@@ -52,6 +48,15 @@ May, 2023. Salt Lake City, UT
 [Website](https://remix.run/conf/2023) - [Twitter](https://twitter.com/remix_run)
 
 ## 往届会议 {#past-conferences}
+
+### React Native EU 2022: Powered by {callstack} {#react-native-eu-2022-powered-by-callstack}
+September 1-2, 2022 - Remote event
+
+[Website](https://www.react-native.eu/?utm_campaign=React_Native_EU&utm_source=referral&utm_content=reactjs_community_conferences) -
+[Twitter](https://twitter.com/react_native_eu) -
+[Linkedin](https://www.linkedin.com/showcase/react-native-eu) -
+[Facebook](https://www.facebook.com/reactnativeeu/) - 
+[Instagram](https://www.instagram.com/reactnative_eu/)
 
 ### ReactNext 2022 {#react-next-2022}
 June 28, 2022. Tel-Aviv, Israel
