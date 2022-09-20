@@ -61,7 +61,7 @@ This might remind you of a waiter taking an order at the restaurant. A waiter do
 
 <Illustration src="/images/docs/illustrations/i_react-batching.png"  alt="An elegant cursor at a restaurant places and order multiple times with React, playing the part of the waiter. After she calls setState() multiple times, the waiter writes down the last one she requested as her final order." />
 
-This lets you update multiple state variables--even from multiple components--without triggering too many [re-renders](/learn/render-and-commit#re-renders-when-state-updates). But this also means that the UI won't be updated until _after_ your event handler, and any code in it, completes. This behavior, also known as **batching,** makes your React app run much faster. It also avoids dealing with confusing "half-finished" renders where only some of the variables have been updated.
+This lets you update multiple state variables--even from multiple components--without triggering too many [re-renders.](/learn/render-and-commit#re-renders-when-state-updates) But this also means that the UI won't be updated until _after_ your event handler, and any code in it, completes. This behavior, also known as **batching,** makes your React app run much faster. It also avoids dealing with confusing "half-finished" renders where only some of the variables have been updated.
 
 **React does not batch across *multiple* intentional events like clicks**--each click is handled separately. Rest assured that React only does batching when it's generally safe to do. This ensures that, for example, if the first button click disables a form, the second click would not submit it again.
 
@@ -99,7 +99,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 </Sandpack>
 
-Here, `n => n + 1` is called an **updater function**. When you pass it to a state setter:
+Here, `n => n + 1` is called an **updater function.** When you pass it to a state setter:
 
 1. React queues this function to be processed after all the other code in the event handler has run.
 2. During the next render, React goes through the queue and gives you the final updated state.
@@ -272,7 +272,7 @@ If you prefer more verbose code, another common convention is to repeat the full
 
 You're working on an art marketplace app that lets the user submit multiple orders for an art item at the same time. Each time the user presses the "Buy" button, the "Pending" counter should increase by one. After three seconds, the "Pending" counter should decrease, and the "Completed" counter should increase.
 
-However, the "Pending" counter does not behave as intended. When you press "Buy," it decreases to `-1` (which should not be possible!). And if you click fast twice, both counters seem to behave unpredictably.
+However, the "Pending" counter does not behave as intended. When you press "Buy", it decreases to `-1` (which should not be possible!). And if you click fast twice, both counters seem to behave unpredictably.
 
 Why does this happen? Fix both counters.
 
@@ -368,7 +368,7 @@ This ensures that when you increment or decrement a counter, you do it in relati
 
 In this challenge, you will reimplement a tiny part of React from scratch! It's not as hard as it sounds.
 
-Scroll through the sandbox preview. Notice that it shows **four test cases**. They correspond to the examples you've seen earlier on this page. Your task is to implement the `getFinalState` function so that it returns the correct result for each of those cases. If you implement it correctly, all four tests should pass.
+Scroll through the sandbox preview. Notice that it shows **four test cases.** They correspond to the examples you've seen earlier on this page. Your task is to implement the `getFinalState` function so that it returns the correct result for each of those cases. If you implement it correctly, all four tests should pass.
 
 You will receive two arguments: `baseState` is the initial state (like `0`), and the `queue` is an array which contains a mix of numbers (like `5`) and updater functions (like `n => n + 1`) in the order they were added.
 

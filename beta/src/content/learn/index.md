@@ -97,7 +97,11 @@ function AboutPage() {
 }
 ```
 
+<<<<<<< HEAD
 如果你有大量的 HTML 需要移植到 JSX 中，你可以使用 [在线转换器](https://transform.tools/html-to-jsx)。
+=======
+If you have a lot of HTML to port to JSX, you can use an [online converter.](https://transform.tools/html-to-jsx)
+>>>>>>> d1fee87a0f70f82677b29f05f5c5d7101eec9b8d
 
 ## 添加样式 {/*adding-styles*/}
 
@@ -202,7 +206,11 @@ return (
 );
 ```
 
+<<<<<<< HEAD
 如果你喜欢更为紧凑的代码，你可以使用 [条件 `?` 运算符](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)。与 `if` 不同的是，它工作于 JSX 内部：
+=======
+If you prefer more compact code, you can use the [conditional `?` operator.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) Unlike `if`, it works inside JSX:
+>>>>>>> d1fee87a0f70f82677b29f05f5c5d7101eec9b8d
 
 ```js
 <div>
@@ -309,7 +317,7 @@ function MyButton() {
 
 首先，从 React 引入 [`useState`](/apis/react/useState)：
 
-```js {1,4}
+```js
 import { useState } from 'react';
 ```
 
@@ -387,7 +395,11 @@ button {
 
 ## 使用 Hook {/*using-hooks*/}
 
+<<<<<<< HEAD
 以 `use` 开头的函数被称为 **Hook**。`useState` 是 React 提供的一个内置 Hook。你可以在 [React API 参考](/apis/react) 中找到其他内置的 Hook。你也可以通过组合现有的 Hook 来编写属于你自己的 Hook。
+=======
+Functions starting with `use` are called *Hooks*. `useState` is a built-in Hook provided by React. You can find other built-in Hooks in the [React API reference.](/apis/react) You can also write your own Hooks by combining the existing ones.
+>>>>>>> d1fee87a0f70f82677b29f05f5c5d7101eec9b8d
 
 Hook 比普通函数更为严格。你只能在你的组件（或其他 Hook）的 **顶层** 调用 Hook。如果你想在一个条件或循环中使用 `useState`，请提取一个新的组件并在组件内部使用它。
 
