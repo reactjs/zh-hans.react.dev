@@ -6,7 +6,6 @@ import cn from 'classnames';
 import {
   SandpackCodeViewer,
   SandpackProvider,
-  SandpackThemeProvider,
 } from '@codesandbox/sandpack-react';
 import rangeParser from 'parse-numeric-range';
 import {CustomTheme} from '../Sandpack/Themes';
@@ -50,10 +49,14 @@ const CodeBlock = function CodeBlock({
         className: cn(
           'code-step bg-opacity-10 dark:bg-opacity-20 relative rounded px-1 py-[1.5px] border-b-[2px] border-opacity-60',
           {
-            'bg-blue-40 border-blue-40': line.step === 1,
-            'bg-yellow-40 border-yellow-40': line.step === 2,
-            'bg-green-40 border-green-40': line.step === 3,
-            'bg-purple-40 border-purple-40': line.step === 4,
+            'bg-blue-40 border-blue-40 text-blue-60 dark:text-blue-30 font-bold':
+              line.step === 1,
+            'bg-yellow-40 border-yellow-40 text-yellow-60 dark:text-yellow-30 font-bold':
+              line.step === 2,
+            'bg-purple-40 border-purple-40 text-purple-60 dark:text-purple-30 font-bold':
+              line.step === 3,
+            'bg-green-40 border-green-40 text-green-60 dark:text-green-30 font-bold':
+              line.step === 4,
           }
         ),
       })
@@ -68,27 +71,34 @@ const CodeBlock = function CodeBlock({
   const decorators = getDecoratedLineInfo();
   return (
     <div
-      translate="no"
+      key={
+        // HACK: There seems to be a bug where the rendered result
+        // "lags behind" the edits to it. For now, force it to reset.
+        process.env.NODE_ENV === 'development' ? children : ''
+      }
       className={cn(
+        'sandpack sandpack--codeblock',
         'rounded-lg h-full w-full overflow-x-auto flex items-center bg-wash dark:bg-gray-95 shadow-lg',
         !noMargin && 'my-8'
       )}>
       <SandpackProvider
+        files={{
+          [filename]: {
+            code: children.trimEnd(),
+          },
+        }}
         customSetup={{
           entry: filename,
-          files: {
-            [filename]: {
-              code: children.trimEnd(),
-            },
-          },
-        }}>
-        <SandpackThemeProvider theme={CustomTheme}>
-          <SandpackCodeViewer
-            key={children.trimEnd()}
-            showLineNumbers={false}
-            decorators={decorators}
-          />
-        </SandpackThemeProvider>
+        }}
+        options={{
+          initMode: 'immediate',
+        }}
+        theme={CustomTheme}>
+        <SandpackCodeViewer
+          key={children.trimEnd()}
+          showLineNumbers={false}
+          decorators={decorators}
+        />
       </SandpackProvider>
     </div>
   );
