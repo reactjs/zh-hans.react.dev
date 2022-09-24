@@ -27,7 +27,11 @@ Andrew 通过 WordPress 制作网站开始接触 Web 开发，最终走上了 Ja
 
 [@bvaughn on GitHub](https://github.com/bvaughn) &middot; [@brian\_d\_vaughn on Twitter](https://twitter.com/brian_d_vaughn)
 
+<<<<<<< HEAD
 Brian 在大学中主修艺术，为了支付学费而兼职学习了编程。后来，他意识到自己更喜欢从事开源方面的工作。Brian 有一个 [单人乐队](https://soundcloud.com/brianvaughn/) 和两个 [双人](https://soundcloud.com/pilotlessdrone) [乐队](https://soundcloud.com/pinwurm)。同时，他还拥有一只可爱的猫咪。
+=======
+Brian studied art in college and did programming on the side to pay for his education. Eventually, he realized that he enjoys working on open source. Brian has one [one-person band](https://soundcloud.com/brianvaughn/) and two [two-person](https://soundcloud.com/pilotlessdrone) [bands.](https://soundcloud.com/pinwurm) He also takes care of the cutest cat in the world.
+>>>>>>> b59b64f3865daa99fee0e00060e3b9b24281b55e
 
 ### Dan Abramov {/*dan-abramov*/}
 

@@ -85,6 +85,16 @@ li { margin-bottom: 10px; }
 
 </Sandpack>
 
+Notice the sandbox above displays a console error:
+
+<ConsoleBlock level="error">
+
+Warning: Each child in a list should have a unique "key" prop.
+
+</ConsoleBlock>
+
+You'll learn how to fix this error later on this page. Before we get to that, let's add some structure to your data.
+
 ## Filtering arrays of items {/*filtering-arrays-of-items*/}
 
 This data can be structured even more.
@@ -250,13 +260,13 @@ const listItems = chemists.map(person => { // Curly brace
 });
 ```
 
-Arrow functions containing `=> {` are said to have a ["block body"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#function_body). They let you write more than a single line of code, but you *have to* write a `return` statement yourself. If you forget it, nothing gets returned!
+Arrow functions containing `=> {` are said to have a ["block body".](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#function_body) They let you write more than a single line of code, but you *have to* write a `return` statement yourself. If you forget it, nothing gets returned!
 
 </Gotcha>
 
 ## Keeping list items in order with `key` {/*keeping-list-items-in-order-with-key*/}
 
-If you open any of the sandboxes above in a new tab, you'll see an error in the console:
+Notice that all the sandboxes above show an error in the console:
 
 <ConsoleBlock level="error">
 
@@ -366,7 +376,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 What do you do when each item needs to render not one, but several DOM nodes?
 
-The short `<> </>` fragment syntax won't let you pass a key, so you need to either group them into a single `<div>`, or use the slightly longer and more explicit `<Fragment>` syntax:
+The short [`<>...</>` Fragment](/apis/react/Fragment) syntax won't let you pass a key, so you need to either group them into a single `<div>`, or use the slightly longer and [more explicit `<Fragment>` syntax:](/apis/react/Fragment#rendering-a-list-of-fragments)
 
 ```js
 import { Fragment } from 'react';
@@ -432,7 +442,7 @@ On this page you learned:
 
 This example shows a list of all people.
 
-Change it to show two separate lists one after another: **Chemists** and **Everyone Else**. Like previously, you can determine whether a person is a chemist by checking if `person.profession === 'chemist'`.
+Change it to show two separate lists one after another: **Chemists** and **Everyone Else.** Like previously, you can determine whether a person is a chemist by checking if `person.profession === 'chemist'`.
 
 <Sandpack>
 
@@ -1196,7 +1206,7 @@ hr {
 
 Using the original line index as a `key` doesn't work anymore because each separator and paragraph are now in the same array. However, you can give each of them a distinct key using a suffix, e.g. `key={i + '-text'}`.
 
-Alternatively, you could render a collection of fragments which contain `<hr />` and `<p>...</p>`. However, the `<> </>` shorthand syntax doesn't support passing keys, so you'd have to write `<Fragment>` explicitly:
+Alternatively, you could render a collection of fragments which contain `<hr />` and `<p>...</p>`. However, the `<>...</>` shorthand syntax doesn't support passing keys, so you'd have to write `<Fragment>` explicitly:
 
 <Sandpack>
 

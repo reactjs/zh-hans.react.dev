@@ -118,8 +118,13 @@ export default function TodoList() {
 
 在 JSX 中，只能在以下两种场景中使用大括号：
 
+<<<<<<< HEAD
 1. 用作 JSX 标签内的**文本**：`<h1>{name}'s To Do List</h1>` 是有效的，但是 `<{tag}>Gregorio Y. Zara's To Do List</{tag}>` 无效。
 2. 用作紧跟在 `=` 符号后的 **属性**：`src={avatar}` 会读取 `avatar` 变量，但是 `src="{avatar}"` 只会传一个字符串 `{avatar}`。
+=======
+1. **As text** directly inside a JSX tag: `<h1>{name}'s To Do List</h1>` works, but `<{tag}>Gregorio Y. Zara's To Do List</{tag}>`  will not.
+2. **As attributes** immediately following the `=` sign: `src={avatar}` will read the `avatar` variable, but `src="{avatar}"` will pass the string `"{avatar}"`.
+>>>>>>> b59b64f3865daa99fee0e00060e3b9b24281b55e
 
 ## 使用 "双大括号"：JSX 中的 CSS 和 对象 {/*using-double-curlies-css-and-other-objects-in-jsx*/}
 
@@ -429,7 +434,11 @@ body > div > div { padding: 20px; }
 
 #### 在 JSX 大括号内编写表达式 {/*write-an-expression-inside-jsx-curly-braces*/}
 
+<<<<<<< HEAD
 在下面的对象中，完整的图片 URL 被分成了四个部分：base URL、`imageId`、`imageSize` 和文件拓展名。
+=======
+In the object below, the full image URL is split into four parts: base URL, `imageId`, `imageSize`, and file extension.
+>>>>>>> b59b64f3865daa99fee0e00060e3b9b24281b55e
 
 我们希望这些属性组合成图片的 URL：base URL（一直是 `'https://i.imgur.com/'`）、`imageId`（`'7vQD0fP'`）、`imageSize`（`'s'`）和文件拓展（总是 `'.jpg'`）。但是，`<img>` 标签 `src` 指明的方式是有问题的。
 
