@@ -3,13 +3,20 @@
  */
 
 /* eslint-disable react-hooks/exhaustive-deps */
-import * as React from 'react';
-import {useSandpack, LoadingOverlay} from '@codesandbox/sandpack-react';
+import {useRef, useState, useEffect, useMemo} from 'react';
+import {
+  useSandpack,
+  LoadingOverlay,
+  SandpackStack,
+} from '@codesandbox/sandpack-react';
 import cn from 'classnames';
 import {Error} from './Error';
 import {SandpackConsole} from './Console';
 import type {LintDiagnostic} from './useSandpackLint';
 
+/**
+ * TODO: can we use React.useId?
+ */
 const generateRandomId = (): string =>
   Math.floor(Math.random() * 10000).toString();
 
@@ -21,9 +28,9 @@ type CustomPreviewProps = {
 };
 
 function useDebounced(value: any): any {
-  const ref = React.useRef<any>(null);
-  const [saved, setSaved] = React.useState(value);
-  React.useEffect(() => {
+  const ref = useRef<any>(null);
+  const [saved, setSaved] = useState(value);
+  useEffect(() => {
     clearTimeout(ref.current);
     ref.current = setTimeout(() => {
       setSaved(value);
@@ -39,10 +46,10 @@ export function Preview({
   lintErrors,
 }: CustomPreviewProps) {
   const {sandpack, listen} = useSandpack();
-  const [isReady, setIsReady] = React.useState(false);
-  const [iframeComputedHeight, setComputedAutoHeight] = React.useState<
-    number | null
-  >(null);
+  const [isReady, setIsReady] = useState(false);
+  const [iframeComputedHeight, setComputedAutoHeight] = useState<number | null>(
+    null
+  );
 
   let {
     error: rawError,
@@ -63,7 +70,7 @@ export function Preview({
   }
 
   // Memoized because it's fed to debouncing.
-  const firstLintError = React.useMemo(() => {
+  const firstLintError = useMemo(() => {
     if (lintErrors.length === 0) {
       return null;
     } else {
@@ -81,11 +88,15 @@ export function Preview({
     }
   }
 
+  if (rawError != null && rawError.title === 'Runtime Exception') {
+    rawError.title = 'Runtime Error';
+  }
+
   // It changes too fast, causing flicker.
   const error = useDebounced(rawError);
 
-  const clientId = React.useRef<string>(generateRandomId());
-  const iframeRef = React.useRef<HTMLIFrameElement | null>(null);
+  const clientId = useRef<string>(generateRandomId());
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
   // SandpackPreview immediately registers the custom screens/components so the bundler does not render any of them
   // TODO: why are we doing this during render?
@@ -93,7 +104,7 @@ export function Preview({
   errorScreenRegisteredRef.current = true;
   loadingScreenRegisteredRef.current = true;
 
-  React.useEffect(function createBundler() {
+  useEffect(function createBundler() {
     const iframeElement = iframeRef.current!;
     registerBundler(iframeElement, clientId.current);
 
@@ -102,7 +113,7 @@ export function Preview({
     };
   }, []);
 
-  React.useEffect(
+  useEffect(
     function bundlerListener() {
       const unsubscribe = listen((message: any) => {
         if (message.type === 'resize') {
@@ -149,8 +160,8 @@ export function Preview({
   // The best way to test it is to actually go through some challenges.
 
   return (
-    <div
-      className={cn('sp-stack', className)}
+    <SandpackStack
+      className={className}
       style={{
         // TODO: clean up this mess.
         ...customStyle,
@@ -158,7 +169,7 @@ export function Preview({
       }}>
       <div
         className={cn(
-          'p-0 sm:p-2 md:p-4 lg:p-8 md:bg-card md:dark:bg-wash-dark h-full relative md:rounded-b-lg lg:rounded-b-none',
+          'p-0 sm:p-2 md:p-4 lg:p-8 bg-card dark:bg-wash-dark h-full relative md:rounded-b-lg lg:rounded-b-none',
           // Allow content to be scrolled if it's too high to fit.
           // Note we don't want this in the expanded state
           // because it breaks position: sticky (and isn't needed anyway).
@@ -206,11 +217,12 @@ export function Preview({
           </div>
         )}
         <LoadingOverlay
+          showOpenInCodeSandbox
           clientId={clientId.current}
           loading={!isReady && iframeComputedHeight === null}
         />
       </div>
-      {!error && <SandpackConsole />}
-    </div>
+      <SandpackConsole visible={!error} />
+    </SandpackStack>
   );
 }

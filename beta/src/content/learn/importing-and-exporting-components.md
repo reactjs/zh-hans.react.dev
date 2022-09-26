@@ -110,11 +110,19 @@ img { margin: 0 10px 10px 0; height: 90px; }
 该示例中需要注意的是，如何将组件拆分成两个文件：
 
 1. `Gallery.js`:
+<<<<<<< HEAD
      - 定义了 `Profile` 组件，该组件仅在该文件内使用，没有被导出。
      - 使用 **默认导出** 的方式，将 `Gallery` 组件导出
 2. `App.js`:
      - 使用 **默认导入** 的方式，从 `Gallery.js` 中导入 `Gallery` 组件。
      - 使用 **默认导出** 的方式，将根组件 `App` 导出。
+=======
+     - Defines the `Profile` component which is only used within the same file and is not exported.
+     - Exports the `Gallery` component as a **default export.**
+2. `App.js`:
+     - Imports `Gallery` as a **default import** from `Gallery.js`.
+     - Exports the root `App` component as a **default export.**
+>>>>>>> ab8c1a4810987748ce2c828cdbd1cac5179a463d
 
 
 <Note>
@@ -129,7 +137,11 @@ import Gallery from './Gallery';
 
 </Note>
 
+<<<<<<< HEAD
 <DeepDive title="默认导出 vs 具名导出">
+=======
+<DeepDive title="Default vs named exports">
+>>>>>>> ab8c1a4810987748ce2c828cdbd1cac5179a463d
 
 这是 JavaScript 里两个主要用来导出值的方式：默认导出和具名导出。到目前为止，我们的示例中只用到了默认导出。但你可以在一个文件中，选择使用其中一种，或者两种都使用。**一个文件里有且仅有一个 _默认_ 导出，但是可以有任意多个 _具名_ 导出。**
 
@@ -222,12 +234,21 @@ img { margin: 0 10px 10px 0; height: 90px; }
 示例中混合使用了默认导出和具名导出：
 
 * `Gallery.js`:
+<<<<<<< HEAD
   - 使用 **具名导出** 的方式，将 `Profile` 组件导出，并取名为 `Profile`。
   - 使用 **默认导出** 的方式，将 `Gallery` 组件导出。
 * `App.js`:
   - 使用 **具名导入** 的方式，从 `Gallery.js` 中导入 `Profile` 组件，并取名为 `Profile`。
   - 使用 **默认导入** 的方式，从 `Gallery.js` 中导入 `Gallery` 组件。
   - 使用 **默认导出** 的方式，将根组件 `App` 导出。
+=======
+  - Exports the `Profile` component as a **named export called `Profile`.**
+  - Exports the `Gallery` component as a **default export.**
+* `App.js`:
+  - Imports `Profile` as a **named import called `Profile`** from `Gallery.js`.
+  - Imports `Gallery` as a **default import** from `Gallery.js`.
+  - Exports the root `App` component as a **default export.**
+>>>>>>> ab8c1a4810987748ce2c828cdbd1cac5179a463d
 
 <Recap>
 
