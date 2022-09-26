@@ -2,18 +2,18 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
+import {Children, useState} from 'react';
 import * as React from 'react';
 import {SandpackProvider} from '@codesandbox/sandpack-react';
 import {SandpackLogLevel} from '@codesandbox/sandpack-client';
 import {CustomPreset} from './CustomPreset';
 import {createFileMap} from './createFileMap';
-
+import {CustomTheme} from './Themes';
 import type {SandpackSetup} from '@codesandbox/sandpack-react';
 
 type SandpackProps = {
   children: React.ReactNode;
   autorun?: boolean;
-  setup?: SandpackSetup;
   showDevTools?: boolean;
 };
 
@@ -58,17 +58,19 @@ h6 {
   font-size: 12px;
 }
 
+code {
+  font-size: 1.2em;
+}
+
 ul {
   padding-left: 20px;
 }
 `.trim();
 
 function SandpackRoot(props: SandpackProps) {
-  let {children, setup, autorun = true, showDevTools = false} = props;
-  const [devToolsLoaded, setDevToolsLoaded] = React.useState(false);
-  let codeSnippets = React.Children.toArray(children) as React.ReactElement[];
-  let isSingleFile = true;
-
+  let {children, autorun = true, showDevTools = false} = props;
+  const [devToolsLoaded, setDevToolsLoaded] = useState(false);
+  const codeSnippets = Children.toArray(children) as React.ReactElement[];
   const files = createFileMap(codeSnippets);
 
   files['/styles.css'] = {
@@ -76,27 +78,36 @@ function SandpackRoot(props: SandpackProps) {
     hidden: true,
   };
 
+  let setup: SandpackSetup | undefined;
+  if (files['/package.json']) {
+    setup = {
+      dependencies: JSON.parse(files['/package.json'].code).dependencies,
+    };
+  }
+
   return (
-    <div className="sandpack-container my-8" translate="no">
+    <div className="sandpack sandpack--playground sandbox my-8">
       <SandpackProvider
         template="react"
-        customSetup={{...setup, files: files}}
-        autorun={autorun}
-        initMode="user-visible"
-        initModeObserverOptions={{rootMargin: '1400px 0px'}}
-        bundlerURL="https://6b760a26.sandpack-bundler.pages.dev"
-        logLevel={SandpackLogLevel.None}>
+        files={files}
+        customSetup={setup}
+        theme={CustomTheme}
+        options={{
+          autorun,
+          initMode: 'user-visible',
+          initModeObserverOptions: {rootMargin: '1400px 0px'},
+          bundlerURL: 'https://ac83f2d6.sandpack-bundler.pages.dev',
+          logLevel: SandpackLogLevel.None,
+        }}>
         <CustomPreset
-          isSingleFile={isSingleFile}
           showDevTools={showDevTools}
           onDevToolsLoad={() => setDevToolsLoaded(true)}
           devToolsLoaded={devToolsLoaded}
+          providedFiles={Object.keys(files)}
         />
       </SandpackProvider>
     </div>
   );
 }
-
-SandpackRoot.displayName = 'Sandpack';
 
 export default SandpackRoot;

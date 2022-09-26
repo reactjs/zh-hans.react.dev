@@ -14,7 +14,7 @@ export default function Layout({content, toc, meta}) {
   );
   const parsedToc = useMemo(() => JSON.parse(toc, reviveNodeOnClient), [toc]);
   return (
-    <Page>
+    <Page toc={parsedToc}>
       <MarkdownPage meta={meta} toc={parsedToc}>
         {parsedContent}
       </MarkdownPage>
@@ -53,32 +53,22 @@ function reviveNodeOnClient(key, val) {
   }
 }
 
-// Serialize a server React tree node to JSON.
-function stringifyNodeOnServer(key, val) {
-  if (val != null && val.$$typeof === Symbol.for('react.element')) {
-    // Remove fake MDX props.
-    const {mdxType, originalType, parentName, ...cleanProps} = val.props;
-    return [
-      '$r',
-      typeof val.type === 'string' ? val.type : mdxType,
-      val.key,
-      cleanProps,
-    ];
-  } else {
-    return val;
-  }
-}
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ~~~~ IMPORTANT: BUMP THIS IF YOU CHANGE ANY CODE BELOW ~~~
+const DISK_CACHE_BREAKER = 4;
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // Put MDX output into JSON for client.
 export async function getStaticProps(context) {
   const fs = require('fs');
-  const compileMdx = require('@mdx-js/mdx');
-  const {transform} = require('@babel/core');
-  const fm = require('gray-matter');
-  const {remarkPlugins} = require('../../plugins/markdownToHtml');
+  const {
+    prepareMDX,
+    PREPARE_MDX_CACHE_BREAKER,
+  } = require('../utils/prepareMDX');
   const rootDir = process.cwd() + '/src/content/';
+  const mdxComponentNames = Object.keys(MDXComponents);
 
-  // Read MDX from the file. Parse Frontmatter data out of it.
+  // Read MDX from the file.
   let path = (context.params.markdownPath || []).join('/') || 'index';
   let mdxWithFrontmatter;
   try {
@@ -86,51 +76,127 @@ export async function getStaticProps(context) {
   } catch {
     mdxWithFrontmatter = fs.readFileSync(rootDir + path + '/index.md', 'utf8');
   }
-  const {content: mdx, data: meta} = fm(mdxWithFrontmatter);
+
+  // See if we have a cached output first.
+  const {FileStore, stableHash} = require('metro-cache');
+  const store = new FileStore({
+    root: process.cwd() + '/node_modules/.cache/react-docs-mdx/',
+  });
+  const hash = Buffer.from(
+    stableHash({
+      // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      // ~~~~ IMPORTANT: Everything that the code below may rely on.
+      // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      mdxWithFrontmatter,
+      mdxComponentNames,
+      DISK_CACHE_BREAKER,
+      PREPARE_MDX_CACHE_BREAKER,
+      lockfile: fs.readFileSync(process.cwd() + '/yarn.lock', 'utf8'),
+    })
+  );
+  const cached = await store.get(hash);
+  if (cached) {
+    console.log(
+      'Reading compiled MDX for /' + path + ' from ./node_modules/.cache/'
+    );
+    return cached;
+  }
+  if (process.env.NODE_ENV === 'production') {
+    console.log(
+      'Cache miss for MDX for /' + path + ' from ./node_modules/.cache/'
+    );
+  }
+
+  // Parse Frontmatter headers from MDX.
+  const fm = require('gray-matter');
+  const {content: mdxWithoutFrontmatter, data: meta} = fm(mdxWithFrontmatter);
+
+  // If we don't add these fake imports, the MDX compiler
+  // will insert a bunch of opaque components we can't introspect.
+  // This will break the prepareMDX() call below.
+  let mdxWithFakeImports = mdxComponentNames
+    .map((key) => 'import ' + key + ' from "' + key + '";\n')
+    .join('\n');
+  mdxWithFakeImports += '\n' + mdxWithoutFrontmatter;
 
   // Turn the MDX we just read into some JS we can execute.
-  let mdxWithFakeImports = '';
-  for (let key in MDXComponents) {
-    if (MDXComponents.hasOwnProperty(key)) {
-      // If we don't add these fake imports, the MDX compiler
-      // will insert a bunch of opaque components we can't introspect.
-      // This will break the prepareMDX() call below.
-      mdxWithFakeImports += 'import ' + key + ' from "' + key + '";\n';
-    }
-  }
-  mdxWithFakeImports += '\n' + mdx;
+  const {remarkPlugins} = require('../../plugins/markdownToHtml');
+  const {compile: compileMdx} = await import('@mdx-js/mdx');
+  const visit = (await import('unist-util-visit')).default;
   const jsxCode = await compileMdx(mdxWithFakeImports, {
-    remarkPlugins,
+    remarkPlugins: [...remarkPlugins, (await import('remark-gfm')).default],
+    rehypePlugins: [
+      // Support stuff like ```js App.js {1-5} active by passing it through.
+      function rehypeMetaAsAttributes() {
+        return (tree) => {
+          visit(tree, 'element', (node) => {
+            if (node.tagName === 'code' && node.data && node.data.meta) {
+              node.properties.meta = node.data.meta;
+            }
+          });
+        };
+      },
+    ],
   });
-  const jsCode = transform(jsxCode, {
+  const {transform} = require('@babel/core');
+  const jsCode = await transform(jsxCode, {
     plugins: ['@babel/plugin-transform-modules-commonjs'],
     presets: ['@babel/preset-react'],
   }).code;
 
   // Prepare environment for MDX.
   let fakeExports = {};
-  // For each fake MDX import, give back the string component name.
-  // It will get serialized later.
-  const fakeRequire = (key) => key;
-  const evalJSCode = new Function('require', 'exports', 'mdx', jsCode);
-  const createElement = require('react').createElement;
+  const fakeRequire = (name) => {
+    if (name === 'react/jsx-runtime') {
+      return require('react/jsx-runtime');
+    } else {
+      // For each fake MDX import, give back the string component name.
+      // It will get serialized later.
+      return name;
+    }
+  };
+  const evalJSCode = new Function('require', 'exports', jsCode);
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   // THIS IS A BUILD-TIME EVAL. NEVER DO THIS WITH UNTRUSTED MDX (LIKE FROM CMS)!!!
   // In this case it's okay because anyone who can edit our MDX can also edit this file.
-  evalJSCode(fakeRequire, fakeExports, createElement);
+  evalJSCode(fakeRequire, fakeExports);
   // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   const reactTree = fakeExports.default({});
 
   // Pre-process MDX output and serialize it.
-  const {prepareMDX} = require('../utils/prepareMDX');
-  const {toc, children} = prepareMDX(reactTree.props.children);
-  return {
+  let {toc, children} = prepareMDX(reactTree.props.children);
+  if (path === 'index') {
+    toc = [];
+  }
+
+  const output = {
     props: {
       content: JSON.stringify(children, stringifyNodeOnServer),
       toc: JSON.stringify(toc, stringifyNodeOnServer),
       meta,
     },
   };
+
+  // Serialize a server React tree node to JSON.
+  function stringifyNodeOnServer(key, val) {
+    if (val != null && val.$$typeof === Symbol.for('react.element')) {
+      // Remove fake MDX props.
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const {mdxType, originalType, parentName, ...cleanProps} = val.props;
+      return [
+        '$r',
+        typeof val.type === 'string' ? val.type : mdxType,
+        val.key,
+        cleanProps,
+      ];
+    } else {
+      return val;
+    }
+  }
+
+  // Cache it on the disk.
+  await store.set(hash, output);
+  return output;
 }
 
 // Collect all MDX files for static generation.
@@ -159,7 +225,7 @@ export async function getStaticPaths() {
   // 'foo/bar/baz.md' -> ['foo', 'bar', 'baz']
   // 'foo/bar/qux/index.md' -> ['foo', 'bar', 'qux']
   function getSegments(file) {
-    let segments = file.slice(0, -3).split('/');
+    let segments = file.slice(0, -3).replace(/\\/g, '/').split('/');
     if (segments[segments.length - 1] === 'index') {
       segments.pop();
     }
