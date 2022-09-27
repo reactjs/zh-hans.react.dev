@@ -37,7 +37,11 @@ translators:
 
 `<article>` 表示这篇文章，`<h1>` 表示文章的标题，`<ol>` 以有序列表的形式表示文章的（缩写的）目录。每一个侧边栏、头像、模态框、下拉框的背后是都是像这样的（结合了用于样式的 CSS 和用于交互的 JavaScript的）标记——你在 Web 上看到的每一个 UI 模块。
 
+<<<<<<< HEAD
 React 允许你将标记、CSS 和 JavaScript 组合成自定义“组件”，即**应用程序中可复用的 UI 元素。** 上文中表示目录的代码可以改写成一个能够在每个页面中渲染的 `<TableOfContents />` 组件。实际上，使用的依然是 `<article>`、`<h1>` 等相同的 HTML 标签。
+=======
+React lets you combine your markup, CSS, and JavaScript into custom "components", **reusable UI elements for your app.** The table of contents code you saw above could be turned into a `<TableOfContents />` component you could render on every page. Under the hood, it still uses the same HTML tags like `<article>`, `<h1>`, etc.
+>>>>>>> ea5810b7b5476cc53f7ba223df67938e3decac9b
 
 就像使用 HTML 标签一样，你可以组合、排序和嵌套组件来绘制整个页面。例如，你正在阅读的文档页面就是由 React 组件构成的：
 
@@ -55,11 +59,19 @@ React 允许你将标记、CSS 和 JavaScript 组合成自定义“组件”，�
 </PageLayout>
 ```
 
+<<<<<<< HEAD
 随着项目的发展，你会发现很多布局可以通过复用已经完成的组件来实现，从而加快开发进程。上文中提到的目录可以通过 `<TableOfContents />` 组件添加到任意的画面中！你也可以使用 React 开源社区分享的大量组件（例如 [Chakra UI](https://chakra-ui.com/) 和 [Material UI](https://material-ui.com/)）来快速启动项目。
+=======
+As your project grows, you will notice that many of your designs can be composed by reusing components you already wrote, speeding up your development. Our table of contents above could be added to any screen with `<TableOfContents />`! You can even jumpstart your project with the thousands of components shared by the React open source community like [Chakra UI](https://chakra-ui.com/) and [Material UI.](https://material-ui.com/)
+>>>>>>> ea5810b7b5476cc53f7ba223df67938e3decac9b
 
 ## 定义组件 {/*defining-a-component*/}
 
+<<<<<<< HEAD
 一直以来，创建网页时，Web 开发人员会用标记描述内容，然后通过 JavaScript 来增加交互。这种在 Web 上添加交互的方式能产生出色的效果。现在许多网站和全部应用都需要交互。React 最为重视交互性且使用了相同的处理方式：** React 组件是一段可以 使用标记进行扩展 的 JavaScript 函数**。如下所示（你可以编辑下面的示例）：
+=======
+Traditionally when creating web pages, web developers marked up their content and then added interaction by sprinkling on some JavaScript. This worked great when interaction was a nice-to-have on the web. Now it is expected for many sites and all apps. React puts interactivity first while still using the same technology: **a React component is a JavaScript function that you can _sprinkle with markup_.** Here's what that looks like (you can edit the example below):
+>>>>>>> ea5810b7b5476cc53f7ba223df67938e3decac9b
 
 <Sandpack>
 
@@ -176,11 +188,19 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 ### 嵌套和组织组件 {/*nesting-and-organizing-components*/}
 
+<<<<<<< HEAD
 组件是常规的 JavaScript 函数，所以你可以将多个组件保存在同一份文件中。当组件相对较小或彼此紧密相关时，这是一种省事的处理方式。如果这个文件变得臃肿，你也可以随时将 `Profile` 移动到单独的文件中。你可以立即在 [关于引入的页面](/learn/importing-and-exporting-components) 中学习如何做到这些。
+=======
+Components are regular JavaScript functions, so you can keep multiple components in the same file. This is convenient when components are relatively small or tightly related to each other. If this file gets crowded, you can always move `Profile` to a separate file. You will learn how to do this shortly on the [page about imports.](/learn/importing-and-exporting-components)
+>>>>>>> ea5810b7b5476cc53f7ba223df67938e3decac9b
 
 因为 `Profile` 组件在 `Gallery` 组件中渲染——甚至好几次！——我们可以认为 `Gallery` 是一个 **父组件，** 将每个 `Profile` 渲染为一个“孩子”。这是 React 的神奇之处：你可以只定义组件一次，然后按需多处和多次使用。
 
+<<<<<<< HEAD
 <DeepDive title="只有组件">
+=======
+<DeepDive title="Components all the way down">
+>>>>>>> ea5810b7b5476cc53f7ba223df67938e3decac9b
 
 你的 React 应用程序从“根”组件开始。通常，它会在启动新项目时自动创建。例如，如果你使用 [CodeSandbox](https://codesandbox.io/) 或 [Create React App](https://create-react-app.dev/)，根组件定义在 `src/App.js` 中。如果使用 [Next.js](https://nextjs.org/) 框架，根组件定义在 `pages/index.js` 中。在这些示例中，一直有导出根组件。
 
@@ -188,7 +208,11 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 像 Next.js 这样的框架会做更多事情。与使用一个空白的 HTML 页面并让 React 使用 JavaScript “接手”管理页面不同，框架 *还会* 根据你的 React 组件自动生成 HTML。这使你的应用程序在加载 JavaScript 代码之前能够展示一些内容。
 
+<<<<<<< HEAD
 尽管如此，许多网站仅使用 React 来 [添加“交互性”](/learn/add-react-to-a-website)。它们有很多根组件，而不是整个页面的单个组件。你可以根据需要尽可能多或尽可能少地使用 React。
+=======
+Still, many websites only use React to [add "sprinkles of interactivity".](/learn/add-react-to-a-website) They have many root components instead of a single one for the entire page. You can use as much—or as little—React as you need.
+>>>>>>> ea5810b7b5476cc53f7ba223df67938e3decac9b
 
 </DeepDive>
 
@@ -257,7 +281,11 @@ img { height: 181px; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 你可能想知道为什么单独写 `export` 不足以解决这个问题。你可以在 [引入和导出组件](/learn/importing-and-exporting-components) 中了解 `export` 和 `export default` 两者之间的区别。
+=======
+You might be wondering why writing `export` alone is not enough to fix this example. You can learn the difference between `export` and `export default` in [Importing and Exporting Components.](/learn/importing-and-exporting-components)
+>>>>>>> ea5810b7b5476cc53f7ba223df67938e3decac9b
 
 </Solution>
 

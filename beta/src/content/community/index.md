@@ -10,13 +10,17 @@ React 拥有数百万开发者的社区。本章节将为你列出一些与 Reac
 
 ## 行为准则 {/*code-of-conduct*/}
 
+<<<<<<< HEAD
 在参与 React 社区前，[请阅读我们的行为准则](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md)。我们制订了 [贡献者公约](https://www.contributor-covenant.org/)，我们希望所有社区成员都能遵守其中的准则。
+=======
+Before participating in React's communities, [please read our Code of Conduct.](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md) We have adopted the [Contributor Covenant](https://www.contributor-covenant.org/) and we expect that all community members adhere to the guidelines within.
+>>>>>>> ea5810b7b5476cc53f7ba223df67938e3decac9b
 
 ## Stack Overflow {/*stack-overflow*/}
 
 Stack Overflow 是非常受欢迎的论坛，在论坛中，你可以提出代码层面的问题，甚至是你工作中的疑难杂症。提问前，请先阅读标有 **reactjs** 的 [已有问题](https://stackoverflow.com/questions/tagged/reactjs)，如未找到你需要的答案，[再自行提问](https://stackoverflow.com/questions/ask?tags=reactjs)！
 
-<!--
+{/*
 
 TODO: decide on the criteria for inclusion before uncommenting. (Change Popular Discussion Forums into heading while un-commenting)
 
@@ -31,7 +35,7 @@ TODO: decide on the criteria for inclusion before uncommenting. (Change Popular 
 * [Reactiflux online chat](https://discord.gg/reactiflux)
 * [Reddit's React community](https://www.reddit.com/r/reactjs/)
 
--->
+*/}
 
 ## 新闻 {/*news*/}
 
