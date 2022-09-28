@@ -57,9 +57,6 @@ May, 2023. Salt Lake City, UT
 
 [Website](https://remix.run/conf/2023) - [Twitter](https://twitter.com/remix_run)
 
-<<<<<<< HEAD
-## 往届会议 {#past-conferences}
-=======
 ### Render(ATL) 2023 🍑 {#render-atlanta-2023} 
 May 31 - June 2, 2023. Atlanta, GA, USA
 
@@ -70,8 +67,7 @@ June 2 & 6, 2023. In-person in Amsterdam, Netherlands + remote first interactivi
 
 [Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
 
-## Past Conferences {#past-conferences}
->>>>>>> ea5810b7b5476cc53f7ba223df67938e3decac9b
+## 往届会议 {#past-conferences}
 
 ### React Finland 2022 {#react-finland-2022}
 September 12 - 16, 2022. In-person in Helsinki, Finland

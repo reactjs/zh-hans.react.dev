@@ -237,15 +237,7 @@ For example, `TaskApp` passes a list of tasks and the event handlers to `TaskLis
 
 在像这样的小示例里这样做没什么问题，但是如果你有成千上百个组件，传递所有状态和函数可能会非常麻烦！
 
-<<<<<<< HEAD
-<!--(TODO: illustration of prop drilling)-->
-
 这就是为什么，比起通过 props 传递它们，你可能想把 `tasks` 状态和 `dispatch` 函数都 [放入 context](/learn/passing-data-deeply-with-context)。**这样，所有的在 `TaskApp` 组件树之下的组件都不必一直往下传 props 而可以直接读取 tasks 和 dispatch 函数**。
-
-<!--(TODO: illustration of context)-->
-=======
-This is why, as an alternative to passing them through props, you might want to put both the `tasks` state and the `dispatch` function [into context.](/learn/passing-data-deeply-with-context) **This way, any component below `TaskApp` in the tree can read the tasks and dispatch actions without the repetitive "prop drilling".**
->>>>>>> ea5810b7b5476cc53f7ba223df67938e3decac9b
 
 下面将介绍如何结合使用 reducer 和 context：
 
@@ -1356,11 +1348,7 @@ ul, li { margin: 0; padding: 0; }
 
 你可以将 `TasksProvider` 视为页面的一部分，它知道如何处理 tasks。`useTasks` 用来读取它们，`useTasksDispatch` 用来从组件树下的任何组件更新它们。
 
-<<<<<<< HEAD
 > 像 `useTasks` 和 `useTasksDispatch` 这样的函数被称为 **[自定义 Hook](/learn/reusing-logic-with-custom-hooks)。** 如果你的函数名以 `use` 开头，它就被认为是一个自定义 Hook。这让你可以使用其他 Hook，比如 `useContext`。
-=======
-> Functions like `useTasks` and `useTasksDispatch` are called **[Custom Hooks.](/learn/reusing-logic-with-custom-hooks)** Your function is considered a custom Hook if its name starts with `use`. This lets you use other Hooks, like `useContext`, inside it.
->>>>>>> ea5810b7b5476cc53f7ba223df67938e3decac9b
 
 随着应用的增长，你可能会有许多这样的 context 和 reducer 的组合。这是一种强大的拓展应用并 [提升状态](/learn/sharing-state-between-components) 的方式，让你在组件树深处访问数据时无需进行太多工作。
 
