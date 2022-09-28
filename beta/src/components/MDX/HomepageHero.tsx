@@ -2,7 +2,6 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import * as React from 'react';
 import {Logo} from 'components/Logo';
 import YouWillLearnCard from 'components/MDX/YouWillLearnCard';
 
@@ -28,10 +27,7 @@ function HomepageHero() {
         </div>
         <div className="flex flex-col justify-center">
           <YouWillLearnCard title="API Reference" path="/apis/react">
-            <p>
-              查阅 React Hooks 的 API
-              签名，并通过可视化的代码图解来学习如何使用。
-            </p>
+            <p>查阅 React Hooks 的 API， 并通过可视化代码块来学习如何使用。</p>
           </YouWillLearnCard>
         </div>
       </section>

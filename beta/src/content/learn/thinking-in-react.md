@@ -9,7 +9,7 @@ translators:
 
 <Intro>
 
-React 可以改变你对可见设计和应用构建的思考。打个比方，或许你对成片的森林赞不绝口，使用了 React 之后，你赞叹于其中的每一棵树都光彩夺目。使用 React 使得设计用户视图、管理系统状态变得更容易。在本篇教程中，我们将带你领略使用 React 构建可搜索产品数据表格的全过程。
+React 可以改变你对可见设计和应用构建的思考。当你使用 React 构建用户界面时，你首先会把它分解成一个个 **组件**，然后，你需要把这些组件连接在一起，使数据流经它们。在本教程中，我们将引导你使用 React 构建一个可搜索的产品数据表。
 
 </Intro>
 
@@ -440,6 +440,14 @@ td {
 
 </Sandpack>
 
+注意，编辑表单还不能正常工作，在上面的 sandbox 中，有一个控制台的报错，解释了原因：
+
+<ConsoleBlock level="error">
+
+You provided a \`value\` prop to a form field without an \`onChange\` handler. This will render a read-only field.
+
+</ConsoleBlock>
+
 在上面的沙盒中，`ProductTable` 和 `SearchBar` 读取 `filterText` 和 `inStockOnly` props 以渲染表格、输入、复选框。举个例子，这里展示了 `SearchBar` 如何填充输入的值:
 
 ```js {1,6}
@@ -452,8 +460,7 @@ function SearchBar({ filterText, inStockOnly }) {
         placeholder="Search..."/>
 ```
 
-
-参照 [管理 State](/learn/managing-state) 去深度了解 React 如何使用 state ，如何在你的应用程序中组织。
+然而，你还没有添加任何代码来响应用户的动作，如输入文案，这将是你应做的最后一步。
 
 ## 步骤五: 添加反向数据流 {/*step-5-add-inverse-data-flow*/}
 

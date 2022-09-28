@@ -59,7 +59,7 @@ React 允许你将标记、CSS 和 JavaScript 组合成自定义“组件”，�
 
 ## 定义组件 {/*defining-a-component*/}
 
-一直以来，创建网页时，Web 开发人员会用标记描述内容，然后通过 JavaScript 来增加交互。这种在 Web 上添加交互的方式能产生出色的效果。现在许多网站和全部应用都需要交互。React 最为重视交互性且使用了相同的处理方式：** React 组件是一段可以 使用标记进行扩展 的 JavaScript 函数**。如下所示（你可以编辑下面的示例）：
+一直以来，创建网页时，Web 开发人员会用标记描述内容，然后通过 JavaScript 来增加交互。这种在 Web 上添加交互的方式能产生出色的效果。现在许多网站和全部应用都需要交互。React 最为重视交互性且使用了相同的处理方式：**React 组件是一段可以 使用标记进行扩展 的 JavaScript 函数**。如下所示（你可以编辑下面的示例）：
 
 <Sandpack>
 
@@ -180,7 +180,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 因为 `Profile` 组件在 `Gallery` 组件中渲染——甚至好几次！——我们可以认为 `Gallery` 是一个 **父组件，** 将每个 `Profile` 渲染为一个“孩子”。这是 React 的神奇之处：你可以只定义组件一次，然后按需多处和多次使用。
 
-<DeepDive title="只有组件">
+<DeepDive title="万物皆组件">
 
 你的 React 应用程序从“根”组件开始。通常，它会在启动新项目时自动创建。例如，如果你使用 [CodeSandbox](https://codesandbox.io/) 或 [Create React App](https://create-react-app.dev/)，根组件定义在 `src/App.js` 中。如果使用 [Next.js](https://nextjs.org/) 框架，根组件定义在 `pages/index.js` 中。在这些示例中，一直有导出根组件。
 

@@ -65,7 +65,7 @@ But as the Web became more interactive, logic increasingly determined content. J
 
 <Note>
 
-[JSX and React 是相互独立的](/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform) 你 _可以_ 单独使用它们中的任意一个。
+[JSX and React 是相互独立的](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform) 东西。但它们经常一起使用，但你 _可以_ 单独使用它们中的任意一个，JSX 是一种语法扩展，而 React 则是一个 JavaScript 的库。
 
 </Note>
 
@@ -174,11 +174,11 @@ img { height: 90px }
 </>
 ```
 
-这个空标签被称作 *[React fragment](TODO)*. React fragments 允许你将子元素分组，而不会在 HTML 结构中添加额外节点。
+这个空标签被称作 *[Fragment](/apis/react/Fragment)*. React Fragment 允许你将子元素分组，而不会在 HTML 结构中添加额外节点。
 
 <DeepDive title="为什么多个 JSX 标签需要被一个父元素包裹？">
 
-JSX 虽然看起来很像 HTML，但在底层其实被转化为了 JavaScript 对象，你不能在一个函数中返回多个对象，除非用一个数组把他们包装起来。这就是为什么多个 JSX 标签必须要用一个父元素或者 fragment 来包裹。
+JSX 虽然看起来很像 HTML，但在底层其实被转化为了 JavaScript 对象，你不能在一个函数中返回多个对象，除非用一个数组把他们包装起来。这就是为什么多个 JSX 标签必须要用一个父元素或者 Fragment 来包裹。
 
 </DeepDive>
 

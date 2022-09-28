@@ -28,7 +28,7 @@ translators:
 <Sandpack>
 
 ```js App.js
-import { useState } from 'react';
+import {useState} from 'react';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 
@@ -36,35 +36,36 @@ export default function TaskApp() {
   const [tasks, setTasks] = useState(initialTasks);
 
   function handleAddTask(text) {
-    setTasks([...tasks, {
-      id: nextId++,
-      text: text,
-      done: false
-    }]);
+    setTasks([
+      ...tasks,
+      {
+        id: nextId++,
+        text: text,
+        done: false,
+      },
+    ]);
   }
 
   function handleChangeTask(task) {
-    setTasks(tasks.map(t => {
-      if (t.id === task.id) {
-        return task;
-      } else {
-        return t;
-      }
-    }));
+    setTasks(
+      tasks.map((t) => {
+        if (t.id === task.id) {
+          return task;
+        } else {
+          return t;
+        }
+      })
+    );
   }
 
   function handleDeleteTask(taskId) {
-    setTasks(
-      tasks.filter(t => t.id !== taskId)
-    );
+    setTasks(tasks.filter((t) => t.id !== taskId));
   }
 
   return (
     <>
       <h1>布拉格的行程安排</h1>
-      <AddTask
-        onAddTask={handleAddTask}
-      />
+      <AddTask onAddTask={handleAddTask} />
       <TaskList
         tasks={tasks}
         onChangeTask={handleChangeTask}
@@ -76,57 +77,52 @@ export default function TaskApp() {
 
 let nextId = 3;
 const initialTasks = [
-  { id: 0, text: '参观卡夫卡博物馆', done: true },
-  { id: 1, text: '看木偶戏', done: false },
-  { id: 2, text: '打卡列侬墙', done: false },
+  {id: 0, text: '参观卡夫卡博物馆', done: true},
+  {id: 1, text: '看木偶戏', done: false},
+  {id: 2, text: '打卡列侬墙', done: false},
 ];
 ```
 
 ```js AddTask.js hidden
-import { useState } from 'react';
+import {useState} from 'react';
 
-export default function AddTask({ onAddTask }) {
+export default function AddTask({onAddTask}) {
   const [text, setText] = useState('');
   return (
     <>
       <input
         placeholder="添加任务"
         value={text}
-        onChange={e => setText(e.target.value)}
+        onChange={(e) => setText(e.target.value)}
       />
-      <button onClick={() => {
-        setText('');
-        onAddTask(text);
-      }}>添加</button>
+      <button
+        onClick={() => {
+          setText('');
+          onAddTask(text);
+        }}>
+        添加
+      </button>
     </>
-  )
+  );
 }
 ```
 
 ```js TaskList.js hidden
-import { useState } from 'react';
+import {useState} from 'react';
 
-export default function TaskList({
-  tasks,
-  onChangeTask,
-  onDeleteTask
-}) {
+export default function TaskList({tasks, onChangeTask, onDeleteTask}) {
   return (
     <ul>
-      {tasks.map(task => (
+      {tasks.map((task) => (
         <li key={task.id}>
-          <Task
-            task={task}
-            onChange={onChangeTask}
-            onDelete={onDeleteTask}
-          />
+          <Task task={task} onChange={onChangeTask} onDelete={onDeleteTask} />
         </li>
       ))}
     </ul>
   );
 }
 
-function Task({ task, onChange, onDelete }) {
+function Task({task, onChange, onDelete}) {
   const [isEditing, setIsEditing] = useState(false);
   let taskContent;
   if (isEditing) {
@@ -134,24 +130,21 @@ function Task({ task, onChange, onDelete }) {
       <>
         <input
           value={task.text}
-          onChange={e => {
+          onChange={(e) => {
             onChange({
               ...task,
-              text: e.target.value
+              text: e.target.value,
             });
-          }} />
-        <button onClick={() => setIsEditing(false)}>
-          保存
-        </button>
+          }}
+        />
+        <button onClick={() => setIsEditing(false)}>保存</button>
       </>
     );
   } else {
     taskContent = (
       <>
         {task.text}
-        <button onClick={() => setIsEditing(true)}>
-          编辑
-        </button>
+        <button onClick={() => setIsEditing(true)}>编辑</button>
       </>
     );
   }
@@ -160,26 +153,32 @@ function Task({ task, onChange, onDelete }) {
       <input
         type="checkbox"
         checked={task.done}
-        onChange={e => {
+        onChange={(e) => {
           onChange({
             ...task,
-            done: e.target.checked
+            done: e.target.checked,
           });
         }}
       />
       {taskContent}
-      <button onClick={() => onDelete(task.id)}>
-        删除
-      </button>
+      <button onClick={() => onDelete(task.id)}>删除</button>
     </label>
   );
 }
 ```
 
 ```css
-button { margin: 5px; }
-li { list-style-type: none; }
-ul, li { margin: 0; padding: 0; }
+button {
+  margin: 5px;
+}
+li {
+  list-style-type: none;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
 ```
 
 </Sandpack>
@@ -194,39 +193,42 @@ Reducer 是处理状态的另一种方式。你可以通过三个步骤将 `useS
 
 ### 第 1 步: 将设置状态的逻辑修改成 dispatch 一个 action {/*step-1-move-from-setting-state-to-dispatching-actions*/}
 
-你的事件处理程序目前是通过设置状态来实现逻辑的：
+你的事件处理程序目前是通过设置状态来 **实现逻辑的**：
 
 ```js
 function handleAddTask(text) {
-  setTasks([...tasks, {
-    id: nextId++,
-    text: text,
-    done: false
-  }]);
+  setTasks([
+    ...tasks,
+    {
+      id: nextId++,
+      text: text,
+      done: false,
+    },
+  ]);
 }
 
 function handleChangeTask(task) {
-  setTasks(tasks.map(t => {
-    if (t.id === task.id) {
-      return task;
-    } else {
-      return t;
-    }
-  }));
+  setTasks(
+    tasks.map((t) => {
+      if (t.id === task.id) {
+        return task;
+      } else {
+        return t;
+      }
+    })
+  );
 }
 
 function handleDeleteTask(taskId) {
-  setTasks(
-    tasks.filter(t => t.id !== taskId)
-  );
+  setTasks(tasks.filter((t) => t.id !== taskId));
 }
 ```
 
 移除所有的状态设置逻辑。只留下三个事件处理函数：
 
-* `handleAddTask(text)` 在用户点击 “添加” 时被调用。
-* `handleChangeTask(task)` 在用户切换任务或点击 “保存” 时被调用。
-* `handleDeleteTask(taskId)` 在用户点击 “删除” 时被调用。
+- `handleAddTask(text)` 在用户点击 “添加” 时被调用。
+- `handleChangeTask(task)` 在用户切换任务或点击 “保存” 时被调用。
+- `handleDeleteTask(taskId)` 在用户点击 “删除” 时被调用。
 
 使用 reducers 管理状态与直接设置状态略有不同。它不是通过设置状态来告诉 React “要做什么”，而是通过事件处理程序 dispatch 一个 “action” 来指明 “用户刚刚做了什么”。（而状态更新逻辑则保存在其他地方！）因此，我们不再通过事件处理器直接 “设置 `task`”，而是 dispatch 一个 “添加/修改/删除任务” 的 action。这更加符合用户的思维。
 
@@ -242,14 +244,14 @@ function handleAddTask(text) {
 function handleChangeTask(task) {
   dispatch({
     type: 'changed',
-    task: task
+    task: task,
   });
 }
 
 function handleDeleteTask(taskId) {
   dispatch({
     type: 'deleted',
-    id: taskId
+    id: taskId,
   });
 }
 ```
@@ -262,7 +264,7 @@ function handleDeleteTask(taskId) {
     // "action" 对象：
     {
       type: 'deleted',
-      id: taskId
+      id: taskId,
     }
   );
 }
@@ -300,20 +302,23 @@ React 会将状态设置为你从 reducer 返回的状态。
 
 1. 声明当前状态（`tasks`）作为第一个参数；
 2. 声明 `action` 对象作为第二个参数；
-3. 从 `reducer` 返回 *下一个* 状态（React 会将旧的状态设置为这个最新的状态）。
+3. 从 `reducer` 返回 **下一个** 状态（React 会将旧的状态设置为这个最新的状态）。
 
 下面是所有迁移到 `reducer` 函数的状态设置逻辑：
 
 ```js
 function tasksReducer(tasks, action) {
   if (action.type === 'added') {
-    return [...tasks, {
-      id: action.id,
-      text: action.text,
-      done: false
-    }];
+    return [
+      ...tasks,
+      {
+        id: action.id,
+        text: action.text,
+        done: false,
+      },
+    ];
   } else if (action.type === 'changed') {
-    return tasks.map(t => {
+    return tasks.map((t) => {
       if (t.id === action.task.id) {
         return action.task;
       } else {
@@ -321,7 +326,7 @@ function tasksReducer(tasks, action) {
       }
     });
   } else if (action.type === 'deleted') {
-    return tasks.filter(t => t.id !== action.id);
+    return tasks.filter((t) => t.id !== action.id);
   } else {
     throw Error('未知 action: ' + action.type);
   }
@@ -338,14 +343,17 @@ function tasksReducer(tasks, action) {
 function tasksReducer(tasks, action) {
   switch (action.type) {
     case 'added': {
-      return [...tasks, {
-        id: action.id,
-        text: action.text,
-        done: false
-      }];
+      return [
+        ...tasks,
+        {
+          id: action.id,
+          text: action.text,
+          done: false,
+        },
+      ];
     }
     case 'changed': {
-      return tasks.map(t => {
+      return tasks.map((t) => {
         if (t.id === action.task.id) {
           return action.task;
         } else {
@@ -354,7 +362,7 @@ function tasksReducer(tasks, action) {
       });
     }
     case 'deleted': {
-      return tasks.filter(t => t.id !== action.id);
+      return tasks.filter((t) => t.id !== action.id);
     }
     default: {
       throw Error('未知 action: ' + action.type);
@@ -368,7 +376,6 @@ function tasksReducer(tasks, action) {
 如果你还不熟悉 `switch` 语句，使用 `if/else` 也是可以的。
 
 </Convention>
-
 
 <DeepDive title="为什么叫它 reducer 呢？">
 
@@ -394,40 +401,33 @@ import tasksReducer from './tasksReducer.js';
 
 let initialState = [];
 let actions = [
-  { type: 'added', id: 1, text: '参观卡夫卡博物馆' },
-  { type: 'added', id: 2, text: '看木偶戏' },
-  { type: 'deleted', id: 1 },
-  { type: 'added', id: 3, text: '打卡列侬墙' },
+  {type: 'added', id: 1, text: '参观卡夫卡博物馆'},
+  {type: 'added', id: 2, text: '看木偶戏'},
+  {type: 'deleted', id: 1},
+  {type: 'added', id: 3, text: '打卡列侬墙'},
 ];
 
-let finalState = actions.reduce(
-  tasksReducer,
-  initialState
-);
+let finalState = actions.reduce(tasksReducer, initialState);
 
 const output = document.getElementById('output');
-output.textContent = JSON.stringify(
-  finalState,
-  null,
-  2
-);
+output.textContent = JSON.stringify(finalState, null, 2);
 ```
 
 ```js tasksReducer.js
-export default function tasksReducer(
-  tasks,
-  action
-) {
+export default function tasksReducer(tasks, action) {
   switch (action.type) {
     case 'added': {
-      return [...tasks, {
-        id: action.id,
-        text: action.text,
-        done: false
-      }];
+      return [
+        ...tasks,
+        {
+          id: action.id,
+          text: action.text,
+          done: false,
+        },
+      ];
     }
     case 'changed': {
-      return tasks.map(t => {
+      return tasks.map((t) => {
         if (t.id === action.task.id) {
           return action.task;
         } else {
@@ -436,7 +436,7 @@ export default function tasksReducer(
       });
     }
     case 'deleted': {
-      return tasks.filter(t => t.id !== action.id);
+      return tasks.filter((t) => t.id !== action.id);
     }
     default: {
       throw Error('未知 action: ' + action.type);
@@ -460,7 +460,7 @@ export default function tasksReducer(
 最后，你需要将 `tasksReducer` 导入到组件中。记得先从 React 中导入 `useReducer` Hook：
 
 ```js
-import { useReducer } from 'react';
+import {useReducer} from 'react';
 ```
 
 Then you can replace `useState`:
@@ -492,15 +492,12 @@ const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 <Sandpack>
 
 ```js App.js
-import { useReducer } from 'react';
+import {useReducer} from 'react';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 
 export default function TaskApp() {
-  const [tasks, dispatch] = useReducer(
-    tasksReducer,
-    initialTasks
-  );
+  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 
   function handleAddTask(text) {
     dispatch({
@@ -513,23 +510,21 @@ export default function TaskApp() {
   function handleChangeTask(task) {
     dispatch({
       type: 'changed',
-      task: task
+      task: task,
     });
   }
 
   function handleDeleteTask(taskId) {
     dispatch({
       type: 'deleted',
-      id: taskId
+      id: taskId,
     });
   }
 
   return (
     <>
       <h1>布拉格的行程安排</h1>
-      <AddTask
-        onAddTask={handleAddTask}
-      />
+      <AddTask onAddTask={handleAddTask} />
       <TaskList
         tasks={tasks}
         onChangeTask={handleChangeTask}
@@ -542,14 +537,17 @@ export default function TaskApp() {
 function tasksReducer(tasks, action) {
   switch (action.type) {
     case 'added': {
-      return [...tasks, {
-        id: action.id,
-        text: action.text,
-        done: false
-      }];
+      return [
+        ...tasks,
+        {
+          id: action.id,
+          text: action.text,
+          done: false,
+        },
+      ];
     }
     case 'changed': {
-      return tasks.map(t => {
+      return tasks.map((t) => {
         if (t.id === action.task.id) {
           return action.task;
         } else {
@@ -558,7 +556,7 @@ function tasksReducer(tasks, action) {
       });
     }
     case 'deleted': {
-      return tasks.filter(t => t.id !== action.id);
+      return tasks.filter((t) => t.id !== action.id);
     }
     default: {
       throw Error('未知 action: ' + action.type);
@@ -568,57 +566,52 @@ function tasksReducer(tasks, action) {
 
 let nextId = 3;
 const initialTasks = [
-  { id: 0, text: '参观卡夫卡博物馆', done: true },
-  { id: 1, text: '看木偶戏', done: false },
-  { id: 2, text: '打卡列侬墙', done: false }
+  {id: 0, text: '参观卡夫卡博物馆', done: true},
+  {id: 1, text: '看木偶戏', done: false},
+  {id: 2, text: '打卡列侬墙', done: false}
 ];
 ```
 
 ```js AddTask.js hidden
-import { useState } from 'react';
+import {useState} from 'react';
 
-export default function AddTask({ onAddTask }) {
+export default function AddTask({onAddTask}) {
   const [text, setText] = useState('');
   return (
     <>
       <input
         placeholder="添加任务"
         value={text}
-        onChange={e => setText(e.target.value)}
+        onChange={(e) => setText(e.target.value)}
       />
-      <button onClick={() => {
-        setText('');
-        onAddTask(text);
-      }}>添加</button>
+      <button
+        onClick={() => {
+          setText('');
+          onAddTask(text);
+        }}>
+        添加
+      </button>
     </>
-  )
+  );
 }
 ```
 
 ```js TaskList.js hidden
-import { useState } from 'react';
+import {useState} from 'react';
 
-export default function TaskList({
-  tasks,
-  onChangeTask,
-  onDeleteTask
-}) {
+export default function TaskList({tasks, onChangeTask, onDeleteTask}) {
   return (
     <ul>
-      {tasks.map(task => (
+      {tasks.map((task) => (
         <li key={task.id}>
-          <Task
-            task={task}
-            onChange={onChangeTask}
-            onDelete={onDeleteTask}
-          />
+          <Task task={task} onChange={onChangeTask} onDelete={onDeleteTask} />
         </li>
       ))}
     </ul>
   );
 }
 
-function Task({ task, onChange, onDelete }) {
+function Task({task, onChange, onDelete}) {
   const [isEditing, setIsEditing] = useState(false);
   let taskContent;
   if (isEditing) {
@@ -626,24 +619,21 @@ function Task({ task, onChange, onDelete }) {
       <>
         <input
           value={task.text}
-          onChange={e => {
+          onChange={(e) => {
             onChange({
               ...task,
-              text: e.target.value
+              text: e.target.value,
             });
-          }} />
-        <button onClick={() => setIsEditing(false)}>
-          保存
-        </button>
+          }}
+        />
+        <button onClick={() => setIsEditing(false)}>保存</button>
       </>
     );
   } else {
     taskContent = (
       <>
         {task.text}
-        <button onClick={() => setIsEditing(true)}>
-          编辑
-        </button>
+        <button onClick={() => setIsEditing(true)}>编辑</button>
       </>
     );
   }
@@ -652,26 +642,32 @@ function Task({ task, onChange, onDelete }) {
       <input
         type="checkbox"
         checked={task.done}
-        onChange={e => {
+        onChange={(e) => {
           onChange({
             ...task,
-            done: e.target.checked
+            done: e.target.checked,
           });
         }}
       />
       {taskContent}
-      <button onClick={() => onDelete(task.id)}>
-        删除
-      </button>
+      <button onClick={() => onDelete(task.id)}>删除</button>
     </label>
   );
 }
 ```
 
 ```css
-button { margin: 5px; }
-li { list-style-type: none; }
-ul, li { margin: 0; padding: 0; }
+button {
+  margin: 5px;
+}
+li {
+  list-style-type: none;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
 ```
 
 </Sandpack>
@@ -681,16 +677,13 @@ ul, li { margin: 0; padding: 0; }
 <Sandpack>
 
 ```js App.js
-import { useReducer } from 'react';
+import {useReducer} from 'react';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 import tasksReducer from './tasksReducer.js';
 
 export default function TaskApp() {
-  const [tasks, dispatch] = useReducer(
-    tasksReducer,
-    initialTasks
-  );
+  const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 
   function handleAddTask(text) {
     dispatch({
@@ -703,23 +696,21 @@ export default function TaskApp() {
   function handleChangeTask(task) {
     dispatch({
       type: 'changed',
-      task: task
+      task: task,
     });
   }
 
   function handleDeleteTask(taskId) {
     dispatch({
       type: 'deleted',
-      id: taskId
+      id: taskId,
     });
   }
 
   return (
     <>
       <h1>布拉格的行程安排</h1>
-      <AddTask
-        onAddTask={handleAddTask}
-      />
+      <AddTask onAddTask={handleAddTask} />
       <TaskList
         tasks={tasks}
         onChangeTask={handleChangeTask}
@@ -731,27 +722,27 @@ export default function TaskApp() {
 
 let nextId = 3;
 const initialTasks = [
-  { id: 0, text: '参观卡夫卡博物馆', done: true },
-  { id: 1, text: '看木偶戏', done: false },
-  { id: 2, text: '打卡列侬墙', done: false },
+  {id: 0, text: '参观卡夫卡博物馆', done: true},
+  {id: 1, text: '看木偶戏', done: false},
+  {id: 2, text: '打卡列侬墙', done: false},
 ];
 ```
 
 ```js tasksReducer.js
-export default function tasksReducer(
-  tasks,
-  action
-) {
+export default function tasksReducer(tasks, action) {
   switch (action.type) {
     case 'added': {
-      return [...tasks, {
-        id: action.id,
-        text: action.text,
-        done: false
-      }];
+      return [
+        ...tasks,
+        {
+          id: action.id,
+          text: action.text,
+          done: false,
+        },
+      ];
     }
     case 'changed': {
-      return tasks.map(t => {
+      return tasks.map((t) => {
         if (t.id === action.task.id) {
           return action.task;
         } else {
@@ -760,7 +751,7 @@ export default function tasksReducer(
       });
     }
     case 'deleted': {
-      return tasks.filter(t => t.id !== action.id);
+      return tasks.filter((t) => t.id !== action.id);
     }
     default: {
       throw Error('未知 action：' + action.type);
@@ -770,50 +761,45 @@ export default function tasksReducer(
 ```
 
 ```js AddTask.js hidden
-import { useState } from 'react';
+import {useState} from 'react';
 
-export default function AddTask({ onAddTask }) {
+export default function AddTask({onAddTask}) {
   const [text, setText] = useState('');
   return (
     <>
       <input
         placeholder="添加任务"
         value={text}
-        onChange={e => setText(e.target.value)}
+        onChange={(e) => setText(e.target.value)}
       />
-      <button onClick={() => {
-        setText('');
-        onAddTask(text);
-      }}>添加</button>
+      <button
+        onClick={() => {
+          setText('');
+          onAddTask(text);
+        }}>
+        添加
+      </button>
     </>
-  )
+  );
 }
 ```
 
 ```js TaskList.js hidden
-import { useState } from 'react';
+import {useState} from 'react';
 
-export default function TaskList({
-  tasks,
-  onChangeTask,
-  onDeleteTask
-}) {
+export default function TaskList({tasks, onChangeTask, onDeleteTask}) {
   return (
     <ul>
-      {tasks.map(task => (
+      {tasks.map((task) => (
         <li key={task.id}>
-          <Task
-            task={task}
-            onChange={onChangeTask}
-            onDelete={onDeleteTask}
-          />
+          <Task task={task} onChange={onChangeTask} onDelete={onDeleteTask} />
         </li>
       ))}
     </ul>
   );
 }
 
-function Task({ task, onChange, onDelete }) {
+function Task({task, onChange, onDelete}) {
   const [isEditing, setIsEditing] = useState(false);
   let taskContent;
   if (isEditing) {
@@ -821,24 +807,21 @@ function Task({ task, onChange, onDelete }) {
       <>
         <input
           value={task.text}
-          onChange={e => {
+          onChange={(e) => {
             onChange({
               ...task,
-              text: e.target.value
+              text: e.target.value,
             });
-          }} />
-        <button onClick={() => setIsEditing(false)}>
-          保存
-        </button>
+          }}
+        />
+        <button onClick={() => setIsEditing(false)}>Save</button>
       </>
     );
   } else {
     taskContent = (
       <>
         {task.text}
-        <button onClick={() => setIsEditing(true)}>
-          编辑
-        </button>
+        <button onClick={() => setIsEditing(true)}>编辑</button>
       </>
     );
   }
@@ -847,26 +830,32 @@ function Task({ task, onChange, onDelete }) {
       <input
         type="checkbox"
         checked={task.done}
-        onChange={e => {
+        onChange={(e) => {
           onChange({
             ...task,
-            done: e.target.checked
+            done: e.target.checked,
           });
         }}
       />
       {taskContent}
-      <button onClick={() => onDelete(task.id)}>
-        删除
-      </button>
+      <button onClick={() => onDelete(task.id)}>删除</button>
     </label>
   );
 }
 ```
 
 ```css
-button { margin: 5px; }
-li { list-style-type: none; }
-ul, li { margin: 0; padding: 0; }
+button {
+  margin: 5px;
+}
+li {
+  list-style-type: none;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
 ```
 
 </Sandpack>
@@ -889,7 +878,7 @@ Reducers 并非没有缺点！以下是比较它们的几种方法：
 
 编写 `reducers` 时最好牢记以下两点：
 
-* **reducers 必须是纯净的。** 这一点和 [状态更新函数](/learn/queueing-a-series-of-state-updates) 是相似的，`reducers` 在是在渲染时运行的！（actions 会排队直到下一次渲染)。 这就意味着 `reducers` [必须纯净](/learn/keeping-components-pure)，即当输入相同时，输出也是相同的。它们不应该包含异步请求、定时器或者任何副作用（对组件外部有影响的操作）。它们应该以不可变值的方式去更新 [对象](/learn/updating-objects-in-state) 和 [数组](/learn/updating-arrays-in-state)。
+* **reducers 必须是纯粹的。** 这一点和 [状态更新函数](/learn/queueing-a-series-of-state-updates) 是相似的，`reducers` 在是在渲染时运行的！（actions 会排队直到下一次渲染)。 这就意味着 `reducers` [必须纯净](/learn/keeping-components-pure)，即当输入相同时，输出也是相同的。它们不应该包含异步请求、定时器或者任何副作用（对组件外部有影响的操作）。它们应该以不可变值的方式去更新 [对象](/learn/updating-objects-in-state) 和 [数组](/learn/updating-arrays-in-state)。
 * **每个 action 都描述了一个单一的用户交互，即使它会引发数据的多个变化。** 举个例子，如果用户在一个由 `reducer` 管理的表单（包含五个表单项）中点击了 `重置按钮`，那么 dispatch 一个 `reset_form` 的 action 比 dispatch 五个单独的 `set_field` 的 action 更加合理。如果你在一个 `reducer` 中打印了所有的 `action` 日志，那么这个日志应该是很清晰的，它能让你以某种步骤复现已发生的交互或响应。这对代码调试很有帮助！
 
 ## 使用 Immer 简化 reducers {/*writing-concise-reducers-with-immer*/}
@@ -899,7 +888,7 @@ Reducers 并非没有缺点！以下是比较它们的几种方法：
 <Sandpack>
 
 ```js App.js
-import { useImmerReducer } from 'use-immer';
+import {useImmerReducer} from 'use-immer';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 
@@ -909,19 +898,17 @@ function tasksReducer(draft, action) {
       draft.push({
         id: action.id,
         text: action.text,
-        done: false
+        done: false,
       });
       break;
     }
     case 'changed': {
-      const index = draft.findIndex(t =>
-        t.id === action.task.id
-      );
+      const index = draft.findIndex((t) => t.id === action.task.id);
       draft[index] = action.task;
       break;
     }
     case 'deleted': {
-      return draft.filter(t => t.id !== action.id);
+      return draft.filter((t) => t.id !== action.id);
     }
     default: {
       throw Error('未知 action：' + action.type);
@@ -930,10 +917,7 @@ function tasksReducer(draft, action) {
 }
 
 export default function TaskApp() {
-  const [tasks, dispatch] = useImmerReducer(
-    tasksReducer,
-    initialTasks
-  );
+  const [tasks, dispatch] = useImmerReducer(tasksReducer, initialTasks);
 
   function handleAddTask(text) {
     dispatch({
@@ -946,23 +930,21 @@ export default function TaskApp() {
   function handleChangeTask(task) {
     dispatch({
       type: 'changed',
-      task: task
+      task: task,
     });
   }
 
   function handleDeleteTask(taskId) {
     dispatch({
       type: 'deleted',
-      id: taskId
+      id: taskId,
     });
   }
 
   return (
     <>
       <h1>布拉格的行程安排</h1>
-      <AddTask
-        onAddTask={handleAddTask}
-      />
+      <AddTask onAddTask={handleAddTask} />
       <TaskList
         tasks={tasks}
         onChangeTask={handleChangeTask}
@@ -981,50 +963,45 @@ const initialTasks = [
 ```
 
 ```js AddTask.js hidden
-import { useState } from 'react';
+import {useState} from 'react';
 
-export default function AddTask({ onAddTask }) {
+export default function AddTask({onAddTask}) {
   const [text, setText] = useState('');
   return (
     <>
       <input
         placeholder="添加任务"
         value={text}
-        onChange={e => setText(e.target.value)}
+        onChange={(e) => setText(e.target.value)}
       />
-      <button onClick={() => {
-        setText('');
-        onAddTask(text);
-      }}>添加</button>
+      <button
+        onClick={() => {
+          setText('');
+          onAddTask(text);
+        }}>
+        添加
+      </button>
     </>
-  )
+  );
 }
 ```
 
 ```js TaskList.js hidden
-import { useState } from 'react';
+import {useState} from 'react';
 
-export default function TaskList({
-  tasks,
-  onChangeTask,
-  onDeleteTask
-}) {
+export default function TaskList({tasks, onChangeTask, onDeleteTask}) {
   return (
     <ul>
-      {tasks.map(task => (
+      {tasks.map((task) => (
         <li key={task.id}>
-          <Task
-            task={task}
-            onChange={onChangeTask}
-            onDelete={onDeleteTask}
-          />
+          <Task task={task} onChange={onChangeTask} onDelete={onDeleteTask} />
         </li>
       ))}
     </ul>
   );
 }
 
-function Task({ task, onChange, onDelete }) {
+function Task({task, onChange, onDelete}) {
   const [isEditing, setIsEditing] = useState(false);
   let taskContent;
   if (isEditing) {
@@ -1032,24 +1009,21 @@ function Task({ task, onChange, onDelete }) {
       <>
         <input
           value={task.text}
-          onChange={e => {
+          onChange={(e) => {
             onChange({
               ...task,
-              text: e.target.value
+              text: e.target.value,
             });
-          }} />
-        <button onClick={() => setIsEditing(false)}>
-          保存
-        </button>
+          }}
+        />
+        <button onClick={() => setIsEditing(false)}>保存</button>
       </>
     );
   } else {
     taskContent = (
       <>
         {task.text}
-        <button onClick={() => setIsEditing(true)}>
-          编辑
-        </button>
+        <button onClick={() => setIsEditing(true)}>编辑</button>
       </>
     );
   }
@@ -1058,26 +1032,32 @@ function Task({ task, onChange, onDelete }) {
       <input
         type="checkbox"
         checked={task.done}
-        onChange={e => {
+        onChange={(e) => {
           onChange({
             ...task,
-            done: e.target.checked
+            done: e.target.checked,
           });
         }}
       />
       {taskContent}
-      <button onClick={() => onDelete(task.id)}>
-        删除
-      </button>
+      <button onClick={() => onDelete(task.id)}>删除</button>
     </label>
   );
 }
 ```
 
 ```css
-button { margin: 5px; }
-li { list-style-type: none; }
-ul, li { margin: 0; padding: 0; }
+button {
+  margin: 5px;
+}
+li {
+  list-style-type: none;
+}
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
 ```
 
 ```json package.json
@@ -1145,23 +1125,15 @@ case 'changed_selection': {
 <Sandpack>
 
 ```js App.js
-import { useReducer } from 'react';
+import {useReducer} from 'react';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {
-  initialState,
-  messengerReducer
-} from './messengerReducer';
+import {initialState, messengerReducer} from './messengerReducer';
 
 export default function Messenger() {
-  const [state, dispatch] = useReducer(
-    messengerReducer,
-    initialState
-  );
+  const [state, dispatch] = useReducer(messengerReducer, initialState);
   const message = state.message;
-  const contact = contacts.find(c =>
-    c.id === state.selectedId
-  );
+  const contact = contacts.find((c) => c.id === state.selectedId);
   return (
     <div>
       <ContactList
@@ -1180,34 +1152,31 @@ export default function Messenger() {
 }
 
 const contacts = [
-  { id: 0, name: 'Taylor', email: 'taylor@mail.com' },
-  { id: 1, name: 'Alice', email: 'alice@mail.com' },
-  { id: 2, name: 'Bob', email: 'bob@mail.com' }
+  {id: 0, name: 'Taylor', email: 'taylor@mail.com'},
+  {id: 1, name: 'Alice', email: 'alice@mail.com'},
+  {id: 2, name: 'Bob', email: 'bob@mail.com'},
 ];
 ```
 
 ```js messengerReducer.js
 export const initialState = {
   selectedId: 0,
-  message: '你好'
+  message: '你好',
 };
 
-export function messengerReducer(
-  state,
-  action
-) {
+export function messengerReducer(state, action) {
   switch (action.type) {
     case 'changed_selection': {
       return {
         ...state,
         selectedId: action.contactId,
-        message: ''
+        message: '',
       };
     }
     case 'edited_message': {
       return {
         ...state,
-        message: action.message
+        message: action.message,
       };
     }
     default: {
@@ -1218,27 +1187,20 @@ export function messengerReducer(
 ```
 
 ```js ContactList.js
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
+export default function ContactList({contacts, selectedId, dispatch}) {
   return (
     <section className="contact-list">
       <ul>
-        {contacts.map(contact =>
+        {contacts.map((contact) => (
           <li key={contact.id}>
-            <button onClick={() => {
-              // TODO: 派发 changed_selection
-            }}>
-              {selectedId === contact.id ? (
-                <b>{contact.name}</b>
-              ) : (
-                contact.name
-              )}
+            <button
+              onClick={() => {
+                // TODO: dispatch changed_selection
+              }}>
+              {selectedId === contact.id ? <b>{contact.name}</b> : contact.name}
             </button>
           </li>
-        )}
+        ))}
       </ul>
     </section>
   );
@@ -1246,19 +1208,15 @@ export default function ContactList({
 ```
 
 ```js Chat.js
-import { useState } from 'react';
+import {useState} from 'react';
 
-export default function Chat({
-  contact,
-  message,
-  dispatch
-}) {
+export default function Chat({contact, message, dispatch}) {
   return (
     <section className="chat">
       <textarea
         value={message}
         placeholder={'和 ' + contact.name + ' 聊天'}
-        onChange={e => {
+        onChange={(e) => {
           // TODO: 派发 edited_message
           // (从 e.target.value 获取输入框的值)
         }}
@@ -1271,11 +1229,13 @@ export default function Chat({
 ```
 
 ```css
-.chat, .contact-list {
+.chat,
+.contact-list {
   float: left;
   margin-bottom: 20px;
 }
-ul, li {
+ul,
+li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1300,13 +1260,13 @@ textarea {
 // 当用户点击 "Alice"
 dispatch({
   type: 'changed_selection',
-  contactId: 1
+  contactId: 1,
 });
 
 // 当用户输入 "你好！"
 dispatch({
   type: 'edited_message',
-  message: '你好！'
+  message: '你好！',
 });
 ```
 
@@ -1315,23 +1275,15 @@ dispatch({
 <Sandpack>
 
 ```js App.js
-import { useReducer } from 'react';
+import {useReducer} from 'react';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {
-  initialState,
-  messengerReducer
-} from './messengerReducer';
+import {initialState, messengerReducer} from './messengerReducer';
 
 export default function Messenger() {
-  const [state, dispatch] = useReducer(
-    messengerReducer,
-    initialState
-  );
+  const [state, dispatch] = useReducer(messengerReducer, initialState);
   const message = state.message;
-  const contact = contacts.find(c =>
-    c.id === state.selectedId
-  );
+  const contact = contacts.find((c) => c.id === state.selectedId);
   return (
     <div>
       <ContactList
@@ -1350,34 +1302,31 @@ export default function Messenger() {
 }
 
 const contacts = [
-  { id: 0, name: 'Taylor', email: 'taylor@mail.com' },
-  { id: 1, name: 'Alice', email: 'alice@mail.com' },
-  { id: 2, name: 'Bob', email: 'bob@mail.com' }
+  {id: 0, name: 'Taylor', email: 'taylor@mail.com'},
+  {id: 1, name: 'Alice', email: 'alice@mail.com'},
+  {id: 2, name: 'Bob', email: 'bob@mail.com'},
 ];
 ```
 
 ```js messengerReducer.js
 export const initialState = {
   selectedId: 0,
-  message: '你好'
+  message: '你好',
 };
 
-export function messengerReducer(
-  state,
-  action
-) {
+export function messengerReducer(state, action) {
   switch (action.type) {
     case 'changed_selection': {
       return {
         ...state,
         selectedId: action.contactId,
-        message: ''
+        message: '',
       };
     }
     case 'edited_message': {
       return {
         ...state,
-        message: action.message
+        message: action.message,
       };
     }
     default: {
@@ -1388,30 +1337,23 @@ export function messengerReducer(
 ```
 
 ```js ContactList.js
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
+export default function ContactList({contacts, selectedId, dispatch}) {
   return (
     <section className="contact-list">
       <ul>
-        {contacts.map(contact =>
+        {contacts.map((contact) => (
           <li key={contact.id}>
-            <button onClick={() => {
-              dispatch({
-                type: 'changed_selection',
-                contactId: contact.id
-              });
-            }}>
-              {selectedId === contact.id ? (
-                <b>{contact.name}</b>
-              ) : (
-                contact.name
-              )}
+            <button
+              onClick={() => {
+                dispatch({
+                  type: 'changed_selection',
+                  contactId: contact.id,
+                });
+              }}>
+              {selectedId === contact.id ? <b>{contact.name}</b> : contact.name}
             </button>
           </li>
-        )}
+        ))}
       </ul>
     </section>
   );
@@ -1419,22 +1361,18 @@ export default function ContactList({
 ```
 
 ```js Chat.js
-import { useState } from 'react';
+import {useState} from 'react';
 
-export default function Chat({
-  contact,
-  message,
-  dispatch
-}) {
+export default function Chat({contact, message, dispatch}) {
   return (
     <section className="chat">
       <textarea
         value={message}
         placeholder={'和 ' + contact.name + ' 聊天'}
-        onChange={e => {
+        onChange={(e) => {
           dispatch({
             type: 'edited_message',
-            message: e.target.value
+            message: e.target.value,
           });
         }}
       />
@@ -1446,11 +1384,13 @@ export default function Chat({
 ```
 
 ```css
-.chat, .contact-list {
+.chat,
+.contact-list {
   float: left;
   margin-bottom: 20px;
 }
-ul, li {
+ul,
+li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1479,23 +1419,15 @@ textarea {
 <Sandpack>
 
 ```js App.js
-import { useReducer } from 'react';
+import {useReducer} from 'react';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {
-  initialState,
-  messengerReducer
-} from './messengerReducer';
+import {initialState, messengerReducer} from './messengerReducer';
 
 export default function Messenger() {
-  const [state, dispatch] = useReducer(
-    messengerReducer,
-    initialState
-  );
+  const [state, dispatch] = useReducer(messengerReducer, initialState);
   const message = state.message;
-  const contact = contacts.find(c =>
-    c.id === state.selectedId
-  );
+  const contact = contacts.find((c) => c.id === state.selectedId);
   return (
     <div>
       <ContactList
@@ -1514,34 +1446,31 @@ export default function Messenger() {
 }
 
 const contacts = [
-  { id: 0, name: 'Taylor', email: 'taylor@mail.com' },
-  { id: 1, name: 'Alice', email: 'alice@mail.com' },
-  { id: 2, name: 'Bob', email: 'bob@mail.com' }
+  {id: 0, name: 'Taylor', email: 'taylor@mail.com'},
+  {id: 1, name: 'Alice', email: 'alice@mail.com'},
+  {id: 2, name: 'Bob', email: 'bob@mail.com'},
 ];
 ```
 
 ```js messengerReducer.js
 export const initialState = {
   selectedId: 0,
-  message: '你好'
+  message: '你好',
 };
 
-export function messengerReducer(
-  state,
-  action
-) {
+export function messengerReducer(state, action) {
   switch (action.type) {
     case 'changed_selection': {
       return {
         ...state,
         selectedId: action.contactId,
-        message: ''
+        message: '',
       };
     }
     case 'edited_message': {
       return {
         ...state,
-        message: action.message
+        message: action.message,
       };
     }
     default: {
@@ -1552,30 +1481,23 @@ export function messengerReducer(
 ```
 
 ```js ContactList.js
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
+export default function ContactList({contacts, selectedId, dispatch}) {
   return (
     <section className="contact-list">
       <ul>
-        {contacts.map(contact =>
+        {contacts.map((contact) => (
           <li key={contact.id}>
-            <button onClick={() => {
-              dispatch({
-                type: 'changed_selection',
-                contactId: contact.id
-              });
-            }}>
-              {selectedId === contact.id ? (
-                <b>{contact.name}</b>
-              ) : (
-                contact.name
-              )}
+            <button
+              onClick={() => {
+                dispatch({
+                  type: 'changed_selection',
+                  contactId: contact.id,
+                });
+              }}>
+              {selectedId === contact.id ? <b>{contact.name}</b> : contact.name}
             </button>
           </li>
-        )}
+        ))}
       </ul>
     </section>
   );
@@ -1583,22 +1505,18 @@ export default function ContactList({
 ```
 
 ```js Chat.js active
-import { useState } from 'react';
+import {useState} from 'react';
 
-export default function Chat({
-  contact,
-  message,
-  dispatch
-}) {
+export default function Chat({contact, message, dispatch}) {
   return (
     <section className="chat">
       <textarea
         value={message}
         placeholder={'和 ' + contact.name + ' 聊天'}
-        onChange={e => {
+        onChange={(e) => {
           dispatch({
             type: 'edited_message',
-            message: e.target.value
+            message: e.target.value,
           });
         }}
       />
@@ -1610,11 +1528,13 @@ export default function Chat({
 ```
 
 ```css
-.chat, .contact-list {
+.chat,
+.contact-list {
   float: left;
   margin-bottom: 20px;
 }
-ul, li {
+ul,
+li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1638,23 +1558,15 @@ textarea {
 <Sandpack>
 
 ```js App.js
-import { useReducer } from 'react';
+import {useReducer} from 'react';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {
-  initialState,
-  messengerReducer
-} from './messengerReducer';
+import {initialState, messengerReducer} from './messengerReducer';
 
 export default function Messenger() {
-  const [state, dispatch] = useReducer(
-    messengerReducer,
-    initialState
-  );
+  const [state, dispatch] = useReducer(messengerReducer, initialState);
   const message = state.message;
-  const contact = contacts.find(c =>
-    c.id === state.selectedId
-  );
+  const contact = contacts.find((c) => c.id === state.selectedId);
   return (
     <div>
       <ContactList
@@ -1673,34 +1585,31 @@ export default function Messenger() {
 }
 
 const contacts = [
-  { id: 0, name: 'Taylor', email: 'taylor@mail.com' },
-  { id: 1, name: 'Alice', email: 'alice@mail.com' },
-  { id: 2, name: 'Bob', email: 'bob@mail.com' }
+  {id: 0, name: 'Taylor', email: 'taylor@mail.com'},
+  {id: 1, name: 'Alice', email: 'alice@mail.com'},
+  {id: 2, name: 'Bob', email: 'bob@mail.com'},
 ];
 ```
 
 ```js messengerReducer.js
 export const initialState = {
   selectedId: 0,
-  message: '你好'
+  message: '你好',
 };
 
-export function messengerReducer(
-  state,
-  action
-) {
+export function messengerReducer(state, action) {
   switch (action.type) {
     case 'changed_selection': {
       return {
         ...state,
         selectedId: action.contactId,
-        message: ''
+        message: '',
       };
     }
     case 'edited_message': {
       return {
         ...state,
-        message: action.message
+        message: action.message,
       };
     }
     default: {
@@ -1711,30 +1620,23 @@ export function messengerReducer(
 ```
 
 ```js ContactList.js
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
+export default function ContactList({contacts, selectedId, dispatch}) {
   return (
     <section className="contact-list">
       <ul>
-        {contacts.map(contact =>
+        {contacts.map((contact) => (
           <li key={contact.id}>
-            <button onClick={() => {
-              dispatch({
-                type: 'changed_selection',
-                contactId: contact.id
-              });
-            }}>
-              {selectedId === contact.id ? (
-                <b>{contact.name}</b>
-              ) : (
-                contact.name
-              )}
+            <button
+              onClick={() => {
+                dispatch({
+                  type: 'changed_selection',
+                  contactId: contact.id,
+                });
+              }}>
+              {selectedId === contact.id ? <b>{contact.name}</b> : contact.name}
             </button>
           </li>
-        )}
+        ))}
       </ul>
     </section>
   );
@@ -1742,44 +1644,45 @@ export default function ContactList({
 ```
 
 ```js Chat.js active
-import { useState } from 'react';
+import {useState} from 'react';
 
-export default function Chat({
-  contact,
-  message,
-  dispatch
-}) {
+export default function Chat({contact, message, dispatch}) {
   return (
     <section className="chat">
       <textarea
         value={message}
         placeholder={'和 ' + contact.name + ' 聊天'}
-        onChange={e => {
+        onChange={(e) => {
           dispatch({
             type: 'edited_message',
-            message: e.target.value
+            message: e.target.value,
           });
         }}
       />
       <br />
-      <button onClick={() => {
-        alert(`正在发送 "${message}" 到 ${contact.email}`);
-        dispatch({
-          type: 'edited_message',
-          message: '',
-        });
-      }}>发送到 {contact.email}</button>
+      <button
+        onClick={() => {
+          alert(`正在发送 "${message}" 到 ${contact.email}`);
+          dispatch({
+            type: 'edited_message',
+            message: '',
+          });
+        }}>
+        发送到 {contact.email}
+      </button>
     </section>
   );
 }
 ```
 
 ```css
-.chat, .contact-list {
+.chat,
+.contact-list {
   float: left;
   margin-bottom: 20px;
 }
-ul, li {
+ul,
+li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1803,23 +1706,15 @@ textarea {
 <Sandpack>
 
 ```js App.js
-import { useReducer } from 'react';
+import {useReducer} from 'react';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {
-  initialState,
-  messengerReducer
-} from './messengerReducer';
+import {initialState, messengerReducer} from './messengerReducer';
 
 export default function Messenger() {
-  const [state, dispatch] = useReducer(
-    messengerReducer,
-    initialState
-  );
+  const [state, dispatch] = useReducer(messengerReducer, initialState);
   const message = state.message;
-  const contact = contacts.find(c =>
-    c.id === state.selectedId
-  );
+  const contact = contacts.find((c) => c.id === state.selectedId);
   return (
     <div>
       <ContactList
@@ -1838,40 +1733,37 @@ export default function Messenger() {
 }
 
 const contacts = [
-  { id: 0, name: 'Taylor', email: 'taylor@mail.com' },
-  { id: 1, name: 'Alice', email: 'alice@mail.com' },
-  { id: 2, name: 'Bob', email: 'bob@mail.com' }
+  {id: 0, name: 'Taylor', email: 'taylor@mail.com'},
+  {id: 1, name: 'Alice', email: 'alice@mail.com'},
+  {id: 2, name: 'Bob', email: 'bob@mail.com'},
 ];
 ```
 
 ```js messengerReducer.js active
 export const initialState = {
   selectedId: 0,
-  message: '你好'
+  message: '你好',
 };
 
-export function messengerReducer(
-  state,
-  action
-) {
+export function messengerReducer(state, action) {
   switch (action.type) {
     case 'changed_selection': {
       return {
         ...state,
         selectedId: action.contactId,
-        message: ''
+        message: '',
       };
     }
     case 'edited_message': {
       return {
         ...state,
-        message: action.message
+        message: action.message,
       };
     }
     case 'sent_message': {
       return {
         ...state,
-        message: ''
+        message: '',
       };
     }
     default: {
@@ -1882,30 +1774,23 @@ export function messengerReducer(
 ```
 
 ```js ContactList.js
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
+export default function ContactList({contacts, selectedId, dispatch}) {
   return (
     <section className="contact-list">
       <ul>
-        {contacts.map(contact =>
+        {contacts.map((contact) => (
           <li key={contact.id}>
-            <button onClick={() => {
-              dispatch({
-                type: 'changed_selection',
-                contactId: contact.id
-              });
-            }}>
-              {selectedId === contact.id ? (
-                <b>{contact.name}</b>
-              ) : (
-                contact.name
-              )}
+            <button
+              onClick={() => {
+                dispatch({
+                  type: 'changed_selection',
+                  contactId: contact.id,
+                });
+              }}>
+              {selectedId === contact.id ? <b>{contact.name}</b> : contact.name}
             </button>
           </li>
-        )}
+        ))}
       </ul>
     </section>
   );
@@ -1913,43 +1798,44 @@ export default function ContactList({
 ```
 
 ```js Chat.js active
-import { useState } from 'react';
+import {useState} from 'react';
 
-export default function Chat({
-  contact,
-  message,
-  dispatch
-}) {
+export default function Chat({contact, message, dispatch}) {
   return (
     <section className="chat">
       <textarea
         value={message}
         placeholder={'和 ' + contact.name + ' 聊天'}
-        onChange={e => {
+        onChange={(e) => {
           dispatch({
             type: 'edited_message',
-            message: e.target.value
+            message: e.target.value,
           });
         }}
       />
       <br />
-      <button onClick={() => {
-        alert(`正在发送 "${message}" 到 ${contact.email}`);
-        dispatch({
-          type: 'sent_message',
-        });
-      }}>发送到 {contact.email}</button>
+      <button
+        onClick={() => {
+          alert(`正在发送 "${message}" 到 ${contact.email}`);
+          dispatch({
+            type: 'sent_message',
+          });
+        }}>
+        发送到 {contact.email}
+      </button>
     </section>
   );
 }
 ```
 
 ```css
-.chat, .contact-list {
+.chat,
+.contact-list {
   float: left;
   margin-bottom: 20px;
 }
-ul, li {
+ul,
+li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1998,7 +1884,7 @@ export const initialState = {
   selectedId: 0,
   messages: {
     0: 'Hello, Taylor', // contactId = 0 的草稿
-    1: 'Hello, Alice' // contactId = 1 的草稿
+    1: 'Hello, Alice', // contactId = 1 的草稿
   }
 };
 ```
@@ -2017,23 +1903,15 @@ export const initialState = {
 <Sandpack>
 
 ```js App.js
-import { useReducer } from 'react';
+import {useReducer} from 'react';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {
-  initialState,
-  messengerReducer
-} from './messengerReducer';
+import {initialState, messengerReducer} from './messengerReducer';
 
 export default function Messenger() {
-  const [state, dispatch] = useReducer(
-    messengerReducer,
-    initialState
-  );
+  const [state, dispatch] = useReducer(messengerReducer, initialState);
   const message = state.message;
-  const contact = contacts.find(c =>
-    c.id === state.selectedId
-  );
+  const contact = contacts.find((c) => c.id === state.selectedId);
   return (
     <div>
       <ContactList
@@ -2052,40 +1930,37 @@ export default function Messenger() {
 }
 
 const contacts = [
-  { id: 0, name: 'Taylor', email: 'taylor@mail.com' },
-  { id: 1, name: 'Alice', email: 'alice@mail.com' },
-  { id: 2, name: 'Bob', email: 'bob@mail.com' }
+  {id: 0, name: 'Taylor', email: 'taylor@mail.com'},
+  {id: 1, name: 'Alice', email: 'alice@mail.com'},
+  {id: 2, name: 'Bob', email: 'bob@mail.com'},
 ];
 ```
 
 ```js messengerReducer.js
 export const initialState = {
   selectedId: 0,
-  message: '你好'
+  message: '你好',
 };
 
-export function messengerReducer(
-  state,
-  action
-) {
+export function messengerReducer(state, action) {
   switch (action.type) {
     case 'changed_selection': {
       return {
         ...state,
         selectedId: action.contactId,
-        message: ''
+        message: '',
       };
     }
     case 'edited_message': {
       return {
         ...state,
-        message: action.message
+        message: action.message,
       };
     }
     case 'sent_message': {
       return {
         ...state,
-        message: ''
+        message: '',
       };
     }
     default: {
@@ -2096,30 +1971,23 @@ export function messengerReducer(
 ```
 
 ```js ContactList.js
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
+export default function ContactList({contacts, selectedId, dispatch}) {
   return (
     <section className="contact-list">
       <ul>
-        {contacts.map(contact =>
+        {contacts.map((contact) => (
           <li key={contact.id}>
-            <button onClick={() => {
-              dispatch({
-                type: 'changed_selection',
-                contactId: contact.id
-              });
-            }}>
-              {selectedId === contact.id ? (
-                <b>{contact.name}</b>
-              ) : (
-                contact.name
-              )}
+            <button
+              onClick={() => {
+                dispatch({
+                  type: 'changed_selection',
+                  contactId: contact.id,
+                });
+              }}>
+              {selectedId === contact.id ? <b>{contact.name}</b> : contact.name}
             </button>
           </li>
-        )}
+        ))}
       </ul>
     </section>
   );
@@ -2127,43 +1995,44 @@ export default function ContactList({
 ```
 
 ```js Chat.js
-import { useState } from 'react';
+import {useState} from 'react';
 
-export default function Chat({
-  contact,
-  message,
-  dispatch
-}) {
+export default function Chat({contact, message, dispatch}) {
   return (
     <section className="chat">
       <textarea
         value={message}
         placeholder={'和 ' + contact.name + ' 聊天'}
-        onChange={e => {
+        onChange={(e) => {
           dispatch({
             type: 'edited_message',
-            message: e.target.value
+            message: e.target.value,
           });
         }}
       />
       <br />
-      <button onClick={() => {
-        alert(`正在发送 "${message}" 到 ${contact.email}`);
-        dispatch({
-          type: 'sent_message',
-        });
-      }}>发送到 {contact.email}</button>
+      <button
+        onClick={() => {
+          alert(`正在发送 "${message}" 到 ${contact.email}`);
+          dispatch({
+            type: 'sent_message',
+          });
+        }}>
+        发送到 {contact.email}
+      </button>
     </section>
   );
 }
 ```
 
 ```css
-.chat, .contact-list {
+.chat,
+.contact-list {
   float: left;
   margin-bottom: 20px;
 }
-ul, li {
+ul,
+li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -2211,23 +2080,15 @@ Here is the complete solution:
 <Sandpack>
 
 ```js App.js
-import { useReducer } from 'react';
+import {useReducer} from 'react';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {
-  initialState,
-  messengerReducer
-} from './messengerReducer';
+import {initialState, messengerReducer} from './messengerReducer';
 
 export default function Messenger() {
-  const [state, dispatch] = useReducer(
-    messengerReducer,
-    initialState
-  );
+  const [state, dispatch] = useReducer(messengerReducer, initialState);
   const message = state.messages[state.selectedId];
-  const contact = contacts.find(c =>
-    c.id === state.selectedId
-  );
+  const contact = contacts.find((c) => c.id === state.selectedId);
   return (
     <div>
       <ContactList
@@ -2246,9 +2107,9 @@ export default function Messenger() {
 }
 
 const contacts = [
-  { id: 0, name: 'Taylor', email: 'taylor@mail.com' },
-  { id: 1, name: 'Alice', email: 'alice@mail.com' },
-  { id: 2, name: 'Bob', email: 'bob@mail.com' }
+  {id: 0, name: 'Taylor', email: 'taylor@mail.com'},
+  {id: 1, name: 'Alice', email: 'alice@mail.com'},
+  {id: 2, name: 'Bob', email: 'bob@mail.com'},
 ];
 ```
 
@@ -2258,14 +2119,11 @@ export const initialState = {
   messages: {
     0: 'Hello, Taylor',
     1: 'Hello, Alice',
-    2: 'Hello, Bob'
-  }
+    2: 'Hello, Bob',
+  },
 };
 
-export function messengerReducer(
-  state,
-  action
-) {
+export function messengerReducer(state, action) {
   switch (action.type) {
     case 'changed_selection': {
       return {
@@ -2278,8 +2136,8 @@ export function messengerReducer(
         ...state,
         messages: {
           ...state.messages,
-          [state.selectedId]: action.message
-        }
+          [state.selectedId]: action.message,
+        },
       };
     }
     case 'sent_message': {
@@ -2287,8 +2145,8 @@ export function messengerReducer(
         ...state,
         messages: {
           ...state.messages,
-          [state.selectedId]: ''
-        }
+          [state.selectedId]: '',
+        },
       };
     }
     default: {
@@ -2299,30 +2157,23 @@ export function messengerReducer(
 ```
 
 ```js ContactList.js
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
+export default function ContactList({contacts, selectedId, dispatch}) {
   return (
     <section className="contact-list">
       <ul>
-        {contacts.map(contact =>
+        {contacts.map((contact) => (
           <li key={contact.id}>
-            <button onClick={() => {
-              dispatch({
-                type: 'changed_selection',
-                contactId: contact.id
-              });
-            }}>
-              {selectedId === contact.id ? (
-                <b>{contact.name}</b>
-              ) : (
-                contact.name
-              )}
+            <button
+              onClick={() => {
+                dispatch({
+                  type: 'changed_selection',
+                  contactId: contact.id,
+                });
+              }}>
+              {selectedId === contact.id ? <b>{contact.name}</b> : contact.name}
             </button>
           </li>
-        )}
+        ))}
       </ul>
     </section>
   );
@@ -2330,43 +2181,44 @@ export default function ContactList({
 ```
 
 ```js Chat.js
-import { useState } from 'react';
+import {useState} from 'react';
 
-export default function Chat({
-  contact,
-  message,
-  dispatch
-}) {
+export default function Chat({contact, message, dispatch}) {
   return (
     <section className="chat">
       <textarea
         value={message}
         placeholder={'和 ' + contact.name + ' 聊天'}
-        onChange={e => {
+        onChange={(e) => {
           dispatch({
             type: 'edited_message',
-            message: e.target.value
+            message: e.target.value,
           });
         }}
       />
       <br />
-      <button onClick={() => {
-        alert(`正在发送 "${message}" 到 ${contact.email}`);
-        dispatch({
-          type: 'sent_message',
-        });
-      }}>发送到 {contact.email}</button>
+      <button
+        onClick={() => {
+          alert(`正在发送 "${message}" 到 ${contact.email}`);
+          dispatch({
+            type: 'sent_message',
+          });
+        }}>
+        发送到 {contact.email}
+      </button>
     </section>
   );
 }
 ```
 
 ```css
-.chat, .contact-list {
+.chat,
+.contact-list {
   float: left;
   margin-bottom: 20px;
 }
-ul, li {
+ul,
+li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -2416,23 +2268,15 @@ export function useReducer(reducer, initialState) {
 <Sandpack>
 
 ```js App.js
-import { useReducer } from './MyReact.js';
+import {useReducer} from './MyReact.js';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {
-  initialState,
-  messengerReducer
-} from './messengerReducer';
+import {initialState, messengerReducer} from './messengerReducer';
 
 export default function Messenger() {
-  const [state, dispatch] = useReducer(
-    messengerReducer,
-    initialState
-  );
+  const [state, dispatch] = useReducer(messengerReducer, initialState);
   const message = state.messages[state.selectedId];
-  const contact = contacts.find(c =>
-    c.id === state.selectedId
-  );
+  const contact = contacts.find((c) => c.id === state.selectedId);
   return (
     <div>
       <ContactList
@@ -2451,9 +2295,9 @@ export default function Messenger() {
 }
 
 const contacts = [
-  { id: 0, name: 'Taylor', email: 'taylor@mail.com' },
-  { id: 1, name: 'Alice', email: 'alice@mail.com' },
-  { id: 2, name: 'Bob', email: 'bob@mail.com' }
+  {id: 0, name: 'Taylor', email: 'taylor@mail.com'},
+  {id: 1, name: 'Alice', email: 'alice@mail.com'},
+  {id: 2, name: 'Bob', email: 'bob@mail.com'},
 ];
 ```
 
@@ -2463,14 +2307,11 @@ export const initialState = {
   messages: {
     0: 'Hello, Taylor',
     1: 'Hello, Alice',
-    2: 'Hello, Bob'
-  }
+    2: 'Hello, Bob',
+  },
 };
 
-export function messengerReducer(
-  state,
-  action
-) {
+export function messengerReducer(state, action) {
   switch (action.type) {
     case 'changed_selection': {
       return {
@@ -2483,8 +2324,8 @@ export function messengerReducer(
         ...state,
         messages: {
           ...state.messages,
-          [state.selectedId]: action.message
-        }
+          [state.selectedId]: action.message,
+        },
       };
     }
     case 'sent_message': {
@@ -2492,8 +2333,8 @@ export function messengerReducer(
         ...state,
         messages: {
           ...state.messages,
-          [state.selectedId]: ''
-        }
+          [state.selectedId]: '',
+        },
       };
     }
     default: {
@@ -2504,7 +2345,7 @@ export function messengerReducer(
 ```
 
 ```js MyReact.js active
-import { useState } from 'react';
+import {useState} from 'react';
 
 export function useReducer(reducer, initialState) {
   const [state, setState] = useState(initialState);
@@ -2516,30 +2357,23 @@ export function useReducer(reducer, initialState) {
 ```
 
 ```js ContactList.js hidden
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
+export default function ContactList({contacts, selectedId, dispatch}) {
   return (
     <section className="contact-list">
       <ul>
-        {contacts.map(contact =>
+        {contacts.map((contact) => (
           <li key={contact.id}>
-            <button onClick={() => {
-              dispatch({
-                type: 'changed_selection',
-                contactId: contact.id
-              });
-            }}>
-              {selectedId === contact.id ? (
-                <b>{contact.name}</b>
-              ) : (
-                contact.name
-              )}
+            <button
+              onClick={() => {
+                dispatch({
+                  type: 'changed_selection',
+                  contactId: contact.id,
+                });
+              }}>
+              {selectedId === contact.id ? <b>{contact.name}</b> : contact.name}
             </button>
           </li>
-        )}
+        ))}
       </ul>
     </section>
   );
@@ -2547,43 +2381,44 @@ export default function ContactList({
 ```
 
 ```js Chat.js hidden
-import { useState } from 'react';
+import {useState} from 'react';
 
-export default function Chat({
-  contact,
-  message,
-  dispatch
-}) {
+export default function Chat({contact, message, dispatch}) {
   return (
     <section className="chat">
       <textarea
         value={message}
         placeholder={'和 ' + contact.name + ' 聊天'}
-        onChange={e => {
+        onChange={(e) => {
           dispatch({
             type: 'edited_message',
-            message: e.target.value
+            message: e.target.value,
           });
         }}
       />
       <br />
-      <button onClick={() => {
-        alert(`正在发送 "${message}" 到 ${contact.email}`);
-        dispatch({
-          type: 'sent_message',
-        });
-      }}>发送到 {contact.email}</button>
+      <button
+        onClick={() => {
+          alert(`正在发送 "${message}" 到 ${contact.email}`);
+          dispatch({
+            type: 'sent_message',
+          });
+        }}>
+        发送到 {contact.email}
+      </button>
     </section>
   );
 }
 ```
 
 ```css
-.chat, .contact-list {
+.chat,
+.contact-list {
   float: left;
   margin-bottom: 20px;
 }
-ul, li {
+ul,
+li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -2607,23 +2442,15 @@ dispatch 一个 action 去调用一个具有当前 state 和 action 的 reducer�
 <Sandpack>
 
 ```js App.js
-import { useReducer } from './MyReact.js';
+import {useReducer} from './MyReact.js';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {
-  initialState,
-  messengerReducer
-} from './messengerReducer';
+import {initialState, messengerReducer} from './messengerReducer';
 
 export default function Messenger() {
-  const [state, dispatch] = useReducer(
-    messengerReducer,
-    initialState
-  );
+  const [state, dispatch] = useReducer(messengerReducer, initialState);
   const message = state.messages[state.selectedId];
-  const contact = contacts.find(c =>
-    c.id === state.selectedId
-  );
+  const contact = contacts.find((c) => c.id === state.selectedId);
   return (
     <div>
       <ContactList
@@ -2642,9 +2469,9 @@ export default function Messenger() {
 }
 
 const contacts = [
-  { id: 0, name: 'Taylor', email: 'taylor@mail.com' },
-  { id: 1, name: 'Alice', email: 'alice@mail.com' },
-  { id: 2, name: 'Bob', email: 'bob@mail.com' }
+  {id: 0, name: 'Taylor', email: 'taylor@mail.com'},
+  {id: 1, name: 'Alice', email: 'alice@mail.com'},
+  {id: 2, name: 'Bob', email: 'bob@mail.com'},
 ];
 ```
 
@@ -2654,14 +2481,11 @@ export const initialState = {
   messages: {
     0: 'Hello, Taylor',
     1: 'Hello, Alice',
-    2: 'Hello, Bob'
-  }
+    2: 'Hello, Bob',
+  },
 };
 
-export function messengerReducer(
-  state,
-  action
-) {
+export function messengerReducer(state, action) {
   switch (action.type) {
     case 'changed_selection': {
       return {
@@ -2674,8 +2498,8 @@ export function messengerReducer(
         ...state,
         messages: {
           ...state.messages,
-          [state.selectedId]: action.message
-        }
+          [state.selectedId]: action.message,
+        },
       };
     }
     case 'sent_message': {
@@ -2683,8 +2507,8 @@ export function messengerReducer(
         ...state,
         messages: {
           ...state.messages,
-          [state.selectedId]: ''
-        }
+          [state.selectedId]: '',
+        },
       };
     }
     default: {
@@ -2695,7 +2519,7 @@ export function messengerReducer(
 ```
 
 ```js MyReact.js active
-import { useState } from 'react';
+import {useState} from 'react';
 
 export function useReducer(reducer, initialState) {
   const [state, setState] = useState(initialState);
@@ -2710,30 +2534,23 @@ export function useReducer(reducer, initialState) {
 ```
 
 ```js ContactList.js hidden
-export default function ContactList({
-  contacts,
-  selectedId,
-  dispatch,
-}) {
+export default function ContactList({contacts, selectedId, dispatch}) {
   return (
     <section className="contact-list">
       <ul>
-        {contacts.map(contact =>
+        {contacts.map((contact) => (
           <li key={contact.id}>
-            <button onClick={() => {
-              dispatch({
-                type: 'changed_selection',
-                contactId: contact.id
-              });
-            }}>
-              {selectedId === contact.id ? (
-                <b>{contact.name}</b>
-              ) : (
-                contact.name
-              )}
+            <button
+              onClick={() => {
+                dispatch({
+                  type: 'changed_selection',
+                  contactId: contact.id,
+                });
+              }}>
+              {selectedId === contact.id ? <b>{contact.name}</b> : contact.name}
             </button>
           </li>
-        )}
+        ))}
       </ul>
     </section>
   );
@@ -2741,43 +2558,44 @@ export default function ContactList({
 ```
 
 ```js Chat.js hidden
-import { useState } from 'react';
+import {useState} from 'react';
 
-export default function Chat({
-  contact,
-  message,
-  dispatch
-}) {
+export default function Chat({contact, message, dispatch}) {
   return (
     <section className="chat">
       <textarea
         value={message}
         placeholder={'和 ' + contact.name + ' 聊天'}
-        onChange={e => {
+        onChange={(e) => {
           dispatch({
             type: 'edited_message',
-            message: e.target.value
+            message: e.target.value,
           });
         }}
       />
       <br />
-      <button onClick={() => {
-        alert(`正在发送 "${message}" 到 ${contact.email}`);
-        dispatch({
-          type: 'sent_message',
-        });
-      }}>发送到 {contact.email}</button>
+      <button
+        onClick={() => {
+          alert(`正在发送 "${message}" 到 ${contact.email}`);
+          dispatch({
+            type: 'sent_message',
+          });
+        }}>
+        发送到 {contact.email}
+      </button>
     </section>
   );
 }
 ```
 
 ```css
-.chat, .contact-list {
+.chat,
+.contact-list {
   float: left;
   margin-bottom: 20px;
 }
-ul, li {
+ul,
+li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -2798,7 +2616,7 @@ textarea {
 
 ```js
 function dispatch(action) {
-  setState(s => reducer(s, action));
+  setState((s) => reducer(s, action));
 }
 ```
 
