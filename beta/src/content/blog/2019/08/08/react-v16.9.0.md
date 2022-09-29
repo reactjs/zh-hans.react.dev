@@ -216,12 +216,12 @@ npm install --save react@^16.9.0 react-dom@^16.9.0
 
 ## Changelog {/*changelog*/}
 
-### React {/*react*/}
+### React {/*changelog-react*/}
 
 - 提供 `<React.Profiler>` API 实现以编程的方式进行性能评估。([@bvaughn](https://github.com/bvaughn) in [#15172](https://github.com/facebook/react/pull/15172))
 - 删除 `unstable_ConcurrentMode` 以支持 `unstable_createRoot`。([@acdlite](https://github.com/acdlite) in [#15532](https://github.com/facebook/react/pull/15532))
 
-### React DOM {/*react-dom*/}
+### React DOM {/*changelog-react-dom*/}
 
 - 弃用以 `UNSAFE_*` 开头的旧生命周期方法。([@bvaughn](https://github.com/bvaughn) in [#15186](https://github.com/facebook/react/pull/15186) and [@threepointone](https://github.com/threepointone) in [#16103](https://github.com/facebook/react/pull/16103))
 - 弃用 `javascript:` 形式的 URL。 ([@sebmarkbage](https://github.com/sebmarkbage) in [#15047](https://github.com/facebook/react/pull/15047))
@@ -238,11 +238,11 @@ npm install --save react@^16.9.0 react-dom@^16.9.0
 - 修复当存在 `!important` 样式时，隐藏 Suspense 降级节点的问题。([@acdlite](https://github.com/acdlite) in [#15861](https://github.com/facebook/react/pull/15861) and [#15882](https://github.com/facebook/react/pull/15882))
 - 提高 hydration 的性能。([@bmeurer](https://github.com/bmeurer) in [#15998](https://github.com/facebook/react/pull/15998))
 
-### React DOM Server {/*react-dom-server*/}
+### React DOM Server {/*changelog-react-dom-server*/}
 
 - 修复 camelCase 自定义 CSS 属性名称的错误输出。([@bedakb](https://github.com/bedakb) in [#16167](https://github.com/facebook/react/pull/16167))
 
-### React Test Utilities and Test Renderer {/*react-test-utilities-and-test-renderer*/}
+### React Test Utilities and Test Renderer {/*changelog-react-test-utilities-and-test-renderer*/}
 
 - 添加 `act(async () => ...)` 来测试异步状态更新。([@threepointone](https://github.com/threepointone) in [#14853](https://github.com/facebook/react/pull/14853))
 - 添加对不同渲染器嵌套 `act` 的支持。 ([@threepointone](https://github.com/threepointone) in [#16039](https://github.com/facebook/react/pull/16039) and [#16042](https://github.com/facebook/react/pull/16042))
