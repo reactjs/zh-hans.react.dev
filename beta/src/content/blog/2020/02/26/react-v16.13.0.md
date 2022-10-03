@@ -186,12 +186,12 @@ npm install --save react@^16.13.0 react-dom@^16.13.0
 
 ## 变更日志 {/*changelog*/}
 
-### React {/*react*/}
+### React {/*changelog-react*/}
 
 - 当字符串 ref 的使用方式不符合将来的代码模式时发出警告 ([@lunaruan](https://github.com/lunaruan) in [#17864](https://github.com/facebook/react/pull/17864))
 - 弃用 `React.createFactory()` ([@trueadm](https://github.com/trueadm) in [#17878](https://github.com/facebook/react/pull/17878))
 
-### React DOM {/*react-dom*/}
+### React DOM {/*changelog-react-dom*/}
 
 - `style` 中的更改可能导致意外冲突时发出警告 ([@sophiebits](https://github.com/sophiebits) 在 [#14181](https://github.com/facebook/react/pull/14181)，[#18002](https://github.com/facebook/react/pull/18002))
 - 在另一个组件的 render 阶段更新 function 组件时发出警告 ([@acdlite](<(https://github.com/acdlite)>) 在 [#17099](https://github.com/facebook/react/pull/17099))
@@ -202,7 +202,11 @@ npm install --save react@^16.13.0 react-dom@^16.13.0
 - 不要调用 `dangerouslySetInnerHTML` 的 `toString()` 方法 ([@sebmarkbage](https://github.com/sebmarkbage) 在 [#17773](https://github.com/facebook/react/pull/17773))
 - 在组件堆栈中展示更多警告 ([@gaearon](https://github.com/gaearon) 在 [#17922](https://github.com/facebook/react/pull/17922)，[#17586](https://github.com/facebook/react/pull/17586))
 
+<<<<<<< HEAD
 ### 并发模式（实验） {/*concurrent-mode-experimental*/}
+=======
+### Concurrent Mode (Experimental) {/*changelog-concurrent-mode-experimental*/}
+>>>>>>> 664dd5736287e01a4557cd03c9a8736682911b34
 
 - 警告有问题的用法 `ReactDOM.createRoot()` ([@trueadm](https://github.com/trueadm) 在 [#17937](https://github.com/facebook/react/pull/17937))
 - 移除 `ReactDOM.createRoot()` 回调传参并且在用法上增加了警告 ([@bvaughn](https://github.com/bvaughn) 在 [#17916](https://github.com/facebook/react/pull/17916))
