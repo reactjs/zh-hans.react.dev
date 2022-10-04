@@ -16,6 +16,7 @@ permalink: index.html
 
 该站点目前还处于 beta 阶段，同时，相关文档也处于草案阶段。
 
+<<<<<<< HEAD
 ## 这项工作仍在进行中 {/*this-is-a-work-in-progress*/}
 
 由于此站点仍处于 **beta 阶段**。可能会存在 bug，性能问题甚至是内容缺失等情况。
@@ -24,12 +25,22 @@ permalink: index.html
 
 * [Learn React](/learn): 已完成近 95%。
 * [API Reference](/apis): 已完成近 60%。
+=======
+## How much content is ready? {/*how-much-content-is-ready*/}
+
+* [Learn React](/learn): ~95% finished.
+* [API Reference](/apis): ~70% finished.
+>>>>>>> 440741dde22a609932cc4b58e5b0cc25003d11b5
 
 你可以 [在 Github 上](https://github.com/reactjs/reactjs.org/issues/3308) 追踪我们的进度。
 
 ## 如何提供反馈? {/*how-can-i-provide-feedback*/}
 
+<<<<<<< HEAD
 请提交到 [这个 GitHub issue](https://github.com/reactjs/reactjs.org/issues/3308) 或 [填写这个匿名表格](https://www.surveymonkey.co.uk/r/Y6GH986) 进行反馈。如果你发现任何不合理的地方，请告诉我们！同时，每个页面都设有反馈按钮。
+=======
+Please use [this GitHub issue](https://github.com/reactjs/reactjs.org/issues/3308) or [this anonymous form](https://www.surveymonkey.co.uk/r/PYRPF3X) for high-level feedback. If you spot something that doesn't make sense, please tell us! Additionally, each page has thumbs up/down buttons in the corner.
+>>>>>>> 440741dde22a609932cc4b58e5b0cc25003d11b5
 
 ## 此站点是否会取代主站点？ {/*will-this-site-replace-the-main-site*/}
 
