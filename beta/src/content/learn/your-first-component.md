@@ -180,7 +180,42 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 因为 `Profile` 组件在 `Gallery` 组件中渲染——甚至好几次！——我们可以认为 `Gallery` 是一个 **父组件，** 将每个 `Profile` 渲染为一个“孩子”。这是 React 的神奇之处：你可以只定义组件一次，然后按需多处和多次使用。
 
+<<<<<<< HEAD
 <DeepDive title="万物皆组件">
+=======
+<Gotcha>
+
+Components can render other components, but **you must never nest their definitions:**
+
+```js {2-5}
+export default function Gallery() {
+  // 🔴 Never define a component inside another component!
+  function Profile() {
+    // ...
+  }
+  // ...
+}
+```
+
+The snippet above is [very slow and causes bugs.](/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state) Instead, define every component at the top level:
+
+```js {5-8}
+export default function Gallery() {
+  // ...
+}
+
+// ✅ Declare components at the top level
+function Profile() {
+  // ...
+}
+```
+
+When a child component needs some data from a parent, [pass it by props](/learn/passing-props-to-a-component) instead of nesting definitions.
+
+</Gotcha>
+
+<DeepDive title="Components all the way down">
+>>>>>>> f3420fdc56f6eb161bb78a763152c2607e92ed99
 
 你的 React 应用程序从“根”组件开始。通常，它会在启动新项目时自动创建。例如，如果你使用 [CodeSandbox](https://codesandbox.io/) 或 [Create React App](https://create-react-app.dev/)，根组件定义在 `src/App.js` 中。如果使用 [Next.js](https://nextjs.org/) 框架，根组件定义在 `pages/index.js` 中。在这些示例中，一直有导出根组件。
 
