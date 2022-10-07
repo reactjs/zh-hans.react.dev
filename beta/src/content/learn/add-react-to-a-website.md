@@ -125,8 +125,13 @@ anotherRoot.render(React.createElement(LikeButton));
 
 未经压缩的 JavaScript 可能会极大降低用户的访问速度。在将你的网站部署到生产环境之前，请务必对你的脚本文件进行压缩。
 
+<<<<<<< HEAD
 - **如果你不知道如何进行压缩**，[请参考该配置教程](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3)。
 - 如果你已完成了 **对应用代码的压缩**，并且确保已部署的 HTML 加载的是以 `production.min.js` 结尾的 React 版本，那么你的网站就已完成生产部署（production-ready）：
+=======
+- **If you don't have a minification step** for your scripts, [here's one way to set it up.](https://gist.github.com/gaearon/ee0201910608f15df3f8cd66aa83f98e)
+- **If you already minify** your application scripts, your site will be production-ready if you ensure that the deployed HTML loads the versions of React ending in `production.min.js` like so:
+>>>>>>> 06ab241633c034a3227cd2413772b79d2d6764a1
 
 ```html
 <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
@@ -210,9 +215,15 @@ return (
 
 你可以对 JSX 文件进行预处理。当你编辑保存带有 JSX 的源文件时，这个转换过程将自动重新执行，并把 JSX 文件转换为一个全新的，浏览器可以识别的普通 JavaScript 文件，以下是设置方式：
 
+<<<<<<< HEAD
 1. 创建一个名为 **`src`** 的文件夹
 2. 在终端执行这个命令： `npx babel --watch src --out-dir . --presets react-app/prod ` （无需等待运行结果 —— 这个命令会自动启动一个观察器，观察对 `src` 内 JSX 的编辑。）
 3. 将已经 JSX 化的 **`like-button.js`**（[它看起来应该像这样！](https://gist.githubusercontent.com/gaearon/1884acf8834f1ef9a574a953f77ed4d8/raw/dfc664bbd25992c5278c3bf3d8504424c1104ecf/like-button.js)）文件移动到新的 **`src`** 目录下。
+=======
+1. Create a folder called **`src`.**
+2. In your terminal, run this command: `npx babel --watch src --out-dir . --presets react-app/prod ` (Don't wait for it to finish! This command starts an automated watcher for edits to JSX inside `src`.)
+3. Move your JSX-ified **`like-button.js`** ([it should look like this!](https://gist.githubusercontent.com/gaearon/be5ae0fbf563d6c5fe5c1563907b13d2/raw/4c0d0b8c7f4fcb341720424c28c72059f8174c62/like-button.js)) to the new **`src`** folder.
+>>>>>>> 06ab241633c034a3227cd2413772b79d2d6764a1
 
 监听器会创建一个预处理过的 **`like_button.js`** 文件，它包含了适用于浏览器的普通 JavaScript 代码.
 
