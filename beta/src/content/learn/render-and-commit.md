@@ -133,7 +133,7 @@ img { margin: 0 10px 10px 0; }
 * **在初次渲染中，** React 将会为`<section>`、`<h1>` 和三个 `<img>` 标签 [创建 DOM 节点](https://developer.mozilla.org/docs/Web/API/Document/createElement)。
 * **在一次重渲染过程中,** React 将计算它们的哪些属性（如果有的话）自上次渲染以来已更改。在下一步（提交阶段）之前，它不会对这些信息执行任何操作。
 
-<Gotcha>
+<Pitfall>
 
 渲染必须始终是一次 [纯计算](/learn/keeping-components-pure):
 
@@ -142,7 +142,7 @@ img { margin: 0 10px 10px 0; }
 
 否则，随着代码库复杂性的增加，您可能会遇到令人困惑的错误和不可预测的行为。在 "严格模式" 下开发时，React 会调用每个组件的函数两次，这可以帮助发现由不纯函数引起的错误。
 
-</Gotcha>
+</Pitfall>
 
 <DeepDive title="性能优化">
 

@@ -91,12 +91,17 @@ button { margin-right: 10px; }
 
 以上所有方式都是等效的。当函数体较短时，内联事件处理函数会很方便。
 
-<Gotcha>
+<Pitfall>
 
 传递给事件处理函数的函数应直接传递，而非调用。例如：
 
+<<<<<<< HEAD
 | 传递一个函数（正确）           | 调用一个函数（错误） |
 |----------------------------------------|--------------------------------|
+=======
+| passing a function (correct)     | calling a function (incorrect)     |
+| -------------------------------- | ---------------------------------- |
+>>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 | `<button onClick={handleClick}>` | `<button onClick={handleClick()}>` |
 
 区别很微妙。在第一个示例中，`handleClick` 函数作为 `onClick` 事件处理函数传递。这会让 React 记住它，并且只在用户点击按钮时调用你的函数。
@@ -105,8 +110,13 @@ button { margin-right: 10px; }
 
 当你编写内联代码时，同样的陷阱可能会以不同的方式出现：
 
+<<<<<<< HEAD
 | 传递一个函数（正确）           | 调用一个函数（错误） |
 |----------------------------------------|--------------------------------|
+=======
+| passing a function (correct)            | calling a function (incorrect)    |
+| --------------------------------------- | --------------------------------- |
+>>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 | `<button onClick={() => alert('...')}>` | `<button onClick={alert('...')}>` |
 
 
@@ -132,7 +142,7 @@ button { margin-right: 10px; }
 
 > 查看 [JavaScript Refresher](a-javascript-refresher#arrow-functions) 了解更多箭头函数的信息。
 
-</Gotcha>
+</Pitfall>
 
 ### 在事件处理函数中读取 props {/*reading-props-in-event-handlers*/}
 
@@ -355,11 +365,11 @@ button { margin: 5px; }
 
 如果你点击任一按钮，它自身的 `onClick` 将首先执行，然后父级 `<div>` 的 `onClick` 会接着执行。因此会出现两条消息。如果你点击 toolbar 本身，将只有父级 `<div>` 的 `onClick` 会执行。
 
-<Gotcha>
+<Pitfall>
 
 在 React 中所有事件都会传播，除了 `onScroll`，它仅适用于你附加到的 JSX 标签。
 
-</Gotcha>
+</Pitfall>
 
 ### 阻止传播 {/*stopping-propagation*/}
 

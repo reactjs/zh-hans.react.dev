@@ -204,11 +204,11 @@ td {
 
 在构建你的组件之后，即拥有一个渲染数据模型的可复用组件库。因为这是一个静态应用程序，组件仅返回 JSX。最顶层组件 (`FilterableProductTable`) 将接收你的数据模型作为其 prop。这被称之为 _单向数据流_，因为数据从树的顶层组件传递到下面的组件。
 
-<Gotcha>
+<Pitfall>
 
 在这部分中，你不需要使用任何 state，这是下一步的内容!
 
-</Gotcha>
+</Pitfall>
 
 ## 步骤三: 发现 UI 精简且完整的 state 表示 {/*step-3-find-the-minimal-but-complete-representation-of-ui-state*/}
 

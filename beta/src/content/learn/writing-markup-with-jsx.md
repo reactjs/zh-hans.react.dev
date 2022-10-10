@@ -219,11 +219,11 @@ JSX 最终会被转化为 JavaScript，而 JSX 中的属性也会变成 JavaScri
 
 你可以 [在 React DOM 元素中找到所有对应的属性](TODO)。如果你在编写属性时发生了错误，不用担心 —— React 会在 [浏览器控制台](https://developer.mozilla.org/docs/Tools/Browser_Console) 中打印一条可能的更正信息。
 
-<Gotcha>
+<Pitfall>
 
 由于历史原因，[`aria-*`](https://developer.mozilla.org/docs/Web/Accessibility/ARIA) 和 [`data-*`](https://developer.mozilla.org/docs/Learn/HTML/Howto/Use_data_attributes) 属性是以带 `-` 符号的 HTML 格式书写的。
 
-</Gotcha>
+</Pitfall>
 
 ### 高级提示：使用 JSX 转化器 {/*pro-tip-use-a-jsx-converter*/}
 
