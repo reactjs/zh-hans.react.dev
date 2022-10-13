@@ -202,11 +202,7 @@ npm install --save react@^16.13.0 react-dom@^16.13.0
 - 不要调用 `dangerouslySetInnerHTML` 的 `toString()` 方法 ([@sebmarkbage](https://github.com/sebmarkbage) 在 [#17773](https://github.com/facebook/react/pull/17773))
 - 在组件堆栈中展示更多警告 ([@gaearon](https://github.com/gaearon) 在 [#17922](https://github.com/facebook/react/pull/17922)，[#17586](https://github.com/facebook/react/pull/17586))
 
-<<<<<<< HEAD
-### 并发模式（实验） {/*concurrent-mode-experimental*/}
-=======
-### Concurrent Mode (Experimental) {/*changelog-concurrent-mode-experimental*/}
->>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
+### 并发模式（实验） {/*changelog-concurrent-mode-experimental*/}
 
 - 警告有问题的用法 `ReactDOM.createRoot()` ([@trueadm](https://github.com/trueadm) 在 [#17937](https://github.com/facebook/react/pull/17937))
 - 移除 `ReactDOM.createRoot()` 回调传参并且在用法上增加了警告 ([@bvaughn](https://github.com/bvaughn) 在 [#17916](https://github.com/facebook/react/pull/17916))

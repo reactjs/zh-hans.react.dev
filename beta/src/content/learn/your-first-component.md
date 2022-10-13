@@ -180,16 +180,13 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 因为 `Profile` 组件在 `Gallery` 组件中渲染——甚至好几次！——我们可以认为 `Gallery` 是一个 **父组件，** 将每个 `Profile` 渲染为一个“孩子”。这是 React 的神奇之处：你可以只定义组件一次，然后按需多处和多次使用。
 
-<<<<<<< HEAD
-<DeepDive title="万物皆组件">
-=======
 <Pitfall>
 
-Components can render other components, but **you must never nest their definitions:**
+组件可以渲染其他组件，但是 **请不要嵌套他们的定义**：
 
 ```js {2-5}
 export default function Gallery() {
-  // 🔴 Never define a component inside another component!
+  // 🔴 永远不要在组件中定义组件
   function Profile() {
     // ...
   }
@@ -197,25 +194,24 @@ export default function Gallery() {
 }
 ```
 
-The snippet above is [very slow and causes bugs.](/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state) Instead, define every component at the top level:
+上面这段代码 [非常慢，并且会导致 bug 产生](/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state)。 因此，你应该在顶层定义每个组件：
 
 ```js {5-8}
 export default function Gallery() {
   // ...
 }
 
-// ✅ Declare components at the top level
+// ✅ 在顶层声明组件
 function Profile() {
   // ...
 }
 ```
 
-When a child component needs some data from a parent, [pass it by props](/learn/passing-props-to-a-component) instead of nesting definitions.
+当子组件需要使用父组件的数据时，你需要 [通过 props 的形式进行传递](/learn/passing-props-to-a-component)，而不是嵌套定义。
 
 </Pitfall>
 
-<DeepDive title="Components all the way down">
->>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
+<DeepDive title="万物皆组件">
 
 你的 React 应用程序从“根”组件开始。通常，它会在启动新项目时自动创建。例如，如果你使用 [CodeSandbox](https://codesandbox.io/) 或 [Create React App](https://create-react-app.dev/)，根组件定义在 `src/App.js` 中。如果使用 [Next.js](https://nextjs.org/) 框架，根组件定义在 `pages/index.js` 中。在这些示例中，一直有导出根组件。
 

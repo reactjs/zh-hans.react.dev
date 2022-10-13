@@ -21,11 +21,7 @@ translators:
 
 </YouWillLearn>
 
-<<<<<<< HEAD
 ## 使用 reducer 整合状态逻辑 {/*consolidate-state-logic-with-a-reducer*/}
-=======
-## Consolidate state logic with a reducer {/*consolidate-state-logic-with-a-reducer*/}
->>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 
 随着组件复杂度的增加，你将很难一眼看清所有的组件状态更新逻辑。例如，下面的 `TaskApp` 组件有一个数组类型的状态 `tasks`，并通过三个不同的事件处理程序来实现任务的添加、删除和修改：
 
@@ -195,11 +191,7 @@ Reducer 是处理状态的另一种方式。你可以通过三个步骤将 `useS
 2. **编写** 一个 reducer 函数；
 3. 在你的组件中 **使用** reducer。
 
-<<<<<<< HEAD
 ### 第 1 步: 将设置状态的逻辑修改成 dispatch 一个 action {/*step-1-move-from-setting-state-to-dispatching-actions*/}
-=======
-### Step 1: Move from setting state to dispatching actions {/*step-1-move-from-setting-state-to-dispatching-actions*/}
->>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 
 你的事件处理程序目前是通过设置状态来 **实现逻辑的**：
 
@@ -282,13 +274,9 @@ function handleDeleteTask(taskId) {
 
 <Note>
 
-<<<<<<< HEAD
-action 对象可以有多种结构。按照惯例，我们通常会添加一个字符串类型的 `type` 字段来描述发生了什么，并通过其它字段传递额外的信息。`type` 是特定于组件的，在这个例子中 `added` 和 `addded_task` 都可以。选一个能描述清楚发生的事件的名字！
-=======
-An action object can have any shape.
+action 对象可以有多种结构。
 
-By convention, it is common to give it a string `type` that describes what happened, and pass any additional information in other fields. The `type` is specific to a component, so in this example either `'added'` or `'added_task'` would be fine. Choose a name that says what happened!
->>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
+按照惯例，我们通常会添加一个字符串类型的 `type` 字段来描述发生了什么，并通过其它字段传递额外的信息。`type` 是特定于组件的，在这个例子中 `added` 和 `addded_task` 都可以。选一个能描述清楚发生的事件的名字！
 
 ```js
 dispatch({
@@ -300,11 +288,7 @@ dispatch({
 
 </Note>
 
-<<<<<<< HEAD
 ### 第 2 步: 编写一个 reducer 函数 {/*step-2-write-a-reducer-function*/}
-=======
-### Step 2: Write a reducer function {/*step-2-write-a-reducer-function*/}
->>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 
 reducer 函数就是你放置状态逻辑的地方。它接受两个参数，分别为当前 state 和 action 对象，并且返回的是更新后的 state：
 
@@ -355,13 +339,9 @@ function tasksReducer(tasks, action) {
 
 <Note>
 
-<<<<<<< HEAD
-上面的代码使用了 `if/else` 语句，但是在 reducers 中使用 [switch 语句](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/switch) 是一种惯例。两种方式结果是相同的，但 `switch` 语句读起来一目了然。在本文档的后面部分我们会像这样使用：
-=======
-The code above uses if/else statements, but it's a convention to use [switch statements](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/switch) inside reducers. The result is the same, but it can be easier to read switch statements at a glance.
+上面的代码使用了 `if/else` 语句，但是在 reducers 中使用 [switch 语句](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/switch) 是一种惯例。两种方式结果是相同的，但 `switch` 语句读起来一目了然。
 
-We'll be using them throughout the rest of this documentation like so:
->>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
+在本文档的后续部分我们会像这样使用：
 
 ```js
 function tasksReducer(tasks, action) {
@@ -479,11 +459,7 @@ export default function tasksReducer(tasks, action) {
 
 </DeepDive>
 
-<<<<<<< HEAD
 ### 第 3 步: 在组件中使用 reducer {/*step-3-use-the-reducer-from-your-component*/}
-=======
-### Step 3: Use the reducer from your component {/*step-3-use-the-reducer-from-your-component*/}
->>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 
 最后，你需要将 `tasksReducer` 导入到组件中。记得先从 React 中导入 `useReducer` Hook：
 
@@ -890,11 +866,7 @@ li {
 
 当像这样分离关注点时，我们可以更容易地理解组件逻辑。现在，事件处理程序只通过派发 `action` 来指定 *发生了什么*，而 `reducer` 函数通过响应 `actions` 来决定 *状态如何更新*。
 
-<<<<<<< HEAD
-## `useState` 和 `useReducer` 的对比 {/*comparing-usestate-and-usereducer*/}
-=======
-## Comparing `useState` and `useReducer` {/*comparing-usestate-and-usereducer*/}
->>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
+## 对比 `useState` 和 `useReducer` {/*comparing-usestate-and-usereducer*/}
 
 Reducers 并非没有缺点！以下是比较它们的几种方法：
 
@@ -906,22 +878,14 @@ Reducers 并非没有缺点！以下是比较它们的几种方法：
 
 如果你在修改某些组件状态时经常出现问题或者想给组件添加更多逻辑时，我们建议你还是使用 reducer。当然，你也不必整个项目都用 reducer，这是可以自由搭配的。你甚至可以在一个组件中同时使用 `useState` 和 `useReducer`。
 
-<<<<<<< HEAD
 ## 编写一个好的 reducers {/*writing-reducers-well*/}
-=======
-## Writing reducers well {/*writing-reducers-well*/}
->>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 
 编写 `reducers` 时最好牢记以下两点：
 
 * **reducers 必须是纯粹的。** 这一点和 [状态更新函数](/learn/queueing-a-series-of-state-updates) 是相似的，`reducers` 在是在渲染时运行的！（actions 会排队直到下一次渲染)。 这就意味着 `reducers` [必须纯净](/learn/keeping-components-pure)，即当输入相同时，输出也是相同的。它们不应该包含异步请求、定时器或者任何副作用（对组件外部有影响的操作）。它们应该以不可变值的方式去更新 [对象](/learn/updating-objects-in-state) 和 [数组](/learn/updating-arrays-in-state)。
 * **每个 action 都描述了一个单一的用户交互，即使它会引发数据的多个变化。** 举个例子，如果用户在一个由 `reducer` 管理的表单（包含五个表单项）中点击了 `重置按钮`，那么 dispatch 一个 `reset_form` 的 action 比 dispatch 五个单独的 `set_field` 的 action 更加合理。如果你在一个 `reducer` 中打印了所有的 `action` 日志，那么这个日志应该是很清晰的，它能让你以某种步骤复现已发生的交互或响应。这对代码调试很有帮助！
 
-<<<<<<< HEAD
 ## 使用 Immer 简化 reducers {/*writing-concise-reducers-with-immer*/}
-=======
-## Writing concise reducers with Immer {/*writing-concise-reducers-with-immer*/}
->>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 
 与在平常的 state 中 [修改对象](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) 和 [数组](/learn/updating-arrays-in-state#write-concise-update-logic-with-immer) 一样，你可以使用 `Immer` 这个库来简化 `reducer`。在这里，[`useImmerReducer`](https://github.com/immerjs/use-immer#useimmerreducer) 让你可以通过 `push` 或 `arr[i] =` 来修改 state ：
 
@@ -1137,11 +1101,7 @@ Reducers 应该是纯净的，所以它们不应该去修改 state。而 Immer �
 
 <Challenges>
 
-<<<<<<< HEAD
 #### 通过事件处理函数 dispatch actions {/*dispatch-actions-from-event-handlers*/}
-=======
-#### Dispatch actions from event handlers {/*dispatch-actions-from-event-handlers*/}
->>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 
 目前，`ContactList.js` 和 `Chat.js` 中的事件处理程序包含 `// TODO` 注释。这就是为什么输入不起作用，点击按钮也不会改变收件人的原因。
 
@@ -1453,11 +1413,7 @@ textarea {
 
 </Solution>
 
-<<<<<<< HEAD
 #### 发送消息时清空输入框 {/*clear-the-input-on-sending-a-message*/}
-=======
-#### Clear the input on sending a message {/*clear-the-input-on-sending-a-message*/}
->>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 
 目前，点击 `发送` 没有任何反应。我们需要给 `发送` 按钮添加一个事件处理程序，它将：
 
@@ -1906,11 +1862,7 @@ textarea {
 
 </Solution>
 
-<<<<<<< HEAD
 #### 切换 tab 时重置输入框内容 {/*restore-input-values-when-switching-between-tabs*/}
-=======
-#### Restore input values when switching between tabs {/*restore-input-values-when-switching-between-tabs*/}
->>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 
 在这个示例中，切换收件人时总是会清空输入框。
 
@@ -2291,11 +2243,7 @@ textarea {
 
 </Solution>
 
-<<<<<<< HEAD
 #### 从零开始实现 `useReducer` {/*implement-usereducer-from-scratch*/}
-=======
-#### Implement `useReducer` from scratch {/*implement-usereducer-from-scratch*/}
->>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 
 在前面的例子中，你从 React 中导入了 `useReducer` Hook。现在，你将学习自己实现 `useReducer` Hook。你可以从这个模板开始，它不会超过 10 行代码。
 
