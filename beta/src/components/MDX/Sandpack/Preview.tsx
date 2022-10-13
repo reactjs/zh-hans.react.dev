@@ -3,23 +3,34 @@
  */
 
 /* eslint-disable react-hooks/exhaustive-deps */
-import * as React from 'react';
-import {useSandpack, LoadingOverlay} from '@codesandbox/sandpack-react';
+import {useRef, useState, useEffect, useMemo} from 'react';
+import {
+  useSandpack,
+  LoadingOverlay,
+  SandpackStack,
+} from '@codesandbox/sandpack-react';
 import cn from 'classnames';
-
 import {Error} from './Error';
-import {computeViewportSize, generateRandomId} from './utils';
+import {SandpackConsole} from './Console';
+import type {LintDiagnostic} from './useSandpackLint';
+
+/**
+ * TODO: can we use React.useId?
+ */
+const generateRandomId = (): string =>
+  Math.floor(Math.random() * 10000).toString();
 
 type CustomPreviewProps = {
   className?: string;
-  customStyle: Record<string, unknown>;
+  customStyle?: Record<string, unknown>;
   isExpanded: boolean;
+  lintErrors: LintDiagnostic;
 };
 
 function useDebounced(value: any): any {
-  const ref = React.useRef<any>(null);
-  const [saved, setSaved] = React.useState(value);
-  React.useEffect(() => {
+  const ref = useRef<any>(null);
+  const [saved, setSaved] = useState(value);
+  useEffect(() => {
     clearTimeout(ref.current);
     ref.current = setTimeout(() => {
       setSaved(value);
@@ -32,12 +43,13 @@ export function Preview({
   customStyle,
   isExpanded,
   className,
+  lintErrors,
 }: CustomPreviewProps) {
   const {sandpack, listen} = useSandpack();
-  const [isReady, setIsReady] = React.useState(false);
-  const [iframeComputedHeight, setComputedAutoHeight] = React.useState<
-    number | null
-  >(null);
+  const [isReady, setIsReady] = useState(false);
+  const [iframeComputedHeight, setComputedAutoHeight] = useState<number | null>(
+    null
+  );
 
   let {
     error: rawError,
@@ -46,6 +58,7 @@ export function Preview({
     errorScreenRegisteredRef,
     openInCSBRegisteredRef,
     loadingScreenRegisteredRef,
+    status,
   } = sandpack;
 
   if (
@@ -55,11 +68,35 @@ export function Preview({
     // Work around a noisy internal error.
     rawError = null;
   }
+
+  // Memoized because it's fed to debouncing.
+  const firstLintError = useMemo(() => {
+    if (lintErrors.length === 0) {
+      return null;
+    } else {
+      const {line, column, message} = lintErrors[0];
+      return {
+        title: 'Lint Error',
+        message: `${line}:${column} - ${message}`,
+      };
+    }
+  }, [lintErrors]);
+
+  if (rawError == null || rawError.title === 'Runtime Exception') {
+    if (firstLintError !== null) {
+      rawError = firstLintError;
+    }
+  }
+
+  if (rawError != null && rawError.title === 'Runtime Exception') {
+    rawError.title = 'Runtime Error';
+  }
+
   // It changes too fast, causing flicker.
   const error = useDebounced(rawError);
 
-  const clientId = React.useRef<string>(generateRandomId());
-  const iframeRef = React.useRef<HTMLIFrameElement | null>(null);
+  const clientId = useRef<string>(generateRandomId());
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
   // SandpackPreview immediately registers the custom screens/components so the bundler does not render any of them
   // TODO: why are we doing this during render?
@@ -67,31 +104,38 @@ export function Preview({
   errorScreenRegisteredRef.current = true;
   loadingScreenRegisteredRef.current = true;
 
-  React.useEffect(() => {
+  useEffect(function createBundler() {
     const iframeElement = iframeRef.current!;
     registerBundler(iframeElement, clientId.current);
 
-    const unsub = listen((message: any) => {
-      if (message.type === 'resize') {
-        setComputedAutoHeight(message.height);
-      } else if (message.type === 'start') {
-        if (message.firstLoad) {
-          setIsReady(false);
-        }
-      } else if (message.type === 'test') {
-        // Does it make sense that we're listening to "test" event?
-        // Not really. Does it cause less flicker than "done"? Yes.
-        setIsReady(true);
-      }
-    }, clientId.current);
-
     return () => {
-      unsub();
       unregisterBundler(clientId.current);
     };
   }, []);
 
-  const viewportStyle = computeViewportSize('auto', 'portrait');
+  useEffect(
+    function bundlerListener() {
+      const unsubscribe = listen((message: any) => {
+        if (message.type === 'resize') {
+          setComputedAutoHeight(message.height);
+        } else if (message.type === 'start') {
+          if (message.firstLoad) {
+            setIsReady(false);
+          }
+        } else if (message.type === 'done') {
+          setIsReady(true);
+        }
+      }, clientId.current);
+
+      return () => {
+        setIsReady(false);
+        setComputedAutoHeight(null);
+        unsubscribe();
+      };
+    },
+    [status === 'idle']
+  );
+
   const overrideStyle = error
     ? {
         // Don't collapse errors
@@ -99,16 +143,6 @@ export function Preview({
       }
     : null;
   const hideContent = !isReady || error;
-
-  // Allow content to be scrolled if it's too high to fit.
-  // Note we don't want this in the expanded state
-  // because it breaks position: sticky (and isn't needed anyway).
-  // We also don't want this for errors because they expand
-  // parent and making them scrollable is confusing.
-  let overflow;
-  if (!isExpanded && !error && isReady) {
-    overflow = 'auto';
-  }
 
   // WARNING:
   // The layout and styling here is convoluted and really easy to break.
@@ -126,19 +160,21 @@ export function Preview({
   // The best way to test it is to actually go through some challenges.
 
   return (
-    <div
-      className={cn('sp-stack', className)}
+    <SandpackStack
+      className={className}
       style={{
         // TODO: clean up this mess.
         ...customStyle,
-        ...viewportStyle,
         ...overrideStyle,
       }}>
       <div
         className={cn(
-          'p-0 sm:p-2 md:p-4 lg:p-8 bg-card dark:bg-wash-dark h-full relative rounded-b-lg lg:rounded-b-none'
-        )}
-        style={{overflow}}>
+          'p-0 sm:p-2 md:p-4 lg:p-8 bg-card dark:bg-wash-dark h-full relative md:rounded-b-lg lg:rounded-b-none',
+          // Allow content to be scrolled if it's too high to fit.
+          // Note we don't want this in the expanded state
+          // because it breaks position: sticky (and isn't needed anyway).
+          !isExpanded && (error || isReady) ? 'overflow-auto' : null
+        )}>
         <div
           style={{
             padding: 'initial',
@@ -151,36 +187,42 @@ export function Preview({
           }}>
           <iframe
             ref={iframeRef}
-            className="rounded-t-none bg-white shadow-md sm:rounded-lg w-full max-w-full"
-            title="Sandbox Preview"
-            style={{
-              height: iframeComputedHeight || '100%',
-              position: hideContent ? 'absolute' : undefined,
+            className={cn(
+              'rounded-t-none bg-white md:shadow-md sm:rounded-lg w-full max-w-full',
               // We can't *actually* hide content because that would
               // break calculating the computed height in the iframe
               // (which we're using for autosizing). This is noticeable
               // if you make a compiler error and then fix it with code
               // that expands the content. You want to measure that.
-              opacity: hideContent ? 0 : 1,
-              pointerEvents: hideContent ? 'none' : undefined,
+              hideContent
+                ? 'absolute opacity-0 pointer-events-none'
+                : 'opacity-100'
+            )}
+            title="Sandbox Preview"
+            style={{
+              height: iframeComputedHeight || '100%',
               zIndex: isExpanded ? 'initial' : -1,
             }}
           />
         </div>
         {error && (
           <div
-            className="p-2"
-            style={{
+            className={cn(
+              'p-2',
               // This isn't absolutely positioned so that
               // the errors can also expand the parent height.
-              position: isExpanded ? 'sticky' : undefined,
-              top: isExpanded ? '2rem' : '',
-            }}>
+              isExpanded ? 'sticky top-8' : null
+            )}>
             <Error error={error} />
           </div>
         )}
-        <LoadingOverlay clientId={clientId.current} />
+        <LoadingOverlay
+          showOpenInCodeSandbox
+          clientId={clientId.current}
+          loading={!isReady && iframeComputedHeight === null}
+        />
       </div>
-    </div>
+      <SandpackConsole visible={!error} />
+    </SandpackStack>
   );
 }

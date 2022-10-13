@@ -2,18 +2,26 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
+import {useState, useRef, useContext, useEffect, Suspense} from 'react';
 import * as React from 'react';
 import cn from 'classnames';
 import NextLink from 'next/link';
 import {useRouter} from 'next/router';
+import {disableBodyScroll, enableBodyScroll} from 'body-scroll-lock';
 
 import {IconClose} from 'components/Icon/IconClose';
 import {IconHamburger} from 'components/Icon/IconHamburger';
 import {Search} from 'components/Search';
-import {MenuContext} from 'components/useMenu';
-
+import {useActiveSection} from 'hooks/useActiveSection';
 import {Logo} from '../../Logo';
+import {Feedback} from '../Feedback';
 import NavLink from './NavLink';
+import {SidebarContext} from 'components/Layout/useRouteMeta';
+import {SidebarRouteTree} from '../Sidebar/SidebarRouteTree';
+import type {RouteItem} from '../useRouteMeta';
+import sidebarHome from '../../../sidebarHome.json';
+import sidebarLearn from '../../../sidebarLearn.json';
+import sidebarReference from '../../../sidebarReference.json';
 
 declare global {
   interface Window {
@@ -24,24 +32,23 @@ declare global {
 
 const feedbackIcon = (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="18"
-    height="18"
-    viewBox="0 0 24 24">
-    <g fill="none" fillRule="evenodd" transform="translate(-444 -204)">
-      <g fill="currentColor" transform="translate(354.5 205)">
-        <path d="M102.75 14C102.75 14.6905 102.1905 15.25 101.5 15.25 100.8095 15.25 100.25 14.6905 100.25 14 100.25 13.3095 100.8095 12.75 101.5 12.75 102.1905 12.75 102.75 13.3095 102.75 14M101 5.25L101.5 11 102 5.25C102 5.25 102 4.75 101.5 4.75 101 4.75 101 5.25 101 5.25" />
-        <path
-          fillRule="nonzero"
-          d="M100.25282,5.31497221 L100.75282,11.0649722 C100.832243,11.9783426 102.167757,11.9783426 102.24718,11.0649722 L102.74718,5.31497221 L102.75,5.25 C102.75,5.08145956 102.716622,4.88119374 102.60832,4.6645898 C102.407353,4.2626558 102.01337,4 101.5,4 C100.98663,4 100.592647,4.2626558 100.39168,4.6645898 C100.283378,4.88119374 100.25,5.08145956 100.25,5.25 L100.25282,5.31497221 Z M101.249053,5.22834322 L101.24717,5.25 L101.75283,5.25 L101.750947,5.22834322 L101.5,5.20652174 L101.249053,5.22834322 Z M101.25,5.25 L101.75,5.25 C101.75,5.29354044 101.747872,5.30630626 101.73332,5.3354102 C101.688603,5.4248442 101.57587,5.5 101.5,5.5 C101.42413,5.5 101.311397,5.4248442 101.26668,5.3354102 C101.252128,5.30630626 101.25,5.29354044 101.25,5.25 Z"
-        />
-        <path
-          fillRule="nonzero"
-          d="M96.2928885,18.5085 L109.75,18.5085 C111.268908,18.5085 112.5085,17.268908 112.5085,15.75 L112.5085,3.25 C112.5085,1.73109202 111.268908,0.4915 109.75,0.4915 L93.25,0.4915 C91.731092,0.4915 90.4915,1.73109202 90.4915,3.25 L90.4915,21.5 C90.4915,22.3943136 91.5519083,22.8250723 92.1764221,22.2491522 L92.230357,22.1957095 L96.2928885,18.5085 Z M92.0085,3.25 C92.0085,2.56890798 92.568908,2.0085 93.25,2.0085 L109.75,2.0085 C110.431092,2.0085 110.9915,2.56890798 110.9915,3.25 L110.9915,15.75 C110.9915,16.431092 110.431092,16.9915 109.75,16.9915 L96,16.9915 C95.8115227,16.9915 95.6297966,17.0616721 95.4902321,17.1883427 L92.0085,20.3484106 L92.0085,3.25 Z"
-        />
-      </g>
-      <polygon points="444 228 468 228 468 204 444 204" />
-    </g>
+    width="28"
+    height="28"
+    viewBox="0 0 28 28"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M8.41477 2.29921C8.41479 2.29923 8.41476 2.2992 8.41477 2.29921L8.48839 2.35275C8.91454 2.66267 9.22329 3.10774 9.36429 3.61547C9.50529 4.12319 9.47029 4.6637 9.26497 5.14899L8.33926 7.33703H11C11.7072 7.33703 12.3855 7.61798 12.8856 8.11807C13.3857 8.61817 13.6667 9.29645 13.6667 10.0037V12.6704C13.6667 13.5544 13.3155 14.4023 12.6904 15.0274C12.0652 15.6525 11.2174 16.0037 10.3333 16.0037H5C3.93914 16.0037 2.92172 15.5823 2.17157 14.8321C1.42142 14.082 1 13.0646 1 12.0037V10.7531C1 9.68422 1.36696 8.6477 2.03953 7.81688L6.27886 2.58006C6.53107 2.26851 6.89328 2.06562 7.29077 2.01335C7.68823 1.96109 8.09061 2.06347 8.41477 2.29921ZM7.63054 3.37753C7.58264 3.34269 7.52323 3.32759 7.46459 3.33531C7.40594 3.34302 7.35245 3.37296 7.31519 3.41899L3.07585 8.65581C2.59545 9.24925 2.33333 9.98963 2.33333 10.7531V12.0037C2.33333 12.7109 2.61428 13.3892 3.11438 13.8893C3.61448 14.3894 4.29275 14.6704 5 14.6704H10.3333C10.8638 14.6704 11.3725 14.4596 11.7475 14.0846C12.1226 13.7095 12.3333 13.2008 12.3333 12.6704V10.0037C12.3333 9.65007 12.1929 9.31093 11.9428 9.06088C11.6928 8.81084 11.3536 8.67036 11 8.67036H7.33333C7.10979 8.67036 6.90112 8.55832 6.77763 8.37198C6.65413 8.18564 6.63225 7.94981 6.71936 7.74393L8.03701 4.62947C8.125 4.42149 8.14001 4.18984 8.07958 3.97224C8.01916 3.75467 7.88687 3.56396 7.70425 3.43113L7.63054 3.37753Z"
+      fill="currentColor"
+    />
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M19.2517 25.7047C19.2517 25.7047 19.2517 25.7047 19.2517 25.7047L19.1781 25.6512C18.752 25.3412 18.4432 24.8962 18.3022 24.3884C18.1612 23.8807 18.1962 23.3402 18.4015 22.8549L19.3272 20.6669L16.6665 20.6669C15.9593 20.6669 15.281 20.3859 14.7809 19.8858C14.2808 19.3857 13.9998 18.7075 13.9998 18.0002L13.9998 15.3335C13.9998 14.4495 14.351 13.6016 14.9761 12.9765C15.6013 12.3514 16.4491 12.0002 17.3332 12.0002L22.6665 12.0002C23.7274 12.0002 24.7448 12.4216 25.4949 13.1718C26.2451 13.9219 26.6665 14.9393 26.6665 16.0002L26.6665 17.2508C26.6665 18.3197 26.2995 19.3562 25.627 20.187L21.3876 25.4238C21.1354 25.7354 20.7732 25.9383 20.3757 25.9906C19.9783 26.0428 19.5759 25.9404 19.2517 25.7047ZM20.036 24.6264C20.0839 24.6612 20.1433 24.6763 20.2019 24.6686C20.2606 24.6609 20.3141 24.6309 20.3513 24.5849L24.5907 19.3481C25.0711 18.7547 25.3332 18.0143 25.3332 17.2508L25.3332 16.0002C25.3332 15.293 25.0522 14.6147 24.5521 14.1146C24.052 13.6145 23.3738 13.3335 22.6665 13.3335L17.3332 13.3335C16.8027 13.3335 16.294 13.5443 15.919 13.9193C15.5439 14.2944 15.3332 14.8031 15.3332 15.3335L15.3332 18.0002C15.3332 18.3538 15.4736 18.693 15.7237 18.943C15.9737 19.1931 16.3129 19.3335 16.6665 19.3335L20.3332 19.3335C20.5567 19.3335 20.7654 19.4456 20.8889 19.6319C21.0124 19.8183 21.0343 20.0541 20.9471 20.26L19.6295 23.3744C19.5415 23.5824 19.5265 23.8141 19.5869 24.0317C19.6473 24.2492 19.7796 24.4399 19.9623 24.5728L20.036 24.6264Z"
+      fill="currentColor"
+    />
   </svg>
 );
 
@@ -86,121 +93,300 @@ const lightIcon = (
   </svg>
 );
 
-function inferSection(pathname: string): 'learn' | 'reference' | 'home' {
-  if (pathname.startsWith('/learn')) {
-    return 'learn';
-  } else if (pathname.startsWith('/reference')) {
-    return 'reference';
-  } else {
-    return 'home';
-  }
-}
-
 export default function Nav() {
-  const {pathname} = useRouter();
-  const {isOpen, toggleOpen} = React.useContext(MenuContext);
-  const section = inferSection(pathname);
+  const [isOpen, setIsOpen] = useState(false);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const scrollParentRef = useRef<HTMLDivElement>(null);
+  const feedbackAutohideRef = useRef<any>(null);
+  const section = useActiveSection();
+  const {asPath} = useRouter();
+  const feedbackPopupRef = useRef<null | HTMLDivElement>(null);
+
+  // In desktop mode, use the route tree for current route.
+  let routeTree: RouteItem = useContext(SidebarContext);
+  // In mobile mode, let the user switch tabs there and back without navigating.
+  // Seed the tab state from the router, but keep it independent.
+  const [tab, setTab] = useState(section);
+  const [prevSection, setPrevSection] = useState(section);
+  if (prevSection !== section) {
+    setPrevSection(section);
+    setTab(section);
+  }
+  if (isOpen) {
+    switch (tab) {
+      case 'home':
+        routeTree = sidebarHome as RouteItem;
+        break;
+      case 'learn':
+        routeTree = sidebarLearn as RouteItem;
+        break;
+      case 'apis':
+        routeTree = sidebarReference as RouteItem;
+        break;
+    }
+  }
+  // HACK. Fix up the data structures instead.
+  if ((routeTree as any).routes.length === 1) {
+    routeTree = (routeTree as any).routes[0];
+  }
+
+  // While the overlay is open, disable body scroll.
+  useEffect(() => {
+    if (isOpen) {
+      const preferredScrollParent = scrollParentRef.current!;
+      disableBodyScroll(preferredScrollParent);
+      return () => enableBodyScroll(preferredScrollParent);
+    } else {
+      return undefined;
+    }
+  }, [isOpen]);
+
+  // Close the overlay on any navigation.
+  useEffect(() => {
+    setIsOpen(false);
+  }, [asPath]);
+
+  // Also close the overlay if the window gets resized past mobile layout.
+  // (This is also important because we don't want to keep the body locked!)
+  useEffect(() => {
+    const media = window.matchMedia(`(max-width: 1023px)`);
+    function closeIfNeeded() {
+      if (!media.matches) {
+        setIsOpen(false);
+      }
+    }
+    closeIfNeeded();
+    media.addEventListener('change', closeIfNeeded);
+    return () => {
+      media.removeEventListener('change', closeIfNeeded);
+    };
+  }, []);
 
   function handleFeedback() {
-    const nodes: any = document.querySelectorAll(
-      '#_hj_feedback_container button'
-    );
-    if (nodes.length > 0) {
-      nodes[nodes.length - 1].click();
-    } else {
-      window.location.href =
-        'https://github.com/reactjs/reactjs.org/issues/3308';
+    clearTimeout(feedbackAutohideRef.current);
+    setShowFeedback(!showFeedback);
+  }
+
+  // Hide the Feedback widget on any click outside.
+  useEffect(() => {
+    if (!showFeedback) {
+      return;
     }
+    function handleDocumentClickCapture(e: MouseEvent) {
+      if (!feedbackPopupRef.current!.contains(e.target as any)) {
+        e.stopPropagation();
+        e.preventDefault();
+        setShowFeedback(false);
+      }
+    }
+    document.addEventListener('click', handleDocumentClickCapture, {
+      capture: true,
+    });
+    return () =>
+      document.removeEventListener('click', handleDocumentClickCapture, {
+        capture: true,
+      });
+  }, [showFeedback]);
+
+  function selectTab(nextTab: 'learn' | 'apis' | 'home') {
+    setTab(nextTab);
+    scrollParentRef.current!.scrollTop = 0;
   }
 
   return (
-    <nav className="sticky top-0 items-center w-full flex lg:block justify-between bg-wash dark:bg-wash-dark pt-0 lg:pt-4 pr-5 lg:px-5 z-50">
-      <div className="xl:w-full xl:max-w-xs flex items-center">
-        <button
-          type="button"
-          aria-label="Menu"
-          onClick={toggleOpen}
-          className={cn('flex lg:hidden items-center h-full px-4', {
-            'text-link dark:text-link-dark mr-0': isOpen,
-          })}>
-          {!isOpen ? <IconHamburger /> : <IconClose />}
-        </button>
-        <NextLink href="/">
-          <a className="inline-flex text-l font-normal items-center text-primary dark:text-primary-dark py-1 mr-0 sm:mr-3 whitespace-nowrap">
-            <Logo className="text-sm mr-2 w-8 h-8 text-link dark:text-link-dark" />
-            React 中文文档
-          </a>
-        </NextLink>
-        <div className="lg:w-full leading-loose hidden sm:flex flex-initial items-center h-auto pr-5 lg:pr-5 pt-0.5">
-          <div className="px-1 mb-px bg-highlight dark:bg-highlight-dark rounded text-link dark:text-link-dark uppercase font-bold tracking-wide text-xs whitespace-nowrap">
-            Beta
+    <div
+      className={cn(
+        'sticky top-0 lg:bottom-0 lg:h-screen flex flex-col',
+        isOpen && 'h-screen'
+      )}>
+      <nav className="items-center w-full flex lg:block justify-between bg-wash dark:bg-wash-dark pt-0 lg:pt-4 pr-5 lg:px-5 z-50">
+        <div className="xl:w-full xl:max-w-xs flex items-center">
+          <button
+            type="button"
+            aria-label="Menu"
+            onClick={() => setIsOpen(!isOpen)}
+            className={cn('flex lg:hidden items-center h-full px-4', {
+              'text-link dark:text-link-dark mr-0': isOpen,
+            })}>
+            {isOpen ? <IconClose /> : <IconHamburger />}
+          </button>
+          <NextLink href="/">
+            <a className="inline-flex text-l font-normal items-center text-primary dark:text-primary-dark py-1 mr-0 sm:mr-3 whitespace-nowrap">
+              <Logo className="text-sm mr-2 w-8 h-8 text-link dark:text-link-dark" />
+              React 中文文档
+            </a>
+          </NextLink>
+          <div className="lg:w-full leading-loose hidden sm:flex flex-initial items-center h-auto pr-5 lg:pr-5 pt-0.5">
+            <div className="px-1 mb-px bg-highlight dark:bg-highlight-dark rounded text-link dark:text-link-dark uppercase font-bold tracking-wide text-xs whitespace-nowrap">
+              Beta
+            </div>
+          </div>
+          <div className="block dark:hidden">
+            <button
+              type="button"
+              aria-label="Use Dark Mode"
+              onClick={() => {
+                window.__setPreferredTheme('dark');
+              }}
+              className="hidden lg:flex items-center h-full pr-2">
+              {darkIcon}
+            </button>
+          </div>
+          <div className="hidden dark:block">
+            <button
+              type="button"
+              aria-label="Use Light Mode"
+              onClick={() => {
+                window.__setPreferredTheme('light');
+              }}
+              className="hidden lg:flex items-center h-full pr-2">
+              {lightIcon}
+            </button>
           </div>
         </div>
-        <div className="block dark:hidden">
-          <button
-            type="button"
-            aria-label="Use Dark Mode"
-            onClick={() => {
-              window.__setPreferredTheme('dark');
-            }}
-            className="hidden lg:flex items-center h-full pr-2">
-            {darkIcon}
-          </button>
+        <div className="px-0 pt-2 w-full 2xl:max-w-xs hidden lg:flex items-center self-center border-b-0 lg:border-b border-border dark:border-border-dark">
+          <NavLink href="/" isActive={section === 'home'}>
+            首页
+          </NavLink>
+          <NavLink href="/learn" isActive={section === 'learn'}>
+            Learn
+          </NavLink>
+          <NavLink href="/apis/react" isActive={section === 'apis'}>
+            API
+          </NavLink>
         </div>
-        <div className="hidden dark:block">
+        <div className="flex my-4 h-10 mx-0 w-full lg:hidden justify-end lg:max-w-sm">
+          <Search />
           <button
+            aria-label="Give feedback"
             type="button"
-            aria-label="Use Light Mode"
-            onClick={() => {
-              window.__setPreferredTheme('light');
-            }}
-            className="hidden lg:flex items-center h-full pr-2">
-            {lightIcon}
+            className={cn(
+              'inline-flex lg:hidden items-center rounded-full px-1.5 ml-4 lg:ml-6 relative top-px',
+              {
+                'bg-card dark:bg-card-dark': showFeedback,
+              }
+            )}
+            onClick={handleFeedback}>
+            {feedbackIcon}
           </button>
+          <div className="block dark:hidden">
+            <button
+              type="button"
+              aria-label="Use Dark Mode"
+              onClick={() => {
+                window.__setPreferredTheme('dark');
+              }}
+              className="flex lg:hidden items-center p-1 h-full ml-4 lg:ml-6">
+              {darkIcon}
+            </button>
+          </div>
+          <div
+            ref={feedbackPopupRef}
+            className={cn(
+              'fixed top-12 right-0',
+              showFeedback ? 'block' : 'hidden'
+            )}>
+            <Feedback
+              onSubmit={() => {
+                clearTimeout(feedbackAutohideRef.current);
+                feedbackAutohideRef.current = setTimeout(() => {
+                  setShowFeedback(false);
+                }, 1000);
+              }}
+            />
+          </div>
+          <div className="hidden dark:block">
+            <button
+              type="button"
+              aria-label="Use Light Mode"
+              onClick={() => {
+                window.__setPreferredTheme('light');
+              }}
+              className="flex lg:hidden items-center p-1 h-full ml-4 lg:ml-6">
+              {lightIcon}
+            </button>
+          </div>
         </div>
+      </nav>
+
+      {isOpen && (
+        <div className="bg-wash dark:bg-wash-dark px-5 flex justify-end border-b border-border dark:border-border-dark items-center self-center w-full z-10">
+          <TabButton
+            isActive={tab === 'home'}
+            onClick={() => selectTab('home')}>
+            首页
+          </TabButton>
+          <TabButton
+            isActive={tab === 'learn'}
+            onClick={() => selectTab('learn')}>
+            Learn
+          </TabButton>
+          <TabButton
+            isActive={tab === 'apis'}
+            onClick={() => selectTab('apis')}>
+            API
+          </TabButton>
+        </div>
+      )}
+
+      <div
+        ref={scrollParentRef}
+        className="overflow-y-scroll no-bg-scrollbar lg:w-[336px] grow bg-wash dark:bg-wash-dark">
+        <aside
+          className={cn(
+            `lg:grow lg:flex flex-col w-full pb-8 lg:pb-0 lg:max-w-xs z-10`,
+            isOpen ? 'block z-40' : 'hidden lg:block'
+          )}>
+          {!isOpen && (
+            <div className="px-5 sm:pt-10 lg:pt-4">
+              <Search />
+            </div>
+          )}
+          <nav
+            role="navigation"
+            style={{'--bg-opacity': '.2'} as React.CSSProperties} // Need to cast here because CSS vars aren't considered valid in TS types (cuz they could be anything)
+            className="w-full lg:h-auto grow pr-0 lg:pr-5 pt-6 lg:py-6 md:pt-4 lg:pt-4 scrolling-touch scrolling-gpu">
+            {/* No fallback UI so need to be careful not to suspend directly inside. */}
+            <Suspense fallback={null}>
+              <SidebarRouteTree
+                // Don't share state between the desktop and mobile versions.
+                // This avoids unnecessary animations and visual flicker.
+                key={isOpen ? 'mobile-overlay' : 'desktop-or-hidden'}
+                routeTree={routeTree}
+                isForceExpanded={isOpen}
+              />
+            </Suspense>
+            <div className="h-20" />
+          </nav>
+          <div className="fixed bottom-0 hidden lg:block">
+            <Feedback />
+          </div>
+        </aside>
       </div>
-      <div className="px-0 pt-2 w-full 2xl:max-w-xs hidden lg:flex items-center self-center border-b-0 lg:border-b border-border dark:border-border-dark">
-        <NavLink href="/" isActive={section === 'home'}>
-          首页
-        </NavLink>
-        <NavLink href="/learn" isActive={section === 'learn'}>
-          Learn
-        </NavLink>
-        <NavLink href="/reference" isActive={section === 'reference'}>
-          API
-        </NavLink>
-      </div>
-      <div className="flex my-4 h-10 mx-0 w-full lg:hidden justify-end slg:max-w-sm">
-        <Search />
-        <button
-          type="button"
-          className="inline-flex lg:hidden items-center p-1 ml-4 lg:ml-6 relative top-px"
-          onClick={handleFeedback}>
-          {feedbackIcon}
-        </button>
-        <div className="block dark:hidden">
-          <button
-            type="button"
-            aria-label="Use Dark Mode"
-            onClick={() => {
-              window.__setPreferredTheme('dark');
-            }}
-            className="flex lg:hidden items-center p-1 h-full ml-4 lg:ml-6">
-            {darkIcon}
-          </button>
-        </div>
-        <div className="hidden dark:block">
-          <button
-            type="button"
-            aria-label="Use Light Mode"
-            onClick={() => {
-              window.__setPreferredTheme('light');
-            }}
-            className="flex lg:hidden items-center p-1 h-full ml-4 lg:ml-6">
-            {lightIcon}
-          </button>
-        </div>
-      </div>
-    </nav>
+    </div>
+  );
+}
+
+function TabButton({
+  children,
+  onClick,
+  isActive,
+}: {
+  children: any;
+  onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  isActive: boolean;
+}) {
+  const classes = cn(
+    'inline-flex items-center w-full border-b-2 justify-center text-base leading-9 px-3 pb-0.5 hover:text-link hover:gray-5',
+    {
+      'text-link dark:text-link-dark dark:border-link-dark border-link font-bold':
+        isActive,
+      'border-transparent': !isActive,
+    }
+  );
+  return (
+    <button className={classes} onClick={onClick}>
+      {children}
+    </button>
   );
 }

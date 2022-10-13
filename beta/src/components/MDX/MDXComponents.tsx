@@ -2,9 +2,10 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
+import {Children, useContext, useMemo} from 'react';
 import * as React from 'react';
+import cn from 'classnames';
 
-import {APIAnatomy, AnatomyStep} from './APIAnatomy';
 import CodeBlock from './CodeBlock';
 import {CodeDiagram} from './CodeDiagram';
 import ConsoleBlock from './ConsoleBlock';
@@ -19,12 +20,38 @@ import Link from './Link';
 import {PackageImport} from './PackageImport';
 import Recap from './Recap';
 import Sandpack from './Sandpack';
+import Diagram from './Diagram';
+import DiagramGroup from './DiagramGroup';
 import SimpleCallout from './SimpleCallout';
 import TerminalBlock from './TerminalBlock';
 import YouWillLearnCard from './YouWillLearnCard';
 import {Challenges, Hint, Solution} from './Challenges';
 import {IconNavArrow} from '../Icon/IconNavArrow';
 import ButtonLink from 'components/ButtonLink';
+import {TocContext} from './TocContext';
+import type {Toc, TocItem} from './TocContext';
+
+function CodeStep({children, step}: {children: any; step: number}) {
+  return (
+    <span
+      data-step={step}
+      className={cn(
+        'code-step bg-opacity-10 dark:bg-opacity-20 relative rounded px-[6px] py-[1.5px] border-b-[2px] border-opacity-60',
+        {
+          'bg-blue-40 border-blue-40 text-blue-60 dark:text-blue-30':
+            step === 1,
+          'bg-yellow-40 border-yellow-40 text-yellow-60 dark:text-yellow-30':
+            step === 2,
+          'bg-purple-40 border-purple-40 text-purple-60 dark:text-purple-30':
+            step === 3,
+          'bg-green-40 border-green-40 text-green-60 dark:text-green-30':
+            step === 4,
+        }
+      )}>
+      {children}
+    </span>
+  );
+}
 
 const P = (p: JSX.IntrinsicElements['p']) => (
   <p className="whitespace-pre-wrap my-4" {...p} />
@@ -47,7 +74,9 @@ const UL = (p: JSX.IntrinsicElements['ul']) => (
 const Divider = () => (
   <hr className="my-6 block border-b border-border dark:border-border-dark" />
 );
-
+const Wip = ({children}: {children: React.ReactNode}) => (
+  <ExpandableCallout type="wip">{children}</ExpandableCallout>
+);
 const Gotcha = ({children}: {children: React.ReactNode}) => (
   <ExpandableCallout type="gotcha">{children}</ExpandableCallout>
 );
@@ -60,21 +89,11 @@ const Blockquote = ({
   ...props
 }: JSX.IntrinsicElements['blockquote']) => {
   return (
-    <>
-      <blockquote
-        className="mdx-blockquote py-4 px-8 my-8 shadow-inner bg-highlight dark:bg-highlight-dark bg-opacity-50 rounded-lg leading-6 flex relative"
-        {...props}>
-        <span className="block relative">{children}</span>
-      </blockquote>
-      <style jsx global>{`
-        .mdx-blockquote > span > p:first-of-type {
-          margin-bottom: 0;
-        }
-        .mdx-blockquote > span > p:last-of-type {
-          margin-bottom: 1rem;
-        }
-      `}</style>
-    </>
+    <blockquote
+      className="mdx-blockquote py-4 px-8 my-8 shadow-inner bg-highlight dark:bg-highlight-dark bg-opacity-50 rounded-lg leading-6 flex relative"
+      {...props}>
+      <span className="block relative">{children}</span>
+    </blockquote>
   );
 };
 
@@ -135,8 +154,15 @@ function MathI({children}: {children: any}) {
   );
 }
 
-function YouWillLearn({children}: {children: any}) {
-  return <SimpleCallout title="You will learn">{children}</SimpleCallout>;
+function YouWillLearn({
+  children,
+  isChapter,
+}: {
+  children: any;
+  isChapter?: boolean;
+}) {
+  let title = isChapter ? 'In this chapter' : 'You will learn';
+  return <SimpleCallout title={title}>{children}</SimpleCallout>;
 }
 
 // TODO: typing.
@@ -173,14 +199,12 @@ function Illustration({
   alt,
   author,
   authorLink,
-  children,
 }: {
   caption: string;
   src: string;
   alt: string;
   author: string;
   authorLink: string;
-  children: any;
 }) {
   return (
     <div className="my-16 mx-0 2xl:mx-auto max-w-4xl 2xl:max-w-6xl">
@@ -215,7 +239,7 @@ function IllustrationBlock({
   sequential: boolean;
   children: any;
 }) {
-  const imageInfos = React.Children.toArray(children).map(
+  const imageInfos = Children.toArray(children).map(
     (child: any) => child.props
   );
   const images = imageInfos.map((info, index) => (
@@ -249,73 +273,69 @@ function IllustrationBlock({
         <div className="mdx-illustration-block">{images}</div>
       )}
       {author ? <AuthorCredit author={author} authorLink={authorLink} /> : null}
-      <style jsx global>{`
-        .mdx-illustration-block {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          justify-content: center;
-          align-content: stretch;
-          align-items: stretch;
-          gap: 42px;
-        }
-        ol.mdx-illustration-block {
-          gap: 60px;
-        }
-        .mdx-illustration-block li {
-          display: flex;
-          align-items: flex-start;
-          align-content: stretch;
-          justify-content: space-around;
-          position: relative;
-          padding: 1rem;
-        }
-        .mdx-illustration-block figure {
-          display: flex;
-          flex-direction: column;
-          align-content: center;
-          align-items: center;
-
-          justify-content: space-between;
-          position: relative;
-          height: 100%;
-        }
-        .mdx-illustration-block li:after {
-          content: ' ';
-          display: block;
-          position: absolute;
-          top: 50%;
-          right: 100%;
-          transform: translateY(-50%);
-          width: 60px;
-          height: 49px;
-          background: center / contain no-repeat url('/images/g_arrow.png');
-        }
-        .mdx-illustration-block li:first-child:after {
-          content: ' ';
-          display: none;
-        }
-        .mdx-illustration-block img {
-          max-height: 250px;
-          width: 100%;
-        }
-        @media (max-width: 680px) {
-          .mdx-illustration-block {
-            flex-direction: column;
-          }
-          .mdx-illustration-block img {
-            max-height: 200px;
-            width: auto;
-          }
-          .mdx-illustration-block li:after {
-            top: 0;
-            left: 50%;
-            right: auto;
-            transform: translateX(-50%) translateY(-100%) rotate(90deg);
-          }
-        }
-      `}</style>
     </div>
+  );
+}
+
+type NestedTocRoot = {
+  item: null;
+  children: Array<NestedTocNode>;
+};
+
+type NestedTocNode = {
+  item: TocItem;
+  children: Array<NestedTocNode>;
+};
+
+function calculateNestedToc(toc: Toc): NestedTocRoot {
+  const currentAncestors = new Map<number, NestedTocNode | NestedTocRoot>();
+  const root: NestedTocRoot = {
+    item: null,
+    children: [],
+  };
+  const startIndex = 1; // Skip "Overview"
+  for (let i = startIndex; i < toc.length; i++) {
+    const item = toc[i];
+    const currentParent: NestedTocNode | NestedTocRoot =
+      currentAncestors.get(item.depth - 1) || root;
+    const node: NestedTocNode = {
+      item,
+      children: [],
+    };
+    currentParent.children.push(node);
+    currentAncestors.set(item.depth, node);
+  }
+  return root;
+}
+
+function InlineToc() {
+  const toc = useContext(TocContext);
+  const root = useMemo(() => calculateNestedToc(toc), [toc]);
+  return <InlineTocItem items={root.children} />;
+}
+
+function InlineTocItem({items}: {items: Array<NestedTocNode>}) {
+  return (
+    <UL>
+      {items.map((node) => (
+        <LI key={node.item.url}>
+          <Link href={node.item.url}>{node.item.text}</Link>
+          {node.children.length > 0 && <InlineTocItem items={node.children} />}
+        </LI>
+      ))}
+    </UL>
+  );
+}
+
+function LinkWithTodo({href, children, ...props}: JSX.IntrinsicElements['a']) {
+  if (href?.startsWith('TODO')) {
+    return children;
+  }
+
+  return (
+    <Link href={href} {...props}>
+      {children}
+    </Link>
   );
 }
 
@@ -330,15 +350,10 @@ export const MDXComponents = {
   h2: H2,
   h3: H3,
   h4: H4,
-  inlineCode: InlineCode,
   hr: Divider,
-  a: Link,
-  code: CodeBlock,
-  // The code block renders <pre> so we just want a div here.
-  pre: (p: JSX.IntrinsicElements['div']) => <div {...p} />,
-  // Scary: dynamic(() => import('./Scary')),
-  APIAnatomy,
-  AnatomyStep,
+  a: LinkWithTodo,
+  code: InlineCode,
+  pre: CodeBlock,
   CodeDiagram,
   ConsoleBlock,
   Convention,
@@ -347,11 +362,21 @@ export const MDXComponents = {
     title: string;
     excerpt: string;
   }) => <ExpandableExample {...props} type="DeepDive" />,
+  Diagram,
+  DiagramGroup,
+  FullWidth({children}: {children: any}) {
+    return children;
+  },
+  MaxWidth({children}: {children: any}) {
+    return <div className="max-w-4xl ml-0 2xl:mx-auto">{children}</div>;
+  },
   Gotcha,
+  Wip,
   HomepageHero,
   Illustration,
   IllustrationBlock,
   Intro,
+  InlineToc,
   LearnMore,
   Math,
   MathI,
@@ -366,4 +391,12 @@ export const MDXComponents = {
   Challenges,
   Hint,
   Solution,
+  CodeStep,
 };
+
+for (let key in MDXComponents) {
+  if (MDXComponents.hasOwnProperty(key)) {
+    const MDXComponent: any = (MDXComponents as any)[key];
+    MDXComponent.mdxName = key;
+  }
+}

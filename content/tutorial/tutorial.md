@@ -106,7 +106,7 @@ cd ..
 
 ```js
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 ```
 
@@ -1148,7 +1148,7 @@ class Game extends React.Component {
   }
 ```
 
-在 `jumpTo` 方法中, 我们没有更新 state 中的 `history` 属性。这是因为 state 更新被合并了，或者用更简单的话说，React 不会更新 `setState` 方法中未提到的属性。 **[这篇文档](/docs/state-and-lifecycle.html#state-updates-are-merged)**对此有更详细的介绍。
+在 `jumpTo` 方法中, 我们没有更新 state 中的 `history` 属性。这是因为 state 更新被合并了，或者用更简单的话说，React 不会更新 `setState` 方法中未提到的属性。**[这篇文档](/docs/state-and-lifecycle.html#state-updates-are-merged)**对此有更详细的介绍。
 
 接下来，我们还要修改 Game 组件的 `handleClick` 方法，当你点击方格的时候触发该方法。
 

@@ -405,7 +405,7 @@ class BlurExample extends React.Component {
 - [有关色彩对比度的一切以及为何你应该重新考虑它](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
 - [A11yProject —— 什么是色彩对比度](https://a11yproject.com/posts/what-is-color-contrast/)
 
-手工计算你网站上所有恰当的色彩组合会是乏味的。所以，作为代替，你可以[使用 Colorable 来计算出一个完全无障碍的调色板](https://jxnblk.com/colorable/)。
+手工计算你网站上所有恰当的色彩组合会是乏味的。所以，作为代替，你可以[使用 Colorable 来计算出一个完全无障碍的调色板](https://colorable.jxnblk.com/)。
 
 下面介绍的 aXe 和 WAVE 都支持色彩对比度测试并会报告对比度错误。
 
