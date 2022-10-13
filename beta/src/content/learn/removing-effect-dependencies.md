@@ -277,7 +277,7 @@ The last part is important. **If you want to change the dependencies, change the
 
 This might feel like solving an equation. You might start with a goal (for example, to remove a dependency), and you need to "find" the exact code matching that goal. Not everyone finds solving equations fun, and the same thing could be said about writing Effects! Luckily, there is a list of common recipes that you can try below.
 
-<Gotcha>
+<Pitfall>
 
 If you have an existing codebase, you might have some Effects that suppress the linter like this:
 
@@ -291,7 +291,7 @@ useEffect(() => {
 
 **When dependencies don't match the code, there is a very high risk of introducing bugs.** By suppressing the linter, you "lie" to React about the values your Effect depends on. Instead, use the techniques below.
 
-</Gotcha>
+</Pitfall>
 
 <DeepDive title="Why is suppressing the dependency linter so dangerous?">
 
@@ -961,7 +961,7 @@ const roomId1 = 'music';
 const roomId2 = 'music';
 
 // These two strings are the same!
-console.log(Object.is(options1, options2)); // true
+console.log(Object.is(roomId1, roomId2)); // true
 ````
 
 Thanks to this fix, the chat no longer re-connects if you edit the input:

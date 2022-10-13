@@ -64,7 +64,7 @@ npm start
 
 [Next.js 基础教程](https://nextjs.org/learn/foundations/about-nextjs) 是对使用 React 和 Next.js 进行构建的一个完美诠释。
 
-### 主流备选方案 {/*popular-alternatives*/}
+### 主流备选方案 {/*framework-popular-alternatives*/}
 
 * [Gatsby](https://www.gatsbyjs.org/)
 * [Remix](https://remix.run/)

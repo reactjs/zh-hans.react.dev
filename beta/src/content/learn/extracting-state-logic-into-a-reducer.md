@@ -272,9 +272,11 @@ function handleDeleteTask(taskId) {
 
 它是一个普通的 JavaScript 对象。它的结构是由你决定的，但通常来说，它应该至少包含可以表明 *发生了什么事情* 的信息。（在后面的步骤中，你将会学习如何添加一个 `dispatch` 函数。）
 
-<Convention conventionFor="action objects">
+<Note>
 
-action 对象可以有多种结构。按照惯例，我们通常会添加一个字符串类型的 `type` 字段来描述发生了什么，并通过其它字段传递额外的信息。`type` 是特定于组件的，在这个例子中 `added` 和 `addded_task` 都可以。选一个能描述清楚发生的事件的名字！
+action 对象可以有多种结构。
+
+按照惯例，我们通常会添加一个字符串类型的 `type` 字段来描述发生了什么，并通过其它字段传递额外的信息。`type` 是特定于组件的，在这个例子中 `added` 和 `addded_task` 都可以。选一个能描述清楚发生的事件的名字！
 
 ```js
 dispatch({
@@ -284,7 +286,7 @@ dispatch({
 });
 ```
 
-</Convention>
+</Note>
 
 ### 第 2 步: 编写一个 reducer 函数 {/*step-2-write-a-reducer-function*/}
 
@@ -335,9 +337,11 @@ function tasksReducer(tasks, action) {
 
 > 由于 `reducer` 函数接受 `state`（tasks）作为参数，因此你可以 **在组件之外声明它**。**这减少了代码的缩进级别，提升了代码的可读性。
 
-<Convention conventionFor="reducer functions">
+<Note>
 
-上面的代码使用了 `if/else` 语句，但是在 reducers 中使用 [switch 语句](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/switch) 是一种惯例。两种方式结果是相同的，但 `switch` 语句读起来一目了然。在本文档的后面部分我们会像这样使用：
+上面的代码使用了 `if/else` 语句，但是在 reducers 中使用 [switch 语句](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/switch) 是一种惯例。两种方式结果是相同的，但 `switch` 语句读起来一目了然。
+
+在本文档的后续部分我们会像这样使用：
 
 ```js
 function tasksReducer(tasks, action) {
@@ -375,7 +379,7 @@ function tasksReducer(tasks, action) {
 
 如果你还不熟悉 `switch` 语句，使用 `if/else` 也是可以的。
 
-</Convention>
+</Note>
 
 <DeepDive title="为什么叫它 reducer 呢？">
 
@@ -862,7 +866,7 @@ li {
 
 当像这样分离关注点时，我们可以更容易地理解组件逻辑。现在，事件处理程序只通过派发 `action` 来指定 *发生了什么*，而 `reducer` 函数通过响应 `actions` 来决定 *状态如何更新*。
 
-## `useState` 和 `useReducer` 的对比 {/*comparing-usestate-and-usereducer*/}
+## 对比 `useState` 和 `useReducer` {/*comparing-usestate-and-usereducer*/}
 
 Reducers 并非没有缺点！以下是比较它们的几种方法：
 

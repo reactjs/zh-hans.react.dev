@@ -6,11 +6,11 @@ translators:
   - Neo42
 ---
 
-<Gotcha>
+<Pitfall>
 
 在 React 18 中，`render` 函数将被 [`createRoot`](/apis/react-dom/client/createRoot) 函数替换。在 React 18 中使用 `render` 函数，React 会抛出警告，你的应用程序的表现将像运行在 React 17 中表现一致。具体详情请参阅 [博文](https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html#updates-to-client-rendering-apis)。
 
-</Gotcha>
+</Pitfall>
 
 
 <Intro>

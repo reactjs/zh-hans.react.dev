@@ -90,11 +90,11 @@ img { height: 200px; }
 
 使用 `function Profile() { }` 定义名为 `Profile` 的 JavaScript 函数。
 
-<Gotcha>
+<Pitfall>
 
 React 组件是常规的 JavaScript 函数，但**组件的名称必须以大写字母开头**，否则它们将无法运行！
 
-</Gotcha>
+</Pitfall>
 
 ### 第三步：添加标记 {/*step-3-add-markup*/}
 
@@ -116,11 +116,11 @@ return (
 );
 ```
 
-<Gotcha>
+<Pitfall>
 
 没有括号包裹的话，任何在 `return` 下一行的代码都 [将被忽略](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)！
 
-</Gotcha>
+</Pitfall>
 
 ## 使用组件 {/*using-a-component*/}
 
@@ -179,6 +179,37 @@ img { margin: 0 10px 10px 0; height: 90px; }
 组件是常规的 JavaScript 函数，所以你可以将多个组件保存在同一份文件中。当组件相对较小或彼此紧密相关时，这是一种省事的处理方式。如果这个文件变得臃肿，你也可以随时将 `Profile` 移动到单独的文件中。你可以立即在 [关于引入的页面](/learn/importing-and-exporting-components) 中学习如何做到这些。
 
 因为 `Profile` 组件在 `Gallery` 组件中渲染——甚至好几次！——我们可以认为 `Gallery` 是一个 **父组件，** 将每个 `Profile` 渲染为一个“孩子”。这是 React 的神奇之处：你可以只定义组件一次，然后按需多处和多次使用。
+
+<Pitfall>
+
+组件可以渲染其他组件，但是 **请不要嵌套他们的定义**：
+
+```js {2-5}
+export default function Gallery() {
+  // 🔴 永远不要在组件中定义组件
+  function Profile() {
+    // ...
+  }
+  // ...
+}
+```
+
+上面这段代码 [非常慢，并且会导致 bug 产生](/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state)。 因此，你应该在顶层定义每个组件：
+
+```js {5-8}
+export default function Gallery() {
+  // ...
+}
+
+// ✅ 在顶层声明组件
+function Profile() {
+  // ...
+}
+```
+
+当子组件需要使用父组件的数据时，你需要 [通过 props 的形式进行传递](/learn/passing-props-to-a-component)，而不是嵌套定义。
+
+</Pitfall>
 
 <DeepDive title="万物皆组件">
 
