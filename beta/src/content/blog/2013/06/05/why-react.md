@@ -12,7 +12,7 @@ React 是一个用于构建可组合用户界面的库。
 它鼓励创建那些用于呈现随时间变化数据的、可复用的
 UI 组件。
 
-## React 不使用模板。 {/*react-isnt-an-mvc-framework*/}
+## React 不使用模板。 {/*react-doesnt-use-templates*/}
 
 在以往，web 应用程序的 UI 都是使用模板或者 HTML 指令构建的。
 这些模板决定了你可以用来构建
