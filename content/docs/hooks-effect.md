@@ -211,7 +211,7 @@ function FriendStatus(props) {
     }
 
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
-    // 指定在该操作之后如何清理 effect:
+    // 指定在该操作之后如何清除 effect:
     return function cleanup() {
       ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
     };
