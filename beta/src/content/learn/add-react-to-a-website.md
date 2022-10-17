@@ -16,7 +16,7 @@ translators:
 
 * 如何 1 分钟内将 React 添加到 HTML 中
 * JSX 语法是什么及其用法
-* 如果设置可用于生产环境的 JSX 预处理器
+* 如何设置可用于生产环境的 JSX 预处理器
 
 </YouWillLearn>
 
