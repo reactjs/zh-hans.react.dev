@@ -14,7 +14,7 @@ translators:
 <YouWillLearn>
 
 * 最受欢迎的编辑器是哪些
-* 如果自动格式化你的代码
+* 如何自动格式化你的代码
 
 </YouWillLearn>
 
