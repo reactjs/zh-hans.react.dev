@@ -467,13 +467,13 @@ export default function tasksReducer(tasks, action) {
 import {useReducer} from 'react';
 ```
 
-Then you can replace `useState`:
+接下来，你就可以替换掉之前的 `useState`:
 
 ```js
 const [tasks, setTasks] = useState(initialTasks);
 ```
 
-with `useReducer` like so:
+只需要像下面这样使用 `useReducer`:
 
 ```js
 const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
