@@ -41,7 +41,7 @@ JavaScript
 
 </DiagramGroup>
 
-但随着 Web 的交互性越来越强，逻辑越来越决定页面中的内容。JavaScript 需要对 HTML 负责！这也是为什么 **在 React 中，将标记和渲染逻辑耦合在同一个地方 —— 组件。**
+但随着 Web 的交互性越来越强，逻辑越来越决定页面中的内容。JavaScript 需要对 HTML 负责！这也是为什么 **在 React 中，渲染逻辑和标记耦合在同一个地方 —— 组件。**
 
 <DiagramGroup>
 
