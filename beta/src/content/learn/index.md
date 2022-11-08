@@ -101,7 +101,11 @@ function AboutPage() {
 
 ## 添加样式 {/*adding-styles*/}
 
+<<<<<<< HEAD
 在 React 中，你可以使用 `className` 来指定一个 CSS 的 class。它与 HTML 的 [`class`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class) 属性的工作方式相同：
+=======
+In React, you specify a CSS class with `className`. It works the same way as the HTML [`class`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class) attribute:
+>>>>>>> dc20245b99f76819c6762e73ac04170c7cac6760
 
 ```js
 <img className="avatar" />
