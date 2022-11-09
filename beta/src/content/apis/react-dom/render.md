@@ -208,11 +208,7 @@ React 将在 `domNode` 中展示 `<App />` 组件，并对该 DOM 中的内容�
 
 #### 注意事项 {/*caveats*/}
 
-<<<<<<< HEAD
-* 在 React 18 中，`render` 函数已被 [`createRoot`](/apis/react-dom/client/createRoot) 取代。请在 React 18 及后续版本中使用。
-=======
-* In React 18, `render` was replaced by [`createRoot`.](/apis/react-dom/client/createRoot) Please use `createRoot` for React 18 and beyond.
->>>>>>> dc20245b99f76819c6762e73ac04170c7cac6760
+* 在 React 18 中，`render` 函数已被 [`createRoot`](/apis/react-dom/client/createRoot) 取代。请在 React 18 及后续版本中使用 `createRoot`。
 
 * 当你第一次调用 `render` 时，React 会在组件渲染到 `domNode` 中之前，清除掉 `domNode` 中所有已有的 HTML 内容。如果你的 `domNode` 中包含了 React 在服务器上或构建过程中生成的 HTML，请使用 [`hydrate()`](/apis/react-dom/hydrate) 代替，它会将事件处理程序附加到现有的 HTML 中。
 
