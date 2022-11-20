@@ -41,7 +41,7 @@ JavaScript
 
 </DiagramGroup>
 
-But as the Web became more interactive, logic increasingly determined content. JavaScript was in charge of the HTML! This is why **in React, rendering logic and markup live together in the same place—components.**
+但随着网络越来越具有交互性，逻辑也决定了内容的产生。JavaScript负责HTML！这就是为什么**在React中，渲染逻辑和标记都在同一个地方——组件。**
 
 <DiagramGroup>
 
