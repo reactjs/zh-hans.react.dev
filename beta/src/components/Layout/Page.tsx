@@ -10,9 +10,13 @@ import {RouteItem, SidebarContext} from './useRouteMeta';
 import {useActiveSection} from 'hooks/useActiveSection';
 import {Footer} from './Footer';
 import {Toc} from './Toc';
+<<<<<<< HEAD
 import sidebarHome from '../../sidebarHome.json';
+=======
+import SocialBanner from '../SocialBanner';
+>>>>>>> eef09103ab5d885beb9aa7dbbfe2ee6c501af2f8
 import sidebarLearn from '../../sidebarLearn.json';
-import sidebarReference from '../../sidebarReference.json';
+import sidebarAPIs from '../../sidebarAPIs.json';
 import type {TocItem} from 'components/MDX/TocContext';
 
 interface PageProps {
@@ -23,13 +27,10 @@ interface PageProps {
 export function Page({children, toc}: PageProps) {
   const {asPath} = useRouter();
   const section = useActiveSection();
-  let routeTree = sidebarHome as RouteItem;
+  let routeTree = sidebarLearn as RouteItem;
   switch (section) {
     case 'apis':
-      routeTree = sidebarReference as RouteItem;
-      break;
-    case 'learn':
-      routeTree = sidebarLearn as RouteItem;
+      routeTree = sidebarAPIs as RouteItem;
       break;
   }
   return (
