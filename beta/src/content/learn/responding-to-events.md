@@ -418,7 +418,13 @@ button { margin: 5px; }
 
 由于调用了 `e.stopPropagation()`，点击按钮现在将只显示一个 alert（来自 `<button>`），而并非两个（分别来自 `<button>` 和父级 toolbar `<div>`）。点击按钮与点击周围的 toolbar 不同，因此阻止传播对这个 UI 是有意义的。
 
+<<<<<<< HEAD
 <DeepDive title="捕获阶段的事件">
+=======
+<DeepDive>
+
+#### Capture phase events {/*capture-phase-events*/}
+>>>>>>> cb9854a54984ef1288a8a2b8754897b15e75f433
 
 极少数情况下，你可能需要捕获子元素上的所有事件，**即便它们阻止了传播**。例如，你可能想对每次点击进行埋点记录，传播逻辑暂且不论。那么你可以通过在事件名称末尾添加 `Capture` 来实现这一点：
 

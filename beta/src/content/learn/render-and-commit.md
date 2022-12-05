@@ -144,7 +144,13 @@ img { margin: 0 10px 10px 0; }
 
 </Pitfall>
 
+<<<<<<< HEAD
 <DeepDive title="性能优化">
+=======
+<DeepDive>
+
+#### Optimizing performance {/*optimizing-performance*/}
+>>>>>>> cb9854a54984ef1288a8a2b8754897b15e75f433
 
 如果更新的组件在树中的位置非常高，渲染更新后的组件内部所有嵌套组件的默认行为将不会获得最佳性能。如果您遇到了性能问题，[性能](https://reactjs.org/docs/optimizing-performance.html#gatsby-focus-wrapper) 章节描述了几种可选的解决方案 。**不要过早进行优化！**
 
