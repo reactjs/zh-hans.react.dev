@@ -1237,7 +1237,13 @@ textarea {
 
 </Sandpack>
 
+<<<<<<< HEAD
 <DeepDive title="为被移除的组件保留 state">
+=======
+<DeepDive>
+
+#### Preserving state for removed components {/*preserving-state-for-removed-components*/}
+>>>>>>> 5414129fae5d43a767cd0c2836ae1de57dfab05a
 
 在真正的聊天应用中，你可能会想在用户再次选择前一个收件人时恢复输入 state。对于一个不可见的组件，有几种方法可以让它的 state “活下去”：
 

@@ -129,7 +129,13 @@ import Gallery from './Gallery';
 
 </Note>
 
+<<<<<<< HEAD
 <DeepDive title="默认导出 vs 具名导出">
+=======
+<DeepDive>
+
+#### Default vs named exports {/*default-vs-named-exports*/}
+>>>>>>> 5414129fae5d43a767cd0c2836ae1de57dfab05a
 
 这是 JavaScript 里两个主要用来导出值的方式：默认导出和具名导出。到目前为止，我们的示例中只用到了默认导出。但你可以在一个文件中，选择使用其中一种，或者两种都使用。**一个文件里有且仅有一个 _默认_ 导出，但是可以有任意多个 _具名_ 导出。**
 
