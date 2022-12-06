@@ -176,7 +176,13 @@ img { height: 90px }
 
 这个空标签被称作 *[Fragment](/apis/react/Fragment)*. React Fragment 允许你将子元素分组，而不会在 HTML 结构中添加额外节点。
 
+<<<<<<< HEAD
 <DeepDive title="为什么多个 JSX 标签需要被一个父元素包裹？">
+=======
+<DeepDive>
+
+#### Why do multiple JSX tags need to be wrapped? {/*why-do-multiple-jsx-tags-need-to-be-wrapped*/}
+>>>>>>> 2246611e357fde86a58699e12c696537fe57e125
 
 JSX 虽然看起来很像 HTML，但在底层其实被转化为了 JavaScript 对象，你不能在一个函数中返回多个对象，除非用一个数组把他们包装起来。这就是为什么多个 JSX 标签必须要用一个父元素或者 Fragment 来包裹。
 
