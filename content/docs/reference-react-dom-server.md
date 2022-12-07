@@ -17,7 +17,11 @@ var ReactDOMServer = require('react-dom/server');
 
 ## 概览 {#overview}
 
+<<<<<<< HEAD
 这些方法只在支持 **[Node.js Streams](https://nodejs.dev/learn/nodejs-streams) 的环境下可用：**
+=======
+These methods are only available in the **environments with [Node.js Streams](https://nodejs.org/api/stream.html):**
+>>>>>>> 583f9a79a5121d46d47f9035e87bd969bb1330ee
 
 - [`renderToPipeableStream()`](#rendertopipeablestream)
 - [`renderToNodeStream()`](#rendertonodestream) (Deprecated)
