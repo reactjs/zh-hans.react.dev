@@ -149,7 +149,13 @@ export default function TeaSet() {
 
 一般来说，你不应该期望你的组件以任何特定的顺序被渲染。调用 <Math><MathI>y</MathI> = 5<MathI>x</MathI></Math> 和 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> 的先后顺序并不重要：这两个公式相互独立。同样地，每个组件也应该“独立思考”，而不是在渲染过程中试图与其他组件协调，或者依赖于其他组件。渲染过程就像是一场学校考试：每个组件都应该自己计算 JSX！
 
+<<<<<<< HEAD
 <DeepDive title="使用严格模式检测不纯的计算">
+=======
+<DeepDive>
+
+#### Detecting impure calculations with StrictMode {/*detecting-impure-calculations-with-strict-mode*/}
+>>>>>>> d1a3e175bb1933dfc815f990eaa1450140bc9520
 
 尽管你可能还没使用过，但在 React 中，你可以在渲染时读取三种输入：[props](/learn/passing-props-to-a-component)，[state](/learn/state-a-components-memory) 和 [context](/learn/passing-data-deeply-with-context)。你应该始终将这些输入视为只读。
 
@@ -201,7 +207,13 @@ export default function TeaGathering() {
 
 如果可能，请尝试仅通过渲染过程来表达你的逻辑。你会惊讶于这能带给你多少好处！
 
+<<<<<<< HEAD
 <DeepDive title="React 为什么关注纯函数？">
+=======
+<DeepDive>
+
+#### Why does React care about purity? {/*why-does-react-care-about-purity*/}
+>>>>>>> d1a3e175bb1933dfc815f990eaa1450140bc9520
 
 编写纯函数需要遵循一些习惯和规程。但它开启了绝妙的机遇：
 

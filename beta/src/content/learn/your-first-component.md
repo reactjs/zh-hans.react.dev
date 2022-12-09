@@ -211,7 +211,13 @@ function Profile() {
 
 </Pitfall>
 
+<<<<<<< HEAD
 <DeepDive title="万物皆组件">
+=======
+<DeepDive>
+
+#### Components all the way down {/*components-all-the-way-down*/}
+>>>>>>> d1a3e175bb1933dfc815f990eaa1450140bc9520
 
 你的 React 应用程序从“根”组件开始。通常，它会在启动新项目时自动创建。例如，如果你使用 [CodeSandbox](https://codesandbox.io/) 或 [Create React App](https://create-react-app.dev/)，根组件定义在 `src/App.js` 中。如果使用 [Next.js](https://nextjs.org/) 框架，根组件定义在 `pages/index.js` 中。在这些示例中，一直有导出根组件。
 
