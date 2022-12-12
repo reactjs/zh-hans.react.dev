@@ -47,7 +47,16 @@ June 2 & 6, 2023. In-person in Amsterdam, Netherlands + remote first interactivi
 
 [Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
 
+<<<<<<< HEAD
 ## 往届会议 {#past-conferences}
+=======
+### ReactNext 2023 {#reactnext}
+June 27th, 2023. Tel Aviv, Israel
+
+[Website](https://www.react-next.com/) - [Facebook](https://www.facebook.com/ReactNextConf) - [Youtube](https://www.youtube.com/@ReactNext)
+
+## Past Conferences {#past-conferences}
+>>>>>>> c883f623d597852b49f9314bb8133442ef9d3298
 
 ### React Advanced 2022 {#react-advanced-2022}
 October 21 & 25, 2022. In-person in London, UK + remote (hybrid event)
