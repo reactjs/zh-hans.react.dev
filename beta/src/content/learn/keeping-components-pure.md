@@ -57,9 +57,9 @@ React 便围绕着这个概念进行设计。**React 假设你编写的所有组
 function Recipe({ drinkers }) {
   return (
     <ol>    
-      <li>Boil {drinkers} cups of milk.</li>
-      <li>Add {2 * drinkers} spoons of masala spices.</li>
-      <li>Remove from heat, and add {drinkers} spoons of tea.</li>
+      <li>Boil {drinkers} cups of water.</li>
+      <li>Add {drinkers} spoons of tea and {0.5 * drinkers} spoons of spice.</li>
+      <li>Add {0.5 * drinkers} cups of milk to boil and sugar to taste.</li>
     </ol>
   );
 }
@@ -68,8 +68,8 @@ export default function App() {
   return (
     <section>
       <h1>Spiced Chai Recipe</h1>
-      <h2>For one</h2> 
-      <Recipe drinkers={1} />
+      <h2>For two</h2>
+      <Recipe drinkers={2} />
       <h2>For a gathering</h2>
       <Recipe drinkers={4} />
     </section>
@@ -79,15 +79,21 @@ export default function App() {
 
 </Sandpack>
 
+<<<<<<< HEAD
 当你传入参数 `drinkers={1}` 至 `Recipe` 函数，它将返回包含 `1 cups of milk` 的 JSX。
 
 而当你传入参数 `drinkers={4}`，它将返回包含 `4 cups of milk` 的 JSX。
+=======
+When you pass `drinkers={2}` to `Recipe`, it will return JSX containing `2 cups of water`. Always. 
+
+If you pass `drinkers={4}`, it will return JSX containing `4 cups of water`. Always.
+>>>>>>> cfa9498466740a1619a0e53aedbb15e6f42e71d3
 
 就像数学公式一样。
 
 你可以把你的组件当作食谱：如果你遵循它们，并且在烹饪过程中不引入新食材，你每次都会得到相同的菜肴。那这道 “菜肴” 就是组件用于 React [渲染](/learn/render-and-commit) 的 JSX。
 
-<Illustration src="/images/docs/illustrations/i_puritea-recipe.png" alt="A tea recipe for x people: take x cups of water, add 2x spoons of spices, and x spoons of tea!" />
+<Illustration src="/images/docs/illustrations/i_puritea-recipe.png" alt="A tea recipe for x people: take x cups of water, add x spoons of tea and 0.5x spoons of spices, and 0.5x cups of milk" />
 
 ## 副作用：（不符合）预期的后果 {/*side-effects-unintended-consequences*/}
 
@@ -149,7 +155,13 @@ export default function TeaSet() {
 
 一般来说，你不应该期望你的组件以任何特定的顺序被渲染。调用 <Math><MathI>y</MathI> = 5<MathI>x</MathI></Math> 和 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> 的先后顺序并不重要：这两个公式相互独立。同样地，每个组件也应该“独立思考”，而不是在渲染过程中试图与其他组件协调，或者依赖于其他组件。渲染过程就像是一场学校考试：每个组件都应该自己计算 JSX！
 
+<<<<<<< HEAD
 <DeepDive title="使用严格模式检测不纯的计算">
+=======
+<DeepDive>
+
+#### Detecting impure calculations with StrictMode {/*detecting-impure-calculations-with-strict-mode*/}
+>>>>>>> cfa9498466740a1619a0e53aedbb15e6f42e71d3
 
 尽管你可能还没使用过，但在 React 中，你可以在渲染时读取三种输入：[props](/learn/passing-props-to-a-component)，[state](/learn/state-a-components-memory) 和 [context](/learn/passing-data-deeply-with-context)。你应该始终将这些输入视为只读。
 
@@ -201,7 +213,13 @@ export default function TeaGathering() {
 
 如果可能，请尝试仅通过渲染过程来表达你的逻辑。你会惊讶于这能带给你多少好处！
 
+<<<<<<< HEAD
 <DeepDive title="React 为什么关注纯函数？">
+=======
+<DeepDive>
+
+#### Why does React care about purity? {/*why-does-react-care-about-purity*/}
+>>>>>>> cfa9498466740a1619a0e53aedbb15e6f42e71d3
 
 编写纯函数需要遵循一些习惯和规程。但它开启了绝妙的机遇：
 

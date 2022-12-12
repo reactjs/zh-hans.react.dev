@@ -226,7 +226,9 @@ return (
 
 如果你认为你已经习惯了构建工具，并希望它们能为你做更多事，[我们在这描述了一些最流行和易上手的工具链](/learn/start-a-new-react-project)。
 
-<DeepDive title="React without JSX">
+<DeepDive>
+
+#### React without JSX {/*react-without-jsx*/}
 
 最初引入 JSX 是为了想让 React 编写组件的感觉就像编写 HTML 一样简单，但总有例外，你不想或者不能使用 JSX，此时可以参考其他两种解决方案：
 

@@ -381,7 +381,13 @@ function tasksReducer(tasks, action) {
 
 </Note>
 
+<<<<<<< HEAD
 <DeepDive title="为什么叫它 reducer 呢？">
+=======
+<DeepDive>
+
+#### Why are reducers called this way? {/*why-are-reducers-called-this-way*/}
+>>>>>>> cfa9498466740a1619a0e53aedbb15e6f42e71d3
 
 尽管 `reducer` 可以 “减少” 组件内的代码量，但它实际上是以数组上的 [`reduce()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) 方法命名的。
 
