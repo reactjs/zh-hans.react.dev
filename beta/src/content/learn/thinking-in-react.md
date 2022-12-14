@@ -240,7 +240,9 @@ td {
 
 这就意味着只有搜索文本和复选框的值是 state！非常好!
 
-<DeepDive title="Props vs State">
+<DeepDive>
+
+#### Props vs State {/*props-vs-state*/}
 
 在 React 中有两种 "模型" 数据: props 和 state。下面是它们的不同之处:
 
