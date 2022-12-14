@@ -25,14 +25,14 @@ author: [bvaughn]
 
 我们在 Facebook 上维护了超过 50,000 个 React 组件，我们不打算立即重写它们。我们知道迁移需要时间。我们将与 React 社区中的每个人一起采取逐步迁移的方式。
 
-If you don't have the time to migrate or test these components, we recommend running a ["codemod"](https://medium.com/@cpojer/effective-javascript-codemods-5a6686bb46fb) script that renames them automatically:
+如果你没有时间迁移或测试这些组件，我们推荐你运行 ["codemod"](https://medium.com/@cpojer/effective-javascript-codemods-5a6686bb46fb) 脚本来自动进行重命名：
 
 ```bash
 cd your_project
 npx react-codemod rename-unsafe-lifecycles
 ```
 
-Learn more about this codemod on the [16.9.0 release post.](https://reactjs.org/blog/2019/08/08/react-v16.9.0#renaming-unsafe-lifecycle-methods)
+欲想了解更多关于 `codemod`，请参阅 [16.9.0](https://reactjs.org/blog/2019/08/08/react-v16.9.0#renaming-unsafe-lifecycle-methods) 博文。
 
 ---
 
@@ -98,14 +98,7 @@ class Example extends React.Component {
 
 ### 初始化 state {/*initializing-state*/}
 
-<<<<<<< HEAD
-这个例子显示了组件在 `componentWillMount` 中调用 `setState`：
-`embed:update-on-async-rendering/initializing-state-before.js`
-
-对于这种类型的组件，最简单的重构是将 state 的初始化，移到构造函数或属性的初始化器内，如下所示：
-`embed:update-on-async-rendering/initializing-state-after.js`
-=======
-This example shows a component with `setState` calls inside of `componentWillMount`:
+这是一个在 `componentWillMount` 中调用 `setState` 的示例组件：
 
 ```js {5-10}
 // Before
@@ -121,7 +114,7 @@ class ExampleComponent extends React.Component {
 }
 ```
 
-The simplest refactor for this type of component is to move state initialization to the constructor or to a property initializer, like so:
+对于这种类型的组件，最简单的重构方式是将状态初始化迁移到构造函数或属性初始化器中，具体如下：
 
 ```js {3-6}
 // After
@@ -132,15 +125,10 @@ class ExampleComponent extends React.Component {
   };
 }
 ```
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
 
 ### 获取外部数据 {/*fetching-external-data*/}
 
-<<<<<<< HEAD
-以下是使用 `componentWillMount` 获取外部数据的组件的示例：
-`embed:update-on-async-rendering/fetching-external-data-before.js`
-=======
-Here is an example of a component that uses `componentWillMount` to fetch external data:
+这是一个使用 `componentWillMount` 来获取外部数据的组件示例：
 
 ```js {7-14}
 // Before
@@ -173,15 +161,10 @@ class ExampleComponent extends React.Component {
   }
 }
 ```
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
 
 上述代码对于服务器渲染（不使用外部数据）和即将推出的异步渲染模式（可能多次启动请求）都存在问题。
 
-<<<<<<< HEAD
-大多数用例推荐的升级方式是将数据获取移到 `componentDidMount`：
-`embed:update-on-async-rendering/fetching-external-data-after.js`
-=======
-The recommended upgrade path for most use cases is to move data-fetching into `componentDidMount`:
+对于大多数用例来说，推荐的升级路径是将数据获取迁移到 `componentDidMount` 中：
 
 ```js {7-14}
 // After
@@ -214,7 +197,6 @@ class ExampleComponent extends React.Component {
   }
 }
 ```
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
 
 有一个常见的误解是，在 `componentWillMount` 中获取数据可以避免第一次渲染为空的状态。实际上，这是不对的，因为 React 总是在 `componentWillMount` 之后立即执行 `render`。如果在 `componentWillMount` 触发时数据不可用，那么第一次 `render` 仍然会显示加载的状态，而不管你在哪里初始化获取数据。这就是为什么在绝大多数情况下，将获取数据移到 `componentDidMount` 没有明显效果的原因。
 
@@ -228,11 +210,7 @@ class ExampleComponent extends React.Component {
 
 ### 添加事件监听器（或订阅） {/*adding-event-listeners-or-subscriptions*/}
 
-<<<<<<< HEAD
-下面是一个示例，在组件挂载时订阅了外部事件：
-`embed:update-on-async-rendering/adding-event-listeners-before.js`
-=======
-Here is an example of a component that subscribes to an external event dispatcher when mounting:
+这是一个在挂载组件时订阅了外部事件 dispatcher 的组件示例：
 
 ```js {3-12}
 // Before
@@ -261,17 +239,12 @@ class ExampleComponent extends React.Component {
   };
 }
 ```
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
 
 遗憾的是，这可能导致服务器渲染（永远不会调用 `componentWillUnmount`）和异步渲染（在渲染完成之前可能被中断，导致不调用 `componentWillUnmount`）的内存泄漏。
 
 人们通常认为 `componentWillMount` 和 `componentWillUnmount` 是成对出现的，但这并不能保证。只有调用了 `componentDidMount` 之后，React 才能保证稍后调用 `componentWillUnmount` 进行清理。
 
-<<<<<<< HEAD
-因此，添加监听器/订阅的推荐方法是使用 `componentDidMount` 生命周期：
-`embed:update-on-async-rendering/adding-event-listeners-after.js`
-=======
-For this reason, the recommended way to add listeners/subscriptions is to use the `componentDidMount` lifecycle:
+因此，我们推荐使用 `componentDidMount` 生命周期函数来添加监听/订阅：
 
 ```js {3-5,7-24}
 // After
@@ -312,7 +285,6 @@ class ExampleComponent extends React.Component {
   };
 }
 ```
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
 
 有时，更新订阅来响应属性变更非常重要。如果你正在使用像 Redux 或 MobX 这样的库，库的容器组件应该为你处理了这个问题。对于应用程序作者，我们创建了一个小型库，[`create-subscription`](https://github.com/facebook/react/tree/main/packages/create-subscription)，来帮助解决这个问题。我们将它与 React 16.3 一起发布。
 
@@ -360,11 +332,7 @@ const Subscription = createSubscription({
 >
 > 旧的 `componentWillReceiveProps` 和新的 `getDerivedStateFromProps` 方法都会给组件增加明显的复杂性。这通常会导致 [bug](/blog/2018/06/07/you-probably-dont-need-derived-state#common-bugs-when-using-derived-state)。考虑 **[派生 state 的简单替代方法](/blog/2018/06/07/you-probably-dont-need-derived-state)** 使组件可预测且可维护。
 
-<<<<<<< HEAD
-这是一个示例，组件使用过时的 `componentWillReceiveProps` 生命周期基于新的 `props` 更新 `state`：
-`embed:update-on-async-rendering/updating-state-from-props-before.js`
-=======
-Here is an example of a component that uses the legacy `componentWillReceiveProps` lifecycle to update `state` based on new `props` values:
+下面是一个组件示例，该组件使用了传统的 `componentWillReceiveProps` 生命周期函数，根据新的 `props` 值来更新 `state`：
 
 ```js {7-14}
 // Before
@@ -383,15 +351,10 @@ class ExampleComponent extends React.Component {
   }
 }
 ```
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
 
 尽管上面的代码本身没有问题，但是 `componentWillReceiveProps` 生命周期经常被误用，_会_ 产生问题。因此，该方法将被废弃。
 
-<<<<<<< HEAD
-从 16.3 版本开始，当 `props` 变化时，建议使用新的 `static getDerivedStateFromProps` 生命周期更新 `state`。创建组件以及每次组件由于 props 或 state 的改变而重新渲染时都会调用该生命周期：
-`embed:update-on-async-rendering/updating-state-from-props-after.js`
-=======
-As of version 16.3, the recommended way to update `state` in response to `props` changes is with the new `static getDerivedStateFromProps` lifecycle. It is called when a component is created and each time it re-renders due to changes to props or state:
+从 v16.3 开始，推荐使用新的 `static getDerivedStateFromProps` 生命周期来更新 `state`，以相应 `props` 的变化。当组件被创建时，以及每次 props 或状态发生变化触发重渲染时，都会调用该函数：
 
 ```js {5-8,10-20}
 // After
@@ -416,7 +379,6 @@ class ExampleComponent extends React.Component {
   }
 }
 ```
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
 
 在上面的示例中，你可能会注意到 `props.currentRow` 在 state 中的镜像（`state.lastRow`）。这使得 `getDerivedStateFromProps` 能够像在 `componentWillReceiveProps` 中相同的方式访问上一个 props 的值。
 
@@ -431,11 +393,7 @@ class ExampleComponent extends React.Component {
 
 ### 调用外部回调 {/*invoking-external-callbacks*/}
 
-<<<<<<< HEAD
-下面是一个组件的示例，它在内部 state 发生变化时调用了外部函数：
-`embed:update-on-async-rendering/invoking-external-callbacks-before.js`
-=======
-Here is an example of a component that calls an external function when its internal state changes:
+下面的组件示例会在其内部状态发生变化时，调用一个外部函数：
 
 ```js {3-10}
 // Before
@@ -450,15 +408,10 @@ class ExampleComponent extends React.Component {
   }
 }
 ```
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
 
 有时人们使用 `componentWillUpdate` 是出于一种错误的担心，即当 `componentDidUpdate` 触发时，更新其他组件的 state 已经"太晚"了。事实并非如此。React 可确保在用户看到更新的 UI 之前，刷新在 `componentDidMount` 和 `componentDidUpdate` 期间发生的任何 `setState` 调用。通常，最好避免这样的级联更新，但在某些情况下，这些更新是必需的（例如：如果你需要在测量渲染的 DOM 元素后，定位工具的提示）。
 
-<<<<<<< HEAD
 不管怎样，在异步模式下使用 `componentWillUpdate` 都是不安全的，因为外部回调可能会在一次更新中被多次调用。相反，应该使用 `componentDidUpdate` 生命周期，因为它保证每次更新只调用一次：
-`embed:update-on-async-rendering/invoking-external-callbacks-after.js`
-=======
-Either way, it is unsafe to use `componentWillUpdate` for this purpose in async mode, because the external callback might get called multiple times for a single update. Instead, the `componentDidUpdate` lifecycle should be used since it is guaranteed to be invoked only once per update:
 
 ```js {3-10}
 // After
@@ -473,7 +426,6 @@ class ExampleComponent extends React.Component {
   }
 }
 ```
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
 
 ### props 更新的副作用 {/*side-effects-on-props-change*/}
 
@@ -505,14 +457,7 @@ class ExampleComponent extends React.Component {
 
 ### `props` 更新时获取外部数据 {/*fetching-external-data-when-props-change*/}
 
-<<<<<<< HEAD
 下面是一个组件的示例，它根据 `props` 的值获取外部数据：
-`embed:update-on-async-rendering/updating-external-data-when-props-change-before.js`
-
-此组件的推荐升级路径是将数据更新移动到 `componentDidUpdate`。你还可以使用新的 `getDerivedStateFromProps` 生命周期，在渲染新的 props 之前清除旧数据：
-`embed:update-on-async-rendering/updating-external-data-when-props-change-after.js`
-=======
-Here is an example of a component that fetches external data based on `props` values:
 
 ```js {11-16}
 // Before
@@ -557,7 +502,7 @@ class ExampleComponent extends React.Component {
 }
 ```
 
-The recommended upgrade path for this component is to move data updates into `componentDidUpdate`. You can also use the new `getDerivedStateFromProps` lifecycle to clear stale data before rendering the new props:
+此组件的推荐升级路径是将数据更新移动到 `componentDidUpdate`。你还可以使用新的 `getDerivedStateFromProps` 生命周期，在渲染新的 props 之前清除旧数据：
 
 ```js {7-19}
 // After
@@ -615,7 +560,6 @@ class ExampleComponent extends React.Component {
   }
 }
 ```
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
 
 > 注意
 >
@@ -623,11 +567,7 @@ class ExampleComponent extends React.Component {
 
 ### 更新前读取 DOM 属性 {/*reading-dom-properties-before-an-update*/}
 
-<<<<<<< HEAD
 下面是一个组件的示例，该组件在更新之前从 DOM 中读取属性，以便在列表中保持滚动的位置：
-`embed:update-on-async-rendering/react-dom-properties-before-update-before.js`
-=======
-Here is an example of a component that reads a property from the DOM before an update in order to maintain scroll position within a list:
 
 ```js {5-12,14-23}
 class ScrollingList extends React.Component {
@@ -667,7 +607,6 @@ class ScrollingList extends React.Component {
   };
 }
 ```
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
 
 在上面的示例中，`componentWillUpdate` 用于读取 DOM 属性。但是，对于异步渲染，“渲染”阶段的生命周期（如 `componentWillUpdate` 和 `render`）和"提交"阶段的生命周期（如 `componentDidUpdate`）之间可能存在延迟。如果用户在这段时间内调整窗口大小，那么从 `componentWillUpdate` 读取的 `scrollHeight` 值将过时。
 
@@ -742,11 +681,7 @@ npm install react-lifecycles-compat --save
 
 接下来，更新组件使用新的生命周期（如上所述）。
 
-<<<<<<< HEAD
 最后，使用 polyfill 让组件向后兼容旧版本的 React：
-`embed:update-on-async-rendering/using-react-lifecycles-compat.js`
-=======
-Lastly, use the polyfill to make your component backwards compatible with older versions of React:
 
 ```js {2,5,11}
 import React from 'react';
@@ -763,4 +698,3 @@ polyfill(ExampleComponent);
 
 export default ExampleComponent;
 ```
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d

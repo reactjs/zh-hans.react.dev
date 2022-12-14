@@ -6,11 +6,7 @@ sectionid: community
 permalink: community/team.html
 ---
 
-<<<<<<< HEAD
-React 的开发工作由 Facebook 专门工作小组全职领导。它也接受来自世界各地开发者们的贡献。
-=======
-React development is led by a small dedicated team working full time at Meta. It also receives contributions from people all over the world.
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
+React 的开发工作由 Meta 专门工作小组全职领导。它也接受来自世界各地开发者们的贡献。
 
 ## 走近 React 团队 {#meet-the-react-team}
 
@@ -26,17 +22,6 @@ React 团队成员全职专注于从事核心组件 API、React DOM 和 React Na
 
 Andrew 通过 WordPress 制作网站开始接触 Web 开发，最终走上了 JavaScript 这条不归路。他最喜欢的业余活动是去 KTV 唱歌。Andrew 时而是迪士尼恶棍，时而是迪士尼公主，这取决于他当天的状态。
 
-<<<<<<< HEAD
-### Brian Vaughn {#brian-vaughn}
-
-![Brian Vaughn](../images/team/bvaughn.jpg)
-
-[@bvaughn on GitHub](https://github.com/bvaughn) &middot; [@brian\_d\_vaughn on Twitter](https://twitter.com/brian_d_vaughn)
-
-Brian 在大学中主修艺术，为了支付学费而兼职学习了编程。后来，他意识到自己更喜欢从事开源方面的工作。Brian 有一个 [单人乐队](https://soundcloud.com/brianvaughn/) 和两个 [双人](https://soundcloud.com/pilotlessdrone) [乐队](https://soundcloud.com/pinwurm)。同时，他还拥有一只可爱的猫咪。
-
-=======
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
 ### Dan Abramov {#dan-abramov}
 
 ![Dan Abramov](../images/team/gaearon.jpg)
@@ -89,19 +74,7 @@ Luna 学习编程是因为她觉得通过编程可以创造电子游戏。然而
 
 [@mofeiZ on GitHub](https://github.com/mofeiZ)]
 
-<<<<<<< HEAD
-Marco 的第一门编程语言是汇编，因为他可以通过汇编来侵入电子游戏。如今，网络游戏愈发安全，所以他退而求其次的选择公平竞技（大部分情况下）。闲暇时，他会在跑步机上玩游戏，并制作一些他从未完成的艺术品。希望他的 PR 不会有相同的命运。
-
-### Rachel Nabors {#rachel-nabors}
-
-![Rachel](../images/team/rnabors.jpg)
-
-[@rachelnabors on GitHub](https://github.com/rachelnabors) &middot; [@rachelnabors on Twitter](https://twitter.com/rachelnabors)
-
-Rachel 曾经编写过一本 [关于 UI 动画的书](https://abookapart.com/products/animation-at-work)，并与 MDN 和 W3C 合作开发了 Web 动画 API。现在她整忙于 React 团队的教程和社区工程。暗地里，她是一个获奖的少女漫画家。在公司厨房里，曾看到过她泡花茶。
-=======
-Mofei started programming when she realized it can help her cheat in video games. She focused on operating systems in undergrad / grad school, but now finds herself happily tinkering on React. Outside of work, she enjoys debugging bouldering problems and planning her next backpacking trip(s).
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
+Mofei 在发现编程可以帮助她在电子游戏中作弊时，入门了编程。她在本科/研究生阶段专注于操作系统方向，但现在她发现自己喜欢为 React 解决问题。工作之余，她喜欢攀岩以计划下一次背包旅行。
 
 ### Rick Hanlon {#rick-hanlon}
 
@@ -157,9 +130,6 @@ Seth 从小就学习编程，在亚利桑那州图森市长大。放学后，他
 
 [@sophiebits on GitHub](https://github.com/sophiebits) &middot; [@sophiebits on Twitter](https://twitter.com/sophiebits)
 
-<<<<<<< HEAD
-Xuan 小时候接触过编程，用 Flash 制作游戏。他在大学里从事数字媒体艺术，但最终制作编译器吸引住了——正好 React 需要一个。工作之余，喜欢拿铁艺术，热爱网球和乒乓球。
-=======
 Four days after React was released, Sophie rewrote the entirety of her then-current project to use it, which she now realizes was perhaps a bit reckless. After she became the project's #1 committer, she wondered why she wasn't getting paid by Facebook like everyone else was and joined the team officially to lead React through its adolescent years. Though she quit that job years ago, somehow she's still in the team's group chats and “providing value”.
 
 ### Tianyu Yao {#tianyu-yao}
@@ -177,7 +147,6 @@ Tianyu’s interest in computers started as a kid because he loves video games. 
 [@yuzhi on GitHub](https://github.com/yuzhi) &middot; [@yuzhiz on Twitter](https://twitter.com/yuzhiz)
 
 Yuzhi studied Computer Science in school. She liked the instant gratification of seeing code come to life without having to physically be in a laboratory. Now she’s a manager in the React org. Before management, she used to work on the Relay data fetching framework. In her spare time, Yuzhi enjoys optimizing her life via gardening and home improvement projects.
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
 
 ## 鸣谢 {#acknowledgements}
 

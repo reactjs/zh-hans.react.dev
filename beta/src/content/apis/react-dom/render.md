@@ -181,19 +181,15 @@ export default function App({counter}) {
 
 ### `render(reactNode, domNode, callback?)` {/*render*/}
 
-<<<<<<< HEAD
-通过调用 `render` 函数，可以在浏览器的 DOM 元素中展示 React 组件。
-=======
 <Deprecated>
 
-In React 18, `render` was replaced by [`createRoot`.](/apis/react-dom/client/createRoot) Using `render` in React 18 will warn that your app will behave as if it’s running React 17. Learn more [here.](https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html#updates-to-client-rendering-apis)
+在 React 18 中，`render` 已被 [`createRoot`](/apis/react-dom/client/createRoot) 取代。在 React 18 中使用 `render` 会和在 React 17 中运行效果一致，但控制台会发出警告。欲了解更多，请参阅 [博文](https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html#updates-to-client-rendering-apis)。
 
-This API will be removed in a future major version of React.
+在未来 React 发布主要版本时，此 API 将被移除。
 
 </Deprecated>
 
-Call `render` to display a React component inside a browser DOM element.
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
+通过调用 `render` 函数，可以在浏览器的 DOM 元素中展示 React 组件。
 
 ```js
 const domNode = document.getElementById('root');

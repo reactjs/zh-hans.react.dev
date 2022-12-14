@@ -29,13 +29,9 @@ permalink: community/courses.html
 
 ## 付费课程 {#paid-courses}
 
-<<<<<<< HEAD
-- [Egghead.io](https://egghead.io/browse/frameworks/react) - 关于 React 和许多其他主题的教学短视频。
-=======
-- [Meta Front-End Developer Professional Certificate](https://www.coursera.org/professional-certificates/meta-front-end-developer) - Launch your career as a front-end developer. Build job-ready skills for an in-demand career and earn a credential from Meta. No degree or prior experience required to get started.
+- [Meta 前端开发者专业证书](https://www.coursera.org/professional-certificates/meta-front-end-developer) - 开启你的职业生涯，成为一名前端开发者。为一个岗位需求庞大的职业建立就业准备技能，并获得 Meta 的认证。不需要任何学位或工作经验即可开始。
 
-- [Egghead.io](https://egghead.io/browse/frameworks/react) - Short instructional videos on React and many other topics.
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
+- [Egghead.io](https://egghead.io/browse/frameworks/react) - 关于 React 和许多其他主题的教学短视频。
 
 - [Frontend Masters](https://frontendmasters.com/learn/react/) - 关于 React 的视频课。
 

@@ -10,11 +10,6 @@ import {RouteItem, SidebarContext} from './useRouteMeta';
 import {useActiveSection} from 'hooks/useActiveSection';
 import {Footer} from './Footer';
 import {Toc} from './Toc';
-<<<<<<< HEAD
-import sidebarHome from '../../sidebarHome.json';
-=======
-import SocialBanner from '../SocialBanner';
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
 import sidebarLearn from '../../sidebarLearn.json';
 import sidebarAPIs from '../../sidebarAPIs.json';
 import type {TocItem} from 'components/MDX/TocContext';

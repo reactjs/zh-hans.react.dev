@@ -242,16 +242,9 @@ export default function Nav() {
           </div>
         </div>
         <div className="px-0 pt-2 w-full 2xl:max-w-xs hidden lg:flex items-center self-center border-b-0 lg:border-b border-border dark:border-border-dark">
-<<<<<<< HEAD
-          <NavLink href="/" isActive={section === 'home'}>
-            首页
-          </NavLink>
-          <NavLink href="/learn" isActive={section === 'learn'}>
-=======
           <NavLink
             href="/learn"
             isActive={section === 'learn' || section === 'home'}>
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
             Learn
           </NavLink>
           <NavLink href="/apis/react" isActive={section === 'apis'}>
@@ -315,16 +308,7 @@ export default function Nav() {
       {isOpen && (
         <div className="bg-wash dark:bg-wash-dark px-5 flex justify-end border-b border-border dark:border-border-dark items-center self-center w-full z-10">
           <TabButton
-<<<<<<< HEAD
-            isActive={tab === 'home'}
-            onClick={() => selectTab('home')}>
-            首页
-          </TabButton>
-          <TabButton
-            isActive={tab === 'learn'}
-=======
             isActive={tab === 'learn' || tab === 'home'}
->>>>>>> bad27d1a044cd0e90801446a48554b505dd5bb0d
             onClick={() => selectTab('learn')}>
             Learn
           </TabButton>
