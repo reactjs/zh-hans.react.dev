@@ -1653,11 +1653,11 @@ function Page({ url, shoppingCart }) {
 }
 ```
 
-**What if you want to log a new page visit after every `url` change, but *not* if only the `shoppingCart` changes?** You can't exclude `shoppingCart` from dependencies without breaking the [reactivity rules.](#specifying-reactive-dependencies) However, you can express that you *don't want* a piece of code to "react" to changes even though it is called from inside an Effect. To do this, [declare an *Event function*](/learn/separating-events-from-effects#declaring-an-event-function) with the [`useEvent`](/apis/react/useEvent) Hook, and move the code that reads `shoppingCart` inside of it:
+**What if you want to log a new page visit after every `url` change, but *not* if only the `shoppingCart` changes?** You can't exclude `shoppingCart` from dependencies without breaking the [reactivity rules.](#specifying-reactive-dependencies) However, you can express that you *don't want* a piece of code to "react" to changes even though it is called from inside an Effect. [Declare an *Effect Event*](/learn/separating-events-from-effects#declaring-an-effect-event) with the [`useEffectEvent`](/apis/react/useEffectEvent) Hook, and move the code that reads `shoppingCart` inside of it:
 
 ```js {2-4,7,8}
 function Page({ url, shoppingCart }) {
-  const onVisit = useEvent(visitedUrl => {
+  const onVisit = useEffectEvent(visitedUrl => {
     logVisit(visitedUrl, shoppingCart.length)
   });
 
@@ -1668,9 +1668,9 @@ function Page({ url, shoppingCart }) {
 }
 ```
 
-**Event functions are not reactive and don't need to be specified as dependencies of your Effect.** This is what lets you put non-reactive code (where you can read the latest value of some props and state) inside of them. For example, by reading `shoppingCart` inside of `onVisit`, you ensure that `shoppingCart` won't re-run your Effect.
+**Effect Events are not reactive and must always be omitted from dependencies of your Effect.** This is what lets you put non-reactive code (where you can read the latest value of some props and state) inside of them. For example, by reading `shoppingCart` inside of `onVisit`, you ensure that `shoppingCart` won't re-run your Effect. In the future, the linter will support `useEffectEvent` and check that you omit Effect Events from dependencies.
 
-[Read more about how Event functions let you separate reactive and non-reactive code.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-event-functions)
+[Read more about how Effect Events let you separate reactive and non-reactive code.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)
 
 
 ---
@@ -1750,6 +1750,8 @@ function ChatRoom({ roomId }) {
 * If some of your dependencies are objects or functions defined inside the component, there is a risk that they will **cause the Effect to re-run more often than needed.** To fix this, remove unnecessary [object](#removing-unnecessary-object-dependencies) and [function](#removing-unnecessary-function-dependencies) dependencies. You can also [extract state updates](#updating-state-based-on-previous-state-from-an-effect) and [non-reactive logic](#reading-the-latest-props-and-state-from-an-effect) outside of your Effect.
 
 * If your Effect wasn't caused by an interaction (like a click), React will let the browser **paint the updated screen first before running your Effect.** If your Effect is doing something visual (for example, positioning a tooltip), and the delay is noticeable (for example, it flickers), you need to replace `useEffect` with [`useLayoutEffect`.](/apis/react/useLayoutEffect)
+
+* Even if your Effect was caused by an interaction (like a click), **the browser may repaint the screen before processing the state updates inside your Effect.** Usually, that's what you want. However, if you must block the browser from repainting the screen, you need to replace `useEffect` with [`useLayoutEffect`.](/apis/react/useLayoutEffect)
 
 * Effects **only run on the client.** They don't run during server rendering.
 
