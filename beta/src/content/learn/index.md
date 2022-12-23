@@ -349,6 +349,16 @@ React 将再次调用你的组件函数。这次，`count` 会变成 `1`。接�
 ```js
 import { useState } from 'react';
 
+export default function MyApp() {
+  return (
+    <div>
+      <h1>Counters that update separately</h1>
+      <MyButton />
+      <MyButton />
+    </div>
+  );
+}
+
 function MyButton() {
   const [count, setCount] = useState(0);
 
@@ -360,16 +370,6 @@ function MyButton() {
     <button onClick={handleClick}>
       Clicked {count} times
     </button>
-  );
-}
-
-export default function MyApp() {
-  return (
-    <div>
-      <h1>Counters that update separately</h1>
-      <MyButton />
-      <MyButton />
-    </div>
   );
 }
 ```
@@ -437,11 +437,7 @@ Hook 比普通函数更为严格。你只能在你的组件（或其他 Hook）�
 
 首先，将 `MyButton` 的 **state 上移到** `MyApp` 中：
 
-```js {2,6-10}
-function MyButton() {
-  // ... we're moving code from here ...
-}
-
+```js {2-6,18}
 export default function MyApp() {
   const [count, setCount] = useState(0);
 
@@ -457,6 +453,11 @@ export default function MyApp() {
     </div>
   );
 }
+
+function MyButton() {
+  // ... we're moving code from here ...
+}
+
 ```
 
 接着，将 `MyApp` 中的点击事件处理函数以及 **state 一同向下传递到** 每个 `MyButton` 中。你可以使用 JSX 的大括号向 `MyButton` 传递信息。就像之前向 `<img>` 等内置标签所做的那样:
@@ -502,14 +503,6 @@ function MyButton({ count, onClick }) {
 ```js
 import { useState } from 'react';
 
-function MyButton({ count, onClick }) {
-  return (
-    <button onClick={onClick}>
-      Clicked {count} times
-    </button>
-  );
-}
-
 export default function MyApp() {
   const [count, setCount] = useState(0);
 
@@ -523,6 +516,14 @@ export default function MyApp() {
       <MyButton count={count} onClick={handleClick} />
       <MyButton count={count} onClick={handleClick} />
     </div>
+  );
+}
+
+function MyButton({ count, onClick }) {
+  return (
+    <button onClick={onClick}>
+      Clicked {count} times
+    </button>
   );
 }
 ```
