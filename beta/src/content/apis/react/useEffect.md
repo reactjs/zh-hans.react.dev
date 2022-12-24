@@ -213,7 +213,7 @@ body {
 
 #### Triggering an animation {/*triggering-an-animation*/}
 
-In this example, the external system is the animation library in `animation.js`. It provides a JavaScript class called `FadeInAnimation` that takes a DOM node as an argument and exposes `start()` and `stop()` methods to control the animation. This component [uses a ref](/learn/manipulating-the-dom-with-refs) to access the underlying DOM node. The Effect reads the DOM node from the ref and automatically starts the animation for that node the component appears.
+In this example, the external system is the animation library in `animation.js`. It provides a JavaScript class called `FadeInAnimation` that takes a DOM node as an argument and exposes `start()` and `stop()` methods to control the animation. This component [uses a ref](/learn/manipulating-the-dom-with-refs) to access the underlying DOM node. The Effect reads the DOM node from the ref and automatically starts the animation for that node when the component appears.
 
 <Sandpack>
 
@@ -1023,9 +1023,9 @@ If either `serverUrl` or `roomId` change, your Effect will reconnect to the chat
 **[Reactive values](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) include props and all variables and functions declared directly inside of your component.** Since `roomId` and `serverUrl` are reactive values, you can't remove them from the dependency list. If you try to omit them and [your linter is correctly configured for React,](/learn/editor-setup#linting) the linter will flag this as a mistake that you need to fix:
 
 ```js {8}
-const serverUrl = 'https://localhost:1234';
-
 function ChatRoom({ roomId }) {
+  const [serverUrl, setServerUrl] = useState('https://localhost:1234');
+  
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
@@ -1526,7 +1526,7 @@ With this fix, typing into the input doesn't reconnect the chat. Unlike an objec
 
 ### Removing unnecessary function dependencies {/*removing-unnecessary-function-dependencies*/}
 
-If your Effect depends on an object or a function created during rendering, it might run more often than needed. For example, this Effect re-connects after every render because the `options` object is [different for every render:](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)
+If your Effect depends on an object or a function created during rendering, it might run more often than needed. For example, this Effect re-connects after every render because the `createOptions` function is [different for every render:](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)
 
 ```js {4-9,12,16}
 function ChatRoom({ roomId }) {
