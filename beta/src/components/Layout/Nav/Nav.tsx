@@ -20,7 +20,7 @@ import {SidebarContext} from 'components/Layout/useRouteMeta';
 import {SidebarRouteTree} from '../Sidebar/SidebarRouteTree';
 import type {RouteItem} from '../useRouteMeta';
 import sidebarLearn from '../../../sidebarLearn.json';
-import sidebarAPIs from '../../../sidebarAPIs.json';
+import sidebarReference from '../../../sidebarReference.json';
 
 declare global {
   interface Window {
@@ -117,8 +117,8 @@ export default function Nav() {
       case 'learn':
         routeTree = sidebarLearn as RouteItem;
         break;
-      case 'apis':
-        routeTree = sidebarAPIs as RouteItem;
+      case 'reference':
+        routeTree = sidebarReference as RouteItem;
         break;
     }
   }
@@ -185,7 +185,7 @@ export default function Nav() {
       });
   }, [showFeedback]);
 
-  function selectTab(nextTab: 'learn' | 'apis') {
+  function selectTab(nextTab: 'learn' | 'reference') {
     setTab(nextTab);
     scrollParentRef.current!.scrollTop = 0;
   }
@@ -241,14 +241,19 @@ export default function Nav() {
             </button>
           </div>
         </div>
+        {!isOpen && (
+          <div className="hidden lg:block sm:pt-10 lg:pt-4">
+            <Search />
+          </div>
+        )}
         <div className="px-0 pt-2 w-full 2xl:max-w-xs hidden lg:flex items-center self-center border-b-0 lg:border-b border-border dark:border-border-dark">
           <NavLink
             href="/learn"
             isActive={section === 'learn' || section === 'home'}>
             Learn
           </NavLink>
-          <NavLink href="/apis/react" isActive={section === 'apis'}>
-            API
+          <NavLink href="/reference/react" isActive={section === 'reference'}>
+            Reference
           </NavLink>
         </div>
         <div className="flex my-4 h-10 mx-0 w-full lg:hidden justify-end lg:max-w-sm">
@@ -313,9 +318,9 @@ export default function Nav() {
             Learn
           </TabButton>
           <TabButton
-            isActive={tab === 'apis'}
-            onClick={() => selectTab('apis')}>
-            API
+            isActive={tab === 'reference'}
+            onClick={() => selectTab('reference')}>
+            Reference
           </TabButton>
         </div>
       )}
@@ -328,11 +333,6 @@ export default function Nav() {
             `lg:grow lg:flex flex-col w-full pb-8 lg:pb-0 lg:max-w-xs z-10`,
             isOpen ? 'block z-40' : 'hidden lg:block'
           )}>
-          {!isOpen && (
-            <div className="px-5 sm:pt-10 lg:pt-4">
-              <Search />
-            </div>
-          )}
           <nav
             role="navigation"
             style={{'--bg-opacity': '.2'} as React.CSSProperties} // Need to cast here because CSS vars aren't considered valid in TS types (cuz they could be anything)
