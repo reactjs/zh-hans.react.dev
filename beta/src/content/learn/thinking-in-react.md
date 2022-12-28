@@ -278,7 +278,11 @@ Props 和 state 是不同的，但它们可以共同工作。父组件将经常�
 
 所以 state 将被放置在 `FilterableProductTable`。
 
+<<<<<<< HEAD
 用 [`useState()` Hook](/apis/react/useState) 为组件添加 state。Hook 可以 "钩住" 组件的 [渲染周期](/learn/render-and-commit)。在 `FilterableProductTable` 的顶部添加两个 state 变量，用于指定你应用程序的初始 state：
+=======
+Add state to the component with the [`useState()` Hook.](/reference/react/useState) Hooks let you "hook into" a component's [render cycle.](/learn/render-and-commit) Add two state variables at the top of `FilterableProductTable` and specify the initial state of your application:
+>>>>>>> bcf7759402365e93f837a1e6e6abb218a7dccc65
 
 ```js
 function FilterableProductTable({ products }) {
