@@ -54,7 +54,7 @@ React 支持所有的现代浏览器，尽管对于旧版本来说，可能需�
 createPortal(child, container)
 ```
 
-创建 portal。[Portal](/docs/portals.html) 提供了一种将子节点渲染到已 DOM 节点中的方式，该节点存在于 DOM 组件的层次结构之外。
+创建 portal。[Portal](/docs/portals.html) 提供了一种将子节点渲染到 DOM 节点中的方式，该节点存在于 DOM 组件的层次结构之外。
 
 ### `flushSync()` {#flushsync}
 
@@ -62,7 +62,7 @@ createPortal(child, container)
 flushSync(callback)
 ```
 
-强制 React 同步刷新提供的回调函数中的任何更新。这确保了 DOM 会被立即 更新。
+强制 React 同步刷新提供的回调函数中的任何更新。这确保了 DOM 会被立即更新。
 
 ```javascript
 // Force this state update to be synchronous.
