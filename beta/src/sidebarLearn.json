@@ -8,7 +8,15 @@
       "path": "",
       "routes": [
         {
+<<<<<<< HEAD
           "title": "安装",
+=======
+          "hasSectionHeader": true,
+          "sectionHeader": "Get Started"
+        },
+        {
+          "title": "Installation",
+>>>>>>> b4ae93364839b70af043f8043fd794d38e08e5c7
           "path": "/learn/installation",
           "routes": [
             {
@@ -32,10 +40,27 @@
         {
           "title": "快速入门",
           "path": "/learn",
+<<<<<<< HEAD
           "routes": [{
             "title": "React 哲学",
             "path": "/learn/thinking-in-react"
           }]
+=======
+          "routes": [
+            {
+              "title": "Tutorial: Tic-Tac-Toe",
+              "path": "/learn/tutorial-tic-tac-toe"
+            },
+            {
+              "title": "Thinking in React",
+              "path": "/learn/thinking-in-react"
+            }
+          ]
+        },
+        {
+          "hasSectionHeader": true,
+          "sectionHeader": "Learn React"
+>>>>>>> b4ae93364839b70af043f8043fd794d38e08e5c7
         },
         {
           "title": "描述 UI",
@@ -114,9 +139,7 @@
         {
           "title": "管理 state",
           "path": "/learn/managing-state",
-          "tags": [
-            "intermediate"
-          ],
+          "tags": ["intermediate"],
           "routes": [
             {
               "title": "用 state 响应输入",
@@ -151,9 +174,7 @@
         {
           "title": "备选方案",
           "path": "/learn/escape-hatches",
-          "tags": [
-            "advanced"
-          ],
+          "tags": ["advanced"],
           "routes": [
             {
               "title": "用 ref 引用数值",
@@ -190,19 +211,26 @@
           ]
         },
         {
+          "hasSectionHeader": true,
+          "sectionHeader": "About React"
+        },
+        {
           "title": "Community",
-          "hasSeparator": true,
           "path": "/learn/community",
-          "routes": [{
-            "title": "Acknowledgements",
-            "path": "/learn/acknowledgements"
-          }, {
-            "title": "Docs Contributors",
-            "path": "/learn/docs-contributors"
-          }, {
-            "title": "Meet the Team",
-            "path": "/learn/meet-the-team"
-          }]
+          "routes": [
+            {
+              "title": "Acknowledgements",
+              "path": "/learn/acknowledgements"
+            },
+            {
+              "title": "Docs Contributors",
+              "path": "/learn/docs-contributors"
+            },
+            {
+              "title": "Meet the Team",
+              "path": "/learn/meet-the-team"
+            }
+          ]
         },
         {
           "title": "Blog",
