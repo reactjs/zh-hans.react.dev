@@ -174,7 +174,11 @@ img { height: 90px }
 </>
 ```
 
+<<<<<<< HEAD
 这个空标签被称作 *[Fragment](/apis/react/Fragment)*. React Fragment 允许你将子元素分组，而不会在 HTML 结构中添加额外节点。
+=======
+This empty tag is called a *[Fragment.](/reference/react/Fragment)* Fragments let you group things without leaving any trace in the browser HTML tree.
+>>>>>>> 1d918b94880f4b0dc4367a4e011e9ed1428a633d
 
 <DeepDive>
 
