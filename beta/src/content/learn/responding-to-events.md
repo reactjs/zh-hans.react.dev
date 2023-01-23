@@ -592,7 +592,11 @@ export default function LightSwitch() {
 
 </Sandpack>
 
+<<<<<<< HEAD
 或者，你可以把函数调用包裹在另一个函数内，例如 `<button onClick={() => handleClick()}` ：
+=======
+Alternatively, you could wrap the call into another function, like `<button onClick={() => handleClick()}>`:
+>>>>>>> 38bf76a4a7bec6072d086ce8efdeef9ebb7af227
 
 <Sandpack>
 

@@ -153,7 +153,7 @@ class MyComponent extends React.Component {
 ```
 * React mounts the component.
     * Layout effects are created.
-    * Effect effects are created.
+    * Effects are created.
 * React simulates effects being destroyed on a mounted component.
     * Layout effects are destroyed.
     * Effects are destroyed.
@@ -169,7 +169,7 @@ class MyComponent extends React.Component {
 ```
 * React unmounts the component.
   * Layout effects are destroyed.
-  * Effect effects are destroyed.
+  * Effects are destroyed.
 ```
 
 卸载和重新挂载的函数，包括：
