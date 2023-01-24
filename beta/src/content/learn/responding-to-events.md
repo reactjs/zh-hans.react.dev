@@ -71,7 +71,11 @@ button { margin-right: 10px; }
 * 通常在你的组件 *内部* 定义。
 * 名称以 `handle` 开头，后跟事件名称。
 
+<<<<<<< HEAD
 > 按照惯例，通常将事件处理程序命名为 `handle`，后接事件名。你会经常看到 `onClick={handleClick}`，`onMouseEnter={handleMouseEnter}` 等。
+=======
+By convention, it is common to name event handlers as `handle` followed by the event name. You'll often see `onClick={handleClick}`, `onMouseEnter={handleMouseEnter}`, and so on.
+>>>>>>> b8dcdf4f4ffd5c7d663488a0ceca6787b806adbc
 
 或者，你也可以在 JSX 中定义一个内联的事件处理函数：
 
@@ -130,7 +134,11 @@ button { margin-right: 10px; }
 * `<button onClick={handleClick}>` 传递了 `handleClick` 函数。
 * `<button onClick={() => alert('...')}>` 传递了 `() => alert('...')` 函数。
 
+<<<<<<< HEAD
 > 查看 [JavaScript Refresher](a-javascript-refresher#arrow-functions) 了解更多箭头函数的信息。
+=======
+[Read more about arrow functions.](https://javascript.info/arrow-functions-basics)
+>>>>>>> b8dcdf4f4ffd5c7d663488a0ceca6787b806adbc
 
 </Pitfall>
 
@@ -237,7 +245,11 @@ button { margin-right: 10px; }
 
 内置组件（`<button>` 和 `<div>`）仅支持 [浏览器事件名称](TODO:/apis/react-dom/events)，例如 `onClick`。但是，当你构建自己的组件时，你可以按你个人喜好命名事件处理函数的 prop。
 
+<<<<<<< HEAD
 > 按照惯例，事件处理函数 props 应该以 `on` 开头，后跟一个大写字母。
+=======
+By convention, event handler props should start with `on`, followed by a capital letter.
+>>>>>>> b8dcdf4f4ffd5c7d663488a0ceca6787b806adbc
 
 例如，`Button` 组件的 `onClick` prop 本来也可以被命名为 `onSmash`：
 
@@ -592,7 +604,11 @@ export default function LightSwitch() {
 
 </Sandpack>
 
+<<<<<<< HEAD
 或者，你可以把函数调用包裹在另一个函数内，例如 `<button onClick={() => handleClick()}` ：
+=======
+Alternatively, you could wrap the call into another function, like `<button onClick={() => handleClick()}>`:
+>>>>>>> b8dcdf4f4ffd5c7d663488a0ceca6787b806adbc
 
 <Sandpack>
 

@@ -72,7 +72,7 @@ const UL = (p: JSX.IntrinsicElements['ul']) => (
 );
 
 const Divider = () => (
-  <hr className="my-6 block border-b border-border dark:border-border-dark" />
+  <hr className="my-6 block border-b border-t-0 border-border dark:border-border-dark" />
 );
 const Wip = ({children}: {children: React.ReactNode}) => (
   <ExpandableCallout type="wip">{children}</ExpandableCallout>
@@ -130,6 +130,15 @@ function LearnMore({
       </section>
       <hr className="border-border dark:border-border-dark mb-14" />
     </>
+  );
+}
+
+function ReadBlogPost({path}: {path: string}) {
+  return (
+    <ButtonLink className="mt-1" label="Read Post" href={path} type="primary">
+      Read Post
+      <IconNavArrow displayDirection="right" className="inline ml-1" />
+    </ButtonLink>
   );
 }
 
@@ -399,6 +408,7 @@ export const MDXComponents = {
   MathI,
   Note,
   PackageImport,
+  ReadBlogPost,
   Recap,
   Recipes,
   Sandpack,
