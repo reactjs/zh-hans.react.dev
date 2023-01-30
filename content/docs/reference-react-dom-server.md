@@ -36,6 +36,10 @@ These methods are only available in the **environments with [Node.js Streams](ht
 
 ### `renderToPipeableStream()` {#rendertopipeablestream}
 
+> Try the new React documentation for [`renderToPipeableStream`](https://beta.reactjs.org/reference/react-dom/server/renderToPipeableStream).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 ReactDOMServer.renderToPipeableStream(element, options)
 ```
@@ -90,6 +94,10 @@ const stream = renderToPipeableStream(
 * * *
 
 ### `renderToReadableStream()` {#rendertoreadablestream}
+
+> Try the new React documentation for [`renderToReadableStream`](https://beta.reactjs.org/reference/react-dom/server/renderToReadableStream).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```javascript
 ReactDOMServer.renderToReadableStream(element, options);
@@ -148,6 +156,10 @@ try {
 
 ### `renderToNodeStream()`  (Deprecated) {#rendertonodestream}
 
+> Try the new React documentation for [`renderToNodeStream`](https://beta.reactjs.org/reference/react-dom/server/renderToNodeStream).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 ReactDOMServer.renderToNodeStream(element)
 ```
@@ -165,6 +177,10 @@ ReactDOMServer.renderToNodeStream(element)
 * * *
 
 ### `renderToStaticNodeStream()` {#rendertostaticnodestream}
+
+> Try the new React documentation for [`renderToStaticNodeStream`](https://beta.reactjs.org/reference/react-dom/server/renderToStaticNodeStream).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```javascript
 ReactDOMServer.renderToStaticNodeStream(element)
@@ -186,6 +202,10 @@ ReactDOMServer.renderToStaticNodeStream(element)
 
 ### `renderToString()` {#rendertostring}
 
+> Try the new React documentation for [`renderToString`](https://beta.reactjs.org/reference/react-dom/server/renderToString).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 ReactDOMServer.renderToString(element)
 ```
@@ -203,6 +223,10 @@ ReactDOMServer.renderToString(element)
 * * *
 
 ### `renderToStaticMarkup()` {#rendertostaticmarkup}
+
+> Try the new React documentation for [`renderToStaticMarkup`](https://beta.reactjs.org/reference/react-dom/server/renderToStaticMarkup).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```javascript
 ReactDOMServer.renderToStaticMarkup(element)

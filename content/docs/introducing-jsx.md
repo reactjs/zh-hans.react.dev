@@ -6,7 +6,20 @@ prev: hello-world.html
 next: rendering-elements.html
 ---
 
+<<<<<<< HEAD
 设想如下变量声明：
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Writing Markup with JSX](https://beta.reactjs.org/learn/writing-markup-with-jsx)
+> - [JavaScript in JSX with Curly Braces](https://beta.reactjs.org/learn/javascript-in-jsx-with-curly-braces)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+Consider this variable declaration:
+>>>>>>> 5647a9485db3426d62b5a8203f4499c01bcd789b
 
 ```js
 const element = <h1>Hello, world!</h1>;
