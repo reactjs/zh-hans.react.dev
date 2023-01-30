@@ -9,7 +9,19 @@ redirect_from:
   - "docs/flux-todo-list.html"
 ---
 
+<<<<<<< HEAD
 通常，多个组件需要反映相同的变化数据，这时我们建议将共享状态提升到最近的共同父组件中去。让我们看看它是如何运作的。
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Sharing State Between Components](https://beta.reactjs.org/learn/sharing-state-between-components)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+Often, several components need to reflect the same changing data. We recommend lifting the shared state up to their closest common ancestor. Let's see how this works in action.
+>>>>>>> e354061c82f8169a49d421e331b7c6ffb4b581ab
 
 在本节中，我们将创建一个用于计算水在给定温度下是否会沸腾的温度计算器。
 

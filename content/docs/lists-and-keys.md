@@ -6,7 +6,20 @@ prev: conditional-rendering.html
 next: forms.html
 ---
 
+<<<<<<< HEAD
 首先，让我们看下在 Javascript 中如何转化列表。
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Rendering Lists](https://beta.reactjs.org/learn/rendering-lists)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
+First, let's review how you transform lists in JavaScript.
+>>>>>>> e354061c82f8169a49d421e331b7c6ffb4b581ab
 
 如下代码，我们使用 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 函数让数组中的每一项变双倍，然后我们得到了一个新的列表 `doubled` 并打印出来：
 
