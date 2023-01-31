@@ -232,8 +232,13 @@ return (
 
 最初引入 JSX 是为了想让 React 编写组件的感觉就像编写 HTML 一样简单，但总有例外，你不想或者不能使用 JSX，此时可以参考其他两种解决方案：
 
+<<<<<<< HEAD
 - 使用像 [htm](https://github.com/developit/htm) 这样的 JSX 替代品，它使用 JavaScript 的 [模板字符串](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) 来取代编译器。
 - 使用 [`React.createElement()`](/apis/react/createElement)，它具有下面解释的特殊结构。
+=======
+- Use a JSX alternative like [htm](https://github.com/developit/htm) which uses JavaScript [template strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) instead of a compiler.
+- Use [`React.createElement()`](/reference/react/createElement) which has a special structure explained below.
+>>>>>>> 720b37f7daca85f9bcac3853cb97b9380aaa5702
 
 用 JSX 编写的代码：
 

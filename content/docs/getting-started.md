@@ -18,7 +18,17 @@ redirect_from:
   - "docs/environments.html"
 ---
 
+<<<<<<< HEAD
 这是一个 React 文档及相关资源的概览页面。
+=======
+> Try the new React documentation.
+> 
+> The new [Quick Start](https://beta.reactjs.org/learn) teaches modern React and includes live examples.
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+This page is an overview of the React documentation and related resources.
+>>>>>>> 720b37f7daca85f9bcac3853cb97b9380aaa5702
 
 **React** 是一个用于构建用户界面的 JavaScript 库。你可以在[首页](/)或[教程](/tutorial/tutorial.html)中学习什么是 React。
 
