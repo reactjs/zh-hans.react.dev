@@ -52,7 +52,16 @@ June 27th, 2023. Tel Aviv, Israel
 
 [Website](https://www.react-next.com/) - [Facebook](https://www.facebook.com/ReactNextConf) - [Youtube](https://www.youtube.com/@ReactNext)
 
+<<<<<<< HEAD
 ## 往届会议 {#past-conferences}
+=======
+### React India 2023 {#react-india-2023}
+Oct 5 - 7, 2023. In-person in Goa, India (hybrid event) + Oct 3 2023 - remote day 
+
+[Website](https://www.reactindia.io) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia) - [Youtube](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w)
+
+## Past Conferences {#past-conferences}
+>>>>>>> 6fa4673fb49d31fda270f4ad8588d1d25278eb24
 
 ### React Advanced 2022 {#react-advanced-2022}
 October 21 & 25, 2022. In-person in London, UK + remote (hybrid event)
