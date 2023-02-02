@@ -8,7 +8,15 @@
       "path": "",
       "routes": [
         {
+<<<<<<< HEAD
           "title": "安装",
+=======
+          "hasSectionHeader": true,
+          "sectionHeader": "Get Started"
+        },
+        {
+          "title": "Installation",
+>>>>>>> 683db725e6b10e318e57e5a0ef90d4c40bd5eb3f
           "path": "/learn/installation",
           "routes": [
             {
@@ -32,10 +40,27 @@
         {
           "title": "快速入门",
           "path": "/learn",
+<<<<<<< HEAD
           "routes": [{
             "title": "React 哲学",
             "path": "/learn/thinking-in-react"
           }]
+=======
+          "routes": [
+            {
+              "title": "Tutorial: Tic-Tac-Toe",
+              "path": "/learn/tutorial-tic-tac-toe"
+            },
+            {
+              "title": "Thinking in React",
+              "path": "/learn/thinking-in-react"
+            }
+          ]
+        },
+        {
+          "hasSectionHeader": true,
+          "sectionHeader": "Learn React"
+>>>>>>> 683db725e6b10e318e57e5a0ef90d4c40bd5eb3f
         },
         {
           "title": "描述 UI",
@@ -114,9 +139,7 @@
         {
           "title": "管理 state",
           "path": "/learn/managing-state",
-          "tags": [
-            "intermediate"
-          ],
+          "tags": ["intermediate"],
           "routes": [
             {
               "title": "用 state 响应输入",
@@ -151,9 +174,7 @@
         {
           "title": "备选方案",
           "path": "/learn/escape-hatches",
-          "tags": [
-            "advanced"
-          ],
+          "tags": ["advanced"],
           "routes": [
             {
               "title": "用 ref 引用数值",
@@ -190,23 +211,76 @@
           ]
         },
         {
+          "hasSectionHeader": true,
+          "sectionHeader": "About React"
+        },
+        {
           "title": "Community",
-          "hasSeparator": true,
-          "path": "/learn/community",
-          "routes": [{
-            "title": "Acknowledgements",
-            "path": "/learn/acknowledgements"
-          }, {
-            "title": "Docs Contributors",
-            "path": "/learn/docs-contributors"
-          }, {
-            "title": "Meet the Team",
-            "path": "/learn/meet-the-team"
-          }]
+          "path": "/community",
+          "routes": [
+            {
+              "title": "React Conferences",
+              "path": "/community/conferences"
+            },
+            {
+              "title": "React Meetups",
+              "path": "/community/meetups"
+            },
+            {
+              "title": "React Videos",
+              "path": "/community/videos"
+            },
+            {
+              "title": "Meet the Team",
+              "path": "/community/team"
+            },
+            {
+              "title": "Docs Contributors",
+              "path": "/community/docs-contributors"
+            },
+            {
+              "title": "Acknowledgements",
+              "path": "/community/acknowledgements"
+            },
+            {
+              "title": "Versioning Policy",
+              "path": "/community/versioning-policy"
+            }
+          ]
         },
         {
           "title": "Blog",
-          "path": "https://reactjs.org/blog"
+          "path": "/blog",
+          "routes": [
+            {
+              "title": "React Labs: June 2022",
+              "path": "/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022"
+            },
+            {
+              "title": "React v18.0",
+              "path": "/blog/2022/03/29/react-v18"
+            },
+            {
+              "title": "How to Upgrade to React 18",
+              "path": "/blog/2022/03/08/react-18-upgrade-guide"
+            },
+            {
+              "title": "React Conf 2021 Recap",
+              "path": "/blog/2021/12/17/react-conf-2021-recap"
+            },
+            {
+              "title": "The Plan for React 18",
+              "path": "/blog/2021/06/08/the-plan-for-react-18"
+            },
+            {
+              "title": "Introducing Server Components",
+              "path": "/blog/2020/12/21/data-fetching-with-react-server-components"
+            },
+            {
+              "title": "Older posts",
+              "path": "https://reactjs.org/blog/all.html"
+            }
+          ]
         }
       ]
     }
