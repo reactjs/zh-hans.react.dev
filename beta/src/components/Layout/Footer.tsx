@@ -112,11 +112,13 @@ export function Footer() {
               </FooterLink>
             </div>
             <div className="flex flex-col">
-              <FooterLink href="/apis/react" isHeader={true}>
+              <FooterLink href="/reference/react" isHeader={true}>
                 API Reference
               </FooterLink>
-              <FooterLink href="/apis/react">React APIs</FooterLink>
-              <FooterLink href="/apis/react-dom">React DOM APIs</FooterLink>
+              <FooterLink href="/reference/react">React APIs</FooterLink>
+              <FooterLink href="/reference/react-dom">
+                React DOM APIs
+              </FooterLink>
             </div>
             <div className="flex flex-col sm:col-start-2 xl:col-start-4">
               <FooterLink href="/" isHeader={true}>
@@ -125,13 +127,13 @@ export function Footer() {
               <FooterLink href="https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md">
                 Code of Conduct
               </FooterLink>
-              <FooterLink href="/learn/acknowledgements">
+              <FooterLink href="/community/acknowledgements">
                 Acknowledgements
               </FooterLink>
-              <FooterLink href="/learn/docs-contributors">
+              <FooterLink href="/community/docs-contributors">
                 Docs Contributors
               </FooterLink>
-              <FooterLink href="/learn/meet-the-team">Meet the Team</FooterLink>
+              <FooterLink href="/community/team">Meet the Team</FooterLink>
               <FooterLink href="https://reactjs.org/blog">Blog</FooterLink>
               {/* <FooterLink href="/">Community Resources</FooterLink> */}
             </div>
