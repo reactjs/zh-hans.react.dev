@@ -4,7 +4,19 @@ title: Portals
 permalink: docs/portals.html
 ---
 
+<<<<<<< HEAD
 Portal 提供了一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案。
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`createPortal`](https://beta.reactjs.org/reference/react-dom/createPortal)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 
 ```js
 ReactDOM.createPortal(child, container)
