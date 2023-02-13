@@ -7,7 +7,11 @@ translators:
 
 <Intro>
 
+<<<<<<< HEAD
 正确的编辑器配置可以开发事半功倍。并且还可以在编码时帮你提示错误！如果这是你第一次配置编辑器，或者想对现有编辑器进行调整，我们有一些建议可供参考。
+=======
+A properly configured editor can make code clearer to read and faster to write. It can even help you catch bugs as you write them! If this is your first time setting up an editor or you're looking to tune up your current editor, we have a few recommendations.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 </Intro>
 

@@ -300,7 +300,11 @@ img { height: 181px; }
 
 <Hint>
 
+<<<<<<< HEAD
 当你尝试修复它时，可能会得到“Unexpected token”的报错。这种情况下，请检查分号是否在右括号*之后*。在 `return ( )` 里面留下分号将会导致报错。
+=======
+You may get an "Unexpected token" error while trying to fix this. In that case, check that the semicolon appears *after* the closing parenthesis. Leaving a semicolon inside `return ( )` will cause an error.
+>>>>>>> 47adefd30c46f486428d8231a68e639d62f02c9e
 
 </Hint>
 
