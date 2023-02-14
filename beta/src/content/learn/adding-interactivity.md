@@ -20,7 +20,7 @@ title: 添加交互
 
 </YouWillLearn>
 
-## 响应事件 {#responding-to-events}
+## 响应事件 {/*responding-to-events*/}
 
 React 允许你向 JSX 中添加事件处理程序。事件处理程序是你自己的函数，它将在用户交互时被触发，如点击、悬停、焦点在表单输入框上等等。
 
@@ -72,7 +72,7 @@ button { margin-right: 10px; }
 
 </LearnMore>
 
-## State: 组件的记忆 {#state-a-components-memory}
+## State: 组件的记忆 {/*state-a-components-memory*/}
 
 组件通常需要根据交互改变屏幕上的内容。在表单中键入更新输入栏，在轮播图上点击“下一个”改变显示的图片，点击“购买”将产品放入购物车。组件需要“记住”一些东西：当前的输入值、当前的图片、购物车。在 React 中，这种特定于组件的记忆被称为状态。
 
@@ -228,7 +228,7 @@ button {
 
 </LearnMore>
 
-## 渲染和提交 {#render-and-commit}
+## 渲染和提交 {/*render-and-commit*/}
 
 在你的组件显示在屏幕上之前，它们必须由 React 进行渲染。理解这个过程中的步骤有助于你思考你的代码如何执行并解释其行为。
 
@@ -250,7 +250,7 @@ button {
 
 </LearnMore>
 
-## 作为快照的状态 {#state-as-a-snapshot}
+## 作为快照的状态 {/*state-as-a-snapshot*/}
 
 与普通 JavaScript 变量不同，React 状态的行为更像一个快照。设置它并不改变你已有的状态变量，而是触发一次重新渲染。这在一开始可能会让人感到惊讶！
 
@@ -313,7 +313,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 </LearnMore>
 
-## 排队一系列状态更改 {#queueing-a-series-of-state-changes}
+## 排队一系列状态更改 {/*queueing-a-series-of-state-changes*/}
 
 这个组件有问题：点击“+3”只能增加一次分数。
 
@@ -401,7 +401,7 @@ button { display: inline-block; margin: 10px; font-size: 20px; }
 
 </LearnMore>
 
-## 更新状态中的对象 {#updating-objects-in-state}
+## 更新状态中的对象 {/*updating-objects-in-state*/}
 
 状态可以持有任何类型的 JavaScript 值，包括对象。但你不应该直接改变你在 React 状态中持有的对象和数组。相反，当你想更新一个对象和数组时，你需要创建一个新的对象（或复制现有的对象），然后更新状态以使用该副本。
 
@@ -632,7 +632,7 @@ img { width: 200px; height: 200px; }
 
 </LearnMore>
 
-## 更新状态中的数组 {#updating-arrays-in-state}
+## 更新状态中的数组 {/*updating-arrays-in-state*/}
 
 数组是另一种可以存在状态中的可变 JavaScript 对象，应将其视为只读。就像对象一样，当你想更新存在状态中的数组时，你需要创建一个新数组（或者复制现有数组），然后设置状态以使用新数组：
 
@@ -790,7 +790,7 @@ function ItemList({ artworks, onToggle }) {
 
 </LearnMore>
 
-## 下节预告 {#whats-next}
+## 下节预告 {/*whats-next*/}
 
 前往 [响应事件](/learn/responding-to-events) 开始逐页阅读本章！
 
