@@ -528,14 +528,14 @@ useDebugValue(date, date => date.toDateString());
 const [deferredValue] = useDeferredValue(value);
 ```
 
-`useDeferredValue` 接收一个值并返回接收值的拷贝副本，该副本将推迟到更紧急的更新。如果当前呈现是紧急更新的结果(如用户输入)，那么React将返回先前的值，然后在紧急呈现完成后呈现新值。
+`useDeferredValue` 接收一个值并返回接收值的拷贝副本，该副本将推迟到更紧急的更新。如果当前呈现是紧急更新的结果（如用户输入），那么 React 将返回先前的值，然后在紧急呈现完成后呈现新值。
 
 这个hook类似user-space钩子，被用来做防抖或节流延迟更新。
 
 使用 `useDeferredValue` 的好处是，React将在其他工作完成后立即进行更新(而不是等待任意的一段时间),如同 [`startTransition`](/docs/react-api.html#starttransition)，deferred values可以挂起，而不会触发原有内容的意外回退。
 
 #### Memoizing deferred children {#memoizing-deferred-children}
-`useDeferredValue` 只会推迟您传递给它的值。如果要防止子组件在紧急更新期间重新呈现，还必须使用 memoize 的组件比如  [`React.memo`](/docs/react-api.html#reactmemo) 或者 [`React.useMemo`](/docs/hooks-reference.html#usememo):
+`useDeferredValue` 只会推迟传递给它的值。如果要防止子组件在紧急更新期间重新呈现，还必须使用 memoize 的组件比如  [`React.memo`](/docs/react-api.html#reactmemo) 或者 [`React.useMemo`](/docs/hooks-reference.html#usememo):
 
 ```js
 function Typeahead() {
@@ -568,7 +568,7 @@ Memoizing the children告诉React，它只需要在 `deferredQuery` 更改时而
 const [isPending, startTransition] = useTransition();
 ```
 
-返回判断pending的状态值，并返回启动转换的函数。
+返回判断 pending 的状态值，并返回启动转换的函数。
 
 `startTransition` 允许您将提供的回调中的更新标记为转换：
 
