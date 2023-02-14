@@ -44,7 +44,7 @@ React 支持所有的现代浏览器，不过对于旧版本来说，可能需�
 
 > 注意：
 >
->我们不支持那些不兼容 ES5 方法的旧版浏览器，但如果你的应用包含了 polyfills，例如 [es5-shim 和 es5-sham](https://github.com/es-shims/es5-shim) 你可能会发现你的应用仍然可以在这些浏览器中正常运行。但是如果你选择这种方法，你便需要孤军奋战了。
+>我们不支持那些不兼容 ES5 方法的旧版浏览器，但如果你的应用包含了 polyfill，例如 [es5-shim 和 es5-sham](https://github.com/es-shims/es5-shim) 你可能会发现你的应用仍然可以在这些浏览器中正常运行。但是如果你选择这种方法，你便需要孤军奋战了。
 
 ## 参考 {#reference}
 
