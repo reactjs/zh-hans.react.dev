@@ -174,7 +174,11 @@ img { height: 90px }
 </>
 ```
 
+<<<<<<< HEAD
 这个空标签被称作 *[Fragment](/apis/react/Fragment)*. React Fragment 允许你将子元素分组，而不会在 HTML 结构中添加额外节点。
+=======
+This empty tag is called a *[Fragment.](/reference/react/Fragment)* Fragments let you group things without leaving any trace in the browser HTML tree.
+>>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
 
 <DeepDive>
 
@@ -219,7 +223,11 @@ JSX 最终会被转化为 JavaScript，而 JSX 中的属性也会变成 JavaScri
 />
 ```
 
+<<<<<<< HEAD
 你可以 [在 React DOM 元素中找到所有对应的属性](TODO)。如果你在编写属性时发生了错误，不用担心 —— React 会在 [浏览器控制台](https://developer.mozilla.org/docs/Tools/Browser_Console) 中打印一条可能的更正信息。
+=======
+You can [find all these attributes in the list of DOM component props.](/reference/react-dom/components/common) If you get one wrong, don't worry—React will print a message with a possible correction to the [browser console.](https://developer.mozilla.org/docs/Tools/Browser_Console)
+>>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
 
 <Pitfall>
 
