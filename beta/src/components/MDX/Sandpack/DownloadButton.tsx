@@ -2,25 +2,46 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import * as React from 'react';
+import {useSyncExternalStore} from 'react';
 import {useSandpack} from '@codesandbox/sandpack-react';
-import {IconArrowSmall} from '../../Icon/IconArrowSmall';
+import {IconDownload} from '../../Icon/IconDownload';
 export interface DownloadButtonProps {}
 
-export const DownloadButton: React.FC<DownloadButtonProps> = () => {
-  const {sandpack} = useSandpack();
-  const [supported, setSupported] = React.useState(false);
-  React.useEffect(() => {
-    // This detection will work in Chrome 97+
-    if (
-      (HTMLScriptElement as any).supports &&
-      (HTMLScriptElement as any).supports('importmap')
-    ) {
-      setSupported(true);
-    }
-  }, []);
+let supportsImportMap: boolean | void;
 
+function useSupportsImportMap() {
+  function subscribe() {
+    // It never updates.
+    return () => {};
+  }
+  function getCurrentValue() {
+    if (supportsImportMap === undefined) {
+      supportsImportMap =
+        (HTMLScriptElement as any).supports &&
+        (HTMLScriptElement as any).supports('importmap');
+    }
+    return supportsImportMap;
+  }
+  function getServerSnapshot() {
+    return false;
+  }
+
+  return useSyncExternalStore(subscribe, getCurrentValue, getServerSnapshot);
+}
+
+const SUPPORTED_FILES = ['/App.js', '/styles.css'];
+
+export function DownloadButton({
+  providedFiles,
+}: {
+  providedFiles: Array<string>;
+}) {
+  const {sandpack} = useSandpack();
+  const supported = useSupportsImportMap();
   if (!supported) {
+    return null;
+  }
+  if (providedFiles.some((file) => !SUPPORTED_FILES.includes(file))) {
     return null;
   }
 
@@ -39,20 +60,22 @@ export const DownloadButton: React.FC<DownloadButtonProps> = () => {
 <script type="importmap">
 {
   "imports": {
-    "react": "https://cdn.skypack.dev/react",
-    "react-dom": "https://cdn.skypack.dev/react-dom"
+    "react": "https://esm.sh/react?dev",
+    "react-dom/client": "https://esm.sh/react-dom/client?dev"
   }
 }
 </script>
 <script type="text/babel" data-type="module">
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React, { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 
-${code.replace('export default ', 'let Root = ')}
+${code.replace('export default ', 'let App = ')}
 
-ReactDOM.render(
-  <Root />,
-  document.getElementById('root')
+const root = createRoot(document.getElementById('root'));
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
 );
 </script>
 <style>
@@ -74,13 +97,9 @@ ${css}
     <button
       className="text-sm text-primary dark:text-primary-dark inline-flex items-center hover:text-link duration-100 ease-in transition mx-1"
       onClick={downloadHTML}
-      title="Refresh Sandpack"
+      title="Download Sandbox"
       type="button">
-      <IconArrowSmall
-        displayDirection="down"
-        className="inline mb-0.5 mr-1 mt-1"
-      />{' '}
-      Download
+      <IconDownload className="inline mr-1" /> Download
     </button>
   );
-};
+}

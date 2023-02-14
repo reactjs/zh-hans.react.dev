@@ -46,7 +46,9 @@ render() {
 > 
 > 当在使用 portal 时, 记住[管理键盘焦点](/docs/accessibility.html#programmatically-managing-focus)就变得尤为重要。
 >
-> 对于模态对话框，通过遵循 [WAI-ARIA 模态开发实践](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal)，来确保每个人都能够运用它。
+> 当用于门户网站时，请记得 [管理键盘焦点](/docs/accessibility.html#programmatically-managing-focus)，这点非常重要。
+>
+> 对于模态对话框，通过遵循 [WAI-ARIA 模态开发实践](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/)，来确保每个人都能够运用它。
 
 [**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/yzMaBd)
 
@@ -146,7 +148,8 @@ function Child() {
   );
 }
 
-ReactDOM.render(<Parent />, appRoot);
+const root = ReactDOM.createRoot(appRoot);
+root.render(<Parent />);
 ```
 
 [**在 CodePen 上尝试**](https://codepen.io/gaearon/pen/jGBWpE)

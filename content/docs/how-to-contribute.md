@@ -70,7 +70,7 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 
 在写第一个 Pull Request？你可以从这一系列视频中学习怎么做：
 
-**[How to Contribute to an Open Source Project on GitHub](https://app.egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)**
+**[How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)**
 
 为了使你能够快速上手和熟悉贡献流程，我们这里有个列表 **[good first issues](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")**，里面有相对没那么笼统的漏洞，从这开始是个不错的选择。
 
@@ -103,7 +103,7 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 
 ### 必要条件 {#contribution-prerequisites}
 
-* [Node](https://nodejs.org) v8.0.0+、[Yarn](https://yarnpkg.com/en/) v1.2.0+。
+* 你需要安装 [Node](https://nodejs.org) 的 LTS 版本和 [Yarn](https://yarnpkg.com/en/) v1.2.0+。
 * 已安装 [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 * 你已安装 `gcc`（或者你在有必要安装编译器的情况下也不觉得麻烦），因为一些依赖可能得经过编译，而在 OS X，Xcode 命令行工具会帮你处理；在 Ubuntu，`apt-get install build-essential` 会安装所需的 package（其它 Linux 发行版的类似命令也有效）；在 Windows 上得做些额外步骤，请参考 [`node-gyp` 安装步骤](https://github.com/nodejs/node-gyp#installation)。
 * 熟悉 Git。
