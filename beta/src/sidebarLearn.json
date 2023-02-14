@@ -170,8 +170,43 @@
             {
               "title": "You Might Not Need an Effect",
               "path": "/learn/you-might-not-need-an-effect"
+            },
+            {
+              "title": "Lifecycle of Reactive Effects",
+              "path": "/learn/lifecycle-of-reactive-effects"
+            },
+            {
+              "title": "Separating Events from Effects",
+              "path": "/learn/separating-events-from-effects"
+            },
+            {
+              "title": "Removing Effect Dependencies",
+              "path": "/learn/removing-effect-dependencies"              
+            },
+            {
+              "title": "Reusing Logic with Custom Hooks",
+              "path": "/learn/reusing-logic-with-custom-hooks"
             }
           ]
+        },
+        {
+          "title": "Community",
+          "hasSeparator": true,
+          "path": "/learn/community",
+          "routes": [{
+            "title": "Acknowledgements",
+            "path": "/learn/acknowledgements"
+          }, {
+            "title": "Docs Contributors",
+            "path": "/learn/docs-contributors"
+          }, {
+            "title": "Meet the Team",
+            "path": "/learn/meet-the-team"
+          }]
+        },
+        {
+          "title": "Blog",
+          "path": "https://reactjs.org/blog"
         }
       ]
     }
