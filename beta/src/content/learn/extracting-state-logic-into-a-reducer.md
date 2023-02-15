@@ -187,11 +187,11 @@ li {
 
 Reducer 是处理状态的另一种方式。你可以通过三个步骤将 `useState` 迁移到 `useReducer`：
 
-1. 将设置状态的逻辑 **修改** 成 dispatch 一个 action；
+1. 将设置状态的逻辑 **修改** 成 dispatch 的一个 action；
 2. **编写** 一个 reducer 函数；
 3. 在你的组件中 **使用** reducer。
 
-### 第 1 步: 将设置状态的逻辑修改成 dispatch 一个 action {/*step-1-move-from-setting-state-to-dispatching-actions*/}
+### 第 1 步: 将设置状态的逻辑修改成 dispatch 的一个 action {/*step-1-move-from-setting-state-to-dispatching-actions*/}
 
 你的事件处理程序目前是通过设置状态来 **实现逻辑的**：
 
