@@ -4,9 +4,6 @@ title: Refs 转发
 permalink: docs/forwarding-refs.html
 ---
 
-<<<<<<< HEAD
-Ref 转发是一项将 [ref](/docs/refs-and-the-dom.html) 自动地通过组件传递到其一子组件的技巧。对于大多数应用中的组件来说，这通常不是必需的。但其对某些组件，尤其是可重用的组件库是很有用的。最常见的案例如下所述。
-=======
 > Try the new React documentation.
 > 
 > These new documentation pages teach modern React and include live examples:
@@ -16,8 +13,7 @@ Ref 转发是一项将 [ref](/docs/refs-and-the-dom.html) 自动地通过组件�
 >
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
-Ref forwarding is a technique for automatically passing a [ref](/docs/refs-and-the-dom.html) through a component to one of its children. This is typically not necessary for most components in the application. However, it can be useful for some kinds of components, especially in reusable component libraries. The most common scenarios are described below.
->>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
+Ref 转发是一项将 [ref](/docs/refs-and-the-dom.html) 自动地通过组件传递到其一子组件的技巧。对于大多数应用中的组件来说，这通常不是必需的。但其对某些组件，尤其是可重用的组件库是很有用的。最常见的案例如下所述。
 
 ## 转发 refs 到 DOM 组件 {#forwarding-refs-to-dom-components}
 

@@ -307,11 +307,7 @@ function MyButton() {
 
 通常，你会希望你的组件 "记住" 一些信息并展示出来。例如，也许你想计算一个按钮被点击的次数。要做到这一点，你需要在你的组件中添加 **state**。
 
-<<<<<<< HEAD
-首先，从 React 引入 [`useState`](/apis/react/useState)：
-=======
-First, import [`useState`](/reference/react/useState) from React:
->>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
+首先，从 React 引入 [`useState`](/reference/react/useState)：
 
 ```js
 import { useState } from 'react';
@@ -391,11 +387,7 @@ button {
 
 ## 使用 Hook {/*using-hooks*/}
 
-<<<<<<< HEAD
-以 `use` 开头的函数被称为 **Hook**。`useState` 是 React 提供的一个内置 Hook。你可以在 [React API 参考](/apis/react) 中找到其他内置的 Hook。你也可以通过组合现有的 Hook 来编写属于你自己的 Hook。
-=======
-Functions starting with `use` are called *Hooks*. `useState` is a built-in Hook provided by React. You can find other built-in Hooks in the [React API reference.](/reference/react) You can also write your own Hooks by combining the existing ones.
->>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
+以 `use` 开头的函数被称为 **Hook**。`useState` 是 React 提供的一个内置 Hook。你可以在 [React API 参考](/reference/react) 中找到其他内置的 Hook。你也可以通过组合现有的 Hook 来编写属于你自己的 Hook。
 
 Hook 比普通函数更为严格。你只能在你的组件（或其他 Hook）的 **顶层** 调用 Hook。如果你想在一个条件或循环中使用 `useState`，请提取一个新的组件并在组件内部使用它。
 
@@ -549,8 +541,4 @@ button {
 
 至此，你已经了解了如何编写 React 代码的基本知识。
 
-<<<<<<< HEAD
-前往 [React 哲学](/learn/thinking-in-react) 章节，了解使用 React 构建 UI 的实际感受。
-=======
 Check out the [Tutorial](/learn/tutorial-tic-tac-toe) to put them into practice and build your first mini-app with React.
->>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
