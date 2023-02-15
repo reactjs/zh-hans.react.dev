@@ -54,7 +54,7 @@ React 支持所有的现代浏览器，不过对于旧版本来说，可能需�
 createPortal(child, container)
 ```
 
-创建 portal。[Portal](/docs/portals.html) 提供了一种将子节点渲染到已 DOM 节点中的方式，该节点存在于 DOM 组件的层次结构之外。
+创建 portal。[Portal](/docs/portals.html) 提供了一种将子节点渲染到已有 DOM 节点中的方式，该节点存在于 DOM 组件的层次结构之外。
 
 ### `flushSync()` {#flushsync}
 
