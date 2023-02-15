@@ -71,11 +71,7 @@ button { margin-right: 10px; }
 * 通常在你的组件 *内部* 定义。
 * 名称以 `handle` 开头，后跟事件名称。
 
-<<<<<<< HEAD
 > 按照惯例，通常将事件处理程序命名为 `handle`，后接事件名。你会经常看到 `onClick={handleClick}`，`onMouseEnter={handleMouseEnter}` 等。
-=======
-By convention, it is common to name event handlers as `handle` followed by the event name. You'll often see `onClick={handleClick}`, `onMouseEnter={handleMouseEnter}`, and so on.
->>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
 
 或者，你也可以在 JSX 中定义一个内联的事件处理函数：
 
@@ -134,11 +130,7 @@ By convention, it is common to name event handlers as `handle` followed by the e
 * `<button onClick={handleClick}>` 传递了 `handleClick` 函数。
 * `<button onClick={() => alert('...')}>` 传递了 `() => alert('...')` 函数。
 
-<<<<<<< HEAD
-> 查看 [JavaScript Refresher](a-javascript-refresher#arrow-functions) 了解更多箭头函数的信息。
-=======
-[Read more about arrow functions.](https://javascript.info/arrow-functions-basics)
->>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
+> [了解更多箭头函数的信息。](https://javascript.info/arrow-functions-basics)
 
 </Pitfall>
 
@@ -243,15 +235,9 @@ button { margin-right: 10px; }
 
 ### 命名事件处理函数 prop {/*naming-event-handler-props*/}
 
-<<<<<<< HEAD
-内置组件（`<button>` 和 `<div>`）仅支持 [浏览器事件名称](TODO:/apis/react-dom/events)，例如 `onClick`。但是，当你构建自己的组件时，你可以按你个人喜好命名事件处理函数的 prop。
+内置组件（`<button>` 和 `<div>`）仅支持 [浏览器事件名称](/reference/react-dom/components/common#common-props)，例如 `onClick`。但是，当你构建自己的组件时，你可以按你个人喜好命名事件处理函数的 prop。
 
 > 按照惯例，事件处理函数 props 应该以 `on` 开头，后跟一个大写字母。
-=======
-Built-in components like `<button>` and `<div>` only support [browser event names](/reference/react-dom/components/common#common-props) like `onClick`. However, when you're building your own components, you can name their event handler props any way that you like.
-
-By convention, event handler props should start with `on`, followed by a capital letter.
->>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
 
 例如，`Button` 组件的 `onClick` prop 本来也可以被命名为 `onSmash`：
 
@@ -606,11 +592,7 @@ export default function LightSwitch() {
 
 </Sandpack>
 
-<<<<<<< HEAD
-或者，你可以把函数调用包裹在另一个函数内，例如 `<button onClick={() => handleClick()}` ：
-=======
-Alternatively, you could wrap the call into another function, like `<button onClick={() => handleClick()}>`:
->>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
+或者，你可以把函数调用包裹在另一个函数内，例如 `<button onClick={() => handleClick()}>` ：
 
 <Sandpack>
 

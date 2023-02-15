@@ -199,13 +199,8 @@ return (
 
 在终端上进入你的项目文件夹，然后执行如下两个命令：(**确保你的计算机安装了 [Node.js](https://nodejs.org/)！**)：
 
-<<<<<<< HEAD
-1. `npm init -y`（如果失败，请参阅 [修复方案](https://gist.github.com/gaearon/246f6380610e262f8a648e3e51cad40d)）
-2. `npm install babel-cli@6 babel-preset-react-app@3`
-=======
-1. `npm init -y` (if it fails, [here's a fix](https://gist.github.com/gaearon/246f6380610e262f8a648e3e51cad40d))
+1. `npm init -y` (如果失败，请参阅, [修复方案](https://gist.github.com/gaearon/246f6380610e262f8a648e3e51cad40d))
 2. `npm install @babel/cli@7 babel-preset-react-app@10`
->>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
 
 此处使用 npm 只是用于安装 JSX 预处理器，之后便不再需要它。React 和应用程序代码都可以继续使用 `<script>` 标签而不做任何更改。
 
@@ -215,15 +210,9 @@ return (
 
 你可以对 JSX 文件进行预处理。当你编辑保存带有 JSX 的源文件时，这个转换过程将自动重新执行，并把 JSX 文件转换为一个全新的，浏览器可以识别的普通 JavaScript 文件，以下是设置方式：
 
-<<<<<<< HEAD
 1. 创建一个名为 **`src`** 的文件夹
-2. 在终端执行这个命令： `npx babel --watch src --out-dir . --presets react-app/prod ` （无需等待运行结果 —— 这个命令会自动启动一个观察器，观察对 `src` 内 JSX 的编辑。）
-3. 将已经 JSX 化的 **`like-button.js`**（[它看起来应该像这样！](https://gist.githubusercontent.com/gaearon/be5ae0fbf563d6c5fe5c1563907b13d2/raw/4c0d0b8c7f4fcb341720424c28c72059f8174c62/like-button.js)）文件移动到新的 **`src`** 目录下。
-=======
-1. Create a folder called **`src`.**
-2. In your terminal, run this command: `npx babel --watch src --out-dir . --presets babel-preset-react-app/prod ` (Don't wait for it to finish! This command starts an automated watcher for edits to JSX inside `src`.)
-3. Move your JSX-ified **`like-button.js`** ([it should look like this!](https://gist.githubusercontent.com/gaearon/be5ae0fbf563d6c5fe5c1563907b13d2/raw/4c0d0b8c7f4fcb341720424c28c72059f8174c62/like-button.js)) to the new **`src`** folder.
->>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
+2. 在终端执行这个命令：`npx babel --watch src --out-dir . --presets babel-preset-react-app/prod ` （无需等待运行结果 —— 这个命令会自动启动一个观察器，观察对 `src` 内 JSX 的编辑。）
+3. 将已经 JSX 化的 **`like-button.js`** ([它看起来应该像这样！](https://gist.githubusercontent.com/gaearon/be5ae0fbf563d6c5fe5c1563907b13d2/raw/4c0d0b8c7f4fcb341720424c28c72059f8174c62/like-button.js)) 文件移动到新的 **`src`** 目录下。
 
 监听器会创建一个预处理过的 **`like_button.js`** 文件，它包含了适用于浏览器的普通 JavaScript 代码.
 
@@ -243,13 +232,8 @@ return (
 
 最初引入 JSX 是为了想让 React 编写组件的感觉就像编写 HTML 一样简单，但总有例外，你不想或者不能使用 JSX，此时可以参考其他两种解决方案：
 
-<<<<<<< HEAD
-- 使用像 [htm](https://github.com/developit/htm) 这样的 JSX 替代品，它使用 JavaScript 的 [模板字符串](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) 来取代编译器。
-- 使用 [`React.createElement()`](/apis/react/createElement)，它具有下面解释的特殊结构。
-=======
-- Use a JSX alternative like [htm](https://github.com/developit/htm) which uses JavaScript [template strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) instead of a compiler.
-- Use [`React.createElement()`](/reference/react/createElement) which has a special structure explained below.
->>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
+- 使用像 [htm](https://github.com/developit/htm) 这样的 JSX 替代品，它使用 JavaScript 的 [模板字符串](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Template_literals) 来取代编译器。
+- 使用 [`React.createElement()`](/reference/react/createElement) ，它具有下面解释的特殊结构
 
 用 JSX 编写的代码：
 

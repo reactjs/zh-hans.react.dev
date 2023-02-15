@@ -8,15 +8,11 @@
       "path": "",
       "routes": [
         {
-<<<<<<< HEAD
-          "title": "安装",
-=======
           "hasSectionHeader": true,
           "sectionHeader": "Get Started"
         },
         {
-          "title": "Installation",
->>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
+          "title": "安装",
           "path": "/learn/installation",
           "routes": [
             {
@@ -40,19 +36,13 @@
         {
           "title": "快速入门",
           "path": "/learn",
-<<<<<<< HEAD
-          "routes": [{
-            "title": "React 哲学",
-            "path": "/learn/thinking-in-react"
-          }]
-=======
           "routes": [
             {
               "title": "Tutorial: Tic-Tac-Toe",
               "path": "/learn/tutorial-tic-tac-toe"
             },
             {
-              "title": "Thinking in React",
+              "title": "React 哲学",
               "path": "/learn/thinking-in-react"
             }
           ]
@@ -60,7 +50,6 @@
         {
           "hasSectionHeader": true,
           "sectionHeader": "Learn React"
->>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
         },
         {
           "title": "描述 UI",

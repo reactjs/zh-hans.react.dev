@@ -6,9 +6,6 @@ prev: hello-world.html
 next: rendering-elements.html
 ---
 
-<<<<<<< HEAD
-设想如下变量声明：
-=======
 > Try the new React documentation.
 > 
 > These new documentation pages teach modern React and include live examples:
@@ -18,8 +15,7 @@ next: rendering-elements.html
 >
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
-Consider this variable declaration:
->>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
+设想如下变量声明：
 
 ```js
 const element = <h1>Hello, world!</h1>;

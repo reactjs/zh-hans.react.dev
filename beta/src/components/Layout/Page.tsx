@@ -8,15 +8,12 @@ import {useRouter} from 'next/router';
 import {Nav} from './Nav';
 import {Footer} from './Footer';
 import {Toc} from './Toc';
-<<<<<<< HEAD
-=======
 import SocialBanner from '../SocialBanner';
 import {DocsPageFooter} from 'components/DocsFooter';
 import {Seo} from 'components/Seo';
 import PageHeading from 'components/PageHeading';
 import {getRouteMeta} from './getRouteMeta';
 import {TocContext} from '../MDX/TocContext';
->>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
 import sidebarLearn from '../../sidebarLearn.json';
 import sidebarReference from '../../sidebarReference.json';
 import type {TocItem} from 'components/MDX/TocContext';
@@ -44,26 +41,6 @@ export function Page({children, toc, routeTree, meta, section}: PageProps) {
   const isHomePage = cleanedPath === '/';
   return (
     <>
-<<<<<<< HEAD
-      <SidebarContext.Provider value={routeTree}>
-        <div className="grid grid-cols-only-content lg:grid-cols-sidebar-content 2xl:grid-cols-sidebar-content-toc">
-          <div className="fixed lg:sticky top-0 left-0 right-0 py-0 shadow lg:shadow-none z-50">
-            <Nav />
-          </div>
-          {/* No fallback UI so need to be careful not to suspend directly inside. */}
-          <Suspense fallback={null}>
-            <main className="min-w-0">
-              <div className="lg:hidden h-16 mb-2" />
-              <article className="break-words" key={asPath}>
-                {children}
-              </article>
-              <Footer />
-            </main>
-          </Suspense>
-          <div className="hidden lg:max-w-xs 2xl:block">
-            {toc.length > 0 && <Toc headings={toc} key={asPath} />}
-          </div>
-=======
       <SocialBanner />
       <div className="grid grid-cols-only-content lg:grid-cols-sidebar-content 2xl:grid-cols-sidebar-content-toc">
         <div className="fixed lg:sticky top-0 left-0 right-0 py-0 shadow lg:shadow-none z-50">
@@ -72,7 +49,6 @@ export function Page({children, toc, routeTree, meta, section}: PageProps) {
             breadcrumbs={breadcrumbs}
             section={section}
           />
->>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
         </div>
         {/* No fallback UI so need to be careful not to suspend directly inside. */}
         <Suspense fallback={null}>

@@ -171,15 +171,11 @@ unmountComponentAtNode(container)
 
 ### `findDOMNode()` {#finddomnode}
 
-<<<<<<< HEAD
-> 注意:
-=======
 > Try the new React documentation for [`findDOMNode`](https://beta.reactjs.org/reference/react-dom/findDOMNode).
 >
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
-> Note:
->>>>>>> 534948880cda3eab47fe81b561988cc66f6a2fe0
+> 注意：
 >
 > `findDOMNode` 是一个访问底层 DOM 节点的应急方案（escape hatch）。在大多数情况下，不推荐使用该方法，因为它会破坏组件的抽象结构。[严格模式下该方法已弃用。](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
 
