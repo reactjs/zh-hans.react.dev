@@ -12,7 +12,7 @@ Hook 是[向下兼容的](/docs/hooks-intro.html#no-breaking-changes)。本页�
 
 >详细说明
 >
->有关我们为什么要在 React 中引入 Hook 的原因，请参考[动机](/docs/hooks-intro.html#motivation)。
+>有关我们要在 React 中引入 Hook 的原因，请参考[动机](/docs/hooks-intro.html#motivation)。
 
 **↑↑↑ 每个部分的结尾都会有一个如上所示的黄色方框。** 它们会链接到更详细的说明。
 
