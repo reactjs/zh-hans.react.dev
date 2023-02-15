@@ -16,9 +16,9 @@ import React, { useState, useEffect } from 'react';
 function Example() {
   const [count, setCount] = useState(0);
 
-  // Similar to componentDidMount and componentDidUpdate:
+  // 与 componentDidMount() 和 componentDidUpdate() 类似:
   useEffect(() => {
-    // Update the document title using the browser API
+    // 使用浏览器 API 更新网页标题
     document.title = `You clicked ${count} times`;
   });
 
@@ -211,7 +211,7 @@ function FriendStatus(props) {
     }
 
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
-    // Specify how to clean up after this effect:
+    // 指定在该操作之后如何清除 effect:
     return function cleanup() {
       ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
     };
@@ -412,18 +412,18 @@ function FriendStatus(props) {
 并不需要特定的代码来处理更新逻辑，因为 `useEffect` *默认*就会处理。它会在调用一个新的 effect 之前对前一个 effect 进行清理。为了说明这一点，下面按时间列出一个可能会产生的订阅和取消订阅操作调用序列：
 
 ```js
-// Mount with { friend: { id: 100 } } props
+// 使用属性 { friend: { id: 100 } } 进行挂载
 ChatAPI.subscribeToFriendStatus(100, handleStatusChange);     // 运行第一个 effect
 
-// Update with { friend: { id: 200 } } props
+// 使用属性 { friend: { id: 200 } } 进行更新
 ChatAPI.unsubscribeFromFriendStatus(100, handleStatusChange); // 清除上一个 effect
 ChatAPI.subscribeToFriendStatus(200, handleStatusChange);     // 运行下一个 effect
 
-// Update with { friend: { id: 300 } } props
+// 使用属性 { friend: { id: 300 } } 进行更新
 ChatAPI.unsubscribeFromFriendStatus(200, handleStatusChange); // 清除上一个 effect
 ChatAPI.subscribeToFriendStatus(300, handleStatusChange);     // 运行下一个 effect
 
-// Unmount
+// 卸载
 ChatAPI.unsubscribeFromFriendStatus(300, handleStatusChange); // 清除最后一个 effect
 ```
 
