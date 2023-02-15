@@ -9,7 +9,6 @@ import cn from 'classnames';
 import CodeBlock from './CodeBlock';
 import {CodeDiagram} from './CodeDiagram';
 import ConsoleBlock from './ConsoleBlock';
-import Convention from './Convention';
 import ExpandableCallout from './ExpandableCallout';
 import ExpandableExample from './ExpandableExample';
 import {H1, H2, H3, H4} from './Heading';
@@ -30,6 +29,7 @@ import {IconNavArrow} from '../Icon/IconNavArrow';
 import ButtonLink from 'components/ButtonLink';
 import {TocContext} from './TocContext';
 import type {Toc, TocItem} from './TocContext';
+import {TeamMember} from './TeamMember';
 
 function CodeStep({children, step}: {children: any; step: number}) {
   return (
@@ -77,8 +77,11 @@ const Divider = () => (
 const Wip = ({children}: {children: React.ReactNode}) => (
   <ExpandableCallout type="wip">{children}</ExpandableCallout>
 );
-const Gotcha = ({children}: {children: React.ReactNode}) => (
-  <ExpandableCallout type="gotcha">{children}</ExpandableCallout>
+const Pitfall = ({children}: {children: React.ReactNode}) => (
+  <ExpandableCallout type="pitfall">{children}</ExpandableCallout>
+);
+const Deprecated = ({children}: {children: React.ReactNode}) => (
+  <ExpandableCallout type="deprecated">{children}</ExpandableCallout>
 );
 const Note = ({children}: {children: React.ReactNode}) => (
   <ExpandableCallout type="note">{children}</ExpandableCallout>
@@ -171,27 +174,39 @@ function Recipes(props: any) {
 }
 
 function AuthorCredit({
-  author,
-  authorLink,
+  author = 'Rachel Lee Nabors',
+  authorLink = 'http://rachelnabors.com/',
 }: {
   author: string;
   authorLink: string;
 }) {
   return (
-    <p className="text-center text-secondary dark:text-secondary-dark text-base mt-2">
-      <cite>
-        Illustrated by{' '}
-        {authorLink ? (
-          <a className="text-link dark:text-link-dark" href={authorLink}>
-            {author}
-          </a>
-        ) : (
-          author
-        )}
-      </cite>
-    </p>
+    <div className="sr-only group-hover:not-sr-only group-focus-within:not-sr-only hover:sr-only">
+      <p className="bg-card dark:bg-card-dark text-center text-sm text-secondary dark:text-secondary-dark leading-tight dark:text-secondary-dark p-2 rounded-lg absolute left-1/2 top-0 -translate-x-1/2 -translate-y-full group-hover:flex group-hover:opacity-100 after:content-[''] after:absolute after:left-1/2 after:top-[95%] after:-translate-x-1/2 after:border-8 after:border-x-transparent after:border-b-transparent after:border-t-card after:dark:border-t-card-dark opacity-0 transition-opacity duration-300">
+        <cite>
+          Illustrated by{' '}
+          {authorLink ? (
+            <a
+              target="_blank"
+              rel="noreferrer"
+              className="text-link dark:text-link-dark"
+              href={authorLink}>
+              {author}
+            </a>
+          ) : (
+            author
+          )}
+        </cite>
+      </p>
+    </div>
   );
 }
+
+const IllustrationContext = React.createContext<{
+  isInBlock?: boolean;
+}>({
+  isInBlock: false,
+});
 
 function Illustration({
   caption,
@@ -206,8 +221,10 @@ function Illustration({
   author: string;
   authorLink: string;
 }) {
+  const {isInBlock} = React.useContext(IllustrationContext);
+
   return (
-    <div className="my-16 mx-0 2xl:mx-auto max-w-4xl 2xl:max-w-6xl">
+    <div className="relative group before:absolute before:-inset-y-16 before:inset-x-0 my-16 mx-0 2xl:mx-auto max-w-4xl 2xl:max-w-6xl">
       <figure className="my-8 flex justify-center">
         <img
           src={src}
@@ -221,19 +238,19 @@ function Illustration({
           </figcaption>
         ) : null}
       </figure>
-      {author ? <AuthorCredit author={author} authorLink={authorLink} /> : null}
+      {!isInBlock && <AuthorCredit author={author} authorLink={authorLink} />}
     </div>
   );
 }
 
+const isInBlockTrue = {isInBlock: true};
+
 function IllustrationBlock({
-  title,
   sequential,
   author,
   authorLink,
   children,
 }: {
-  title: string;
   author: string;
   authorLink: string;
   sequential: boolean;
@@ -255,25 +272,22 @@ function IllustrationBlock({
     </figure>
   ));
   return (
-    <div className="my-16 mx-0 2xl:mx-auto max-w-4xl 2xl:max-w-6xl">
-      {title ? (
-        <h3 className="text-center text-xl font-bold leading-9 mb-4">
-          {title}
-        </h3>
-      ) : null}
-      {sequential ? (
-        <ol className="mdx-illustration-block flex">
-          {images.map((x: any, i: number) => (
-            <li className="flex-1" key={i}>
-              {x}
-            </li>
-          ))}
-        </ol>
-      ) : (
-        <div className="mdx-illustration-block">{images}</div>
-      )}
-      {author ? <AuthorCredit author={author} authorLink={authorLink} /> : null}
-    </div>
+    <IllustrationContext.Provider value={isInBlockTrue}>
+      <div className="relative group before:absolute before:-inset-y-16 before:inset-x-0 my-16 mx-0 2xl:mx-auto max-w-4xl 2xl:max-w-6xl">
+        {sequential ? (
+          <ol className="mdx-illustration-block flex">
+            {images.map((x: any, i: number) => (
+              <li className="flex-1" key={i}>
+                {x}
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <div className="mdx-illustration-block">{images}</div>
+        )}
+        <AuthorCredit author={author} authorLink={authorLink} />
+      </div>
+    </IllustrationContext.Provider>
   );
 }
 
@@ -311,6 +325,9 @@ function calculateNestedToc(toc: Toc): NestedTocRoot {
 function InlineToc() {
   const toc = useContext(TocContext);
   const root = useMemo(() => calculateNestedToc(toc), [toc]);
+  if (root.children.length < 2) {
+    return null;
+  }
   return <InlineTocItem items={root.children} />;
 }
 
@@ -356,7 +373,6 @@ export const MDXComponents = {
   pre: CodeBlock,
   CodeDiagram,
   ConsoleBlock,
-  Convention,
   DeepDive: (props: {
     children: React.ReactNode;
     title: string;
@@ -370,7 +386,8 @@ export const MDXComponents = {
   MaxWidth({children}: {children: any}) {
     return <div className="max-w-4xl ml-0 2xl:mx-auto">{children}</div>;
   },
-  Gotcha,
+  Pitfall,
+  Deprecated,
   Wip,
   HomepageHero,
   Illustration,
@@ -385,6 +402,7 @@ export const MDXComponents = {
   Recap,
   Recipes,
   Sandpack,
+  TeamMember,
   TerminalBlock,
   YouWillLearn,
   YouWillLearnCard,

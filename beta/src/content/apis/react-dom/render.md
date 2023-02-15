@@ -6,12 +6,13 @@ translators:
   - Neo42
 ---
 
-<Gotcha>
+<Deprecated>
 
 在 React 18 中，`render` 函数将被 [`createRoot`](/apis/react-dom/client/createRoot) 函数替换。在 React 18 中使用 `render` 函数，React 会抛出警告，你的应用程序的表现将像运行在 React 17 中表现一致。具体详情请参阅 [博文](https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html#updates-to-client-rendering-apis)。
 
-</Gotcha>
+This API will be removed in a future major version of React.
 
+</Deprecated>
 
 <Intro>
 
@@ -180,6 +181,14 @@ export default function App({counter}) {
 
 ### `render(reactNode, domNode, callback?)` {/*render*/}
 
+<Deprecated>
+
+在 React 18 中，`render` 已被 [`createRoot`](/apis/react-dom/client/createRoot) 取代。在 React 18 中使用 `render` 会和在 React 17 中运行效果一致，但控制台会发出警告。欲了解更多，请参阅 [博文](https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html#updates-to-client-rendering-apis)。
+
+在未来 React 发布主要版本时，此 API 将被移除。
+
+</Deprecated>
+
 通过调用 `render` 函数，可以在浏览器的 DOM 元素中展示 React 组件。
 
 ```js
@@ -208,7 +217,7 @@ React 将在 `domNode` 中展示 `<App />` 组件，并对该 DOM 中的内容�
 
 #### 注意事项 {/*caveats*/}
 
-* 在 React 18 中，`render` 函数已被 [`createRoot`](/apis/react-dom/client/createRoot) 取代。请在 React 18 及后续版本中使用。
+* 在 React 18 中，`render` 函数已被 [`createRoot`](/apis/react-dom/client/createRoot) 取代。请在 React 18 及后续版本中使用 `createRoot`。
 
 * 当你第一次调用 `render` 时，React 会在组件渲染到 `domNode` 中之前，清除掉 `domNode` 中所有已有的 HTML 内容。如果你的 `domNode` 中包含了 React 在服务器上或构建过程中生成的 HTML，请使用 [`hydrate()`](/apis/react-dom/hydrate) 代替，它会将事件处理程序附加到现有的 HTML 中。
 

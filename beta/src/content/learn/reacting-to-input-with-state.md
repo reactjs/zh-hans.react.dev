@@ -238,7 +238,9 @@ export default function Form({
 
 </Sandpack>
 
-<DeepDive title="Displaying many visual states at once">
+<DeepDive>
+
+#### Displaying many visual states at once {/*displaying-many-visual-states-at-once*/}
 
 If a component has a lot of visual states, it can be convenient to show them all on one page:
 
@@ -311,15 +313,15 @@ Pages like this are often called "living styleguides" or "storybooks".
 
 ### Step 2: Determine what triggers those state changes {/*step-2-determine-what-triggers-those-state-changes*/}
 
-<IllustrationBlock title="Types of inputs">
-  <Illustration caption="Human inputs" alt="A finger." src="/images/docs/illustrations/i_inputs1.png" />
-  <Illustration caption="Computer inputs" alt="Ones and zeroes." src="/images/docs/illustrations/i_inputs2.png" />
-</IllustrationBlock>
-
 You can trigger state updates in response to two kinds of inputs:
 
 * **Human inputs,** like clicking a button, typing in a field, navigating a link.
 * **Computer inputs,** like a network response arriving, a timeout completing, an image loading.
+
+<IllustrationBlock>
+  <Illustration caption="Human inputs" alt="A finger." src="/images/docs/illustrations/i_inputs1.png" />
+  <Illustration caption="Computer inputs" alt="Ones and zeroes." src="/images/docs/illustrations/i_inputs2.png" />
+</IllustrationBlock>
 
 In both cases, **you must set [state variables](/learn/state-a-components-memory#anatomy-of-usestate) to update the UI.** For the form you're developing, you will need to change state in response to a few different inputs:
 
@@ -387,7 +389,9 @@ const [status, setStatus] = useState('typing'); // 'typing', 'submitting', or 's
 
 You know they are essential, because you can't remove any of them without breaking the functionality.
 
-<DeepDive title="Eliminating “impossible” states with a reducer">
+<DeepDive>
+
+#### Eliminating “impossible” states with a reducer {/*eliminating-impossible-states-with-a-reducer*/}
 
 These three variables are a good enough representation of this form's state. However, there are still some intermediate states that don't fully make sense. For example, a non-null `error` doesn't make sense when `status` is `'success'`. To model the state more precisely, you can [extract it into a reducer.](/learn/extracting-state-logic-into-a-reducer) Reducers let you unify multiple state variables into a single object and consolidate all the related logic!
 

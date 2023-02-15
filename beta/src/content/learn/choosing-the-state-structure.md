@@ -95,11 +95,11 @@ body { margin: 0; padding: 0; height: 250px; }
 
 Another case where you'll group data into an object or an array is when you don't know how many different pieces of state you'll need. For example, it's helpful when you have a form where the user can add custom fields.
 
-<Gotcha>
+<Pitfall>
 
 If your state variable is an object, remember that [you can't update only one field in it](/learn/updating-objects-in-state) without explicitly copying the other fields. For example, you can't do `setPosition({ x: 100 })` in the above example because it would not have the `y` property at all! Instead, if you wanted to set `x` alone, you would either do `setPosition({ ...position, x: 100 })`, or split them into two state variables and do `setX(100)`.
 
-</Gotcha>
+</Pitfall>
 
 ## Avoid contradictions in state {/*avoid-contradictions-in-state*/}
 
@@ -342,7 +342,9 @@ const fullName = firstName + ' ' + lastName;
 
 As a result, the change handlers don't need to do anything special to update it. When you call `setFirstName` or `setLastName`, you trigger a re-render, and then the next `fullName` will be calculated from the fresh data.
 
-<DeepDive title="Don't mirror props in state">
+<DeepDive>
+
+#### Don't mirror props in state {/*don-t-mirror-props-in-state*/}
 
 A common example of redundant state is code like this:
 
@@ -1474,7 +1476,9 @@ button { margin: 10px; }
 
 You can nest state as much as you like, but making it "flat" can solve numerous problems. It makes state easier to update, and it helps ensure you don't have duplication in different parts of a nested object.
 
-<DeepDive title="Improving memory usage">
+<DeepDive>
+
+#### Improving memory usage {/*improving-memory-usage*/}
 
 Ideally, you would also remove the deleted items (and their children!) from the "table" object to improve memory usage. This version does that. It also [uses Immer](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) to make the update logic more concise.
 

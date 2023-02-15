@@ -339,11 +339,11 @@ In React, `useState`, as well as any other function starting with "`use`", is ca
 
 State is just one of those features, but you will meet the other Hooks later.
 
-<Gotcha>
+<Pitfall>
 
 **Hooks—functions starting with `use`—can only be called at the top level of your components or [your own Hooks.](/learn/reusing-logic-with-custom-hooks)** You can't call Hooks inside conditions, loops, or other nested functions. Hooks are functions, but it's helpful to think of them as unconditional declarations about your component's needs. You "use" React features at the top of your component similar to how you "import" modules at the top of your file.
 
-</Gotcha>
+</Pitfall>
 
 ### Anatomy of `useState` {/*anatomy-of-usestate*/}
 
@@ -518,7 +518,9 @@ button {
 
 It is a good idea to have multiple state variables if their state is unrelated, like `index` and `showMore` in this example. But if you find that you often change two state variables together, it might be better to combine them into a single one. For example, if you have a form with many fields, it's more convenient to have a single state variable that holds an object than state variable per field. [Choosing the State Structure](/learn/choosing-the-state-structure) has more tips on this.
 
-<DeepDive title="How does React know which state to return?">
+<DeepDive>
+
+#### How does React know which state to return? {/*how-does-react-know-which-state-to-return*/}
 
 You might have noticed that the `useState` call does not receive any information about *which* state variable it refers to. There is no "identifier" that is passed to `useState`, so how does it know which of the state variables to return? Does it rely on some magic like parsing your functions? The answer is no.
 
@@ -924,7 +926,7 @@ export default function Gallery() {
   const [showMore, setShowMore] = useState(false);
 
   function handleNextClick() {
-    setIndex(index + 1000);
+    setIndex(index + 1);
   }
 
   function handleMoreClick() {

@@ -492,7 +492,7 @@ export default function TeaSet() {
       <Cup />
       <Cup />
     </>
-  )
+  );
 }
 ```
 
