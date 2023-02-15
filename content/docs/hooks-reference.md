@@ -132,7 +132,7 @@ useEffect(didUpdate);
 
 #### 清除 effect {#cleaning-up-an-effect}
 
-通常，组件卸载时需要清除 effect 创建的诸如订阅或计时器 ID 等资源。要实现这一点，`useEffect` 函数需返回一个清除函数。以下就是一个创建订阅的例子：
+通常，组件卸载时需要清除 effect 创建的诸如订阅或计时器 ID 等资源。要实现这一点，传递给 `useEffect` 的函数需返回一个清除函数。以下就是一个创建订阅的例子：
 
 ```js
 useEffect(() => {
@@ -697,7 +697,7 @@ const selectedField = useSyncExternalStore(
 );
 ```
 
-当服务端渲染的时候，你必须序列化在服务端使用的存储值，并将其提供给 `usencexternalSternore`。React 将在 hydration 过程中使用此快照来防止服务端不匹配：
+当服务端渲染的时候，你必须序列化在服务端使用的存储值，并将其提供给 `useSyncExternalStore`。React 将在 hydration 过程中使用此快照来防止服务端不匹配：
 
 ```js
 const selectedField = useSyncExternalStore(

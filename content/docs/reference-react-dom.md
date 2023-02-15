@@ -40,7 +40,7 @@ var ReactDOM = require('react-dom');
 
 ### 浏览器支持 {#browser-support}
 
-React 支持所有的现代浏览器，尽管对于旧版本来说，可能需要引入 [相关的 polyfills 依赖](/docs/javascript-environment-requirements.html)。
+React 支持所有的现代浏览器，不过对于旧版本来说，可能需要引入 [相关的 polyfills 依赖](/docs/javascript-environment-requirements.html)。
 
 > 注意：
 >
@@ -124,7 +124,7 @@ hydrate(element, container[, callback])
 
 与 [`render()`](#render) 相同，但它用于在 [`ReactDOMServer`](/docs/react-dom-server.html) 渲染的容器中对 HTML 的内容进行 hydrate 操作。React 会尝试在已有标记上绑定事件监听器。
 
-React 希望服务端与客户端渲染的内容完全一致。React 可以弥补文本内容的差异，但是你需要将不匹配的地方作为 bug 进行修复。在开发者模式下，React 会对 hydration 操作过程中的不匹配进行警告。但并不能保证在不匹配的情况下，修补属性的差异。由于性能的关系，这一点非常重要，因为大多是应用中不匹配的情况很少见，并且验证所有标记的成本非常昂贵。
+React 希望服务端与客户端渲染的内容完全一致。React 可以弥补文本内容的差异，但是你需要将不匹配的地方作为 bug 进行修复。在开发者模式下，React 会对 hydration 操作过程中的不匹配进行警告。但并不能保证在不匹配的情况下，修补属性的差异。由于性能的关系，这一点非常重要，因为大多数应用中不匹配的情况很少见，并且验证所有标记的成本非常昂贵。
 
 如果单个元素的属性或者文本内容，在服务端和客户端之间有无法避免差异（比如：时间戳），则可以为元素添加 `suppressHydrationWarning={true}` 来消除警告。这种方式只在一级深度上有效，应只作为一种应急方案（escape hatch）。请不要过度使用！除非它是文本内容，否则 React 仍不会尝试修补差异，因此在未来的更新之前，仍会保持不一致。
 
