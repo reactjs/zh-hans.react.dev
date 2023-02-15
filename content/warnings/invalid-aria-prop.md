@@ -10,6 +10,8 @@ permalink: warnings/invalid-aria-prop.html
 
 2. React 还无法识别你指定的属性。这可能会在 React 的未来版本中被修复。
 
+3. 如果你在最新版本的 React DOM 上，并且你已确认你使用的是复合 ARIA 规范的有效属性名，请 [告知](https://github.com/facebook/react/issues/new/choose) 我们。
+
 **译注：**
  
 <a name="note1"></a> [1] WAI：Web Accessibility Initiative，Web 无障碍计划<br>

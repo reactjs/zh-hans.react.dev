@@ -7,6 +7,7 @@ import {IconSearch} from 'components/Icon/IconSearch';
 import Head from 'next/head';
 import Link from 'next/link';
 import Router from 'next/router';
+import {useState, useCallback, useEffect} from 'react';
 import * as React from 'react';
 import {createPortal} from 'react-dom';
 import {siteConfig} from 'siteConfig';
@@ -58,7 +59,7 @@ function useDocSearchKeyboardEvents({
   onOpen: () => void;
   onClose: () => void;
 }) {
-  React.useEffect(() => {
+  useEffect(() => {
     function onKeyDown(event: any) {
       function open() {
         // We check that no other DocSearch modal is showing before opening
@@ -94,23 +95,22 @@ const options = {
   indexName: siteConfig.algolia.indexName,
 };
 let DocSearchModal: any = null;
-export const Search: React.FC<SearchProps> = ({
+export function Search({
   searchParameters = {
     hitsPerPage: 5,
   },
-}) => {
-  const [isLoaded] = React.useState(true);
-  const [isShowing, setIsShowing] = React.useState(false);
+}: SearchProps) {
+  const [isShowing, setIsShowing] = useState(false);
 
-  const importDocSearchModalIfNeeded = React.useCallback(
+  const importDocSearchModalIfNeeded = useCallback(
     function importDocSearchModalIfNeeded() {
       if (DocSearchModal) {
         return Promise.resolve();
       }
 
       // @ts-ignore
-      return Promise.all([import('@docsearch/react/modal')]).then(
-        ([{DocSearchModal: Modal}]) => {
+      return import('@docsearch/react/modal').then(
+        ({DocSearchModal: Modal}) => {
           DocSearchModal = Modal;
         }
       );
@@ -118,7 +118,7 @@ export const Search: React.FC<SearchProps> = ({
     []
   );
 
-  const onOpen = React.useCallback(
+  const onOpen = useCallback(
     function onOpen() {
       importDocSearchModalIfNeeded().then(() => {
         setIsShowing(true);
@@ -127,7 +127,7 @@ export const Search: React.FC<SearchProps> = ({
     [importDocSearchModalIfNeeded, setIsShowing]
   );
 
-  const onClose = React.useCallback(
+  const onClose = useCallback(
     function onClose() {
       setIsShowing(false);
     },
@@ -165,8 +165,7 @@ export const Search: React.FC<SearchProps> = ({
         </span>
       </button>
 
-      {isLoaded &&
-        isShowing &&
+      {isShowing &&
         createPortal(
           <DocSearchModal
             {...options}
@@ -193,6 +192,4 @@ export const Search: React.FC<SearchProps> = ({
         )}
     </>
   );
-};
-
-Search.displayName = 'Search';
+}
