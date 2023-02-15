@@ -41,7 +41,6 @@ export function Page({children, toc, routeTree, meta, section}: PageProps) {
   const isHomePage = cleanedPath === '/';
   return (
     <>
-      <SocialBanner />
       <div className="grid grid-cols-only-content lg:grid-cols-sidebar-content 2xl:grid-cols-sidebar-content-toc">
         <div className="fixed lg:sticky top-0 left-0 right-0 py-0 shadow lg:shadow-none z-50">
           <Nav
