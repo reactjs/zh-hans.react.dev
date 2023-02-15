@@ -470,7 +470,7 @@ Suspense boundaries depend on their parent boundaries being hydrated before they
 ```js
 React.startTransition(callback)
 ```
-`React.startTransition` 让你把提供的 fallback 里面的更新标记为 transitions。这个方法是为了在 [`React.useTransition`](/docs/hooks-reference.html#usetransition) 不可用时使用。
+`React.startTransition` 让你把提供的 callback 里面的更新标记为 transitions。这个方法是为了在 [`React.useTransition`](/docs/hooks-reference.html#usetransition) 不可用时使用。
 
 > 注意：
 >
