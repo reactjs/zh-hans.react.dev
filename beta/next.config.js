@@ -2,7 +2,6 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-const path = require('path');
 const redirects = require('./src/redirects.json');
 
 /**
@@ -16,6 +15,9 @@ const nextConfig = {
     scrollRestoration: true,
     legacyBrowsers: false,
     browsersListForSwc: true,
+  },
+  env: {
+    SANDPACK_BARE_COMPONENTS: process.env.SANDPACK_BARE_COMPONENTS,
   },
   async redirects() {
     return redirects.redirects;
@@ -49,8 +51,16 @@ const nextConfig = {
     const {IgnorePlugin, NormalModuleReplacementPlugin} = require('webpack');
     config.plugins.push(
       new NormalModuleReplacementPlugin(
-        /@codemirror\/lang-markdown/,
-        require.resolve('./src/utils/codemirrorMarkdownShim.js')
+        /^@stitches\/core$/,
+        require.resolve('./src/utils/emptyShim.js')
+      ),
+      new NormalModuleReplacementPlugin(
+        /^raf$/,
+        require.resolve('./src/utils/rafShim.js')
+      ),
+      new NormalModuleReplacementPlugin(
+        /^process$/,
+        require.resolve('./src/utils/processShim.js')
       ),
       new IgnorePlugin({
         checkResource(resource, context) {

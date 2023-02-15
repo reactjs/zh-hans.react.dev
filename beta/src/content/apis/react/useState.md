@@ -31,7 +31,7 @@ function MyComponent() {
   // ...
 ```
 
-  The convention is to name state variables like `[something, setSomething]` using [array destructuring.](https://javascript.info/destructuring-assignment)
+The convention is to name state variables like `[something, setSomething]` using [array destructuring.](https://javascript.info/destructuring-assignment)
 
 `useState` returns an array with exactly two items:
 
@@ -48,7 +48,7 @@ function handleClick() {
 
 React will store the next state, render your component again with the new values, and update the UI.
 
-<Gotcha>
+<Pitfall>
 
 Calling the `set` function [**does not** change the current state in the already executing code](#ive-updated-the-state-but-logging-gives-me-the-old-value):
 
@@ -61,7 +61,7 @@ function handleClick() {
 
 It only affects what `useState` will return starting from the *next* render.
 
-</Gotcha>
+</Pitfall>
 
 <Recipes titleText="Basic useState examples" titleId="examples-basic">
 
@@ -239,7 +239,9 @@ By convention, it's common to name the pending state argument for the first lett
 
 React may [call your updaters twice](#my-initializer-or-updater-function-runs-twice) in development to verify that they are [pure.](/learn/keeping-components-pure)
 
-<DeepDive title="Is using an updater always preferred?">
+<DeepDive>
+
+#### Is using an updater always preferred? {/*is-using-an-updater-always-preferred*/}
 
 You might hear a recommendation to always write code like `setAge(a => a + 1)` if the state you're setting is calculated from the previous state. There is no harm in it, but it is also not always necessary.
 
@@ -1134,7 +1136,7 @@ function handleClick() {
 
 * If the new value you provide is identical to the current `state`, as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison, React will **skip re-rendering the component and its children.** This is an optimization. Although in some cases React may still need to call your component before skipping the children, it shouldn't affect your code.
 
-* React [batches state updates.](/learn/queueing-a-series-of-state-updates) It updates the screen **after all the event handlers have run** and have called their `set` functions. This prevents multiple re-renders during a single event. In the rare case that you need to force React to update the screen earlier, for example to access the DOM, you can use [`flushSync`.](/apis/react-dom/flushsync)
+* React [batches state updates.](/learn/queueing-a-series-of-state-updates) It updates the screen **after all the event handlers have run** and have called their `set` functions. This prevents multiple re-renders during a single event. In the rare case that you need to force React to update the screen earlier, for example to access the DOM, you can use [`flushSync`.](/apis/react-dom/flushSync)
 
 * Calling the `set` function *during rendering* is only allowed from within the currently rendering component. React will discard its output and immediately attempt to render it again with the new state. This pattern is rarely needed, but you can use it to **store information from the previous renders**. [See an example above.](#storing-information-from-previous-renders)
 

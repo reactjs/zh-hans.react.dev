@@ -396,7 +396,7 @@ label {
 
 它是位于相同位置的相同组件，所以对 React 来说，它是同一个计数器。
 
-<Gotcha>
+<Pitfall>
 
 记住 **对 React 来说重要的是组件在 UI 树中的位置,而不是在 JSX 中的位置！** 这个组件在 `if` 内外有两个`return` 语句，它们带有不同的 `<Counter />` JSX 标签：
 
@@ -500,7 +500,7 @@ label {
 
 你可以认为它们有相同的“地址”：根组件的第一个子组件的第一个子组件。不管你的逻辑是怎么组织的，这就是 React 在前后两次渲染之间将它们进行匹配的方式。
 
-</Gotcha>
+</Pitfall>
 
 ## 相同位置的不同组件会使 state 重置 {/*different-components-at-the-same-position-reset-state*/}
 
@@ -716,7 +716,7 @@ label {
 
 一般来说，**如果你想在重新渲染时保留 state，几次渲染中的树形结构就应该相互“匹配”**。结构不同就会导致 state 的销毁，因为 React 会在将一个组件从树中移除时销毁它的 state。
 
-<Gotcha>
+<Pitfall>
 
 以下是为什么你不应该把组件函数的定义嵌套起来的原因。
 
@@ -757,7 +757,7 @@ export default function MyComponent() {
 
 每次你点击按钮，输入框的 state 都会消失！这是因为每次 `MyComponent` 渲染时都会创建一个 _不同_ 的 `MyTextField` 函数。你在相同位置渲染的是 _不同_ 的组件，所以 React 将其下所有的 state 都重置了。这样会导致 bug 以及性能问题。为了避免这个问题， **永远要将组件定义在最上层并且不要把它们的定义嵌套起来。**
 
-</Gotcha>
+</Pitfall>
 
 ## 在相同位置重置 state {/*resetting-state-at-the-same-position*/}
 
@@ -1237,7 +1237,9 @@ textarea {
 
 </Sandpack>
 
-<DeepDive title="为被移除的组件保留 state">
+<DeepDive>
+
+#### 为被移除的组件保留 state {/*preserving-state-for-removed-components*/}
 
 在真正的聊天应用中，你可能会想在用户再次选择前一个收件人时恢复输入 state。对于一个不可见的组件，有几种方法可以让它的 state “活下去”：
 

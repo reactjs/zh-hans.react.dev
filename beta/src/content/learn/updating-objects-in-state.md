@@ -166,7 +166,9 @@ body { margin: 0; padding: 0; height: 250px; }
 
 </Sandpack>
 
-<DeepDive title="Local mutation is fine">
+<DeepDive>
+
+#### Local mutation is fine {/*local-mutation-is-fine*/}
 
 Code like this is a problem because it modifies an *existing* object in state:
 
@@ -371,7 +373,9 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 Note that the `...` spread syntax is "shallow"--it only copies things one level deep. This makes it fast, but it also means that if you want to update a nested property, you'll have to use it more than once. 
 
-<DeepDive title="Using a single event handler for multiple fields">
+<DeepDive>
+
+#### Using a single event handler for multiple fields {/*using-a-single-event-handler-for-multiple-fields*/}
 
 You can also use the `[` and `]` braces inside your object definition to specify a property with dynamic name. Here is the same example, but with a single event handler instead of three different ones:
 
@@ -590,7 +594,9 @@ img { width: 200px; height: 200px; }
 
 </Sandpack>
 
-<DeepDive title="Objects are not really nested">
+<DeepDive>
+
+#### Objects are not really nested {/*objects-are-not-really-nested*/}
 
 An object like this appears "nested" in code:
 
@@ -656,7 +662,9 @@ updatePerson(draft => {
 
 But unlike a regular mutation, it doesn't overwrite the past state!
 
-<DeepDive title="How does Immer work?">
+<DeepDive>
+
+#### How does Immer work? {/*how-does-immer-work*/}
 
 The `draft` provided by Immer is a special type of object, called a [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy), that "records" what you do with it. This is why you can mutate it freely as much as you like! Under the hood, Immer figures out which parts of the `draft` have been changed, and produces a completely new object that contains your edits.
 
@@ -783,12 +791,14 @@ img { width: 200px; height: 200px; }
 
 Notice how much more concise the event handlers have become. You can mix and match `useState` and `useImmer` in a single component as much as you like. Immer is a great way to keep the update handlers concise, especially if there's nesting in your state, and copying objects leads to repetitive code.
 
-<DeepDive title="Why is mutating state not recommended in React?">
+<DeepDive>
+
+#### Why is mutating state not recommended in React? {/*why-is-mutating-state-not-recommended-in-react*/}
 
 There are a few reasons:
 
 * **Debugging:** If you use `console.log` and don't mutate state, your past logs won't get clobbered by the more recent state changes. So you can clearly see how state has changed between renders.
-* **Optimizations:** Common React [optimization strategies](/api/react/memo) rely on skipping work if previous props or state are the same as the next ones. If you never mutate state, it is very fast to check whether there were any changes. If `prevObj === obj`, you can be sure that nothing could have changed inside of it.
+* **Optimizations:** Common React [optimization strategies](/apis/react/memo) rely on skipping work if previous props or state are the same as the next ones. If you never mutate state, it is very fast to check whether there were any changes. If `prevObj === obj`, you can be sure that nothing could have changed inside of it.
 * **New Features:** The new React features we're building rely on state being [treated like a snapshot.](/learn/state-as-a-snapshot) If you're mutating past versions of state, that may prevent you from using the new features.
 * **Requirement Changes:** Some application features, like implementing Undo/Redo, showing a history of changes, or letting the user reset a form to earlier values, are easier to do when nothing is mutated. This is because you can keep past copies of state in memory, and reuse them when appropriate. If you start with a mutative approach, features like this can be difficult to add later on.
 * **Simpler Implementation:** Because React does not rely on mutation, it does not need to do anything special with your objects. It does not need to hijack their properties, always wrap them into Proxies, or do other work at initialization as many "reactive" solutions do. This is also why React lets you put any object into state--no matter how large--without additional performance or correctness pitfalls.
