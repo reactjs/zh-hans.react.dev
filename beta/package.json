@@ -22,7 +22,7 @@
     "check-all": "npm-run-all prettier lint:fix tsc"
   },
   "dependencies": {
-    "@codesandbox/sandpack-react": "1.14.1",
+    "@codesandbox/sandpack-react": "1.15.5",
     "@docsearch/css": "3.0.0-alpha.41",
     "@docsearch/react": "3.0.0-alpha.41",
     "@headlessui/react": "^1.7.0",
@@ -67,7 +67,7 @@
     "eslint-plugin-import": "2.x",
     "eslint-plugin-jsx-a11y": "6.x",
     "eslint-plugin-react": "7.x",
-    "eslint-plugin-react-hooks": "experimental",
+    "eslint-plugin-react-hooks": "^0.0.0-experimental-fabef7a6b-20221215",
     "fs-extra": "^9.0.1",
     "globby": "^11.0.1",
     "gray-matter": "^4.0.2",

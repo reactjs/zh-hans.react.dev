@@ -234,7 +234,9 @@ If your linter is [configured for React,](/learn/editor-setup#linting) it will e
 
 </Note>
 
-<DeepDive title="Should all functions called during rendering start with the use prefix?">
+<DeepDive>
+
+#### Should all functions called during rendering start with the use prefix? {/*should-all-functions-called-during-rendering-start-with-the-use-prefix*/}
 
 No. Functions that don't *call* Hooks don't need to *be* Hooks.
 
@@ -277,7 +279,7 @@ function useAuth() {
 Technically, this isn't enforced by React. In principle, you could make a Hook that doesn't call other Hooks. This is often confusing and limiting so it's best to avoid that pattern. However, there may be rare cases where it is helpful. For example, maybe your function doesn't use any Hooks right now, but you plan to add some Hook calls to it in the future. Then it makes sense to name it with the `use` prefix:
 
 ```js {3-4}
-// ✅ Good: A Hook that will likely some other Hooks later
+// ✅ Good: A Hook that will likely use some other Hooks later
 function useAuth() {
   // TODO: Replace with this line when authentication is implemented:
   // return useContext(Auth);
@@ -899,14 +901,14 @@ export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
 
 This will work, but there's one more improvement you can do when your custom Hook accepts event handlers.
 
-Adding a dependency on `onReceiveMessage` is not ideal because it will cause the chat to re-connect every time the component re-renders. [Wrap this event handler into an Event function to remove it from the dependencies:](/learn/removing-effect-dependencies#wrapping-an-event-handler-from-the-props)
+Adding a dependency on `onReceiveMessage` is not ideal because it will cause the chat to re-connect every time the component re-renders. [Wrap this event handler into an Effect Event to remove it from the dependencies:](/learn/removing-effect-dependencies#wrapping-an-event-handler-from-the-props)
 
 ```js {1,4,5,15,18}
-import { useEffect, useEvent } from 'react';
+import { useEffect, useEffectEvent } from 'react';
 // ...
 
 export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
-  const onMessage = useEvent(onReceiveMessage);
+  const onMessage = useEffectEvent(onReceiveMessage);
 
   useEffect(() => {
     const options = {
@@ -985,11 +987,11 @@ export default function ChatRoom({ roomId }) {
 
 ```js useChatRoom.js
 import { useEffect } from 'react';
-import { experimental_useEvent as useEvent } from 'react';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 import { createConnection } from './chat.js';
 
 export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
-  const onMessage = useEvent(onReceiveMessage);
+  const onMessage = useEffectEvent(onReceiveMessage);
 
   useEffect(() => {
     const options = {
@@ -1177,7 +1179,9 @@ function ShippingForm({ country }) {
 
 Extracting a custom Hook makes the data flow explicit. You feed the `url` in and you get the `data` out. By "hiding" your Effect inside `useData`, you also prevent someone working on the `ShippingForm` component from adding [unnecessary dependencies](/learn/removing-effect-dependencies) to it. Ideally, with time, most of your app's Effects will be in custom Hooks.
 
-<DeepDive title="Keep your custom Hooks focused on concrete high-level use cases">
+<DeepDive>
+
+#### Keep your custom Hooks focused on concrete high-level use cases {/*keep-your-custom-hooks-focused-on-concrete-high-level-use-cases*/}
 
 Start by choosing your custom Hook's name. If you struggle to pick a clear name, it might mean that your Effect is too coupled to the rest of your component's logic, and is not yet ready to be extracted.
 
@@ -1411,7 +1415,9 @@ This is another reason for why wrapping Effects in custom Hooks is often benefic
 
 Similar to a [design system,](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969) you might find it helpful to start extracting common idioms from your app's components into custom Hooks. This will keep your components' code focused on the intent, and let you avoid writing raw Effects very often. There are also many excellent custom Hooks maintained by the React community.
 
-<DeepDive title="Will React provide any built-in solution for data fetching?">
+<DeepDive>
+
+#### Will React provide any built-in solution for data fetching? {/*will-react-provide-any-built-in-solution-for-data-fetching*/}
 
 We're still working out the details, but we expect that in the future, you'll write data fetching like this:
 
@@ -1641,7 +1647,7 @@ export default function App() {
 
 ```js useFadeIn.js active
 import { useState, useEffect } from 'react';
-import { experimental_useEvent as useEvent } from 'react';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 
 export function useFadeIn(ref, duration) {
   const [isRunning, setIsRunning] = useState(true);
@@ -1656,7 +1662,7 @@ export function useFadeIn(ref, duration) {
 }
 
 function useAnimationLoop(isRunning, drawFrame) {
-  const onFrame = useEvent(drawFrame);
+  const onFrame = useEffectEvent(drawFrame);
 
   useEffect(() => {
     if (!isRunning) {
@@ -1664,6 +1670,7 @@ function useAnimationLoop(isRunning, drawFrame) {
     }
 
     const startTime = performance.now();
+    let frameId = null;
 
     function tick(now) {
       const timePassed = now - startTime;
@@ -1873,7 +1880,7 @@ Sometimes, you don't even need a Hook!
 - You can pass reactive values from one Hook to another, and they stay up-to-date.
 - All Hooks re-run every time your component re-renders.
 - The code of your custom Hooks should be pure, like your component's code.
-- Wrap event handlers received by custom Hooks into Event functions.
+- Wrap event handlers received by custom Hooks into Effect Events.
 - Don't create custom Hooks like `useMount`. Keep their purpose specific.
 - It's up to you how and where to choose the boundaries of your code.
 
@@ -2227,7 +2234,7 @@ export function useCounter(delay) {
 
 ```js useInterval.js
 import { useEffect } from 'react';
-import { experimental_useEvent as useEvent } from 'react';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 
 export function useInterval(onTick, delay) {
   useEffect(() => {
@@ -2243,7 +2250,7 @@ export function useInterval(onTick, delay) {
 
 <Solution>
 
-Inside `useInterval`, wrap the tick callback into an Event function, as you did [earlier on this page.](/learn/reusing-logic-with-custom-hooks#passing-event-handlers-to-custom-hooks)
+Inside `useInterval`, wrap the tick callback into an Effect Event, as you did [earlier on this page.](/learn/reusing-logic-with-custom-hooks#passing-event-handlers-to-custom-hooks)
 
 This will allow you to omit `onTick` from dependencies of your Effect. The Effect won't re-synchronize on every re-render of the component, so the page background color change interval won't get reset every second before it has a chance to fire.
 
@@ -2299,10 +2306,10 @@ export function useCounter(delay) {
 
 ```js useInterval.js active
 import { useEffect } from 'react';
-import { experimental_useEvent as useEvent } from 'react';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 
 export function useInterval(callback, delay) {
-  const onTick = useEvent(callback);
+  const onTick = useEffectEvent(callback);
   useEffect(() => {
     const id = setInterval(onTick, delay);
     return () => clearInterval(id);

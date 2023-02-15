@@ -29,6 +29,7 @@ import {IconNavArrow} from '../Icon/IconNavArrow';
 import ButtonLink from 'components/ButtonLink';
 import {TocContext} from './TocContext';
 import type {Toc, TocItem} from './TocContext';
+import {TeamMember} from './TeamMember';
 
 function CodeStep({children, step}: {children: any; step: number}) {
   return (
@@ -324,6 +325,9 @@ function calculateNestedToc(toc: Toc): NestedTocRoot {
 function InlineToc() {
   const toc = useContext(TocContext);
   const root = useMemo(() => calculateNestedToc(toc), [toc]);
+  if (root.children.length < 2) {
+    return null;
+  }
   return <InlineTocItem items={root.children} />;
 }
 
@@ -398,6 +402,7 @@ export const MDXComponents = {
   Recap,
   Recipes,
   Sandpack,
+  TeamMember,
   TerminalBlock,
   YouWillLearn,
   YouWillLearnCard,
