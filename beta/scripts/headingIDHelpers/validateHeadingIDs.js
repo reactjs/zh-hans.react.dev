@@ -49,7 +49,7 @@ function validateHeaderIds(lines) {
  * @param {Array<string>} paths
  */
 async function main(paths) {
-  paths = paths.length === 0 ? ['src/pages'] : paths;
+  paths = paths.length === 0 ? ['src/content'] : paths;
   const files = paths.map((path) => [...walk(path)]).flat();
 
   files.forEach((file) => {
