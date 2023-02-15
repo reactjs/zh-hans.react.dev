@@ -385,7 +385,7 @@ function tasksReducer(tasks, action) {
 
 #### 为什么称之为 reducer? {/*why-are-reducers-called-this-way*/}
 
-尽管 `reducer` 可以 “减少” 组件内的代码量，但它实际上是以数组上的 [`reduce()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) 方法命名的。
+尽管 `reducer` 可以 “减少” 组件内的代码量，但它实际上是以数组上的 [`reduce()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) 方法命名的。
 
 `reduce()` 允许你将数组中的多个值 “累加” 成一个值：
 
@@ -1895,7 +1895,7 @@ export const initialState = {
 };
 ```
 
-这种 `[key]: value` [计算属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names) 可以帮你更新 `messages` 对象：
+这种 `[key]: value` [计算属性](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names) 可以帮你更新 `messages` 对象：
 
 ```js
 {

@@ -23,7 +23,7 @@ These methods are only available in the **environments with [Node.js Streams](ht
 - [`renderToNodeStream()`](#rendertonodestream) (Deprecated)
 - [`renderToStaticNodeStream()`](#rendertostaticnodestream)
 
-这些方法只在支持 **[Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的环境中可用**（这包含浏览器，Deno 和一些现代边缘 runtime）：
+这些方法只在支持 **[Web Streams](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API) 的环境中可用**（这包含浏览器，Deno 和一些现代边缘 runtime）：
 
 - [`renderToReadableStream()`](#rendertoreadablestream)
 
@@ -84,7 +84,7 @@ const stream = renderToPipeableStream(
 
 > 注意：
 >
-> 这是一个针对 Node.js 的 API。只在支持 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的环境下可用，如 Deno 以及现代边缘 runtimes，应使用 [`renderToReadableStream`](#rendertoreadablestream) 代替。
+> 这是一个针对 Node.js 的 API。只在支持 [Web Streams](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API) 的环境下可用，如 Deno 以及现代边缘 runtimes，应使用 [`renderToReadableStream`](#rendertoreadablestream) 代替。
 >
 
 * * *
@@ -95,7 +95,7 @@ const stream = renderToPipeableStream(
 ReactDOMServer.renderToReadableStream(element, options);
 ```
 
-将一个 React 元素通过流的形式注入初始的 HTML 中。返回值为 Promise, resolve 一个 [可读 Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)。完美支持了 suspense 和 HTML 流。[了解更多](https://github.com/reactwg/react-18/discussions/127)
+将一个 React 元素通过流的形式注入初始的 HTML 中。返回值为 Promise, resolve 一个 [可读 Stream](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream)。完美支持了 suspense 和 HTML 流。[了解更多](https://github.com/reactwg/react-18/discussions/127)
 
 如果你在一个已经被服务端渲染标记的节点上调用 [`ReactDOM.hydrateRoot()`](/docs/react-dom-client.html#hydrateroot)，React 会保留它，只为其附加事件处理程序。让你拥有一个非常良好的首次加载体验。
 
@@ -141,7 +141,7 @@ try {
 
 > 注意：
 >
-> 该 API 依赖 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)。对于，请使用 [`renderToPipeableStream`](#rendertopipeablestream) 代替。
+> 该 API 依赖 [Web Streams](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API)。对于，请使用 [`renderToPipeableStream`](#rendertopipeablestream) 代替。
 >
 
 * * *

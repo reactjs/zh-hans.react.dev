@@ -58,7 +58,7 @@ This will produce the initial non-interactive HTML output of your React componen
 When possible, we recommend to use these fully-featured alternatives:
 
 * If you use Node.js, use [`renderToPipeableStream`.](/apis/react-dom/server/renderToPipeableStream)
-* If you use Deno or a modern edge runtime with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), use [`renderToReadableStream`.](/apis/react-dom/server/renderToReadableStream)
+* If you use Deno or a modern edge runtime with [Web Streams](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API), use [`renderToReadableStream`.](/apis/react-dom/server/renderToReadableStream)
 
 You can continue using `renderToString` if your server environment does not support streams.
 
@@ -90,7 +90,7 @@ flushSync(() => {
 console.log(div.innerHTML); // For example, "<svg>...</svg>"
 ```
 
-The [`flushSync`](/apis/react-dom/flushSync) call is necessary so that the DOM is updated before reading its [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property.
+The [`flushSync`](/apis/react-dom/flushSync) call is necessary so that the DOM is updated before reading its [`innerHTML`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/innerHTML) property.
 
 
 ---

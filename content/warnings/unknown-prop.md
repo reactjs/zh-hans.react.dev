@@ -9,7 +9,7 @@ permalink: warnings/unknown-prop.html
 
 1. 你使用了 `{...this.props}` 或者 `cloneElement(element, this.props)` 吗？你的组件会直接把它自己的 props 传递给子元素（例如 [传递 props](/docs/transferring-props.html))。向子组件传递 props 时，你应该避免转发本应由父组件解释的 props。
 
-2. 你在原生 DOM 节点上使用的是非标准的 DOM 属性，或许是用来表示自定义数据。如果你想把自定义数据附加到标准 DOM 元素上，请参考 [MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes) 使用自定义的 data 属性。
+2. 你在原生 DOM 节点上使用的是非标准的 DOM 属性，或许是用来表示自定义数据。如果你想把自定义数据附加到标准 DOM 元素上，请参考 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/Using_data_attributes) 使用自定义的 data 属性。
 
 3. React 还不能识别你指定的属性。这可能会在 React 的未来版本中修复。不过，React 目前会去除所有未知的属性，因此即使在 React 应用中指定这些属性也无法使它们渲染。
 

@@ -184,4 +184,4 @@ We would also like to thank [Brandon Dail](https://github.com/aweary) and [Jason
 
 ## Future Work {/*future-work*/}
 
-We are not changing how [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements) work in React 16, but there are [existing discussions](https://github.com/facebook/react/issues/7249) about setting properties instead of attributes, and we might revisit this in React 17. Feel free to chime in if you'd like to help!
+We are not changing how [custom elements](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Custom_Elements) work in React 16, but there are [existing discussions](https://github.com/facebook/react/issues/7249) about setting properties instead of attributes, and we might revisit this in React 17. Feel free to chime in if you'd like to help!

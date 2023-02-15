@@ -134,7 +134,7 @@ var SayHello = createReactClass({
 
 这就意味着，如果使用 ES6 class 关键字创建组件，在处理事件回调时就要多写一部分代码。但对于大型项目来说，这样做可以提升运行效率。
 
-如果模板代码对你来说不太友好，你可以尝试使用 [ES2022 Class Properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) 语法：
+如果模板代码对你来说不太友好，你可以尝试使用 [ES2022 Class Properties](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) 语法：
 
 
 ```javascript

@@ -39,7 +39,7 @@ translators:
 
 <Pitfall>
 
-不幸的是，虽然 [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) 和 [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 的名字相似，但作用却迥然不同：
+不幸的是，虽然 [`slice`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) 和 [`splice`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 的名字相似，但作用却迥然不同：
 
 * `slice` 让你可以拷贝数组或是数组的一部分。
 * `splice` **会直接修改** 原始数组（插入或者删除元素）。

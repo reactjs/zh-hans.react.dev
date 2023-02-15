@@ -8,7 +8,7 @@ next: forms.html
 
 首先，让我们看下在 Javascript 中如何转化列表。
 
-如下代码，我们使用 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 函数让数组中的每一项变双倍，然后我们得到了一个新的列表 `doubled` 并打印出来：
+如下代码，我们使用 [`map()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 函数让数组中的每一项变双倍，然后我们得到了一个新的列表 `doubled` 并打印出来：
 
 ```javascript{2}
 const numbers = [1, 2, 3, 4, 5];
@@ -24,7 +24,7 @@ console.log(doubled);
 
 你可以通过使用 `{}` 在 JSX 内构建一个[元素集合](/docs/introducing-jsx.html#embedding-expressions-in-jsx)。
 
-下面，我们使用 Javascript 中的 [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 方法来遍历 `numbers` 数组。将数组中的每个元素变成 `<li>` 标签，最后我们将得到的数组赋值给 `listItems`：
+下面，我们使用 Javascript 中的 [`map()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 方法来遍历 `numbers` 数组。将数组中的每个元素变成 `<li>` 标签，最后我们将得到的数组赋值给 `listItems`：
 
 ```javascript{2-4}
 const numbers = [1, 2, 3, 4, 5];

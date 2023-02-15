@@ -76,7 +76,7 @@ class MyComponent extends React.Component {
 
 > 注意：
 >
-> 在 CSS 中，如果你不希望节点成为布局的一部分，则可以使用 [`display: contents`](https://developer.mozilla.org/en-US/docs/Web/CSS/display#display_contents) 属性。
+> 在 CSS 中，如果你不希望节点成为布局的一部分，则可以使用 [`display: contents`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#display_contents) 属性。
 
 ### 检测意外的副作用 {#detecting-unexpected-side-effects}
 

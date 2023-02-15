@@ -299,11 +299,11 @@ class Searchbox extends React.Component {
 
 #### `requestAnimationFrame` 节流 {#requestanimationframe-throttling}
 
-[`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) 是在浏览器中排队等待执行的一种方法，它可以在呈现性能的最佳时间执行。一个函数被 `requestAnimationFrame` 放入队列后将会在下一帧触发。浏览器会努力确保每秒 60 帧（60fps）。然而，如果浏览器无法确保，那么自然会*限制*每秒的帧数。例如，某个设备可能只能处理每秒 30 帧，所以每秒只能得到 30 帧。使用 `requestAnimationFrame` 来节流是一种有用的技术，它可以防止在一秒中进行 60 帧以上的更新。如果一秒钟内完成 100 次更新，则会为浏览器带来额外的负担，而用户却无法感知到这些工作。
+[`requestAnimationFrame`](https://developer.mozilla.org/zh-CN/docs/Web/API/window/requestAnimationFrame) 是在浏览器中排队等待执行的一种方法，它可以在呈现性能的最佳时间执行。一个函数被 `requestAnimationFrame` 放入队列后将会在下一帧触发。浏览器会努力确保每秒 60 帧（60fps）。然而，如果浏览器无法确保，那么自然会*限制*每秒的帧数。例如，某个设备可能只能处理每秒 30 帧，所以每秒只能得到 30 帧。使用 `requestAnimationFrame` 来节流是一种有用的技术，它可以防止在一秒中进行 60 帧以上的更新。如果一秒钟内完成 100 次更新，则会为浏览器带来额外的负担，而用户却无法感知到这些工作。
 
 >**注意：**
 >
->使用这个方法时只能获取某一帧中最后发布的值。也可以在 [`MDN`](https://developer.mozilla.org/en-US/docs/Web/Events/scroll) 中看优化的示例。
+>使用这个方法时只能获取某一帧中最后发布的值。也可以在 [`MDN`](https://developer.mozilla.org/zh-CN/docs/Web/Events/scroll) 中看优化的示例。
 
 ```jsx
 import rafSchedule from 'raf-schd';

@@ -23,9 +23,9 @@ These methods are only available in the environments with [Node.js Streams:](htt
 
 ## React DOM Server APIs for Web Streams {/*react-dom-server-apis-for-web-streams*/}
 
-These methods are only available in the environments with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), which includes browsers, Deno, and some modern edge runtimes:
+These methods are only available in the environments with [Web Streams](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API), which includes browsers, Deno, and some modern edge runtimes:
 
-* [`renderToReadableStream`](/apis/react-dom/server/renderToReadableStream) renders a React tree to a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
+* [`renderToReadableStream`](/apis/react-dom/server/renderToReadableStream) renders a React tree to a [Readable Web Stream.](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream)
 
 ---
 

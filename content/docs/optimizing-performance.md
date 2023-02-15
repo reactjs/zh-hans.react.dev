@@ -175,7 +175,7 @@ module.exports = {
 
 > 注意
 >
-> 在 React 17 之前，我们使用了标准的 [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API)，用 chrome 的 performance 性能选项卡来配置组件。
+> 在 React 17 之前，我们使用了标准的 [User Timing API](https://developer.mozilla.org/zh-CN/docs/Web/API/User_Timing_API)，用 chrome 的 performance 性能选项卡来配置组件。
 > 更详细的攻略，请参阅 [Ben Schwarz 的文章](https://calibreapp.com/blog/react-performance-profiling-optimization)。
 
 ## 虚拟化长列表 {#virtualize-long-lists}
@@ -322,7 +322,7 @@ handleClick() {
 }
 ```
 
-ES6 数组支持[扩展运算符](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator)，这让代码写起来更方便了。如果你在使用 Create React App，该语法已经默认支持了。
+ES6 数组支持[扩展运算符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_operator)，这让代码写起来更方便了。如果你在使用 Create React App，该语法已经默认支持了。
 
 ```js
 handleClick() {
@@ -340,7 +340,7 @@ function updateColorMap(colormap) {
 }
 ```
 
-为了不改变原本的对象，我们可以使用 [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) 方法：
+为了不改变原本的对象，我们可以使用 [Object.assign](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) 方法：
 
 ```js
 function updateColorMap(colormap) {
@@ -350,7 +350,7 @@ function updateColorMap(colormap) {
 
 现在 `updateColorMap` 返回了一个新的对象，而不是修改老对象。`Object.assign` 是 ES6 的方法，需要 polyfill。
 
-这里有一个 JavaScript 的提案，旨在添加[对象扩展属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)以使得更新不可变对象变得更方便：
+这里有一个 JavaScript 的提案，旨在添加[对象扩展属性](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax)以使得更新不可变对象变得更方便：
 
 ```js
 function updateColorMap(colormap) {

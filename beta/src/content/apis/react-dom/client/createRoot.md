@@ -176,7 +176,7 @@ nav ul li { display: inline-block; margin-right: 20px; }
 
 </Sandpack>
 
-You could also create a new DOM node with [`document.createElement()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement) and add it to the document manually.
+You could also create a new DOM node with [`document.createElement()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElement) and add it to the document manually.
 
 ```js
 const domNode = document.createElement('div');
@@ -254,7 +254,7 @@ An app fully built with React will usually only have one `createRoot` call for i
 
 #### Parameters {/*parameters*/}
 
-* `domNode`: A [DOM element.](https://developer.mozilla.org/en-US/docs/Web/API/Element) React will create a root for this DOM element and allow you to call functions on the root, such as `render` to display rendered React content.
+* `domNode`: A [DOM element.](https://developer.mozilla.org/zh-CN/docs/Web/API/Element) React will create a root for this DOM element and allow you to call functions on the root, such as `render` to display rendered React content.
 
 * **optional** `options`: An object with options for this React root.
 
@@ -366,7 +366,7 @@ const root = createRoot(domNode);
 root.render(<App />);
 ```
 
-For example, if `domNode` is `null`, it means that [`getElementById`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById) returned `null`. This will happen if there is no node in the document with the given ID at the time of your call. There may be a few reasons for it:
+For example, if `domNode` is `null`, it means that [`getElementById`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/getElementById) returned `null`. This will happen if there is no node in the document with the given ID at the time of your call. There may be a few reasons for it:
 
 1. The ID you're looking for might differ from the ID you used in the HTML file. Check for typos!
 2. Your bundle's `<script>` tag cannot "see" any DOM nodes that appear *after* it in the HTML.

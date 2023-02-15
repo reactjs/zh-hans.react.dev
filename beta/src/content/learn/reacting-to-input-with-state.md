@@ -31,7 +31,7 @@ In **imperative programming,** the above corresponds directly to how you impleme
 
 They don't know where you want to go, they just follow your commands. (And if you get the directions wrong, you end up in the wrong place!) It's called *imperative* because you have to "command" each element, from the spinner to the button, telling the computer *how* to update the UI.
 
-In this example of imperative UI programming, the form is built *without* React. It uses the built-in browser [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model):
+In this example of imperative UI programming, the form is built *without* React. It uses the built-in browser [DOM](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model):
 
 <Sandpack>
 

@@ -43,7 +43,7 @@ React 对于创建可访问网站有着全面的支持，而这通常是通过�
 语义化的 HTML 是无障碍辅助功能网络应用的基础。
 利用多种 HTML 元素来强化您网站中的信息通常可以使您直接获得无障碍辅助功能。
 
-- [MDN 的 HTML 元素参照（MDN HTML elements reference）](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+- [MDN 的 HTML 元素参照（MDN HTML elements reference）](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element)
 
 有时，语义化的 HTML 会被破坏。比如当在 JSX 中使用  `<div>`  元素来实现 React 代码功能的时候，又或是在使用列表（`<ol>`， `<ul>` 和 `<dl>`）和 HTML `<table>` 时。
 在这种情况下，我们应该使用 [React Fragments](/docs/fragments.html) 来组合各个组件。
@@ -163,7 +163,7 @@ function ListItem({ item }) {
 
 我们的 React 应用在运行时会持续更改 HTML DOM，有时这将会导致键盘焦点的丢失或者是被设置到了意料之外的元素上。为了修复这类问题，我们需要以编程的方式让键盘聚焦到正确的方向上。比方说，在一个弹窗被关闭的时候，重新设置键盘焦点到弹窗的打开按钮上。
 
-MDN Web 文档关注了这个问题并向我们解释了可以如何搭建[可用键盘导航的 JavaScript 部件](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets)。
+MDN Web 文档关注了这个问题并向我们解释了可以如何搭建[可用键盘导航的 JavaScript 部件](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets)。
 
 我们可以用 [DOM 元素的 Refs](/docs/refs-and-the-dom.html) 在 React 中设置焦点。
 
@@ -468,7 +468,7 @@ Deque 系统提供了 [aXe-core](https://github.com/dequelabs/axe-core) 以对�
 
 在一些浏览器中，我们可以在无障碍辅助功能树中轻松的看到每个元素的无障碍辅助功能信息：
 
-- [在 Firefox 中使用无障碍辅助功能检测器](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector)
+- [在 Firefox 中使用无障碍辅助功能检测器](https://developer.mozilla.org/zh-CN/docs/Tools/Accessibility_inspector)
 - [在 Chrome 中激活无障碍辅助功能检测器](https://developers.google.com/web/tools/chrome-devtools/accessibility/reference#pane)
 - [在 OS X Safari 中使用无障碍辅助功能检测器](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
 

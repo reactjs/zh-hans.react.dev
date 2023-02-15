@@ -1245,7 +1245,7 @@ textarea {
 
 - 与其只渲染现在这一个聊天，你可以把 _所有_ 聊天都渲染出来，但用 CSS 把其他聊天隐藏起来。这些聊天就不会从树中被移除了，所以它们的内部 state 会被保留下来。这种解决方法对于简单 UI 非常有效。但如果要隐藏的树形结构很大且包含了大量的 DOM 节点，那么性能就会变得很差。
 - 你可以进行 [状态提升](/learn/sharing-state-between-components) 并在父组件中保存每个收件人的草稿消息。这样即使子组件被移除了也无所谓，因为保留重要信息的是父组件。这是最常见的解决方法。
-- 除了 React 的 state，你也可以使用其他数据源。例如，也许你希望即使用户不小心关闭页面也可以保存一份信息草稿。要实现这一点，你可以让 `Chat` 组件通过读取 [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) 对其 state 进行初始化，并把草稿保存在那里。
+- 除了 React 的 state，你也可以使用其他数据源。例如，也许你希望即使用户不小心关闭页面也可以保存一份信息草稿。要实现这一点，你可以让 `Chat` 组件通过读取 [`localStorage`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage) 对其 state 进行初始化，并把草稿保存在那里。
 
 无论采取哪种策略，_与 Alice_ 的聊天在概念上都不同于 _与 Bob_ 的聊天，因此根据当前收件人为 `<Chat>` 树指定一个 `key` 是合理的。
 

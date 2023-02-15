@@ -24,7 +24,7 @@ next: release-channels.html
 
 ### 为什么要使用 `crossorigin` 属性? {#why-the-crossorigin-attribute}
 
-如果你通过 CDN 的方式引入 React，我们建议你设置 [`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes) 属性：
+如果你通过 CDN 的方式引入 React，我们建议你设置 [`crossorigin`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/CORS_settings_attributes) 属性：
 
 ```html
 <script crossorigin src="..."></script>

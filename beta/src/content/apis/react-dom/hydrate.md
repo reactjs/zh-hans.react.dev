@@ -192,7 +192,7 @@ React will attach to the HTML that exists inside the `domNode`, and take over ma
 
 * `reactNode`: The "React node" used to render the existing HTML. This will usually be a piece of JSX like `<App />` which was rendered with a `ReactDOM Server` method such as `renderToString(<App />)` in React 17.
 
-* `domNode`: A [DOM element](https://developer.mozilla.org/en-US/docs/Web/API/Element) that was rendered as the root element on the server.
+* `domNode`: A [DOM element](https://developer.mozilla.org/zh-CN/docs/Web/API/Element) that was rendered as the root element on the server.
 
 * **optional**: `callback`: A function. If passed, React will call it after your component is hydrated.
 

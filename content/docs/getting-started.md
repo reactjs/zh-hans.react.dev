@@ -75,11 +75,11 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 阅读 React 官方文档需要对使用 JavaScript 语言编程有一定基础。你不需要是一个 JavaScript 编程专家，但同时学习 React 和 JavaScript 编程将会比较困难。
 
-我们推荐你浏览 [JavaScript 概览](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)来评估自己的知识水平。这将花费你大约 30 分钟到 1 个小时，但之后学习 React 你会感觉更加自信。
+我们推荐你浏览 [JavaScript 概览](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/A_re-introduction_to_JavaScript)来评估自己的知识水平。这将花费你大约 30 分钟到 1 个小时，但之后学习 React 你会感觉更加自信。
 
 >提示
 >
->当你对一些 JavaScript 知识感到疑惑时，[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) 和 [javascript.info](http://javascript.info/) 是很棒的资源网站。你也可以去[社区支持论坛](/community/support.html)寻求帮助。
+>当你对一些 JavaScript 知识感到疑惑时，[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript) 和 [javascript.info](http://javascript.info/) 是很棒的资源网站。你也可以去[社区支持论坛](/community/support.html)寻求帮助。
 
 ### 实践教程 {#practical-tutorial}
 

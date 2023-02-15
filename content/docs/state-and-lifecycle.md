@@ -189,9 +189,9 @@ root.render(<Clock />);
 
 在具有许多组件的应用程序中，当组件被销毁时释放所占用的资源是非常重要的。
 
-当 `Clock` 组件第一次被渲染到 DOM 中的时候，就为其[设置一个计时器](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval)。这在 React 中被称为“挂载（mount）”。
+当 `Clock` 组件第一次被渲染到 DOM 中的时候，就为其[设置一个计时器](https://developer.mozilla.org/zh-CN/docs/Web/API/WindowTimers/setInterval)。这在 React 中被称为“挂载（mount）”。
 
-同时，当 DOM 中 `Clock` 组件被删除的时候，应该[清除计时器](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval)。这在 React 中被称为“卸载（unmount）”。
+同时，当 DOM 中 `Clock` 组件被删除的时候，应该[清除计时器](https://developer.mozilla.org/zh-CN/docs/Web/API/WindowTimers/clearInterval)。这在 React 中被称为“卸载（unmount）”。
 
 我们可以为 class 组件声明一些特殊的方法，当组件挂载或卸载时就会去执行这些方法：
 
@@ -350,7 +350,7 @@ this.setState((state, props) => ({
 }));
 ```
 
-上面使用了[箭头函数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)，不过使用普通的函数也同样可以：
+上面使用了[箭头函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)，不过使用普通的函数也同样可以：
 
 ```js
 // Correct

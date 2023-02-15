@@ -10,13 +10,13 @@ permalink: docs/cross-origin-errors.html
 
 在[开发模式](/docs/optimizing-performance.html)下,React 使用全局事件 `错误` 处理来保留在浏览器开发者工具的 "异常时暂停" 行为。它还会将错误记录到开发者控制台.
 
-如果错误由一个[不同的源](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)抛出, 浏览器将会掩盖它的细节,React也不能记录原始的错误信息。这是一个由浏览器采取的安全预防措施来避免敏感信息的泄露。
+如果错误由一个[不同的源](https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy)抛出, 浏览器将会掩盖它的细节,React也不能记录原始的错误信息。这是一个由浏览器采取的安全预防措施来避免敏感信息的泄露。
 
 你可以抛出一个同源策略的错误来简化开发/调试模式过程。以下是一些常见的引起跨源资源共享的原因以及处理他们的方法。
 
 ### CDN {#cdn}
 
-当从一个 CDN 加载 React （或者其他可能抛出错误的库）,在你的 `<script>` 标签中添加 [`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes)属性：
+当从一个 CDN 加载 React （或者其他可能抛出错误的库）,在你的 `<script>` 标签中添加 [`crossorigin`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/CORS_settings_attributes)属性：
 
 ```html
 <script crossorigin src="..."></script>

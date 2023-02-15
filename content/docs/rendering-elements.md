@@ -54,7 +54,7 @@ React 元素是[不可变对象](https://en.wikipedia.org/wiki/Immutable_object)
 
 **[在 CodePen 上试试](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)**
 
-这个例子会在 [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) 回调函数，每秒都调用 [`root.render()`](/docs/react-dom.html#render)。
+这个例子会在 [`setInterval()`](https://developer.mozilla.org/zh-CN/docs/Web/API/WindowTimers/setInterval) 回调函数，每秒都调用 [`root.render()`](/docs/react-dom.html#render)。
 
 >**注意：**
 >

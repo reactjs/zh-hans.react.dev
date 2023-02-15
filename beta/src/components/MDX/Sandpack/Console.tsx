@@ -33,7 +33,7 @@ const getColor = (message: SandpackMessageConsoleMethods): string => {
 };
 
 // based on https://github.com/tmpfs/format-util/blob/0e62d430efb0a1c51448709abd3e2406c14d8401/format.js#L1
-// based on https://developer.mozilla.org/en-US/docs/Web/API/console#Using_string_substitutions
+// based on https://developer.mozilla.org/zh-CN/docs/Web/API/console#Using_string_substitutions
 // Implements s, d, i and f placeholders
 function formatStr(...inputArgs: any[]): any[] {
   const maybeMessage = inputArgs[0];

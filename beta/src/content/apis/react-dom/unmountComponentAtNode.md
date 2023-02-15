@@ -112,7 +112,7 @@ unmountComponentAtNode(domNode);
 
 #### Parameters {/*parameters*/}
 
-* `domNode`: A [DOM element.](https://developer.mozilla.org/en-US/docs/Web/API/Element) React will remove a mounted React component from this element.
+* `domNode`: A [DOM element.](https://developer.mozilla.org/zh-CN/docs/Web/API/Element) React will remove a mounted React component from this element.
 
 #### Returns {/*returns*/}
 

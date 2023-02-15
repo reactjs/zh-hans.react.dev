@@ -89,7 +89,7 @@ The most common causes leading to hydration errors include:
 
 * Extra whitespace (like newlines) around the React-generated HTML inside the root node.
 * Using checks like `typeof window !== 'undefined'` in your rendering logic.
-* Using browser-only APIs like [`window.matchMedia`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia) in your rendering logic.
+* Using browser-only APIs like [`window.matchMedia`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/matchMedia) in your rendering logic.
 * Rendering different data on the server and the client.
 
 React can recover from some hydration errors, but **you must fix them like other bugs.** In the best case, they'll lead to a slower app; in the worst case, event handlers would get attached to the wrong elements.
@@ -100,7 +100,7 @@ React can recover from some hydration errors, but **you must fix them like other
 
 ### Hydrating an entire document {/*hydrating-an-entire-document*/}
 
-Apps fully built with React can render the entire document from the root component, including the [`<html>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html) tag:
+Apps fully built with React can render the entire document from the root component, including the [`<html>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html) tag:
 
 ```js {3,13}
 function App() {
@@ -120,7 +120,7 @@ function App() {
 }
 ```
 
-To hydrate the entire document, pass the [`document`](https://developer.mozilla.org/en-US/docs/Web/API/Window/document) global as the first argument to `hydrateRoot`:
+To hydrate the entire document, pass the [`document`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/document) global as the first argument to `hydrateRoot`:
 
 ```js {4}
 import { hydrateRoot } from 'react-dom/client';
@@ -290,7 +290,7 @@ React will attach to the HTML that exists inside the `domNode`, and take over ma
 
 #### Parameters {/*parameters*/}
 
-* `domNode`: A [DOM element](https://developer.mozilla.org/en-US/docs/Web/API/Element) that was rendered as the root element on the server.
+* `domNode`: A [DOM element](https://developer.mozilla.org/zh-CN/docs/Web/API/Element) that was rendered as the root element on the server.
 
 * `reactNode`: The "React node" used to render the existing HTML. This will usually be a piece of JSX like `<App />` which was rendered with a `ReactDOM Server` method such as `renderToPipeableStream(<App />)`.
 

@@ -74,7 +74,7 @@ Now the `Page` component and any components inside it, no matter how deep, will 
 
 ### Importing and exporting context from a file {/*importing-and-exporting-context-from-a-file*/}
 
-Often, components in different files will need access to the same context. This is why it's common to declare contexts in a separate file. Then you can use the [`export` statement](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export) to make context available for other files:
+Often, components in different files will need access to the same context. This is why it's common to declare contexts in a separate file. Then you can use the [`export` statement](https://developer.mozilla.org/zh-CN/docs/web/javascript/reference/statements/export) to make context available for other files:
 
 ```js {4-5}
 // Contexts.js
@@ -84,7 +84,7 @@ export const ThemeContext = createContext('light');
 export const AuthContext = createContext(null);
 ````
 
-Components declared in other files can then use the [`import`](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/import) statement to read or provide this context:
+Components declared in other files can then use the [`import`](https://developer.mozilla.org/zh-CN/docs/web/javascript/reference/statements/import) statement to read or provide this context:
 
 ```js {2}
 // Button.js

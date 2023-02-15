@@ -206,7 +206,7 @@ React 将在 `domNode` 中展示 `<App />` 组件，并对该 DOM 中的内容�
 
 * `reactNode`：需要展示的 *React 节点*。这通常是一段 JSX，如 `<App />`，但你也可以传递使用 [`createElement()`](/apis/react/createElement) 构建的 React 元素，字符串，数字，`null` 或是 `undefined`。
 
-* `domNode`：[DOM 元素](https://developer.mozilla.org/en-US/docs/Web/API/Element)。React 会将 `reactNode` 渲染在该 DOM 元素中。从此刻开始，React 将管理 `domNode` 中的 DOM，并会在 React 树发生变化时更新它。
+* `domNode`：[DOM 元素](https://developer.mozilla.org/zh-CN/docs/Web/API/Element)。React 会将 `reactNode` 渲染在该 DOM 元素中。从此刻开始，React 将管理 `domNode` 中的 DOM，并会在 React 树发生变化时更新它。
 
 * **可选** `callback`：回调函数。如果编写了该函数，React 将在你的组件放入 DOM 后调用该函数。
 
