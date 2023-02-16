@@ -84,6 +84,7 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 
 **提交 pull request 前**，请确保完成以下步骤：
 
+<<<<<<< HEAD
 1. Fork [此仓库](https://github.com/facebook/react)，从 `main` 创建分支。
 2. 在仓库根目录下执行 `yarn`。
 3. 如果你修复了 bug 或者添加了代码，而这些内容需要测试，请添加测试！
@@ -94,6 +95,18 @@ React 的构建系统（Build System）会先删去禁用的特性分支，之�
 8. 确保 lint 校验代码（`yarn lint`）。提示：执行 `yarn linc` 去只检查更改过的文件。
 9. 运行 [Flow](https://flowtype.org/) 来类型检查（`yarn flow`）。
 10. 请签订贡献者许可证协议（Contributor License Agreement）。
+=======
+1. Fork [the repository](https://github.com/facebook/react) and create your branch from `main`.
+2. Run `yarn` in the repository root.
+3. If you've fixed a bug or added code that should be tested, add tests!
+4. Ensure the test suite passes (`yarn test`). Tip: `yarn test --watch TestName` is helpful in development.
+5. Run `yarn test --prod` to test in the production environment.
+6. If you need a debugger, run `yarn test --debug --watch TestName`, open `chrome://inspect`, and press "Inspect".
+7. Format your code with [prettier](https://github.com/prettier/prettier) (`yarn prettier`).
+8. Make sure your code lints (`yarn lint`). Tip: `yarn linc` to only check changed files.
+9. Run the [Flow](https://flowtype.org/) typechecks (`yarn flow`).
+10. If you haven't already, complete the CLA.
+>>>>>>> 3277c94444e3c8f1095d901a07fc4c84136eb356
 
 ### 贡献者许可证协议 {#contributor-license-agreement-cla}
 
