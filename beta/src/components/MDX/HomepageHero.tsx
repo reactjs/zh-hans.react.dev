@@ -26,7 +26,7 @@ function HomepageHero() {
           </YouWillLearnCard>
         </div>
         <div className="flex flex-col justify-center">
-          <YouWillLearnCard title="API Reference" path="/apis/react">
+          <YouWillLearnCard title="API Reference" path="/reference/react">
             <p>查阅 React Hooks 的 API， 并通过可视化代码块来学习如何使用。</p>
           </YouWillLearnCard>
         </div>
