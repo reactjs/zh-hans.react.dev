@@ -8,7 +8,7 @@ import {useRouter} from 'next/router';
 import {Nav} from './Nav';
 import {Footer} from './Footer';
 import {Toc} from './Toc';
-import SocialBanner from '../SocialBanner';
+
 import {DocsPageFooter} from 'components/DocsFooter';
 import {Seo} from 'components/Seo';
 import PageHeading from 'components/PageHeading';
