@@ -173,7 +173,7 @@ render() {
 
 另一种内联条件渲染的方法是使用 JavaScript 中的三目运算符 [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)。
 
-在下面这个示例中，我们用它来条件渲染一小段文本
+在下面这个示例中，我们用它来条件渲染一小段文本：
 
 ```javascript{5}
 render() {
