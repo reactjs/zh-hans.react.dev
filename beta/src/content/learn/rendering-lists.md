@@ -1151,11 +1151,11 @@ export const recipes = [
 
 ```js
 <article>
-  <p>我写，擦除，重写</p>
+  <p>I write, erase, rewrite</p>
   <hr />
-  <p>再次擦除</p>
+  <p>Erase again, and then</p>
   <hr />
-  <p>然后罂粟盛开</p>
+  <p>A poppy blooms.</p>
 </article>
 ```
 
@@ -1166,9 +1166,9 @@ export const recipes = [
 ```js
 const poem = {
   lines: [
-    '我写，擦除，重写',
-    '再次擦除',
-    '然后罂粟盛开'
+    'I write, erase, rewrite',
+    'Erase again, and then',
+    'A poppy blooms.'
   ]
 };
 
@@ -1219,9 +1219,9 @@ hr {
 ```js
 const poem = {
   lines: [
-    '我写，擦除，重写',
-    '再次擦除',
-    '然后罂粟盛开'
+    'I write, erase, rewrite',
+    'Erase again, and then',
+    'A poppy blooms.'
   ]
 };
 
@@ -1278,9 +1278,9 @@ import React, { Fragment } from 'react';
 
 const poem = {
   lines: [
-    '我写，擦除，重写',
-    '再次擦除',
-    '然后罂粟盛开'
+    'I write, erase, rewrite',
+    'Erase again, and then',
+    'A poppy blooms.'
   ]
 };
 
