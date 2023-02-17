@@ -461,7 +461,7 @@ React 里需要 key 和文件夹里的文件需要有文件名的道理是类似
 
 <Challenges>
 
-### 把列表一分为二 {/*splitting-a-list-in-two*/}
+#### 把列表一分为二 {/*splitting-a-list-in-two*/}
 
 下面的示例中有一个包含所有人员信息的列表。
 
