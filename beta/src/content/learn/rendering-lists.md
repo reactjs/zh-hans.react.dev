@@ -1031,7 +1031,7 @@ export const recipes = [
 
 #### 把列表项提取成一个组件 {/*extracting-a-list-item-component*/}
 
-`RecipeList` 组件的代码里嵌套了两层 `map`。出于简化代码的考虑，我们提取出一个接受 `id`，`name`，`ingredients` 作为 props 的 `Recipe` 组件。这种情况下，你会把外层的 `key` 放在哪里呢？原因是什么？
+`RecipeList` 组件的代码里嵌套了两层 `map`。出于简化代码的考虑，我们提取出一个接受 `id`、`name` 和 `ingredients` 作为 props 的 `Recipe` 组件。这种情况下，你会把外层的 `key` 放在哪里呢？原因是什么？
 
 <Sandpack>
 
