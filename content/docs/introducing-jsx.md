@@ -92,7 +92,7 @@ function getGreeting(user) {
 你可以通过使用引号，来将属性值指定为字符串字面量：
 
 ```js
-const element = <div tabIndex="0"></div>;
+const element = <a href="https://www.reactjs.org"> link </a>;
 ```
 
 也可以使用大括号，来在属性值中插入一个 JavaScript 表达式：
