@@ -51,7 +51,10 @@ React 组件也可以被定义为可被包装的函数：
 
 `React` 还提供了用于减少不必要嵌套的组件。
 
-- [`React.Fragment`](#reactfragment)
+- [`React.Suspense` 可以指定加载指示器（loading indicator），以防其组件树中的某些子组件尚未具备渲染条件。在未来，我们计划让 `Suspense` 处理更多的场景，如数据获取等。你可以在 我们的路线图 了解这一点。](#reactsuspense-可以指定加载指示器loading-indicator以防其组件树中的某些子组件尚未具备渲染条件在未来我们计划让-suspense-处理更多的场景如数据获取等你可以在-我们的路线图-了解这一点)
+      - [服务端渲染中的 `React.Suspense` {#reactsuspense-in-server-side-rendering}](#服务端渲染中的-reactsuspense-reactsuspense-in-server-side-rendering)
+      - [`React.Suspense` during hydration {#reactsuspense-during-hydration}](#reactsuspense-during-hydration-reactsuspense-during-hydration)
+    - [`React.startTransition` {#starttransition}](#reactstarttransition-starttransition)
 
 ### Refs {#refs}
 
@@ -101,7 +104,11 @@ Suspense 使得组件可以“等待”某些操作结束后，再进行渲染�
 
 ### `React.Component` {#reactcomponent}
 
-`React.Component` 是使用 [ES6 classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) 方式定义 React 组件的基类：
+> Try the new React documentation for [`Component`](https://beta.reactjs.org/reference/react/Component).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+`React.Component` 是使用 [ES6 classes](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes) 方式定义 React 组件的基类：
 
 ```javascript
 class Greeting extends React.Component {
@@ -117,7 +124,12 @@ class Greeting extends React.Component {
 
 ### `React.PureComponent` {#reactpurecomponent}
 
+> Try the new React documentation for [`PureComponent`](https://beta.reactjs.org/reference/react/PureComponent).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 `React.PureComponent` 与 [`React.Component`](#reactcomponent) 很相似。两者的区别在于 [`React.Component`](#reactcomponent) 并未实现 [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate)，而 `React.PureComponent` 中以浅层对比 prop 和 state 的方式来实现了该函数。
+
 
 如果赋予 React 组件相同的 props 和 state，`render()` 函数会渲染相同的内容，那么在某些情况下使用 `React.PureComponent` 可提高性能。
 
@@ -130,6 +142,10 @@ class Greeting extends React.Component {
 * * *
 
 ### `React.memo` {#reactmemo}
+
+> Try the new React documentation for [`memo`](https://beta.reactjs.org/reference/react/memo).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```javascript
 const MyComponent = React.memo(function MyComponent(props) {
@@ -169,6 +185,10 @@ export default React.memo(MyComponent, areEqual);
 
 ### `createElement()` {#createelement}
 
+> Try the new React documentation for [`createElement`](https://beta.reactjs.org/reference/react/createElement).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 React.createElement(
   type,
@@ -184,6 +204,10 @@ React.createElement(
 * * *
 
 ### `cloneElement()` {#cloneelement}
+
+> Try the new React documentation for [`cloneElement`](https://beta.reactjs.org/reference/react/cloneElement).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```
 React.cloneElement(
@@ -209,6 +233,10 @@ React.cloneElement(
 
 ### `createFactory()` {#createfactory}
 
+> Try the new React documentation for [`createFactory`](https://beta.reactjs.org/reference/react/createFactory).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 React.createFactory(type)
 ```
@@ -223,6 +251,10 @@ React.createFactory(type)
 
 ### `isValidElement()` {#isvalidelement}
 
+> Try the new React documentation for [`isValidElement`](https://beta.reactjs.org/reference/react/isValidElement).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 React.isValidElement(object)
 ```
@@ -232,6 +264,10 @@ React.isValidElement(object)
 * * *
 
 ### `React.Children` {#reactchildren}
+
+> Try the new React documentation for [`Children`](https://beta.reactjs.org/reference/react/Children).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 `React.Children` 提供了用于处理 `this.props.children` 不透明数据结构的实用方法。
 
@@ -291,6 +327,10 @@ React.Children.toArray(children)
 
 ### `React.Fragment` {#reactfragment}
 
+> Try the new React documentation for [`Fragment`](https://beta.reactjs.org/reference/react/Fragment).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 `React.Fragment` 组件能够在不额外创建 DOM 元素的情况下，让 `render()` 方法中返回多个元素。
 
 ```javascript
@@ -309,10 +349,18 @@ render() {
 
 ### `React.createRef` {#reactcreateref}
 
+> Try the new React documentation for [`createRef`](https://beta.reactjs.org/reference/react/createRef).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 `React.createRef` 创建一个能够通过 ref 属性附加到 React 元素的 [ref](/docs/refs-and-the-dom.html)。
 `embed:16-3-release-blog-post/create-ref-example.js`
 
 ### `React.forwardRef` {#reactforwardref}
+
+> Try the new React documentation for [`forwardRef`](https://beta.reactjs.org/reference/react/forwardRef).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 `React.forwardRef` 会创建一个React组件，这个组件能够将其接受的 [ref](/docs/refs-and-the-dom.html) 属性转发到其组件树下的另一个组件中。这种技术并不常见，但在以下两种场景中特别有用：
 
@@ -331,6 +379,10 @@ render() {
 
 ### `React.lazy` {#reactlazy}
 
+> Try the new React documentation for [`lazy`](https://beta.reactjs.org/reference/react/lazy).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 `React.lazy()` 允许你定义一个动态加载的组件。这有助于缩减 bundle 的体积，并延迟加载在初次渲染时未用到的组件。
 
 你可以在[代码分割文档](/docs/code-splitting.html#reactlazy)中学习如何使用它。查阅[此文章](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d)可以了解更多用法细节。
@@ -343,6 +395,10 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 请注意，渲染 `lazy` 组件依赖该组件渲染树上层的 `<React.Suspense>` 组件。这是指定加载指示器（loading indicator）的方式。
 
 ### `React.Suspense` {#reactsuspense}
+
+> Try the new React documentation for [`Suspense`](https://beta.reactjs.org/reference/react/Suspense).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 `React.Suspense` 可以指定加载指示器（loading indicator），以防其组件树中的某些子组件尚未具备渲染条件。在未来，我们计划让 `Suspense` 处理更多的场景，如数据获取等。你可以在 [我们的路线图](/blog/2018/11/27/react-16-roadmap.html) 了解这一点。
 
@@ -379,10 +435,14 @@ Suspense boundaries depend on their parent boundaries being hydrated before they
 
 ### `React.startTransition` {#starttransition}
 
+> Try the new React documentation for [`startTransition`](https://beta.reactjs.org/reference/react/startTransition).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```js
 React.startTransition(callback)
 ```
-`React.startTransition` 让你把提供的 fallback 里面的更新标记为 transitions。这个方法是为了在 [`React.useTransition`](/docs/hooks-reference.html#usetransition) 不可用时使用。
+`React.startTransition` 让你把提供的 callback 里面的更新标记为 transitions。这个方法是为了在 [`React.useTransition`](/docs/hooks-reference.html#usetransition) 不可用时使用。
 
 > 注意：
 >

@@ -6,6 +6,14 @@ layout: docs
 category: Reference
 ---
 
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Common components (e.g. `<div>`)](https://beta.reactjs.org/reference/react-dom/components/common)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 此参考指南记录了构成 React 事件系统一部分的 `SyntheticEvent` 包装器。请参考有关[事件处理](/docs/handling-events.html)的指南来了解更多。
 
 ## 概览 {#overview}
@@ -46,23 +54,29 @@ React 通过将事件 normalize 以让他们在不同浏览器中拥有一致的
 
 以下的事件处理函数在冒泡阶段被触发。如需注册捕获阶段的事件处理函数，则应为事件名添加 `Capture`。例如，处理捕获阶段的点击事件请使用 `onClickCapture`，而不是 `onClick`。
 
-- [Clipboard Events](#clipboard-events)
-- [Composition Events](#composition-events)
-- [Keyboard Events](#keyboard-events)
-- [Focus Events](#focus-events)
-- [Form Events](#form-events)
-- [Generic Events](#generic-events)
-- [Mouse Events](#mouse-events)
-- [Pointer Events](#pointer-events)
-- [Selection Events](#selection-events)
-- [Touch Events](#touch-events)
-- [UI Events](#ui-events)
-- [Wheel Events](#wheel-events)
-- [Media Events](#media-events)
-- [Image Events](#image-events)
-- [Animation Events](#animation-events)
-- [Transition Events](#transition-events)
-- [Other Events](#other-events)
+- [概览 {#overview}](#概览-overview)
+- [支持的事件 {#supported-events}](#支持的事件-supported-events)
+- [参考 {#reference}](#参考-reference)
+  - [剪贴板事件 {#clipboard-events}](#剪贴板事件-clipboard-events)
+  - [复合事件 {#composition-events}](#复合事件-composition-events)
+  - [键盘事件 {#keyboard-events}](#键盘事件-keyboard-events)
+  - [焦点事件 {#focus-events}](#焦点事件-focus-events)
+    - [onFocus {#onfocus}](#onfocus-onfocus)
+    - [onBlur {#onblur}](#onblur-onblur)
+    - [监听焦点的进入与离开 {#detecting-focus-entering-and-leaving}](#监听焦点的进入与离开-detecting-focus-entering-and-leaving)
+  - [表单事件 {#form-events}](#表单事件-form-events)
+  - [通用事件 {#generic-events}](#通用事件-generic-events)
+  - [鼠标事件 {#mouse-events}](#鼠标事件-mouse-events)
+  - [指针事件 {#pointer-events}](#指针事件-pointer-events)
+  - [选择事件 {#selection-events}](#选择事件-selection-events)
+  - [触摸事件 {#touch-events}](#触摸事件-touch-events)
+  - [UI 事件 {#ui-events}](#ui-事件-ui-events)
+  - [滚轮事件 {#wheel-events}](#滚轮事件-wheel-events)
+  - [媒体事件 {#media-events}](#媒体事件-media-events)
+  - [图像事件 {#image-events}](#图像事件-image-events)
+  - [动画事件 {#animation-events}](#动画事件-animation-events)
+  - [过渡事件 {#transition-events}](#过渡事件-transition-events)
+  - [其他事件 {#other-events}](#其他事件-other-events)
 
 * * *
 
