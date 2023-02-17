@@ -927,7 +927,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 </Solution>
 
-### 嵌套列表 {/*nested-lists-in-one-component*/}
+#### 嵌套列表 {/*nested-lists-in-one-component*/}
 
 请根据给你的数组生成菜谱列表！其中每个菜谱，都用 `<h2>` 来显示它的名称，并在 `<ul>` 里列出它所需的原料。
 
@@ -1029,7 +1029,7 @@ export const recipes = [
 
 </Solution>
 
-### 把列表项提取成一个组件 {/*extracting-a-list-item-component*/}
+#### 把列表项提取成一个组件 {/*extracting-a-list-item-component*/}
 
 `RecipeList` 组件的代码里嵌套了两层 `map`。出于简化代码的考虑，我们提取出一个接受 `id`，`name`，`ingredients` 作为 props 的 `Recipe` 组件。这种情况下，你会把外层的 `key` 放在哪里呢？原因是什么？
 
@@ -1145,7 +1145,7 @@ export const recipes = [
 
 </Solution>
 
-### 带有分隔符的列表 {/*list-with-a-separator*/}
+#### 带有分隔符的列表 {/*list-with-a-separator*/}
 
 下面这个示例展示了葛饰北斋一首著名的俳句，它的每一行都由 `<p>` 标签包裹。你需要在段落之间插入分隔符 `<hr />`，最终的结果大概像这样：
 
