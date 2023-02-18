@@ -12,7 +12,7 @@ redirect_from:
 
 ### React Conf 2021 {#react-conf-2021}
 
-A playlist of videos from React Conf 2021.
+2021 年 React Conf 的视频播放列表。
 <iframe title="React Conf 2021" width="650" height="366" src="https://www.youtube-nocookie.com/embed/videoseries?list=PLNG_1j3cPCaZZ7etkzWA7JfdmKWT0pMsa" frameborder="0" allowfullscreen></iframe>
 
 ### React Conf 2019 {#react-conf-2019}
@@ -76,6 +76,7 @@ Pete Hunt 在 JSConf EU 2013 上的演讲涵盖了三个主题：抛弃模板的
 <iframe title="Pete Hunt: React: Rethinking Best Practices - JSConf EU 2013" width="650" height="366" src="https://www.youtube-nocookie.com/embed/x7cQ3mrcKaY" frameborder="0" allowfullscreen></iframe>
 
 ### 高性能的函数式 DOM 编程 {#high-performance-functional-dom-programming}
+
 Pete Hunt 在 Meteor DevShop 11 上讨论使用 React 的高性能函数式编程 - (2013 - 0h31m)。
 <iframe title="Pete Hunt: High performance functional programming with React and Meteor" width="650" height="366" src="https://www.youtube-nocookie.com/embed/qqVbr_LaCIo" frameborder="0" allowfullscreen></iframe>
 

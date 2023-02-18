@@ -4,6 +4,14 @@ title: 协调
 permalink: docs/reconciliation.html
 ---
 
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Preserving and Resetting State](https://beta.reactjs.org/learn/preserving-and-resetting-state)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 React 提供的声明式 API 让开发者可以在对 React 的底层实现并不了解的情况下编写应用。在开发者编写应用时，可以保持相对简单的心智，但开发者无法了解其内部的实现原理。本文描述了在实现 React 的 "diffing" 算法过程中所作出的设计决策，以保证组件更新可预测，且在繁杂业务场景下依然保持应用的高性能。
 
 ## 设计动机 {#motivation}
@@ -15,7 +23,7 @@ React 提供的声明式 API 让开发者可以在对 React 的底层实现并�
 如果在 React 中使用该算法，那么展示 1000 个元素则需要 10 亿次的比较。这个开销实在是太过高昂。于是 React 在以下两个假设的基础之上提出了一套 O(n) 的启发式算法：
 
 1. 两个不同类型的元素会产生出不同的树；
-2. 开发者可以通过设置 `key` 属性，来告知渲染哪些子元素在不同的渲染下可以保存不变；
+2. 开发者可以使用 `key` 属性标识哪些子元素在不同的渲染中可能是不变的。
 
 在实践中，我们发现以上假设在几乎所有实用的场景下都成立。
 

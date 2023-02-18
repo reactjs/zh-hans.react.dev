@@ -2,22 +2,20 @@
 id: hello-world
 title: Hello World
 permalink: docs/hello-world.html
-prev: cdn-links.html
+prev: release-channels.html
 next: introducing-jsx.html
 ---
 
 最简易的 React 示例如下：
 
-```js
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root')
-);
+```jsx
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<h1>Hello, world!</h1>);
 ```
 
 它将在页面上展示一个 "Hello, world!" 的标题。
 
-[](codepen://hello-world)
+**[在 CodePen 上试试](https://codepen.io/gaearon/pen/rrpgNB?editors=1010)**
 
 点击链接打开在线编辑器。随意更改内容，查看它们会怎样影响展示。本指南中的大多数页面都有像这样的可编辑的示例。
 
@@ -36,7 +34,7 @@ ReactDOM.render(
 
 ## 预备知识 {#knowledge-level-assumptions}
 
-React 是一个 JavaScript 库，所以我们假设你对 JavaScript 语言已有基本的了解。**如果你对自己的基础不自信，我们推荐[通过 JavaScript 教程](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)检查你的基础知识储备水平**，使得你能够无压力的阅读本指南。这可能会花费你 30 分钟到 1 个小时的时间，但这样做的好处是你不会觉得同时在学习 React 和 JavaScript。
+React 是一个 JavaScript 库，所以我们假设你对 JavaScript 语言已有基本的了解。**如果你对自己的基础不自信，我们推荐[通过 JavaScript 教程](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Language_Overview)检查你的基础知识储备水平**，使得你能够无压力的阅读本指南。这可能会花费你 30 分钟到 1 个小时的时间，但这样做的好处是你不会觉得同时在学习 React 和 JavaScript。
 
 >注意
 >

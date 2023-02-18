@@ -29,6 +29,8 @@ permalink: community/courses.html
 
 ## 付费课程 {#paid-courses}
 
+- [Meta 前端开发者专业证书](https://www.coursera.org/professional-certificates/meta-front-end-developer) - 开启你的职业生涯，成为一名前端开发者。为一个岗位需求庞大的职业建立就业准备技能，并获得 Meta 的认证。不需要任何学位或工作经验即可开始。
+
 - [Egghead.io](https://egghead.io/browse/frameworks/react) - 关于 React 和许多其他主题的教学短视频。
 
 - [Frontend Masters](https://frontendmasters.com/learn/react/) - 关于 React 的视频课。
@@ -47,7 +49,7 @@ permalink: community/courses.html
 
 - [React Training: 高级 React.js](https://courses.reacttraining.com/p/advanced-react) - 将你的 React 水平提高到一个新的 level。
 
-- [Tyler McGinnis](https://tylermcginnis.com/courses) - Tyler McGinnis 以月费的方式提供他课程的使用权。课程包括 "React 基础知识" 和 "通用的 React".
+- [Tyler McGinnis](https://ui.dev/) - Tyler McGinnis 以月费的方式提供他课程的使用权。课程包括 "React 基础知识" 和 "通用的 React".
 
 - [Mastering React](https://codewithmosh.com/p/mastering-react/) - 用 React 构建专业的交互式应用程序。
 

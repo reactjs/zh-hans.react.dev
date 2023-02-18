@@ -4,24 +4,33 @@ title: Context
 permalink: docs/context.html
 ---
 
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Passing Data Deeply with Context](https://beta.reactjs.org/learn/passing-data-deeply-with-context)
+> - [`useContext`](https://beta.reactjs.org/reference/react/useContext)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 Context 提供了一个无需为每层组件手动添加 props，就能在组件树间进行数据传递的方法。
 
 在一个典型的 React 应用中，数据是通过 props 属性自上而下（由父及子）进行传递的，但此种用法对于某些类型的属性而言是极其繁琐的（例如：地区偏好，UI 主题），这些属性是应用程序中许多组件都需要的。Context 提供了一种在组件之间共享此类值的方式，而不必显式地通过组件树的逐层传递 props。
 
-- [何时使用 Context](#when-to-use-context)
-- [使用 Context 之前的考虑](#before-you-use-context)
-- [API](#api)
-  - [React.createContext](#reactcreatecontext)
-  - [Context.Provider](#contextprovider)
-  - [Class.contextType](#classcontexttype)
-  - [Context.Consumer](#contextconsumer)
-  - [Context.displayName](#contextdisplayname)
-- [示例](#examples)
-  - [动态 Context](#dynamic-context)
-  - [在嵌套组件中更新 Context](#updating-context-from-a-nested-component)
-  - [使用多个 Context](#consuming-multiple-contexts)
-- [注意事项](#caveats)
-- [废弃的 API](#legacy-api)
+- [何时使用 Context {#when-to-use-context}](#何时使用-context-when-to-use-context)
+- [使用 Context 之前的考虑 {#before-you-use-context}](#使用-context-之前的考虑-before-you-use-context)
+- [API {#api}](#api-api)
+  - [`React.createContext` {#reactcreatecontext}](#reactcreatecontext-reactcreatecontext)
+  - [`Context.Provider` {#contextprovider}](#contextprovider-contextprovider)
+  - [`Class.contextType` {#classcontexttype}](#classcontexttype-classcontexttype)
+  - [`Context.Consumer` {#contextconsumer}](#contextconsumer-contextconsumer)
+  - [`Context.displayName` {#contextdisplayname}](#contextdisplayname-contextdisplayname)
+- [示例 {#examples}](#示例-examples)
+  - [动态 Context {#dynamic-context}](#动态-context-dynamic-context)
+  - [在嵌套组件中更新 Context {#updating-context-from-a-nested-component}](#在嵌套组件中更新-context-updating-context-from-a-nested-component)
+  - [消费多个 Context {#consuming-multiple-contexts}](#消费多个-context-consuming-multiple-contexts)
+- [注意事项 {#caveats}](#注意事项-caveats)
+- [过时的 API {#legacy-api}](#过时的-api-legacy-api)
 
 ## 何时使用 Context {#when-to-use-context}
 
