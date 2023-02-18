@@ -35,7 +35,7 @@ React 使用声明式模式控制 UI。你不必直接控制 UI 的各个部分�
 
 他并不知道你想去哪，只想跟着命令行动。（并且如果你发出了错误的命令，那么你就会到达错误的地方）正因为你必须从加载动画到按钮地“命令”每个元素，所以这种告诉计算机*如何*去更新 UI 的编程方式被称为*命令式编程*
 
-在这个命令式 UI 编程的例子中，表单没有使用 React 生成，而是使用原生的 [DOM](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model):
+在这个命令式 UI 编程的例子中，表单**没有使用** React 生成，而是使用原生的 [DOM](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model):
 
 <Sandpack>
 
@@ -159,11 +159,11 @@ React 正是为了解决这样的问题而诞生的。
 
 首先，你需要去可视化 UI 界面中用户可能看到的所有不同的“状态”：
 
-* **无数据**：表单有一个不可用状态的“提交”按钮
-* **输入中**：表单有一个可用状态的“提交”按钮
-* **提交中**：表单完全处于不可用状态，加载动画出现
-* **成功时**：显示“成功”的消息而非表单
-* **错误时**：与输入状态类似，但会多错误的消息
+* **无数据**：表单有一个不可用状态的“提交”按钮。
+* **输入中**：表单有一个可用状态的“提交”按钮。
+* **提交中**：表单完全处于不可用状态，加载动画出现。
+* **成功时**：显示“成功”的消息而非表单。
+* **错误时**：与输入状态类似，但会多错误的消息。
 
 像一个设计师一样，你会想要在你添加逻辑之前去“模拟”不同的状态或创建“模拟状态”。例如下面的例子，这是一个对表单可视部分的模拟。这个模拟被一个 `status` 的属性控制，并且这个属性的默认值为 `empty`。
 
@@ -202,7 +202,7 @@ export default function Form({
 
 ```js
 export default function Form({
-  // Try 'submitting', 'error', 'success'：
+  // Try 'submitting', 'error', 'success':
   status = 'empty'
 }) {
   if (status === 'success') {
@@ -492,11 +492,11 @@ function submitForm(answer) {
 
 * 声明式编程意味着为每个视图状态声明 UI 而非细致地控制 UI（命令式）。
 * 当开发一个组件时：
-  1. 定位你的组件中不同的视图状态
-  2. 确定是什么触发了这些 state 的改变
-  3. 通过 `useState` 模块化内存中的 state
-  4. 删除任何不必要的 state 变量
-  5. 连接事件处理函数去设置 state
+  1. 定位你的组件中不同的视图状态。
+  2. 确定是什么触发了这些 state 的改变。
+  3. 通过 `useState` 模块化内存中的 state。
+  4. 删除任何不必要的 state 变量。
+  5. 连接事件处理函数去设置 state。
 
 </Recap>
 
@@ -504,9 +504,9 @@ function submitForm(answer) {
 
 <Challenges>
 
-#### 添加和删除一个 CSS 类名 {/*add-and-remove-a-css-class*/}
+#### 添加和删除一个 CSS class {/*add-and-remove-a-css-class*/}
 
-试一试实现当点击图片时*删除*外部 `<div>` 的类名 `background--active`，并将 `picture--active` 的类名添加到 `<img>` 上。当再次点击背景图片时将恢复最开始的 CSS 类名。
+尝试实现当点击图片时*删除*外部 `<div>` 的 CSS class `background--active`，并将 `picture--active` 的 CSS class 添加到 `<img>` 上。当再次点击背景图片时将恢复最开始的 CSS class。
 
 视觉上，你应该期望当点击图片时会移除紫色的背景，并且高亮图片的边框。点击图片外面时高亮背景并且删除图片边框的高亮效果。
 
@@ -518,7 +518,7 @@ export default function Picture() {
     <div className="background background--active">
       <img
         className="picture"
-        alt="印度尼西亚，Kampung Pelangi 的彩虹屋"
+        alt="Rainbow houses in Kampung Pelangi, Indonesia"
         src="https://i.imgur.com/5qwVYb1.jpeg"
       />
     </div>
@@ -559,10 +559,10 @@ body { margin: 0; padding: 0; height: 250px; }
 
 这个组件有两个视图状态：当图片处于激活状态时以及当图片处于非激活状态时：
 
-* 当图片处于激活状态时，CSS 类名是 `background` 和 `picture picture--active`。
-* 当图片处于非激活状态时，CSS 类名是 `background background--active` 和 `picture`。
+* 当图片处于激活状态时，CSS class 是 `background` 和 `picture picture--active`。
+* 当图片处于非激活状态时，CSS class 是 `background background--active` 和 `picture`。
 
-一个布尔类型的 state 已经足够表示图片是否处于激活状态。最初的工作仅仅是移除或添加 CSS 类名。然而在 React 中你需要去*描述*什么是你想要看到的而非*操作* UI 元素。因此你需要基于当前 state 去计算这两个 CSS 类名。同时你需要去 [阻止冒泡行为](/learn/responding-to-events#stopping-propagation)，只有这样点击图片的时候不会触发点击背景的回调。
+一个布尔类型的 state 已经足够表示图片是否处于激活状态。最初的工作仅仅是移除或添加 CSS class。然而在 React 中你需要去*描述*什么是你想要看到的而非*操作* UI 元素。因此你需要基于当前 state 去计算这两个 CSS class。同时你需要去 [阻止冒泡行为](/learn/responding-to-events#stopping-propagation)，只有这样点击图片的时候不会触发点击背景的回调。
 
 通过点击图片然后点击图片外围来确定这个版本可用：
 
@@ -593,7 +593,7 @@ export default function Picture() {
           setIsActive(true);
         }}
         className={pictureClassName}
-        alt="印度尼西亚，Kampung Pelangi 的彩虹屋"
+        alt="Rainbow houses in Kampung Pelangi, Indonesia"
         src="https://i.imgur.com/5qwVYb1.jpeg"
       />
     </div>
@@ -648,7 +648,7 @@ export default function Picture() {
       >
         <img
           className="picture picture--active"
-          alt="印度尼西亚，Kampung Pelangi 的彩虹屋"
+          alt="Rainbow houses in Kampung Pelangi, Indonesia"
           src="https://i.imgur.com/5qwVYb1.jpeg"
           onClick={e => e.stopPropagation()}
         />
@@ -659,7 +659,7 @@ export default function Picture() {
     <div className="background background--active">
       <img
         className="picture"
-        alt="印度尼西亚，Kampung Pelangi 的彩虹屋"
+        alt="Rainbow houses in Kampung Pelangi, Indonesia"
         src="https://i.imgur.com/5qwVYb1.jpeg"
         onClick={() => setIsActive(true)}
       />
