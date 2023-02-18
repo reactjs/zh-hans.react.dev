@@ -8,19 +8,19 @@ translators:
 
 <Intro>
 
-React 使用声明式模式控制 UI。你不必直接控制 UI 的各个部分，而应该声明你的组件可以处于的不同 state，并根据用户的输入在它们之间切换。这与设计师对 UI 的思考方式很相似。
+React 控制 UI 的方式是声明式的。你不必直接控制 UI 的各个部分，只需要声明组件可以处于的不同状态，并根据用户的输入在它们之间切换。这与设计师对 UI 的思考方式很相似。
 
 </Intro>
 
 <YouWillLearn>
 
 * 了解声明式 UI 编程与命令式 UI 编程有何不同
-* 了解如何列举你的组件可能处于的不同视图状态
+* 了解如何列举组件可能处于的不同视图状态
 * 了解如何在代码中触发不同视图状态的变化
 
 </YouWillLearn>
 
-## 声明式 UI 与 命令式 UI 的比较 {/*how-declarative-ui-compares-to-imperative*/}
+## 声明式 UI 与命令式 UI 的比较 {/*how-declarative-ui-compares-to-imperative*/}
 
 当你设计 UI 交互时，可能会去思考 UI 如何根据用户的操作而响应**变化**。想象一个允许用户提交一个答案的表单：
 
@@ -149,11 +149,11 @@ React 正是为了解决这样的问题而诞生的。
 
 1. **定位**你的组件中不同的视图状态
 2. **确定**是什么触发了这些 state 的改变
-3. **表示**内存中的 state，通过 `useState`
+3. **表示**内存中的 state（需要使用 `useState`）
 4. **删除**任何不必要的 state 变量
 5.  **连接**事件处理函数去设置 state
 
-### 步骤 1：定位你的组件中不同的视图状态 {/*step-1-identify-your-components-different-visual-states*/}
+### 步骤 1：定位组件中不同的视图状态 {/*step-1-identify-your-components-different-visual-states*/}
 
 在计算机科学中，你或许听过可处于多种“状态”之一的 [“状态机”](https://en.wikipedia.org/wiki/Finite-state_machine)。如果你有与设计师一起工作，那么你可能已经见过不同“视图状态”的模拟图。正因为 React 站在设计与计算机科学的交点上，因此这两种思想都是灵感的来源。
 
