@@ -311,7 +311,7 @@ body { margin: 0; }
 
 </Sandpack>
 
-类似这样的页面通常被称作“实时风格指南”或“故事板”。
+类似这样的页面通常被称作“living styleguides”或“storybooks”。
 
 </DeepDive>
 
@@ -341,7 +341,7 @@ body { margin: 0; }
 
 <DiagramGroup>
 
-<Diagram name="responding_to_input_flow" height={350} width={688} alt="流程图从左到右共有 5 个节点。第一个 ’empty‘ 节点通过 ’start typing‘ 分支与 ’typing‘ 节点相连。‘typing’ 节点则通过 ‘press submit’ 分支与拥有两个分支的 ‘submitting’ 节点相连。其中 ‘submitting’ 节点左侧通过 ’network error‘ 分支与 ’error‘ 节点相连，而右侧则是通过 ’network success‘ 分支与 ’success‘ 节点相连。">
+<Diagram name="responding_to_input_flow" height={350} width={688} alt="流程图从左到右共有 5 个节点。第一个 'empty' 节点通过 'start typing' 分支与 'typing' 节点相连。'typing' 节点则通过 'press submit' 分支与拥有两个分支的 'submitting' 节点相连。其中 'submitting' 节点左侧通过 'network error' 分支与 'error' 节点相连，而右侧则是通过 'network success' 分支与 'success' 节点相连。">
 
 表单的各种状态
 
