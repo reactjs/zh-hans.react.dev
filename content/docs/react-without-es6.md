@@ -134,7 +134,7 @@ var SayHello = createReactClass({
 
 这就意味着，如果使用 ES6 class 关键字创建组件，在处理事件回调时就要多写一部分代码。但对于大型项目来说，这样做可以提升运行效率。
 
-如果你觉得上述写法很繁琐，那么可以尝试使用**目前还处于试验性阶段**的 Babel 插件 [Class Properties](https://babeljs.io/docs/plugins/transform-class-properties/)。
+如果模板代码对你来说不太友好，你可以尝试使用 [ES2022 Class Properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) 语法：
 
 
 ```javascript
@@ -143,11 +143,11 @@ class SayHello extends React.Component {
     super(props);
     this.state = {message: 'Hello!'};
   }
-  // 警告：这种语法还处于试验性阶段！
+  
   // 在这里使用箭头函数就可以把方法绑定给实例：
   handleClick = () => {
     alert(this.state.message);
-  }
+  };
 
   render() {
     return (
@@ -159,9 +159,7 @@ class SayHello extends React.Component {
 }
 ```
 
-请注意，上面这种语法**目前还处于试验性阶段**，这意味着语法随时都可能改变，也存在最终不被列入框架标准的可能。
-
-为了保险起见，以下三种做法都是可以的：
+为了安全起见，你可以采用以下几种方式：
 
 * 在 constructor 中绑定方法。
 * 使用箭头函数，比如：`onClick={(e) => this.handleClick(e)}`。
@@ -216,10 +214,8 @@ var TickTock = createReactClass({
   }
 });
 
-ReactDOM.render(
-  <TickTock />,
-  document.getElementById('example')
-);
+const root = ReactDOM.createRoot(document.getElementById('example'));
+root.render(<TickTock />);
 ```
 
 如果组件拥有多个 mixins，且这些 mixins 中定义了相同的生命周期方法（例如，当组件被销毁时，几个 mixins 都想要进行一些清理工作），那么这些生命周期方法都会被调用的。使用 mixins 时，mixins 会先按照定义时的顺序执行，最后调用组件上对应的方法。

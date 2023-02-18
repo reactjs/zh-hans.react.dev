@@ -11,7 +11,18 @@ redirect_from:
   - "tips/children-undefined.html"
 ---
 
-Refs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素。
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Referencing Values with Refs](https://beta.reactjs.org/learn/referencing-values-with-refs)
+> - [Manipulating the DOM with Refs](https://beta.reactjs.org/learn/manipulating-the-dom-with-refs)
+> - [`useRef`](https://beta.reactjs.org/reference/react/useRef)
+> - [`forwardRef`](https://beta.reactjs.org/reference/react/forwardRef)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+Refs 提供了一种方式，允许我们访问在 render 方法中创建的 DOM 节点或 React 元素。
 
 在典型的 React 数据流中，[props](/docs/components-and-props.html) 是父组件与子组件交互的唯一方式。要修改一个子组件，你需要使用新的 props 来重新渲染它。但是，在某些情况下，你需要在典型数据流之外强制修改子组件。被修改的子组件可能是一个 React 组件的实例，也可能是一个 DOM 元素。对于这两种情况，React 都提供了解决办法。
 
