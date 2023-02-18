@@ -2,9 +2,8 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import * as React from 'react';
 import cn from 'classnames';
-import {RouteTag} from './Layout/useRouteMeta';
+import type {RouteTag} from './Layout/getRouteMeta';
 
 const variantMap = {
   foundation: {

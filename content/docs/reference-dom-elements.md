@@ -14,6 +14,19 @@ redirect_from:
   - "tips/dangerously-set-inner-html.html"
 ---
 
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Common components (e.g. `<div>`)](https://beta.reactjs.org/reference/react-dom/components/common)
+> - [`<input>`](https://beta.reactjs.org/reference/react-dom/components/input)
+> - [`<option>`](https://beta.reactjs.org/reference/react-dom/components/option)
+> - [`<progress>`](https://beta.reactjs.org/reference/react-dom/components/progress)
+> - [`<select>`](https://beta.reactjs.org/reference/react-dom/components/select)
+> - [`<textarea>`](https://beta.reactjs.org/reference/react-dom/components/textarea)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 React 实现了一套独立于浏览器的 DOM 系统，兼顾了性能和跨浏览器的兼容性。我们借此机会完善了浏览器 DOM 实现的一些特殊情况。
 
 在 React 中，所有的 DOM 特性和属性（包括事件处理）都应该是小驼峰命名的方式。例如，与 HTML 中的 `tabindex` 属性对应的 React 的属性是 `tabIndex`。例外的情况是 `aria-*` 以及 `data-*` 属性，一律使用小写字母命名。比如, 你依然可以用 `aria-label` 作为 `aria-label`。
@@ -117,7 +130,7 @@ React 会自动添加 ”px” 后缀到内联样式为数字的属性后。如�
 
 如果你使用 React 服务端渲染，通常会在当服务端与客户端渲染不同的内容时发出警告。但是，在一些极少数的情况下，很难甚至于不可能保证内容的一致性。例如，在服务端和客户端上，时间戳通常是不同的。 
 
-如果设置 `suppressHydrationWarning` 为 `true`，React 将不会警告你属性与元素内容不一致。它只会对元素一级深度有效，并且打算作为应急方案。因此不要过度使用它。你可以在 [`ReactDOM.hydrate()` 文档](/docs/react-dom.html#hydrate) 中了解更多关于 hydration 的信息。
+如果设置 `suppressHydrationWarning` 为 `true`，React 将不会警告你属性与元素内容不一致。它只会对元素一级深度有效，并且打算作为应急方案。因此不要过度使用它。你可以在 [`ReactDOM.hydrateRoot()` 文档](/docs/react-dom-client.html#hydrateroot) 中了解更多关于 hydration 的信息。
 
 ### value {#value}
 
