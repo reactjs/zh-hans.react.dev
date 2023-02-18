@@ -328,7 +328,7 @@ body { margin: 0; }
   <Illustration caption="计算机输入" alt="许多的 0 和 1。" src="/images/docs/illustrations/i_inputs2.png" />
 </IllustrationBlock>
 
-以上两种情况中，**你必须设置 [ state 变量](/learn/state-a-components-memory#anatomy-of-usestate)去更新 UI**。对于正在开发中的表单来说，你需要改变 state 以响应几个不同的输入：
+以上两种情况中，**你必须设置 [state 变量](/learn/state-a-components-memory#anatomy-of-usestate) 去更新 UI**。对于正在开发中的表单来说，你需要改变 state 以响应几个不同的输入：
 
 * **改变输入框中的文本时**（人为）应该根据输入框的内容是否是**空值**，从而决定将表单的状态从空值状态切换到**输入中**或切换回原状态。
 * **点击提交按钮时**（人为）应该将表单的状态切换到**提交中**的状态。
