@@ -325,7 +325,7 @@ h3, p { margin: 5px 0px; }
 
 <Challenges>
 
-### 同步输入状态 {/*synced-inputs*/}
+#### 同步输入状态 {/*synced-inputs*/}
 
 现在有两个独立的输入框。为了让它们保持同步：即编辑一个输入框时，另一个输入框也会更新相同的文本，反之亦然。
 
@@ -431,7 +431,7 @@ label { display: block; }
 
 </Solution>
 
-### 列表过滤 {/*filtering-a-list*/}
+#### 列表过滤 {/*filtering-a-list*/}
 
 在这个例子中，`SearchBar` 组件拥有一个用来控制输入框的 `query` 状态，它的父组件中展示了一个 `List` 组件，但是没有考虑搜索条件。
 

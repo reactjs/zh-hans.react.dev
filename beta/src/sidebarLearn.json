@@ -139,7 +139,7 @@
               "path": "/learn/choosing-the-state-structure"
             },
             {
-              "title": "组件间共享状态",
+              "title": "在组件间共享状态",
               "path": "/learn/sharing-state-between-components"
             },
             {

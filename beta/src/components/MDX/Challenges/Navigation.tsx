@@ -65,7 +65,7 @@ export function Navigation({
     if (containerRef.current) {
       const el = containerRef.current;
       el.scrollLeft =
-        challengesNavRef.current[scrollPos]?.current?.offsetLeft || 0;
+        challengesNavRef.current[scrollPos].current?.offsetLeft || 0;
     }
   }, [containerRef, challengesNavRef, scrollPos]);
 
@@ -96,7 +96,7 @@ export function Navigation({
                   'text-link border-link hover:text-link dark:text-link-dark dark:border-link-dark dark:hover:text-link-dark'
               )}
               onClick={() => handleSelectNav(index)}
-              key={`button-${index}`}
+              key={`button-${id}`}
               ref={challengesNavRef.current[index]}>
               {order}. {name}
             </button>
