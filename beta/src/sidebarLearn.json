@@ -8,160 +8,266 @@
       "path": "",
       "routes": [
         {
-          "title": "Installation",
+          "hasSectionHeader": true,
+          "sectionHeader": "Get Started"
+        },
+        {
+          "title": "安装",
           "path": "/learn/installation",
           "routes": [
             {
-              "title": "Start a New React Project",
+              "title": "启动一个新的 React 项目",
               "path": "/learn/start-a-new-react-project"
             },
             {
-              "title": "Add React to a Website",
+              "title": "将 React 添加到网站中",
               "path": "/learn/add-react-to-a-website"
             },
             {
-              "title": "Editor Setup",
+              "title": "编辑器配置",
               "path": "/learn/editor-setup"
             },
             {
-              "title": "React Developer Tools",
+              "title": "React 开发者工具",
               "path": "/learn/react-developer-tools"
             }
           ]
         },
         {
-          "title": "Quick Start",
+          "title": "快速入门",
           "path": "/learn",
-          "routes": [{
-            "title": "Thinking in React",
-            "path": "/learn/thinking-in-react"
-          }]
+          "routes": [
+            {
+              "title": "Tutorial: Tic-Tac-Toe",
+              "path": "/learn/tutorial-tic-tac-toe"
+            },
+            {
+              "title": "React 哲学",
+              "path": "/learn/thinking-in-react"
+            }
+          ]
         },
         {
-          "title": "Describing the UI",
+          "hasSectionHeader": true,
+          "sectionHeader": "Learn React"
+        },
+        {
+          "title": "描述 UI",
           "tags": [],
           "path": "/learn/describing-the-ui",
           "routes": [
             {
-              "title": "Your First Component",
+              "title": "你的第一个组件",
               "path": "/learn/your-first-component"
             },
             {
-              "title": "Importing and Exporting Components",
+              "title": "组件的导入与导出",
               "path": "/learn/importing-and-exporting-components"
             },
             {
-              "title": "Writing Markup with JSX",
+              "title": "使用 JSX 编写标记",
               "path": "/learn/writing-markup-with-jsx"
             },
             {
-              "title": "JavaScript in JSX with Curly Braces",
+              "title": "在 JSX 中通过大括号使用 JavaScript",
               "path": "/learn/javascript-in-jsx-with-curly-braces"
             },
             {
-              "title": "Passing Props to a Component",
+              "title": "将 prop 传递给组件",
               "path": "/learn/passing-props-to-a-component"
             },
             {
-              "title": "Conditional Rendering",
+              "title": "条件渲染",
               "path": "/learn/conditional-rendering"
             },
             {
-              "title": "Rendering Lists",
+              "title": "列表渲染",
               "path": "/learn/rendering-lists"
             },
             {
-              "title": "Keeping Components Pure",
+              "title": "保持组件纯粹",
               "path": "/learn/keeping-components-pure"
             }
           ]
         },
         {
-          "title": "Adding Interactivity",
+          "title": "增加互动性",
           "path": "/learn/adding-interactivity",
           "tags": [],
           "routes": [
             {
-              "title": "Responding to Events",
+              "title": "响应事件",
               "path": "/learn/responding-to-events"
             },
             {
-              "title": "State: A Component's Memory",
+              "title": "state：组件的缓存",
               "path": "/learn/state-a-components-memory"
             },
             {
-              "title": "Render and Commit",
+              "title": "render 和 commit",
               "path": "/learn/render-and-commit"
             },
             {
-              "title": "State as a Snapshot",
+              "title": "state 作为快照",
               "path": "/learn/state-as-a-snapshot"
             },
             {
-              "title": "Queueing a Series of State Updates",
+              "title": "state 的更新队列",
               "path": "/learn/queueing-a-series-of-state-updates"
             },
             {
-              "title": "Updating Objects in State",
+              "title": "更新 state 中的对象",
               "path": "/learn/updating-objects-in-state"
             },
             {
-              "title": "Updating Arrays in State",
+              "title": "更新 state 中的数组",
               "path": "/learn/updating-arrays-in-state"
             }
           ]
         },
         {
-          "title": "Managing State",
+          "title": "管理 state",
           "path": "/learn/managing-state",
-          "tags": [
-            "intermediate"
-          ],
+          "tags": ["intermediate"],
           "routes": [
             {
-              "title": "Reacting to Input with State",
+              "title": "用 state 响应输入",
               "path": "/learn/reacting-to-input-with-state"
             },
             {
-              "title": "Choosing the State Structure",
+              "title": "选择 state 的结构",
               "path": "/learn/choosing-the-state-structure"
             },
             {
-              "title": "Sharing State Between Components",
+              "title": "组件间共享状态",
               "path": "/learn/sharing-state-between-components"
             },
             {
-              "title": "Preserving and Resetting State",
+              "title": "state 的保存和重置",
               "path": "/learn/preserving-and-resetting-state"
             },
             {
-              "title": "Extracting State Logic into a Reducer",
+              "title": "将 state 逻辑提取到 reducer 中",
               "path": "/learn/extracting-state-logic-into-a-reducer"
             },
             {
-              "title": "Passing Data Deeply with Context",
+              "title": "使用 context 深度传递数据",
               "path": "/learn/passing-data-deeply-with-context"
             },
             {
-              "title": "Scaling Up with Reducer and Context",
+              "title": "利用 reducer 和 context 扩展应用",
               "path": "/learn/scaling-up-with-reducer-and-context"
             }
           ]
         },
         {
-          "title": "Escape Hatches",
+          "title": "备选方案",
           "path": "/learn/escape-hatches",
-          "tags": [
-            "advanced"
-          ],
+          "tags": ["advanced"],
           "routes": [
             {
-              "title": "Referencing Values with Refs",
+              "title": "用 ref 引用数值",
               "path": "/learn/referencing-values-with-refs"
             },
             {
-              "title": "Manipulating the DOM with Refs",
+              "title": "用 ref 操作 DOM",
               "path": "/learn/manipulating-the-dom-with-refs"
+            },
+            {
+              "title": "Synchronizing with Effects",
+              "path": "/learn/synchronizing-with-effects"
+            },
+            {
+              "title": "You Might Not Need an Effect",
+              "path": "/learn/you-might-not-need-an-effect"
+            },
+            {
+              "title": "Lifecycle of Reactive Effects",
+              "path": "/learn/lifecycle-of-reactive-effects"
+            },
+            {
+              "title": "Separating Events from Effects",
+              "path": "/learn/separating-events-from-effects"
+            },
+            {
+              "title": "Removing Effect Dependencies",
+              "path": "/learn/removing-effect-dependencies"              
+            },
+            {
+              "title": "Reusing Logic with Custom Hooks",
+              "path": "/learn/reusing-logic-with-custom-hooks"
+            }
+          ]
+        },
+        {
+          "hasSectionHeader": true,
+          "sectionHeader": "About React"
+        },
+        {
+          "title": "Community",
+          "path": "/community",
+          "routes": [
+            {
+              "title": "React Conferences",
+              "path": "/community/conferences"
+            },
+            {
+              "title": "React Meetups",
+              "path": "/community/meetups"
+            },
+            {
+              "title": "React Videos",
+              "path": "/community/videos"
+            },
+            {
+              "title": "Meet the Team",
+              "path": "/community/team"
+            },
+            {
+              "title": "Docs Contributors",
+              "path": "/community/docs-contributors"
+            },
+            {
+              "title": "Acknowledgements",
+              "path": "/community/acknowledgements"
+            },
+            {
+              "title": "Versioning Policy",
+              "path": "/community/versioning-policy"
+            }
+          ]
+        },
+        {
+          "title": "Blog",
+          "path": "/blog",
+          "routes": [
+            {
+              "title": "React Labs: June 2022",
+              "path": "/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022"
+            },
+            {
+              "title": "React v18.0",
+              "path": "/blog/2022/03/29/react-v18"
+            },
+            {
+              "title": "How to Upgrade to React 18",
+              "path": "/blog/2022/03/08/react-18-upgrade-guide"
+            },
+            {
+              "title": "React Conf 2021 Recap",
+              "path": "/blog/2021/12/17/react-conf-2021-recap"
+            },
+            {
+              "title": "The Plan for React 18",
+              "path": "/blog/2021/06/08/the-plan-for-react-18"
+            },
+            {
+              "title": "Introducing Server Components",
+              "path": "/blog/2020/12/21/data-fetching-with-react-server-components"
+            },
+            {
+              "title": "Older posts",
+              "path": "https://reactjs.org/blog/all.html"
             }
           ]
         }

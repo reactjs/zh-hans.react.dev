@@ -111,7 +111,7 @@ class Columns extends React.Component {
 }
 ```
 
-你可以像使用任何其他元素一样使用 `<> </>`，除了它不支持 key 或属性。
+你可以像使用其他任意元素一样使用 `<> </>`，但它并不支持 key 或属性。
 
 ### 带 key 的 Fragments {#keyed-fragments}
 

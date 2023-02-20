@@ -377,7 +377,7 @@ class BlurExample extends React.Component {
 
 每一种部件都有一种特定的设计模式，并且用户和用户代理都会期待使用相似的方法使用它：
 
-- [WAI-ARIA 创作实践 —— 设计模式和部件](https://www.w3.org/TR/wai-aria-practices/#aria_ex)
+- [ARIA 创作实践指南（APG）—— 设计模式和实例](https://www.w3.org/WAI/ARIA/apg/patterns/)
 - [Heydon Pickering - ARIA Examples](https://heydonworks.com/article/practical-aria-examples/)
 - [包容性组件（Inclusive Components）](https://inclusive-components.design/)
 
@@ -405,7 +405,7 @@ class BlurExample extends React.Component {
 - [有关色彩对比度的一切以及为何你应该重新考虑它](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
 - [A11yProject —— 什么是色彩对比度](https://a11yproject.com/posts/what-is-color-contrast/)
 
-手工计算你网站上所有恰当的色彩组合会是乏味的。所以，作为代替，你可以[使用 Colorable 来计算出一个完全无障碍的调色板](https://jxnblk.com/colorable/)。
+手工计算你网站上所有恰当的色彩组合会是乏味的。所以，作为代替，你可以[使用 Colorable 来计算出一个完全无障碍的调色板](https://colorable.jxnblk.com/)。
 
 下面介绍的 aXe 和 WAVE 都支持色彩对比度测试并会报告对比度错误。
 

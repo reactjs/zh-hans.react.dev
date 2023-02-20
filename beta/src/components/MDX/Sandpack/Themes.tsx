@@ -2,32 +2,42 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import {githubLightTheme, SandpackTheme} from '@codesandbox/sandpack-react';
 import tailwindConfig from '../../../../tailwind.config';
 
-export const GithubLightTheme: SandpackTheme = {
-  ...githubLightTheme,
-
-  typography: {
-    ...githubLightTheme.typography,
-    bodyFont: tailwindConfig.theme.extend.fontFamily.sans.join(', '),
-    monoFont: tailwindConfig.theme.extend.fontFamily.mono.join(', '),
-    fontSize: tailwindConfig.theme.extend.fontSize.code,
-    lineHeight: '24px',
+export const CustomTheme = {
+  colors: {
+    accent: 'inherit',
+    base: 'inherit',
+    clickable: 'inherit',
+    disabled: 'inherit',
+    error: 'inherit',
+    errorSurface: 'inherit',
+    hover: 'inherit',
+    surface1: 'inherit',
+    surface2: 'inherit',
+    surface3: 'inherit',
+    warning: 'inherit',
+    warningSurface: 'inherit',
   },
-};
-
-export const CodeBlockLightTheme: SandpackTheme = {
-  ...githubLightTheme,
-  palette: {
-    ...githubLightTheme.palette,
-    defaultBackground: 'transparent',
+  syntax: {
+    plain: 'inherit',
+    comment: 'inherit',
+    keyword: 'inherit',
+    tag: 'inherit',
+    punctuation: 'inherit',
+    definition: 'inherit',
+    property: 'inherit',
+    static: 'inherit',
+    string: 'inherit',
   },
-  typography: {
-    ...githubLightTheme.typography,
-    bodyFont: tailwindConfig.theme.extend.fontFamily.sans.join(', '),
-    monoFont: tailwindConfig.theme.extend.fontFamily.mono.join(', '),
-    fontSize: tailwindConfig.theme.extend.fontSize.code,
+  font: {
+    body: tailwindConfig.theme.extend.fontFamily.sans
+      .join(', ')
+      .replace(/"/gm, ''),
+    mono: tailwindConfig.theme.extend.fontFamily.mono
+      .join(', ')
+      .replace(/"/gm, ''),
+    size: tailwindConfig.theme.extend.fontSize.code,
     lineHeight: '24px',
   },
 };

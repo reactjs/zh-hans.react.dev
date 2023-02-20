@@ -52,7 +52,7 @@ npm install eslint-plugin-react-hooks --save-dev
 
 ## 说明 {#explanation}
 
-正如我们[之前学到](/docs/hooks-state.html#tip-using-multiple-state-variables)的，我们可以在单个组件中使用多个 State Hook 或 Effect Hook
+正如我们[之前学到](/docs/hooks-state.html#tip-using-multiple-state-variables)的，我们可以在单个组件中使用多个 State Hook 或 Effect Hook：
 
 ```js
 function Form() {
