@@ -97,8 +97,6 @@ Hook 确实有它们自己的学习曲线。如果这份文档中遗失了一些
 
 我们给 Hook 设定的目标是尽早覆盖 class 的所有使用场景。目前暂时还没有对应不常用的 `getSnapshotBeforeUpdate`，`getDerivedStateFromError` 和 `componentDidCatch` 生命周期的 Hook 等价写法，但我们计划尽早把它们加进来。
 
-目前 Hook 还处于早期阶段，一些第三方的库可能还暂时无法兼容 Hook。
-
 ### Hook 会替代 render props 和高阶组件吗？ {#do-hooks-replace-render-props-and-higher-order-components}
 
 通常，render props 和高阶组件只渲染一个子节点。我们认为让 Hook 来服务这个使用场景更加简单。这两种模式仍有用武之地，（例如，一个虚拟滚动条组件或许会有一个 `renderItem` 属性，或是一个可见的容器组件或许会有它自己的 DOM 结构）。但在大部分场景下，Hook 足够了，并且能够帮助减少嵌套。
@@ -150,7 +148,7 @@ function Example() {
 
 ```js{3,20-22,29-31}
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { act } from 'react-dom/test-utils';
 import Counter from './Counter';
 
@@ -169,7 +167,7 @@ afterEach(() => {
 it('can render and update a counter', () => {
   // 测试首次渲染和 effect
   act(() => {
-    ReactDOM.render(<Counter />, container);
+    ReactDOM.createRoot(container).render(<Counter />);
   });
   const button = container.querySelector('button');
   const label = container.querySelector('p');
@@ -195,14 +193,14 @@ it('can render and update a counter', () => {
 
 ### [lint 规则](https://www.npmjs.com/package/eslint-plugin-react-hooks)具体强制了哪些内容？ {#what-exactly-do-the-lint-rules-enforce}
 
-我们提供了一个 [ESLint 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks) 来强制 [Hook 规范](/docs/hooks-rules.html) 以避免 Bug。它假设任何以 「`use`」 开头并紧跟着一个大写字母的函数就是一个 Hook。我们知道这种启发方式并不完美，甚至存在一些伪真理，但如果没有一个全生态范围的约定就没法让 Hook 很好的工作 —— 而名字太长会让人要么不愿意采用 Hook，要么不愿意遵守约定。
+我们提供了一个 [ESLint 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks) 来强制 [Hook 规范](/docs/hooks-rules.html) 以避免 Bug。它假设任何以 「`use`」 开头并紧跟着一个大写字母的函数就是一个 Hook。我们知道这种启发方式并不完美，甚至存在一些假阳性，但如果没有一个全生态范围的约定就没法让 Hook 很好的工作 —— 而名字太长会让人要么不愿意采用 Hook，要么不愿意遵守约定。
 
 规范尤其强制了以下内容：
 
 * 对 Hook 的调用要么在一个`大驼峰法`命名的函数（视作一个组件）内部，要么在另一个 `useSomething` 函数（视作一个自定义 Hook）中。
 * Hook 在每次渲染时都按照相同的顺序被调用。
 
-还有一些其他的启发方式，但随着我们不断地调优以在发现 Bug 和避免伪真理之前取得平衡，这些方式随时会改变。
+还有一些其他的启发方式，但随着我们不断地调优以在发现 Bug 和避免假阳性之间取得平衡，这些方式随时会改变。
 
 ## 从 Class 迁移到 Hook {#from-classes-to-hooks}
 
@@ -333,54 +331,22 @@ function useWindowPosition() {
 
 ### 如何获取上一轮的 props 或 state？ {#how-to-get-the-previous-props-or-state}
 
-目前，你可以 [通过 ref](#is-there-something-like-instance-variables) 来手动实现：
+在以下两种场景下，你可以能会需要获取上一轮的 props 或 state。
 
-```js{6,8}
-function Counter() {
-  const [count, setCount] = useState(0);
+有时，你需要获取之前的 props 来 **进行副作用的清理**。例如，你可能有这样一个副作用，依赖 `userId` props 来订阅 socket。如果 `userId` 发生了变化，你需要取消 **之前** `userId` 的订阅，再进行后续订阅。这种情况下，你无需做额外操作即可实现：
 
-  const prevCountRef = useRef();
-  useEffect(() => {
-    prevCountRef.current = count;
-  });
-  const prevCount = prevCountRef.current;
-
-  return <h1>Now: {count}, before: {prevCount}</h1>;
-}
+```js
+useEffect(() => {
+  ChatAPI.subscribeToSocket(props.userId);
+  return () => ChatAPI.unsubscribeFromSocket(props.userId);
+}, [props.userId]);
 ```
 
-这或许有一点错综复杂，但你可以把它抽取成一个自定义 Hook：
+在上述示例中，如果 `userId` 从 `3` 变为 `4`，`ChatAPI.unsubscribeFromSocket(3)` 将会优先运行，然后才会执行 `ChatAPI.subscribeToSocket(4)`。这种情况下，你没必要获取之前的 `userId`，因为清理函数将在闭包中捕获它，
 
-```js{3,7}
-function Counter() {
-  const [count, setCount] = useState(0);
-  const prevCount = usePrevious(count);
-  return <h1>Now: {count}, before: {prevCount}</h1>;
-}
+其他情况下，你可能需要 **根据 props 或其他 state 的变化来调整 state**。但这一般并不常用，出现这种情况说明你代码中存在重复或多余的 state。然而，如果你需要应对这种场景，你可以在 [状态中存储之前的 state 或 props，并在渲染时更新它们](#how-do-i-implement-getderivedstatefromprops)。
 
-function usePrevious(value) {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-}
-```
-
-注意看这是如何作用于 props， state，或任何其他计算出来的值的。
-
-```js{5}
-function Counter() {
-  const [count, setCount] = useState(0);
-
-  const calculation = count + 100;
-  const prevCalculation = usePrevious(calculation);
-  // ...
-```
-
-考虑到这是一个相对常见的使用场景，很可能在未来 React 会自带一个 `usePrevious` Hook。
-
-参见 [derived state 推荐模式](#how-do-i-implement-getderivedstatefromprops).
+我们之前曾建议使用 `usePrevious` 的自定义 Hook 来保持前值。然后，我们发现大多数用例，都属于上述两种场景。如果你的用例与上述两种情况不同，你可以在 [Ref 中对该值进行存储](#is-there-something-like-instance-variables) 并在需要时手动更新它。注意，应避免在渲染过程中读取和更新 refs，因为这使得你组件的行为难以预测，且难以理解。
 
 ### 为什么我会在我的函数中看到陈旧的 props 和 state ？ {#why-am-i-seeing-stale-props-or-state-inside-my-function}
 

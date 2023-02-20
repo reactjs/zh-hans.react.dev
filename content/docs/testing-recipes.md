@@ -605,7 +605,7 @@ it("应渲染问候语", () => {
 
 ### 多渲染器 {#multiple-renderers}
 
-在极少数情况下，你可能正在使用多个渲染器的组件上运行测试。例如，你可能正在使用 `react-test-renderer` 组件上运行快照测试，该组件内部使用子组件内部的 `ReactDOM.render` 渲染一些内容。在这个场景中，你可以使用与它们的渲染器相对应的 `act()` 来包装更新。
+在极少数情况下，你可能正在使用多个渲染器的组件上运行测试。例如，你可能正在使用 `react-test-renderer` 组件上运行快照测试，该组件内部使用 `react-dom` 的 `render` 来渲染子组件的一些内容。在这个场景中，你可以使用与它们的渲染器相对应的 `act()` 来包装更新。
 
 ```jsx
 import { act as domAct } from "react-dom/test-utils";
