@@ -12,6 +12,12 @@ redirect_from:
   - "docs/tutorial-zh-CN.html"
 ---
 
+> Try the new React documentation.
+> 
+> The updated [Tutorial](https://beta.reactjs.org/learn/tutorial-tic-tac-toe) teaches modern React and includes live examples.
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 阅读该教程不需要你预先掌握任何 React 知识。
 
 ## 课前准备 {#before-we-start-the-tutorial}
@@ -106,7 +112,7 @@ cd ..
 
 ```js
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 ```
 
@@ -1148,7 +1154,7 @@ class Game extends React.Component {
   }
 ```
 
-Notice in `jumpTo` method, we haven't updated `history` property of the state. That is because state updates are merged or in more simple words React will update only the properties mentioned in `setState` method leaving the remaining state as that is. For more info **[see the documentation](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
+在 `jumpTo` 方法中, 我们没有更新 state 中的 `history` 属性。这是因为 state 更新被合并了，或者用更简单的话说，React 不会更新 `setState` 方法中未提到的属性。**[这篇文档](/docs/state-and-lifecycle.html#state-updates-are-merged)**对此有更详细的介绍。
 
 接下来，我们还要修改 Game 组件的 `handleClick` 方法，当你点击方格的时候触发该方法。
 

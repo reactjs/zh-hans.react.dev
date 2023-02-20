@@ -4,24 +4,33 @@ title: Context
 permalink: docs/context.html
 ---
 
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Passing Data Deeply with Context](https://beta.reactjs.org/learn/passing-data-deeply-with-context)
+> - [`useContext`](https://beta.reactjs.org/reference/react/useContext)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 Context 提供了一个无需为每层组件手动添加 props，就能在组件树间进行数据传递的方法。
 
 在一个典型的 React 应用中，数据是通过 props 属性自上而下（由父及子）进行传递的，但此种用法对于某些类型的属性而言是极其繁琐的（例如：地区偏好，UI 主题），这些属性是应用程序中许多组件都需要的。Context 提供了一种在组件之间共享此类值的方式，而不必显式地通过组件树的逐层传递 props。
 
-- [何时使用 Context](#when-to-use-context)
-- [使用 Context 之前的考虑](#before-you-use-context)
-- [API](#api)
-  - [React.createContext](#reactcreatecontext)
-  - [Context.Provider](#contextprovider)
-  - [Class.contextType](#classcontexttype)
-  - [Context.Consumer](#contextconsumer)
-  - [Context.displayName](#contextdisplayname)
-- [示例](#examples)
-  - [动态 Context](#dynamic-context)
-  - [在嵌套组件中更新 Context](#updating-context-from-a-nested-component)
-  - [使用多个 Context](#consuming-multiple-contexts)
-- [注意事项](#caveats)
-- [废弃的 API](#legacy-api)
+- [何时使用 Context {#when-to-use-context}](#何时使用-context-when-to-use-context)
+- [使用 Context 之前的考虑 {#before-you-use-context}](#使用-context-之前的考虑-before-you-use-context)
+- [API {#api}](#api-api)
+  - [`React.createContext` {#reactcreatecontext}](#reactcreatecontext-reactcreatecontext)
+  - [`Context.Provider` {#contextprovider}](#contextprovider-contextprovider)
+  - [`Class.contextType` {#classcontexttype}](#classcontexttype-classcontexttype)
+  - [`Context.Consumer` {#contextconsumer}](#contextconsumer-contextconsumer)
+  - [`Context.displayName` {#contextdisplayname}](#contextdisplayname-contextdisplayname)
+- [示例 {#examples}](#示例-examples)
+  - [动态 Context {#dynamic-context}](#动态-context-dynamic-context)
+  - [在嵌套组件中更新 Context {#updating-context-from-a-nested-component}](#在嵌套组件中更新-context-updating-context-from-a-nested-component)
+  - [消费多个 Context {#consuming-multiple-contexts}](#消费多个-context-consuming-multiple-contexts)
+- [注意事项 {#caveats}](#注意事项-caveats)
+- [过时的 API {#legacy-api}](#过时的-api-legacy-api)
 
 ## 何时使用 Context {#when-to-use-context}
 
@@ -55,7 +64,7 @@ Context 主要应用场景在于*很多*不同层级的组件需要访问同样�
 
 如果在最后只有 `Avatar` 组件真的需要 `user` 和 `avatarSize`，那么层层传递这两个 props 就显得非常冗余。而且一旦 `Avatar` 组件需要更多从来自顶层组件的 props，你还得在中间层级一个一个加上去，这将会变得非常麻烦。
 
-一种**无需 context** 的解决方案是[将 `Avatar` 组件自身传递下去](/docs/composition-vs-inheritance.html#containment)，因而中间组件无需知道 `user` 或者 `avatarSize` 等 props：
+一种 **无需 context** 的解决方案是[将 `Avatar` 组件自身传递下去](/docs/composition-vs-inheritance.html#containment)，因为中间组件无需知道 `user` 或者 `avatarSize` 等 props：
 
 ```js
 function Page(props) {
@@ -249,7 +258,7 @@ MyContext.displayName = 'MyDisplayName';
 
 ## 注意事项 {#caveats}
 
-因为 context 会根据引用标识来决定何时进行渲染（本质上是 `value` 属性值的浅比较），所以这里可能存在一些陷阱，当 provider 的父组件进行重渲染时，可能会在 consumers 组件中触发意外的渲染。举个例子，当每一次 Provider 重渲染时，以下的代码会重渲染所有下面的 consumers 组件，因为 `value` 属性总是被赋值为新的对象：
+因为 context 会根据引用标识来决定何时进行渲染（本质上是 `value` 属性值的浅比较），所以这里可能存在一些陷阱，当 provider 的父组件进行重渲染时，可能会在 consumers 组件中触发意外的渲染。举个例子，当每一次 Provider 重渲染时，由于 `value` 属性总是被赋值为新的对象，以下的代码会重新渲染下面所有的 consumers 组件：
 
 `embed:context/reference-caveats-problem.js`
 
