@@ -4,6 +4,15 @@ title: 严格模式
 permalink: docs/strict-mode.html
 ---
 
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`StrictMode`](https://beta.reactjs.org/reference/react/StrictMode)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
 `StrictMode` 是一个用来突出显示应用程序中潜在问题的工具。与 `Fragment` 一样，`StrictMode` 不会渲染任何可见的 UI。它为其后代元素触发额外的检查和警告。
 
 > 注意：
@@ -16,12 +25,12 @@ permalink: docs/strict-mode.html
 在上述的示例中，*不*会对 `Header` 和 `Footer` 组件运行严格模式检查。但是，`ComponentOne` 和 `ComponentTwo` 以及它们的所有后代元素都将进行检查。
 
 `StrictMode` 目前有助于：
-* [识别不安全的生命周期](#identifying-unsafe-lifecycles)
-* [关于使用过时字符串 ref API 的警告](#warning-about-legacy-string-ref-api-usage)
-* [关于使用废弃的 findDOMNode 方法的警告](#warning-about-deprecated-finddomnode-usage)
-* [检测意外的副作用](#detecting-unexpected-side-effects)
-* [检测过时的 context API](#detecting-legacy-context-api)
-* [确保可复用的状态](#ensuring-reusable-state)
+- [识别不安全的生命周期 {#identifying-unsafe-lifecycles}](#识别不安全的生命周期-identifying-unsafe-lifecycles)
+- [关于使用过时字符串 ref API 的警告 {#warning-about-legacy-string-ref-api-usage}](#关于使用过时字符串-ref-api-的警告-warning-about-legacy-string-ref-api-usage)
+- [关于使用废弃的 findDOMNode 方法的警告 {#warning-about-deprecated-finddomnode-usage}](#关于使用废弃的-finddomnode-方法的警告-warning-about-deprecated-finddomnode-usage)
+- [检测意外的副作用 {#detecting-unexpected-side-effects}](#检测意外的副作用-detecting-unexpected-side-effects)
+- [检测过时的 context API {#detecting-legacy-context-api}](#检测过时的-context-api-detecting-legacy-context-api)
+- [确保可复用的 state {#ensuring-reusable-state}](#确保可复用的-state-ensuring-reusable-state)
 
 未来的 React 版本将添加更多额外功能。
 
@@ -134,7 +143,7 @@ class MyComponent extends React.Component {
 
 ### 确保可复用的 state {#ensuring-reusable-state}
 
-在未来，我们希望增加一个功能，允许 React 在保留 state 的同时对 UI 进行增删。例如，当用户从当前屏幕的标签离开并返回时，React 应该能立即展示之前屏幕的内容。为了做到这一点，React 支持使用卸载前已有的组件状态重新挂载到树上。
+在未来，我们希望增加一个功能，允许 React 在保留 state 的同时对 UI 进行增删。例如，当用户从当前屏幕的标签离开并返回时，React 应该能立即展示之前屏幕的内容。为了做到这一点，React 将支持使用卸载前已有的组件状态重新挂载到树上。
 
 该特性会给 React 带来更好的开箱即用性能，但需要组件对多次挂载和销毁的副作用具有弹性。大多数副作用将在不做任何改变的情况下工作，但有些副作用可能会在销毁回调中未正确的清理订阅，或者隐示的认为它们只被挂载或销毁一次。
 
@@ -153,7 +162,7 @@ class MyComponent extends React.Component {
 ```
 * React mounts the component.
     * Layout effects are created.
-    * Effect effects are created.
+    * Effects are created.
 * React simulates effects being destroyed on a mounted component.
     * Layout effects are destroyed.
     * Effects are destroyed.
@@ -169,7 +178,7 @@ class MyComponent extends React.Component {
 ```
 * React unmounts the component.
   * Layout effects are destroyed.
-  * Effect effects are destroyed.
+  * Effects are destroyed.
 ```
 
 卸载和重新挂载的函数，包括：
