@@ -495,7 +495,7 @@ export default function Form() {
 
 React 在提交阶段设置 `ref.current`。在更新 DOM 之前，React 将受影响的 `ref.current` 值设置为 `null`。更新 DOM 后，React 立即将它们设置到相应的 DOM 节点。
 
-**通常，你将从事件处理器访问 refs。** 如果你想对 ref 执行某些操作，但没有特定的事件可以执行此操作，你可能需要一个 effect。我们将在下一页讨论 effect。
+**通常，你将从事件处理器访问 refs。** 如果你想使用 ref 执行某些操作，但没有特定的事件可以执行此操作，你可能需要一个 effect。我们将在下一页讨论 effect。
 
 <DeepDive>
 
@@ -741,7 +741,7 @@ button { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-For an extra challenge, keep the "Play" button in sync with whether the video is playing even if the user right-clicks the video and plays it using the built-in browser media controls. You might want to listen to `onPlay` and `onPause` on the video to do that.
+对于额外的挑战，即使用户右键单击视频并使用内置浏览器媒体控件播放，也要使 “播放” 按钮与视频是否正在播放同步。 您可能需要在视频中监听 `onPlay` 和 `onPause` 才能做到这一点。
 
 <Solution>
 
@@ -794,13 +794,13 @@ button { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-In order to handle the built-in browser controls, you can add `onPlay` and `onPause` handlers to the `<video>` element and call `setIsPlaying` from them. This way, if the user plays the video using the browser controls, the state will adjust accordingly.
+为了处理内置浏览器控件，您可以将 `onPlay` 和 `onPause` 处理程序添加到 `<video>` 元素，并调用它们的 `setIsPlaying`。 这样，如果用户使用浏览器控件播放视频，状态将相应调整。
 
 </Solution>
 
 #### 使搜索域获得焦点 {/*focus-the-search-field*/}
 
-做到单击 “搜索” 按钮时，将焦点放在搜索域上。
+做到单击 “搜索” 按钮时，使搜索域获得焦点。
 
 <Sandpack>
 
