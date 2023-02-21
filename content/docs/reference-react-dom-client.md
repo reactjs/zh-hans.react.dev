@@ -37,6 +37,10 @@ React 支持所有现代浏览器，但是对于老版本浏览器需要引入 [
 
 ### `createRoot()` {#createroot}
 
+> Try the new React documentation for [`createRoot`](https://beta.reactjs.org/reference/react-dom/client/createRoot).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 createRoot(container[, options]);
 ```
@@ -69,6 +73,11 @@ root.unmount();
 * * *
 
 ### `hydrateRoot()` {#hydrateroot}
+
+> Try the new React documentation for [`hydrateRoot`](https://beta.reactjs.org/reference/react-dom/client/hydrateRoot).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 
 ```javascript
 hydrateRoot(container, element[, options])

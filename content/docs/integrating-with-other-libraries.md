@@ -67,7 +67,7 @@ function Example() {
 }
 ```
 
-为了简化，我们将它实现为 [uncontrolled component](/docs/uncontrolled-components.html)
+为了简化，我们将它实现为 [非受控组件](/docs/uncontrolled-components.html)
 
 首先，我会创建一个空的组件，它的 `render()` 函数我们返回一个包含 `<select>` 的 `<div>`:
 
