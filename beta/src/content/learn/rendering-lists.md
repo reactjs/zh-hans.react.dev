@@ -14,7 +14,7 @@ translator:
 <YouWillLearn>
 
 * 如何通过 JavaScript 的 `map()` 方法从数组中生成组件
-* 如何通过 JavaScript 的 `filter()` 生成指定的组件
+* 如何通过 JavaScript 的 `filter()` 筛选需要渲染的组件
 * 何时以及为何使用 React 中的 key
 
 </YouWillLearn>
