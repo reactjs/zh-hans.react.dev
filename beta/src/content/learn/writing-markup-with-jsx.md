@@ -41,7 +41,7 @@ JavaScript
 
 </DiagramGroup>
 
-But as the Web became more interactive, logic increasingly determined content. JavaScript was in charge of the HTML! This is why **in React, rendering logic and markup live together in the same place—components.**
+但随着 Web 的交互性越来越强，逻辑越来越决定页面中的内容。JavaScript 负责 HTML 的内容！这也是为什么 **在 React 中，渲染逻辑和标记共同存在于同一个地方——组件。**
 
 <DiagramGroup>
 
@@ -174,7 +174,7 @@ img { height: 90px }
 </>
 ```
 
-这个空标签被称作 *[Fragment](/apis/react/Fragment)*. React Fragment 允许你将子元素分组，而不会在 HTML 结构中添加额外节点。
+这个空标签被称作 *[Fragment](/reference/react/Fragment)*. React Fragment 允许你将子元素分组，而不会在 HTML 结构中添加额外节点。
 
 <DeepDive>
 
@@ -219,7 +219,7 @@ JSX 最终会被转化为 JavaScript，而 JSX 中的属性也会变成 JavaScri
 />
 ```
 
-你可以 [在 React DOM 元素中找到所有对应的属性](TODO)。如果你在编写属性时发生了错误，不用担心 —— React 会在 [浏览器控制台](https://developer.mozilla.org/docs/Tools/Browser_Console) 中打印一条可能的更正信息。
+你可以 [在 React DOM 元素中找到所有对应的属性](/reference/react-dom/components/common)。如果你在编写属性时发生了错误，不用担心 —— React 会在 [浏览器控制台](https://firefox-source-docs.mozilla.org/devtools-user/browser_console/index.html) 中打印一条可能的更正信息。
 
 <Pitfall>
 

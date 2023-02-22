@@ -307,7 +307,7 @@ function MyButton() {
 
 通常，你会希望你的组件 "记住" 一些信息并展示出来。例如，也许你想计算一个按钮被点击的次数。要做到这一点，你需要在你的组件中添加 **state**。
 
-首先，从 React 引入 [`useState`](/apis/react/useState)：
+首先，从 React 引入 [`useState`](/reference/react/useState)：
 
 ```js
 import { useState } from 'react';
@@ -349,6 +349,16 @@ React 将再次调用你的组件函数。这次，`count` 会变成 `1`。接�
 ```js
 import { useState } from 'react';
 
+export default function MyApp() {
+  return (
+    <div>
+      <h1>Counters that update separately</h1>
+      <MyButton />
+      <MyButton />
+    </div>
+  );
+}
+
 function MyButton() {
   const [count, setCount] = useState(0);
 
@@ -360,16 +370,6 @@ function MyButton() {
     <button onClick={handleClick}>
       Clicked {count} times
     </button>
-  );
-}
-
-export default function MyApp() {
-  return (
-    <div>
-      <h1>Counters that update separately</h1>
-      <MyButton />
-      <MyButton />
-    </div>
   );
 }
 ```
@@ -387,7 +387,7 @@ button {
 
 ## 使用 Hook {/*using-hooks*/}
 
-以 `use` 开头的函数被称为 **Hook**。`useState` 是 React 提供的一个内置 Hook。你可以在 [React API 参考](/apis/react) 中找到其他内置的 Hook。你也可以通过组合现有的 Hook 来编写属于你自己的 Hook。
+以 `use` 开头的函数被称为 **Hook**。`useState` 是 React 提供的一个内置 Hook。你可以在 [React API 参考](/reference/react) 中找到其他内置的 Hook。你也可以通过组合现有的 Hook 来编写属于你自己的 Hook。
 
 Hook 比普通函数更为严格。你只能在你的组件（或其他 Hook）的 **顶层** 调用 Hook。如果你想在一个条件或循环中使用 `useState`，请提取一个新的组件并在组件内部使用它。
 
@@ -437,11 +437,7 @@ Hook 比普通函数更为严格。你只能在你的组件（或其他 Hook）�
 
 首先，将 `MyButton` 的 **state 上移到** `MyApp` 中：
 
-```js {2,6-10}
-function MyButton() {
-  // ... we're moving code from here ...
-}
-
+```js {2-6,18}
 export default function MyApp() {
   const [count, setCount] = useState(0);
 
@@ -457,6 +453,11 @@ export default function MyApp() {
     </div>
   );
 }
+
+function MyButton() {
+  // ... we're moving code from here ...
+}
+
 ```
 
 接着，将 `MyApp` 中的点击事件处理函数以及 **state 一同向下传递到** 每个 `MyButton` 中。你可以使用 JSX 的大括号向 `MyButton` 传递信息。就像之前向 `<img>` 等内置标签所做的那样:
@@ -502,14 +503,6 @@ function MyButton({ count, onClick }) {
 ```js
 import { useState } from 'react';
 
-function MyButton({ count, onClick }) {
-  return (
-    <button onClick={onClick}>
-      Clicked {count} times
-    </button>
-  );
-}
-
 export default function MyApp() {
   const [count, setCount] = useState(0);
 
@@ -523,6 +516,14 @@ export default function MyApp() {
       <MyButton count={count} onClick={handleClick} />
       <MyButton count={count} onClick={handleClick} />
     </div>
+  );
+}
+
+function MyButton({ count, onClick }) {
+  return (
+    <button onClick={onClick}>
+      Clicked {count} times
+    </button>
   );
 }
 ```
@@ -540,4 +541,4 @@ button {
 
 至此，你已经了解了如何编写 React 代码的基本知识。
 
-前往 [React 哲学](/learn/thinking-in-react) 章节，了解使用 React 构建 UI 的实际感受。
+Check out the [Tutorial](/learn/tutorial-tic-tac-toe) to put them into practice and build your first mini-app with React.

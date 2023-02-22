@@ -4,6 +4,14 @@ title: Portals
 permalink: docs/portals.html
 ---
 
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`createPortal`](https://beta.reactjs.org/reference/react-dom/createPortal)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 Portal 提供了一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案。
 
 ```js
