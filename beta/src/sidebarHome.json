@@ -21,6 +21,10 @@
             "title": "走进 React 团队",
             "path": "/community/meet-the-team"
           }]
+        },
+        {
+          "title": "Blog",
+          "path": "https://reactjs.org/blog"
         }
       ]
     }

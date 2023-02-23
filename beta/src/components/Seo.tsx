@@ -2,7 +2,7 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-import React from 'react';
+import * as React from 'react';
 import Head from 'next/head';
 import {withRouter, Router} from 'next/router';
 
@@ -12,6 +12,7 @@ export interface SeoProps {
   image?: string;
   // jsonld?: JsonLDType | Array<JsonLDType>;
   children?: React.ReactNode;
+  isHomePage: boolean;
 }
 
 export const Seo = withRouter(
@@ -21,13 +22,16 @@ export const Seo = withRouter(
     image = '/logo-og.png',
     router,
     children,
+    isHomePage,
   }: SeoProps & {router: Router}) => (
     <Head>
       {/* DEFAULT */}
 
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      {title != null && <title key="title">{title}</title>}
+      {title != null && (
+        <title key="title">{title + (isHomePage ? '' : ' • React')}</title>
+      )}
       {description != null && (
         <meta name="description" key="description" content={description} />
       )}
@@ -39,7 +43,7 @@ export const Seo = withRouter(
       <meta
         property="og:url"
         key="og:url"
-        content={`https://beta.reactjs.org${router.pathname}`}
+        content={`https://beta.reactjs.org${router.asPath.split(/[\?\#]/)[0]}`}
       />
       {title != null && (
         <meta property="og:title" content={title} key="og:title" />
@@ -81,6 +85,10 @@ export const Seo = withRouter(
         name="twitter:image"
         key="twitter:image"
         content={`https://beta.reactjs.org${image}`}
+      />
+      <meta
+        name="google-site-verification"
+        content="j1duf8XRaKuZyGvhPd8GkYXHG7LI4GYbIvAXBsqTC9U"
       />
       <link
         rel="preload"
