@@ -19,15 +19,9 @@ State 变量看起来和一般的可读写的 JavaScript 变量类似。但实�
 
 </YouWillLearn>
 
-## 设置 state 触发渲染 {#setting-state-triggers-renders}
+## 设置 state 触发渲染 {/*setting-state-triggers-renders*/}
 
-你可能认为，你的用户界面会直接响应用户的输入（如单击）而发生变化。这种感觉很直观，如果你一直在[故事板化](https://wikipedia.org/wiki/Storyboard)你的设计和交互的话：
-
-<Illustration alt="A linear progression from a form, to a finger on the submit button, to a confirmation message." src="/images/docs/sketches/s_ui-response.jpg" />
-
-在 React 中，它的工作方式与这种思维模型略有不同。在上一页中，你看到了来自 React 的[设置 state 请求重新渲染](/learn/render-and-commit#step-1-trigger-a-render)。这意味着要使界面对输入做出反应，你需要设置其 state。
-
-<Illustration alt="React initially renders a form, a finger on the submit button sends a setState to React, and React re-renders a confirmation message." src="/images/docs/sketches/s_react-ui-response.jpg" />
+你可能认为，你的用户界面会直接响应用户的输入（如单击）而发生变化。在 React 中，它的工作方式与这种思维模型略有不同。在上一页中，你看到了来自 React 的[设置 state 请求重新渲染](/learn/render-and-commit#step-1-trigger-a-render)。这意味着要使界面对输入做出反应，你需要设置其 state。
 
 在这个例子中，当你按下“send”时，`setIsSent(true)` 会通知 React 重新渲染 UI：
 
@@ -77,9 +71,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 让我们仔细看看 state 和渲染之间的关系。
 
-<Illustration alt="State living in React; React gets a setUpdate; in the re-render, React passes a snapshot of the state value into the component." src="/images/docs/illustrations/i_ui-snapshot.png" />
-
-## 渲染接收实时快照 {#rendering-takes-a-snapshot-in-time}
+## 渲染接收实时快照 {/*rendering-takes-a-snapshot-in-time*/}
 
 ["渲染"](/learn/render-and-commit#step-2-react-renders-your-components)表示 React 正在调用你的组件，组件是一个函数。你从该函数返回的 JSX 就像是一张及时的 UI 快照。它的 props、事件处理函数和局部变量都是**根据当前渲染下的 state 计算的。**
 
@@ -139,7 +131,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 我们注意到，每次点击只会让 `number`的值增加 1！
 
-**设置 state 只会在*下一个* 渲染中改变 state 的值。**在第一次渲染期间，`number` 为 `0`。这也就解释了，为什么在*这次渲染*中的 `onClick` 函数里，即便调用了 `setNumber(number + 1)` ，`number` 的值仍然是 `0`：
+**设置 state 只会在*下一个* 渲染中改变 state 的值。** 在第一次渲染期间，`number` 为 `0`。这也就解释了，为什么在*这次渲染*中的 `onClick` 函数里，即便调用了 `setNumber(number + 1)` ，`number` 的值仍然是 `0`：
 
 ```js
 <button onClick={() => {
@@ -180,7 +172,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 ```
 这就是为什么第二次单击按钮会将计数器设置为“2”，再一次单击后又变为“3”，依此类推。
 
-## 状态伴随时间 {#state-over-time}
+## 状态伴随时间 {/*state-over-time*/}
 
 嗯，这很有趣。试着猜猜单击此按钮会发出什么警告：
 
@@ -312,7 +304,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 </Sandpack>
 
-**React 在一次渲染的事件处理函数中始终固定 state 的值。**你无需担心代码运行时 state 是否已更改。
+**React 在一次渲染的事件处理函数中始终固定 state 的值。** 你无需担心代码运行时 state 是否已更改。
 
 但是，如果你想在重新渲染之前读取最新的 state 怎么办？你将需要使用[状态更新函数](/learn/queueing-a-series-of-state-updates)，下一页将会介绍！
 
@@ -332,7 +324,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 <Challenges>
 
-### 实现红绿灯组件
+### 实现红绿灯组件 {/*implement-a-traffic-light*/}
 
 以下是一个人行道红绿灯组件，在按下按钮时会切换状态：
 
