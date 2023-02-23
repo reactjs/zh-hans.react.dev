@@ -28,7 +28,7 @@
 
 ### 指导
 
-The documentation is divided into several sections with a different tone and purpose. If you plan to write more than a few sentences, you might find it helpful to get familiar with the [contributing guidelines](https://github.com/reactjs/reactjs.org/blob/main/CONTRIBUTING.md#guidelines-for-text) for the appropriate sections.
+该文档被分成了几个片段，它们有不同的用处和目的。如果你计划写更多的语句，你可以发现熟悉[贡献指导](https://github.com/reactjs/zh-hans.reactjs.org/blob/main/CONTRIBUTING.md)对你会很有帮助。
 
 ### 创建一个分支
 
@@ -51,13 +51,18 @@ The documentation is divided into several sections with a different tone and pur
 
 ### 提交它
 
-1. `git add -A && git commit -m "My message"`：暂存以及提交你的改变（使用其它 commit 信息替换 `My message`，例如 `Fix header logo on Android`）
+1. `git add -A && git commit -m "My message"`：暂存以及提交你的改变（使用其它提交信息替换 `My message`，例如 `Fix header logo on Android`）
 2. `git push -u my-fork-name the-name-of-my-branch`
 3. 进入 [zh-hans.reactjs.org 仓库](https://github.com/reactjs/zh-hans.reactjs.org)，你将看到你最新 push 的分支。
 4. 跟随 GitHub 的指导。
 5. 如果可以的话，包括视觉变化的屏幕截图。在你将更改推送到 GitHub 之后，会触发预构建。
 
 ## 中文翻译指南
+
+在这里，我们会介绍一些你在翻译过程中的注意点：
+
+- 对于 React 简体中文应该如何排版，请查看：[React 简体中文本地化翻译指南](https://github.com/reactjs/zh-hans.reactjs.org/wiki/React-%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3%E8%AF%91%E6%96%87%E6%8E%92%E7%89%88%E6%8C%87%E5%8D%97)。
+- 如果你想查看 React 专有名词的中英文对照表，请查看：[React 术语表](https://github.com/reactjs/zh-hans.reactjs.org/issues/2)。
 
 ## Troubleshooting
 
