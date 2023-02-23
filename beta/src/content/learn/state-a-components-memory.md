@@ -19,7 +19,7 @@ translators:
 
 </YouWillLearn>
 
-## 当一般变量不够时 {#when-a-regular-variable-isnt-enough}
+## 当一般变量不够时 {/*when-a-regular-variable-isnt-enough*/}
 
 以下是一个渲染雕塑图片的组件。点击“Next”按钮应该显示下一个雕塑并将 `index` 更改为 `1`，再次点击又更改为 `2`，以此类推。但这个组件现在**不起作用**（你可以试一试！）：
 
@@ -168,7 +168,7 @@ button {
 1. **State 变量** 用于保存渲染间的数据。
 2. **State setter 函数** 更新变量并触发 React 再次渲染组件。
 
-## 添加一个 state 变量 {#adding-a-state-variable}
+## 添加一个 state 变量 {/*adding-a-state-variable*/}
 
 要添加 state 变量，先从文件顶部的 React 中导入 `useState`：
 
@@ -334,7 +334,7 @@ button {
 
 </Sandpack>
 
-### 遇见你的第一个 Hook {#meet-your-first-hook}
+### 遇见你的第一个 Hook {/*meet-your-first-hook*/}
 
 在 React 中，`useState` 以及任何其他以“`use`”开头的函数都被称为 **Hook**。
 
@@ -344,11 +344,11 @@ State 只是这些特性中的一个，你之后还会遇到其他 Hooks。
 
 <Pitfall>
 
-**Hooks——以 `use` 开头的函数——只能在组件或[自定义 Hooks](/learn/reusing-logic-with-custom-hooks) 的最顶层调用。**你不能在条件语句、循环语句或其他嵌套函数内调用 Hooks。Hooks 是函数，但将它们视为关于组件需求的无条件声明会很有帮助。在组件顶部“use” React 特性，类似于在文件顶部“导入”模块。
+**Hooks——以 `use` 开头的函数——只能在组件或[自定义 Hooks](/learn/reusing-logic-with-custom-hooks) 的最顶层调用。** 你不能在条件语句、循环语句或其他嵌套函数内调用 Hooks。Hooks 是函数，但将它们视为关于组件需求的无条件声明会很有帮助。在组件顶部“use” React 特性，类似于在文件顶部“导入”模块。
 
 </Pitfall>
 
-### 剖析 `useState` {#anatomy-of-usestate}
+### 剖析 `useState` {/*anatomy-of-usestate*/}
 
 当你调用 [`useState`](/reference/usestate) 时，你是在告诉 React 你想让这个组件记住一些东西：
 
@@ -378,7 +378,7 @@ const [index, setIndex] = useState(0);
 3. **组件进行第二次渲染。** React 仍然看到 `useState(0)`，但是因为 React *记住* 了你将 `index` 设置为了 `1`，它将返回 `[1, setIndex]`。
 4. 以此类推！
 
-## 赋予一个组件多个 state 变量 {#giving-a-component-multiple-state-variables}
+## 赋予一个组件多个 state 变量 {/*giving-a-component-multiple-state-variables*/}
 
 你可以在一个组件中拥有任意多种类型的 state 变量。该组件有两个 state 变量，一个数字 `index` 和一个布尔值 `showMore`，点击 “Show Details” 会改变 `showMore` 的值：
 
@@ -522,6 +522,8 @@ button {
 如果它们不相关，那么存在多个 state 变量是一个好主意，例如本例中的 `index` 和 `showMore`。但是，如果你发现经常同时更改两个 state 变量，那么最好将它们合并为一个。例如，如果你有一个包含多个字段的表单，那么拥有一个值为对象的 state 变量比每个字段对应一个 state 变量更方便。 [选择 state 结构](/learn/choosing-the-state-structure)在这方面有更多提示。
 
 <DeepDive title="React 如何知道返回哪一个 state?">
+
+#### React 如何知道返回哪个 state {/*how-does-react-know-which-state-to-return*/}
 
 你可能已经注意到，`useState` 在调用时没有任何关于它引用的是*哪个* state 变量的信息。没有传递给 `useState` 的“标识符”，它是如何知道要返回哪个 state 变量呢？它是否依赖于解析函数之类的魔法？答案是否定的。
 
@@ -725,7 +727,7 @@ button { display: block; margin-bottom: 10px; }
 
 </DeepDive>
 
-## State 是独立且私有的 {#state-is-isolated-and-private}
+## State 是独立且私有的 {/*state-is-isolated-and-private*/}
 
 State 是屏幕上组件实例内部的状态。换句话说，**如果你渲染同一个组件两次，每个副本都会有完全隔离的 state！**改变其中一个不会影响另一个。
 
@@ -910,7 +912,7 @@ button {
 
 <Challenges>
 
-### 完成画廊组件
+#### 完成画廊组件 {/*complete-the-gallery*/}
 
 当你在最后一个雕塑上按“Next”时，代码会发生崩溃。请修复逻辑以防止此崩溃。你可以尝试在事件处理函数中添加额外的逻辑，或在操作无法执行时禁用掉按钮。
 
@@ -1220,7 +1222,7 @@ img { width: 120px; height: 120px; }
 
 </Solution>
 
-### 修复卡住的输入表单
+#### 修复卡住的输入表单 {/*fix-stuck-form-inputs*/}
 
 当你输入字段时，什么也没有出现。这就像输入值被空字符串给“卡住”了。第一个 `<input>` 的 `value` 设置为始终匹配 `firstName` 变量，第二个 `<input>` 的 `value` 设置为始终匹配 `lastName` 变量。这是对的。两个输入框都有 `onChange` 事件处理函数，它尝试根据最新的用户输入（`e.target.value`）更新变量。但是，变量似乎并没有在重新渲染时“记住”它们的值。通过使用 state 变量来解决此问题。
 
@@ -1322,7 +1324,7 @@ h1 { margin-top: 10px; }
 
 </Solution>
 
-### 修复一个错误
+#### 修复一个错误 {/*fix-a-crash*/}
 
 这是一个收集用户反馈的小表单。当反馈被提交时，它应该显示一条感谢信息。但是，现在它会发生崩溃并显示错误消息“渲染的 hooks 比预期的少”。你能发现错误并修复它吗？
 
@@ -1448,7 +1450,7 @@ export default function FeedbackForm() {
 
 </Solution>
 
-### 移除不必要的 state
+#### 移除不必要的 state {/*remove-unnecessary-state*/}
 
 当按钮被点击时，这个例子应该询问用户的名字，然后显示一个 alert 欢迎他们。你尝试使用 state 来保存名字，但由于某种原因，它始终显示“Hello, ！”。
 
