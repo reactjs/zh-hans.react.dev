@@ -10,7 +10,7 @@
 - Node：任意从 12.x 开始或者更高的版本
 - Yarn：参见 [Yarn 网站上的安装说明](https://yarnpkg.com/lang/en/docs/install/)
 - fork 该仓库（无论是什么样的贡献，都需要该操作）
-- [将 fork 后的仓库拉取到本地，然后基于 main 分支拉取一个新的分支（名字自取）](#创建一个分支)
+- clone 这个仓库到本地
 
 ### 安装相关依赖
 
