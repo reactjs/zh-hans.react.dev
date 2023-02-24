@@ -10,7 +10,7 @@
 - Node：任意从 12.x 开始或者更高的版本
 - Yarn：参见 [Yarn 网站上的安装说明](https://yarnpkg.com/lang/en/docs/install/)
 - fork 该仓库（无论是什么样的贡献，都需要该操作）
-- clone 这个仓库到本地
+- clone 这个仓库到本地：`git clone my-fork-name`
 
 ### 安装相关依赖
 
@@ -44,12 +44,12 @@
    - 在 `content` 目录中改变 markdown 文件将也会立刻得到更新。
    - 如果你对 plugins 文件夹中的内容做出改变，你需要去移除 `.cache` 目录并重新开始这个服务。
 
-### 测试你的改变
+### 检查你的改变
 
 1. 如果可以，请在桌面和移动设备上测试最新版本在常见浏览器中的任何视觉变化。
 2. 从 `beta` 文件夹中运行 `yarn check-all`。（这将运行 Prettier、ESLint 以及验证 TypeScript 的类型。）
 
-### 提交它
+### 提交
 
 1. `git add -A && git commit -m "My message"`：暂存以及提交你的改变（使用其它提交信息替换 `My message`，例如 `Fix header logo on Android`）
 2. `git push -u my-fork-name the-name-of-my-branch`
@@ -57,12 +57,22 @@
 4. 跟随 GitHub 的指导。
 5. 如果可以的话，包括视觉变化的屏幕截图。在你将更改推送到 GitHub 之后，会触发预构建。
 
-### 中文翻译指南
+### 中文翻译指南👋
 
 在这里，我们会介绍一些你在翻译过程中的注意点：
 
-- 对于 React 简体中文应该如何排版，请查看：[React 简体中文本地化翻译指南](https://github.com/reactjs/zh-hans.reactjs.org/wiki/React-%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3%E8%AF%91%E6%96%87%E6%8E%92%E7%89%88%E6%8C%87%E5%8D%97)。
-- 如果你想查看 React 专有名词的中英文对照表，请查看：[React 术语表](https://github.com/reactjs/zh-hans.reactjs.org/issues/2)。
+- [排版](https://github.com/reactjs/zh-hans.reactjs.org/wiki/React-%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3%E8%AF%91%E6%96%87%E6%8E%92%E7%89%88%E6%8C%87%E5%8D%97)：为什么需要使用它🤔？因为中文的字符和英文的字符有很大的差别，为了使内容更好的呈现给读者，我们需要一套尽可能完美的排版规范。
+  - 对于 React 简体中文应该如何排版，请查看：[React 简体中文本地化翻译指南](https://github.com/reactjs/zh-hans.reactjs.org/wiki/React-%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3%E8%AF%91%E6%96%87%E6%8E%92%E7%89%88%E6%8C%87%E5%8D%97)。
+- [术语表](https://github.com/reactjs/zh-hans.reactjs.org/issues/2)：为什么需要使用它🤔？由于一些专有名词在 React 中有着特殊的含义，我们会在术语表中呈现，更好地帮助译者去理解以及翻译。（当然，译者也可以去补充）
+  - 如果你想查看 React 专有名词的中英文对照表，请查看：[React 术语表](https://github.com/reactjs/zh-hans.reactjs.org/issues/2)。
+
+#### 翻译流程
+
+1. 挑选你想要翻译的文章，这些文章你可以[在这里](https://github.com/reactjs/reactjs.org/issues/4135)找到它们
+2. 准备阶段，需要 fork 以及 clone 仓库到本地，你可以从[【开始】>【前提准备】](#前提准备)中了解这个步骤
+3. 开始阶段，需要创建一个独立的分支完成你的改变，你可以从[【如何贡献】>【创建一个分支】](#创建一个分支)中了解这个步骤
+4. 提交阶段，需要将你的改变提交到 GitHub，你可以从[【如何贡献】> 【提交】](#提交)中了解这个步骤
+5. 审查阶段，此时会有专人审查该 Pull Request，当两人以上通过该 Pull Request 时，你的翻译将被合并到仓库中
 
 ---
 
