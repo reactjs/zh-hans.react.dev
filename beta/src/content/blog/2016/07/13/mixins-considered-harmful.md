@@ -13,7 +13,7 @@ React 已经发布三年了。境况变了。多个视图库现在采用与React
 
 在本文中，我们将考虑一些 mixins 的场景问题。然后我们将对于同样的使用案例提出几个可选的模式。我们发现，与 minxins 相比，这些模式可以更好适应代码库的复杂度。
 
-## 为什么 Mixins 是破坏性的 {/*为什么-Mixins-是破坏性的*/}
+## 为什么 Mixins 是破坏性的 {/*why-mixins-are-broken*/}
 
 在 Facebook， React 组件的使用量已经从几十个增长到了上千个。这让我们更了解用户是如何使用 React 的。多亏了声明式的渲染和自顶向下的数据流，许多团队能够在采用 React 时发布新功能的同时修复一堆漏洞。
 
@@ -21,7 +21,7 @@ React 已经发布三年了。境况变了。多个视图库现在采用与React
 
 这并不意味着 mixins 本身是坏的。人们成功地在不同的语言和范例中使用它，包括一些函数式语言。在 Facebook ，我们广泛地在 Hack 语言中使用与 mixins 非常相似的特征。尽管如此，我们仍然认为在 React 代码库中，mixins 是不必要的和容易出问题的。这里列出了为什么这样说的几条理由。
 
-### Mixins 引入了隐式依赖 {/*Mixins-引入了隐式依赖*/}
+### Mixins 引入了隐式依赖 {/*mixins-introduce-implicit-dependencies*/}
 
 有时一个组件依赖于在 mixin 中定义的某个确定方法，例如 `getClassName()`。有时相反，mixin 在组件上调用 renderHeader() 方法。 JavaScript 是一种动态语言，因此很难强制记录这些依赖关系。
 
@@ -31,7 +31,7 @@ Mixins 打破了常规的，通常是安全的假设 —— 你可以在组件�
 
 通常来说，mixins 依赖于其他 mixins ，并且删除其中的一个会破坏另一个 mixin。在这些情况下，告诉数据如何流入和流出 mixin 以及它们的依赖图怎样是非常棘手的。与组件不同，mixins 不构成层次结构：它们是扁平化的并在相同的命名空间中运行。
 
-### Mixins 会造成命名冲突 {/*Mixins-会造成命名冲突*/}
+### Mixins 会造成命名冲突 {/*mixins-cause-name-clashes*/}
 
 无法保证两个特定的 mixin 可以一起使用。例如，如果 `FluxListenerMixin `和 `WindowSizeMixin` 都定义了 `handleChange()`，则不能一起使用它们。同时，你也无法在自己的组件上定义具有此名称的方法。
 
@@ -41,7 +41,7 @@ Mixins 打破了常规的，通常是安全的假设 —— 你可以在组件�
 
 对于 mixin 作者来说，情况也并不好。即使添加一个新的方法到 mixin 中也通常是一个潜在的破坏性的变化，因为具有相同的名称方法可能已经存在于使用它的一些组件，直接或通过另一个mixin。一旦写入，mixins 很难删除或改变。坏的设计也不会被重构，因为重构太危险了。
 
-### Mixins 导致滚雪球式的复杂性 {/*mixins-导致滚雪球式的复杂性*/}
+### Mixins 导致滚雪球式的复杂性 {/*mixins-cause-snowballing-complexity*/}
 
 即使刚开始的时候 mixins 很简单，它们往往随着时间的推移变得复杂。下面的例子是基于我在代码库中看到的一个真实场景。
 
@@ -55,7 +55,7 @@ Mixins 打破了常规的，通常是安全的假设 —— 你可以在组件�
 
 这些是我们在 React 之前构建应用程序所遇到的同样的问题。我们发现它们通过声明性渲染，自上而下的数据流和封装的组件来解决。在 Facebook，我们一直在使用替代模式从 mixins 迁移我们的代码，通常，对迁移的结果都很满意。你可以阅读下面的这些模式。
 
-## 从 Mixins 迁移 {/*从-Mixins-迁移*/}
+## 从 Mixins 迁移 {/*migrating-from-mixins*/}
 
 让我们清楚的是，mixins 在技术上不被淘汰。如果你使用 `React.createClass()`，可以继续使用它们。我们只是说它对我们没有好处，所以在未来我们不建议使用它们。
 
@@ -63,7 +63,7 @@ Mixins 打破了常规的，通常是安全的假设 —— 你可以在组件�
 
 我们希望你发现此列表有帮助。如果我们错过重要的用例，请让我们知道，我们可以修改列表或修正错误！
 
-### 性能优化 {/*性能优化*/}
+### 性能优化 {/*performance-optimizations*/}
 
 最常用的 mixins 之一是 [`PureRenderMixin`](/docs/pure-render-mixin.html)。当 props 和 state 和之前 props 和 state 浅层相等时，你可能会在某些组件中使用它来[防止不必要的重新渲染](/docs/advanced-performance.html#shouldcomponentupdate-in-action)
 
@@ -77,7 +77,7 @@ var Button = React.createClass({
 });
 ```
 
-#### 解决方案 {/*解决方案-1*/}
+#### 解决方案 {/*solution*/}
 
 不使用 mixins 要实现相同的功能，你可以直接使用 [`shallowCompare`](/docs/shallow-compare.html) 替代：
 
@@ -143,7 +143,7 @@ var CommentList = React.createClass({
 module.exports = CommentList;
 ```
 
-#### 解决方案 {/*解决方案-1*/}
+#### 解决方案 {/*solution-1*/}
 
 如果只有一个组件订阅该数据源，将订阅逻辑嵌入到组件中是很好的。避免过早抽象。
 
@@ -438,7 +438,7 @@ var UserRow = React.createClass({
 
 多个组件可能共享 `RowMixin` 来渲染头部，并且每个组件都需要定义 `getHeaderText()`。
 
-#### Solution {/*solution-2*/}
+#### 解决方案 2 {/*solution-2*/}
 
 如果你在 mixin 中看到渲染逻辑，说明该提取组件了！
 
@@ -471,7 +471,7 @@ Props使组件依赖性保持明确，易于替换，并可通过 [Flow](https:/
 >
 > 定义组件为函数式组件并不是必须的。使用生命周期钩子和 state 也没有错，他们都是原生的 React 功能。我们在这个例子中使用函数式组件，因为它们更容易阅读，并且我们不需要这些额外的功能，当然使用类组件也可以正常工作。
 
-### 上下文 {/*上下文*/}
+### 上下文 {/*context*/}
 
 我们发现的另一组 mixin 是提供和消费 [React 上下文](/docs/context.html)。上下文是一个实验性的不稳定特征，具有[一定的问题](https://github.com/facebook/react/issues/2517)，并且将来可能会改变其 API。我们不建议使用它，除非你确信没有其他方法来解决你的问题。
 
@@ -508,7 +508,7 @@ var Link = React.createClass({
 module.exports = Link;
 ```
 
-#### 解决方案 {/*解决方案-3*/}
+#### 解决方案 {/*solution-3*/}
 
 我们认同在 Context API 稳定之前，隐藏使用组件 Context API 是一个好主意。但是，我们建议使用高阶组件而不是 mixins。
 
@@ -576,7 +576,7 @@ var Button = React.createClass({
 });
 ```
 
-#### 解决方案 {/*解决方案-4*/}
+#### 解决方案 {/*solution-4*/}
 
 将功能程序函数放入常规的 JavaScript 模块并导入。这也使得更容易测试它们或在组件之外使用它们：
 
@@ -591,7 +591,7 @@ var Button = React.createClass({
 });
 ```
 
-### Other Use Cases {/*other-use-cases*/}
+### 其他情形 {/*other-use-cases*/}
 
 
 有时，人们使用 mixin 来选择性地将日志记录添加到某些组件中的生命周期钩子中。在将来，我们打算提供一个 [official DevTools API](https://github.com/facebook/react/issues/5306)，可以让你实现类似的操作，而不必触及组件。然而，这仍然是一项正在进行的工作。如果你严重依赖日志 mixin 来进行调试，那么你可能希望继续使用这些 mixin 。
