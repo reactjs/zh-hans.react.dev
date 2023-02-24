@@ -42,7 +42,7 @@
 2. 保存改变后的文件，并在浏览器检查它
    - 在 `src` 目录中改变 React 组件将会立刻更新（热更新）该项目。
    - 在 `content` 目录中改变 markdown 文件将也会立刻得到更新。
-   - If working with plugins, you may need to remove the `.cache` directory and restart the server
+   - 如果你对 plugins 文件夹中的内容做出改变，你需要去移除 `.cache` 目录并重新开始这个服务。
 
 ### 测试你的改变
 
@@ -57,7 +57,7 @@
 4. 跟随 GitHub 的指导。
 5. 如果可以的话，包括视觉变化的屏幕截图。在你将更改推送到 GitHub 之后，会触发预构建。
 
-## 中文翻译指南
+### 中文翻译指南
 
 在这里，我们会介绍一些你在翻译过程中的注意点：
 
