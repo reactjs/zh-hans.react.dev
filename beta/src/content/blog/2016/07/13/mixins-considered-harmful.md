@@ -343,7 +343,7 @@ var CommentListWithSubscription = withSubscription(CommentList);
 module.exports = CommentListWithSubscription;
 ```
 
-#### 已解决，复盘一下 {/*已解决，复盘一下*/}
+#### 已解决，复盘一下 {/*solution-revisited*/}
 
 现在我们更好地了解了高阶组件，让我们再来看一下不涉及 mixins 的完整解决方案。有一些小的更改用内联注释说明：
 
