@@ -7,10 +7,10 @@
 ## 翻译流程
 
 1. 挑选你想要翻译的文章，这些文章你可以 [在这里](https://github.com/reactjs/reactjs.org/issues/4135) 找到它们
-2. 准备阶段，需要 fork 以及 clone 仓库到本地，参见 [前提准备](#前提准备) 
-3. 开始阶段，需要 [创建一个分支](#创建一个分支) 
-4. 提交阶段，需要将你的改变 [提交](#提交) 到 GitHub
-5. 审查阶段，此时会有专人审查该 Pull Request，当两人以上通过该 Pull Request 时，你的翻译将被合并到仓库中
+2. 准备阶段，需要 fork 以及 clone 仓库到本地，参见 [前提准备](#前提准备)
+3. 开始阶段，需要 [创建一个分支](#创建一个分支)，并对内容进行翻译和自检
+4. 推送阶段，需要将你的改变提交到 GitHub 并创建 Pull Request，参见 [推送](#推送)
+5. 审查阶段，这是审查人员该做的事情，他们会审核你的 Pull Request，当两人以上通过该 Pull Request 时，你的翻译将被合并到仓库中
 
 ### 前提准备
 
@@ -45,12 +45,12 @@
 1. 如果可以，请在桌面和移动设备上测试最新版本在常见浏览器中的任何视觉变化。
 2. 从 `beta` 文件夹中运行 `yarn check-all`。（这将运行 Prettier、ESLint 以及验证 TypeScript 的类型）。
 
-### 提交
+### 推送
 
 1. `git add -A && git commit -m "My message"`：暂存以及提交你的改变（使用其它提交信息替换 `My message`，例如 `Fix header logo on Android`）
 2. `git push -u my-fork-name the-name-of-my-branch`
 3. 进入 [zh-hans.reactjs.org 仓库](https://github.com/reactjs/zh-hans.reactjs.org)，你将看到你最新 push 的分支。
-4. 跟随 GitHub 的指导。
+4. 跟随 [GitHub 的指导](https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=webui) 创建 Pull Request。
 5. 如果可以的话，包括视觉变化的屏幕截图。在你将更改推送到 GitHub 之后，会触发预构建。
 
 ## 中文翻译注意事项
