@@ -2,6 +2,7 @@
 title: "State：组件的记忆"
 translators:
   - zzw
+  - x-cold
 ---
 
 <Intro>
@@ -160,7 +161,7 @@ button {
 
 要使用新数据更新组件，需要做两件事：
 
-1. **保留**渲染之间的数据。
+1. **保留** 渲染之间的数据。
 2. **触发** React 使用新数据渲染组件（重新渲染）。
 
 [`useState`](/reference/usestate) Hook 提供了这两个功能：
