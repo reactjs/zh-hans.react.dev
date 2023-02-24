@@ -1,8 +1,8 @@
-# [React 新中文文档翻译指南](https://github.com/reactjs/zh-hans.reactjs.org/blob/main/beta/README.md)
+# [React 新中文文档翻翻译指南](https://github.com/reactjs/zh-hans.reactjs.org/blob/main/beta/README.md)
 
 该仓库包含 [React 新中文文档](https://beta.react.jscn.org/) 和该文档的源码，并由官方同步。
 
-下面我们会从[翻译流程](#翻译流程)以及[翻译注意事项](#中文翻译注意事项)两个方面开始介绍
+下面我们会从[翻译流程](#翻译流程)以及[翻译注意事项](#中文翻译注意事项)两个方面开始介绍。
 
 ## 翻译流程
 
@@ -40,11 +40,7 @@
 
 #### 做出改变
 
-1. 跟随[“在本地运行”](#在本地运行)的指导
-2. 保存改变后的文件，并在浏览器检查它
-   - 在 `src` 目录中改变 React 组件将会立刻更新（热更新）该项目。
-   - 在 `content` 目录中改变 markdown 文件将也会立刻得到更新。
-   - 如果你对 plugins 文件夹中的内容做出改变，你需要去移除 `.cache` 目录并重新开始这个服务。
+如果你有除了翻译内容以外的贡献，请一并同步到[英文文档仓库](https://github.com/reactjs/reactjs.org/tree/main/beta)。
 
 #### 检查你的改变
 
