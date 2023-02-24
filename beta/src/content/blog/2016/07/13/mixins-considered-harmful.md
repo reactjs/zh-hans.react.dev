@@ -15,9 +15,9 @@ React 已经发布三年了。境况变了。多个视图库现在采用与React
 
 ## 为什么 Mixins 是破坏性的 {/*为什么-Mixins-是破坏性的*/}
 
-在 Facebook， React 的使用已经从几个增长到成千上万的组件。这给了我们一个了解人们如何使用 React 的窗口。多亏了声明式的渲染和自顶向下的数据流，许多团队能够在采用 React 时发布新功能的同时修复一堆漏洞。
+在 Facebook， React 组件的使用量已经从几十个增长到了上千个。这让我们更了解用户是如何使用 React 的。多亏了声明式的渲染和自顶向下的数据流，许多团队能够在采用 React 时发布新功能的同时修复一堆漏洞。
 
-然而，不可避免的，我们使用 React 的一些代码逐渐变得难以理解。有时候，React 小组在不同的项目中能看到很多人们害怕接触的组件。这些组件太容易被意外地破坏，使新的开发人员感到困惑，最终变得即使最初编写它们的人也一样困惑。这样的混乱大都是由 mixins 造成的。虽然当时我没有在 Facebook 上工作，但是在写出我的关于 mixins 的糟糕之处的分享后，我得出了[同样的结论](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750)。
+然而不可避免的是，我们的一部分 React 代码会逐渐变得难以理解。React 小组有时会在不同的项目中看到很多令人不敢乱改动的组件。这些组件一改动就很容易出 bug，而且让新接手的开发人员难以理解，最后变得即使是最初编写它们的人也看不懂了。这样的混乱大都是由 mixins 造成的。虽然当时我没有在 Facebook 工作，但是在我写出关于 mixins 糟糕之处的分享后，我得出了[同样的结论](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750)。
 
 这并不意味着 mixins 本身是坏的。人们成功地在不同的语言和范例中使用它，包括一些函数式语言。在 Facebook ，我们广泛地在 Hack 语言中使用与 mixins 非常相似的特征。尽管如此，我们仍然认为在 React 代码库中，mixins 是不必要的和容易出问题的。这里列出了为什么这样说的几条理由。
 
@@ -25,7 +25,7 @@ React 已经发布三年了。境况变了。多个视图库现在采用与React
 
 有时一个组件依赖于在 mixin 中定义的某个确定方法，例如 `getClassName()`。有时相反，mixin 在组件上调用 renderHeader() 方法。 JavaScript 是一种动态语言，因此很难强制记录这些依赖关系。
 
-Mixins 打破了常规的，通常是安全的假设 —— 你可以通过搜索 state 在组件文件中的出现位置来重命名它的键名或方法。你可能会写一个有状态的组件，然后你的同事可能添加一个读取这个组件 state 的 mixin。几个月之后，你可能希望将该 state 移动到父组件，以便与其兄弟组件共享。你会记得更新这个 mixin 来读取 props 而不是 state 吗？如果此时，其他组件也在使用这个 mixin 呢？
+Mixins 打破了常规的，通常是安全的假设 —— 你可以在组件文件中通过搜索 state 名字或者方法名来重新命名。你可能会写一个有状态的组件，然后你的同事可能添加一个读取这个组件 state 的 mixin。几个月之后，你可能希望将该 state 移动到父组件，以便与其兄弟组件共享。你会记得更新这个 mixin 来读取 props 而不是 state 吗？如果还有其他组件也在使用这个 mixin 呢？
 
 这些隐含的依赖关系使得新的团队成员很难为代码库做出贡献。组件的 `render() ` 方法可能引用一些未在该类上定义的方法，是否可以安全地删除？也许它是在一个 mixins 中定义的，但是是哪一个呢？你需要向上滚动到 mixin 列表，打开这些文件，并查找此方法。更糟糕的是，mixins 可以指定自己的 mixins，所以搜索层级可能会很深。
 
@@ -59,7 +59,7 @@ Mixins 打破了常规的，通常是安全的假设 —— 你可以通过搜�
 
 让我们清楚的是，mixins 在技术上不被淘汰。如果你使用 `React.createClass()`，可以继续使用它们。我们只是说它对我们没有好处，所以在未来我们不建议使用它们。
 
-下面的每个部分对应于我们在 Facebook 代码库中找到的 mixin 使用模式。对于它们中的每个，我们描述它们问题和我们认为比 mixins 更好的解决方案。这些例子是在ES5中编写的，但是一旦你不需要 mixin，你可以根据需要切换到 ES6 的类语法。
+下面是我们在 Facebook 代码库中找到的一些典型 mixin 和它们解决的问题以及我们认为比 mixins 更好的解决方案。这些例子是在ES5中编写的，但是一旦你不需要 mixin，你可以根据需要切换到 ES6 的类语法。
 
 我们希望你发现此列表有帮助。如果我们错过重要的用例，请让我们知道，我们可以修改列表或修正错误！
 
@@ -272,13 +272,13 @@ module.exports = CommentListWithSubscription;
 
 还记得我们用 `withLogging()` 接收一个函数并返回一个包装它的函数吗？我们可以将类似的模式应用于 React 组件。
 
-我们将编写一个名为 `withSubscription(WrappedComponent)` 的新函数。它的参数可以是任何 React 组件。我们将传递 `CommentList` 作为WrappedComponent（被包装得组件），但是我们也可以将它们应用于我们的代码库中的任何其他组件。
+我们将编写一个名为 `withSubscription(WrappedComponent)` 的新函数。它的参数可以是任何 React 组件。我们将传递 `CommentList` 作为 WrappedComponent（被包装的组件），但是我们也可以传递任何其他组件。
 
 此函数将返回另一个组件。返回的组件将管理订阅并使用当前数据渲染 `<WrappedComponent />`。
 
 我们把这个模式叫做高阶组件。
 
-组合发生在 React 渲染级别，而不是直接调用函数。这就是为什么被包装组件或者用 `createClass()` 定义的，或者 ES6 类或是函数式组件是毫无关系。如果 `WrappedComponent` 是一个 React 组件，则使用 `withSubscription()` 创建的组件都可以可以渲染它。
+组合发生在 React 渲染级别，而不是直接调用函数。所以说被包装组件无论是用 `createClass()`创建的 、 ES6 类组件或是函数式组件都可以。如果 `WrappedComponent` 是一个 React 组件，则使用 `withSubscription()` 创建的组件都可以渲染它。
 
 
 ```js
@@ -395,7 +395,7 @@ function CommentList(props) {
 module.exports = withSubscription(CommentList);
 ```
 
-高阶组件是一个强大的模式。如果你想进一步自定义它们的行为，你可以向它们传递其他参数。毕竟，他们甚至不是React的一个特征。它们只是接收组件并返回包装组件的函数。
+高阶组件是一个强大的模式。如果你想进一步自定义它们的行为，你可以向它们传递其他参数。毕竟，他们甚至不是 React 的一个特征。它们只是接收组件并返回包装组件的函数。
 
 像任何解决方案一样，高阶组件都有自己的缺陷。例如，如果你大量使用 [refs](/docs/more-about-refs.html)，你可能会注意到，将某些内容包装到更高阶的组件中会将 ref 更改为指向包装组件。实际上，我们不鼓励使用 ref 进行组件通信，所以我们不认为这是一个大问题。在将来，我们可能会考虑添加 ref 转发 到 React 来解决这个烦恼。
 
@@ -440,7 +440,7 @@ var UserRow = React.createClass({
 
 #### Solution {/*solution-2*/}
 
-如果你在 mixin 中看到渲染逻辑，现在是时候提取组件了！
+如果你在 mixin 中看到渲染逻辑，说明该提取组件了！
 
 与使用 `RowMixin` 相比，我们将定义一个 `<RowHeader>` 组件。我们还将使用 React 中的顶级数据流（props）的标准机制来替换定义 `getHeaderText()` 方法。
 
@@ -469,13 +469,13 @@ Props使组件依赖性保持明确，易于替换，并可通过 [Flow](https:/
 
 > **注意：**
 >
-> 定义组件为函数式组件并不是必须的。使用生命周期钩子和 state 也没有错，他们是一流的 React 功能。我们在这个例子中使用函数式组件，因为它们更容易阅读，并且我们不需要这些额外的功能，当然使用类组件也可以正常工作。
+> 定义组件为函数式组件并不是必须的。使用生命周期钩子和 state 也没有错，他们都是原生的 React 功能。我们在这个例子中使用函数式组件，因为它们更容易阅读，并且我们不需要这些额外的功能，当然使用类组件也可以正常工作。
 
 ### 上下文 {/*上下文*/}
 
-我们发现的另一组 mixin 是提供和消费 [React 上下文](/docs/context.html)。上下文是一个实验性的不稳定特征，具有[一定的问题问题](https://github.com/facebook/react/issues/2517)，并且将来可能会改变其 API。我们不建议使用它，除非你确信没有其他方法来解决你的问题。
+我们发现的另一组 mixin 是提供和消费 [React 上下文](/docs/context.html)。上下文是一个实验性的不稳定特征，具有[一定的问题](https://github.com/facebook/react/issues/2517)，并且将来可能会改变其 API。我们不建议使用它，除非你确信没有其他方法来解决你的问题。
 
-然而，如果你已经使用了上下文，那么你可能已经用这样的 mixins 隐藏了它的使用：
+然而，如果你已经使用了上下文，那么你可能已经用这样的 mixin 隐藏了它的使用：
 
 ```js
 var RouterMixin = {
@@ -510,7 +510,7 @@ module.exports = Link;
 
 #### 解决方案 {/*解决方案-3*/}
 
-我们认同在 Context API 稳定之前，隐藏使用组件 Context API 是一个好主意。但是，我们建议使用更高阶的组件而不是 mixins。
+我们认同在 Context API 稳定之前，隐藏使用组件 Context API 是一个好主意。但是，我们建议使用高阶组件而不是 mixins。
 
 让包装组件从 context 中抓取东西，并使用 props 将其传递给被包装组件：
 
@@ -594,10 +594,10 @@ var Button = React.createClass({
 ### Other Use Cases {/*other-use-cases*/}
 
 
-有时，人们使用 mixins 来选择性地将日志记录添加到某些组件中的生命周期钩子中。在将来，我们打算提供一个官方的 [official DevTools API](https://github.com/facebook/react/issues/5306)，可以让你实现类似的操作，而不必触及组件。然而，这仍然是一项正在进行的工作。如果你严重依赖日志 mixins 来进行调试，那么你可能希望继续使用这些混合。
+有时，人们使用 mixin 来选择性地将日志记录添加到某些组件中的生命周期钩子中。在将来，我们打算提供一个 [official DevTools API](https://github.com/facebook/react/issues/5306)，可以让你实现类似的操作，而不必触及组件。然而，这仍然是一项正在进行的工作。如果你严重依赖日志 mixin 来进行调试，那么你可能希望继续使用这些 mixin 。
 
 如果你无法使用组件，高阶组件或功能模块完成某些操作，则可能意味着 React 应提供额外的操作。在此提出问题，告诉我们你的关于 mixins 的用例，我们将帮助你考虑你的功能请求的替代方案，或者可能的实现方案。
 
-Mixins 在传统场景下并不过期。你任然可以通过使用 `React.createClass()` 继续使用它们，因为我们不会进一步改变它们。最终，随着 ES6 类得到更多的采用，在 React 中的可用性问题得到解决，我们可能将 `React.createClass()` 分解成一个单独的包，因为大多数人不需要它。即使在这种情况下，你的旧的 mixins 也会继续工作。
+Mixins 在传统场景下并不过期。你仍然可以通过使用 `React.createClass()` 继续使用它们，因为我们不会进一步改变它们。最终，随着 ES6 类得到更多的采用，在 React 中的可用性问题得到解决，我们可能将 `React.createClass()` 分解成一个单独的包，因为大多数人不需要它。即使在这种情况下，旧的 mixin 也会正常生效。
 
 我们认为，在绝大多数情况下，上述替代方案更好，我们邀请你尝试在不使用 mixins 的情况下编写 React 应用程序。
