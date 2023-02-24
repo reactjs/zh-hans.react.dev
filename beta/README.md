@@ -2,7 +2,7 @@
 
 该仓库包含 [React 新中文文档](https://beta.react.jscn.org/) 和该文档的源码，并由官方同步。
 
-下面我们会从[翻译流程](#翻译流程)以及[翻译注意事项](#中文翻译注意事项)两个方面开始介绍。
+下面我们会从[翻译流程](#翻译流程)以及[翻译注意事项](#中文翻译注意事项)两个方面开始介绍。如果你有除了翻译内容以外的贡献，请移步到[英文文档仓库](https://github.com/reactjs/reactjs.org/tree/main/beta/README.md)。
 
 ## 翻译流程
 
@@ -38,11 +38,9 @@
 2. `git pull origin main`：这将确保你的 main 分支保持最新
 3. `git checkout -b the-name-of-my-branch`：这将创建一个新的分支，并切换到该分支（使用合适的名称替换 `the-name-of-my-branch`）
 
-#### 做出改变
+#### 审查你的改变
 
-如果你有除了翻译内容以外的贡献，请一并同步到[英文文档仓库](https://github.com/reactjs/reactjs.org/tree/main/beta)。
-
-#### 检查你的改变
+> 在你为该项目做出贡献后，你可以先在本地审查你的贡献。
 
 1. 如果可以，请在桌面和移动设备上测试最新版本在常见浏览器中的任何视觉变化。
 2. 从 `beta` 文件夹中运行 `yarn check-all`。（这将运行 Prettier、ESLint 以及验证 TypeScript 的类型。）
