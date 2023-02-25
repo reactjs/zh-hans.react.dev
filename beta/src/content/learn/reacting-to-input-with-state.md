@@ -145,7 +145,7 @@ React 正是为了解决这样的问题而诞生的。
 
 ## 声明式地考虑 UI {/*thinking-about-ui-declaratively*/}
 
-你已经从上面的例子看到如何去实现一个表单了，为了更好地理解如何在 React 中思考，你将会在下面用 React 重新实现操作 UI：
+你已经从上面的例子看到如何去实现一个表单了，为了更好地理解如何在 React 中思考，接下来你将会学到如何用 React 重新实现这个 UI：
 
 1. **定位**你的组件中不同的视图状态
 2. **确定**是什么触发了这些 state 的改变
@@ -196,7 +196,7 @@ export default function Form({
 
 </Sandpack>
 
-你可以随意命名这个属性，名字并不重要。试着将 `status = 'empty'` 改为 `status = 'success'`，然后你就会看到成功的信息出现。模拟可以让你在书写任何 UI 逻辑前快速地找到更好的方法。这是同一组件的一个更加充实的原型，仍然由 `status` 属性“控制”：
+你可以随意命名这个属性，名字并不重要。试着将 `status = 'empty'` 改为 `status = 'success'`，然后你就会看到成功的信息出现。模拟可以让你在书写逻辑前快速迭代 UI。这是同一组件的一个更加充实的原型，仍然由 `status` 属性“控制”：
 
 <Sandpack>
 
@@ -311,7 +311,7 @@ body { margin: 0; }
 
 </Sandpack>
 
-类似这样的页面通常被称作“living styleguides”或“storybooks”。
+类似这样的页面通常被称作“living styleguide”或“storybook”。
 
 </DeepDive>
 
