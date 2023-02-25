@@ -399,7 +399,7 @@ const MyInput = forwardRef((props, ref) => {
 
 1. `<MyInput ref={inputRef} />` 告诉 React 将对应的 DOM 节点放入 `inputRef.current` 中。但是，这取决于 `MyInput` 组件是否允许这种行为， 默认情况下是不允许的。
 2. `MyInput` 组件是使用 `forwardRef` 声明的。 **这让从上面接收的 `inputRef` 作为第二个参数 `ref` 传入组件**，第一个参数是 `props` 。
-3. `MyInput` 本身将它接收到的 `ref` 传递给它内部的 `<input>`。
+3. `MyInput` 组件将自己接收到的 `ref` 传递给它内部的 `<input>`。
 
 现在，单击按钮聚焦输入框起作用了：
 
