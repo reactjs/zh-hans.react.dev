@@ -39,7 +39,7 @@ const myRef = useRef(null);
 <div ref={myRef}>
 ```
 
-`useRef` Hook 返回一个对象，该对象有一个名为 `current` 的属性。最初，`myRef.current` 是 `null`。当 React 为这个 `<div>` 创建一个 DOM 节点时，React 会把对该节点的引用放入 `myRef.current`。然后，你可以从 [事件处理器](/learn/responding-to-events) 访问此 DOM 节点，并使用在其上定义的内置 [浏览器 APIs](https://developer.mozilla.org/docs/Web/API/Element)。
+`useRef` Hook 返回一个对象，该对象有一个名为 `current` 的属性。最初，`myRef.current` 是 `null`。当 React 为这个 `<div>` 创建一个 DOM 节点时，React 会把对该节点的引用放入 `myRef.current`。然后，你可以从 [事件处理器](/learn/responding-to-events) 访问此 DOM 节点，并使用在其上定义的内置[浏览器 API](https://developer.mozilla.org/docs/Web/API/Element)。
 
 ```js
 // 你可以使用任意浏览器 API，例如：
