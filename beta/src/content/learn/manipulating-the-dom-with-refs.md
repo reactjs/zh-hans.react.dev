@@ -195,7 +195,7 @@ li {
 
 <DeepDive>
 
-#### 如何使用 ref 回调管理 refs 列表 {/*how-to-manage-a-list-of-refs-using-a-ref-callback*/}
+#### 如何使用 ref 回调管理 ref 列表 {/*how-to-manage-a-list-of-refs-using-a-ref-callback*/}
 
 在上面的例子中，ref 的数量是预先确定的。但有时候，你可能需要为列表中的每一项都绑定 ref ，而你又不知道会有多少项。像下面这样做**是行不通的**：
 
