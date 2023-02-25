@@ -151,7 +151,7 @@ React 正是为了解决这样的问题而诞生的。
 2. **确定**是什么触发了这些 state 的改变
 3. **表示**内存中的 state（需要使用 `useState`）
 4. **删除**任何不必要的 state 变量
-5.  **连接**事件处理函数去设置 state
+5. **连接**事件处理函数去设置 state
 
 ### 步骤 1：定位组件中不同的视图状态 {/*step-1-identify-your-components-different-visual-states*/}
 
@@ -353,14 +353,14 @@ body { margin: 0; }
 
 接下来你会需要在内存中通过 [`useState`](/reference/react/useState) 表示组件中的视图状态。诀窍很简单：state 的每个部分都是“处于变化中的”，并且**你需要让“变化的部分”尽可能的少**。更复杂的程序会产生更多 bug！
 
-先从*绝对必须*存在的状态开始。例如，你需要存储输入的 `message` 以及用于存储最后一个错误的 `error` （如果存在的话）：
+先从*绝对必须*存在的状态开始。例如，你需要存储输入的 `answer` 以及用于存储最后一个错误的 `error` （如果存在的话）：
 
 ```js
 const [answer, setAnswer] = useState('');
 const [error, setError] = useState(null);
 ```
 
-之后你需要一个 state 变量来代表你之前声明过的想要展示的视图状态之一。通常不止一种可以在内存中代表的方法，因此你需要试验一下。
+之后你需要一个 state 变量来表示你想显示前面描述的哪一种视觉状态。通常不止一种在内存中表示的方法，因此你需要试验一下。
 
 如果你很难立即想出最好的办法，那就先从添加足够多的 state 开始，*确保*所有可能的视图状态都囊括其中：
 
@@ -376,7 +376,7 @@ const [isError, setIsError] = useState(false);
 
 ### 步骤 4：删除任何不必要的 state 变量 {/*step-4-remove-any-non-essential-state-variables*/}
 
-你会想要避免 state 内容中的重复，从而只需要关注那些必要的部分。花一点时间来重构你的 state 结构，会让你的组件更容易被理解，减少重复并且避免歧义。你的目的是**防止出现在内存中的 state 不代表任何你希望用户看到的有效 UI 的情况。**（比如你绝对不会想要在展示错误信息的时候同时禁用掉输入框，导致用户无法纠正错误！）
+你会想要避免 state 内容中的重复，从而只需要关注那些必要的部分。花一点时间来重构你的 state 结构，会让你的组件更容易被理解，减少重复并且避免歧义。你的目的是**防止出现在内存中的 state 不代表任何你希望用户看到的有效 UI 的情况。**（比如你绝对不会想要在展示错误信息的同时禁用掉输入框，导致用户无法纠正错误！）
 
 这有一些你可以问自己的， 关于 state 变量的问题：
 
@@ -398,13 +398,13 @@ const [status, setStatus] = useState('typing'); // 'typing', 'submitting', or 's
 
 #### 通过 reducer 来减少“不可能” state {/*eliminating-impossible-states-with-a-reducer*/}
 
-尽管这三个变量对于表示这个表单的状态来说已经足够好了，仍然是有一些中间状态并不是完全有意义的。例如一个非空的 `error` 当 `status` 的值为 `success` 时没有意义。为了更精确地模块化状态，你可以 [将状态提取到一个 reducer 中](/learn/extracting-state-logic-into-a-reducer)。Reducers 可以让您合并多个状态变量到一个对象中并巩固所有相关的逻辑！
+尽管这三个变量对于表示这个表单的状态来说已经足够好了，仍然是有一些中间状态并不是完全有意义的。例如一个非空的 `error` 当 `status` 的值为 `success` 时没有意义。为了更精确地模块化状态，你可以 [将状态提取到一个 reducer 中](/learn/extracting-state-logic-into-a-reducer)。Reducer 可以让您合并多个状态变量到一个对象中并巩固所有相关的逻辑！
 
 </DeepDive>
 
 ### 步骤 5：连接事件处理函数以设置 state {/*step-5-connect-the-event-handlers-to-set-state*/}
 
-最后，创建事件处理函数去设置 state 变量。下方的是在 React 中表单的最终形式，所有的事件处理函数都相关联起来了：
+最后，创建事件处理函数去设置 state 变量。下面是绑定好事件的最终表单：
 
 <Sandpack>
 
@@ -492,7 +492,7 @@ function submitForm(answer) {
 
 * 声明式编程意味着为每个视图状态声明 UI 而非细致地控制 UI（命令式）。
 * 当开发一个组件时：
-  1. 定位你的组件中不同的视图状态。
+  1. 写出你的组件中所有的视图状态。
   2. 确定是什么触发了这些 state 的改变。
   3. 通过 `useState` 模块化内存中的 state。
   4. 删除任何不必要的 state 变量。
@@ -704,7 +704,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 #### 个人信息编辑器 {/*profile-editor*/}
 
-这是一个通过纯 JavaScript 和 DOM 实现的小型表单。通过与它交互来理解它的行为表现：
+这是一个通过纯 JavaScript 和 DOM 实现的小型表单。先来随便使用一下来看看它有什么功能吧：
 
 <Sandpack>
 
@@ -803,7 +803,7 @@ label { display: block; margin-bottom: 20px; }
 
 这个表单在两种模式间切换：编辑模式，你可以看到输入框；查看模式，你只能看到结果。按钮的标签会根据你所处的模式在“编辑”和“保存”两者中切换。当你改变输入框的内容时，欢迎信息会最下面实时更新。
 
-你的任务是在 下方的沙盒中用 React 再次实现它。为了方便，标记已经转换为 JSX，但是你需要让它像原版那样显示和隐藏输入框。
+你的任务是在下方的沙盒中用 React 再次实现它。为了方便，标记已经转换为 JSX，但是你需要让它像原版那样显示和隐藏输入框。
 
 也要确保它在底下更新文本内容！
 
@@ -906,7 +906,7 @@ label { display: block; margin-bottom: 20px; }
 
 #### 不使用 React 去重构命令式的解决方案 {/*refactor-the-imperative-solution-without-react*/}
 
-这是之前的挑战中的没有使用 React 而写的命令式原始沙盒：
+这是之前的挑战中的没有使用 React 而写的命令式代码：
 
 <Sandpack>
 
@@ -1005,7 +1005,7 @@ label { display: block; margin-bottom: 20px; }
 
 如果没有 React，你可以十分健壮地并且使其与 React 的版本十分相似地重构这个代码吗？像 React 那样，如果 state 是明确的，这个重构的代码会是什么样的？
 
-如果你不知道该从哪里入手，下面的部分已经有了大部分的结构。如果你从这里开始的话，只需要在 `updateDOM` 函数中补充缺失的逻辑即可。（需要时请参考原始代码）
+如果你不知道该从哪里入手，下面的代码已经有了大部分的结构。如果你从这里开始的话，只需要在 `updateDOM` 函数中补充缺失的逻辑即可。（需要时请参考原始代码）
 
 <Sandpack>
 
@@ -1229,7 +1229,7 @@ label { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-你所写的 `updateDOM` 函数展示了当你设置 state 时，React 在幕后都做了什么。（然而，React 同样避免修改那些自上次设置 state 后未改变的属性所相对应的 DOM）
+你所写的 `updateDOM` 函数展示了当你设置 state 时，React 在幕后都做了什么。（而且 React 不会修改对应 state 没改变的 DOM）
 
 </Solution>
 
