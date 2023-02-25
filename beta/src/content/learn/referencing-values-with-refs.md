@@ -263,7 +263,7 @@ React 提供了一个内置版本的 `useRef`，因为它在实践中很常见�
 
 - 存储 [timeout ID](https://developer.mozilla.org/docs/Web/API/setTimeout)
 - 存储和操作 [DOM 元素](https://developer.mozilla.org/docs/Web/API/Element)，我们将在 [下一页](/learn/manipulating-the-dom-with-refs) 中介绍 
-- 存储不需要计算 JSX 的其他对象。
+- 存储不需要被用来计算 JSX 的其他对象。
 
 如果你的组件需要存储一些值，但不影响渲染逻辑，请选择 ref。
 
