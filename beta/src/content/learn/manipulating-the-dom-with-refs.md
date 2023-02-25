@@ -320,7 +320,7 @@ li {
 
 </Sandpack>
 
-在这个例子中，`itemsRef` 保存的不是单个 DOM 节点。替代的是，它保存了包含列表项 ID 和 DOM 节点的 [Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)。([Refs 可以保存任何值！](/learn/referencing-values-with-refs)) 每个列表项上的 [`ref` 回调](/reference/react-dom/components/common#ref-callback)负责更新 Map：
+在这个例子中，`itemsRef` 保存的不是单个 DOM 节点，而是保存了包含列表项 ID 和 DOM 节点的 [Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)。([Ref 可以保存任何值！](/learn/referencing-values-with-refs)) 每个列表项上的 [`ref` 回调](/reference/react-dom/components/common#ref-callback)负责更新 Map：
 
 ```js
 <li
