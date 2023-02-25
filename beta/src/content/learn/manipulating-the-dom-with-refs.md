@@ -397,7 +397,7 @@ const MyInput = forwardRef((props, ref) => {
 
 它是这样工作的:
 
-1. `<MyInput ref={inputRef} />` 告诉 React 将对应的 DOM 节点放入 `inputRef.current` 中。但是，这取决于 `MyInput` 组件允许这种行为 —— 默认情况下，它不会。
+1. `<MyInput ref={inputRef} />` 告诉 React 将对应的 DOM 节点放入 `inputRef.current` 中。但是，这取决于 `MyInput` 组件是否允许这种行为， 默认情况下是不允许的。
 2. `MyInput` 组件是使用 `forwardRef` 声明的。 **这让从上面接收的 `inputRef` 作为第二个 `ref` 参数传参进入组件**，它在 `props` 之后声明。
 3. `MyInput` 本身将它接收到的 `ref` 传递给它内部的 `<input>`。
 
