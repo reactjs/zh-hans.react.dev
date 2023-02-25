@@ -82,7 +82,7 @@ export default function Form() {
 3. 在 `handleClick` 函数中，从 `inputRef.current` 读取 input DOM 节点并使用 `inputRef.current.focus()` 调用它的 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus)。
 4. 用 `onClick` 将 `handleClick` 事件处理器传递给 `<button>`。
 
-虽然 DOM 操作是 refs 最常见的用例，但 `useRef` Hook 可用于存储 React 之外的其他内容，例如计时器 ID。与 state 类似，refs 能在渲染之间保留。你甚至可以将 refs 视为设置它们时不会触发重新渲染的 state 变量！你可以在 [使用 Refs 引用值](/learn/referencing-values-with-refs) 中了解有关 refs 的更多信息。
+虽然 DOM 操作是 ref 最常见的用例，但 `useRef` Hook 可用于存储 React 之外的其他内容，例如计时器 ID 。与 state 类似，ref 能在渲染之间保留。你甚至可以将 ref 视为设置它们时不会触发重新渲染的 state 变量！你可以在[使用 Ref 引用值](/learn/referencing-values-with-refs)中了解有关 ref 的更多信息。
 
 ### 示例: 滚动至一个元素 {/*example-scrolling-to-an-element*/}
 
