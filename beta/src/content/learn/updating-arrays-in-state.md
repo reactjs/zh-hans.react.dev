@@ -796,7 +796,7 @@ updateMyTodos(draft => {
 
 <Challenges>
 
-### 更新购物车中的商品 {/*update-an-item-in-the-shopping-cart*/}
+#### 更新购物车中的商品 {/*update-an-item-in-the-shopping-cart*/}
 
 填写 `handleIncreaseClick` 的逻辑，以便按下“+”时递增对应数字：
 
@@ -923,7 +923,7 @@ button { margin: 5px; }
 
 </Solution>
 
-### 删除购物车中的商品 {/*remove-an-item-from-the-shopping-cart*/}
+#### 删除购物车中的商品 {/*remove-an-item-from-the-shopping-cart*/}
 
 现在购物车有了一个正常工作的“+”按钮，但是“-”按钮却没有任何作用。你需要为它添加一个事件处理程序，以便按下它时可以减少对应商品的 `count`。如果在数字为 1 时按下按钮，商品需要自动从购物车中移除。确保商品计数永远不出现 0。
 
@@ -1084,7 +1084,7 @@ button { margin: 5px; }
 
 </Solution>
 
-### 使用不会直接修改原始值的方法修复 mutation 的问题 {/*fix-the-mutations-using-non-mutative-methods*/}
+#### 使用不会直接修改原始值的方法修复 mutation 的问题 {/*fix-the-mutations-using-non-mutative-methods*/}
 
 在下面的例子中，`App.js` 中所有的事件处理程序都会产生 mutation。这导致编辑和删除待办事项的功能无法正常运行。使用不会直接修改原始值的方法重写 `handleAddTodo`、`handleChangeTodo` 和 `handleDeleteTodo` 这三个函数：
 
@@ -1417,7 +1417,7 @@ ul, li { margin: 0; padding: 0; }
 </Solution>
 
 
-### 使用 Immer 修复 mutation 的问题 {/*fix-the-mutations-using-immer*/}
+#### 使用 Immer 修复 mutation 的问题 {/*fix-the-mutations-using-immer*/}
 
 下面的例子和上一个挑战的相同。这次，你需要使用 Immer 来修复 mutation 的问题。为了方便，`useImmer` 已经被引入了，你需要使用它来替换 `todos` 的 state 变量。
 
