@@ -62,7 +62,7 @@
 2. `git push -u my-fork-name the-name-of-my-branch`
 3. 进入 [zh-hans.reactjs.org 仓库](https://github.com/reactjs/zh-hans.reactjs.org)，你将看到你最新 push 的分支。
 4. 跟随 [GitHub 的指南](https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=webui) 创建 Pull Request。
-5. 如果可以的话，包括视觉变化的屏幕截图。在你将更改推送到 GitHub 之后，会触发预构建。
+5. 在你完成以上步骤之后，该仓库会触发预构建，此时你可以查看你的改变是否符合预期。
 
 ---
 
