@@ -169,7 +169,7 @@ body { min-height: 120px; }
 
 Props 使你独立思考父组件和子组件。 例如，你可以改变 `Profile` 中的 `person` 或 `size` props，而无需考虑 `Avatar` 如何使用它们。 同样，你可以改变 `Avatar` 使用这些 props 的方式，不必考虑 `Profile`。
 
-你可以将 props 想象成可以调整的 “旋钮”。它们的作用与函数的参数相同 —— 事实上，props _正是_ 组件的唯一参数！ React 组件函数接受一个参数，一个 `props` 对象：
+你可以将 props 想象成可以调整的“旋钮”。它们的作用与函数的参数相同 —— 事实上，props _正是_ 组件的唯一参数！ React 组件函数接受一个参数，一个 `props` 对象：
 
 ```js
 function Avatar(props) {
@@ -236,7 +236,7 @@ function Profile({ person, size, isSepia, thickBorder }) {
 }
 ```
 
-重复代码没有错（它可以更清晰）。但有时你可能会重视简洁。一些组件将它们所有的 props 转发给子组件，正如 `Profile` 转给 `Avatar` 那样。因为它们不直接使用它们任何 props，所以使用更简洁的 “展开” 语法是有意义的：
+重复代码没有错（它可以更清晰）。但有时你可能会重视简洁。一些组件将它们所有的 props 转发给子组件，正如 `Profile` 转给 `Avatar` 那样。因为它们不直接使用它们任何 props，所以使用更简洁的“展开”语法是有意义的：
 
 ```js
 function Profile(props) {
@@ -346,8 +346,8 @@ export function getImageUrl(person, size = 's') {
 
 </Sandpack>
 
-尝试用一些文本替换 `<Card>` 中的 `<Avatar>`，看看 `Card` 组件如何包裹任意嵌套内容。它不必 “知道” 其中渲染的内容。你会在很多地方看到这种灵活的模式。
-您可以将带有 `children` prop 的组件看作有一个 “洞”，可以由其父组件使用任意 JSX 来 “填充”。你会经常使用 `children` prop 来进行视觉包装：面板、网格等等。
+尝试用一些文本替换 `<Card>` 中的 `<Avatar>`，看看 `Card` 组件如何包裹任意嵌套内容。它不必“知道”其中渲染的内容。你会在很多地方看到这种灵活的模式。
+您可以将带有 `children` prop 的组件看作有一个“洞”，可以由其父组件使用任意 JSX 来“填充”。你会经常使用 `children` prop 来进行视觉包装：面板、网格等等。
 
 <Illustration src="/images/docs/illustrations/i_children-prop.png" alt='A puzzle-like Card tile with a slot for "children" pieces like text and Avatar' />
 
@@ -407,9 +407,9 @@ export default function App() {
 
 这个例子说明，**一个组件可能会随着时间的推移收到不同的 props。** Props 并不总是静态的！在这里，`time` prop 每秒都在变化。当你选择另一种颜色时，`color` prop 也改变了。Props 反映了组件在任何时间点的数据，并不仅仅是在开始时。
 
-然而，props 是 [不可变的](https://en.wikipedia.org/wiki/Immutable_object)（一个计算机科学术语，意思是 “不可改变”）。当一个组件需要改变它的 props（例如，响应用户交互或新数据）时，它不得不 “请求” 它的父组件传递 _不同的 props_ —— 一个新对象！它的旧 props 将被丢弃，最终 JavaScript 引擎将回收它们占用的内存。
+然而，props 是 [不可变的](https://en.wikipedia.org/wiki/Immutable_object)（一个计算机科学术语，意思是“不可改变”）。当一个组件需要改变它的 props（例如，响应用户交互或新数据）时，它不得不“请求”它的父组件传递 _不同的 props_ —— 一个新对象！它的旧 props 将被丢弃，最终 JavaScript 引擎将回收它们占用的内存。
 
-**不要尝试 “更改 props”。** 当你需要响应用户输入（例如更改所选颜色）时，你可以 “设置 state”，你可以在 [State: 一个组件的内存](/learn/state-a-components-memory) 中继续了解。
+**不要尝试“更改 props”。** 当你需要响应用户输入（例如更改所选颜色）时，你可以“设置 state”，你可以在 [State: 一个组件的内存](/learn/state-a-components-memory) 中继续了解。
 
 <Recap>
 
