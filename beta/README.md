@@ -2,15 +2,24 @@
 
 该仓库包含 [React 新中文文档](https://beta.react.jscn.org/) 和该文档的源码，并由官方同步。
 
-下面我们会从 [翻译流程](#翻译流程) 以及 [翻译注意事项](#中文翻译注意事项) 两个方面开始介绍。如果你有除了翻译内容以外的贡献，请移步到 [英文文档仓库](https://github.com/reactjs/reactjs.org/tree/main/beta/README.md)。
+下面我们会从 [翻译注意事项](#翻译注意事项) 以及 [翻译流程](#翻译流程) 两个方面开始介绍。如果你有除了翻译内容以外的贡献，请移步到 [英文文档仓库](https://github.com/reactjs/reactjs.org/tree/main/beta/README.md)。
+
+## 翻译注意事项
+
+- 在翻译的过程中，我们需要遵循 [React 中文文档译文规范](https://github.com/reactjs/zh-hans.reactjs.org/wiki/React-%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3%E8%AF%91%E6%96%87%E6%8E%92%E7%89%88%E6%8C%87%E5%8D%97)。
+- 对于翻译中的专有名词，参见 [术语表](https://github.com/reactjs/zh-hans.reactjs.org/issues/2)。
 
 ## 翻译流程
 
-1. 挑选你想要翻译的文章，这些文章你可以 [在这里](https://github.com/reactjs/reactjs.org/issues/4135) 找到它们
-2. 准备阶段，需要 fork 以及 clone 仓库到本地，参见 [前提准备](#前提准备)
-3. 开始阶段，需要 [创建一个分支](#创建一个分支)，并对内容进行翻译和自检
-4. 推送阶段，需要将你的改变提交到 GitHub 并创建 Pull Request，参见 [推送](#推送)
-5. 审查阶段，这是审查人员该做的事情，他们会审核你的 Pull Request，当两人以上通过该 Pull Request 时，你的翻译将被合并到仓库中
+1. 阅读 [翻译注意事项](#翻译注意事项)
+2. 挑选你想要翻译的文章，这些文章你可以 [在这里](https://github.com/reactjs/reactjs.org/issues/4135) 找到
+3. 进行 [任务认领](https://github.com/reactjs/zh-hans.reactjs.org/issues/602)
+4. 你可能需要设置一些必要的开发环境，参见 [前提准备](#前提准备)
+5. 准备就绪，你就可以进行 [翻译工作](#开始翻译)，翻译工作包括切换分支、内容修改和代码测试
+6. 需要将你的改变提交到 GitHub 并创建 Pull Request，参见 [提交和推送](#提交和推送)
+7. 审查人员会审核你的 Pull Request，当两人以上通过该 Pull Request 时，你的翻译将被合并到仓库中
+
+注：在以前，我们还有一份更为详细的 [翻译流程说明](https://github.com/reactjs/zh-hans.reactjs.org/issues/602)，可以供你参考
 
 ### 前提准备
 
@@ -23,7 +32,7 @@
 #### 安装相关依赖
 
 1. `cd reactjs.org`：进入该项目的根目录
-2. `cd beta`：打开 beta 文件夹
+2. `cd beta`：进入 beta 文件夹
 3. `yarn`：下载网站需要的 npm 依赖
 
 #### 在本地运行
@@ -32,7 +41,9 @@
 2. `yarn dev`：运行开发服务器（由 [Next.js](https://nextjs.org/) 支持）
 3. `open http://localhost:3000`：用你最爱的浏览器打开这个网站
 
-### 创建一个分支
+### 开始翻译
+
+#### 切换分支
 
 1. `git checkout main`：你可以在 `reactjs.org` 仓库中的任意文件夹运行这段命令，它会切换到 main 分支
 2. `git pull origin main`：这将确保你的 main 分支保持最新
@@ -45,22 +56,13 @@
 1. 如果可以，请在桌面和移动设备上测试最新版本在常见浏览器中的任何视觉变化。
 2. 从 `beta` 文件夹中运行 `yarn check-all`。（这将运行 Prettier、ESLint 以及验证 TypeScript 的类型）。
 
-### 推送
+### 提交和推送
 
 1. `git add -A && git commit -m "My message"`：暂存以及提交你的改变（使用其它提交信息替换 `My message`，例如 `Fix header logo on Android`）
 2. `git push -u my-fork-name the-name-of-my-branch`
 3. 进入 [zh-hans.reactjs.org 仓库](https://github.com/reactjs/zh-hans.reactjs.org)，你将看到你最新 push 的分支。
-4. 跟随 [GitHub 的指导](https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=webui) 创建 Pull Request。
+4. 跟随 [GitHub 的指南](https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=webui) 创建 Pull Request。
 5. 如果可以的话，包括视觉变化的屏幕截图。在你将更改推送到 GitHub 之后，会触发预构建。
-
-## 中文翻译注意事项
-
-在这里，我们会介绍一些你需要在翻译过程中的注意点：
-
-- [排版](https://github.com/reactjs/zh-hans.reactjs.org/wiki/React-%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3%E8%AF%91%E6%96%87%E6%8E%92%E7%89%88%E6%8C%87%E5%8D%97)：为什么需要使用它🤔？因为中文的字符和英文的字符有很大的差别，为了使内容更好的呈现给读者，我们需要一套尽可能完美的排版规范。
-  - 对于 React 简体中文应该如何排版，请查看：[React 简体中文本地化翻译指南](https://github.com/reactjs/zh-hans.reactjs.org/wiki/React-%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3%E8%AF%91%E6%96%87%E6%8E%92%E7%89%88%E6%8C%87%E5%8D%97)。
-- [术语表](https://github.com/reactjs/zh-hans.reactjs.org/issues/2)：为什么需要使用它🤔？由于一些专有名词在 React 中有着特殊的含义，我们会在术语表中呈现，更好地帮助译者去理解以及翻译。（当然，译者也可以去补充）
-  - 如果你想查看 React 专有名词的中英文对照表，请查看：[React 术语表](https://github.com/reactjs/zh-hans.reactjs.org/issues/2)。
 
 ---
 
