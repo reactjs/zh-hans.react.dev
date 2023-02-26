@@ -7,7 +7,7 @@ translators:
 
 <Intro>
 
-当你希望组件 “记住” 某些信息，但又不想让这些信息 [触发新的渲染](/learn/render-and-commit) 时，你可以使用 *ref* 。
+当你希望组件“记住”某些信息，但又不想让这些信息 [触发新的渲染](/learn/render-and-commit) 时，你可以使用 *ref* 。
 
 </Intro>
 
@@ -28,7 +28,7 @@ translators:
 import { useRef } from 'react';
 ```
 
-在你的组件内，调用 `useRef` Hook 并传入你想要引用的初始值作为唯一参数。例如，这里的 ref 引用的值是 “0”：
+在你的组件内，调用 `useRef` Hook 并传入你想要引用的初始值作为唯一参数。例如，这里的 ref 引用的值是“0”：
 
 ```js
 const ref = useRef(0);
@@ -44,7 +44,7 @@ const ref = useRef(0);
 
 <Illustration src="/images/docs/illustrations/i_ref.png" alt="An arrow with 'current' written on it stuffed into a pocket with 'ref' written on it." />
 
-你可以用 `ref.current` 属性访问该 ref 的当前值。这个值是有意被设置为可变的，意味着你既可以读取它也可以写入它。就像一个 React 追踪不到的、用来存储组件信息的秘密 “口袋”。（这就是让它成为 React 单向数据流的 “应急方案” 的原因 —— 详见下文！）
+你可以用 `ref.current` 属性访问该 ref 的当前值。这个值是有意被设置为可变的，意味着你既可以读取它也可以写入它。就像一个 React 追踪不到的、用来存储组件信息的秘密“口袋”。（这就是让它成为 React 单向数据流的“应急方案”的原因 —— 详见下文！）
 
 这里，每次点击按钮时会使 `ref.current` 递增：
 
@@ -77,14 +77,14 @@ export default function Counter() {
 
 ## 示例：制作秒表 {/*example-building-a-stopwatch*/}
 
-你可以在单个组件中把 ref 和 state 结合起来使用。例如，让我们制作一个秒表，用户可以通过按按钮来使其启动或停止。为了显示从用户按下 “开始” 以来经过的时间长度，你需要追踪按下 “开始” 按钮的时间和当前时间。**此信息用于渲染，所以你会把它保存在 state 中：**
+你可以在单个组件中把 ref 和 state 结合起来使用。例如，让我们制作一个秒表，用户可以通过按按钮来使其启动或停止。为了显示从用户按下“开始”以来经过的时间长度，你需要追踪按下“开始”按钮的时间和当前时间。**此信息用于渲染，所以你会把它保存在 state 中：**
 
 ```js
 const [startTime, setStartTime] = useState(null);
 const [now, setNow] = useState(null);
 ```
 
-当用户按下 “开始” 时，你将用 [`setInterval`](https://developer.mozilla.org/docs/Web/API/setInterval) 每 10 毫秒更新一次时间：
+当用户按下“开始”时，你将用 [`setInterval`](https://developer.mozilla.org/docs/Web/API/setInterval) 每 10 毫秒更新一次时间：
 
 <Sandpack>
 
@@ -124,7 +124,7 @@ export default function Stopwatch() {
 
 </Sandpack>
 
-当按下 “停止” 按钮时，你需要取消现有的 interval，以便让它停止更新 `now` state 变量。你可以通过调用 [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval) 来完成此操作。但你需要为其提供 interval ID，此 ID 是之前用户按下 Start、调用 `setInterval` 时返回的。你需要将 interval ID 保留在某处。 **由于 interval ID 不用于渲染，你可以将其保存在 ref 中：**
+当按下“停止”按钮时，你需要取消现有的 interval，以便让它停止更新 `now` state 变量。你可以通过调用 [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval) 来完成此操作。但你需要为其提供 interval ID，此 ID 是之前用户按下 Start、调用 `setInterval` 时返回的。你需要将 interval ID 保留在某处。 **由于 interval ID 不用于渲染，你可以将其保存在 ref 中：**
 
 <Sandpack>
 
@@ -175,7 +175,7 @@ export default function Stopwatch() {
 
 ## ref 和 state 的不同之处 {/*differences-between-refs-and-state*/}
 
-也许你觉得 ref 似乎没有 state 那样 “严格” —— 例如，你可以改变它们而非总是必须使用 state 设置函数。但在大多数情况下，我们建议你使用 state。ref 是一个 “应急方案”，你并不会经常用到它。 以下是 state 和 ref 的对比：
+也许你觉得 ref 似乎没有 state 那样“严格” —— 例如，你可以改变它们而非总是必须使用 state 设置函数。但在大多数情况下，我们建议你使用 state。ref 是一个“应急方案”，你并不会经常用到它。 以下是 state 和 ref 的对比：
 
 | ref                                                                                  | state                                                                                                                     |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -259,7 +259,7 @@ React 提供了一个内置版本的 `useRef`，因为它在实践中很常见�
 
 ## 何时使用 ref {/*when-to-use-refs*/}
 
-通常，当你的组件需要 “跳出” React 并与外部 API 通信时，你会用到 ref —— 通常是不会影响组件外观的浏览器 API。以下是这些罕见情况中的几个：
+通常，当你的组件需要“跳出” React 并与外部 API 通信时，你会用到 ref —— 通常是不会影响组件外观的浏览器 API。以下是这些罕见情况中的几个：
 
 - 存储 [timeout ID](https://developer.mozilla.org/docs/Web/API/setTimeout)
 - 存储和操作 [DOM 元素](https://developer.mozilla.org/docs/Web/API/Element)，我们将在 [下一页](/learn/manipulating-the-dom-with-refs) 中介绍 
@@ -306,11 +306,11 @@ console.log(ref.current); // 5
 
 #### 修复坏掉的聊天输入框 {/*fix-a-broken-chat-input*/}
 
-输入消息并单击 “发送”。 你会注意到，在看到 “已发送！” 提示框之前有 3 秒的延迟。在此延迟期间，你可以看到一个 “撤消” 按钮。点击它。这个 “撤消” 按钮应该阻止 “发送！” 消息弹出。它通过调用 [`clearTimeout`](https://developer.mozilla.org/en-US/docs/Web/API/clearTimeout) 来做到这点，这一步骤需要使用在 `handleSend` 时保存的 timeout ID。但是，即使在单击 “撤消” 后，“已发送！” 消息仍然出现。找出它不起作用的原因，然后修复它。
+输入消息并单击“发送”。你会注意到，在看到“已发送！”提示框之前有 3 秒的延迟。在此延迟期间，你可以看到一个“撤消”按钮。点击它。这个“撤消”按钮应该阻止“发送！”消息弹出。它通过调用 [`clearTimeout`](https://developer.mozilla.org/en-US/docs/Web/API/clearTimeout) 来做到这点，这一步骤需要使用在 `handleSend` 时保存的 timeout ID。但是，即使在单击“撤消”后，“已发送！”消息仍然出现。找出它不起作用的原因，然后修复它。
 
 <Hint>
 
-像`let timeoutID` 这样的常规变量不会在重新渲染之间 “存活”，因为每次渲染都从头开始运行你的组件（并初始化其变量）。你应该将 timeout ID 保存在其他地方吗？
+像`let timeoutID` 这样的常规变量不会在重新渲染之间“存活”，因为每次渲染都从头开始运行你的组件（并初始化其变量）。你应该将 timeout ID 保存在其他地方吗？
 
 </Hint>
 
@@ -363,7 +363,7 @@ export default function Chat() {
 
 <Solution>
 
-每当你的组件重新渲染时（例如当你设置 state 时），所有局部变量都会从头开始初始化。这就是为什么你不能将 timeout ID 保存在像 `timeoutID` 这样的局部变量中，然后期望未来另一个事件处理器 “看到” 它。相反，将它存储在一个 ref 中，React 将在渲染之间保留它。
+每当你的组件重新渲染时（例如当你设置 state 时），所有局部变量都会从头开始初始化。这就是为什么你不能将 timeout ID 保存在像 `timeoutID` 这样的局部变量中，然后期望未来另一个事件处理器“看到”它。相反，将它存储在一个 ref 中，React 将在渲染之间保留它。
 
 <Sandpack>
 
@@ -417,7 +417,7 @@ export default function Chat() {
 
 #### 修复无法重新渲染的组件 {/*fix-a-component-failing-to-re-render*/}
 
-这个按钮本该在显示 “开” 和 “关” 之间切换。但是，它始终显示 “关”。 这段代码有什么问题？ 修复它。
+这个按钮本该在显示“开”和“关”之间切换。但是，它始终显示“关”。这段代码有什么问题？修复它。
 
 <Sandpack>
 
@@ -467,7 +467,7 @@ export default function Toggle() {
 
 #### 修复防抖 {/*fix-debouncing*/}
 
-在这个例子中，所有按钮点击处理器都是 ["防抖的"](https://redd.one/blog/debounce-vs-throttle)。 要了解这意味着什么，请按下其中一个按钮。注意消息在一秒后显示。如果你在等待消息时按下按钮，计时器将重置。因此如果你多次快速单击同一个按钮，则直到你停止单击 *之后* 1 秒钟，该消息才会显示。防抖可以让你将一些动作推迟到用户 “停止动作” 之后。
+在这个例子中，所有按钮点击处理器都是 ["防抖的"](https://redd.one/blog/debounce-vs-throttle)。 要了解这意味着什么，请按下其中一个按钮。注意消息在一秒后显示。如果你在等待消息时按下按钮，计时器将重置。因此如果你多次快速单击同一个按钮，则直到你停止单击 *之后* 1 秒钟，该消息才会显示。防抖可以让你将一些动作推迟到用户“停止动作”之后。
 
 这个例子可以正常运行，但并不完全符合预期。按钮不是独立的。要查看问题，请单击其中一个按钮，然后立即单击另一个按钮。你本来期望在延迟之后，你会看到两个按钮的消息。但只有最后一个按钮的消息出现了。第一个按钮的消息丢失了。
 
@@ -584,7 +584,7 @@ button { display: block; margin: 10px; }
 
 #### 读取最新的 state {/*read-the-latest-state*/}
 
-在此示例中，当你按下 “发送” 后，在显示消息之前会有一小段延迟。输入 “你好”，按下发送，然后再次快速编辑输入。尽管你进行了编辑，提示框仍会显示 “你好”（这是按钮被点击 [那一刻](/learn/state-as-a-snapshot#state-over-time) state 的值）。
+在此示例中，当你按下“发送”后，在显示消息之前会有一小段延迟。输入“你好”，按下发送，然后再次快速编辑输入。尽管你进行了编辑，提示框仍会显示“你好”（这是按钮被点击 [那一刻](/learn/state-as-a-snapshot#state-over-time) state 的值）。
 
 通常，这种行为是你在应用程序中想要的。但是，有时可能需要一些异步代码来读取某些 state 的 *最新* 版本。你能想出一种方法，让提示框显示 *当前* 输入文本而不是点击时的内容吗？
 
