@@ -341,11 +341,11 @@ button {
 
 Hooks 是特殊的函数，只在 React [渲染](/learn/render-and-commit#step-1-trigger-a-render)时有效（我们将在下一节详细介绍）。它们能让你 “hook” 到不同的 React 特性中去。
 
-State 只是这些特性中的一个，你之后还会遇到其他 Hooks。
+State 只是这些特性中的一个，你之后还会遇到其他 Hook。
 
 <Pitfall>
 
-**Hooks——以 `use` 开头的函数——只能在组件或[自定义 Hooks](/learn/reusing-logic-with-custom-hooks) 的最顶层调用。** 你不能在条件语句、循环语句或其他嵌套函数内调用 Hooks。Hooks 是函数，但将它们视为关于组件需求的无条件声明会很有帮助。在组件顶部 “use” React 特性，类似于在文件顶部“导入”模块。
+**Hooks ——以 `use` 开头的函数——只能在组件或[自定义 Hook](/learn/reusing-logic-with-custom-hooks) 的最顶层调用。** 你不能在条件语句、循环语句或其他嵌套函数内调用 Hook。Hook 是函数，但将它们视为关于组件需求的无条件声明会很有帮助。在组件顶部 “use” React 特性，类似于在文件顶部“导入”模块。
 
 </Pitfall>
 
@@ -365,7 +365,7 @@ const [index, setIndex] = useState(0);
 
 每次你的组件渲染时，`useState` 都会给你一个包含两个值的数组：
 
-1. **state 变量** (`index`) 与你存储的值。
+1. **state 变量** (`index`) 会保存上次渲染的值。
 2. **state setter 函数** (`setIndex`) 可以更新 state 变量并触发 React 重新渲染组件。
 
 以下是实际发生的情况：
@@ -903,8 +903,8 @@ button {
 
 * 当一个组件需要在多次渲染间“记住”某些信息时使用 state 变量。
 * State 变量是通过调用 `useState` Hook 来声明的。
-* Hooks 是以 `use` 开头的特殊函数。它们能让你 “hook” 到像 state 这样的 React 特性中。
-* Hooks 可能会让你想起 imports：它们需要在非条件语句中调用。调用 Hooks 时，包括 `useState`，仅在组件或另一个 Hook 的顶层被调用才有效。
+* Hook 是以 `use` 开头的特殊函数。它们能让你 “hook” 到像 state 这样的 React 特性中。
+* Hook 可能会让你想起 import：它们需要在非条件语句中调用。调用 Hook 时，包括 `useState`，仅在组件或另一个 Hook 的顶层被调用才有效。
 * `useState` Hook 返回一对值：当前 state 和更新它的函数。
 * 你可以拥有多个 state 变量。在内部，React 按顺序匹配它们。
 * State 是组件私有的。如果你在两个地方渲染它，则每个副本都有独属于自己的 state。
@@ -1276,7 +1276,7 @@ h1 { margin-top: 10px; }
 
 <Solution>
 
-首先，从 React 导入 `useState`。然后用 `useState` 声明的 state 变量替换 `firstName` 和 `lastName`。最后，用 `setFirstName(...)` 替换每个 `firstName = ...` 赋值，并对 `lastName` 做同样的事情。不要忘记更新 `handleReset`，以便重置按钮。
+首先，从 React 导入 `useState`。然后用 `useState` 声明的 state 变量替换 `firstName` 和 `lastName`。最后，用 `setFirstName(...)` 替换每个 `firstName = ...` 赋值，并对 `lastName` 做同样的事情。不要忘记更新 `handleReset`，以使重置按钮生效。
 
 <Sandpack>
 
@@ -1333,7 +1333,7 @@ h1 { margin-top: 10px; }
 
 <Hint>
 
-Hooks 只允许在*什么地方* 调用？这个组件是否违反了任何规则？检查是否有注释禁用了 linter 检查--这往往是 bug 的藏身之处!
+Hook 只允许在*什么地方* 调用？这个组件是否违反了任何规则？检查是否有注释禁用了 linter 检查--这往往是 bug 的藏身之处！
 
 </Hint>
 
@@ -1372,7 +1372,7 @@ export default function FeedbackForm() {
 
 <Solution>
 
-Hooks 只能在组件函数的顶层调用。这里，第一个 `isSent` 定义遵循这个规则，但是 `message` 的定义位于一个条件语句中。
+Hook 只能在组件函数的顶层调用。这里，第一个 `isSent` 定义遵循这个规则，但是 `message` 的定义位于一个条件语句中。
 
 将其移出条件语句以解决问题：
 
@@ -1412,7 +1412,7 @@ export default function FeedbackForm() {
 请记住，必须在条件语句外并且始终以相同的顺序调用 Hook！
 
 
-你还可以删除不必要的`else` 分支以减少嵌套。但要保证对 Hooks 的所有调用都发生在*第一个 `return` 前，这很重要。
+你还可以删除不必要的 `else` 分支以减少嵌套。但要保证对 Hook 的所有调用都发生在*第一个 `return` 前，这很重要。
 
 <Sandpack>
 
