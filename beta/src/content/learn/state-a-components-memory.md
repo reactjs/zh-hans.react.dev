@@ -339,7 +339,7 @@ button {
 
 在 React 中，`useState` 以及任何其他以“`use`”开头的函数都被称为 **Hook**。
 
-Hooks 是特殊的函数，只在 React [渲染](/learn/render-and-commit#step-1-trigger-a-render)时有效（我们将在下一节详细介绍）。它们能让你 “hook” 到不同的 React 特性中去。
+Hook 是特殊的函数，只在 React [渲染](/learn/render-and-commit#step-1-trigger-a-render)时有效（我们将在下一节详细介绍）。它们能让你 “hook” 到不同的 React 特性中去。
 
 State 只是这些特性中的一个，你之后还会遇到其他 Hook。
 
