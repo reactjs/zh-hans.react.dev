@@ -1,5 +1,5 @@
 ---
-title: '使用 Refs 操作 DOM'
+title: '使用 ref 操作 DOM'
 translators:
   - SylviaZ89
 ---
