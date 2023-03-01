@@ -104,7 +104,7 @@ export default function PackingList() {
 
 动手尝试一下，看看各种情况会出现什么不同的结果！
 
-留意这里你是怎么使用 JavaScript 的 `if` 和 `return` 语句来写分支逻辑。在 React，是由 JavaScript 来处理控制流的（比如条件)。
+留意这里你是怎么使用 JavaScript 的 `if` 和 `return` 语句来写分支逻辑。在 React 中，是由 JavaScript 来处理控制流的（比如条件）。
 
 ### 选择性地返回 `null` {/*conditionally-returning-nothing-with-null*/}
 
