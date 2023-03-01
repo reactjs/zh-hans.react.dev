@@ -593,7 +593,7 @@ const deferredValue = useDeferredValue(value);
 该 hook 与使用防抖和节流去延迟更新的用户空间 hooks 类似。使用 `useDeferredValue` 的好处是，React 将在其他工作完成（而不是等待任意时间）后立即进行更新，并且像 [`startTransition`](/docs/react-api.html#starttransition) 一样，延迟值可以暂停，而不会触发现有内容的意外降级。
 
 #### Memoizing deferred children {#memoizing-deferred-children}
-`useDeferredValue` 仅延迟你传递给它的值。如果你想要在紧急更新期间防止子组件重新渲染，则还必须使用 React.memo 或 React.useMemo 记忆该子组件：
+`useDeferredValue` 仅延迟你传递给它的值。如果你想要在紧急更新期间防止子组件重新渲染，则还必须使用 [React.memo](/docs/react-api.html#reactmemo) 或 [React.useMemo](/docs/hooks-reference.html#usememo) 记忆该子组件：
 
 ```js
 function Typeahead() {
