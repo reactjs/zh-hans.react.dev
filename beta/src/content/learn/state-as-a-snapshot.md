@@ -429,7 +429,7 @@ alert(walk ? 'Stop is next' : 'Walk is next');
 </h1>
 ```
 
-因此，单击 “Change to Stop” 就会排列一次将 `walk` 设置为 `false` 的渲染，并弹出显示 “Stop is next” 的提示框。
+因此，单击 “Change to Stop” 就会入队一次将 `walk` 设置为 `false` 的渲染，并弹出显示 “Stop is next” 的提示框。
 
 </Solution>
 
