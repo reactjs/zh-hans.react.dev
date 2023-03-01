@@ -641,7 +641,7 @@ startTransition(() => {
 });
 ```
 
-`isPending` indicates when a transition is active to show a pending state:
+`isPending` 指示过渡任务何时活跃以显示一个等待状态：
 
 ```js
 function App() {
