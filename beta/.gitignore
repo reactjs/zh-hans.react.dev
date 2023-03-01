@@ -18,6 +18,7 @@
 # misc
 .DS_Store
 *.pem
+tsconfig.tsbuildinfo
 
 # debug
 npm-debug.log*
@@ -32,3 +33,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# external fonts
+public/fonts/Optimistic_*.woff2
