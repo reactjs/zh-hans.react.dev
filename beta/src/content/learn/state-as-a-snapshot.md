@@ -242,7 +242,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 </Sandpack>
 
-惊讶吗？你如果使用替换的方法，就能看到被传入提示框的 state “快照”。
+惊讶吗？你如果使用替代法，就能看到被传入提示框的 state “快照”。
 
 ```js
 setNumber(0 + 5);
