@@ -593,15 +593,15 @@ const deferredValue = useDeferredValue(value);
 该 hook 与使用防抖和节流去延迟更新的用户空间 hooks 类似。使用 `useDeferredValue` 的好处是，React 将在其他工作完成（而不是等待任意时间）后立即进行更新，并且像 [`startTransition`](/docs/react-api.html#starttransition) 一样，延迟值可以暂停，而不会触发现有内容的意外降级。
 
 #### Memoizing deferred children {#memoizing-deferred-children}
-`useDeferredValue` only defers the value that you pass to it. If you want to prevent a child component from re-rendering during an urgent update, you must also memoize that component with [`React.memo`](/docs/react-api.html#reactmemo) or [`React.useMemo`](/docs/hooks-reference.html#usememo):
+`useDeferredValue` 仅延迟你传递给它的值。如果你想要在紧急更新期间防止子组件重新渲染，则还必须使用 [React.memo](/docs/react-api.html#reactmemo) 或 [React.useMemo](/docs/hooks-reference.html#usememo) 记忆该子组件：
 
 ```js
 function Typeahead() {
   const query = useSearchQuery('');
   const deferredQuery = useDeferredValue(query);
 
-  // Memoizing tells React to only re-render when deferredQuery changes,
-  // not when query changes.
+  // Memoizing 告诉 React 仅当 deferredQuery 改变，
+  // 而不是 query 改变的时候才重新渲染
   const suggestions = useMemo(() =>
     <SearchSuggestions query={deferredQuery} />,
     [deferredQuery]
@@ -618,7 +618,7 @@ function Typeahead() {
 }
 ```
 
-Memoizing the children tells React that it only needs to re-render them when `deferredQuery` changes and not when `query` changes. This caveat is not unique to `useDeferredValue`, and it's the same pattern you would use with similar hooks that use debouncing or throttling.
+记忆该子组件告诉 React 它仅当 `deferredQuery` 改变而不是 `query` 改变的时候才需要去重新渲染。这个限制不是 `useDeferredValue` 独有的，它和使用防抖或节流的 hooks 使用的相同模式。
 
 ### `useTransition` {#usetransition}
 
@@ -631,9 +631,9 @@ Memoizing the children tells React that it only needs to re-render them when `de
 const [isPending, startTransition] = useTransition();
 ```
 
-Returns a stateful value for the pending state of the transition, and a function to start it.
+返回一个状态值表示过渡任务的等待状态，以及一个启动该过渡任务的函数。
 
-`startTransition` lets you mark updates in the provided callback as transitions:
+`startTransition` 允许你通过标记更新将提供的回调函数作为一个过渡任务：
 
 ```js
 startTransition(() => {
@@ -663,11 +663,11 @@ function App() {
 }
 ```
 
-> Note:
+> 注意：
 >
-> Updates in a transition yield to more urgent updates such as clicks.
+> 过渡任务中触发的更新会让更紧急地更新先进行，比如点击。
 >
-> Updates in a transitions will not show a fallback for re-suspended content. This allows the user to continue interacting with the current content while rendering the update.
+> 过渡任务中的更新将不会展示由于再次挂起而导致降级的内容。这个机制允许用户在 React 渲染更新的时候继续与当前内容进行交互。
 
 ### `useId` {#useid}
 
