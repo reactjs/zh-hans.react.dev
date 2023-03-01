@@ -1,56 +1,60 @@
+---
+title: 选择 state 结构
+translators: 
+  - Davont
+---
 
 <Intro>
 
-Structuring state well can make a difference between a component that is pleasant to modify and debug, and one that is a constant source of bugs. Here are some tips you should consider when structuring state.
+构建良好的 state 可以在一个易于修改和调试的组件与一个不断产生错误的组件之间产生对比。以下是你在构建 state 时应该考虑的一些建议。
 
 </Intro>
 
 <YouWillLearn>
 
-* When to use a single vs multiple state variables
-* What to avoid when organizing state
-* How to fix common issues with the state structure
+* 单个 state 变量 vs 多个 state 变量的使用时机
+* 组织 state 时应避免的事项
+* 如何解决 state 结构中的常见问题
 
 </YouWillLearn>
 
-## Principles for structuring state {/*principles-for-structuring-state*/}
+## state 结构的原则 {/*principles-for-structuring-state*/}
 
-When you write a component that holds some state, you'll have to make choices about how many state variables to use and what the shape of their data should be. While it's possible to write correct programs even with a suboptimal state structure, there are a few principles that can guide you to make better choices:
+当你写一个含有一些 state 的组件时，你必须对使用多少个 state 变量以及它们是怎样的数据结构做出抉择。尽管使用次优的 state 结构也有可能写出正确的程序，但有一些原则可以指导你做出更好的决策：
 
-1. **Group related state.** If you always update two or more state variables at the same time, consider merging them into a single state variable.
-2. **Avoid contradictions in state.** When the state is structured in a way that several pieces of state may contradict and "disagree" with each other, you leave room for mistakes. Try to avoid this.
-3. **Avoid redundant state.** If you can calculate some information from the component's props or its existing state variables during rendering, you should not put that information into that component's state.
-4. **Avoid duplication in state.** When the same data is duplicated between multiple state variables, or within nested objects, it is difficult to keep them in sync. Reduce duplication when you can.
-5. **Avoid deeply nested state.** Deeply hierarchical state is not very convenient to update. When possible, prefer to structure state in a flat way.
+1. **组合关联的 state。** 如果你总是同时更新两个或更多的 state 变量，可以考虑将它们合并为一个 state 变量。
+2. **避免 state 之间出现矛盾。** 当 state 是由几个相互矛盾或“不一致”的 state 构建而成的时候，你就可能为此会留下隐患。你应当尽量避免这种情况。
+3. **避免冗余的 state。** 如果你能在渲染过程中从组件的 props 或其现有的 state 变量中计算出一些信息，就不应该把这些信息放到该组件的 state 中。
+4. **避免重复的 state。** 当同一数据在多个 state 变量之间或嵌套对象中重复时，会很难保持它们一致。所以你应当尽可能减少重复。
+5. **避免深度嵌套的 state。** 深层次的 state 更新起来不是很方便。如果可能的话，要更倾向于以扁平的方式构建 state。
 
-The goal behind these principles is to *make state easy to update without introducing mistakes*. Removing redundant and duplicate data from state helps ensure that all its pieces stay in sync. This is similar to how a database engineer might want to ["normalize" the database structure](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description) to reduce the chance of bugs. To paraphrase Albert Einstein, **"Make your state as simple as it can be--but no simpler."**
+这些原则背后的目标是 *使 state 易于更新而不引入错误*。从 state 中删除冗余和重复数据有助于确保它的不同部分不会失去同步。这类似于数据库工程师可能希望将 [数据库结构“规范化”](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description)，以减少出现错误的机会。用爱因斯坦的话说，**“让你的状态尽可能简单，但不要太简化。”**
 
-Now let's see how these principles apply in action.
+现在让我们来看看这些原则在实际中是如何应用的。
 
-## Group related state {/*group-related-state*/}
+## 组合关联的 state {/*group-related-state*/}
 
-You might sometimes be unsure between using a single or multiple state variables.
+你有时可能不确定是使用单个还是多个 state 变量。
 
-Should you do this?
+你应该像下面这样做吗？
 
 ```js
 const [x, setX] = useState(0);
 const [y, setY] = useState(0);
 ```
 
-Or this?
+或这样？
 
 ```js
 const [position, setPosition] = useState({ x: 0, y: 0 });
 ```
 
-Technically, you can use either of these approaches. But **if some two state variables always change together, it might be a good idea to unify them into a single state variable.** Then you won't forget to always keep them in sync, like in this example where moving the cursor updates both coordinates of the red dot:
+从技术上讲，你可以使用其中任意一种方法。但是 **如果某些两个 state 变量总是一起变化，把它们统一成一个 state 变量可能更好**。这样你就不会忘记始终保持它们的同步，就像在这个例子中，移动光标时会更新红点的两个坐标：
 
 <Sandpack>
 
 ```js
 import { useState } from 'react';
-
 export default function MovingDot() {
   const [position, setPosition] = useState({
     x: 0,
@@ -90,17 +94,17 @@ body { margin: 0; padding: 0; height: 250px; }
 
 </Sandpack>
 
-Another case where you'll group data into an object or an array is when you don't know how many different pieces of state you'll need. For example, it's helpful when you have a form where the user can add custom fields.
+另一种情况是，你将数据分组到一个对象或一个数组中时，你不知道需要多少个不同的 state 片段。例如，当你有一个用户可以添加自定义字段的表单时，这将会很有帮助。
 
-<Pitfall>
+<Gotcha>
 
-If your state variable is an object, remember that [you can't update only one field in it](/learn/updating-objects-in-state) without explicitly copying the other fields. For example, you can't do `setPosition({ x: 100 })` in the above example because it would not have the `y` property at all! Instead, if you wanted to set `x` alone, you would either do `setPosition({ ...position, x: 100 })`, or split them into two state variables and do `setX(100)`.
+如果你的 state 变量是一个对象时，记住 [你不能只更新其中的一个字段](/learn/updating-objects-in-state) 而不明确复制其他字段。例如，在上面的例子中，你不能写成 `setPosition({ x: 100 })`，因为它根本就没有 `y` 属性! 相反，如果你想单独设置 `x`，你要么做 `setPosition({ ...position, x: 100 })`，要么你需要把它们分成两个 state 变量，做 `setX(100)`。
 
-</Pitfall>
+</Gotcha>
 
-## Avoid contradictions in state {/*avoid-contradictions-in-state*/}
+## 避免 state 之间出现矛盾 {/*avoid-contradictions-in-state*/}
 
-Here is a hotel feedback form with `isSending` and `isSent` state variables:
+下面是一个带有 `isSending` 和 `isSent` 两个 state 变量的酒店反馈表单：
 
 <Sandpack>
 
@@ -144,7 +148,7 @@ export default function FeedbackForm() {
   );
 }
 
-// Pretend to send a message.
+// 假装发送消息。
 function sendMessage(text) {
   return new Promise(resolve => {
     setTimeout(resolve, 2000);
@@ -154,9 +158,9 @@ function sendMessage(text) {
 
 </Sandpack>
 
-While this code works, it leaves the door open for "impossible" states. For example, if you forget to call `setIsSent` and `setIsSending` together, you may end up in a situation where both `isSending` and `isSent` are `true` at the same time. The more complex your component is, the harder it will be to understand what happened.
+尽管这段代码是有效的，但它为这些”不可能“的 states 留下了大门。例如，如果你忘记同时调用 `setIsSent` 和 `setIsSending`，这就可能会出现 `isSending` 和 `isSent` 同时为 `true` 的情况。你的组件越复杂，就越难理解发生了什么。
 
-**Since `isSending` and `isSent` should never be `true` at the same time, it is better to replace them with one `status` state variable that may take one of *three* valid states:** `'typing'` (initial), `'sending'`, and `'sent'`:
+**因为 `isSending` 和 `isSent` 不应该同时为 `true`，所以最好用一个 `status` 变量来代替它们，这个 state 变量可以采取 *三种* 有效状态之一：**`'typing'` (初始), `'sending'`, 和 `'sent'`:
 
 <Sandpack>
 
@@ -201,7 +205,7 @@ export default function FeedbackForm() {
   );
 }
 
-// Pretend to send a message.
+// 假装发送消息。
 function sendMessage(text) {
   return new Promise(resolve => {
     setTimeout(resolve, 2000);
@@ -211,20 +215,20 @@ function sendMessage(text) {
 
 </Sandpack>
 
-You can still declare some constants for readability:
+你仍然可以声明一些常量，以保证可读性：
 
 ```js
 const isSending = status === 'sending';
 const isSent = status === 'sent';
 ```
 
-But they're not state variables, so you don't need to worry about them getting out of sync with each other.
+但它们不是 state 变量，所以你不需要担心它们之间互相不同步。
 
-## Avoid redundant state {/*avoid-redundant-state*/}
+## 避免冗余的 state {/*avoid-redundant-state*/}
 
-If you can calculate some information from the component's props or its existing state variables during rendering, you **should not** put that information into that component's state.
+如果你能在渲染过程中从组件的 props 或其现有的 state 变量中计算出一些信息，你就不应该把这些信息放到该组件的 state 中。
 
-For example, take this form. It works, but can you find any redundant state in it?
+例如，以这个表单为例。它可以运行，但你能在其中找到任何冗余的 state 吗？
 
 <Sandpack>
 
@@ -277,9 +281,9 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-This form has three state variables: `firstName`, `lastName`, and `fullName`. However, `fullName` is redundant. **You can always calculate `fullName` from `firstName` and `lastName` during render, so remove it from state.**
+这个表单有三个 state 变量：`firstName`、`lastName` 和 `fullName`。然而，`fullName` 是多余的。**你总是可以在渲染过程中从 `firstName` 和 `lastName` 中计算出 `fullName`，所以要把它从 state 中删除。**
 
-This is how you can do it:
+你可以这样做：
 
 <Sandpack>
 
@@ -331,50 +335,48 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-Here, `fullName` is *not* a state variable. Instead, it's calculated during render:
+这里，`fullName` *不是* 一个 state 变量。相反，它是在渲染过程中计算的：
 
 ```js
 const fullName = firstName + ' ' + lastName;
 ```
 
-As a result, the change handlers don't need to do anything special to update it. When you call `setFirstName` or `setLastName`, you trigger a re-render, and then the next `fullName` will be calculated from the fresh data.
+因此，更改处理程序不需要做任何特殊的事情来更新它。 当你调用 `setFirstName` 或 `setLastName` 时，您会触发一次重新渲染，然后将根据新数据计算下一个 `fullName`。
 
-<DeepDive>
+<DeepDive title="Don't mirror props in state">
 
-#### Don't mirror props in state {/*don-t-mirror-props-in-state*/}
-
-A common example of redundant state is code like this:
+一个常见的冗余的 state 示例是这样的代码：
 
 ```js
 function Message({ messageColor }) {
   const [color, setColor] = useState(messageColor);
 ```
 
-Here, a `color` state variable is initialized to the `messageColor` prop. The problem is that **if the parent component passes a different value of `messageColor` later (for example, `'red'` instead of `'blue'`), the `color` *state variable* would not be updated!** The state is only initialized during the first render.
+这里，一个 `color` state 变量被初始化为 `messageColor` props 值。 这段代码的问题在于，**如果父组件稍后传递不同的 `messageColor` 值（例如，将其从 `'blue'` 更改为 `'red'`），则`color` *state 变量*将不会更新！** state 仅在第一次渲染期间初始化。
 
-This is why "mirroring" some prop in a state variable can lead to confusion. Instead, use the `messageColor` prop directly in your code. If you want to give it a shorter name, use a constant:
+这就是为什么在这样的 state 变量中 "镜像 "一些道具会导致混乱的原因。相反，在你的代码中直接使用 `messageColor` 属性。如果你想在你的组件中给它一个更短的名字，可以使用一个普通的常量：
 
 ```js
 function Message({ messageColor }) {
   const color = messageColor;
 ```
 
-This way it won't get out of sync with the prop passed from the parent component.
+这样它就会与从父组件传递的 prop 同步。
 
-"Mirroring" props into state only makes sense when you *want* to ignore all updates for a specific prop. By convention, start the prop name with `initial` or `default` to clarify that its new values are ignored:
+只有当你 *想要* 忽略特定 props 属性的所有更新时，将 props “镜像”到 state 才有意义。按照惯例，prop 名称以 `initial` 或 `default` 开头，以阐明该 prop 的新值将被忽略：
 
 ```js
 function Message({ initialColor }) {
-  // The `color` state variable holds the *first* value of `initialColor`.
-  // Further changes to the `initialColor` prop are ignored.
+  // 这个 `color` state 变量用于保存 `initialColor` 的 *初始值* 值。
+  // 对于 `initialColor` 这个 prop 它的进一步更改将被忽略。
   const [color, setColor] = useState(initialColor);
 ```
 
 </DeepDive>
 
-## Avoid duplication in state {/*avoid-duplication-in-state*/}
+## 避免重复的 state {/*avoid-duplication-in-state*/}
 
-This menu list component lets you choose a single travel snack out of several:
+此菜单列表组件可让你从以下几道菜中选择一道菜：
 
 <Sandpack>
 
@@ -419,9 +421,9 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-Currently, it stores the selected item as an object in the `selectedItem` state variable. However, this is not great: **the contents of the `selectedItem` is the same object as one of the items inside the `items` list.** This means that the information about the item itself is duplicated in two places.
+目前，它将所选菜作为对象存储在 `selectedItem` state 变量中。 然而，这不是很好：**`selectedItem` 的内容与 `items` 列表中的项目之一是同一个对象。**这意味着关于项目本身的信息在两个地方产生了重复。
 
-Why is this a problem? Let's make each item editable:
+为什么这是个问题？ 让我们使每个项目都可以编辑：
 
 <Sandpack>
 
@@ -484,9 +486,9 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-Notice how if you first click "Choose" on an item and *then* edit it, **the input updates but the label at the bottom does not reflect the edits.** This is because you have duplicated state, and you forgot to update `selectedItem`.
+请注意，如果你首先单击菜单上的 “Choose” 并 *then* 编辑它，**输入会更新，但底部的标签不会反映编辑内容。** 这是因为你有重复的 state，而你忘记了更新 `selectedItem`。
 
-Although you could update `selectedItem` too, an easier fix is to remove duplication. In this example, instead of a `selectedItem` object (which creates a duplication with objects inside `items`), you hold the `selectedId` in state, and *then* get the `selectedItem` by searching the `items` array for an item with that ID:
+尽管你也可以更新 `selectedItem`，但更简单的解决方法是删除重复项。在这个例子中，你将 `selectedId` 保持在 state 中，而不是在 `selectedItem` 对象（它创建了一个与 `items` 内重复的对象），然后 *then* 通过搜索 `items` 数组来获取 `selectedItem` 具有该 ID 的菜：
 
 <Sandpack>
 
@@ -551,25 +553,25 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-(Alternatively, you may hold the selected index in state.)
+(或者，你可以将所选索引保持在 state 中。)
 
-The state used to be duplicated like this:
+state 过去常常是这样复制的：
 
 * `items = [{ id: 0, title: 'pretzels'}, ...]`
 * `selectedItem = {id: 0, title: 'pretzels'}`
 
-But after the change it's like this:
+但是改了之后是这样的：
 
 * `items = [{ id: 0, title: 'pretzels'}, ...]`
 * `selectedId = 0`
 
-The duplication is gone, and you only keep the essential state!
+重复的 state 没有了，你只要保留必要的 state！
 
-Now if you edit the *selected* item, the message below will update immediately. This is because `setItems` triggers a re-render, and `items.find(...)` would find the item with the updated title. You didn't need to hold *the selected item* in state, because only the *selected ID* is essential. The rest could be calculated during render.
+现在，如果您编辑 *selected* 项目，下面的消息将立即更新。这是因为 `setItems` 会触发重新渲染，而 `items.find(...)` 会找到带有更新文本的项目。你不需要保持 *选定的项目* 在 state 中，因为只有 *选定的 ID* 是必需的。其余的可以在渲染期间计算。
 
-## Avoid deeply nested state {/*avoid-deeply-nested-state*/}
+## 避免深度嵌套的 state {/*avoid-deeply-nested-state*/}
 
-Imagine a travel plan consisting of planets, continents, and countries. You might be tempted to structure its state using nested objects and arrays, like in this example:
+想象一下一个任务可以任意嵌套的待办事项列表。你可能想用嵌套的对象和数组来构建它的 state，就像在这个例子：
 
 <Sandpack>
 
@@ -580,8 +582,8 @@ import { initialTravelPlan } from './places.js';
 function PlaceTree({ place }) {
   const childPlaces = place.childPlaces;
   return (
-    <li>
-      {place.title}
+    <>
+      <li>{place.title}</li>
       {childPlaces.length > 0 && (
         <ol>
           {childPlaces.map(place => (
@@ -589,7 +591,7 @@ function PlaceTree({ place }) {
           ))}
         </ol>
       )}
-    </li>
+    </>
   );
 }
 
@@ -773,7 +775,7 @@ export const initialTravelPlan = {
         childPlaces: [],
       }, {
         id: 41,
-        title: 'New Zealand',
+        title: 'New Zeland',
         childPlaces: [],
       }, {
         id: 42,
@@ -815,11 +817,11 @@ export const initialTravelPlan = {
 
 </Sandpack>
 
-Now let's say you want to add a button to delete a place you've already visited. How would you go about it? [Updating nested state](/learn/updating-objects-in-state#updating-a-nested-object) involves making copies of objects all the way up from the part that changed. Deleting a deeply nested place would involve copying its entire parent place chain. Such code can be very verbose.
+现在假设你想添加一个按钮来删除一个任务。你会如何去做呢？ [更新嵌套 state](/learn/updating-objects-and-arrays-in-state#updating-nested-objects-and-arrays) 涉及到从改变的部分开始一路复制对象。例如，删除一个深度嵌套的任务将涉及复制其整个父任务链。这样的代码可能非常冗长。
 
-**If the state is too nested to update easily, consider making it "flat".** Here is one way you can restructure this data. Instead of a tree-like structure where each `place` has an array of *its child places*, you can have each place hold an array of *its child place IDs*. Then you can store a mapping from each place ID to the corresponding place.
+**如果 state 的嵌套太多，不容易更新，可以考虑把它变成"扁平"的。**这里有一种方法可以重组这个数据。你可以让每个地方持有一个 *它的子地点 ID* 的数组，而不是像树状结构那样，每个 `place` 都有一个数组。然后你可以存储一个从每个地点 ID 到相应任务的映射。
 
-This data restructuring might remind you of seeing a database table:
+这种数据的重组可能会让你想起看到一个数据库表格：
 
 <Sandpack>
 
@@ -831,8 +833,8 @@ function PlaceTree({ id, placesById }) {
   const place = placesById[id];
   const childIds = place.childIds;
   return (
-    <li>
-      {place.title}
+    <>
+      <li>{place.title}</li>
       {childIds.length > 0 && (
         <ol>
           {childIds.map(childId => (
@@ -844,7 +846,7 @@ function PlaceTree({ id, placesById }) {
           ))}
         </ol>
       )}
-    </li>
+    </>
   );
 }
 
@@ -1049,7 +1051,7 @@ export const initialTravelPlan = {
   35: {
     id: 35,
     title: 'Oceania',
-    childIds: [36, 37, 38, 39, 40, 41, 42],   
+    childIds: [36, 37, 38, 39, 40, 41,, 42],   
   },
   36: {
     id: 36,
@@ -1078,7 +1080,7 @@ export const initialTravelPlan = {
   },
   41: {
     id: 41,
-    title: 'New Zealand',
+    title: 'New Zeland',
     childIds: []
   },
   42: {
@@ -1126,14 +1128,14 @@ export const initialTravelPlan = {
 
 </Sandpack>
 
-**Now that the state is "flat" (also known as "normalized"), updating nested items becomes easier.**
+**现在状态是“扁平化”（也称为“规范化”），更新嵌套项目变得更容易。**
 
-In order to remove a place now, you only need to update two levels of state:
+现在为了去掉一个地方，你只需要更新两个级别的状态:
 
-- The updated version of its *parent* place should exclude the removed ID from its `childIds` array.
-- The updated version of the root "table" object should include the updated version of the parent place.
+- 它的 *parent* 地方的更新版本应该从它的 `childIds` 数组中删去已经被移除的ID。
+- root “table” 对象的更新版本应包括父地方的更新版本。
 
-Here is an example of how you could go about it:
+下面是一个你可以尝试如何做的例子:
 
 <Sandpack>
 
@@ -1146,17 +1148,17 @@ export default function TravelPlan() {
 
   function handleComplete(parentId, childId) {
     const parent = plan[parentId];
-    // Create a new version of the parent place
-    // that doesn't include this child ID.
+    // 创建父位置的新版本
+    // 并不包括这个 child 的 ID。
     const nextParent = {
       ...parent,
       childIds: parent.childIds
         .filter(id => id !== childId)
     };
-    // Update the root state object...
+    // 更新 root state 对象...
     setPlan({
       ...plan,
-      // ...so that it has the updated parent.
+      // ...以便它具有更新的 parent。
       [parentId]: nextParent
     });
   }
@@ -1185,13 +1187,15 @@ function PlaceTree({ id, parentId, placesById, onComplete }) {
   const place = placesById[id];
   const childIds = place.childIds;
   return (
-    <li>
-      {place.title}
-      <button onClick={() => {
-        onComplete(parentId, id);
-      }}>
-        Complete
-      </button>
+    <>
+      <li>
+        {place.title}
+        <button onClick={() => {
+          onComplete(parentId, id);
+        }}>
+          Complete
+        </button>
+      </li>
       {childIds.length > 0 &&
         <ol>
           {childIds.map(childId => (
@@ -1205,7 +1209,7 @@ function PlaceTree({ id, parentId, placesById, onComplete }) {
           ))}
         </ol>
       }
-    </li>
+    </>
   );
 }
 ```
@@ -1419,7 +1423,7 @@ export const initialTravelPlan = {
   },
   41: {
     id: 41,
-    title: 'New Zealand',
+    title: 'New Zeland',
     childIds: []
   },
   42: {
@@ -1471,13 +1475,11 @@ button { margin: 10px; }
 
 </Sandpack>
 
-You can nest state as much as you like, but making it "flat" can solve numerous problems. It makes state easier to update, and it helps ensure you don't have duplication in different parts of a nested object.
+你可以随心所欲地嵌套状态，但使其“扁平化”可以解决许多问题。它使 state 更容易更新，并有助于确保你在一个嵌套对象的不同部分不会有重复。
 
-<DeepDive>
+<DeepDive title="Improving memory usage">
 
-#### Improving memory usage {/*improving-memory-usage*/}
-
-Ideally, you would also remove the deleted items (and their children!) from the "table" object to improve memory usage. This version does that. It also [uses Immer](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) to make the update logic more concise.
+理想情况下，你也会从“table”对象中删除被删除的项目（以及它们的子项！），以提高内存使用率。这个版本就是这样做的。它还 [使用Immer](/learn/updating-objects-in-state#write-concis-update-logic-with-immer) 来使更新逻辑更加简洁。
 
 <Sandpack>
 
@@ -1490,12 +1492,12 @@ export default function TravelPlan() {
 
   function handleComplete(parentId, childId) {
     updatePlan(draft => {
-      // Remove from the parent place's child IDs.
+      // 从 parent 节点中的 child ID 中删除。
       const parent = draft[parentId];
       parent.childIds = parent.childIds
         .filter(id => id !== childId);
 
-      // Forget this place and all its subtree.
+      // 忽略这个节点以及它的所有子树
       deleteAllChildren(childId);
       function deleteAllChildren(id) {
         const place = draft[id];
@@ -1529,13 +1531,15 @@ function PlaceTree({ id, parentId, placesById, onComplete }) {
   const place = placesById[id];
   const childIds = place.childIds;
   return (
-    <li>
-      {place.title}
-      <button onClick={() => {
-        onComplete(parentId, id);
-      }}>
-        Complete
-      </button>
+    <>
+      <li>
+        {place.title}
+        <button onClick={() => {
+          onComplete(parentId, id);
+        }}>
+          Complete
+        </button>
+      </li>
       {childIds.length > 0 &&
         <ol>
           {childIds.map(childId => (
@@ -1549,7 +1553,7 @@ function PlaceTree({ id, parentId, placesById, onComplete }) {
           ))}
         </ol>
       }
-    </li>
+    </>
   );
 }
 ```
@@ -1763,7 +1767,7 @@ export const initialTravelPlan = {
   },
   41: {
     id: 41,
-    title: 'New Zealand',
+    title: 'New Zeland',
     childIds: []
   },
   42: {
@@ -1835,25 +1839,25 @@ button { margin: 10px; }
 
 </DeepDive>
 
-Sometimes, you can also reduce state nesting by moving some of the nested state into the child components. This works well for ephemeral UI state that doesn't need to be stored, like whether an item is hovered.
+有时，你也可以通过将一些嵌套的 state 移到子组件中来减少 state 的嵌套。这对那些不需要存储的短暂的 UI state 很有效，比如一个项目是否被悬停。
 
 <Recap>
 
-* If two state variables always update together, consider merging them into one. 
-* Choose your state variables carefully to avoid creating "impossible" states.
-* Structure your state in a way that reduces the chances that you'll make a mistake updating it.
-* Avoid redundant and duplicate state so that you don't need to keep it in sync.
-* Don't put props *into* state unless you specifically want to prevent updates.
-* For UI patterns like selection, keep ID or index in state instead of the object itself.
-* If updating deeply nested state is complicated, try flattening it.
+* 如果两个 state 变量总是一起更新，可以考虑将它们合并为一个变量。
+* 仔细选择你的 state 变量以避免产生 "不可能" 的 state。
+* 用一种能减少你在更新 state 时出错的机会的方式来构建你的 state。
+* 避免冗余的和重复的 state，这样你就不需要保持同步了。
+* 不要把 props *保存到* state 中，除非你特别想阻止更新。
+* 对于像选择这样的 UI 模式，在 state 中保留 ID 或索引而不是对象本身。
+* 如果更新深度嵌套的 state 是很麻烦的，可以尝试把它扁平化。
 
 </Recap>
 
 <Challenges>
 
-#### Fix a component that's not updating {/*fix-a-component-thats-not-updating*/}
+### 修复未更新的组件 {/*fix-a-component-thats-not-updating*/}
 
-This `Clock` component receives two props: `color` and `time`. When you select a different color in the select box, the `Clock` component receives a different `color` prop from its parent component. However, for some reason, the displayed color doesn't update. Why? Fix the problem.
+这个 `Clock` 组件接收两个 props：`color` 和 `time`。当你在选择框中选择一个不同的颜色时，`Clock` 组件会从其父组件收到不同的 `color` 属性。但是，由于某些原因，显示的颜色并没有更新。 为什么呢？要解决这个问题。
 
 <Sandpack>
 
@@ -1908,7 +1912,7 @@ export default function App() {
 
 <Solution>
 
-The issue is that this component has `color` state initialized with the initial value of the `color` prop. But when the `color` prop changes, this does not affect the state variable! So they get out of sync. To fix this issue, remove the state variable altogether, and use the `color` prop directly.
+这个问题在于这个组件的 `color` state 是用 `color` props 属性的初始值初始化的。但是当 `color` props 属性发生变化时，这并不影响 state 变量！所以它们就不同步了。要解决这个问题，请完全删除 state 变量，并直接使用`color` props 属性。
 
 <Sandpack>
 
@@ -1960,7 +1964,7 @@ export default function App() {
 
 </Sandpack>
 
-Or, using the destructuring syntax:
+或者，使用去结构化的语法。
 
 <Sandpack>
 
@@ -2014,13 +2018,13 @@ export default function App() {
 
 </Solution>
 
-#### Fix a broken packing list {/*fix-a-broken-packing-list*/}
+### 修复损坏的任务计数器 {/*fix-a-broken-packing-list*/}
 
-This packing list has a footer that shows how many items are packed, and how many items there are overall. It seems to work at first, but it is buggy. For example, if you mark an item as packed and then delete it, the counter will not be updated correctly. Fix the counter so that it's always correct.
+这个待办事项列表有一个页脚，显示完成了多少任务，以及总体有多少任务。它一开始似乎是有效的，但它也是有缺陷的。例如，如果你把一项任务标记为已完成，然后删除它，计数器就不会正确更新。修复计数器，使其总是正确的。
 
 <Hint>
 
-Is any state in this example redundant?
+这个例子中的某些 state 是多余的吗？
 
 </Hint>
 
@@ -2039,6 +2043,7 @@ const initialItems = [
 ];
 
 export default function TravelPlan() {
+  const [title, setTitle] = useState('');
   const [items, setItems] = useState(initialItems);
   const [total, setTotal] = useState(3);
   const [packed, setPacked] = useState(1);
@@ -2161,7 +2166,7 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution>
 
-Although you could carefully change each event handler to update the `total` and `packed` counters correctly, the root problem is that these state variables exist at all. They are redundant because you can always calculate the number of items (packed or total) from the `items` array itself. Remove the redundant state to fix the bug:
+尽管你可以小心地改变每个事件处理程序，以正确地更新 `total` 和 `packed` 计数器，但根本问题在于这些 state 变量的存在。它们是多余的，因为你总是可以从 `items` 数组本身计算出任务的数量（已完成或总数）。删除多余的 state 来修复这个错误。
 
 <Sandpack>
 
@@ -2178,6 +2183,7 @@ const initialItems = [
 ];
 
 export default function TravelPlan() {
+  const [title, setTitle] = useState('');
   const [items, setItems] = useState(initialItems);
 
   const total = items.length;
@@ -2294,15 +2300,15 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-Notice how the event handlers are only concerned with calling `setItems` after this change. The item counts are now calculated during the next render from `items`, so they are always up-to-date.
+请注意事件处理程序在此更改之后是如何只关注调用 `setItems` 的。现在的待办事项计数是在下次渲染时从 `items` 中计算的，所以它们总是最新的。
 
 </Solution>
 
-#### Fix the disappearing selection {/*fix-the-disappearing-selection*/}
+### 修复消失的选项 {/*fix-the-disappearing-selection*/}
 
-There is a list of `letters` in state. When you hover or focus a particular letter, it gets highlighted. The currently highlighted letter is stored in the `highlightedLetter` state variable. You can "star" and "unstar" individual letters, which updates the `letters` array in state.
+state 中有一个 `letters` 列表。当你悬停或聚焦特定字母时，它会突出显示。当前突出显示的字母存储在 `highlightedLetter` state 变量中。你可以为单个字母 `加星标` 和 `取消星标`，这会更新 state 中的 `letters` 数组。
 
-This code works, but there is a minor UI glitch. When you press "Star" or "Unstar", the highlighting disappears for a moment. However, it reappears as soon as you move your pointer or switch to another letter with keyboard. Why is this happening? Fix it so that the highlighting doesn't disappear after the button click.
+这段代码是有效的，但有一个小小的 UI 故障。当你按下”Star“或“Unstar”时，高亮显示会消失一会。但是，只要你移动你的指针或用键盘切换到另一个字母，它就会重新出现。为什么会这样？修复它吧，使高亮显示在点击按钮后不会消失。
 
 <Sandpack>
 
@@ -2409,9 +2415,9 @@ li { border-radius: 5px; }
 
 <Solution>
 
-The problem is that you're holding the letter object in `highlightedLetter`. But you're also holding the same information in the `letters` array. So your state has duplication! When you update the `letters` array after the button click, you create a new letter object which is different from `highlightedLetter`. This is why `highlightedLetter === letter` check becomes `false`, and the highlight disappears. It reappears the next time you call `setHighlightedLetter` when the pointer moves.
+这里的问题是你将字母对象保存在 `highlightedLetter` 中。但是你也在 `letters` 数组本身中保存了相同的信息。所以你的 state 是重复的！当你在按钮点击后更新 `letters` 数组时，你会创建一个不同于 `highlightedLetter` 的新字母对象。这就是为什么 `highlightedLetter === letter` 的检查变为 `false`，并且高亮消失的原因。下次当指针移动时，它在调用 `setHighlightedLetter` 时它会重新出现。
 
-To fix the issue, remove the duplication from state. Instead of storing *the letter itself* in two places, store the `highlightedId` instead. Then you can check `isHighlighted` for each letter with `letter.id === highlightedId`, which will work even if the `letter` object has changed since the last render.
+为了解决这个问题，请从 state 中删除重复的内容。不要在两个地方存储 *字母本身*，而是存储 `highlightedId`。然后你可以用 `letter.id === highlightedId` 来检查每个字母的 `isHighlighted`，即使 `letter` 对象在上次渲染后发生了变化，它也是有效的。
 
 <Sandpack>
 
@@ -2518,15 +2524,15 @@ li { border-radius: 5px; }
 
 </Solution>
 
-#### Implement multiple selection {/*implement-multiple-selection*/}
+### 实现多选功能 {/*implement-multiple-selection*/}
 
-In this example, each `Letter` has an `isSelected` prop and an `onToggle` handler that marks it as selected. This works, but the state is stored as a `selectedId` (either `null` or an ID), so only one letter can get selected at any given time.
+在这个例子中，每个 `Letter` 都有一个 `isSelected` 属性和一个标记它被选中的 `onToggle` 处理程序。这是可行的，但 state 被存储为 `selectedId`（`null`或 ID），所以在任何时候只有一个字母能被选中。
 
-Change the state structure to support multiple selection. (How would you structure it? Think about this before writing the code.) Each checkbox should become independent from the others. Clicking a selected letter should uncheck it. Finally, the footer should show the correct number of the selected items.
+更改 state 结构以支持多选功能。（您将如何构建它？在编写代码之前请考虑这一点。）每个复选框都应该独立于其他复选框。单击选定的字母应取消选中它。最后，页脚应显示所选项目的正确数量。
 
 <Hint>
 
-Instead of a single selected ID, you might want to hold an array or a [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) of selected IDs in state.
+您可能希望 state 中保存所选 ID 的数组或 [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)，而不是单个所选ID。
 
 </Hint>
 
@@ -2540,11 +2546,11 @@ import Letter from './Letter.js';
 export default function MailClient() {
   const [selectedId, setSelectedId] = useState(null);
 
-  // TODO: allow multiple selection
+  // TODO: 允许多选
   const selectedCount = 1;
 
   function handleToggle(toggledId) {
-    // TODO: allow multiple selection
+    // TODO: 允许多选
     setSelectedId(toggledId);
   }
 
@@ -2557,7 +2563,7 @@ export default function MailClient() {
             key={letter.id}
             letter={letter}
             isSelected={
-              // TODO: allow multiple selection
+              // TODO: 允许多选
               letter.id === selectedId
             }
             onToggle={handleToggle}
@@ -2627,7 +2633,7 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 <Solution>
 
-Instead of a single `selectedId`, keep a `selectedIds` *array* in state. For example, if you select the first and the last letter, it would contain `[0, 2]`. When nothing is selected, it would be an empty `[]` array:
+而不是单一的 `selectedId`，在 state 中保存一个 `selectedIds` *array*。例如，如果你选择第一个和最后一个字母，它将包含 `[0, 2]`。当没有选择任何东西时，它将是一个空的`[]` 数组：
 
 <Sandpack>
 
@@ -2642,14 +2648,14 @@ export default function MailClient() {
   const selectedCount = selectedIds.length;
 
   function handleToggle(toggledId) {
-    // Was it previously selected?
+    // 是之前选的吗？
     if (selectedIds.includes(toggledId)) {
-      // Then remove this ID from the array.
+      // 然后从数组中删除此 ID。
       setSelectedIds(selectedIds.filter(id =>
         id !== toggledId
       ));
     } else {
-      // Otherwise, add this ID to the array.
+      // 否则，将此 ID 添加到数组中。
       setSelectedIds([
         ...selectedIds,
         toggledId
@@ -2733,9 +2739,9 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 </Sandpack>
 
-One minor downside of using an array is that for each item, you're calling `selectedIds.includes(letter.id)` to check whether it's selected. If the array is very large, this can become a performance problem because array search with [`includes()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) takes linear time, and you're doing this search for each individual item.
+使用数组的一个小缺点是，对于每个项目，你要调用 `selectedIds.includes(letter.id)` 来检查它是否被选中。如果数组非常大，这可能会成为一个性能问题，因为数组搜索使用 [`includes()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) 需要线性时间，而你要对每个单独的项目进行这种搜索。
 
-To fix this, you can hold a [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) in state instead, which provides a fast [`has()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/has) operation:
+要解决此问题，您可以将 [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) 保持在 state 中，这里提供了一个快速的 [`has( )`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/has) 操作：
 
 <Sandpack>
 
@@ -2752,7 +2758,7 @@ export default function MailClient() {
   const selectedCount = selectedIds.size;
 
   function handleToggle(toggledId) {
-    // Create a copy (to avoid mutation).
+    // 创建一个拷贝（以避免突变）。
     const nextIds = new Set(selectedIds);
     if (nextIds.has(toggledId)) {
       nextIds.delete(toggledId);
@@ -2838,9 +2844,9 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 </Sandpack>
 
-Now each item does a `selectedIds.has(letter.id)` check, which is very fast.
+现在每个项目都会做一个 `selectedIds.has(letter.id)` 检查，这非常快。
 
-Keep in mind that you [should not mutate objects in state](/learn/updating-objects-in-state), and that includes Sets, too. This is why the `handleToggle` function creates a *copy* of the Set first, and then updates that copy.
+请记住，你[不应该改变 state 中的对象](/learn/updating-objects-in-state)，这也包括 Sets。这就是为什么 `handleToggle` 函数首先创建了一个 Set 的 *副本*，然后再更新这个副本。
 
 </Solution>
 
