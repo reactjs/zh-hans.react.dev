@@ -8,6 +8,15 @@ redirect_from:
   - "docs/events-ko-KR.html"
 ---
 
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Responding to Events](https://beta.reactjs.org/learn/responding-to-events)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
 React 元素的事件处理和 DOM 元素的很相似，但是有一点语法上的不同：
 
 * React 事件的命名采用小驼峰式（camelCase），而不是纯小写。
@@ -29,7 +38,7 @@ React 元素的事件处理和 DOM 元素的很相似，但是有一点语法上
 </button>
 ```
 
-在 React 中另一个不同点是你不能通过返回 `false` 的方式阻止默认行为。你必须显式的使用 `preventDefault`。例如，传统的 HTML 中阻止表单的默认提交行为，你可以这样写：
+在 React 中另一个不同点是你不能通过返回 `false` 的方式阻止默认行为。你必须显式地使用 `preventDefault`。例如，传统的 HTML 中阻止表单的默认提交行为，你可以这样写：
 
 ```html
 <form onsubmit="console.log('You clicked submit.'); return false">
@@ -92,15 +101,14 @@ class Toggle extends React.Component {
 
 这并不是 React 特有的行为；这其实与 [JavaScript 函数工作原理](https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/)有关。通常情况下，如果你没有在方法后面添加 `()`，例如 `onClick={this.handleClick}`，你应该为这个方法绑定 `this`。
 
-如果觉得使用 `bind` 很麻烦，这里有两种方式可以解决。如果你正在使用实验性的 [public class fields 语法](https://babeljs.io/docs/plugins/transform-class-properties/)，你可以使用 class fields 正确的绑定回调函数：
+如果觉得使用 `bind` 很麻烦，这里有两种方式可以解决。你可以使用 [public class fields 语法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) 正确地绑定回调函数:
 
 ```js{2-6}
 class LoggingButton extends React.Component {
-  // 此语法确保 `handleClick` 内的 `this` 已被绑定。
-  // 注意: 这是 *实验性* 语法。
+  // This syntax ensures `this` is bound within handleClick.
   handleClick = () => {
     console.log('this is:', this);
-  }
+  };
 
   render() {
     return (

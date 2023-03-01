@@ -16,6 +16,15 @@ prev: rendering-elements.html
 next: state-and-lifecycle.html
 ---
 
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Your First Component](https://beta.reactjs.org/learn/your-first-component)
+> - [Passing Props to a Component](https://beta.reactjs.org/learn/passing-props-to-a-component)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 组件允许你将 UI 拆分为独立可复用的代码片段，并对每个片段进行独立构思。本指南旨在介绍组件的相关理念。你可以[参考详细组件 API](/docs/react-component.html)。
 
 组件，从概念上类似于 JavaScript 函数。它接受任意的入参（即 “props”），并返回用于描述页面展示内容的 React 元素。
@@ -64,13 +73,13 @@ const element = <Welcome name="Sara" />;
 
 例如，这段代码会在页面上渲染 “Hello, Sara”：
 
-```js{1,5}
+```js{1,6}
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
 
-const element = <Welcome name="Sara" />;
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const element = <Welcome name="Sara" />;
 root.render(element);
 ```
 
@@ -230,7 +239,7 @@ function Comment(props) {
 
 ## Props 的只读性 {#props-are-read-only}
 
-组件无论是使用[函数声明还是通过 class 声明](#function-and-class-components)，都决不能修改自身的 props。来看下这个 `sum` 函数：
+组件无论是使用[函数声明还是通过 class 声明](#function-and-class-components)，都绝不能修改自身的 props。来看下这个 `sum` 函数：
 
 ```js
 function sum(a, b) {

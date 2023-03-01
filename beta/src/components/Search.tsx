@@ -3,11 +3,11 @@
  */
 
 // @ts-ignore
-import {useDocSearchKeyboardEvents} from '@docsearch/react';
 import {IconSearch} from 'components/Icon/IconSearch';
 import Head from 'next/head';
 import Link from 'next/link';
 import Router from 'next/router';
+import {useState, useCallback, useEffect} from 'react';
 import * as React from 'react';
 import {createPortal} from 'react-dom';
 import {siteConfig} from 'siteConfig';
@@ -37,29 +37,80 @@ function Kbd(props: {children?: React.ReactNode}) {
   );
 }
 
+// Copy-pasted from @docsearch/react to avoid importing the whole bundle.
+// Slightly trimmed to features we use.
+// (c) Algolia, Inc.
+function isEditingContent(event: any) {
+  var element = event.target;
+  var tagName = element.tagName;
+  return (
+    element.isContentEditable ||
+    tagName === 'INPUT' ||
+    tagName === 'SELECT' ||
+    tagName === 'TEXTAREA'
+  );
+}
+function useDocSearchKeyboardEvents({
+  isOpen,
+  onOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    function onKeyDown(event: any) {
+      function open() {
+        // We check that no other DocSearch modal is showing before opening
+        // another one.
+        if (!document.body.classList.contains('DocSearch--active')) {
+          onOpen();
+        }
+      }
+      if (
+        (event.keyCode === 27 && isOpen) ||
+        (event.key === 'k' && (event.metaKey || event.ctrlKey)) ||
+        (!isEditingContent(event) && event.key === '/' && !isOpen)
+      ) {
+        event.preventDefault();
+        if (isOpen) {
+          onClose();
+        } else if (!document.body.classList.contains('DocSearch--active')) {
+          open();
+        }
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown);
+    return function () {
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [isOpen, onOpen, onClose]);
+}
+
 const options = {
   appId: siteConfig.algolia.appId,
   apiKey: siteConfig.algolia.apiKey,
   indexName: siteConfig.algolia.indexName,
 };
 let DocSearchModal: any = null;
-export const Search: React.FC<SearchProps> = ({
+export function Search({
   searchParameters = {
     hitsPerPage: 5,
   },
-}) => {
-  const [isLoaded] = React.useState(true);
-  const [isShowing, setIsShowing] = React.useState(false);
+}: SearchProps) {
+  const [isShowing, setIsShowing] = useState(false);
 
-  const importDocSearchModalIfNeeded = React.useCallback(
+  const importDocSearchModalIfNeeded = useCallback(
     function importDocSearchModalIfNeeded() {
       if (DocSearchModal) {
         return Promise.resolve();
       }
 
       // @ts-ignore
-      return Promise.all([import('@docsearch/react/modal')]).then(
-        ([{DocSearchModal: Modal}]) => {
+      return import('@docsearch/react/modal').then(
+        ({DocSearchModal: Modal}) => {
           DocSearchModal = Modal;
         }
       );
@@ -67,7 +118,7 @@ export const Search: React.FC<SearchProps> = ({
     []
   );
 
-  const onOpen = React.useCallback(
+  const onOpen = useCallback(
     function onOpen() {
       importDocSearchModalIfNeeded().then(() => {
         setIsShowing(true);
@@ -76,7 +127,7 @@ export const Search: React.FC<SearchProps> = ({
     [importDocSearchModalIfNeeded, setIsShowing]
   );
 
-  const onClose = React.useCallback(
+  const onClose = useCallback(
     function onClose() {
       setIsShowing(false);
     },
@@ -104,7 +155,7 @@ export const Search: React.FC<SearchProps> = ({
 
       <button
         type="button"
-        className="hidden md:flex relative pl-4 pr-0.5 py-1 h-10 bg-secondary-button dark:bg-gray-80 outline-none focus:ring focus:outline-none betterhover:hover:bg-opacity-80 pointer items-center shadow-inner text-left w-full text-gray-30 rounded-lg align-middle text-sm"
+        className="hidden md:flex relative pl-4 pr-1 py-1 h-10 bg-secondary-button dark:bg-gray-80 outline-none focus:ring focus:outline-none betterhover:hover:bg-opacity-80 pointer items-center shadow-inner text-left w-full text-gray-30 rounded-md align-middle text-sm"
         onClick={onOpen}>
         <IconSearch className="mr-3 align-middle text-gray-30 shrink-0 group-betterhover:hover:text-gray-70" />
         搜索
@@ -114,8 +165,7 @@ export const Search: React.FC<SearchProps> = ({
         </span>
       </button>
 
-      {isLoaded &&
-        isShowing &&
+      {isShowing &&
         createPortal(
           <DocSearchModal
             {...options}
@@ -142,6 +192,4 @@ export const Search: React.FC<SearchProps> = ({
         )}
     </>
   );
-};
-
-Search.displayName = 'Search';
+}

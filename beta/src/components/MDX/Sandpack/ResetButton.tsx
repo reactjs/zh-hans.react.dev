@@ -8,14 +8,14 @@ export interface ResetButtonProps {
   onReset: () => void;
 }
 
-export const ResetButton: React.FC<ResetButtonProps> = ({onReset}) => {
+export function ResetButton({onReset}: ResetButtonProps) {
   return (
     <button
       className="text-sm text-primary dark:text-primary-dark inline-flex items-center hover:text-link duration-100 ease-in transition mx-1"
       onClick={onReset}
       title="Reset Sandbox"
       type="button">
-      <IconRestart className="inline mb-0.5 ml-1 mr-1 relative top-0.5" /> Reset
+      <IconRestart className="inline ml-1 mr-1 relative" /> Reset
     </button>
   );
-};
+}

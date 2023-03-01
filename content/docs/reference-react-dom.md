@@ -40,7 +40,7 @@ var ReactDOM = require('react-dom');
 
 ### 浏览器支持 {#browser-support}
 
-React 支持所有的现代浏览器，尽管对于旧版本来说，可能需要引入 [相关的 polyfills 依赖](/docs/javascript-environment-requirements.html)。
+React 支持所有的现代浏览器，不过对于旧版本来说，可能需要引入 [相关的 polyfills 依赖](/docs/javascript-environment-requirements.html)。
 
 > 注意：
 >
@@ -50,19 +50,35 @@ React 支持所有的现代浏览器，尽管对于旧版本来说，可能需�
 
 ### `createPortal()` {#createportal}
 
+> Try the new React documentation for [`createPortal`](https://beta.reactjs.org/reference/react-dom/createPortal).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 createPortal(child, container)
 ```
 
-创建 portal。[Portal](/docs/portals.html) 提供了一种将子节点渲染到已 DOM 节点中的方式，该节点存在于 DOM 组件的层次结构之外。
+创建 portal。[Portal](/docs/portals.html) 提供了一种将子节点渲染到 DOM 节点中的方式，该节点存在于 DOM 组件的层次结构之外。
 
 ### `flushSync()` {#flushsync}
+
+> Try the new React documentation for [`flushSync`](https://beta.reactjs.org/reference/react-dom/flushSync).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```javascript
 flushSync(callback)
 ```
 
-强制 React 同步刷新提供的回调函数中的任何更新。该方法对于能够立即读取更新结果的场景很有效。
+强制 React 同步刷新提供的回调函数中的任何更新。这确保了 DOM 会被立即更新。
+
+```javascript
+// Force this state update to be synchronous.
+flushSync(() => {
+  setCount(count + 1);
+});
+// By this point, DOM is updated.
+```
 
 > 注意：
 > 
@@ -76,13 +92,18 @@ flushSync(callback)
 
 ## 遗留方法参考 {#legacy-reference}
 ### `render()` {#render}
+
+> Try the new React documentation for [`render`](https://beta.reactjs.org/reference/react-dom/render).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 render(element, container[, callback])
 ```
 
 > 注意：
 >
-> 在 React 18 中，`render` 函数已被 `createRoot` 函索所取代。具体请参阅 [createRoot](/docs/react-dom-client.html#createroot) 以了解更多。
+> 在 React 18 中，`render` 函数已被 `createRoot` 函数所取代。具体请参阅 [createRoot](/docs/react-dom-client.html#createroot) 以了解更多。
 
 在提供的 `container` 里渲染一个 React 元素，并返回对该组件的[引用](/docs/more-about-refs.html)（或者针对[无状态组件](/docs/components-and-props.html#function-and-class-components)返回 `null`）。
 
@@ -100,11 +121,15 @@ render(element, container[, callback])
 > 但是，目前应该避免使用返回的引用，因为它是历史遗留下来的内容，而且在未来版本的 React 中，组件渲染在某些情况下可能会是异步的。
 > 如果你真的需要获得对根组件 `ReactComponent` 实例的引用，那么推荐为根元素添加 [callback ref](/docs/refs-and-the-dom.html#callback-refs)。
 >
-> 使用 `render()` 对服务端渲染容器进行 hydrate 操作的方式已经被废弃，并且会在 React 17 被移除。作为替代，请使用 [`hydrateRoot()`](#hydrateroot)。
+> 使用 `render()` 对服务端渲染容器进行 hydrate 操作的方式已经被废弃，并且会在 React 17 被移除。作为替代，请使用 [`hydrateRoot()`](/docs/react-dom-client.html#hydrateroot)。
 
 * * *
 
 ### `hydrate()` {#hydrate}
+
+> Try the new React documentation for [`hydrate`](https://beta.reactjs.org/reference/react-dom/hydrate).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```javascript
 hydrate(element, container[, callback])
@@ -116,7 +141,7 @@ hydrate(element, container[, callback])
 
 与 [`render()`](#render) 相同，但它用于在 [`ReactDOMServer`](/docs/react-dom-server.html) 渲染的容器中对 HTML 的内容进行 hydrate 操作。React 会尝试在已有标记上绑定事件监听器。
 
-React 希望服务端与客户端渲染的内容完全一致。React 可以弥补文本内容的差异，但是你需要将不匹配的地方作为 bug 进行修复。在开发者模式下，React 会对 hydration 操作过程中的不匹配进行警告。但并不能保证在不匹配的情况下，修补属性的差异。由于性能的关系，这一点非常重要，因为大多是应用中不匹配的情况很少见，并且验证所有标记的成本非常昂贵。
+React 希望服务端与客户端渲染的内容完全一致。React 可以弥补文本内容的差异，但是你需要将不匹配的地方作为 bug 进行修复。在开发者模式下，React 会对 hydration 操作过程中的不匹配进行警告。但并不能保证在不匹配的情况下，修补属性的差异。由于性能的关系，这一点非常重要，因为大多数应用中不匹配的情况很少见，并且验证所有标记的成本非常昂贵。
 
 如果单个元素的属性或者文本内容，在服务端和客户端之间有无法避免差异（比如：时间戳），则可以为元素添加 `suppressHydrationWarning={true}` 来消除警告。这种方式只在一级深度上有效，应只作为一种应急方案（escape hatch）。请不要过度使用！除非它是文本内容，否则 React 仍不会尝试修补差异，因此在未来的更新之前，仍会保持不一致。
 
@@ -127,6 +152,10 @@ React 希望服务端与客户端渲染的内容完全一致。React 可以弥�
 * * *
 
 ### `unmountComponentAtNode()` {#unmountcomponentatnode}
+
+> Try the new React documentation for [`unmountComponentAtNode`](https://beta.reactjs.org/reference/react-dom/unmountComponentAtNode).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```javascript
 unmountComponentAtNode(container)
@@ -142,7 +171,11 @@ unmountComponentAtNode(container)
 
 ### `findDOMNode()` {#finddomnode}
 
-> 注意:
+> Try the new React documentation for [`findDOMNode`](https://beta.reactjs.org/reference/react-dom/findDOMNode).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+> 注意：
 >
 > `findDOMNode` 是一个访问底层 DOM 节点的应急方案（escape hatch）。在大多数情况下，不推荐使用该方法，因为它会破坏组件的抽象结构。[严格模式下该方法已弃用。](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
 

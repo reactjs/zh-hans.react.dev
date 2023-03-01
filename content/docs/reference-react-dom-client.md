@@ -37,6 +37,10 @@ React supports all modern browsers, although [some polyfills are required](/docs
 
 ### `createRoot()` {#createroot}
 
+> Try the new React documentation for [`createRoot`](https://beta.reactjs.org/reference/react-dom/client/createRoot).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 createRoot(container[, options]);
 ```
@@ -70,8 +74,13 @@ root.unmount();
 
 ### `hydrateRoot()` {#hydrateroot}
 
+> Try the new React documentation for [`hydrateRoot`](https://beta.reactjs.org/reference/react-dom/client/hydrateRoot).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
 ```javascript
-hydrateRoot(element, container[, options])
+hydrateRoot(container, element[, options])
 ```
 
 Same as [`createRoot()`](#createroot), but is used to hydrate a container whose HTML contents were rendered by [`ReactDOMServer`](/docs/react-dom-server.html). React will attempt to attach event listeners to the existing markup.

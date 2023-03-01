@@ -4,6 +4,15 @@ title: 严格模式
 permalink: docs/strict-mode.html
 ---
 
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`StrictMode`](https://beta.reactjs.org/reference/react/StrictMode)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
 `StrictMode` 是一个用来突出显示应用程序中潜在问题的工具。与 `Fragment` 一样，`StrictMode` 不会渲染任何可见的 UI。它为其后代元素触发额外的检查和警告。
 
 > 注意：
@@ -16,12 +25,12 @@ permalink: docs/strict-mode.html
 在上述的示例中，*不*会对 `Header` 和 `Footer` 组件运行严格模式检查。但是，`ComponentOne` 和 `ComponentTwo` 以及它们的所有后代元素都将进行检查。
 
 `StrictMode` 目前有助于：
-* [识别不安全的生命周期](#identifying-unsafe-lifecycles)
-* [关于使用过时字符串 ref API 的警告](#warning-about-legacy-string-ref-api-usage)
-* [关于使用废弃的 findDOMNode 方法的警告](#warning-about-deprecated-finddomnode-usage)
-* [检测意外的副作用](#detecting-unexpected-side-effects)
-* [检测过时的 context API](#detecting-legacy-context-api)
-* [检测不安全的副作用](#detecting-unsafe-effects)
+- [识别不安全的生命周期 {#identifying-unsafe-lifecycles}](#识别不安全的生命周期-identifying-unsafe-lifecycles)
+- [关于使用过时字符串 ref API 的警告 {#warning-about-legacy-string-ref-api-usage}](#关于使用过时字符串-ref-api-的警告-warning-about-legacy-string-ref-api-usage)
+- [关于使用废弃的 findDOMNode 方法的警告 {#warning-about-deprecated-finddomnode-usage}](#关于使用废弃的-finddomnode-方法的警告-warning-about-deprecated-finddomnode-usage)
+- [检测意外的副作用 {#detecting-unexpected-side-effects}](#检测意外的副作用-detecting-unexpected-side-effects)
+- [检测过时的 context API {#detecting-legacy-context-api}](#检测过时的-context-api-detecting-legacy-context-api)
+- [确保可复用的 state {#ensuring-reusable-state}](#确保可复用的-state-ensuring-reusable-state)
 
 未来的 React 版本将添加更多额外功能。
 
@@ -113,13 +122,15 @@ class MyComponent extends React.Component {
 例如，请考虑以下代码：
 `embed:strict-mode/side-effects-in-constructor.js`
 
-这段代码看起来似乎没有问题。但是如果 `SharedApplicationState.recordEvent` 不是[幂等](https://en.wikipedia.org/wiki/Idempotence#Computer_science_meaning)的情况下，多次实例化此组件可能会导致应用程序状态无效。这种小 bug 可能在开发过程中可能不会表现出来，或者说表现出来但并不明显，并因此被忽视。
+这段代码看起来似乎没有问题。但是如果 `SharedApplicationState.recordEvent` 不是[幂等](https://en.wikipedia.org/wiki/Idempotence#Computer_science_meaning)的情况下，多次实例化此组件可能会导致应用程序状态无效。这种小 bug 可能在开发过程中不会表现出来，或者说表现出来但并不明显，并因此被忽视。
 
 严格模式采用故意重复调用方法（如组件的构造函数）的方式，使得这种 bug 更容易被发现。
 
 > 注意：
 >
-> 从 React 17 开始，React 会自动修改 console 的方法，例如 `console.log()`，以在对生命周期函数的第二次调用中静默日志。然而，在某些[可以使用替代解决方案](https://github.com/facebook/react/issues/20090#issuecomment-715927125)的情况下，这可能会导致一些不期望的行为的发生。
+> 在 React 17 中，React 会自动修改 console 的方法，例如 `console.log()`，在第二次调用生命周期函数时，将日志静默。然而，在某些情况下，这可能会导致一些不符合期望的行为发生，此时，[可以使用替代解决方案](https://github.com/facebook/react/issues/20090#issuecomment-715927125)。
+>
+> 从 React 18 开始，React 不会抑制任何日志。不过，如果你安装了 React Dev Tools，第二次调用的日志会出现被轻微淡化。React DevTools 也提供了一个设置（默认关闭）来完全抑制它们。
 
 ### 检测过时的 context API {#detecting-legacy-context-api}
 
@@ -132,7 +143,7 @@ class MyComponent extends React.Component {
 
 ### 确保可复用的 state {#ensuring-reusable-state}
 
-在未来，我们希望增加一个功能，允许 React 在保留 state 的同时对 UI 进行增删。例如，当用户从当前屏幕的标签离开并返回时，React 应该能立即展示之前屏幕的内容。为了做到这一点，React 支持使用卸载前已有的组件状态重新挂载到树上。
+在未来，我们希望增加一个功能，允许 React 在保留 state 的同时对 UI 进行增删。例如，当用户从当前屏幕的标签离开并返回时，React 应该能立即展示之前屏幕的内容。为了做到这一点，React 将支持使用卸载前已有的组件状态重新挂载到树上。
 
 该特性会给 React 带来更好的开箱即用性能，但需要组件对多次挂载和销毁的副作用具有弹性。大多数副作用将在不做任何改变的情况下工作，但有些副作用可能会在销毁回调中未正确的清理订阅，或者隐示的认为它们只被挂载或销毁一次。
 
@@ -151,7 +162,7 @@ class MyComponent extends React.Component {
 ```
 * React mounts the component.
     * Layout effects are created.
-    * Effect effects are created.
+    * Effects are created.
 * React simulates effects being destroyed on a mounted component.
     * Layout effects are destroyed.
     * Effects are destroyed.
@@ -167,8 +178,16 @@ class MyComponent extends React.Component {
 ```
 * React unmounts the component.
   * Layout effects are destroyed.
-  * Effect effects are destroyed.
+  * Effects are destroyed.
 ```
+
+卸载和重新挂载的函数，包括：
+
+- `componentDidMount`
+- `componentWillUnmount`
+- `useEffect`
+- `useLayoutEffect`
+- `useInsertionEffect`
 
 > 注意：
 >

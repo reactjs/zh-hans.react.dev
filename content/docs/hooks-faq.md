@@ -331,54 +331,22 @@ function useWindowPosition() {
 
 ### 如何获取上一轮的 props 或 state？ {#how-to-get-the-previous-props-or-state}
 
-目前，你可以 [通过 ref](#is-there-something-like-instance-variables) 来手动实现：
+在以下两种场景下，你可以能会需要获取上一轮的 props 或 state。
 
-```js{6,8}
-function Counter() {
-  const [count, setCount] = useState(0);
+有时，你需要获取之前的 props 来 **进行副作用的清理**。例如，你可能有这样一个副作用，依赖 `userId` props 来订阅 socket。如果 `userId` 发生了变化，你需要取消 **之前** `userId` 的订阅，再进行后续订阅。这种情况下，你无需做额外操作即可实现：
 
-  const prevCountRef = useRef();
-  useEffect(() => {
-    prevCountRef.current = count;
-  });
-  const prevCount = prevCountRef.current;
-
-  return <h1>Now: {count}, before: {prevCount}</h1>;
-}
+```js
+useEffect(() => {
+  ChatAPI.subscribeToSocket(props.userId);
+  return () => ChatAPI.unsubscribeFromSocket(props.userId);
+}, [props.userId]);
 ```
 
-这或许有一点错综复杂，但你可以把它抽取成一个自定义 Hook：
+在上述示例中，如果 `userId` 从 `3` 变为 `4`，`ChatAPI.unsubscribeFromSocket(3)` 将会优先运行，然后才会执行 `ChatAPI.subscribeToSocket(4)`。这种情况下，你没必要获取之前的 `userId`，因为清理函数将在闭包中捕获它，
 
-```js{3,7}
-function Counter() {
-  const [count, setCount] = useState(0);
-  const prevCount = usePrevious(count);
-  return <h1>Now: {count}, before: {prevCount}</h1>;
-}
+其他情况下，你可能需要 **根据 props 或其他 state 的变化来调整 state**。但这一般并不常用，出现这种情况说明你代码中存在重复或多余的 state。然而，如果你需要应对这种场景，你可以在 [状态中存储之前的 state 或 props，并在渲染时更新它们](#how-do-i-implement-getderivedstatefromprops)。
 
-function usePrevious(value) {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-}
-```
-
-注意看这是如何作用于 props， state，或任何其他计算出来的值的。
-
-```js{5}
-function Counter() {
-  const [count, setCount] = useState(0);
-
-  const calculation = count + 100;
-  const prevCalculation = usePrevious(calculation);
-  // ...
-```
-
-考虑到这是一个相对常见的使用场景，很可能在未来 React 会自带一个 `usePrevious` Hook。
-
-参见 [derived state 推荐模式](#how-do-i-implement-getderivedstatefromprops).
+我们之前曾建议使用 `usePrevious` 的自定义 Hook 来保持前值。然后，我们发现大多数用例，都属于上述两种场景。如果你的用例与上述两种情况不同，你可以在 [Ref 中对该值进行存储](#is-there-something-like-instance-variables) 并在需要时手动更新它。注意，应避免在渲染过程中读取和更新 refs，因为这使得你组件的行为难以预测，且难以理解。
 
 ### 为什么我会在我的函数中看到陈旧的 props 和 state ？ {#why-am-i-seeing-stale-props-or-state-inside-my-function}
 
