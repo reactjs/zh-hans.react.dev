@@ -6,7 +6,7 @@ translators:
 
 <Intro>
 
-通常你的组件会需要根据不同的情况显示不同的内容。在 React，你可以通过使用 Javascript 的 `if` 语句，或者 `&&`，`? :` 运算符来选择性地渲染 JSX。
+通常你的组件会需要根据不同的情况显示不同的内容。在 React 中，你可以通过使用 JavaScript 的 `if` 语句、`&&` 和 `? :` 运算符来选择性地渲染 JSX。
 
 </Intro>
 
@@ -154,7 +154,7 @@ export default function PackingList() {
 
 </Sandpack>
 
-实际上，在组件里返回 `null` 并不常见，因为这样会让想使用它的开发者感觉奇怪。通常，你可以在父组件里选择是否要渲染该组件。让我们接着往下看吧！
+实际上，在组件里返回 `null` 并不常见，因为这样会让想使用它的开发者感觉奇怪。通常情况下，你可以在父组件里选择是否要渲染该组件。让我们接着往下看吧！
 
 ## 选择性地包含 JSX {/*conditionally-including-jsx*/}
 
@@ -164,7 +164,7 @@ export default function PackingList() {
 <li className="item">{name} ✔</li>
 ```
 
-相似于
+和下面的写法很像：
 
 ```js
 <li className="item">{name}</li>
