@@ -12,14 +12,14 @@
 ## 翻译流程
 
 1. 阅读 [翻译注意事项](#翻译注意事项)
-2. 挑选你想要翻译的文章，这些文章你可以 [在这里](https://github.com/reactjs/reactjs.org/issues/4135) 找到
+2. 挑选你想要翻译的文章，这些文章你可以 [在这里](https://github.com/reactjs/zh-hans.reactjs.org/issues/1075) 找到
 3. 进行 [任务认领](https://github.com/reactjs/zh-hans.reactjs.org/issues/602)
 4. 你可能需要设置一些必要的开发环境，参见 [前提准备](#前提准备)
 5. 准备就绪，你就可以进行 [翻译工作](#开始翻译)，翻译工作包括切换分支、内容修改和代码测试
 6. 需要将你的改变提交到 GitHub 并创建 Pull Request，参见 [提交和推送](#提交和推送)
 7. 审查人员会审核你的 Pull Request，当两人以上通过该 Pull Request 时，你的翻译将被合并到仓库中
 
-注：在以前，我们还有一份更为详细的 [翻译流程说明](https://github.com/reactjs/zh-hans.reactjs.org/issues/602)，可以供你参考
+注：在以前，我们还有一份更为详细的 [翻译流程说明](https://github.com/reactjs/zh-hans.reactjs.org/issues/603)，可以供你参考
 
 ### 前提准备
 
