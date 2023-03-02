@@ -12,7 +12,7 @@ translators:
 
 <YouWillLearn>
 
-* 如何根据不同条件返回不同地 JSX
+* 如何根据不同条件返回不同的 JSX
 * 如何根据不同条件包含或者去掉部分 JSX
 * 一些你会在 React 代码库里遇到的常用的条件语法快捷表达式
 
@@ -108,7 +108,7 @@ export default function PackingList() {
 
 ### 选择性地返回 `null` {/*conditionally-returning-nothing-with-null*/}
 
-在一些情况下，你不想有任何东西进行渲染。比如，假设你不想显示已经打包好的物品。但一个组件必须返回一些东西。这种情况下，你可以直接返回 `null`。
+在一些情况下，你不想有任何东西进行渲染。比如，你不想显示已经打包好的物品。但一个组件必须返回一些东西。这种情况下，你可以直接返回 `null`。
 
 ```js
 if (isPacked) {
@@ -158,7 +158,7 @@ export default function PackingList() {
 
 ## 选择性地包含 JSX {/*conditionally-including-jsx*/}
 
-在之前的例子里，你通过在组件内部控制哪些 JSX 树（如果有的话！）会返回。你可能已经发现了在渲染输出里会有一些重复的内容：
+在之前的例子里，你在组件内部控制哪些 JSX 树（如果有的话！）会返回。你可能已经发现了在渲染输出里会有一些重复的内容：
 
 ```js
 <li className="item">{name} ✔</li>
@@ -204,13 +204,13 @@ return (
 );
 ```
 
-你可以认为，*“如果 `isPacked=true` 时，则（`?`）渲染 `name + ' ✔'`，否则（`:`）渲染 `name`。”*
+你可以认为，*“如果 `isPacked` 为 true 时，则（`?`）渲染 `name + ' ✔'`，否则（`:`）渲染 `name`。”*
 
 <DeepDive>
 
 #### 两个例子完全一样吗？ {/*are-these-two-examples-fully-equivalent*/}
 
-如果你之前是习惯面向对象开发的，你可能会认为上面的两个例子略有不同，因为其中一个可能会创建两个不同的 `<li>` “实例”。但 JSX 元素不是“实例”，因为它们没有内部状态也不是真是的 DOM 节点。它们只是一些简单的描述，就像图纸一样。所以上面这两个例子，事实上，是完全相同的。在 [状态的保持和重置](/learn/preserving-and-resetting-state) 里会深入探讨其原因。
+如果你之前是习惯面向对象开发的，你可能会认为上面的两个例子略有不同，因为其中一个可能会创建两个不同的 `<li>` “实例”。但 JSX 元素不是“实例”，因为它们没有内部状态也不是真是的 DOM 节点。它们只是一些简单的描述，就像图纸一样。所以上面这两个例子事实上是完全相同的。在 [状态的保持和重置](/learn/preserving-and-resetting-state) 里会深入探讨其原因。
 
 </DeepDive>
 
@@ -262,7 +262,7 @@ export default function PackingList() {
 
 ### 与运算符（`&&`） {/*logical-and-operator-*/}
 
-你会遇到的另一个常见的快捷表达式是 [JavaScript 与（`&&`）运算符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_AND#:~:text=The%20logical%20AND%20(%20%26%26%20)%20operator,it%20returns%20a%20Boolean%20value.)。在 React 组件里，通常用在当条件成立时，你想渲染一些 JSX，**或者不做任何渲染**。使用 `&&`，你也可以实现仅当 `isPacked=true` 时，渲染勾选符号。
+你会遇到的另一个常见的快捷表达式是 [JavaScript 与（`&&`）运算符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_AND#:~:text=The%20logical%20AND%20(%20%26%26%20)%20operator,it%20returns%20a%20Boolean%20value.)。在 React 组件里，通常用在当条件成立时，你想渲染一些 JSX，**或者不做任何渲染**。使用 `&&`，你也可以实现仅当 `isPacked` 为 `true` 时，渲染勾选符号。
 
 ```js
 return (
@@ -628,7 +628,7 @@ export default function PackingList() {
 
 需注意的是，你必须使用 `importance > 0 && ...` 而不是 `importance && ...`，这样如果 `importantce` 是 `0`， `0` 就不会被渲染出来了！
 
-在这个解决方案里，分别用了两个条件判断在名字和重要性标签里插入一个空格。另外，你也可以通过一个带前导空格的片段：`importance > 0 && <> <i>...</i></>`，或者将空格放在 `<i>` 标签内：`importance > 0 && <i> ...</i>`, 来实现相同的效果。
+在这个解决方案里，分别用了两个条件判断在名字和重要性标签里插入一个空格。另外，你也可以通过一个带前导空格的 fragment ：`importance > 0 && <> <i>...</i></>`，或者将空格放在 `<i>` 标签内：`importance > 0 && <i> ...</i>`, 来实现相同的效果。
 
 </Solution>
 
