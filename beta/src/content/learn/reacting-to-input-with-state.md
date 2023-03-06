@@ -1,5 +1,5 @@
 ---
-title: State 驱动输入
+title: 用 State 响应输入
 translators:
   - BBboy01
   - KimYangOfCat
