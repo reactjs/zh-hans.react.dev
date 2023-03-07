@@ -199,7 +199,7 @@ function handleClick() {
 
 阅读 [深入自动批处理](https://github.com/reactwg/react-18/discussions/21) 获取更多信息。
 
-## 为库提供的新 API （New APIs for Libraries） {#new-apis-for-libraries}
+## 为库提供的新 API  {#new-apis-for-libraries}
 
 React 18 工作组和库维护者合作，为他们的特定 use case ，例如样式和外部 store ，创建了支持并发渲染的新 API 。为了支持 React 18，有些库可能需要切换到以下 API 中的一个：
 
