@@ -113,7 +113,7 @@ const root = hydrateRoot(container, <App tab="home" />);
 Node 环境使用 streaming ，请使用：
 * `renderToPipeableStream`: **新 ✨**
 
-我们还引入了一个新的 API ，以在现代边缘运行时环境，如 Deno 和 Cloudflare worker 支持带 Suspense 的流式 SSR （streaming SSR with Suspense）：
+我们还引入了一个新的 API ，以在现代边缘运行时环境，如 Deno 和 Cloudflare worker 支持带 Suspense 的流式 SSR ：
 * `renderToReadableStream`: **新 ✨**
 
 以下 API 依然可用，但是对 Suspense 的支持是受限的：
