@@ -277,7 +277,7 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
 ## 其他破坏性更改（Other Breaking Changes） {#other-breaking-changes}
 
-* **一致的 useEffect 时序（Consistent useEffect timing）**: 如果更新是由独立的用户输入事件，如 click 或 keydown 事件，则 React 现在总是同步刷新 （flush）effect 函数。而以前行为并非总是可预测的和一致的。
+* **一致的 useEffect 时序**: 如果更新是由独立的用户输入事件，如 click 或 keydown 事件，则 React 现在总是同步刷新 effect 函数。而以前行为并非总是可预测的和一致的。
 * **更严格的 hydration 错误**: 由于缺失的或额外的文本内容现在被当做错误而非警告，因此 hydration 匹配不上了。React 不再尝试在客户端插入或删除节点对单独节点进行 "patch up" ，以匹配服务端的内容，而是回退到客户端，渲染组件树最近的 `<Suspense>` 边界。这样保证 hydrate 后树的一致性，避免潜在的由 hydration 不匹配导致的隐私和安全漏洞 。
 * **Suspense 树总是一致的：** 如果一个组件在完全添加到组件树前挂起了，React 会以不完整状态将其添加到组件树，或者触发其副作用。React 会完全抛弃新的树，等待异步操作完成，然后尝试从头开始渲染。React 用并发渲染进行重试，并且不阻塞浏览器。
 * **Layout Effects with Suspense**：当组件树重新挂起并回退到兜底时，React 会清理布局 effect ，然后当边界内的内容重新显示时，重新创建它们。这解决了一个问题，这个问题会阻止组件库在使用 Suspense 时正确测量布局。
