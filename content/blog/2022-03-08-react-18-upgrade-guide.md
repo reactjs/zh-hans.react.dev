@@ -197,13 +197,13 @@ function handleClick() {
 }
 ```
 
-阅读 [深入自动批处理](https://github.com/reactwg/react-18/discussions/21) 获取更多信息。
+阅读[深入自动批处理](https://github.com/reactwg/react-18/discussions/21) 获取更多信息。
 
 ## 为库提供的新 API  {#new-apis-for-libraries}
 
 React 18 工作组和库维护者合作，为他们的特定 use case ，例如样式和外部 store ，创建了支持并发渲染的新 API 。为了支持 React 18，有些库可能需要切换到以下 API 中的一个：
 
-* `useSyncExternalStore` 是一个新的 hook ，通过强制把 store 的更新设置为同步，允许外部 store 支持并发读（concurrent reads）。推荐所有集成了 React 外部状态的库使用这个新 API 。 更多信息请阅读 [useSyncExternalStore overview post](https://github.com/reactwg/react-18/discussions/70) 和 [useSyncExternalStore API details](https://github.com/reactwg/react-18/discussions/86)。
+* `useSyncExternalStore` 是一个新的 hook ，通过强制把 store 的更新设置为同步，允许外部 store 支持并发读。推荐所有集成了 React 外部状态的库使用这个新 API 。更多信息请阅读 [useSyncExternalStore 综述帖子](https://github.com/reactwg/react-18/discussions/70) 和 [useSyncExternalStore API 细节](https://github.com/reactwg/react-18/discussions/86)。
 * `useInsertionEffect` 是一个新的 hook ，允许 CSS-in-JS 库定位渲染时注入的样式的性能问题。除非你已构建了 CSS-in-JS 库，否则不要用这个 hook 。这个 hook 会在 DOM 可交互后运行，但是在布局 effect 读到新的布局前。这解决了 React 17 及以下版本已存在的一个问题，不过对于 React 18 更重要，因为 React 在并发渲染期间会把控制权交给浏览器，让浏览器有机会重新计算布局。阅读 [`<style>` 的库升级指南](https://github.com/reactwg/react-18/discussions/110) 获取更多信息。
 
 React 18 还引入了 `startTransition`、`useDeferredValue` 和 `useId` 等并发渲染的新 API，在 [发布公告](/blog/2022/03/29/react-v18.html) 中我们有更详细介绍。
@@ -267,7 +267,7 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
 如果你需要支持 IE ，我们建议你停留在 React 17 。
 
-## 废弃（Deprecations） {#deprecations}
+## 废弃 {#deprecations}
 
 * `react-dom`: `ReactDOM.render` 已废弃。继续使用会发出警告，并且应用运行在 React 17 模式。
 * `react-dom`: `ReactDOM.hydrate` 已废弃。继续使用会发出警告，并且应用运行在 React 17 模式。
@@ -275,7 +275,7 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 * `react-dom`: `ReactDOM.renderSubtreeIntoContainer` 已废弃。
 * `react-dom/server`: `ReactDOMServer.renderToNodeStream` 已废弃。
 
-## 其他破坏性更改（Other Breaking Changes） {#other-breaking-changes}
+## 其他破坏性更改 {#other-breaking-changes}
 
 * **一致的 useEffect 时序**: 如果更新是由独立的用户输入事件，如 click 或 keydown 事件，则 React 现在总是同步刷新 effect 函数。而以前行为并非总是可预测的和一致的。
 * **更严格的 hydration 错误**: 由于缺失的或额外的文本内容现在被当做错误而非警告，因此 hydration 匹配不上了。React 不再尝试在客户端插入或删除节点对单独节点进行 "patch up" ，以匹配服务端的内容，而是回退到客户端，渲染组件树最近的 `<Suspense>` 边界。这样保证 hydrate 后树的一致性，避免潜在的由 hydration 不匹配导致的隐私和安全漏洞 。
