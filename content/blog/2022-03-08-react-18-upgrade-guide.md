@@ -136,7 +136,7 @@ interface MyButtonProps {
 }
 ```
 
-查看 [React 18 typings pull request](https://github.com/DefinitelyTyped/DefinitelyTyped/pull/56210) 获得只含类型更改（type-only changes）的完整清单。它链到库类型的修复例子（It links to example fixes in library types），你就知道如何调整自己的代码。 你可以使用 [automated migration script](https://github.com/eps1lon/types-react-codemod) 来加速帮你把应用代码迁移到更安全的新类型。
+查看 [React 18 typings pull request](https://github.com/DefinitelyTyped/DefinitelyTyped/pull/56210) 获得只含类型更改的完整清单。它链到库类型的修复例子，你就知道如何调整自己的代码。 你可以使用 [自动迁移脚本](https://github.com/eps1lon/types-react-codemod) 来加速帮你把应用代码迁移到更安全的新类型。
 
 如果你发现了类型的 bug ，请在 DefinitelyTyped repo [提交一个 issue](https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/new?category=issues-with-a-types-package)。
 
