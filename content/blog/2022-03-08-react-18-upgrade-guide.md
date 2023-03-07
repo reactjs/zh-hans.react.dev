@@ -142,7 +142,7 @@ interface MyButtonProps {
 
 ## 自动化批处理 {#automatic-batching}
 
-React 18 通过更多默认批处理提供了开箱即用的性能优化。批处理是指 React 把多个状态更新组合为一次重渲染（re-render）从而获得更好性能。React 18 之前，我们仅把 React event handler 的更新做批处理。Promise、setTimeout、native event handler，或者其他事件中的更新，React 默认不进行批处理：
+React 18 通过更多默认批处理提供了开箱即用的性能优化。批处理是指 React 把多个状态更新组合为一次重渲染从而获得更好性能。React 18 之前，我们仅把 React event handler 的更新做批处理。Promise、setTimeout、native event handler，或者其他事件中的更新，React 默认不进行批处理：
 
 ```js
 // React 18 之前的版本，只有 React 事件进行批处理
