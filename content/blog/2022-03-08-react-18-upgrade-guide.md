@@ -287,7 +287,7 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
 ### React {#react}
 
-* **组件现在可以渲染 `undefined`:** 如果组件返回 `undefined`，React 不再警告。这样组件的返回值与组件树中间允许的值（values that are allowed in the middle of a component tree）保持一致。我们建议使用 linter 来避免在 JSX 之前忘记 `return` 语句的错误。
+* **组件现在可以渲染 `undefined`:** 如果组件返回 `undefined`，React 不再警告。这样组件的返回值与组件树中间允许的值保持一致。我们建议使用 linter 来避免在 JSX 之前忘记 `return` 语句的错误。
 * **在测试中, `act` 警告是可选的:** 如果你在运行 e2e 测试，`act` 警告是不必要的。我们引入了一个 [opt-in](https://github.com/reactwg/react-18/discussions/102) 机制，这样你可以在单元测试时启用，对于单元测试是有用和有收益的。
 * **未挂载组件 `setState` 不再有警告:** 以前, 当你在未挂载组件调用 `setState` 时，React 警告内存泄露。该警告是为了订阅添加的，然后人们遇到这种情况时，大部分时候都是正常情况，而解决方案让代码更糟糕。 我们已[删除](https://github.com/facebook/react/pull/22114)这个警告。
 * **不抑制控制台日志（No suppression of console logs）：** 严格模式下, React 每个组件渲染2次，帮你发现意外的副作用。在 React 17 中我们抑制（suppress）了其中一次渲染的控制台日志，让日志更易读。根据[社区反馈](https://github.com/facebook/react/issues/21783)，这个功能让人困惑，我们已删除了这个功能。现在如果你安装了 React DevTools，第二条日志显示成灰色的，同时提供一个选项（默认不开启）彻底抑制日志。 
