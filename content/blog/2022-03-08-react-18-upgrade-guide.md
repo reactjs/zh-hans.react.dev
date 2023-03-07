@@ -206,7 +206,7 @@ React 18 工作组和库维护者合作，为他们的特定 use case ，例如�
 * `useSyncExternalStore` 是一个新的 hook ，通过强制把 store 的更新设置为同步，允许外部 store 支持并发读（concurrent reads）。推荐所有集成了 React 外部状态的库使用这个新 API 。 更多信息请阅读 [useSyncExternalStore overview post](https://github.com/reactwg/react-18/discussions/70) 和 [useSyncExternalStore API details](https://github.com/reactwg/react-18/discussions/86)。
 * `useInsertionEffect` 是一个新的 hook ，允许 CSS-in-JS 库定位渲染时注入的样式的性能问题。除非你已构建了 CSS-in-JS 库，否则不要用这个 hook 。这个 hook 会在 DOM 可交互后运行，但是在布局 effect 读到新的布局前。这解决了 React 17 及以下版本已存在的一个问题，不过对于 React 18 更重要，因为 React 在并发渲染期间会把控制权交给浏览器，让浏览器有机会重新计算布局。阅读 [`<style>` 的库升级指南](https://github.com/reactwg/react-18/discussions/110) 获取更多信息。
 
-React 18 还引入了 `startTransition`、`useDeferredValue` 和 `useId` 等并发渲染的新 API，在 [release post](/blog/2022/03/29/react-v18.html) 中我们有更详细介绍。
+React 18 还引入了 `startTransition`、`useDeferredValue` 和 `useId` 等并发渲染的新 API，在 [发布公告](/blog/2022/03/29/react-v18.html) 中我们有更详细介绍。
 
 ## 升级严格模式 {#updates-to-strict-mode}
 
