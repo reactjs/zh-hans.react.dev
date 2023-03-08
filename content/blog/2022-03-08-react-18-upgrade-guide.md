@@ -7,7 +7,7 @@ author: [rickhanlonii]
 
 升级到 React 18 遇到问题请 [报告issue](https://github.com/facebook/react/issues/new/choose) 。
 
-*React Native 用户请注意: React Native 在未来版本会集成 React 18。 这是因为 React 18 依赖 React Native 的新架构，从而受益于本文介绍的新能力。更多信息请阅读 [React Conf keynote](https://www.youtube.com/watch?v=FZ0cG47msEk&t=1530s) 。*
+*React Native 用户请注意： React Native 在未来版本会集成 React 18。 这是因为 React 18 依赖 React Native 的新架构，从而受益于本文介绍的新能力。更多信息请阅读 [React Conf keynote](https://www.youtube.com/watch?v=FZ0cG47msEk&t=1530s) 。*
 
 ## 安装 {#installing}
 
@@ -29,7 +29,7 @@ yarn add react react-dom
 
 >  React 18 不再支持 ReactDOM.render，请替换成 createRoot 。直到切换为新 API，你的应用表现的就像是运行在 React 17 。了解更多：https://reactjs.org/link/switch-to-createroot
 
-React 18 引入了一个新的 root API ，可以更高效地操作 root（provides better ergonomics for managing roots）。新的 root API 也开启了新的并发渲染器，带你走向并发渲染特性。
+React 18 引入了一个新的 root API ，可以更高效地操作 root 节点。新的 root API 也开启了新的并发渲染器，带你走向并发渲染特性。
 
 ```js
 // 升级前
@@ -79,7 +79,7 @@ root.render(<AppWithCallbackAfterRender />);
 
 > 注意：
 > 
-> 不存在老的渲染回调 API 一一对应的替代品 —— 这取决于你的使用场景。阅读工作组文章 [用 createRoot 取代 render](https://github.com/reactwg/react-18/discussions/5) 获取更多信息。
+> 不存在和老的渲染回调 API 一一对应的替代品 —— 这取决于你的使用场景。阅读工作组文章 [用 createRoot 取代 render](https://github.com/reactwg/react-18/discussions/5) 获取更多信息。
 
 最后，如果你的应用使用了服务端渲染和 hydration ，需要把 `hydrate` 升级为 `hydrateRoot`：
 
@@ -278,25 +278,25 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 ## 其他破坏性更改 {#other-breaking-changes}
 
 * **一致的 useEffect 时序**: 如果更新是由独立的用户输入事件，如 click 或 keydown 事件，则 React 现在总是同步刷新 effect 函数。而以前行为并非总是可预测的和一致的。
-* **更严格的 hydration 错误**: 由于缺失的或额外的文本内容现在被当做错误而非警告，因此 hydration 匹配不上了。React 不再尝试在客户端插入或删除节点对单独节点进行 "patch up" ，以匹配服务端的内容，而是回退到客户端，渲染组件树最近的 `<Suspense>` 边界。这样保证 hydrate 后树的一致性，避免潜在的由 hydration 不匹配导致的隐私和安全漏洞 。
+* **更严格的 hydration 错误**： 由于缺失的或额外的文本内容现在被当做错误而非警告，因此 hydration 匹配不上了。React 不再尝试在客户端插入或删除节点对单独节点进行 "patch up" ，以匹配服务端的内容，而是回退到客户端，渲染组件树最近的 `<Suspense>` 边界。这样保证 hydrate 后树的一致性，避免潜在的由 hydration 不匹配导致的隐私和安全漏洞 。
 * **Suspense 树总是一致的：** 如果一个组件在完全添加到组件树前挂起了，React 会以不完整状态将其添加到组件树，或者触发其副作用。React 会完全抛弃新的树，等待异步操作完成，然后尝试从头开始渲染。React 用并发渲染进行重试，并且不阻塞浏览器。
 * **Layout Effects with Suspense**：当组件树重新挂起并回退到兜底时，React 会清理布局 effect ，然后当边界内的内容重新显示时，重新创建它们。这解决了一个问题，这个问题会阻止组件库在使用 Suspense 时正确测量布局。
-* **新的 JS 环境要求**: React 现在依赖现代浏览器的特性，包括 `Promise`、`Symbol` 和 `Object.assign`。如果你支持老的浏览器和设备，例如 IE ，对现代浏览器特性缺乏原生支持或者有兼容性问题，可以考虑在应用 bundle 增加全局 polyfill 。
+* **新的 JS 环境要求**： React 现在依赖现代浏览器的特性，包括 `Promise`、`Symbol` 和 `Object.assign`。如果你支持老的浏览器和设备，例如 IE ，对现代浏览器特性缺乏原生支持或者有兼容性问题，可以考虑在应用 bundle 增加全局 polyfill 。
 
 ## 其他重要更改 {#other-notable-changes}
 
 ### React {#react}
 
-* **组件现在可以渲染 `undefined`:** 如果组件返回 `undefined`，React 不再警告。这样组件的返回值与组件树中间允许的值保持一致。我们建议使用 linter 来避免在 JSX 之前忘记 `return` 语句的错误。
-* **在测试中, `act` 警告是可选的:** 如果你在运行 e2e 测试，`act` 警告是不必要的。我们引入了一个 [opt-in](https://github.com/reactwg/react-18/discussions/102) 机制，这样你可以在单元测试时启用，对于单元测试是有用和有收益的。
-* **未挂载组件 `setState` 不再有警告:** 以前, 当你在未挂载组件调用 `setState` 时，React 警告内存泄露。该警告是为了订阅添加的，然后人们遇到这种情况时，大部分时候都是正常情况，而解决方案让代码更糟糕。 我们已[删除](https://github.com/facebook/react/pull/22114)这个警告。
+* **组件现在可以渲染 `undefined` ：** 如果组件返回 `undefined`，React 不再警告。这样组件的返回值与组件树中间允许的值保持一致。我们建议使用 linter 来避免在 JSX 之前忘记 `return` 语句的错误。
+* **在测试中, `act` 警告是可选的：** 如果你在运行 e2e 测试，`act` 警告是不必要的。我们引入了一个 [opt-in](https://github.com/reactwg/react-18/discussions/102) 机制，这样你可以在单元测试时启用，对于单元测试是有用和有收益的。
+* **未挂载组件 `setState` 不再有警告：** 以前, 当你在未挂载组件调用 `setState` 时，React 警告内存泄露。该警告是为了订阅添加的，然后人们遇到这种情况时，大部分时候都是正常情况，而解决方案让代码更糟糕。 我们已[删除](https://github.com/facebook/react/pull/22114)这个警告。
 * **不抑制控制台日志：** 严格模式下, React 每个组件渲染2次，帮你发现意外的副作用。在 React 17 中我们抑制了其中一次渲染的控制台日志，让日志更易读。根据[社区反馈](https://github.com/facebook/react/issues/21783)，这个功能让人困惑，我们已删除了这个功能。现在如果你安装了 React DevTools，第二条日志显示成灰色的，同时提供一个选项（默认不开启）彻底抑制日志。 
-* **改进的内存使用:** React现在会在卸载时清理更多内部字段，让你的应用中可能存在的未修复内存泄露的影响更轻。
+* **改进的内存使用：** React现在会在卸载时清理更多内部字段，让你的应用中可能存在的未修复内存泄露的影响更轻。
 
 ### React DOM Server {#react-dom-server}
 
-* **`renderToString`:** 服务端挂起时不再返回错误。而是返回最近的 `<Suspense>` 边界的兜底 HTML ，然后在客户端重试渲染这个内容。依然推荐切换到 `renderToPipeableStream` 或 `renderToReadableStream` 等流式 API 。
-* **`renderToStaticMarkup`:** 服务端挂起时不再返回错误。 而是返回最近的 `<Suspense>` 边界的兜底 HTML。
+* **`renderToString`：** 服务端挂起时不再返回错误。而是返回最近的 `<Suspense>` 边界的兜底 HTML ，然后在客户端重试渲染这个内容。依然推荐切换到 `renderToPipeableStream` 或 `renderToReadableStream` 等流式 API 。
+* **`renderToStaticMarkup`：** 服务端挂起时不再返回错误。 而是返回最近的 `<Suspense>` 边界的兜底 HTML。
 
 ## Changelog {#changelog}
 
