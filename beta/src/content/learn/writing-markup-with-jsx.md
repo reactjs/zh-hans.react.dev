@@ -41,7 +41,7 @@ JavaScript
 
 </DiagramGroup>
 
-But as the Web became more interactive, logic increasingly determined content. JavaScript was in charge of the HTML! This is why **in React, rendering logic and markup live together in the same place—components.**
+但随着 Web 的交互性越来越强，逻辑越来越决定页面中的内容。JavaScript 负责 HTML 的内容！这也是为什么 **在 React 中，渲染逻辑和标记共同存在于同一个地方——组件。**
 
 <DiagramGroup>
 
@@ -65,7 +65,7 @@ But as the Web became more interactive, logic increasingly determined content. J
 
 <Note>
 
-[JSX and React 是相互独立的](/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform) 你 _可以_ 单独使用它们中的任意一个。
+[JSX and React 是相互独立的](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#whats-a-jsx-transform) 东西。但它们经常一起使用，但你 _可以_ 单独使用它们中的任意一个，JSX 是一种语法扩展，而 React 则是一个 JavaScript 的库。
 
 </Note>
 
@@ -174,11 +174,13 @@ img { height: 90px }
 </>
 ```
 
-这个空标签被称作 *[React fragment](TODO)*. React fragments 允许你将子元素分组，而不会在 HTML 结构中添加额外节点。
+这个空标签被称作 *[Fragment](/reference/react/Fragment)*. React Fragment 允许你将子元素分组，而不会在 HTML 结构中添加额外节点。
 
-<DeepDive title="为什么多个 JSX 标签需要被一个父元素包裹？">
+<DeepDive>
 
-JSX 虽然看起来很像 HTML，但在底层其实被转化为了 JavaScript 对象，你不能在一个函数中返回多个对象，除非用一个数组把他们包装起来。这就是为什么多个 JSX 标签必须要用一个父元素或者 fragment 来包裹。
+#### 为什么多个 JSX 标签需要被一个父元素包裹？ {/*why-do-multiple-jsx-tags-need-to-be-wrapped*/}
+
+JSX 虽然看起来很像 HTML，但在底层其实被转化为了 JavaScript 对象，你不能在一个函数中返回多个对象，除非用一个数组把他们包装起来。这就是为什么多个 JSX 标签必须要用一个父元素或者 Fragment 来包裹。
 
 </DeepDive>
 
@@ -217,13 +219,13 @@ JSX 最终会被转化为 JavaScript，而 JSX 中的属性也会变成 JavaScri
 />
 ```
 
-你可以 [在 React DOM 元素中找到所有对应的属性](TODO)。如果你在编写属性时发生了错误，不用担心 —— React 会在 [浏览器控制台](https://developer.mozilla.org/docs/Tools/Browser_Console) 中打印一条可能的更正信息。
+你可以 [在 React DOM 元素中找到所有对应的属性](/reference/react-dom/components/common)。如果你在编写属性时发生了错误，不用担心 —— React 会在 [浏览器控制台](https://firefox-source-docs.mozilla.org/devtools-user/browser_console/index.html) 中打印一条可能的更正信息。
 
-<Gotcha>
+<Pitfall>
 
 由于历史原因，[`aria-*`](https://developer.mozilla.org/docs/Web/Accessibility/ARIA) 和 [`data-*`](https://developer.mozilla.org/docs/Learn/HTML/Howto/Use_data_attributes) 属性是以带 `-` 符号的 HTML 格式书写的。
 
-</Gotcha>
+</Pitfall>
 
 ### 高级提示：使用 JSX 转化器 {/*pro-tip-use-a-jsx-converter*/}
 

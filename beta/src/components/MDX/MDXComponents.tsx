@@ -2,13 +2,13 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
+import {Children, useContext, useMemo} from 'react';
 import * as React from 'react';
 import cn from 'classnames';
 
 import CodeBlock from './CodeBlock';
 import {CodeDiagram} from './CodeDiagram';
 import ConsoleBlock from './ConsoleBlock';
-import Convention from './Convention';
 import ExpandableCallout from './ExpandableCallout';
 import ExpandableExample from './ExpandableExample';
 import {H1, H2, H3, H4} from './Heading';
@@ -29,6 +29,7 @@ import {IconNavArrow} from '../Icon/IconNavArrow';
 import ButtonLink from 'components/ButtonLink';
 import {TocContext} from './TocContext';
 import type {Toc, TocItem} from './TocContext';
+import {TeamMember} from './TeamMember';
 
 function CodeStep({children, step}: {children: any; step: number}) {
   return (
@@ -37,10 +38,14 @@ function CodeStep({children, step}: {children: any; step: number}) {
       className={cn(
         'code-step bg-opacity-10 dark:bg-opacity-20 relative rounded px-[6px] py-[1.5px] border-b-[2px] border-opacity-60',
         {
-          'bg-blue-40 border-blue-40': step === 1,
-          'bg-yellow-40 border-yellow-40': step === 2,
-          'bg-green-40 border-green-40': step === 3,
-          'bg-purple-40 border-purple-40': step === 4,
+          'bg-blue-40 border-blue-40 text-blue-60 dark:text-blue-30':
+            step === 1,
+          'bg-yellow-40 border-yellow-40 text-yellow-60 dark:text-yellow-30':
+            step === 2,
+          'bg-purple-40 border-purple-40 text-purple-60 dark:text-purple-30':
+            step === 3,
+          'bg-green-40 border-green-40 text-green-60 dark:text-green-30':
+            step === 4,
         }
       )}>
       {children}
@@ -67,13 +72,16 @@ const UL = (p: JSX.IntrinsicElements['ul']) => (
 );
 
 const Divider = () => (
-  <hr className="my-6 block border-b border-border dark:border-border-dark" />
+  <hr className="my-6 block border-b border-t-0 border-border dark:border-border-dark" />
 );
 const Wip = ({children}: {children: React.ReactNode}) => (
   <ExpandableCallout type="wip">{children}</ExpandableCallout>
 );
-const Gotcha = ({children}: {children: React.ReactNode}) => (
-  <ExpandableCallout type="gotcha">{children}</ExpandableCallout>
+const Pitfall = ({children}: {children: React.ReactNode}) => (
+  <ExpandableCallout type="pitfall">{children}</ExpandableCallout>
+);
+const Deprecated = ({children}: {children: React.ReactNode}) => (
+  <ExpandableCallout type="deprecated">{children}</ExpandableCallout>
 );
 const Note = ({children}: {children: React.ReactNode}) => (
   <ExpandableCallout type="note">{children}</ExpandableCallout>
@@ -125,6 +133,15 @@ function LearnMore({
   );
 }
 
+function ReadBlogPost({path}: {path: string}) {
+  return (
+    <ButtonLink className="mt-1" label="Read Post" href={path} type="primary">
+      Read Post
+      <IconNavArrow displayDirection="right" className="inline ml-1" />
+    </ButtonLink>
+  );
+}
+
 function Math({children}: {children: any}) {
   return (
     <span
@@ -166,27 +183,39 @@ function Recipes(props: any) {
 }
 
 function AuthorCredit({
-  author,
-  authorLink,
+  author = 'Rachel Lee Nabors',
+  authorLink = 'http://rachelnabors.com/',
 }: {
   author: string;
   authorLink: string;
 }) {
   return (
-    <p className="text-center text-secondary dark:text-secondary-dark text-base mt-2">
-      <cite>
-        Illustrated by{' '}
-        {authorLink ? (
-          <a className="text-link dark:text-link-dark" href={authorLink}>
-            {author}
-          </a>
-        ) : (
-          author
-        )}
-      </cite>
-    </p>
+    <div className="sr-only group-hover:not-sr-only group-focus-within:not-sr-only hover:sr-only">
+      <p className="bg-card dark:bg-card-dark text-center text-sm text-secondary dark:text-secondary-dark leading-tight dark:text-secondary-dark p-2 rounded-lg absolute left-1/2 top-0 -translate-x-1/2 -translate-y-full group-hover:flex group-hover:opacity-100 after:content-[''] after:absolute after:left-1/2 after:top-[95%] after:-translate-x-1/2 after:border-8 after:border-x-transparent after:border-b-transparent after:border-t-card after:dark:border-t-card-dark opacity-0 transition-opacity duration-300">
+        <cite>
+          Illustrated by{' '}
+          {authorLink ? (
+            <a
+              target="_blank"
+              rel="noreferrer"
+              className="text-link dark:text-link-dark"
+              href={authorLink}>
+              {author}
+            </a>
+          ) : (
+            author
+          )}
+        </cite>
+      </p>
+    </div>
   );
 }
+
+const IllustrationContext = React.createContext<{
+  isInBlock?: boolean;
+}>({
+  isInBlock: false,
+});
 
 function Illustration({
   caption,
@@ -201,8 +230,10 @@ function Illustration({
   author: string;
   authorLink: string;
 }) {
+  const {isInBlock} = React.useContext(IllustrationContext);
+
   return (
-    <div className="my-16 mx-0 2xl:mx-auto max-w-4xl 2xl:max-w-6xl">
+    <div className="relative group before:absolute before:-inset-y-16 before:inset-x-0 my-16 mx-0 2xl:mx-auto max-w-4xl 2xl:max-w-6xl">
       <figure className="my-8 flex justify-center">
         <img
           src={src}
@@ -216,25 +247,25 @@ function Illustration({
           </figcaption>
         ) : null}
       </figure>
-      {author ? <AuthorCredit author={author} authorLink={authorLink} /> : null}
+      {!isInBlock && <AuthorCredit author={author} authorLink={authorLink} />}
     </div>
   );
 }
 
+const isInBlockTrue = {isInBlock: true};
+
 function IllustrationBlock({
-  title,
   sequential,
   author,
   authorLink,
   children,
 }: {
-  title: string;
   author: string;
   authorLink: string;
   sequential: boolean;
   children: any;
 }) {
-  const imageInfos = React.Children.toArray(children).map(
+  const imageInfos = Children.toArray(children).map(
     (child: any) => child.props
   );
   const images = imageInfos.map((info, index) => (
@@ -250,25 +281,22 @@ function IllustrationBlock({
     </figure>
   ));
   return (
-    <div className="my-16 mx-0 2xl:mx-auto max-w-4xl 2xl:max-w-6xl">
-      {title ? (
-        <h3 className="text-center text-xl font-bold leading-9 mb-4">
-          {title}
-        </h3>
-      ) : null}
-      {sequential ? (
-        <ol className="mdx-illustration-block flex">
-          {images.map((x: any, i: number) => (
-            <li className="flex-1" key={i}>
-              {x}
-            </li>
-          ))}
-        </ol>
-      ) : (
-        <div className="mdx-illustration-block">{images}</div>
-      )}
-      {author ? <AuthorCredit author={author} authorLink={authorLink} /> : null}
-    </div>
+    <IllustrationContext.Provider value={isInBlockTrue}>
+      <div className="relative group before:absolute before:-inset-y-16 before:inset-x-0 my-16 mx-0 2xl:mx-auto max-w-4xl 2xl:max-w-6xl">
+        {sequential ? (
+          <ol className="mdx-illustration-block flex">
+            {images.map((x: any, i: number) => (
+              <li className="flex-1" key={i}>
+                {x}
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <div className="mdx-illustration-block">{images}</div>
+        )}
+        <AuthorCredit author={author} authorLink={authorLink} />
+      </div>
+    </IllustrationContext.Provider>
   );
 }
 
@@ -304,8 +332,11 @@ function calculateNestedToc(toc: Toc): NestedTocRoot {
 }
 
 function InlineToc() {
-  const toc = React.useContext(TocContext);
-  const root = React.useMemo(() => calculateNestedToc(toc), [toc]);
+  const toc = useContext(TocContext);
+  const root = useMemo(() => calculateNestedToc(toc), [toc]);
+  if (root.children.length < 2) {
+    return null;
+  }
   return <InlineTocItem items={root.children} />;
 }
 
@@ -322,6 +353,21 @@ function InlineTocItem({items}: {items: Array<NestedTocNode>}) {
   );
 }
 
+function YouTubeIframe(props: any) {
+  return (
+    <div className="relative h-0 overflow-hidden pt-[56.25%]">
+      <iframe
+        className="absolute inset-0 w-full h-full"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+        title="YouTube video player"
+        {...props}
+      />
+    </div>
+  );
+}
+
 export const MDXComponents = {
   p: P,
   strong: Strong,
@@ -333,15 +379,12 @@ export const MDXComponents = {
   h2: H2,
   h3: H3,
   h4: H4,
-  inlineCode: InlineCode,
   hr: Divider,
   a: Link,
-  code: CodeBlock,
-  // The code block renders <pre> so we just want a div here.
-  pre: (p: JSX.IntrinsicElements['div']) => <div {...p} />,
+  code: InlineCode,
+  pre: CodeBlock,
   CodeDiagram,
   ConsoleBlock,
-  Convention,
   DeepDive: (props: {
     children: React.ReactNode;
     title: string;
@@ -355,7 +398,8 @@ export const MDXComponents = {
   MaxWidth({children}: {children: any}) {
     return <div className="max-w-4xl ml-0 2xl:mx-auto">{children}</div>;
   },
-  Gotcha,
+  Pitfall,
+  Deprecated,
   Wip,
   HomepageHero,
   Illustration,
@@ -367,9 +411,11 @@ export const MDXComponents = {
   MathI,
   Note,
   PackageImport,
+  ReadBlogPost,
   Recap,
   Recipes,
   Sandpack,
+  TeamMember,
   TerminalBlock,
   YouWillLearn,
   YouWillLearnCard,
@@ -377,6 +423,7 @@ export const MDXComponents = {
   Hint,
   Solution,
   CodeStep,
+  YouTubeIframe,
 };
 
 for (let key in MDXComponents) {

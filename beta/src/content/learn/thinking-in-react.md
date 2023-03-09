@@ -9,7 +9,7 @@ translators:
 
 <Intro>
 
-React 可以改变你对可见设计和应用构建的思考。打个比方，或许你对成片的森林赞不绝口，使用了 React 之后，你赞叹于其中的每一棵树都光彩夺目。使用 React 使得设计用户视图、管理系统状态变得更容易。在本篇教程中，我们将带你领略使用 React 构建可搜索产品数据表格的全过程。
+React 可以改变你对可见设计和应用构建的思考。当你使用 React 构建用户界面时，你首先会把它分解成一个个 **组件**，然后，你需要把这些组件连接在一起，使数据流经它们。在本教程中，我们将引导你使用 React 构建一个可搜索的产品数据表。
 
 </Intro>
 
@@ -204,11 +204,11 @@ td {
 
 在构建你的组件之后，即拥有一个渲染数据模型的可复用组件库。因为这是一个静态应用程序，组件仅返回 JSX。最顶层组件 (`FilterableProductTable`) 将接收你的数据模型作为其 prop。这被称之为 _单向数据流_，因为数据从树的顶层组件传递到下面的组件。
 
-<Gotcha>
+<Pitfall>
 
 在这部分中，你不需要使用任何 state，这是下一步的内容!
 
-</Gotcha>
+</Pitfall>
 
 ## 步骤三: 发现 UI 精简且完整的 state 表示 {/*step-3-find-the-minimal-but-complete-representation-of-ui-state*/}
 
@@ -234,13 +234,15 @@ td {
 让我们再次一条条验证它们:
 
 1. 原始列表中的产品 **被作为 props 传递，所以不是 state**。
-2. 搜索文本随着时间推移保持不变，似乎是 state，并不能被计算。
-3. 复选框的值随着时间推移保持不变，似乎是 state，并不能被计算。
+2. 搜索文本似乎应该是 state，因为它会随着时间的推移而变化，并且无法从任何东西中计算出来。
+3. 复选框的值似乎是 state，因为它会随着时间的推移而变化，并且无法从任何东西中计算出来。
 4. 过滤后列表中的产品 **不是 state，因为可以通过被原始列表中的产品，根据搜索框文本和复选框的值进行计算**。
 
 这就意味着只有搜索文本和复选框的值是 state！非常好!
 
-<DeepDive title="Props vs State">
+<DeepDive>
+
+#### Props vs State {/*props-vs-state*/}
 
 在 React 中有两种 "模型" 数据: props 和 state。下面是它们的不同之处:
 
@@ -276,7 +278,7 @@ Props 和 state 是不同的，但它们可以共同工作。父组件将经常�
 
 所以 state 将被放置在 `FilterableProductTable`。
 
-用 [`useState()` Hook](/apis/react/useState) 为组件添加 state。Hook 可以 "钩住" 组件的 [渲染周期](/learn/render-and-commit)。在 `FilterableProductTable` 的顶部添加两个 state 变量，用于指定你应用程序的初始 state：
+用 [`useState()` Hook](/reference/react/useState) 为组件添加 state 。 Hook 可以 "钩住" 组件的 [渲染周期](/learn/render-and-commit)。在 `FilterableProductTable` 的顶部添加两个 state 变量，用于指定你应用程序的初始 state：
 
 ```js
 function FilterableProductTable({ products }) {
@@ -440,6 +442,14 @@ td {
 
 </Sandpack>
 
+注意，编辑表单还不能正常工作，在上面的 sandbox 中，有一个控制台的报错，解释了原因：
+
+<ConsoleBlock level="error">
+
+You provided a \`value\` prop to a form field without an \`onChange\` handler. This will render a read-only field.
+
+</ConsoleBlock>
+
 在上面的沙盒中，`ProductTable` 和 `SearchBar` 读取 `filterText` 和 `inStockOnly` props 以渲染表格、输入、复选框。举个例子，这里展示了 `SearchBar` 如何填充输入的值:
 
 ```js {1,6}
@@ -452,8 +462,7 @@ function SearchBar({ filterText, inStockOnly }) {
         placeholder="Search..."/>
 ```
 
-
-参照 [管理 State](/learn/managing-state) 去深度了解 React 如何使用 state ，如何在你的应用程序中组织。
+然而，你还没有添加任何代码来响应用户的动作，如输入文案，这将是你应做的最后一步。
 
 ## 步骤五: 添加反向数据流 {/*step-5-add-inverse-data-flow*/}
 

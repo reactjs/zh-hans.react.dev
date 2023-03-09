@@ -59,7 +59,7 @@ React 允许你将标记、CSS 和 JavaScript 组合成自定义“组件”，�
 
 ## 定义组件 {/*defining-a-component*/}
 
-一直以来，创建网页时，Web 开发人员会用标记描述内容，然后通过 JavaScript 来增加交互。这种在 Web 上添加交互的方式能产生出色的效果。现在许多网站和全部应用都需要交互。React 最为重视交互性且使用了相同的处理方式：** React 组件是一段可以 使用标记进行扩展 的 JavaScript 函数**。如下所示（你可以编辑下面的示例）：
+一直以来，创建网页时，Web 开发人员会用标记描述内容，然后通过 JavaScript 来增加交互。这种在 Web 上添加交互的方式能产生出色的效果。现在许多网站和全部应用都需要交互。React 最为重视交互性且使用了相同的处理方式：**React 组件是一段可以 使用标记进行扩展 的 JavaScript 函数**。如下所示（你可以编辑下面的示例）：
 
 <Sandpack>
 
@@ -90,11 +90,11 @@ img { height: 200px; }
 
 使用 `function Profile() { }` 定义名为 `Profile` 的 JavaScript 函数。
 
-<Gotcha>
+<Pitfall>
 
 React 组件是常规的 JavaScript 函数，但**组件的名称必须以大写字母开头**，否则它们将无法运行！
 
-</Gotcha>
+</Pitfall>
 
 ### 第三步：添加标记 {/*step-3-add-markup*/}
 
@@ -116,11 +116,11 @@ return (
 );
 ```
 
-<Gotcha>
+<Pitfall>
 
 没有括号包裹的话，任何在 `return` 下一行的代码都 [将被忽略](https://stackoverflow.com/questions/2846283/what-are-the-rules-for-javascripts-automatic-semicolon-insertion-asi)！
 
-</Gotcha>
+</Pitfall>
 
 ## 使用组件 {/*using-a-component*/}
 
@@ -180,7 +180,40 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 因为 `Profile` 组件在 `Gallery` 组件中渲染——甚至好几次！——我们可以认为 `Gallery` 是一个 **父组件，** 将每个 `Profile` 渲染为一个“孩子”。这是 React 的神奇之处：你可以只定义组件一次，然后按需多处和多次使用。
 
-<DeepDive title="只有组件">
+<Pitfall>
+
+组件可以渲染其他组件，但是 **请不要嵌套他们的定义**：
+
+```js {2-5}
+export default function Gallery() {
+  // 🔴 永远不要在组件中定义组件
+  function Profile() {
+    // ...
+  }
+  // ...
+}
+```
+
+上面这段代码 [非常慢，并且会导致 bug 产生](/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state)。 因此，你应该在顶层定义每个组件：
+
+```js {5-8}
+export default function Gallery() {
+  // ...
+}
+
+// ✅ 在顶层声明组件
+function Profile() {
+  // ...
+}
+```
+
+当子组件需要使用父组件的数据时，你需要 [通过 props 的形式进行传递](/learn/passing-props-to-a-component)，而不是嵌套定义。
+
+</Pitfall>
+
+<DeepDive>
+
+#### 万物皆组件 {/*components-all-the-way-down*/}
 
 你的 React 应用程序从“根”组件开始。通常，它会在启动新项目时自动创建。例如，如果你使用 [CodeSandbox](https://codesandbox.io/) 或 [Create React App](https://create-react-app.dev/)，根组件定义在 `src/App.js` 中。如果使用 [Next.js](https://nextjs.org/) 框架，根组件定义在 `pages/index.js` 中。在这些示例中，一直有导出根组件。
 

@@ -47,7 +47,7 @@ Or this?
 const [position, setPosition] = useState({ x: 0, y: 0 });
 ```
 
-Technically, you can use either of these approaches. But **if some two state variables always change together, it might be a good idea to unify them into a single state variable**. Then you won't forget to always keep them in sync, like in this example where moving the cursor updates both coordinates of the red dot:
+Technically, you can use either of these approaches. But **if some two state variables always change together, it might be a good idea to unify them into a single state variable.** Then you won't forget to always keep them in sync, like in this example where moving the cursor updates both coordinates of the red dot:
 
 <Sandpack>
 
@@ -95,11 +95,11 @@ body { margin: 0; padding: 0; height: 250px; }
 
 Another case where you'll group data into an object or an array is when you don't know how many different pieces of state you'll need. For example, it's helpful when you have a form where the user can add custom fields.
 
-<Gotcha>
+<Pitfall>
 
 If your state variable is an object, remember that [you can't update only one field in it](/learn/updating-objects-in-state) without explicitly copying the other fields. For example, you can't do `setPosition({ x: 100 })` in the above example because it would not have the `y` property at all! Instead, if you wanted to set `x` alone, you would either do `setPosition({ ...position, x: 100 })`, or split them into two state variables and do `setX(100)`.
 
-</Gotcha>
+</Pitfall>
 
 ## Avoid contradictions in state {/*avoid-contradictions-in-state*/}
 
@@ -342,7 +342,9 @@ const fullName = firstName + ' ' + lastName;
 
 As a result, the change handlers don't need to do anything special to update it. When you call `setFirstName` or `setLastName`, you trigger a re-render, and then the next `fullName` will be calculated from the fresh data.
 
-<DeepDive title="Don't mirror props in state">
+<DeepDive>
+
+#### Don't mirror props in state {/*don-t-mirror-props-in-state*/}
 
 A common example of redundant state is code like this:
 
@@ -581,8 +583,8 @@ import { initialTravelPlan } from './places.js';
 function PlaceTree({ place }) {
   const childPlaces = place.childPlaces;
   return (
-    <>
-      <li>{place.title}</li>
+    <li>
+      {place.title}
       {childPlaces.length > 0 && (
         <ol>
           {childPlaces.map(place => (
@@ -590,7 +592,7 @@ function PlaceTree({ place }) {
           ))}
         </ol>
       )}
-    </>
+    </li>
   );
 }
 
@@ -816,7 +818,7 @@ export const initialTravelPlan = {
 
 </Sandpack>
 
-Now let's say you want to add a button to delete a place you've already visited. How would you go about it? [Updating nested state](/learn/updating-objects-and-arrays-in-state#updating-nested-objects-and-arrays) involves making copies of objects all the way up from the part that changed. Deleting a deeply nested place would involve copying its entire parent place chain. Such code can be very verbose.
+Now let's say you want to add a button to delete a place you've already visited. How would you go about it? [Updating nested state](/learn/updating-objects-in-state#updating-a-nested-object) involves making copies of objects all the way up from the part that changed. Deleting a deeply nested place would involve copying its entire parent place chain. Such code can be very verbose.
 
 **If the state is too nested to update easily, consider making it "flat".** Here is one way you can restructure this data. Instead of a tree-like structure where each `place` has an array of *its child places*, you can have each place hold an array of *its child place IDs*. Then you can store a mapping from each place ID to the corresponding place.
 
@@ -832,8 +834,8 @@ function PlaceTree({ id, placesById }) {
   const place = placesById[id];
   const childIds = place.childIds;
   return (
-    <>
-      <li>{place.title}</li>
+    <li>
+      {place.title}
       {childIds.length > 0 && (
         <ol>
           {childIds.map(childId => (
@@ -845,7 +847,7 @@ function PlaceTree({ id, placesById }) {
           ))}
         </ol>
       )}
-    </>
+    </li>
   );
 }
 
@@ -1186,15 +1188,13 @@ function PlaceTree({ id, parentId, placesById, onComplete }) {
   const place = placesById[id];
   const childIds = place.childIds;
   return (
-    <>
-      <li>
-        {place.title}
-        <button onClick={() => {
-          onComplete(parentId, id);
-        }}>
-          Complete
-        </button>
-      </li>
+    <li>
+      {place.title}
+      <button onClick={() => {
+        onComplete(parentId, id);
+      }}>
+        Complete
+      </button>
       {childIds.length > 0 &&
         <ol>
           {childIds.map(childId => (
@@ -1208,7 +1208,7 @@ function PlaceTree({ id, parentId, placesById, onComplete }) {
           ))}
         </ol>
       }
-    </>
+    </li>
   );
 }
 ```
@@ -1476,7 +1476,9 @@ button { margin: 10px; }
 
 You can nest state as much as you like, but making it "flat" can solve numerous problems. It makes state easier to update, and it helps ensure you don't have duplication in different parts of a nested object.
 
-<DeepDive title="Improving memory usage">
+<DeepDive>
+
+#### Improving memory usage {/*improving-memory-usage*/}
 
 Ideally, you would also remove the deleted items (and their children!) from the "table" object to improve memory usage. This version does that. It also [uses Immer](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) to make the update logic more concise.
 
@@ -1530,15 +1532,13 @@ function PlaceTree({ id, parentId, placesById, onComplete }) {
   const place = placesById[id];
   const childIds = place.childIds;
   return (
-    <>
-      <li>
-        {place.title}
-        <button onClick={() => {
-          onComplete(parentId, id);
-        }}>
-          Complete
-        </button>
-      </li>
+    <li>
+      {place.title}
+      <button onClick={() => {
+        onComplete(parentId, id);
+      }}>
+        Complete
+      </button>
       {childIds.length > 0 &&
         <ol>
           {childIds.map(childId => (
@@ -1552,7 +1552,7 @@ function PlaceTree({ id, parentId, placesById, onComplete }) {
           ))}
         </ol>
       }
-    </>
+    </li>
   );
 }
 ```

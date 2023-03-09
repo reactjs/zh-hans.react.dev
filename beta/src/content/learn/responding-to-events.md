@@ -91,12 +91,12 @@ button { margin-right: 10px; }
 
 以上所有方式都是等效的。当函数体较短时，内联事件处理函数会很方便。
 
-<Gotcha>
+<Pitfall>
 
 传递给事件处理函数的函数应直接传递，而非调用。例如：
 
-| 传递一个函数（正确）           | 调用一个函数（错误） |
-|----------------------------------------|--------------------------------|
+| 传递一个函数（正确）     | 调用一个函数（错误）     |
+| -------------------------------- | ---------------------------------- |
 | `<button onClick={handleClick}>` | `<button onClick={handleClick()}>` |
 
 区别很微妙。在第一个示例中，`handleClick` 函数作为 `onClick` 事件处理函数传递。这会让 React 记住它，并且只在用户点击按钮时调用你的函数。
@@ -105,8 +105,8 @@ button { margin-right: 10px; }
 
 当你编写内联代码时，同样的陷阱可能会以不同的方式出现：
 
-| 传递一个函数（正确）           | 调用一个函数（错误） |
-|----------------------------------------|--------------------------------|
+| 传递一个函数（正确）            | 调用一个函数（错误）    |
+| --------------------------------------- | --------------------------------- |
 | `<button onClick={() => alert('...')}>` | `<button onClick={alert('...')}>` |
 
 
@@ -130,9 +130,9 @@ button { margin-right: 10px; }
 * `<button onClick={handleClick}>` 传递了 `handleClick` 函数。
 * `<button onClick={() => alert('...')}>` 传递了 `() => alert('...')` 函数。
 
-> 查看 [JavaScript Refresher](a-javascript-refresher#arrow-functions) 了解更多箭头函数的信息。
+> [了解更多箭头函数的信息。](https://javascript.info/arrow-functions-basics)
 
-</Gotcha>
+</Pitfall>
 
 ### 在事件处理函数中读取 props {/*reading-props-in-event-handlers*/}
 
@@ -235,7 +235,7 @@ button { margin-right: 10px; }
 
 ### 命名事件处理函数 prop {/*naming-event-handler-props*/}
 
-内置组件（`<button>` 和 `<div>`）仅支持 [浏览器事件名称](/apis/react-dom/events)，例如 `onClick`。但是，当你构建自己的组件时，你可以按你个人喜好命名事件处理函数的 prop。
+内置组件（`<button>` 和 `<div>`）仅支持 [浏览器事件名称](/reference/react-dom/components/common#common-props)，例如 `onClick`。但是，当你构建自己的组件时，你可以按你个人喜好命名事件处理函数的 prop。
 
 > 按照惯例，事件处理函数 props 应该以 `on` 开头，后跟一个大写字母。
 
@@ -320,10 +320,6 @@ button { margin-right: 10px; }
 
 ## 事件传播 {/*event-propagation*/}
 
-<!--
-// TODO illo
--->
-
 事件处理函数还将捕获任何来自子组件的事件。通常，我们会说事件会沿着树向上“冒泡”或“传播”：它从事件发生的地方开始，然后沿着树向上传播。
 
 下面这个 `<div>` 包含两个按钮。`<div>` **和** 每个按钮都有自己的 `onClick` 处理函数。你认为点击按钮时会触发哪些处理函数？
@@ -359,11 +355,11 @@ button { margin: 5px; }
 
 如果你点击任一按钮，它自身的 `onClick` 将首先执行，然后父级 `<div>` 的 `onClick` 会接着执行。因此会出现两条消息。如果你点击 toolbar 本身，将只有父级 `<div>` 的 `onClick` 会执行。
 
-<Gotcha>
+<Pitfall>
 
 在 React 中所有事件都会传播，除了 `onScroll`，它仅适用于你附加到的 JSX 标签。
 
-</Gotcha>
+</Pitfall>
 
 ### 阻止传播 {/*stopping-propagation*/}
 
@@ -422,11 +418,9 @@ button { margin: 5px; }
 
 由于调用了 `e.stopPropagation()`，点击按钮现在将只显示一个 alert（来自 `<button>`），而并非两个（分别来自 `<button>` 和父级 toolbar `<div>`）。点击按钮与点击周围的 toolbar 不同，因此阻止传播对这个 UI 是有意义的。
 
-<DeepDive title="捕获阶段的事件">
+<DeepDive>
 
-<!--
-// TODO Illo
--->
+#### 捕获阶段事件 {/*capture-phase-events*/}
 
 极少数情况下，你可能需要捕获子元素上的所有事件，**即便它们阻止了传播**。例如，你可能想对每次点击进行埋点记录，传播逻辑暂且不论。那么你可以通过在事件名称末尾添加 `Capture` 来实现这一点：
 
@@ -598,7 +592,7 @@ export default function LightSwitch() {
 
 </Sandpack>
 
-或者，你可以把函数调用包裹在另一个函数内，例如 `<button onClick={() => handleClick()}` ：
+或者，你可以把函数调用包裹在另一个函数内，例如 `<button onClick={() => handleClick()}>` ：
 
 <Sandpack>
 

@@ -347,7 +347,7 @@ export default function ContactList({
     <section className="contact-list">
       <ul>
         {contacts.map(contact =>
-          <li key={contact}>
+          <li key={contact.email}>
             <button onClick={() => {
               onSelect(contact);
             }}>
@@ -442,7 +442,7 @@ export default function ContactList({
     <section className="contact-list">
       <ul>
         {contacts.map(contact =>
-          <li key={contact}>
+          <li key={contact.email}>
             <button onClick={() => {
               onSelect(contact);
             }}>
@@ -505,7 +505,7 @@ textarea {
 
 ## 提取状态逻辑到 reducer 中 {/*extracting-state-logic-into-a-reducer*/}
 
-对于那些需要更新多个状态的组件来说，过于分散的事件处理程序可能会令人不知所措。对于这种情况，你可以在组件外部将所有状态更新逻辑合并到一个称为“reducer”的函数中。这样，事件处理程序就会变得简洁，因为它们只需要指定用户的“actions”。在文件的底部，reducer 函数指定状态应该如何更新以响应每个 action！
+对于那些需要更新多个状态的组件来说，过于分散的事件处理程序可能会令人不知所措。对于这种情况，你可以在组件外部将所有状态更新逻辑合并到一个称为 “reducer” 的函数中。这样，事件处理程序就会变得简洁，因为它们只需要指定用户的 “actions”。在文件的底部，reducer 函数指定状态应该如何更新以响应每个 action！
 
 <Sandpack>
 

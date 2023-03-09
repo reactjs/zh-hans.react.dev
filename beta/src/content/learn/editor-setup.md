@@ -14,7 +14,7 @@ translators:
 <YouWillLearn>
 
 * 最受欢迎的编辑器是哪些
-* 如果自动格式化你的代码
+* 如何自动格式化你的代码
 
 </YouWillLearn>
 
@@ -38,6 +38,8 @@ React 社区中其他较为流行的文本编辑器包括：
 
 * [使用 React 的推荐配置安装 ESLint](https://www.npmjs.com/package/eslint-config-react-app) （确保你已经安装了 [Node](https://nodejs.org/en/download/current/)）
 * [安装 VSCode 中的官方 ESLint 扩展](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+**请确保你已经为你的项目启用了 [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) 规则**。这在 React 项目中是必备的，同时能帮助你及早的捕获较为严重的 bug。我们推荐的 [`eslint-config-react-app`](https://www.npmjs.com/package/eslint-config-react-app) preset 中已经集成了该规则。
 
 ### 格式化 {/*formatting*/}
 

@@ -46,7 +46,7 @@ export default function StatusBar() {
     window.addEventListener('offline', handleOffline);
     return () => {
       window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);      
+      window.removeEventListener('offline', handleOffline);
     };
   }, []);
 
@@ -80,7 +80,7 @@ export default function SaveButton() {
     window.addEventListener('offline', handleOffline);
     return () => {
       window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);      
+      window.removeEventListener('offline', handleOffline);
     };
   }, []);
 
@@ -104,7 +104,7 @@ These two components work fine, but the duplication in logic between them is unf
 
 ### Extracting your own custom Hook from a component {/*extracting-your-own-custom-hook-from-a-component*/}
 
-Imagine for a moment that, similar to [`useState`](/apis/react/useState) and [`useEffect`](/apis/useEffect), there was a built-in `useOnlineStatus` Hook. Then both of these components could be simplified and you could remove the duplication between them:
+Imagine for a moment that, similar to [`useState`](/reference/react/useState) and [`useEffect`](/reference/react/useEffect), there was a built-in `useOnlineStatus` Hook. Then both of these components could be simplified and you could remove the duplication between them:
 
 ```js {2,7}
 function StatusBar() {
@@ -127,7 +127,7 @@ function SaveButton() {
 }
 ```
 
-Although there is no such built-in Hook, you can write it yourself. Declare a function called `useOnlineStatus()` and move all the duplicated code into it from the components you wrote earlier:
+Although there is no such built-in Hook, you can write it yourself. Declare a function called `useOnlineStatus` and move all the duplicated code into it from the components you wrote earlier:
 
 ```js {2-16}
 function useOnlineStatus() {
@@ -143,7 +143,7 @@ function useOnlineStatus() {
     window.addEventListener('offline', handleOffline);
     return () => {
       window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);      
+      window.removeEventListener('offline', handleOffline);
     };
   }, []);
   return isOnline;
@@ -202,7 +202,7 @@ export function useOnlineStatus() {
     window.addEventListener('offline', handleOffline);
     return () => {
       window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);      
+      window.removeEventListener('offline', handleOffline);
     };
   }, []);
   return isOnline;
@@ -224,17 +224,19 @@ React applications are built from components. Components are built from Hooks, w
 You must follow these naming conventions:
 
 1. **React component names must start with a capital letter,** like `StatusBar` and `SaveButton`. React components also need to return something that React knows how to display, like a piece of JSX.
-2. **Hook names must start with `use` followed by a capital letter,** like [`useState`](/apis/react/useState) (built-in) or `useOnlineStatus` (custom, like earlier on the page). Hooks may return arbitrary values.
+2. **Hook names must start with `use` followed by a capital letter,** like [`useState`](/reference/react/useState) (built-in) or `useOnlineStatus` (custom, like earlier on the page). Hooks may return arbitrary values.
 
 This convention guarantees that you can always look at a component and know where its state, Effects, and other React features might "hide". For example, if you see a `getColor()` function call inside your component, you can be sure that it can't possibly contain React state inside because its name doesn't start with `use`. However, a function call like `useOnlineStatus()` will most likely contain calls to other Hooks inside!
 
 <Note>
 
-If your linter is [configured for React](/learn/editor-setup#linting), it will enforce this naming convention. Scroll up to the sandbox above and rename `useOnlineStatus` to `getOnlineStatus`. Notice that the linter won't allow you to call `useState` or `useEffect` inside of it anymore. Only Hooks and components can call other Hooks!
+If your linter is [configured for React,](/learn/editor-setup#linting) it will enforce this naming convention. Scroll up to the sandbox above and rename `useOnlineStatus` to `getOnlineStatus`. Notice that the linter won't allow you to call `useState` or `useEffect` inside of it anymore. Only Hooks and components can call other Hooks!
 
 </Note>
 
-<DeepDive title="Should all functions called during rendering start with the use prefix?">
+<DeepDive>
+
+#### Should all functions called during rendering start with the use prefix? {/*should-all-functions-called-during-rendering-start-with-the-use-prefix*/}
 
 No. Functions that don't *call* Hooks don't need to *be* Hooks.
 
@@ -277,7 +279,7 @@ function useAuth() {
 Technically, this isn't enforced by React. In principle, you could make a Hook that doesn't call other Hooks. This is often confusing and limiting so it's best to avoid that pattern. However, there may be rare cases where it is helpful. For example, maybe your function doesn't use any Hooks right now, but you plan to add some Hook calls to it in the future. Then it makes sense to name it with the `use` prefix:
 
 ```js {3-4}
-// ✅ Good: A Hook that will likely some other Hooks later
+// ✅ Good: A Hook that will likely use some other Hooks later
 function useAuth() {
   // TODO: Replace with this line when authentication is implemented:
   // return useContext(Auth);
@@ -628,7 +630,7 @@ export default function ChatRoom({ roomId }) {
 
   useChatRoom({
     roomId: roomId,
-    serverUrl: serverUrl 
+    serverUrl: serverUrl
   });
 
   return (
@@ -686,7 +688,7 @@ export default function ChatRoom({ roomId }) {
 
   useChatRoom({
     roomId: roomId,
-    serverUrl: serverUrl 
+    serverUrl: serverUrl
   });
 
   return (
@@ -815,7 +817,7 @@ export default function ChatRoom({ roomId }) {
 
   useChatRoom({
     roomId: roomId,
-    serverUrl: serverUrl 
+    serverUrl: serverUrl
   });
   // ...
 ```
@@ -828,7 +830,7 @@ export default function ChatRoom({ roomId }) {
 
   useChatRoom({
     roomId: roomId,
-    serverUrl: serverUrl 
+    serverUrl: serverUrl
   });
   // ...
 ```
@@ -837,11 +839,11 @@ Every time your `ChatRoom` component re-renders, it passes the latest `roomId` a
 
 ### Passing event handlers to custom Hooks {/*passing-event-handlers-to-custom-hooks*/}
 
-<Gotcha>
+<Wip>
 
 This section describes an **experimental API that has not yet been added to React,** so you can't use it yet.
 
-</Gotcha>
+</Wip>
 
 As you start using `useChatRoom` in more components, you might want to let different components customize its behavior. For example, currently, the logic for what to do when a message arrives is hardcoded inside the Hook:
 
@@ -899,14 +901,14 @@ export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
 
 This will work, but there's one more improvement you can do when your custom Hook accepts event handlers.
 
-Adding a dependency on `onReceiveMessage` is not ideal because it will cause the chat to re-connect every time the component re-renders. [Wrap this event handler into an Event function to remove it from the dependencies:](/learn/removing-effect-dependencies#wrapping-an-event-handler-from-the-props)
+Adding a dependency on `onReceiveMessage` is not ideal because it will cause the chat to re-connect every time the component re-renders. [Wrap this event handler into an Effect Event to remove it from the dependencies:](/learn/removing-effect-dependencies#wrapping-an-event-handler-from-the-props)
 
 ```js {1,4,5,15,18}
-import { useEffect, useEvent } from 'react';
+import { useEffect, useEffectEvent } from 'react';
 // ...
 
 export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
-  const onMessage = useEvent(onReceiveMessage);
+  const onMessage = useEffectEvent(onReceiveMessage);
 
   useEffect(() => {
     const options = {
@@ -985,11 +987,11 @@ export default function ChatRoom({ roomId }) {
 
 ```js useChatRoom.js
 import { useEffect } from 'react';
-import { useEvent } from './useEvent.js';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 import { createConnection } from './chat.js';
 
 export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
-  const onMessage = useEvent(onReceiveMessage);
+  const onMessage = useEffectEvent(onReceiveMessage);
 
   useEffect(() => {
     const options = {
@@ -1002,26 +1004,7 @@ export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
       onMessage(msg);
     });
     return () => connection.disconnect();
-  }, [roomId, serverUrl, onMessage]); // TODO: Linter will allow [roomId, serverUrl]
-}
-```
-
-```js useEvent.js
-import { useRef, useInsertionEffect, useCallback } from 'react';
-
-// The useEvent API has not yet been added to React,
-// so this is a temporary shim to make this sandbox work.
-// You're not expected to write code like this yourself.
-
-export function useEvent(fn) {
-  const ref = useRef(null);
-  useInsertionEffect(() => {
-    ref.current = fn;
-  }, [fn]);
-  return useCallback((...args) => {
-    const f = ref.current;
-    return f(...args);
-  }, []);
+  }, [roomId, serverUrl]);
 }
 ```
 
@@ -1089,8 +1072,8 @@ export function showNotification(message, theme = 'dark') {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "latest",
-    "react-dom": "latest",
+    "react": "experimental",
+    "react-dom": "experimental",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -1196,7 +1179,9 @@ function ShippingForm({ country }) {
 
 Extracting a custom Hook makes the data flow explicit. You feed the `url` in and you get the `data` out. By "hiding" your Effect inside `useData`, you also prevent someone working on the `ShippingForm` component from adding [unnecessary dependencies](/learn/removing-effect-dependencies) to it. Ideally, with time, most of your app's Effects will be in custom Hooks.
 
-<DeepDive title="Keep your custom Hooks focused on concrete high-level use cases">
+<DeepDive>
+
+#### Keep your custom Hooks focused on concrete high-level use cases {/*keep-your-custom-hooks-focused-on-concrete-high-level-use-cases*/}
 
 Start by choosing your custom Hook's name. If you struggle to pick a clear name, it might mean that your Effect is too coupled to the rest of your component's logic, and is not yet ready to be extracted.
 
@@ -1337,7 +1322,7 @@ export function useOnlineStatus() {
     window.addEventListener('offline', handleOffline);
     return () => {
       window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);      
+      window.removeEventListener('offline', handleOffline);
     };
   }, []);
   return isOnline;
@@ -1346,9 +1331,9 @@ export function useOnlineStatus() {
 
 </Sandpack>
 
-In the above example, `useOnlineStatus` is implemented with a pair of [`useState`](/apis/react/useState) and [`useEffect`](/apis/react/useEffect). However, this isn't the best possible solution. There is a number of edge cases it doesn't consider. For example, it assumes that when the component mounts, `isOnline` is already `true`, but this may be wrong if the network already went offline. You can use the browser [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API to check for that, but using it directly would break if you run your React app on the server to generate the initial HTML. In short, this code could be improved.
+In the above example, `useOnlineStatus` is implemented with a pair of [`useState`](/reference/react/useState) and [`useEffect`.](/reference/react/useEffect) However, this isn't the best possible solution. There is a number of edge cases it doesn't consider. For example, it assumes that when the component mounts, `isOnline` is already `true`, but this may be wrong if the network already went offline. You can use the browser [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API to check for that, but using it directly would break if you run your React app on the server to generate the initial HTML. In short, this code could be improved.
 
-Luckily, React 18 includes a dedicated API called [`useSyncExternalStore`](/apis/react/useSyncExternalStore) which takes care of all of these problems for you. Here is how your `useOnlineStatus` Hook, rewritten to take advantage of this new API:
+Luckily, React 18 includes a dedicated API called [`useSyncExternalStore`](/reference/react/useSyncExternalStore) which takes care of all of these problems for you. Here is how your `useOnlineStatus` Hook, rewritten to take advantage of this new API:
 
 <Sandpack>
 
@@ -1430,7 +1415,9 @@ This is another reason for why wrapping Effects in custom Hooks is often benefic
 
 Similar to a [design system,](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969) you might find it helpful to start extracting common idioms from your app's components into custom Hooks. This will keep your components' code focused on the intent, and let you avoid writing raw Effects very often. There are also many excellent custom Hooks maintained by the React community.
 
-<DeepDive title="Will React provide any built-in solution for data fetching?">
+<DeepDive>
+
+#### Will React provide any built-in solution for data fetching? {/*will-react-provide-any-built-in-solution-for-data-fetching*/}
 
 We're still working out the details, but we expect that in the future, you'll write data fetching like this:
 
@@ -1660,7 +1647,7 @@ export default function App() {
 
 ```js useFadeIn.js active
 import { useState, useEffect } from 'react';
-import { useEvent } from './useEvent.js';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 
 export function useFadeIn(ref, duration) {
   const [isRunning, setIsRunning] = useState(true);
@@ -1675,7 +1662,7 @@ export function useFadeIn(ref, duration) {
 }
 
 function useAnimationLoop(isRunning, drawFrame) {
-  const onFrame = useEvent(drawFrame);
+  const onFrame = useEffectEvent(drawFrame);
 
   useEffect(() => {
     if (!isRunning) {
@@ -1683,6 +1670,7 @@ function useAnimationLoop(isRunning, drawFrame) {
     }
 
     const startTime = performance.now();
+    let frameId = null;
 
     function tick(now) {
       const timePassed = now - startTime;
@@ -1692,26 +1680,7 @@ function useAnimationLoop(isRunning, drawFrame) {
 
     tick();
     return () => cancelAnimationFrame(frameId);
-  }, [isRunning, onFrame]); // TODO: Linter will allow [isRunning] in the future
-}
-```
-
-```js useEvent.js
-import { useRef, useInsertionEffect, useCallback } from 'react';
-
-// The useEvent API has not yet been added to React,
-// so this is a temporary shim to make this sandbox work.
-// You're not expected to write code like this yourself.
-
-export function useEvent(fn) {
-  const ref = useRef(null);
-  useInsertionEffect(() => {
-    ref.current = fn;
-  }, [fn]);
-  return useCallback((...args) => {
-    const f = ref.current;
-    return f(...args);
-  }, []);
+  }, [isRunning]);
 }
 ```
 
@@ -1725,6 +1694,22 @@ html, body { min-height: 300px; }
   text-align: center;
   font-size: 50px;
   background-image: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+}
+```
+
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "experimental",
+    "react-dom": "experimental",
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
 }
 ```
 
@@ -1828,7 +1813,7 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-Effects let you connect React to external systems. The more coordination between Effects is needed (for example, to chain multiple animations), the more it makes sense to extract that logic out of Effects and Hooks *completely* like in the sandbox above. Then, the code you extracted *becomes* the "external system." This lets your Effects stay simple because they only need to send messages to the system you've moved outside React.
+Effects let you connect React to external systems. The more coordination between Effects is needed (for example, to chain multiple animations), the more it makes sense to extract that logic out of Effects and Hooks *completely* like in the sandbox above. Then, the code you extracted *becomes* the "external system". This lets your Effects stay simple because they only need to send messages to the system you've moved outside React.
 
 The examples above assume that the fade-in logic needs to be written in JavaScript. However, this particular fade-in animation is both simpler and much more efficient to implement with a plain [CSS Animation:](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations)
 
@@ -1873,7 +1858,7 @@ html, body { min-height: 300px; }
   font-size: 50px;
   background-image: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
 
-  animation: fadeIn 1000ms; 
+  animation: fadeIn 1000ms;
 }
 
 @keyframes fadeIn {
@@ -1895,7 +1880,7 @@ Sometimes, you don't even need a Hook!
 - You can pass reactive values from one Hook to another, and they stay up-to-date.
 - All Hooks re-run every time your component re-renders.
 - The code of your custom Hooks should be pure, like your component's code.
-- Wrap event handlers received by custom Hooks into Event functions.
+- Wrap event handlers received by custom Hooks into Effect Events.
 - Don't create custom Hooks like `useMount`. Keep their purpose specific.
 - It's up to you how and where to choose the boundaries of your code.
 
@@ -2161,7 +2146,7 @@ export function useInterval(onTick, delay) {
   useEffect(() => {
     const id = setInterval(onTick, delay);
     return () => clearInterval(id);
-  }, [onTick, delay]); 
+  }, [onTick, delay]);
 }
 ```
 
@@ -2187,7 +2172,7 @@ For some reason, the callback that updates the page background never runs. Add s
       console.log('❌ Clearing an interval with delay ', delay)
       clearInterval(id);
     };
-  }, [onTick, delay]); 
+  }, [onTick, delay]);
 ```
 
 Do the logs match what you expect to happen? If some of your Effects seem to re-synchronize unnecessarily, can you guess which dependency is causing that to happen? Is there some way to [remove that dependency](/learn/removing-effect-dependencies) from your Effect?
@@ -2201,6 +2186,22 @@ It looks like your `useInterval` Hook accepts an event listener as an argument. 
 </Hint>
 
 <Sandpack>
+
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "experimental",
+    "react-dom": "experimental",
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+```
 
 ```js
 import { useCounter } from './useCounter.js';
@@ -2233,7 +2234,7 @@ export function useCounter(delay) {
 
 ```js useInterval.js
 import { useEffect } from 'react';
-import { useEvent } from './useEvent.js';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 
 export function useInterval(onTick, delay) {
   useEffect(() => {
@@ -2241,26 +2242,7 @@ export function useInterval(onTick, delay) {
     return () => {
       clearInterval(id);
     };
-  }, [onTick, delay]); 
-}
-```
-
-```js useEvent.js
-import { useRef, useInsertionEffect, useCallback } from 'react';
-
-// The useEvent API has not yet been added to React,
-// so this is a temporary shim to make this sandbox work.
-// You're not expected to write code like this yourself.
-
-export function useEvent(fn) {
-  const ref = useRef(null);
-  useInsertionEffect(() => {
-    ref.current = fn;
-  }, [fn]);
-  return useCallback((...args) => {
-    const f = ref.current;
-    return f(...args);
-  }, []);
+  }, [onTick, delay]);
 }
 ```
 
@@ -2268,13 +2250,30 @@ export function useEvent(fn) {
 
 <Solution>
 
-Inside `useInterval`, wrap the tick callback into an Event function, as you did [earlier on this page.](/learn/reusing-logic-with-custom-hooks#passing-event-handlers-to-custom-hooks)
+Inside `useInterval`, wrap the tick callback into an Effect Event, as you did [earlier on this page.](/learn/reusing-logic-with-custom-hooks#passing-event-handlers-to-custom-hooks)
 
 This will allow you to omit `onTick` from dependencies of your Effect. The Effect won't re-synchronize on every re-render of the component, so the page background color change interval won't get reset every second before it has a chance to fire.
 
 With this change, both intervals work as expected and don't interfere with each other:
 
 <Sandpack>
+
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "experimental",
+    "react-dom": "experimental",
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+```
+
 
 ```js
 import { useCounter } from './useCounter.js';
@@ -2307,33 +2306,14 @@ export function useCounter(delay) {
 
 ```js useInterval.js active
 import { useEffect } from 'react';
-import { useEvent } from './useEvent.js';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 
 export function useInterval(callback, delay) {
-  const onTick = useEvent(callback);
+  const onTick = useEffectEvent(callback);
   useEffect(() => {
     const id = setInterval(onTick, delay);
     return () => clearInterval(id);
-  }, [delay, onTick]); // TODO: Linter will allow [delay] in the future
-}
-```
-
-```js useEvent.js
-import { useRef, useInsertionEffect, useCallback } from 'react';
-
-// The useEvent API has not yet been added to React,
-// so this is a temporary shim to make this sandbox work.
-// You're not expected to write code like this yourself.
-
-export function useEvent(fn) {
-  const ref = useRef(null);
-  useInsertionEffect(() => {
-    ref.current = fn;
-  }, [fn]);
-  return useCallback((...args) => {
-    const f = ref.current;
-    return f(...args);
-  }, []);
+  }, [delay]);
 }
 ```
 
@@ -2345,7 +2325,7 @@ export function useEvent(fn) {
 
 In this example, the `usePointerPosition()` Hook tracks the current pointer position. Try moving your cursor or your finger over the preview area and see the red dot follow your movement. Its position is saved in the `pos1` variable.
 
-In fact, there are five (!) different red dots being rendered. You don't see them because currently they all appear at the same position. This is what you need to fix. What you want to implement instead is a "staggered" movement: each next dot should "follow" the previous dot's path. For example, if you quickly move your cursor, the first dot should follow it immediately, the second dot should follow the first dot with a small delay, the third dot should follow the second dot, and so on.
+In fact, there are five (!) different red dots being rendered. You don't see them because currently they all appear at the same position. This is what you need to fix. What you want to implement instead is a "staggered" movement: each dot should "follow" the previous dot's path. For example, if you quickly move your cursor, the first dot should follow it immediately, the second dot should follow the first dot with a small delay, the third dot should follow the second dot, and so on.
 
 You need to implement the `useDelayedValue` custom Hook. Its current implementation returns the `value` provided to it. Instead, you want to return the value back from `delay` milliseconds ago. You might need some state and an Effect to do this.
 

@@ -2,12 +2,14 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
+import {Children, useRef, useEffect, useState} from 'react';
 import * as React from 'react';
 import cn from 'classnames';
 import {H2} from 'components/MDX/Heading';
 import {H4} from 'components/MDX/Heading';
 import {Challenge} from './Challenge';
 import {Navigation} from './Navigation';
+import {useRouter} from 'next/router';
 
 interface ChallengesProps {
   children: React.ReactElement[];
@@ -36,7 +38,7 @@ const parseChallengeContents = (
 
   let challenge: Partial<ChallengeContents> = {};
   let content: React.ReactElement[] = [];
-  React.Children.forEach(children, (child) => {
+  Children.forEach(children, (child) => {
     const {props, type} = child;
     switch ((type as any).mdxName) {
       case 'Solution': {
@@ -66,6 +68,11 @@ const parseChallengeContents = (
   return contents;
 };
 
+enum QueuedScroll {
+  INIT = 'init',
+  NEXT = 'next',
+}
+
 export function Challenges({
   children,
   isRecipes,
@@ -74,20 +81,33 @@ export function Challenges({
 }: ChallengesProps) {
   const challenges = parseChallengeContents(children);
   const totalChallenges = challenges.length;
-  const scrollAnchorRef = React.useRef<HTMLDivElement>(null);
-  const queuedScrollRef = React.useRef<boolean>(false);
-  const [activeIndex, setActiveIndex] = React.useState(0);
+  const scrollAnchorRef = useRef<HTMLDivElement>(null);
+  const queuedScrollRef = useRef<undefined | QueuedScroll>(QueuedScroll.INIT);
+  const [activeIndex, setActiveIndex] = useState(0);
   const currentChallenge = challenges[activeIndex];
+  const {asPath} = useRouter();
 
-  React.useEffect(() => {
-    if (queuedScrollRef.current === true) {
-      queuedScrollRef.current = false;
+  useEffect(() => {
+    if (queuedScrollRef.current === QueuedScroll.INIT) {
+      const initIndex = challenges.findIndex(
+        (challenge) => challenge.id === asPath.split('#')[1]
+      );
+      if (initIndex === -1) {
+        queuedScrollRef.current = undefined;
+      } else if (initIndex !== activeIndex) {
+        setActiveIndex(initIndex);
+      }
+    }
+    if (queuedScrollRef.current) {
       scrollAnchorRef.current!.scrollIntoView({
         block: 'start',
-        behavior: 'smooth',
+        ...(queuedScrollRef.current === QueuedScroll.NEXT && {
+          behavior: 'smooth',
+        }),
       });
+      queuedScrollRef.current = undefined;
     }
-  });
+  }, [activeIndex, asPath, challenges]);
 
   const handleChallengeChange = (index: number) => {
     setActiveIndex(index);
@@ -128,7 +148,7 @@ export function Challenges({
           hasNextChallenge={activeIndex < totalChallenges - 1}
           handleClickNextChallenge={() => {
             setActiveIndex((i) => i + 1);
-            queuedScrollRef.current = true;
+            queuedScrollRef.current = QueuedScroll.NEXT;
           }}
         />
       </div>

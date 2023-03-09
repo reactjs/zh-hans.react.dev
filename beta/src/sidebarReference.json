@@ -1,231 +1,277 @@
 {
   "title": "API Reference",
   "heading": true,
-  "path": "/apis",
+  "path": "/reference/react",
   "routes": [
     {
       "heading": true,
       "path": "",
       "routes": [
         {
-          "title": "React APIs",
-          "path": "/apis/react",
+          "hasSectionHeader": true,
+          "sectionHeader": "'react' package"
+        },
+        {
+          "title": "Components",
+          "path": "/reference/react/components",
           "routes": [
             {
-              "title": "Children",
-              "path": "/apis/react/Children",
-              "wip": true
+              "title": "<Fragment> (<>)",
+              "path": "/reference/react/Fragment"
             },
             {
-              "title": "cloneElement",
-              "path": "/apis/react/cloneElement",
-              "wip": true
+              "title": "<Profiler>",
+              "path": "/reference/react/Profiler"
             },
             {
-              "title": "Component",
-              "path": "/apis/react/Component",
-              "wip": true
+              "title": "<StrictMode>",
+              "path": "/reference/react/StrictMode"
             },
             {
-              "title": "createContext",
-              "path": "/apis/react/createContext"
-            },
-            {
-              "title": "createElement",
-              "path": "/apis/react/createElement",
-              "wip": true
-            },
-            {
-              "title": "createFactory",
-              "path": "/apis/react/createFactory",
-              "wip": true
-            },
-            {
-              "title": "createRef",
-              "path": "/apis/react/createRef",
-              "wip": true
-            },
-            {
-              "title": "forwardRef",
-              "path": "/apis/react/forwardRef",
-              "wip": true
-            },
-            {
-              "title": "Fragment",
-              "path": "/apis/react/Fragment"
-            },
-            {
-              "title": "isValidElement",
-              "path": "/apis/react/isValidElement",
-              "wip": true
-            },
-            {
-              "title": "lazy",
-              "path": "/apis/react/lazy",
-              "wip": true
-            },
-            {
-              "title": "memo",
-              "path": "/apis/react/memo",
-              "wip": true
-            },
-            {
-              "title": "PureComponent",
-              "path": "/apis/react/PureComponent",
-              "wip": true
-            },
-            {
-              "title": "startTransition",
-              "path": "/apis/react/startTransition",
-              "wip": true
-            },
-            {
-              "title": "StrictMode",
-              "path": "/apis/react/StrictMode",
-              "wip": true
-            },
-            {
-              "title": "Suspense",
-              "path": "/apis/react/Suspense",
-              "wip": true
-            },
-            {
-              "title": "useCallback",
-              "path": "/apis/react/useCallback",
-              "wip": true
-            },
-            {
-              "title": "useContext",
-              "path": "/apis/react/useContext"
-            },
-            {
-              "title": "useDebugValue",
-              "path": "/apis/react/useDebugValue",
-              "wip": true
-            },
-            {
-              "title": "useDeferredValue",
-              "path": "/apis/react/useDeferredValue",
-              "wip": true
-            },
-            {
-              "title": "useEffect",
-              "path": "/apis/react/useEffect",
-              "wip": true
-            },
-            {
-              "title": "useId",
-              "path": "/apis/react/useId",
-              "wip": true
-            },
-            {
-              "title": "useImperativeHandle",
-              "path": "/apis/react/useImperativeHandle",
-              "wip": true
-            },
-            {
-              "title": "useInsertionEffect",
-              "path": "/apis/react/useInsertionEffect",
-              "wip": true
-            },
-            {
-              "title": "useMemo",
-              "path": "/apis/react/useMemo",
-              "wip": true
-            },
-            {
-              "title": "useReducer",
-              "path": "/apis/react/useReducer"
-            },
-            {
-              "title": "useRef",
-              "path": "/apis/react/useRef"
-            },
-            {
-              "title": "useState",
-              "path": "/apis/react/useState"
-            },
-            {
-              "title": "useSyncExternalStore",
-              "path": "/apis/react/useSyncExternalStore",
-              "wip": true
-            },
-            {
-              "title": "useTransition",
-              "path": "/apis/react/useTransition",
-              "wip": true
+              "title": "<Suspense>",
+              "path": "/reference/react/Suspense"
             }
           ]
         },
         {
-          "title": "ReactDOM APIs",
-          "path": "/apis/react-dom",
+          "title": "Hooks",
+          "path": "/reference/react",
           "routes": [
             {
-              "title": "createRoot",
-              "path": "/apis/react-dom/client/createRoot"
+              "title": "useCallback",
+              "path": "/reference/react/useCallback"
             },
+            {
+              "title": "useContext",
+              "path": "/reference/react/useContext"
+            },
+            {
+              "title": "useDebugValue",
+              "path": "/reference/react/useDebugValue"
+            },
+            {
+              "title": "useDeferredValue",
+              "path": "/reference/react/useDeferredValue"
+            },
+            {
+              "title": "useEffect",
+              "path": "/reference/react/useEffect"
+            },
+            {
+              "title": "useId",
+              "path": "/reference/react/useId"
+            },
+            {
+              "title": "useImperativeHandle",
+              "path": "/reference/react/useImperativeHandle"
+            },
+            {
+              "title": "useInsertionEffect",
+              "path": "/reference/react/useInsertionEffect"
+            },
+            {
+              "title": "useLayoutEffect",
+              "path": "/reference/react/useLayoutEffect"
+            },
+            {
+              "title": "useMemo",
+              "path": "/reference/react/useMemo"
+            },
+            {
+              "title": "useReducer",
+              "path": "/reference/react/useReducer"
+            },
+            {
+              "title": "useRef",
+              "path": "/reference/react/useRef"
+            },
+            {
+              "title": "useState",
+              "path": "/reference/react/useState"
+            },
+            {
+              "title": "useSyncExternalStore",
+              "path": "/reference/react/useSyncExternalStore"
+            },
+            {
+              "title": "useTransition",
+              "path": "/reference/react/useTransition"
+            }
+          ]
+        },
+        {
+          "title": "APIs",
+          "path": "/reference/react/apis",
+          "routes": [
+            {
+              "title": "createContext",
+              "path": "/reference/react/createContext"
+            },
+            {
+              "title": "forwardRef",
+              "path": "/reference/react/forwardRef"
+            },
+            {
+              "title": "lazy",
+              "path": "/reference/react/lazy"
+            },
+            {
+              "title": "memo",
+              "path": "/reference/react/memo"
+            },
+            {
+              "title": "startTransition",
+              "path": "/reference/react/startTransition"
+            }
+          ]
+        },
+        {
+          "hasSectionHeader": true,
+          "sectionHeader": "'react-dom' package"
+        },
+        {
+          "title": "Components",
+          "path": "/reference/react-dom/components",
+          "routes": [
+            {
+              "title": "Common (e.g. <div>)",
+              "path": "/reference/react-dom/components/common"
+            },
+            {
+              "title": "<input>",
+              "path": "/reference/react-dom/components/input"
+            },
+            {
+              "title": "<option>",
+              "path": "/reference/react-dom/components/option"
+            },
+            {
+              "title": "<progress>",
+              "path": "/reference/react-dom/components/progress"
+            },
+            {
+              "title": "<select>",
+              "path": "/reference/react-dom/components/select"
+            },
+            {
+              "title": "<textarea>",
+              "path": "/reference/react-dom/components/textarea"
+            }
+          ]
+        },
+        {
+          "title": "APIs",
+          "path": "/reference/react-dom",
+          "routes": [
             {
               "title": "createPortal",
-              "path": "/apis/react-dom/createPortal",
-              "wip": true
-            },
-            {
-              "title": "findDOMNode",
-              "path": "/apis/react-dom/findDOMNode",
-              "wip": true
+              "path": "/reference/react-dom/createPortal"
             },
             {
               "title": "flushSync",
-              "path": "/apis/react-dom/flushSync",
-              "wip": true
+              "path": "/reference/react-dom/flushSync"
+            },
+            {
+              "title": "findDOMNode",
+              "path": "/reference/react-dom/findDOMNode"
             },
             {
               "title": "hydrate",
-              "path": "/apis/react-dom/hydrate"
-            },
-            {
-              "title": "hydrateRoot",
-              "path": "/apis/react-dom/client/hydrateRoot"
+              "path": "/reference/react-dom/hydrate"
             },
             {
               "title": "render",
-              "path": "/apis/react-dom/render"
-            },
-            {
-              "title": "renderToNodeStream",
-              "path": "/apis/react-dom/server/renderToNodeStream",
-              "wip": true
-            },
-            {
-              "title": "renderToPipeableStream",
-              "path": "/apis/react-dom/server/renderToPipeableStream",
-              "wip": true
-            },
-            {
-              "title": "renderToReadableStream",
-              "path": "/apis/react-dom/server/renderToReadableStream",
-              "wip": true
-            },
-            {
-              "title": "renderToStaticMarkup",
-              "path": "/apis/react-dom/server/renderToStaticMarkup",
-              "wip": true
-            },
-            {
-              "title": "renderToStaticNodeStream",
-              "path": "/apis/react-dom/server/renderToStaticNodeStream",
-              "wip": true
-            },
-            {
-              "title": "renderToString",
-              "path": "/apis/react-dom/server/renderToString",
-              "wip": true
+              "path": "/reference/react-dom/render"
             },
             {
               "title": "unmountComponentAtNode",
-              "path": "/apis/react-dom/unmountComponentAtNode",
-              "wip": true
+              "path": "/reference/react-dom/unmountComponentAtNode"
+            }
+          ]
+        },
+        {
+          "title": "Client APIs",
+          "path": "/reference/react-dom/client",
+          "routes": [
+            {
+              "title": "createRoot",
+              "path": "/reference/react-dom/client/createRoot"
+            },
+            {
+              "title": "hydrateRoot",
+              "path": "/reference/react-dom/client/hydrateRoot"
+            }
+          ]
+        },
+        {
+          "title": "Server APIs",
+          "path": "/reference/react-dom/server",
+          "routes": [
+            {
+              "title": "renderToNodeStream",
+              "path": "/reference/react-dom/server/renderToNodeStream"
+            },
+            {
+              "title": "renderToPipeableStream",
+              "path": "/reference/react-dom/server/renderToPipeableStream"
+            },
+            {
+              "title": "renderToReadableStream",
+              "path": "/reference/react-dom/server/renderToReadableStream"
+            },
+            {
+              "title": "renderToStaticMarkup",
+              "path": "/reference/react-dom/server/renderToStaticMarkup"
+            },
+            {
+              "title": "renderToStaticNodeStream",
+              "path": "/reference/react-dom/server/renderToStaticNodeStream"
+            },
+            {
+              "title": "renderToString",
+              "path": "/reference/react-dom/server/renderToString"
+            }
+          ]
+        },
+        {
+          "hasSectionHeader": true,
+          "sectionHeader": "Legacy APIs"
+        },
+        {
+          "title": "Legacy React APIs",
+          "path": "/reference/react/legacy",
+          "routes": [
+            {
+              "title": "Children",
+              "path": "/reference/react/Children"
+            },
+            {
+              "title": "cloneElement",
+              "path": "/reference/react/cloneElement"
+            },
+            {
+              "title": "Component",
+              "path": "/reference/react/Component"
+            },
+            {
+              "title": "createElement",
+              "path": "/reference/react/createElement"
+            },
+            {
+              "title": "createFactory",
+              "path": "/reference/react/createFactory"
+            },
+            {
+              "title": "createRef",
+              "path": "/reference/react/createRef"
+            },
+            {
+              "title": "isValidElement",
+              "path": "/reference/react/isValidElement"
+            },
+            {
+              "title": "PureComponent",
+              "path": "/reference/react/PureComponent"
             }
           ]
         }

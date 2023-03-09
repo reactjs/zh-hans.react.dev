@@ -16,11 +16,7 @@ React 拥有数百万开发者的社区。本章节将为你列出一些与 Reac
 
 Stack Overflow 是非常受欢迎的论坛，在论坛中，你可以提出代码层面的问题，甚至是你工作中的疑难杂症。提问前，请先阅读标有 **reactjs** 的 [已有问题](https://stackoverflow.com/questions/tagged/reactjs)，如未找到你需要的答案，[再自行提问](https://stackoverflow.com/questions/ask?tags=reactjs)！
 
-<!--
-
-TODO: decide on the criteria for inclusion before uncommenting. (Change Popular Discussion Forums into heading while un-commenting)
-
-热门讨论区
+## 热门讨论区 {/*popular-discussion-forums*/}
 
 许多论坛是讨论最佳实践、应用架构以及 React 新特性的好地方。但如果你想讨论的是代码级问题，通常 Stack Overflow 会更合适。
 
@@ -30,8 +26,6 @@ TODO: decide on the criteria for inclusion before uncommenting. (Change Popular 
 * [Hashnode's React community](https://hashnode.com/n/reactjs)
 * [Reactiflux online chat](https://discord.gg/reactiflux)
 * [Reddit's React community](https://www.reddit.com/r/reactjs/)
-
--->
 
 ## 新闻 {/*news*/}
 

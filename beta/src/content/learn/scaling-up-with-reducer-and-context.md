@@ -215,7 +215,6 @@ ul, li { margin: 0; padding: 0; }
 Reducer 有助于保持事件处理程序的简短明了。但随着应用规模越来越庞大，你就可能会遇到别的困难。**目前，`tasks` 状态和 `dispatch` 函数仅在顶级 `TaskApp` 组件中可用**。要让其他组件读取任务列表或更改它，你必须显式 [传递](/learn/passing-props-to-a-component) 当前状态和将其更改为 props 的事件处理程序。
 
 例如，`TaskApp` 将 一系列 task 和事件处理程序传递给 `TaskList`：
-For example, `TaskApp` passes a list of tasks and the event handlers to `TaskList`:
 
 ```js
 <TaskList
@@ -237,11 +236,7 @@ For example, `TaskApp` passes a list of tasks and the event handlers to `TaskLis
 
 在像这样的小示例里这样做没什么问题，但是如果你有成千上百个组件，传递所有状态和函数可能会非常麻烦！
 
-<!--(TODO: illustration of prop drilling)-->
-
 这就是为什么，比起通过 props 传递它们，你可能想把 `tasks` 状态和 `dispatch` 函数都 [放入 context](/learn/passing-data-deeply-with-context)。**这样，所有的在 `TaskApp` 组件树之下的组件都不必一直往下传 props 而可以直接读取 tasks 和 dispatch 函数**。
-
-<!--(TODO: illustration of context)-->
 
 下面将介绍如何结合使用 reducer 和 context：
 
@@ -706,7 +701,7 @@ export default function TaskList() {
 任何组件都可以从 context 中读取 `dispatch` 函数并调用它，从而更新任务列表：
 
 ```js {3,9-13}
-export default function AddTask({ onAddTask }) {
+export default function AddTask() {
   const [text, setText] = useState('');
   const dispatch = useContext(TasksDispatchContext);
   // ...
@@ -795,7 +790,7 @@ export const TasksDispatchContext = createContext(null);
 import { useState, useContext } from 'react';
 import { TasksDispatchContext } from './TasksContext.js';
 
-export default function AddTask({ onAddTask }) {
+export default function AddTask() {
   const [text, setText] = useState('');
   const dispatch = useContext(TasksDispatchContext);
   return (
@@ -1019,7 +1014,7 @@ const initialTasks = [
 import { useState, useContext } from 'react';
 import { TasksDispatchContext } from './TasksContext.js';
 
-export default function AddTask({ onAddTask }) {
+export default function AddTask() {
   const [text, setText] = useState('');
   const dispatch = useContext(TasksDispatchContext);
   return (
@@ -1145,7 +1140,7 @@ export function useTasksDispatch() {
 
 组件可以通过以下函数读取 context：
 
-```js {5-7}
+```js
 const tasks = useTasks();
 const dispatch = useTasksDispatch();
 ```
@@ -1238,7 +1233,7 @@ const initialTasks = [
 import { useState } from 'react';
 import { useTasksDispatch } from './TasksContext.js';
 
-export default function AddTask({ onAddTask }) {
+export default function AddTask() {
   const [text, setText] = useState('');
   const dispatch = useTasksDispatch();
   return (

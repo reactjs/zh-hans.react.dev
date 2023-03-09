@@ -32,7 +32,7 @@ To help you gain the right intuition, let's look at some common concrete example
 
 ### Updating state based on props or state {/*updating-state-based-on-props-or-state*/}
 
-Suppose you have a component with two state variables: `firstName` and `lastName`. You want to calculate a `fullName` from them by concatenating them. Moreover, you'd like `fullName` to update whenever `firstName` or `lastName` change. Your first instinct might be to add a `fullName` state variable and update it in an effect:
+Suppose you have a component with two state variables: `firstName` and `lastName`. You want to calculate a `fullName` from them by concatenating them. Moreover, you'd like `fullName` to update whenever `firstName` or `lastName` change. Your first instinct might be to add a `fullName` state variable and update it in an Effect:
 
 ```js {5-9}
 function Form() {
@@ -93,7 +93,7 @@ function TodoList({ todos, filter }) {
 
 In many cases, this code is fine! But maybe `getFilteredTodos()` is slow or you have a lot of `todos`. In that case you don't want to recalculate `getFilteredTodos()` if some unrelated state variable like `newTodo` has changed.
 
-You can cache (or ["memoize"](https://en.wikipedia.org/wiki/Memoization)) an expensive calculation by wrapping it in a [`useMemo`](/apis/react/useMemo) Hook:
+You can cache (or ["memoize"](https://en.wikipedia.org/wiki/Memoization)) an expensive calculation by wrapping it in a [`useMemo`](/reference/react/useMemo) Hook:
 
 ```js {5-8}
 import { useMemo, useState } from 'react';
@@ -123,9 +123,11 @@ function TodoList({ todos, filter }) {
 
 **This tells React that you don't want the inner function to re-run unless either `todos` or `filter` have changed.** React will remember the return value of `getFilteredTodos()` during the initial render. During the next renders, it will check if `todos` or `filter` are different. If they're the same as last time, `useMemo` will return the last result it has stored. But if they are different, React will call the wrapped function again (and store _that_ result instead).
 
-The function you wrap in [`useMemo`](/apis/react/useMemo) runs during rendering, so this only works for [pure calculations](/learn/keeping-components-pure).
+The function you wrap in [`useMemo`](/reference/react/useMemo) runs during rendering, so this only works for [pure calculations.](/learn/keeping-components-pure)
 
-<DeepDive title="How to tell if a calculation is expensive?">
+<DeepDive>
+
+#### How to tell if a calculation is expensive? {/*how-to-tell-if-a-calculation-is-expensive*/}
 
 In general, unless you're creating or looping over thousands of objects, it's probably not expensive. If you want to get more confidence, you can add a console log to measure the time spent in a piece of code:
 
@@ -149,7 +151,7 @@ console.timeEnd('filter array');
 
 Keep in mind that your machine is probably faster than your users' so it's a good idea to test the performance with an artificial slowdown. For example, Chrome offers a [CPU Throttling](https://developer.chrome.com/blog/new-in-devtools-61/#throttling) option for this.
 
-Also note that measuring performance in development will not give you the most accurate results. (For example, when [Strict Mode](/apis/react/StrictMode) is on, you will see each component render twice rather than once.) To get the most accurate timings, build your app for production and test it on a device like your users have.
+Also note that measuring performance in development will not give you the most accurate results. (For example, when [Strict Mode](/reference/react/StrictMode) is on, you will see each component render twice rather than once.) To get the most accurate timings, build your app for production and test it on a device like your users have.
 
 </DeepDive>
 
@@ -177,7 +179,7 @@ Instead, you can tell React that each user's profile is conceptually a _differen
 export default function ProfilePage({ userId }) {
   return (
     <Profile
-      userId={userId} 
+      userId={userId}
       key={userId}
     />
   );
@@ -232,9 +234,9 @@ function List({ items }) {
 }
 ```
 
-[Storing information from previous renders](/apis/react/useState#storing-information-from-previous-renders) like this can be hard to understand, but it’s better than updating the same state in an Effect. In the above example, `setSelection` is called directly during a render. React will re-render the `List` *immediately* after it exits with a `return` statement. By that point, React hasn't rendered the `List` children or updated the DOM yet, so this lets the `List` children skip rendering the stale `selection` value.
+[Storing information from previous renders](/reference/react/useState#storing-information-from-previous-renders) like this can be hard to understand, but it’s better than updating the same state in an Effect. In the above example, `setSelection` is called directly during a render. React will re-render the `List` *immediately* after it exits with a `return` statement. By that point, React hasn't rendered the `List` children or updated the DOM yet, so this lets the `List` children skip rendering the stale `selection` value.
 
-When you update a component during rendering, React throws away the returned JSX and immediately retries rendering. To avoid very slow cascading retries, React only lets you update the *same* component's state during a render. If you update another component's state during a render, you'll see an error. A condition like `items !== prevItems` is necessary to avoid loops. You may adjust state like this, but any other side effects (like changing the DOM or setting a timeout) should remain in event handlers or Effects to [keep your components predictable](/learn/keeping-components-pure).
+When you update a component during rendering, React throws away the returned JSX and immediately retries rendering. To avoid very slow cascading retries, React only lets you update the *same* component's state during a render. If you update another component's state during a render, you'll see an error. A condition like `items !== prevItems` is necessary to avoid loops. You may adjust state like this, but any other side effects (like changing the DOM or setting a timeout) should remain in event handlers or Effects to [keep your components predictable.](/learn/keeping-components-pure)
 
 **Although this pattern is more efficient than an Effect, most components shouldn't need it either.** No matter how you do it, adjusting state based on props or other state makes your data flow more difficult to understand and debug. Always check whether you can [reset all state with a key](#resetting-all-state-when-a-prop-changes) or [calculate everything during rendering](#updating-state-based-on-props-or-state) instead. For example, instead of storing (and resetting) the selected *item*, you can store the selected *item ID:*
 
@@ -284,7 +286,7 @@ function ProductPage({ product, addToCart }) {
   // ✅ Good: Event-specific logic is called from event handlers
   function buyProduct() {
     addToCart(product);
-    showNotification(`Added ${product.name} to the shopping cart!`);    
+    showNotification(`Added ${product.name} to the shopping cart!`);
   }
 
   function handleBuyClick() {
@@ -446,9 +448,9 @@ function Game() {
 
 This is a lot more efficient. Also, if you implement a way to view game history, now you will be able to set each state variable to a move from the past without triggering the Effect chain that adjusts every other value. If you need to reuse logic between several event handlers, you can [extract a function](#sharing-logic-between-event-handlers) and call it from those handlers.
 
-Remember that inside event handlers, [state behaves like a snapshot](/learn/state-as-a-snapshot). For example, even after you call `setRound(round + 1)`, the `round` variable will reflect the value at the time the user clicked the button. If you need to use the next value for calculations, define it manually like `const nextRound = round + 1`.
+Remember that inside event handlers, [state behaves like a snapshot.](/learn/state-as-a-snapshot) For example, even after you call `setRound(round + 1)`, the `round` variable will reflect the value at the time the user clicked the button. If you need to use the next value for calculations, define it manually like `const nextRound = round + 1`.
 
-In some cases, you *can't* calculate the next state directly in the event handler. For example, imagine a form with multiple dropdowns where the options of each next dropdown depend on the selected value of the previous dropdown. Then, a chain of Effects fetching data is appropriate because you are synchronizing with network.
+In some cases, you *can't* calculate the next state directly in the event handler. For example, imagine a form with multiple dropdowns where the options of the next dropdown depend on the selected value of the previous dropdown. Then, a chain of Effects fetching data is appropriate because you are synchronizing with network.
 
 ### Initializing the application {/*initializing-the-application*/}
 
@@ -465,7 +467,7 @@ function App() {
 }
 ```
 
-However, you'll quickly discover that it [runs twice in development](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development). This can cause issues--for example, maybe it invalidates the authentication token because the function wasn't designed to be called twice. In general, your components should be resilient to being remounted. This includes your top-level `App` component. Although it may not ever get remounted in practice in production, following the same constraints in all components makes it easier to move and reuse code. If some logic must run *once per app load* rather than *once per component mount*, you can add a top-level variable to track whether it has already executed, and always skip re-running it:
+However, you'll quickly discover that it [runs twice in development.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development) This can cause issues--for example, maybe it invalidates the authentication token because the function wasn't designed to be called twice. In general, your components should be resilient to being remounted. This includes your top-level `App` component. Although it may not ever get remounted in practice in production, following the same constraints in all components makes it easier to move and reuse code. If some logic must run *once per app load* rather than *once per component mount*, you can add a top-level variable to track whether it has already executed, and always skip re-running it:
 
 ```js {1,5-6,10}
 let didInit = false;
@@ -656,7 +658,7 @@ function ChatIndicator() {
 
 Here, the component subscribes to an external data store (in this case, the browser `navigator.onLine` API). Since this API does not exist on the server (so it can't be used to generate the initial HTML), initially the state is set to `true`. Whenever the value of that data store changes in the browser, the component updates its state.
 
-Although it's common to use Effects for this, React has a purpose-built Hook for subscribing to an external store that is preferred instead. Delete the Effect and replace it with a call to [`useSyncExternalStore`](/apis/react/usesyncexternalstore):
+Although it's common to use Effects for this, React has a purpose-built Hook for subscribing to an external store that is preferred instead. Delete the Effect and replace it with a call to [`useSyncExternalStore`](/reference/react/useSyncExternalStore):
 
 ```js {11-16}
 function subscribe(callback) {
@@ -683,7 +685,7 @@ function ChatIndicator() {
 }
 ```
 
-This approach is less error-prone than manually syncing mutable data to React state with an Effect. Typically, you'll write a custom Hook like `useOnlineStatus()` above so that you don't need to repeat this code in the individual components. [Read more about subscribing to external stores from React components.](/apis/usesyncexternalstore)
+This approach is less error-prone than manually syncing mutable data to React state with an Effect. Typically, you'll write a custom Hook like `useOnlineStatus()` above so that you don't need to repeat this code in the individual components. [Read more about subscribing to external stores from React components.](/reference/react/useSyncExternalStore)
 
 ### Fetching data {/*fetching-data*/}
 
@@ -719,7 +721,7 @@ However, the code above has a bug. Imagine you type `"hello"` fast. Then the `qu
 ```js {5,7,9,11-13}
 function SearchResults({ query }) {
   const [results, setResults] = useState([]);
-  const [page, setPage] = useState(1); 
+  const [page, setPage] = useState(1);
   useEffect(() => {
     let ignore = false;
     fetchResults(query, page).then(json => {
@@ -747,7 +749,7 @@ If you don't use a framework (and don't want to build your own) but would like t
 
 ```js {4}
 function SearchResults({ query }) {
-  const [page, setPage] = useState(1); 
+  const [page, setPage] = useState(1);
   const params = new URLSearchParams({ query, page });
   const results = useData(`/api/search?${params}`);
 
@@ -1262,7 +1264,7 @@ This approach satisfies the requirements too. When you type into the input, only
 
 #### Reset state without Effects {/*reset-state-without-effects*/}
 
-This `EditContact` component receives a contact object with shaped like `{ id, name, email }` as the `savedContact` prop. Try editing the name and email input fields. When you press Save, the contact's button above the form updates to the edited name. When you press Reset, any pending changes in the form are discarded. Play around with this UI to get a feel for it.
+This `EditContact` component receives a contact object shaped like `{ id, name, email }` as the `savedContact` prop. Try editing the name and email input fields. When you press Save, the contact's button above the form updates to the edited name. When you press Reset, any pending changes in the form are discarded. Play around with this UI to get a feel for it.
 
 When you select a contact with the buttons at the top, the form resets to reflect that contact's details. This is done with an Effect inside `EditContact.js`. Remove this Effect. Find another way to reset the form when `savedContact.id` changes.
 
@@ -1518,7 +1520,7 @@ export default function EditContact(props) {
   return (
     <EditForm
       {...props}
-      key={props.savedContact.id} 
+      key={props.savedContact.id}
     />
   );
 }
@@ -1594,7 +1596,7 @@ button {
 
 This `Form` component lets you send a message to a friend. When you submit the form, the `showForm` state variable is set to `false`. This triggers an Effect calling `sendMessage(message)`, which sends the message (you can see it in the console). After the message is sent, you see a "Thank you" dialog with an "Open chat" button that lets you get back to the form.
 
-Your app's users are sending way too many messages. To make chatting a little bit more difficult, you've decided to show the "Thank you" dialog *first* rather than the form. Change the `showForm` state variable to initialize to `false` instead of `true`. As soon as you make that change, the console will show that an empty message was sent twice. Something in this logic is wrong!
+Your app's users are sending way too many messages. To make chatting a little bit more difficult, you've decided to show the "Thank you" dialog *first* rather than the form. Change the `showForm` state variable to initialize to `false` instead of `true`. As soon as you make that change, the console will show that an empty message was sent. Something in this logic is wrong!
 
 What's the root cause of this problem? And how can you fix it?
 
@@ -1726,4 +1728,3 @@ Notice how in this version, only _submitting the form_ (which is an event) cause
 </Solution>
 
 </Challenges>
-

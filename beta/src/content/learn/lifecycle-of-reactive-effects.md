@@ -95,7 +95,7 @@ function ChatRoom({ roomId /* "general" */ }) {
 }
 ```
 
-After the UI is displayed, React will run your Effect to **start synchronizing**. It connects to the `"general"` room:
+After the UI is displayed, React will run your Effect to **start synchronizing.** It connects to the `"general"` room:
 
 ```js {3,4}
 function ChatRoom({ roomId /* "general" */ }) {
@@ -517,7 +517,7 @@ export default function App() {
         {show ? 'Close chat' : 'Open chat'}
       </button>
       {show && <hr />}
-      {show && <ChatRoom roomId={roomId} />}
+      {show && <ChatRoom />}
     </>
   );
 }
@@ -573,13 +573,15 @@ In this example, `serverUrl` is not a prop or a state variable. It's a regular v
 
 In other words, Effects "react" to all values from the component body.
 
-<DeepDive title="Can global or mutable values be dependencies?">
+<DeepDive>
+
+#### Can global or mutable values be dependencies? {/*can-global-or-mutable-values-be-dependencies*/}
 
 Mutable values (including global variables) aren't reactive.
 
-**A mutable value like [`location.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname) can't be a dependency.** It's mutable, so it can change at any time completely outside of the React rendering data flow. Changing it wouldn't trigger a re-render of your component. Therefore, even if you specified it in the dependencies, React *wouldn't know* to re-synchronize the Effect when it changes. This also breaks the rules of React because reading mutable data during rendering (which is when you calculate the dependencies) breaks [purity of rendering.](/learn/keeping-components-pure) Instead, you should read and subscribe to an external mutable value with [`useSyncExternalStore`](/learn/you-might-not-need-an-effect#subscribing-to-an-external-store).
+**A mutable value like [`location.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname) can't be a dependency.** It's mutable, so it can change at any time completely outside of the React rendering data flow. Changing it wouldn't trigger a re-render of your component. Therefore, even if you specified it in the dependencies, React *wouldn't know* to re-synchronize the Effect when it changes. This also breaks the rules of React because reading mutable data during rendering (which is when you calculate the dependencies) breaks [purity of rendering.](/learn/keeping-components-pure) Instead, you should read and subscribe to an external mutable value with [`useSyncExternalStore`.](/learn/you-might-not-need-an-effect#subscribing-to-an-external-store)
 
-**A mutable value like [`ref.current`](/apis/react/useRef#reference) or things you read from it also can't be a dependency.** The ref object returned by `useRef` itself can be a dependency, but its `current` property is intentionally mutable. It lets you [keep track of something without triggering a re-render.](/learn/referencing-values-with-refs) But since changing it doesn't trigger a re-render, it's not a reactive value, and React won't know to re-run your Effect when it changes.
+**A mutable value like [`ref.current`](/reference/react/useRef#reference) or things you read from it also can't be a dependency.** The ref object returned by `useRef` itself can be a dependency, but its `current` property is intentionally mutable. It lets you [keep track of something without triggering a re-render.](/learn/referencing-values-with-refs) But since changing it doesn't trigger a re-render, it's not a reactive value, and React won't know to re-run your Effect when it changes.
 
 As you'll learn below on this page, a linter will check for these issues automatically.
 
@@ -683,7 +685,7 @@ Try this fix in the sandbox above. Verify that the linter error is gone, and tha
 
 <Note>
 
-In some cases, React *knows* that a value never changes even though it's declared inside the component. For example, the [`set` function](/apis/react/useState#setstate) returned from `useState` and the ref object returned by [`useRef`](/apis/react/useRef) are *stable*--they are guaranteed to not change on a re-render. Stable values aren't reactive, so the linter lets you omit them from the list. However, including them is allowed: they won't change, so it doesn't matter.
+In some cases, React *knows* that a value never changes even though it's declared inside the component. For example, the [`set` function](/reference/react/useState#setstate) returned from `useState` and the ref object returned by [`useRef`](/reference/react/useRef) are *stable*--they are guaranteed to not change on a re-render. Stable values aren't reactive, so the linter lets you omit them from the list. However, including them is allowed: they won't change, so it doesn't matter.
 
 </Note>
 
@@ -736,7 +738,7 @@ function ChatRoom() {
 
 * **Avoid relying on objects and functions as dependencies.** If you create objects and functions during rendering and then read them from an Effect, they will be different on every render. This will cause your Effect to re-synchronize every time. [Read more about removing unnecessary dependencies from your Effects.](/learn/removing-effect-dependencies)
 
-<Gotcha>
+<Pitfall>
 
 The linter is your friend, but its powers are limited. The linter only knows when the dependencies are *wrong*. It doesn't know *the best* way to solve each case. If the linter suggests a dependency, but adding it causes a loop, it doesn't mean the linter should be ignored. It means you need to change the code inside (or outside) the Effect so that that value isn't reactive and doesn't *need* to be a dependency.
 
@@ -746,13 +748,13 @@ If you have an existing codebase, you might have some Effects that suppress the 
 useEffect(() => {
   // ...
   // 🔴 Avoid suppressing the linter like this:
-  // eslint-ignore-next-line react-hooks/exhaustive-dependencies
+  // eslint-ignore-next-line react-hooks/exhaustive-deps
 }, []);
 ```
 
 On the [next](/learn/separating-events-from-effects) [pages](/learn/removing-effect-dependencies), you'll learn how to fix this code without breaking the rules. It's always worth fixing!
 
-</Gotcha>
+</Pitfall>
 
 <Recap>
 
@@ -760,7 +762,7 @@ On the [next](/learn/separating-events-from-effects) [pages](/learn/removing-eff
 - Each Effect has a separate lifecycle from the surrounding component.
 - Each Effect describes a separate synchronization process that can *start* and *stop*.
 - When you write and read Effects, you should think from each individual Effect's perspective (how to start and stop synchronization) rather than from the component's perspective (how it mounts, updates, or unmounts).
-- Values declared inside the component body are "reactive."
+- Values declared inside the component body are "reactive".
 - Reactive values should re-synchronize the Effect because they can change over time.
 - The linter verifies that all reactive values used inside the Effect are specified as dependencies.
 - All errors flagged by the linter are legitimate. There's always a way to fix the code that doesn't break the rules.
@@ -1113,7 +1115,7 @@ In both of these cases, `canMove` is a reactive variable that you read inside th
 
 #### Investigate a stale value bug {/*investigate-a-stale-value-bug*/}
 
-In this example, the pink dot should move when the checkbox if on, and should stop moving when the checkbox is off. The logic for this has already been implemented: the `handleMove` event handler checks the `canMove` state variable.
+In this example, the pink dot should move when the checkbox is on, and should stop moving when the checkbox is off. The logic for this has already been implemented: the `handleMove` event handler checks the `canMove` state variable.
 
 However, for some reason, the `canMove` state variable inside `handleMove` appears to be "stale": it's always `true`, even after you tick off the checkbox. How is this possible? Find the mistake in the code and fix it.
 
@@ -1305,7 +1307,7 @@ body {
 
 Try adding `console.log('Resubscribing')` inside the Effect body and notice that now it only resubscribes when you toggle the checkbox (`canMove` changes) or edit the code. This makes it better than the previous approach that always resubscribed.
 
-You'll learn a more general approach to this type of problem in [Separating Events from Effects](/learn/separating-events-from-effects).
+You'll learn a more general approach to this type of problem in [Separating Events from Effects.](/learn/separating-events-from-effects)
 
 </Solution>
 
@@ -1607,13 +1609,13 @@ label { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-In this version, the `App` component passes a boolean prop instead of a function. Inside the Effect, you decide which function to use. Since both `createEncryptedConnection` and `createUnencryptedConnection` are declared outside the component, they aren't reactive, and don't need to be dependencies. You'll learn more about this in [Removing Effect Dependencies](/learn/removing-effect-dependencies).
+In this version, the `App` component passes a boolean prop instead of a function. Inside the Effect, you decide which function to use. Since both `createEncryptedConnection` and `createUnencryptedConnection` are declared outside the component, they aren't reactive, and don't need to be dependencies. You'll learn more about this in [Removing Effect Dependencies.](/learn/removing-effect-dependencies)
 
 </Solution>
 
 #### Populate a chain of select boxes {/*populate-a-chain-of-select-boxes*/}
 
-In this example, there are two select boxes. One select box lets the user picks a planet. Another select box lets the user pick a place *on that planet.* The second box doesn't work yet. Your task is to make it show the places on the chosen planet.
+In this example, there are two select boxes. One select box lets the user pick a planet. Another select box lets the user pick a place *on that planet.* The second box doesn't work yet. Your task is to make it show the places on the chosen planet.
 
 Look at how the first select box works. It populates the `planetList` state with the result from the `"/planets"` API call. The currently selected planet's ID is kept in the `planetId` state variable. You need to find where to add some additional code so that the `placeList` state variable is populated with the result of the `"/planets/" + planetId + "/places"` API call.
 
@@ -1661,7 +1663,7 @@ export default function Page() {
         }}>
           {planetList.map(planet =>
             <option key={planet.id} value={planet.id}>{planet.name}</option>
-          )}}
+          )}
         </select>
       </label>
       <label>
@@ -1671,7 +1673,7 @@ export default function Page() {
         }}>
           {placeList.map(place =>
             <option key={place.id} value={place.id}>{place.name}</option>
-          )}}
+          )}
         </select>
       </label>
       <hr />
@@ -1829,7 +1831,7 @@ export default function Page() {
         }}>
           {planetList.map(planet =>
             <option key={planet.id} value={planet.id}>{planet.name}</option>
-          )}}
+          )}
         </select>
       </label>
       <label>
@@ -1839,7 +1841,7 @@ export default function Page() {
         }}>
           {placeList.map(place =>
             <option key={place.id} value={place.id}>{place.name}</option>
-          )}}
+          )}
         </select>
       </label>
       <hr />
@@ -1965,7 +1967,7 @@ export default function Page() {
         }}>
           {planetList?.map(planet =>
             <option key={planet.id} value={planet.id}>{planet.name}</option>
-          )}}
+          )}
         </select>
       </label>
       <label>
@@ -1975,7 +1977,7 @@ export default function Page() {
         }}>
           {placeList?.map(place =>
             <option key={place.id} value={place.id}>{place.name}</option>
-          )}}
+          )}
         </select>
       </label>
       <hr />

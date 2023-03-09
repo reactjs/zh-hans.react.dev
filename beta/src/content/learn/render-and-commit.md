@@ -73,7 +73,7 @@ export default function Image() {
 
 ### 状态更新时重新渲染 {/*re-renders-when-state-updates*/}
 
-一旦组件被初次渲染，您就可以通过使用 [`set` 函数](/apis/react/useState#setstate) 更新其状态来触发之后的渲染。更新组件的状态会自动将一次渲染送入队列。（您可以想象这种情况成餐厅客人在第一次下单之后又点了茶、点心和各种东西，具体取决于他们的胃口。）
+一旦组件被初次渲染，您就可以通过使用 [`set` 函数](/reference/react/useState#setstate) 更新其状态来触发之后的渲染。更新组件的状态会自动将一次渲染送入队列。（您可以想象这种情况成餐厅客人在第一次下单之后又点了茶、点心和各种东西，具体取决于他们的胃口。）
 
 <IllustrationBlock sequential>
   <Illustration caption="状态更新..." alt="React 作为餐厅服务员将一份 Card UI 送到用户那里，这里的用户以头部为光标的顾客表示。顾客说她想要一个粉色的 Card，而不是黑色的。" src="/images/docs/illustrations/i_rerender1.png" />
@@ -133,7 +133,7 @@ img { margin: 0 10px 10px 0; }
 * **在初次渲染中，** React 将会为`<section>`、`<h1>` 和三个 `<img>` 标签 [创建 DOM 节点](https://developer.mozilla.org/docs/Web/API/Document/createElement)。
 * **在一次重渲染过程中,** React 将计算它们的哪些属性（如果有的话）自上次渲染以来已更改。在下一步（提交阶段）之前，它不会对这些信息执行任何操作。
 
-<Gotcha>
+<Pitfall>
 
 渲染必须始终是一次 [纯计算](/learn/keeping-components-pure):
 
@@ -142,11 +142,13 @@ img { margin: 0 10px 10px 0; }
 
 否则，随着代码库复杂性的增加，您可能会遇到令人困惑的错误和不可预测的行为。在 "严格模式" 下开发时，React 会调用每个组件的函数两次，这可以帮助发现由不纯函数引起的错误。
 
-</Gotcha>
+</Pitfall>
 
-<DeepDive title="性能优化">
+<DeepDive>
 
-如果更新的组件在树中的位置非常高，渲染更新后的组件内部所有嵌套组件的默认行为将不会获得最佳性能。如果您遇到了性能问题，[性能](/learn/performance) 章节描述了几种可选的解决方案 。**不要过早进行优化！**
+#### 性能优化 {/*optimizing-performance*/}
+
+如果更新的组件在树中的位置非常高，渲染更新后的组件内部所有嵌套组件的默认行为将不会获得最佳性能。如果您遇到了性能问题，[性能](https://reactjs.org/docs/optimizing-performance.html) 章节描述了几种可选的解决方案 。**不要过早进行优化！**
 
 </DeepDive>
 
@@ -157,7 +159,7 @@ img { margin: 0 10px 10px 0; }
 * **对于初次渲染，** React 会使用 [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) DOM API 将其创建的所有 DOM 节点放在屏幕上。
 * **对于重渲染，** React 将应用最少的必要操作（在渲染时计算！），以使得 DOM 与最新的渲染输出相互匹配。
 
-**React 仅在渲染之间存在差异时才会更改 DOM 节点。**例如，有一个组件，它每秒使用从父组件传递下来的不同属性重新渲染一次。注意，您可以添加一些文本到 `<input>` 标签，更新它的 `value`，但是文本不会在组件重渲染时消失：
+**React 仅在渲染之间存在差异时才会更改 DOM 节点。** 例如，有一个组件，它每秒使用从父组件传递下来的不同属性重新渲染一次。注意，您可以添加一些文本到 `<input>` 标签，更新它的 `value`，但是文本不会在组件重渲染时消失：
 
 <Sandpack>
 

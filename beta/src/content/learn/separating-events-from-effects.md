@@ -13,8 +13,8 @@ Event handlers only re-run when you perform the same interaction again. Unlike e
 - How to choose between an event handler and an Effect
 - Why Effects are reactive, and event handlers are not
 - What to do when you want a part of your Effect's code to not be reactive
-- What Event functions are, and how to extract them from your Effects
-- How to read the latest props and state from Effects using Event functions
+- What Effect Events are, and how to extract them from your Effects
+- How to read the latest props and state from Effects using Effect Events
 
 </YouWillLearn>
 
@@ -156,7 +156,7 @@ input, select { margin-right: 20px; }
 
 ## Reactive values and reactive logic {/*reactive-values-and-reactive-logic*/}
 
-Intuitively, you could say that event handlers are always triggered "manually," for example by clicking a button. Effects, on the other hand, are "automatic": they run and re-run as often as it's needed to stay synchronized.
+Intuitively, you could say that event handlers are always triggered "manually", for example by clicking a button. Effects, on the other hand, are "automatic": they run and re-run as often as it's needed to stay synchronized.
 
 There is a more precise way to think about this.
 
@@ -175,7 +175,7 @@ function ChatRoom({ roomId }) {
 Reactive values like these can change due to a re-render. For example, the user may edit the `message` or choose a different `roomId` in a dropdown. Event handlers and Effects are different in how they respond to changes:
 
 - **Logic inside event handlers is *not reactive.*** It will not run again unless the user performs the same interaction (for example, a click) again. Event handlers can read reactive values, but they don't "react" to their changes.
-- **Logic inside Effects is *reactive.*** If your Effect reads a reactive value, [you have to specify it as a dependency](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values). Then, if a re-render causes that value to change, React will re-run your Effect's logic again with the new value.
+- **Logic inside Effects is *reactive.*** If your Effect reads a reactive value, [you have to specify it as a dependency.](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) Then, if a re-render causes that value to change, React will re-run your Effect's logic again with the new value.
 
 Let's revisit the previous example to illustrate this difference.
 
@@ -262,7 +262,7 @@ Play with this example and see if you can spot the problem with this user experi
 
 <Sandpack>
 
-```json package.json
+```json package.json hidden
 {
   "dependencies": {
     "react": "latest",
@@ -326,7 +326,7 @@ export default function App() {
       <hr />
       <ChatRoom
         roomId={roomId}
-        theme={isDark ? 'dark' : 'light'} 
+        theme={isDark ? 'dark' : 'light'}
       />
     </>
   );
@@ -394,37 +394,37 @@ In other words, you *don't* want this line to be reactive, even though it is ins
       // ...
       showNotification('Connected!', theme);
       // ...
-````
+```
 
 You need a way to separate this non-reactive logic from the reactive Effect around it.
 
-### Declaring an Event function {/*declaring-an-event-function*/}
+### Declaring an Effect Event {/*declaring-an-effect-event*/}
 
-<Gotcha>
+<Wip>
 
 This section describes an **experimental API that has not yet been added to React,** so you can't use it yet.
 
-</Gotcha>
+</Wip>
 
-Use a special Hook called [`useEvent`](/apis/useEvent) to extract this non-reactive logic out of your Effect:
+Use a special Hook called [`useEffectEvent`](/reference/react/useEffectEvent) to extract this non-reactive logic out of your Effect:
 
 ```js {1,4-6}
-import { useEffect, useEvent } from 'react';
+import { useEffect, useEffectEvent } from 'react';
 
 function ChatRoom({ roomId, theme }) {
-  const onConnected = useEvent(() => {
+  const onConnected = useEffectEvent(() => {
     showNotification('Connected!', theme);
   });
   // ...
 ````
 
-Here, `onConnected` is called an *Event function.* It's a part of your Effect logic, but it behaves a lot more like an event handler. The logic inside it is not reactive, and it always "sees" the latest values of your props and state.
+Here, `onConnected` is called an *Effect Event.* It's a part of your Effect logic, but it behaves a lot more like an event handler. The logic inside it is not reactive, and it always "sees" the latest values of your props and state.
 
-Now you can call the `onConnected` Event function from inside your Effect:
+Now you can call the `onConnected` Effect Event from inside your Effect:
 
 ```js {2-4,9,13}
 function ChatRoom({ roomId, theme }) {
-  const onConnected = useEvent(() => {
+  const onConnected = useEffectEvent(() => {
     showNotification('Connected!', theme);
   });
 
@@ -439,7 +439,7 @@ function ChatRoom({ roomId, theme }) {
   // ...
 ```
 
-This solves the problem. Similar to the `set` functions returned from `useState`, all Event functions are *stable:* they never change on a re-render. This is why you can skip them in the dependency list. They are not reactive.
+This solves the problem. Note that you had to *remove* `onConnected` from the list of your Effect's dependencies. **Effect Events are not reactive and must be omitted from dependencies. The linter will error if you include them.**
 
 Verify that the new behavior works as you would expect:
 
@@ -448,8 +448,8 @@ Verify that the new behavior works as you would expect:
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "latest",
-    "react-dom": "latest",
+    "react": "experimental",
+    "react-dom": "experimental",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -464,14 +464,14 @@ Verify that the new behavior works as you would expect:
 
 ```js
 import { useState, useEffect } from 'react';
-import { useEvent } from './useEvent.js';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 import { createConnection, sendMessage } from './chat.js';
 import { showNotification } from './notifications.js';
 
 const serverUrl = 'https://localhost:1234';
 
 function ChatRoom({ roomId, theme }) {
-  const onConnected = useEvent(() => {
+  const onConnected = useEffectEvent(() => {
     showNotification('Connected!', theme);
   });
 
@@ -482,7 +482,7 @@ function ChatRoom({ roomId, theme }) {
     });
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId, onConnected]); // TODO: Linter will allow [roomId] in the future
+  }, [roomId]);
 
   return <h1>Welcome to the {roomId} room!</h1>
 }
@@ -514,7 +514,7 @@ export default function App() {
       <hr />
       <ChatRoom
         roomId={roomId}
-        theme={isDark ? 'dark' : 'light'} 
+        theme={isDark ? 'dark' : 'light'}
       />
     </>
   );
@@ -568,42 +568,23 @@ export function showNotification(message, theme) {
 }
 ```
 
-```js useEvent.js
-import { useRef, useInsertionEffect, useCallback } from 'react';
-
-// The useEvent API has not yet been added to React,
-// so this is a temporary shim to make this sandbox work.
-// You're not expected to write code like this yourself.
-
-export function useEvent(fn) {
-  const ref = useRef(null);
-  useInsertionEffect(() => {
-    ref.current = fn;
-  }, [fn]);
-  return useCallback((...args) => {
-    const f = ref.current;
-    return f(...args);
-  }, []);
-}
-```
-
 ```css
 label { display: block; margin-top: 10px; }
 ```
 
 </Sandpack>
 
-You can think of Event functions as being very similar to event handlers. The main difference is that event handlers run in response to a user interactions, whereas Event functions are triggered by you from Effects. Event functions let you "break the chain" between the reactivity of Effects and some code that should not be reactive.
+You can think of Effect Events as being very similar to event handlers. The main difference is that event handlers run in response to a user interactions, whereas Effect Events are triggered by you from Effects. Effect Events let you "break the chain" between the reactivity of Effects and some code that should not be reactive.
 
-### Reading latest props and state with Event functions {/*reading-latest-props-and-state-with-event-functions*/}
+### Reading latest props and state with Effect Events {/*reading-latest-props-and-state-with-effect-events*/}
 
-<Gotcha>
+<Wip>
 
 This section describes an **experimental API that has not yet been added to React,** so you can't use it yet.
 
-</Gotcha>
+</Wip>
 
-Event functions let you fix many patterns where you might be tempted to suppress the dependency linter.
+Effect Events let you fix many patterns where you might be tempted to suppress the dependency linter.
 
 For example, say you have an Effect to log the page visits:
 
@@ -661,7 +642,7 @@ function Page({ url }) {
   const { items } = useContext(ShoppingCartContext);
   const numberOfItems = items.length;
 
-  const onVisit = useEvent(visitedUrl => {
+  const onVisit = useEffectEvent(visitedUrl => {
     logVisit(visitedUrl, numberOfItems);
   });
 
@@ -672,9 +653,9 @@ function Page({ url }) {
 }
 ```
 
-Here, `onVisit` is an Event function. The code inside it isn't reactive. This is why you can use `numberOfItems` (or any other reactive value!) without worrying that it will cause the surrounding code to re-execute on changes.
+Here, `onVisit` is an Effect Event. The code inside it isn't reactive. This is why you can use `numberOfItems` (or any other reactive value!) without worrying that it will cause the surrounding code to re-execute on changes.
 
-On the other hand, the Effect itself remains reactive. Code inside the Effect uses the `url` prop, so the Effect will re-run after every re-render with a different `url`. This, in turn, will call the `onVisit` event function.
+On the other hand, the Effect itself remains reactive. Code inside the Effect uses the `url` prop, so the Effect will re-run after every re-render with a different `url`. This, in turn, will call the `onVisit` Effect Event.
 
 As a result, you will call `logVisit` for every change to the `url`, and always read the latest `numberOfItems`. However, if `numberOfItems` changes on its own, this will not cause any of the code to re-run.
 
@@ -683,7 +664,7 @@ As a result, you will call `logVisit` for every change to the `url`, and always 
 You might be wondering if you could call `onVisit()` with no arguments, and read the `url` inside it:
 
 ```js {2,6}
-  const onVisit = useEvent(() => {
+  const onVisit = useEffectEvent(() => {
     logVisit(url, numberOfItems);
   });
 
@@ -692,10 +673,10 @@ You might be wondering if you could call `onVisit()` with no arguments, and read
   }, [url]);
 ```
 
-This would work, but it's better to pass this `url` to the Event function explicitly. **By passing `url` as an argument to your Event function, you are saying that visiting a page with a different `url` constitutes a separate "event" from the user's perspective.** The `visitedUrl` is a *part* of the "event" that happened:
+This would work, but it's better to pass this `url` to the Effect Event explicitly. **By passing `url` as an argument to your Effect Event, you are saying that visiting a page with a different `url` constitutes a separate "event" from the user's perspective.** The `visitedUrl` is a *part* of the "event" that happened:
 
 ```js {1-2,6}
-  const onVisit = useEvent(visitedUrl => {
+  const onVisit = useEffectEvent(visitedUrl => {
     logVisit(visitedUrl, numberOfItems);
   });
 
@@ -704,12 +685,12 @@ This would work, but it's better to pass this `url` to the Event function explic
   }, [url]);
 ```
 
-Since your Event function explicitly "asks" for the `visitedUrl`, now you can't accidentally remove `url` from the Effect's dependencies. If you remove the `url` dependency (causing distinct page visits to be counted as one), the linter will warn you about it. You want `onVisit` to be reactive with regards to the `url`, so instead of reading the `url` inside (where it wouldn't be reactive), you pass it *from* your Effect.
+Since your Effect Event explicitly "asks" for the `visitedUrl`, now you can't accidentally remove `url` from the Effect's dependencies. If you remove the `url` dependency (causing distinct page visits to be counted as one), the linter will warn you about it. You want `onVisit` to be reactive with regards to the `url`, so instead of reading the `url` inside (where it wouldn't be reactive), you pass it *from* your Effect.
 
 This becomes especially important if there is some asynchronous logic inside the Effect:
 
 ```js {6,8}
-  const onVisit = useEvent(visitedUrl => {
+  const onVisit = useEffectEvent(visitedUrl => {
     logVisit(visitedUrl, numberOfItems);
   });
 
@@ -724,7 +705,9 @@ In this example, `url` inside `onVisit` corresponds to the *latest* `url` (which
 
 </Note>
 
-<DeepDive title="Is it okay to suppress the dependency linter instead?">
+<DeepDive>
+
+#### Is it okay to suppress the dependency linter instead? {/*is-it-okay-to-suppress-the-dependency-linter-instead*/}
 
 In the existing codebases, you may sometimes see the lint rule suppressed like this:
 
@@ -742,7 +725,7 @@ function Page({ url }) {
 }
 ```
 
-After `useEvent` becomes a stable part of React, we recommend to **never suppress the linter** like this.
+After `useEffectEvent` becomes a stable part of React, we recommend to **never suppress the linter** like this.
 
 The first downside of suppressing the rule is that React will no longer warn you when your Effect needs to "react" to a new reactive dependency you've introduced to your code. For example, in the earlier example, you added `url` to the dependencies *because* React reminded you to do it. You will no longer get such reminders for any future edits to that Effect if you disable the linter. This leads to bugs.
 
@@ -774,7 +757,7 @@ export default function App() {
       <label>
         <input type="checkbox"
           checked={canMove}
-          onChange={e => setCanMove(e.target.checked)} 
+          onChange={e => setCanMove(e.target.checked)}
         />
         The dot is allowed to move
       </label>
@@ -809,21 +792,37 @@ The problem with the this code is in suppressing the dependency linter. If you r
 
 The author of the original code has "lied" to React by saying that the Effect does not depend (`[]`) on any reactive values. This is why React did not re-synchronize the Effect after `canMove` has changed (and `handleMove` with it). Because React did not re-synchronize the Effect, the `handleMove` attached as a listener is the `handleMove` function created during the initial render. During the initial render, `canMove` was `true`, which is why `handleMove` from the initial render will forever see that value.
 
-**If you never suppress the linter, you will never see problems with stale values.** 
+**If you never suppress the linter, you will never see problems with stale values.**
 
-With `useEvent`, there is no need to "lie" to the linter, and the code works as you would expect:
+With `useEffectEvent`, there is no need to "lie" to the linter, and the code works as you would expect:
 
 <Sandpack>
 
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "experimental",
+    "react-dom": "experimental",
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+```
+
 ```js
 import { useState, useEffect } from 'react';
-import { useEvent } from './useEvent.js';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 
 export default function App() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [canMove, setCanMove] = useState(true);
 
-  const onMove = useEvent(e => {
+  const onMove = useEffectEvent(e => {
     if (canMove) {
       setPosition({ x: e.clientX, y: e.clientY });
     }
@@ -832,14 +831,14 @@ export default function App() {
   useEffect(() => {
     window.addEventListener('pointermove', onMove);
     return () => window.removeEventListener('pointermove', onMove);
-  }, [onMove]); // TODO: Linter will allow [] in the future
+  }, []);
 
   return (
     <>
       <label>
         <input type="checkbox"
           checked={canMove}
-          onChange={e => setCanMove(e.target.checked)} 
+          onChange={e => setCanMove(e.target.checked)}
         />
         The dot is allowed to move
       </label>
@@ -861,25 +860,6 @@ export default function App() {
 }
 ```
 
-```js useEvent.js
-import { useRef, useInsertionEffect, useCallback } from 'react';
-
-// The useEvent API has not yet been added to React,
-// so this is a temporary shim to make this sandbox work.
-// You're not expected to write code like this yourself.
-
-export function useEvent(fn) {
-  const ref = useRef(null);
-  useInsertionEffect(() => {
-    ref.current = fn;
-  }, [fn]);
-  return useCallback((...args) => {
-    const f = ref.current;
-    return f(...args);
-  }, []);
-}
-```
-
 ```css
 body {
   height: 200px;
@@ -888,36 +868,36 @@ body {
 
 </Sandpack>
 
-This doesn't mean that `useEvent` is *always* the correct solution. You should only apply it to the lines of code that you don't want to be reactive. For example, in the above sandbox, you didn't want the Effect's code to be reactive with regards to `canMove`. That's why it made sense to extract an Event function.
+This doesn't mean that `useEffectEvent` is *always* the correct solution. You should only apply it to the lines of code that you don't want to be reactive. For example, in the above sandbox, you didn't want the Effect's code to be reactive with regards to `canMove`. That's why it made sense to extract an Effect Event.
 
 Read [Removing Effect Dependencies](/learn/removing-effect-dependencies) for other correct alternatives to suppressing the linter.
 
 </DeepDive>
 
-### Limitations of Event functions {/*limitations-of-event-functions*/}
+### Limitations of Effect Events {/*limitations-of-effect-events*/}
 
-<Gotcha>
+<Wip>
 
 This section describes an **experimental API that has not yet been added to React,** so you can't use it yet.
 
-</Gotcha>
+</Wip>
 
-At the moment, Event functions are very limited in how you can use them:
+Effect Events are very limited in how you can use them:
 
 * **Only call them from inside Effects.**
 * **Never pass them to other components or Hooks.**
 
-For example, don't declare and pass an Event function like this:
+For example, don't declare and pass an Effect Event like this:
 
 ```js {4-6,8}
 function Timer() {
   const [count, setCount] = useState(0);
 
-  const onTick = useEvent(() => {
+  const onTick = useEffectEvent(() => {
     setCount(count + 1);
   });
 
-  useTimer(onTick, 1000); // 🔴 Avoid: Passing event functions
+  useTimer(onTick, 1000); // 🔴 Avoid: Passing Effect Events
 
   return <h1>{count}</h1>
 }
@@ -934,7 +914,7 @@ function useTimer(callback, delay) {
 }
 ```
 
-Instead, always declare Event functions directly next to the Effects that use them:
+Instead, always declare Effect Events directly next to the Effects that use them:
 
 ```js {10-12,16,21}
 function Timer() {
@@ -946,7 +926,7 @@ function Timer() {
 }
 
 function useTimer(callback, delay) {
-  const onTick = useEvent(() => {
+  const onTick = useEffectEvent(() => {
     callback();
   });
 
@@ -957,11 +937,11 @@ function useTimer(callback, delay) {
     return () => {
       clearInterval(id);
     };
-  }, [delay]); // No need to specify "onTick" (an Event function) as a dependency
+  }, [delay]); // No need to specify "onTick" (an Effect Event) as a dependency
 }
 ```
 
-It's possible that in the future, some of these restrictions will be lifted. But for now, you can think of Event functions as non-reactive "pieces" of your Effect code, so they should be close to the Effect using them.
+Effect Events are non-reactive "pieces" of your Effect code. They should be next to the Effect using them.
 
 <Recap>
 
@@ -969,9 +949,9 @@ It's possible that in the future, some of these restrictions will be lifted. But
 - Effects run whenever synchronization is needed.
 - Logic inside event handlers is not reactive.
 - Logic inside Effects is reactive.
-- You can move non-reactive logic from Effects into Event functions.
-- Only call Event functions from inside Effects.
-- Don't pass Event functions to other components or Hooks.
+- You can move non-reactive logic from Effects into Effect Events.
+- Only call Effect Events from inside Effects.
+- Don't pass Effect Events to other components or Hooks.
 
 </Recap>
 
@@ -1094,7 +1074,7 @@ Now, when `increment` changes, React will re-synchronize your Effect, which will
 
 #### Fix a freezing counter {/*fix-a-freezing-counter*/}
 
-This `Timer` component keeps a `count` state variable which increases every second. The value by which it's increasing is stored in the `increment` state variable, which you can control it with the plus and minus buttons. For example, try pressing the plus button nine times, and notice that the `count` now increases by ten (rather than by one) after every next second.
+This `Timer` component keeps a `count` state variable which increases every second. The value by which it's increasing is stored in the `increment` state variable, which you can control it with the plus and minus buttons. For example, try pressing the plus button nine times, and notice that the `count` now increases each second by ten rather than by one.
 
 There is a small issue with this user interface. You might notice that if you keep pressing the plus or minus buttons faster than once per second, the timer itself seems to pause. It only resumes after a second passes since the last time you've pressed either button. Find why this is happening, and fix the issue so that the timer ticks on *every* second without interruptions.
 
@@ -1106,9 +1086,25 @@ It seems like the Effect which sets up the timer "reacts" to the `increment` val
 
 <Sandpack>
 
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "experimental",
+    "react-dom": "experimental",
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+```
+
 ```js
 import { useState, useEffect } from 'react';
-import { useEvent } from './useEvent.js';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 
 export default function Timer() {
   const [count, setCount] = useState(0);
@@ -1145,25 +1141,6 @@ export default function Timer() {
 }
 ```
 
-```js useEvent.js
-import { useRef, useInsertionEffect, useCallback } from 'react';
-
-// The useEvent API has not yet been added to React,
-// so this is a temporary shim to make this sandbox work.
-// You're not expected to write code like this yourself.
-
-export function useEvent(fn) {
-  const ref = useRef(null);
-  useInsertionEffect(() => {
-    ref.current = fn;
-  }, [fn]);
-  return useCallback((...args) => {
-    const f = ref.current;
-    return f(...args);
-  }, []);
-}
-```
-
 ```css
 button { margin: 10px; }
 ```
@@ -1174,19 +1151,35 @@ button { margin: 10px; }
 
 The issue is that the code inside the Effect uses the `increment` state variable. Since it's a dependency of your Effect, every change to `increment` causes the Effect to re-synchronize, which causes the interval to clear. If you keep clearing the interval every time before it has a chance to fire, it will appear as if the timer has stalled.
 
-To solve the issue, extract an `onTick` Event function from the Effect:
+To solve the issue, extract an `onTick` Effect Event from the Effect:
 
 <Sandpack>
 
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "experimental",
+    "react-dom": "experimental",
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+```
+
 ```js
 import { useState, useEffect } from 'react';
-import { useEvent } from './useEvent.js';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 
 export default function Timer() {
   const [count, setCount] = useState(0);
   const [increment, setIncrement] = useState(1);
 
-  const onTick = useEvent(() => {
+  const onTick = useEffectEvent(() => {
     setCount(c => c + increment);
   });
 
@@ -1197,7 +1190,7 @@ export default function Timer() {
     return () => {
       clearInterval(id);
     };
-  }, [onTick]); // TODO: Linter will allow [] in the future
+  }, []);
 
   return (
     <>
@@ -1222,32 +1215,13 @@ export default function Timer() {
 ```
 
 
-```js useEvent.js
-import { useRef, useInsertionEffect, useCallback } from 'react';
-
-// The useEvent API has not yet been added to React,
-// so this is a temporary shim to make this sandbox work.
-// You're not expected to write code like this yourself.
-
-export function useEvent(fn) {
-  const ref = useRef(null);
-  useInsertionEffect(() => {
-    ref.current = fn;
-  }, [fn]);
-  return useCallback((...args) => {
-    const f = ref.current;
-    return f(...args);
-  }, []);
-}
-```
-
 ```css
 button { margin: 10px; }
 ```
 
 </Sandpack>
 
-Since `onTick` is an Event function, the code inside it isn't reactive. The change to `increment` does not trigger any Effects.
+Since `onTick` is an Effect Event, the code inside it isn't reactive. The change to `increment` does not trigger any Effects.
 
 </Solution>
 
@@ -1257,26 +1231,42 @@ In this example, you can customize the interval delay. It's stored in a `delay` 
 
 <Hint>
 
-Code inside Event functions is not reactive. Are there cases in which you would _want_ the `setInterval` call to re-run?
+Code inside Effect Events is not reactive. Are there cases in which you would _want_ the `setInterval` call to re-run?
 
 </Hint>
 
 <Sandpack>
 
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "experimental",
+    "react-dom": "experimental",
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+```
+
 ```js
 import { useState, useEffect } from 'react';
-import { useEvent } from './useEvent.js';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 
 export default function Timer() {
   const [count, setCount] = useState(0);
   const [increment, setIncrement] = useState(1);
   const [delay, setDelay] = useState(100);
 
-  const onTick = useEvent(() => {
+  const onTick = useEffectEvent(() => {
     setCount(c => c + increment);
   });
 
-  const onMount = useEvent(() => {
+  const onMount = useEffectEvent(() => {
     return setInterval(() => {
       onTick();
     }, delay);
@@ -1287,7 +1277,7 @@ export default function Timer() {
     return () => {
       clearInterval(id);
     }
-  }, [onMount]);
+  }, []);
 
   return (
     <>
@@ -1322,25 +1312,6 @@ export default function Timer() {
 ```
 
 
-```js useEvent.js
-import { useRef, useInsertionEffect, useCallback } from 'react';
-
-// The useEvent API has not yet been added to React,
-// so this is a temporary shim to make this sandbox work.
-// You're not expected to write code like this yourself.
-
-export function useEvent(fn) {
-  const ref = useRef(null);
-  useInsertionEffect(() => {
-    ref.current = fn;
-  }, [fn]);
-  return useCallback((...args) => {
-    const f = ref.current;
-    return f(...args);
-  }, []);
-}
-```
-
 ```css
 button { margin: 10px; }
 ```
@@ -1349,20 +1320,36 @@ button { margin: 10px; }
 
 <Solution>
 
-The problem with the above example is that it extracted an Event function called `onMount` without considering what the code should actually be doing. You should only extract Event functions for a specific reason: when you want to make a part of your code non-reactive. However, the `setInterval` call *should* be reactive with respect to the `delay` state variable. If the `delay` changes, you want to set up the interval from scratch! To fix this code, pull all the reactive code back inside the Effect:
+The problem with the above example is that it extracted an Effect Event called `onMount` without considering what the code should actually be doing. You should only extract Effect Events for a specific reason: when you want to make a part of your code non-reactive. However, the `setInterval` call *should* be reactive with respect to the `delay` state variable. If the `delay` changes, you want to set up the interval from scratch! To fix this code, pull all the reactive code back inside the Effect:
 
 <Sandpack>
 
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "experimental",
+    "react-dom": "experimental",
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+```
+
 ```js
 import { useState, useEffect } from 'react';
-import { useEvent } from './useEvent.js';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 
 export default function Timer() {
   const [count, setCount] = useState(0);
   const [increment, setIncrement] = useState(1);
   const [delay, setDelay] = useState(100);
 
-  const onTick = useEvent(() => {
+  const onTick = useEffectEvent(() => {
     setCount(c => c + increment);
   });
 
@@ -1373,7 +1360,7 @@ export default function Timer() {
     return () => {
       clearInterval(id);
     }
-  }, [delay, onTick]); // TODO: Linter will allow [delay] in the future
+  }, [delay]);
 
   return (
     <>
@@ -1407,32 +1394,13 @@ export default function Timer() {
 }
 ```
 
-```js useEvent.js
-import { useRef, useInsertionEffect, useCallback } from 'react';
-
-// The useEvent API has not yet been added to React,
-// so this is a temporary shim to make this sandbox work.
-// You're not expected to write code like this yourself.
-
-export function useEvent(fn) {
-  const ref = useRef(null);
-  useInsertionEffect(() => {
-    ref.current = fn;
-  }, [fn]);
-  return useCallback((...args) => {
-    const f = ref.current;
-    return f(...args);
-  }, []);
-}
-```
-
 ```css
 button { margin: 10px; }
 ```
 
 </Sandpack>
 
-In general, you should be suspicious of functions like `onMount` that focus on the *timing* rather than the *purpose* of a piece of code. It may feel "more descriptive" at first but it obscures your intent. As a rule of thumb, Event functions should correspond to something that happens from the *user's* perspective. For example, `onMessage`, `onTick`, `onVisit`, or `onConnected` are good Event function names. Code inside them would likely not need to be reactive. On the other hand, `onMount`, `onUpdate`, `onUnmount`, or `onAfterRender` are so generic that it's easy to accidentally put code that *should* be reactive into them. This is why you should name your Event functions after *what the user thinks has happened,* not when some code happened to run.
+In general, you should be suspicious of functions like `onMount` that focus on the *timing* rather than the *purpose* of a piece of code. It may feel "more descriptive" at first but it obscures your intent. As a rule of thumb, Effect Events should correspond to something that happens from the *user's* perspective. For example, `onMessage`, `onTick`, `onVisit`, or `onConnected` are good Effect Event names. Code inside them would likely not need to be reactive. On the other hand, `onMount`, `onUpdate`, `onUnmount`, or `onAfterRender` are so generic that it's easy to accidentally put code that *should* be reactive into them. This is why you should name your Effect Events after *what the user thinks has happened,* not when some code happened to run.
 
 </Solution>
 
@@ -1446,7 +1414,7 @@ Fix it so that when you switch from "general" to "travel" and then to "music" ve
 
 <Hint>
 
-Your Effect knows which room it connected to. Is there any information that you might want to pass to your Event function?
+Your Effect knows which room it connected to. Is there any information that you might want to pass to your Effect Event?
 
 </Hint>
 
@@ -1455,8 +1423,8 @@ Your Effect knows which room it connected to. Is there any information that you 
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "latest",
-    "react-dom": "latest",
+    "react": "experimental",
+    "react-dom": "experimental",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -1471,14 +1439,14 @@ Your Effect knows which room it connected to. Is there any information that you 
 
 ```js
 import { useState, useEffect } from 'react';
-import { useEvent } from './useEvent.js';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 import { createConnection, sendMessage } from './chat.js';
 import { showNotification } from './notifications.js';
 
 const serverUrl = 'https://localhost:1234';
 
 function ChatRoom({ roomId, theme }) {
-  const onConnected = useEvent(() => {
+  const onConnected = useEffectEvent(() => {
     showNotification('Welcome to ' + roomId, theme);
   });
 
@@ -1491,7 +1459,7 @@ function ChatRoom({ roomId, theme }) {
     });
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId, onConnected]); // TODO: Linter will allow [roomId] in the future
+  }, [roomId]);
 
   return <h1>Welcome to the {roomId} room!</h1>
 }
@@ -1523,7 +1491,7 @@ export default function App() {
       <hr />
       <ChatRoom
         roomId={roomId}
-        theme={isDark ? 'dark' : 'light'} 
+        theme={isDark ? 'dark' : 'light'}
       />
     </>
   );
@@ -1577,25 +1545,6 @@ export function showNotification(message, theme) {
 }
 ```
 
-```js useEvent.js
-import { useRef, useInsertionEffect, useCallback } from 'react';
-
-// The useEvent API has not yet been added to React,
-// so this is a temporary shim to make this sandbox work.
-// You're not expected to write code like this yourself.
-
-export function useEvent(fn) {
-  const ref = useRef(null);
-  useInsertionEffect(() => {
-    ref.current = fn;
-  }, [fn]);
-  return useCallback((...args) => {
-    const f = ref.current;
-    return f(...args);
-  }, []);
-}
-```
-
 ```css
 label { display: block; margin-top: 10px; }
 ```
@@ -1604,19 +1553,19 @@ label { display: block; margin-top: 10px; }
 
 <Solution>
 
-Inside your Event function, `roomId` is the value *at the time Event function was called.*
+Inside your Effect Event, `roomId` is the value *at the time Effect Event was called.*
 
-Your Event function is called with a two second delay. If you're quickly switching from the travel to the music room, by the time the travel room's notification shows, `roomId` is already `"music"`. This is why both notifications say "Welcome to music".
+Your Effect Event is called with a two second delay. If you're quickly switching from the travel to the music room, by the time the travel room's notification shows, `roomId` is already `"music"`. This is why both notifications say "Welcome to music".
 
-To fix the issue, instead of reading the *latest* `roomId` inside the Event function, make it a parameter of your Event function, like `connectedRoomId` below. Then pass `roomId` from your Effect by calling `onConnected(roomId)`:
+To fix the issue, instead of reading the *latest* `roomId` inside the Effect Event, make it a parameter of your Effect Event, like `connectedRoomId` below. Then pass `roomId` from your Effect by calling `onConnected(roomId)`:
 
 <Sandpack>
 
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "latest",
-    "react-dom": "latest",
+    "react": "experimental",
+    "react-dom": "experimental",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -1631,14 +1580,14 @@ To fix the issue, instead of reading the *latest* `roomId` inside the Event func
 
 ```js
 import { useState, useEffect } from 'react';
-import { useEvent } from './useEvent.js';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 import { createConnection, sendMessage } from './chat.js';
 import { showNotification } from './notifications.js';
 
 const serverUrl = 'https://localhost:1234';
 
 function ChatRoom({ roomId, theme }) {
-  const onConnected = useEvent(connectedRoomId => {
+  const onConnected = useEffectEvent(connectedRoomId => {
     showNotification('Welcome to ' + connectedRoomId, theme);
   });
 
@@ -1651,7 +1600,7 @@ function ChatRoom({ roomId, theme }) {
     });
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId, onConnected]); // TODO: Linter will allow [roomId] in the future
+  }, [roomId]);
 
   return <h1>Welcome to the {roomId} room!</h1>
 }
@@ -1683,7 +1632,7 @@ export default function App() {
       <hr />
       <ChatRoom
         roomId={roomId}
-        theme={isDark ? 'dark' : 'light'} 
+        theme={isDark ? 'dark' : 'light'}
       />
     </>
   );
@@ -1734,25 +1683,6 @@ export function showNotification(message, theme) {
       color: theme === 'dark' ? 'white' : 'black',
     },
   }).showToast();
-}
-```
-
-```js useEvent.js
-import { useRef, useInsertionEffect, useCallback } from 'react';
-
-// The useEvent API has not yet been added to React,
-// so this is a temporary shim to make this sandbox work.
-// You're not expected to write code like this yourself.
-
-export function useEvent(fn) {
-  const ref = useRef(null);
-  useInsertionEffect(() => {
-    ref.current = fn;
-  }, [fn]);
-  return useCallback((...args) => {
-    const f = ref.current;
-    return f(...args);
-  }, []);
 }
 ```
 
@@ -1771,8 +1701,8 @@ To solve the additional challenge, save the notification timeout ID and clear it
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "latest",
-    "react-dom": "latest",
+    "react": "experimental",
+    "react-dom": "experimental",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -1787,14 +1717,14 @@ To solve the additional challenge, save the notification timeout ID and clear it
 
 ```js
 import { useState, useEffect } from 'react';
-import { useEvent } from './useEvent.js';
+import { experimental_useEffectEvent as useEffectEvent } from 'react';
 import { createConnection, sendMessage } from './chat.js';
 import { showNotification } from './notifications.js';
 
 const serverUrl = 'https://localhost:1234';
 
 function ChatRoom({ roomId, theme }) {
-  const onConnected = useEvent(connectedRoomId => {
+  const onConnected = useEffectEvent(connectedRoomId => {
     showNotification('Welcome to ' + connectedRoomId, theme);
   });
 
@@ -1813,7 +1743,7 @@ function ChatRoom({ roomId, theme }) {
         clearTimeout(notificationTimeoutId);
       }
     };
-  }, [roomId, onConnected]); // TODO: Linter will allow [roomId] in the future
+  }, [roomId]);
 
   return <h1>Welcome to the {roomId} room!</h1>
 }
@@ -1845,7 +1775,7 @@ export default function App() {
       <hr />
       <ChatRoom
         roomId={roomId}
-        theme={isDark ? 'dark' : 'light'} 
+        theme={isDark ? 'dark' : 'light'}
       />
     </>
   );
@@ -1896,25 +1826,6 @@ export function showNotification(message, theme) {
       color: theme === 'dark' ? 'white' : 'black',
     },
   }).showToast();
-}
-```
-
-```js useEvent.js
-import { useRef, useInsertionEffect, useCallback } from 'react';
-
-// The useEvent API has not yet been added to React,
-// so this is a temporary shim to make this sandbox work.
-// You're not expected to write code like this yourself.
-
-export function useEvent(fn) {
-  const ref = useRef(null);
-  useInsertionEffect(() => {
-    ref.current = fn;
-  }, [fn]);
-  return useCallback((...args) => {
-    const f = ref.current;
-    return f(...args);
-  }, []);
 }
 ```
 
