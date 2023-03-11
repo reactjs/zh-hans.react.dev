@@ -214,11 +214,7 @@ return (
 
 </DeepDive>
 
-<<<<<<< HEAD
 现在，假如你想将对应物品的文本放到另一个 HTML 标签里，比如用 `<del>` 来显示删除线。你可以添加更多的换行和括号，以便在各种情况下更好地去嵌套 JSX：
-=======
-Now let's say you want to wrap the completed item's text into another HTML tag, like `<del>` to strike it out. You can add even more newlines and parentheses so that it's easier to nest more JSX in each of the cases:
->>>>>>> 19aa5b4852c3905757edb16dd62f7e7506231210
 
 <Sandpack>
 
