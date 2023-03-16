@@ -35,7 +35,11 @@ React 控制 UI 的方式是声明式的。你不必直接控制 UI 的各个部
 
 他并不知道你想去哪，只想跟着命令行动。（并且如果你发出了错误的命令，那么你就会到达错误的地方）正因为你必须从加载动画到按钮地“命令”每个元素，所以这种告诉计算机*如何*去更新 UI 的编程方式被称为*命令式编程*
 
+<<<<<<< HEAD
 在这个命令式 UI 编程的例子中，表单**没有使用** React 生成，而是使用原生的 [DOM](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model):
+=======
+In this example of imperative UI programming, the form is built *without* React. It only uses the browser [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model):
+>>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 <Sandpack>
 
@@ -335,7 +339,15 @@ body { margin: 0; }
 * **网络请求成功后**（计算机）应该将表单的状态切换到**成功**的状态。
 * **网络请求失败后**（计算机）应该将表单的状态切换到**失败**的状态，与此同时，显示错误信息。
 
+<<<<<<< HEAD
 > 注意，人为输入通常需要 [事件处理函数](/learn/responding-to-events)！
+=======
+<Note>
+
+Notice that human inputs often require [event handlers](/learn/responding-to-events)!
+
+</Note>
+>>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 为了可视化这个流程，请尝试在纸上画出圆形标签以表示每个状态，两个状态之间的改变用箭头表示。你可以像这样画出很多流程并且在写代码前解决许多 bug。
 
@@ -360,7 +372,11 @@ const [answer, setAnswer] = useState('');
 const [error, setError] = useState(null);
 ```
 
+<<<<<<< HEAD
 之后你需要一个 state 变量来表示你想显示前面描述的哪一种视觉状态。通常不止一种在内存中表示的方法，因此你需要试验一下。
+=======
+Then, you'll need a state variable representing which one of the visual states that you want to display. There's usually more than a single way to represent that in memory, so you'll need to experiment with it.
+>>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 如果你很难立即想出最好的办法，那就先从添加足够多的 state 开始，*确保*所有可能的视图状态都囊括其中：
 
@@ -404,7 +420,11 @@ const [status, setStatus] = useState('typing'); // 'typing', 'submitting', or 's
 
 ### 步骤 5：连接事件处理函数以设置 state {/*step-5-connect-the-event-handlers-to-set-state*/}
 
+<<<<<<< HEAD
 最后，创建事件处理函数去设置 state 变量。下面是绑定好事件的最终表单：
+=======
+Lastly, create event handlers that update the state. Below is the final form, with all event handlers wired up:
+>>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 <Sandpack>
 

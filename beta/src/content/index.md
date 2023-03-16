@@ -1,9 +1,10 @@
 ---
 id: home
-title: React Docs Beta
+title: React – The library for web and native user interfaces
 permalink: index.html
 ---
 
+<<<<<<< HEAD
 <HomepageHero />
 
 ## 这是什么网站? {/*what-is-this-site*/}
@@ -30,3 +31,6 @@ permalink: index.html
 ## 此站点是否会取代主站点？ {/*will-this-site-replace-the-main-site*/}
 
 我们的目标是，当此站点的内容与 [现有 React 文档](https://reactjs.org/) 一致时。就会把此站点切为主站，而旧的 React 官网将被归档到子域下，你仍可访问它。旧的内容链接将重定向到归档的子域中，其中会包含过时的提示。
+=======
+{/* See HomeContent.js */}
+>>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea

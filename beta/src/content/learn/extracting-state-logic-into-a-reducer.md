@@ -335,7 +335,11 @@ function tasksReducer(tasks, action) {
 }
 ```
 
+<<<<<<< HEAD
 > 由于 `reducer` 函数接受 `state`（tasks）作为参数，因此你可以 **在组件之外声明它**。**这减少了代码的缩进级别，提升了代码的可读性。
+=======
+Because the reducer function takes state (`tasks`) as an argument, you can **declare it outside of your component.** This decreases the indentation level and can make your code easier to read.
+>>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 <Note>
 
@@ -375,7 +379,11 @@ function tasksReducer(tasks, action) {
 }
 ```
 
+<<<<<<< HEAD
 我们建议将每个 `case` 块包装到 `{` 和 `}` 花括号中，这样在不同 `case` 中声明的变量就不会互相冲突。此外，`case` 通常应该以 `return` 结尾。如果你忘了 `return`，代码就会 `进入` 到下一个 `case`，这就会导致错误！
+=======
+We recommend wrapping each `case` block into the `{` and `}` curly braces so that variables declared inside of different `case`s don't clash with each other. Also, a `case` should usually end with a `return`. If you forget to `return`, the code will "fall through" to the next `case`, which can lead to mistakes!
+>>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 如果你还不熟悉 `switch` 语句，使用 `if/else` 也是可以的。
 
@@ -463,7 +471,11 @@ export default function tasksReducer(tasks, action) {
 
 ### 第 3 步: 在组件中使用 reducer {/*step-3-use-the-reducer-from-your-component*/}
 
+<<<<<<< HEAD
 最后，你需要将 `tasksReducer` 导入到组件中。记得先从 React 中导入 `useReducer` Hook：
+=======
+Finally, you need to hook up the `tasksReducer` to your component. Import the `useReducer` Hook from React:
+>>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 ```js
 import {useReducer} from 'react';

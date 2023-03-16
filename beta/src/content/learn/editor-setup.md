@@ -62,4 +62,8 @@ React 社区中其他较为流行的文本编辑器包括：
 4. 在搜索栏, 输入 "format on save"
 5. 确保勾选 "format on save" 选项！
 
+<<<<<<< HEAD
 > 如果你的 ESLint 预设包含格式化规则，它们可能会与 Prettier 发生冲突。我们建议使用[`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier) 禁用你 ESLint 预设中的所有格式化规则，这样 ESLint 就只用于捕捉逻辑错误。如果你想在合并 PR 前强制执行文件的格式化，请在你的 CI 中使用 [`prettier --check`](https://prettier.io/docs/en/cli.html#--check) 命令。
+=======
+> If your ESLint preset has formatting rules, they may conflict with Prettier. We recommend disabling all formatting rules in your ESLint preset using [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier) so that ESLint is *only* used for catching logical mistakes. If you want to enforce that files are formatted before a pull request is merged, use [`prettier --check`](https://prettier.io/docs/en/cli.html#--check) for your continuous integration.
+>>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea

@@ -85,7 +85,15 @@ export default function Profile() {
 }
 ```
 
+<<<<<<< HEAD
 > 如果 `person=` 后面的双花括号让你感到困惑，请记住，在 JSX 花括号中，[它们只是一个对象](/learn/javascript-in-jsx-with-curly-braces#using-double-curlies-css-and-other-objects-in-jsx)。 
+=======
+<Note>
+
+If double curly braces after `person=` confuse you, recall [they're merely an object](/learn/javascript-in-jsx-with-curly-braces#using-double-curlies-css-and-other-objects-in-jsx) inside the JSX curlies.
+
+</Note>
+>>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 现在，你可以在 `Avatar` 组件中读取这些 props 了。
 
@@ -346,8 +354,14 @@ export function getImageUrl(person, size = 's') {
 
 </Sandpack>
 
+<<<<<<< HEAD
 尝试用一些文本替换 `<Card>` 中的 `<Avatar>`，看看 `Card` 组件如何包裹任意嵌套内容。它不必“知道”其中渲染的内容。你会在很多地方看到这种灵活的模式。
 您可以将带有 `children` prop 的组件看作有一个“洞”，可以由其父组件使用任意 JSX 来“填充”。你会经常使用 `children` prop 来进行视觉包装：面板、网格等等。
+=======
+Try replacing the `<Avatar>` inside `<Card>` with some text to see how the `Card` component can wrap any nested content. It doesn't need to "know" what's being rendered inside of it. You will see this flexible pattern in many places.
+
+You can think of a component with a `children` prop as having a "hole" that can be "filled in" by its parent components with arbitrary JSX. You will often use the `children` prop for visual wrappers: panels, grids, etc.
+>>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 <Illustration src="/images/docs/illustrations/i_children-prop.png" alt='A puzzle-like Card tile with a slot for "children" pieces like text and Avatar' />
 

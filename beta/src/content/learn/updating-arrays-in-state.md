@@ -71,7 +71,6 @@ export default function List() {
         onChange={e => setName(e.target.value)}
       />
       <button onClick={() => {
-        setName('');
         artists.push({
           id: nextId++,
           name: name,
@@ -125,7 +124,6 @@ export default function List() {
         onChange={e => setName(e.target.value)}
       />
       <button onClick={() => {
-        setName('');
         setArtists([
           ...artists,
           { id: nextId++, name: name }

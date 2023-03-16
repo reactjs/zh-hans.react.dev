@@ -9,7 +9,11 @@ translators:
 
 <Intro>
 
+<<<<<<< HEAD
 React 可以改变你对可见设计和应用构建的思考。当你使用 React 构建用户界面时，你首先会把它分解成一个个 **组件**，然后，你需要把这些组件连接在一起，使数据流经它们。在本教程中，我们将引导你使用 React 构建一个可搜索的产品数据表。
+=======
+React can change how you think about the designs you look at and the apps you build. When you build a user interface with React, you will first break it apart into pieces called *components*. Then, you will describe the different visual states for each of your components. Finally, you will connect your components together so that the data flows through them. In this tutorial, we’ll guide you through the thought process of building a searchable product data table with React.
+>>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 </Intro>
 
@@ -38,7 +42,11 @@ JSON API 返回如下的数据:
 
 ## 步骤一: 将 UI 拆解为组件层级结构 {/*step-1-break-the-ui-into-a-component-hierarchy*/}
 
+<<<<<<< HEAD
 一开始，在绘制原型中的每个组件和子组件周围绘制盒子并命名它们。如果你与设计师一起工作，他们可能早已在其设计工具中对这些组件进行了命名。检查一下它们!
+=======
+Start by drawing boxes around every component and subcomponent in the mockup and naming them. If you work with a designer, they may have already named these components in their design tool. Ask them!
+>>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 取决于你的使用背景，可以考虑通过不同的方式将设计分割为组件:
 
@@ -66,7 +74,11 @@ JSON API 返回如下的数据:
 
 </FullWidth>
 
+<<<<<<< HEAD
 看向 `ProductTable`(淡紫色)，可以看到表头 (包含 "Name" 和 "Price" 标签) 并不是独立的组件。这是个人喜好的问题，你可以采取任何一种方式继续。在这个例子中，它是作为 `ProductTable` 的一部分，因为它展现在 `ProductTable` 列表之中。然而，如果这个表头变得复杂 (举个例子，如果添加排序)，创建独立的 `ProductTableHeader` 组件就变得有意义了。
+=======
+If you look at `ProductTable` (lavender), you'll see that the table header (containing the "Name" and "Price" labels) isn't its own component. This is a matter of preference, and you could go either way. For this example, it is a part of `ProductTable` because it appears inside the `ProductTable`'s list. However, if this header grows to be complex (e.g., if you add sorting), you can move it into its own `ProductTableHeader` component.
+>>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 现在你已经在原型中辨别了组件，并将它们转化为了层级结构。在原型中，组件可以展示在其它组件之中，在层级结构中如同其孩子一般:
 
@@ -78,7 +90,11 @@ JSON API 返回如下的数据:
 
 ## 步骤二: 使用 React 构建一个静态版本 {/*step-2-build-a-static-version-in-react*/}
 
+<<<<<<< HEAD
 现在你已经拥有了你自己的组件层级结构，是时候实现你的应用程序了。最直接的办法是根据你的数据模型，构建一个不带任何交互的 UI 渲染代码版本...经常是先构建一个静态版本比较简单，然后再一个个添加交互。构建一个静态版本需要写大量的代码，并不需要什么思考; 但添加交互需要大量的思考，却不需要大量的代码。
+=======
+Now that you have your component hierarchy, it's time to implement your app. The most straightforward approach is to build a version that renders the UI from your data model without adding any interactivity... yet! It's often easier to build the static version first and add interactivity later. Building a static version requires a lot of typing and no thinking, but adding interactivity requires a lot of thinking and not a lot of typing.
+>>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 构建应用程序的静态版本来渲染你的数据模型，将构建 [组件](/learn/your-first-component) 并复用其它的组件，然后使用 [props](/learn/passing-props-to-a-component) 进行传递数据。Props 是从父组件向子组件传递数据的一种方式。(如果你对 [state](/learn/state-a-components-memory) 章节很熟悉，不要在静态版本中使用 state 进行构建。state 只是为交互提供的保留功能，即数据会随着时间变化。因为这是一个静态应用程序，所以并不需要。)
 
@@ -266,9 +282,15 @@ Props 和 state 是不同的，但它们可以共同工作。父组件将经常�
     2. 你也可以将 state 放置于它们父组件上层的组件。
     3. 如果你找不到一个有意义拥有这个 state 的地方，单独创建一个新的组件去管理这个 state，并将它添加到它们父组件上层的某个地方。
 
+<<<<<<< HEAD
 在之前的步骤中，你已在应用程序中创建了两个 state: 输入框文本和复选框的值。在这个例子中，它们总在一起展示，将其视为一个 state 非常简单。
 
 现在为这个 state 贯彻我们的策略:
+=======
+In the previous step, you found two pieces of state in this application: the search input text, and the value of the checkbox. In this example, they always appear together, so it makes sense to put them into the same place.
+
+Now let's run through our strategy for them:
+>>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 1. **验证使用 state 的组件:**
     * `ProductTable` 需要基于 state (搜索文本和复选框值) 过滤产品列表。
@@ -278,7 +300,11 @@ Props 和 state 是不同的，但它们可以共同工作。父组件将经常�
 
 所以 state 将被放置在 `FilterableProductTable`。
 
+<<<<<<< HEAD
 用 [`useState()` Hook](/reference/react/useState) 为组件添加 state 。 Hook 可以 "钩住" 组件的 [渲染周期](/learn/render-and-commit)。在 `FilterableProductTable` 的顶部添加两个 state 变量，用于指定你应用程序的初始 state：
+=======
+Add state to the component with the [`useState()` Hook.](/reference/react/useState) Hooks are special functions that let you "hook into" React. Add two state variables at the top of `FilterableProductTable` and specify their initial state:
+>>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 ```js
 function FilterableProductTable({ products }) {
