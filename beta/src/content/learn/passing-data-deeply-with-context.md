@@ -701,7 +701,11 @@ export const LevelContext = createContext(0);
 
 现在，`Heading` 和 `Section` 都通过读取 `LevelContext` 来判断它们的深度。而且 `Section` 把它的子组件都包在 `LevelContext` 中来指定其中的任何内容都处于一个“更深”的级别。
 
->本示例使用标题级别来展示，因为它们直观地显示了嵌套组件如何覆盖 context。但是 context 对于许多其他的场景也很有用。你可以用它来传递整个子树需要的任何信息：当前的颜色主题、当前登录的用户等。
+<Note>
+
+本示例使用标题级别来展示，因为它们直观地显示了嵌套组件如何覆盖 context。但是 context 对于许多其他的场景也很有用。你可以用它来传递整个子树需要的任何信息：当前的颜色主题、当前登录的用户等。
+
+</Note>
 
 ## Context 会穿过中间层级的组件 {/*context-passes-through-intermediate-components*/}
 

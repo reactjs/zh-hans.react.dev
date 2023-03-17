@@ -68,7 +68,7 @@ setNumber(0 + 1);
 
 **React 不会跨 *多个* 需要刻意触发的事件（如点击）进行批处理**——每次点击都是单独处理的。请放心，React 只会在一般来说安全的情况下才进行批处理。这可以确保，例如，如果第一次点击按钮会禁用表单，那么第二次点击就不会再次提交它。
 
-## 在下次渲染前多次更新同一个 state 变量 {/*updating-the-same-state-variable-multiple-times-before-the-next-render*/}
+## 在下次渲染前多次更新同一个 state {/*updating-the-same-state-multiple-times-before-the-next-render*/}
 
 这是一个不常见的用例，但是如果你想在下次渲染之前多次更新同一个 state，你可以像 `setNumber(n => n + 1)` 这样传入一个根据队列中的前一个 state 计算下一个 state 的 *函数*，而不是像 `setNumber(number + 1)` 这样传入 *下一个 state 值*。这是一种告诉 React “用 state 值做某事”而不是仅仅替换它的方法。
 
@@ -182,7 +182,11 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 React 会保存 `6` 为最终结果并从 `useState` 中返回。
 
-> 你可能已经注意到，`setState(x)` 实际上会像 `setState(n => x)` 一样运行，只是没有使用 `n` ！
+<Note>
+
+你可能已经注意到，`setState(x)` 实际上会像 `setState(n => x)` 一样运行，只是没有使用 `n`！
+
+</Note>
 
 ### 如果你在更新 state 后替换 state 会发生什么 {/*what-happens-if-you-replace-state-after-updating-it*/}
 

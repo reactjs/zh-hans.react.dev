@@ -359,7 +359,11 @@ const [index, setIndex] = useState(0);
 
 在这个例子里，你希望 React 记住 `index`。
 
-> 惯例是将这对返回值命名为 `const [thing, setThing]`。你也可以将其命名为任何你喜欢的名称，但遵照约定俗成能使跨项目合作更易理解。
+<Note>
+
+惯例是将这对返回值命名为 `const [thing, setThing]`。你也可以将其命名为任何你喜欢的名称，但遵照约定俗成能使跨项目合作更易理解。
+
+</Note>
 
 `useState` 的唯一参数是 state 变量的**初始值**。在这个例子中，`index` 的初始值被`useState(0)`设置为 `0`。
 

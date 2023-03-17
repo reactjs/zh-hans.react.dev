@@ -125,7 +125,7 @@ Node 环境使用 streaming ，请使用：
 
 更多服务端渲染 API 的更改，请查看工作组文章 [在服务端升级到 React 18](https://github.com/reactwg/react-18/discussions/22) ，[深入新的 Suspense SSR 架构](https://github.com/reactwg/react-18/discussions/37)，以及 [Shaundai Person](https://twitter.com/shaundai) 在 React Conf 2021 关于[用 Suspense 实现服务端流式渲染](https://www.youtube.com/watch?v=pj5N-Khihgc) 的演讲。
 
-## 升级 TypeScript 定义
+## 升级 TypeScript 定义 {#updates-to-typescript-definitions}
 
 如果你的项目使用 TypeScript ，你需要升级 `@types/react` 和 `@types/react-dom` 依赖到最新版本。新的类型更安全，可以捕获以前易被类型检查器（type checker）忽略的问题。最值得一提的更改是定义 props 时，`children` 属性需要显式定义了，如：
 

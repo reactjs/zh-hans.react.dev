@@ -152,7 +152,7 @@ function Example() {
 >
 > 与 `componentDidMount` 或 `componentDidUpdate` 不同，使用 `useEffect` 调度的 effect 不会阻塞浏览器更新屏幕，这让你的应用看起来响应更快。大多数情况下，effect 不需要同步地执行。在个别情况下（例如测量布局），有单独的 [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect) Hook 供你使用，其 API 与 `useEffect` 相同。
 
-## 需要清除的 effect
+## 需要清除的 effect {#effects-with-cleanup}
 
 之前，我们研究了如何使用不需要清除的副作用，还有一些副作用是需要清除的。例如**订阅外部数据源**。这种情况下，清除工作是非常重要的，可以防止引起内存泄露！现在让我们来比较一下如何用 Class 和 Hook 来实现。
 
@@ -203,7 +203,7 @@ class FriendStatus extends React.Component {
 >
 >眼尖的读者可能已经注意到了，这个示例还需要编写 `componentDidUpdate` 方法才能保证完全正确。我们先暂时忽略这一点，本章节中[后续部分](#explanation-why-effects-run-on-each-update)会介绍它。
 
-### 使用 Hook 的示例
+### 使用 Hook 的示例 {#example-using-hooks}
 
 如何使用 Hook 编写这个组件。
 

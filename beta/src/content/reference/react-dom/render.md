@@ -110,7 +110,7 @@ export default function App() {
 
 ### 渲染多个根组件 {/*rendering-multiple-roots*/}
 
-如果你的页面并非 [全部由 React 构建](/learn/add-react-to-a-website)，请为每个由 React 管理的顶层 UI 调用 `render` 函数。
+If your page [isn't fully built with React](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page), call `render` for each top-level piece of UI managed by React.
 
 <Sandpack>
 
