@@ -252,11 +252,7 @@ return (
 );
 ```
 
-<<<<<<< HEAD
 注意， `<li>` 有一个 `key` 属性。对于列表中的每一个元素，你应该传递一个字符串或者数字给 `key`，用于在其兄弟节点中唯一标识该元素。通常，key 应该来自你的数据，比如，数据库中的 ID。如果你在后续插入、删除或重新排序这些项目，React 将依靠你提供的 key 来思考发生了什么。
-=======
-Notice how `<li>` has a `key` attribute. For each item in a list, you should pass a string or a number that uniquely identifies that item among its siblings. Usually, a key should be coming from your data, such as a database ID. React uses your keys to know what happened if you later insert, delete, or reorder the items.
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 <Sandpack>
 
@@ -324,11 +320,7 @@ function MyButton() {
   const [count, setCount] = useState(0);
 ```
 
-<<<<<<< HEAD
 你将从 `useState` 中获得两样东西：当前的 state（`count`），以及用于更新它的函数（`setCount`）。你可以给它们起任何名字，但按照惯例，需要像这样 `[something, setSomething]` 为它们命名。
-=======
-You’ll get two things from `useState`: the current state (`count`), and the function that lets you update it (`setCount`). You can give them any names, but the convention is to write `[something, setSomething]`.
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 第一次显示按钮时，`count` 的值为 `0`，因为你把 `0` 传给了 `useState()`。当你想改变 state 时，调用 `setCount()` 并将新的值传递给它。点击该按钮计数器将递增：
 
@@ -350,11 +342,7 @@ function MyButton() {
 
 React 将再次调用你的组件函数。这次，`count` 会变成 `1`。接着，变成 `2`。以此类推。
 
-<<<<<<< HEAD
 如果你多次渲染同一个组件，每个组件都会拥有自己的 state。你可以尝试点击不同的按钮：
-=======
-If you render the same component multiple times, each will get its own state. Click each button separately:
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 <Sandpack>
 
@@ -399,15 +387,9 @@ button {
 
 ## 使用 Hook {/*using-hooks*/}
 
-<<<<<<< HEAD
 以 `use` 开头的函数被称为 **Hook**。`useState` 是 React 提供的一个内置 Hook。你可以在 [React API 参考](/reference/react) 中找到其他内置的 Hook。你也可以通过组合现有的 Hook 来编写属于你自己的 Hook。
 
 Hook 比普通函数更为严格。你只能在你的组件（或其他 Hook）的 **顶层** 调用 Hook。如果你想在一个条件或循环中使用 `useState`，请提取一个新的组件并在组件内部使用它。
-=======
-Functions starting with `use` are called *Hooks*. `useState` is a built-in Hook provided by React. You can find other built-in Hooks in the [API reference.](/reference/react) You can also write your own Hooks by combining the existing ones.
-
-Hooks are more restrictive than other functions. You can only call Hooks *at the top* of your components (or other Hooks). If you want to use `useState` in a condition or a loop, extract a new component and put it there.
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 ## 组件间共享数据 {/*sharing-data-between-components*/}
 
@@ -512,13 +494,7 @@ function MyButton({ count, onClick }) {
 }
 ```
 
-<<<<<<< HEAD
-当你点击按钮时，`onClick` 处理程序会启动。每个按钮的 `onClick` prop 会被设置为 `MyApp` 内的 `handleClick` 函数，所以函数内的代码会被执行。该代码会调用 `setCount(count + 1)`，使得 state 变量 `count` 递增。新的 `count` 值会被作为 prop 传递给每个按钮，因此它们每次展示的都是最新的值。
-
-这被称为 "状态提升"。通过向上移动 state，我们实现了在组件间共享它。
-=======
-When you click the button, the `onClick` handler fires. Each button's `onClick` prop was set to the `handleClick` function inside `MyApp`, so the code inside of it runs. That code calls `setCount(count + 1)`, incrementing the `count` state variable. The new `count` value is passed as a prop to each button, so they all show the new value. This is called "lifting state up". By moving state up, you've shared it between components.
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
+当你点击按钮时，`onClick` 处理程序会启动。每个按钮的 `onClick` prop 会被设置为 `MyApp` 内的 `handleClick` 函数，所以函数内的代码会被执行。该代码会调用 `setCount(count + 1)`，使得 state 变量 `count` 递增。新的 `count` 值会被作为 prop 传递给每个按钮，因此它们每次展示的都是最新的值。这被称为“状态提升”。通过向上移动 state，我们实现了在组件间共享它。
 
 <Sandpack>
 

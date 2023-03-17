@@ -126,7 +126,7 @@ class Welcome extends React.Component {
 
 生命周期方法，用于在组件不同阶段执行自定义功能。在组件被创建并插入到 DOM 时（即[挂载中阶段（mounting）](/docs/react-component.html#mounting)），组件更新时，组件取消挂载或从 DOM 中删除时，都有可以使用的生命周期方法。
 
-## [受控组件](/docs/forms.html#controlled-components) vs [非受控组件](/docs/uncontrolled-components.html)
+## [受控组件](/docs/forms.html#controlled-components) vs [非受控组件](/docs/uncontrolled-components.html) {#controlled-vs-uncontrolled-components}
 
 React 有两种不同的方式来处理表单输入。
 

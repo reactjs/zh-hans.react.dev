@@ -1,34 +1,4 @@
 {
-<<<<<<< HEAD
-  "title": "首页",
-  "heading": true,
-  "path": "/",
-  "routes": [
-    {
-      "heading": true,
-      "path": "",
-      "routes": [
-        {
-          "title": "概览",
-          "path": "/"
-        },
-        {
-          "title": "社区",
-          "path": "/community",
-          "routes": [{
-            "title": "鸣谢",
-            "path": "/community/acknowledgements"
-          }, {
-            "title": "走进 React 团队",
-            "path": "/community/meet-the-team"
-          }]
-        },
-        {
-          "title": "Blog",
-          "path": "https://reactjs.org/blog"
-        }
-      ]
-=======
   "title": "React Docs",
   "path": "/",
   "routes": [
@@ -119,7 +89,6 @@
     {
       "title": "React Blog",
       "path": "/blog"
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
     }
   ]
 }

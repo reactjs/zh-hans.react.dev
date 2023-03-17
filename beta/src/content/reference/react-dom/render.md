@@ -104,21 +104,13 @@ export default function App() {
 
 </Sandpack>
 
-<<<<<<< HEAD
 通常你不需要多次调用 `render` 或在更多地方调用它。从此刻开始，React 将管理你的应用程序的 DOM。如果你想更新 UI，你在组件中通过 [using state](/reference/react/useState) 来实现。
-=======
-Usually you shouldn't need to call `render` again or to call it in more places. From this point on, React will be managing the DOM of your application. To update the UI, your components will [use state.](/reference/react/useState)
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 ---
 
 ### 渲染多个根组件 {/*rendering-multiple-roots*/}
 
-<<<<<<< HEAD
-如果你的页面并非 [全部由 React 构建](/learn/add-react-to-a-website)，请为每个由 React 管理的顶层 UI 调用 `render` 函数。
-=======
 If your page [isn't fully built with React](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page), call `render` for each top-level piece of UI managed by React.
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 <Sandpack>
 
@@ -192,13 +184,7 @@ nav ul li { display: inline-block; margin-right: 20px; }
 
 ### 更新已渲染的组件树 {/*updating-the-rendered-tree*/}
 
-<<<<<<< HEAD
 你可以在同一 DOM 节点上多次调用 `render`。只要组件树结构与之前渲染的内容一致，React 就会 [保留 state](/learn/preserving-and-resetting-state)。请注意观察在输入框中输入内容时的效果，这意味着在此示例中每次重复调用 `render` 时，并不会造成任何影响：
-=======
-### Updating the rendered tree {/*updating-the-rendered-tree*/}
-
-You can call `render` more than once on the same DOM node. As long as the component tree structure matches up with what was previously rendered, React will [preserve the state.](/learn/preserving-and-resetting-state) Notice how you can type in the input, which means that the updates from repeated `render` calls every second are not destructive:
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 <Sandpack>
 
@@ -230,8 +216,4 @@ export default function App({counter}) {
 
 </Sandpack>
 
-<<<<<<< HEAD
 多次调用 `render` 函数并不常见。通常，会通过在组件中 [更新 state](/reference/react/useState) 来代替。
-=======
-It is uncommon to call `render` multiple times. Usually, you'll [update state](/reference/react/useState) inside your components instead.
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea

@@ -58,11 +58,7 @@ setNumber(0 + 1);
 setNumber(0 + 1);
 ```
 
-<<<<<<< HEAD
 但是这里还有另外一个影响因素需要讨论。**React 会等到事件处理函数中的 *所有* 代码都运行完毕再处理你的 state 更新。** 这就是为什么重新渲染只会发生在所有这些 `setNumber()` 调用 *之后* 的原因。
-=======
-But there is one other factor at play here. **React waits until *all* code in the event handlers has run before processing your state updates.** This is why the re-render only happens *after* all these `setNumber()` calls.
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 这可能会让你想起餐厅里帮你点菜的服务员。服务员不会在你说第一道菜的时候就跑到厨房！相反，他们会让你把菜点完，让你修改菜品，甚至会帮桌上的其他人点菜。
 
@@ -72,11 +68,7 @@ But there is one other factor at play here. **React waits until *all* code in th
 
 **React 不会跨 *多个* 需要刻意触发的事件（如点击）进行批处理**——每次点击都是单独处理的。请放心，React 只会在一般来说安全的情况下才进行批处理。这可以确保，例如，如果第一次点击按钮会禁用表单，那么第二次点击就不会再次提交它。
 
-<<<<<<< HEAD
-## 在下次渲染前多次更新同一个 state 变量 {/*updating-the-same-state-variable-multiple-times-before-the-next-render*/}
-=======
-## Updating the same state multiple times before the next render {/*updating-the-same-state-multiple-times-before-the-next-render*/}
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
+## 在下次渲染前多次更新同一个 state {/*updating-the-same-state-multiple-times-before-the-next-render*/}
 
 这是一个不常见的用例，但是如果你想在下次渲染之前多次更新同一个 state，你可以像 `setNumber(n => n + 1)` 这样传入一个根据队列中的前一个 state 计算下一个 state 的 *函数*，而不是像 `setNumber(number + 1)` 这样传入 *下一个 state 值*。这是一种告诉 React “用 state 值做某事”而不是仅仅替换它的方法。
 
@@ -190,15 +182,11 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 React 会保存 `6` 为最终结果并从 `useState` 中返回。
 
-<<<<<<< HEAD
-> 你可能已经注意到，`setState(x)` 实际上会像 `setState(n => x)` 一样运行，只是没有使用 `n` ！
-=======
 <Note>
 
-You may have noticed that `setState(5)` actually works like `setState(n => 5)`, but `n` is unused!
+你可能已经注意到，`setState(x)` 实际上会像 `setState(n => x)` 一样运行，只是没有使用 `n`！
 
 </Note>
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 ### 如果你在更新 state 后替换 state 会发生什么 {/*what-happens-if-you-replace-state-after-updating-it*/}
 

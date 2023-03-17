@@ -359,15 +359,11 @@ const [index, setIndex] = useState(0);
 
 在这个例子里，你希望 React 记住 `index`。
 
-<<<<<<< HEAD
-> 惯例是将这对返回值命名为 `const [thing, setThing]`。你也可以将其命名为任何你喜欢的名称，但遵照约定俗成能使跨项目合作更易理解。
-=======
 <Note>
 
-The convention is to name this pair like `const [something, setSomething]`. You could name it anything you like, but conventions make things easier to understand across projects.
+惯例是将这对返回值命名为 `const [thing, setThing]`。你也可以将其命名为任何你喜欢的名称，但遵照约定俗成能使跨项目合作更易理解。
 
 </Note>
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 `useState` 的唯一参数是 state 变量的**初始值**。在这个例子中，`index` 的初始值被`useState(0)`设置为 `0`。
 
@@ -528,11 +524,7 @@ button {
 
 </Sandpack>
 
-<<<<<<< HEAD
 如果它们不相关，那么存在多个 state 变量是一个好主意，例如本例中的 `index` 和 `showMore`。但是，如果你发现经常同时更改两个 state 变量，那么最好将它们合并为一个。例如，如果你有一个包含多个字段的表单，那么有一个值为对象的 state 变量比每个字段对应一个 state 变量更方便。 [选择 state 结构](/learn/choosing-the-state-structure)在这方面有更多提示。
-=======
-It is a good idea to have multiple state variables if their state is unrelated, like `index` and `showMore` in this example. But if you find that you often change two state variables together, it might be easier to combine them into one. For example, if you have a form with many fields, it's more convenient to have a single state variable that holds an object than state variable per field. Read [Choosing the State Structure](/learn/choosing-the-state-structure) for more tips.
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 <DeepDive title="React 如何知道返回哪一个 state?">
 

@@ -106,11 +106,7 @@ React 组件是常规的 JavaScript 函数，但**组件的名称必须以大写
 return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
 ```
 
-<<<<<<< HEAD
 但是，如果你的标记和 `return` 关键字不在同一行，则必须把它包裹在一对括号中，如下所示：
-=======
-But if your markup isn't all on the same line as the `return` keyword, you must wrap it in a pair of parentheses:
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 ```js
 return (
@@ -223,15 +219,9 @@ function Profile() {
 
 大多数 React 应用程序只有组件。这意味着你不仅可以将组件用于可复用的部分，例如按钮，还可以用于较大块的部分，例如侧边栏、列表以及最终的完整页面！组件是组织 UI 代码和标记的一种快捷方式，即使其中一些组件只使用了一次。
 
-<<<<<<< HEAD
 像 Next.js 这样的框架会做更多事情。与使用一个空白的 HTML 页面并让 React 使用 JavaScript “接手”管理页面不同，框架 *还会* 根据你的 React 组件自动生成 HTML。这使你的应用程序在加载 JavaScript 代码之前能够展示一些内容。
 
 尽管如此，许多网站仅使用 React 来 [添加“交互性”](/learn/add-react-to-a-website)。它们有很多根组件，而不是整个页面的单个组件。你可以根据需要尽可能多或尽可能少地使用 React。
-=======
-[React-based frameworks](/learn/start-a-new-react-project) take this a step further. Instead of using an empty HTML file and letting React "take over" managing the page with JavaScript, they *also* generate the HTML automatically from your React components. This allows your app to show some content before the JavaScript code loads.
-
-Still, many websites only use React to [add interactivity to existing HTML pages.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) They have many root components instead of a single one for the entire page. You can use as much—or as little—React as you need.
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 </DeepDive>
 

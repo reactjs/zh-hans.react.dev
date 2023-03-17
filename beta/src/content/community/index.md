@@ -1,9 +1,5 @@
 ---
-<<<<<<< HEAD
-title: 社区
-=======
 title: React Community
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 ---
 
 <Intro>

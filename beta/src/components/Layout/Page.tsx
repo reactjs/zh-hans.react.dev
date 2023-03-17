@@ -40,14 +40,6 @@ export function Page({children, toc, routeTree, meta, section}: PageProps) {
   const title = meta.title || route?.title || '';
   const description = meta.description || route?.description || '';
   const isHomePage = cleanedPath === '/';
-<<<<<<< HEAD
-  return (
-    <>
-      <div className="grid grid-cols-only-content lg:grid-cols-sidebar-content 2xl:grid-cols-sidebar-content-toc">
-        <div className="fixed lg:sticky top-0 left-0 right-0 py-0 shadow lg:shadow-none z-50">
-          <Nav
-            routeTree={routeTree}
-=======
   const isBlogIndex = cleanedPath === '/blog';
 
   let content;
@@ -64,7 +56,6 @@ export function Page({children, toc, routeTree, meta, section}: PageProps) {
             title={title}
             description={description}
             tags={route?.tags}
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
             breadcrumbs={breadcrumbs}
           />
         </div>
@@ -106,7 +97,7 @@ export function Page({children, toc, routeTree, meta, section}: PageProps) {
         isHomePage={isHomePage}
         image={`/images/og-` + section + '.png'}
       />
-      <SocialBanner />
+      {/* <SocialBanner /> */}
       <TopNav
         section={section}
         routeTree={routeTree}

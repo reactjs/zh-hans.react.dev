@@ -202,11 +202,7 @@ export default function App() {
 这个例子之所以会正常运行，是因为在最后一步中，React 只会使用最新的 `time` 更新 `<h1>` 标签的内容。它看到 `<input>` 标签出现在 JSX 中与上次相同的位置，因此 React 不会修改 `<input>` 标签或它的 `value`！
 ## 尾声：浏览器绘制 {/*epilogue-browser-paint*/}
 
-<<<<<<< HEAD
-在渲染完成并且 React 更新 DOM 之后，浏览器就会重新绘制屏幕。尽管这个过程被称为“浏览器渲染”（“browser rendering”)，但我们还是将它称为“绘制”（“painting”），以避免在这些文档的其余部分中出现混淆。
-=======
-After rendering is done and React updated the DOM, the browser will repaint the screen. Although this process is known as "browser rendering", we'll refer to it as "painting" to avoid confusion throughout the docs.
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
+在渲染完成并且 React 更新 DOM 之后，浏览器就会重新绘制屏幕。尽管这个过程被称为“浏览器渲染”（“browser rendering”），但我们还是将它称为“绘制”（“painting”），以避免在这些文档的其余部分中出现混淆。
 
 <Illustration alt="浏览器正在绘制《静物：Card 元素》" src="/images/docs/illustrations/i_browser-paint.png" />
 

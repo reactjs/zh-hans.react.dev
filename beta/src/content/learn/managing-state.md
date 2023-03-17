@@ -118,11 +118,7 @@ function submitForm(answer) {
 
 ## 选择状态结构 {/*choosing-the-state-structure*/}
 
-<<<<<<< HEAD
 良好的状态组织，可以区分开易于修改和调试的组件与频繁出问题的组件。最重要的原则是，状态不应包含冗余或重复的信息。如果包含一些多余的状态，我们会很容易忘记去更新它，从而导致问题产生！
-=======
-Structuring state well can make a difference between a component that is pleasant to modify and debug, and one that is a constant source of bugs. The most important principle is that state shouldn't contain redundant or duplicated information. If there's unnecessary state, it's easy to forget to update it, and introduce bugs!
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 例如，这个表单有一个多余的 `fullName` 状态变量：
 
@@ -311,11 +307,7 @@ h3, p { margin: 5px 0px; }
 
 当你重新渲染一个组件时， React 需要决定组件树中的哪些部分要保留和更新，以及丢弃或重新创建。在大多数情况下， React 的自动处理机制已经做得足够好了。默认情况下，React 会保留树中与先前渲染的组件树“匹配”的部分。
 
-<<<<<<< HEAD
 然而，有时这并不是你想要的。例如，在下面这个程序中，输入内容后再切换收件人并不会清空输入框。这可能会导致用户不小心发错消息：
-=======
-However, sometimes this is not what you want. In this chat app, typing a message and then switching the recipient does not reset the input. This can make the user accidentally send a message to the wrong person:
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 <Sandpack>
 
@@ -410,11 +402,7 @@ textarea {
 
 </Sandpack>
 
-<<<<<<< HEAD
 React 允许你覆盖默认行为，可通过向组件传递一个唯一 `key`（如 `<Chat key={email}/>` 来 *强制* 重置其状态。这会告诉 React ，如果收件人不同，应将其作为一个 **不同的** `Chat` 组件，需要使用新数据和 UI（比如输入框）来重新创建它。现在，在接收者之间切换时就会重置输入框——即使渲染的是同一个组件。
-=======
-React lets you override the default behavior, and *force* a component to reset its state by passing it a different `key`, like `<Chat key={email} />`. This tells React that if the recipient is different, it should be considered a *different* `Chat` component that needs to be re-created from scratch with the new data (and UI like inputs). Now switching between the recipients resets the input field--even though you render the same component.
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 <Sandpack>
 

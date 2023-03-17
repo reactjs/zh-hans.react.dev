@@ -89,11 +89,7 @@ export default function TodoList() {
 
 </Sandpack>
 
-<<<<<<< HEAD
 试着将 `name` 的值从 `'Gregorio Y. Zara'` 更改成 `'Hedy Lamarr'`。看看这个 To Do List 的标题将如何变化？
-=======
-Try changing the `name`'s value from `'Gregorio Y. Zara'` to `'Hedy Lamarr'`. See how the list title changes?
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 大括号内的任何 JavaScript 表达式都能正常运行，包括像 `formatDate()` 这样的函数调用：
 

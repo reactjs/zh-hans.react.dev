@@ -166,13 +166,8 @@ export function Search({
         )}
         onClick={onOpen}>
         <IconSearch className="mr-3 align-middle text-gray-30 shrink-0 group-betterhover:hover:text-gray-70" />
-<<<<<<< HEAD
         搜索
-        <span className="ml-auto hidden sm:flex item-center">
-=======
-        Search
         <span className="ml-auto hidden sm:flex item-center mr-1">
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
           <Kbd>⌘</Kbd>
           <Kbd>K</Kbd>
         </span>

@@ -496,15 +496,9 @@ label {
 
 </Sandpack>
 
-<<<<<<< HEAD
 你可能以为当你勾选复选框的时候 state 会被重置，但它并没有！这是因为 **两个 `<Counter />` 标签被渲染在了相同的位置。** React 不知道你的函数里是如何进行条件判断的，它只会“看到”你返回的树。在这两种情况下，`App` 组件都会返回一个包裹着 `<Counter />` 作为第一个子组件的 `div`。这就是 React 认为它们是 _同一个_ `<Counter />` 的原因。
 
 你可以认为它们有相同的“地址”：根组件的第一个子组件的第一个子组件。不管你的逻辑是怎么组织的，这就是 React 在前后两次渲染之间将它们进行匹配的方式。
-=======
-You might expect the state to reset when you tick checkbox, but it doesn't! This is because **both of these `<Counter />` tags are rendered at the same position.** React doesn't know where you place the conditions in your function. All it "sees" is the tree you return.
-
-In both cases, the `App` component returns a `<div>` with `<Counter />` as a first child. To React, these two counters have the same "address": the first child of the first child of the root. This is how React matches them up between the previous and next renders, regardless of how you structure your logic.
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 </Pitfall>
 
@@ -945,11 +939,7 @@ Clicking "next" again
 
 </DiagramGroup>
 
-<<<<<<< HEAD
-> 每次一个 `Counter` 被从 DOM 中移除时，它的 state 就会被销毁。这就是每次你点击按钮时它们就会被重置的原因。
-=======
-Each `Counter`'s state gets destroyed each time its removed from the DOM. This is why they reset every time you click the button.
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
+每次一个 `Counter` 被从 DOM 中移除时，它的 state 就会被销毁。这就是每次你点击按钮时它们就会被重置的原因。
 
 这个解决方案在你只有少数几个独立的组件渲染在相同的位置时会很方便。这个例子中只有 2 个组件，所以在 JSX 里将它们分开进行渲染并不麻烦。
 
@@ -1039,19 +1029,13 @@ h1 {
 )}
 ```
 
-<<<<<<< HEAD
 指定一个 `key` 能够让 React 将 `key` 本身而非它们在父组件中的顺序作为位置的一部分。这就是为什么尽管你用 JSX 将组件渲染在相同位置，但在 React 看来它们是两个不同的计数器。因此它们永远都不会共享 state。每当一个计数器出现在屏幕上时，它的 state 会被创建出来。每当它被移除时，它的 state 就会被销毁。在它们之间切换会一次又一次地使它们的 state 重置。
-
-> 请记住 key 不是全局唯一的。它们只能指定 **父组件内部** 的顺序。
-=======
-Specifying a `key` tells React to use the `key` itself as part of the position, instead of their order within the parent. This is why, even though you render them in the same place in JSX, React sees them as two different counters, and so they will never share state. Every time a counter appears on the screen, its state is created. Every time it is removed, its state is destroyed. Toggling between them resets their state over and over.
 
 <Note>
 
-Remember that keys are not globally unique. They only specify the position *within the parent*.
+请记住 key 不是全局唯一的。它们只能指定 **父组件内部** 的顺序。
 
 </Note>
->>>>>>> dc1f7768c594d56eb0020348915ae409bb1b21ea
 
 ### 使用 key 重置表单 {/*resetting-a-form-with-a-key*/}
 
