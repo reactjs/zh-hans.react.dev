@@ -3,6 +3,12 @@ title: "One Year of Open-Source React"
 author: [chenglou]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 Today marks the one-year open-source anniversary of React.
 
 It’s been a crazy ride. 2.3k commits and 1.5k issues and pull requests later, we’re approaching version 1.0 and nearing 7k GitHub stars, with big names such as Khan Academy, New York Times, and Airbnb (and naturally, Facebook and Instagram) using React in production, and many more developers blogging their success stories with it. The [roadmap](/blog/2014/03/28/the-road-to-1.0.html) gives a glimpse into the future of the library; exciting stuff lies ahead!

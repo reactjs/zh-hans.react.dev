@@ -3,6 +3,12 @@ title: "React Conf recap: Hooks, Suspense, and Concurrent Rendering"
 author: [tomocchino]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 This year’s [React Conf](https://conf.reactjs.org/) took place on October 25 and 26 in Henderson, Nevada, where more than 600 attendees gathered to discuss the latest in UI engineering.
 
 <br>

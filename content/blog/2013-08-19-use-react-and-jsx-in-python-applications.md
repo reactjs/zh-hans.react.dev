@@ -3,6 +3,12 @@ title: "Use React and JSX in Python Applications"
 author: [kmeht]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 Today we're happy to announce the initial release of [PyReact](https://github.com/facebook/react-python), which makes it easier to use React and JSX in your Python applications. It's designed to provide an API to transform your JSX files into JavaScript, as well as provide access to the latest React source files.
 
 ## Usage {#usage}

@@ -6,6 +6,15 @@ sectionid: community
 permalink: community/team.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> See the [Team](https://react.dev/community/team) page on the new site.
+
+</div>
+
 React development is led by a small dedicated team working full time at Meta. It also receives contributions from people all over the world.
 
 ## Meet the React Team {#meet-the-react-team}

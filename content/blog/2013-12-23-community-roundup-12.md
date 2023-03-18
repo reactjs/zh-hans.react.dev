@@ -3,6 +3,12 @@ title: "Community Round-up #12"
 author: [vjeux]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 React got featured on the front-page of Hacker News thanks to the Om library. If you try it out for the first time, take a look at the [docs](/docs/getting-started.html) and do not hesitate to ask questions on the [Google Group](https://groups.google.com/group/reactjs), [IRC](irc://chat.freenode.net/reactjs) or [Stack Overflow](http://stackoverflow.com/questions/tagged/reactjs). We are trying our best to help you out!
 
 ## The Future of JavaScript MVC {#the-future-of-javascript-mvc}

@@ -4,6 +4,12 @@ author: [sebmarkbage]
 date: 2015-02-24 11:00
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 React v0.13 is right around the corner and so we wanted to discuss some upcoming changes to ReactElement. In particular, we added several warnings to some esoteric use cases of ReactElement. There are no runtime behavior changes for ReactElement - we're adding these warnings in the hope that we can change some behavior in v0.14 if the changes are valuable to the community.
 
 If you use React in an idiomatic way, chances are, you’ll never see any of these warnings. In that case, you can skip this blog post. You can just enjoy the benefits! These changes will unlock simplified semantics, better error messages, stack traces and compiler optimizations!

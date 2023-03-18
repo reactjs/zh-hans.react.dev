@@ -3,6 +3,12 @@ title: "How to Upgrade to React 18"
 author: [rickhanlonii]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 As we shared in the [release post](/blog/2022/03/29/react-v18.html), React 18 introduces features powered by our new concurrent renderer, with a gradual adoption strategy for existing applications. In this post, we will guide you through the steps for upgrading to React 18.
 
 Please [report any issues](https://github.com/facebook/react/issues/new/choose) you encounter while upgrading to React 18.

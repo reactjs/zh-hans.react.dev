@@ -8,6 +8,14 @@ redirect_from:
   - "docs/conferences.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> See the [Conferences](https://react.dev/community/conferences) page on the new site.
+>
+</div>
+
 Do you know of a local React.js conference? Add it here! (Please keep the list chronological)
 
 ## Upcoming Conferences {#upcoming-conferences}

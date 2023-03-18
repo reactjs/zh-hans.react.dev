@@ -3,6 +3,12 @@ title: "Community Round-up #4"
 author: [vjeux]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 React reconciliation process appears to be very well suited to implement a text editor with a live preview as people at Khan Academy show us.
 
 ## Khan Academy {#khan-academy}

@@ -3,6 +3,12 @@ title: "Community Round-up #13"
 author: [vjeux]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 Happy holidays! This blog post is a little-late Christmas present for all the React users. Hopefully it will inspire you to write awesome web apps in 2014!
 
 

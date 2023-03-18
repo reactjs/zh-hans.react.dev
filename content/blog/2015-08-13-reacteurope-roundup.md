@@ -4,6 +4,12 @@ layout: post
 author: [matthewjohnston4]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 Last month, the first React.js European conference took place in the city of Paris, at ReactEurope. Attendees were treated to a range of talks covering React, React Native, Flux, Relay, and GraphQL. Big thanks to everyone involved with organizing the conference, to all the attendees, and everyone who gave their time to speak - it wouldn't have been possible without the help and support of the React community.
 
 [Christopher Chedeau](https://github.com/vjeux) gave the opening keynote to the conference:

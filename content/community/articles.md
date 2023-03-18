@@ -6,6 +6,12 @@ sectionid: community
 permalink: community/articles.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+
+</div>
+
 - [React How-to](https://github.com/petehunt/react-howto) - Pete Hunt's guide to the React ecosystem.
 - [9 things every React.js beginner should know](https://camjackson.net/post/9-things-every-reactjs-beginner-should-know) - Cam Jackson's guide for beginners.
 - [React "Aha" Moments](https://tylermcginnis.com/react-aha-moments/) - Tyler McGinnis' article on his collection of "Aha" moments with React.

@@ -6,6 +6,12 @@ sectionid: community
 permalink: community/podcasts.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+
+</div>
+
 Podcasts dedicated to React and individual podcast episodes with React discussions.
 
 ## Podcasts {#podcasts}

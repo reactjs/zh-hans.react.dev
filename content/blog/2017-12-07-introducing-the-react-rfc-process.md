@@ -3,6 +3,12 @@ title: "Introducing the React RFC Process"
 author: [acdlite]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 We're adopting an RFC ("request for comments") process for contributing ideas to React. 
 
 Inspired by [Yarn](https://github.com/yarnpkg/rfcs), [Ember](https://github.com/emberjs/rfcs), and [Rust](https://github.com/rust-lang/rfcs), the goal is to allow React core team members and community members to collaborate on the design of new features. It's also intended to provide a clear path for ideas to enter the project:

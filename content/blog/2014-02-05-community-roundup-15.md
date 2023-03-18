@@ -3,6 +3,12 @@ title: "Community Round-up #15"
 author: [jgebhardt]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 Interest in React seems to have surged ever since David Nolen ([@swannodette](https://twitter.com/swannodette))'s introduction of [Om](https://github.com/swannodette/om) in his post ["The Future of JavaScript MVC Frameworks"](https://swannodette.github.io/2013/12/17/the-future-of-javascript-mvcs/).
 
 In this React Community Round-up, we are taking a closer look at React from a functional programming perspective.

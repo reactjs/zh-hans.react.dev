@@ -3,6 +3,12 @@ title: "Community Round-up #2"
 author: [vjeux]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 Since the launch we have received a lot of feedback and are actively working on React 0.4. In the meantime, here are the highlights of this week.
 
 ## Some quick thoughts on React {#some-quick-thoughts-on-react}

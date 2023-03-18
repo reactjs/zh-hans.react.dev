@@ -4,6 +4,12 @@ layout: post
 author: [steveluscher]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 ## Keep it Simple {#keep-it-simple}
 
 Pedro Nauck ([pedronauck](https://github.com/pedronauck)) delivered an impeccably illustrated deck at Brazil's _Front in Floripa_ conference. Watch him talk about how to keep delivering value as your app scales, by keeping your development process simple.

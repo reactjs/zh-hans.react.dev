@@ -3,6 +3,12 @@ title: "React Native Release Process"
 author: [vjeux]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 The React Native release process have been a bit chaotic since we open sourced. It was unclear when new code was released, there was no changelog, we bumped the minor and patch version inconsistently and we often had to submit updates right after a release to fix a bad bug. In order to *move fast with stable infra*, we are introducing a real release process with a two-week release schedule.
 
 To explain how it works, let me walk you through an example. Today, Friday, we took the current state of master and put it on the 0.5-stable branch. We [published 0.5.0-rc](https://github.com/facebook/react-native/releases/tag/v0.5.0-rc), an RC (Release Candidate) when we cut the branch. For two weeks, we're going to let it stabilize and only cherry-pick critical bug fixes from master.

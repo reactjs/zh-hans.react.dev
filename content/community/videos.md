@@ -8,6 +8,14 @@ redirect_from:
  - "docs/videos.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> See the [Videos](https://react.dev/community/videos) page on the new site.
+>
+</div>
+
 Videos dedicated to the discussion of React and the React ecosystem.
 
 ### React Conf 2021 {#react-conf-2021}

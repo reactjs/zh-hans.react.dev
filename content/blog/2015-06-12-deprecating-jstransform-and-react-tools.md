@@ -3,6 +3,12 @@ title: "Deprecating JSTransform and react-tools"
 author: [zpao]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 Today we're announcing the deprecation of react-tools and JSTransform.
 
 As many people have noticed already, React and React Native have both switched their respective build systems to make use of [Babel](http://babeljs.io/). This replaced [JSTransform](https://github.com/facebook/jstransform), the source transformation tool that we wrote at Facebook. JSTransform has been really good for us over the past several years, however as the JavaScript language continues to evolve, the architecture we used has begun to show its age. We've faced maintenance issues and lagged behind implementing new language features. Last year, Babel (previously 6to5) exploded onto the scene, implementing new features at an amazing pace. Since then it has evolved a solid plugin API, and implemented some of our non-standard language features (JSX and Flow type annotations).

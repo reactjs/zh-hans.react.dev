@@ -4,6 +4,12 @@ layout: post
 author: [LoukaN]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 This round-up is a special edition on [Flux](https://facebook.github.io/flux/). If you expect to see diagrams showing arrows that all point in the same direction, you won't be disappointed!
 
 ## React And Flux at ForwardJS {#react-and-flux-at-forwardjs}

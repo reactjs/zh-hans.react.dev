@@ -3,6 +3,12 @@ title: "Introducing React Native"
 author: [sophiebits]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 In January at React.js Conf, we announced React Native, a new framework for building native apps using React. We're happy to announce that we're open-sourcing React Native and you can start building your apps with it today.
 
 For more details, see [Tom Occhino's post on the Facebook Engineering blog](https://code.facebook.com/posts/1014532261909640/react-native-bringing-modern-web-techniques-to-mobile/):

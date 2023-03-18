@@ -3,6 +3,12 @@ title: "React 16.x Roadmap"
 author: [gaearon]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 You might have heard about features like "Hooks", "Suspense", and "Concurrent Rendering" in the previous blog posts and talks. In this post, we'll look at how they fit together and the expected timeline for their availability in a stable release of React.
 
 > An Update from August, 2019
@@ -198,6 +204,12 @@ We started an investigation into [simplifying and modernizing](https://github.co
 We started designing a new server renderer that supports Suspense (including waiting for asynchronous data on the server without double rendering) and progressively loading and hydrating page content in chunks for best user experience. You can watch an overview of its early prototype in [this talk](https://www.youtube.com/watch?v=z-6JC0_cOns). The new server renderer is going to be our major focus in 2019, but it's too early to say anything about its release schedule. Its development, as always, [will happen on GitHub](https://github.com/facebook/react/pulls?utf8=%E2%9C%93&q=is%3Apr+is%3Aopen+fizz).
 
 -----
+
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
 
 And that's about it! As you can see, there's a lot here to keep us busy but we expect much progress in the coming months.
 

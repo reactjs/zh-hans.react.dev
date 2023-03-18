@@ -3,6 +3,12 @@ title: "Relay: State of the State"
 author: [josephsavona]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 This month marks a year since we released Relay and we'd like to share an update on the project and what's next.
 
 ## A Year In Review {#a-year-in-review}

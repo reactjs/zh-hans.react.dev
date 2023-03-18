@@ -3,6 +3,12 @@ title: React.js Conf Updates
 author: [vjeux]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 Yesterday was the [React.js Conf](http://conf.reactjs.com/index.html) call for presenters submission deadline. We were
 surprised to have received a total of **one hundred talk proposals** and were
 amazed that 600 people requested to be notified when ticket go on sale. This is incredible!

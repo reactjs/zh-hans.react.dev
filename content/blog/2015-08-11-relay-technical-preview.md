@@ -3,6 +3,12 @@ title: "Relay Technical Preview"
 author: [josephsavona]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 # Relay {#relay}
 
 Today we're excited to share an update on Relay - the technical preview is now open-source and [available on GitHub](http://github.com/facebook/relay).

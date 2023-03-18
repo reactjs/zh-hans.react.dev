@@ -3,6 +3,12 @@ title: "Community Round-up #18"
 author: [jgebhardt]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 In this Round-up, we are taking a few closer looks at React's interplay with different frameworks and architectures.
 
 ## "Little framework BIG splash" {#little-framework-big-splash}

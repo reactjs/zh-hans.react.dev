@@ -4,6 +4,12 @@ layout: post
 author: [vjeux]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 We open sourced React Native last week and the community reception blew away all our expectations! So many of you tried it, made cool stuff with it, raised many issues and even submitted pull requests to fix them! The entire team wants to say thank you!
 
 <blockquote class="twitter-tweet" lang="en"><p><a href="https://twitter.com/hashtag/reactnative?src=hash">#reactnative</a> is like when you get a new expansion pack, and everybody is running around clueless about which NPC to talk to for the quests</p>&mdash; Ryan Florence (@ryanflorence) <a href="https://twitter.com/ryanflorence/status/581810423554543616">March 28, 2015</a></blockquote>

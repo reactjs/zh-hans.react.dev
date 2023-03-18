@@ -4,6 +4,12 @@ layout: post
 author: [matthewjohnston4]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 ## React 101 {#react-101}
 
 Interest in React has been exploding recently, so it's a good time to explore some great recent tutorials and videos that cover getting started.

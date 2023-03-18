@@ -3,6 +3,12 @@ title: "Community Round-up #14"
 author: [vjeux]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 The theme of this first round-up of 2014 is integration. I've tried to assemble a list of articles and projects that use React in various environments.
 
 ## React Baseline {#react-baseline}

@@ -3,6 +3,12 @@ title: "Building Great User Experiences with Concurrent Mode and Suspense"
 author: [josephsavona]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 At React Conf 2019 we announced an [experimental release](/docs/concurrent-mode-adoption.html#installation) of React that supports Concurrent Mode and Suspense. In this post we'll introduce best practices for using them that we've identified through the process of building [the new facebook.com](https://twitter.com/facebook/status/1123322299418124289).
 
 > This post will be most relevant to people working on _data fetching libraries_ for React. 

@@ -3,6 +3,12 @@ title: "Community Round-up #20"
 author: [LoukaN]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 It's an exciting time for React as there are now more commits from open source contributors than from Facebook engineers! Keep up the good work :)
 
 ## Atom moves to React {#atom-moves-to-react}
