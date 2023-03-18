@@ -4,7 +4,7 @@ This repo contains the source code and documentation powering [legacy.reactjs.or
 
 ## Not actively maintained
 
-This site is archived and not maintained. For new React docs, go to [react.dev](https://react.dev).
+This site is archived and not maintained. For new React docs, go to [react.dev](https://react.dev) ([repository](https://github.com/reactjs/react.dev)).
 
 ## Installation
 
