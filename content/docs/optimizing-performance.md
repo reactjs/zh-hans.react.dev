@@ -6,6 +6,17 @@ redirect_from:
   - "docs/advanced-performance.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React:
+>
+> - [`memo`: Skipping re-rendering when props are unchanged
+](https://react.dev/reference/react/memo#skipping-re-rendering-when-props-are-unchanged)
+
+</div>
+
 Internally, React uses several clever techniques to minimize the number of costly DOM operations required to update the UI. For many applications, using React will lead to a fast user interface without doing much work to specifically optimize for performance. Nevertheless, there are several ways you can speed up your React application.
 
 ## Use the Production Build {#use-the-production-build}

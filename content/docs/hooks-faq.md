@@ -5,6 +5,14 @@ permalink: docs/hooks-faq.html
 prev: hooks-reference.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> The new documentation pages teaches React with Hooks.
+
+</div>
+
 *Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
 
 This page answers some of the frequently asked questions about [Hooks](/docs/hooks-overview.html).

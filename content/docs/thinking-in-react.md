@@ -8,11 +8,13 @@ redirect_from:
 prev: composition-vs-inheritance.html
 ---
 
-> Try the new React documentation.
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
 > 
-> The updated [Thinking in React](https://beta.reactjs.org/learn/thinking-in-react) guide teaches modern React and includes live examples.
->
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The updated [Thinking in React](https://react.dev/learn/thinking-in-react) guide teaches modern React and includes live examples.
+
+</div>
 
 React is, in our opinion, the premier way to build big, fast Web apps with JavaScript. It has scaled very well for us at Facebook and Instagram.
 

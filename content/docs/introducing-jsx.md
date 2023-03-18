@@ -6,14 +6,17 @@ prev: hello-world.html
 next: rendering-elements.html
 ---
 
-> Try the new React documentation.
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
 > 
 > These new documentation pages teach modern React and include live examples:
 >
-> - [Writing Markup with JSX](https://beta.reactjs.org/learn/writing-markup-with-jsx)
-> - [JavaScript in JSX with Curly Braces](https://beta.reactjs.org/learn/javascript-in-jsx-with-curly-braces)
->
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> - [Writing Markup with JSX](https://react.dev/learn/writing-markup-with-jsx)
+> - [JavaScript in JSX with Curly Braces](https://react.dev/learn/javascript-in-jsx-with-curly-braces)
+
+</div>
 
 Consider this variable declaration:
 

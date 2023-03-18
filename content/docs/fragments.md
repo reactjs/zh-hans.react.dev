@@ -4,6 +4,16 @@ title: Fragments
 permalink: docs/fragments.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React:
+>
+> - [`<Fragment>`](https://react.dev/reference/react/Fragment)
+
+</div>
+
 A common pattern in React is for a component to return multiple elements. Fragments let you group a list of children without adding extra nodes to the DOM.
 
 ```js

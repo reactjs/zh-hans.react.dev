@@ -8,6 +8,18 @@ prev: introducing-jsx.html
 next: components-and-props.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach how to write JSX and show it on an HTML page:
+>
+> - [Writing Markup with JSX](https://react.dev/learn/writing-markup-with-jsx)
+> - [Add React to an Existing Project](/learn/add-react-to-an-existing-project#step-2-render-react-components-anywhere-on-the-page)
+
+</div>
+
 Elements are the smallest building blocks of React apps.
 
 An element describes what you want to see on the screen:

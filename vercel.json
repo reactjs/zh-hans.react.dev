@@ -11,32 +11,27 @@
     },
     {
       "source": "/link/switch-to-createroot",
-      "destination": "https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html#updates-to-client-rendering-apis",
+      "destination": "https://react.dev/blog/2022/03/08/react-18-upgrade-guide#updates-to-client-rendering-apis",
       "permanent": false
     },
     {
       "source": "/server-components",
-      "destination": "/blog/2020/12/21/data-fetching-with-react-server-components.html",
+      "destination": "https://react.dev/blog/2020/12/21/data-fetching-with-react-server-components",
       "permanent": false
     },
     {
       "source": "/concurrent",
-      "destination": "/docs/concurrent-mode-intro.html",
+      "destination": "https://react.dev/reference/react/Suspense",
       "permanent": false
     },
     {
       "source": "/hooks",
-      "destination": "/docs/hooks-intro.html",
+      "destination": "https://react.dev/reference/react",
       "permanent": false
     },
     {
       "source": "/tutorial",
-      "destination": "/tutorial/tutorial.html",
-      "permanent": false
-    },
-    {
-      "source": "/your-story",
-      "destination": "https://www.surveymonkey.co.uk/r/MVQV2R9",
+      "destination": "https://react.dev/learn/tutorial-tic-tac-toe",
       "permanent": false
     },
     {

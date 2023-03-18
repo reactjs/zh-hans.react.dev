@@ -16,14 +16,17 @@ prev: rendering-elements.html
 next: state-and-lifecycle.html
 ---
 
-> Try the new React documentation.
-> 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
 > These new documentation pages teach modern React and include live examples:
 >
-> - [Your First Component](https://beta.reactjs.org/learn/your-first-component)
-> - [Passing Props to a Component](https://beta.reactjs.org/learn/passing-props-to-a-component)
->
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> - [Your First Component](https://react.dev/learn/your-first-component)
+> - [Passing Props to a Component](https://react.dev/learn/passing-props-to-a-component)
+
+</div>
 
 Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. This page provides an introduction to the idea of components. You can find a [detailed component API reference here](/docs/react-component.html).
 
