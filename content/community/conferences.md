@@ -62,9 +62,6 @@ Oct 5 - 7, 2023. In-person in Goa, India (hybrid event) + Oct 3 2023 - remote da
 
 [Website](https://www.reactindia.io) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia) - [Youtube](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w)
 
-<<<<<<< HEAD
-## 往届会议 {#past-conferences}
-=======
 ### React Advanced 2023 {#react-advanced-2023}
 October 20 & 23, 2023. In-person in London, UK + remote first interactivity (hybrid event)
 
@@ -81,7 +78,6 @@ December 8 & 12, 2023. In-person in Berlin, Germany + remote first interactivity
 [Website](https://reactday.berlin) - [Twitter](https://twitter.com/reactdayberlin) - [Facebook](https://www.facebook.com/reactdayberlin/) - [Videos](https://portal.gitnation.org/events/react-day-berlin-2023)
 
 ## Past Conferences {#past-conferences}
->>>>>>> 50551f84c68f710dd83048187cb7e73eb11feee4
 
 ### React Day Berlin 2022 {#react-day-berlin-2022}
 December 2, 2022. In-person in Berlin, Germany + remote (hybrid event)
