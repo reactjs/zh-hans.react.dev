@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # [React 中文文档](https://zh-hans.reactjs.org/)
 
 此仓库包含 [React 中文文档](https://zh-hans.reactjs.org/) 的文档及源码，并由官方实时同步。
@@ -90,11 +89,6 @@
 	$ git checkout main && git merge upstream/main
 	```
 4. Re-execute the translation process
-=======
-# react.dev
-
-This repo contains the source code and documentation powering [react.dev](https://react.dev/).
->>>>>>> e565b43abded279443401b07d170d478c54aabfd
 
 ## Getting started
 
