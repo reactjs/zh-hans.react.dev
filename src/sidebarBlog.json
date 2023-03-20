@@ -1,13 +1,13 @@
 {
-  "title": "Blog",
+  "title": "博客",
   "path": "/blog",
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "STAY INFORMED"
+      "sectionHeader": "时刻了解最新动态"
     },
     {
-      "title": "Blog",
+      "title": "博客",
       "path": "/blog",
       "skipBreadcrumb": true,
       "routes": [
@@ -61,7 +61,7 @@
           "path": "/blog/2020/12/21/data-fetching-with-react-server-components"
         },
         {
-          "title": "Older posts",
+          "title": "更早的博客",
           "path": "https://reactjs.org/blog/all.html"
         }
       ]
