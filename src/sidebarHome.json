@@ -1,93 +1,93 @@
 {
-  "title": "React Docs",
+  "title": "React 文档",
   "path": "/",
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET STARTED"
+      "sectionHeader": "起步"
     },
     {
-      "title": "Installation",
-      "path": "/learn/installation"
-    },
-    {
-      "title": "Quick Start",
+      "title": "快速入门",
       "path": "/learn"
     },
     {
-      "hasSectionHeader": true,
-      "sectionHeader": "LEARN REACT"
+      "title": "安装",
+      "path": "/learn/installation"
     },
     {
-      "title": "Describing the UI",
+      "hasSectionHeader": true,
+      "sectionHeader": "学习 React"
+    },
+    {
+      "title": "描述 UI",
       "path": "/learn/describing-the-ui"
     },
     {
-      "title": "Adding Interactivity",
+      "title": "添加交互",
       "path": "/learn/adding-interactivity"
     },
     {
-      "title": "Managing State",
+      "title": "状态管理",
       "path": "/learn/managing-state"
     },
     {
-      "title": "Escape Hatches",
+      "title": "应急方案",
       "path": "/learn/escape-hatches"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "REACT API"
+      "sectionHeader": "React API"
     },
     {
-      "title": "Components",
-      "path": "/reference/react/components"
-    },
-    {
-      "title": "Hooks",
+      "title": "Hook",
       "path": "/reference/react"
     },
     {
-      "title": "APIs",
+      "title": "组件",
+      "path": "/reference/react/components"
+    },
+    {
+      "title": "API",
       "path": "/reference/react/apis"
     },
     {
-      "title": "Legacy APIs",
+      "title": "过时的 API",
       "path": "/reference/react/legacy"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "REACT DOM API"
+      "sectionHeader": "React DOM API"
     },
     {
-      "title": "Components",
+      "title": "组件",
       "path": "/reference/react-dom/components"
     },
     {
-      "title": "APIs",
+      "title": "API",
       "path": "/reference/react-dom"
     },
     {
-      "title": "Client APIs",
+      "title": "客户端 API",
       "path": "/reference/react-dom/client"
     },
     {
-      "title": "Server APIs",
+      "title": "服务端 API",
       "path": "/reference/react-dom/server"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET INVOLVED"
+      "sectionHeader": "参与贡献"
     },
     {
-      "title": "React Community",
+      "title": "React 社区",
       "path": "/community"
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "STAY INFORMED"
+      "sectionHeader": "时刻了解最新动态"
     },
     {
-      "title": "React Blog",
+      "title": "React 博客",
       "path": "/blog"
     }
   ]
