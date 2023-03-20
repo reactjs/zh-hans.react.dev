@@ -1,32 +1,10 @@
 {
-  "title": "API Reference",
+  "title": "API 参考",
   "path": "/reference/react",
   "routes": [
     {
       "hasSectionHeader": true,
       "sectionHeader": "react@18.2.0"
-    },
-    {
-      "title": "Components",
-      "path": "/reference/react/components",
-      "routes": [
-        {
-          "title": "<Fragment> (<>)",
-          "path": "/reference/react/Fragment"
-        },
-        {
-          "title": "<Profiler>",
-          "path": "/reference/react/Profiler"
-        },
-        {
-          "title": "<StrictMode>",
-          "path": "/reference/react/StrictMode"
-        },
-        {
-          "title": "<Suspense>",
-          "path": "/reference/react/Suspense"
-        }
-      ]
     },
     {
       "title": "Hooks",
@@ -95,7 +73,29 @@
       ]
     },
     {
-      "title": "APIs",
+      "title": "组件",
+      "path": "/reference/react/components",
+      "routes": [
+        {
+          "title": "<Fragment> (<>)",
+          "path": "/reference/react/Fragment"
+        },
+        {
+          "title": "<Profiler>",
+          "path": "/reference/react/Profiler"
+        },
+        {
+          "title": "<StrictMode>",
+          "path": "/reference/react/StrictMode"
+        },
+        {
+          "title": "<Suspense>",
+          "path": "/reference/react/Suspense"
+        }
+      ]
+    },
+    {
+      "title": "API",
       "path": "/reference/react/apis",
       "routes": [
         {
@@ -125,7 +125,7 @@
       "sectionHeader": "react-dom@18.2.0"
     },
     {
-      "title": "Components",
+      "title": "组件",
       "path": "/reference/react-dom/components",
       "routes": [
         {
@@ -155,7 +155,7 @@
       ]
     },
     {
-      "title": "APIs",
+      "title": "API",
       "path": "/reference/react-dom",
       "routes": [
         {
@@ -185,7 +185,7 @@
       ]
     },
     {
-      "title": "Client APIs",
+      "title": "客户端 API",
       "path": "/reference/react-dom/client",
       "routes": [
         {
@@ -199,7 +199,7 @@
       ]
     },
     {
-      "title": "Server APIs",
+      "title": "服务端 API",
       "path": "/reference/react-dom/server",
       "routes": [
         {
@@ -230,10 +230,10 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "Legacy APIs"
+      "sectionHeader": "过时的 API"
     },
     {
-      "title": "Legacy React APIs",
+      "title": "过时的 React API",
       "path": "/reference/react/legacy",
       "routes": [
         {

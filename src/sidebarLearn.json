@@ -1,113 +1,113 @@
 {
-  "title": "Learn React",
+  "title": "学习 React",
   "path": "/learn",
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET STARTED"
+      "sectionHeader": "起步"
     },
     {
-      "title": "Installation",
-      "path": "/learn/installation",
-      "routes": [
-        {
-          "title": "Start a New React Project",
-          "path": "/learn/start-a-new-react-project"
-        },
-        {
-          "title": "Add React to an Existing Project",
-          "path": "/learn/add-react-to-an-existing-project"
-        },
-        {
-          "title": "Editor Setup",
-          "path": "/learn/editor-setup"
-        },
-        {
-          "title": "React Developer Tools",
-          "path": "/learn/react-developer-tools"
-        }
-      ]
-    },
-    {
-      "title": "Quick Start",
+      "title": "快速入门",
       "path": "/learn",
       "routes": [
         {
-          "title": "Tutorial: Tic-Tac-Toe",
+          "title": "教程：Tic-Tac-Toe 游戏",
           "path": "/learn/tutorial-tic-tac-toe"
         },
         {
-          "title": "Thinking in React",
+          "title": "React 哲学",
           "path": "/learn/thinking-in-react"
         }
       ]
     },
     {
-      "hasSectionHeader": true,
-      "sectionHeader": "LEARN REACT"
+      "title": "安装",
+      "path": "/learn/installation",
+      "routes": [
+        {
+          "title": "开始一个新的项目",
+          "path": "/learn/start-a-new-react-project"
+        },
+        {
+          "title": "将 React 添加到已有项目中",
+          "path": "/learn/add-react-to-an-existing-project"
+        },
+        {
+          "title": "编辑器配置",
+          "path": "/learn/editor-setup"
+        },
+        {
+          "title": "React 开发工具",
+          "path": "/learn/react-developer-tools"
+        }
+      ]
     },
     {
-      "title": "Describing the UI",
+      "hasSectionHeader": true,
+      "sectionHeader": "学习 React"
+    },
+    {
+      "title": "描述 UI",
       "tags": [],
       "path": "/learn/describing-the-ui",
       "routes": [
         {
-          "title": "Your First Component",
+          "title": "第一个组件",
           "path": "/learn/your-first-component"
         },
         {
-          "title": "Importing and Exporting Components",
+          "title": "导入和导出组件",
           "path": "/learn/importing-and-exporting-components"
         },
         {
-          "title": "Writing Markup with JSX",
+          "title": "使用 JSX 标签",
           "path": "/learn/writing-markup-with-jsx"
         },
         {
-          "title": "JavaScript in JSX with Curly Braces",
+          "title": "在 JSX 中通过大括号使用 JavaScript",
           "path": "/learn/javascript-in-jsx-with-curly-braces"
         },
         {
-          "title": "Passing Props to a Component",
+          "title": "将 Props 传递给组件",
           "path": "/learn/passing-props-to-a-component"
         },
         {
-          "title": "Conditional Rendering",
+          "title": "条件渲染",
           "path": "/learn/conditional-rendering"
         },
         {
-          "title": "Rendering Lists",
+          "title": "渲染列表",
           "path": "/learn/rendering-lists"
         },
         {
-          "title": "Keeping Components Pure",
+          "title": "保持组件纯粹",
           "path": "/learn/keeping-components-pure"
         }
       ]
     },
     {
-      "title": "Adding Interactivity",
+      "title": "添加交互",
       "path": "/learn/adding-interactivity",
       "tags": [],
       "routes": [
         {
-          "title": "Responding to Events",
+          "title": "响应事件",
           "path": "/learn/responding-to-events"
         },
         {
-          "title": "State: A Component's Memory",
+          "title": "状态：组件的记忆",
           "path": "/learn/state-a-components-memory"
         },
         {
-          "title": "Render and Commit",
+          "title": "渲染和提交",
           "path": "/learn/render-and-commit"
         },
         {
-          "title": "State as a Snapshot",
+          "title": "state 如同一张快照",
           "path": "/learn/state-as-a-snapshot"
         },
         {
-          "title": "Queueing a Series of State Updates",
+          "title": "把一系列 state 更新加入队列",
           "path": "/learn/queueing-a-series-of-state-updates"
         },
         {
@@ -115,18 +115,18 @@
           "path": "/learn/updating-objects-in-state"
         },
         {
-          "title": "Updating Arrays in State",
+          "title": "更新 state 中的数组",
           "path": "/learn/updating-arrays-in-state"
         }
       ]
     },
     {
-      "title": "Managing State",
+      "title": "状态管理",
       "path": "/learn/managing-state",
       "tags": ["intermediate"],
       "routes": [
         {
-          "title": "Reacting to Input with State",
+          "title": "用 State 响应输入",
           "path": "/learn/reacting-to-input-with-state"
         },
         {
@@ -156,7 +156,7 @@
       ]
     },
     {
-      "title": "Escape Hatches",
+      "title": "应急方案",
       "path": "/learn/escape-hatches",
       "tags": ["advanced"],
       "routes": [
