@@ -7,25 +7,12 @@
       "sectionHeader": "起步"
     },
     {
-<<<<<<< HEAD
       "title": "快速入门",
       "path": "/learn"
     },
     {
       "title": "安装",
       "path": "/learn/installation"
-=======
-      "title": "Quick Start",
-      "path": "/learn"
-    },
-    {
-      "title": "Installation",
-      "path": "/learn/installation"
-    },
-    {
-      "hasSectionHeader": true,
-      "sectionHeader": "LEARN REACT"
->>>>>>> e60d5e5b0a0c8674487041057ffbb1c0d847e86d
     },
     {
       "hasSectionHeader": true,
@@ -52,7 +39,6 @@
       "sectionHeader": "React API"
     },
     {
-<<<<<<< HEAD
       "title": "Hook",
       "path": "/reference/react"
     },
@@ -62,17 +48,6 @@
     },
     {
       "title": "API",
-=======
-      "title": "Hooks",
-      "path": "/reference/react"
-    },
-    {
-      "title": "Components",
-      "path": "/reference/react/components"
-    },
-    {
-      "title": "APIs",
->>>>>>> e60d5e5b0a0c8674487041057ffbb1c0d847e86d
       "path": "/reference/react/apis"
     },
     {

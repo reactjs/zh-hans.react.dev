@@ -7,7 +7,6 @@
       "sectionHeader": "起步"
     },
     {
-<<<<<<< HEAD
       "title": "快速入门",
       "path": "/learn",
       "routes": [
@@ -17,23 +16,11 @@
         },
         {
           "title": "React 哲学",
-=======
-      "title": "Quick Start",
-      "path": "/learn",
-      "routes": [
-        {
-          "title": "Tutorial: Tic-Tac-Toe",
-          "path": "/learn/tutorial-tic-tac-toe"
-        },
-        {
-          "title": "Thinking in React",
->>>>>>> e60d5e5b0a0c8674487041057ffbb1c0d847e86d
           "path": "/learn/thinking-in-react"
         }
       ]
     },
     {
-<<<<<<< HEAD
       "title": "安装",
       "path": "/learn/installation",
       "routes": [
@@ -54,32 +41,6 @@
           "path": "/learn/react-developer-tools"
         }
       ]
-=======
-      "title": "Installation",
-      "path": "/learn/installation",
-      "routes": [
-        {
-          "title": "Start a New React Project",
-          "path": "/learn/start-a-new-react-project"
-        },
-        {
-          "title": "Add React to an Existing Project",
-          "path": "/learn/add-react-to-an-existing-project"
-        },
-        {
-          "title": "Editor Setup",
-          "path": "/learn/editor-setup"
-        },
-        {
-          "title": "React Developer Tools",
-          "path": "/learn/react-developer-tools"
-        }
-      ]
-    },
-    {
-      "hasSectionHeader": true,
-      "sectionHeader": "LEARN REACT"
->>>>>>> e60d5e5b0a0c8674487041057ffbb1c0d847e86d
     },
     {
       "hasSectionHeader": true,

@@ -73,11 +73,7 @@
       ]
     },
     {
-<<<<<<< HEAD
       "title": "组件",
-=======
-      "title": "Components",
->>>>>>> e60d5e5b0a0c8674487041057ffbb1c0d847e86d
       "path": "/reference/react/components",
       "routes": [
         {
@@ -99,11 +95,7 @@
       ]
     },
     {
-<<<<<<< HEAD
       "title": "API",
-=======
-      "title": "APIs",
->>>>>>> e60d5e5b0a0c8674487041057ffbb1c0d847e86d
       "path": "/reference/react/apis",
       "routes": [
         {
