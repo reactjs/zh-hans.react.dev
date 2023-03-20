@@ -13,7 +13,7 @@ const pluginDefaults = {
 exports.onRenderBody = ({setHeadComponents}, pluginOptions) => {
   const {className, icon, offsetY} = Object.assign(
     pluginDefaults,
-    pluginOptions,
+    pluginOptions
   );
 
   const styles = `
@@ -76,9 +76,7 @@ exports.onRenderBody = ({setHeadComponents}, pluginOptions) => {
     <style key="gatsby-remark-header-custom-ids-style" type="text/css">
       {styles}
     </style>
-  ) : (
-    undefined
-  );
+  ) : undefined;
 
   return setHeadComponents([
     style,
