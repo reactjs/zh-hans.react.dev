@@ -411,7 +411,7 @@ export function HomeContent() {
                 <div className="order-last pt-5">
                   <Para>
                     React 团队始终在研究如何改进
-                    React。一些研究需要数年才能得到回报。 React
+                    React。一些研究需要数年才能得到回报。React
                     对将研究想法转化为生产具有高标准要求，只有经过证明的方法才能成为
                     React 的一部分。
                   </Para>
