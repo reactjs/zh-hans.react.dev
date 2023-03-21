@@ -290,12 +290,8 @@ export function Footer() {
           </FooterLink>
           <FooterLink href="/learn/">快速入门</FooterLink>
           <FooterLink href="/learn/installation">安装</FooterLink>
-          <FooterLink href="/learn/describing-the-ui">
-            描述 UI
-          </FooterLink>
-          <FooterLink href="/learn/adding-interactivity">
-            添加交互
-          </FooterLink>
+          <FooterLink href="/learn/describing-the-ui">描述 UI</FooterLink>
+          <FooterLink href="/learn/adding-interactivity">添加交互</FooterLink>
           <FooterLink href="/learn/managing-state">状态管理</FooterLink>
           <FooterLink href="/learn/escape-hatches">应急方案</FooterLink>
         </div>
@@ -317,9 +313,7 @@ export function Footer() {
           <FooterLink href="/community/docs-contributors">
             文档贡献者
           </FooterLink>
-          <FooterLink href="/community/acknowledgements">
-            鸣谢
-          </FooterLink>
+          <FooterLink href="/community/acknowledgements">鸣谢</FooterLink>
         </div>
         <div className="flex flex-col">
           <FooterLink isHeader={true}>了解更多</FooterLink>
