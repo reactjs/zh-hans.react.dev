@@ -148,7 +148,7 @@ export function HomeContent() {
               size="lg"
               className="w-full sm:w-auto justify-center"
               label="API Reference">
-              API 参考文档
+              API 参考
             </ButtonLink>
           </div>
         </div>
@@ -246,7 +246,7 @@ export function HomeContent() {
           <Center>
             <Para>
               React
-              也是一种架构。实现它的框架可以从运行时甚至构建期间的异步组件中获取数据，或从文件或数据库读取数据，并将其传递给交互式组件。
+              也是一种架构。实现它的框架可以在服务端甚至是构建阶段使用异步组件来获取数据，也可以从文件或数据库读取数据，并将其传递给交互式组件。
             </Para>
             <div className="flex justify-start w-full lg:justify-center">
               <CTA
@@ -367,7 +367,7 @@ export function HomeContent() {
                           真正的原生
                         </h4>
                         <p className="h-full lg:text-xl text-secondary dark:text-secondary-dark leading-normal">
-                          人们希望原生应用程序样式和体验都符合对应的平台。
+                          人们希望原生应用程序都有和自己使用的平台相一致的体验。
                           <Link href="https://reactnative.dev">
                             React Native
                           </Link>{' '}
