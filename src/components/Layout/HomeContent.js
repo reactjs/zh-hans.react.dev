@@ -157,9 +157,7 @@ export function HomeContent() {
           <Center>
             <Header>用组件创建用户界面</Header>
             <Para>
-              React 让你可以通过称为组件的单独部分来构建用户界面。 创建自己的
-              React 组件像 <Code>Thumbnail</Code>，<Code>LikeButton</Code>，和{' '}
-              <Code>Video</Code>。 然后将它们组合成整个屏幕、页面和应用程序。
+              React 让你可以通过组件来构建用户界面。你可以创建像 <Code>Thumbnail</Code>、<Code>LikeButton</Code> 和 <Code>Video</Code> 这样的组件。然后将它们组合成整个应用程序。
             </Para>
           </Center>
           <FullBleed>
@@ -167,8 +165,8 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              无论您是独自工作还是与成千上万的其他开发人员合作，使用 React
-              的感觉都是相同的。它旨在让您轻松地组合由独立个人、团队和组织编写的组件。
+              无论你是独自工作还是与成千上万的其他开发人员合作，使用 React
+              的感觉都是相同的。它旨在让你轻松地组合由独立个人、团队或组织编写的组件。
             </Para>
           </Center>
         </Section>
@@ -177,9 +175,9 @@ export function HomeContent() {
           <Center>
             <Header>用代码和标签编写组件</Header>
             <Para>
-              React 组件是 JavaScript 函数。想要有条件地显示一些内容吗？使用{' '}
-              <Code>if</Code> 语句。展示一个列表？尝试使用数组{' '}
-              <Code>map()</Code> 方法。学习 React 就是学习编程。
+              React 组件是 JavaScript 函数。想要有条件地显示一些内容吗？使用 <Code>if</Code> 语句。
+              <br className="hidden lg:inline" />
+              想要展示一个列表？尝试使用数组的 <Code>map()</Code> 方法。学习 React 就是学习编程。
             </Para>
           </Center>
           <FullBleed>
@@ -187,7 +185,7 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              这种标记语法称为 JSX。它是由 React 推广的 JavaScript 语法扩展。将
+              这种标签语法称为 JSX。它是由 React 推广的 JavaScript 语法扩展。将
               JSX 标签与相关的渲染逻辑放在一起，使得创建、维护和删除 React
               组件变得容易。
             </Para>
@@ -196,10 +194,10 @@ export function HomeContent() {
 
         <Section background="left-card">
           <Center>
-            <Header>在任何需要的地方添加交互性</Header>
+            <Header>在任何地方添加交互</Header>
             <Para>
               React
-              组件接收数据并返回应该出现在屏幕上的内容。您可以通过响应交互（例如用户输入）向它们传递新数据。然后，React
+              组件接收数据并返回应该出现在屏幕上的内容。你可以通过响应交互（例如用户输入）向它们传递新数据。然后，React
               将更新屏幕以匹配新数据。
             </Para>
           </Center>
@@ -208,7 +206,7 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              你不必用 React 构建整个页面。将 React 添加到现有的 HTML
+              你也可以不用 React 去构建整个页面，而只是将 React 添加到现有的 HTML
               页面中，在任何地方呈现交互式的 React 组件。
             </Para>
             <div className="flex justify-start w-full lg:justify-center">
@@ -216,7 +214,7 @@ export function HomeContent() {
                 color="gray"
                 icon="code"
                 href="/learn/add-react-to-an-existing-project">
-                将 React 添加到您的页面中
+                将 React 添加到你已有的页面中
               </CTA>
             </div>
           </Center>
@@ -231,10 +229,8 @@ export function HomeContent() {
             </Header>
             <Para>
               React
-              是一个库。它允许您将组件放在一起，但不规定如何进行路由和数据获取。要使用
-              React 构建整个应用程序，我们建议使用像{' '}
-              <Link href="https://nextjs.org">Next.js</Link> 或{' '}
-              <Link href="https://remix.run">Remix</Link> 这样的全栈 React
+              是一个库。它允许你将组件放在一起，但不关注路由和数据获取。要使用
+              React 构建整个应用程序，我们建议使用像 <Link href="https://nextjs.org">Next.js</Link> 或 <Link href="https://remix.run">Remix</Link> 这样的全栈 React
               框架。
             </Para>
           </Center>
@@ -244,7 +240,7 @@ export function HomeContent() {
           <Center>
             <Para>
               React
-              也是一种架构。实现它的框架可以从运行于服务器甚至构建期间的异步组件中获取数据。从文件或数据库读取数据，并将其传递给交互式组件。
+              也是一种架构。实现它的框架可以从运行时甚至构建期间的异步组件中获取数据，或从文件或数据库读取数据，并将其传递给交互式组件。
             </Para>
             <div className="flex justify-start w-full lg:justify-center">
               <CTA
@@ -261,9 +257,9 @@ export function HomeContent() {
             <div className="mx-auto max-w-4xl lg:text-center items-center px-5 flex flex-col">
               <Header>博采众长</Header>
               <Para>
-                人们因为不同的原因偏好网络应用或原生应用。React
-                让您使用相同的技能构建 Web
-                应用程序和原生应用程序。它依赖于每个平台独特的优势，使您的界面就像原生一样。
+                人们因为不同的原因偏好 Web 应用或原生应用。React
+                让你使用相同的技能构建 Web
+                应用程序和原生应用程序。它依赖于每个平台独特的优势，使你的界面就像原生一样。
               </Para>
             </div>
             <div className="max-w-7xl mx-auto flex flex-col lg:flex-row mt-16 mb-20 lg:mb-28 px-5 gap-20 lg:gap-5">
@@ -281,10 +277,10 @@ export function HomeContent() {
                       </h4>
                       <p className="lg:text-xl leading-normal text-secondary">
                         人们期望网页加载速度更快。在服务器上，React
-                        可以让您在获取数据的同时开始流式传输 HTML，在任何
-                        JavaScript 代码加载之前逐步填充剩余内容。在客户端，React
-                        可以使用标准 Web API 使 UI
-                        保持响应，即使是在渲染过程中。
+                        可以让你在获取数据的同时开始流式传输 HTML，在任何
+                        JavaScript 代码加载之前逐步填充剩余内容。在客户端，即使是在渲染过程中，React
+                        可以使用标准的 Web API 使 UI
+                        能够快速响应。
                       </p>
                     </div>
                   </div>
@@ -362,19 +358,15 @@ export function HomeContent() {
                       </div>
                       <div className="flex flex-col items-start justify-center pt-0 gap-3 px-2.5 lg:pt-8 lg:px-8">
                         <h4 className="leading-tight text-primary dark:text-primary-dark font-semibold text-3xl lg:text-4xl">
-                          真正地原生
+                          真正的原生
                         </h4>
                         <p className="h-full lg:text-xl text-secondary dark:text-secondary-dark leading-normal">
-                          人们希望原生应用程序样式和体验都符合对应的平台。{' '}
+                          人们希望原生应用程序样式和体验都符合对应的平台。
                           <Link href="https://reactnative.dev">
                             React Native
-                          </Link>{' '}
-                          和{' '}
-                          <Link href="https://github.com/expo/expo">Expo</Link>{' '}
-                          让你可以使用 React 构建 Android、iOS
-                          等应用程序。它们的样式和体验都和原生应用程序一样，因为它们的用户界面{' '}
-                          <i>是</i> 真正的原生用户界面。这不是一个 Web
-                          视图——您的 React 组件由平台提供的真实 Android 或 iOS
+                          </Link> 和 <Link href="https://github.com/expo/expo">Expo</Link> 让你可以使用 React 构建 Android、iOS
+                          等应用程序。它们的样式和体验都和原生应用程序一样，因为它们的用户界面是真正的原生用户界面。这不是一个 Web
+                          视图——你的 React 组件由平台提供的真实 Android 或 iOS
                           视图来渲染。
                         </p>
                       </div>
@@ -385,9 +377,8 @@ export function HomeContent() {
             </div>
             <div className="px-5 lg:px-0 max-w-4xl mx-auto lg:text-center text-secondary dark:text-secondary-dark">
               <Para>
-                使用 React，您可以成为 Web 和原生应用开发人员。
-                您的团队可以在不牺牲用户体验的情况下发布到许多平台。
-                您的组织可以抹平平台差异，并形成拥有端到端的全部功能的团队。
+                使用 React，你可以成为 Web 和原生应用的开发人员。
+                你的团队可以在不牺牲用户体验的情况下发布到各个平台。你的组织可以忽略平台差异，并拥有端到端的全部功能。
               </Para>
               <div className="flex justify-start w-full lg:justify-center">
                 <CTA color="gray" icon="native" href="https://reactnative.dev/">
@@ -458,7 +449,7 @@ export function HomeContent() {
                 <Header>加入数百万人的社区</Header>
                 <Para>
                   你并不孤单。每个月有来自世界各地的两百万开发者访问 React
-                  文档。React 是人们和团队可以达成共识的东西。
+                  文档。React 可以让人们达成共识。
                 </Para>
               </Center>
             </div>
@@ -467,7 +458,7 @@ export function HomeContent() {
               <Center>
                 <Para>
                   这就是为什么 React
-                  不仅仅是一个库、一种架构，甚至不只是一个生态系统。React{' '}
+                  不仅仅是一个库、一种架构，甚至不只是一个生态系统。React
                   是一个社区。在这里你可以寻求帮助，发现机会并结交新朋友。你将会遇到开发者和设计师、初学者和专家、研究人员和艺术家、教师和学生等各行各业的人士。我们的背景可能非常不同，但
                   React 让我们所有人都能够共同创建用户界面。
                 </Para>
