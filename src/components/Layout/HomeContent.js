@@ -157,7 +157,9 @@ export function HomeContent() {
           <Center>
             <Header>用组件创建用户界面</Header>
             <Para>
-              React 让你可以通过组件来构建用户界面。你可以创建像 <Code>Thumbnail</Code>、<Code>LikeButton</Code> 和 <Code>Video</Code> 这样的组件。然后将它们组合成整个应用程序。
+              React 让你可以通过组件来构建用户界面。你可以创建像{' '}
+              <Code>Thumbnail</Code>、<Code>LikeButton</Code> 和{' '}
+              <Code>Video</Code> 这样的组件。然后将它们组合成整个应用程序。
             </Para>
           </Center>
           <FullBleed>
@@ -175,9 +177,11 @@ export function HomeContent() {
           <Center>
             <Header>用代码和标签编写组件</Header>
             <Para>
-              React 组件是 JavaScript 函数。想要有条件地显示一些内容吗？使用 <Code>if</Code> 语句。
+              React 组件是 JavaScript 函数。想要有条件地显示一些内容吗？使用{' '}
+              <Code>if</Code> 语句。
               <br className="hidden lg:inline" />
-              想要展示一个列表？尝试使用数组的 <Code>map()</Code> 方法。学习 React 就是学习编程。
+              想要展示一个列表？尝试使用数组的 <Code>map()</Code> 方法。学习
+              React 就是学习编程。
             </Para>
           </Center>
           <FullBleed>
@@ -206,8 +210,8 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              你也可以不用 React 去构建整个页面，而只是将 React 添加到现有的 HTML
-              页面中，在任何地方呈现交互式的 React 组件。
+              你也可以不用 React 去构建整个页面，而只是将 React 添加到现有的
+              HTML 页面中，在任何地方呈现交互式的 React 组件。
             </Para>
             <div className="flex justify-start w-full lg:justify-center">
               <CTA
@@ -230,7 +234,9 @@ export function HomeContent() {
             <Para>
               React
               是一个库。它允许你将组件放在一起，但不关注路由和数据获取。要使用
-              React 构建整个应用程序，我们建议使用像 <Link href="https://nextjs.org">Next.js</Link> 或 <Link href="https://remix.run">Remix</Link> 这样的全栈 React
+              React 构建整个应用程序，我们建议使用像{' '}
+              <Link href="https://nextjs.org">Next.js</Link> 或{' '}
+              <Link href="https://remix.run">Remix</Link> 这样的全栈 React
               框架。
             </Para>
           </Center>
@@ -278,9 +284,9 @@ export function HomeContent() {
                       <p className="lg:text-xl leading-normal text-secondary">
                         人们期望网页加载速度更快。在服务器上，React
                         可以让你在获取数据的同时开始流式传输 HTML，在任何
-                        JavaScript 代码加载之前逐步填充剩余内容。在客户端，即使是在渲染过程中，React
-                        可以使用标准的 Web API 使 UI
-                        能够快速响应。
+                        JavaScript
+                        代码加载之前逐步填充剩余内容。在客户端，即使是在渲染过程中，React
+                        可以使用标准的 Web API 使 UI 能够快速响应。
                       </p>
                     </div>
                   </div>
@@ -364,10 +370,13 @@ export function HomeContent() {
                           人们希望原生应用程序样式和体验都符合对应的平台。
                           <Link href="https://reactnative.dev">
                             React Native
-                          </Link> 和 <Link href="https://github.com/expo/expo">Expo</Link> 让你可以使用 React 构建 Android、iOS
-                          等应用程序。它们的样式和体验都和原生应用程序一样，因为它们的用户界面是真正的原生用户界面。这不是一个 Web
-                          视图——你的 React 组件由平台提供的真实 Android 或 iOS
-                          视图来渲染。
+                          </Link>{' '}
+                          和{' '}
+                          <Link href="https://github.com/expo/expo">Expo</Link>{' '}
+                          让你可以使用 React 构建 Android、iOS
+                          等应用程序。它们的样式和体验都和原生应用程序一样，因为它们的用户界面是真正的原生用户界面。这不是一个
+                          Web 视图——你的 React 组件由平台提供的真实 Android 或
+                          iOS 视图来渲染。
                         </p>
                       </div>
                     </div>
