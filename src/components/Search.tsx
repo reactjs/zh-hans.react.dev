@@ -2,12 +2,10 @@
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
 
-// @ts-ignore
-import {IconSearch} from 'components/Icon/IconSearch';
 import Head from 'next/head';
 import Link from 'next/link';
 import Router from 'next/router';
-import {useState, useCallback, useEffect} from 'react';
+import {lazy, useCallback, useEffect} from 'react';
 import * as React from 'react';
 import {createPortal} from 'react-dom';
 import {siteConfig} from 'siteConfig';
@@ -18,8 +16,9 @@ export interface SearchProps {
   apiKey?: string;
   indexName?: string;
   searchParameters?: any;
-  renderModal?: boolean;
-  fullsize?: boolean;
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
 }
 
 function Hit({hit, children}: any) {
@@ -27,18 +26,6 @@ function Hit({hit, children}: any) {
     <Link href={hit.url.replace()}>
       <a>{children}</a>
     </Link>
-  );
-}
-
-function Kbd(props: {children?: React.ReactNode; wide?: boolean}) {
-  const {wide, ...rest} = props;
-  const width = wide ? 'w-10' : 'w-5';
-
-  return (
-    <kbd
-      className={`${width} h-5 border border-transparent mr-1 bg-wash dark:bg-wash-dark text-gray-30 align-middle p-0 inline-flex justify-center items-center text-xs text-center rounded-md`}
-      {...rest}
-    />
   );
 }
 
@@ -99,49 +86,23 @@ const options = {
   apiKey: siteConfig.algolia.apiKey,
   indexName: siteConfig.algolia.indexName,
 };
-let DocSearchModal: any = null;
+
+const DocSearchModal: any = lazy(() =>
+  // @ts-ignore
+  import('@docsearch/react/modal').then((mod) => ({
+    default: mod.DocSearchModal,
+  }))
+);
+
 export function Search({
+  isOpen,
+  onOpen,
+  onClose,
   searchParameters = {
     hitsPerPage: 5,
   },
-  fullsize,
 }: SearchProps) {
-  const [isShowing, setIsShowing] = useState(false);
-
-  const importDocSearchModalIfNeeded = useCallback(
-    function importDocSearchModalIfNeeded() {
-      if (DocSearchModal) {
-        return Promise.resolve();
-      }
-
-      // @ts-ignore
-      return import('@docsearch/react/modal').then(
-        ({DocSearchModal: Modal}) => {
-          DocSearchModal = Modal;
-        }
-      );
-    },
-    []
-  );
-
-  const onOpen = useCallback(
-    function onOpen() {
-      importDocSearchModalIfNeeded().then(() => {
-        setIsShowing(true);
-      });
-    },
-    [importDocSearchModalIfNeeded, setIsShowing]
-  );
-
-  const onClose = useCallback(
-    function onClose() {
-      setIsShowing(false);
-    },
-    [setIsShowing]
-  );
-
-  useDocSearchKeyboardEvents({isOpen: isShowing, onOpen, onClose});
-
+  useDocSearchKeyboardEvents({isOpen, onOpen, onClose});
   return (
     <>
       <Head>
@@ -150,6 +111,7 @@ export function Search({
           href={`https://${options.appId}-dsn.algolia.net`}
         />
       </Head>
+<<<<<<< HEAD
 
       {!fullsize && (
         <button
@@ -180,6 +142,9 @@ export function Search({
       </button>
 
       {isShowing &&
+=======
+      {isOpen &&
+>>>>>>> 3c1fa0b4fdfc7ee7fb781c7cd4cd1ed4bc9e0239
         createPortal(
           <DocSearchModal
             {...options}
