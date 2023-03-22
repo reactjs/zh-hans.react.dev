@@ -111,40 +111,7 @@ export function Search({
           href={`https://${options.appId}-dsn.algolia.net`}
         />
       </Head>
-<<<<<<< HEAD
-
-      {!fullsize && (
-        <button
-          aria-label="Search"
-          type="button"
-          className="active:scale-95 transition-transform flex md:hidden w-12 h-12 rounded-full items-center justify-center hover:bg-secondary-button hover:dark:bg-secondary-button-dark outline-link"
-          onClick={onOpen}>
-          <IconSearch className="align-middle w-5 h-5" />
-        </button>
-      )}
-
-      <button
-        type="button"
-        className={cn(
-          '3xl:w-[56rem] 3xl:mx-0 relative pl-4 pr-1 py-1 h-10 bg-gray-30/20 dark:bg-gray-40/20 outline-none  focus:outline-link betterhover:hover:bg-opacity-80 pointer items-center text-left w-full text-gray-30 rounded-full align-middle text-base',
-          fullsize ? 'flex' : 'hidden md:flex'
-        )}
-        onClick={onOpen}>
-        <IconSearch className="mr-3 align-middle text-gray-30 shrink-0 group-betterhover:hover:text-gray-70" />
-        搜索
-        <span className="ml-auto hidden sm:flex item-center mr-1">
-          <Kbd data-platform="mac">⌘</Kbd>
-          <Kbd data-platform="win" wide>
-            Ctrl
-          </Kbd>
-          <Kbd>K</Kbd>
-        </span>
-      </button>
-
-      {isShowing &&
-=======
       {isOpen &&
->>>>>>> 3c1fa0b4fdfc7ee7fb781c7cd4cd1ed4bc9e0239
         createPortal(
           <DocSearchModal
             {...options}
