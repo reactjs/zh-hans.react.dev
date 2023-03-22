@@ -1,31 +1,30 @@
 ---
-title: 'Tutorial: Tic-Tac-Toe'
+title: '教程：井字棋游戏'
 ---
 
 <Intro>
 
-You will build a small tic-tac-toe game during this tutorial. This tutorial does not assume any existing React knowledge. The techniques you'll learn in the tutorial are fundamental to building any React app, and fully understanding it will give you a deep understanding of React.
+在本教程中，我们将构建一个小型井字棋游戏。本教程不需要你有任何的 React 知识。在这个教程中，你将学习到一些 React 基本知识，这些知识可以让对 React 有更深入的了解。
 
 </Intro>
 
 <Note>
 
-This tutorial is designed for people who prefer to **learn by doing** and want to quickly try making something tangible. If you prefer learning each concept step by step, start with [Describing the UI.](/learn/describing-the-ui)
+本教程专为喜欢 **边做边学** 并希望快速看见成形结果的人而设计。如果你喜欢逐步学习每个概念，请从 [描述 UI](/learn/describing-the-ui) 开始。
 
 </Note>
 
-The tutorial is divided into several sections:
+教程分成以下几个部分：
 
-- [Setup for the tutorial](#setup-for-the-tutorial) will give you **a starting point** to follow the tutorial.
-- [Overview](#overview) will teach you **the fundamentals** of React: components, props, and state.
-- [Completing the game](#completing-the-game) will teach you **the most common techniques** in React development.
-- [Adding time travel](#adding-time-travel) will give you **a deeper insight** into the unique strengths of React.
+- [配置](#setup-for-the-tutorial) 是教程的起点。
+- [概览](#overview) 介绍了 React 的 **基础知识**：组件、props 和 state。
+- [完成游戏](#completing-the-game) 介绍了 React 开发中 **最常用的技术**。
+- [添加“时间旅行”](#adding-time-travel) 可以让你更深入地了解 React 的独特优势。
+### 将会构建什么？ {/*what-are-you-building*/}
 
-### What are you building? {/*what-are-you-building*/}
+本教程将使用 React 构建一个交互式的井字棋游戏。
 
-In this tutorial, you'll build an interactive tic-tac-toe game with React.
-
-You can see what it will look like when you're finished here:
+你可以在下面看到完成后的样子：
 
 <Sandpack>
 
@@ -194,15 +193,15 @@ body {
 
 </Sandpack>
 
-If the code doesn't make sense to you yet, or if you are unfamiliar with the code's syntax, don't worry! The goal of this tutorial is to help you understand React and its syntax.
+如果你还不是很明白上面的代码，不用担心！本教程的目的就是帮你理解 React 及其语法。
 
-We recommend that you check out the tic-tac-toe game above before continuing with the tutorial. One of the features that you'll notice is that there is a numbered list to the right of the game's board. This list gives you a history of all of the moves that have occurred in the game, and it is updated as the game progresses.
+我们建议你在继续本教程之前，先看看上面的井字棋游戏。我们会注意到的一项功能是游戏面板右侧有一个编号列表。此列表记录了游戏中所有动作的历史记录，并随着游戏的进行而更新。
 
-Once you've played around with the finished tic-tac-toe game, keep scrolling. You'll start with a simpler template in this tutorial. Our next step is to set you up so that you can start building the game.
+体验完游戏以后，继续阅读本教程吧！我们将从一个更简单的模板开始。下一步将介绍相关配置，以便于你可以开始构建这个游戏。
 
-## Setup for the tutorial {/*setup-for-the-tutorial*/}
+## 配置 {/*setup-for-the-tutorial*/}
 
-In the live code editor below, click **Fork** in the top-right corner to open the editor in a new tab using the website CodeSandbox. CodeSandbox lets you write code in your browser and preview how your users will see the app you've created. The new tab should display an empty square and the starter code for this tutorial.
+在下面的实时代码编辑器中，单击右上角的 **Fork**，将访问网站 CodeSandbox，在新选项卡中打开编辑器。CodeSandbox 让你能够在浏览器中编写代码并预览效果。你应该能够看见一个空方块和本教程的初始代码。
 
 <Sandpack>
 
@@ -261,33 +260,33 @@ body {
 
 <Note>
 
-You can also follow this tutorial using your local development environment. To do this, you need to:
+你也可以使用本地开发环境来跟着这个教程学习，你需要：
 
-1. Install [Node.js](https://nodejs.org/en/)
-1. In the CodeSandbox tab you opened earlier, press the top-left corner button to open the menu, and then choose **File > Export to ZIP** in that menu to download an archive of the files locally
-1. Unzip the archive, then open a terminal and `cd` to the directory you unzipped
-1. Install the dependencies with `npm install`
-1. Run `npm start` to start a local server and follow the prompts to view the code running in a browser
+1. 安装 [Node.js](https://nodejs.org/en/)
+2. 在之前打开的 CodeSandbox 选项卡中，按左上角的按钮打开菜单，然后选择 **File > Export to ZIP**，将代码压缩包下载到本地。
+3. 将压缩包解压，打开终端并使用 `cd` 命令切换到你解压后的目录。
+4. 使用 `npm install` 安装依赖。
+5. 运行 `npm start` 启动本地服务器，按照提示在浏览器中查看运行效果。
 
-If you get stuck, don't let this stop you! Follow along online instead and try a local setup again later.
+如果你卡住了，不要让它挡道。请改为在线进行操作，稍后再尝试本地设置。
 
 </Note>
 
-## Overview {/*overview*/}
+## 概览 {/*overview*/}
 
-Now that you're set up, let's get an overview of React!
+完成配置以后，我们来大概看一看 React 是什么样子吧！
 
-### Inspecting the starter code {/*inspecting-the-starter-code*/}
+### 检查刚刚的代码 {/*inspecting-the-starter-code*/}
 
-In CodeSandbox you'll see three main sections:
+在 CodeSandbox 中，你将看到三个主要的部分：
 
 ![CodeSandbox with starter code](../images/tutorial/react-starter-code-codesandbox.png)
 
-1. The _Files_ section with a list of files like `App.js`, `index.js`, `styles.css` and a folder called `public`
-1. The _code editor_ where you'll see the source code of your selected file
-1. The _browser_ section where you'll see how the code you've written will be displayed
+1. _Files_ 部分列出了一些文件：`App.js`、`index.js`、`styles.css` 和一个叫 `public` 的文件夹。
+2. _code editor_ 里面你能够看到打开的代码。
+3. _browser_ 部分你将看到代码的实时效果。
 
-The `App.js` file should be selected in the _Files_ section. The contents of that file in the _code editor_ should be:
+`App.js` 文件里面的内容应该是这样的：
 
 ```jsx
 export default function Square() {
@@ -295,15 +294,14 @@ export default function Square() {
 }
 ```
 
-The _browser_ section should be displaying a square with a X in it like this:
-
+_browser_ 部分应该会像下面这样在方块里面显示一个 X：
 ![x-filled square](../images/tutorial/x-filled-square.png)
 
-Now let's have a look at the files in the starter code.
+现在，让我们仔细来看一看这些文件吧。
 
 #### `App.js` {/*appjs*/}
 
-The code in `App.js` creates a _component_. In React, a component is a piece of reusable code that represents a part of a user interface. Components are used to render, manage, and update the UI elements in your application. Let's look at the component line by line to see what's going on:
+`App.js` 的代码创建了一个 _组件_。在 React 中，组件是一段可重用代码，它通常作为 UI 界面中的一部分。组件用于呈现、管理和更新应用中的 UI 元素。让我们逐行查看这段代码，看看发生了什么：
 
 ```js {1}
 export default function Square() {
@@ -311,7 +309,7 @@ export default function Square() {
 }
 ```
 
-The first line defines a function called `Square`. The `export` JavaScript keyword makes this function accessible outside of this file. The `default` keyword tells other files using your code that it's the main function in your file.
+第一行定义了一个名为 `Square` 的函数。 `export` JavaScript 关键字使此函数可以在此文件之外访问。`default` 关键字表明它是文件中的主要函数。
 
 ```js {2}
 export default function Square() {
@@ -319,15 +317,14 @@ export default function Square() {
 }
 ```
 
-The second line returns a button. The `return` JavaScript keyword means whatever comes after is returned as a value to the caller of the function. `<button>` is a *JSX element*. A JSX element is a combination of JavaScript code and HTML tags that describes what you'd like to display. `className="square"` is a button property or *prop* that tells CSS how to style the button. `X` is the text displayed inside of the button and `</button>` closes the JSX element to indicate that any following content shouldn't be placed inside the button.
+第二行返回一个按钮。`return` JavaScript 关键字意味着后面的内容都作为值返回给函数的调用者。`<button>` 是一个 JSX 元素。JSX 元素是 JavaScript 代码和 HTML 标签的组合，用于描述要显示的内容。`className="square"` 是一个 button 属性，它决定 CSS 如何设置按钮的样式。`X` 是按钮内显示的文本，`</button>` 闭合 JSX 元素表示不应将任何后续内容放置在按钮内。
 
 #### `styles.css` {/*stylescss*/}
 
-Click on the file labeled `styles.css` in the _Files_ section of CodeSandbox. This file defines the styles for your React app. The first two _CSS selectors_ (`*` and `body`) define the style of large parts of your app while the `.square` selector defines the style of any component where the `className` property is set to `square`. In your code, that would match the button from your Square component in the `App.js` file.
-
+单击 CodeSandbox 中的 `styles.css` 文件。该文件定义了 React 应用的样式。前两个 CSS 选择器（`*` 和 `body`）定义应用大部分的样式，而 `.square` 选择器定义 `className` 属性设置为 `square` 的任何组件的样式。这将与 `App.js` 文件中的 `Square` 组件中的按钮相匹配。
 #### `index.js` {/*indexjs*/}
 
-Click on the file labeled `index.js` in the _Files_ section of CodeSandbox. You won't be editing this file during the tutorial but it is the bridge between the component you created in the `App.js` file and the web browser.
+单击 CodeSandbox 中的 `index.js` 的文件。在本教程中我们不会编辑此文件，但它是 `App.js` 文件中创建的组件与 Web 浏览器之间的桥梁。
 
 ```jsx
 import {StrictMode} from 'react';
@@ -337,20 +334,20 @@ import './styles.css';
 import App from './App';
 ```
 
-Lines 1-5 brings all the necessary pieces together: 
+将第 1-5 行将所有必要的部分组合在一起：
 
 * React
-* React's library to talk to web browsers (React DOM)
-* the styles for your components
-* the component you created in `App.js`.
+* React 与 Web 浏览器对话的库（React DOM）
+* 组件的样式
+* `App.js` 里面创建的组件
 
-The remainder of the file brings all the pieces together and injects the final product into `index.html` in the `public` folder.
+其他文件将它们组合在一起，并将最终成果注入 `public` 文件夹中的 `index.html` 中。
 
-### Building the board {/*building-the-board*/}
+### 构建游戏面板 {/*building-the-board*/}
 
-Let's get back to `App.js`. This is where you'll spend the rest of the tutorial.
+让我们回到 `App.js`。接下来我们将聚焦于这个文件。
 
-Currently the board is only a single square, but you need nine! If you just try and copy paste your square to make two squares like this:
+目前棋盘只有一个方块，但你需要九个！如果你只是想着复制粘贴来制作两个像这样的正方形：
 
 ```js {2}
 export default function Square() {
@@ -358,7 +355,7 @@ export default function Square() {
 }
 ```
 
-You'll get this error:
+你将会得到如下错误：
 
 <ConsoleBlock level="error">
 
@@ -366,7 +363,7 @@ You'll get this error:
 
 </ConsoleBlock>
 
-React components need to return a single JSX element and not multiple adjacent JSX elements like two buttons. To fix this you can use *fragments* (`<>` and `</>`) to wrap multiple adjacent JSX elements like this:
+React 组件返回单个 JSX 元素，而不是像两个按钮那样的多个相邻的 JSX 元素。要解决此问题，可以使用 `<>` 和 `</>` 来包裹多个相邻的 JSX 元素，如下所示：
 
 ```js {3-6}
 export default function Square() {
@@ -379,17 +376,17 @@ export default function Square() {
 }
 ```
 
-Now you should see:
+现在你应该可以看见：
 
 ![two x-filled squares](../images/tutorial/two-x-filled-squares.png)
 
-Great! Now you just need to copy-paste a few times to add nine squares and...
+非常棒！现在你只需要通过复制粘贴来添加九个方块，然后……
 
 ![nine x-filled squares in a line](../images/tutorial/nine-x-filled-squares.png)
 
-Oh no! The squares are all in a single line, not in a grid like you need for our board. To fix this you'll need to group your squares into rows with `div`s and add some CSS classes. While you're at it, you'll give each square a number to make sure you know where each square is displayed.
+哦不！这些方块都在一条直线上，而不是排列成网格。要解决此问题，需要使用 `div` 将方块分组到各行中并添加一些 CSS 样式。当你这样做的时候，你会给每个方块一个数字，以确保你知道每个方块的显示位置。
 
-In the `App.js` file, update the `Square` component to look like this:
+`App.js` 文件中，`Square` 组件看起来像这样：
 
 ```js {3-19}
 export default function Square() {
@@ -415,11 +412,11 @@ export default function Square() {
 }
 ```
 
-The CSS defined in `styles.css` styles the divs with the `className` of `board-row`. Now that you've grouped your components into rows with the styled `div`s you have your tic-tac-toe board:
+ `styles.css` 成功设置了样式！现在我们已经使用样式化的 `div` 将组件分组到行中，你拥有了井字游戏面板：
 
 ![tic-tac-toe board filled with numbers 1 through 9](../images/tutorial/number-filled-board.png)
 
-But you now have a problem. Your component named `Square`, really isn't a square anymore. Let's fix that by changing the name to `Board`:
+但是现在有个问题，名为 `Square` 的组件实际上不再是正方形了。让我们通过将名称更改为 Board 来解决这个问题：
 
 ```js {1}
 export default function Board() {
@@ -427,7 +424,7 @@ export default function Board() {
 }
 ```
 
-At this point your code should look something like this:
+此时你的代码应如下所示：
 
 <Sandpack>
 
@@ -504,15 +501,15 @@ body {
 
 <Note>
 
-Psssst... That's a lot to type! It's okay to copy and paste code from this page. However, if you're up for a little challenge, we recommend only copying code that you've manually typed at least once yourself.
+嘶，要输入的内容太多了！可以从该页面复制和粘贴代码。但是，如果你愿意迎接一点挑战，我们建议只复制你自己至少手动输入过一次的代码。
 
 </Note>
 
-### Passing data through props {/*passing-data-through-props*/}
+### 通过 prop 传递数据 {/*passing-data-through-props*/}
 
-Next, you'll want to change the value of a square from empty to "X" when the user clicks on the square. With how you've built the board so far you would need to copy-paste the code that updates the square nine times (once for each square you have)! Instead of copy-pasting, React's component architecture allows you to create a reusable component to avoid messy, duplicated code.
+接下来，当用户单击正方形时，我们要将正方形的值从空更改为“X”。根据目前构建的棋盘，你需要复制并粘贴九次更新方块的代码（每个方块都需要一次）！但是，React 的组件架构可以创建可重用的组件，以避免混乱、重复的代码。
 
-First, you are going to copy the line defining your first square (`<button className="square">1</button>`) from your `Board` component into a new `Square` component:
+首先，要将定义第一个方块（`<button className="square">1</button>`）的这行代码从 `Board` 组件复制到新的 `Square` 组件中：
 
 ```js {1-3}
 function Square() {
@@ -524,7 +521,7 @@ export default function Board() {
 }
 ```
 
-Then you'll update the Board component to render that `Square` component using JSX syntax:
+然后，将更新 Board 组件并使用 JSX 语法呈现 `Square` 组件：
 
 ```js {5-19}
 // ...
@@ -551,15 +548,15 @@ export default function Board() {
 }
 ```
 
-Note how unlike the browser `div`s, your own components `Board` and `Square` must start with a capital letter. 
+需要注意的是，这并不像 `div`，这些你自己的组件如 `Board` 和 `Square`，必须以大写字母开头。 
 
-Let's take a look:
+让我们来看一看效果：
 
 ![one-filled board](../images/tutorial/board-filled-with-ones.png)
 
-Oh no! You lost the numbered squares you had before. Now each square says "1". To fix this, you will use *props* to pass the value each square should have from the parent component (`Board`) to its child (`Square`).
+哦不！你失去了你以前有正确编的方块。现在每个方块都写着“1”。要解决此问题，需要使用 prop 将每个方块应具有的值从父组件（`Board`）传递到其子组件（`Square`）。
 
-Update the `Square` component to read the `value` prop that you'll pass from the `Board`:
+更新 `Square` 组件，读取将从 `Board` 传递的 `value` prop：
 
 ```js {1}
 function Square({ value }) {
@@ -567,9 +564,9 @@ function Square({ value }) {
 }
 ```
 
-`function Square({ value })` indicates the Square component can be passed a prop called `value`.
+`function Square({ value })` 表示可以向 Square 组件传递一个名为 `value` 的 prop。
 
-Now you want to display that `value` instead of `1` inside every square. Try doing it like this:
+现在你如果想要显示对应的 `value` 而不是 `1`，可以试一下像下面这样：
 
 ```js {2}
 function Square({ value }) {
@@ -577,11 +574,11 @@ function Square({ value }) {
 }
 ```
 
-Oops, this is not what you wanted:
+糟糕！这还不是你想要的：
 
 ![value-filled board](../images/tutorial/board-filled-with-value.png)
 
-You wanted to render the JavaScript variable called `value` from your component, not the word "value". To "escape into JavaScript" from JSX, you need curly braces. Add curly braces around `value` in JSX like so:
+我们需要从组件中渲染名为 `value` 的 JavaScript 变量，而不是“value”这个词。要从 JSX “转义到 JavaScript”，你需要大括号。在 JSX 中的 `value` 周围添加大括号，如下所示：
 
 ```js {2}
 function Square({ value }) {
@@ -589,11 +586,11 @@ function Square({ value }) {
 }
 ```
 
-For now, you should see an empty board:
+现在，你应该会看到一个空的游戏面板了：
 
 ![empty board](../images/tutorial/empty-board.png)
 
-This is because the `Board` component hasn't passed the `value` prop to each `Square` component it renders yet. To fix it you'll add the `value` prop to each `Square` component rendered by the `Board` component:
+这是因为 `Board` 组件还没有将 `value` prop 传递给它渲染的每个 `Square` 组件。要修复这个问题，需要向 `Board` 组件里面的的每个 `Square` 组件添加 `value` 属性：
 
 ```js {5-7,10-12,15-17}
 export default function Board() {
@@ -619,11 +616,11 @@ export default function Board() {
 }
 ```
 
-Now you should see a grid of numbers again:
+现在你应该能再次看到数字网格：
 
 ![tic-tac-toe board filled with numbers 1 through 9](../images/tutorial/number-filled-board.png)
 
-Your updated code should look like this:
+更新后的代码应该是这样：
 
 <Sandpack>
 
@@ -702,9 +699,9 @@ body {
 
 </Sandpack>
 
-### Making an interactive component {/*making-an-interactive-component*/}
+### 创建一个具有交互性的组件 {/*making-an-interactive-component*/}
 
-Let's fill the `Square` component with an `X` when you click it. Declare a function called `handleClick` inside of the `Square`. Then, add `onClick` to the props of the button JSX element returned from the `Square`:
+当你单击它的时候，应该用 `X` 来填充 `Square` 组件。在 `Square` 内部声明一个名为 `handleClick` 的函数。然后，将 `onClick` 添加到由 `Square` 返回的按钮的 JSX 元素的属性中：
 
 ```js {2-4,9}
 function Square({ value }) {
@@ -723,11 +720,11 @@ function Square({ value }) {
 }
 ```
 
-If you click on a square now, you should see a log saying `"clicked!"` in the _Console_ tab at the bottom of the _Browser_ section in CodeSandbox. Clicking the square more than once will log `"clicked!"` again. Repeated console logs with the same message will not create more lines in the console. Instead, you will see an incrementing counter next to your first `"clicked!"` log.
+如果现在单击一个方块，你应该会看到一条日志，上面写着 `"clicked!"` 在 CodeSandbox 中浏览器部分底部的控制台选项卡中。多次单击方块将再次记录 `"clicked!"`。具有相同消息的重复控制台日志不会在控制台中创建更多行。相反，你会在第一次 `"clicked!"` 旁边看到一个递增的计数器。
 
 <Note>
 
-If you are following this tutorial using your local development environment, you need to open your browser's Console. For example, if you use the Chrome browser, you can view the Console with the keyboard shortcut **Shift + Ctrl + J** (on Windows/Linux) or **Option + ⌘ + J** (on macOS).
+如果使用本地开发环境学习本教程，则需要打开浏览器的控制台。例如，如果使用 Chrome 浏览器，则可以使用键盘快捷键 **Shift + Ctrl + J**（在 Windows/Linux 上）或 **Option + ⌘ + J**（在 macOS 上）查看控制台。
 
 </Note>
 
@@ -2719,20 +2716,20 @@ export default function Game() {
 }
 ```
 
-You no longer need the `xIsNext` state declaration or the calls to `setXIsNext`. Now, there's no chance for `xIsNext` to get out of sync with `currentMove`, even if you make a mistake while coding the components.
+你不再需要 `xIsNext` state 声明或对 `setXIsNext` 的调用。现在，`xIsNext` 不可能与 `currentMove` 不同步，即使你的代码写错了。
 
-### Wrapping up {/*wrapping-up*/}
+### 收尾 {/*wrapping-up*/}
 
-Congratulations! You've created a tic-tac-toe game that:
+祝贺！你已经创建了一个井字棋游戏，你实现了：
 
-- Lets you play tic-tac-toe,
-- Indicates when a player has won the game,
-- Stores a game's history as a game progresses,
-- Allows players to review a game's history and see previous versions of a game's board.
+- 你现在可以玩的井字棋游戏
+- 玩家在赢的时候有提示
+- 随着游戏的进行存储游戏的历史
+- 允许玩家回顾游戏的历史并查看游戏面板的以前的版本
 
-Nice work! We hope you now feel like you have a decent grasp of how React works.
+干得好！我们希望你现在觉得你对 React 的工作原理有了很好的了解。
 
-Check out the final result here:
+在这里对照一下最终的结果吧：
 
 <Sandpack>
 
@@ -2901,12 +2898,12 @@ body {
 
 </Sandpack>
 
-If you have extra time or want to practice your new React skills, here are some ideas for improvements that you could make to the tic-tac-toe game, listed in order of increasing difficulty:
+如果你有额外的时间或想练习新的 React 技能，这里有一些你可以改进井字游戏的想法，按难度递增的顺序列出：
 
-1. For the current move only, show "You are at move #..." instead of a button
-1. Rewrite `Board` to use two loops to make the squares instead of hardcoding them.
-1. Add a toggle button that lets you sort the moves in either ascending or descending order.
-1. When someone wins, highlight the three squares that caused the win (and when no one wins, display a message about the result being a draw).
-1. Display the location for each move in the format (col, row) in the move history list.
+1. 仅针对当前着手，显示“You are at move #…”而不是按钮。
+1. 重写 `Board` 以使用两个循环来制作正方形而不是对它们进行硬编码。
+1. 添加一个切换按钮，使可以按升序或降序对移动的步数进行排序。
+1. 当有人获胜时，突出显示致使获胜的三个方块（当没有人获胜时，显示一条关于结果为平局的消息）。
+1. 在“移动”的历史列表中以 (row, col) 格式显示每步的位置。
 
-Throughout this tutorial, you've touched on React concepts including elements, components, props, and state. Now that you've seen how these concepts work when building a game, check out [Thinking in React](/learn/thinking-in-react) to see how the same React concepts work when build an app's UI.
+在本教程中，你已经接触到了 React 概念，包括元素、组件、prop 和 state。现在你已经了解了这些概念在构建游戏时是如何工作的，请查看 [React 哲学](../learn/thinking-in-react) 以了解这些 React 概念在构建应用的 UI 时是如何工作的。
