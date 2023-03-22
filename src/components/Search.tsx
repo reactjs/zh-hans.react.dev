@@ -9,7 +9,6 @@ import {lazy, useCallback, useEffect} from 'react';
 import * as React from 'react';
 import {createPortal} from 'react-dom';
 import {siteConfig} from 'siteConfig';
-import cn from 'classnames';
 
 export interface SearchProps {
   appId?: string;
