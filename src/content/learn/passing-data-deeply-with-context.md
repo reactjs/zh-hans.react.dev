@@ -339,7 +339,11 @@ export default function Heading({ children }) {
 }
 ```
 
+<<<<<<< HEAD
 `useContext` 是一个 Hook。和 `useState` 以及 `useReducer`一样，你只能在 React 组件的顶层调用 Hook。**`useContext` 告诉 React `Heading` 组件想要读取 `LevelContext`。**
+=======
+`useContext` is a Hook. Just like `useState` and `useReducer`, you can only call a Hook immediately inside a React component (not inside loops or conditions). **`useContext` tells React that the `Heading` component wants to read the `LevelContext`.**
+>>>>>>> 7f041241543b09e48ad287ee9607085df9379dca
 
 现在 `Heading` 组件没有 `level` 参数，你不需要再像这样在你的 JSX 中将 level 参数传递给 `Heading`：
 
