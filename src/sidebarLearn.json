@@ -130,7 +130,7 @@
           "path": "/learn/reacting-to-input-with-state"
         },
         {
-          "title": "Choosing the State Structure",
+          "title": "选择状态结构",
           "path": "/learn/choosing-the-state-structure"
         },
         {
@@ -186,7 +186,7 @@
         },
         {
           "title": "Removing Effect Dependencies",
-          "path": "/learn/removing-effect-dependencies"              
+          "path": "/learn/removing-effect-dependencies"
         },
         {
           "title": "Reusing Logic with Custom Hooks",
