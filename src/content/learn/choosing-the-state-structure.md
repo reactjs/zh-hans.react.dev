@@ -1,38 +1,38 @@
 ---
-title: 选择状态结构
+title: 选择 State 结构
 translators:
   - Davont
 ---
 
 <Intro>
 
-构建良好的状态可以让组件变得易于修改和调试，而不是成为一个经常出错的组件。以下是你在构建状态时应该考虑的一些建议。
+构建良好的 state 可以让组件变得易于修改和调试，而不是成为一个经常出错的组件。以下是你在构建 state 时应该考虑的一些建议。
 
 </Intro>
 
 <YouWillLearn>
 
 * 何时使用单个 state 变量和多个 state 变量
-* 组织状态时应避免的内容
-* 如何解决状态结构中的常见问题
+* 组织 state 时应避免的内容
+* 如何解决 state 结构中的常见问题
 
 </YouWillLearn>
 
-## 构建状态的原则 {/*principles-for-structuring-state*/}
+## 构建 state 的原则 {/*principles-for-structuring-state*/}
 
 当你编写一个存有 state 的组件时，你需要选择使用多少个 state 变量以及它们都是怎样的数据格式。尽管选择次优的 state 结构下也可以编写正确的程序，但有几个原则可以指导您做出更好的决策：
 
-1. **合并关联的状态。** 如果你总是同时更新两个或更多的 state 变量，请考虑将它们合并为一个单独的 state 变量。
-2. **避免互相矛盾的状态。** 当状态结构中存在多个相互矛盾或“不一致”的 state 时，你就可能为此会留下隐患。应尽量避免这种情况。
-3. **避免冗余的状态。** 如果你能在渲染期间从组件的 props 或其现有的 state 变量中计算出一些信息，则不应将这些信息放入该组件的 state 中。
-4. **避免重复的状态。** 当同一数据在多个 state 变量之间或在多个嵌套对象中重复时，这会很难保持它们同步。应尽可能减少重复。
-5. **避免深度嵌套的状态。** 深度分层的状态更新起来不是很方便。如果可能的话，最好以扁平化方式构建状态。
+1. **合并关联的 state。** 如果你总是同时更新两个或更多的 state 变量，请考虑将它们合并为一个单独的 state 变量。
+2. **避免互相矛盾的 state。** 当 state 结构中存在多个相互矛盾或“不一致”的 state 时，你就可能为此会留下隐患。应尽量避免这种情况。
+3. **避免冗余的 state。** 如果你能在渲染期间从组件的 props 或其现有的 state 变量中计算出一些信息，则不应将这些信息放入该组件的 state 中。
+4. **避免重复的 state。** 当同一数据在多个 state 变量之间或在多个嵌套对象中重复时，这会很难保持它们同步。应尽可能减少重复。
+5. **避免深度嵌套的 state。** 深度分层的 state 更新起来不是很方便。如果可能的话，最好以扁平化方式构建 state 。
 
-这些原则背后的目标是*使状态易于更新而不引入错误*。从状态中删除冗余和重复数据有助于确保所有部分保持同步。这类似于数据库工程师想要 [“规范化”数据库结构](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description)，以减少出现错误的机会。用爱因斯坦的话说，**“让你的状态尽可能简单，但不要过于简单。”**
+这些原则背后的目标是*使 state 易于更新而不引入错误*。从 state 中删除冗余和重复数据有助于确保所有部分保持同步。这类似于数据库工程师想要 [“规范化”数据库结构](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description)，以减少出现错误的机会。用爱因斯坦的话说，**“让你的状态尽可能简单，但不要过于简单。”**
 
 现在让我们来看看这些原则在实际中是如何应用的。
 
-## 合并关联的状态 {/*group-related-state*/}
+## 合并关联的 state {/*group-related-state*/}
 
 有时候你可能会不确定是使用单个 state 变量还是多个 state 变量。
 
@@ -104,7 +104,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 </Pitfall>
 
-## 避免矛盾的状态 {/*avoid-contradictions-in-state*/}
+## 避免矛盾的 state {/*avoid-contradictions-in-state*/}
 
 下面是带有 `isSending` 和 `isSent` 两个 state 变量的酒店反馈表单：
 
@@ -160,7 +160,7 @@ function sendMessage(text) {
 
 </Sandpack>
 
-尽管这段代码是有效的，但也会让一些状态“极难处理”。例如，如果你忘记同时调用 `setIsSent` 和 `setIsSending`，则可能会出现 `isSending` 和 `isSent` 同时为 `true` 的情况。你的组件越复杂，你就越难理解发生了什么。
+尽管这段代码是有效的，但也会让一些 state “极难处理”。例如，如果你忘记同时调用 `setIsSent` 和 `setIsSending`，则可能会出现 `isSending` 和 `isSent` 同时为 `true` 的情况。你的组件越复杂，你就越难理解发生了什么。
 
 **因为 `isSending` 和 `isSent` 不应同时为 `true`，所以最好用一个 `status` 变量来代替它们，这个 state 变量可以采取 *三种* 有效状态其中之一：**`'typing'` (初始), `'sending'`, 和 `'sent'`:
 
@@ -226,9 +226,9 @@ const isSent = status === 'sent';
 
 但它们不是 state 变量，所以你不必担心它们彼此失去同步。
 
-## 避免冗余的状态 {/*avoid-redundant-state*/}
+## 避免冗余的 state {/*avoid-redundant-state*/}
 
-如果你能在渲染期间从组件的 props 或其现有的 state 变量中计算出一些信息，则不应该把这些信息放到该组件的状态中。
+如果你能在渲染期间从组件的 props 或其现有的 state 变量中计算出一些信息，则不应该把这些信息放到该组件的 state 中。
 
 例如，以这个表单为例。它可以运行，但你能找到其中任何冗余的 state 吗？
 
@@ -381,7 +381,7 @@ function Message({ initialColor }) {
 
 </DeepDive>
 
-## 避免重复的状态 {/*avoid-duplication-in-state*/}
+## 避免重复的 state {/*avoid-duplication-in-state*/}
 
 下面这个菜单列表组件可以让你在多种旅行小吃中选择一个：
 
@@ -577,9 +577,9 @@ state 过去常常是这样复制的：
 
 现在，如果你编辑 *selected* 项目，下面的消息将立即更新。这是因为 `setItems` 会触发重新渲染，而 `items.find(...)` 会找到带有更新文本的项目。你不需要在 state 中保存 *选定的项目* ，因为只有 *选定的 ID* 是必要的。其余的可以在渲染期间计算。
 
-## 避免深度嵌套的状态 {/*avoid-deeply-nested-state*/}
+## 避免深度嵌套的 state {/*avoid-deeply-nested-state*/}
 
-想象一下，一个由行星、大陆和国家组成的旅行计划。你可能会尝试使用嵌套对象和数组来构建它的状态，就像下面这个例子：
+想象一下，一个由行星、大陆和国家组成的旅行计划。你可能会尝试使用嵌套对象和数组来构建它的 state，就像下面这个例子：
 
 <Sandpack>
 
@@ -1138,7 +1138,7 @@ export const initialTravelPlan = {
 
 **现在 state 已经“扁平化”（也称为“规范化”），更新嵌套项会变得更加容易。**
 
-现在要删除一个地点，您只需要更新两个状态级别：
+现在要删除一个地点，您只需要更新两个 state 级别：
 
 
 
@@ -1484,7 +1484,7 @@ button { margin: 10px; }
 
 </Sandpack>
 
-你确实可以随心所欲地嵌套状态，但是将其“扁平化”可以解决许多问题。这使得状态更容易更新，并且有助于确保在嵌套对象的不同部分中没有重复。
+你确实可以随心所欲地嵌套 state，但是将其“扁平化”可以解决许多问题。这使得 state 更容易更新，并且有助于确保在嵌套对象的不同部分中没有重复。
 
 <DeepDive>
 
@@ -1848,17 +1848,17 @@ button { margin: 10px; }
 
 </DeepDive>
 
-有时候，你也可以通过将一些嵌套状态移动到子组件中来减少状态的嵌套。这对于不需要保存的短暂 UI 状态非常有效，比如一个选项是否被悬停。
+有时候，你也可以通过将一些嵌套 state 移动到子组件中来减少 state 的嵌套。这对于不需要保存的短暂 UI 状态非常有效，比如一个选项是否被悬停。
 
 <Recap>
 
 * 如果两个 state 变量总是一起更新，请考虑将它们合并为一个。
-* 仔细选择你的 state 变量，以避免创建“极难处理”的状态。
-* 用一种减少出错更新的机会的方式来构建你的状态。
-* 避免冗余和重复的状态，这样您就不需要保持同步。
+* 仔细选择你的 state 变量，以避免创建“极难处理”的 state。
+* 用一种减少出错更新的机会的方式来构建你的 state。
+* 避免冗余和重复的 state，这样您就不需要保持同步。
 * 除非您特别想防止更新，否则不要将 props *放入* state中。
 * 对于选择类型的 UI 模式，请在 state 中保存 ID 或索引而不是对象本身。
-* 如果深度嵌套状态更新很复杂，请尝试将其展开扁平化。
+* 如果深度嵌套 state 更新很复杂，请尝试将其展开扁平化。
 
 </Recap>
 
@@ -1921,7 +1921,7 @@ export default function App() {
 
 <Solution>
 
-这个问题点在于此组件的 `color` 状态是使用`color` prop 的初始值进行初始化的。但是当 `color` prop 值发生更改时，这不会影响 state 变量！因此它们会失去同步。为了解决这个问题，完全删除 state 变量，并直接使用 `color` prop 即可。
+这个问题点在于此组件的 `color` state 是使用`color` prop 的初始值进行初始化的。但是当 `color` prop 值发生更改时，这不会影响 state 变量！因此它们会失去同步。为了解决这个问题，完全删除 state 变量，并直接使用 `color` prop 即可。
 
 <Sandpack>
 
@@ -2174,7 +2174,7 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution>
 
-虽然你可以仔细更改每个事件处理程序来正确更新 `total` 和 `packed` 计数器，但根本问题在于这些 state 变量一直存在。它们是冗余的，因为你始终可以从 `item` 数组本身计算出物品（已打包或总共）的数量。因此需要删除冗余状态以修复错误：
+虽然你可以仔细更改每个事件处理程序来正确更新 `total` 和 `packed` 计数器，但根本问题在于这些 state 变量一直存在。它们是冗余的，因为你始终可以从 `item` 数组本身计算出物品（已打包或总共）的数量。因此需要删除冗余 state 以修复错误：
 
 <Sandpack>
 
@@ -2313,7 +2313,7 @@ ul, li { margin: 0; padding: 0; }
 
 #### 修复消失的选项 {/*fix-the-disappearing-selection*/}
 
-有一个 `letters` 列表在状态中。当你悬停或聚焦到特定的字母时，它会被突出显示。当前突出显示的字母存储在 `highlightedLetter` state 变量中。您可以 “Star” 和 “Unstar” 单个字母，这将更新 state 中的 `letters` 数组。
+有一个 `letters` 列表在 state 中。当你悬停或聚焦到特定的字母时，它会被突出显示。当前突出显示的字母存储在 `highlightedLetter` state 变量中。您可以 “Star” 和 “Unstar” 单个字母，这将更新 state 中的 `letters` 数组。
 
 虽然这段代码可以运行，但是有一个小的 UI 问题。当你点击 “Star” 或 “Unstar” 时，高亮会短暂消失。不过只要你移动鼠标指针或者用键盘切换到另一个字母，它就会重新出现。为什么会这样？请修复它，使得在按钮点击后高亮不会消失。
 
@@ -2422,7 +2422,7 @@ li { border-radius: 5px; }
 
 <Solution>
 
-这个问题点在于你将字母对象存储在 `highlightedLetter` 中。但是，你也将相同的信息存储在 `letters` 数组中。因此，你的状态存在重复！当你在按钮点击后更新 `letters` 数组时，会创建一个新的字母对象，它与 `highlightedLetter` 不同。这就是为什么 `highlightedLetter === letter` 执行变为 `false`，并且高亮消失的原因。当指针移动时下一次调用 `setHighlightedLetter` 时它会重新出现。
+这个问题点在于你将字母对象存储在 `highlightedLetter` 中。但是，你也将相同的信息存储在 `letters` 数组中。因此，你的 state 存在重复！当你在按钮点击后更新 `letters` 数组时，会创建一个新的字母对象，它与 `highlightedLetter` 不同。这就是为什么 `highlightedLetter === letter` 执行变为 `false`，并且高亮消失的原因。当指针移动时下一次调用 `setHighlightedLetter` 时它会重新出现。
 
 为了解决这个问题，请从 state 中删除重复项。不要在两个地方存储 `字母对象本身`，而是存储 `highlightedId`。然后，您可以使用 `letter.id === highlightedId` 检查每个带有 `isHighlighted` 属性的字母，即使 `letter` 对象在上次渲染后发生了变化，这也是可行的。
 
@@ -2533,7 +2533,7 @@ li { border-radius: 5px; }
 
 #### 实现多选功能 {/*implement-multiple-selection*/}
 
-在这个例子中，每个 `Letter` 都有一个 `isSelected` prop 和一个 `onToggle` 处理程序来标记它为选定状态。这样做是有效的，但是 state 被存储为 `selectedId`（也可以是 `null` 或 `ID`），因此任何时候只能选择一个 letter。
+在这个例子中，每个 `Letter` 都有一个 `isSelected` prop 和一个 `onToggle` 处理程序来标记它为选定 state。这样做是有效的，但是 state 被存储为 `selectedId`（也可以是 `null` 或 `ID`），因此任何时候只能选择一个 letter。
 
 你需要将 state 结构更改为支持多选功能。（在编写代码之前，请考虑如何构建它。）每个复选框应该独立于其他复选框。单击已选择的项目应取消选择。最后，页脚应显示所选项目的正确数量。
 
@@ -2640,7 +2640,7 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 <Solution>
 
-在状态中保留一个 `selectedIds` *数组*，而不是单个的 `selectedId`。例如，如果您选择了第一个和最后一个字母，则它将包含 `[0, 2]`。当没有选定任何内容时，它将为空数组 `[]`：
+在 state 中保留一个 `selectedIds` *数组*，而不是单个的 `selectedId`。例如，如果您选择了第一个和最后一个字母，则它将包含 `[0, 2]`。当没有选定任何内容时，它将为空数组 `[]`：
 
 <Sandpack>
 
@@ -2748,7 +2748,7 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 使用数组的一个小缺点是，对于每个项目，你都需要调用 `selectedIds.includes(letter.id)` 来检查它是否被选中。如果数组非常大，则这可能会成为性能问题，因为带有 [`includes()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) 的数组搜索需要线性时间，并且你正在为每个单独的项目执行此搜索。
 
-要解决这个问题，你可以在状态中使用一个 [Set](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set) 对象，它提供了快速的 [`has()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set/has) 操作：
+要解决这个问题，你可以在 state 中使用一个 [Set](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set) 对象，它提供了快速的 [`has()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set/has) 操作：
 
 <Sandpack>
 
@@ -2853,7 +2853,7 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 现在每个项目都会进行 `selectedIds.has(letter.id)` 检查，这非常快。
 
-请记住，你[不应该在状态中改变对象](/learn/updating-objects-in-state)，包括 Set 中。这就是为什么 `handleToggle` 函数首先创建 Set 的*副本*，然后更新该副本的原因。
+请记住，你[不应该在 state 中改变对象](/learn/updating-objects-in-state)，包括 Set 中。这就是为什么 `handleToggle` 函数首先创建 Set 的*副本*，然后更新该副本的原因。
 
 </Solution>
 
