@@ -1,18 +1,18 @@
 ---
-title: "内置 React Hooks"
+title: "内置 React Hook"
 ---
 
 <Intro>
 
-*Hooks* 让你从你的组件中使用不同的 React 功能。你可以使用内置的 Hooks 或者结合它们来建立你自己的。本页列出了 React 中所有的内置 Hooks。
+*Hook* 让你从你的组件中使用不同的 React 功能。你可以使用内置的 Hook 或者结合它们来建立你自己的。本页列出了 React 中所有的内置 Hook。
 
 </Intro>
 
 ---
 
-## State Hooks {/*state-hooks*/}
+## State Hook {/*state-hooks*/}
 
-*State* 让一个组件 ["记住" 像用户输入的信息](/learn/state-a-components-memory)，比如，要给一个组件添加状态，使用这些 Hooks 中的一个：
+*State* 让一个组件 ["记住" 像用户输入的信息](/learn/state-a-components-memory)，比如，要给一个组件添加状态，使用这些 Hook 中的一个：
 
 * [`useState`](/reference/react/useState) 声明了一个你可以直接更新的状态变量。
 * [`useReducer`](/reference/react/useReducer) 声明了一个带有更新逻辑的状态变量在一个 [reducer 函数](/learn/extracting-state-logic-into-a-reducer)中。
@@ -25,7 +25,7 @@ function ImageGallery() {
 
 ---
 
-## Context Hooks {/*context-hooks*/}
+## Context Hook {/*context-hooks*/}
 
 *Context* 让一个组件[从远处的父组件接收信息，而不需要将其作为 props 传递。](/learn/passing-props-to-a-component) 比如，app 的顶层组件可以将当前的 UI 主题传递给下面的所有组件，无论它们层级多深。
 
@@ -39,7 +39,7 @@ function Button() {
 
 ---
 
-## Ref Hooks {/*ref-hooks*/}
+## Ref Hook {/*ref-hooks*/}
 
 *Ref* 让一个组件[持有一些不用于渲染的信息，](/learn/referencing-values-with-refs)如 DOM 节点或一个 timeout ID。与 state 不同的是，更新 Ref 并不会重新渲染你的组件。Ref 是 React 范式的一个 "逃生舱门"。当你需要与非 React 系统一起工作时，它们很有用，比如内置的浏览器 API。
 
@@ -54,7 +54,7 @@ function Form() {
 
 ---
 
-## Effect Hooks {/*effect-hooks*/}
+## Effect Hook {/*effect-hooks*/}
 
 *Effect* 让一个组件[连接到外部系统并与之同步。](/learn/synchronizing-with-effects)这包括处理网络、浏览器、DOM、动画、使用不同 UI 库编写的 widgets 以及其他非 React 代码。
 
@@ -83,7 +83,7 @@ Effect 是 React 范式的 "逃生舱门"。不要用 Effect 来协调你的应�
 
 优化重新渲染性能的一个常见方法就是跳过不必要的工作。比如，你可以告诉 React 重用一个缓存的计算，或者如果数据在上一次渲染后没有变化，就跳过一次重新渲染。
 
-要跳过计算和不必要的重新渲染，请使用这些 Hooks 的一个：
+要跳过计算和不必要的重新渲染，请使用这些 Hook 的一个：
 
 * [`useMemo`](/reference/react/useMemo) 让你缓存一个高昂的计算结果。
 * [`useCallback`](/reference/react/useCallback) 让你在将一个函数定义传递给一个优化的组件之前缓存它。
@@ -97,16 +97,16 @@ function TodoList({ todos, tab, theme }) {
 
 有时，你不能跳过重新渲染，因为屏幕确实需要更新。在这种情况下，你可以通过将必须同步的阻塞更新（比如向输入法输入）与不需要阻塞用户界面的非阻塞更新（比如更新图表）分开以提高性能。
 
-要确定渲染的优先级，可以使用这些 Hooks 的一个：
+要确定渲染的优先级，可以使用这些 Hook 的一个：
 
 * [`useTransition`](/reference/react/useTransition) 让你把一个状态转换标记为非阻塞，并允许其他更新中断它。
 * [`useDeferredValue`](/reference/react/useDeferredValue) 让你推迟更新用户界面的一个非关键部分，让其他部分更新。
 
 ---
 
-## Other Hooks {/*other-hooks*/}
+## 其他 Hook {/*other-hooks*/}
 
-这些 Hooks 主要对 library 的作者有用，在应用代码中并不常用。
+这些 Hook 主要对 library 的作者有用，在应用代码中并不常用。
 
 * [`useDebugValue`](/reference/react/useDebugValue) 让你在 React DevTools 中为自定义 Hook 添加一个 label。
 * [`useId`](/reference/react/useId) 让组件将一个独特的 ID 与自己联系起来。通常与可访问性 API 一起使用。
@@ -114,6 +114,6 @@ function TodoList({ todos, tab, theme }) {
 
 ---
 
-## Your own Hooks {/*your-own-hooks*/}
+## 自己的 Hook {/*your-own-hooks*/}
 
-你也可以在 JavaScript 函数中[定义你自己的 Hooks。](/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component)
+你也可以在 JavaScript 函数中[定义你自己的 Hook。](/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component)
