@@ -10,7 +10,7 @@ title: "内置 React Hook"
 
 ---
 
-## State Hook {/*state-hooks*/}
+## 状态 Hook {/*state-hooks*/}
 
 *State* 让一个组件 ["记住" 像用户输入的信息](/learn/state-a-components-memory)，比如，要给一个组件添加状态，使用这些 Hook 中的一个：
 
@@ -79,7 +79,7 @@ Effect 是 React 范式的 "逃生舱门"。不要用 Effect 来协调你的应�
 
 ---
 
-## Performance Hooks {/*performance-hooks*/}
+## 性能 Hook {/*performance-hooks*/}
 
 优化重新渲染性能的一个常见方法就是跳过不必要的工作。比如，你可以告诉 React 重用一个缓存的计算，或者如果数据在上一次渲染后没有变化，就跳过一次重新渲染。
 
