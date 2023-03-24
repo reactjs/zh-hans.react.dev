@@ -374,7 +374,7 @@ function Message({ messageColor }) {
 
 ```js
 function Message({ initialColor }) {
-  // 这个 `color` state 变量用于保存 `initialColor` 的 *初始值* 值。
+  // 这个 `color` state 变量用于保存 `initialColor` 的 *初始值*。
   // 对于 `initialColor` 属性的进一步更改将被忽略。
   const [color, setColor] = useState(initialColor);
 ```
