@@ -12,7 +12,7 @@ translators:
 
 <YouWillLearn>
 
-* 何时使用单个 state 变量和多个 state 变量
+* 使用单个 state 变量还是多个 state 变量
 * 组织 state 时应避免的内容
 * 如何解决 state 结构中的常见问题
 
