@@ -86,11 +86,7 @@ export default function Form() {
 
 ### 示例: 滚动至一个元素 {/*example-scrolling-to-an-element*/}
 
-<<<<<<< HEAD
 一个组件中可以有多个 ref。在这个例子中，有一个由三张图片和三个按钮组成的轮播，点击按钮会调用浏览器的 [`scrollIntoView()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView) 方法，在相应的 DOM 节点上将它们居中显示在视口中：
-=======
-You can have more than a single ref in a component. In this example, there is a carousel of three images. Each button centers an image by calling the browser [`scrollIntoView()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView) method on the corresponding DOM node:
->>>>>>> f68a91bb7e835b7c62e7c9e539cc7a02cb73a6bd
 
 <Sandpack>
 
