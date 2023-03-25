@@ -223,7 +223,7 @@ export default function MyApp() {
             setTheme(e.target.checked ? 'dark' : 'light')
           }}
         />
-         Use dark mode
+        Use dark mode
       </label>
     </ThemeContext.Provider>
   )
