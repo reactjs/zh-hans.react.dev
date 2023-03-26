@@ -6,7 +6,7 @@ translators:
 
 <Intro>
 
-`lazy` 可以让你推迟加载组件的代码，直到它第一次被渲染。
+`lazy` 能够让你在组件第一次被渲染之前延迟加载组件的代码。
 
 ```js
 const SomeComponent = lazy(load)
