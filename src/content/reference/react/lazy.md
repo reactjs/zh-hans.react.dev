@@ -38,7 +38,7 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 
 #### 返回值 {/*returns*/}
 
-`lazy` 返回一个 React 组件，你可以在 fiber 树中渲染。当懒加载组件的代码仍在加载时，尝试渲染它将会处于 *暂停* 状态。使用 [`<Suspense>`](/reference/react/Suspense) 在其加载时显示一个加载指示器。
+`lazy` 返回一个 React 组件，你可以在 fiber 树中渲染。当懒加载组件的代码仍在加载时，尝试渲染它将会处于 *暂停* 状态。使用 [`<Suspense>`](/reference/react/Suspense) 可以在其加载时显示一个正在加载的提示。
 
 ---
 
