@@ -4,7 +4,7 @@ title: "内置 React Hook"
 
 <Intro>
 
-*Hook* 让你从你的组件中使用不同的 React 功能。你可以使用内置的 Hook 或者结合它们来建立你自己的。本页列出了 React 中所有的内置 Hook。
+*Hook* 让你可以在组件中使用不同的 React 功能。你可以使用内置的 Hook 或者把它们组合起来建立你自己的。本页列出了 React 中所有的内置 Hook。
 
 </Intro>
 
