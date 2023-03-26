@@ -70,7 +70,7 @@ import { lazy } from 'react';
 
 const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 ```
-此代码依赖于动态 [动态 `import()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import)，可能需要你的打包工具或框架提供支持。
+此代码依赖于 [动态 `import()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import)，可能需要你的打包工具或框架提供支持。
 
 现在你的组件代码可以按需加载，同时你需要指定在它正在加载时应该显示什么。你可以通过将懒加载组件或其任何父级包装到 [`<Suspense>`](/reference/react/Suspense) 边界中来实现：
 
