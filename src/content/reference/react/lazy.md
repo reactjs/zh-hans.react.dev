@@ -31,6 +31,7 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 ```
 
 [请看下面的更多例子。](#usage)
+
 #### 参数 {/*parameters*/}
 
 * `load`: 一个返回 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或另一个 *thenable*（具有 `then` 方法的类 Promise 对象）的函数。在你尝试第一次渲染返回的组件之前，React 是不会调用 load 函数的。在 React 首次调用 `load` 后，它将等待其解析，然后将解析值渲染成 React 组件。返回的 Promise 和 Promise 的解析值都将被缓存，因此 React 不会多次调用 `load` 函数。如果 Promise 被拒绝，则 React 将 `throw` 抛出最近错误边界处理程序的拒绝原因。
