@@ -63,7 +63,7 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 ```js
 import MarkdownPreview from './MarkdownPreview.js';
 ```
-如果想在组件第一次渲染前推迟加载这个组件的代码，请使用以下导入替换：
+如果想在组件第一次渲染前延迟加载这个组件的代码，请替换成以下导入方式：
 
 ```js
 import { lazy } from 'react';
