@@ -12,7 +12,9 @@ title: "内置 React Hook"
 
 ## 状态 Hook {/*state-hooks*/}
 
-*State* 让一个组件 ["记住" 像用户输入的信息](/learn/state-a-components-memory)，比如，要给一个组件添加状态，使用这些 Hook 中的一个：
+*State* 让一个组件 ["记住" 像用户输入的信息](/learn/state-a-components-memory)，比如，一个表单组件可以使用状态来存储输入值，而一个图片库组件可以使用状态来存储选定的图片索引。
+
+要给一个组件添加状态，使用这些 Hook 中的一个：
 
 * [`useState`](/reference/react/useState) 声明了一个你可以直接更新的状态变量。
 * [`useReducer`](/reference/react/useReducer) 声明了一个带有更新逻辑的状态变量在一个 [reducer 函数](/learn/extracting-state-logic-into-a-reducer)中。
