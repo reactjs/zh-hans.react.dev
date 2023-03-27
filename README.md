@@ -2,7 +2,7 @@
 
 此仓库包含 [React 中文文档](https://zh-hans.reactjs.org/) 的文档及源码，并由官方实时同步。
 
-## 关于翻译内容反馈
+## 关于翻译内容反馈 
 
 翻译基本接近尾声，但文档中也有可能存在疏漏之处。<br><br>
 如在阅读文档中，遇到文档的问题可直接 PR 修改。<br>也可添加反馈群。我们会及时给出反馈。<br><br>
@@ -156,3 +156,4 @@ If your language does not have a translation and you would like to create one, p
 
 ## License
 Content submitted to [reactjs.org](https://reactjs.org/) is CC-BY-4.0 licensed, as found in the [LICENSE-DOCS.md](LICENSE-DOCS.md) file.
+
