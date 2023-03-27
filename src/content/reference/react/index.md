@@ -1,10 +1,10 @@
 ---
-title: "Built-in React Hooks"
+title: "Hooks 简介"
 ---
 
 <Intro>
 
-*Hooks* let you use different React features from your components. You can either use the built-in Hooks or combine them to build your own. This page lists all built-in Hooks in React.
+*Hooks* 可以让你在组件中使用不同的 React 特性。你可以使用内置的 Hooks 或将它们组合起来构建自己的钩子。此页面列出了 React 中所有内置的 Hooks。
 
 </Intro>
 
@@ -12,12 +12,12 @@ title: "Built-in React Hooks"
 
 ## State Hooks {/*state-hooks*/}
 
-*State* lets a component ["remember" information like user input.](/learn/state-a-components-memory) For example, a form component can use state to store the input value, while an image gallery component can use state to store the selected image index.
+*State* 可以让组件 [“ 记住 ” 数据 如用户的输入。](/learn/state-a-components-memory) 例如，表单组件可以使用 State 来存储输入值，而图像库组件可以使用 State 来存储选定的图像索引。
 
-To add state to a component, use one of these Hooks:
+向组件中添加 State，请使用以下的 Hooks ：
 
-* [`useState`](/reference/react/useState) declares a state variable that you can update directly.
-* [`useReducer`](/reference/react/useReducer) declares a state variable with the update logic inside a [reducer function.](/learn/extracting-state-logic-into-a-reducer)
+* [`useState`](/reference/react/useState) 声明一个可以直接更新的 State 变量。
+* [`useReducer`](/reference/react/useReducer) 在 [reducer 函数](/learn/extracting-state-logic-into-a-reducer) 中声明一个带有更新逻辑的 State 变量。
 
 ```js
 function ImageGallery() {
@@ -29,9 +29,9 @@ function ImageGallery() {
 
 ## Context Hooks {/*context-hooks*/}
 
-*Context* lets a component [receive information from distant parents without passing it as props.](/learn/passing-props-to-a-component) For example, your app's top-level component can pass the current UI theme to all components below, no matter how deep.
+*Context* 可以让组件 [从上层的父组件接收数据，而不必使用 Props 进行传递。](/learn/passing-props-to-a-component) 例如，应用的顶层组件可以将当前 UI 主题传递给下面的所有组件，无论其深度如何。
 
-* [`useContext`](/reference/react/useContext) reads and subscribes to a context.
+* [`useContext`](/reference/react/useContext) 读取并订阅上下文。
 
 ```js
 function Button() {
@@ -43,10 +43,10 @@ function Button() {
 
 ## Ref Hooks {/*ref-hooks*/}
 
-*Refs* let a component [hold some information that isn't used for rendering,](/learn/referencing-values-with-refs) like a DOM node or a timeout ID. Unlike with state, updating a ref does not re-render your component. Refs are an "escape hatch" from the React paradigm. They are useful when you need to work with non-React systems, such as the built-in browser APIs.
+*Refs* 可以让组件 [保存一些不用于渲染的数据，](/learn/referencing-values-with-refs) 例如 DOM 节点或超时 ID。 与 State 不同，更新 Refs 不会重新渲染组件。Refs 是 React 范式的 “安全舱口”。当你需要使用非 React 系统（例如内置浏览器 API）时，它们很有用。
 
-* [`useRef`](/reference/react/useRef) declares a ref. You can hold any value in it, but most often it's used to hold a DOM node.
-* [`useImperativeHandle`](/reference/react/useImperativeHandle) lets you customize the ref exposed by your component. This is rarely used.
+* [`useRef`](/reference/react/useRef) 声明 Ref。你可以在其中保存任何类型的值，但大多数情况下，它用于保存 DOM 节点。
+* [`useImperativeHandle`](/reference/react/useImperativeHandle) 允许你自定义组件暴露的 Ref，这很少使用。
 
 ```js
 function Form() {
@@ -58,9 +58,9 @@ function Form() {
 
 ## Effect Hooks {/*effect-hooks*/}
 
-*Effects* let a component [connect to and synchronize with external systems.](/learn/synchronizing-with-effects) This includes dealing with network, browser DOM, animations, widgets written using a different UI library, and other non-React code.
+*Effects* 可以让组件 [连接到外部系统并与之同步。](/learn/synchronizing-with-effects) 包括处理网络、浏览器 DOM、动画、使用不同 UI 库编写的小部件以及其他非 React 代码。
 
-* [`useEffect`](/reference/react/useEffect) connects a component to an external system.
+* [`useEffect`](/reference/react/useEffect) 将组件连接到外部系统。
 
 ```js
 function ChatRoom({ roomId }) {
@@ -71,24 +71,23 @@ function ChatRoom({ roomId }) {
   }, [roomId]);
   // ...
 ```
+Effects React 范式的 “安全舱口”。不要使用 Effects 去协调应用程序的数据流。如果你不与外部系统交互，[那么可能不需要 Effects。](/learn/you-might-not-need-an-effect)
 
-Effects are an "escape hatch" from the React paradigm. Don't use Effects to orchestrate the data flow of your application. If you're not interacting with an external system, [you might not need an Effect.](/learn/you-might-not-need-an-effect)
+有两个很少使用的 `useEffect` 变体，它们在时机上有所不同：
 
-There are two rarely used variations of `useEffect` with differences in timing:
-
-* [`useLayoutEffect`](/reference/react/useLayoutEffect) fires before the browser repaints the screen. You can measure layout here.
-* [`useInsertionEffect`](/reference/react/useInsertionEffect) fires before React makes changes to the DOM. Libraries can insert dynamic CSS here.
+* [`useLayoutEffect`](/reference/react/useLayoutEffect) 在浏览器重新绘制屏幕之前触发。你可以在此处测量布局。
+* [`useInsertionEffect`](/reference/react/useInsertionEffect) 在 React 对 DOM 进行更改之前触发。 你可以在此处插入动态 CSS。
 
 ---
 
 ## Performance Hooks {/*performance-hooks*/}
 
-A common way to optimize re-rendering performance is to skip unnecessary work. For example, you can tell React to reuse a cached calculation or to skip a re-render if the data has not changed since the previous render.
+优化重新渲染性能的常见方法是跳过不必要的工作。例如，你可以告诉 React 重用已缓存的计算结果，或者在数据自上次渲染以来没有更改时，跳过重新渲染。
 
-To skip calculations and unnecessary re-rendering, use one of these Hooks:
+要跳过计算和不必要的重新渲染，请使用以下的 Hooks ：
 
-- [`useMemo`](/reference/react/useMemo) lets you cache the result of an expensive calculation.
-- [`useCallback`](/reference/react/useCallback) lets you cache a function definition before passing it down to an optimized component.
+- [`useMemo`](/reference/react/useMemo) 可以让你缓存一个消耗较大的计算结果。
+- [`useCallback`](/reference/react/useCallback) 可以让你在将函数定义传递给优化组件之前对其进行缓存。
 
 ```js
 function TodoList({ todos, tab, theme }) {
@@ -97,25 +96,25 @@ function TodoList({ todos, tab, theme }) {
 }
 ```
 
-Sometimes, you can't skip re-rendering because the screen actually needs to update. In that case, you can improve performance by separating blocking updates that must be synchronous (like typing into an input) from non-blocking updates which don't need to block the user interface (like updating a chart).
+有时候，你不能跳过重新渲染，因为屏幕实际上需要更新。在这种情况下，你可以通过将必须同步执行的阻塞式更新（如输入文本）与不需要阻塞用户界面的非阻塞式更新（如更新图表）分开来，来提高性能。
 
-To prioritize rendering, use one of these Hooks:
+确定渲染的优先级，请使用以下的 Hooks ：
 
-- [`useTransition`](/reference/react/useTransition) lets you mark a state transition as non-blocking and allow other updates to interrupt it.
-- [`useDeferredValue`](/reference/react/useDeferredValue) lets you defer updating a non-critical part of the UI and let other parts update first.
+- [`useTransition`](/reference/react/useTransition) 可以让你将 State 转换为非阻塞，并允许其他更新来打断它。
+- [`useDeferredValue`](/reference/react/useDeferredValue) 可以让你延迟更新 UI 的非关键部分，并让其他部分先更新。
 
 ---
 
 ## Other Hooks {/*other-hooks*/}
 
-These Hooks are mostly useful to library authors and aren't commonly used in the application code.
+以下 Hooks 主要对库作者有用，不常在应用代码中使用。
 
-- [`useDebugValue`](/reference/react/useDebugValue) lets you customize the label React DevTools displays for your custom Hook.
-- [`useId`](/reference/react/useId) lets a component associate a unique ID with itself. Typically used with accessibility APIs.
-- [`useSyncExternalStore`](/reference/react/useSyncExternalStore) lets a component subscribe to an external store.
+- [`useDebugValue`](/reference/react/useDebugValue) 可以让你自定义 React DevTools 在显示你的自定义Hook时使用的标签。
+- [`useId`](/reference/react/useId) 可以让组件将唯一的标识符与自己关联起来，通常与可访问性API一起使用。
+- [`useSyncExternalStore`](/reference/react/useSyncExternalStore) 可以让组件订阅外部 Store。
 
 ---
 
 ## Your own Hooks {/*your-own-hooks*/}
 
-You can also [define your own custom Hooks](/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component) as JavaScript functions.
+你也可以将 [自己定义的自定义 Hooks](/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component) 定义为 JavaScript 函数。
