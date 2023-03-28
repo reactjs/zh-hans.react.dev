@@ -52,7 +52,8 @@
     "react-helmet": "^5.2.0",
     "react-live": "1.8.0-0",
     "remarkable": "^1.7.1",
-    "request-promise": "^4.2.2",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
     "rimraf": "^2.6.1",
     "slugify": "^1.2.1",
     "unist-util-visit": "^1.1.3"
