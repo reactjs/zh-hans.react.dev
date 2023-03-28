@@ -4,7 +4,7 @@
 
 关于翻译的问题和反馈，请移步至 [这个讨论](https://github.com/reactjs/zh-hans.reactjs.org/discussions/1089)。
 
-如果你有除了翻译内容以外的贡献，请移步到 [英文文档仓库](https://github.com/reactjs/reactjs.org/tree/main/beta/README.md)。
+如果你有除了翻译内容以外的贡献，请移步到 [英文文档仓库](https://github.com/reactjs/react.dev/tree/main/README.md)。
 
 ## 翻译注意事项
 
@@ -33,13 +33,12 @@
 #### 安装相关依赖
 
 1. 进入该项目的根目录
-3. `yarn`：下载网站需要的 npm 依赖
+2. `yarn`：下载网站需要的 npm 依赖
 
 #### 在本地运行
 
-1. 确定你所在的文件夹是 `beta`。
-2. `yarn dev`：运行开发服务器（由 [Next.js](https://nextjs.org/) 支持）
-3. `open http://localhost:3000`：用你最爱的浏览器打开这个网站
+1. `yarn dev`：运行开发服务器（由 [Next.js](https://nextjs.org/) 支持）
+2. `open http://localhost:3000`：用你最爱的浏览器打开这个网站
 
 ### 开始翻译
 
