@@ -4,13 +4,13 @@ title: useLayoutEffect
 
 <Pitfall>
 
-`useLayoutEffect` can hurt performance. Prefer [`useEffect`](/reference/react/useEffect) when possible.
+`useLayoutEffect` 可能会影响性能。尽可能使用 [`useEffect。`](/reference/react/useEffect)
 
 </Pitfall>
 
 <Intro>
 
-`useLayoutEffect` is a version of [`useEffect`](/reference/react/useEffect) that fires before the browser repaints the screen.
+`useLayoutEffect` 是 [`useEffect`](/reference/react/useEffect) 的一个版本，在浏览器重新绘制屏幕之前触发。
 
 ```js
 useLayoutEffect(setup, dependencies?)
@@ -22,11 +22,11 @@ useLayoutEffect(setup, dependencies?)
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `useLayoutEffect(setup, dependencies?)` {/*useinsertioneffect*/}
 
-Call `useLayoutEffect` perform the layout measurements before the browser repaints the screen:
+调用 `useLayoutEffect` 在浏览器重新绘制屏幕之前进行布局的测量：
 
 ```js
 import { useState, useRef, useLayoutEffect } from 'react';
@@ -43,71 +43,71 @@ function Tooltip() {
 ```
 
 
-[See more examples below.](#usage)
+[请看下面的更多例子。](#usage)
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `setup`: The function with your Effect's logic. Your setup function may also optionally return a *cleanup* function. Before your component is first added to the DOM, React will run your setup function. After every re-render with changed dependencies, React will first run the cleanup function (if you provided it) with the old values, and then run your setup function with the new values. Before your component is removed from the DOM, React will run your cleanup function one last time.
+* `setup`：处理副作用的函数。setup 函数选择性返回一个 *cleanup（清理）* 函数。在将组件首次添加到 DOM 之前，React 将运行 setup 函数。在每次依赖项变更重新渲染后，React 将首先使用旧值运行 cleanup 函数（如果你提供了该函数），然后使用新值运行 setup 函数。在组件从 DOM 中移除之前，React 将最后一次运行 cleanup 函数。
  
-* **optional** `dependencies`: The list of all reactive values referenced inside of the `setup` code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is [configured for React](/learn/editor-setup#linting), it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like `[dep1, dep2, dep3]`. React will compare each dependency with its previous value using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. If you omit this argument, your Effect will re-run after every re-render of the component.
+* **可选** `dependencies`：`setup` 代码中引用的所有动态值的列表。动态值包括 props，state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 [配置了 React](/learn/editor-setup#linting)，那么它将验证每个动态值都被正确地指定为一个依赖项。依赖项列表必须具有固定数量的项，并且必须像 `[dep1, dep2, dep3]` 这样内联编写。React 将使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来比较每个依赖项和它先前的值。如果省略此参数，则在每次重新渲染组件之后，将重新运行副作用函数。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-`useLayoutEffect` returns `undefined`.
+`useLayoutEffect` 返回 `undefined`。
 
-#### Caveats {/*caveats*/}
+#### 注意事项 {/*caveats*/}
 
-* `useLayoutEffect` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a component and move the Effect there.
+* `useLayoutEffect` 是一个 Hook，因此只能在 **组件的顶层** 或自己的 Hook 中调用它。不能在循环或者条件内部调用它。如果你需要的话，抽离出一个组件并将副作用处理移动到那里。
 
-* When Strict Mode is on, React will **run one extra development-only setup+cleanup cycle** before the first real setup. This is a stress-test that ensures that your cleanup logic "mirrors" your setup logic and that it stops or undoes whatever the setup is doing. If this causes a problem, [implement the cleanup function.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
+* 当 StrictMode 启动时，React 将在真正的 setup 函数首次运行前，运行一个额外的开发专有的 setup + cleanup 周期。这是一个压力测试，确保 cleanup 逻辑“映照”到 setup 逻辑，并停止或撤消 setup 函数正在做的任何事情。如果这导致一个问题，[请实现清理函数。](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
 
-* If some of your dependencies are objects or functions defined inside the component, there is a risk that they will **cause the Effect to re-run more often than needed.** To fix this, remove unnecessary [object](/reference/react/useEffect#removing-unnecessary-object-dependencies) and [function](/reference/react/useEffect#removing-unnecessary-function-dependencies) dependencies. You can also [extract state updates](/reference/react/useEffect#updating-state-based-on-previous-state-from-an-effect) and [non-reactive logic](/reference/react/useEffect#reading-the-latest-props-and-state-from-an-effect) outside of your Effect.
+* 如果你的一些依赖项是组件内部定义的对象或函数，则存在这样的风险，即它们将 **导致 Effect 重新运行的次数多于所需的次数。** 要解决这个问题，请删除不必要的 [对象](/reference/react/useEffect#removing-unnecessary-object-dependencies) 和 [函数](/reference/react/useEffect#removing-unnecessary-function-dependencies) 依赖项。你还可以 [抽离状态更新](/reference/react/useEffect#updating-state-based-on-previous-state-from-an-effect) 和 [非动态的逻辑](/reference/react/useEffect#reading-the-latest-props-and-state-from-an-effect) 到 Effect 之外。
 
-* Effects **only run on the client.** They don't run during server rendering.
+* Effect **只在客户端上运行**，在服务端渲染中不会运行。 
 
-* The code inside `useLayoutEffect` and all state updates scheduled from it **block the browser from repainting the screen.** When used excessively, this makes your app slow. When possible, prefer [`useEffect`.](/reference/react/useEffect)
+* `useLayoutEffect` 内部的代码和所有计划的状态更新阻塞了浏览器重新绘制屏幕。如果过度使用，这会使你的应用程序变慢。如果可能的话，尽量选择 [`useEffect`。](/reference/react/useEffect)
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Measuring layout before the browser repaints the screen {/*measuring-layout-before-the-browser-repaints-the-screen*/}
+### 在浏览器重新绘制屏幕前计算布局 {/*measuring-layout-before-the-browser-repaints-the-screen*/}
 
-Most components don't need to know their position and size on the screen to decide what to render. They only return some JSX. Then the browser calculates their *layout* (position and size) and repaints the screen.
+大多数组件不需要知道它们在屏幕上的位置和大小来决定渲染什么。他们只返回一些 JSX，然后浏览器计算他们的 *布局* （位置和大小）并重新绘制屏幕。
 
-Sometimes, that's not enough. Imagine a tooltip that appears next to some element on hover. If there's enough space, the tooltip should appear above the element, but if it doesn't fit, it should appear below. In order to render the tooltip at the right final position, you need to know its height (i.e. whether it fits at the top).
+有时候，这还不够。想象一下悬停时出现在某个元素旁边的 tooltip。如果有足够的空间，tooltip 应该出现在元素的上方，但是如果不合适，它应该出现在下面。为了让 tooltip 渲染在最终正确的位置，你需要知道它的高度（即它是否适合放在顶部）。
 
-To do this, you need to render in two passes:
+要做到这一点，你需要分两步渲染：
 
-1. Render the tooltip anywhere (even with a wrong position).
-2. Measure its height and decide where to place the tooltip.
-3. Render the tooltip *again* in the correct place.
+1. 将 tooltip 渲染到任何地方（即使位置不对）。
+2. 测量它的高度并决定放置 tooltip 的位置。
+3. 把 tooltip 渲染放在正确的位置。
 
-**All of this needs to happen before the browser repaints the screen.** You don't want the user to see the tooltip moving. Call `useLayoutEffect` to perform the layout measurements before the browser repaints the screen:
+**所有这些都需要在浏览器重新绘制屏幕之前完成**。你不希望用户看到 tooltip 在移动。调用 `useLayoutEffect` 在浏览器重新绘制屏幕之前执行布局测量：
 
 ```js {5-8}
 function Tooltip() {
   const ref = useRef(null);
-  const [tooltipHeight, setTooltipHeight] = useState(0); // You don't know real height yet
+  const [tooltipHeight, setTooltipHeight] = useState(0); // 你还不知道真正的高度
 
   useLayoutEffect(() => {
     const { height } = ref.current.getBoundingClientRect();
-    setTooltipHeight(height); // Re-render now that you know the real height
+    setTooltipHeight(height); // 现在重新渲染，你知道了真实的高度
   }, []);
 
-  // ...use tooltipHeight in the rendering logic below...
+  // ... 在下方的渲染逻辑中使用 tooltipHeight ...
 }
 ```
 
-Here's how this works step by step:
+下面是这如何一步步工作的：
 
-1. `Tooltip` renders with the initial `tooltipHeight = 0`  (so the tooltip may be wrongly positioned).
-2. React places it in the DOM and runs the code in `useLayoutEffect`.
-3. Your `useLayoutEffect` [measures the height](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) of the tooltip content and triggers an immediate re-render.
-4. `Tooltip` renders again with the real `tooltipHeight` (so the tooltip is correctly positioned).
-5. React updates it in the DOM, and the browser finally displays the tooltip.
+1. `Tooltip` 使用初始值 `tooltipHeight = 0` 进行渲染（因此 tooltip 可能被错误地放置）。
+2. React 将它放在 DOM 中，然后运行 `useLayoutEffect` 中的代码。
+3. `useLayoutEffect` [测量](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) 了 tooltip 内容的高度，并触发立即的重新渲染。
+4. 使用实际的 `tooltipHeight` 再次渲染 `Tooltip`（这样 tooltip 的位置就正确了）。
+5. React 在 DOM 中对它进行更新，浏览器最终显示出 tooltip。
 
-Hover over the buttons below and see how the tooltip adjusts its position depending on whether it fits:
+将鼠标悬停在下面的按钮上，看看 tooltip 是如何根据它是否合适来调整它的位置：
 
 <Sandpack>
 
@@ -206,7 +206,7 @@ export default function Tooltip({ children, targetRect }) {
     tooltipX = targetRect.left;
     tooltipY = targetRect.top - tooltipHeight;
     if (tooltipY < 0) {
-      // It doesn't fit above, so place below.
+      // 它不适合上方，因此把它放在下面。
       tooltipY = targetRect.bottom;
     }
   }
@@ -251,13 +251,13 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 </Sandpack>
 
-Notice that even though the `Tooltip` component has to render in two passes (first, with `tooltipHeight` initialized to `0` and then with the real measured height), you only see the final result. This is why you need `useLayoutEffect` instead of [`useEffect`](/reference/react/useEffect) for this example. Let's look at the difference in detail below.
+注意，即使 `Tooltip` 组件需要两次渲染（首先，使用初始值为 0 的 `tooltipHeight` 渲染，然后使用实际测量的高度渲染），你也只能看到最终结果。这就是为什么在这个例子中需要 `useLayoutEffect` 而不是 [`useEffect`](/reference/react/useEffect) 的原因。让我们来看看下面的细节差别。
 
 <Recipes titleText="useLayoutEffect vs useEffect" titleId="examples">
 
-#### `useLayoutEffect` blocks the browser from repainting {/*uselayouteffect-blocks-the-browser-from-repainting*/}
+#### `useLayoutEffect` 阻塞浏览器重新绘制 {/*uselayouteffect-blocks-the-browser-from-repainting*/}
 
-React guarantees that the code inside `useLayoutEffect` and any state updates scheduled inside it will be processed **before the browser repaints the screen.** This lets you render the tooltip, measure it, and re-render the tooltip again without the user noticing the first extra render. In other words, `useLayoutEffect` blocks the browser from painting.
+React 保证了 `useLayoutEffect` 中的代码以及其中任何计划的状态更新都会在浏览器重新绘制屏幕之前得到处理。这样你就可以渲染 tooltip，测量它，然后在用户没有注意到第一个额外渲染的情况下再次重新渲染。换句话说，`useLayoutEffect` 阻塞了浏览器的绘制。
 
 <Sandpack>
 
@@ -355,7 +355,7 @@ export default function Tooltip({ children, targetRect }) {
     tooltipX = targetRect.left;
     tooltipY = targetRect.top - tooltipHeight;
     if (tooltipY < 0) {
-      // It doesn't fit above, so place below.
+      // 它不适合上方，因此把它放在下面。
       tooltipY = targetRect.bottom;
     }
   }
@@ -402,9 +402,9 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 <Solution />
 
-#### `useEffect` does not block the browser {/*useeffect-does-not-block-the-browser*/}
+#### `useEffect` 不阻塞浏览器绘制 {/*useeffect-does-not-block-the-browser*/}
 
-Here is the same example, but with [`useEffect`](/reference/react/useEffect) instead of `useLayoutEffect`. If you're on a slower device, you might notice that sometimes the tooltip "flickers" and you briefly see its initial position before the corrected position.
+下面是同样的例子，但是使用 [`useEffect`](/reference/react/useEffect) 代替 `useLayoutEffect`。如果你使用的是速度较慢的设备，你可能会注意到有时 tooltip“闪烁”，并且在更正的位置之前你可以简单地看到它的初始位置。
 
 <Sandpack>
 
@@ -502,7 +502,7 @@ export default function Tooltip({ children, targetRect }) {
     tooltipX = targetRect.left;
     tooltipY = targetRect.top - tooltipHeight;
     if (tooltipY < 0) {
-      // It doesn't fit above, so place below.
+      // 它不适合上方，因此把它放在下面。
       tooltipY = targetRect.bottom;
     }
   }
@@ -547,7 +547,7 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 </Sandpack>
 
-To make the bug easier to reproduce, this version adds an artificial delay during rendering. React will let the browser paint the screen before it processes the state update inside `useEffect`. As a result, the tooltip flickers:
+为了使 bug 更容易重现，此版本在渲染期间人为地添加了延迟。React 将在处理 `useEffect` 内部的状态更新之前让浏览器绘制屏幕。结果，tooltip 会闪烁：
 
 <Sandpack>
 
@@ -634,10 +634,10 @@ export default function Tooltip({ children, targetRect }) {
   const ref = useRef(null);
   const [tooltipHeight, setTooltipHeight] = useState(0);
 
-  // This artificially slows down rendering
+  // 人为地减慢了渲染
   let now = performance.now();
   while (performance.now() - now < 100) {
-    // Do nothing for a bit...
+    // 不做任何事情...
   }
 
   useEffect(() => {
@@ -651,7 +651,7 @@ export default function Tooltip({ children, targetRect }) {
     tooltipX = targetRect.left;
     tooltipY = targetRect.top - tooltipHeight;
     if (tooltipY < 0) {
-      // It doesn't fit above, so place below.
+      // 它不适合上方，因此把它放在下面。
       tooltipY = targetRect.bottom;
     }
   }
@@ -696,7 +696,7 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 </Sandpack>
 
-Edit this example to `useLayoutEffect` and observe that it blocks the paint even if rendering is slowed down.
+使用 `useLayoutEffect` 编辑这个例子，可以观察到即使渲染速度减慢，它也会阻塞绘制。
 
 <Solution />
 
@@ -704,39 +704,39 @@ Edit this example to `useLayoutEffect` and observe that it blocks the paint even
 
 <Note>
 
-Rendering in two passes and blocking the browser hurts performance. Try to avoid this when you can.
+两次渲染并阻塞浏览器绘制会影响性能。尽量避免这种情况。
 
 </Note>
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 疑难解答 {/*troubleshooting*/}
 
-### I'm getting an error: "`useLayoutEffect` does nothing on the server" {/*im-getting-an-error-uselayouteffect-does-nothing-on-the-server*/}
+### 我收到一个错误：“ `useLayoutEffect` 在服务端没有任何作用” {/*im-getting-an-error-uselayouteffect-does-nothing-on-the-server*/}
 
-The purpose of `useLayoutEffect` is to let your component [use layout information for rendering:](#measuring-layout-before-the-browser-repaints-the-screen)
+`useLayoutEffect` 的目的是让你的组件 [使用布局信息来渲染：](#measuring-layout-before-the-browser-repaints-the-screen)
 
-1. Render the initial content.
-2. Measure the layout *before the browser repaints the screen.*
-3. Render the final content using the layout information you've read.
+1. 渲染初始的内容。
+2. 在 *浏览器重新绘制屏幕之前* 测量布局。
+3. 使用所读取的布局信息渲染最终内容。
 
-When you or your framework uses [server rendering](/reference/react-dom/server), your React app renders to HTML on the server for the initial render. This lets you show the initial HTML before the JavaScript code loads.
+当你或你的框架使用 [服务端渲染](/reference/react-dom/server) 时，你的 React 应用将在服务端渲染 HTML 以进行初始渲染。这使你可以在加载 JavaScript 代码之前显示初始的 HTML。
 
-The problem is that on the server, there is no layout information.
+问题是在服务器上没有布局信息。
 
-In the [earlier example](#measuring-layout-before-the-browser-repaints-the-screen), the `useLayoutEffect` call in the `Tooltip` component lets it position itself correctly (either above or below content) depending on the content height. If you tried to render `Tooltip` as a part of the initial server HTML, this would be impossible to determine. On the server, there is no layout yet! So, even if you rendered it on the server, its position would "jump" on the client after the JavaScript loads and runs.
+在 [前面的示例](#measuring-layout-before-the-browser-repaints-the-screen) 中，`Tooltip` 组件中的 `useLayoutEffect` 调用允许它根据内容高度正确定位自己的位置（高于或低于内容）。如果你试图将 `Tooltip` 作为服务端初始 HTML 的一部分渲染，那么这是不可能确定的。在服务端，还没有布局！因此，即使你在服务端渲染它，它的位置也会在 JavaScript 加载和运行之后在客户端上“跳动”。
 
-Usually, components that rely on layout information don't need to render on the server anyway. For example, it probably doesn't make sense to show a `Tooltip` during the initial render. It is triggered by a client interaction.
+通常，依赖于布局信息的组件不需要在服务器上渲染。例如，在初始渲染时显示 `Tooltip` 可能就没有意义了。它是通过客户端交互触发的。
 
-However, if you're running into this problem, you have a few different options:
+然而，如果你遇到这个问题，你有几个不同的选择：
 
-- Replace `useLayoutEffect` with [`useEffect`.](/reference/react/useEffect) This tells React that it's okay to display the initial render result without blocking the paint (because the original HTML will become visible before your Effect runs).
+- 用 [`useEffect`](/reference/react/useEffect) 替换 `useLayoutEffect`。 React 可以在不阻塞绘制的情况下显示初始的渲染结果（因为初始的 HTML 将在 Effect 运行之前显示出来）。
 
-- Alternatively, [mark your component as client-only.](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content) This tells React to replace its content up to the closest [`<Suspense>`](/reference/react/Suspense) boundary with a loading fallback (for example, a spinner or a glimmer) during server rendering.
+- 或者，[将组件标记为仅客户端。](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content) 这告诉 React 在服务端渲染时用一个 loading 降级（例如，一个 spinner 或者 glimmer）替换其内容到上方最近的 [`<Suspense>`](/reference/react/Suspense) 边界。
 
-- Alternatively, you can render a component with `useLayoutEffect` only after hydration. Keep a boolean `isMounted` state that's initialized to `false`, and set it to `true` inside a `useEffect` call. Your rendering logic can then be like `return isMounted ? <RealContent /> : <FallbackContent />`. On the server and during the hydration, the user will see `FallbackContent` which should not call `useLayoutEffect`. Then React will replace it with `RealContent` which runs on the client only and can include `useLayoutEffect` calls.
+- 或者，只有在水合之后，使用 `useLayoutEffect` 渲染组件。保留一个初始化为 false 的 isMounted 布尔状态，并在 useEffect 调用中将其设置为 true。然后你的渲染逻辑就会像 `return isMounted ? <RealContent /> : <FallbackContent />` 这样。在服务端和水合过程中，用户将看到 `FallbackContent`，它不应该调用 `useLayoutEffect`。然后 React 将用 `RealContent` 替换它，`RealContent` 仅在客户端上运行并且可以包含 `useLayoutEffect` 调用。
 
-- If you synchronize your component with an external data store and rely on `useLayoutEffect` for different reasons than measuring layout, consider [`useSyncExternalStore`](/reference/react/useSyncExternalStore) instead which [supports server rendering.](/reference/react/useSyncExternalStore#adding-support-for-server-rendering)
+- 如果你将组件与外部数据存储同步，并且依赖 useLayouteffect 的原因不同于测量布局，可以考虑使用 [支持服务端渲染](/reference/react/useSyncExternalStore#adding-support-for-server-rendering) 的 [`useSyncExternalStore`。](/reference/react/useSyncExternalStore)
 
 
 
