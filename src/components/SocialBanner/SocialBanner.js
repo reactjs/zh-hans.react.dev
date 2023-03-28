@@ -10,13 +10,13 @@ import React from 'react';
 import {colors, media} from 'theme';
 
 const linkProps = {
-  href: 'https://react.dev/blog/2023/03/16/introducing-react-dev',
+  href: 'https://zh-hans.reactjs.org/blog/2023/03/16/introducing-react-dev',
   target: '_blank',
   rel: 'noopener',
 };
 
-const bannerText = 'This site is no longer updated.';
-const bannerLink = 'Go to react.dev';
+const bannerText = '此站点不再更新。';
+const bannerLink = '了解新站点的更多信息!';
 
 export default function SocialBanner() {
   return (

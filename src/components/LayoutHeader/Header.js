@@ -6,6 +6,7 @@
  */
 
 import SurveyBanner from 'components/SurveyBanner';
+import SocialBanner from 'components/SocialBanner';
 import Container from 'components/Container';
 import HeaderLink from './HeaderLink';
 import {Link} from 'gatsby';
@@ -47,6 +48,7 @@ const Header = ({location}: {location: Location}) => (
       <Container>
         <div style={{position: 'relative'}}>
           <SurveyBanner />
+          <SocialBanner />
         </div>
       </Container>
     </ContainerWrapper>
