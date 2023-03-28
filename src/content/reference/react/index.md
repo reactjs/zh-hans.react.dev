@@ -16,8 +16,8 @@ title: "内置 React Hook"
 
 要给一个组件添加状态，使用这些 Hook 中的一个：
 
-* [`useState`](/reference/react/useState) 声明了一个你可以直接更新的状态变量。
-* [`useReducer`](/reference/react/useReducer) 声明了一个带有更新逻辑的状态变量在一个 [reducer 函数](/learn/extracting-state-logic-into-a-reducer)中。
+* [`useState`](/reference/react/useState) 声明了一个你可以直接更新的 state 变量。
+* [`useReducer`](/reference/react/useReducer) 声明了一个带有更新逻辑的 state 变量在一个 [reducer 函数](/learn/extracting-state-logic-into-a-reducer)中。
 
 ```js
 function ImageGallery() {
@@ -74,7 +74,7 @@ function ChatRoom({ roomId }) {
 
 Effect 是 React 范式的 "逃生舱门"。不要用 Effect 来协调你的应用程序的数据流。如果你不与外部系统交互，[你可能不需要 Effect。](/learn/you-might-not-need-an-effect)
 
-`useEffect` 有两个很少使用的变体，它们在时间上有差异：
+`useEffect` 有两个很少使用的变换形式，它们在时间上有差异：
 
 * [`useLayoutEffect`](/reference/react/useLayoutEffect) 在浏览器重绘屏幕前启动。你可以在这里测量布局。
 * [`useInsertionEffect`](/reference/react/useInsertionEffect) 在 React 对 DOM 进行修改之前触发。Libraries 可以在这里插入动态 CSS。
@@ -87,7 +87,7 @@ Effect 是 React 范式的 "逃生舱门"。不要用 Effect 来协调你的应�
 
 要跳过计算和不必要的重新渲染，请使用这些 Hook 的一个：
 
-* [`useMemo`](/reference/react/useMemo) 让你缓存一个高昂的计算结果。
+* [`useMemo`](/reference/react/useMemo) 让你缓存一个非常高的计算结果。
 * [`useCallback`](/reference/react/useCallback) 让你在将一个函数定义传递给一个优化的组件之前缓存它。
 
 ```js
