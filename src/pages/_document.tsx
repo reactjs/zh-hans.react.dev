@@ -5,7 +5,6 @@
 import {Html, Head, Main, NextScript} from 'next/document';
 
 const MyDocument = () => {
-  //  @todo specify language in HTML?
   return (
     <Html lang="zh-Hans">
       <Head />
