@@ -10,7 +10,8 @@ import React from 'react';
 import {colors, media} from 'theme';
 
 const linkProps = {
-  href: 'https://zh-hans.legacy.reactjs.org/blog/2023/03/16/introducing-react-dev',
+  href:
+    'https://zh-hans.react.dev/blog/2023/03/16/introducing-react-dev',
   target: '_blank',
   rel: 'noopener',
 };
