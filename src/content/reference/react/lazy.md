@@ -30,7 +30,7 @@ import { lazy } from 'react';
 const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 ```
 
-[请看下面的更多例子。](#usage)
+[请看下面的更多例子](#usage)。
 
 #### 参数 {/*parameters*/}
 

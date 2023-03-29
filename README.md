@@ -1,12 +1,12 @@
-# [React 中文文档](https://zh-hans.reactjs.org/)
+# [React 中文文档](https://zh-hans.react.dev/)
 
-此仓库包含 [React 中文文档](https://zh-hans.reactjs.org/) 的文档及源码，并由官方实时同步。
+此仓库包含 [React 中文文档](https://zh-hans.react.dev/) 的文档及源码，并由官方实时同步。
 
 ## 参与贡献
 
-关于翻译进程的一切问题和相关讨论，请移步至 [这个讨论](https://github.com/reactjs/zh-hans.reactjs.org/discussions/1089)。
+关于翻译进程的一切问题和相关讨论，请移步至 [这个讨论](https://github.com/reactjs/zh-hans.react.dev/discussions/1089)。
 
-**翻译前，请仔细阅读 [翻译指南](https://github.com/reactjs/zh-hans.reactjs.org/blob/main/TRANSLATION.md)**。
+**翻译前，请仔细阅读 [翻译指南](https://github.com/reactjs/zh-hans.react.dev/blob/main/TRANSLATION.md)**。
 
 ---
 

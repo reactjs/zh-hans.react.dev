@@ -18,7 +18,7 @@ export interface SeoProps {
 export const Seo = withRouter(
   ({
     title,
-    description = 'The library for web and native user interfaces',
+    description = '用于构建 Web 和原生交互界面的库',
     image = '/images/og-default.png',
     router,
     children,
