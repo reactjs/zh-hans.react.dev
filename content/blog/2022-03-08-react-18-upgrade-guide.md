@@ -27,7 +27,7 @@ yarn add react react-dom
 
 初次安装 React 18，控制台会显示一条警告：
 
->  React 18 不再支持 ReactDOM.render，请替换成 createRoot 。直到切换为新 API，你的应用表现的就像是运行在 React 17 。了解更多：https://reactjs.org/link/switch-to-createroot
+>  React 18 不再支持 ReactDOM.render，请替换成 createRoot 。直到切换为新 API，你的应用表现的就像是运行在 React 17 。了解更多：https://legacy.reactjs.org/link/switch-to-createroot
 
 React 18 引入了一个新的 root API ，可以更高效地操作 root 节点。新的 root API 也开启了新的并发渲染器，带你走向并发渲染特性。
 

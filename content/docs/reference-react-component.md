@@ -17,7 +17,7 @@ redirect_from:
 
 > Try the new React documentation for [`Component`](https://beta.reactjs.org/reference/react/Component).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 本章节提供了 React class 组件的详细 API 参考。本章节默认你已熟悉基本的 React 概念，例如 [组件 & Props](/docs/components-and-props.html)，以及 [State & 生命周期](/docs/state-and-lifecycle.html)等。如果你还未熟悉，请先阅读之前章节进行学习。
 

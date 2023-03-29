@@ -36,14 +36,14 @@ const alternatePages = canonicalUrl => {
         urlRoot,
         `https://${
           language.code === 'en' ? '' : `${language.code}.`
-        }reactjs.org`,
+        }legacy.reactjs.org`,
       )}
     />
   ));
 };
 
 const defaultPage = canonicalUrl => {
-  return canonicalUrl.replace(urlRoot, 'https://reactjs.org');
+  return canonicalUrl.replace(urlRoot, 'https://legacy.reactjs.org');
 };
 
 const TitleAndMetaTags = ({
@@ -57,7 +57,7 @@ const TitleAndMetaTags = ({
       <meta property="og:title" content={title} />
       <meta property="og:type" content={ogType} />
       {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
-      <meta property="og:image" content="https://reactjs.org/logo-og.png" />
+      <meta property="og:image" content="https://legacy.reactjs.org/logo-og.png" />
       <meta
         property="og:description"
         content={ogDescription || defaultDescription}

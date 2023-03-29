@@ -85,7 +85,7 @@ Hook 提供了强大而富有表现力的方式来在组件间复用功能。通
 
 Hook 是使用你已经知道的 React 特性的一种更直接的方式 —— 比如 state，生命周期，context，以及 refs。它们并没有从根本上改变 React 的工作方式，你对组件，props, 以及自顶向下的数据流的知识并没有改变。
 
-Hook 确实有它们自己的学习曲线。如果这份文档中遗失了一些什么，[提一个 issue](https://github.com/reactjs/reactjs.org/issues/new)，我们会尽可能地帮你。
+Hook 确实有它们自己的学习曲线。如果这份文档中遗失了一些什么，[提一个 issue](https://github.com/reactjs/legacy.reactjs.org/issues/new)，我们会尽可能地帮你。
 
 ### 我应该使用 Hook，class，还是两者混用？ {#should-i-use-hooks-classes-or-a-mix-of-both}
 

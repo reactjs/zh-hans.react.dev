@@ -30,7 +30,7 @@ Not every change must go through the RFC process. Bug fixes or performance impro
 We now have several repositories where you can submit contributions to React:
 
 - **Issues, bugfixes, and code changes to the main library**: [facebook/react](https://github.com/facebook/react)
-- **Website and documentation**: [reactjs/reactjs.org](https://github.com/reactjs/reactjs.org)
+- **Website and documentation**: [reactjs/legacy.reactjs.org](https://github.com/reactjs/legacy.reactjs.org)
 - **Ideas for changes that need additional review before being implemented**: [reactjs/rfcs](https://github.com/reactjs/rfcs)
 
 ## RFC for A New Context API {#rfc-for-a-new-context-api}

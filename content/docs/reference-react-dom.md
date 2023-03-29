@@ -36,7 +36,7 @@ var ReactDOM = require('react-dom');
 
 > 注意：
 >
-> 在 React 18，`render` 和 `hydrate` 都被新的 [客户端方法](/docs/react-dom-client.html) 所取代。这些方法将警告你的应用程序将表现得像运行 React 17 一样（欲了解更多请参阅 [此处](https://reactjs.org/link/switch-to-createroot)）。
+> 在 React 18，`render` 和 `hydrate` 都被新的 [客户端方法](/docs/react-dom-client.html) 所取代。这些方法将警告你的应用程序将表现得像运行 React 17 一样（欲了解更多请参阅 [此处](https://legacy.reactjs.org/link/switch-to-createroot)）。
 
 ### 浏览器支持 {#browser-support}
 
@@ -52,7 +52,7 @@ React 支持所有的现代浏览器，不过对于旧版本来说，可能需�
 
 > Try the new React documentation for [`createPortal`](https://beta.reactjs.org/reference/react-dom/createPortal).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 ```javascript
 createPortal(child, container)
@@ -64,7 +64,7 @@ createPortal(child, container)
 
 > Try the new React documentation for [`flushSync`](https://beta.reactjs.org/reference/react-dom/flushSync).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 ```javascript
 flushSync(callback)
@@ -95,7 +95,7 @@ flushSync(() => {
 
 > Try the new React documentation for [`render`](https://beta.reactjs.org/reference/react-dom/render).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 ```javascript
 render(element, container[, callback])
@@ -129,7 +129,7 @@ render(element, container[, callback])
 
 > Try the new React documentation for [`hydrate`](https://beta.reactjs.org/reference/react-dom/hydrate).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 ```javascript
 hydrate(element, container[, callback])
@@ -155,7 +155,7 @@ React 希望服务端与客户端渲染的内容完全一致。React 可以弥�
 
 > Try the new React documentation for [`unmountComponentAtNode`](https://beta.reactjs.org/reference/react-dom/unmountComponentAtNode).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 ```javascript
 unmountComponentAtNode(container)
@@ -173,7 +173,7 @@ unmountComponentAtNode(container)
 
 > Try the new React documentation for [`findDOMNode`](https://beta.reactjs.org/reference/react-dom/findDOMNode).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 > 注意：
 >

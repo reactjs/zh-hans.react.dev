@@ -67,7 +67,7 @@ const Languages = ({location}: Props) => (
             <p>
               没有在上述列表找到你的语言？{' '}
               <a
-                href="https://github.com/reactjs/reactjs.org-translation#reactjsorg-translation"
+                href="https://github.com/reactjs/legacy.reactjs.org-translation#reactjsorg-translation"
                 target="_blank"
                 rel="noopener">
                 告诉我们
@@ -139,7 +139,7 @@ const Language = ({code, name, status, translatedName}) => {
         {status === 0 && translatedName}
         {status > 0 && (
           <a
-            href={`https://${prefix}reactjs.org/`}
+            href={`https://${prefix}legacy.reactjs.org/`}
             rel="nofollow"
             lang={code}
             hrefLang={code}>
@@ -152,7 +152,7 @@ const Language = ({code, name, status, translatedName}) => {
           css={{
             fontSize: 12,
           }}
-          href={`https://github.com/reactjs/${prefix}reactjs.org/`}
+          href={`https://github.com/reactjs/${prefix}legacy.reactjs.org/`}
           target="_blank"
           rel="noopener">
           参与贡献

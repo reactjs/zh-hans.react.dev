@@ -12,7 +12,7 @@ next: forms.html
 >
 > - [Rendering Lists](https://beta.reactjs.org/learn/rendering-lists)
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 
 首先，让我们看下在 Javascript 中如何转化列表。

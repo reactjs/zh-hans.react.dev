@@ -11,7 +11,7 @@ permalink: docs/context.html
 > - [Passing Data Deeply with Context](https://beta.reactjs.org/learn/passing-data-deeply-with-context)
 > - [`useContext`](https://beta.reactjs.org/reference/react/useContext)
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 Context 提供了一个无需为每层组件手动添加 props，就能在组件树间进行数据传递的方法。
 

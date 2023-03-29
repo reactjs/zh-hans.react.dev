@@ -15,7 +15,7 @@ redirect_from:
 >
 > - [Sharing State Between Components](https://beta.reactjs.org/learn/sharing-state-between-components)
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 通常，多个组件需要反映相同的变化数据，这时我们建议将共享状态提升到最近的共同父组件中去。让我们看看它是如何运作的。
 

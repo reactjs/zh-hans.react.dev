@@ -15,7 +15,7 @@ next: handling-events.html
 > - [State: A Component's Memory](https://beta.reactjs.org/learn/state-a-components-memory)
 > - [Synchronizing with Effects](https://beta.reactjs.org/learn/synchronizing-with-effects)
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 本页面介绍了 React 组件中 state 和生命周期的概念。你可以查阅[详细的组件 API 参考文档](/docs/react-component.html)。
 

@@ -3,7 +3,7 @@ title: "React Conf 会议纪要：Hook，Suspense 和 Concurrent Rendering"
 author: [tomocchino]
 ---
 
-今年的 10 月 25 日和 26 日， [React Conf](https://conf.reactjs.org/) 在内华达州亨德森市成功举办，600 多名参会者聚集在一起讨论最新的 UI 工程技术。
+今年的 10 月 25 日和 26 日， [React Conf](https://conf.legacy.reactjs.org/) 在内华达州亨德森市成功举办，600 多名参会者聚集在一起讨论最新的 UI 工程技术。
 
 <br>
 

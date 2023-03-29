@@ -10,7 +10,7 @@ permalink: docs/portals.html
 >
 > - [`createPortal`](https://beta.reactjs.org/reference/react-dom/createPortal)
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 Portal 提供了一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案。
 

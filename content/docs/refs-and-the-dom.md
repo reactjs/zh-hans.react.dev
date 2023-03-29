@@ -20,7 +20,7 @@ redirect_from:
 > - [`useRef`](https://beta.reactjs.org/reference/react/useRef)
 > - [`forwardRef`](https://beta.reactjs.org/reference/react/forwardRef)
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 Refs 提供了一种方式，允许我们访问在 render 方法中创建的 DOM 节点或 React 元素。
 

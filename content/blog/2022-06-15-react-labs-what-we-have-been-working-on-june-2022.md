@@ -3,7 +3,7 @@ title: "React 实验室: 我们都在研究什么 – 2022 六月"
 author: [acdlite,gaearon,kassens,josephsavona,joshcstory,laurentan,lunaruan,mengdichen,rickhanlonii,robertzhang,gsathya,sebmarkbage,huxpro]
 ---
 
-[React 18](https://reactjs.org/blog/2022/03/29/react-v18.html) 着实酝酿了很多年，但它也为 React 团队带来了宝贵的经验。它的发布是多年的研究和众多路线探索的结果。其中一些路线是成功的；更多的则是在进入了死胡同后换来了一些新的洞见。我们学到的一个教训是，如果让社区干等新功能的发布，却无从知晓我们正在探索的事情的话，会比较令人沮丧。
+[React 18](https://legacy.reactjs.org/blog/2022/03/29/react-v18.html) 着实酝酿了很多年，但它也为 React 团队带来了宝贵的经验。它的发布是多年的研究和众多路线探索的结果。其中一些路线是成功的；更多的则是在进入了死胡同后换来了一些新的洞见。我们学到的一个教训是，如果让社区干等新功能的发布，却无从知晓我们正在探索的事情的话，会比较令人沮丧。
 
 我们通常在任何时候都有许多同时进行的项目，有更具实验性的，也有一些更加明确的。以后，我们将会定期与社区分享我们在进行的这些项目。
 
@@ -11,7 +11,7 @@ author: [acdlite,gaearon,kassens,josephsavona,joshcstory,laurentan,lunaruan,meng
 
 ## 服务端组件 {#server-components}
 
-我们于 2020 年 12 月宣布了  [React 服务端组件 (RSC) 的实验性方案](https://reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html) 。从那时起，我们就一直在尽力完成 React 18 中 RSC 所依赖的一些能力，并致力于根据实验情况做一些改进。
+我们于 2020 年 12 月宣布了  [React 服务端组件 (RSC) 的实验性方案](https://legacy.reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html) 。从那时起，我们就一直在尽力完成 React 18 中 RSC 所依赖的一些能力，并致力于根据实验情况做一些改进。
 
 值得一提得是，我们放弃了必须使用 react-fetch 这样专用 I/O 库的路线，而是决定采用一个兼容 async/await 的路线。严格地说，这个改动并不会阻碍 RSC 的发布，目前你仍然可以继续用路由（routers）来获取数据。另一个变化是我们已经决定不用文件扩展名这种方式，而是转而考虑使用 [标注来确定边界（annotating boundaries）](https://github.com/reactjs/rfcs/pull/189#issuecomment-1116482278)。
 
@@ -52,7 +52,7 @@ Offscreen 只是一个底层能力，他的目的是解锁更高层次的功能�
 
 ## 过渡跟踪（Transition Tracing） {#transition-tracing}
 
-目前，React 有两个 Profiler 性能分析工具。[最早的 Profiler](https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)  显示了一次分析会话中所有提交的概览。对于每次提交，它还显示所有渲染的组件以及渲染它们所花费的时间。我们还有一个在 React 18 中引入的 [时间线（Timeline） Profiler](https://github.com/reactwg/react-18/discussions/76) 的 beta 版本，它显示组件何时安排更新以及 React 何时处理这些更新。这两个分析器都可以帮助开发人员识别代码中的性能问题。
+目前，React 有两个 Profiler 性能分析工具。[最早的 Profiler](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)  显示了一次分析会话中所有提交的概览。对于每次提交，它还显示所有渲染的组件以及渲染它们所花费的时间。我们还有一个在 React 18 中引入的 [时间线（Timeline） Profiler](https://github.com/reactwg/react-18/discussions/76) 的 beta 版本，它显示组件何时安排更新以及 React 何时处理这些更新。这两个分析器都可以帮助开发人员识别代码中的性能问题。
 
 我们已经意识到，开发人员并没有发现，其实了解单个缓慢的提交或脱离上下文的组件是很有用的。了解导致缓慢提交的真正原因会更有用。并且开发人员希望能够跟踪特定的交互（例如按钮单击、初始加载或页面导航）以观察性能回归并了解交互缓慢的原因以及如何去修复它。
 
@@ -64,6 +64,6 @@ Offscreen 只是一个底层能力，他的目的是解锁更高层次的功能�
 
 去年，我们宣布了新的 React 文档网站的 [beta 版本](https://beta.reactjs.org/) ，新的学习材料从 Hooks 开始，并有新的图表、插图以及许多交互式代码示例和习题挑战。之前我们因为要专注于 React 18 的开发而暂停了这项工作，但现在既然 React 18 已经发布，我们就开始积极努力地完成与发布新文档了。
 
-我们目前正在写一个关于副作用（effects）的详细章节，因为我们听说这对于新的和有经验的 React 用户来说都是相对具有挑战性的主题之一。[与 Effects 同步](https://beta.reactjs.org/learn/synchronizing-with-effects) 是该系列中的第一篇文章，接下来几周我们还会发布更多内容。当我们第一次开始编写有关 effects 的详细部分时，我们已经意识到可以通过向 React 添加新的原始 API 来简化许多常见的 effects 模式。[useEvent RFC](https://github.com/reactjs/rfcs/pull/220) 中分享了一些初步想法。它目前处于早期研究阶段，我们仍在迭代这个想法。我们感谢社区迄今为止对 RFC 的评论，以及对正在进行的文档重写的 [反馈](https://github.com/reactjs/reactjs.org/issues/3308) 和贡献。我们要特别感谢 [Harish Kumar](https://github.com/harish-sethuraman) 提交并审查了对新网站实施的诸多改进。
+我们目前正在写一个关于副作用（effects）的详细章节，因为我们听说这对于新的和有经验的 React 用户来说都是相对具有挑战性的主题之一。[与 Effects 同步](https://beta.reactjs.org/learn/synchronizing-with-effects) 是该系列中的第一篇文章，接下来几周我们还会发布更多内容。当我们第一次开始编写有关 effects 的详细部分时，我们已经意识到可以通过向 React 添加新的原始 API 来简化许多常见的 effects 模式。[useEvent RFC](https://github.com/reactjs/rfcs/pull/220) 中分享了一些初步想法。它目前处于早期研究阶段，我们仍在迭代这个想法。我们感谢社区迄今为止对 RFC 的评论，以及对正在进行的文档重写的 [反馈](https://github.com/reactjs/legacy.reactjs.org/issues/3308) 和贡献。我们要特别感谢 [Harish Kumar](https://github.com/harish-sethuraman) 提交并审查了对新网站实施的诸多改进。
 
 *感谢 [Sophie Alpert](https://twitter.com/sophiebits) 对本篇文章的校对!*

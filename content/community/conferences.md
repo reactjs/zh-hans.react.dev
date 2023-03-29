@@ -195,7 +195,7 @@ January 27 - 30, 2022. In-person in Dornbirn and Lech Austria
 ### React Conf 2021 {#react-conf-2021}
 December 8, 2021 - remote event (replay event on December 9)
 
-[Website](https://conf.reactjs.org/)
+[Website](https://conf.legacy.reactjs.org/)
 
 ### ReactEurope 2021 {#reacteurope-2021}
 December 9-10, 2021 - remote event
@@ -335,7 +335,7 @@ October 25, 2019 in London, UK
 ### React Conf 2019 {#react-conf-2019}
 October 24-25, 2019 in Henderson, Nevada USA
 
-[Website](https://conf.reactjs.org/) - [Twitter](https://twitter.com/reactjs)
+[Website](https://conf.legacy.reactjs.org/) - [Twitter](https://twitter.com/reactjs)
 
 ### React Alicante 2019 {#react-alicante-2019}
 September 26-28, 2019 in Alicante, Spain
@@ -460,7 +460,7 @@ November 4 in Tel Aviv, Israel
 ### React Conf 2018 {#react-conf-2018}
 October 25-26 in Henderson, Nevada USA
 
-[Website](https://conf.reactjs.org/)
+[Website](https://conf.legacy.reactjs.org/)
 
 ### React Conf Brasil 2018 {#react-conf-brasil-2018}
 October 20 in Sao Paulo, Brazil
@@ -651,7 +651,7 @@ March 28th at the [QEII Centre, London](http://qeiicentre.london/)
 ### React Conf 2017 {#react-conf-2017}
 March 13-14 in Santa Clara, CA
 
-[Website](http://conf.reactjs.org/) - [Videos](https://www.youtube.com/watch?v=7HSd1sk07uU&list=PLb0IAmt7-GS3fZ46IGFirdqKTIxlws7e0)
+[Website](http://conf.legacy.reactjs.org/) - [Videos](https://www.youtube.com/watch?v=7HSd1sk07uU&list=PLb0IAmt7-GS3fZ46IGFirdqKTIxlws7e0)
 
 ### Agent Conference 2017 {#agent-conference-2017}
 January 20-21 in Dornbirn, Austria
@@ -696,7 +696,7 @@ April 16 in Amsterdam, The Netherlands
 ### React.js Conf 2016 {#reactjs-conf-2016}
 February 22 & 23 in San Francisco, CA
 
-[Website](http://conf2016.reactjs.org/) - [Schedule](http://conf2016.reactjs.org/schedule.html) - [Videos](https://www.youtube.com/playlist?list=PLb0IAmt7-GS0M8Q95RIc2lOM6nc77q1IY)
+[Website](http://conf2016.legacy.reactjs.org/) - [Schedule](http://conf2016.legacy.reactjs.org/schedule.html) - [Videos](https://www.youtube.com/playlist?list=PLb0IAmt7-GS0M8Q95RIc2lOM6nc77q1IY)
 
 ### Reactive 2015 {#reactive-2015}
 November 2-4 in Bratislava, Slovakia
@@ -711,4 +711,4 @@ July 2 & 3 in Paris, France
 ### React.js Conf 2015 {#reactjs-conf-2015}
 January 28 & 29 in Facebook HQ, CA
 
-[Website](http://conf2015.reactjs.org/) - [Schedule](http://conf2015.reactjs.org/schedule.html) - [Videos](https://www.youtube.com/playlist?list=PLb0IAmt7-GS1cbw4qonlQztYV1TAW0sCr)
+[Website](http://conf2015.legacy.reactjs.org/) - [Schedule](http://conf2015.legacy.reactjs.org/schedule.html) - [Videos](https://www.youtube.com/playlist?list=PLb0IAmt7-GS1cbw4qonlQztYV1TAW0sCr)

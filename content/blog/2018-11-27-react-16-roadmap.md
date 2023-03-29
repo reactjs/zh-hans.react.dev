@@ -127,7 +127,7 @@ ReactDOM.unstable_createRoot(domNode).render(<App />);
 
 目前还没有针对并发模式的文档。我们需要强调，您很可能一开始对这个概念模型觉得陌生。记录它的优点，如何高效的使用以及它的陷阱是我们高优先级的工作项目，也是推出稳定版本的先决条件。在那之前，[Andrew 的演讲](https://www.youtube.com/watch?v=ByBPyMBTzM0)是最好的介绍。
 
-目前，并发模式 *远没有* Hook 完成度高。一些 API 还没有被正确的“连通”，也不会执行预想中的任务。本文成文时，我们不推荐在除了早期探索的情况下使用它。我们觉得并发模式本生应该没有什么漏洞，但是，请注意，[`<React.StrictMode>`](https://reactjs.org/docs/strict-mode.html)中的错误提示组件可能还不可以正常工作。另外，我们注意到，并行模式会把一些不是并行模式本身的性能问题 *展现* 出来。举个例子，每隔毫秒执行的`setInterval(fn, 1)`会在并发模式中产生更差的影响。我们计划在正式发行并发模式的时候，提供一些发现并解决这类问题的文档。
+目前，并发模式 *远没有* Hook 完成度高。一些 API 还没有被正确的“连通”，也不会执行预想中的任务。本文成文时，我们不推荐在除了早期探索的情况下使用它。我们觉得并发模式本生应该没有什么漏洞，但是，请注意，[`<React.StrictMode>`](https://legacy.reactjs.org/docs/strict-mode.html)中的错误提示组件可能还不可以正常工作。另外，我们注意到，并行模式会把一些不是并行模式本身的性能问题 *展现* 出来。举个例子，每隔毫秒执行的`setInterval(fn, 1)`会在并发模式中产生更差的影响。我们计划在正式发行并发模式的时候，提供一些发现并解决这类问题的文档。
 
 并发模式是我们对 React 规划中的一个重要部分。对于需要使用大量 CPU 的任务来说，它提供了不被阻挡的渲染，并使得你的应用在渲染复杂的组件树时可响应。在[我们的冰岛 JSConf 演讲](/blog/2018/03/01/sneak-peek-beyond-react-16.html)中我们展示了它。并发模式也使得悬停 （Suspense）更好。它可以使你在网络够快的时候略过显示载入指示器。除非亲眼所见，它很难解释，[Andrew 的演讲](https://www.youtube.com/watch?v=ByBPyMBTzM0)时现今最好的资料。并发模式依靠一个配合的主线程[调度线程](https://github.com/facebook/react/tree/main/packages/scheduler)，我们正在[和 Chrome 团队合作](https://www.youtube.com/watch?v=mDdgfyRB5kg)以在未来把这个功能加入到浏览器中。
 
@@ -137,7 +137,7 @@ ReactDOM.unstable_createRoot(domNode).render(<App />);
 
 **React Native 中的进度：** 目前的计划是延期在 React Native 中发布并行模式直到 [React Fabric](https://github.com/react-native-community/discussions-and-proposals/issues/4) 基本完成。
 
-**建议：** 如果你计划在未来使用并行模式，一个很好的第一步是用 [`<React.StrictMode>`](https://reactjs.org/docs/strict-mode.html) 来包裹一些组件的子树然后修复出现的错误。通常，我们预计古旧的代码不会被立即兼容。 举个例子，在 Facebook，我们更多的在更新开发的代码中使用并发模式，古旧的代码近期还是会在同步模式下运行。
+**建议：** 如果你计划在未来使用并行模式，一个很好的第一步是用 [`<React.StrictMode>`](https://legacy.reactjs.org/docs/strict-mode.html) 来包裹一些组件的子树然后修复出现的错误。通常，我们预计古旧的代码不会被立即兼容。 举个例子，在 Facebook，我们更多的在更新开发的代码中使用并发模式，古旧的代码近期还是会在同步模式下运行。
 
 ### React 16.x （大约2019年中旬）： 包含 Suspense 以数据提取的版本 {#react-16x-mid-2019-the-one-with-suspense-for-data-fetching}
 

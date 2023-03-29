@@ -22,7 +22,7 @@ redirect_from:
 > 
 > The new [Quick Start](https://beta.reactjs.org/learn) teaches modern React and includes live examples.
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 这是一个 React 文档及相关资源的概览页面。
 
@@ -44,7 +44,7 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 如果你对体验 React 感兴趣，可以尝试在线代码编辑器。从 [CodePen](codepen://hello-world)，[CodeSandbox](https://codesandbox.io/s/new)，或者 [Stackblitz](https://stackblitz.com/fork/react) 开始一个 React 版本的 Hello World 模板。
 
-如果你喜欢使用自己的文本编辑器，也可以[下载这个 HTML 文件](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html)，然后编辑文件内容，最后再用浏览器从本地文件系统打开文件，预览页面效果。注意：这个文件中包含一个低效率的运行时代码转换脚本，所以我们推荐仅在简单的演示项目中使用。
+如果你喜欢使用自己的文本编辑器，也可以[下载这个 HTML 文件](https://raw.githubusercontent.com/reactjs/legacy.reactjs.org/main/static/html/single-file-example.html)，然后编辑文件内容，最后再用浏览器从本地文件系统打开文件，预览页面效果。注意：这个文件中包含一个低效率的运行时代码转换脚本，所以我们推荐仅在简单的演示项目中使用。
 
 ### 在网站中添加 React {#add-react-to-a-website}
 
@@ -129,4 +129,4 @@ React 从诞生之初就是可被逐步采用的，因而**你可以按需引入
 
 ## 找不到想要的？ {#something-missing}
 
-如果你找不到想要的内容或觉得文档某些地方让人疑惑，请[移步文档仓库提交 issue](https://github.com/reactjs/reactjs.org/issues/new) 或在 Twitter 上提及 [@reactjs 账号](https://twitter.com/reactjs)。我们期待你的反馈！
+如果你找不到想要的内容或觉得文档某些地方让人疑惑，请[移步文档仓库提交 issue](https://github.com/reactjs/legacy.reactjs.org/issues/new) 或在 Twitter 上提及 [@reactjs 账号](https://twitter.com/reactjs)。我们期待你的反馈！

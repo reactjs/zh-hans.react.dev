@@ -624,4 +624,4 @@ expect(root).toMatchSnapshot();
 
 ### 缺少什么？ {#something-missing}
 
-如果有一些常见场景没有覆盖，请在文档网站的 [issue 跟踪器](https://github.com/reactjs/reactjs.org/issues)上告诉我们。
+如果有一些常见场景没有覆盖，请在文档网站的 [issue 跟踪器](https://github.com/reactjs/legacy.reactjs.org/issues)上告诉我们。

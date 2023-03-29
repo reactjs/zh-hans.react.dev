@@ -14,7 +14,7 @@ redirect_from:
 >
 > - [Responding to Events](https://beta.reactjs.org/learn/responding-to-events)
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 
 React 元素的事件处理和 DOM 元素的很相似，但是有一点语法上的不同：

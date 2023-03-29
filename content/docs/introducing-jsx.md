@@ -13,7 +13,7 @@ next: rendering-elements.html
 > - [Writing Markup with JSX](https://beta.reactjs.org/learn/writing-markup-with-jsx)
 > - [JavaScript in JSX with Curly Braces](https://beta.reactjs.org/learn/javascript-in-jsx-with-curly-braces)
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 设想如下变量声明：
 
@@ -91,7 +91,7 @@ function getGreeting(user) {
 你可以通过使用引号，来将属性值指定为字符串字面量：
 
 ```js
-const element = <a href="https://www.reactjs.org"> link </a>;
+const element = <a href="https://www.legacy.reactjs.org"> link </a>;
 ```
 
 也可以使用大括号，来在属性值中插入一个 JavaScript 表达式：

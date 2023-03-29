@@ -13,6 +13,6 @@ author: [keyanzhang]
 
 虽然我们不预期你会经常看到错误提示，但你可以到[这里](/docs/error-decoder.html?invariant=109&args[]=Foo)去参考它的运作方式。以上同样的错误提示会被显示为：
 
-> Minified React error #109; visit [https://reactjs.org/docs/error-decoder.html?invariant=109&args[]=Foo](/docs/error-decoder.html?invariant=109&args[]=Foo) for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+> Minified React error #109; visit [https://legacy.reactjs.org/docs/error-decoder.html?invariant=109&args[]=Foo](/docs/error-decoder.html?invariant=109&args[]=Foo) for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
 
 我们这样做是为了让开发者的体验越来越好，同时尽可能的不扩大生产环境的 bundle 尺寸。此功能不需要你做任何改变 —— 只要在生产环境中用 `min.js` 或用 `process.env.NODE_ENV === 'production'` 来打包你的应用程序就可以了!

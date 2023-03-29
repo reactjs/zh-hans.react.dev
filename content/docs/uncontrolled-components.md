@@ -12,7 +12,7 @@ permalink: docs/uncontrolled-components.html
 > - [`<select>`](https://beta.reactjs.org/reference/react-dom/components/select)
 > - [`<textarea>`](https://beta.reactjs.org/reference/react-dom/components/textarea)
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 在大多数情况下，我们推荐使用 [受控组件](/docs/forms.html#controlled-components) 来处理表单数据。在一个受控组件中，表单数据是由 React 组件来管理的。另一种替代方案是使用非受控组件，这时表单数据将交由 DOM 节点来处理。
 

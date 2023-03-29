@@ -37,7 +37,7 @@ next: hooks-faq.html
 
 > Try the new React documentation for [`useState`](https://beta.reactjs.org/reference/react/useState).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 ```js
 const [state, setState] = useState(initialState);
@@ -124,7 +124,7 @@ React 可能会将多次 state 更新合并到一次的重渲染中以改善性�
 
 > Try the new React documentation for [`useEffect`](https://beta.reactjs.org/reference/react/useEffect).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 ```js
 useEffect(didUpdate);
@@ -207,7 +207,7 @@ useEffect(
 
 > Try the new React documentation for [`useContext`](https://beta.reactjs.org/reference/react/useContext).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 
 ```js
@@ -285,7 +285,7 @@ function ThemedButton() {
 
 > Try the new React documentation for [`useReducer`](https://beta.reactjs.org/reference/react/useReducer).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 
 ```js
@@ -393,7 +393,7 @@ function Counter({initialCount}) {
 
 > Try the new React documentation for [`useCallback`](https://beta.reactjs.org/reference/react/useCallback).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 ```js
 const memoizedCallback = useCallback(
@@ -420,7 +420,7 @@ const memoizedCallback = useCallback(
 
 > Try the new React documentation for [`useMemo`](https://beta.reactjs.org/reference/react/useMemo).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 
 ```js
@@ -447,7 +447,7 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 
 > Try the new React documentation for [`useRef`](https://beta.reactjs.org/reference/react/useRef).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 
 ```js
@@ -489,7 +489,7 @@ function TextInputWithFocusButton() {
 
 > Try the new React documentation for [`useImperativeHandle`](https://beta.reactjs.org/reference/react/useImperativeHandle).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 
 ```js
@@ -517,7 +517,7 @@ FancyInput = forwardRef(FancyInput);
 
 > Try the new React documentation for [`useLayoutEffect`](https://beta.reactjs.org/reference/react/useLayoutEffect).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 
 其函数签名与 `useEffect` 相同，但它会在所有的 DOM 变更之后同步调用 effect。可以使用它来读取 DOM 布局并同步触发重渲染。在浏览器执行绘制之前，`useLayoutEffect` 内部的更新计划将被同步刷新。
@@ -536,7 +536,7 @@ FancyInput = forwardRef(FancyInput);
 
 > Try the new React documentation for [`useDebugValue`](https://beta.reactjs.org/reference/react/useDebugValue).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 
 ```js
@@ -581,7 +581,7 @@ useDebugValue(date, date => date.toDateString());
 
 > Try the new React documentation for [`useDeferredValue`](https://beta.reactjs.org/reference/react/useDeferredValue).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 
 ```js
@@ -624,7 +624,7 @@ function Typeahead() {
 
 > Try the new React documentation for [`useTransition`](https://beta.reactjs.org/reference/react/useTransition).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 
 ```js
@@ -673,7 +673,7 @@ function App() {
 
 > Try the new React documentation for [`useId`](https://beta.reactjs.org/reference/react/useId).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 
 ```js
@@ -735,7 +735,7 @@ function NameFields() {
 
 > Try the new React documentation for [`useSyncExternalStore`](https://beta.reactjs.org/reference/react/useSyncExternalStore).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 
 ```js
@@ -786,7 +786,7 @@ const selectedField = useSyncExternalStore(
 
 > Try the new React documentation for [`useInsertionEffect`](https://beta.reactjs.org/reference/react/useInsertionEffect).
 >
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
 
 ```js
 useInsertionEffect(didUpdate);

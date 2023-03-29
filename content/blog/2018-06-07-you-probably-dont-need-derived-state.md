@@ -345,7 +345,7 @@ class Example extends Component {
 
 在实际应用中，组件一般都会有受控组件和非受控组件。这是正常的！不过如果每个值都有明确的来源，就可以避免上面提到的反面模式。
 
-`getDerivedStateFromProps` （以及其他派生 state）是一个高级复杂的功能，应该保守使用，这个再怎么重申也不过分。如果你的用法不属于上述这些模式，请在 [GitHub](https://github.com/reactjs/reactjs.org/issues/new) 或 [Twitter](https://twitter.com/reactjs) 与我们分享！
+`getDerivedStateFromProps` （以及其他派生 state）是一个高级复杂的功能，应该保守使用，这个再怎么重申也不过分。如果你的用法不属于上述这些模式，请在 [GitHub](https://github.com/reactjs/legacy.reactjs.org/issues/new) 或 [Twitter](https://twitter.com/reactjs) 与我们分享！
 
 ---
 

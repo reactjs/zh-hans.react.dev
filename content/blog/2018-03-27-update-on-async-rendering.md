@@ -32,7 +32,7 @@ cd your_project
 npx react-codemod rename-unsafe-lifecycles
 ```
 
-Learn more about this codemod on the [16.9.0 release post.](https://reactjs.org/blog/2019/08/08/react-v16.9.0.html#renaming-unsafe-lifecycle-methods) 
+Learn more about this codemod on the [16.9.0 release post.](https://legacy.reactjs.org/blog/2019/08/08/react-v16.9.0.html#renaming-unsafe-lifecycle-methods) 
 
 ---
 
@@ -207,7 +207,7 @@ Learn more about this codemod on the [16.9.0 release post.](https://reactjs.org/
 
 ## 其他场景 {#other-scenarios}
 
-尽管我们试图在这篇博文中涵盖最常见的用例，但是我们意识到依然可能会遗漏其中的一些用例。如果你正在以本博文未涵盖的方式使用 `componentWillMount`、`componentWillUpdate` 或者 `componentWillReceiveProps`，并且不确定如何迁移这些过时的生命周期，请[根据我们的文档提交一个新的 issue](https://github.com/reactjs/reactjs.org/issues/new)，附上你的代码示例，并提供尽可能多的背景信息。当出现新的替代用例时，我们将用它们更新此文档。
+尽管我们试图在这篇博文中涵盖最常见的用例，但是我们意识到依然可能会遗漏其中的一些用例。如果你正在以本博文未涵盖的方式使用 `componentWillMount`、`componentWillUpdate` 或者 `componentWillReceiveProps`，并且不确定如何迁移这些过时的生命周期，请[根据我们的文档提交一个新的 issue](https://github.com/reactjs/legacy.reactjs.org/issues/new)，附上你的代码示例，并提供尽可能多的背景信息。当出现新的替代用例时，我们将用它们更新此文档。
 
 ## 开源项目维护者 {#open-source-project-maintainers}
 

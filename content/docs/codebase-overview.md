@@ -23,7 +23,7 @@ redirect_from:
 * [`fixtures`](https://github.com/facebook/react/tree/main/fixtures) 包含一些给贡献者准备的小型 React 测试项目。
 * `build` 是 React 的输出目录。源码仓库中并没有这个目录，但是它会在你克隆 React 并且第一次[构建它](/docs/how-to-contribute.html#development-workflow)之后出现。
 
-文档位于 [React 仓库之外的一个独立仓库中](https://github.com/reactjs/reactjs.org)。
+文档位于 [React 仓库之外的一个独立仓库中](https://github.com/reactjs/legacy.reactjs.org)。
 
 还有一些其他的顶层目录，但是它们几乎都是工具类的，并且在贡献代码时基本不会涉及。
 

@@ -27,7 +27,7 @@ channels:
       to: https://stackoverflow.com/questions/tagged/reactjs
       external: true
     - title: Discussion 论坛
-      to: https://reactjs.org/community/support.html#popular-discussion-forums
+      to: https://legacy.reactjs.org/community/support.html#popular-discussion-forums
       external: true
     - title: Reactiflux 聊天室
       to: https://discord.gg/reactiflux
