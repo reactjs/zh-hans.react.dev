@@ -8,10 +8,8 @@
 
 module.exports = {
   siteMetadata: {
-    title: 'React 中文文档: 用于构建用户界面的 JavaScript 库',
-    siteUrl: 'https://zh-hans.reactjs.org',
-    rssFeedTitle: 'React',
-    rssFeedDescription: '用于构建用户界面的 JavaScript 库',
+    title: '已过时——React 中文文档',
+    siteUrl: 'https://zh-hans.legacy.reactjs.org',
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',
@@ -163,10 +161,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'React Docs',
-        short_name: 'React', // eg. React [%LANG_CODE%]
-        // Translators: please change this and two above options (see https://www.gatsbyjs.org/packages/gatsby-plugin-manifest/#feature-configuration---optional)
-        lang: 'en',
+        name: '已过时——React 中文文档',
+        lang: 'zh-hans',
+        description: '该文档已过时，请访问 zh-hans.react.dev',
         start_url: '/',
         background_color: '#20232a',
         theme_color: '#20232a',
