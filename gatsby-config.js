@@ -10,6 +10,8 @@ module.exports = {
   siteMetadata: {
     title: '已过时——React 中文文档',
     siteUrl: 'https://zh-hans.legacy.reactjs.org',
+    rssFeedTitle: 'React',
+    rssFeedDescription: '用于构建用户界面的 JavaScript 库',
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',
