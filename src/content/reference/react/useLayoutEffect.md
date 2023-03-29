@@ -43,7 +43,7 @@ function Tooltip() {
 ```
 
 
-[请看下面的更多例子。](#usage)
+[请看下面的更多例子](#usage)。
 
 #### 参数 {/*parameters*/}
 
@@ -59,13 +59,13 @@ function Tooltip() {
 
 * `useLayoutEffect` 是一个 Hook，因此只能在 **组件的顶层** 或自己的 Hook 中调用它。不能在循环或者条件内部调用它。如果你需要的话，抽离出一个组件并将副作用处理移动到那里。
 
-* 当 StrictMode 启动时，React 将在真正的 setup 函数首次运行前，运行一个额外的开发专有的 setup + cleanup 周期。这是一个压力测试，确保 cleanup 逻辑“映照”到 setup 逻辑，并停止或撤消 setup 函数正在做的任何事情。如果这导致一个问题，[请实现清理函数。](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
+* 当 StrictMode 启动时，React 将在真正的 setup 函数首次运行前，运行一个额外的开发专有的 setup + cleanup 周期。这是一个压力测试，确保 cleanup 逻辑“映照”到 setup 逻辑，并停止或撤消 setup 函数正在做的任何事情。如果这导致一个问题，[请实现清理函数](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)。
 
-* 如果你的一些依赖项是组件内部定义的对象或函数，则存在这样的风险，即它们将 **导致 Effect 重新运行的次数多于所需的次数。** 要解决这个问题，请删除不必要的 [对象](/reference/react/useEffect#removing-unnecessary-object-dependencies) 和 [函数](/reference/react/useEffect#removing-unnecessary-function-dependencies) 依赖项。你还可以 [抽离状态更新](/reference/react/useEffect#updating-state-based-on-previous-state-from-an-effect) 和 [非动态的逻辑](/reference/react/useEffect#reading-the-latest-props-and-state-from-an-effect) 到 Effect 之外。
+* 如果你的一些依赖项是组件内部定义的对象或函数，则存在这样的风险，即它们将 **导致 Effect 重新运行的次数多于所需的次数**。要解决这个问题，请删除不必要的 [对象](/reference/react/useEffect#removing-unnecessary-object-dependencies) 和 [函数](/reference/react/useEffect#removing-unnecessary-function-dependencies) 依赖项。你还可以 [抽离状态更新](/reference/react/useEffect#updating-state-based-on-previous-state-from-an-effect) 和 [非动态的逻辑](/reference/react/useEffect#reading-the-latest-props-and-state-from-an-effect) 到 Effect 之外。
 
 * Effect **只在客户端上运行**，在服务端渲染中不会运行。 
 
-* `useLayoutEffect` 内部的代码和所有计划的状态更新阻塞了浏览器重新绘制屏幕。如果过度使用，这会使你的应用程序变慢。如果可能的话，尽量选择 [`useEffect`。](/reference/react/useEffect)
+* `useLayoutEffect` 内部的代码和所有计划的状态更新阻塞了浏览器重新绘制屏幕。如果过度使用，这会使你的应用程序变慢。如果可能的话，尽量选择 [`useEffect`](/reference/react/useEffect)。
 
 ---
 
@@ -714,7 +714,7 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 ### 我收到一个错误：“ `useLayoutEffect` 在服务端没有任何作用” {/*im-getting-an-error-uselayouteffect-does-nothing-on-the-server*/}
 
-`useLayoutEffect` 的目的是让你的组件 [使用布局信息来渲染：](#measuring-layout-before-the-browser-repaints-the-screen)
+`useLayoutEffect` 的目的是让你的组件 [使用布局信息来渲染](#measuring-layout-before-the-browser-repaints-the-screen)：
 
 1. 渲染初始的内容。
 2. 在 *浏览器重新绘制屏幕之前* 测量布局。
@@ -732,11 +732,11 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 - 用 [`useEffect`](/reference/react/useEffect) 替换 `useLayoutEffect`。 React 可以在不阻塞绘制的情况下显示初始的渲染结果（因为初始的 HTML 将在 Effect 运行之前显示出来）。
 
-- 或者，[将组件标记为仅客户端。](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content) 这告诉 React 在服务端渲染时用一个 loading 降级（例如，一个 spinner 或者 glimmer）替换其内容到上方最近的 [`<Suspense>`](/reference/react/Suspense) 边界。
+- 或者，[将组件标记为仅客户端](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content)。 这告诉 React 在服务端渲染时用一个 loading 降级（例如，一个 spinner 或者 glimmer）替换其内容到上方最近的 [`<Suspense>`](/reference/react/Suspense) 边界。
 
 - 或者，只有在水合之后，使用 `useLayoutEffect` 渲染组件。保留一个初始化为 false 的 isMounted 布尔状态，并在 useEffect 调用中将其设置为 true。然后你的渲染逻辑就会像 `return isMounted ? <RealContent /> : <FallbackContent />` 这样。在服务端和水合过程中，用户将看到 `FallbackContent`，它不应该调用 `useLayoutEffect`。然后 React 将用 `RealContent` 替换它，`RealContent` 仅在客户端上运行并且可以包含 `useLayoutEffect` 调用。
 
-- 如果你将组件与外部数据存储同步，并且依赖 useLayouteffect 的原因不同于测量布局，可以考虑使用 [支持服务端渲染](/reference/react/useSyncExternalStore#adding-support-for-server-rendering) 的 [`useSyncExternalStore`。](/reference/react/useSyncExternalStore)
+- 如果你将组件与外部数据存储同步，并且依赖 useLayouteffect 的原因不同于测量布局，可以考虑使用 [支持服务端渲染](/reference/react/useSyncExternalStore#adding-support-for-server-rendering) 的 [`useSyncExternalStore`](/reference/react/useSyncExternalStore)。
 
 
 
