@@ -47,11 +47,9 @@ React 从最初由 [Jordan Walke](https://github.com/jordwalke) 创立至今, �
 * [Sasha Aickin](https://github.com/aickin)
 * [Seth Webster](https://github.com/sethwebster)
 * [Sophia Shoemaker](https://github.com/mrscobbler)
-* [Sophie Alpert](https://github.com/sophiebits)
 * [Sunil Pai](https://github.com/threepointone)
 * [Tim Yung](https://github.com/yungsters)
 * [Xuan Huang](https://github.com/huxpro)
-* [Yuzhi Zheng](https://github.com/yuzhi)
 
 这份名单并不详尽。
 
