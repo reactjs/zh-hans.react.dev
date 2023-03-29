@@ -212,7 +212,7 @@ return (
 
 1. 创建一个名为 **`src`** 的文件夹
 2. 在终端执行这个命令：`npx babel --watch src --out-dir . --presets babel-preset-react-app/prod ` （无需等待运行结果 —— 这个命令会自动启动一个观察器，观察对 `src` 内 JSX 的编辑。）
-3. 将已经 JSX 化的 **`like-button.js`** ([它看起来应该像这样！](https://gist.githubusercontent.com/gaearon/be5ae0fbf563d6c5fe5c1563907b13d2/raw/4c0d0b8c7f4fcb341720424c28c72059f8174c62/like-button.js)) 文件移动到新的 **`src`** 目录下。
+3. 将已经 JSX 化的 **`like-button.js`** ([它看起来应该像这样](https://gist.githubusercontent.com/gaearon/be5ae0fbf563d6c5fe5c1563907b13d2/raw/4c0d0b8c7f4fcb341720424c28c72059f8174c62/like-button.js))！文件移动到新的 **`src`** 目录下。
 
 监听器会创建一个预处理过的 **`like_button.js`** 文件，它包含了适用于浏览器的普通 JavaScript 代码.
 
