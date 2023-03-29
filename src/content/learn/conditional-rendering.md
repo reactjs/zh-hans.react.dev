@@ -343,7 +343,7 @@ if (isPacked) {
 }
 ```
 
-[大括号 - JavaScript 的“新世界”。](/learn/javascript-in-jsx-with-curly-braces#using-curly-braces-a-window-into-the-javascript-world) 将变量用大括号嵌入在返回的 JSX 树中，来嵌套计算好的表达式与 JSX：
+[大括号 - JavaScript 的“新世界”](/learn/javascript-in-jsx-with-curly-braces#using-curly-braces-a-window-into-the-javascript-world)。将变量用大括号嵌入在返回的 JSX 树中，来嵌套计算好的表达式与 JSX：
 
 ```js
 <li className="item">

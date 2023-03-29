@@ -1274,7 +1274,7 @@ hr {
 <Sandpack>
 
 ```js
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
 const poem = {
   lines: [
