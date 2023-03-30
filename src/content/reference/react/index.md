@@ -29,7 +29,7 @@ function ImageGallery() {
 
 ## Context Hook {/*context-hooks*/}
 
-*Context* 让一个组件[从远处的父组件接收信息，而不需要将其作为 props 传递。](/learn/passing-props-to-a-component) 比如，app 的顶层组件可以将当前的 UI 主题传递给下面的所有组件，无论它们层级多深。
+*Context* 让一个组件[从远处的父组件接收信息，而不需要将其作为 props 传递](/learn/passing-props-to-a-component)。比如，app 的顶层组件可以将当前的 UI 主题传递给下面的所有组件，无论它们层级多深。
 
 * [`useContext`](/reference/react/useContext) 读取并订阅了一个上下文。
 
@@ -43,7 +43,7 @@ function Button() {
 
 ## Ref Hook {/*ref-hooks*/}
 
-*Ref* 让一个组件[持有一些不用于渲染的信息，](/learn/referencing-values-with-refs)如 DOM 节点或一个 timeout ID。与 state 不同的是，更新 Ref 并不会重新渲染你的组件。Ref 是 React 范式的一个 "逃生舱门"。当你需要与非 React 系统一起工作时，它们很有用，比如内置的浏览器 API。
+*Ref* 让一个组件[持有一些不用于渲染的信息](/learn/referencing-values-with-refs)，如 DOM 节点或一个 timeout ID。与 state 不同的是，更新 Ref 并不会重新渲染你的组件。Ref 是 React 范式的一个 "逃生舱门"。当你需要与非 React 系统一起工作时，它们很有用，比如内置的浏览器 API。
 
 * [`useRef`](/reference/react/useRef) 声明了一个 Ref。你可以在其中保存任何值，但最常见的是它用来保存一个 DOM 节点。
 * [`useImperativeHandle`](/reference/react/useImperativeHandle) 可以让你自定义你的组件所暴露的 Ref。这一点很少使用。
@@ -58,7 +58,7 @@ function Form() {
 
 ## Effect Hook {/*effect-hooks*/}
 
-*Effect* 让一个组件[连接到外部系统并与之同步。](/learn/synchronizing-with-effects)这包括处理网络、浏览器、DOM、动画、使用不同 UI 库编写的 widgets 以及其他非 React 代码。
+*Effect* 让一个组件[连接到外部系统并与之同步](/learn/synchronizing-with-effects)。这包括处理网络、浏览器、DOM、动画、使用不同 UI 库编写的 widgets 以及其他非 React 代码。
 
 * [`useEffect`](/reference/react/useEffect) 将一个组件连接到外部系统。
 
@@ -72,7 +72,7 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-Effect 是 React 范式的 "逃生舱门"。不要用 Effect 来协调你的应用程序的数据流。如果你不与外部系统交互，[你可能不需要 Effect。](/learn/you-might-not-need-an-effect)
+Effect 是 React 范式的 "逃生舱门"。不要用 Effect 来协调你的应用程序的数据流。如果你不与外部系统交互，[你可能不需要 Effect](/learn/you-might-not-need-an-effect)。
 
 `useEffect` 有两个很少使用的变换形式，它们在时间上有差异：
 
