@@ -81,7 +81,7 @@ function PasswordField() {
 
 [HTML 可访问性属性](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) 例如 [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) 允许你指定两个标签之间的关系。例如，你可以指定一个元素（比如输入框）由另一个元素（比如段落）描述。
 
-在常规的 HTML,你会这样写：
+在常规的 HTML 中，你会这样写：
 
 ```html {5,8}
 <label>
@@ -92,11 +92,11 @@ function PasswordField() {
   />
 </label>
 <p id="password-hint">
-  密码应该包含至少18个字符
+  密码应该包含至少 18 个字符
 </p>
 ```
 
-然而，在 React 中硬编码 ID 并不是一个好的实践。 一个组件可能会在页面上渲染多次，但是 ID 必须是唯一的！不要硬编码 ID，而是使用 `useId` 生成唯一的 ID。
+然而，在 React 中直接编写 ID 并不是一个好的习惯。 一个组件可能会在页面上渲染多次，但是 ID 必须是唯一的！不要使用自己编写的 ID，而是使用 `useId` 生成唯一的 ID。
 
 ```js {4,11,14}
 import { useId } from 'react';
@@ -113,7 +113,7 @@ function PasswordField() {
         />
       </label>
       <p id={passwordHintId}>
-        密码应该包含至少18个字符
+        密码应该包含至少 18 个字符
       </p>
     </>
   );
@@ -139,7 +139,7 @@ function PasswordField() {
         />
       </label>
       <p id={passwordHintId}>
-        密码应该包含至少18个字符
+        密码应该包含至少 18 个字符
       </p>
     </>
   );
@@ -163,11 +163,11 @@ input { margin: 5px; }
 
 </Sandpack>
 
-[请看这个视频，](https://www.youtube.com/watch?v=0dNzNcuEuOo) 了解辅助技术所提供的用户体验的差异。
+[请看这个视频](https://www.youtube.com/watch?v=0dNzNcuEuOo)，了解辅助技术所提供的用户体验的差异。
 
 <Pitfall>
 
-[在服务器渲染中，](/reference/react-dom/server) **`useId` 需要在服务器和客户端上有相同的组件树。** 如果你在服务器和客户端上渲染的树不完全匹配，生成的 ID 将不匹配。
+[使用服务器渲染时](/reference/react-dom/server)， **`useId` 需要在服务器和客户端上有相同的组件树** 。如果你在服务器和客户端上渲染的树不完全匹配，生成的 ID 将不匹配。
 
 </Pitfall>
 
@@ -177,11 +177,11 @@ input { margin: 5px; }
 
 你可能想知道为什么使用 `useId` 比增加全局变量（如 nextId ++）更好。
 
-`useId` 的主要好处是 React 确保它能够与[服务器渲染](/reference/react-dom/server)一起工作。 在服务器渲染期间，你的组件生成 HTML 输出。随后，在客户端 [Hydration](/reference/react-dom/client/hydrateRoot) 会将你的事件处理程序附加到生成的 HTML 上。Hydration 工作, 客户端必须匹配服务器的 HTML 输出。
+`useId` 的主要好处是 React 确保它能够与[服务器渲染](/reference/react-dom/server)一起工作。 在服务器渲染期间，你的组件生成输出 HTML。随后，在客户端，[Hydration](/reference/react-dom/client/hydrateRoot) 会将你的事件处理程序附加到生成的 HTML 上。由于 Hydration, 客户端必须匹配服务器输出的 HTML 。
 
-使用递增计数器非常难以保证这一点，因为客户端组件被 Hydrated 的顺序可能与服务器HTML发出的顺序不匹配。通过调用 `useId`，你可以确保 Hydration 正常工作，并且服务器和客户端之间的输出将匹配。
+使用递增计数器非常难以保证这一点，因为客户端组件被 Hydrated 处理后的顺序可能与服务器 HTML 发出的顺序不匹配。通过调用 `useId`，你可以确保 Hydration 正常工作，并且服务器和客户端之间的输出将匹配。
 
-在React内部，`useId` 是从调用组件的 “ 父路径 ” 生成的。这就是为什么，如果客户端和服务器树相同，则 “ 父路径 ” 将匹配，而不管渲染顺序如何的原因。
+在 React 内部，调用组件的 “父路径” 生成 `useId`。这就是为什么，如果客户端和服务器的树相同，不管渲染顺序如何，“父路径” 将匹配。
 </DeepDive>
 
 ---
@@ -215,7 +215,7 @@ input { margin: 5px; }
 
 </Sandpack>
 
-这使你避免为每个需要唯一 ID 的元素调用`useId`。
+可以使你避免为每个需要唯一 ID 的元素调用 `useId`。
 
 ---
 
@@ -252,7 +252,7 @@ function PasswordField() {
         />
       </label>
       <p id={passwordHintId}>
-        密码应该包含至少18个字符
+        密码应该包含至少 18 个字符
       </p>
     </>
   );
