@@ -128,7 +128,9 @@ export function Page({children, toc, routeTree, meta, section}: PageProps) {
         {/* No fallback UI so need to be careful not to suspend directly inside. */}
         <Suspense fallback={null}>
           <main className="min-w-0 isolate">
-            <article className="break-words" key={asPath}>
+            <article
+              className="break-words font-normal text-primary dark:text-primary-dark"
+              key={asPath}>
               {content}
             </article>
             <div
@@ -145,7 +147,7 @@ export function Page({children, toc, routeTree, meta, section}: PageProps) {
                     <>
                       <div className="flex flex-col items-center m-4 p-4">
                         <p className="font-bold text-primary dark:text-primary-dark text-lg mb-4">
-                          How do you like these docs?
+                          你觉得这些文档怎么样？
                         </p>
                         <div>
                           <ButtonLink
@@ -154,7 +156,7 @@ export function Page({children, toc, routeTree, meta, section}: PageProps) {
                             type="primary"
                             size="md"
                             target="_blank">
-                            Take our survey!
+                            参与我们的调查吧！
                             <IconNavArrow
                               displayDirection="right"
                               className="inline ml-1"
