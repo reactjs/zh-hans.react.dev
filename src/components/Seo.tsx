@@ -18,7 +18,7 @@ export interface SeoProps {
 export const Seo = withRouter(
   ({
     title,
-    description = 'The library for web and native user interfaces',
+    description = '用于构建 Web 和原生交互界面的库',
     image = '/images/og-default.png',
     router,
     children,
@@ -134,6 +134,20 @@ export const Seo = withRouter(
         <link
           rel="preload"
           href="https://react.dev/fonts/Optimistic_Text_W_Bd.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="https://react.dev/fonts/Optimistic_Text_W_Rg.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="https://react.dev/fonts/Optimistic_Text_W_It.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"

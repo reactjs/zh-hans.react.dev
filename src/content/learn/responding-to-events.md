@@ -130,7 +130,7 @@ button { margin-right: 10px; }
 * `<button onClick={handleClick}>` 传递了 `handleClick` 函数。
 * `<button onClick={() => alert('...')}>` 传递了 `() => alert('...')` 函数。
 
-> [了解更多箭头函数的信息。](https://javascript.info/arrow-functions-basics)
+> [了解更多箭头函数的信息](https://javascript.info/arrow-functions-basics)。
 
 </Pitfall>
 

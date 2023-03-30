@@ -119,7 +119,7 @@ const SandboxShell = memo(function SandboxShell({
                   className="inline mr-1.5 text-xl"
                   displayDirection={isExpanded ? 'up' : 'down'}
                 />
-                {isExpanded ? 'Show less' : 'Show more'}
+                {isExpanded ? '收起' : '显示更多'}
               </span>
             </button>
           )}
