@@ -99,7 +99,7 @@ function TodoList({ todos, tab, theme }) {
 
 有时，你不能跳过重新渲染，因为屏幕确实需要更新。在这种情况下，你可以通过将必须同步的阻塞更新（比如向输入法输入）与不需要阻塞用户界面的非阻塞更新（比如更新图表）分开以提高性能。
 
-要确定渲染的优先级，可以使用这些 Hook 的一个：
+要确定渲染的优先级，可以从以下 Hook 选择其中之一：
 
 * [`useTransition`](/reference/react/useTransition) 让你把一个状态转换标记为非阻塞，并允许其他更新中断它。
 * [`useDeferredValue`](/reference/react/useDeferredValue) 让你推迟更新用户界面的一个非关键部分，让其他部分更新。
