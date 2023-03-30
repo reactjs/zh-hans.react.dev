@@ -2,25 +2,25 @@
 
 下面我们会从 [翻译注意事项](#翻译注意事项) 以及 [翻译流程](#翻译流程) 两个方面开始介绍。
 
-关于翻译的问题和反馈，请移步至 [这个讨论](https://github.com/reactjs/zh-hans.reactjs.org/discussions/1089)。
+关于翻译的问题和反馈，请移步至 [这个讨论](https://github.com/reactjs/zh-hans.react.dev/discussions/1089)。
 
 如果你有除了翻译内容以外的贡献，请移步到 [英文文档仓库](https://github.com/reactjs/react.dev/tree/main/README.md)。
 
 ## 翻译注意事项
 
-- 在翻译的过程中，我们需要遵循 [React 中文文档译文规范](https://github.com/reactjs/zh-hans.reactjs.org/wiki/React-%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3%E8%AF%91%E6%96%87%E6%8E%92%E7%89%88%E6%8C%87%E5%8D%97)。
-- 对于翻译中的专有名词，参见 [术语表](https://github.com/reactjs/zh-hans.reactjs.org/issues/2)。
+- 在翻译的过程中，我们需要遵循 [React 中文文档译文规范](https://github.com/reactjs/zh-hans.react.dev/wiki/React-%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3%E8%AF%91%E6%96%87%E6%8E%92%E7%89%88%E6%8C%87%E5%8D%97)。
+- 对于翻译中的专有名词，参见 [术语表](https://github.com/reactjs/zh-hans.react.dev/issues/2)。
 
 ## 翻译流程
 
 1. 阅读 [翻译注意事项](#翻译注意事项)
-2. 挑选你想要翻译的文章并进行 [任务认领](https://github.com/reactjs/zh-hans.reactjs.org/issues/602)
+2. 挑选你想要翻译的文章并进行 [任务认领](https://github.com/reactjs/zh-hans.react.dev/issues/602)
 4. 你可能需要设置一些必要的开发环境，参见 [前提准备](#前提准备)
 5. 准备就绪，你就可以进行 [翻译工作](#开始翻译)，翻译工作包括切换分支、内容修改和代码测试
 6. 需要将你的改变提交到 GitHub 并创建 Pull Request，参见 [提交和推送](#提交和推送)
-7. 审查人员会 [审核](https://github.com/reactjs/zh-hans.reactjs.org/issues/684) 你的 Pull Request，当两人以上通过该 Pull Request 时，你的翻译将被合并到仓库中
+7. 审查人员会 [审核](https://github.com/reactjs/zh-hans.react.dev/issues/684) 你的 Pull Request，当两人以上通过该 Pull Request 时，你的翻译将被合并到仓库中
 
-注：在以前，我们还有一份更为详细的 [翻译流程说明](https://github.com/reactjs/zh-hans.reactjs.org/issues/603)，可以供你参考
+注：在以前，我们还有一份更为详细的 [翻译流程说明](https://github.com/reactjs/zh-hans.react.dev/issues/603)，可以供你参考
 
 ### 前提准备
 
@@ -59,6 +59,6 @@
 
 1. `git add -A && git commit -m "My message"`：暂存以及提交你的改变（使用其它提交信息替换 `My message`，例如 `Fix header logo on Android`）
 2. `git push -u my-fork-name the-name-of-my-branch`
-3. 进入 [zh-hans.reactjs.org 仓库](https://github.com/reactjs/zh-hans.reactjs.org)，你将看到你最新 push 的分支。
+3. 进入 [zh-hans.react.dev 仓库](https://github.com/reactjs/zh-hans.react.dev)，你将看到你最新 push 的分支。
 4. 跟随 [GitHub 的指南](https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request?tool=webui) 创建 Pull Request。
 5. 在你完成以上步骤之后，该仓库会触发预构建，此时你可以查看你的改变是否符合预期。
