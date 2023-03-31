@@ -14,7 +14,7 @@ translators:
 
 <Note>
 
-**你需要安装 [Node.js](https://nodejs.org/zh-cn) 用于本地开发。** 你也可以选择在生产中使用 Node.js，但你不一定要这样。许多 React 框架支持导出到静态 HTML/CSS/JS 文件夹。
+**你需要安装 [Node.js](https://nodejs.org/zh-cn) 用于本地开发**。你也可以选择在生产中使用 Node.js，但你不一定要这样。许多 React 框架支持导出到静态 HTML/CSS/JS 文件夹。
 
 </Note>
 
@@ -22,7 +22,7 @@ translators:
 
 ### Next.js {/*nextjs*/}
 
-**[Next.js](https://nextjs.org/) 是一个全栈式的 React 框架。** 它用途广泛，可以让你创建任何规模的 React 应用——从大部分静态博客到复杂的动态应用。要创建一个新的 Next.js 项目，请在你的终端运行：
+**[Next.js](https://nextjs.org/) 是一个全栈式的 React 框架**。它用途广泛，可以让你创建任何规模的 React 应用——从大部分静态博客到复杂的动态应用。要创建一个新的 Next.js 项目，请在你的终端运行：
 
 <TerminalBlock>
 npx create-next-app
@@ -34,7 +34,7 @@ Next.js 由 [Vercel](https://vercel.com/) 维护。你可以 [将 Next.js 应用
 
 ### Remix {/*remix*/}
 
-**[Remix](https://remix.run/) 是一个具有嵌套路由的全栈式 React 框架。** 它让你把你的应用程序分成嵌套部分，可以并行加载数据并根据用户操作进行刷新。要创建一个新的 Remix 项目，请运行：
+**[Remix](https://remix.run/) 是一个具有嵌套路由的全栈式 React 框架**。它让你把你的应用程序分成嵌套部分，可以并行加载数据并根据用户操作进行刷新。要创建一个新的 Remix 项目，请运行：
 
 <TerminalBlock>
 npx create-remix
@@ -46,7 +46,7 @@ Remix 是由 [Shopify](https://www.shopify.com/) 维护的。当您创建一个 
 
 ### Gatsby {/*gatsby*/}
 
-**[Gatsby](https://www.gatsbyjs.com/) 是一个用于快速 CMS 支持的网站的 React 框架。** 其丰富的插件生态系统和 GraphQL 数据层简化了将内容、API 和服务整合到一个网站的过程。要创建一个新的 Gatsby 项目，请运行：
+**[Gatsby](https://www.gatsbyjs.com/) 是一个用于快速 CMS 支持的网站的 React 框架**。其丰富的插件生态系统和 GraphQL 数据层简化了将内容、API 和服务整合到一个网站的过程。要创建一个新的 Gatsby 项目，请运行：
 
 <TerminalBlock>
 npx create-gatsby
@@ -58,7 +58,7 @@ Gatsby 是由 [Netlify](https://www.netlify.com/) 维护的。你可以 [部署�
 
 ### Expo（用于本地应用程序） {/*expo*/}
 
-**[Expo](https://expo.dev/) 是一个 React 框架，可以让你创建具有真正本地 UI 的通用 Android、iOS 和 Web 应用程序。** 它为 [React Native](https://reactnative.dev/) 提供了一个 SDK，使本地部分更容易使用。要创建一个新的 Expo 项目，请运行：
+**[Expo](https://expo.dev/) 是一个 React 框架，可以让你创建具有真正本地 UI 的通用 Android、iOS 和 Web 应用程序**。它为 [React Native](https://reactnative.dev/) 提供了一个 SDK，使本地部分更容易使用。要创建一个新的 Expo 项目，请运行：
 
 <TerminalBlock>
 npx create-expo-app
@@ -78,9 +78,9 @@ Expo 是由 [Expo（公司）](https://expo.dev/about) 维护的。用 Expo 构�
 
 即使你一开始不需要路由或数据获取，你也可能想为它们添加一些库。随着你的 JavaScript 包随着每一个新功能的出现而增长，你可能要弄清楚如何为每一个路由单独拆分代码。随着你的数据获取需求越来越复杂，你很可能会遇到服务器-客户端的网络瀑布，使你的应用程序感觉非常慢。当你的受众包括更多网络条件差和低端设备的用户时，你可能需要从你的组件中生成 HTML 来提前显示内容——要么在服务器上，要么在构建时间内。改变你的设置以在服务器上或在构建过程中运行你的一些代码是非常棘手的。
 
-**这些问题不是 React 特有的。这就是为什么 Svelte 有 SvelteKit，Vue 有 Nuxt，等等。** 要自己解决这些问题，你需要将你的 bundler 与你的路由器和你的数据获取库整合起来。初步的设置工作并不难，但要使一个应用程序在随着时间的推移而快速加载，还涉及很多微妙的问题。你想把应用代码的数量降到最低，但要在单一的客户端-服务器往返中进行，与页面所需的任何数据并行。你可能希望在你的 JavaScript 代码运行之前，页面就已经是互动的了，以支持渐进式增强。你可能想为你的营销页面生成一个完全静态的 HTML 文件文件夹，可以在任何地方托管，并且在禁用 JavaScript 的情况下仍然可以工作。自己建立这些功能需要真正的工作。
+**这些问题不是 React 特有的。这就是为什么 Svelte 有 SvelteKit，Vue 有 Nuxt，等等**。要自己解决这些问题，你需要将你的 bundler 与你的路由器和你的数据获取库整合起来。初步的设置工作并不难，但要使一个应用程序在随着时间的推移而快速加载，还涉及很多微妙的问题。你想把应用代码的数量降到最低，但要在单一的客户端-服务器往返中进行，与页面所需的任何数据并行。你可能希望在你的 JavaScript 代码运行之前，页面就已经是互动的了，以支持渐进式增强。你可能想为你的营销页面生成一个完全静态的 HTML 文件文件夹，可以在任何地方托管，并且在禁用 JavaScript 的情况下仍然可以工作。自己建立这些功能需要真正的工作。
 
-**本页面上的 React 框架默认解决了这些问题，不需要你做额外的工作。** 它们让你在开始时非常精简，然后根据你的需求扩展你的应用程序。每个 React 框架都有一个社区，所以寻找问题的答案和升级工具都比较容易。框架还为你的代码提供了结构，帮助你和其他人在不同的项目之间保留背景和技能。相反，如果是自定义设置，则更容易卡在不支持的依赖版本上，而且你最终会创建自己的框架——尽管是一个没有社区或升级路径的框架（如果它像我们过去做的那些框架一样，则设计得更加草率）。
+**本页面上的 React 框架默认解决了这些问题，不需要你做额外的工作**。它们让你在开始时非常精简，然后根据你的需求扩展你的应用程序。每个 React 框架都有一个社区，所以寻找问题的答案和升级工具都比较容易。框架还为你的代码提供了结构，帮助你和其他人在不同的项目之间保留背景和技能。相反，如果是自定义设置，则更容易卡在不支持的依赖版本上，而且你最终会创建自己的框架——尽管是一个没有社区或升级路径的框架（如果它像我们过去做的那些框架一样，则设计得更加草率）。
 
 如果你仍然不相信，或者你的应用程序有不寻常的限制，而这些框架不能很好地满足你的要求，你想推出你自己的自定义设置，我们不能阻止你——去做吧！从 npm 抓取 `react` 和 `react-dom`，用 [Vite](https://vitejs.dev/) 或 [Parcel](https://parceljs.org/) 等 bundler 设置你的自定义构建过程，并根据你的需要添加其他工具，用于路由、静态生成或服务器端渲染等等。
 </DeepDive>
@@ -93,7 +93,7 @@ Expo 是由 [Expo（公司）](https://expo.dev/about) 维护的。用 Expo 构�
 
 ### Next.js (App Router) {/*nextjs-app-router*/}
 
-**[Next.js 的 App Router](https://beta.nextjs.org/docs/getting-started) 是对 Next.js APIs 的重新设计，旨在实现 React 团队的全栈架构愿景。** 它让你在异步组件中获取数据，这些组件在服务器甚至构建过程中运行。
+**[Next.js 的 App Router](https://beta.nextjs.org/docs/getting-started) 是对 Next.js APIs 的重新设计，旨在实现 React 团队的全栈架构愿景**。它让你在异步组件中获取数据，这些组件在服务器甚至构建过程中运行。
 
 Next.js 由 [Vercel](https://vercel.com/) 维护。你可以将 [Next.js 应用](https://nextjs.org/docs/deployment) 部署到任何 Node.js 或无服务器主机上，或部署到你自己的服务器上。Next.js 还支持 [静态导出](https://beta.nextjs.org/docs/configuring/static-export)，不需要服务器。
 <Pitfall>
