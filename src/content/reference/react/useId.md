@@ -20,7 +20,7 @@ const id = useId()
 
 ### `useId()` {/*useid*/}
 
-在组件的顶层调用 `useId` 以生成唯一 ID：
+在组件的顶层调用 `useId` 生成唯一 ID：
 
 ```js
 import { useId } from 'react';
@@ -58,7 +58,7 @@ function PasswordField() {
 
 ### 为可访问性属性生成唯一 ID {/*generating-unique-ids-for-accessibility-attributes*/}
 
-在组件的顶层调用 `useId` 来生成唯一 ID：
+在组件的顶层调用 `useId` 生成唯一 ID：
 
 ```js [[1, 4, "passwordHintId"]]
 import { useId } from 'react';
