@@ -9,7 +9,6 @@ on:
 jobs:
   comment:
     runs-on: ubuntu-latest
-    needs: judge
     if: >
         ${{ github.event.workflow_run.workflows.event == 'pull_request' &&
         github.event.workflow_run.workflows.conclusion == 'success' }} 
