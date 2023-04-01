@@ -89,7 +89,7 @@ jobs:
         run: echo ${{ github.event.number }} > ./pr_number
 
       - name: Upload PR number
-        uses: actions/upload-artifact@v
+        uses: actions/upload-artifact@v2
         with:
           name: pr_number
           path: ./pr_number
