@@ -8,20 +8,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  event_type:
-    runs-on: ubuntu-latest
-    steps: 
-      - uses: actions/checkout@v2
-      
-      - name: Save Event Type
-        run: echo ${{ github.event_name }} > ./event_type
-
-      - name: Upload Event Type
-        uses: actions/upload-artifact@v2
-        with:
-          path: ./event_type
-          name: event_type
-
   analyze:
     runs-on: ubuntu-latest
     steps:
