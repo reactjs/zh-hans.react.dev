@@ -26,15 +26,23 @@ jobs:
 
   comment:
     runs-on: ubuntu-latest
-    needs: judge
- 
     steps:
-      - name: Debug
+      - name: Download Event Type
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: analyze.yml
+          run_id: ${{ github.event.workflow_run.id }}
+          name: event_type
+          path: event_type
+
+      - name: get type
+        id: get-type
         run: |
-          
-          echo "22${{ needs.judge.steps.get-type.outputs }}"
+          event_type=$(cat event_type/event_type)
+          echo "event-type=$event_type" >> $GITHUB_OUTPUT
      
       - name: Download base branch bundle stats
+        if: github.workflow_run.conclusion == 'success' && steps.get-type.outputs.event-type == 'pull_request'
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: analyze.yml
