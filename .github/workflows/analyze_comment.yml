@@ -31,8 +31,8 @@ jobs:
     steps:
       - name: Debug
         run: |
-          echo "11${{ github.event.workflow_run.conclusion }}"
-          echo "22${{ needs.judge.steps.get-type.outputs.event-type }}"
+          
+          echo "22${{ needs.judge.steps.get-type.outputs }}"
      
       - name: Download base branch bundle stats
         uses: dawidd6/action-download-artifact@v2
