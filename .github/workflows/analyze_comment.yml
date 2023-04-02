@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: judge
     if: >
-       github.event.workflow_run.workflows.conclusion == 'fail' && needs.judge.steps.get-type.outputs.event-type == 'pull_request' 
+       github.event.workflow_run.workflows.conclusion == 'success' && needs.judge.steps.get-type.outputs.event-type == 'pull_request' 
     steps:
       - name: Download base branch bundle stats
         uses: dawidd6/action-download-artifact@v2
