@@ -113,7 +113,7 @@ function LearnMore({
       <section className="p-8 mt-16 mb-16 flex flex-row shadow-inner-border dark:shadow-inner-border-dark justify-between items-center bg-card dark:bg-card-dark rounded-2xl">
         <div className="flex-col">
           <h2 className="text-primary font-display dark:text-primary-dark font-bold text-2xl leading-tight">
-            Ready to learn this topic?
+            想要仔细学习这个主题的内容吗？
           </h2>
           {children}
           {path ? (
