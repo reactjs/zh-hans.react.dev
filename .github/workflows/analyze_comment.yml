@@ -23,7 +23,9 @@ jobs:
         run: |
           event_type=$(cat event_type/event_type)
           echo "event-type=$event_type" >> $GITHUB_OUTPUT
-     
+      - name: Test
+        run: echo "11${{steps.get-type.outputs.event-type}}"
+        
       - name: Download base branch bundle stats
         if: github.workflow_run.conclusion == 'success' && steps.get-type.outputs.event-type == 'pull_request'
         uses: dawidd6/action-download-artifact@v2
