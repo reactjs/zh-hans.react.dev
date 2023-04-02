@@ -209,7 +209,7 @@ li {
 </ul>
 ```
 
-这是因为 **Hook 只能在组件的顶层被调用。** 不能在循环语句、条件语句或 `map()` 函数中调用 `useRef` 。
+这是因为 **Hook 只能在组件的顶层被调用**。不能在循环语句、条件语句或 `map()` 函数中调用 `useRef` 。
 
 一种可能的解决方案是用一个 ref 引用其父元素，然后用 DOM 操作方法如 [`querySelectorAll`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/querySelectorAll) 来寻找它的子节点。然而，这种方法很脆弱，如果 DOM 结构发生变化，可能会失效或报错。
 

@@ -132,7 +132,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 请注意，每次点击只会让 `number` 递增一次！
 
-**设置 state 只会为 *下一次* 渲染变更 state 的值。** 在第一次渲染期间，`number` 为 `0`。这也就解释了为什么在 *那次渲染中的* `onClick` 处理函数中，即便在调用了 `setNumber(number + 1)` 之后，`number` 的值也仍然是 `0`：
+**设置 state 只会为 *下一次* 渲染变更 state 的值**。在第一次渲染期间，`number` 为 `0`。这也就解释了为什么在 *那次渲染中的* `onClick` 处理函数中，即便在调用了 `setNumber(number + 1)` 之后，`number` 的值也仍然是 `0`：
 
 ```js
 <button onClick={() => {

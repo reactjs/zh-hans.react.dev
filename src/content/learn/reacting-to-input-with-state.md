@@ -384,7 +384,7 @@ const [isError, setIsError] = useState(false);
 
 这有一些你可以问自己的， 关于 state 变量的问题：
 
-* **这个 state 是否会导致矛盾？** 例如，`isTyping` 与 `isSubmitting` 的状态不能同时为 `true`。矛盾的产生通常说明了这个 state 没有足够的约束条件。两个布尔值有四种可能的组合，但是只有三种对应有效的状态。为了将“不可能”的状态移除，你可以将 `'typing'`、`'submitting'` 以及 `'success'` 这三个中的其中一个与 `status` 结合。
+* **这个 state 是否会导致矛盾**？例如，`isTyping` 与 `isSubmitting` 的状态不能同时为 `true`。矛盾的产生通常说明了这个 state 没有足够的约束条件。两个布尔值有四种可能的组合，但是只有三种对应有效的状态。为了将“不可能”的状态移除，你可以将 `'typing'`、`'submitting'` 以及 `'success'` 这三个中的其中一个与 `status` 结合。
 * **相同的信息是否已经在另一个 state 变量中存在？** 另一个矛盾：`isEmpty` 和 `isTyping` 不能同时为 `true`。通过使它们成为独立的 state 变量，可能会导致它们不同步并导致 bug。幸运的是，你可以移除 `isEmpty` 转而用 `message.length === 0`。
 * **你是否可以通过另一个 state 变量的相反值得到相同的信息？** `isError` 是多余的，因为你可以检查 `error !== null`。
 
