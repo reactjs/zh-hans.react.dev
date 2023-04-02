@@ -11,7 +11,7 @@
       "path": "/learn",
       "routes": [
         {
-          "title": "教程：Tic-Tac-Toe 游戏",
+          "title": "教程：井字棋游戏",
           "path": "/learn/tutorial-tic-tac-toe"
         },
         {
