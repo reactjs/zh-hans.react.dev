@@ -122,7 +122,7 @@ function LearnMore({
               label="Read More"
               href={path}
               type="primary">
-              Read More
+              阅读更多有关内容
               <IconNavArrow displayDirection="right" className="inline ml-1" />
             </ButtonLink>
           ) : null}
@@ -136,7 +136,7 @@ function LearnMore({
 function ReadBlogPost({path}: {path: string}) {
   return (
     <ButtonLink className="mt-1" label="Read Post" href={path} type="primary">
-      Read Post
+      阅读文章
       <IconNavArrow displayDirection="right" className="inline ml-1" />
     </ButtonLink>
   );
@@ -193,7 +193,6 @@ function AuthorCredit({
     <div className="sr-only group-hover:not-sr-only group-focus-within:not-sr-only hover:sr-only">
       <p className="bg-card dark:bg-card-dark text-center text-sm text-secondary dark:text-secondary-dark leading-tight dark:text-secondary-dark p-2 rounded-lg absolute left-1/2 -top-4 -translate-x-1/2 -translate-y-full group-hover:flex group-hover:opacity-100 after:content-[''] after:absolute after:left-1/2 after:top-[95%] after:-translate-x-1/2 after:border-8 after:border-x-transparent after:border-b-transparent after:border-t-card after:dark:border-t-card-dark opacity-0 transition-opacity duration-300">
         <cite>
-          Illustrated by{' '}
           {authorLink ? (
             <a
               target="_blank"
@@ -204,7 +203,8 @@ function AuthorCredit({
             </a>
           ) : (
             author
-          )}
+          )}{' '}
+          绘图
         </cite>
       </p>
     </div>
