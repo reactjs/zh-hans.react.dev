@@ -42,7 +42,7 @@ npx create-remix
 
 如果你是 Remix 的新手，请查看 Remix 的 [博客教程](https://remix.run/docs/en/main/tutorials/blog) （短）和 [应用程序教程](https://remix.run/docs/en/main/tutorials/jokes) （长）。
 
-Remix 是由 [Shopify](https://www.shopify.com/) 维护的。当您创建一个 Remix 项目时，您需要 [选择您的部署目标](https://remix.run/docs/en/main/guides/deployment)。您可以通过使用或编写 [适配器](https://remix.run/docs/en/main/other-api/adapter) 将 Remix 应用部署到任何 Node.js 或无服务器托管。
+Remix 是由 [Shopify](https://www.shopify.com/) 维护的。当你创建一个 Remix 项目时，你需要 [选择你的部署目标](https://remix.run/docs/en/main/guides/deployment)。你可以通过使用或编写 [适配器](https://remix.run/docs/en/main/other-api/adapter) 将 Remix 应用部署到任何 Node.js 或无服务器托管。
 
 ### Gatsby {/*gatsby*/}
 
@@ -72,7 +72,7 @@ Expo 是由 [Expo（公司）](https://expo.dev/about) 维护的。用 Expo 构�
 
 #### 我可以在没有框架的情况下使用 React 吗？ {/*can-i-use-react-without-a-framework*/}
 
-你当然可以在没有框架的情况下使用 React ——这就是你如何 [将 React 用于你页面的一部分](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page)。**但是，如果你要用 React 构建一个新的应用程序或网站，我们建议使用一个框架**。
+你当然可以在没有框架的情况下使用 React ——这就是 [将 React 用于你页面的一部分](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page)。**但是，如果你要用 React 构建一个新的应用程序或网站，我们建议使用一个框架**。
 
 这里是一些原因。
 
@@ -95,10 +95,10 @@ Expo 是由 [Expo（公司）](https://expo.dev/about) 维护的。用 Expo 构�
 
 **[Next.js 的 App Router](https://beta.nextjs.org/docs/getting-started) 是对 Next.js API 的重新设计，旨在实现 React 团队的全栈架构愿景**。它让你在异步组件中获取数据，这些组件甚至能在服务端构建过程中运行。
 
-Next.js 由 [Vercel](https://vercel.com/) 维护。你可以将 [Next.js 应用](https://nextjs.org/docs/deployment) 部署到任何 Node.js 或无服务器主机上，或部署到你自己的服务器上。Next.js 还支持 [静态导出](https://beta.nextjs.org/docs/configuring/static-export)，不需要服务器。
+Next.js 由 [Vercel](https://vercel.com/) 维护。你可以将 [Next.js 应用](https://nextjs.org/docs/deployment) 部署到 Node.js 或 serverless 主机上，或部署到你自己的服务器上。Next.js 还支持 [静态导出](https://beta.nextjs.org/docs/configuring/static-export)，不需要服务器。
 <Pitfall>
 
-Next.js 的 App Router 目前处于**测试阶段，还不建议用于生产**（截止到 2023 年 3 月）。要在现有的 Next.js 项目中试验它，[请遵循此增量迁移指南](https://beta.nextjs.org/docs/upgrade-guide#migrating-from-pages-to-app)。
+Next.js 的 App Router 目前处于**测试阶段，还不建议用于生产环境**（截止到 2023 年 3 月）。要在现有的 Next.js 项目中试验它，[请遵循此增量迁移指南](https://beta.nextjs.org/docs/upgrade-guide#migrating-from-pages-to-app)。
 
 </Pitfall>
 
@@ -106,7 +106,7 @@ Next.js 的 App Router 目前处于**测试阶段，还不建议用于生产**�
 
 #### 哪些功能构成了 React 团队的全栈架构愿景？ {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
 
-Next.js 的 App Router bundler 完全实现了官方的 [React 服务器组件规范](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md)。这让你可以在一棵 React 树上混合构建时间、纯服务器和互动组件。
+Next.js 的 App Router bundler 完全实现了官方的 [React 服务端组件规范](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md)。这让你可以在一棵 React 树上混合构建时间、纯服务器和互动组件。
 
 例如，你可以把一个纯服务器的 React 组件写成一个 `async' 函数，从数据库或文件中读取。然后你可以把数据从它那里传递给你的互动组件：
 
@@ -132,6 +132,6 @@ Next.js 的 App Router 还集成了 [用 Suspense 获取数据的能力](/blog/2
 </Suspense>
 ```
 
-服务器组件和 Suspense 是 React 的特性，而不是 Next.js 的特性。然而，在框架层面上采用它们需要投入大量的实现工作。目前，Next.js App Router 是最完整的实现。React 团队正在与 bundler 开发人员合作，使这些功能在下一代框架中更容易实现。
+服务端组件和 Suspense 是 React 的特性，而不是 Next.js 的特性。然而，在框架层面上采用它们需要投入大量的实现工作。目前，Next.js App Router 是最完整的实现。React 团队正在与 bundler 开发人员合作，使这些功能在下一代框架中更容易实现。
 
 </DeepDive>
