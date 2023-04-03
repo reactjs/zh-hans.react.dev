@@ -7,7 +7,7 @@ translators:
 
 <Intro>
 
-JSX 允许你在 JavaScript 中编写类似 HTML 的标记，从而使渲染的逻辑和内容可以写在一起。有时候，你可能想要在标记中添加一些 JavaScript 逻辑或者引用动态的属性。这种情况下，你可以在 JSX 的大括号内来编写 JavaScript。
+JSX 允许你在 JavaScript 中编写类似 HTML 的标签，从而使渲染的逻辑和内容可以写在一起。有时候，你可能想要在标签中添加一些 JavaScript 逻辑或者引用动态的属性。这种情况下，你可以在 JSX 的大括号内来编写 JavaScript。
 
 </Intro>
 
@@ -583,7 +583,7 @@ body > div > div { padding: 20px; }
 
 </Sandpack>
 
-变量和函数可以帮助你保持标记文本的简洁！
+变量和函数可以帮助你保持标签文本的简洁！
 
 </Solution>
 
