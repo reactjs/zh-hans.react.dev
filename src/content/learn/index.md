@@ -16,7 +16,7 @@ translators:
 <YouWillLearn>
 
 - 如何创建和嵌套组件
-- 如何添加标记和样式
+- 如何添加标签和样式
 - 如何显示数据
 - 如何渲染条件和列表
 - 如何对事件做出响应并更新界面
@@ -28,7 +28,7 @@ translators:
 
 React 应用程序是由 **组件** 组成的。一个组件是 UI（用户界面）的一部分，它拥有自己的逻辑和外观。组件可以小到一个按钮，也可以大到整个页面。
 
-React 组件是返回标记的 JavaScript 函数：
+React 组件是返回标签的 JavaScript 函数：
 
 ```js
 function MyButton() {
@@ -80,9 +80,9 @@ export default function MyApp() {
 
 `export default` 关键字指定了文件中的主要组件。如果你对 JavaScript 某些语法不熟悉，可以参考 [MDN](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export) 以及 [javascript.info](https://javascript.info/import-export)，可能会对你有所帮助。
 
-## 使用 JSX 编写标记 {/*writing-markup-with-jsx*/}
+## 使用 JSX 编写标签 {/*writing-markup-with-jsx*/}
 
-上面所使用的标记语法被称为 *JSX*。它是可选的，但大多数 React 项目会使用 JSX，主要是它很方便。所有 [我们推荐的本地开发工具](/learn/installation) 都支持 JSX，开箱即用。
+上面所使用的标签语法被称为 *JSX*。它是可选的，但大多数 React 项目会使用 JSX，主要是它很方便。所有 [我们推荐的本地开发工具](/learn/installation) 都支持 JSX，开箱即用。
 
 JSX 比 HTML 更加严格。你必须闭合标签，如 `<br />`。你的组件也不能返回多个 JSX 标签。你必须将它们包裹到一个共享的父级中，比如 `<div>...</div>` 或使用空的 `<>...</>` 包裹：
 
@@ -120,7 +120,7 @@ React 并没有规定你如何添加 CSS 文件。最简单的方式，你可以
 
 ## 显示数据 {/*displaying-data*/}
 
-JSX 会让你把标记放到 JavaScript 中。而大括号会让你 "回到" JavaScript 中，这样你就可以从你的代码中嵌入一些变量并展示给用户。例如，这将显示 `user.name`：
+JSX 会让你把标签放到 JavaScript 中。而大括号会让你 "回到" JavaScript 中，这样你就可以从你的代码中嵌入一些变量并展示给用户。例如，这将显示 `user.name`：
 
 ```js {3}
 return (

@@ -1,5 +1,5 @@
 ---
-title: 使用 JSX 书写标记语言
+title: 使用 JSX 书写标签语言
 translators:
   - songhn233
   - fqd511
@@ -9,21 +9,21 @@ translators:
 
 <Intro>
 
-**JSX** 是 JavaScript 语法扩展，可以让你在 JavaScript 文件中书写类似 HTML 的标记。虽然还有其它方式可以编写组件，但大部分 React 开发者更喜欢 JSX 的简洁性，并且在大部分代码库中使用它。
+**JSX** 是 JavaScript 语法扩展，可以让你在 JavaScript 文件中书写类似 HTML 的标签。虽然还有其它方式可以编写组件，但大部分 React 开发者更喜欢 JSX 的简洁性，并且在大部分代码库中使用它。
 
 </Intro>
 
 <YouWillLearn>
 
-* 为什么 React 将标记和渲染逻辑耦合在一起
+* 为什么 React 将标签和渲染逻辑耦合在一起
 * JSX 与 HTML 有什么区别
 * 如何通过 JSX 展示信息
 
 </YouWillLearn>
 
-## JSX: 将标记引入 JavaScript {/*jsx-putting-markup-into-javascript*/}
+## JSX: 将标签引入 JavaScript {/*jsx-putting-markup-into-javascript*/}
 
-网页是构建在 HTML、CSS 和 JavaScript 之上的。多年以来，web 开发者都是将网页内容存放在 HTML 中，样式放在 CSS 中，而逻辑则放在 JavaScript 中 —— 通常是在不同的文件中！页面的内容通过标记语言描述并存放在 HTML 文件中，而逻辑则单独存放在 JavaScript 文件中。
+网页是构建在 HTML、CSS 和 JavaScript 之上的。多年以来，web 开发者都是将网页内容存放在 HTML 中，样式放在 CSS 中，而逻辑则放在 JavaScript 中 —— 通常是在不同的文件中！页面的内容通过标签语言描述并存放在 HTML 文件中，而逻辑则单独存放在 JavaScript 文件中。
 
 <DiagramGroup>
 
@@ -41,7 +41,7 @@ JavaScript
 
 </DiagramGroup>
 
-但随着 Web 的交互性越来越强，逻辑越来越决定页面中的内容。JavaScript 负责 HTML 的内容！这也是为什么 **在 React 中，渲染逻辑和标记共同存在于同一个地方——组件。**
+但随着 Web 的交互性越来越强，逻辑越来越决定页面中的内容。JavaScript 负责 HTML 的内容！这也是为什么 **在 React 中，渲染逻辑和标签共同存在于同一个地方——组件。**
 
 <DiagramGroup>
 
@@ -59,9 +59,9 @@ JavaScript
 
 </DiagramGroup>
 
-将一个按钮的渲染逻辑和标记放在一起可以确保它们在每次编辑时都能保持互相同步。反之，彼此无关的细节是互相隔离的，例如按钮的标记和侧边栏的标记。这样我们在修改其中任意一个组件时会更安全。
+将一个按钮的渲染逻辑和标签放在一起可以确保它们在每次编辑时都能保持互相同步。反之，彼此无关的细节是互相隔离的，例如按钮的标签和侧边栏的标签。这样我们在修改其中任意一个组件时会更安全。
 
-每个 React 组件都是一个 JavaScript 函数，它会返回一些标记，React 会将这些标记渲染到浏览器上。React 组件使用一种被称为 JSX 的语法扩展来描述这些标记。JSX 看起来和 HTML 很像，但它的语法更加严格并且可以动态展示信息。了解这些区别最好的方式就是将一些 HTML 标记转化为 JSX 标记。
+每个 React 组件都是一个 JavaScript 函数，它会返回一些标签，React 会将这些标签渲染到浏览器上。React 组件使用一种被称为 JSX 的语法扩展来描述这些标签。JSX 看起来和 HTML 很像，但它的语法更加严格并且可以动态展示信息。了解这些区别最好的方式就是将一些 HTML 标签转化为 JSX 标签。
 
 <Note>
 
@@ -71,7 +71,7 @@ JavaScript
 
 ## 将 HTML 转化为 JSX {/*converting-html-to-jsx*/}
 
-假设你现在有一些（完全有效的）HTML 标记：
+假设你现在有一些（完全有效的）HTML 标签：
 
 ```html
 <h1>海蒂·拉玛的代办事项</h1>
@@ -87,7 +87,7 @@ JavaScript
 </ul>
 ```
 
-而现在想要把这些标记迁移到组件中：
+而现在想要把这些标签迁移到组件中：
 
 ```js
 export default function TodoList() {
@@ -127,7 +127,7 @@ img { height: 90px }
 
 </Sandpack>
 
-这是因为 JSX 语法更加严格并且相比 HTML 有更多的规则！上面的错误提示可以帮助你修复标记中的错误，当然也可以参考下面的指引。
+这是因为 JSX 语法更加严格并且相比 HTML 有更多的规则！上面的错误提示可以帮助你修复标签中的错误，当然也可以参考下面的指引。
 
 <Note>
 
@@ -158,7 +158,7 @@ img { height: 90px }
 ```
 
 
-如果你不想在标记中增加一个额外的 `<div>`，可以用 `<>` 和 `</>` 元素来代替：
+如果你不想在标签中增加一个额外的 `<div>`，可以用 `<>` 和 `</>` 元素来代替：
 
 ```js {1,11}
 <>
@@ -188,7 +188,7 @@ JSX 虽然看起来很像 HTML，但在底层其实被转化为了 JavaScript �
 
 JSX 要求标签必须正确闭合。像 `<img>` 这样的自闭合标签必须书写成 `<img />`，而像 `<li>oranges` 这样只有开始标签的元素必须带有闭合标签，需要改为 `<li>oranges</li>`。
 
-海蒂·拉玛的照片和代办事项的标记经修改后变为：
+海蒂·拉玛的照片和代办事项的标签经修改后变为：
 
 ```js {2-6,8-10}
 <>
@@ -229,7 +229,7 @@ JSX 最终会被转化为 JavaScript，而 JSX 中的属性也会变成 JavaScri
 
 ### 高级提示：使用 JSX 转化器 {/*pro-tip-use-a-jsx-converter*/}
 
-将现有的 HMTL 中的所有属性转化 JSX 的格式是很繁琐的。我们建议使用 [转化器](https://transform.tools/html-to-jsx) 将 HTML 和 SVG 标记转化为 JSX。这种转化器在实践中非常有用。但我们依然有必要去了解这种转化过程中发生了什么，这样你就可以编写自己的 JSX 了。
+将现有的 HMTL 中的所有属性转化 JSX 的格式是很繁琐的。我们建议使用 [转化器](https://transform.tools/html-to-jsx) 将 HTML 和 SVG 标签转化为 JSX。这种转化器在实践中非常有用。但我们依然有必要去了解这种转化过程中发生了什么，这样你就可以编写自己的 JSX 了。
 
 这是最终的结果：
 
@@ -265,9 +265,9 @@ img { height: 90px }
 
 现在你知道了为什么我们需要 JSX 以及如何在组件中使用它：
 
-* 由于渲染逻辑和标记是紧密相关的，所以 React 将它们存放在一个组件中。
+* 由于渲染逻辑和标签是紧密相关的，所以 React 将它们存放在一个组件中。
 * JSX 类似 HTML，不过有一些区别。如果需要的话可以使用 [转化器](https://transform.tools/html-to-jsx) 将 HTML 转化为 JSX。
-* 错误提示通常会指引你将标记修改为正确的格式。
+* 错误提示通常会指引你将标签修改为正确的格式。
 
 </Recap>
 

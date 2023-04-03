@@ -185,7 +185,7 @@ return (
 );
 ```
 
-一开始，你可能会觉得将 JS 和标记混合在一起会有些奇怪，但后面你会慢慢爱上它的！欲了解更多，请参阅 [用 JSX 编写标记](/learn/writing-markup-with-jsx) 的介绍。这是 [一个使用了 JSX 的 HTML 文件示例](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html)，你可以下载并尝试使用。
+一开始，你可能会觉得将 JS 和标签混合在一起会有些奇怪，但后面你会慢慢爱上它的！欲了解更多，请参阅 [用 JSX 编写标签](/learn/writing-markup-with-jsx) 的介绍。这是 [一个使用了 JSX 的 HTML 文件示例](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html)，你可以下载并尝试使用。
 
 <Pitfall>
 

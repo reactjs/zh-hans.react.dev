@@ -566,7 +566,7 @@ setMyList(myList.map(artwork => {
     // 没有变更
     return artwork;
   }
-});
+}));
 ```
 
 此处的 `...` 是一个对象展开语法，被用来[创建一个对象的拷贝](/learn/updating-objects-in-state#copying-objects-with-the-spread-syntax).
