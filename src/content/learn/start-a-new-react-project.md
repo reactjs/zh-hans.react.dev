@@ -22,7 +22,7 @@ translators:
 
 ### Next.js {/*nextjs*/}
 
-**[Next.js](https://nextjs.org/) 是一个全栈式的 React 框架**。它用途广泛，可以让你创建任何规模的 React 应用——从大部分静态博客到复杂的动态应用。要创建一个新的 Next.js 项目，请在你的终端运行：
+**[Next.js](https://nextjs.org/) 是一个全栈式的 React 框架**。它用途广泛，可以让你创建任何规模的 React 应用——可以是静态博客，也可以是复杂的动态应用。要创建一个新的 Next.js 项目，请在你的终端运行：
 
 <TerminalBlock>
 npx create-next-app
