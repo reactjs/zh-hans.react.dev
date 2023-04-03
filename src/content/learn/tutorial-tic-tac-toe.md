@@ -920,7 +920,7 @@ React 开发者工具可以检查 React 组件的 prop 和 state。可以在 Cod
 
 你会如何处理？起初，你可能会猜测 `Board` 需要向每个 `Square`“询问”`Square` 的 state。尽管这种方法在 React 中在技术上是可行的，但我们不鼓励这样做，因为代码变得难以理解、容易出现错误并且难以重构。相反，最好的方法是将游戏的 state 存储在父 `Board` 组件中，而不是每个 `Square` 中。`Board` 组件可以通过传递一个 prop 来告诉每个 `Square` 显示什么，就像你将数字传递给每个 Square 时所做的那样。
 
-**要从多个子组件收集数据，或让两个子组件相互通信，请改为在其父组件中声明共享 state。父组件可以通过道具将该 state 传回给子组件。这使子组件彼此同步并与其父组件保持同步。**
+**要从多个子组件收集数据，或让两个子组件相互通信，请改为在其父组件中声明共享 state。父组件可以通过 prop 将该 state 传回给子组件。这使子组件彼此同步并与其父组件保持同步。**
 
 重构 React 组件时，将状态提升到父组件中很常见。
 
@@ -1063,7 +1063,7 @@ body {
 
 </Sandpack>
 
-现在，每个 Square 都会收到一个 `value` 道具，对于空方块，该道具将是 `'X'` 、`'O'` 或 `null`。
+现在，每个 Square 都会收到一个 `value`  prop，对于空方块，该 prop 将是 `'X'` 、`'O'` 或 `null`。
 
 接下来，你需要更改单击 `Square` 时发生的情况。`Board` 组件现在维护填充了哪些方块。你需要为 `Square` 创建一种更新 `Board` state 的方法。由于 state 对于定义它的组件是私有的，因此你不能直接从 `Square` 更新 `Board` 的 state。
 
@@ -1168,9 +1168,9 @@ Too many re-renders. React limits the number of renders to prevent an infinite l
 
 为什么这个问题没有早点发生？
 
-当你传递 `onSquareClick={handleClick}` 时，你将 `handleClick` 函数作为道具向下传递。你不是在召唤它！但是现在你立即调用该函数——注意 `handleClick(0)` 中的括号——这就是它运行得太早的原因。你不想在用户点击之前调用 `handleClick` ！
+当你传递 `onSquareClick={handleClick}` 时，你将 `handleClick` 函数作为 prop 向下传递。你不是在召唤它！但是现在你立即调用该函数——注意 `handleClick(0)` 中的括号——这就是它运行得太早的原因。你不想在用户点击之前调用 `handleClick` ！
 
-你可以通过创建调用 `handleClick(0)` 的函数（如 `handleFirstSquareClick`）、调用 `handleClick(1)` 的函数（如 `handleSecondSquareClick`）等来修复。你可以将这些函数作为 `onSquareClick={handleFirstSquareClick}` 之类的道具传递（而不是调用）。这将解决无限循环。
+你可以通过创建调用 `handleClick(0)` 的函数（如 `handleFirstSquareClick`）、调用 `handleClick(1)` 的函数（如 `handleSecondSquareClick`）等来修复。你可以将这些函数作为 `onSquareClick={handleFirstSquareClick}` 之类的 prop 传递（而不是调用）。这将解决无限循环。
 
 但是，定义九个不同的函数并为每个函数命名太冗长了。相反，让我们这样做：
 
@@ -1314,7 +1314,7 @@ body {
 
 </Sandpack>
 
-现在你的 state 处理在 `Board` 组件中，父 `Board` 组件将道具传递给子 `Square` 组件，以便它们可以正确显示。单击 `Square` 时，子 `Square` 组件现在要求父 `Board` 组件更新板的 state。当 `Board` 的 state 改变时，`Board` 组件和每个子 `Square` 都会自动重新渲染。保持 `Board` 组件中所有方块的 state 将允许它确定未来的赢家。
+现在你的 state 处理在 `Board` 组件中，父 `Board` 组件将 prop 传递给子 `Square` 组件，以便它们可以正确显示。单击 `Square` 时，子 `Square` 组件现在要求父 `Board` 组件更新板的 state。当 `Board` 的 state 改变时，`Board` 组件和每个子 `Square` 都会自动重新渲染。保持 `Board` 组件中所有方块的 state 将允许它确定未来的赢家。
 
 让我们回顾一下当用户单击你的看板左上角的方块以向其添加 `X` 时会发生什么：
 
