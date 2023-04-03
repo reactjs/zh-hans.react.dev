@@ -30,7 +30,7 @@ npx create-next-app
 
 如果你是 Next.js 的新手，请查看 [Next.js 教程](https://nextjs.org/learn/foundations/about-nextjs)。
 
-Next.js 由 [Vercel](https://vercel.com/) 维护。你可以 [将 Next.js 应用程序](https://nextjs.org/docs/deployment) 部署到任何 Node.js 或无服务器主机上，或部署到你自己的服务器上。[完全静态的 Next.js 应用程序](https://nextjs.org/docs/advanced-features/static-html-export) 可以被部署到任何静态主机。
+Next.js 由 [Vercel](https://vercel.com/) 维护。你可以 [将 Next.js 应用程序](https://nextjs.org/docs/deployment) 部署到 Node.js 或 serverless 上，也可以部署到你自己的服务器上。[完全静态的 Next.js 应用程序](https://nextjs.org/docs/advanced-features/static-html-export) 支持静态部署。
 
 ### Remix {/*remix*/}
 
