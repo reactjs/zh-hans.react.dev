@@ -412,7 +412,7 @@ export default function Square() {
 }
 ```
 
- `styles.css` 成功设置了样式！现在我们已经使用样式化的 `div` 将组件分组到行中，你拥有了井字棋棋盘：
+`styles.css` 成功设置了样式！现在我们已经使用样式化的 `div` 将组件分组到行中，你拥有了井字棋棋盘：
 
 ![tic-tac-toe board filled with numbers 1 through 9](../images/tutorial/number-filled-board.png)
 
@@ -554,9 +554,9 @@ export default function Board() {
 
 ![one-filled board](../images/tutorial/board-filled-with-ones.png)
 
-哦不！你失去了你以前有正确编的方块。现在每个方块都写着“1”。要解决此问题，需要使用 prop 将每个方块应具有的值从父组件（`Board`）传递到其子组件（`Square`）。
+哦不！你失去了你以前有正确编号的方块。现在每个方块都写着“1”。要解决此问题，需要使用 *prop* 将每个方块应具有的值从父组件（`Board`）传递到其子组件（`Square`）。
 
-更新 `Square` 组件，读取将从 `Board` 传递的 `value` prop：
+更新 `Square` 组件，读取从 `Board` 传递的 `value` prop：
 
 ```js {1}
 function Square({ value }) {
@@ -720,7 +720,7 @@ function Square({ value }) {
 }
 ```
 
-如果现在单击一个方块，你应该会看到一条日志，上面写着 `"clicked!"` 在 CodeSandbox 中浏览器部分底部的控制台选项卡中。多次单击方块将再次记录 `"clicked!"`。具有相同消息的重复控制台日志不会在控制台中创建更多行。相反，你会在第一次 `"clicked!"` 旁边看到一个递增的计数器。
+如果现在单击一个方块，你应该会看到一条日志，上面写着 `"clicked!"` 在 CodeSandbox 中 *Browser* 部分底部的 *Console* 选项卡中。多次单击方块将再次记录 `"clicked!"`。具有相同消息的重复控制台日志不会在控制台中创建更多行。相反，你会在第一次 `"clicked!"` 旁边看到一个递增的计数器。
 
 <Note>
 
@@ -732,7 +732,7 @@ function Square({ value }) {
 
 React 提供了一个名为 `useState` 的特殊函数，可以从组件中调用它来让它“记住”一些东西。让我们将 `Square` 的当前值存储在 `state` 中，并在单击 `Square` 时更改它。
 
-在文件的顶部导入 `useState`。从 `Square` 组件中移除 value  prop。相反地，在调用 `useState` 的 `Square` 的开头添加一个新行。让它返回一个名为 value 的 state 变量：
+在文件的顶部导入 `useState`。从 `Square` 组件中移除 `value` prop。相反地，在调用 `useState` 的 `Square` 的开头添加一个新行。让它返回一个名为 value 的 state 变量：
 
 ```js {1,3,4}
 import { useState } from 'react';
@@ -744,7 +744,7 @@ function Square() {
     //...
 ```
 
-`value 存储值`，而 `setValue` 是可用于更改值的函数。传递给 `useState` 的 `null` 用作这个 state 变量的初始值，因此此处 `value` 的值开始时等于 null。
+`value` 存储值，而 `setValue` 是可用于更改值的函数。传递给 `useState` 的 `null` 用作这个 state 变量的初始值，因此此处 `value` 的值开始时等于 null。
 
 由于 `Square` 组件不再接受 prop，将从 Board 组件创建的所有九个 Square 组件中删除 `value` prop：
 
@@ -896,7 +896,7 @@ body {
 
 ### React 开发者工具 {/*react-developer-tools*/}
 
-React 开发者工具可以检查 React 组件的 prop 和 state。可以在 CodeSandbox 的浏览器部分底部找到 React DevTools 选项卡：
+React 开发者工具可以检查 React 组件的 prop 和 state。可以在 CodeSandbox 的 *Browser* 部分底部找到 React DevTools 选项卡：
 
 ![React DevTools in CodeSandbox](../images/tutorial/codesandbox-devtools.png)
 
@@ -936,7 +936,7 @@ export default function Board() {
 }
 ```
 
- `Array(9).fill(null)` 创建一个包含九个元素的数组，并将它们中的每一个都设置为 `null`。围绕它的 `useState()` 调用声明了一个初始设置为该数组的 `squares` state 变量。数组中的每个条目对应于一个正方形的值。当你稍后填写棋盘时，`squares` 数组将如下所示：
+`Array(9).fill(null)` 创建一个包含九个元素的数组，并将它们中的每一个都设置为 `null`。围绕它的 `useState()` 调用声明了一个初始设置为该数组的 `squares` state 变量。数组中的每个条目对应于一个正方形的值。当你稍后填写棋盘时，`squares` 数组将如下所示：
 
 ```jsx
 ['O', null, 'X', 'X', 'X', 'O', 'O', null, null]
@@ -1063,11 +1063,11 @@ body {
 
 </Sandpack>
 
-现在，每个 Square 都会收到一个 `value` 道具，对于空方块，该道具将是 `'X'` 、 `'O'` 或 `null` 。
+现在，每个 Square 都会收到一个 `value` 道具，对于空方块，该道具将是 `'X'` 、`'O'` 或 `null`。
 
 接下来，你需要更改单击 `Square` 时发生的情况。`Board` 组件现在维护填充了哪些方块。你需要为 `Square` 创建一种更新 `Board` state 的方法。由于 state 对于定义它的组件是私有的，因此你不能直接从 `Square` 更新 `Board` 的 state。
 
-你将从 `Board` 组件向下传递一个函数到 `Square` 组件，你将让 `Square` 在单击方块时调用该函数。你将从单击 `Square` 组件时将调用的函数开始。你将调用该函数 `onSquareClick` ：
+你将从 `Board` 组件向下传递一个函数到 `Square` 组件，你将让 `Square` 在单击方块时调用该函数。你将从单击 `Square` 组件时将调用的函数开始。你将调用该函数 `onSquareClick`：
 
 ```js {3}
 function Square({ value }) {
@@ -1091,7 +1091,7 @@ function Square({ value, onSquareClick }) {
 }
 ```
 
-现在，你将把 `onSquareClick` prop 连接到 `Board` 组件中的一个函数，你将命名为 `handleClick` 。要将 `onSquareClick` 连接到 `handleClick` ，你需要将一个函数传递给第一个 `Square` 组件的 `onSquareClick` prop ：
+现在，你将把 `onSquareClick` prop 连接到 `Board` 组件中的一个函数，你将命名为 `handleClick` 。要将 `onSquareClick` 连接到 `handleClick` ，你需要将一个函数传递给第一个 `Square` 组件的 `onSquareClick` prop：
 
 ```js {7}
 export default function Board() {
@@ -1124,7 +1124,7 @@ export default function Board() {
 }
 ```
 
- `handleClick` 函数使用 JavaScript `slice()` Array 方法创建 `squares` 数组 ( `nextSquares` ) 的副本。然后，`handleClick` 更新 `nextSquares` 数组以将 `X` 添加到第一个（`[0]` 索引）方块。
+ `handleClick` 函数使用 JavaScript `slice()` Array 方法创建 `squares` 数组（`nextSquares` ）的副本。然后，`handleClick` 更新 `nextSquares` 数组以将 `X` 添加到第一个（`[0]` 索引）方块。
 
 调用 `setSquares` 函数让 React 知道组件的 state 已经改变。这将触发使用 `squares` state（`Board`）的组件及其子组件（构成棋盘的 `Square` 组件）的重新渲染。
 
@@ -1134,7 +1134,7 @@ JavaScript 支持闭包，这意味着内部函数（例如 `handleClick`）可�
 
 </Note>
 
-现在你可以将 X 添加到棋盘上……但只能添加到左上角的方块。你的 `handleClick` 函数被硬编码为更新左上角方块 ( `0` ) 的索引。让我们更新 `handleClick` 以便能够更新任何正方形。将参数 `i` 添加到 `handleClick` 函数，该函数采用要更新的正方形索引：
+现在你可以将 X 添加到棋盘上……但只能添加到左上角的方块。你的 `handleClick` 函数被硬编码为更新左上角方块（ `0`）的索引。让我们更新 `handleClick` 以便能够更新任何正方形。将参数 `i` 添加到 `handleClick` 函数，该函数采用要更新的正方形索引：
 
 ```js {4,6}
 export default function Board() {
@@ -1152,7 +1152,7 @@ export default function Board() {
 }
 ```
 
-接下来，你需要将 `i` 传递给 `handleClick` 。你可以尝试像这样在 JSX 中直接将 square 的 `onSquareClick` prop 设置为 `handleClick(0)` ，但这是行不通的：
+接下来，你需要将 `i` 传递给 `handleClick`。你可以尝试像这样在 JSX 中直接将 square 的 `onSquareClick` prop 设置为 `handleClick(0)` ，但这是行不通的：
 
 ```jsx
 <Square value={squares[0]} onSquareClick={handleClick(0)} />
