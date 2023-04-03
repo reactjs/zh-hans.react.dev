@@ -93,7 +93,7 @@ Expo 是由 [Expo（公司）](https://expo.dev/about) 维护的。用 Expo 构�
 
 ### Next.js (App Router) {/*nextjs-app-router*/}
 
-**[Next.js 的 App Router](https://beta.nextjs.org/docs/getting-started) 是对 Next.js APIs 的重新设计，旨在实现 React 团队的全栈架构愿景**。它让你在异步组件中获取数据，这些组件在服务器甚至构建过程中运行。
+**[Next.js 的 App Router](https://beta.nextjs.org/docs/getting-started) 是对 Next.js API 的重新设计，旨在实现 React 团队的全栈架构愿景**。它让你在异步组件中获取数据，这些组件甚至能在服务端构建过程中运行。
 
 Next.js 由 [Vercel](https://vercel.com/) 维护。你可以将 [Next.js 应用](https://nextjs.org/docs/deployment) 部署到任何 Node.js 或无服务器主机上，或部署到你自己的服务器上。Next.js 还支持 [静态导出](https://beta.nextjs.org/docs/configuring/static-export)，不需要服务器。
 <Pitfall>
