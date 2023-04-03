@@ -14,7 +14,7 @@ translators:
 
 <Note>
 
-**你需要安装 [Node.js](https://nodejs.org/zh-cn) 用于本地开发**。你也可以选择在生产中使用 Node.js，但你不一定要这样。许多 React 框架支持导出到静态 HTML/CSS/JS 文件夹。
+**你需要安装 [Node.js](https://nodejs.org/zh-cn) 用于本地开发**。你也可以选择在生产中使用 Node.js，但你不一定要这样。许多 React 框架支持导出 HTML/CSS/JS 等静态文件。
 
 </Note>
 
