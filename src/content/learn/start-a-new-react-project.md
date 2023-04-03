@@ -34,7 +34,7 @@ Next.js 由 [Vercel](https://vercel.com/) 维护。你可以 [将 Next.js 应用
 
 ### Remix {/*remix*/}
 
-**[Remix](https://remix.run/) 是一个具有嵌套路由的全栈式 React 框架**。它让你把你的应用程序分成嵌套部分，可以并行加载数据并根据用户操作进行刷新。要创建一个新的 Remix 项目，请运行：
+**[Remix](https://remix.run/) 是一个具有嵌套路由的全栈式 React 框架**。它让你把你的应用程序分成嵌套部分，该嵌套部分可以并行加载数据并响应用户操作进行刷新。要创建一个新的 Remix 项目，请运行：
 
 <TerminalBlock>
 npx create-remix
