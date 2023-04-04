@@ -1581,7 +1581,7 @@ export default function Board() {
   }
 
   return (
-    <div>
+    <>
       <div className="status">{status}</div>
       <div className="board-row">
         // ...
