@@ -20,6 +20,7 @@ title: '教程：井字棋游戏'
 - [概览](#overview) 介绍了 React 的 **基础知识**：组件、prop 和 state。
 - [完成游戏](#completing-the-game) 介绍了 React 开发中 **最常用的技术**。
 - [添加“时间旅行”](#adding-time-travel) 可以让你更深入地了解 React 的独特优势。
+
 ### 将会构建什么？ {/*what-are-you-building*/}
 
 本教程将使用 React 构建一个可以交互的井字棋游戏。
@@ -262,7 +263,7 @@ body {
 
 你也可以使用本地开发环境来跟着这个教程学习，你需要：
 
-1. 安装 [Node.js](https://nodejs.org/en/)
+1. 安装 [Node.js](https://nodejs.org/zh-cn/)
 2. 在之前打开的 CodeSandbox 选项卡中，按左上角的按钮打开菜单，然后选择 **File > Export to ZIP**，将代码压缩包下载到本地。
 3. 将压缩包解压，打开终端并使用 `cd` 命令切换到你解压后的目录。
 4. 使用 `npm install` 安装依赖。
@@ -322,6 +323,7 @@ export default function Square() {
 #### `styles.css` {/*stylescss*/}
 
 单击 CodeSandbox 中的 `styles.css` 文件。该文件定义了 React 应用的样式。前两个 CSS 选择器（`*` 和 `body`）定义应用大部分的样式，而 `.square` 选择器定义 `className` 属性设置为 `square` 的任何组件的样式。这将与 `App.js` 文件中的 `Square` 组件中的按钮相匹配。
+
 #### `index.js` {/*indexjs*/}
 
 单击 CodeSandbox 中的 `index.js` 的文件。在本教程中我们不会编辑此文件，但它是 `App.js` 文件中创建的组件与 Web 浏览器之间的桥梁。
