@@ -8,7 +8,7 @@ const MyDocument = () => {
   return (
     <Html lang="zh-Hans">
       <Head />
-      <body className="font-text antialiased text-lg bg-wash dark:bg-wash-dark text-secondary dark:text-secondary-dark leading-base">
+      <body className="font-text font-medium antialiased text-lg bg-wash dark:bg-wash-dark text-secondary dark:text-secondary-dark leading-base">
         <script
           dangerouslySetInnerHTML={{
             __html: `

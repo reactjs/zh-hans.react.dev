@@ -335,7 +335,7 @@ function tasksReducer(tasks, action) {
 }
 ```
 
-> 由于 `reducer` 函数接受 `state`（tasks）作为参数，因此你可以 **在组件之外声明它**。**这减少了代码的缩进级别，提升了代码的可读性。
+由于 `reducer` 函数接受 `state`（tasks）作为参数，因此你可以 **在组件之外声明它**。这减少了代码的缩进级别，提升了代码的可读性。
 
 <Note>
 

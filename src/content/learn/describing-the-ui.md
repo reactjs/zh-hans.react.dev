@@ -17,7 +17,7 @@ React 是一个用于构建用户界面（UI）的 JavaScript 库，用户界面
 
 * [如何创建你的第一个组件](/learn/your-first-component)
 * [在什么时候以及如何创建多文件组件](/learn/importing-and-exporting-components)
-* [如何使用 JSX 为 JavaScript 添加标记](/learn/writing-markup-with-jsx)
+* [如何使用 JSX 为 JavaScript 添加标签](/learn/writing-markup-with-jsx)
 * [如何在 JSX 中使用花括号来从组件中使用 JavaScript 功能](/learn/javascript-in-jsx-with-curly-braces)
 * [如何用 props 配置组件](/learn/passing-props-to-a-component)
 * [如何有条件地渲染组件](/learn/conditional-rendering)
@@ -28,7 +28,7 @@ React 是一个用于构建用户界面（UI）的 JavaScript 库，用户界面
 
 ## 你的第一个组件 {/*your-first-component*/}
 
-React 应用是由被称为 **组件** 的独立 UI 片段构建而成。React 组件本质上是可以任意添加标记的 JavaScript 函数。组件可以小到一个按钮，也可以大到是整个页面。这是一个 `Gallery` 组件，用于渲染三个 `Profile` 组件：
+React 应用是由被称为 **组件** 的独立 UI 片段构建而成。React 组件本质上是可以任意添加标签的 JavaScript 函数。组件可以小到一个按钮，也可以大到是整个页面。这是一个 `Gallery` 组件，用于渲染三个 `Profile` 组件：
 
 <Sandpack>
 
@@ -119,11 +119,11 @@ img { margin: 0 10px 10px 0; }
 请参阅 **[导入与导出组件](/learn/importing-and-exporting-components)** 以学习如何切分组件。
 </LearnMore>
 
-## 使用 JSX 编写标记 {/*writing-markup-with-jsx*/}
+## 使用 JSX 编写标签 {/*writing-markup-with-jsx*/}
 
-每个 React 组件都是一个 JavaScript 函数，它可能包含一些标记，React 会将其渲染到浏览器中。React 组件使用一种叫做 JSX 的语法扩展来表示该标记。JSX 看起来很像 HTML，但它更为严格，可以显示动态信息。
+每个 React 组件都是一个 JavaScript 函数，它可能包含一些标签，React 会将其渲染到浏览器中。React 组件使用一种叫做 JSX 的语法扩展来表示该标签。JSX 看起来很像 HTML，但它更为严格，可以显示动态信息。
 
-如果我们把现有的 HTML 标记粘贴到 React 组件中，它并不一定能成功运行：
+如果我们把现有的 HTML 标签粘贴到 React 组件中，它并不一定能成功运行：
 
 <Sandpack>
 
@@ -184,13 +184,13 @@ img { height: 90px; }
 
 <LearnMore path="/learn/writing-markup-with-jsx">
 
-请参阅 **[使用 JSX 编写标记](/learn/writing-markup-with-jsx)** 以学习如何编写有效的 JSX。
+请参阅 **[使用 JSX 编写标签](/learn/writing-markup-with-jsx)** 以学习如何编写有效的 JSX。
 
 </LearnMore>
 
 ## 在 JSX 中使用大括号编写 JavaScript {/*javascript-in-jsx-with-curly-braces*/}
 
-JSX 可以让你在 JavaScript 文件中编写类似 HTML 的标记语法，使渲染逻辑和内容展示维护在同一个地方。有时你会想在标记中添加一点 JavaScript 逻辑或引用一个动态属性。在这种情况下，你可以在 JSX 中使用花括号来为 JavaScript "开辟通道"：
+JSX 可以让你在 JavaScript 文件中编写类似 HTML 的标签语法，使渲染逻辑和内容展示维护在同一个地方。有时你会想在标签中添加一点 JavaScript 逻辑或引用一个动态属性。在这种情况下，你可以在 JSX 中使用花括号来为 JavaScript "开辟通道"：
 
 <Sandpack>
 
@@ -321,7 +321,7 @@ export function getImageUrl(person, size = 's') {
 
 你的组件经常需要根据不同的条件来显示不同的东西。在 React 中，你可以使用 JavaScript 语法，如 `if` 语句、`&&` 和 `? :` 操作符有条件地渲染 JSX。
 
-在这个示例中，JavaScript 的 `&&` 操作符将会条件渲染一个复选标记：
+在这个示例中，JavaScript 的 `&&` 操作符将会条件渲染一个复选标签：
 
 <Sandpack>
 
