@@ -139,12 +139,21 @@ import Gallery from './Gallery';
 
 组件的导出方式决定了其导入方式。当你用默认导入的方式，导入具名导出的组件时，就会报错。如下表格可以帮你更好地理解它们：
 
+<<<<<<< HEAD
 | 语法           | 导出语句                           | 导入语句                          |
 | -----------    | -----------                        | -----------                       |
 | 默认  | `export default function Button() {}` | `import Button from './button.js';`     |
 | 具名  | `export function Button() {}`         | `import { Button } from './button.js';` |
 
 当使用默认导入时，你可以在 `import` 语句后面进行任意命名。比如 `import Banana from './button.js'`，如此你能获得与默认导出一致的内容。相反，对于具名导入，导入和导出的名字必须一致。这也是为什么称其为 _具名_ 导入的原因！
+=======
+| Syntax           | Export statement                           | Import statement                          |
+| -----------      | -----------                                | -----------                               |
+| Default  | `export default function Button() {}` | `import Button from './Button.js';`     |
+| Named    | `export function Button() {}`         | `import { Button } from './Button.js';` |
+
+When you write a _default_ import, you can put any name you want after `import`. For example, you could write `import Banana from './Button.js'` instead and it would still provide you with the same default export. In contrast, with named imports, the name has to match on both sides. That's why they are called _named_ imports!
+>>>>>>> d9922dbef83e0430c905af2b4789ecd4b527849b
 
 **通常，文件中仅包含一个组件时，人们会选择默认导出，而当文件中包含多个组件或某个值需要导出时，则会选择具名导出。** 无论选择哪种方式，请记得给你的组件和相应的文件命名一个有意义的名字。我们不建议创建未命名的组件，比如 `export default () => {}`，因为这样会使得调试变得异常困难。
 
@@ -258,10 +267,17 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 你也许会使用默认导出或者具名导出的方式，来导出 `Profile` 组件，但请保证在 `App.js` 和 `Gallery.js` 里使用相应的导入语句！具体可以参考下面的表格：
 
+<<<<<<< HEAD
 | 语法           | 导出语句                           | 导入语句                          |
 | -----------    | -----------                        | -----------                       |
 | 默认  | `export default function Button() {}` | `import Button from './button.js';`     |
 | 具名  | `export function Button() {}`         | `import { Button } from './button.js';` |
+=======
+| Syntax           | Export statement                           | Import statement                          |
+| -----------      | -----------                                | -----------                               |
+| Default  | `export default function Button() {}` | `import Button from './Button.js';`     |
+| Named    | `export function Button() {}`         | `import { Button } from './Button.js';` |
+>>>>>>> d9922dbef83e0430c905af2b4789ecd4b527849b
 
 <Hint>
 
