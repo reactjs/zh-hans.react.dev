@@ -4,7 +4,7 @@ title: '教程：井字棋游戏'
 
 <Intro>
 
-本教程将实现一个小型井字棋游戏，并且你不需要对 React 有任何了解。在此过程中你会学习到一些 React 基本知识，这些知识可以让你对 React 有更深入的了解。
+本教程将实现一个小型井字棋游戏，并且你不需要对 React 有任何了解。在此过程中你会学习到一些 React 基本知识，这些知识可以让你对 React 有更深入的理解。
 
 </Intro>
 
@@ -202,7 +202,7 @@ body {
 
 ## 配置 {/*setup-for-the-tutorial*/}
 
-在下面的实时代码编辑器中，单击右上角的 **Fork**，将访问网站 CodeSandbox，在新选项卡中打开编辑器。CodeSandbox 让你能够在浏览器中编写代码并预览效果。你应该能够看见一个空方块和本教程的初始代码。
+在下面的实时代码编辑器中，单击右上角的 **Fork**，将访问 CodeSandbox，我们在新选项卡中打开编辑器。CodeSandbox 让你能够在浏览器中编写代码并预览效果。你应该能够看见一个空方块和本教程的初始代码。
 
 <Sandpack>
 
@@ -281,7 +281,7 @@ body {
 
 在 CodeSandbox 中，你将看到三个主要的部分：
 
-![CodeSandbox with starter code](../images/tutorial/react-starter-code-codesandbox.png)
+![CodeSandbox 的初始代码](../images/tutorial/react-starter-code-codesandbox.png)
 
 1. _Files_ 部分列出了一些文件：`App.js`、`index.js`、`styles.css` 和一个叫 `public` 的文件夹。
 2. _code editor_ 里面你能够看到打开的代码。
@@ -296,7 +296,7 @@ export default function Square() {
 ```
 
 _browser_ 部分应该会像下面这样在方块里面显示一个 X：
-![x-filled square](../images/tutorial/x-filled-square.png)
+![里面是“X”的方块](../images/tutorial/x-filled-square.png)
 
 现在，让我们仔细来看一看这些文件吧。
 
@@ -318,11 +318,11 @@ export default function Square() {
 }
 ```
 
-第二行返回一个按钮。`return` JavaScript 关键字意味着后面的内容都作为值返回给函数的调用者。`<button>` 是一个 JSX 元素。JSX 元素是 JavaScript 代码和 HTML 标签的组合，用于描述要显示的内容。`className="square"` 是一个 button 属性，它决定 CSS 如何设置按钮的样式。`X` 是按钮内显示的文本，`</button>` 闭合 JSX 元素表示不应将任何后续内容放置在按钮内。
+第二行返回一个按钮。`return` JavaScript 关键字意味着后面的内容都作为值返回给函数的调用者。`<button>` 是一个 JSX 元素。JSX 元素是 JavaScript 代码和 HTML 标签的组合，用于描述要显示的内容。`className="square"` 是一个 button 属性，它决定 CSS 如何设置按钮的样式。`X` 是按钮内显示的文本，`</button>` 闭合 JSX 元素以表示不应将任何后续内容放置在按钮内。
 
 #### `styles.css` {/*stylescss*/}
 
-单击 CodeSandbox 中的 `styles.css` 文件。该文件定义了 React 应用的样式。前两个 CSS 选择器（`*` 和 `body`）定义应用大部分的样式，而 `.square` 选择器定义 `className` 属性设置为 `square` 的任何组件的样式。这将与 `App.js` 文件中的 `Square` 组件中的按钮相匹配。
+单击 CodeSandbox 中的 `styles.css` 文件。该文件定义了 React 应用的样式。前两个 CSS 选择器（`*` 和 `body`）定义了应用大部分的样式，而 `.square` 选择器定义了 `className` 属性设置为 `square` 的组件的样式。这与 `App.js` 文件中的 `Square` 组件中的按钮是相匹配的。
 
 #### `index.js` {/*indexjs*/}
 
@@ -380,11 +380,11 @@ export default function Square() {
 
 现在你应该可以看见：
 
-![two x-filled squares](../images/tutorial/two-x-filled-squares.png)
+![两个“X”方块](../images/tutorial/two-x-filled-squares.png)
 
 非常棒！现在你只需要通过复制粘贴来添加九个方块，然后……
 
-![nine x-filled squares in a line](../images/tutorial/nine-x-filled-squares.png)
+![9 个在同一行的方块](../images/tutorial/nine-x-filled-squares.png)
 
 哦不！这些方块都在一条直线上，而不是排列成网格。要解决此问题，需要使用 `div` 将方块分到每一行中并添加一些 CSS 样式。当你这样做的时候，需要给每个方块一个数字，以确保你知道每个方块的位置。
 
@@ -416,7 +416,7 @@ export default function Square() {
 
 `styles.css` 成功设置了样式！现在我们已经使用样式化的 `div` 将组件分组到行中，你拥有了井字棋棋盘：
 
-![tic-tac-toe board filled with numbers 1 through 9](../images/tutorial/number-filled-board.png)
+![有着数字 1 到 9 的井字棋棋盘](../images/tutorial/number-filled-board.png)
 
 但是现在有个问题，名为 `Square` 的组件实际上不再是正方形了。让我们通过将名称更改为 Board 来解决这个问题：
 
@@ -523,7 +523,7 @@ export default function Board() {
 }
 ```
 
-然后，将更新 Board 组件并使用 JSX 语法渲染 `Square` 组件：
+然后，更新 Board 组件并使用 JSX 语法渲染 `Square` 组件：
 
 ```js {5-19}
 // ...
@@ -554,9 +554,9 @@ export default function Board() {
 
 让我们来看一看效果：
 
-![one-filled board](../images/tutorial/board-filled-with-ones.png)
+![都是 1 的方块](../images/tutorial/board-filled-with-ones.png)
 
-哦不！你失去了你以前有正确编号的方块。现在每个方块都写着“1”。要解决此问题，需要使用 *prop* 将每个方块应具有的值从父组件（`Board`）传递到其子组件（`Square`）。
+哦不！你失去了你以前有正确编号的方块。现在每个方块都写着“1”。要解决此问题，需要使用 *prop* 将每个方块应有的值从父组件（`Board`）传递到其子组件（`Square`）。
 
 更新 `Square` 组件，读取从 `Board` 传递的 `value` prop：
 
@@ -578,9 +578,9 @@ function Square({ value }) {
 
 糟糕！这还不是你想要的：
 
-![value-filled board](../images/tutorial/board-filled-with-value.png)
+![都是“value”的棋盘](../images/tutorial/board-filled-with-value.png)
 
-我们需要从组件中渲染名为 `value` 的 JavaScript 变量，而不是“value”这个词。要从 JSX“转义到 JavaScript”，你需要大括号。在 JSX 中的 `value` 周围添加大括号，如下所示：
+我们需要从组件中渲染名为 `value` 的 JavaScript 变量，而不是“value”这个词。要从 JSX“转义到 JavaScript”，你需要使用大括号。在 JSX 中的 `value` 周围添加大括号，如下所示：
 
 ```js {2}
 function Square({ value }) {
@@ -590,9 +590,9 @@ function Square({ value }) {
 
 现在，你应该会看到一个空的棋盘了：
 
-![empty board](../images/tutorial/empty-board.png)
+![空棋盘](../images/tutorial/empty-board.png)
 
-这是因为 `Board` 组件还没有将 `value` prop 传递给它渲染的每个 `Square` 组件。要修复这个问题，需要向 `Board` 组件里面的的每个 `Square` 组件添加 `value` prop：
+这是因为 `Board` 组件还没有将 `value` prop 传递给它渲染的每个 `Square` 组件。要修复这个问题，需要向 `Board` 组件里面的每个 `Square` 组件添加 `value` prop：
 
 ```js {5-7,10-12,15-17}
 export default function Board() {
@@ -620,7 +620,7 @@ export default function Board() {
 
 现在你应该能再次看到数字网格：
 
-![tic-tac-toe board filled with numbers 1 through 9](../images/tutorial/number-filled-board.png)
+![有着数字 1 到 9 的井字棋棋盘](../images/tutorial/number-filled-board.png)
 
 更新后的代码应该是这样：
 
@@ -703,7 +703,7 @@ body {
 
 ### 创建一个具有交互性的组件 {/*making-an-interactive-component*/}
 
-当你单击它的时候，应该用 `X` 来填充 `Square` 组件。在 `Square` 内部声明一个名为 `handleClick` 的函数。然后，将 `onClick` 添加到由 `Square` 返回的按钮的 JSX 元素的 prop 中：
+当你单击它的时候，`Square` 组件需要显示“X”。在 `Square` 内部声明一个名为 `handleClick` 的函数。然后，将 `onClick` 添加到由 `Square` 返回的 JSX 元素的 button 的 prop 中：
 
 ```js {2-4,9}
 function Square({ value }) {
@@ -722,7 +722,7 @@ function Square({ value }) {
 }
 ```
 
-如果现在单击一个方块，你应该会看到一条日志，上面写着 `"clicked!"` 在 CodeSandbox 中 *Browser* 部分底部的 *Console* 选项卡中。多次单击方块将再次记录 `"clicked!"`。具有相同消息的重复控制台日志不会在控制台中创建更多行。相反，你会在第一次 `"clicked!"` 旁边看到一个递增的计数器。
+如果现在单击一个方块，你应该会看到一条日志，上面写着 `"clicked!"`。在 CodeSandbox 中 *Browser* 部分底部的 *Console* 选项卡中。多次单击方块将再次记录 `"clicked!"`。具有相同消息的重复控制台日志不会在控制台中重复创建。而你会在第一次 `"clicked!"` 旁边看到一个递增的计数器。
 
 <Note>
 
@@ -730,11 +730,11 @@ function Square({ value }) {
 
 </Note>
 
-下一步，我们希望 Square 组件能够“记住”它被单击过，并用“X”填充它。为了“记住”一些东西，组件使用 *state*.
+下一步，我们希望 Square 组件能够“记住”它被单击过，并用“X”填充它。为了“记住”一些东西，组件使用 *state*。
 
 React 提供了一个名为 `useState` 的特殊函数，可以从组件中调用它来让它“记住”一些东西。让我们将 `Square` 的当前值存储在 `state` 中，并在单击 `Square` 时更改它。
 
-在文件的顶部导入 `useState`。从 `Square` 组件中移除 `value` prop。相反地，在调用 `useState` 的 `Square` 的开头添加一个新行。让它返回一个名为 value 的 state 变量：
+在文件的顶部导入 `useState`。从 `Square` 组件中移除 `value` prop。在调用 `useState` 的 `Square` 的开头添加一个新行。让它返回一个名为 value 的 state 变量：
 
 ```js {1,3,4}
 import { useState } from 'react';
@@ -748,7 +748,7 @@ function Square() {
 
 `value` 存储值，而 `setValue` 是可用于更改值的函数。传递给 `useState` 的 `null` 用作这个 state 变量的初始值，因此此处 `value` 的值开始时等于 null。
 
-由于 `Square` 组件不再接受 prop，将从 Board 组件创建的所有九个 Square 组件中删除 `value` prop：
+由于 `Square` 组件不再接受 prop，我们从 Board 组件创建的所有九个 Square 组件中删除 `value` prop：
 
 ```js {6-8,11-13,16-18}
 // ...
@@ -775,7 +775,7 @@ export default function Board() {
 }
 ```
 
-现在将更改 `Square` 以在单击时显示“X”。替换掉 `console.log("clicked!");` 使用 `setValue('X');` 的事件处理程序。现在你的 `Square` 组件看起来像这样：
+现在将更改 `Square` 以在单击时显示“X”。不再使用 `console.log("clicked!");` 而使用 `setValue('X');` 的事件处理程序。现在你的 `Square` 组件看起来像这样：
 
 ```js {5}
 function Square() {
@@ -796,11 +796,11 @@ function Square() {
 }
 ```
 
-通过从 `onClick` 处理程序调用此 `set` 函数，你告诉 `React` 在单击其 `<button>` 时重新渲染该 `Square`。更新后，方块的值将为“X”，因此会在棋盘上看到“X”。点击任意方块，“X”应该出现：
+通过从 `onClick` 处理程序调用此 `set` 函数，你告诉 `React` 在单击其 `<button>` 时要重新渲染该 `Square`。更新后，方块的值将为“X”，因此会在棋盘上看到“X”。点击任意方块，“X”应该出现：
 
-![adding xes to board](../images/tutorial/tictac-adding-x-s.gif)
+![向棋盘上添加“X”](../images/tutorial/tictac-adding-x-s.gif)
 
-每个 Square 都有自己的 state：存储在每个 Square 中的 `value` 完全独立于其他 Square。当你在组件中调用 set 函数时，React 也会自动更新内部的子组件。
+每个 Square 都有自己的 state：存储在每个 Square 中的 `value` 完全独立于其他的 Square。当你在组件中调用 set 函数时，React 也会自动更新内部的子组件。
 
 完成上述更改后，代码将如下所示：
 
@@ -900,15 +900,15 @@ body {
 
 React 开发者工具可以检查 React 组件的 prop 和 state。可以在 CodeSandbox 的 *Browser* 部分底部找到 React DevTools 选项卡：
 
-![React DevTools in CodeSandbox](../images/tutorial/codesandbox-devtools.png)
+![CodeSandbox 中的 React 开发者工具](../images/tutorial/codesandbox-devtools.png)
 
 要检查屏幕上的特定组件，请使用 React 开发者工具左上角的按钮：
 
-![Selecting components on the page with React DevTools](../images/tutorial/devtools-select.gif)
+![用 React 开发者工具选中组件](../images/tutorial/devtools-select.gif)
 
 <Note>
 
-对于本地开发，React 开发工具可作为 [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)、[Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) 和 [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil) 的浏览器扩展使用。安装它，*Component* 选项卡将出现在你的浏览器开发人员工具中，用于使用 React 的站点。
+对于本地开发，React 开发工具可作为 [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)、[Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) 和 [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil) 的浏览器扩展来使用。安装它，*Component* 选项卡将出现在你的浏览器开发者工具中，将被用于使用 React 的站点。
 
 </Note>
 
@@ -920,7 +920,7 @@ React 开发者工具可以检查 React 组件的 prop 和 state。可以在 Cod
 
 目前，每个 `Square` 组件都维护着游戏 state 的一部分。要检查井字棋游戏中的赢家，`Board` 需要以某种方式知道 9 个 `Square` 组件中每个组件的 state。
 
-你会如何处理？起初，你可能会猜测 `Board` 需要向每个 `Square`“询问”`Square` 的 state。尽管这种方法在 React 中在技术上是可行的，但我们不鼓励这样做，因为代码变得难以理解、容易出现错误并且难以重构。相反，最好的方法是将游戏的 state 存储在父 `Board` 组件中，而不是每个 `Square` 中。`Board` 组件可以通过传递一个 prop 来告诉每个 `Square` 显示什么，就像你将数字传递给每个 Square 时所做的那样。
+你会如何处理？起初，你可能会猜测 `Board` 需要向每个 `Square`“询问”`Square` 的 state。尽管这种方法在 React 中在技术上是可行的，但我们不鼓励这样做，因为代码变得难以理解、容易出现错误并且难以重构。相反，最好的方法是将游戏的 state 存储在 `Board` 父组件中，而不是每个 `Square` 中。`Board` 组件可以通过传递一个 prop 来告诉每个 `Square` 显示什么，就像你将数字传递给每个 Square 时所做的那样。
 
 **要从多个子组件收集数据，或让两个子组件相互通信，请改为在其父组件中声明共享 state。父组件可以通过 prop 将该 state 传回给子组件。这使子组件彼此同步并与其父组件保持同步。**
 
@@ -938,7 +938,7 @@ export default function Board() {
 }
 ```
 
-`Array(9).fill(null)` 创建一个包含九个元素的数组，并将它们中的每一个都设置为 `null`。围绕它的 `useState()` 调用声明了一个初始设置为该数组的 `squares` state 变量。数组中的每个条目对应于一个正方形的值。当你稍后填写棋盘时，`squares` 数组将如下所示：
+`Array(9).fill(null)` 创建了一个包含九个元素的数组，并将它们中的每一个都设置为 `null`。包裹它的 `useState()` 声明了一个初始设置为该数组的 `squares` state 变量。数组中的每个元素对应于一个 square 的值。当你稍后填写棋盘时，`squares` 数组将如下所示：
 
 ```jsx
 ['O', null, 'X', 'X', 'X', 'O', 'O', null, null]
@@ -971,7 +971,7 @@ export default function Board() {
 }
 ```
 
-接下来，你将编辑 `Square` 组件以从 Board 组件接收 `value` prop。这将需要删除 Square 组件自己的 `value` state 跟踪和按钮的 `onClick` prop：
+接下来，你将编辑 `Square` 组件，以从 Board 组件接收 `value` prop。这将需要删除 Square 组件自己的 `value` state 和按钮的 `onClick` prop：
 
 ```js {1,2}
 function Square({value}) {
@@ -979,9 +979,9 @@ function Square({value}) {
 }
 ```
 
-此时你应该看到一个空的井字棋盘：
+此时你应该看到一个空的井字棋棋盘：
 
-![empty board](../images/tutorial/empty-board.png)
+![空的井字棋棋盘](../images/tutorial/empty-board.png)
 
 你的代码应该是这样的：
 
@@ -1065,11 +1065,11 @@ body {
 
 </Sandpack>
 
-现在，每个 Square 都会收到一个 `value`  prop，对于空方块，该 prop 将是 `'X'` 、`'O'` 或 `null`。
+现在，每个 Square 都会收到一个 `value` prop，对于空方块，该 prop 将是 `'X'`、`'O'` 或 `null`。
 
-接下来，你需要更改单击 `Square` 时发生的情况。`Board` 组件现在维护填充了哪些方块。你需要为 `Square` 创建一种更新 `Board` state 的方法。由于 state 对于定义它的组件是私有的，因此你不能直接从 `Square` 更新 `Board` 的 state。
+接下来，你需要更改单击 `Square` 时发生的情况。`Board` 组件现在维护已经填充过的方块。你需要为 `Square` 创建一种更新 `Board` state 的方法。由于 state 对于定义它的组件是私有的，因此你不能直接从 `Square` 更新 `Board` 的 state。
 
-你将从 `Board` 组件向下传递一个函数到 `Square` 组件，你将让 `Square` 在单击方块时调用该函数。你将从单击 `Square` 组件时将调用的函数开始。你将调用该函数 `onSquareClick`：
+你将从 `Board` 组件向下传递一个函数到 `Square` 组件，然后让 `Square` 在单击方块时调用该函数。我们将从单击 `Square` 组件时将调用的函数开始。调用该函数 `onSquareClick`：
 
 ```js {3}
 function Square({ value }) {
@@ -1093,7 +1093,7 @@ function Square({ value, onSquareClick }) {
 }
 ```
 
-现在，你将把 `onSquareClick` prop 连接到 `Board` 组件中的一个函数，你将命名为 `handleClick`。要将 `onSquareClick` 连接到 `handleClick`，你需要将一个函数传递给第一个 `Square` 组件的 `onSquareClick` prop：
+现在，你将把 `onSquareClick` prop 连接到 `Board` 组件中的一个函数，命名为 `handleClick`。要将 `onSquareClick` 连接到 `handleClick`，需要将一个函数传递给第一个 `Square` 组件的 `onSquareClick` prop：
 
 ```js {7}
 export default function Board() {
@@ -1108,7 +1108,7 @@ export default function Board() {
 }
 ```
 
-最后，你将在 Board 组件内定义 `handleClick` 函数来更新保存你的棋盘 state 的 `squares` 数组：
+最后，你将在 Board 组件内定义 `handleClick` 函数来更新并保存棋盘 state 的 `squares` 数组：
 
 ```js {4-8}
 export default function Board() {
@@ -1126,9 +1126,9 @@ export default function Board() {
 }
 ```
 
- `handleClick` 函数使用 JavaScript `slice()` Array 方法创建 `squares` 数组（`nextSquares` ）的副本。然后，`handleClick` 更新 `nextSquares` 数组以将 `X` 添加到第一个（`[0]` 索引）方块。
+ `handleClick` 函数使用 JavaScript Array 的 `slice()` 方法创建 `squares` 数组（`nextSquares`）的副本。然后，`handleClick` 更新 `nextSquares` 数组，将 `X` 添加到第一个（`[0]` 索引）方块。
 
-调用 `setSquares` 函数让 React 知道组件的 state 已经改变。这将触发使用 `squares` state（`Board`）的组件及其子组件（构成棋盘的 `Square` 组件）的重新渲染。
+调用 `setSquares` 函数让 React 知道组件的 state 已经改变。这将触发使用 `squares` state 的组件（`Board`）及其子组件（构成棋盘的 `Square` 组件）的重新渲染。
 
 <Note>
 
@@ -1136,7 +1136,7 @@ JavaScript 支持闭包，这意味着内部函数（例如 `handleClick`）可�
 
 </Note>
 
-现在你可以将 X 添加到棋盘上……但只能添加到左上角的方块。你的 `handleClick` 函数被硬编码为更新左上角方块（ `0`）的索引。让我们更新 `handleClick` 以便能够更新任何正方形。将参数 `i` 添加到 `handleClick` 函数，该函数采用要更新的正方形索引：
+现在你可以将 X 添加到棋盘上……但只能添加到左上角的方块。你的 `handleClick` 函数被硬编码为更新左上角方块（ `0`）的索引。让我们更新 `handleClick` 以便能够更新任何方块。将参数 `i` 添加到 `handleClick` 函数，该函数采用要更新的 square 索引：
 
 ```js {4,6}
 export default function Board() {
@@ -1160,7 +1160,7 @@ export default function Board() {
 <Square value={squares[0]} onSquareClick={handleClick(0)} />
 ```
 
-这就是为什么这不起作用。`handleClick(0)` 调用将成为渲染板组件的一部分。因为 `handleClick(0)` 通过调用 `setSquares` 改变了棋盘组件的 state，所以你的整个棋盘组件将再次重新渲染。但这再次运行 `handleClick(0)`，导致无限循环：
+为什么会是这样呢？`handleClick(0)` 调用将成为渲染 Board 组件的一部分。因为 `handleClick(0)` 通过调用 `setSquares` 改变了棋盘组件的 state，所以你的整个棋盘组件将再次重新渲染。但这再次运行了 `handleClick(0)`，导致无限循环：
 
 <ConsoleBlock level="error">
 
@@ -1170,11 +1170,11 @@ Too many re-renders. React limits the number of renders to prevent an infinite l
 
 为什么这个问题没有早点发生？
 
-当你传递 `onSquareClick={handleClick}` 时，你将 `handleClick` 函数作为 prop 向下传递。你不是在召唤它！但是现在你立即调用该函数——注意 `handleClick(0)` 中的括号——这就是它运行得太早的原因。你不想在用户点击之前调用 `handleClick` ！
+当你传递 `onSquareClick={handleClick}` 时，你将 `handleClick` 函数作为 prop 向下传递。你不是在调用它！但是现在你立即调用了该函数——注意 `handleClick(0)` 中的括号——这就是它运行得太早的原因。你不想在用户点击之前调用 `handleClick` ！
 
-你可以通过创建调用 `handleClick(0)` 的函数（如 `handleFirstSquareClick`）、调用 `handleClick(1)` 的函数（如 `handleSecondSquareClick`）等来修复。你可以将这些函数作为 `onSquareClick={handleFirstSquareClick}` 之类的 prop 传递（而不是调用）。这将解决无限循环。
+你可以通过创建调用 `handleClick(0)` 的函数（如 `handleFirstSquareClick`）、调用 `handleClick(1)` 的函数（如 `handleSecondSquareClick`）等来修复。你可以将这些函数作为 `onSquareClick={handleFirstSquareClick}` 之类的 prop 传递（而不是调用）。这将解决无限循环的问题。
 
-但是，定义九个不同的函数并为每个函数命名太冗长了。相反，让我们这样做：
+但是，定义九个不同的函数并为每个函数命名过于冗余。让我们这样做：
 
 ```js {6}
 export default function Board() {
@@ -1190,7 +1190,7 @@ export default function Board() {
 
 注意新的 `() =>` 语法。这里，`() => handleClick(0)` 是一个箭头函数，它是定义函数的一种较短的方式。单击正方形时，`=>`“箭头”之后的代码将运行，调用 `handleClick(0)`。
 
-现在你需要更新其他八个方块以从你传递的箭头函数中调用 `handleClick`。确保 `handleClick` 的每次调用的参数对应于正确方块的索引：
+现在你需要更新其他八个方块以从你传递的箭头函数中调用 `handleClick`。确保 `handleClick` 的每次调用的参数对应于正确的 square 索引：
 
 ```js {6-8,11-13,16-18}
 export default function Board() {
@@ -1217,9 +1217,9 @@ export default function Board() {
 };
 ```
 
-现在你可以再次通过单击将 X 添加到板上的任何方块：
+现在你可以再次通过单击将 X 添加到棋盘的方块上：
 
-![filling the board with X](../images/tutorial/tictac-adding-x-s.gif)
+![用 X 填充棋盘](../images/tutorial/tictac-adding-x-s.gif)
 
 但是这次所有的 state 管理都由 `Board` 组件处理！
 
@@ -1316,27 +1316,27 @@ body {
 
 </Sandpack>
 
-现在你的 state 处理在 `Board` 组件中，父 `Board` 组件将 prop 传递给子 `Square` 组件，以便它们可以正确显示。单击 `Square` 时，子 `Square` 组件现在要求父 `Board` 组件更新板的 state。当 `Board` 的 state 改变时，`Board` 组件和每个子 `Square` 都会自动重新渲染。保持 `Board` 组件中所有方块的 state 将允许它确定未来的赢家。
+现在，我们在 `Board` 组件中处理 state， `Board` 父组件将 prop 传递给 `Square` 子组件，以便它们可以正确显示。单击 `Square` 时， `Square` 子组件现在要求 `Board` 父组件更新棋盘的 state。当 `Board` 的 state 改变时，`Board` 组件和每个子 `Square` 都会自动重新渲染。保存 `Board` 组件中所有方块的 state 将使得它可以确定未来的赢家。
 
-让我们回顾一下当用户单击你的看板左上角的方块以向其添加 `X` 时会发生什么：
+让我们回顾一下当用户单击你的棋盘左上角的方块以向其添加 `X` 时会发生什么：
 
-1. 单击左上角的方块运行 `button` 从 `Square` 接收到的作为其 `onClick` prop 的函数。`Square` 组件从 `Board` 接收到该函数作为其 `onSquareClick` prop。`Board` 组件直接在 JSX 中定义了该函数。它使用参数 `0` 调用 `handleClick`。
-1. `handleClick` 使用参数 ( `0` ) 将 `squares` 数组的第一个元素从 `null` 更新为 `X`。
+1. 单击左上角的方块运行 `button` 从 `Square` 接收到的 `onClick` prop 的函数。`Square` 组件从 `Board` 通过 `onSquareClick` prop 接收到该函数。`Board` 组件直接在 JSX 中定义了该函数。它使用参数 `0` 调用 `handleClick`。
+1. `handleClick` 使用参数（`0`）将 `squares` 数组的第一个元素从 `null` 更新为 `X`。
 1. `Board` 组件的 `squares` state 已更新，因此 `Board` 及其所有子组件都将重新渲染。这会导致索引为 `0` 的 `Square` 组件的 `value` prop 从 `null` 更改为 `X`。
 
-最后，用户看到左上角的方块在单击后从空变为有一个 `X`。
+最后，用户看到左上角的方块在单击后从空变为 `X`。
 
 <Note>
 
-DOM `<button>` 元素的 `onClick` prop 对 React 有特殊意义，因为它是一个内置组件。对于像 Square 这样的自定义组件，命名由你决定。你可以给 `Square` 的 `onSquareClick` prop 或 `Board` 的 `handleClick` 函数起任何名字，代码会一样工作。在 React 中，通常使用 `onSomething` 命名代表事件的 props，使用 `handleSomething` 命名处理这些事件的函数定义。
+DOM `<button>` 元素的 `onClick` prop 对 React 有特殊意义，因为它是一个内置组件。对于像 Square 这样的自定义组件，命名由你决定。你可以给 `Square` 的 `onSquareClick` prop 或 `Board` 的 `handleClick` 函数起任何名字，代码还是可以运行的。在 React 中，通常使用 `onSomething` 命名代表事件的 prop，使用 `handleSomething` 命名处理这些事件的函数。
 
 </Note>
 
 ### 为什么不变性很重要 {/*why-immutability-is-important*/}
 
-请注意在 `handleClick` 中，你如何调用 `.slice()` 来创建 `squares` 数组的副本而不是修改现有数组。为了解释原因，我们需要讨论不变性以及为什么学习不变性很重要。
+请注意在 `handleClick` 中，你调用了 `.slice()` 来创建 `squares` 数组的副本而不是修改现有数组。为了解释原因，我们需要讨论不变性以及为什么学习不变性很重要。
 
-通常有两种更改数据的方法。第一种方法是通过直接更改数据的值来改变数据。第二种方法是用具有所需更改的新副本替换数据。如果你改变 `squares` 数组，它会是这样的：
+通常有两种更改数据的方法。第一种方法是通过直接更改数据的值来改变数据。第二种方法是使用具有所需变化的新副本替换数据。如果你改变 `squares` 数组，它会是这样的：
 
 ```jsx
 const squares = [null, null, null, null, null, null, null, null, null];
@@ -1354,9 +1354,9 @@ const nextSquares = ['X', null, null, null, null, null, null, null, null];
 
 结果是一样的，但通过不直接改变（改变底层数据），你可以获得几个好处。
 
-不变性使复杂的功能更容易实现。在本教程的后面，你将实现一个“时间旅行”功能，让你回顾游戏的历史并“跳回”过去的动作。此功能并非特定于游戏——撤消和重做某些操作的能力是应用程序的常见要求。避免直接数据突变可以让你保持以前版本的数据完好无损，并在以后重用它们。
+不变性使复杂的功能更容易实现。在本教程的后面，你将实现一个“时间旅行”功能，让你回顾游戏的历史并“跳回”到过去的动作。此功能并非特定于游戏——撤消和重做某些操作的能力是应用程序的常见要求。避免数据直接突变可以让你保持以前版本的数据完好无损，并在以后重用它们。
 
-不变性还有另一个好处。默认情况下，当父组件的 state 发生变化时，所有子组件都会自动重新渲染。这甚至包括未受更改影响的子组件。尽管重新渲染本身不会引起用户注意（你不应该主动尝试避免它！），但出于性能原因，你可能希望跳过重新渲染显然不受其影响的树的一部分。不变性使得组件比较其数据是否已更改的成本非常低。你可以在 [`memo` API 参考](/reference/react/memo) 中了解更多关于 React 如何选择何时重新渲染组件的信息。
+不变性还有另一个好处。默认情况下，当父组件的 state 发生变化时，所有子组件都会自动重新渲染。这甚至包括未受变化影响的子组件。尽管重新渲染本身不会引起用户注意（你不应该主动尝试避免它！），但出于性能原因，你可能希望跳过重新渲染显然不受其影响的树的一部分。不变性使得组件比较其数据是否已更改的成本非常低。你可以在 [`memo` API 参考](/reference/react/memo) 中了解更多关于 React 如何选择何时重新渲染组件的信息。
 
 ### 交替落子 {/*taking-turns*/}
 
@@ -1373,7 +1373,7 @@ function Board() {
 }
 ```
 
-每次玩家移动时，`xIsNext`（一个布尔值）将被翻转以确定下一个玩家，游戏 state 将被保存。你将更新 `Board` 的 `handleClick` 函数以翻转 `xIsNext` 的值：
+每次玩家落子时，`xIsNext`（一个布尔值）将被翻转以确定下一个玩家，游戏 state 将被保存。你将更新 `Board` 的 `handleClick` 函数以翻转 `xIsNext` 的值：
 
 ```js {7,8,9,10,11,13}
 export default function Board() {
@@ -1401,11 +1401,11 @@ export default function Board() {
 
 但是等等，有一个问题。尝试多次点击同一个方块：
 
-![O overwriting an X](../images/tutorial/o-replaces-x.gif)
+![O 覆盖了 X](../images/tutorial/o-replaces-x.gif)
 
  `X` 被 `O` 覆盖！虽然这会给游戏带来非常有趣的变化，但我们现在将坚持原来的规则。
 
-当你用 `X` 或 `O` 标记方块时，你并不是首先检查该方块是否已经具有 `X` 或 `O` 值。你可以通过提早返回来解决此问题。你将检查方块是否已经有 `X` 或 `O`。如果方块已经填满，你将尽早在 `handleClick` 函数中 `return` — 在它尝试更新棋盘 state 之前。
+当你用 `X` 或 `O` 标记方块时，你没有检查该方块是否已经具有 `X` 或 `O` 值。你可以通过提早返回来解决此问题。我们将检查方块是否已经有 `X` 或 `O`。如果方块已经填满，你将尽早在 `handleClick` 函数中 `return`——在它尝试更新棋盘 state 之前。
 
 ```js {2,3,4}
 function handleClick(i) {
@@ -1521,7 +1521,7 @@ body {
 
 ### 宣布获胜者 {/*declaring-a-winner*/}
 
-现在你可以轮流对战了，接下来我们应该显示游戏何时获胜并且没有更多的轮次。为此，你将添加一个名为 `calculateWinner` 的辅助函数，它接受 9 个正方形的数组，检查获胜者并根据需要返回 `'X'` 、 `'O'` 或 `null`。不要太担心 `calculateWinner` 函数；它不是特定于 React 的：
+现在你可以轮流对战了，接下来我们应该显示游戏何时获胜。为此，你将添加一个名为 `calculateWinner` 的辅助函数，它接受 9 个方块的数组，检查获胜者并根据需要返回 `'X'`、`'O'` 或 `null`。不要太担心 `calculateWinner` 函数；它不是 React 才会有的：
 
 ```js App.js
 export default function Board() {
@@ -1551,7 +1551,7 @@ function calculateWinner(squares) {
 
 <Note>
 
-在 `Board` 之前或之后定义 `calculateWinner` 并不重要。让我们把它放在最后，这样你就不必在每次编辑组件时都滚动过去。
+在 `Board` 之前还是之后定义 `calculateWinner` 并不重要。让我们把它放在最后，这样你就不必在每次编辑组件时都滚动过去。
 
 </Note>
 
@@ -1567,7 +1567,7 @@ function handleClick(i) {
 }
 ```
 
-为了让玩家知道游戏何时结束，你可以显示“获胜者：X”或“获胜者：O”等文字。为此，你需要将 `status` 部分添加到 `Board` 组件。如果游戏结束， state 将显示获胜者，如果游戏正在进行，你将显示下一个轮到哪个玩家：
+为了让玩家知道游戏何时结束，你可以显示“获胜者：X”或“获胜者：O”等文字。为此，你需要将 `status` 部分添加到 `Board` 组件。如果游戏结束，将显示获胜者，如果游戏正在进行，你将显示下一轮将会是哪个玩家：
 
 ```js {3-9,13}
 export default function Board() {
@@ -1589,7 +1589,7 @@ export default function Board() {
 }
 ```
 
-恭喜！你现在有一个可以运行的井字棋游戏。你也刚刚学习了 React 的基础知识。所以你是这里真正的赢家。代码应该如下所示：
+恭喜！你现在有一个可以运行的井字棋游戏。你也学习了 React 的基础知识。所以你是这里真正的赢家。代码应该如下所示：
 
 <Sandpack>
 
@@ -1722,15 +1722,15 @@ body {
 
 ## 添加时间旅行 {/*adding-time-travel*/}
 
-作为最后的练习，让我们能够“回到过去”到游戏中之前的动作。
+作为最后的练习，让我们能够“回到”到游戏中之前的动作。
 
-### 存储移动历史 {/*storing-a-history-of-moves*/}
+### 存储落子历史 {/*storing-a-history-of-moves*/}
 
 如果你改变了 `squares` 数组，实现时间旅行将非常困难。
 
-但是，你在每次移动后都使用 `slice()` 创建 `squares` 数组的新副本，并将其视为不可变的。这将允许你存储 `squares` 数组的每个过去版本，并在已经发生的轮次之间导航。
+但是，你在每次落子后都使用 `slice()` 创建 `squares` 数组的新副本，并将其视为不可变的。这将允许你存储 `squares` 数组的每个过去的版本，并在已经发生的轮次之间“来回”。
 
-你将把过去的 `squares` 数组存储在另一个名为 `history` 的数组中，你将把它存储为一个新的 state 变量。`history` 数组表示所有棋盘 state，从第一步到最后一步，其形状如下：
+把过去的 `squares` 数组存储在另一个名为 `history` 的数组中，把它存储为一个新的 state 变量。`history` 数组表示所有棋盘的 state，从第一步到最后一步，其形状如下：
 
 ```jsx
 [
@@ -1744,13 +1744,13 @@ body {
 ]
 ```
 
-### 再次“状态提升” {/*lifting-state-up-again*/}
+### 再一次“状态提升” {/*lifting-state-up-again*/}
 
-你现在将编写一个名为 `Game` 的新顶级组件来显示过去的移动列表。这就是你将放置包含整个游戏历史的 `history` state 的地方。
+你现在将编写一个名为 `Game` 的新顶级组件来显示过去的着法列表。这就是放置包含整个游戏历史的 `history` state 的地方。
 
-将 `history` state 放入 `Game` 组件将使你可以从其子 `Board` 组件中删除 `squares` state。就像你将 state 从 `Square` 组件“提升”到 `Board` 组件一样，你现在将把它从 `Board` 提升到顶层 `Game` 组件。这使 `Game` 组件可以完全控制 `Board` 的数据，并让它指示 `Board` 渲染来自 `history` 的先前回合。
+将 `history` state 放入 `Game` 组件将使你可以从其 `Board` 子组件中删除 `squares` state。就像你将 state 从 `Square` 组件“提升”到 `Board` 组件一样，你现在将把它从 `Board` 提升到顶层 `Game` 组件。这使 `Game` 组件可以完全控制 `Board` 的数据，并使它让 `Board` 渲染来自 `history` 的之前的回合。
 
-首先，添加一个带有 `export default` 的 `Game` 组件。让它渲染 `Board` 组件和一些标记：
+首先，添加一个带有 `export default` 的 `Game` 组件。让它渲染 `Board` 组件和一些标签：
 
 ```js {1,5-16}
 function Board() {
@@ -1773,7 +1773,7 @@ export default function Game() {
 
 请注意，你要删除 `function Board() {` 声明之前的 `export default` 关键字，并将它们添加到 `function Game() {` 声明之前。这会告诉你的 `index.js` 文件使用 `Game` 组件而不是你的 `Board` 组件作为顶层组件。`Game` 组件返回的额外 `div` 正在为你稍后添加到棋盘的游戏信息腾出空间。
 
-向 `Game` 组件添加一些 state 以跟踪下一个玩家和移动历史：
+向 `Game` 组件添加一些 state 以跟踪下一个玩家和落子历史：
 
 ```js {2-3}
 export default function Game() {
@@ -1782,9 +1782,9 @@ export default function Game() {
   // ...
 ```
 
-请注意，`[Array(9).fill(null)]` 是一个包含单个项目的数组，它本身是一个包含 9 个 `null` 的数组。
+请注意，`[Array(9).fill(null)]` 是一个包含单个元素的数组，它本身是一个包含 9 个 `null` 的数组。
 
-要渲染当前移动的方块，你需要从 `history` 中读取最后一个方块数组。你不需要 `useState` ——你已经有足够的信息在渲染过程中计算它：
+要渲染当前落子的方块，你需要从 `history` 中读取最后一个 squares 数组。你不需要 `useState`——你已经有足够的信息可以在渲染过程中计算它：
 
 ```js {4}
 export default function Game() {
@@ -1794,7 +1794,7 @@ export default function Game() {
   // ...
 ```
 
-接下来，在 `Game` 组件中创建一个 `handlePlay` 函数，`Board` 组件将调用该函数来更新游戏。将 `xIsNext` 、`currentSquares` 和 `handlePlay` 作为 props 传递给 `Board` 组件：
+接下来，在 `Game` 组件中创建一个 `handlePlay` 函数，`Board` 组件将调用该函数来更新游戏。将 `xIsNext`、`currentSquares` 和 `handlePlay` 作为 prop 传递给 `Board` 组件：
 
 ```js {6-8,13}
 export default function Game() {
@@ -1815,7 +1815,7 @@ export default function Game() {
 }
 ```
 
-Let's make the `Board` component fully controlled by the props it receives. Change the `Board` component to take three props: `xIsNext`, `squares`, and a new `onPlay` function that `Board` can call with the updated squares array when a player makes a move. Next, remove the first two lines of the `Board` function that call `useState`:
+让 `Board` 组件完全由它接收到的 prop 控制。更改 `Board` 组件以采用三个 prop：`xIsNext`、`squares`和一个新的 `onPlay` 函数，当玩家落子时，`Board` 可以使用更新的 square 数组调用该函数。接下来，删除调用 `useState` 的 `Board` 函数的前两行：
 
 ```js {1}
 function Board({ xIsNext, squares, onPlay }) {
@@ -1826,7 +1826,7 @@ function Board({ xIsNext, squares, onPlay }) {
 }
 ```
 
-现在，将 `Board` 组件中 `handleClick` 中的 `setSquares` 和 `setXIsNext` 调用替换为对新 `onPlay` 函数的一次调用，这样 `Game` 组件就可以在用户单击正方形时更新 `Board` :
+现在，将 `Board` 组件里面的 `handleClick` 中的 `setSquares` 和 `setXIsNext` 调用替换为对新 `onPlay` 函数的一次调用，这样 `Game` 组件就可以在用户单击正方形时更新 `Board`：
 
 ```js {12}
 function Board({ xIsNext, squares, onPlay }) {
@@ -1846,11 +1846,11 @@ function Board({ xIsNext, squares, onPlay }) {
 }
 ```
 
- `Board` 组件完全由 `Game` 组件传递给它的 props 控制。你需要在 `Game` 组件中实现 `handlePlay` 函数才能使游戏重新运行。
+ `Board` 组件完全由 `Game` 组件传递给它的 prop 控制。你需要在 `Game` 组件中实现 `handlePlay` 函数才能使游戏重新运行。
 
- `handlePlay` 被叫时应该做什么？请记住，Board 曾经使用更新后的数组调用 `setSquares` ；现在它将更新后的 `squares` 数组传递给 `onPlay`。
+ `handlePlay` 被调用应该做什么？请记住，Board 以前使用更新后的数组调用 `setSquares`；现在它将更新后的 `squares` 数组传递给 `onPlay`。
 
- `handlePlay` 函数需要更新 `Game` 的 state 以触发重新渲染，但是你没有可以再调用的 `setSquares` 函数——你现在正在使用 `history` state 变量来存储这些信息。你需要通过将更新后的 `squares` 数组作为新的历史条目附加来更新 `history`。你还想切换 `xIsNext`，就像 Board 过去所做的那样：
+ `handlePlay` 函数需要更新 `Game` 的 state 以触发重新渲染，但是你没有可以再调用的 `setSquares` 函数——你现在正在使用 `history` state 变量来存储这些信息。你需要追加更新后的 `squares` 数组来更新 `history` 作为新的历史入口。你还需要切换 `xIsNext`，就像 Board 过去所做的那样：
 
 ```js {4-5}
 export default function Game() {
@@ -1863,7 +1863,7 @@ export default function Game() {
 }
 ```
 
-在这里，`[...history, nextSquares]` 创建了一个新数组，其中包含 `history` 中的所有项，后跟 `nextSquares`。（你可以将 `...history` 传播语法理解为“枚举 `history` 中的所有项目”。）
+在这里，`[...history, nextSquares]` 创建了一个新数组，其中包含 `history` 中的所有元素，后跟 `nextSquares`。（你可以将 `...history` 展开语法理解为“枚举 `history` 中的所有项目”。）
 
 例如，如果 `history` 是 `[[null,null,null], ["X",null,null]]`，`nextSquares` 是 `["X",null,"O"]`，那么新的 `[...history, nextSquares]` 数组就是 `[[null,null,null], ["X",null,null], ["X",null,"O"]]`。
 
@@ -2016,13 +2016,13 @@ body {
 
 </Sandpack>
 
-### 显示过去的落步 {/*showing-the-past-moves*/}
+### 显示过去的落子 {/*showing-the-past-moves*/}
 
 由于你正在记录井字棋游戏的历史，因此你现在可以向玩家显示过去的动作列表。
 
 像 `<button>` 这样的 React 元素是常规的 JavaScript 对象；你可以在你的应用程序中传递它们。要在 React 中渲染多个项目，你可以使用 React 元素数组。
 
-你已经有一组 `history` state 移动，所以现在你需要将其转换为一组 React 元素。在 JavaScript 中，要将一个数组转换为另一个数组，可以使用 [数组的 `map` 方法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)。
+你已经有一组 `history` state 落子，所以现在你需要将其转换为一组 React 元素。在 JavaScript 中，要将一个数组转换为另一个数组，可以使用 [数组的 `map` 方法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)。
 
 ```jsx
 [1, 2, 3].map((x) => x * 2) // [2, 4, 6]
@@ -2240,7 +2240,7 @@ body {
 
 </Sandpack>
 
-当你在传递给 `map` 的函数中遍历 `history` 数组时，`squares` 参数遍历 `history` 的每个元素，`move` 参数遍历每个数组索引：`0` 、`1`、`2` , …。（在大多数情况下，你需要实际的数组元素，但要渲染移动列表，你只需要索引。）
+当你在传递给 `map` 的函数中遍历 `history` 数组时，`squares` 参数遍历 `history` 的每个元素，`move` 参数遍历每个数组索引：`0` 、`1`、`2` , …。（在大多数情况下，你需要实际的数组元素，但要渲染落子列表，你只需要索引。）
 
 对于井字棋游戏历史中的每一步，你创建一个列表项 `<li>`，其中包含一个按钮 `<button>`。该按钮有一个 `onClick` 处理程序，它调用一个名为 `jumpTo` 的函数（你尚未实现）。
 
@@ -2273,23 +2273,23 @@ body {
 </li>
 ```
 
-重新渲染列表时，React 获取每个列表项的键并搜索前一个列表的项以查找匹配的键。如果当前列表有一个之前不存在的键，React 会创建一个组件。如果当前列表缺少前一个列表中存在的键，React 会销毁前一个组件。如果两个键匹配，则移动相应的组件。
+重新渲染列表时，React 获取每个列表项的 key 并搜索前一个列表的项以查找匹配的 key。如果当前列表有一个之前不存在的 key ，React 会创建一个组件。如果当前列表缺少前一个列表中存在的 key，React 会销毁前一个组件。如果两个 key 匹配，则落子相应的组件。
 
-Keys 告诉 React 每个组件的身份，这允许 React 在重新渲染之间保持 state。如果组件的键发生变化，组件将被销毁并以新 state 重新创建。
+key 告诉 React 每个组件的身份，这允许 React 在重新渲染之间保持 state。如果组件的 key 发生变化，组件将被销毁并以新 state 重新创建。
 
-`key` 是 React 中一个特殊的保留属性。创建元素时，React 提取 `key` 属性并将键直接存储在返回的元素上。尽管 `key` 看起来像是作为 props 传递的，但 React 会自动使用 `key` 来决定要更新哪些组件。组件无法询问其父组件指定的 `key`。
+`key` 是 React 中一个特殊的保留属性。创建元素时，React 提取 `key` 属性并将 key 直接存储在返回的元素上。尽管 `key` 看起来像是作为 props 传递的，但 React 会自动使用 `key` 来决定要更新哪些组件。组件无法询问其父组件指定的 `key`。
 
-**强烈建议你在构建动态列表时分配适当的键**。如果你没有合适的密钥，你可能需要考虑重组你的数据，以便你这样做。
+**强烈建议你在构建动态列表时分配适当的 key**。如果你没有合适的密钥，你可能需要考虑重组你的数据，以便你这样做。
 
-如果没有指定 key，React 会报错，默认使用数组索引作为 key。在尝试重新排序列表项或插入/删除列表项时，使用数组索引作为键是有问题的。显式传递 `key={i}` 可以消除错误，但与数组索引有相同的问题，在大多数情况下不推荐使用。
+如果没有指定 key，React 会报错，默认使用数组索引作为 key。在尝试重新排序列表项或插入/删除列表项时，使用数组索引作为 key 是有问题的。显式传递 `key={i}` 可以消除错误，但与数组索引有相同的问题，在大多数情况下不推荐使用。
 
 key 不需要是全局唯一的；它们只需要在组件及其同级组件之间是唯一的。
 
 ### 实现时间旅行 {/*implementing-time-travel*/}
 
-在井字棋游戏的历史中，过去的每一步都有一个唯一的 ID 与之相关联：它是动作的序号。移动永远不会被重新排序、删除或插入中间，因此使用移动索引作为键是安全的。
+在井字棋游戏的历史中，过去的每一步都有一个唯一的 ID 与之相关联：它是动作的序号。落子永远不会被重新排序、删除或插入中间，因此使用落子索引作为 key 是安全的。
 
-在 `Game` 函数中，你可以将键添加为 `<li key={move}>`，如果你重新加载渲染的游戏，React 的“键”错误应该会消失：
+在 `Game` 函数中，你可以将 key 添加为 `<li key={move}>`，如果你重新加载渲染的游戏，React 的“ key”错误应该会消失：
 
 ```js {4}
 const moves = history.map((squares, move) => {
@@ -2497,7 +2497,7 @@ export default function Game() {
 你现在将对 `Game` 的 `handlePlay` 函数进行两处更改，该函数在你单击正方形时调用。
 
 - 如果你“回到过去”然后从那一点开始采取新的行动，你只想保持那一点的历史。不是在 `history` 中的所有项目（`...` 扩展语法）之后添加 `nextSquares`，而是在 `history.slice(0, currentMove + 1)` 中的所有项目之后添加它，这样你就只保留旧历史的那部分。
-- 每次移动时，你都需要更新 `currentMove` 以指向最新的历史条目。
+- 每次落子时，你都需要更新 `currentMove` 以指向最新的历史条目。
 
 ```js {2-4}
 function handlePlay(nextSquares) {
@@ -2904,8 +2904,8 @@ body {
 
 1. 仅针对当前着手，显示“You are at move #…”而不是按钮。
 1. 重写 `Board` 以使用两个循环来制作正方形而不是对它们进行硬编码。
-1. 添加一个切换按钮，使可以按升序或降序对移动的步数进行排序。
+1. 添加一个切换按钮，使可以按升序或降序对落子的步数进行排序。
 1. 当有人获胜时，突出显示致使获胜的三个方块（当没有人获胜时，显示一条关于结果为平局的消息）。
-1. 在“移动”的历史列表中以 (row, col) 格式显示每步的位置。
+1. 在“落子”的历史列表中以 (row, col) 格式显示每步的位置。
 
 在本教程中，你已经接触到了 React 概念，包括元素、组件、prop 和 state。现在你已经了解了这些概念在构建游戏时是如何工作的，请查看 [React 哲学](../learn/thinking-in-react) 以了解这些 React 概念在构建应用的 UI 时是如何工作的。
