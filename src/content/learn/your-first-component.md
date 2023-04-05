@@ -35,9 +35,9 @@ translators:
 </article>
 ```
 
-`<article>` 表示这篇文章，`<h1>` 表示文章的标题，`<ol>` 以有序列表的形式表示文章的（缩写的）目录。每一个侧边栏、头像、模态框、下拉框的背后是都是像这样的（结合了用于样式的 CSS 和用于交互的 JavaScript的）标记——你在 Web 上看到的每一个 UI 模块。
+`<article>` 表示这篇文章，`<h1>` 表示文章的标题，`<ol>` 以有序列表的形式表示文章的（缩写的）目录。每一个侧边栏、头像、模态框、下拉框的背后是都是像这样的（结合了用于样式的 CSS 和用于交互的 JavaScript的）标签——你在 Web 上看到的每一个 UI 模块。
 
-React 允许你将标记、CSS 和 JavaScript 组合成自定义“组件”，即**应用程序中可复用的 UI 元素。** 上文中表示目录的代码可以改写成一个能够在每个页面中渲染的 `<TableOfContents />` 组件。实际上，使用的依然是 `<article>`、`<h1>` 等相同的 HTML 标签。
+React 允许你将标签、CSS 和 JavaScript 组合成自定义“组件”，即**应用程序中可复用的 UI 元素。** 上文中表示目录的代码可以改写成一个能够在每个页面中渲染的 `<TableOfContents />` 组件。实际上，使用的依然是 `<article>`、`<h1>` 等相同的 HTML 标签。
 
 就像使用 HTML 标签一样，你可以组合、排序和嵌套组件来绘制整个页面。例如，你正在阅读的文档页面就是由 React 组件构成的：
 
@@ -59,7 +59,7 @@ React 允许你将标记、CSS 和 JavaScript 组合成自定义“组件”，�
 
 ## 定义组件 {/*defining-a-component*/}
 
-一直以来，创建网页时，Web 开发人员会用标记描述内容，然后通过 JavaScript 来增加交互。这种在 Web 上添加交互的方式能产生出色的效果。现在许多网站和全部应用都需要交互。React 最为重视交互性且使用了相同的处理方式：**React 组件是一段可以 使用标记进行扩展 的 JavaScript 函数**。如下所示（你可以编辑下面的示例）：
+一直以来，创建网页时，Web 开发人员会用标签描述内容，然后通过 JavaScript 来增加交互。这种在 Web 上添加交互的方式能产生出色的效果。现在许多网站和全部应用都需要交互。React 最为重视交互性且使用了相同的处理方式：**React 组件是一段可以 使用标签进行扩展 的 JavaScript 函数**。如下所示（你可以编辑下面的示例）：
 
 <Sandpack>
 
@@ -84,7 +84,7 @@ img { height: 200px; }
 
 ### 第一步：导出组件 {/*step-1-export-the-component*/}
 
-`export default` 前缀是一种 [JavaScript 标准语法](https://developer.mozilla.org/docs/web/javascript/reference/statements/export)（非 React 的特性）。它允许你标记一个文件中的主要函数以便你以后可以从其他文件引入它。（欲了解更多关于导入的内容，请参阅 [组件的导入与导出](/learn/importing-and-exporting-components) 章节！）
+`export default` 前缀是一种 [JavaScript 标准语法](https://developer.mozilla.org/docs/web/javascript/reference/statements/export)（非 React 的特性）。它允许你标签一个文件中的主要函数以便你以后可以从其他文件引入它。（欲了解更多关于导入的内容，请参阅 [组件的导入与导出](/learn/importing-and-exporting-components) 章节！）
 
 ### 第二步：定义函数 {/*step-2-define-the-function*/}
 
@@ -96,9 +96,9 @@ React 组件是常规的 JavaScript 函数，但**组件的名称必须以大写
 
 </Pitfall>
 
-### 第三步：添加标记 {/*step-3-add-markup*/}
+### 第三步：添加标签 {/*step-3-add-markup*/}
 
-这个组件返回一个带有 `src` 和 `alt` 属性的 `<img />` 标签。`<img />` 写得像 HTML，但实际上是 JavaScript！这种语法被称为 [JSX](/learn/writing-markup-with-jsx)，它允许你在 JavaScript 中嵌入使用标记。
+这个组件返回一个带有 `src` 和 `alt` 属性的 `<img />` 标签。`<img />` 写得像 HTML，但实际上是 JavaScript！这种语法被称为 [JSX](/learn/writing-markup-with-jsx)，它允许你在 JavaScript 中嵌入使用标签。
 
 返回语句可以全写在一行上，如下面组件中所示：
 
@@ -106,7 +106,7 @@ React 组件是常规的 JavaScript 函数，但**组件的名称必须以大写
 return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Katherine Johnson" />;
 ```
 
-但是，如果你的标记和 `return` 关键字不在同一行，则必须把它包裹在一对括号中，如下所示：
+但是，如果你的标签和 `return` 关键字不在同一行，则必须把它包裹在一对括号中，如下所示：
 
 ```js
 return (
@@ -217,7 +217,7 @@ function Profile() {
 
 你的 React 应用程序从“根”组件开始。通常，它会在启动新项目时自动创建。例如，如果你使用 [CodeSandbox](https://codesandbox.io/) 或 [Create React App](https://create-react-app.dev/)，根组件定义在 `src/App.js` 中。如果使用 [Next.js](https://nextjs.org/) 框架，根组件定义在 `pages/index.js` 中。在这些示例中，一直有导出根组件。
 
-大多数 React 应用程序只有组件。这意味着你不仅可以将组件用于可复用的部分，例如按钮，还可以用于较大块的部分，例如侧边栏、列表以及最终的完整页面！组件是组织 UI 代码和标记的一种快捷方式，即使其中一些组件只使用了一次。
+大多数 React 应用程序只有组件。这意味着你不仅可以将组件用于可复用的部分，例如按钮，还可以用于较大块的部分，例如侧边栏、列表以及最终的完整页面！组件是组织 UI 代码和标签的一种快捷方式，即使其中一些组件只使用了一次。
 
 像 Next.js 这样的框架会做更多事情。与使用一个空白的 HTML 页面并让 React 使用 JavaScript “接手”管理页面不同，框架 *还会* 根据你的 React 组件自动生成 HTML。这使你的应用程序在加载 JavaScript 代码之前能够展示一些内容。
 
@@ -234,7 +234,7 @@ function Profile() {
 * React 是常规的 JavaScript 函数，除了：
 
   1. 它们的名字总是以大写字母开头。
-  2. 它们返回 JSX 标记。
+  2. 它们返回 JSX 标签。
 
 </Recap>
 
@@ -338,7 +338,7 @@ img { height: 180px; }
 
 </Sandpack>
 
-或者用括号包裹返回的 JSX 标记，将左括号放在 `return` 的后面： 
+或者用括号包裹返回的 JSX 标签，将左括号放在 `return` 的后面： 
 
 <Sandpack>
 
@@ -435,7 +435,7 @@ img { margin: 0 10px 10px 0; }
 
 #### 自定义组件 {/*your-own-component*/}
 
-从头开始编写一个组件。你可以为它指定任何有效名称然后返回任何标记。如果你没有什么想法的话，你可以写一个显示 `<h1>干得漂亮！</h1>` 的 `Congratulations` 组件。不要忘了导出它！
+从头开始编写一个组件。你可以为它指定任何有效名称然后返回任何标签。如果你没有什么想法的话，你可以写一个显示 `<h1>干得漂亮！</h1>` 的 `Congratulations` 组件。不要忘了导出它！
 
 <Sandpack>
 

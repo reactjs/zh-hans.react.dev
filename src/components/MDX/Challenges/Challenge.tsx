@@ -50,8 +50,8 @@ export function Challenge({
           className="text-xl text-primary dark:text-primary-dark mb-2 mt-0 font-medium"
           id={currentChallenge.id}>
           <div className="font-bold block md:inline">
-            {isRecipes ? 'Example' : 'Challenge'} {currentChallenge.order} of{' '}
-            {totalChallenges}
+            第 {currentChallenge.order} 个{isRecipes ? '示例' : '挑战'} 共{' '}
+            {totalChallenges} 个挑战
             <span className="text-primary dark:text-primary-dark">: </span>
           </div>
           {currentChallenge.name}
@@ -63,14 +63,14 @@ export function Challenge({
           <div>
             <Button className="mr-2" onClick={toggleHint} active={showHint}>
               <IconHint className="mr-1.5" />{' '}
-              {showHint ? 'Hide hint' : 'Show hint'}
+              {showHint ? '隐藏提示' : '展现提示'}
             </Button>
             <Button
               className="mr-2"
               onClick={toggleSolution}
               active={showSolution}>
               <IconSolution className="mr-1.5" />{' '}
-              {showSolution ? 'Hide solution' : 'Show solution'}
+              {showSolution ? '隐藏答案' : '显示答案'}
             </Button>
           </div>
         ) : (
@@ -80,7 +80,7 @@ export function Challenge({
               onClick={toggleSolution}
               active={showSolution}>
               <IconSolution className="mr-1.5" />{' '}
-              {showSolution ? 'Hide solution' : 'Show solution'}
+              {showSolution ? '隐藏答案' : '显示答案'}
             </Button>
           )
         )}
@@ -94,7 +94,7 @@ export function Challenge({
             )}
             onClick={handleClickNextChallenge}
             active>
-            Next {isRecipes ? 'Example' : 'Challenge'}
+            下一个{isRecipes ? '示例' : '挑战'}
             <IconArrowSmall displayDirection="right" className="block ml-1.5" />
           </Button>
         )}
@@ -104,13 +104,11 @@ export function Challenge({
       {showSolution && (
         <div className="mt-6">
           <h3 className="text-2xl font-bold text-primary dark:text-primary-dark">
-            Solution
+            答案
           </h3>
           {currentChallenge.solution}
           <div className="flex justify-between items-center mt-4">
-            <Button onClick={() => setShowSolution(false)}>
-              Close solution
-            </Button>
+            <Button onClick={() => setShowSolution(false)}>关闭答案</Button>
             {hasNextChallenge && (
               <Button
                 className={cn(
@@ -118,7 +116,7 @@ export function Challenge({
                 )}
                 onClick={handleClickNextChallenge}
                 active>
-                Next Challenge
+                下一个挑战
                 <IconArrowSmall
                   displayDirection="right"
                   className="block ml-1.5"
