@@ -349,7 +349,7 @@ import App from './App';
 
 让我们回到 `App.js`。接下来我们将聚焦于这个文件。
 
-目前棋盘只有一个方块，但你需要九个！如果你只是想着复制粘贴来制作两个像这样的正方形：
+目前棋盘只有一个方块，但你需要九个！如果你只是想着复制粘贴来制作两个像这样的方块：
 
 ```js {2}
 export default function Square() {
@@ -418,7 +418,7 @@ export default function Square() {
 
 ![有着数字 1 到 9 的井字棋棋盘](../images/tutorial/number-filled-board.png)
 
-但是现在有个问题，名为 `Square` 的组件实际上不再是正方形了。让我们通过将名称更改为 Board 来解决这个问题：
+但是现在有个问题，名为 `Square` 的组件实际上不再是方块了。让我们通过将名称更改为 Board 来解决这个问题：
 
 ```js {1}
 export default function Board() {
@@ -509,7 +509,7 @@ body {
 
 ### 通过 prop 传递数据 {/*passing-data-through-props*/}
 
-接下来，当用户单击正方形时，我们要将正方形的值从空更改为“X”。根据目前构建的棋盘，你需要复制并粘贴九次更新方块的代码（每个方块都需要一次）！但是，React 的组件架构可以创建可重用的组件，以避免混乱、重复的代码。
+接下来，当用户单击方块时，我们要将方块的值从空更改为“X”。根据目前构建的棋盘，你需要复制并粘贴九次更新方块的代码（每个方块都需要一次）！但是，React 的组件架构可以创建可重用的组件，以避免混乱、重复的代码。
 
 首先，要将定义第一个方块（`<button className="square">1</button>`）的这行代码从 `Board` 组件复制到新的 `Square` 组件中：
 
@@ -1188,7 +1188,7 @@ export default function Board() {
 }
 ```
 
-注意新的 `() =>` 语法。这里，`() => handleClick(0)` 是一个箭头函数，它是定义函数的一种较短的方式。单击正方形时，`=>`“箭头”之后的代码将运行，调用 `handleClick(0)`。
+注意新的 `() =>` 语法。这里，`() => handleClick(0)` 是一个箭头函数，它是定义函数的一种较短的方式。单击方块时，`=>`“箭头”之后的代码将运行，调用 `handleClick(0)`。
 
 现在你需要更新其他八个方块以从你传递的箭头函数中调用 `handleClick`。确保 `handleClick` 的每次调用的参数对应于正确的 square 索引：
 
@@ -1826,7 +1826,7 @@ function Board({ xIsNext, squares, onPlay }) {
 }
 ```
 
-现在，将 `Board` 组件里面的 `handleClick` 中的 `setSquares` 和 `setXIsNext` 调用替换为对新 `onPlay` 函数的一次调用，这样 `Game` 组件就可以在用户单击正方形时更新 `Board`：
+现在，将 `Board` 组件里面的 `handleClick` 中的 `setSquares` 和 `setXIsNext` 调用替换为对新 `onPlay` 函数的一次调用，这样 `Game` 组件就可以在用户单击方块时更新 `Board`：
 
 ```js {12}
 function Board({ xIsNext, squares, onPlay }) {
@@ -1863,7 +1863,7 @@ export default function Game() {
 }
 ```
 
-在这里，`[...history, nextSquares]` 创建了一个新数组，其中包含 `history` 中的所有元素，后跟 `nextSquares`。（你可以将 `...history` 展开语法理解为“枚举 `history` 中的所有项目”。）
+在这里，`[...history, nextSquares]` 创建了一个新数组，其中包含 `history` 中的所有元素，后跟 `nextSquares`。（你可以将 `...history` 展开语法理解为“枚举 `history` 中的所有元素”。）
 
 例如，如果 `history` 是 `[[null,null,null], ["X",null,null]]`，`nextSquares` 是 `["X",null,"O"]`，那么新的 `[...history, nextSquares]` 数组就是 `[[null,null,null], ["X",null,null], ["X",null,"O"]]`。
 
@@ -2022,7 +2022,7 @@ body {
 
 像 `<button>` 这样的 React 元素是常规的 JavaScript 对象；你可以在你的应用程序中传递它们。要在 React 中渲染多个项目，你可以使用 React 元素数组。
 
-你已经有一组 `history` state 落子，所以现在你需要将其转换为一组 React 元素。在 JavaScript 中，要将一个数组转换为另一个数组，可以使用 [数组的 `map` 方法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)。
+你已经有一组 `history` state 落子，所以现在你需要将其转换为一组 React 元素。在 JavaScript 中，要将一个数组转换为另一个数组，可以使用 [数组的 `map` 方法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map)。
 
 ```jsx
 [1, 2, 3].map((x) => x * 2) // [2, 4, 6]
@@ -2240,7 +2240,7 @@ body {
 
 </Sandpack>
 
-当你在传递给 `map` 的函数中遍历 `history` 数组时，`squares` 参数遍历 `history` 的每个元素，`move` 参数遍历每个数组索引：`0` 、`1`、`2` , …。（在大多数情况下，你需要实际的数组元素，但要渲染落子列表，你只需要索引。）
+当你在传递给 `map` 的函数中遍历 `history` 数组时，`squares` 参数遍历 `history` 的每个元素，`move` 参数遍历每个数组索引：`0` 、`1`、`2`……（在大多数情况下，你需要数组元素，但要渲染落子列表，你只需要索引。）
 
 对于井字棋游戏历史中的每一步，你创建一个列表项 `<li>`，其中包含一个按钮 `<button>`。该按钮有一个 `onClick` 处理程序，它调用一个名为 `jumpTo` 的函数（你尚未实现）。
 
@@ -2265,7 +2265,7 @@ body {
 <li>Alexa: 5 tasks left</li>
 ```
 
-除了更新的计数之外，阅读本文的人可能会说你交换了 Alexa 和 Ben 的顺序，并在 Alexa 和 Ben 之间插入了 Claudia。然而，React 是一个计算机程序，无法知道你的意图，因此你需要为每个列表项指定一个关键属性，以将每个列表项与其兄弟项区分开来。如果你的数据来自数据库，Alexa、Ben 和 Claudia 的数据库 ID 可以用作 key：
+除了更新的计数之外，阅读本文的人可能会说你交换了 Alexa 和 Ben 的顺序，并在 Alexa 和 Ben 之间插入了 Claudia。然而，React 是一个计算机程序，无法知道你的意图，因此你需要为每个列表项指定一个 key 属性，以将每个列表项与其兄弟项区分开来。如果你的数据来自数据库，Alexa、Ben 和 Claudia 的数据库 ID 可以用作 key：
 
 ```js {1}
 <li key={user.id}>
@@ -2275,11 +2275,11 @@ body {
 
 重新渲染列表时，React 获取每个列表项的 key 并搜索前一个列表的项以查找匹配的 key。如果当前列表有一个之前不存在的 key ，React 会创建一个组件。如果当前列表缺少前一个列表中存在的 key，React 会销毁前一个组件。如果两个 key 匹配，则落子相应的组件。
 
-key 告诉 React 每个组件的身份，这允许 React 在重新渲染之间保持 state。如果组件的 key 发生变化，组件将被销毁并以新 state 重新创建。
+key 告诉 React 每个组件的身份，这使得 React 可以在重新渲染时保持 state。如果组件的 key 发生变化，组件将被销毁，新 state 将重新创建。
 
-`key` 是 React 中一个特殊的保留属性。创建元素时，React 提取 `key` 属性并将 key 直接存储在返回的元素上。尽管 `key` 看起来像是作为 props 传递的，但 React 会自动使用 `key` 来决定要更新哪些组件。组件无法询问其父组件指定的 `key`。
+`key` 是 React 中一个特殊的保留属性。创建元素时，React 提取 `key` 属性并将 key 直接存储在返回的元素上。尽管 `key` 看起来像是作为 prop 传递的，但 React 会自动使用 `key` 来决定要更新哪些组件。组件无法询问其父组件指定的 `key`。
 
-**强烈建议你在构建动态列表时分配适当的 key**。如果你没有合适的密钥，你可能需要考虑重组你的数据，以便你这样做。
+**强烈建议你在构建动态列表时分配适当的 key**。如果你没有合适的 key，你可能需要考虑重组你的数据，以便你这样做。
 
 如果没有指定 key，React 会报错，默认使用数组索引作为 key。在尝试重新排序列表项或插入/删除列表项时，使用数组索引作为 key 是有问题的。显式传递 `key={i}` 可以消除错误，但与数组索引有相同的问题，在大多数情况下不推荐使用。
 
@@ -2287,7 +2287,7 @@ key 不需要是全局唯一的；它们只需要在组件及其同级组件之�
 
 ### 实现时间旅行 {/*implementing-time-travel*/}
 
-在井字棋游戏的历史中，过去的每一步都有一个唯一的 ID 与之相关联：它是动作的序号。落子永远不会被重新排序、删除或插入中间，因此使用落子索引作为 key 是安全的。
+在井字棋游戏的历史中，过去的每一步都有一个唯一的 ID 与之相关联：它是动作的序号。落子永远不会被重新排序、删除或从中间插入，因此使用落子的索引作为 key 是安全的。
 
 在 `Game` 函数中，你可以将 key 添加为 `<li key={move}>`，如果你重新加载渲染的游戏，React 的“ key”错误应该会消失：
 
@@ -2481,7 +2481,7 @@ export default function Game() {
 }
 ```
 
-接下来，更新 `Game` 中的 `jumpTo` 函数来更新那个 `currentMove`。如果你将 `currentMove` 更改为偶数，你还将设置 `xIsNext` 为 `true`。
+接下来，更新 `Game` 中的 `jumpTo` 函数来更新 `currentMove`。如果你将 `currentMove` 更改为偶数，你还将设置 `xIsNext` 为 `true`。
 
 ```js {4-5}
 export default function Game() {
@@ -2494,7 +2494,7 @@ export default function Game() {
 }
 ```
 
-你现在将对 `Game` 的 `handlePlay` 函数进行两处更改，该函数在你单击正方形时调用。
+你现在将对 `Game` 的 `handlePlay` 函数进行两处更改，该函数在你单击方块时调用。
 
 - 如果你“回到过去”然后从那一点开始采取新的行动，你只想保持那一点的历史。不是在 `history` 中的所有项目（`...` 扩展语法）之后添加 `nextSquares`，而是在 `history.slice(0, currentMove + 1)` 中的所有项目之后添加它，这样你就只保留旧历史的那部分。
 - 每次落子时，你都需要更新 `currentMove` 以指向最新的历史条目。
@@ -2521,7 +2521,7 @@ export default function Game() {
 }
 ```
 
-如果你点击游戏历史中的任何一步，井字棋盘应立即更新以显示该步骤发生后棋盘的样子。
+如果你点击游戏历史中的任何一步，井字棋棋盘应立即更新以显示该步骤发生后棋盘的样子。
 
 <Sandpack>
 
@@ -2696,7 +2696,7 @@ body {
 
 如果仔细查看代码，你可能会注意到当 `currentMove` 为偶数时为 `xIsNext === true`，而当 `currentMove` 为奇数时为 `xIsNext === false`。换句话说，如果你知道 `currentMove` 的值，那么你总能算出 `xIsNext` 应该是什么。
 
-你没有理由将这两者都存储在 state 中。事实上，总是尽量避免冗余 state。简化你在 state 中存储的内容可以减少错误并使你的代码更易于理解。更改 `Game` 使其不将 `xIsNext` 存储为单独的 state 变量，而是根据 `currentMove` 计算出来：
+你没有理由将这两者都存储在 state 中。事实上，总是尽量避免冗余的 state。简化你在 state 中存储的内容可以减少错误并使你的代码更易于理解。更改 `Game` 使其不将 `xIsNext` 存储为单独的 state 变量，而是根据 `currentMove` 计算出来：
 
 ```js {4,11,15}
 export default function Game() {
@@ -2903,7 +2903,7 @@ body {
 如果你有额外的时间或想练习新的 React 技能，这里有一些你可以改进井字棋游戏的想法，按难度递增的顺序列出：
 
 1. 仅针对当前着手，显示“You are at move #…”而不是按钮。
-1. 重写 `Board` 以使用两个循环来制作正方形而不是对它们进行硬编码。
+1. 重写 `Board` 以使用两个循环来制作方块而不是对它们进行硬编码。
 1. 添加一个切换按钮，使可以按升序或降序对落子的步数进行排序。
 1. 当有人获胜时，突出显示致使获胜的三个方块（当没有人获胜时，显示一条关于结果为平局的消息）。
 1. 在“落子”的历史列表中以 (row, col) 格式显示每步的位置。
