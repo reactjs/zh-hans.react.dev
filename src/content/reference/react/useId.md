@@ -42,7 +42,7 @@ function PasswordField() {
 
 #### 注意事项 {/*caveats*/}
 
-* `useId` 是一个 Hook，因此你只能 **在组件的顶层** 或自己的 Hooks 中调用它。你不能在内部循环或条件判断中调用它。如果需要，可以提取一个新组件并将 State 移到该组件中。
+* `useId` 是一个 Hook，因此你只能 **在组件的顶层** 或自己的 Hook 中调用它。你不能在内部循环或条件判断中调用它。如果需要，可以提取一个新组件并将 state 移到该组件中。
 
 * `useId` **不应该被用来生成列表中的 key**。[key 应该由你的数据生成](/learn/rendering-lists#where-to-get-your-key)。
 
@@ -79,7 +79,7 @@ function PasswordField() {
 
 **让我们通过一个例子，看看这个什么时候有用。**
 
-[HTML 无障碍属性](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) 例如 [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) 允许你指定两个标签之间的关系。例如，你可以指定一个元素（比如输入框）由另一个元素（比如段落）描述。
+[HTML 无障碍属性](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA) 例如 [`aria-describedby`](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) 允许你指定两个标签之间的关系。例如，你可以指定一个元素（比如输入框）由另一个元素（比如段落）描述。
 
 在常规的 HTML 中，你会这样写：
 
@@ -177,11 +177,11 @@ input { margin: 5px; }
 
 你可能想知道为什么使用 `useId` 比增加全局变量（如 nextId ++）更好。
 
-`useId` 的主要好处是 React 确保它能够与[服务器渲染](/reference/react-dom/server)一起工作。 在服务器渲染期间，你的组件生成输出 HTML。随后，在客户端，[hydration](/reference/react-dom/client/hydrateRoot) 会将你的事件处理程序附加到生成的 HTML 上。由于 hydration, 客户端必须匹配服务器输出的 HTML。
+`useId` 的主要好处是 React 确保它能够与 [服务端渲染](/reference/react-dom/server)一起工作。 在服务器渲染期间，你的组件生成输出 HTML。随后，在客户端，[hydration](/reference/react-dom/client/hydrateRoot) 会将你的事件处理程序附加到生成的 HTML 上。由于 hydration，客户端必须匹配服务器输出的 HTML。
 
 使用递增计数器非常难以保证这一点，因为客户端组件被 hydrated 处理后的顺序可能与服务器 HTML 发出的顺序不匹配。通过调用 `useId`，你可以确保 hydration 正常工作，并且服务器和客户端之间的输出将匹配。
 
-在 React 内部，调用组件的 “父路径” 生成 `useId`。这就是为什么，如果客户端和服务器的树相同，不管渲染顺序如何，“父路径” 将匹配。
+在 React 内部，调用组件的“父路径”生成 `useId`。这就是为什么，如果客户端和服务器的树相同，不管渲染顺序如何，“父路径”将匹配。
 </DeepDive>
 
 ---
