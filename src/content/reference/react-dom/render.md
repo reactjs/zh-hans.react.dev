@@ -76,7 +76,7 @@ React 将在 `domNode` 中展示 `<App />` 组件，并对该 DOM 中的内容�
 通过调用 `render` 函数在 <CodeStep step={2}>浏览器 DOM 节点</CodeStep>中展示 <CodeStep step={1}>React 组件</CodeStep>。
 
 ```js [[1, 4, "<App />"], [2, 4, "document.getElementById('root')"]]
-import {render} from 'react-dom';
+import { render } from 'react-dom';
 import App from './App.js';
 
 render(<App />, document.getElementById('root'));
@@ -90,7 +90,7 @@ render(<App />, document.getElementById('root'));
 
 ```js index.js active
 import './styles.css';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
 import App from './App.js';
 
 render(<App />, document.getElementById('root'));
@@ -189,7 +189,7 @@ nav ul li { display: inline-block; margin-right: 20px; }
 <Sandpack>
 
 ```js index.js active
-import {render} from 'react-dom';
+import { render } from 'react-dom';
 import './styles.css';
 import App from './App.js';
 
