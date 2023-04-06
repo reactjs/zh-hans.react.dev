@@ -131,11 +131,7 @@ img { height: 90px }
 
 <Note>
 
-<<<<<<< HEAD
 大部分情况下，React 在屏幕上显示的错误提示就能帮你找到问题所在，如果在编写过程中遇到问题就参考一下提示吧。
-=======
-Most of the time, React's on-screen error messages will help you find where the problem is. Give them a read if you get stuck!
->>>>>>> c9d0cbfccd28de357f2b35ba2c2b2aa19b3c0ab4
 
 </Note>
 

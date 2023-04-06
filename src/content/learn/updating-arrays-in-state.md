@@ -553,11 +553,7 @@ artwork.seen = nextSeen; // 问题：直接修改了已有的元素
 setMyList(myNextList);
 ```
 
-<<<<<<< HEAD
-虽然 `myNextList` 这个数组是新的，但是其*内部的元素本身*与原数组 `myList` 是相同的。因此，修改 `artwork.seen`，其实是在修改*原始的* artwork 对象。而这个 artwork 对象也被 `yourArtworks` 使用，这样就带来了 bug。这样的 bug 可能难以想到，但好在如果你避免直接修改 state，它们就会消失。
-=======
-Although the `myNextList` array itself is new, the *items themselves* are the same as in the original `myList` array. So changing `artwork.seen` changes the *original* artwork item. That artwork item is also in `yourList`, which causes the bug. Bugs like this can be difficult to think about, but thankfully they disappear if you avoid mutating state.
->>>>>>> c9d0cbfccd28de357f2b35ba2c2b2aa19b3c0ab4
+虽然 `myNextList` 这个数组是新的，但是其*内部的元素本身*与原数组 `myList` 是相同的。因此，修改 `artwork.seen`，其实是在修改*原始的* artwork 对象。而这个 artwork 对象也被 `yourList` 使用，这样就带来了 bug。这样的 bug 可能难以想到，但好在如果你避免直接修改 state，它们就会消失。
 
 **你可以使用 `map` 在没有 mutation 的前提下将一个旧的元素替换成更新的版本。**
 
