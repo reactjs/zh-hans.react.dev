@@ -8,7 +8,7 @@
 
 ## 翻译注意事项
 
-- 在翻译的过程中，我们需要遵循 [React 中文文档译文规范](https://github.com/reactjs/zh-hans.react.dev/wiki/React-%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3%E8%AF%91%E6%96%87%E6%8E%92%E7%89%88%E6%8C%87%E5%8D%97)。
+- 在翻译的过程中，我们需要遵循 [React 中文文档译文规范](https://github.com/reactjs/zh-hans.react.dev/wiki/React-Translation-Guide)。
 - 对于翻译中的专有名词，参见 [术语表](https://github.com/reactjs/zh-hans.react.dev/issues/2)。
 
 ## 翻译流程

@@ -434,7 +434,7 @@ export default function App() {
 
 #### 提取一个组件 {/*extract-a-component*/}
 
-这个 `Gallery` 组件包含两份个人资料，其中有一些非常相似的标记。从中提取一个 `Profile` 组件以减少重复。你需要选择要传递哪些 props。
+这个 `Gallery` 组件包含两份个人资料，其中有一些非常相似的标签。从中提取一个 `Profile` 组件以减少重复。你需要选择要传递哪些 props。
 
 <Sandpack>
 
@@ -527,7 +527,7 @@ li { margin: 5px; }
 
 <Hint>
 
-首先提取其中一位科学家的标记。然后在第二个例子中找到不匹配的部分，用 props 配置它们。
+首先提取其中一位科学家的标签。然后在第二个例子中找到不匹配的部分，用 props 配置它们。
 
 </Hint>
 
