@@ -28,7 +28,7 @@ translators:
 <Sandpack>
 
 ```js App.js
-import {useState} from 'react';
+import { useState } from 'react';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 
@@ -84,7 +84,7 @@ const initialTasks = [
 ```
 
 ```js AddTask.js hidden
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function AddTask({onAddTask}) {
   const [text, setText] = useState('');
@@ -108,7 +108,7 @@ export default function AddTask({onAddTask}) {
 ```
 
 ```js TaskList.js hidden
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function TaskList({tasks, onChangeTask, onDeleteTask}) {
   return (
@@ -466,7 +466,7 @@ export default function tasksReducer(tasks, action) {
 最后，你需要将 `tasksReducer` 导入到组件中。记得先从 React 中导入 `useReducer` Hook：
 
 ```js
-import {useReducer} from 'react';
+import { useReducer } from 'react';
 ```
 
 接下来，你就可以替换掉之前的 `useState`:
@@ -498,7 +498,7 @@ const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 <Sandpack>
 
 ```js App.js
-import {useReducer} from 'react';
+import { useReducer } from 'react';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 
@@ -579,7 +579,7 @@ const initialTasks = [
 ```
 
 ```js AddTask.js hidden
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function AddTask({onAddTask}) {
   const [text, setText] = useState('');
@@ -603,7 +603,7 @@ export default function AddTask({onAddTask}) {
 ```
 
 ```js TaskList.js hidden
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function TaskList({tasks, onChangeTask, onDeleteTask}) {
   return (
@@ -683,7 +683,7 @@ li {
 <Sandpack>
 
 ```js App.js
-import {useReducer} from 'react';
+import { useReducer } from 'react';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 import tasksReducer from './tasksReducer.js';
@@ -767,7 +767,7 @@ export default function tasksReducer(tasks, action) {
 ```
 
 ```js AddTask.js hidden
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function AddTask({onAddTask}) {
   const [text, setText] = useState('');
@@ -791,7 +791,7 @@ export default function AddTask({onAddTask}) {
 ```
 
 ```js TaskList.js hidden
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function TaskList({tasks, onChangeTask, onDeleteTask}) {
   return (
@@ -894,7 +894,7 @@ Reducers 并非没有缺点！以下是比较它们的几种方法：
 <Sandpack>
 
 ```js App.js
-import {useImmerReducer} from 'use-immer';
+import { useImmerReducer } from 'use-immer';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
 
@@ -969,7 +969,7 @@ const initialTasks = [
 ```
 
 ```js AddTask.js hidden
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function AddTask({onAddTask}) {
   const [text, setText] = useState('');
@@ -993,7 +993,7 @@ export default function AddTask({onAddTask}) {
 ```
 
 ```js TaskList.js hidden
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function TaskList({tasks, onChangeTask, onDeleteTask}) {
   return (
@@ -1131,10 +1131,10 @@ case 'changed_selection': {
 <Sandpack>
 
 ```js App.js
-import {useReducer} from 'react';
+import { useReducer } from 'react';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {initialState, messengerReducer} from './messengerReducer';
+import { initialState, messengerReducer } from './messengerReducer';
 
 export default function Messenger() {
   const [state, dispatch] = useReducer(messengerReducer, initialState);
@@ -1214,7 +1214,7 @@ export default function ContactList({contacts, selectedId, dispatch}) {
 ```
 
 ```js Chat.js
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Chat({contact, message, dispatch}) {
   return (
@@ -1281,10 +1281,10 @@ dispatch({
 <Sandpack>
 
 ```js App.js
-import {useReducer} from 'react';
+import { useReducer } from 'react';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {initialState, messengerReducer} from './messengerReducer';
+import { initialState, messengerReducer } from './messengerReducer';
 
 export default function Messenger() {
   const [state, dispatch] = useReducer(messengerReducer, initialState);
@@ -1367,7 +1367,7 @@ export default function ContactList({contacts, selectedId, dispatch}) {
 ```
 
 ```js Chat.js
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Chat({contact, message, dispatch}) {
   return (
@@ -1425,10 +1425,10 @@ textarea {
 <Sandpack>
 
 ```js App.js
-import {useReducer} from 'react';
+import { useReducer } from 'react';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {initialState, messengerReducer} from './messengerReducer';
+import { initialState, messengerReducer } from './messengerReducer';
 
 export default function Messenger() {
   const [state, dispatch] = useReducer(messengerReducer, initialState);
@@ -1511,7 +1511,7 @@ export default function ContactList({contacts, selectedId, dispatch}) {
 ```
 
 ```js Chat.js active
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Chat({contact, message, dispatch}) {
   return (
@@ -1564,10 +1564,10 @@ textarea {
 <Sandpack>
 
 ```js App.js
-import {useReducer} from 'react';
+import { useReducer } from 'react';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {initialState, messengerReducer} from './messengerReducer';
+import { initialState, messengerReducer } from './messengerReducer';
 
 export default function Messenger() {
   const [state, dispatch] = useReducer(messengerReducer, initialState);
@@ -1650,7 +1650,7 @@ export default function ContactList({contacts, selectedId, dispatch}) {
 ```
 
 ```js Chat.js active
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Chat({contact, message, dispatch}) {
   return (
@@ -1712,10 +1712,10 @@ textarea {
 <Sandpack>
 
 ```js App.js
-import {useReducer} from 'react';
+import { useReducer } from 'react';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {initialState, messengerReducer} from './messengerReducer';
+import { initialState, messengerReducer } from './messengerReducer';
 
 export default function Messenger() {
   const [state, dispatch] = useReducer(messengerReducer, initialState);
@@ -1804,7 +1804,7 @@ export default function ContactList({contacts, selectedId, dispatch}) {
 ```
 
 ```js Chat.js active
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Chat({contact, message, dispatch}) {
   return (
@@ -1909,10 +1909,10 @@ export const initialState = {
 <Sandpack>
 
 ```js App.js
-import {useReducer} from 'react';
+import { useReducer } from 'react';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {initialState, messengerReducer} from './messengerReducer';
+import { initialState, messengerReducer } from './messengerReducer';
 
 export default function Messenger() {
   const [state, dispatch] = useReducer(messengerReducer, initialState);
@@ -2001,7 +2001,7 @@ export default function ContactList({contacts, selectedId, dispatch}) {
 ```
 
 ```js Chat.js
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Chat({contact, message, dispatch}) {
   return (
@@ -2086,10 +2086,10 @@ Here is the complete solution:
 <Sandpack>
 
 ```js App.js
-import {useReducer} from 'react';
+import { useReducer } from 'react';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {initialState, messengerReducer} from './messengerReducer';
+import { initialState, messengerReducer } from './messengerReducer';
 
 export default function Messenger() {
   const [state, dispatch] = useReducer(messengerReducer, initialState);
@@ -2187,7 +2187,7 @@ export default function ContactList({contacts, selectedId, dispatch}) {
 ```
 
 ```js Chat.js
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Chat({contact, message, dispatch}) {
   return (
@@ -2274,10 +2274,10 @@ export function useReducer(reducer, initialState) {
 <Sandpack>
 
 ```js App.js
-import {useReducer} from './MyReact.js';
+import { useReducer } from './MyReact.js';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {initialState, messengerReducer} from './messengerReducer';
+import { initialState, messengerReducer } from './messengerReducer';
 
 export default function Messenger() {
   const [state, dispatch] = useReducer(messengerReducer, initialState);
@@ -2351,7 +2351,7 @@ export function messengerReducer(state, action) {
 ```
 
 ```js MyReact.js active
-import {useState} from 'react';
+import { useState } from 'react';
 
 export function useReducer(reducer, initialState) {
   const [state, setState] = useState(initialState);
@@ -2387,7 +2387,7 @@ export default function ContactList({contacts, selectedId, dispatch}) {
 ```
 
 ```js Chat.js hidden
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Chat({contact, message, dispatch}) {
   return (
@@ -2448,10 +2448,10 @@ dispatch 一个 action 去调用一个具有当前 state 和 action 的 reducer�
 <Sandpack>
 
 ```js App.js
-import {useReducer} from './MyReact.js';
+import { useReducer } from './MyReact.js';
 import Chat from './Chat.js';
 import ContactList from './ContactList.js';
-import {initialState, messengerReducer} from './messengerReducer';
+import { initialState, messengerReducer } from './messengerReducer';
 
 export default function Messenger() {
   const [state, dispatch] = useReducer(messengerReducer, initialState);
@@ -2525,7 +2525,7 @@ export function messengerReducer(state, action) {
 ```
 
 ```js MyReact.js active
-import {useState} from 'react';
+import { useState } from 'react';
 
 export function useReducer(reducer, initialState) {
   const [state, setState] = useState(initialState);
@@ -2564,7 +2564,7 @@ export default function ContactList({contacts, selectedId, dispatch}) {
 ```
 
 ```js Chat.js hidden
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Chat({contact, message, dispatch}) {
   return (

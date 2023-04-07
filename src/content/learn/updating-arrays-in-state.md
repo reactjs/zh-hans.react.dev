@@ -553,7 +553,7 @@ artwork.seen = nextSeen; // 问题：直接修改了已有的元素
 setMyList(myNextList);
 ```
 
-虽然 `myNextList` 这个数组是新的，但是其*内部的元素本身*与原数组 `myList` 是相同的。因此，修改 `artwork.seen`，其实是在修改*原始的* artwork 对象。而这个 artwork 对象也被 `yourArtworks` 使用，这样就带来了 bug。这样的 bug 可能难以想到，但好在如果你避免直接修改 state，它们就会消失。
+虽然 `myNextList` 这个数组是新的，但是其*内部的元素本身*与原数组 `myList` 是相同的。因此，修改 `artwork.seen`，其实是在修改*原始的* artwork 对象。而这个 artwork 对象也被 `yourList` 使用，这样就带来了 bug。这样的 bug 可能难以想到，但好在如果你避免直接修改 state，它们就会消失。
 
 **你可以使用 `map` 在没有 mutation 的前提下将一个旧的元素替换成更新的版本。**
 
@@ -685,7 +685,7 @@ export default function BucketList() {
   const [myList, updateMyList] = useImmer(
     initialList
   );
-  const [yourArtworks, updateYourList] = useImmer(
+  const [yourList, updateYourList] = useImmer(
     initialList
   );
 
@@ -716,7 +716,7 @@ export default function BucketList() {
         onToggle={handleToggleMyList} />
       <h2>你想看的艺术清单：</h2>
       <ItemList
-        artworks={yourArtworks}
+        artworks={yourList}
         onToggle={handleToggleYourList} />
     </>
   );

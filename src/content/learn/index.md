@@ -318,6 +318,7 @@ import { useState } from 'react';
 ```js
 function MyButton() {
   const [count, setCount] = useState(0);
+  // ...
 ```
 
 你将从 `useState` 中获得两样东西：当前的 state（`count`），以及用于更新它的函数（`setCount`）。你可以给它们起任何名字，但按照惯例，需要像这样 `[something, setSomething]` 为它们命名。
