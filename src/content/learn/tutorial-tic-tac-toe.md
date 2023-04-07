@@ -4,7 +4,7 @@ title: '教程：井字棋游戏'
 
 <Intro>
 
-本教程将实现一个小型井字棋游戏，并且你不需要对 React 有任何了解。在此过程中你会学习到一些 React 基本知识，这些知识可以让你对 React 有更深入的理解。
+本教程将引导你逐步实现一个简单的井字棋游戏，并且不需要你对 React 有任何了解。在此过程中你会学习到一些编写 React 程序的基本知识，完全理解它们可以让你对 React 有比较深入的理解。
 
 </Intro>
 
@@ -21,9 +21,9 @@ title: '教程：井字棋游戏'
 - [完成游戏](#completing-the-game) 介绍了 React 开发中 **最常用的技术**。
 - [添加“时间旅行”](#adding-time-travel) 可以让你更深入地了解 React 的独特优势。
 
-### 将会构建什么？ {/*what-are-you-building*/}
+### 实现的是什么程序？ {/*what-are-you-building*/}
 
-本教程将使用 React 构建一个可以交互的井字棋游戏。
+本教程将使用 React 实现一个交互式的井字棋游戏。
 
 你可以在下面预览最终成果：
 
@@ -261,7 +261,7 @@ body {
 
 <Note>
 
-你也可以使用本地开发环境来跟着这个教程学习，你需要：
+如果你想要使用本地开发环境来学习这个教程，需要按照下面的流程进行：
 
 1. 安装 [Node.js](https://nodejs.org/zh-cn/)
 2. 在之前打开的 CodeSandbox 选项卡中，按左上角的按钮打开菜单，然后选择 **File > Export to ZIP**，将代码压缩包下载到本地。
@@ -269,13 +269,13 @@ body {
 4. 使用 `npm install` 安装依赖。
 5. 运行 `npm start` 启动本地服务器，按照提示在浏览器中查看运行效果。
 
-如果你卡住了，不要让它挡道。请改为在线进行操作，稍后再尝试本地配置。
+如果你遇到了困难，不要花费时间去找解决方案。请改为在线进行操作，稍后再尝试本地配置。
 
 </Note>
 
 ## 概览 {/*overview*/}
 
-完成配置以后，我们来大概看一看 React 是什么样子吧！
+完成配置以后，我们先来大致了解一下 React 吧！
 
 ### 看一下刚刚的代码 {/*inspecting-the-starter-code*/}
 
@@ -283,9 +283,9 @@ body {
 
 ![CodeSandbox 的初始代码](../images/tutorial/react-starter-code-codesandbox.png)
 
-1. _Files_ 部分列出了一些文件：`App.js`、`index.js`、`styles.css` 和一个叫 `public` 的文件夹。
-2. _code editor_ 里面你能够看到打开的代码。
-3. _browser_ 部分你将看到代码的实时效果。
+1. _Files_ 部分列出了一些文件：`App.js`、`index.js`、`styles.css` 和 `public` 文件夹。
+2. _code editor_ 部分可以看到你所选中文件的源码。
+3. _browser_ 部分可以预览代码的实时结果。
 
 `App.js` 文件里面的内容应该是这样的：
 
@@ -298,7 +298,7 @@ export default function Square() {
 _browser_ 部分应该会像下面这样在方块里面显示一个 X：
 ![里面是“X”的方块](../images/tutorial/x-filled-square.png)
 
-现在，让我们仔细来看一看这些文件吧。
+现在，让我们仔细研究一下这些文件吧。
 
 #### `App.js` {/*appjs*/}
 
