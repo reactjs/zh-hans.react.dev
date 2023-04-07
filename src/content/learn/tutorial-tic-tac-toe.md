@@ -296,6 +296,7 @@ export default function Square() {
 ```
 
 _browser_ 部分应该会像下面这样在方块里面显示一个 X：
+
 ![里面是“X”的方块](../images/tutorial/x-filled-square.png)
 
 现在，让我们仔细研究一下这些文件吧。
