@@ -4,7 +4,7 @@ title: useMemo
 
 <Intro>
 
-`useMemo` 是一个React钩子，让你在每次重新渲染的时候能够缓存计算的结果.
+`useMemo` 是一个 React 钩子函数，让你在每次重新渲染的时候能够缓存计算的结果。
 
 ```js
 const cachedValue = useMemo(calculateValue, dependencies)
@@ -20,7 +20,6 @@ const cachedValue = useMemo(calculateValue, dependencies)
 
 ### `useMemo(calculateValue, dependencies)` {/*usememo*/}
 
-
 在组件的顶层调用 useContext 来缓存一个在每次重新渲染中需要计算的结果。
 
 ```js
@@ -35,7 +34,7 @@ function TodoList({ todos, tab }) {
 }
 ```
 
-[参考如下更多示例.](#usage)
+[参考如下更多示例](#usage)
 
 ####  参数 {/*parameters*/}
 
@@ -47,18 +46,17 @@ function TodoList({ todos, tab }) {
 
 在初始渲染时，`useMemo` 返回不带参数的调用`calculateValue`的结果。
 
-
 在接下来的渲染中，它将返回上次渲染中已经缓存的值(如果依赖项没有改变)，或者再次调用`calculateValue`，并返回`calculateValue`返回的结果。
 
 #### 注意事项 {/*caveats*/}
 
 * `useMemo` 是一个React Hook, 所以你只能 **在组件的顶层** 或者你自己的Hook中调用它。你不能在循环或条件语句中调用它。如果需要，可以提取一个新组件并将state移动到其中。
-* 在严格模式下，为了 [帮你发现意外的错误](#my-calculation-runs-twice-on-every-re-render)， React将会 **重复调用你的calculation函数两次** 。这只是一个开发环境下的行为并不会影响到生产环境。 如果你的 calcalation 函数是一个纯函数(它本来就应该是)， 这将不会影响到你的逻辑。其中一次调用的结果将会被忽略。
-* React **不会丢弃缓存的值，除非有特定的原因。** 例如，在开发过程中，React会在你编辑组件文件时丢弃缓存。无论是在开发环境还是在生产环境，如果你的组件在初始挂载期间被终止，React都会丢弃缓存。 在未来，React可能会添加更多利用丢弃缓存的特性--例如, 如果React在未来增加了对虚拟化列表的内置支持，那么丢弃那些滚出虚拟化表视口的缓存是有意义的. 如果你仅仅依赖“useMemo”作为性能优化手段，是没问题的。 否则， a [state 变量](/reference/react/useState#avoiding-recreating-the-initial-state) or a [ref](/reference/react/useRef#avoiding-recreating-the-ref-contents) 可能更加合适。
+* 在严格模式下，为了 [帮你发现意外的错误](#my-calculation-runs-twice-on-every-re-render) ， React将会 **重复调用你的 calculation 函数两次** 。这只是一个开发环境下的行为并不会影响到生产环境。 如果你的 calcalation 函数是一个纯函数(它本来就应该是)， 这将不会影响到你的逻辑。其中一次调用的结果将会被忽略。
+* React **不会丢弃缓存的值，除非有特定的原因。**  例如，在开发过程中，React会在你编辑组件文件时丢弃缓存。无论是在开发环境还是在生产环境，如果你的组件在初始挂载期间被终止，React都会丢弃缓存。 在未来，React可能会添加更多利用丢弃缓存的特性--例如, 如果React在未来增加了对虚拟化列表的内置支持，那么丢弃那些滚出虚拟化表视口的缓存是有意义的. 如果你仅仅依赖“useMemo”作为性能优化手段，是没问题的。 否则， 一个 [state 变量](/reference/react/useState#avoiding-recreating-the-initial-state) 或者一个 [ref](/reference/react/useRef#avoiding-recreating-the-ref-contents) 可能更加合适。
 
 <Note>
 
-这种缓存返回值的方式也叫做 [*memoization*,](https://en.wikipedia.org/wiki/Memoization) 这也是这个 Hook 叫做`useMemo`的原因。
+这种缓存返回值的方式也叫做 [*memoization*](https://en.wikipedia.org/wiki/Memoization) ，这也是这个 Hook 叫做 `useMemo` 的原因。
 
 </Note>
 
@@ -68,8 +66,7 @@ function TodoList({ todos, tab }) {
 
 ### 跳过代价昂贵的重新计算 {/*skipping-expensive-recalculations*/}
 
-
-要在重新渲染之间缓存计算结果，请在组件的顶层使用`useMemo` 调用将其包装起来：
+要在重新渲染之间缓存计算结果，请在组件的顶层使用 `useMemo` 调用将其包装起来：
 
 ```js [[3, 4, "visibleTodos"], [1, 4, "() => filterTodos(todos, tab)"], [2, 4, "[todos, tab]"]]
 import { useMemo } from 'react';
@@ -82,14 +79,14 @@ function TodoList({ todos, tab, theme }) {
 
 你需要给 `useMemo` 传递两样东西:
 
-1. 一个没有任何参数的 <CodeStep step={1}>calculation 函数</CodeStep> , 像这样 `() =>`, 并且返回任何你想要的计算结果。
+1. 一个没有任何参数的 <CodeStep step={1}>calculation 函数</CodeStep> ， 像这样 `() =>` ， 并且返回任何你想要的计算结果。
 2. 一个由包含在你的组件中并在 calculation 中使用的所有值组成的 <CodeStep step={2}>依赖列表</CodeStep>
 
-在初次渲染时, 你从 `useMemo` 得到的<CodeStep step={3}>值</CodeStep> 将会是你的<CodeStep step={1}>calculation</CodeStep>函数执行的结果。
+在初次渲染时， 你从 `useMemo` 得到的 <CodeStep step={3}>值</CodeStep> 将会是你的 <CodeStep step={1}>calculation</CodeStep> 函数执行的结果。
 
-在随后的每一次渲染中, React 将会比较前后两次渲染中的 <CodeStep step={2}>所有依赖项</CodeStep> 是否相同。 如何所有依赖项都没有发生变化 (通过 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)比较), `useMemo` 将会返回之前已经计算过的那个值。 否则, React将会重新执行calculation并且返回一个新的值。
+在随后的每一次渲染中， React 将会比较前后两次渲染中的 <CodeStep step={2}>所有依赖项</CodeStep> 是否相同。 如何所有依赖项都没有发生变化 (通过 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较)， `useMemo` 将会返回之前已经计算过的那个值。 否则， React 将会重新执行 calculation 并且返回一个新的值。
 
-换句话说, `useMemo` 在多次重新渲染中缓存了一个 calculation 结果直到依赖项的值发生变化。
+换句话说， `useMemo` 在多次重新渲染中缓存了一个 calculation 结果直到依赖项的值发生变化。
 
 **让我们通过一个示例来了解这在什么情况下是有用的。**
 
@@ -108,7 +105,7 @@ function TodoList({ todos, tab, theme }) {
 
 <Note>
 
-**你应该仅仅把 `useMemo` 作为一个性能优化的手段.** 如果没有它，您的代码就不能正常工作，请先找到潜在的问题并修复它。然后你可以添加 `useMemo` 来提高性能。
+**你应该仅仅把 `useMemo` 作为一个性能优化的手段。** 如果没有它，您的代码就不能正常工作，请先找到潜在的问题并修复它。然后你可以添加 `useMemo` 来提高性能。
 
 </Note>
 
@@ -124,22 +121,21 @@ const visibleTodos = filterTodos(todos, tab);
 console.timeEnd('filter array');
 ```
 
-执行你正在检测的交互 (例如，在输入框中输入文字). 你将会在控制台看到如下的日志 `filter array: 0.15ms` 。 如果全部记录的时间加起来很长 (`1ms`或者更多), 记住这个计算结果是有意义的.
-作为实验，您可以将计算过程包装在`useMemo`中，以验证该交互的总日志时间是否减少了:
+执行你正在检测的交互 (例如，在输入框中输入文字)。你将会在控制台看到如下的日志 `filter array: 0.15ms` 。 如果全部记录的时间加起来很长 ( `1ms` 或者更多)，记住这个计算结果是有意义的。作为实验，您可以将计算过程包装在 `useMemo` 中，以验证该交互的总日志时间是否减少了：
 
 ```js
 console.time('filter array');
 const visibleTodos = useMemo(() => {
-  return filterTodos(todos, tab); // Skipped if todos and tab haven't changed
+  return filterTodos(todos, tab); // 如果 todos 和 tab 都没有变化，那么将会跳过渲染。
 }, [todos, tab]);
 console.timeEnd('filter array');
 ```
 
-`useMemo` 不会让 *第一次* 渲染更快. 它只会帮助你跳过不必要的更新工作.
+`useMemo` 不会让 *第一次* 渲染更快， 它只会帮助你跳过不必要的更新工作。
 
-请记住，您的设备可能比用户的速度更快，因此最好通过人为的降低浏览器性能来测试. 例如, Chrome 提供了一个 [CPU Throttling](https://developer.chrome.com/blog/new-in-devtools-61/#throttling) 选项来降低浏览器性能.
+请记住，您的设备可能比用户的速度更快，因此最好通过人为的降低浏览器性能来测试. 例如, Chrome 提供了一个 [CPU Throttling](https://developer.chrome.com/blog/new-in-devtools-61/#throttling) 选项来降低浏览器性能。
 
-另请注意，在开发环境中测量性能不会为您提供最准确的结果。(例如, 当开启 [严格模式](/reference/react/StrictMode) ， 你会看到每个组件渲染两次而不是一次.) 要获得最准确的时间，请构建用于生产的应用程序并在用户使用的设备上对其进行测试。
+另请注意，在开发环境中测量性能不会为您提供最准确的结果。(例如， 当开启 [严格模式](/reference/react/StrictMode) ， 你会看到每个组件渲染两次而不是一次。) 要获得最准确的时间，请构建用于生产的应用程序并在用户使用的设备上对其进行测试。
 
 </DeepDive>
 
@@ -149,22 +145,21 @@ console.timeEnd('filter array');
 
 如果您的应用程序类似于此站点，并且大多数交互都很粗糙（例如替换页面或整个部分），则通常不需要记忆。 另一方面，如果您的应用程序更像是绘图编辑器，并且大多数交互都是颗粒状的（如移动形状），那么您可能会发现记忆非常有用。
 
-使用 `useMemo` 进行优化仅在少数情况下有价值:
+使用 `useMemo` 进行优化仅在少数情况下有价值：
 
 - 您在 `useMemo` 中进行的计算明显很慢，而且它的依赖关系很少改变
-- 您将它作为 prop 传递给包装在 [`memo`.](/reference/react/memo) 中的组件。如果值没有改变，你想跳过重新渲染。 Memoization 让您的组件仅在依赖项不同时才重新渲染。
-- 您传递的值稍后用作某些 Hook 的依赖项。 例如， 也许另一个 useMemo 计算值依赖它。 或者 [`useEffect.`](/reference/react/useEffect) 依赖这个值。
+- 您将它作为 prop 传递给包装在 [`memo`](/reference/react/memo) 中的组件。如果值没有改变，你想跳过重新渲染。 Memoization 让您的组件仅在依赖项不同时才重新渲染。
+- 您传递的值稍后用作某些 Hook 的依赖项。 例如， 也许另一个 useMemo 计算值依赖它。 或者 [`useEffect`](/reference/react/useEffect) 依赖这个值。
 
 在其他情况下，将计算过程包装在 useMemo 中没有任何好处。 这样做也没有重大危害, 所以一些团队选择不考虑个别情况，尽可能多地使用 `useMemo`。 这种方法的缺点是降低了代码的可读性。此外，并不是所有的 `useMemo` 的使用都是有效的：一个“永远是新的”的单一值就足以破坏整个组件的缓存效果。
 
 **在实践中，你可以通过遵循一些原则来避免 `useMemo` 大量无效的使用:**
 
-1. 当一个组件在视觉上包裹其他组件时, 让它 [将 JSX 作为子组件传递](/learn/passing-props-to-a-component#passing-jsx-as-children)。 这样, 当包装器组件更新自己的状态时，React 知道它的子组件不需要重新渲染。
-2. 首选本地状态,非必要不要进行 [状态提升](/learn/sharing-state-between-components)。 例如, 不要保持像表单这样的瞬时状态，也不要保持项目是否悬停在树的顶部或全局状态库中。
-
-3. 保持你的 [渲染逻辑纯粹](/learn/keeping-components-pure)。 如果重新渲染组件导致问题或产生一些明显的视觉伪像，那么它就是组件中的错误！ 修复错误而不是添加记忆。
-4. 避免 [不必要的更新 state 的 Effects](/learn/you-might-not-need-an-effect)。React 应用程序中的大多数性能问题都是由 Effects 创造的更新链引起的，这些更新链导致组件反复渲染。
-5. 尽力 [从 Effects 中移除不必要的依赖项](/learn/removing-effect-dependencies)。例如, 相比于 memoization ，在 Effect 内部或组件外部移动某些对象或函数通常更简单。
+1. 当一个组件在视觉上包裹其他组件时, 让它 [将 JSX 作为子组件传递](/learn/passing-props-to-a-component#passing-jsx-as-children) 。 这样, 当包装器组件更新自己的状态时，React 知道它的子组件不需要重新渲染。
+2. 首选本地状态,非必要不要进行 [状态提升](/learn/sharing-state-between-components) 。 例如, 不要保持像表单这样的瞬时状态，也不要保持项目是否悬停在树的顶部或全局状态库中。
+3. 保持你的 [渲染逻辑纯粹](/learn/keeping-components-pure) 。 如果重新渲染组件导致问题或产生一些明显的视觉伪像，那么它就是组件中的错误！ 修复错误而不是添加记忆。
+4. 避免 [不必要的更新 state 的 Effects](/learn/you-might-not-need-an-effect) 。React 应用程序中的大多数性能问题都是由 Effects 创造的更新链引起的，这些更新链导致组件反复渲染。
+5. 尽力 [从 Effects 中移除不必要的依赖项](/learn/removing-effect-dependencies) 。例如, 相比于 memoization ，在 Effect 内部或组件外部移动某些对象或函数通常更简单。
 
 如果某个特定的交互仍然感觉滞后, [使用 React 开发者工具分析器](/blog/2018/09/10/introducing-the-react-profiler.html) 查看哪些组件将从 memoization 中获益最多，并在需要的地方添加 memoization 。 这些原则使您的组件更易于调试和理解，因此在任何情况下都应该遵循它们。从长远来看，我们正在研究 [自动进行粒度记忆](https://www.youtube.com/watch?v=lGEMwh32soc) 以一劳永逸地解决这个问题。
 
@@ -176,9 +171,9 @@ console.timeEnd('filter array');
 
 在这个例子中， `filterTodos` 的执行被 **人为减速了** 这样您就可以看到当您在渲染期间调用的某些 JavaScript 函数确实很慢时会发生什么。 尝试切换选项卡并切换主题。
 
-切换选项卡感觉很慢，因为它迫使减速的 `filterTodos` 重新执行。这是预料之中的，因为“选项卡”已更改，因此整个计算 *需要* 重新运行。 (如果您好奇为什么它会运行两次，[此处](#my-calculation-runs-twice-on-every-re-render)) 对此进行了解释。
+切换选项卡感觉很慢，因为它迫使减速的 `filterTodos` 重新执行。这是预料之中的，因为“选项卡”已更改，因此整个计算 *需要* 重新运行。 (如果您好奇为什么它会运行两次，[此处](#my-calculation-runs-twice-on-every-re-render) 对此进行了解释) 。
 
-切换主题。 **多亏了 `useMemo`，尽管被人为减速，它还是很快的！** 缓慢的 `filterTodos` 调用被跳过，因为 `todos` 和 `tab`（您将其作为依赖项传递给 `useMemo`）自上次渲染以来都没有改变。
+尝试切换主题。 **多亏了 `useMemo` ，尽管被人为减速，它还是很快的！** 缓慢的 `filterTodos` 调用被跳过，因为 `todos` 和 `tab`（您将其作为依赖项传递给 `useMemo` ）自上次渲染以来都没有改变。
 
 <Sandpack>
 
@@ -268,7 +263,7 @@ export function filterTodos(todos, tab) {
   console.log('[ARTIFICIALLY SLOW] Filtering ' + todos.length + ' todos for "' + tab + '" tab.');
   let startTime = performance.now();
   while (performance.now() - startTime < 500) {
-    // Do nothing for 500 ms to emulate extremely slow code
+    // 在 500 毫秒内不执行任何操作以模拟极慢的代码
   }
 
   return todos.filter(todo => {
@@ -306,9 +301,9 @@ label {
 
 #### 始终重新计算 {/*always-recalculating-a-value*/}
 
-在这个例子中，`filterTodos` 的实现也被**人为地减慢了**，这样您就可以看到当您在渲染期间调用的某些 JavaScript 函数确实很慢时会发生什么。 尝试切换选项卡并切换主题。
+在这个例子中，`filterTodos` 的实现也被 **人为地减慢了** ，这样您就可以看到当您在渲染期间调用的某些 JavaScript 函数确实很慢时会发生什么。 尝试切换选项卡并切换主题。
 
-与前面的示例不同，现在切换主题也很慢！ 这是因为**此版本中没有 `useMemo` 调用，**因此每次重新渲染时都会调用人为减慢的 `filterTodos`。 即使只有“主题”发生了变化，它也会被调用。
+与前面的示例不同，现在切换主题也很慢！ 这是因为 **此版本中没有 `useMemo` 调用** ，因此每次重新渲染时都会调用人为减慢的 `filterTodos`。 即使只有 `theme` 发生了变化，它也会被用。
 
 <Sandpack>
 
@@ -394,7 +389,7 @@ export function filterTodos(todos, tab) {
   console.log('[ARTIFICIALLY SLOW] Filtering ' + todos.length + ' todos for "' + tab + '" tab.');
   let startTime = performance.now();
   while (performance.now() - startTime < 500) {
-    // 在500毫秒内什么都不做以模拟极其缓慢的代码
+    // 在 500 毫秒内什么都不做以模拟极其缓慢的代码
   }
 
   return todos.filter(todo => {
@@ -428,7 +423,7 @@ label {
 
 </Sandpack>
 
-However, here is the same code **with the artificial slowdown removed.** Does the lack of `useMemo` feel noticeable or not?然而，这里是**删除了人为减速** 的相同代码。缺少 `useMemo` 是否感觉很明显？
+然而，这里是 **删除了人为减速** 的相同代码。缺少 `useMemo` 是否感觉很明显？
 
 <Sandpack>
 
@@ -568,7 +563,7 @@ export default function TodoList({ todos, tab, theme }) {
 }
 ```
 
-您已经注意到切换 `theme` 属性会使应用程序冻结片刻，但是如果您从 JSX 中删除 `<List />`，感觉会很快。 这说明尝试优化 `List` 组件是值得的。
+您已经注意到切换 `theme` 属性会使应用程序冻结片刻，但是如果您从 JSX 中删除 `<List />` ，感觉会很快。 这说明尝试优化 `List` 组件是值得的。
 
 **默认情况下，当一个组件重新渲染时，React 会递归地重新渲染它的所有子组件。** 这就是为什么当 `TodoList` 使用不同的 `theme` 重新渲染时，`List` 组件*也会*重新渲染。 这对于不需要太多计算来重新渲染的组件来说很好。 但是如果你已经确认重新渲染很慢，你可以通过将它包装在 [`memo`](/reference/react/memo) 中，这样当它的 props 跟上一次渲染相同的时候它就会跳过本次渲染：
 
@@ -580,7 +575,7 @@ const List = memo(function List({ items }) {
 });
 ```
 
-通过此更改，如果 `List` 的所有道具都与上次渲染时 *相同* ，则 `List` 将跳过重新渲染。** 这就是缓存计算变得重要的地方！想象一下，您在没有 `useMemo` 的情况下计算了 `visibleTodos` ：
+**通过此更改，如果 `List` 的所有道具都与上次渲染时 *相同* ，则 `List` 将跳过重新渲染。** 这就是缓存计算变得重要的地方！想象一下，您在没有 `useMemo` 的情况下计算了 `visibleTodos` ：
 
 ```js {2-3,6-7}
 export default function TodoList({ todos, tab, theme }) {
@@ -595,7 +590,7 @@ export default function TodoList({ todos, tab, theme }) {
 }
 ```
 
-**在上面的示例中，`filterTodos` 函数总是创建一个 *不同* 数组，**类似于 `{}` 总是创建一个新对象的方式。 通常，这不是问题，但这意味着 `List` 属性永远不会相同，并且您的 [`memo`](/reference/react/memo) 优化将不起作用。 这就是 useMemo 派上用场的地方：
+**在上面的示例中，`filterTodos` 函数总是创建一个 *不同* 数组，** 类似于 `{}` 总是创建一个新对象的方式。 通常，这不是问题，但这意味着 `List` 属性永远不会相同，并且您的 [`memo`](/reference/react/memo) 优化将不起作用。 这就是 useMemo 派上用场的地方：
 
 ```js {2-3,5,9-10}
 export default function TodoList({ todos, tab, theme }) {
@@ -646,13 +641,13 @@ export default function TodoList({ todos, tab, theme }) {
 
 <Recipes titleText="跳过重新渲染和总是重新渲染之间的区别" titleId="examples-rerendering">
 
-#### 用 `useMemo` and `memo` 跳过重新渲染 {/*skipping-re-rendering-with-usememo-and-memo*/}
+#### 用 `useMemo` 和 `memo` 跳过重新渲染 {/*skipping-re-rendering-with-usememo-and-memo*/}
 
 在此示例中，`List` 组件被 **人为地减慢了速度** ，以便您可以看到当您渲染的 React 组件真正变慢时会发生什么。 尝试切换选项卡并切换主题。
 
 切换选项卡感觉很慢，因为它迫使减速的 `List` 重新渲染。 这是预料之中的，因为 `选tab` 已更改，因此您需要在屏幕上反映用户的新选择。
 
-接下来，尝试切换主题。 **感谢 `useMemo` 和 [`memo`](/reference/react/memo)，尽管被人为减速它还是很快的！** `List` 跳过了重新渲染，因为 `visibleItems` 数组从上一次渲染之后就没有发生改变。 `visibleItems` 数组没有改变，是因为 `todos` 和 `tab`（作为依赖项传递给 `useMemo`）自上次渲染以来都没有改变。
+接下来，尝试切换主题。 **感谢 `useMemo` 和 [`memo`](/reference/react/memo) ，尽管被人为减速它还是很快的！** `List` 跳过了重新渲染，因为 `visibleItems` 数组从上一次渲染之后就没有发生改变。 `visibleItems` 数组没有改变，是因为 `todos` 和 `tab`（作为依赖项传递给 `useMemo` ）自上次渲染以来都没有改变。
 
 <Sandpack>
 
@@ -1098,7 +1093,7 @@ function Dropdown({ allItems, text }) {
   const visibleItems = useMemo(() => {
     const searchOptions = { matchMode: 'whole-word', text };
     return searchItems(allItems, searchOptions);
-  }, [allItems, text]); // ✅ Only changes when allItems or text changes
+  }, [allItems, text]); // ✅ 只有当 allItems 或者 text 改变的时候才会重新计算
   // ...
 ```
 
@@ -1181,7 +1176,7 @@ function TodoList({ todos, tab }) {
 
 这是符合预期的，不应对您的代码逻辑产生影响。
 
-This **development-only** behavior helps you [keep components pure.](/learn/keeping-components-pure) React uses the result of one of the calls, and ignores the result of the other call. As long as your component and calculation functions are pure, this shouldn't affect your logic. However, if they are accidentally impure, this helps you notice and fix the mistake.这种 **仅限开发环境下的** 行为可帮助您[保持组件纯净](/learn/keeping-components-pure)。 React 使用其中一次调用的结果，而忽略另一次的结果。 只要您的组件和计算函数是纯函数，这就不会影响您的逻辑。 但是，如果你不小心写出带有副作用的代码，这可以帮助您发现并纠正错误。
+这种 **仅限开发环境下的** 行为可帮助您 [保持组件纯净](/learn/keeping-components-pure) 。 React 使用其中一次调用的结果，而忽略另一次的结果。 只要您的组件和计算函数是纯函数，这就不会影响您的逻辑。 但是，如果你不小心写出带有副作用的代码，这可以帮助您发现并纠正错误。
 
 例如, 这个不纯的计算函数会改变你作为 prop 收到的数组：
 
@@ -1194,7 +1189,7 @@ This **development-only** behavior helps you [keep components pure.](/learn/keep
   }, [todos, tab]);
 ```
 
-React calls your function twice, so you'd notice the todo is added twice. Your calculation shouldn't change any existing objects, but it's okay to change any *new* objects you created during the calculation. 例如, if the `filterTodos` function always returns a *different* array, you can mutate *that* array instead:React 调用你的函数两次，所以你会注意到 todo 被添加了两次。 您的计算不应更改任何现有对象，但可以更改您在计算期间创建的任何 *新* 对象。 例如，如果 `filterTodos` 函数总是返回一个 *不同* 数组，您可以改为改变 *那个* 数组：
+React 调用你的函数两次，所以你会注意到 todo 被添加了两次。 您的计算不应更改任何现有对象，但可以更改您在计算期间创建的任何 *新* 对象。 例如，如果 `filterTodos` 函数总是返回一个 *不同* 数组，您可以改为改变 *那个* 数组：
 
 ```js {3,4}
   const visibleTodos = useMemo(() => {
@@ -1223,7 +1218,7 @@ React calls your function twice, so you'd notice the todo is added twice. Your c
   }, [text]);
 ```
 
-In JavaScript, `() => {` starts the arrow function body, so the `{` brace is not a part of your object. This is why it doesn't return an object, and leads to mistakes. You could fix it by adding parentheses like `({` and `})`:在 JavaScript 中，`() => {` 是箭头函数体的开始标志，因此 `{` 大括号不是对象的一部分。 这就是它不返回对象并导致错误的原因。 你可以通过添加像 `({` and `})` 这样的括号来修复它：
+在 JavaScript 中，`() => {` 是箭头函数体的开始标志，因此 `{` 大括号不是对象的一部分。 这就是它不返回对象并导致错误的原因。 你可以通过添加像 `({` and `})` 这样的括号来修复它：
 
 ```js {1-2,5}
   // 这行得通，但很容易有人再次破坏
@@ -1278,7 +1273,7 @@ function TodoList({ todos, tab }) {
   console.log([todos, tab]);
 ```
 
-然后，您可以在控制台中右键单击来自不同重新渲染的数组，并为它们选择“存储为全局变量”。 假设第一个保存为 `temp1`，第二个保存为 `temp2`，然后您可以使用浏览器控制台检查两个数组中的每个依赖项是否相同：
+然后，您可以在控制台中右键单击来自不同重新渲染的数组，并为它们选择“存储为全局变量”。 假设第一个保存为 `temp1` ，第二个保存为 `temp2` ，然后您可以使用浏览器控制台检查两个数组中的每个依赖项是否相同：
 
 ```js
 Object.is(temp1[0], temp2[0]); // 数组之间的第一个依赖项是否相同？
@@ -1290,9 +1285,9 @@ Object.is(temp1[2], temp2[2]); // ... 依此类推 ...
 
 ---
 
-### 我需要为循环中的每个列表项调用 `useMemo`，但这是不允许的 {/*i-need-to-call-usememo-for-each-list-item-in-a-loop-but-its-not-allowed*/}
+### 我需要为循环中的每个列表项调用 `useMemo` ，但这是不允许的 {/*i-need-to-call-usememo-for-each-list-item-in-a-loop-but-its-not-allowed*/}
 
-假设 `Chart` 组件被包裹在 [`memo`](/reference/react/memo) 中。 当 `ReportList` 组件重新呈现时，您想跳过重新呈现列表中的每个 `Chart`。 但是，您不能在循环中调用 `useMemo` ：
+假设 `Chart` 组件被包裹在 [`memo`](/reference/react/memo) 中。 当 `ReportList` 组件重新呈现时，您想跳过重新呈现列表中的每个 `Chart` 。 但是，您不能在循环中调用 `useMemo` ：
 
 ```js {5-11}
 function ReportList({ items }) {
