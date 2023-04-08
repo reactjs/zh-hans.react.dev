@@ -2023,7 +2023,7 @@ body {
 
 像 `<button>` 这样的 React 元素是常规的 JavaScript 对象；你可以在你的应用程序中传递它们。要在 React 中渲染多个项目，你可以使用 React 元素数组。
 
-你已经有一组 `history` state 落子，所以现在你需要将其转换为一组 React 元素。在 JavaScript 中，要将一个数组转换为另一个数组，可以使用 [数组的 `map` 方法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map)。
+你已经有一组 state 为 `history` 的数组，所以现在你需要将其转换为一组 React 元素。在 JavaScript 中，要将一个数组转换为另一个数组，可以使用 [数组的 `map` 方法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map)。
 
 ```jsx
 [1, 2, 3].map((x) => x * 2) // [2, 4, 6]
@@ -2290,7 +2290,7 @@ key 不需要是全局唯一的；它们只需要在组件及其同级组件之�
 
 在井字棋游戏的历史中，过去的每一步都有一个唯一的 ID 与之相关联：它是动作的序号。落子永远不会被重新排序、删除或从中间插入，因此使用落子的索引作为 key 是安全的。
 
-在 `Game` 函数中，你可以将 key 添加为 `<li key={move}>`，如果你重新加载渲染的游戏，React 的“ key”错误应该会消失：
+在 `Game` 函数中，你可以将 key 添加为 `<li key={move}>`，如果你重新加载渲染的游戏，React 的“key”错误应该会消失：
 
 ```js {4}
 const moves = history.map((squares, move) => {
