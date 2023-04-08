@@ -10,7 +10,7 @@ title: useMemo
 const cachedValue = useMemo(calculateValue, dependencies)
 ```
 
-</Intro>
+</Intro>i
 
 <InlineToc />
 
