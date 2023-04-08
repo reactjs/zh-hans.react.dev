@@ -1127,7 +1127,7 @@ export default function Board() {
 }
 ```
 
- `handleClick` 函数使用 JavaScript Array 的 `slice()` 方法创建 `squares` 数组（`nextSquares`）的副本。然后，`handleClick` 更新 `nextSquares` 数组，将 `X` 添加到第一个（`[0]` 索引）方块。
+ `handleClick` 函数使用 JavaScript 数组的 `slice()` 方法创建 `squares` 数组（`nextSquares`）的副本。然后，`handleClick` 更新 `nextSquares` 数组，将 `X` 添加到第一个（`[0]` 索引）方块。
 
 调用 `setSquares` 函数让 React 知道组件的 state 已经改变。这将触发使用 `squares` state 的组件（`Board`）及其子组件（构成棋盘的 `Square` 组件）的重新渲染。
 
