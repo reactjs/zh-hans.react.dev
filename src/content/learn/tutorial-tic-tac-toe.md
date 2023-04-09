@@ -303,7 +303,7 @@ _browser_ 部分应该会像下面这样在方块里面显示一个 X：
 
 #### `App.js` {/*appjs*/}
 
-`App.js` 的代码创建了一个 _组件_。在 React 中，组件是一段可重用代码，它通常作为 UI 界面的一部分。组件用于渲染、管理和更新应用中的 UI 元素。让我们逐行查看这段代码，看看发生了什么：
+`App.js` 的代码创建了一个**组件**。在 React 中，组件是一段可重用代码，它通常作为 UI 界面的一部分。组件用于渲染、管理和更新应用中的 UI 元素。让我们逐行查看这段代码，看看发生了什么：
 
 ```js {1}
 export default function Square() {
@@ -311,7 +311,7 @@ export default function Square() {
 }
 ```
 
-第一行定义了一个名为 `Square` 的函数。`export` JavaScript 关键字使此函数可以在此文件之外访问。`default` 关键字表明它是文件中的主要函数。
+第一行定义了一个名为 `Square` 的函数。JavaScript 的 `export` 关键字使此函数可以在此文件之外访问。`default` 关键字表明它是文件中的主要函数。
 
 ```js {2}
 export default function Square() {
@@ -319,7 +319,7 @@ export default function Square() {
 }
 ```
 
-第二行返回一个按钮。`return` JavaScript 关键字意味着后面的内容都作为值返回给函数的调用者。`<button>` 是一个 JSX 元素。JSX 元素是 JavaScript 代码和 HTML 标签的组合，用于描述要显示的内容。`className="square"` 是一个 button 属性，它决定 CSS 如何设置按钮的样式。`X` 是按钮内显示的文本，`</button>` 闭合 JSX 元素以表示不应将任何后续内容放置在按钮内。
+第二行返回一个按钮。JavaScript 的 `return` 关键字意味着后面的内容都作为值返回给函数的调用者。`<button>` 是一个 JSX 元素。JSX 元素是 JavaScript 代码和 HTML 标签的组合，用于描述要显示的内容。`className="square"` 是一个 button 属性，它决定 CSS 如何设置按钮的样式。`X` 是按钮内显示的文本，`</button>` 闭合 JSX 元素以表示不应将任何后续内容放置在按钮内。
 
 #### `styles.css` {/*stylescss*/}
 
@@ -337,7 +337,7 @@ import './styles.css';
 import App from './App';
 ```
 
-将第 1-5 行将所有必要的部分组合在一起：
+第 1-5 行将所有必要的部分组合在一起：
 
 * React
 * React 与 Web 浏览器对话的库（React DOM）
@@ -348,7 +348,7 @@ import App from './App';
 
 ### 构建棋盘 {/*building-the-board*/}
 
-让我们回到 `App.js`。接下来我们将聚焦于这个文件。
+让我们回到 `App.js`。接下来我们将专注于这个文件。
 
 目前棋盘只有一个方块，但你需要九个！如果你只是想着复制粘贴来制作两个像这样的方块：
 
@@ -366,7 +366,7 @@ export default function Square() {
 
 </ConsoleBlock>
 
-React 组件只能返回单个 JSX 元素，而不是像两个按钮那样的多个相邻的 JSX 元素。要解决此问题，可以使用 `<>` 和 `</>` 来包裹多个相邻的 JSX 元素，如下所示：
+React 组件必须返回单个 JSX 元素，不能像两个按钮那样返回多个相邻的 JSX 元素。要解决此问题，可以使用 `<>` 和 `</>` 来包裹多个相邻的 JSX 元素，如下所示：
 
 ```js {3-6}
 export default function Square() {
@@ -387,7 +387,7 @@ export default function Square() {
 
 ![9 个在同一行的方块](../images/tutorial/nine-x-filled-squares.png)
 
-哦不！这些方块都在一条直线上，而不是排列成网格。要解决此问题，需要使用 `div` 将方块分到每一行中并添加一些 CSS 样式。当你这样做的时候，需要给每个方块一个数字，以确保你知道每个方块的位置。
+但事与愿违的是这些方块并没有排列成网格，而是都在一条线上。要解决此问题，需要使用 `div` 将方块分到每一行中并添加一些 CSS 样式。当你这样做的时候，需要给每个方块一个数字，以确保你知道每个方块的位置。
 
 `App.js` 文件中，`Square` 组件看起来像这样：
 
@@ -415,7 +415,7 @@ export default function Square() {
 }
 ```
 
-`styles.css` 成功设置了样式！现在我们已经使用样式化的 `div` 将组件分组到行中，你拥有了井字棋棋盘：
+借助 `styles.css` 中定义的 `board-row` 样式，我们将组件分到每一行的 `div` 中。最终完成了井字棋棋盘：
 
 ![有着数字 1 到 9 的井字棋棋盘](../images/tutorial/number-filled-board.png)
 
@@ -504,7 +504,7 @@ body {
 
 <Note>
 
-嘶，要输入的内容太多了！可以从该页面复制和粘贴代码。但是，如果你愿意迎接一点挑战，我们建议只复制你自己至少手动输入过一次的代码。
+嘶……要改的的内容也太多了！从该页面复制和粘贴代码是很好的办法。不过如果你愿意挑战一下自己，可以只复制手动输入过的代码。
 
 </Note>
 
