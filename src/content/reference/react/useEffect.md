@@ -44,7 +44,7 @@ function ChatRoom({ roomId }) {
 
 #### 参数 {/*parameters*/}
 
-* `setup`：处理副作用的函数。setup 函数选择性返回一个 *清理（cleanup）* 函数。在将组件首次添加到 DOM 之前，React 将运行 setup 函数。在每次依赖项变更重新渲染后，React 将首先使用旧值运行 cleanup 函数（如果你提供了该函数），然后使用新值运行 setup 函数。在组件从 DOM 中移除后，React 将最后一次运行 cleanup 函数。
+* `setup`：处理副作用的函数。setup 函数选择性返回一个 **清理（cleanup）** 函数。在将组件首次添加到 DOM 之前，React 将运行 setup 函数。在每次依赖项变更重新渲染后，React 将首先使用旧值运行 cleanup 函数（如果你提供了该函数），然后使用新值运行 setup 函数。在组件从 DOM 中移除后，React 将最后一次运行 cleanup 函数。
  
 * **可选** `dependencies`：`setup` 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 [配置了 React](/learn/editor-setup#linting)，那么它将验证每个响应式值都被正确地指定为一个依赖项。依赖项列表必须具有固定数量的项，并且必须像 `[dep1, dep2, dep3]` 这样内联编写。React 将使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来比较每个依赖项和它先前的值。如果省略此参数，则在每次重新渲染组件之后，将重新运行副作用函数。[请参见传递依赖数组，空数组和不传递依赖项之间的区别](#examples-dependencies)。
 
@@ -98,21 +98,21 @@ function ChatRoom({ roomId }) {
 
 你需要向 `useEffect` 传递两个参数：
 
-1. 一个 *setup 函数* ，其 <CodeStep step={1}>setup 代码</CodeStep> 用来连接到该系统。
-   - 它应该返回一个 *清理函数*（cleanup），其 <CodeStep step={2}>cleanup 代码</CodeStep> 用来与该系统断开连接。
+1. 一个 **setup 函数** ，其 <CodeStep step={1}>setup 代码</CodeStep> 用来连接到该系统。
+   - 它应该返回一个 **清理函数**（cleanup），其 <CodeStep step={2}>cleanup 代码</CodeStep> 用来与该系统断开连接。
 2. 一个 <CodeStep step={3}>依赖项列表</CodeStep>，包括这些函数使用的每个组件内的值。
 
 **React 在必要时会调用 setup 和 cleanup，这可能会发生多次**：
 
-1. 将组件添加到页面 *（挂载）* 时，将运行 <CodeStep step={1}>setup 代码</CodeStep>。
+1. 将组件添加到页面 **（挂载）** 时，将运行 <CodeStep step={1}>setup 代码</CodeStep>。
 2. 在 <CodeStep step={3}>依赖项</CodeStep> 发生变更的组件每次重新渲染之后：
    - 首先，使用旧的 props 和 state 运行 <CodeStep step={2}>cleanup 代码</CodeStep>。
    - 然后，使用新的 props 和 state 运行 <CodeStep step={1}>setup 代码</CodeStep>。
-3. 在组件从页面删除 *（卸载）* 之后，<CodeStep step={2}>cleanup 代码</CodeStep> 将运行最后一次。
+3. 在组件从页面删除 **（卸载）** 之后，<CodeStep step={2}>cleanup 代码</CodeStep> 将运行最后一次。
 
 **让我们为上面这个例子解释这个顺序**。  
 
-当上面的 `ChatRoom` 组件添加到页面中时，它将使用初始 `serverUrl` 和 `roomId` 连接到聊天室。如果 `serverUrl` 或者 `roomId` 因为一个重新渲染而改变（比如说，如果用户在下拉列表中选择了一个不同的聊天室），那么你的 Effect 就会 *断开与前一个聊天室的连接，并连接到下一个聊天室*。当 `ChatRoom` 组件从页面中删除时，你的 Effect 将最后一次断开连接。
+当上面的 `ChatRoom` 组件添加到页面中时，它将使用初始 `serverUrl` 和 `roomId` 连接到聊天室。如果 `serverUrl` 或者 `roomId` 因为一个重新渲染而改变（比如说，如果用户在下拉列表中选择了一个不同的聊天室），那么你的 Effect 就会 **断开与前一个聊天室的连接，并连接到下一个聊天室**。当 `ChatRoom` 组件从页面中删除时，你的 Effect 将最后一次断开连接。
 
 **为了 [帮助你发现 bug](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed)，在开发环境，React 在运行 <CodeStep step={1}>setup</CodeStep> 之前会额外运行一次<CodeStep step={1}>setup</CodeStep> 和 <CodeStep step={2}>cleanup</CodeStep>**。这是一个压力测试，用于验证 Effect 逻辑是否正确实现。如果这会导致可见的问题，那么你的 cleanup 函数就缺少一些逻辑。cleanup 函数应该停止或撤消 setup 函数正在执行的任何操作。一般来说，用户不应该能够区分只调用一次 setup（如在生产中）和 调用 *setup* → *cleanup* → *setup* 序列（如在开发中）。[查看常见解决方案](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)。
 
@@ -1089,7 +1089,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-**要删除一个依赖项，你需要 [“证明”给代码检查工具，表明某个值 *不需要* 作为依赖项](/learn/removing-effect-dependencies#removing-unnecessary-dependencies)**。例如，你可以将 `serverUrl` 从你的组件中移除，以证明它不是响应式的，不会在重新渲染时发生变化：
+**要删除一个依赖项，你需要 [“证明”给代码检查工具，表明某个值 **不需要** 作为依赖项](/learn/removing-effect-dependencies#removing-unnecessary-dependencies)**。例如，你可以将 `serverUrl` 从你的组件中移除，以证明它不是响应式的，不会在重新渲染时发生变化：
 
 ```js {1,8}
 const serverUrl = 'https://localhost:1234'; // 不再是一个响应式值
@@ -1696,7 +1696,7 @@ button { margin-left: 10px; }
 
 默认情况下，在 Effect 中读取响应式值时，必须将其添加为依赖项。这样可以确保你的 Effect 对该值的每次更改都“作出响应”。对于大多数依赖项，这是你想要的行为。
 
-**然而，有时你想要从 Effect 中阅读 *最新的* props 和 state，而不“响应”它们**。例如，假设你想记录每次页面访问时购物车中的商品数量：
+**然而，有时你想要从 Effect 中阅读 **最新的** props 和 state，而不“响应”它们**。例如，假设你想记录每次页面访问时购物车中的商品数量：
 
 ```js {3}
 function Page({ url, shoppingCart }) {
@@ -1707,7 +1707,7 @@ function Page({ url, shoppingCart }) {
 }
 ```
 
-**如果你想在每次 `url` 更改后记录一次新的页面访问，而不是在 `shoppingCart` 更改后记录，该怎么办**？你不能在不违反 [响应规则](#specifying-reactive-dependencies) 的情况下将 `shoppingCart` 从依赖项中移除。然而，你可以表达你 *不希望* 某些代码对更改做出“响应”，即使它是在 Effect 内部调用的。使用 [`useEffectEvent`](/reference/react/experimental_useEffectEvent) Hook [声明一个 *Effect 事件*](/learn/separating-events-from-effects#declaring-an-effect-event)，并将读取 `shoppingCart` 的代码移入其中：
+**如果你想在每次 `url` 更改后记录一次新的页面访问，而不是在 `shoppingCart` 更改后记录，该怎么办**？你不能在不违反 [响应规则](#specifying-reactive-dependencies) 的情况下将 `shoppingCart` 从依赖项中移除。然而，你可以表达你 **不希望** 某些代码对更改做出“响应”，即使它是在 Effect 内部调用的。使用 [`useEffectEvent`](/reference/react/experimental_useEffectEvent) Hook [声明一个 **Effect 事件**](/learn/separating-events-from-effects#declaring-an-effect-event)，并将读取 `shoppingCart` 的代码移入其中：
 
 ```js {2-4,7,8}
 function Page({ url, shoppingCart }) {
