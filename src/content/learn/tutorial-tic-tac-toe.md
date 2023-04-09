@@ -323,7 +323,7 @@ export default function Square() {
 
 #### `styles.css` {/*stylescss*/}
 
-单击 CodeSandbox 中的 `styles.css` 文件。该文件定义了 React 应用的样式。前两个 CSS 选择器（`*` 和 `body`）定义了应用大部分的样式，而 `.square` 选择器定义了 `className` 属性设置为 `square` 的组件的样式。这与 `App.js` 文件中的 `Square` 组件中的按钮是相匹配的。
+单击 CodeSandbox 中的 `styles.css` 文件。该文件定义了 React 应用的样式。前两个 **CSS 选择器**（`*` 和 `body`）定义了应用大部分的样式，而 `.square` 选择器定义了 `className` 属性设置为 `square` 的组件的样式。这与 `App.js` 文件中的 `Square` 组件中的按钮是相匹配的。
 
 #### `index.js` {/*indexjs*/}
 
