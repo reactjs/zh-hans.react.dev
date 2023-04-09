@@ -82,7 +82,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 注意在上述代码中，该 `ref` 已不再被转发到 `<input>` 中。
 
-举例来说，假设你不想暴露出整个 `<input>` DOM 节点，但你想要它其中两个方法：`focus` 和 `scrollIntoView`。为此，用单独额外的 ref 来指向真实的浏览器 DOM 。然后使用 `useImperativeHandle` 来暴露一个句柄，它只返回你想要父组件去调用的方法：
+举例来说，假设你不想暴露出整个 `<input>` DOM 节点，但你想要它其中两个方法：`focus` 和 `scrollIntoView`。为此，用单独额外的 ref 来指向真实的浏览器 DOM。然后使用 `useImperativeHandle` 来暴露一个句柄，它只返回你想要父组件去调用的方法：
 
 ```js {7-14}
 import { forwardRef, useRef, useImperativeHandle } from 'react';
