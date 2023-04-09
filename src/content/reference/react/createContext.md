@@ -47,7 +47,7 @@ const ThemeContext = createContext('light');
 
 ### `SomeContext.Provider` {/*provider*/}
 
-用上下文 provider 包裹你的组件，来为里面所有的组件指定一个上下文的值：
+用上下文 provider 包裹你的组件，来为里面所有的组件指定一个 context 的值：
 
 ```js
 function App() {
