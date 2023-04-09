@@ -20,7 +20,7 @@ const cachedValue = useMemo(calculateValue, dependencies)
 
 ### `useMemo(calculateValue, dependencies)` {/*usememo*/}
 
-在组件的顶层调用 useContext 来缓存一个在每次重新渲染中需要计算的结果。
+在组件的顶层调用 `useMemo` 来缓存一个在每次重新渲染中需要计算的结果。
 
 ```js
 import { useMemo } from 'react';
