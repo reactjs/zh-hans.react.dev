@@ -72,7 +72,7 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-Effect 是 React 范式的 "逃生舱门"。不要用 Effect 来协调你的应用程序的数据流。如果你不与外部系统交互，[你可能不需要 Effect](/learn/you-might-not-need-an-effect)。
+Effect 是 React 范式的“逃生舱门”。不要用 Effect 来协调你的应用程序的数据流。如果你不与外部系统交互，[你可能不需要 Effect](/learn/you-might-not-need-an-effect)。
 
 `useEffect` 有两个很少使用的变换形式，它们在时间上有差异：
 
