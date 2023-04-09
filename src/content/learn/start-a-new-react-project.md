@@ -132,6 +132,6 @@ Next.js 的 App Router 还集成了 [用 Suspense 获取数据的能力](/blog/2
 </Suspense>
 ```
 
-服务端组件和 Suspense 是 React 的功能，不是由 Next.js 提供的。然而，在框架层面上采用它们需要投入大量的实现工作。目前，Next.js App Router 是最完整的实现。React 团队正在与  开发人员合作，使这些功能在下一代框架中更容易实现。
+服务端组件和 Suspense 是 React 的功能，不是由 Next.js 提供的。然而，在框架层面上采用它们需要投入大量的实现工作。目前，Next.js App Router 是最完整的实现。React 团队正在与 bundler 的开发人员合作，使这些功能在下一代框架中更容易实现。
 
 </DeepDive>
