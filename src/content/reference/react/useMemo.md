@@ -4,7 +4,7 @@ title: useMemo
 
 <Intro>
 
-`useMemo` 是一个 React 钩子函数，让你在每次重新渲染的时候能够缓存计算的结果。
+`useMemo` 是一个 React Hook，它在每次重新渲染的时候能够缓存计算的结果。
 
 ```js
 const cachedValue = useMemo(calculateValue, dependencies)
