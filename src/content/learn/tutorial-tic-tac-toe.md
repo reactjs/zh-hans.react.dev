@@ -330,8 +330,8 @@ export default function Square() {
 单击 CodeSandbox 中的 `index.js` 的文件。在本教程中我们不会编辑此文件，但它是 `App.js` 文件中创建的组件与 Web 浏览器之间的桥梁。
 
 ```jsx
-import {StrictMode} from 'react';
-import {createRoot} from 'react-dom/client';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 import './styles.css';
 
 import App from './App';

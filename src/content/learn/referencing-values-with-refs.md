@@ -482,8 +482,6 @@ export default function Toggle() {
 <Sandpack>
 
 ```js
-import { useState } from 'react';
-
 let timeoutID;
 
 function DebouncedButton({ onClick, children }) {
@@ -535,7 +533,7 @@ button { display: block; margin: 10px; }
 <Sandpack>
 
 ```js
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 
 function DebouncedButton({ onClick, children }) {
   const timeoutRef = useRef(null);

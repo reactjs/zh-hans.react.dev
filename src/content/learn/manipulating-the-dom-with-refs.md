@@ -645,7 +645,7 @@ Refs 是一个应急方案。你应该只在你必须“跳出 React”时使用
 <Sandpack>
 
 ```js
-import {useState, useRef} from 'react';
+import { useState, useRef } from 'react';
 
 export default function Counter() {
   const [show, setShow] = useState(true);
