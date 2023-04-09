@@ -1150,7 +1150,7 @@ useEffect(() => {
 }, [a, b]); // 如果 a 或 b 不同则会再次运行
 ```
 
-在下面的示例中，`serverUrl` 和 `roomId` 是 [响应式值](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values)，因此它们都必须被指定为依赖项。因此，在下拉列表中选择不同的聊天室或编辑服务器 URL 输入框会导致重新连接聊天室。但是，由于 `message` 没有在 Effect 中使用（因此它不是依赖项），编辑消息不会重新连接聊天室。
+在下面的示例中，`serverUrl` 和 `roomId` 是 [响应式值](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values)，所以它们都必须被指定为依赖项。因此，在下拉列表中选择不同的聊天室或编辑服务器 URL 输入框会导致重新连接聊天室。但是，由于 `message` 没有在 Effect 中使用（所以它不是依赖项），编辑消息不会重新连接聊天室。
 
 <Sandpack>
 
