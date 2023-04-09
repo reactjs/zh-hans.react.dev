@@ -158,7 +158,7 @@ function App() {
 
 ### 从一个文件导入和导出上下文 {/*importing-and-exporting-context-from-a-file*/}
 
-通常，来自不同文件的组件都会需要读取同一个上下文。因此，在一个单独的文件内定义上下文便成了常见做法。然后你可以使用 [`export` 语句](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export) 将其导出，以便其他文件读取使用：
+通常，来自不同文件的组件都会需要读取同一个 context。因此，在一个单独的文件内定义 context 便成了常见做法。你可以使用 [`export` 语句](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export) 将其导出，以便其他文件读取使用：
 
 ```js {4-5}
 // Contexts.js
