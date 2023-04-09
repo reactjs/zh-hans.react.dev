@@ -63,7 +63,7 @@ function App() {
 
 #### Props {/*provider-props*/}
 
-* `value`：该值为你想传递给所有处于这个 provider 内读取该上下文的组件，无论它们处于多深的层级。上下文的值可以为任何类型。该 provider 内的组件可通过调用 [`useContext(SomeContext)`](/reference/react/useContext) 来获取它上面最近的上下文 provider 的 `value`。
+* `value`：该值为你想传递给所有处于这个 provider 内读取该 context 的组件，无论它们处于多深的层级。context 的值可以为任何类型。该 provider 内的组件可通过调用 [`useContext(SomeContext)`](/reference/react/useContext) 来获取它上面最近的 context provider 的 `value`。
 
 ---
 
