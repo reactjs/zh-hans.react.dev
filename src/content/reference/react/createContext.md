@@ -202,7 +202,7 @@ function App() {
 
 ## 疑难解答 {/*troubleshooting*/}
 
-### 我没有办法改变上下文的值 {/*i-cant-find-a-way-to-change-the-context-value*/}
+### 我没有办法改变 context 的值 {/*i-cant-find-a-way-to-change-the-context-value*/}
 
 
 如下的代码为上下文指定了 *默认* 值：
