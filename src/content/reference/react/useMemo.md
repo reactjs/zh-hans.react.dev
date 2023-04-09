@@ -1070,7 +1070,7 @@ function Dropdown({ allItems, text }) {
   // ...
 ```
 
-依赖这样的对象会破坏 memoization。当组件重新渲染时，组件主体内的所有代码都会再次运行。 **创建 `searchOptions` 对象的代码行也将在每次重新渲染时运行**。 因为 `searchOptions` 是你的 `useMemo` 调用的依赖项，而且每次都不一样，React 知道依赖项是不同的， 并且每次都重新计算 `searchItems`。
+依赖这样的对象会破坏 memoization。当组件重新渲染时，组件主体内的所有代码都会再次运行。**创建 `searchOptions` 对象的代码行也将在每次重新渲染时运行**。因为 `searchOptions` 是你的 `useMemo` 调用的依赖项，而且每次都不一样，React 知道依赖项是不同的， 并且每次都重新计算 `searchItems`。
 
 要解决此问题，您可以在将其作为依赖项传递之前记忆 `searchOptions` 对象 *本身*：
 
@@ -1086,7 +1086,7 @@ function Dropdown({ allItems, text }) {
   // ...
 ```
 
-在上面的例子中，如果 `text` 没有改变，`searchOptions` 对象也不会改变。 然而，更好的解决方法是将 `searchOptions` 对象声明移到 `useMemo` 计算函数的 *内部*：
+在上面的例子中，如果 `text` 没有改变，`searchOptions` 对象也不会改变。然而，更好的解决方法是将 `searchOptions` 对象声明移到 `useMemo` 计算函数的 **内部**：
 
 ```js {3}
 function Dropdown({ allItems, text }) {
