@@ -36,7 +36,7 @@ const ThemeContext = createContext('light');
 
 #### 返回值 {/*returns*/}
 
-`createContext` 返回一个上下文对象。
+`createContext` 返回一个 context 对象。
 
 **该 context 对象本身不包含任何信息。** 它只表示其他组件读取或提供的 *那个* context。一般来说，你将在组件上方使用 [`SomeContext.Provider`](#provider) 来指定 context 的值，并在被包裹的下方组件内调用 [`useContext(SomeContext)`](/reference/react/useContext) 来读取它。context 对象有一些属性：
 
