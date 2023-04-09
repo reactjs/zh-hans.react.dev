@@ -148,7 +148,7 @@ console.timeEnd('filter array');
 使用 `useMemo` 进行优化仅在少数情况下有价值：
 
 - 您在 `useMemo` 中进行的计算明显很慢，而且它的依赖关系很少改变
-- 您将它作为 prop 传递给包装在 [`memo`](/reference/react/memo) 中的组件。如果值没有改变，你想跳过重新渲染。 Memoization 让您的组件仅在依赖项不同时才重新渲染。
+- 您将它作为 prop 传递给包装在 [`memo`](/reference/react/memo) 中的组件。如果值没有改变，你想跳过重新渲染。Memoization 让您的组件仅在依赖项不同时才重新渲染。
 - 您传递的值稍后用作某些 Hook 的依赖项。 例如， 也许另一个 useMemo 计算值依赖它。 或者 [`useEffect`](/reference/react/useEffect) 依赖这个值。
 
 在其他情况下，将计算过程包装在 useMemo 中没有任何好处。 这样做也没有重大危害, 所以一些团队选择不考虑个别情况，尽可能多地使用 `useMemo`。 这种方法的缺点是降低了代码的可读性。此外，并不是所有的 `useMemo` 的使用都是有效的：一个“永远是新的”的单一值就足以破坏整个组件的缓存效果。
