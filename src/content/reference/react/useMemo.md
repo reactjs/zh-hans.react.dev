@@ -133,7 +133,7 @@ console.timeEnd('filter array');
 
 `useMemo` 不会让 *第一次* 渲染更快，它只会帮助你跳过不必要的更新工作。
 
-请记住，您的设备可能比用户的速度更快，因此最好通过人为的降低浏览器性能来测试. 例如, Chrome 提供了一个 [CPU Throttling](https://developer.chrome.com/blog/new-in-devtools-61/#throttling) 选项来降低浏览器性能。
+请记住，你的设备可能比用户的速度更快，因此最好通过人为的降低浏览器性能来测试。例如，Chrome 提供了 [CPU Throttling](https://developer.chrome.com/blog/new-in-devtools-61/#throttling) 选项来降低浏览器性能。
 
 另请注意，在开发环境中测量性能不会为您提供最准确的结果。(例如， 当开启 [严格模式](/reference/react/StrictMode) ， 你会看到每个组件渲染两次而不是一次。) 要获得最准确的时间，请构建用于生产的应用程序并在用户使用的设备上对其进行测试。
 
