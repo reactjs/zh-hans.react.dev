@@ -14,7 +14,7 @@ translators:
 
 <Note>
 
-**你需要安装 [Node.js](https://nodejs.org/zh-cn) 用于本地开发**。你也可以选择在生产中使用 Node.js，但你不一定要这样。许多 React 框架支持导出 HTML/CSS/JS 等静态文件。
+**你需要安装 [Node.js](https://nodejs.org/zh-cn) 用于本地开发**。你也可以选择在生产环境中使用 Node.js，但你不一定要这样。许多 React 框架支持导出 HTML/CSS/JS 等静态文件。
 
 </Note>
 
@@ -30,7 +30,7 @@ npx create-next-app
 
 如果你是 Next.js 的新手，请查看 [Next.js 教程](https://nextjs.org/learn/foundations/about-nextjs)。
 
-Next.js 由 [Vercel](https://vercel.com/) 维护。你可以 [将 Next.js 应用](https://nextjs.org/docs/deployment) 部署到 Node.js 或 serverless 上，也可以部署到你自己的服务器上。[完全静态的 Next.js 应用](https://nextjs.org/docs/advanced-features/static-html-export) 支持静态部署。
+Next.js 由 [Vercel](https://vercel.com/) 维护。你可以 [将 Next.js 应用](https://nextjs.org/docs/deployment) 部署到 Node.js 或 serverless 上，也可以部署到你自己的服务器上。[完全静态的 Next.js 应用](https://nextjs.org/docs/advanced-features/static-html-export) 可以部署在任何支持静态服务的地方。
 
 ### Remix {/*remix*/}
 
@@ -46,7 +46,7 @@ Remix 是由 [Shopify](https://www.shopify.com/) 维护的。当你创建一个 
 
 ### Gatsby {/*gatsby*/}
 
-**[Gatsby](https://www.gatsbyjs.com/) 是一个用于快速的支持 CMS 的网站的 React 框架**。其丰富的插件生态系统和 GraphQL 数据层简化了将内容、API 和服务整合到一个网站的过程。要创建一个新的 Gatsby 项目，请运行：
+**[Gatsby](https://www.gatsbyjs.com/) 是一个快速的支持 CMS 的网站的 React 框架**。其丰富的插件生态系统和 GraphQL 数据层简化了将内容、API 和服务整合到一个网站的过程。要创建一个新的 Gatsby 项目，请运行：
 
 <TerminalBlock>
 npx create-gatsby
@@ -54,11 +54,11 @@ npx create-gatsby
 
 如果你是 Gatsby 的新手，请查看 [Gatsby 教程](https://www.gatsbyjs.com/docs/tutorial/)。
 
-Gatsby 是由 [Netlify](https://www.netlify.com/) 维护的。你可以 [部署一个完全静态的 Gatsby 网站](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting) 到任何静态主机。如果你选择使用服务器上的功能，请确保你的主机供应商支持 Gatsby 的功能。
+Gatsby 是由 [Netlify](https://www.netlify.com/) 维护的。你可以 [部署一个完全静态的 Gatsby 网站](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting) 到任何一个支持静态服务的地方。如果你选择使用服务器上的功能，请确保你的主机供应商支持 Gatsby 的功能。
 
-### Expo（用于本地应用） {/*expo*/}
+### Expo（用于原生应用） {/*expo*/}
 
-**[Expo](https://expo.dev/) 是一个 React 框架，可以让你创建具有真正本地 UI 的通用 Android、iOS 和 Web 应用**。它为 [React Native](https://reactnative.dev/) 提供了一个 SDK，使本地部分更容易使用。要创建一个新的 Expo 项目，请运行：
+**[Expo](https://expo.dev/) 是一个 React 框架，可以让你创建具有真正原生 UI 的应用，可以是 Android、iOS 或 Web 应用**。它为 [React Native](https://reactnative.dev/) 提供了一个 SDK，使原生部分更容易使用。要创建一个新的 Expo 项目，请运行：
 
 <TerminalBlock>
 npx create-expo-app
@@ -66,13 +66,13 @@ npx create-expo-app
 
 如果你是 Expo 的新手，请查看 [Expo 教程](https://docs.expo.dev/tutorial/introduction/)。
 
-Expo 是由 [Expo（公司）](https://expo.dev/about) 维护的。用 Expo 构建应用是免费的，而且你可以不受限制地将它们提交到谷歌和苹果的应用商店。此外，Expo 还提供选择性的付费云服务。
+Expo 是由 [Expo 这家公司](https://expo.dev/about) 维护的。用 Expo 构建应用是免费的，而且你可以不受限制地将它们提交到谷歌和苹果的应用商店。此外，Expo 还提供选择性的付费云服务。
 
 <DeepDive>
 
 #### 我可以在没有框架的情况下使用 React 吗？ {/*can-i-use-react-without-a-framework*/}
 
-你当然可以在没有框架的情况下使用 Reac——这就是 [将 React 用于你页面的一部分](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page)。**但是，如果你要用 React 构建一个新的应用或网站，我们建议使用一个框架**。
+你当然可以在没有框架的情况下使用 React——这就是 [将 React 用于你页面的一部分](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page)。**但是，如果你要用 React 构建一个新的应用或网站，我们建议使用一个框架**。
 
 这里是一些原因。
 
