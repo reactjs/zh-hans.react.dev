@@ -168,7 +168,7 @@ input {
 
 ### 暴露你自己的命令式方法 {/*exposing-your-own-imperative-methods*/}
 
-你通过命令式句柄暴露出来的方法不一定需要完全匹配 DOM 节点的方法。例如，这个 `Post` 组件暴露了一个 `scrollAndFocusAddComment` 方法。它可以让你在点击按钮时，父组件 `Page` 能滚动到评论列表的底部 *并* 聚焦到输入框：
+你通过命令式句柄暴露出来的方法不一定需要完全匹配 DOM 节点的方法。例如，这个 `Post` 组件暴露了一个 `scrollAndFocusAddComment` 方法。它可以让你在点击按钮后，使父组件 `Page` 滚动到评论列表的底部 *并* 聚焦到输入框：
 
 <Sandpack>
 
