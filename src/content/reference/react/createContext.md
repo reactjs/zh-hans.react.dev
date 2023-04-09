@@ -38,7 +38,7 @@ const ThemeContext = createContext('light');
 
 `createContext` 返回一个上下文对象。
 
-**该上下文对象本身不包含任何信息。** 它只表示其他组件读取或提供的 *那个* 上下文。一般来说，你将在组件上方使用 [`SomeContext.Provider`](#provider) 来指定上下文的值，并在被包裹的下方组件内调用 [`useContext(SomeContext)`](/reference/react/useContext) 来读取它。上下文对象有一些属性：
+**该 context 对象本身不包含任何信息。** 它只表示其他组件读取或提供的 *那个* context。一般来说，你将在组件上方使用 [`SomeContext.Provider`](#provider) 来指定 context 的值，并在被包裹的下方组件内调用 [`useContext(SomeContext)`](/reference/react/useContext) 来读取它。context 对象有一些属性：
 
 * `SomeContext.Provider` 让你为被它包裹的组件提供上下文的值。
 * `SomeContext.Consumer` 是一个很少会用到的备选方案，它用于读取上下文的值。
