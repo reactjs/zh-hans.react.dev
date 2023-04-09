@@ -50,13 +50,13 @@ function TodoList({ todos, tab }) {
 
 #### 注意事项 {/*caveats*/}
 
-* `useMemo` 是一个React Hook, 所以你只能 **在组件的顶层** 或者你自己的Hook中调用它。你不能在循环或条件语句中调用它。如果需要，可以提取一个新组件并将state移动到其中。
-* 在严格模式下，为了 [帮你发现意外的错误](#my-calculation-runs-twice-on-every-re-render) ， React将会 **重复调用你的 calculation 函数两次** 。这只是一个开发环境下的行为并不会影响到生产环境。 如果你的 calcalation 函数是一个纯函数(它本来就应该是)， 这将不会影响到你的逻辑。其中一次调用的结果将会被忽略。
-* React **不会丢弃缓存的值，除非有特定的原因。**  例如，在开发过程中，React会在你编辑组件文件时丢弃缓存。无论是在开发环境还是在生产环境，如果你的组件在初始挂载期间被终止，React都会丢弃缓存。 在未来，React可能会添加更多利用丢弃缓存的特性--例如, 如果React在未来增加了对虚拟化列表的内置支持，那么丢弃那些滚出虚拟化表视口的缓存是有意义的. 如果你仅仅依赖“useMemo”作为性能优化手段，是没问题的。 否则， 一个 [state 变量](/reference/react/useState#avoiding-recreating-the-initial-state) 或者一个 [ref](/reference/react/useRef#avoiding-recreating-the-ref-contents) 可能更加合适。
+* `useMemo` 是一个 React Hook，所以你只能 **在组件的顶层** 或者你自己的 Hook 中调用它。你不能在循环或条件语句中调用它。如果需要，可以提取一个新组件并将 state 移动到其中。
+* 在严格模式下，为了 [帮你发现意外的错误](#my-calculation-runs-twice-on-every-re-render) ，React 将会 **重复调用你的 calculation 函数两次** 。这只是一个开发环境下的行为并不会影响到生产环境。 如果你的 calcalation 函数是一个纯函数（它本来就应该是），这将不会影响到你的逻辑。其中一次调用的结果将会被忽略。
+* React **不会丢弃缓存的值，除非有特定的原因。**例如，在开发过程中，React 会在你编辑组件文件时丢弃缓存。无论是在开发环境还是在生产环境，如果你的组件在初始挂载期间被终止，React 都会丢弃缓存。在未来，React 可能会添加更多利用丢弃缓存的特性——例如，如果 React 在未来增加了对虚拟化列表的内置支持，那么丢弃那些滚出虚拟化表视口的缓存是有意义的。如果你仅仅依赖 `useMemo` 作为性能优化手段，是没问题的。否则， 一个 [state 变量](/reference/react/useState#avoiding-recreating-the-initial-state) 或者一个 [ref](/reference/react/useRef#avoiding-recreating-the-ref-contents) 可能更加合适。
 
 <Note>
 
-这种缓存返回值的方式也叫做 [*memoization*](https://en.wikipedia.org/wiki/Memoization) ，这也是这个 Hook 叫做 `useMemo` 的原因。
+这种缓存返回值的方式也叫做 [*memoization*](https://en.wikipedia.org/wiki/Memoization)，这也是这个 Hook 叫做 `useMemo` 的原因。
 
 </Note>
 
@@ -79,18 +79,18 @@ function TodoList({ todos, tab, theme }) {
 
 你需要给 `useMemo` 传递两样东西:
 
-1. 一个没有任何参数的 <CodeStep step={1}>calculation 函数</CodeStep> ， 像这样 `() =>` ， 并且返回任何你想要的计算结果。
-2. 一个由包含在你的组件中并在 calculation 中使用的所有值组成的 <CodeStep step={2}>依赖列表</CodeStep>
+1. 一个没有任何参数的 <CodeStep step={1}>calculation 函数</CodeStep> ， 像这样 `() =>`，并且返回任何你想要的计算结果。
+2. 一个由包含在你的组件中并在 calculation 中使用的所有值组成的 <CodeStep step={2}>依赖列表</CodeStep>。
 
-在初次渲染时， 你从 `useMemo` 得到的 <CodeStep step={3}>值</CodeStep> 将会是你的 <CodeStep step={1}>calculation</CodeStep> 函数执行的结果。
+在初次渲染时，你从 `useMemo` 得到的 <CodeStep step={3}>值</CodeStep> 将会是你的 <CodeStep step={1}>calculation</CodeStep> 函数执行的结果。
 
-在随后的每一次渲染中， React 将会比较前后两次渲染中的 <CodeStep step={2}>所有依赖项</CodeStep> 是否相同。 如何所有依赖项都没有发生变化 (通过 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较)， `useMemo` 将会返回之前已经计算过的那个值。 否则， React 将会重新执行 calculation 并且返回一个新的值。
+在随后的每一次渲染中，React 将会比较前后两次渲染中的 <CodeStep step={2}>所有依赖项</CodeStep> 是否相同。 如何所有依赖项都没有发生变化（通过 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较），`useMemo` 将会返回之前已经计算过的那个值。否则，React 将会重新执行 calculation 并且返回一个新的值。
 
-换句话说， `useMemo` 在多次重新渲染中缓存了一个 calculation 结果直到依赖项的值发生变化。
+换句话说，`useMemo` 在多次重新渲染中缓存了一个 calculation 结果直到依赖项的值发生变化。
 
 **让我们通过一个示例来了解这在什么情况下是有用的。**
 
-默认情况下，React会在每次重新渲染时重新运行组件的整个主体。例如，如果这个 `TodoList` 更新了它的状态或从它的父元素接收到新的道具，`filterTodos` 函数将会重新运行:
+默认情况下，React 会在每次重新渲染时重新运行组件的整个主体。例如，如果这个 `TodoList` 更新了它的状态或从它的父元素接收到新的道具，`filterTodos` 函数将会重新运行：
 
 ```js {2}
 function TodoList({ todos, tab, theme }) {
@@ -99,21 +99,21 @@ function TodoList({ todos, tab, theme }) {
 }
 ```
 
-通常，这不是问题，因为大多数计算都非常快。但是，如果您正在过滤或转换一个大型数组，或者进行一些昂贵的计算，如果数据没有改变，您可能希望跳过再次执行该操作。如果 `todos` 和 `tab` 都与上次渲染时相同，将计算包装在 `useMemo` 中，就像之前那样让你重用之前已经计算过的 `visibleTodos` 。
+通常，这不是问题，因为大多数计算都非常快。但是，如果你正在过滤或转换一个大型数组，或者进行一些昂贵的计算，如果数据没有改变，你可能希望跳过再次执行该操作。如果 `todos` 和 `tab` 都与上次渲染时相同，将计算包装在 `useMemo` 中，就像之前那样让你重用之前已经计算过的 `visibleTodos` 。
 
-这种缓存行为叫做 *[memoization.](https://en.wikipedia.org/wiki/Memoization)*
+这种缓存行为叫做 *[memoization](https://en.wikipedia.org/wiki/Memoization)*。
 
 <Note>
 
-**你应该仅仅把 `useMemo` 作为一个性能优化的手段。** 如果没有它，您的代码就不能正常工作，请先找到潜在的问题并修复它。然后你可以添加 `useMemo` 来提高性能。
+**你应该仅仅把 `useMemo` 作为一个性能优化的手段。** 如果没有它，你的代码就不能正常工作，请先找到潜在的问题并修复它。然后你可以添加 `useMemo` 来提高性能。
 
 </Note>
 
 <DeepDive>
 
-#### 如何衡量一个calculation开销是否昂贵呢? {/*how-to-tell-if-a-calculation-is-expensive*/}
+#### 如何衡量一个 calculation 开销是否昂贵呢？ {/*how-to-tell-if-a-calculation-is-expensive*/}
 
-一般来说，除非要创建或循环遍历数千个对象，否则开销可能并不大。如果您想获得更详细的信息，您可以添加一个控制台日志来测量花费在一段代码上的时间:
+一般来说，除非要创建或循环遍历数千个对象，否则开销可能并不大。如果你想获得更详细的信息，可以添加一个控制台日志来测量花费在一段代码上的时间：
 
 ```js {1,3}
 console.time('filter array');
@@ -121,7 +121,7 @@ const visibleTodos = filterTodos(todos, tab);
 console.timeEnd('filter array');
 ```
 
-执行你正在检测的交互 (例如，在输入框中输入文字)。你将会在控制台看到如下的日志 `filter array: 0.15ms` 。 如果全部记录的时间加起来很长 ( `1ms` 或者更多)，记住这个计算结果是有意义的。作为实验，您可以将计算过程包装在 `useMemo` 中，以验证该交互的总日志时间是否减少了：
+执行你正在检测的交互（例如，在输入框中输入文字）。你将会在控制台看到如下的日志 `filter array: 0.15ms`。如果全部记录的时间加起来很长（`1ms` 或者更多），记住这个计算结果是有意义的。作为实验，你可以将计算过程包装在 `useMemo` 中，以验证该交互的总日志时间是否减少了：
 
 ```js
 console.time('filter array');
