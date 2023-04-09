@@ -40,7 +40,7 @@ function TodoList({ todos, tab }) {
 
 * `calculateValue`：计算要缓存值的函数。它应该是一个纯函数，应该没有任何参数，并且返回任意类型。React 将会在第一次渲染的时候调用该函数。在下一次渲染中，如果 `dependencies` 没有发生变化，React 将直接返回相同的值。否则，将会调用 `calculateValue`，返回结果，并缓存结果以便下次重用。
 
-* `dependencies` ： 所有在 `calculateValue` 函数中使用的响应式变量组成的数组。 响应式变量包括 props 、 state 和所有你直接在组件中定义的变量和函数。如果你的代码检查工具是 [为 React 配置的](/learn/editor-setup#linting) ，它将会确保每一个响应式数据都被正确的定义为依赖项。依赖项数组的长度必须是固定的并且必须写成这样 `[dep1, dep2, dep3]` 。 React将使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 将每个依赖项与其之前的值进行比较。
+* `dependencies`：所有在 `calculateValue` 函数中使用的响应式变量组成的数组。响应式变量包括 props、state 和所有你直接在组件中定义的变量和函数。如果你的代码检查工具是 [为 React 配置的](/learn/editor-setup#linting)，它将会确保每一个响应式数据都被正确的定义为依赖项。依赖项数组的长度必须是固定的并且必须写成这样 `[dep1, dep2, dep3]`。React 将使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 将每个依赖项与其之前的值进行比较。
 
 #### 返回值 {/*returns*/}
 
