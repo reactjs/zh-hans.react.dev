@@ -4,7 +4,7 @@ title: createContext
 
 <Intro>
 
-`createContext` 能让你创建一个 [上下文](/learn/passing-data-deeply-with-context) 以便组件能够提供和读取。
+`createContext` 能让你创建一个 [context](/learn/passing-data-deeply-with-context) 以便组件能够提供和读取。
 
 ```js
 const SomeContext = createContext(defaultValue)
