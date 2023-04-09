@@ -42,7 +42,7 @@ npx create-remix
 
 如果你是 Remix 的新手，请查看 Remix 的 [博客教程](https://remix.run/docs/en/main/tutorials/blog)（短）和 [应用教程](https://remix.run/docs/en/main/tutorials/jokes)（长）。
 
-Remix 是由 [Shopify](https://www.shopify.com/) 维护的。当你创建一个 Remix 项目时，你需要 [选择你的部署目标](https://remix.run/docs/en/main/guides/deployment)。你可以通过使用或编写 [适配器](https://remix.run/docs/en/main/other-api/adapter) 将 Remix 应用部署到任何 Node.js 或 serverless 托管。
+Remix 是由 [Shopify](https://www.shopify.com/) 维护的。当你创建一个 Remix 项目时，你需要 [选择你的部署目标](https://remix.run/docs/en/main/guides/deployment)。你可以通过使用或编写 [适配器](https://remix.run/docs/en/main/other-api/adapter) 将 Remix 应用部署到任何 Node.js 服务上或使用 serverless 进行托管。
 
 ### Gatsby {/*gatsby*/}
 
@@ -111,9 +111,9 @@ Next.js 的 App Router bundler 完全实现了官方的 [React 服务端组件�
 例如，你可以把一个纯服务端的 React 组件写成一个 `async` 函数，从数据库或文件中读取。然后你可以把数据从它那里传递给你的交互组件：
 
 ```js
-// 这个组件只在服务器上运行（或在构建期间）。
+// 这个组件只在服务端运行（或在构建期间）。
 async function Talks({ confId }) {
-  // 1. 你在服务器上，所以你可以和你的数据层对话。不需要 API 端点。
+  // 1. 你在服务端，所以你可以和你的数据层对话。不需要 API 端点。
   const talks = await db.Talks.findAll({ confId });
 
   // 2. 添加任何数量的渲染逻辑。它不会使你的 JavaScript bundle 变大。
