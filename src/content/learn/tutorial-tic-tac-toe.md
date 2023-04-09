@@ -17,7 +17,7 @@ title: '教程：井字棋游戏'
 教程分成以下几个部分：
 
 - [配置](#setup-for-the-tutorial) 是一些准备工作。
-- [概览](#overview) 介绍了 React 的 **基础知识**：组件、prop 和 state。
+- [概览](#overview) 介绍了 React 的 **基础知识**：组件、props 和 state。
 - [完成游戏](#completing-the-game) 介绍了 React 开发中 **最常用的技术**。
 - [添加“时间旅行”](#adding-time-travel) 可以让你更深入地了解 React 的独特优势。
 
@@ -508,7 +508,7 @@ body {
 
 </Note>
 
-### 通过 prop 传递数据 {/*passing-data-through-props*/}
+### 通过 props 传递数据 {/*passing-data-through-propss*/}
 
 接下来，当用户单击方块时，我们要将方块的值从空更改为“X”。根据目前构建的棋盘，你需要复制并粘贴九次更新方块的代码（每个方块都需要一次）！但是，React 的组件架构可以创建可重用的组件，以避免混乱、重复的代码。
 
@@ -557,9 +557,9 @@ export default function Board() {
 
 ![都是 1 的方块](../images/tutorial/board-filled-with-ones.png)
 
-哦不！你失去了你以前有正确编号的方块。现在每个方块都写着“1”。要解决此问题，需要使用 *prop* 将每个方块应有的值从父组件（`Board`）传递到其子组件（`Square`）。
+哦不！你失去了你以前有正确编号的方块。现在每个方块都写着“1”。要解决此问题，需要使用 *props* 将每个方块应有的值从父组件（`Board`）传递到其子组件（`Square`）。
 
-更新 `Square` 组件，读取从 `Board` 传递的 `value` prop：
+更新 `Square` 组件，读取从 `Board` 传递的 `value` props：
 
 ```js {1}
 function Square({ value }) {
@@ -567,7 +567,7 @@ function Square({ value }) {
 }
 ```
 
-`function Square({ value })` 表示可以向 Square 组件传递一个名为 `value` 的 prop。
+`function Square({ value })` 表示可以向 Square 组件传递一个名为 `value` 的 props。
 
 现在你如果想要显示对应的 `value` 而不是 `1`，可以试一下像下面这样：
 
@@ -593,7 +593,7 @@ function Square({ value }) {
 
 ![空棋盘](../images/tutorial/empty-board.png)
 
-这是因为 `Board` 组件还没有将 `value` prop 传递给它渲染的每个 `Square` 组件。要修复这个问题，需要向 `Board` 组件里面的每个 `Square` 组件添加 `value` prop：
+这是因为 `Board` 组件还没有将 `value` props 传递给它渲染的每个 `Square` 组件。要修复这个问题，需要向 `Board` 组件里面的每个 `Square` 组件添加 `value` props：
 
 ```js {5-7,10-12,15-17}
 export default function Board() {
@@ -704,7 +704,7 @@ body {
 
 ### 创建一个具有交互性的组件 {/*making-an-interactive-component*/}
 
-当你单击它的时候，`Square` 组件需要显示“X”。在 `Square` 内部声明一个名为 `handleClick` 的函数。然后，将 `onClick` 添加到由 `Square` 返回的 JSX 元素的 button 的 prop 中：
+当你单击它的时候，`Square` 组件需要显示“X”。在 `Square` 内部声明一个名为 `handleClick` 的函数。然后，将 `onClick` 添加到由 `Square` 返回的 JSX 元素的 button 的 props 中：
 
 ```js {2-4,9}
 function Square({ value }) {
@@ -735,7 +735,7 @@ function Square({ value }) {
 
 React 提供了一个名为 `useState` 的特殊函数，可以从组件中调用它来让它“记住”一些东西。让我们将 `Square` 的当前值存储在 `state` 中，并在单击 `Square` 时更改它。
 
-在文件的顶部导入 `useState`。从 `Square` 组件中移除 `value` prop。在调用 `useState` 的 `Square` 的开头添加一个新行。让它返回一个名为 value 的 state 变量：
+在文件的顶部导入 `useState`。从 `Square` 组件中移除 `value` props。在调用 `useState` 的 `Square` 的开头添加一个新行。让它返回一个名为 value 的 state 变量：
 
 ```js {1,3,4}
 import { useState } from 'react';
@@ -749,7 +749,7 @@ function Square() {
 
 `value` 存储值，而 `setValue` 是可用于更改值的函数。传递给 `useState` 的 `null` 用作这个 state 变量的初始值，因此此处 `value` 的值开始时等于 null。
 
-由于 `Square` 组件不再接受 prop，我们从 Board 组件创建的所有九个 Square 组件中删除 `value` prop：
+由于 `Square` 组件不再接受 props，我们从 Board 组件创建的所有九个 Square 组件中删除 `value` props：
 
 ```js {6-8,11-13,16-18}
 // ...
@@ -899,7 +899,7 @@ body {
 
 ### React 开发者工具 {/*react-developer-tools*/}
 
-React 开发者工具可以检查 React 组件的 prop 和 state。可以在 CodeSandbox 的 *Browser* 部分底部找到 React DevTools 选项卡：
+React 开发者工具可以检查 React 组件的 props 和 state。可以在 CodeSandbox 的 *Browser* 部分底部找到 React DevTools 选项卡：
 
 ![CodeSandbox 中的 React 开发者工具](../images/tutorial/codesandbox-devtools.png)
 
@@ -921,9 +921,9 @@ React 开发者工具可以检查 React 组件的 prop 和 state。可以在 Cod
 
 目前，每个 `Square` 组件都维护着游戏 state 的一部分。要检查井字棋游戏中的赢家，`Board` 需要以某种方式知道 9 个 `Square` 组件中每个组件的 state。
 
-你会如何处理？起初，你可能会猜测 `Board` 需要向每个 `Square`“询问”`Square` 的 state。尽管这种方法在 React 中在技术上是可行的，但我们不鼓励这样做，因为代码变得难以理解、容易出现错误并且难以重构。相反，最好的方法是将游戏的 state 存储在 `Board` 父组件中，而不是每个 `Square` 中。`Board` 组件可以通过传递一个 prop 来告诉每个 `Square` 显示什么，就像你将数字传递给每个 Square 时所做的那样。
+你会如何处理？起初，你可能会猜测 `Board` 需要向每个 `Square`“询问”`Square` 的 state。尽管这种方法在 React 中在技术上是可行的，但我们不鼓励这样做，因为代码变得难以理解、容易出现错误并且难以重构。相反，最好的方法是将游戏的 state 存储在 `Board` 父组件中，而不是每个 `Square` 中。`Board` 组件可以通过传递一个 props 来告诉每个 `Square` 显示什么，就像你将数字传递给每个 Square 时所做的那样。
 
-**要从多个子组件收集数据，或让两个子组件相互通信，请改为在其父组件中声明共享 state。父组件可以通过 prop 将该 state 传回给子组件。这使子组件彼此同步并与其父组件保持同步。**
+**要从多个子组件收集数据，或让两个子组件相互通信，请改为在其父组件中声明共享 state。父组件可以通过 props 将该 state 传回给子组件。这使子组件彼此同步并与其父组件保持同步。**
 
 重构 React 组件时，将状态提升到父组件中很常见。
 
@@ -945,7 +945,7 @@ export default function Board() {
 ['O', null, 'X', 'X', 'X', 'O', 'O', null, null]
 ```
 
-现在你的 `Board` 组件需要将 `value` prop 向下传递给它渲染的每个 `Square`：
+现在你的 `Board` 组件需要将 `value` props 向下传递给它渲染的每个 `Square`：
 
 ```js {6-8,11-13,16-18}
 export default function Board() {
@@ -972,7 +972,7 @@ export default function Board() {
 }
 ```
 
-接下来，你将编辑 `Square` 组件，以从 Board 组件接收 `value` prop。这将需要删除 Square 组件自己的 `value` state 和按钮的 `onClick` prop：
+接下来，你将编辑 `Square` 组件，以从 Board 组件接收 `value` props。这将需要删除 Square 组件自己的 `value` state 和按钮的 `onClick` props：
 
 ```js {1,2}
 function Square({value}) {
@@ -1066,7 +1066,7 @@ body {
 
 </Sandpack>
 
-现在，每个 Square 都会收到一个 `value` prop，对于空方块，该 prop 将是 `'X'`、`'O'` 或 `null`。
+现在，每个 Square 都会收到一个 `value` props，对于空方块，该 props 将是 `'X'`、`'O'` 或 `null`。
 
 接下来，你需要更改单击 `Square` 时发生的情况。`Board` 组件现在维护已经填充过的方块。你需要为 `Square` 创建一种更新 `Board` state 的方法。由于 state 对于定义它的组件是私有的，因此你不能直接从 `Square` 更新 `Board` 的 state。
 
@@ -1082,7 +1082,7 @@ function Square({ value }) {
 }
 ```
 
-接下来，将 `onSquareClick` 函数添加到 `Square` 组件的 prop 中：
+接下来，将 `onSquareClick` 函数添加到 `Square` 组件的 props 中：
 
 ```js {1}
 function Square({ value, onSquareClick }) {
@@ -1094,7 +1094,7 @@ function Square({ value, onSquareClick }) {
 }
 ```
 
-现在，你将把 `onSquareClick` prop 连接到 `Board` 组件中的一个函数，命名为 `handleClick`。要将 `onSquareClick` 连接到 `handleClick`，需要将一个函数传递给第一个 `Square` 组件的 `onSquareClick` prop：
+现在，你将把 `onSquareClick` props 连接到 `Board` 组件中的一个函数，命名为 `handleClick`。要将 `onSquareClick` 连接到 `handleClick`，需要将一个函数传递给第一个 `Square` 组件的 `onSquareClick` props：
 
 ```js {7}
 export default function Board() {
@@ -1155,7 +1155,7 @@ export default function Board() {
 }
 ```
 
-接下来，你需要将 `i` 传递给 `handleClick`。你可以尝试像这样在 JSX 中直接将 square 的 `onSquareClick` prop 设置为 `handleClick(0)`，但这是行不通的：
+接下来，你需要将 `i` 传递给 `handleClick`。你可以尝试像这样在 JSX 中直接将 square 的 `onSquareClick` props 设置为 `handleClick(0)`，但这是行不通的：
 
 ```jsx
 <Square value={squares[0]} onSquareClick={handleClick(0)} />
@@ -1171,9 +1171,9 @@ Too many re-renders. React limits the number of renders to prevent an infinite l
 
 为什么这个问题没有早点发生？
 
-当你传递 `onSquareClick={handleClick}` 时，你将 `handleClick` 函数作为 prop 向下传递。你不是在调用它！但是现在你立即调用了该函数——注意 `handleClick(0)` 中的括号——这就是它运行得太早的原因。你不想在用户点击之前调用 `handleClick` ！
+当你传递 `onSquareClick={handleClick}` 时，你将 `handleClick` 函数作为 props 向下传递。你不是在调用它！但是现在你立即调用了该函数——注意 `handleClick(0)` 中的括号——这就是它运行得太早的原因。你不想在用户点击之前调用 `handleClick` ！
 
-你可以通过创建调用 `handleClick(0)` 的函数（如 `handleFirstSquareClick`）、调用 `handleClick(1)` 的函数（如 `handleSecondSquareClick`）等来修复。你可以将这些函数作为 `onSquareClick={handleFirstSquareClick}` 之类的 prop 传递（而不是调用）。这将解决无限循环的问题。
+你可以通过创建调用 `handleClick(0)` 的函数（如 `handleFirstSquareClick`）、调用 `handleClick(1)` 的函数（如 `handleSecondSquareClick`）等来修复。你可以将这些函数作为 `onSquareClick={handleFirstSquareClick}` 之类的 props 传递（而不是调用）。这将解决无限循环的问题。
 
 但是，定义九个不同的函数并为每个函数命名过于冗余。让我们这样做：
 
@@ -1317,19 +1317,19 @@ body {
 
 </Sandpack>
 
-现在，我们在 `Board` 组件中处理 state， `Board` 父组件将 prop 传递给 `Square` 子组件，以便它们可以正确显示。单击 `Square` 时， `Square` 子组件现在要求 `Board` 父组件更新棋盘的 state。当 `Board` 的 state 改变时，`Board` 组件和每个子 `Square` 都会自动重新渲染。保存 `Board` 组件中所有方块的 state 将使得它可以确定未来的赢家。
+现在，我们在 `Board` 组件中处理 state， `Board` 父组件将 props 传递给 `Square` 子组件，以便它们可以正确显示。单击 `Square` 时， `Square` 子组件现在要求 `Board` 父组件更新棋盘的 state。当 `Board` 的 state 改变时，`Board` 组件和每个子 `Square` 都会自动重新渲染。保存 `Board` 组件中所有方块的 state 将使得它可以确定未来的赢家。
 
 让我们回顾一下当用户单击你的棋盘左上角的方块以向其添加 `X` 时会发生什么：
 
-1. 单击左上角的方块运行 `button` 从 `Square` 接收到的 `onClick` prop 的函数。`Square` 组件从 `Board` 通过 `onSquareClick` prop 接收到该函数。`Board` 组件直接在 JSX 中定义了该函数。它使用参数 `0` 调用 `handleClick`。
+1. 单击左上角的方块运行 `button` 从 `Square` 接收到的 `onClick` props 的函数。`Square` 组件从 `Board` 通过 `onSquareClick` props 接收到该函数。`Board` 组件直接在 JSX 中定义了该函数。它使用参数 `0` 调用 `handleClick`。
 1. `handleClick` 使用参数（`0`）将 `squares` 数组的第一个元素从 `null` 更新为 `X`。
-1. `Board` 组件的 `squares` state 已更新，因此 `Board` 及其所有子组件都将重新渲染。这会导致索引为 `0` 的 `Square` 组件的 `value` prop 从 `null` 更改为 `X`。
+1. `Board` 组件的 `squares` state 已更新，因此 `Board` 及其所有子组件都将重新渲染。这会导致索引为 `0` 的 `Square` 组件的 `value` props 从 `null` 更改为 `X`。
 
 最后，用户看到左上角的方块在单击后从空变为 `X`。
 
 <Note>
 
-DOM `<button>` 元素的 `onClick` prop 对 React 有特殊意义，因为它是一个内置组件。对于像 Square 这样的自定义组件，命名由你决定。你可以给 `Square` 的 `onSquareClick` prop 或 `Board` 的 `handleClick` 函数起任何名字，代码还是可以运行的。在 React 中，通常使用 `onSomething` 命名代表事件的 prop，使用 `handleSomething` 命名处理这些事件的函数。
+DOM `<button>` 元素的 `onClick` props 对 React 有特殊意义，因为它是一个内置组件。对于像 Square 这样的自定义组件，命名由你决定。你可以给 `Square` 的 `onSquareClick` props 或 `Board` 的 `handleClick` 函数起任何名字，代码还是可以运行的。在 React 中，通常使用 `onSomething` 命名代表事件的 props，使用 `handleSomething` 命名处理这些事件的函数。
 
 </Note>
 
@@ -1795,7 +1795,7 @@ export default function Game() {
   // ...
 ```
 
-接下来，在 `Game` 组件中创建一个 `handlePlay` 函数，`Board` 组件将调用该函数来更新游戏。将 `xIsNext`、`currentSquares` 和 `handlePlay` 作为 prop 传递给 `Board` 组件：
+接下来，在 `Game` 组件中创建一个 `handlePlay` 函数，`Board` 组件将调用该函数来更新游戏。将 `xIsNext`、`currentSquares` 和 `handlePlay` 作为 props 传递给 `Board` 组件：
 
 ```js {6-8,13}
 export default function Game() {
@@ -1816,7 +1816,7 @@ export default function Game() {
 }
 ```
 
-让 `Board` 组件完全由它接收到的 prop 控制。更改 `Board` 组件以采用三个 prop：`xIsNext`、`squares`和一个新的 `onPlay` 函数，当玩家落子时，`Board` 可以使用更新的 square 数组调用该函数。接下来，删除调用 `useState` 的 `Board` 函数的前两行：
+让 `Board` 组件完全由它接收到的 props 控制。更改 `Board` 组件以采用三个 props：`xIsNext`、`squares`和一个新的 `onPlay` 函数，当玩家落子时，`Board` 可以使用更新的 square 数组调用该函数。接下来，删除调用 `useState` 的 `Board` 函数的前两行：
 
 ```js {1}
 function Board({ xIsNext, squares, onPlay }) {
@@ -1847,7 +1847,7 @@ function Board({ xIsNext, squares, onPlay }) {
 }
 ```
 
- `Board` 组件完全由 `Game` 组件传递给它的 prop 控制。你需要在 `Game` 组件中实现 `handlePlay` 函数才能使游戏重新运行。
+ `Board` 组件完全由 `Game` 组件传递给它的 props 控制。你需要在 `Game` 组件中实现 `handlePlay` 函数才能使游戏重新运行。
 
  `handlePlay` 被调用应该做什么？请记住，Board 以前使用更新后的数组调用 `setSquares`；现在它将更新后的 `squares` 数组传递给 `onPlay`。
 
@@ -2073,7 +2073,7 @@ export default function Game() {
 }
 ```
 
-你可以在下面看到你的代码应该是什么样子。请注意，你应该会在开发人员工具控制台中看到一条错误消息：`Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of `Game`.` 你将在下一节中修复此错误。
+你可以在下面看到你的代码应该是什么样子。请注意，你应该会在开发人员工具控制台中看到一条错误消息：`Warning: Each child in an array or iterator should have a unique "key" props. Check the render method of `Game`.` 你将在下一节中修复此错误。
 
 <Sandpack>
 
@@ -2278,7 +2278,7 @@ body {
 
 key 告诉 React 每个组件的身份，这使得 React 可以在重新渲染时保持 state。如果组件的 key 发生变化，组件将被销毁，新 state 将重新创建。
 
-`key` 是 React 中一个特殊的保留属性。创建元素时，React 提取 `key` 属性并将 key 直接存储在返回的元素上。尽管 `key` 看起来像是作为 prop 传递的，但 React 会自动使用 `key` 来决定要更新哪些组件。组件无法询问其父组件指定的 `key`。
+`key` 是 React 中一个特殊的保留属性。创建元素时，React 提取 `key` 属性并将 key 直接存储在返回的元素上。尽管 `key` 看起来像是作为 props 传递的，但 React 会自动使用 `key` 来决定要更新哪些组件。组件无法询问其父组件指定的 `key`。
 
 **强烈建议你在构建动态列表时分配适当的 key**。如果你没有合适的 key，你可能需要考虑重组你的数据，以便你这样做。
 
@@ -2909,4 +2909,4 @@ body {
 1. 当有人获胜时，突出显示致使获胜的三个方块（当没有人获胜时，显示一条关于结果为平局的消息）。
 1. 在“落子”的历史列表中以 (row, col) 格式显示每步的位置。
 
-在本教程中，你已经接触到了 React 概念，包括元素、组件、prop 和 state。现在你已经了解了这些概念在构建游戏时是如何工作的，请查看 [React 哲学](../learn/thinking-in-react) 以了解这些 React 概念在构建应用的 UI 时是如何工作的。
+在本教程中，你已经接触到了 React 概念，包括元素、组件、props 和 state。现在你已经了解了这些概念在构建游戏时是如何工作的，请查看 [React 哲学](../learn/thinking-in-react) 以了解这些 React 概念在构建应用的 UI 时是如何工作的。
