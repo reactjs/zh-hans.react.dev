@@ -76,7 +76,7 @@ Expo 是由 [Expo 这家公司](https://expo.dev/about) 维护的。用 Expo 构
 
 这里是一些原因。
 
-即使你一开始不需要路由或数据获取，你也可能想为它们添加一些库。随着你的 JavaScript 包随着每一个新功能的出现而增长，你可能要弄清楚如何为每一个路由单独拆分代码。随着你的数据获取需求越来越复杂，你很可能会遇到服务器-客户端的网络瀑布，使你的应用感觉非常慢。当你的受众包括更多网络条件差和低端设备的用户时，你可能需要从你的组件中生成 HTML 来提前显示内容——要么在服务器上，要么在构建时间内。改变你的设置以在服务器上或在构建过程中运行你的一些代码是非常棘手的。
+即使你一开始不需要路由或数据获取，你也可能想为它们添加一些库。随着你的 JavaScript 包随着每一个新功能的出现而增长，你可能要弄清楚如何为每一个路由单独拆分代码。随着你的数据获取需求越来越复杂，你很可能会遇到服务器-客户端的网络瀑布，使你的应用感觉非常慢。当你的受众包括更多网络条件差和低端设备的用户时，你可能需要从你的组件中生成 HTML 来提前显示内容——要么在服务器上，要么在构建时间内。改变你的设置以在服务端或在构建时中运行你的一些代码是非常棘手的。
 
 **这些问题不是 React 特有的。这就是为什么 Svelte 有 SvelteKit、Vue 有 Nuxt 等等**。要自己解决这些问题，你需要将你的 bundler 与路由和数据获取库集成起来。使初步设置工作并不难，但要使一个应用在随着时间的推移而快速加载，还涉及很多微妙的问题。你想把应用代码的数量降到最低，但要在单一的客户端-服务器往返中进行，与页面所需的任何数据并行。甚至你可能希望在你的 JavaScript 代码运行之前，页面就已经可以交互，以支持渐进式增强。你可能想为你的营销页面生成一个完全静态的 HTML 文件夹，可以在任何地方托管，并且在禁用 JavaScript 的情况下仍然可以工作。要构建这些功能需要真正的工作。
 
@@ -106,7 +106,7 @@ Next.js 的 App Router 目前处于 **测试阶段，还不建议用于生产环
 
 #### 哪些功能构成了 React 团队的全栈架构愿景？ {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
 
-Next.js 的 App Router bundler 完全实现了官方的 [React 服务端组件规范](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md)。这让你可以在一棵 React 树上混合构建时间、纯服务端和交互组件。
+Next.js 的 App Router bundler 完全实现了官方的 [React 服务端组件规范](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md)。这让你可以在一棵 React 树上同时使用 *构建时*、*纯服务端* 和 *交互组件*。
 
 例如，你可以把一个纯服务端的 React 组件写成一个 `async` 函数，从数据库或文件中读取。然后你可以把数据从它那里传递给你的交互组件：
 
@@ -116,7 +116,7 @@ async function Talks({ confId }) {
   // 1. 你在服务端，所以你可以和你的数据层对话。不需要 API 端点。
   const talks = await db.Talks.findAll({ confId });
 
-  // 2. 添加任何数量的渲染逻辑。它不会使你的 JavaScript bundle 变大。
+  // 2. 添加任意数量的渲染逻辑。它不会使你的 JavaScript bundle 变大。
   const videos = talks.map(talk => talk.video);
 
   // 3. 将数据向下传递给将在浏览器中运行的组件。
