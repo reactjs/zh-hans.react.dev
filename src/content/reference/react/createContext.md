@@ -213,5 +213,5 @@ const ThemeContext = createContext('light');
 
 该值永远不会发生改变。当 React 无法找到匹配的 provider 时，该值会被作为备选值。
 
-要想使上下文的值随时间变化，[添加状态并用一个上下文 provider 包裹组件](/reference/react/useContext#updating-data-passed-via-context)。
+要想使上下文的值随时间变化，[添加状态并用一个 context provider 包裹组件](/reference/react/useContext#updating-data-passed-via-context)。
 
