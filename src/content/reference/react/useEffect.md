@@ -50,7 +50,7 @@ function ChatRoom({ roomId }) {
 
 #### 返回值 {/*returns*/}
 
-`useEffect` 返回 `undefined`.
+`useEffect` 返回 `undefined`。
 
 #### 注意事项 {/*caveats*/}
 
@@ -58,11 +58,11 @@ function ChatRoom({ roomId }) {
 
 * 如果你 **没有打算与某个外部系统同步**，[那么你可能不需要 Effect](/learn/you-might-not-need-an-effect)。
 
-* 当 StrictMode 启动时，React 将在真正的 setup 函数首次运行前，**运行一个额外的开发专有的 setup + cleanup 周期**。这是一个压力测试，确保 cleanup 逻辑“映射”到 setup 逻辑，并停止或撤消 setup 函数正在做的任何事情。如果这引起一个问题，[请实现 cleanup 函数](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)。
+* 当严格模式启动时，React 将在真正的 setup 函数首次运行前，**运行一个额外的开发专有的 setup + cleanup 周期**。这是一个压力测试，确保 cleanup 逻辑“映射”到 setup 逻辑，并停止或撤消 setup 函数正在做的任何事情。如果这引起一个问题，[请实现 cleanup 函数](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)。
 
 * 如果你的一些依赖项是组件内部定义的对象或函数，则存在这样的风险，即它们将 **导致 Effect 过多地重新运行**。要解决这个问题，请删除不必要的 [对象](/reference/react/useEffect#removing-unnecessary-object-dependencies) 和 [函数](/reference/react/useEffect#removing-unnecessary-function-dependencies) 依赖项。你还可以 [抽离状态更新](/reference/react/useEffect#updating-state-based-on-previous-state-from-an-effect) 和 [非响应式的逻辑](/reference/react/useEffect#reading-the-latest-props-and-state-from-an-effect) 到 Effect 之外。
 
-* 如果你的 Effect 不是由交互（比如点击）引起的，那么React 会让浏览器 **在运行 Effect 前先绘制出更新后的屏幕**。如果你的 Effect 正在做一些视觉相关的事情（例如，定位一个 tooltip），并且有显著的延迟（例如，它会闪烁），那么将 `useEffect` 替换为 [`useLayoutEffect`](/reference/react/useLayoutEffect)。
+* 如果你的 Effect 不是由交互（比如点击）引起的，那么 React 会让浏览器 **在运行 Effect 前先绘制出更新后的屏幕**。如果你的 Effect 正在做一些视觉相关的事情（例如，定位一个 tooltip），并且有显著的延迟（例如，它会闪烁），那么将 `useEffect` 替换为 [`useLayoutEffect`](/reference/react/useLayoutEffect)。
 
 * 即使你的 Effect 是由一个交互（比如点击）引起的，**浏览器也可能在处理 Effect 内部的状态更新之前重新绘制屏幕**。通常，这就是你想要的。但是，如果你一定要阻止浏览器重新绘制屏幕，则需要用 [`useLayoutEffect`](/reference/react/useLayoutEffect) 替换 `useEffect`。
 
@@ -102,7 +102,7 @@ function ChatRoom({ roomId }) {
    - 它应该返回一个 *清理函数*（cleanup），其 <CodeStep step={2}>cleanup 代码</CodeStep> 用来与该系统断开连接。
 2. 一个 <CodeStep step={3}>依赖项列表</CodeStep>，包括这些函数使用的每个组件内的值。
 
-**React 在必要时调用 setup 和 cleanup，这可能会发生多次**：
+**React 在必要时会调用 setup 和 cleanup，这可能会发生多次**：
 
 1. 将组件添加到页面 *（挂载）* 时，将运行 <CodeStep step={1}>setup 代码</CodeStep>。
 2. 在 <CodeStep step={3}>依赖项</CodeStep> 发生变更的组件每次重新渲染之后：
@@ -1120,7 +1120,7 @@ function ChatRoom() {
 }
 ```
 
-[依赖项为空的 Effect](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) 不会在组件任何的 props 或 state 发生改变时重新运行。
+[依赖项为空数组的 Effect](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) 不会在组件任何的 props 或 state 发生改变时重新运行。
 
 <Pitfall>
 
@@ -1761,7 +1761,7 @@ function MyComponent() {
 
 ### Effect 在组件挂载时运行了两次 {/*my-effect-runs-twice-when-the-component-mounts*/}
 
-当开启开发模式的 StrictMode 时，React 会在实际运行 setup 之前额外运行一次 setup 和 cleanup。
+在开发环境下，如果开启严格模式，React 会在实际运行 setup 之前额外运行一次 setup 和 cleanup。
 
 这是一个压力测试，用于验证 Effect 的逻辑是否正确实现。如果出现可见问题，则 cleanup 函数缺少某些逻辑。cleanup 函数应该停止或撤消 setup 函数所做的任何操作。一般来说，用户不应该能够区分 setup 被调用一次（如在生产中）和调用 setup→cleanup→setup 序列（如在开发中）。
 
