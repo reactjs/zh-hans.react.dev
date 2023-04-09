@@ -4,7 +4,7 @@ title: createContext
 
 <Intro>
 
-`createContext` lets you create a [context](/learn/passing-data-deeply-with-context) that components can provide or read.
+`createContext` 能让你创建一个 [context](/learn/passing-data-deeply-with-context) 以便组件能够提供和读取。
 
 ```js
 const SomeContext = createContext(defaultValue)
@@ -16,11 +16,11 @@ const SomeContext = createContext(defaultValue)
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `createContext(defaultValue)` {/*createcontext*/}
 
-Call `createContext` outside of any components to create a context.
+在任意组件外调用 `createContext` 来创建一个上下文。
 
 ```js
 import { createContext } from 'react';
@@ -28,26 +28,26 @@ import { createContext } from 'react';
 const ThemeContext = createContext('light');
 ```
 
-[See more examples below.](#usage)
+[请看下面的更多例子](#usage)
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `defaultValue`: The value that you want the context to have when there is no matching context provider in the tree above the component that reads context. If you don't have any meaningful default value, specify `null`. The default value is meant as a "last resort" fallback. It is static and never changes over time.
+* `defaultValue`：当包裹需要读取上下文的组件树中没有匹配的上下文时，你可以用该值作上下文的。倘若你没有任何有意义的默认值，可指定其为 `null`。该默认值是用于作为”最后的手段“的备选值。它是静态的，永远不会随时间改变。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-`createContext` returns a context object.
+`createContext` 返回一个 context 对象。
 
-**The context object itself does not hold any information.** It represents _which_ context other components read or provide. Typically, you will use [`SomeContext.Provider`](#provider) in components above to specify the context value, and call [`useContext(SomeContext)`](/reference/react/useContext) in components below to read it. The context object has a few properties:
+**该 context 对象本身不包含任何信息。** 它只表示其他组件读取或提供的 *那个* context。一般来说，你将在组件上方使用 [`SomeContext.Provider`](#provider) 来指定 context 的值，并在被包裹的下方组件内调用 [`useContext(SomeContext)`](/reference/react/useContext) 来读取它。context 对象有一些属性：
 
-* `SomeContext.Provider` lets you provide the context value to components.
-* `SomeContext.Consumer` is an alternative and rarely used way to read the context value.
+* `SomeContext.Provider` 让你为被它包裹的组件提供上下文的值。
+* `SomeContext.Consumer` 是一个很少会用到的备选方案，它用于读取上下文的值。
 
 ---
 
 ### `SomeContext.Provider` {/*provider*/}
 
-Wrap your components into a context provider to specify the value of this context for all components inside:
+用上下文 provider 包裹你的组件，来为里面所有的组件指定一个 context 的值：
 
 ```js
 function App() {
@@ -63,17 +63,17 @@ function App() {
 
 #### Props {/*provider-props*/}
 
-* `value`: The value that you want to pass to all the components reading this context inside this provider, no matter how deep. The context value can be of any type. A component calling [`useContext(SomeContext)`](/reference/react/useContext) inside of the provider receives the `value` of the innermost corresponding context provider above it.
+* `value`：该值为你想传递给所有处于这个 provider 内读取该 context 的组件，无论它们处于多深的层级。context 的值可以为任何类型。该 provider 内的组件可通过调用 [`useContext(SomeContext)`](/reference/react/useContext) 来获取它上面最近的 context provider 的 `value`。
 
 ---
 
 ### `SomeContext.Consumer` {/*consumer*/}
 
-Before `useContext` existed, there was an older way to read context:
+在 `useContext` 之前，有一种更老的方法来读取上下文：
 
 ```js
 function Button() {
-  // 🟡 Legacy way (not recommended)
+  // 🟡 遗留方式 (不推荐)
   return (
     <ThemeContext.Consumer>
       {theme => (
@@ -84,11 +84,11 @@ function Button() {
 }
 ```
 
-Although this older way still works, but **newly written code should read context with [`useContext()`](/reference/react/useContext) instead:**
+尽管这种老方法依然奏效，但 **新代码都应该通过 [`useContext()`](/reference/react/useContext) 来读取上下文：**
 
 ```js
 function Button() {
-  // ✅ Recommended way
+  // ✅ 推荐方式
   const theme = useContext(ThemeContext);
   return <button className={theme} />;
 }
@@ -96,17 +96,17 @@ function Button() {
 
 #### Props {/*consumer-props*/}
 
-* `children`: A function. React will call the function you pass with the current context value determined by the same algorithm as [`useContext()`](/reference/react/useContext) does, and render the result you return from this function. React will also re-run this function and update the UI whenever the context from the parent components changes.
+* `children`：一个函数。React 将传入与 [`useContext()`](/reference/react/useContext) 相同算法确定的当前上下文的值，来调用该函数，并根据该函数的返回值渲染结果。只要当来自父组件的上下文发生变化，React 就会重新调用该函数。
 
 ---
 
-## Usage {/*usage*/}
+## 使用方法 {/*usage*/}
 
-### Creating context {/*creating-context*/}
+### 创建上下文 {/*creating-context*/}
 
-Context lets components [pass information deep down](/learn/passing-data-deeply-with-context) without explicitly passing props.
+上下文使得组件能够无需通过显式传递参数的方式 [将信息逐层传递](/learn/passing-data-deeply-with-context)。
 
-Call `createContext` outside any components to create one or more contexts.
+在任何组件外调用 `createContext` 来创建一个或多个上下文。
 
 ```js [[1, 3, "ThemeContext"], [1, 4, "AuthContext"], [3, 3, "'light'"], [3, 4, "null"]]
 import { createContext } from 'react';
@@ -115,7 +115,7 @@ const ThemeContext = createContext('light');
 const AuthContext = createContext(null);
 ```
 
-`createContext` returns a <CodeStep step={1}>context object</CodeStep>. Components can read context by passing it to [`useContext()`](/reference/react/useContext):
+`createContext` 返回一个 <CodeStep step={1}>上下文对象</CodeStep>。组件可以通过将它传给 [`useContext()`](/reference/react/useContext) 来读取上下文的值：
 
 ```js [[1, 2, "ThemeContext"], [1, 7, "AuthContext"]]
 function Button() {
@@ -129,9 +129,9 @@ function Profile() {
 }
 ```
 
-By default, the values they receive will be the <CodeStep step={3}>default values</CodeStep> you have specified when creating the contexts. However, by itself this isn't useful because the default values never change.
+默认情况下，它们将获得的值是你在创建上下文时指定的 <CodeStep step={3}>默认值</CodeStep>。然而，它本身并不是很有用，因为默认值永远不会发生改变。
 
-Context is useful because you can **provide other, dynamic values from your components:**
+上下文之所以有用，是因为你可以 **提供来自你组件的其他的、动态变化的值：**
 
 ```js {8-9,11-12}
 function App() {
@@ -150,15 +150,15 @@ function App() {
 }
 ```
 
-Now the `Page` component and any components inside it, no matter how deep, will "see" the passed context values. If the passed context values change, React will re-render the components reading the context as well.
+现在 `Page` 组件以及其所包裹的任何子组件，无论层级多深，都会“看”到传入上下文的值。如果该值发生变化， React 也会重新渲染读取该值的组件。
 
-[Read more about reading and providing context and see examples.](/reference/react/useContext)
+[阅读更多有关读取和提供上下文的内容以及相关例子](/reference/react/useContext)
 
 ---
 
-### Importing and exporting context from a file {/*importing-and-exporting-context-from-a-file*/}
+### 从一个文件导入和导出上下文 {/*importing-and-exporting-context-from-a-file*/}
 
-Often, components in different files will need access to the same context. This is why it's common to declare contexts in a separate file. Then you can use the [`export` statement](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export) to make context available for other files:
+通常，来自不同文件的组件都会需要读取同一个 context。因此，在一个单独的文件内定义 context 便成了常见做法。你可以使用 [`export` 语句](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export) 将其导出，以便其他文件读取使用：
 
 ```js {4-5}
 // Contexts.js
@@ -168,7 +168,7 @@ export const ThemeContext = createContext('light');
 export const AuthContext = createContext(null);
 ````
 
-Components declared in other files can then use the [`import`](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/import) statement to read or provide this context:
+被定义在其他文件中的组件则可以使用 [`import`](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/import) 语句来读取或提供该 context：
 
 ```js {2}
 // Button.js
@@ -196,22 +196,22 @@ function App() {
 }
 ```
 
-This works similar to [importing and exporting components.](/learn/importing-and-exporting-components)
+这与 [组件的导入与导出](/learn/importing-and-exporting-components) 十分相似。
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 疑难解答 {/*troubleshooting*/}
 
-### I can't find a way to change the context value {/*i-cant-find-a-way-to-change-the-context-value*/}
+### 我没有办法改变 context 的值 {/*i-cant-find-a-way-to-change-the-context-value*/}
 
 
-Code like this specifies the *default* context value:
+如下的代码为 context 指定了 *默认* 值：
 
 ```js
 const ThemeContext = createContext('light');
 ```
 
-This value never changes. React only uses this value as a fallback if it can't find a matching provider above.
+该值永远不会发生改变。当 React 无法找到匹配的 provider 时，该值会被作为备选值。
 
-To make context change over time, [add state and wrap components in a context provider.](/reference/react/useContext#updating-data-passed-via-context)
+要想使上下文的值随时间变化，[添加状态并用一个 context provider 包裹组件](/reference/react/useContext#updating-data-passed-via-context)。
 
