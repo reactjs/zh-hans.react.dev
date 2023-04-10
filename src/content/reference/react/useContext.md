@@ -4,7 +4,7 @@ title: useContext
 
 <Intro>
 
-`useContext` 是一个 React Hook，可以让你读取和订阅组件中的 [context。](/learn/passing-data-deeply-with-context)
+`useContext` 是一个 React Hook，可以让你读取和订阅组件中的 [context](/learn/passing-data-deeply-with-context)。
 
 ```js
 const value = useContext(SomeContext)
@@ -20,7 +20,7 @@ const value = useContext(SomeContext)
 
 ### `useContext(SomeContext)` {/*usecontext*/}
 
-在组件的顶层调用 `useContext` 来读取和订阅 [context。](/learn/passing-data-deeply-with-context)
+在组件的顶层调用 `useContext` 来读取和订阅 [context](/learn/passing-data-deeply-with-context)。
 
 ```js
 import { useContext } from 'react';
@@ -42,7 +42,7 @@ function MyComponent() {
 
 #### 注意事项 {/*caveats*/}
 
-* 组件中的 `useContext()` 调用不受 *同一* 组件返回的 provider 的影响。相应的 `<Context.Provider>` 需要位于调用 `useContext()` 的组件 **之上**。
+* 组件中的 `useContext()` 调用不受 **同一** 组件返回的 provider 的影响。相应的 `<Context.Provider>` 需要位于调用 `useContext()` 的组件 **之上**。
 * 从 provider 接收到不同的 `value` 开始，React 自动重新渲染使用了该特定 context 的所有子级。先前的值和新的值会使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来做比较。使用 [`memo`](/reference/react/memo) 来跳过重新渲染并不妨碍子级接收到新的 context 值。 
 * 如果您的构建系统在输出中产生重复的模块（可能发生在符号链接中），这可能会破坏 context。通过 context 传递数据只有在用于传递 context 的 `SomeContext` 和用于读取数据的  `SomeContext` 是完全相同的对象时才有效，这是由 `===` 比较决定的。
 
@@ -53,7 +53,7 @@ function MyComponent() {
 
 ### 向组件树深层传递数据 {/*passing-data-deeply-into-the-tree*/}
 
-在组件的最顶级调用 `useContext` 来读取和订阅 [context。](/learn/passing-data-deeply-with-context)
+在组件的最顶级调用 `useContext` 来读取和订阅 [context](/learn/passing-data-deeply-with-context)。
 
 ```js [[2, 4, "theme"], [1, 4, "ThemeContext"]]
 import { useContext } from 'react';
@@ -85,7 +85,7 @@ provider 和 `Button` 之间有多少层组件并不重要。当 `Form` 中的�
 
 <Pitfall>
 
-`useContext()` 总是在调用它的组件 *上面* 寻找最近的 provider。它向上搜索， **不考虑** 调用 `useContext()` 的组件中的 provider。
+`useContext()` 总是在调用它的组件 **上面** 寻找最近的 provider。它向上搜索， **不考虑** 调用 `useContext()` 的组件中的 provider。
 
 </Pitfall>
 
@@ -305,7 +305,7 @@ function Button({ children }) {
 
 #### 通过 context 更新对象 {/*updating-an-object-via-context*/}
 
-在这个例子中，有一个 `currentUser` 状态变量，它包含一个对象。将 `{ currentUser, setCurrentUser }` 组合成一个对象，并通过 context 在 `value={}`  中向下传递。这允许下面的任何组件，如 `LoginButton`，同时读取 `currentUser` 和 `setCurrentUser`，然后在需要时调用 `setCurrentUser`。
+在这个例子中，有一个 `currentUser` 状态变量，它包含一个对象。将 `{ currentUser, setCurrentUser }` 组合成一个对象，并通过 context 在 `value={}` 中向下传递。这允许下面的任何组件，如 `LoginButton`，同时读取 `currentUser` 和 `setCurrentUser`，然后在需要时调用 `setCurrentUser`。
 
 <Sandpack>
 
@@ -397,7 +397,7 @@ label {
 
 #### 同时使用多个 context {/*multiple-contexts*/}
 
-在这个例子中，存在两个独立的 context。 `ThemeContext` 提供了当前的主题，它是一个字符串，而 `CurrentUserContext` 保存了代表当前用户的对象。
+在这个例子中，存在两个独立的 context。`ThemeContext` 提供了当前的主题，它是一个字符串，而 `CurrentUserContext` 保存了代表当前用户的对象。
 
 <Sandpack>
 
@@ -1082,7 +1082,7 @@ function Button({ children, onClick }) {
 
 #### 覆盖主题 {/*overriding-a-theme*/}
 
-这里，与 `Footer` 外的值为（`"dark"`）的按钮相比， *里面* 的按钮接收到一个不一样的 context 值（`"light"`）。
+这里，与 `Footer` 外的值为（`"dark"`）的按钮相比，**里面** 的按钮接收到一个不一样的 context 值（`"light"`）。
 
 <Sandpack>
 
@@ -1309,7 +1309,7 @@ function MyApp() {
 }
 ```
 
-此处，<CodeStep step={2}>context value</CodeStep> 是一个具有两个属性的 JavaScript 对象，其中一个是函数。每当 `MyApp` 出现重新渲染（例如，路由更新）时，这里将会是一个 *不同的* 对象指向 *不同的* 函数，因此 React 还必须重新渲染树中调用 `useContext(AuthContext)` 的所有组件。
+此处，<CodeStep step={2}>context value</CodeStep> 是一个具有两个属性的 JavaScript 对象，其中一个是函数。每当 `MyApp` 出现重新渲染（例如，路由更新）时，这里将会是一个 **不同的** 对象指向 **不同的** 函数，因此 React 还必须重新渲染树中调用 `useContext(AuthContext)` 的所有组件。
 
 在较小的应用程序中，这不是问题。但是，如果基础数据如 `currentUser` 没有更改，则不需要重新渲染它们。为了帮助 React 利用这一点，你可以使用 [`useCallback`](/reference/react/useCallback) 包装 `login` 函数，并将对象创建包装到 [`useMemo`](/reference/react/useMemo) 中。这是一个性能优化的例子：
 
@@ -1353,7 +1353,7 @@ function MyApp() {
 2. 你可能忘记了使用 `<SomeContext.Provider>` 包装组件，或者你可能将组件放在树的不同部分。使用 [React DevTools](/learn/react-developer-tools) 检查组件树的层级是否正确。
 3. 你的工具可能会遇到一些构建问题，导致你在传值组件中的所看到的 `SomeContext` 和读值组件中所看到的 `SomeContext` 是两个不同的对象。例如，如果使用符号链接，就会发生这种情况。你可以通过将它们赋值给全局对象如 `window.SomeContext1` 和 `window.SomeContext2` 来验证这种情况。然后在控制台检查 `window.SomeContext1 === window.SomeContext2` 是否相等。如果它们是不相等的，就在构建工具层面修复这个问题。
 
-### 我总从 context 中得到 `undefined` 尽管设置了不一样的默认值 {/*i-am-always-getting-undefined-from-my-context-although-the-default-value-is-different*/}
+### 尽管设置了不一样的默认值，但是我总是从 context 中得到 `undefined` {/*i-am-always-getting-undefined-from-my-context-although-the-default-value-is-different*/}
 
 你可能在组件树中有一个没有设置 `value` 的 provider：
 
@@ -1384,4 +1384,4 @@ function MyApp() {
 </ThemeContext.Provider>
 ```
 
-注意，只有在 **上层根本没有匹配的 provider** 时才使用 [`createContext(defaultValue)`调用的默认值](#specifying-a-fallback-default-value)。如果存在 `<SomeContext.Provider value={undefined}>` 组件在父树的某个位置，调用 `useContext(SomeContext)` 的组件 *将会* 接收到 `undefined` 作为 context 的值。
+注意，只有在 **上层根本没有匹配的 provider** 时才使用 [`createContext(defaultValue)`调用的默认值](#specifying-a-fallback-default-value)。如果存在 `<SomeContext.Provider value={undefined}>` 组件在父树的某个位置，调用 `useContext(SomeContext)` 的组件 **将会** 接收到 `undefined` 作为 context 的值。
