@@ -734,7 +734,7 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 - 或者，[将组件标记为仅客户端](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content)。这告诉 React 在服务端渲染时用一个 loading 降级（例如，一个 spinner 或者 glimmer）替换其内容到上方最近的 [`<Suspense>`](/reference/react/Suspense) 边界。
 
-- 或者，只有在水合之后，使用 `useLayoutEffect` 渲染组件。保留一个初始化为 false 的 isMounted 布尔状态，并在 useEffect 调用中将其设置为 true。然后你的渲染逻辑就会像 `return isMounted ? <RealContent /> : <FallbackContent />` 这样。在服务端和水合过程中，用户将看到 `FallbackContent`，它不应该调用 `useLayoutEffect`。然后 React 将用 `RealContent` 替换它，`RealContent` 仅在客户端上运行并且可以包含 `useLayoutEffect` 调用。
+- 或者，只有在水合之后，使用 `useLayoutEffect` 渲染组件。保留一个初始化为 `false` 的 `isMounted` 布尔状态，并在 `useEffect` 调用中将其设置为 `true`。然后你的渲染逻辑就会像 `return isMounted ? <RealContent /> : <FallbackContent />` 这样。在服务端和水合过程中，用户将看到 `FallbackContent`，它不应该调用 `useLayoutEffect`。然后 React 将用 `RealContent` 替换它，`RealContent` 仅在客户端上运行并且可以包含 `useLayoutEffect` 调用。
 
 - 如果你将组件与外部数据存储同步，并且依赖 useLayouteffect 的原因不同于测量布局，可以考虑使用 [支持服务端渲染](/reference/react/useSyncExternalStore#adding-support-for-server-rendering) 的 [`useSyncExternalStore`](/reference/react/useSyncExternalStore)。
 
