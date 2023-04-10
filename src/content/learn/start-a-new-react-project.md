@@ -58,7 +58,7 @@ Gatsby 由 [Netlify](https://www.netlify.com/) 维护。你可以 [部署一个�
 
 ### Expo（用于原生应用） {/*expo*/}
 
-**[Expo](https://expo.dev/) 是一个 React 框架，可以让你创建具有真正原生 UI 的应用，可以是 Android、iOS 或 Web 应用**。它为 [React Native](https://reactnative.dev/) 提供了一个 SDK，使原生部分更容易使用。要创建一个新的 Expo 项目，请运行：
+**[Expo](https://expo.dev/) 是一个 React 框架，可以让你创建具有真正原生 UI 的应用，包括 Android、iOS，以及 Web 应用。它为 [React Native](https://reactnative.dev/) 提供了 SDK，使原生部分更容易使用。要创建一个新的 Expo 项目，请运行：
 
 <TerminalBlock>
 npx create-expo-app
