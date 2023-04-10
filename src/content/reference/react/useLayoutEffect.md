@@ -404,7 +404,7 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 #### `useEffect` 不阻塞浏览器绘制 {/*useeffect-does-not-block-the-browser*/}
 
-下面是同样的例子，但是使用 [`useEffect`](/reference/react/useEffect) 代替 `useLayoutEffect`。如果你使用的是速度较慢的设备，你可能会注意到有时 tooltip“闪烁”，并且在更正的位置之前你可以简单地看到它的初始位置。
+下面是同样的例子，但是使用 [`useEffect`](/reference/react/useEffect) 代替 `useLayoutEffect`。如果你使用的是速度较慢的设备，你可能会注意到有时 tooltip 会“闪烁”，并且在更正的位置之前你可以简单地看到它的初始位置。
 
 <Sandpack>
 
