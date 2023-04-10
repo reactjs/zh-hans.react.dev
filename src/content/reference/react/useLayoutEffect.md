@@ -730,7 +730,7 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 然而，如果你遇到这个问题，你有几个不同的选择：
 
-- 用 [`useEffect`](/reference/react/useEffect) 替换 `useLayoutEffect`。 React 可以在不阻塞绘制的情况下显示初始的渲染结果（因为初始的 HTML 将在 Effect 运行之前显示出来）。
+- 用 [`useEffect`](/reference/react/useEffect) 替换 `useLayoutEffect`。React 可以在不阻塞绘制的情况下显示初始的渲染结果（因为初始的 HTML 将在 Effect 运行之前显示出来）。
 
 - 或者，[将组件标记为仅客户端](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content)。 这告诉 React 在服务端渲染时用一个 loading 降级（例如，一个 spinner 或者 glimmer）替换其内容到上方最近的 [`<Suspense>`](/reference/react/Suspense) 边界。
 
