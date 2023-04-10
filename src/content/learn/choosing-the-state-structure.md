@@ -22,13 +22,13 @@ translators:
 
 当你编写一个存有 state 的组件时，你需要选择使用多少个 state 变量以及它们都是怎样的数据格式。尽管选择次优的 state 结构下也可以编写正确的程序，但有几个原则可以指导您做出更好的决策：
 
-1. **合并关联的 state。** 如果你总是同时更新两个或更多的 state 变量，请考虑将它们合并为一个单独的 state 变量。
-2. **避免互相矛盾的 state。** 当 state 结构中存在多个相互矛盾或“不一致”的 state 时，你就可能为此会留下隐患。应尽量避免这种情况。
-3. **避免冗余的 state。** 如果你能在渲染期间从组件的 props 或其现有的 state 变量中计算出一些信息，则不应将这些信息放入该组件的 state 中。
-4. **避免重复的 state。** 当同一数据在多个 state 变量之间或在多个嵌套对象中重复时，这会很难保持它们同步。应尽可能减少重复。
-5. **避免深度嵌套的 state。** 深度分层的 state 更新起来不是很方便。如果可能的话，最好以扁平化方式构建 state 。
+1. **合并关联的 state**。如果你总是同时更新两个或更多的 state 变量，请考虑将它们合并为一个单独的 state 变量。
+2. **避免互相矛盾的 state**。当 state 结构中存在多个相互矛盾或“不一致”的 state 时，你就可能为此会留下隐患。应尽量避免这种情况。
+3. **避免冗余的 state**。如果你能在渲染期间从组件的 props 或其现有的 state 变量中计算出一些信息，则不应将这些信息放入该组件的 state 中。
+4. **避免重复的 state**。当同一数据在多个 state 变量之间或在多个嵌套对象中重复时，这会很难保持它们同步。应尽可能减少重复。
+5. **避免深度嵌套的 state**。深度分层的 state 更新起来不是很方便。如果可能的话，最好以扁平化方式构建 state。
 
-这些原则背后的目标是*使 state 易于更新而不引入错误*。从 state 中删除冗余和重复数据有助于确保所有部分保持同步。这类似于数据库工程师想要 [“规范化”数据库结构](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description)，以减少出现错误的机会。用爱因斯坦的话说，**“让你的状态尽可能简单，但不要过于简单。”**
+这些原则背后的目标是 **使 state 易于更新而不引入错误**。从 state 中删除冗余和重复数据有助于确保所有部分保持同步。这类似于数据库工程师想要 [“规范化”数据库结构](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description)，以减少出现错误的机会。用爱因斯坦的话说，**“让你的状态尽可能简单，但不要过于简单。”**
 
 现在让我们来看看这些原则在实际中是如何应用的。
 
@@ -162,7 +162,7 @@ function sendMessage(text) {
 
 尽管这段代码是有效的，但也会让一些 state “极难处理”。例如，如果你忘记同时调用 `setIsSent` 和 `setIsSending`，则可能会出现 `isSending` 和 `isSent` 同时为 `true` 的情况。你的组件越复杂，你就越难理解发生了什么。
 
-**因为 `isSending` 和 `isSent` 不应同时为 `true`，所以最好用一个 `status` 变量来代替它们，这个 state 变量可以采取 *三种* 有效状态其中之一：**`'typing'` (初始), `'sending'`, 和 `'sent'`:
+**因为 `isSending` 和 `isSent` 不应同时为 `true`，所以最好用一个 `status` 变量来代替它们，这个 state 变量可以采取 **三种** 有效状态其中之一：**`'typing'` (初始), `'sending'`, 和 `'sent'`:
 
 <Sandpack>
 
@@ -337,13 +337,13 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-这里，`fullName` *不是* 一个 state 变量。相反，它是在渲染期间中计算出的：
+这里，`fullName` **不是** 一个 state 变量。相反，它是在渲染期间中计算出的：
 
 ```js
 const fullName = firstName + ' ' + lastName;
 ```
 
-因此，更改处理程序不需要做任何特殊操作来更新它。 当你调用 `setFirstName` 或 `setLastName` 时，你会触发一次重新渲染，然后下一个 `fullName` 将从新数据中计算出来。。
+因此，更改处理程序不需要做任何特殊操作来更新它。当你调用 `setFirstName` 或 `setLastName` 时，你会触发一次重新渲染，然后下一个 `fullName` 将从新数据中计算出来。。
 
 <DeepDive>
 
@@ -356,7 +356,7 @@ function Message({ messageColor }) {
   const [color, setColor] = useState(messageColor);
 ```
 
-这里，一个 `color` state 变量被初始化为 `messageColor` 的 props 值。 这段代码的问题在于，**如果父组件稍后传递不同的 `messageColor` 值（例如，将其从 `'blue'` 更改为 `'red'`），则`color` *state 变量*将不会更新！** state 仅在第一次渲染期间初始化。
+这里，一个 `color` state 变量被初始化为 `messageColor` 的 props 值。这段代码的问题在于，**如果父组件稍后传递不同的 `messageColor` 值（例如，将其从 `'blue'` 更改为 `'red'`），则`color` **state 变量** 将不会更新！** state 仅在第一次渲染期间初始化。
 
 这就是为什么在 state 变量中，"镜像"一些 prop 属性会导致混淆的原因。相反，你要在代码中直接使用 `messageColor` 属性。如果你想给它起一个更短的名称，请使用常量：
 
@@ -367,10 +367,10 @@ function Message({ messageColor }) {
 
 这种写法就不会与从父组件传递的属性失去同步。
 
-只有当你 *想要* 忽略特定 props 属性的所有更新时，将 props “镜像”到 state 才有意义。按照惯例，prop 名称以 `initial` 或 `default` 开头，以阐明该 prop 的新值将被忽略：
+只有当你 **想要** 忽略特定 props 属性的所有更新时，将 props “镜像”到 state 才有意义。按照惯例，prop 名称以 `initial` 或 `default` 开头，以阐明该 prop 的新值将被忽略：
 
 
-这个 `color` state 变量用于保存 `initialColor` 的 *初始值* 值。
+这个 `color` state 变量用于保存 `initialColor` 的 **初始值** 值。
 
 ```js
 function Message({ initialColor }) {
@@ -493,9 +493,9 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-请注意，如果你首先单击菜单上的“Choose” *然后* 编辑它，**输入会更新，但底部的标签不会反映编辑内容。** 这是因为你有重复的 state，并且你忘记更新了 `selectedItem`。
+请注意，如果你首先单击菜单上的“Choose” **然后** 编辑它，**输入会更新，但底部的标签不会反映编辑内容。** 这是因为你有重复的 state，并且你忘记更新了 `selectedItem`。
 
-尽管你也可以更新 `selectedItem`，但更简单的解决方法是消除重复项。在下面这个例子中，你将 `selectedId` 保存在 state 中，而不是在 `selectedItem` 对象中（它创建了一个与 `items` 内重复的对象），*然后* 通过搜索 `items` 数组中具有该 ID 的项，以此获取 `selectedItem`：
+尽管你也可以更新 `selectedItem`，但更简单的解决方法是消除重复项。在下面这个例子中，你将 `selectedId` 保存在 state 中，而不是在 `selectedItem` 对象中（它创建了一个与 `items` 内重复的对象），**然后** 通过搜索 `items` 数组中具有该 ID 的项，以此获取 `selectedItem`：
 
 <Sandpack>
 
@@ -575,7 +575,7 @@ state 过去常常是这样复制的：
 重复的 state 没有了，你只保留了必要的 state！
 
 
-现在，如果你编辑 *selected* 项目，下面的消息将立即更新。这是因为 `setItems` 会触发重新渲染，而 `items.find(...)` 会找到带有更新文本的项目。你不需要在 state 中保存 *选定的项目* ，因为只有 *选定的 ID* 是必要的。其余的可以在渲染期间计算。
+现在，如果你编辑 **selected** 项目，下面的消息将立即更新。这是因为 `setItems` 会触发重新渲染，而 `items.find(...)` 会找到带有更新文本的项目。你不需要在 state 中保存 **选定的项目**，因为只有 **选定的 ID** 是必要的。其余的可以在渲染期间计算。
 
 ## 避免深度嵌套的 state {/*avoid-deeply-nested-state*/}
 
@@ -827,7 +827,7 @@ export const initialTravelPlan = {
 
 现在，假设你想添加一个按钮来删除一个你已经去过的地方。你会怎么做呢？[更新嵌套的 state](/learn/updating-objects-in-state#updating-a-nested-object) 需要从更改部分一直向上复制对象。删除一个深度嵌套的地点将涉及复制其整个父级地点链。这样的代码可能非常冗长。
 
-**如果 state 嵌套太深，难以轻松更新，可以考虑将其“扁平化”。** 这里有一个方法可以重构上面这个数据。不同于树状结构，它每个`节点`都有 *其子节点* 数组，你可以让每个`节点`保存一个 *其子节点ID* 的数组。然后存储一个节点 ID 与相应节点的映射关系。
+**如果 state 嵌套太深，难以轻松更新，可以考虑将其“扁平化”。** 这里有一个方法可以重构上面这个数据。不同于树状结构，它每个`节点`都有 **其子节点** 数组，你可以让每个`节点`保存一个 **其子节点ID** 的数组。然后存储一个节点 ID 与相应节点的映射关系。
 
 这个数据重组可能会让你想起看到一个数据库表：
 
@@ -1143,7 +1143,7 @@ export const initialTravelPlan = {
 
 
 
-- 其 *父级* 地点的更新版本应该从其 `childIds` 数组中排除已删除的ID。
+- 其 **父级** 地点的更新版本应该从其 `childIds` 数组中排除已删除的ID。
 - 其根级“表”对象的更新版本应包括父级地点的更新版本。
 
 下面是展示如何处理它的一个示例：
@@ -1856,7 +1856,7 @@ button { margin: 10px; }
 * 仔细选择你的 state 变量，以避免创建“极难处理”的 state。
 * 用一种减少出错更新的机会的方式来构建你的 state。
 * 避免冗余和重复的 state，这样您就不需要保持同步。
-* 除非您特别想防止更新，否则不要将 props *放入* state中。
+* 除非您特别想防止更新，否则不要将 props **放入** state中。
 * 对于选择类型的 UI 模式，请在 state 中保存 ID 或索引而不是对象本身。
 * 如果深度嵌套 state 更新很复杂，请尝试将其展开扁平化。
 
@@ -2640,7 +2640,7 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 <Solution>
 
-在 state 中保留一个 `selectedIds` *数组*，而不是单个的 `selectedId`。例如，如果您选择了第一个和最后一个字母，则它将包含 `[0, 2]`。当没有选定任何内容时，它将为空数组 `[]`：
+在 state 中保留一个 `selectedIds` **数组**，而不是单个的 `selectedId`。例如，如果您选择了第一个和最后一个字母，则它将包含 `[0, 2]`。当没有选定任何内容时，它将为空数组 `[]`：
 
 <Sandpack>
 
@@ -2853,7 +2853,7 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 现在每个项目都会进行 `selectedIds.has(letter.id)` 检查，这非常快。
 
-请记住，你[不应该在 state 中改变对象](/learn/updating-objects-in-state)，包括 Set 中。这就是为什么 `handleToggle` 函数首先创建 Set 的*副本*，然后更新该副本的原因。
+请记住，你[不应该在 state 中改变对象](/learn/updating-objects-in-state)，包括 Set 中。这就是为什么 `handleToggle` 函数首先创建 Set 的 **副本**，然后更新该副本的原因。
 
 </Solution>
 
