@@ -46,7 +46,7 @@ function TodoList({ todos, tab }) {
 
 在初始渲染时，`useMemo` 返回不带参数的调用 `calculateValue` 的结果。
 
-在接下来的渲染中，它将返回上次渲染中已经缓存的值(如果依赖项没有改变)，或者再次调用 `calculateValue`，并返回 `calculateValue` 返回的结果。
+在接下来的渲染中，它将返回上次渲染中已经缓存的值（如果依赖项没有改变），或者再次调用 `calculateValue`，并返回 `calculateValue` 返回的结果。
 
 #### 注意事项 {/*caveats*/}
 
