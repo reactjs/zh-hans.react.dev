@@ -827,7 +827,7 @@ export const initialTravelPlan = {
 
 现在，假设你想添加一个按钮来删除一个你已经去过的地方。你会怎么做呢？[更新嵌套的 state](/learn/updating-objects-in-state#updating-a-nested-object) 需要从更改部分一直向上复制对象。删除一个深度嵌套的地点将涉及复制其整个父级地点链。这样的代码可能非常冗长。
 
-**如果 state 嵌套太深，难以轻松更新，可以考虑将其“扁平化”。** 这里有一个方法可以重构上面这个数据。不同于树状结构，它每个`节点`都有 **其子节点** 数组，你可以让每个`节点`保存一个 **其子节点ID** 的数组。然后存储一个节点 ID 与相应节点的映射关系。
+**如果 state 嵌套太深，难以轻松更新，可以考虑将其“扁平化”。** 这里有一个方法可以重构上面这个数据。不同于树状结构，它每个`节点`都有 **其子节点** 数组，你可以让每个`节点`保存一个 **其子节点 ID** 的数组。然后存储一个节点 ID 与相应节点的映射关系。
 
 这个数据重组可能会让你想起看到一个数据库表：
 
@@ -1143,7 +1143,7 @@ export const initialTravelPlan = {
 
 
 
-- 其 **父级** 地点的更新版本应该从其 `childIds` 数组中排除已删除的ID。
+- 其 **父级** 地点的更新版本应该从其 `childIds` 数组中排除已删除的 ID。
 - 其根级“表”对象的更新版本应包括父级地点的更新版本。
 
 下面是展示如何处理它的一个示例：
@@ -1490,7 +1490,7 @@ button { margin: 10px; }
 
 #### 改善内存使用 {/*improving-memory-usage*/}
 
-理想情况下，您还应该从“表”对象中删除已删除的项目（以及它们的子项！）以改善内存使用。还可以 [使用Immer](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) 使更新逻辑更加简洁。
+理想情况下，您还应该从“表”对象中删除已删除的项目（以及它们的子项！）以改善内存使用。还可以 [使用 Immer](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) 使更新逻辑更加简洁。
 
 <Sandpack>
 
@@ -1921,7 +1921,7 @@ export default function App() {
 
 <Solution>
 
-这个问题点在于此组件的 `color` state 是使用`color` prop 的初始值进行初始化的。但是当 `color` prop 值发生更改时，这不会影响 state 变量！因此它们会失去同步。为了解决这个问题，完全删除 state 变量，并直接使用 `color` prop 即可。
+这个问题点在于此组件的 `color` state 是使用 `color` prop 的初始值进行初始化的。但是当 `color` prop 值发生更改时，这不会影响 state 变量！因此它们会失去同步。为了解决这个问题，完全删除 state 变量，并直接使用 `color` prop 即可。
 
 <Sandpack>
 
