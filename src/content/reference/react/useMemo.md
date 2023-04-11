@@ -1058,7 +1058,7 @@ label {
 
 ### 记忆另一个 Hook 的依赖 {/*memoizing-a-dependency-of-another-hook*/}
 
-假设您有一个 calculation 依赖于直接在组件主体中创建的对象：
+假设你有一个 calculation 依赖于直接在组件主体中创建的对象：
 
 ```js {2}
 function Dropdown({ allItems, text }) {
