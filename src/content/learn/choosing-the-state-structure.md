@@ -162,7 +162,7 @@ function sendMessage(text) {
 
 尽管这段代码是有效的，但也会让一些 state “极难处理”。例如，如果你忘记同时调用 `setIsSent` 和 `setIsSending`，则可能会出现 `isSending` 和 `isSent` 同时为 `true` 的情况。你的组件越复杂，你就越难理解发生了什么。
 
-**因为 `isSending` 和 `isSent` 不应同时为 `true`，所以最好用一个 `status` 变量来代替它们，这个 state 变量可以采取 **三种** 有效状态其中之一：**`'typing'` (初始), `'sending'`, 和 `'sent'`:
+**因为 `isSending` 和 `isSent` 不应同时为 `true`，所以最好用一个 `status` 变量来代替它们，这个 state 变量可以采取三种有效状态其中之一**：`'typing'` (初始), `'sending'`, 和 `'sent'`:
 
 <Sandpack>
 
@@ -356,7 +356,7 @@ function Message({ messageColor }) {
   const [color, setColor] = useState(messageColor);
 ```
 
-这里，一个 `color` state 变量被初始化为 `messageColor` 的 props 值。这段代码的问题在于，**如果父组件稍后传递不同的 `messageColor` 值（例如，将其从 `'blue'` 更改为 `'red'`），则`color` **state 变量** 将不会更新！** state 仅在第一次渲染期间初始化。
+这里，一个 `color` state 变量被初始化为 `messageColor` 的 props 值。这段代码的问题在于，**如果父组件稍后传递不同的 `messageColor` 值（例如，将其从 `'blue'` 更改为 `'red'`），则 `color`** state 变量**将不会更新！** state 仅在第一次渲染期间初始化。
 
 这就是为什么在 state 变量中，“镜像”一些 prop 属性会导致混淆的原因。相反，你要在代码中直接使用 `messageColor` 属性。如果你想给它起一个更短的名称，请使用常量：
 
@@ -1856,7 +1856,7 @@ button { margin: 10px; }
 * 仔细选择你的 state 变量，以避免创建“极难处理”的 state。
 * 用一种减少出错更新的机会的方式来构建你的 state。
 * 避免冗余和重复的 state，这样您就不需要保持同步。
-* 除非您特别想防止更新，否则不要将 props **放入** state中。
+* 除非您特别想防止更新，否则不要将 props **放入** state 中。 
 * 对于选择类型的 UI 模式，请在 state 中保存 ID 或索引而不是对象本身。
 * 如果深度嵌套 state 更新很复杂，请尝试将其展开扁平化。
 
