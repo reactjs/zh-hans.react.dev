@@ -49,7 +49,6 @@ const [y, setY] = useState(0);
 const [position, setPosition] = useState({ x: 0, y: 0 });
 ```
 
-
 从技术上讲，你可以使用其中任何一种方法。但是，**如果某两个 state 变量总是一起变化，则将它们统一成一个 state 变量可能更好**。这样你就不会忘记让它们始终保持同步，就像下面这个例子中，移动光标会同时更新红点的两个坐标：
 
 <Sandpack>
