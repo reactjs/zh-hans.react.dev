@@ -56,7 +56,7 @@ function TodoList({ todos, tab }) {
 
 <Note>
 
-这种缓存返回值的方式也叫做 [*memoization*](https://en.wikipedia.org/wiki/Memoization)，这也是这个 Hook 叫做 `useMemo` 的原因。
+这种缓存返回值的方式也叫做 [*memoization*](https://en.wikipedia.org/wiki/Memoization)，这也是该 Hook 叫做 `useMemo` 的原因。
 
 </Note>
 
