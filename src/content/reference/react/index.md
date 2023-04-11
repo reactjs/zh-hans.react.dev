@@ -45,7 +45,7 @@ function Button() {
 
 *Ref* 让一个组件 [持有一些不用于渲染的信息](/learn/referencing-values-with-refs)，如 DOM 节点或一个 timeout ID。与 state 不同的是，更新 Ref 并不会重新渲染你的组件。Ref 是 React 范式的一个 "逃生舱门"。当你需要与非 React 系统一起工作时，它们很有用，比如内置的浏览器 API。
 
-* [`useRef`](/reference/react/useRef) 声明了一个 Ref。你可以在其中保存任何值，但最常见的是它用来保存一个 DOM 节点。
+* [`useRef`](/reference/react/useRef) 声明了一个 ref。你可以在其中保存任何值，但最常见的是它用来保存一个 DOM 节点。
 * [`useImperativeHandle`](/reference/react/useImperativeHandle) 可以让你自定义你的组件所暴露的 ref。这一点很少使用。
 
 ```js
