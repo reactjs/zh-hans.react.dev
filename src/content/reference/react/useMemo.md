@@ -51,7 +51,7 @@ function TodoList({ todos, tab }) {
 #### 注意事项 {/*caveats*/}
 
 * `useMemo` 是一个 React Hook，所以你只能 **在组件的顶层** 或者你自己的 Hook 中调用它。你不能在循环或条件语句中调用它。如果需要，可以提取一个新组件并将 state 移动到其中。
-* 在严格模式下，为了 [帮你发现意外的错误](#my-calculation-runs-twice-on-every-re-render)，React 将会 **重复调用你的 calculation 函数两次**。这只是一个开发环境下的行为并不会影响到生产环境。 如果你的 calcalation 函数是一个纯函数（它本来就应该是），这将不会影响到你的逻辑。其中一次调用的结果将会被忽略。
+* 在严格模式下，为了 [帮你发现意外的错误](#my-calculation-runs-twice-on-every-re-render)，React 将会 **重复调用你的 calculation 函数两次**。这只是一个开发环境下的行为并不会影响到生产环境。如果你的 calcalation 函数是一个纯函数（它本来就应该是），这将不会影响到你的逻辑。其中一次调用的结果将会被忽略。
 * React **不会丢弃缓存的值，除非有特定的原因**。例如，在开发过程中，React 会在你编辑组件文件时丢弃缓存。无论是在开发环境还是在生产环境，如果你的组件在初始挂载期间被终止，React 都会丢弃缓存。在未来，React 可能会添加更多利用丢弃缓存的特性——例如，如果 React 在未来增加了对虚拟化列表的内置支持，那么丢弃那些滚出虚拟化表视口的缓存是有意义的。如果你仅仅依赖 `useMemo` 作为性能优化手段，是没问题的。否则，一个 [state 变量](/reference/react/useState#avoiding-recreating-the-initial-state) 或者一个 [ref](/reference/react/useRef#avoiding-recreating-the-ref-contents) 可能更加合适。
 
 <Note>
@@ -64,7 +64,7 @@ function TodoList({ todos, tab }) {
 
 ## 用法 {/*usage*/}
 
-### 跳过代价昂贵的重新计算。 {/*skipping-expensive-recalculations*/}
+### 跳过代价昂贵的重新计算{/*skipping-expensive-recalculations*/}
 
 要在重新渲染之间缓存计算结果，请在组件的顶层使用 `useMemo` 调用将其包装起来：
 
@@ -79,12 +79,12 @@ function TodoList({ todos, tab, theme }) {
 
 你需要给 `useMemo` 传递两样东西：
 
-1. 一个没有任何参数的 <CodeStep step={1}>calculation 函数</CodeStep>， 像这样 `() =>`，并且返回任何你想要的计算结果。
+1. 一个没有任何参数的 <CodeStep step={1}>calculation 函数</CodeStep>，像这样 `() =>`，并且返回任何你想要的计算结果。
 2. 一个由包含在你的组件中并在 calculation 中使用的所有值组成的 <CodeStep step={2}>依赖列表</CodeStep>。
 
 在初次渲染时，你从 `useMemo` 得到的 <CodeStep step={3}>值</CodeStep> 将会是你的 <CodeStep step={1}>calculation</CodeStep> 函数执行的结果。
 
-在随后的每一次渲染中，React 将会比较前后两次渲染中的 <CodeStep step={2}>所有依赖项</CodeStep> 是否相同。 如何所有依赖项都没有发生变化（通过 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较），`useMemo` 将会返回之前已经计算过的那个值。否则，React 将会重新执行 calculation 并且返回一个新的值。
+在随后的每一次渲染中，React 将会比较前后两次渲染中的 <CodeStep step={2}>所有依赖项</CodeStep> 是否相同。如何所有依赖项都没有发生变化（通过 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较），`useMemo` 将会返回之前已经计算过的那个值。否则，React 将会重新执行 calculation 并且返回一个新的值。
 
 换句话说，`useMemo` 在多次重新渲染中缓存了一个 calculation 结果直到依赖项的值发生变化。
 
@@ -149,7 +149,7 @@ console.timeEnd('filter array');
 
 - 您在 `useMemo` 中进行的计算明显很慢，而且它的依赖关系很少改变
 - 您将它作为 prop 传递给包装在 [`memo`](/reference/react/memo) 中的组件。如果值没有改变，你想跳过重新渲染。Memoization 让您的组件仅在依赖项不同时才重新渲染。
-- 您传递的值稍后用作某些 Hook 的依赖项。例如， 也许另一个 useMemo 计算值依赖它。或者 [`useEffect`](/reference/react/useEffect) 依赖这个值。
+- 您传递的值稍后用作某些 Hook 的依赖项。例如，也许另一个 useMemo 计算值依赖它。或者 [`useEffect`](/reference/react/useEffect) 依赖这个值。
 
 在其他情况下，将计算过程包装在 useMemo 中没有任何好处。这样做也没有重大危害, 所以一些团队选择不考虑个别情况，尽可能多地使用 `useMemo`。这种方法的缺点是降低了代码的可读性。此外，并不是所有的 `useMemo` 的使用都是有效的：一个『永远是新的』的单一值就足以破坏整个组件的缓存效果。
 
