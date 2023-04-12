@@ -1048,7 +1048,7 @@ label {
 
 很多时候，没有 memoization 的代码可以正常工作。如果您的交互足够快，则不需要 memoization。
 
-请记住，您需要在生产模式下运行 React，禁用 [React Developer Tools](/learn/react-developer-tools)，并使用与您的应用程序用户拥有的设备类似的设备，以便确切了解实际上是什么减慢了你的应用程序。
+请记住，你需要在生产模式下运行 React，禁用 [React Developer Tools](/learn/react-developer-tools)，并准备好与使用你应用程序用户的类似设备，以获取对实际减速你应用程序的因素有一个真实的认识。
 
 <Solution />
 
