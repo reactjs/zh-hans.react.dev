@@ -115,7 +115,7 @@ root.render(<h1>Hello, world</h1>);
 <!-- ... 其他 HTML 代码 ... -->
 ```
 
-这样可以使用 [`document.getElementById`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById) 查找到该 HTML 元素，并将其传递给 [`createRoot`](/reference/react-dom/client/createRoot)，以便可以在其中呈现自己的 React 组件：
+这样可以使用 [`document.getElementById`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById) 查找到该 HTML 元素，并将其传递给 [`createRoot`](/reference/react-dom/client/createRoot)，以便可以在其中渲染自己的 React 组件：
 
 <Sandpack>
 
