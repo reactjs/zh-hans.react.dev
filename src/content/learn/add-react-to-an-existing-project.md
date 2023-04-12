@@ -26,7 +26,7 @@ title: 将 React 添加到现有项目中
 
 这可以确保应用程序的 React 部分可以受益于这些框架中内置的 [最佳实践](/learn/start-a-new-react-project#can-i-use-react-without-a-framework)。
 
-许多基于 React 的框架都是全栈的，从而可以让你的 React 应用程序充分利用服务器。但是，即使无法或不想在服务器上运行 JavaScript，也可以使用相同的方法。在这种情况下，将 HTML/CSS/JS 导出（Next.js 的 [`next export` output](https://nextjs.org/docs/advanced-features/static-html-export)，Gatsby 的 default）替代为 `/some-app/`。
+许多基于 React 的框架都是全栈的，从而可以让你的 React 应用充分利用服务器。但是，即使无法或不想在服务器上运行 JavaScript，也可以使用相同的方法。在这种情况下，将 HTML/CSS/JS 导出（Next.js 的 [`next export` output](https://nextjs.org/docs/advanced-features/static-html-export)，Gatsby 的 default）替代为 `/some-app/`。
 
 ## 在现有页面的一部分中使用 React {/*using-react-for-a-part-of-your-existing-page*/}
 
