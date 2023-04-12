@@ -17,7 +17,7 @@ title: "内置 React Hook"
 要给一个组件添加状态，使用这些 Hook 中的一个：
 
 * [`useState`](/reference/react/useState) 声明了一个你可以直接更新的 state 变量。
-* [`useReducer`](/reference/react/useReducer) 声明了一个带有更新逻辑的 state 变量在一个 [reducer 函数](/learn/extracting-state-logic-into-a-reducer)中。
+* [`useReducer`](/reference/react/useReducer) 声明了一个带有更新逻辑的 state 变量在一个 [reducer 函数](/learn/extracting-state-logic-into-a-reducer) 中。
 
 ```js
 function ImageGallery() {
