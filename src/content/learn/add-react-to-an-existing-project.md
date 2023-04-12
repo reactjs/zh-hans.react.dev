@@ -153,4 +153,4 @@ root.render(<NavigationBar />);
 
 ## 在现有的原生移动应用中使用 React Native {/*using-react-native-in-an-existing-native-mobile-app*/}
 
-[React Native](https://reactnative.dev/) 也可以逐步集成到现有的原生应用程序中。如果已经有一个现有的 Android（Java 或 Kotlin）或 iOS（Objective-C 或 Swift）原生应用程序，请 [按照本指南](https://reactnative.dev/docs/integration-with-existing-apps) 将 React Native 添加到其中。
+[React Native](https://reactnative.dev/) 也可以逐步集成到现有的原生应用中。如果已经有一个现有的 Android（Java 或 Kotlin）或 iOS（Objective-C 或 Swift）原生应用，请 [按照本指南](https://reactnative.dev/docs/integration-with-existing-apps) 将 React Native 添加到其中。
