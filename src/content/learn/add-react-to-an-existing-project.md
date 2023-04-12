@@ -10,7 +10,7 @@ title: 将 React 添加到现有项目中
 
 <Note>
 
-**你需要安装 [Node.js](https://nodejs.org/zh-cn/) 以进行本地开发。**尽管可以使用 [在线演练场](/learn/installation#try-react) 或简单的 HTML 页面来尝试 React，但实际上大多数用于开发的 JavaScript 工具都需要 Node.js。
+**你需要安装 [Node.js](https://nodejs.org/zh-cn/) 以进行本地开发**。尽管可以使用 [在线演练场](/learn/installation#try-react) 或简单的 HTML 页面来尝试 React，但实际上大多数用于开发的 JavaScript 工具都需要 Node.js。
 
 </Note>
 
