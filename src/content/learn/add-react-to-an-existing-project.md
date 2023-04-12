@@ -39,7 +39,7 @@ title: 将 React 添加到现有项目中
 
 确切的方法取决于现有的页面设置，因此让我们详细介绍一些细节。
 
-### 步骤 1：设置模块化的 JavaScript 环境 {/*step-1-set-up-a-modular-javascript-environment*/}
+### 步骤 1：配置模块化的 JavaScript 环境 {/*step-1-set-up-a-modular-javascript-environment*/}
 
 模块化的 JavaScript 环境可以让你在单独的文件中编写 React 组件，而不是在一个文件中编写所有的代码。它还可以让你使用其他开发人员在 [npm](https://www.npmjs.com/) 注册表上发布的所有精彩的包，包括 React！如何实现这一点取决于你现有的设置：
 
