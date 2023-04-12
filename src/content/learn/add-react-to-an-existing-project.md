@@ -43,7 +43,7 @@ title: 将 React 添加到现有项目中
 
 模块化的 JavaScript 环境可以让你在单独的文件中编写 React 组件，而不是在一个文件中编写所有的代码。它还可以让你使用其他开发人员在 [npm](https://www.npmjs.com/) 注册表上发布的所有精彩的包，包括 React！如何实现这一点取决于你现有的设置：
 
-* **如果你的应用已经分成了使用 `import` 语句的文件，请尝试使用你已有的设置。** 检查在你的 JavaScript 代码中编写 `<div />`是否会导致语法错误。如果导致语法错误，你可能需要使用 [Babel](https://babeljs.io/setup) 转换你的 JavaScript 代码，并启用 [Babel React preset](https://babeljs.io/docs/babel-preset-react) 来使用 JSX。
+* **如果你的应用已经分成了使用 `import` 语句的文件，请尝试使用你已有的设置**。检查在你的 JavaScript 代码中编写 `<div />`是否会导致语法错误。如果导致语法错误，你可能需要使用 [Babel](https://babeljs.io/setup) 转换你的 JavaScript 代码，并启用 [Babel React preset](https://babeljs.io/docs/babel-preset-react) 来使用 JSX。
 
 * **如果你的应用没有用于编译 JavaScript 模块的现有设置，请使用 [Vite](https://vitejs.dev/)进行设置**。Vite 社区维护了与后端框架（包括 Rails、Django 和 Laravel）的 [许多集成](https://github.com/vitejs/awesome-vite#integrations-with-backends)。如果你的后端框架没有列出，请 [按照此指南](https://cn.vitejs.dev/guide/backend-integration.html) 手动将 Vite 构建集成到你的后端。
 
