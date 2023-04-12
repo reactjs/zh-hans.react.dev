@@ -427,7 +427,7 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-当前，它将所选菜作为对象存储在 `selectedItem` state 变量中。然而，这并不好：**`selectedItem` 的内容与 `items` 列表中的某个项是同一个对象。** 这意味着关于该项本身的信息在两个地方产生了重复。
+当前，它将所选元素作为对象存储在 `selectedItem` state 变量中。然而，这并不好：**`selectedItem` 的内容与 `items` 列表中的某个项是同一个对象。** 这意味着关于该项本身的信息在两个地方产生了重复。
 
 为什么这是个问题？让我们使每个项目都可以编辑：
 
