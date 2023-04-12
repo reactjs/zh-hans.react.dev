@@ -21,7 +21,7 @@ title: 将 React 添加到现有项目中
 以下是推荐的设置方式：
 
 1. 使用一个 [基于 React 的框架](/learn/start-a-new-react-project) 构建 **应用程序的 React 部分**。
-2. **在框架配置中将 `/some-app` 指定为基本路径**（这里有如何进行配置的例子：[Next.js](https://nextjs.org/docs/api-reference/next.config.js/basepath) 与 [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)）。
+2. **在框架配置中将 `/some-app` 指定为基本路径**（这里有 [Next.js](https://nextjs.org/docs/api-reference/next.config.js/basepath) 与 [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/) 的配置样例）。
 3. 配置服务器或代理，以便所有位于 `/some-app/` 下的请求都由 React 应用程序处理。
 
 这可以确保应用程序的 React 部分可以受益于这些框架中内置的 [最佳实践](/learn/start-a-new-react-project#can-i-use-react-without-a-framework)。
