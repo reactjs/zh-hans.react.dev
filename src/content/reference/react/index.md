@@ -108,7 +108,7 @@ function TodoList({ todos, tab, theme }) {
 
 ## 其他 Hook {/*other-hooks*/}
 
-这些 Hook 主要对 library 的作者有用，在应用代码中并不常用。
+这些 Hook 主要对库的作者有用，在应用代码中并不常用。
 
 * [`useDebugValue`](/reference/react/useDebugValue) 让你在 React DevTools 中为自定义 Hook 添加一个 label。
 * [`useId`](/reference/react/useId) 让组件将一个独特的 ID 与自己联系起来。通常与可访问性 API 一起使用。
