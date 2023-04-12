@@ -30,7 +30,7 @@ title: 将 React 添加到现有项目中
 
 ## 在现有页面的一部分中使用 React {/*using-react-for-a-part-of-your-existing-page*/}
 
-假设有一个其他技术栈（无论是 Rails 这样的服务器技术，还是 Backbone 那样的客户端技术）构建的现有页面，并且想要在该页面的某个位置呈现交互式的 React 组件。这是集成 React 的常见方式——实际上，这也正是多年来大多数 React 用户关注 Meta 的方式！
+假设有一个其他技术栈（无论是 Rails 这样的服务器技术，还是 Backbone 那样的客户端技术）构建的现有页面，并且想要在该页面的某个位置渲染交互式的 React 组件。这是集成 React 的常见方式——实际上，这也正是多年来大多数 React 用户关注 Meta 的方式！
 
 你可以分两步进行：
 
