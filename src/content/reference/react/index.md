@@ -58,7 +58,7 @@ function Form() {
 
 ## Effect Hook {/*effect-hooks*/}
 
-*Effect* 让一个组件[连接到外部系统并与之同步](/learn/synchronizing-with-effects)。这包括处理网络、浏览器、DOM、动画、使用不同 UI 库编写的 widgets 以及其他非 React 代码。
+*Effect* 让一个组件 [连接到外部系统并与之同步](/learn/synchronizing-with-effects)。这包括处理网络、浏览器、DOM、动画、使用不同 UI 库编写的 widgets 以及其他非 React 代码。
 
 * [`useEffect`](/reference/react/useEffect) 将一个组件连接到外部系统。
 
