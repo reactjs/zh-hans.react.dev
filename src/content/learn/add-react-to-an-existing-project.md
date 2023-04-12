@@ -16,7 +16,7 @@ title: 将 React 添加到现有项目中
 
 ## 在现有网站的子路由中使用 React {/*using-react-for-an-entire-subroute-of-your-existing-website*/}
 
-假设你有一个使用其他服务器技术（例如 Rails）构建的现有 Web 应用程序 `example.com`，并且你想要使用 React 完全实现所有以 `example.com/some-app/` 开始的路由。
+假设你在 `example.com` 部署了一个其他服务器技术（例如 Rails）构建的 Web 应用程序，但是你又想在 `example.com/some-app/` 部署一个 React 项目。
 
 以下是推荐的设置方式：
 
