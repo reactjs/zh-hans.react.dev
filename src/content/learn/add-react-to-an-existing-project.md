@@ -41,7 +41,7 @@ title: 将 React 添加到现有项目中
 
 ### 步骤 1：设置模块化的 JavaScript 环境 {/*step-1-set-up-a-modular-javascript-environment*/}
 
-模块化的 JavaScript 环境可以让你在单独的文件中编写 React 组件，而不是在一个文件中编写所有的代码。它还可以让你使用其他开发人员在 [npm](https://www.npmjs.com/) 注册表上发布的所有精彩包，包括 React 本身！如何实现这一点取决于你现有的设置：
+模块化的 JavaScript 环境可以让你在单独的文件中编写 React 组件，而不是在一个文件中编写所有的代码。它还可以让你使用其他开发人员在 [npm](https://www.npmjs.com/) 注册表上发布的所有精彩的包，包括 React！如何实现这一点取决于你现有的设置：
 
 * **如果你的应用程序已经分成了使用 `import` 语句的文件，请尝试使用你已有的设置。** 检查在你的 JavaScript 代码中编写 `<div />`是否会导致语法错误。如果导致语法错误，你可能需要使用 [Babel](https://babeljs.io/setup) 转换你的 JavaScript 代码，并启用 [Babel React preset](https://babeljs.io/docs/babel-preset-react) 来使用 JSX。
 
