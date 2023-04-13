@@ -4,7 +4,6 @@ title: useCallback
 
 <Intro>
 
-
 `useCallback` 是一个让你在多次渲染中缓存函数定义的React Hook
 
 ```js
