@@ -135,7 +135,7 @@ console.timeEnd('filter array');
 
 请记住，你的设备可能比用户的速度更快，因此最好通过人为的降低浏览器性能来测试。例如，Chrome 提供了 [CPU Throttling](https://developer.chrome.com/blog/new-in-devtools-61/#throttling) 选项来降低浏览器性能。
 
-另外，请注意，在开发环境中测量性能不会为你提供最准确的结果。（例如，当开启 [严格模式](/reference/react/StrictMode) 时，你会看到每个组件渲染两次而不是一次。要获得最准确的时间，请构建用于生产的应用程序并在用户使用的设备上对其进行测试。
+另外，请注意，在开发环境中测量性能不会为你提供最准确的结果（例如，当开启 [严格模式](/reference/react/StrictMode) 时，你会看到每个组件渲染两次而不是一次）。要获得最准确的时间，请构建用于生产的应用程序并在用户使用的设备上对其进行测试。
 
 </DeepDive>
 
@@ -1097,7 +1097,7 @@ function Dropdown({ allItems, text }) {
   // ...
 ```
 
-现在你的计算直接取决于 `text`（这是一个字符串，不能『意外地』变得不同）。
+现在你的计算直接取决于 `text`（这是一个字符串，不能“意外地”变得不同）。
 
 ---
 
@@ -1120,7 +1120,7 @@ export default function ProductPage({ productId, referrer }) {
 
 正如 `{}` 每次都会创建不同的对象一样，像 `function() {}` 这样的函数声明和像 `() => {}` 这样的表达式在每次重新渲染时都会产生一个 **不同** 的函数。就其本身而言，创建一个新函数不是问题。这不是可以避免的事情！但是，如果 `Form` 组件被记忆了，大概你想在没有 props 改变时跳过重新渲染它。**总是** 不同的 prop 会破坏你的记忆化。
 
-要使用 useMemo 记忆函数，你的计算函数必须返回另一个函数：
+要使用 `useMemo` 记忆函数，你的计算函数必须返回另一个函数：
 
 ```js {2-3,8-9}
 export default function Page({ productId, referrer }) {
@@ -1206,7 +1206,7 @@ React 调用你的函数两次，所以你会注意到 todo 被添加了两次�
 
 ---
 
-### 我的 `useMemo` 调用应该返回一个对象，但返回 undefined {/*my-usememo-call-is-supposed-to-return-an-object-but-returns-undefined*/}
+### 我的 `useMemo` 调用应该返回一个对象，但返回 `undefined` {/*my-usememo-call-is-supposed-to-return-an-object-but-returns-undefined*/}
 
 这段代码不起作用：
 
@@ -1273,7 +1273,7 @@ function TodoList({ todos, tab }) {
   console.log([todos, tab]);
 ```
 
-然后，你可以在控制台中右键单击来自不同重新渲染的数组，并为它们选择『存储为全局变量』。假设第一个保存为 `temp1`，第二个保存为 `temp2`，然后你可以使用浏览器控制台检查两个数组中的每个依赖项是否相同：
+然后，你可以在控制台中右键单击来自不同重新渲染的数组，并为它们选择“存储为全局变量”。假设第一个保存为 `temp1`，第二个保存为 `temp2`，然后你可以使用浏览器控制台检查两个数组中的每个依赖项是否相同：
 
 ```js
 Object.is(temp1[0], temp2[0]); // 数组之间的第一个依赖项是否相同？
