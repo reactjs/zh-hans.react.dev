@@ -4,7 +4,7 @@ title: useCallback
 
 <Intro>
 
-`useCallback` 是一个让你在多次渲染中缓存函数定义的React Hook
+`useCallback` 是一个让你在多次渲染中缓存函数定义的 React Hook
 
 ```js
 const cachedFn = useCallback(fn, dependencies)
@@ -36,9 +36,9 @@ export default function ProductPage({ productId, referrer, theme }) {
 
 #### 参数 {/*parameters*/}
 
-* `fn`: 你想要缓存的函数。 这个函数可以接受任何参数并且返回任何值。React将会在初次渲染中（并不是调用！）将这个函数返回。 下一次渲染时, 如果 `dependencies` 自从上一次从未改变，React将会返回相同的函数。否则, React将返回你在最新一次渲染中传入的函数, 并且将其缓存下来以便稍后使用。 React将不会调用你的函数。 这个函数返回给你，如此你可以决定何时调用它或者是否调用它。
+* `fn` ： 你想要缓存的函数。 这个函数可以接受任何参数并且返回任何值。React将会在初次渲染中（并不是调用！）将这个函数返回。下一次渲染时, 如果 `dependencies` 自从上一次从未改变，React将会返回相同的函数。否则, React将返回你在最新一次渲染中传入的函数, 并且将其缓存下来以便稍后使用。 React将不会调用你的函数。这个函数返回给你，如此你可以决定何时调用它或者是否调用它。
 
-* `dependencies`:有关 `fn` 内部代码所有响应式值的一个列表。 Reactive values 包含props、state，和所有在你组件内部直接声明的变量和函数。如果你的代码检查工具是 [configured for React](/learn/editor-setup#linting) , 那么它将校验每一个正确指定为依赖的响应式值。 依赖列表必须具有确切数量的项，并且像 `[dep1, dep2, dep3]` 的形式编写。React使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较算法比较每一个依赖和它的先前值。
+* `dependencies` ：有关 `fn` 内部代码所有响应式值的一个列表。 Reactive values 包含 props、state，和所有在你组件内部直接声明的变量和函数。如果你的代码检查工具是 [configured for React](/learn/editor-setup#linting)， 那么它将校验每一个正确指定为依赖的响应式值。 依赖列表必须具有确切数量的项，并且像 `[dep1, dep2, dep3]` 的形式编写。React使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较算法比较每一个依赖和它的先前值。
 
 #### 返回值 {/*returns*/}
 
@@ -59,7 +59,7 @@ export default function ProductPage({ productId, referrer, theme }) {
 
 当你优化渲染性能的时候， 你有时需要缓存你传递给子组件的函数。让我们先关注一下如何实现，稍后去理解在哪些场景中它是有用的。
 
-为了缓存你组件中多次渲染的函数，你需要将其定义在 `useCallback` Hook中：
+为了缓存你组件中多次渲染的函数，你需要将其定义在 `useCallback` Hook 中：
 
 ```js [[3, 4, "handleSubmit"], [2, 9, "[productId, referrer]"]]
 import { useCallback } from 'react';
@@ -94,6 +94,7 @@ function ProductPage({ productId, referrer, theme }) {
       <ShippingForm onSubmit={handleSubmit} />
     </div>
   );
+}
 ```
 
 你已经注意到切换 `theme` prop会让应用停滞一小会，但如果你将 `<ShippingForm />` 从你的JSX中移除，应用反应迅速。这提示你尽力优化 `ShippingForm` 组件是值得的。
@@ -191,13 +192,13 @@ function ProductPage({ productId, referrer }) {
 
 区别在于他们让你缓存的**什么**:
 
-* **[`useMemo`](/reference/react/useMemo)缓存调用函数的*结果*。** 在本例中，它缓存了 `computeRequirements(product)` 调用的结果。 这样它不会发生改变除非 `product` 发生改变。 这让你向下传递 `requirements` 对象，而无需不必要地重新渲染 `ShippingForm` 。必要时，React将会调用你传入的函数去计算结果。
+* **[`useMemo`](/reference/react/useMemo) 缓存调用函数的结果。** 在本例中，它缓存了 `computeRequirements(product)` 调用的结果。这样它不会发生改变，除非 `product` 发生改变。这让你向下传递 `requirements` 对象，而无需不必要地重新渲染 `ShippingForm` 。必要时，React将会调用你传入的函数去计算结果。
 
 
 
-* **`useCallback` 缓存函数本身** 不像 `useMemo` ，它不会调用你传入地方函数。相反，它缓存你提供的函数，以便 `handleSubmit` **它自己**不会发生改变除非 `productId` 或者 `referrer` 发生了改变。这让你向下传递 `handleSubmit` 函数而无需不必要地重新渲染`ShippingForm`。你的代码将不会运行，直到用户提交表单。
+* **`useCallback` 缓存函数本身。** 不像 `useMemo` ，它不会调用你传入地方函数。相反，它缓存你提供的函数，以便 `handleSubmit` **它自己**不会发生改变除非 `productId` 或者 `referrer` 发生了改变。这让你向下传递 `handleSubmit` 函数而无需不必要地重新渲染`ShippingForm`。你的代码将不会运行，直到用户提交表单。
 
-如果你已经熟悉了[`useMemo`](/reference/react/useMemo),你可能发现将 `useCallback` 视为以下内容很有帮助：
+如果你已经熟悉了 [`useMemo`](/reference/react/useMemo)，你可能发现将 `useCallback` 视为以下内容会很有帮助：
 
 ```js
 // 简化的实现（在 React 内部）
@@ -214,7 +215,7 @@ function useCallback(fn, dependencies) {
 
 #### 是否应该在任何地方添加 useCallback？ {/*should-you-add-usecallback-everywhere*/}
 
-如果您的应用程序与此网站类似，并且大多数交互都很粗糙（例如替换页面或整个部分），则通常不需要记忆。另一方面，如果你的应用更像是一个绘图编辑器，并且大多数交互都是精细的（如移动形状），那么你可能会发现记忆非常有用。
+如果您的应用程序与本网站类似，并且大多数交互都很粗糙（例如替换页面或整个部分），则通常不需要记忆。另一方面，如果你的应用更像是一个绘图编辑器，并且大多数交互都是精细的（如移动形状），那么你可能会发现记忆非常有用。
 
 使用 `useCallback` 缓存函数仅在少数情况下有价值：
 
@@ -237,7 +238,7 @@ function useCallback(fn, dependencies) {
 1. 避免[不必要的更新状态的副作用](/learn/you-might-not-need-an-effect)。React 应用程序中的大多数性能问题都是由Effects的更新链引起的，这些更新链导致组件一遍又一遍地渲染。
 1. 尝试[从副作用中删除不必要的依赖关系](/learn/removing-effect-dependencies)。例如，将某些对象或函数移动到副作用内部或组件外部通常更简单，而不是记忆。
 
-如果特定的交互仍然感觉滞后，[使用React开发者工具](/blog/2018/09/10/introducing-the-react-profiler.html)查看哪些组件从记忆中受益最大，并在需要时添加记忆。这些原则使您的组件更易于调试和理解，因此在任何情况下都最好遵循它们。从长远来看，我们正在研究[自动记忆](https://www.youtube.com/watch?v=lGEMwh32soc)一劳永逸地解决这个问题。
+如果特定的交互仍然感觉滞后，[使用 React 开发者工具](/blog/2018/09/10/introducing-the-react-profiler.html)查看哪些组件从记忆中受益最大，并在需要时添加记忆。这些原则使您的组件更易于调试和理解，因此在任何情况下都最好遵循它们。从长远来看，我们正在研究[自动记忆](https://www.youtube.com/watch?v=lGEMwh32soc)一劳永逸地解决这个问题。
 </DeepDive>
 
 <Recipes titleText="useCallback 和直接声明函数的区别" titleId="examples-rerendering">
@@ -249,7 +250,7 @@ function useCallback(fn, dependencies) {
 
 递增计数器感觉很慢，因为它会强制变慢的 `ShippingForm` 重新渲染。这是意料之中的，因为计数器已更改，因此您需要在屏幕上反映用户的新选择。
 
-接下来，尝试更改主题。 **感谢 `useCallback` 和 [`memo`](/reference/react/memo)的结合使用, 尽管人为地变慢了速度，但它还是很快** `ShippingForm` 跳过了重新渲染，因为 `handleSubmit` 函数没有改变。`handleSubmit` 函数没有发生改变， 因为 `productId` 和`referrer` (你的 `useCallback` 依赖) 自从上次渲染到现在都没有发生改变
+接下来，尝试更改主题。 **感谢 `useCallback` 和 [`memo`](/reference/react/memo)的结合使用, 尽管人为地变慢了速度，但它还是很快** `ShippingForm` 跳过了重新渲染，因为 `handleSubmit` 函数没有改变。`handleSubmit` 函数没有发生改变，因为 `productId` 和`referrer` （你的 `useCallback` 依赖）自从上次渲染到现在都没有发生改变。
 
 <Sandpack>
 
@@ -300,7 +301,7 @@ export default function ProductPage({ productId, referrer, theme }) {
 }
 
 function post(url, data) {
-  // Imagine this sends a request...
+  // 想象这发送了一个请求
   console.log('POST /' + url);
   console.log(data);
 }
@@ -315,7 +316,7 @@ const ShippingForm = memo(function ShippingForm({ onSubmit }) {
   console.log('[ARTIFICIALLY SLOW] Rendering <ShippingForm />');
   let startTime = performance.now();
   while (performance.now() - startTime < 500) {
-    // Do nothing for 500 ms to emulate extremely slow code
+    // 500 毫秒内不执行任何操作来模拟极慢的代码
   }
 
   function handleSubmit(e) {
@@ -440,7 +441,7 @@ export default function ProductPage({ productId, referrer, theme }) {
 }
 
 function post(url, data) {
-  // Imagine this sends a request...
+  //想象这发送了一个请求
   console.log('POST /' + url);
   console.log(data);
 }
@@ -455,7 +456,7 @@ const ShippingForm = memo(function ShippingForm({ onSubmit }) {
   console.log('[ARTIFICIALLY SLOW] Rendering <ShippingForm />');
   let startTime = performance.now();
   while (performance.now() - startTime < 500) {
-    // Do nothing for 500 ms to emulate extremely slow code
+    //500 毫秒内不执行任何操作来模拟极慢的代码
   }
 
   function handleSubmit(e) {
@@ -678,6 +679,7 @@ function TodoList() {
     setTodos([...todos, newTodo]);
   }, [todos]);
   // ...
+}
 ```
 
 你经常希望有记忆的函数有尽可能少的依赖，当你读取某个状态只是为了计算下一个状态时，你可以通过传递 [updater function](/reference/react/useState#updating-state-based-on-the-previous-state)函数去移除该依赖：
