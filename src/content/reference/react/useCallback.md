@@ -150,7 +150,7 @@ function ProductPage({ productId, referrer, theme }) {
 }
 ```
 
-**通过将 `handleSubmit`包裹在 `useCallback` 中，您可以确保它在多次重新渲染之间是 *相同的* 函数** (直到依赖发生改变)。除非你出于某种特定原因这样做，否则你不必将一个函数包裹在 `useCallback` 中。在本例中，理由是你将他传递到了包裹在 [`memo`](/reference/react/memo) 中的组件，这允许它跳过重新渲染。还有其他原因你可能需要用到 `useCallback`，本页将对此进行进一步描述。
+**通过将 `handleSubmit`包裹在 `useCallback` 中，你可以确保它在多次重新渲染之间是 *相同的* 函数** (直到依赖发生改变)。除非你出于某种特定原因这样做，否则你不必将一个函数包裹在 `useCallback` 中。在本例中，理由是你将他传递到了包裹在 [`memo`](/reference/react/memo) 中的组件，这允许它跳过重新渲染。还有其他原因你可能需要用到 `useCallback`，本页将对此进行进一步描述。
 
 <Note>
 
@@ -162,7 +162,7 @@ function ProductPage({ productId, referrer, theme }) {
 
 #### useCallback 与 useMemo 有何关系？ {/*how-is-usecallback-related-to-usememo*/}
 
-你经常会看到 [`useMemo`](/reference/react/useMemo) 伴随着 `useCallback` 出现。当您尝试优化子组件时，它们都很有用。他们让你[记住](https://en.wikipedia.org/wiki/Memoization) （或者，换句话说，缓存）你正在传递的东西：
+你经常会看到 [`useMemo`](/reference/react/useMemo) 伴随着 `useCallback` 出现。当你尝试优化子组件时，它们都很有用。他们让你[记住](https://en.wikipedia.org/wiki/Memoization) （或者，换句话说，缓存）你正在传递的东西：
 
 ```js {6-8,10-15,19}
 import { useMemo, useCallback } from 'react';
@@ -215,7 +215,7 @@ function useCallback(fn, dependencies) {
 
 #### 是否应该在任何地方添加 useCallback？ {/*should-you-add-usecallback-everywhere*/}
 
-如果您的应用程序与本网站类似，并且大多数交互都很粗糙（例如替换页面或整个部分），则通常不需要记忆。另一方面，如果你的应用更像是一个绘图编辑器，并且大多数交互都是精细的（如移动形状），那么你可能会发现记忆非常有用。
+如果你的应用程序与本网站类似，并且大多数交互都很粗糙（例如替换页面或整个部分），则通常不需要记忆。另一方面，如果你的应用更像是一个绘图编辑器，并且大多数交互都是精细的（如移动形状），那么你可能会发现记忆非常有用。
 
 使用 `useCallback` 缓存函数仅在少数情况下有价值：
 
@@ -238,7 +238,7 @@ function useCallback(fn, dependencies) {
 1. 避免[不必要的更新状态的副作用](/learn/you-might-not-need-an-effect)。React 应用程序中的大多数性能问题都是由Effects的更新链引起的，这些更新链导致组件一遍又一遍地渲染。
 1. 尝试[从副作用中删除不必要的依赖关系](/learn/removing-effect-dependencies)。例如，将某些对象或函数移动到副作用内部或组件外部通常更简单，而不是记忆。
 
-如果特定的交互仍然感觉滞后，[使用 React 开发者工具](/blog/2018/09/10/introducing-the-react-profiler.html)查看哪些组件从记忆中受益最大，并在需要时添加记忆。这些原则使您的组件更易于调试和理解，因此在任何情况下都最好遵循它们。从长远来看，我们正在研究[自动记忆](https://www.youtube.com/watch?v=lGEMwh32soc)一劳永逸地解决这个问题。
+如果特定的交互仍然感觉滞后，[使用 React 开发者工具](/blog/2018/09/10/introducing-the-react-profiler.html)查看哪些组件从记忆中受益最大，并在需要时添加记忆。这些原则使你的组件更易于调试和理解，因此在任何情况下都最好遵循它们。从长远来看，我们正在研究[自动记忆](https://www.youtube.com/watch?v=lGEMwh32soc)一劳永逸地解决这个问题。
 </DeepDive>
 
 <Recipes titleText="useCallback 和直接声明函数的区别" titleId="examples-rerendering">
@@ -248,7 +248,7 @@ function useCallback(fn, dependencies) {
 在这个例子中，`ShippingForm` 组件被人为地减慢了速度，以便你可以看到当你渲染的React组件真正变慢时会发生什么。尝试递增计数器并切换主题。
 
 
-递增计数器感觉很慢，因为它会强制变慢的 `ShippingForm` 重新渲染。这是意料之中的，因为计数器已更改，因此您需要在屏幕上反映用户的新选择。
+递增计数器感觉很慢，因为它会强制变慢的 `ShippingForm` 重新渲染。这是意料之中的，因为计数器已更改，因此你需要在屏幕上反映用户的新选择。
 
 接下来，尝试更改主题。 **感谢 `useCallback` 和 [`memo`](/reference/react/memo)的结合使用, 尽管人为地变慢了速度，但它还是很快** `ShippingForm` 跳过了重新渲染，因为 `handleSubmit` 函数没有改变。`handleSubmit` 函数没有发生改变，因为 `productId` 和`referrer` （你的 `useCallback` 依赖）自从上次渲染到现在都没有发生改变。
 
@@ -849,7 +849,7 @@ function ProductPage({ productId, referrer }) {
 }
 ```
 
-如果这没有帮助，那么问题是至少有一个依赖项与以前的渲染不同。您可以通过手动将依赖项记录到控制台来调试此问题：
+如果这没有帮助，那么问题是至少有一个依赖项与以前的渲染不同。你可以通过手动将依赖项记录到控制台来调试此问题：
 
 ```js {5}
   const handleSubmit = useCallback((orderDetails) => {
@@ -858,7 +858,7 @@ function ProductPage({ productId, referrer }) {
 
   console.log([productId, referrer]);
 ```
-然后，您可以在控制台中右键单击来自不同重新渲染的数组，并为它们选择“存储为全局变量”。假设第一个被保存为 `temp1` ，第二个被保存为   `temp2` ，然后您可以使用浏览器控制台检查两个数组中的每个依赖项是否相同：
+然后，你可以在控制台中右键单击来自不同重新渲染的数组，并为它们选择“存储为全局变量”。假设第一个被保存为 `temp1` ，第二个被保存为   `temp2` ，然后你可以使用浏览器控制台检查两个数组中的每个依赖项是否相同：
 
 ```js
 Object.is(temp1[0], temp2[0]); // 数组之间的第一个依赖关系是否相同？
@@ -921,7 +921,7 @@ function Report({ item }) {
   );
 }
 ```
-或者，您可以删除最后一个代码段中的 `useCallback`，而是将 `Report` 本身包装在 [`memo`](/reference/react/memo) 中。如果 `item` prop 没有更改，`Report` 将跳过重新渲染，因此 `Chart` 也将跳过重新渲染：
+或者，你可以删除最后一个代码段中的 `useCallback`，而是将 `Report` 本身包装在 [`memo`](/reference/react/memo) 中。如果 `item` prop 没有更改，`Report` 将跳过重新渲染，因此 `Chart` 也将跳过重新渲染：
 
 ```js {5,6-8,15}
 function ReportList({ items }) {
