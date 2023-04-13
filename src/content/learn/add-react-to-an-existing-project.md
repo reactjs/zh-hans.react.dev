@@ -150,7 +150,6 @@ root.render(<NavigationBar />);
 
 当在现有项目中采用 React 时，通常会从小型交互式组件（例如按钮）开始，然后逐渐“向上移动”，直到最终整个页面都由 React 构建。当你实现到某个程度时，我们建议立即迁移到 [一个 React 框架](/learn/start-a-new-react-project)，以充分利用 React 的优势。
 
-
 ## 在现有的原生移动应用中使用 React Native {/*using-react-native-in-an-existing-native-mobile-app*/}
 
 [React Native](https://reactnative.dev/) 也可以逐步集成到现有的原生应用中。如果已经有一个现有的 Android（Java 或 Kotlin）或 iOS（Objective-C 或 Swift）原生应用，请 [按照本指南](https://reactnative.dev/docs/integration-with-existing-apps) 将 React Native 添加到其中。
