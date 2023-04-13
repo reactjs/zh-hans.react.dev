@@ -18,7 +18,7 @@ title: 将 React 添加到现有项目中
 
 假设你在 `example.com` 部署了一个其他服务端技术（例如 Rails）构建的 Web 应用，但是你又想在 `example.com/some-app/` 部署一个 React 项目。
 
-以下是推荐的设置方式：
+以下是推荐的配置方式：
 
 1. 使用一个 [基于 React 的框架](/learn/start-a-new-react-project) 构建 **应用的 React 部分**。
 2. **在框架配置中将 `/some-app` 指定为基本路径**（这里有 [Next.js](https://nextjs.org/docs/api-reference/next.config.js/basepath) 与 [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/) 的配置样例）。
@@ -26,7 +26,7 @@ title: 将 React 添加到现有项目中
 
 这可以确保应用的 React 部分可以受益于这些框架中内置的 [最佳实践](/learn/start-a-new-react-project#can-i-use-react-without-a-framework)。
 
-许多基于 React 的框架都是全栈的，从而可以让你的 React 应用充分利用服务器。但是，即使无法或不想在服务器上运行 JavaScript，也可以使用相同的方法。在这种情况下，将 HTML/CSS/JS 导出（Next.js 的 [`next export` output](https://nextjs.org/docs/advanced-features/static-html-export)，Gatsby 的 default）替代为 `/some-app/`。
+许多基于 React 的框架都是全栈的，从而可以让你的 React 应用充分利用服务器。但是，即使无法或不想在服务器上运行 JavaScript，也可以使用相同的方法。在这种情况下，将 HTML/CSS/JS 导出（Next.js 的 [`next export` output](https://nextjs.org/docs/advanced-features/static-html-export)，Gatsby 的 default）替换为 `/some-app/`。
 
 ## 在现有页面的一部分中使用 React {/*using-react-for-a-part-of-your-existing-page*/}
 
@@ -34,26 +34,26 @@ title: 将 React 添加到现有项目中
 
 你可以分两步进行：
 
-1. **配置 JavaScript 环境**，使得可以使用 [JSX 语法](/learn/writing-markup-with-jsx)、 [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) 和 [`export`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export) 语法将代码拆分为模块，以及从 [npm](https://www.npmjs.com/) 包注册表中使用包（例如 React）。
-2. **在想在页面上看到它们的位置渲染 React 组件**。
+1. **配置 JavaScript 环境**，以便使用 [JSX 语法](/learn/writing-markup-with-jsx)、 [`import`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import) 和 [`export`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export) 语法将代码拆分为模块，以及从 [npm](https://www.npmjs.com/) 包注册表中使用包（例如 React）。
+2. **在需要的位置渲染 React 组件**。
 
-确切的方法取决于现有的页面设置，因此让我们详细介绍一些细节。
+确切的方法取决于现有的页面配置，因此让我们对一些细节进行说明。
 
 ### 步骤 1：配置模块化的 JavaScript 环境 {/*step-1-set-up-a-modular-javascript-environment*/}
 
-模块化的 JavaScript 环境可以让你在单独的文件中编写 React 组件，而不是在一个文件中编写所有的代码。它还可以让你使用其他开发人员在 [npm](https://www.npmjs.com/) 注册表上发布的所有精彩的包，包括 React！如何实现这一点取决于你现有的设置：
+模块化的 JavaScript 环境可以让你在单一的文件中编写 React 组件，而不是在一个文件中编写所有的代码。它还可以让你使用其他开发人员在 [npm](https://www.npmjs.com/) 注册表上发布的一些特别好用的包，包括 React！如何实现这一点取决于你现有的配置：
 
-* **如果你的应用已经分成了使用 `import` 语句的文件，请尝试使用你已有的设置**。检查在你的 JavaScript 代码中编写 `<div />`是否会导致语法错误。如果导致语法错误，你可能需要使用 [Babel](https://babeljs.io/setup) 转换你的 JavaScript 代码，并启用 [Babel React preset](https://babeljs.io/docs/babel-preset-react) 来使用 JSX。
+* **如果你的应用已经使用 `import` 语句来分割成不同的文件，请尝试利用已有的配置**。检查在你的 JavaScript 代码中编写 `<div />`是否会导致语法错误。如果有语法错误，你可能需要使用 [Babel](https://babeljs.io/setup) 转换你的 JavaScript 代码，并启用 [Babel React preset](https://babeljs.io/docs/babel-preset-react) 来使用 JSX。
 
-* **如果你的应用没有用于编译 JavaScript 模块的现有设置，请使用 [Vite](https://vitejs.dev/)进行设置**。Vite 社区维护了与后端框架（包括 Rails、Django 和 Laravel）的 [许多集成](https://github.com/vitejs/awesome-vite#integrations-with-backends)。如果你的后端框架没有列出，请 [按照此指南](https://cn.vitejs.dev/guide/backend-integration.html) 手动将 Vite 构建集成到你的后端。
+* **如果你的应用没有用于编译 JavaScript 模块的现有配置，请使用 [Vite](https://vitejs.dev/) 进行配置**。Vite 社区维护了与后端框架（包括 Rails、Django 和 Laravel）的 [许多集成项目](https://github.com/vitejs/awesome-vite#integrations-with-backends)。如果你的后端框架没有列出，请 [按照此指南](https://cn.vitejs.dev/guide/backend-integration.html) 手动将 Vite 构建集成到你的后端。
 
-如果想要检查你的设置是否有效，可以在项目文件夹中运行以下命令：
+如果想要检查你的配置是否有效，可以在项目文件夹中运行以下命令：
 
 <TerminalBlock>
 npm install react react-dom
 </TerminalBlock>
 
-然后在你的主 JavaScript 文件的顶部添加以下代码（它可能被称为 `index.js` 或 `main.js`）：
+然后在你的 JavaScript 主文件（它可能被称为 `index.js` 或 `main.js`）的顶部添加以下代码：
 
 <Sandpack>
 
@@ -90,7 +90,7 @@ root.render(<h1>Hello, world</h1>);
 
 ### 步骤 2：在页面的任何位置渲染 React 组件 {/*step-2-render-react-components-anywhere-on-the-page*/}
 
-在上一步中，你将此代码放在主文件的顶部：
+在上一步中，此代码将被放在主文件的顶部：
 
 ```js
 import { createRoot } from 'react-dom/client';
@@ -107,7 +107,7 @@ root.render(<h1>Hello, world</h1>);
 
 那么请删除此代码。
 
-相反，你可能想要在 HTML 中特定的位置渲染 React 组件。打开 HTML 页面（或生成它的服务器模板），并向任何标记添加一个唯一的 [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id) 属性，例如：
+相反，你可能想要在 HTML 中特定的位置渲染 React 组件。打开 HTML 页面（或生成它的服务器模板），并向任意一个标签添加一个唯一的 [`id`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/id) 属性，例如：
 
 ```html
 <!-- ... 你的 HTML 代码某处 ... -->
@@ -115,7 +115,7 @@ root.render(<h1>Hello, world</h1>);
 <!-- ... 其他 HTML 代码 ... -->
 ```
 
-这样可以使用 [`document.getElementById`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById) 查找到该 HTML 元素，并将其传递给 [`createRoot`](/reference/react-dom/client/createRoot)，以便可以在其中渲染自己的 React 组件：
+这样可以使用 [`document.getElementById`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/getElementById) 查找到该 HTML 元素，并将其传递给 [`createRoot`](/reference/react-dom/client/createRoot)，以便可以在其中渲染自己的 React 组件：
 
 <Sandpack>
 
