@@ -8,7 +8,11 @@ translators:
 
 <Intro>
 
+<<<<<<< HEAD
 React 控制 UI 的方式是声明式的。你不必直接控制 UI 的各个部分，只需要声明组件可以处于的不同状态，并根据用户的输入在它们之间切换。这与设计师对 UI 的思考方式很相似。
+=======
+React provides a declarative way to manipulate the UI. Instead of manipulating individual pieces of the UI directly, you describe the different states that your component can be in, and switch between them in response to the user input. This is similar to how designers think about the UI.
+>>>>>>> b7672ef3c457567a76c2073d9225f0cbe609bec9
 
 </Intro>
 
@@ -24,10 +28,17 @@ React 控制 UI 的方式是声明式的。你不必直接控制 UI 的各个部
 
 当你设计 UI 交互时，可能会去思考 UI 如何根据用户的操作而响应**变化**。想象一个允许用户提交一个答案的表单：
 
+<<<<<<< HEAD
 * 当你向表单输入数据时，“提交”按钮会随之变成**可用状态**
 * 当你点击“提交”后，表单和提交按钮都会随之变成**不可用状态**，并且会加载动画会随之**出现**
 * 如果网络请求成功，表单会随之**隐藏**，同时“提交成功”的信息会随之**出现**
 * 如果网络请求失败，错误信息会随之**出现**，同时表单又变为**可用状态**
+=======
+* When you type something into the form, the "Submit" button **becomes enabled.**
+* When you press "Submit", both the form and the button **become disabled,** and a spinner **appears.**
+* If the network request succeeds, the form **gets hidden,** and the "Thank you" message **appears.**
+* If the network request fails, an error message **appears,** and the form **becomes enabled** again.
+>>>>>>> b7672ef3c457567a76c2073d9225f0cbe609bec9
 
 在 **命令式编程** 中，以上的过程直接告诉你如何去实现交互。你必须去根据要发生的事情写一些明确的命令去操作 UI。对此有另一种理解方式，想象一下，当你坐在车里的某个人旁边，然后一步一步地告诉他该去哪。
 
