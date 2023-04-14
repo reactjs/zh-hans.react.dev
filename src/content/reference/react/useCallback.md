@@ -724,6 +724,7 @@ function ChatRoom({ roomId }) {
   }, [createOptions]); // 🔴 问题：这个依赖在每一次渲染中都会发生改变
   // ...
 ```
+
 解决这个问题， 你可以将你需要在副作用里面调用的函数包裹在 `useCallback` 中:
 ```js {4-9,16}
 function ChatRoom({ roomId }) {
@@ -745,6 +746,7 @@ function ChatRoom({ roomId }) {
   // ...
 }
 ```
+
 这确保了如果 `roomId`相同， `createOptions` 在多次渲染中会是同一个函数。**但是，最好消除对函数依赖项的需求。** 将你的函数移入副作用**内部**：
 
 ```js {5-10,16}
