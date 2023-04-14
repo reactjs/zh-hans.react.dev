@@ -5,6 +5,7 @@ title: useCallback
 <Intro>
 
 `useCallback` 是一个让你在多次渲染中缓存函数定义的 React Hook
+
 ```js
 const cachedFn = useCallback(fn, dependencies)
 ```
@@ -19,12 +20,8 @@ const cachedFn = useCallback(fn, dependencies)
 
 ### `useCallback(fn, dependencies)` {/*usecallback*/}
 
-<<<<<<< HEAD
-在你组件的顶层调用 `useCallback` 以便于在重新渲染之间缓存函数：
-=======
 在你组件的顶层调用 `useCallback` 以便于在多次渲染中缓存函数：
 
->>>>>>> 705369b134ce603a210df1fc9d5b2bb26d5e2c2e
 ```js {4,9}
 import { useCallback } from 'react';
 
@@ -78,9 +75,9 @@ function ProductPage({ productId, referrer, theme }) {
   }, [productId, referrer]);
 <<<<<<< HEAD
 }
-=======
+
   // ...
->>>>>>> 705369b134ce603a210df1fc9d5b2bb26d5e2c2e
+
 ```
 
 你需要传递两个参数给 `useCallback`:
@@ -93,6 +90,7 @@ function ProductPage({ productId, referrer, theme }) {
 简言之，`useCallback` 在多次渲染中缓存一个函数，直到这个函数的依赖发生改变。
 
 **让我们通过一个示例看看它何时有用**
+
 假设你正在从 `ProductPage` 传递一个 `handleSubmit` 函数到 `ShippingForm` 组件中：
 
 ```js {5}
@@ -108,6 +106,7 @@ function ProductPage({ productId, referrer, theme }) {
 你已经注意到切换 `theme` prop会让应用停滞一小会，但如果你将 `<ShippingForm />` 从你的JSX中移除，应用反应迅速。这提示你尽力优化 `ShippingForm` 组件是值得的。
 
 **默认情况下， 当一个组件重新渲染时, React将递归渲染它的所有子组件。** 这就是为什么, 当含有不同`theme` 值的 `ProductPage` 组件重新渲染时，`ShippingForm` 组件**也** 重新渲染。这对于不需要大量计算去重新渲染的组件来说影响很小。但如果你发现某次重新渲染很慢，你可以将 `ShippingForm` 组件包裹在 [`memo`](/reference/react/memo) 中。当它的 props 和上一个渲染相同时，告知 `ShippingForm` 组件跳过重新渲染
+
 ```js {3,5}
 import { memo } from 'react';
 
@@ -686,6 +685,7 @@ function TodoList() {
   // ...
 }
 ```
+
 在这里，并不是将 `todos` 作为依赖项并且在内部读取它，而是传递一个关于**如何**更新状态的指示器(`todos => [...todos, newTodo]`)给React [Read more about updater functions](/reference/react/useState#updating-state-based-on-the-previous-state)。
 
 ---
@@ -712,6 +712,7 @@ function ChatRoom({ roomId }) {
   })
 }
 ```
+
 这会产生一个问题，[每一个响应值都必须声明为副作用的依赖](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。 然而, 如果你将`createOptions` 声明为一个依赖， 它会导致你的副作用不断重新连接到聊天室：
 
 ```js {6}
