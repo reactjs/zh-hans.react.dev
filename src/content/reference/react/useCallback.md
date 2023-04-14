@@ -170,12 +170,12 @@ import { useMemo, useCallback } from 'react';
 function ProductPage({ productId, referrer }) {
   const product = useData('/product/' + productId);
 
-  const requirements = useMemo(() => {
-  //调用函数并且缓存它的结果
+
+  const requirements = useMemo(() => { //调用函数并且缓存它的结果
     return computeRequirements(product);
   }, [product]);
 
-  const handleSubmit = useCallback((orderDetails) => { 
+  const handleSubmit = useCallback((orderDetails) => {  // 缓存函数本身
     post('/product/' + productId + '/buy', {
       referrer,
       orderDetails,
