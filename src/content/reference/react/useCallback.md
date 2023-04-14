@@ -21,6 +21,7 @@ const cachedFn = useCallback(fn, dependencies)
 ### `useCallback(fn, dependencies)` {/*usecallback*/}
 
 在你组件的顶层调用 `useCallback` 以便于在多次渲染中缓存函数：
+
 ```js {4,9}
 import { useCallback } from 'react';
 
