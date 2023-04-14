@@ -16,9 +16,15 @@ const cachedFn = useCallback(fn, dependencies)
 ---
 
 ## 参考
+
 ### `useCallback(fn, dependencies)` {/*usecallback*/}
 
+<<<<<<< HEAD
 在你组件的顶层调用 `useCallback` 以便于在重新渲染之间缓存函数：
+=======
+在你组件的顶层调用 `useCallback` 以便于在多次渲染中缓存函数：
+
+>>>>>>> 705369b134ce603a210df1fc9d5b2bb26d5e2c2e
 ```js {4,9}
 import { useCallback } from 'react';
 
@@ -44,6 +50,7 @@ export default function ProductPage({ productId, referrer, theme }) {
 在初次渲染时，`useCallback` 返回你已经传入的 `fn` 函数
 
 在随后的渲染中, `useCallback` 返回在上一次渲染中已经缓存的 `fn` 函数(如果依赖都没有改变的话)，或者返回你在这一次渲染中传入的 `fn` 函数
+
 #### 警告 {/*caveats*/}
 
 * `useCallback` 是一个Hook，所以你能在你 **组件的顶层** 或者你自定义的Hooks中调用。你不能在循环或者条件语句中调用它。如果你需要这样做，新建一个组件，并且将状态移入其中。
@@ -69,7 +76,11 @@ function ProductPage({ productId, referrer, theme }) {
       orderDetails,
     });
   }, [productId, referrer]);
+<<<<<<< HEAD
 }
+=======
+  // ...
+>>>>>>> 705369b134ce603a210df1fc9d5b2bb26d5e2c2e
 ```
 
 你需要传递两个参数给 `useCallback`:
