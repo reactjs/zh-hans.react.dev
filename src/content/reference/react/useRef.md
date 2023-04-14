@@ -35,13 +35,13 @@ function MyComponent() {
 
 #### 参数 {/*parameters*/}
 
-* `initialValue`: 你希望 ref 对象的 `current` 属性的初始值。其可以是任意类型的值。这个参数会在初次渲染后被忽略。
+* `initialValue`: 你希望 ref 对象的 `current` 属性的初始值。可以是任意类型的值。这个参数会首次渲染后被忽略。
 
 #### 返回值 {/*returns*/}
 
 `useRef` 返回一个只有一个属性的对象:
 
-* `current`: 最初，它被设置为你所传递的 `initialValue'。你以后可以把它设置为其他值。如果你把 ref 对象作为一个 JSX 节点的 `ref` 属性传递给 React，React 将设置其`current`属性。
+* `current`: 最初，它被设置为你传递的 `initialValue`。之后你可以把它设置为其他值。如果你把 ref 对象作为一个 JSX 节点的 `ref` 属性传递给 React，React 将为它设置`current`属性。
 
 在接下来渲染中，`useRef` 将返回同一个对象。
 
@@ -49,7 +49,7 @@ function MyComponent() {
 
 * 你可以修改 `ref.current` 属性。与 state 不同，它是可变的。然而，如果它持有一个用于渲染的对象（例如，你的 state 的一部分），那么你就不应该修改这个对象。
 * 当你改变 `ref.current` 属性时，React 不会重新渲染你的组件。React 不知道你何时改变它，因为 ref 是一个普通的 JavaScript 对象。
-* 除了[初始化](#avoiding-recreating-the-ref-contents)外不要在渲染期间写 _或者读_ `ref.current`。这会使你的组件的行为不可预测。
+* 除了[初始化](#avoiding-recreating-the-ref-contents)外不要在渲染期间写入 _或者读取_ `ref.current`。这会使你的组件的行为不可预测。
 * 在严格模式下，React 将会 **调用两次你的组件方法**，这是为了[帮助你发现意外的问题](#my-initializer-or-updater-function-runs-twice)。这只是开发模式下的行为，不影响生产模式。每个 ref 对象将会创建两次，但是其中一个版本将被丢弃。如果你的组件函数是纯的（应该如此），这不会影响其行为。
 
 ---
@@ -68,11 +68,11 @@ function Stopwatch() {
   // ...
 ```
 
-`useRef` 返回一个具有单个 <CodeStep step={2}>`current` 属性</CodeStep> 的 <CodeStep step={1}>ref 对象</CodeStep>，其初始化为你提供的 <CodeStep step={3}>initial value</CodeStep>
+`useRef` 返回一个具有单个 <CodeStep step={2}>`current` 属性</CodeStep> 的 <CodeStep step={1}>ref 对象</CodeStep>，并初始化为你提供的 <CodeStep step={3}>initial value</CodeStep>
 
-在接下来的渲染中，`useRef` 将会返回相同的对象。你可以改变它的 `current` 属性来存储信息，并在之后读取它。这会让你想起 [state](/reference/react/useState)，但是有一个重要的区别。
+在接下来的渲染中，`useRef` 将返回相同的对象。你可以改变它的 `current` 属性来存储信息，并在之后读取它。这会让你想起 [state](/reference/react/useState)，但是有一个重要的区别。
 
-**改变 ref 不会触发一次重新渲染。** 这意味着 refs 是存储不影响你的组件的视图输出的信息的完美选择。例如，如果你需要存储一个 [intervalID](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) 并在以后检索它，你可以把它放在一个 ref 中。要更新 ref 里面的值，你需要手动改变它的 <CodeStep step={2}>`current` 属性</CodeStep>：
+**改变 ref 不会触发重新渲染。** 这意味着 refs 是存储不影响你的组件的视图输出的信息的完美选择。例如，如果你需要存储一个 [intervalID](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) 并在以后检索它，你可以把它放在一个 ref 中。如果要更新 ref 里面的值，你需要手动改变它的 <CodeStep step={2}>`current` 属性</CodeStep>：
 
 ```js [[2, 5, "intervalRef.current"]]
 function handleStartClick() {
@@ -83,7 +83,7 @@ function handleStartClick() {
 }
 ```
 
-在之后，你可以从 ref 中读取 interval ID，这样你就可以调用[清除定时器](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval)：
+在之后，你可以从 ref 中读取 interval ID，这样你就可以[清除定时器](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval)：
 
 ```js [[2, 2, "intervalRef.current"]]
 function handleStopClick() {
@@ -95,7 +95,7 @@ function handleStopClick() {
 通过使用 ref，你可以确保：
 
 - 你可以在重新渲染之间 **存储信息**（不像是普通对象，每次渲染都会重置）。
-- 改变它 **不会触发重新渲染**（不像是 state 变量，会触发一次重新渲染）。
+- 改变它 **不会触发重新渲染**（不像是 state 变量，会触发重新渲染）。
 - 对于你的组件的每个副本来说，**这些信息都是本地的**（不像是外面的变量，是共享的）。
 
 改变 ref 不会触发重新渲染，所以 refs 不适合存储用于你想要显示在屏幕上的信息。使用 state 代替。阅读更多[在 `useRef` 和 `useState` 之间选择。](/learn/referencing-values-with-refs#differences-between-refs-and-state)
@@ -188,14 +188,14 @@ export default function Stopwatch() {
 
 <Pitfall>
 
-**不要在渲染期间写 _或者读_ `ref.current`。**
+**不要在渲染期间写入 _或者读取_ `ref.current`。**
 
 React 期望你的组件的主体[表现得像一个纯函数](/learn/keeping-components-pure)：
 
 - 如果输入([props](/learn/passing-props-to-a-component)、[state](/learn/state-a-components-memory) 和 [context](/learn/passing-data-deeply-with-context))都是一样的，那么就应该返回一样的 JSX。
 - 以不同的顺序或用不同的参数调用它，不应该影响其他调用的结果。
 
-在 **渲染期间** 读或写 ref 会破坏这些预期。
+在 **渲染期间** 读取或写入 ref 会破坏这些预期。
 
 ```js {3-4,6-7}
 function MyComponent() {
@@ -226,9 +226,9 @@ function MyComponent() {
 }
 ```
 
-如果 *不得不* 在渲染期间读取[或者写入](/reference/react/useState#storing-information-from-previous-renders)，[使用 state](/reference/react/useState)代替。
+如果 *不得不* 在渲染期间读取[或者写入](/reference/react/useState#storing-information-from-previous-renders)，[使用 state](/reference/react/useState) 代替。
 
-当你打破这些规则时，你的组件可能仍然可以工作，但我们添加到 React 的大多数新功能将依赖于这些预期行为。阅读更多关于 [保持你的组件纯粹。](/learn/keeping-components-pure#where-you-can-cause-side-effects)
+当你打破这些规则时，你的组件可能仍然可以工作，但我们添加到 React 的大多数新功能将依赖于这些预期行为。阅读更多关于[保持你的组件纯粹。](/learn/keeping-components-pure#where-you-can-cause-side-effects)
 
 </Pitfall>
 
@@ -269,7 +269,7 @@ function MyComponent() {
 
 <Recipes titleText="Examples of manipulating the DOM with useRef" titleId="examples-dom">
 
-#### Focusing a text input {/*focusing-a-text-input*/}
+#### 聚焦文字输入框 {/*focusing-a-text-input*/}
 
 在这个示例中，点击按钮将会聚焦 input：
 
@@ -300,7 +300,7 @@ export default function Form() {
 
 <Solution />
 
-#### Scrolling an image into view {/*scrolling-an-image-into-view*/}
+#### 滚动图片到视图 {/*scrolling-an-image-into-view*/}
 
 在这个示例中，点击按钮将会把图片滚动到视图。这里使用 ref 绑定到列表的 DOM 节点，然后调用 DOM 的 [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) API 找到我们想要滚动的图片。
 
@@ -393,7 +393,7 @@ li {
 
 <Solution />
 
-#### Playing and pausing a video {/*playing-and-pausing-a-video*/}
+#### 播放和暂停视频 {/*playing-and-pausing-a-video*/}
 
 这个示例使用 ref 调用 `<video>` DOM 节点的 [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) 和 [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause)。
 
