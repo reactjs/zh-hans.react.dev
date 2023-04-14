@@ -75,9 +75,6 @@ function ProductPage({ productId, referrer, theme }) {
   }, [productId, referrer]);
   // ...
 
-}
-
-
 ```
 
 你需要传递两个参数给 `useCallback`:
@@ -95,22 +92,23 @@ function ProductPage({ productId, referrer, theme }) {
 
 ```js {5}
 function ProductPage({ productId, referrer, theme }) {
+  // ...
   return (
     <div className={theme}>
       <ShippingForm onSubmit={handleSubmit} />
     </div>
   );
-}
+
 ```
 
 你已经注意到切换 `theme` prop会让应用停滞一小会，但如果你将 `<ShippingForm />` 从你的JSX中移除，应用反应迅速。这提示你尽力优化 `ShippingForm` 组件是值得的。
 
 **默认情况下， 当一个组件重新渲染时, React将递归渲染它的所有子组件。** 这就是为什么, 当含有不同`theme` 值的 `ProductPage` 组件重新渲染时，`ShippingForm` 组件**也** 重新渲染。这对于不需要大量计算去重新渲染的组件来说影响很小。但如果你发现某次重新渲染很慢，你可以将 `ShippingForm` 组件包裹在 [`memo`](/reference/react/memo) 中。当它的 props 和上一个渲染相同时，告知 `ShippingForm` 组件跳过重新渲染
-
 ```js {3,5}
 import { memo } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
+  // ...
 });
 ```
 
@@ -131,12 +129,13 @@ function ProductPage({ productId, referrer, theme }) {
       <ShippingForm onSubmit={handleSubmit} />
     </div>
   );
-}
+
 ```
 
 **在JavaScript中， `function () {}` 或者 `() => {}` 总是会生成不同的函数，** 和字面对象 `{}` 总会创建新的对象类似。 正常情况下， 这不会产生问题， 但是这意味着 `ShippingForm` 的props将永远不会是相同的，并且你的 [`memo`](/reference/react/memo) 优化永远不会生效。这就是 `useCallback` 起作用的地方：
 ```js {2,3,8,12-13}
-function ProductPage({ productId, referrer, theme }) { // 告知React在多次渲染中缓存你的函数
+function ProductPage({ productId, referrer, theme }) { 
+  // 告知React在多次渲染中缓存你的函数
   const handleSubmit = useCallback((orderDetails) => {
     post('/product/' + productId + '/buy', {
       referrer,
@@ -150,7 +149,7 @@ function ProductPage({ productId, referrer, theme }) { // 告知React在多次�
       <ShippingForm onSubmit={handleSubmit} />
     </div>
   );
-}
+
 ```
 
 **通过将 `handleSubmit`包裹在 `useCallback` 中，你可以确保它在多次重新渲染之间是 *相同的* 函数** (直到依赖发生改变)。除非你出于某种特定原因这样做，否则你不必将一个函数包裹在 `useCallback` 中。在本例中，理由是你将他传递到了包裹在 [`memo`](/reference/react/memo) 中的组件，这允许它跳过重新渲染。还有其他原因你可能需要用到 `useCallback`，本页将对此进行进一步描述。
@@ -172,6 +171,7 @@ import { useMemo, useCallback } from 'react';
 
 function ProductPage({ productId, referrer }) {
   const product = useData('/product/' + productId);
+
   const requirements = useMemo(() => { //调用函数并且缓存它的结果
     return computeRequirements(product);
   }, [product]);
@@ -188,7 +188,6 @@ function ProductPage({ productId, referrer }) {
       <ShippingForm requirements={requirements} onSubmit={handleSubmit} />
     </div>
   );
-}
 ```
 
 区别在于他们让你缓存的**什么**:
@@ -434,7 +433,8 @@ export default function ProductPage({ productId, referrer, theme }) {
 }
 
 function post(url, data) {
-  console.log('POST /' + url);//想象这发送了一个请求
+  //想象这发送了一个请求
+  console.log('POST /' + url);
   console.log(data);
 }
 ```
@@ -447,7 +447,8 @@ const ShippingForm = memo(function ShippingForm({ onSubmit }) {
 
   console.log('[ARTIFICIALLY SLOW] Rendering <ShippingForm />');
   let startTime = performance.now();
-  while (performance.now() - startTime < 500) { //500 毫秒内不执行任何操作来模拟极慢的代码
+  while (performance.now() - startTime < 500) {
+     //500 毫秒内不执行任何操作来模拟极慢的代码
   }
 
   function handleSubmit(e) {
@@ -669,7 +670,7 @@ function TodoList() {
     setTodos([...todos, newTodo]);
   }, [todos]);
   // ...
-}
+
 ```
 
 你经常希望有记忆的函数有尽可能少的依赖，当你读取某个状态只是为了计算下一个状态时，你可以通过传递 [updater function](/reference/react/useState#updating-state-based-on-the-previous-state)函数去移除该依赖：
@@ -683,7 +684,7 @@ function TodoList() {
     setTodos(todos => [...todos, newTodo]);
   }, []); // ✅ 不需要 todos 依赖项
   // ...
-}
+
 ```
 
 在这里，并不是将 `todos` 作为依赖项并且在内部读取它，而是传递一个关于**如何**更新状态的指示器(`todos => [...todos, newTodo]`)给React [Read more about updater functions](/reference/react/useState#updating-state-based-on-the-previous-state)。
@@ -710,7 +711,7 @@ function ChatRoom({ roomId }) {
     connection.connect();
     // ...
   })
-}
+
 ```
 
 这会产生一个问题，[每一个响应值都必须声明为副作用的依赖](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。 然而, 如果你将`createOptions` 声明为一个依赖， 它会导致你的副作用不断重新连接到聊天室：
@@ -767,7 +768,7 @@ function ChatRoom({ roomId }) {
     return () => connection.disconnect();
   }, [roomId]); // ✅仅当 roomId 更改时更改
   // ...
-}
+
 ```
 现在你的代码变得更简单了并且不需要 `useCallback`。 [了解更多关于移除副作用依赖的详细信息](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)。
 
@@ -816,7 +817,7 @@ function ProductPage({ productId, referrer }) {
     });
   }); // 🔴 每一次都返回一个新函数：没有依赖项数组
   // ...
-}
+
 ```
 
 这是将依赖项数组作为第二个参数传递的更正版本：
