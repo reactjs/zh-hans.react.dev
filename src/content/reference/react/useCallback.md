@@ -5,7 +5,6 @@ title: useCallback
 <Intro>
 
 `useCallback` 是一个让你在多次渲染中缓存函数定义的 React Hook
-
 ```js
 const cachedFn = useCallback(fn, dependencies)
 ```
@@ -19,7 +18,7 @@ const cachedFn = useCallback(fn, dependencies)
 ## 参考
 ### `useCallback(fn, dependencies)` {/*usecallback*/}
 
-在你组件的顶层调用 `useCallback` 以便于在多次渲染中缓存函数：
+在你组件的顶层调用 `useCallback` 以便于在重新渲染之间缓存函数：
 ```js {4,9}
 import { useCallback } from 'react';
 
@@ -70,7 +69,6 @@ function ProductPage({ productId, referrer, theme }) {
       orderDetails,
     });
   }, [productId, referrer]);
-  // ...
 }
 ```
 
@@ -79,6 +77,8 @@ function ProductPage({ productId, referrer, theme }) {
 1. 在多次渲染中需要缓存的函数
 2. 你函数内部需要使用到的所有组件内部值的<CodeStep step={2}>依赖列表</CodeStep>。初次渲染时，你从 `useCallback` 获取到的返回函数将是你更改传递的。在随后的渲染里，React 将会把 <CodeStep step={2}>当前的依赖</CodeStep> 和已传入的先前依赖进行比较。如果没有任何依赖改变 (使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较), `useCallback` 将会返回和之前一样的函数。 否则，`useCallback` 返回你在**这次**渲染中传递的函数。
 
+在最初渲染时，你在 `useCallback` 处接收的<CodeStep step={3}>返回函数</CodeStep> 将会是你已经传入的函数。
+
 简言之，`useCallback` 在多次渲染中缓存一个函数，直到这个函数的依赖发生改变。
 
 **让我们通过一个示例看看它何时有用**
@@ -86,7 +86,6 @@ function ProductPage({ productId, referrer, theme }) {
 
 ```js {5}
 function ProductPage({ productId, referrer, theme }) {
-  // ...
   return (
     <div className={theme}>
       <ShippingForm onSubmit={handleSubmit} />
@@ -102,7 +101,6 @@ function ProductPage({ productId, referrer, theme }) {
 import { memo } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
-  // ...
 });
 ```
 
@@ -117,7 +115,6 @@ function ProductPage({ productId, referrer, theme }) {
       orderDetails,
     });
   }
-  
   return (
     <div className={theme}>
        {/*那么ShippingForm永远都不会是同一个，并且它每次都会重新渲染 */}
@@ -130,7 +127,6 @@ function ProductPage({ productId, referrer, theme }) {
 **在JavaScript中， `function () {}` 或者 `() => {}` 总是会生成不同的函数，** 和字面对象 `{}` 总会创建新的对象类似。 正常情况下， 这不会产生问题， 但是这意味着 `ShippingForm` 的props将永远不会是相同的，并且你的 [`memo`](/reference/react/memo) 优化永远不会生效。这就是 `useCallback` 起作用的地方：
 ```js {2,3,8,12-13}
 function ProductPage({ productId, referrer, theme }) { // 告知React在多次渲染中缓存你的函数
-
   const handleSubmit = useCallback((orderDetails) => {
     post('/product/' + productId + '/buy', {
       referrer,
@@ -166,7 +162,6 @@ import { useMemo, useCallback } from 'react';
 
 function ProductPage({ productId, referrer }) {
   const product = useData('/product/' + productId);
-
   const requirements = useMemo(() => { //调用函数并且缓存它的结果
     return computeRequirements(product);
   }, [product]);
@@ -189,7 +184,6 @@ function ProductPage({ productId, referrer }) {
 区别在于他们让你缓存的**什么**:
 
 * **[`useMemo`](/reference/react/useMemo) 缓存调用函数的结果。** 在本例中，它缓存了 `computeRequirements(product)` 调用的结果。这样它不会发生改变，除非 `product` 发生改变。这让你向下传递 `requirements` 对象，而无需不必要地重新渲染 `ShippingForm` 。必要时，React将会调用你传入的函数去计算结果。
-
 
 * **`useCallback` 缓存函数本身。** 不像 `useMemo` ，它不会调用你传入地方函数。相反，它缓存你提供的函数，以便 `handleSubmit` **它自己**不会发生改变除非 `productId` 或者 `referrer` 发生了改变。这让你向下传递 `handleSubmit` 函数而无需不必要地重新渲染`ShippingForm`。你的代码将不会运行，直到用户提交表单。
 
@@ -238,7 +232,6 @@ function useCallback(fn, dependencies) {
 #### 使用 `useCallback` 和 `memo` 跳过函数的重新渲染 {/*skipping-re-rendering-with-usecallback-and-memo*/}
 
 在这个例子中，`ShippingForm` 组件被人为地减慢了速度，以便你可以看到当你渲染的React组件真正变慢时会发生什么。尝试递增计数器并切换主题。
-
 
 递增计数器感觉很慢，因为它会强制变慢的 `ShippingForm` 重新渲染。这是意料之中的，因为计数器已更改，因此你需要在屏幕上反映用户的新选择。
 
@@ -379,7 +372,6 @@ button[type="button"] {
 <Solution />
 
 #### 始终重新渲染组件{/*always-re-rendering-a-component*/}
-
 在本例中， `ShippingForm` 的实现也被人为地减慢了速度，这样你可以看到当你渲染的某些 React 组件运行很慢时会发生什么。尝试递增计数器并切换主题。
 
 与前面示例不同，现在切换主题也很慢！这是因为**在这个版本中没有调用 `useCallback`** ，所以 `handleSubmit` 总是一个新函数，并且被减速的`ShippingForm` 组件不能跳过重新渲染。
@@ -512,7 +504,6 @@ button[type="button"] {
 ```
 
 </Sandpack>
-
 
 然而， 这里的代码相同，但是**被人为减慢的代码被移除**，缺少 `useCallback` 是否感觉明显？
 
@@ -684,7 +675,6 @@ function TodoList() {
   // ...
 }
 ```
-
 在这里，并不是将 `todos` 作为依赖项并且在内部读取它，而是传递一个关于**如何**更新状态的指示器(`todos => [...todos, newTodo]`)给React [Read more about updater functions](/reference/react/useState#updating-state-based-on-the-previous-state)。
 
 ---
@@ -711,9 +701,7 @@ function ChatRoom({ roomId }) {
   })
 }
 ```
-
-这会产生一个问题，[每一个响应值都必须声明为副作用的依赖](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。 然而, 如果你将`createOptions` 声明为一个依赖， 它会导致你的的副作用不断重新连接到聊天室：
-
+这会产生一个问题，[每一个响应值都必须声明为副作用的依赖](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。 然而, 如果你将`createOptions` 声明为一个依赖， 它会导致你的副作用不断重新连接到聊天室：
 
 ```js {6}
   useEffect(() => {
@@ -724,9 +712,7 @@ function ChatRoom({ roomId }) {
   }, [createOptions]); // 🔴 问题：这个依赖在每一次渲染中都会发生改变
   // ...
 ```
-
 解决这个问题， 你可以将你需要在副作用里面调用的函数包裹在 `useCallback` 中:
-
 ```js {4-9,16}
 function ChatRoom({ roomId }) {
   const [message, setMessage] = useState('');
@@ -747,7 +733,6 @@ function ChatRoom({ roomId }) {
   // ...
 }
 ```
-
 这确保了如果 `roomId`相同， `createOptions` 在多次渲染中会是同一个函数。**但是，最好消除对函数依赖项的需求。** 将你的函数移入副作用**内部**：
 
 ```js {5-10,16}
@@ -770,15 +755,12 @@ function ChatRoom({ roomId }) {
   // ...
 }
 ```
-
 现在你的代码变得更简单了并且不需要 `useCallback`。 [了解更多关于移除副作用依赖的详细信息](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)。
 
 ---
 
 ### 优化自定义 Hook{/*optimizing-a-custom-hook*/}
-
 如果你在编写一个[自定义 Hook](/learn/reusing-logic-with-custom-hooks)，建议将它返回的任何函数包裹到 `useCallback` 中：
-
 
 ```js {4-6,8-10}
 function useRouter() {
