@@ -822,6 +822,7 @@ function ProductPage({ productId, referrer }) {
 这是将依赖项数组作为第二个参数传递的更正版本：
 
 ```js {7}
+
 function ProductPage({ productId, referrer }) {
   const handleSubmit = useCallback((orderDetails) => {
     post('/product/' + productId + '/buy', {
@@ -837,6 +838,7 @@ function ProductPage({ productId, referrer }) {
 如果这没有帮助，那么问题是至少有一个依赖项与以前的渲染不同。你可以通过手动将依赖项记录到控制台来调试此问题：
 
 ```js {5}
+
   const handleSubmit = useCallback((orderDetails) => {
     // ..
   }, [productId, referrer]);
