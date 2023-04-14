@@ -73,10 +73,10 @@ function ProductPage({ productId, referrer, theme }) {
       orderDetails,
     });
   }, [productId, referrer]);
+  // ...
 
 }
 
-  // ...
 
 ```
 
