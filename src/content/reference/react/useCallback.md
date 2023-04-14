@@ -44,7 +44,6 @@ export default function ProductPage({ productId, referrer, theme }) {
 
 在初次渲染时，`useCallback` 返回你已经传入的 `fn` 函数
 
-
 在随后的渲染中, `useCallback` 返回在上一次渲染中已经缓存的 `fn` 函数(如果依赖都没有改变的话)，或者返回你在这一次渲染中传入的 `fn` 函数
 #### 警告 {/*caveats*/}
 
@@ -79,7 +78,6 @@ function ProductPage({ productId, referrer, theme }) {
 
 1. 在多次渲染中需要缓存的函数
 2. 你函数内部需要使用到的所有组件内部值的<CodeStep step={2}>依赖列表</CodeStep>。初次渲染时，你从 `useCallback` 获取到的返回函数将是你更改传递的。在随后的渲染里，React 将会把 <CodeStep step={2}>当前的依赖</CodeStep> 和已传入的先前依赖进行比较。如果没有任何依赖改变 (使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较), `useCallback` 将会返回和之前一样的函数。 否则，`useCallback` 返回你在**这次**渲染中传递的函数。
-
 
 简言之，`useCallback` 在多次渲染中缓存一个函数，直到这个函数的依赖发生改变。
 
@@ -131,8 +129,7 @@ function ProductPage({ productId, referrer, theme }) {
 
 **在JavaScript中， `function () {}` 或者 `() => {}` 总是会生成不同的函数，** 和字面对象 `{}` 总会创建新的对象类似。 正常情况下， 这不会产生问题， 但是这意味着 `ShippingForm` 的props将永远不会是相同的，并且你的 [`memo`](/reference/react/memo) 优化永远不会生效。这就是 `useCallback` 起作用的地方：
 ```js {2,3,8,12-13}
-function ProductPage({ productId, referrer, theme }) {
-  // 告知React在多次渲染中缓存你的函数
+function ProductPage({ productId, referrer, theme }) { // 告知React在多次渲染中缓存你的函数
 
   const handleSubmit = useCallback((orderDetails) => {
     post('/product/' + productId + '/buy', {
@@ -170,7 +167,6 @@ import { useMemo, useCallback } from 'react';
 function ProductPage({ productId, referrer }) {
   const product = useData('/product/' + productId);
 
-
   const requirements = useMemo(() => { //调用函数并且缓存它的结果
     return computeRequirements(product);
   }, [product]);
@@ -193,7 +189,6 @@ function ProductPage({ productId, referrer }) {
 区别在于他们让你缓存的**什么**:
 
 * **[`useMemo`](/reference/react/useMemo) 缓存调用函数的结果。** 在本例中，它缓存了 `computeRequirements(product)` 调用的结果。这样它不会发生改变，除非 `product` 发生改变。这让你向下传递 `requirements` 对象，而无需不必要地重新渲染 `ShippingForm` 。必要时，React将会调用你传入的函数去计算结果。
-
 
 
 * **`useCallback` 缓存函数本身。** 不像 `useMemo` ，它不会调用你传入地方函数。相反，它缓存你提供的函数，以便 `handleSubmit` **它自己**不会发生改变除非 `productId` 或者 `referrer` 发生了改变。这让你向下传递 `handleSubmit` 函数而无需不必要地重新渲染`ShippingForm`。你的代码将不会运行，直到用户提交表单。
@@ -221,12 +216,9 @@ function useCallback(fn, dependencies) {
 
 - 你可以将其作为prop传递给包装在 [`memo`] 中的组件。如果值未更改，则希望跳过重新渲染。记忆允许组件仅在依赖项更改时重新渲染。
 
-
 - 你传递的函数稍后会作为一些Hook的依赖。比如，另一个包裹在 `useCallback` 中的函数依赖于它，或者你依赖于 [`useEffect`](/reference/react/useEffect) 中的函数
 
-
 在其他情况下，将函数包装在 `useCallback` 中没有任何益处。这样做也没有很大的害处。所以有些团队选择不考虑个案，并且尽可能记住。不好的部分是代码可读性降低了。而且，并不是所有的记忆都是有效的：一个 “始终新” 的值足以破坏整个组件的记忆。
-
 
 请注意，`useCallback` 不会阻止函数的**创建**。你总是在创建一个函数（这很好！），但是 React 忽略了它并且返回给你一个缓存的函数，如果没有任何东西改变的话。
 
@@ -390,7 +382,6 @@ button[type="button"] {
 
 在本例中， `ShippingForm` 的实现也被人为地减慢了速度，这样你可以看到当你渲染的某些 React 组件运行很慢时会发生什么。尝试递增计数器并切换主题。
 
-
 与前面示例不同，现在切换主题也很慢！这是因为**在这个版本中没有调用 `useCallback`** ，所以 `handleSubmit` 总是一个新函数，并且被减速的`ShippingForm` 组件不能跳过重新渲染。
 
 <Sandpack>
@@ -441,8 +432,7 @@ export default function ProductPage({ productId, referrer, theme }) {
 }
 
 function post(url, data) {
-  //想象这发送了一个请求
-  console.log('POST /' + url);
+  console.log('POST /' + url);//想象这发送了一个请求
   console.log(data);
 }
 ```
@@ -455,8 +445,7 @@ const ShippingForm = memo(function ShippingForm({ onSubmit }) {
 
   console.log('[ARTIFICIALLY SLOW] Rendering <ShippingForm />');
   let startTime = performance.now();
-  while (performance.now() - startTime < 500) {
-    //500 毫秒内不执行任何操作来模拟极慢的代码
+  while (performance.now() - startTime < 500) { //500 毫秒内不执行任何操作来模拟极慢的代码
   }
 
   function handleSubmit(e) {
@@ -858,6 +847,7 @@ function ProductPage({ productId, referrer }) {
 
   console.log([productId, referrer]);
 ```
+
 然后，你可以在控制台中右键单击来自不同重新渲染的数组，并为它们选择“存储为全局变量”。假设第一个被保存为 `temp1` ，第二个被保存为   `temp2` ，然后你可以使用浏览器控制台检查两个数组中的每个依赖项是否相同：
 
 ```js
@@ -921,6 +911,7 @@ function Report({ item }) {
   );
 }
 ```
+
 或者，你可以删除最后一个代码段中的 `useCallback`，而是将 `Report` 本身包装在 [`memo`](/reference/react/memo) 中。如果 `item` prop 没有更改，`Report` 将跳过重新渲染，因此 `Chart` 也将跳过重新渲染：
 
 ```js {5,6-8,15}
