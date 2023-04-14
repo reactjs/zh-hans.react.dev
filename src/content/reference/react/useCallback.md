@@ -98,7 +98,6 @@ function ProductPage({ productId, referrer, theme }) {
       <ShippingForm onSubmit={handleSubmit} />
     </div>
   );
-
 ```
 
 你已经注意到切换 `theme` prop会让应用停滞一小会，但如果你将 `<ShippingForm />` 从你的JSX中移除，应用反应迅速。这提示你尽力优化 `ShippingForm` 组件是值得的。
