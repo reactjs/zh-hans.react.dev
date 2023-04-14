@@ -46,7 +46,6 @@ export default function ProductPage({ productId, referrer, theme }) {
 
 在初次渲染时，`useCallback` 返回你已经传入的 `fn` 函数
 
-
 在随后的渲染中, `useCallback` 返回在上一次渲染中已经缓存的 `fn` 函数(如果依赖都没有改变的话)，或者返回你在这一次渲染中传入的 `fn` 函数
 
 #### 警告 {/*caveats*/}
