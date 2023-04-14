@@ -74,7 +74,6 @@ function ProductPage({ productId, referrer, theme }) {
     });
   }, [productId, referrer]);
   // ...
-}
 ```
 
 你需要传递两个参数给 `useCallback`:
