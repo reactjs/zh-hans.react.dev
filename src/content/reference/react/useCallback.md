@@ -248,6 +248,7 @@ function useCallback(fn, dependencies) {
 递增计数器感觉很慢，因为它会强制变慢的 `ShippingForm` 重新渲染。这是意料之中的，因为计数器已更改，因此你需要在屏幕上反映用户的新选择。
 
 接下来，尝试更改主题。 **感谢 `useCallback` 和 [`memo`](/reference/react/memo)的结合使用, 尽管人为地变慢了速度，但它还是很快** `ShippingForm` 跳过了重新渲染，因为 `handleSubmit` 函数没有改变。`handleSubmit` 函数没有发生改变，因为 `productId` 和`referrer` （你的 `useCallback` 依赖）自从上次渲染到现在都没有发生改变。
+
 <Sandpack>
 
 ```js App.js
