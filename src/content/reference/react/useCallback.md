@@ -384,6 +384,7 @@ button[type="button"] {
 <Solution />
 
 #### 始终重新渲染组件{/*always-re-rendering-a-component*/}
+
 在本例中， `ShippingForm` 的实现也被人为地减慢了速度，这样你可以看到当你渲染的某些 React 组件运行很慢时会发生什么。尝试递增计数器并切换主题。
 
 与前面示例不同，现在切换主题也很慢！这是因为**在这个版本中没有调用 `useCallback`** ，所以 `handleSubmit` 总是一个新函数，并且被减速的`ShippingForm` 组件不能跳过重新渲染。
