@@ -45,7 +45,7 @@ title: 将 React 添加到现有项目中
 
 * **如果你的应用已经使用 `import` 语句来分割成不同的文件，请尝试利用已有的配置**。检查在你的 JavaScript 代码中编写 `<div />`是否会导致语法错误。如果有语法错误，你可能需要使用 [Babel](https://babeljs.io/setup) 转换你的 JavaScript 代码，并启用 [Babel React preset](https://babeljs.io/docs/babel-preset-react) 来使用 JSX。
 
-* **如果你的应用没有用于编译 JavaScript 模块的现有配置，请使用 [Vite](https://vitejs.dev/) 进行配置**。Vite 社区维护了与后端框架（包括 Rails、Django 和 Laravel）的 [许多集成项目](https://github.com/vitejs/awesome-vite#integrations-with-backends)。如果你的后端框架没有列出，请 [按照此指南](https://cn.vitejs.dev/guide/backend-integration.html) 手动将 Vite 构建集成到你的后端。
+* **如果你的应用没有用于编译 JavaScript 模块的配置，请使用 [Vite](https://vitejs.dev/) 进行配置**。Vite 社区维护了与后端框架（包括 Rails、Django 和 Laravel）的 [许多集成项目](https://github.com/vitejs/awesome-vite#integrations-with-backends)。如果你的后端框架没有列出，请 [按照此指南](https://cn.vitejs.dev/guide/backend-integration.html) 手动将 Vite 构建集成到你的后端。
 
 如果想要检查你的配置是否有效，可以在项目文件夹中运行以下命令：
 
