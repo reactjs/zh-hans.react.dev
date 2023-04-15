@@ -77,12 +77,14 @@ function ProductPage({ productId, referrer, theme }) {
 
 ```
 
-你需要传递两个参数给 `useCallback`:
+你需要传递两个参数给 `useCallback`：
 
 1. 在多次渲染中需要缓存的函数
-2. 你函数内部需要使用到的所有组件内部值的<CodeStep step={2}>依赖列表</CodeStep>。初次渲染时，你从 `useCallback` 获取到的返回函数将是你更改传递的。在随后的渲染里，React 将会把 <CodeStep step={2}>当前的依赖</CodeStep> 和已传入的先前依赖进行比较。如果没有任何依赖改变 (使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较), `useCallback` 将会返回和之前一样的函数。 否则，`useCallback` 返回你在**这次**渲染中传递的函数。
+2. 你函数内部需要使用到的所有组件内部值的<CodeStep step={2}>依赖列表</CodeStep>。
 
 在最初渲染时，你在 `useCallback` 处接收的<CodeStep step={3}>返回函数</CodeStep> 将会是你已经传入的函数。
+
+在随后的渲染里，React 将会把 <CodeStep step={2}>当前的依赖</CodeStep> 和已传入的先前依赖进行比较。如果没有任何依赖改变 (使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较)， `useCallback` 将会返回和之前一样的函数。 否则，`useCallback` 返回你在**这次**渲染中传递的函数。
 
 简言之，`useCallback` 在多次渲染中缓存一个函数，直到这个函数的依赖发生改变。
 
@@ -102,7 +104,7 @@ function ProductPage({ productId, referrer, theme }) {
 
 你已经注意到切换 `theme` prop会让应用停滞一小会，但如果你将 `<ShippingForm />` 从你的JSX中移除，应用反应迅速。这提示你尽力优化 `ShippingForm` 组件是值得的。
 
-**默认情况下， 当一个组件重新渲染时, React将递归渲染它的所有子组件。** 这就是为什么, 当含有不同`theme` 值的 `ProductPage` 组件重新渲染时，`ShippingForm` 组件**也** 重新渲染。这对于不需要大量计算去重新渲染的组件来说影响很小。但如果你发现某次重新渲染很慢，你可以将 `ShippingForm` 组件包裹在 [`memo`](/reference/react/memo) 中。当它的 props 和上一个渲染相同时，告知 `ShippingForm` 组件跳过重新渲染
+**默认情况下， 当一个组件重新渲染时， React将递归渲染它的所有子组件。** 这就是为什么， 当含有不同`theme` 值的 `ProductPage` 组件重新渲染时，`ShippingForm` 组件**也** 重新渲染。这对于不需要大量计算去重新渲染的组件来说影响很小。但如果你发现某次重新渲染很慢，你可以将 `ShippingForm` 组件包裹在 [`memo`](/reference/react/memo) 中。当它的 props 和上一个渲染相同时，告知 `ShippingForm` 组件跳过重新渲染
 ```js {3,5}
 import { memo } from 'react';
 
@@ -244,7 +246,6 @@ function useCallback(fn, dependencies) {
 递增计数器感觉很慢，因为它会强制变慢的 `ShippingForm` 重新渲染。这是意料之中的，因为计数器已更改，因此你需要在屏幕上反映用户的新选择。
 
 接下来，尝试更改主题。 **感谢 `useCallback` 和 [`memo`](/reference/react/memo)的结合使用, 尽管人为地变慢了速度，但它还是很快** `ShippingForm` 跳过了重新渲染，因为 `handleSubmit` 函数没有改变。`handleSubmit` 函数没有发生改变，因为 `productId` 和`referrer` （你的 `useCallback` 依赖）自从上次渲染到现在都没有发生改变。
-
 <Sandpack>
 
 ```js App.js
@@ -643,7 +644,6 @@ button[type="button"] {
 
 </Sandpack>
 
-
 很多时候，没有记忆的代码运行得也很好， 如果你的交互已经足够快了， 你不必去使用记忆。
 
 请记住，你需要在生产模式下运行React，禁用 [React Developer Tools](/learn/react-developer-tools)，并使用与应用用户类似的设备，以便真实地了解实际减慢应用速度的因素。
@@ -794,7 +794,6 @@ function useRouter() {
   };
 }
 ```
-
 这确保了 hook 的使用者在需要时优化自己的代码
 
 ---
@@ -834,7 +833,6 @@ function ProductPage({ productId, referrer }) {
   // ...
 }
 ```
-
 如果这没有帮助，那么问题是至少有一个依赖项与以前的渲染不同。你可以通过手动将依赖项记录到控制台来调试此问题：
 
 ```js {5}
@@ -851,7 +849,7 @@ function ProductPage({ productId, referrer }) {
 ```js
 Object.is(temp1[0], temp2[0]); // 数组之间的第一个依赖关系是否相同？
 Object.is(temp1[1], temp2[1]); // 数组之间的第二个依赖关系是否相同？
-Object.is(temp1[2], temp2[2]); // ...  数组之间的每一个依赖关系是否相同...
+Object.is(temp1[2], temp2[2]); // 数组之间的每一个依赖关系是否相同...
 ```
 
 当你发现哪个依赖项破坏了记忆时，请找到一种方法将其删除，或者[将其也记忆起来](/reference/react/useMemo#memoizing-a-dependency-of-another-hook)。
