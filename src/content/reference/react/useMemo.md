@@ -149,9 +149,9 @@ console.timeEnd('filter array');
 
 - 你在 `useMemo` 中进行的计算明显很慢，而且它的依赖关系很少改变
 - 你将它作为 prop 传递给包装在 [`memo`](/reference/react/memo) 中的组件。如果值没有改变，你想跳过重新渲染。记忆化让你的组件仅在依赖项不同时才重新渲染。
-- 你传递的值稍后用作某些 Hook 的依赖项。例如，也许另一个 useMemo 计算值依赖它。或者 [`useEffect`](/reference/react/useEffect) 依赖这个值。
+- 你传递的值稍后用作某些 Hook 的依赖项。例如，也许另一个 `useMemo` 计算值依赖它。或者 [`useEffect`](/reference/react/useEffect) 依赖这个值。
 
-在其他情况下，将计算过程包装在 useMemo 中没有任何好处。这样做也没有重大危害, 所以一些团队选择不考虑个别情况，尽可能多地使用 `useMemo`。这种方法的缺点是降低了代码的可读性。此外，并不是所有的 `useMemo` 的使用都是有效的：一个『永远是新的』的单一值就足以破坏整个组件的缓存效果。
+在其他情况下，将计算过程包装在 `useMemo` 中没有任何好处。这样做也没有重大危害, 所以一些团队选择不考虑个别情况，尽可能多地使用 `useMemo`。这种方法的缺点是降低了代码的可读性。此外，并不是所有的 `useMemo` 的使用都是有效的：一个“永远是新的”的单一值就足以破坏整个组件的缓存效果。
 
 **在实践中，你可以通过遵循一些原则来避免 `useMemo` 大量无效的使用**：
 
@@ -171,7 +171,7 @@ console.timeEnd('filter array');
 
 在这个例子中，`filterTodos` 的执行被 **人为减速了** 这样你就可以看到当你在渲染期间调用的某些 JavaScript 函数确实很慢时会发生什么。尝试切换选项卡并切换主题。
 
-切换选项卡感觉很慢，因为它迫使减速的 `filterTodos` 重新执行。这是预料之中的，因为『选项卡』已更改，因此整个计算 *需要* 重新运行。(如果你好奇为什么它会运行两次，[此处](#my-calculation-runs-twice-on-every-re-render) 对此进行了解释)。
+切换选项卡感觉很慢，因为它迫使减速的 `filterTodos` 重新执行。这是预料之中的，因为“选项卡”已更改，因此整个计算 *需要* 重新运行。(如果你好奇为什么它会运行两次，[此处](#my-calculation-runs-twice-on-every-re-render) 对此进行了解释)。
 
 尝试切换主题。**多亏了 `useMemo`，尽管被人为减速，它还是很快的**！缓慢的 `filterTodos` 调用被跳过，因为 `todos` 和 `tab`（你将其作为依赖项传递给 `useMemo` ）自上次渲染以来都没有改变。
 
@@ -540,7 +540,7 @@ label {
 
 很多时候，没有记忆化的代码可以正常工作。如果你的交互速度足够快，你可能不需要记忆化。
 
-你可以尝试增加 `utils.js` 中待办事项的数量，看看行为如何变化。这个特定的计算一开始并不是很昂贵，但如果待办事项的数量显著增加，大部分开销将用于重新渲染而不是过滤。继续阅读下文，了解如何使用 useMemo 优化重新渲染。
+你可以尝试增加 `utils.js` 中待办事项的数量，看看行为如何变化。这个特定的计算一开始并不是很昂贵，但如果待办事项的数量显著增加，大部分开销将用于重新渲染而不是过滤。继续阅读下文，了解如何使用 `useMemo` 优化重新渲染。
 
 <Solution />
 
@@ -590,7 +590,7 @@ export default function TodoList({ todos, tab, theme }) {
 }
 ```
 
-**在上面的示例中，`filterTodos` 函数总是创建一个 *不同* 数组**，类似于 `{}` 总是创建一个新对象的方式。通常，这不是问题，但这意味着 `List` 属性永远不会相同，并且你的 [`memo`](/reference/react/memo) 优化将不起作用。这就是 useMemo 派上用场的地方：
+**在上面的示例中，`filterTodos` 函数总是创建一个 *不同* 数组**，类似于 `{}` 总是创建一个新对象的方式。通常，这不是问题，但这意味着 `List` 属性永远不会相同，并且你的 [`memo`](/reference/react/memo) 优化将不起作用。这就是 `useMemo` 派上用场的地方：
 
 ```js {2-3,5,9-10}
 export default function TodoList({ todos, tab, theme }) {
@@ -609,7 +609,7 @@ export default function TodoList({ todos, tab, theme }) {
 ```
 
 
-**通过将 `visibleTodos` 包装在 `useMemo` 中，你可以确保它在重新渲染之间具有 *相同* 值**（直到依赖关系发生变化）。你不用 **必须** 将计算包装在 `useMemo` 中，除非你出于某些特定原因这样做。在此示例中，原因是你将它传递给包裹在 [`memo`](/reference/react/memo) 中的组件，这让它可以跳过重新渲染。添加 useMemo 的其他一些原因将在本页进一步描述。
+**通过将 `visibleTodos` 包装在 `useMemo` 中，你可以确保它在重新渲染之间具有 *相同* 值**（直到依赖关系发生变化）。你不用 **必须** 将计算包装在 `useMemo` 中，除非你出于某些特定原因这样做。在此示例中，原因是你将它传递给包裹在 [`memo`](/reference/react/memo) 中的组件，这让它可以跳过重新渲染。添加 `useMemo` 的其他一些原因将在本页进一步描述。
 
 <DeepDive>
 
@@ -633,9 +633,9 @@ export default function TodoList({ todos, tab, theme }) {
 
 像 `<List items={visibleTodos} />` 这样的 JSX 节点是一个类似 `{ type: List, props: { items: visibleTodos } }` 这样的对象。创建这个对象开销很低，但是 React 不知道它的内容是否和上次一样。这就是为什么默认情况下，React 会重新渲染 `List` 组件。
 
-但是，如果 React 看到与之前渲染期间完全相同的 JSX，它不会尝试重新渲染你的组件。这是因为 JSX 节点是 [不可变的](https://en.wikipedia.org/wiki/Immutable_object)。JSX 节点对象不可能随时间改变，因此 React 知道跳过重新渲染是安全的。然而，为了使其工作，节点必须 **实际上是同一个对象**，而不仅仅是在代码中看起来相同。这就是 useMemo 在此示例中所做的。
+但是，如果 React 看到与之前渲染期间完全相同的 JSX，它不会尝试重新渲染你的组件。这是因为 JSX 节点是 [不可变的](https://en.wikipedia.org/wiki/Immutable_object)。JSX 节点对象不可能随时间改变，因此 React 知道跳过重新渲染是安全的。然而，为了使其工作，节点必须 **实际上是同一个对象**，而不仅仅是在代码中看起来相同。这就是 `useMemo` 在此示例中所做的。
 
-手动将 JSX 节点包装到 useMemo 中并不方便。例如，你不能有条件地这样做。这通常就是为什么你会用 [`memo`](/reference/react/memo) 包装组件而不是包装 JSX 节点。
+手动将 JSX 节点包装到 `useMemo` 中并不方便。例如，你不能有条件地这样做。这通常就是为什么你会用 [`memo`](/reference/react/memo) 包装组件而不是包装 JSX 节点。
 
 </DeepDive>
 
