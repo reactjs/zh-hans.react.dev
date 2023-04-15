@@ -4,7 +4,7 @@ title: useCallback
 
 <Intro>
 
-`useCallback` 是一个让你在多次渲染中缓存函数定义的 React Hook
+`useCallback` 是一个让你在多次渲染中缓存函数定义的 React Hook。
 
 ```js
 const cachedFn = useCallback(fn, dependencies)
@@ -16,7 +16,7 @@ const cachedFn = useCallback(fn, dependencies)
 
 ---
 
-## 参考
+## 参考 {/*reference*/}
 
 ### `useCallback(fn, dependencies)` {/*usecallback*/}
 
