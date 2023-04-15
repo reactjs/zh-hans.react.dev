@@ -1141,7 +1141,6 @@ export const initialTravelPlan = {
 
 
 
-
 - 其 **父级** 地点的更新版本应该从其 `childIds` 数组中排除已删除的 ID。
 - 其根级“表”对象的更新版本应包括父级地点的更新版本。
 
