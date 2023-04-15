@@ -104,6 +104,7 @@ function ProductPage({ productId, referrer, theme }) {
 你已经注意到切换 `theme` prop会让应用停滞一小会，但如果你将 `<ShippingForm />` 从你的JSX中移除，应用反应迅速。这提示你尽力优化 `ShippingForm` 组件是值得的。
 
 **默认情况下， 当一个组件重新渲染时， React将递归渲染它的所有子组件。** 这就是为什么， 当含有不同`theme` 值的 `ProductPage` 组件重新渲染时，`ShippingForm` 组件**也** 重新渲染。这对于不需要大量计算去重新渲染的组件来说影响很小。但如果你发现某次重新渲染很慢，你可以将 `ShippingForm` 组件包裹在 [`memo`](/reference/react/memo) 中。当它的 props 和上一个渲染相同时，告知 `ShippingForm` 组件跳过重新渲染
+
 ```js {3,5}
 import { memo } from 'react';
 
@@ -123,18 +124,20 @@ function ProductPage({ productId, referrer, theme }) {
       orderDetails,
     });
   }
+  
   return (
     <div className={theme}>
-       {/*那么ShippingForm永远都不会是同一个，并且它每次都会重新渲染 */}
+      {/*那么ShippingForm永远都不会是同一个，并且它每次都会重新渲染 */}
       <ShippingForm onSubmit={handleSubmit} />
     </div>
   );
-
+}
 ```
 
 **在JavaScript中， `function () {}` 或者 `() => {}` 总是会生成不同的函数，** 和字面对象 `{}` 总会创建新的对象类似。 正常情况下， 这不会产生问题， 但是这意味着 `ShippingForm` 的props将永远不会是相同的，并且你的 [`memo`](/reference/react/memo) 优化永远不会生效。这就是 `useCallback` 起作用的地方：
+
 ```js {2,3,8,12-13}
-function ProductPage({ productId, referrer, theme }) { 
+function ProductPage({ productId, referrer, theme }) {
   // 告知React在多次渲染中缓存你的函数
   const handleSubmit = useCallback((orderDetails) => {
     post('/product/' + productId + '/buy', {
@@ -149,7 +152,7 @@ function ProductPage({ productId, referrer, theme }) {
       <ShippingForm onSubmit={handleSubmit} />
     </div>
   );
-
+}
 ```
 
 **通过将 `handleSubmit`包裹在 `useCallback` 中，你可以确保它在多次重新渲染之间是 *相同的* 函数** (直到依赖发生改变)。除非你出于某种特定原因这样做，否则你不必将一个函数包裹在 `useCallback` 中。在本例中，理由是你将他传递到了包裹在 [`memo`](/reference/react/memo) 中的组件，这允许它跳过重新渲染。还有其他原因你可能需要用到 `useCallback`，本页将对此进行进一步描述。
@@ -176,7 +179,7 @@ function ProductPage({ productId, referrer }) {
     return computeRequirements(product);
   }, [product]);
 
-  const handleSubmit = useCallback((orderDetails) => {  // 缓存函数本身
+  const handleSubmit = useCallback((orderDetails) => { // 缓存函数本身
     post('/product/' + productId + '/buy', {
       referrer,
       orderDetails,
@@ -188,12 +191,12 @@ function ProductPage({ productId, referrer }) {
       <ShippingForm requirements={requirements} onSubmit={handleSubmit} />
     </div>
   );
+}
 ```
 
 区别在于他们让你缓存的**什么**:
 
 * **[`useMemo`](/reference/react/useMemo) 缓存调用函数的结果。** 在本例中，它缓存了 `computeRequirements(product)` 调用的结果。这样它不会发生改变，除非 `product` 发生改变。这让你向下传递 `requirements` 对象，而无需不必要地重新渲染 `ShippingForm` 。必要时，React将会调用你传入的函数去计算结果。
-
 * **`useCallback` 缓存函数本身。** 不像 `useMemo` ，它不会调用你传入地方函数。相反，它缓存你提供的函数，以便 `handleSubmit` **它自己**不会发生改变除非 `productId` 或者 `referrer` 发生了改变。这让你向下传递 `handleSubmit` 函数而无需不必要地重新渲染`ShippingForm`。你的代码将不会运行，直到用户提交表单。
 
 如果你已经熟悉了 [`useMemo`](/reference/react/useMemo)，你可能发现将 `useCallback` 视为以下内容会很有帮助：
@@ -218,7 +221,6 @@ function useCallback(fn, dependencies) {
 使用 `useCallback` 缓存函数仅在少数情况下有价值：
 
 - 你可以将其作为prop传递给包装在 [`memo`] 中的组件。如果值未更改，则希望跳过重新渲染。记忆允许组件仅在依赖项更改时重新渲染。
-
 - 你传递的函数稍后会作为一些Hook的依赖。比如，另一个包裹在 `useCallback` 中的函数依赖于它，或者你依赖于 [`useEffect`](/reference/react/useEffect) 中的函数
 
 在其他情况下，将函数包装在 `useCallback` 中没有任何益处。这样做也没有很大的害处。所以有些团队选择不考虑个案，并且尽可能记住。不好的部分是代码可读性降低了。而且，并不是所有的记忆都是有效的：一个 “始终新” 的值足以破坏整个组件的记忆。
@@ -234,6 +236,7 @@ function useCallback(fn, dependencies) {
 1. 尝试[从副作用中删除不必要的依赖关系](/learn/removing-effect-dependencies)。例如，将某些对象或函数移动到副作用内部或组件外部通常更简单，而不是记忆。
 
 如果特定的交互仍然感觉滞后，[使用 React 开发者工具](/blog/2018/09/10/introducing-the-react-profiler.html)查看哪些组件从记忆中受益最大，并在需要时添加记忆。这些原则使你的组件更易于调试和理解，因此在任何情况下都最好遵循它们。从长远来看，我们正在研究[自动记忆](https://www.youtube.com/watch?v=lGEMwh32soc)一劳永逸地解决这个问题。
+
 </DeepDive>
 
 <Recipes titleText="useCallback 和直接声明函数的区别" titleId="examples-rerendering">
@@ -245,6 +248,7 @@ function useCallback(fn, dependencies) {
 递增计数器感觉很慢，因为它会强制变慢的 `ShippingForm` 重新渲染。这是意料之中的，因为计数器已更改，因此你需要在屏幕上反映用户的新选择。
 
 接下来，尝试更改主题。 **感谢 `useCallback` 和 [`memo`](/reference/react/memo)的结合使用, 尽管人为地变慢了速度，但它还是很快** `ShippingForm` 跳过了重新渲染，因为 `handleSubmit` 函数没有改变。`handleSubmit` 函数没有发生改变，因为 `productId` 和`referrer` （你的 `useCallback` 依赖）自从上次渲染到现在都没有发生改变。
+
 <Sandpack>
 
 ```js App.js
@@ -380,6 +384,7 @@ button[type="button"] {
 <Solution />
 
 #### 始终重新渲染组件{/*always-re-rendering-a-component*/}
+
 在本例中， `ShippingForm` 的实现也被人为地减慢了速度，这样你可以看到当你渲染的某些 React 组件运行很慢时会发生什么。尝试递增计数器并切换主题。
 
 与前面示例不同，现在切换主题也很慢！这是因为**在这个版本中没有调用 `useCallback`** ，所以 `handleSubmit` 总是一个新函数，并且被减速的`ShippingForm` 组件不能跳过重新渲染。
@@ -515,6 +520,7 @@ button[type="button"] {
 
 </Sandpack>
 
+
 然而， 这里的代码相同，但是**被人为减慢的代码被移除**，缺少 `useCallback` 是否感觉明显？
 
 <Sandpack>
@@ -643,6 +649,7 @@ button[type="button"] {
 
 </Sandpack>
 
+
 很多时候，没有记忆的代码运行得也很好， 如果你的交互已经足够快了， 你不必去使用记忆。
 
 请记住，你需要在生产模式下运行React，禁用 [React Developer Tools](/learn/react-developer-tools)，并使用与应用用户类似的设备，以便真实地了解实际减慢应用速度的因素。
@@ -668,7 +675,6 @@ function TodoList() {
     setTodos([...todos, newTodo]);
   }, [todos]);
   // ...
-
 ```
 
 你经常希望有记忆的函数有尽可能少的依赖，当你读取某个状态只是为了计算下一个状态时，你可以通过传递 [updater function](/reference/react/useState#updating-state-based-on-the-previous-state)函数去移除该依赖：
@@ -682,12 +688,12 @@ function TodoList() {
     setTodos(todos => [...todos, newTodo]);
   }, []); // ✅ 不需要 todos 依赖项
   // ...
-
 ```
 
 在这里，并不是将 `todos` 作为依赖项并且在内部读取它，而是传递一个关于**如何**更新状态的指示器(`todos => [...todos, newTodo]`)给React [Read more about updater functions](/reference/react/useState#updating-state-based-on-the-previous-state)。
 
 ---
+
 ### 防止频繁触发副作用 {/*preventing-an-effect-from-firing-too-often*/}
 
 有时，你可能想要在[副作用](/learn/synchronizing-with-effects)：内部调用函数
@@ -708,11 +714,10 @@ function ChatRoom({ roomId }) {
     const connection = createConnection();
     connection.connect();
     // ...
-  })
-
 ```
 
 这会产生一个问题，[每一个响应值都必须声明为副作用的依赖](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。 然而, 如果你将`createOptions` 声明为一个依赖， 它会导致你的副作用不断重新连接到聊天室：
+
 
 ```js {6}
   useEffect(() => {
@@ -725,6 +730,7 @@ function ChatRoom({ roomId }) {
 ```
 
 解决这个问题， 你可以将你需要在副作用里面调用的函数包裹在 `useCallback` 中:
+
 ```js {4-9,16}
 function ChatRoom({ roomId }) {
   const [message, setMessage] = useState('');
@@ -743,7 +749,6 @@ function ChatRoom({ roomId }) {
     return () => connection.disconnect();
   }, [createOptions]); // ✅ 仅当 createOptions 更改时更改
   // ...
-}
 ```
 
 这确保了如果 `roomId`相同， `createOptions` 在多次渲染中会是同一个函数。**但是，最好消除对函数依赖项的需求。** 将你的函数移入副作用**内部**：
@@ -766,13 +771,14 @@ function ChatRoom({ roomId }) {
     return () => connection.disconnect();
   }, [roomId]); // ✅仅当 roomId 更改时更改
   // ...
-
 ```
+
 现在你的代码变得更简单了并且不需要 `useCallback`。 [了解更多关于移除副作用依赖的详细信息](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)。
 
 ---
 
 ### 优化自定义 Hook{/*optimizing-a-custom-hook*/}
+
 如果你在编写一个[自定义 Hook](/learn/reusing-logic-with-custom-hooks)，建议将它返回的任何函数包裹到 `useCallback` 中：
 
 ```js {4-6,8-10}
@@ -793,6 +799,7 @@ function useRouter() {
   };
 }
 ```
+
 这确保了 hook 的使用者在需要时优化自己的代码
 
 ---
@@ -814,13 +821,11 @@ function ProductPage({ productId, referrer }) {
     });
   }); // 🔴 每一次都返回一个新函数：没有依赖项数组
   // ...
-
 ```
 
 这是将依赖项数组作为第二个参数传递的更正版本：
 
 ```js {7}
-
 function ProductPage({ productId, referrer }) {
   const handleSubmit = useCallback((orderDetails) => {
     post('/product/' + productId + '/buy', {
@@ -828,14 +833,12 @@ function ProductPage({ productId, referrer }) {
       orderDetails,
     });
   }, [productId, referrer]); // ✅ 必要时返回一个新的函数
-
   // ...
-}
 ```
+
 如果这没有帮助，那么问题是至少有一个依赖项与以前的渲染不同。你可以通过手动将依赖项记录到控制台来调试此问题：
 
 ```js {5}
-
   const handleSubmit = useCallback((orderDetails) => {
     // ..
   }, [productId, referrer]);
