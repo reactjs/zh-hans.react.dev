@@ -107,7 +107,7 @@ root.render(<h1>Hello, world</h1>);
 
 那么请删除此代码。
 
-相反，你可能想要在 HTML 中特定的位置渲染 React 组件。打开 HTML 页面（或生成它的服务器模板），并向任意一个标签添加一个唯一的 [`id`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/id) 属性，例如：
+相反，你可能想要在 HTML 中特定的位置渲染 React 组件。打开 HTML 页面（或用于生成它的服务端模板），并向任意一个标签添加一个唯一的 [`id`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/id) 属性，例如：
 
 ```html
 <!-- ... 你的 HTML 代码某处 ... -->
