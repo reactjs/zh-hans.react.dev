@@ -558,7 +558,7 @@ Warning: Function components cannot be given refs. Attempts to access this ref w
 
 </ConsoleBlock>
 
-默认情况下，你自己的组件不会暴露它们内部的 DOM 节点的 refs。
+默认情况下，你自己的组件不会暴露它们内部的 DOM 节点的 ref。
 
 为了解决这个问题，找到你想获得 ref 的组件：
 
