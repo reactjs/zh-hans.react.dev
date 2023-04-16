@@ -448,7 +448,7 @@ button { display: block; margin-bottom: 20px; }
 
 #### 向你的组件暴露 ref {/*exposing-a-ref-to-your-own-component*/}
 
-有时，你可能想让父级组件在你的组件中操纵 DOM。例如，也许你正在写一个 `MyInput` 组件，但你希望父组件能够聚焦 input（父组件无法访问）。你可以使用一个组合，通过 `useRef` 持有 input 并且通过 [`forwardRef`](/reference/react/forwardRef) 来将其暴露给父组件。在这里阅读一个[详细演练](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)。
+有时，你可能想让父级组件在你的组件中操纵 DOM。例如，也许你正在写一个 `MyInput` 组件，但你希望父组件能够聚焦 input（父组件无法访问）。你可以使用一个组合，通过 `useRef` 持有 input 并且通过 [`forwardRef`](/reference/react/forwardRef) 来将其暴露给父组件。在这里阅读一个 [详细演练](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)。
 
 <Sandpack>
 
