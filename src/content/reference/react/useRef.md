@@ -512,7 +512,7 @@ function Video() {
 
 <DeepDive>
 
-#### 如何避免在初始化 useRef 之后进行 null 的类型检查 {/*how-to-avoid-null-checks-when-initializing-use-ref-later*/}
+#### 如何避免在初始化 `useRef` 之后进行 `null` 的类型检查 {/*how-to-avoid-null-checks-when-initializing-use-ref-later*/}
 
 如果你使用一个类型检查器，并且不想总是检查 `null`，你可以尝试用这样的模式来代替：
 
