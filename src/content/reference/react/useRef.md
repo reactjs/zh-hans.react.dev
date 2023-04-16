@@ -593,4 +593,4 @@ export default MyInput;
 
 然后，父级组件可以得到它的 ref。
 
-阅读更多关于[访问另一个组件的 DOM 节点](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)。
+阅读更多关于 [访问另一个组件的 DOM 节点](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)。
