@@ -1200,13 +1200,13 @@ React 调用你的函数两次，所以你会注意到 todo 被添加了两次�
   }, [todos, tab]);
 ```
 
-阅读 [保持组件纯粹](/learn/keeping-components-pure) 以了解有关纯粹组件的更多信息。
+阅读 [保持组件纯粹](/learn/keeping-components-pure) 以了解有关纯组件的更多信息。
 
 此外，请查看有关不通过对象或者数组的可变性直接 [更新对象](/learn/updating-objects-in-state) 和 [更新数组](/learn/updating-arrays-in-state) 的指南。
 
 ---
 
-### 我的 `useMemo` 调用应该返回一个对象，但返回 `undefined` {/*my-usememo-call-is-supposed-to-return-an-object-but-returns-undefined*/}
+### 我调用的 `useMemo` 应该返回一个对象，但返回 `undefined` {/*my-usememo-call-is-supposed-to-return-an-object-but-returns-undefined*/}
 
 这段代码不起作用：
 
@@ -1218,7 +1218,7 @@ React 调用你的函数两次，所以你会注意到 todo 被添加了两次�
   }, [text]);
 ```
 
-在 JavaScript 中，`() => {` 是箭头函数体的开始标志，因此 `{` 大括号不是对象的一部分。这就是它不返回对象并导致错误的原因。你可以通过添加像 `({` and `})` 这样的括号来修复它：
+在 JavaScript 中，`() => {` 是箭头函数体的开始标志，因此 `{` 大括号不是对象的一部分。这就是它不返回对象并导致错误的原因。你可以通过添加像 `({` 与 `})` 这样的括号来修复它：
 
 ```js {1-2,5}
   // 这行得通，但很容易有人再次破坏
