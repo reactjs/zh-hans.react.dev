@@ -733,7 +733,7 @@ function Square({ value }) {
 
 下一步，我们希望 Square 组件能够“记住”它被单击过，并用“X”填充它。为了“记住”一些东西，组件使用 *state*。
 
-React 提供了一个名为 `useState` 的特殊函数，可以从组件中调用它来让它“记住”一些东西。让我们将 `Square` 的当前值存储在 `state` 中，并在单击 `Square` 时更改它。
+React 提供了一个名为 `useState` 的特殊函数，可以从组件中调用它来让它“记住”一些东西。让我们将 `Square` 的当前值存储在 state 中，并在单击 `Square` 时更改它。
 
 在文件的顶部导入 `useState`。从 `Square` 组件中移除 `value` props。在调用 `useState` 的 `Square` 的开头添加一个新行。让它返回一个名为 value 的 state 变量：
 
