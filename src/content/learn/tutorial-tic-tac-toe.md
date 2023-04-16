@@ -747,7 +747,7 @@ function Square() {
     //...
 ```
 
-`value` 存储值，而 `setValue` 是可用于更改值的函数。传递给 `useState` 的 `null` 用作这个 state 变量的初始值，因此此处 `value` 的值开始时等于 null。
+`value` 存储值，而 `setValue` 是可用于更改值的函数。传递给 `useState` 的 `null` 用作这个 state 变量的初始值，因此此处 `value` 的值开始时等于 `null`。
 
 由于 `Square` 组件不再接受 props，我们从 Board 组件创建的所有九个 Square 组件中删除 `value` props：
 
