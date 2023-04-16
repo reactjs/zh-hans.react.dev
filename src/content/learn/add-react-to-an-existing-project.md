@@ -34,7 +34,7 @@ title: 将 React 添加到现有项目中
 
 你可以分两步进行：
 
-1. **配置 JavaScript 环境**，以便使用 [JSX 语法](/learn/writing-markup-with-jsx)、 [`import`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import) 和 [`export`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export) 语法将代码拆分为模块，以及从 [npm](https://www.npmjs.com/) 包注册表中使用包（例如 React）。
+1. **配置 JavaScript 环境**，以便使用 [JSX 语法](/learn/writing-markup-with-jsx)、[`import`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import) 和 [`export`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export) 语法将代码拆分为模块，以及从 [npm](https://www.npmjs.com/) 包注册表中使用包（例如 React）。
 2. **在需要的位置渲染 React 组件**。
 
 确切的方法取决于现有的页面配置，因此让我们对一些细节进行说明。
