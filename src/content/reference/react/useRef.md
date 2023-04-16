@@ -487,7 +487,7 @@ export default function Form() {
 
 ### 避免重复创建 ref 的内容 {/*avoiding-recreating-the-ref-contents*/}
 
-React 保存首次的 ref 初始值，并在后续的渲染中忽略他。
+React 保存首次的 ref 初始值，并在后续的渲染中忽略它。
 
 ```js
 function Video() {
