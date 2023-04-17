@@ -16,7 +16,7 @@ next: components-and-props.html
 > These new documentation pages teach how to write JSX and show it on an HTML page:
 >
 > - [Writing Markup with JSX](https://react.dev/learn/writing-markup-with-jsx)
-> - [Add React to an Existing Project](/learn/add-react-to-an-existing-project#step-2-render-react-components-anywhere-on-the-page)
+> - [Add React to an Existing Project](https://react.dev/learn/add-react-to-an-existing-project#step-2-render-react-components-anywhere-on-the-page)
 
 </div>
 

@@ -9,7 +9,7 @@ permalink: docs/render-props.html
 > These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
 >
 > Render props are used in modern React, but aren't very common.  
-> For many cases, they have been replaced by [custom Hooks](/learn/reusing-logic-with-custom-hooks).
+> For many cases, they have been replaced by [custom Hooks](https://react.dev/learn/reusing-logic-with-custom-hooks).
 
 </div>
 
