@@ -4,7 +4,7 @@ title: useCallback
 
 <Intro>
 
-`useCallback` 是一个让你在多次渲染中缓存函数定义的 React Hook
+`useCallback` 是一个让你在多次渲染中缓存函数定义的 React Hook。
 
 ```js
 const cachedFn = useCallback(fn, dependencies)
@@ -16,7 +16,7 @@ const cachedFn = useCallback(fn, dependencies)
 
 ---
 
-## 参考
+## 参考 {/*reference*/}
 
 ### `useCallback(fn, dependencies)` {/*usecallback*/}
 
@@ -520,6 +520,7 @@ button[type="button"] {
 
 </Sandpack>
 
+
 然而， 这里的代码相同，但是**被人为减慢的代码被移除**，缺少 `useCallback` 是否感觉明显？
 
 <Sandpack>
@@ -648,6 +649,7 @@ button[type="button"] {
 
 </Sandpack>
 
+
 很多时候，没有记忆的代码运行得也很好， 如果你的交互已经足够快了， 你不必去使用记忆。
 
 请记住，你需要在生产模式下运行React，禁用 [React Developer Tools](/learn/react-developer-tools)，并使用与应用用户类似的设备，以便真实地了解实际减慢应用速度的因素。
@@ -673,7 +675,6 @@ function TodoList() {
     setTodos([...todos, newTodo]);
   }, [todos]);
   // ...
-
 ```
 
 你经常希望有记忆的函数有尽可能少的依赖，当你读取某个状态只是为了计算下一个状态时，你可以通过传递 [updater function](/reference/react/useState#updating-state-based-on-the-previous-state)函数去移除该依赖：
@@ -687,12 +688,12 @@ function TodoList() {
     setTodos(todos => [...todos, newTodo]);
   }, []); // ✅ 不需要 todos 依赖项
   // ...
-
 ```
 
 在这里，并不是将 `todos` 作为依赖项并且在内部读取它，而是传递一个关于**如何**更新状态的指示器(`todos => [...todos, newTodo]`)给React [Read more about updater functions](/reference/react/useState#updating-state-based-on-the-previous-state)。
 
 ---
+
 ### 防止频繁触发副作用 {/*preventing-an-effect-from-firing-too-often*/}
 
 有时，你可能想要在[副作用](/learn/synchronizing-with-effects)：内部调用函数
@@ -713,11 +714,10 @@ function ChatRoom({ roomId }) {
     const connection = createConnection();
     connection.connect();
     // ...
-  })
-
 ```
 
 这会产生一个问题，[每一个响应值都必须声明为副作用的依赖](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。 然而, 如果你将`createOptions` 声明为一个依赖， 它会导致你的副作用不断重新连接到聊天室：
+
 
 ```js {6}
   useEffect(() => {
@@ -730,6 +730,7 @@ function ChatRoom({ roomId }) {
 ```
 
 解决这个问题， 你可以将你需要在副作用里面调用的函数包裹在 `useCallback` 中:
+
 ```js {4-9,16}
 function ChatRoom({ roomId }) {
   const [message, setMessage] = useState('');
@@ -748,7 +749,6 @@ function ChatRoom({ roomId }) {
     return () => connection.disconnect();
   }, [createOptions]); // ✅ 仅当 createOptions 更改时更改
   // ...
-}
 ```
 
 这确保了如果 `roomId`相同， `createOptions` 在多次渲染中会是同一个函数。**但是，最好消除对函数依赖项的需求。** 将你的函数移入副作用**内部**：
@@ -771,13 +771,14 @@ function ChatRoom({ roomId }) {
     return () => connection.disconnect();
   }, [roomId]); // ✅仅当 roomId 更改时更改
   // ...
-
 ```
+
 现在你的代码变得更简单了并且不需要 `useCallback`。 [了解更多关于移除副作用依赖的详细信息](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)。
 
 ---
 
 ### 优化自定义 Hook{/*optimizing-a-custom-hook*/}
+
 如果你在编写一个[自定义 Hook](/learn/reusing-logic-with-custom-hooks)，建议将它返回的任何函数包裹到 `useCallback` 中：
 
 ```js {4-6,8-10}
@@ -798,6 +799,7 @@ function useRouter() {
   };
 }
 ```
+
 这确保了 hook 的使用者在需要时优化自己的代码
 
 ---
@@ -819,13 +821,11 @@ function ProductPage({ productId, referrer }) {
     });
   }); // 🔴 每一次都返回一个新函数：没有依赖项数组
   // ...
-
 ```
 
 这是将依赖项数组作为第二个参数传递的更正版本：
 
 ```js {7}
-
 function ProductPage({ productId, referrer }) {
   const handleSubmit = useCallback((orderDetails) => {
     post('/product/' + productId + '/buy', {
@@ -833,14 +833,12 @@ function ProductPage({ productId, referrer }) {
       orderDetails,
     });
   }, [productId, referrer]); // ✅ 必要时返回一个新的函数
-
   // ...
-}
 ```
+
 如果这没有帮助，那么问题是至少有一个依赖项与以前的渲染不同。你可以通过手动将依赖项记录到控制台来调试此问题：
 
 ```js {5}
-
   const handleSubmit = useCallback((orderDetails) => {
     // ..
   }, [productId, referrer]);
