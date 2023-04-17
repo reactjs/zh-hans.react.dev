@@ -1,6 +1,6 @@
 # legacy.reactjs.org
 
-This repo contains the source code and documentation powering [legacy.reactjs.org](https://reactjs.org/).
+This repo contains the source code and documentation powering [legacy.reactjs.org](https://legacy.reactjs.org/).
 
 ## Not actively maintained
 
