@@ -367,7 +367,6 @@ function Message({ messageColor }) {
 这种写法就不会与从父组件传递的属性失去同步。
 
 只有当你 **想要** 忽略特定 props 属性的所有更新时，将 props “镜像”到 state 才有意义。按照惯例，prop 名称以 `initial` 或 `default` 开头，以阐明该 prop 的新值将被忽略：
-
 ```js
 function Message({ initialColor }) {
   // 这个 `color` state 变量用于保存 `initialColor` 的 **初始值**。
