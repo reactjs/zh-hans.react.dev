@@ -1349,7 +1349,7 @@ function MyApp() {
 
 这里有几种常见的情况会引起这个问题：
 
-1. 你在调用 `useContext()` 的同一组件（或下层）渲染 `<SomeContext.Provider>`。把 `<SomeContext.Provider>` 向调用 `useContext()` 组件 *之上和之外* 移动。
+1. 你在调用 `useContext()` 的同一组件（或下层）渲染 `<SomeContext.Provider>`。把 `<SomeContext.Provider>` 向调用 `useContext()` 组件 **之上和之外** 移动。
 2. 你可能忘记了使用 `<SomeContext.Provider>` 包装组件，或者你可能将组件放在树的不同部分。使用 [React DevTools](/learn/react-developer-tools) 检查组件树的层级是否正确。
 3. 你的工具可能会遇到一些构建问题，导致你在传值组件中的所看到的 `SomeContext` 和读值组件中所看到的 `SomeContext` 是两个不同的对象。例如，如果使用符号链接，就会发生这种情况。你可以通过将它们赋值给全局对象如 `window.SomeContext1` 和 `window.SomeContext2` 来验证这种情况。然后在控制台检查 `window.SomeContext1 === window.SomeContext2` 是否相等。如果它们是不相等的，就在构建工具层面修复这个问题。
 
