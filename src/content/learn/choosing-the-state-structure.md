@@ -368,8 +368,6 @@ function Message({ messageColor }) {
 
 只有当你 **想要** 忽略特定 props 属性的所有更新时，将 props “镜像”到 state 才有意义。按照惯例，prop 名称以 `initial` 或 `default` 开头，以阐明该 prop 的新值将被忽略：
 
-这个 `color` state 变量用于保存 `initialColor` 的 **初始值** 值。
-
 ```js
 function Message({ initialColor }) {
   // 这个 `color` state 变量用于保存 `initialColor` 的 **初始值**。
@@ -571,7 +569,6 @@ state 过去常常是这样复制的：
 * `selectedId = 0`
 
 重复的 state 没有了，你只保留了必要的 state！
-
 
 现在，如果你编辑 **selected** 项目，下面的消息将立即更新。这是因为 `setItems` 会触发重新渲染，而 `items.find(...)` 会找到带有更新文本的项目。你不需要在 state 中保存 **选定的项目**，因为只有 **选定的 ID** 是必要的。其余的可以在渲染期间计算。
 
@@ -1137,8 +1134,6 @@ export const initialTravelPlan = {
 **现在 state 已经“扁平化”（也称为“规范化”），更新嵌套项会变得更加容易。**
 
 现在要删除一个地点，您只需要更新两个 state 级别：
-
-
 
 - 其 **父级** 地点的更新版本应该从其 `childIds` 数组中排除已删除的 ID。
 - 其根级“表”对象的更新版本应包括父级地点的更新版本。
