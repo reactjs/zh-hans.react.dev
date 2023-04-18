@@ -3,6 +3,12 @@ title: "Community Round-up #16"
 author: [jgebhardt]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 There have been many posts recently covering the <i>why</i> and <i>how</i> of React. This week's community round-up includes a collection of recent articles to help you get started with React, along with a few posts that explain some of the inner workings.
 
 

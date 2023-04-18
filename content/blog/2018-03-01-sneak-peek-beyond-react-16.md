@@ -3,6 +3,12 @@ title: "Sneak Peek: Beyond React 16"
 author: [sophiebits]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 [Dan Abramov](https://twitter.com/dan_abramov) from our team just spoke at [JSConf Iceland 2018](https://2018.jsconf.is/) with a preview of some new features we've been working on in React. The talk opens with a question: "With vast differences in computing power and network speed, how do we deliver the best user experience for everyone?"
 
 Here's the video courtesy of JSConf Iceland:

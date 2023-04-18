@@ -3,6 +3,12 @@ title: "New React Devtools Beta"
 author: [jaredly]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 We've made an entirely new version of the devtools, and we want you to try it
 out!
 

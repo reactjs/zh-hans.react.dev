@@ -3,6 +3,12 @@ title: "Is React Translated Yet? ¡Sí! Sim! はい！"
 author: [tesseralis]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 We’re excited to announce an ongoing effort to maintain official translations of the React documentation website into different languages. Thanks to the dedicated efforts of React community members from around the world, React is now being translated into *over 30* languages! You can find them on the new [Languages](/languages) page.
 
 In addition, the following three languages have completed translating most of the React Docs! 🎉

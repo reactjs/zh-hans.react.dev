@@ -3,6 +3,12 @@ title: "Community Round-up #21"
 author: [LoukaN]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 ## React Router {#react-router}
 [Ryan Florence](http://ryanflorence.com/) and [Michael Jackson](https://twitter.com/mjackson) ported Ember's router to React in a project called [React Router](https://github.com/rackt/react-router). This is a very good example of both communities working together to make the web better!
 

@@ -3,6 +3,12 @@ title: "介绍 Zero-Bundle-Size 的 React 服务端组件"
 author: [gaearon,laurentan,josephsavona,sebmarkbage]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 2020 是漫长的一年。在今年即将结束之际，我们想分享一个特别的假日更新，介绍下我们对 Zero-Bundle-Size 的 **React 服务端组件**的研究。
 
 为了介绍 React 服务端组件，我们特别准备了一场分享和一个 Demo。如果时间方便，可以在假期期间研究它们，或者在新年恢复工作后再查看。

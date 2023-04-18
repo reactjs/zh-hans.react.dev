@@ -4,7 +4,9 @@ title: Context
 permalink: docs/context.html
 ---
 
-> Try the new React documentation.
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
 > 
 > These new documentation pages teach modern React and include live examples:
 >
@@ -12,6 +14,8 @@ permalink: docs/context.html
 > - [`useContext`](https://beta.reactjs.org/reference/react/useContext)
 >
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
+
+</div>
 
 Context 提供了一个无需为每层组件手动添加 props，就能在组件树间进行数据传递的方法。
 

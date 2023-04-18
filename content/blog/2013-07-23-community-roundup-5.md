@@ -3,6 +3,12 @@ title: "Community Round-up #5"
 author: [vjeux]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 We launched the [React Facebook Page](https://www.facebook.com/react) along with the React v0.4 launch. 700 people already liked it to get updated on the project :)
 
 ## Cross-browser onChange {#cross-browser-onchange}

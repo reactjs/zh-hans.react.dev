@@ -3,6 +3,12 @@ title: "Community Round-up #8"
 author: [vjeux]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 A lot has happened in the month since our last update. Here are some of the more interesting things we've found. But first, we have a couple updates before we share links.
 
 First, we are organizing a [React Hackathon](http://reactjshack-a-thon.splashthat.com/) in Facebook's Seattle office on Saturday September 28. If you want to hack on React, meet some of the team or win some prizes, feel free to join us!

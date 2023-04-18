@@ -3,6 +3,12 @@ title: "React 16.x 的规划"
 author: [gaearon]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 你可能已经在之前的博客和视频中看到过了 “Hook”，”Suspense” 和 ”并发渲染“ 这三种功能。在这篇文章中，我们会讨论它们将如何整合在 React 中，以及它们将在何时出现在 React 的稳定版本中。
 
 > 2019 年 8 月更新
@@ -197,6 +203,12 @@ Suspense 的底层原理（延迟渲染并显示一个后备组件）在 React 1
 我们已经开始了新的支持 Suspense（包括在服务器等待异步数据而不需要二次渲染）和以逐块的形式加载页面内容已提供更好的用户体验的服务器渲染器的设计。你可以在[这个演讲](https://www.youtube.com/watch?v=z-6JC0_cOns)中看到这个早期原型的简介。这个新的服务器渲染器是我们2019年的工作重点，不过具体的时间表还言之过早。和往常一样，它的开发将在 [GitHub 上](https://github.com/facebook/react/pulls?utf8=%E2%9C%93&q=is%3Apr+is%3Aopen+fizz)。
 
 -----
+
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
 
 以上就是全部啦！终于你看到的，我们忙于很多项目，但是我们在未来的几个月中期待很多进展。
 

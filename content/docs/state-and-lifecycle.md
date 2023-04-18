@@ -8,14 +8,17 @@ prev: components-and-props.html
 next: handling-events.html
 ---
 
-> Try the new React documentation.
-> 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
 > These new documentation pages teach modern React and include live examples:
 >
-> - [State: A Component's Memory](https://beta.reactjs.org/learn/state-a-components-memory)
-> - [Synchronizing with Effects](https://beta.reactjs.org/learn/synchronizing-with-effects)
->
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
+> - [State: A Component's Memory](https://react.dev/learn/state-a-components-memory)
+> - [Synchronizing with Effects](https://react.dev/learn/synchronizing-with-effects)
+
+</div>
 
 本页面介绍了 React 组件中 state 和生命周期的概念。你可以查阅[详细的组件 API 参考文档](/docs/react-component.html)。
 

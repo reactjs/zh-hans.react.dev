@@ -8,6 +8,15 @@ redirect_from:
   - "support.html"
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> See the [Community](https://react.dev/community) resources on the new site.
+
+</div>
+
 React 拥有数百万开发者的社区。
 
 本章节将为你列出一些与 React 相关的社区，你也可以成为其中的一员；本章节中的其他页面将为你提供更多在线与面对面的学习资料。

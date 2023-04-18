@@ -4,7 +4,9 @@ title: Refs 转发
 permalink: docs/forwarding-refs.html
 ---
 
-> Try the new React documentation.
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
 > 
 > These new documentation pages teach modern React and include live examples:
 >
@@ -12,6 +14,8 @@ permalink: docs/forwarding-refs.html
 > - [`forwardRef`](https://beta.reactjs.org/reference/react/forwardRef)
 >
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
+
+</div>
 
 Ref 转发是一项将 [ref](/docs/refs-and-the-dom.html) 自动地通过组件传递到其一子组件的技巧。对于大多数应用中的组件来说，这通常不是必需的。但其对某些组件，尤其是可重用的组件库是很有用的。最常见的案例如下所述。
 

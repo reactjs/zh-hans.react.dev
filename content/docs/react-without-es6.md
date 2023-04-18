@@ -4,6 +4,12 @@ title: 不使用 ES6
 permalink: docs/react-without-es6.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+
+</div>
+
 通常我们会用 JavaScript 的 `class` 关键字来定义 React 组件：
 
 ```javascript

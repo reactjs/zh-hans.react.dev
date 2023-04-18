@@ -3,6 +3,12 @@ title: "Reactiflux is moving to Discord"
 author: [benigeri]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 TL;DR: Slack decided that Reactiflux had too many members and disabled new invites. Reactiflux is moving to Discord. Join us: [http://join.reactiflux.com](http://join.reactiflux.com/)
 
 ## What happened with Slack? {#what-happened-with-slack}

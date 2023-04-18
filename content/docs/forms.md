@@ -9,7 +9,9 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
-> Try the new React documentation.
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
 > 
 > These new documentation pages teach modern React and include live examples:
 >
@@ -18,6 +20,8 @@ redirect_from:
 > - [`<textarea>`](https://beta.reactjs.org/reference/react-dom/components/textarea)
 >
 > The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
+
+</div>
 
 在 React 里，HTML 表单元素的工作方式和其他的 DOM 元素有些不同，这是因为表单元素通常会保持一些内部的 state。例如这个纯 HTML 表单只接受一个名称：
 

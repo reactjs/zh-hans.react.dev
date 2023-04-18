@@ -3,6 +3,12 @@ title: "Community Round-up #19"
 author: [chenglou]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 ## React Meetups! {#react-meetups}
 Ever wanted to find developers who also share the same interest in React than you? Recently, there has been a React Meetup in [San Francisco](http://www.meetup.com/ReactJS-San-Francisco/) (courtesy of [Telmate](http://www.telmate.com)), and one in [London](http://www.meetup.com/London-React-User-Group/) (courtesy of [Stuart Harris](http://www.meetup.com/London-React-User-Group/members/105837542/), [Cain Ullah](http://www.meetup.com/London-React-User-Group/members/15509971/) and [Zoe Merchant](http://www.meetup.com/London-React-User-Group/members/137058242/)). These two events have been big successes; a second one in London is [already planned](http://www.meetup.com/London-React-User-Group/events/191406572/).
 

@@ -6,6 +6,12 @@ sectionid: community
 permalink: community/articles.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+
+</div>
+
 - [React How-to](https://github.com/petehunt/react-howto) - Pete Hunt 的 React 生态系统指南。
 - [每个 React 初学者应该知道的 9 件事](https://camjackson.net/post/9-things-every-reactjs-beginner-should-know) - Cam Jackson 的初学者指南。
 - [React "Aha" Moments](https://tylermcginnis.com/react-aha-moments/) - Tyler McGinnis 的文章介绍了他用 React 收集的 "Aha" 时刻。

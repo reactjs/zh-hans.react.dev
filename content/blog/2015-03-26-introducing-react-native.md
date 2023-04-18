@@ -3,6 +3,12 @@ title: "React Native 介绍"
 author: [sophiebits]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 在一月份的 React.js 大会上，我们宣布了React Native，这是一个用 React 构建原生应用的新框架。我们很高兴的宣布会将 React Native 开源，你可以立即使用它来构建你的应用。
 
 更多详细信息, 请看 [Tom Occhino 在 Facebook Engineering blog 的帖子](https://code.facebook.com/posts/1014532261909640/react-native-bringing-modern-web-techniques-to-mobile/):

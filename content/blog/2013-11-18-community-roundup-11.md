@@ -3,6 +3,12 @@ title: "Community Round-up #11"
 author: [vjeux]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 This round-up is the proof that React has taken off from its Facebook's root: it features three in-depth presentations of React done by external people. This is awesome, keep them coming!
 
 ## Super VanJS 2013 Talk {#super-vanjs-2013-talk}

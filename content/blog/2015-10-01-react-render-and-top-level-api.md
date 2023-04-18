@@ -3,6 +3,12 @@ title: "ReactDOM.render and the Top Level React API"
 author: ["jimfb", "sebmarkbage"]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 
 When you're in React's world you are just building components that fit into other components. Everything is a component. Unfortunately not everything around you is built using React. At the root of your tree you still have to write some plumbing code to connect the outer world into React.
 

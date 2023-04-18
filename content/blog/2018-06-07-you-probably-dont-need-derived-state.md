@@ -3,6 +3,12 @@ title: "你可能不需要使用派生 state"
 author: [bvaughn]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 React 16.4 版本修复了一个 [getDerivedStateFromProps 的 bug](/blog/2018/05/23/react-v-16-4.html#bugfix-for-getderivedstatefromprops)，这个 bug 会在 React components 复现一些已知的 bug。如果这个版本导致出现的问题，导致您在修复过之后还已知出现的话，我们非常抱歉。在这篇文章里，我们会展示一些常见的反面模式，和相对应的，我们推荐的模式。
 
 在很长一段时间内，生命周期函数 `componentWillReceiveProps` 是响应 Props 变化之后进行更新的唯一方式。16.3 版本里, [我们介绍了一个替代版的生命周期函数： `getDerivedStateFromProps`](/blog/2018/03/29/react-v-16-3.html#component-lifecycle-changes)，尝试用一个更安全的方式达到同样的目的。与此同时，我们意识到人们对如何使用这两种方法存在许多误解，并且我们发现反模式会导致细微而混乱的错误。16.4 版本修复的这个 bug， [让派生 state 更加可控](https://github.com/facebook/react/issues/12898)，会让滥用导致的 bug 更容易被发现。
@@ -206,6 +212,12 @@ class EmailInput extends Component {
 refs 在某些情况下很有用，比如这个。但通常我们建议谨慎使用。即使是做一个演示，这个命令式的方法也是非理想的，因为这会导致两次而不是一次渲染。
 
 -----
+
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
 
 ### 概括 {#recap}
 

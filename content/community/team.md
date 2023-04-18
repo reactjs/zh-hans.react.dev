@@ -6,6 +6,15 @@ sectionid: community
 permalink: community/team.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> See the [Team](https://react.dev/community/team) page on the new site.
+
+</div>
+
 React 的开发工作由 Meta 专门工作小组全职领导。它也接受来自世界各地开发者们的贡献。
 
 ## 走近 React 团队 {#meet-the-react-team}

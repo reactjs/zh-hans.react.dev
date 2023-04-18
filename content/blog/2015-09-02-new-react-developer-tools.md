@@ -4,6 +4,12 @@ layout: post
 author: [sophiebits]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 A month ago, we [posted a beta](/blog/2015/08/03/new-react-devtools-beta.html) of the new React developer tools. Today, we're releasing the first stable version of the new devtools. We're calling it version 0.14, but it's a full rewrite so we think of it more like a 2.0 release.
 
 ![Video/screenshot of new devtools](../images/blog/devtools-full.gif)

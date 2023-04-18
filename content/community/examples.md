@@ -6,6 +6,12 @@ sectionid: community
 permalink: community/examples.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+
+</div>
+
 React 社区创建了许多的示例项目。此章节我们致力于那些使用了 React 而未使用第三方状态管理库的项目上。
 
 如果你想添加一个项目，请务必保证与 React 最新版本保持同步。
