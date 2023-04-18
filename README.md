@@ -20,3 +20,4 @@ This site is archived and not maintained. For new React docs, go to [react.dev](
 
 ## License
 Content at [legacy.reactjs.org](https://legacy.reactjs.org/) is CC-BY-4.0 licensed, as found in the [LICENSE-DOCS.md](LICENSE-DOCS.md) file.
+
