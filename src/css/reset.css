@@ -45,3 +45,9 @@ img {
 pre, code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+.scary > blockquote {
+  background-color: rgba(237, 51, 21, 0.2) !important;
+  border-left-color: #ed3315 !important;
+}
+

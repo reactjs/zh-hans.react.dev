@@ -3,6 +3,12 @@ title: "Community Round-up #1"
 author: [vjeux]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 React was open sourced two weeks ago and it's time for a little round-up of what has been going on.
 
 ## Khan Academy Question Editor {#khan-academy-question-editor}

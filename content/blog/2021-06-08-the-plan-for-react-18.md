@@ -3,6 +3,12 @@ title: "React 18 发布计划"
 author: [acdlite, bvaughn, abernathyca, gaearon, rachelnabors, rickhanlonii, sebmarkbage, sethwebster]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 > 2021 年 11 月 15 日更新
 >
 > React 18 已进入 Beta 阶段。有关该版本的更多信息，可以在 [React 18 工作组相关的文章中找到](https://github.com/reactwg/react-18/discussions/112).

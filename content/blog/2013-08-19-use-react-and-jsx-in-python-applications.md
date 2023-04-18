@@ -3,6 +3,12 @@ title: "在 Python 应用程序中使用 React 与 JSX"
 author: [kmeht]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 今天我们很高兴能发布 [PyReact](https://github.com/facebook/react-python) 的初始版本，它可以让你在 Python 应用程序中更简单的使用 React 与 JSX。它被设计为一个将 JSX 文件转换为 JavaScript 的 API，同时提供最新 React 源文件的访问。
 
 ## 使用 {#usage}

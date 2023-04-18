@@ -11,16 +11,18 @@ redirect_from:
   - "tips/children-undefined.html"
 ---
 
-> Try the new React documentation.
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
 > 
 > These new documentation pages teach modern React and include live examples:
 >
-> - [Referencing Values with Refs](https://beta.reactjs.org/learn/referencing-values-with-refs)
-> - [Manipulating the DOM with Refs](https://beta.reactjs.org/learn/manipulating-the-dom-with-refs)
-> - [`useRef`](https://beta.reactjs.org/reference/react/useRef)
-> - [`forwardRef`](https://beta.reactjs.org/reference/react/forwardRef)
->
-> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/legacy.reactjs.org/issues/3308)
+> - [Referencing Values with Refs](https://react.dev/learn/referencing-values-with-refs)
+> - [Manipulating the DOM with Refs](https://react.dev/learn/manipulating-the-dom-with-refs)
+> - [`useRef`](https://react.dev/reference/react/useRef)
+> - [`forwardRef`](https://react.dev/reference/react/forwardRef)
+
+</div>
 
 Refs 提供了一种方式，允许我们访问在 render 方法中创建的 DOM 节点或 React 元素。
 

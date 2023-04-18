@@ -3,6 +3,12 @@ title: React.js Conf
 author: [vjeux]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 Every few weeks someone asks us when we are going to organize a conference for React. Our answer has always been "some day". In the mean time, people have been talking about React at other JavaScript conferences around the world. But now the time has finally come for us to have a conference of our own.
 
 **We're happy to announce [React.js Conf](http://conf.reactjs.com/)! It will take place January 28-29, 2015 on Facebook's campus in Menlo Park, California.**

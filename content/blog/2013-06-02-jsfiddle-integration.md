@@ -3,6 +3,12 @@ title: JSFiddle 集成
 author: [vjeux]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 [JSFiddle](https://jsfiddle.net)  刚刚宣布支持 React。这是一个令人兴奋的消息，因为它使代码片段上的协作变得更加容易。你可以尝试这个 **[基础的 React JSFiddle](http://jsfiddle.net/vjeux/kb3gN/)**，fork 它并分享它😎！这里还有一个 [不含 JSX 的 fiddle](http://jsfiddle.net/vjeux/VkebS/)。
 
 

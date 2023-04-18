@@ -3,6 +3,12 @@ title: "如何升级到 React 18"
 author: [rickhanlonii]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 我们在 [release post](/blog/2022/03/29/react-v18.html) 分享过, React 18 带来了并发渲染驱动的特性，对已有应用支持循序渐进的采用策略。本文将向你说明升级到 React 18 的步骤。
 
 升级到 React 18 遇到问题请 [报告issue](https://github.com/facebook/react/issues/new/choose) 。

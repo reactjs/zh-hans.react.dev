@@ -4,6 +4,12 @@ layout: post
 author: [wincent]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 ## Data fetching for React applications {#data-fetching-for-react-applications}
 
 There's more to building an application than creating a user interface. Data fetching is still a tricky problem, especially as applications become more complicated. At [React.js Conf](http://conf.reactjs.com/) we announced two projects we've created at Facebook to make data fetching simple for developers, even as a product grows to include dozens of contributors and the application becomes as complex as Facebook itself.

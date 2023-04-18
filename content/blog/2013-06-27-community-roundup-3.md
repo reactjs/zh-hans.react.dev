@@ -3,6 +3,12 @@ title: "Community Round-up #3"
 author: [vjeux]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 The highlight of this week is that an interaction-heavy app has been ported to React. React components are solving issues they had with nested views.
 
 ## Moving From Backbone To React {#moving-from-backbone-to-react}

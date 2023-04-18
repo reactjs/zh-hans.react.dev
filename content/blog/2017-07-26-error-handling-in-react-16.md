@@ -3,6 +3,12 @@ title: "Error Handling in React 16"
 author: [gaearon]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 As React 16 release is getting closer, we would like to announce a few changes to how React handles JavaScript errors inside components. These changes are included in React 16 beta versions, and will be a part of React 16.
 
 **By the way, [we just released the first beta of React 16 for you to try!](https://github.com/facebook/react/issues/10294)**

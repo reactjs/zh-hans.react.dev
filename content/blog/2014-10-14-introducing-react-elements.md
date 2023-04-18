@@ -5,6 +5,12 @@ redirect_from:
   - "blog/2014/10/14/introducting-react-elements.html"
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 The upcoming React 0.12 tweaks some APIs to get us close to the final 1.0 API. This release is all about setting us up for making the `ReactElement` type really FAST, [jest unit testing](https://facebook.github.io/jest/) easier, making classes simpler (in preparation for ES6 classes) and better integration with third-party languages!
 
 If you currently use JSX everywhere, you don't really have to do anything to get these benefits! The updated transformer will do it for you.

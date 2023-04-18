@@ -6,6 +6,12 @@ sectionid: community
 permalink: community/external-resources.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+
+</div>
+
 有许多经过精心设计和整理的资源，React 社区将它们收集在本章节。
 
 - [Reactiflux](https://www.reactiflux.com/) - 一个由 20,000+ React 开发者组成的社区。它们有一个精心设计的 [学习板块](https://www.reactiflux.com/learning/)。

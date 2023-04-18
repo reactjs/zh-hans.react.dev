@@ -3,6 +3,12 @@ title: "介绍全新的 JSX 转换"
 author: [lunaruan]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 虽然 React 17 [并未包含新特性](/blog/2020/08/10/react-v17-rc.html)，但它将提供一个全新版本的 JSX 转换。本文中，我们将为你描述它是什么以及如何使用。
 
 ## 何为 JSX 转换？ {#whats-a-jsx-transform}

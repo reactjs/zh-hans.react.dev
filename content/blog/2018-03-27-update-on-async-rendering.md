@@ -3,6 +3,12 @@ title: 异步渲染之更新
 author: [bvaughn]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 一年多来，React 团队一直致力于实现异步渲染。上个月，在 JSConf 冰岛的演讲中，[Dan 展示了异步渲染带来的新可能性](/blog/2018/03/01/sneak-peek-beyond-react-16.html)。现在，我们希望与你分享我们在使用这些功能时学到的一些经验教训，以及一些帮助你在组件启动时准备异步渲染的方法。
 
 我们得到最重要的经验是，过时的组件生命周期往往会带来不安全的编码实践，具体函数如下：
@@ -35,6 +41,12 @@ npx react-codemod rename-unsafe-lifecycles
 Learn more about this codemod on the [16.9.0 release post.](https://legacy.reactjs.org/blog/2019/08/08/react-v16.9.0.html#renaming-unsafe-lifecycle-methods) 
 
 ---
+
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
 
 ## 迁移过时的生命周期 {#migrating-from-legacy-lifecycles}
 

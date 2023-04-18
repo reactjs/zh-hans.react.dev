@@ -4,6 +4,12 @@ layout: post
 author: [steveluscher]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 It was a privilege to welcome the React community to Facebook HQ on January 28–29 for the first-ever React.js Conf, and a pleasure to be able to unveil three new technologies that we've been using internally at Facebook for some time: GraphQL, Relay, and React Native.
 
 ## The talks {#the-talks}

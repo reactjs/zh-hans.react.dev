@@ -3,6 +3,12 @@ title: "React 组件，元素和实例"
 author: [gaearon]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 许多 React 初学者对**组件、其实例以及元素**之间的区别感到困惑。为什么有三个不同的术语来指代屏幕上绘制的内容？
 
 ## 管理实例 {#managing-the-instances}

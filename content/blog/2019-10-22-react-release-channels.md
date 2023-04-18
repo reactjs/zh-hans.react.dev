@@ -3,6 +3,12 @@ title: "使用 React 预发布版为新功能打基础"
 author: [acdlite]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 为了与 React 生态系统的合作伙伴共享即将发生的变化，我们正式建立了预发布的渠道。我们希望通过这一过程有助于我们胸有成竹地对 React 进行更改，并为开发人员提供尝试试验阶段功能的机会。
 
 > 此文章与从事框架，库或开发工具的开发人员息息相关。而主要使用 React 来构建应用程序的开发者无需担心此预发布渠道。

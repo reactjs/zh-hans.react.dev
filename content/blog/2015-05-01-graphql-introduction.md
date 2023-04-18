@@ -3,6 +3,12 @@ title: "GraphQL Introduction"
 author: [schrockn]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 At the React.js conference in late January 2015, we revealed our next major technology in the React family: [Relay](/blog/2015/02/20/introducing-relay-and-graphql.html). 
 
 Relay is a new way of structuring client applications that co-locates data-fetching requirements and React components. Instead of placing data fetching logic in some other part of the client application – or embedding this logic in a custom endpoint on the server – we instead co-locate a *declarative* data-fetching specification alongside the React component. The language of this declarative specification is GraphQL.

@@ -3,6 +3,12 @@ title: "Community Round-up #7"
 author: [vjeux]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 It's been three months since we open sourced React and it is going well. Some stats so far:
 
 * 114 285 unique visitors on this website

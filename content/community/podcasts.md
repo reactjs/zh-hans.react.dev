@@ -6,6 +6,12 @@ sectionid: community
 permalink: community/podcasts.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+
+</div>
+
 专门针对 React 的博客，以及有与 React 相关讨论的个别播客集。
 
 ## 播客 {#podcasts}

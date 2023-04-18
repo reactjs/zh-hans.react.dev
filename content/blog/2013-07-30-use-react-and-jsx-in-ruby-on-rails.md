@@ -3,6 +3,12 @@ title: "Use React and JSX in Ruby on Rails"
 author: [zpao]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 Today we're releasing a gem to make it easier to use React and JSX in Ruby on Rails applications: [react-rails](https://github.com/facebook/react-rails).
 
 

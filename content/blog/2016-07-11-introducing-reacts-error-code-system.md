@@ -3,6 +3,12 @@ title: "推出 React 错误代码系统"
 author: [keyanzhang]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 营造更好的开发者体验一直是 React 十分关心的事之一，而其中很重要的部分就是可以及早察觉反模式或潜在的错误并给出有用的提示。但是，这些大都只会在开发环境里看到。在生产环境中，为了减少字节发送的数量，我们尽量避免出现多余的断言以及完整的错误提示。
 
 在此发布版之前，我们会在构建时去除错误提示，这就是为什么你会在生产环境中看到这样的提示：

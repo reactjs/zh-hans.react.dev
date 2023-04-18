@@ -3,6 +3,12 @@ title: "New in React v0.4: Prop Validation and Default Values"
 author: [zpao]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 Many of the questions we got following the public launch of React revolved around `props`, specifically that people wanted to do validation and to make sure their components had sensible defaults.
 
 

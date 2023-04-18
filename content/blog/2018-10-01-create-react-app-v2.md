@@ -3,6 +3,12 @@ title: "Create React App 2.0: Babel 7, Sass, and More"
 author: [timer, gaearon]
 ---
 
+<div class="scary">
+
+> This blog site has been archived. Go to [react.dev/blog](https://react.dev/blog) to see the recent posts.
+
+</div>
+
 Create React App 2.0 已于今天发布，通过单个依赖更新即可获得一整年的改进。
 
 虽然 React 本身[不需要任何构建依赖](/docs/create-a-new-react-app.html)，但如果没有快捷的测试运行器、代码压缩工具、模块化工具的情形下，编写复杂的应用程序是非常具有挑战性的。自从第一次发布以来，[Create React App](https://github.com/facebook/create-react-app) 的目标就是帮助你处理构建和测试设置，让你能聚焦于最重要的应用程序代码编写。

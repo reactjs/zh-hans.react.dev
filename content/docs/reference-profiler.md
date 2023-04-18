@@ -6,6 +6,16 @@ category: Reference
 permalink: docs/profiler.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React:
+>
+> - [`<Profiler>`](https://react.dev/reference/react/Profiler)
+
+</div>
+
 `Profiler` 测量一个 React 应用多久渲染一次以及渲染一次的“代价”。
 它的目的是识别出应用中渲染较慢的部分，或是可以使用[类似 memoization 优化](/docs/hooks-faq.html#how-to-memoize-calculations)的部分，并从相关优化中获益。
 
