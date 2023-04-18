@@ -9,10 +9,10 @@
       "has": [
         {
           "type": "host",
-          "value": "reactjs.org"
+          "value": "zh-hans.reactjs.org"
         }
       ],
-      "destination": "https://react.dev",
+      "destination": "https://zh-hans.react.dev",
       "permanent": true
     },
     {
@@ -20,10 +20,10 @@
       "has": [
         {
           "type": "host",
-          "value": "reactjs.org"
+          "value": "zh-hans.reactjs.org"
         }
       ],
-      "destination": "https://react.dev/learn/add-react-to-an-existing-project",
+      "destination": "https://zh-hans.react.dev/learn/add-react-to-an-existing-project",
       "permanent": true
     },
     {
@@ -31,10 +31,10 @@
       "has": [
         {
           "type": "host",
-          "value": "reactjs.org"
+          "value": "zh-hans.reactjs.org"
         }
       ],
-      "destination": "https://react.dev/learn/start-a-new-react-project",
+      "destination": "https://zh-hans.react.dev/learn/start-a-new-react-project",
       "permanent": true
     },
     {
@@ -42,10 +42,10 @@
       "has": [
         {
           "type": "host",
-          "value": "reactjs.org"
+          "value": "zh-hans.reactjs.org"
         }
       ],
-      "destination": "https://react.dev/community/versioning-policy",
+      "destination": "https://zh-hans.react.dev/community/versioning-policy",
       "permanent": true
     },
     {
@@ -53,10 +53,10 @@
       "has": [
         {
           "type": "host",
-          "value": "reactjs.org"
+          "value": "zh-hans.reactjs.org"
         }
       ],
-      "destination": "https://react.dev/learn/thinking-in-react",
+      "destination": "https://zh-hans.react.dev/learn/thinking-in-react",
       "permanent": true
     },
     {
@@ -64,10 +64,10 @@
       "has": [
         {
           "type": "host",
-          "value": "reactjs.org"
+          "value": "zh-hans.reactjs.org"
         }
       ],
-      "destination": "https://react.dev/learn/tutorial-tic-tac-toe",
+      "destination": "https://zh-hans.react.dev/learn/tutorial-tic-tac-toe",
       "permanent": true
     },
     {
@@ -75,10 +75,10 @@
       "has": [
         {
           "type": "host",
-          "value": "reactjs.org"
+          "value": "zh-hans.reactjs.org"
         }
       ],
-      "destination": "https://react.dev/community",
+      "destination": "https://zh-hans.react.dev/community",
       "permanent": true
     },
     {
@@ -86,10 +86,10 @@
       "has": [
         {
           "type": "host",
-          "value": "reactjs.org"
+          "value": "zh-hans.reactjs.org"
         }
       ],
-      "destination": "https://react.dev/community/conferences",
+      "destination": "https://zh-hans.react.dev/community/conferences",
       "permanent": true
     },
     {
@@ -97,10 +97,10 @@
       "has": [
         {
           "type": "host",
-          "value": "reactjs.org"
+          "value": "zh-hans.reactjs.org"
         }
       ],
-      "destination": "https://react.dev/community/meetups",
+      "destination": "https://zh-hans.react.dev/community/meetups",
       "permanent": true
     },
     {
@@ -108,10 +108,10 @@
       "has": [
         {
           "type": "host",
-          "value": "reactjs.org"
+          "value": "zh-hans.reactjs.org"
         }
       ],
-      "destination": "https://react.dev/community/team",
+      "destination": "https://zh-hans.react.dev/community/team",
       "permanent": true
     },
     {
@@ -119,10 +119,10 @@
       "has": [
         {
           "type": "host",
-          "value": "reactjs.org"
+          "value": "zh-hans.reactjs.org"
         }
       ],
-      "destination": "https://react.dev/community/videos",
+      "destination": "https://zh-hans.react.dev/community/videos",
       "permanent": true
     },
     {
@@ -130,10 +130,10 @@
       "has": [
         {
           "type": "host",
-          "value": "reactjs.org"
+          "value": "zh-hans.reactjs.org"
         }
       ],
-      "destination": "https://react.dev/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022",
+      "destination": "https://zh-hans.react.dev/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022",
       "permanent": true
     },
     {
@@ -141,10 +141,10 @@
       "has": [
         {
           "type": "host",
-          "value": "reactjs.org"
+          "value": "zh-hans.reactjs.org"
         }
       ],
-      "destination": "https://react.dev/blog/2022/03/29/react-v18",
+      "destination": "https://zh-hans.react.dev/blog/2022/03/29/react-v18",
       "permanent": true
     },
     {
@@ -152,10 +152,10 @@
       "has": [
         {
           "type": "host",
-          "value": "reactjs.org"
+          "value": "zh-hans.reactjs.org"
         }
       ],
-      "destination": "https://react.dev/blog/2022/03/08/react-18-upgrade-guide",
+      "destination": "https://zh-hans.react.dev/blog/2022/03/08/react-18-upgrade-guide",
       "permanent": true
     },
     {
@@ -163,10 +163,10 @@
       "has": [
         {
           "type": "host",
-          "value": "reactjs.org"
+          "value": "zh-hans.reactjs.org"
         }
       ],
-      "destination": "https://react.dev/blog/2021/12/17/react-conf-2021-recap",
+      "destination": "https://zh-hans.react.dev/blog/2021/12/17/react-conf-2021-recap",
       "permanent": true
     },
     {
@@ -174,10 +174,10 @@
       "has": [
         {
           "type": "host",
-          "value": "reactjs.org"
+          "value": "zh-hans.reactjs.org"
         }
       ],
-      "destination": "https://react.dev/blog/2021/06/08/the-plan-for-react-18",
+      "destination": "https://zh-hans.react.dev/blog/2021/06/08/the-plan-for-react-18",
       "permanent": true
     },
     {
@@ -185,10 +185,10 @@
       "has": [
         {
           "type": "host",
-          "value": "reactjs.org"
+          "value": "zh-hans.reactjs.org"
         }
       ],
-      "destination": "https://legacy.reactjs.org/:path*",
+      "destination": "https://zh-hans.legacy.reactjs.org/:path*",
       "permanent": true
     },
     {
