@@ -1287,7 +1287,7 @@ Object.is(temp1[2], temp2[2]); // ... 依此类推 ...
 
 ### 我需要为循环中的每个列表项调用 `useMemo`，但这是不允许的 {/*i-need-to-call-usememo-for-each-list-item-in-a-loop-but-its-not-allowed*/}
 
-假设 `Chart` 组件被包裹在 [`memo`](/reference/react/memo) 中。当 `ReportList` 组件重新呈现时，你想跳过重新呈现列表中的每个 `Chart`。但是，你不能在循环中调用 `useMemo`：
+假设 `Chart` 组件被包裹在 [`memo`](/reference/react/memo) 中。当 `ReportList` 组件重新渲染时，你想跳过重新渲染列表中的每个 `Chart`。但是，你不能在循环中调用 `useMemo`：
 
 ```js {5-11}
 function ReportList({ items }) {
