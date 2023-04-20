@@ -35,7 +35,7 @@ function MyComponent() {
 
 #### 参数 {/*parameters*/}
 
-* `initialValue`: 你希望 ref 对象的 `current` 属性的初始值。可以是任意类型的值。这个参数会首次渲染后被忽略。
+* `initialValue`：ref 对象的 `current` 属性的初始值。可以是任意类型的值。这个参数会首次渲染后被忽略。
 
 #### 返回值 {/*returns*/}
 
