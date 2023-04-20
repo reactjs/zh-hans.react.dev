@@ -1142,7 +1142,7 @@ useEffect(() => {
 
 #### 传递依赖项数组 {/*passing-a-dependency-array*/}
 
-如果指定了依赖项，则 Effect 在 **初始渲染后 _以及_ 依赖项变更的重新渲染后** 运行。
+如果指定了依赖项，则 Effect 在 **初始渲染后以及依赖项变更的重新渲染后** 运行。
 
 ```js {3}
 useEffect(() => {
@@ -1580,7 +1580,7 @@ button { margin-left: 10px; }
 
 ### 删除不必要的函数依赖项 {/*removing-unnecessary-function-dependencies*/}
 
-如果你的 Effect 依赖于在渲染期间创建的对象或函数，则它可能会频繁运行。例如，此 Effect 在每次渲染后重新连接，因为 `createOptions` 函数[在每次渲染时都不同](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)：
+如果你的 Effect 依赖于在渲染期间创建的对象或函数，则它可能会频繁运行。例如，此 Effect 在每次渲染后重新连接，因为 `createOptions` 函数 [在每次渲染时都不同](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)：
 
 ```js {4-9,12,16}
 function ChatRoom({ roomId }) {
@@ -1763,7 +1763,7 @@ function MyComponent() {
 
 在开发环境下，如果开启严格模式，React 会在实际运行 setup 之前额外运行一次 setup 和 cleanup。
 
-这是一个压力测试，用于验证 Effect 的逻辑是否正确实现。如果出现可见问题，则 cleanup 函数缺少某些逻辑。cleanup 函数应该停止或撤消 setup 函数所做的任何操作。一般来说，用户不应该能够区分 setup 被调用一次（如在生产中）和调用 setup→cleanup→setup 序列（如在开发中）。
+这是一个压力测试，用于验证 Effect 的逻辑是否正确实现。如果出现可见问题，则 cleanup 函数缺少某些逻辑。cleanup 函数应该停止或撤消 setup 函数所做的任何操作。一般来说，用户不应该能够区分 setup 被调用一次（如在生产中）和调用 setup → cleanup → setup 序列（如在开发中）。
 
 阅读更多关于 [这如何帮助找到 bug](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) 和 [如何修复你的逻辑](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)。
 
