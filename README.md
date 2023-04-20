@@ -2,6 +2,8 @@
 
 本分支已经停止翻译相关工作，请移步至 main 分支。感谢支持！
 
+---
+
 This repo contains the source code and documentation powering [legacy.reactjs.org](https://legacy.reactjs.org/).
 
 ## Not actively maintained
