@@ -208,7 +208,7 @@ function MyComponent() {
 }
 ```
 
-你可以在 **事件处理函数或者 effects** 中读取和写入 refs。
+你可以在 **事件处理函数或者 effects** 中读取和写入 ref。
 
 ```js {4-5,9-10}
 function MyComponent() {
