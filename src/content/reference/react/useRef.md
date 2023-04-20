@@ -219,7 +219,7 @@ function MyComponent() {
   });
   // ...
   function handleClick() {
-    // ✅ 你可以在事件处理函数中读取和写入 refs
+    // ✅ 你可以在事件处理函数中读取和写入 ref
     doSomething(myOtherRef.current);
   }
   // ...
