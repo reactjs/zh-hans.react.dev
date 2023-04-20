@@ -83,7 +83,7 @@ function handleStartClick() {
 }
 ```
 
-在之后，你可以从 ref 中读取 interval ID，这样你就可以[清除定时器](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval)：
+在之后，你可以从 ref 中读取 interval ID，这样你就可以 [清除定时器](https://developer.mozilla.org/zh-CN/docs/Web/API/clearInterval)：
 
 ```js [[2, 2, "intervalRef.current"]]
 function handleStopClick() {
