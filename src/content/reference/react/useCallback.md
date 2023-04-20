@@ -113,7 +113,7 @@ const ShippingForm = memo(function ShippingForm({ onSubmit }) {
 });
 ```
 
-**有了这个变化， `ShippingForm` 将跳过重新渲染，如果它的所有props都与上次渲染时相同。**这时候缓存函数就变得很重要了！假设你定义了 `handleSubmit` 而没有定义 `useCallback`:
+**有了这个变化，`ShippingForm` 将跳过重新渲染，如果它的所有props都与上次渲染时相同。** 这时候缓存函数就变得很重要了！假设你定义了 `handleSubmit` 而没有定义 `useCallback`:
 
 ```js {2,3,8,12-13}
 function ProductPage({ productId, referrer, theme }) {
