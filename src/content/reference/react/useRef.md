@@ -214,7 +214,7 @@ function MyComponent() {
 function MyComponent() {
   // ...
   useEffect(() => {
-    // ✅ 你可以在 effects 中读取和写入 refs
+    // ✅ 你可以在 effects 中读取和写入 ref
     myRef.current = 123;
   });
   // ...
