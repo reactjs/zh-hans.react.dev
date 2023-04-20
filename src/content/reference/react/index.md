@@ -29,7 +29,7 @@ function ImageGallery() {
 
 ## Context Hook {/*context-hooks*/}
 
-*Context* 让一个组件 [从远处的父组件接收信息，而不需要将其作为 props 传递](/learn/passing-props-to-a-component)。比如，app 的顶层组件可以将当前的 UI 主题传递给下面的所有组件，无论它们层级多深。
+*context* 让一个组件 [从远处的父组件接收信息，而不需要将其作为 props 传递](/learn/passing-props-to-a-component)。比如，app 的顶层组件可以将当前的 UI 主题传递给下面的所有组件，无论它们层级多深。
 
 * [`useContext`](/reference/react/useContext) 读取并订阅了一个上下文。
 
