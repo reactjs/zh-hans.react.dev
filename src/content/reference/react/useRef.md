@@ -190,7 +190,7 @@ export default function Stopwatch() {
 
 **不要在渲染期间写入 _或者读取_ `ref.current`。**
 
-React 期望你的组件的主体[表现得像一个纯函数](/learn/keeping-components-pure)：
+React 期望你的组件的主体 [表现得像一个纯函数](/learn/keeping-components-pure)：
 
 - 如果输入([props](/learn/passing-props-to-a-component)、[state](/learn/state-a-components-memory) 和 [context](/learn/passing-data-deeply-with-context))都是一样的，那么就应该返回一样的 JSX。
 - 以不同的顺序或用不同的参数调用它，不应该影响其他调用的结果。
