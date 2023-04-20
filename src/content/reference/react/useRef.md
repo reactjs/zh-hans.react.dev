@@ -265,7 +265,7 @@ function MyComponent() {
 
 当节点从屏幕上移除时，React 将把 `current` 属性设回 `null`。
 
-阅读更多关于[用 ref 操纵DOM](/learn/manipulating-the-dom-with-refs)
+阅读更多关于 [用 ref 操纵DOM](/learn/manipulating-the-dom-with-refs)
 
 <Recipes titleText="Examples of manipulating the DOM with useRef" titleId="examples-dom">
 
