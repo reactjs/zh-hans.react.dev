@@ -72,7 +72,7 @@ function Stopwatch() {
 
 在接下来的渲染中，`useRef` 将返回相同的对象。你可以改变它的 `current` 属性来存储信息，并在之后读取它。这会让你想起 [state](/reference/react/useState)，但是有一个重要的区别。
 
-**改变 ref 不会触发重新渲染。** 这意味着 ref 是存储不影响你的组件的视图输出的信息的完美选择。例如，如果你需要存储一个 [intervalID](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) 并在以后检索它，你可以把它放在一个 ref 中。如果要更新 ref 里面的值，你需要手动改变它的 <CodeStep step={2}>`current` 属性</CodeStep>：
+**改变 ref 不会触发重新渲染。** 这意味着 ref 是存储不影响你的组件的视图输出的信息的完美选择。例如，如果你需要存储一个 [intervalID](https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval) 并在以后检索它，你可以把它放在一个 ref 中。如果要更新 ref 里面的值，你需要手动改变它的 <CodeStep step={2}>`current` 属性</CodeStep>：
 
 ```js [[2, 5, "intervalRef.current"]]
 function handleStartClick() {
@@ -135,7 +135,7 @@ export default function Counter() {
 
 #### 秒表 {/*a-stopwatch*/}
 
-这个例子使用了 state 和 ref 的组合。`startTime` 和 `now` 都是 state 变量，因为它们是用来渲染的。但是我们还需要持有一个 [interval ID](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)，这样我们就可以在按下按钮时停止定时器。因为 interval ID 不用于渲染，所以把它保存在一个 ref 中是合适的，并且手动更新它。
+这个例子使用了 state 和 ref 的组合。`startTime` 和 `now` 都是 state 变量，因为它们是用来渲染的。但是我们还需要持有一个 [interval ID](https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval)，这样我们就可以在按下按钮时停止定时器。因为 interval ID 不用于渲染，所以把它保存在一个 ref 中是合适的，并且手动更新它。
 
 <Sandpack>
 
@@ -236,7 +236,7 @@ function MyComponent() {
 
 ### 通过 ref 操作 DOM {/*manipulating-the-dom-with-a-ref*/}
 
-使用 ref 操作 [DOM](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API) 是非常常见的。React 对此有内置支持。
+使用 ref 操作 [DOM](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API) 是非常常见的。React 对此有内置支持。
 
 首先，声明一个 <CodeStep step={3}>initial value</CodeStep> 为 `null` 的 <CodeStep step={1}>ref 对象</CodeStep>
 
@@ -302,7 +302,7 @@ export default function Form() {
 
 #### 滚动图片到视图 {/*scrolling-an-image-into-view*/}
 
-在这个示例中，点击按钮将会把图片滚动到视图。这里使用 ref 绑定到列表的 DOM 节点，然后调用 DOM 的 [`querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll) API 找到我们想要滚动的图片。
+在这个示例中，点击按钮将会把图片滚动到视图。这里使用 ref 绑定到列表的 DOM 节点，然后调用 DOM 的 [`querySelectorAll`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/querySelectorAll) API 找到我们想要滚动的图片。
 
 <Sandpack>
 
@@ -395,7 +395,7 @@ li {
 
 #### 播放和暂停视频 {/*playing-and-pausing-a-video*/}
 
-这个示例使用 ref 调用 `<video>` DOM 节点的 [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) 和 [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause)。
+这个示例使用 ref 调用 `<video>` DOM 节点的 [`play()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/play) 和 [`pause()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/pause)。
 
 <Sandpack>
 
