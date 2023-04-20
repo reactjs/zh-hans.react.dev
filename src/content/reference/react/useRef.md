@@ -41,7 +41,7 @@ function MyComponent() {
 
 `useRef` 返回一个只有一个属性的对象:
 
-* `current`: 最初，它被设置为你传递的 `initialValue`。之后你可以把它设置为其他值。如果你把 ref 对象作为一个 JSX 节点的 `ref` 属性传递给 React，React 将为它设置`current`属性。
+* `current`：最初，它被设置为你传递的 `initialValue`。之后你可以把它设置为其他值。如果你把 ref 对象作为一个 JSX 节点的 `ref` 属性传递给 React，React 将为它设置`current`属性。
 
 在接下来渲染中，`useRef` 将返回同一个对象。
 
