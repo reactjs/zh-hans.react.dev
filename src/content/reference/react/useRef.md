@@ -72,7 +72,7 @@ function Stopwatch() {
 
 在接下来的渲染中，`useRef` 将返回相同的对象。你可以改变它的 `current` 属性来存储信息，并在之后读取它。这会让你想起 [state](/reference/react/useState)，但是有一个重要的区别。
 
-**改变 ref 不会触发重新渲染。** 这意味着 refs 是存储不影响你的组件的视图输出的信息的完美选择。例如，如果你需要存储一个 [intervalID](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) 并在以后检索它，你可以把它放在一个 ref 中。如果要更新 ref 里面的值，你需要手动改变它的 <CodeStep step={2}>`current` 属性</CodeStep>：
+**改变 ref 不会触发重新渲染。** 这意味着 ref 是存储不影响你的组件的视图输出的信息的完美选择。例如，如果你需要存储一个 [intervalID](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) 并在以后检索它，你可以把它放在一个 ref 中。如果要更新 ref 里面的值，你需要手动改变它的 <CodeStep step={2}>`current` 属性</CodeStep>：
 
 ```js [[2, 5, "intervalRef.current"]]
 function handleStartClick() {
