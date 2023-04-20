@@ -98,7 +98,7 @@ function handleStopClick() {
 - 改变它 **不会触发重新渲染**（不像是 state 变量，会触发重新渲染）。
 - 对于你的组件的每个副本来说，**这些信息都是本地的**（不像是外面的变量，是共享的）。
 
-改变 ref 不会触发重新渲染，所以 refs 不适合存储用于你想要显示在屏幕上的信息。使用 state 代替。阅读更多[在 `useRef` 和 `useState` 之间选择。](/learn/referencing-values-with-refs#differences-between-refs-and-state)
+改变 ref 不会触发重新渲染，所以 ref 不适合存储用于你想要显示在屏幕上的信息。如有需要，使用 state 代替。阅读更多 [在 `useRef` 和 `useState` 之间选择](/learn/referencing-values-with-refs#differences-between-refs-and-state)。
 
 <Recipes titleText="Examples of referencing a value with useRef" titleId="examples-value">
 
