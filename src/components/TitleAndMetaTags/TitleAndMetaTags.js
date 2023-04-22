@@ -36,7 +36,7 @@ const alternatePages = canonicalUrl => {
         urlRoot,
         `https://${
           language.code === 'en' ? '' : `${language.code}.`
-        }reactjs.org`,
+        }legacy.reactjs.org`,
       )}
     />
   ));
