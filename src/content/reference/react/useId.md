@@ -52,7 +52,7 @@ function PasswordField() {
 
 <Pitfall>
 
-  **不要使用 `useId` 来生成列表中的 key**。[key 应该由你的数据生成](/learn/rendering-lists#where-to-get-your-key)。
+**不要使用 `useId` 来生成列表中的 key**。[key 应该由你的数据生成](/learn/rendering-lists#where-to-get-your-key)。
 
 </Pitfall>
 
