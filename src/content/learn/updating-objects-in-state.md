@@ -8,7 +8,7 @@ translators:
 
 <Intro>
 
-State 中可以存放任意类型的 JavaScript 值，当然也包括对象。但是你不应该直接修改存放在 React state 中的对象。相反，当你想要更新一个对象时，你需要创建一个新的对象（或者将其拷贝一份），然后把这个新的对象设置在  state 上。
+State 中可以存放任意类型的 JavaScript 值，当然也包括对象。但是你不应该直接修改存放在 React state 中的对象。相反，当你想要更新一个对象时，你需要创建一个新的对象（或者将其拷贝一份），然后把这个新的对象设置在 state 上。
 
 </Intro>
 
@@ -43,7 +43,7 @@ state `x` 从 `0` 变为 `5`，但是*数字 `0` 本身*并没有发生改变。
 const [position, setPosition] = useState({ x: 0, y: 0 });
 ```
 
-其实，直接改变*对象本身*的内容是有可能做到的。**当你这样做时，就制造了一个 mutation。**
+其实，直接改变*对象本身*的内容是有可能做到的。**当你这样做时，就制造了一个 mutation**。
 
 ```js
 position.x = 5;
@@ -109,7 +109,7 @@ onPointerMove={e => {
 
 这段代码直接修改了 [上一次渲染中](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) 分配给 `position` 的对象。但是因为并没有使用 state 的设置函数，React 并不知道对象已经改变了。所以 React 并没有做出任何回应。这就像您在吃完饭之后才尝试去改变要点的菜一样。虽然在一些情况下，直接修改 state 可能是有效的，但是我们并不推荐这么做。你应该把在渲染过程中可以访问到的 state 视为只读的。
 
-在这种情况下，为了真正地 [触发一次重新渲染](/learn/state-as-a-snapshot#setting-state-triggers-renders) ，**你需要创建一个*新*对象并把它传递给 state 的设置函数**：
+在这种情况下，为了真正地 [触发一次重新渲染](/learn/state-as-a-snapshot#setting-state-triggers-renders)，**你需要创建一个*新*对象并把它传递给 state 的设置函数**：
 
 ```js
 onPointerMove={e => {
@@ -120,7 +120,7 @@ onPointerMove={e => {
 }}
 ```
 
-通过使用 `setPosition` ，你在告诉 React ：
+通过使用 `setPosition`，你在告诉 React ：
 
 * 使用这个新的对象替换 `position` 的值
 * 然后再次渲染这个组件
@@ -279,7 +279,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 person.firstName = e.target.value;
 ```
 
-想要实现你的需求，最可靠的办法就是创建一个新的对象并将它传递给 `setPerson` 。但是在这里，你还需要 **把当前的数据复制到新对象中** ，因为你只改变了其中一个字段：
+想要实现你的需求，最可靠的办法就是创建一个新的对象并将它传递给 `setPerson`。但是在这里，你还需要 **把当前的数据复制到新对象中**，因为你只改变了其中一个字段：
 
 ```js
 setPerson({
@@ -300,7 +300,7 @@ setPerson({
 
 现在表单可以正常运行了！
 
-可以看到，你并没有为每个输入框单独声明一个 state 。对于数据量大的表单，将所有的数据都存放在同一个对象中是非常方便的——前提是你能够正确地更新它！
+可以看到，你并没有为每个输入框单独声明一个 state。对于数据量大的表单，将所有的数据都存放在同一个对象中是非常方便的——前提是你能够正确地更新它！
 
 <Sandpack>
 
@@ -445,7 +445,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-在这里， `e.target.name` 引用了 `<input>` 这个 DOM 元素的 `name` 属性。
+在这里，`e.target.name` 引用了 `<input>` 这个 DOM 元素的 `name` 属性。
 
 </DeepDive>
 
@@ -656,7 +656,7 @@ let obj3 = {
 
 ### 使用 Immer 写出简洁的更新逻辑 {/*write-concise-update-logic-with-immer*/}
 
-如果你的 state 有多层的嵌套，你或许应该考虑 [扁平化它们](/learn/choosing-the-state-structure#avoid-deeply-nested-state) 。但是，如果你不想改变 state 的数据结构，你可能更喜欢用一种更便捷的方式来实现嵌套展开的效果。 [Immer](https://github.com/immerjs/use-immer) 是一个非常流行的库，它可以让你使用简便的直接修改语法，并会帮您处理好复制的过程。通过使用 Immer，你写出的代码看起来就像是你“打破了规则”而直接修改了对象：
+如果你的 state 有多层的嵌套，你或许应该考虑 [扁平化它们](/learn/choosing-the-state-structure#avoid-deeply-nested-state)。但是，如果你不想改变 state 的数据结构，你可能更喜欢用一种更便捷的方式来实现嵌套展开的效果。[Immer](https://github.com/immerjs/use-immer) 是一个非常流行的库，它可以让你使用简便的直接修改语法，并会帮您处理好复制的过程。通过使用 Immer，你写出的代码看起来就像是你“打破了规则”而直接修改了对象：
 
 ```js
 updatePerson(draft => {
@@ -664,13 +664,13 @@ updatePerson(draft => {
 });
 ```
 
-但是不同于一般的 mutation ，它并不会覆盖之前的 state ！
+但是不同于一般的 mutation，它并不会覆盖之前的 state！
 
 <DeepDive>
 
 #### Immer 是如何运行的？ {/*how-does-immer-work*/}
 
-`draft` 是 Immer 提供的一种特殊的对象，被称为 [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) ，它会记录你用它所进行的操作。这就是你能够随心所欲地直接修改对象的原因所在！从原理上说， Immer 会弄清楚 `draft` 对象的哪些部分被改变了，并会依照您的修改创建出一个全新的对象。
+`draft` 是 Immer 提供的一种特殊的对象，被称为 [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)，它会记录你用它所进行的操作。这就是你能够随心所欲地直接修改对象的原因所在！从原理上说，Immer 会弄清楚 `draft` 对象的哪些部分被改变了，并会依照您的修改创建出一个全新的对象。
 
 </DeepDive>
 
@@ -792,7 +792,7 @@ img { width: 200px; height: 200px; }
 
 </Sandpack>
 
-可以看到，事件处理函数变得更简洁了。你可以随意在一个组件中同时使用 `useState` 和 `useImmer` 。如果你想要写出更简洁的更新处理函数， Immer 会是一个不错的选择，尤其是当你的 state 中有嵌套，并且复制对象会带来重复的代码时。
+可以看到，事件处理函数变得更简洁了。你可以随意在一个组件中同时使用 `useState` 和 `useImmer`。如果你想要写出更简洁的更新处理函数，Immer 会是一个不错的选择，尤其是当你的 state 中有嵌套，并且复制对象会带来重复的代码时。
 
 <DeepDive>
 
@@ -828,7 +828,7 @@ img { width: 200px; height: 200px; }
 
 #### 修复错误的 state 更新代码 {/*fix-incorrect-state-updates*/}
 
-这个表单有几个 bug 。试着点击几次增加分数的按钮。你会注意到分数并没有增加。然后试着编辑一下名字字段，你会注意到分数突然“响应”了你之前的修改。最后，试着编辑一下姓氏字段，你会发现分数完全消失了。
+这个表单有几个 bug。试着点击几次增加分数的按钮。你会注意到分数并没有增加。然后试着编辑一下名字字段，你会注意到分数突然“响应”了你之前的修改。最后，试着编辑一下姓氏字段，你会发现分数完全消失了。
 
 你的任务就是修复所有的这些 bug。在你修复它们的同时，解释一下它们为什么会产生。
 
@@ -978,7 +978,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 在静止的背景上有一个可以拖动的方形。你可以使用下拉框来修改方形的颜色。
 
-但是这里有个 bug 。当你先移动了方形，再去修改它的颜色时，背景会突然“跳”到方形所在的位置（实际上背景的位置并不应该发生变化！）。但是这并不是我们想要的，`Background` 的 `position` 属性被设置为 `initialPosition` ，也就是 `{ x: 0, y: 0 }` 。为什么修改颜色之后，背景会移动呢？
+但是这里有个 bug。当你先移动了方形，再去修改它的颜色时，背景会突然“跳”到方形所在的位置（实际上背景的位置并不应该发生变化！）。但是这并不是我们想要的，`Background` 的 `position` 属性被设置为 `initialPosition`，也就是 `{ x: 0, y: 0 }`。为什么修改颜色之后，背景会移动呢？
 
 找到 bug 并修复它。
 
@@ -1134,9 +1134,9 @@ select { margin-bottom: 10px; }
 
 <Solution>
 
-问题出在 `handleMove` 中的 mutation 。它直接修改了 `shape.position` ，但是此时 `initialPosition` 所指向的也是同一个对象。因此方形和背景都发生了移动。（因为它是 mutation，所以直到一个不相关更新——颜色变化——触发了一次重新渲染，变化才反映到屏幕上。）
+问题出在 `handleMove` 中的 mutation 。它直接修改了 `shape.position`，但是此时 `initialPosition` 所指向的也是同一个对象。因此方形和背景都发生了移动。（因为它是 mutation，所以直到一个不相关更新——颜色变化——触发了一次重新渲染，变化才反映到屏幕上。）
 
-修复问题的方法就是从 `handleMove` 中移除这个 mutation ，然后用展开运算符来复制方形对象。请注意 `+=` 是 mutation 的一种，所以你需要对它进行重写来使用普通的 `+` 操作符。
+修复问题的方法就是从 `handleMove` 中移除这个 mutation，然后用展开运算符来复制方形对象。请注意 `+=` 是 mutation 的一种，所以你需要对它进行重写来使用普通的 `+` 操作符。
 
 <Sandpack>
 
