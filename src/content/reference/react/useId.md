@@ -79,7 +79,7 @@ function PasswordField() {
 
 **让我们通过一个例子，看看这个什么时候有用。**
 
-[HTML 无障碍属性](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA) 例如 [`aria-describedby`](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) 允许你指定两个标签之间的关系。例如，你可以指定一个元素（比如输入框）由另一个元素（比如段落）描述。
+如 [`aria-describedby`](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) 这样的 [HTML 无障碍属性](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA) 允许你指定两个标签之间的关系。例如，你可以指定一个元素（比如输入框）由另一个元素（比如段落）描述。
 
 在常规的 HTML 中，你会这样写：
 
