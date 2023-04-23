@@ -8,7 +8,7 @@ translators:
 
 <Intro>
 
-State 中可以存放任意种类的 JavaScript 值，当然也包括对象。但是你不应该直接修改存放在 React state 中的对象。相反，当你想要更新一个对象时，你需要创建一个新的对象（或者它的复制），然后把这个新的对象设置到 state 上。
+State 中可以存放任意类型的 JavaScript 值，当然也包括对象。但是你不应该直接修改存放在 React state 中的对象。相反，当你想要更新一个对象时，你需要创建一个新的对象（或者将其拷贝一份），然后把这个新的对象设置在  state 上。
 
 </Intro>
 
@@ -23,13 +23,13 @@ State 中可以存放任意种类的 JavaScript 值，当然也包括对象。�
 
 ## 什么是 mutation？ {/*whats-a-mutation*/}
 
-你可以在 state 中存放任何类型的 Javascript 值。
+你可以在 state 中存放任何类型的 JavaScript 值。
 
 ```js
 const [x, setX] = useState(0);
 ```
 
-到目前为止，你已经尝试过在 state 中存放数字、字符串和布尔值，这些类型的值在 JavaScript 中是 “immutable”, 这意味着它们不能被改变或者说是只读的。你可以通过*替换*它们的值来触发一次重新渲染。
+到目前为止，你已经尝试过在 state 中存放数字、字符串和布尔值，这些类型的值在 JavaScript 中是“immutable”,这意味着它们不能被改变或者说是只读的。你可以通过*替换*它们的值来触发一次重新渲染。
 
 ```js
 setX(5);
@@ -53,7 +53,7 @@ position.x = 5;
 
 ## 将 state 视为只读的 {/*treat-state-as-read-only*/}
 
-换句话说，你应该 **把所有存放在 state 中的 JavaScript 对象都视为只读的。**
+换句话说，你应该 **把所有存放在 state 中的 JavaScript 对象都视为只读的**。
 
 在下面的例子中，我们用一个存放在 state 中的对象来表示指针当前的位置。当你在预览区触摸或移动光标时，红色的点本来应该会移动。但是实际上红点仍停留在原处：
 
@@ -107,9 +107,9 @@ onPointerMove={e => {
 }}
 ```
 
-这段代码直接修改了[上一次渲染中](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time)分配给 `position` 的对象。但是因为并没有使用 state 的设置函数，React 并不知道对象已经改变了。所以 React 并没有做出任何回应。这就像您在吃完饭之后才尝试去改变要点的菜一样。虽然在一些情况下，直接修改 state 可能是有效的，但是我们并不推荐这么做。你应该把在渲染过程中可以访问到的 state 视为只读的。
+这段代码直接修改了 [上一次渲染中](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) 分配给 `position` 的对象。但是因为并没有使用 state 的设置函数，React 并不知道对象已经改变了。所以 React 并没有做出任何回应。这就像您在吃完饭之后才尝试去改变要点的菜一样。虽然在一些情况下，直接修改 state 可能是有效的，但是我们并不推荐这么做。你应该把在渲染过程中可以访问到的 state 视为只读的。
 
-在这种情况下，为了真正地[触发一次重新渲染](/learn/state-as-a-snapshot#setting-state-triggers-renders)，**你需要创建一个*新*对象并把它传递给 state 的设置函数：**
+在这种情况下，为了真正地 [触发一次重新渲染](/learn/state-as-a-snapshot#setting-state-triggers-renders) ，**你需要创建一个*新*对象并把它传递给 state 的设置函数**：
 
 ```js
 onPointerMove={e => {
@@ -120,7 +120,7 @@ onPointerMove={e => {
 }}
 ```
 
-通过使用 `setPosition` ，你在告诉 React：
+通过使用 `setPosition` ，你在告诉 React ：
 
 * 使用这个新的对象替换 `position` 的值
 * 然后再次渲染这个组件
@@ -181,7 +181,7 @@ position.x = e.clientX;
 position.y = e.clientY;
 ```
 
-但是像的代码就 **没有任何问题**，因为你改变的是你 *刚刚创建* 的一个新的对象：
+但是像的代码就 **没有任何问题** ，因为你改变的是你 *刚刚创建* 的一个新的对象：
 
 ```js
 const nextPosition = {};
@@ -199,7 +199,7 @@ setPosition({
 });
 ```
 
-只有当你改变已经处于 state 中*现有*的对象时，mutation 才会成为问题。而修改一个你刚刚创建的对象就不会出现任何问题，因为*还没有其他的代码引用它*。改变它并不会意外地影响到依赖它的东西。这叫做“局部 mutation”。你甚至可以[在渲染的过程中](/learn/keeping-components-pure#local-mutation-your-components-little-secret)进行“局部 mutation”的操作。这种操作既便捷又没有任何问题！
+只有当你改变已经处于 state 中*现有*的对象时，mutation 才会成为问题。而修改一个你刚刚创建的对象就不会出现任何问题，因为*还没有其他的代码引用它*。改变它并不会意外地影响到依赖它的东西。这叫做“局部 mutation”。你甚至可以 [在渲染的过程中](/learn/keeping-components-pure#local-mutation-your-components-little-secret) 进行“局部 mutation”的操作。这种操作既便捷又没有任何问题！
 
 </DeepDive>  
 
@@ -279,7 +279,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 person.firstName = e.target.value;
 ```
 
-想要实现你的需求，最可靠的办法就是创建一个新的对象并将它传递给 `setPerson` 。但是在这里，你还需要 **把当前的数据复制到新对象中**，因为你只改变了其中一个字段：
+想要实现你的需求，最可靠的办法就是创建一个新的对象并将它传递给 `setPerson` 。但是在这里，你还需要 **把当前的数据复制到新对象中** ，因为你只改变了其中一个字段：
 
 ```js
 setPerson({
@@ -289,7 +289,7 @@ setPerson({
 });
 ```
 
-你可以使用 `...` [对象展开](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_object_literals)语法，这样你就不需要把每个属性单独复制一次了。
+你可以使用 `...` [对象展开](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_object_literals) 语法，这样你就不需要把每个属性单独复制一次了。
 
 ```js
 setPerson({
@@ -630,7 +630,7 @@ let obj2 = {
 };
 ```
 
-对象 `obj1` 并非处于 `obj2`“内部”。例如，下面的代码中，`obj3` 中的属性也可以指向 `obj1`：
+对象 `obj1` 并非处于 `obj2` “内部”。例如，下面的代码中，`obj3` 中的属性也可以指向 `obj1` ：
 
 ```js
 let obj1 = {
@@ -650,13 +650,13 @@ let obj3 = {
 };
 ```
 
-如果你直接修改 `obj3.artwork.city` ，就会同时影响到 `obj2.artwork.city` 和 `obj1.city` 。这是因为 `obj3.artwork`、`obj2.artwork` 和 `obj1` 都指向同一个对象。当你用“嵌套”的方式看待对象时，很难看出这一点。相反，它们是相互独立的对象，只不过是用属性“指向”彼此而已。
+如果你直接修改 `obj3.artwork.city` ，就会同时影响到 `obj2.artwork.city` 和 `obj1.city` 。这是因为 `obj3.artwork` 、 `obj2.artwork` 和 `obj1` 都指向同一个对象。当你用“嵌套”的方式看待对象时，很难看出这一点。相反，它们是相互独立的对象，只不过是用属性“指向”彼此而已。
 
 </DeepDive>  
 
 ### 使用 Immer 写出简洁的更新逻辑 {/*write-concise-update-logic-with-immer*/}
 
-如果你的 state 有多层的嵌套，你或许应该考虑[扁平化它们](/learn/choosing-the-state-structure#avoid-deeply-nested-state)。但是，如果你不想改变 state 的数据结构，你可能更喜欢用一种更便捷的方式来实现嵌套展开的效果。[Immer](https://github.com/immerjs/use-immer) 是一个非常流行的库，它可以让你使用简便的直接修改语法，并会帮您处理好复制的过程。通过使用 Immer，你写出的代码看起来就像是你“打破了规则”而直接修改了对象：
+如果你的 state 有多层的嵌套，你或许应该考虑 [扁平化它们](/learn/choosing-the-state-structure#avoid-deeply-nested-state) 。但是，如果你不想改变 state 的数据结构，你可能更喜欢用一种更便捷的方式来实现嵌套展开的效果。 [Immer](https://github.com/immerjs/use-immer) 是一个非常流行的库，它可以让你使用简便的直接修改语法，并会帮您处理好复制的过程。通过使用 Immer，你写出的代码看起来就像是你“打破了规则”而直接修改了对象：
 
 ```js
 updatePerson(draft => {
@@ -664,13 +664,13 @@ updatePerson(draft => {
 });
 ```
 
-但是不同于一般的 mutation ，它并不会覆盖之前的 state！
+但是不同于一般的 mutation ，它并不会覆盖之前的 state ！
 
 <DeepDive>
 
 #### Immer 是如何运行的？ {/*how-does-immer-work*/}
 
-`draft` 是 Immer 提供的一种特殊的对象，被称为[Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)，它会记录你用它所进行的操作。这就是你能够随心所欲地直接修改对象的原因所在！从原理上说， Immer 会弄清楚 `draft` 对象的哪些部分被改变了，并会依照您的修改创建出一个全新的对象。
+`draft` 是 Immer 提供的一种特殊的对象，被称为 [Proxy](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) ，它会记录你用它所进行的操作。这就是你能够随心所欲地直接修改对象的原因所在！从原理上说， Immer 会弄清楚 `draft` 对象的哪些部分被改变了，并会依照您的修改创建出一个全新的对象。
 
 </DeepDive>
 
@@ -792,17 +792,17 @@ img { width: 200px; height: 200px; }
 
 </Sandpack>
 
-可以看到，事件处理函数变得更简洁了。你可以随意在一个组件中同时使用 `useState` and `useImmer`。如果你想要写出更简洁的更新处理函数， Immer 会是一个不错的选择，尤其是当你的 state 中有嵌套，并且复制对象会带来重复的代码时。
+可以看到，事件处理函数变得更简洁了。你可以随意在一个组件中同时使用 `useState` 和 `useImmer` 。如果你想要写出更简洁的更新处理函数， Immer 会是一个不错的选择，尤其是当你的 state 中有嵌套，并且复制对象会带来重复的代码时。
 
 <DeepDive>
 
-#### 为什么在 React 中不推荐直接修改 state? {/*why-is-mutating-state-not-recommended-in-react*/}
+#### 为什么在 React 中不推荐直接修改 state？ {/*why-is-mutating-state-not-recommended-in-react*/}
 
 有以下几个原因：
 
 * **调试：** 如果你使用 `console.log` 并且不直接修改 state，你之前日志中的 state 的值就不会被新的 state 变化所影响。这样你就可以清楚地看到两次渲染之间 state 的值发生了什么变化
-* **优化：** React 常见的[优化策略](/reference/react/memo)依赖于如果前一次的 prop 或者 state 的值和下一次相同就跳过渲染。如果你从未直接修改 state ，那么你就可以很快看到 state 是否发生了变化。如果 `prevObj === obj` ，那么你就可以肯定这个对象内部并没有发生改变。
-* **新功能：** 我们正在构建的 React 的新功能依赖于 state 被[像快照一样看待](/learn/state-as-a-snapshot)的理念。如果你直接修改 state 的历史版本，可能会影响你使用这些新功能。
+* **优化：** React 常见的 [优化策略](/reference/react/memo) 依赖于如果前一次的 prop 或者 state 的值和下一次相同就跳过渲染。如果你从未直接修改 state ，那么你就可以很快看到 state 是否发生了变化。如果 `prevObj === obj` ，那么你就可以肯定这个对象内部并没有发生改变。
+* **新功能：** 我们正在构建的 React 的新功能依赖于 state 被 [像快照一样看待](/learn/state-as-a-snapshot) 的理念。如果你直接修改 state 的历史版本，可能会影响你使用这些新功能。
 * **需求变更：** 有些应用功能在不出现任何修改的情况下会更容易实现，比如实现撤销/恢复，展示修改历史，或是允许用户把表单重置成某个之前的值。这是因为你可以把 state 之前的拷贝保存到内存中，并适时对其进行再次使用。如果您一开始就用了直接修改 state 的方式，那么后面要实现这样的功能就会变得非常困难。
 * **更简单的实现** 因为 React 并不依赖于 mutation ，所以您不需要对对象进行任何特殊操作。它不需要像很多“响应式”的解决方案一样去劫持对象的属性、总是用代理把对象包裹起来，或者在初始化时做其他工作。这也是为什么 React 允许您把任何对象存放在 state 中——不管对象有多大——而不会造成有任何额外的性能或正确性问题的原因。
 
@@ -828,7 +828,7 @@ img { width: 200px; height: 200px; }
 
 #### 修复错误的 state 更新代码 {/*fix-incorrect-state-updates*/}
 
-这个表单有几个 bug。试着点击几次增加分数的按钮。你会注意到分数并没有增加。然后试着编辑一下名字字段，你会注意到分数突然“响应”了你之前的修改。最后，试着编辑一下姓氏字段，你会发现分数完全消失了。
+这个表单有几个 bug 。试着点击几次增加分数的按钮。你会注意到分数并没有增加。然后试着编辑一下名字字段，你会注意到分数突然“响应”了你之前的修改。最后，试着编辑一下姓氏字段，你会发现分数完全消失了。
 
 你的任务就是修复所有的这些 bug。在你修复它们的同时，解释一下它们为什么会产生。
 
@@ -978,7 +978,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 在静止的背景上有一个可以拖动的方形。你可以使用下拉框来修改方形的颜色。
 
-但是这里有个 bug。当你先移动了方形，再去修改它的颜色时，背景会突然“跳”到方形所在的位置（实际上背景的位置并不应该发生变化！）。但是这并不是我们想要的，`Background` 的 `position` 属性被设置为 `initialPosition` ，也就是 `{ x: 0, y: 0 }` 。为什么修改颜色之后，背景会移动呢？
+但是这里有个 bug 。当你先移动了方形，再去修改它的颜色时，背景会突然“跳”到方形所在的位置（实际上背景的位置并不应该发生变化！）。但是这并不是我们想要的，`Background` 的 `position` 属性被设置为 `initialPosition` ，也就是 `{ x: 0, y: 0 }` 。为什么修改颜色之后，背景会移动呢？
 
 找到 bug 并修复它。
 
@@ -1134,7 +1134,7 @@ select { margin-bottom: 10px; }
 
 <Solution>
 
-问题出在 `handleMove` 中的 mutation 。它直接修改了 `shape.position` ，但是此时 `initialPosition` 所指向的也是同一个对象。因此方形和背景都发生了移动。（因为它是 mutation，所以直到一个不相关更新——颜色变化——触发了一次重新渲染，变化才反映到屏幕上，）
+问题出在 `handleMove` 中的 mutation 。它直接修改了 `shape.position` ，但是此时 `initialPosition` 所指向的也是同一个对象。因此方形和背景都发生了移动。（因为它是 mutation，所以直到一个不相关更新——颜色变化——触发了一次重新渲染，变化才反映到屏幕上。）
 
 修复问题的方法就是从 `handleMove` 中移除这个 mutation ，然后用展开运算符来复制方形对象。请注意 `+=` 是 mutation 的一种，所以你需要对它进行重写来使用普通的 `+` 操作符。
 
