@@ -575,7 +575,7 @@ const List = memo(function List({ items }) {
 });
 ```
 
-**通过此更改，如果 `List` 的所有 prop 都与上次渲染时 *相同*，则 `List` 将跳过重新渲染**。这就是缓存计算变得重要的地方！想象一下，你在没有 `useMemo` 的情况下计算了 `visibleTodos`：
+**通过此更改，如果 `List` 的所有 prop 都与上次渲染时相同，则 `List` 将跳过重新渲染**。这就是缓存计算变得重要的地方！想象一下，你在没有 `useMemo` 的情况下计算了 `visibleTodos`：
 
 ```js {2-3,6-7}
 export default function TodoList({ todos, tab, theme }) {
