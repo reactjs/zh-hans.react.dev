@@ -175,7 +175,7 @@ input { margin: 5px; }
 
 #### 为什么 useId 比递增计数器更好？ {/*why-is-useid-better-than-an-incrementing-counter*/}
 
-你可能想知道为什么使用 `useId` 比增加全局变量（如 nextId ++）更好。
+你可能想知道为什么使用 `useId` 比增加全局变量（如 `nextId++`）更好。
 
 `useId` 的主要好处是 React 确保它能够与 [服务端渲染](/reference/react-dom/server)一起工作。 在服务器渲染期间，你的组件生成输出 HTML。随后，在客户端，[hydration](/reference/react-dom/client/hydrateRoot) 会将你的事件处理程序附加到生成的 HTML 上。由于 hydration，客户端必须匹配服务器输出的 HTML。
 
