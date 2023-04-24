@@ -228,7 +228,8 @@ function MyComponent() {
 
 如果 *不得不* 在渲染期间读取[或者写入](/reference/react/useState#storing-information-from-previous-renders)，[使用 state](/reference/react/useState) 代替。
 
-当你打破这些规则时，你的组件可能仍然可以工作，但我们添加到 React 的大多数新功能将依赖于这些预期行为。阅读更多关于[保持你的组件纯粹。](/learn/keeping-components-pure#where-you-can-cause-side-effects)
+当你打破这些规则时，你的组件可能仍然可以工作，但我们添加到 React 的大多数新功能将依赖于这些预期行为。阅读 [保持你的组件纯粹](/learn/keeping-components-pure#where-you-can-cause-side-effects) 以了解更多信息。
+```。
 
 </Pitfall>
 
@@ -236,7 +237,7 @@ function MyComponent() {
 
 ### 通过 ref 操作 DOM {/*manipulating-the-dom-with-a-ref*/}
 
-使用 ref 操作 [DOM](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API) 是非常常见的。React 对此有内置支持。
+使用 ref 操作 [DOM](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API) 是非常常见的。React 内置了对它的支持。
 
 首先，声明一个 <CodeStep step={3}>initial value</CodeStep> 为 `null` 的 <CodeStep step={1}>ref 对象</CodeStep>
 
@@ -265,7 +266,7 @@ function MyComponent() {
 
 当节点从屏幕上移除时，React 将把 `current` 属性设回 `null`。
 
-阅读更多关于 [用 ref 操纵DOM](/learn/manipulating-the-dom-with-refs)
+阅读 [用 ref 操纵 DOM](/learn/manipulating-the-dom-with-refs) 以了解更多信息。
 
 <Recipes titleText="Examples of manipulating the DOM with useRef" titleId="examples-dom">
 
@@ -532,7 +533,7 @@ function Video() {
   // ...
 ```
 
-在这里，`playerRef` 本身是可以为空的。然而，你应该能够说服你的类型检查器，不存在 `getPlayer()` 返回 `null` 的情况。然后在你的事件处理程序中使用 `getPlayer()`。
+在这里，`playerRef` 本身是可以为空的。然而，你应该能够使你的类型检查器确信，不存在 `getPlayer()` 返回 `null` 的情况。然后在你的事件处理程序中使用 `getPlayer()`。
 
 </DeepDive>
 
@@ -573,7 +574,7 @@ export default function MyInput({ value, onChange }) {
 }
 ```
 
-然后像这样将其包装在 [`forwardRef`](/reference/react/forwardRef)：
+然后像这样将其包装在 [`forwardRef`](/reference/react/forwardRef) 里：
 
 ```js {3,8}
 import { forwardRef } from 'react';
@@ -593,4 +594,4 @@ export default MyInput;
 
 然后，父级组件可以得到它的 ref。
 
-阅读更多关于 [访问另一个组件的 DOM 节点](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)。
+阅读 [访问另一个组件的 DOM 节点](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) 了解更多信息。
