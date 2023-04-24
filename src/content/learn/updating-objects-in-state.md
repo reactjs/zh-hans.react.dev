@@ -650,7 +650,7 @@ let obj3 = {
 };
 ```
 
-如果你直接修改 `obj3.artwork.city` ，就会同时影响到 `obj2.artwork.city` 和 `obj1.city` 。这是因为 `obj3.artwork` 、 `obj2.artwork` 和 `obj1` 都指向同一个对象。当你用“嵌套”的方式看待对象时，很难看出这一点。相反，它们是相互独立的对象，只不过是用属性“指向”彼此而已。
+如果你直接修改 `obj3.artwork.city`，就会同时影响 `obj2.artwork.city` 和 `obj1.city`。这是因为 `obj3.artwork`、`obj2.artwork` 和 `obj1` 都指向同一个对象。当你用“嵌套”的方式看待对象时，很难看出这一点。相反，它们是相互独立的对象，只不过是用属性“指向”彼此而已。
 
 </DeepDive>  
 
