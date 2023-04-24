@@ -654,7 +654,7 @@ let obj3 = {
 
 </DeepDive>  
 
-### 使用 Immer 写出简洁的更新逻辑 {/*write-concise-update-logic-with-immer*/}
+### 使用 Immer 编写简洁的更新逻辑 {/*write-concise-update-logic-with-immer*/}
 
 如果你的 state 有多层的嵌套，你或许应该考虑 [将其扁平化](/learn/choosing-the-state-structure#avoid-deeply-nested-state)。但是，如果你不想改变 state 的数据结构，你可能更喜欢用一种更便捷的方式来实现嵌套展开的效果。[Immer](https://github.com/immerjs/use-immer) 是一个非常流行的库，它可以让你使用简便但可以直接修改的语法编写代码，并会帮你处理好复制的过程。通过使用 Immer，你写出的代码看起来就像是你“打破了规则”而直接修改了对象：
 
