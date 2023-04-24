@@ -289,7 +289,7 @@ setPerson({
 });
 ```
 
-你可以使用 `...` [对象展开](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_object_literals) 语法，这样你就不需要把每个属性单独复制一次了。
+你可以使用 `...` [对象展开](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_object_literals) 语法，这样你就不需要单独复制每个属性。
 
 ```js
 setPerson({
