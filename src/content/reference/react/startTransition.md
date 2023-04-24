@@ -59,7 +59,7 @@ function TabContainer() {
 
 * 一个被标记为 transition 的 state 更新时将会被其他 state 更新打断。例如，如果你在 transition 内部更新图表组件，但在图表重新渲染时在输入框中打字，则 React 将先处理输入 state 更新，之后才会重新启动对图表组件的渲染工作。
 
-* Transition 更新不能用于控制文本输入。
+* transition 更新不能用于控制文本输入。
 
 * 如果有多个正在进行的 transition，当前 React 会将它们集中在一起处理。这是一个限制，在未来的版本中可能会被移除。
 
