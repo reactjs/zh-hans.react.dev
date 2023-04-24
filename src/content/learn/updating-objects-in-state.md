@@ -109,7 +109,7 @@ onPointerMove={e => {
 
 这段代码直接修改了 [上一次渲染中](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) 分配给 `position` 的对象。但是因为并没有使用 state 的设置函数，React 并不知道对象已更改。所以 React 没有做出任何响应。这就像在吃完饭之后才尝试去改变要点的菜一样。虽然在一些情况下，直接修改 state 可能是有效的，但我们并不推荐这么做。你应该把在渲染过程中可以访问到的 state 视为只读的。
 
-在这种情况下，为了真正地 [触发一次重新渲染](/learn/state-as-a-snapshot#setting-state-triggers-renders)，**你需要创建一个*新*对象并把它传递给 state 的设置函数**：
+在这种情况下，为了真正地 [触发一次重新渲染](/learn/state-as-a-snapshot#setting-state-triggers-renders)，**你需要创建一个新对象并把它传递给 state 的设置函数**：
 
 ```js
 onPointerMove={e => {
