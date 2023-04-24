@@ -120,7 +120,7 @@ onPointerMove={e => {
 }}
 ```
 
-通过使用 `setPosition`，你在告诉 React ：
+通过使用 `setPosition`，你在告诉 React：
 
 * 使用这个新的对象替换 `position` 的值
 * 然后再次渲染这个组件
