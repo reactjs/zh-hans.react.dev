@@ -39,7 +39,7 @@ function TabContainer() {
 }
 ```
 
-[请看下面的更多例子。](#usage)
+[请看下面的更多例子](#usage)。
 
 #### 参数 {/*parameters*/}
 
