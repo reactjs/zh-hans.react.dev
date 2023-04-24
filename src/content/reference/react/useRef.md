@@ -41,16 +41,16 @@ function MyComponent() {
 
 `useRef` 返回一个只有一个属性的对象:
 
-* `current`：最初，它被设置为你传递的 `initialValue`。之后你可以把它设置为其他值。如果你把 ref 对象作为一个 JSX 节点的 `ref` 属性传递给 React，React 将为它设置`current`属性。
+* `current`：最初，它被设置为你传递的 `initialValue`。之后你可以把它设置为其他值。如果你把 ref 对象作为一个 JSX 节点的 `ref` 属性传递给 React，React 将为它设置 `current` 属性。
 
-在接下来渲染中，`useRef` 将返回同一个对象。
+在后续的渲染中，`useRef` 将返回同一个对象。
 
 #### 注意事项 {/*caveats*/}
 
 * 你可以修改 `ref.current` 属性。与 state 不同，它是可变的。然而，如果它持有一个用于渲染的对象（例如，你的 state 的一部分），那么你就不应该修改这个对象。
 * 当你改变 `ref.current` 属性时，React 不会重新渲染你的组件。React 不知道你何时改变它，因为 ref 是一个普通的 JavaScript 对象。
-* 除了[初始化](#avoiding-recreating-the-ref-contents)外不要在渲染期间写入 _或者读取_ `ref.current`。这会使你的组件的行为不可预测。
-* 在严格模式下，React 将会 **调用两次你的组件方法**，这是为了 [帮助你发现意外的问题](#my-initializer-or-updater-function-runs-twice)。这只是开发模式下的行为，不影响生产模式。每个 ref 对象将会创建两次，但是其中一个版本将被丢弃。如果你的组件函数是纯的（应该如此），这不会影响其行为。
+* 除了 [初始化](#avoiding-recreating-the-ref-contents) 外不要在渲染期间写入 **或者读取** `ref.current`。这会使你的组件的行为不可预测。
+* 在严格模式下，React 将会 **调用两次组件方法**，这是为了 [帮助你发现意外的问题](#my-initializer-or-updater-function-runs-twice)。这只是开发模式下的行为，不影响生产模式。每个 ref 对象将会创建两次，但是其中一个版本将被丢弃。如果你的组件函数是纯的（应该如此），这不会影响其行为。
 
 ---
 
@@ -70,9 +70,9 @@ function Stopwatch() {
 
 `useRef` 返回一个具有单个 <CodeStep step={2}>`current` 属性</CodeStep> 的 <CodeStep step={1}>ref 对象</CodeStep>，并初始化为你提供的 <CodeStep step={3}>initial value</CodeStep>
 
-在接下来的渲染中，`useRef` 将返回相同的对象。你可以改变它的 `current` 属性来存储信息，并在之后读取它。这会让你想起 [state](/reference/react/useState)，但是有一个重要的区别。
+在后续的渲染中，`useRef` 将返回相同的对象。你可以改变它的 `current` 属性来存储信息，并在之后读取它。这会让你联想起 [state](/reference/react/useState)，但是有一个重要的区别。
 
-**改变 ref 不会触发重新渲染。** 这意味着 ref 是存储不影响你的组件的视图输出的信息的完美选择。例如，如果你需要存储一个 [intervalID](https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval) 并在以后检索它，你可以把它放在一个 ref 中。如果要更新 ref 里面的值，你需要手动改变它的 <CodeStep step={2}>`current` 属性</CodeStep>：
+**改变 ref 不会触发重新渲染。** 这意味着 ref 是存储一些不影响组件视图输出的信息的完美选择。例如，如果你需要存储一个 [intervalID](https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval) 并在以后检索它，你可以把它放在一个 ref 中。如果要更新 ref 里面的值，你需要手动改变它的 <CodeStep step={2}>`current` 属性</CodeStep>：
 
 ```js [[2, 5, "intervalRef.current"]]
 function handleStartClick() {
@@ -98,7 +98,7 @@ function handleStopClick() {
 - 改变它 **不会触发重新渲染**（不像是 state 变量，会触发重新渲染）。
 - 对于你的组件的每个副本来说，**这些信息都是本地的**（不像是外面的变量，是共享的）。
 
-改变 ref 不会触发重新渲染，所以 ref 不适合存储用于你想要显示在屏幕上的信息。如有需要，使用 state 代替。阅读更多关于 [在 `useRef` 和 `useState` 之间选择](/learn/referencing-values-with-refs#differences-between-refs-and-state) 的信息。
+改变 ref 不会触发重新渲染，所以 ref 不适合用于存储期望显示在屏幕上的信息。如有需要，使用 state 代替。阅读更多关于 [在 `useRef` 和 `useState` 之间选择](/learn/referencing-values-with-refs#differences-between-refs-and-state) 的信息。
 
 <Recipes titleText="Examples of referencing a value with useRef" titleId="examples-value">
 
@@ -129,13 +129,13 @@ export default function Counter() {
 
 </Sandpack>
 
-如果你在 JSX 中显示 `{ref.current}`，数字不会在点击时更新。这是因为设置 `ref.current` 并不会触发重新渲染。用于渲染的信息应该用 state。
+如果你在 JSX 中显示 `{ref.current}`，数字不会在点击时更新。这是因为修改 `ref.current` 不会触发重新渲染。用于渲染的信息应该使用 state。
 
 <Solution />
 
 #### 秒表 {/*a-stopwatch*/}
 
-这个例子使用了 state 和 ref 的组合。`startTime` 和 `now` 都是 state 变量，因为它们是用来渲染的。但是我们还需要持有一个 [interval ID](https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval)，这样我们就可以在按下按钮时停止定时器。因为 interval ID 不用于渲染，所以把它保存在一个 ref 中是合适的，并且手动更新它。
+这个例子使用了 state 和 ref 的组合。`startTime` 和 `now` 都是 state 变量，因为它们是用来渲染的。但是我们还需要持有一个 [interval ID](https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval)，这样我们就可以在按下按钮时停止定时器。因为 interval ID 不用于渲染，所以应该把它保存在一个 ref 中，并且手动更新它。
 
 <Sandpack>
 
@@ -192,10 +192,10 @@ export default function Stopwatch() {
 
 React 期望你的组件的主体 [表现得像一个纯函数](/learn/keeping-components-pure)：
 
-- 如果输入([props](/learn/passing-props-to-a-component)、[state](/learn/state-a-components-memory) 和 [context](/learn/passing-data-deeply-with-context))都是一样的，那么就应该返回一样的 JSX。
+- 如果输入的（[props](/learn/passing-props-to-a-component)、[state](/learn/state-a-components-memory) 和 [context](/learn/passing-data-deeply-with-context)）都是一样的，那么就应该返回一样的 JSX。
 - 以不同的顺序或用不同的参数调用它，不应该影响其他调用的结果。
 
-在 **渲染期间** 读取或写入 ref 会破坏这些预期。
+在 **渲染期间** 读取或写入 ref 会破坏这些预期行为。
 
 ```js {3-4,6-7}
 function MyComponent() {
@@ -208,7 +208,7 @@ function MyComponent() {
 }
 ```
 
-你可以在 **事件处理函数或者 effects** 中读取和写入 ref。
+你可以在 **事件处理程序或者 effects** 中读取和写入 ref。
 
 ```js {4-5,9-10}
 function MyComponent() {
@@ -219,16 +219,16 @@ function MyComponent() {
   });
   // ...
   function handleClick() {
-    // ✅ 你可以在事件处理函数中读取和写入 ref
+    // ✅ 你可以在事件处理程序中读取和写入 ref
     doSomething(myOtherRef.current);
   }
   // ...
 }
 ```
 
-如果 *不得不* 在渲染期间读取[或者写入](/reference/react/useState#storing-information-from-previous-renders)，[使用 state](/reference/react/useState) 代替。
+如果 **不得不** 在渲染期间读取 [或者写入](/reference/react/useState#storing-information-from-previous-renders)，[使用 state](/reference/react/useState) 代替。
 
-当你打破这些规则时，你的组件可能仍然可以工作，但我们添加到 React 的大多数新功能将依赖于这些预期行为。阅读 [保持你的组件纯粹](/learn/keeping-components-pure#where-you-can-cause-side-effects) 以了解更多信息。
+当你打破这些规则时，你的组件可能仍然可以工作，但是我们为 React 添加的大多数新功能将依赖于这些预期行为。阅读 [保持你的组件纯粹](/learn/keeping-components-pure#where-you-can-cause-side-effects) 以了解更多信息。
 
 </Pitfall>
 
@@ -255,7 +255,7 @@ function MyComponent() {
   return <input ref={inputRef} />;
 ```
 
-在 React 创建了 DOM 节点并将其置于屏幕后，React 将会把你的 ref 对象的 <CodeStep step={2}>`current` 属性</CodeStep>设置为那个 DOM 节点。现在你可以访问 `<input>` 的 DOM 节点，并且可以调用类似于 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) 的方法：
+当 React 创建 DOM 节点并将其渲染到屏幕时，React 将会把 DOM 节点设置为你的 ref 对象的 <CodeStep step={2}>`current` 属性</CodeStep>。现在你可以访问 `<input>` 的 DOM 节点，并且可以调用类似于 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) 的方法：
 
 ```js [[2, 2, "inputRef.current"]]
   function handleClick() {
@@ -395,7 +395,7 @@ li {
 
 #### 播放和暂停视频 {/*playing-and-pausing-a-video*/}
 
-这个示例使用 ref 调用 `<video>` DOM 节点的 [`play()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/play) 和 [`pause()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/pause)。
+这个示例使用 ref 调用 `<video>` DOM 节点的 [`play()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/play) 和 [`pause()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/pause) 方法。
 
 <Sandpack>
 
@@ -448,7 +448,7 @@ button { display: block; margin-bottom: 20px; }
 
 #### 向你的组件暴露 ref {/*exposing-a-ref-to-your-own-component*/}
 
-有时，你可能想让父级组件在你的组件中操纵 DOM。例如，也许你正在写一个 `MyInput` 组件，但你希望父组件能够聚焦 input（父组件无法访问）。你可以使用一个组合，通过 `useRef` 持有 input 并且通过 [`forwardRef`](/reference/react/forwardRef) 来将其暴露给父组件。在这里阅读一个 [详细演练](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)。
+有时，你可能想让父级组件在你的组件中操纵 DOM。例如，也许你正在写一个 `MyInput` 组件，但你希望父组件能够聚焦 input（父组件无法访问）。你可以使用一个组合，通过 `useRef` 持有 input 并且通过 [`forwardRef`](/reference/react/forwardRef) 来将其暴露给父组件。在这里阅读 [详细演练](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)。
 
 <Sandpack>
 
@@ -542,7 +542,7 @@ function Video() {
 
 ### 我无法获取自定义组件的 ref {/*i-cant-get-a-ref-to-a-custom-component*/}
 
-如果你尝试向这样传递 `ref` 到你自己的组件：
+如果你尝试像这样传递 `ref` 到你自己的组件：
 
 ```js
 const inputRef = useRef(null);
@@ -558,9 +558,9 @@ Warning: Function components cannot be given refs. Attempts to access this ref w
 
 </ConsoleBlock>
 
-默认情况下，你自己的组件不会暴露它们内部的 DOM 节点的 ref。
+默认情况下，你自己的组件不会暴露它们内部 DOM 节点的 ref。
 
-为了解决这个问题，找到你想获得 ref 的组件：
+为了解决这个问题，首先，找到你想获得 ref 的组件：
 
 ```js
 export default function MyInput({ value, onChange }) {
@@ -591,6 +591,6 @@ const MyInput = forwardRef(({ value, onChange }, ref) => {
 export default MyInput;
 ```
 
-然后，父级组件可以得到它的 ref。
+最后，父级组件就可以得到它的 ref。
 
 阅读 [访问另一个组件的 DOM 节点](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) 了解更多信息。
