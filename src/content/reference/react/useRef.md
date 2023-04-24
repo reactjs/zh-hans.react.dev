@@ -229,6 +229,7 @@ function MyComponent() {
 如果 *不得不* 在渲染期间读取[或者写入](/reference/react/useState#storing-information-from-previous-renders)，[使用 state](/reference/react/useState) 代替。
 
 当你打破这些规则时，你的组件可能仍然可以工作，但我们添加到 React 的大多数新功能将依赖于这些预期行为。阅读 [保持你的组件纯粹](/learn/keeping-components-pure#where-you-can-cause-side-effects) 以了解更多信息。
+
 ```。
 
 </Pitfall>
