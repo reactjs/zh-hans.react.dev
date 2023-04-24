@@ -293,8 +293,8 @@ setPerson({
 
 ```js
 setPerson({
-  ...person, // Copy the old fields
-  firstName: e.target.value // But override this one
+  ...person, // 复制上一个 person 中的所有字段
+  firstName: e.target.value // 但是覆盖 firstName 字段 
 });
 ```
 
