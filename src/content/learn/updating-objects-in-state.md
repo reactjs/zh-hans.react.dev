@@ -273,7 +273,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-例如，下面这行代码修改了上一次渲染中的 state ：
+例如，下面这行代码修改了上一次渲染中的 state：
 
 ```js
 person.firstName = e.target.value;
