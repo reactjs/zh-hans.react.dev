@@ -174,7 +174,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 #### 局部 mutation 是可以接受的 {/*local-mutation-is-fine*/}
 
-像这样的代码是有问题的，因为它改变的是 state 中*现有*的对象：
+像这样的代码是有问题的，因为它改变了 state 中现有的对象：
 
 ```js
 position.x = e.clientX;
