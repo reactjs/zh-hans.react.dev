@@ -50,7 +50,7 @@ function MyComponent() {
 * 你可以修改 `ref.current` 属性。与 state 不同，它是可变的。然而，如果它持有一个用于渲染的对象（例如，你的 state 的一部分），那么你就不应该修改这个对象。
 * 当你改变 `ref.current` 属性时，React 不会重新渲染你的组件。React 不知道你何时改变它，因为 ref 是一个普通的 JavaScript 对象。
 * 除了[初始化](#avoiding-recreating-the-ref-contents)外不要在渲染期间写入 _或者读取_ `ref.current`。这会使你的组件的行为不可预测。
-* 在严格模式下，React 将会 **调用两次你的组件方法**，这是为了[帮助你发现意外的问题](#my-initializer-or-updater-function-runs-twice)。这只是开发模式下的行为，不影响生产模式。每个 ref 对象将会创建两次，但是其中一个版本将被丢弃。如果你的组件函数是纯的（应该如此），这不会影响其行为。
+* 在严格模式下，React 将会 **调用两次你的组件方法**，这是为了 [帮助你发现意外的问题](#my-initializer-or-updater-function-runs-twice)。这只是开发模式下的行为，不影响生产模式。每个 ref 对象将会创建两次，但是其中一个版本将被丢弃。如果你的组件函数是纯的（应该如此），这不会影响其行为。
 
 ---
 
