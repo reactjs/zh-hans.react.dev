@@ -69,7 +69,7 @@ function TabContainer() {
 
 ### 将 state 更新标记为非阻塞 transition {/*marking-a-state-update-as-a-non-blocking-transition*/}
 
-你可以通过将一个 state 包裹在 `startTransition` 回调中，将其更新标记为一个 *transition*：
+你可以通过将一个 state 包裹在 `startTransition` 回调中，将其更新标记为一个 **transition**：
 
 ```js {7,9}
 import { startTransition } from 'react';
