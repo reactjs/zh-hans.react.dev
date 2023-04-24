@@ -50,7 +50,7 @@ class MyComponent extends Component {
 
 `createRef` 返回一个对象，该对象只有一个属性：
 
-* `current`：最初，它被设置为 `null`。你可以稍后将其设置为其他内容。如果你把 ref 对象作为 JSX 节点的 `ref` 属性传递给 React，React 将设置其 `current` 属性。
+* `current`：初始值为 `null`，你可以稍后设置为其他内容。如果你把 ref 对象作为 JSX 节点的 `ref` 属性传递给 React，React 将设置其 `current` 属性。
 
 #### 注意事项 {/*caveats*/}
 
