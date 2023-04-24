@@ -76,7 +76,7 @@ class Form extends Component {
 }
 ```
 
-如果你现在将 `ref={this.inputRef}` 传递给 JSX 中的 `<input>`，React 将把 input 的 DOM 节点填充到 `this.inputRef.current`。例如，以下是如何创建一个将焦点集中到输入框中的按钮的示例代码：
+如果你现在将 `ref={this.inputRef}` 传递给 JSX 中的 `<input>`，React 将把 input 的 DOM 节点填充到 `this.inputRef.current`。例如，以下是创建一个将焦点集中到输入框中的按钮的示例代码：
 
 <Sandpack>
 
