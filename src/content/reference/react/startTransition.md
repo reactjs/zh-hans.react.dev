@@ -92,7 +92,7 @@ transition 可以让用户界面在慢速设备上保持更新响应。
 
 <Note>
 
-`startTransition` 与 [`useTransition`](/reference/react/useTransition) 非常相似，但它不提供 `isPending` 标志来跟踪一个 transition 是否正在进行。你可以在 `useTransition` 不可用时调用 `startTransition`。例如，在组件外部（如从数据库中）使用 `startTransition` 。
+`startTransition` 与 [`useTransition`](/reference/react/useTransition) 非常相似，但它不提供 `isPending` 标志来跟踪一个 transition 是否正在进行。你可以在 `useTransition` 不可用时调用 `startTransition`。例如，在组件外部（如从数据库中）使用 `startTransition`。
 
 [在 `useTransition` 页面上了解 transition 并查看示例](/reference/react/useTransition)。
 
