@@ -203,7 +203,7 @@ setPosition({
 
 </DeepDive>  
 
-## 使用展开语法来复制对象 {/*copying-objects-with-the-spread-syntax*/}
+## 使用展开语法复制对象 {/*copying-objects-with-the-spread-syntax*/}
 
 在之前的例子中，`position` 对象始终是根据指针的当前位置被重新创建出来的。但是通常，你会希望把*现有*数据作为你所创建的新对象的一部分。例如，你可能只想要更新表单中的*一个*字段，其他的字段仍然使用之前的值。
 
