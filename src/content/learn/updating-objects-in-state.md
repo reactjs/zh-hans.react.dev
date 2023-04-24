@@ -181,7 +181,7 @@ position.x = e.clientX;
 position.y = e.clientY;
 ```
 
-但是像这样的代码就 **没有任何问题** ，因为你改变的是你刚刚创建的一个新的对象：
+但是像这样的代码就 **没有任何问题**，因为你改变的是你刚刚创建的一个新的对象：
 
 ```js
 const nextPosition = {};
