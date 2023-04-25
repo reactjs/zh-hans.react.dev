@@ -76,6 +76,7 @@ React 将会在注水 `root` 中更新 `<App />`。
 
 * `reactNode` ：你想要更新的 "React 节点"。通常这会是一段JSX代码，例如 `<App />` ，但你也可以传递一个通过 [`createElement()`](/reference/react/createElement) 创建的 React 元素，一个字符串，一个数字，`null` 值 或者 `undefined` 值。
 
+
 #### 返回值 {/*root-render-returns*/}
 
 `root.render` 返回 `undefined` 值。
