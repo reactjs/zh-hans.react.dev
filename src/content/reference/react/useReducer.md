@@ -4,7 +4,7 @@ title: useReducer
 
 <Intro>
 
-`useReducer` is a React Hook that lets you add a [reducer](/learn/extracting-state-logic-into-a-reducer) to your component.
+`useReducer` 是一个 React Hook，它允许你在组件中添加一个 [reducer](/learn/extracting-state-logic-into-a-reducer) 
 
 ```js
 const [state, dispatch] = useReducer(reducer, initialArg, init?)
@@ -16,11 +16,11 @@ const [state, dispatch] = useReducer(reducer, initialArg, init?)
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `useReducer(reducer, initialArg, init?)` {/*usereducer*/}
 
-Call `useReducer` at the top level of your component to manage its state with a [reducer.](/learn/extracting-state-logic-into-a-reducer)
+在组件的顶层调用 useReducer，以使用  [reducer.](/learn/extracting-state-logic-into-a-reducer) 管理其状态。
 
 ```js
 import { useReducer } from 'react';
@@ -34,31 +34,31 @@ function MyComponent() {
   // ...
 ```
 
-[See more examples below.](#usage)
+[请参阅下面的更多示例。](#usage)
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `reducer`: The reducer function that specifies how the state gets updated. It must be pure, should take the state and action as arguments, and should return the next state. State and action can be of any types. 
-* `initialArg`: The value from which the initial state is calculated. It can be a value of any type. How the initial state is calculated from it depends on the next `init` argument.
-* **optional** `init`: The initializer function that should return the initial state. If it's not specified, the initial state is set to `initialArg`. Otherwise, the initial state is set to the result of calling `init(initialArg)`.
+* `reducer`: 指定状态更新方式的 reducer 函数。它必须是纯函数，应该接收 state 和 action 作为参数，并返回下一个状态。State 和 action 可以是任何类型。 
+* `initialArg`: 用于计算初始状态的值。它可以是任何类型的值。如何从它计算初始状态取决于下一个 init 参数。
+* **可选** `init`：应该返回初始状态的初始化函数。如果未指定，初始状态将设置为 initialArg。否则，初始状态将设置为调用 init(initialArg) 的结果。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-`useReducer` returns an array with exactly two values:
+`useReducer`  返回一个包含两个值的数组：
 
-1. The current state. During the first render, it's set to `init(initialArg)` or `initialArg` (if there's no `init`).
-2. The [`dispatch` function](#dispatch) that lets you update the state to a different value and trigger a re-render.
+1. 当前状态。在第一次渲染期间，它设置为 `init(initialArg)` 或 `initialArg`（如果没有 `init`）。
+2. 用于将状态更新为不同值并触发重新渲染的 [`dispatch` 函数](#dispatch)。
 
-#### Caveats {/*caveats*/}
+#### 注意事项 {/*caveats*/}
 
-* `useReducer` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a new component and move the state into it.
-* In Strict Mode, React will **call your reducer and initializer twice** in order to [help you find accidental impurities.](#my-reducer-or-initializer-function-runs-twice) This is development-only behavior and does not affect production. If your reducer and initializer are pure (as they should be), this should not affect your logic. The result from one of the calls is ignored.
+* `useReducer` 是一个 Hook，因此你只能在 **组件的顶层** 或你自己的 Hook 中调用它。你不能在循环或条件语句中调用它。如果需要这样做，请提取一个新组件并将状态移动到其中。
+* 在严格模式（Strict Mode）下，React 为了[帮助你发现意外的不纯操作](#my-reducer-or-initializer-function-runs-twice)，**将调用两次你的 reducer 和初始化器**。这只在开发环境中生效，不影响生产环境。如果你的 reducer 和初始化器是纯的（正如它们应该的那样），这不应影响你的逻辑。两次调用中的一个结果会被忽略。
 
 ---
 
-### `dispatch` function {/*dispatch*/}
+### `dispatch` 函数 {/*dispatch*/}
 
-The `dispatch` function returned by `useReducer` lets you update the state to a different value and trigger a re-render. You need to pass the action as the only argument to the `dispatch` function:
+`useReducer` 返回的 `dispatch` 函数允许您将状态更新为不同的值并触发重新渲染。您需要将 action 作为唯一参数传递给 `dispatch` 函数：
 
 ```js
 const [state, dispatch] = useReducer(reducer, { age: 42 });
@@ -68,7 +68,7 @@ function handleClick() {
   // ...
 ```
 
-React will set the next state to the result of calling the `reducer` function you've provided with the current `state` and the action you've passed to `dispatch`.
+React 将把下一个状态设置为使用当前 `state` 和您传递给 `dispatch` 的 action 调用您提供的 `reducer` 函数的结果。
 
 #### Parameters {/*dispatch-parameters*/}
 
@@ -88,9 +88,9 @@ React will set the next state to the result of calling the `reducer` function yo
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Adding a reducer to a component {/*adding-a-reducer-to-a-component*/}
+### 在组件中添加一个 reducer {/*adding-a-reducer-to-a-component*/}
 
 Call `useReducer` at the top level of your component to manage state with a [reducer.](/learn/extracting-state-logic-into-a-reducer)
 
@@ -161,7 +161,7 @@ button { display: block; margin-top: 10px; }
 
 ---
 
-### Writing the reducer function {/*writing-the-reducer-function*/}
+### 编写 reducer 函数 {/*writing-the-reducer-function*/}
 
 A reducer function is declared like this:
 
@@ -723,7 +723,7 @@ ul, li { margin: 0; padding: 0; }
 
 ---
 
-### Avoiding recreating the initial state {/*avoiding-recreating-the-initial-state*/}
+### 避免重新创建初始状态 {/*avoiding-recreating-the-initial-state*/}
 
 React saves the initial state once and ignores it on the next renders.
 
@@ -936,9 +936,9 @@ export default function TodoList({ username }) {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 故障排除 {/*troubleshooting*/}
 
-### I've dispatched an action, but logging gives me the old state value {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
+### 我已经派发了一个 action，但日志显示我还是旧的 state 值 {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
 
 Calling the `dispatch` function **does not change state in the running code**:
 
@@ -970,7 +970,7 @@ console.log(nextState); // { age: 43 }
 
 ---
 
-### I've dispatched an action, but the screen doesn't update {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
+### 我已经派发了一个 action，但屏幕没有更新 {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
 
 React will **ignore your update if the next state is equal to the previous state,** as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. This usually happens when you change an object or an array in state directly:
 
@@ -1018,7 +1018,7 @@ function reducer(state, action) {
 
 ---
 
-### A part of my reducer state becomes undefined after dispatching {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
+### 在派发后，我的 reducer state 的一部分变成了 undefined {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
 
 Make sure that every `case` branch **copies all of the existing fields** when returning the new state:
 
@@ -1038,7 +1038,7 @@ Without `...state` above, the returned next state would only contain the `age` f
 
 ---
 
-### My entire reducer state becomes undefined after dispatching {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
+### 在派发后，我的整个 reducer state 变成了 undifined {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
 
 If your state unexpectedly becomes `undefined`, you're likely forgetting to `return` state in one of the cases, or your action type doesn't match any of the `case` statements. To find why, throw an error outside the `switch`:
 
@@ -1060,7 +1060,7 @@ You can also use a static type checker like TypeScript to catch such mistakes.
 
 ---
 
-### I'm getting an error: "Too many re-renders" {/*im-getting-an-error-too-many-re-renders*/}
+### 我收到一个错误： "Too many re-renders" {/*im-getting-an-error-too-many-re-renders*/}
 
 You might get an error that says: `Too many re-renders. React limits the number of renders to prevent an infinite loop.` Typically, this means that you're unconditionally dispatching an action *during render*, so your component enters a loop: render, dispatch (which causes a render), render, dispatch (which causes a render), and so on. Very often, this is caused by a mistake in specifying an event handler:
 
@@ -1079,7 +1079,7 @@ If you can't find the cause of this error, click on the arrow next to the error 
 
 ---
 
-### My reducer or initializer function runs twice {/*my-reducer-or-initializer-function-runs-twice*/}
+### 我的 reducer 或初始化函数运行了两次 {/*my-reducer-or-initializer-function-runs-twice*/}
 
 In [Strict Mode](/reference/react/StrictMode), React will call your reducer and initializer functions twice. This shouldn't break your code.
 
