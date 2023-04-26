@@ -70,21 +70,21 @@ function handleClick() {
 
 React 将把下一个状态设置为使用当前 `state` 和您传递给 `dispatch` 的 action 调用您提供的 `reducer` 函数的结果。
 
-#### Parameters {/*dispatch-parameters*/}
+#### 参数 {/*dispatch-parameters*/}
 
-* `action`: The action performed by the user. It can be a value of any type. By convention, an action is usually an object with a `type` property identifying it and, optionally, other properties with additional information.
+* `action`: 用户执行的动作。它可以是任何类型的值。按照惯例，一个动作通常是一个带有 `type` 属性（用于识别）的对象，以及可选的其他属性，用于存储附加信息。
 
-#### Returns {/*dispatch-returns*/}
+#### 返回值 {/*dispatch-returns*/}
 
-`dispatch` functions do not have a return value.
+`dispatch` 函数没有返回值。
 
-#### Caveats {/*setstate-caveats*/}
+#### 注意事项 {/*setstate-caveats*/}
 
-* The `dispatch` function **only updates the state variable for the *next* render**. If you read the state variable after calling the `dispatch` function, [you will still get the old value](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value) that was on the screen before your call.
+* `dispatch` 函数**仅在下一次渲染时更新 state 变量**。如果在调用 `dispatch` 函数后读取 state 变量，[您仍然会得到旧值](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value)，即在您调用之前屏幕上的值。
 
-* If the new value you provide is identical to the current `state`, as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison, React will **skip re-rendering the component and its children.** This is an optimization. React may still need to call your component before ignoring the result, but it shouldn't affect your code.
+* 如果您提供的新值与当前 `state` 相同，经 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较后得出，React **将跳过重新渲染组件及其子组件**。这是一种优化。React 在忽略结果之前仍可能需要调用您的组件，但这不应影响您的代码。
 
-* React [batches state updates.](/learn/queueing-a-series-of-state-updates) It updates the screen **after all the event handlers have run** and have called their `set` functions. This prevents multiple re-renders during a single event. In the rare case that you need to force React to update the screen earlier, for example to access the DOM, you can use [`flushSync`.](/reference/react-dom/flushSync)
+* React **[批量更新 state。](/learn/queueing-a-series-of-state-updates)** 它会在**所有事件处理程序运行完毕**并调用了它们的 **`set`** 函数后更新屏幕。这可以防止在单个事件期间发生多次重渲染。在极少数情况下，如果您需要强制 React 提前更新屏幕，例如为了访问 DOM，您可以使用 **[`flushSync`](/reference/react-dom/flushSync)**。
 
 ---
 
