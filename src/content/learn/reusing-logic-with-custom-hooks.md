@@ -285,7 +285,7 @@ function useAuth() {
 }
 ```
 
-Then components won't be able to call it conditionally. This will become important when you actually add Hook calls inside. If you don't plan to use Hooks inside it (now or later), don't make it a Hook.
+接下来组件就不能在条件分支里调用这个函数。当你在里面添加了Hook调用时，这一点将变得很重要。如果你没有计划在内部使用Hook（现在或者之后），就不要让它成为一个Hook。
 
 </DeepDive>
 
