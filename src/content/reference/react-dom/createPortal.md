@@ -64,7 +64,7 @@ portal 只改变 DOM 节点的所处位置。在其他方面，传入 portal 中
 
 ### 渲染到 DOM 的不同部分 {/*rendering-to-a-different-part-of-the-dom*/}
 
-*Portals* 允许组件将它们的某些子元素渲染到 DOM 中的不同位置。这使得组件的一部分可以“逃脱”它所在的容器。例如，组件可以显示出现在页面其余部分之上和之外的模态对话框或工具提示。
+*portal* 允许组件将它们的某些子元素渲染到 DOM 中的不同位置。这使得组件的一部分可以“逃脱”它所在的容器。例如，组件可以显示出现在页面其余部分之上和之外的模态对话框或工具提示。
 
 要创建 portal，请使用 <CodeStep step={1}>JSX</CodeStep> 和 <CodeStep step={2}>应该放置的 DOM 节点</CodeStep> 渲染 `createPortal` 的结果：
 
