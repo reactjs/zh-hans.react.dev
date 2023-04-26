@@ -1,30 +1,30 @@
 ---
-title: 'Reusing Logic with Custom Hooks'
+title: 使用自定义Hook重用逻辑
 ---
 
 <Intro>
 
-React comes with several built-in Hooks like `useState`, `useContext`, and `useEffect`. Sometimes, you'll wish that there was a Hook for some more specific purpose: for example, to fetch data, to keep track of whether the user is online, or to connect to a chat room. You might not find these Hooks in React, but you can create your own Hooks for your application's needs.
+React带有一些内置的Hook，比如`useState`, `useContext`和`useEffect`。有时候你需要一个用途更加特定的Hook:比如远程获取数据，追踪用户是否在线，或者连接一个聊天室。在React中可能找不到这些Hook,但是你可以根据自己应用的需求取创建自己的Hook。
 
 </Intro>
 
 <YouWillLearn>
 
-- What custom Hooks are, and how to write your own
-- How to reuse logic between components
-- How to name and structure your custom Hooks
-- When and why to extract custom Hooks
+- 什么是自定义Hook，以及如何写自己的Hook
+- 如何在组件间重用逻辑
+- 如何命名和构建你的自定义Hook
+- 提取自定义Hook的时机和原因
 
 </YouWillLearn>
 
-## Custom Hooks: Sharing logic between components {/*custom-hooks-sharing-logic-between-components*/}
+## 自定义Hook:在组件间共享逻辑 {/*custom-hooks-sharing-logic-between-components*/}
 
-Imagine you're developing an app that heavily relies on the network (as most apps do). You want to warn the user if their network connection has accidentally gone off while they were using your app. How would you go about it? It seems like you'll need two things in your component:
+假设你正在开发一款重度依赖网络的应用（和大多数应用一样）。当用户使用你的应用时，如果网络意外断开，你想要警告用户。你会如何处理这种情况呢？看上去你在组件中需要两个东西：
 
-1. A piece of state that tracks whether the network is online.
-2. An Effect that subscribes to the global [`online`](https://developer.mozilla.org/en-US/docs/Web/API/Window/online_event) and [`offline`](https://developer.mozilla.org/en-US/docs/Web/API/Window/offline_event) events, and updates that state.
+1. 一个追踪网络是否在线的state。
+2. 一个订阅全局[`在线`](https://developer.mozilla.org/en-US/docs/Web/API/Window/online_event)和[`离线`](https://developer.mozilla.org/en-US/docs/Web/API/Window/offline_event)事件以及更新上述state的Effect。
 
-This will keep your component [synchronized](/learn/synchronizing-with-effects) with the network status. You might start with something like this:
+这将让你的组件与网络状态保持[同步](/learn/synchronizing-with-effects)。你可以像这样开始：
 
 <Sandpack>
 
@@ -54,11 +54,11 @@ export default function StatusBar() {
 
 </Sandpack>
 
-Try turning your network on and off, and notice how this `StatusBar` updates in response to your actions.
+尝试开启和关闭网络，注意`StatusBar`应对你的行为是如何更新的。
 
-Now imagine you *also* want to use the same logic in a different component. You want to implement a Save button that will become disabled and show "Reconnecting..." instead of "Save" while the network is off.
+现在假设你想要在一个不同的组件里**也**使用这段相同的逻辑。你想实现一个Save按钮，当网络离线时，这个按钮会变成不可用，并且显示"Reconnecting..."而不是"Save"。
 
-To start, you can copy and paste the `isOnline` state and the Effect into `SaveButton`:
+你可以通过复制和粘贴`isOnline` state和Effect到`SaveButton`开始：
 
 <Sandpack>
 
@@ -96,13 +96,13 @@ export default function SaveButton() {
 
 </Sandpack>
 
-Verify that, if you turn off the network, the button will change its appearance.
+验证一下, 如果关闭网络, 按钮会变更展示。
 
-These two components work fine, but the duplication in logic between them is unfortunate. It seems like even though they have different *visual appearance,* you want to reuse the logic between them.
+这两个组件都工作正常，但是不幸的是他们之间的逻辑重复了。即使两个组件看上去有不同的**视觉界面，**你也想要复用他们之间的逻辑。
 
-### Extracting your own custom Hook from a component {/*extracting-your-own-custom-hook-from-a-component*/}
+### 从组件中提取出你的自定义Hook {/*extracting-your-own-custom-hook-from-a-component*/}
 
-Imagine for a moment that, similar to [`useState`](/reference/react/useState) and [`useEffect`](/reference/react/useEffect), there was a built-in `useOnlineStatus` Hook. Then both of these components could be simplified and you could remove the duplication between them:
+想象一下，与[`useState`](/reference/react/useState)和[`useEffect`](/reference/react/useEffect)类似，有一个内置的`useOnlineStatus`Hook。那么就可以简化这两个组件并且移除他们之间的重复部分：
 
 ```js {2,7}
 function StatusBar() {
@@ -125,7 +125,7 @@ function SaveButton() {
 }
 ```
 
-Although there is no such built-in Hook, you can write it yourself. Declare a function called `useOnlineStatus` and move all the duplicated code into it from the components you wrote earlier:
+尽管目前没有这样的内置Hook,但是你可以自己写。声明一个`useOnlineStatus`函数，并且把早前组件里的所有重复代码移到里面：
 
 ```js {2-16}
 function useOnlineStatus() {
@@ -148,7 +148,7 @@ function useOnlineStatus() {
 }
 ```
 
-At the end of the function, return `isOnline`. This lets your components read that value:
+在函数结尾处, 返回 `isOnline`。这可以让组件读取到那个值：
 
 <Sandpack>
 
@@ -209,78 +209,78 @@ export function useOnlineStatus() {
 
 </Sandpack>
 
-Verify that switching the network on and off updates both components.
+验证切换网络状态是否更新了两个组件。
 
-Now your components don't have as much repetitive logic. **More importantly, the code inside them describes *what they want to do* (use the online status!) rather than *how to do it* (by subscribing to the browser events).**
+现在你的组件里没有那么多重复的逻辑了。**更重要的是，组件中的代码描述了他们想要做什么（使用在线状态！），而不是如何做（通过订阅浏览器事件完成）**
 
-When you extract logic into custom Hooks, you can hide the gnarly details of how you deal with some external system or a browser API. The code of your components expresses your intent, not the implementation.
+当提取逻辑到自定义Hook中时，你可以隐藏如何处理一些外部系统或者浏览器API的艰难细节。组件中的代码表达的是你的目的而不是实现。
 
-### Hook names always start with `use` {/*hook-names-always-start-with-use*/}
+### Hook的名称必须永远以 `use`开头 {/*hook-names-always-start-with-use*/}
 
-React applications are built from components. Components are built from Hooks, whether built-in or custom. You'll likely often use custom Hooks created by others, but occasionally you might write one yourself!
+React 应用是由组件构建的。组件是由内置的或者自定义的Hook构建的。你可能经常使用别人创建的自定义Hook，但是偶尔也可能要自己写！
 
-You must follow these naming conventions:
+你必须遵循以下这些命名公约:
 
-1. **React component names must start with a capital letter,** like `StatusBar` and `SaveButton`. React components also need to return something that React knows how to display, like a piece of JSX.
-2. **Hook names must start with `use` followed by a capital letter,** like [`useState`](/reference/react/useState) (built-in) or `useOnlineStatus` (custom, like earlier on the page). Hooks may return arbitrary values.
+1. **React组件名称必须以大写字母开头，** 比如 `StatusBar` 和 `SaveButton`. React 组件还需要返回一些React知道如何展示的内容，比如一段JSX代码。
+2. **Hook的名称必须以 `use`开头，后面跟一个大写字母,** 像 [`useState`](/reference/react/useState) (内置) or `useOnlineStatus` (像文章早前的自定义Hook)。 Hook可能会返回任意值。
 
-This convention guarantees that you can always look at a component and know where its state, Effects, and other React features might "hide". For example, if you see a `getColor()` function call inside your component, you can be sure that it can't possibly contain React state inside because its name doesn't start with `use`. However, a function call like `useOnlineStatus()` will most likely contain calls to other Hooks inside!
+这个公约保证了你始终可以查看组件并且知道它的state,Effect以及其他的React特性可能“隐藏”在哪里。比如，如果你在组件内部看见`getColor()`的函数调用，你可以确定它内部不可能包含React state，因为它的名称没有以`use`开头。但是，像`useOnlineStatus()`这样的函数调用将极有可能包含对内部其他Hook的调用！
 
 <Note>
 
-If your linter is [configured for React,](/learn/editor-setup#linting) it will enforce this naming convention. Scroll up to the sandbox above and rename `useOnlineStatus` to `getOnlineStatus`. Notice that the linter won't allow you to call `useState` or `useEffect` inside of it anymore. Only Hooks and components can call other Hooks!
+如果为[React配置了](/learn/editor-setup#linting)检查工具，它会强制执行这个命名公约。滑动到上面的sandbox,并将`useOnlineStatus`重命名为`getOnlineStatus`。注意检查工具将不会再允许你在内部调用`useState` 或者 `useEffect`。只有Hook和组件可以调用其他Hook!
 
 </Note>
 
 <DeepDive>
 
-#### Should all functions called during rendering start with the use prefix? {/*should-all-functions-called-during-rendering-start-with-the-use-prefix*/}
+#### 渲染期间调用的所有函数都应该以前缀use开头么? {/*should-all-functions-called-during-rendering-start-with-the-use-prefix*/}
 
-No. Functions that don't *call* Hooks don't need to *be* Hooks.
+不是。没有**调用**Hook的函数不需要**成为**Hook。
 
-If your function doesn't call any Hooks, avoid the `use` prefix. Instead, write it as a regular function *without* the `use` prefix. For example, `useSorted` below doesn't call Hooks, so call it `getSorted` instead:
+如果你的函数没有调用任何Hook，请避免使用`use` 前缀。 而是**不带**`use`前缀，把它作为常规函数去写。比如, 下面的`useSorted` 没有调用Hook, 所以叫它 `getSorted`:
 
 ```js
-// 🔴 Avoid: A Hook that doesn't use Hooks
+// 🔴 避免: 没有调用其他Hook的Hook
 function useSorted(items) {
   return items.slice().sort();
 }
 
-// ✅ Good: A regular function that doesn't use Hooks
+// ✅ Good: 没有使用Hook的常规函数
 function getSorted(items) {
   return items.slice().sort();
 }
 ```
 
-This ensures that your code can call this regular function anywhere, including conditions:
+这保证了你的代码可以在包括条件语句在内的任何地方调用这个常规函数：
 
 ```js
 function List({ items, shouldSort }) {
   let displayedItems = items;
   if (shouldSort) {
-    // ✅ It's ok to call getSorted() conditionally because it's not a Hook
+    // ✅ 在条件分支里调用getSorted()是没问题的，因为它不是Hook
     displayedItems = getSorted(items);
   }
   // ...
 }
 ```
 
-You should give `use` prefix to a function (and thus make it a Hook) if it uses at least one Hook inside of it:
+如果内部至少使用了一个Hook，你应该给这个函数`use`前缀（从而让它成为一个Hook）：
 
 ```js
-// ✅ Good: A Hook that uses other Hooks
+// ✅ Good: 一个使用了其他Hook的Hook
 function useAuth() {
   return useContext(Auth);
 }
 ```
 
-Technically, this isn't enforced by React. In principle, you could make a Hook that doesn't call other Hooks. This is often confusing and limiting so it's best to avoid that pattern. However, there may be rare cases where it is helpful. For example, maybe your function doesn't use any Hooks right now, but you plan to add some Hook calls to it in the future. Then it makes sense to name it with the `use` prefix:
+从技术上讲，这不是React强制的。原则上，你可以写一个不调用其他Hook的Hook。这常常会令人迷惑且受到限制，所以最好是避免那种方式。但是在极少一些场景下，它可能是有帮助的。比如，也许你的函数现在没有使用任何Hook，但是计划在未来会添加一些Hook调用。那么使用`use`前缀给它命名就很有意义:
 
 ```js {3-4}
-// ✅ Good: A Hook that will likely use some other Hooks later
+// ✅ Good: 之后即将可能使用一些其他Hook的一个Hook
 function useAuth() {
-  // TODO: Replace with this line when authentication is implemented:
-  // return useContext(Auth);
+  // TODO: 当认证功能实现以后，替换这一行:
+  // 返回 useContext(Auth);
   return TEST_USER;
 }
 ```
