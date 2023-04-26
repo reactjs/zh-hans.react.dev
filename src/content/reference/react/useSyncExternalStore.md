@@ -341,11 +341,11 @@ function subscribe(callback) {
 - 在服务端生成 HTML 时。
 - 在客户端 [水合](/reference/react-dom/client/hydrateRoot) 时，如：当 React 拿到服务端的 HTML 并使其可交互。
 
-这使得你能提供在应用可交互前可用的初始快照值。如果没有对服务器端渲染来说有意义的初始值，就省略这个参数来[强制客户端渲染](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content)。
+这使得你能提供在应用可交互前可用的初始快照值。如果没有对服务器端渲染来说有意义的初始值，就省略这个参数来 [强制客户端渲染](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content)。
 
 <Note>
 
-确保客户端初始渲染与服务端渲染时 `getServerSnapshot` 返回完全相同的数据。例如，如果在服务端 `getServerSnapshot` 返回一些预先载入的 store 内容，你就需要把这些内容也传给客户端。一种方法是在服务端渲染时，生成 `<script>` 标签来设置像 `window.MY_STORE_DATA` 这样的全局变量，并在客户端 `getServerSnapshot` 中从此全局变量中读取。你的外部 store 应当提供如何这样做的说明。
+确保客户端初始渲染与服务端渲染时 `getServerSnapshot` 返回完全相同的数据。例如，如果在服务端 `getServerSnapshot` 返回一些预先载入的 store 内容，你就需要把这些内容也传给客户端。一种方法是在服务端渲染时，生成 `<script>` 标签来设置像 `window.MY_STORE_DATA` 这样的全局变量，并在客户端 `getServerSnapshot` 中从此全局变量读取。你的外部 store 应当提供如何这样做的说明。
 
 </Note>
 
