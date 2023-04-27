@@ -326,7 +326,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 <Challenges>
 
-### 实现红绿灯组件 {/*implement-a-traffic-light*/}
+#### 实现红绿灯组件 {/*implement-a-traffic-light*/}
 
 以下是一个人行道红绿灯组件，在按下按钮时会切换状态：
 
