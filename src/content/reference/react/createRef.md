@@ -4,13 +4,13 @@ title: createRef
 
 <Pitfall>
 
-`createRef` is mostly used for [class components.](/reference/react/Component) Function components typically rely on [`useRef`](/reference/react/useRef) instead.
+`createRef` 主要用于 [class 组件](/reference/react/Component)。而函数组件通常使用 [`useRef`](/reference/react/useRef)。
 
 </Pitfall>
 
 <Intro>
 
-`createRef` creates a [ref](/learn/referencing-values-with-refs) object which can contain arbitrary value.
+`createRef` 创建一个 [ref](/learn/referencing-values-with-refs) 对象，该对象可以包含任意值。
 
 ```js
 class MyInput extends Component {
@@ -25,11 +25,11 @@ class MyInput extends Component {
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `createRef()` {/*createref*/}
 
-Call `createRef` to declare a [ref](/learn/referencing-values-with-refs) inside a [class component.](/reference/react/Component)
+在 [class 组件](/reference/react/Component) 中调用 `createRef` 来声明一个 [ref](/learn/referencing-values-with-refs)。
 
 ```js
 import { createRef, Component } from 'react';
@@ -40,31 +40,31 @@ class MyComponent extends Component {
   // ...
 ```
 
-[See more examples below.](#usage)
+[请看下方更多示例](#usage)。
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-`createRef` takes no parameters.
+`createRef` 不接受任何参数。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-`createRef` returns an object with a single property:
+`createRef` 返回一个对象，该对象只有一个属性：
 
-* `current`: Initially, it's set to the `null`. You can later set it to something else. If you pass the ref object to React as a `ref` attribute to a JSX node, React will set its `current` property.
+* `current`：初始值为 `null`，你可以稍后设置为其他内容。如果你把 ref 对象作为 JSX 节点的 `ref` 属性传递给 React，React 将设置其 `current` 属性。
 
-#### Caveats {/*caveats*/}
+#### 注意事项 {/*caveats*/}
 
-* `createRef` always returns a *different* object. It's equivalent to writing `{ current: null }` yourself.
-* In a function component, you probably want [`useRef`](/reference/react/useRef) instead which always returns the same object.
-* `const ref = useRef()` is equivalent to `const [ref, _] = useState(() => createRef(null))`.
+* `createRef` 总是返回一个 **不同的** 对象。这相当于你自己编写了 `{ current: null }`。
+* 在函数组件中，你可能想要使用 [`useRef`](/reference/react/useRef)，因为它始终返回相同的对象。
+* `const ref = useRef()` 等同于 `const [ref, _] = useState(() => createRef(null))`。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Declaring a ref in a class component {/*declaring-a-ref-in-a-class-component*/}
+### 在 class 组件中声明 ref {/*declaring-a-ref-in-a-class-component*/}
 
-To declare a ref inside a [class component,](/reference/react/Component) call `createRef` and assign its result to a class field:
+要在 [class 组件](/reference/react/Component) 中声明一个 ref，请调用 `createRef` 并将其结果分配给 class 字段：
 
 ```js {4}
 import { Component, createRef } from 'react';
@@ -76,7 +76,7 @@ class Form extends Component {
 }
 ```
 
-If you now pass `ref={this.inputRef}` to an `<input>` in your JSX, React will populate `this.inputRef.current` with the input DOM node. For example, here is how you make a button that focuses the input:
+如果你现在将 `ref={this.inputRef}` 传递给 JSX 中的 `<input>`，React 将把 input 的 DOM 节点赋值给 `this.inputRef.current`。例如，下面这段代码演示了如何创建一个按钮，点击该按钮会将焦点聚焦在输入框上：
 
 <Sandpack>
 
@@ -95,7 +95,7 @@ export default class Form extends Component {
       <>
         <input ref={this.inputRef} />
         <button onClick={this.handleClick}>
-          Focus the input
+          聚焦这个输入框
         </button>
       </>
     );
@@ -107,17 +107,17 @@ export default class Form extends Component {
 
 <Pitfall>
 
-`createRef` is mostly used for [class components.](/reference/react/Component) Function components typically rely on [`useRef`](/reference/react/useRef) instead.
+`createRef` 主要用于 [class 组件](/reference/react/Component)。而函数组件通常使用 [`useRef`](/reference/react/useRef)。
 
 </Pitfall>
 
 ---
 
-## Alternatives {/*alternatives*/}
+## 替代方案 {/*alternatives*/}
 
-### Migrating from a class with `createRef` to a function with `useRef` {/*migrating-from-a-class-with-createref-to-a-function-with-useref*/}
+### 从使用 `createRef` 的 class 组件迁移到使用 `useRef` 的函数组件 {/*migrating-from-a-class-with-createref-to-a-function-with-useref*/}
 
-We recommend using function components instead of [class components](/reference/react/Component) in new code. If you have some existing class components using `createRef`, here is how you can convert them. This is the original code:
+我们建议在新代码中使用函数组件而不是 [class 组件](/reference/react/Component)。如果你有一些使用了 `createRef` 的 class 组件，以下是如何将它们转换为函数组件。这是原始代码：
 
 <Sandpack>
 
@@ -136,7 +136,7 @@ export default class Form extends Component {
       <>
         <input ref={this.inputRef} />
         <button onClick={this.handleClick}>
-          Focus the input
+          聚焦这个输入框
         </button>
       </>
     );
@@ -146,7 +146,7 @@ export default class Form extends Component {
 
 </Sandpack>
 
-When you [convert this component from a class to a function,](/reference/react/Component#alternatives) replace calls to `createRef` with calls to [`useRef`:](/reference/react/useRef)
+当你 [将此组件从 class 组件转化为函数组件](/reference/react/Component#alternatives) 时，用 [`useRef`](/reference/react/useRef) 替换 `createRef` 的调用：
 
 <Sandpack>
 
@@ -164,7 +164,7 @@ export default function Form() {
     <>
       <input ref={inputRef} />
       <button onClick={handleClick}>
-        Focus the input
+        聚焦这个输入框
       </button>
     </>
   );

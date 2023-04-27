@@ -4,7 +4,7 @@ title: useId
 
 <Intro>
 
-`useId` is a React Hook for generating unique IDs that can be passed to accessibility attributes.
+`useId` 是一个 React Hook，可以生成传递给无障碍属性的唯一 ID。
 
 ```js
 const id = useId()
@@ -16,11 +16,11 @@ const id = useId()
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `useId()` {/*useid*/}
 
-Call `useId` at the top level of your component to generate a unique ID:
+在组件的顶层调用 `useId` 生成唯一 ID：
 
 ```js
 import { useId } from 'react';
@@ -30,35 +30,35 @@ function PasswordField() {
   // ...
 ```
 
-[See more examples below.](#usage)
+[请看下方更多示例](#usage)。
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-`useId` does not take any parameters.
+`useId` 不带任何参数。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-`useId` returns a unique ID string associated with this particular `useId` call in this particular component.
+`useId` 返回一个唯一的字符串 ID，与此特定组件中的 `useId` 调用相关联。
 
-#### Caveats {/*caveats*/}
+#### 注意事项 {/*caveats*/}
 
-* `useId` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a new component and move the state into it.
+* `useId` 是一个 Hook，因此你只能 **在组件的顶层** 或自己的 Hook 中调用它。你不能在内部循环或条件判断中调用它。如果需要，可以提取一个新组件并将 state 移到该组件中。
 
-* `useId` **should not be used to generate keys** in a list. [Keys should be generated from your data.](/learn/rendering-lists#where-to-get-your-key)
+* `useId` **不应该被用来生成列表中的 key**。[key 应该由你的数据生成](/learn/rendering-lists#where-to-get-your-key)。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
 <Pitfall>
 
-**Do not call `useId` to generate keys in a list.** [Keys should be generated from your data.](/learn/rendering-lists#where-to-get-your-key)
+**不要使用 `useId` 来生成列表中的 key**。[key 应该由你的数据生成](/learn/rendering-lists#where-to-get-your-key)。
 
 </Pitfall>
 
-### Generating unique IDs for accessibility attributes {/*generating-unique-ids-for-accessibility-attributes*/}
+### 为无障碍属性生成唯一 ID {/*generating-unique-ids-for-accessibility-attributes*/}
 
-Call `useId` at the top level of your component to generate a unique ID:
+在组件的顶层调用 `useId` 生成唯一 ID：
 
 ```js [[1, 4, "passwordHintId"]]
 import { useId } from 'react';
@@ -68,7 +68,7 @@ function PasswordField() {
   // ...
 ```
 
-You can then pass the <CodeStep step={1}>generated ID</CodeStep> to different attributes:
+你可以将 <CodeStep step={1}>生成的 ID</CodeStep> 传递给不同的属性：
 
 ```js [[1, 2, "passwordHintId"], [1, 3, "passwordHintId"]]
 <>
@@ -77,26 +77,26 @@ You can then pass the <CodeStep step={1}>generated ID</CodeStep> to different at
 </>
 ```
 
-**Let's walk through an example to see when this is useful.**
+**让我们通过一个例子，看看这个什么时候有用**。
 
-[HTML accessibility attributes](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) like [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) let you specify that two tags are related to each other. For example, you can specify that an element (like an input) is described by another element (like a paragraph).
+如 [`aria-describedby`](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) 这样的 [HTML 无障碍属性](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA) 允许你指定两个标签之间的关系。例如，你可以指定一个元素（比如输入框）由另一个元素（比如段落）描述。
 
-In regular HTML, you would write it like this:
+在常规的 HTML 中，你会这样写：
 
 ```html {5,8}
 <label>
-  Password:
+  密码:
   <input
     type="password"
     aria-describedby="password-hint"
   />
 </label>
 <p id="password-hint">
-  The password should contain at least 18 characters
+  密码应该包含至少 18 个字符
 </p>
 ```
 
-However, hardcoding IDs like this is not a good practice in React. A component may be rendered more than once on the page--but IDs have to be unique! Instead of hardcoding an ID, generate a unique ID with `useId`:
+然而，在 React 中直接编写 ID 并不是一个好的习惯。一个组件可能会在页面上渲染多次，但是 ID 必须是唯一的！不要使用自己编写的 ID，而是使用 `useId` 生成唯一的 ID。
 
 ```js {4,11,14}
 import { useId } from 'react';
@@ -106,21 +106,21 @@ function PasswordField() {
   return (
     <>
       <label>
-        Password:
+        密码:
         <input
           type="password"
           aria-describedby={passwordHintId}
         />
       </label>
       <p id={passwordHintId}>
-        The password should contain at least 18 characters
+        密码应该包含至少 18 个字符
       </p>
     </>
   );
 }
 ```
 
-Now, even if `PasswordField` appears multiple times on the screen, the generated IDs won't clash.
+现在，即使 `PasswordField` 多次出现在屏幕上，生成的 ID 并不会冲突。
 
 <Sandpack>
 
@@ -132,14 +132,14 @@ function PasswordField() {
   return (
     <>
       <label>
-        Password:
+        密码:
         <input
           type="password"
           aria-describedby={passwordHintId}
         />
       </label>
       <p id={passwordHintId}>
-        The password should contain at least 18 characters
+        密码应该包含至少 18 个字符
       </p>
     </>
   );
@@ -148,9 +148,9 @@ function PasswordField() {
 export default function App() {
   return (
     <>
-      <h2>Choose password</h2>
+      <h2>输入密码</h2>
       <PasswordField />
-      <h2>Confirm password</h2>
+      <h2>验证密码</h2>
       <PasswordField />
     </>
   );
@@ -163,33 +163,33 @@ input { margin: 5px; }
 
 </Sandpack>
 
-[Watch this video](https://www.youtube.com/watch?v=0dNzNcuEuOo) to see the difference in the user experience with assistive technologies.
+[请看这个视频](https://www.youtube.com/watch?v=0dNzNcuEuOo)，了解辅助技术所提供的用户体验的差异。
 
 <Pitfall>
 
-With [server rendering](/reference/react-dom/server), **`useId` requires an identical component tree on the server and the client**. If the trees you render on the server and the client don't match exactly, the generated IDs won't match.
+[使用服务端渲染时](/reference/react-dom/server)，**`useId` 需要在服务器和客户端上有相同的组件树**。如果你在服务器和客户端上渲染的树不完全匹配，生成的 ID 将不匹配。
 
 </Pitfall>
 
 <DeepDive>
 
-#### Why is useId better than an incrementing counter? {/*why-is-useid-better-than-an-incrementing-counter*/}
+#### 为什么 useId 比递增计数器更好？ {/*why-is-useid-better-than-an-incrementing-counter*/}
 
-You might be wondering why `useId` is better than incrementing a global variable like `nextId++`.
+你可能想知道为什么使用 `useId` 比增加全局变量（如 `nextId++`）更好。
 
-The primary benefit of `useId` is that React ensures that it works with [server rendering.](/reference/react-dom/server) During server rendering, your components generate HTML output. Later, on the client, [hydration](/reference/react-dom/client/hydrateRoot) attaches your event handlers to the generated HTML. For hydration to work, the client output must match the server HTML.
+`useId` 的主要好处是 React 确保它能够与 [服务端渲染](/reference/react-dom/server)一起工作。 在服务器渲染期间，你的组件生成输出 HTML。随后，在客户端，[hydration](/reference/react-dom/client/hydrateRoot) 会将你的事件处理程序附加到生成的 HTML 上。由于 hydration，客户端必须匹配服务器输出的 HTML。
 
-This is very difficult to guarantee with an incrementing counter because the order in which the client components are hydrated may not match the order in which the server HTML was emitted. By calling `useId`, you ensure that hydration will work, and the output will match between the server and the client.
+使用递增计数器非常难以保证这一点，因为客户端组件被 hydrate 处理后的顺序可能与服务器 HTML 发出的顺序不匹配。通过调用 `useId`，你可以确保 hydration 正常工作，并且服务器和客户端之间的输出将匹配。
 
-Inside React, `useId` is generated from the "parent path" of the calling component. This is why, if the client and the server tree are the same, the "parent path" will match up regardless of rendering order.
+在 React 内部，调用组件的“父路径”生成 `useId`。这就是为什么如果客户端和服务器的树相同，不管渲染顺序如何，“父路径”始终都匹配。
 
 </DeepDive>
 
 ---
 
-### Generating IDs for several related elements {/*generating-ids-for-several-related-elements*/}
+### 为多个相关元素生成 ID {/*generating-ids-for-several-related-elements*/}
 
-If you need to give IDs to multiple related elements, you can call `useId` to generate a shared prefix for them: 
+如果你需要为多个相关元素生成 ID，可以调用 `useId` 来为它们生成共同的前缀：
 
 <Sandpack>
 
@@ -200,10 +200,10 @@ export default function Form() {
   const id = useId();
   return (
     <form>
-      <label htmlFor={id + '-firstName'}>First Name:</label>
+      <label htmlFor={id + '-firstName'}>名字：</label>
       <input id={id + '-firstName'} type="text" />
       <hr />
-      <label htmlFor={id + '-lastName'}>Last Name:</label>
+      <label htmlFor={id + '-lastName'}>姓氏：</label>
       <input id={id + '-lastName'} type="text" />
     </form>
   );
@@ -216,13 +216,13 @@ input { margin: 5px; }
 
 </Sandpack>
 
-This lets you avoid calling `useId` for every single element that needs a unique ID.
+可以使你避免为每个需要唯一 ID 的元素调用 `useId`。
 
 ---
 
-### Specifying a shared prefix for all generated IDs {/*specifying-a-shared-prefix-for-all-generated-ids*/}
+### 为所有生成的 ID 指定共享前缀 {/*specifying-a-shared-prefix-for-all-generated-ids*/}
 
-If you render multiple independent React applications on a single page, pass `identifierPrefix` as an option to your [`createRoot`](/reference/react-dom/client/createRoot#parameters) or [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) calls. This ensures that the IDs generated by the two different apps never clash because every identifier generated with `useId` will start with the distinct prefix you've specified.
+如果你在单个页面上渲染多个独立的 React 应用程序，请在 [`createRoot`](/reference/react-dom/client/createRoot#parameters) 或 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 调用中将 `identifierPrefix` 作为选项传递。这确保了由两个不同应用程序生成的 ID 永远不会冲突，因为使用 `useId` 生成的每个 ID 都将以你指定的不同前缀开头。
 
 <Sandpack>
 
@@ -242,18 +242,18 @@ import { useId } from 'react';
 
 function PasswordField() {
   const passwordHintId = useId();
-  console.log('Generated identifier:', passwordHintId)
+  console.log('生成的 ID：', passwordHintId)
   return (
     <>
       <label>
-        Password:
+        密码:
         <input
           type="password"
           aria-describedby={passwordHintId}
         />
       </label>
       <p id={passwordHintId}>
-        The password should contain at least 18 characters
+        密码应该包含至少 18 个字符
       </p>
     </>
   );
@@ -262,7 +262,7 @@ function PasswordField() {
 export default function App() {
   return (
     <>
-      <h2>Choose password</h2>
+      <h2>输入密码</h2>
       <PasswordField />
     </>
   );
