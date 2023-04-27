@@ -4,7 +4,7 @@ title: useContext
 
 <Intro>
 
-`useContext` is a React Hook that lets you read and subscribe to [context](/learn/passing-data-deeply-with-context) from your component.
+`useContext` 是一个 React Hook，可以让你读取和订阅组件中的 [context](/learn/passing-data-deeply-with-context)。
 
 ```js
 const value = useContext(SomeContext)
@@ -16,11 +16,11 @@ const value = useContext(SomeContext)
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `useContext(SomeContext)` {/*usecontext*/}
 
-Call `useContext` at the top level of your component to read and subscribe to [context.](/learn/passing-data-deeply-with-context)
+在组件的顶层调用 `useContext` 来读取和订阅 [context](/learn/passing-data-deeply-with-context)。
 
 ```js
 import { useContext } from 'react';
@@ -30,30 +30,30 @@ function MyComponent() {
   // ...
 ```
 
-[See more examples below.](#usage)
+[请看下方更多示例。](#usage)
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `SomeContext`: The context that you've previously created with [`createContext`](/reference/react/createContext). The context itself does not hold the information, it only represents the kind of information you can provide or read from components.
+* `SomeContext`：先前用 [`createContext`](/reference/react/createContext) 创建的 context。context 本身不包含信息，它只代表你可以提供或从组件中读取的信息类型。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-`useContext` returns the context value for the calling component. It is determined as the `value` passed to the closest `SomeContext.Provider` above the calling component in the tree. If there is no such provider, then the returned value will be the `defaultValue` you have passed to [`createContext`](/reference/react/createContext) for that context. The returned value is always up-to-date. React automatically re-renders components that read some context if it changes.
+`useContext` 为调用组件返回 context 的值。它被确定为传递给树中调用组件上方最近的 `SomeContext.Provider` 的 `value`。如果没有这样的 provider，那么返回值将会是为创建该 context 传递给 [`createContext`](/reference/react/createContext) 的 `defaultValue`。返回的值始终是最新的。如果 context 发生变化，React 会自动重新渲染读取 context 的组件。
 
-#### Caveats {/*caveats*/}
+#### 注意事项 {/*caveats*/}
 
-* `useContext()` call in a component is not affected by providers returned from the *same* component. The corresponding `<Context.Provider>` **needs to be *above*** the component doing the `useContext()` call.
-* React **automatically re-renders** all the children that use a particular context starting from the provider that receives a different `value`. The previous and the next values are compared with the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. Skipping re-renders with [`memo`](/reference/react/memo) does not prevent the children receiving fresh context values.
-* If your build system produces duplicates modules in the output (which can happen with symlinks), this can break context. Passing something via context only works if `SomeContext` that you use to provide context and `SomeContext` that you use to read it are ***exactly* the same object**, as determined by a `===` comparison.
+* 组件中的 `useContext()` 调用不受 **同一** 组件返回的 provider 的影响。相应的 `<Context.Provider>` 需要位于调用 `useContext()` 的组件 **之上**。
+* 从 provider 接收到不同的 `value` 开始，React 自动重新渲染使用了该特定 context 的所有子级。先前的值和新的值会使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来做比较。使用 [`memo`](/reference/react/memo) 来跳过重新渲染并不妨碍子级接收到新的 context 值。 
+* 如果您的构建系统在输出中产生重复的模块（可能发生在符号链接中），这可能会破坏 context。通过 context 传递数据只有在用于传递 context 的 `SomeContext` 和用于读取数据的  `SomeContext` 是完全相同的对象时才有效，这是由 `===` 比较决定的。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
 
-### Passing data deeply into the tree {/*passing-data-deeply-into-the-tree*/}
+### 向组件树深层传递数据 {/*passing-data-deeply-into-the-tree*/}
 
-Call `useContext` at the top level of your component to read and subscribe to [context.](/learn/passing-data-deeply-with-context)
+在组件的最顶级调用 `useContext` 来读取和订阅 [context](/learn/passing-data-deeply-with-context)。
 
 ```js [[2, 4, "theme"], [1, 4, "ThemeContext"]]
 import { useContext } from 'react';
@@ -63,9 +63,9 @@ function Button() {
   // ... 
 ```
 
-`useContext` returns the <CodeStep step={2}>context value</CodeStep> for the <CodeStep step={1}>context</CodeStep> you passed. To determine the context value, React searches the component tree and finds **the closest context provider above** for that particular context.
+`useContext` 返回你向 <CodeStep step={1}>context</CodeStep> 传递的 <CodeStep step={2}>context value</CodeStep>。为了确定 context 值，React 搜索组件树，为这个特定的 context **向上查找最近的** context provider。
 
-To pass context to a `Button`, wrap it or one of its parent components into the corresponding context provider:
+若要将 context 传递给 `Button`，请将其或其父组件之一包装到相应的 context provider：
 
 ```js [[1, 3, "ThemeContext"], [2, 3, "\\"dark\\""], [1, 5, "ThemeContext"]]
 function MyPage() {
@@ -77,15 +77,15 @@ function MyPage() {
 }
 
 function Form() {
-  // ... renders buttons inside ...
+  // ... 在内部渲染 buttons ...
 }
 ```
 
-It doesn't matter how many layers of components there are between the provider and the `Button`. When a `Button` *anywhere* inside of `Form` calls `useContext(ThemeContext)`, it will receive `"dark"` as the value.
+provider 和 `Button` 之间有多少层组件并不重要。当 `Form` 中的任何位置的 `Button` 调用 `useContext(ThemeContext)` 时，它都将接收 `"dark"` 作为值。 
 
 <Pitfall>
 
-`useContext()` always looks for the closest provider *above* the component that calls it. It searches upwards and **does not** consider providers in the component from which you're calling `useContext()`.
+`useContext()` 总是在调用它的组件 **上面** 寻找最近的 provider。它向上搜索， **不考虑** 调用 `useContext()` 的组件中的 provider。
 
 </Pitfall>
 
@@ -175,9 +175,9 @@ function Button({ children }) {
 
 ---
 
-### Updating data passed via context {/*updating-data-passed-via-context*/}
+### 通过 context 更新传递的数据 {/*updating-data-passed-via-context*/}
 
-Often, you'll want the context to change over time. To update context, combine it with [state.](/reference/react/useState) Declare a state variable in the parent component, and pass the current state down as the <CodeStep step={2}>context value</CodeStep> to the provider.
+通常，你会希望 context 随着时间的推移而改变。要更新 context，请将其与 [state](/reference/react/useState) 结合。在父组件中声明一个状态变量，并将当前状态作为 <CodeStep step={2}>context value</CodeStep> 传递给 provider。
 
 ```js {2} [[1, 4, "ThemeContext"], [2, 4, "theme"], [1, 11, "ThemeContext"]]
 function MyPage() {
@@ -188,20 +188,20 @@ function MyPage() {
       <Button onClick={() => {
         setTheme('light');
       }}>
-        Switch to light theme
+       Switch to light theme
       </Button>
     </ThemeContext.Provider>
   );
 }
 ```
 
-Now any `Button` inside of the provider will receive the current `theme` value. If you call `setTheme` to update the `theme` value that you pass to the provider, all `Button` components will re-render with the new `'light'` value.
+现在 provider 中的任何一个 `Button` 都会接收到当前的 `theme` 值。如果调用 `setTheme` 来更新传递给 provider 的 `theme` 值，则所有 `Button` 组件都将使用新的值 `'light'` 来重新渲染。
 
-<Recipes titleText="Examples of updating context" titleId="examples-basic">
+<Recipes titleText="更新 context 的例子" titleId="examples-basic">
 
-#### Updating a value via context {/*updating-a-value-via-context*/}
+#### 通过 context 来更新数据 {/*updating-a-value-via-context*/}
 
-In this example, the `MyApp` component holds a state variable which is then passed to the `ThemeContext` provider. Checking the "Dark mode" checkbox updates the state. Changing the provided value re-renders all the components using that context.
+在这个示例中，`MyApp` 组件包含一个状态变量，然后该变量被传递给 `ThemeContext` provider。选中“Dark mode”复选框更新状态。更改提供的值将重新渲染使用该 context 的所有组件。
 
 <Sandpack>
 
@@ -299,13 +299,13 @@ function Button({ children }) {
 
 </Sandpack>
 
-Note that `value="dark"` passes the `"dark"` string, but `value={theme}` passes the value of the JavaScript `theme` variable with [JSX curly braces.](/learn/javascript-in-jsx-with-curly-braces) Curly braces also let you pass context values that aren't strings.
+注意，`value="dark"` 传递 `"dark"` 字符串，但 `value={theme}` 传递带有 [JSX 花括号](/learn/javascript-in-jsx-with-curly-braces) 的 JavaScript `theme` 变量的值。花括号还允许传递非字符串的 context 值。
 
 <Solution />
 
-#### Updating an object via context {/*updating-an-object-via-context*/}
+#### 通过 context 更新对象 {/*updating-an-object-via-context*/}
 
-In this example, there is a `currentUser` state variable which holds an object. You combine `{ currentUser, setCurrentUser }` into a single object and pass it down through the context inside the `value={}`. This lets any component below, such as `LoginButton`, read both `currentUser` and `setCurrentUser`, and then call `setCurrentUser` when needed.
+在这个例子中，有一个 `currentUser` 状态变量，它包含一个对象。将 `{ currentUser, setCurrentUser }` 组合成一个对象，并通过 context 在 `value={}` 中向下传递。这允许下面的任何组件，如 `LoginButton`，同时读取 `currentUser` 和 `setCurrentUser`，然后在需要时调用 `setCurrentUser`。
 
 <Sandpack>
 
@@ -395,9 +395,9 @@ label {
 
 <Solution />
 
-#### Multiple contexts {/*multiple-contexts*/}
+#### 同时使用多个 context {/*multiple-contexts*/}
 
-In this example, there are two independent contexts. `ThemeContext` provides the current theme, which is a string, while `CurrentUserContext` holds the object representing the current user.
+在这个例子中，存在两个独立的 context。`ThemeContext` 提供了当前的主题，它是一个字符串，而 `CurrentUserContext` 保存了代表当前用户的对象。
 
 <Sandpack>
 
@@ -562,9 +562,9 @@ label {
 
 <Solution />
 
-#### Extracting providers to a component {/*extracting-providers-to-a-component*/}
+#### 把 provider 抽离成组件 {/*extracting-providers-to-a-component*/}
 
-As your app grows, it is expected that you'll have a "pyramid" of contexts closer to the root of your app. There is nothing wrong with that. However, if you dislike the nesting aesthetically, you can extract the providers into a single component. In this example, `MyProviders` hides the "plumbing" and renders the children passed to it inside the necessary providers. Note that the `theme` and `setTheme` state is needed in `MyApp` itself, so `MyApp` still owns that piece of the state.
+随着你的应用增长，预计你会有一个像“金字塔”一样的 context 出现在靠近你应用的根部。这样没什么问题。然而，如果你从审美上不喜欢这种嵌套，你可以将 provider 抽离成单独的组件。在这个例子中，`MyProviders` 隐藏了“管路”，并且在需要的 provider 中渲染传递给它的子节点。请注意，`MyApp` 本身需要 `theme` 和 `setTheme` 状态，因此 `MyApp` 仍然拥有这部分的状态。
 
 <Sandpack>
 
@@ -737,11 +737,11 @@ label {
 
 <Solution />
 
-#### Scaling up with context and a reducer {/*scaling-up-with-context-and-a-reducer*/}
+#### 使用 context 和 reducer 进行扩展 {/*scaling-up-with-context-and-a-reducer*/}
 
-In larger apps, it is common to combine context with a [reducer](/reference/react/useReducer) to extract the logic related to some state out of components. In this example, all the "wiring" is hidden in the `TasksContext.js`, which contains a reducer and two separate contexts.
+在大型应用程序中，通常将 context 和 [reducer](/reference/react/useReducer) 结合起来从组件中抽离与某种状态相关的逻辑。在本例中，所有的“线路”都隐藏在 `TasksContext.js` 中，它包含一个 reducer 和两个单独 context。
 
-Read a [full walkthrough](/learn/scaling-up-with-reducer-and-context) of this example.
+阅读这个例子的 [完整演示。](/learn/scaling-up-with-reducer-and-context)
 
 <Sandpack>
 
@@ -947,25 +947,25 @@ ul, li { margin: 0; padding: 0; }
 
 ---
 
-### Specifying a fallback default value {/*specifying-a-fallback-default-value*/}
+### 指定回退默认值 {/*specifying-a-fallback-default-value*/}
 
-If React can't find any providers of that particular <CodeStep step={1}>context</CodeStep> in the parent tree, the context value returned by `useContext()` will be equal to the <CodeStep step={3}>default value</CodeStep> that you specified when you [created that context](/reference/react/createContext):
+如果 React 没有在父树中找到该特定 <CodeStep step={1}>context</CodeStep> 的任何 provider，`useContext()` 返回的 context 值将等于你在 [创建 context](/reference/react/createContext) 时指定的 <CodeStep step={3}>默认值</CodeStep>：
 
 ```js [[1, 1, "ThemeContext"], [3, 1, "null"]]
 const ThemeContext = createContext(null);
 ```
 
-The default value **never changes**. If you want to update context, use it with state as [described above.](#updating-data-passed-via-context)
+默认值 **从不改变**。如果你想要更新 context，请按 [上述方式](#updating-data-passed-via-context) 将其与状态一起使用。
 
-Often, instead of `null`, there is some more meaningful value you can use as a default, for example:
+通常，除了 `null`，还有一些更有意义的值可以用作默认值，例如：
 
 ```js [[1, 1, "ThemeContext"], [3, 1, "light"]]
 const ThemeContext = createContext('light');
 ```
 
-This way, if you accidentally render some component without a corresponding provider, it won't break. This also helps your components work well in a test environment without setting up a lot of providers in the tests.
+这样，如果你不小心渲染了没有相应 provider 的某个组件，它也不会出错。这也有助于你的组件在测试环境中很好地运行，而无需在测试中设置许多 provider。
 
-In the example below, the "Toggle theme" button is always light because it's **outside any theme context provider** and the default context theme value is `'light'`. Try editing the default theme to be `'dark'`.
+在下面的例子中，“Toggle theme”按钮总是处于 light 状态，因为它位于 **任何主题的 context provider 之外**，且 context 主题的默认值是 `'light'`。试着编辑默认主题为 `'dark'`。
 
 <Sandpack>
 
@@ -1062,9 +1062,9 @@ function Button({ children, onClick }) {
 
 ---
 
-### Overriding context for a part of the tree {/*overriding-context-for-a-part-of-the-tree*/}
+### 覆盖组件树一部分的 context {/*overriding-context-for-a-part-of-the-tree*/}
 
-You can override the context for a part of the tree by wrapping that part in a provider with a different value.
+通过在 provider 中使用不同的值包装树的某个部分，可以覆盖该部分的 context。
 
 ```js {3,5}
 <ThemeContext.Provider value="dark">
@@ -1076,13 +1076,13 @@ You can override the context for a part of the tree by wrapping that part in a p
 </ThemeContext.Provider>
 ```
 
-You can nest and override providers as many times as you need.
+你可以根据需要多次嵌套和覆盖 provider。
 
 <Recipes title="Examples of overriding context">
 
-#### Overriding a theme {/*overriding-a-theme*/}
+#### 覆盖主题 {/*overriding-a-theme*/}
 
-Here, the button *inside* the `Footer` receives a different context value (`"light"`) than the buttons outside (`"dark"`).
+这里，与 `Footer` 外的值为（`"dark"`）的按钮相比，**里面** 的按钮接收到一个不一样的 context 值（`"light"`）。
 
 <Sandpack>
 
@@ -1186,11 +1186,11 @@ footer {
 
 <Solution />
 
-#### Automatically nested headings {/*automatically-nested-headings*/}
+#### 自动嵌套标题 {/*automatically-nested-headings*/}
 
-You can "accumulate" information when you nest context providers. In this example, the `Section` component keeps track of the `LevelContext` which specifies the depth of the section nesting. It reads the `LevelContext` from the parent section, and provides the `LevelContext` number increased by one to its children. As a result, the `Heading` component can automatically decide which of the `<h1>`, `<h2>`, `<h3>`, ..., tags to use based on how many `Section` components it is nested inside of.
+在嵌套使用 context provider 时，可以“累积”信息。在此示例中，`Section` 组件记录了 `LevelContext`，该 context 指定了 section 嵌套的深度。它从父级 section 中读取 `LevelContext`，然后把 `LevelContext` 的数值加一传递给子级。因此，`Heading` 组件可以根据被 `Section` 组件嵌套的层数自动决定使用 `<h1>`，`<h2>`，`<h3>`，...，中的哪种标签。
 
-Read a [detailed walkthrough](/learn/passing-data-deeply-with-context) of this example.
+阅读此示例的 [详细演示](/learn/passing-data-deeply-with-context)
 
 <Sandpack>
 
@@ -1288,9 +1288,9 @@ export const LevelContext = createContext(0);
 
 ---
 
-### Optimizing re-renders when passing objects and functions {/*optimizing-re-renders-when-passing-objects-and-functions*/}
+### 在传递对象和函数时优化重新渲染 {/*optimizing-re-renders-when-passing-objects-and-functions*/}
 
-You can pass any values via context, including objects and functions.
+你可以通过 context 传递任何值，包括对象和函数。
 
 ```js [[2, 10, "{ currentUser, login }"]] 
 function MyApp() {
@@ -1309,9 +1309,9 @@ function MyApp() {
 }
 ```
 
-Here, the <CodeStep step={2}>context value</CodeStep> is a JavaScript object with two properties, one of which is a function. Whenever `MyApp` re-renders (for example, on a route update), this will be a *different* object pointing at a *different* function, so React will also have to re-render all components deep in the tree that call `useContext(AuthContext)`.
+此处，<CodeStep step={2}>context value</CodeStep> 是一个具有两个属性的 JavaScript 对象，其中一个是函数。每当 `MyApp` 出现重新渲染（例如，路由更新）时，这里将会是一个 **不同的** 对象指向 **不同的** 函数，因此 React 还必须重新渲染树中调用 `useContext(AuthContext)` 的所有组件。
 
-In smaller apps, this is not a problem. However, there is no need to re-render them if the underlying data, like `currentUser`, has not changed. To help React take advantage of that fact, you may wrap the `login` function with [`useCallback`](/reference/react/useCallback) and wrap the object creation into [`useMemo`](/reference/react/useMemo). This is a performance optimization:
+在较小的应用程序中，这不是问题。但是，如果基础数据如 `currentUser` 没有更改，则不需要重新渲染它们。为了帮助 React 利用这一点，你可以使用 [`useCallback`](/reference/react/useCallback) 包装 `login` 函数，并将对象创建包装到 [`useMemo`](/reference/react/useMemo) 中。这是一个性能优化的例子：
 
 ```js {6,9,11,14,17}
 import { useCallback, useMemo } from 'react';
@@ -1337,51 +1337,51 @@ function MyApp() {
 }
 ```
 
-As a result of this change, even if `MyApp` needs to re-render, the components calling `useContext(AuthContext)` won't need to re-render unless `currentUser` has changed.
+根据以上改变，即使 `MyApp` 需要重新渲染，调用 `useContext(AuthContext)` 的组件也不需要重新渲染，除非 `currentUser` 发生了变化。
 
-Read more about [`useMemo`](/reference/react/useMemo#skipping-re-rendering-of-components) and [`useCallback`.](/reference/react/useCallback#skipping-re-rendering-of-components)
+阅读更多关于 [`useMemo`](/reference/react/useMemo#skipping-re-rendering-of-components) 和 [`useCallback`](/reference/react/useCallback#skipping-re-rendering-of-components) 的内容。
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 疑难解答 {/*troubleshooting*/}
 
-### My component doesn't see the value from my provider {/*my-component-doesnt-see-the-value-from-my-provider*/}
+### 我的组件获取不到 provider 传递的值{/*my-component-doesnt-see-the-value-from-my-provider*/}
 
-There are a few common ways that this can happen:
+这里有几种常见的情况会引起这个问题：
 
-1. You're rendering `<SomeContext.Provider>` in the same component (or below) as where you're calling `useContext()`. Move `<SomeContext.Provider>` *above and outside* the component calling `useContext()`.
-2. You may have forgotten to wrap your component with `<SomeContext.Provider>`, or you might have put it in a different part of the tree than you thought. Check whether the hierarchy is right using [React DevTools.](/learn/react-developer-tools)
-3. You might be running into some build issue with your tooling that causes `SomeContext` as seen from the providing component and `SomeContext` as seen by the reading component to be two different objects. This can happen if you use symlinks, for example. You can verify this by assigning them to globals like `window.SomeContext1` and `window.SomeContext2` and then checking whether `window.SomeContext1 === window.SomeContext2` in the console. If they're not the same, fix that issue on the build tool level.
+1. 你在调用 `useContext()` 的同一组件（或下层）渲染 `<SomeContext.Provider>`。把 `<SomeContext.Provider>` 向调用 `useContext()` 组件 **之上和之外** 移动。
+2. 你可能忘记了使用 `<SomeContext.Provider>` 包装组件，或者你可能将组件放在树的不同部分。使用 [React DevTools](/learn/react-developer-tools) 检查组件树的层级是否正确。
+3. 你的工具可能会遇到一些构建问题，导致你在传值组件中的所看到的 `SomeContext` 和读值组件中所看到的 `SomeContext` 是两个不同的对象。例如，如果使用符号链接，就会发生这种情况。你可以通过将它们赋值给全局对象如 `window.SomeContext1` 和 `window.SomeContext2` 来验证这种情况。然后在控制台检查 `window.SomeContext1 === window.SomeContext2` 是否相等。如果它们是不相等的，就在构建工具层面修复这个问题。
 
-### I am always getting `undefined` from my context although the default value is different {/*i-am-always-getting-undefined-from-my-context-although-the-default-value-is-different*/}
+### 尽管设置了不一样的默认值，但是我总是从 context 中得到 `undefined` {/*i-am-always-getting-undefined-from-my-context-although-the-default-value-is-different*/}
 
-You might have a provider without a `value` in the tree:
+你可能在组件树中有一个没有设置 `value` 的 provider：
 
 ```js {1,2}
-// 🚩 Doesn't work: no value prop
+// 🚩 不起作用：没有 value 作为 prop
 <ThemeContext.Provider>
    <Button />
 </ThemeContext.Provider>
 ```
 
-If you forget to specify `value`, it's like passing `value={undefined}`.
+如果你忘记了指定 `value`，它会像这样传值 `value={undefined}`。
 
-You may have also mistakingly used a different prop name by mistake:
+你可能还错误地使用了一个不同的 prop 名：
 
 ```js {1,2}
-// 🚩 Doesn't work: prop should be called "value"
+// 🚩 不起作用：prop 应该是“value”
 <ThemeContext.Provider theme={theme}>
    <Button />
 </ThemeContext.Provider>
 ```
 
-In both of these cases you should see a warning from React in the console. To fix them, call the prop `value`:
+在这两种情况下，你都应该在控制台中看到 React 发出的警告。要解决这些问题，使用 `value` 作为 prop：
 
 ```js {1,2}
-// ✅ Passing the value prop
+// ✅ 传递 value 作为 prop
 <ThemeContext.Provider value={theme}>
    <Button />
 </ThemeContext.Provider>
 ```
 
-Note that the [default value from your `createContext(defaultValue)` call](#specifying-a-fallback-default-value) is only used **if there is no matching provider above at all.** If there is a `<SomeContext.Provider value={undefined}>` component somewhere in the parent tree, the component calling `useContext(SomeContext)` *will* receive `undefined` as the context value.
+注意，只有在 **上层根本没有匹配的 provider** 时才使用 [`createContext(defaultValue)`调用的默认值](#specifying-a-fallback-default-value)。如果存在 `<SomeContext.Provider value={undefined}>` 组件在父树的某个位置，调用 `useContext(SomeContext)` 的组件 **将会** 接收到 `undefined` 作为 context 的值。

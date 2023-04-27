@@ -161,7 +161,7 @@ console.timeEnd('filter array');
 4. 避免 [不必要的更新 state 的 Effects](/learn/you-might-not-need-an-effect)。React 应用程序中的大多数性能问题都是由 Effects 创造的更新链引起的，这些更新链导致组件反复重新渲染。
 5. 尽力 [从 Effects 中移除不必要的依赖项](/learn/removing-effect-dependencies)。例如, 相比于记忆化，在 Effect 内部或组件外部移动某些对象或函数通常更简单。
 
-如果某个特定的交互仍然感觉滞后，[使用 React 开发者工具分析器](/blog/2018/09/10/introducing-the-react-profiler.html) 查看哪些组件将从记忆化中获益最多，并在需要的地方添加记忆化。这些原则使你的组件更易于调试和理解，因此在任何情况下都应该遵循它们。从长远来看，我们正在研究 [自动进行粒度记忆](https://www.youtube.com/watch?v=lGEMwh32soc) 以一劳永逸地解决这个问题。
+如果某个特定的交互仍然感觉滞后，[使用 React 开发者工具分析器](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) 查看哪些组件将从记忆化中获益最多，并在需要的地方添加记忆化。这些原则使你的组件更易于调试和理解，因此在任何情况下都应该遵循它们。从长远来看，我们正在研究 [自动进行粒度记忆](https://www.youtube.com/watch?v=lGEMwh32soc) 以一劳永逸地解决这个问题。
 
 </DeepDive>
 
