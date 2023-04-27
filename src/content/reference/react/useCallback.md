@@ -235,7 +235,7 @@ function useCallback(fn, dependencies) {
 1. 避免[不必要的更新状态的副作用](/learn/you-might-not-need-an-effect)。React 应用程序中的大多数性能问题都是由 Effects 的更新链引起的，这些更新链导致组件一遍又一遍地渲染。
 1. 尝试[从副作用中删除不必要的依赖关系](/learn/removing-effect-dependencies)。例如，将某些对象或函数移动到副作用内部或组件外部通常更简单，而不是记忆。
 
-如果特定的交互仍然感觉滞后，[使用 React 开发者工具](/blog/2018/09/10/introducing-the-react-profiler.html)查看哪些组件从记忆中受益最大，并在需要时添加记忆。这些原则使你的组件更易于调试和理解，因此在任何情况下都最好遵循它们。从长远来看，我们正在研究[自动记忆](https://www.youtube.com/watch?v=lGEMwh32soc)一劳永逸地解决这个问题。
+如果特定的交互仍然感觉滞后，[使用 React 开发者工具](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)查看哪些组件从记忆中受益最大，并在需要时添加记忆。这些原则使你的组件更易于调试和理解，因此在任何情况下都最好遵循它们。从长远来看，我们正在研究[自动记忆](https://www.youtube.com/watch?v=lGEMwh32soc)一劳永逸地解决这个问题。
 
 </DeepDive>
 
