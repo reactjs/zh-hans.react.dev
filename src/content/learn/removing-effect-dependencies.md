@@ -1,26 +1,26 @@
 ---
-title: 'Removing Effect Dependencies'
+title: '移除 Effect 依赖'
 ---
 
 <Intro>
 
-When you write an Effect, the linter will verify that you've included every reactive value (like props and state) that the Effect reads in the list of your Effect's dependencies. This ensures that your Effect remains synchronized with the latest props and state of your component. Unnecessary dependencies may cause your Effect to run too often, or even create an infinite loop. Follow this guide to review and remove unnecessary dependencies from your Effects.
+当你写一个 Effect 时，linter 会验证你是否已经将 Effect 读取的每一个响应式值（如 props 和 state）包含在你的 Effect 的依赖列表中。这可以确保你的 Effect 与你的组件的 props 和 state 保持同步。不必要的依赖关系可能会导致 Effect 运行过于频繁，甚至产生一个无限循环。请按照本指南审查并删除 Effect 中不必要的依赖关系。
 
 </Intro>
 
 <YouWillLearn>
 
-- How to fix infinite Effect dependency loops
-- What to do when you want to remove a dependency
-- How to read a value from your Effect without "reacting" to it
-- How and why to avoid object and function dependencies
-- Why suppressing the dependency linter is dangerous, and what to do instead
+- 如何修复无限的 Effect 依赖性循环
+- 当你想删除一个依赖关系时，该怎么做？
+- 如何从你的 Effect 中读出一个值而不对它作出“反应”？
+- 如何以及为什么要避免对象和函数的依赖？
+- 为什么抑制依赖 linter 检查是危险的，以及应该如何做？
 
 </YouWillLearn>
 
-## Dependencies should match the code {/*dependencies-should-match-the-code*/}
+## 依赖应该和代码保持一致 {/*dependencies-should-match-the-code*/}
 
-When you write an Effect, you first specify how to [start and stop](/learn/lifecycle-of-reactive-effects#the-lifecycle-of-an-effect) whatever you want your Effect to be doing:
+当你编写 Effect 时，无论这个 Effect 要做什么，你首先要明确其 [生命周期](/learn/lifecycle-of-reactive-effects#the-lifecycle-of-an-effect)：
 
 ```js {5-7}
 const serverUrl = 'https://localhost:1234';
@@ -34,7 +34,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-Then, if you leave the Effect dependencies empty (`[]`), the linter will suggest the correct dependencies:
+如果你设置 Effect 的依赖是空数组(`[]`)，那么 linter 将会建议合适的依赖：
 
 <Sandpack>
 
@@ -49,8 +49,8 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // <-- Fix the mistake here!
-  return <h1>Welcome to the {roomId} room!</h1>;
+  }, []); // <-- 修复这里确实的依赖！
+  return <h1>欢迎来到 {roomId} 房间！</h1>;
 }
 
 export default function App() {
@@ -58,14 +58,14 @@ export default function App() {
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        选择聊天室：{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">general</option>
-          <option value="travel">travel</option>
-          <option value="music">music</option>
+          <option value="general">所有</option>
+          <option value="travel">旅游</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <hr />
@@ -77,13 +77,13 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 真正的实现实际上会连接到服务器
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ 连接到 "' + roomId + '" 房间，在' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ 断开 "' + roomId + '" 房间，在' + serverUrl);
     }
   };
 }
@@ -96,7 +96,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Fill them in according to what the linter says:
+按照 linter 的建议，把它们填进去：
 
 ```js {6}
 function ChatRoom({ roomId }) {
@@ -104,12 +104,12 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ 所有依赖项已声明
   // ...
 }
 ```
 
-[Effects "react" to reactive values.](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) Since `roomId` is a reactive value (it can change due to a re-render), the linter verifies that you've specified it as a dependency. If `roomId` receives a different value, React will re-synchronize your Effect. This ensures that the chat stays connected to the selected room and "reacts" to the dropdown:
+[Effects “反应”响应式值](/learn/lifecycle-of-reactive-effects#effects-react-to-react-values) 因为这里的 `roomId` 是一个响应式值（它可能随重新渲染而改变），所以 linter 会验证你是否将它指定为一个依赖项。如果 `roomId` 变成不同的值，React 将重新运行你的 Effect。这可以确保聊天界面与所选房间保持一致，并把变化“反馈”给下拉菜单：
 
 <Sandpack>
 
@@ -125,7 +125,7 @@ function ChatRoom({ roomId }) {
     connection.connect();
     return () => connection.disconnect();
   }, [roomId]);
-  return <h1>Welcome to the {roomId} room!</h1>;
+  return <h1>欢迎来到 {roomId} 房间！</h1>;
 }
 
 export default function App() {
@@ -133,14 +133,14 @@ export default function App() {
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        选择聊天室：{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">general</option>
-          <option value="travel">travel</option>
-          <option value="music">music</option>
+          <option value="general">所有</option>
+          <option value="travel">旅游</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <hr />
@@ -152,13 +152,13 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 真正的实现实际上会连接到服务器
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ 连接到 "' + roomId + '" 房间，在' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ 断开 "' + roomId + '" 房间，在' + serverUrl);
     }
   };
 }
@@ -171,24 +171,24 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-### To remove a dependency, prove that it's not a dependency {/*to-remove-a-dependency-prove-that-its-not-a-dependency*/}
+### 当要移除一个依赖时，请证明它不是一个依赖 {/*to-remove-a-dependency-prove-that-its-not-a-dependency*/}
 
-Notice that you can't "choose" the dependencies of your Effect. Every <CodeStep step={2}>reactive value</CodeStep> used by your Effect's code must be declared in your dependency list. The dependency list is determined by the surrounding code:
+注意，你不能“选择”你的 Effect 的依赖性。每个被 Effect 所使用<CodeStep step={2}>响应式值</CodeStep>，必须在依赖列表中声明。依赖列表是由 Effects 的代码决定的：
 
 ```js [[2, 3, "roomId"], [2, 5, "roomId"], [2, 8, "roomId"]]
 const serverUrl = 'https://localhost:1234';
 
-function ChatRoom({ roomId }) { // This is a reactive value
+function ChatRoom({ roomId }) { // 这是一个响应式值
   useEffect(() => {
-    const connection = createConnection(serverUrl, roomId); // This Effect reads that reactive value
+    const connection = createConnection(serverUrl, roomId); // Effect 在这里读取响应式值
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ So you must specify that reactive value as a dependency of your Effect
+  }, [roomId]); // ✅ 所以你必须在依赖列表中声明 Effect 使用的响应式值
   // ...
 }
 ```
 
-[Reactive values](/learn/lifecycle-of-reactive-effects#all-variables-declared-in-the-component-body-are-reactive) include props and all variables and functions declared directly inside of your component. Since `roomId` is a reactive value, you can't remove it from the dependency list. The linter wouldn't allow it:
+[响应式值](/learn/lifecycle-of-reactive-effects#all-variables-declared-in-the-component-body-are-reactive) 包括 props 以及所有你直接在组件中声明的变量和函数。由于 `roomId` 是一个响应式的值，你不能把它从依赖列表中删除。linter 不允许这样做：
 
 ```js {8}
 const serverUrl = 'https://localhost:1234';
@@ -198,30 +198,31 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // 🔴 React Hook useEffect has a missing dependency: 'roomId'
+  }, []); // 🔴 React Hook useEffect 缺失一个依赖: 'roomId'
   // ...
 }
 ```
 
-And the linter would be right! Since `roomId` may change over time, this would introduce a bug in your code.
+linter 是对的！ 由于 `roomId` 可能会随时间变化，这会在你的代码中引入错误。
 
-**To remove a dependency, "prove" to the linter that it *doesn't need* to be a dependency.** For example, you can move `roomId` out of your component to prove that it's not reactive and won't change on re-renders:
+**移除一个依赖，你需要向 linter 证明其不需要这个依赖。** 例如，你可以将 `roomId` 移出你的组件，以证明它不是响应的，也不会在重新渲染时改变：
+
 
 ```js {2,9}
 const serverUrl = 'https://localhost:1234';
-const roomId = 'music'; // Not a reactive value anymore
+const roomId = 'music'; // 不再是响应式值
 
 function ChatRoom() {
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // ✅ All dependencies declared
+  }, []); // ✅ 所有依赖项已声明
   // ...
 }
 ```
 
-Now that `roomId` is not a reactive value (and can't change on a re-render), it doesn't need to be a dependency:
+现在 `roomId` 不是一个响应式的值（并且不能在重新渲染时改变），那它不就不是一个依赖项：
 
 <Sandpack>
 
@@ -238,19 +239,19 @@ export default function ChatRoom() {
     connection.connect();
     return () => connection.disconnect();
   }, []);
-  return <h1>Welcome to the {roomId} room!</h1>;
+  return <h1>欢迎来到 {roomId} 房间！</h1>;
 }
 ```
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 真正的实现实际上会连接到服务器
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ 连接到 "' + roomId + '" 房间，在' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ 断开 "' + roomId + '" 房间，在' + serverUrl);
     }
   };
 }
@@ -263,43 +264,43 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-This is why you could now specify an [empty (`[]`) dependency list.](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) Your Effect *really doesn't* depend on any reactive value anymore, so it *really doesn't* need to re-run when any of the component's props or state change.
+这就是为什么你现在可以指定一个 [空(`[]`)依赖列表](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means)。你的 Effect **真的不** 依赖任何响应式值了，也 **真的不** 需要在组件的 props 或 state 改变时重新运行。
 
-### To change the dependencies, change the code {/*to-change-the-dependencies-change-the-code*/}
+### 要改变依赖关系，请改变代码 {/*to-change-the-dependencies-change-the-code*/}
 
-You might have noticed a pattern in your workflow:
+你可能已经注意到你的工作流程中有一个模式：
 
-1. First, you **change the code** of your Effect or how your reactive values are declared.
-2. Then, you follow the linter and adjust the dependencies to **match the code you have changed.**
-3. If you're not happy with the list of dependencies, you **go back to the first step** (and change the code again).
+1. 首先，你 **改变 Effect 的代码** 或响应式数值的声明方式。
+2. 然后，你采纳 linter 的建议，调整依赖关系，以 **匹配你所改变的代码**。
+3. 如果你对依赖关系的列表不满意，你可以 **回到第一步**（并再次修改代码）。
 
-The last part is important. **If you want to change the dependencies, change the surrounding code first.** You can think of the dependency list as [a list of all the reactive values used by your Effect's code.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) You don't *choose* what to put on that list. The list *describes* your code. To change the dependency list, change the code.
+最后一部分很重要。**如果你想改变依赖关系，首先要改变所涉及到的代码。** 你可以把依赖关系列表看作是 [Effect的代码所依赖的所有响应式值的列表](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。你不要 **选择** 把什么放在这个列表上。该列表 **描述了** 你的代码。要改变依赖性列表，请改变代码。
 
-This might feel like solving an equation. You might start with a goal (for example, to remove a dependency), and you need to "find" the code matching that goal. Not everyone finds solving equations fun, and the same thing could be said about writing Effects! Luckily, there is a list of common recipes that you can try below.
+这可能感觉就像解方程一样。你有一个目标（例如，删除一个依赖关系），你需要“找到”与该目标（删除一个依赖关系，译者注）相匹配的代码。不是每个人都觉得解方程很有趣，写 Effects 也是如此！幸运的是，下面有一些常见的解决方案你可以去尝试。
 
 <Pitfall>
 
-If you have an existing codebase, you might have some Effects that suppress the linter like this:
+如果你有一个已经存在的代码库，你可能会有一些像这样抑制 linter 的代码：
 
 ```js {3-4}
 useEffect(() => {
   // ...
-  // 🔴 Avoid suppressing the linter like this:
+  // 🔴 避免像这样抑制 linter 的警告或错误提示：
   // eslint-ignore-next-line react-hooks/exhaustive-deps
 }, []);
 ```
 
-**When dependencies don't match the code, there is a very high risk of introducing bugs.** By suppressing the linter, you "lie" to React about the values your Effect depends on.
+**当依赖关系与代码不匹配时，极有可能引入 bug。** 通过抑制 linter，你是在 Effect 所依赖的值上对 React "撒谎"。
 
-Instead, use the techniques below.
+你可以使用如下技术。
 
 </Pitfall>
 
 <DeepDive>
 
-#### Why is suppressing the dependency linter so dangerous? {/*why-is-suppressing-the-dependency-linter-so-dangerous*/}
+#### 为什么抑制 linter 对依赖的检查如此危险？ {/*why-is-suppressing-the-dependency-linter-so-dangerous*/}
 
-Suppressing the linter leads to very unintuitive bugs that are hard to find and fix. Here's one example:
+抑制 linter 会导致非常不直观的 bug，这将很难发现和修复。这里有一个例子：
 
 <Sandpack>
 
@@ -323,12 +324,12 @@ export default function Timer() {
   return (
     <>
       <h1>
-        Counter: {count}
-        <button onClick={() => setCount(0)}>Reset</button>
+        计数器：{count}
+        <button onClick={() => setCount(0)}>重制</button>
       </h1>
       <hr />
       <p>
-        Every second, increment by:
+        每秒递增：
         <button disabled={increment === 0} onClick={() => {
           setIncrement(i => i - 1);
         }}>–</button>
@@ -348,31 +349,31 @@ button { margin: 10px; }
 
 </Sandpack>
 
-Let's say that you wanted to run the Effect "only on mount". You've read that [empty (`[]`) dependencies](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) do that, so you've decided to ignore the linter, and forcefully specified `[]` as the dependencies.
+比方说，你想“只在 mount 时”运行 Effect。你已经知道可以通过设置 [空(`[]`)依赖关系](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) 来达到这种效果，所以你决定忽略 linter 的检查，强行指定`[]`为依赖关系。
 
-This counter was supposed to increment every second by the amount configurable with the two buttons. However, since you "lied" to React that this Effect doesn't depend on anything, React forever keeps using the `onTick` function from the initial render. [During that render,](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) `count` was `0` and `increment` was `1`. This is why `onTick` from that render always calls `setCount(0 + 1)` every second, and you always see `1`. Bugs like this are harder to fix when they're spread across multiple components.
+上面的计数器例子，本应该每秒递增，递增量可以通过两个按钮来控制。然而，由于你对 React “撒谎”，说这个 Effect 不依赖于任何东西，React 便从初始渲染开始就一直使用 `onTick` 函数。[在后续渲染中，](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) `count` 总是 `0` ，`increment` 总是 `1`。为什么？因为定时器每秒调用 `onTick` 函数，实际运行的是 `setCount(0 + 1)`（译者注，在创建 `onTick` 函数时，由于闭包的缘故，`setCount(count + increment)` 捕获的是创建时 `count` 和 `increment` 值。由于这里的“说谎”，每次重新渲染时新创建的 `onTick` 函数不能替换掉 Effect 里旧 `onTick` 函数，于是最终的效果就是 `setCount(0 + 1)`），所以你总是看到 `1`。像这样的错误，当它们分散在多个组件中时，就更难解决了。
 
-There's always a better solution than ignoring the linter! To fix this code, you need to add `onTick` to the dependency list. (To ensure the interval is only setup once, [make `onTick` an Effect Event.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events))
+这里一个比忽略 linter 更好的解决方案! 要修复这段代码，你需要将 `onTick` 添加到依赖列表中。(为了确保间隔只设置一次，[使 `onTick` 成为 Effect Event](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)。)
 
-**We recommend treating the dependency lint error as a compilation error. If you don't suppress it, you will never see bugs like this.** The rest of this page documents the alternatives for this and other cases.
+**我们建议将依赖性 lint 错误作为一个编译错误来处理。如果你不抑制它，你将永远不会遇到像上面这样的错误。** 本页面的剩下部分将介绍这个和其他情况的替代方案。
 
 </DeepDive>
 
-## Removing unnecessary dependencies {/*removing-unnecessary-dependencies*/}
+## 移除非必需的依赖 {/*removing-unnecessary-dependencies*/}
 
-Every time you adjust the Effect's dependencies to reflect the code, look at the dependency list. Does it make sense for the Effect to re-run when any of these dependencies change? Sometimes, the answer is "no":
+每当你调整 Effect 的依赖关系以适配代码时，请注意一下依赖关系列表。当这些依赖关系发生变化时，让 Effect 重新运行是否有意义？有时，答案是 "不"：
 
-* You might want to re-execute *different parts* of your Effect under different conditions.
-* You might want to only read the *latest value* of some dependency instead of "reacting" to its changes.
-* A dependency may change too often *unintentionally* because it's an object or a function.
+* 你可能想在不同的条件下重新执行你的 Effect 的**不同部分**。
+* 你可能想只读取某个依赖的 **最新值**，而不是对其变化做出“反应”。
+* 一个依赖关系可能会因为它的类型是对象或函数而 **无意间** 改变太频繁。
 
-To find the right solution, you'll need to answer a few questions about your Effect. Let's walk through them.
+为了找到正确的解决方案，你需要回答关于你的效果的几个问题。让我们来看看这些问题。
 
-### Should this code move to an event handler? {/*should-this-code-move-to-an-event-handler*/}
+### 这段代码应该移到事件处理程序中吗？ {/*should-this-code-move-to-an-event-handler*/}
 
-The first thing you should think about is whether this code should be an Effect at all.
+你应该考虑的第一件事是，这段代码是否应该成为 Effect。
 
-Imagine a form. On submit, you set the `submitted` state variable to `true`. You need to send a POST request and show a notification. You've put this logic inside an Effect that "reacts" to `submitted` being `true`:
+想象一个表单，在提交时你将 `submitted` 状态变量设置为 `true`，并在 `submitted` 为 `true` 时，需要发送一个 POST 请求并显示一个通知。你把这个逻辑放在一个 Effect 内，并根据 `submitted` 为 `true` “反应”。
 
 ```js {6-8}
 function Form() {
@@ -380,7 +381,7 @@ function Form() {
 
   useEffect(() => {
     if (submitted) {
-      // 🔴 Avoid: Event-specific logic inside an Effect
+      // 🔴 避免: Effect 中有特定事件的逻辑
       post('/api/register');
       showNotification('Successfully registered!');
     }
@@ -394,7 +395,7 @@ function Form() {
 }
 ```
 
-Later, you want to style the notification message according to the current theme, so you read the current theme. Since `theme` is declared in the component body, it is a reactive value, so you add it as a dependency:
+后来，你想根据当前的主题来设计通知信息的样式，所以你读取当前的主题。由于 `theme` 是在组件中声明的，它是一个响应式的值，所以你把它作为一个依赖项加入：
 
 ```js {3,9,11}
 function Form() {
@@ -403,11 +404,11 @@ function Form() {
 
   useEffect(() => {
     if (submitted) {
-      // 🔴 Avoid: Event-specific logic inside an Effect
+      // 🔴 避免: Effect 中有特定事件的逻辑
       post('/api/register');
       showNotification('Successfully registered!', theme);
     }
-  }, [submitted, theme]); // ✅ All dependencies declared
+  }, [submitted, theme]); // ✅ 所有依赖项已声明
 
   function handleSubmit() {
     setSubmitted(true);
@@ -417,16 +418,16 @@ function Form() {
 }
 ```
 
-By doing this, you've introduced a bug. Imagine you submit the form first and then switch between Dark and Light themes. The `theme` will change, the Effect will re-run, and so it will display the same notification again!
+如果这么做，你将引入了一个错误。想象一下，你先提交表单，然后切换暗亮主题。当 `theme` 改变后，Effect 重新运行，这将导致显示两次相同的通知！
 
-**The problem here is that this shouldn't be an Effect in the first place.** You want to send this POST request and show the notification in response to *submitting the form,* which is a particular interaction. To run some code in response to particular interaction, put that logic directly into the corresponding event handler:
+**首先，这里的问题是，代码不应该以 Effect 实现。** 你想发送这个 POST 请求，并在 **提交表单时显示通知**，这是一个特定的交互。特定的交互请将该逻辑直接放到相应的事件处理程序中：
 
 ```js {6-7}
 function Form() {
   const theme = useContext(ThemeContext);
 
   function handleSubmit() {
-    // ✅ Good: Event-specific logic is called from event handlers
+    // ✅ 好：从事件处理程序调用特定于事件的逻辑
     post('/api/register');
     showNotification('Successfully registered!', theme);
   }  
@@ -435,13 +436,13 @@ function Form() {
 }
 ```
 
-Now that the code is in an event handler, it's not reactive--so it will only run when the user submits the form. Read more about [choosing between event handlers and Effects](/learn/separating-events-from-effects#reactive-values-and-reactive-logic) and [how to delete unnecessary Effects.](/learn/you-might-not-need-an-effect)
+现在，代码在事件处理程序中，它不是响应式的--所以它只在用户提交表单时运行。阅读更多关于 [在事件处理程序和效果之间做出选择](/learn/separating-events-from-effects#reactive-values and-reactive-logic) 和 [如何删除不必要的效果。](/learn/you-might-not-need-an-effect)
 
-### Is your Effect doing several unrelated things? {/*is-your-effect-doing-several-unrelated-things*/}
+### 你的 Effect 是否在做几件不相关的事情？ {/*is-your-effect-doing-several-unrelated-things*/}
 
-The next question you should ask yourself is whether your Effect is doing several unrelated things.
+下一个应该问自己的问题是，Effect 是否在做几件不相关的事情。
 
-Imagine you're creating a shipping form where the user needs to choose their city and area. You fetch the list of `cities` from the server according to the selected `country` to show them in a dropdown:
+如下例子，你正在实现一个运输表格，用户需要选择他们的城市和地区。你根据所选的“国家”从服务器上获取“城市”列表，然后在下拉菜单中显示：
 
 ```js
 function ShippingForm({ country }) {
@@ -460,14 +461,14 @@ function ShippingForm({ country }) {
     return () => {
       ignore = true;
     };
-  }, [country]); // ✅ All dependencies declared
+  }, [country]); // ✅ 所有依赖项已声明
 
   // ...
 ```
 
-This is a good example of [fetching data in an Effect.](/learn/you-might-not-need-an-effect#fetching-data) You are synchronizing the `cities` state with the network according to the `country` prop. You can't do this in an event handler because you need to fetch as soon as `ShippingForm` is displayed and whenever the `country` changes (no matter which interaction causes it).
+这是一个 [在Effect中获取数据](/learn/you-might-not-need-an-effect#fetching-data) 的好例子：`cities` 状态通过网络和 `country` prop 进行“同步”。但你不能在事件处理程序中这样做，因为你需要在 `ShippingForm` 显示时和 `country` 发生变化时（不管是哪个交互导致的）立即获取。
 
-Now let's say you're adding a second select box for city areas, which should fetch the `areas` for the currently selected `city`. You might start by adding a second `fetch` call for the list of areas inside the same Effect:
+现在我们假设你要为城市区域添加第二个选择框，它应该获取当前选择的 `city` 的 `areas`。你也许会在同一个 Effect 中添加第二个 `fetch` 调用来获取地区列表：
 
 ```js {15-24,28}
 function ShippingForm({ country }) {
@@ -484,7 +485,7 @@ function ShippingForm({ country }) {
           setCities(json);
         }
       });
-    // 🔴 Avoid: A single Effect synchronizes two independent processes
+    // 🔴 避免: 单个 Effect 同步两个独立逻辑处理
     if (city) {
       fetch(`/api/areas?city=${city}`)
         .then(response => response.json())
@@ -497,19 +498,19 @@ function ShippingForm({ country }) {
     return () => {
       ignore = true;
     };
-  }, [country, city]); // ✅ All dependencies declared
+  }, [country, city]); // ✅ 所有依赖项已声明
 
   // ...
 ```
 
-However, since the Effect now uses the `city` state variable, you've had to add `city` to the list of dependencies. That, in turn, introduced a problem: when the user selects a different city, the Effect will re-run and call `fetchCities(country)`. As a result, you will be unnecessarily refetching the list of cities many times.
+然而，由于 Effect 现在使用 `city` 状态变量，你不得不把 `city` 加入到依赖列表中。这又带来了一个问题：当用户选择不同的城市时，Effect 将重新运行并调用 `fetchCities(country)`。这将导致不必要地多次重新获取城市列表。
 
-**The problem with this code is that you're synchronizing two different unrelated things:**
+**这段代码的问题在于，你在同步两个不同的不相关的东西：**。
 
-1. You want to synchronize the `cities` state to the network based on the `country` prop.
-1. You want to synchronize the `areas` state to the network based on the `city` state.
+1. 你想要根据 `country` prop 通过网络同步 `city` 状态
+1. 你想要根据 `city` 状态通过网络同步 `areas` 状态
 
-Split the logic into two Effects, each of which reacts to the prop that it needs to synchronize with:
+将逻辑分到 2 个 Effect 中，每个 Effect 仅响应其需要同步响应的 prop：
 
 ```js {19-33}
 function ShippingForm({ country }) {
@@ -526,7 +527,7 @@ function ShippingForm({ country }) {
     return () => {
       ignore = true;
     };
-  }, [country]); // ✅ All dependencies declared
+  }, [country]); // ✅ 所有依赖项已声明
 
   const [city, setCity] = useState(null);
   const [areas, setAreas] = useState(null);
@@ -544,18 +545,18 @@ function ShippingForm({ country }) {
         ignore = true;
       };
     }
-  }, [city]); // ✅ All dependencies declared
+  }, [city]); // ✅ 所有依赖项已声明
 
   // ...
 ```
 
-Now the first Effect only re-runs if the `country` changes, while the second Effect re-runs when the `city` changes. You've separated them by purpose: two different things are synchronized by two separate Effects. Two separate Effects have two separate dependency lists, so they won't trigger each other unintentionally.
+现在，第一个 Effect 只在 `country` 改变时重新运行，而第二个 Effect 在 `city` 改变时重新运行。你已经按目的把它们分开了：两件不同的事情由两个独立的 Effect 来同步。两个独立的 Effect 有两个独立的依赖列表，所以它们不会在无意中相互触发。
 
-The final code is longer than the original, but splitting these Effects is still correct. [Each Effect should represent an independent synchronization process.](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process) In this example, deleting one Effect doesn't break the other Effect's logic. This means they *synchronize different things,* and it's good to split them up. If you're concerned about duplication, you can improve this code by [extracting repetitive logic into a custom Hook.](/learn/reusing-logic-with-custom-hooks#when-to-use-custom-hooks)
+最终完成的代码比最初的要长，但是拆分这些 Effect 是非常正确的。[每个 Effect 应该代表一个独立的同步过程](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process)。在这个例子中，删除一个 Effect 并不会影响到另一个 Effect 的逻辑。这意味着他们**同步不同的事情，**分开他们处理是一件好事。如果你担心重复代码的问题，你可以通过 [提取相同逻辑到自定义 Hook](/learn/reusing-logic-with-custom-hooks#when-to-use-custom-hooks) 来提升你的代码质量
 
-### Are you reading some state to calculate the next state? {/*are-you-reading-some-state-to-calculate-the-next-state*/}
+### 你是否在读取一些状态来计算下一个状态？ {/*are-you-reading-some-state-to-calculate-the-next-state*/}
 
-This Effect updates the `messages` state variable with a newly created array every time a new message arrives:
+每次有新的消息到达时，这个 Effect 会用新创建的数组更新 `messages` 状态：
 
 ```js {2,6-8}
 function ChatRoom({ roomId }) {
@@ -569,7 +570,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-It uses the `messages` variable to [create a new array](/learn/updating-arrays-in-state) starting with all the existing messages and adds the new message at the end. However, since `messages` is a reactive value read by an Effect, it must be a dependency:
+它使用 `messages` 变量来 [创建一个新的数组](/learn/updating-arrays-in-state)：从所有现有的消息开始，并在最后添加新的消息。然而，由于 `messages` 是一个由 Effect 读取的响应式值，它必须是一个依赖关系：
 
 ```js {7,10}
 function ChatRoom({ roomId }) {
@@ -581,15 +582,15 @@ function ChatRoom({ roomId }) {
       setMessages([...messages, receivedMessage]);
     });
     return () => connection.disconnect();
-  }, [roomId, messages]); // ✅ All dependencies declared
+  }, [roomId, messages]); // ✅ 所有依赖项已声明
   // ...
 ```
 
-And making `messages` a dependency introduces a problem.
+而让 `messages` 成为一个依赖关系会带来一个问题。
 
-Every time you receive a message, `setMessages()` causes the component to re-render with a new `messages` array that includes the received message. However, since this Effect now depends on `messages`, this will *also* re-synchronize the Effect. So every new message will make the chat re-connect. The user would not like that!
+每当你收到一条消息，`setMessages()` 就会使该组件重新渲染一个新的 `messages` 数组，其中包括收到的消息。然而，由于该 Effect 现在依赖于 `messages`，这 **也将** 重新同步该 Effect。所以每条新消息都会使聊天重新连接。用户不会喜欢这样！
 
-To fix the issue, don't read `messages` inside the Effect. Instead, pass an [updater function](/reference/react/useState#updating-state-based-on-the-previous-state) to `setMessages`:
+为了解决这个问题，不要在 Effect 里面读取 `messages`。相反，应该将一个 [更新函数](/reference/react/useState#updating-state-based-the-previous-state) 传递给 `setMessages`：
 
 ```js {7,10}
 function ChatRoom({ roomId }) {
@@ -601,21 +602,21 @@ function ChatRoom({ roomId }) {
       setMessages(msgs => [...msgs, receivedMessage]);
     });
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ 所有依赖项已声明
   // ...
 ```
 
-**Notice how your Effect does not read the `messages` variable at all now.** You only need to pass an updater function like `msgs => [...msgs, receivedMessage]`. React [puts your updater function in a queue](/learn/queueing-a-series-of-state-updates) and will provide the `msgs` argument to it during the next render. This is why the Effect itself doesn't need to depend on `messages` anymore. As a result of this fix, receiving a chat message will no longer make the chat re-connect.
+**注意你的 Effect 现在根本不读取 `messages` 变量。**你只需要传递一个更新函数，比如 `msgs => [...msgs, receivedMessage]`。 React [将你的更新程序函数放入队列](/learn/queueing-a-series-of-state-updates) 并将在下一次渲染期间向其提供 `msgs` 参数。 这就是 Effect 本身不再需要依赖 `messages` 的原因。修复后，接收聊天消息将不再使聊天重新连接。
 
-### Do you want to read a value without "reacting" to its changes? {/*do-you-want-to-read-a-value-without-reacting-to-its-changes*/}
+### 你想读取一个值而不对其变化做出“反应”吗？ {/*do-you-want-to-read-a-value-without-reacting-to-its-changes*/}
 
 <Wip>
 
-This section describes an **experimental API that has not yet been released** in a stable version of React.
+本节描述了一个在稳定版本的 React 中**尚未发布的实验性** API。
 
 </Wip>
 
-Suppose that you want to play a sound when the user receives a new message unless `isMuted` is `true`:
+假设你希望在用户收到新消息时播放声音，`isMuted` 为 `true` 除外：
 
 ```js {3,10-12}
 function ChatRoom({ roomId }) {
@@ -634,7 +635,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-Since your Effect now uses `isMuted` in its code, you have to add it to the dependencies:
+由于你的 Effect 现在在其代码中使用了 `isMuted` ，因此你必须将其添加到依赖项中：
 
 ```js {10,15}
 function ChatRoom({ roomId }) {
@@ -651,13 +652,13 @@ function ChatRoom({ roomId }) {
       }
     });
     return () => connection.disconnect();
-  }, [roomId, isMuted]); // ✅ All dependencies declared
+  }, [roomId, isMuted]); // ✅ 所有依赖项已声明
   // ...
 ```
 
-The problem is that every time `isMuted` changes (for example, when the user presses the "Muted" toggle), the Effect will re-synchronize, and reconnect to the chat. This is not the desired user experience! (In this example, even disabling the linter would not work--if you do that, `isMuted` would get "stuck" with its old value.)
+问题是每次 `isMuted` 改变时（例如，当用户按下“静音”开关时），Effect 将重新同步，并重新连接到聊天。这不是理想的用户体验！（在此示例中，即使禁用 linter 也不起作用——如果你这样做，`isMuted` 将“保持”其旧值。）
 
-To solve this problem, you need to extract the logic that shouldn't be reactive out of the Effect. You don't want this Effect to "react" to the changes in `isMuted`. [Move this non-reactive piece of logic into an Effect Event:](/learn/separating-events-from-effects#declaring-an-effect-event)
+要解决这个问题，需要将不应该响应式的逻辑从 Effect 中抽取出来。 你不希望此 Effect 对 `isMuted` 中的更改做出“反应”。 [将这段非响应式逻辑移至效果事件中：](/learn/separating-events-from-effects#declaring-an-effect-event)
 
 ```js {1,7-12,18,21}
 import { useState, useEffect, useEffectEvent } from 'react';
@@ -680,15 +681,16 @@ function ChatRoom({ roomId }) {
       onMessage(receivedMessage);
     });
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ 所有依赖项已声明
   // ...
 ```
 
-Effect Events let you split an Effect into reactive parts (which should "react" to reactive values like `roomId` and their changes) and non-reactive parts (which only read their latest values, like `onMessage` reads `isMuted`). **Now that you read `isMuted` inside an Effect Event, it doesn't need to be a dependency of your Effect.** As a result, the chat won't re-connect when you toggle the "Muted" setting on and off, solving the original issue!
+Effect Events 让你可以将 Effect 分成响应式部分（应该“反应”响应式值，如 `roomId` 及其变化）和非响应式部分（只读取它们的最新值，如 `onMessage` 读取 `isMuted`）。 **现在你在 Effect Event 中读取了 `isMuted`，它不需要添加到 Effect 依赖中。**因此，当你开关“静音”设置时，聊天不会重新连接。至此，解决原始问题！
 
-#### Wrapping an event handler from the props {/*wrapping-an-event-handler-from-the-props*/}
+#### 包装来自 props 的事件处理程序 {/*wrapping-an-event-handler-from-the-props*/}
 
 You might run into a similar problem when your component receives an event handler as a prop:
+当你的组件接收事件处理函数作为 prop 时，你可能会遇到类似的问题：
 
 ```js {1,8,11}
 function ChatRoom({ roomId, onReceiveMessage }) {
@@ -701,11 +703,11 @@ function ChatRoom({ roomId, onReceiveMessage }) {
       onReceiveMessage(receivedMessage);
     });
     return () => connection.disconnect();
-  }, [roomId, onReceiveMessage]); // ✅ All dependencies declared
+  }, [roomId, onReceiveMessage]); // ✅ 所有依赖项已声明
   // ...
 ```
 
-Suppose that the parent component passes a *different* `onReceiveMessage` function on every render:
+假设父组件在每次渲染时都传递了一个**不同的** `onReceiveMessage` 函数：
 
 ```js {3-5}
 <ChatRoom
@@ -716,7 +718,7 @@ Suppose that the parent component passes a *different* `onReceiveMessage` functi
 />
 ```
 
-Since `onReceiveMessage` is a dependency, it would cause the Effect to re-synchronize after every parent re-render. This would make it re-connect to the chat. To solve this, wrap the call in an Effect Event:
+由于 `onReceiveMessage` 是一个依赖项，它会导致 Effect 在每次父级重新渲染后重新同步。这将导致聊天重新连接。要解决此问题，请用 Effect Event 包裹之后再调用：
 
 ```js {4-6,12,15}
 function ChatRoom({ roomId, onReceiveMessage }) {
@@ -733,17 +735,17 @@ function ChatRoom({ roomId, onReceiveMessage }) {
       onMessage(receivedMessage);
     });
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ 所有依赖项已声明
   // ...
 ```
 
-Effect Events aren't reactive, so you don't need to specify them as dependencies. As a result, the chat will no longer re-connect even if the parent component passes a function that's different on every re-render.
+Effect Events 不是响应式的，因此你不需要将它们指定为依赖项。因此，即使父组件传递的函数在每次重新渲染时都不同，聊天也将不再重新连接。
 
-#### Separating reactive and non-reactive code {/*separating-reactive-and-non-reactive-code*/}
+#### 分离响应式和非响应式代码 {/*separating-reactive-and-non-reactive-code*/}
 
-In this example, you want to log a visit every time `roomId` changes. You want to include the current `notificationCount` with every log, but you *don't* want a change to `notificationCount` to trigger a log event.
+在此示例中，你希望在每次 `roomId` 更改时记录一次。你希望在每个日志中包含当前的 `notificationCount`，但你**不**希望通过更改 `notificationCount` 来触发日志事件。
 
-The solution is again to split out the non-reactive code into an Effect Event:
+解决方案还是将非响应式代码拆分，将其放到 Effect Event 内：
 
 ```js {2-4,7}
 function Chat({ roomId, notificationCount }) {
@@ -753,16 +755,16 @@ function Chat({ roomId, notificationCount }) {
 
   useEffect(() => {
     onVisit(roomId);
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ 所有依赖项已声明
   // ...
 }
 ```
 
-You want your logic to be reactive with regards to `roomId`, so you read `roomId` inside of your Effect. However, you don't want a change to `notificationCount` to log an extra visit, so you read `notificationCount` inside of the Effect Event. [Learn more about reading the latest props and state from Effects using Effect Events.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)
+你希望你的逻辑对 `roomId` 做出响应，因此你在 Effect 中读取 `roomId`。但是，你不希望更改 `notificationCount` 来记录额外的日志输出，因此你可以在 Effect Event 中读取 `notificationCount`。 [了解使用 Effect Events 在 Effect 中读取最新 props 和 state 的更多信息。](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)
 
-### Does some reactive value change unintentionally? {/*does-some-reactive-value-change-unintentionally*/}
+### 一些响应式值是否无意中改变了？ {/*does-some-reactive-value-change-unintentionally*/}
 
-Sometimes, you *do* want your Effect to "react" to a certain value, but that value changes more often than you'd like--and might not reflect any actual change from the user's perspective. For example, let's say that you create an `options` object in the body of your component, and then read that object from inside of your Effect:
+有时，你 **确实** 希望你的 Effect 对某个值“做出反应”，但该值的变化比你希望的更频繁——并且可能不会从用户的角度反映任何实际变化。例如，假设你在组件中创建了一个 `options` 对象，然后从 Effect 内部读取该对象：
 
 ```js {3-6,9}
 function ChatRoom({ roomId }) {
@@ -778,7 +780,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-This object is declared in the component body, so it's a [reactive value.](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) When you read a reactive value like this inside an Effect, you declare it as a dependency. This ensures your Effect "reacts" to its changes:
+该对象在组件中声明，因此它是一个 [响应式值。](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) 当你在 Effect 中读取这样的响应式值时，你将其声明为依赖项。这可确保你的 Effect 对其更改做出“反应”：
 
 ```js {3,6}
   // ...
@@ -786,11 +788,11 @@ This object is declared in the component body, so it's a [reactive value.](/lear
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // ✅ All dependencies declared
+  }, [options]); // ✅ 所有依赖项已声明
   // ...
 ```
 
-It is important to declare it as a dependency! This ensures, for example, that if the `roomId` changes, your Effect will re-connect to the chat with the new `options`. However, there is also a problem with the code above. To see it, try typing into the input in the sandbox below, and watch what happens in the console:
+将其声明为依赖项很重要！例如，这可以确保如果 `roomId` 发生变化，你的 Effect 将使用新的 `options` 重新连接到聊天。但是，上面的代码也有问题。要查看它，请尝试在下面的沙盒中输入内容，然后观察控制台中发生的情况：
 
 <Sandpack>
 
@@ -803,7 +805,7 @@ const serverUrl = 'https://localhost:1234';
 function ChatRoom({ roomId }) {
   const [message, setMessage] = useState('');
 
-  // Temporarily disable the linter to demonstrate the problem
+  // 暂时禁用 linter 以演示问题
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const options = {
     serverUrl: serverUrl,
@@ -818,7 +820,7 @@ function ChatRoom({ roomId }) {
 
   return (
     <>
-      <h1>Welcome to the {roomId} room!</h1>
+      <h1>欢迎来到 {roomId} 房间！</h1>
       <input value={message} onChange={e => setMessage(e.target.value)} />
     </>
   );
@@ -829,14 +831,14 @@ export default function App() {
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        选择聊天室：{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">general</option>
-          <option value="travel">travel</option>
-          <option value="music">music</option>
+          <option value="general">所有</option>
+          <option value="travel">旅游</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <hr />
@@ -848,13 +850,13 @@ export default function App() {
 
 ```js chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 真正的实现实际上会连接到服务器
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ 连接到 "' + roomId + '" 房间，在' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ 断开 "' + roomId + '" 房间，在' + serverUrl);
     }
   };
 }
@@ -867,30 +869,31 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-In the sandbox above, the input only updates the `message` state variable. From the user's perspective, this should not affect the chat connection. However, every time you update the `message`, your component re-renders. When your component re-renders, the code inside of it runs again from scratch.
+在上面的沙箱中，输入仅更新 `message` 状态变量。从用户的角度来看，这不应该影响聊天连接。但是，每次更新 `message` 时，你的组件都会重新渲染。当你的组件重新渲染时，其中的代码会从头开始重新运行。
 
-A new `options` object is created from scratch on every re-render of the `ChatRoom` component. React sees that the `options` object is a *different object* from the `options` object created during the last render. This is why it re-synchronizes your Effect (which depends on `options`), and the chat re-connects as you type.
+在每次重新渲染 `ChatRoom` 组件时，都会从头开始创建一个新的 `options` 对象。 React 发现 `options` 对象与上次渲染期间创建的 `options` 对象是**不同的对象**。 这就是为什么它会重新同步 Effect（依赖于 `options`），并且会在你输入时重新连接聊天。
 
 **This problem only affects objects and functions. In JavaScript, each newly created object and function is considered distinct from all the others. It doesn't matter that the contents inside of them may be the same!**
+**此问题仅影响对象和函数。 在 JavaScript 中，每个新创建的对象和函数都被认为与其他所有对象和函数不同。即使他们的值相同也没关系！**
 
 ```js {7-8}
-// During the first render
+// 第一次渲染
 const options1 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
 
-// During the next render
+// 下一次渲染
 const options2 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
 
-// These are two different objects!
+// 这是 2 个不同的对象
 console.log(Object.is(options1, options2)); // false
 ````
 
-**Object and function dependencies can make your Effect re-synchronize more often than you need.** 
+**对象和函数作为依赖，会使你的 Effect 比你需要的更频繁地重新同步。**
 
-This is why, whenever possible, you should try to avoid objects and functions as your Effect's dependencies. Instead, try moving them outside the component, inside the Effect, or extracting primitive values out of them.
+这就是为什么你应该尽可能避免将对象和函数作为 Effect 的依赖项。所以，尝试将它们移到组件外部、Effect 内部，或从中提取原始值。
 
-#### Move static objects and functions outside your component {/*move-static-objects-and-functions-outside-your-component*/}
+#### 将静态对象和函数移出组件 {/*move-static-objects-and-functions-outside-your-component*/}
 
-If the object does not depend on any props and state, you can move that object outside your component:
+如果该对象不依赖于任何 props 和 state，你可以将该对象移到你的组件之外：
 
 ```js {1-4,13}
 const options = {
@@ -905,13 +908,13 @@ function ChatRoom() {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // ✅ All dependencies declared
+  }, []); // ✅ 所有依赖项已声明
   // ...
 ```
 
-This way, you *prove* to the linter that it's not reactive. It can't change as a result of a re-render, so it doesn't need to be a dependency. Now re-rendering `ChatRoom` won't cause your Effect to re-synchronize.
+这样，你向 linter **证明** 它不是响应式的。它不会因为重新渲染而改变，所以它不是依赖项。现在重新渲染 `ChatRoom` 不会导致 Effect 重新同步。
 
-This works for functions too:
+这也适用于函数场景：
 
 ```js {1-6,12}
 function createOptions() {
@@ -929,15 +932,15 @@ function ChatRoom() {
     const connection = createConnection();
     connection.connect();
     return () => connection.disconnect();
-  }, []); // ✅ All dependencies declared
+  }, []); // ✅ 所有依赖项已声明
   // ...
 ```
 
-Since `createOptions` is declared outside your component, it's not a reactive value. This is why it doesn't need to be specified in your Effect's dependencies, and why it won't ever cause your Effect to re-synchronize.
+由于 `createOptions` 是在你的组件外部声明的，因此它不是一个响应式值。这就是为什么它不需要在 Effect 的依赖项中指定，以及为什么它永远不会导致你的 Effect 重新同步。
 
-#### Move dynamic objects and functions inside your Effect {/*move-dynamic-objects-and-functions-inside-your-effect*/}
+#### 将动态对象和函数移动到你的 Effect 中 {/*move-dynamic-objects-and-functions-inside-your-effect*/}
 
-If your object depends on some reactive value that may change as a result of a re-render, like a `roomId` prop, you can't pull it *outside* your component. You can, however, move its creation *inside* of your Effect's code:
+如果对象（比如下面 useEffect 函数内创建的 `options`，译者注）依赖于一些可能因重新渲染而改变的响应式值，例如 `roomId` prop，你不能将它放置到组件 **外部**。你可以将其创建移动到 Effect 代码的 **内部**：
 
 ```js {7-10,11,14}
 const serverUrl = 'https://localhost:1234';
@@ -953,25 +956,24 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ 所有依赖项已声明
   // ...
 ```
 
-Now that `options` is declared inside of your Effect, it is no longer a dependency of your Effect. Instead, the only reactive value used by your Effect is `roomId`. Since `roomId` is not an object or function, you can be sure that it won't be *unintentionally* different. In JavaScript, numbers and strings are compared by their content:
+现在 `options` 已在你的 Effect 中声明，它不再是你的 Effect 的依赖项。相反，你的 Effect 使用的唯一响应式值是 `roomId`。 由于 `roomId` 不是对象或函数，你可以确定它不会**无意间**变不同。在 JavaScript 中，数字和字符串根据它们的内容进行比较：
 
 ```js {7-8}
-// During the first render
+// 第一次渲染
 const roomId1 = 'music';
 
-// During the next render
+// 下一次渲染
 const roomId2 = 'music';
 
-// These two strings are the same!
+// 这 2 个字符串是相同的
 console.log(Object.is(roomId1, roomId2)); // true
 ````
 
-Thanks to this fix, the chat no longer re-connects if you edit the input:
-
+得益于此修复，当你编辑输入时，聊天将不再重新连接：
 <Sandpack>
 
 ```js
@@ -995,7 +997,7 @@ function ChatRoom({ roomId }) {
 
   return (
     <>
-      <h1>Welcome to the {roomId} room!</h1>
+      <h1>欢迎来到 {roomId} 房间!</h1>
       <input value={message} onChange={e => setMessage(e.target.value)} />
     </>
   );
@@ -1006,14 +1008,14 @@ export default function App() {
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        选择聊天室:{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">general</option>
-          <option value="travel">travel</option>
-          <option value="music">music</option>
+          <option value="general">所有</option>
+          <option value="travel">旅游</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <hr />
@@ -1025,13 +1027,13 @@ export default function App() {
 
 ```js chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 真正的实现实际上会连接到服务器
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ 连接到 "' + roomId + '" 房间，在 ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ 断开 "' + roomId + '" 房间，在 ' + serverUrl);
     }
   };
 }
@@ -1044,9 +1046,9 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-However, it *does* re-connect when you change the `roomId` dropdown, as you would expect.
+然而，当你更改 `roomId` 下拉列表时，它 **确实** 重新连接，正如你所期望的那样。
 
-This works for functions, too:
+这也适用于函数的场景：
 
 ```js {7-12,14}
 const serverUrl = 'https://localhost:1234';
@@ -1066,15 +1068,15 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ 所有依赖项已声明
   // ...
 ```
 
-You can write your own functions to group pieces of logic inside your Effect. As long as you also declare them *inside* your Effect, they're not reactive values, and so they don't need to be dependencies of your Effect.
+你可以编写自己的函数来对 Effect 中的逻辑片段进行分组。只要你也在你的 Effect **内部** 声明它们，它们就不是响应式值，因此它们不会成为 Effect 的依赖项。
 
-#### Read primitive values from objects {/*read-primitive-values-from-objects*/}
+#### 从对象中读取原始值 {/*read-primitive-values-from-objects*/}
 
-Sometimes, you may receive an object from props:
+有时，你可能会通过 props 接收到类型为对象的值：
 
 ```js {1,5,8}
 function ChatRoom({ options }) {
@@ -1084,11 +1086,11 @@ function ChatRoom({ options }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // ✅ All dependencies declared
+  }, [options]); // ✅ 所有依赖项已声明
   // ...
 ```
 
-The risk here is that the parent component will create the object during rendering:
+这里的风险是父组件会在渲染过程中创建对象：
 
 ```js {3-6}
 <ChatRoom
@@ -1100,7 +1102,7 @@ The risk here is that the parent component will create the object during renderi
 />
 ```
 
-This would cause your Effect to re-connect every time the parent component re-renders. To fix this, read information from the object *outside* the Effect, and avoid having object and function dependencies:
+这将导致 Effect 在每次父组件重新渲染时重新连接。要解决此问题，请从 Effect **外部** 读取对象信息，并避免依赖对象和函数类型：
 
 ```js {4,7-8,12}
 function ChatRoom({ options }) {
@@ -1114,15 +1116,15 @@ function ChatRoom({ options }) {
     });
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId, serverUrl]); // ✅ All dependencies declared
+  }, [roomId, serverUrl]); // ✅ 所有依赖项已声明
   // ...
 ```
 
-The logic gets a little repetitive (you read some values from an object outside an Effect, and then create an object with the same values inside the Effect). But it makes it very explicit what information your Effect *actually* depends on. If an object is re-created unintentionally by the parent component, the chat would not re-connect. However, if `options.roomId` or `options.serverUrl` really are different, the chat would re-connect.
+逻辑有点重复（你从 Effect 外部的对象读取一些值，然后在 Effect 内部创建具有相同值的对象）。但这使得 Effect **实际** 依赖的信息非常明确。如果对象被父组件无意中重新创建，聊天也不会重新连接。但是，如果 `options.roomId` 或 `options.serverUrl` 确实不同，聊天将重新连接。
 
-#### Calculate primitive values from functions {/*calculate-primitive-values-from-functions*/}
+#### 从函数中计算原始值 {/*calculate-primitive-values-from-functions*/}
 
-The same approach can work for functions. For example, suppose the parent component passes a function:
+同样的方法也适用于函数。例如，假设父组件传递了一个函数：
 
 ```js {3-8}
 <ChatRoom
@@ -1136,7 +1138,7 @@ The same approach can work for functions. For example, suppose the parent compon
 />
 ```
 
-To avoid making it a dependency (and causing it to re-connect on re-renders), call it outside the Effect. This gives you the `roomId` and `serverUrl` values that aren't objects, and that you can read from inside your Effect:
+为避免使其成为依赖项（并导致它在重新渲染时重新连接），请在 Effect 外部调用它。 这为你提供了不是对象的 `roomId` 和 `serverUrl` 值，你可以从 Effect 中读取它们：
 
 ```js {1,4}
 function ChatRoom({ getOptions }) {
@@ -1150,36 +1152,35 @@ function ChatRoom({ getOptions }) {
     });
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId, serverUrl]); // ✅ All dependencies declared
+  }, [roomId, serverUrl]); // ✅ 所有依赖项已声明
   // ...
 ```
 
-This only works for [pure](/learn/keeping-components-pure) functions because they are safe to call during rendering. If your function is an event handler, but you don't want its changes to re-synchronize your Effect, [wrap it into an Effect Event instead.](#do-you-want-to-read-a-value-without-reacting-to-its-changes)
+这仅适用于 [纯](/learn/keeping-components-pure) 函数，因为它们在渲染期间可以安全调用。如果你的函数是一个事件处理程序，但你不希望它的更改重新同步 Effect，[将它包装到 Effect Event 中](#do-you-want-to-read-a-value-without-reacting-to-its-changes)。
 
 <Recap>
 
-- Dependencies should always match the code.
-- When you're not happy with your dependencies, what you need to edit is the code.
-- Suppressing the linter leads to very confusing bugs, and you should always avoid it.
-- To remove a dependency, you need to "prove" to the linter that it's not necessary.
-- If some code should run in response to a specific interaction, move that code to an event handler.
-- If different parts of your Effect should re-run for different reasons, split it into several Effects.
-- If you want to update some state based on the previous state, pass an updater function.
-- If you want to read the latest value without "reacting" it, extract an Effect Event from your Effect.
-- In JavaScript, objects and functions are considered different if they were created at different times.
-- Try to avoid object and function dependencies. Move them outside the component or inside the Effect.
+- 依赖关系应始终与代码匹配。
+- 当你对依赖项不满意时，你需要编辑的是代码。
+- 抑制 linter 会导致非常混乱的错误，你应该始终避免它。
+- 要删除依赖项，你需要向 linter “证明”它不是必需的。
+- 如果某些代码是响应特定交互，请将该代码移至事件处理部分。
+- 如果 Effect 的不同部分因不同原因需要重新运行，请将其拆分为多个 Effect。
+- 如果你想根据以前的状态更新一些状态，传递一个更新函数。
+- 如果你想读取最新值而不“反应”它，请从 Effect 中提取到 Effect Event 中。
+- 在 JavaScript 中，如果对象和函数是在不同时间创建的，则它们被认为是不同的。
+- 尽量避免对象和函数依赖。将它们移到组件外或 Effect 内。
 
 </Recap>
 
 <Challenges>
 
-#### Fix a resetting interval {/*fix-a-resetting-interval*/}
+#### 修复重置间隔 {/*fix-a-resetting-interval*/}
 
-This Effect sets up an interval that ticks every second. You've noticed something strange happening: it seems like the interval gets destroyed and re-created every time it ticks. Fix the code so that the interval doesn't get constantly re-created.
-
+这个 Effect 设置了一个每秒运行的间隔。你已经注意到一些奇怪的事情：似乎每次时间间隔都会被销毁并重新创建。修复代码，使间隔不会被不断重新创建。
 <Hint>
 
-It seems like this Effect's code depends on `count`. Is there some way to not need this dependency? There should be a way to update the `count` state based on its previous value without adding a dependency on that value.
+看起来这个 Effect 的代码依赖于 `count`。有什么方法不需要这依赖吗？有，那就是根据其之前的值更新 `count` 状态，从而避免添加对该值的依赖。
 
 </Hint>
 
@@ -1192,18 +1193,18 @@ export default function Timer() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    console.log('✅ Creating an interval');
+    console.log('✅ 创建一个间隔定时器');
     const id = setInterval(() => {
-      console.log('⏰ Interval tick');
+      console.log('⏰ 间隔刻度');
       setCount(count + 1);
     }, 1000);
     return () => {
-      console.log('❌ Clearing an interval');
+      console.log('❌ 清除一个间隔定时器');
       clearInterval(id);
     };
   }, [count]);
 
-  return <h1>Counter: {count}</h1>
+  return <h1>计数器: {count}</h1>
 }
 ```
 
@@ -1211,9 +1212,9 @@ export default function Timer() {
 
 <Solution>
 
-You want to update the `count` state to be `count + 1` from inside the Effect. However, this makes your Effect depend on `count`, which changes with every tick, and that's why your interval gets re-created on every tick.
+你想要从 Effect 内部将 `count` 状态更新为 `count + 1`。但是，这会使你的 Effect 依赖于 `count`，它会随着每次滴答而变化，这就是为什么你的间隔会在每次滴答时重新创建。
 
-To solve this, use the [updater function](/reference/react/useState#updating-state-based-on-the-previous-state) and write `setCount(c => c + 1)` instead of `setCount(count + 1)`:
+要解决这个问题，请使用 [更新函数](/reference/react/useState#updating-state-based-on-the-previous-state) 并编写 `setCount(c => c + 1)` 而不是 `setCount(count + 1)`:
 
 <Sandpack>
 
@@ -1224,36 +1225,36 @@ export default function Timer() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    console.log('✅ Creating an interval');
+    console.log('✅ 创建一个间隔定时器');
     const id = setInterval(() => {
-      console.log('⏰ Interval tick');
+      console.log('⏰ 间隔刻度');
       setCount(c => c + 1);
     }, 1000);
     return () => {
-      console.log('❌ Clearing an interval');
+      console.log('❌ 清除一个间隔定时器');
       clearInterval(id);
     };
   }, []);
 
-  return <h1>Counter: {count}</h1>
+  return <h1>计数器: {count}</h1>
 }
 ```
 
 </Sandpack>
 
-Instead of reading `count` inside the Effect, you pass a `c => c + 1` instruction ("increment this number!") to React. React will apply it on the next render. And since you don't need to read the value of `count` inside your Effect anymore, so you can keep your Effect's dependencies empty (`[]`). This prevents your Effect from re-creating the interval on every tick.
+你不应在 Effect 中读取 `count`，而是将 `c => c + 1` 指令（“增加此数字！”）传递给 React。React 将在下一次渲染时执行它。由于你不再需要读取 Effect 中 `count` 的值，因此你可以将 Effect 的依赖项保持为空 (`[]`)。这可以防止你的 Effect 在每次执行时重新创建定时器间隔。
 
 </Solution>
 
-#### Fix a retriggering animation {/*fix-a-retriggering-animation*/}
+#### 修复重新触发动画的问题 {/*fix-a-retriggering-animation*/}
 
-In this example, when you press "Show", a welcome message fades in. The animation takes a second. When you press "Remove", the welcome message immediately disappears. The logic for the fade-in animation is implemented in the `animation.js` file as plain JavaScript [animation loop.](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) You don't need to change that logic. You can treat it as a third-party library. Your Effect creates an instance of `FadeInAnimation` for the DOM node, and then calls `start(duration)` or `stop()` to control the animation. The `duration` is controlled by a slider. Adjust the slider and see how the animation changes.
+在此示例中，当你按下“显示”时，欢迎消息淡入。动画持续一秒钟。当你按下“删除”时，欢迎信息立即消失。淡入动画的逻辑在 `animation.js` 文件中以纯 JavaScript [动画循环](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) 实现。你不需要改变那个逻辑。你可以将其视为第三方库。Effect 的逻辑是为 DOM 节点创建一个 `FadeInAnimation` 实例，然后调用 `start(duration)` 或 `stop()` 来控制动画。 `duration` 由滑块控制。调整滑块并查看动画如何变化。
 
-This code already works, but there is something you want to change. Currently, when you move the slider that controls the `duration` state variable, it retriggers the animation. Change the behavior so that the Effect does not "react" to the `duration` variable. When you press "Show", the Effect should use the current `duration` on the slider. However, moving the slider itself should not by itself retrigger the animation.
+此代码已经能工作，但你需要更改一些内容。目前，当你移动控制 `duration` 状态变量的滑块时，它会重新触发动画。更改行为，使 Effect 不会对 `duration` 变量做出“反应”。当你按下“显示”时，Effect 应该使用滑块上的当前 `duration` 值。但是，移动滑块本身不应重新触发动画。
 
 <Hint>
 
-Is there a line of code inside the Effect that should not be reactive? How can you move non-reactive code out of the Effect?
+Effect 中是否有一行代码不应该是响应式的？如何将非响应式代码移出 Effect？
 
 </Hint>
 
@@ -1303,7 +1304,7 @@ function Welcome({ duration }) {
         backgroundImage: 'radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)'
       }}
     >
-      Welcome
+      欢迎
     </h1>
   );
 }
@@ -1323,10 +1324,10 @@ export default function App() {
           onChange={e => setDuration(Number(e.target.value))}
         />
         <br />
-        Fade in duration: {duration} ms
+        淡入间隔: {duration} ms
       </label>
       <button onClick={() => setShow(!show)}>
-        {show ? 'Remove' : 'Show'}
+        {show ? '删除' : '显示'}
       </button>
       <hr />
       {show && <Welcome duration={duration} />}
@@ -1382,7 +1383,7 @@ html, body { min-height: 300px; }
 
 <Solution>
 
-Your Effect needs to read the latest value of `duration`, but you don't want it to "react" to changes in `duration`. You use `duration` to start the animation, but starting animation isn't reactive. Extract the non-reactive line of code into an Effect Event, and call that function from your Effect.
+你的 Effect 需要读取 `duration` 的最新值，但你不希望它对 `duration` 的变化做出“反应”。你使用 `duration` 来启动动画，但启动动画不是响应式的。将非响应式代码行提取到 Effect Event 中，并从 Effect 中调用该函数。
 
 <Sandpack>
 
@@ -1434,7 +1435,7 @@ function Welcome({ duration }) {
         backgroundImage: 'radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)'
       }}
     >
-      Welcome
+      欢迎
     </h1>
   );
 }
@@ -1454,10 +1455,10 @@ export default function App() {
           onChange={e => setDuration(Number(e.target.value))}
         />
         <br />
-        Fade in duration: {duration} ms
+        淡入间隔: {duration} ms
       </label>
       <button onClick={() => setShow(!show)}>
-        {show ? 'Remove' : 'Show'}
+        {show ? '删除' : '显示'}
       </button>
       <hr />
       {show && <Welcome duration={duration} />}
@@ -1505,19 +1506,19 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-Effect Events like `onAppear` are not reactive, so you can read `duration` inside without retriggering the animation.
+像 `onAppear` 这样的 Effect Events 不是响应式的，因此你可以在不重新触发动画的情况下读取内部的 `duration`。
 
 </Solution>
 
-#### Fix a reconnecting chat {/*fix-a-reconnecting-chat*/}
+#### 修复聊天重新连接的问题 {/*fix-a-reconnecting-chat*/}
 
-In this example, every time you press "Toggle theme", the chat re-connects. Why does this happen? Fix the mistake so that the chat re-connects only when you edit the Server URL or choose a different chat room.
+在此示例中，每次你按“切换主题”时，聊天都会重新连接。为什么会这样？修复错误，只有当你编辑服务器 URL 或选择不同的聊天室时，聊天才会重新连接。
 
-Treat `chat.js` as an external third-party library: you can consult it to check its API, but don't edit it.
+将 `chat.js` 视为外部第三方库：你可以查阅它以检查其 API，但不要对其进行编辑。
 
 <Hint>
 
-There's more than one way to fix this, but ultimately you want to avoid having an object as your dependency.
+解决这个问题的方法不止一种，但最终你希望避免将对象作为你的依赖项。
 
 </Hint>
 
@@ -1540,24 +1541,24 @@ export default function App() {
   return (
     <div className={isDark ? 'dark' : 'light'}>
       <button onClick={() => setIsDark(!isDark)}>
-        Toggle theme
+        切换主题
       </button>
       <label>
-        Server URL:{' '}
+        服务器地址：{' '}
         <input
           value={serverUrl}
           onChange={e => setServerUrl(e.target.value)}
         />
       </label>
       <label>
-        Choose the chat room:{' '}
+        选择聊天室：{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">general</option>
-          <option value="travel">travel</option>
-          <option value="music">music</option>
+          <option value="general">所有</option>
+          <option value="travel">旅游</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <hr />
@@ -1578,25 +1579,25 @@ export default function ChatRoom({ options }) {
     return () => connection.disconnect();
   }, [options]);
 
-  return <h1>Welcome to the {options.roomId} room!</h1>;
+  return <h1>欢迎来到 {options.roomId} 房间！</h1>;
 }
 ```
 
 ```js chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 真正的实现实际上会连接到服务器
   if (typeof serverUrl !== 'string') {
-    throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
+    throw Error('期望 serverUrl 是字符串类型，收到：' + serverUrl);
   }
   if (typeof roomId !== 'string') {
-    throw Error('Expected roomId to be a string. Received: ' + roomId);
+    throw Error('期望 roomId 是字符串类型，收到：' + roomId);
   }
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ 连接到 "' + roomId + '" 房间，在' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ 断开 "' + roomId + '" 房间，在' + serverUrl);
     }
   };
 }
@@ -1611,9 +1612,9 @@ label, button { display: block; margin-bottom: 5px; }
 
 <Solution>
 
-Your Effect is re-running because it depends on the `options` object. Objects can be re-created unintentionally, you should try to avoid them as dependencies of your Effects whenever possible.
+Effect 因依赖于 `options` 对象，导致其重新运行。对象可能会在无意中被重新创建，你应该尽可能避免将它们作为你的 Effects 的依赖项。
 
-The least invasive fix is to read `roomId` and `serverUrl` right outside the Effect, and then make the Effect depend on those primitive values (which can't change unintentionally). Inside the Effect, create an object and it pass to `createConnection`:
+侵入性最小的修复方法是在 Effect 外部读取 `roomId` 和 `serverUrl`，然后使 Effect 依赖于这些原始值（不能无意地更改）。在 Effect 内部，创建一个对象并将其传递给 `createConnection`：
 
 <Sandpack>
 
@@ -1634,24 +1635,24 @@ export default function App() {
   return (
     <div className={isDark ? 'dark' : 'light'}>
       <button onClick={() => setIsDark(!isDark)}>
-        Toggle theme
+        切换主题
       </button>
       <label>
-        Server URL:{' '}
+        服务器地址：{' '}
         <input
           value={serverUrl}
           onChange={e => setServerUrl(e.target.value)}
         />
       </label>
       <label>
-        Choose the chat room:{' '}
+        选择聊天室：{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">general</option>
-          <option value="travel">travel</option>
-          <option value="music">music</option>
+          <option value="general">所有</option>
+          <option value="travel">旅游</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <hr />
@@ -1676,25 +1677,25 @@ export default function ChatRoom({ options }) {
     return () => connection.disconnect();
   }, [roomId, serverUrl]);
 
-  return <h1>Welcome to the {options.roomId} room!</h1>;
+  return <h1>欢迎来到 {options.roomId} 房间！</h1>;
 }
 ```
 
 ```js chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 真正的实现实际上会连接到服务器
   if (typeof serverUrl !== 'string') {
-    throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
+    throw Error('期望 serverUrl 是字符串类型，收到：' + serverUrl);
   }
   if (typeof roomId !== 'string') {
-    throw Error('Expected roomId to be a string. Received: ' + roomId);
+    throw Error('期望 roomId 是字符串类型，收到：' + roomId);
   }
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ 连接到 "' + roomId + '" 房间，在' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ 断开 "' + roomId + '" 房间，在' + serverUrl);
     }
   };
 }
@@ -1707,7 +1708,7 @@ label, button { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-It would be even better to replace the object `options` prop with the more specific `roomId` and `serverUrl` props:
+用更具体的 `roomId` 和 `serverUrl` prop 替换对象 `options` prop 会更好：
 
 <Sandpack>
 
@@ -1723,24 +1724,24 @@ export default function App() {
   return (
     <div className={isDark ? 'dark' : 'light'}>
       <button onClick={() => setIsDark(!isDark)}>
-        Toggle theme
+        切换主题
       </button>
       <label>
-        Server URL:{' '}
+        服务器地址：{' '}
         <input
           value={serverUrl}
           onChange={e => setServerUrl(e.target.value)}
         />
       </label>
       <label>
-        Choose the chat room:{' '}
+        选择聊天室：{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">general</option>
-          <option value="travel">travel</option>
-          <option value="music">music</option>
+          <option value="general">所有</option>
+          <option value="travel">旅游</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <hr />
@@ -1767,25 +1768,25 @@ export default function ChatRoom({ roomId, serverUrl }) {
     return () => connection.disconnect();
   }, [roomId, serverUrl]);
 
-  return <h1>Welcome to the {roomId} room!</h1>;
+  return <h1>欢迎来到 {roomId} 房间！</h1>;
 }
 ```
 
 ```js chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 真正的实现实际上会连接到服务器
   if (typeof serverUrl !== 'string') {
-    throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
+    throw Error('期望 serverUrl 是字符串类型，收到：' + serverUrl);
   }
   if (typeof roomId !== 'string') {
-    throw Error('Expected roomId to be a string. Received: ' + roomId);
+    throw Error('期望 roomId 是字符串类型，收到：' + roomId);
   }
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ 连接到 "' + roomId + '" 房间，在' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ 断开 "' + roomId + '" 房间，在' + serverUrl);
     }
   };
 }
@@ -1798,25 +1799,25 @@ label, button { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-Sticking to primitive props where possible makes it easier to optimize your components later.
+尽可能坚持使用原始 props，以便以后更容易优化你的组件。
 
 </Solution>
 
-#### Fix a reconnecting chat, again {/*fix-a-reconnecting-chat-again*/}
+#### 再次修复聊天重新连接的问题 {/*fix-a-reconnecting-chat-again*/}
 
-This example connects to the chat either with or without encryption. Toggle the checkbox and notice the different messages in the console when the encryption is on and off. Try changing the room. Then, try toggling the theme. When you're connected to a chat room, you will receive new messages every few seconds. Verify that their color matches the theme you've picked.
+此示例使用或不使用加密连接到聊天。切换复选框并注意加密打开和关闭时控制台中的不同消息。换个房间试试，然后，尝试切换主题。当你连接到聊天室时，每隔几秒钟就会收到一条新消息。验证它们的颜色是否与你选择的主题相匹配。
 
-In this example, the chat re-connects every time you try to change the theme. Fix this. After the fix, changing the theme should not re-connect the chat, but toggling encryption settings or changing the room should re-connect.
+在此示例中，每次你尝试更改主题时聊天都会重新连接。解决这个问题。修复后，更改主题不应重新连接聊天，但切换加密设置或更改房间应重新连接。
 
-Don't change any code in `chat.js`. Other than that, you can change any code as long as it results in the same behavior. For example, you may find it helpful to change which props are being passed down.
+不要更改 `chat.js` 中的任何代码。除此之外，你可以更改任何代码，只要它引起相同的行为。例如，你可能会发现更改正在传递的 props 很有帮助。
 
 <Hint>
 
-You're passing down two functions: `onMessage` and `createConnection`. Both of them are created from scratch every time `App` re-renders. They are considered to be new values every time, which is why they re-trigger your Effect.
+你传递了两个函数：`onMessage` 和 `createConnection`。每次 `App` 重新渲染时，它们都是从头开始创建的。它们每次都被视为新值，这就是它们重新触发你的效果的原因。
 
-One of these functions is an event handler. Do you know some way to call an event handler an Effect without "reacting" to the new values of the event handler function? That would come in handy!
+前者是事件处理程序。你知道在不对新的事件处理函数“做出反应”的情况下调用事件处理程序 Effect 的方法吗？这个问题你迟早要遇到！
 
-Another of these functions only exists to pass some state to an imported API method. Is this function really necessary? What is the essential information that's being passed down? You might need to move some imports from `App.js` to `ChatRoom.js`.
+后者仅用于将某些状态传递给导入的 API 方法。这个函数真的有必要吗？传递的基本信息是什么？你可能需要将一些导入从 `App.js` 移至 `ChatRoom.js`。
 
 </Hint>
 
@@ -1861,7 +1862,7 @@ export default function App() {
           checked={isDark}
           onChange={e => setIsDark(e.target.checked)}
         />
-        Use dark theme
+        使用暗黑主题
       </label>
       <label>
         <input
@@ -1869,24 +1870,24 @@ export default function App() {
           checked={isEncrypted}
           onChange={e => setIsEncrypted(e.target.checked)}
         />
-        Enable encryption
+        开启加密功能
       </label>
       <label>
-        Choose the chat room:{' '}
+        选择聊天室：{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">general</option>
-          <option value="travel">travel</option>
-          <option value="music">music</option>
+          <option value="general">所有</option>
+          <option value="travel">旅游</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <hr />
       <ChatRoom
         roomId={roomId}
         onMessage={msg => {
-          showNotification('New message: ' + msg, isDark ? 'dark' : 'light');
+          showNotification('新消息：' + msg, isDark ? 'dark' : 'light');
         }}
         createConnection={() => {
           const options = {
@@ -1917,24 +1918,24 @@ export default function ChatRoom({ roomId, createConnection, onMessage }) {
     return () => connection.disconnect();
   }, [createConnection, onMessage]);
 
-  return <h1>Welcome to the {roomId} room!</h1>;
+  return <h1>欢迎来到 {roomId} 房间！</h1>;
 }
 ```
 
 ```js chat.js
 export function createEncryptedConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 真正的实现实际上会连接到服务器
   if (typeof serverUrl !== 'string') {
-    throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
+    throw Error('期望 serverUrl 是字符串类型，收到：' + serverUrl);
   }
   if (typeof roomId !== 'string') {
-    throw Error('Expected roomId to be a string. Received: ' + roomId);
+    throw Error('期望 roomId 是字符串类型，收到：' + roomId);
   }
   let intervalId;
   let messageCallback;
   return {
     connect() {
-      console.log('✅ 🔐 Connecting to "' + roomId + '" room... (encrypted)');
+      console.log('✅ 🔐 连接到 "' + roomId + '" 房间...（已加密）');
       clearInterval(intervalId);
       intervalId = setInterval(() => {
         if (messageCallback) {
@@ -1949,14 +1950,14 @@ export function createEncryptedConnection({ serverUrl, roomId }) {
     disconnect() {
       clearInterval(intervalId);
       messageCallback = null;
-      console.log('❌ 🔐 Disconnected from "' + roomId + '" room (encrypted)');
+      console.log('❌ 🔐 断开 "' + roomId + '" 房间（已加密）');
     },
     on(event, callback) {
       if (messageCallback) {
-        throw Error('Cannot add the handler twice.');
+        throw Error('不能添加 handler 2次');
       }
       if (event !== 'message') {
-        throw Error('Only "message" event is supported.');
+        throw Error('仅支持 "message" 事件');
       }
       messageCallback = callback;
     },
@@ -1964,18 +1965,18 @@ export function createEncryptedConnection({ serverUrl, roomId }) {
 }
 
 export function createUnencryptedConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 真正的实现实际上会连接到服务器
   if (typeof serverUrl !== 'string') {
-    throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
+    throw Error('期望 serverUrl 是字符串类型，收到：' + serverUrl);
   }
   if (typeof roomId !== 'string') {
-    throw Error('Expected roomId to be a string. Received: ' + roomId);
+    throw Error('期望 roomId 是字符串类型，收到：' + roomId);
   }
   let intervalId;
   let messageCallback;
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room (unencrypted)...');
+      console.log('✅ 连接到 "' + roomId + '" 房间（未加密）...');
       clearInterval(intervalId);
       intervalId = setInterval(() => {
         if (messageCallback) {
@@ -1990,14 +1991,14 @@ export function createUnencryptedConnection({ serverUrl, roomId }) {
     disconnect() {
       clearInterval(intervalId);
       messageCallback = null;
-      console.log('❌ Disconnected from "' + roomId + '" room (unencrypted)');
+      console.log('❌ 断开 "' + roomId + '" 房间（未加密）');
     },
     on(event, callback) {
       if (messageCallback) {
-        throw Error('Cannot add the handler twice.');
+        throw Error('不能添加 handler 2次');
       }
       if (event !== 'message') {
-        throw Error('Only "message" event is supported.');
+        throw Error('仅支持 "message" 事件');
       }
       messageCallback = callback;
     },
@@ -2031,11 +2032,11 @@ label, button { display: block; margin-bottom: 5px; }
 
 <Solution>
 
-There's more than one correct way to solve this, but here is one possible solution.
+解决这个问题的正确方法不止一种，下面要介绍的是一种可能的解决方案。
 
-In the original example, toggling the theme caused different `onMessage` and `createConnection` functions to be created and passed down. Since the Effect depended on these functions, the chat would re-connect every time you toggle the theme.
+在原始示例中，切换主题会导致创建和传递不同的 `onMessage` 和 `createConnection` 函数。 由于 Effect 依赖于这些功能，因此每次切换主题时聊天都会重新连接。
 
-To fix the problem with `onMessage`, you needed to wrap it into an Effect Event:
+要解决 `onMessage` 的问题，你需要将其包装到 Effect Event 中：
 
 ```js {1,2,6}
 export default function ChatRoom({ roomId, createConnection, onMessage }) {
@@ -2047,21 +2048,21 @@ export default function ChatRoom({ roomId, createConnection, onMessage }) {
     // ...
 ```
 
-Unlike the `onMessage` prop, the `onReceiveMessage` Effect Event is not reactive. This is why it doesn't need to be a dependency of your Effect. As a result, changes to `onMessage` won't cause the chat to re-connect.
+与 `onMessage` prop 不同，`onReceiveMessage` Effect Event 不是响应式的。 这就是为什么它不需要成为你的 Effect 的依赖项。 因此，对 `onMessage` 的更改不会导致聊天重新连接。
 
-You can't do the same with `createConnection` because it *should* be reactive. You *want* the Effect to re-trigger if the user switches between an encrypted and an unencryption connection, or if the user switches the current room. However, because `createConnection` is a function, you can't check whether the information it reads has *actually* changed or not. To solve this, instead of passing `createConnection` down from the `App` component, pass the raw `roomId` and `isEncrypted` values:
+你不能对 `createConnection` 做同样的事情，因为它 **应该** 是响应式的。 如果用户在加密和未加密连接之间切换，或者如果用户切换当前房间，你 **希望** 重新触发效果。 但是，因为 `createConnection` 是一个函数，你无法检查它读取的信息是否 **实际** 发生了变化。 要解决此问题，请传递原始的 `roomId` 和 `isEncrypted` 值，而不是从 App 组件向下传递 `createConnection` ：
 
 ```js {2-3}
       <ChatRoom
         roomId={roomId}
         isEncrypted={isEncrypted}
         onMessage={msg => {
-          showNotification('New message: ' + msg, isDark ? 'dark' : 'light');
+          showNotification('新消息：' + msg, isDark ? 'dark' : 'light');
         }}
       />
 ```
 
-Now you can move the `createConnection` function *inside* the Effect instead of passing it down from the `App`:
+现在你可以将 `createConnection` 函数移到 Effect 里面，而不是从 `App` 向下传递它：
 
 ```js {1-4,6,10-20}
 import {
@@ -2087,7 +2088,7 @@ export default function ChatRoom({ roomId, isEncrypted, onMessage }) {
     // ...
 ```
 
-After these two changes, your Effect no longer depends on any function values:
+在这两个更改之后，你的 Effect 不再依赖于任何函数值：
 
 ```js {1,8,10,21}
 export default function ChatRoom({ roomId, isEncrypted, onMessage }) { // Reactive values
@@ -2097,9 +2098,9 @@ export default function ChatRoom({ roomId, isEncrypted, onMessage }) { // Reacti
     function createConnection() {
       const options = {
         serverUrl: 'https://localhost:1234',
-        roomId: roomId // Reading a reactive value
+        roomId: roomId // 读取响应式值
       };
-      if (isEncrypted) { // Reading a reactive value
+      if (isEncrypted) { // 读取响应式值
         return createEncryptedConnection(options);
       } else {
         return createUnencryptedConnection(options);
@@ -2110,10 +2111,10 @@ export default function ChatRoom({ roomId, isEncrypted, onMessage }) { // Reacti
     connection.on('message', (msg) => onReceiveMessage(msg));
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId, isEncrypted]); // ✅ All dependencies declared
+  }, [roomId, isEncrypted]); // ✅ 所有依赖项已声明
 ```
 
-As a result, the chat re-connects only when something meaningful (`roomId` or `isEncrypted`) changes:
+因此，仅当有意义的内容（`roomId` 或 `isEncrypted`）发生变化时，聊天才会重新连接：
 
 <Sandpack>
 
@@ -2153,7 +2154,7 @@ export default function App() {
           checked={isDark}
           onChange={e => setIsDark(e.target.checked)}
         />
-        Use dark theme
+        使用暗黑主题
       </label>
       <label>
         <input
@@ -2161,17 +2162,17 @@ export default function App() {
           checked={isEncrypted}
           onChange={e => setIsEncrypted(e.target.checked)}
         />
-        Enable encryption
+        开启加密功能
       </label>
       <label>
-        Choose the chat room:{' '}
+        选择聊天室：{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">general</option>
-          <option value="travel">travel</option>
-          <option value="music">music</option>
+          <option value="general">所有</option>
+          <option value="travel">旅游</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <hr />
@@ -2179,7 +2180,7 @@ export default function App() {
         roomId={roomId}
         isEncrypted={isEncrypted}
         onMessage={msg => {
-          showNotification('New message: ' + msg, isDark ? 'dark' : 'light');
+          showNotification('新消息：' + msg, isDark ? 'dark' : 'light');
         }}
       />
     </>
@@ -2217,24 +2218,24 @@ export default function ChatRoom({ roomId, isEncrypted, onMessage }) {
     return () => connection.disconnect();
   }, [roomId, isEncrypted]);
 
-  return <h1>Welcome to the {roomId} room!</h1>;
+  return <h1>欢迎来到 {roomId} 房间！</h1>;
 }
 ```
 
 ```js chat.js
 export function createEncryptedConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 真正的实现实际上会连接到服务器
   if (typeof serverUrl !== 'string') {
-    throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
+    throw Error('期望 serverUrl 是字符串类型，收到：' + serverUrl);
   }
   if (typeof roomId !== 'string') {
-    throw Error('Expected roomId to be a string. Received: ' + roomId);
+    throw Error('期望 roomId 是字符串类型，收到：' + roomId);
   }
   let intervalId;
   let messageCallback;
   return {
     connect() {
-      console.log('✅ 🔐 Connecting to "' + roomId + '" room... (encrypted)');
+      console.log('✅ 🔐 连接到 "' + roomId + '" 房间...（已加密）');
       clearInterval(intervalId);
       intervalId = setInterval(() => {
         if (messageCallback) {
@@ -2249,14 +2250,14 @@ export function createEncryptedConnection({ serverUrl, roomId }) {
     disconnect() {
       clearInterval(intervalId);
       messageCallback = null;
-      console.log('❌ 🔐 Disconnected from "' + roomId + '" room (encrypted)');
+      console.log('❌ 🔐 断开 "' + roomId + '" 房间（已加密）');
     },
     on(event, callback) {
       if (messageCallback) {
-        throw Error('Cannot add the handler twice.');
+        throw Error('不能添加 handler 2次');
       }
       if (event !== 'message') {
-        throw Error('Only "message" event is supported.');
+        throw Error('仅支持 "message" 事件');
       }
       messageCallback = callback;
     },
@@ -2264,18 +2265,18 @@ export function createEncryptedConnection({ serverUrl, roomId }) {
 }
 
 export function createUnencryptedConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 真正的实现实际上会连接到服务器
   if (typeof serverUrl !== 'string') {
-    throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
+    throw Error('期望 serverUrl 是字符串类型，收到：' + serverUrl);
   }
   if (typeof roomId !== 'string') {
-    throw Error('Expected roomId to be a string. Received: ' + roomId);
+    throw Error('期望 roomId 是字符串类型，收到：' + roomId);
   }
   let intervalId;
   let messageCallback;
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room (unencrypted)...');
+      console.log('✅ 连接到 "' + roomId + '" 房间（未加密）...');
       clearInterval(intervalId);
       intervalId = setInterval(() => {
         if (messageCallback) {
@@ -2290,14 +2291,14 @@ export function createUnencryptedConnection({ serverUrl, roomId }) {
     disconnect() {
       clearInterval(intervalId);
       messageCallback = null;
-      console.log('❌ Disconnected from "' + roomId + '" room (unencrypted)');
+      console.log('❌ 断开 "' + roomId + '" 房间（未加密）');
     },
     on(event, callback) {
       if (messageCallback) {
-        throw Error('Cannot add the handler twice.');
+        throw Error('不能添加 handler 2次');
       }
       if (event !== 'message') {
-        throw Error('Only "message" event is supported.');
+        throw Error('仅支持 "message" 事件');
       }
       messageCallback = callback;
     },
