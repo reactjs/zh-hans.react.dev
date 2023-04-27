@@ -8,11 +8,11 @@ permalink: docs/react-dom-server.html
 
 <div class="scary">
 
-> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 >
 > These new documentation pages teach modern React:
 >
-> - [`react-dom`: Server APIs](https://react.dev/reference/react-dom/server)
+> - [`react-dom`: Server APIs](https://zh-hans.react.dev/reference/react-dom/server)
 
 </div>
 
@@ -50,7 +50,7 @@ These methods are only available in the **environments with [Node.js Streams](ht
 
 > This content is out of date.
 >
-> Read the new React documentation for [`renderToPipeableStream`](https://react.dev/reference/react-dom/server/renderToPipeableStream).
+> Read the new React documentation for [`renderToPipeableStream`](https://zh-hans.react.dev/reference/react-dom/server/renderToPipeableStream).
 
 </div>
 
@@ -113,7 +113,7 @@ const stream = renderToPipeableStream(
 
 > This content is out of date.
 >
-> Read the new React documentation for [`renderToReadableStream`](https://react.dev/reference/react-dom/server/renderToReadableStream).
+> Read the new React documentation for [`renderToReadableStream`](https://zh-hans.react.dev/reference/react-dom/server/renderToReadableStream).
 
 </div>
 
@@ -178,7 +178,7 @@ try {
 
 > This content is out of date.
 >
-> Read the new React documentation for [`renderToNodeStream`](https://react.dev/reference/react-dom/server/renderToNodeStream).
+> Read the new React documentation for [`renderToNodeStream`](https://zh-hans.react.dev/reference/react-dom/server/renderToNodeStream).
 
 </div>
 
@@ -204,7 +204,7 @@ ReactDOMServer.renderToNodeStream(element)
 
 > This content is out of date.
 >
-> Read the new React documentation for [`renderToStaticNodeStream`](https://react.dev/reference/react-dom/server/renderToStaticNodeStream).
+> Read the new React documentation for [`renderToStaticNodeStream`](https://zh-hans.react.dev/reference/react-dom/server/renderToStaticNodeStream).
 
 </div>
 
@@ -232,7 +232,7 @@ ReactDOMServer.renderToStaticNodeStream(element)
 
 > This content is out of date.
 >
-> Read the new React documentation for [`renderToString`](https://react.dev/reference/react-dom/server/renderToString).
+> Read the new React documentation for [`renderToString`](https://zh-hans.react.dev/reference/react-dom/server/renderToString).
 
 </div>
 
@@ -258,7 +258,7 @@ ReactDOMServer.renderToString(element)
 
 > This content is out of date.
 >
-> Read the new React documentation for [`renderToStaticMarkup`](https://react.dev/reference/react-dom/server/renderToStaticMarkup).
+> Read the new React documentation for [`renderToStaticMarkup`](https://zh-hans.react.dev/reference/react-dom/server/renderToStaticMarkup).
 
 </div>
 

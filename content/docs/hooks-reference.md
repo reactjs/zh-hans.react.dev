@@ -8,11 +8,11 @@ next: hooks-faq.html
 
 <div class="scary">
 
-> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 >
 > These new documentation pages teach modern React:
 >
-> - [`react`: Hooks](https://react.dev/reference/react)
+> - [`react`: Hooks](https://zh-hans.react.dev/reference/react)
 
 </div>
 
@@ -49,7 +49,7 @@ next: hooks-faq.html
 
 > This content is out of date.
 >
-> Read the new React documentation for [`useState`](https://react.dev/reference/react/useState).
+> Read the new React documentation for [`useState`](https://zh-hans.react.dev/reference/react/useState).
 
 </div>
 
@@ -140,7 +140,7 @@ React 可能会将多次 state 更新合并到一次的重渲染中以改善性�
 
 > This content is out of date.
 >
-> Read the new React documentation for [`useEffect`](https://react.dev/reference/react/useEffect).
+> Read the new React documentation for [`useEffect`](https://zh-hans.react.dev/reference/react/useEffect).
 
 </div>
 
@@ -227,7 +227,7 @@ useEffect(
 
 > This content is out of date.
 >
-> Read the new React documentation for [`useContext`](https://react.dev/reference/react/useContext).
+> Read the new React documentation for [`useContext`](https://zh-hans.react.dev/reference/react/useContext).
 
 </div>
 
@@ -309,7 +309,7 @@ function ThemedButton() {
 
 > This content is out of date.
 >
-> Read the new React documentation for [`useReducer`](https://react.dev/reference/react/useReducer).
+> Read the new React documentation for [`useReducer`](https://zh-hans.react.dev/reference/react/useReducer).
 
 </div>
 
@@ -421,7 +421,7 @@ function Counter({initialCount}) {
 
 > This content is out of date.
 >
-> Read the new React documentation for [`useCallback`](https://react.dev/reference/react/useCallback).
+> Read the new React documentation for [`useCallback`](https://zh-hans.react.dev/reference/react/useCallback).
 
 </div>
 
@@ -452,7 +452,7 @@ const memoizedCallback = useCallback(
 
 > This content is out of date.
 >
-> Read the new React documentation for [`useMemo`](https://react.dev/reference/react/useMemo).
+> Read the new React documentation for [`useMemo`](https://zh-hans.react.dev/reference/react/useMemo).
 
 </div>
 
@@ -483,7 +483,7 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 
 > This content is out of date.
 >
-> Read the new React documentation for [`useRef`](https://react.dev/reference/react/useRef).
+> Read the new React documentation for [`useRef`](https://zh-hans.react.dev/reference/react/useRef).
 
 </div>
 
@@ -529,7 +529,7 @@ function TextInputWithFocusButton() {
 
 > This content is out of date.
 >
-> Read the new React documentation for [`useImperativeHandle`](https://react.dev/reference/react/useImperativeHandle).
+> Read the new React documentation for [`useImperativeHandle`](https://zh-hans.react.dev/reference/react/useImperativeHandle).
 
 </div>
 
@@ -561,7 +561,7 @@ FancyInput = forwardRef(FancyInput);
 
 > This content is out of date.
 >
-> Read the new React documentation for [`useLayoutEffect`](https://react.dev/reference/react/useLayoutEffect).
+> Read the new React documentation for [`useLayoutEffect`](https://zh-hans.react.dev/reference/react/useLayoutEffect).
 
 </div>
 
@@ -584,7 +584,7 @@ FancyInput = forwardRef(FancyInput);
 
 > This content is out of date.
 >
-> Read the new React documentation for [`useDebugValue`](https://react.dev/reference/react/useDebugValue).
+> Read the new React documentation for [`useDebugValue`](https://zh-hans.react.dev/reference/react/useDebugValue).
 
 </div>
 
@@ -633,7 +633,7 @@ useDebugValue(date, date => date.toDateString());
 
 > This content is out of date.
 >
-> Read the new React documentation for [`useDeferredValue`](https://react.dev/reference/react/useDeferredValue).
+> Read the new React documentation for [`useDeferredValue`](https://zh-hans.react.dev/reference/react/useDeferredValue).
 
 </div>
 
@@ -680,7 +680,7 @@ function Typeahead() {
 
 > This content is out of date.
 >
-> Read the new React documentation for [`useTransition`](https://react.dev/reference/react/useTransition).
+> Read the new React documentation for [`useTransition`](https://zh-hans.react.dev/reference/react/useTransition).
 
 </div>
 
@@ -733,7 +733,7 @@ function App() {
 
 > This content is out of date.
 >
-> Read the new React documentation for [`useId`](https://react.dev/reference/react/useId).
+> Read the new React documentation for [`useId`](https://zh-hans.react.dev/reference/react/useId).
 
 </div>
 
@@ -799,7 +799,7 @@ function NameFields() {
 
 > This content is out of date.
 >
-> Read the new React documentation for [`useSyncExternalStore`](https://react.dev/reference/react/useSyncExternalStore).
+> Read the new React documentation for [`useSyncExternalStore`](https://zh-hans.react.dev/reference/react/useSyncExternalStore).
 
 </div>
 
@@ -854,7 +854,7 @@ const selectedField = useSyncExternalStore(
 
 > This content is out of date.
 >
-> Read the new React documentation for [`useInsertionEffect`](https://react.dev/reference/react/useInsertionEffect).
+> Read the new React documentation for [`useInsertionEffect`](https://zh-hans.react.dev/reference/react/useInsertionEffect).
 
 </div>
 

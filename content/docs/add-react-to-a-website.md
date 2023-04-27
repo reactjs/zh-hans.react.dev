@@ -11,9 +11,9 @@ next: create-a-new-react-app.html
 <div class="scary">
 
 >
-> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 > 
-> See [Add React to an Existing Project](https://react.dev/learn/add-react-to-an-existing-project) for the recommended ways to add React.
+> See [Add React to an Existing Project](https://zh-hans.react.dev/learn/add-react-to-an-existing-project) for the recommended ways to add React.
 
 </div>
 

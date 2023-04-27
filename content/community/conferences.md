@@ -10,9 +10,9 @@ redirect_from:
 
 <div class="scary">
 
-> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 >
-> See the [Conferences](https://react.dev/community/conferences) page on the new site.
+> See the [Conferences](https://zh-hans.react.dev/community/conferences) page on the new site.
 >
 </div>
 

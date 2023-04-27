@@ -11,9 +11,9 @@ next: hello-world.html
 <div class="scary">
 
 >
-> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 > 
-> See [Versioning Policy](https://react.dev/community/versioning-policy) to learn about the React release channels.
+> See [Versioning Policy](https://zh-hans.react.dev/community/versioning-policy) to learn about the React release channels.
 
 </div>
 

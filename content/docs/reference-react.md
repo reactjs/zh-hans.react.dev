@@ -15,14 +15,14 @@ redirect_from:
 
 <div class="scary">
 
-> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 >
 > These new documentation pages teach modern React:
 >
-> - [`react`: Components](https://react.dev/reference/react/components)
-> - [`react`: Hooks](https://react.dev/reference/react/)
-> - [`react`: APIs](https://react.dev/reference/react/apis)
-> - [`react`: Legacy APIs](https://react.dev/reference/react/legacy)
+> - [`react`: Components](https://zh-hans.react.dev/reference/react/components)
+> - [`react`: Hooks](https://zh-hans.react.dev/reference/react/)
+> - [`react`: APIs](https://zh-hans.react.dev/reference/react/apis)
+> - [`react`: Legacy APIs](https://zh-hans.react.dev/reference/react/legacy)
 
 </div>
 
@@ -121,7 +121,7 @@ Suspense 使得组件可以“等待”某些操作结束后，再进行渲染�
 
 > This content is out of date.
 >
-> Read the new React documentation for [`Component`](https://react.dev/reference/react/Component).
+> Read the new React documentation for [`Component`](https://zh-hans.react.dev/reference/react/Component).
 
 </div>
 
@@ -145,7 +145,7 @@ class Greeting extends React.Component {
 
 > This content is out of date.
 >
-> Read the new React documentation for [`PureComponent`](https://react.dev/reference/react/PureComponent).
+> Read the new React documentation for [`PureComponent`](https://zh-hans.react.dev/reference/react/PureComponent).
 
 </div>
 
@@ -168,7 +168,7 @@ class Greeting extends React.Component {
 
 > This content is out of date.
 >
-> Read the new React documentation for [`memo`](https://react.dev/reference/react/memo).
+> Read the new React documentation for [`memo`](https://zh-hans.react.dev/reference/react/memo).
 
 </div>
 
@@ -214,7 +214,7 @@ export default React.memo(MyComponent, areEqual);
 
 > This content is out of date.
 >
-> Read the new React documentation for [`createElement`](https://react.dev/reference/react/createElement).
+> Read the new React documentation for [`createElement`](https://zh-hans.react.dev/reference/react/createElement).
 
 </div>
 
@@ -238,7 +238,7 @@ React.createElement(
 
 > This content is out of date.
 >
-> Read the new React documentation for [`cloneElement`](https://react.dev/reference/react/cloneElement).
+> Read the new React documentation for [`cloneElement`](https://zh-hans.react.dev/reference/react/cloneElement).
 
 </div>
 
@@ -270,7 +270,7 @@ React.cloneElement(
 
 > This content is out of date.
 >
-> Read the new React documentation for [`createFactory`](https://react.dev/reference/react/createFactory).
+> Read the new React documentation for [`createFactory`](https://zh-hans.react.dev/reference/react/createFactory).
 
 </div>
 
@@ -292,7 +292,7 @@ React.createFactory(type)
 
 > This content is out of date.
 >
-> Read the new React documentation for [`isValidElement`](https://react.dev/reference/react/isValidElement).
+> Read the new React documentation for [`isValidElement`](https://zh-hans.react.dev/reference/react/isValidElement).
 
 </div>
 
@@ -310,7 +310,7 @@ React.isValidElement(object)
 
 > This content is out of date.
 >
-> Read the new React documentation for [`Children`](https://react.dev/reference/react/Children).
+> Read the new React documentation for [`Children`](https://zh-hans.react.dev/reference/react/Children).
 
 </div>
 
@@ -376,7 +376,7 @@ React.Children.toArray(children)
 
 > This content is out of date.
 >
-> Read the new React documentation for [`Fragment`](https://react.dev/reference/react/Fragment).
+> Read the new React documentation for [`Fragment`](https://zh-hans.react.dev/reference/react/Fragment).
 
 </div>
 
@@ -402,7 +402,7 @@ render() {
 
 > This content is out of date.
 >
-> Read the new React documentation for [`createRef`](https://react.dev/reference/react/createRef).
+> Read the new React documentation for [`createRef`](https://zh-hans.react.dev/reference/react/createRef).
 
 </div>
 
@@ -415,7 +415,7 @@ render() {
 
 > This content is out of date.
 >
-> Read the new React documentation for [`forwardRef`](https://react.dev/reference/react/forwardRef).
+> Read the new React documentation for [`forwardRef`](https://zh-hans.react.dev/reference/react/forwardRef).
 
 </div>
 
@@ -440,7 +440,7 @@ render() {
 
 > This content is out of date.
 >
-> Read the new React documentation for [`lazy`](https://react.dev/reference/react/lazy).
+> Read the new React documentation for [`lazy`](https://zh-hans.react.dev/reference/react/lazy).
 
 </div>
 
@@ -461,7 +461,7 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 
 > This content is out of date.
 >
-> Read the new React documentation for [`Suspense`](https://react.dev/reference/react/Suspense).
+> Read the new React documentation for [`Suspense`](https://zh-hans.react.dev/reference/react/Suspense).
 
 </div>
 
@@ -504,7 +504,7 @@ Suspense boundaries depend on their parent boundaries being hydrated before they
 
 > This content is out of date.
 >
-> Read the new React documentation for [`startTransition`](https://react.dev/reference/react/startTransition).
+> Read the new React documentation for [`startTransition`](https://zh-hans.react.dev/reference/react/startTransition).
 
 </div>
 

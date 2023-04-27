@@ -6,10 +6,10 @@ permalink: docs/render-props.html
 
 <div class="scary">
 
-> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 >
 > Render props are used in modern React, but aren't very common.  
-> For many cases, they have been replaced by [custom Hooks](https://react.dev/learn/reusing-logic-with-custom-hooks).
+> For many cases, they have been replaced by [custom Hooks](https://zh-hans.react.dev/learn/reusing-logic-with-custom-hooks).
 
 </div>
 

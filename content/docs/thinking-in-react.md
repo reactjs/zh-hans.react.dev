@@ -10,9 +10,9 @@ prev: composition-vs-inheritance.html
 
 <div class="scary">
 
-> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 > 
-> The updated [Thinking in React](https://react.dev/learn/thinking-in-react) guide teaches modern React and includes live examples.
+> 新的 [React 哲学](https://zh-hans.react.dev/learn/thinking-in-react) 将使用最新的 React 语法，并带有在线的运行示例。
 
 </div>
 

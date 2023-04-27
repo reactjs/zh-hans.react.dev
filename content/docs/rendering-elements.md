@@ -11,12 +11,12 @@ next: components-and-props.html
 <div class="scary">
 
 >
-> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 >
 > These new documentation pages teach how to write JSX and show it on an HTML page:
 >
-> - [Writing Markup with JSX](https://react.dev/learn/writing-markup-with-jsx)
-> - [Add React to an Existing Project](https://react.dev/learn/add-react-to-an-existing-project#step-2-render-react-components-anywhere-on-the-page)
+> - [Writing Markup with JSX](https://zh-hans.react.dev/learn/writing-markup-with-jsx)
+> - [Add React to an Existing Project](https://zh-hans.react.dev/learn/add-react-to-an-existing-project#step-2-render-react-components-anywhere-on-the-page)
 
 </div>
 

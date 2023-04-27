@@ -8,14 +8,14 @@ permalink: docs/react-dom.html
 
 <div class="scary">
 
-> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 >
 > These new documentation pages teach modern React:
 >
-> - [`react-dom`: Components](https://react.dev/reference/react-dom/components)
-> - [`react-dom`: APIs](https://react.dev/reference/react-dom)
-> - [`react-dom`: Client APIs](https://react.dev/reference/react-dom/client)
-> - [`react-dom`: Server APIs](https://react.dev/reference/react-dom/server)
+> - [`react-dom`: Components](https://zh-hans.react.dev/reference/react-dom/components)
+> - [`react-dom`: APIs](https://zh-hans.react.dev/reference/react-dom)
+> - [`react-dom`: Client APIs](https://zh-hans.react.dev/reference/react-dom/client)
+> - [`react-dom`: Server APIs](https://zh-hans.react.dev/reference/react-dom/server)
 
 </div>
 
@@ -67,7 +67,7 @@ React 支持所有的现代浏览器，不过对于旧版本来说，可能需�
 
 > This content is out of date.
 >
-> Read the new React documentation for [`createPortal`](https://react.dev/reference/react-dom/createPortal).
+> Read the new React documentation for [`createPortal`](https://zh-hans.react.dev/reference/react-dom/createPortal).
 
 </div>
 
@@ -83,7 +83,7 @@ createPortal(child, container)
 
 > This content is out of date.
 >
-> Read the new React documentation for [`flushSync`](https://react.dev/reference/react-dom/flushSync).
+> Read the new React documentation for [`flushSync`](https://zh-hans.react.dev/reference/react-dom/flushSync).
 
 </div>
 
@@ -118,7 +118,7 @@ flushSync(() => {
 
 > This content is out of date.
 >
-> Read the new React documentation for [`render`](https://react.dev/reference/react-dom/render).
+> Read the new React documentation for [`render`](https://zh-hans.react.dev/reference/react-dom/render).
 
 </div>
 
@@ -156,7 +156,7 @@ render(element, container[, callback])
 
 > This content is out of date.
 >
-> Read the new React documentation for [`hydrate`](https://react.dev/reference/react-dom/hydrate).
+> Read the new React documentation for [`hydrate`](https://zh-hans.react.dev/reference/react-dom/hydrate).
 
 </div>
 
@@ -186,7 +186,7 @@ React 希望服务端与客户端渲染的内容完全一致。React 可以弥�
 
 > This content is out of date.
 >
-> Read the new React documentation for [`unmountComponentAtNode`](https://react.dev/reference/react-dom/unmountComponentAtNode).
+> Read the new React documentation for [`unmountComponentAtNode`](https://zh-hans.react.dev/reference/react-dom/unmountComponentAtNode).
 
 </div>
 
@@ -208,7 +208,7 @@ unmountComponentAtNode(container)
 
 > This content is out of date.
 >
-> Read the new React documentation for [`findDOMNode`](https://react.dev/reference/react-dom/findDOMNode).
+> Read the new React documentation for [`findDOMNode`](https://zh-hans.react.dev/reference/react-dom/findDOMNode).
 
 </div>
 

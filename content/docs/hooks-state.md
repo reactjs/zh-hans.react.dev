@@ -8,12 +8,12 @@ prev: hooks-overview.html
 
 <div class="scary">
 
-> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 > 
-> These new documentation pages teach modern React and include live examples:
+> 这些文档使用新的 React 语法，并带有在线的运行示例：
 >
-> - [State: A Component's Memory](https://react.dev/learn/state-a-components-memory)
-> - [`useState`](https://react.dev/reference/react/useState)
+> - [State: A Component's Memory](https://zh-hans.react.dev/learn/state-a-components-memory)
+> - [`useState`](https://zh-hans.react.dev/reference/react/useState)
 
 </div>
 

@@ -14,9 +14,9 @@ redirect_from:
 
 <div class="scary">
 
-> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 > 
-> The updated [Tutorial](https://react.dev/learn/tutorial-tic-tac-toe) teaches modern React and includes live examples.
+> 新的 [入门教程](https://zh-hans.react.dev/learn/tutorial-tic-tac-toe) 将带你领略新的 React 语法，还有在线示例哦。
 
 </div>
 

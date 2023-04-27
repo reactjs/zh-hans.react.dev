@@ -37,7 +37,7 @@ author: [acdlite,gaearon,kassens,josephsavona,joshcstory,laurentan,lunaruan,meng
 
 我们在 React Conf 2021 上[预告](https://www.youtube.com/watch?v=lGEMwh32soc) 了 React Forget 项目。它是一个可以自动生成等效于 `useMemo` 和 `useCallback` 代码的编译器，旨在保持 React 现有编程模型的前提下最小化重渲染的开销。
 
-最近，我们完成了对编译器的重写，使其更加可靠和强大。新的编译器架构使我们能够分析与记忆化比如 [局部可变数据（local mutations）](https://react.dev/learn/keeping-components-pure#local-mutation-your-components-little-secret) 这样的复杂代码，并打开了许多新的编译期优化的可能，而不仅仅局限于 Hooks 能做的优化。
+最近，我们完成了对编译器的重写，使其更加可靠和强大。新的编译器架构使我们能够分析与记忆化比如 [局部可变数据（local mutations）](https://zh-hans.react.dev/learn/keeping-components-pure#local-mutation-your-components-little-secret) 这样的复杂代码，并打开了许多新的编译期优化的可能，而不仅仅局限于 Hooks 能做的优化。
 
 我们还在开发一个用于探索这个编译器的 Playground。虽然 Playground 的首要目的是使编译器开发本身更加容易，但因为它能够揭示编译器背后的一些原理，并且可以实时渲染编译器优化后的效果，所以我们觉得它也会方便大家上手体验直观的感受编译优化的效果。Playground 将会随着编译器一同发布。
 
@@ -68,8 +68,8 @@ Offscreen 只是一个底层能力，他的目的是解锁更高层次的功能�
 
 ## React 新文档 {#new-react-docs}
 
-去年，我们宣布了新的 React 文档网站的 [beta 版本](https://react.dev/) ，新的学习材料从 Hooks 开始，并有新的图表、插图以及许多交互式代码示例和习题挑战。之前我们因为要专注于 React 18 的开发而暂停了这项工作，但现在既然 React 18 已经发布，我们就开始积极努力地完成与发布新文档了。
+去年，我们宣布了新的 React 文档网站的 [beta 版本](https://zh-hans.react.dev/) ，新的学习材料从 Hooks 开始，并有新的图表、插图以及许多交互式代码示例和习题挑战。之前我们因为要专注于 React 18 的开发而暂停了这项工作，但现在既然 React 18 已经发布，我们就开始积极努力地完成与发布新文档了。
 
-我们目前正在写一个关于副作用（effects）的详细章节，因为我们听说这对于新的和有经验的 React 用户来说都是相对具有挑战性的主题之一。[与 Effects 同步](https://react.dev/learn/synchronizing-with-effects) 是该系列中的第一篇文章，接下来几周我们还会发布更多内容。当我们第一次开始编写有关 effects 的详细部分时，我们已经意识到可以通过向 React 添加新的原始 API 来简化许多常见的 effects 模式。[useEvent RFC](https://github.com/reactjs/rfcs/pull/220) 中分享了一些初步想法。它目前处于早期研究阶段，我们仍在迭代这个想法。我们感谢社区迄今为止对 RFC 的评论，以及对正在进行的文档重写的 [反馈](https://github.com/reactjs/legacy.reactjs.org/issues/3308) 和贡献。我们要特别感谢 [Harish Kumar](https://github.com/harish-sethuraman) 提交并审查了对新网站实施的诸多改进。
+我们目前正在写一个关于副作用（effects）的详细章节，因为我们听说这对于新的和有经验的 React 用户来说都是相对具有挑战性的主题之一。[与 Effects 同步](https://zh-hans.react.dev/learn/synchronizing-with-effects) 是该系列中的第一篇文章，接下来几周我们还会发布更多内容。当我们第一次开始编写有关 effects 的详细部分时，我们已经意识到可以通过向 React 添加新的原始 API 来简化许多常见的 effects 模式。[useEvent RFC](https://github.com/reactjs/rfcs/pull/220) 中分享了一些初步想法。它目前处于早期研究阶段，我们仍在迭代这个想法。我们感谢社区迄今为止对 RFC 的评论，以及对正在进行的文档重写的 [反馈](https://github.com/reactjs/legacy.reactjs.org/issues/3308) 和贡献。我们要特别感谢 [Harish Kumar](https://github.com/harish-sethuraman) 提交并审查了对新网站实施的诸多改进。
 
 *感谢 [Sophie Alpert](https://twitter.com/sophiebits) 对本篇文章的校对!*

@@ -13,14 +13,14 @@ redirect_from:
 
 <div class="scary">
 
-> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 > 
-> These new documentation pages teach modern React and include live examples:
+> 这些文档使用新的 React 语法，并带有在线的运行示例：
 >
-> - [Referencing Values with Refs](https://react.dev/learn/referencing-values-with-refs)
-> - [Manipulating the DOM with Refs](https://react.dev/learn/manipulating-the-dom-with-refs)
-> - [`useRef`](https://react.dev/reference/react/useRef)
-> - [`forwardRef`](https://react.dev/reference/react/forwardRef)
+> - [Referencing Values with Refs](https://zh-hans.react.dev/learn/referencing-values-with-refs)
+> - [Manipulating the DOM with Refs](https://zh-hans.react.dev/learn/manipulating-the-dom-with-refs)
+> - [`useRef`](https://zh-hans.react.dev/reference/react/useRef)
+> - [`forwardRef`](https://zh-hans.react.dev/reference/react/forwardRef)
 
 </div>
 

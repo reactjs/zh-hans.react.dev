@@ -8,9 +8,9 @@ permalink: community/meetups.html
 
 <div class="scary">
 
-> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 >
-> See the [Meetups](https://react.dev/community/meetups) page on the new site.
+> See the [Meetups](https://zh-hans.react.dev/community/meetups) page on the new site.
 >
 </div>
 
