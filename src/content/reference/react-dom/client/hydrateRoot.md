@@ -62,13 +62,13 @@ React 将会连接到内部有 `domNode` 的 HTML 上，然后接管其中的 `d
 
 ### `root.render(reactNode)` {/*root-render*/}
 
-使用  `root.render` 更新一个 hydrated 根组件中的 React 组件来渲染浏览器端 DOM 元素。
+使用  `root.render` 更新一个 hydrate 根组件中的 React 组件来渲染浏览器端 DOM 元素。
 
 ```js
 root.render(<App />);
 ```
 
-React 将会在 hydrated `root` 中更新 `<App />`。
+React 将会在 hydrate `root` 中更新 `<App />`。
 
 [请看下面更多的例子。](#usage)
 
@@ -326,7 +326,7 @@ export default function App() {
 
 ---
 
-### 更新 hydrated 根组件 {/*updating-a-hydrated-root-component*/}
+### 更新 hydrate 根组件 {/*updating-a-hydrated-root-component*/}
 
 在根组件 hydrating 完成之后，你可以调用 [`root.render`](#root-render) 来更新根 React 组件。**与  [`createRoot`](/reference/react-dom/client/createRoot) 不同的是，通常你不需要这样做，因为初始内容已经渲染为HTML。**
 
@@ -372,4 +372,4 @@ export default function App({counter}) {
 
 </Sandpack>
 
-在 hydrated 过的根组件上调用 `root.render` 是不常见的。通常情况下，你可以在组件的内部[更新状态](/reference/react/useState)。
+在 hydrate 过的根组件上调用 `root.render` 是不常见的。通常情况下，你可以在组件的内部[更新状态](/reference/react/useState)。
