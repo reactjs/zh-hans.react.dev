@@ -289,9 +289,9 @@ function useAuth() {
 
 </DeepDive>
 
-### Custom Hooks let you share stateful logic, not state itself {/*custom-hooks-let-you-share-stateful-logic-not-state-itself*/}
+### 自定义Hook共享的是状态逻辑，而不是state本身 {/*custom-hooks-let-you-share-stateful-logic-not-state-itself*/}
 
-In the earlier example, when you turned the network on and off, both components updated together. However, it's wrong to think that a single `isOnline` state variable is shared between them. Look at this code:
+之前的例子里，当你开启或关闭网络时，两个组件一起更新了。但是，两个组件共享一个`isOnline`state变量的想法是错误的。看这段代码：
 
 ```js {2,7}
 function StatusBar() {
@@ -305,7 +305,7 @@ function SaveButton() {
 }
 ```
 
-It works the same way as before you extracted the duplication:
+它的工作方式和你提取重复部分之前一样:
 
 ```js {2-5,10-13}
 function StatusBar() {
@@ -325,9 +325,9 @@ function SaveButton() {
 }
 ```
 
-These are two completely independent state variables and Effects! They happened to have the same value at the same time because you synchronized them with the same external value (whether the network is on).
+这是两个完全独立的state变量和Effect! 他们只是碰巧同时有同样的值，因为你将两个组件与相同的外部值同步（无论网络是否开启）。
 
-To better illustrate this, we'll need a different example. Consider this `Form` component:
+为了更好的说明这一点， 我们需要一个不同的例子。看下面的 `Form` 组件:
 
 <Sandpack>
 
@@ -369,13 +369,13 @@ input { margin-left: 10px; }
 
 </Sandpack>
 
-There's some repetitive logic for each form field:
+每个表单域都有一些重复的逻辑：
 
-1. There's a piece of state (`firstName` and `lastName`).
-1. There's a change handler (`handleFirstNameChange` and `handleLastNameChange`).
-1. There's a piece of JSX that specifies the `value` and `onChange` attributes for that input.
+1. 都有state (`firstName` 和 `lastName`)。
+1. 都有change handler (`handleFirstNameChange` 和 `handleLastNameChange`)。
+1. 都有为输入框指定`value` 和 `onChange`属性的JSX片段。
 
-You can extract the repetitive logic into this `useFormInput` custom Hook:
+你可以把重复的逻辑提取到自定义Hook`useFormInput`:
 
 <Sandpack>
 
@@ -428,9 +428,9 @@ input { margin-left: 10px; }
 
 </Sandpack>
 
-Notice that it only declares *one* state variable called `value`.
+注意它只声明了**一个**叫做 `value` 的state变量。
 
-However, the `Form` component calls `useFormInput` *two times:*
+但是`Form`组件调用了**两次**`useFormInput`：
 
 ```js
 function Form() {
@@ -439,17 +439,17 @@ function Form() {
   // ...
 ```
 
-This is why it works like declaring two separate state variables!
+这就是为什么它工作的时候像声明了两个独立的state变量！
 
-**Custom Hooks let you share *stateful logic* but not *state itself.* Each call to a Hook is completely independent from every other call to the same Hook.** This is why the two sandboxes above are completely equivalent. If you'd like, scroll back up and compare them. The behavior before and after extracting a custom Hook is identical.
+**自定义Hook只是共享状态逻辑而不是state本身。每个Hook的调用都完全独立于对同一个Hook的其他调用。** 这就是为什么上面两个sandbox完全相同的原因。如果你愿意，可以滚动回去并比较他们。提取自定义Hook之前和之后的行为是一致的。
 
-When you need to share the state itself between multiple components, [lift it up and pass it down](/learn/sharing-state-between-components) instead.
+而当你需要在多个组件之间共享state本身时，需要[将变量提升并传递下去](/learn/sharing-state-between-components)。
 
-## Passing reactive values between Hooks {/*passing-reactive-values-between-hooks*/}
+## 在Hook之间传递响应值 {/*passing-reactive-values-between-hooks*/}
 
-The code inside your custom Hooks will re-run during every re-render of your component. This is why, like components, custom Hooks [need to be pure.](/learn/keeping-components-pure) Think of custom Hooks' code as part of your component's body!
+组件每次重新渲染，自定义Hook中的代码也会重新运行。这就是为什么组件和自定义Hook都[需要纯粹](/learn/keeping-components-pure)的原因。我们应该把自定义Hook的代码作为组件主体的一部分。
 
-Because custom Hooks re-render together with your component, they always receive the latest props and state. To see what this means, consider this chat room example. Change the server URL or the chat room:
+自定义组件总会接收到最新的props和state，因为它会和你的组件一起重新渲染。想知道这意味着什么，看一下这个聊天室的例子。变更Server URL或者聊天室ID：
 
 <Sandpack>
 
@@ -599,9 +599,9 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-When you change `serverUrl` or `roomId`, the Effect ["reacts" to your changes](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) and re-synchronizes. You can tell by the console messages that the chat re-connects every time that you change your Effect's dependencies.
+当你修改`serverUrl`或者`roomId`时，Effect会对[你的修改做出“反应”](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values)和重新同步。你可以通过修改Effect依赖引起的聊天室重连的每次console信息来区分。
 
-Now move the Effect's code into a custom Hook:
+现在把Effect代码移动到自定义Hook中:
 
 ```js {2-13}
 export function useChatRoom({ serverUrl, roomId }) {
@@ -620,7 +620,7 @@ export function useChatRoom({ serverUrl, roomId }) {
 }
 ```
 
-This lets your `ChatRoom` component call your custom Hook without worrying about how it works inside:
+这让你的`ChatRoom`组件调用自定义Hook,不需要担心内部是如何工作：
 
 ```js {4-7}
 export default function ChatRoom({ roomId }) {
@@ -643,9 +643,9 @@ export default function ChatRoom({ roomId }) {
 }
 ```
 
-This looks much simpler! (But it does the same thing.)
+这看上去简洁多了! (但是它做的是同一件事情。)
 
-Notice that the logic *still responds* to prop and state changes. Try editing the server URL or the selected room:
+注意逻辑**仍然响应** prop和state修改。尝试编辑server URL或者选中的房间：
 
 <Sandpack>
 
@@ -724,7 +724,7 @@ export function useChatRoom({ serverUrl, roomId }) {
 
 ```js chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 连接到服务器的真实实现
   if (typeof serverUrl !== 'string') {
     throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
   }
@@ -807,7 +807,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Notice how you're taking the return value of one Hook:
+注意你是如何获取到Hook的返回值：
 
 ```js {2}
 export default function ChatRoom({ roomId }) {
@@ -820,7 +820,7 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-and pass it as an input to another Hook:
+并且把它作为输入传递给另外一个Hook：
 
 ```js {6}
 export default function ChatRoom({ roomId }) {
@@ -833,17 +833,17 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-Every time your `ChatRoom` component re-renders, it passes the latest `roomId` and `serverUrl` to your Hook. This is why your Effect re-connects to the chat whenever their values are different after a re-render. (If you ever worked with audio or video processing software, chaining Hooks like this might remind you of chaining visual or audio effects. It's as if the output of `useState` "feeds into" the input of the `useChatRoom`.)
+每次`ChatRoom`组件重新渲染，它都会传最新的`roomId`和`serverUrl`到你的Hook中。这就是为什么每当他们的值在重新渲染后不同的时候你的Effect会重连聊天室。（如果你曾经使用过音视频处理软件，像这样的链式Hook也许会让你想起链式可视化或音频effect。就好像`useState` 的输出作为 `useChatRoom`的输入）。
 
-### Passing event handlers to custom Hooks {/*passing-event-handlers-to-custom-hooks*/}
+### 把事件处理器传到自定义Hook中 {/*passing-event-handlers-to-custom-hooks*/}
 
 <Wip>
 
-This section describes an **experimental API that has not yet been released** in a stable version of React.
+这个章节描述React稳定版中**还没有发布的实验性API**。
 
 </Wip>
 
-As you start using `useChatRoom` in more components, you might want to let components customize its behavior. For example, currently, the logic for what to do when a message arrives is hardcoded inside the Hook:
+当你在更多组件中使用`useChatRoom`组件时，你也许想要让组件自定义它的行为。例如，现在Hook中收到信息时做什么的逻辑是硬编码：
 
 ```js {9-11}
 export function useChatRoom({ serverUrl, roomId }) {
@@ -862,7 +862,7 @@ export function useChatRoom({ serverUrl, roomId }) {
 }
 ```
 
-Let's say you want to move this logic back to your component:
+假设你想要把这个逻辑移回到组件中：
 
 ```js {7-9}
 export default function ChatRoom({ roomId }) {
@@ -878,7 +878,7 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-To make this work, change your custom Hook to take `onReceiveMessage` as one of its named options:
+为了完成这个工作，需要修改自定义Hook，把`onReceiveMessage`作为命名选项之一：
 
 ```js {1,10,13}
 export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
@@ -893,13 +893,13 @@ export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
       onReceiveMessage(msg);
     });
     return () => connection.disconnect();
-  }, [roomId, serverUrl, onReceiveMessage]); // ✅ All dependencies declared
+  }, [roomId, serverUrl, onReceiveMessage]); // ✅ 声明了所有的依赖
 }
 ```
 
-This will work, but there's one more improvement you can do when your custom Hook accepts event handlers.
+这将会生效，但是当自定义Hook接受事件处理器的时候，你还可以做另一个改进。
 
-Adding a dependency on `onReceiveMessage` is not ideal because it will cause the chat to re-connect every time the component re-renders. [Wrap this event handler into an Effect Event to remove it from the dependencies:](/learn/removing-effect-dependencies#wrapping-an-event-handler-from-the-props)
+增加一个`onReceiveMessage`依赖并不理想，每次只要组件重新渲染，聊天就会重新连接。[将这个事件处理器包装到Effect Event从而将它从依赖中移除：](/learn/removing-effect-dependencies#wrapping-an-event-handler-from-the-props)
 
 ```js {1,4,5,15,18}
 import { useEffect, useEffectEvent } from 'react';
@@ -919,7 +919,7 @@ export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
       onMessage(msg);
     });
     return () => connection.disconnect();
-  }, [roomId, serverUrl]); // ✅ All dependencies declared
+  }, [roomId, serverUrl]); // ✅ 声明所有依赖
 }
 ```
 
