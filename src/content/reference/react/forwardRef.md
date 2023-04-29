@@ -467,7 +467,7 @@ input {
 
 <Pitfall>
 
-**不要滥用 refs。** 只有对于作为 props 无法表达的*命令式*行为才应该使用 refs：例如滚动到节点、将焦点放在节点上、触发动画、选择文本等等。
+**不要滥用 refs。** 只有对于作为 props 无法表达的**命令式**行为才应该使用 refs：例如滚动到节点、将焦点放在节点上、触发动画、选择文本等等。
 
 
 **如果你可以把某些东西表达为 props，就不应该使用 refs。** 例如，不要从一个 Modal 组件中暴露一个命令式的句柄，如 `{ open, close }`，更好的做法是像这样使用 isOpen 作为一个 prop `<Modal isOpen={isOpen} />`. [Effects](/learn/synchronizing-with-effects) 可以帮助你通过 props 暴露命令式行为。
