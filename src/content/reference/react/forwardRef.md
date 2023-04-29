@@ -38,11 +38,11 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 #### 返回值 {/*returns*/}
 
-`forwardRef` 返回一个可以在 JSX 中渲染的 React 组件。与作为纯函数定义的React组件不同，`forwardRef` 返回的组件还能够接收 `ref` 属性。
+`forwardRef` 返回一个可以在 JSX 中渲染的 React 组件。与作为纯函数定义的 React 组件不同，`forwardRef` 返回的组件还能够接收 `ref` 属性。
 
 #### 警告 {/*caveats*/}
 
-* 在严格模式中，为了 [帮助你找到意外的副作用](#my-initializer-or-updater-function-runs-twice) React 将会 **调用你的渲染函数两次**，这仅限于开发环境，并不影响生产环境。如果你的渲染函数是纯函数（也应该是），这应该不会影响你的组件逻辑。其中一个调用的结果将被忽略。
+* 在严格模式中，为了 [帮助你找到意外的副作用](#my-initializer-or-updater-function-runs-twice) React 将会**调用你的渲染函数两次**，这仅限于开发环境，并不影响生产环境。如果你的渲染函数是纯函数（也应该是），这应该不会影响你的组件逻辑。其中一个调用的结果将被忽略。
 
 
 ---
@@ -369,7 +369,7 @@ input, button {
 
 ### 暴露一个命令式句柄而不是 DOM 节点 {/*exposing-an-imperative-handle-instead-of-a-dom-node*/}
 
-可以使用一个被称为*命令式句柄（imperative handle）*的自定义对象来暴露一个更加受限制的方法集，而不是暴露整个 DOM 节点。为了实现这个目的，你需要定义一个单独的 ref 来存储 DOM 节点：
+可以使用一个被称为**命令式句柄（imperative handle）**的自定义对象来暴露一个更加受限制的方法集，而不是暴露整个 DOM 节点。为了实现这个目的，你需要定义一个单独的 ref 来存储 DOM 节点：
 
 ```js {2,6}
 const MyInput = forwardRef(function MyInput(props, ref) {
