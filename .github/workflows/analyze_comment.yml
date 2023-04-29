@@ -60,6 +60,7 @@ jobs:
           pr_number=$(cat pr_number/pr_number)
           echo "pr-number=$pr_number" >> $GITHUB_OUTPUT
 
+<<<<<<< HEAD
       - name: Find Comment
         uses: peter-evans/find-comment@v2
         if: success() && github.event.workflow_run.conclusion == 'success' && steps.get-type.outputs.event-type == 'pull_request'
@@ -83,3 +84,11 @@ jobs:
           body: ${{ steps.get-comment-body.outputs.body }}
           comment-id: ${{ steps.fc.outputs.comment-id }}
           edit-mode: replace
+=======
+      - name: Comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: next-bundle-analysis
+          number: ${{ steps.get-comment-body.outputs.pr-number }}
+          message: ${{ steps.get-comment-body.outputs.body }}
+>>>>>>> 8ed23b1a06ed0d836151622c1455c74bf2d0ce25
