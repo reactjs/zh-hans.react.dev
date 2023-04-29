@@ -30,7 +30,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 });
 ```
 
-[请看下面的更多例子](#usage)
+[请看下面的更多例子](#usage)。
 
 #### 参数 {/*parameters*/}
 
@@ -110,7 +110,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 });
 ```
 
-这样，父级的 `Form` 组件就能够访问 `MyInput` 暴露的 <CodeStep step={2}>`<input>` DOM 节点：
+这样，父级的 `Form` 组件就能够访问 `MyInput` 暴露的 <CodeStep step={2}>`<input>` DOM 节点</CodeStep>：
 
 ```js [[1, 2, "ref"], [1, 10, "ref", 41], [2, 5, "ref.current"]]
 function Form() {
