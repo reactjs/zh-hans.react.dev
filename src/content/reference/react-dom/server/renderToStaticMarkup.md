@@ -4,7 +4,7 @@ title: renderToStaticMarkup
 
 <Intro>
 
-`renderToStaticMarkup` renders a non-interactive React tree to an HTML string.
+`renderToStaticMarkup` 会将非交互的 React 组件树渲染成 HTML 字符串。
 
 ```js
 const html = renderToStaticMarkup(reactNode)
@@ -16,11 +16,11 @@ const html = renderToStaticMarkup(reactNode)
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `renderToStaticMarkup(reactNode)` {/*rendertostaticmarkup*/}
 
-On the server, call `renderToStaticMarkup` to render your app to HTML.
+在服务器上，调用 `renderToStaticMarkup` 将你的应用程序渲染成 HTML。
 
 ```js
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -28,50 +28,50 @@ import { renderToStaticMarkup } from 'react-dom/server';
 const html = renderToStaticMarkup(<Page />);
 ```
 
-It will produce non-interactive HTML output of your React components.
+它将会生成 React 组件的非交互式 HTML 输出。
 
-[See more examples below.](#usage)
+[请看下方更多示例。](#usage)
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `reactNode`: A React node you want to render to HTML. For example, a JSX node like `<Page />`.
+* `reactNode`：你想渲染成 HTML 的 React 节点。例如，像 `<Page />` 这样的 JSX 节点。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-An HTML string.
+一个 HTML 字符串。
 
-#### Caveats {/*caveats*/}
+#### 注意事项 {/*caveats*/}
 
-* `renderToStaticMarkup` output cannot be hydrated.
+* `renderToStaticMarkup` 的输出无法进行二次渲染。
 
-* `renderToStaticMarkup` has limited Suspense support. If a component suspends, `renderToStaticMarkup` immediately sends its fallback as HTML.
+* `renderToStaticMarkup` 对 Suspense 的支持有限。如果一个组件触发了 Suspense，`renderToStaticMarkup` 立即将它的 fallback 作为 HTML 输出。
 
-* `renderToStaticMarkup` works in the browser, but using it in the client code is not recommended. If you need to render a component to HTML in the browser, [get the HTML by rendering it into a DOM node.](/reference/react-dom/server/renderToString#removing-rendertostring-from-the-client-code)
+* `renderToStaticMarkup` 在浏览器中可以使用，但不建议在客户端代码中使用它。如果你需要在浏览器中将组件渲染成 HTML，[请把它渲染到 DOM 节点中以获取 HTML ](/reference/react-dom/server/renderToString#removing-rendertostring-from-the-client-code)
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Rendering a non-interactive React tree as HTML to a string {/*rendering-a-non-interactive-react-tree-as-html-to-a-string*/}
+### 将一个非交互式的 React 树作为 HTML 渲染成一个字符串 {/*rendering-a-non-interactive-react-tree-as-html-to-a-string*/}
 
-Call `renderToStaticMarkup` to render your app to an HTML string which you can send with your server response:
+调用 `renderToStaticMarkup` 将你的应用程序渲染为 HTML 字符串，然后将其与服务器响应一起发送：
 
 ```js {5-6}
 import { renderToStaticMarkup } from 'react-dom/server';
 
-// The route handler syntax depends on your backend framework
+// 路由处理程序语法取决于你的后端框架
 app.use('/', (request, response) => {
   const html = renderToStaticMarkup(<Page />);
   response.send(html);
 });
 ```
 
-This will produce the initial non-interactive HTML output of your React components.
+这将生成 React 组件的非交互式 HTML 输出。
 
 <Pitfall>
 
-This method renders **non-interactive HTML that cannot be hydrated.**  This is useful if you want to use React as a simple static page generator, or if you're rendering completely static content like emails.
+此方法渲染的是 **非交互式的 HTML，无法进行二次渲染** 。如果你需要使用 React 作为简单静态页面生成器，或者需要呈现纯静态内容（例如邮件），则这种方法非常适用。
 
-Interactive apps should use [`renderToString`](/reference/react-dom/server/renderToString) on the server and [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) on the client.
+对于交互式的应用程序，建议在服务器端使用 [`renderToString`](/reference/react-dom/server/renderToString) 方法，在客户端上使用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 方法。
 
 </Pitfall>
