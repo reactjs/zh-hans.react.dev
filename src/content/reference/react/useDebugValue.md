@@ -4,7 +4,7 @@ title: useDebugValue
 
 <Intro>
 
-`useDebugValue` 是一个 React Hook，可用让你在 [React 开发工具](/learn/react-developer-tools) 中为自定义 Hook 添加标签。
+`useDebugValue` 是一个 React Hook，可以让你在 [React 开发工具](/learn/react-developer-tools) 中为自定义 Hook 添加标签。
 
 ```js
 useDebugValue(value, format?)
