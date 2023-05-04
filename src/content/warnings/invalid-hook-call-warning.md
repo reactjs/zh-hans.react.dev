@@ -1,5 +1,5 @@
 ---
-title: Rules of Hooks
+title: Hooks 的规则
 ---
 
 你进入到这个页面，大概是因为遇到了下面这个错误提示：
