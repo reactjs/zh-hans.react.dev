@@ -696,7 +696,7 @@ export const initialTravelPlan = {
         childPlaces: []
       }, {
         id: 21,
-        title: 'Hong Kong',
+        title: 'Indonesia',
         childPlaces: []
       }, {
         id: 22,
@@ -981,7 +981,7 @@ export const initialTravelPlan = {
   },
   21: {
     id: 21,
-    title: 'Hong Kong',
+    title: 'Indonesia',
     childIds: []
   },
   22: {
@@ -1322,7 +1322,7 @@ export const initialTravelPlan = {
   },
   21: {
     id: 21,
-    title: 'Hong Kong',
+    title: 'Indonesia',
     childIds: []
   },
   22: {
@@ -1666,7 +1666,7 @@ export const initialTravelPlan = {
   },
   21: {
     id: 21,
-    title: 'Hong Kong',
+    title: 'Indonesia',
     childIds: []
   },
   22: {
