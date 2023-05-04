@@ -328,11 +328,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 #### 实现红绿灯组件 {/*implement-a-traffic-light*/}
 
-<<<<<<< HEAD
 以下是一个人行道红绿灯组件，在按下按钮时会切换状态：
-=======
-Here is a crosswalk light component that toggles when the button is pressed:
->>>>>>> 1c55fe8a44616f5ae6eac23915eb5865576a0245
 
 <Sandpack>
 
