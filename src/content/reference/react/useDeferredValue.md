@@ -4,7 +4,7 @@ title: useDeferredValue
 
 <Intro>
 
-`useDeferredValue` is a React Hook that lets you defer updating a part of the UI.
+`useDeferredValue` 是一个 React Hook，可以让你延迟更新 UI 的某些部分。
 
 ```js
 const deferredValue = useDeferredValue(value)
@@ -16,11 +16,11 @@ const deferredValue = useDeferredValue(value)
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `useDeferredValue(value)` {/*usedeferredvalue*/}
 
-Call `useDeferredValue` at the top level of your component to get a deferred version of that value.
+在组件的顶层调用 `useDeferredValue` 来获取该值的延迟版本。
 
 ```js
 import { useState, useDeferredValue } from 'react';
@@ -32,37 +32,37 @@ function SearchPage() {
 }
 ```
 
-[See more examples below.](#usage)
+[请看下方更多示例](#usage)。
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `value`: The value you want to defer. It can have any type.
+* `value`: 你想延迟的值，可以是任何类型。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-During the initial render, the returned deferred value will be the same as the value you provided. During updates, React will first attempt a re-render with the old value (so it will return the old value), and then try another re-render in background with the new value (so it will return the updated value). 
+在组件的初始渲染期间，返回的延迟值将与您提供的值相同。但是在组件更新时，React 将会先尝试使用旧值进行重新渲染（因此它将返回旧值），然后再在后台使用新值进行另一个重新渲染（这时它将返回更新后的值）。
 
-#### Caveats {/*caveats*/}
+#### 注意事项 {/*caveats*/}
 
-- The values you pass to `useDeferredValue` should either be primitive values (like strings and numbers) or objects created outside of rendering. If you create a new object during rendering and immediately pass it to `useDeferredValue`, it will be different on every render, causing unnecessary background re-renders.
+- 你应该向 `useDeferredValue` 传递原始值（如字符串和数字）或在渲染之外创建的对象。如果你在渲染期间创建了一个新对象，并立即将其传递给 `useDeferredValue`，那么每次渲染时它都会不同，这将导致后台不必要的重新渲染。
 
-- When `useDeferredValue` receives a different value (compared with [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)), in addition to the current render (when it still uses the previous value), it schedules a re-render in the background with the new value. The background re-render is interruptible: if there's another update to the `value`, React will restart the background re-render from scratch. For example, if the user is typing into an input faster than a chart receiving its deferred value can re-render, the chart will only re-render after the user stops typing.
+- 当 `useDeferredValue` 接收到与之前不同的值（使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 进行比较）时，除了当前渲染（此时它仍然使用旧值），它还会安排一个后台重新渲染。这个后台重新渲染是可以被中断的，如果 `value` 有新的更新，React 会从头开始重新启动后台渲染。举个例子，如果用户在输入框中的输入速度比接收延迟值的图表重新渲染的速度快，那么图表只会在用户停止输入后重新渲染。
 
-- `useDeferredValue` is integrated with [`<Suspense>`.](/reference/react/Suspense) If the background update caused by a new value suspends the UI, the user will not see the fallback. They will see the old deferred value until the data loads.
+- `useDeferredValue` 与 [`<Suspense>`](/reference/react/Suspense) 集成。如果由于新值引起的后台更新导致 UI 暂停，用户将不会看到 fallback 效果。他们将看到旧的延迟值，直到数据加载完成。
 
-- `useDeferredValue` does not by itself prevent extra network requests.
+- `useDeferredValue` 本身并不能阻止额外的网络请求。
 
-- There is no fixed delay caused by `useDeferredValue` itself. As soon as React finishes the original re-render, React will immediately start working on the background re-render with the new deferred value. Any updates caused by events (like typing) will interrupt the background re-render and get prioritized over it.
+- `useDeferredValue` 本身不会引起任何固定的延迟。一旦 React 完成原始的重新渲染，它会立即开始使用新的延迟值处理后台重新渲染。由事件（例如输入）引起的任何更新都会中断后台重新渲染，并被优先处理。
 
-- The background re-render caused by `useDeferredValue` does not fire Effects until it's committed to the screen. If the background re-render suspends, its Effects will run after the data loads and the UI updates.
+- 由 `useDeferredValue` 引起的后台重新渲染在提交到屏幕之前不会触发 Effects。如果后台重新渲染被暂停，它的 Effects 将在数据加载后和 UI 更新后运行。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Showing stale content while fresh content is loading {/*showing-stale-content-while-fresh-content-is-loading*/}
+### 在新内容加载期间显示旧内容。 {/*showing-stale-content-while-fresh-content-is-loading*/}
 
-Call `useDeferredValue` at the top level of your component to defer updating some part of your UI.
+在组件的顶层调用 `useDeferredValue` 来延迟更新 UI 的某些部分。
 
 ```js [[1, 5, "query"], [2, 5, "deferredQuery"]]
 import { useState, useDeferredValue } from 'react';
@@ -74,25 +74,25 @@ function SearchPage() {
 }
 ```
 
-During the initial render, the <CodeStep step={2}>deferred value</CodeStep> will be the same as the <CodeStep step={1}>value</CodeStep> you provided.
+在初始渲染期间，返回的 <CodeStep step={2}>延迟值</CodeStep> 与你提供的 <CodeStep step={1}>值</CodeStep> 相同。
 
-During updates, the <CodeStep step={2}>deferred value</CodeStep> will "lag behind" the latest <CodeStep step={1}>value</CodeStep>. In particular, React will first re-render *without* updating the deferred value, and then try to re-render with the newly received value in background.
+在更新期间，<CodeStep step={2}>延迟值</CodeStep> 会“滞后于”最新的 <CodeStep step={1}>值</CodeStep>。具体地说，React 首先会在不更新延迟值的情况下进行重新渲染，然后在后台尝试使用新接收到的值进行重新渲染。
 
-**Let's walk through an example to see when this is useful.**
+**让我们通过一个例子来看看什么时候该使用它。**
 
 <Note>
 
-This example assumes you use one of Suspense-enabled data sources:
+这个例子假设你使用了其中一个支持 `Suspense` 的数据源：
 
-- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/advanced-features/react-18)
-- Lazy-loading component code with [`lazy`](/reference/react/lazy)
+- 使用支持 Suspense 的框架进行数据获取，例如 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/advanced-features/react-18)
+- 使用 [`lazy`](/reference/react/lazy) 懒加载组件代码
 
-[Learn more about Suspense and its limitations.](/reference/react/Suspense)
+[了解更多有关 Suspense 及其限制的信息](/reference/react/Suspense)。
 
 </Note>
 
 
-In this example, the `SearchResults` component [suspends](/reference/react/Suspense#displaying-a-fallback-while-content-is-loading) while fetching the search results. Try typing `"a"`, waiting for the results, and then editing it to `"ab"`. The results for `"a"` get replaced by the loading fallback.
+这个例子中，在获取搜索结果时，`SearchResults` 组件会 [suspend](/reference/react/Suspense#displaying-a-fallback-while-content-is-loading)。尝试输入 `"a"`，等待结果出现后，将其编辑为 `"ab"`。此时 `"a"` 的结果会被加载中的 fallback 替代。
 
 <Sandpack>
 
@@ -134,11 +134,11 @@ export default function App() {
 ```js SearchResults.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：此组件使用了一种实验性API
+// 该API尚未在稳定版本的React中发布。
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 如果想找实际的例子，可以尝试一个
+// 已经集成了 Suspense 的框架，比如 Relay 或 Next.js。
 
 export default function SearchResults({ query }) {
   if (query === '') {
@@ -159,8 +159,8 @@ export default function SearchResults({ query }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决演示中的一个 bug 的临时实现。
+// TODO: 待 bug 修复后替换为真正的实现。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -186,10 +186,9 @@ function use(promise) {
 ```
 
 ```js data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
-
+// 注意：使用Suspense进行数据获取的方式取决于
+// 与其配合使用的框架。
+// 缓存逻辑通常会在框架内部处理。
 let cache = new Map();
 
 export function fetchData(url) {
@@ -208,7 +207,7 @@ async function getData(url) {
 }
 
 async function getSearchResults(query) {
-  // Add a fake delay to make waiting noticeable.
+  // 添加一个假延迟来让等待更加明显。
   await new Promise(resolve => {
     setTimeout(resolve, 500);
   });
@@ -285,6 +284,7 @@ input { margin: 10px; }
 </Sandpack>
 
 A common alternative UI pattern is to *defer* updating the list of results and to keep showing the previous results until the new results are ready. Call `useDeferredValue` to pass a deferred version of the query down: 
+一个常见的备选UI模式是**延迟**更新结果列表，并继续显示之前的结果，直到新的结果准备好。调用 `useDeferredValue` 并将延迟版本的查询参数向下传递：
 
 ```js {3,11}
 export default function App() {
@@ -349,11 +349,11 @@ export default function App() {
 ```js SearchResults.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：此组件使用了一种实验性API
+// 该API尚未在稳定版本的React中发布。
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 如果想找实际的例子，可以尝试一个
+// 已经集成了 Suspense 的框架，比如 Relay 或 Next.js。
 
 export default function SearchResults({ query }) {
   if (query === '') {
@@ -374,8 +374,8 @@ export default function SearchResults({ query }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决演示中的一个 bug 的临时实现。
+// TODO: 待 bug 修复后应该替换为真正的实现。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -401,9 +401,8 @@ function use(promise) {
 ```
 
 ```js data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// 注意：使用Suspense进行数据获取的方式取决于与其配合使用的框架。
+// 缓存逻辑通常会在框架内部处理。
 
 let cache = new Map();
 
@@ -423,7 +422,7 @@ async function getData(url) {
 }
 
 async function getSearchResults(query) {
-  // Add a fake delay to make waiting noticeable.
+// 添加一个假延迟来让等待更加明显。
   await new Promise(resolve => {
     setTimeout(resolve, 500);
   });
@@ -578,11 +577,11 @@ export default function App() {
 ```js SearchResults.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：此组件使用了一种实验性API
+// 该API尚未在稳定版本的React中发布。
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 如果想找实际的例子，可以尝试一个
+// 已经集成了 Suspense 的框架，比如 Relay 或 Next.js。
 
 export default function SearchResults({ query }) {
   if (query === '') {
@@ -603,8 +602,8 @@ export default function SearchResults({ query }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决演示中的一个 bug 的临时实现。
+// TODO: 待 bug 修复后应该替换为真正的实现。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -630,9 +629,8 @@ function use(promise) {
 ```
 
 ```js data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// 注意：使用Suspense进行数据获取的方式取决于与其配合使用的框架。
+// 缓存逻辑通常会在框架内部处理。
 
 let cache = new Map();
 
@@ -652,7 +650,7 @@ async function getData(url) {
 }
 
 async function getSearchResults(query) {
-  // Add a fake delay to make waiting noticeable.
+// 添加一个假延迟来让等待更加明显。
   await new Promise(resolve => {
     setTimeout(resolve, 500);
   });
