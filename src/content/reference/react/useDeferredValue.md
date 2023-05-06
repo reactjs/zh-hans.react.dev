@@ -186,8 +186,8 @@ function use(promise) {
 ```
 
 ```js data.js hidden
-// 注意：使用Suspense进行数据获取的方式取决于
-// 与其配合使用的框架。
+// 注意：使用Suspense进行数据获取的方式
+// 取决于与其配合使用的框架。
 // 缓存逻辑通常会在框架内部处理。
 
 let cache = new Map();
@@ -401,7 +401,8 @@ function use(promise) {
 ```
 
 ```js data.js hidden
-// 注意：使用Suspense进行数据获取的方式取决于与其配合使用的框架。
+// 注意：使用Suspense进行数据获取的方式
+// 取决于与其配合使用的框架。
 // 缓存逻辑通常会在框架内部处理。
 
 let cache = new Map();
@@ -629,7 +630,8 @@ function use(promise) {
 ```
 
 ```js data.js hidden
-// 注意：使用Suspense进行数据获取的方式取决于与其配合使用的框架。
+// 注意：使用Suspense进行数据获取的方式
+// 取决于与其配合使用的框架。
 // 缓存逻辑通常会在框架内部处理。
 
 let cache = new Map();
