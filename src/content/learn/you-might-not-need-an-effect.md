@@ -4,7 +4,7 @@ title: '你可能不需要 Effect'
 
 <Intro>
 
-Effect 是 React 范式中的一个逃脱出口。它们让你可以 “跳出” React 并使你的组件和一些外部系统同步，如：非 React 组件，网络，或浏览器 DOM。如果没有涉及到外部系统（例如，你想根据一些 props 或 state 的变化来更新一个组件的 state），你不应该使用 Effect。移除不必要的 Effect 可以让你的代码更容易理解，运行得更快，并且更少出错。
+Effect 是 React 范式中的一个逃脱方案。它们让你可以 “逃出” React 并使你的组件和一些外部系统同步，如：非 React 组件，网络，或浏览器 DOM。如果没有涉及到外部系统（例如，你想根据一些 props 或 state 的变化来更新一个组件的 state），你不应该使用 Effect。移除不必要的 Effect 可以让你的代码更容易理解，运行得更快，并且更少出错。
 
 </Intro>
 
