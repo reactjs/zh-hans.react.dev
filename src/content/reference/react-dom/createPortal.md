@@ -56,7 +56,7 @@ portal 只改变 DOM 节点的所处位置。在其他方面，传入 portal 中
 
 #### 警告 {/*caveats*/}
 
-* portal 中的事件传播遵循 React 树而不是 DOM 树。例如，如果你在 portal 中触发点击事件，并且 portal 被包装在 `<div onClick>` 中，则将触发 `onClick` 处理程序。如果这会导致问题，请在 portal 内部停止事件传播，或将 portal 本身移动到 React 树中的上层。
+* portal 中的事件传播遵循 React 树而不是 DOM 树。例如点击 `<div onClick>` 内部的 portal，将触发 `onClick` 处理程序。如果这导致问题，请在 portal 内部停止事件传播，或将 portal 本身移动到 React 树中的上层。
 
 ---
 
