@@ -20,7 +20,7 @@ Hooks can only be called inside the body of a function component.
 
 ## 打破了 Hooks 的使用规则 {/*breaking-rules-of-hooks*/}
 
-在 React 中被调用的且以 `use` 开头命名的的函数叫 [*Hooks*](/reference/react)。
+在 React 中被调用的且以 `use` 开头命名的函数叫 [*Hooks*](/reference/react)。
 
 **不要在循环语句内、条件语句后或嵌套的函数内调用 Hooks。** 反之，应该始终保证 Hooks 在函数式组件的顶层，并避免在 Hooks 调用前过早终止函数。你只能在 React 渲染一个函数式组件的过程当中调用 Hooks：
 
