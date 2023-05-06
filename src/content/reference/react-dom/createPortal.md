@@ -24,7 +24,7 @@ title: createPortal
 
 ### `createPortal(children, domNode)` {/*createportal*/}
 
-调用 `createPortal` 创建 portal，并传入 JSX 与应该渲染所处的 DOM 节点：
+调用 `createPortal` 创建 portal，并传入 JSX 与实际渲染的目标 DOM 节点：
 
 ```js
 import { createPortal } from 'react-dom';
