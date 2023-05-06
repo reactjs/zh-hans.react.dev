@@ -246,7 +246,7 @@ export default function ModalContent({ onClose }) {
 
 ### 将 React 组件渲染到非 React 服务器标记中 {/*rendering-react-components-into-non-react-server-markup*/}
 
-如果你的网站只有一部分使用 React 构建，而其他部分是静态页面或由服务器呈现的页面，则 portal 可能非常有用。例如，如果你的页面使用 Rails 等服务器框架构建，则可以在静态区域（例如侧边栏）中创建交互区域。与拥有 [多个独立的 React 根](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react) 相比，portal 将应用程序视为具有共享状态的单个 React 树，即使其部分呈现到 DOM 的不同部分也是如此。
+如果你的网站只有一部分使用 React 构建，而其他部分是静态页面或由服务器呈现的页面，则 portal 可能非常有用。如果你的页面使用 Rails 等服务端框架构建，则可以在静态区域（例如侧边栏）中创建交互区域。与拥有 [多个独立的 React 根](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react) 相比，portal 将应用程序视为具有共享状态的单个 React 树，即使其部分呈现到 DOM 的不同部分也是如此。
 
 <Sandpack>
 
