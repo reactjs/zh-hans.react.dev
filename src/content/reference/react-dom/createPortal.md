@@ -238,7 +238,7 @@ export default function ModalContent({ onClose }) {
 
 使用 portal 时，确保应用程序的无障碍性非常重要。例如，你可能需要管理键盘焦点，以便用户可以以自然的方式进出 portal。
 
-创建模态对话框时，请遵循 [WAI-ARIA 模态作者实践指南](https://www.w3.org/WAI/ARIA/apg/#dialog_modal)。如果你使用了社区包，请确保它是可访问的，并遵循这些指南。
+创建模态对话框时，请遵循 [WAI-ARIA 模态作者实践指南](https://www.w3.org/WAI/ARIA/apg/#dialog_modal)。如果你使用了社区包，请确保它是无障碍的，并遵循这些指南。
 
 </Pitfall>
 
