@@ -66,7 +66,7 @@ portal 只改变 DOM 节点的所处位置。在其他方面，传入 portal 中
 
 *portal* 允许组件将它们的某些子元素渲染到 DOM 中的不同位置。这使得组件的一部分可以“逃脱”它所在的容器。例如组件可以在页面其余部分上方或外部显示模态对话框和提示框。
 
-要创建 portal，请使用 <CodeStep step={1}>JSX</CodeStep> 和 <CodeStep step={2}>应该放置的 DOM 节点</CodeStep> 渲染 `createPortal` 的结果：
+要创建 portal，请使用 <CodeStep step={1}>JSX</CodeStep> 和 <CodeStep step={2}> 应该放置的 DOM 节点</CodeStep> 渲染 `createPortal` 的结果：
 
 ```js [[1, 8, "<p>This child is placed in the document body.</p>"], [2, 9, "document.body"]]
 import { createPortal } from 'react-dom';
