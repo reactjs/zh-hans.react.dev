@@ -193,7 +193,7 @@ input {
 
 #### 播放和暂停视频 {/*playing-and-pausing-a-video*/}
 
-点击按钮将调用  `<video>` DOM 节点上的 [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) 和 [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause) 方法。`App` 组件定义了一个 ref 并将其传递到 `MyVideoPlayer` 组件。`MyVideoPlayer` 组件将该 ref 转发到浏览器的  `<video>` 标签。这使得 `App` 组件可以播放和暂停 `<video>`。
+点击按钮将调用 `<video>` DOM 节点上的 [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) 和 [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause) 方法。`App` 组件定义了一个 ref 并将其传递到 `MyVideoPlayer` 组件。`MyVideoPlayer` 组件将该 ref 转发到浏览器的 `<video>` 标签。这使得 `App` 组件可以播放和暂停 `<video>`。
 
 <Sandpack>
 
