@@ -46,7 +46,7 @@ portal 只改变 DOM 节点的所处位置。在其他方面，传入 portal 中
 
 #### 参数 {/*parameters*/}
 
-* `children`：可以使用 React 渲染的任何内容，例如 JSX 片段（例如 `<div />` 或 `<SomeComponent />`）、[Fragment](/reference/react/Fragment)（`<>...</>`）、字符串或数字，或者是这些内容的数组。
+* `children`：React 可以渲染的任何内容，例如 JSX 片段（`<div />` 或 `<SomeComponent />` 等等）、[Fragment](/reference/react/Fragment)（`<>...</>`）、字符串或数字，以及这些内容构成的数组。
 
 * `domNode`：某个 DOM 节点，例如由 `document.getElementById()` 返回的节点。节点必须已经存在。在更新过程中传递不同的 DOM 节点将导致 portal 内容被重新创建。
 
