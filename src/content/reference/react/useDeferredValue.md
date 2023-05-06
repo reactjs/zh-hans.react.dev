@@ -189,6 +189,7 @@ function use(promise) {
 // 注意：使用Suspense进行数据获取的方式取决于
 // 与其配合使用的框架。
 // 缓存逻辑通常会在框架内部处理。
+
 let cache = new Map();
 
 export function fetchData(url) {
