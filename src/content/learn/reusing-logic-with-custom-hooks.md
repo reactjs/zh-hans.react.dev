@@ -1,30 +1,30 @@
 ---
-title: 使用自定义Hook重用逻辑
+title: 使用自定义 Hook 复用逻辑
 ---
 
 <Intro>
 
-React 带有一些内置的 Hook，比如 `useState`， `useContext` 和 `useEffect`。有时候你需要一个用途更加特定的 Hook：比如远程获取数据，追踪用户是否在线，或者连接一个聊天室。在 React 中可能找不到这些 Hook，但是你可以根据自己应用的需求取创建自己的 Hook。
+React 有一些内置 Hook，例如 `useState`， `useContext` 和 `useEffect`。有时你需要一个用途更特殊的 Hook：例如获取数据，记录用户是否在线或者连接聊天室。虽然 React 中可能找不到这些 Hook，但是你可以根据应用需求创建自己的 Hook。
 
 </Intro>
 
 <YouWillLearn>
 
-- 什么是自定义 Hook，以及如何写自己的 Hook
+- 自定义 Hook 是什么，以及如何编写
 - 如何在组件间重用逻辑
-- 如何命名和构建你的自定义 Hook
+- 如何命名和构建自定义 Hook
 - 提取自定义 Hook 的时机和原因
 
 </YouWillLearn>
 
-## 自定义 Hook：在组件间共享逻辑 {/*custom-hooks-sharing-logic-between-components*/}
+## 自定义 Hook：组件间共享逻辑 {/*custom-hooks-sharing-logic-between-components*/}
 
-假设你正在开发一款重度依赖网络的应用（和大多数应用一样）。当用户使用你的应用时，如果网络意外断开，你想要警告用户。你会如何处理这种情况呢？看上去你在组件中需要两个东西：
+假设你正在开发一款重度依赖网络的应用（和大多数应用一样）。当用户使用应用时网络意外断开，你需要提醒他。你会怎么处理呢？看上去组件需要两个东西：
 
 1. 一个追踪网络是否在线的 state。
-2. 一个订阅全局 [`在线`](https://developer.mozilla.org/en-US/docs/Web/API/Window/online_event) 和 [`离线`](https://developer.mozilla.org/en-US/docs/Web/API/Window/offline_event) 事件以及更新上述 state 的 Effect。
+2. 一个订阅全局 [`online`](https://developer.mozilla.org/en-US/docs/Web/API/Window/online_event) 和 [`offline`](https://developer.mozilla.org/en-US/docs/Web/API/Window/offline_event) 事件并更新上述 state 的 Effect。
 
-这将让你的组件与网络状态保持 [同步](/learn/synchronizing-with-effects)。你可以像这样开始：
+这将让组件与网络状态保持 [同步](/learn/synchronizing-with-effects)。你也许可以像这样开始：
 
 <Sandpack>
 
@@ -54,11 +54,11 @@ export default function StatusBar() {
 
 </Sandpack>
 
-尝试开启和关闭网络，注意 `StatusBar` 应对你的行为是如何更新的。
+试着开启和关闭网络，注意 `StatusBar` 组件应对你的行为是如何更新的。
 
-现在假设你想要在一个不同的组件里 **也** 使用这段相同的逻辑。你想实现一个 Save 按钮，当网络离线时，这个按钮会变成不可用并且显示“Reconnecting...”而不是“Save”。
+假设现在你想在另一个不同的组件里 **也** 使用同样的逻辑。你希望实现一个 Save 按钮，每当网络断开这个按钮就会不可用并且显示“Reconnecting...”而不是“Save”。
 
-你可以通过复制和粘贴 `isOnline` state 和 Effect 到 `SaveButton` 开始：
+你可以从复制粘贴 `isOnline` state 和 Effect 到 `SaveButton` 开始：
 
 <Sandpack>
 
@@ -96,13 +96,13 @@ export default function SaveButton() {
 
 </Sandpack>
 
-验证一下，如果关闭网络，按钮会变更展示。
+如果你关闭网络，可以验证出这个按钮将会变更外观。
 
-这两个组件都工作正常，但是不幸的是他们之间的逻辑重复了。即使两个组件看上去有不同的 **视觉界面**，你也想要重用他们之间的逻辑。
+这两个组件都能很好地工作，但不幸的是他们的逻辑重复了。他们看上去有不同的 **视觉外观**，但你依然想复用他们的逻辑。
 
-### 从组件中提取出你的自定义 Hook {/*extracting-your-own-custom-hook-from-a-component*/}
+### 从组件中提取自定义 Hook {/*extracting-your-own-custom-hook-from-a-component*/}
 
-想象一下，与 [`useState`](/reference/react/useState) 和 [`useEffect`](/reference/react/useEffect) 类似，有一个内置的 `useOnlineStatus` Hook。那么就可以简化这两个组件并且移除他们之间的重复部分：
+假设有一个与 [`useState`](/reference/react/useState) 和 [`useEffect`](/reference/react/useEffect) 相似的内置 Hook `useOnlineStatus`。那么你就可以简化这两个组件并移除他们之间的重复部分：
 
 ```js {2,7}
 function StatusBar() {
@@ -125,7 +125,7 @@ function SaveButton() {
 }
 ```
 
-尽管目前没有这样的内置 Hook，但是你可以自己写。声明一个 `useOnlineStatus` 函数，并且把早前组件里的所有重复代码移到里面：
+尽管目前还没有这样的内置 Hook，但是你可以自己写。声明一个 `useOnlineStatus` 函数，并把组件里早前写的所有重复代码移入该函数：
 
 ```js {2-16}
 function useOnlineStatus() {
@@ -148,7 +148,7 @@ function useOnlineStatus() {
 }
 ```
 
-在函数结尾处，返回 `isOnline`。这可以让组件读取到那个值：
+在函数结尾处返回 `isOnline`。这可以让组件读取到该值：
 
 <Sandpack>
 
@@ -209,50 +209,50 @@ export function useOnlineStatus() {
 
 </Sandpack>
 
-验证切换网络状态是否更新了两个组件。
+切换网络状态验证一下是否会同时更新两个组件。
 
-现在你的组件里没有那么多重复的逻辑了。**更重要的是，组件中的代码描述了他们想要做什么（使用在线状态！），而不是如何做（通过订阅浏览器事件完成）**
+现在组件里没有那么多的重复逻辑了。**更重要的是，组件内部的代码描述的是想要做什么（使用在线状态！），而不是怎么做（通过订阅浏览器事件完成）**
 
-当提取逻辑到自定义 Hook 中 时，你可以隐藏如何处理一些外部系统或者浏览器 API 的艰难细节。组件中的代码表达的是你的目的而不是实现。
+当提取逻辑到自定义 Hook 时，你可以隐藏如何处理外部系统或者浏览器 API 这些乱七八糟的细节。组件内部的代码表达的是目标而不是具体实现。
 
 ### Hook 的名称必须永远以 `use` 开头 {/*hook-names-always-start-with-use*/}
 
-React 应用是由组件构建的。组件是由内置的或者自定义的 Hook 构建的。你可能经常使用别人创建的自定义 Hook，但是偶尔也可能要自己写！
+React 应用是由组件构建的。而组件是由内置或自定义的 Hook 构建。可能你经常使用的是别人写的自定义 Hook，但偶尔可能也要自己写！
 
 你必须遵循以下这些命名公约：
 
-1. **React 组件名称必须以大写字母开头**， 比如 `StatusBar` 和 `SaveButton`。React 组件还需要返回一些 React 知道如何展示的内容，比如一段 JSX 代码。
-2. **Hook 的名称必须以 `use` 开头，后面跟一个大写字母**， 像 [`useState`](/reference/react/useState)  (内置) 或者 `useOnlineStatus` (像文章早前的自定义 Hook)。Hook 可能会返回任意值。
+1. **React 组件名称必须以大写字母开头**， 比如 `StatusBar` 和 `SaveButton`。React 组件还需要返回一些 React 能够显示的内容，比如一段 JSX。
+2. **Hook 的名称必须以后跟一个大写字母的 `use` 开头**， 像 [`useState`](/reference/react/useState)  (内置) 或者 `useOnlineStatus` (像本文早前的自定义 Hook)。Hook 可以返回任意值。
 
-这个公约保证了你始终可以查看组件并且知道它的 state，Effect 以及其他的 React 特性可能“隐藏”在哪里。例如如果你在组件内部看见 `getColor()` 的函数调用，你可以确定它内部不可能包含 React state，因为它的名称没有以 `use` 开头。但是像 `useOnlineStatus()` 这样的函数调用将极有可能包含对内部其他 Hook 的调用！
+这个公约保证你始终可以一眼识别出组件并且知道它的 state，Effect 以及其他的 React 特性可能“隐藏”在哪里。例如如果你在组件内部看见 `getColor()` 函数调用，你可以确定它内部不可能包含 React state，因为它的名称没有以 `use` 开头。但是像 `useOnlineStatus()` 这样的函数调用就很可能包含对内部其他 Hook 的调用！
 
 <Note>
 
-如果为 [React 配置了](/learn/editor-setup#linting) 检查工具，它会强制执行这个命名公约。滑动到上面的 sandbox，并将 `useOnlineStatus` 重命名为 `getOnlineStatus`。注意检查工具将不会再允许你在内部调用 `useState` 或者 `useEffect`。只有 Hook 和组件可以调用其他 Hook！
+如果你为 [React 配置了](/learn/editor-setup#linting) 代码检查工具，它会强制执行这个命名公约。现在滑动到上面的 sandbox，并将 `useOnlineStatus` 重命名为 `getOnlineStatus`。注意此时代码检查工具将不会再允许你其内部调用 `useState` 或者 `useEffect`。只有 Hook 和组件可以调用其他 Hook！
 
 </Note>
 
 <DeepDive>
 
-#### 渲染期间调用的所有函数都应该以前缀 use 开头么？ {/*should-all-functions-called-during-rendering-start-with-the-use-prefix*/}
+#### 渲染期间调用的所有函数都应该以 use 前缀开头么？ {/*should-all-functions-called-during-rendering-start-with-the-use-prefix*/}
 
-不是。没有 **调用** Hook 的函数不需要 **成为** Hook。
+不。没有 **调用** Hook 的函数不需要 **变成** Hook。
 
-如果你的函数没有调用任何 Hook，请避免使用 `use` 前缀。 而是 **不带** `use` 前缀，把它作为常规函数去写。例如下面的 `useSorted`  没有调用 Hook，所以叫它 `getSorted`：
+如果函数没有调用任何 Hook，请避免使用 `use` 前缀。 而是 **不带** `use` 前缀把它当成常规函数去写。例如下面的 `useSorted`  没有调用 Hook，所以叫它 `getSorted`：
 
 ```js
-// 🔴 避免：没有调用其他Hook的Hook
+// 🔴 Avoid: 没有调用其他Hook的Hook
 function useSorted(items) {
   return items.slice().sort();
 }
 
-// ✅ Good：没有使用Hook的常规函数
+// ✅ Good: 没有使用Hook的常规函数
 function getSorted(items) {
   return items.slice().sort();
 }
 ```
 
-这保证了你的代码可以在包括条件语句在内的任何地方调用这个常规函数：
+这保证你的代码可以在包含条件语句在内的任何地方调用这个常规函数：
 
 ```js
 function List({ items, shouldSort }) {
@@ -265,19 +265,19 @@ function List({ items, shouldSort }) {
 }
 ```
 
-如果内部至少使用了一个 Hook，你应该给这个函数 `use` 前缀（从而让它成为一个 Hook）：
+如果内部至少使用了一个 Hook，你就应该给这个函数加 `use` 前缀（让它成为一个 Hook）：
 
 ```js
-// ✅ Good：一个使用了其他Hook的Hook
+// ✅ Good: 一个使用了其他Hook的Hook
 function useAuth() {
   return useContext(Auth);
 }
 ```
 
-从技术上讲，这不是 React 强制的。原则上你可以写一个不调用其他 Hook 的 Hook。这常常会令人迷惑且受到限制，所以最好是避免那种方式。但是在极少一些场景下，它可能是有帮助的。例如也许你的函数现在没有使用任何 Hook，但是计划未来会添加一些 Hook 调用。那么使用 `use` 前缀给它命名就很有意义：
+技术上 React 对此并不强制要求。原则上你可以写出不调用其他 Hook 的 Hook。但这常常会难以理解且受限，所以最好避免这种方式。但是它在极少数场景下可能是有益的。例如函数目前也许并没有使用任何 Hook，但是你计划未来在该函数内部添加一些 Hook 调用。那么使用 `use` 前缀命名就很有意义：
 
 ```js {3-4}
-// ✅ Good：之后即将可能使用一些其他Hook的一个Hook
+// ✅ Good: 之后可能使用其他Hook的Hook
 function useAuth() {
   // TODO: 当认证功能实现以后，替换这一行：
   // 返回 useContext(Auth)；
@@ -285,13 +285,13 @@ function useAuth() {
 }
 ```
 
-接下来组件就不能在条件分支里调用这个函数。当你在里面添加了 Hook 调用时，这一点将变得很重要。如果你没有计划在内部使用 Hook（现在或者之后），就不要让它成为一个 Hook。
+接下来组件就不能在条件语句里调用这个函数。当你在内部实际添加了 Hook 调用时，这一点将变得很重要。如果你没有计划在内部使用 Hook（现在或者之后），请不要让它变成 Hook。
 
 </DeepDive>
 
-### 自定义 Hook 共享的是状态逻辑，而不是 state 本身 {/*custom-hooks-let-you-share-stateful-logic-not-state-itself*/}
+### 自定义 Hook 共享有状态逻辑，而不是 state 本身 {/*custom-hooks-let-you-share-stateful-logic-not-state-itself*/}
 
-之前的例子里，当你开启或关闭网络时，两个组件一起更新了。但是两个组件共享一个 `isOnline` state 变量的想法是错误的。看这段代码：
+之前的例子里，当你开启或关闭网络时，两个组件一起更新了。但是两个组件共享 state 变量 `isOnline` 这种想法是错的。看这段代码：
 
 ```js {2,7}
 function StatusBar() {
@@ -305,7 +305,7 @@ function SaveButton() {
 }
 ```
 
-它的工作方式和你提取重复部分之前一样：
+它的工作方式和你之前提取的重复代码一模一样：
 
 ```js {2-5,10-13}
 function StatusBar() {
@@ -325,9 +325,9 @@ function SaveButton() {
 }
 ```
 
-这是两个完全独立的 state 变量和 Effect！他们只是碰巧同时有同样的值，因为你将两个组件与相同的外部值同步（无论网络是否开启）。
+这是完全独立的两个 state 变量和 Effect！只是碰巧同一时间值一样，因为你使用了相同的外部值同步两个组件（无论网络是否开启）。
 
-为了更好的说明这一点，我们需要一个不同的例子。看下面的 `Form` 组件：
+为了更好的说明这一点，我们需要一个不同的示例。看下面的 `Form` 组件：
 
 <Sandpack>
 
@@ -369,13 +369,13 @@ input { margin-left: 10px; }
 
 </Sandpack>
 
-每个表单域都有一些重复的逻辑：
+每个表单域都有一部分重复的逻辑：
 
-1. 都有 state（`firstName` 和 `lastName`）。
-1. 都有 change handler（`handleFirstNameChange` 和 `handleLastNameChange`）。
-1. 都有为输入框指定 `value` 和 `onChange` 属性的 JSX 片段。
+1. 都有一个 state（`firstName` 和 `lastName`）。
+1. 都有 change 事件的处理函数（`handleFirstNameChange` 和 `handleLastNameChange`）。
+1. 都有为输入框指定 `value` 和 `onChange` 属性的 JSX。
 
-你可以把重复的逻辑提取到自定义 Hook `useFormInput`：
+你可以提取重复的逻辑到自定义 Hook `useFormInput`：
 
 <Sandpack>
 
@@ -428,9 +428,9 @@ input { margin-left: 10px; }
 
 </Sandpack>
 
-注意它只声明了 **一个** 叫做 `value` 的 state 变量。
+注意它只声明了 **一个** state 变量，叫做 `value`。
 
-但是 `Form` 组件调用了 **两次** `useFormInput`：
+但 `Form` 组件调用了 **两次** `useFormInput`：
 
 ```js
 function Form() {
@@ -439,18 +439,18 @@ function Form() {
   // ...
 ```
 
-这就是为什么它工作的时候像声明了两个独立的 state 变量！
+这就是为什么它工作的时候像声明了两个单独的 state 变量！
 
-**自定义 Hook 只是共享状态逻辑而不是 state 本身。每个 Hook 的调用都完全独立于对同一个 Hook 的其他调用**。 这就是为什么上面两个 sandbox 完全相同的原因。如果你愿意，可以滚动回去并比较他们。提取自定义 Hook 之前和之后的行为是一致的。
+**自定义 Hook 只是共享有状态逻辑而不是 state 本身。对 Hook 的每个调用完全独立于对同一个 Hook 的其他调用**。 这就是上面两个 sandbox 结果完全相同的原因。如果愿意，你可以划上去进行比较。提取自定义 Hook 前后组件的行为是一致的。
 
-而当你需要在多个组件之间共享 state 本身时，需要[将变量提升并传递下去](/learn/sharing-state-between-components)。
+当你需要在多个组件之间共享 state 本身时，需要[将变量提升并传递下去](/learn/sharing-state-between-components)。
 
 ## 在 Hook 之间传递响应值 {/*passing-reactive-values-between-hooks*/}
 
-组件每次重新渲染，自定义 Hook 中的代码也会重新运行。这就是为什么组件和自定义 Hook 都 [需要纯粹](/learn/keeping-components-pure) 的原因。我们应该把自定义 Hook 的代码作为组件主体的一部分。
+每当组件重新渲染，自定义 Hook 中的代码就会重新运行。这就是组件和自定义 Hook 都 [需要纯粹](/learn/keeping-components-pure) 的原因。我们应该把自定义 Hook 的代码看作组件主体的一部分。
 
-自定义组件总会接收到最新的 props 和 state，因为它会和你的组件一起重新渲染。想知道这意味着什么，看一下这个聊天室的例子。变更 Server URL 或者聊天室 ID：
-
+由于自定义 Hook 会随着组件一起重新渲染，所以组件可以一直接收到最新的 props 和 state。想知道这意味着什么吗，那就看这个聊天室的示例。修改 Server URL 或者聊天室 ID：
+<!-- todo:校对暂停 -->
 <Sandpack>
 
 ```js App.js
