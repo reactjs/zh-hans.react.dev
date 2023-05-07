@@ -449,8 +449,8 @@ function Form() {
 
 每当组件重新渲染，自定义 Hook 中的代码就会重新运行。这就是组件和自定义 Hook 都 [需要纯粹](/learn/keeping-components-pure) 的原因。我们应该把自定义 Hook 的代码看作组件主体的一部分。
 
-由于自定义 Hook 会随着组件一起重新渲染，所以组件可以一直接收到最新的 props 和 state。想知道这意味着什么吗，那就看这个聊天室的示例。修改 Server URL 或者聊天室 ID：
-<!-- todo:校对暂停 -->
+由于自定义 Hook 会随着组件一起重新渲染，所以组件可以永远接收到最新的 props 和 state。想知道这意味着什么，那就看看这个聊天室的示例。修改 Server URL 或者聊天室 ID：
+
 <Sandpack>
 
 ```js App.js
@@ -599,9 +599,9 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-当你修改 `serverUrl` 或者 `roomId` 时，Effect 会对 [你的修改做出“反应”](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) 和重新同步。你可以通过修改 Effect 依赖引起的聊天室重连的每次 console 信息来区分。
+当你修改 `serverUrl` 或者 `roomId` 时，Effect 会对 [你的修改做出“响应”](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) 并重新同步。你可以通过每次修改 Effect 依赖项时聊天室重连的控制台消息来区分。
 
-现在把 Effect 代码移动到自定义 Hook 中：
+现在将 Effect 代码移入自定义 Hook：
 
 ```js {2-13}
 export function useChatRoom({ serverUrl, roomId }) {
@@ -620,7 +620,7 @@ export function useChatRoom({ serverUrl, roomId }) {
 }
 ```
 
-这让你的 `ChatRoom` 组件调用自定义 Hook，不需要担心内部是如何工作：
+这让 `ChatRoom` 组件调用自定义 Hook，而不需要担心内部怎么工作：
 
 ```js {4-7}
 export default function ChatRoom({ roomId }) {
@@ -643,9 +643,9 @@ export default function ChatRoom({ roomId }) {
 }
 ```
 
-这看上去简洁多了！（但是它做的是同一件事情。）
+这看上去简洁多了！（但是它做的是同一件事。）
 
-注意逻辑 **仍然响应** prop 和 state 修改。尝试编辑 server URL 或者选中的房间：
+注意逻辑 **仍然响应** prop 和 state 的变化。尝试编辑 server URL 或选中的房间：
 
 <Sandpack>
 
@@ -807,7 +807,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-注意你是如何获取到 Hook 的返回值：
+注意你如何获取 Hook 的返回值：
 
 ```js {2}
 export default function ChatRoom({ roomId }) {
@@ -820,7 +820,7 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-并且把它作为输入传递给另外一个 Hook：
+并把它作为输入传给另一个 Hook：
 
 ```js {6}
 export default function ChatRoom({ roomId }) {
@@ -833,17 +833,17 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-每次 `ChatRoom` 组件重新渲染，它都会传最新的 `roomId` 和 `serverUrl` 到你的 Hook 中。这就是为什么每当他们的值在重新渲染后不同的时候你的 Effect 会重连聊天室。（如果你曾经使用过音视频处理软件，像这样的链式 Hook 也许会让你想起链式可视化或音频 effect。就好像 `useState` 的输出作为 `useChatRoom` 的输入）。
+每次 `ChatRoom` 组件重新渲染，它就会传最新的 `roomId` 和 `serverUrl` 到你的 Hook。这就是每当重新渲染后他们的值不一样时你的 Effect 会重连聊天室的原因。（如果你曾经使用过音视频处理软件，像这样的 Hook 链也许会让你想起音视频效果链。好似 `useState` 的输出作为 `useChatRoom` 的输入）。
 
-### 把事件处理器传到自定义 Hook 中 {/*passing-event-handlers-to-custom-hooks*/}
+### 把事件处理函数传到自定义 Hook 中 {/*passing-event-handlers-to-custom-hooks*/}
 
 <Wip>
 
-这个章节描述 React 稳定版中 **还没有发布的实验性 API**。
+这个章节描述了 React 稳定版 **还未发布的一个实验性 API**。
 
 </Wip>
 
-当你在更多组件中使用 `useChatRoom` 组件时，你也许想要让组件自定义它的行为。例如现在 Hook 中收到信息时做什么的逻辑是硬编码：
+当你在更多组件中使用 `useChatRoom` 时，你可能希望组件能定制它的行为。例如现在 Hook 内部收到消息的处理逻辑是硬编码：
 
 ```js {9-11}
 export function useChatRoom({ serverUrl, roomId }) {
@@ -862,7 +862,7 @@ export function useChatRoom({ serverUrl, roomId }) {
 }
 ```
 
-假设你想要把这个逻辑移回到组件中：
+假设你想把这个逻辑移回到组件中：
 
 ```js {7-9}
 export default function ChatRoom({ roomId }) {
@@ -878,7 +878,7 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-完成这个工作需要修改自定义 Hook，把 `onReceiveMessage` 作为命名选项之一：
+完成这个工作需要修改自定义 Hook，把 `onReceiveMessage` 作为其命名选项之一：
 
 ```js {1,10,13}
 export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
@@ -897,9 +897,9 @@ export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
 }
 ```
 
-这将会生效，但是当自定义 Hook 接受事件处理器的时候，你还可以做另一个改进。
+这个修改有效果，但是当自定义 Hook 接受事件处理函数时，你还可以进一步改进。
 
-增加一个 `onReceiveMessage` 依赖并不理想，每次只要组件重新渲染，聊天就会重新连接。 [将这个事件处理器包装到　Effect Event　从而将它从依赖中移除](/learn/removing-effect-dependencies#wrapping-an-event-handler-from-the-props)：
+增加对 `onReceiveMessage` 的依赖并不理想，因为每次组件重新渲染时聊天室就会重新连接。 通过 [将这个事件处理函数包裹到 Effect Event 中来将它从依赖中移除](/learn/removing-effect-dependencies#wrapping-an-event-handler-from-the-props)：
 
 ```js {1,4,5,15,18}
 import { useEffect, useEffectEvent } from 'react';
@@ -923,7 +923,7 @@ export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
 }
 ```
 
-现在聊天室不会在每次 `ChatRoom` 组件重新渲染时都重新连接。这是一个传递事件处理器给自定义 Hook 的例子，你可以尝试一下：
+现在每次 `ChatRoom` 组件重新渲染时聊天室都不会重连。这是一个将事件处理函数传给自定义 Hook 的完整且有效的 demo，你可以尝试一下：
 
 <Sandpack>
 
@@ -1095,16 +1095,16 @@ button { margin-left: 10px; }
 
 ## 什么时候使用自定义 Hook {/*when-to-use-custom-hooks*/}
 
-你不需要把每段重复的代码提取为自定义 Hook。一些重复是可以的。例如像早前用来包裹单个 `useState` 调用的 `useFormInput` Hook 可能就是没有必要的。
+你没必要对每段重复的代码都提取自定义 Hook。一些重复是好的。例如像早前提取的包裹单个 `useState` 调用的 `useFormInput` Hook 就是没有必要的。
 
-但是每当你写 Effect 的时候，请考虑一下把它包裹在自定义 Hook 会不会更清晰。[你不应该经常使用 Effect](/learn/you-might-not-need-an-effect)，所以如果你正在写 Effect 就意味着你需要“走出 React”来和一些外部系统同步，或者需要做一些 React 中没有内置 API 的事。把重复代码包装进自定义 Hook 可以让你准确表达你的意图和数据在里面是如何流动的。
+但是每当你写 Effect 时，考虑一下把它包裹在自定义 Hook 是否更清晰。[你不应该经常使用 Effect](/learn/you-might-not-need-an-effect)，所以如果你正在写 Effect 就意味着你需要“走出 React”和某些外部系统同步，或者需要做一些 React 中没有对应内置 API 的事。把 Effect 包裹进自定义 Hook 可以准确表达你的目标以及数据在里面是如何流动的。
 
-例如假设 `ShippingForm` 组件展示两个下拉框：一个展示城市列表，另一个展示选中的城市的区域列表。你可能会像这样开始写代码：
+例如，假设 `ShippingForm` 组件展示两个下拉菜单：一个显示城市列表，另一个显示选中城市的区域列表。你可能一开始会像这样写代码：
 
 ```js {3-16,20-35}
 function ShippingForm({ country }) {
   const [cities, setCities] = useState(null);
-  // 这个Effect拉取一个国家的城市数据
+  // 这个 Effect 拉取一个国家的城市数据
   useEffect(() => {
     let ignore = false;
     fetch(`/api/cities?country=${country}`)
@@ -1121,7 +1121,7 @@ function ShippingForm({ country }) {
 
   const [city, setCity] = useState(null);
   const [areas, setAreas] = useState(null);
-  // 这个Effect拉取选中城市的区域列表
+  // 这个 Effect 拉取选中城市的区域列表
   useEffect(() => {
     if (city) {
       let ignore = false;
@@ -1141,7 +1141,7 @@ function ShippingForm({ country }) {
   // ...
 ```
 
-尽管这部分代码是重复的，但是 [把这些 Effect 各自分开是正确的](/learn/removing-effect-dependencies#is-your-effect-doing-several-unrelated-things)。他们同步两个不同的事情，所以你不应该把他们合并到同一个 Effect。取而代之的是，你可以提取他们的通用逻辑到你自己的 `useData` Hook 中来简化上面的 `ShippingForm` 组件：
+尽管这部分代码是重复的，但是 [把这些 Effect 各自分开是正确的](/learn/removing-effect-dependencies#is-your-effect-doing-several-unrelated-things)。他们同步两件不同的事情，所以不应该把他们合并到同一个 Effect。而是提取其中的通用逻辑到你自己的 `useData` Hook 来简化上面的 `ShippingForm` 组件：
 
 ```js {2-18}
 function useData(url) {
@@ -1165,7 +1165,7 @@ function useData(url) {
 }
 ```
 
-现在你可以调用 `useData` 代替 `ShippingForm` 组件中的 Effect：
+现在你可以在 `ShippingForm` 组件中调用 `useData` 替换两个 Effect：
 
 ```js {2,4}
 function ShippingForm({ country }) {
@@ -1175,21 +1175,21 @@ function ShippingForm({ country }) {
   // ...
 ```
 
-提取自定义 Hook 可以让数据流清晰。你可以输入 `url`，输出 `data`。通过把你的 Effect “隐藏”在 `useData` 中，也可以防止一些正在处理 `ShippingForm` 组件的人向里面添加 [不必要的依赖](/learn/removing-effect-dependencies)。随着时间的推移，你 app 中的大部分 Effect 都会存在于自定义 Hook 中。
+提取自定义 Hook 让数据流清晰。输入 `url`，就会输出 `data`。通过把 Effect “隐藏”在 `useData` 内部，你也可以防止一些正在处理 `ShippingForm` 组件的人向里面添加 [不必要的依赖](/learn/removing-effect-dependencies)。随着时间的推移，应用中大部分 Effect 都会存在于自定义 Hook 内部。
 
 <DeepDive>
 
 #### 让你的自定义 Hook 专注于具体的高级用例 {/*keep-your-custom-hooks-focused-on-concrete-high-level-use-cases*/}
 
-从选择你的自定义 Hook 名称开始。如果你难以选择一个清晰的名称，这意味着你的 Effect 和组件逻辑的剩余部分耦合度太高，还没有准备好被提取出来。
+从选择自定义 Hook 名称开始。如果你难以选择一个清晰的名称，这可能意味着你的 Effect 和组件逻辑剩余的部分耦合度太高，还没有做好被提取的准备。
 
-理想情况下，你的自定义 Hook 名称应该清晰到即使一个不经常写代码的人也能很好地猜中你的自定义 Hook 的功能，输入和返回：
+理想情况下，你的自定义 Hook 名称应该清晰到即使一个不经常写代码的人也能很好地猜中自定义 Hook 的功能，输入和返回：
 
 * ✅ `useData(url)`
 * ✅ `useImpressionLog(eventName, extraData)`
 * ✅ `useChatRoom(options)`
 
-当你和外部系统同步的时候，你的自定义 Hook 名称可能会更加专业，并使用该系统特定的术语。只要这个名称对于熟悉这个系统的人来说清晰，那就是好的：
+当你和外部系统同步的时候，你的自定义 Hook 名称可能会更加专业，并使用该系统特定的术语。只要对熟悉这个系统的人来说名称清晰就可以：
 
 * ✅ `useMediaQuery(query)`
 * ✅ `useSocket(url)`
@@ -1201,13 +1201,13 @@ function ShippingForm({ country }) {
 * 🔴 `useEffectOnce(fn)`
 * 🔴 `useUpdateEffect(fn)`
 
-例如这个 `useMount` Hook 试图保证一些代码只在“加载”的时候运行：
+例如这个 `useMount` Hook 试图保证一些代码只在“加载”时运行：
 
 ```js {4-5,14-15}
 function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
-  // 🔴 避免：使用自定义 "lifecycle" Hook
+  // 🔴 Avoid: 使用自定义“生命周期” Hook
   useMount(() => {
     const connection = createConnection({ roomId, serverUrl });
     connection.connect();
@@ -1217,7 +1217,7 @@ function ChatRoom({ roomId }) {
   // ...
 }
 
-// 🔴 避免：创建自定义 "lifecycle" Hook
+// 🔴 Avoid: 创建自定义“生命周期” Hook
 function useMount(fn) {
   useEffect(() => {
     fn();
@@ -1225,7 +1225,7 @@ function useMount(fn) {
 }
 ```
 
-**像 `useMount` 这样的自定义“生命周期” Hook 不能很好的适应 React 模式**。例如示例代码有一个错误（它没有“响应” `roomId` 或 `serverUrl` 的变化），但是代码检查工具并不会向你发出对应的告警，因为代码检查工具只能检测直接的 `useEffect` 调用。它并不了解你的 Hook。
+**像 `useMount` 这样的自定义“生命周期” Hook 不是很适合 React 范式**。例如示例代码有一个错误（它没有对 `roomId` 或 `serverUrl` 的变化做出“响应” ），但是代码检查工具并不会向你发出对应的警告，因为它只能检测 `useEffect` 的直接调用。并不了解你的 Hook。
 
 如果你正在编写 Effect，请从直接使用 React API 开始：
 
@@ -1249,7 +1249,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-然后你可以（但不是必须）为不同的高级用例提取自定义 Hook：
+然后你可以（但不是必须的）为不同的高级用例提取自定义 Hook：
 
 ```js
 function ChatRoom({ roomId }) {
@@ -1262,15 +1262,15 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-**一个好的自定义 Hook 通过限制功能使代码调用更具声明性**。例如 `useChatRoom(options)` 只能连接聊天室，而 `useImpressionLog(eventName, extraData)` 只能向分析系统发送 impression 日志。如果你的自定义 Hook API 没有约束用例且非常抽象，那么在长期的运行中，比起它解决的问题，可能会引入更多问题。
+**好的自定义 Hook 通过限制功能使代码调用更具声明性**。例如 `useChatRoom(options)` 只能连接聊天室，而 `useImpressionLog(eventName, extraData)` 只能向分析系统发送展示日志。如果你的自定义 Hook API 没有约束用例且非常抽象，那么在长期的运行中，它引入的问题可能比解决的问题更多。
 
 </DeepDive>
 
 ### 自定义 Hook 帮助你迁移到更好的模式 {/*custom-hooks-help-you-migrate-to-better-patterns*/}
 
-Effect 是一个 [“应急出口”](/learn/escape-hatches)：当你需要“走出 React”且对于你的用例没有更好的内置解决方案的时候你可以使用他们。随着时间的推移，React 团队的目标是通过给更多特定问题提供特定解决方案来最小化应用中的 Effect 数量。把你的 Effect 包裹进自定义 Hook 会使得这些解决方案可用的时候升级代码更加容易。
+Effect 是一个 [“逃脱方案”](/learn/escape-hatches)：当需要“走出 React”且用例没有更好的内置解决方案时你可以使用他们。随着时间的推移，React 团队的目标是通过给更具体的问题提供更具体的解决方案来最小化应用中的 Effect 数量。把你的 Effect 包裹进自定义 Hook，当这些解决方案可用时升级代码会更加容易。
 
-让我们回到这个例子：
+让我们回到这个示例：
 
 <Sandpack>
 
@@ -1331,9 +1331,9 @@ export function useOnlineStatus() {
 
 </Sandpack>
 
-在上面的例子中，`useOnlineStatus` 借助 [`useState`](/reference/react/useState) 和 [`useEffect`](/reference/react/useEffect) 实现。但这不是最好的解决方案。它有许多没有考虑到的边界用例。例如假设当组件加载的时候，`isOnline` 已经是 `true`，但是如果网络已经离线的话这就是错误的。你可以使用浏览器的 [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API 来检查，但是直接在生成初始 HTML 的服务器上使用它是不生效的。简而言之这段代码可以改进。
+在上述示例中，`useOnlineStatus` 借助一组 [`useState`](/reference/react/useState) 和 [`useEffect`](/reference/react/useEffect) 实现。但这不是最好的解决方案。它有许多边界用例没有考虑到。例如假设当组件加载时，`isOnline` 已经为 `true`，但是如果网络已经离线的话这就是错误的。你可以使用浏览器的 [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API 来检查，但是在生成初始 HTML 的服务端直接使用它是没用的。简而言之这段代码可以改进。
 
-幸运的是，React 18 包含了一个叫做 [`useSyncExternalStore`](/reference/react/useSyncExternalStore) 的专用 API，它可以解决所有这些问题。这里是如何利用这个新 API 来重写你的 `useOnlineStatus` Hook：
+幸运的是，React 18 包含了一个叫做 [`useSyncExternalStore`](/reference/react/useSyncExternalStore) 的专用 API，它可以解决你所有这些问题。这里展示了如何利用这个新 API 来重写你的 `useOnlineStatus` Hook：
 
 <Sandpack>
 
@@ -1393,7 +1393,7 @@ export function useOnlineStatus() {
 
 </Sandpack>
 
-注意 **不需要修改任何组件** 如何来完成这次迁移：
+注意 **你不需要修改任何组件** 就能完成这次迁移：
 
 ```js {2,7}
 function StatusBar() {
@@ -1407,19 +1407,19 @@ function SaveButton() {
 }
 ```
 
-这是为什么把 Effect 包裹进自定义 Hook 是有益的另一个原因：
+这是把 Effect 包裹进自定义 Hook 有益的另一个原因：
 
 1. 你让进出 Effect 的数据流非常清晰。
-2. 你让组件专注于目标，而不是 Effect 的实现。
-3. 当 React 增加新特性时，你可以在不修改你的任何组件的情况下移除这些 Effect。
+2. 你让组件专注于目标，而不是 Effect 的准确实现。
+3. 当 React 增加新特性时，你可以在不修改任何组件的情况下移除这些 Effect。
 
-和 [设计系统](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969) 类似，你可能会发现从应用的组件中提取通用逻辑到自定义 Hook 是非常有帮助的。这会让你的组件代码专注于目标，避免经常写原始 Effect。许多很棒的自定义 Hook 是由 React 社区维护的。
+和 [设计系统](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969) 相似，你可能会发现从应用的组件中提取通用逻辑到自定义 Hook 是非常有帮助的。这会让你的组件代码专注于目标，并且避免经常写原始 Effect。许多很棒的自定义 Hook 是由 React 社区维护的。
 
 <DeepDive>
 
-#### React 会为远程数据获取提供内置的解决方案么？ {/*will-react-provide-any-built-in-solution-for-data-fetching*/}
+#### React 会为数据获取提供内置解决方案么？ {/*will-react-provide-any-built-in-solution-for-data-fetching*/}
 
-我们仍然在规划细节，但是期望未来可以像这样写远程数据获取：
+我们仍然在规划细节，但是期望未来可以像这样写数据获取：
 
 ```js {1,4,6}
 import { use } from 'react'; // 还不可用！
@@ -1431,13 +1431,13 @@ function ShippingForm({ country }) {
   // ...
 ```
 
-比起在每个组件手动写原始 Effect，如果你在应用中使用像上面的 `useData` 这样的自定义 Hook，迁移到最终推荐方式所需要的更改更少。但是旧的方式仍然可以有效工作，所以如果你喜欢写原始 Effect，你可以继续这样做。
+比起在每个组件手动写原始 Effect，在应用中使用像上面 `useData` 这样的自定义 Hook，之后迁移到最终推荐方式你所需要的修改更少。但是旧的方式仍然可以有效工作，所以如果你喜欢写原始 Effect，可以继续这样做。
 
 </DeepDive>
 
-### 不止一个方法达到这个目的 {/*there-is-more-than-one-way-to-do-it*/}
+### 不止一个方法可以做到 {/*there-is-more-than-one-way-to-do-it*/}
 
-假设你想要使用浏览器的 [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) API 实现一个 **从头开始的** 渐入动画。你可能会从一个建立动画循环的 Effect 开始。在动画的每一帧中，你可以修改 [ref 持有的](/learn/manipulating-the-dom-with-refs) DOM 节点的 opacity 属性直到它为 `1`。你的代码可能这样开始：
+假设你想要使用浏览器的 [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) API 实现一个 **从头开始的** fade-in 动画。你也许会从一个设置动画循环的 Effect 开始。在动画的每一帧中，你可以修改 [ref 持有的](/learn/manipulating-the-dom-with-refs) DOM 节点的 opacity 属性直到 `1`。你的代码一开始可能是这样：
 
 <Sandpack>
 
@@ -1611,7 +1611,7 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-你可以让 `useFadeIn` 和原来保持一致，但是也可以更进一步重构。例如你可以把创建动画循环的逻辑从 `useFadeIn` 提取到自定义 Hook `useAnimationLoop`：
+你可以让 `useFadeIn` 和原来保持一致，但是也可以进一步重构。例如你可以把设置动画循环的逻辑从 `useFadeIn` 提取到自定义 Hook `useAnimationLoop`：
 
 <Sandpack>
 
@@ -1715,7 +1715,7 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-但是你 **没有必要** 这样做。和常规函数一样，最终是由你决定在哪里绘制代码不同部分之间的边界。你也可以采取不一样的方法。把大部分必要的逻辑移入一个 [JavaScript class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)，而不是把逻辑保留在 Effect 中：
+但是 **没有必要** 这样做。和常规函数一样，最终是由你决定在哪里绘制代码不同部分之间的边界。你也可以采取不一样的方法。把大部分必要的逻辑移入一个 [JavaScript class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)，而不是把逻辑保留在 Effect 中：
 
 <Sandpack>
 
@@ -1813,9 +1813,9 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-Effect 可以将 React 和外部系统连接起来。Effect 之间需要的协调越多（例如链接多个动画），像上面的 sandbox 一样 **完整地** 从 Effect 和 Hook 中提取逻辑就越有意义。然后你提取的代码 **变成** “外部系统”。这会让你的 Effect 保持简单化，因为他们只需要向已经移动到 React 外部的系统发送消息。
+Effect 可以连接 React 和外部系统。Effect 之间的配合越多（例如链接多个动画），像上面的 sandbox 一样 **完整地** 从 Effect 和 Hook 中提取逻辑就越有意义。然后你提取的代码 **变成** “外部系统”。这会让你的 Effect 保持简洁，因为他们只需要向已经被你移动到 React 外部的系统发送消息。
 
-上面这个例子假设需要使用 JavaScript 写 fade-in 逻辑。但是使用纯 [CSS 动画](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations) 实现这个特定的 fade-in 会更加简单和高效：
+上面这个示例假设需要使用 JavaScript 写 fade-in 逻辑。但使用纯 [CSS 动画](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations) 实现这个特定的 fade-in 动画会更加简单和高效：
 
 <Sandpack>
 
@@ -1875,22 +1875,22 @@ html, body { min-height: 300px; }
 <Recap>
 
 - 自定义 Hook 让你可以在组件间共享逻辑。
-- 自定义 Hook 命名必须以后面跟着一个大写字母的 `use` 开头。
-- 自定义 Hook 共享的只是有状态的逻辑，而不是 state 本身。
-- 你可以将响应值从一个 Hook 传到另一个，并且他们保持最新。
-- 每次你的组件重新渲染时，所有的 Hook 会重新运行。
+- 自定义 Hook 命名必须以后跟一个大写字母的 `use` 开头。
+- 自定义 Hook 共享的只是有状态逻辑，不是 state 本身。
+- 你可以将响应值从一个 Hook 传到另一个，并且他们会保持最新。
+- 每次组件重新渲染时，所有的 Hook 会重新运行。
 - 自定义 Hook 的代码应该和组件代码一样保持纯粹。
-- 把自定义 Hook 收到的事件处理器封装到 Effect Event。
+- 把自定义 Hook 收到的事件处理函数包裹到 Effect Event。
 - 不要创建像 `useMount` 这样的自定义 Hook。保持目标具体化。
-- 如何以及在哪里选择代码边界取决于你自己。
+- 如何以及在哪里选择代码边界取决于你。
 
 </Recap>
 
 <Challenges>
 
-#### 提取一个 `useCounter` Hook {/*extract-a-usecounter-hook*/}
+#### 提取 `useCounter` Hook {/*extract-a-usecounter-hook*/}
 
-这个组件使用了一个 state 变量和一个 Effect 来展示每秒递增的一个数字。把逻辑提取到一个 `useCounter` 的自定义 Hook 中。你的目标是让 `Counter` 组件的实现看上去和这个一样：
+这个组件使用了一个 state 变量和一个 Effect 来展示每秒递增的一个数字。把这个逻辑提取到一个 `useCounter` 的自定义 Hook 中。你的目标是让 `Counter` 组件的实现看上去和这个一样：
 
 ```js
 export default function Counter() {
@@ -1960,9 +1960,9 @@ export function useCounter() {
 
 </Solution>
 
-#### 让计时器的 delay 变为可配置 {/*make-the-counter-delay-configurable*/}
+#### 让计时器的 delay 变为可配置项 {/*make-the-counter-delay-configurable*/}
 
-这个例子中有一个由滑动条控制的 state 变量 `delay`，但是它的值没有被用到。请将 `delay` 值传给你的自定义 Hook `useCounter`，修改 `useCounter` Hook，用传过去的 `delay` 代替硬编码 `1000` 毫秒。
+这个示例中有一个由滑动条控制的 state 变量 `delay`，但它的值没有被使用。请将 `delay` 值传给自定义 Hook `useCounter`，修改 `useCounter` Hook，用传过去的 `delay` 代替硬编码 `1000` 毫秒。
 
 <Sandpack>
 
@@ -2012,7 +2012,7 @@ export function useCounter() {
 
 <Solution>
 
-使用 `useCounter(delay)` 将 `delay` 传入你的 Hook。然后在 Hook 内部使用 `delay` 而不是硬编码 `1000`。你需要向你的 Effect 依赖项中加入 `delay`。这保证了 `delay` 的变化会重置间隔时间。
+使用 `useCounter(delay)` 将 `delay` 传入 Hook。然后在 Hook 内部使用 `delay` 替换硬编码值 `1000`。你需要在 Effect 依赖项中加入 `delay`。这保证了 `delay` 的变化会重置 interval。
 
 <Sandpack>
 
@@ -2064,7 +2064,7 @@ export function useCounter(delay) {
 
 #### 从 `useCounter` 中提取 `useInterval` {/*extract-useinterval-out-of-usecounter*/}
 
-现在 `useCounter` Hook 做两件事。设置一个时间间隔，并且在每个时间间隔的 tick 内递增一次 state 变量。将设置时间间隔的逻辑拆分到到一个 `useInterval` 的独立 Hook 中。它应该输入两个参数：`onTick` 回调函数和 `delay`。修改后 `useCounter` 的实现应该如下所示：
+现在 `useCounter` Hook 做两件事。设置一个 interval，并且在每个interval tick 内递增一次 state 变量。将设置 interval 的逻辑拆分到一个独立 Hook `useInterval`。它应该有两个参数：`onTick` 回调函数和 `delay`。本次修改后 `useCounter` 的实现应该如下所示：
 
 ```js
 export function useCounter(delay) {
@@ -2113,7 +2113,7 @@ export function useCounter(delay) {
 
 <Solution>
 
-`useInterval` 内部的逻辑应该是设置和清除计时器。不需要做除此之外的任何事。
+`useInterval` 内部的逻辑应该是设置和清理计时器。除此之外不需要做任何事。
 
 <Sandpack>
 
@@ -2152,17 +2152,17 @@ export function useInterval(onTick, delay) {
 
 </Sandpack>
 
-请注意这个解决方案有一些你将会下一个挑战中解决的问题。
+注意这个解决方案有一些问题，你将在下一个挑战中解决他们。
 
 </Solution>
 
 #### 修复计时器重置 {/*fix-a-resetting-interval*/}
 
-这个例子有 **两个** 独立的计时器。
+这个示例有 **两个** 独立的计时器。
 
-`App` 组件调用 `useCounter`，这个 Hook 调用 `useInterval` 来每秒更新一次计数器。但是 `App` 组件 **也** 调用 `useInterval` 来每两秒随机更新一次页面背景色。
+`App` 组件调用 `useCounter`，这个 Hook 调用 `useInterval` 来每秒更新一次计数器。但是 `App` 组件 **也** 调用 `useInterval` 每两秒随机更新一次页面背景色。
 
-更新页面背景色的回调函数因为一些原因从未执行。在 `useInterval` 内部添加一些 log。
+更新页面背景色的回调函数因为一些原因从未执行过。在 `useInterval` 内部添加一些日志。
 
 ```js {2,5}
   useEffect(() => {
@@ -2175,13 +2175,13 @@ export function useInterval(onTick, delay) {
   }, [onTick, delay]);
 ```
 
-这些 log 符合你的预期吗？如果你的一些 Effect 似乎不必要的重新同步了，你能猜中哪一个依赖导致这个情况发生吗？有其他方式从你的 Effect 中 [移除依赖](/learn/removing-effect-dependencies) 吗？
+这些日志符合你的预期吗？如果一些不必要的 Effect 似乎重新同步了，你能猜出哪一个依赖项导致了这个情况吗？有其他方式从 Effect 中 [移除依赖](/learn/removing-effect-dependencies) 吗？
 
-你修复这个问题以后，应该希望页面背景每两秒更新一次。
+这个问题修复以后，你预期的应该是页面背景每两秒更新一次。
 
 <Hint>
 
-看上去你的 `useInterval` Hook 接受事件监听器作为参数。你能想到一些包裹事件监听器的方法，这样它不需要成为你的 Effect 的依赖项吗？
+看上去你的 `useInterval` Hook 接受事件监听器作为参数。你能想到一些包裹事件监听器的方法，让它不需要成为 Effect 的依赖项吗？
 
 </Hint>
 
@@ -2250,11 +2250,11 @@ export function useInterval(onTick, delay) {
 
 <Solution>
 
-和 [早前这个页面](/learn/reusing-logic-with-custom-hooks#passing-event-handlers-to-custom-hooks) 做的一样，在 `useInterval` 内部，把 tick 回调函数包裹进一个 Effect Event。
+和 [早前这个页面](/learn/reusing-logic-with-custom-hooks#passing-event-handlers-to-custom-hooks) 做的一样，在 `useInterval` 内部把 tick 回调函数包裹进一个 Effect Event。
 
-这将让你可以从 Effect 的依赖项中删掉 `onTick`。每次组件重新渲染时，Effect 将不会重新同步，所以页面背景颜色更新间隔不会在有机会触发之前每秒重置一次。
+这将让你可以从 Effect 的依赖项中删掉 `onTick`。每次组件重新渲染时，Effect 将不会重新同步，所以页面背景颜色变化 interval 有机会触发之前不会每秒重置一次。
 
-随着这个修改，两个 interval 都会像预期的一样工作并且不会互相干预：
+随着这个修改，两个 interval 都会像预期一样工作并且不会互相干扰：
 
 <Sandpack>
 
@@ -2321,13 +2321,13 @@ export function useInterval(callback, delay) {
 
 </Solution>
 
-#### 实现一个交错的运动 {/*implement-a-staggering-movement*/}
+#### 实现交错运动 {/*implement-a-staggering-movement*/}
 
-这个例子中，`usePointerPosition()` Hook 追踪当前指针位置。尝试移动光标或你的手指到预览区域上方，看到有一个红点随着你移动。它的位置被保存在变量 `pos1` 中。
+这个示例中，`usePointerPosition()` Hook 追踪当前指针位置。尝试移动光标或你的手指到预览区域上方，可以看到有一个红点随着你移动。它的位置被保存在变量 `pos1` 中。
 
-事实上，有 5(!) 个不同的红点正在被渲染。你看不见是因为他们都出现在了同一位置。这就是你需要修复的问题。你想要实现的是一个“交错的”运动：每个圆点应该“跟随”它前一个点的路径。例如如果你快速移动光标，第一个点应该立刻跟着它，第二个应该在小小的延时后跟上第一个点，第三个点应该跟着第二个点等。
+事实上，有 5(!) 个正在被渲染的不同红点。你看不见是因为他们现在都显示在同一位置。这就是你需要修复的问题。你想要实现的是一个“交错”运动：每个圆点应该“跟随”它前一个点的路径。例如如果你快速移动光标，第一个点应该立刻跟着它，第二个应该在小小的延时后跟上第一个点，第三个点应该跟着第二个点等等。
 
-你需要实现自定义 Hook `useDelayedValue`。它当前的实现是返回提供给它的 `value`。而你想从 `delay` 毫秒之前返回 `value`。你可能需要一些 state 和一个 Effect 来完成这个任务。
+你需要实现自定义 Hook `useDelayedValue`。它当前实现返回的是提供给它的 `value`。而你想从 `delay` 毫秒之前返回 `value`。你可能需要一些 state 和一个 Effect 来完成这个任务。
 
 实现 `useDelayedValue` 后，你应该看见这些点一个接一个运动。
 
@@ -2335,7 +2335,7 @@ export function useInterval(callback, delay) {
 
 你需要在自定义 Hook 内部存储一个 state 变量 `delayedValue`。当 `value` 变化时，你需要运行一个 Effect。这个 Effect 应该在 `delay` 毫秒后更新 `delayedValue`。你可能发现调用 `setTimeout` 很有帮助。
 
-这个 Effect 需要清除吗？为什么？
+这个 Effect 需要清理吗？为什么？
 
 </Hint>
 
@@ -2408,7 +2408,7 @@ body { min-height: 300px; }
 
 <Solution>
 
-这里是一个生效的版本。你将 `delayedValue` 保存为一个 state 变量。当 `value` 更新的时候，你的 Effect 会安排一个 timeout 来更新 `delayedValue`。这就是 `delayedValue` 总是滞后于真实的 `value` 的原因。
+这里是一个生效的版本。你将 `delayedValue` 保存为一个 state 变量。当 `value` 更新时，Effect 会安排一个 timeout 来更新 `delayedValue`。这就是 `delayedValue` 总是“滞后于”实际 `value` 的原因。
 
 <Sandpack>
 
@@ -2485,7 +2485,7 @@ body { min-height: 300px; }
 
 </Sandpack>
 
-请注意这个 Effect **不** 需要清理。如果你在清理函数中调用了 `clearTimeout`，那么每当 `value` 变化时，就会终止已经计划好的 timeout。为了保持运动连续，你想要触发所有的 timeout。
+注意这个 Effect **不** 需要清理。如果你在清理函数中调用了 `clearTimeout`，那么每次 `value` 变化时，就会终止已经计划好的 timeout。为了保持运动连续，你需要触发所有 timeout。
 
 </Solution>
 
