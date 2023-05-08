@@ -13,7 +13,7 @@ translators:
 
 <YouWillLearn>
 
-* 如何使用 [`useState`](/reference/usestate) Hook 添加 state 变量
+* 如何使用 [`useState`](/reference/react/useState) Hook 添加 state 变量
 * `useState` Hook 返回哪一对值
 * 如何添加多个 state 变量
 * 为什么 state 被称作是局部的
@@ -164,7 +164,7 @@ button {
 1. **保留** 渲染之间的数据。
 2. **触发** React 使用新数据渲染组件（重新渲染）。
 
-[`useState`](/reference/usestate) Hook 提供了这两个功能：
+[`useState`](/reference/react/useState) Hook 提供了这两个功能：
 
 1. **State 变量** 用于保存渲染间的数据。
 2. **State setter 函数** 更新变量并触发 React 再次渲染组件。
@@ -351,7 +351,7 @@ State 只是这些特性中的一个，你之后还会遇到其他 Hook。
 
 ### 剖析 `useState` {/*anatomy-of-usestate*/}
 
-当你调用 [`useState`](/reference/usestate) 时，你是在告诉 React 你想让这个组件记住一些东西：
+当你调用 [`useState`](/reference/react/useState) 时，你是在告诉 React 你想让这个组件记住一些东西：
 
 ```js
 const [index, setIndex] = useState(0);
