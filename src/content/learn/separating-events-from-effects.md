@@ -1,37 +1,37 @@
 ---
-title: 'Separating Events from Effects'
+title: 将事件从 Effect 中分开
 ---
 
 <Intro>
 
-Event handlers only re-run when you perform the same interaction again. Unlike event handlers, Effects re-synchronize if some value they read, like a prop or a state variable, is different from what it was during the last render. Sometimes, you also want a mix of both behaviors: an Effect that re-runs in response to some values but not others. This page will teach you how to do that.
+事件处理函数只有在你再次执行同样的交互时才会重新运行。Effect 和事件处理函数不一样，它只有在读取的 prop 或 state 值和上一次渲染不一样时才会重新同步。有时你需要这两种行为的混合体：即一个 Effect 只在响应某些值时重新运行，但是在其他值变化时不重新运行。本章将会教你怎么实现这一点。
 
 </Intro>
 
 <YouWillLearn>
 
-- How to choose between an event handler and an Effect
-- Why Effects are reactive, and event handlers are not
-- What to do when you want a part of your Effect's code to not be reactive
-- What Effect Events are, and how to extract them from your Effects
-- How to read the latest props and state from Effects using Effect Events
+- 怎么在事件处理函数和 Effect 之间做选择 
+- 为什么 Effects 是响应式的，而事件处理函数不是
+- 当你想要 Effect 的部分代码变成非响应式时要做些什么
+- Effect Event 是什么，以及怎么从 Effect 中提取
+- 怎么使用 Effect Event 读取最新的 props 和 state
 
 </YouWillLearn>
 
-## Choosing between event handlers and Effects {/*choosing-between-event-handlers-and-effects*/}
+## 在事件处理函数和 Effect 中做选择 {/*choosing-between-event-handlers-and-effects*/}
 
-First, let's recap the difference between event handlers and Effects.
+首先让我们回顾一下事件处理函数和 Effect 的区别。
 
-Imagine you're implementing a chat room component. Your requirements look like this:
+假设你正在实现一个聊天室组件，需求如下：
 
-1. Your component should automatically connect to the selected chat room.
-1. When you click the "Send" button, it should send a message to the chat.
+1. 组件应该自动连接选中的聊天室。
+1. 每当你点击 “Send” 按钮，组件应该在当前聊天界面发送一条消息。
 
-Let's say you've already implemented the code for them, but you're not sure where to put it. Should you use event handlers or Effects? Every time you need to answer this question, consider [*why* the code needs to run.](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events)
+假设你已经实现了这部分代码，但是还没有确定应该放在哪里。你是应该用事件处理函数还是 Effect 呢？每当你需要回答这个问题时，请考虑一下 [**为什么** 代码需要运行](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events)。
 
-### Event handlers run in response to specific interactions {/*event-handlers-run-in-response-to-specific-interactions*/}
+### 事件处理函数只在响应特定的交互操作时运行 {/*event-handlers-run-in-response-to-specific-interactions*/}
 
-From the user's perspective, sending a message should happen *because* the particular "Send" button was clicked. The user will get rather upset if you send their message at any other time or for any other reason. This is why sending a message should be an event handler. Event handlers let you handle specific interactions:
+从用户角度出发，发送消息是 **因为** 他点击了特定的 “send” 按钮。如果在任意时间或者因为其他原因发送消息，用户会觉得非常混乱。这就是为什么发送消息应该使用事件处理函数。事件处理函数是让你处理特定的交互操作的：
 
 ```js {4-6}
 function ChatRoom({ roomId }) {
@@ -50,10 +50,10 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-With an event handler, you can be sure that `sendMessage(message)` will *only* run if the user presses the button.
+借助事件处理函数，你可以确保 `sendMessage(message)` **只** 在用户点击按钮的时候运行。
 
-### Effects run whenever synchronization is needed {/*effects-run-whenever-synchronization-is-needed*/}
-
+### 每当需要同步，Effect 就会运行 {/*effects-run-whenever-synchronization-is-needed*/}
+todo:暂停
 Recall that you also need to keep the component connected to the chat room. Where does that code go?
 
 The *reason* to run this code is not some particular interaction. It doesn't matter why or how the user navigated to the chat room screen. Now that they're looking at it and could interact with it, the component needs to stay connected to the selected chat server. Even if the chat room component was the initial screen of your app, and the user has not performed any interactions at all, you would *still* need to connect. This is why it's an Effect:
