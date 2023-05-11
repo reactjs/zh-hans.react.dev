@@ -259,7 +259,7 @@ function ChatRoom({ roomId, theme }) {
 ````
 
 用这个例子试一下，看你能否看出这个用户体验问题：
-// todo:翻译进度在此
+
 <Sandpack>
 
 ```json package.json hidden
@@ -386,9 +386,9 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-When the `roomId` changes, the chat re-connects as you would expect. But since `theme` is also a dependency, the chat *also* re-connects every time you switch between the dark and the light theme. That's not great!
+当 `roomId` 变化时，聊天会和预期一样重新连接。但是由于 `theme` 也是一个依赖项，所以每次你在 dark 和 light 主题间切换时，聊天 **也会** 重连。这不是很好！
 
-In other words, you *don't* want this line to be reactive, even though it is inside an Effect (which is reactive):
+换言之，即使它在 Effect 内部（这是响应式的），你也不想让这行代码变成响应式：
 
 ```js
       // ...
@@ -396,17 +396,17 @@ In other words, you *don't* want this line to be reactive, even though it is ins
       // ...
 ```
 
-You need a way to separate this non-reactive logic from the reactive Effect around it.
+你需要一个将这个非响应式逻辑和周围响应式 Effect 隔离开来的方法。
 
-### Declaring an Effect Event {/*declaring-an-effect-event*/}
+### 声明一个 Effect Event {/*declaring-an-effect-event*/}
 
 <Wip>
 
-This section describes an **experimental API that has not yet been released** in a stable version of React.
+本章节描述了一个在 React 稳定版中 **还没有发布的实验性 API**。
 
 </Wip>
 
-Use a special Hook called [`useEffectEvent`](/reference/react/experimental_useEffectEvent) to extract this non-reactive logic out of your Effect:
+使用 [`useEffectEvent`](/reference/react/experimental_useEffectEvent) 这个特殊的 Hook 从 Effect 中提取非响应式逻辑：
 
 ```js {1,4-6}
 import { useEffect, useEffectEvent } from 'react';
@@ -418,9 +418,9 @@ function ChatRoom({ roomId, theme }) {
   // ...
 ````
 
-Here, `onConnected` is called an *Effect Event.* It's a part of your Effect logic, but it behaves a lot more like an event handler. The logic inside it is not reactive, and it always "sees" the latest values of your props and state.
+这里的 `onConnected` 被称为 **Effect Event**。它是 Effect 逻辑的一部分，但是其行为更像事件处理函数。它内部的逻辑不是响应式的，而且能一直“看见”最新的 props 和 state。
 
-Now you can call the `onConnected` Effect Event from inside your Effect:
+现在你可以在 Effect 内部调用 `onConnected` Effect Event：
 
 ```js {2-4,9,13}
 function ChatRoom({ roomId, theme }) {
@@ -439,9 +439,9 @@ function ChatRoom({ roomId, theme }) {
   // ...
 ```
 
-This solves the problem. Note that you had to *remove* `onConnected` from the list of your Effect's dependencies. **Effect Events are not reactive and must be omitted from dependencies.**
+这个方法解决了问题。注意你必须从 Effect 依赖项中 **移除** `onConnected`。***Effect Event 是非响应式的并且必须从依赖项中删除**。
 
-Verify that the new behavior works as you would expect:
+验证新表现是否和你预期的一样：
 
 <Sandpack>
 
@@ -574,19 +574,19 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-You can think of Effect Events as being very similar to event handlers. The main difference is that event handlers run in response to a user interactions, whereas Effect Events are triggered by you from Effects. Effect Events let you "break the chain" between the reactivity of Effects and code that should not be reactive.
+你可以将 Effect Event 看成和事件处理函数相似的东西。主要区别是事件处理函数只在响应用户交互的时候运行，而 Effect Event 是你在 Effect 中触发的。Effect Event 让你在 Effect 响应性和不应是响应式的代码间“打破链条”。
 
-### Reading latest props and state with Effect Events {/*reading-latest-props-and-state-with-effect-events*/}
+### 使用 Effect Event 读取最新的 props 和 state {/*reading-latest-props-and-state-with-effect-events*/}
 
 <Wip>
 
-This section describes an **experimental API that has not yet been released** in a stable version of React.
+本章节描述了一个在 React 稳定版中 **还没有发布的实验性 API**。
 
 </Wip>
 
-Effect Events let you fix many patterns where you might be tempted to suppress the dependency linter.
+Effect Event 可以修复之前许多你可能试图抑制依赖项检查工具的地方。
 
-For example, say you have an Effect to log the page visits:
+例如，假设你有一个记录页面访问的 Effect：
 
 ```js
 function Page() {
@@ -597,7 +597,7 @@ function Page() {
 }
 ```
 
-Later, you add multiple routes to your site. Now your `Page` component receives a `url` prop with the current path. You want to pass the `url` as a part of your `logVisit` call, but the dependency linter complains:
+稍后向你的站点添加多个路由。现在 `Page` 组件接收一个包含当前路径的 `url` prop。你想把 `url` 作为 `logVisit` 调用的一部分进行传递，但是依赖项检查工具控诉：
 
 ```js {1,3}
 function Page({ url }) {
@@ -608,7 +608,7 @@ function Page({ url }) {
 }
 ```
 
-Think about what you want the code to do. You *want* to log a separate visit for different URLs since each URL represents a different page. In other words, this `logVisit` call *should* be reactive with respect to the `url`. This is why, in this case, it makes sense to follow the dependency linter, and add `url` as a dependency:
+想想你想要代码做什么。你 **需要** 为不同的 URL 记录单独的访问，因为每个 URL 代表不同的页面。换言之，`logVisit` 调用对于 `url` **应该** 是响应式的。这就是为什么在这种情况下， 遵循依赖项检查工具并添加 `url` 作为一个依赖项很有意义：
 
 ```js {4}
 function Page({ url }) {
@@ -619,7 +619,7 @@ function Page({ url }) {
 }
 ```
 
-Now let's say you want to include the number of items in the shopping cart together with every page visit:
+现在假设你想在每次页面访问中包含购物车中的商品数量：
 
 ```js {2-3,6}
 function Page({ url }) {
@@ -628,14 +628,14 @@ function Page({ url }) {
 
   useEffect(() => {
     logVisit(url, numberOfItems);
-  }, [url]); // 🔴 React Hook useEffect 缺少依赖项: 'numberOfItems'
+  }, [url]); // 🔴 React Hook useEffect 缺少依赖项: ‘numberOfItems’
   // ...
 }
 ```
 
 You used `numberOfItems` inside the Effect, so the linter asks you to add it as a dependency. However, you *don't* want the `logVisit` call to be reactive with respect to `numberOfItems`. If the user puts something into the shopping cart, and the `numberOfItems` changes, this *does not mean* that the user visited the page again. In other words, *visiting the page* is, in some sense, an "event". It happens at a precise moment in time.
 
-Split the code in two parts:
+将代码分割为两部分：
 
 ```js {5-7,10}
 function Page({ url }) {
@@ -876,20 +876,20 @@ Read [Removing Effect Dependencies](/learn/removing-effect-dependencies) for oth
 
 </DeepDive>
 
-### Limitations of Effect Events {/*limitations-of-effect-events*/}
+### Effect Event 的局限性 {/*limitations-of-effect-events*/}
 
 <Wip>
 
-This section describes an **experimental API that has not yet been released** in a stable version of React.
+本章节描述了一个在 React 稳定版中 **还没有发布的实验性 API**。
 
 </Wip>
 
-Effect Events are very limited in how you can use them:
+Effect Event 的局限性在于你如何使用他们：
 
-* **Only call them from inside Effects.**
-* **Never pass them to other components or Hooks.**
+* **只在 Effect 内部调用他们**。
+* **永远不要把他们传给其他的组件或者 Hook**。
 
-For example, don't declare and pass an Effect Event like this:
+例如不要像这样声明和传递 Effect Event：
 
 ```js {4-6,8}
 function Timer() {
@@ -916,7 +916,7 @@ function useTimer(callback, delay) {
 }
 ```
 
-Instead, always declare Effect Events directly next to the Effects that use them:
+取而代之的是，永远直接在使用他们的 Effect 旁边声明 Effect Event：
 
 ```js {10-12,16,21}
 function Timer() {
@@ -943,23 +943,23 @@ function useTimer(callback, delay) {
 }
 ```
 
-Effect Events are non-reactive "pieces" of your Effect code. They should be next to the Effect using them.
+Effect Event 是 Effect 代码的非响应式“片段”。他们应该在使用他们的 Effect 的旁边。
 
 <Recap>
 
-- Event handlers run in response to specific interactions.
-- Effects run whenever synchronization is needed.
-- Logic inside event handlers is not reactive.
-- Logic inside Effects is reactive.
-- You can move non-reactive logic from Effects into Effect Events.
-- Only call Effect Events from inside Effects.
-- Don't pass Effect Events to other components or Hooks.
+- 事件处理函数在响应特定交互时运行。
+- Effect在需要同步的时候运行。
+- 事件处理函数内部的逻辑是非响应式的。
+- Effect 内部的逻辑是响应式的。
+- 你可以将非响应式逻辑从 Effect 移到 Effect Event 中。
+- 只在 Effect 内部调用 Effect Event。
+- 不要将 Effect Event 传给其他组件或者 Hook。
 
 </Recap>
 
 <Challenges>
 
-#### Fix a variable that doesn't update {/*fix-a-variable-that-doesnt-update*/}
+#### 修复一个不更新的变量 {/*fix-a-variable-that-doesnt-update*/}
 
 This `Timer` component keeps a `count` state variable which increases every second. The value by which it's increasing is stored in the `increment` state variable. You can control the `increment` variable with the plus and minus buttons.
 
