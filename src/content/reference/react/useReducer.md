@@ -92,7 +92,7 @@ React 将把下一个状态设置为使用当前 `state` 和您传递给 `dispat
 
 ### 在组件中添加一个 reducer {/*adding-a-reducer-to-a-component*/}
 
-Call `useReducer` at the top level of your component to manage state with a [reducer.](/learn/extracting-state-logic-into-a-reducer)
+在组件的顶层调用 `useReducer` 以便使用 [reducer.](/learn/extracting-state-logic-into-a-reducer) 来管理状态。
 
 ```js [[1, 8, "state"], [2, 8, "dispatch"], [4, 8, "reducer"], [3, 8, "{ age: 42 }"]]
 import { useReducer } from 'react';
@@ -106,12 +106,12 @@ function MyComponent() {
   // ...
 ```
 
-`useReducer` returns an array with exactly two items:
+`useReducer` 返回一个包含两个元素的数组：
 
-1. The <CodeStep step={1}>current state</CodeStep> of this state variable, initially set to the <CodeStep step={3}>initial state</CodeStep> you provided.
-2. The <CodeStep step={2}>`dispatch` function</CodeStep> that lets you change it in response to interaction.
+1. 此状态变量的 <CodeStep step={1}> 当前状态 </CodeStep>，初始值设置为您提供的 <CodeStep step={3}> 初始状态 </CodeStep>。
+2. <CodeStep step={2}> dispatch 函数 </CodeStep>，允许您根据交互来改变它。
 
-To update what's on the screen, call <CodeStep step={2}>`dispatch`</CodeStep> with an object representing what the user did, called an *action*:
+要更新屏幕上的内容，请使用表示用户操作的对象（被称为 *action*）调用 <CodeStep step={2}>dispatch</CodeStep>：
 
 ```js [[2, 2, "dispatch"]]
 function handleClick() {
@@ -119,7 +119,7 @@ function handleClick() {
 }
 ```
 
-React will pass the current state and the action to your <CodeStep step={4}>reducer function</CodeStep>. Your reducer will calculate and return the next state. React will store that next state, render your component with it, and update the UI.
+React 会将当前状态和操作传递给您的 <CodeStep step={4}> reducer 函数</CodeStep>。您的 reducer 将计算并返回下一个状态。React 将存储该下一个状态，使用它渲染您的组件，并更新 UI。
 
 <Sandpack>
 
