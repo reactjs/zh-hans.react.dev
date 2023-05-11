@@ -223,7 +223,7 @@ export default function TeaGathering() {
   * **只负责自己的任务。** 不应更改渲染前存在的任何对象或变量。
   * **输入相同，则输出相同。** 给定相同的输入，组件应该总是返回相同的 JSX。
 * 渲染随时可能发生，因此组件不应依赖于彼此的渲染顺序。
-* 你不应该改变组件用于渲染的任何输入。这包括 props、state 和 context。通过 [“设置” state](/learn/state-a-components-memory)) 来更新界面，而不要改变预先存在的对象。
+* 你不应该改变组件用于渲染的任何输入。这包括 props、state 和 context。通过 [“设置” state](/learn/state-a-components-memory) 来更新界面，而不要改变预先存在的对象。
 * 努力在你返回的 JSX 中表达你的组件逻辑。当你需要“改变事物”时，你通常希望在事件处理程序中进行。作为最后的手段，你可以使用 `useEffect`。
 * 编写纯函数需要一些练习，但它充分释放了 React 范式的能力。
 
