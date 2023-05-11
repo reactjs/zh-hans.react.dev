@@ -54,7 +54,7 @@ export default function Counter() {
 
 </Sandpack>
 
-Ref 就像组件的一个不被 React 跟踪的秘密口袋。 例如，你可以使用 ref 来存储 [超时 ID](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#return_value)、[DOM 元素](https://developer.mozilla.org/en-US/docs/Web/API/Element) 和其他不影响组件渲染输出的对象。
+Ref 就像组件的一个不被 React 跟踪的秘密口袋。例如，你可以使用 ref 来存储 [超时 ID](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#return_value)、[DOM 元素](https://developer.mozilla.org/en-US/docs/Web/API/Element) 和其他不影响组件渲染输出的对象。
 
 <LearnMore path="/learn/referencing-values-with-refs">
 
@@ -237,9 +237,9 @@ function Form() {
 
 ## Effect 的生命周期 {/*lifecycle-of-reactive-effects*/}
 
-Effect 的生命周期不同于组件。组件可以挂载、更新或卸载。Effect 只能做两件事：开始同步某些东西，然后停止同步它。 如果你的 Effect 依赖于随时间变化的 props 和 state，这个循环可能会发生多次。
+Effect 的生命周期不同于组件。组件可以挂载、更新或卸载。Effect 只能做两件事：开始同步某些东西，然后停止同步它。如果你的 Effect 依赖于随时间变化的 props 和 state，这个循环可能会发生多次。
 
-这个 Effect 依赖于 `roomId` 这个 prop 的值。 Props 是 **反应值**，这意味着它们可以在重新渲染时改变。注意，如果 `roomId` 更改，Effect **重新同步**（并重新连接到服务器）：
+这个 Effect 依赖于 `roomId` 这个 prop 的值。Props 是 **反应值**，这意味着它们可以在重新渲染时改变。注意，如果 `roomId` 更改，Effect **重新同步**（并重新连接到服务器）：
 
 <Sandpack>
 
@@ -752,7 +752,7 @@ button { margin-left: 10px; }
 
 ## 使用自定义 Hook 复用逻辑 {/*reusing-logic-with-custom-hooks*/}
 
-React 有一些内置 Hook，例如 `useState`， `useContext` 和 `useEffect`。有时你需要一个用途更特殊的 Hook：例如获取数据，记录用户是否在线或者连接聊天室。为了实现效果，你可以根据应用需求创建自己的 Hook。
+React 有一些内置 Hook，例如 `useState`，`useContext` 和 `useEffect`。有时你需要一个用途更特殊的 Hook：例如获取数据，记录用户是否在线或者连接聊天室。为了实现效果，你可以根据应用需求创建自己的 Hook。
 
 这个示例中，自定义 Hook `usePointerPosition` 追踪当前指针位置，而自定义 Hook `useDelayedValue` 返回一个“滞后”你传递的值一定毫秒数的值。将光标移到沙盒预览区域上以查看跟随光标移动的点轨迹：
 
