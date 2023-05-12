@@ -633,7 +633,7 @@ function Page({ url }) {
 }
 ```
 
-You used `numberOfItems` inside the Effect, so the linter asks you to add it as a dependency. However, you *don't* want the `logVisit` call to be reactive with respect to `numberOfItems`. If the user puts something into the shopping cart, and the `numberOfItems` changes, this *does not mean* that the user visited the page again. In other words, *visiting the page* is, in some sense, an "event". It happens at a precise moment in time.
+你在 Effect 内部使用了 `numberOfItems`，所以代码检查工具会让你把它加到依赖项中。但是，你 **不** 想要 `logVisit` 调用响应 `numberOfItems`。如果用户把某样东西放入购物车， `numberOfItems` 会变化，这 **并不意味着** 用户再次访问了这个页面。换句话说，在某种意义上，**访问页面** 是一个“事件”。它发生在某个准确的时刻。
 
 将代码分割为两部分：
 
@@ -653,15 +653,15 @@ function Page({ url }) {
 }
 ```
 
-Here, `onVisit` is an Effect Event. The code inside it isn't reactive. This is why you can use `numberOfItems` (or any other reactive value!) without worrying that it will cause the surrounding code to re-execute on changes.
+这里的 `onVisit` 是一个 Effect Event。里面的代码不是响应式的。这就是为什么你可以使用 `numberOfItems`（或者任意响应式值！）而不用担心引起周围代码因为变化而重新执行。
 
-On the other hand, the Effect itself remains reactive. Code inside the Effect uses the `url` prop, so the Effect will re-run after every re-render with a different `url`. This, in turn, will call the `onVisit` Effect Event.
+另一方面，Effect 本身仍然是响应式的。其内部的代码使用了 `url` prop，所以每次因为不同的 `url` 重新渲染后 Effect 都会重新运行。这会依次调用 `onVisit` 这个 Effect Event。
 
-As a result, you will call `logVisit` for every change to the `url`, and always read the latest `numberOfItems`. However, if `numberOfItems` changes on its own, this will not cause any of the code to re-run.
+结果是你会因为 `url` 的变化去调用 `logVisit`，并且读取的一直都是最新的 `numberOfItems`。但是如果 `numberOfItems` 自己变化，不会引起任何代码的重新运行。
 
 <Note>
 
-You might be wondering if you could call `onVisit()` with no arguments, and read the `url` inside it:
+你可能想知道是否可以无参数调用 `onVisit()` 并且读取内部的 `url`：
 
 ```js {2,6}
   const onVisit = useEffectEvent(() => {
@@ -673,7 +673,7 @@ You might be wondering if you could call `onVisit()` with no arguments, and read
   }, [url]);
 ```
 
-This would work, but it's better to pass this `url` to the Effect Event explicitly. **By passing `url` as an argument to your Effect Event, you are saying that visiting a page with a different `url` constitutes a separate "event" from the user's perspective.** The `visitedUrl` is a *part* of the "event" that happened:
+这可以起作用，但是更好的方法是将这个 `url` 显式传递给Effect Event。**通过将 `url` 作为参数传给 Effect Event，你可以说从用户角度来看使用不同的 `url` 访问页面构成了一个独立的“事件”**。`visitedUrl` 是发生的“事件”的一部分：
 
 ```js {1-2,6}
   const onVisit = useEffectEvent(visitedUrl => {
@@ -685,9 +685,9 @@ This would work, but it's better to pass this `url` to the Effect Event explicit
   }, [url]);
 ```
 
-Since your Effect Event explicitly "asks" for the `visitedUrl`, now you can't accidentally remove `url` from the Effect's dependencies. If you remove the `url` dependency (causing distinct page visits to be counted as one), the linter will warn you about it. You want `onVisit` to be reactive with regards to the `url`, so instead of reading the `url` inside (where it wouldn't be reactive), you pass it *from* your Effect.
+由于 Effect 明确“要求” `visitedUrl`，所以现在你不会不小心地从 Effect 的依赖项中移除 `url`。如果你移除了 `url` 依赖项（导致不同的页面访问被认为是一个），代码检查工具会向你提出警告。如果你想要 `onVisit` 能对 `url` 的变化做出响应，不要读取内部的 `url`（这里不是响应式的），而是应该将它 **从** Effect 中传入。
 
-This becomes especially important if there is some asynchronous logic inside the Effect:
+如果 Effect 内部有一些异步逻辑，这就变得非常重要了：
 
 ```js {6,8}
   const onVisit = useEffectEvent(visitedUrl => {
@@ -697,19 +697,19 @@ This becomes especially important if there is some asynchronous logic inside the
   useEffect(() => {
     setTimeout(() => {
       onVisit(url);
-    }, 5000); // Delay logging visits
+    }, 5000); // 延迟记录访问
   }, [url]);
 ```
 
-Here, `url` inside `onVisit` corresponds to the *latest* `url` (which could have already changed), but `visitedUrl` corresponds to the `url` that originally caused this Effect (and this `onVisit` call) to run.
+在这里，`onVisit` 内的 `url` 对应 **最新的** `url`（可能已经变化了），但是 `visitedUrl` 对应的是最开始引起这个 Effect（并且是本次 `onVisit` 调用）运行的 `url` 。
 
 </Note>
 
 <DeepDive>
 
-#### Is it okay to suppress the dependency linter instead? {/*is-it-okay-to-suppress-the-dependency-linter-instead*/}
+#### 抑制依赖项检查是可行的吗？ {/*is-it-okay-to-suppress-the-dependency-linter-instead*/}
 
-In the existing codebases, you may sometimes see the lint rule suppressed like this:
+在已经存在的代码库中，你可能有时会看见像这样的检查规则抑制：
 
 ```js {7-9}
 function Page({ url }) {
@@ -725,13 +725,13 @@ function Page({ url }) {
 }
 ```
 
-After `useEffectEvent` becomes a stable part of React, we recommend **never suppressing the linter**.
+等 `useEffectEvent` 成为 React 稳定部分后，我们会推荐 **永远不要抑制代码检查工具**。
 
-The first downside of suppressing the rule is that React will no longer warn you when your Effect needs to "react" to a new reactive dependency you've introduced to your code. In the earlier example, you added `url` to the dependencies *because* React reminded you to do it. You will no longer get such reminders for any future edits to that Effect if you disable the linter. This leads to bugs.
+抑制规则的第一个缺点是当 Effect 需要对一个已经在代码中出现过的新响应式依赖项做出“响应”时，React 不会再发出警告。在稍早之前的示例中，你将 `url` 添加为依赖项，**是因为** React 提醒你去做这件事。如果禁用代码检查，你未来将不会再收到任何关于 Effect 修改的提醒。这引起了 bug。
 
-Here is an example of a confusing bug caused by suppressing the linter. In this example, the `handleMove` function is supposed to read the current `canMove` state variable value in order to decide whether the dot should follow the cursor. However, `canMove` is always `true` inside `handleMove`.
+这个示例展示了一个由抑制代码检查引起的奇怪 bug。在这个示例中，`handleMove` 应该读取当前的 state 变量 `canMove` 的值来决定这个点是否应该跟随光标。但是 `handleMove` 中的 `canMove` 一直是 `true`。
 
-Can you see why?
+你能看出是为什么吗？
 
 <Sandpack>
 
@@ -790,13 +790,13 @@ body {
 </Sandpack>
 
 
-The problem with this code is in suppressing the dependency linter. If you remove the suppression, you'll see that this Effect should depend on the `handleMove` function. This makes sense: `handleMove` is declared inside the component body, which makes it a reactive value. Every reactive value must be specified as a dependency, or it can potentially get stale over time!
+这段代码的问题在于抑制依赖项检查。如果移除，你可以看到 Effect 应该依赖于 `handleMove` 函数。这非常有意义：`handleMove` 是在组件内声明的，是响应式值。而每个响应式值都必须被指定为依赖项，否则它可能会随着时间而过时！
 
-The author of the original code has "lied" to React by saying that the Effect does not depend (`[]`) on any reactive values. This is why React did not re-synchronize the Effect after `canMove` has changed (and `handleMove` with it). Because React did not re-synchronize the Effect, the `handleMove` attached as a listener is the `handleMove` function created during the initial render. During the initial render, `canMove` was `true`, which is why `handleMove` from the initial render will forever see that value.
+原代码的作者对 React “撒谎”说 Effect 不依赖于任何响应式值（`[]`）。这就是为什么 `canMove`（以及 `handleMove`）变化后 React 没有重新同步。因为 React 没有重新同步 Effect，所以作为监听器附加的 `handleMove` 还是初次渲染期间创建的 `handleMove` 函数。初次渲染期间，`canMove` 的值是 `true`，这就是为什么来自初次渲染的 `handleMove` 永远只能看到这个值。
 
-**If you never suppress the linter, you will never see problems with stale values.**
+**如果你从来没有抑制代码检查，就永远不会遇见过期值的问题。**
 
-With `useEffectEvent`, there is no need to "lie" to the linter, and the code works as you would expect:
+有了 `useEffectEvent`，就不需要对代码检查工具“说谎”，并且代码也能和你预期的一样工作：
 
 <Sandpack>
 
@@ -870,9 +870,9 @@ body {
 
 </Sandpack>
 
-This doesn't mean that `useEffectEvent` is *always* the correct solution. You should only apply it to the lines of code that you don't want to be reactive. In the above sandbox, you didn't want the Effect's code to be reactive with regards to `canMove`. That's why it made sense to extract an Effect Event.
+这不意味着 `useEffectEvent` **总是** 正确的解决方案。你只能把它用在你不需要变成响应式的代码上。上面的 sandbox 中，你不需要 Effect 的代码响应 `canMove`。这就是提取 Effect Event很有意义的原因。
 
-Read [Removing Effect Dependencies](/learn/removing-effect-dependencies) for other correct alternatives to suppressing the linter.
+阅读 [移除 Effect 依赖项](/learn/removing-effect-dependencies) 寻找抑制代码检查的其他正确的替代方式。
 
 </DeepDive>
 
@@ -961,13 +961,13 @@ Effect Event 是 Effect 代码的非响应式“片段”。他们应该在使�
 
 #### 修复一个不更新的变量 {/*fix-a-variable-that-doesnt-update*/}
 
-This `Timer` component keeps a `count` state variable which increases every second. The value by which it's increasing is stored in the `increment` state variable. You can control the `increment` variable with the plus and minus buttons.
+`Timer` 组件保存了一个 `count` 的 state 变量，这个变量每秒增加一次。每次增加的值存储在 `increment` state 变量中。你可以使用加减按钮控制 `increment` 变量。
 
-However, no matter how many times you click the plus button, the counter is still incremented by one every second. What's wrong with this code? Why is `increment` always equal to `1` inside the Effect's code? Find the mistake and fix it.
+但是无论你点击加号按钮多少次，计数器每秒都只增加 １。这段代码存在什么问题呢？为什么 Effect 内部的 `increment` 总是等于 `1` 呢？找出错误并修复它。
 
 <Hint>
 
-To fix this code, it's enough to follow the rules.
+修复这段代码，必须足够遵循这些规则。
 
 </Hint>
 
@@ -1020,9 +1020,9 @@ button { margin: 10px; }
 
 <Solution>
 
-As usual, when you're looking for bugs in Effects, start by searching for linter suppressions.
+和往常一样，当你寻找 Effect 中的 bug 时，从寻找代码检查抑制开始。
 
-If you remove the suppression comment, React will tell you that this Effect's code depends on `increment`, but you "lied" to React by claiming that this Effect does not depend on any reactive values (`[]`). Add `increment` to the dependency array:
+如果你移除了抑制注释，React 就会告诉你这个 Effect 的代码依赖于 `increment`，但是你通过宣称这个 Effect 不依赖于响应式值（`[]`）“欺骗”了 React。将 `increment` 添加到依赖项数组：
 
 <Sandpack>
 
@@ -1070,19 +1070,19 @@ button { margin: 10px; }
 
 </Sandpack>
 
-Now, when `increment` changes, React will re-synchronize your Effect, which will restart the interval.
+现在当 `increment` 变化时，React 会重新同步你的 Effect，这会重启 interval。
 
 </Solution>
 
-#### Fix a freezing counter {/*fix-a-freezing-counter*/}
+#### 修复一个冻结的计数器 {/*fix-a-freezing-counter*/}
 
-This `Timer` component keeps a `count` state variable which increases every second. The value by which it's increasing is stored in the `increment` state variable, which you can control it with the plus and minus buttons. For example, try pressing the plus button nine times, and notice that the `count` now increases each second by ten rather than by one.
+`Timer` 组件保存了一个 `count` 的 state 变量，这个变量每秒增加一次。每次增加的值存储在 `increment` state 变量中，你可以使用加减按钮控制它。例如，尝试按压加号按钮九次，注意现在 `count` 每次都增加 10 而不是 1。
 
-There is a small issue with this user interface. You might notice that if you keep pressing the plus or minus buttons faster than once per second, the timer itself seems to pause. It only resumes after a second passes since the last time you've pressed either button. Find why this is happening, and fix the issue so that the timer ticks on *every* second without interruptions.
+这个用户接口有一个小问题。你可能注意到如果你每秒内按压加减按钮不止一次， 那计时器本身似乎就会暂停。它只在你最后一次按压按钮的一秒后恢复。找出为什么会发生这种现象，并修复它以便计时器能 **每** 秒滴答作响而不中断。
 
 <Hint>
 
-It seems like the Effect which sets up the timer "reacts" to the `increment` value. Does the line that uses the current `increment` value in order to call `setCount` really need to be reactive?
+似乎设置计时器的 Effect 对 `increment` 值的变化做出了 “响应”。为了调用 `setCount` 而使用当前 `increment` 值的代码行真的需要是响应式吗？
 
 </Hint>
 
@@ -1151,9 +1151,9 @@ button { margin: 10px; }
 
 <Solution>
 
-The issue is that the code inside the Effect uses the `increment` state variable. Since it's a dependency of your Effect, every change to `increment` causes the Effect to re-synchronize, which causes the interval to clear. If you keep clearing the interval every time before it has a chance to fire, it will appear as if the timer has stalled.
+问题在于 Effect 内部的代码使用了 `increment` 这个 state 变量。因为它是 Effect 的一个依赖项，每次 `increment` 变化都会引起 Effect 重新同步，这引起了 interval 清理。如果你每次有机会触发之前就清理 interval，它会表现得好像计时器已经停止了。
 
-To solve the issue, extract an `onTick` Effect Event from the Effect:
+为了解决这个问题，需要从 Effect 中提取一个 Effect Event `onTick`：
 
 <Sandpack>
 
