@@ -43,7 +43,7 @@ state `x` 从 `0` 变为 `5`，但是数字 `0` 本身并没有发生改变。�
 const [position, setPosition] = useState({ x: 0, y: 0 });
 ```
 
-其实，直接改变对象本身的内容是有可能做到的。**当你这样做时，就制造了一个 mutation**。
+从技术上来讲，可以改变对象自身的内容。**当你这样做时，就制造了一个 mutation**：
 
 ```js
 position.x = 5;
