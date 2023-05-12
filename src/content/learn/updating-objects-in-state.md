@@ -968,7 +968,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-代码中 `handlePlusClick` 函数的问题在于它直接修改了 `player` 对象。这就造成了 React 并不知道需要重新渲染的原因，也就没有更新屏幕上分数的值。这就是为什么，当你修改名字字段的时候，state 发生了更新，state 更新触发了重新渲染，重新渲染*同时也*更新了屏幕上的分数。
+代码中 `handlePlusClick` 函数的问题在于它直接修改了 `player` 对象。这就造成了 React 并不知道需要重新渲染的原因，也就没有更新屏幕上分数的值。这就是为什么，当你修改名字字段的时候，state 发生了更新，state 更新触发了重新渲染，重新渲染**同时也**更新了屏幕上的分数。
 
 代码中 `handleLastNameChange` 的问题在于它没有把 `...player` 中已有的属性复制到新的对象中。因此，当你编辑姓氏字段时，分数就丢失了。
 
