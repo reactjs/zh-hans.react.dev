@@ -1223,17 +1223,17 @@ button { margin: 10px; }
 
 </Sandpack>
 
-Since `onTick` is an Effect Event, the code inside it isn't reactive. The change to `increment` does not trigger any Effects.
+由于 `onTick` 是一个 Effect Event，所以内部的代码是非响应式的。`increment` 的变化不会触发任何 Effect。
 
 </Solution>
 
-#### Fix a non-adjustable delay {/*fix-a-non-adjustable-delay*/}
+#### 修复不可调整的延迟 {/*fix-a-non-adjustable-delay*/}
 
-In this example, you can customize the interval delay. It's stored in a `delay` state variable which is updated by two buttons. However, even if you press the "plus 100 ms" button until the `delay` is 1000 milliseconds (that is, a second), you'll notice that the timer still increments very fast (every 100 ms). It's as if your changes to the `delay` are ignored. Find and fix the bug.
+在这个示例中，你可以自定义 interval 延迟。它被储存在一个由两个按钮更新的 `delay` state 变量中。但你即使按了“加 100 ms”按钮到 `delay` 为 1000 毫秒（即 1 秒），可以注意到计时器仍然在快速增加（每 100 ms）。你对 `delay` 的修改好像被忽略了。找到并修复这个 bug。
 
 <Hint>
 
-Code inside Effect Events is not reactive. Are there cases in which you would _want_ the `setInterval` call to re-run?
+Effect Event 内部的代码是非响应式的。哪些情况下你会 **想要** `setInterval` 调用重新运行呢？
 
 </Hint>
 
@@ -1322,7 +1322,7 @@ button { margin: 10px; }
 
 <Solution>
 
-The problem with the above example is that it extracted an Effect Event called `onMount` without considering what the code should actually be doing. You should only extract Effect Events for a specific reason: when you want to make a part of your code non-reactive. However, the `setInterval` call *should* be reactive with respect to the `delay` state variable. If the `delay` changes, you want to set up the interval from scratch! To fix this code, pull all the reactive code back inside the Effect:
+上面这个示例的问题在于它没有考虑代码实际正在做什么就直接提取了一个叫做 `onMount` 的 Effect Event。你应该只为特定的原因提取 Effect Event：你想让代码的一部分称为非响应式。但是，`setInterval` 调用 state 变量 `delay` 的变化 **应该** 是响应式的。如果 `delay` 变化了，你想要重新设置 interval！为了修复这个问题，你需要将所有的响应式代码放回到 Effect 内部：
 
 <Sandpack>
 
@@ -1402,21 +1402,21 @@ button { margin: 10px; }
 
 </Sandpack>
 
-In general, you should be suspicious of functions like `onMount` that focus on the *timing* rather than the *purpose* of a piece of code. It may feel "more descriptive" at first but it obscures your intent. As a rule of thumb, Effect Events should correspond to something that happens from the *user's* perspective. For example, `onMessage`, `onTick`, `onVisit`, or `onConnected` are good Effect Event names. Code inside them would likely not need to be reactive. On the other hand, `onMount`, `onUpdate`, `onUnmount`, or `onAfterRender` are so generic that it's easy to accidentally put code that *should* be reactive into them. This is why you should name your Effect Events after *what the user thinks has happened,* not when some code happened to run.
+总的来说，你应该对像 `onMount` 这样主要关注 **执行时机** 而非 **目的** 的函数持有怀疑态度。开始可能会感觉“更具描述性”，但是可能会模糊你的意图。根据经验来说，Effect Event 应该对应从“用户的”角度发生的事情。例如，`onMessage`，`onTick`，`onVisit` 或者 `onConnected` 是优秀的 Effect Event 名称。它们内部的代码可能不需要是响应式的。另一方面，`onMount`，`onUpdate`，`onUnmount` 或者 `onAfterRender` 太通用了，以至于很容易不小心就把一些"应该"是响应式的代码放入其中。这就是为什么你应该用 **用户想要什么发生** 来给你的 Effect Event 命名，而不是用某些代码正好运行的时机命名。
 
 </Solution>
 
-#### Fix a delayed notification {/*fix-a-delayed-notification*/}
+#### 修复一个延迟的通知 {/*fix-a-delayed-notification*/}
 
-When you join a chat room, this component shows a notification. However, it doesn't show the notification immediately. Instead, the notification is artificially delayed by two seconds so that the user has a chance to look around the UI.
+当你加入一个聊天室时，这个组件展示一个通知。但是它不会立刻展示通知。相反，把通知人工延迟 2 秒钟，以便用户有机会查看 UI。
 
-This almost works, but there is a bug. Try changing the dropdown from "general" to "travel" and then to "music" very quickly. If you do it fast enough, you will see two notifications (as expected!) but they will *both* say "Welcome to music".
+这几乎生效了，但还是有一个 bug。尝试将下拉菜单从“general”变成“travel”并且接下来非常快速的变成“music”。如果你动作足够快，你会看到两个通知（和预期一样！），但是他们 **都是** 展示 “Welcome to music”。
 
-Fix it so that when you switch from "general" to "travel" and then to "music" very quickly, you see two notifications, the first one being "Welcome to travel" and the second one being "Welcome to music". (For an additional challenge, assuming you've *already* made the notifications show the correct rooms, change the code so that only the latter notification is displayed.)
+修复它，让它能在你快速从“general”切换到“travel”再到“music”的时候看见两个通知，第一个是“Welcome to travel” ，第二个是“Welcome to music”。（有一个额外的挑战，假设你 **已经** 让通知显示了正确的房间，请修改代码只展示后面的通知。）
 
 <Hint>
 
-Your Effect knows which room it connected to. Is there any information that you might want to pass to your Effect Event?
+你的 Effect 知道它连接的是哪一个房间。有任何你可能想要传给 Effect Event 的信息吗？
 
 </Hint>
 
@@ -1555,11 +1555,11 @@ label { display: block; margin-top: 10px; }
 
 <Solution>
 
-Inside your Effect Event, `roomId` is the value *at the time Effect Event was called.*
+在 Effect Event 内部，`roomId` 是　**Effect Event 被调用时刻** 的值。
 
-Your Effect Event is called with a two second delay. If you're quickly switching from the travel to the music room, by the time the travel room's notification shows, `roomId` is already `"music"`. This is why both notifications say "Welcome to music".
+Effect Event 伴随着两秒的延迟被调用。如果你快速地从 travel 切换到 music 聊天室，直到 travel 聊天室的通知显示出来，`roomId` 已经是 `“music”` 了。这就是为什么两个通知都是 “Welcome to music”。
 
-To fix the issue, instead of reading the *latest* `roomId` inside the Effect Event, make it a parameter of your Effect Event, like `connectedRoomId` below. Then pass `roomId` from your Effect by calling `onConnected(roomId)`:
+为了修复这个问题，不要读取 Effect Event 内部 **最新的** `roomId`，而是如同下面的 `connectedRoomId` 一样让它成为 Effect Event 的参数。然后通过调用 `onConnected(roomId)` 将 `roomId` 从 Effect 中传入：
 
 <Sandpack>
 
@@ -1694,9 +1694,10 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-The Effect that had `roomId` set to `"travel"` (so it connected to the `"travel"` room) will show the notification for `"travel"`. The Effect that had `roomId` set to `"music"` (so it connected to the `"music"` room) will show the notification for `"music"`. In other words, `connectedRoomId` comes from your Effect (which is reactive), while `theme` always uses the latest value.
 
-To solve the additional challenge, save the notification timeout ID and clear it in the cleanup function of your Effect:
+将 `roomId` 设置为 `“travel”`（所以它连接到了 `“travel”` 聊天室）的 Effect 将会展示 `“travel”` 的通知。将 `roomId` 设置为 `“music”`（所以它连接到了 `“music”` 聊天室）的 Effect 将会展示 `"music"` 的通知。换言之，`connectedRoomId` 来自 Effect（是响应式的），而 `theme` 总是使用最新值。
+
+为了解决额外的挑战，保存通知的 timeout ID，并在 Effect 的清理函数中进行清理：
 
 <Sandpack>
 
@@ -1837,7 +1838,7 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-This ensures that already scheduled (but not yet displayed) notifications get cancelled when you change rooms.
+这确保了当你修改聊天室时，已经安排好（但还没展示）的通知会被取消。
 
 </Solution>
 
