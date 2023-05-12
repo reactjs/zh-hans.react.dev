@@ -239,7 +239,7 @@ function Form() {
 
 Effect 的生命周期不同于组件。组件可以挂载、更新或卸载。Effect 只能做两件事：开始同步某些东西，然后停止同步它。如果你的 Effect 依赖于随时间变化的 props 和 state，这个循环可能会发生多次。
 
-这个 Effect 依赖于 `roomId` 这个 prop 的值。Props 是 **反应值**，这意味着它们可以在重新渲染时改变。注意，如果 `roomId` 更改，Effect **重新同步**（并重新连接到服务器）：
+这个 Effect 依赖于 `roomId` 这个 prop 的值。Props 是 **响应值**，这意味着它们可以在重新渲染时改变。注意，如果 `roomId` 更改，Effect **重新同步**（并重新连接到服务器）：
 
 <Sandpack>
 
