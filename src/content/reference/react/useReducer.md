@@ -157,7 +157,7 @@ button { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-`useReducer` is very similar to [`useState`](/reference/react/useState), but it lets you move the state update logic from event handlers into a single function outside of your component. Read more about [choosing between `useState` and `useReducer`.](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer)
+`useReducer` 与 [`useState`](/reference/react/useState) 非常相似，但它允许您将状态更新逻辑从事件处理器移到组件外的单个函数中。阅读更多关于[在 `useState` 和 `useReducer` 之间进行选择的内容。](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer)
 
 ---
 
