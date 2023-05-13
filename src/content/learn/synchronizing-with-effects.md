@@ -1,65 +1,65 @@
 ---
-title: 'Synchronizing with Effects'
+title: '同步操作与 Effect'
 ---
 
 <Intro>
 
-Some components need to synchronize with external systems. For example, you might want to control a non-React component based on the React state, set up a server connection, or send an analytics log when a component appears on the screen. *Effects* let you run some code after rendering so that you can synchronize your component with some system outside of React.
+一些组件需要与外部系统进行同步操作。 例如，您可能希望根据 React 状态来控制非 React 组件、连接到服务器，或者是在组件渲染时发送调试分析日志。 *Effects* 允许你在渲染后运行一些代码，这样你就可以将你的组件与 React 的一些外部系统执行同步操作。
 
 </Intro>
 
 <YouWillLearn>
 
-- What Effects are
-- How Effects are different from events
-- How to declare an Effect in your component
-- How to skip re-running an Effect unnecessarily
-- Why Effects run twice in development and how to fix them
+- Effect 究竟是什么
+- Effect 和事件（Event）有何不同
+- 如何在你的组件中声明 Effect
+- 如何避免 Effect 的不必要重复执行
+- 为什么 Effects 在开发环境中运行两次，以及如何解决这个问题
 
 </YouWillLearn>
 
-## What are Effects and how are they different from events? {/*what-are-effects-and-how-are-they-different-from-events*/}
+## 什么是 Effect ？它与事件 Event 有何不同 {/*what-are-effects-and-how-are-they-different-from-events*/}
 
-Before getting to Effects, you need to be familiar with two types of logic inside React components:
+在我们开始讨论 Effects 之前, 你需要熟悉在React组件中两种类型的内部逻辑：
 
-- **Rendering code** (introduced in [Describing the UI](/learn/describing-the-ui)) lives at the top level of your component. This is where you take the props and state, transform them, and return the JSX you want to see on the screen. [Rendering code must be pure.](/learn/keeping-components-pure) Like a math formula, it should only _calculate_ the result, but not do anything else.
+- **渲染逻辑代码** （详见 [描述用户界面](/learn/describing-the-ui) 一节）它位于组件声明区块的顶部位置。也就是你获取属性（Props）和设置状态（State）的地方，程序执行时会对这些代码进行计算，然后返回计算得到的 JSX 组件，并在屏幕上渲染。 [渲染逻辑代码必须是纯粹的。](/learn/keeping-components-pure) 就像数学公式，它只能去**计算**并得到结果, 除此之外什么也不要做。
 
-- **Event handlers** (introduced in [Adding Interactivity](/learn/adding-interactivity)) are nested functions inside your components that *do* things rather than just calculate them. An event handler might update an input field, submit an HTTP POST request to buy a product, or navigate the user to another screen. Event handlers contain ["side effects"](https://en.wikipedia.org/wiki/Side_effect_(computer_science)) (they change the program's state) caused by a specific user action (for example, a button click or typing).
+- **事件处理程序** （详见 [添加交互](/learn/adding-interactivity) 一节）它是组件内声明的函数，它们**做**任务而不仅仅有计算渲染逻辑。还可以是更新输入字段、在电商网站中提交 HTTP、POST 请求以发送“购买”的动作，或者将用户导航到另一个屏幕。事件处理程序包括特定的用户操作（例如，单击按钮或键入）引起的[“副作用”](https://en.wikipedia.org/wiki/Side_effect_(computer_science))（它会改变程序的 State 状态）。
 
-Sometimes this isn't enough. Consider a `ChatRoom` component that must connect to the chat server whenever it's visible on the screen. Connecting to a server is not a pure calculation (it's a side effect) so it can't happen during rendering. However, there is no single particular event like a click that causes `ChatRoom` to be displayed.
+有时候，仅仅有上面这些东西还不够。 考虑 `ChatRoom` 这个“聊天室” 组件，它无论在是否被渲染都应当时刻与聊天服务器保持连接。而连接到聊天服务器并不是一个纯粹的操作（也就是说它是一个副作用）所以，它不能在组件渲染的过程中执行。那么，如果我希望在只在单击时触发渲染`ChatRoom`，那么我应该怎么做？
 
-***Effects* let you specify side effects that are caused by rendering itself, rather than by a particular event.** Sending a message in the chat is an *event* because it is directly caused by the user clicking a specific button. However, setting up a server connection is an *Effect* because it should happen no matter which interaction caused the component to appear. Effects run at the end of a [commit](/learn/render-and-commit) after the screen updates. This is a good time to synchronize the React components with some external system (like network or a third-party library).
+***Effects* 允许您指定由渲染本身引起的副作用，而不是由特定事件引起的副作用。** 在聊天中发送消息是一个事件，因为它是直接由用户点击特定按钮引起的。然而，连接到服务器则是一个副作用，因为它无论任何交互引起组件渲染时都会发生。Effects 在屏幕更新的 [提交](/learn/render-and-commit) 行为结束后运行。这是一个在 React 组件渲染时，与外部系统（如网络或第三方库）进行同步操作的好时机。
 
 <Note>
 
-Here and later in this text, capitalized "Effect" refers to the React-specific definition above, i.e. a side effect caused by rendering. To refer to the broader programming concept, we'll say "side effect".
+在本文和后续文本中，这里的 `Effect` 在 React 里面是一个专有定义，即由渲染引起的副作用。为了指代更广泛的编程概念，也可以称其为 "副作用（side effect）"。
 
 </Note>
 
 
-## You might not need an Effect {/*you-might-not-need-an-effect*/}
+## 你可能不需要 Effect {/*you-might-not-need-an-effect*/}
 
-**Don't rush to add Effects to your components.** Keep in mind that Effects are typically used to "step out" of your React code and synchronize with some *external* system. This includes browser APIs, third-party widgets, network, and so on. If your Effect only adjusts some state based on other state, [you might not need an Effect.](/learn/you-might-not-need-an-effect)
+**不要莽然在你的组件中使用Effect** 记住，Effects 通常用于“跳出”你的 React 代码与一些*外部*系统进行同步。 这包括浏览器 API、第三方小部件、网络等。 如果您的 Effect 仅根据其他状态调整某些状态，[你可能不需要 Effect。](/learn/you-might-not-need-an-effect)
 
-## How to write an Effect {/*how-to-write-an-effect*/}
+## 如何写一个 Effect {/*how-to-write-an-effect*/}
 
-To write an Effect, follow these three steps:
+编写一个 Effect, 遵循以下三种规则：
 
-1. **Declare an Effect.** By default, your Effect will run after every render.
-2. **Specify the Effect dependencies.** Most Effects should only re-run *when needed* rather than after every render. For example, a fade-in animation should only trigger when a component appears. Connecting and disconnecting to a chat room should only happen when the component appears and disappears, or when the chat room changes. You will learn how to control this by specifying *dependencies.*
-3. **Add cleanup if needed.** Some Effects need to specify how to stop, undo, or clean up whatever they were doing. For example, "connect" needs "disconnect", "subscribe" needs "unsubscribe", and "fetch" needs either "cancel" or "ignore". You will learn how to do this by returning a *cleanup function*.
+1. **声明一个 Effect.** 默认情况下, 你的 Effect 会在每次渲染后都会执行。
+2. **指定 Effect 依赖.** 大多数 Effects 应该按需执行，而不是在每次渲染后都要执行。例如，淡入动画应该只在组件出现时触发。连接和断开聊天室只应在组件出现和消失时，或者切换聊天室时发生。您将学习如何通过指定依赖来控制如何按需执行。
+3. **必要时添加清理操作.** 有的 Effects 需要指定如何停止、撤销, 或者清除它的效果。 例如， “连接” 操作需要 “断连”, “订阅” 需要 “退订”， 以及 “获取” 既需要 “取消” 也需要 “忽略”。你将学习如何让通过 *清理操作函数* 来做这些。
 
-Let's look at each of these steps in detail.
+以下是具体步骤
 
-### Step 1: Declare an Effect {/*step-1-declare-an-effect*/}
+### 第一步 1: 声明 Effect {/*step-1-declare-an-effect*/}
 
-To declare an Effect in your component, import the [`useEffect` Hook](/reference/react/useEffect) from React:
+在你的组件内声明 Effect ，从React模块中引入 [`useEffect` Hook](/reference/react/useEffect)：
 
 ```js
 import { useEffect } from 'react';
 ```
 
-Then, call it at the top level of your component and put some code inside your Effect:
+然后，在你的组件顶层位置调用它，并传入一些在每次渲染时都需要执行的代码：
 
 ```js {2-4}
 function MyComponent() {
@@ -70,15 +70,15 @@ function MyComponent() {
 }
 ```
 
-Every time your component renders, React will update the screen *and then* run the code inside `useEffect`. In other words, **`useEffect` "delays" a piece of code from running until that render is reflected on the screen.**
+每当您的组件渲染时，React 将更新屏幕，然后运行 useEffect 中的代码。换句话说，**useEffect 会把这段代码拖延到屏幕更新渲染后执行。**
 
-Let's see how you can use an Effect to synchronize with an external system. Consider a `<VideoPlayer>` React component. It would be nice to control whether it's playing or paused by passing an `isPlaying` prop to it:
+让我们看看如何使用 Effect 与外部系统同步。考虑一个 `<VideoPlayer>` React 组件。通过传递一个 `isPlaying` 的属性，可以控制它是正在播放还是暂停：
 
 ```js
 <VideoPlayer isPlaying={isPlaying} />;
 ```
 
-Your custom `VideoPlayer` component renders the built-in browser [`<video>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video) tag:
+你让 `VideoPlayer` 组件渲染浏览器的内置的 [`<video>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video) 标签:
 
 ```js
 function VideoPlayer({ src, isPlaying }) {
@@ -87,11 +87,11 @@ function VideoPlayer({ src, isPlaying }) {
 }
 ```
 
-However, the browser `<video>` tag does not have an `isPlaying` prop. The only way to control it is to manually call the [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) and [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause) methods on the DOM element. **You need to synchronize the value of `isPlaying` prop, which tells whether the video _should_ currently be playing, with calls like `play()` and `pause()`.**
+然而， 这个 `<video>` 标签本身并没有 `isPlaying` 这个属性。 它只能在 DOM 上通过手动调用 [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) 和 [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause) 方法来实现是否要播放内容。 **你需要同步 isPlaying 属性的值，通过调用 `play()` 和 `pause()` 函数。以决定是否要播放当前的视频。**
 
-We'll need to first [get a ref](/learn/manipulating-the-dom-with-refs) to the `<video>` DOM node.
+我们首先要为 `<video>` 这个DOM节点 [获取引用](/learn/manipulating-the-dom-with-refs)。
 
-You might be tempted to try to call `play()` or `pause()` during rendering, but that isn't correct:
+您可能会尝试在渲染期间调用 `play()` 或 `pause()`，但这种做法是错的：
 
 <Sandpack>
 
@@ -133,11 +133,11 @@ video { width: 250px; }
 
 </Sandpack>
 
-The reason this code isn't correct is that it tries to do something with the DOM node during rendering. In React, [rendering should be a pure calculation](/learn/keeping-components-pure) of JSX and should not contain side effects like modifying the DOM.
+这段代码之所以不正确，是因为它试图在渲染期间对 DOM 节点进行操作。 在React中， [JSX的渲染必须是纯粹操作](/learn/keeping-components-pure) 并且不应该包含任何像修改DOM的副作用。
 
-Moreover, when `VideoPlayer` is called for the first time, its DOM does not exist yet! There isn't a DOM node yet to call `play()` or `pause()` on, because React doesn't know what DOM to create until you return the JSX.
+此外，在首次调用 `VideoPlayer`时，在没有运行到返回 JSX 这一步之前，先执行渲染逻辑代码，但此时还不清楚返回的 JSX 是什么样的，因此 React 还不知道要创建哪些 DOM 对象。所以它要渲染 `<video>` 的 DOM 此时还不存在！这样就还不能调用 `play()` 和 `pause()` 方法。
 
-The solution here is to **wrap the side effect with `useEffect` to move it out of the rendering calculation:**
+解决办法就是 **使用 `useEffect` 包裹副作用，把它分离到渲染计算的过程之外：**
 
 ```js {6,12}
 import { useEffect, useRef } from 'react';
@@ -157,11 +157,11 @@ function VideoPlayer({ src, isPlaying }) {
 }
 ```
 
-By wrapping the DOM update in an Effect, you let React update the screen first. Then your Effect runs.
+把调用 DOM 方法的操作封装在 Effect 中，您可以让 React 先更新屏幕。然后再运行您的 Effect。
 
-When your `VideoPlayer` component renders (either the first time or if it re-renders), a few things will happen. First, React will update the screen, ensuring the `<video>` tag is in the DOM with the right props. Then React will run your Effect. Finally, your Effect will call `play()` or `pause()` depending on the value of `isPlaying`.
+当 `VideoPlayer` 组件渲染时（无论是否为首次渲染），会发生以下事情。 首先，React 会刷新屏幕，确保 `<video>` 元素以正确地出现在 DOM 中。然后 React 将运行您的 Effect。最后，您的 Effect 将根据 `isPlaying` 的值调用 `play()` 或 `pause()`。
 
-Press Play/Pause multiple times and see how the video player stays synchronized to the `isPlaying` value:
+试试按下几次 播放/暂停 操作 ，观察视频播放器是如何与`isPlaying`值同步的：
 
 <Sandpack>
 
@@ -205,13 +205,13 @@ video { width: 250px; }
 
 </Sandpack>
 
-In this example, the "external system" you synchronized to React state was the browser media API. You can use a similar approach to wrap legacy non-React code (like jQuery plugins) into declarative React components.
+在这个示例中，您同步到 React 状态的 "外部系统" 是浏览器媒体 API。您可以使用类似的方法将旧的非 React 代码（如 jQuery 插件）封装成声明性的 React 组件。
 
-Note that controlling a video player is much more complex in practice. Calling `play()` may fail, the user might play or pause using the built-in browser controls, and so on. This example is very simplified and incomplete.
+请注意，控制视频播放器在实际应用中复杂得多。比如调用 `play()` 可能会失败，用户可能会使用内置浏览器控件播放或暂停等等。这只是一个简化了很多具体细节的例子。
 
 <Pitfall>
 
-By default, Effects run after *every* render. This is why code like this will **produce an infinite loop:**
+一般来说，Effect会在 **每次** 渲染时都会执行。**以下代码会陷入无尽循环之中。**
 
 ```js
 const [count, setCount] = useState(0);
@@ -220,20 +220,20 @@ useEffect(() => {
 });
 ```
 
-Effects run as a *result* of rendering. Setting state *triggers* rendering. Setting state immediately in an Effect is like plugging a power outlet into itself. The Effect runs, it sets the state, which causes a re-render, which causes the Effect to run, it sets the state again, this causes another re-render, and so on.
+这里的 Effect 会**生成新的渲染结果**。也就是说，Effect会设置新的 `count` 状态，而设置新的 `count` 状态又会**触发**新一轮渲染。但是新一轮渲染时又会再次执行 Effect ，然后 Effect 又开始改变状态，从而又开始触发新一轮渲染。就这样，它们陷入了一个无穷尽的循环之中。
 
-Effects should usually synchronize your components with an *external* system. If there's no external system and you only want to adjust some state based on other state, [you might not need an Effect.](/learn/you-might-not-need-an-effect)
+效果通常应该使您的组件与**外部**系统同步。 如果没有外部系统，你只想根据其他状态调整一些状态， [那么你也许就不需要 Effect。](/learn/you-might-not-need-an-effect)
 
 </Pitfall>
 
-### Step 2: Specify the Effect dependencies {/*step-2-specify-the-effect-dependencies*/}
+### Step 2: 指定 Effect 依赖 {/*step-2-specify-the-effect-dependencies*/}
 
-By default, Effects run after *every* render. Often, this is **not what you want:**
+一般来说， Effects 会在 **每次** 渲染时执行。**但通常来讲，有时候你并不需要每次渲染的时候都要执行 Effects 。**
 
-- Sometimes, it's slow. Synchronizing with an external system is not always instant, so you might want to skip doing it unless it's necessary. For example, you don't want to reconnect to the chat server on every keystroke.
-- Sometimes, it's wrong. For example, you don't want to trigger a component fade-in animation on every keystroke. The animation should only play once when the component appears for the first time.
+- 有时，它会拖慢运行速度。因为与外部系统的同步操作总是有一定的时耗，在非必要时您可能希望跳过它。例如，您不想在每次击键时都重新连接到聊天服务器。
+- 有时候，这会导致程序逻辑错误。 例如，组件的淡入动画只需要在第一次出现时播放一次，而不是每次事件在触发新一轮渲染后都要播放。
 
-To demonstrate the issue, here is the previous example with a few `console.log` calls and a text input that updates the parent component's state. Notice how typing causes the Effect to re-run:
+为了演示这个问题，还是拿前面的代码作示例，在这里调用 `console.log` 指示事件改变状态。在这里，为`VideoPlayer`的父组件 `<App/>` 加入了一个新的 `<input>` 文本输入框标签。请尝试点击按钮、往文本框内输入一些内容，注意点击、按键事件如何导致 Effect 重复执行：
 
 <Sandpack>
 
@@ -281,7 +281,9 @@ video { width: 250px; }
 
 </Sandpack>
 
-You can tell React to **skip unnecessarily re-running the Effect** by specifying an array of *dependencies* as the second argument to the `useEffect` call. Start by adding an empty `[]` array to the above example on line 14:
+在上面的例子中，点击按钮、按键都触发了事件，然后事件修改状态，修改状态引起新一轮渲染。
+
+所以，你可以给定一个 **依赖数组** ，传入`useEffect`的第二个参数，来告诉 React **跳过非必要的Effect重复执行**。如果你在上面示例的第14行中传入一个空数组 `[]`。
 
 ```js {3}
   useEffect(() => {
@@ -289,7 +291,7 @@ You can tell React to **skip unnecessarily re-running the Effect** by specifying
   }, []);
 ```
 
-You should see an error saying `React Hook useEffect has a missing dependency: 'isPlaying'`:
+你会发现 React 会报错： `React Hook useEffect has a missing dependency: 'isPlaying'`。完整代码如下:
 
 <Sandpack>
 
@@ -337,7 +339,7 @@ video { width: 250px; }
 
 </Sandpack>
 
-The problem is that the code inside of your Effect *depends on* the `isPlaying` prop to decide what to do, but this dependency was not explicitly declared. To fix this issue, add `isPlaying` to the dependency array:
+问题就出现在你在 Effect 立面 **依赖** 了一个 `isPlaying` 的属性来控制里面的逻辑。但你又没有直接明确告诉 Effect 要依赖这个属性。为了解决这个问题，你需要声明你的Effect依赖这个属性，把`isPlaying`加入到依赖数组中即可：
 
 ```js {2,7}
   useEffect(() => {
@@ -349,7 +351,7 @@ The problem is that the code inside of your Effect *depends on* the `isPlaying` 
   }, [isPlaying]); // ...so it must be declared here!
 ```
 
-Now all dependencies are declared, so there is no error. Specifying `[isPlaying]` as the dependency array tells React that it should skip re-running your Effect if `isPlaying` is the same as it was during the previous render. With this change, typing into the input doesn't cause the Effect to re-run, but pressing Play/Pause does:
+这样，你就向Effect声明依赖了这个`isPlaying`属性，这样就不会报错了。指定 `[isPlaying]` 作为依赖数组会告诉React：当新一轮渲染发生时，如果依赖中的`isPlaying`的值与前一轮渲染的值相同，那么就可以跳过这一次的Effect。就避免了Effect的重复执行。这样，你在向`<input>`执行按键输入时，由于 Effect不依赖 `Text` 状态而不会触发执行，但是按下 播放/暂停 按钮时由于修改了这个 Effect 依赖的 `isPlaying` 状态，则会触发执行：
 
 <Sandpack>
 
@@ -397,37 +399,37 @@ video { width: 250px; }
 
 </Sandpack>
 
-The dependency array can contain multiple dependencies. React will only skip re-running the Effect if *all* of the dependencies you specify have exactly the same values as they had during the previous render. React compares the dependency values using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. See the [`useEffect` reference](/reference/react/useEffect#reference) for details.
+依赖数组可以包含多个依赖。当React只有在数组中**所有的**依赖值与前一轮渲染相同时，才会跳过 本次Effect执行。其中，与前一轮渲染比较依赖值时，React使用的是 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 这个比较方法。详见 [`useEffect` reference](/reference/react/useEffect#reference)。
 
-**Notice that you can't "choose" your dependencies.** You will get a lint error if the dependencies you specified don't match what React expects based on the code inside your Effect. This helps catch many bugs in your code. If you don't want some code to re-run, [*edit the Effect code itself* to not "need" that dependency.](/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize)
+**请注意，您不能随意“自选”您的依赖项。** 如果你在Effect里实际依赖项和你在依赖数组中所声明的依赖不匹配时，你就会得到 lint 报错。这是一种很不好的习惯，它会在你的代码中引入很多 BUG 。如果你希望在Effect实际依赖某个值的情况下，忽略掉某个依赖引发的重复执行, [那么你应当**编辑Effect代码本身**，使其“不需要”该依赖项。](/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize)
 
 <Pitfall>
 
-The behaviors without the dependency array and with an *empty* `[]` dependency array are different:
+没有依赖数组和带有**空**依赖数组 `[]`两种情况行为是不同的：
 
 ```js {3,7,11}
 useEffect(() => {
-  // This runs after every render
+  // 它会在每次渲染时执行
 });
 
 useEffect(() => {
-  // This runs only on mount (when the component appears)
+  // 它只会在组件挂载时执行 (也就是说组件出现时，通常是组件首次调用时)
 }, []);
 
 useEffect(() => {
-  // This runs on mount *and also* if either a or b have changed since the last render
+  // 它会在组件挂载时，或者与上一轮渲染时相比 a 或 b 发生变化时两种情况下执行
 }, [a, b]);
 ```
 
-We'll take a close look at what "mount" means in the next step.
+我们将在下一步中仔细研究**挂载**的含义。
 
 </Pitfall>
 
 <DeepDive>
 
-#### Why was the ref omitted from the dependency array? {/*why-was-the-ref-omitted-from-the-dependency-array*/}
+#### 为什么 ref 可以从依赖数组中省略？ {/*why-was-the-ref-omitted-from-the-dependency-array*/}
 
-This Effect uses _both_ `ref` and `isPlaying`, but only `isPlaying` is declared as a dependency:
+这个 Effect **同时** 依赖了 `ref` 和 `isPlaying`，但是只需要在数组中声明 `isPlaying` 这个依赖：
 
 ```js {9}
 function VideoPlayer({ src, isPlaying }) {
@@ -439,9 +441,10 @@ function VideoPlayer({ src, isPlaying }) {
       ref.current.pause();
     }
   }, [isPlaying]);
+}
 ```
 
-This is because the `ref` object has a *stable identity:* React guarantees [you'll always get the same object](/reference/react/useRef#returns) from the same `useRef` call on every render. It never changes, so it will never by itself cause the Effect to re-run. Therefore, it does not matter whether you include it or not. Including it is fine too:
+这是因为 `ref` 对象具有**稳定**的标识：React 保证 [在每一轮渲染中调用`useRef`，总是获取到对一个对象的相同引用](/reference/react/useRef#returns) useRef获取到的对象引用永远不会改变，所以它不会导致Effect的重复执行。 因此，是否包含它并不重要。当然也可以包括它，这样也可以：
 
 ```js {9}
 function VideoPlayer({ src, isPlaying }) {
@@ -453,15 +456,16 @@ function VideoPlayer({ src, isPlaying }) {
       ref.current.pause();
     }
   }, [isPlaying, ref]);
+}
 ```
 
-The [`set` functions](/reference/react/useState#setstate) returned by `useState` also have stable identity, so you will often see them omitted from the dependencies too. If the linter lets you omit a dependency without errors, it is safe to do.
+`useState`返回的[`set` 函数](/reference/react/useState#setstate) 也有稳定的标识符所以你也可以把它从依赖数组中忽略掉。如果 linter 在你忽略某个依赖项时不报错，那么这么做就是安全的。
 
-Omitting always-stable dependencies only works when the linter can "see" that the object is stable. For example, if `ref` was passed from a parent component, you would have to specify it in the dependency array. However, this is good because you can't know whether the parent component always passes the same ref, or passes one of several refs conditionally. So your Effect _would_ depend on which ref is passed.
+忽略始终稳定的依赖项仅在 linter 可以“看到”对象稳定时才起作用。 例如，如果 `ref` 是从父组件传递的，则必须在依赖项数组中指定它。 但是，这很好，因为您无法知道父组件是否始终传递相同的 ref，或者有条件地传递几个 ref 之一。 因此，您的 Effect 将取决于传递的是哪个 ref。
 
 </DeepDive>
 
-### Step 3: Add cleanup if needed {/*step-3-add-cleanup-if-needed*/}
+### Step 3: 按需添加清理函数 {/*step-3-add-cleanup-if-needed*/}
 
 Consider a different example. You're writing a `ChatRoom` component that needs to connect to the chat server when it appears. You are given a `createConnection()` API that returns an object with `connect()` and `disconnect()` methods. How do you keep the component connected while it is displayed to the user?
 
