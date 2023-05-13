@@ -339,7 +339,7 @@ video { width: 250px; }
 
 </Sandpack>
 
-问题就出现在你在 Effect 立面 **依赖** 了一个 `isPlaying` 的属性来控制里面的逻辑。但你又没有直接明确告诉 Effect 要依赖这个属性。为了解决这个问题，你需要声明你的Effect依赖这个属性，把`isPlaying`加入到依赖数组中即可：
+问题就出现在你在 Effect 里面 **依赖** 了一个 `isPlaying` 的属性来控制里面的逻辑。但你又没有直接明确告诉 Effect 要依赖这个属性。为了解决这个问题，你需要声明你的Effect依赖这个属性，把`isPlaying`加入到依赖数组中即可：
 
 ```js {2,7}
   useEffect(() => {
@@ -467,9 +467,9 @@ function VideoPlayer({ src, isPlaying }) {
 
 ### Step 3: 按需添加清理函数 {/*step-3-add-cleanup-if-needed*/}
 
-Consider a different example. You're writing a `ChatRoom` component that needs to connect to the chat server when it appears. You are given a `createConnection()` API that returns an object with `connect()` and `disconnect()` methods. How do you keep the component connected while it is displayed to the user?
+考虑一个不同的例子。您正在编写一个`ChatRoom`组件，该组件出现时需要连接到聊天服务器。为您提供了一个`createConnection（）`API，该API返回一个具有`connect（）`和`disconnection（）`方法的对象。当组件显示给用户时，如何保持连接？
 
-Start by writing the Effect logic:
+从编写效果逻辑开始：
 
 ```js
 useEffect(() => {
@@ -478,7 +478,7 @@ useEffect(() => {
 });
 ```
 
-It would be slow to connect to the chat after every re-render, so you add the dependency array:
+每次重新渲染后连接到聊天会很慢，因此您可以添加依赖数组：
 
 ```js {4}
 useEffect(() => {
@@ -487,9 +487,9 @@ useEffect(() => {
 }, []);
 ```
 
-**The code inside the Effect does not use any props or state, so your dependency array is `[]` (empty). This tells React to only run this code when the component "mounts", i.e. appears on the screen for the first time.**
+**Effect内部的代码不使用任何属性或状态，因此依赖数组为空数组`[]`。这告诉React仅在组件“挂载”时运行此代码，即首次出现在屏幕上。**
 
-Let's try running this code:
+让我们尝试运行以下代码：
 
 <Sandpack>
 
@@ -594,7 +594,7 @@ Now you get three console logs in development:
 
 **In production, you would only see `"✅ Connecting..."` printed once.** Remounting components only happens in development to help you find Effects that need cleanup. You can turn off [Strict Mode](/reference/react/StrictMode) to opt out of the development behavior, but we recommend keeping it on. This lets you find many bugs like the one above.
 
-## How to handle the Effect firing twice in development? {/*how-to-handle-the-effect-firing-twice-in-development*/}
+## 如何处理在开发环境中Effect执行两次的效果？ {/*how-to-handle-the-effect-firing-twice-in-development*/}
 
 React intentionally remounts your components in development to find bugs like in the last example. **The right question isn't "how to run an Effect once", but "how to fix my Effect so that it works after remounting".**
 
@@ -602,7 +602,7 @@ Usually, the answer is to implement the cleanup function.  The cleanup function 
 
 Most of the Effects you'll write will fit into one of the common patterns below.
 
-### Controlling non-React widgets {/*controlling-non-react-widgets*/}
+### 控制非React组件 {/*controlling-non-react-widgets*/}
 
 Sometimes you need to add UI widgets that aren't written to React. For example, let's say you're adding a map component to your page. It has a `setZoomLevel()` method, and you'd like to keep the zoom level in sync with a `zoomLevel` state variable in your React code. Your Effect would look similar to this:
 
@@ -627,7 +627,7 @@ useEffect(() => {
 
 In development, your Effect will call `showModal()`, then immediately `close()`, and then `showModal()` again. This has the same user-visible behavior as calling `showModal()` once, as you would see in production.
 
-### Subscribing to events {/*subscribing-to-events*/}
+### 订阅事件 {/*subscribing-to-events*/}
 
 If your Effect subscribes to something, the cleanup function should unsubscribe:
 
@@ -643,7 +643,7 @@ useEffect(() => {
 
 In development, your Effect will call `addEventListener()`, then immediately `removeEventListener()`, and then `addEventListener()` again with the same handler. So there would be only one active subscription at a time. This has the same user-visible behavior as calling `addEventListener()` once, as in production.
 
-### Triggering animations {/*triggering-animations*/}
+### 触发动画 {/*triggering-animations*/}
 
 If your Effect animates something in, the cleanup function should reset the animation to the initial values:
 
@@ -657,9 +657,9 @@ useEffect(() => {
 }, []);
 ```
 
-In development, opacity will be set to `1`, then to `0`, and then to `1` again. This should have the same user-visible behavior as setting it to `1` directly, which is what would happen in production. If you use a third-party animation library with support for tweening, your cleanup function should reset the timeline to its initial state.
+在开发环境下， 透明度被设为由 `1` 到 `0` 再到 `1`。 This should have the same user-visible behavior as setting it to `1` directly, which is what would happen in production. If you use a third-party animation library with support for tweening, your cleanup function should reset the timeline to its initial state.
 
-### Fetching data {/*fetching-data*/}
+### 获取数据 {/*fetching-data*/}
 
 If your Effect fetches something, the cleanup function should either [abort the fetch](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) or ignore its result:
 
@@ -698,7 +698,7 @@ This will not only improve the development experience, but also make your applic
 
 <DeepDive>
 
-#### What are good alternatives to data fetching in Effects? {/*what-are-good-alternatives-to-data-fetching-in-effects*/}
+#### 在Effects中，有哪些好的数据提取替代方案？ {/*what-are-good-alternatives-to-data-fetching-in-effects*/}
 
 Writing `fetch` calls inside Effects is a [popular way to fetch data](https://www.robinwieruch.de/react-hooks-fetch-data/), especially in fully client-side apps. This is, however, a very manual approach and it has significant downsides:
 
@@ -716,7 +716,7 @@ You can continue fetching data directly in Effects if neither of these approache
 
 </DeepDive>
 
-### Sending analytics {/*sending-analytics*/}
+### 发送分析报告 {/*sending-analytics*/}
 
 Consider this code that sends an analytics event on the page visit:
 
@@ -732,9 +732,9 @@ In development, `logVisit` will be called twice for every URL, so you might be t
 
 To debug the analytics events you're sending, you can deploy your app to a staging environment (which runs in production mode) or temporarily opt out of [Strict Mode](/reference/react/StrictMode) and its development-only remounting checks. You may also send analytics from the route change event handlers instead of Effects. For more precise analytics, [intersection observers](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) can help track which components are in the viewport and how long they remain visible.
 
-### Not an Effect: Initializing the application {/*not-an-effect-initializing-the-application*/}
+### 初始化应用操作不是 Effect {/*not-an-effect-initializing-the-application*/}
 
-Some logic should only run once when the application starts. You can put it outside your components:
+某些逻辑应该只在应用程序启动时运行一次。比如，验证登陆状态和加载本地程序数据。您可以将其放在组件之外：
 
 ```js {2-3}
 if (typeof window !== 'undefined') { // Check if we're running in the browser.
@@ -747,11 +747,11 @@ function App() {
 }
 ```
 
-This guarantees that such logic only runs once after the browser loads the page.
+这保证了这种逻辑在浏览器加载页面后只运行一次。
 
-### Not an Effect: Buying a product {/*not-an-effect-buying-a-product*/}
+### 购买商品操作不是 Effect {/*not-an-effect-buying-a-product*/}
 
-Sometimes, even if you write a cleanup function, there's no way to prevent user-visible consequences of running the Effect twice. For example, maybe your Effect sends a POST request like buying a product:
+有时，即使您编写了一个清理函数，也不能防止运行两次Effect的操作后果。例如，您的Effect可能会像购买产品一样发送POST请求：
 
 ```js {2-3}
 useEffect(() => {
@@ -760,9 +760,10 @@ useEffect(() => {
 }, []);
 ```
 
-You wouldn't want to buy the product twice. However, this is also why you shouldn't put this logic in an Effect. What if the user goes to another page and then presses Back? Your Effect would run again. You don't want to buy the product when the user *visits* a page; you want to buy it when the user *clicks* the Buy button.
+这并不是一个幂等操作。
+开发环境下，Effect会执行两次，这也意味着你的购买操作执行了两次。你不会想买两次这个产品的。然而，这也是为什么你不应该把这个逻辑放在一个效果中。另一方面，如果用户转到另一个页面，然后按“后退”按钮回到了这个界面，该怎么办？你的效果会再次运行。所以，当用户访问某个页面时，不应当执行购买操作；当只有用户点击“购买”按钮时，才执行购买操作。
 
-Buying is not caused by rendering; it's caused by a specific interaction. It should run only when the user presses the button. **Delete the Effect and move your `/api/buy` request into the Buy button event handler:**
+所以，购买不是由渲染引起的；它是由特定的交互作用引起的。它应该只在用户按下按钮时运行，所以，**它不应该写在Effect里，应当把“/api/buy”请求操作移动到buy按钮事件处理程序中：**
 
 ```js {2-3}
   function handleClick() {
@@ -773,7 +774,7 @@ Buying is not caused by rendering; it's caused by a specific interaction. It sho
 
 **This illustrates that if remounting breaks the logic of your application, this usually uncovers existing bugs.** From the user's perspective, visiting a page shouldn't be different from visiting it, clicking a link, and pressing Back. React verifies that your components abide by this principle by remounting them once in development.
 
-## Putting it all together {/*putting-it-all-together*/}
+## 总结 {/*putting-it-all-together*/}
 
 This playground can help you "get a feel" for how Effects work in practice.
 
@@ -843,9 +844,9 @@ Three seconds later, you should see a sequence of logs (`a`, `ab`, `abc`, `abcd`
 
 <DeepDive>
 
-#### Each render has its own Effects {/*each-render-has-its-own-effects*/}
+#### 每一轮渲染都有它自己的副作用 {/*each-render-has-its-own-effects*/}
 
-You can think of `useEffect` as "attaching" a piece of behavior to the render output. Consider this Effect:
+你可以认为 `useEffect`作为将一段行为“附加”到渲染输出。考虑这种情况：
 
 ```js
 export default function ChatRoom({ roomId }) {
@@ -861,7 +862,7 @@ export default function ChatRoom({ roomId }) {
 
 Let's see what exactly happens as the user navigates around the app.
 
-#### Initial render {/*initial-render*/}
+#### 初始渲染 {/*initial-render*/}
 
 The user visits `<ChatRoom roomId="general" />`. Let's [mentally substitute](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) `roomId` with `'general'`:
 
@@ -870,7 +871,7 @@ The user visits `<ChatRoom roomId="general" />`. Let's [mentally substitute](/le
   return <h1>Welcome to general!</h1>;
 ```
 
-**The Effect is *also* a part of the rendering output.** The first render's Effect becomes:
+**“Effects”也是渲染输出的一部分**。第一个渲染的Effects变为：
 
 ```js
   // Effect for the first render (roomId = "general")
@@ -885,7 +886,7 @@ The user visits `<ChatRoom roomId="general" />`. Let's [mentally substitute](/le
 
 React runs this Effect, which connects to the `'general'` chat room.
 
-#### Re-render with same dependencies {/*re-render-with-same-dependencies*/}
+#### 依赖相同情况下的重复渲染 {/*re-render-with-same-dependencies*/}
 
 Let's say `<ChatRoom roomId="general" />` re-renders. The JSX output is the same:
 
@@ -894,9 +895,9 @@ Let's say `<ChatRoom roomId="general" />` re-renders. The JSX output is the same
   return <h1>Welcome to general!</h1>;
 ```
 
-React sees that the rendering output has not changed, so it doesn't update the DOM.
+React看到渲染输出没有改变，所以它不会更新DOM。
 
-The Effect from the second render looks like this:
+第二次渲染的效果如下所示：
 
 ```js
   // Effect for the second render (roomId = "general")
@@ -911,7 +912,7 @@ The Effect from the second render looks like this:
 
 React compares `['general']` from the second render with `['general']` from the first render. **Because all dependencies are the same, React *ignores* the Effect from the second render.** It never gets called.
 
-#### Re-render with different dependencies {/*re-render-with-different-dependencies*/}
+#### 依赖不同情况下的重复渲染 {/*re-render-with-different-dependencies*/}
 
 Then, the user visits `<ChatRoom roomId="travel" />`. This time, the component returns different JSX:
 
@@ -920,7 +921,7 @@ Then, the user visits `<ChatRoom roomId="travel" />`. This time, the component r
   return <h1>Welcome to travel!</h1>;
 ```
 
-React updates the DOM to change `"Welcome to general"` into `"Welcome to travel"`.
+React更新DOM，将 `"Welcome to general"` 更新为 `"Welcome to travel"`.
 
 The Effect from the third render looks like this:
 
@@ -941,11 +942,11 @@ React compares `['travel']` from the third render with `['general']` from the se
 
 After that, React runs the third render's Effect. It connects to the `'travel'` chat room.
 
-#### Unmount {/*unmount*/}
+#### 卸载 {/*unmount*/}
 
 Finally, let's say the user navigates away, and the `ChatRoom` component unmounts. React runs the last Effect's cleanup function. The last Effect was from the third render. The third render's cleanup destroys the `createConnection('travel')` connection. So the app disconnects from the `'travel'` room.
 
-#### Development-only behaviors {/*development-only-behaviors*/}
+#### 仅开发环境下的程序行为 {/*development-only-behaviors*/}
 
 When [Strict Mode](/reference/react/StrictMode) is on, React remounts every component once after mount (state and DOM are preserved). This [helps you find Effects that need cleanup](#step-3-add-cleanup-if-needed) and exposes bugs like race conditions early. Additionally, React will remount the Effects whenever you save a file in development. Both of these behaviors are development-only.
 
@@ -953,15 +954,15 @@ When [Strict Mode](/reference/react/StrictMode) is on, React remounts every comp
 
 <Recap>
 
-- Unlike events, Effects are caused by rendering itself rather than a particular interaction.
-- Effects let you synchronize a component with some external system (third-party API, network, etc).
-- By default, Effects run after every render (including the initial one).
-- React will skip the Effect if all of its dependencies have the same values as during the last render.
-- You can't "choose" your dependencies. They are determined by the code inside the Effect.
-- Empty dependency array (`[]`) corresponds to the component "mounting", i.e. being added to the screen.
-- In Strict Mode, React mounts components twice (in development only!) to stress-test your Effects.
-- If your Effect breaks because of remounting, you need to implement a cleanup function.
-- React will call your cleanup function before the Effect runs next time, and during the unmount.
+- 与事件不同，Effects是由渲染本身而非特定交互引起的。
+- Effects允许您将组件与某些外部系统（第三方API、网络等）同步。
+- 默认情况下，“效果”在每次渲染（包括初始渲染）后运行。
+- 如果React的所有依赖项都与上次渲染时的值相同，则它将跳过本次Effect。
+- 你不能随意“自选”你的依赖关系。它们是由Effect内部的代码决定的。
+- 空的依赖数组（`[]`）对应于组件“挂载”，即添加到屏幕上。
+- 在严格模式下，React安装组件两次（仅在开发中！）以对您的效果进行压力测试。
+- 如果你的效果因为重新安装而中断，你需要实现一个清理功能。
+- React将在下次Effect运行之前和卸载期间调用清理函数。
 
 </Recap>
 
@@ -1047,7 +1048,7 @@ body {
 </Sandpack>
 
 
-To verify that your solution works, press "Show form" and verify that the input receives focus (becomes highlighted and the cursor is placed inside). Press "Hide form" and "Show form" again. Verify the input is highlighted again.
+要验证您的解决方案是否有效，请按“显示表单”按钮并验证`<input />`输入框是否收到焦点（高亮显示，光标位于内部）。再次按“隐藏表单”按钮和“显示表单”。验证输入是否再次高亮显示。
 
 `MyInput` should only focus _on mount_ rather than after every render. To verify that the behavior is right, press "Show form" and then repeatedly press the "Make it uppercase" checkbox. Clicking the checkbox should _not_ focus the input above it.
 
@@ -1316,7 +1317,7 @@ body {
 
 This `Counter` component displays a counter that should increment every second. On mount, it calls [`setInterval`.](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) This causes `onTick` to run every second. The `onTick` function increments the counter.
 
-However, instead of incrementing once per second, it increments twice. Why is that? Find the cause of the bug and fix it.
+然而，它不是每秒递增一次，而是递增两次。为什么？找到错误的原因并进行修复。
 
 <Hint>
 
@@ -1377,9 +1378,9 @@ body {
 
 <Solution>
 
-When [Strict Mode](/reference/react/StrictMode) is on (like in the sandboxes on this site), React remounts each component once in development. This causes the interval to be set up twice, and this is why each second the counter increments twice.
+当开启 [严格模式](/reference/react/StrictMode) 时 （本站中的示例沙盒就已经开启了严格模式），React在开发过程中重新安装每个组件。这导致间隔被设置两次，这就是为什么计数器每秒递增两次的原因。
 
-However, React's behavior is not the *cause* of the bug: the bug already exists in the code. React's behavior makes the bug more noticeable. The real cause is that this Effect starts a process but doesn't provide a way to clean it up.
+然而，错误并不在于React的行为：而是错误本身已经存在于代码中。React的行为使bug更加明显。真正的原因是这种Effect启动了过程，但没有提供清理方法。
 
 To fix this code, save the interval ID returned by `setInterval`, and implement a cleanup function with [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval):
 
@@ -1491,13 +1492,13 @@ export async function fetchBio(person) {
 </Sandpack>
 
 
-There is a bug in this code. Start by selecting "Alice". Then select "Bob" and then immediately after that select "Taylor". If you do this fast enough, you will notice that bug: Taylor is selected, but the paragraph below says "This is Bob's bio."
+这个代码中有一个错误。首先选择“爱丽丝”。然后选择“Bob”，然后紧接着选择“Taylor”。如果你做得足够快，你会注意到这个错误：泰勒被选中了，但下面的一段却说：“这是鲍勃的简历。”
 
-Why does this happen? Fix the bug inside this Effect.
+为什么会发生这种情况？修复此效果中的错误。
 
 <Hint>
 
-If an Effect fetches something asynchronously, it usually needs cleanup.
+如果一个Effect异步获取某个东西，它通常需要清理函数。
 
 </Hint>
 
