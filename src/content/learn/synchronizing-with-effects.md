@@ -832,7 +832,7 @@ export default function App() {
 
 </Sandpack>
 
-You will see three logs at first: `Schedule "a" log`, `Cancel "a" log`, and `Schedule "a" log` again. Three second later there will also be a log saying `a`. As you learned earlier, the extra schedule/cancel pair is because React remounts the component once in development to verify that you've implemented cleanup well.
+你在最开始时可以看到三个 log 输出： `Schedule "a" log`, `Cancel "a" log`，还有一个 `Schedule "a" log` 。三秒后，还会有一条 log 显示：`a` 。 正如之前所说，额外 schedule/cancel 产生的原因是因为 React 在开发环境中，会重新挂载组件一次，以验证您是否正确地实现了清理函数。
 
 Now edit the input to say `abc`. If you do it fast enough, you'll see `Schedule "ab" log` immediately followed by `Cancel "ab" log` and `Schedule "abc" log`. **React always cleans up the previous render's Effect before the next render's Effect.** This is why even if you type into the input fast, there is at most one timeout scheduled at a time. Edit the input a few times and watch the console to get a feel for how Effects get cleaned up.
 
@@ -954,25 +954,25 @@ When [Strict Mode](/reference/react/StrictMode) is on, React remounts every comp
 
 <Recap>
 
-- 与事件不同，Effects是由渲染本身而非特定交互引起的。
-- Effects允许您将组件与某些外部系统（第三方API、网络等）同步。
-- 默认情况下，“效果”在每次渲染（包括初始渲染）后运行。
-- 如果React的所有依赖项都与上次渲染时的值相同，则它将跳过本次Effect。
+- 与事件不同，Effects 是由渲染本身，而非特定交互引起的。
+- Effects 允许您将组件与某些外部系统（第三方API、网络等）同步。
+- 默认情况下，“Effects” 在每次渲染（包括初始渲染）后运行。
+- 如果React的所有依赖项都与上次渲染时的值相同，则它将跳过本次 Effect。
 - 你不能随意“自选”你的依赖关系。它们是由Effect内部的代码决定的。
 - 空的依赖数组（`[]`）对应于组件“挂载”，即添加到屏幕上。
-- 在严格模式下，React安装组件两次（仅在开发中！）以对您的效果进行压力测试。
-- 如果你的效果因为重新安装而中断，你需要实现一个清理功能。
-- React将在下次Effect运行之前和卸载期间调用清理函数。
+- 仅在严格模式下的开发环境中，React会挂载两次组件，以对您的 Effect 进行压力测试。
+- 如果你的 Effect 因为重新挂载而中断，那么你就需要实现一个清理函数。
+- React 将在下次 Effect 运行之前以及卸载期间这两个时候调用清理函数。
 
 </Recap>
 
 <Challenges>
 
-#### Focus a field on mount {/*focus-a-field-on-mount*/}
+#### 挂载时让表单字段获得焦点 {/*focus-a-field-on-mount*/}
 
-In this example, the form renders a `<MyInput />` component.
+在这个例子中，表单渲染了 `<MyInput />` 组件。
 
-Use the input's [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) method to make `MyInput` automatically focus when it appears on the screen. There is already a commented out implementation, but it doesn't quite work. Figure out why it doesn't work, and fix it. (If you're familiar with the `autoFocus` attribute, pretend that it does not exist: we are reimplementing the same functionality from scratch.)
+使用 input 的 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) 方法让 `MyInput` 在加载到屏幕时自动获得焦点。下面代码中已经有一个注释掉的实现，但它没有效果。弄明白为什么没有出现这个效果，并修复它。（如果你想到使用 `autoFocus` 属性，那先忘掉它。我们从头开始，以另一个角度实现相同的效果）。
 
 <Sandpack>
 
@@ -1048,15 +1048,15 @@ body {
 </Sandpack>
 
 
-要验证您的解决方案是否有效，请按“显示表单”按钮并验证`<input />`输入框是否收到焦点（高亮显示，光标位于内部）。再次按“隐藏表单”按钮和“显示表单”。验证输入是否再次高亮显示。
+要验证您的解决方案是否有效，请按“Show form”按钮并验证`<input />`输入框是否收到焦点（高亮显示，光标位于内部）。再次按下“Hide form”和“show form”。验证输入框是否再次获得焦点。
 
-`MyInput` should only focus _on mount_ rather than after every render. To verify that the behavior is right, press "Show form" and then repeatedly press the "Make it uppercase" checkbox. Clicking the checkbox should _not_ focus the input above it.
+`MyInput` 仅在 **挂载** 时获取焦点，而不是在每次渲染后获取焦点。为了验证这一行为，按下“Show form”，然后重复按下“Make it uppercase”的复选框。点击复选框时，上方的输入框不应该获取到焦点。
 
 <Solution>
 
-Calling `ref.current.focus()` during render is wrong because it is a *side effect*. Side effects should either be placed inside an event handler or be declared with `useEffect`. In this case, the side effect is _caused_ by the component appearing rather than by any specific interaction, so it makes sense to put it in an Effect.
+在渲染期间调用 `ref.current.focus()` 本身是不正确的。因为它就是一个“副作用”。副作用既应该放在事件处理程序里面，或者用 `useEffect` 声明。在这种情况下，副作用是组件渲染引起的，而不是任何特定的交互引起的，因此应该将它放在 Effect 中。
 
-To fix the mistake, wrap the `ref.current.focus()` call into an Effect declaration. Then, to ensure that this Effect runs only on mount rather than after every render, add the empty `[]` dependencies to it.
+为了修复这个错误，可以用 Effect 声明包裹对 `ref.current.focus()` 的调用。 然后确保这个 Effect 只在组件挂载时执行而不是在每一轮渲染时都执行，可以为 Effect 的声明加一个空的依赖数组 `[]`。
 
 <Sandpack>
 
@@ -1134,13 +1134,13 @@ body {
 
 </Solution>
 
-#### Focus a field conditionally {/*focus-a-field-conditionally*/}
+#### 有条件地让表单域获得焦点 {/*focus-a-field-conditionally*/}
 
-This form renders two `<MyInput />` components.
+这个表单渲染两个 `<MyInput />` 组件.
 
-Press "Show form" and notice that the second field automatically gets focused. This is because both of the `<MyInput />` components try to focus the field inside. When you call `focus()` for two input fields in a row, the last one always "wins".
+按下“显示表单”，同时注意第二个输入框已经自动获得了焦点。那是因为两个 `<MyInput />` 组件都在试图把焦点往自身上转移。当你连续为两个输入框调用`focus()`时，其中最后面的输入框总是能“获胜”。
 
-Let's say you want to focus the first field. The first `MyInput` component now receives a boolean `shouldFocus` prop set to `true`. Change the logic so that `focus()` is only called if the `shouldFocus` prop received by `MyInput` is `true`.
+假设让第一个输入框获得了焦点。那么，第一个`MyInput`组件现在接收到 `shouldFocus` 属性，并且应当被设置为 `true` 。更改下程序逻辑，规定仅当 `MyInput` 接收到的 `shouldFocus` 属性为 `true` 时才调用 `focus()`。
 
 <Sandpack>
 
@@ -1220,17 +1220,17 @@ body {
 
 </Sandpack>
 
-To verify your solution, press "Show form" and "Hide form" repeatedly. When the form appears, only the *first* input should get focused. This is because the parent component renders the first input with `shouldFocus={true}` and the second input with `shouldFocus={false}`. Also check that both inputs still work and you can type into both of them.
+为了检验以上效果，重复按下“显示表单”和“隐藏表单”试一下。当表单出现时，这里只有第一个输入框获得了焦点。那是因为它的父组件渲染的第一个输入框时，第一个输入框带着 `shouldFocus={true}` 这个属性值，而渲染第二个输入框时，第二个输入框则带着 `shouldFocus={false}` 的属性值。你也可以看到，即使你往两个输入框里都输入一些内容时，他们仍然能正常工作。
 
 <Hint>
 
-You can't declare an Effect conditionally, but your Effect can include conditional logic.
+所以，您不能有条件地声明 Effect，但您的 Effect 可以包含条件逻辑。
 
 </Hint>
 
 <Solution>
 
-Put the conditional logic inside the Effect. You will need to specify `shouldFocus` as a dependency because you are using it inside the Effect. (This means that if some input's `shouldFocus` changes from `false` to `true`, it will focus after mount.)
+往 Effect 放入一些条件逻辑，你需要为 Effect 指定 `shouldFocus` 这个依赖项。因为你在 Effect 里面使用它了。（这也意味着如果input输入框的 `shouldFocus` 由 `false` 变为 `true` 时，它会在挂载时获得焦点）。
 
 <Sandpack>
 
@@ -1315,13 +1315,13 @@ body {
 
 #### Fix an interval that fires twice {/*fix-an-interval-that-fires-twice*/}
 
-This `Counter` component displays a counter that should increment every second. On mount, it calls [`setInterval`.](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) This causes `onTick` to run every second. The `onTick` function increments the counter.
+这个 `Counter` 组件展示的是计数器，它应该每秒都递增一次。在组件挂载时，它调用了 [`setInterval`.](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) 这个函数，引发每次到点时，就递增一次的事件。
 
 然而，它不是每秒递增一次，而是递增两次。为什么？找到错误的原因并进行修复。
 
 <Hint>
 
-Keep in mind that `setInterval` returns an interval ID, which you can pass to [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval) to stop the interval.
+记住， `setInterval` 返回一个计时器 ID，你可以将其传递给 [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval) 来停止计时器。
 
 </Hint>
 
@@ -1378,11 +1378,11 @@ body {
 
 <Solution>
 
-当开启 [严格模式](/reference/react/StrictMode) 时 （本站中的示例沙盒就已经开启了严格模式），React在开发模式中重新安装每个组件。这导致间隔被设置两次，这就是为什么计数器每秒递增两次的原因。
+当开启 [严格模式](/reference/react/StrictMode) 时 （本站中的示例沙盒就已经开启了严格模式），React在开发模式中，每个组件都会重复挂载一次。这也就导致计数器组件被挂载了两次。所以，计时器也被设立了两次，这就是为什么计数器每秒递增两次的原因。
 
-然而，错误并不在于React的行为：而是错误本身已经存在于代码中。React的行为使bug更加明显。真正的原因是这种Effect启动了过程，但没有提供清理方法。
+然而，这个并不是React本身的错：而是你的 Effect 代码中本身就存在 Bug 。React只不过把这个 Bug 放大了。真正的错误原因是这种 Effect 启动后，但没有提供清理函数，所以上一次的 Effect 残留就没有被除去。
 
-To fix this code, save the interval ID returned by `setInterval`, and implement a cleanup function with [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval):
+为了修复这个问题，你可以在保存 `setInterval` 返回的计时器 ID ，然后实现一个清理函数。这个清理函数可以调用 [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval) 方法，把上一次设置的计时器残留清除掉。
 
 <Sandpack>
 
@@ -1436,13 +1436,13 @@ body {
 
 </Sandpack>
 
-In development, React will still remount your component once to verify that you've implemented cleanup well. So there will be a `setInterval` call, immediately followed by `clearInterval`, and `setInterval` again. In production, there will be only one `setInterval` call. The user-visible behavior in both cases is the same: the counter increments once per second.
+在开发环境中，React 仍然会重复挂载一次组件，通过放大Bug，以确保你正确地实现了清理函数。这样，调用一次 `setInterval` 后就紧接着调用 `clearInterval`，然后再调用 `setInterval`。 在生产环境中与开发环境不同，React 只挂载一次组件，即只调用一次 `setInterval` 。两种情况下用户可见的行为是相同的：计数器每秒递增一次。
 
 </Solution>
 
-#### Fix fetching inside an Effect {/*fix-fetching-inside-an-effect*/}
+#### 修复在 Effect 里获取数据时的问题 {/*fix-fetching-inside-an-effect*/}
 
-This component shows the biography for the selected person. It loads the biography by calling an asynchronous function `fetchBio(person)` on mount and whenever `person` changes. That asynchronous function returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) which eventually resolves to a string. When fetching is done, it calls `setBio` to display that string under the select box.
+现在，我写一个组件，这个组件要求选择一些人名，然后显示所选人的传记。它会通过 `fetchBio(person)` 这个异步函数，在挂载时以及依赖参数 `person` 发生改变时加载数据。这个异步函数返回的是一个 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) ，且这个Promise在 `resolve` 的情况下返回的是一个文本字符串。当数据加载获取完毕后，调用 `setBio` ，以在选择框下面显示加载好的文本数据。
 
 <Sandpack>
 
@@ -1492,9 +1492,9 @@ export async function fetchBio(person) {
 </Sandpack>
 
 
-这个代码中有一个错误。首先选择“Alice”。然后选择“Bob”，然后紧接着选择“Taylor”。如果你做得足够快，你会注意到这个错误：泰勒被选中了，但下面的一段却说：“这是鲍勃的简历。”
+这个代码中有一个错误。首先选择 `Alice` 。然后选择 `Bob` ，然后紧接着选择 `Taylor`。如果你做得足够快，你会注意到这个错误：泰勒被选中了，但下面的一段却说：“这是鲍勃的简历。”
 
-为什么会发生这种情况？修复此效果中的错误。
+为什么会发生这种情况？试着修复此 Effect 中的错误。
 
 <Hint>
 
@@ -1504,18 +1504,18 @@ export async function fetchBio(person) {
 
 <Solution>
 
-为了触发Bug，请按照顺序操作以下指示：
+触发Bug时，程序的指令序列是这样的：
 
 - 选中 `'Bob'` 触发 `fetchBio('Bob')`
 - 选中 `'Taylor'` 触发 `fetchBio('Taylor')`
-- **Fetching `'Taylor'` completes *before* fetching `'Bob'`**
-- The Effect from the `'Taylor'` render calls `setBio('This is Taylor’s bio')`
-- Fetching `'Bob'` completes
-- The Effect from the `'Bob'` render calls `setBio('This is Bob’s bio')`
+- **在加载 `'Taylor'` 的数据完成之前，就已经加载完成了 `'Bob'` 的数据**
+- 加载 `'Taylor'` 数据的 Effect 调用了 `setBio('This is Taylor’s bio')`
+- 加载完成 `'Bob'` 的数据
+- 加载 `'Bob'` 数据的 Effect 调用了 `setBio('This is Bob’s bio')`
 
-This is why you see Bob's bio even though Taylor is selected. Bugs like this are called [race conditions](https://en.wikipedia.org/wiki/Race_condition) because two asynchronous operations are "racing" with each other, and they might arrive in an unexpected order.
+这就是为什么即使 Taylor 被选中了，但显示的仍然是 Bob 的数据。这种 Bug 被称之为 [条件竞争](https://en.wikipedia.org/wiki/Race_condition) ，因为两个异步操作都在彼此竞争，谁先谁后都是不可预期的。
 
-To fix this race condition, add a cleanup function:
+为了修复这种条件竞争的 Bug ，修正代码时可以加上清理函数：
 
 <Sandpack>
 
