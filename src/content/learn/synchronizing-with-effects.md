@@ -1378,7 +1378,7 @@ body {
 
 <Solution>
 
-当开启 [严格模式](/reference/react/StrictMode) 时 （本站中的示例沙盒就已经开启了严格模式），React在开发过程中重新安装每个组件。这导致间隔被设置两次，这就是为什么计数器每秒递增两次的原因。
+当开启 [严格模式](/reference/react/StrictMode) 时 （本站中的示例沙盒就已经开启了严格模式），React在开发模式中重新安装每个组件。这导致间隔被设置两次，这就是为什么计数器每秒递增两次的原因。
 
 然而，错误并不在于React的行为：而是错误本身已经存在于代码中。React的行为使bug更加明显。真正的原因是这种Effect启动了过程，但没有提供清理方法。
 
@@ -1492,22 +1492,22 @@ export async function fetchBio(person) {
 </Sandpack>
 
 
-这个代码中有一个错误。首先选择“爱丽丝”。然后选择“Bob”，然后紧接着选择“Taylor”。如果你做得足够快，你会注意到这个错误：泰勒被选中了，但下面的一段却说：“这是鲍勃的简历。”
+这个代码中有一个错误。首先选择“Alice”。然后选择“Bob”，然后紧接着选择“Taylor”。如果你做得足够快，你会注意到这个错误：泰勒被选中了，但下面的一段却说：“这是鲍勃的简历。”
 
 为什么会发生这种情况？修复此效果中的错误。
 
 <Hint>
 
-如果一个Effect异步获取某个东西，它通常需要清理函数。
+如果一个Effect异步获取某些数据，它通常需要清理函数。
 
 </Hint>
 
 <Solution>
 
-To trigger the bug, things need to happen in this order:
+为了触发Bug，请按照顺序操作以下指示：
 
-- Selecting `'Bob'` triggers `fetchBio('Bob')`
-- Selecting `'Taylor'` triggers `fetchBio('Taylor')`
+- 选中 `'Bob'` 触发 `fetchBio('Bob')`
+- 选中 `'Taylor'` 触发 `fetchBio('Taylor')`
 - **Fetching `'Taylor'` completes *before* fetching `'Bob'`**
 - The Effect from the `'Taylor'` render calls `setBio('This is Taylor’s bio')`
 - Fetching `'Bob'` completes
