@@ -699,21 +699,21 @@ function TodoList() {
 
 <DeepDive>
 
-#### 在Effects中，有哪些好的数据提取替代方案？ {/*what-are-good-alternatives-to-data-fetching-in-effects*/}
+#### 在Effects里，有哪些好的数据获取替代方案？ {/*what-are-good-alternatives-to-data-fetching-in-effects*/}
 
-Writing `fetch` calls inside Effects is a [popular way to fetch data](https://www.robinwieruch.de/react-hooks-fetch-data/), especially in fully client-side apps. This is, however, a very manual approach and it has significant downsides:
+在 Effect 里调用 `fetch` ，[是一种非常受欢迎的数据获取方式](https://www.robinwieruch.de/react-hooks-fetch-data/), 特别是在全客户端的应用中。 然而，它非常依赖手动操作，它有很大的缺点：
 
-- **Effects don't run on the server.** This means that the initial server-rendered HTML will only include a loading state with no data. The client computer will have to download all JavaScript and render your app only to discover that now it needs to load the data. This is not very efficient.
-- **Fetching directly in Effects makes it easy to create "network waterfalls".** You render the parent component, it fetches some data, renders the child components, and then they start fetching their data. If the network is not very fast, this is significantly slower than fetching all data in parallel.
-- **Fetching directly in Effects usually means you don't preload or cache data.** For example, if the component unmounts and then mounts again, it would have to fetch the data again.
-- **It's not very ergonomic.** There's quite a bit of boilerplate code involved when writing `fetch` calls in a way that doesn't suffer from bugs like [race conditions.](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect)
+- **Effects 不能在服务端执行** 这意味着服务器最初传递的 HTML 不包含任何数据。 客户端的浏览器必须下载所有 JavaScript 来呈现应用程序，然后才能加载数据。效果不是很好。
+- **直接在 Effect 里获取数据容易产生 "network waterfalls".** 你首先渲染父组件，它获取一些数据并进行渲染，然后渲染子组件，接着子组件开始获取它们的数据。如果网络速度不够快，这种方式比同时获取所有数据要慢得多。
+- **直接在 Effects 中获取通常意味着您不能预加载或缓存数据。** 例如，如果组件卸载然后再次安装，则它必须再次获取数据。
+- **这不是很符合人机交互原则** 如果你不想出现像 [条件竞争](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect) 之类的 Bug ，那么你需要编写更多的样板代码。
 
-This list of downsides is not specific to React. It applies to fetching data on mount with any library. Like with routing, data fetching is not trivial to do well, so we recommend the following approaches:
+以上所列出来的缺点并不是 React 特有的。在任何框架或者库上 挂载的过程中获取数据，都会遇到这些问题。与路由一样，要做好数据获取并非易事，因此我们推荐以下方法：
 
-- **If you use a [framework](/learn/start-a-new-react-project#production-grade-react-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
-- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [React Query](https://tanstack.com/query/latest), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood, but add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
+- **如果你正在使用 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks), 使用其内置的数据获取机制。** 现代 React 框架集成了高效的数据获取机制，不会出现上述问题。
+- **否则，请考虑使用或构建客户端缓存。** 目前受欢迎的开源解决方案时 [React Query](https://tanstack.com/query/latest), [useSWR](https://swr.vercel.app/), 和 [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) 您也可以构建自己的解决方案，在这种情况下，您可以在幕后使用 Effects，但是要添加用于删除重复请求、缓存响应和避免 network waterfall（通过预加载数据或将数据需求提升到路由）的逻辑。
 
-You can continue fetching data directly in Effects if neither of these approaches suit you.
+如果这些方法都不适合您，您可以继续直接在 Effects 中获取数据。
 
 </DeepDive>
 
@@ -775,9 +775,11 @@ useEffect(() => {
 
 ## 总结 {/*putting-it-all-together*/}
 
-This playground can help you "get a feel" for how Effects work in practice.
+下面的 playground 可以帮你帮你在实践中找到对 Effect 的感觉。
 
 This example uses [`setTimeout`](https://developer.mozilla.org/zh-CN/docs/Web/API/setTimeout) to schedule a console log with the input text to appear three seconds after the Effect runs. The cleanup function cancels the pending timeout. Start by pressing "Mount the component":
+
+此示例使用 [`setTimeout`](https://developer.mozilla.org/zh-CN/docs/Web/API/setTimeout) 安排 Effect 执行三秒后，控制台打印输入框内的内容。然后返回一个清理超时等待的清理函数。首先按下“Mount the component”：
 
 <Sandpack>
 
@@ -1320,7 +1322,7 @@ body {
 
 <Hint>
 
-记住， `setInterval` 返回一个计时器 ID，你可以将其传递给 [`clearInterval`](https://developer.mozilla.org/zh-CN/docs/Web/API/clearInterval) 来停止计时器。
+记住，`setInterval` 返回一个计时器 ID，你可以将其传递给 [`clearInterval`](https://developer.mozilla.org/zh-CN/docs/Web/API/clearInterval) 来停止计时器。
 
 </Hint>
 
