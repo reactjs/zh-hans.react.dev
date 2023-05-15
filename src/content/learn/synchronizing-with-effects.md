@@ -456,7 +456,6 @@ function VideoPlayer({ src, isPlaying }) {
       ref.current.pause();
     }
   }, [isPlaying, ref]);
-}
 ```
 
 `useState` 返回的 [`set` 函数](/reference/react/useState#setstate) 也有稳定的标识符。所以你也可以把它从依赖数组中忽略掉。如果 linter 在你忽略某个依赖项时不报错，那么这么做就是安全的。
