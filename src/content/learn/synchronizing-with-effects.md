@@ -18,7 +18,7 @@ title: '同步操作与 Effect'
 
 </YouWillLearn>
 
-## 什么是 Effect ？它与事件 Event 有何不同 {/*what-are-effects-and-how-are-they-different-from-events*/}
+## 什么是 Effect ？它与事件 (Event) 有何不同 {/*what-are-effects-and-how-are-they-different-from-events*/}
 
 在我们开始讨论 Effects 之前, 你需要熟悉在React组件中两种类型的内部逻辑：
 
@@ -78,7 +78,7 @@ function MyComponent() {
 <VideoPlayer isPlaying={isPlaying} />;
 ```
 
-你让 `VideoPlayer` 组件渲染浏览器的内置的 [`<video>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video) 标签:
+你让 `VideoPlayer` 组件渲染浏览器的内置的 [`<video>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video) 标签:
 
 ```js
 function VideoPlayer({ src, isPlaying }) {
@@ -87,7 +87,7 @@ function VideoPlayer({ src, isPlaying }) {
 }
 ```
 
-然而， 这个 `<video>` 标签本身并没有 `isPlaying` 这个属性。 它只能在 DOM 上通过手动调用 [`play()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play) 和 [`pause()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/pause) 方法来实现是否要播放内容。 **你需要同步 isPlaying 属性的值，通过调用 `play()` 和 `pause()` 函数。以决定是否要播放当前的视频。**
+然而， 这个 `<video>` 标签本身并没有 `isPlaying` 这个属性。 它只能在 DOM 上通过手动调用 [`play()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/play) 和 [`pause()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/pause) 方法来实现是否要播放内容。 **你需要同步 isPlaying 属性的值，通过调用 `play()` 和 `pause()` 函数。以决定是否要播放当前的视频。**
 
 我们首先要为 `<video>` 这个DOM节点 [获取引用](/learn/manipulating-the-dom-with-refs)。
 
@@ -399,7 +399,7 @@ video { width: 250px; }
 
 </Sandpack>
 
-依赖数组可以包含多个依赖。当React只有在数组中**所有的**依赖值与前一轮渲染相同时，才会跳过 本次Effect执行。其中，与前一轮渲染比较依赖值时，React使用的是 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 这个比较方法。详见 [`useEffect` reference](/reference/react/useEffect#reference)。
+依赖数组可以包含多个依赖。当React只有在数组中**所有的**依赖值与前一轮渲染相同时，才会跳过 本次Effect执行。其中，与前一轮渲染比较依赖值时，React使用的是 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 这个比较方法。详见 [`useEffect` reference](/reference/react/useEffect#reference)。
 
 **请注意，您不能随意“自选”您的依赖项。** 如果你在Effect里实际依赖项和你在依赖数组中所声明的依赖不匹配时，你就会得到 lint 报错。这是一种很不好的习惯，它会在你的代码中引入很多 BUG 。如果你希望在Effect实际依赖某个值的情况下，忽略掉某个依赖引发的重复执行, [那么你应当**编辑Effect代码本身**，使其“不需要”该依赖项。](/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize)
 
@@ -526,15 +526,15 @@ input { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-This Effect only runs on mount, so you might expect `"✅ Connecting..."` to be printed once in the console. **However, if you check the console, `"✅ Connecting..."` gets printed twice. Why does it happen?**
+这里的 Effect 仅在组件挂载时执行，所以你可能预期 `"✅ Connecting..."` 在控制台中只打印一次。 **然而你检查下控制台的输出结果，会发现 `"✅ Connecting..."` 被打印了两次！为什么会这样？**
 
-Imagine the `ChatRoom` component is a part of a larger app with many different screens. The user starts their journey on the `ChatRoom` page. The component mounts and calls `connection.connect()`. Then imagine the user navigates to another screen--for example, to the Settings page. The `ChatRoom` component unmounts. Finally, the user clicks Back and `ChatRoom` mounts again. This would set up a second connection--but the first connection was never destroyed! As the user navigates across the app, the connections would keep piling up.
+想象 `ChatRoom` 组件是一个大规模的App中许多界面中的一部分。 用户切换到含有`ChatRoom`组件的页面上工作时，该组件被挂载，并调用 `connection.connect()` 方法来连接服务器。然后想象用户此时突然导航到另一个页面，比如切换到“设置”页面。这时候，之前页面利用的 `ChatRoom` 组件就被卸载了。接下来，用户在“设置”页面忙完后，单击“返回”，回到上一个页面，并再次挂载`ChatRoom`。这将建立第二次连接，但是，第一次时创建的连接从未被销毁！当用户在应用程序中不断切换界面再返回时，与服务器的连接会不断堆积。
 
-Bugs like this are easy to miss without extensive manual testing. To help you spot them quickly, in development React remounts every component once immediately after its initial mount.
+如果不进行大量的手动测试，这样的错误很容易被遗漏。为了帮助您快速发现它们，在开发环境中，React 会在初始挂载组件后，再立即挂在一次。
 
-Seeing the `"✅ Connecting..."` log twice helps you notice the real issue: your code doesn't close the connection when the component unmounts.
+观察 `"✅ Connecting..."` 出现了两次，可以帮你找到问题所在：你的代码中，组件被卸载时没有关闭连接。
 
-To fix the issue, return a *cleanup function* from your Effect:
+为了修复这个问题，可以在 Effect 中返回一个**清理**函数。
 
 ```js {4-6}
   useEffect(() => {
@@ -546,7 +546,7 @@ To fix the issue, return a *cleanup function* from your Effect:
   }, []);
 ```
 
-React will call your cleanup function each time before the Effect runs again, and one final time when the component unmounts (gets removed). Let's see what happens when the cleanup function is implemented:
+每次 Effect 重复执行之前，React 都会调用你的清理函数，最后一次组件卸载（被删除）时。 让我们看看执行清理函数会做些什么：
 
 <Sandpack>
 
@@ -584,27 +584,27 @@ input { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-Now you get three console logs in development:
+现在在开发模式下，你的控制台会打印三条记录：
 
 1. `"✅ Connecting..."`
 2. `"❌ Disconnected."`
 3. `"✅ Connecting..."`
 
-**This is the correct behavior in development.** By remounting your component, React verifies that navigating away and back would not break your code. Disconnecting and then connecting again is exactly what should happen! When you implement the cleanup well, there should be no user-visible difference between running the Effect once vs running it, cleaning it up, and running it again. There's an extra connect/disconnect call pair because React is probing your code for bugs in development. This is normal--don't try to make it go away!
+**在开发环境下出现这样的结果才是符合预期的** 重复挂载组件，可以确保在React中离开和返回页面时不会导致代码运行出现问题。断开连接再重新连接是符合预期的行为。当你为 Effect 正确实现清理函数时，无论Effect执行一次，还是执行、清理并再执行，用户都不会感受到明显的差异。所以，在开发环境下，出现额外的连接、断连连接/断开，这是React正在调试你的代码。这是很正常的现象，不要试图消除它！
 
-**In production, you would only see `"✅ Connecting..."` printed once.** Remounting components only happens in development to help you find Effects that need cleanup. You can turn off [Strict Mode](/reference/react/StrictMode) to opt out of the development behavior, but we recommend keeping it on. This lets you find many bugs like the one above.
+**在生产环境下你会看到 `"✅ Connecting..."` 只被打印了一次** 仅在开发环境下才会重复挂载组件，以帮助您找到需要清理的效果。你可以选择关闭 [严格模式](/reference/react/StrictMode) 来关闭开发环境下特有的行为，但我们建议保留它。 这可以让你发现许多像上面的错误。
 
 ## 如何处理在开发环境中Effect执行两次的效果？ {/*how-to-handle-the-effect-firing-twice-in-development*/}
 
-React intentionally remounts your components in development to find bugs like in the last example. **The right question isn't "how to run an Effect once", but "how to fix my Effect so that it works after remounting".**
+React 会故意在开发中重复挂载你的组件，以查找像上面示例中的错误。 **正确的对待态度是“如何修复我的 Effect 以便它在重复挂在后能正常工作”，而不是“如何只运行一次 Effect”**
 
-Usually, the answer is to implement the cleanup function.  The cleanup function should stop or undo whatever the Effect was doing. The rule of thumb is that the user shouldn't be able to distinguish between the Effect running once (as in production) and a _setup → cleanup → setup_ sequence (as you'd see in development).
+通常的解决办法是实现清理函数。清理函数应该停止或撤销 Effect 正在执行的任何操作。简单来说，用户不应该感受到Effect只执行一次（如在生产环境中）和执行“挂载 → 清理 → 挂载”过程（如在开发环境中）之间的差异。
 
-Most of the Effects you'll write will fit into one of the common patterns below.
+下面提供一些常用的 Effect 应用模式。
 
 ### 控制非React组件 {/*controlling-non-react-widgets*/}
 
-Sometimes you need to add UI widgets that aren't written to React. For example, let's say you're adding a map component to your page. It has a `setZoomLevel()` method, and you'd like to keep the zoom level in sync with a `zoomLevel` state variable in your React code. Your Effect would look similar to this:
+有时您需要添加不是使用 React 编写的 UI 小部件。 例如，假设您要向页面添加地图组件。 它有一个 `setZoomLevel()` 方法，您希望缩放级别与 React 代码中的 `zoomLevel` 状态变量保持同步。 您的效果看起来类似于：
 
 ```js
 useEffect(() => {
@@ -613,9 +613,9 @@ useEffect(() => {
 }, [zoomLevel]);
 ```
 
-Note that there is no cleanup needed in this case. In development, React will call the Effect twice, but this is not a problem because calling `setZoomLevel` twice with the same value does not do anything. It may be slightly slower, but this doesn't matter because it won't remount needlessly in production.
+请注意，在这种情况下不需要清理。 在开发中，React 会调用 Effect 两次，但这不是问题，因为两次以用相同的值调用 `setZoomLevel` 不会做任何额外的事情。开发环境中它可能会稍微慢一些，但这问题不大，因为它不会在生产中进行不必要的重复挂载。
 
-Some APIs may not allow you to call them twice in a row. For example, the [`showModal`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal) method of the built-in [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement) element throws if you call it twice. Implement the cleanup function and make it close the dialog:
+某些 API 可能不允许您连续调用两次。 例如，内置[`<dialog>`](https: //developer.mozilla.org/zh-CN/docs/Web/API/HTMLDialogElement) 元素连续调用两次时会抛出异常。这时候你就可以实现关闭 dialog 的清理函数：
 
 ```js {4}
 useEffect(() => {
@@ -625,11 +625,11 @@ useEffect(() => {
 }, []);
 ```
 
-In development, your Effect will call `showModal()`, then immediately `close()`, and then `showModal()` again. This has the same user-visible behavior as calling `showModal()` once, as you would see in production.
+在开发中，您的 Effect 将调用 `showModal()`，然后立即调用 `close()`，然后再次调用 `showModal()`。 这与调用只一次 `showModal()` 的效果相同。也正如您在生产环境中看到的那样。
 
 ### 订阅事件 {/*subscribing-to-events*/}
 
-If your Effect subscribes to something, the cleanup function should unsubscribe:
+如果您的 Effect 订阅了某些东西，清理函数应该取消订阅：
 
 ```js {6}
 useEffect(() => {
@@ -641,11 +641,11 @@ useEffect(() => {
 }, []);
 ```
 
-In development, your Effect will call `addEventListener()`, then immediately `removeEventListener()`, and then `addEventListener()` again with the same handler. So there would be only one active subscription at a time. This has the same user-visible behavior as calling `addEventListener()` once, as in production.
+在开发环境下，你的 Effect 会调用两次 `addEventListener()`，然后立即调用 `removeEventListener()`，然后再调用相同的 `addEventListener()`。因此与只订阅一次活动等效。 这与用户在生产中只调用一次 `addEventListener()` 具有相同的感知效果。
 
 ### 触发动画 {/*triggering-animations*/}
 
-If your Effect animates something in, the cleanup function should reset the animation to the initial values:
+如果您的 Effect 订阅了某些东西，清理函数应该取消订阅：
 
 ```js {4-6}
 useEffect(() => {
@@ -657,11 +657,11 @@ useEffect(() => {
 }, []);
 ```
 
-在开发环境下， 透明度被设为由 `1` 到 `0` 再到 `1`。 This should have the same user-visible behavior as setting it to `1` directly, which is what would happen in production. If you use a third-party animation library with support for tweening, your cleanup function should reset the timeline to its initial state.
+在开发环境下， 透明度被设为由 `1` 到 `0` 再到 `1`。这与在生产环境中，直接将其设置为`1`具有相同的用户感知，如果您使用支持过渡的第三方动画库，您的清理函数应将时间轴重置为其初始状态。
 
 ### 获取数据 {/*fetching-data*/}
 
-If your Effect fetches something, the cleanup function should either [abort the fetch](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) or ignore its result:
+如果您的 Effect 获取了一些数据，清理函数应该实现 [中断获取](https://developer.mozilla.org/zh-CN/docs/Web/API/AbortController) 或忽略获取的结果：
 
 ```js {2,6,13-15}
 useEffect(() => {
@@ -682,19 +682,20 @@ useEffect(() => {
 }, [userId]);
 ```
 
-You can't "undo" a network request that already happened, but your cleanup function should ensure that the fetch that's _not relevant anymore_ does not keep affecting your application. If the `userId` changes from `'Alice'` to `'Bob'`, cleanup ensures that the `'Alice'` response is ignored even if it arrives after `'Bob'`.
+您不能“撤消”已经发生的网络请求，但是您的清理功能应该确保获取数据的过程以及获取到的结果不会继续影响程序。 如果 `userId` 从 `'Alice'` 变为 `'Bob'`，确保 `'Alice'` 响应数据被忽略，即使它在 `'Bob'` 之后到达。
 
-**In development, you will see two fetches in the Network tab.** There is nothing wrong with that. With the approach above, the first Effect will immediately get cleaned up so its copy of the `ignore` variable will be set to `true`. So even though there is an extra request, it won't affect the state thanks to the `if (!ignore)` check.
+**在开发环境，您可以在浏览器调试工具的“network”选项卡中看到两个 Fetch 请求。** 这很正常。 使用上述方法，第一个 Effect 将立即被清理，因此它的 `ignore` 标志变量将被设置为 `true`。 因此，即使有额外的请求，由于有 if (!ignore) 检查，也不会影响程序状态。
 
-**In production, there will only be one request.** If the second request in development is bothering you, the best approach is to use a solution that deduplicates requests and caches their responses between components:
+**在生产环境，只会显示一条请求** 如果开发环境中，第二个请求给您造成了困扰，最好的方法是使用一种可以删除重复请求、并缓存请求响应的解决方案：
 
 ```js
 function TodoList() {
   const todos = useSomeDataLibrary(`/api/user/${userId}/todos`);
   // ...
+}
 ```
 
-This will not only improve the development experience, but also make your application feel faster. For example, the user pressing the Back button won't have to wait for some data to load again because it will be cached. You can either build such a cache yourself or use one of the many alternatives to manual fetching in Effects.
+这不仅可以提高开发体验，还可以让你的应用程序速度更快。例如，用户按下按钮时，如果数据已经被缓存了，那么就不必再次等待加载。你可以自己构建这样的缓存，也可以使用很多在 Effect 中手动加载数据的替代方法。
 
 <DeepDive>
 
@@ -718,7 +719,7 @@ You can continue fetching data directly in Effects if neither of these approache
 
 ### 发送分析报告 {/*sending-analytics*/}
 
-Consider this code that sends an analytics event on the page visit:
+考虑在访问页面时发送事件分析日志的代码：
 
 ```js
 useEffect(() => {
@@ -726,11 +727,9 @@ useEffect(() => {
 }, [url]);
 ```
 
-In development, `logVisit` will be called twice for every URL, so you might be tempted to try to fix that. **We recommend keeping this code as is.** Like with earlier examples, there is no *user-visible* behavior difference between running it once and running it twice. From a practical point of view, `logVisit` should not do anything in development because you don't want the logs from the development machines to skew the production metrics. Your component remounts every time you save its file, so it logs extra visits in development anyway.
+在开发环境下， `logVisit` 会为每个 URL 发送两次请求。所以你可能会想尝试解决这个问题。 **我们建议保持此代码不变。** 与前面的示例一样，运行一次和运行两次之间没有**用户感知**的行为差异。从实际的角度来看，`logVisit` 不应该在开发环境中做任何影响生产事情，由于每次保存代码文件时都会重新装载组件，因此在开发环境中会额外记录访问次数。
 
-**In production, there will be no duplicate visit logs.**
-
-To debug the analytics events you're sending, you can deploy your app to a staging environment (which runs in production mode) or temporarily opt out of [Strict Mode](/reference/react/StrictMode) and its development-only remounting checks. You may also send analytics from the route change event handlers instead of Effects. For more precise analytics, [intersection observers](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API) can help track which components are in the viewport and how long they remain visible.
+**在生产环境中，不会有重复的访问日志。** 要调试你发送的事件分析日志，你可以将应用程序部署到一个暂存环境（以生产模式运行），或者暂时退出[严格模式](/reference/react/StrictMode)，仅在开发环境中检查重复挂载。你还可以通过路由更改事件处理程序来发送分析数据，而不是从 Effects 中发送。为了更精确的分析，[intersection observers](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API)可以帮助跟踪哪些组件在视口中，以及它们保持可见的时间。
 
 ### 初始化应用操作不是 Effect {/*not-an-effect-initializing-the-application*/}
 
@@ -772,13 +771,13 @@ useEffect(() => {
   }
 ```
 
-**This illustrates that if remounting breaks the logic of your application, this usually uncovers existing bugs.** From the user's perspective, visiting a page shouldn't be different from visiting it, clicking a link, and pressing Back. React verifies that your components abide by this principle by remounting them once in development.
+**这说明如果重新挂载破坏了应用程序的逻辑，这通常含有未被发现的错误。** 从用户的角度来看，访问这个页面的效果，与访问该页面时单击和页面中其他链接并按下后退没有什么不同。 React 通过在开发环境中重复挂载它们来验证您的组件是否遵守此原则。
 
 ## 总结 {/*putting-it-all-together*/}
 
 This playground can help you "get a feel" for how Effects work in practice.
 
-This example uses [`setTimeout`](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout) to schedule a console log with the input text to appear three seconds after the Effect runs. The cleanup function cancels the pending timeout. Start by pressing "Mount the component":
+This example uses [`setTimeout`](https://developer.mozilla.org/zh-CN/docs/Web/API/setTimeout) to schedule a console log with the input text to appear three seconds after the Effect runs. The cleanup function cancels the pending timeout. Start by pressing "Mount the component":
 
 <Sandpack>
 
@@ -834,13 +833,13 @@ export default function App() {
 
 你在最开始时可以看到三个 log 输出： `Schedule "a" log`, `Cancel "a" log`，还有一个 `Schedule "a" log` 。三秒后，还会有一条 log 显示：`a` 。 正如之前所说，额外 schedule/cancel 产生的原因是因为 React 在开发环境中，会重新挂载组件一次，以验证您是否正确地实现了清理函数。
 
-Now edit the input to say `abc`. If you do it fast enough, you'll see `Schedule "ab" log` immediately followed by `Cancel "ab" log` and `Schedule "abc" log`. **React always cleans up the previous render's Effect before the next render's Effect.** This is why even if you type into the input fast, there is at most one timeout scheduled at a time. Edit the input a few times and watch the console to get a feel for how Effects get cleaned up.
+现在编辑输入框，输入 `abc`。 如果你输入速度足够快，你会看到 `Schedule "ab" log` 紧接着是 `Cancel "ab" log` 和 `Schedule "abc" log`。 **React 总是在下一个渲染的效果之前清理上一个渲染的效果。**这就是为什么即使您快速输入，最多也只安排了一个 Schedule。可以多次编辑输入框，并观察控制台以了解 Effects 是如何被清理的。
 
-Type something into the input and then immediately press "Unmount the component". Notice how unmounting cleans up the last render's Effect. Here, it clears the last timeout before it has a chance to fire.
+在输入框中输入一些内容，然后立即按“Unmount the component”。注意卸载时如何清理最后一个渲染的 Effect 。 在这里，它在触发卸载之前，清除了最后一次 Schedule。
 
-Finally, edit the component above and comment out the cleanup function so that the timeouts don't get cancelled. Try typing `abcde` fast. What do you expect to happen in three seconds? Will `console.log(text)` inside the timeout print the *latest* `text` and produce five `abcde` logs? Give it a try to check your intuition!
+最后，上面的代码中注释掉清理函数，这样 Schedule 就不会被取消。 尝试快速输入 `abcde`。 你希望三秒钟内发生什么？ Schedule 内的 `console.log(text)` 会打印**最新** `text` 并产生五个 `abcde` 日志吗？ 试试你的直觉吧！
 
-Three seconds later, you should see a sequence of logs (`a`, `ab`, `abc`, `abcd`, and `abcde`) rather than five `abcde` logs. **Each Effect "captures" the `text` value from its corresponding render.**  It doesn't matter that the `text` state changed: an Effect from the render with `text = 'ab'` will always see `'ab'`. In other words, Effects from each render are isolated from each other. If you're curious how this works, you can read about [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures).
+三秒之后，你可以看到一系列的 logs (`a`, `ab`, `abc`, `abcd`, 还有 `abcde`) 而不是五个 `abcde`。 **每个 Effect 会"捕捉"它所对应的渲染过程中 `text` 的取值。**   `text` 状态的变化不重要： 以 `text = 'ab'` 渲染的 Effect 将始终只能看到 `'ab'` 这个值。 换句话说，来自每个渲染的 Effect 是相互隔离的。如果你有兴趣，可以了解下 [JavaScript中的闭包](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures).
 
 <DeepDive>
 
@@ -860,11 +859,11 @@ export default function ChatRoom({ roomId }) {
 }
 ```
 
-Let's see what exactly happens as the user navigates around the app.
+让我们看看当用户在应用程序中导航时到底发生了什么。
 
 #### 初始渲染 {/*initial-render*/}
 
-The user visits `<ChatRoom roomId="general" />`. Let's [mentally substitute](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) `roomId` with `'general'`:
+用户访问 `<ChatRoom roomId="general" />`，这里让我们 [假设](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) 赋予 `roomId` 属性值为 `'general'`:
 
 ```js
   // JSX for the first render (roomId = "general")
@@ -884,11 +883,11 @@ The user visits `<ChatRoom roomId="general" />`. Let's [mentally substitute](/le
   ['general']
 ```
 
-React runs this Effect, which connects to the `'general'` chat room.
+React 执行这个连接到 `'general'` 聊天室的 Effect。
 
 #### 依赖相同情况下的重复渲染 {/*re-render-with-same-dependencies*/}
 
-Let's say `<ChatRoom roomId="general" />` re-renders. The JSX output is the same:
+让我们探讨下 `<ChatRoom roomId="general" />` 的重复渲染， JSX 的输出结果仍然相同：
 
 ```js
   // JSX for the second render (roomId = "general")
@@ -910,11 +909,11 @@ React看到渲染输出没有改变，所以它不会更新DOM。
   ['general']
 ```
 
-React compares `['general']` from the second render with `['general']` from the first render. **Because all dependencies are the same, React *ignores* the Effect from the second render.** It never gets called.
+React 从第二次渲染的 `['general']` 与第一次渲染的 `['general']` 进行比较。 **因为所有的依赖性都是相同的， React 会 *忽略* 第二次渲染时的 Effect** 。所以此时 Effect 不会被调用。
 
 #### 依赖不同情况下的重复渲染 {/*re-render-with-different-dependencies*/}
 
-Then, the user visits `<ChatRoom roomId="travel" />`. This time, the component returns different JSX:
+然后，用户访问 `<ChatRoom roomId="travel" />` 时，返回的是不同的 JSX 输出结果：
 
 ```js
   // JSX for the third render (roomId = "travel")
@@ -923,7 +922,7 @@ Then, the user visits `<ChatRoom roomId="travel" />`. This time, the component r
 
 React更新DOM，将 `"Welcome to general"` 更新为 `"Welcome to travel"`.
 
-The Effect from the third render looks like this:
+第三次渲染的 Effect 就像这个样子：
 
 ```js
   // Effect for the third render (roomId = "travel")
@@ -936,19 +935,19 @@ The Effect from the third render looks like this:
   ['travel']
 ```
 
-React compares `['travel']` from the third render with `['general']` from the second render. One dependency is different: `Object.is('travel', 'general')` is `false`. The Effect can't be skipped.
+React 将第三次渲染时的 `['travel']` 与第二次渲染时的 `['general']` 相互比较。只有一个依赖项不同： `Object.is('travel', 'general')` 为 `false`。所以这次的 Effect 不能跳过.
 
-**Before React can apply the Effect from the third render, it needs to clean up the last Effect that _did_ run.** The second render's Effect was skipped, so React needs to clean up the first render's Effect. If you scroll up to the first render, you'll see that its cleanup calls `disconnect()` on the connection that was created with `createConnection('general')`. This disconnects the app from the `'general'` chat room.
+**在 React 执行第三次渲染的 Effect 之前，它需要清理最近渲染的 Effect。** 第二次渲染的 Effect 被跳过了。所以 React 需要清理第一次渲染时的 Effect。如果你回滚到第一次渲染的 Effect，你可以看到清理函数在`createConnection('general')`所创建的连接上调用了 `disconnect()` 。这回从 `'general'` 聊天室断开连接。
 
-After that, React runs the third render's Effect. It connects to the `'travel'` chat room.
+之后，React 执行第三次渲染的 Effect。 它连接到 `'travel'`聊天室。
 
 #### 卸载 {/*unmount*/}
 
-Finally, let's say the user navigates away, and the `ChatRoom` component unmounts. React runs the last Effect's cleanup function. The last Effect was from the third render. The third render's cleanup destroys the `createConnection('travel')` connection. So the app disconnects from the `'travel'` room.
+最后，假设现在用户离开当前页面，并且 `ChatRoom` 组件被卸载的时候，React执行Effect最后的清理函数，并且最后的清理函数来自于第三次渲染。第三次渲染后再清理时，清理函数破坏了 `createConnection('travel')` 方法创建的连接。 因此，该应用程序与 `travel` 房间断开了连接。
 
 #### 仅开发环境下的程序行为 {/*development-only-behaviors*/}
 
-When [Strict Mode](/reference/react/StrictMode) is on, React remounts every component once after mount (state and DOM are preserved). This [helps you find Effects that need cleanup](#step-3-add-cleanup-if-needed) and exposes bugs like race conditions early. Additionally, React will remount the Effects whenever you save a file in development. Both of these behaviors are development-only.
+在 [严格模式](/reference/react/StrictMode) 下，React 在每次卸载组件后都会重新挂载组件。（但是组建的 State 和 创建的DOM 都会被保留）。 [它可以帮助你找出需要添加清理函数的 Effect](#step-3-add-cleanup-if-needed) ，及早暴露出像条件竞争那样的 Bug 。 此外，每当您在开发环境中保存更新文件时，React 也会重新安装 Effects。 这两种行为都仅限于开发环境下。
 
 </DeepDive>
 
@@ -972,7 +971,7 @@ When [Strict Mode](/reference/react/StrictMode) is on, React remounts every comp
 
 在这个例子中，表单渲染了 `<MyInput />` 组件。
 
-使用 input 的 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) 方法让 `MyInput` 在加载到屏幕时自动获得焦点。下面代码中已经有一个注释掉的实现，但它没有效果。弄明白为什么没有出现这个效果，并修复它。（如果你想到使用 `autoFocus` 属性，那先忘掉它。我们从头开始，以另一个角度实现相同的效果）。
+使用 input 的 [`focus()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus) 方法让 `MyInput` 在加载到屏幕时自动获得焦点。下面代码中已经有一个注释掉的实现，但它没有效果。弄明白为什么没有出现这个效果，并修复它。（如果你想到使用 `autoFocus` 属性，那先忘掉它。我们从头开始，以另一个角度实现相同的效果）。
 
 <Sandpack>
 
@@ -1313,15 +1312,15 @@ body {
 
 </Solution>
 
-#### Fix an interval that fires twice {/*fix-an-interval-that-fires-twice*/}
+#### 修复计时器触发两次的 Bug {/*fix-an-interval-that-fires-twice*/}
 
-这个 `Counter` 组件展示的是计数器，它应该每秒都递增一次。在组件挂载时，它调用了 [`setInterval`.](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) 这个函数，引发每次到点时，就递增一次的事件。
+这个 `Counter` 组件展示的是计数器，它应该每秒都递增一次。在组件挂载时，它调用了 [`setInterval`.](https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval) 这个函数，引发每次到点时，就递增一次的事件。
 
 然而，它不是每秒递增一次，而是递增两次。为什么？找到错误的原因并进行修复。
 
 <Hint>
 
-记住， `setInterval` 返回一个计时器 ID，你可以将其传递给 [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval) 来停止计时器。
+记住， `setInterval` 返回一个计时器 ID，你可以将其传递给 [`clearInterval`](https://developer.mozilla.org/zh-CN/docs/Web/API/clearInterval) 来停止计时器。
 
 </Hint>
 
@@ -1382,7 +1381,7 @@ body {
 
 然而，这个并不是React本身的错：而是你的 Effect 代码中本身就存在 Bug 。React只不过把这个 Bug 放大了。真正的错误原因是这种 Effect 启动后，但没有提供清理函数，所以上一次的 Effect 残留就没有被除去。
 
-为了修复这个问题，你可以在保存 `setInterval` 返回的计时器 ID ，然后实现一个清理函数。这个清理函数可以调用 [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval) 方法，把上一次设置的计时器残留清除掉。
+为了修复这个问题，你可以在保存 `setInterval` 返回的计时器 ID ，然后实现一个清理函数。这个清理函数可以调用 [`clearInterval`](https://developer.mozilla.org/zh-CN/docs/Web/API/clearInterval) 方法，把上一次设置的计时器残留清除掉。
 
 <Sandpack>
 
@@ -1442,7 +1441,7 @@ body {
 
 #### 修复在 Effect 里获取数据时的问题 {/*fix-fetching-inside-an-effect*/}
 
-现在，我写一个组件，这个组件要求选择一些人名，然后显示所选人的传记。它会通过 `fetchBio(person)` 这个异步函数，在挂载时以及依赖参数 `person` 发生改变时加载数据。这个异步函数返回的是一个 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) ，且这个Promise在 `resolve` 的情况下返回的是一个文本字符串。当数据加载获取完毕后，调用 `setBio` ，以在选择框下面显示加载好的文本数据。
+现在，我写一个组件，这个组件要求选择一些人名，然后显示所选人的传记。它会通过 `fetchBio(person)` 这个异步函数，在挂载时以及依赖参数 `person` 发生改变时加载数据。这个异步函数返回的是一个 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) ，且这个Promise在 `resolve` 的情况下返回的是一个文本字符串。当数据加载获取完毕后，调用 `setBio` ，以在选择框下面显示加载好的文本数据。
 
 <Sandpack>
 
@@ -1492,7 +1491,7 @@ export async function fetchBio(person) {
 </Sandpack>
 
 
-这个代码中有一个错误。首先选择 `Alice` 。然后选择 `Bob` ，然后紧接着选择 `Taylor`。如果你做得足够快，你会注意到这个错误：泰勒被选中了，但下面的一段却说：“这是鲍勃的简历。”
+这个代码中有一个错误。首先选择 `Alice` 。然后选择 `Bob` ，然后紧接着选择 `Taylor`。如果你做得足够快，你会注意到这个错误：Taylor 被选中了，但下面的一段却说：“这是Bob的简历。”
 
 为什么会发生这种情况？试着修复此 Effect 中的错误。
 
@@ -1569,16 +1568,16 @@ export async function fetchBio(person) {
 
 </Sandpack>
 
-Each render's Effect has its own `ignore` variable. Initially, the `ignore` variable is set to `false`. However, if an Effect gets cleaned up (such as when you select a different person), its `ignore` variable becomes `true`. So now it doesn't matter in which order the requests complete. Only the last person's Effect will have `ignore` set to `false`, so it will call `setBio(result)`. Past Effects have been cleaned up, so the `if (!ignore)` check will prevent them from calling `setBio`:
+其实，每个 Effect 都可以在里面设置一个 `ignore` 的标志变量。最初时， `ignore` 变量被设置为 `false`。然而，当 Effect 执行清理后（就像你选中了列表中不同的人时），`ignore` 变量就会被设置为 `true`。所以此时请求完成的顺序并不重要。只有最后选中的人在执行它的 Effect 时， `ignore` 会被设为 `false`，所以它会调用 `setBio(result)`。而之前的 Effects 都被清理掉了。 所以检查 `if (!ignore)` 会阻止调用 `setBio`：
 
-- Selecting `'Bob'` triggers `fetchBio('Bob')`
-- Selecting `'Taylor'` triggers `fetchBio('Taylor')` **and cleans up the previous (Bob's) Effect**
-- Fetching `'Taylor'` completes *before* fetching `'Bob'`
-- The Effect from the `'Taylor'` render calls `setBio('This is Taylor’s bio')`
-- Fetching `'Bob'` completes
-- The Effect from the `'Bob'` render **does not do anything because its `ignore` flag was set to `true`**
+- 选中 `'Bob'` 触发 `fetchBio('Bob')`
+- 选中 `'Taylor'` 触发 `fetchBio('Taylor')` **然后清理之前加载 (Bob's) 数据时的Effect**
+- 在加载完 `'Bob'` 的数据**之前**，就已经完成加载 `'Taylor'` 的数据。
+- 渲染 `'Taylor'` 时的 Effect 调用 `setBio('This is Taylor’s bio')`
+- 加载完成 `'Bob'` 的数
+- 渲染 `'Bob'` 时的 Effect 不会做任何事情，因为 `ignore` 标志被设为了 `true` 。
 
-In addition to ignoring the result of an outdated API call, you can also use [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) to cancel the requests that are no longer needed. However, by itself this is not enough to protect against race conditions. More asynchronous steps could be chained after the fetch, so using an explicit flag like `ignore` is the most reliable way to fix this type of problems.
+除了忽略过时 API 调用的结果外，您还可以使用 [`AbortController`](https://developer.mozilla.org/zh-CN/docs/Web/API/AbortController) 取消正在执行的请求 不再需要。 然而，这本身并不足以防止竞争条件。 在获取之后可以链接更多异步步骤，因此使用像 `ignore` 这样的显式标志是解决此类问题的最可靠方法。
 
 </Solution>
 
