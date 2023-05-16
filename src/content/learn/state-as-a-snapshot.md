@@ -132,7 +132,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 
 请注意，每次点击只会让 `number` 递增一次！
 
-**设置 state 只会为 *下一次* 渲染变更 state 的值**。在第一次渲染期间，`number` 为 `0`。这也就解释了为什么在 *那次渲染中的* `onClick` 处理函数中，即便在调用了 `setNumber(number + 1)` 之后，`number` 的值也仍然是 `0`：
+**设置 state 只会为 *下一次* 渲染变更 state 的值**。在第一次渲染期间，`number` 为 `0`。这也就解释了为什么在 **那次渲染中的** `onClick` 处理函数中，即便在调用了 `setNumber(number + 1)` 之后，`number` 的值也仍然是 `0`：
 
 ```js
 <button onClick={() => {
@@ -151,9 +151,9 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 3. `setNumber(number + 1)`：`number` 是`0` 所以 `setNumber(0 + 1)`。
     - React 准备在下一次渲染时将 `number` 更改为 `1`。
 
-尽管你调用了三次 `setNumber(number + 1)`，但在 *这次渲染的* 事件处理函数中 `number` 会一直是 `0`，所以你会三次将 state 设置成 `1`。这就是为什么在你的事件处理函数执行完以后，React 重新渲染的组件中的 `number` 等于 `1` 而不是 `3`。
+尽管你调用了三次 `setNumber(number + 1)`，但在 **这次渲染的** 事件处理函数中 `number` 会一直是 `0`，所以你会三次将 state 设置成 `1`。这就是为什么在你的事件处理函数执行完以后，React 重新渲染的组件中的 `number` 等于 `1` 而不是 `3`。
 
-你还可以通过在心里把 state 变量替换成它们在你代码中的值来想象这个过程。由于 *这次渲染* 中的 state 变量 `number` 是 `0`，其事件处理函数看起来会像这样：
+你还可以通过在心里把 state 变量替换成它们在你代码中的值来想象这个过程。由于 **这次渲染** 中的 state 变量 `number` 是 `0`，其事件处理函数看起来会像这样：
 
 ```js
 <button onClick={() => {
@@ -162,7 +162,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
   setNumber(0 + 1);
 }}>+3</button>
 ```
-对于下一次渲染来说，`number` 是 `1`，因此 *那次渲染中的* 点击事件处理函数看起来会像这样：
+对于下一次渲染来说，`number` 是 `1`，因此 **那次渲染中的** 点击事件处理函数看起来会像这样：
 
 ```js
 <button onClick={() => {
@@ -211,7 +211,7 @@ setNumber(0 + 5);
 alert(0);
 ```
 
-但如果你在这个提示框上加上一个定时器， 使得它在组件重新渲染 _之后_ 才触发，又会怎样呢？是会显示 “0” 还是 “5” ？猜一猜！
+但如果你在这个提示框上加上一个定时器， 使得它在组件重新渲染 **之后** 才触发，又会怎样呢？是会显示 “0” 还是 “5” ？猜一猜！
 
 <Sandpack>
 
@@ -253,7 +253,7 @@ setTimeout(() => {
 
 到提示框运行时，React 中存储的 state 可能已经发生了更改，但它是使用用户与之交互时状态的快照进行调度的！
 
-**一个 state 变量的值永远不会在一次渲染的内部发生变化，** 即使其事件处理函数的代码是异步的。在 *那次渲染的* `onClick` 内部，`number` 的值即使在调用 `setNumber(number + 5)` 之后也还是 `0`。它的值在 React 通过调用你的组件“获取 UI 的快照”时就被“固定”了。
+**一个 state 变量的值永远不会在一次渲染的内部发生变化，** 即使其事件处理函数的代码是异步的。在 **那次渲染的** `onClick` 内部，`number` 的值即使在调用 `setNumber(number + 5)` 之后也还是 `0`。它的值在 React 通过调用你的组件“获取 UI 的快照”时就被“固定”了。
 
 这里有个示例能够说明上述特性会使你的事件处理函数更不容易出现计时错误。下面是一个会在五秒延迟之后发送一条消息的表单。想象以下场景：
 
@@ -314,9 +314,9 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 * 设置 state 请求一次新的渲染。
 * React 将 state 存储在组件之外，就像在架子上一样。
-* 当你调用 `useState` 时，React 会为你提供*该次渲染* 的一张 state 快照。
+* 当你调用 `useState` 时，React 会为你提供**该次渲染** 的一张 state 快照。
 * 变量和事件处理函数不会在重渲染中“存活”。每个渲染都有自己的事件处理函数。
-* 每个渲染（以及其中的函数）始终“看到”的是 React 提供给*这个* 渲染的 state 快照。
+* 每个渲染（以及其中的函数）始终“看到”的是 React 提供给**这个** 渲染的 state 快照。
 * 你可以在心中替换事件处理函数中的 state，类似于替换渲染的 JSX。
 * 过去创建的事件处理函数拥有的是创建它们的那次渲染中的 state 值。
 

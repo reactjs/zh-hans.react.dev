@@ -40,7 +40,7 @@ export default function Button() {
 
 按照如下三个步骤，即可让它在用户点击时显示消息：
 
-1. 在 `Button` 组件 *内部* 声明一个名为 `handleClick` 的函数。
+1. 在 `Button` 组件 **内部** 声明一个名为 `handleClick` 的函数。
 2. 实现函数内部的逻辑（使用 `alert` 来显示消息）。
 3. 添加 `onClick={handleClick}` 到 `<button>` JSX 中。
 
@@ -68,7 +68,7 @@ button { margin-right: 10px; }
 
 你可以定义 `handleClick` 函数然后 [将其作为 prop 传入](/learn/passing-props-to-a-component) `<button>`。其中 `handleClick` 是一个 **事件处理函数** 。事件处理函数有如下特点:
 
-* 通常在你的组件 *内部* 定义。
+* 通常在你的组件 **内部** 定义。
 * 名称以 `handle` 开头，后跟事件名称。
 
 > 按照惯例，通常将事件处理程序命名为 `handle`，后接事件名。你会经常看到 `onClick={handleClick}`，`onMouseEnter={handleMouseEnter}` 等。
@@ -101,7 +101,7 @@ button { margin-right: 10px; }
 
 区别很微妙。在第一个示例中，`handleClick` 函数作为 `onClick` 事件处理函数传递。这会让 React 记住它，并且只在用户点击按钮时调用你的函数。
 
-在第二个示例中，`handleClick()` 中最后的 `()` 会在 [渲染](/learn/render-and-commit) 过程中 *立即* 触发函数，即使没有任何点击。这是因为在 [JSX `{` 和 `}`](/learn/javascript-in-jsx-with-curly-braces) 之间的 JavaScript 会立即执行。
+在第二个示例中，`handleClick()` 中最后的 `()` 会在 [渲染](/learn/render-and-commit) 过程中 **立即** 触发函数，即使没有任何点击。这是因为在 [JSX `{` 和 `}`](/learn/javascript-in-jsx-with-curly-braces) 之间的 JavaScript 会立即执行。
 
 当你编写内联代码时，同样的陷阱可能会以不同的方式出现：
 
@@ -322,7 +322,7 @@ button { margin-right: 10px; }
 
 事件处理函数还将捕获任何来自子组件的事件。通常，我们会说事件会沿着树向上“冒泡”或“传播”：它从事件发生的地方开始，然后沿着树向上传播。
 
-下面这个 `<div>` 包含两个按钮。`<div>` **和** 每个按钮都有自己的 `onClick` 处理函数。你认为点击按钮时会触发哪些处理函数？
+下面这个 `<div>` 包含两个按钮。`<div>` 和每个按钮都有自己的 `onClick` 处理函数。你认为点击按钮时会触发哪些处理函数？
 
 <Sandpack>
 
@@ -458,7 +458,7 @@ function Button({ onClick, children }) {
 }
 ```
 
-你也可以在调用父元素 `onClick` 函数之前，向这个处理函数添加更多代码。此模式是事件传播的另一种 *替代方案* 。它让子组件处理事件，同时也让父组件指定一些额外的行为。与事件传播不同，它并非自动。但使用这种模式的好处是你可以清楚地追踪因某个事件的触发而执行的整条代码链。
+你也可以在调用父元素 `onClick` 函数之前，向这个处理函数添加更多代码。此模式是事件传播的另一种 **替代方案** 。它让子组件处理事件，同时也让父组件指定一些额外的行为。与事件传播不同，它并非自动。但使用这种模式的好处是你可以清楚地追踪因某个事件的触发而执行的整条代码链。
 
 如果你依赖于事件传播，而且很难追踪哪些处理程序在执行，及其执行的原因，可以尝试这种方法。
 
