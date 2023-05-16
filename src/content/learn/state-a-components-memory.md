@@ -566,8 +566,6 @@ function useState(initialState) {
     updateDOM();
   }
 
-  // Store the pair for future renders
-  // and prepare for the next Hook call.
   // 存储这个 pair 用于将来的渲染
   // 并且为下一次 hook 的调用做准备
   componentHooks[currentHookIndex] = pair;

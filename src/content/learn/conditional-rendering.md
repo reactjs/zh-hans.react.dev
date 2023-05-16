@@ -18,7 +18,7 @@ translators:
 
 </YouWillLearn>
 
-## Conditionally returning JSX {/*conditionally-returning-jsx*/}
+## 条件返回 JSX {/*conditionally-returning-jsx*/}
 
 假设有一个 `PackingList` 组件，里面渲染多个 `Item` 组件，每个物品可标记为打包与否：
 
