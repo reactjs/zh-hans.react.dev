@@ -152,7 +152,7 @@ import Gallery from './Gallery';
 
 ## 从同一文件中导出和导入多个组件 {/*exporting-and-importing-multiple-components-from-the-same-file*/}
 
-如果你只想展示一个 `Profile` 组，而不展示整个图集。你也可以导出 `Profile` 组件。但 `Gallery.js` 中已包含 *默认* 导出，此时，你不能定义 **两个** 默认导出。但你可以将其在新文件中进行默认导出，或者将 `Profile` 进行 *具名* 导出。**同一文件中，有且仅有一个默认导出，但可以有多个具名导出！**
+如果你只想展示一个 `Profile` 组，而不展示整个图集。你也可以导出 `Profile` 组件。但 `Gallery.js` 中已包含 **默认** 导出，此时，你不能定义 **两个** 默认导出。但你可以将其在新文件中进行默认导出，或者将 `Profile` 进行 **具名** 导出。**同一文件中，有且仅有一个默认导出，但可以有多个具名导出！**
 
 <Note>
 
