@@ -10,7 +10,7 @@ title: createPortal
 ```js
 <div>
   <SomeComponent />
-  {createPortal(children, domNode)}
+  {createPortal(children, domNode, key?)}
 </div>
 ```
 
@@ -22,7 +22,7 @@ title: createPortal
 
 ## 参考 {/*reference*/}
 
-### `createPortal(children, domNode)` {/*createportal*/}
+### `createPortal(children, domNode, key?)` {/*createportal*/}
 
 调用 `createPortal` 创建 portal，并传入 JSX 与实际渲染的目标 DOM 节点：
 
@@ -51,6 +51,8 @@ portal 只改变 DOM 节点的所处位置。在其他方面，传入 portal 中
 * `domNode`：某个 DOM 节点，例如由 `document.getElementById()` 返回的节点。节点必须已经存在。在更新过程中传递不同的 DOM 节点将导致 portal 内容被重新创建。
 
 #### 返回值 {/*returns*/}
+
+* **可选的** `key`: 用作 portal [key](/learn/rendering-lists/#keeping-list-items-in-order-with-key) 的独特字符串或数字。
 
 `createPortal` 返回一个 React 节点，该节点可以包含在 JSX 中或从 React 组件中返回。如果 React 在渲染输出中遇见它，它将把提供的 `children` 放入提供的 `domNode` 中。
 
