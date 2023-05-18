@@ -53,7 +53,7 @@ function TabContainer() {
 
 * `startTransition` 没有提供一种跟踪 transition 是否处于待定状态的方法。为了在 transition 进行时显示一个待定状态的指示器，你需要使用 [`useTransition`](/reference/react/useTransition)。
 
-* 只有当你能访问某个 state 的 `set` 函数时，你才能将它的更新包裹到 transition 中。如果你想根据一些 prop 或自定义 Hook 的返回值来启动一个 transition，请尝试使用 [`useDeferredValue`](/reference/react/useDeferredValue)。
+* 只有当你能访问某个 state 的 `set` 函数时，你才能将它的更新包裹到 transition 中。如果你想根据 props 或自定义 Hook 的返回值来启动一个 transition，请尝试使用 [`useDeferredValue`](/reference/react/useDeferredValue)。
 
 * 你传递给 `startTransition` 的函数必须是同步的。React 会立即执行此函数，将其执行期间发生的所有 state 更新标记为 transition。如果你想试着稍后执行更多的 state 更新（例如，在 timeout 中），它们不会被标记为转换。
 
