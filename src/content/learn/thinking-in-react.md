@@ -202,7 +202,7 @@ td {
 
 （如果你无法理解这段代码，请先阅读 [快速入门](/learn/) 章节！)
 
-在构建你的组件之后，即拥有一个渲染数据模型的可复用组件库。因为这是一个静态应用程序，组件仅返回 JSX。最顶层组件 (`FilterableProductTable`) 将接收你的数据模型作为其 prop。这被称之为 _单向数据流_，因为数据从树的顶层组件传递到下面的组件。
+在构建你的组件之后，即拥有一个渲染数据模型的可复用组件库。因为这是一个静态应用程序，组件仅返回 JSX。最顶层组件 (`FilterableProductTable`) 将接收你的数据模型作为其 prop。这被称之为 **单向数据流**，因为数据从树的顶层组件传递到下面的组件。
 
 <Pitfall>
 
@@ -468,9 +468,9 @@ function SearchBar({ filterText, inStockOnly }) {
 
 目前你的应用程序可以带着 props 和 state 随着层级结构进行正确渲染。但是根据用户的输入改变 state，需要通过其它的方式支持数据流: 深层结构的表单组件需要在 `FilterableProductTable` 中更新 state。
 
-React 使数据流显式展示，是与双向数据绑定相比，需要更多的输入。如果你尝试在上述的例子中输入或者勾选复选框，发现 React 忽视了你的输入。这点是有意为之的。通过 `<input value={filterText} />`，已经设置了 `input` 的 `value` 属性，使之恒等于从 `FilterableProductTable` 传递的 `filterText` state。只要 `filterText` state 不设置，入的值就不会改变。
+React 使数据流显式展示，是与双向数据绑定相比，需要更多的输入。如果你尝试在上述的例子中输入或者勾选复选框，发现 React 忽视了你的输入。这点是有意为之的。通过 `<input value={filterText} />`，已经设置了 `input` 的 `value` 属性，使之恒等于从 `FilterableProductTable` 传递的 `filterText` state。只要 `filterText` state 不设置，（输入框的）输入就不会改变。
 
-当用户更改表单输入时， state 将更新以反映这些更改。state 由 `FilterableProductTable` 所拥有，以只有它可以调用 `setFilterText` 和 `setInStockOnly`。使 `SearchBar` 更新 `FilterableProductTable` 的 state，需要将这些函数传递到 `SearchBar`:
+当用户更改表单输入时，state 将更新以反映这些更改。state 由 `FilterableProductTable` 所拥有，所以只有它可以调用 `setFilterText` 和 `setInStockOnly`。使 `SearchBar` 更新 `FilterableProductTable` 的 state，需要将这些函数传递到 `SearchBar`:
 
 ```js {2,3,10,11}
 function FilterableProductTable({ products }) {
