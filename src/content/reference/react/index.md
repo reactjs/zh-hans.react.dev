@@ -116,6 +116,6 @@ function TodoList({ todos, tab, theme }) {
 
 ---
 
-## 自己的 Hook {/*your-own-hooks*/}
+## 自定义 Hook {/*your-own-hooks*/}
 
 你也可以在 JavaScript 函数中 [定义你自己的 Hook](/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component)。
