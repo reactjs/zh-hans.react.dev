@@ -125,13 +125,13 @@ export default function MyComponent() {
 </body>
 ```
 
-portal 只改变 DOM 节点的所处位置。在其他方面，入 portal 中的 JSX 将作为渲染它的 React 组件的子节点。该子节点可以访问由父节点树提供的 context 对象、事件将仍然从子节点冒泡到父节点树。
+portal 只改变 DOM 节点的所处位置。另一方面，portal 中的 JSX 将作为实际渲染它的 React 组件的子节点。该子节点可以访问由父节点树提供的 context 对象、事件将仍然从子节点冒泡到父节点树。
 
 ---
 
 ### 使用 portal 渲染模态对话框 {/*rendering-a-modal-dialog-with-a-portal*/}
 
-你可以使用 portal 创建一个浮动在页面其余部分之上的模态对话框，即使呼出对话框的组件位于带有 `overflow: hidden` 或其他干扰对话框的样式的容器中。
+你可以使用 portal 创建一个浮动在页面其余部分之上的模态对话框，即使呼出对话框的组件位于带有 `overflow: hidden` 或其他干扰对话框样式的容器中。
 
 在此示例中，这两个容器具有破坏模态对话框的样式，但是渲染到 portal 中的容器不受影响，因为在 DOM 中，模态对话框不包含在父 JSX 元素内部。
 
@@ -240,7 +240,7 @@ export default function ModalContent({ onClose }) {
 
 使用 portal 时，确保应用程序的无障碍性非常重要。例如，你可能需要管理键盘焦点，以便用户可以以自然的方式进出 portal。
 
-创建模态对话框时，请遵循 [WAI-ARIA 模态作者实践指南](https://www.w3.org/WAI/ARIA/apg/#dialog_modal)。如果你使用了社区包，请确保它是无障碍的，并遵循这些指南。
+创建模态对话框时，请遵循 [WAI-ARIA 模态实践指南](https://www.w3.org/WAI/ARIA/apg/#dialog_modal)。如果你使用了社区包，请确保它是无障碍的，并遵循这些指南。
 
 </Pitfall>
 
@@ -248,7 +248,7 @@ export default function ModalContent({ onClose }) {
 
 ### 将 React 组件渲染到非 React 服务器标记中 {/*rendering-react-components-into-non-react-server-markup*/}
 
-如果你的网站只有一部分使用 React 构建，而其他部分是静态页面或由服务器呈现的页面，则 portal 可能非常有用。如果你的页面使用 Rails 等服务端框架构建，则可以在静态区域（例如侧边栏）中创建交互区域。与拥有 [多个独立的 React 根](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react) 相比，portal 将应用程序视为具有共享状态的单个 React 树，即使其部分呈现到 DOM 的不同部分也是如此。
+如果你在静态或服务端渲染的网站中只有某一部分使用 React，则 portal 可能非常有用。如果你的页面使用 Rails 等服务端框架构建，则可以在静态区域（例如侧边栏）中创建交互区域。与拥有 [多个独立的 React 根](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react) 相比，portal 将应用程序视为具有共享状态的单个 React 树，即使其部分呈现到 DOM 的不同部分也是如此。
 
 <Sandpack>
 
