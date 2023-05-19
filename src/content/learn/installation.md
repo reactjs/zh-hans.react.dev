@@ -12,10 +12,10 @@ React 从诞生之初就是可被渐进式使用的。因此你可以选择性�
 
 <YouWillLearn isChapter={true}>
 
-* [How to start a new React project](/learn/start-a-new-react-project)
-* [How to add React to an existing project](/learn/add-react-to-an-existing-project)
-* [How to set up your editor](/learn/editor-setup)
-* [How to install React Developer Tools](/learn/react-developer-tools)
+* [如何开始一个新的 React 项目](/learn/start-a-new-react-project)
+* [如果添加 React 到一个已有的项目](/learn/add-react-to-an-existing-project)
+* [如何设置你的编辑器](/learn/editor-setup)
+* [如何安装 React 开发者工具套件](/learn/react-developer-tools)
 
 </YouWillLearn>
 
@@ -43,15 +43,15 @@ React 文档中的大部分页面都包含这样的 sandbox。除 React 文档�
 
 ### 本地尝试 React {/*try-react-locally*/}
 
-To try React locally on your computer, [download this HTML page.](https://gist.githubusercontent.com/gaearon/0275b1e1518599bbeafcde4722e79ed1/raw/db72dcbf3384ee1708c4a07d3be79860db04bff0/example.html) Open it in your editor and in your browser!
+如果想在电脑本地上进行尝试, [下载这个HTML页面](https://gist.githubusercontent.com/gaearon/0275b1e1518599bbeafcde4722e79ed1/raw/db72dcbf3384ee1708c4a07d3be79860db04bff0/example.html)。 然后在你的编辑器和浏览器中打开!
 
-## Start a new React project {/*start-a-new-react-project*/}
+## 开始一个新的 React 项目 {/*start-a-new-react-project*/}
 
-If you want to build an app or a website fully with React, [start a new React project.](/learn/start-a-new-react-project)
+如果你想完全使用 React 建立一个应用或者一个网站, [开始一个新的 React 项目](/learn/start-a-new-react-project)。
 
-## Add React to an existing project {/*add-react-to-an-existing-project*/}
+## 添加 React 到一个已有的项目 {/*add-react-to-an-existing-project*/}
 
-If want to try using React in your existing app or a website, [add React to an existing project.](/learn/add-react-to-an-existing-project)
+如果你想在一个现有的应用或者网站上尝试 React, [添加 React 到一个现有的项目](/learn/add-react-to-an-existing-project)。
 
 ## 下一节 {/*next-steps*/}
 

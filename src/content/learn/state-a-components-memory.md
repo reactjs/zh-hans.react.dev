@@ -566,8 +566,6 @@ function useState(initialState) {
     updateDOM();
   }
 
-  // Store the pair for future renders
-  // and prepare for the next Hook call.
   // 存储这个 pair 用于将来的渲染
   // 并且为下一次 hook 的调用做准备
   componentHooks[currentHookIndex] = pair;
@@ -1416,7 +1414,7 @@ export default function FeedbackForm() {
 请记住，必须在条件语句外并且始终以相同的顺序调用 Hook！
 
 
-你还可以删除不必要的 `else` 分支以减少嵌套。但要保证对 Hook 的所有调用都发生在*第一个 `return` 前，这很重要。
+你还可以删除不必要的 `else` 分支以减少嵌套。但要保证对 Hook 的所有调用都发生在第一个 `return` **前**，这很重要。
 
 <Sandpack>
 
