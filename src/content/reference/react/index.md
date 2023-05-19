@@ -12,7 +12,7 @@ title: "内置 React Hook"
 
 ## 状态 Hook {/*state-hooks*/}
 
-**state** 让一个组件 [“记住”像用户输入的信息](/learn/state-a-components-memory)，比如，一个表单组件可以使用 state 来存储输入值，而一个图片库组件可以使用 state 来存储选定的图片索引。
+**state** 让一个组件 [“记住”用户输入的信息](/learn/state-a-components-memory)，比如，一个表单组件可以使用 state 来存储输入值，而一个图片库组件可以使用 state 来存储选定的图片索引。
 
 要给一个组件添加状态，可以使用这些 Hook 中的一个：
 
