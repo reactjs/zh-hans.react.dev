@@ -76,7 +76,7 @@ Effect 是 React 范式的“规避机制”。不要用 Effect 来协调你的�
 
 `useEffect` 有两个很少使用的变换形式，它们在时机上有一些差异：
 
-* [`useLayoutEffect`](/reference/react/useLayoutEffect) 在浏览器重新绘制屏幕前启动。在这里，你可以测量布局。
+* [`useLayoutEffect`](/reference/react/useLayoutEffect) 在浏览器重新绘制屏幕前执行。在这里，你可以测量布局。
 * [`useInsertionEffect`](/reference/react/useInsertionEffect) 在 React 对 DOM 进行更改之前触发。在这里，库可以插入动态的 CSS。
 
 ---
