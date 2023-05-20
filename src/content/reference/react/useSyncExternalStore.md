@@ -43,9 +43,9 @@ function TodosApp() {
 
 * `subscribe`: 一个函数，接收一个单独的 `callback` 参数并把它订阅到 store 上。 当 store 发生改变，它应当调用被提供的 `callback`。这会导致组件重新渲染。`subscribe` 函数会返回清除订阅的函数。
 
-* `getSnapshot`: 一个函数，返回组件需要的 store 中的数据快照。在 store 不变的情况下，重复调用 `getSnapshot` 必需返回同一个值。如果 store 改变，并且返回值也不同了（用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较），React 就会重新渲染组件。
+* `getSnapshot`: 一个函数，返回组件需要的 store 中的数据快照。在 store 不变的情况下，重复调用 `getSnapshot` 必须返回同一个值。如果 store 改变，并且返回值也不同了（用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较），React 就会重新渲染组件。
 
-* **可选** `getServerSnapshot`: 一个函数，返回 store 中数据的初始快照。它只会在服务端端渲染，以及水合服务端渲染内容到客户端时被用到。在服务端与客户端之间，快照必需相同，通常是从服务端序列化并传到客户端。如果你忽略此参数，在服务端渲染这个组件会抛出一个错误。
+* **可选** `getServerSnapshot`: 一个函数，返回 store 中数据的初始快照。它只会在服务端端渲染，以及服务端渲染内容到客户端 hydration 时被用到。在服务端与客户端之间，快照必须相同，通常是从服务端序列化并传到客户端。如果你忽略此参数，在服务端渲染这个组件会抛出一个错误。
 
 #### 返回 {/*returns*/}
 
@@ -53,7 +53,7 @@ function TodosApp() {
 
 #### 警告 {/*caveats*/}
 
-* `getSnapshot` 返回的 store 快照必需是不可变的。如果底层 store 有可变数据，要数据改变时返回一个新的不可变快照。否则，返回上次缓存的快照。
+* `getSnapshot` 返回的 store 快照必须是不可变的。如果底层 store 有可变数据，要数据改变时返回一个新的不可变快照。否则，返回上次缓存的快照。
 
 * 如果在重新渲染时传入一个不同的 `subscribe` 函数，React 会用新传入的 `subscribe` 函数重新订阅该 store。你可以通过在组件外声明 `subscribe` 来避免。
 
@@ -328,7 +328,7 @@ function getSnapshot() {
 }
 
 function getServerSnapshot() {
-  return true; // 服务端生成的HTML总是显示“在线“
+  return true; // 服务端生成的 HTML 总是显示“在线“
 }
 
 function subscribe(callback) {
@@ -339,7 +339,7 @@ function subscribe(callback) {
 `getServerSnapshot` 函数与 `getSnapshot` 相似，但它只在两种情况下运行：
 
 - 在服务端生成 HTML 时。
-- 在客户端 [水合](/reference/react-dom/client/hydrateRoot) 时，如：当 React 拿到服务端的 HTML 并使其可交互。
+- 在客户端 [hydration](/reference/react-dom/client/hydrateRoot) 时，如：当 React 拿到服务端的 HTML 并使其可交互。
 
 这使得你能提供在应用可交互前可用的初始快照值。如果没有对服务器端渲染来说有意义的初始值，就省略这个参数来 [强制客户端渲染](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content)。
 
