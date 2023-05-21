@@ -4,7 +4,7 @@ title: useInsertionEffect
 
 <Pitfall>
 
-`useInsertionEffect` 适用于 CSS-in-JS 库作者。除非你正在使用 CSS-in-JS 库并且需要注入样式，否则你应该使用 [`useEffect`](/reference/react/useEffect) 或者 [`useLayoutEffect`](/reference/react/useLayoutEffect)。
+`useInsertionEffect` 是为 CSS-in-JS 库的作者特意打造的。除非你正在使用 CSS-in-JS 库并且需要注入样式，否则你应该使用 [`useEffect`](/reference/react/useEffect) 或者 [`useLayoutEffect`](/reference/react/useLayoutEffect)。
 
 </Pitfall>
 
