@@ -40,7 +40,7 @@ function useCSS(rule) {
 }
 ```
 
-[请参考下方更多示例](#usage)
+[请参考下方更多示例](#usage)。
 
 #### 参数 {/*parameters*/}
 
