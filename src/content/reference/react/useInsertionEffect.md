@@ -10,7 +10,7 @@ title: useInsertionEffect
 
 <Intro>
 
-`useInsertionEffect` 是 [`useEffect`](/reference/react/useEffect) 的一个版本，在任何 DOM 变化前触发。
+`useInsertionEffect` 是 [`useEffect`](/reference/react/useEffect) 的另一种实现，在任何 DOM 变化前触发。
 
 ```js
 useInsertionEffect(setup, dependencies?)
@@ -44,9 +44,9 @@ function useCSS(rule) {
 
 #### 参数 {/*parameters*/}
 
-* `setup`：处理副作用的函数。setup 函数选择性返回一个 **清理（cleanup）** 函数。在将组件首次添加到 DOM 之前，React 将运行 setup 函数。在每次依赖项变更重新渲染后，如果你提供了 cleanup 函数，那么 React 将首先使用旧值运行该函数，然后使用新值运行 setup 函数。在组件从 DOM 中移除前，React 将运行 cleanup 函数。
+* `setup`：处理 Effect 的函数。setup 函数选择性返回一个 **清理（cleanup）** 函数。在将组件首次添加到 DOM 之前，React 将运行 setup 函数。在每次依赖项变更重新渲染后，如果你提供了 cleanup 函数，那么 React 将首先使用旧值运行该函数，然后使用新值运行 setup 函数。在组件从 DOM 中移除前，React 将运行 cleanup 函数。
 
-* **可选** `dependencies`：`setup` 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 [配置了 React](/learn/editor-setup#linting)，那么它将验证每个响应式值都被正确地指定为一个依赖项。依赖项列表必须具有固定数量的项，并且必须像 `[dep1, dep2, dep3]` 这样内联编写。React 将使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来比较每个依赖项和它先前的值。如果省略此参数，则在每次重新渲染组件之后，将重新运行副作用函数。
+* **可选** `dependencies`：`setup` 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 [配置了 React](/learn/editor-setup#linting)，那么它将验证每个响应式值都被正确地指定为一个依赖项。依赖项列表必须具有固定数量的项，并且必须像 `[dep1, dep2, dep3]` 这样内联编写。React 将使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来比较每个依赖项和它先前的值。如果省略此参数，则在每次重新渲染组件之后，将重新运行 Effect。
 
 #### 返回值 {/*returns*/}
 
@@ -134,6 +134,6 @@ function useCSS(rule) {
 
 如果你在渲染期间注入样式并且 React 正在处理 [非阻塞更新](/reference/react/useTransition#marking-a-state-update-as-a-non-blocking-transition)，那么浏览器将在渲染组件树时每一帧都会重新计算样式，这可能会 **非常慢**。
 
-`useInsertionEffect` 比在 [`useLayoutEffect`](/reference/react/useLayoutEffect) 或 [`useEffect`](/reference/react/useEffect) 期间注入样式更好。因为它确保其他 Effect 在你的组件中运行时，`<style>` 标签已经被注入。否则，常规 Effect 中的布局计算将由于过时的样式而出错。
+`useInsertionEffect` 比在 [`useLayoutEffect`](/reference/react/useLayoutEffect) 或 [`useEffect`](/reference/react/useEffect) 期间注入样式更好。因为它确保其他 Effect 在你的组件中运行时，`<style>` 标签已经被注入。否则，正常的 Effect 中的布局计算将由于过时的样式而出错。
 
 </DeepDive>
