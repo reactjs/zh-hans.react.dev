@@ -1,5 +1,7 @@
 ---
-title: "内置的 React API"
+title: 内置的 React API
+translators:
+  - loveloki
 ---
 
 <Intro>
