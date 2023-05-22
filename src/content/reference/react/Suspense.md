@@ -2561,4 +2561,4 @@ function handleNextPageClick() {
 
 如果你的路由集成了 Suspense，它将会自动将更新包装到 [`startTransition`](/reference/react/startTransition) 中。
 
-<a name="note1"></a> [1] [【中英双语字幕】React Conf 2021 —— Streaming Server Rendering with Suspense](https://www.bilibili.com/video/BV1SQ4y1a7XX/)<br>
+<a name="note1"></a> [1] [【中英双语字幕】React Conf 2021 —— Streaming Server Rendering with Suspense](https://www.bilibili.com/video/BV1SQ4y1a7XX/)
