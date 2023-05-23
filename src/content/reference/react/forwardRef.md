@@ -268,7 +268,7 @@ const FormField = forwardRef(function FormField(props, ref) {
 });
 ```
 
-如果 `MyInput` 组件将 ref 转发给它的 `<input>`，那么对于 `FormField` 的 ref 将会获得该 `<input>`：
+如果 `MyInput` 组件将 ref 转发给它的 `<input>`，那么 `FormField` 的 ref 将会获得该 `<input>`：
 
 ```js {2,5,10}
 function Form() {
