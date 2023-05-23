@@ -123,7 +123,7 @@ function TodoList({ todos, filter }) {
 
 **这会告诉 React，除非 `todos` 或 `filter` 发生变化，否则不要重新执行传入的函数**。React 会在初次渲染的时候记住 `getFilteredTodos()` 的返回值。在下一次渲染中，它会检查 `todos` 或 `filter` 是否发生了变化。如果它们跟上次渲染时一样，`useMemo` 会直接返回它最后保存的结果。如果不一样，React 将再次调用传入的函数（并保存它的结果）。
 
-你传入 [`useMemo`](/reference/react/useMemo) 的函数会在渲染期间执行，所以仅在它是 [纯函数](/learn/keeping-components-pure) 时有效。
+你传入 [`useMemo`](/reference/react/useMemo) 的函数会在渲染期间执行，所以它仅适用于 [纯函数](/learn/keeping-components-pure) 场景。
 
 <DeepDive>
 
