@@ -521,7 +521,7 @@ const MyInput = forwardRef(function MyInput({ label, showInput }, ref) {
 });
 ```
 
-如果 `showInput` 是 `false`，则 `ref` 将不会被转发到任何节点，并且 `MyInput` 的 ref 会保持为空。如果这个条件隐藏在另一个组件中，那么很容易忽略这一点，比如这个例子中的 Panel：
+如果 `showInput` 是 `false`，则 `ref` 将不会被转发到任何节点，并且 `MyInput` 的 `ref` 会保持为空。如果这个条件隐藏在另一个组件中，那么很容易忽略这一点，比如这个例子中的 `Panel`：
 
 ```js {5,7}
 const MyInput = forwardRef(function MyInput({ label, showInput }, ref) {
