@@ -235,7 +235,7 @@ function Form() {
 
 </LearnMore>
 
-## Effect 的生命周期 {/*lifecycle-of-reactive-effects*/}
+## 响应式 Effect 的生命周期 {/*lifecycle-of-reactive-effects*/}
 
 Effect 的生命周期不同于组件。组件可以挂载、更新或卸载。Effect 只能做两件事：开始同步某些东西，然后停止同步它。如果你的 Effect 依赖于随时间变化的 props 和 state，这个循环可能会发生多次。
 
@@ -306,7 +306,7 @@ React 提供了一个检查工具规则来检查你是否正确地指定了 Effe
 
 <LearnMore path="/learn/lifecycle-of-reactive-effects">
 
-阅读 **[Effect 的生命周期](/learn/lifecycle-of-reactive-effects)** 以了解 Effect 的生命周期与组件的生命周期有何不同。
+阅读 **[响应式 Effect 的生命周期](/learn/lifecycle-of-reactive-effects)** 以了解 Effect 的生命周期与组件的生命周期有何不同。
 
 </LearnMore>
 
