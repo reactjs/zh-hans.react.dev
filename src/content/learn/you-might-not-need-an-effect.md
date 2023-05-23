@@ -108,7 +108,7 @@ function TodoList({ todos, filter }) {
 }
 ```
 
-或者，写成一行：
+或者写成一行：
 
 ```js {5-6}
 import { useMemo, useState } from 'react';
