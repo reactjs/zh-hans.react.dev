@@ -134,23 +134,23 @@
           "path": "/learn/choosing-the-state-structure"
         },
         {
-          "title": "Sharing State Between Components",
+          "title": "在 组件间 共享状态",
           "path": "/learn/sharing-state-between-components"
         },
         {
-          "title": "Preserving and Resetting State",
+          "title": "对 state 进行保留和重置",
           "path": "/learn/preserving-and-resetting-state"
         },
         {
-          "title": "Extracting State Logic into a Reducer",
+          "title": "迁移状态逻辑至 Reducer 中",
           "path": "/learn/extracting-state-logic-into-a-reducer"
         },
         {
-          "title": "Passing Data Deeply with Context",
+          "title": "使用 Context 深层传递参数",
           "path": "/learn/passing-data-deeply-with-context"
         },
         {
-          "title": "Scaling Up with Reducer and Context",
+          "title": "使用 Reducer 和 Context 来拓展你的应用",
           "path": "/learn/scaling-up-with-reducer-and-context"
         }
       ]
@@ -161,35 +161,35 @@
       "tags": ["advanced"],
       "routes": [
         {
-          "title": "Referencing Values with Refs",
+          "title": "使用 ref 引用值",
           "path": "/learn/referencing-values-with-refs"
         },
         {
-          "title": "Manipulating the DOM with Refs",
+          "title": "使用 ref 操作 DOM",
           "path": "/learn/manipulating-the-dom-with-refs"
         },
         {
-          "title": "Synchronizing with Effects",
+          "title": "与 Effects 同步",
           "path": "/learn/synchronizing-with-effects"
         },
         {
-          "title": "You Might Not Need an Effect",
+          "title": "你可能不需要 Effect",
           "path": "/learn/you-might-not-need-an-effect"
         },
         {
-          "title": "Lifecycle of Reactive Effects",
+          "title": "反应效应的生命周期",
           "path": "/learn/lifecycle-of-reactive-effects"
         },
         {
-          "title": "Separating Events from Effects",
+          "title": "将事件与效果分离",
           "path": "/learn/separating-events-from-effects"
         },
         {
-          "title": "Removing Effect Dependencies",
+          "title": "删除效果依赖关系",
           "path": "/learn/removing-effect-dependencies"              
         },
         {
-          "title": "Reusing Logic with Custom Hooks",
+          "title": "使用自定义钩子重写逻辑",
           "path": "/learn/reusing-logic-with-custom-hooks"
         }
       ]
