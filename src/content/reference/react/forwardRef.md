@@ -495,7 +495,7 @@ const MyInput = forwardRef(function MyInput({ label }, ref) {
 });
 ```
 
-为了修复它，将 `ref` 传递给一个可以接受 ref 的 DOM 节点或另一个组件：
+为了修复它，将 `ref` 传递给一个可以接受 `ref` 的 DOM 节点或另一个组件：
 
 ```js {1,5}
 const MyInput = forwardRef(function MyInput({ label }, ref) {
