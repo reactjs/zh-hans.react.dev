@@ -94,7 +94,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 });
 ```
 
-你将在props之后收到一个 <CodeStep step={1}>ref</CodeStep> 作为第二个参数。将其传递到要公开的 DOM 节点中：
+你将在 props 之后收到一个 <CodeStep step={1}>ref</CodeStep> 作为第二个参数。将其传递到要公开的 DOM 节点中：
 
 ```js {8} [[1, 3, "ref"], [1, 8, "ref", 30]]
 import { forwardRef } from 'react';
