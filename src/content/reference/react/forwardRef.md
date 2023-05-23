@@ -70,7 +70,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 #### 返回值 {/*render-returns*/}
 
-`forwardRef` 返回一个可以在 JSX 中渲染的 React 组件。与作为纯函数定义的React组件不同，`forwardRef` 返回的组件还能够接收 `ref` 属性。
+`forwardRef` 返回一个可以在 JSX 中渲染的 React 组件。与作为纯函数定义的 React 组件不同，`forwardRef` 返回的组件还能够接收 `ref` 属性。
 
 ---
 
