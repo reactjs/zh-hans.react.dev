@@ -1,10 +1,10 @@
 ---
-title: "Common components (e.g. <div>)"
+title: "常见组件 (例如 <div>)"
 ---
 
 <Intro>
 
-All built-in browser components, such as [`<div>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div), support some common props and events.
+所有的内置浏览器组件, 例如 [`<div>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div), 都支持一些常见的属性和事件.
 
 </Intro>
 
@@ -12,25 +12,26 @@ All built-in browser components, such as [`<div>`](https://developer.mozilla.org
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
-### Common components (e.g. `<div>`) {/*common*/}
+### 通用组件 (例如 `<div>`) {/*common*/}
 
 ```js
 <div className="wrapper">Some content</div>
 ```
 
-[See more examples below.](#usage)
+[查看更多用例](#usage)
 
 #### Props {/*common-props*/}
 
-These special React props are supported for all built-in components:
+这些特殊的 React 属性适用于所有内置组件:
 
-* `children`: A React node (an element, a string, a number, [a portal,](/reference/react-dom/createPortal) an empty node like `null`, `undefined` and booleans, or an array of other React nodes). Specifies the content inside the component. When you use JSX, you will usually specify the `children` prop implicitly by nesting tags like `<div><span /></div>`.
+* `children`: 一个 React 节点 (可以是元素, 字符串, 数字, [portal,](/reference/react-dom/createPortal) 空节点（ 如`null`, `undefined`） 和 布尔值, 或其他 React 数组节点)。 指定组件内部的内容. 当你使用JSX时, 通常会通过嵌套标签 `<div><span /></div>` 隐式地指定 `children`属性。
 
-* `dangerouslySetInnerHTML`: An object of the form `{ __html: '<p>some html</p>' }` with a raw HTML string inside. Overrides the [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of the DOM node and displays the passed HTML inside. This should be used with extreme caution! If the HTML inside isn't trusted (for example, if it's based on user data), you risk introducing an [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) vulnerability. [Read more about using `dangerouslySetInnerHTML`.](#dangerously-setting-the-inner-html)
+* `dangerouslySetInnerHTML`: 一个形如 `{ __html: '<p>一些 HTML</p>' }` 的对象，其中包含原始的 HTML 字符串。 覆盖DOM节点的 [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) 属性 ，并在内部显示传递的HTML内容. 这个属性应该极度谨慎使用! 如果内部的HTML不可信（例如，如果它基于用户数据）, 您有引入 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 漏洞的风险。 
+[阅读更多关于使用`dangerouslySetInnerHTML`的内容。](#dangerously-setting-the-inner-html)
 
-* `ref`: A ref object from [`useRef`](/reference/react/useRef) or [`createRef`](/reference/react/createRef), or a [`ref` callback function,](#ref-callback) or a string for [legacy refs.](https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs) Your ref will be filled with the DOM element for this node. [Read more about manipulating the DOM with refs.](#manipulating-a-dom-node-with-a-ref)
+* `ref`: 来自 [`useRef`](/reference/react/useRef) 或者 [`createRef`](/reference/react/createRef)的ref对象, 或者一个 [`ref` 回调函数,](#ref-callback) 或者一个用于 [传统 refs](https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs) 的字符串，您的引用将被填充为此节点的 DOM 元素。 [阅读更多关于使用 refs 操纵 DOM 的内容。](#manipulating-a-dom-node-with-a-ref)
 
 * `suppressContentEditableWarning`: A boolean. If `true`, suppresses the warning that React shows for elements that both have `children` and `contentEditable={true}` (which normally do not work together). Use this if you're building a text input library that manages the `contentEditable` content manually.
 
