@@ -33,7 +33,11 @@ import { useRef } from 'react';
 const myRef = useRef(null);
 ```
 
+<<<<<<< HEAD
 最后，将其作为 `ref` 属性传给 DOM 节点：
+=======
+Finally, pass your ref as the `ref` attribute to the JSX tag for which you want to get the DOM node:
+>>>>>>> 09185bcea9c7880763a458e9a68e67e454109791
 
 ```js
 <div ref={myRef}>
