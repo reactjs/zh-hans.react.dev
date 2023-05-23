@@ -226,7 +226,7 @@ function ChatRoom({ roomId }) {
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('所有');
+  const [roomId, setRoomId] = useState('综合');
   const [show, setShow] = useState(false);
   return (
     <>
@@ -253,7 +253,7 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // 真正的实现实际上会连接到服务器
+  // 实际的实现将会连接到服务器
   return {
     connect() {
       console.log('✅ 连接到 "' + roomId + '" 房间，位于' + serverUrl + '...');
@@ -426,7 +426,7 @@ function ChatRoom({ roomId }) {
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('所有');
+  const [roomId, setRoomId] = useState('综合');
   return (
     <>
       <label>
@@ -449,7 +449,7 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // 真正的实现实际上会连接到服务器
+  // 实际的实现将会连接到服务器
   return {
     connect() {
       console.log('✅ 连接到 "' + roomId + '" 房间，位于' + serverUrl + '...');
@@ -529,7 +529,7 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // 真正的实现实际上会连接到服务器
+  // 实际的实现将会连接到服务器
   return {
     connect() {
       console.log('✅ 连接到 "' + roomId + '" 房间，位于' + serverUrl + '...');
@@ -625,7 +625,7 @@ function ChatRoom({ roomId }) { // roomId 是响应式的
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('所有');
+  const [roomId, setRoomId] = useState('综合');
   return (
     <>
       <label>
@@ -648,7 +648,7 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // 真正的实现实际上会连接到服务器
+  // 实际的实现将会连接到服务器
   return {
     connect() {
       console.log('✅ 连接到 "' + roomId + '" 房间，位于' + serverUrl + '...');
@@ -775,15 +775,15 @@ useEffect(() => {
 
 <Challenges>
 
-#### Fix reconnecting on every keystroke {/*fix-reconnecting-on-every-keystroke*/}
+#### 修复每次输入均重新连接 {/*fix-reconnecting-on-every-keystroke*/}
 
-In this example, the `ChatRoom` component connects to the chat room when the component mounts, disconnects when it unmounts, and reconnects when you select a different chat room. This behavior is correct, so you need to keep it working.
+在这个例子中，`ChatRoom` 组件在组件挂载时连接到聊天室，在卸载时断开连接，并且在选择不同的聊天室时重新连接。这种行为是正确的，所以你需要保持它的正常工作。
 
-However, there is a problem. Whenever you type into the message box input at the bottom, `ChatRoom` *also* reconnects to the chat. (You can notice this by clearing the console and typing into the input.) Fix the issue so that this doesn't happen.
+然而，存在一个问题。每当你在底部的消息框中输入时，`ChatRoom` 也会重新连接到聊天室（你可以通过清空控制台并在输入框中输入内容来注意到这一点）。修复这个问题，使其不再发生重新连接的情况。
 
 <Hint>
 
-You might need to add a dependency array for this Effect. What dependencies should be there?
+你应该需要为这个 Effect 添加一个依赖数组，那么应该包含哪些依赖项呢？
 
 </Hint>
 
@@ -806,7 +806,7 @@ function ChatRoom({ roomId }) {
 
   return (
     <>
-      <h1>Welcome to the {roomId} room!</h1>
+      <h1>欢迎来到 {roomId} 聊天室！</h1>
       <input
         value={message}
         onChange={e => setMessage(e.target.value)}
@@ -816,18 +816,18 @@ function ChatRoom({ roomId }) {
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('general');
+  const [roomId, setRoomId] = useState('综合');
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        选择聊天室：{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">general</option>
-          <option value="travel">travel</option>
-          <option value="music">music</option>
+          <option value="综合">综合</option>
+          <option value="旅游">旅游</option>
+          <option value="音乐">音乐</option>
         </select>
       </label>
       <hr />
@@ -839,13 +839,13 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 实际的实现将会连接到服务器
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ 建立连接 "' + roomId + '" 聊天室位于 ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ 断开连接 "' + roomId + '" 聊天室位于 ' + serverUrl);
     }
   };
 }
@@ -860,7 +860,7 @@ button { margin-left: 10px; }
 
 <Solution>
 
-This Effect didn't have a dependency array at all, so it re-synchronized after every re-render. First, add a dependency array. Then, make sure that every reactive value used by the Effect is specified in the array. For example, `roomId` is reactive (because it's a prop), so it should be included in the array. This ensures that when the user selects a different room, the chat reconnects. On the other hand, `serverUrl` is defined outside the component. This is why it doesn't need to be in the array.
+这个 Effect 实际上没有任何依赖数组，所以它在每次重新渲染后都会重新同步。首先，添加一个依赖数组。然后，确保每个被 Effect 使用的响应式值都在数组中指定。例如，`roomId` 是响应式的（因为它是一个 `prop`），所以它应该包含在数组中。这样可以确保当用户选择一个不同的聊天室时，聊天会重新连接。另一方面，`serverUrl` 是在组件外部定义的，这就是为什么它不需要在数组中的原因。
 
 <Sandpack>
 
@@ -881,7 +881,7 @@ function ChatRoom({ roomId }) {
 
   return (
     <>
-      <h1>Welcome to the {roomId} room!</h1>
+      <h1>欢迎来到 {roomId} 聊天室！</h1>
       <input
         value={message}
         onChange={e => setMessage(e.target.value)}
@@ -891,18 +891,18 @@ function ChatRoom({ roomId }) {
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('general');
+  const [roomId, setRoomId] = useState('综合');
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        选择聊天室：{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">general</option>
-          <option value="travel">travel</option>
-          <option value="music">music</option>
+          <option value="综合">综合</option>
+          <option value="旅游">旅游</option>
+          <option value="音乐">音乐</option>
         </select>
       </label>
       <hr />
@@ -914,13 +914,13 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 实际的实现将会连接到服务器
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ 建立连接 "' + roomId + '" 聊天室位于 ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ 断开连接 "' + roomId + '" 聊天室位于 ' + serverUrl);
     }
   };
 }
@@ -935,15 +935,15 @@ button { margin-left: 10px; }
 
 </Solution>
 
-#### Switch synchronization on and off {/*switch-synchronization-on-and-off*/}
+#### 打开和关闭状态同步 {/*switch-synchronization-on-and-off*/}
 
-In this example, an Effect subscribes to the window [`pointermove`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointermove_event) event to move a pink dot on the screen. Try hovering over the preview area (or touching the screen if you're on a mobile device), and see how the pink dot follows your movement.
+在这个例子中，一个 Effect 订阅了 window 的 [`pointermove`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointermove_event) 事件，以在屏幕上移动一个粉色的点。尝试在预览区域上悬停（或者如果你使用移动设备，请触摸屏幕），看看粉色的点如何跟随你的移动。
 
-There is also a checkbox. Ticking the checkbox toggles the `canMove` state variable, but this state variable is not used anywhere in the code. Your task is to change the code so that when `canMove` is `false` (the checkbox is ticked off), the dot should stop moving. After you toggle the checkbox back on (and set `canMove` to `true`), the box should follow the movement again. In other words, whether the dot can move or not should stay synchronized to whether the checkbox is checked.
+还有一个复选框。勾选复选框会切换 `canMove` 状态变量，但是这个状态变量在代码中没有被使用。你的任务是修改代码，使得当 `canMove` 为 `false`（复选框未选中）时，点应该停止移动。在你切换复选框回到选中状态（将 `canMove` 设置为 `true`）之后，点应该重新跟随移动。换句话说，点是否可以移动应该与复选框的选中状态保持同步。
 
 <Hint>
 
-You can't declare an Effect conditionally. However, the code inside the Effect can use conditions!
+你不能在条件语句中声明 Effect，但是可以在 Effect 内部使用条件语句来控制其行为！
 
 </Hint>
 
@@ -971,7 +971,7 @@ export default function App() {
           checked={canMove}
           onChange={e => setCanMove(e.target.checked)} 
         />
-        The dot is allowed to move
+        是否允许移动
       </label>
       <hr />
       <div style={{
@@ -1001,7 +1001,7 @@ body {
 
 <Solution>
 
-One solution is to wrap the `setPosition` call into an `if (canMove) { ... }` condition:
+一个解决方案是将 `setPosition` 的调用包裹在 `if (canMove) { ... }` 条件语句中：
 
 <Sandpack>
 
@@ -1029,7 +1029,7 @@ export default function App() {
           checked={canMove}
           onChange={e => setCanMove(e.target.checked)} 
         />
-        The dot is allowed to move
+        是否允许移动
       </label>
       <hr />
       <div style={{
@@ -1057,7 +1057,7 @@ body {
 
 </Sandpack>
 
-Alternatively, you could wrap the *event subscription* logic into an `if (canMove) { ... }` condition:
+或者，你可以将*事件订阅*的逻辑包裹在 `if (canMove) { ... }` 条件语句中：
 
 <Sandpack>
 
@@ -1085,7 +1085,7 @@ export default function App() {
           checked={canMove}
           onChange={e => setCanMove(e.target.checked)} 
         />
-        The dot is allowed to move
+        是否允许移动
       </label>
       <hr />
       <div style={{
@@ -1113,19 +1113,19 @@ body {
 
 </Sandpack>
 
-In both of these cases, `canMove` is a reactive variable that you read inside the Effect. This is why it must be specified in the list of Effect dependencies. This ensures that the Effect re-synchronizes after every change to its value.
+在这两种情况下，`canMove` 是一个响应式变量，你在 Effect 中读取它。这就是为什么它必须在 Effect 的依赖列表中进行指定。这样可以确保在每次值的更改后，Effect 重新同步。
 
 </Solution>
 
-#### Investigate a stale value bug {/*investigate-a-stale-value-bug*/}
+#### 寻找过时值的错误 {/*investigate-a-stale-value-bug*/}
 
-In this example, the pink dot should move when the checkbox is on, and should stop moving when the checkbox is off. The logic for this has already been implemented: the `handleMove` event handler checks the `canMove` state variable.
+在这个例子中，当复选框选中时，粉色的点应该移动，当复选框未选中时，点应该停止移动。这个逻辑已经实现了：`handleMove` 事件处理程序检查 `canMove` 状态变量。
 
-However, for some reason, the `canMove` state variable inside `handleMove` appears to be "stale": it's always `true`, even after you tick off the checkbox. How is this possible? Find the mistake in the code and fix it.
+然而，出现问题的是在 `handleMove` 内部，`canMove` 状态变量似乎是“过时的”：即使在你取消选中复选框之后，它始终是 `true`。这是怎么可能的？找出代码中的错误并进行修复。
 
 <Hint>
 
-If you see a linter rule being suppressed, remove the suppression! That's where the mistakes usually are.
+如果你在代码中看到有一个被禁止的 linter 规则，建议你考虑删除这个禁止。通常情况下，禁止 linter 规则可能隐藏了潜在的错误或代码问题。
 
 </Hint>
 
@@ -1157,7 +1157,7 @@ export default function App() {
           checked={canMove}
           onChange={e => setCanMove(e.target.checked)} 
         />
-        The dot is allowed to move
+        是否允许移动
       </label>
       <hr />
       <div style={{
@@ -1187,13 +1187,13 @@ body {
 
 <Solution>
 
-The problem with the original code was suppressing the dependency linter. If you remove the suppression, you'll see that this Effect depends on the `handleMove` function. This makes sense: `handleMove` is declared inside the component body, which makes it a reactive value. Every reactive value must be specified as a dependency, or it can potentially get stale over time!
+原始代码的问题在于禁止了依赖性检查的 linter 规则。如果移除禁止，你会发现这个 Effect 依赖于 `handleMove` 函数。这是有道理的：`handleMove` 是在组件体内声明的，这使得它成为一个响应式值。每个响应式值都必须在依赖列表中进行指定，否则它可能会随着时间的推移变为过时！
 
-The author of the original code has "lied" to React by saying that the Effect does not depend (`[]`) on any reactive values. This is why React did not re-synchronize the Effect after `canMove` has changed (and `handleMove` with it). Because React did not re-synchronize the Effect, the `handleMove` attached as a listener is the `handleMove` function created during the initial render. During the initial render, `canMove` was `true`, which is why `handleMove` from the initial render will forever see that value.
+原始代码的作者通过声明 Effect 不依赖任何响应式值（`[]`）来欺骗 React。这就是为什么 React 在 `canMove` 改变后（以及 `handleMove`）没有重新同步该 Effect。因为 React 没有重新同步该 Effect，所以附加的 `handleMove` 侦听器是在初始渲染期间创建的 `handleMove` 函数。在初始渲染期间，`canMove` 是 `true`，这就是为什么初始渲染时的 `handleMove` 将永远获取到该值。
 
-**If you never suppress the linter, you will never see problems with stale values.** There are a few different ways to solve this bug, but you should always start by removing the linter suppression. Then change the code to fix the lint error.
+**如果从不禁止 linter，就不会遇到过时值的问题。**解决这个 bug 有几种不同的方法，但你应该始终从移除 linter 禁止开始。然后修改代码来修复 lint 错误。
 
-You can change the Effect dependencies to `[handleMove]`, but since it's going to be a newly defined function for every render, you might as well remove dependencies array altogether. Then the Effect *will* re-synchronize after every re-render:
+你可以将 Effect 的依赖项更改为 `[handleMove]`，但由于它在每次渲染时都会被重新定义，你也可以完全删除依赖项数组。然后，Effect 将在*每次重新渲染后重新同步*：
 
 <Sandpack>
 
@@ -1222,7 +1222,7 @@ export default function App() {
           checked={canMove}
           onChange={e => setCanMove(e.target.checked)} 
         />
-        The dot is allowed to move
+        是否允许移动
       </label>
       <hr />
       <div style={{
@@ -1250,9 +1250,9 @@ body {
 
 </Sandpack>
 
-This solution works, but it's not ideal. If you put `console.log('Resubscribing')` inside the Effect, you'll notice that it resubscribes after every re-render. Resubscribing is fast, but it would still be nice to avoid doing it so often.
+这个解决方案有效，但并不理想。如果在 Effect 内部放置 `console.log('Resubscribing')`，你会注意到它在每次重新渲染后都重新订阅。重新订阅很快，但是正常情况下应该避免频繁进行重新订阅。
 
-A better fix would be to move the `handleMove` function *inside* the Effect. Then `handleMove` won't be a reactive value, and so your Effect won't depend on a function. Instead, it will need to depend on `canMove` which your code now reads from inside the Effect. This matches the behavior you wanted, since your Effect will now stay synchronized with the value of `canMove`:
+更好的解决方案是将 `handleMove` 函数*移动到* Effect 内部。然后，`handleMove` 就不会成为一个响应式值，因此你的 Effect 不会依赖于一个函数。相反，它将依赖于你的代码从 Effect 内部读取的 `canMove`。这符合你想要的行为，因为你的 Effect 现在将始终与 `canMove` 的值保持同步：
 
 <Sandpack>
 
@@ -1281,7 +1281,7 @@ export default function App() {
           checked={canMove}
           onChange={e => setCanMove(e.target.checked)} 
         />
-        The dot is allowed to move
+        是否允许移动
       </label>
       <hr />
       <div style={{
@@ -1309,21 +1309,21 @@ body {
 
 </Sandpack>
 
-Try adding `console.log('Resubscribing')` inside the Effect body and notice that now it only resubscribes when you toggle the checkbox (`canMove` changes) or edit the code. This makes it better than the previous approach that always resubscribed.
+请在 Effect 主体中添加 `console.log('Resubscribing')`，注意现在它只在切换复选框（`canMove` 变化）或编辑代码时重新订阅。这使得它比之前的方法更好，因为它只在必要时重新订阅。
 
-You'll learn a more general approach to this type of problem in [Separating Events from Effects.](/learn/separating-events-from-effects)
+你将在[将事件与 Effect 分离](/learn/separating-events-from-effects)中学习到更通用的解决此类问题的方法。
 
 </Solution>
 
-#### Fix a connection switch {/*fix-a-connection-switch*/}
+#### 修复连接开关 {/*fix-a-connection-switch*/}
 
-In this example, the chat service in `chat.js` exposes two different APIs: `createEncryptedConnection` and `createUnencryptedConnection`. The root `App` component lets the user choose whether to use encryption or not, and then passes down the corresponding API method to the child `ChatRoom` component as the `createConnection` prop.
+在这个例子中，`chat.js` 中的聊天服务提供了两个不同的 API：`createEncryptedConnection` 和 `createUnencryptedConnection`。根组件 `App` 允许用户选择是否使用加密，并将相应的 API 方法作为 `createConnection` 属性传递给子组件 `ChatRoom`。
 
-Notice that initially, the console logs say the connection is not encrypted. Try toggling the checkbox on: nothing will happen. However, if you change the selected room after that, then the chat will reconnect *and* enable encryption (as you'll see from the console messages). This is a bug. Fix the bug so that toggling the checkbox *also* causes the chat to reconnect.
+请注意，最初控制台日志显示连接未加密。尝试切换复选框：不会发生任何变化。然而，如果在此之后更改所选的聊天室，那么聊天将重新连接 *并且* 启用加密（从控制台日志中可以看到）。这是一个错误。修复这个错误，以便切换复选框 *也* 会使重新连接聊天室。
 
 <Hint>
 
-Suppressing the linter is always suspicious. Could this be a bug?
+禁用代码检查工具总是令人产生疑问。这可能是一个 bug 吗？
 
 </Hint>
 
@@ -1338,19 +1338,19 @@ import {
 } from './chat.js';
 
 export default function App() {
-  const [roomId, setRoomId] = useState('general');
+  const [roomId, setRoomId] = useState('综合');
   const [isEncrypted, setIsEncrypted] = useState(false);
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        选择聊天室：{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">general</option>
-          <option value="travel">travel</option>
-          <option value="music">music</option>
+          <option value="综合">综合</option>
+          <option value="旅游">旅游</option>
+          <option value="音乐">音乐</option>
         </select>
       </label>
       <label>
@@ -1359,7 +1359,7 @@ export default function App() {
           checked={isEncrypted}
           onChange={e => setIsEncrypted(e.target.checked)}
         />
-        Enable encryption
+        启用加密
       </label>
       <hr />
       <ChatRoom
@@ -1385,35 +1385,35 @@ export default function ChatRoom({ roomId, createConnection }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roomId]);
 
-  return <h1>Welcome to the {roomId} room!</h1>;
+  return <h1>欢迎来到 {roomId} 聊天室！</h1>;
 }
 ```
 
 ```js chat.js
 export function createEncryptedConnection(roomId) {
-  // A real implementation would actually connect to the server
+  // 实际的实现将会连接到服务器
   return {
     connect() {
-      console.log('✅ 🔐 Connecting to "' + roomId + '... (encrypted)');
+      console.log('✅ 🔐 建立连接 "' + roomId + '... (加密)');
     },
     disconnect() {
-      console.log('❌ 🔐 Disconnected from "' + roomId + '" room (encrypted)');
+      console.log('❌ 🔐 断开连接 "' + roomId + '" room (加密)');
     }
   };
 }
 
 export function createUnencryptedConnection(roomId) {
-  // A real implementation would actually connect to the server
+  // 实际的实现将会连接到服务器
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '... (unencrypted)');
+      console.log('✅ 建立连接 "' + roomId + '... (未加密)');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room (unencrypted)');
+      console.log('❌ 断开连接 "' + roomId + '" room (未加密)');
     }
   };
 }
-```
+````
 
 ```css
 label { display: block; margin-bottom: 10px; }
@@ -1423,7 +1423,7 @@ label { display: block; margin-bottom: 10px; }
 
 <Solution>
 
-If you remove the linter suppression, you will see a lint error. The problem is that `createConnection` is a prop, so it's a reactive value. It can change over time! (And indeed, it should--when the user ticks the checkbox, the parent component passes a different value of the `createConnection` prop.) This is why it should be a dependency. Include it in the list to fix the bug:
+如果解除代码检查工具的禁用，你会看到一个代码检查错误。问题在于 `createConnection` 是一个 prop，因此它是一个响应式的值。它可以随时间而改变！（实际上，当用户勾选复选框时，父组件会传递一个不同的 `createConnection` prop 值。）这就是为什么它应该是一个依赖项。将其包含在依赖项列表中以修复该 bug：
 
 <Sandpack>
 
@@ -1436,19 +1436,19 @@ import {
 } from './chat.js';
 
 export default function App() {
-  const [roomId, setRoomId] = useState('general');
+  const [roomId, setRoomId] = useState('综合');
   const [isEncrypted, setIsEncrypted] = useState(false);
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        选择聊天室:{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">general</option>
-          <option value="travel">travel</option>
-          <option value="music">music</option>
+          <option value="综合">综合</option>
+          <option value="旅游">旅游</option>
+          <option value="音乐">音乐</option>
         </select>
       </label>
       <label>
@@ -1457,7 +1457,7 @@ export default function App() {
           checked={isEncrypted}
           onChange={e => setIsEncrypted(e.target.checked)}
         />
-        Enable encryption
+        启用加密
       </label>
       <hr />
       <ChatRoom
@@ -1482,31 +1482,31 @@ export default function ChatRoom({ roomId, createConnection }) {
     return () => connection.disconnect();
   }, [roomId, createConnection]);
 
-  return <h1>Welcome to the {roomId} room!</h1>;
+  return <h1>欢迎来到 {roomId} 聊天室！</h1>;
 }
 ```
 
 ```js chat.js
 export function createEncryptedConnection(roomId) {
-  // A real implementation would actually connect to the server
+  // 实际的实现将会连接到服务器
   return {
     connect() {
-      console.log('✅ 🔐 Connecting to "' + roomId + '... (encrypted)');
+      console.log('✅ 🔐 建立连接 "' + roomId + '... (加密)');
     },
     disconnect() {
-      console.log('❌ 🔐 Disconnected from "' + roomId + '" room (encrypted)');
+      console.log('❌ 🔐 断开连接 "' + roomId + '" room (加密)');
     }
   };
 }
 
 export function createUnencryptedConnection(roomId) {
-  // A real implementation would actually connect to the server
+  // 实际的实现将会连接到服务器
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '... (unencrypted)');
+      console.log('✅ 建立连接 "' + roomId + '... (未加密)');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room (unencrypted)');
+      console.log('❌ 断开连接 "' + roomId + '" room (未加密)');
     }
   };
 }
@@ -1518,7 +1518,7 @@ label { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-It is correct that `createConnection` is a dependency. However, this code is a bit fragile because someone could edit the `App` component to pass an inline function as the value of this prop. In that case, its value would be different every time the `App` component re-renders, so the Effect might re-synchronize too often. To avoid this, you can pass `isEncrypted` down instead:
+是的，`createConnection` 是一个依赖项。然而，这段代码并不健壮，因为可以编辑 `App` 组件以将内联函数作为该 prop 的值传递。在这种情况下，每次 `App` 组件重新渲染时，其值都会不同，因此 Effect 可能会过于频繁地重新同步。为了避免这种情况，你可以传 `isEncrypted` 作为 prop 的值：
 
 <Sandpack>
 
@@ -1527,19 +1527,19 @@ import { useState } from 'react';
 import ChatRoom from './ChatRoom.js';
 
 export default function App() {
-  const [roomId, setRoomId] = useState('general');
+  const [roomId, setRoomId] = useState('综合');
   const [isEncrypted, setIsEncrypted] = useState(false);
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        选择聊天室：{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">general</option>
-          <option value="travel">travel</option>
-          <option value="music">music</option>
+          <option value="综合">综合</option>
+          <option value="旅游">旅游</option>
+          <option value="音乐">音乐</option>
         </select>
       </label>
       <label>
@@ -1548,7 +1548,7 @@ export default function App() {
           checked={isEncrypted}
           onChange={e => setIsEncrypted(e.target.checked)}
         />
-        Enable encryption
+        启用加密
       </label>
       <hr />
       <ChatRoom
@@ -1577,31 +1577,31 @@ export default function ChatRoom({ roomId, isEncrypted }) {
     return () => connection.disconnect();
   }, [roomId, isEncrypted]);
 
-  return <h1>Welcome to the {roomId} room!</h1>;
+  return <h1>欢迎来到 {roomId} 聊天室！</h1>;
 }
 ```
 
 ```js chat.js
 export function createEncryptedConnection(roomId) {
-  // A real implementation would actually connect to the server
+  // 实际的实现将会连接到服务器
   return {
     connect() {
-      console.log('✅ 🔐 Connecting to "' + roomId + '... (encrypted)');
+      console.log('✅ 🔐 建立连接 "' + roomId + '... (加密)');
     },
     disconnect() {
-      console.log('❌ 🔐 Disconnected from "' + roomId + '" room (encrypted)');
+      console.log('❌ 🔐 断开连接 "' + roomId + '" room (加密)');
     }
   };
 }
 
 export function createUnencryptedConnection(roomId) {
-  // A real implementation would actually connect to the server
+  // 实际的实现将会连接到服务器
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '... (unencrypted)');
+      console.log('✅ 建立连接 "' + roomId + '... (未加密)');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room (unencrypted)');
+      console.log('❌ 断开连接 "' + roomId + '" room (未加密)');
     }
   };
 }
@@ -1613,21 +1613,19 @@ label { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-In this version, the `App` component passes a boolean prop instead of a function. Inside the Effect, you decide which function to use. Since both `createEncryptedConnection` and `createUnencryptedConnection` are declared outside the component, they aren't reactive, and don't need to be dependencies. You'll learn more about this in [Removing Effect Dependencies.](/learn/removing-effect-dependencies)
+在这个版本中，`App` 组件传递了一个布尔类型的 prop，而不是一个函数。在 Effect 内部，你根据需要决定使用哪个函数。由于 `createEncryptedConnection` 和 `createUnencryptedConnection` 都是在组件外部声明的，它们不是响应式的，因此不需要作为依赖项。你可以在 [移除 Effect 依赖项](/learn/removing-effect-dependencies) 中了解更多相关内容。
 
 </Solution>
 
-#### Populate a chain of select boxes {/*populate-a-chain-of-select-boxes*/}
+#### 填充一系列选择框 {/*populate-a-chain-of-select-boxes*/}
 
-In this example, there are two select boxes. One select box lets the user pick a planet. Another select box lets the user pick a place *on that planet.* The second box doesn't work yet. Your task is to make it show the places on the chosen planet.
+当前的示例中有两个下拉框。一个下拉框允许用户选择一个行星，而另一个下拉框应该显示该选定行星上的地点。然而，目前这两个下拉框都还没有正常工作。你的任务是添加一些额外的代码，使得选择一个行星时，`placeList` 状态变量被填充为 `"/planets/" + planetId + "/places"` API 调用的结果。
 
-Look at how the first select box works. It populates the `planetList` state with the result from the `"/planets"` API call. The currently selected planet's ID is kept in the `planetId` state variable. You need to find where to add some additional code so that the `placeList` state variable is populated with the result of the `"/planets/" + planetId + "/places"` API call.
-
-If you implement this right, selecting a planet should populate the place list. Changing a planet should change the place list.
+如果你正确实现了这个功能，选择一个行星应该会填充地点列表，而更改行星应该会相应地改变地点列表。
 
 <Hint>
 
-If you have two independent synchronization processes, you need to write two separate Effects.
+如果你有两个独立的同步过程，你需要编写两个单独的 Effect。
 
 </Hint>
 
@@ -1648,9 +1646,9 @@ export default function Page() {
     let ignore = false;
     fetchData('/planets').then(result => {
       if (!ignore) {
-        console.log('Fetched a list of planets.');
+        console.log('获取了一个行星列表。');
         setPlanetList(result);
-        setPlanetId(result[0].id); // Select the first planet
+        setPlanetId(result[0].id); // 选择第一个行星
       }
     });
     return () => {
@@ -1661,27 +1659,27 @@ export default function Page() {
   return (
     <>
       <label>
-        Pick a planet:{' '}
+        选择一个行星：{' '}
         <select value={planetId} onChange={e => {
           setPlanetId(e.target.value);
         }}>
-          {planetList.map(planet =>
+          {planetList?.map(planet =>
             <option key={planet.id} value={planet.id}>{planet.name}</option>
           )}
         </select>
       </label>
       <label>
-        Pick a place:{' '}
+        选择一个地点：{' '}
         <select value={placeId} onChange={e => {
           setPlaceId(e.target.value);
         }}>
-          {placeList.map(place =>
+          {placeList?.map(place =>
             <option key={place.id} value={place.id}>{place.name}</option>
           )}
         </select>
       </label>
       <hr />
-      <p>You are going to: {placeId || '???'} on {planetId || '???'} </p>
+      <p>你将要前往：{planetId || '...'} 的 {placeId || '...'} </p>
     </>
   );
 }
@@ -1694,10 +1692,10 @@ export function fetchData(url) {
   } else if (url.startsWith('/planets/')) {
     const match = url.match(/^\/planets\/([\w-]+)\/places(\/)?$/);
     if (!match || !match[1] || !match[1].length) {
-      throw Error('Expected URL like "/planets/earth/places". Received: "' + url + '".');
+      throw Error('预期的 URL，如“/planets/earth/places”。 已收到："' + url + '"。');
     }
     return fetchPlaces(match[1]);
-  } else throw Error('Expected URL like "/planets" or "/planets/earth/places". Received: "' + url + '".');
+  } else throw Error('预期的 URL，如“/planets”或“/planets/earth/places”。已收到："' + url + '"。');
 }
 
 async function fetchPlanets() {
@@ -1705,13 +1703,13 @@ async function fetchPlanets() {
     setTimeout(() => {
       resolve([{
         id: 'earth',
-        name: 'Earth'
+        name: '火星'
       }, {
         id: 'venus',
-        name: 'Venus'
+        name: '金星'
       }, {
         id: 'mars',
-        name: 'Mars'        
+        name: '火星'        
       }]);
     }, 1000);
   });
@@ -1720,8 +1718,8 @@ async function fetchPlanets() {
 async function fetchPlaces(planetId) {
   if (typeof planetId !== 'string') {
     throw Error(
-      'fetchPlaces(planetId) expects a string argument. ' +
-      'Instead received: ' + planetId + '.'
+      'fetchPlaces(planetId) 需要一个字符串参数。' +
+      '而是收到：' + planetId + '。'
     );
   }
   return new Promise(resolve => {
@@ -1729,37 +1727,37 @@ async function fetchPlaces(planetId) {
       if (planetId === 'earth') {
         resolve([{
           id: 'laos',
-          name: 'Laos'
+          name: '老挝'
         }, {
           id: 'spain',
-          name: 'Spain'
+          name: '西班牙'
         }, {
           id: 'vietnam',
-          name: 'Vietnam'        
+          name: '越南'        
         }]);
       } else if (planetId === 'venus') {
         resolve([{
           id: 'aurelia',
-          name: 'Aurelia'
+          name: '奥雷利亚'
         }, {
           id: 'diana-chasma',
-          name: 'Diana Chasma'
+          name: '戴安娜哈斯玛'
         }, {
           id: 'kumsong-vallis',
-          name: 'Kŭmsŏng Vallis'        
+          name: 'Kŭmsŏng山谷'        
         }]);
       } else if (planetId === 'mars') {
         resolve([{
           id: 'aluminum-city',
-          name: 'Aluminum City'
+          name: '铝城'
         }, {
           id: 'new-new-york',
-          name: 'New New York'
+          name: '纽纽约'
         }, {
           id: 'vishniac',
-          name: 'Vishniac'
+          name: '毗湿奴'
         }]);
-      } else throw Error('Unknown planet ID: ' + planetId);
+      } else throw Error('未知的行星编号：' + planetId);
     }, 1000);
   });
 }
@@ -1773,12 +1771,12 @@ label { display: block; margin-bottom: 10px; }
 
 <Solution>
 
-There are two independent synchronization processes:
+有两个独立的同步过程：
 
-- The first select box is synchronized to the remote list of planets.
-- The second select box is synchronized to the remote list of places for the current `planetId`.
+- 第一个选择框与远程的行星列表进行同步。
+- 第二个选择框与当前 `planetId` 对应的远程地点列表进行同步。
 
-This is why it makes sense to describe them as two separate Effects. Here's an example of how you could do this:
+因此，将它们描述为两个单独的 Effect 是有意义的。下面是一个示例，展示如何实现这两个独立的同步过程：
 
 <Sandpack>
 
@@ -1797,9 +1795,9 @@ export default function Page() {
     let ignore = false;
     fetchData('/planets').then(result => {
       if (!ignore) {
-        console.log('Fetched a list of planets.');
+        console.log('获取了一个行星列表。');
         setPlanetList(result);
-        setPlanetId(result[0].id); // Select the first planet
+        setPlanetId(result[0].id); // 选择第一个行星。
       }
     });
     return () => {
@@ -1809,7 +1807,7 @@ export default function Page() {
 
   useEffect(() => {
     if (planetId === '') {
-      // Nothing is selected in the first box yet
+      // 第一个选择框还没有选中任何内容。
       return;
     }
 
@@ -1818,7 +1816,7 @@ export default function Page() {
       if (!ignore) {
         console.log('Fetched a list of places on "' + planetId + '".');
         setPlaceList(result);
-        setPlaceId(result[0].id); // Select the first place
+        setPlaceId(result[0].id); // 选择第一个地点
       }
     });
     return () => {
@@ -1829,27 +1827,27 @@ export default function Page() {
   return (
     <>
       <label>
-        Pick a planet:{' '}
+        选择一个行星：{' '}
         <select value={planetId} onChange={e => {
           setPlanetId(e.target.value);
         }}>
-          {planetList.map(planet =>
+          {planetList?.map(planet =>
             <option key={planet.id} value={planet.id}>{planet.name}</option>
           )}
         </select>
       </label>
       <label>
-        Pick a place:{' '}
+        选择一个地点：{' '}
         <select value={placeId} onChange={e => {
           setPlaceId(e.target.value);
         }}>
-          {placeList.map(place =>
+          {placeList?.map(place =>
             <option key={place.id} value={place.id}>{place.name}</option>
           )}
         </select>
       </label>
       <hr />
-      <p>You are going to: {placeId || '???'} on {planetId || '???'} </p>
+      <p>你将要前往：{planetId || '...'} 的 {placeId || '...'} </p>
     </>
   );
 }
@@ -1862,10 +1860,10 @@ export function fetchData(url) {
   } else if (url.startsWith('/planets/')) {
     const match = url.match(/^\/planets\/([\w-]+)\/places(\/)?$/);
     if (!match || !match[1] || !match[1].length) {
-      throw Error('Expected URL like "/planets/earth/places". Received: "' + url + '".');
+      throw Error('预期的 URL，如“/planets/earth/places”。 已收到："' + url + '"。');
     }
     return fetchPlaces(match[1]);
-  } else throw Error('Expected URL like "/planets" or "/planets/earth/places". Received: "' + url + '".');
+  } else throw Error('预期的 URL，如“/planets”或“/planets/earth/places”。已收到："' + url + '"。');
 }
 
 async function fetchPlanets() {
@@ -1873,13 +1871,13 @@ async function fetchPlanets() {
     setTimeout(() => {
       resolve([{
         id: 'earth',
-        name: 'Earth'
+        name: '火星'
       }, {
         id: 'venus',
-        name: 'Venus'
+        name: '金星'
       }, {
         id: 'mars',
-        name: 'Mars'        
+        name: '火星'        
       }]);
     }, 1000);
   });
@@ -1888,8 +1886,8 @@ async function fetchPlanets() {
 async function fetchPlaces(planetId) {
   if (typeof planetId !== 'string') {
     throw Error(
-      'fetchPlaces(planetId) expects a string argument. ' +
-      'Instead received: ' + planetId + '.'
+      'fetchPlaces(planetId) 需要一个字符串参数。' +
+      '而是收到：' + planetId + '。'
     );
   }
   return new Promise(resolve => {
@@ -1897,37 +1895,37 @@ async function fetchPlaces(planetId) {
       if (planetId === 'earth') {
         resolve([{
           id: 'laos',
-          name: 'Laos'
+          name: '老挝'
         }, {
           id: 'spain',
-          name: 'Spain'
+          name: '西班牙'
         }, {
           id: 'vietnam',
-          name: 'Vietnam'        
+          name: '越南'        
         }]);
       } else if (planetId === 'venus') {
         resolve([{
           id: 'aurelia',
-          name: 'Aurelia'
+          name: '奥雷利亚'
         }, {
           id: 'diana-chasma',
-          name: 'Diana Chasma'
+          name: '戴安娜哈斯玛'
         }, {
           id: 'kumsong-vallis',
-          name: 'Kŭmsŏng Vallis'        
+          name: 'Kŭmsŏng山谷'        
         }]);
       } else if (planetId === 'mars') {
         resolve([{
           id: 'aluminum-city',
-          name: 'Aluminum City'
+          name: '铝城'
         }, {
           id: 'new-new-york',
-          name: 'New New York'
+          name: '纽纽约'
         }, {
           id: 'vishniac',
-          name: 'Vishniac'
+          name: '毗湿奴'
         }]);
-      } else throw Error('Unknown planet ID: ' + planetId);
+      } else throw Error('未知的行星编号：' + planetId);
     }, 1000);
   });
 }
@@ -1939,9 +1937,9 @@ label { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-This code is a bit repetitive. However, that's not a good reason to combine it into a single Effect! If you did this, you'd have to combine both Effect's dependencies into one list, and then changing the planet would refetch the list of all planets. Effects are not a tool for code reuse.
+这段代码有些重复。然而，将其合并为单个 Effect 的理由不充分！如果这样做，你将不得不将两个 Effect 的依赖项合并为一个列表，这样改变行星时将重新获取所有行星的列表。Effect 并不是用于代码复用的工具。
 
-Instead, to reduce repetition, you can extract some logic into a custom Hook like `useSelectOptions` below:
+相反，为了减少重复，你可以将一些逻辑提取到一个自定义 Hook 中，比如下面的 `useSelectOptions`：
 
 <Sandpack>
 
@@ -1965,7 +1963,7 @@ export default function Page() {
   return (
     <>
       <label>
-        Pick a planet:{' '}
+        选择一个行星：{' '}
         <select value={planetId} onChange={e => {
           setPlanetId(e.target.value);
         }}>
@@ -1975,7 +1973,7 @@ export default function Page() {
         </select>
       </label>
       <label>
-        Pick a place:{' '}
+        选择一个地点：{' '}
         <select value={placeId} onChange={e => {
           setPlaceId(e.target.value);
         }}>
@@ -1985,7 +1983,7 @@ export default function Page() {
         </select>
       </label>
       <hr />
-      <p>You are going to: {placeId || '...'} on {planetId || '...'} </p>
+      <p>你将要前往：{planetId || '...'} 的 {placeId || '...'} </p>
     </>
   );
 }
@@ -2025,10 +2023,10 @@ export function fetchData(url) {
   } else if (url.startsWith('/planets/')) {
     const match = url.match(/^\/planets\/([\w-]+)\/places(\/)?$/);
     if (!match || !match[1] || !match[1].length) {
-      throw Error('Expected URL like "/planets/earth/places". Received: "' + url + '".');
+      throw Error('预期的 URL，如“/planets/earth/places”。 已收到："' + url + '"。');
     }
     return fetchPlaces(match[1]);
-  } else throw Error('Expected URL like "/planets" or "/planets/earth/places". Received: "' + url + '".');
+  } else throw Error('预期的 URL，如“/planets”或“/planets/earth/places”。已收到："' + url + '"。');
 }
 
 async function fetchPlanets() {
@@ -2036,13 +2034,13 @@ async function fetchPlanets() {
     setTimeout(() => {
       resolve([{
         id: 'earth',
-        name: 'Earth'
+        name: '火星'
       }, {
         id: 'venus',
-        name: 'Venus'
+        name: '金星'
       }, {
         id: 'mars',
-        name: 'Mars'        
+        name: '火星'        
       }]);
     }, 1000);
   });
@@ -2051,8 +2049,8 @@ async function fetchPlanets() {
 async function fetchPlaces(planetId) {
   if (typeof planetId !== 'string') {
     throw Error(
-      'fetchPlaces(planetId) expects a string argument. ' +
-      'Instead received: ' + planetId + '.'
+      'fetchPlaces(planetId) 需要一个字符串参数。' +
+      '而是收到：' + planetId + '。'
     );
   }
   return new Promise(resolve => {
@@ -2060,37 +2058,37 @@ async function fetchPlaces(planetId) {
       if (planetId === 'earth') {
         resolve([{
           id: 'laos',
-          name: 'Laos'
+          name: '老挝'
         }, {
           id: 'spain',
-          name: 'Spain'
+          name: '西班牙'
         }, {
           id: 'vietnam',
-          name: 'Vietnam'        
+          name: '越南'        
         }]);
       } else if (planetId === 'venus') {
         resolve([{
           id: 'aurelia',
-          name: 'Aurelia'
+          name: '奥雷利亚'
         }, {
           id: 'diana-chasma',
-          name: 'Diana Chasma'
+          name: '戴安娜哈斯玛'
         }, {
           id: 'kumsong-vallis',
-          name: 'Kŭmsŏng Vallis'        
+          name: 'Kŭmsŏng山谷'        
         }]);
       } else if (planetId === 'mars') {
         resolve([{
           id: 'aluminum-city',
-          name: 'Aluminum City'
+          name: '铝城'
         }, {
           id: 'new-new-york',
-          name: 'New New York'
+          name: '纽纽约'
         }, {
           id: 'vishniac',
-          name: 'Vishniac'
+          name: '毗湿奴'
         }]);
-      } else throw Error('Unknown planet ID: ' + planetId);
+      } else throw Error('未知的行星编号：' + planetId);
     }, 1000);
   });
 }
@@ -2102,7 +2100,7 @@ label { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-Check the `useSelectOptions.js` tab in the sandbox to see how it works. Ideally, most Effects in your application should eventually be replaced by custom Hooks, whether written by you or by the community. Custom Hooks hide the synchronization logic, so the calling component doesn't know about the Effect. As you keep working on your app, you'll develop a palette of Hooks to choose from, and eventually you won't need to write Effects in your components very often.
+请查看沙盒中的 `useSelectOptions.js` 标签以了解其工作原理。理想情况下，你的应用程序中的大多数 Effect 最终都应该由自定义 Hook 替代，无论是由你自己编写还是由社区提供。自定义 Hook 隐藏了同步逻辑，因此调用组件不知道 Effect 的存在。随着你继续开发应用程序，你将开发出一套可供选择的 Hooks，并且最终你将不再经常在组件中编写 Effect。
 
 </Solution>
 
