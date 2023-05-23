@@ -404,7 +404,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 });
 ```
 
-如果某个组件得到了 `MyInput` 的 ref， 则只会接收到你的 `{ focus, scrollIntoView }` 对象，而不是整个 DOM 节点。这可以让你的 DOM 节点暴露的信息限制到最小。
+如果某个组件得到了 `MyInput` 的 ref，则只会接收到 `{ focus, scrollIntoView }` 对象，而不是整个 DOM 节点。这可以让 DOM 节点暴露的信息限制到最小。
 
 <Sandpack>
 
