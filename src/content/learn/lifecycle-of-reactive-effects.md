@@ -591,7 +591,7 @@ function ChatRoom({ roomId, selectedServerUrl }) { // roomId 是响应式的
 
 </DeepDive>
 
-### React 会验证你是否将每个响应式值都作为依赖项进行了指定 {/*react-verifies-that-you-specified-every-reactive-value-as-a-dependency*/}
+### React 会验证你是否将每个响应式值都指定为了依赖项 {/*react-verifies-that-you-specified-every-reactive-value-as-a-dependency*/}
 
 如果你的检查工具 [配置了 React](/learn/editor-setup#linting)，它将检查你的 Effect 代码中使用的每个响应式值是否已声明为其依赖项。例如，以下示例是一个 lint 错误，因为 `roomId` 和 `serverUrl` 都是响应式的：
 
