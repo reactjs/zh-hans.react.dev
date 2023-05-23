@@ -226,7 +226,7 @@ function ChatRoom({ roomId }) {
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('综合');
+  const [roomId, setRoomId] = useState('所有');
   const [show, setShow] = useState(false);
   return (
     <>
@@ -426,7 +426,7 @@ function ChatRoom({ roomId }) {
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('综合');
+  const [roomId, setRoomId] = useState('所有');
   return (
     <>
       <label>
@@ -625,7 +625,7 @@ function ChatRoom({ roomId }) { // roomId 是响应式的
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('综合');
+  const [roomId, setRoomId] = useState('所有');
   return (
     <>
       <label>
@@ -816,7 +816,7 @@ function ChatRoom({ roomId }) {
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('综合');
+  const [roomId, setRoomId] = useState('所有');
   return (
     <>
       <label>
@@ -825,7 +825,7 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="综合">综合</option>
+          <option value="所有">所有</option>
           <option value="旅游">旅游</option>
           <option value="音乐">音乐</option>
         </select>
@@ -891,7 +891,7 @@ function ChatRoom({ roomId }) {
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('综合');
+  const [roomId, setRoomId] = useState('所有');
   return (
     <>
       <label>
@@ -900,7 +900,7 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="综合">综合</option>
+          <option value="所有">所有</option>
           <option value="旅游">旅游</option>
           <option value="音乐">音乐</option>
         </select>
@@ -1338,7 +1338,7 @@ import {
 } from './chat.js';
 
 export default function App() {
-  const [roomId, setRoomId] = useState('综合');
+  const [roomId, setRoomId] = useState('所有');
   const [isEncrypted, setIsEncrypted] = useState(false);
   return (
     <>
@@ -1348,7 +1348,7 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="综合">综合</option>
+          <option value="所有">所有</option>
           <option value="旅游">旅游</option>
           <option value="音乐">音乐</option>
         </select>
@@ -1436,17 +1436,17 @@ import {
 } from './chat.js';
 
 export default function App() {
-  const [roomId, setRoomId] = useState('综合');
+  const [roomId, setRoomId] = useState('所有');
   const [isEncrypted, setIsEncrypted] = useState(false);
   return (
     <>
       <label>
-        选择聊天室:{' '}
+        选择聊天室：{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="综合">综合</option>
+          <option value="所有">所有</option>
           <option value="旅游">旅游</option>
           <option value="音乐">音乐</option>
         </select>
@@ -1527,7 +1527,7 @@ import { useState } from 'react';
 import ChatRoom from './ChatRoom.js';
 
 export default function App() {
-  const [roomId, setRoomId] = useState('综合');
+  const [roomId, setRoomId] = useState('所有');
   const [isEncrypted, setIsEncrypted] = useState(false);
   return (
     <>
@@ -1537,7 +1537,7 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="综合">综合</option>
+          <option value="所有">所有</option>
           <option value="旅游">旅游</option>
           <option value="音乐">音乐</option>
         </select>
