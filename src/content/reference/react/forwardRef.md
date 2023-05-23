@@ -78,7 +78,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 ### 将 DOM 节点暴露给父组件 {/*exposing-a-dom-node-to-the-parent-component*/}
 
-默认情况下，每个组件的 DOM 节点都是私有的。然而，有时候将 DOM 节点公开给父组件是很有用的，比如允许对它进行聚焦。要选择公开，可以将组件定义包装在 `forwardRef()` 中：
+默认情况下，每个组件的 DOM 节点都是私有的。然而，有时候将 DOM 节点公开给父组件是很有用的，比如允许对它进行聚焦。如果你想将其公开，可以将组件定义包装在 `forwardRef()` 中：
 
 ```js {3,11}
 import { forwardRef } from 'react';
