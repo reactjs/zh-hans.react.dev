@@ -369,7 +369,7 @@ input, button {
 
 ### 暴露一个命令式句柄而不是 DOM 节点 {/*exposing-an-imperative-handle-instead-of-a-dom-node*/}
 
-可以使用一个被称为**命令式句柄（imperative handle）**的自定义对象来暴露一个更加受限制的方法集，而不是暴露整个 DOM 节点。为了实现这个目的，你需要定义一个单独的 ref 来存储 DOM 节点：
+可以使用一个被称为 **命令式句柄（imperative handle）** 的自定义对象来暴露一个更加受限制的方法集，而不是暴露整个 DOM 节点。为了实现这个目的，你需要定义一个单独的 ref 来存储 DOM 节点：
 
 ```js {2,6}
 const MyInput = forwardRef(function MyInput(props, ref) {
