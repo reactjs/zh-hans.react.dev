@@ -381,7 +381,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 });
 ```
 
-将你收到的 `ref` 传递给 [`useImperativeHandle`](/reference/react/useImperativeHandle) 并指定你想要暴露给 `ref` 的值：
+将收到的 `ref` 传递给 [`useImperativeHandle`](/reference/react/useImperativeHandle) 并指定你想要暴露给 `ref` 的值：
 
 ```js {6-15}
 import { forwardRef, useRef, useImperativeHandle } from 'react';
