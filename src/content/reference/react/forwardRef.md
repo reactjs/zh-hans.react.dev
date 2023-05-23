@@ -289,7 +289,7 @@ function Form() {
 }
 ```
 
-`Form` 组件定义了一个 ref 并将其传递给 `FormField`。`FormField` 组件将该 ref 转发给 `MyInput`，后者又将其转发给浏览器的 `<input>` DOM 节点。这就是 `Form` 获取该DOM节点的方式。
+`Form` 组件定义了一个 ref 并将其传递给 `FormField`。`FormField` 组件将该 ref 转发给 `MyInput`，后者又将其转发给浏览器的 `<input>` DOM 节点。这就是 `Form` 获取该 DOM 节点的方式。
 
 
 <Sandpack>
