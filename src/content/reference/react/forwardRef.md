@@ -139,7 +139,7 @@ function Form() {
 
 #### 聚焦文本输入框 {/*focusing-a-text-input*/}
 
-点击该按钮将聚焦输入框。`Form` 组件定义了一个 ref 并将其传递到 `MyInput` 组件。 MyInput 组件将该 ref 转发给浏览器的 `<input>` 标签，这使得 `Form` 组件可以聚焦该 `<input>`。
+点击该按钮将聚焦输入框。`Form` 组件定义了一个 ref 并将其传递到 `MyInput` 组件。`MyInput` 组件将该 ref 转发至浏览器的 `<input>` 标签，这使得 `Form` 组件可以聚焦该 `<input>`。
 
 <Sandpack>
 
