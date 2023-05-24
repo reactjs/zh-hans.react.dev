@@ -4,7 +4,7 @@ title: <Profiler>
 
 <Intro>
 
-`<Profiler>` lets you measure rendering performance of a React tree programmatically.
+`<Profiler>` 允许你以编程的方式测量 React 树的渲染性能。
 
 ```js
 <Profiler id="App" onRender={onRender}>
@@ -18,11 +18,11 @@ title: <Profiler>
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `<Profiler>` {/*profiler*/}
 
-Wrap a component tree in a `<Profiler>` to measure its rendering performance.
+使用 `<Profiler>` 将组件树包裹起来，以测量其渲染性能。
 
 ```js
 <Profiler id="App" onRender={onRender}>
@@ -32,41 +32,41 @@ Wrap a component tree in a `<Profiler>` to measure its rendering performance.
 
 #### Props {/*props*/}
 
-* `id`: A string identifying the part of the UI you are measuring.
-* `onRender`: An [`onRender` callback](#onrender-callback) that React calls every time components within the profiled tree update. It receives information about what was rendered and how much time it took.
+* `id`: 一个字符串，用于标识你正在测量的 UI 部分。
+* `onRender`: 一个 [`onRender` 回调函数](#onrender-callback)，React 在每次被测量组件树中的组件更新时调用它。它接收有关渲染内容和所花费时间的信息。
 
-#### Caveats {/*caveats*/}
+#### 注意 {/*caveats*/}
 
-* Profiling adds some additional overhead, so **it is disabled in the production build by default.** To opt into production profiling, you need to enable a [special production build with profiling enabled.](https://fb.me/react-profiling)
+* 进行性能分析会增加一些额外的开销，因此 **在默认情况下，它在生产构建中是被禁用的**。如果要启用生产环境下的性能分析，你需要启用一个 [特殊的带有性能分析功能的生产构建](https://fb.me/react-profiling)。
 
 ---
 
-### `onRender` callback {/*onrender-callback*/}
+### `onRender` 回调函数 {/*onrender-callback*/}
 
-React will call your `onRender` callback with information about what was rendered.
+React 会使用渲染的相关信息调用你的 `onRender` 回调函数。
 
 ```js
 function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime) {
-  // Aggregate or log render timings...
+  // 对渲染时间进行汇总或记录...
 }
 ```
 
-#### Parameters {/*onrender-parameters*/}
+#### 参数 {/*onrender-parameters*/}
 
-* `id`: The string `id` prop of the `<Profiler>` tree that has just committed. This lets you identify which part of the tree was committed if you are using multiple profilers.
-* `phase`: `"mount"`, `"update"` or `"nested-update"`. This lets you know whether the tree has just been mounted for the first time or re-rendered due to a change in props, state, or hooks.
-* `actualDuration`: The number of milliseconds spent rendering the `<Profiler>` and its descendants for the current update. This indicates how well the subtree makes use of memoization (e.g. [`memo`](/reference/react/memo) and [`useMemo`](/reference/react/useMemo)). Ideally this value should decrease significantly after the initial mount as many of the descendants will only need to re-render if their specific props change.
-* `baseDuration`: The number of milliseconds estimating how much time it would take to re-render the entire `<Profiler>` subtree without any optimizations. It is calculated by summing up the most recent render durations of each component in the tree. This value estimates a worst-case cost of rendering (e.g. the initial mount or a tree with no memoization). Compare `actualDuration` against it to see if memoization is working.
-* `startTime`: A numeric timestamp for when React began rendering the current update.
-* `endTime`: A numeric timestamp for when React committed the current update. This value is shared between all profilers in a commit, enabling them to be grouped if desirable.
+* `id`: `<Profiler>` 树的字符串 `id` 属性，用于标识刚刚提交的部分。如果你使用多个性能分析器，可以通过此属性识别已提交的树的哪个部分。
+* `phase`: `"mount"`、`"update"` 或 `"nested-update"`。这可以让你知道树是首次挂载还是由于属性、状态或 hook 的更改而重新渲染。
+* `actualDuration`: 当前更新期间用于渲染 `<Profiler>` 及其后代的时间，以毫秒为单位。显示子树在使用记忆化（例如 [`memo`](/reference/react/memo) 和 [`useMemo`](/reference/react/useMemo)）方面的效果如何。理想情况下，此值在初始挂载后应显著减少，因为许多后代组件只会在其特定的 props 变化时需要重新渲染。
+* `baseDuration`: 估计在没有任何优化的情况下重新渲染整个 `<Profiler>` 子树所需的时间，以毫秒为单位。它通过累加树中每个组件的最近一次渲染持续时间来计算。此值估计了渲染的最差情况成本（例如初始挂载或没有记忆化的树）。与 `actualDuration` 进行比较，以确定记忆化是否起作用。
+* `startTime`: 当 React 开始渲染当前更新时的时间戳。
+* `endTime`: 当 React 提交当前更新时的时间戳。此值在提交的所有性能分析器之间共享，如果需要，可以对它们进行分组。
 
 ---
 
-## Usage {/*usage*/}
+## 使用方法 {/*usage*/}
 
-### Measuring rendering performance programmatically {/*measuring-rendering-performance-programmatically*/}
+### 以编程的方式测量渲染性能 {/*measuring-rendering-performance-programmatically*/}
 
-Wrap the `<Profiler>` component around a React tree to measure its rendering performance.
+将 `<Profiler>` 组件包裹在 React 树周围以测量其渲染性能。
 
 ```js {2,4}
 <App>
@@ -77,25 +77,25 @@ Wrap the `<Profiler>` component around a React tree to measure its rendering per
 </App>
 ```
 
-It requires two props: an `id` (string) and an `onRender` callback (function) which React calls any time a component within the tree "commits" an update.
+这需要两个属性：`id`（字符串）和 `onRender` 回调函数（函数），React 在树中的任何组件“提交”更新时调用该函数。
 
 <Pitfall>
 
-Profiling adds some additional overhead, so **it is disabled in the production build by default.** To opt into production profiling, you need to enable a [special production build with profiling enabled.](https://fb.me/react-profiling)
+进行性能分析会增加一些额外的开销，因此 **默认情况下，在生产构建中禁用了性能分析**。要启用生产环境下的性能分析，你需要启用一个 [带有性能分析功能的特殊生产构建](https://fb.me/react-profiling)。
 
 </Pitfall>
 
 <Note>
 
-`<Profiler>` lets you gather measurements programmatically. If you're looking for an interactive profiler, try the Profiler tab in [React Developer Tools](/learn/react-developer-tools). It exposes similar functionality as a browser extension.
+`<Profiler>` 允许你以编程方式收集性能测量数据。如果你正在寻找一个交互式的性能分析工具，可以尝试使用 [React Developer Tools](/learn/react-developer-tools) 中的 Profiler 标签页。它提供了类似浏览器扩展的功能。
 
 </Note>
 
 ---
 
-### Measuring different parts of the application {/*measuring-different-parts-of-the-application*/}
+### 测量应用的不同部分 {/*measuring-different-parts-of-the-application*/}
 
-You can use multiple `<Profiler>` components to measure different parts of your application:
+你可以使用多个 `<Profiler>` 组件来测量你的应用的不同部分：
 
 ```js {5,7}
 <App>
@@ -108,7 +108,7 @@ You can use multiple `<Profiler>` components to measure different parts of your 
 </App>
 ```
 
-You can also nest `<Profiler>` components:
+你还可以嵌套 `<Profiler>` 组件：
 
 ```js {5,7,9,12}
 <App>
@@ -126,7 +126,7 @@ You can also nest `<Profiler>` components:
 </App>
 ```
 
-Although `<Profiler>` is a lightweight component, it should be used only when necessary. Each use adds some CPU and memory overhead to an application.
+虽然 `<Profiler>` 是一个轻量级组件，但它应该仅在必要时使用。每次使用都会给应用增加一些 CPU 和内存开销。
 
 ---
 
