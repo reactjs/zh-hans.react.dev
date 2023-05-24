@@ -907,18 +907,18 @@ For more advanced use cases, the `ref` attribute also accepts a [callback functi
 
 ---
 
-### Dangerously setting the inner HTML {/*dangerously-setting-the-inner-html*/}
+### 危险地设置内部 HTML {/*dangerously-setting-the-inner-html*/}
 
-You can pass a raw HTML string to an element like so:
+您可以像这样将原始的HTML字符串传递给元素:
 
 ```js
 const markup = { __html: '<p>some raw html</p>' };
 return <div dangerouslySetInnerHTML={markup} />;
 ```
 
-**This is dangerous. As with the underlying DOM [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property, you must exercise extreme caution! Unless the markup is coming from a completely trusted source, it is trivial to introduce an [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) vulnerability this way.**
+**这很危险。与底层的DOM [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) 属性一样,您必须极度谨慎！ 除非标记语言来自完全可信的来源, 否则通过这种方式引入 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 是容易被攻击的。**
 
-For example, if you use a Markdown library that converts Markdown to HTML, you trust that its parser doesn't contain bugs, and the user only sees their own input, you can display the resulting HTML like this:
+例如，如果您使用将Markdown转换为HTML的Markdown库，你得相信它的解析器没有漏洞， 用户只能看到自己的输入，您可以像这样显示生成的HTML:
 
 <Sandpack>
 
@@ -950,9 +950,9 @@ import { Remarkable } from 'remarkable';
 const md = new Remarkable();
 
 function renderMarkdownToHTML(markdown) {
-  // This is ONLY safe because the output HTML
-  // is shown to the same user, and because you
-  // trust this Markdown parser to not have bugs.
+  // 这里安全的原因是输出的HTML代码
+  // 仅显示给同一用户，
+  // 并且您信任此Markdown解析器没有漏洞。
   const renderedHTML = md.render(markdown);
   return {__html: renderedHTML};
 }
@@ -986,22 +986,22 @@ textarea { display: block; margin-top: 5px; margin-bottom: 10px; }
 
 </Sandpack>
 
-To see why rendering arbitrary HTML is dangerous, replace the code above with this:
+要了解为什么渲染任意HTML是危险的，请将上面的代码替换为此代码:
 
 ```js {1-4,7,8}
 const post = {
-  // Imagine this content is stored in the database.
+  // 想象这个内容被存储在数据库中
   content: `<img src="" onerror='alert("you were hacked")'>`
 };
 
 export default function MarkdownPreview() {
-  // 🔴 SECURITY HOLE: passing untrusted input to dangerouslySetInnerHTML
+  // 🔴 安全漏洞：将不受信任的输入传递给dangerouslySetInnerHTML
   const markup = { __html: post.content };
   return <div dangerouslySetInnerHTML={markup} />;
 }
 ```
 
-The code embedded in the HTML will run. A hacker could use this security hole to steal user information or to perform actions on their behalf. **Only use `dangerouslySetInnerHTML` with trusted and sanitized data.**
+HTML中嵌入的代码将会运行。 黑客可以利用这个安全漏洞窃取用户信息或代表他们执行操作。 **只有在使用受信任和经过消毒的数据时才能使用 `dangerouslySetInnerHTML` 。**
 
 ---
 
