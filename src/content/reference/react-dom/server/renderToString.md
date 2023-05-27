@@ -4,13 +4,13 @@ title: renderToString
 
 <Pitfall>
 
-`renderToString` does not support streaming or waiting for data. [See the alternatives.](#alternatives)
+`renderToString` 不支持流式传输或等待数据。[请参考替代方案](#alternatives)。
 
 </Pitfall>
 
 <Intro>
 
-`renderToString` renders a React tree to an HTML string.
+`renderToString` 将 React 树渲染为一个 HTML 字符串。
 
 ```js
 const html = renderToString(reactNode)
@@ -26,7 +26,7 @@ const html = renderToString(reactNode)
 
 ### `renderToString(reactNode)` {/*rendertostring*/}
 
-On the server, call `renderToString` to render your app to HTML.
+在服务器端，调用 `renderToString` 将你的应用渲染为 HTML。
 
 ```js
 import { renderToString } from 'react-dom/server';
@@ -34,81 +34,81 @@ import { renderToString } from 'react-dom/server';
 const html = renderToString(<App />);
 ```
 
-On the client, call [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) to make the server-generated HTML interactive.
+在客户端，调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 来使服务器生成的 HTML 具有交互性。
 
-[See more examples below.](#usage)
+[请参考下面的更多示例](#usage)。
 
 #### Parameters {/*parameters*/}
 
-* `reactNode`: A React node you want to render to HTML. For example, a JSX node like `<App />`.
+* `reactNode`: 你要渲染为 HTML 的 React 节点。例如，一个 JSX 节点，就像 `<App />`。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-An HTML string.
+一个 HTML 字符串。
 
-#### Caveats {/*caveats*/}
+#### 注意事项 {/*caveats*/}
 
-* `renderToString` has limited Suspense support. If a component suspends, `renderToString` immediately sends its fallback as HTML.
+* `renderToString` 对 Suspense 的支持有限。如果一个组件挂起，`renderToString` 会立即将其回退为 HTML 发送。
 
-* `renderToString` works in the browser, but using it in the client code is [not recommended.](#removing-rendertostring-from-the-client-code)
+* `renderToString` 可以在浏览器中工作，但 [不推荐的](#removing-rendertostring-from-the-client-code) 在客户端代码中使用它。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Rendering a React tree as HTML to a string {/*rendering-a-react-tree-as-html-to-a-string*/}
+### 将 React 树渲染为 HTML 字符串 {/*rendering-a-react-tree-as-html-to-a-string*/}
 
-Call `renderToString` to render your app to an HTML string which you can send with your server response:
+调用 `renderToString` 将你的应用渲染为 HTML 字符串，你可以将其与服务器响应一起发送：
 
 ```js {5-6}
 import { renderToString } from 'react-dom/server';
 
-// The route handler syntax depends on your backend framework
+// 路由处理程序的语法取决于你使用的后端框架
 app.use('/', (request, response) => {
   const html = renderToString(<App />);
   response.send(html);
 });
 ```
 
-This will produce the initial non-interactive HTML output of your React components. On the client, you will need to call [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) to *hydrate* that server-generated HTML and make it interactive.
+这将生成你的 React 组件的初始非交互式 HTML 输出。在客户端上，你需要调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 来将服务器生成的 HTML 进行 **调和** 处理，使其具有交互功能。
 
 
 <Pitfall>
 
-`renderToString` does not support streaming or waiting for data. [See the alternatives.](#alternatives)
+`renderToString` 不支持流式传输或等待数据。[请参考替代方案](#alternatives)。
 
 </Pitfall>
 
 ---
 
-## Alternatives {/*alternatives*/}
+## 替代方案 {/*alternatives*/}
 
-### Migrating from `renderToString` to a streaming method on the server {/*migrating-from-rendertostring-to-a-streaming-method-on-the-server*/}
+### 从 `renderToString` 迁移到服务器上的流式传输方法 {/*migrating-from-rendertostring-to-a-streaming-method-on-the-server*/}
 
-`renderToString` returns a string immediately, so it does not support streaming or waiting for data.
+`renderToString` 立即返回一个字符串，因此不支持流式传输或等待数据。
 
-When possible, we recommend using these fully-featured alternatives:
+如果可能的话，我们建议使用这些功能完整的替代方法：
 
-* If you use Node.js, use [`renderToPipeableStream`.](/reference/react-dom/server/renderToPipeableStream)
-* If you use Deno or a modern edge runtime with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), use [`renderToReadableStream`.](/reference/react-dom/server/renderToReadableStream)
+* 如果你使用 Node.js，请使用 [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream)。
+* 如果你使用 Deno 或支持 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的现代运行时，请使用 [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)。
 
-You can continue using `renderToString` if your server environment does not support streams.
+如果你的服务器环境不支持流式传输，你仍然可以继续使用 `renderToString`。
 
 ---
 
-### Removing `renderToString` from the client code {/*removing-rendertostring-from-the-client-code*/}
+### 从客户端代码中移除 `renderToString` {/*removing-rendertostring-from-the-client-code*/}
 
-Sometimes, `renderToString` is used on the client to convert some component to HTML.
+有时，`renderToString` 用于在客户端将某个组件转换为 HTML。
 
 ```js {1-2}
-// 🚩 Unnecessary: using renderToString on the client
+// 🚩 不必要：在客户端使用 renderToString
 import { renderToString } from 'react-dom/server';
 
 const html = renderToString(<MyIcon />);
-console.log(html); // For example, "<svg>...</svg>"
+console.log(html); // 例如，"<svg>...</svg>"
 ```
 
-Importing `react-dom/server` **on the client** unnecessarily increases your bundle size and should be avoided. If you need to render some component to HTML in the browser, use [`createRoot`](/reference/react-dom/client/createRoot) and read HTML from the DOM:
+在客户端导入 `react-dom/server` 会不必要地增加你的捆绑文件大小，应避免这样做。如果你需要在浏览器中将某个组件渲染为 HTML，请使用 [`createRoot`](/reference/react-dom/client/createRoot) 并从 DOM 中读取 HTML。
 
 ```js
 import { createRoot } from 'react-dom/client';
@@ -119,20 +119,20 @@ const root = createRoot(div);
 flushSync(() => {
   root.render(<MyIcon />);
 });
-console.log(div.innerHTML); // For example, "<svg>...</svg>"
+console.log(div.innerHTML); // 例如，"<svg>...</svg>"
 ```
 
-The [`flushSync`](/reference/react-dom/flushSync) call is necessary so that the DOM is updated before reading its [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property.
+[`flushSync`](/reference/react-dom/flushSync) 调用是必要的，以便在读取 [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) 属性之前更新 DOM。
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 故障排除 {/*troubleshooting*/}
 
-### When a component suspends, the HTML always contains a fallback {/*when-a-component-suspends-the-html-always-contains-a-fallback*/}
+### 当组件暂停时，HTML 中始终包含一个回退内容 {/*when-a-component-suspends-the-html-always-contains-a-fallback*/}
 
-`renderToString` does not fully support Suspense.
+`renderToString` 不完全支持 Suspense。
 
-If some component suspends (for example, because it's defined with [`lazy`](/reference/react/lazy) or fetches data), `renderToString` will not wait for its content to resolve. Instead, `renderToString` will find the closest [`<Suspense>`](/reference/react/Suspense) boundary above it and render its `fallback` prop in the HTML. The content will not appear until the client code loads.
+如果某个组件暂停（例如，因为它使用 [`lazy`](/reference/react/lazy) 定义或获取数据），`renderToString` 不会等待其内容解析完成。相反，`renderToString` 将找到最近的 [`<Suspense>`](/reference/react/Suspense) 边界，并在 HTML 中渲染其 `fallback` 属性。直到客户端代码加载后，内容才会显示出来。
 
-To solve this, use one of the [recommended streaming solutions.](#migrating-from-rendertostring-to-a-streaming-method-on-the-server) They can stream content in chunks as it resolves on the server so that the user sees the page being progressively filled in before the client code loads.
+要解决这个问题，请使用其中一个 [推荐的流式解决方案](#migrating-from-rendertostring-to-a-streaming-method-on-the-server)。它们可以在服务器上逐步以块的形式流式传输内容，使用户在客户端代码加载之前逐步看到页面填充。
 
