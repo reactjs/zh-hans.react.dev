@@ -163,15 +163,14 @@ button { display: block; margin-top: 10px; }
 
 ### 编写 reducer 函数 {/*writing-the-reducer-function*/}
 
-A reducer function is declared like this:
+一个 reducer 函数是这样声明的：
 
 ```js
 function reducer(state, action) {
   // ...
 }
 ```
-
-Then you need to fill in the code that will calculate and return the next state. By convention, it is common to write it as a [`switch` statement.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) For each `case` in the `switch`, calculate and return some next state.
+接下来，你需要编写计算并返回下一个状态的代码。按照惯例，我们通常会使用 [`switch` 语句](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/switch) 来进行编写。对于 `switch` 中的每个 `case`，都需要计算并返回某个下一个状态。
 
 ```js {4-7,10-13}
 function reducer(state, action) {
@@ -193,7 +192,7 @@ function reducer(state, action) {
 }
 ```
 
-Actions can have any shape. By convention, it's common to pass objects with a `type` property identifying the action. It should include the minimal necessary information that the reducer needs to compute the next state.
+Actions 可以是任何形态。按照惯例，我们通常会传递带有类型属性的对象来标识 action。它应该包含 reducer 需要计算下一个状态所需的最少必要信息。
 
 ```js {5,9-12}
 function Form() {
