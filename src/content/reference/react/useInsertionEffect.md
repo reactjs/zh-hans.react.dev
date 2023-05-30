@@ -130,7 +130,7 @@ function useCSS(rule) {
 
 <DeepDive>
 
-#### 这与渲染期间或 `useLayoutEffect` 中注入样式相比有何优势？ {/*how-is-this-better-than-injecting-styles-during-rendering-or-uselayouteffect*/}
+#### 这与在渲染期间或 `useLayoutEffect` 中注入样式相比有何优势？ {/*how-is-this-better-than-injecting-styles-during-rendering-or-uselayouteffect*/}
 
 如果你在渲染期间注入样式并且 React 正在处理 [非阻塞更新](/reference/react/useTransition#marking-a-state-update-as-a-non-blocking-transition)，那么浏览器将在渲染组件树时每一帧都会重新计算样式，这可能会 **非常慢**。
 
