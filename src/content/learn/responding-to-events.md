@@ -4,6 +4,7 @@ translators:
   - Jiacheng787
   - QC-L
   - Neo42
+  - Zhou Chenyang
 ---
 
 <Intro>
@@ -321,7 +322,7 @@ button { margin-right: 10px; }
 <Note>
 
 确保为事件处理程序使用适当的 HTML 标记。 例如，要处理点击，请使用 [`<button onClick={handleClick}>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) 而不是 `<div onClick={handleClick}>`。 使用真正的浏览器 `<button>` 启用内置的浏览器行为，如键盘导航。 如果您不喜欢按钮的默认浏览器样式并且想让它看起来更像一个链接或不同的 UI 元素，您可以使用 CSS 来实现。 [了解有关编写可访问标记的更多信息。](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
-  
+
 </Note>
 
 ## 事件传播 {/*event-propagation*/}
