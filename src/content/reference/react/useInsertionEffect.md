@@ -55,7 +55,7 @@ function useCSS(rule) {
 #### 注意事项 {/*caveats*/}
 
 * Effect 只在客户端上运行，在服务端渲染中不会运行。
-* 你不能在 `useInsertionEffect` 内部更新 state。
+* 避免在 `useInsertionEffect` 内部更新 state。
 * 在 `useInsertionEffect` 运行期间，refs 还没有附加，DOM 也还没有更新。
 
 ---
