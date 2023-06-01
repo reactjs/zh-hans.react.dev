@@ -42,27 +42,27 @@ title: "常见组件 (例如 <div>)"
 所有内置组件也支持这些标准的 DOM 属性：
 
 * [`accessKey`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey): 一个字符串。 为该元素指定一个键盘快捷键。 [通常不建议。](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey#accessibility_concerns)
-* [`aria-*`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes): ARIA 属性允许您为此元素指定辅助功能树信息。 请参阅 [ARIA属性](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes)以获取完整的参考。在React中，所有ARIA属性名称与HTML中完全相同。
+* [`aria-*`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes): ARIA 属性允许你为此元素指定辅助功能树信息。 请参阅 [ARIA属性](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes)以获取完整的参考。在React中，所有ARIA属性名称与HTML中完全相同。
 * [`autoCapitalize`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize): 一个字符串。 指定用户输入的大小写形式。
 * [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className): 一个字符串。 指定元素的 CSS 类名。 [阅读更多关于应用CSS样式的内容。](#applying-css-styles)
-* [`contentEditable`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable): 一个布尔值。 如果是 `true`, 浏览器允许用户直接编辑渲染的元素。 这被用于实现像 [Lexical](https://lexical.dev/)这样的富文本输入库。 如果您尝试将React子元素传递给具有`contentEditable={true}`属性的元素，则React会发出警告，因为在用户编辑后，React将无法更新其内容。
-* [`data-*`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*): 数据属性允许您将一些字符串数据附加到元素上, 例如 `data-fruit="banana"`. 在React中 它们不常用，因为通常您会从 props 或 state 中读取数据。
+* [`contentEditable`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable): 一个布尔值。 如果是 `true`, 浏览器允许用户直接编辑渲染的元素。 这被用于实现像 [Lexical](https://lexical.dev/)这样的富文本输入库。 如果你尝试将React子元素传递给具有`contentEditable={true}`属性的元素，则React会发出警告，因为在用户编辑后，React将无法更新其内容。
+* [`data-*`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*): 数据属性允许你将一些字符串数据附加到元素上, 例如 `data-fruit="banana"`. 在React中 它们不常用，因为通常你会从 props 或 state 中读取数据。
 * [`dir`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir): 可以是`ltr`或`rtl`。指定元素的文本方向。
 * [`draggable`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/draggable): 一个布尔值。 指定元素是否可拖动。属于[HTML 拖放 API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API)的一部分。
 * [`enterKeyHint`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/enterKeyHint): 一个字符串。指定虚拟键盘上的回车键应该呈现哪种操作。
-* [`htmlFor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor): 一个字符串。 用于 [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) 和 [`<output>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output), 让您将[标签与某些控件关联起来](/reference/react-dom/components/input#providing-a-label-for-an-input)。 类似在HTML [`for`属性 ](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/for) React使用标准的DOM属性名称（`htmlFor`），而不是HTML属性名称。
+* [`htmlFor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor): 一个字符串。 用于 [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) 和 [`<output>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output), 让你将[标签与某些控件关联起来](/reference/react-dom/components/input#providing-a-label-for-an-input)。 类似在HTML [`for`属性 ](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/for) React使用标准的DOM属性名称（`htmlFor`），而不是HTML属性名称。
 * [`hidden`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden): 一个布尔值或者一个字符串。 指定元素是否应该被隐藏。
 * [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id): 一个字符串。 为该元素指定一个唯一标识符，可用于以后查找或将其与其他元素连接。 使用[`useId`](/reference/react/useId)生成它，以避免同一组件的多个实例之间发生冲突。
 * [`is`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/is): 一个字符串。 如果指定，该组件将表现得像一个[自定义元素](/reference/react-dom/components#custom-html-elements)。
 * [`inputMode`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode): 一个字符串。 指定要显示的键盘类型（例如，文本、数字或电话）。
 * [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop): 一个字符串。 指定元素代表的属性，供结构化数据爬取程序使用
 * [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang): 一个字符串。指定元素的语言。
-* [`on 一个imationEnd`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationend_event): 一个 [`动画事件`处理](#动画事件-handler)函数。在CSS动画完成时触发。
-* `on 一个imationEndCapture`:  一个在[捕获阶段](/learn/responding-to-events#capture-phase-events)触发的`on 一个imationEnd`版本。
-* [`on 一个imationIteration`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationiteration_event): 一个 [`动画事件`处理](#动画事件-handler)函数。 当 CSS 动画的一次迭代结束并开始另一个迭代时触发。
-* `on 一个imationIterationCapture`: 在[捕获阶段](/learn/responding-to-events#capture-phase-events)触发的`on 一个imationIteration`版本。
-* [`on 一个imationStart`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationstart_event): 一个 [`动画事件`处理](#动画事件-handler)函数。 当 CSS 动画开始时触发。
-* `on 一个imationStartCapture`: 跟`on 一个imationStart`一样, 但是是在 [捕获阶段.](/learn/responding-to-events#capture-phase-events)触发。
+* [`on aimationEnd`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationend_event): 一个 [`动画事件`处理](#动画事件-handler)函数。在CSS动画完成时触发。
+* `on aimationEndCapture`:  一个在[捕获阶段](/learn/responding-to-events#capture-phase-events)触发的`on 一个imationEnd`版本。
+* [`on aimationIteration`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationiteration_event): 一个 [`动画事件`处理](#动画事件-handler)函数。 当 CSS 动画的一次迭代结束并开始另一个迭代时触发。
+* `on aimationIterationCapture`: 在[捕获阶段](/learn/responding-to-events#capture-phase-events)触发的`on 一个imationIteration`版本。
+* [`on aimationStart`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationstart_event): 一个 [`动画事件`处理](#动画事件-handler)函数。 当 CSS 动画开始时触发。
+* `on aimationStartCapture`: 跟`on 一个imationStart`一样, 但是是在 [捕获阶段.](/learn/responding-to-events#capture-phase-events)触发。
 * [`onAuxClick`](https://developer.mozilla.org/en-US/docs/Web/API/Element/auxclick_event): 一个 [`鼠标事件`处理](#mouseevent-handler)函数。 当非主要指针按钮被点击时触发。
 * `onAuxClickCapture`:一个在[捕获阶段.](/learn/responding-to-events#capture-phase-events)触发的 onAuxClick 版本。
 * `onBeforeInput`: 一个[`输入事件` 触发](#inputevent-handler) 函数. 在可编辑元素的值被修改之前触发。React 尚未使用原生的 [`beforeinput`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/beforeinput_event) 事件，而是尝试使用其他事件来模拟它。
@@ -158,7 +158,7 @@ title: "常见组件 (例如 <div>)"
 * [`title`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title): 一个字符串。 指定元素的工具提示文本。
 * [`translate`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/translate): 是 `'yes'` 或者 `'no'`. 选择 `'no'` 将排除元素内容的翻译。
 
-您还可以将自定义属性作为 props 传递。 例如 `mycustomprop="someValue"`. 当与第三方库集成时，这可能很有用。 自定义属性名称必须为小写，并且不能以 `on` 开头。 该值将被转换为一个字符串。If您传递`null`或`undefined`，则自定义属性将被删除。
+你还可以将自定义属性作为 props 传递。 例如 `mycustomprop="someValue"`. 当与第三方库集成时，这可能很有用。 自定义属性名称必须为小写，并且不能以 `on` 开头。 该值将被转换为一个字符串。If你传递`null`或`undefined`，则自定义属性将被删除。
 
 这些事件仅适用于 [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) 元素：
 
@@ -239,7 +239,7 @@ title: "常见组件 (例如 <div>)"
 
 #### 注意事项 {/*common-caveats*/}
 
-- 您不能同时传递`children`和`dangerouslySetInnerHTML`。
+- 你不能同时传递`children`和`dangerouslySetInnerHTML`。
 - 有些事件(像 `onAbort` 和 `onLoad`) 在浏览器中不冒泡, 但是在React中冒泡.
 
 ---
@@ -254,13 +254,13 @@ title: "常见组件 (例如 <div>)"
 
 [查看使用 `ref` 回调函数的示例。](/learn/manipulating-the-dom-with-refs#how-to-manage-a-list-of-refs-using-a-ref-callback)
 
-当 `<div>` DOM 节点被添加到屏幕上时，React 将使用该节点作为参数调用您的 `ref` 回调函数。
+当 `<div>` DOM 节点被添加到屏幕上时，React 将使用该节点作为参数调用你的 `ref` 回调函数。
 
-当您传递不同的` ref `回调时，React 也会调用您的 `ref` 回调。在上面的示例中，`(node) => { ... }` 在每次渲染时都是一个不同的函数。当组件重新渲染时，先前的函数将被调用并带有 `null` 参数，并且下一个函数将被调用并带有 DOM 节点。
+当你传递不同的` ref `回调时，React 也会调用你的 `ref` 回调。在上面的示例中，`(node) => { ... }` 在每次渲染时都是一个不同的函数。当组件重新渲染时，先前的函数将被调用并带有 `null` 参数，并且下一个函数将被调用并带有 DOM 节点。
 
 #### 参数 {/*ref-callback-parameters*/}
 
-* `node`: 一个DOM节点或`null`。 当 ref 被附加时React 会将 DOM 节点传递给你, 当引用被分离时值为 `null`。除非您在每次渲染时都传递相同的函数引用作为 `ref` 回调，否则该回调将在组件的每次重新渲染期间被暂时分离和重新连接。
+* `node`: 一个DOM节点或`null`。 当 ref 被附加时React 会将 DOM 节点传递给你, 当引用被分离时值为 `null`。除非你在每次渲染时都传递相同的函数引用作为 `ref` 回调，否则该回调将在组件的每次重新渲染期间被暂时分离和重新连接。
 
 #### 返回 {/*returns*/}
 
@@ -270,7 +270,7 @@ title: "常见组件 (例如 <div>)"
 
 ### React 事件对象 {/*react-event-object*/}
 
-您的事件处理程序将接收到一个React事件对象。它有时也被称为“合成事件”（synthetic event）.
+你的事件处理程序将接收到一个React事件对象。它有时也被称为“合成事件”（synthetic event）.
 
 ```js
 <button onClick={e => {
@@ -280,7 +280,7 @@ title: "常见组件 (例如 <div>)"
 
 它符合与底层DOM事件相同的标准，但修复了一些浏览器不一致性。
 
-一些React事件不能直接映射到浏览器的原生事件。 例如，在 `onMouseLeave` 事件中，`e.nativeEvent` 将指向 `mouseout` 事件。具体的映射关系不是公共 API 的一部分，可能会在未来发生变化。如果您需要某些原因下层浏览器事件，请从 `e.nativeEvent` 中读取它。
+一些React事件不能直接映射到浏览器的原生事件。 例如，在 `onMouseLeave` 事件中，`e.nativeEvent` 将指向 `mouseout` 事件。具体的映射关系不是公共 API 的一部分，可能会在未来发生变化。如果你需要某些原因下层浏览器事件，请从 `e.nativeEvent` 中读取它。
 
 #### 属性 {/*react-event-object-properties*/}
 
@@ -315,7 +315,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 #### 注意事项 {/*react-event-object-caveats*/}
 
-* `currentTarget`、`eventPhase`、`target` 和 `type` 的值反映了您的 React 代码所期望的值。在幕后，React 在根处附加事件处理程序，但这不会反映在 React 事件对象中。例如，e.currentTarget 可能与底层 e.nativeEvent.currentTarget 不同。对于 polyfill 的事件，e.type（React 事件类型）可能与 e.nativeEvent.type（底层类型）不同。
+* `currentTarget`、`eventPhase`、`target` 和 `type` 的值反映了你的 React 代码所期望的值。在幕后，React 在根处附加事件处理程序，但这不会反映在 React 事件对象中。例如，e.currentTarget 可能与底层 e.nativeEvent.currentTarget 不同。对于 polyfill 的事件，e.type（React 事件类型）可能与 e.nativeEvent.type（底层类型）不同。
 ---
 
 ### `AnimationsEvent` 处理函数 {/*animationsevent-handler*/}
@@ -324,9 +324,9 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ```js
 <div
-  on 一个imationStart={e => console.log('on 一个imationStart')}
-  on 一个imationIteration={e => console.log('on 一个imationIteration')}
-  on 一个imationEnd={e => console.log('on 一个imationEnd')}
+  on aimationStart={e => console.log('on aimationStart')}
+  on aimationIteration={e => console.log('on aimationIteration')}
+  on aimationEnd={e => console.log('on aimationEnd')}
 />
 ```
 
@@ -739,7 +739,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### 应用CSS样式 {/*applying-css-styles*/}
 
-在React中，您可以使用[`className`.](https://developer.mozilla.org/en-US/docs/Web/API/Element/className)指定CSS类。它的工作方式类似于HTML中的`class`属性：
+在React中，你可以使用[`className`.](https://developer.mozilla.org/en-US/docs/Web/API/Element/className)指定CSS类。它的工作方式类似于HTML中的`class`属性：
 
 ```js
 <img className="avatar" />
@@ -754,7 +754,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 }
 ```
 
-在最简单的情况下，您可以将[`<link>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link)标签添加到HTML中。如果您使用构建工具或框架，请查阅其文档以了解如何将CSS文件添加到项目中。React 不规定如何添加 CSS 文件。 
+在最简单的情况下，你可以将[`<link>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link)标签添加到HTML中。如果你使用构建工具或框架，请查阅其文档以了解如何将CSS文件添加到项目中。React 不规定如何添加 CSS 文件。 
 
 有时，样式值取决于数据。使用`style`属性动态传递一些样式：
 
@@ -814,11 +814,11 @@ export default function Avatar({ user }) {
 
 #### 如何有条件地应用多个CSS类？ {/*how-to-apply-multiple-css-classes-conditionally*/}
 
-要有条件地应用CSS类，您需要使用JavaScript自己生成`className`字符串。
+要有条件地应用CSS类，你需要使用JavaScript自己生成`className`字符串。
 
 例如， `className={'row ' + (isSelected ? 'selected': '')}` 将会生成`className="row"` 或者 `className="row selected"` 取决于 `isSelected` 是不是 `true`.
 
-为了更好的可读性，您可以使用像 [`classnames`:](https://github.com/JedWatson/classnames)这样的小助手库：
+为了更好的可读性，你可以使用像 [`classnames`:](https://github.com/JedWatson/classnames)这样的小助手库：
 
 ```js
 import cn from 'classnames';
@@ -832,7 +832,7 @@ function Row({ isSelected }) {
 }
 ```
 
-如果您有多个条件类，则特别方便：
+如果你有多个条件类，则特别方便：
 
 ```js
 import cn from 'classnames';
@@ -1099,7 +1099,7 @@ input { margin-left: 10px; }
 
 ### 处理焦点事件 {/*handling-focus-events*/}
 
-在React中 [焦点事件](#focusevent-handler) 冒泡。您可以使用`currentTarget`和`relatedTarget`来区分焦点或模糊事件是否起源于父元素之外。 该示例展示了如何检测子元素的聚焦、父级元素的聚焦，以及如何检测整个子树的聚焦进入或离开。
+在React中 [焦点事件](#focusevent-handler) 冒泡。你可以使用`currentTarget`和`relatedTarget`来区分焦点或模糊事件是否起源于父元素之外。 该示例展示了如何检测子元素的聚焦、父级元素的聚焦，以及如何检测整个子树的聚焦进入或离开。
 
 <Sandpack>
 
