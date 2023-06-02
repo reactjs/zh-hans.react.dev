@@ -211,31 +211,33 @@ function Form() {
   // ...
 ```
 
-The action type names are local to your component. [Each action describes a single interaction, even if that leads to multiple changes in data.](/learn/extracting-state-logic-into-a-reducer#writing-reducers-well) The shape of the state is arbitrary, but usually it'll be an object or an array.
+action 类型名称是与你的组件相关的。[每个动作描述了一个单独的交互，即使这可能导致数据中的多重改变。](/learn/extracting-state-logic-into-a-reducer#writing-reducers-well) 状态的形状是任意的，但通常它会是一个对象或数组。
 
-Read [extracting state logic into a reducer](/learn/extracting-state-logic-into-a-reducer) to learn more.
+阅读 [提取状态逻辑到reducer](/learn/extracting-state-logic-into-a-reducer) 来学习更多。
+
 
 <Pitfall>
 
-State is read-only. Don't modify any objects or arrays in state:
+
+状态是只读的。不要修改状态中的任何对象或数组：
 
 ```js {4,5}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
-      // 🚩 Don't mutate an object in state like this:
+      // 🚩 不要像这样去改变状态中的对象：
       state.age = state.age + 1;
       return state;
     }
 ```
 
-Instead, always return new objects from your reducer:
+相反，总是从你的 reducer 返回新的对象：
 
 ```js {4-8}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
-      // ✅ Instead, return a new object
+      // ✅ 相反，返回一个新的对象
       return {
         ...state,
         age: state.age + 1
@@ -243,15 +245,15 @@ function reducer(state, action) {
     }
 ```
 
-Read [updating objects in state](/learn/updating-objects-in-state) and [updating arrays in state](/learn/updating-arrays-in-state) to learn more.
+阅读 [更新状态中的对象](/learn/updating-objects-in-state) 和 [更新状态中的数组](/learn/updating-arrays-in-state) 来学习更多。
 
 </Pitfall>
 
-<Recipes titleText="Basic useReducer examples" titleId="examples-basic">
+<Recipes titleText="基础的 useReducer 示例" titleId="examples-basic">
 
-#### Form (object) {/*form-object*/}
+#### 表单 (object) {/*form-object*/}
 
-In this example, the reducer manages a state object with two fields: `name` and `age`.
+在这个示例中，reducer 管理一个包含两个字段：`name` 和 `age` 的状态对象。
 
 <Sandpack>
 
@@ -315,9 +317,9 @@ button { display: block; margin-top: 10px; }
 
 <Solution />
 
-#### Todo list (array) {/*todo-list-array*/}
+#### 待办事项 (array) {/*todo-list-array*/}
 
-In this example, the reducer manages an array of tasks. The array needs to be updated [without mutation.](/learn/updating-arrays-in-state)
+在这个示例中，reducer 管理一个任务数组。这个数组需要[无突变地](/learn/updating-arrays-in-state)被更新。
 
 <Sandpack>
 
@@ -508,9 +510,9 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution />
 
-#### Writing concise update logic with Immer {/*writing-concise-update-logic-with-immer*/}
+#### 使用 Immer 编写简洁的更新逻辑 {/*writing-concise-update-logic-with-immer*/}
 
-If updating arrays and objects without mutation feels tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer#useimmerreducer) to reduce repetitive code. Immer lets you write concise code as if you were mutating objects, but under the hood it performs immutable updates:
+如果你觉得不通过变动就更新数组和对象的过程很繁琐，你可以使用像 [Immer](https://github.com/immerjs/use-immer#useimmerreducer) 这样的库来减少重复的代码。Immer让你能够像在直接修改对象一样编写简洁的代码，但在底层，它执行的却是不可变的更新。
 
 <Sandpack>
 
@@ -724,7 +726,7 @@ ul, li { margin: 0; padding: 0; }
 
 ### 避免重新创建初始状态 {/*avoiding-recreating-the-initial-state*/}
 
-React saves the initial state once and ignores it on the next renders.
+React在首次渲染时保存初始状态，并在后续的渲染中忽略它。
 
 ```js
 function createInitialState(username) {
@@ -736,9 +738,10 @@ function TodoList({ username }) {
   // ...
 ```
 
-Although the result of `createInitialState(username)` is only used for the initial render, you're still calling this function on every render. This can be wasteful if it's creating large arrays or performing expensive calculations.
+尽管 `createInitialState(username)` 的结果仅用于初始渲染，但你仍在每次渲染时都调用这个函数。如果它正在创建大型数组或执行昂贵的计算，这可能会造成浪费。
 
-To solve this, you may **pass it as an _initializer_ function** to `useReducer` as the third argument instead:
+为了解决这个问题，你可以将其作为 **初始化函数 (*initializer* function)** 传递给 `useReducer`，作为第三个参数：
+
 
 ```js {6}
 function createInitialState(username) {
@@ -750,15 +753,15 @@ function TodoList({ username }) {
   // ...
 ```
 
-Notice that you’re passing `createInitialState`, which is the *function itself*, and not `createInitialState()`, which is the result of calling it. This way, the initial state does not get re-created after initialization.
+注意你传递的是 `createInitialState`，也就是*函数本身*，而不是 `createInitialState()`，后者是调用它后的结果。这样，初始状态在初始化后不会被重新创建。
 
-In the above example, `createInitialState` takes a `username` argument. If your initializer doesn't need any information to compute the initial state, you may pass `null` as the second argument to `useReducer`.
+在上述例子中，`createInitialState` 接受一个 `username` 参数。如果你的初始化函数在计算初始状态时不需要任何信息，你可以将 `null` 作为 `useReducer` 的第二个参数。
 
-<Recipes titleText="The difference between passing an initializer and passing the initial state directly" titleId="examples-initializer">
+<Recipes titleText="传递初始化函数和直接传递初始状态的区别" titleId="examples-initializer">
 
-#### Passing the initializer function {/*passing-the-initializer-function*/}
+#### 传递初始化函数 {/*passing-the-initializer-function*/}
 
-This example passes the initializer function, so the `createInitialState` function only runs during initialization. It does not run when component re-renders, such as when you type into the input.
+这个例子传递了初始化函数，所以 `createInitialState` 函数只在初始化时运行。它不会在组件重渲染时运行，例如当你在输入框中输入时。
 
 <Sandpack>
 
@@ -844,9 +847,9 @@ export default function TodoList({ username }) {
 
 <Solution />
 
-#### Passing the initial state directly {/*passing-the-initial-state-directly*/}
+#### 直接传递初始状态 {/*passing-the-initial-state-directly*/}
 
-This example **does not** pass the initializer function, so the `createInitialState` function runs on every render, such as when you type into the input. There is no observable difference in behavior, but this code is less efficient.
+这个例子**没有**传递初始化函数，所以 `createInitialState` 函数在每次渲染时都会运行，例如当你在输入框中输入时。在行为上没有可观察的差别，但这段代码的效率较低。
 
 <Sandpack>
 
@@ -939,24 +942,24 @@ export default function TodoList({ username }) {
 
 ### 我已经派发了一个 action，但日志显示我还是旧的 state 值 {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
 
-Calling the `dispatch` function **does not change state in the running code**:
+调用 `dispatch` 函数**不会在正在运行的代码中改变状态**：
 
 ```js {4,5,8}
 function handleClick() {
   console.log(state.age);  // 42
 
-  dispatch({ type: 'incremented_age' }); // Request a re-render with 43
-  console.log(state.age);  // Still 42!
+  dispatch({ type: 'incremented_age' }); // 请求使用43进行重新渲染
+  console.log(state.age);  // 仍然是42！
 
   setTimeout(() => {
-    console.log(state.age); // Also 42!
+    console.log(state.age); // 同样是42！
   }, 5000);
 }
 ```
 
-This is because [states behaves like a snapshot.](/learn/state-as-a-snapshot) Updating state requests another render with the new state value, but does not affect the `state` JavaScript variable in your already-running event handler.
+这是因为[状态表现得像一个快照](https://chat.openai.com/learn/state-as-a-snapshot)。更新状态会请求另一个带有新的状态值的渲染，但不会影响你已经运行的事件处理器中的 `state` JavaScript变量。
 
-If you need to guess the next state value, you can calculate it manually by calling the reducer yourself:
+如果你需要预测下一个状态值，你可以通过自己调用 reducer 来手动计算它：
 
 ```js
 const action = { type: 'incremented_age' };
@@ -971,18 +974,18 @@ console.log(nextState); // { age: 43 }
 
 ### 我已经派发了一个 action，但屏幕没有更新 {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
 
-React will **ignore your update if the next state is equal to the previous state,** as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. This usually happens when you change an object or an array in state directly:
+如果下一个状态等于前一个状态，React将**忽略你的更新**，这是通过 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较决定的。这通常发生在你直接更改状态中的对象或数组时：
 
 ```js {4-5,9-10}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
-      // 🚩 Wrong: mutating existing object
+      // 🚩 错误：修改现有对象
       state.age++;
       return state;
     }
     case 'changed_name': {
-      // 🚩 Wrong: mutating existing object
+      // 🚩 错误：修改现有对象
       state.name = action.nextName;
       return state;
     }
@@ -991,20 +994,20 @@ function reducer(state, action) {
 }
 ```
 
-You mutated an existing `state` object and returned it, so React ignored the update. To fix this, you need to ensure that you're always [updating objects in state](/learn/updating-objects-in-state) and [updating arrays in state](/learn/updating-arrays-in-state) instead of mutating them:
+你修改了现有的 `state` 对象并返回它，所以React忽略了这个更新。为了修复这个问题，你需要确保你总是[更新状态中的对象](https://chat.openai.com/learn/updating-objects-in-state)和[更新状态中的数组](https://chat.openai.com/learn/updating-arrays-in-state)，而不是修改它们：
 
 ```js {4-8,11-15}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
-      // ✅ Correct: creating a new object
+      // ✅ 正确：创建一个新的对象
       return {
         ...state,
         age: state.age + 1
       };
     }
     case 'changed_name': {
-      // ✅ Correct: creating a new object
+      // ✅ 正确：创建一个新的对象
       return {
         ...state,
         name: action.nextName
@@ -1019,27 +1022,27 @@ function reducer(state, action) {
 
 ### 在派发后，我的 reducer state 的一部分变成了 undefined {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
 
-Make sure that every `case` branch **copies all of the existing fields** when returning the new state:
+确保每个 `case` 分支在返回新状态时**复制所有现有的字段**：
 
 ```js {5}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
       return {
-        ...state, // Don't forget this!
+        ...state, // 不要忘记这个！
         age: state.age + 1
       };
     }
     // ...
 ```
 
-Without `...state` above, the returned next state would only contain the `age` field and nothing else.
+如果没有上面的 `...state`，返回的下一个状态只会包含 `age` 字段，其他的都没有。
 
 ---
 
 ### 在派发后，我的整个 reducer state 变成了 undifined {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
 
-If your state unexpectedly becomes `undefined`, you're likely forgetting to `return` state in one of the cases, or your action type doesn't match any of the `case` statements. To find why, throw an error outside the `switch`:
+如果你的状态意外地变成了 `undefined`，你可能忘记在其中一个 `case` 中 `return` 状态，或者你的操作类型没有匹配任何的 `case` 语句。为了找到原因，在 `switch` 外部抛出一个错误：
 
 ```js {10}
 function reducer(state, action) {
@@ -1055,26 +1058,26 @@ function reducer(state, action) {
 }
 ```
 
-You can also use a static type checker like TypeScript to catch such mistakes.
+你也可以使用静态类型检查器，如 TypeScript，来捕获此类错误。
 
 ---
 
 ### 我收到一个错误： "Too many re-renders" {/*im-getting-an-error-too-many-re-renders*/}
 
-You might get an error that says: `Too many re-renders. React limits the number of renders to prevent an infinite loop.` Typically, this means that you're unconditionally dispatching an action *during render*, so your component enters a loop: render, dispatch (which causes a render), render, dispatch (which causes a render), and so on. Very often, this is caused by a mistake in specifying an event handler:
+你可能会收到一个错误，提示：`过多的重新渲染。React 限制了渲染的次数以防止出现无限循环。`通常，这意味着你在*渲染过程中*无条件地派发一个操作，因此你的组件进入一个循环：渲染，派发（引起渲染），渲染，派发（引起渲染），如此往复。很常见的原因是在指定事件处理器时出错：
 
 ```js {1-2}
-// 🚩 Wrong: calls the handler during render
+// 🚩 错误：在渲染过程中调用处理器
 return <button onClick={handleClick()}>Click me</button>
 
-// ✅ Correct: passes down the event handler
+// ✅ 正确：向下传递事件处理器
 return <button onClick={handleClick}>Click me</button>
 
-// ✅ Correct: passes down an inline function
+// ✅ 正确：向下传递一个内联函数
 return <button onClick={(e) => handleClick(e)}>Click me</button>
 ```
 
-If you can't find the cause of this error, click on the arrow next to the error in the console and look through the JavaScript stack to find the specific `dispatch` function call responsible for the error.
+如果你无法找到这个错误的原因，点击控制台中错误旁边的箭头，查看JavaScript堆栈，找出导致错误的具体 `dispatch` 函数调用。
 
 ---
 
@@ -1086,11 +1089,17 @@ This **development-only** behavior helps you [keep components pure.](/learn/keep
 
 For example, this impure reducer function mutates an array in state:
 
+在 [严格模式](https://chat.openai.com/reference/react/StrictMode)下，React 将调用你的 reducer 和 initializer 函数两次。这不应该破坏你的代码。
+
+这种**仅限开发环境**的行为有助于你[保持组件的纯净性](https://chat.openai.com/learn/keeping-components-pure)。React使用其中一个调用的结果，忽略另一个调用的结果。只要你的组件、initializer 和 reducer 函数是纯净的，这不应该影响你的逻辑。然而，如果它们意外地不纯，这可以帮助你注意到错误。
+
+例如，这个不纯的 reducer 函数会更改状态中的数组：
+
 ```js {4-6}
 function reducer(state, action) {
   switch (action.type) {
     case 'added_todo': {
-      // 🚩 Mistake: mutating state
+      // 🚩 错误：更改状态
       state.todos.push({ id: nextId++, text: action.text });
       return state;
     }
@@ -1099,13 +1108,13 @@ function reducer(state, action) {
 }
 ```
 
-Because React calls your reducer function twice, you'll see the todo was added twice, so you'll know that there is a mistake. In this example, you can fix the mistake by [replacing the array instead of mutating it](/learn/updating-arrays-in-state#adding-to-an-array):
+因为 React 调用了你的 reducer 函数两次，你会看到待办事项被添加了两次，所以你会知道有一个错误。在这个例子中，你可以通过[替换数组而不是更改它](https://chat.openai.com/learn/updating-arrays-in-state#adding-to-an-array)来修复这个错误：
 
 ```js {4-11}
 function reducer(state, action) {
   switch (action.type) {
     case 'added_todo': {
-      // ✅ Correct: replacing with new state
+      // ✅ 正确：用新状态替换
       return {
         ...state,
         todos: [
@@ -1119,6 +1128,6 @@ function reducer(state, action) {
 }
 ```
 
-Now that this reducer function is pure, calling it an extra time doesn't make a difference in behavior. This is why React calling it twice helps you find mistakes. **Only component, initializer, and reducer functions need to be pure.** Event handlers don't need to be pure, so React will never call your event handlers twice.
+现在，这个 reducer 函数是纯净的，再调用一次它并不会影响行为。这就是为什么 React 调用它两次可以帮助你找到错误。**只有组件、initializer 和 reducer 函数需要是纯净的。** 事件处理器不需要是纯净的，所以 React 永远不会调用你的事件处理器两次。
 
-Read [keeping components pure](/learn/keeping-components-pure) to learn more.
+阅读 **[保持组件的纯净性](https://chat.openai.com/learn/keeping-components-pure)** 以了解更多。
