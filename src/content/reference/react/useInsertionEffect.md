@@ -126,7 +126,7 @@ function useCSS(rule) {
 }
 ```
 
-[阅读更多将 `useInsertionEffect` 应用于带有运行时注入的 CSS-in-JS 库的相关信息](https://github.com/reactwg/react-18/discussions/110)。
+[阅读更多使用 `useInsertionEffect` 升级 CSS-in-JS 库的相关指南](https://github.com/reactwg/react-18/discussions/110)。
 
 <DeepDive>
 
