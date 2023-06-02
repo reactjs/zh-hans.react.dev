@@ -10,7 +10,7 @@ title: useInsertionEffect
 
 <Intro>
 
-`useInsertionEffect` 是 [`useEffect`](/reference/react/useEffect) 的另一种实现，在任何 DOM 变化前触发。
+`useInsertionEffect` 是 [`useEffect`](/reference/react/useEffect) 的另一种实现，会在任何 DOM 变化前触发。
 
 ```js
 useInsertionEffect(setup, dependencies?)
