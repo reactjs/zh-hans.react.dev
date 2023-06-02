@@ -80,7 +80,7 @@ import { render } from 'react-dom';
 import App from './App.js';
 
 render(<App />, document.getElementById('root'));
-````
+```
 
 ### 渲染根组件 {/*rendering-the-root-component*/}
 

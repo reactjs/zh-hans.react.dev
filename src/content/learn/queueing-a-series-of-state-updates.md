@@ -58,19 +58,19 @@ setNumber(0 + 1);
 setNumber(0 + 1);
 ```
 
-但是这里还有另外一个影响因素需要讨论。**React 会等到事件处理函数中的 *所有* 代码都运行完毕再处理你的 state 更新。** 这就是为什么重新渲染只会发生在所有这些 `setNumber()` 调用 *之后* 的原因。
+但是这里还有另外一个影响因素需要讨论。**React 会等到事件处理函数中的** 所有 **代码都运行完毕再处理你的 state 更新。** 这就是为什么重新渲染只会发生在所有这些 `setNumber()` 调用 **之后** 的原因。
 
 这可能会让你想起餐厅里帮你点菜的服务员。服务员不会在你说第一道菜的时候就跑到厨房！相反，他们会让你把菜点完，让你修改菜品，甚至会帮桌上的其他人点菜。
 
 <Illustration src="/images/docs/illustrations/i_react-batching.png"  alt="在餐厅里，优雅的光标跟扮演服务员角色的 React 多次点菜。在她多次调用 setState() 之后，服务员将她所点的最后一个作为她的最终订单记录下来。" />
 
-这让你可以更新多个 state 变量——甚至来自多个组件的 state 变量——而不会触发太多的 [重新渲染](/learn/render-and-commit#re-renders-when-state-updates)。但这也意味着只有在你的事件处理函数及其中任何代码执行完成 *之后*，UI 才会更新。这种特性也就是 **批处理**，它会使你的 React 应用运行得更快。它还会帮你避免处理只​​更新了一部分 state 变量的令人困惑的“半成品”渲染。
+这让你可以更新多个 state 变量——甚至来自多个组件的 state 变量——而不会触发太多的 [重新渲染](/learn/render-and-commit#re-renders-when-state-updates)。但这也意味着只有在你的事件处理函数及其中任何代码执行完成 **之后**，UI 才会更新。这种特性也就是 **批处理**，它会使你的 React 应用运行得更快。它还会帮你避免处理只​​更新了一部分 state 变量的令人困惑的“半成品”渲染。
 
 **React 不会跨 *多个* 需要刻意触发的事件（如点击）进行批处理**——每次点击都是单独处理的。请放心，React 只会在一般来说安全的情况下才进行批处理。这可以确保，例如，如果第一次点击按钮会禁用表单，那么第二次点击就不会再次提交它。
 
 ## 在下次渲染前多次更新同一个 state {/*updating-the-same-state-multiple-times-before-the-next-render*/}
 
-这是一个不常见的用例，但是如果你想在下次渲染之前多次更新同一个 state，你可以像 `setNumber(n => n + 1)` 这样传入一个根据队列中的前一个 state 计算下一个 state 的 *函数*，而不是像 `setNumber(number + 1)` 这样传入 *下一个 state 值*。这是一种告诉 React “用 state 值做某事”而不是仅仅替换它的方法。
+这是一个不常见的用例，但是如果你想在下次渲染之前多次更新同一个 state，你可以像 `setNumber(n => n + 1)` 这样传入一个根据队列中的前一个 state 计算下一个 state 的 **函数**，而不是像 `setNumber(number + 1)` 这样传入 **下一个 state 值**。这是一种告诉 React “用 state 值做某事”而不是仅仅替换它的方法。
 
 现在尝试递增计数器：
 
@@ -171,7 +171,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 这是事件处理函数告诉 React 要做的事情：
 
 1. `setNumber(number + 5)`：`number` 为 `0`，所以 `setNumber(0 + 5)`。React 将 *“替换为 `5`”* 添加到其队列中。
-2. `setNumber(n => n + 1)`：`n => n + 1` 是一个更新函数。 React 将 *该函数* 添加到其队列中。
+2. `setNumber(n => n + 1)`：`n => n + 1` 是一个更新函数。 React 将 **该函数** 添加到其队列中。
 
 在下一次渲染期间，React 会遍历 state 队列：
 
@@ -249,7 +249,7 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 * **一个更新函数**（例如：`n => n + 1`）会被添加到队列中。
 * **任何其他的值**（例如：数字 `5`）会导致“替换为 `5`”被添加到队列中，已经在队列中的内容会被忽略。
 
-事件处理函数执行完成后，React 将触发重新渲染。在重新渲染期间，React 将处理队列。更新函数会在渲染期间执行，因此 **更新函数必须是 [纯函数](/learn/keeping-components-pure)** 并且只 *返回* 结果。不要尝试从它们内部设置 state 或者执行其他副作用。在严格模式下，React 会执行每个更新函数两次（但是丢弃第二个结果）以便帮助你发现错误。
+事件处理函数执行完成后，React 将触发重新渲染。在重新渲染期间，React 将处理队列。更新函数会在渲染期间执行，因此 **更新函数必须是 [纯函数](/learn/keeping-components-pure)** 并且只 **返回** 结果。不要尝试从它们内部设置 state 或者执行其他副作用。在严格模式下，React 会执行每个更新函数两次（但是丢弃第二个结果）以便帮助你发现错误。
 
 ### 命名惯例 {/*naming-conventions*/}
 
@@ -367,7 +367,7 @@ function delay(ms) {
 
 </Sandpack>
 
-这可以确保你在增加或减少计数器时是根据其 *最新* 的 state 而不是点击时的 state 来进行增减的。
+这可以确保你在增加或减少计数器时是根据其 **最新** 的 state 而不是点击时的 state 来进行增减的。
 
 </Solution>
 
