@@ -295,7 +295,7 @@ React 事件对象实现了一些标准的[`事件`](https://developer.mozilla.o
 * [`target`](https://developer.mozilla.org/en-US/docs/Web/API/Event/target): 一个 DOM 节点。 返回事件发生的节点（可能是远程子节点）"。
 * [`timeStamp`](https://developer.mozilla.org/en-US/docs/Web/API/Event/timeStamp): 一个数字。 返回事件发生的时间。
 
-此外，React 事件对象提供了以下属性：
+此外，React 事件对象提供了以下属性 ：
 
 * `nativeEvent`: 一个DOM[`事件`](https://developer.mozilla.org/en-US/docs/Web/API/Event)。原始的浏览器事件对象。
 
