@@ -28,8 +28,7 @@ title: "常见组件 (例如 <div>)"
 
 * `children`: 一个 React 节点 (可以是元素, 字符串, 数字, [portal,](/reference/react-dom/createPortal) 空节点（ 如`null`, `undefined`） 和 布尔值, 或其他 React 数组节点)。 指定组件内部的内容. 当你使用JSX时, 通常会通过嵌套标签 `<div><span /></div>` 隐式地指定 `children`属性。
 
-* `dangerouslySetInnerHTML`: 一个形如 `{ __html: '<p>一些 HTML</p>' }` 的对象，其中包含原始的 HTML 字符串。 覆盖DOM节点的 [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) 属性 ，并在内部显示传递的HTML内容. 这个属性应该极度谨慎使用! 如果内部的HTML不可信（例如，如果它基于用户数据）, 你有引入 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 漏洞的风险。 
-[阅读更多关于使用`dangerouslySetInnerHTML`的内容。](#dangerously-setting-the-inner-html)
+* `dangerouslySetInnerHTML`: 一个形如 `{ __html: '<p>一些 HTML</p>' }` 的对象，其中包含原始的 HTML 字符串。 覆盖DOM节点的 [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) 属性 ，并在内部显示传递的HTML内容. 这个属性应该极度谨慎使用! 如果内部的HTML不可信（例如，如果它基于用户数据）, 你有引入 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 漏洞的风险。 [阅读更多关于使用`dangerouslySetInnerHTML`的内容。](#dangerously-setting-the-inner-html)
 
 * `ref`: 来自 [`useRef`](/reference/react/useRef) 或者 [`createRef`](/reference/react/createRef)的ref对象, 或者一个 [`ref` 回调函数,](#ref-callback) 或者一个用于 [传统 refs](https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs) 的字符串，你的引用将被填充为此节点的 DOM 元素。 [阅读更多关于使用 refs 操纵 DOM 的内容。](#manipulating-a-dom-node-with-a-ref)
 
@@ -236,6 +235,7 @@ title: "常见组件 (例如 <div>)"
 * [`onVolumeChange`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/volumechange_event):  一个 [`Event` 处理](#event-handler) 函数。 当音量发生变化时触发。
 * `onVolumeChangeCapture`: 一个在捕获阶段[捕获阶段.](/learn/responding-to-events#capture-phase-events)触发的`onVolumeChange`版本。
 * [`onWaiting`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/waiting_event):  一个 [`Event` 处理](#event-handler) 函数。 由于临时缺少数据而导致播放停止时触发。
+* `onWaitingCapture`: 一个在捕获阶段[捕获阶段.](/learn/responding-to-events#capture-phase-events)触发的`onWaiting`版本。
 
 #### 注意事项 {/*common-caveats*/}
 
