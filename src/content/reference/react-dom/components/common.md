@@ -28,8 +28,7 @@ title: "常见组件 (例如 <div>)"
 
 * `children`: 一个 React 节点 (可以是元素, 字符串, 数字, [portal,](/reference/react-dom/createPortal) 空节点（ 如`null`, `undefined`） 和 布尔值, 或其他 React 数组节点)。 指定组件内部的内容. 当你使用JSX时, 通常会通过嵌套标签 `<div><span /></div>` 隐式地指定 `children`属性。
 
-* `dangerouslySetInnerHTML`: 一个形如 `{ __html: '<p>一些 HTML</p>' }` 的对象，其中包含原始的 HTML 字符串。 覆盖DOM节点的 [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) 属性 ，并在内部显示传递的HTML内容. 这个属性应该极度谨慎使用! 如果内部的HTML不可信（例如，如果它基于用户数据）, 你有引入 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 漏洞的风险。 
-[阅读更多关于使用`dangerouslySetInnerHTML`的内容。](#dangerously-setting-the-inner-html)
+* `dangerouslySetInnerHTML`: 一个形如 `{ __html: '<p>一些 HTML</p>' }` 的对象，其中包含原始的 HTML 字符串。 覆盖DOM节点的 [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) 属性 ，并在内部显示传递的HTML内容. 这个属性应该极度谨慎使用! 如果内部的HTML不可信（例如，如果它基于用户数据）, 你有引入 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 漏洞的风险。 [阅读更多关于使用`dangerouslySetInnerHTML`的内容。](#dangerously-setting-the-inner-html)
 
 * `ref`: 来自 [`useRef`](/reference/react/useRef) 或者 [`createRef`](/reference/react/createRef)的ref对象, 或者一个 [`ref` 回调函数,](#ref-callback) 或者一个用于 [传统 refs](https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs) 的字符串，你的引用将被填充为此节点的 DOM 元素。 [阅读更多关于使用 refs 操纵 DOM 的内容。](#manipulating-a-dom-node-with-a-ref)
 
@@ -236,6 +235,7 @@ title: "常见组件 (例如 <div>)"
 * [`onVolumeChange`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/volumechange_event):  一个 [`Event` 处理](#event-handler) 函数。 当音量发生变化时触发。
 * `onVolumeChangeCapture`: 一个在捕获阶段[捕获阶段.](/learn/responding-to-events#capture-phase-events)触发的`onVolumeChange`版本。
 * [`onWaiting`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/waiting_event):  一个 [`Event` 处理](#event-handler) 函数。 由于临时缺少数据而导致播放停止时触发。
+* `onWaitingCapture`: 一个在捕获阶段[捕获阶段.](/learn/responding-to-events#capture-phase-events)触发的`onWaiting`版本。
 
 #### 注意事项 {/*common-caveats*/}
 
@@ -316,6 +316,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 #### 注意事项 {/*react-event-object-caveats*/}
 
 * `currentTarget`、`eventPhase`、`target` 和 `type` 的值反映了你的 React 代码所期望的值。在幕后，React 在根处附加事件处理程序，但这不会反映在 React 事件对象中。例如，e.currentTarget 可能与底层 e.nativeEvent.currentTarget 不同。对于 polyfill 的事件，e.type（React 事件类型）可能与 e.nativeEvent.type（底层类型）不同。
+
 ---
 
 ### `AnimationsEvent` 处理函数 {/*animationsevent-handler*/}
@@ -768,7 +769,8 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 />
 ```
 
-在上面的例子中，`style={{}}` 不是特殊语法，而是 `style={ }` [JSX 花括号.](/learn/javascript-in-jsx-with-curly-braces)内的常规 `{}` 对象。 我们建议只在样式依赖于 JavaScript 变量时使用 `style` 属性。
+
+In the above example, `style={{}}` is not a special syntax, but a regular `{}` object inside the `style={ }` [JSX curly braces.](/learn/javascript-in-jsx-with-curly-braces) We recommend only using the `style` attribute when your styles depend on JavaScript variables.
 
 <Sandpack>
 
