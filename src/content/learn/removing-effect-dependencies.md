@@ -1,26 +1,26 @@
 ---
-title: 'Removing Effect Dependencies'
+title: 移除 Effect 依赖项
 ---
 
 <Intro>
 
-When you write an Effect, the linter will verify that you've included every reactive value (like props and state) that the Effect reads in the list of your Effect's dependencies. This ensures that your Effect remains synchronized with the latest props and state of your component. Unnecessary dependencies may cause your Effect to run too often, or even create an infinite loop. Follow this guide to review and remove unnecessary dependencies from your Effects.
+当你写 Effect 的时候，代码检查工具会检查依赖项列表是否已经包含了 Effect 读取的每个响应式值（例如 props 和 state）。这可以保证 Effect 和组件最新的 props 以及 state 保持同步。不必要的依赖可能会导致 Effect 频繁运行，甚至造成无限循环。请跟随这篇指南来检查和移除你的 Effect 中不必要的依赖项。
 
 </Intro>
 
 <YouWillLearn>
 
-- How to fix infinite Effect dependency loops
-- What to do when you want to remove a dependency
-- How to read a value from your Effect without "reacting" to it
-- How and why to avoid object and function dependencies
-- Why suppressing the dependency linter is dangerous, and what to do instead
+- 怎样修复 Effect 依赖的无限循环
+- 移除一个依赖项的时候要做些什么
+- 怎样从 Effect 中读取一个值而不需要对他“做出响应”
+- 怎样以及为什么要避免对象和函数依赖项
+- 为什么抑制依赖项检查是危险的，以及应该怎么做
 
 </YouWillLearn>
 
 ## Dependencies should match the code {/*dependencies-should-match-the-code*/}
 
-When you write an Effect, you first specify how to [start and stop](/learn/lifecycle-of-reactive-effects#the-lifecycle-of-an-effect) whatever you want your Effect to be doing:
+当你写 Effect 时，无论想要 Effect 做什么，首先要做的就是指明如何 [开始和结束](/learn/lifecycle-of-reactive-effects#the-lifecycle-of-an-effect)：
 
 ```js {5-7}
 const serverUrl = 'https://localhost:1234';
@@ -34,7 +34,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-Then, if you leave the Effect dependencies empty (`[]`), the linter will suggest the correct dependencies:
+如果你将 Effect 依赖项置为空（`[]`），代码检查工具就会建议正确的依赖项：
 
 <Sandpack>
 
@@ -49,7 +49,7 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // <-- Fix the mistake here!
+  }, []); // <-- 修复治理的错误！
   return <h1>Welcome to the {roomId} room!</h1>;
 }
 
@@ -77,7 +77,7 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 真正的实现会真的连接服务器
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -96,7 +96,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Fill them in according to what the linter says:
+根据代码检查工具的建议填写依赖项：
 
 ```js {6}
 function ChatRoom({ roomId }) {
@@ -104,12 +104,12 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ 所有依赖项被声明
   // ...
 }
 ```
 
-[Effects "react" to reactive values.](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) Since `roomId` is a reactive value (it can change due to a re-render), the linter verifies that you've specified it as a dependency. If `roomId` receives a different value, React will re-synchronize your Effect. This ensures that the chat stays connected to the selected room and "reacts" to the dropdown:
+[Effect 会对响应式值“做出响应”](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values)。由于 roomId 是响应式值（它会因为重新渲染而变化），代码检查工具会验证你是否已经将它指定为依赖项。每当 roomId 接收到一个不同的值，React 就会重新同步对应的 Effect。这可以保证聊天会一直和选中的房间保持连接，并对下拉框的变化“做出响应”：
 
 <Sandpack>
 
@@ -152,7 +152,7 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 真正的实现会真的连接服务器
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -170,7 +170,7 @@ button { margin-left: 10px; }
 ```
 
 </Sandpack>
-
+<!-- todo -->
 ### To remove a dependency, prove that it's not a dependency {/*to-remove-a-dependency-prove-that-its-not-a-dependency*/}
 
 Notice that you can't "choose" the dependencies of your Effect. Every <CodeStep step={2}>reactive value</CodeStep> used by your Effect's code must be declared in your dependency list. The dependency list is determined by the surrounding code:
