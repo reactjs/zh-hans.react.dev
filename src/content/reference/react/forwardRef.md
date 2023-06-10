@@ -66,7 +66,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 * `props`：父组件传递过来的参数。
 
-* `ref`：父组件传递的 `ref` 属性。`ref` 可以是一个对象或者是一个函数。如果父组件没有传递一个 ref，那么它将会是 `null`。你应该将接收到的 `ref` 转发给另一个组件，或者将其传递给 [`useImperativeHandle`](/reference/react/useImperativeHandle)。
+* `ref`：父组件传递的 `ref` 属性。`ref` 可以是一个对象或函数。如果父组件没有传递一个 ref，那么它将会是 `null`。你应该将接收到的 `ref` 转发给另一个组件，或者将其传递给 [`useImperativeHandle`](/reference/react/useImperativeHandle)。
 
 #### 返回值 {/*render-returns*/}
 
