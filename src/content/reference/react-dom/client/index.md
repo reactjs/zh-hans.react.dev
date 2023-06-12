@@ -20,4 +20,4 @@ translators:
 
 ## 浏览器兼容性 {/*browser-support*/}
 
-React 支持所有流行的浏览器，包括 Internet Explorer 9 以及以上版本的浏览器。更旧的浏览器比如 IE9 和 IE10 需要使用 polyfills。
+React 支持所有流行的浏览器，包括 Internet Explorer 9 以及以上版本的浏览器。更旧的浏览器比如 IE9 和 IE10 需要使用 polyfill。
