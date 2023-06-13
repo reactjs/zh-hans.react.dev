@@ -187,8 +187,8 @@ function ChatRoom({ roomId }) { // 这是响应式值
   // ...
 }
 ```
-<!-- todo -->
-[Reactive values](/learn/lifecycle-of-reactive-effects#all-variables-declared-in-the-component-body-are-reactive) include props and all variables and functions declared directly inside of your component. Since `roomId` is a reactive value, you can't remove it from the dependency list. The linter wouldn't allow it:
+
+[响应式值](/learn/lifecycle-of-reactive-effects#all-variables-declared-in-the-component-body-are-reactive) 包括 props 和直接在组件内部声明的所有变量和函数。因为 roomId 是响应式值，所以不能将它从依赖项列表中移除。这在代码检查工具中是不会通过的：
 
 ```js {8}
 const serverUrl = 'https://localhost:1234';
@@ -203,25 +203,25 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-And the linter would be right! Since `roomId` may change over time, this would introduce a bug in your code.
+代码检查工具是对的！因为 `roomId` 可能随着时间的过去而变化，这将在代码中引入 bug。
 
-**To remove a dependency, "prove" to the linter that it *doesn't need* to be a dependency.** For example, you can move `roomId` out of your component to prove that it's not reactive and won't change on re-renders:
+**移除依赖项需要向代码检查工具证明这个值不需要成为依赖项**。例如，你可以从组件中移除 `roomId` 来证明它不是响应式值且在重新渲染时不会变化：
 
 ```js {2,9}
 const serverUrl = 'https://localhost:1234';
-const roomId = 'music'; // Not a reactive value anymore
+const roomId = 'music'; // 不再是响应式值
 
 function ChatRoom() {
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // ✅ All dependencies declared
+  }, []); // ✅ 声明的所有依赖
   // ...
 }
 ```
 
-Now that `roomId` is not a reactive value (and can't change on a re-render), it doesn't need to be a dependency:
+既然 `roomId` 不是响应式值（并且在重渲染时不会变化），它就不需要作为依赖项：
 
 <Sandpack>
 
@@ -244,7 +244,7 @@ export default function ChatRoom() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // 真正的实现会真的连接服务器
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -263,12 +263,12 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-This is why you could now specify an [empty (`[]`) dependency list.](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) Your Effect *really doesn't* depend on any reactive value anymore, so it *really doesn't* need to re-run when any of the component's props or state change.
+这就是为什么你现在可以指定一个 [空 (`[]`) 依赖项列表](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means)。Effect **实际上不再**依赖任何响应式值，所以当组件的任何 props 和 state 变化时，它**并不**需要重新运行。
 
-### To change the dependencies, change the code {/*to-change-the-dependencies-change-the-code*/}
+### 修改依赖项之前先修改代码 {/*to-change-the-dependencies-change-the-code*/}
 
-You might have noticed a pattern in your workflow:
-
+你可能已经注意到工作流中的一个模式：
+<!-- todo -->
 1. First, you **change the code** of your Effect or how your reactive values are declared.
 2. Then, you follow the linter and adjust the dependencies to **match the code you have changed.**
 3. If you're not happy with the list of dependencies, you **go back to the first step** (and change the code again).
