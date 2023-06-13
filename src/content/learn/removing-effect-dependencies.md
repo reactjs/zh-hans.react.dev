@@ -18,7 +18,7 @@ title: 移除 Effect 依赖项
 
 </YouWillLearn>
 
-## Dependencies should match the code {/*dependencies-should-match-the-code*/}
+## 依赖项应该和代码匹配 {/*dependencies-should-match-the-code*/}
 
 当你写 Effect 时，无论想要 Effect 做什么，首先要做的就是指明如何 [开始和结束](/learn/lifecycle-of-reactive-effects#the-lifecycle-of-an-effect)：
 
@@ -49,7 +49,7 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // <-- 修复治理的错误！
+  }, []); // <-- 修复这里的错误！
   return <h1>Welcome to the {roomId} room!</h1>;
 }
 
@@ -170,24 +170,24 @@ button { margin-left: 10px; }
 ```
 
 </Sandpack>
-<!-- todo -->
-### To remove a dependency, prove that it's not a dependency {/*to-remove-a-dependency-prove-that-its-not-a-dependency*/}
 
-Notice that you can't "choose" the dependencies of your Effect. Every <CodeStep step={2}>reactive value</CodeStep> used by your Effect's code must be declared in your dependency list. The dependency list is determined by the surrounding code:
+### 移除一个依赖，需要先证明它不是依赖项 {/*to-remove-a-dependency-prove-that-its-not-a-dependency*/}
+
+注意你不能“选择”Effect 的依赖项。Effect 代码中用到的每一个 <CodeStep step={2}>响应式值</CodeStep> 都必须在依赖项列表中声明。依赖项列表是由周围的代码决定的：
 
 ```js [[2, 3, "roomId"], [2, 5, "roomId"], [2, 8, "roomId"]]
 const serverUrl = 'https://localhost:1234';
 
-function ChatRoom({ roomId }) { // This is a reactive value
+function ChatRoom({ roomId }) { // 这是响应式值
   useEffect(() => {
-    const connection = createConnection(serverUrl, roomId); // This Effect reads that reactive value
+    const connection = createConnection(serverUrl, roomId); // 这个 Effect 读取了响应式值
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ So you must specify that reactive value as a dependency of your Effect
+  }, [roomId]); // ✅ 所以你必须将这个响应式值指定为 Effect 的依赖项
   // ...
 }
 ```
-
+<!-- todo -->
 [Reactive values](/learn/lifecycle-of-reactive-effects#all-variables-declared-in-the-component-body-are-reactive) include props and all variables and functions declared directly inside of your component. Since `roomId` is a reactive value, you can't remove it from the dependency list. The linter wouldn't allow it:
 
 ```js {8}
@@ -198,7 +198,7 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // 🔴 React Hook useEffect has a missing dependency: 'roomId'
+  }, []); // 🔴 React Hook useEffect 缺少依赖项: 'roomId'
   // ...
 }
 ```
