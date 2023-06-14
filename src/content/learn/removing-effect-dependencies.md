@@ -352,21 +352,21 @@ button { margin: 10px; }
 
 这个计数器本应该每秒增加一个数，这个数由两个按钮配置。但是因为你对 React“谎称”这个 Effect 不依赖任何值，所以 React 一直使用初始渲染时的 `onTick` 函数。[在这次渲染期间](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time)，`count` 是 `0`，`increment` 为 `1`。这就是为什么此次渲染的 `onTick` 总是每秒调用一次 `setCount(0 + 1)`，且你看到的总是 `1`。像这样的 bug，当它们跨越多个组件的时候更难修复。
 
-There's always a better solution than ignoring the linter! To fix this code, you need to add `onTick` to the dependency list. (To ensure the interval is only setup once, [make `onTick` an Effect Event.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events))
+比起忽略代码检查，有一个更好的解决方法！你需要向依赖项列表中加入 `onTick` 来修复这段代码。（为了确保 interval 只设置一次，需要 [让 `onTick` 成为 Effect Event](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)。）
 
-**We recommend treating the dependency lint error as a compilation error. If you don't suppress it, you will never see bugs like this.** The rest of this page documents the alternatives for this and other cases.
+**我们推荐你像对待编译错误一样对待依赖项检查错误。如果你不抑制它，你就永远不会看到像这样的 bug**。这篇文档的剩余部分记录了这种这种场景下的一些替代方案。
 
 </DeepDive>
 
-## Removing unnecessary dependencies {/*removing-unnecessary-dependencies*/}
+## 移除非必要的依赖项 {/*removing-unnecessary-dependencies*/}
 
-Every time you adjust the Effect's dependencies to reflect the code, look at the dependency list. Does it make sense for the Effect to re-run when any of these dependencies change? Sometimes, the answer is "no":
+每次调整 Effect 的依赖项以反映代码时，看看依赖项列表。当任意依赖项变化时，Effect 重新运行有意义吗？有时候答案是“no”：
 
-* You might want to re-execute *different parts* of your Effect under different conditions.
-* You might want to only read the *latest value* of some dependency instead of "reacting" to its changes.
-* A dependency may change too often *unintentionally* because it's an object or a function.
+* 你可能想要在不同条件下重新执行 Effect 的 **不同部分**。
+* 你可能想要只读取一些依赖项的 **最新值** 而不是对它的变化“做出响应”。
+* 因为它是一个对象或者函数，所以一个依赖可能 **无意中** 会频繁变化。
 
-To find the right solution, you'll need to answer a few questions about your Effect. Let's walk through them.
+为了找到合适的解决方案，你需要回答一些关于你的 Effect 的一些问题。让我们开始吧。
 
 ### Should this code move to an event handler? {/*should-this-code-move-to-an-event-handler*/}
 
