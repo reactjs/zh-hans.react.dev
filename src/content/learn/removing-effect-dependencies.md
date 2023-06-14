@@ -368,7 +368,7 @@ button { margin: 10px; }
 
 为了找到合适的解决方案，你需要回答一些关于你的 Effect 的一些问题。让我们开始吧。
 
-### Should this code move to an event handler? {/*should-this-code-move-to-an-event-handler*/}
+### 这段代码应该移动事件处理函数中吗？ {/*should-this-code-move-to-an-event-handler*/}
 
 The first thing you should think about is whether this code should be an Effect at all.
 
@@ -437,7 +437,7 @@ function Form() {
 
 Now that the code is in an event handler, it's not reactive--so it will only run when the user submits the form. Read more about [choosing between event handlers and Effects](/learn/separating-events-from-effects#reactive-values-and-reactive-logic) and [how to delete unnecessary Effects.](/learn/you-might-not-need-an-effect)
 
-### Is your Effect doing several unrelated things? {/*is-your-effect-doing-several-unrelated-things*/}
+### 你的 Effect 正在做若干件不相关的事情吗？ {/*is-your-effect-doing-several-unrelated-things*/}
 
 The next question you should ask yourself is whether your Effect is doing several unrelated things.
 
@@ -553,7 +553,7 @@ Now the first Effect only re-runs if the `country` changes, while the second Eff
 
 The final code is longer than the original, but splitting these Effects is still correct. [Each Effect should represent an independent synchronization process.](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process) In this example, deleting one Effect doesn't break the other Effect's logic. This means they *synchronize different things,* and it's good to split them up. If you're concerned about duplication, you can improve this code by [extracting repetitive logic into a custom Hook.](/learn/reusing-logic-with-custom-hooks#when-to-use-custom-hooks)
 
-### Are you reading some state to calculate the next state? {/*are-you-reading-some-state-to-calculate-the-next-state*/}
+### 你正在读取一些 state 来计算下一个 state 吗？ {/*are-you-reading-some-state-to-calculate-the-next-state*/}
 
 This Effect updates the `messages` state variable with a newly created array every time a new message arrives:
 
@@ -607,7 +607,7 @@ function ChatRoom({ roomId }) {
 
 **Notice how your Effect does not read the `messages` variable at all now.** You only need to pass an updater function like `msgs => [...msgs, receivedMessage]`. React [puts your updater function in a queue](/learn/queueing-a-series-of-state-updates) and will provide the `msgs` argument to it during the next render. This is why the Effect itself doesn't need to depend on `messages` anymore. As a result of this fix, receiving a chat message will no longer make the chat re-connect.
 
-### Do you want to read a value without "reacting" to its changes? {/*do-you-want-to-read-a-value-without-reacting-to-its-changes*/}
+### 你想要只读取值而不对它的变化“做出响应”吗？ {/*do-you-want-to-read-a-value-without-reacting-to-its-changes*/}
 
 <Wip>
 
@@ -760,7 +760,7 @@ function Chat({ roomId, notificationCount }) {
 
 You want your logic to be reactive with regards to `roomId`, so you read `roomId` inside of your Effect. However, you don't want a change to `notificationCount` to log an extra visit, so you read `notificationCount` inside of the Effect Event. [Learn more about reading the latest props and state from Effects using Effect Events.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)
 
-### Does some reactive value change unintentionally? {/*does-some-reactive-value-change-unintentionally*/}
+### 会有一些响应式值无意中变化吗？ {/*does-some-reactive-value-change-unintentionally*/}
 
 Sometimes, you *do* want your Effect to "react" to a certain value, but that value changes more often than you'd like--and might not reflect any actual change from the user's perspective. For example, let's say that you create an `options` object in the body of your component, and then read that object from inside of your Effect:
 
