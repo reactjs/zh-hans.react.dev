@@ -268,38 +268,38 @@ button { margin-left: 10px; }
 ### 修改依赖项之前先修改代码 {/*to-change-the-dependencies-change-the-code*/}
 
 你可能已经注意到工作流中的一个模式：
-<!-- todo -->
-1. First, you **change the code** of your Effect or how your reactive values are declared.
-2. Then, you follow the linter and adjust the dependencies to **match the code you have changed.**
-3. If you're not happy with the list of dependencies, you **go back to the first step** (and change the code again).
 
-The last part is important. **If you want to change the dependencies, change the surrounding code first.** You can think of the dependency list as [a list of all the reactive values used by your Effect's code.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) You don't *choose* what to put on that list. The list *describes* your code. To change the dependency list, change the code.
+1. 首先你要 **修改代码**，包括 Effect 或者声明响应式值的方式。
+2. 然后遵循代码检查工具的建议并且调整依赖项使其 **匹配刚刚修改的代码**。
+3. 如果你不满意依赖项列表，则 **返回第一步**（再次修改代码）。
 
-This might feel like solving an equation. You might start with a goal (for example, to remove a dependency), and you need to "find" the code matching that goal. Not everyone finds solving equations fun, and the same thing could be said about writing Effects! Luckily, there is a list of common recipes that you can try below.
+最后一部分很重要。**如果你想修改依赖项，就要先修改周围的代码**。你可以把依赖项列表当成 Effect 代码中 [用到的所有响应式值的列表](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。不是你 **选择** 放什么到列表，而是列表 **描述** 了你的代码。想要修改依赖项列表，就要先修改代码。
+
+这可能感觉像是解决一个方程式。你也许会从目标着手（例如移除依赖项），需要“找到”匹配目标的代码。不是每个人都对解决方程式感兴趣，写 Effect 也是这样！幸运的是下面有一些你可以尝试的常用方法列表。
 
 <Pitfall>
 
-If you have an existing codebase, you might have some Effects that suppress the linter like this:
+如果你有一个已经存在的代码库，可能有像这样存在抑制代码检查工具的 Effect：
 
 ```js {3-4}
 useEffect(() => {
   // ...
-  // 🔴 Avoid suppressing the linter like this:
+  // 🔴 避免像这样抑制代码检查工具：
   // eslint-ignore-next-line react-hooks/exhaustive-deps
 }, []);
 ```
 
-**When dependencies don't match the code, there is a very high risk of introducing bugs.** By suppressing the linter, you "lie" to React about the values your Effect depends on.
+**当依赖项不匹配代码时，会增加引入 bug 的风险**。通过抑制代码检查工具，可以就 Effect 依赖的值对 React“撒谎”。
 
-Instead, use the techniques below.
+取而代之的是，使用下面的技巧。
 
 </Pitfall>
 
 <DeepDive>
 
-#### Why is suppressing the dependency linter so dangerous? {/*why-is-suppressing-the-dependency-linter-so-dangerous*/}
+#### 为什么抑制依赖项检查会很危险？ {/*why-is-suppressing-the-dependency-linter-so-dangerous*/}
 
-Suppressing the linter leads to very unintuitive bugs that are hard to find and fix. Here's one example:
+抑制代码检查会导致非常不直观的 bug，它们很难被找到并修复。这里是一个案例：
 
 <Sandpack>
 
@@ -348,8 +348,8 @@ button { margin: 10px; }
 
 </Sandpack>
 
-Let's say that you wanted to run the Effect "only on mount". You've read that [empty (`[]`) dependencies](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) do that, so you've decided to ignore the linter, and forcefully specified `[]` as the dependencies.
-
+假设你想要Effect“只在组件挂载”的时候运行。你知道 [空 (`[]`)依赖项](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) 可以达到这个目的，所以你已经决定忽略代码检查工具的建议并且强制指定 `[]` 为依赖。
+<!-- todo -->
 This counter was supposed to increment every second by the amount configurable with the two buttons. However, since you "lied" to React that this Effect doesn't depend on anything, React forever keeps using the `onTick` function from the initial render. [During that render,](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) `count` was `0` and `increment` was `1`. This is why `onTick` from that render always calls `setCount(0 + 1)` every second, and you always see `1`. Bugs like this are harder to fix when they're spread across multiple components.
 
 There's always a better solution than ignoring the linter! To fix this code, you need to add `onTick` to the dependency list. (To ensure the interval is only setup once, [make `onTick` an Effect Event.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events))
