@@ -349,7 +349,9 @@ button { margin: 10px; }
 </Sandpack>
 
 假设你想要Effect“只在组件挂载”的时候运行。你知道 [空 (`[]`)依赖项](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) 可以达到这个目的，所以你已经决定忽略代码检查工具的建议并且强制指定 `[]` 为依赖。
-<!-- todo -->
+
+这个计数器本应该每秒增加一个数，这个数由两个按钮配置。但是因为你对 React“谎称”这个 Effect 不依赖任何值，所以 React 一直使用初始渲染时的 `onTick` 函数。[在这次渲染期间](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time)，`count` 是 `0`，`increment` 为 `1`。这就是为什么此次渲染的 `onTick` 总是每秒调用一次 `setCount(0 + 1)`，且你看到的总是 `1`。像这样的 bug，当它们跨越多个组件的时候更难修复。
+
 This counter was supposed to increment every second by the amount configurable with the two buttons. However, since you "lied" to React that this Effect doesn't depend on anything, React forever keeps using the `onTick` function from the initial render. [During that render,](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) `count` was `0` and `increment` was `1`. This is why `onTick` from that render always calls `setCount(0 + 1)` every second, and you always see `1`. Bugs like this are harder to fix when they're spread across multiple components.
 
 There's always a better solution than ignoring the linter! To fix this code, you need to add `onTick` to the dependency list. (To ensure the interval is only setup once, [make `onTick` an Effect Event.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events))
