@@ -370,9 +370,9 @@ button { margin: 10px; }
 
 ### 这段代码应该移动事件处理函数中吗？ {/*should-this-code-move-to-an-event-handler*/}
 
-The first thing you should think about is whether this code should be an Effect at all.
+你首先应该思考的是这段代码是否应该是一个 Effect。
 
-Imagine a form. On submit, you set the `submitted` state variable to `true`. You need to send a POST request and show a notification. You've put this logic inside an Effect that "reacts" to `submitted` being `true`:
+假设有一个表单。在提交的时候，设置 `submitted` state 变量为 `true`。你需要发送一个 POST 请求并且展示一个通知。你已经把逻辑放在了 Effect 里面，会对 `submitted` 变为 `true` “做出响应”：
 
 ```js {6-8}
 function Form() {
@@ -380,7 +380,7 @@ function Form() {
 
   useEffect(() => {
     if (submitted) {
-      // 🔴 Avoid: Event-specific logic inside an Effect
+      // 🔴 Avoid: Effect 内部的 Event-specific 逻辑
       post('/api/register');
       showNotification('Successfully registered!');
     }
@@ -394,7 +394,7 @@ function Form() {
 }
 ```
 
-Later, you want to style the notification message according to the current theme, so you read the current theme. Since `theme` is declared in the component body, it is a reactive value, so you add it as a dependency:
+之后你需要根据当前的主题给通知信息设置样式，所以你需要读取当前的主题。由于 `theme` 在组件内声明，所以它是一个响应式值，所以你需要将它添加到依赖项：
 
 ```js {3,9,11}
 function Form() {
@@ -403,11 +403,11 @@ function Form() {
 
   useEffect(() => {
     if (submitted) {
-      // 🔴 Avoid: Event-specific logic inside an Effect
+      // 🔴 Avoid: Effect 内部的 Event-specific 逻辑
       post('/api/register');
       showNotification('Successfully registered!', theme);
     }
-  }, [submitted, theme]); // ✅ All dependencies declared
+  }, [submitted, theme]); // ✅ 声明的所有依赖
 
   function handleSubmit() {
     setSubmitted(true);
@@ -417,16 +417,16 @@ function Form() {
 }
 ```
 
-By doing this, you've introduced a bug. Imagine you submit the form first and then switch between Dark and Light themes. The `theme` will change, the Effect will re-run, and so it will display the same notification again!
+这样做会引入一个 bug。假设你先提交了表单，然后在 Dark 和 Light 主题间切换。`theme` 会变化，Effect 就会重新运行，所以它又会展示同样的通知消息！
 
-**The problem here is that this shouldn't be an Effect in the first place.** You want to send this POST request and show the notification in response to *submitting the form,* which is a particular interaction. To run some code in response to particular interaction, put that logic directly into the corresponding event handler:
+**这里的问题首先是这不应该是一个 Effect** 。你想要发送这个 POST 请求并且作为对“提交表单”这个特殊交互的响应展示通知。为了响应特殊交互而运行的一些代码，直接把这段逻辑放在相应的事件处理函数中：
 
 ```js {6-7}
 function Form() {
   const theme = useContext(ThemeContext);
 
   function handleSubmit() {
-    // ✅ Good: Event-specific logic is called from event handlers
+    // ✅ Good: Event-specific 逻辑是从事件处理函数调用的
     post('/api/register');
     showNotification('Successfully registered!', theme);
   }  
@@ -435,13 +435,13 @@ function Form() {
 }
 ```
 
-Now that the code is in an event handler, it's not reactive--so it will only run when the user submits the form. Read more about [choosing between event handlers and Effects](/learn/separating-events-from-effects#reactive-values-and-reactive-logic) and [how to delete unnecessary Effects.](/learn/you-might-not-need-an-effect)
+既然代码是在一个事件处理函数里，所以它不是响应式的 — 所以它只会在用户提交表单的时候运行。了解更多关于 [如何选择事件处理函数和 Effect](/learn/separating-events-from-effects#reactive-values-and-reactive-logic) 以及 [如何删除不必要的Effect](/learn/you-might-not-need-an-effect)。
 
-### 你的 Effect 正在做若干件不相关的事情吗？ {/*is-your-effect-doing-several-unrelated-things*/}
+### 你的 Effect 正在做若干不相关的事情吗？ {/*is-your-effect-doing-several-unrelated-things*/}
 
-The next question you should ask yourself is whether your Effect is doing several unrelated things.
+你应该扪心自问的下一个问题是你的 Effect 是否正在做若干不相关的事情。
 
-Imagine you're creating a shipping form where the user needs to choose their city and area. You fetch the list of `cities` from the server according to the selected `country` to show them in a dropdown:
+假设你正在创建一个 shipping 表单，用户在里面需要选择他们的城市和地区。你根据选中的 `country` 从服务器获取 `cities` 列表并且在下拉菜单中展示：
 
 ```js
 function ShippingForm({ country }) {
@@ -460,12 +460,12 @@ function ShippingForm({ country }) {
     return () => {
       ignore = true;
     };
-  }, [country]); // ✅ All dependencies declared
+  }, [country]); // ✅ 声明的所有依赖
 
   // ...
 ```
 
-This is a good example of [fetching data in an Effect.](/learn/you-might-not-need-an-effect#fetching-data) You are synchronizing the `cities` state with the network according to the `country` prop. You can't do this in an event handler because you need to fetch as soon as `ShippingForm` is displayed and whenever the `country` changes (no matter which interaction causes it).
+这是一个 [在Effect中获取数据](/learn/you-might-not-need-an-effect#fetching-data) 的优秀示例。你正在根据 `country` prop 借助网络同步 `cities`  state。你无法在一个事件函数中去做这件事情，因为你需要 `ShippingForm` 只要展示就去获取数据，并在 `country` 变化时立即重新获取（无论是什么交互导致的）。
 
 Now let's say you're adding a second select box for city areas, which should fetch the `areas` for the currently selected `city`. You might start by adding a second `fetch` call for the list of areas inside the same Effect:
 
