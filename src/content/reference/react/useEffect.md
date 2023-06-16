@@ -54,7 +54,7 @@ function ChatRoom({ roomId }) {
 
 #### 注意事项 {/*caveats*/}
 
-* `useEffect` 是一个 Hook，因此只能在 **组件的顶层** 或自己的 Hook 中调用它。不能在循环或者条件内部调用它。如果需要，抽离出一个新组件并将状态移入其中。
+* `useEffect` 是一个 Hook，因此只能在 **组件的顶层** 或自己的 Hook 中调用它，而不能在循环或者条件内部调用。如果需要，抽离出一个新组件并将 state 移入其中。
 
 * 如果你 **没有打算与某个外部系统同步**，[那么你可能不需要 Effect](/learn/you-might-not-need-an-effect)。
 
