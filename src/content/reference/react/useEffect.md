@@ -58,7 +58,7 @@ function ChatRoom({ roomId }) {
 
 * 如果你 **没有打算与某个外部系统同步**，[那么你可能不需要 Effect](/learn/you-might-not-need-an-effect)。
 
-* 当严格模式启动时，React 将在真正的 setup 函数首次运行前，**运行一个额外的开发专有的 setup + cleanup 周期**。这是一个压力测试，确保 cleanup 逻辑“映射”到 setup 逻辑，并停止或撤消 setup 函数正在做的任何事情。如果这引起一个问题，[请实现 cleanup 函数](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)。
+* 当严格模式启动时，React 将在真正的 setup 函数首次运行前，**运行一个开发模式下专有的额外 setup + cleanup 周期**。这是一个压力测试，用于确保 cleanup 逻辑“映射”到了 setup 逻辑，并停止或撤消 setup 函数正在做的任何事情。如果这会导致一些问题，[请实现 cleanup 函数](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)。
 
 * 如果你的一些依赖项是组件内部定义的对象或函数，则存在这样的风险，即它们将 **导致 Effect 过多地重新运行**。要解决这个问题，请删除不必要的 [对象](/reference/react/useEffect#removing-unnecessary-object-dependencies) 和 [函数](/reference/react/useEffect#removing-unnecessary-function-dependencies) 依赖项。你还可以 [抽离状态更新](/reference/react/useEffect#updating-state-based-on-previous-state-from-an-effect) 和 [非响应式的逻辑](/reference/react/useEffect#reading-the-latest-props-and-state-from-an-effect) 到 Effect 之外。
 
