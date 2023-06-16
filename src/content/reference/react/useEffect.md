@@ -108,7 +108,7 @@ function ChatRoom({ roomId }) {
 2. 重新渲染 <CodeStep step={3}>依赖项</CodeStep> 变更的组件后：
    - 首先，使用旧的 props 和 state 运行 <CodeStep step={2}>cleanup 代码</CodeStep>。
    - 然后，使用新的 props 和 state 运行 <CodeStep step={1}>setup 代码</CodeStep>。
-3. 在组件从页面删除 **（卸载）** 之后，<CodeStep step={2}>cleanup 代码</CodeStep> 将运行最后一次。
+3. 当组件从页面卸载后，<CodeStep step={2}>cleanup 代码</CodeStep> 将运行最后一次。
 
 **让我们为上面这个例子解释这个顺序**。  
 
