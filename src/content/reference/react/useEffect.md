@@ -1731,7 +1731,7 @@ function Page({ url, shoppingCart }) {
 
 ### 在服务器和客户端上显示不同的内容 {/*displaying-different-content-on-the-server-and-the-client*/}
 
-如果你的应用程序使用服务端（[直接](/reference/react-dom/server) 或通过 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks)）渲染，你的组件将会在两个不同的环境中渲染。在服务器上，它将渲染生成初始 HTML。在客户端，React 将再次运行渲染代码，以便将事件处理附加到该 HTML 上。这就是为什么要让 [水合作用](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) 发挥作用，你的初始渲染输出必须在客户端和服务器上完全相同的原因。
+如果你的应用程序使用服务端（[直接](/reference/react-dom/server) 或通过 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks)）渲染，你的组件将会在两个不同的环境中渲染。在服务器上，它将渲染生成初始 HTML。在客户端，React 将再次运行渲染代码，以便将事件处理附加到该 HTML 上。这就是为什么要让 [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) 发挥作用，你的初始渲染输出必须在客户端和服务器上完全相同的原因。
 
 在极少数情况下，你可能需要在客户端上显示不同的内容。例如，如果你的应用从 [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) 中读取某些数据，服务器上肯定不可能做到这一点。以下是这如何实现的：
 
