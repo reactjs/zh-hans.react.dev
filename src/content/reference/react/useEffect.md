@@ -134,7 +134,7 @@ Effect 可以让你的组件与某些外部系统（比如聊天服务）[保持
 
 #### 连接到聊天服务器 {/*connecting-to-a-chat-server*/}
 
-在这个示例中，`ChatRoom` 组件使用一个 Effect 来保持与 `chat.js` 中定义的外部系统的连接。点击“打开聊天”以显示 `ChatRoom` 组件。这个沙盒在开发模式下运行，因此有一个额外的 连接—断开 周期，就像 [这里描述的](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed)。尝试使用下拉菜单和输入框更改 `roomId` 和 `serverUrl`，并查看 Effect 如何重新连接到聊天。点击“关闭聊天”可以看到 Effect 最后一次断开连接。
+在这个示例中，`ChatRoom` 组件使用一个 Effect 来保持与 `chat.js` 中定义的外部系统的连接。点击“打开聊天”以显示 `ChatRoom` 组件。这个沙盒在开发模式下运行，因此有一个额外的“连接并断开”的周期，就像 [这里描述的](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) 一样。尝试使用下拉菜单和输入框更改 `roomId` 和 `serverUrl`，并查看 Effect 如何重新连接到聊天。点击“关闭聊天”可以看到 Effect 最后一次断开连接。
 
 <Sandpack>
 
