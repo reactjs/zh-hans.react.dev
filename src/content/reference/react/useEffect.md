@@ -1860,4 +1860,4 @@ useEffect(() => {
 
 ### 我的 Effect 做了一些视觉相关的事情，在它运行之前我看到了一个闪烁 {/*my-effect-does-something-visual-and-i-see-a-flicker-before-it-runs*/}
 
-如果你的 Effect 一定要阻止浏览器绘制屏幕，使用 [`useLayoutEffect`](/reference/react/useLayoutEffect) 替换 `useEffect`。请注意，**绝大多数的 Effect 都不需要这样**。只有当在浏览器绘制之前运行 Effect 非常重要的时候才需要如此：例如，在用户看到 tootip 之前测量和定位它。
+如果 Effect 一定要阻止浏览器绘制屏幕，使用 [`useLayoutEffect`](/reference/react/useLayoutEffect) 替换 `useEffect`。请注意，**绝大多数的 Effect 都不需要这样**。只有当在浏览器绘制之前运行 Effect 非常重要的时候才需要如此：例如，在用户看到 tooltip 之前测量并定位它。
