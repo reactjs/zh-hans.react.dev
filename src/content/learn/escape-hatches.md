@@ -54,7 +54,7 @@ export default function Counter() {
 
 </Sandpack>
 
-Ref 就像组件的一个不被 React 跟踪的秘密口袋。例如，你可以使用 ref 来存储 [超时 ID](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#return_value)、[DOM 元素](https://developer.mozilla.org/en-US/docs/Web/API/Element) 和其他不影响组件渲染输出的对象。
+Ref 就像组件的一个不被 React 跟踪的秘密口袋。例如，你可以使用 ref 来存储 [timeout ID](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#return_value)、[DOM 元素](https://developer.mozilla.org/en-US/docs/Web/API/Element) 和其他不影响组件渲染输出的对象。
 
 <LearnMore path="/learn/referencing-values-with-refs">
 
