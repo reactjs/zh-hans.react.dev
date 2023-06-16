@@ -1042,7 +1042,7 @@ export async function fetchBio(person) {
 - **Effect 不在服务器上运行**。这意味着初始服务器渲染的 HTML 将只包含没有数据的 loading 状态。客户端电脑将不得不下载所有的 JavaScript 并渲染你的应用程序，仅为了发现它现在需要加载数据。这并不高效。
 - **在 Effect 中直接请求数据很容易创建“网络瀑布”**。你渲染父组件，它请求一些数据，再渲染子组件, 然后它们请求它们的数据。如果网络不是很快，那么这比并行请求所有数据要慢得多。
 - **在 Effect 中直接请求数据通常意味着你不会预加载或缓存数据**。例如，如果组件卸载后重新挂载，它不得不再次请求数据。
-- **这不符合工效学**。 在编写 `fetch` 调用时，需要编写大量样板代码，以避免像 [竞争条件](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect) 这样的 bug。
+- **这不符合工效学**。在调用 `fetch` 时，需要编写大量样板代码，以避免像 [竞争条件](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect) 这样的 bug。
 
 这份缺点清单并不是针对 React 的。它适用于使用任何库在挂载时请求数据。与路由一样，要做好数据请求并非易事，因此我们推荐以下方法：
 
