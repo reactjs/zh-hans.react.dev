@@ -1031,7 +1031,7 @@ export async function fetchBio(person) {
 
 </Sandpack>
 
-直接在 Effect 中编写数据请求会显得重复，并且很难在以后添加缓存和服务端渲染等优化。[使用自定义 Hook 更简单—不管是你自己的 Hook 还是由社区维护的 Hook](/learn/reusing-logic-with-custom-hooks#when-to-use-custom-hooks)。
+直接在 Effect 中编写数据请求会显得重复，并且很难在以后添加缓存和服务端渲染等优化。[使用自定义 Hook 更简单——不管是你自己的 Hook 还是由社区维护的 Hook](/learn/reusing-logic-with-custom-hooks#when-to-use-custom-hooks)。
 
 <DeepDive>
 
