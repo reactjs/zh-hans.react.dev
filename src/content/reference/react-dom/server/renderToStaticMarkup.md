@@ -30,7 +30,7 @@ const html = renderToStaticMarkup(<Page />);
 
 它将会生成 React 组件的非交互式 HTML 输出。
 
-[请看下方更多示例。](#usage)
+[请看下方更多示例](#usage)。
 
 #### 参数 {/*parameters*/}
 
