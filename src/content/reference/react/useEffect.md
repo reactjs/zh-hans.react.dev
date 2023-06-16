@@ -104,7 +104,7 @@ function ChatRoom({ roomId }) {
 
 **React 在必要时会调用 setup 和 cleanup，这可能会发生多次**：
 
-1. 将组件添加到页面 **（挂载）** 时，将运行 <CodeStep step={1}>setup 代码</CodeStep>。
+1. 将组件挂载到页面时，将运行 <CodeStep step={1}>setup 代码</CodeStep>。
 2. 在 <CodeStep step={3}>依赖项</CodeStep> 发生变更的组件每次重新渲染之后：
    - 首先，使用旧的 props 和 state 运行 <CodeStep step={2}>cleanup 代码</CodeStep>。
    - 然后，使用新的 props 和 state 运行 <CodeStep step={1}>setup 代码</CodeStep>。
