@@ -66,7 +66,7 @@ app.use('/', (request, response) => {
 });
 ```
 
-这将生成 React 组件的非交互式 HTML 输出。
+这将会把 React 组件转换为非交互式 HTML 。
 
 <Pitfall>
 
