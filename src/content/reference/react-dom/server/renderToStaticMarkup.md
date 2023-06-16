@@ -70,7 +70,7 @@ app.use('/', (request, response) => {
 
 <Pitfall>
 
-此方法渲染的是 **非交互式的 HTML，无法进行二次渲染** 。如果你需要使用 React 作为简单静态页面生成器，或者需要呈现纯静态内容（例如邮件），则这种方法非常适用。
+此方法渲染的是 **无法进行二次渲染的非交互式 HTML**。如果你需要使用 React 作为简单静态页面生成器，或者需要呈现纯静态内容（例如邮件），则这种方法非常适用。
 
 对于交互式的应用程序，建议在服务器端使用 [`renderToString`](/reference/react-dom/server/renderToString) 方法，而在客户端上使用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 方法。
 
