@@ -366,7 +366,7 @@ html, body { min-height: 300px; }
 
 #### 控制模态对话框 {/*controlling-a-modal-dialog*/}
 
-在这个例子中，外部系统是浏览器 DOM。`ModalDialog` 组件渲染一个 [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) 元素。它使用一个 Effect 将 `isOpen` prop 同步到 [`showModal()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal) 和 [`close()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close) 方法调用。
+在这个例子中，外部系统是浏览器 DOM。`ModalDialog` 组件渲染一个 [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) 元素。它使用 Effect 将 `isOpen` prop 同步到 [`showModal()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal) 和 [`close()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close) 方法调用。
 
 <Sandpack>
 
