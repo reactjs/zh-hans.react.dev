@@ -29,7 +29,7 @@ title: 应急方案
 const ref = useRef(0);
 ```
 
-与状态一样，ref 在重新渲染之间由 React 保留。但是，设置状态会重新渲染组件。更改 ref 不会！你可以通过 `ref.current` 属性访问该 ref 的当前值。
+与状态一样，ref 在重新渲染之间由 React 保留。但是，设置状态会重新渲染组件，而更改 ref 不会！你可以通过 `ref.current` 属性访问该 ref 的当前值。
 
 <Sandpack>
 
