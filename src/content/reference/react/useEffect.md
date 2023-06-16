@@ -786,7 +786,7 @@ export function useIntersectionObserver(ref) {
 
 ### 控制非 React 小部件 {/*controlling-a-non-react-widget*/}
 
-有时，你希望外部系统与你组件的某些 prop 或 state 保持同步。
+有时，你希望外部系统与你组件的某些 props 或 state 保持同步。
 
 例如，如果你有一个没有使用 React 编写的第三方地图小部件或视频播放器组件，你可以使用一个 Effect 调用该组件上的方法，使其状态与 React 组件的当前状态相匹配。此 Effect 创建了在 `map-widget.js` 中定义的 `MapWidget` 类的实例。当你更改 `Map` 组件的 `zoomLevel` prop 时，Effect 调用类实例上的 `setZoom()` 来保持同步：
 
