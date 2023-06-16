@@ -1044,7 +1044,7 @@ export async function fetchBio(person) {
 - **在 Effect 中直接请求数据通常意味着你不会预加载或缓存数据**。例如，如果组件卸载后重新挂载，它不得不再次请求数据。
 - **这不符合工效学**。在调用 `fetch` 时，需要编写大量样板代码，以避免像 [竞争条件](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect) 这样的 bug。
 
-这份缺点清单并不是针对 React 的。它适用于使用任何库在挂载时请求数据。与路由一样，要做好数据请求并非易事，因此我们推荐以下方法：
+这些缺点并不仅仅体现在 React 上，它可能出现在所有挂载时请求数据的地方。与路由一样，要做好数据请求并非易事，因此我们推荐以下方法：
 
 - **如果使用 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks)，请使用其内置的数据请求机制**。现代的 React 框架集成了高效的数据请求机制，不会受到上述问题的影响。
 否则，请考虑使用或构建客户端缓存。流行的开源解决方案包括 [React Query](https://react-query.tanstack.com/)、[useSWR](https://swr.vercel.app/) 和 [React Router v6.4+](https://beta.reactrouter.com/en/main/start/overview)。你也可以构建自己的解决方案，在这种情况下，你可以在掌控下使用 Effect，但也要添加逻辑来处理重复的请求、缓存响应和避免“网络瀑布”（通过预加载数据或将数据需求提升到路由层面）。
