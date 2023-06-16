@@ -1763,7 +1763,7 @@ function MyComponent() {
 
 在开发环境下，如果开启严格模式，React 会在实际运行 setup 之前额外运行一次 setup 和 cleanup。
 
-这是一个压力测试，用于验证 Effect 的逻辑是否正确实现。如果出现可见问题，则 cleanup 函数缺少某些逻辑。cleanup 函数应该停止或撤消 setup 函数所做的任何操作。一般来说，用户不应该能够区分 setup 被调用一次（如在生产中）和调用 setup → cleanup → setup 序列（如在开发中）。
+这是一个压力测试，用于验证 Effect 的逻辑是否正确实现。如果出现可见问题，则 cleanup 函数缺少某些逻辑。cleanup 函数应该停止或撤消 setup 函数所做的任何操作。一般来说，用户不应该能够区分 setup 被调用一次（如在生产环境中）和调用 setup → cleanup → setup 序列（如在开发环境中）。
 
 阅读更多关于 [这如何帮助找到 bug](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) 和 [如何修复你的逻辑](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)。
 
