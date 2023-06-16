@@ -218,7 +218,7 @@ button { margin-left: 10px; }
 
 #### 监听全局的浏览器事件 {/*listening-to-a-global-browser-event*/}
 
-在这个例子中，外部系统就是浏览器 DOM 本身。通常，你会使用 JSX 指定事件监听，但是你不能以这种方式监听全局的 [`window`](https://developer.mozilla.org/en-US/docs/Web/API/Window) 对象。通过 Effect 可以使你连接到 `window` 对象并监听其事件。监听 `pointermove` 事件可以让你追踪光标（或手指）的位置，并更新红点以随之移动。
+在这个例子中，外部系统就是浏览器 DOM 本身。通常，你会使用 JSX 指定事件监听，但是你不能以这种方式监听全局的 [`window`](https://developer.mozilla.org/en-US/docs/Web/API/Window) 对象。你可以通过 Effect 连接到 `window` 对象并监听其事件。如监听 `pointermove` 事件可以让你追踪光标（或手指）的位置，并更新红点以随之移动。
 
 <Sandpack>
 
