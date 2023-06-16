@@ -426,7 +426,7 @@ body {
 
 #### 跟踪元素可见性 {/*tracking-element-visibility*/}
 
-在这个例子中，外部系统仍然是浏览器 DOM。`App` 组件展示一个长列表，然后是 `Box` 组件，然后是另一个长列表。向下滚动列表。请注意，当 `Box` 组件出现在视口中时，背景色会变成黑色。为了实现这一点，`Box` 组件使用一个 Effect 来管理一个 [`IntersectionObserver`](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)。这个浏览器 API 会在视口中出现该 DOM 元素时通知你。
+在这个例子中，外部系统仍然是浏览器 DOM。`App` 组件展示一个长列表，然后是 `Box` 组件，然后是另一个长列表。试试向下滚动列表。请注意，当 `Box` 组件出现在视野中时，背景色会变成黑色。为了实现这一点，`Box` 组件使用 Effect 来管理 [`IntersectionObserver`](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)。这个浏览器 API 会在视野中出现指定 DOM 元素时通知你。
 
 <Sandpack>
 
