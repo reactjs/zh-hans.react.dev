@@ -448,7 +448,7 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-这并不理想。仅当 `roomId` 已更改时，你才想重新连接到聊天。切换 `theme` 不应该重新连接到聊天！将读取 `theme` 的代码从 Effect 移到 **Effect Event** 中：
+这并不理想。因为仅当 `roomId` 已更改时，才想重新连接到聊天，所以切换 `theme` 不应该重新连接到聊天！考虑将读取 `theme` 的代码从 Effect 移到 **Effect Event** 中：
 
 <Sandpack>
 
