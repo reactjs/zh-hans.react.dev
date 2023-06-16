@@ -1037,7 +1037,7 @@ export async function fetchBio(person) {
 
 #### Effect 中的数据请求有什么好的替代方法 {/*what-are-good-alternatives-to-data-fetching-in-effects*/}
 
-在 Effect 中编写 `fetch` 调用是 [请求数据的一种流行方式](https://www.robinwieruch.de/react-hooks-fetch-data/)，特别是在完全的客户端应用程序中。然而，这是一种非常手动的方法，而且有很大的缺点：
+在 Effect 中使用 `fetch` 是 [请求数据的一种流行方式](https://www.robinwieruch.de/react-hooks-fetch-data/)，特别是在完全的客户端应用程序中。然而，这是一种非常手动的方法，而且有很大的缺点：
 
 - **Effect 不在服务器上运行**。这意味着初始服务器渲染的 HTML 将只包含没有数据的 loading 状态。客户端电脑将不得不下载所有的 JavaScript 并渲染你的应用程序，仅为了发现它现在需要加载数据。这并不高效。
 - **在 Effect 中直接请求数据很容易创建“网络瀑布”**。你渲染父组件，它请求一些数据，再渲染子组件, 然后它们请求它们的数据。如果网络不是很快，那么这比并行请求所有数据要慢得多。
