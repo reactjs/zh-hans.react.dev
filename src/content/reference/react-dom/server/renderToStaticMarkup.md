@@ -28,7 +28,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 const html = renderToStaticMarkup(<Page />);
 ```
 
-它将会生成 React 组件的非交互式 HTML 输出。
+它将会把 React 组件转换为非交互式 HTML 。
 
 [请看下方更多示例](#usage)。
 
