@@ -52,7 +52,8 @@ const html = renderToStaticMarkup(<Page />);
 
 ## 用法 {/*usage*/}
 
-### 将一个非交互式的 React 树作为 HTML 渲染成一个字符串 {/*rendering-a-non-interactive-react-tree-as-html-to-a-string*/}
+### 将一个非交互式的 React 树渲染成 HTML 字符串 {/*rendering-a-non-interactive-react-tree-as-html-to-a-string*/}
+``
 
 调用 `renderToStaticMarkup` 将你的应用程序渲染为 HTML 字符串，然后将其与服务器响应一起发送：
 
