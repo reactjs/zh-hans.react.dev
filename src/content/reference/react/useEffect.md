@@ -110,7 +110,7 @@ function ChatRoom({ roomId }) {
    - 然后，使用新的 props 和 state 运行 <CodeStep step={1}>setup 代码</CodeStep>。
 3. 当组件从页面卸载后，<CodeStep step={2}>cleanup 代码</CodeStep> 将运行最后一次。
 
-**让我们为上面这个例子解释这个顺序**。  
+**用上面的代码作为例子来解释这个顺序**。  
 
 当 `ChatRoom` 组件添加到页面中时，它将使用 `serverUrl` 和 `roomId` 初始值连接到聊天室。如果 `serverUrl` 或者 `roomId` 发生改变并导致重新渲染（比如用户在下拉列表中选择了一个不同的聊天室），那么 Effect 就会 **断开与前一个聊天室的连接，并连接到下一个聊天室**。当 `ChatRoom` 组件从页面中卸载时，你的 Effect 将最后一次断开连接。
 
