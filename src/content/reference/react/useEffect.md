@@ -1707,7 +1707,7 @@ function Page({ url, shoppingCart }) {
 }
 ```
 
-**如果你想在每次 `url` 更改后记录一次新的页面访问，而不是在 `shoppingCart` 更改后记录，该怎么办**？你不能在不违反 [响应规则](#specifying-reactive-dependencies) 的情况下将 `shoppingCart` 从依赖项中移除。然而，你可以表达你 **不希望** 某些代码对更改做出“响应”，即使它是在 Effect 内部调用的。使用 [`useEffectEvent`](/reference/react/experimental_useEffectEvent) Hook [声明一个 **Effect 事件**](/learn/separating-events-from-effects#declaring-an-effect-event)，并将读取 `shoppingCart` 的代码移入其中：
+**如果你想在每次 `url` 更改后记录一次新的页面访问，而不是在 `shoppingCart` 更改后记录，该怎么办**？你不能在不违反 [响应规则](#specifying-reactive-dependencies) 的情况下将 `shoppingCart` 从依赖项中移除。然而，你可以表达你 **不希望** 某些代码对更改做出“响应”，即使它是在 Effect 内部调用的。使用 [`useEffectEvent`](/reference/react/experimental_useEffectEvent) Hook [声明 **Effect 事件**](/learn/separating-events-from-effects#declaring-an-effect-event)，并将读取 `shoppingCart` 的代码移入其中：
 
 ```js {2-4,7,8}
 function Page({ url, shoppingCart }) {
