@@ -116,7 +116,7 @@ function ChatRoom({ roomId }) {
 
 **为了 [帮助你发现 bug](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed)，在开发环境下，React 在运行 <CodeStep step={1}>setup</CodeStep> 之前会额外运行一次<CodeStep step={1}>setup</CodeStep> 和 <CodeStep step={2}>cleanup</CodeStep>**。这是一个压力测试，用于验证 Effect 逻辑是否正确实现。如果这会导致可见的问题，那么你的 cleanup 函数就缺少一些逻辑。cleanup 函数应该停止或撤消 setup 函数正在执行的任何操作。一般来说，用户不应该能够区分只调用一次 setup（在生产环境中）与调用 *setup* → *cleanup* → *setup* 序列（在开发环境中）。[查看常见解决方案](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)。
 
-**尽量 [将每个 Effect 作为一个独立的过程编写](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process)，并且 [每次只考虑一个单独的 setup/cleanup 周期](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective)**。组件是否正在挂载、更新或卸载并不重要。当你的 cleanup 逻辑正确地 “映射” 到 setup 逻辑时，你的 Effect 是可复原的，因此可以根据需要多次运行 setup 和 cleanup。
+**尽量 [将每个 Effect 作为一个独立的过程编写](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process)，并且 [每次只考虑一个单独的 setup/cleanup 周期](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective)**。组件是否正在挂载、更新或卸载并不重要。当你的 cleanup 逻辑正确地“映射”到 setup 逻辑时，你的 Effect 是可复原的，因此可以根据需要多次运行 setup 和 cleanup 函数。
 
 <Note>
 
