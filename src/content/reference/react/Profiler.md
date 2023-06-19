@@ -62,7 +62,7 @@ function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime
 
 ---
 
-## 使用方法 {/*usage*/}
+## 用法 {/*usage*/}
 
 ### 以编程的方式测量渲染性能 {/*measuring-rendering-performance-programmatically*/}
 
