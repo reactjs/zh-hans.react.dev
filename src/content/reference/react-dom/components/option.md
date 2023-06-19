@@ -56,7 +56,7 @@ title: "<option>"
 
 渲染一个包含一系列 `<option>` 组件的 `<select>`，来展示一个选择框。给每个 `<option>` 都设置一个 `value` 属性，表示要与表单一起提交的数据。
 
-在这里了解更多关于 [如何展示一个包含一系列 `<option>` 组件的 `<select>`](/reference/react-dom/components/select#displaying-a-select-box-with-options) 的信息。
+在这里了解更多关于 [如何展示一个包含一系列 `<option>` 组件的 `<select>`](/reference/react-dom/components/select) 的信息。
 
 <Sandpack>
 
