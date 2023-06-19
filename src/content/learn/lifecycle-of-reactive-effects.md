@@ -78,7 +78,7 @@ function ChatRoom({ roomId }) {
 
 <Note>
 
-有些 Effect 根本不返回清理函数。[在大多数情况下](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)，你可能希望返回一个清理函数，但如果没有返回，React将表现得好像你返回了一个空的清理函数。
+有些 Effect 根本不返回清理函数。 [在大多数情况下](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development) ，你可能希望返回一个清理函数，但如果没有返回，React将表现得好像你返回了一个空的清理函数。
 
 </Note>
 
@@ -111,7 +111,7 @@ function ChatRoom({ roomId /* "所有" */ }) {
 
 到目前为止，一切都很顺利。
 
-之后，用户在下拉菜单中选择了不同的房间（例如 `"旅游"`）。首先，React会更新 UI：
+之后，用户在下拉菜单中选择了不同的房间（例如 `"旅游"` ）。首先，React会更新 UI：
 
 ```js {1}
 function ChatRoom({ roomId /* "旅游" */ }) {
@@ -120,7 +120,7 @@ function ChatRoom({ roomId /* "旅游" */ }) {
 }
 ```
 
-思考接下来应该发生什么。用户在界面中看到 `"旅游"` 是当前选定的聊天室。然而，上次运行的 Effect 仍然连接到 `"所有"` 聊天室。**`roomId` 属性已经发生了变化，所以之前 Effect 所做的事情（连接到 `"所有"` 聊天室）不再与 UI 匹配。**
+思考接下来应该发生什么。用户在界面中看到 `"旅游"` 是当前选定的聊天室。然而，上次运行的 Effect 仍然连接到 `"所有"` 聊天室。**`roomId` 属性已经发生了变化，所以之前 Effect 所做的事情（连接到 `"所有"` 聊天室）不再与 UI 匹配**。
 
 此时，你希望React执行两个操作：
 
