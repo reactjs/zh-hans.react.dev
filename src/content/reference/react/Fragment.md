@@ -37,7 +37,7 @@ title: <Fragment> (<>...</>)
 
 ---
 
-## 用例 {/*usage*/}
+## 用法 {/*usage*/}
 
 ### 返回多个元素 {/*returning-multiple-elements*/}
 
