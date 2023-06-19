@@ -36,8 +36,8 @@ Effect 是 React 范式中的一个逃脱方案。它们让你可以 “逃出�
 
 ```js {5-9}
 function Form() {
-  const [firstName, setFirstName] = useState('泰勒');
-  const [lastName, setLastName] = useState('斯威夫特');
+  const [firstName, setFirstName] = useState('Taylor');
+  const [lastName, setLastName] = useState('Swift');
 
   // 🔴 避免：多余的 state 和不必要的 Effect
   const [fullName, setFullName] = useState('');
@@ -52,8 +52,8 @@ function Form() {
 
 ```js {4-5}
 function Form() {
-  const [firstName, setFirstName] = useState('泰勒');
-  const [lastName, setLastName] = useState('斯威夫特');
+  const [firstName, setFirstName] = useState('Taylor');
+  const [lastName, setLastName] = useState('Swift');
   // ✅ 非常好：在渲染期间进行计算
   const fullName = firstName + ' ' + lastName;
   // ...
@@ -1324,9 +1324,9 @@ export default function ContactManager() {
 }
 
 const initialContacts = [
-  { id: 0, name: '泰勒', email: 'taylor@mail.com' },
-  { id: 1, name: '爱丽丝', email: 'alice@mail.com' },
-  { id: 2, name: '鲍勃', email: 'bob@mail.com' }
+  { id: 0, name: 'Taylor', email: 'taylor@mail.com' },
+  { id: 1, name: 'Alice', email: 'alice@mail.com' },
+  { id: 2, name: 'Bob', email: 'bob@mail.com' }
 ];
 ```
 
@@ -1488,9 +1488,9 @@ export default function ContactManager() {
 }
 
 const initialContacts = [
-  { id: 0, name: '泰勒', email: 'taylor@mail.com' },
-  { id: 1, name: '爱丽丝', email: 'alice@mail.com' },
-  { id: 2, name: '鲍勃', email: 'bob@mail.com' }
+  { id: 0, name: 'Taylor', email: 'taylor@mail.com' },
+  { id: 1, name: 'Alice', email: 'alice@mail.com' },
+  { id: 2, name: 'Bob', email: 'bob@mail.com' }
 ];
 ```
 
