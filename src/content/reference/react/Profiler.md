@@ -4,7 +4,7 @@ title: <Profiler>
 
 <Intro>
 
-`<Profiler>` 允许你以编程的方式测量 React 树的渲染性能。
+`<Profiler>` 允许你编程时测量 React 树的渲染性能。
 
 ```js
 <Profiler id="App" onRender={onRender}>
