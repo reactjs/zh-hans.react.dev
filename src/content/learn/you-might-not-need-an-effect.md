@@ -80,7 +80,7 @@ function TodoList({ todos, filter }) {
 }
 ```
 
-就像之前的例子一样，这即没有必要，也很低效。首先，移除 state 和 Effect：
+就像之前的例子一样，这既没有必要，也很低效。首先，移除 state 和 Effect：
 
 ```js {3-4}
 function TodoList({ todos, filter }) {
