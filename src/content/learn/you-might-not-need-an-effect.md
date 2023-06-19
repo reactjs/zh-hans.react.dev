@@ -305,7 +305,7 @@ function ProductPage({ product, addToCart }) {
 
 ### 发送 POST 请求 {/*sending-a-post-request*/}
 
-这个 `Form` 组件会发送两种 POST 请求。它在页面加载之际会发送一个分析请求。当你填写表格并点击 `提交` 按钮时，它会向 `/api/register` 接口发送一个 POST 请求：
+这个 `Form` 组件会发送两种 POST 请求。它在页面加载之际会发送一个分析请求。当你填写表格并点击提交按钮时，它会向 `/api/register` 接口发送一个 POST 请求：
 
 ```js {5-8,10-16}
 function Form() {
