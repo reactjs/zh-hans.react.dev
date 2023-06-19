@@ -866,30 +866,30 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-In the sandbox above, the input only updates the `message` state variable. From the user's perspective, this should not affect the chat connection. However, every time you update the `message`, your component re-renders. When your component re-renders, the code inside of it runs again from scratch.
+上面的沙盒输入框只更新了 state 变量 `message`。从用户角度来看，这不应该影响到聊天连接。但是每当你更新 `message`，组件就会重新渲染。而当组件重新渲染时，内部的代码又会重新开始。
 
-A new `options` object is created from scratch on every re-render of the `ChatRoom` component. React sees that the `options` object is a *different object* from the `options` object created during the last render. This is why it re-synchronizes your Effect (which depends on `options`), and the chat re-connects as you type.
+每次重新渲染 `ChatRoom` 组件都会创建一个新的 `options` 对象。React 认为本次渲染期间创建的 `options` 和上一次渲染期间创建的 `options` 是 **不一样的**。这就是为什么你的 Effect（依赖于 `options`）重新渲染，并且当你输入的时候聊天会重新连接。
 
-**This problem only affects objects and functions. In JavaScript, each newly created object and function is considered distinct from all the others. It doesn't matter that the contents inside of them may be the same!**
+**这个问题只影响对象和函数。在 JavaScript 中，每一个新创建的对象和函数都被认为是和其他的对象和函数不一样。内部的内容是否相同并不会影响这一结果！**
 
 ```js {7-8}
-// During the first render
+// 第一次渲染期间
 const options1 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
 
-// During the next render
+// 第二次渲染期间
 const options2 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
 
-// These are two different objects!
+// 这是两个不同的对象！
 console.log(Object.is(options1, options2)); // false
 ```
 
-**Object and function dependencies can make your Effect re-synchronize more often than you need.** 
+**对象和函数依赖让 Effect 的重新同步频率高于你的需求**。
 
-This is why, whenever possible, you should try to avoid objects and functions as your Effect's dependencies. Instead, try moving them outside the component, inside the Effect, or extracting primitive values out of them.
+这就是为什么你应该尽可能避免将对象和函数作为 Effect 的依赖项。而是应该尝试将它们移动到组件外部，移入 Effect 内部或者从中提取初始值。
 
-#### Move static objects and functions outside your component {/*move-static-objects-and-functions-outside-your-component*/}
+#### 从组件中移出静态对象和函数 {/*move-static-objects-and-functions-outside-your-component*/}
 
-If the object does not depend on any props and state, you can move that object outside your component:
+如果这个对象不依赖于任何 props 和 state，你就可以将它们从组件中移出去：
 
 ```js {1-4,13}
 const options = {
@@ -908,9 +908,9 @@ function ChatRoom() {
   // ...
 ```
 
-This way, you *prove* to the linter that it's not reactive. It can't change as a result of a re-render, so it doesn't need to be a dependency. Now re-rendering `ChatRoom` won't cause your Effect to re-synchronize.
+这样，你就可以向代码检查工具“证明”它不是响应式的。它不会因为重新渲染而变化，所以它不需要成为依赖项之一。现在重新渲染 `ChatRoom` 组件将不会让 Effect 重新同步。
 
-This works for functions too:
+这对函数也有用：
 
 ```js {1-6,12}
 function createOptions() {
@@ -932,11 +932,11 @@ function ChatRoom() {
   // ...
 ```
 
-Since `createOptions` is declared outside your component, it's not a reactive value. This is why it doesn't need to be specified in your Effect's dependencies, and why it won't ever cause your Effect to re-synchronize.
+因为 `createOptions` 是在组件外部声明的，所以它不是响应式值。这就是为什么它不需要被指定为 Effect 的依赖项，并且不会引起 Effect 重新同步。
 
-#### Move dynamic objects and functions inside your Effect {/*move-dynamic-objects-and-functions-inside-your-effect*/}
+#### 将动态对象和函数移入 Effect {/*move-dynamic-objects-and-functions-inside-your-effect*/}
 
-If your object depends on some reactive value that may change as a result of a re-render, like a `roomId` prop, you can't pull it *outside* your component. You can, however, move its creation *inside* of your Effect's code:
+如果你的对象依赖于某些像 `roomId` prop 这样会因为重新渲染而变化的响应式值，你就不能将它移动到组件 **外部**。但是你可以将它的创建移动到 Effect 代码的内部：
 
 ```js {7-10,11,14}
 const serverUrl = 'https://localhost:1234';
@@ -956,20 +956,20 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-Now that `options` is declared inside of your Effect, it is no longer a dependency of your Effect. Instead, the only reactive value used by your Effect is `roomId`. Since `roomId` is not an object or function, you can be sure that it won't be *unintentionally* different. In JavaScript, numbers and strings are compared by their content:
+既然 `options` 是在 Effect 内部声明的，它就不再是依赖项了。而 Effect 唯一使用的响应式值是 `roomId`。因为 `roomId` 不是对象或者函数，你可以确保它不会有 **不符合预期的** 不同。在 JavaScript 中，number 和  string 是通过内容进行比较的：
 
 ```js {7-8}
-// During the first render
+// 第一次渲染期间
 const roomId1 = 'music';
 
-// During the next render
+// 第二次渲染期间
 const roomId2 = 'music';
 
-// These two strings are the same!
+// 这两个字符串是一样的！
 console.log(Object.is(roomId1, roomId2)); // true
 ```
 
-Thanks to this fix, the chat no longer re-connects if you edit the input:
+由于这个修复，如果你再修改输入值，聊天不会再重新连接了：
 
 <Sandpack>
 
@@ -1024,7 +1024,7 @@ export default function App() {
 
 ```js chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 真正的实现会真的连接服务器
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -1043,9 +1043,9 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-However, it *does* re-connect when you change the `roomId` dropdown, as you would expect.
+但是当你修改 `roomId` 时，**还是** 会和预期的一样重新连接。
 
-This works for functions, too:
+这对函数也有效：
 
 ```js {7-12,14}
 const serverUrl = 'https://localhost:1234';
@@ -1069,11 +1069,11 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-You can write your own functions to group pieces of logic inside your Effect. As long as you also declare them *inside* your Effect, they're not reactive values, and so they don't need to be dependencies of your Effect.
+你可以写自己的函数来对 Effect 内部的逻辑进行分组。只要你还在 Effect **内部** 声明了它们，就不是响应式值，所以也不需要成为 Effect 的依赖项。
 
-#### Read primitive values from objects {/*read-primitive-values-from-objects*/}
+#### 从对象中读取基本值 {/*read-primitive-values-from-objects*/}
 
-Sometimes, you may receive an object from props:
+有时候你可能会从 props 中接收到一个对象：
 
 ```js {1,5,8}
 function ChatRoom({ options }) {
@@ -1087,7 +1087,7 @@ function ChatRoom({ options }) {
   // ...
 ```
 
-The risk here is that the parent component will create the object during rendering:
+这里的风险在于父组件会在渲染期间创建这个对象：
 
 ```js {3-6}
 <ChatRoom
@@ -1099,7 +1099,7 @@ The risk here is that the parent component will create the object during renderi
 />
 ```
 
-This would cause your Effect to re-connect every time the parent component re-renders. To fix this, read information from the object *outside* the Effect, and avoid having object and function dependencies:
+这会导致 Effect 会在每次父组件重新渲染时重新连接。为了修复这个问题，从 Effect **外部** 的对象读取信息，并且避免拥有对象和函数依赖：
 
 ```js {4,7-8,12}
 function ChatRoom({ options }) {
@@ -1117,11 +1117,11 @@ function ChatRoom({ options }) {
   // ...
 ```
 
-The logic gets a little repetitive (you read some values from an object outside an Effect, and then create an object with the same values inside the Effect). But it makes it very explicit what information your Effect *actually* depends on. If an object is re-created unintentionally by the parent component, the chat would not re-connect. However, if `options.roomId` or `options.serverUrl` really are different, the chat would re-connect.
+这段逻辑有一点重复了（你从 Effect 外部读取了某些值，然后在内部又创建了一个有同样值的对象）。但是它会明确 Effect **实际** 依赖的是什么。如果父组件意外地重新创建了一个对象，聊天也不会重新连接。但是如果 `options.roomId` 或者 `options.serverUrl` 真的变化了，聊天就会重新连接。
 
-#### Calculate primitive values from functions {/*calculate-primitive-values-from-functions*/}
+#### 通过函数计算基本值 {/*calculate-primitive-values-from-functions*/}
 
-The same approach can work for functions. For example, suppose the parent component passes a function:
+同样的方法对函数也有效。例如假设父组件传递了一个函数：
 
 ```js {3-8}
 <ChatRoom
@@ -1135,7 +1135,7 @@ The same approach can work for functions. For example, suppose the parent compon
 />
 ```
 
-To avoid making it a dependency (and causing it to re-connect on re-renders), call it outside the Effect. This gives you the `roomId` and `serverUrl` values that aren't objects, and that you can read from inside your Effect:
+为了避免让它成为依赖项（会导致聊天在重新渲染中重新连接），而是在 Effect 外部调用。这会给你一个非对象的 `roomId` 和 `serverUrl` 值，并且你可以从 Effect 内部读取这个值：
 
 ```js {1,4}
 function ChatRoom({ getOptions }) {
@@ -1153,32 +1153,32 @@ function ChatRoom({ getOptions }) {
   // ...
 ```
 
-This only works for [pure](/learn/keeping-components-pure) functions because they are safe to call during rendering. If your function is an event handler, but you don't want its changes to re-synchronize your Effect, [wrap it into an Effect Event instead.](#do-you-want-to-read-a-value-without-reacting-to-its-changes)
+这只对 [纯](/learn/keeping-components-pure) 函数有效，因为他们在渲染期间调用是安全的。如果你的函数是一个事件处理函数，但是你不想它的变化重新同步  Effect，[那就把它封装进一个 Effect Event](#do-you-want-to-read-a-value-without-reacting-to-its-changes)。
 
 <Recap>
 
-- Dependencies should always match the code.
-- When you're not happy with your dependencies, what you need to edit is the code.
-- Suppressing the linter leads to very confusing bugs, and you should always avoid it.
-- To remove a dependency, you need to "prove" to the linter that it's not necessary.
-- If some code should run in response to a specific interaction, move that code to an event handler.
-- If different parts of your Effect should re-run for different reasons, split it into several Effects.
-- If you want to update some state based on the previous state, pass an updater function.
-- If you want to read the latest value without "reacting" it, extract an Effect Event from your Effect.
-- In JavaScript, objects and functions are considered different if they were created at different times.
-- Try to avoid object and function dependencies. Move them outside the component or inside the Effect.
+- 依赖应该永远和代码匹配。
+- 当你不满意依赖项时，你需要做的就是修改代码。
+- 抑制代码检查工具会引起令人疑惑的 bug，你应该永远避免这种行为。
+- 为了移除依赖项，你需要向代码检查工具“证明”它不是必要的。
+- 如果一些代码应该只在特定交互的时候运行，那就将这段代码移动到事件处理函数。
+- 如果你的 Effect 中部分代码需要因为不同的原因重新运行，那你需要将它分割成若干个 Effect。
+- 如果你想要更新一些基于之前 state 值的state，那就传递一个更新函数。
+- 如果你想要读取最新的值而不用对它“做出响应”，那就从你的 Effect 中提取出一个 Effect Event 。
+- 在 JavaScript 中，对象和函数如果是在不同时间创建的就会被认为是不一样的。
+- 尝试避免对象和函数依赖。把它们移动到组件外部或者 Effect 内部。
 
 </Recap>
 
 <Challenges>
 
-#### Fix a resetting interval {/*fix-a-resetting-interval*/}
+#### 修复重置时间间隔 {/*fix-a-resetting-interval*/}
 
-This Effect sets up an interval that ticks every second. You've noticed something strange happening: it seems like the interval gets destroyed and re-created every time it ticks. Fix the code so that the interval doesn't get constantly re-created.
+这个 Effect 设置了一个每秒 tick 一次的时间间隔。你已经注意到发生了一些奇怪的现象：每次 tick 的时候看上去像 interval 被销毁又被重新创建。修复这段代码，这样不会一直重新创建 interval。
 
 <Hint>
 
-It seems like this Effect's code depends on `count`. Is there some way to not need this dependency? There should be a way to update the `count` state based on its previous value without adding a dependency on that value.
+这个 Effect 的代码似乎依赖于 `count`。有什么方法可以不需要这个依赖吗？应该有一个方法可以基于之前的值更新 `count` state，而不需要将这个值添加为依赖项。
 
 </Hint>
 
@@ -1210,9 +1210,9 @@ export default function Timer() {
 
 <Solution>
 
-You want to update the `count` state to be `count + 1` from inside the Effect. However, this makes your Effect depend on `count`, which changes with every tick, and that's why your interval gets re-created on every tick.
+你想要在 Effect 内部将 `count` state 更新为 `count + 1` 。但是这会让你的 Effect 依赖于 `count`，它每次 tick 的时候都会变化，这也是为什么每一个 tick 你的 interval 都会被重新创建的原因。
 
-To solve this, use the [updater function](/reference/react/useState#updating-state-based-on-the-previous-state) and write `setCount(c => c + 1)` instead of `setCount(count + 1)`:
+为了解决这个问题，我们使用 [更新函数](/reference/react/useState#updating-state-based-on-the-previous-state) 并且编写时使用 `setCount(count + 1)` 代替 `setCount(c => c + 1)`：
 
 <Sandpack>
 
@@ -1240,19 +1240,19 @@ export default function Timer() {
 
 </Sandpack>
 
-Instead of reading `count` inside the Effect, you pass a `c => c + 1` instruction ("increment this number!") to React. React will apply it on the next render. And since you don't need to read the value of `count` inside your Effect anymore, so you can keep your Effect's dependencies empty (`[]`). This prevents your Effect from re-creating the interval on every tick.
+你传递了一个 `c => c + 1` 指令（“增加这个数字！”）给 React，而不是在 Effect 内部读取 `count`。React 将在下一次渲染中使用。并且因为你不再需要在 Effect 内部读取 `count` 的值，所以可以保持 Effect 依赖为空 (`[]`)。这会阻止 Effect 在每一次的 tick 中重新创建 interval。
 
 </Solution>
 
-#### Fix a retriggering animation {/*fix-a-retriggering-animation*/}
+#### 修复一个重新触发动画 {/*fix-a-retriggering-animation*/}
 
-In this example, when you press "Show", a welcome message fades in. The animation takes a second. When you press "Remove", the welcome message immediately disappears. The logic for the fade-in animation is implemented in the `animation.js` file as plain JavaScript [animation loop.](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) You don't need to change that logic. You can treat it as a third-party library. Your Effect creates an instance of `FadeInAnimation` for the DOM node, and then calls `start(duration)` or `stop()` to control the animation. The `duration` is controlled by a slider. Adjust the slider and see how the animation changes.
+在这个示例中，当你点击“Show”，一个欢迎信息会淡入式出现。这个动画需要 １ 秒钟。当你点击“Remove”，欢迎信息会立刻消失。渐入动画的逻辑在 `animation.js` 文件中以普通的 JavaScript [动画循环](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) 实现。你不需要修改这段逻辑。可以将它看作是第三方库。Effect 为 DOM 节点创建了 `FadeInAnimation` 实例,然后调用 `start(duration)` 或者 `stop()` 来控制动画。`duration` 由一个滑块控制。调整滑块看动画如何变化。
 
-This code already works, but there is something you want to change. Currently, when you move the slider that controls the `duration` state variable, it retriggers the animation. Change the behavior so that the Effect does not "react" to the `duration` variable. When you press "Show", the Effect should use the current `duration` on the slider. However, moving the slider itself should not by itself retrigger the animation.
+这段代码已经达到目的了，但是你需要修改一些东西。当你现在移动 state 变量 `duration` 控制滑块时，它会重新触发动画。修改这个行为，让 Effect 不会对 `duration` 变量的变化“做出响应”。当你按“Show”, Effect 应该使用滑块当前的 `duration`。但是单独移动滑块本身不应该重新触发动画。
 
 <Hint>
 
-Is there a line of code inside the Effect that should not be reactive? How can you move non-reactive code out of the Effect?
+这个 Effect 有代码不应该是响应式的吗？如何从 Effect 中移出非响应式代码呢？
 
 </Hint>
 
@@ -1342,11 +1342,11 @@ export class FadeInAnimation {
   start(duration) {
     this.duration = duration;
     if (this.duration === 0) {
-      // Jump to end immediately
+      // 立刻跳转到结束
       this.onProgress(1);
     } else {
       this.onProgress(0);
-      // Start animating
+      // 开始动画
       this.startTime = performance.now();
       this.frameId = requestAnimationFrame(() => this.onFrame());
     }
@@ -1356,7 +1356,7 @@ export class FadeInAnimation {
     const progress = Math.min(timePassed / this.duration, 1);
     this.onProgress(progress);
     if (progress < 1) {
-      // We still have more frames to paint
+      // 我们仍然有更多的帧需要绘制
       this.frameId = requestAnimationFrame(() => this.onFrame());
     }
   }
@@ -1381,7 +1381,7 @@ html, body { min-height: 300px; }
 
 <Solution>
 
-Your Effect needs to read the latest value of `duration`, but you don't want it to "react" to changes in `duration`. You use `duration` to start the animation, but starting animation isn't reactive. Extract the non-reactive line of code into an Effect Event, and call that function from your Effect.
+你的 Effect 需要读取 `duration` 的最新值，但你不想要对 `duration` 的变化做出响应。你用 `duration` 启动动画，但是启动动画不是响应式的。所以需要提取非响应式代码到 Effect Event，并且在你的 Effect 中调用这个函数。
 
 <Sandpack>
 
@@ -1481,7 +1481,7 @@ export class FadeInAnimation {
     const progress = Math.min(timePassed / this.duration, 1);
     this.onProgress(progress);
     if (progress < 1) {
-      // We still have more frames to paint
+      //我们仍还有更多的帧需要绘制
       this.frameId = requestAnimationFrame(() => this.onFrame());
     }
   }
@@ -1504,19 +1504,19 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-Effect Events like `onAppear` are not reactive, so you can read `duration` inside without retriggering the animation.
+像 `onAppear` 这样的 Effect Event 是非响应式的，所以你可以在不重新触发动画的情况下读取到内部的 `duration`。
 
 </Solution>
 
-#### Fix a reconnecting chat {/*fix-a-reconnecting-chat*/}
+#### 修复一个聊天重新连接问题 {/*fix-a-reconnecting-chat*/}
 
-In this example, every time you press "Toggle theme", the chat re-connects. Why does this happen? Fix the mistake so that the chat re-connects only when you edit the Server URL or choose a different chat room.
+在这个示例中，每次你按压 “Toggle theme”，聊天就会重新连接。为什么会这样呢？修复这个错误，让它只在你修改 Server URL 或选择不同聊天室的时候重新连接。
 
-Treat `chat.js` as an external third-party library: you can consult it to check its API, but don't edit it.
+将 `chat.js` 看成是一个外部的第三方库：你可以查询它的 API，但不可以修改。
 
 <Hint>
 
-There's more than one way to fix this, but ultimately you want to avoid having an object as your dependency.
+有不止一个方法修复这个问题，但是最终你需要避免将一个对象作为依赖项。
 
 </Hint>
 
@@ -1583,7 +1583,7 @@ export default function ChatRoom({ options }) {
 
 ```js chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 真正的实现会实际连接到服务器
   if (typeof serverUrl !== 'string') {
     throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
   }
@@ -1610,9 +1610,9 @@ label, button { display: block; margin-bottom: 5px; }
 
 <Solution>
 
-Your Effect is re-running because it depends on the `options` object. Objects can be re-created unintentionally, you should try to avoid them as dependencies of your Effects whenever possible.
+你的 Effect 由于依赖 `options` 对象所以正在重新运行。对象可以意外被创建，你应该尽可能避免用它们作为 Effect 的依赖项。
 
-The least invasive fix is to read `roomId` and `serverUrl` right outside the Effect, and then make the Effect depend on those primitive values (which can't change unintentionally). Inside the Effect, create an object and it pass to `createConnection`:
+侵入性最小的修复方案是在 Effect 外部读取 `roomId` 和 `serverUrl`，然后使得这个 Effect 依赖于这些基本值（不会意外被修改）。在 Effect 内部创建一个对象并传递给 `createConnection`：
 
 <Sandpack>
 
@@ -1681,7 +1681,7 @@ export default function ChatRoom({ options }) {
 
 ```js chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 真正的实现会实际连接到服务器
   if (typeof serverUrl !== 'string') {
     throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
   }
@@ -1706,7 +1706,7 @@ label, button { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-It would be even better to replace the object `options` prop with the more specific `roomId` and `serverUrl` props:
+更好的方法是使用更多指定的 `roomId` 和 `serverUrl` props 来取代对象类型的 `options` prop： 
 
 <Sandpack>
 
@@ -1772,7 +1772,7 @@ export default function ChatRoom({ roomId, serverUrl }) {
 
 ```js chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 真正的实现会实际连接到服务器
   if (typeof serverUrl !== 'string') {
     throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
   }
@@ -1797,25 +1797,25 @@ label, button { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-Sticking to primitive props where possible makes it easier to optimize your components later.
+尽可能坚持使用基本类型的 props 会让之后的组件优化更加容易。
 
 </Solution>
 
-#### Fix a reconnecting chat, again {/*fix-a-reconnecting-chat-again*/}
+#### 再次修复一个聊天重新连接问题 {/*fix-a-reconnecting-chat-again*/}
 
-This example connects to the chat either with or without encryption. Toggle the checkbox and notice the different messages in the console when the encryption is on and off. Try changing the room. Then, try toggling the theme. When you're connected to a chat room, you will receive new messages every few seconds. Verify that their color matches the theme you've picked.
+这个示例使用加密或非加密形式连接到聊天室。切换复选框并且注意当加密为 on 和 off 时 console 中的不同信息。尝试修改聊天室。然后切换主题。当你连接到一个聊天室，你将每隔几秒就会收到一条新的信息。验证他们的颜色是否和你选择的主题匹配。
 
-In this example, the chat re-connects every time you try to change the theme. Fix this. After the fix, changing the theme should not re-connect the chat, but toggling encryption settings or changing the room should re-connect.
+在这个示例中，每当你试图修改主题，聊天就会重新连接。修复这个问题。修复结束之后，主题变化应该不会使得聊天重新连接，但是切换加密设置或者变更聊天室应该使聊天重新连接。
 
-Don't change any code in `chat.js`. Other than that, you can change any code as long as it results in the same behavior. For example, you may find it helpful to change which props are being passed down.
+不要修改 `chat.js` 中的任何代码。除此之外，你可以修改任何会导致同样行为的代码。例如，你可能发现修改正在传递的 props 会有帮助。
 
 <Hint>
 
-You're passing down two functions: `onMessage` and `createConnection`. Both of them are created from scratch every time `App` re-renders. They are considered to be new values every time, which is why they re-trigger your Effect.
+你正在传递两个函数： `onMessage` 和 `createConnection`。这两个函数都是每次 `App` 重新渲染的时候重新创建的。它们每次都被认为是新的值，这就是会重新触发 Effect 的原因。
 
-One of these functions is an event handler. Do you know some way to call an event handler an Effect without "reacting" to the new values of the event handler function? That would come in handy!
+这些函数之一是事件处理函数。你知道哪些方法可以在 Effect 中调用事件处理函数而不对事件处理函数的新值“做出响应”吗？这会派上用场！
 
-Another of these functions only exists to pass some state to an imported API method. Is this function really necessary? What is the essential information that's being passed down? You might need to move some imports from `App.js` to `ChatRoom.js`.
+其中另一个函数仅用于将某些 state 传递给导入的 API 方法。这个函数真的有必要吗？正在传递的基本信息是什么？你可能需要将某些导入从 `App.js` 移动到 `ChatRoom.js`。
 
 </Hint>
 
@@ -2030,11 +2030,11 @@ label, button { display: block; margin-bottom: 5px; }
 
 <Solution>
 
-There's more than one correct way to solve this, but here is one possible solution.
+解决这个问题的正确方法不止这一种，但是这里只给出了一个可能的解决方案。
 
-In the original example, toggling the theme caused different `onMessage` and `createConnection` functions to be created and passed down. Since the Effect depended on these functions, the chat would re-connect every time you toggle the theme.
+在原来的代码中，切换主题会导致重新创建和传递不同的 `onMessage` 和 `createConnection` 函数。因为 Effect 依赖于这些函数，所以每次切换主题，聊天都会重新连接。
 
-To fix the problem with `onMessage`, you needed to wrap it into an Effect Event:
+为了修复 `onMessage` 这个问题，你需要将其封装进一个 Effect Event：
 
 ```js {1,2,6}
 export default function ChatRoom({ roomId, createConnection, onMessage }) {
@@ -2046,9 +2046,9 @@ export default function ChatRoom({ roomId, createConnection, onMessage }) {
     // ...
 ```
 
-Unlike the `onMessage` prop, the `onReceiveMessage` Effect Event is not reactive. This is why it doesn't need to be a dependency of your Effect. As a result, changes to `onMessage` won't cause the chat to re-connect.
+和 `onMessage` prop 不一样，`onReceiveMessage` Effect Event 不是响应式的。这就是为什么它不需要成为 Effect 的依赖项。最终结果是 `onMessage` 的变化不会引起聊天重新连接。
 
-You can't do the same with `createConnection` because it *should* be reactive. You *want* the Effect to re-trigger if the user switches between an encrypted and an unencryption connection, or if the user switches the current room. However, because `createConnection` is a function, you can't check whether the information it reads has *actually* changed or not. To solve this, instead of passing `createConnection` down from the `App` component, pass the raw `roomId` and `isEncrypted` values:
+你不可以对 `createConnection` 做同样的事情，因为它 **应该是** 响应式的。如果用户切换加密和非加密连接或者切换当前聊天室的时候，你 **想要** Effect 重新触发。但是因为 `createConnection` 是一个函数，所以你不能检测它读取的信息是否 **实际** 变化了。为了解决这个问题，你需要传原始的 `roomId` 和 `isEncrypted` 值，而不是从 `App` 组件传递 `createConnection`：
 
 ```js {2-3}
       <ChatRoom
@@ -2060,7 +2060,7 @@ You can't do the same with `createConnection` because it *should* be reactive. Y
       />
 ```
 
-Now you can move the `createConnection` function *inside* the Effect instead of passing it down from the `App`:
+现在你可以移动 `createConnection` 函数到 Effect **内部**，而不是将它从 `App` 中传递下去：
 
 ```js {1-4,6,10-20}
 import {
@@ -2086,7 +2086,7 @@ export default function ChatRoom({ roomId, isEncrypted, onMessage }) {
     // ...
 ```
 
-After these two changes, your Effect no longer depends on any function values:
+经过这两个修改后，你的 Effect 不再依赖任何函数值：
 
 ```js {1,8,10,21}
 export default function ChatRoom({ roomId, isEncrypted, onMessage }) { // Reactive values
@@ -2112,7 +2112,7 @@ export default function ChatRoom({ roomId, isEncrypted, onMessage }) { // Reacti
   }, [roomId, isEncrypted]); // ✅ All dependencies declared
 ```
 
-As a result, the chat re-connects only when something meaningful (`roomId` or `isEncrypted`) changes:
+最终，只有在某些有意义的值（`roomId` 或 `isEncrypted`）变化时，聊天才会重新连接：
 
 <Sandpack>
 
@@ -2222,7 +2222,7 @@ export default function ChatRoom({ roomId, isEncrypted, onMessage }) {
 
 ```js chat.js
 export function createEncryptedConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // 真正的实现会实际连接到服务器
   if (typeof serverUrl !== 'string') {
     throw Error('Expected serverUrl to be a string. Received: ' + serverUrl);
   }
