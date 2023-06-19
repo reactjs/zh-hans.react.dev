@@ -737,6 +737,7 @@ function ChatRoom({ roomId, onReceiveMessage }) {
   // ...
 ```
 
+Effect Event 是非响应式的，所以你不需要将它们指定为依赖项。最终，即使父组件传在每次重新渲染中都传递了一个函数，聊天也不会再重新连接。
 
 #### 拆分响应式代码和非响应式代码 {/*separating-reactive-and-non-reactive-code*/}
 
