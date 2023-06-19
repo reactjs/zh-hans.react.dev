@@ -1281,7 +1281,7 @@ Object.is(temp1[1], temp2[1]); // 数组之间的第二个依赖项是否相同�
 Object.is(temp1[2], temp2[2]); // ... 依此类推 ...
 ```
 
-当你发现哪个依赖项破坏了记忆化时，要么找到一种方法将其删除，要么 [也对其进行记忆](#memoizing-a-dependency-of-another-hook)。
+当你发现是哪个依赖项破坏了记忆化时，要么找到一种方法将其删除，要么 [也对其进行记忆](#memoizing-a-dependency-of-another-hook)。
 
 ---
 
