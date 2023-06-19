@@ -6,7 +6,7 @@ translators:
 
 <Intro>
 
-除了 [Hooks](/reference/react) 和 [Components](/reference/react/components)， `react` 包还导出了一些可用于定义组件的 API。此页面列出了所有剩余的现代 React API。
+除了 [Hooks](/reference/react) 和 [Components](/reference/react/components)，`react` 还导出了一些可用于定义组件的 API。此页面列出了所有剩余的现代 React API。
 
 </Intro>
 
