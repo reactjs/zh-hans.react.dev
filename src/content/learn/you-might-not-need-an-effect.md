@@ -238,7 +238,7 @@ function List({ items }) {
 
 在渲染期间更新组件时，React 会丢弃已经返回的 JSX 并立即尝试重新渲染。为了避免非常缓慢的级联重试，React 只允许在渲染期间更新 **同一** 组件的状态。如果你在渲染期间更新另一个组件的状态，你会看到一条报错信息。条件判断 `items !== prevItems` 是必要的，它可以避免无限循环。你可以像这样调整 state，但任何其他副作用（比如变化 DOM 或设置的延时）应该留在事件处理函数或 Effect 中，以 [保持组件纯粹](/learn/keeping-components-pure)。
 
-**虽然这种方式比 Effect 更高效，但大多数组件也不需要它**。无论你怎么做，根据 props 或其他 state 来调整 state 都会使数据流更难理解和调试。总是检查是否可以通过添加 [key 来重置所有 state](#resetting-all-state-when-a-prop-changes)，或者 [在渲染期间计算所需内容](#updating-state-based-on-props-or-state)。例如，你可以存储已选中的 **项目ID** 而不是存储（并重置）已选中的 **项目：**
+**虽然这种方式比 Effect 更高效，但大多数组件也不需要它**。无论你怎么做，根据 props 或其他 state 来调整 state 都会使数据流更难理解和调试。总是检查是否可以通过添加 [key 来重置所有 state](#resetting-all-state-when-a-prop-changes)，或者 [在渲染期间计算所需内容](#updating-state-based-on-props-or-state)。例如，你可以存储已选中的 **item ID** 而不是存储（并重置）已选中的 **item**：
 
 ```js {3-5}
 function List({ items }) {
