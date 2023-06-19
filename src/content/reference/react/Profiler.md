@@ -30,10 +30,10 @@ title: <Profiler>
 </Profiler>
 ```
 
-#### Props {/*props*/}
+#### 参数 {/*props*/}
 
 * `id`: 一个字符串，用于标识你正在测量的 UI 部分。
-* `onRender`: 一个 [`onRender` 回调函数](#onrender-callback)，React 在每次被测量组件树中的组件更新时调用它。它接收有关渲染内容和所花费时间的信息。
+* `onRender`: 一个 [`onRender` 回调函数](#onrender-callback)，当测量组件树中的组件更新时，React会调用它。它接收有关渲染内容和所花费时间的信息。
 
 #### 注意 {/*caveats*/}
 
@@ -53,18 +53,18 @@ function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime
 
 #### 参数 {/*onrender-parameters*/}
 
-* `id`: `<Profiler>` 树的字符串 `id` 属性，用于标识刚刚提交的部分。如果你使用多个性能分析器，可以通过此属性识别已提交的树的哪个部分。
-* `phase`: `"mount"`、`"update"` 或 `"nested-update"`。这可以让你知道树是首次挂载还是由于属性、状态或 hook 的更改而重新渲染。
-* `actualDuration`: 当前更新期间用于渲染 `<Profiler>` 及其后代的时间，以毫秒为单位。显示子树在使用记忆化（例如 [`memo`](/reference/react/memo) 和 [`useMemo`](/reference/react/useMemo)）方面的效果如何。理想情况下，此值在初始挂载后应显著减少，因为许多后代组件只会在其特定的 props 变化时需要重新渲染。
-* `baseDuration`: 估计在没有任何优化的情况下重新渲染整个 `<Profiler>` 子树所需的时间，以毫秒为单位。它通过累加树中每个组件的最近一次渲染持续时间来计算。此值估计了渲染的最差情况成本（例如初始挂载或没有记忆化的树）。与 `actualDuration` 进行比较，以确定记忆化是否起作用。
-* `startTime`: 当 React 开始渲染当前更新时的时间戳。
-* `endTime`: 当 React 提交当前更新时的时间戳。此值在提交的所有性能分析器之间共享，如果需要，可以对它们进行分组。
+* `id`：`<Profiler>` 树的字符串 `id` 属性，用于标识刚刚提交的部分。如果你使用多个性能分析器，可以通过此属性识别已提交的树的哪个部分。
+* `phase`：`"mount"`、`"update"` 或 `"nested-update"`。这可以让你知道树是首次挂载还是由于属性、状态或 hook 的更改而重新渲染。
+* `actualDuration`：当前更新期间用于渲染 `<Profiler>` 及其后代的时间，以毫秒为单位。显示子树在使用记忆化（例如 [`memo`](/reference/react/memo) 和 [`useMemo`](/reference/react/useMemo)）方面的效果如何。理想情况下，此值在初始挂载后应显著减少，因为许多后代组件只会在其特定的 props 变化时需要重新渲染。
+* `baseDuration`：估计在没有任何优化的情况下重新渲染整个 `<Profiler>` 子树所需的时间，以毫秒为单位。它通过累加树中每个组件的最近一次渲染持续时间来计算。此值估计了渲染的最差情况成本（例如初始挂载或没有记忆化的树）。与 `actualDuration` 进行比较，以确定记忆化是否起作用。
+* `startTime`：当 React 开始渲染当前更新时的时间戳。
+* `endTime`：当 React 提交当前更新时的时间戳。此值在提交的所有性能分析器之间共享，如果需要，可以对它们进行分组。
 
 ---
 
 ## 用法 {/*usage*/}
 
-### 以编程的方式测量渲染性能 {/*measuring-rendering-performance-programmatically*/}
+### 编程式测量渲染性能 {/*measuring-rendering-performance-programmatically*/}
 
 将 `<Profiler>` 组件包裹在 React 树周围以测量其渲染性能。
 
