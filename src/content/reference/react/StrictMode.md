@@ -129,7 +129,7 @@ function App() {
 违反此规则的组件会表现得不可预测，并引发错误。为了帮助你找到意外的非纯代码，严格模式**在开发环境中会调用一些函数两次**（仅限应为纯函数的函数）。这些函数包括：
 
 - 组件函数体（仅限顶层逻辑，不包括事件处理程序内的代码）
-- 传递给 [`useState`](/reference/react/useState)、[`set 函数`](/reference/react/useState#setstate)、[`useMemo`](/reference/react/useMemo) 或 [`useReducer`](/reference/react/useReducer) 的函数。
+- 传递给 [`useState`](/reference/react/useState)、[`set` 函数](/reference/react/useState#setstate)、[`useMemo`](/reference/react/useMemo) 或 [`useReducer`](/reference/react/useReducer) 的函数。
 -  部分类组件的方法，例如 [`constructor`](/reference/react/Component#constructor)、[`render`](/reference/react/Component#render)、[`shouldComponentUpdate`](/reference/react/Component#shouldcomponentupdate) 等（[请参阅完整列表](https://reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects)）。
 
 如果一个函数是纯函数，运行两次不会改变其行为，因为纯函数每次都会产生相同的结果。然而，如果一个函数是非纯函数（例如，它会修改接收到的数据），运行两次通常会产生明显的差异（这就是它是非纯函数的原因！）。这有助于您及早发现并修复错误。
