@@ -60,7 +60,7 @@ function Form() {
 }
 ```
 
-**如果一个值可以基于现有的 props 或 state 计算得出，[不要把它作为一个 state](/learn/choosing-the-state-structure#avoid-redundant-state)，而是在渲染期间直接计算这个值**。这将使你的代码更快（避免了多余的 “级联” 更新），更简洁（移除了一些代码），以及更少出错（避免了一些因为不同的 state 变量之间没有正确同步而导致的问题）。如果这个观点对你来说很新奇，[React 哲学](/learn/thinking-in-react#step-3-find-the-minimal-but-complete-representation-of-ui-state) 中解释了什么值应该作为 state。
+**如果一个值可以基于现有的 props 或 state 计算得出，[不要把它作为一个 state](/learn/choosing-the-state-structure#avoid-redundant-state)，而是在渲染期间直接计算这个值**。这将使你的代码更快（避免了多余的 “级联” 更新）、更简洁（移除了一些代码）以及更少出错（避免了一些因为不同的 state 变量之间没有正确同步而导致的问题）。如果这个观点对你来说很新奇，[React 哲学](/learn/thinking-in-react#step-3-find-the-minimal-but-complete-representation-of-ui-state) 中解释了什么值应该作为 state。
 
 ### 缓存昂贵的计算 {/*caching-expensive-calculations*/}
 
