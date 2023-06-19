@@ -93,7 +93,7 @@ function TodoList({ todos, filter }) {
 
 一般来说，这段代码没有问题！但是，`getFilteredTodos()` 的耗时可能会很长，或者你有很多 `todos`。这些情况下，当 `newTodo` 这样不相关的 state 变量变化时，你并不想重新执行 `getFilteredTodos()`。
 
-你可以通过 [`useMemo`](/reference/react/useMemo) 这个 Hook 来缓存（或者说 ["memoize"](https://en.wikipedia.org/wiki/Memoization)）一个昂贵的计算。
+你可以使用 [`useMemo`](/reference/react/useMemo) Hook 缓存（或者说 [记忆（memoize）](https://en.wikipedia.org/wiki/Memoization)）一个昂贵的计算。
 
 ```js {5-8}
 import { useMemo, useState } from 'react';
