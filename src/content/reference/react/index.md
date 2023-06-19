@@ -85,7 +85,7 @@ Effect 是 React 范式的“规避机制”。不要用 Effect 来协调你的�
 
 优化重新渲染性能的一个常见方法就是跳过不必要的工作。比如，你可以告诉 React 重用一个缓存的计算结果，或者如果数据在上一次渲染后没有变化，就跳过这次重新渲染。
 
-要跳过计算和不必要的重新渲染，请使用这些 Hook：
+你可以使用这些 Hook 跳过计算和不必要的重新渲染：
 
 * [`useMemo`](/reference/react/useMemo) 让你缓存一个代价非常高的计算结果。
 * [`useCallback`](/reference/react/useCallback) 让你在将一个函数定义传递给一个优化的组件之前缓存它。
