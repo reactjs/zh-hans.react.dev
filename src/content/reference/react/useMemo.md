@@ -52,11 +52,11 @@ function TodoList({ todos, tab }) {
 
 * `useMemo` 是一个 React Hook，所以你只能 **在组件的顶层** 或者你自己的 Hook 中调用它。你不能在循环语句或条件语句中调用它。如果需要，可以提取一个新组件并将 state 放到其中。
 * 在严格模式下，为了 [帮你发现意外的错误](#my-calculation-runs-twice-on-every-re-render)，React 将会 **调用你的 calculation 函数两次**。这只是一个开发环境下的行为并不会影响到生产环境。如果你的 calcalation 函数是一个纯函数（它本来就应该是），这将不会影响到你的逻辑。其中一次调用的结果将会被忽略。
-* React **不会丢弃缓存的值，除非有特定的原因**。例如，在开发过程中，React 会在你编辑组件文件时丢弃缓存。无论是在开发环境还是在生产环境，如果你的组件在初始挂载期间被终止，React 都会丢弃缓存。在未来，React 可能会添加更多利用丢弃缓存的特性——例如，如果 React 在未来增加了对虚拟化列表的内置支持，那么丢弃那些滚出虚拟化列表视口的缓存是有意义的。如果你仅仅依赖 `useMemo` 作为性能优化手段，是没问题的。否则，一个 [state 变量](/reference/react/useState#avoiding-recreating-the-initial-state) 或者一个 [ref](/reference/react/useRef#avoiding-recreating-the-ref-contents) 可能更加合适。
+* React **不会丢弃缓存的值，除非有特定的原因**。例如，在开发过程中，React 会在你编辑组件文件时丢弃缓存。无论是在开发环境还是在生产环境，如果你的组件在初始挂载期间被终止，React 都会丢弃缓存。在未来，React 可能会添加更多利用丢弃缓存的特性——例如，如果 React 在未来增加了对虚拟化列表的内置支持，那么丢弃那些滚出虚拟化列表视口的缓存是有意义的。如果你仅仅依赖 `useMemo` 作为性能优化手段，是没问题的。否则，[state 变量](/reference/react/useState#avoiding-recreating-the-initial-state) 或者 [ref](/reference/react/useRef#avoiding-recreating-the-ref-contents) 可能更加合适。
 
 <Note>
 
-这种缓存返回值的方式也叫做 [*记忆化*](https://en.wikipedia.org/wiki/Memoization)，这也是该 Hook 叫做 `useMemo` 的原因。
+这种缓存返回值的方式也叫做 [记忆化（memoization）](https://en.wikipedia.org/wiki/Memoization)，这也是该 Hook 叫做 `useMemo` 的原因。
 
 </Note>
 
@@ -84,7 +84,7 @@ function TodoList({ todos, tab, theme }) {
 
 在初次渲染时，你从 `useMemo` 得到的 <CodeStep step={3}>值</CodeStep> 将会是你的 <CodeStep step={1}>calculation</CodeStep> 函数执行的结果。
 
-在随后的每一次渲染中，React 将会比较前后两次渲染中的 <CodeStep step={2}>所有依赖项</CodeStep> 是否相同。如何所有依赖项都没有发生变化（通过 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较），`useMemo` 将会返回之前已经计算过的那个值。否则，React 将会重新执行 calculation 函数并且返回一个新的值。
+在随后的每一次渲染中，React 将会比较前后两次渲染中的 <CodeStep step={2}>所有依赖项</CodeStep> 是否相同。如果所有依赖项都没有发生变化（通过 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较），`useMemo` 将会返回之前已经计算过的那个值。否则，React 将会重新执行 calculation 函数并且返回一个新的值。
 
 换句话说，`useMemo` 在多次重新渲染中缓存了一个 calculation 函数计算的结果直到依赖项的值发生变化。
 
