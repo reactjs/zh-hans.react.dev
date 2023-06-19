@@ -112,7 +112,7 @@ function TodoList({ todos, tab, theme }) {
 
 * [`useDebugValue`](/reference/react/useDebugValue) 让你在 React 开发者工具中为自定义 Hook 添加一个标签。
 * [`useId`](/reference/react/useId) 让组件绑定一个唯一 ID。通常与可访问性 API 一起使用。
-* [`useSyncExternalStore`](/reference/react/useSyncExternalStore) 让一个组件订阅一个外部 store。
+* [`useSyncExternalStore`](/reference/react/useSyncExternalStore) 允许一个组件订阅一个外部 store。
 
 ---
 
