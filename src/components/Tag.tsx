@@ -19,7 +19,7 @@ const variantMap = {
     classes: 'bg-green-40 text-white',
   },
   experimental: {
-    name: '实验',
+    name: '实验性的',
     classes: 'bg-ui-orange text-white',
   },
   deprecated: {
