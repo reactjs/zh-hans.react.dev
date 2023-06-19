@@ -59,7 +59,7 @@ function Tooltip() {
 
 * `useLayoutEffect` 是一个 Hook，因此只能在 **组件的顶层** 或自己的 Hook 中调用它。不能在循环或者条件内部调用它。如果你需要的话，抽离出一个组件并将副作用处理移动到那里。
 
-* 当 StrictMode 启动时，React 将在真正的 setup 函数首次运行前，**运行一个额外的开发专有的 setup + cleanup 周期**。这是一个压力测试，确保 cleanup 逻辑“映照”到 setup 逻辑，并停止或撤消 setup 函数正在做的任何事情。如果这导致一个问题，[请实现清理函数](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)。
+* 当 StrictMode 启用时，React 将在真正的 setup 函数首次运行前，**运行一个额外的开发专有的 setup + cleanup 周期**。这是一个压力测试，确保 cleanup 逻辑“映照”到 setup 逻辑，并停止或撤消 setup 函数正在做的任何事情。如果这导致一个问题，[请实现清理函数](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)。
 
 * 如果你的一些依赖项是组件内部定义的对象或函数，则存在这样的风险，即它们将 **导致 Effect 重新运行的次数多于所需的次数**。要解决这个问题，请删除不必要的 [对象](/reference/react/useEffect#removing-unnecessary-object-dependencies) 和 [函数](/reference/react/useEffect#removing-unnecessary-function-dependencies) 依赖项。你还可以 [抽离状态更新](/reference/react/useEffect#updating-state-based-on-previous-state-from-an-effect) 和 [非响应式逻辑](/reference/react/useEffect#reading-the-latest-props-and-state-from-an-effect) 到 Effect 之外。
 
