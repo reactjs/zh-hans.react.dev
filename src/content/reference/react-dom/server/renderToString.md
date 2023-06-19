@@ -40,7 +40,7 @@ const html = renderToString(<App />);
 
 #### Parameters {/*parameters*/}
 
-* `reactNode`: 你要渲染为 HTML 的 React 节点。例如，一个 JSX 节点，就像 `<App />`。
+* `reactNode`：你要渲染为 HTML 的 React 节点。例如，一个 JSX 节点，就像 `<App />`。
 
 #### 返回值 {/*returns*/}
 
