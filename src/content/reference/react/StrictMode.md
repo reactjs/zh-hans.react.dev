@@ -812,7 +812,7 @@ button { margin-left: 10px; }
 
 请注意，控制台中活跃连接的数量不再持续增加。
 
-在没有严格模式的情况下，很容易忽视你的 Effect 需要进行清理的情况。通过在开发中运行 *setup → cleanup → setup*，而不是仅运行 *setup*，严格模式使缺失的 cleanup 逻辑更加直观。
+在没有严格模式的情况下，很容易忽视你的 Effect 需要进行清理的情况。通过在开发中运行 *setup → cleanup → setup*，而不是仅运行 *setup*，严格模式使你更容易发现遗漏的 cleanup 逻辑。
 
 [请阅读更多关于实现 Effect 清理的内容](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)。
 
