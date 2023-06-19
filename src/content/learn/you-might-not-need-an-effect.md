@@ -155,7 +155,7 @@ console.timeEnd('筛选数组');
 
 </DeepDive>
 
-### 当 prop 变化时重置所有 state {/*resetting-all-state-when-a-prop-changes*/}
+### 当 props 变化时重置所有 state {/*resetting-all-state-when-a-prop-changes*/}
 
 `ProfilePage` 组件接收一个 prop：`userId`。页面上有一个评论输入框，你用了一个 state：`comment` 来保存它的值。有一天，你发现了一个问题：当你从一个人的个人资料导航到另一个时，`comment` 没有被重置。这导致很容易不小心把评论发送到不正确的个人资料。为了解决这个问题，你想在 `userId` 变化时，清除 `comment` 变量：
 
