@@ -55,7 +55,7 @@ React 允许你将标签、CSS 和 JavaScript 组合成自定义“组件”，�
 </PageLayout>
 ```
 
-随着项目的发展，你会发现很多布局可以通过复用已经完成的组件来实现，从而加快开发进程。上文中提到的目录可以通过 `<TableOfContents />` 组件添加到任意的画面中！你也可以使用 React 开源社区分享的大量组件（例如 [Chakra UI](https://chakra-ui.com/) 和 [Material UI](https://material-ui.com/)）来快速启动项目。
+随着项目的发展，你会发现很多布局可以通过复用已经完成的组件来实现，从而加快开发进程。上文中提到的目录可以通过 `<TableOfContents />` 组件添加到任意的画面中！你也可以使用 React 开源社区分享的大量组件（例如 [Chakra UI](https://chakra-ui.com/)、[Material UI](https://material-ui.com/)和[Ant Design](https://ant.design/)）来快速启动项目。
 
 ## 定义组件 {/*defining-a-component*/}
 
