@@ -64,7 +64,7 @@ title: "<select>"
 * [`onInvalid`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/invalid_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。如果输入的内容在表单提交时未通过验证，则会触发此事件。与内置的 `invalid` 事件不同，React 的 `onInvalid` 事件可以进行冒泡。
 * `onInvalidCapture`：与 `onInvalid` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的。
 * [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attr-required)：布尔值。如果为 `true`，则必须提供值才能提交表单。
-* [`size`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attr-size)：数字。当指定 `multiple={true}` 时可选，表示首选的初始可见项目数。
+* [`size`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attr-size)：数字。当指定 `multiple={true}` 时可选，表示同时可见的项目数。
 
 #### 注意 {/*caveats*/}
 
