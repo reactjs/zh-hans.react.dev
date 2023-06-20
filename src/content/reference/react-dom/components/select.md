@@ -58,7 +58,7 @@ title: "<select>"
 * [`multiple`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attr-multiple)：布尔值。如果为 `true`，则浏览器允许 [多选](#enabling-multiple-selection)。
 * [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#attr-name)：字符串，用于指定此选择框的名称，该名称将在 [提交表单时](#reading-the-select-box-value-when-submitting-a-form) 一起提交。
 * `onChange`：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)，其对于 [受控选择框](#controlling-a-select-box-with-a-state-variable) 是必需的。当用户选择不同的选项时立即触发。此行为类似于浏览器 [`input` 事件](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event)。
-* `onChangeCapture`：与 `onChange` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
+* `onChangeCapture`：与 `onChange` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的。
 * [`onInput`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。当用户更改值时立即触发。由于历史原因，在 React 习惯于使用 `onChange`，工作方式类似。
 * `onInputCapture`：与 `onInput` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
 * [`onInvalid`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/invalid_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。如果输入的内容在表单提交时未通过验证，则会触发此事件。与内置的 `invalid` 事件不同，React 的 `onInvalid` 事件可以进行冒泡。
