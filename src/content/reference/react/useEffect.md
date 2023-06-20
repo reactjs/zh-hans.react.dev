@@ -531,7 +531,7 @@ function ChatRoom({ roomId }) {
     serverUrl: serverUrl
   });
   // ...
-````
+```
 
 在 React 生态系统中，还有许多用于各种用途的优秀的自定义 Hook。
 
@@ -1089,7 +1089,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-**要删除一个依赖项，你需要 [“证明”给代码检查工具，表明某个值 **不需要** 作为依赖项](/learn/removing-effect-dependencies#removing-unnecessary-dependencies)**。例如，你可以将 `serverUrl` 从你的组件中移除，以证明它不是响应式的，不会在重新渲染时发生变化：
+**要删除一个依赖项，你需要 [“证明”给代码检查工具，表明它 **不需要** 作为一个依赖项](/learn/removing-effect-dependencies#removing-unnecessary-dependencies)**。例如，你可以将 `serverUrl` 声明移动到组件外面，以证明它不是响应式的，并且不会在重新渲染时发生变化：
 
 ```js {1,8}
 const serverUrl = 'https://localhost:1234'; // 不再是一个响应式值

@@ -4,7 +4,7 @@ title: useTransition
 
 <Intro>
 
-`useTransition` is a React Hook that lets you update the state without blocking the UI.
+`useTransition` 是一个让你在不阻塞 UI 的情况下来更新状态的 React Hook。
 
 ```js
 const [isPending, startTransition] = useTransition()
@@ -16,11 +16,11 @@ const [isPending, startTransition] = useTransition()
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `useTransition()` {/*usetransition*/}
 
-Call `useTransition` at the top level of your component to mark some state updates as transitions.
+在组件的顶层调用 `useTransition`，将某些状态更新标记为转换状态。
 
 ```js
 import { useTransition } from 'react';
@@ -31,24 +31,24 @@ function TabContainer() {
 }
 ```
 
-[See more examples below.](#usage)
+[请参阅下面的更多示例](#usage)。
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-`useTransition` does not take any parameters.
+`useTransition` 不需要任何参数。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-`useTransition` returns an array with exactly two items:
+`useTransition` 返回一个由两个元素组成的数组：
 
-1. The `isPending` flag that tells you whether there is a pending transition.
-2. The [`startTransition` function](#starttransition) that lets you mark a state update as a transition.
+1. `isPending` 标志，告诉你是否存在待处理的转换。
+2. [`startTransition` 函数](#starttransition) 允许你将状态更新标记为转换状态。
 
 ---
 
-### `startTransition` function {/*starttransition*/}
+### `startTransition` 函数 {/*starttransition*/}
 
-The `startTransition` function returned by `useTransition` lets you mark a state update as a transition.
+`useTransition` 返回的 `startTransition` 函数允许你将状态更新标记为转换状态。
 
 ```js {6,8}
 function TabContainer() {
@@ -64,35 +64,35 @@ function TabContainer() {
 }
 ```
 
-#### Parameters {/*starttransition-parameters*/}
+#### 参数 {/*starttransition-parameters*/}
 
-* `scope`: A function that updates some state by calling one or more [`set` functions.](/reference/react/useState#setstate) React immediately calls `scope` with no parameters and marks all state updates scheduled synchronously during the `scope` function call as transitions. They will be [non-blocking](#marking-a-state-update-as-a-non-blocking-transition) and [will not display unwanted loading indicators.](#preventing-unwanted-loading-indicators)
+* 作用域（scope）：一个通过调用一个或多个 [`set` 函数](/reference/react/useState#setstate)。 函数更新某些状态的函数。React 会立即不带参数地调用此函数，并将在作用域函数调用期间计划同步执行的所有状态更新标记为转换状态。它们将是非阻塞的，并且 [不会显示不想要的加载指示器](#preventing-unwanted-loading-indicators)。
 
-#### Returns {/*starttransition-returns*/}
+#### 返回值 {/*starttransition-returns*/}
 
-`startTransition` does not return anything.
+`startTransition` 不会返回任何值。
 
-#### Caveats {/*starttransition-caveats*/}
+#### 注意事项 {/*starttransition-caveats*/}
 
-* `useTransition` is a Hook, so it can only be called inside components or custom Hooks. If you need to start a transition somewhere else (for example, from a data library), call the standalone [`startTransition`](/reference/react/startTransition) instead.
+* `useTransition` 是一个 Hook，因此只能在组件或自定义 Hook 内部调用。如果你需要在其他地方启动转换（例如从数据库），请调用独立的 [`startTransition`](/reference/react/startTransition) 函数。
 
-* You can wrap an update into a transition only if you have access to the `set` function of that state. If you want to start a transition in response to some prop or a custom Hook value, try [`useDeferredValue`](/reference/react/useDeferredValue) instead.
+* 只有在你可以访问该状态的 `set` 函数时，才能将更新包装为转换状态。如果你想响应某个 prop 或自定义 Hook 值启动转换，请尝试使用 [`useDeferredValue`](/reference/react/useDeferredValue)。
 
-* The function you pass to `startTransition` must be synchronous. React immediately executes this function, marking all state updates that happen while it executes as transitions. If you try to perform more state updates later (for example, in a timeout), they won't be marked as transitions.
+* 你传递给 `startTransition` 的函数必须是同步的。React 立即执行此函数，标记其执行期间发生的所有状态更新为转换状态。如果你稍后尝试执行更多的状态更新（例如在一个定时器中），它们将不会被标记为转换状态。
 
-* A state update marked as a transition will be interrupted by other state updates. For example, if you update a chart component inside a transition, but then start typing into an input while the chart is in the middle of a re-render, React will restart the rendering work on the chart component after handling the input update.
+* 标记为转换状态的状态更新将被其他状态更新打断。例如，如果你在转换状态中更新图表组件，但在图表正在重新渲染时开始在输入框中输入，React 将在处理输入更新后重新启动对图表组件的渲染工作。
 
-* Transition updates can't be used to control text inputs.
+* 转换状态更新不能用于控制文本输入。
 
-* If there are multiple ongoing transitions, React currently batches them together. This is a limitation that will likely be removed in a future release.
+* 如果有多个正在进行的转换状态，React 目前会将它们批处理在一起。这是一个限制，可能会在未来的版本中被删除。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Marking a state update as a non-blocking transition {/*marking-a-state-update-as-a-non-blocking-transition*/}
+### 将状态更新标记为非阻塞转换状态 {/*marking-a-state-update-as-a-non-blocking-transition*/}
 
-Call `useTransition` at the top level of your component to mark state updates as non-blocking *transitions*.
+在组件的顶层调用 `useTransition`，将状态更新标记为非阻塞的转换状态。
 
 ```js [[1, 4, "isPending"], [2, 4, "startTransition"]]
 import { useState, useTransition } from 'react';
@@ -103,12 +103,12 @@ function TabContainer() {
 }
 ```
 
-`useTransition` returns an array with exactly two items:
+`useTransition` 返回一个具有两个项的数组：
 
-1. The <CodeStep step={1}>`isPending` flag</CodeStep> that tells you whether there is a pending transition.
-2. The <CodeStep step={2}>`startTransition` function</CodeStep> that lets you mark a state update as a transition.
+1. <CodeStep step={1}>`isPending` 标志</CodeStep>，告诉你是否存在挂起的转换状态。
+2. <CodeStep step={2}>`startTransition` 方法</CodeStep> 允许你将状态更新标记为转换状态。
 
-You can then mark a state update as a transition like this:
+你可以按照以下方式将状态更新标记为转换状态：
 
 ```js {6,8}
 function TabContainer() {
@@ -124,17 +124,17 @@ function TabContainer() {
 }
 ```
 
-Transitions let you keep the user interface updates responsive even on slow devices.
+转换状态可以使用户界面更新在慢速设备上仍保持响应性。
 
-With a transition, your UI stays responsive in the middle of a re-render. For example, if the user clicks a tab but then change their mind and click another tab, they can do that without waiting for the first re-render to finish.
+通过转换状态，在重新渲染过程中你的用户界面保持响应。例如，如果用户单击一个选项卡，但改变了主意并单击另一个选项卡，他们可以在不等待第一个重新渲染完成的情况下完成操作。
 
 <Recipes titleText="The difference between useTransition and regular state updates" titleId="examples">
 
-#### Updating the current tab in a transition {/*updating-the-current-tab-in-a-transition*/}
+#### 在转换状态中更新当前选项卡 {/*updating-the-current-tab-in-a-transition*/}
 
-In this example, the "Posts" tab is **artificially slowed down** so that it takes at least a second to render.
+在此示例中，“文章”选项卡被 **人为地减慢**，以便至少需要一秒钟才能呈现。
 
-Click "Posts" and then immediately click "Contact". Notice that this interrupts the slow render of "Posts". The "Contact" tab shows immediately. Because this state update is marked as a transition, a slow re-render did not freeze the user interface.
+单击“文章”，然后立即单击“联系人”。请注意，这会中断“文章”的缓慢渲染。 “联系人”选项卡立即显示。因为此状态更新被标记为转换状态，因此缓慢的重新渲染不会冻结用户界面。
 
 <Sandpack>
 
@@ -269,11 +269,11 @@ b { display: inline-block; margin-right: 10px; }
 
 <Solution />
 
-#### Updating the current tab without a transition {/*updating-the-current-tab-without-a-transition*/}
+#### 在不使用转换状态的情况下更新当前选项卡 {/*updating-the-current-tab-without-a-transition*/}
 
-In this example, the "Posts" tab is also **artificially slowed down** so that it takes at least a second to render. Unlike in the previous example, this state update is **not a transition.**
+在此示例中，“帖子”选项卡同样被 **人为地减慢**，以便至少需要一秒钟才能渲染。与之前的示例不同，这个状态更新 **不是一个转换状态**。
 
-Click "Posts" and then immediately click "Contact". Notice that the app freezes while rendering the slowed down tab, and the UI becomes unresponsive. This state update is not a transition, so a slow re-render freezed the user interface.
+点击“帖子”，然后立即点击“联系人”。请注意，应用程序在渲染减速选项卡时会冻结，UI变得不响应。这个状态更新 **不是一个转换状态**，所以慢速的重新渲染会冻结用户界面。
 
 <Sandpack>
 
@@ -409,9 +409,9 @@ b { display: inline-block; margin-right: 10px; }
 
 ---
 
-### Updating the parent component in a transition {/*updating-the-parent-component-in-a-transition*/}
+### 在转换中更新父组件 {/*updating-the-parent-component-in-a-transition*/}
 
-You can update a parent component's state from the `useTransition` call, too. For example, this `TabButton` component wraps its `onClick` logic in a transition:
+你也可以通过 `useTransition` 调用来更新父组件的状态。例如，`TabButton` 组件在一个转换中包装了它的onClick逻辑：
 
 ```js {8-10}
 export default function TabButton({ children, isActive, onClick }) {
@@ -431,7 +431,7 @@ export default function TabButton({ children, isActive, onClick }) {
 }
 ```
 
-Because the parent component updates its state inside the `onClick` event handler, that state update gets marked as a transition. This is why, like in the earlier example, you can click on "Posts" and then immediately click "Contact". Updating the selected tab is marked as a transition, so it does not block user interactions.
+因为父组件在 `onClick` 事件处理程序内更新了它的状态，所以该状态更新被标记为一个转换。这就是为什么，就像之前的例子一样，你可以单击“帖子”，然后立即单击“联系人”。更新选定选项卡被标记为一个转换，因此它不会阻止用户交互。
 
 <Sandpack>
 
@@ -560,9 +560,9 @@ b { display: inline-block; margin-right: 10px; }
 
 ---
 
-### Displaying a pending visual state during the transition {/*displaying-a-pending-visual-state-during-the-transition*/}
+### 在转换期间显示待处理的视觉状态 {/*displaying-a-pending-visual-state-during-the-transition*/}
 
-You can use the `isPending` boolean value returned by `useTransition` to indicate to the user that a transition is in progress. For example, the tab button can have a special "pending" visual state:
+你可以使用 `useTransition` 返回的 `isPending `布尔值来向用户指示转换正在进行中。例如，选项卡按钮可以有一个特殊的“待处理”视觉状态：
 
 ```js {4-6}
 function TabButton({ children, isActive, onClick }) {
@@ -574,7 +574,7 @@ function TabButton({ children, isActive, onClick }) {
   // ...
 ```
 
-Notice how clicking "Posts" now feels more responsive because the tab button itself updates right away:
+请注意，现在单击“帖子”感觉更加灵敏，因为选项卡按钮本身立即更新了：
 
 <Sandpack>
 
@@ -707,9 +707,9 @@ b { display: inline-block; margin-right: 10px; }
 
 ---
 
-### Preventing unwanted loading indicators {/*preventing-unwanted-loading-indicators*/}
+### 避免不必要的加载指示器 {/*preventing-unwanted-loading-indicators*/}
 
-In this example, the `PostsTab` component fetches some data using a [Suspense-enabled](/reference/react/Suspense) data source. When you click the "Posts" tab, the `PostsTab` component *suspends*, causing the closest loading fallback to appear:
+在这个例子中，`PostsTab` 组件使用启用了 [Suspense-enabled](/reference/react/Suspense) 的数据源获取一些数据。当你单击“帖子”选项卡时，`PostsTab` 组件将 **挂起**，导致最近的加载占位符出现：
 
 <Sandpack>
 
@@ -893,9 +893,9 @@ b { display: inline-block; margin-right: 10px; }
 
 </Sandpack>
 
-Hiding the entire tab container to show a loading indicator leads to a jarring user experience. If you add `useTransition` to `TabButton`, you can instead indicate display the pending state in the tab button instead.
+隐藏整个选项卡容器以显示加载指示符会导致用户体验不连贯。如果你将 `useTransition` 添加到 `TabButton` 中，你可以改为在选项卡按钮中指示待处理状态。
 
-Notice that clicking "Posts" no longer replaces the entire tab container with a spinner:
+请注意，现在单击“帖子”不再用一个旋转器替换整个选项卡容器：
 
 <Sandpack>
 
@@ -1087,19 +1087,19 @@ b { display: inline-block; margin-right: 10px; }
 
 </Sandpack>
 
-[Read more about using transitions with Suspense.](/reference/react/Suspense#preventing-already-revealed-content-from-hiding)
+[了解有关在Suspense中使用转换的更多信息](/reference/react/Suspense#preventing-already-revealed-content-from-hiding)。
 
 <Note>
 
-Transitions will only "wait" long enough to avoid hiding *already revealed* content (like the tab container). If the Posts tab had a [nested `<Suspense>` boundary,](/reference/react/Suspense#revealing-nested-content-as-it-loads) the transition would not "wait" for it.
+转换效果只会“等待”足够长的时间来避免隐藏 **已经显示** 的内容（例如选项卡容器）。如果“帖子”选项卡具有一个[嵌套 `<Suspense>` 边界](/reference/react/Suspense#revealing-nested-content-as-it-loads)，转换效果将不会“等待”它。
 
 </Note>
 
 ---
 
-### Building a Suspense-enabled router {/*building-a-suspense-enabled-router*/}
+### 构建一个Suspense-enabled 的路由 {/*building-a-suspense-enabled-router*/}
 
-If you're building a React framework or a router, we recommend marking page navigations as transitions.
+如果你正在构建一个 React 框架或路由，我们建议将页面导航标记为转换效果。
 
 ```js {3,6,8}
 function Router() {
@@ -1114,12 +1114,12 @@ function Router() {
   // ...
 ```
 
-This is recommended for two reasons:
+这么做有两个好处：
 
-- [Transitions are interruptible,](#marking-a-state-update-as-a-non-blocking-transition) which lets the user click away without waiting for the re-render to complete.
-- [Transitions prevent unwanted loading indicators,](#preventing-unwanted-loading-indicators) which lets the user avoid jarring jumps on navigation.
+- [转换效果是可中断的](#marking-a-state-update-as-a-non-blocking-transition)，这样用户可以在等待重新渲染完成之前点击其他地方。
+- [转换效果可以防止不必要的加载指示符](#preventing-unwanted-loading-indicators)，这样用户就可以避免在导航时产生不协调的跳转。
 
-Here is a tiny simplified router example using transitions for navigations.
+下面是一个简单的使用转换效果进行页面导航的路由器示例：
 
 <Sandpack>
 
@@ -1495,17 +1495,17 @@ main {
 
 <Note>
 
-[Suspense-enabled](/reference/react/Suspense) routers are expected to wrap the navigation updates into transitions by default.
+[Suspense-enabled](/reference/react/Suspense) 的路由默认情况下会将页面导航更新包装成转换效果。
 
 </Note>
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 疑难解答 {/*troubleshooting*/}
 
-### Updating an input in a transition doesn't work {/*updating-an-input-in-a-transition-doesnt-work*/}
+### 在转换过程中更新输入无法正常工作 {/*updating-an-input-in-a-transition-doesnt-work*/}
 
-You can't use a transition for a state variable that controls an input:
+你不能使用转换来控制输入的状态变量：
 
 ```js {4,10}
 const [text, setText] = useState('');
@@ -1520,16 +1520,16 @@ function handleChange(e) {
 return <input value={text} onChange={handleChange} />;
 ```
 
-This is because transitions are non-blocking, but updating an input in response to the change event should happen synchronously. If you want to run a transition in response to typing, you have two options:
+这是因为转换是非阻塞的，但是在响应更改事件时更新输入应该是同步的。如果你想在输入时运行一个转换，有两个选项：
 
-1. You can declare two separate state variables: one for the input state (which always updates synchronously), and one that you will update in a transition. This lets you control the input using the synchronous state, and pass the transition state variable (which will "lag behind" the input) to the rest of your rendering logic.
-2. Alternatively, you can have one state variable, and add [`useDeferredValue`](/reference/react/useDeferredValue) which will "lag behind" the real value. It will trigger non-blocking re-renders to "catch up" with the new value automatically.
+1. 你可以声明两个分开的状态变量：一个用于输入状态（它总是同步更新），另一个用于在转换中更新的状态变量。这样，你可以使用同步状态控制输入，并将转换状态变量（它将“滞后”于输入）传递给其余的渲染逻辑。
+2. 或者，你可以有一个状态变量，并添加 [`useDeferredValue`](/reference/react/useDeferredValue)，它将“滞后”于实际值。它会自动触发非阻塞的重新渲染以“追赶”新值。
 
 ---
 
-### React doesn't treat my state update as a transition {/*react-doesnt-treat-my-state-update-as-a-transition*/}
+### React 没有将我的状态更新视为转换 {/*react-doesnt-treat-my-state-update-as-a-transition*/}
 
-When you wrap a state update in a transition, make sure that it happens *during* the `startTransition` call:
+当你在转换中包装一个状态更新时，请确保它发生在 `startTransition` 调用期间：
 
 ```js
 startTransition(() => {
@@ -1538,9 +1538,9 @@ startTransition(() => {
 });
 ```
 
-The function you pass to `startTransition` must be synchronous.
+传递给 `startTransition` 的函数必须是同步的。
 
-You can't mark an update as a transition like this:
+你不能像这样将更新标记为转换：
 
 ```js
 startTransition(() => {
@@ -1551,7 +1551,7 @@ startTransition(() => {
 });
 ```
 
-Instead, you could do this:
+相反，你可以这样做：
 
 ```js
 setTimeout(() => {
@@ -1562,7 +1562,7 @@ setTimeout(() => {
 }, 1000);
 ```
 
-Similarly, you can't mark an update as a transition like this:
+类似地，你不能像这样将更新标记为转换：
 
 ```js
 startTransition(async () => {
@@ -1572,7 +1572,7 @@ startTransition(async () => {
 });
 ```
 
-However, this works instead:
+然而，使用以下方法可以正常工作：
 
 ```js
 await someAsyncFunction();
@@ -1584,15 +1584,15 @@ startTransition(() => {
 
 ---
 
-### I want to call `useTransition` from outside a component {/*i-want-to-call-usetransition-from-outside-a-component*/}
+### 我想在组件外部调用 `useTransition` {/*i-want-to-call-usetransition-from-outside-a-component*/}
 
-You can't call `useTransition` outside a component because it's a Hook. In this case, use the standalone [`startTransition`](/reference/react/startTransition) method instead. It works the same way, but it doesn't provide the `isPending` indicator.
+你不能在组件外部调用 `useTransition`，因为它是一个 Hook。在这种情况下，请改用独立的 [`startTransition`](/reference/react/startTransition) 方法。它的工作方式相同，但不提供 `isPending` 指示器。
 
 ---
 
-### The function I pass to `startTransition` executes immediately {/*the-function-i-pass-to-starttransition-executes-immediately*/}
+### 我传递给 `startTransition` 的函数会立即执行 {/*the-function-i-pass-to-starttransition-executes-immediately*/}
 
-If you run this code, it will print 1, 2, 3:
+如果你运行这段代码，它将会打印 1, 2, 3：
 
 ```js {1,3,6}
 console.log(1);
@@ -1603,7 +1603,7 @@ startTransition(() => {
 console.log(3);
 ```
 
-**It is expected to print 1, 2, 3.** The function you pass to `startTransition` does not get delayed. Unlike with the browser `setTimeout`, it does not run the callback later. React executes your function immediately, but any state updates scheduled *while it is running* are marked as transitions. You can imagine that it works like this:
+**期望打印 1, 2, 3**。 传递给 `startTransition` 的函数不会被延迟执行。与浏览器的 `setTimeout` 不同，它不会延迟执行回调。React 会立即执行你的函数，但是在它运行的同时安排的任何状态更新都被标记为转换。你可以将其想象为以下方式：
 
 ```js
 // A simplified version of how React works
