@@ -40,7 +40,7 @@ title: "<select>"
 
 你可以通过传递 `value` 属性 [以控制选择框](#controlling-a-select-box-with-a-state-variable):
 
-* `value`：一个字符串（如果指定 [`multiple={true}`](#enabling-multiple-selection)，那么 `value` 也可以是一个字符串数组）。当某一个选项（option）被选中时，`value` 为其对应的值。每个字符串值都与嵌套在 `<select>` 内的 `<option>` 的 `value` 属性相匹配
+* `value`：一个字符串（如果指定 [`multiple={true}`](#enabling-multiple-selection)，那么 `value` 也可以是一个字符串数组）。当某一个选项（option）被选中时，`value` 为其对应的值。每个字符串值都与嵌套在 `<select>` 内的 `<option>` 的 `value` 属性相匹配。
 
 当你传递 `value` 时，你必须同时传递一个 `onChange` 处理函数，用于更新传递的值。
 
