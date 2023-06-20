@@ -40,7 +40,7 @@ const SomeComponent = memo(function SomeComponent(props) {
 
 #### 返回值 {/*returns*/}
 
-`memo` 返回一个新的 React 组件。它的行为与提供给 `memo` 的组件相同，只是当它的父组件重新渲染时，除非它的 props 发生了变化，否则 React 不会总是重新渲染它。
+`memo` 返回一个新的 React 组件。它的行为与提供给 `memo` 的组件相同，只是当它的父组件重新渲染时 React 不会总是重新渲染它，除非它的 props 发生了变化 。
 
 ---
 
