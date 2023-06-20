@@ -132,7 +132,7 @@ label {
 
 ---
 
-### 使用 state 更新 memoized（记忆化）组件 {/*updating-a-memoized-component-using-state*/}
+### 使用 state 更新记忆化（memoized）组件 {/*updating-a-memoized-component-using-state*/}
 
 即使一个组件被记忆化了，当它自身的状态发生变化时，它仍然会重新渲染。memoization 只与从父组件传递给组件的 props 有关。
 
@@ -207,7 +207,7 @@ label {
 
 ---
 
-### 使用 context 更新 memoized（记忆化）组件 {/*updating-a-memoized-component-using-a-context*/}
+### 使用 context 更新记忆化（memoized）组件 {/*updating-a-memoized-component-using-a-context*/}
 
 即使组件已被记忆化，当其使用的 context 发生变化时，它仍将重新渲染。记忆化只与从父组件传递给组件的 props 有关。
 
@@ -319,7 +319,7 @@ const CallToAction = memo(function CallToAction({ hasGroups }) {
 });
 ```
 
-当你需要将一个函数传递给 memoized（记忆化）组件时，要么在组件外声明它，以确保它永远不会改变，要么使用 [`useCallback`](/reference/react/useCallback#skipping-re-rendering-of-components) 在重新渲染之间缓存其定义。
+当你需要将一个函数传递给记忆化（memoized）组件时，要么在组件外声明它，以确保它永远不会改变，要么使用 [`useCallback`](/reference/react/useCallback#skipping-re-rendering-of-components) 在重新渲染之间缓存其定义。
 
 ---
 
@@ -360,4 +360,4 @@ function arePropsEqual(oldProps, newProps) {
 ## 疑难解答 {/*troubleshooting*/}
 ### 当组件的某个 prop 是对象、数组或函数时，我的组件会重新渲染。 {/*my-component-rerenders-when-a-prop-is-an-object-or-array*/}
 
-React 通过浅比较来比较旧的和新的 prop：也就是说，它会考虑每个新的 prop 是否与旧 prop 引用相等。如果每次父组件重新渲染时创建一个新的对象或数组，即使它们每个元素都相同，React 仍会认为它已更改。同样地，如果在渲染父组件时创建一个新的函数，即使该函数具有相同的定义，React 也会认为它已更改。为了避免这种情况，[可以简化 props 或在父组件中 memoize（记忆化）props](#minimizing-props-changes)。
+React 通过浅比较来比较旧的和新的 prop：也就是说，它会考虑每个新的 prop 是否与旧 prop 引用相等。如果每次父组件重新渲染时创建一个新的对象或数组，即使它们每个元素都相同，React 仍会认为它已更改。同样地，如果在渲染父组件时创建一个新的函数，即使该函数具有相同的定义，React 也会认为它已更改。为了避免这种情况，[可以简化 props 或在父组件中记忆化（memoize）props](#minimizing-props-changes)。
