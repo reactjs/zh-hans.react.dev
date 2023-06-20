@@ -48,7 +48,7 @@ const SomeComponent = memo(function SomeComponent(props) {
 
 ### 当 props 没有改变时跳过重新渲染 {/*skipping-re-rendering-when-props-are-unchanged*/}
 
-React 通常在其父组件重新渲染时重新渲染一个组件。你可以使用 `memo` 创建一个组件，当它的父组件重新渲染时，只要它的新 props 与旧 props 相同时，React 就不会重新渲染它。这样的组件被称为**记忆化的**（memoized）组件。
+React 通常在其父组件重新渲染时重新渲染一个组件。你可以使用 `memo` 创建一个组件，当它的父组件重新渲染时，只要它的新 props 与旧 props 相同时，React 就不会重新渲染它。这样的组件被称为 **记忆化的**（memoized）组件。
 
 要记忆化一个组件，请将它包装在 `memo` 中，使用它返回的值替换原来的组件：
 
@@ -118,7 +118,7 @@ label {
 
 在其他情况下将组件包装在 `memo` 中是没有任何好处的。这种做法也没有什么明显的危害，因此一些团队会选择不考虑个别情况，并尽可能使用 `memo`。这种方法的缺点是代码变得不易读。此外，并不是所有的记忆化都是有效的：一个“总是新的”值足以破坏整个组件的记忆化。
 
-**实践中，你可以通过遵循一些原则来使许多 memoization 变得不必要：**
+**实践中，你可以通过遵循一些原则来使许多 memoization 变得不必要**：
 
 1. 当一个组件在视觉上包裹其他组件时，让它 [接受 JSX 作为子组件](/learn/passing-props-to-a-component#passing-jsx-as-children)。这样，当包装组件更新其自身状态时，React 知道其子组件不需要重新渲染。
 1. 优先使用局部状态，并且不要将 [状态提升](/learn/sharing-state-between-components) 到不必要的层级。例如，不要将短暂状态（如表单数据和项元素是否 hover 状态）保留在树的顶部或全局状态库中。
@@ -272,7 +272,7 @@ label {
 当你使用 `memo` 时，只要任何一个 prop 与先前的值不是 **浅层相等** 的话，你的组件就会重新渲染。这意味着 React 会使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较将组件中的每个 prop 与其先前的值进行比较。注意，`Object.is(3, 3)` 为 `true`，但 `Object.is({}, {})` 为 `false`。
 
 
-为了最大化使用 `memo` 的效果，应该尽量减少 props 的变化次数。例如，如果 prop 是一个对象，可以使用 [`useMemo`](/reference/react/useMemo) 避免父组件每次都重新创建该对象：
+为了最大化使用 `memo` 的效果，应该尽量减少 props 的变化次数。例如，如果 props 是一个对象，可以使用 [`useMemo`](/reference/react/useMemo) 避免父组件每次都重新创建该对象：
 
 ```js {5-8}
 function Page() {
