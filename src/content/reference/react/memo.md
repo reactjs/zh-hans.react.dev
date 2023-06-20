@@ -269,7 +269,7 @@ label {
 
 ### 最小化 props 的变化 {/*minimizing-props-changes*/}
 
-当你使用 `memo` 时，只要任何一个 prop 与先前的值不是 **浅层相等** 的话，你的组件就会重新渲染。这意味着 React 会使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较将组件中的每个 prop 与其先前的值进行比较。注意，`Object.is(3, 3)` 为 `true`，但 `Object.is({}, {})` 为 `false`。
+当你使用 `memo` 时，只要任何一个 prop 与先前的值不是 **浅层相等** 的话，你的组件就会重新渲染。这意味着 React 会使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较组件中的每个 prop 与其先前的值。注意，`Object.is(3, 3)` 为 `true`，但 `Object.is({}, {})` 为 `false`。
 
 
 为了最大化使用 `memo` 的效果，应该尽量减少 props 的变化次数。例如，如果 props 是一个对象，可以使用 [`useMemo`](/reference/react/useMemo) 避免父组件每次都重新创建该对象：
