@@ -33,7 +33,7 @@ import { useRef } from 'react';
 const myRef = useRef(null);
 ```
 
-最后，将其作为 `ref` 属性传给 DOM 节点：
+Finally, pass your ref as the `ref` attribute to the JSX tag for which you want to get the DOM node:
 
 ```js
 <div ref={myRef}>
@@ -645,7 +645,7 @@ Refs 是一个应急方案。你应该只在你必须“跳出 React”时使用
 <Sandpack>
 
 ```js
-import {useState, useRef} from 'react';
+import { useState, useRef } from 'react';
 
 export default function Counter() {
   const [show, setShow] = useState(true);
