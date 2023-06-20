@@ -124,7 +124,7 @@ label {
 1. 优先使用局部状态，并且不要将 [状态提升](/learn/sharing-state-between-components) 到不必要的层级。例如，不要将短暂状态（如表单数据和项元素是否 hover 状态）保留在树的顶部或全局状态库中。
 1. 保持你的 [渲染逻辑纯粹](/learn/keeping-components-pure)。如果重新渲染组件会导致问题或产生一些明显的视觉瑕疵，则这是你组件中的 bug！修复 bug 而不是添加 memoization。
 1. 避免 [不必要的 Effect 来更新状态](/learn/you-might-not-need-an-effect)。React 应用中的大多数性能问题都是由于 Effect 引起的更新链，这些 Effect 会使你的组件一次又一次地重新渲染。
-1. 尝试 [从你的 Effect 中删除不必要的依赖项](/learn/removing-effect-dependencies)。例如，与其使用 memoization，不如将某些对象或函数移动到效果内部或组件外部，这通常更简单。
+1. 尝试 [从你的 Effect 中删除不必要的依赖项](/learn/removing-effect-dependencies)。例如，与其使用 memoization，不如将某些对象或函数移动到 Effect 内部或组件外部，这通常更简单。
 
 如果特定交互仍然感觉不流畅，请 [使用 React 开发者工具 profiler](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) 来查看哪些组件最需要 memoization，并在需要时添加 memoization。这些原则使你的组件更易于调试和理解，因此建议在任何情况下都遵循它们。从长远来看，我们正在研究 [自动进行细粒度 memoization](https://www.youtube.com/watch?v=lGEMwh32soc)，以解决这个问题。
 
