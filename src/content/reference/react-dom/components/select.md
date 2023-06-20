@@ -68,7 +68,7 @@ title: "<select>"
 
 #### 注意 {/*caveats*/}
 
-- 与 HTML 标签不同，在 `<option>` 上传递 `selected` 属性将不受支持。你应该使用 [`<select defaultValue>`](#providing-an-initially-selected-option) 处理非受控选择框；而使用 [`<select value>`](#controlling-a-select-box-with-a-state-variable) 处理受控选择框。
+- 与 HTML 不同，在 `<option>` 上传递 `selected` 属性将不受支持。你应该使用 [`<select defaultValue>`](#providing-an-initially-selected-option) 处理非受控选择框；而使用 [`<select value>`](#controlling-a-select-box-with-a-state-variable) 处理受控选择框。
 - 如果选择框收到 `value` 属性，它将被视为 [受控组件](#controlling-a-select-box-with-a-state-variable)。
 - 选择框不能同时受控与非受控的。
 - 选择框在其生命周期内无法在受控与非受控之间切换。
@@ -182,7 +182,7 @@ select { margin: 5px; }
 
 <Pitfall>
 
-与 HTML 标签不同，在 `<option>` 上传递 `selected` 属性将不受支持。
+与 HTML 不同，在 `<option>` 上传递 `selected` 属性将不受支持。
 
 </Pitfall>
 
@@ -379,6 +379,6 @@ select { margin-bottom: 10px; display: block; }
 
 **如果传递了 `value` 但没有传递 `onChange`，那么将无法选择选项**。当你通过传递 `value` 来控制选择框时，你需要保证选择框始终具有你传递的值。因此，如果你将一个 state 作为 `value` 传递，但在 `onChange` 事件处理程序中忘记同步更新该状态变量，React 将在每次按键后将选择框恢复到你指定的 `value`。
 
-与 HTML 不同，将 `selected` 属性传递给 `<option>` 是不被支持的。
+与 HTML 不同，在 `<option>` 上传递 `selected` 属性将不受支持。
 
 </Pitfall>
