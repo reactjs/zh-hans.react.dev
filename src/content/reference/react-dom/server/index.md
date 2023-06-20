@@ -4,46 +4,46 @@ title: Server React DOM APIs
 
 <Intro>
 
-The `react-dom/server` APIs let you render React components to HTML on the server. These APIs are only used on the server at the top level of your app to generate the initial HTML. A [framework](/learn/start-a-new-react-project#production-grade-react-frameworks) may call them for you. Most of your components don't need to import or use them.
+`react-dom/server` API 允许你在服务器上将 React 组件渲染为 HTML。这些 API 仅在顶层应用程序服务器上使用，用于生成初始 HTML。这个 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks) 可能会为你调用相关 API，大多数组件不需要导入或使用这些 API。
 
 </Intro>
 
 ---
 
-## Server APIs for Node.js Streams {/*server-apis-for-nodejs-streams*/}
+## Node.js 流服务器 API {/*server-apis-for-nodejs-streams*/}
 
-These methods are only available in the environments with [Node.js Streams:](https://nodejs.org/api/stream.html)
+以下方法仅在具有 [Node.js 流](https://nodejs.org/api/stream.html) 的环境中可用：
 
-* [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) renders a React tree to a pipeable [Node.js Stream.](https://nodejs.org/api/stream.html)
-* [`renderToStaticNodeStream`](/reference/react-dom/server/renderToStaticNodeStream) renders a non-interactive React tree to a [Node.js Readable Stream.](https://nodejs.org/api/stream.html#readable-streams)
-
----
-
-## Server APIs for Web Streams {/*server-apis-for-web-streams*/}
-
-These methods are only available in the environments with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), which includes browsers, Deno, and some modern edge runtimes:
-
-* [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) renders a React tree to a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
+* [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) 将 React 树渲染为可传输的 [Node.js 流](https://nodejs.org/api/stream.html)。
+* [`renderToStaticNodeStream`](/reference/react-dom/server/renderToStaticNodeStream) 将非交互式 React 树渲染为 [Node.js 可读流](https://nodejs.org/api/stream.html#readable-streams)。
 
 ---
 
-## Server APIs for non-streaming environments {/*server-apis-for-non-streaming-environments*/}
+## Web 流服务器 API {/*server-apis-for-web-streams*/}
 
-These methods can be used in the environments that don't support streams:
+以下方法仅在具有 [Web 流](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的环境中可用，包括浏览器、Deno，以及一些现代 edge 运行时：
 
-* [`renderToString`](/reference/react-dom/server/renderToString) renders a React tree to a string.
-* [`renderToStaticMarkup`](/reference/react-dom/server/renderToStaticMarkup) renders a non-interactive React tree to a string.
-
-They have limited functionality compared to the streaming APIs.
++   [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) 将 React 树渲染为 [可读的 Web 流](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)。
 
 ---
 
-## Deprecated server APIs {/*deprecated-server-apis*/}
+## 非流式环境 API {/*server-apis-for-non-streaming-environments*/}
+
+以下方法可以在非流式环境中使用：
+
+* [`renderToString`](/reference/react-dom/server/renderToString) 将 React 树渲染为字符串。
+* [`renderToStaticMarkup`](/reference/react-dom/server/renderToStaticMarkup) 将非交互式 React 树渲染为字符串。
+
+相比于流式 API，这些 API 在功能上有些限制。
+
+---
+
+## 已弃用的服务器 API {/*deprecated-server-apis*/}
 
 <Deprecated>
 
-These APIs will be removed in a future major version of React.
+这些 API 将在未来的 React 主要版本中被移除。
 
 </Deprecated>
 
-* [`renderToNodeStream`](/reference/react-dom/server/renderToNodeStream) renders a React tree to a [Node.js Readable stream.](https://nodejs.org/api/stream.html#readable-streams) (Deprecated.)
+* [`renderToNodeStream`](/reference/react-dom/server/renderToNodeStream) 为 [Node.js 只读流](https://nodejs.org/api/stream.html#readable-streams) 渲染 React 树（已启用）。
