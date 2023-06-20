@@ -70,7 +70,7 @@ title: "<select>"
 
 - 与 HTML 不同，在 `<option>` 上传递 `selected` 属性将不受支持。你应该使用 [`<select defaultValue>`](#providing-an-initially-selected-option) 处理非受控选择框；而使用 [`<select value>`](#controlling-a-select-box-with-a-state-variable) 处理受控选择框。
 - 如果选择框收到 `value` 属性，它将被视为 [受控组件](#controlling-a-select-box-with-a-state-variable)。
-- 选择框不能同时受控与非受控的。
+- 选择框不能同时受控与非受控。
 - 选择框在其生命周期内无法在受控与非受控之间切换。
 - 每个受控选择框都需要 `onChange` 事件处理程序，它会同步更新其后备值。
 
