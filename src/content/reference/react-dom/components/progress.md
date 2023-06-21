@@ -4,7 +4,7 @@ title: "<progress>"
 
 <Intro>
 
-[浏览器的内置 `<progress>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) 允许你渲染一个进度指示器。
+[浏览器的内置 `<progress>` 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/progress) 允许你渲染一个进度指示器。
 
 ```js
 <progress value={0.5} />
@@ -20,7 +20,7 @@ title: "<progress>"
 
 ### `<progress>` {/*progress*/}
 
-使用 [浏览器的内置 `<progress>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) 渲染一个进度指示器。
+使用 [浏览器的内置 `<progress>` 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/progress) 渲染一个进度指示器。
 
 ```js
 <progress value={0.5} />
@@ -34,8 +34,8 @@ title: "<progress>"
 
 除此之外，`<progress>` 还支持以下属性：
 
--   [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attr-max)：一个数字，表示指定的最大 `value`。默认值为 `1`。
--   [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attr-value)：一个介于 `0` 至 `max` 之间的数字。如果不确定具体的进度，那么该值可以为 `null`。`value` 表示完成了多少进度。
+-   [`max`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/progress#attr-max)：一个数字，表示指定的最大 `value`。默认值为 `1`。
+-   [`value`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/progress#attr-value)：一个介于 `0` 至 `max` 之间的数字。如果不确定具体的进度，那么该值可以为 `null`。`value` 表示完成了多少进度。
 
 ---
 
