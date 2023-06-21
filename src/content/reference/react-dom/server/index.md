@@ -46,4 +46,4 @@ title: Server React DOM APIs
 
 </Deprecated>
 
-* [`renderToNodeStream`](/reference/react-dom/server/renderToNodeStream) 为 [Node.js 只读流](https://nodejs.org/api/stream.html#readable-streams) 渲染 React 树（已启用）。
+* [`renderToNodeStream`](/reference/react-dom/server/renderToNodeStream) 为 [Node.js 只读流](https://nodejs.org/api/stream.html#readable-streams) 渲染 React 树（已弃用）。
