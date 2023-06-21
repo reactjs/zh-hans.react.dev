@@ -24,14 +24,14 @@ title: <Suspense>
 ### `<Suspense>` {/*suspense*/}
 
 #### 参数 {/*props*/}
-* `children`: 实际的UI渲染内容。如果 `children` 在渲染中挂起，Suspense 边界将切换到渲染 `fallback`。
-* `fallback`: 一个在实际的 UI 未渲染完成时代替其渲染的备用 UI。任何有效的 React Node 都被接受，但实际上 `fallback` 是一个轻量的占位符，例如加载中图标或者骨架屏。Suspense 将自动切换到 `fallback` 当 `children` 挂起时，并在数据就位时切换回`children`。如果 `fallback` 在渲染中挂起，它将自动激活最近的Suspense边界。
+* `children`：实际的 UI 渲染内容。如果 `children` 在渲染中挂起，Suspense 边界将切换到渲染 `fallback`。
+* `fallback`：一个在实际的 UI 未渲染完成时代替其渲染的备用 UI。任何有效的 React Node 都被接受，但实际上 `fallback` 是一个轻量的占位符，例如加载中图标或者骨架屏。Suspense 将自动切换到 `fallback` 当 `children` 挂起时，并在数据就位时切换回`children`。如果 `fallback` 在渲染中挂起，它将自动激活最近的 Suspense 边界。
 
 #### 注意事项 {/*caveats*/}
 
 - React 不会保留任何在首次挂载前被挂起的渲染的任何状态。当组件完成加载后，React 将从头开始重新尝试渲染挂起的组件树。
 - 如果 Suspense 正在显示 React 组件树中的内容，但是被再次挂起，`fallback` 将再次显示，除非导致它的更新是由 [`startTransition`](/reference/react/startTransition) 或 [`useDeferredValue`](/reference/react/useDeferredValue) 发起的。
-- 如果 React 因已经可见的内容被再次挂起而需要隐藏它， 它将清理内容树中的 [layout Effects](/reference/react/useLayoutEffect)。当内容可以被再次展示时，React 将重新触发 `layout Effects` 。这确保了测量 DOM 布局的 Effects 不会在内容不可见时运行。
+- 如果 React 因已经可见的内容被再次挂起而需要隐藏它， 它将清理内容树中的 [layout Effects](/reference/react/useLayoutEffect)。当内容可以被再次展示时，React 将重新触发 `layout Effects`。这确保了测量 DOM 布局的 Effects 不会在内容不可见时运行。
 - React 带有内置的优化，例如 **流式服务端渲染** 和 **选择性注水**，它们已经与 Suspense 集成。 阅读 [架构概述](https://github.com/reactwg/react-18/discussions/37) 并观看 [技术讲座](https://www.youtube.com/watch?v=pj5N-Khihgc)<sup><a href="#note1">[1]</a></sup> 以了解更多。
 
 ---
@@ -48,7 +48,7 @@ title: <Suspense>
 </Suspense>
 ```
 
-React将展示你的 <CodeStep step={1}> 加载中回退 </CodeStep> 直到 <CodeStep step={2}> 子组件 </CodeStep> 需要的所有代码和数据都加载完成。
+React 将展示你的 <CodeStep step={1}> 加载中回退 </CodeStep> 直到 <CodeStep step={2}> 子组件 </CodeStep> 需要的所有代码和数据都加载完成。
 
 在下面的例子中，`Albums` 组件在获取专辑列表时被 **挂起** 。在它准备好渲染之前，React 切换到最近的 Suspense 边界来显示回退 —— 你的 `Loading` 组件。然后，当数据加载完成时，React 会隐藏 `Loading` 回退并渲染带有数据的 `Albums` 组件。
 
@@ -118,7 +118,7 @@ function Loading() {
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
-// 该API并未在React的稳定版本中可用
+// 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
@@ -136,8 +136,8 @@ export default function Albums({ artistId }) {
   );
 }
 
-// 这是一个解决bug的临时方案，以便让演示运行起来。
-// TODO：当bug修复后，用真正的实现替换。
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -363,7 +363,7 @@ export default function Panel({ children }) {
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
-// 该API并未在React的稳定版本中可用
+// 该 API 未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
@@ -377,8 +377,8 @@ export default function Biography({ artistId }) {
   );
 }
 
-// 这是一个解决bug的临时方案，以便让演示运行起来。
-// TODO：当bug修复后，用真正的实现替换。
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -407,7 +407,7 @@ function use(promise) {
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
-// 该API并未在React的稳定版本中可用
+// 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
@@ -425,8 +425,8 @@ export default function Albums({ artistId }) {
   );
 }
 
-// 这是一个解决bug的临时方案，以便让演示运行起来。
-// TODO：当bug修复后，用真正的实现替换。
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -700,7 +700,7 @@ export default function Panel({ children }) {
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
-// 该API并未在React的稳定版本中可用
+// 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
@@ -714,8 +714,8 @@ export default function Biography({ artistId }) {
   );
 }
 
-// 这是一个解决bug的临时方案，以便让演示运行起来。
-// TODO：当bug修复后，用真正的实现替换。
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -744,7 +744,7 @@ function use(promise) {
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
-// 该API并未在React的稳定版本中可用
+// 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
@@ -762,8 +762,8 @@ export default function Albums({ artistId }) {
   );
 }
 
-// 这是一个解决bug的临时方案，以便让演示运行起来。
-// TODO：当bug修复后，用真正的实现替换。
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -916,7 +916,7 @@ async function getAlbums() {
 
 </Sandpack>
 
-Suspense 边界允许你协调UI的哪些部分应该总是一起“浮现”，以及哪些部分应该按照加载状态的序列逐步显示更多内容。你可以在树的任何位置添加、移动或删除 Suspense 边界，而不会影响应用程序的其余的行为。
+Suspense 边界允许你协调 UI 的哪些部分应该总是一起“浮现”，以及哪些部分应该按照加载状态的序列逐步显示更多内容。你可以在树的任何位置添加、移动或删除 Suspense 边界，而不会影响应用程序的其余的行为。
 
 不要在每个组件周围都放置 Suspense 边界。Suspense 边界不应该比你希望用户体验的加载序列更细粒度。如果你与设计师合作，请询问他们应该放置加载状态的位置——他们很可能已经在设计线框图中包含了它们。
 
@@ -967,7 +967,7 @@ export default function App() {
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
-// 该API并未在React的稳定版本中可用
+// 该 API 并未在 React 稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
@@ -991,8 +991,8 @@ export default function SearchResults({ query }) {
   );
 }
 
-// 这是一个解决bug的临时方案，以便让演示运行起来。
-// TODO：当bug修复后，用真正的实现替换。
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -1196,7 +1196,7 @@ export default function App() {
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
-// 该API并未在React的稳定版本中可用
+// 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
@@ -1220,8 +1220,8 @@ export default function SearchResults({ query }) {
   );
 }
 
-// 这是一个解决bug的临时方案，以便让演示运行起来。
-// TODO：当bug修复后，用真正的实现替换。
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -1482,7 +1482,7 @@ function AlbumsGlimmer() {
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
-// 该API并未在React的稳定版本中可用
+// 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
@@ -1500,8 +1500,8 @@ export default function Albums({ artistId }) {
   );
 }
 
-// 这是一个解决bug的临时方案，以便让演示运行起来。
-// TODO：当bug修复后，用真正的实现替换。
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -1530,7 +1530,7 @@ function use(promise) {
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
-// 该API并未在React的稳定版本中可用
+// 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
@@ -1544,8 +1544,8 @@ export default function Biography({ artistId }) {
   );
 }
 
-// 这是一个解决bug的临时方案，以便让演示运行起来。
-// TODO：当bug修复后，用真正的实现替换。
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -1869,7 +1869,7 @@ function AlbumsGlimmer() {
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
-// 该API并未在React的稳定版本中可用
+// 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
@@ -1887,8 +1887,8 @@ export default function Albums({ artistId }) {
   );
 }
 
-// 这是一个解决bug的临时方案，以便让演示运行起来。
-// TODO：当bug修复后，用真正的实现替换。
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -1917,7 +1917,7 @@ function use(promise) {
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
-// 该API并未在React的稳定版本中可用
+// 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
@@ -1931,8 +1931,8 @@ export default function Biography({ artistId }) {
   );
 }
 
-// 这是一个解决bug的临时方案，以便让演示运行起来。
-// TODO：当bug修复后，用真正的实现替换。
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -2255,7 +2255,7 @@ function AlbumsGlimmer() {
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
-// 该API并未在React的稳定版本中可用
+// 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
@@ -2273,8 +2273,8 @@ export default function Albums({ artistId }) {
   );
 }
 
-// 这是一个解决bug的临时方案，以便让演示运行起来。
-// TODO：当bug修复后，用真正的实现替换。
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -2303,7 +2303,7 @@ function use(promise) {
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
-// 该API并未在React的稳定版本中可用
+// 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
@@ -2317,8 +2317,8 @@ export default function Biography({ artistId }) {
   );
 }
 
-// 这是一个解决bug的临时方案，以便让演示运行起来。
-// TODO：当bug修复后，用真正的实现替换。
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
