@@ -338,7 +338,7 @@ textarea { display: block; margin-top: 5px; margin-bottom: 10px; }
 
 ## 故障排除 {/*troubleshooting*/}
 
-### 当我输入时，文本区域没有更新 {/*my-text-area-doesnt-update-when-i-type-into-it*/}
+### 输入时文本框没有更新 {/*my-text-area-doesnt-update-when-i-type-into-it*/}
 
 如果传递了 `value` 但没有传递 `onChange`，你将在控制台中看到一个错误：
 
