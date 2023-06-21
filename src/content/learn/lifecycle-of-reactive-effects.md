@@ -21,7 +21,7 @@ Effect 与组件有不同的生命周期。组件可以挂载、更新或卸载�
 
 </YouWillLearn>
 
-## 响应式 Effect 的生命周期 {/*the-lifecycle-of-an-effect*/}
+## Effect 的生命周期 {/*the-lifecycle-of-an-effect*/}
 
 每个 React 组件都经历相同的生命周期：
 
