@@ -4,7 +4,7 @@ title: "<textarea>"
 
 <Intro>
 
-[浏览器内置的 `<textarea>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) 允许你渲染一个多行文本输入框。
+[浏览器内置的 `<textarea>` 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea) 允许你渲染一个多行文本输入框。
 
 ```js
 <textarea />
@@ -20,7 +20,7 @@ title: "<textarea>"
 
 ### `<textarea>` {/*textarea*/}
 
-使用 [浏览器内置的 `<textarea>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) 渲染一个多行文本输入框。
+使用 [浏览器内置的 `<textarea>` 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea) 渲染一个多行文本输入框。
 
 ```js
 <textarea name="postContent" />
@@ -44,28 +44,28 @@ title: "<textarea>"
 
 以下 `<select>` 属性均可用于受控与非受控组件：
 
-* [`autoComplete`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-autocomplete)：可以为 `'on'` 或 `'off'`，表示自动完成的行为。
-* [`autoFocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-autofocus)：布尔值。如果为 `true`，React 将在挂载时聚焦该元素。
+* [`autoComplete`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-autocomplete)：可以为 `'on'` 或 `'off'`，表示自动完成的行为。
+* [`autoFocus`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-autofocus)：布尔值。如果为 `true`，React 将在挂载时聚焦该元素。
 * `children`：`<textarea>` 不接受子元素，如果要设置初始值，请使用 `defaultValue`。
-* [`cols`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-cols)：数字，表示默认宽度，以平均字符宽度计算。默认为 `20`。
-* [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-disabled)：布尔值。如果为 `true`，则输入框将不可交互且显示为禁用状态（dimmed）。
-* [`form`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-form)：字符串，表示此文本框所属的 `<form>` 的 `id`。如果未指定，则为最近的父表单。
-* [`maxLength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-maxlength)：数字，表示文本的最大长度。
-* [`minLength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-minlength)：数字，表示文本的最小长度。
-* [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name)：字符串，表示在表单提交时与此输入框关联的名称。
-* `onChange`：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。对于 [受控文本框](#controlling-a-text-area-with-a-state-variable)，在用户更改输入值时立即触发（例如，对于每个按键）。此行为类似于浏览器 [`input` 事件](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event)。
+* [`cols`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-cols)：数字，表示默认宽度，以平均字符宽度计算。默认为 `20`。
+* [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-disabled)：布尔值。如果为 `true`，则输入框将不可交互且显示为禁用状态（dimmed）。
+* [`form`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-form)：字符串，表示此文本框所属的 `<form>` 的 `id`。如果未指定，则为最近的父表单。
+* [`maxLength`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-maxlength)：数字，表示文本的最大长度。
+* [`minLength`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-minlength)：数字，表示文本的最小长度。
+* [`name`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#name)：字符串，表示在表单提交时与此输入框关联的名称。
+* `onChange`：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。对于 [受控文本框](#controlling-a-text-area-with-a-state-variable)，在用户更改输入值时立即触发（例如，对于每个按键）。此行为类似于浏览器 [`input` 事件](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/input_event)。
 * `onChangeCapture`：与 `onChange` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
-* [`onInput`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。在用户更改值时立即触发。由于历史原因，在 React 习惯于使用 `onChange`，工作方式类似。
+* [`onInput`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/input_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。在用户更改值时立即触发。由于历史原因，在 React 习惯于使用 `onChange`，工作方式类似。
 * `onInputCapture`：与 `onInput` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
-* [`onInvalid`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/invalid_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。如果输入的内容在表单提交时未通过验证，则会触发此事件。与内置的 `invalid` 事件不同，React 的 `onInvalid` 事件可以进行冒泡。
+* [`onInvalid`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLInputElement/invalid_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。如果输入的内容在表单提交时未通过验证，则会触发此事件。与内置的 `invalid` 事件不同，React 的 `onInvalid` 事件可以进行冒泡。
 * `onInvalidCapture`：与 `onInvalid` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
-* [`onSelect`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/select_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。当 `<textarea>` 的选择内容发生变化后触发。React 扩展了 `onSelect` 事件，还会在空选择和编辑（可能会影响选择）时触发。
+* [`onSelect`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLTextAreaElement/select_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。当 `<textarea>` 的选择内容发生变化后触发。React 扩展了 `onSelect` 事件，还会在空选择和编辑（可能会影响选择）时触发。
 * `onSelectCapture`: 与 `onSelect` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
-* [`placeholder`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-placeholder)：字符串，表示当文本框的值为空时，以淡色显示的占位符。
-* [`readOnly`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-readonly)：布尔值，如果为 `true`，文本框将无法被用户编辑。
-* [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-required)：布尔值，如果为 `true`，则必须提供值才能在表单中提交。
-* [`rows`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-rows)：数字，表示默认高度，以平均字符高度计算。默认为 `2`。
-* [`wrap`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-wrap)：可以是 `'hard'`、`'soft'` 或 `'off'` 中的一个值，表示提交表单时文本应如何换行。
+* [`placeholder`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-placeholder)：字符串，表示当文本框的值为空时，以淡色显示的占位符。
+* [`readOnly`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-readonly)：布尔值，如果为 `true`，文本框将无法被用户编辑。
+* [`required`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-required)：布尔值，如果为 `true`，则必须提供值才能在表单中提交。
+* [`rows`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-rows)：数字，表示默认高度，以平均字符高度计算。默认为 `2`。
+* [`wrap`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-wrap)：可以是 `'hard'`、`'soft'` 或 `'off'` 中的一个值，表示提交表单时文本应如何换行。
 
 #### 注意 {/*caveats*/}
 
@@ -81,7 +81,7 @@ title: "<textarea>"
 
 ### 展示一个文本框 {/*displaying-a-text-area*/}
 
-使用 `<textarea>` 渲染文本框。你可以使用 [`rows`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#rows) 和 [`cols`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#cols) 属性指定其默认大小，但默认情况下用户可以调整大小。如果要禁用调整大小功能，可以在 CSS 中指定 `resize: none`。
+使用 `<textarea>` 渲染文本框。你可以使用 [`rows`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#rows) 和 [`cols`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#cols) 属性指定其默认大小，但默认情况下用户可以调整大小。如果要禁用调整大小功能，可以在 CSS 中指定 `resize: none`。
 
 <Sandpack>
 
@@ -109,9 +109,9 @@ label, textarea { display: block; }
 
 ### 为文本框提供 label 属性 {/*providing-a-label-for-a-text-area*/}
 
-一般而言，应该将每个 `<textarea>` 都放置在 [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) 内，表示此标签与该选择框相关联。当用户单击标签时，浏览器将自动聚焦选择框。这对于可访问性也非常重要：当用户聚焦选择框时，屏幕阅读器将宣布标签标题。
+一般而言，应该将每个 `<textarea>` 都放置在 [`<label>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/label) 内，表示此标签与该选择框相关联。当用户单击标签时，浏览器将自动聚焦选择框。这对于可访问性也非常重要：当用户聚焦选择框时，屏幕阅读器将宣布标签标题。
 
-如果无法将 `<textarea>` 放置在 `<label>` 内，请通过将相同的 ID 传递给 `<textareaid>` 与 [`<label htmlFor>`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor) 来将它们关联起来。为了避免一个组件的多实例之间的冲突，使用 [`useId`](/reference/react/useId) 生成这样的 ID。
+如果无法将 `<textarea>` 放置在 `<label>` 内，请通过将相同的 ID 传递给 `<textareaid>` 与 [`<label htmlFor>`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLLabelElement/htmlFor) 来将它们关联起来。为了避免一个组件的多实例之间的冲突，使用 [`useId`](/reference/react/useId) 生成这样的 ID。
 
 <Sandpack>
 
@@ -243,7 +243,7 @@ input { margin: 5px; }
 
 <Pitfall>
 
-默认情况下，`<form>` 内的任何 `<button>` 都可以提交表单。这可能会让人感到惊讶！如果你有自定义 `Button` 组件，请考虑使用 [`<button type="button">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/button) 而不是 `<button>`。如果你想要明确指定提交表单的按钮，请使用 `<button type="submit">`。
+默认情况下，`<form>` 内的任何 `<button>` 都可以提交表单。这可能会让人感到惊讶！如果你有自定义 `Button` 组件，请考虑使用 [`<button type="button">`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input/button) 而不是 `<button>`。如果你想要明确指定提交表单的按钮，请使用 `<button type="submit">`。
 
 </Pitfall>
 
