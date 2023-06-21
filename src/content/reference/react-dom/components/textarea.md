@@ -34,13 +34,13 @@ title: "<textarea>"
 
 你可以通过传递 `value` 属性 [以控制文本框](#controlling-a-text-area-with-a-state-variable)。
 
-* `value`：一个字符串，用于控制文本区域内的文本。
+* `value`：一个字符串，用于控制文本框内的文本。
 
 当你传递 `value` 时，你必须同时传递一个 `onChange` 处理函数，用于更新传递的值。
 
 如果 `<textarea>` 是非受控组件，那么你应该传递 `defaultValue` 参数：
 
-* `defaultValue`：一个字符串，表示文本区域的 [初始值](#providing-an-initial-value-for-a-text-area)。
+* `defaultValue`：一个字符串，表示文本框的 [初始值](#providing-an-initial-value-for-a-text-area)。
 
 以下 `<select>` 属性均可用于受控与非受控组件：
 
@@ -61,8 +61,8 @@ title: "<textarea>"
 * `onInvalidCapture`：与 `onInvalid` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
 * [`onSelect`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/select_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。当 `<textarea>` 的选择内容发生变化后触发。React 扩展了 `onSelect` 事件，还会在空选择和编辑（可能会影响选择）时触发。
 * `onSelectCapture`: 与 `onSelect` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
-* [`placeholder`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-placeholder)：字符串，表示当文本区域的值为空时，以淡色显示的占位符。
-* [`readOnly`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-readonly)：布尔值，如果为 `true`，文本区域将无法被用户编辑。
+* [`placeholder`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-placeholder)：字符串，表示当文本框的值为空时，以淡色显示的占位符。
+* [`readOnly`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-readonly)：布尔值，如果为 `true`，文本框将无法被用户编辑。
 * [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-required)：布尔值，如果为 `true`，则必须提供值才能在表单中提交。
 * [`rows`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-rows)：数字，表示默认高度，以平均字符高度计算。默认为 `2`。
 * [`wrap`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attr-wrap)：可以是 `'hard'`、`'soft'` 或 `'off'` 中的一个值，表示提交表单时文本应如何换行。
@@ -81,7 +81,7 @@ title: "<textarea>"
 
 ### 展示一个文本框 {/*displaying-a-text-area*/}
 
-使用 `<textarea>` 渲染文本区域。你可以使用 [`rows`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#rows) 和 [`cols`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#cols) 属性指定其默认大小，但默认情况下用户可以调整大小。如果要禁用调整大小功能，可以在 CSS 中指定 `resize: none`。
+使用 `<textarea>` 渲染文本框。你可以使用 [`rows`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#rows) 和 [`cols`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#cols) 属性指定其默认大小，但默认情况下用户可以调整大小。如果要禁用调整大小功能，可以在 CSS 中指定 `resize: none`。
 
 <Sandpack>
 
