@@ -31,25 +31,25 @@ const domNode = document.getElementById('root');
 const root = hydrateRoot(domNode, reactNode);
 ```
 
-React 将会连接到内部有 `domNode` 的 HTML 上，然后接管其中的 `domNode` 。一个完全由 React 构建的应用只会在其根组件中调用一次 `hydrateRoot` 方法。
+React 将会连接到内部有 `domNode` 的 HTML 上，然后接管其中的 `domNode`。一个完全由 React 构建的应用只会在其根组件中调用一次 `hydrateRoot` 方法。
 
 [请看下面更多的例子。](#usage)
 
 #### 参数 {/*parameters*/}
 
-* `domNode`: 一个在服务器端渲染时呈现为根元素的 [DOM 元素](https://developer.mozilla.org/zh-CN/docs/Web/API/Element)。
+* `domNode`： 一个在服务器端渲染时呈现为根元素的 [DOM 元素](https://developer.mozilla.org/zh-CN/docs/Web/API/Element)。
 
-* `reactNode`: 用于渲染已存在 HTML 的 "React 节点"。这个节点通常是一些类似于 `<App />` 的 JSX  ，它会在 `ReactDOM Server` 端使用类似于  `renderToPipeableStream(<App />)` 的方法进行渲染。
+* `reactNode`： 用于渲染已存在 HTML 的 "React 节点"。这个节点通常是一些类似于 `<App />` 的 JSX  ，它会在 `ReactDOM Server` 端使用类似于  `renderToPipeableStream(<App />)` 的方法进行渲染。
 
-* **可选**  `options` ：一个包含此 React 根元素选项的对象。
+* **可选**  `options`：一个包含此 React 根元素选项的对象。
 
-  * **可选**  `onRecoverableError` ：当 React 自动从错误中恢复时调用的回调函数。
-  * **可选**  `identifierPrefix` ：字符串前缀，用于标识由 [`useId`](/reference/react/useId) 生成的 ID ，可以避免在同一页面上使用多个 React 根元素时出现冲突。必须与服务端使用的前缀相同。
+  * **可选**  `onRecoverableError`：当 React 自动从错误中恢复时调用的回调函数。
+  * **可选**  `identifierPrefix`：字符串前缀，用于标识由 [`useId`](/reference/react/useId) 生成的 ID ，可以避免在同一页面上使用多个 React 根元素时出现冲突。必须与服务端使用的前缀相同。
 
 
 #### 返回值 {/*returns*/}
 
-`hydrateRoot` 返回一个包含两个方法的对象 [`render`](#root-render) 和 [`unmount`.](#root-unmount)
+`hydrateRoot` 返回一个包含两个方法的对象 [`render`](#root-render) 和 [`unmount`](#root-unmount)。
 
 #### 警告 {/*caveats*/}
 
@@ -74,7 +74,7 @@ React 将会在 hydrate `root` 中更新 `<App />`。
 
 #### 参数 {/*root-render-parameters*/}
 
-* `reactNode` ：你想要更新的 "React 节点"。通常这会是一段JSX代码，例如 `<App />` ，但你也可以传递一个通过 [`createElement()`](/reference/react/createElement) 创建的 React 元素，一个字符串，一个数字，`null` 值 或者 `undefined` 值。
+* `reactNode`：你想要更新的 "React 节点"。通常这会是一段JSX代码，例如 `<App />`，但你也可以传递一个通过 [`createElement()`](/reference/react/createElement) 创建的 React 元素，一个字符串，一个数字，`null` 值 或者 `undefined` 值。
 
 
 #### 返回值 {/*root-render-returns*/}
@@ -83,7 +83,7 @@ React 将会在 hydrate `root` 中更新 `<App />`。
 
 #### 警告 {/*root-render-caveats*/}
 
-* 如果你在根节点还没有完成 hydrating 的情况下调用了 `root.render` ，React 将清除现有的服务端渲染 HTML 内容，并将整个根节点切换到客户端渲染。
+* 如果你在根节点还没有完成 hydrating 的情况下调用了 `root.render`，React 将清除现有的服务端渲染 HTML 内容，并将整个根节点切换到客户端渲染。
 
 ---
 
@@ -115,7 +115,7 @@ root.unmount();
 
 * 调用 `root.unmount` 将卸载树中的所有组件，并“分离” React 与根 DOM 节点之间的连接。
 
-* 一旦你调用 `root.unmount` ，就不能再在根节点上调用 `root.render` 。在未挂载的根节点上尝试调用 `root.render` 将抛出“不能更新未挂载的根节点”的错误。
+* 一旦你调用 `root.unmount`，就不能再在根节点上调用 `root.render` 。在未挂载的根节点上尝试调用 `root.render` 将抛出“不能更新未挂载的根节点”的错误。
 
 ---
 
