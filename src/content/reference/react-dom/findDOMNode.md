@@ -165,7 +165,7 @@ export default AutoselectingInput;
 
 </Sandpack>
 
-这将出现问题。`findDOMNode(this)` 找到的是 `<div>` 节点，但是期望的是找到 `<input>` 节点。为了避免这些问题，考虑使用 [`createRef`](/reference/react/createRef) 管理特定的 DOM 节点。
+这将出现问题。`findDOMNode(this)` 找到的是 `<div>` 节点，但其实我们期望找到的是 `<input>` 节点。为了避免这些问题，考虑使用 [`createRef`](/reference/react/createRef) 管理特定的 DOM 节点。
 
 在这个例子中，不应再使用 `findDOMNode`。相反，考虑使用 `inputRef = createRef(null)`。如果想要从中读取 DOM 节点，可以使用 `this.inputRef.current`。如果想要将其附加在 JSX 上，考虑渲染 `<input ref={this.inputRef} />`。这将帮助从 JSX 连接到 DOM 节点：
 
