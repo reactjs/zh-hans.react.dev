@@ -4,7 +4,7 @@ title: Server React DOM APIs
 
 <Intro>
 
-`react-dom/server` API 允许你在服务器上将 React 组件渲染为 HTML。这些 API 仅在顶层应用程序服务器上使用，用于生成初始 HTML。这个 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks) 可能会为你调用相关 API，大多数组件不需要导入或使用这些 API。
+`react-dom/server` API 允许你在服务器上将 React 组件渲染为 HTML。这些 API 仅在顶层应用程序服务器上使用，用于生成初始 HTML。有的 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks) 可能会为你调用相关 API，大多数组件不需要导入或使用这些 API。
 
 </Intro>
 
