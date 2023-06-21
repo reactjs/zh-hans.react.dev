@@ -185,7 +185,7 @@ label, textarea { display: block; }
 
 ### 提交表单时读取文本框的值 {/*reading-the-text-area-value-when-submitting-a-form*/}
 
-在文本框周围添加一个包含 `<button type="submit">` 按钮的 `<form>` 组件。这将调用 `<form onSubmit>` 事件处理程序。默认情况下，浏览器将向当前 URL 发送表单数据并刷新页面。你可以通过调用 `e.preventDefault()` 取消此默认行为，并使用 `new FormData(e.target)` 读取表单数据。
+在文本框周围添加一个包含 [`<button type="submit">`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/button) 按钮的 [`<form>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form) 组件。这将调用 `<form onSubmit>` 事件处理程序。默认情况下，浏览器将向当前 URL 发送表单数据并刷新页面。你可以通过调用 `e.preventDefault()` 取消此默认行为，并使用 [`new FormData(e.target)`](https://developer.mozilla.org/zh-CN/docs/Web/API/FormData) 读取表单数据。
 <Sandpack>
 
 ```js
