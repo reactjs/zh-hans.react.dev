@@ -123,7 +123,7 @@ export default function Form() {
   return (
     <>
       <label htmlFor={postTextAreaId}>
-    	  写下你的贴子：
+        写下你的贴子：
       </label>
       <textarea
         id={postTextAreaId}
