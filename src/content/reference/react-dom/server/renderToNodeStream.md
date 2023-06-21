@@ -37,7 +37,7 @@ stream.pipe(response);
 
 在客户端调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 使由服务器生成的 HTML 具有交互功能。
 
-[参加下面更多示例](#usage)。
+[参见下面更多示例](#usage)。
 
 #### 参数 {/*parameters*/}
 
