@@ -253,7 +253,7 @@ input { margin: 5px; }
 
 像 `<textarea />` 这样的选择框是非受控的。即使你 [传递了初始值](#providing-an-initial-value-for-a-text-area)，比如 `<textarea defaultValue="Initial text" />`，你的 JSX 也只是指定了初始值，而非当前时刻的值。
 
-**如果要渲染一个受控选择框，请传递 `value` 属性。**React 将强制传递 `value` 属性给文本框。通常，你可以通过声明一个 [state](/reference/react/useState) 来控制文本框：
+**如果要渲染一个受控选择框，请传递 `value` 属性**。React 将强制传递 `value` 属性给文本框。通常，你可以通过声明一个 [state](/reference/react/useState) 来控制文本框：
 
 ```js {2,6,7}
 function NewPost() {
