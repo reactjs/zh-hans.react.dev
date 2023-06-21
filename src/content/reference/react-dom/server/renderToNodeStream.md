@@ -49,7 +49,7 @@ stream.pipe(response);
 
 #### 注意 {/*caveats*/}
 
-* 此方法会等待所有 [Suspense边界](/reference/react/Suspense) 完成后才返回输出。
+* 此方法会等待所有 [Suspense 边界](/reference/react/Suspense) 完成后才返回输出。
 
 * 从 React 18 开始，此方法会缓冲所有输出，因此实际上它并没有提供任何流式传输的好处。这就是为什么建议改用 [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream)。
 
