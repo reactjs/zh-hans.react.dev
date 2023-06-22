@@ -51,7 +51,7 @@ console.log(clonedElement); // <Row title="Cabbage">Goodbye</Row>
 
 * `props`：`props` 参数必须是一个对象或 `null`。 如果传 `null`，克隆后的元素将保留所有原始的 `element.props`。 否则，对于 `props` 对象中的每个 prop 属性，返回的元素将“优先”使用 `props` 中的值而不是 `element.props` 中的值。 其余的 props 将从原始的 `element.props` 中填充。如果你传递 `props.key` 或 `props.ref`，它们将替换原来的。
 
-* **optional** `...children`：零个或多个子节点。 它们可以是任何 React 节点，包括 React 元素、字符串、数字、[portals](/reference/react-dom/createPortal)、空节点（`null`、`undefined`、`true` 和 `false`）， 和 React 元素数组。 如果你不传递任何 `...children` 参数，则原始的 `element.props.children` 将被保留。
+* **可选** `...children`：零个或多个子节点。 它们可以是任何 React 节点，包括 React 元素、字符串、数字、[portals](/reference/react-dom/createPortal)、空节点（`null`、`undefined`、`true` 和 `false`）， 和 React 元素数组。 如果你不传递任何 `...children` 参数，则原始的 `element.props.children` 将被保留。
 
 #### 返回值 {/*returns*/}
 
@@ -70,7 +70,7 @@ console.log(clonedElement); // <Row title="Cabbage">Goodbye</Row>
 
 * 如果 children 已知是静态的，则你应该 **将它们作为多个参数传递给 `cloneElement`**，例如 `cloneElement(element, null, child1, child2, child3)`。如果你的 children 是动态的，请将整个数组作为第三个参数传递：`cloneElement(element, null, listItems)`。这确保了 React 会对任何动态列表 [警告你缺少“key”](/learn/rendering-lists#keeping-list-items-in-order-with-key)，对于静态的列表，这是不必要的，因为它们不会重新排序。
 
-* `cloneElement` 会使得跟踪数据流向变得更加困难，所以请 **尝试使用 [替代方案](#alternatives)。**
+* `cloneElement` 会使得跟踪数据流向变得更加困难，所以请 **尝试使用 [替代方案](#alternatives)**。
 
 ---
 
@@ -259,7 +259,7 @@ export default function List({ items, renderItem }) {
       })}
 ```
 
-`renderItem` 属性称为 “渲染属性”，因为它是决定如何渲染某些内容的属性。例如，您可以传递一个 `renderItem` 实现使用给定的 `isHighlighted` 值呈现 `<Row>`：
+`renderItem` 属性称为 “渲染属性”，因为它是决定如何渲染某些内容的属性。例如，你可以传递一个 `renderItem` 实现使用给定的 `isHighlighted` 值呈现 `<Row>`：
 
 ```js {3,7}
 <List
@@ -403,7 +403,7 @@ button {
 export const HighlightContext = createContext(false);
 ```
 
-您的 `List` 组件可以将其呈现的每个 item 传递到 `HighlightContext` provider 中：
+你的 `List` 组件可以将其呈现的每个 item 传递到 `HighlightContext` provider 中：
 
 ```js {8,10}
 export default function List({ items, renderItem }) {
@@ -420,7 +420,7 @@ export default function List({ items, renderItem }) {
       })}
 ```
 
-With this approach, `Row` does not need to receive an `isHighlighted` prop at all. Instead, it reads the context:
+通过这种方法，`Row` 不需要接收 `isHighlighted`属性，它可以从上下文读取到：
 
 ```js Row.js {2}
 export default function Row({ title }) {
@@ -428,7 +428,7 @@ export default function Row({ title }) {
   // ...
 ```
 
-This allows the calling component to not know or worry about passing `isHighlighted` to `<Row>`:
+这允许调用组件时无需关心是否将 `isHighlighted` 传递给了 `<Row>`：
 
 ```js {4}
 <List
@@ -439,7 +439,7 @@ This allows the calling component to not know or worry about passing `isHighligh
 />
 ```
 
-Instead, `List` and `Row` coordinate the highlighting logic through context.
+相反，`List` 和 `Row` 通过上下文协调突出显示逻辑。
 
 <Sandpack>
 
@@ -485,7 +485,7 @@ export default function List({ items, renderItem }) {
           (i + 1) % items.length
         );
       }}>
-        Next
+        下一步
       </button>
     </div>
   );
@@ -549,13 +549,13 @@ button {
 
 </Sandpack>
 
-[Learn more about passing data through context.](/reference/react/useContext#passing-data-deeply-into-the-tree)
+[了解有关通过 context 传递数据的更多信息](/reference/react/useContext#passing-data-deeply-into-the-tree)。
 
 ---
 
 ### 将逻辑提取到自定义 Hook 中 {/*extracting-logic-into-a-custom-hook*/}
 
-Another approach you can try is to extract the "non-visual" logic into your own Hook, and use the information returned by your Hook to decide what to render. For example, you could write a `useList` custom Hook like this:
+你可以尝试的另一种方法是将 “非视觉” 的逻辑提取到你的自定义 Hook 中，并使用 Hook 的返回值来决定渲染什么。例如，你可以编写一个 `useList` 自定义 Hook，如下所示：
 
 ```js
 import { useState } from 'react';
@@ -574,7 +574,7 @@ export default function useList(items) {
 }
 ```
 
-Then you could use it like this:
+然后你可以像这样使用它：
 
 ```js {2,9,13}
 export default function App() {
@@ -597,7 +597,7 @@ export default function App() {
 }
 ```
 
-The data flow is explicit, but the state is inside the `useList` custom Hook that you can use from any component:
+数据流是显式的，但状态位于 `useList` 自定义 Hook 内，你可以在任意一个组件内使用它：
 
 <Sandpack>
 
@@ -619,7 +619,7 @@ export default function App() {
       )}
       <hr />
       <button onClick={onNext}>
-        Next
+        下一步
       </button>
     </div>
   );
@@ -690,4 +690,4 @@ button {
 
 </Sandpack>
 
-This approach is particularly useful if you want to reuse this logic between different components.
+如果你想在不同组件之间复用此逻辑，则这个方案十分有用。
