@@ -34,7 +34,7 @@ title: "<progress>"
 
 除此之外，`<progress>` 还支持以下属性：
 
--   [`max`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/progress#attr-max)：一个数字，表示指定的最大 `value`。默认值为 `1`。
+- [`max`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/progress#attr-max)：一个数字，表示指定的最大 `value`。默认值为 `1`。
 - [`value`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/progress#attr-value)：一个介于 `0` 至 `max` 之间的数字。如果不确定具体的进度，那么该值可以为 `null`。`value` 表示完成了多少进度。
 
 ---
