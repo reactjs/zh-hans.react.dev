@@ -84,26 +84,26 @@ function ChatRoom({ roomId }) {
 
 ### 为什么同步可能需要多次进行 {/*why-synchronization-may-need-to-happen-more-than-once*/}
 
-想象一下，这个 `ChatRoom` 组件接收一个 `roomId` 属性，用户可以在下拉菜单中选择。假设初始时，用户选择了 `"所有"` 作为 `roomId`。你的应用程序会显示 `"所有"` 聊天室：
+想象一下，这个 `ChatRoom` 组件接收一个 `roomId` 属性，用户可以在下拉菜单中选择。假设初始时，用户选择了 `"general"` 作为 `roomId`。你的应用程序会显示 `"general"` 聊天室：
 
 ```js {3}
 const serverUrl = 'https://localhost:1234';
 
-function ChatRoom({ roomId /* "所有" */ }) {
+function ChatRoom({ roomId /* "general" */ }) {
   // ...
   return <h1>欢迎来到 {roomId} 房间！</h1>;
 }
 ```
 
-在 UI 显示之后，React 将运行你的 Effect 来 **开始同步**。它连接到`"所有"`聊天室：
+在 UI 显示之后，React 将运行你的 Effect 来 **开始同步**。它连接到`"general"`聊天室：
 
 ```js {3,4}
-function ChatRoom({ roomId /* "所有" */ }) {
+function ChatRoom({ roomId /* "general" */ }) {
   useEffect(() => {
-    const connection = createConnection(serverUrl, roomId); // 连接到 "所有" 聊天室
+    const connection = createConnection(serverUrl, roomId); // 连接到 "general" 聊天室
     connection.connect();
     return () => {
-      connection.disconnect(); // 断开与 "所有" 聊天室的连接
+      connection.disconnect(); // 断开与 "general" 聊天室的连接
     };
   }, [roomId]);
   // ...
@@ -111,72 +111,72 @@ function ChatRoom({ roomId /* "所有" */ }) {
 
 到目前为止，一切都很顺利。
 
-之后，用户在下拉菜单中选择了不同的房间（例如 `"旅游"` ）。首先，React会更新 UI：
+之后，用户在下拉菜单中选择了不同的房间（例如 `"travel"` ）。首先，React会更新 UI：
 
 ```js {1}
-function ChatRoom({ roomId /* "旅游" */ }) {
+function ChatRoom({ roomId /* "travel" */ }) {
   // ...
   return <h1>欢迎来到 {roomId} 房间！</h1>;
 }
 ```
 
-思考接下来应该发生什么。用户在界面中看到 `"旅游"` 是当前选定的聊天室。然而，上次运行的 Effect 仍然连接到 `"所有"` 聊天室。**`roomId` 属性已经发生了变化，所以之前 Effect 所做的事情（连接到 `"所有"` 聊天室）不再与 UI 匹配**。
+思考接下来应该发生什么。用户在界面中看到 `"travel"` 是当前选定的聊天室。然而，上次运行的 Effect 仍然连接到 `"general"` 聊天室。**`roomId` 属性已经发生了变化，所以之前 Effect 所做的事情（连接到 `"general"` 聊天室）不再与 UI 匹配**。
 
 此时，你希望React执行两个操作：
 
-1. 停止与旧的 `roomId` 同步（断开与 `"所有"` 聊天室的连接）
-2. 开始与新的 `roomId` 同步（连接到 `"旅游"` 聊天室）
+1. 停止与旧的 `roomId` 同步（断开与 `"general"` 聊天室的连接）
+2. 开始与新的 `roomId` 同步（连接到 `"travel"` 聊天室）
 
 **幸运的是，你已经教会了 React 如何执行这两个操作**！你的 Effect 的主体部分指定了如何开始同步，而清理函数指定了如何停止同步。现在，React 只需要按照正确的顺序和正确的 props 和 state 来调用它们。让我们看看具体是如何实现的。
 
 ### React 如何重新同步你的 Effect {/*how-react-re-synchronizes-your-effect*/}
 
-回想一下，你的 `ChatRoom` 组件已经接收到了 `roomId` 属性的新值。之前它是 `"所有"`，现在变成了 `"旅游"`。React 需要重新同步你的 Effect，以将你重新连接到不同的聊天室。
+回想一下，你的 `ChatRoom` 组件已经接收到了 `roomId` 属性的新值。之前它是 `"general"`，现在变成了 `"travel"`。React 需要重新同步你的 Effect，以将你重新连接到不同的聊天室。
 
-为了 **停止同步**，React 将调用你的 Effect 返回的清理函数，该函数在连接到 `"所有"` 聊天室后返回。由于 `roomId` 为 `"所有"`，清理函数将断开与 `"所有"` 聊天室的连接：
+为了 **停止同步**，React 将调用你的 Effect 返回的清理函数，该函数在连接到 `"general"` 聊天室后返回。由于 `roomId` 为 `"general"`，清理函数将断开与 `"general"` 聊天室的连接：
 
 ```js {6}
-function ChatRoom({ roomId /* "所有" */ }) {
+function ChatRoom({ roomId /* "general" */ }) {
   useEffect(() => {
-    const connection = createConnection(serverUrl, roomId); // 连接到 "所有" 聊天室
+    const connection = createConnection(serverUrl, roomId); // 连接到 "general" 聊天室
     connection.connect();
     return () => {
-      connection.disconnect(); // 断开与 "所有" 聊天室的连接
+      connection.disconnect(); // 断开与 "general" 聊天室的连接
     };
     // ...
 ```
 
-然后，React 将运行你在此渲染期间提供的 Effect。这次，`roomId` 为 `"旅游"`，因此它将 **开始同步** 到 `"旅游"` 聊天室（直到最终也调用了清理函数）：
+然后，React 将运行你在此渲染期间提供的 Effect。这次，`roomId` 为 `"travel"`，因此它将 **开始同步** 到 `"travel"` 聊天室（直到最终也调用了清理函数）：
 
 ```js {3,4}
-function ChatRoom({ roomId /* "旅游" */ }) {
+function ChatRoom({ roomId /* "travel" */ }) {
   useEffect(() => {
-    const connection = createConnection(serverUrl, roomId); // 连接到 "旅游" 聊天室
+    const connection = createConnection(serverUrl, roomId); // 连接到 "travel" 聊天室
     connection.connect();
     // ...
 ```
 
 多亏了这一点，现在你已经连接到了用户在 UI 中选择的同一个聊天室。避免了灾难！
 
-每当你的组件使用不同的 `roomId` 重新渲染后，你的 Effect 将重新进行同步。例如，假设用户将 `roomId` 从 `"旅游"` 更改为 `"音乐"`。React 将再次通过调用清理函数 **停止同步** 你的 Effect（断开与 `"旅游"` 聊天室的连接）。然后，它将通过使用新的 `roomId` 属性再次运行 Effect 的主体部分 **开始同步**（将你连接到 `"音乐"` 聊天室）。
+每当你的组件使用不同的 `roomId` 重新渲染后，你的 Effect 将重新进行同步。例如，假设用户将 `roomId` 从 `"travel"` 更改为 `"music"`。React 将再次通过调用清理函数 **停止同步** 你的 Effect（断开与 `"travel"` 聊天室的连接）。然后，它将通过使用新的 `roomId` 属性再次运行 Effect 的主体部分 **开始同步**（将你连接到 `"music"` 聊天室）。
 
-最后，当用户切换到不同的屏幕时，`ChatRoom` 组件将被卸载。现在没有必要保持连接了。React 将 **最后一次停止同步** 你的 Effect，并将你从 `"音乐"` 聊天室断开连接。
+最后，当用户切换到不同的屏幕时，`ChatRoom` 组件将被卸载。现在没有必要保持连接了。React 将 **最后一次停止同步** 你的 Effect，并将你从 `"music"` 聊天室断开连接。
 
 ### 从 Effect 的角度思考 {/*thinking-from-the-effects-perspective*/}
 
 让我们总结一下从 `ChatRoom` 组件的角度所发生的一切：
 
-1. `ChatRoom` 组件挂载，`roomId` 设置为 `"所有"`
-1. `ChatRoom` 组件更新，`roomId` 设置为 `"旅游"`
-1. `ChatRoom` 组件更新，`roomId` 设置为 `"音乐"`
+1. `ChatRoom` 组件挂载，`roomId` 设置为 `"general"`
+1. `ChatRoom` 组件更新，`roomId` 设置为 `"travel"`
+1. `ChatRoom` 组件更新，`roomId` 设置为 `"music"`
 1. `ChatRoom` 组件卸载
 
 在组件生命周期的每个阶段，你的 Effect 执行了不同的操作：
 
-1. 你的 Effect 连接到了 `"所有"` 聊天室
-1. 你的 Effect 断开了与 `"所有"` 聊天室的连接，并连接到了 `"旅游"` 聊天室
-1. 你的 Effect 断开了与 `"旅游"` 聊天室的连接，并连接到了 `"音乐"` 聊天室
-1. 你的 Effect 断开了与 `"音乐"` 聊天室的连接
+1. 你的 Effect 连接到了 `"general"` 聊天室
+1. 你的 Effect 断开了与 `"general"` 聊天室的连接，并连接到了 `"travel"` 聊天室
+1. 你的 Effect 断开了与 `"travel"` 聊天室的连接，并连接到了 `"music"` 聊天室
+1. 你的 Effect 断开了与 `"music"` 聊天室的连接
 
 现在让我们从 Effect 本身的角度来思考所发生的事情：
 
@@ -194,9 +194,9 @@ function ChatRoom({ roomId /* "旅游" */ }) {
 
 这段代码的结构可能会让你将所发生的事情看作是一系列不重叠的时间段：
 
-1. 你的 Effect 连接到了 `"所有"` 聊天室（直到断开连接）
-1. 你的 Effect 连接到了 `"旅游"` 聊天室（直到断开连接）
-1. 你的 Effect 连接到了 `"音乐"` 聊天室（直到断开连接）
+1. 你的 Effect 连接到了 `"general"` 聊天室（直到断开连接）
+1. 你的 Effect 连接到了 `"travel"` 聊天室（直到断开连接）
+1. 你的 Effect 连接到了 `"music"` 聊天室（直到断开连接）
 
 之前，你是从组件的角度思考的。当你从组件的角度思考时，很容易将 Effect 视为在特定时间点触发的“回调函数”或“生命周期事件”，例如“渲染后”或“卸载前”。这种思维方式很快变得复杂，所以最好避免使用。
 
@@ -226,7 +226,7 @@ function ChatRoom({ roomId }) {
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('所有');
+  const [roomId, setRoomId] = useState('general');
   const [show, setShow] = useState(false);
   return (
     <>
@@ -236,9 +236,9 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="所有">所有</option>
-          <option value="旅游">旅游</option>
-          <option value="音乐">音乐</option>
+          <option value="general">所有</option>
+          <option value="travel">旅游</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <button onClick={() => setShow(!show)}>
@@ -274,9 +274,9 @@ button { margin-left: 10px; }
 
 请注意，当组件首次挂载时，你会看到三个日志：
 
-1. `✅ 连接到 "所有" 聊天室，位于 https://localhost:1234...` *(仅限开发环境)*
-2. `❌ 从 "所有" 聊天室断开连接，位于 https://localhost:1234.` *(仅限开发环境)*
-3. `✅ 连接到 "所有" 聊天室，位于 https://localhost:1234...`
+1. `✅ 连接到 "general" 聊天室，位于 https://localhost:1234...` *(仅限开发环境)*
+2. `❌ 从 "general" 聊天室断开连接，位于 https://localhost:1234.` *(仅限开发环境)*
+3. `✅ 连接到 "general" 聊天室，位于 https://localhost:1234...`
 
 前两个日志仅适用于开发环境。在开发环境中，React 总是会重新挂载每个组件一次。
 
@@ -310,7 +310,7 @@ function ChatRoom({ roomId }) { // roomId 属性可能会随时间变化。
 
 每次在组件重新渲染后，React 都会查看你传递的依赖项数组。如果数组中的任何值与上一次渲染时在相同位置传递的值不同，React 将重新同步你的 Effect。
 
-例如，如果在初始渲染时传递了 `["所有"]`，然后在下一次渲染时传递了 `["旅游"]`，React 将比较 `"所有"` 和 `"旅游"`。这些是不同的值（使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 进行比较），因此 React 将重新同步你的 Effect。另一方面，如果你的组件重新渲染但 `roomId` 没有发生变化，你的 Effect 将继续连接到相同的房间。
+例如，如果在初始渲染时传递了 `["general"]`，然后在下一次渲染时传递了 `["travel"]`，React 将比较 `"general"` 和 `"travel"`。这些是不同的值（使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 进行比较），因此 React 将重新同步你的 Effect。另一方面，如果你的组件重新渲染但 `roomId` 没有发生变化，你的 Effect 将继续连接到相同的房间。
 
 ### 每个 Effect 表示一个独立的同步过程。 {/*each-effect-represents-a-separate-synchronization-process*/}
 
@@ -426,7 +426,7 @@ function ChatRoom({ roomId }) {
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('所有');
+  const [roomId, setRoomId] = useState('general');
   return (
     <>
       <label>
@@ -435,9 +435,9 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="所有">所有</option>
-          <option value="旅游">旅游</option>
-          <option value="音乐">音乐</option>
+          <option value="general">所有</option>
+          <option value="travel">旅游</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <hr />
@@ -476,7 +476,7 @@ button { margin-left: 10px; }
 
 ```js {1,2}
 const serverUrl = 'https://localhost:1234';
-const roomId = '所有';
+const roomId = 'general';
 
 function ChatRoom() {
   useEffect(() => {
@@ -502,7 +502,7 @@ import { useState, useEffect } from 'react';
 import { createConnection } from './chat.js';
 
 const serverUrl = 'https://localhost:1234';
-const roomId = '所有';
+const roomId = 'general';
 
 function ChatRoom() {
   useEffect(() => {
@@ -625,7 +625,7 @@ function ChatRoom({ roomId }) { // roomId 是响应式的
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('所有');
+  const [roomId, setRoomId] = useState('general');
   return (
     <>
       <label>
@@ -634,9 +634,9 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="所有">所有</option>
-          <option value="旅游">旅游</option>
-          <option value="音乐">音乐</option>
+          <option value="general">所有</option>
+          <option value="travel">旅游</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <hr />
@@ -701,7 +701,7 @@ function ChatRoom({ roomId }) { // roomId 是响应式的
 
 ```js {1,2,11}
 const serverUrl = 'https://localhost:1234'; // serverUrl 不是响应式的
-const roomId = '所有'; // roomId 不是响应式的
+const roomId = 'general'; // roomId 不是响应式的
 
 function ChatRoom() {
   useEffect(() => {
@@ -721,7 +721,7 @@ function ChatRoom() {
 function ChatRoom() {
   useEffect(() => {
     const serverUrl = 'https://localhost:1234'; // serverUrl 不是响应式的
-    const roomId = '所有'; // roomId 不是响应式的
+    const roomId = 'general'; // roomId 不是响应式的
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => {
@@ -816,7 +816,7 @@ function ChatRoom({ roomId }) {
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('所有');
+  const [roomId, setRoomId] = useState('general');
   return (
     <>
       <label>
@@ -825,9 +825,9 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="所有">所有</option>
-          <option value="旅游">旅游</option>
-          <option value="音乐">音乐</option>
+          <option value="general">所有</option>
+          <option value="travel">旅游</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <hr />
@@ -891,7 +891,7 @@ function ChatRoom({ roomId }) {
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('所有');
+  const [roomId, setRoomId] = useState('general');
   return (
     <>
       <label>
@@ -900,9 +900,9 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="所有">所有</option>
-          <option value="旅游">旅游</option>
-          <option value="音乐">音乐</option>
+          <option value="general">所有</option>
+          <option value="travel">旅游</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <hr />
@@ -1338,7 +1338,7 @@ import {
 } from './chat.js';
 
 export default function App() {
-  const [roomId, setRoomId] = useState('所有');
+  const [roomId, setRoomId] = useState('general');
   const [isEncrypted, setIsEncrypted] = useState(false);
   return (
     <>
@@ -1348,9 +1348,9 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="所有">所有</option>
-          <option value="旅游">旅游</option>
-          <option value="音乐">音乐</option>
+          <option value="general">所有</option>
+          <option value="travel">旅游</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <label>
@@ -1436,7 +1436,7 @@ import {
 } from './chat.js';
 
 export default function App() {
-  const [roomId, setRoomId] = useState('所有');
+  const [roomId, setRoomId] = useState('general');
   const [isEncrypted, setIsEncrypted] = useState(false);
   return (
     <>
@@ -1446,9 +1446,9 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="所有">所有</option>
-          <option value="旅游">旅游</option>
-          <option value="音乐">音乐</option>
+          <option value="general">所有</option>
+          <option value="travel">旅游</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <label>
@@ -1527,7 +1527,7 @@ import { useState } from 'react';
 import ChatRoom from './ChatRoom.js';
 
 export default function App() {
-  const [roomId, setRoomId] = useState('所有');
+  const [roomId, setRoomId] = useState('general');
   const [isEncrypted, setIsEncrypted] = useState(false);
   return (
     <>
@@ -1537,9 +1537,9 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="所有">所有</option>
-          <option value="旅游">旅游</option>
-          <option value="音乐">音乐</option>
+          <option value="general">所有</option>
+          <option value="travel">旅游</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <label>
