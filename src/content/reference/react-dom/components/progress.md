@@ -20,7 +20,7 @@ title: "<progress>"
 
 ### `<progress>` {/*progress*/}
 
-使用 [浏览器的内置 `<progress>` 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/progress) 渲染一个进度指示器。
+使用 [浏览器内置的 `<progress>` 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/progress) 渲染一个进度指示器。
 
 ```js
 <progress value={0.5} />
