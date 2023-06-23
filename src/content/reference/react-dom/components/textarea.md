@@ -55,7 +55,7 @@ title: "<textarea>"
 * [`name`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#name)：字符串，表示在表单提交时与此输入框关联的名称。
 * `onChange`：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。对于 [受控文本框](#controlling-a-text-area-with-a-state-variable)，在用户更改输入值时立即触发（例如，对于每个按键）。此行为类似于浏览器 [`input` 事件](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/input_event)。
 * `onChangeCapture`：与 `onChange` 类似，但是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
-* [`onInput`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/input_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。在用户更改值时立即触发。由于历史原因，在 React 习惯于使用 `onChange`，工作方式类似。
+* [`onInput`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/input_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。在用户更改值时立即触发。由于历史原因，在 React 习惯于使用工作方式类似的 `onChange`。
 * `onInputCapture`：与 `onInput` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
 * [`onInvalid`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLInputElement/invalid_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。如果输入的内容在表单提交时未通过验证，则会触发此事件。与内置的 `invalid` 事件不同，React 的 `onInvalid` 事件可以进行冒泡。
 * `onInvalidCapture`：与 `onInvalid` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
