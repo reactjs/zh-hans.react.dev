@@ -198,7 +198,7 @@ export default function EditPost() {
     const form = e.target;
     const formData = new FormData(form);
 
-    // 你可以直接将 formData 作为 fetch 的请求 body：
+    // 你可以直接将 formData 作为 fetch 请求的 body：
     fetch('/some-api', { method: form.method, body: formData });
 
     // 也可以使用普通的对象：
