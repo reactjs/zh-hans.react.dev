@@ -12,7 +12,7 @@ title: unmountComponentAtNode
 
 <Intro>
 
-`unmountComponentAtNode` 用于从 DOM 中移除一个已挂载 React 组件。
+`unmountComponentAtNode` 用于从 DOM 中移除一个已挂载的 React 组件。
 
 ```js
 unmountComponentAtNode(domNode)
