@@ -111,7 +111,7 @@ label, textarea { display: block; }
 
 一般而言，应该将每个 `<textarea>` 都放置在 [`<label>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/label) 内，表示此标签与该选择框相关联。当用户单击标签时，浏览器将自动聚焦选择框。这对于可访问性也非常重要：当用户聚焦选择框时，屏幕阅读器将宣布标签标题。
 
-如果无法将 `<textarea>` 放置在 `<label>` 内，请通过将相同的 ID 传递给 `<textareaid>` 与 [`<label htmlFor>`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLLabelElement/htmlFor) 来将它们关联起来。为了避免一个组件的多实例之间的冲突，使用 [`useId`](/reference/react/useId) 生成这样的 ID。
+如果无法将 `<textarea>` 放置在 `<label>` 内，请通过将相同的 ID 传递给 `<textareaid>` 与 [`<label htmlFor>`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLLabelElement/htmlFor) 来将它们关联起来。为了避免组件在多个实例之间产生冲突，使用 [`useId`](/reference/react/useId) 生成这样的 ID。
 
 <Sandpack>
 
