@@ -54,7 +54,7 @@ title: "<textarea>"
 * [`minLength`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-minlength)：数字，表示文本的最小长度。
 * [`name`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#name)：字符串，表示在表单提交时与此输入框关联的名称。
 * `onChange`：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。对于 [受控文本框](#controlling-a-text-area-with-a-state-variable)，在用户更改输入值时立即触发（例如，对于每个按键）。此行为类似于浏览器 [`input` 事件](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/input_event)。
-* `onChangeCapture`：与 `onChange` 类似，但是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
+* `onChangeCapture`：与 `onChange` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
 * [`onInput`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/input_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。在用户更改值时立即触发。由于历史原因，在 React 习惯于使用工作方式类似的 `onChange`。
 * `onInputCapture`：与 `onInput` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
 * [`onInvalid`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLInputElement/invalid_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。如果输入的内容在表单提交时未通过验证，则会触发此事件。与内置的 `invalid` 事件不同，React 的 `onInvalid` 事件可以进行冒泡。
@@ -418,6 +418,6 @@ function handleChange(e) {
 
 提供的 `value` 属性必须在整个生命周期中都为字符串。
 
-你不能一会传递 `value={undefined}` 一会传递 `value="some string"`，这会导致 React 不情出你是想指定受控组件还是非受控组件。受控组件的 `value` 属性应该始终接收字符串，而不是 `null` 或 `undefined`。
+你不能一会传递 `value={undefined}` 一会传递 `value="some string"`，这会导致 React 不清楚你是想指定受控组件还是非受控组件。受控组件的 `value` 属性应该始终接收字符串，而不是 `null` 或 `undefined`。
 
 如果 `value` 来自 API 或 state，它可能会被初始化为 `null` 或 `undefined`。在这种情况下，要么最初将其设置为空字符串（`''`），要么传递 `value={someValue ?? ''}` 以确保 `value` 是一个字符串。
