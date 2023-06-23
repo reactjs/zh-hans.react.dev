@@ -4,7 +4,7 @@ title: cloneElement
 
 <Pitfall>
 
-使用 `cloneElement` 并不常见，并且可能会导致代码变得脆弱。 [查看常见的替代方案](#alternatives)。
+使用 `cloneElement` 并不常见，并且可能会导致代码变得脆弱。[查看常见的替代方案](#alternatives)。
 
 </Pitfall>
 
@@ -47,17 +47,17 @@ console.log(clonedElement); // <Row title="Cabbage">Goodbye</Row>
 
 #### 参数 {/*parameters*/}
 
-* `element`：`element` 参数必须是一个有效的 React 元素。 例如它可以是一个像 `<Something />` 这样的 JSX 节点，调用 [`createElement`](/reference/react/createElement) 的结果，或者另一个 `cloneElement` 调用的结果。
+* `element`：`element` 参数必须是一个有效的 React 元素。例如它可以是一个像 `<Something />` 这样的 JSX 节点，调用 [`createElement`](/reference/react/createElement) 的结果，或者另一个 `cloneElement` 调用的结果。
 
-* `props`：`props` 参数必须是一个对象或 `null`。 如果传 `null`，克隆后的元素将保留所有原始的 `element.props`。 否则，对于 `props` 对象中的每个 prop 属性，返回的元素将“优先”使用 `props` 中的值而不是 `element.props` 中的值。 其余的 props 将从原始的 `element.props` 中填充。如果你传递 `props.key` 或 `props.ref`，它们将替换原来的。
+* `props`：`props` 参数必须是一个对象或 `null`。如果传 `null`，克隆后的元素将保留所有原始的 `element.props`。否则，对于 `props` 对象中的每个 prop 属性，返回的元素将“优先”使用 `props` 中的值而不是 `element.props` 中的值。其余的 props 将从原始的 `element.props` 中填充。如果你传递 `props.key` 或者 `props.ref`，它们将替换原来的。
 
-* **可选** `...children`：零个或多个子节点。 它们可以是任何 React 节点，包括 React 元素、字符串、数字、[portals](/reference/react-dom/createPortal)、空节点（`null`、`undefined`、`true` 和 `false`）， 和 React 元素数组。 如果你不传递任何 `...children` 参数，则原始的 `element.props.children` 将被保留。
+* **可选** `...children`：零个或多个子节点。它们可以是任何 React 节点，包括 React 元素、字符串、数字、[portals](/reference/react-dom/createPortal)、空节点（`null`、`undefined`、`true` 和 `false`），和 React 元素数组。如果你不传递任何 `...children` 参数，则原始的 `element.props.children` 将被保留。
 
 #### 返回值 {/*returns*/}
 
 `cloneElement` 返回一个具有一些属性的 React element 对象：
 
-* `type`: 与 `element.type` 相同。
+* `type`：与 `element.type` 相同。
 * `props`：将 `element.props` 与你传递的 `props` 浅合并的结果。
 * `ref`：原始的 `element.ref`，除非它被 `props.ref` 覆盖。
 * `key`：原始的 `element.key`，除非它被 `props.key` 覆盖。
@@ -94,7 +94,7 @@ const clonedElement = cloneElement(
 
 **让我们看一个示例，看看它什么时候有用。**
 
-想象一个 `List` 组件将其 [`children`](/learn/passing-props-to-a-component#passing-jsx-as-children) 呈现为可选择行的列表，并带有可更改的 “下一步” 按钮选择了哪一行。 `List` 组件需要以不同的方式渲染所选的 `Row`，因此它克隆它收到的每个 `<Row>` 子级，并添加额外的 `isHighlighted: true` 或 `isHighlighted: false` 属性：
+想象一个 `List` 组件将其 [`children`](/learn/passing-props-to-a-component#passing-jsx-as-children) 呈现为可选择行的列表，并带有可更改的“下一步”按钮选择了哪一行。`List` 组件需要以不同的方式渲染所选的 `Row`，因此它克隆它收到的每个 `<Row>` 子级，并添加额外的 `isHighlighted: true` 或 `isHighlighted: false` 属性：
 
 ```js {6-8}
 export default function List({ children }) {
@@ -137,7 +137,7 @@ export default function List({ children }) {
 </List>
 ```
 
-注意点击 “下一步” 如何更新 `List` 的状态，并高亮显示不同的行：
+注意点击“下一步”如何更新 `List` 的状态，并高亮显示不同的行：
 
 <Sandpack>
 
@@ -259,7 +259,7 @@ export default function List({ items, renderItem }) {
       })}
 ```
 
-`renderItem` 属性称为 “渲染属性”，因为它是决定如何渲染某些内容的属性。例如，你可以传递一个 `renderItem` 实现使用给定的 `isHighlighted` 值呈现 `<Row>`：
+`renderItem` 属性称为“渲染属性”，因为它是决定如何渲染某些内容的属性。例如，你可以传递一个 `renderItem` 实现使用给定的 `isHighlighted` 值呈现 `<Row>`：
 
 ```js {3,7}
 <List
@@ -556,7 +556,7 @@ button {
 
 ### 将逻辑提取到自定义 Hook 中 {/*extracting-logic-into-a-custom-hook*/}
 
-你可以尝试的另一种方法是将 “非视觉” 的逻辑提取到你的自定义 Hook 中，并使用 Hook 的返回值来决定渲染什么。例如，你可以编写一个 `useList` 自定义 Hook，如下所示：
+你可以尝试的另一种方法是将“非视觉”部分的逻辑提取到你的自定义 Hook 中，并使用 Hook 的返回值来决定渲染什么。例如，你可以编写一个 `useList` 自定义 Hook，如下所示：
 
 ```js
 import { useState } from 'react';
@@ -591,7 +591,7 @@ export default function App() {
       )}
       <hr />
       <button onClick={onNext}>
-        Next
+        下一步
       </button>
     </div>
   );
