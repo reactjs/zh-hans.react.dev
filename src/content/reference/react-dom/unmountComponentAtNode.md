@@ -28,7 +28,7 @@ unmountComponentAtNode(domNode)
 
 ### `unmountComponentAtNode(domNode)` {/*unmountcomponentatnode*/}
 
-使用 `unmountComponentAtNode` 从 DOM 中移除一个已挂载 React 组件，并清除有关事件处理程序与状态。
+使用 `unmountComponentAtNode` 从 DOM 中移除一个已挂载的 React 组件，并清除相关事件处理程序与状态。
 
 ```js
 import { unmountComponentAtNode } from 'react-dom';
