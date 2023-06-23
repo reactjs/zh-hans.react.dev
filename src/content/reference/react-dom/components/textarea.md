@@ -262,7 +262,7 @@ function NewPost() {
   return (
     <textarea
       value={postContent} // ...强制文本框的值与 state 相匹配...
-      onChange={e => setPostContent(e.target.value)} // ...并在每次改变（change）时更新 stateany edits!
+      onChange={e => setPostContent(e.target.value)} // ...并在每次改变（change）时更新 state！
     />
   );
 }
