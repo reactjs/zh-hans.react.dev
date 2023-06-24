@@ -885,7 +885,7 @@ const options2 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
 
 // 这是 2 个不同的对象
 console.log(Object.is(options1, options2)); // false
-````
+```
 
 **对象和函数作为依赖，会使你的 Effect 比你需要的更频繁地重新同步。**
 
@@ -971,7 +971,7 @@ const roomId2 = 'music';
 
 // 这 2 个字符串是相同的
 console.log(Object.is(roomId1, roomId2)); // true
-````
+```
 
 得益于此修复，当你编辑输入时，聊天将不再重新连接：
 <Sandpack>
