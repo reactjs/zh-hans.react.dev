@@ -34,7 +34,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-如果你设置 Effect 的依赖是空数组(`[]`)，那么 linter 将会建议合适的依赖：
+如果你设置 Effect 的依赖是空数组（`[]`），那么 linter 将会建议合适的依赖：
 
 <Sandpack>
 
@@ -49,12 +49,12 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // <-- 修复这里确实的依赖！
+  }, []); // <-- 修复这里的依赖！
   return <h1>欢迎来到 {roomId} 房间！</h1>;
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('general');
+  const [roomId, setRoomId] = useState('所有');
   return (
     <>
       <label>
@@ -63,9 +63,9 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">所有</option>
-          <option value="travel">旅游</option>
-          <option value="music">音乐</option>
+          <option value="所有">所有</option>
+          <option value="旅游">旅游</option>
+          <option value="音乐">音乐</option>
         </select>
       </label>
       <hr />
@@ -109,7 +109,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-[Effects “反应”响应式值](/learn/lifecycle-of-reactive-effects#effects-react-to-react-values) 因为这里的 `roomId` 是一个响应式值（它可能随重新渲染而改变），所以 linter 会验证你是否将它指定为一个依赖项。如果 `roomId` 变成不同的值，React 将重新运行你的 Effect。这可以确保聊天界面与所选房间保持一致，并把变化“反馈”给下拉菜单：
+[Effect “反应”响应式值](/learn/lifecycle-of-reactive-effects#effects-react-to-react-values) 因为这里的 `roomId` 是一个响应式值（它可能随重新渲染而改变），所以 linter 会验证你是否将它指定为一个依赖项。如果 `roomId` 变成不同的值，React 将重新运行你的 Effect。这可以确保聊天界面与所选房间保持一致，并把变化“反馈”给下拉菜单：
 
 <Sandpack>
 
@@ -129,7 +129,7 @@ function ChatRoom({ roomId }) {
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('general');
+  const [roomId, setRoomId] = useState('所有');
   return (
     <>
       <label>
@@ -138,9 +138,9 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">所有</option>
-          <option value="travel">旅游</option>
-          <option value="music">音乐</option>
+          <option value="所有">所有</option>
+          <option value="旅游">旅游</option>
+          <option value="音乐">音乐</option>
         </select>
       </label>
       <hr />
@@ -205,12 +205,12 @@ function ChatRoom({ roomId }) {
 
 linter 是对的！ 由于 `roomId` 可能会随时间变化，这会在你的代码中引入错误。
 
-**移除一个依赖，你需要向 linter 证明其不需要这个依赖。** 例如，你可以将 `roomId` 移出你的组件，以证明它不是响应的，也不会在重新渲染时改变：
+**移除一个依赖，你需要向 linter 证明其不需要这个依赖**。 例如，你可以将 `roomId` 移出你的组件，以证明它不是响应的，也不会在重新渲染时改变：
 
 
 ```js {2,9}
 const serverUrl = 'https://localhost:1234';
-const roomId = 'music'; // 不再是响应式值
+const roomId = '音乐'; // 不再是响应式值
 
 function ChatRoom() {
   useEffect(() => {
@@ -231,7 +231,7 @@ import { useState, useEffect } from 'react';
 import { createConnection } from './chat.js';
 
 const serverUrl = 'https://localhost:1234';
-const roomId = 'music';
+const roomId = '音乐';
 
 export default function ChatRoom() {
   useEffect(() => {
@@ -264,7 +264,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-这就是为什么你现在可以指定一个 [空(`[]`)依赖列表](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means)。你的 Effect **真的不** 依赖任何响应式值了，也 **真的不** 需要在组件的 props 或 state 改变时重新运行。
+这就是为什么你现在可以指定一个 [空（`[]`）依赖列表](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means)。你的 Effect **真的不** 依赖任何响应式值了，也 **真的不** 需要在组件的 props 或 state 改变时重新运行。
 
 ### 要改变依赖关系，请改变代码 {/*to-change-the-dependencies-change-the-code*/}
 
@@ -274,7 +274,7 @@ button { margin-left: 10px; }
 2. 然后，你采纳 linter 的建议，调整依赖关系，以 **匹配你所改变的代码**。
 3. 如果你对依赖关系的列表不满意，你可以 **回到第一步**（并再次修改代码）。
 
-最后一部分很重要。**如果你想改变依赖关系，首先要改变所涉及到的代码。** 你可以把依赖关系列表看作是 [Effect的代码所依赖的所有响应式值的列表](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。你不要 **选择** 把什么放在这个列表上。该列表 **描述了** 你的代码。要改变依赖性列表，请改变代码。
+最后一部分很重要。**如果你想改变依赖关系，首先要改变所涉及到的代码**。 你可以把依赖关系列表看作是 [Effect的代码所依赖的所有响应式值的列表](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。你不要 **选择** 把什么放在这个列表上。该列表 **描述了** 你的代码。要改变依赖性列表，请改变代码。
 
 这可能感觉就像解方程一样。你有一个目标（例如，删除一个依赖关系），你需要“找到”与该目标（删除一个依赖关系，译者注）相匹配的代码。不是每个人都觉得解方程很有趣，写 Effects 也是如此！幸运的是，下面有一些常见的解决方案你可以去尝试。
 
@@ -290,7 +290,7 @@ useEffect(() => {
 }, []);
 ```
 
-**当依赖关系与代码不匹配时，极有可能引入 bug。** 通过抑制 linter，你是在 Effect 所依赖的值上对 React "撒谎"。
+**当依赖关系与代码不匹配时，极有可能引入 bug**。 通过抑制 linter，你是在 Effect 所依赖的值上对 React "撒谎"。
 
 你可以使用如下技术。
 
@@ -349,13 +349,13 @@ button { margin: 10px; }
 
 </Sandpack>
 
-比方说，你想“只在 mount 时”运行 Effect。你已经知道可以通过设置 [空(`[]`)依赖关系](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) 来达到这种效果，所以你决定忽略 linter 的检查，强行指定`[]`为依赖关系。
+比方说，你想“只在 mount 时”运行 Effect。你已经知道可以通过设置 [空（`[]`）依赖关系](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) 来达到这种效果，所以你决定忽略 linter 的检查，强行指定`[]`为依赖关系。
 
 上面的计数器例子，本应该每秒递增，递增量可以通过两个按钮来控制。然而，由于你对 React “撒谎”，说这个 Effect 不依赖于任何东西，React 便从初始渲染开始就一直使用 `onTick` 函数。[在后续渲染中，](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) `count` 总是 `0` ，`increment` 总是 `1`。为什么？因为定时器每秒调用 `onTick` 函数，实际运行的是 `setCount(0 + 1)`（译者注，在创建 `onTick` 函数时，由于闭包的缘故，`setCount(count + increment)` 捕获的是创建时 `count` 和 `increment` 值。由于这里的“说谎”，每次重新渲染时新创建的 `onTick` 函数不能替换掉 Effect 里旧 `onTick` 函数，于是最终的效果就是 `setCount(0 + 1)`），所以你总是看到 `1`。像这样的错误，当它们分散在多个组件中时，就更难解决了。
 
 这里一个比忽略 linter 更好的解决方案! 要修复这段代码，你需要将 `onTick` 添加到依赖列表中。(为了确保间隔只设置一次，[使 `onTick` 成为 Effect Event](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)。)
 
-**我们建议将依赖性 lint 错误作为一个编译错误来处理。如果你不抑制它，你将永远不会遇到像上面这样的错误。** 本页面的剩下部分将介绍这个和其他情况的替代方案。
+**我们建议将依赖性 lint 错误作为一个编译错误来处理。如果你不抑制它，你将永远不会遇到像上面这样的错误**。 本页面的剩下部分将介绍这个和其他情况的替代方案。
 
 </DeepDive>
 
@@ -420,7 +420,7 @@ function Form() {
 
 如果这么做，你将引入了一个错误。想象一下，你先提交表单，然后切换暗亮主题。当 `theme` 改变后，Effect 重新运行，这将导致显示两次相同的通知！
 
-**首先，这里的问题是，代码不应该以 Effect 实现。** 你想发送这个 POST 请求，并在 **提交表单时显示通知**，这是一个特定的交互。特定的交互请将该逻辑直接放到相应的事件处理程序中：
+**首先，这里的问题是，代码不应该以 Effect 实现**。 你想发送这个 POST 请求，并在 **提交表单时显示通知**，这是一个特定的交互。特定的交互请将该逻辑直接放到相应的事件处理程序中：
 
 ```js {6-7}
 function Form() {
@@ -552,7 +552,7 @@ function ShippingForm({ country }) {
 
 现在，第一个 Effect 只在 `country` 改变时重新运行，而第二个 Effect 在 `city` 改变时重新运行。你已经按目的把它们分开了：两件不同的事情由两个独立的 Effect 来同步。两个独立的 Effect 有两个独立的依赖列表，所以它们不会在无意中相互触发。
 
-最终完成的代码比最初的要长，但是拆分这些 Effect 是非常正确的。[每个 Effect 应该代表一个独立的同步过程](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process)。在这个例子中，删除一个 Effect 并不会影响到另一个 Effect 的逻辑。这意味着他们**同步不同的事情，**分开他们处理是一件好事。如果你担心重复代码的问题，你可以通过 [提取相同逻辑到自定义 Hook](/learn/reusing-logic-with-custom-hooks#when-to-use-custom-hooks) 来提升你的代码质量
+最终完成的代码比最初的要长，但是拆分这些 Effect 是非常正确的。[每个 Effect 应该代表一个独立的同步过程](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process)。在这个例子中，删除一个 Effect 并不会影响到另一个 Effect 的逻辑。这意味着他们**同步不同的事情**，分开他们处理是一件好事。如果你担心重复代码的问题，你可以通过 [提取相同逻辑到自定义 Hook](/learn/reusing-logic-with-custom-hooks#when-to-use-custom-hooks) 来提升你的代码质量
 
 ### 你是否在读取一些状态来计算下一个状态？ {/*are-you-reading-some-state-to-calculate-the-next-state*/}
 
@@ -606,7 +606,7 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-**注意你的 Effect 现在根本不读取 `messages` 变量。**你只需要传递一个更新函数，比如 `msgs => [...msgs, receivedMessage]`。 React [将你的更新程序函数放入队列](/learn/queueing-a-series-of-state-updates) 并将在下一次渲染期间向其提供 `msgs` 参数。 这就是 Effect 本身不再需要依赖 `messages` 的原因。修复后，接收聊天消息将不再使聊天重新连接。
+**注意你的 Effect 现在根本不读取 `messages` 变量**。你只需要传递一个更新函数，比如 `msgs => [...msgs, receivedMessage]`。 React [将你的更新程序函数放入队列](/learn/queueing-a-series-of-state-updates) 并将在下一次渲染期间向其提供 `msgs` 参数。 这就是 Effect 本身不再需要依赖 `messages` 的原因。修复后，接收聊天消息将不再使聊天重新连接。
 
 ### 你想读取一个值而不对其变化做出“反应”吗？ {/*do-you-want-to-read-a-value-without-reacting-to-its-changes*/}
 
@@ -685,11 +685,10 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-Effect Events 让你可以将 Effect 分成响应式部分（应该“反应”响应式值，如 `roomId` 及其变化）和非响应式部分（只读取它们的最新值，如 `onMessage` 读取 `isMuted`）。 **现在你在 Effect Event 中读取了 `isMuted`，它不需要添加到 Effect 依赖中。**因此，当你开关“静音”设置时，聊天不会重新连接。至此，解决原始问题！
+Effect Events 让你可以将 Effect 分成响应式部分（应该“反应”响应式值，如 `roomId` 及其变化）和非响应式部分（只读取它们的最新值，如 `onMessage` 读取 `isMuted`）。 **现在你在 Effect Event 中读取了 `isMuted`，它不需要添加到 Effect 依赖中**。因此，当你开关“静音”设置时，聊天不会重新连接。至此，解决原始问题！
 
 #### 包装来自 props 的事件处理程序 {/*wrapping-an-event-handler-from-the-props*/}
 
-You might run into a similar problem when your component receives an event handler as a prop:
 当你的组件接收事件处理函数作为 prop 时，你可能会遇到类似的问题：
 
 ```js {1,8,11}
@@ -827,7 +826,7 @@ function ChatRoom({ roomId }) {
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('general');
+  const [roomId, setRoomId] = useState('所有');
   return (
     <>
       <label>
@@ -836,9 +835,9 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">所有</option>
-          <option value="travel">旅游</option>
-          <option value="music">音乐</option>
+          <option value="所有">所有</option>
+          <option value="旅游">旅游</option>
+          <option value="音乐">音乐</option>
         </select>
       </label>
       <hr />
@@ -873,21 +872,20 @@ button { margin-left: 10px; }
 
 在每次重新渲染 `ChatRoom` 组件时，都会从头开始创建一个新的 `options` 对象。 React 发现 `options` 对象与上次渲染期间创建的 `options` 对象是**不同的对象**。 这就是为什么它会重新同步 Effect（依赖于 `options`），并且会在你输入时重新连接聊天。
 
-**This problem only affects objects and functions. In JavaScript, each newly created object and function is considered distinct from all the others. It doesn't matter that the contents inside of them may be the same!**
-**此问题仅影响对象和函数。 在 JavaScript 中，每个新创建的对象和函数都被认为与其他所有对象和函数不同。即使他们的值相同也没关系！**
+**此问题仅影响对象和函数。 在 JavaScript 中，每个新创建的对象和函数都被认为与其他所有对象和函数不同。即使他们的值相同也没关系**！
 
 ```js {7-8}
 // 第一次渲染
-const options1 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
+const options1 = { serverUrl: 'https://localhost:1234', roomId: '音乐' };
 
 // 下一次渲染
-const options2 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
+const options2 = { serverUrl: 'https://localhost:1234', roomId: '音乐' };
 
 // 这是 2 个不同的对象
 console.log(Object.is(options1, options2)); // false
 ```
 
-**对象和函数作为依赖，会使你的 Effect 比你需要的更频繁地重新同步。**
+**对象和函数作为依赖，会使你的 Effect 比你需要的更频繁地重新同步**。
 
 这就是为什么你应该尽可能避免将对象和函数作为 Effect 的依赖项。所以，尝试将它们移到组件外部、Effect 内部，或从中提取原始值。
 
@@ -898,7 +896,7 @@ console.log(Object.is(options1, options2)); // false
 ```js {1-4,13}
 const options = {
   serverUrl: 'https://localhost:1234',
-  roomId: 'music'
+  roomId: '音乐'
 };
 
 function ChatRoom() {
@@ -920,7 +918,7 @@ function ChatRoom() {
 function createOptions() {
   return {
     serverUrl: 'https://localhost:1234',
-    roomId: 'music'
+    roomId: '音乐'
   };
 }
 
@@ -964,10 +962,10 @@ function ChatRoom({ roomId }) {
 
 ```js {7-8}
 // 第一次渲染
-const roomId1 = 'music';
+const roomId1 = '音乐';
 
 // 下一次渲染
-const roomId2 = 'music';
+const roomId2 = '音乐';
 
 // 这 2 个字符串是相同的
 console.log(Object.is(roomId1, roomId2)); // true
@@ -1004,7 +1002,7 @@ function ChatRoom({ roomId }) {
 }
 
 export default function App() {
-  const [roomId, setRoomId] = useState('general');
+  const [roomId, setRoomId] = useState('所有');
   return (
     <>
       <label>
@@ -1013,9 +1011,9 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">所有</option>
-          <option value="travel">旅游</option>
-          <option value="music">音乐</option>
+          <option value="所有">所有</option>
+          <option value="旅游">旅游</option>
+          <option value="音乐">音乐</option>
         </select>
       </label>
       <hr />
@@ -1242,7 +1240,7 @@ export default function Timer() {
 
 </Sandpack>
 
-你不应在 Effect 中读取 `count`，而是将 `c => c + 1` 指令（“增加此数字！”）传递给 React。React 将在下一次渲染时执行它。由于你不再需要读取 Effect 中 `count` 的值，因此你可以将 Effect 的依赖项保持为空 (`[]`)。这可以防止你的 Effect 在每次执行时重新创建定时器间隔。
+你不应在 Effect 中读取 `count`，而是将 `c => c + 1` 指令（“增加此数字！”）传递给 React。React 将在下一次渲染时执行它。由于你不再需要读取 Effect 中 `count` 的值，因此你可以将 Effect 的依赖项保持为空（`[]`）。这可以防止你的 Effect 在每次执行时重新创建定时器间隔。
 
 </Solution>
 
@@ -1530,7 +1528,7 @@ import ChatRoom from './ChatRoom.js';
 
 export default function App() {
   const [isDark, setIsDark] = useState(false);
-  const [roomId, setRoomId] = useState('general');
+  const [roomId, setRoomId] = useState('所有');
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
   const options = {
@@ -1556,9 +1554,9 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">所有</option>
-          <option value="travel">旅游</option>
-          <option value="music">音乐</option>
+          <option value="所有">所有</option>
+          <option value="旅游">旅游</option>
+          <option value="音乐">音乐</option>
         </select>
       </label>
       <hr />
@@ -1624,7 +1622,7 @@ import ChatRoom from './ChatRoom.js';
 
 export default function App() {
   const [isDark, setIsDark] = useState(false);
-  const [roomId, setRoomId] = useState('general');
+  const [roomId, setRoomId] = useState('所有');
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
   const options = {
@@ -1650,9 +1648,9 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">所有</option>
-          <option value="travel">旅游</option>
-          <option value="music">音乐</option>
+          <option value="所有">所有</option>
+          <option value="旅游">旅游</option>
+          <option value="音乐">音乐</option>
         </select>
       </label>
       <hr />
@@ -1718,7 +1716,7 @@ import ChatRoom from './ChatRoom.js';
 
 export default function App() {
   const [isDark, setIsDark] = useState(false);
-  const [roomId, setRoomId] = useState('general');
+  const [roomId, setRoomId] = useState('所有');
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
   return (
@@ -1739,9 +1737,9 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">所有</option>
-          <option value="travel">旅游</option>
-          <option value="music">音乐</option>
+          <option value="所有">所有</option>
+          <option value="旅游">旅游</option>
+          <option value="音乐">音乐</option>
         </select>
       </label>
       <hr />
@@ -1851,7 +1849,7 @@ import { showNotification } from './notifications.js';
 
 export default function App() {
   const [isDark, setIsDark] = useState(false);
-  const [roomId, setRoomId] = useState('general');
+  const [roomId, setRoomId] = useState('所有');
   const [isEncrypted, setIsEncrypted] = useState(false);
 
   return (
@@ -1878,9 +1876,9 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">所有</option>
-          <option value="travel">旅游</option>
-          <option value="music">音乐</option>
+          <option value="所有">所有</option>
+          <option value="旅游">旅游</option>
+          <option value="音乐">音乐</option>
         </select>
       </label>
       <hr />
@@ -2143,7 +2141,7 @@ import { showNotification } from './notifications.js';
 
 export default function App() {
   const [isDark, setIsDark] = useState(false);
-  const [roomId, setRoomId] = useState('general');
+  const [roomId, setRoomId] = useState('所有');
   const [isEncrypted, setIsEncrypted] = useState(false);
 
   return (
@@ -2170,9 +2168,9 @@ export default function App() {
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">所有</option>
-          <option value="travel">旅游</option>
-          <option value="music">音乐</option>
+          <option value="所有">所有</option>
+          <option value="旅游">旅游</option>
+          <option value="音乐">音乐</option>
         </select>
       </label>
       <hr />
