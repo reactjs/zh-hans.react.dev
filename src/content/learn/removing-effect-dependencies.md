@@ -276,7 +276,7 @@ button { margin-left: 10px; }
 
 最后一部分很重要。**如果你想改变依赖关系，首先要改变所涉及到的代码**。 你可以把依赖关系列表看作是 [Effect的代码所依赖的所有响应式值的列表](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。你不要 **选择** 把什么放在这个列表上。该列表 **描述了** 你的代码。要改变依赖性列表，请改变代码。
 
-这可能感觉就像解方程一样。你有一个目标（例如，删除一个依赖关系），你需要“找到”与该目标（删除一个依赖关系，译者注）相匹配的代码。不是每个人都觉得解方程很有趣，写 Effects 也是如此！幸运的是，下面有一些常见的解决方案你可以去尝试。
+这可能感觉就像解方程一样。你有一个目标（例如，删除一个依赖关系），你需要“找到”与该目标相匹配的代码。不是每个人都觉得解方程很有趣，写 Effects 也是如此！幸运的是，下面有一些常见的解决方案你可以去尝试。
 
 <Pitfall>
 
@@ -351,7 +351,7 @@ button { margin: 10px; }
 
 比方说，你想“只在 mount 时”运行 Effect。你已经知道可以通过设置 [空（`[]`）依赖关系](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) 来达到这种效果，所以你决定忽略 linter 的检查，强行指定`[]`为依赖关系。
 
-上面的计数器例子，本应该每秒递增，递增量可以通过两个按钮来控制。然而，由于你对 React “撒谎”，说这个 Effect 不依赖于任何东西，React 便从初始渲染开始就一直使用 `onTick` 函数。[在后续渲染中，](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) `count` 总是 `0` ，`increment` 总是 `1`。为什么？因为定时器每秒调用 `onTick` 函数，实际运行的是 `setCount(0 + 1)`（译者注，在创建 `onTick` 函数时，由于闭包的缘故，`setCount(count + increment)` 捕获的是创建时 `count` 和 `increment` 值。由于这里的“说谎”，每次重新渲染时新创建的 `onTick` 函数不能替换掉 Effect 里旧 `onTick` 函数，于是最终的效果就是 `setCount(0 + 1)`），所以你总是看到 `1`。像这样的错误，当它们分散在多个组件中时，就更难解决了。
+上面的计数器例子，本应该每秒递增，递增量可以通过两个按钮来控制。然而，由于你对 React “撒谎”，说这个 Effect 不依赖于任何东西，React 便从初始渲染开始就一直使用 `onTick` 函数。[在后续渲染中，](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) `count` 总是 `0` ，`increment` 总是 `1`。为什么？因为定时器每秒调用 `onTick` 函数，实际运行的是 `setCount(0 + 1)`<sup><a href="#note1">[1]</a></sup>，所以你总是看到 `1`。像这样的错误，当它们分散在多个组件中时，就更难解决了。
 
 这里一个比忽略 linter 更好的解决方案! 要修复这段代码，你需要将 `onTick` 添加到依赖列表中。(为了确保间隔只设置一次，[使 `onTick` 成为 Effect Event](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)。)
 
@@ -938,7 +938,7 @@ function ChatRoom() {
 
 #### 将动态对象和函数移动到你的 Effect 中 {/*move-dynamic-objects-and-functions-inside-your-effect*/}
 
-如果对象（比如下面 useEffect 函数内创建的 `options`，译者注）依赖于一些可能因重新渲染而改变的响应式值，例如 `roomId` prop，你不能将它放置到组件 **外部**。你可以将其创建移动到 Effect 代码的 **内部**：
+如果对象依赖于一些可能因重新渲染而改变的响应式值，例如 `roomId` prop，你不能将它放置到组件 **外部**。你可以将其创建移动到 Effect 代码的 **内部**：
 
 ```js {7-10,11,14}
 const serverUrl = 'https://localhost:1234';
@@ -2331,3 +2331,6 @@ label, button { display: block; margin-bottom: 5px; }
 </Solution>
 
 </Challenges>
+
+**译注：**
+<a name="note1"></a> 在创建 `onTick` 函数时，由于闭包的缘故，`setCount(count + increment)` 捕获的是创建时 `count` 和 `increment` 值。由于这里的“说谎”，每次重新渲染时新创建的 `onTick` 函数不能替换掉 Effect 里旧 `onTick` 函数，于是最终的效果就是 `setCount(0 + 1)` <br/>
