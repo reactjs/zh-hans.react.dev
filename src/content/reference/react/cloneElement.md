@@ -43,11 +43,11 @@ const clonedElement = cloneElement(
 console.log(clonedElement); // <Row title="Cabbage">Goodbye</Row>
 ```
 
-[请参阅下面的更多示例](#usage)
+[请参阅下面的更多示例](#usage)。
 
 #### 参数 {/*parameters*/}
 
-* `element`：`element` 参数必须是一个有效的 React 元素。例如它可以是一个像 `<Something />` 这样的 JSX 节点，调用 [`createElement`](/reference/react/createElement) 的结果，或者另一个 `cloneElement` 调用的结果。
+* `element`：`element` 参数必须是一个有效的 React 元素。例如，它可以是一个类似 `<Something />` 这样的 JSX 节点，也可以是 [`createElement`](/reference/react/createElement) 调用的结果，或者也可以是另一个 `cloneElement` 调用的结果。
 
 * `props`：`props` 参数必须是一个对象或 `null`。如果传 `null`，克隆后的元素将保留所有原始的 `element.props`。否则，对于 `props` 对象中的每个 prop 属性，返回的元素将“优先”使用 `props` 中的值而不是 `element.props` 中的值。其余的 props 将从原始的 `element.props` 中填充。如果你传递 `props.key` 或者 `props.ref`，它们将替换原来的。
 
