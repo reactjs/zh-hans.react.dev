@@ -4,7 +4,7 @@ title: useDebugValue
 
 <Intro>
 
-`useDebugValue` is a React Hook that lets you add a label to a custom Hook in [React DevTools.](/learn/react-developer-tools)
+`useDebugValue` 是一个 React Hook，可以让你在 [React 开发工具](/learn/react-developer-tools) 中为自定义 Hook 添加标签。
 
 ```js
 useDebugValue(value, format?)
@@ -16,11 +16,11 @@ useDebugValue(value, format?)
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `useDebugValue(value, format?)` {/*usedebugvalue*/}
 
-Call `useDebugValue` at the top level of your [custom Hook](/learn/reusing-logic-with-custom-hooks) to display a readable debug value:
+在你的 [自定义 Hook](/learn/reusing-logic-with-custom-hooks) 的顶层调用 `useDebugValue`，以显示可读的调试值：
 
 ```js
 import { useDebugValue } from 'react';
@@ -32,22 +32,22 @@ function useOnlineStatus() {
 }
 ```
 
-[See more examples below.](#usage)
+[请看下方更多示例](#usage)。
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `value`: The value you want to display in React DevTools. It can have any type.
-* **optional** `format`: A formatting function. When the component is inspected, React DevTools will call the formatting function with the `value` as the argument, and then display the returned formatted value (which may have any type). If you don't specify the formatting function, the original `value` itself will be displayed.
+* `value`：你想在 React 开发工具中显示的值。可以是任何类型。
+* **可选** `format`：它接受一个格式化函数。当组件被检查时，React 开发工具将用 `value` 作为参数来调用格式化函数，然后显示返回的格式化值（可以是任何类型）。如果不指定格式化函数，则会显示 `value`。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-`useDebugValue` does not return anything.
+`useDebugValue` 没有返回值。
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Adding a label to a custom Hook {/*adding-a-label-to-a-custom-hook*/}
+### 为自定义 Hook 添加标签 {/*adding-a-label-to-a-custom-hook*/}
 
-Call `useDebugValue` at the top level of your [custom Hook](/learn/reusing-logic-with-custom-hooks) to display a readable <CodeStep step={1}>debug value</CodeStep> for [React DevTools.](/learn/react-developer-tools)
+在 [自定义 Hook](/learn/reusing-logic-with-custom-hooks) 中调用 `useDebugValue`，可以让 [React 开发工具](/learn/react-developer-tools) 显示可读的 <CodeStep step={1}>调试值</CodeStep>。
 
 ```js [[1, 5, "isOnline ? 'Online' : 'Offline'"]]
 import { useDebugValue } from 'react';
@@ -59,11 +59,11 @@ function useOnlineStatus() {
 }
 ```
 
-This gives components calling `useOnlineStatus` a label like `OnlineStatus: "Online"` when you inspect them:
+这样一来，当你检查调用 `useOnlineStatus` 的组件时，它们会显示一个标签，例如 `OnlineStatus: "Online"`。
 
-![A screenshot of React DevTools showing the debug value](/images/docs/react-devtools-usedebugvalue.png)
+![在 React 开发工具中显示调试值的截图](/images/docs/react-devtools-usedebugvalue.png)
 
-Without the `useDebugValue` call, only the underlying data (in this example, `true`) would be displayed.
+如果没有使用 `useDebugValue`，则只会显示底层数据（在此示例中为 `true`）。
 
 <Sandpack>
 
@@ -103,20 +103,20 @@ function subscribe(callback) {
 
 <Note>
 
-Don't add debug values to every custom Hook. It's most valuable for custom Hooks that are part of shared libraries and that have a complex internal data structure that's difficult to inspect.
+不必为每个自定义 Hook 添加调试值。这对于那些作为共享库一部分、具有复杂的内部数据结构并且难以检查的自定义 Hook 更有价值。
 
 </Note>
 
 ---
 
-### Deferring formatting of a debug value {/*deferring-formatting-of-a-debug-value*/}
+### 延迟格式化调试值 {/*deferring-formatting-of-a-debug-value*/}
 
-You can also pass a formatting function as the second argument to `useDebugValue`:
+你也可以将一个格式化函数作为 `useDebugValue` 的第二个参数传入：
 
 ```js [[1, 1, "date", 18], [2, 1, "date.toDateString()"]]
 useDebugValue(date, date => date.toDateString());
 ```
 
-Your formatting function will receive the <CodeStep step={1}>debug value</CodeStep> as a parameter and should return a <CodeStep step={2}>formatted display value</CodeStep>. When your component is inspected, React DevTools will call this function and display its result.
+格式化函数将接收 <CodeStep step={1}>调试值</CodeStep> 作为参数，返回 <CodeStep step={2}>格式化后的显示值</CodeStep>。当你的组件被检查时，React 开发工具将调用此函数并显示其返回值。
 
-This lets you avoid running potentially expensive formatting logic unless the component is actually inspected. For example, if `date` is a Date value, this avoids calling `toDateString()` on it for every render.
+使用格式化函数，可以避免在组件没有被检查时运行可能开销较大的格式化逻辑。例如，如果 `date` 是一个日期值，则可以避免在每次渲染时都调用 `toDateString()` 方法。
