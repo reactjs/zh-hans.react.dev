@@ -4,7 +4,7 @@ title: isValidElement
 
 <Intro>
 
-`isValidElement` 检测 value 是否为 React 元素。
+`isValidElement` 检测参数值是否为 React 元素。
 
 ```js
 const isElement = isValidElement(value)
