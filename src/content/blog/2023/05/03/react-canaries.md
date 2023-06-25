@@ -8,7 +8,7 @@ title: "React Canaries：在 Meta 之外逐步推出新功能"
 
 <Intro>
 
-我们希望为 React 社区提供一种选择，使他们能够在新功能设计接近最终状态时立即采用这些功能——类似于 Meta 内部使用 React 的方式。我们正在推出一个新的官方支持的 [Canary 发布渠道](/community/versioning-policy#canary-channel)。它允许像框架这样的精选设置，对单个 React 功能的采用与 React 发布计划分离开。
+我们希望为 React 社区提供一种选择，使他们能够在新功能设计接近最终状态时立即采用这些功能——类似于 Meta 内部使用 React 的方式。我们正在推出一个新的官方支持的 [Canary 发布渠道](/community/versioning-policy#canary-channel)。它允许如框架一样的精选设置，将对单个 React 功能的采用与 React 发布计划分离开。
 
 </Intro>
 
