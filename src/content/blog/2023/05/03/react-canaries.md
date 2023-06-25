@@ -50,7 +50,7 @@ Canary 能够让你在它们出现在 semver 稳定版本之前开始使用单�
 
 Canary 的滚动发布将允许我们拥有更紧密的反馈循环，并确保新功能在社区中得到全面测试。这种工作流程更接近于 TC39——JavaScript 标准委员会——[处理编号阶段中的更改](https://tc39.es/process-document/) 的方式。在 React 稳定发布之前，建立在 React 之上的框架中可能会提供新的 React 功能，就像在浏览器中提供新的 JavaScript 功能一样，尽管它们尚未被正式批准为规范的一部分。
 
-## 为什么不适用实验性发布来代替？ {/*why-not-use-experimental-releases-instead*/}
+## 为什么不使用实验性发布？ {/*why-not-use-experimental-releases-instead*/}
 
 虽然在技术上可以使用 [实验性发布](/community/versioning-policy#canary-channel)，但我们建议不要在生产环境中使用它们，因为实验性 API 在稳定之前可能会经历重大的破坏性更改（甚至可能完全被删除）。而尽管 Canary 也可能包含错误（与任何版本发布一样），但我们会计划在博客上宣布 Canary 中的任何重大破坏性更改。Canary 最接近 Meta 内部运行的代码，所以它们通常是相对稳定的。但是，在更新固定提交之间，你需要捆绑版本并手动检查 GitHub 提交日志。
 
