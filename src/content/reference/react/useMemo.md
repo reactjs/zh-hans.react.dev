@@ -64,7 +64,7 @@ function TodoList({ todos, tab }) {
 
 ## 用法 {/*usage*/}
 
-### 跳过代价昂贵的重新计算{/*skipping-expensive-recalculations*/}
+### 跳过代价昂贵的重新计算 {/*skipping-expensive-recalculations*/}
 
 要在重新渲染之间缓存计算结果，请在组件的顶层使用 `useMemo` 调用将其包裹起来：
 
@@ -158,8 +158,8 @@ console.timeEnd('filter array');
 1. 当一个组件在视觉上包裹其他组件时，让它 [将 JSX 作为子组件传递](/learn/passing-props-to-a-component#passing-jsx-as-children)。这样，当包装器组件更新自己的状态时，React 知道它的子组件不需要重新渲染。
 2. 首选本地状态，非必要不进行 [状态提升](/learn/sharing-state-between-components)。例如，不要保持像表单这样的瞬时状态，也不要保持组件是否悬停在树的顶部或全局状态库中这样的状态。
 3. 保持你的 [渲染逻辑纯粹](/learn/keeping-components-pure)。如果重新渲染组件导致一些问题或产生一些明显的视觉错误，那么它就是组件中的错误！修复错误而不是添加记忆化。
-4. 避免 [不必要的更新 state 的 Effects](/learn/you-might-not-need-an-effect)。React 应用程序中的大多数性能问题都是由 Effects 创造的更新链引起的，这些更新链导致组件反复重新渲染。
-5. 尽力 [从 Effects 中移除不必要的依赖项](/learn/removing-effect-dependencies)。例如, 相比于记忆化，在 Effect 内部或组件外部移动某些对象或函数通常更简单。
+4. 避免 [不必要的更新 state 的 Effect](/learn/you-might-not-need-an-effect)。React 应用程序中的大多数性能问题都是由 Effect 创造的更新链引起的，这些更新链导致组件反复重新渲染。
+5. 尽力 [从 Effect 中移除不必要的依赖项](/learn/removing-effect-dependencies)。例如, 相比于记忆化，在 Effect 内部或组件外部移动某些对象或函数通常更简单。
 
 如果某个特定的交互仍然感觉滞后，[使用 React 开发者工具分析器](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) 查看哪些组件将从记忆化中获益最多，并在需要的地方添加记忆化。这些原则使你的组件更易于调试和理解，因此在任何情况下都应该遵循它们。从长远来看，我们正在研究 [自动进行粒度记忆](https://www.youtube.com/watch?v=lGEMwh32soc) 以一劳永逸地解决这个问题。
 
@@ -550,7 +550,7 @@ label {
 
 ### 跳过组件的重新渲染 {/*skipping-re-rendering-of-components*/}
 
-在某些情况下，`useMemo` 还可以帮助你优化重新渲染子组件的性能。为了说明这一点，假设这个 `TodoList` 组件将 `visibleTodos` 作为 prop 传递给子 `List` 组件：
+在某些情况下，`useMemo` 还可以帮助你优化重新渲染子组件的性能。为了说明这一点，假设这个 `TodoList` 组件将 `visibleTodos` 作为 props 传递给子 `List` 组件：
 
 ```js {5}
 export default function TodoList({ todos, tab, theme }) {
@@ -590,7 +590,7 @@ export default function TodoList({ todos, tab, theme }) {
 }
 ```
 
-**在上面的示例中，`filterTodos` 函数总是创建一个 *不同* 数组**，类似于 `{}` 总是创建一个新对象的方式。通常，这不是问题，但这意味着 `List` 属性永远不会相同，并且你的 [`memo`](/reference/react/memo) 优化将不起作用。这就是 `useMemo` 派上用场的地方：
+**在上面的示例中，`filterTodos` 函数总是创建一个不同数组**，类似于 `{}` 总是创建一个新对象的方式。通常，这不是问题，但这意味着 `List` 属性永远不会相同，并且你的 [`memo`](/reference/react/memo) 优化将不起作用。这就是 `useMemo` 派上用场的地方：
 
 ```js {2-3,5,9-10}
 export default function TodoList({ todos, tab, theme }) {
@@ -609,7 +609,7 @@ export default function TodoList({ todos, tab, theme }) {
 ```
 
 
-**通过将 `visibleTodos` 包裹在 `useMemo` 中，你可以确保它在重新渲染之间具有 *相同* 值**（直到依赖关系发生变化）。你 **不必** 将计算包裹在 `useMemo` 中，除非你出于某些特定原因这样做。在此示例中，原因是你将它传递给包裹在 [`memo`](/reference/react/memo) 中的组件，这让它可以跳过重新渲染。添加 `useMemo` 的其他一些原因将在本页进一步描述。
+**通过将 `visibleTodos` 包裹在 `useMemo` 中，你可以确保它在重新渲染之间具有相同值**（直到依赖关系发生变化）。你 **不必** 将计算包裹在 `useMemo` 中，除非你出于某些特定原因这样做。在此示例中，原因是你将它传递给包裹在 [`memo`](/reference/react/memo) 中的组件，这让它可以跳过重新渲染。添加 `useMemo` 的其他一些原因将在本页进一步描述。
 
 <DeepDive>
 
