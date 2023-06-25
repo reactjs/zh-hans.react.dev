@@ -68,7 +68,7 @@ console.log(clonedElement); // <Row title="Cabbage">Goodbye</Row>
 
 * 克隆一个元素 **不会修改原始元素**。
 
-* 如果 children 已知是静态的，则你应该 **将它们作为多个参数传递给 `cloneElement`**，例如 `cloneElement(element, null, child1, child2, child3)`。如果你的 children 是动态的，请将整个数组作为第三个参数传递：`cloneElement(element, null, listItems)`。这确保了 React 会对任何动态列表 [警告你缺少“key”](/learn/rendering-lists#keeping-list-items-in-order-with-key)，对于静态的列表，这是不必要的，因为它们不会重新排序。
+* 如果已知 children 是静态的，则你应该 **将它们作为多个参数传递给 `cloneElement`**，例如 `cloneElement(element, null, child1, child2, child3)`。如果你的 children 是动态的，请将整个数组作为第三个参数传递：`cloneElement(element, null, listItems)`。这确保了 React 会对任何动态列表 [警告你缺少“key”](/learn/rendering-lists#keeping-list-items-in-order-with-key)，对于静态的列表，这是不必要的，因为它们不会重新排序。
 
 * `cloneElement` 会使得跟踪数据流向变得更加困难，所以请 **尝试使用 [替代方案](#alternatives)**。
 
