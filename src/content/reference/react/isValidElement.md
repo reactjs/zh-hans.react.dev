@@ -115,7 +115,7 @@ React 节点可能是：
 - `true`、`false`、`null` 或者 `undefined`（不会被展示出来）
 - 其他 React 节点的数组
 
-**注意 `isValidElement` 只能检测参数是否为 React 元素，而不能检测它是否是 React 节点**。例如 `42` 不是一个有效的 React 元素。但它是一个有效的 React 节点：
+**注意 `isValidElement` 只能检测参数是否为 React 元素，而不能检测它是否是 React 节点**。例如 `42` 不是一个有效的 React 元素，但它是一个有效的 React 节点：
 
 ```js
 function MyComponent() {
