@@ -20,7 +20,7 @@ title: "React Canaries：在 Meta 之外逐步推出新功能"
 Canary 能够让你在它们出现在 semver 稳定版本之前开始使用单个新的 React 功能。
 与 [实验性](/community/versioning-policy#experimental-channel) 渠道不同，React Canary 仅包括我们认为准备采用的合理功能。我们鼓励框架考虑捆绑固定的 Canary React 发布版本。
 即使有关内容已经出现在了 Canary 版本中，我们仍将在博客中宣布重大变更和新功能。
-**一如既往，React 在每个稳定版本中都遵循 semver**。
+**一如既往，React 在每个稳定版本中都遵循 semver 语义化版本控制模块**。
 
 ## 新功能通常是如何开发的 {/*how-react-features-are-usually-developed*/}
 
