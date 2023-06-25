@@ -72,7 +72,7 @@ hydrate(<App />, document.getElementById('root'));
 
 不支持使用 `hydrate()` 渲染仅用于客户端的应用程序（没有服务器渲染的 HTML）。请改用 [`render()`](/reference/react-dom/render)（适用于 React 17 及以下版本）或 [`createRoot()`](/reference/react-dom/client/createRoot)（适用于 React 18 及以上版本）。
 
-### Hydrate 服务器渲染的 HTML {/*hydrating-server-rendered-html*/}
+### hydrate 服务器渲染的 HTML {/*hydrating-server-rendered-html*/}
 
 在 React 中，hydrate 是指将 React “附加（attach）”到在服务器环境中已由 React 渲染的现有 HTML 上。在 hydrate 期间，React 将尝试将事件监听器附加（attach）到现有标记，并在客户端上接管渲染应用程序。
 
