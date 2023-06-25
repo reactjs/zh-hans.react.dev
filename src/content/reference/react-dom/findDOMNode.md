@@ -10,7 +10,7 @@ title: findDOMNode
 
 <Intro>
 
-`findDOMNode` 方法可以帮助找到 [类式组件](/reference/react/Component) 实例对应的浏览器 DOM 节点。
+`findDOMNode` 方法可以获取 [类式组件](/reference/react/Component) 实例对应的浏览器 DOM 节点。
 
 ```js
 const domNode = findDOMNode(componentInstance)
