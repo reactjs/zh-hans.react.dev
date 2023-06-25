@@ -43,7 +43,7 @@ console.log(isValidElement({ age: 42 })); // false
 
 #### 返回值 {/*returns*/}
 
-如果 `value` 是一个 React 元素，`isValidElement` 返回 `true`。否则返回 `false`。
+如果 `value` 是一个 React 元素，`isValidElement` 返回 `true`；否则返回 `false`。
 
 #### 注意事项 {/*caveats*/}
 
