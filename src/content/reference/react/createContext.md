@@ -166,7 +166,7 @@ import { createContext } from 'react';
 
 export const ThemeContext = createContext('light');
 export const AuthContext = createContext(null);
-````
+```
 
 被定义在其他文件中的组件则可以使用 [`import`](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/import) 语句来读取或提供该 context：
 
