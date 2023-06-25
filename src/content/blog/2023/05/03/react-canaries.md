@@ -66,9 +66,9 @@ Canary 发布代表了我们在任何时候对下一个稳定版本的 React 所
 
 我们计划记录在 Canary 中已经准备好的 API，即使这些 API 尚未在外部提供。仅在 Canary 中可用的 API 将在相应页面上用特殊注释标记。这将包括像 [`use`](https://github.com/reactjs/rfcs/pull/229) 这样的API，以及一些其他 API（如 `cache` 和 `createServerContext`），我们将为其发送 RFC。
 
-## 使用 Canary 发布的确切版本 {/*canaries-must-be-pinned*/}
+## 捆绑 Canary 的确切版本 {/*canaries-must-be-pinned*/}
 
-如果你决定为你的应用程序或框架采用 Canary 工作流，请确保始终固定你正在使用的 Canary 的 **确切** 版本。由于 Canary 是预发布版本，它们可能仍然包含破坏性更改。
+如果你决定为你的应用程序或框架采用 Canary 工作流，请确保始终捆绑 Canary 的 **确切** 版本。由于 Canary 是预发布版本，它们可能仍然包含破坏性更改。
 
 ## 例子：React 服务器组件 {/*example-react-server-components*/}
 
