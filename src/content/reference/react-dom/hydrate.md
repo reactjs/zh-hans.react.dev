@@ -6,7 +6,7 @@ title: hydrate
 
 此 API 将在未来的 React 主要版本中被移除。
 
-从 React 18 开始，`hydrate` 被 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 替代。在 React 18 或更高版本中使用 `hydrate` 将会警告你的应用程序表现得行为会如同在 React 17 一样。如果你想了解更多，请看 [这里](/blog/2022/03/08/react-18-upgrade-guide#updates-to-client-rendering-apis)。
+从 React 18 开始，`hydrate` 被 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 替代。在 React 18 或更高版本中使用 `hydrate` 将会警告你的应用程序行为会和 React 17 一样。如果你想了解更多，请看 [这里](/blog/2022/03/08/react-18-upgrade-guide#updates-to-client-rendering-apis)。
 
 </Deprecated>
 
