@@ -1,10 +1,10 @@
 ---
-标题：renderToReadableStream
+title: renderToReadableStream
 ---
 
 <Intro>
 
-`renderToReadableStream` 渲染一棵 React 树到一个 [可读 Web 流](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)中。
+`renderToReadableStream` 渲染一棵 React 树到一个 [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) 中。
 
 ```js
 const stream = await renderToReadableStream(reactNode, options?)
@@ -16,7 +16,7 @@ const stream = await renderToReadableStream(reactNode, options?)
 
 <Note>
 
-这个 API 依赖 [Web 流](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 。 对于 Node.js 来说， 使用 [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) 来代替。
+这个 API 依赖 [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 。 对于 Node.js 来说， 使用 [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) 来代替。
 
 </Note>
 
@@ -26,7 +26,7 @@ const stream = await renderToReadableStream(reactNode, options?)
 
 ### `renderToReadableStream(reactNode, options?)` {/*rendertoreadablestream*/}
 
-调用 `renderToReadableStream` ，将 React 树作为 HTML 呈现为 [可读的 Web 流](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) 。
+调用 `renderToReadableStream` ，将 React 树作为 HTML 呈现为 [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) 。
 
 ```js
 import { renderToReadableStream } from 'react-dom/server';
@@ -65,7 +65,7 @@ async function handler(request) {
 
 `renderToReadableStream` 返回一个 Promise ：
 
-- 如果渲染 [shell](#specifying-what-goes-into-the-shell) 成功，那么 Promise 将 resolve [可读的 Web 流](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) 。
+- 如果渲染 [shell](#specifying-what-goes-into-the-shell) 成功，那么 Promise 将 resolve [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) 。
 - 如果渲染 shell 失败， Promise 将会 reject 。 [使用此选项可输出回滚shell](#recovering-from-errors-inside-the-shell)。
 
 返回的流具有附加属性：
@@ -76,9 +76,9 @@ async function handler(request) {
 
 ## 用法 {/*usage*/}
 
-### 将 React 树按照 HTML 渲染成可读 Web 流 {/*rendering-a-react-tree-as-html-to-a-readable-web-stream*/}
+### 将 React 树按照 HTML 渲染成一个 Readable Web Stream {/*rendering-a-react-tree-as-html-to-a-readable-web-stream*/}
 
-调用 `renderToReadableStream` 将 React 树按照 HTML 渲染成 [可读 Web 流](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) ：
+调用 `renderToReadableStream` 将 React 树按照 HTML 渲染成 [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) ：
 
 ```js [[1, 4, "<App />"], [2, 5, "['/main.js']"]]
 import { renderToReadableStream } from 'react-dom/server';
@@ -93,7 +93,7 @@ async function handler(request) {
 }
 ```
 
-除了<CodeStep step={1}>根组件</CodeStep>，你还需要提供一个<CodeStep step={2}>引导 `<script>` 路径</CodeStep>列表，你的根组件应该返回**整个文档，包括根 `<html>` 标签**
+除了<CodeStep step={1}>根组件</CodeStep>，你还需要提供一个<CodeStep step={2}>引导 `<script>` 路径</CodeStep>列表，你的根组件应该返回 **整个文档，包括根 `<html>` 标签** 
 
 例如，它可能看起来像这样：
 
@@ -330,7 +330,7 @@ function ProfilePage() {
 </ProfileLayout>
 ```
 
-如果将整个应用程序包装到根的 `<Suspense>` 边界中，则 shell 将只包含该 spinner 。然而，这并不是一种愉快的用户体验，因为在屏幕上看到一个大的 spinner 会比多等一段时间并看到真实的布局感觉更慢、更烦人。这就是为什么通常你希望放置 `<Suspense>` 边界，以便 shell 感觉**最小但完整**——就像整个页面布局的骨架。
+如果将整个应用程序包装到根的 `<Suspense>` 边界中，则 shell 将只包含该 spinner 。然而，这并不是一种愉快的用户体验，因为在屏幕上看到一个大的 spinner 会比多等一段时间并看到真实的布局感觉更慢、更烦人。这就是为什么通常你希望放置 `<Suspense>` 边界，以便 shell 感觉 **最小但完整** ——就像整个页面布局的骨架。
 
 对 `renderToReadableStream` 的异步调用将在渲染完整个 shell 后立即 resolve `stream` 。通常，你将通过创建并返回带有 `stream` 的响应来开始流式传输。
 
@@ -438,7 +438,7 @@ function ProfilePage() {
 
 1. 它将为最近的 `<Suspense>` 边界（`PostsGlimmer`）触发加载回退到 HTML 。
 2. 它将“放弃”再尝试在服务器上呈现 `Posts` 内容。
-3. 当 JavaScript 代码加载到客户端上时， React 将**重试**在客户端上呈现 `Posts` 。
+3. 当 JavaScript 代码加载到客户端上时， React **重试** 在客户端上呈现 `Posts` 。
 
 如果在客户端上重试呈现 `Posts` 也失败， React 将在客户端上抛出错误。与渲染过程中抛出的所有错误一样，[最近的父级错误边界](/reference/reflect/Component#staticgetderivedstatefromwerror) 决定如何向用户显示错误。在实践中，这意味着用户将看到加载指示符，直到确定错误不可恢复为止。
 
@@ -593,7 +593,7 @@ async function handler(request) {
 }
 ```
 
-普通访问者将获得一个逐渐加载的内容流。在所有数据加载之后，爬虫将接收最终的 HTML 输出。然而，这也意味着爬虫将不得不等待**所有**数据，其中一些数据可能加载缓慢或出错。根据你的应用程序，你也可以选择将 shell 发送给爬虫。
+普通访问者将获得一个逐渐加载的内容流。在所有数据加载之后，爬虫将接收最终的 HTML 输出。然而，这也意味着爬虫将不得不等待 **所有** 数据，其中一些数据可能加载缓慢或出错。根据你的应用程序，你也可以选择将 shell 发送给爬虫。
 
 ---
 
