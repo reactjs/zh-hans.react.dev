@@ -4,7 +4,7 @@ title: isValidElement
 
 <Intro>
 
-`isValidElement` checks whether a value is a React element.
+`isValidElement` 检测参数值是否为 React 元素。
 
 ```js
 const isElement = isValidElement(value)
@@ -16,72 +16,72 @@ const isElement = isValidElement(value)
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `isValidElement(value)` {/*isvalidelement*/}
 
-Call `isValidElement(value)` to check whether `value` is a React element.
+调用 `isValidElement(value)` 来检测 `value` 是否是 React 元素。
 
 ```js
 import { isValidElement, createElement } from 'react';
 
-// ✅ React elements
+// ✅ React 元素
 console.log(isValidElement(<p />)); // true
 console.log(isValidElement(createElement('p'))); // true
 
-// ❌ Not React elements
+// ❌ 非 React 元素
 console.log(isValidElement(25)); // false
 console.log(isValidElement('Hello')); // false
 console.log(isValidElement({ age: 42 })); // false
 ```
 
-[See more examples below.](#usage)
+[请看下方更多示例](#usage)。
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `value`: The `value` you want to check. It can be any a value of any type.
+* `value`：你想要检测的 `value` 值。它可以是任何类型的值。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-`isValidElement` returns `true` if the `value` is a React element. Otherwise, it returns `false`.
+如果 `value` 是一个 React 元素，`isValidElement` 返回 `true`；否则返回 `false`。
 
-#### Caveats {/*caveats*/}
+#### 注意事项 {/*caveats*/}
 
-* **Only [JSX tags](/learn/writing-markup-with-jsx) and objects returned by [`createElement`](/reference/react/createElement) are considered to be React elements.** For example, even though a number like `42` is a valid React *node* (and can be returned from a component), it is not a valid React element. Arrays and portals created with [`createPortal`](/reference/react-dom/createPortal) are also *not* considered to be React elements.
+* **只有通过 [`createElement`](/reference/react/createElement) 返回的 [JSX 标签](/learn/writing-markup-with-jsx) 和对象会被认为是 React 元素**。例如，即使像 `42` 这样的数字是一个有效的 React **节点**（并且能从一个组件中返回），但它仍然不是有效的 React 元素。使用 [`createPortal`](/reference/react-dom/createPortal) 创建的数组和 portal 也 **不被** 认为是 React 元素。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Checking if something is a React element {/*checking-if-something-is-a-react-element*/}
+### 检测某些值是否是 React 元素 {/*checking-if-something-is-a-react-element*/}
 
-Call `isValidElement` to check if some value is a *React element.*
+调用 `isValidElement` 来检测某个值是否是一个 **React 元素**。
 
-React elements are:
+React 元素指的是：
 
-- Values produced by writing a [JSX tag](/learn/writing-markup-with-jsx)
-- Values produced by calling [`createElement`](/reference/react/createElement)
+- 通过 [JSX 标签](/learn/writing-markup-with-jsx) 产生的值
+- 通过调用 [`createElement`](/reference/react/createElement) 产生的值
 
-For React elements, `isValidElement` returns `true`:
+对于 React 元素来说，`isValidElement` 返回 `true`：
 
 ```js
 import { isValidElement, createElement } from 'react';
 
-// ✅ JSX tags are React elements
+// ✅ JSX 标签是 React 元素
 console.log(isValidElement(<p />)); // true
 console.log(isValidElement(<MyComponent />)); // true
 
-// ✅ Values returned by createElement are React elements
+// ✅ 通过 createElement 返回的值是 React 元素
 console.log(isValidElement(createElement('p'))); // true
 console.log(isValidElement(createElement(MyComponent))); // true
 ```
 
-Any other values, such as strings, numbers, or arbitrary objects and arrays, are not React elements.
+其他任意值，例如字符串，数字或者任意对象和数组等都不是 React 元素。
 
-For them, `isValidElement` returns `false`:
+对于他们来说，`isValidElement` 返回值为 `false`：
 
 ```js
-// ❌ These are *not* React elements
+// ❌ 这些 **不是** React 元素
 console.log(isValidElement(null)); // false
 console.log(isValidElement(25)); // false
 console.log(isValidElement('Hello')); // false
@@ -90,39 +90,39 @@ console.log(isValidElement([<div />, <div />])); // false
 console.log(isValidElement(MyComponent)); // false
 ```
 
-It is very uncommon to need `isValidElement`. It's mostly useful if you're calling another API that *only* accepts elements (like [`cloneElement`](/reference/react/cloneElement) does) and you want to avoid an error when your argument is not a React element.
+需要用到 `isValidElement` 的场景并不常见。如果你调用另外一个 API，它 **只** 接受元素（像 [`cloneElement`](/reference/react/cloneElement) 那样），并且你想在参数不是 React 元素时避免报错，则这个方法是最有用的。
 
-Unless you have some very specific reason to add an `isValidElement` check, you probably don't need it.
+除非你有某些特定的原因需要添加 `isValidElement` 检测，否则不需要使用。
 
 <DeepDive>
 
-#### React elements vs React nodes {/*react-elements-vs-react-nodes*/}
+#### React 元素 vs React 节点 {/*react-elements-vs-react-nodes*/}
 
-When you write a component, you can return any kind of *React node* from it:
-
-```js
-function MyComponent() {
-  // ... you can return any React node ...
-}
-```
-
-A React node can be:
-
-- A React element created like `<div />` or `createElement('div')`
-- A portal created with [`createPortal`](/reference/react-dom/createPortal)
-- A string
-- A number
-- `true`, `false`, `null`, or `undefined` (which are not displayed)
-- An array of other React nodes
-
-**Note `isValidElement` checks whether the argument is a *React element,* not whether it's a React node.** For example, `42` is not a valid React element. However, it is a perfectly valid React node:
+当你编写组件时，你可以从中返回任意类型的 **React 节点**：
 
 ```js
 function MyComponent() {
-  return 42; // It's ok to return a number from component
+  // ... 你可以返回任何 React 节点 ...
 }
 ```
 
-This is why you shouldn't use `isValidElement` as a way to check whether something can be rendered.
+React 节点可能是：
+
+- 像 `<div />` 或者 `createElement('div')` 这样被创建的 React 元素
+- 使用 [`createPortal`](/reference/react-dom/createPortal) 创建的 portal
+- 字符串
+- 数字
+- `true`、`false`、`null` 或者 `undefined`（不会被展示出来）
+- 其他 React 节点的数组
+
+**注意 `isValidElement` 只能检测参数是否为 React 元素，而不能检测它是否是 React 节点**。例如 `42` 不是一个有效的 React 元素，但它是一个有效的 React 节点：
+
+```js
+function MyComponent() {
+  return 42; // 从组件返回一个数字是没问题的
+}
+```
+
+这就是为什么你不应该用 `isValidElement` 来检测某些东西是否可以被渲染。
 
 </DeepDive>
