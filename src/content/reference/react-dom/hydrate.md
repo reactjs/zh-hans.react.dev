@@ -196,6 +196,6 @@ export default function App() {
 
 <Pitfall>
 
-这种方法会使 hydrate 变慢，因为你的组件必须渲染两次，因此要注意在连接缓慢的情况下用户体验。JavaScript 代码的加载可能比初始 HTML 渲染要晚许多，因此在 hydrate 后立即渲染不同的 UI 可能会让用户感到不适。
+这种方法会使 hydrate 变慢，因为你的组件必须渲染两次，因此要注意在网络不好情况下的用户体验。JavaScript 代码的加载可能比初始 HTML 渲染要晚许多，因此在 hydrate 后立即渲染不同的 UI 可能会让用户感到不适。
 
 </Pitfall>
