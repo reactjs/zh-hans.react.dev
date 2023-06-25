@@ -4,13 +4,13 @@ title: PureComponent
 
 <Pitfall>
 
-我们建议将组件定义为函数而不是类。[查看如何迁移](#alternatives)。
+我们建议使用函数式组件而非类式组件。[查看如何迁移](#alternatives)。
 
 </Pitfall>
 
 <Intro>
 
-`PureComponent` 类似于 [`Component`](/reference/react/Component)，但是它会跳过 props 和 state 的重新渲染。React 仍然支持类组件，但我们不建议在新代码中使用它们。
+`PureComponent` 类似于 [`Component`](/reference/react/Component)，但是当 props 和 state 与之前保持一致时会跳过重新渲染。React 仍然支持类式组件，但我们不建议在新代码中使用它们。
 
 ```js
 class Greeting extends PureComponent {
@@ -109,7 +109,7 @@ label {
 
 <Pitfall>
 
-我们建议将组件定义为函数而不是类。[查看如何迁移](#alternatives)。
+我们建议使用函数式组件而非类式组件。[查看如何迁移](#alternatives)。
 
 </Pitfall>
 
