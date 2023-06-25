@@ -38,7 +38,7 @@ hydrate(reactNode, domNode);
 
 React 将会附加到 `domNode` 内部现有的 HTML，并接管有关的 DOM 的管理。使用 React 完全构建的应用通常只会有一个 `hydrate` 调用，并用于根组件。
 
-[参加下面更多示例](#usage)。
+[参见下面更多示例](#usage)。
 
 #### 参数 {/*parameters*/}
 
