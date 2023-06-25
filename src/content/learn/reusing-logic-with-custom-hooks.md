@@ -4,7 +4,7 @@ title: 使用自定义 Hook 复用逻辑
 
 <Intro>
 
-React 有一些内置 Hook，例如 `useState`， `useContext` 和 `useEffect`。有时你需要一个用途更特殊的 Hook：例如获取数据，记录用户是否在线或者连接聊天室。虽然 React 中可能找不到这些 Hook，但是你可以根据应用需求创建自己的 Hook。
+React 有一些内置 Hook，例如 `useState`，`useContext` 和 `useEffect`。有时你需要一个用途更特殊的 Hook：例如获取数据，记录用户是否在线或者连接聊天室。虽然 React 中可能找不到这些 Hook，但是你可以根据应用需求创建自己的 Hook。
 
 </Intro>
 
@@ -56,7 +56,7 @@ export default function StatusBar() {
 
 试着开启和关闭网络，注意 `StatusBar` 组件应对你的行为是如何更新的。
 
-假设现在你想在另一个不同的组件里 **也** 使用同样的逻辑。你希望实现一个 Save 按钮，每当网络断开这个按钮就会不可用并且显示“Reconnecting...”而不是“Save”。
+假设现在你想在另一个不同的组件里 **也** 使用同样的逻辑。你希望实现一个保存按钮，每当网络断开这个按钮就会不可用并且显示“Reconnecting...”而不是“Save progress”。
 
 你可以从复制粘贴 `isOnline` state 和 Effect 到 `SaveButton` 开始：
 
@@ -211,7 +211,7 @@ export function useOnlineStatus() {
 
 切换网络状态验证一下是否会同时更新两个组件。
 
-现在组件里没有那么多的重复逻辑了。**更重要的是，组件内部的代码描述的是想要做什么（使用在线状态！），而不是怎么做（通过订阅浏览器事件完成）**
+现在组件里没有那么多的重复逻辑了。**更重要的是，组件内部的代码描述的是想要做什么（使用在线状态！），而不是怎么做（通过订阅浏览器事件完成）**。
 
 当提取逻辑到自定义 Hook 时，你可以隐藏如何处理外部系统或者浏览器 API 这些乱七八糟的细节。组件内部的代码表达的是目标而不是具体实现。
 
@@ -447,7 +447,7 @@ function Form() {
 
 ## 在 Hook 之间传递响应值 {/*passing-reactive-values-between-hooks*/}
 
-每当组件重新渲染，自定义 Hook 中的代码就会重新运行。这就是组件和自定义 Hook 都 [需要纯粹](/learn/keeping-components-pure) 的原因。我们应该把自定义 Hook 的代码看作组件主体的一部分。
+每当组件重新渲染，自定义 Hook 中的代码就会重新运行。这就是组件和自定义 Hook 都 [需要是纯函数](/learn/keeping-components-pure) 的原因。我们应该把自定义 Hook 的代码看作组件主体的一部分。
 
 由于自定义 Hook 会随着组件一起重新渲染，所以组件可以永远接收到最新的 props 和 state。想知道这意味着什么，那就看看这个聊天室的示例。修改 Server URL 或者聊天室 ID：
 
