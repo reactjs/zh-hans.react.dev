@@ -38,7 +38,7 @@ const domNode = findDOMNode(componentInstance);
 
 #### 参数 {/*parameters*/}
 
-* `componentInstance`：[`Component`](/reference/react/Component) 实例。举个例子，类式组件中的 `this`。
+* `componentInstance`：[`Component`](/reference/react/Component) 子类的实例。举个例子，类式组件中的 `this`。
 
 
 #### 返回值 {/*returns*/}
@@ -420,7 +420,7 @@ export default MyInput;
 
 ---
 
-### 使用 `<div>` 节点包装 {/*adding-a-wrapper-div-element*/}
+### 使用 `<div>` 包装 {/*adding-a-wrapper-div-element*/}
 
 有时，一个组件想要知道子元素的位置和大小。这会让你想要使用 `findDOMNode(this)` 查找子元素，然后使用 [`getBoundingClientRect`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) 等 DOM 方法来进行测量。
 
