@@ -4,7 +4,7 @@ title: 实验性的 useEffectEvent
 
 <Wip>
 
-**这个 API 实验性的且在 React 的稳定版中还不可用。**
+**这个 API 实验性的且在 React 的稳定版中还不可用**。
 
 你可以通过升级到最新的实验版 React 包来尝试：
 
