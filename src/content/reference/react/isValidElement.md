@@ -90,7 +90,7 @@ console.log(isValidElement([<div />, <div />])); // false
 console.log(isValidElement(MyComponent)); // false
 ```
 
-需要用到 `isValidElement` 的场景并不常见。如果你调用另外一个 API，它 **只** 接受元素（像[`cloneElement`](/reference/react/cloneElement) 那样），并且你想在参数不是 React 元素时避免报错，则这个方法是最有用的。
+需要用到 `isValidElement` 的场景并不常见。如果你调用另外一个 API，它 **只** 接受元素（像 [`cloneElement`](/reference/react/cloneElement) 那样），并且你想在参数不是 React 元素时避免报错，则这个方法是最有用的。
 
 除非你有某些特定的原因需要添加 `isValidElement` 检测，否则不需要使用。
 
