@@ -12,7 +12,7 @@ title: 实验性的 useEffectEvent
 - `react-dom@experimental`
 - `eslint-plugin-react-hooks@experimental`
 
-React 实验版可能存在 bug。所以千万不要在生产环境使用它。
+React 实验版可能存在 bug，所以千万不要在生产环境使用它。
 
 </Wip>
 
