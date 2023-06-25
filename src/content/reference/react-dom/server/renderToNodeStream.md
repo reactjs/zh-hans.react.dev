@@ -4,13 +4,13 @@ title: renderToNodeStream
 
 <Deprecated>
 
-This API will be removed in a future major version of React. Use [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) instead.
+此 API 将在未来的 React 主要版本中被移除，请使用 [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream)。
 
 </Deprecated>
 
 <Intro>
 
-`renderToNodeStream` renders a React tree to a [Node.js Readable Stream.](https://nodejs.org/api/stream.html#readable-streams)
+`renderToNodeStream` 可以为 [Node.js 只读流](https://nodejs.org/api/stream.html#readable-streams) 渲染 React 树。
 
 ```js
 const stream = renderToNodeStream(reactNode)
@@ -22,11 +22,11 @@ const stream = renderToNodeStream(reactNode)
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `renderToNodeStream(reactNode)` {/*rendertonodestream*/}
 
-On the server, call `renderToNodeStream` to get a [Node.js Readable Stream](https://nodejs.org/api/stream.html#readable-streams) which you can pipe into the response.
+在服务端调用 `renderToNodeStream` 获取 [Node.js 只读流](https://nodejs.org/api/stream.html#readable-streams)，你也可以将其管道（pipe）传输到响应中。
 
 ```js
 import { renderToNodeStream } from 'react-dom/server';
@@ -35,42 +35,42 @@ const stream = renderToNodeStream(<App />);
 stream.pipe(response);
 ```
 
-On the client, call [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) to make the server-generated HTML interactive.
+在客户端调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 使由服务器生成的 HTML 具有交互功能。
 
-[See more examples below.](#usage)
+[参见下面更多示例](#usage)。
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `reactNode`: A React node you want to render to HTML. For example, a JSX element like `<App />`.
+* `reactNode`：想要渲染为 HTML 的 React 节点。比如像 `<App />` 一样的 JSX 元素。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-A [Node.js Readable Stream](https://nodejs.org/api/stream.html#readable-streams) that outputs an HTML string.
+输出 HTML 字符串的 [Node.js 只读流](https://nodejs.org/api/stream.html#readable-streams)。
 
-#### Caveats {/*caveats*/}
+#### 注意 {/*caveats*/}
 
-* This method will wait for all [Suspense boundaries](/reference/react/Suspense) to complete before returning any output.
+* 此方法会等待所有 [Suspense 边界](/reference/react/Suspense) 完成后才返回输出。
 
-* As of React 18, this method buffers all of its output, so it doesn't actually provide any streaming benefits. This is why it's recommended that you migrate to [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) instead.
+* 从 React 18 开始，此方法会缓冲所有输出，因此实际上它并没有提供任何流式传输的好处。这就是为什么建议改用 [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream)。
 
-* The returned stream is a byte stream encoded in utf-8. If you need a stream in another encoding, take a look at a project like [iconv-lite](https://www.npmjs.com/package/iconv-lite), which provides transform streams for transcoding text.
+* 返回的是一个 utf-8 编码的字节流。如果你需要其他编码格式的流，请参考 [iconv-lite](https://www.npmjs.com/package/iconv-lite) 这样的项目，它提供了用于转码文本的转换流。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Rendering a React tree as HTML to a Node.js Readable Stream {/*rendering-a-react-tree-as-html-to-a-nodejs-readable-stream*/}
+### 为 Node.js 只读流将 React 树渲染为 HTML {/*rendering-a-react-tree-as-html-to-a-nodejs-readable-stream*/}
 
-Call `renderToNodeStream` to get a [Node.js Readable Stream](https://nodejs.org/api/stream.html#readable-streams) which you can pipe to your server response:
+调用 `renderToNodeStream` 获取 [Node.js 只读流](https://nodejs.org/api/stream.html#readable-streams)，你也可以将其管道（pipe）传输到服务器响应中。
 
 ```js {5-6}
 import { renderToNodeStream } from 'react-dom/server';
 
-// The route handler syntax depends on your backend framework
+// 路由处理程序的语法取决于使用的后端框架。
 app.use('/', (request, response) => {
   const stream = renderToNodeStream(<App />);
   stream.pipe(response);
 });
 ```
 
-The stream will produce the initial non-interactive HTML output of your React components. On the client, you will need to call [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) to *hydrate* that server-generated HTML and make it interactive.
+这里的流会将 React 组件初始输出为非交互式 HTML。在客户端上，你需要调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 方法来 hydrate 服务器生成的 HTML 并使其具有交互功能。
