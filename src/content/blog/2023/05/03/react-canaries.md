@@ -86,7 +86,7 @@ Canary 发布代表了我们在任何时候对下一个稳定版本的 React 所
 
 </Note>
 
-## 稳定性发布将与之前一样工作 {/*stable-releases-work-like-before*/}
+## 稳定版本的发布流程与之前一样 {/*stable-releases-work-like-before*/}
 
 我们不会对稳定性 React 版本进行任何更改。
 
