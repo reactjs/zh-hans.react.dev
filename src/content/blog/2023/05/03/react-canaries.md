@@ -78,7 +78,7 @@ Canary 发布代表了我们在任何时候对下一个稳定版本的 React 所
 
 ## 同时针对稳定版本和 Canary 版本的测试库 {/*testing-libraries-against-both-stable-and-canary-versions*/}
 
-我们不希望库作者测试每个 Canary 版本，因为这将极其困难。然而，就像我们在三年前 [介绍不同的 React 预发布渠道](https://legacy.reactjs.org/blog/2019/10/22/react-release-channels.html) 时一样，我们鼓励库针对 **最新的** 稳定版本和 Canary 版本运行测试。如果你看到了未经宣布的行为变化，请在 React 仓库中提交一个错误报告，以便我们可以帮助诊断它。我们希望随着这种做法的广泛采用，它将减少升级库到最新 React 主要版本所需的工作量，因为意外的退化将在它们准备好时被发现。
+我们不希望库作者测试每个 Canary 版本，因为这将极其困难。然而，就像我们在三年前 [介绍不同的 React 预发布渠道](https://legacy.reactjs.org/blog/2019/10/22/react-release-channels.html) 时一样，我们鼓励库针对 **最新的** 稳定版本和 Canary 版本运行测试。如果你看到了未经宣布的行为变化，请在 React 仓库中提交一个错误报告，以便我们可以帮助诊断它。我们希望随着这种做法的广泛采用，它将减少升级库到最新 React 主要版本所需的工作量，因为在使用它们时会发现意外的回归问题（regressions）。
 
 <Note>
 
