@@ -47,7 +47,7 @@ console.log(isValidElement({ age: 42 })); // false
 
 #### 注意事项 {/*caveats*/}
 
-* **只有通过 [`createElement`](/reference/react/createElement) 返回的 [JSX 标签](/learn/writing-markup-with-jsx) 和对象会被认为是 React 元素**。 例如，即使像 `42` 这样的数字是一个有效的 React **节点**（并且能从一个组件中返回），但它仍然不是有效的 React 元素。使用 [`createPortal`](/reference/react-dom/createPortal) 创建的数组和 portal 也 **不被** 认为是 React 元素。
+* **只有通过 [`createElement`](/reference/react/createElement) 返回的 [JSX 标签](/learn/writing-markup-with-jsx) 和对象会被认为是 React 元素**。例如，即使像 `42` 这样的数字是一个有效的 React **节点**（并且能从一个组件中返回），但它仍然不是有效的 React 元素。使用 [`createPortal`](/reference/react-dom/createPortal) 创建的数组和 portal 也 **不被** 认为是 React 元素。
 
 ---
 
