@@ -221,8 +221,8 @@ React 应用是由组件构建的。而组件是由内置或自定义的 Hook �
 
 你必须遵循以下这些命名公约：
 
-1. **React 组件名称必须以大写字母开头**， 比如 `StatusBar` 和 `SaveButton`。React 组件还需要返回一些 React 能够显示的内容，比如一段 JSX。
-2. **Hook 的名称必须以后跟一个大写字母的 `use` 开头**， 像 [`useState`](/reference/react/useState)  (内置) 或者 `useOnlineStatus` (像本文早前的自定义 Hook)。Hook 可以返回任意值。
+1. **React 组件名称必须以大写字母开头**，比如 `StatusBar` 和 `SaveButton`。React 组件还需要返回一些 React 能够显示的内容，比如一段 JSX。
+2. **Hook 的名称必须以后跟一个大写字母的 `use` 开头**，像 [`useState`](/reference/react/useState)  (内置) 或者 `useOnlineStatus` (像本文早前的自定义 Hook)。Hook 可以返回任意值。
 
 这个公约保证你始终可以一眼识别出组件并且知道它的 state，Effect 以及其他的 React 特性可能“隐藏”在哪里。例如如果你在组件内部看见 `getColor()` 函数调用，你可以确定它内部不可能包含 React state，因为它的名称没有以 `use` 开头。但是像 `useOnlineStatus()` 这样的函数调用就很可能包含对内部其他 Hook 的调用！
 
@@ -441,9 +441,9 @@ function Form() {
 
 这就是为什么它工作的时候像声明了两个单独的 state 变量！
 
-**自定义 Hook 只是共享有状态逻辑而不是 state 本身。对 Hook 的每个调用完全独立于对同一个 Hook 的其他调用**。 这就是上面两个 sandbox 结果完全相同的原因。如果愿意，你可以划上去进行比较。提取自定义 Hook 前后组件的行为是一致的。
+**自定义 Hook 只是共享有状态逻辑而不是 state 本身。对 Hook 的每个调用完全独立于对同一个 Hook 的其他调用**。这就是上面两个 sandbox 结果完全相同的原因。如果愿意，你可以划上去进行比较。提取自定义 Hook 前后组件的行为是一致的。
 
-当你需要在多个组件之间共享 state 本身时，需要[将变量提升并传递下去](/learn/sharing-state-between-components)。
+当你需要在多个组件之间共享 state 本身时，需要 [将变量提升并传递下去](/learn/sharing-state-between-components)。
 
 ## 在 Hook 之间传递响应值 {/*passing-reactive-values-between-hooks*/}
 
