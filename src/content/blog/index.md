@@ -4,7 +4,7 @@ title: React Blog
 
 <Intro>
 
-这个博客是 React 团队更新的官方来源。任何重要的内容，包括发布说明或弃用通知，都会首先在这里发布。你也可以关注 Twitter 的 [@reactjs](https://twitter.com/reactjs) 账号，但如果你只阅读这个博客，你不会错过任何重要的内容。
+这个博客是 React 团队更新的官方来源。任何重要的内容，包括发布说明或弃用通知，都会首先在这里发布。你也可以关注 Twitter 的 [@reactjs](https://twitter.com/reactjs) 账号，但如果你只阅读这个博客，你也不会错过任何重要的内容。
 
 </Intro>
 
