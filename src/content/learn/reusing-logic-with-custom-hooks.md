@@ -22,7 +22,7 @@ React 有一些内置 Hook，例如 `useState`，`useContext` 和 `useEffect`。
 假设你正在开发一款重度依赖网络的应用（和大多数应用一样）。当用户使用应用时网络意外断开，你需要提醒他。你会怎么处理呢？看上去组件需要两个东西：
 
 1. 一个追踪网络是否在线的 state。
-2. 一个订阅全局 [`online`](https://developer.mozilla.org/en-US/docs/Web/API/Window/online_event) 和 [`offline`](https://developer.mozilla.org/en-US/docs/Web/API/Window/offline_event) 事件并更新上述 state 的 Effect。
+2. 一个订阅全局 [`online`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/online_event) 和 [`offline`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/offline_event) 事件并更新上述 state 的 Effect。
 
 这将让组件与网络状态保持 [同步](/learn/synchronizing-with-effects)。你也许可以像这样开始：
 
@@ -643,9 +643,9 @@ export default function ChatRoom({ roomId }) {
 }
 ```
 
-这看上去简洁多了！（但是它做的是同一件事。）
+这看上去简洁多了（但是它做的是同一件事）！
 
-注意逻辑 **仍然响应** prop 和 state 的变化。尝试编辑 server URL 或选中的房间：
+注意逻辑 **仍然响应** props 和 state 的变化。尝试编辑 server URL 或选中的房间：
 
 <Sandpack>
 
@@ -1437,7 +1437,7 @@ function ShippingForm({ country }) {
 
 ### 不止一个方法可以做到 {/*there-is-more-than-one-way-to-do-it*/}
 
-假设你想要使用浏览器的 [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) API 实现一个 **从头开始的** fade-in 动画。你也许会从一个设置动画循环的 Effect 开始。在动画的每一帧中，你可以修改 [ref 持有的](/learn/manipulating-the-dom-with-refs) DOM 节点的 opacity 属性直到 `1`。你的代码一开始可能是这样：
+假设你想要使用浏览器的 [`requestAnimationFrame`](https://developer.mozilla.org/zh-CN/docs/Web/API/window/requestAnimationFrame) API 实现一个 **从头开始的** fade-in 动画。你也许会从一个设置动画循环的 Effect 开始。在动画的每一帧中，你可以修改 [ref 持有的](/learn/manipulating-the-dom-with-refs) DOM 节点的 opacity 属性直到 `1`。你的代码一开始可能是这样：
 
 <Sandpack>
 
@@ -1715,7 +1715,7 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-但是 **没有必要** 这样做。和常规函数一样，最终是由你决定在哪里绘制代码不同部分之间的边界。你也可以采取不一样的方法。把大部分必要的逻辑移入一个 [JavaScript class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)，而不是把逻辑保留在 Effect 中：
+但是 **没有必要** 这样做。和常规函数一样，最终是由你决定在哪里绘制代码不同部分之间的边界。你也可以采取不一样的方法。把大部分必要的逻辑移入一个 [JavaScript 类](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes)，而不是把逻辑保留在 Effect 中：
 
 <Sandpack>
 
@@ -1815,7 +1815,7 @@ html, body { min-height: 300px; }
 
 Effect 可以连接 React 和外部系统。Effect 之间的配合越多（例如链接多个动画），像上面的 sandbox 一样 **完整地** 从 Effect 和 Hook 中提取逻辑就越有意义。然后你提取的代码 **变成** “外部系统”。这会让你的 Effect 保持简洁，因为他们只需要向已经被你移动到 React 外部的系统发送消息。
 
-上面这个示例假设需要使用 JavaScript 写 fade-in 逻辑。但使用纯 [CSS 动画](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations) 实现这个特定的 fade-in 动画会更加简单和高效：
+上面这个示例假设需要使用 JavaScript 写 fade-in 逻辑。但使用纯 [CSS 动画](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Animations/Using_CSS_animations) 实现这个特定的 fade-in 动画会更加简单和高效：
 
 <Sandpack>
 
