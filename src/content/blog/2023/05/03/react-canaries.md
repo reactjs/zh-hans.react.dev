@@ -52,17 +52,17 @@ Canary 的滚动发布将允许我们拥有更紧密的反馈循环，并确保�
 
 ## 为什么不适用实验性发布来代替？ {/*why-not-use-experimental-releases-instead*/}
 
-虽然在技术上你可以使用 [实验性版本](/community/versioning-policy#canary-channel)，但我们建议不要在生产环境中使用它们，因为实验性 API 在稳定之前可能会经历重大的破坏性更改（甚至可能完全被删除）。而尽管 Canary 也可能包含错误（与任何版本发布一样），但我们会计划在博客上宣布 Canary 中的任何重大破坏性更改。Canary 最接近 Meta 内部运行的代码，所以你通常可以期望它们相对稳定。但是，在更新固定提交之间，你需要保持版本固定并手动检查 GitHub 提交日志。
+虽然在技术上可以使用 [实验性发布](/community/versioning-policy#canary-channel)，但我们建议不要在生产环境中使用它们，因为实验性 API 在稳定之前可能会经历重大的破坏性更改（甚至可能完全被删除）。而尽管 Canary 也可能包含错误（与任何版本发布一样），但我们会计划在博客上宣布 Canary 中的任何重大破坏性更改。Canary 最接近 Meta 内部运行的代码，所以它们通常是相对稳定的。但是，在更新固定提交之间，你需要捆绑版本并手动检查 GitHub 提交日志。
 
-**我们预计，在未经策划设置（如框架）的情况下使用 React 的大多数人将希望继续使用稳定版本**。但是，如果你正在构建一个框架，你可能想考虑捆绑一个固定到特定提交的 Canary 版本的 React，并以你自己的节奏进行更新。这样做的好处是，它可以按照你自己的发布计划，更早为你的用户提供单独完成的 React 功能和错误修复。这类似于 React Native 在过去几年中一直在做的。缺点是，你需要承担额外的责任来审核哪些 React 提交被 pull，并向你的用户传达哪些 React 更改包含在你的发布中。
+**我们预计，在未经策划设置（如框架）的情况下使用 React 的大多数人将希望继续使用稳定版本**。但是，如果你正在构建一个框架，你可能想考虑捆绑一个固定到特定提交的 Canary 版本的 React，并以你自己的节奏进行更新。这样做的好处是，它可以按照你自己的发布计划，更早为你的用户提供单独完成的 React 功能和错误修复。这类似于 React Native 在过去几年中一直在做的。缺点是，你需要承担额外的责任来审核哪些 React 提交应该被 pull，并向你的用户传达哪些 React 更改包含在你的发布中。
 
 如果你是一个框架作者，想尝试这种方法，请与我们联系。
 
-## 更早宣布破坏性改动与新功能 {/*announcing-breaking-changes-and-new-features-early*/}
+## 更早宣布破坏性更改与新功能 {/*announcing-breaking-changes-and-new-features-early*/}
 
 Canary 发布代表了我们在任何时候对下一个稳定版本的 React 所做的最佳猜测。
 
-传统上，我们只在发布周期的 **最后**（进行主要发布时）宣布破坏性更改。现在，Canary 发布是一种正式支持的使用 React 的方式，我们计划改为在 Canary 中 **已经出现时** 宣布破坏性更改和重大新功能。例如，如果我们合并一个将在 Canary 中发布的破坏性更改，我们将在 React 博客上写一篇关于它的文章，包括必要的 codemods 和迁移说明。然后，如果你是一个框架作者，正在处理一个主要版本的发布，以更新固定的 React Canary 以包含该更改，你可以在你的发布说明中链接到我们的博客文章。最后，当 React 的稳定主要版本准备好时，我们将链接到那些已经发布的博客文章，我们希望这将帮助我们的团队更快地取得进展。
+传统上，我们只在发布周期的 **最后**（进行主要发布时）宣布破坏性更改。现在，Canary 发布是一种正式支持的使用 React 的方式，我们计划改为在 Canary 中 **已经出现** 破坏性更改和重大新功能时就宣布它们。例如，如果我们合并一个将在 Canary 中发布的破坏性更改，我们将在 React 博客上写一篇关于它的文章，包括必要的 codemods 和迁移说明。然后，如果你是一个框架作者，正在处理一个主要版本的发布，以更新固定的 React Canary 以包含该更改，你可以在你的发布说明中链接到我们的博客文章。最后，当 React 的稳定主要版本准备好时，我们将链接到那些已经发布的博客文章，我们希望这将帮助我们的团队更快地取得进展。
 
 我们计划记录在 Canary 中已经准备好的 API，即使这些 API 尚未在外部提供。仅在 Canary 中可用的 API 将在相应页面上用特殊注释标记。这将包括像 [`use`](https://github.com/reactjs/rfcs/pull/229) 这样的API，以及一些其他 API（如 `cache` 和 `createServerContext`），我们将为其发送 RFC。
 
@@ -72,7 +72,7 @@ Canary 发布代表了我们在任何时候对下一个稳定版本的 React 所
 
 ## 例子：React 服务器组件 {/*example-react-server-components*/}
 
-正如我们在三月份 [宣布的那样](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)，React 服务器组件的规范已经最终确定，而我们不希望出现与用户界面 API 相关的破坏性改动。然而，我们还在继续处理几个相互关联的仅框架功能（比如 [资源加载](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#asset-loading)），我们预计在这方面还会有更多的破坏性更改。
+正如我们在三月份 [宣布的那样](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)，React 服务器组件的规范已经最终确定，而我们不希望出现与用户界面 API 相关的破坏性更改。然而，我们还在继续处理几个相互关联的仅框架功能（比如 [资源加载](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#asset-loading)），我们预计在这方面还会有更多的破坏性更改。
 
 这意味着 React 服务器组件已经准备好被框架采用。然而，在下一个重大的 React 发布之前，框架采用它们的唯一方式是使用 Canary 发布的 React 版本（为了避免捆绑两个 React 副本，希望这样做的框架需要强制解析 `react` 和 `react-dom` 到他们框架中使用的 Canary 版本，并向他们的用户解释。例如，这就是 Next.js App Router 所做的事情）。
 
