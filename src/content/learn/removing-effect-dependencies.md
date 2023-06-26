@@ -58,7 +58,7 @@ export default function App() {
   return (
     <>
       <label>
-        选择聊天室：{' '}
+        选择聊天室：
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -80,10 +80,10 @@ export function createConnection(serverUrl, roomId) {
   // 真正的实现实际上会连接到服务器
   return {
     connect() {
-      console.log('✅ 连接到 "' + roomId + '" 房间，在' + serverUrl + '...');
+      console.log('✅ 连接到“' + roomId + '”房间，在 ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ 断开 "' + roomId + '" 房间，在' + serverUrl);
+      console.log('❌ 断开“' + roomId + '”房间，在 ' + serverUrl);
     }
   };
 }
@@ -133,7 +133,7 @@ export default function App() {
   return (
     <>
       <label>
-        选择聊天室：{' '}
+        选择聊天室：
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -155,10 +155,10 @@ export function createConnection(serverUrl, roomId) {
   // 真正的实现实际上会连接到服务器
   return {
     connect() {
-      console.log('✅ 连接到 "' + roomId + '" 房间，在' + serverUrl + '...');
+      console.log('✅ 连接到“' + roomId + '”房间，在 ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ 断开 "' + roomId + '" 房间，在' + serverUrl);
+      console.log('❌ 断开“' + roomId + '”房间，在 ' + serverUrl);
     }
   };
 }
@@ -248,10 +248,10 @@ export function createConnection(serverUrl, roomId) {
   // 真正的实现实际上会连接到服务器
   return {
     connect() {
-      console.log('✅ 连接到 "' + roomId + '" 房间，在' + serverUrl + '...');
+      console.log('✅ 连接到“' + roomId + '”房间，在 ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ 断开 "' + roomId + '" 房间，在' + serverUrl);
+      console.log('❌ 断开“' + roomId + '”房间，在 ' + serverUrl);
     }
   };
 }
@@ -830,7 +830,7 @@ export default function App() {
   return (
     <>
       <label>
-        选择聊天室：{' '}
+        选择聊天室：
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -852,10 +852,10 @@ export function createConnection({ serverUrl, roomId }) {
   // 真正的实现实际上会连接到服务器
   return {
     connect() {
-      console.log('✅ 连接到 "' + roomId + '" 房间，在' + serverUrl + '...');
+      console.log('✅ 连接到“' + roomId + '”房间，在 ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ 断开 "' + roomId + '" 房间，在' + serverUrl);
+      console.log('❌ 断开“' + roomId + '”房间，在 ' + serverUrl);
     }
   };
 }
@@ -1028,10 +1028,10 @@ export function createConnection({ serverUrl, roomId }) {
   // 真正的实现实际上会连接到服务器
   return {
     connect() {
-      console.log('✅ 连接到 "' + roomId + '" 房间，在 ' + serverUrl + '...');
+      console.log('✅ 连接到“' + roomId + '”房间，在 ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ 断开 "' + roomId + '" 房间，在 ' + serverUrl);
+      console.log('❌ 断开“' + roomId + '”房间，在 ' + serverUrl);
     }
   };
 }
@@ -1542,14 +1542,14 @@ export default function App() {
         切换主题
       </button>
       <label>
-        服务器地址：{' '}
+        服务器地址：
         <input
           value={serverUrl}
           onChange={e => setServerUrl(e.target.value)}
         />
       </label>
       <label>
-        选择聊天室：{' '}
+        选择聊天室：
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -1592,10 +1592,10 @@ export function createConnection({ serverUrl, roomId }) {
   }
   return {
     connect() {
-      console.log('✅ 连接到 "' + roomId + '" 房间，在' + serverUrl + '...');
+      console.log('✅ 连接到“' + roomId + '”房间，在 ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ 断开 "' + roomId + '" 房间，在' + serverUrl);
+      console.log('❌ 断开“' + roomId + '”房间，在 ' + serverUrl);
     }
   };
 }
@@ -1636,14 +1636,14 @@ export default function App() {
         切换主题
       </button>
       <label>
-        服务器地址：{' '}
+        服务器地址：
         <input
           value={serverUrl}
           onChange={e => setServerUrl(e.target.value)}
         />
       </label>
       <label>
-        选择聊天室：{' '}
+        选择聊天室：
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -1690,10 +1690,10 @@ export function createConnection({ serverUrl, roomId }) {
   }
   return {
     connect() {
-      console.log('✅ 连接到 "' + roomId + '" 房间，在' + serverUrl + '...');
+      console.log('✅ 连接到“' + roomId + '”房间，在 ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ 断开 "' + roomId + '" 房间，在' + serverUrl);
+      console.log('❌ 断开“' + roomId + '”房间，在 ' + serverUrl);
     }
   };
 }
@@ -1725,14 +1725,14 @@ export default function App() {
         切换主题
       </button>
       <label>
-        服务器地址：{' '}
+        服务器地址：
         <input
           value={serverUrl}
           onChange={e => setServerUrl(e.target.value)}
         />
       </label>
       <label>
-        选择聊天室：{' '}
+        选择聊天室：
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -1781,10 +1781,10 @@ export function createConnection({ serverUrl, roomId }) {
   }
   return {
     connect() {
-      console.log('✅ 连接到 "' + roomId + '" 房间，在' + serverUrl + '...');
+      console.log('✅ 连接到“' + roomId + '”房间，在 ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ 断开 "' + roomId + '" 房间，在' + serverUrl);
+      console.log('❌ 断开“' + roomId + '”房间，在 ' + serverUrl);
     }
   };
 }
@@ -1871,7 +1871,7 @@ export default function App() {
         开启加密功能
       </label>
       <label>
-        选择聊天室：{' '}
+        选择聊天室：
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -1933,7 +1933,7 @@ export function createEncryptedConnection({ serverUrl, roomId }) {
   let messageCallback;
   return {
     connect() {
-      console.log('✅ 🔐 连接到 "' + roomId + '" 房间...（已加密）');
+      console.log('✅ 🔐 连接到“' + roomId + '”房间...（已加密）');
       clearInterval(intervalId);
       intervalId = setInterval(() => {
         if (messageCallback) {
@@ -1948,7 +1948,7 @@ export function createEncryptedConnection({ serverUrl, roomId }) {
     disconnect() {
       clearInterval(intervalId);
       messageCallback = null;
-      console.log('❌ 🔐 断开 "' + roomId + '" 房间（已加密）');
+      console.log('❌ 🔐 断开“' + roomId + '”房间（已加密）');
     },
     on(event, callback) {
       if (messageCallback) {
@@ -1974,7 +1974,7 @@ export function createUnencryptedConnection({ serverUrl, roomId }) {
   let messageCallback;
   return {
     connect() {
-      console.log('✅ 连接到 "' + roomId + '" 房间（未加密）...');
+      console.log('✅ 连接到“' + roomId + '”房间（未加密）...');
       clearInterval(intervalId);
       intervalId = setInterval(() => {
         if (messageCallback) {
@@ -1989,7 +1989,7 @@ export function createUnencryptedConnection({ serverUrl, roomId }) {
     disconnect() {
       clearInterval(intervalId);
       messageCallback = null;
-      console.log('❌ 断开 "' + roomId + '" 房间（未加密）');
+      console.log('❌ 断开“' + roomId + '”房间（未加密）');
     },
     on(event, callback) {
       if (messageCallback) {
@@ -2163,7 +2163,7 @@ export default function App() {
         开启加密功能
       </label>
       <label>
-        选择聊天室：{' '}
+        选择聊天室：
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -2233,7 +2233,7 @@ export function createEncryptedConnection({ serverUrl, roomId }) {
   let messageCallback;
   return {
     connect() {
-      console.log('✅ 🔐 连接到 "' + roomId + '" 房间...（已加密）');
+      console.log('✅ 🔐 连接到“' + roomId + '”房间...（已加密）');
       clearInterval(intervalId);
       intervalId = setInterval(() => {
         if (messageCallback) {
@@ -2248,7 +2248,7 @@ export function createEncryptedConnection({ serverUrl, roomId }) {
     disconnect() {
       clearInterval(intervalId);
       messageCallback = null;
-      console.log('❌ 🔐 断开 "' + roomId + '" 房间（已加密）');
+      console.log('❌ 🔐 断开“' + roomId + '”房间（已加密）');
     },
     on(event, callback) {
       if (messageCallback) {
@@ -2274,7 +2274,7 @@ export function createUnencryptedConnection({ serverUrl, roomId }) {
   let messageCallback;
   return {
     connect() {
-      console.log('✅ 连接到 "' + roomId + '" 房间（未加密）...');
+      console.log('✅ 连接到“' + roomId + '”房间（未加密）...');
       clearInterval(intervalId);
       intervalId = setInterval(() => {
         if (messageCallback) {
@@ -2289,7 +2289,7 @@ export function createUnencryptedConnection({ serverUrl, roomId }) {
     disconnect() {
       clearInterval(intervalId);
       messageCallback = null;
-      console.log('❌ 断开 "' + roomId + '" 房间（未加密）');
+      console.log('❌ 断开“' + roomId + '”房间（未加密）');
     },
     on(event, callback) {
       if (messageCallback) {
