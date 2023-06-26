@@ -11,7 +11,7 @@ title: 将事件从 Effect 中分开
 <YouWillLearn>
 
 - 怎么在事件处理函数和 Effect 之间做选择 
-- 为什么 Effects 是响应式的，而事件处理函数不是
+- 为什么 Effect 是响应式的，而事件处理函数不是
 - 当你想要 Effect 的部分代码变成非响应式时要做些什么
 - Effect Event 是什么，以及怎么从 Effect 中提取
 - 怎么使用 Effect Event 读取最新的 props 和 state
@@ -31,7 +31,7 @@ title: 将事件从 Effect 中分开
 
 ### 事件处理函数只在响应特定的交互操作时运行 {/*event-handlers-run-in-response-to-specific-interactions*/}
 
-从用户角度出发，发送消息是 **因为** 他点击了特定的 “send” 按钮。如果在任意时间或者因为其他原因发送消息，用户会觉得非常混乱。这就是为什么发送消息应该使用事件处理函数。事件处理函数是让你处理特定的交互操作的：
+从用户角度出发，发送消息是 **因为** 他点击了特定的 “Send” 按钮。如果在任意时间或者因为其他原因发送消息，用户会觉得非常混乱。这就是为什么发送消息应该使用事件处理函数。事件处理函数是让你处理特定的交互操作的：
 
 ```js {4-6}
 function ChatRoom({ roomId }) {
