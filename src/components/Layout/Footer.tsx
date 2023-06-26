@@ -293,7 +293,7 @@ export function Footer() {
           <FooterLink href="/learn/describing-the-ui">描述 UI</FooterLink>
           <FooterLink href="/learn/adding-interactivity">添加交互</FooterLink>
           <FooterLink href="/learn/managing-state">状态管理</FooterLink>
-          <FooterLink href="/learn/escape-hatches">应急方案</FooterLink>
+          <FooterLink href="/learn/escape-hatches">逃脱方案</FooterLink>
         </div>
         <div className="flex flex-col">
           <FooterLink href="/reference/react" isHeader={true}>
@@ -382,8 +382,8 @@ function FooterLink({
 
   return (
     <div>
-      <NextLink href={href}>
-        <a className={classes}>{children}</a>
+      <NextLink href={href} className={classes}>
+        {children}
       </NextLink>
     </div>
   );
