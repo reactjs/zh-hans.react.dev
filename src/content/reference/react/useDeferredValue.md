@@ -78,7 +78,7 @@ function SearchPage() {
 
 在更新期间，<CodeStep step={2}>延迟值</CodeStep> 会“滞后于”最新的 <CodeStep step={1}>值</CodeStep>。具体地说，React 首先会在不更新延迟值的情况下进行重新渲染，然后在后台尝试使用新接收到的值进行重新渲染。
 
-**让我们通过一个例子来看看什么时候该使用它。**
+**让我们通过一个例子来看看什么时候该使用它**。
 
 <Note>
 
@@ -134,8 +134,8 @@ export default function App() {
 ```js SearchResults.js hidden
 import { fetchData } from './data.js';
 
-// 注意：此组件使用了一种实验性API
-// 该API尚未在稳定版本的React中发布。
+// 注意：此组件使用了一种实验性 API
+// 该 API 尚未在稳定版本的 React 中发布。
 
 // 如果想找实际的例子，可以尝试一个
 // 已经集成了 Suspense 的框架，比如 Relay 或 Next.js。
@@ -186,7 +186,7 @@ function use(promise) {
 ```
 
 ```js data.js hidden
-// 注意：使用Suspense进行数据获取的方式
+// 注意：使用 Suspense 进行数据获取的方式
 // 取决于与其配合使用的框架。
 // 缓存逻辑通常会在框架内部处理。
 
@@ -284,7 +284,7 @@ input { margin: 10px; }
 
 </Sandpack>
 
-一个常见的备选UI模式是**延迟**更新结果列表，并继续显示之前的结果，直到新的结果准备好。调用 `useDeferredValue` 并将延迟版本的查询参数向下传递：
+一个常见的备选 UI 模式是**延迟**更新结果列表，并继续显示之前的结果，直到新的结果准备好。调用 `useDeferredValue` 并将延迟版本的查询参数向下传递：
 
 ```js {3,11}
 export default function App() {
@@ -349,8 +349,8 @@ export default function App() {
 ```js SearchResults.js hidden
 import { fetchData } from './data.js';
 
-// 注意：此组件使用了一种实验性API
-// 该API尚未在稳定版本的React中发布。
+// 注意：此组件使用了一种实验性 API
+// 该 API 尚未在稳定版本的 React 中发布。
 
 // 如果想找实际的例子，可以尝试一个
 // 已经集成了 Suspense 的框架，比如 Relay 或 Next.js。
@@ -401,7 +401,7 @@ function use(promise) {
 ```
 
 ```js data.js hidden
-// 注意：使用Suspense进行数据获取的方式
+// 注意：使用 Suspense 进行数据获取的方式
 // 取决于与其配合使用的框架。
 // 缓存逻辑通常会在框架内部处理。
 
@@ -578,8 +578,8 @@ export default function App() {
 ```js SearchResults.js hidden
 import { fetchData } from './data.js';
 
-// 注意：此组件使用了一种实验性API
-// 该API尚未在稳定版本的React中发布。
+// 注意：此组件使用了一种实验性 API
+// 该 API 尚未在稳定版本的 React 中发布。
 
 // 如果想找实际的例子，可以尝试一个
 // 已经集成了 Suspense 的框架，比如 Relay 或 Next.js。
@@ -630,7 +630,7 @@ function use(promise) {
 ```
 
 ```js data.js hidden
-// 注意：使用Suspense进行数据获取的方式
+// 注意：使用 Suspense 进行数据获取的方式
 // 取决于与其配合使用的框架。
 // 缓存逻辑通常会在框架内部处理。
 
