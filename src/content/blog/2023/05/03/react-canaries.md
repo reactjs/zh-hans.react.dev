@@ -8,7 +8,7 @@ title: "React Canaries：在 Meta 之外逐步推出新功能"
 
 <Intro>
 
-我们希望为 React 社区提供一种选择，使他们能够在新功能设计接近最终状态时立即采用这些功能——类似于 Meta 内部使用 React 的方式。我们正在推出一个新的官方支持的 [Canary 发布渠道](/community/versioning-policy#canary-channel)。它允许如框架一样的精选设置，将对单个 React 功能的采用与 React 发布计划分离开。
+我们希望为 React 社区提供一种选择，使他们能够在新功能设计接近最终状态时立即采用这些功能——类似于 Meta 内部使用 React 的方式。我们正在推出一个新的官方支持的 [Canary 发布渠道](/community/versioning-policy#canary-channel)。它允许如框架一样的 curated setup，将对单个 React 功能的采用与 React 发布计划分离开。
 
 </Intro>
 
@@ -46,7 +46,7 @@ Canary 能够让你在它们出现在 semver 稳定版本之前开始使用单�
 
 在 Meta，我们通过从 `main` 分支构建 React，并手动将其更新为每周的特定锁定提交来解决这个问题。这也是 React Native 发布在过去几年中一直遵循的方法。每个 *稳定的* React Native 发布都锁定在 React 仓库的 `main` 分支的特定提交上。这使得 React Native 可以包含重要的错误修复，并在框架级别逐步采用新的 React 功能，而不会与全局 React 发布时间表耦合。
 
-我们希望将这种工作流程提供给其他框架和策划设置。例如，在破坏性更改进入稳定性发布之前，它允许基于 React 的框架包含与 React 相关的破坏性更改。由于一些破坏性更改仅影响框架集成，因此这会特别有用。这使得框架可以在其自己的小版本中发布此类更改而不会破坏 semver。
+我们希望将这种工作流程提供给其他框架和 curated setup。例如，在破坏性更改进入稳定性发布之前，它允许基于 React 的框架包含与 React 相关的破坏性更改。由于一些破坏性更改仅影响框架集成，因此这会特别有用。这使得框架可以在其自己的小版本中发布此类更改而不会破坏 semver。
 
 Canary 的滚动发布将允许我们拥有更紧密的反馈循环，并确保新功能在社区中得到全面测试。这种工作流程更接近于 TC39——JavaScript 标准委员会——[处理编号阶段中的更改](https://tc39.es/process-document/) 的方式。在 React 稳定发布之前，建立在 React 之上的框架中可能会提供新的 React 功能，就像在浏览器中提供新的 JavaScript 功能一样，尽管它们尚未被正式批准为规范的一部分。
 
