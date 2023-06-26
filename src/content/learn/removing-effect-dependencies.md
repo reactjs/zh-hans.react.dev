@@ -205,7 +205,7 @@ function ChatRoom({ roomId }) {
 
 linter 是对的！ 由于 `roomId` 可能会随时间变化，这会在你的代码中引入错误。
 
-**移除一个依赖，你需要向 linter 证明其不需要这个依赖**。 例如，你可以将 `roomId` 移出你的组件，以证明它不是响应的，也不会在重新渲染时改变：
+**移除一个依赖，你需要向 linter 证明其不需要这个依赖**。例如，你可以将 `roomId` 移出你的组件，以证明它不是响应的，也不会在重新渲染时改变：
 
 
 ```js {2,9}
@@ -274,7 +274,7 @@ button { margin-left: 10px; }
 2. 然后，你采纳 linter 的建议，调整依赖关系，以 **匹配你所改变的代码**。
 3. 如果你对依赖关系的列表不满意，你可以 **回到第一步**（并再次修改代码）。
 
-最后一部分很重要。**如果你想改变依赖关系，首先要改变所涉及到的代码**。 你可以把依赖关系列表看作是 [Effect的代码所依赖的所有响应式值的列表](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。你不要 **选择** 把什么放在这个列表上。该列表 **描述了** 你的代码。要改变依赖性列表，请改变代码。
+最后一部分很重要。**如果你想改变依赖关系，首先要改变所涉及到的代码**。你可以把依赖关系列表看作是 [Effect的代码所依赖的所有响应式值的列表](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。你不要 **选择** 把什么放在这个列表上。该列表 **描述了** 你的代码。要改变依赖性列表，请改变代码。
 
 这可能感觉就像解方程一样。你有一个目标（例如，删除一个依赖关系），你需要“找到”与该目标相匹配的代码。不是每个人都觉得解方程很有趣，写 Effects 也是如此！幸运的是，下面有一些常见的解决方案你可以去尝试。
 
@@ -290,7 +290,7 @@ useEffect(() => {
 }, []);
 ```
 
-**当依赖关系与代码不匹配时，极有可能引入 bug**。 通过抑制 linter，你是在 Effect 所依赖的值上对 React "撒谎"。
+**当依赖关系与代码不匹配时，极有可能引入 bug**。通过抑制 linter，你是在 Effect 所依赖的值上对 React "撒谎"。
 
 你可以使用如下技术。
 
@@ -355,7 +355,7 @@ button { margin: 10px; }
 
 这里一个比忽略 linter 更好的解决方案! 要修复这段代码，你需要将 `onTick` 添加到依赖列表中。(为了确保间隔只设置一次，[使 `onTick` 成为 Effect Event](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)。)
 
-**我们建议将依赖性 lint 错误作为一个编译错误来处理。如果你不抑制它，你将永远不会遇到像上面这样的错误**。 本页面的剩下部分将介绍这个和其他情况的替代方案。
+**我们建议将依赖性 lint 错误作为一个编译错误来处理。如果你不抑制它，你将永远不会遇到像上面这样的错误**。本页面的剩下部分将介绍这个和其他情况的替代方案。
 
 </DeepDive>
 
@@ -363,7 +363,7 @@ button { margin: 10px; }
 
 每当你调整 Effect 的依赖关系以适配代码时，请注意一下依赖关系列表。当这些依赖关系发生变化时，让 Effect 重新运行是否有意义？有时，答案是 "不"：
 
-* 你可能想在不同的条件下重新执行你的 Effect 的**不同部分**。
+* 你可能想在不同的条件下重新执行你的 Effect 的 **不同部分**。
 * 你可能想只读取某个依赖的 **最新值**，而不是对其变化做出“反应”。
 * 一个依赖关系可能会因为它的类型是对象或函数而 **无意间** 改变太频繁。
 
@@ -420,7 +420,7 @@ function Form() {
 
 如果这么做，你将引入了一个错误。想象一下，你先提交表单，然后切换暗亮主题。当 `theme` 改变后，Effect 重新运行，这将导致显示两次相同的通知！
 
-**首先，这里的问题是，代码不应该以 Effect 实现**。 你想发送这个 POST 请求，并在 **提交表单时显示通知**，这是一个特定的交互。特定的交互请将该逻辑直接放到相应的事件处理程序中：
+**首先，这里的问题是，代码不应该以 Effect 实现**。你想发送这个 POST 请求，并在 **提交表单时显示通知**，这是一个特定的交互。特定的交互请将该逻辑直接放到相应的事件处理程序中：
 
 ```js {6-7}
 function Form() {
@@ -505,12 +505,12 @@ function ShippingForm({ country }) {
 
 然而，由于 Effect 现在使用 `city` 状态变量，你不得不把 `city` 加入到依赖列表中。这又带来了一个问题：当用户选择不同的城市时，Effect 将重新运行并调用 `fetchCities(country)`。这将导致不必要地多次重新获取城市列表。
 
-**这段代码的问题在于，你在同步两个不同的不相关的东西：**。
+**这段代码的问题在于，你在同步两个不同的不相关的东西**：
 
 1. 你想要根据 `country` prop 通过网络同步 `city` 状态
 1. 你想要根据 `city` 状态通过网络同步 `areas` 状态
 
-将逻辑分到 2 个 Effect 中，每个 Effect 仅响应其需要同步响应的 prop：
+将逻辑分到 2 个 Effect 中，每个 Effect 仅响应其需要同步响应的 prop ：
 
 ```js {19-33}
 function ShippingForm({ country }) {
@@ -552,7 +552,7 @@ function ShippingForm({ country }) {
 
 现在，第一个 Effect 只在 `country` 改变时重新运行，而第二个 Effect 在 `city` 改变时重新运行。你已经按目的把它们分开了：两件不同的事情由两个独立的 Effect 来同步。两个独立的 Effect 有两个独立的依赖列表，所以它们不会在无意中相互触发。
 
-最终完成的代码比最初的要长，但是拆分这些 Effect 是非常正确的。[每个 Effect 应该代表一个独立的同步过程](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process)。在这个例子中，删除一个 Effect 并不会影响到另一个 Effect 的逻辑。这意味着他们**同步不同的事情**，分开他们处理是一件好事。如果你担心重复代码的问题，你可以通过 [提取相同逻辑到自定义 Hook](/learn/reusing-logic-with-custom-hooks#when-to-use-custom-hooks) 来提升你的代码质量
+最终完成的代码比最初的要长，但是拆分这些 Effect 是非常正确的。[每个 Effect 应该代表一个独立的同步过程](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process)。在这个例子中，删除一个 Effect 并不会影响到另一个 Effect 的逻辑。这意味着他们 **同步不同的事情**，分开他们处理是一件好事。如果你担心重复代码的问题，你可以通过 [提取相同逻辑到自定义 Hook](/learn/reusing-logic-with-custom-hooks#when-to-use-custom-hooks) 来提升你的代码质量
 
 ### 你是否在读取一些状态来计算下一个状态？ {/*are-you-reading-some-state-to-calculate-the-next-state*/}
 
@@ -606,13 +606,13 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-**注意你的 Effect 现在根本不读取 `messages` 变量**。你只需要传递一个更新函数，比如 `msgs => [...msgs, receivedMessage]`。 React [将你的更新程序函数放入队列](/learn/queueing-a-series-of-state-updates) 并将在下一次渲染期间向其提供 `msgs` 参数。 这就是 Effect 本身不再需要依赖 `messages` 的原因。修复后，接收聊天消息将不再使聊天重新连接。
+**注意你的 Effect 现在根本不读取 `messages` 变量**。你只需要传递一个更新函数，比如 `msgs => [...msgs, receivedMessage]`。React [将你的更新程序函数放入队列](/learn/queueing-a-series-of-state-updates) 并将在下一次渲染期间向其提供 `msgs` 参数。这就是 Effect 本身不再需要依赖 `messages` 的原因。修复后，接收聊天消息将不再使聊天重新连接。
 
 ### 你想读取一个值而不对其变化做出“反应”吗？ {/*do-you-want-to-read-a-value-without-reacting-to-its-changes*/}
 
 <Wip>
 
-本节描述了一个在稳定版本的 React 中**尚未发布的实验性** API。
+本节描述了一个在稳定版本的 React 中 **尚未发布的实验性** API。
 
 </Wip>
 
@@ -658,7 +658,7 @@ function ChatRoom({ roomId }) {
 
 问题是每次 `isMuted` 改变时（例如，当用户按下“静音”开关时），Effect 将重新同步，并重新连接到聊天。这不是理想的用户体验！（在此示例中，即使禁用 linter 也不起作用——如果你这样做，`isMuted` 将“保持”其旧值。）
 
-要解决这个问题，需要将不应该响应式的逻辑从 Effect 中抽取出来。 你不希望此 Effect 对 `isMuted` 中的更改做出“反应”。 [将这段非响应式逻辑移至效果事件中：](/learn/separating-events-from-effects#declaring-an-effect-event)
+要解决这个问题，需要将不应该响应式的逻辑从 Effect 中抽取出来。你不希望此 Effect 对 `isMuted` 中的更改做出“反应”。[将这段非响应式逻辑移至效果事件中：](/learn/separating-events-from-effects#declaring-an-effect-event)
 
 ```js {1,7-12,18,21}
 import { useState, useEffect, useEffectEvent } from 'react';
@@ -685,7 +685,7 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-Effect Events 让你可以将 Effect 分成响应式部分（应该“反应”响应式值，如 `roomId` 及其变化）和非响应式部分（只读取它们的最新值，如 `onMessage` 读取 `isMuted`）。 **现在你在 Effect Event 中读取了 `isMuted`，它不需要添加到 Effect 依赖中**。因此，当你开关“静音”设置时，聊天不会重新连接。至此，解决原始问题！
+Effect Events 让你可以将 Effect 分成响应式部分（应该“反应”响应式值，如 `roomId` 及其变化）和非响应式部分（只读取它们的最新值，如 `onMessage` 读取 `isMuted`）。**现在你在 Effect Event 中读取了 `isMuted`，它不需要添加到 Effect 依赖中**。因此，当你开关“静音”设置时，聊天不会重新连接。至此，解决原始问题！
 
 #### 包装来自 props 的事件处理程序 {/*wrapping-an-event-handler-from-the-props*/}
 
@@ -706,7 +706,7 @@ function ChatRoom({ roomId, onReceiveMessage }) {
   // ...
 ```
 
-假设父组件在每次渲染时都传递了一个**不同的** `onReceiveMessage` 函数：
+假设父组件在每次渲染时都传递了一个 **不同的** `onReceiveMessage` 函数：
 
 ```js {3-5}
 <ChatRoom
@@ -742,7 +742,7 @@ Effect Events 不是响应式的，因此你不需要将它们指定为依赖项
 
 #### 分离响应式和非响应式代码 {/*separating-reactive-and-non-reactive-code*/}
 
-在此示例中，你希望在每次 `roomId` 更改时记录一次。你希望在每个日志中包含当前的 `notificationCount`，但你**不**希望通过更改 `notificationCount` 来触发日志事件。
+在此示例中，你希望在每次 `roomId` 更改时记录一次。你希望在每个日志中包含当前的 `notificationCount`，但你 **不** 希望通过更改 `notificationCount` 来触发日志事件。
 
 解决方案还是将非响应式代码拆分，将其放到 Effect Event 内：
 
@@ -759,7 +759,7 @@ function Chat({ roomId, notificationCount }) {
 }
 ```
 
-你希望你的逻辑对 `roomId` 做出响应，因此你在 Effect 中读取 `roomId`。但是，你不希望更改 `notificationCount` 来记录额外的日志输出，因此你可以在 Effect Event 中读取 `notificationCount`。 [了解使用 Effect Events 在 Effect 中读取最新 props 和 state 的更多信息。](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)
+你希望你的逻辑对 `roomId` 做出响应，因此你在 Effect 中读取 `roomId`。但是，你不希望更改 `notificationCount` 来记录额外的日志输出，因此你可以在 Effect Event 中读取 `notificationCount`。[了解使用 Effect Events 在 Effect 中读取最新 props 和 state 的更多信息。](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)
 
 ### 一些响应式值是否无意中改变了？ {/*does-some-reactive-value-change-unintentionally*/}
 
@@ -870,9 +870,9 @@ button { margin-left: 10px; }
 
 在上面的沙箱中，输入仅更新 `message` 状态变量。从用户的角度来看，这不应该影响聊天连接。但是，每次更新 `message` 时，你的组件都会重新渲染。当你的组件重新渲染时，其中的代码会从头开始重新运行。
 
-在每次重新渲染 `ChatRoom` 组件时，都会从头开始创建一个新的 `options` 对象。 React 发现 `options` 对象与上次渲染期间创建的 `options` 对象是**不同的对象**。 这就是为什么它会重新同步 Effect（依赖于 `options`），并且会在你输入时重新连接聊天。
+在每次重新渲染 `ChatRoom` 组件时，都会从头开始创建一个新的 `options` 对象。React 发现 `options` 对象与上次渲染期间创建的 `options` 对象是 **不同的对象**。这就是为什么它会重新同步 Effect（依赖于 `options`），并且会在你输入时重新连接聊天。
 
-**此问题仅影响对象和函数。 在 JavaScript 中，每个新创建的对象和函数都被认为与其他所有对象和函数不同。即使他们的值相同也没关系**！
+**此问题仅影响对象和函数。在 JavaScript 中，每个新创建的对象和函数都被认为与其他所有对象和函数不同。即使他们的值相同也没关系**！
 
 ```js {7-8}
 // 第一次渲染
@@ -958,7 +958,7 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-现在 `options` 已在你的 Effect 中声明，它不再是你的 Effect 的依赖项。相反，你的 Effect 使用的唯一响应式值是 `roomId`。 由于 `roomId` 不是对象或函数，你可以确定它不会**无意间**变不同。在 JavaScript 中，数字和字符串根据它们的内容进行比较：
+现在 `options` 已在你的 Effect 中声明，它不再是你的 Effect 的依赖项。相反，你的 Effect 使用的唯一响应式值是 `roomId`。由于 `roomId` 不是对象或函数，你可以确定它不会 **无意间** 变不同。在 JavaScript 中，数字和字符串根据它们的内容进行比较：
 
 ```js {7-8}
 // 第一次渲染
@@ -1136,7 +1136,7 @@ function ChatRoom({ options }) {
 />
 ```
 
-为避免使其成为依赖项（并导致它在重新渲染时重新连接），请在 Effect 外部调用它。 这为你提供了不是对象的 `roomId` 和 `serverUrl` 值，你可以从 Effect 中读取它们：
+为避免使其成为依赖项（并导致它在重新渲染时重新连接），请在 Effect 外部调用它。这为你提供了不是对象的 `roomId` 和 `serverUrl` 值，你可以从 Effect 中读取它们：
 
 ```js {1,4}
 function ChatRoom({ getOptions }) {
@@ -1246,7 +1246,7 @@ export default function Timer() {
 
 #### 修复重新触发动画的问题 {/*fix-a-retriggering-animation*/}
 
-在此示例中，当你按下“显示”时，欢迎消息淡入。动画持续一秒钟。当你按下“删除”时，欢迎信息立即消失。淡入动画的逻辑在 `animation.js` 文件中以纯 JavaScript [动画循环](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) 实现。你不需要改变那个逻辑。你可以将其视为第三方库。Effect 的逻辑是为 DOM 节点创建一个 `FadeInAnimation` 实例，然后调用 `start(duration)` 或 `stop()` 来控制动画。 `duration` 由滑块控制。调整滑块并查看动画如何变化。
+在此示例中，当你按下“显示”时，欢迎消息淡入。动画持续一秒钟。当你按下“删除”时，欢迎信息立即消失。淡入动画的逻辑在 `animation.js` 文件中以纯 JavaScript [动画循环](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) 实现。你不需要改变那个逻辑。你可以将其视为第三方库。Effect 的逻辑是为 DOM 节点创建一个 `FadeInAnimation` 实例，然后调用 `start(duration)` 或 `stop()` 来控制动画。`duration` 由滑块控制。调整滑块并查看动画如何变化。
 
 此代码已经能工作，但你需要更改一些内容。目前，当你移动控制 `duration` 状态变量的滑块时，它会重新触发动画。更改行为，使 Effect 不会对 `duration` 变量做出“反应”。当你按下“显示”时，Effect 应该使用滑块上的当前 `duration` 值。但是，移动滑块本身不应重新触发动画。
 
@@ -2032,7 +2032,7 @@ label, button { display: block; margin-bottom: 5px; }
 
 解决这个问题的正确方法不止一种，下面要介绍的是一种可能的解决方案。
 
-在原始示例中，切换主题会导致创建和传递不同的 `onMessage` 和 `createConnection` 函数。 由于 Effect 依赖于这些功能，因此每次切换主题时聊天都会重新连接。
+在原始示例中，切换主题会导致创建和传递不同的 `onMessage` 和 `createConnection` 函数。由于 Effect 依赖于这些功能，因此每次切换主题时聊天都会重新连接。
 
 要解决 `onMessage` 的问题，你需要将其包装到 Effect Event 中：
 
@@ -2046,9 +2046,9 @@ export default function ChatRoom({ roomId, createConnection, onMessage }) {
     // ...
 ```
 
-与 `onMessage` prop 不同，`onReceiveMessage` Effect Event 不是响应式的。 这就是为什么它不需要成为你的 Effect 的依赖项。 因此，对 `onMessage` 的更改不会导致聊天重新连接。
+与 `onMessage` prop 不同，`onReceiveMessage` Effect Event 不是响应式的。这就是为什么它不需要成为你的 Effect 的依赖项。因此，对 `onMessage` 的更改不会导致聊天重新连接。
 
-你不能对 `createConnection` 做同样的事情，因为它 **应该** 是响应式的。 如果用户在加密和未加密连接之间切换，或者如果用户切换当前房间，你 **希望** 重新触发效果。 但是，因为 `createConnection` 是一个函数，你无法检查它读取的信息是否 **实际** 发生了变化。 要解决此问题，请传递原始的 `roomId` 和 `isEncrypted` 值，而不是从 App 组件向下传递 `createConnection` ：
+你不能对 `createConnection` 做同样的事情，因为它 **应该** 是响应式的。如果用户在加密和未加密连接之间切换，或者如果用户切换当前房间，你 **希望** 重新触发效果。但是，因为 `createConnection` 是一个函数，你无法检查它读取的信息是否 **实际** 发生了变化。要解决此问题，请传递原始的 `roomId` 和 `isEncrypted` 值，而不是从 App 组件向下传递 `createConnection` ：
 
 ```js {2-3}
       <ChatRoom
@@ -2332,5 +2332,5 @@ label, button { display: block; margin-bottom: 5px; }
 
 </Challenges>
 
-**译注：**
+**译注**：
 <a name="note1"></a> 在创建 `onTick` 函数时，由于闭包的缘故，`setCount(count + increment)` 捕获的是创建时 `count` 和 `increment` 值。由于这里的“说谎”，每次重新渲染时新创建的 `onTick` 函数不能替换掉 Effect 里旧 `onTick` 函数，于是最终的效果就是 `setCount(0 + 1)` <br/>
