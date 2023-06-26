@@ -87,7 +87,7 @@ function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime
 
 <Note>
 
-`<Profiler>` 允许你以编程方式收集性能测量数据。如果你正在寻找一个交互式的性能分析工具，可以尝试使用 [React Developer Tools](/learn/react-developer-tools) 中的 Profiler 标签页。它提供了类似浏览器扩展的功能。
+`<Profiler>` 允许你编程式收集性能测量数据。如果你正在寻找一个交互式的性能分析工具，可以尝试使用 [React Developer Tools](/learn/react-developer-tools) 中的 Profiler 标签页。它提供了类似浏览器扩展的功能。
 
 </Note>
 
