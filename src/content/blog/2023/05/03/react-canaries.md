@@ -72,9 +72,9 @@ Canary 发布代表了我们在任何时候对下一个稳定版本的 React 所
 
 ## 例子：React 服务器组件 {/*example-react-server-components*/}
 
-正如我们在三月份 [宣布的那样](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)，React 服务器组件的规范已经最终确定，并且我们不希望出现与用户界面 API 相关的破坏性更改。然而，我们还在继续处理几个相互关联的仅框架功能（比如 [资源加载](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#asset-loading)），我们预计在这方面还会有更多的破坏性更改。
+正如我们在三月份 [宣布的那样](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)，React 服务器组件的规范已经最终确定，并且我们不希望出现与用户界面 API 相关的破坏性更改。然而，我们还在继续处理几个相互关联的仅与框架有关的功能（比如 [资源加载](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#asset-loading)），我们预计在这方面还会有更多的破坏性更改。
 
-这意味着 React 服务器组件已经准备好被框架采用。然而在下一个主要 React 发布之前，框架采用它们的唯一方式是锁定 Canary 发布的 React 版本（为了避免捆绑两个 React 副本，希望这样做的框架需要强制解析 `react` 和 `react-dom` 到他们框架中锁定的 Canary 版本，并向他们的用户解释。例如，这就是 Next.js App Router 所做的事情）。
+这意味着 React 服务器组件已经准备好被框架采用。然而在下一个主要的 React 版本发布之前，框架采用它们的唯一方式是锁定 Canary 发布的 React 版本（为了避免捆绑两个 React 副本，希望这样做的框架需要强制解析 `react` 和 `react-dom` 到他们框架中锁定的 Canary 版本，并向他们的用户解释。Next.js App Router 就是这样做的）。
 
 ## 同时针对稳定版本和 Canary 版本的测试库 {/*testing-libraries-against-both-stable-and-canary-versions*/}
 
