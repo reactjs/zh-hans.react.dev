@@ -330,7 +330,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-但是想象一下，如果以后你给这个 Effect 添加了另一个需要重新建立连接的依赖项。如果这个 Effect 重新进行同步，它将为相同的房间调用 `logVisit(roomId)`，而这不是你的意图。记录访问行为是 **一个独立的过程**，与连接不同。将它们作为两个单独的 Effects 编写：
+但是想象一下，如果以后你给这个 Effect 添加了另一个需要重新建立连接的依赖项。如果这个 Effect 重新进行同步，它将为相同的房间调用 `logVisit(roomId)`，而这不是你的意图。记录访问行为是 **一个独立的过程**，与连接不同。将它们作为两个单独的 Effect 编写：
 
 ```js {2-4}
 function ChatRoom({ roomId }) {
