@@ -48,7 +48,7 @@ const html = renderToString(<App />);
 
 #### 注意事项 {/*caveats*/}
 
-* `renderToString` 对 Suspense 的支持有限。如果一个组件挂起，`renderToString` 会立即将其回退为 HTML 发送。
+* `renderToString` 对 Suspense 的支持有限。如果一个组件挂起（suspend），`renderToString` 会立即将其回退为 HTML 发送。
 
 * `renderToString` 可以在浏览器中工作，但 [不推荐](#removing-rendertostring-from-the-client-code) 在客户端代码中使用它。
 
