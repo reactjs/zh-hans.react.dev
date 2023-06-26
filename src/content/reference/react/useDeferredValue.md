@@ -84,7 +84,7 @@ function SearchPage() {
 
 这个例子假设你使用了其中一个支持 `Suspense` 的数据源：
 
-- 使用支持 Suspense 的框架进行数据获取，例如 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/advanced-features/react-18)
+- 使用支持 Suspense 的框架进行数据获取，例如 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/getting-started/react-essentials)
 - 使用 [`lazy`](/reference/react/lazy) 懒加载组件代码
 
 [了解更多有关 Suspense 及其限制的信息](/reference/react/Suspense)。
