@@ -16,7 +16,7 @@ title: React Blog
 
 </BlogCard>
 
-<BlogCard title="React Labs：我们正在努力的方向 – 2023 年 3 月" date="2023 年 3 月 22 日" url="/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023">
+<BlogCard title="React Labs：我们正在努力的方向——2023 年 3 月" date="2023 年 3 月 22 日" url="/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023">
 
 在 React Labs 的文章中，我们讲述了正在进行研究和开发的项目。自上次更新以来，我们在 React 服务器组件、资产加载、优化编译器、离屏渲染和过渡追踪方面取得了重要进展，并希望分享我们所学到的知识。
 
