@@ -22,7 +22,7 @@ title: <Profiler>
 
 ### `<Profiler>` {/*profiler*/}
 
-使用 `<Profiler>` 将组件树包裹起来，以测量其渲染性能。
+使用 `<Profiler>` 包裹组件树，以测量其渲染性能。
 
 ```js
 <Profiler id="App" onRender={onRender}>
