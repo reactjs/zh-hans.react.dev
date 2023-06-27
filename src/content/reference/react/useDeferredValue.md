@@ -36,7 +36,7 @@ function SearchPage() {
 
 #### 参数 {/*parameters*/}
 
-* `value`: 你想延迟的值，可以是任何类型。
+* `value`：你想延迟的值，可以是任何类型。
 
 #### 返回值 {/*returns*/}
 
@@ -54,7 +54,7 @@ function SearchPage() {
 
 - `useDeferredValue` 本身不会引起任何固定的延迟。一旦 React 完成原始的重新渲染，它会立即开始使用新的延迟值处理后台重新渲染。由事件（例如输入）引起的任何更新都会中断后台重新渲染，并被优先处理。
 
-- 由 `useDeferredValue` 引起的后台重新渲染在提交到屏幕之前不会触发 Effect。如果后台重新渲染被暂停，它的 Effect 将在数据加载后和 UI 更新后运行。
+- 由 `useDeferredValue` 引起的后台重新渲染在提交到屏幕之前不会触发 Effect。如果后台重新渲染被暂停，Effect 将在数据加载后和 UI 更新后运行。
 
 ---
 
@@ -160,7 +160,7 @@ export default function SearchResults({ query }) {
 }
 
 // 这是一个解决演示中的一个 bug 的临时实现。
-// TODO: 待 bug 修复后替换为真正的实现。
+// TODO：待 bug 修复后替换为真正的实现。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -186,7 +186,7 @@ function use(promise) {
 ```
 
 ```js data.js hidden
-// 注意：使用 Suspense 进行数据获取的方式
+// 注意：使用 suspense 进行数据获取的方式
 // 取决于与其配合使用的框架。
 // 缓存逻辑通常会在框架内部处理。
 
@@ -284,7 +284,7 @@ input { margin: 10px; }
 
 </Sandpack>
 
-一个常见的备选 UI 模式是**延迟**更新结果列表，并继续显示之前的结果，直到新的结果准备好。调用 `useDeferredValue` 并将延迟版本的查询参数向下传递：
+一个常见的备选 UI 模式是 **延迟** 更新结果列表，并继续显示之前的结果，直到新的结果准备好。调用 `useDeferredValue` 并将延迟版本的查询参数向下传递：
 
 ```js {3,11}
 export default function App() {
@@ -306,7 +306,7 @@ export default function App() {
 
 `query` 会立即更新，所以输入框将显示新值。然而，`deferredQuery` 在数据加载完成前会保留以前的值，因此 `SearchResults` 将暂时显示旧的结果。
 
-在下面的示例中，输入 `"a"`，等待结果加载完成，然后将输入框编辑为 `"ab"`。注意，现在你看到的不是 Suspense fallback，而是旧的结果列表，直到新的结果加载完成：
+在下面的示例中，输入 `"a"`，等待结果加载完成，然后将输入框编辑为 `"ab"`。注意，现在你看到的不是 suspense fallback，而是旧的结果列表，直到新的结果加载完成：
 
 <Sandpack>
 
@@ -375,7 +375,7 @@ export default function SearchResults({ query }) {
 }
 
 // 这是一个解决演示中的一个 bug 的临时实现。
-// TODO: 待 bug 修复后应该替换为真正的实现。
+// TODO：待 bug 修复后应该替换为真正的实现。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -401,7 +401,7 @@ function use(promise) {
 ```
 
 ```js data.js hidden
-// 注意：使用 Suspense 进行数据获取的方式
+// 注意：使用 suspense 进行数据获取的方式
 // 取决于与其配合使用的框架。
 // 缓存逻辑通常会在框架内部处理。
 
@@ -507,7 +507,7 @@ input { margin: 10px; }
 
 1. **首先，React 会使用新的 `query` 值（`"ab"`）和旧的 `deferredQuery` 值（仍为 `"a"`）重新渲染。** 传递给结果列表的 `deferredQuery` 值是**延迟**的，它“滞后于” `query` 值。
 
-2. **在后台，React 尝试重新渲染，并将 `query` 和 `deferredQuery` 两个值都更新为 `"ab"`。** 如果此次重新渲染完成，React 将在屏幕上显示它。但是，如果它 Suspense（即 `"ab"` 的结果尚未加载），React 将放弃这次渲染，并在数据加载后再次尝试重新渲染。用户将一直看到旧的延迟值，直到数据准备就绪。
+2. **在后台，React 尝试重新渲染，并将 `query` 和 `deferredQuery` 两个值都更新为 `"ab"`。** 如果此次重新渲染完成，React 将在屏幕上显示它。但是，如果它 suspense（即 `"ab"` 的结果尚未加载），React 将放弃这次渲染，并在数据加载后再次尝试重新渲染。用户将一直看到旧的延迟值，直到数据准备就绪。
 
 被推迟的“后台”渲染是可中断的。例如，如果你再次在输入框中输入，React 将会中断渲染，并从新值开始重新渲染。React 总是使用最新提供的值。
 
@@ -582,7 +582,7 @@ import { fetchData } from './data.js';
 // 该 API 尚未在稳定版本的 React 中发布。
 
 // 如果想找实际的例子，可以尝试一个
-// 已经集成了 Suspense 的框架，比如 Relay 或 Next.js。
+// 已经集成了 suspense 的框架，比如 Relay 或 Next.js。
 
 export default function SearchResults({ query }) {
   if (query === '') {
@@ -604,7 +604,7 @@ export default function SearchResults({ query }) {
 }
 
 // 这是一个解决演示中的一个 bug 的临时实现。
-// TODO: 待 bug 修复后应该替换为真正的实现。
+// TODO：待 bug 修复后应该替换为真正的实现。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -630,7 +630,7 @@ function use(promise) {
 ```
 
 ```js data.js hidden
-// 注意：使用 Suspense 进行数据获取的方式
+// 注意：使用 suspense 进行数据获取的方式
 // 取决于与其配合使用的框架。
 // 缓存逻辑通常会在框架内部处理。
 
@@ -756,7 +756,7 @@ const SlowList = memo(function SlowList({ text }) {
 });
 ```
 
-然而，这仅在 `SlowList` 的 props 与上一次的渲染时**相同**才有用。你现在遇到的问题是，当这些 props **不同**，并且实际上需要展示不同的视觉输出时，页面会变得很慢。
+然而，这仅在 `SlowList` 的 props 与上一次的渲染时相同才有用。你现在遇到的问题是，当这些 props **不同** 时，并且实际上需要展示不同的视觉输出时，页面会变得很慢。
 
 具体而言，主要的性能问题在于，每次你输入内容时，`SlowList` 都会接收新的 props，并重新渲染整个树结构，这会让输入感觉很卡顿。使用 `useDeferredValue` 能够优先更新输入框（必须快速更新），而不是更新结果列表（可以更新慢一些），从而缓解这个问题：
 
@@ -773,13 +773,13 @@ function App() {
 }
 ```
 
-这并没有让 `SlowList` 的重新渲染变快。然而，它告诉 React 可以将列表的重新渲染优先级降低，这样就不会阻塞按键输入。列表的更新会”滞后“于输入，然后”追赶“上来。与之前一样，React 会尽快更新列表，但不会阻塞用户输入。
+这并没有让 `SlowList` 的重新渲染变快。然而，它告诉 React 可以将列表的重新渲染优先级降低，这样就不会阻塞按键输入。列表的更新会“滞后”于输入，然后“追赶”上来。与之前一样，React 会尽快更新列表，但不会阻塞用户输入。
 
-<Recipes titleText=" useDeferredValue 和未优化的重新渲染之间的区别" titleId="examples">
+<Recipes titleText="useDeferredValue 和未优化的重新渲染之间的区别" titleId="examples">
 
 #### 延迟列表的重新渲染 {/*deferred-re-rendering-of-the-list*/}
 
-在这个例子中，`SlowList` 组件中的每个 item 都被**故意减缓了渲染速度**，这样你就可以看到 `useDeferredValue` 是如何让输入保持响应的。当你在输入框中输入时，你会发现输入很灵敏，而列表的更新会稍有延迟。
+在这个例子中，`SlowList` 组件中的每个 item 都被 **故意减缓了渲染速度**，这样你就可以看到 `useDeferredValue` 是如何让输入保持响应的。当你在输入框中输入时，你会发现输入很灵敏，而列表的更新会稍有延迟。
 
 <Sandpack>
 
@@ -820,7 +820,7 @@ const SlowList = memo(function SlowList({ text }) {
 function SlowItem({ text }) {
   let startTime = performance.now();
   while (performance.now() - startTime < 1) {
-    // 每个 item 暂停 1 ms，模拟极其缓慢的代码
+    // 每个 item 暂停 1ms，模拟极其缓慢的代码
   }
 
   return (
@@ -855,7 +855,7 @@ export default SlowList;
 
 #### 列表的未优化重新渲染 {/*unoptimized-re-rendering-of-the-list*/}
 
-在这个例子中，`SlowList` 组件中的每个 item 都被**故意减缓了渲染速度**，但这次没有使用 `useDeferredValue`。
+在这个例子中，`SlowList` 组件中的每个 item 都被 **故意减缓了渲染速度**，但这次没有使用 `useDeferredValue`。
 
 注意，输入框的输入感觉非常卡顿。这是因为没有使用 `useDeferredValue`，每次按键都会立即强制整个列表以不可中断的方式进行重新渲染。
 
@@ -897,7 +897,7 @@ const SlowList = memo(function SlowList({ text }) {
 function SlowItem({ text }) {
   let startTime = performance.now();
   while (performance.now() - startTime < 1) {
-    // 每个 item 暂停 1 ms，模拟极其缓慢的代码
+    // 每个 item 暂停 1ms，模拟极其缓慢的代码
   }
 
   return (
@@ -944,14 +944,14 @@ export default SlowList;
 
 在上述的情景中，你可能会使用这两种常见的优化技术：
 
-- **防抖**是指在用户停止输入一段时间（例如一秒钟）之后再更新列表。
-- **节流**是指每隔一段时间（例如最多每秒一次）更新列表。
+- **防抖** 是指在用户停止输入一段时间（例如一秒钟）之后再更新列表。
+- **节流** 是指每隔一段时间（例如最多每秒一次）更新列表。
 
 虽然这些技术在某些情况下是有用的，但 `useDeferredValue` 更适合优化渲染，因为它与 React 自身深度集成，并且能够适应用户的设备。
 
-与防抖或节流不同，`useDeferredValue` 不需要选择任何固定延迟时间。如果用户的设备很快（比如性能强劲的笔记本电脑），延迟的重渲染几乎会立即发生并且不会被察觉。如果用户的设备较慢，那么列表会相应地"滞后"于输入，滞后的程度与设备的速度有关。
+与防抖或节流不同，`useDeferredValue` 不需要选择任何固定延迟时间。如果用户的设备很快（比如性能强劲的笔记本电脑），延迟的重渲染几乎会立即发生并且不会被察觉。如果用户的设备较慢，那么列表会相应地“滞后”于输入，滞后的程度与设备的速度有关。
 
-此外，与防抖或节流不同，`useDeferredValue` 执行的延迟重新渲染默认是可中断的。这意味着，如果 React 正在重新渲染一个大型列表，但用户进行了另一次键盘输入，React 会放弃该重新渲染，先处理键盘输入，然后再次开始在后台渲染。相比之下，防抖和节流仍会产生不顺畅的体验，因为它们是**阻塞**的：它们仅仅是将渲染阻塞键盘输入的时刻推迟了。
+此外，与防抖或节流不同，`useDeferredValue` 执行的延迟重新渲染默认是可中断的。这意味着，如果 React 正在重新渲染一个大型列表，但用户进行了另一次键盘输入，React 会放弃该重新渲染，先处理键盘输入，然后再次开始在后台渲染。相比之下，防抖和节流仍会产生不顺畅的体验，因为它们是阻*的：它们仅仅是将渲染阻塞键盘输入的时刻推迟了。
 
 如果你要优化的工作不是在渲染期间发生的，那么防抖和节流仍然非常有用。例如，它们可以让你减少网络请求的次数。你也可以同时使用这些技术。
 
