@@ -1,14 +1,14 @@
 ---
-title: "Introducing react.dev"
+title: "介绍 react.dev"
 ---
 
-March 16, 2023 by [Dan Abramov](https://twitter.com/dan_abramov) and [Rachel Nabors](https://twitter.com/rachelnabors)
+2023 年 3 月 16 日 [Dan Abramov](https://twitter.com/dan_abramov) 与 [Rachel Nabors](https://twitter.com/rachelnabors)
 
 ---
 
 <Intro>
 
-Today we are thrilled to launch [react.dev](https://react.dev), the new home for React and its documentation. In this post, we would like to give you a tour of the new site.
+今天，我们非常高兴推出 react.dev，React 及其文档的新家。在本文中，我们想带你参观新网站。
 
 </Intro>
 
@@ -16,44 +16,44 @@ Today we are thrilled to launch [react.dev](https://react.dev), the new home for
 
 ## tl;dr {/*tldr*/}
 
-* The new React site ([react.dev](https://react.dev)) teaches modern React with function components and Hooks.
-* We've included diagrams, illustrations, challenges, and over 600 new interactive examples.
-* The previous React documentation site has now moved to [legacy.reactjs.org](https://legacy.reactjs.org).
+* 新的 React 文档网站（[react.dev](https://react.dev)）将介绍使用函数式组件和 Hook 的现代 React。
+* 新网站包括了图表、插图、挑战和超过 600 个新的交互式示例。
+* 旧的 React 文档网站现在已经迁移到 [legacy.reactjs.org](https://legacy.reactjs.org)。
 
-## New site, new domain, new homepage {/*new-site-new-domain-new-homepage*/}
+## 新网站，新域名，新主页 {/*new-site-new-domain-new-homepage*/}
 
-First, a little bit of housekeeping.
+首先，介绍一些小的背景。
 
-To celebrate the launch of the new docs and, more importantly, to clearly separate the old and the new content, we've moved to the shorter [react.dev](https://react.dev) domain. The old [reactjs.org](https://reactjs.org) domain will now redirect here.
+为了庆祝新文档的发布，更重要的是为了清晰区分新旧内容，我们已经将域名更改为更短的 [react.dev](https://react.dev)；旧的 [reactjs.org](https://reactjs.org) 域名现在将重定向到此处。
 
-The old React docs are now archived at [legacy.reactjs.org](https://legacy.reactjs.org). All existing links to the old content will automatically redirect there to avoid "breaking the web", but the legacy site will not get many more updates.
+旧的 React 文档现在已经存档于 [legacy.reactjs.org](https://legacy.reactjs.org)。所有现有的指向旧内容的链接将自动重定向到那里，以避免“破坏网络”，但是旧网站将不会再得到更多的更新。
 
-Believe it or not, React will soon be ten years old. In JavaScript years, it's like a whole century! We've [refreshed the React homepage](https://react.dev) to reflect why we think React is a great way to create user interfaces today, and updated the getting started guides to more prominently mention modern React-based frameworks.
+不敢相信，React很快就要十岁了。在 JavaScript 的年代里，这就像整整一个世纪！我们 [更新了 React 主页](https://react.dev)，以反映我们为什么认为 React 是创建用户界面的绝佳方式，并更新了入门指南，更突出地提到基于现代 React 的框架。
 
-If you haven't seen the new homepage yet, check it out!
+如果你还没有看过新主页，请快去看看！
 
-## Going all-in on modern React with Hooks {/*going-all-in-on-modern-react-with-hooks*/}
+## 进入使用 Hook 的现代 React {/*going-all-in-on-modern-react-with-hooks*/}
 
-When we released React Hooks in 2018, the Hooks docs assumed the reader is familiar with class components. This helped the community adopt Hooks very swiftly, but after a while the old docs failed to serve the new readers. New readers had to learn React twice: once with class components and then once again with Hooks.
+当 React 在 2018 年发布 Hook 时，Hook 文档假定读者熟悉类组件。这有助于社区非常迅速地采用 Hook，但是一段时间后，旧的文档无法为新读者服务，因为新读者不得不学习两次 React：一次是使用类式组件，然后再学习在函数式组件中使用 Hook。
 
-**The new docs teach React with Hooks from the beginning.** The docs are divided in two main sections:
+**新文档从一开始就使用 Hook 来介绍 React**。新文档分为两个主要部分：
 
-* **[Learn React](/learn)** is a self-paced course that teaches React from scratch.
-* **[API Reference](/reference)** provides the details and usage examples for every React API.
+* **[学习 React](/learn)** 是一个自学课程，从头开始介绍 React。
+* **[API 参考](/reference)** 提供了每个 React API 的详细信息和使用示例。
 
-Let's have a closer look at what you can find in each section.
+让我们更仔细地看看可以从每个部分中找到什么。
 
 <Note>
 
-There are still a few rare class component use cases that do not yet have a Hook-based equivalent. Class components remain supported, and are documented in the [Legacy API](/reference/react/legacy) section of the new site.
+仍有一些罕见的类式组件尚未有基于 Hook 的替代品。React 仍然支持类式组件，并且在新网站的 [legacy API](/reference/react/legacy) 部分中有文档记录。
 
 </Note>
 
-## Quick start {/*quick-start*/}
+## 快速入门 {/*quick-start*/}
 
-The Learn section begins with the [Quick Start](/learn) page. It is a short introductory tour of React. It introduces the syntax for concepts like components, props, and state, but doesn't go into much detail on how to use them.
+学习部分从 [快速入门](/learn) 页面开始。它是 React 的一个简短介绍性导览，介绍了诸如组件、props 和 state 等概念，但并不详细介绍如何使用它们。
 
-If you like to learn by doing, we recommend checking out the [Tic-Tac-Toe Tutorial](/learn/tutorial-tic-tac-toe) next. It walks you through building a little game with React, while teaching the skills you'll use every day. Here's what you'll build:
+如果你喜欢通过实践来学习，我们建议你接下来查看 [井字棋教程](/learn/tutorial-tic-tac-toe)。它会带领你一步步构建一个小游戏，同时介绍你每天都会用到的技能。这是你将要构建的内容：
 
 <Sandpack>
 
@@ -222,43 +222,43 @@ body {
 
 </Sandpack>
 
-We'd also like to highlight [Thinking in React](/learn/thinking-in-react)—that's the tutorial that made React "click" for many of us. **We've updated both of these classic tutorials to use function components and Hooks,** so they're as good as new.
+我们还想强调一下 [React 哲学](/learn/thinking-in-react)——这是许多人理解 React 的教程。**我们使用了函数式组件和 Hook 更新了这两个经典教程**。
 
 <Note>
 
-The example above is a *sandbox*. We've added a lot of sandboxes—over 600!—everywhere throughout the site. You can edit any sandbox, or press "Fork" in the upper right corner to open it in a separate tab. Sandboxes let you quickly play with the React APIs, explore your ideas, and check your understanding.
+上面的例子使用了 sandbox。我们在整个网站上添加了超过 600 个 sandbox。你可以编辑所有的 sandbox，或者点击右上角的 Fork 按钮，然后在单独的标签页中打开它。sandbox 可以让你快速体验 React API，探索你的想法并检查你的理解。
 
 </Note>
 
-## Learn React step by step {/*learn-react-step-by-step*/}
+## 一步步学习 React {/*learn-react-step-by-step*/}
 
-We'd like everyone in the world to have an equal opportunity to learn React for free on their own.
+我们希望世界上每个人都有平等机会自学 React。
 
-This is why the Learn section is organized like a self-paced course split into chapters. The first two chapters describe the fundamentals of React. If you're new to React, or want to refresh it in your memory, start here:
+这就是为什么“学习”部分被组织成一个自学课程的章节。前两章描述了 React 的基本知识。如果你是初次尝试 React，或者想要刷新你对 React 的记忆，可以从这里开始：
 
-- **[Describing the UI](/learn/describing-the-ui)** teaches how to display information with components.
-- **[Adding Interactivity](/learn/adding-interactivity)** teaches how to update the screen in response to user input.
+- **[描述 UI](/learn/describing-the-ui)** 章节介绍了如何使用组件显示信息。
+- **[添加交互性](/learn/adding-interactivity)** 章节介绍了如何在响应用户输入时更新屏幕。
 
-The next two chapters are more advanced, and will give you a deeper insight into the trickier parts:
+接下来的两章更为高级，将让你深入了解更棘手的部分：
 
-- **[Managing State](/learn/managing-state)** teaches how to organize your logic as your app grows in complexity.
-- **[Escape Hatches](/learn/escape-hatches)** teaches how you can "step outside" React, and when it makes most sense to do so.
+- **[管理状态](/learn/managing-state)** 章节介绍了如何在应用程序变得越来越复杂时组织逻辑。
+- **[escape hatches](/learn/escape-hatches)** 章节介绍了如何“走出”React，并在何时做出最明智的决策。
 
-Every chapter consists of several related pages. Most of these pages teach a specific skill or a technique—for example, [Writing Markup with JSX](/learn/writing-markup-with-jsx), [Updating Objects in State](/learn/updating-objects-in-state), or [Sharing State Between Components](/learn/sharing-state-between-components). Some of the pages focus on explaining an idea—like [Render and Commit](/learn/render-and-commit), or [State as a Snapshot](/learn/state-as-a-snapshot). And there are a few, like [You Might Not Need an Effect](/learn/you-might-not-need-an-effect), that share our suggestions based on what we've learned over these years.
+每个章节由几个相关的页面组成。其中大部分页面将介绍特定的技能或技术，例如 [使用 JSX 编写标记](/learn/writing-markup-with-jsx)、[更新状态中的对象](/learn/updating-objects-in-state) 或 [在组件间共享状态](/learn/sharing-state-between-components)。一些页面聚焦于解释一个概念，例如 [渲染和提交](/learn/render-and-commit) 或 [将状态作为快照（snapshot）](/learn/state-as-a-snapshot)。还有一些页面如 [你可能不需要 Effect](/learn/you-might-not-need-an-effect) 是基于我们多年的经验而分享的建议。
 
-You don't have to read these chapters as a sequence. Who has the time for this?! But you could. Pages in the Learn section only rely on concepts introduced by the earlier pages. If you want to read it like a book, go for it!
+你不必完全按顺序阅读这些章节，谁有这个时间呢？！不过也许你可以。学习部分的页面只依赖于早期页面介绍的概念。如果你想像读书一样阅读它，那就去吧！
 
-### Check your understanding with challenges {/*check-your-understanding-with-challenges*/}
+### 使用挑战（challenge）检查你的理解 {/*check-your-understanding-with-challenges*/}
 
-Most pages in the Learn section end with a few challenges to check your understanding. For example, here are a few challenges from the page about [Conditional Rendering](/learn/conditional-rendering#challenges).
+“学习”章节的大多数页面都以一些挑战来检查你的理解情况。例如以下是有关 [条件渲染](/learn/conditional-rendering#challenges) 页面上的一些挑战。
 
-You don't have to solve them right now! Unless you *really* want to.
+除非你真的如此想，不然不必现在就解决它们！
 
 <Challenges noTitle={true}>
 
-#### Show an icon for incomplete items with `? :` {/*show-an-icon-for-incomplete-items-with--*/}
+#### 使用 `? :` 显示不完整 item 的图标 {/*show-an-icon-for-incomplete-items-with--*/}
 
-Use the conditional operator (`cond ? a : b`) to render a ❌ if `isPacked` isn’t `true`.
+如果 `isPacked` 不为 `true`，使用条件运算符（`cond ? a : b`）渲染 ❌。
 
 <Sandpack>
 
@@ -336,15 +336,15 @@ export default function PackingList() {
 
 </Solution>
 
-#### Show the item importance with `&&` {/*show-the-item-importance-with-*/}
+#### 使用 `&&` 展示 item 的重要性 {/*show-the-item-importance-with-*/}
 
-In this example, each `Item` receives a numerical `importance` prop. Use the `&&` operator to render "_(Importance: X)_" in italics, but only for items that have non-zero importance. Your item list should end up looking like this:
+在这个例子中，每个 `Item` 组件都会接收一个数字类型的 `importance` 属性。使用 `&&` 运算符来渲染斜体 "_(Importance: X)_"，但只有在 `importance` 属性不为零时才渲染。你的列表应该看起来像下面一样：
 
 * Space suit _(Importance: 9)_
 * Helmet with a golden leaf
 * Photo of Tam _(Importance: 6)_
 
-Don't forget to add a space between the two labels!
+不要忘记在 label 之间添加一个空格！
 
 <Sandpack>
 
@@ -384,7 +384,7 @@ export default function PackingList() {
 
 <Solution>
 
-This should do the trick:
+应该这样来实现：
 
 <Sandpack>
 
@@ -426,53 +426,53 @@ export default function PackingList() {
 
 </Sandpack>
 
-Note that you must write `importance > 0 && ...` rather than `importance && ...` so that if the `importance` is `0`, `0` isn't rendered as the result!
+请注意，你必须写成 `importance > 0 && ...` 而不是 `importance && ...`，这样如果 `importance` 的值为 `0` 时，就不会将 `0` 作为结果进行渲染！
 
-In this solution, two separate conditions are used to insert a space between then name and the importance label. Alternatively, you could use a fragment with a leading space: `importance > 0 && <> <i>...</i></>` or add a space immediately inside the `<i>`:  `importance > 0 && <i> ...</i>`.
+在这个解决方案中，使用了两个独立的条件来在名称和 importance label 之间插入一个空格。或者，你可以使用带有前导空格的片段：`importance > 0 && <> <i>...</i></>`，或者在 `<i>` 标签内立即添加一个空格：`importance > 0 && <i> ...</i>`。
 
 </Solution>
 
 </Challenges>
 
-Notice the "Show solution" button in the left bottom corner. It's handy if you want to check yourself!
+请注意左下角的“显示解决方案”按钮。如果你想要检查自己的代码，它会很有用！
 
-### Build an intuition with diagrams and illustrations {/*build-an-intuition-with-diagrams-and-illustrations*/}
+### 通过图表和插图来建立直觉 {/*build-an-intuition-with-diagrams-and-illustrations*/}
 
-When we couldn't figure out how to explain something with code and words alone, we've added diagrams that help provide some intuition. For example, here is one of the diagrams from [Preserving and Resetting State](/learn/preserving-and-resetting-state):
+当我们无法弄清楚如何仅用代码和文字来解释某些内容时，我们添加了有助于提供一些直觉的图表。例如，下面是 [保存和重置 state](/learn/preserving-and-resetting-state) 中的图表之一：
 
-<Diagram name="preserving_state_diff_same_pt1" height={350} width={794} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'section', which has a single child labeled 'Counter' containing a state bubble labeled 'count' with value 3. The middle section has the same 'div' parent, but the child components have now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'div', highlighted in yellow, also with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, all highlighted in yellow.">
+<Diagram name="preserving_state_diff_same_pt1" height={350} width={794} alt="图表包含三个部分，每个部分之间有一个箭头过渡。 第一部分包含一个标记为 `div` 的 React 组件，其中有一个标记为 `section` 的子组件，该组件有一个标记为 `Counter` 的子组件，其中包含一个标记为 `count`、值为 3 的 state 气泡。中间部分具有相同的 `div` 父组件，但子组件现已被删除，由黄色“proof”图像指示。第三部分再次具有相同的 `div` 父级，现在有一个由黄色突出显示并且标记为 `div` 的新子级，还有一个标记为 `Counter` 的新子级，其中包含一个标记为 `count` 且值为 0 的 state 气泡。她们都使用黄色进行了高亮。">
 
-When `section` changes to `div`, the `section` is deleted and the new `div` is added
+当 `section` 被改变为 `div` 时，`section` 会被删除而新的 `div` 会被添加。
 
 </Diagram>
 
-You'll also see some illustrations throughout the docs--here's one of the [browser painting the screen](/learn/render-and-commit#epilogue-browser-paint):
+在文档中还有一些插图——这是其中一个 [浏览器绘制屏幕的示意图](/learn/render-and-commit#epilogue-browser-paint)。
 
-<Illustration alt="A browser painting 'still life with card element'." src="/images/docs/illustrations/i_browser-paint.png" />
+<Illustration alt="浏览器正在绘制“带有卡片元素的静物画”" src="/images/docs/illustrations/i_browser-paint.png" />
 
-We've confirmed with the browser vendors that this depiction is 100% scientifically accurate.
+我们已经与浏览器厂商确认，这个描绘是 100% 科学准确的。
 
-## A new, detailed API Reference {/*a-new-detailed-api-reference*/}
+## 新的并且更加细节的 API 参考 {/*a-new-detailed-api-reference*/}
 
-In the [API Reference](/reference/react), every React API now has a dedicated page. This includes all kinds of APIs:
+在 [API 参考手册](/reference/react) 中，每个 React API 现在都有一个专门的页面。这包括各种类型的 API：
 
-- Built-in Hooks like [`useState`](/reference/react/useState).
-- Built-in components like [`<Suspense>`](/reference/react/Suspense).
-- Built-in browser components like [`<input>`](/reference/react-dom/components/input).
-- Framework-oriented APIs like [`renderToPipeableStream`](/reference/react-dom/server/renderToReadableStream).
-- Other React APIs like [`memo`](/reference/react/memo).
+- 内置 Hook，比如 [`useState`](/reference/react/useState)。
+- 内置组件，比如 [`<Suspense>`](/reference/react/Suspense)。
+- 内置浏览器组件，比如 [`<input>`](/reference/react-dom/components/input)。
+- 面向框架的 API，比如 [`renderToPipeableStream`](/reference/react-dom/server/renderToReadableStream)。
+- 其他 React API，比如 [`memo`](/reference/react/memo)。
 
-You'll notice that every API page is split into at least two segments: *Reference* and *Usage*.
+你会注意到，每个 API 页面至少被分成两个部分：**参考** 和 **用法**。
 
-[Reference](/reference/react/useState#reference) describes the formal API signature by listing its arguments and return values. It's concise, but it can feel a bit abstract if you're not familiar with that API. It describes what an API does, but not how to use it.
+[参考](/reference/react/useState#reference) 通过列举参数与返回值描述了正式的 API。这一部分比较简洁，但如果你不熟悉该 API，你可能会感觉有点抽象。“参考”描述了一个 API 做什么，但不是如何使用它。
 
-[Usage](/reference/react/useState#usage) shows why and how you would use this API in practice, like a colleague or a friend might explain. It shows the **canonical scenarios for how each API was meant to be used by the React team.** We've added color-coded snippets, examples of using different APIs together, and recipes that you can copy and paste from:
+[用法](/reference/react/useState#usage) 展示了为什么需要以及如何在实践中使用这个 API，就像同事或朋友可能会解释的那样。它展示了 React 团队设计每个 API 的 **典型使用场景**。我们添加了彩色代码片段、使用不同 API 的示例以及可以复制和粘贴的示例。
 
-<Recipes titleText="Basic useState examples" titleId="examples-basic">
+<Recipes titleText="useState 的基础示例" titleId="examples-basic">
 
-#### Counter (number) {/*counter-number*/}
+#### 数字计数 {/*counter-number*/}
 
-In this example, the `count` state variable holds a number. Clicking the button increments it.
+在这个例子中，`count` state 变量保存了一个数字。点击按钮会将其递增。
 
 <Sandpack>
 
@@ -488,7 +488,7 @@ export default function Counter() {
 
   return (
     <button onClick={handleClick}>
-      You pressed me {count} times
+      你点击了 {count} 次
     </button>
   );
 }
@@ -498,9 +498,9 @@ export default function Counter() {
 
 <Solution />
 
-#### Text field (string) {/*text-field-string*/}
+#### 输入文本（字符串） {/*text-field-string*/}
 
-In this example, the `text` state variable holds a string. When you type, `handleChange` reads the latest input value from the browser input DOM element, and calls `setText` to update the state. This allows you to display the current `text` below.
+在这个例子中，`text` state 变量保存一个字符串。当你输入时，`handleChange` 从浏览器输入 DOM 元素中读取最新的输入值，并调用 `setText` 来更新 state。这使得你可以在下方显示当前的 `text`。
 
 <Sandpack>
 
@@ -508,7 +508,7 @@ In this example, the `text` state variable holds a string. When you type, `handl
 import { useState } from 'react';
 
 export default function MyInput() {
-  const [text, setText] = useState('hello');
+  const [text, setText] = useState('你好');
 
   function handleChange(e) {
     setText(e.target.value);
@@ -517,9 +517,9 @@ export default function MyInput() {
   return (
     <>
       <input value={text} onChange={handleChange} />
-      <p>You typed: {text}</p>
-      <button onClick={() => setText('hello')}>
-        Reset
+      <p>你输入了：{text}</p>
+      <button onClick={() => setText('你好')}>
+        重置
       </button>
     </>
   );
@@ -530,9 +530,9 @@ export default function MyInput() {
 
 <Solution />
 
-#### Checkbox (boolean) {/*checkbox-boolean*/}
+#### 多选框（布尔值） {/*checkbox-boolean*/}
 
-In this example, the `liked` state variable holds a boolean. When you click the input, `setLiked` updates the `liked` state variable with whether the browser checkbox input is checked. The `liked` variable is used to render the text below the checkbox.
+在这个例子中，`liked` state 变量保存一个布尔值。当你点击输入框时，`setLiked` 用浏览器复选框输入是否被选中更新 `liked` state 变量。`liked` 变量被用于渲染复选框下方的文本。
 
 <Sandpack>
 
@@ -554,9 +554,9 @@ export default function MyCheckbox() {
           checked={liked}
           onChange={handleChange}
         />
-        I liked this
+        我喜欢这个
       </label>
-      <p>You {liked ? 'liked' : 'did not like'} this.</p>
+      <p>你 {liked ? '喜欢' : '不喜欢'} 这个。</p>
     </>
   );
 }
@@ -566,9 +566,9 @@ export default function MyCheckbox() {
 
 <Solution />
 
-#### Form (two variables) {/*form-two-variables*/}
+#### 表单（使用两个 state） {/*form-two-variables*/}
 
-You can declare more than one state variable in the same component. Each state variable is completely independent.
+你可以在同一个组件中定义两个 state 变量。每一个 state 变量都是完全独立的。
 
 <Sandpack>
 
@@ -586,9 +586,9 @@ export default function Form() {
         onChange={e => setName(e.target.value)}
       />
       <button onClick={() => setAge(age + 1)}>
-        Increment age
+        增大年龄。
       </button>
-      <p>Hello, {name}. You are {age}.</p>
+      <p>你好，{name}。你现在 {age} 岁。</p>
     </>
   );
 }
@@ -604,43 +604,43 @@ button { display: block; margin-top: 10px; }
 
 </Recipes>
 
-Some API pages also include [Troubleshooting](/reference/react/useEffect#troubleshooting) (for common problems) and [Alternatives](/reference/react-dom/findDOMNode#alternatives) (for deprecated APIs).
+一些 API 页面还包括针对常见问题的 [故障排除](/reference/react/useEffect#troubleshooting) 和针对弃用 API 的 [替代方案](/reference/react-dom/findDOMNode#alternatives)。
 
-We hope that this approach will make the API reference useful not only as a way to look up an argument, but as a way to see all the different things you can do with any given API—and how it connects to the other ones.
+我们希望 API 参考不仅仅是用来查找参数，还可以用来查看任何给定 API 可以做的所有不同事情以及与其他 API 相关联的方法。
 
-## What's next? {/*whats-next*/}
+## 接下来 {/*whats-next*/}
 
-That's a wrap for our little tour! Have a look around the new website, see what you like or don't like, and keep the feedback coming in the [anonymous survey](https://www.surveymonkey.co.uk/r/PYRPF3X) or in our [issue tracker](https://github.com/reactjs/reactjs.org/issues).
+对新文档的介绍到此结束！浏览一下新网站，看看你喜欢或不喜欢什么，欢迎在 [匿名调查](https://www.surveymonkey.co.uk/r/PYRPF3X) 或 [问题跟踪器](https://github.com/reactjs/reactjs.org/issues) 中提供反馈。
 
-We acknowledge this project has taken a long time to ship. We wanted to maintain a high quality bar that the React community deserves. While writing these docs and creating all of the examples, we found mistakes in some of our own explanations, bugs in React, and even gaps in the React design that we are now working to address. We hope that the new documentation will help us hold React itself to a higher bar in the future.
+我们承认这个项目花费了很长时间才发布。我们希望 React 社区保持应该拥有的高质量标准。在编写这些文档和创建所有示例的过程中，我们发现了一些自己解释中的错误、React 中的错误，甚至是 React 设计中的空缺，我们现在正在努力解决。我们希望新文档将帮助我们在未来将 React 本身保持在更高的标准上。
 
-We've heard many of your requests to expand the content and functionality of the website, for example:
+我们听到了许多想要扩展网站内容和功能的请求，例如：
 
-- Providing a TypeScript version for all examples;
-- Creating the updated performance, testing, and accessibility guides;
-- Documenting React Server Components independently from the frameworks that support them;
-- Working with our international community to get the new docs translated;
-- Adding missing features to the new website (for example, RSS for this blog).
+- 为所有示例提供 TypeScript 版本；
+- 创建更新的性能、测试和可访问性指南；
+- 独立记录 React 服务器组件，而不是依赖于支持它们的框架；
+- 与我们的国际社区合作，将新文档翻译成各种语言；
+- 在新网站中添加缺少的功能（例如，此博客的 RSS）
 
-Now that [react.dev](https://react.dev/) is out, we will be able to shift our focus from "catching up" with the third-party React educational resources to adding new information and further improving our new website.
+[react.dev](https://react.dev/) 已经发布，我们希望将重心从“追赶”第三方 React 教育资源转向添加新信息并进一步改进我们的新网站。
 
-We think there's never been a better time to learn React.
+我们认为现在是学习 React 的最好的时机。
 
-## Who worked on this? {/*who-worked-on-this*/}
+## 贡献者 {/*who-worked-on-this*/}
 
-On the React team, [Rachel Nabors](https://twitter.com/rachelnabors/) led the project (and provided the illustrations), and [Dan Abramov](https://twitter.com/dan_abramov) designed the curriculum. They co-authored most of the content together as well.
+在 React 团队中，[Rachel Nabors](https://twitter.com/rachelnabors/) 领导了该项目并提供了插图，而 [Dan Abramov](https://twitter.com/dan_abramov) 设计了课程。他们也共同撰写了大部分内容。
 
-Of course, no project this large happens in isolation. We have a lot of people to thank!
+当然，没有一个这么大的项目是孤立进行的。我们有很多想要感谢的人！
 
-[Sylwia Vargas](https://twitter.com/SylwiaVargas) overhauled our examples to go beyond "foo/bar/baz" and kittens, and feature scientists, artists and cities from around the world. [Maggie Appleton](https://twitter.com/Mappletons) turned our doodles into a clear diagram system.
+[Sylwia Vargas](https://twitter.com/SylwiaVargas) 改进了我们的示例，而不是继续使用“foo/bar/baz”、kitten，和来自世界各地的科学家、艺术家和城市。[Maggie Appleton](https://twitter.com/Mappletons) 将我们的涂鸦转化成了清晰的图表系统。
 
-Thanks to [David McCabe](https://twitter.com/mcc_abe), [Sophie Alpert](https://twitter.com/sophiebits), [Rick Hanlon](https://twitter.com/rickhanlonii), [Andrew Clark](https://twitter.com/acdlite), and [Matt Carroll](https://twitter.com/mattcarrollcode) for additional writing contributions. We'd also like to thank [Natalia Tepluhina](https://twitter.com/n_tepluhina) and [Sebastian Markbåge](https://twitter.com/sebmarkbage) for their ideas and feedback.
+感谢 [David McCabe](https://twitter.com/mcc_abe)、[Sophie Alpert](https://twitter.com/sophiebits)、[Rick Hanlon](https://twitter.com/rickhanlonii)、[Andrew Clark](https://twitter.com/acdlite) 和 [Matt Carroll](https://twitter.com/mattcarrollcode) 提供额外的写作贡献。我们还要感谢 [Natalia Tepluhina](https://twitter.com/n_tepluhina) 和 [Sebastian Markbåge](https://twitter.com/sebmarkbage) 提供的想法和反馈。
 
-Thanks to [Dan Lebowitz](https://twitter.com/lebo) for the site design and [Razvan Gradinar](https://dribbble.com/GradinarRazvan) for the sandbox design.
+感谢 [Dan Lebowitz](https://twitter.com/lebo) 设计了网站，[Razvan Gradinar](https://dribbble.com/GradinarRazvan) 设计了 sandbox。
 
-On the development front, thanks to [Jared Palmer](https://twitter.com/jaredpalmer) for prototype development. Thanks to [Dane Grant](https://twitter.com/danecando) and [Dustin Goodman](https://twitter.com/dustinsgoodman) from [ThisDotLabs](https://www.thisdot.co/) for their support on UI development. Thanks to [Ives van Hoorne](https://twitter.com/CompuIves), [Alex Moldovan](https://twitter.com/alexnmoldovan), [Jasper De Moor](https://twitter.com/JasperDeMoor), and [Danilo Woznica](https://twitter.com/danilowoz) from [CodeSandbox](https://codesandbox.io/) for their work with sandbox integration. Thanks to [Rick Hanlon](https://twitter.com/rickhanlonii) for spot development and design work, finessing our colors and finer details. Thanks to [Harish Kumar](https://www.strek.in/) and [Luna Ruan](https://twitter.com/lunaruan) for adding new features to the site and helping maintain it.
+在开发方面，感谢 [Jared Palmer](https://twitter.com/jaredpalmer) 进行原型开发。感谢 [Dane Grant](https://twitter.com/danecando) 和来自 [ThisDotLabs](https://www.thisdot.co/) 的 [Dustin Goodman](https://twitter.com/dustinsgoodman) 为 UI 开发提供了支持。感谢 [Ives van Hoorne](https://twitter.com/CompuIves)、[Alex Moldovan](https://twitter.com/alexnmoldovan)、[Jasper De Moor](https://twitter.com/JasperDeMoor) 和来自 [CodeSandbox](https://codesandbox.io/) 的 [Danilo Woznica](https://twitter.com/danilowoz) 为集成 sandbox 做出了贡献。感谢 [Rick Hanlon](https://twitter.com/rickhanlonii) 进行开发和设计工作，完善我们的颜色和细节。感谢 [Harish Kumar](https://www.strek.in/) 和 [Luna Ruan](https://twitter.com/lunaruan) 为网站添加新功能并帮助维护它。
 
-Huge thanks to the folks who volunteered their time to participate in the alpha and beta testing program. Your enthusiasm and invaluable feedback helped us shape these docs. A special shout out to our beta tester, [Debbie O'Brien](https://twitter.com/debs_obrien), who gave a talk about her experience using the React docs at React Conf 2021.
+非常感谢那些自愿参加 alpha 和 beta 测试计划的人。你们的热情和宝贵的反馈帮助我们塑造了这些文档。特别感谢我们的 beta 测试人员 [Debbie O'Brien](https://twitter.com/debs_obrien)，她在 React Conf 2021 上分享了她使用 React 文档的经验。
 
-Finally, thanks to the React community for being the inspiration behind this effort. You are the reason we do this, and we hope that the new docs will help you use React to build any user interface that you want.
+最后，感谢 React 社区的启发，是你们促使我们完成了这个新的项目。我们希望新文档将帮助大家使用 React 构建任何你想要的用户界面。
 
