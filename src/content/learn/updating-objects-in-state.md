@@ -16,7 +16,7 @@ state 中可以保存任意类型的 JavaScript 值，包括对象。但是，�
 
 - 如何正确地更新 React state 中的对象
 - 如何在不产生 mutation 的情况下更新一个嵌套对象
-- 什么是不可变性，以及如何不破坏它
+- 什么是不可变性（immutability），以及如何不破坏它
 - 如何使用 Immer 使对象复制不那么繁琐 
 
 </YouWillLearn>
