@@ -27,7 +27,7 @@ title: 将事件从 Effect 中分开
 1. 组件应该自动连接选中的聊天室。
 1. 每当你点击 “Send” 按钮，组件应该在当前聊天界面发送一条消息。
 
-假设你已经实现了这部分代码，但是还没有确定应该放在哪里。你是应该用事件处理函数还是 Effect 呢？每当你需要回答这个问题时，请考虑一下 [**为什么** 代码需要运行](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events)。
+假设你已经实现了这部分代码，但是还没有确定应该放在哪里。你是应该用事件处理函数还是 Effect 呢？每当你需要回答这个问题时，请考虑一下 [为什么代码需要运行](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events)。
 
 ### 事件处理函数只在响应特定的交互操作时运行 {/*event-handlers-run-in-response-to-specific-interactions*/}
 
