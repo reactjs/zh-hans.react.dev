@@ -117,7 +117,7 @@ label {
 
 ## 替代方案 {/*alternatives*/}
 
-### 从 `PureComponent` 类组件迁移到函数组件 {/*migrating-from-a-purecomponent-class-component-to-a-function*/}
+### 从 `PureComponent` 类式组件迁移到函数式组件 {/*migrating-from-a-purecomponent-class-component-to-a-function*/}
 
 我们建议在新代码中使用函数组件，而不是 [类组件](/reference/react/Component)。如果你有一些使用 `PureComponent` 的现有组件，以下是如何进行转换。这是原始代码：
 
