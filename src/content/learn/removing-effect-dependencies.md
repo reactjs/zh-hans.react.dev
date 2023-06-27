@@ -4,14 +4,14 @@ title: '移除 Effect 依赖'
 
 <Intro>
 
-当你写一个 Effect 时，linter 会验证你是否已经将 Effect 读取的每一个响应式值（如 props 和 state）包含在你的 Effect 的依赖列表中。这可以确保你的 Effect 与你的组件的 props 和 state 保持同步。不必要的依赖关系可能会导致 Effect 运行过于频繁，甚至产生一个无限循环。请按照本指南审查并删除 Effect 中不必要的依赖关系。
+当你写一个 Effect 时，linter 会验证你是否已经将 Effect 读取的每一个响应式值（如 props 和 state）包含在你的 Effect 的依赖列表中。这可以确保你的 Effect 与你的组件的 props 和 state 保持同步。不必要的依赖关系可能会导致 Effect 运行过于频繁，甚至产生一个无限循环。请按照本指南审查并移除 Effect 中不必要的依赖关系。
 
 </Intro>
 
 <YouWillLearn>
 
 - 如何修复无限的 Effect 依赖性循环
-- 当你想删除一个依赖关系时，该怎么做？
+- 当你想移除一个依赖关系时，该怎么做？
 - 如何从你的 Effect 中读出一个值而不对它作出“反应”？
 - 如何以及为什么要避免对象和函数的依赖？
 - 为什么抑制依赖 linter 检查是危险的，以及应该如何做？
@@ -188,7 +188,7 @@ function ChatRoom({ roomId }) { // 这是一个响应式值
 }
 ```
 
-[响应式值](/learn/lifecycle-of-reactive-effects#all-variables-declared-in-the-component-body-are-reactive) 包括 props 以及所有你直接在组件中声明的变量和函数。由于 `roomId` 是一个响应式的值，你不能把它从依赖列表中删除。linter 不允许这样做：
+[响应式值](/learn/lifecycle-of-reactive-effects#all-variables-declared-in-the-component-body-are-reactive) 包括 props 以及所有你直接在组件中声明的变量和函数。由于 `roomId` 是一个响应式的值，你不能把它从依赖列表中移除。linter 不允许这样做：
 
 ```js {8}
 const serverUrl = 'https://localhost:1234';
@@ -276,7 +276,7 @@ button { margin-left: 10px; }
 
 最后一部分很重要。**如果你想改变依赖关系，首先要改变所涉及到的代码**。你可以把依赖关系列表看作是 [Effect的代码所依赖的所有响应式值的列表](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。你不要 **选择** 把什么放在这个列表上。该列表 **描述了** 你的代码。要改变依赖性列表，请改变代码。
 
-这可能感觉就像解方程一样。你有一个目标（例如，删除一个依赖关系），你需要“找到”与该目标相匹配的代码。不是每个人都觉得解方程很有趣，写 Effects 也是如此！幸运的是，下面有一些常见的解决方案你可以去尝试。
+这可能感觉就像解方程一样。你有一个目标（例如，移除一个依赖关系），你需要“找到”与该目标相匹配的代码。不是每个人都觉得解方程很有趣，写 Effects 也是如此！幸运的是，下面有一些常见的解决方案你可以去尝试。
 
 <Pitfall>
 
@@ -1161,7 +1161,7 @@ function ChatRoom({ getOptions }) {
 - 依赖关系应始终与代码匹配。
 - 当你对依赖项不满意时，你需要编辑的是代码。
 - 抑制 linter 会导致非常混乱的错误，你应该始终避免它。
-- 要删除依赖项，你需要向 linter “证明”它不是必需的。
+- 要移除依赖项，你需要向 linter “证明”它不是必需的。
 - 如果某些代码是响应特定交互，请将该代码移至事件处理部分。
 - 如果 Effect 的不同部分因不同原因需要重新运行，请将其拆分为多个 Effect。
 - 如果你想根据以前的状态更新一些状态，传递一个更新函数。
@@ -1246,7 +1246,7 @@ export default function Timer() {
 
 #### 修复重新触发动画的问题 {/*fix-a-retriggering-animation*/}
 
-在此示例中，当你按下“显示”时，欢迎消息淡入。动画持续一秒钟。当你按下“删除”时，欢迎信息立即消失。淡入动画的逻辑在 `animation.js` 文件中以纯 JavaScript [动画循环](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) 实现。你不需要改变那个逻辑。你可以将其视为第三方库。Effect 的逻辑是为 DOM 节点创建一个 `FadeInAnimation` 实例，然后调用 `start(duration)` 或 `stop()` 来控制动画。`duration` 由滑块控制。调整滑块并查看动画如何变化。
+在此示例中，当你按下“显示”时，欢迎消息淡入。动画持续一秒钟。当你按下“移除”时，欢迎信息立即消失。淡入动画的逻辑在 `animation.js` 文件中以纯 JavaScript [动画循环](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) 实现。你不需要改变那个逻辑。你可以将其视为第三方库。Effect 的逻辑是为 DOM 节点创建一个 `FadeInAnimation` 实例，然后调用 `start(duration)` 或 `stop()` 来控制动画。`duration` 由滑块控制。调整滑块并查看动画如何变化。
 
 此代码已经能工作，但你需要更改一些内容。目前，当你移动控制 `duration` 状态变量的滑块时，它会重新触发动画。更改行为，使 Effect 不会对 `duration` 变量做出“反应”。当你按下“显示”时，Effect 应该使用滑块上的当前 `duration` 值。但是，移动滑块本身不应重新触发动画。
 
@@ -1325,7 +1325,7 @@ export default function App() {
         淡入间隔: {duration} ms
       </label>
       <button onClick={() => setShow(!show)}>
-        {show ? '删除' : '显示'}
+        {show ? '移除' : '显示'}
       </button>
       <hr />
       {show && <Welcome duration={duration} />}
@@ -1456,7 +1456,7 @@ export default function App() {
         淡入间隔: {duration} ms
       </label>
       <button onClick={() => setShow(!show)}>
-        {show ? '删除' : '显示'}
+        {show ? '移除' : '显示'}
       </button>
       <hr />
       {show && <Welcome duration={duration} />}
