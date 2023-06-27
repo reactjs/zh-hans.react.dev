@@ -161,7 +161,7 @@ label {
 
 </Sandpack>
 
-当你 [将这个组件从类组件转换为函数组件](/reference/react/Component#alternatives) 时，将其包装在 [`memo`](/reference/react/memo)：
+当你 [将这个组件从类式组件转换为函数式组件](/reference/react/Component#alternatives) 时，将其包装在 [`memo`](/reference/react/memo)：
 
 <Sandpack>
 
