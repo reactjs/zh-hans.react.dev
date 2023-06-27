@@ -239,7 +239,7 @@ function ChatRoom({ roomId, theme }) {
     });
     connection.connect();
     // ...
-````
+```
 
 但是 `theme` 是一个响应式值（它会由于重新渲染而变化），并且 [Effect 读取的每一个响应式值都必须在其依赖项中声明](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。现在你必须把 `theme` 作为 Effect 的依赖项之一：
 
@@ -256,7 +256,7 @@ function ChatRoom({ roomId, theme }) {
     };
   }, [roomId, theme]); // ✅ 声明所有依赖项
   // ...
-````
+```
 
 用这个例子试一下，看你能否看出这个用户体验问题：
 
@@ -416,7 +416,7 @@ function ChatRoom({ roomId, theme }) {
     showNotification('Connected!', theme);
   });
   // ...
-````
+```
 
 这里的 `onConnected` 被称为 **Effect Event**。它是 Effect 逻辑的一部分，但是其行为更像事件处理函数。它内部的逻辑不是响应式的，而且能一直“看见”最新的 props 和 state。
 
