@@ -4,7 +4,7 @@ title: "<progress>"
 
 <Intro>
 
-The [built-in browser `<progress>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) lets you render a progress indicator.
+[浏览器内置的 `<progress>` 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/progress) 允许你渲染一个进度指示器。
 
 ```js
 <progress value={0.5} />
@@ -16,36 +16,36 @@ The [built-in browser `<progress>` component](https://developer.mozilla.org/en-U
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `<progress>` {/*progress*/}
 
-To display a progress indicator, render the [built-in browser `<progress>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) component.
+使用 [浏览器内置的 `<progress>` 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/progress) 渲染一个进度指示器。
 
 ```js
 <progress value={0.5} />
 ```
 
-[See more examples below.](#usage)
+[参见下面更多示例](#usage)。
 
-#### Props {/*props*/}
+#### 参数 {/*props*/}
 
-`<progress>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<progress>` 支持所有 [常见的元素属性](/reference/react-dom/components/common#props)。
 
-Additionally, `<progress>` supports these props:
+除此之外，`<progress>` 还支持以下属性：
 
-* [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attr-max): A number. Specifies the maximum `value`. Defaults to `1`.
-* [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attr-value): A number between `0` and `max`, or `null` for intermedinate progress. Specifies how much was done.
+- [`max`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/progress#attr-max)：一个数字，表示指定的最大 `value`。默认值为 `1`。
+- [`value`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/progress#attr-value)：一个介于 `0` 至 `max` 之间的数字。如果不确定具体的进度，那么该值可以为 `null`。`value` 表示完成了多少进度。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Controlling a progress indicator {/*controlling-a-progress-indicator*/}
+### 控制进度指示器 {/*controlling-a-progress-indicator*/}
 
-To display a progress indicator, render a `<progress>` component. You can pass a number `value` between `0` and the `max` value you specify. If you don't pass a `max` value, it will assumed to be `1` by default.
+使用 `<progress>` 组件渲染进度指示器。你可以传递一个介于 `0` 和指定的 `max` 值之间的数字 `value`。如果不传递 `max` 参数，那么 `max` 默认值为 `1`。
 
-If the operation is not ongoing, pass `value={null}` to put the progress indicator into an indeterminate state.
+如果相关操作未持续进行，请传递 `value={null}` 将进度指示器设置为不确定状态。
 
 <Sandpack>
 
