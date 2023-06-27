@@ -4,13 +4,13 @@ title: createFactory
 
 <Deprecated>
 
-This API will be removed in a future major version of React. [See the alternatives.](#alternatives)
+此 API 将在未来的 React 主要版本中被移除，[请查看替代方案](#alternatives)。
 
 </Deprecated>
 
 <Intro>
 
-`createFactory` lets you create a function that produces React elements of a given type.
+`createFactory` 可以创建一个能够生成指定类型 React 元素的函数。
 
 ```js
 const factory = createFactory(type)
@@ -22,11 +22,11 @@ const factory = createFactory(type)
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `createFactory(type)` {/*createfactory*/}
 
-Call `createFactory(type)` to create a factory function which produces React elements of a given `type`.
+调用 `createFactory(type)` 创建一个能够生成指定 `type` 的 React 元素的工厂函数。
 
 ```js
 import { createFactory } from 'react';
@@ -34,7 +34,7 @@ import { createFactory } from 'react';
 const button = createFactory('button');
 ```
 
-Then you can use it to create React elements without JSX:
+然后你可以在不适用 JSX 的情况下创建 React 元素：
 
 ```js
 export default function App() {
@@ -46,25 +46,25 @@ export default function App() {
 }
 ```
 
-[See more examples below.](#usage)
+[参见下面更多示例](#usage)。
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `type`: The `type` argument must be a valid React component type. For example, it could be a tag name string (such as `'div'` or `'span'`), or a React component (a function, a class, or a special component like [`Fragment`](/reference/react/Fragment)).
+* `type`：`type` 参数必须是一个有效的 React 组件类型。例如，它可以是标签名称的字符串（如 `'div'` 或 `'span'`），或一个 React 组件（函数式组件、类式组件或一个特殊的组件，如 [`Fragment`](/reference/react/Fragment)）。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-Returns a factory function. That factory function receives a `props` object as the first argument, followed by a list of `...children` arguments, and returns a React element with the given `type`, `props` and `children`.
+返回一个工厂函数。该工厂函数接收一个 `props` 对象作为第一个参数，后跟一系列的 `...children` 参数，并返回一个具有给定 `type`、`props` 和 `children` 的 React 元素，
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Creating React elements with a factory {/*creating-react-elements-with-a-factory*/}
+### 使用工厂函数创建 React 元素 {/*creating-react-elements-with-a-factory*/}
 
-Although most React projects use [JSX](/learn/writing-markup-with-jsx) to describe the user interface, JSX is not required. In the past, `createFactory` used to be one of the ways you could describe the user interface without JSX.
+尽管大多数 React 项目都使用 [JSX](/learn/writing-markup-with-jsx) 来描述用户界面，但并非必须使用 JSX。在过去，`createFactory` 曾是一种在没有 JSX 的情况下描述用户界面的方法之一。
 
-Call `createFactory` to create a *factory function* for a specific element type like `'button'`:
+调用 `createFactory` 来为特定的元素类型，如 `'button'`，创建一个 **工厂函数**：
 
 ```js
 import { createFactory } from 'react';
@@ -72,7 +72,7 @@ import { createFactory } from 'react';
 const button = createFactory('button');
 ```
 
-Calling that factory function will produce React elements with the props and children you have provided:
+调用该工厂函数将生成具有你提供的 props 和 children 的 React 元素：
 
 <Sandpack>
 
@@ -84,23 +84,23 @@ const button = createFactory('button');
 export default function App() {
   return button({
     onClick: () => {
-      alert('Clicked!')
+      alert('已点击！')
     }
-  }, 'Click me');
+  }, '点我');
 }
 ```
 
 </Sandpack>
 
-This is how `createFactory` was used as an alternative to JSX. However, `createFactory` is deprecated, and you should not call `createFactory` in any new code. See how to migrate away from `createFactory` below.
+这就是 `createFactory` 作为 JSX 的替代方式的使用方法。但是，`createFactory` 已被弃用，因此你不应在任何新代码中调用 `createFactory`。请参阅下面内容，了解如何从 `createFactory` 迁移。
 
 ---
 
-## Alternatives {/*alternatives*/}
+## 替代方案 {/*alternatives*/}
 
-### Copying `createFactory` into your project {/*copying-createfactory-into-your-project*/}
+### 将 `createFactory` 拷贝进项目中 {/*copying-createfactory-into-your-project*/}
 
-If your project has many `createFactory` calls, copy this `createFactory.js` implementation into your project:
+如果项目中调用了许多 `createFactory`，那么请将此 `createFactory.js` 复制到你的项目中：
 
 <Sandpack>
 
@@ -112,9 +112,9 @@ const button = createFactory('button');
 export default function App() {
   return button({
     onClick: () => {
-      alert('Clicked!')
+      alert('已点击！')
     }
-  }, 'Click me');
+  }, '点我');
 }
 ```
 
@@ -128,13 +128,13 @@ export function createFactory(type) {
 
 </Sandpack>
 
-This lets you keep all of your code unchanged except the imports.
+这可以在只更改导入的情况下，保持其他所有代码不变。
 
 ---
 
-### Replacing `createFactory` with `createElement` {/*replacing-createfactory-with-createelement*/}
+### 使用 `createElement` 替代 `createFactory` {/*replacing-createfactory-with-createelement*/}
 
-If you have a few `createFactory` calls that you don't mind porting manually, and you don't want to use JSX, you can replace every call a factory function with a [`createElement`](/reference/react/createElement) call. For example, you can replace this code:
+如果只有几个 `createFactory` 需要手动迁移，并且不想使用 JSX，你可以将调用工厂函数替换为调用 [`createElement`](/reference/react/createElement)。例如，你可以将以下代码：
 
 ```js {1,3,6}
 import { createFactory } from 'react';
@@ -150,7 +150,7 @@ export default function App() {
 }
 ```
 
-with this code:
+替换为以下代码：
 
 
 ```js {1,4}
@@ -165,7 +165,7 @@ export default function App() {
 }
 ```
 
-Here is a complete example of using React without JSX:
+这是一个完整的在不使用 JSX 的情况下使用 React 的示例：
 
 <Sandpack>
 
@@ -175,9 +175,9 @@ import { createElement } from 'react';
 export default function App() {
   return createElement('button', {
     onClick: () => {
-      alert('Clicked!')
+      alert('已点击！')
     }
-  }, 'Click me');
+  }, '点我');
 }
 ```
 
@@ -185,9 +185,9 @@ export default function App() {
 
 ---
 
-### Replacing `createFactory` with JSX {/*replacing-createfactory-with-jsx*/}
+### 使用 JSX 替代 `createFactory` {/*replacing-createfactory-with-jsx*/}
 
-Finally, you can use JSX instead of `createFactory`. This is the most common way to use React:
+最终，你可以使用 JSX 替代 `createFactory`。这也是大多数使用 React 的方式：
 
 <Sandpack>
 
@@ -195,9 +195,9 @@ Finally, you can use JSX instead of `createFactory`. This is the most common way
 export default function App() {
   return (
     <button onClick={() => {
-      alert('Clicked!');
+      alert('已点击！');
     }}>
-      Click me
+      点我
     </button>
   );
 };
@@ -207,7 +207,7 @@ export default function App() {
 
 <Pitfall>
 
-Sometimes, your existing code might pass some variable as a `type` instead of a constant like `'button'`:
+有时，现有代码可能会将某个变量而不是 `'button'` 这样的常亮作为 `type` 传递：
 
 ```js {3}
 function Heading({ isSubheading, ...props }) {
@@ -217,7 +217,7 @@ function Heading({ isSubheading, ...props }) {
 }
 ```
 
-To do the same in JSX, you need to rename your variable to start with an uppercase letter like `Type`:
+如果在 JSX 中要做相同的事情，需要将变量重命名为以大写字母开头，例如 `Type`：
 
 ```js {2,3}
 function Heading({ isSubheading, ...props }) {
@@ -226,6 +226,6 @@ function Heading({ isSubheading, ...props }) {
 }
 ```
 
-Otherwise React will interpret `<type>` as a built-in HTML tag because it is lowercase.
+如果是小写字母开头，React 会将 `<type>` 作为内置的 HTML 标签。
 
 </Pitfall>
