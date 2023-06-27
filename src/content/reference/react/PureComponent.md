@@ -30,7 +30,7 @@ class Greeting extends PureComponent {
 
 ### `PureComponent` {/*purecomponent*/}
 
-为了在 props 和 state 相同时跳过重新渲染，类组件应该继承 `PureComponent` 而不是 [`Component`](/reference/react/Component)：
+为了在 props 和 state 相同时跳过重新渲染，类式组件应该继承 `PureComponent` 而不是 [`Component`](/reference/react/Component)：
 
 ```js
 import { PureComponent } from 'react';
