@@ -4,13 +4,13 @@ title: PureComponent
 
 <Pitfall>
 
-We recommend defining components as functions instead of classes. [See how to migrate.](#alternatives)
+我们建议使用函数式组件而非类式组件。[查看如何迁移](#alternatives)。
 
 </Pitfall>
 
 <Intro>
 
-`PureComponent` is similar to [`Component`](/reference/react/Component) but it skips re-renders for same props and state. Class components are still supported by React, but we don't recommend using them in new code.
+`PureComponent` 类似于 [`Component`](/reference/react/Component)，但是当 props 和 state 与之前保持一致时会跳过重新渲染。React 仍然支持类式组件，但我们不建议在新代码中使用。
 
 ```js
 class Greeting extends PureComponent {
@@ -26,11 +26,11 @@ class Greeting extends PureComponent {
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `PureComponent` {/*purecomponent*/}
 
-To skip re-rendering a class component for same props and state, extend `PureComponent` instead of [`Component`:](/reference/react/Component)
+为了在 props 和 state 相同时跳过重新渲染，类式组件应该继承 `PureComponent` 而不是 [`Component`](/reference/react/Component)：
 
 ```js
 import { PureComponent } from 'react';
@@ -42,18 +42,18 @@ class Greeting extends PureComponent {
 }
 ```
 
-`PureComponent` is a subclass of `Component` and supports [all the `Component` APIs.](/reference/react/Component#reference) Extending `PureComponent` is equivalent to defining a custom [`shouldComponentUpdate`](/reference/react/Component#shouldcomponentupdate) method that shallowly compares props and state.
+`PureComponent` 是 `Component` 的子类，并且支持 [所有 `Component` 的 API](/reference/react/Component#reference)。继承 `PureComponent` 的子类相当与定义了一个自定义的 [`shouldComponentUpdate`](/reference/react/Component#shouldcomponentupdate) 方法，该方法将浅比较 props 和 state。
 
 
-[See more examples below.](#usage)
+[请参阅以下更多示例](#usage)。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Skipping unnecessary re-renders for class components {/*skipping-unnecessary-re-renders-for-class-components*/}
+### 跳过类式组件不必要的重新渲染 {/*skipping-unnecessary-re-renders-for-class-components*/}
 
-React normally re-renders a component whenever its parent re-renders. As an optimization, you can create a component that React will not re-render when its parent re-renders so long as its new props and state are the same as the old props and state. [Class components](/reference/react/Component) can opt into this behavior by extending `PureComponent`:
+当父组件重新渲染时，React 通常会重新渲染子组件。为了优化性能，你可以创建一个组件，在父组件重新渲染时不会重新渲染，前提是新的 props 和 state 与旧的 props 和 state 相同。[类式组件](/reference/react/Component) 可以通过继承 `PureComponent` 来选择此行为。
 
 ```js {1}
 class Greeting extends PureComponent {
@@ -63,9 +63,9 @@ class Greeting extends PureComponent {
 }
 ```
 
-A React component should always have [pure rendering logic.](/learn/keeping-components-pure) This means that it must return the same output if its props, state, and context haven't changed. By using `PureComponent`, you are telling React that your component complies with this requirement, so React doesn't need to re-render as long as its props and state haven't changed. However, your component will still re-render if a context that it's using changes.
+React 组件应该始终具有 [纯粹的渲染逻辑](/learn/keeping-components-pure)。这意味着如果 props、state 和 context 没有发生变化，它必须返回相同的输出。使用 `PureComponent` 便是在告诉 React 你的组件符合这个要求，因此只要 props 和 state 没有改变，React 就不需要重新渲染组件。然而，如果你的组件正在使用的 context 发生变化，它仍会重新渲染。
 
-In this example, notice that the `Greeting` component re-renders whenever `name` is changed (because that's one of its props), but not when `address` is changed (because it's not passed to `Greeting` as a prop):
+注意，在这个例子中，`Greeting` 组件会在 `name` 改变时重新渲染（因为这是它的 props），但在 `address` 改变时不会（因为它没有作为 props 传递给 `Greeting`）：
 
 <Sandpack>
 
@@ -109,17 +109,17 @@ label {
 
 <Pitfall>
 
-We recommend defining components as functions instead of classes. [See how to migrate.](#alternatives)
+我们建议使用函数式组件而非类式组件。[查看如何迁移](#alternatives)。
 
 </Pitfall>
 
 ---
 
-## Alternatives {/*alternatives*/}
+## 替代方案 {/*alternatives*/}
 
-### Migrating from a `PureComponent` class component to a function {/*migrating-from-a-purecomponent-class-component-to-a-function*/}
+### 从 `PureComponent` 类式组件迁移到函数式组件 {/*migrating-from-a-purecomponent-class-component-to-a-function*/}
 
-We recommend using function components instead of [class components](/reference/react/Component) in new code. If you have some existing class components using `PureComponent`, here is how you can convert them. This is the original code:
+我们建议在新代码中使用函数式组件，而不是 [类式组件](/reference/react/Component)。如果你有一些使用 `PureComponent` 的现有组件，以下是如何进行转换。这是原始代码：
 
 <Sandpack>
 
@@ -161,7 +161,7 @@ label {
 
 </Sandpack>
 
-When you [convert this component from a class to a function,](/reference/react/Component#alternatives) wrap it in [`memo`:](/reference/react/memo)
+当你 [将这个组件从类式组件转换为函数式组件](/reference/react/Component#alternatives) 时，将其包装在 [`memo`](/reference/react/memo)：
 
 <Sandpack>
 
@@ -203,6 +203,6 @@ label {
 
 <Note>
 
-Unlike `PureComponent`, [`memo`](/reference/react/memo) does not compare the new and the old state. In function components, calling the [`set` function](/reference/react/useState#setstate) with the same state [already prevents re-renders by default,](/reference/react/memo#updating-a-memoized-component-using-state) even without `memo`.
+与 `PureComponent` 不同，[`memo`](/reference/react/memo) 不会比较新旧 state。在函数组件中，即使没有 `memo`，调用具有相同 state 的 [`set` 函数](/reference/react/useState#setstate)，[默认已经阻止了重新渲染](/reference/react/memo#updating-a-memoized-component-using-state)。
 
 </Note>
