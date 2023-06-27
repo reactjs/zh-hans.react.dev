@@ -51,7 +51,7 @@ class Greeting extends PureComponent {
 
 ## 用法 {/*usage*/}
 
-### 跳过类组件不必要的重新渲染 {/*skipping-unnecessary-re-renders-for-class-components*/}
+### 跳过类式组件不必要的重新渲染 {/*skipping-unnecessary-re-renders-for-class-components*/}
 
 当父组件重新渲染时，React 通常会重新渲染子组件。为了优化性能，你可以创建一个组件，在父组件重新渲染时不会重新渲染，前提是新的 props 和 state 与旧的 props 和 state 相同。[类组件](/reference/react/Component) 可以通过继承 `PureComponent` 来选择此行为。
 
