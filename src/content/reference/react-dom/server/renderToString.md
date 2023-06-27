@@ -132,7 +132,7 @@ console.log(div.innerHTML); // 例如，"<svg>...</svg>"
 
 `renderToString` 不完全支持 Suspense。
 
-如果某个组件暂停（例如，因为它使用 [`lazy`](/reference/react/lazy) 定义或获取数据），`renderToString` 不会等待其内容解析完成。相反，`renderToString` 将找到最近的 [`<Suspense>`](/reference/react/Suspense) 边界，并在 HTML 中渲染其 `fallback` 属性。直到客户端代码加载后，内容才会显示出来。
+如果某个组件 suspend （例如，因为它使用 [`lazy`](/reference/react/lazy) 定义或获取数据），`renderToString` 不会等待其内容解析完成。相反，`renderToString` 将找到最近的 [`<Suspense>`](/reference/react/Suspense) 边界，并在 HTML 中渲染其 `fallback` 属性。直到客户端代码加载后，内容才会显示出来。
 
 要解决这个问题，请使用其中一个 [推荐的流式解决方案](#migrating-from-rendertostring-to-a-streaming-method-on-the-server)。它们可以在服务器上逐步以块的形式流式传输内容，使用户在客户端代码加载之前逐步看到页面填充。
 
