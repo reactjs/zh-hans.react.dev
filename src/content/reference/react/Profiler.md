@@ -53,7 +53,7 @@ function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime
 
 #### 参数 {/*onrender-parameters*/}
 
-* `id`：`<Profiler>` 树的字符串 `id` 属性，用于标识刚刚提交的部分。如果你使用多个性能分析器，可以通过此属性识别已提交的树的哪个部分。
+* `id`：`<Profiler>` 树的字符串 `id` 属性，用于标识刚刚提交的部分。如果你使用多个 profiler，可以通过此属性识别已提交的树的哪个部分。
 * `phase`：`"mount"`、`"update"` 或 `"nested-update"`。这可以让你知道树是首次挂载还是由于属性、状态或 hook 的更改而重新渲染。
 * `actualDuration`：当前更新期间用于渲染 `<Profiler>` 及其后代的时间，以毫秒为单位。显示子树在使用记忆化（例如 [`memo`](/reference/react/memo) 和 [`useMemo`](/reference/react/useMemo)）方面的效果如何。理想情况下，此值在初始挂载后应显著减少，因为许多后代组件只会在其特定的 props 变化时需要重新渲染。
 * `baseDuration`：估计在没有任何优化的情况下重新渲染整个 `<Profiler>` 子树所需的时间，以毫秒为单位。它通过累加树中每个组件的最近一次渲染持续时间来计算。此值估计了渲染的最差情况成本（例如初始挂载或没有记忆化的树）。与 `actualDuration` 进行比较，以确定记忆化是否起作用。
