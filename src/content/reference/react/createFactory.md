@@ -72,7 +72,7 @@ import { createFactory } from 'react';
 const button = createFactory('button');
 ```
 
-调用该工厂函数将生成具有你提供的 props 和 children 的 React 元素：
+调用该工厂函数将生成具有你提供的 `props` 和 `children` 的 React 元素：
 
 <Sandpack>
 
