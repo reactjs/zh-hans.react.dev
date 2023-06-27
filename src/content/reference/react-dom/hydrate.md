@@ -152,7 +152,7 @@ export default function App() {
 
 ### 处理不同的客户端和服务器内容 {/*handling-different-client-and-server-content*/}
 
-如果你需要在服务器和客户端上故意渲染不同的内容，可以进行双重渲染。在客户端上渲染不同内容的组件可以读取像 `isClient` 这样的 [state 变量](/reference/react/useState)，你可以在 [effect](/reference/react/useEffect) 中将其设置为 `true`：
+如果需要在服务器和客户端上故意渲染不同的内容，可以进行双重渲染。在客户端上渲染不同内容的组件可以读取像 `isClient` 这样的 [state 变量](/reference/react/useState)，你可以在 [effect](/reference/react/useEffect) 中将其设置为 `true`：
 
 <Sandpack>
 
