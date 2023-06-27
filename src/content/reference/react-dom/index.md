@@ -15,13 +15,13 @@ title: React DOM API
 这些 API 可以在你的组件中导入，但是很少使用：
 
 * [`createPortal`](/reference/react-dom/createPortal) 允许你将子组件渲染到 DOM 树的不同位置。
-* [`flushSync`](/reference/react-dom/flushSync) 允许你强制 React 同步刷新状态更新并更新 DOM。
+* [`flushSync`](/reference/react-dom/flushSync) 允许你强制 React 同步刷新状态并更新 DOM。
 
 ---
 
-## 入口点 {/*entry-points*/}
+## 入口 {/*entry-points*/}
 
-`react-dom` 包提供了两个额外的入口点：
+`react-dom` 包提供了两个额外的入口：
 
 * [`react-dom/client`](/reference/react-dom/client) 包含在客户端（在浏览器中）渲染 React 组件的 API。
 * [`react-dom/server`](/reference/react-dom/server) 包含在服务器上渲染 React 组件的 API。
