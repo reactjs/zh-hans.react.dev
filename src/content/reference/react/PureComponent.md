@@ -10,7 +10,7 @@ title: PureComponent
 
 <Intro>
 
-`PureComponent` 类似于 [`Component`](/reference/react/Component)，但是当 props 和 state 与之前保持一致时会跳过重新渲染。React 仍然支持类式组件，但我们不建议在新代码中使用它们。
+`PureComponent` 类似于 [`Component`](/reference/react/Component)，但是当 props 和 state 与之前保持一致时会跳过重新渲染。React 仍然支持类式组件，但我们不建议在新代码中使用。
 
 ```js
 class Greeting extends PureComponent {
