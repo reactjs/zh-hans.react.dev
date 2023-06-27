@@ -49,16 +49,16 @@ async function handler(request) {
 
 * `reactNode`：要渲染为 HTML 的 React 节点。例如，类似 `<App />` 的 JSX 元素。它应该表示整个文档，因此 `App` 组件应该渲染 `<html>` 标签。
 
-* **可选参数** `options`：具有流选项的对象。
-  * **可选参数** `bootstrapScriptContent`：如果指定，此字符串将被放置在内联 `<script>` 标签中。
-  * **可选参数** `bootstrapScripts`：在页面上为 `<script>` 标签生成的字符串URL数组。使用它的话，可在 `<script>` 中调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)。如果你根本不想在客户端上运行 React，请忽略它。
-  * **可选参数** `bootstrapModules`：就像 `bootstrapScripts`, 但不同的是，生成 [`<script type="module">`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules)。
-  * **可选参数** `identifierPrefix`：一个字符串前缀，React 通过 [`useId`](/reference/react/useId) 来生成 IDs。在同一页面上使用多个根时，有助于避免冲突。必须与传递给 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters) 的前缀相同。
-  * **可选参数** `namespaceURI`：是一个字符串，是流的根[命名空间URI](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElementNS#important_namespace_uris)。默认为常规 HTML。如果用于 SVG，传 `'http://www.w3.org/2000/svg'`，如果用于 MathML，传 `'http://www.w3.org/1998/Math/MathML'`。
-  * **可选参数** `nonce`：一个 [`随机字符串`](http://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script#nonce) 让脚本通过 [`script-src` 内容安全策略](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)。
-  * **可选参数** `onError`：一个回调函数，只要服务器出错就会触发，无论错误是 [否](#recovering-from-errors-inside-the-shell) 可 [恢复](#recovering-from-errors-outside-the-shell)。默认情况下，它只调用 `console.error`。如果你用 [log crash reports](#logging-crashes-on-the-server) 重写，请确保你仍然调用 `console.error`。你还可以使用它在 shell 触发之前 [调整状态代码](#setting-the-status-code)。
-  * **可选参数** `progressiveChunkSize`： 块中的字节数。[阅读更多默认启发式方法](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)。
-  * **可选参数** `signal`：一个 [中止信号](https://developer.mozilla.org/zh-CN/docs/Web/API/AbortSignal)，用于 [中止服务器渲染](#aborting-server-rendering) 并在客户端上渲染其余部分。
+* **可选参数** `options`：一个对象，用于对流进行配置。
+  * **可选属性** `bootstrapScriptContent`：如果指定了这个属性值，那么这个字符串会被放置在内联 `<script>` 标签中。
+  * **可选属性** `bootstrapScripts`：一个字符串URL的数组， 用于在页面上生成 `<script>` 标签。使用它的话，可在 `<script>` 中调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)。如果你根本不想在客户端上运行 React，则忽略它。
+  * **可选属性** `bootstrapModules`：就像 `bootstrapScripts`, 但不同的是，生成 [`<script type="module">`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules) 标签。
+  * **可选属性** `identifierPrefix`：一个字符串前缀，React 通过 [`useId`](/reference/react/useId) 来生成 ID。在同一页面上使用多个根组件时，有助于避免冲突。必须与传递给 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters) 的前缀相同。
+  * **可选属性** `namespaceURI`：是一个字符串，带有流的根[命名空间URI](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElementNS#important_namespace_uris)。默认为常规 HTML。如果用于 SVG，传 `'http://www.w3.org/2000/svg'`，如果用于 MathML，传 `'http://www.w3.org/1998/Math/MathML'`。
+  * **可选属性** `nonce`：一个 [`随机字符串`](http://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script#nonce) 让脚本通过 [`script-src` 内容安全策略](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)。
+  * **可选属性** `onError`：一个回调函数，只要服务器出错就会触发，无论错误是 [否](#recovering-from-errors-inside-the-shell) 可 [恢复](#recovering-from-errors-outside-the-shell)。默认情况下，它只调用 `console.error`。如果你用 [log crash reports](#logging-crashes-on-the-server) 重写，请确保你仍然调用 `console.error`。你还可以使用它在 shell 触发之前 [调整状态代码](#setting-the-status-code)。
+  * **可选属性** `progressiveChunkSize`： 块中的字节数。[阅读更多默认启发式方法](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)。
+  * **可选属性** `signal`：一个 [中止信号](https://developer.mozilla.org/zh-CN/docs/Web/API/AbortSignal)，用于 [中止服务器渲染](#aborting-server-rendering) 并在客户端上渲染其余部分。
 
 
 #### 返回值 {/*returns*/}
@@ -93,7 +93,7 @@ async function handler(request) {
 }
 ```
 
-除了<CodeStep step={1}>根组件</CodeStep>，你还需要提供<CodeStep step={2}>启动 `<script>` 的路由</CodeStep>列表，你的根组件应该返回 **包括根 `<html>` 标签的整个 document ** 
+除了 <CodeStep step={1}>根组件</CodeStep>，你还需要提供 <CodeStep step={2}>启动 `<script>` 路由</CodeStep> 列表，你的根组件应该返回 **包括根 `<html>` 标签的整个 document** 
 
 例如，它可能是这样的：
 
@@ -115,12 +115,12 @@ export default function App() {
 }
 ```
 
-React将把 [doctype](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype) 和你的<CodeStep step={2}>启动 `<script>` 标签</CodeStep>注入到生成的 HTML 流中：
+React 将把 [doctype](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype) 和你的 <CodeStep step={2}>启动 `<script>` 标签</CodeStep> 注入到生成的 HTML 流中：
 
 ```html [[2, 5, "/main.js"]]
 <!DOCTYPE html>
 <html>
-  <!-- ... HTML from your components ... -->
+  <!-- ... 来自于组件的 HTML ... -->
 </html>
 <script src="/main.js" async=""></script>
 ```
@@ -140,7 +140,7 @@ hydrateRoot(document, <App />);
 
 #### 从构建输出中读取 CSS 和 JS 的资源路径 {/*reading-css-and-js-asset-paths-from-the-build-output*/}
 
-最终的资源 URL（像 JavaScript 和 CSS 文件）通常在构建后进行散列。就像，你可能最终得到的不是 `styles.css` 而是 `styles.123456.css`。散列静态资源文件名可以保证同一资源的每个不同构建都有不同的文件名。这个方案是有用处的，因为它可以安全地为静态资源开启长期缓存：有了特定名字的文件，其内容就永远不会变。
+最终的资源 URL（像 JavaScript 和 CSS 文件）通常在构建后进行散列。例如，你可能最终得到的不是 `styles.css` 而是 `styles.123456.css`。散列静态资源文件名可以保证同一资源的每个不同构建都有不同的文件名。这个方案是有用处的，因为它可以安全地为静态资源开启长期缓存：有了特定名字的文件，其内容就永远不会变。
 
 但是，如果构建之后才能知道静态资源的URL，那就无法将它们放到源代码中。例如，像前面那样将 `"/styles.css"` 硬编码到 JSX 中是行不通的。为了将它们保持在源代码之外，根组件可以从 prop 传递的映射中读取真实文件名：
 
@@ -158,10 +158,10 @@ export default function App({ assetMap }) {
 }
 ```
 
-在服务器上，渲染 `<App assetMap={assetMap} />` 并用资源 URLs 传递 `assetMap`：
+在服务器上，渲染 `<App assetMap={assetMap} />` 并用资源 URL 传递 `assetMap`：
 
 ```js {1-5,8,9}
-// You'd need to get this JSON from your build tooling, e.g. read it from the build output.
+// 你需要从构建工具中获得这个 JSON，例如，从构建输出中读取。
 const assetMap = {
   'styles.css': '/styles.123456.css',
   'main.js': '/main.123456.js'
@@ -180,7 +180,7 @@ async function handler(request) {
 因为服务器正在渲染 `<App assetMap={assetMap}/>`，所以客户端上也需使用 `assetMap` 来渲染，以避产生混合错误。你可以序列化 `assetMap` 并将其传递给客户端，如下所示：
 
 ```js {9-10}
-// You'd need to get this JSON from your build tooling.
+// 你需要从构建工具中获得这个 JSON。
 const assetMap = {
   'styles.css': '/styles.123456.css',
   'main.js': '/main.123456.js'
@@ -188,7 +188,7 @@ const assetMap = {
 
 async function handler(request) {
   const stream = await renderToReadableStream(<App assetMap={assetMap} />, {
-    // Careful: It's safe to stringify() this because this data isn't user-generated.
+    // 注意：序列化是安全的，因为这个数据不是用户生成的。
     bootstrapScriptContent: `window.assetMap = ${JSON.stringify(assetMap)};`,
     bootstrapScripts: [assetMap['/main.js']],
   });
@@ -277,7 +277,7 @@ function ProfilePage() {
 
 在本例中，React 可以更早地开始对页面进行流式传输。只有 `ProfileLayout` 和 `ProfileCover` 是必须先完成渲染的，因为它们没有封装进任何 `<Suspense>` 边界中。但是，如果 `Sidebar` 、 `Friends` 或  `Photos` 需要加载一些数据，React 将发送 HTML 以供 `BigSpinner` 回滚。然后，随着更多的数据变得可用，更多的内容将会被显示，直到所有的内容都可见。
 
-在浏览器中，流不需要等待 React 自身的加载，也不需等待 app 变得可交互。在任何 `<script>` 标签加载之前，来自服务器中的 HTML 内容将会逐步的显示出来。
+在浏览器中，流不需要等待 React 自身的加载，也不需等待应用变得可交互。在任何 `<script>` 标签加载之前，来自服务器中的 HTML 内容将会逐步的显示出来。
 
 [阅读流式 HTML 工作原理的更多信息](https://github.com/reactwg/react-18/discussions/37)。
 
@@ -300,7 +300,7 @@ Suspense **不会去探测** Effect 内部或事件处理器中获取的数据�
 
 ### 指定放入 shell 的内容 {/*specifying-what-goes-into-the-shell*/}
 
-应用程序中任何 `<Suspense>` 边界之外的部分称为 *shell*：
+应用中任何 `<Suspense>` 边界之外的部分称为 *shell*：
 
 ```js {3-5,13,14}
 function ProfilePage() {
@@ -330,7 +330,7 @@ function ProfilePage() {
 </ProfileLayout>
 ```
 
-如果将整个应用程序包装进根组件的 `<Suspense>` 边界中，则 shell 将只包括 spinner。但这种用户体验不好，因为在屏幕上看到一个大 spinner 会比多等一段时间看到真实的布局感觉更慢、更烦人。这就是为什么通常希望放置 `<Suspense>` 边界，以便 shell 看起来是 **最小但完整** 的 — 就像一整个页面布局的骨架。
+如果将整个应用包装进根组件的 `<Suspense>` 边界中，则 shell 将只包括 spinner。但这种用户体验不好，因为在屏幕上看到一个大 spinner 会比多等一段时间看到真实的布局感觉更慢、更烦人。这就是为什么通常希望放置 `<Suspense>` 边界，以便 shell 看起来是 **最小但完整** 的——就像一整个页面布局的骨架。
 
 只要整个 shell 被渲染了，异步调用 `renderToReadableStream` 会 resolve 一个 `stream`。通常情况下，可以创建并返回带有 `stream` 的响应来开始流式传输。
 
@@ -413,7 +413,7 @@ async function handler(request) {
 }
 ```
 
-如果在生成 shell 时出错，`onError` 和 `catch` 都会被触发。用 `onError` 报告错误，并用 `catch` 发送回滚 HTML。你的回滚 HTML 不一定必须是个错误页面。相反，你可以返回一个替代的 shell，这个 shell 只在客户端上渲染你的 app。
+如果在生成 shell 时出错，`onError` 和 `catch` 都会被触发。用 `onError` 报告错误，并用 `catch` 发送回滚 HTML。你的回滚 HTML 不一定必须是个错误页面。相反，你可以返回一个替代的 shell，这个 shell 只在客户端上渲染你的应用。
 
 ---
 
@@ -450,7 +450,7 @@ function ProfilePage() {
 
 流传输需要权衡利弊。你希望尽早开始流式传输页面，以便用户能够更快地看到内容。但是，一旦开始流式传输，就无法再设置响应状态码。
 
-通过 [把你的应用分割](#specifying-what-goes-into-the-shell) 为 shell（最重要的是 `<Suspense>` 边界）和其他内容，你已经解决了这个问题的一部分。如果 shell 出错，会运行你的 `catch` 块，允许你设置错误状态码。否则，应用程序可能会在客户端上恢复，所以你可以发送 "OK"。
+通过 [把你的应用分割](#specifying-what-goes-into-the-shell) 为 shell（最重要的是 `<Suspense>` 边界）和其他内容，你已经解决了这个问题的一部分。如果 shell 出错，会运行你的 `catch` 块，允许你设置错误状态码。否则，应用可能会在客户端上恢复，所以你可以发送 “OK”。
 
 ```js {11}
 async function handler(request) {
@@ -510,7 +510,7 @@ async function handler(request) {
 
 ### 以不同的方式处理不同的错误 {/*handling-different-errors-in-different-ways*/}
 
-你可以 [创建自己的`Error`子类](https://javascript.info/custom-errors) 并使用 [`instanceof`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof) 运算符来检查抛出的错误。例如，你可以定义一个自定义的 `NotFoundError` 并将其从组件中抛出。然后，你可以将错误保存在 `onError` 中，并根据错误类型在返回响应之前执行不同的操作：
+你可以 [创建自己的 `Error` 子类](https://javascript.info/custom-errors) 并使用 [`instanceof`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof) 运算符来检查抛出的错误。例如，你可以自定义一个 `NotFoundError` 并将其从组件中抛出。然后，你可以将错误保存在 `onError` 中，并根据错误类型在返回响应之前执行不同的操作：
 
 ```js {2-3,5-15,22,28,33}
 async function handler(request) {
@@ -576,7 +576,7 @@ async function handler(request) {
         logServerCrashReport(error);
       }
     });
-    let isCrawler = // ... depends on your bot detection strategy ...
+    let isCrawler = // ... 取决于你的机器人检测策略 ...
     if (isCrawler) {
       await stream.allReady;
     }
@@ -593,7 +593,7 @@ async function handler(request) {
 }
 ```
 
-普通访问者将获得一个逐步加载的流。所有数据加载之后，爬虫将接收最终的 HTML 输出。然而，这也意味着爬虫将不得不等待 **所有** 数据，其中一些数据可能加载缓慢或出错。根据你的 app，你也可以选择将 shell 发给爬虫。
+普通访问者将获得一个逐步加载的流。所有数据加载之后，爬虫将接收最终的 HTML 输出。然而，这也意味着爬虫将不得不等待 **所有** 数据，其中一些数据可能加载缓慢或出错。根据你的应用，你也可以选择将 shell 发给爬虫。
 
 ---
 
