@@ -34,7 +34,7 @@ import { createFactory } from 'react';
 const button = createFactory('button');
 ```
 
-然后你可以在不适用 JSX 的情况下创建 React 元素：
+然后你可以在不使用 JSX 的情况下创建 React 元素：
 
 ```js
 export default function App() {
