@@ -11,7 +11,7 @@
       "path": "/learn",
       "routes": [
         {
-          "title": "教程：Tic-Tac-Toe 游戏",
+          "title": "教程：井字棋游戏",
           "path": "/learn/tutorial-tic-tac-toe"
         },
         {
@@ -130,7 +130,7 @@
           "path": "/learn/reacting-to-input-with-state"
         },
         {
-          "title": "Choosing the State Structure",
+          "title": "选择 State 结构",
           "path": "/learn/choosing-the-state-structure"
         },
         {
@@ -156,7 +156,7 @@
       ]
     },
     {
-      "title": "应急方案",
+      "title": "逃脱方案",
       "path": "/learn/escape-hatches",
       "tags": ["advanced"],
       "routes": [
@@ -173,7 +173,7 @@
           "path": "/learn/synchronizing-with-effects"
         },
         {
-          "title": "You Might Not Need an Effect",
+          "title": "你可能不需要 Effect",
           "path": "/learn/you-might-not-need-an-effect"
         },
         {
@@ -186,7 +186,7 @@
         },
         {
           "title": "Removing Effect Dependencies",
-          "path": "/learn/removing-effect-dependencies"              
+          "path": "/learn/removing-effect-dependencies"
         },
         {
           "title": "Reusing Logic with Custom Hooks",

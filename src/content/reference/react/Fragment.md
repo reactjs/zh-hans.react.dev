@@ -4,7 +4,7 @@ title: <Fragment> (<>...</>)
 
 <Intro>
 
-`<Fragment>`, often used via `<>...</>` syntax, lets you group elements without a wrapper node.
+`<Fragment>` 通常使用 `<>...</>` 代替，它们都允许你在不添加额外节点的情况下将子元素组合。
 
 ```js
 <>
@@ -19,29 +19,29 @@ title: <Fragment> (<>...</>)
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `<Fragment>` {/*fragment*/}
 
-Wrap elements in `<Fragment>` to group them together in situations where you need a single element. Grouping elements in `Fragment` has no effect on the resulting DOM; it is the same as if the elements were not grouped. The empty JSX tag `<></>` is shorthand for `<Fragment></Fragment>` in most cases.
+当你需要单个元素时，你可以使用 `<Fragment>` 将其他元素组合起来，使用 `<Fragment>` 组合后的元素不会对 DOM 产生影响，就像元素没有被组合一样。在大多数情况下，`<Fragment></Fragment>` 可以简写为空的 JSX 元素 `<></>`。
 
-#### Props {/*props*/}
+#### 参数 {/*props*/}
 
-- **optional** `key`: Fragments declared with the explicit `<Fragment>` syntax may have [keys.](/learn/rendering-lists#keeping-list-items-in-order-with-key)
+- **可选** `key`：列表中 `<Fragment>` 的可以拥有 [keys](/learn/rendering-lists#keeping-list-items-in-order-with-key)。
 
-#### Caveats {/*caveats*/}
+#### 注意事项 {/*caveats*/}
 
-- If you want to pass `key` to a Fragment, you can't use the `<>...</>` syntax. You have to explicitly import `Fragment` from `'react'` and render `<Fragment key={yourKey}>...</Fragment>`.
+- 如果你要传递 `key` 给一个 `<Fragment>`，你不能使用 `<>...</>`，你必须从 `'react'` 中导入 `Fragment` 且表示为`<Fragment key={yourKey}>...</Fragment>`。
 
-- React does not [reset state](/learn/preserving-and-resetting-state) when you go from rendering `<><Child /></>` to `[<Child />]` or back, or when you go from rendering `<><Child /></>` to `<Child />` and back. This only works a single level deep: for example, going from `<><><Child /></></>` to `<Child />` resets the state. See the precise semantics [here.](https://gist.github.com/clemmy/b3ef00f9507909429d8aa0d3ee4f986b)
+- 当你要从 `<><Child /></>` 转换为  `[<Child />]` 或 `<><Child /></>` 转换为 `<Child />`，React 并不会[重置 state](/learn/preserving-and-resetting-state)。这个规则只在一层深度的情况下生效，如果从 `<><><Child /></></>` 转换为 `<Child />` 则会重置 state。在[这里](https://gist.github.com/clemmy/b3ef00f9507909429d8aa0d3ee4f986b)查看更详细的介绍。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Returning multiple elements {/*returning-multiple-elements*/}
+### 返回多个元素 {/*returning-multiple-elements*/}
 
-Use `Fragment`, or the equivalent `<>...</>` syntax, to group multiple elements together. You can use it to put multiple elements in any place where a single element can go. For example, a component can only return one element, but by using a Fragment you can group multiple elements together and then return them as a group:
+使用 `Fragment` 或简写语法 `<>...</>` 将多个元素组合在一起，你可以使用它将多个元素等效于单个元素。例如，一个组件只能返回一个元素，但是可以使用 `Fragment` 将多个元素组合在一起，并作为一个元素返回：
 
 ```js {3,6}
 function Post() {
@@ -54,7 +54,7 @@ function Post() {
 }
 ```
 
-Fragments are useful because grouping elements with a Fragment has no effect on layout or styles, unlike if you wrapped the elements in another container like a DOM element. If you inspect this example with the browser tools, you'll see that all `<h1>` and `<p>` DOM nodes appear as siblings without wrappers around them:
+`Fragment` 作用很大，它与将元素包裹在一个 DOM 容器中不同，使用 `Fragment` 对元素进行组合后不会影响布局和样式。如果你使用浏览器调试工具查看这个示例，你会发现所有的 `<h1>` 和 `<article>` DOM 节点都是没有父元素的兄弟节点：
 
 <Sandpack>
 
@@ -94,9 +94,9 @@ function PostBody({ body }) {
 
 <DeepDive>
 
-#### How to write a Fragment without the special syntax? {/*how-to-write-a-fragment-without-the-special-syntax*/}
+#### 如何使用完整的语法编写 `Fragment`？ {/*how-to-write-a-fragment-without-the-special-syntax*/}
 
-The example above is equivalent to importing `Fragment` from React:
+这个示例从 React 中导入了 `Fragment`：
 
 ```js {1,5,8}
 import { Fragment } from 'react';
@@ -111,15 +111,15 @@ function Post() {
 }
 ```
 
-Usually you won't need this unless you need to [pass a `key` to your `Fragment`.](#rendering-a-list-of-fragments)
+通常你不需要这样，除非你需要将 [`key` 传递给 `Fragment`](#rendering-a-list-of-fragments)。
 
 </DeepDive>
 
 ---
 
-### Assigning multiple elements to a variable {/*assigning-multiple-elements-to-a-variable*/}
+### 分配多个元素给一个变量 {/*assigning-multiple-elements-to-a-variable*/}
 
-Like any other element, you can assign Fragment elements to variables, pass them as props, and so on:
+和其他元素一样，你可以将 `Fragment` 元素分配给变量，作为 props 传递等：
 
 ```js
 function CloseDialog() {
@@ -139,9 +139,9 @@ function CloseDialog() {
 
 ---
 
-### Grouping elements with text {/*grouping-elements-with-text*/}
+### 组合文本与组件 {/*grouping-elements-with-text*/}
 
-You can use `Fragment` to group text together with components:
+你可以使用 `Fragment` 将文本与组件组合在一起：
 
 ```js
 function DateRangePicker({ start, end }) {
@@ -158,9 +158,9 @@ function DateRangePicker({ start, end }) {
 
 ---
 
-### Rendering a list of Fragments {/*rendering-a-list-of-fragments*/}
+### 渲染 `Fragment` 列表 {/*rendering-a-list-of-fragments*/}
 
-Here's a situation where you need to write `Fragment` explicitly instead of using the `<></>` syntax. When you [render multiple elements in a loop](/learn/rendering-lists), you need to assign a `key` to each element. If the elements within the loop are Fragments, you need to use the normal JSX element syntax in order to provide the `key` attribute:
+在这种情况下，你需要显式地表示为 `Fragment`，而不是使用简写语法 `<></>`。当你在[循环中渲染多个元素](/learn/rendering-lists)时，你需要为每一个元素分配一个 `key`。如果这个元素为 `Fragment` 时，则需要使用普通的 JSX 语法来提供 `key` 属性。
 
 ```js {3,6}
 function Blog() {
@@ -173,7 +173,7 @@ function Blog() {
 }
 ```
 
-You can inspect the DOM to verify that there are no wrapper elements around the Fragment children:
+你可以查看 DOM 以验证组合后的子元素实际上并没有父元素 `Fragment`：
 
 <Sandpack>
 
