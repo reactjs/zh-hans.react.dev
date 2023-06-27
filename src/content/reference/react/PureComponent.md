@@ -42,7 +42,7 @@ class Greeting extends PureComponent {
 }
 ```
 
-`PureComponent` 是 `Component` 的子类，并且支持 [所有 `Component` 的 API](/reference/react/Component#reference)。继承 `PureComponent`，相对于定义了一个自定义的 [`shouldComponentUpdate`](/reference/react/Component#shouldcomponentupdate) 方法，该方法将浅比较 props 和 state。
+`PureComponent` 是 `Component` 的子类，并且支持 [所有 `Component` 的 API](/reference/react/Component#reference)。继承 `PureComponent` 的子类相当与定义了一个自定义的 [`shouldComponentUpdate`](/reference/react/Component#shouldcomponentupdate) 方法，该方法将浅比较 props 和 state。
 
 
 [请参阅以下更多示例](#usage)。
