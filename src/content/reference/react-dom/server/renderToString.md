@@ -108,7 +108,7 @@ const html = renderToString(<MyIcon />);
 console.log(html); // 例如，"<svg>...</svg>"
 ```
 
-在客户端导入 `react-dom/server` 会不必要地增加你的捆绑文件大小，应避免这样做。如果你需要在浏览器中将某个组件渲染为 HTML，请使用 [`createRoot`](/reference/react-dom/client/createRoot) 并从 DOM 中读取 HTML。
+在客户端导入 `react-dom/server` 会不必要地增加 bundle 大小，所以应该避免这样做。如果你需要在浏览器中将某个组件渲染为 HTML，请使用 [`createRoot`](/reference/react-dom/client/createRoot) 并从 DOM 中读取 HTML。
 
 ```js
 import { createRoot } from 'react-dom/client';
