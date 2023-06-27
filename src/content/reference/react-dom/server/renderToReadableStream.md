@@ -16,7 +16,7 @@ const stream = await renderToReadableStream(reactNode, options?)
 
 <Note>
 
-这个 API 依赖 [Web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API)。对于 Node.js 来说，使用 [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) 来代替。
+这个 API 依赖 [Web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API)，因此在 Node.js 中使用 [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) 代替。
 
 </Note>
 
