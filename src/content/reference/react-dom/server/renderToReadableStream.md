@@ -47,7 +47,7 @@ async function handler(request) {
 
 #### 参数 {/*parameters*/}
 
-* `reactNode`：要渲染为HTML的React节点。例如，类似 `<App />` 的JSX元素。它应该表示整个文档，因此 `App` 组件应该渲染 `<html>` 标记。
+* `reactNode`：要渲染为 HTML 的 React 节点。例如，类似 `<App />` 的 JSX 元素。它应该表示整个文档，因此 `App` 组件应该渲染 `<html>` 标签。
 
 * **可选参数** `options`：具有流选项的对象。
   * **可选参数** `bootstrapScriptContent`：如果指定，此字符串将被放置在内联 `<script>` 标记中。
