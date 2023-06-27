@@ -23,7 +23,7 @@ state 中可以保存任意类型的 JavaScript 值，包括对象。但是，�
 
 ## 什么是 mutation？ {/*whats-a-mutation*/}
 
-你可以在 state 中存放任何类型的 JavaScript 值。
+你可以在 state 中存放任意类型的 JavaScript 值。
 
 ```js
 const [x, setX] = useState(0);
