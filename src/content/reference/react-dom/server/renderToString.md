@@ -26,7 +26,7 @@ const html = renderToString(reactNode)
 
 ### `renderToString(reactNode)` {/*rendertostring*/}
 
-在服务器端，调用 `renderToString` 将你的应用渲染为 HTML。
+在服务器，调用 `renderToString` 将你的应用渲染为 HTML。
 
 ```js
 import { renderToString } from 'react-dom/server';
