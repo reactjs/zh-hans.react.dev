@@ -232,7 +232,7 @@ button {
 
 </Sandpack>
 
-总而言之，`List` 克隆了它接收的 `<Row />` 元素，并向它们添加了一个额外的 prop。
+总而言之，`List` 克隆了它接收的 `<Row />` 元素，并向它们添加额外的 props。
 
 <Pitfall>
 
