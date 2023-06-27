@@ -92,7 +92,7 @@ const clonedElement = cloneElement(
 
 在这里，生成的 <CodeStep step={3}>克隆 element</CodeStep> 将为 `<Row title="Cabbage" isHighlighted={true} />`。
 
-**让我们看一个示例，看看它什么时候有用。**
+**让我们看一个示例，看看它什么时候有用**。
 
 想象一个 `List` 组件将其 [`children`](/learn/passing-props-to-a-component#passing-jsx-as-children) 呈现为可选择行的列表，并带有可更改的“下一步”按钮选择了哪一行。`List` 组件需要以不同的方式渲染所选的 `Row`，因此它克隆它收到的每个 `<Row>` 子级，并添加额外的 `isHighlighted: true` 或 `isHighlighted: false` 属性：
 
