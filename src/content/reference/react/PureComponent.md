@@ -63,7 +63,7 @@ class Greeting extends PureComponent {
 }
 ```
 
-React 组件应该始终具有 [纯粹的渲染逻辑](/learn/keeping-components-pure)。这意味着如果 props、state 和 context 没有发生变化，它必须返回相同的输出。通过使用 `PureComponent`，你就是在告诉 React 你的组件符合这个要求，因此只要 props 和 state 没有改变，React 就不需要重新渲染组件。然而，如果你的组件正在使用的 context 发生变化，它仍会重新渲染。
+React 组件应该始终具有 [纯粹的渲染逻辑](/learn/keeping-components-pure)。这意味着如果 props、state 和 context 没有发生变化，它必须返回相同的输出。使用 `PureComponent` 便是在告诉 React 你的组件符合这个要求，因此只要 props 和 state 没有改变，React 就不需要重新渲染组件。然而，如果你的组件正在使用的 context 发生变化，它仍会重新渲染。
 
 在这个例子中，注意 `Greeting` 组件会在 `name` 改变时重新渲染（因为这是它的一个 prop），但在 `address` 改变时不会（因为它没有作为一个 prop 传递给 `Greeting`）：
 
