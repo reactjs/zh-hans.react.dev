@@ -349,7 +349,7 @@ button { margin: 10px; }
 
 </Sandpack>
 
-比方说，你想“只在 mount 时”运行 Effect。你已经知道可以通过设置 [空（`[]`）依赖关系](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) 来达到这种效果，所以你决定忽略 linter 的检查，强行指定`[]`为依赖关系。
+比方说，你想“只在 mount 时”运行 Effect。你已经知道可以通过设置 [空（`[]`）依赖关系](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) 来达到这种效果，所以你决定忽略 linter 的检查，强行指定 `[]` 为依赖关系。
 
 上面的计数器例子，本应该每秒递增，递增量可以通过两个按钮来控制。然而，由于你对 React “撒谎”，说这个 Effect 不依赖于任何东西，React 便从初始渲染开始就一直使用 `onTick` 函数。[在后续渲染中，](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) `count` 总是 `0` ，`increment` 总是 `1`。为什么？因为定时器每秒调用 `onTick` 函数，实际运行的是 `setCount(0 + 1)`<sup><a href="#note1">[1]</a></sup>，所以你总是看到 `1`。像这样的错误，当它们分散在多个组件中时，就更难解决了。
 
@@ -367,7 +367,7 @@ button { margin: 10px; }
 * 你可能想只读取某个依赖的 **最新值**，而不是对其变化做出“反应”。
 * 一个依赖关系可能会因为它的类型是对象或函数而 **无意间** 改变太频繁。
 
-为了找到正确的解决方案，你需要回答关于你的效果的几个问题。让我们来看看这些问题。
+为了找到正确的解决方案，你需要回答关于 Effect 的几个问题。让我们来看看这些问题。
 
 ### 这段代码应该移到事件处理程序中吗？ {/*should-this-code-move-to-an-event-handler*/}
 
@@ -436,7 +436,7 @@ function Form() {
 }
 ```
 
-现在，代码在事件处理程序中，它不是响应式的--所以它只在用户提交表单时运行。阅读更多关于 [在事件处理程序和效果之间做出选择](/learn/separating-events-from-effects#reactive-values and-reactive-logic) 和 [如何删除不必要的效果。](/learn/you-might-not-need-an-effect)
+现在，代码在事件处理程序中，它不是响应式的--所以它只在用户提交表单时运行。阅读更多关于 [在事件处理程序和 Effect 之间做出选择](/learn/separating-events-from-effects#reactive-values and-reactive-logic) 和 [如何删除不必要的 Effect。](/learn/you-might-not-need-an-effect)
 
 ### 你的 Effect 是否在做几件不相关的事情？ {/*is-your-effect-doing-several-unrelated-things*/}
 
@@ -658,7 +658,7 @@ function ChatRoom({ roomId }) {
 
 问题是每次 `isMuted` 改变时（例如，当用户按下“静音”开关时），Effect 将重新同步，并重新连接到聊天。这不是理想的用户体验！（在此示例中，即使禁用 linter 也不起作用——如果你这样做，`isMuted` 将“保持”其旧值。）
 
-要解决这个问题，需要将不应该响应式的逻辑从 Effect 中抽取出来。你不希望此 Effect 对 `isMuted` 中的更改做出“反应”。[将这段非响应式逻辑移至效果事件中：](/learn/separating-events-from-effects#declaring-an-effect-event)
+要解决这个问题，需要将不应该响应式的逻辑从 Effect 中抽取出来。你不希望此 Effect 对 `isMuted` 中的更改做出“反应”。[将这段非响应式逻辑移至 Effect Event 中：](/learn/separating-events-from-effects#declaring-an-effect-event)
 
 ```js {1,7-12,18,21}
 import { useState, useEffect, useEffectEvent } from 'react';
@@ -1811,7 +1811,7 @@ label, button { display: block; margin-bottom: 5px; }
 
 <Hint>
 
-你传递了两个函数：`onMessage` 和 `createConnection`。每次 `App` 重新渲染时，它们都是从头开始创建的。它们每次都被视为新值，这就是它们重新触发你的效果的原因。
+你传递了两个函数：`onMessage` 和 `createConnection`。每次 `App` 重新渲染时，它们都是从头开始创建的。它们每次都被视为新值，这就是它们重新触发 Effect 的原因。
 
 前者是事件处理程序。你知道在不对新的事件处理函数“做出反应”的情况下调用事件处理程序 Effect 的方法吗？这个问题你迟早要遇到！
 
@@ -2048,7 +2048,7 @@ export default function ChatRoom({ roomId, createConnection, onMessage }) {
 
 与 `onMessage` prop 不同，`onReceiveMessage` Effect Event 不是响应式的。这就是为什么它不需要成为你的 Effect 的依赖项。因此，对 `onMessage` 的更改不会导致聊天重新连接。
 
-你不能对 `createConnection` 做同样的事情，因为它 **应该** 是响应式的。如果用户在加密和未加密连接之间切换，或者如果用户切换当前房间，你 **希望** 重新触发效果。但是，因为 `createConnection` 是一个函数，你无法检查它读取的信息是否 **实际** 发生了变化。要解决此问题，请传递原始的 `roomId` 和 `isEncrypted` 值，而不是从 App 组件向下传递 `createConnection` ：
+你不能对 `createConnection` 做同样的事情，因为它 **应该** 是响应式的。如果用户在加密和未加密连接之间切换，或者如果用户切换当前房间，你 **希望** 重新触发 Effect。但是，因为 `createConnection` 是一个函数，你无法检查它读取的信息是否 **实际** 发生了变化。要解决此问题，请传递原始的 `roomId` 和 `isEncrypted` 值，而不是从 App 组件向下传递 `createConnection` ：
 
 ```js {2-3}
       <ChatRoom
