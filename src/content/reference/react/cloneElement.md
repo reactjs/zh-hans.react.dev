@@ -404,7 +404,7 @@ button {
 export const HighlightContext = createContext(false);
 ```
 
-你的 `List` 组件可以将其呈现的每个 item 传递到 `HighlightContext` provider 中：
+`List` 组件可以将其呈现的每个 item 传递到 `HighlightContext` provider 中：
 
 ```js {8,10}
 export default function List({ items, renderItem }) {
