@@ -1,5 +1,5 @@
 ---
-title: 实验性的 useEffectEvent
+title: experimental_useEffectEvent
 ---
 
 <Wip>
