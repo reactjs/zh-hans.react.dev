@@ -600,7 +600,7 @@ img { width: 200px; height: 200px; }
 
 <DeepDive>
 
-#### 对象并非真正是嵌套着的 {/*objects-are-not-really-nested*/}
+#### 对象并非是真正嵌套的 {/*objects-are-not-really-nested*/}
 
 下面这个对象从代码上来看是“嵌套”的：
 
