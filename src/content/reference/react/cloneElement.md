@@ -421,7 +421,7 @@ export default function List({ items, renderItem }) {
       })}
 ```
 
-通过这种方法，`Row` 不需要接收 `isHighlighted`属性，它可以从上下文读取到：
+通过这种方法，`Row` 不需要接收 `isHighlighted`属性，因为它可以从 context 中读取：
 
 ```js Row.js {2}
 export default function Row({ title }) {
