@@ -66,7 +66,7 @@ function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime
 
 ### 编程式测量渲染性能 {/*measuring-rendering-performance-programmatically*/}
 
-将 `<Profiler>` 组件包裹在 React 树周围以测量其渲染性能。
+使用 `<Profiler>` 组件包裹 React 树以测量其渲染性能。
 
 ```js {2,4}
 <App>
