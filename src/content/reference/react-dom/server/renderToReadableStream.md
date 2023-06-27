@@ -51,7 +51,7 @@ async function handler(request) {
 
 * **可选参数** `options`：具有流选项的对象。
   * **可选参数** `bootstrapScriptContent`：如果指定，此字符串将被放置在内联 `<script>` 标签中。
-  * **可选参数** `bootstrapScripts`：在页面上为 `<script>` 标签生成的字符串URL数组。使用它的话，可在 `<script>` 中调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)。如果你根本不想在客户端上运行 React，请忽略它。
+  * **可选参数** `bootstrapScripts`：在页面上为 `<script>` 标签生成的字符串 URL 数组。使用它的话，可在 `<script>` 中调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)。如果你根本不想在客户端上运行 React，请忽略它。
   * **可选参数** `bootstrapModules`：就像 `bootstrapScripts`, 但不同的是，生成 [`<script type="module">`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules)。
   * **可选参数** `identifierPrefix`：一个字符串前缀，React 通过 [`useId`](/reference/react/useId) 来生成 ID。在同一页面上使用多个根时，有助于避免冲突。必须与传递给 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters) 的前缀相同。
   * **可选参数** `namespaceURI`：是一个字符串，是流的根[命名空间URI](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElementNS#important_namespace_uris)。默认为常规 HTML。如果用于 SVG，传 `'http://www.w3.org/2000/svg'`，如果用于 MathML，传 `'http://www.w3.org/1998/Math/MathML'`。
