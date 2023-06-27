@@ -200,7 +200,7 @@ function ChatRoom({ roomId /* "travel" */ }) {
 
 之前，你是从组件的角度思考的。当你从组件的角度思考时，很容易将 Effect 视为在特定时间点触发的“回调函数”或“生命周期事件”，例如“渲染后”或“卸载前”。这种思维方式很快变得复杂，所以最好避免使用。
 
-**相反，始终专注于单个启动/停止周期。无论组件是挂载、更新还是卸载，都不应该有影响。你只需要描述如何开始同步和如何停止。如果你做得好，你的 Effect 将能够在需要时始终具备启动和停止的弹性。**
+**相反，始终专注于单个启动/停止周期。无论组件是挂载、更新还是卸载，都不应该有影响。你只需要描述如何开始同步和如何停止。如果你做得好，你的 Effect 将能够在需要时始终具备启动和停止的弹性**。
 
 这可能会让你想起当你编写创建 JSX 的渲染逻辑时，并不考虑组件是挂载还是更新。你描述的是应该显示在屏幕上的内容，而 React 会 [解决其余的问题](/learn/reacting-to-input-with-state)。
 
@@ -373,7 +373,7 @@ function ChatRoom({ roomId }) {
 
 这是因为 `serverUrl` 永远不会因为重新渲染而发生变化。无论组件重新渲染多少次以及原因是什么，`serverUrl` 都保持不变。既然 `serverUrl` 从不变化，将其指定为依赖项就没有意义。毕竟，依赖项只有在随时间变化时才会起作用！
 
-另一方面，`roomId` 在重新渲染时可能会不同。**在组件内部声明的 props、state 和其他值都是 _响应式_ 的，因为它们是在渲染过程中计算的，并参与了 React 的数据流。**
+另一方面，`roomId` 在重新渲染时可能会不同。**在组件内部声明的 props、state 和其他值都是 响应式 的，因为它们是在渲染过程中计算的，并参与了 React 的数据流**。
 
 如果 `serverUrl` 是一个状态变量，那么它就是响应式的。响应式值必须包含在依赖项中：
 
@@ -573,7 +573,7 @@ function ChatRoom({ roomId, selectedServerUrl }) { // roomId 是响应式的
 
 在这个例子中，`serverUrl` 不是一个 prop 或 state 变量。它是你在渲染过程中计算的普通变量。但是它是在渲染过程中计算的，所以它可能会因为重新渲染而改变。这就是为什么它是响应式的。
 
-**组件内部的所有值（包括 props、state 和组件体内的变量）都是响应式的。任何响应式值都可以在重新渲染时发生变化，所以你需要将响应式值包括在 Effect 的依赖项中。**
+**组件内部的所有值（包括 props、state 和组件体内的变量）都是响应式的。任何响应式值都可以在重新渲染时发生变化，所以你需要将响应式值包括在 Effect 的依赖项中**。
 
 换句话说，Effect 对组件体内的所有值都会“react”。
 
@@ -738,7 +738,7 @@ function ChatRoom() {
 
 * **检查你的 Effect 是否表示了独立的同步过程**。如果你的 Effect 没有进行任何同步操作，[可能是不必要的](/learn/you-might-not-need-an-effect)。如果它同时进行了几个独立的同步操作，[将其拆分为多个 Effect](#each-effect-represents-a-separate-synchronization-process)。
 
-* **如果你想读取 props 或 state 的最新值，但又不想对其做出反应并重新同步 Effect**，你可以将 Effect 拆分为具有反应性的部分（保留在 Effect 中）和非反应性的部分（提取为名为 "Effect Event" 的内容）。[阅读关于将事件与效果分离的内容](/learn/separating-events-from-effects)。
+* **如果你想读取 props 或 state 的最新值，但又不想对其做出反应并重新同步 Effect**，你可以将 Effect 拆分为具有反应性的部分（保留在 Effect 中）和非反应性的部分（提取为名为 "Effect Event" 的内容）。[阅读关于将事件与 Effect 分离的内容](/learn/separating-events-from-effects)。
 
 * **避免将对象和函数作为依赖项**。如果你在渲染过程中创建对象和函数，然后在 Effect 中读取它们，它们将在每次渲染时都不同。这将导致你的 Effect 每次都重新同步。[阅读有关从 Effect 中删除不必要依赖项的更多内容](/learn/removing-effect-dependencies)。
 
@@ -1057,7 +1057,7 @@ body {
 
 </Sandpack>
 
-或者，你可以将*事件订阅*的逻辑包裹在 `if (canMove) { ... }` 条件语句中：
+或者，你可以将 **事件订阅** 的逻辑包裹在 `if (canMove) { ... }` 条件语句中：
 
 <Sandpack>
 
@@ -1191,9 +1191,9 @@ body {
 
 原始代码的作者通过声明 Effect 不依赖任何响应式值（`[]`）来欺骗 React。这就是为什么 React 在 `canMove` 改变后（以及 `handleMove`）没有重新同步该 Effect。因为 React 没有重新同步该 Effect，所以附加的 `handleMove` 侦听器是在初始渲染期间创建的 `handleMove` 函数。在初始渲染期间，`canMove` 是 `true`，这就是为什么初始渲染时的 `handleMove` 将永远获取到该值。
 
-**如果从不禁止 linter，就不会遇到过时值的问题。**解决这个 bug 有几种不同的方法，但你应该始终从移除 linter 禁止开始。然后修改代码来修复 lint 错误。
+**如果从不禁止 linter，就不会遇到过时值的问题**。解决这个 bug 有几种不同的方法，但你应该始终从移除 linter 禁止开始。然后修改代码来修复 lint 错误。
 
-你可以将 Effect 的依赖项更改为 `[handleMove]`，但由于它在每次渲染时都会被重新定义，你也可以完全删除依赖项数组。然后，Effect 将在*每次重新渲染后重新同步*：
+你可以将 Effect 的依赖项更改为 `[handleMove]`，但由于它在每次渲染时都会被重新定义，你也可以完全删除依赖项数组。然后，Effect 将在 **每次重新渲染后重新同步**：
 
 <Sandpack>
 
@@ -1252,7 +1252,7 @@ body {
 
 这个解决方案有效，但并不理想。如果在 Effect 内部放置 `console.log('Resubscribing')`，你会注意到它在每次重新渲染后都重新订阅。重新订阅很快，但是正常情况下应该避免频繁进行重新订阅。
 
-更好的解决方案是将 `handleMove` 函数*移动到* Effect 内部。然后，`handleMove` 就不会成为一个响应式值，因此你的 Effect 不会依赖于一个函数。相反，它将依赖于你的代码从 Effect 内部读取的 `canMove`。这符合你想要的行为，因为你的 Effect 现在将始终与 `canMove` 的值保持同步：
+更好的解决方案是将 `handleMove` 函数 **移动到** Effect 内部。然后，`handleMove` 就不会成为一个响应式值，因此你的 Effect 不会依赖于一个函数。相反，它将依赖于你的代码从 Effect 内部读取的 `canMove`。这符合你想要的行为，因为你的 Effect 现在将始终与 `canMove` 的值保持同步：
 
 <Sandpack>
 
@@ -1319,7 +1319,7 @@ body {
 
 在这个例子中，`chat.js` 中的聊天服务提供了两个不同的 API：`createEncryptedConnection` 和 `createUnencryptedConnection`。根组件 `App` 允许用户选择是否使用加密，并将相应的 API 方法作为 `createConnection` 属性传递给子组件 `ChatRoom`。
 
-请注意，最初控制台日志显示连接未加密。尝试切换复选框：不会发生任何变化。然而，如果在此之后更改所选的聊天室，那么聊天将重新连接 *并且* 启用加密（从控制台日志中可以看到）。这是一个错误。修复这个错误，以便切换复选框 *也* 会使重新连接聊天室。
+请注意，最初控制台日志显示连接未加密。尝试切换复选框：不会发生任何变化。然而，如果在此之后更改所选的聊天室，那么聊天将重新连接 **并且** 启用加密（从控制台日志中可以看到）。这是一个错误。修复这个错误，以便切换复选框 **也** 会使重新连接聊天室。
 
 <Hint>
 
