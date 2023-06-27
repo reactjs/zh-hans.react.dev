@@ -173,7 +173,7 @@ button { margin-left: 10px; }
 
 ### 当要移除一个依赖时，请证明它不是一个依赖 {/*to-remove-a-dependency-prove-that-its-not-a-dependency*/}
 
-注意，你不能“选择”你的 Effect 的依赖性。每个被 Effect 所使用<CodeStep step={2}>响应式值</CodeStep>，必须在依赖列表中声明。依赖列表是由 Effects 的代码决定的：
+注意，你不能“选择”你的 Effect 的依赖性。每个被 Effect 所使用<CodeStep step={2}>响应式值</CodeStep>，必须在依赖列表中声明。依赖列表是由 Effect 的代码决定的：
 
 ```js [[2, 3, "roomId"], [2, 5, "roomId"], [2, 8, "roomId"]]
 const serverUrl = 'https://localhost:1234';
@@ -276,7 +276,7 @@ button { margin-left: 10px; }
 
 最后一部分很重要。**如果你想改变依赖关系，首先要改变所涉及到的代码**。你可以把依赖关系列表看作是 [Effect的代码所依赖的所有响应式值的列表](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。你不要 **选择** 把什么放在这个列表上。该列表 **描述了** 你的代码。要改变依赖性列表，请改变代码。
 
-这可能感觉就像解方程一样。你有一个目标（例如，移除一个依赖关系），你需要“找到”与该目标相匹配的代码。不是每个人都觉得解方程很有趣，写 Effects 也是如此！幸运的是，下面有一些常见的解决方案你可以去尝试。
+这可能感觉就像解方程一样。你有一个目标（例如，移除一个依赖关系），你需要“找到”与该目标相匹配的代码。不是每个人都觉得解方程很有趣，写 Effect 也是如此！幸运的是，下面有一些常见的解决方案你可以去尝试。
 
 <Pitfall>
 
@@ -1610,7 +1610,7 @@ label, button { display: block; margin-bottom: 5px; }
 
 <Solution>
 
-Effect 因依赖于 `options` 对象，导致其重新运行。对象可能会在无意中被重新创建，你应该尽可能避免将它们作为你的 Effects 的依赖项。
+Effect 因依赖于 `options` 对象，导致其重新运行。对象可能会在无意中被重新创建，你应该尽可能避免将它们作为你的 Effect 的依赖项。
 
 侵入性最小的修复方法是在 Effect 外部读取 `roomId` 和 `serverUrl`，然后使 Effect 依赖于这些原始值（不能无意地更改）。在 Effect 内部，创建一个对象并将其传递给 `createConnection`：
 
