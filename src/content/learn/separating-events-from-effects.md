@@ -439,7 +439,7 @@ function ChatRoom({ roomId, theme }) {
   // ...
 ```
 
-这个方法解决了问题。注意你必须从 Effect 依赖项中 **移除** `onConnected`。***Effect Event 是非响应式的并且必须从依赖项中删除**。
+这个方法解决了问题。注意你必须从 Effect 依赖项中 **移除** `onConnected`。**Effect Event 是非响应式的并且必须从依赖项中删除**。
 
 验证新表现是否和你预期的一样：
 
@@ -870,7 +870,7 @@ body {
 
 </Sandpack>
 
-这不意味着 `useEffectEvent` **总是** 正确的解决方案。你只能把它用在你不需要变成响应式的代码上。上面的 sandbox 中，你不需要 Effect 的代码响应 `canMove`。这就是提取 Effect Event很有意义的原因。
+这不意味着 `useEffectEvent` **总是** 正确的解决方案。你只能把它用在你不需要变成响应式的代码上。上面的 sandbox 中，你不需要 Effect 的代码响应 `canMove`。这就是提取 Effect Event 很有意义的原因。
 
 阅读 [移除 Effect 依赖项](/learn/removing-effect-dependencies) 寻找抑制代码检查的其他正确的替代方式。
 
@@ -1076,7 +1076,7 @@ button { margin: 10px; }
 
 #### 修复一个冻结的计数器 {/*fix-a-freezing-counter*/}
 
-`Timer` 组件保存了一个 `count` 的 state 变量，这个变量每秒增加一次。每次增加的值存储在 `increment` state 变量中，你可以使用加减按钮控制它。例如，尝试按压加号按钮九次，注意现在 `count` 每次都增加 10 而不是 1。
+`Timer` 组件保存了一个 `count` 的 state 变量，这个变量每秒增加一次。每次增加的值存储在 `increment` state 变量中，你可以使用加减按钮控制它。例如，尝试点击加号按钮九次，注意现在 `count` 每次都增加 10 而不是 1。
 
 这个用户接口有一个小问题。你可能注意到如果你每秒内按压加减按钮不止一次， 那计时器本身似乎就会暂停。它只在你最后一次按压按钮的一秒后恢复。找出为什么会发生这种现象，并修复它以便计时器能 **每** 秒滴答作响而不中断。
 
@@ -1555,11 +1555,11 @@ label { display: block; margin-top: 10px; }
 
 <Solution>
 
-在 Effect Event 内部，`roomId` 是　**Effect Event 被调用时刻** 的值。
+在 Effect Event 内部，`roomId` 是 **Effect Event 被调用时刻** 的值。
 
 Effect Event 伴随着两秒的延迟被调用。如果你快速地从 travel 切换到 music 聊天室，直到 travel 聊天室的通知显示出来，`roomId` 已经是 `“music”` 了。这就是为什么两个通知都是 “Welcome to music”。
 
-为了修复这个问题，不要读取 Effect Event 内部 **最新的** `roomId`，而是如同下面的 `connectedRoomId` 一样让它成为 Effect Event 的参数。然后通过调用 `onConnected(roomId)` 将 `roomId` 从 Effect 中传入：
+为了修复这个问题，不要在 Effect Event 里面读取 **最新的** `roomId`，而是如同下面的 `connectedRoomId` 一样让它成为 Effect Event 的参数。然后通过调用 `onConnected(roomId)` 将 `roomId` 从 Effect 中传入：
 
 <Sandpack>
 
