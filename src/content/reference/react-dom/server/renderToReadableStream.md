@@ -4,7 +4,7 @@ title: renderToReadableStream
 
 <Intro>
 
-`renderToReadableStream` 渲染一棵 React 树到一个 [Web 可读流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream) 中。
+`renderToReadableStream` 将 React 树渲染成 [Web 可读流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream)。
 
 ```js
 const stream = await renderToReadableStream(reactNode, options?)
@@ -26,7 +26,7 @@ const stream = await renderToReadableStream(reactNode, options?)
 
 ### `renderToReadableStream(reactNode, options?)` {/*rendertoreadablestream*/}
 
-调用 `renderToReadableStream`，将 React 树作为 HTML 渲染为 [Web 可读流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream)。
+调用 `renderToReadableStream`，将 React 树渲染成 HTML 放到 [Web 可读流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream)中。
 
 ```js
 import { renderToReadableStream } from 'react-dom/server';
@@ -41,7 +41,7 @@ async function handler(request) {
 }
 ```
 
-在客户端上，调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 使服务器生成的 HTML 可交互。
+在客户端上，调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 使服务器生成的 HTML 变得可交互。
 
 [请参阅下面的更多示例](#usage)。
 
@@ -58,7 +58,7 @@ async function handler(request) {
   * **可选属性** `nonce`：一个 [`随机字符串`](http://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script#nonce) 让脚本通过 [`script-src` 内容安全策略](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)。
   * **可选属性** `onError`：一个回调函数，只要服务器出错就会触发，无论错误是 [否](#recovering-from-errors-inside-the-shell) 可 [恢复](#recovering-from-errors-outside-the-shell)。默认情况下，它只调用 `console.error`。如果你用 [log crash reports](#logging-crashes-on-the-server) 重写，请确保你仍然调用 `console.error`。你还可以使用它在 shell 触发之前 [调整状态代码](#setting-the-status-code)。
   * **可选属性** `progressiveChunkSize`： 块中的字节数。[阅读更多默认启发式方法](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)。
-  * **可选属性** `signal`：一个 [中止信号](https://developer.mozilla.org/zh-CN/docs/Web/API/AbortSignal)，用于 [中止服务器渲染](#aborting-server-rendering) 并在客户端上渲染其余部分。
+  * **可选属性** `signal`：一个 [中止信号](https://developer.mozilla.org/zh-CN/docs/Web/API/AbortSignal)，用于 [中止服务端渲染](#aborting-server-rendering) 并在客户端上渲染其余部分。
 
 
 #### 返回值 {/*returns*/}
@@ -66,7 +66,7 @@ async function handler(request) {
 `renderToReadableStream` 返回一个 Promise：
 
 - 如果渲染 [shell](#specifying-what-goes-into-the-shell) 成功，那么 Promise 将 resolve [Web 可读流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream)。
-- 如果渲染 shell 失败，Promise 将 reject。[使用此选项可输出回滚 shell ](#recovering-from-errors-inside-the-shell)。
+- 如果渲染 shell 失败，Promise 将 reject。[使用这个输出回滚 shell ](#recovering-from-errors-inside-the-shell)。
 
 返回的流具有附加属性：
 
@@ -198,7 +198,7 @@ async function handler(request) {
 }
 ```
 
-在上面的示例中，`bootstrapScriptContent` 选项添加了一个额外的内联 `<script>` 标签，用于设置客户端上的全局变量 `window.assetMap` 。这允许客户端代码读取相同的 `assetMap`：
+在上面的示例中，`bootstrapScriptContent` 配置项添加了一个额外的内联 `<script>` 标签，用于设置客户端上的全局变量 `window.assetMap`。这允许客户端代码读取相同的 `assetMap`：
 
 ```js {4}
 import { hydrateRoot } from 'react-dom/client';
@@ -437,7 +437,7 @@ function ProfilePage() {
 如果 `Posts` 组件或其内部发生错误，React 将 [尝试从中恢复](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content)：
 
 1. 它将为最近的 `<Suspense>` 边界（`PostsGlimmer`）触发加载回滚到 HTML。
-2. 它将“放弃”再尝试在服务器上渲染 `Posts`。
+2. 它将 **放弃** 再尝试在服务器上渲染 `Posts`。
 3. 当 JavaScript 代码加载到客户端上时，React **重新尝试** 在客户端上渲染 `Posts`。
 
 如果在客户端上重新尝试渲染 `Posts` **也** 失败，React 将在客户端上抛出错误。与渲染过程中抛出的所有错误一样，[最近的父级错误边界](/reference/reflect/Component#staticgetderivedstatefromwerror) 决定如何向用户展示错误。在实践中，这意味着用户将看到加载指示符，直到确定错误不可恢复为止。
@@ -450,7 +450,7 @@ function ProfilePage() {
 
 流传输需要权衡利弊。你希望尽早开始流式传输页面，以便用户能够更快地看到内容。但是，一旦开始流式传输，就无法再设置响应状态码。
 
-通过 [把你的应用分割](#specifying-what-goes-into-the-shell) 为 shell（最重要的是 `<Suspense>` 边界）和其他内容，你已经解决了这个问题的一部分。如果 shell 出错，会运行你的 `catch` 块，允许你设置错误状态码。否则，应用可能会在客户端上恢复，所以你可以发送 “OK”。
+通过 [把你的应用分割](#specifying-what-goes-into-the-shell) 为 shell（最重要的是 `<Suspense>` 边界）和其他内容，你已经解决了这个问题的一部分。如果 shell 出错，会运行你的 `catch` 块，允许你设置错误状态码。否则，应用可能会在客户端上恢复，所以你可以发送 **OK**。
 
 ```js {11}
 async function handler(request) {
@@ -597,9 +597,9 @@ async function handler(request) {
 
 ---
 
-### 中止服务器渲染 {/*aborting-server-rendering*/}
+### 中止服务端渲染 {/*aborting-server-rendering*/}
 
-可以在超时后强制服务器“放弃”渲染：
+可以在超时后强制服务器 **放弃** 渲染：
 
 ```js {3,4-6,9}
 async function handler(request) {
