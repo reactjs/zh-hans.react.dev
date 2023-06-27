@@ -4,7 +4,7 @@ title: 应急方案
 
 <Intro>
 
-你的一些组件可能需要控制和同步 React 之外的系统。例如，你可能需要使用浏览器 API 聚焦一个输入框，或者在没有 React 的情况下实现一个视频播放器，或者连接并监听远程服务器的消息。在本章中，你将学习到一些应急方案，让你可以“走出” React 并连接到外部系统。大多数应用逻辑和数据流不应该依赖这些功能。
+你的一些组件可能需要控制和同步 React 之外的系统。例如，你可能需要使用浏览器 API 聚焦输入框，或者在没有 React 的情况下实现视频播放器，或者连接并监听远程服务器的消息。在本章中，你将学习到一些应急方案，让你可以“走出” React 并连接到外部系统。大多数应用逻辑和数据流不应该依赖这些功能。
 
 </Intro>
 
@@ -145,7 +145,7 @@ video { width: 250px; }
 
 </Sandpack>
 
-许多 Effect 也会自行“清理”。例如，一个与聊天服务器建立连接的 Effect 应该返回一个 **cleanup 函数**，告诉 React 如何断开组件与该服务器的连接：
+许多 Effect 也会自行“清理”。例如，与聊天服务器建立连接的 Effect 应该返回一个 **cleanup 函数**，告诉 React 如何断开组件与该服务器的连接：
 
 <Sandpack>
 
@@ -302,7 +302,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-React 提供了一个检查工具规则来检查是否正确地指定了 Effect 的依赖项。如果忘记在上述示例的依赖项列表中指定 `roomId`，检查工具会自动找到该错误。
+React 提供了检查工具规则来检查是否正确地指定了 Effect 的依赖项。如果忘记在上述示例的依赖项列表中指定 `roomId`，检查工具会自动找到该错误。
 
 <LearnMore path="/learn/lifecycle-of-reactive-effects">
 
@@ -591,7 +591,7 @@ Effect Events 中的代码不是响应式的，因此更改“主题”不再使
 
 ## 移除 Effect 依赖 {/*removing-effect-dependencies*/}
 
-当你写一个 Effect 时，linter 会验证是否已经将 Effect 读取的每一个响应式值（如 props 和 state）包含在 Effect 的依赖列表中。这可以确保 Effect 与组件的 props 和 state 保持同步。不必要的依赖关系可能会导致 Effect 运行过于频繁，甚至产生一个无限循环。删除它们的方式取决于具体情况。
+当你写 Effect 时，linter 会验证是否已经将 Effect 读取的每一个响应式值（如 props 和 state）包含在 Effect 的依赖列表中。这可以确保 Effect 与组件的 props 和 state 保持同步。不必要的依赖关系可能会导致 Effect 运行过于频繁，甚至产生无限循环。删除它们的方式取决于具体情况。
 
 例如，这个 Effect 依赖于每次编辑输入时都会重新创建的 `options` 对象：
 
@@ -752,7 +752,7 @@ button { margin-left: 10px; }
 
 ## 使用自定义 Hook 复用逻辑 {/*reusing-logic-with-custom-hooks*/}
 
-React 有一些内置 Hook，例如 `useState`，`useContext` 和 `useEffect`。有时需要一个用途更特殊的 Hook：例如获取数据，记录用户是否在线或者连接聊天室。为了实现效果，可以根据应用需求创建自己的 Hook。
+React 有一些内置 Hook，例如 `useState`，`useContext` 和 `useEffect`。有时需要用途更特殊的 Hook：例如获取数据，记录用户是否在线或者连接聊天室。为了实现效果，可以根据应用需求创建自己的 Hook。
 
 这个示例中，自定义 Hook `usePointerPosition` 追踪当前指针位置，而自定义 Hook `useDelayedValue` 返回一个“滞后”传递的值一定毫秒数的值。将光标移到沙盒预览区域上以查看跟随光标移动的点轨迹：
 
