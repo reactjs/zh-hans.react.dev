@@ -34,7 +34,7 @@ function MyComponent() {
 
 按照惯例使用 [数组解构](https://javascript.info/destructuring-assignment) 来命名状态变量，例如 `[something, setSomething]`。
 
-[请看下面的更多例子。](#usage)
+[参见下面更多示例](#usage)。
 
 #### 参数 {/*parameters*/}
 
@@ -418,7 +418,7 @@ h1 { display: block; margin: 10px; }
 
 ### 更新状态中的对象和数组 {/*updating-objects-and-arrays-in-state*/}
 
-你可以将对象和数组放入状态中。在React 中，状态被认为是只读的，因此 **你应该 *替换* 它而不是改变现有对象**。例如，如果你在状态中保存了一个 `form` 对象，请不要改变它：
+你可以将对象和数组放入状态中。在 React 中，状态被认为是只读的，因此 **你应该替换它而不是改变现有对象**。例如，如果你在状态中保存了一个 `form` 对象，请不要改变它：
 
 ```js
 // 🚩 不要像下面这样改变一个对象：
@@ -894,7 +894,7 @@ function TodoList() {
 
 尽管 `createInitialTodos()` 的结果仅用于初始渲染，但你仍然在每次渲染时调用此函数。如果它创建大数组或执行昂贵的计算，这可能会浪费资源。
 
-为了解决这个问题，你可以将它 **作为 *初始化* 函数传递给** `useState`：
+为了解决这个问题，你可以将它 **作为初始化函数传递给** `useState`：
 
 ```js
 function TodoList() {
@@ -1071,7 +1071,7 @@ button { display: block; margin-bottom: 20px; }
 
 ### 存储前一次渲染的信息 {/*storing-information-from-previous-renders*/}
 
-通常情况下，你会在事件处理函数中更新状态。然而，在极少数情况下，你可能希望在响应渲染时调整状态——例如，当 prop 改变时，你可能希望改变状态变量。
+通常情况下，你会在事件处理函数中更新状态。然而，在极少数情况下，你可能希望在响应渲染时调整状态——例如，当 props 改变时，你可能希望改变状态变量。
 
 在大多数情况下，你不需要这样做：
 
@@ -1081,7 +1081,7 @@ button { display: block; margin-bottom: 20px; }
 
 在极为罕见的情况下，如果上述方法都不适用，你还可以使用一种方式，在组件渲染时调用 `set` 函数来基于已经渲染的值更新状态。
 
-这里是一个例子。这个 `CountLabel` 组件显示传递给它的 `count` prop：
+这里是一个例子。这个 `CountLabel` 组件显示传递给它的 `count` props：
 
 ```js CountLabel.js
 export default function CountLabel({ count }) {
@@ -1089,7 +1089,7 @@ export default function CountLabel({ count }) {
 }
 ```
 
-假设你想显示计数器是否自上次更改以来 **增加或减少**。`count` prop 无法告诉你这一点——你需要跟踪它的先前值。添加 `prevCount` 状态变量来跟踪它，再添加另一个状态变量 `trend` 来保存计数是否增加或减少。比较 prevCount 和 count，如果它们不相等，则更新 `prevCount` 和 `trend`。现在你既可以显示当前的 count prop，也可以显示 **自上次渲染以来它如何改变**。
+假设你想显示计数器是否自上次更改以来 **增加或减少**。`count` props 无法告诉你这一点——你需要跟踪它的先前值。添加 `prevCount` 状态变量来跟踪它，再添加另一个状态变量 `trend` 来保存计数是否增加或减少。比较 `prevCount` 和 `count`，如果它们不相等，则更新 `prevCount` 和 `trend`。现在你既可以显示当前的 `count` props，也可以显示 **自上次渲染以来它如何改变**。
 
 <Sandpack>
 
@@ -1198,9 +1198,9 @@ setObj({
 
 ---
 
-### 我得到一个错误：“重新渲染次数过多” {/*im-getting-an-error-too-many-re-renders*/}
+### 出现错误：“Too many re-renders” {/*im-getting-an-error-too-many-re-renders*/}
 
-你可能会得到一个错误：`“重新渲染次数过多”。React 限制渲染的次数，以防止进入无限循环`。通常，这意味着 **在渲染期间** 无条件地设置状态，因此组件进入循环：渲染、设置状态（导致重新渲染）、渲染、设置状态（导致重新渲染）等等。通常，这是由错误地指定事件处理函数时引起的：
+有时可能会出现错误：“Too many re-renders”。React 会限制渲染次数，以防止进入无限循环。通常，这意味着 **在渲染期间** 无条件地设置状态，因此组件进入循环：渲染、设置状态（导致重新渲染）、渲染、设置状态（导致重新渲染）等等。通常，这是由错误地指定事件处理函数时引起的：
 
 ```js {1-2}
 // 🚩 错误：在渲染过程中调用事件处理函数
@@ -1217,9 +1217,9 @@ return <button onClick={(e) => handleClick(e)}>Click me</button>
 
 ---
 
-### 我的初始化函数或更新函数运行了两次 {/*my-initializer-or-updater-function-runs-twice*/}
+### 初始化函数或更新函数运行了两次 {/*my-initializer-or-updater-function-runs-twice*/}
 
-在 [严格模式](/reference/react/StrictMode)下，React 会调用你的某些函数两次而不是一次：
+在 [严格模式](/reference/react/StrictMode) 下，React 会调用你的某些函数两次而不是一次：
 
 ```js {2,5-6,11-12}
 function TodoList() {
@@ -1241,7 +1241,7 @@ function TodoList() {
 
 这是所期望的，且不应该破坏你的代码。
 
-这种 **仅用于开发** 的行为有助于 [保持组件的纯粹性](/learn/keeping-components-pure)。React 使用其中一个调用的结果，而忽略另一个调用的结果。只要你的组件、初始化函数和更新函数是纯粹的，就不会影响你的逻辑。但是，如果它们意外地不纯粹，这将帮助你注意到错误。
+这种 **仅在开发环境下生效** 的行为有助于 [保持组件的纯粹性](/learn/keeping-components-pure)。React 使用其中一个调用的结果，而忽略另一个调用的结果。只要你的组件、初始化函数和更新函数是纯粹的，就不会影响你的逻辑。但是，如果它们意外地不纯粹，这将帮助你注意到错误。
 
 例如，这个不纯的更新函数改变了 state 中的一个数组：
 
