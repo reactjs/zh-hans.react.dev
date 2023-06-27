@@ -54,7 +54,7 @@ export default function Counter() {
 
 </Sandpack>
 
-Ref 就像组件的一个不被 React 跟踪的秘密口袋。例如，你可以使用 ref 来存储 [timeout ID](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#return_value)、[DOM 元素](https://developer.mozilla.org/en-US/docs/Web/API/Element) 和其他不影响组件渲染输出的对象。
+Ref 就像组件的一个不被 React 跟踪的秘密口袋。例如，可以使用 ref 来存储 [timeout ID](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#return_value)、[DOM 元素](https://developer.mozilla.org/en-US/docs/Web/API/Element) 和其他不影响组件渲染输出的对象。
 
 <LearnMore path="/learn/referencing-values-with-refs">
 
@@ -99,7 +99,7 @@ export default function Form() {
 
 ## 使用 Effect 实现同步 {/*synchronizing-with-effects*/}
 
-有些组件需要与外部系统同步。例如，你可能想要根据 React 状态控制非 React 组件、设置服务器连接或在组件出现在屏幕上时发送分析日志。与让你处理特定事件的事件处理程序不同，**Effect** 让你在渲染后运行一些代码。使用它将你的组件与 React 之外的系统同步。
+有些组件需要与外部系统同步。例如，可能需要根据 React 状态控制非 React 组件、设置服务器连接或在组件出现在屏幕上时发送分析日志。与处理特定事件的事件处理程序不同，**Effect** 在渲染后运行一些代码。使用它将组件与 React 之外的系统同步。
 
 多按几次播放/暂停，观察视频播放器如何与 `isPlaying` 属性值保持同步：
 
@@ -145,7 +145,7 @@ video { width: 250px; }
 
 </Sandpack>
 
-许多 Effect 也会自行“清理”。例如，一个与聊天服务器建立连接的 Effect 应该返回一个 **cleanup 函数**，告诉 React 如何断开你的组件与该服务器的连接：
+许多 Effect 也会自行“清理”。例如，一个与聊天服务器建立连接的 Effect 应该返回一个 **cleanup 函数**，告诉 React 如何断开组件与该服务器的连接：
 
 <Sandpack>
 
@@ -193,13 +193,13 @@ input { display: block; margin-bottom: 20px; }
 
 ## 你可能不需要 Effect {/*you-might-not-need-an-effect*/}
 
-Effect 是 React 范式中的一个逃脱方案。它们让你可以“逃出” React 并使你的组件和一些外部系统同步。如果没有涉及到外部系统（例如，你想根据一些 props 或 state 的变化来更新一个组件的 state），你不应该使用 Effect。移除不必要的 Effect 可以让你的代码更容易理解，运行得更快，并且更少出错。
+Effect 是 React 范式中的一个逃脱方案。它们可以“逃出” React 并使组件和一些外部系统同步。如果没有涉及到外部系统（例如，需要根据一些 props 或 state 的变化来更新一个组件的 state），不应该使用 Effect。移除不必要的 Effect 可以让代码更容易理解，运行得更快，并且更少出错。
 
 有两种常见的不必使用 Effect 的情况：
-- **你不必为了渲染而使用 Effect 来转换数据。**
-- **你不必使用 Effect 来处理用户事件。**
+- **不必为了渲染而使用 Effect 来转换数据。**
+- **不必使用 Effect 来处理用户事件。**
 
-例如，你不需要 Effect 来根据其他状态调整某些状态：
+例如，不需要 Effect 来根据其他状态调整某些状态：
 
 ```js {5-9}
 function Form() {
@@ -237,7 +237,7 @@ function Form() {
 
 ## 响应式 Effect 的生命周期 {/*lifecycle-of-reactive-effects*/}
 
-Effect 的生命周期不同于组件。组件可以挂载、更新或卸载。Effect 只能做两件事：开始同步某些东西，然后停止同步它。如果你的 Effect 依赖于随时间变化的 props 和 state，这个循环可能会发生多次。
+Effect 的生命周期不同于组件。组件可以挂载、更新或卸载。Effect 只能做两件事：开始同步某些东西，然后停止同步它。如果 Effect 依赖于随时间变化的 props 和 state，这个循环可能会发生多次。
 
 这个 Effect 依赖于 `roomId` 这个 prop 的值。Props 是 **响应值**，这意味着它们可以在重新渲染时改变。注意，如果 `roomId` 更改，Effect **重新同步**（并重新连接到服务器）：
 
@@ -302,7 +302,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-React 提供了一个检查工具规则来检查你是否正确地指定了 Effect 的依赖项。如果你忘记在上述示例的依赖项列表中指定 `roomId`，检查工具会自动找到该错误。
+React 提供了一个检查工具规则来检查是否正确地指定了 Effect 的依赖项。如果忘记在上述示例的依赖项列表中指定 `roomId`，检查工具会自动找到该错误。
 
 <LearnMore path="/learn/lifecycle-of-reactive-effects">
 
@@ -318,7 +318,7 @@ React 提供了一个检查工具规则来检查你是否正确地指定了 Effe
 
 </Wip>
 
-事件处理程序仅在你再次执行相同的交互时重新运行。与事件处理程序不同，如果 Effect 读取的任何值（如 props 或 state）与上次渲染期间不同，则会重新同步。有时，你需要两种行为的混合：一个 Effect 重新运行以响应某些值而不是其他值。
+事件处理程序仅在再次执行相同的交互时重新运行。与事件处理程序不同，如果 Effect 读取的任何值（如 props 或 state）与上次渲染期间不同，则会重新同步。有时，需要混合两种行为： Effect 重新运行以响应某些值而不是其他值。
 
 Effects 中的所有代码都是 **响应式的**。如果它读取的某些响应式的值由于重新渲染而发生变化，它将再次运行。例如，如果 `roomId` 或 `theme` 发生变化，这个 Effect 将重新连接到聊天：
 
@@ -581,7 +581,7 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-Effect Events 中的代码不是响应式的，因此更改“主题”不再使你的 Effect 重新连接。
+Effect Events 中的代码不是响应式的，因此更改“主题”不再使 Effect 重新连接。
 
 <LearnMore path="/learn/separating-events-from-effects">
 
@@ -591,9 +591,9 @@ Effect Events 中的代码不是响应式的，因此更改“主题”不再使
 
 ## 移除 Effect 依赖 {/*removing-effect-dependencies*/}
 
-当你写一个 Effect 时，linter 会验证你是否已经将 Effect 读取的每一个响应式值（如 props 和 state）包含在你的 Effect 的依赖列表中。这可以确保你的 Effect 与你的组件的 props 和 state 保持同步。不必要的依赖关系可能会导致 Effect 运行过于频繁，甚至产生一个无限循环。删除它们的方式取决于具体情况。
+当你写一个 Effect 时，linter 会验证是否已经将 Effect 读取的每一个响应式值（如 props 和 state）包含在 Effect 的依赖列表中。这可以确保 Effect 与组件的 props 和 state 保持同步。不必要的依赖关系可能会导致 Effect 运行过于频繁，甚至产生一个无限循环。删除它们的方式取决于具体情况。
 
-例如，这个 Effect 依赖于你每次编辑输入时都会重新创建的 `options` 对象：
+例如，这个 Effect 依赖于每次编辑输入时都会重新创建的 `options` 对象：
 
 <Sandpack>
 
@@ -742,7 +742,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-请注意，你并没有通过编辑依赖项列表来删除 `options`  依赖项，那是错误的。相反，你更改了周围的代码，使依赖关系变得 **不必要**。将依赖关系列表视为你的 Effect 代码使用的所有响应值的列表。不必刻意选择把什么放在该列表中。该列表描述了你的代码。要改变依赖性列表，请改变代码。
+请注意，你并没有通过编辑依赖项列表来删除 `options`  依赖项，那是错误的。相反，你更改了周围的代码，使依赖关系变得 **不必要**。将依赖关系列表视为 Effect 代码使用的所有响应值的列表。不必刻意选择把什么放在该列表中。该列表描述了你的代码。要改变依赖性列表，请改变代码。
 
 <LearnMore path="/learn/removing-effect-dependencies">
 
@@ -752,9 +752,9 @@ button { margin-left: 10px; }
 
 ## 使用自定义 Hook 复用逻辑 {/*reusing-logic-with-custom-hooks*/}
 
-React 有一些内置 Hook，例如 `useState`，`useContext` 和 `useEffect`。有时你需要一个用途更特殊的 Hook：例如获取数据，记录用户是否在线或者连接聊天室。为了实现效果，你可以根据应用需求创建自己的 Hook。
+React 有一些内置 Hook，例如 `useState`，`useContext` 和 `useEffect`。有时需要一个用途更特殊的 Hook：例如获取数据，记录用户是否在线或者连接聊天室。为了实现效果，可以根据应用需求创建自己的 Hook。
 
-这个示例中，自定义 Hook `usePointerPosition` 追踪当前指针位置，而自定义 Hook `useDelayedValue` 返回一个“滞后”你传递的值一定毫秒数的值。将光标移到沙盒预览区域上以查看跟随光标移动的点轨迹：
+这个示例中，自定义 Hook `usePointerPosition` 追踪当前指针位置，而自定义 Hook `useDelayedValue` 返回一个“滞后”传递的值一定毫秒数的值。将光标移到沙盒预览区域上以查看跟随光标移动的点轨迹：
 
 <Sandpack>
 
@@ -835,7 +835,7 @@ body { min-height: 300px; }
 
 </Sandpack>
 
-你可以创建自定义 Hooks，将它们组合在一起，在它们之间传递数据，并在组件之间重用它们。随着你的应用不断变大，你将减少手动编写的 Effect，因为你将能够重用已经编写的自定义 Hooks。React 社区也维护了许多优秀的自定义 Hooks。
+你可以创建自定义 Hooks，将它们组合在一起，在它们之间传递数据，并在组件之间重用它们。随着应用不断变大，你将减少手动编写的 Effect，因为你将能够重用已经编写的自定义 Hooks。React 社区也维护了许多优秀的自定义 Hooks。
 
 <LearnMore path="/learn/reusing-logic-with-custom-hooks">
 
