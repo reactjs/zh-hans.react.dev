@@ -32,7 +32,7 @@ title: <Profiler>
 
 #### 参数 {/*props*/}
 
-* `id`：一个字符串，用于标识你正在测量的 UI 部分。
+* `id`：字符串，用于标识正在测量的 UI 部分。
 * `onRender`：一个 [`onRender` 回调函数](#onrender-callback)，当测量组件树中的组件更新时，React会调用它。它接收有关渲染内容和所花费时间的信息。
 
 #### 注意 {/*caveats*/}
