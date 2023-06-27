@@ -81,7 +81,7 @@ function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime
 
 <Pitfall>
 
-进行性能分析会增加一些额外的开销，因此 **默认情况下，在生产构建中禁用了性能分析**。要启用生产环境下的性能分析，你需要启用一个 [带有性能分析功能的特殊生产构建](https://fb.me/react-profiling)。
+进行性能分析会增加一些额外的开销，因此 **在默认情况下，它在生产环境中是被禁用的**。如果要启用生产环境下的性能分析，你需要启用一个 [特殊的带有性能分析功能的生产构建](https://fb.me/react-profiling)。
 
 </Pitfall>
 
