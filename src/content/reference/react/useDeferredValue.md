@@ -84,10 +84,10 @@ function SearchPage() {
 
 这个例子假设你使用了其中一个支持 `Suspense` 的数据源：
 
-- 使用支持 Suspense 的框架进行数据获取，例如 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/getting-started/react-essentials)
+- 使用支持 suspense 的框架进行数据获取，例如 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/getting-started/react-essentials)
 - 使用 [`lazy`](/reference/react/lazy) 懒加载组件代码
 
-[了解更多有关 Suspense 及其限制的信息](/reference/react/Suspense)。
+[了解更多有关 suspense 及其限制的信息](/reference/react/Suspense)。
 
 </Note>
 
@@ -138,7 +138,7 @@ import { fetchData } from './data.js';
 // 该 API 尚未在稳定版本的 React 中发布。
 
 // 如果想找实际的例子，可以尝试一个
-// 已经集成了 Suspense 的框架，比如 Relay 或 Next.js。
+// 已经集成了 suspense 的框架，比如 Relay 或 Next.js。
 
 export default function SearchResults({ query }) {
   if (query === '') {
@@ -353,7 +353,7 @@ import { fetchData } from './data.js';
 // 该 API 尚未在稳定版本的 React 中发布。
 
 // 如果想找实际的例子，可以尝试一个
-// 已经集成了 Suspense 的框架，比如 Relay 或 Next.js。
+// 已经集成了 suspense 的框架，比如 Relay 或 Next.js。
 
 export default function SearchResults({ query }) {
   if (query === '') {
