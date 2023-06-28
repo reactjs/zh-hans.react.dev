@@ -310,7 +310,7 @@ function ChatRoom({ roomId }) { // roomId 属性可能会随时间变化。
 
 每次在组件重新渲染后，React 都会查看你传递的依赖项数组。如果数组中的任何值与上一次渲染时在相同位置传递的值不同，React 将重新同步你的 Effect。
 
-例如，如果在初始渲染时传递了 `["general"]`，然后在下一次渲染时传递了 `["travel"]`，React 将比较 `"general"` 和 `"travel"`。这些是不同的值（使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 进行比较），因此 React 将重新同步你的 Effect。另一方面，如果你的组件重新渲染但 `roomId` 没有发生变化，你的 Effect 将继续连接到相同的房间。
+例如，如果在初始渲染时传递了 `["general"]`，然后在下一次渲染时传递了 `["travel"]`，React 将比较 `"general"` 和 `"travel"`。这些是不同的值（使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 进行比较），因此 React 将重新同步你的 Effect。另一方面，如果你的组件重新渲染但 `roomId` 没有发生变化，你的 Effect 将继续连接到相同的房间。
 
 ### 每个 Effect 表示一个独立的同步过程。 {/*each-effect-represents-a-separate-synchronization-process*/}
 
@@ -583,7 +583,7 @@ function ChatRoom({ roomId, selectedServerUrl }) { // roomId 是响应式的
 
 可变值（包括全局变量）不是响应式的。
 
-例如，像 [`location.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname) 这样的可变值不能作为依赖项。它是可变的，因此可以在 React 渲染数据流之外的任何时间发生变化。更改它不会触发组件的重新渲染。因此，即使你在依赖项中指定了它，React 也无法知道在其更改时重新同步 Effect。这也违反了 React 的规则，因为在渲染过程中读取可变数据（即在计算依赖项时）会破坏 [纯粹的渲染](/learn/keeping-components-pure)。相反，你应该使用 [`useSyncExternalStore`](/learn/you-might-not-need-an-effect#subscribing-to-an-external-store) 来读取和订阅外部可变值。
+例如，像 [`location.pathname`](https://developer.mozilla.org/zh-CN/docs/Web/API/Location/pathname) 这样的可变值不能作为依赖项。它是可变的，因此可以在 React 渲染数据流之外的任何时间发生变化。更改它不会触发组件的重新渲染。因此，即使你在依赖项中指定了它，React 也无法知道在其更改时重新同步 Effect。这也违反了 React 的规则，因为在渲染过程中读取可变数据（即在计算依赖项时）会破坏 [纯粹的渲染](/learn/keeping-components-pure)。相反，你应该使用 [`useSyncExternalStore`](/learn/you-might-not-need-an-effect#subscribing-to-an-external-store) 来读取和订阅外部可变值。
 
 **另外，像 [`ref.current`](/reference/react/useRef#reference) 或从中读取的值也不能作为依赖项。`useRef` 返回的 ref 对象本身可以作为依赖项**，但其 `current` 属性是有意可变的。它允许你 [跟踪某些值而不触发重新渲染](/learn/referencing-values-with-refs)。但由于更改它不会触发重新渲染，它不是一个响应式值，React 不会知道在其更改时重新运行你的 Effect。
 
@@ -937,7 +937,7 @@ button { margin-left: 10px; }
 
 #### 打开和关闭状态同步 {/*switch-synchronization-on-and-off*/}
 
-在这个例子中，一个 Effect 订阅了 window 的 [`pointermove`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pointermove_event) 事件，以在屏幕上移动一个粉色的点。尝试在预览区域上悬停（或者如果你使用移动设备，请触摸屏幕），看看粉色的点如何跟随你的移动。
+在这个例子中，一个 Effect 订阅了 window 的 [`pointermove`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/pointermove_event) 事件，以在屏幕上移动一个粉色的点。尝试在预览区域上悬停（或者如果你使用移动设备，请触摸屏幕），看看粉色的点如何跟随你的移动。
 
 还有一个复选框。勾选复选框会切换 `canMove` 状态变量，但是这个状态变量在代码中没有被使用。你的任务是修改代码，使得当 `canMove` 为 `false`（复选框未选中）时，点应该停止移动。在你切换复选框回到选中状态（将 `canMove` 设置为 `true`）之后，点应该重新跟随移动。换句话说，点是否可以移动应该与复选框的选中状态保持同步。
 
