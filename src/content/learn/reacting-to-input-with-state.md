@@ -33,7 +33,7 @@ React 控制 UI 的方式是声明式的。你不必直接控制 UI 的各个部
 
 <Illustration src="/images/docs/illustrations/i_imperative-ui-programming.png"  alt="看起来很焦急的司机代表 JavaScript，乘客命令司机执行一系列复杂的转弯导航。" />
 
-他并不知道你想去哪，只想跟着命令行动。（并且如果你发出了错误的命令，那么你就会到达错误的地方）正因为你必须从加载动画到按钮地“命令”每个元素，所以这种告诉计算机*如何*去更新 UI 的编程方式被称为*命令式编程*
+他并不知道你想去哪，只想跟着命令行动。（并且如果你发出了错误的命令，那么你就会到达错误的地方）正因为你必须从加载动画到按钮地“命令”每个元素，所以这种告诉计算机**如何**去更新 UI 的编程方式被称为**命令式编程**
 
 在这个命令式 UI 编程的例子中，表单**没有使用** React 生成，而是使用原生的 [DOM](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model):
 
@@ -357,16 +357,16 @@ body { margin: 0; }
 
 接下来你会需要在内存中通过 [`useState`](/reference/react/useState) 表示组件中的视图状态。诀窍很简单：state 的每个部分都是“处于变化中的”，并且**你需要让“变化的部分”尽可能的少**。更复杂的程序会产生更多 bug！
 
-先从*绝对必须*存在的状态开始。例如，你需要存储输入的 `answer` 以及用于存储最后一个错误的 `error` （如果存在的话）：
+先从**绝对必须**存在的状态开始。例如，你需要存储输入的 `answer` 以及用于存储最后一个错误的 `error` （如果存在的话）：
 
 ```js
 const [answer, setAnswer] = useState('');
 const [error, setError] = useState(null);
 ```
 
-Then, you'll need a state variable representing which one of the visual states that you want to display. There's usually more than a single way to represent that in memory, so you'll need to experiment with it.
+接下来，你需要一个状态变量来代表你想要显示的那个可视状态。通常有多种方式在内存中表示它，因此你需要进行实验。
 
-如果你很难立即想出最好的办法，那就先从添加足够多的 state 开始，*确保*所有可能的视图状态都囊括其中：
+如果你很难立即想出最好的办法，那就先从添加足够多的 state 开始，**确保**所有可能的视图状态都囊括其中：
 
 ```js
 const [isEmpty, setIsEmpty] = useState(true);
@@ -510,7 +510,7 @@ function submitForm(answer) {
 
 #### 添加和删除一个 CSS class {/*add-and-remove-a-css-class*/}
 
-尝试实现当点击图片时*删除*外部 `<div>` 的 CSS class `background--active`，并将 `picture--active` 的 CSS class 添加到 `<img>` 上。当再次点击背景图片时将恢复最开始的 CSS class。
+尝试实现当点击图片时**删除**外部 `<div>` 的 CSS class `background--active`，并将 `picture--active` 的 CSS class 添加到 `<img>` 上。当再次点击背景图片时将恢复最开始的 CSS class。
 
 视觉上，你应该期望当点击图片时会移除紫色的背景，并且高亮图片的边框。点击图片外面时高亮背景并且删除图片边框的高亮效果。
 
@@ -566,7 +566,7 @@ body { margin: 0; padding: 0; height: 250px; }
 * 当图片处于激活状态时，CSS class 是 `background` 和 `picture picture--active`。
 * 当图片处于非激活状态时，CSS class 是 `background background--active` 和 `picture`。
 
-一个布尔类型的 state 已经足够表示图片是否处于激活状态。最初的工作仅仅是移除或添加 CSS class。然而在 React 中你需要去*描述*什么是你想要看到的而非*操作* UI 元素。因此你需要基于当前 state 去计算这两个 CSS class。同时你需要去 [阻止冒泡行为](/learn/responding-to-events#stopping-propagation)，只有这样点击图片的时候不会触发点击背景的回调。
+一个布尔类型的 state 已经足够表示图片是否处于激活状态。最初的工作仅仅是移除或添加 CSS class。然而在 React 中你需要去**描述**什么是你想要看到的而非**操作** UI 元素。因此你需要基于当前 state 去计算这两个 CSS class。同时你需要去 [阻止冒泡行为](/learn/responding-to-events#stopping-propagation)，只有这样点击图片的时候不会触发点击背景的回调。
 
 通过点击图片然后点击图片外围来确定这个版本可用：
 
@@ -844,7 +844,7 @@ label { display: block; margin-bottom: 20px; }
 
 <Solution>
 
-你需要两个 state 变量来保存输入框中的内容：`firstName` 和 `lastName`。同时你还会需要一个 `isEditing` 的 state 变量来保存是否显示输入框的状态。你应该*不*需要 `fullName` 变量，因为全名可以由`firstName` 和 `lastName` 组合而成。
+你需要两个 state 变量来保存输入框中的内容：`firstName` 和 `lastName`。同时你还会需要一个 `isEditing` 的 state 变量来保存是否显示输入框的状态。你应该**不**需要 `fullName` 变量，因为全名可以由`firstName` 和 `lastName` 组合而成。
 
 最终，你应该根据 `isEditing` 的值使用 [条件渲染](/learn/conditional-rendering) 来决定显示还是隐藏输入框。 
 
