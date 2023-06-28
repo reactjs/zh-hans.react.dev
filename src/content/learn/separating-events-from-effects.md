@@ -1082,7 +1082,7 @@ button { margin: 10px; }
 
 <Hint>
 
-似乎设置计时器的 Effect 对 `increment` 值的变化做出了 “响应”。为了调用 `setCount` 而使用当前 `increment` 值的代码行真的需要是响应式吗？
+似乎设置计时器的 Effect 对 `increment` 值的变化做出了“响应”。为了调用 `setCount` 而使用当前 `increment` 值的代码行真的需要是响应式吗？
 
 </Hint>
 
