@@ -1406,7 +1406,7 @@ button { margin: 10px; }
 
 </Solution>
 
-#### 修复一个延迟的通知 {/*fix-a-delayed-notification*/}
+#### 修复延迟通知 {/*fix-a-delayed-notification*/}
 
 当你加入一个聊天室时，这个组件展示一个通知。但是它不会立刻展示通知。相反，把通知人工延迟 2 秒钟，以便用户有机会查看 UI。
 
