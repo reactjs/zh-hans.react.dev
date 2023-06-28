@@ -1412,7 +1412,7 @@ button { margin: 10px; }
 
 这几乎生效了，但还是有一个 bug。尝试将下拉菜单从“general”变成“travel”并且接下来非常快速的变成“music”。如果你动作足够快，你会看到两个通知（和预期一样！），但是他们 **都是** 展示 “Welcome to music”。
 
-修复它，让它能在你快速从“general”切换到“travel”再到“music”的时候看见两个通知，第一个是“Welcome to travel” ，第二个是“Welcome to music”。（有一个额外的挑战，假设你 **已经** 让通知显示了正确的房间，请修改代码只展示后面的通知。）
+修复它，让它能在你快速从“general”切换到“travel”再到“music”的时候看见两个通知，第一个是“Welcome to travel” ，第二个是“Welcome to music”（有一个额外的挑战，假设你 **已经** 让通知显示了正确的房间，请修改代码只展示后面的通知）。
 
 <Hint>
 
