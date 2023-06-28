@@ -26,7 +26,7 @@ const stream = await renderToReadableStream(reactNode, options?)
 
 ### `renderToReadableStream(reactNode, options?)` {/*rendertoreadablestream*/}
 
-调用 `renderToReadableStream`，将 React 树渲染成 HTML 放到 [Web 可读流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream)中。
+调用 `renderToReadableStream`，将 React 树渲染成 HTML 放到 [Web 可读流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream) 中。
 
 ```js
 import { renderToReadableStream } from 'react-dom/server';
