@@ -18,7 +18,7 @@ title: "React Labs：我们正在努力的方向——2023 年 3 月"
 
 React 服务器组件（React Server Components，简称 RSC）是由 React 团队设计的新的应用架构。
 
-我们之前在 [introductory talk](/blog/2020/12/21/data-fetching-with-react-server-components) 与 [RFC](https://github.com/reactjs/rfcs/pull/188) 中分享了有关 RSC 的研究。之前我们提到，我们引入了一种新的组件类型——服务器组件。服务器组件会提前运行，并在打包时排除在外。服务器组件也可以在构建期间运行，并允许你从文件系统中读取或提取静态内容。它们也可以在服务器上运行，让你可以访问数据层而不必构建 API。你可以通过 props 将数据从服务器组件传递到浏览器中的交互式客户端组件中。
+我们之前在 [introductory talk](/blog/2020/12/21/data-fetching-with-react-server-components) 与 [RFC](https://github.com/reactjs/rfcs/pull/188) 中分享了有关 RSC 的研究。之前我们提到，我们引入了一种新的组件类型——服务器组件。服务器组件会提前运行，并在打包时被排除在外。服务器组件也可以在构建期间运行，并允许你从文件系统中读取或提取静态内容。它们也可以在服务器上运行，让你可以访问数据层而不必构建 API。你可以通过 props 将数据从服务器组件传递到浏览器中的交互式客户端组件中。
 
 RSC 将面向服务器的多页面应用程序的简单“请求/响应”思维模型与面向客户端的单页面应用程序的无缝交互性相结合，为你提供了两者的最佳结合。
 
@@ -28,7 +28,7 @@ RSC 将面向服务器的多页面应用程序的简单“请求/响应”思维
 
 现在我们已经相当好地解决了数据提取的问题，我们正在探索另一个方向：从客户端向服务器发送数据，以便可以执行数据库变更和实现表单。我们通过在服务器/客户端边界传递 Server Action 函数来实现这一点。客户端可以调用该函数，提供无缝 RPC。而在 JavaScript 加载之前，Server Action 还可以提供逐步增强的表单。
 
-RSC 已经在 [Next.js App Router](/learn/start-a-new-react-project#nextjs-app-router) 中发布，展示了一个真正深度集成的路由器，它使用 RSC 并将其作为 primitive。但这不是构建 RSC 兼容的路由器和框架的唯一方法。RSC 规范和实现提供了特定功能的明确分离，旨在成为适用于兼容 React 框架的组件规范。
+RSC 已经在 [Next.js App Router](/learn/start-a-new-react-project#nextjs-app-router) 中发布，展示了一个真正深度集成的路由器，它使用了 RSC 并将其作为 primitive。但这不是构建 RSC 兼容的路由器和框架的唯一方法。RSC 规范和实现提供了特定功能的明确分离，旨在成为适用于兼容 React 框架的组件规范。
 
 我们通常建议使用现有的框架，但你仍然可以构建自定义框架。由于需要深度集成 bundler，构建自定义 RSC 兼容的框架并不像想象中那么容易。当前的若代 bundler 非常适合在客户端使用，但它们并没有专门为将单个模块图分割为服务器和客户端提供一流的支持而设计。因此我们选择直接与 bundler 开发人员合作，以将内置 RSC 作为 primitive。
 
@@ -42,7 +42,7 @@ RSC 已经在 [Next.js App Router](/learn/start-a-new-react-project#nextjs-app-r
 
 ## Document Metadata {/*document-metadata*/}
 
-应用程序中的不同页面和屏幕可能具有不同的 metadata，如 `<title>` 标签、描述（description）和其他特定于此屏幕的 `<meta>` 标签。从维护的角度来看，将此信息保持接近该页面或屏幕的 React 组件更具可扩展性。然而，metadat 的 HTML 标签被包含在文档的 `<head>` 中，通常在应用程序的根组件中渲染。
+应用程序中的不同页面和屏幕可能具有不同的 metadata，如 `<title>` 标签、描述（description）和其他特定于此屏幕的 `<meta>` 标签。从维护的角度来看，将此信息保持接近该页面或屏幕的 React 组件更具可扩展性。然而，metadata 的 HTML 标签被包含在文档的 `<head>` 中，通常在应用程序的根组件中渲染。
 
 现在可以通过以下两种技术解决此问题。
 
@@ -50,7 +50,7 @@ RSC 已经在 [Next.js App Router](/learn/start-a-new-react-project#nextjs-app-r
 
 另一种技术是将页面分为两部分进行服务器渲染。首先，渲染主要内容并收集所有这些标签；然后渲染 `<head>` 与这些标签；最后将 `<head>` 和主要内容发送到浏览器。这种方法是可行的，但它会阻止利用 [React 18 的流式服务器渲染器](/reference/react-dom/server/renderToReadableStream)，因为你必须在发送 `<head>` 之前等待所有内容渲染完成。
 
-这就是为什么我们正在添加内置支持，以便在组件树中的任何位置渲染 `<title>`、`<meta>` 和元数据 `<link>` 标签。它将在所有环境中以相同的方式工作，包括完全客户端代码、SSR 和未来的 RSC。我们将很快分享更多关于此的详细信息。
+这就是为什么我们正在添加内置支持，以便在组件树中的任何位置渲染 `<title>`、`<meta>` 和 metadata `<link>` 标签。它将在所有环境中以相同的方式工作，包括完全客户端代码、SSR 和未来的 RSC。我们将很快分享更多关于此的详细信息。
 
 ## React 优化编译器 {/*react-optimizing-compiler*/}
 
