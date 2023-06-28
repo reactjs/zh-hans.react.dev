@@ -1,5 +1,5 @@
 ---
-title: Invalid ARIA Prop Warning
+title: 无效 ARIA 属性警告
 ---
 
 如果你尝试渲染一个在 WAI 与 ARIA [规范](https://www.w3.org/TR/wai-aria-1.1/#states_and_properties) 中不存在的 `aria-*` 属性，就会触发此警告。
