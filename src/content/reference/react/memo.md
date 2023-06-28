@@ -4,7 +4,7 @@ title: memo
 
 <Intro>
 
-`memo` lets you skip re-rendering a component when its props are unchanged.
+`memo` 允许你的组件在 props 没有改变的情况下跳过重新渲染。
 
 ```
 const MemoizedComponent = memo(SomeComponent, arePropsEqual?)
@@ -16,11 +16,11 @@ const MemoizedComponent = memo(SomeComponent, arePropsEqual?)
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `memo(Component, arePropsEqual?)` {/*memo*/}
 
-Wrap a component in `memo` to get a *memoized* version of that component. This memoized version of your component will usually not be re-rendered when its parent component is re-rendered as long as its props have not changed. But React may still re-render it: memoization is a performance optimization, not a guarantee.
+使用 `memo` 将组件包装起来，以获得该组件的一个 **记忆化** 版本。通常情况下，只要该组件的 props 没有改变，这个记忆化版本就不会在其父组件重新渲染时重新渲染。但 React 仍可能会重新渲染它：记忆化是一种性能优化，而非保证。
 
 ```js
 import { memo } from 'react';
@@ -30,27 +30,27 @@ const SomeComponent = memo(function SomeComponent(props) {
 });
 ```
 
-[See more examples below.](#usage)
+[请看下面的更多例子。](#usage)
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `Component`: The component that you want to memoize. The `memo` does not modify this component, but returns a new, memoized component instead. Any valid React component, including functions and [`forwardRef`](/reference/react/forwardRef) components, is accepted.
+* `Component`：要进行记忆化的组件。`memo` 不会修改该组件，而是返回一个新的、记忆化的组件。它接受任何有效的 React 组件，包括函数组件和 [`forwardRef`](/reference/react/forwardRef) 组件。
 
-* **optional** `arePropsEqual`: A function that accepts two arguments: the component's previous props, and its new props. It should return `true` if the old and new props are equal: that is, if the component will render the same output and behave in the same way with the new props as with the old. Otherwise it should return `false`. Usually, you will not specify this function. By default, React will compare each prop with [`Object.is`.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)
+* **可选参数** `arePropsEqual`：一个函数，接受两个参数：组件的前一个 props 和新的 props。如果旧的和新的 props 相等，即组件使用新的 props 渲染的输出和表现与旧的 props 完全相同，则它应该返回 `true`。否则返回 `false`。通常情况下，你不需要指定此函数。默认情况下，React 将使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较每个 prop。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-`memo` returns a new React component. It behaves the same as the component provided to `memo` except that React will not always re-render it when its parent is being re-rendered unless its props have changed.
+`memo` 返回一个新的 React 组件。它的行为与提供给 `memo` 的组件相同，只是当它的父组件重新渲染时 React 不会总是重新渲染它，除非它的 props 发生了变化。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Skipping re-rendering when props are unchanged {/*skipping-re-rendering-when-props-are-unchanged*/}
+### 当 props 没有改变时跳过重新渲染 {/*skipping-re-rendering-when-props-are-unchanged*/}
 
-React normally re-renders a component whenever its parent re-renders. With `memo`, you can create a component that React will not re-render when its parent re-renders so long as its new props are the same as the old props. Such a component is said to be *memoized*.
+React 通常在其父组件重新渲染时重新渲染一个组件。你可以使用 `memo` 创建一个组件，当它的父组件重新渲染时，只要它的新 props 与旧 props 相同时，React 就不会重新渲染它。这样的组件被称为 **记忆化的**（memoized）组件。
 
-To memoize a component, wrap it in `memo` and use the value that it returns in place of your original component:
+要记忆化一个组件，请将它包装在 `memo` 中，使用它返回的值替换原来的组件：
 
 ```js
 const Greeting = memo(function Greeting({ name }) {
@@ -60,9 +60,9 @@ const Greeting = memo(function Greeting({ name }) {
 export default Greeting;
 ```
 
-A React component should always have [pure rendering logic.](/learn/keeping-components-pure) This means that it must return the same output if its props, state, and context haven't changed. By using `memo`, you are telling React that your component complies with this requirement, so React doesn't need to re-render as long as its props haven't changed. Even with `memo`, your component will re-render if its own state changes or if a context that it's using changes.
+React 组件应该始终具有 [纯粹的渲染逻辑](/learn/keeping-components-pure)。这意味着如果其 props、state 和 context 没有改变，则必须返回相同的输出。通过使用 `memo`，你告诉 React 你的组件符合此要求，因此只要其 props 没有改变，React 就不需要重新渲染。即使使用 `memo`，如果它自己的 state 或正在使用的 context 发生更改，组件也会重新渲染。
 
-In this example, notice that the `Greeting` component re-renders whenever `name` is changed (because that's one of its props), but not when `address` is changed (because it's not passed to `Greeting` as a prop):
+在此示例中，请注意 `Greeting` 组件在 `name` 更改时重新渲染（因为那是它的 props 之一），但是在 `address` 更改时不会重新渲染（因为它不作为 props 传递给 `Greeting`）：
 
 <Sandpack>
 
@@ -104,37 +104,37 @@ label {
 
 <Note>
 
-**You should only rely on `memo` as a performance optimization.** If your code doesn't work without it, find the underlying problem and fix it first. Then you may add `memo` to improve performance.
+**你应该只将 `memo` 用作为性能优化**。如果你的代码没有 `memo` 就无法运行，首先找出潜在问题并进行修复。然后，你可以通过添加 `memo` 来提高性能。
 
 </Note>
 
 <DeepDive>
 
-#### Should you add memo everywhere? {/*should-you-add-memo-everywhere*/}
+#### 在每个地方都应该添加 memo 吗？ {/*should-you-add-memo-everywhere*/}
 
-If your app is like this site, and most interactions are coarse (like replacing a page or an entire section), memoization is usually unnecessary. On the other hand, if your app is more like a drawing editor, and most interactions are granular (like moving shapes), then you might find memoization very helpful. 
+如果你的应用像此站点一样，大多数交互是粗略的（例如直接替换页面或整个部分），那么通常不需要记忆化。另一方面，如果你的应用更像是绘图编辑器，大多数交互是细粒度的（例如移动图形），那么你可能会发现记忆化非常有用。
 
-Optimizing with `memo`  is only valuable when your component re-renders often with the same exact props, and its re-rendering logic is expensive. If there is no perceptible lag when your component re-renders, `memo` is unnecessary. Keep in mind that `memo` is completely useless if the props passed to your component are *always different,* such as if you pass an object or a plain function defined during rendering. This is why you will often need [`useMemo`](/reference/react/useMemo#skipping-re-rendering-of-components) and [`useCallback`](/reference/react/useCallback#skipping-re-rendering-of-components) together with `memo`.
+只有当你的组件经常使用完全相同的 props 重新渲染时，并且其重新渲染逻辑是非常昂贵的，使用 `memo` 优化才有价值。如果你的组件重新渲染时没有明显的延迟，那么 `memo` 就不必要了。请记住，如果传递给组件的 props **始终不同**，例如在渲染期间传递对象或普通函数，则 `memo` 是完全无用的。这就是为什么你通常需要在 `memo` 中同时使用 [`useMemo`](/reference/react/useMemo#skipping-re-rendering-of-components) 和 [`useCallback`](/reference/react/useCallback#skipping-re-rendering-of-components)。
 
-There is no benefit to wrapping a component in `memo` in other cases. There is no significant harm to doing that either, so some teams choose to not think about individual cases, and memoize as much as possible. The downside of this approach is that code becomes less readable. Also, not all memoization is effective: a single value that's "always new" is enough to break memoization for an entire component.
+在其他情况下将组件包装在 `memo` 中是没有任何好处的。这种做法也没有什么明显的危害，因此一些团队会选择不考虑个别情况，并尽可能使用 `memo`。这种方法的缺点是代码变得不易读。此外，并不是所有的记忆化都是有效的：一个“总是新的”值足以破坏整个组件的记忆化。
 
-**In practice, you can make a lot of memoization unnecessary by following a few principles:**
+**实践中，你可以通过遵循一些原则来使许多 memoization 变得不必要**：
 
-1. When a component visually wraps other components, let it [accept JSX as children.](/learn/passing-props-to-a-component#passing-jsx-as-children) This way, when the wrapper component updates its own state, React knows that its children don't need to re-render.
-1. Prefer local state and don't [lift state up](/learn/sharing-state-between-components) any further than necessary. For example, don't keep transient state like forms and whether an item is hovered at the top of your tree or in a global state library.
-1. Keep your [rendering logic pure.](/learn/keeping-components-pure) If re-rendering a component causes a problem or produces some noticeable visual artifact, it's a bug in your component! Fix the bug instead of adding memoization.
-1. Avoid [unnecessary Effects that update state.](/learn/you-might-not-need-an-effect) Most performance problems in React apps are caused by chains of updates originating from Effects that cause your components to render over and over.
-1. Try to [remove unnecessary dependencies from your Effects.](/learn/removing-effect-dependencies) For example, instead of memoization, it's often simpler to move some object or a function inside an Effect or outside the component.
+1. 当一个组件在视觉上包裹其他组件时，让它 [接受 JSX 作为子组件](/learn/passing-props-to-a-component#passing-jsx-as-children)。这样，当包装组件更新其自身状态时，React 知道其子组件不需要重新渲染。
+1. 优先使用局部状态，并且不要将 [状态提升](/learn/sharing-state-between-components) 到不必要的层级。例如，不要将短暂状态（如表单数据和项元素是否 hover 状态）保留在树的顶部或全局状态库中。
+1. 保持你的 [渲染逻辑纯粹](/learn/keeping-components-pure)。如果重新渲染组件会导致问题或产生一些明显的视觉瑕疵，则这是你组件中的 bug！修复 bug 而不是添加 memoization。
+1. 避免 [不必要的 Effect 来更新状态](/learn/you-might-not-need-an-effect)。React 应用中的大多数性能问题都是由于 Effect 引起的更新链，这些 Effect 会使你的组件一次又一次地重新渲染。
+1. 尝试 [从你的 Effect 中删除不必要的依赖项](/learn/removing-effect-dependencies)。例如，与其使用 memoization，不如将某些对象或函数移动到 Effect 内部或组件外部，这通常更简单。
 
-If a specific interaction still feels laggy, [use the React Developer Tools profiler](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) to see which components would benefit the most from memoization, and add memoization where needed. These principles make your components easier to debug and understand, so it's good to follow them in any case. In the long term, we're researching [doing granular memoization automatically](https://www.youtube.com/watch?v=lGEMwh32soc) to solve this once and for all.
+如果特定交互仍然感觉不流畅，请 [使用 React 开发者工具 profiler](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) 来查看哪些组件最需要 memoization，并在需要时添加 memoization。这些原则使你的组件更易于调试和理解，因此建议在任何情况下都遵循它们。从长远来看，我们正在研究 [自动进行细粒度 memoization](https://www.youtube.com/watch?v=lGEMwh32soc)，以解决这个问题。
 
 </DeepDive>
 
 ---
 
-### Updating a memoized component using state {/*updating-a-memoized-component-using-state*/}
+### 使用 state 更新记忆化（memoized）组件 {/*updating-a-memoized-component-using-state*/}
 
-Even when a component is memoized, it will still re-render when its own state changes. Memoization only has to do with props that are passed to the component from its parent.
+即使一个组件被记忆化了，当它自身的状态发生变化时，它仍然会重新渲染。memoization 只与从父组件传递给组件的 props 有关。
 
 <Sandpack>
 
@@ -203,13 +203,13 @@ label {
 
 </Sandpack>
 
-If you set a state variable to its current value, React will skip re-rendering your component even without `memo`. You may still see your component function being called an extra time, but the result will be discarded.
+如果将 state 变量设置为其当前值，即使没有使用 `memo`，React 也会跳过重新渲染组件。你仍然可能会看到额外地调用组件函数，但其结果将被丢弃。
 
 ---
 
-### Updating a memoized component using a context {/*updating-a-memoized-component-using-a-context*/}
+### 使用 context 更新记忆化（memoized）组件 {/*updating-a-memoized-component-using-a-context*/}
 
-Even when a component is memoized, it will still re-render when a context that it's using changes. Memoization only has to do with props that are passed to the component from its parent.
+即使组件已被记忆化，当其使用的 context 发生变化时，它仍将重新渲染。记忆化只与从父组件传递给组件的 props 有关。
 
 <Sandpack>
 
@@ -263,16 +263,16 @@ label {
 
 </Sandpack>
 
-To make your component re-render only when a _part_ of some context changes, split your component in two. Read what you need from the context in the outer component, and pass it down to a memoized child as a prop.
+为了使组件仅在 context 的 **某个部分** 发生更改时重新渲染，请将组件分为两个部分。在外层组件中从 context 中读取所需内容，并将其作为 props 传递给记忆化的子组件。
 
 ---
 
-### Minimizing props changes {/*minimizing-props-changes*/}
+### 最小化 props 的变化 {/*minimizing-props-changes*/}
 
-When you use `memo`, your component re-renders whenever any prop is not *shallowly equal* to what it was previously. This means that React compares every prop in your component with its previous value using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. Note that `Object.is(3, 3)` is `true`, but `Object.is({}, {})` is `false`.
+当你使用 `memo` 时，只要任何一个 prop 与先前的值不是 **浅层相等** 的话，你的组件就会重新渲染。这意味着 React 会使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较组件中的每个 prop 与其先前的值。注意，`Object.is(3, 3)` 为 `true`，但 `Object.is({}, {})` 为 `false`。
 
 
-To get the most out of `memo`, minimize the times that the props change. For example, if the prop is an object, prevent the parent component from re-creating that object every time by using [`useMemo`:](/reference/react/useMemo)
+为了最大化使用 `memo` 的效果，应该尽量减少 props 的变化次数。例如，如果 props 是一个对象，可以使用 [`useMemo`](/reference/react/useMemo) 避免父组件每次都重新创建该对象：
 
 ```js {5-8}
 function Page() {
@@ -292,7 +292,7 @@ const Profile = memo(function Profile({ person }) {
 });
 ```
 
-A better way to minimize props changes is to make sure the component accepts the minimum necessary information in its props. For example, it could accept individual values instead of a whole object:
+最小化 props 的改变的更好的方法是确保组件在其 props 中接受必要的最小信息。例如，它可以接受单独的值而不是整个对象：
 
 ```js {4,7}
 function Page() {
@@ -306,7 +306,7 @@ const Profile = memo(function Profile({ name, age }) {
 });
 ```
 
-Even individual values can sometimes be projected to ones that change less frequently. For example, here a component accepts a boolean indicating the presence of a value rather than the value itself:
+即使是单个值有时也可以投射为不经常变更的值。例如，这里的组件接受一个布尔值，表示是否存在某个值，而不是值本身：
 
 ```js {3}
 function GroupsLanding({ person }) {
@@ -319,13 +319,13 @@ const CallToAction = memo(function CallToAction({ hasGroups }) {
 });
 ```
 
-When you need to pass a function to memoized component, either declare it outside your component so that it never changes, or [`useCallback`](/reference/react/useCallback#skipping-re-rendering-of-components) to cache its definition between re-renders.
+当你需要将一个函数传递给记忆化（memoized）组件时，要么在组件外声明它，以确保它永远不会改变，要么使用 [`useCallback`](/reference/react/useCallback#skipping-re-rendering-of-components) 在重新渲染之间缓存其定义。
 
 ---
 
-### Specifying a custom comparison function {/*specifying-a-custom-comparison-function*/}
+### 指定自定义比较函数 {/*specifying-a-custom-comparison-function*/}
 
-In rare cases it may be infeasible to minimize the props changes of a memoized component. In that case, you can provide a custom comparison function, which React will use to compare the old and new props instead of using shallow equality. This function is passed as a second argument to `memo`. It should return `true` only if the new props would result in the same output as the old props; otherwise it should return `false`.
+在极少数情况下，最小化 memoized 组件的 props 更改可能是不可行的。在这种情况下，你可以提供一个自定义比较函数，React 将使用它来比较旧的和新的 props，而不是使用浅比较。这个函数作为 `memo` 的第二个参数传递。它应该仅在新的 props 与旧的 props 具有相同的输出时返回 `true`；否则应该返回 `false`。
 
 ```js {3}
 const Chart = memo(function Chart({ dataPoints }) {
@@ -343,21 +343,21 @@ function arePropsEqual(oldProps, newProps) {
 }
 ```
 
-If you do this, use the Performance panel in your browser developer tools to make sure that your comparison function is actually faster than re-rendering the component. You might be surprised.
+如果这样做，请使用浏览器开发者工具中的性能面板来确保你的比较函数实际上比重新渲染组件要快。你可能会因此感到惊讶。
 
-When you do performance measurements, make sure that React is running in the production mode.
+在进行性能测量时，请确保 React 处于生产模式下运行。
 
 <Pitfall>
 
-If you provide a custom `arePropsEqual` implementation, **you must compare every prop, including functions.** Functions often [close over](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) the props and state of parent components. If you return `true` when `oldProps.onClick !== newProps.onClick`, your component will keep "seeing" the props and state from a previous render inside its `onClick` handler, leading to very confusing bugs.
+如果你提供了一个自定义的 `arePropsEqual` 实现，**你必须比较每个 prop，包括函数**。函数通常 [闭包](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures) 了父组件的 props 和 state。如果你在 `oldProps.onClick !== newProps.onClick` 时返回 `true`，你的组件将在其 `onClick` 处理函数中继续“看到”来自先前渲染的 props 和 state，导致非常令人困惑的 bug。
 
-Avoid doing deep equality checks inside `arePropsEqual` unless you are 100% sure that the data structure you're working with has a known limited depth. **Deep equality checks can become incredibly slow** and can freeze your app for many seconds if someone changes the data structure later.
+避免在 `arePropsEqual` 中进行深比较，除非你 100％ 确定你正在处理的数据结构具有已知有限的深度。**深比较可能会变得非常缓慢**，并且如果有人稍后更改数据结构，这可能会卡住你的应用数秒钟。
 
 </Pitfall>
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
-### My component re-renders when a prop is an object, array, or function {/*my-component-rerenders-when-a-prop-is-an-object-or-array*/}
+## 疑难解答 {/*troubleshooting*/}
+### 当组件的某个 prop 是对象、数组或函数时，我的组件会重新渲染。 {/*my-component-rerenders-when-a-prop-is-an-object-or-array*/}
 
-React compares old and new props by shallow equality: that is, it considers whether each new prop is reference-equal to the old prop. If you create a new object or array each time the parent is re-rendered, even if the individual elements are each the same, React will still consider it to be changed. Similarly, if you create a new function when rendering the parent component, React will consider it to have changed even if the function has the same definition. To avoid this, [simplify props or memoize props in the parent component](#minimizing-props-changes).
+React 通过浅比较来比较旧的和新的 prop：也就是说，它会考虑每个新的 prop 是否与旧 prop 引用相等。如果每次父组件重新渲染时创建一个新的对象或数组，即使它们每个元素都相同，React 仍会认为它已更改。同样地，如果在渲染父组件时创建一个新的函数，即使该函数具有相同的定义，React 也会认为它已更改。为了避免这种情况，[可以简化 props 或在父组件中记忆化（memoize）props](#minimizing-props-changes)。
