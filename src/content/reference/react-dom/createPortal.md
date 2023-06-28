@@ -342,7 +342,7 @@ p {
 
 ---
 
-### 将 React 组件渲染到非 React DOM 节点{/*rendering-react-components-into-non-react-dom-nodes*/}
+### 将 React 组件渲染到非 React DOM 节点 {/*rendering-react-components-into-non-react-dom-nodes*/}
 
 你还可以使用 portal 来管理在 React 之外管理的 DOM 节点的内容。假设你正在集成非 React 地图小部件，并且想要在弹出窗口中渲染 React 内容。那么请声明一个 `popupContainer` state 变量来存储要渲染到的目标 DOM 节点：
 

@@ -7,7 +7,7 @@ translators:
 
 <Intro>
 
-当你希望组件“记住”某些信息，但又不想让这些信息 [触发新的渲染](/learn/render-and-commit) 时，你可以使用 *ref* 。
+当你希望组件“记住”某些信息，但又不想让这些信息 [触发新的渲染](/learn/render-and-commit) 时，你可以使用 **ref** 。
 
 </Intro>
 
@@ -241,7 +241,7 @@ export default function Counter() {
 
 #### useRef 内部是如何运行的？ {/*how-does-use-ref-work-inside*/}
 
-尽管 `useState` 和 `useRef` 都是由 React 提供的，原则上 `useRef` 可以在 `useState` _的基础上_ 实现。 你可以想象在 React 内部，`useRef` 是这样实现的：
+尽管 `useState` 和 `useRef` 都是由 React 提供的，原则上 `useRef` 可以在 `useState` **的基础上** 实现。 你可以想象在 React 内部，`useRef` 是这样实现的：
 
 ```js
 // React 内部
@@ -467,7 +467,7 @@ export default function Toggle() {
 
 #### 修复防抖 {/*fix-debouncing*/}
 
-在这个例子中，所有按钮点击处理器都是 ["防抖的"](https://redd.one/blog/debounce-vs-throttle)。 要了解这意味着什么，请按下其中一个按钮。注意消息在一秒后显示。如果你在等待消息时按下按钮，计时器将重置。因此如果你多次快速单击同一个按钮，则直到你停止单击 *之后* 1 秒钟，该消息才会显示。防抖可以让你将一些动作推迟到用户“停止动作”之后。
+在这个例子中，所有按钮点击处理器都是 ["防抖的"](https://redd.one/blog/debounce-vs-throttle)。 要了解这意味着什么，请按下其中一个按钮。注意消息在一秒后显示。如果你在等待消息时按下按钮，计时器将重置。因此如果你多次快速单击同一个按钮，则直到你停止单击 **之后** 1 秒钟，该消息才会显示。防抖可以让你将一些动作推迟到用户“停止动作”之后。
 
 这个例子可以正常运行，但并不完全符合预期。按钮不是独立的。要查看问题，请单击其中一个按钮，然后立即单击另一个按钮。你本来期望在延迟之后，你会看到两个按钮的消息。但只有最后一个按钮的消息出现了。第一个按钮的消息丢失了。
 
@@ -584,7 +584,7 @@ button { display: block; margin: 10px; }
 
 在此示例中，当你按下“发送”后，在显示消息之前会有一小段延迟。输入“你好”，按下发送，然后再次快速编辑输入。尽管你进行了编辑，提示框仍会显示“你好”（这是按钮被点击 [那一刻](/learn/state-as-a-snapshot#state-over-time) state 的值）。
 
-通常，这种行为是你在应用程序中想要的。但是，有时可能需要一些异步代码来读取某些 state 的 *最新* 版本。你能想出一种方法，让提示框显示 *当前* 输入文本而不是点击时的内容吗？
+通常，这种行为是你在应用程序中想要的。但是，有时可能需要一些异步代码来读取某些 state 的 **最新** 版本。你能想出一种方法，让提示框显示 **当前** 输入文本而不是点击时的内容吗？
 
 <Sandpack>
 
@@ -619,7 +619,7 @@ export default function Chat() {
 
 <Solution>
 
-state 运作起来 [就像快照](/learn/state-as-a-snapshot)，因此你无法从 timeout 等异步操作中读取最新的 state。但是，你可以在 ref 中保存最新的输入文本。ref 是可变的，因此你可以随时读取 `current` 属性。由于当前文本也用于渲染，在这个例子中，你需要 *同时* 使用一个 state 变量（用于渲染）*和* 一个 ref（在 timeout 时读取它）。你需要手动更新当前的 ref 值。
+state 运作起来 [就像快照](/learn/state-as-a-snapshot)，因此你无法从 timeout 等异步操作中读取最新的 state。但是，你可以在 ref 中保存最新的输入文本。ref 是可变的，因此你可以随时读取 `current` 属性。由于当前文本也用于渲染，在这个例子中，你需要 **同时** 使用一个 state 变量（用于渲染）**和** 一个 ref（在 timeout 时读取它）。你需要手动更新当前的 ref 值。
 
 <Sandpack>
 
