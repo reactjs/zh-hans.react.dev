@@ -83,8 +83,8 @@ function SeparatorList({ children }) {
 #### 参数 {/*children-foreach-parameters*/}
 
 * `children`：组件接收到的 [`children` 属性](/learn/passing-props-to-a-component#passing-jsx-as-children) 。
-* `fn`：和 [数组的 `forEach` 方法]((https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)) 中的回调类似，是你希望为每个子节点执行的函数。当这个函数执行时，对应的子节点和其下标将分别作为函数的第一、第二个参数，下标从`0`开始自增。
-* **可选** `thisArg`：为 `fn` 函数绑定 [`this`  ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)。默认值为 `undefined`。
+* `fn`：和 [数组的 `forEach` 方法]((https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)) 中的回调类似，是你希望为每个子节点执行的函数。当这个函数执行时，对应的子节点和其下标将分别作为函数的第一、第二个参数，下标从`0`开始自增。
+* **可选** `thisArg`：为 `fn` 函数绑定 [`this`  ](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this)。默认值为 `undefined`。
 
 #### 返回值 {/*children-foreach-returns*/}
 
@@ -121,8 +121,8 @@ function RowList({ children }) {
 #### 参数 {/*children-map-parameters*/}
 
 * `children`：组件接收到的 [`children` 属性](/learn/passing-props-to-a-component#passing-jsx-as-children) 。
-* `fn`：和 [数组的 `map` 方法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 中的回调类似，是一个映射函数。当这个函数执行时，对应的子节点和其下标将分别作为函数的第一、第二个参数，下标从`0`开始自增。你需要使这个映射函数返回一个 React 节点，它可以是一个空节点（`null`，`undefined`）
-* **可选** `thisArg`：为 `fn` 函数绑定 [`this`  ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)。默认值为 `undefined`。
+* `fn`：和 [数组的 `map` 方法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 中的回调类似，是一个映射函数。当这个函数执行时，对应的子节点和其下标将分别作为函数的第一、第二个参数，下标从`0`开始自增。你需要使这个映射函数返回一个 React 节点，它可以是一个空节点（`null`，`undefined`）
+* **可选** `thisArg`：为 `fn` 函数绑定 [`this`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this)。默认值为 `undefined`。
 
 #### 返回值 {/*children-map-returns*/}
 
@@ -375,7 +375,7 @@ export default function RowList({ children }) {
 
 ### 为每一个子元素执行一段代码 {/*running-some-code-for-each-child*/}
 
-调用 `Children.forEach` 能够迭代 `children` 数据结构中的每一个子节点。它并不会返回任何值，这和 [数组的 `forEach` 方法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) 类似。你可以使用它来运行自定义逻辑，例如构造自己的数组。
+调用 `Children.forEach` 能够迭代 `children` 数据结构中的每一个子节点。它并不会返回任何值，这和 [数组的 `forEach` 方法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) 类似。你可以使用它来运行自定义逻辑，例如构造自己的数组。
 
 <Sandpack>
 
@@ -490,7 +490,7 @@ export default function RowList({ children }) {
 
 ### 将 children 转化为数组 {/*converting-children-to-an-array*/}
 
-通过调用 `Children.toArray(children)` 将 `children` 变为一个常规的 JavaScript 数组。这使得你能够使用 [`filter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)， [`sort`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)， 或者 [`reverse`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse)  等数组内置方法来操作这个数组。
+通过调用 `Children.toArray(children)` 将 `children` 变为一个常规的 JavaScript 数组。这使得你能够使用 [`filter`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)， [`sort`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)， 或者 [`reverse`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse)  等数组内置方法来操作这个数组。
 
 <Sandpack>
 
@@ -727,7 +727,7 @@ export function RowList({ rows }) {
 
 </Sandpack>
 
-因为 `rows` 是一个常规的 JavaScript 数组，`RowList` 组件可以对其使用 `map` 等数组内置方法。
+因为 `rows` 是一个常规的 JavaScript 数组，`RowList` 组件可以对其使用 [`map`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 等数组内置方法。
 
 当你希望能够将更多信息作为结构化数据，与子节点一起传递时，这个方案将会非常有用。在下面的示例中，`TabSwitcher` 接收了一个对象数组作为 `tabs` 的属性：
 

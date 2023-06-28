@@ -94,7 +94,7 @@ h3, p { margin: 5px 0px; }
 
 </DiagramGroup>
 
-**假设现在您想改变这种行为，以便在任何时候只展开一个面板。** 在这种设计下，展开第 2 个面板应会折叠第 1 个面板。您该如何做到这一点呢？"
+**假设现在您想改变这种行为，以便在任何时候只展开一个面板**。在这种设计下，展开第 2 个面板应会折叠第 1 个面板。您该如何做到这一点呢？"
 
 要协调好这两个面板，我们需要分 3 步将状态“提升”到他们的父组件中。
 
@@ -118,13 +118,13 @@ const [isActive, setIsActive] = useState(false);
 function Panel({ title, children, isActive }) {
 ```
 
-现在 `Panel` 的父组件就可以通过 [向下传递 prop](/learn/passing-props-to-a-component) 来 *控制* `isActive`。但相反地，`Panel` 组件对 `isActive` 的值 *没有控制权* —— 现在完全由父组件决定！
+现在 `Panel` 的父组件就可以通过 [向下传递 prop](/learn/passing-props-to-a-component) 来 **控制** `isActive`。但相反地，`Panel` 组件对 `isActive` 的值 **没有控制权** —— 现在完全由父组件决定！
 
 ### 第 2 步: 从公共父组件传递硬编码数据 {/*step-2-pass-hardcoded-data-from-the-common-parent*/}
 
-为了实现状态提升，必须定位到你想协调的 *两个* 子组件最近的公共父组件：
+为了实现状态提升，必须定位到你想协调的 **两个** 子组件最近的公共父组件：
 
-* `Accordion` *(最近的公共父组件)*
+* `Accordion` **(最近的公共父组件)**
   - `Panel`
   - `Panel`
 
@@ -182,7 +182,7 @@ h3, p { margin: 5px 0px; }
 状态提升通常会改变原状态的数据存储类型。
 
 
-在这个例子中，一次只能激活一个面板。这意味着 `Accordion` 这个父组件需要记录 *哪个* 面板是被激活的面板。我们可以用数字作为当前被激活 `Panel` 的索引，而不是 `boolean` 值：
+在这个例子中，一次只能激活一个面板。这意味着 `Accordion` 这个父组件需要记录 **哪个** 面板是被激活的面板。我们可以用数字作为当前被激活 `Panel` 的索引，而不是 `boolean` 值：
 
 ```js
 const [activeIndex, setActiveIndex] = useState(0);
@@ -190,7 +190,7 @@ const [activeIndex, setActiveIndex] = useState(0);
 
 当 `activeIndex` 为 `0` 时，激活第一个面板，为 `1` 时，激活第二个面板。
 
-在任意一个 `Panel` 中点击“显示”按钮都需要更改 `Accordion` 中的激活索引值。 `Panel` 中无法直接设置状态 `activeIndex` 的值，因为该状态是在 `Accordion` 组件内部定义的。 `Accordion` 组件需要 *显式允许* `Panel` 组件通过 [将事件处理程序作为 prop 向下传递](/learn/responding-to-events#passing-event-handlers-as-props) 来更改其状态：
+在任意一个 `Panel` 中点击“显示”按钮都需要更改 `Accordion` 中的激活索引值。 `Panel` 中无法直接设置状态 `activeIndex` 的值，因为该状态是在 `Accordion` 组件内部定义的。 `Accordion` 组件需要 **显式允许** `Panel` 组件通过 [将事件处理程序作为 prop 向下传递](/learn/responding-to-events#passing-event-handlers-as-props) 来更改其状态：
 
 ```js
 <>
@@ -308,7 +308,7 @@ h3, p { margin: 5px 0px; }
 
 在 `React` 应用中，很多组件都有自己的状态。一些状态可能“活跃”在叶子组件（树形结构最底层的组件）附近，例如输入框。另一些状态可能在应用程序顶部“活动”。例如，客户端路由库也是通过将当前路由存储在 `React` 状态中，利用 `props` 将状态层层传递下去来实现的！
 
-**对于每个独特的状态，都应该存在且只存在于一个指定的组件中作为 state **。这一原则也被称为拥有 [“可信单一数据源”](https://en.wikipedia.org/wiki/Single_source_of_truth)。它并不意味着所有状态都存在一个地方——对每个状态来说，都需要一个特定的组件来保存这些状态信息。你应该 *将状态提升* 到公共父级，或 *将状态传递* 到需要它的子级中，而不是在组件之间复制共享的状态。
+**对于每个独特的状态，都应该存在且只存在于一个指定的组件中作为 state**。这一原则也被称为拥有 [“可信单一数据源”](https://en.wikipedia.org/wiki/Single_source_of_truth)。它并不意味着所有状态都存在一个地方——对每个状态来说，都需要一个特定的组件来保存这些状态信息。你应该 **将状态提升** 到公共父级，或 **将状态传递** 到需要它的子级中，而不是在组件之间复制共享的状态。
 
 你的应用会随着你的操作而变化。当你将状态上下移动时，你依然会想要确定每个状态在哪里“活跃”。这都是过程的一部分！
 

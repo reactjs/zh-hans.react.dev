@@ -100,7 +100,7 @@ const today = new Date();
 
 function formatDate(date) {
   return new Intl.DateTimeFormat(
-    'en-US',
+    'zh-CN',
     { weekday: 'long' }
   ).format(date);
 }
