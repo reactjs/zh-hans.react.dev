@@ -26,9 +26,9 @@ title: "介绍 react.dev"
 
 为了庆祝新文档的发布，更重要的是为了清晰区分新旧内容，我们已经将域名更改为更短的 [react.dev](https://react.dev)；旧的 [reactjs.org](https://reactjs.org) 域名现在将重定向到此处。
 
-旧的 React 文档现在已经存档于 [legacy.reactjs.org](https://legacy.reactjs.org)。所有现有的指向旧内容的链接将自动重定向到那里，以避免“破坏网络”，但是旧网站将不会再得到更多的更新。
+旧的 React 文档现在已经存档于 [legacy.reactjs.org](https://legacy.reactjs.org)。以避免“破坏网络”，所有现有的指向旧内容的链接将自动重定向到那里，但是旧网站将不会再得到新的更新。
 
-不敢相信，React很快就要十岁了。在 JavaScript 的年代里，这就像整整一个世纪！我们 [更新了 React 主页](https://react.dev)，以反映我们为什么认为 React 是创建用户界面的绝佳方式，并更新了入门指南，更突出地提到基于现代 React 的框架。
+不敢相信，React 很快就要十岁了。在 JavaScript 的年代里，这就像整整一个世纪！我们 [更新了 React 主页](https://react.dev)，以反映我们为什么认为 React 是创建用户界面的绝佳方式，并更新了入门指南，更突出地提到基于现代 React 的框架。
 
 如果你还没有看过新主页，请快去看看！
 
@@ -222,7 +222,7 @@ body {
 
 </Sandpack>
 
-我们还想强调一下 [React 哲学](/learn/thinking-in-react)——这是许多人理解 React 的教程。**我们使用了函数式组件和 Hook 更新了这两个经典教程**。
+我们还想强调一下 [React 哲学](/learn/thinking-in-react) ——这是许多人理解 React 的教程。**我们使用了函数式组件和 Hook 更新了这两个经典教程**。
 
 <Note>
 
@@ -239,18 +239,18 @@ body {
 - **[描述 UI](/learn/describing-the-ui)** 章节介绍了如何使用组件显示信息。
 - **[添加交互性](/learn/adding-interactivity)** 章节介绍了如何在响应用户输入时更新屏幕。
 
-接下来的两章更为高级，将让你深入了解更棘手的部分：
+接下来的两章持续深入，将带你了解更棘手的部分：
 
 - **[管理状态](/learn/managing-state)** 章节介绍了如何在应用程序变得越来越复杂时组织逻辑。
-- **[escape hatches](/learn/escape-hatches)** 章节介绍了如何“走出”React，并在何时做出最明智的决策。
+- **[应急方案](/learn/escape-hatches)** 章节介绍了如何“走出”React，并在何时做出最明智的决策。
 
-每个章节由几个相关的页面组成。其中大部分页面将介绍特定的技能或技术，例如 [使用 JSX 编写标记](/learn/writing-markup-with-jsx)、[更新状态中的对象](/learn/updating-objects-in-state) 或 [在组件间共享状态](/learn/sharing-state-between-components)。一些页面聚焦于解释一个概念，例如 [渲染和提交](/learn/render-and-commit) 或 [将状态作为快照（snapshot）](/learn/state-as-a-snapshot)。还有一些页面如 [你可能不需要 Effect](/learn/you-might-not-need-an-effect) 是基于我们多年的经验而分享的建议。
+每个章节都由几个相关的页面组成。其中大部分页面将介绍特定的技能或技术，例如 [使用 JSX 编写标记](/learn/writing-markup-with-jsx)、[更新状态中的对象](/learn/updating-objects-in-state) 或 [在组件间共享状态](/learn/sharing-state-between-components)。一些页面聚焦于解释一个概念，例如 [渲染和提交](/learn/render-and-commit) 或 [将状态作为快照（snapshot）](/learn/state-as-a-snapshot)。还有一些页面如 [你可能不需要 Effect](/learn/you-might-not-need-an-effect) 是基于我们多年的经验而分享的建议。
 
 你不必完全按顺序阅读这些章节，谁有这个时间呢？！不过也许你可以。学习部分的页面只依赖于早期页面介绍的概念。如果你想像读书一样阅读它，那就去吧！
 
 ### 使用挑战（challenge）检查你的理解 {/*check-your-understanding-with-challenges*/}
 
-“学习”章节的大多数页面都以一些挑战来检查你的理解情况。例如以下是有关 [条件渲染](/learn/conditional-rendering#challenges) 页面上的一些挑战。
+“学习”章节的大多数页面都以一些挑战结尾，以检查你的理解情况。例如以下是有关 [条件渲染](/learn/conditional-rendering#challenges) 页面上的一些挑战。
 
 除非你真的如此想，不然不必现在就解决它们！
 
@@ -452,9 +452,9 @@ export default function PackingList() {
 
 我们已经与浏览器厂商确认，这个描绘是 100% 科学准确的。
 
-## 新的并且更加细节的 API 参考 {/*a-new-detailed-api-reference*/}
+## 新的并且更细致的 API 参考 {/*a-new-detailed-api-reference*/}
 
-在 [API 参考手册](/reference/react) 中，每个 React API 现在都有一个专门的页面。这包括各种类型的 API：
+在 [API 参考](/reference/react) 中，每个 React API 现在都有一个专门的页面。这包括各种类型的 API：
 
 - 内置 Hook，比如 [`useState`](/reference/react/useState)。
 - 内置组件，比如 [`<Suspense>`](/reference/react/Suspense)。
@@ -608,7 +608,7 @@ button { display: block; margin-top: 10px; }
 
 我们希望 API 参考不仅仅是用来查找参数，还可以用来查看任何给定 API 可以做的所有不同事情以及与其他 API 相关联的方法。
 
-## 接下来 {/*whats-next*/}
+## 接下来还有什么 {/*whats-next*/}
 
 对新文档的介绍到此结束！浏览一下新网站，看看你喜欢或不喜欢什么，欢迎在 [匿名调查](https://www.surveymonkey.co.uk/r/PYRPF3X) 或 [问题跟踪器](https://github.com/reactjs/reactjs.org/issues) 中提供反馈。
 
