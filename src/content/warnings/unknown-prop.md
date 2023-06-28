@@ -2,17 +2,17 @@
 title: 未知属性警告
 ---
 
-如果尝试使用 React 不认识的属性来渲染 DOM 元素，将会触发未知属性警告。你应该确保 DOM 元素没有漂浮的冗余属性。
+如果尝试使用 React 不认识的属性来渲染 DOM 元素，将会触发未知属性警告。你应该确保 DOM 元素没有无法识别的冗余属性。
 
-出现此警告的可能原因下面几个：
+出现此警告的可能原因有以下几个：
 
 1. 你是否正在使用 `{...props}` 或 `cloneElement(element, props)`？在将 props 复制到子组件时，你应该确保不会意外地将仅用于父组件的 props 转发给子组件。请参阅下面针对此问题的常见修复方式。
 
-2. 也是是为了展示自定义数据，你正在将非标准的 DOM 属性应用于本地 DOM 节点。如果你想将自定义数据附加到标准 DOM 元素上，请考虑使用自定义数据属性，如 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/Using_data_attributes) 中所述。
+2. 也许是为了展示自定义数据，你正在将非标准的 DOM 属性应用于 DOM 节点。如果你想将自定义数据附加到标准 DOM 元素上，请考虑使用自定义数据属性，如 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/Using_data_attributes) 中所述。
 
 3. React 尚未识别指定的属性。这可能会在未来的 React 版本中修复。如果这样的属性名称为小写，React 将允许你传递它而不会出现警告。
 
-4. 如果你使用一个首字母小写的 React 组件，如 `<myButton />`，React 会将其解释为 DOM 标签，因为 React JSX 使用大小写约定来区分用户自定义组件与 DOM 标签。对于自定义 React 组件，请使用 PascalCase。例如，`<myButton />` 应该写成 `<MyButton />`。
+4. 如果你使用一个首字母小写的 React 组件，如 `<myButton />`，React 会将其解释为 DOM 标签，因为 React JSX 使用大小写约定来区分用户自定义组件与 DOM 标签。对于自定义 React 组件，请使用 PascalCase 命名。例如，`<myButton />` 应该写为 `<MyButton />`。
 
 ---
 
