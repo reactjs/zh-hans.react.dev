@@ -21,9 +21,9 @@ title: Server React DOM APIs
 
 ## Web 流服务器 API {/*server-apis-for-web-streams*/}
 
-以下方法仅在具有 [Web 流](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的环境中可用，包括浏览器、Deno，以及一些现代 edge 运行时：
+以下方法仅在具有 [Web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API) 的环境中可用，包括浏览器、Deno，以及一些现代 edge 运行时：
 
-+   [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) 将 React 树渲染为 [可读的 Web 流](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)。
++   [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) 将 React 树渲染为 [可读的 Web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream)。
 
 ---
 

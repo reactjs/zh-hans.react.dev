@@ -124,7 +124,7 @@ export default function Stopwatch() {
 
 </Sandpack>
 
-当按下“停止”按钮时，你需要取消现有的 interval，以便让它停止更新 `now` state 变量。你可以通过调用 [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval) 来完成此操作。但你需要为其提供 interval ID，此 ID 是之前用户按下 Start、调用 `setInterval` 时返回的。你需要将 interval ID 保留在某处。 **由于 interval ID 不用于渲染，你可以将其保存在 ref 中：**
+当按下“停止”按钮时，你需要取消现有的 interval，以便让它停止更新 `now` state 变量。你可以通过调用 [`clearInterval`](https://developer.mozilla.org/zh-CN/docs/Web/API/clearInterval) 来完成此操作。但你需要为其提供 interval ID，此 ID 是之前用户按下 Start、调用 `setInterval` 时返回的。你需要将 interval ID 保留在某处。 **由于 interval ID 不用于渲染，你可以将其保存在 ref 中：**
 
 <Sandpack>
 
@@ -306,7 +306,7 @@ console.log(ref.current); // 5
 
 #### 修复坏掉的聊天输入框 {/*fix-a-broken-chat-input*/}
 
-输入消息并单击“发送”。你会注意到，在看到“已发送！”提示框之前有 3 秒的延迟。在此延迟期间，你可以看到一个“撤消”按钮。点击它。这个“撤消”按钮应该阻止“发送！”消息弹出。它通过调用 [`clearTimeout`](https://developer.mozilla.org/en-US/docs/Web/API/clearTimeout) 来做到这点，这一步骤需要使用在 `handleSend` 时保存的 timeout ID。但是，即使在单击“撤消”后，“已发送！”消息仍然出现。找出它不起作用的原因，然后修复它。
+输入消息并单击“发送”。你会注意到，在看到“已发送！”提示框之前有 3 秒的延迟。在此延迟期间，你可以看到一个“撤消”按钮。点击它。这个“撤消”按钮应该阻止“发送！”消息弹出。它通过调用 [`clearTimeout`](https://developer.mozilla.org/zh-CN/docs/Web/API/clearTimeout) 来做到这点，这一步骤需要使用在 `handleSend` 时保存的 timeout ID。但是，即使在单击“撤消”后，“已发送！”消息仍然出现。找出它不起作用的原因，然后修复它。
 
 <Hint>
 

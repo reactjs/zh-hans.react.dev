@@ -88,7 +88,7 @@ function MyComponent() {
 
 React 将 <CodeStep step={1}>传递的 JSX</CodeStep> 的 DOM 节点放入 <CodeStep step={2}>提供的 DOM 节点</CodeStep> 中。
 
-如果没有 portal，第二个 `<p>` 将放置在父级 `<div>` 中，但 portal 将其“传送”到 [`document.body`](https://developer.mozilla.org/en-US/docs/Web/API/Document/body) 中：
+如果没有 portal，第二个 `<p>` 将放置在父级 `<div>` 中，但 portal 将其“传送”到 [`document.body`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/body) 中：
 
 <Sandpack>
 

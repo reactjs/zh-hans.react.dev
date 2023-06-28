@@ -36,7 +36,7 @@ const SomeComponent = memo(function SomeComponent(props) {
 
 * `Component`：要进行记忆化的组件。`memo` 不会修改该组件，而是返回一个新的、记忆化的组件。它接受任何有效的 React 组件，包括函数组件和 [`forwardRef`](/reference/react/forwardRef) 组件。
 
-* **可选参数** `arePropsEqual`：一个函数，接受两个参数：组件的前一个 props 和新的 props。如果旧的和新的 props 相等，即组件使用新的 props 渲染的输出和表现与旧的 props 完全相同，则它应该返回 `true`。否则返回 `false`。通常情况下，你不需要指定此函数。默认情况下，React 将使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较每个 prop。
+* **可选参数** `arePropsEqual`：一个函数，接受两个参数：组件的前一个 props 和新的 props。如果旧的和新的 props 相等，即组件使用新的 props 渲染的输出和表现与旧的 props 完全相同，则它应该返回 `true`。否则返回 `false`。通常情况下，你不需要指定此函数。默认情况下，React 将使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较每个 prop。
 
 #### 返回值 {/*returns*/}
 
@@ -269,7 +269,7 @@ label {
 
 ### 最小化 props 的变化 {/*minimizing-props-changes*/}
 
-当你使用 `memo` 时，只要任何一个 prop 与先前的值不是 **浅层相等** 的话，你的组件就会重新渲染。这意味着 React 会使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较组件中的每个 prop 与其先前的值。注意，`Object.is(3, 3)` 为 `true`，但 `Object.is({}, {})` 为 `false`。
+当你使用 `memo` 时，只要任何一个 prop 与先前的值不是 **浅层相等** 的话，你的组件就会重新渲染。这意味着 React 会使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较组件中的每个 prop 与其先前的值。注意，`Object.is(3, 3)` 为 `true`，但 `Object.is({}, {})` 为 `false`。
 
 
 为了最大化使用 `memo` 的效果，应该尽量减少 props 的变化次数。例如，如果 props 是一个对象，可以使用 [`useMemo`](/reference/react/useMemo) 避免父组件每次都重新创建该对象：
@@ -349,7 +349,7 @@ function arePropsEqual(oldProps, newProps) {
 
 <Pitfall>
 
-如果你提供了一个自定义的 `arePropsEqual` 实现，**你必须比较每个 prop，包括函数**。函数通常 [闭包](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) 了父组件的 props 和 state。如果你在 `oldProps.onClick !== newProps.onClick` 时返回 `true`，你的组件将在其 `onClick` 处理函数中继续“看到”来自先前渲染的 props 和 state，导致非常令人困惑的 bug。
+如果你提供了一个自定义的 `arePropsEqual` 实现，**你必须比较每个 prop，包括函数**。函数通常 [闭包](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures) 了父组件的 props 和 state。如果你在 `oldProps.onClick !== newProps.onClick` 时返回 `true`，你的组件将在其 `onClick` 处理函数中继续“看到”来自先前渲染的 props 和 state，导致非常令人困惑的 bug。
 
 避免在 `arePropsEqual` 中进行深比较，除非你 100％ 确定你正在处理的数据结构具有已知有限的深度。**深比较可能会变得非常缓慢**，并且如果有人稍后更改数据结构，这可能会卡住你的应用数秒钟。
 

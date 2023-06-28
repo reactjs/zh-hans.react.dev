@@ -1246,7 +1246,7 @@ export default function Timer() {
 
 #### 修复重新触发动画的问题 {/*fix-a-retriggering-animation*/}
 
-在此示例中，当你按下“显示”时，欢迎消息淡入。动画持续一秒钟。当你按下“移除”时，欢迎信息立即消失。淡入动画的逻辑在 `animation.js` 文件中以纯 JavaScript [动画循环](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) 实现。你不需要改变那个逻辑。你可以将其视为第三方库。Effect 的逻辑是为 DOM 节点创建一个 `FadeInAnimation` 实例，然后调用 `start(duration)` 或 `stop()` 来控制动画。`duration` 由滑块控制。调整滑块并查看动画如何变化。
+在此示例中，当你按下“显示”时，欢迎消息淡入。动画持续一秒钟。当你按下“移除”时，欢迎信息立即消失。淡入动画的逻辑在 `animation.js` 文件中以纯 JavaScript [动画循环](https://developer.mozilla.org/zh-CN/docs/Web/API/window/requestAnimationFrame) 实现。你不需要改变那个逻辑。你可以将其视为第三方库。Effect 的逻辑是为 DOM 节点创建一个 `FadeInAnimation` 实例，然后调用 `start(duration)` 或 `stop()` 来控制动画。`duration` 由滑块控制。调整滑块并查看动画如何变化。
 
 此代码已经能工作，但你需要更改一些内容。目前，当你移动控制 `duration` 状态变量的滑块时，它会重新触发动画。更改行为，使 Effect 不会对 `duration` 变量做出“反应”。当你按下“显示”时，Effect 应该使用滑块上的当前 `duration` 值。但是，移动滑块本身不应重新触发动画。
 

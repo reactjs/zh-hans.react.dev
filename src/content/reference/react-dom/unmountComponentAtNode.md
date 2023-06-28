@@ -43,7 +43,7 @@ unmountComponentAtNode(domNode);
 
 #### 参数 {/*parameters*/}
 
-* `domNode`：[DOM 节点](https://developer.mozilla.org/en-US/docs/Web/API/Element)。React 将从此节点移除已挂载的 React 组件。
+* `domNode`：[DOM 节点](https://developer.mozilla.org/zh-CN/docs/Web/API/Element)。React 将从此节点移除已挂载的 React 组件。
 
 #### 返回值 {/*returns*/}
 

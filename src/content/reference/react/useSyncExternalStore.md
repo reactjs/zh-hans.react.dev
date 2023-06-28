@@ -43,7 +43,7 @@ function TodosApp() {
 
 * `subscribe`：一个函数，接收一个单独的 `callback` 参数并把它订阅到 store 上。当 store 发生改变，它应当调用被提供的 `callback`。这会导致组件重新渲染。`subscribe` 函数会返回清除订阅的函数。
 
-* `getSnapshot`：一个函数，返回组件需要的 store 中的数据快照。在 store 不变的情况下，重复调用 `getSnapshot` 必须返回同一个值。如果 store 改变，并且返回值也不同了（用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较），React 就会重新渲染组件。
+* `getSnapshot`：一个函数，返回组件需要的 store 中的数据快照。在 store 不变的情况下，重复调用 `getSnapshot` 必须返回同一个值。如果 store 改变，并且返回值也不同了（用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较），React 就会重新渲染组件。
 
 * **可选** `getServerSnapshot`：一个函数，返回 store 中数据的初始快照。它只会在服务端渲染时，以及在客户端进行服务端渲染内容的 hydration 时被用到。快照在服务端与客户端之间必须相同，它通常是从服务端序列化并传到客户端的。如果你忽略此参数，在服务端渲染这个组件会抛出一个错误。
 
@@ -157,7 +157,7 @@ function emitChange() {
 
 ### 订阅浏览器 API {/*subscribing-to-a-browser-api*/}
 
-添加 `useSyncExternalStore` 的另一个场景是当你想订阅一些由浏览器暴露的并随时间变化的值时。例如，假设你想要组件展示网络连接是否正常。浏览器通过一个叫做 [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) 的属性暴露出这一信息。
+添加 `useSyncExternalStore` 的另一个场景是当你想订阅一些由浏览器暴露的并随时间变化的值时。例如，假设你想要组件展示网络连接是否正常。浏览器通过一个叫做 [`navigator.onLine`](https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator/onLine) 的属性暴露出这一信息。
 
 这个值可能在 React 不知道的情况下改变，所以你应当通过 `useSyncExternalStore` 来读取它。
 
@@ -178,7 +178,7 @@ function getSnapshot() {
 }
 ```
 
-接下来，你需要实现 `subscribe` 函数。例如，当 `navigator.onLine` 改变，浏览器触发 `window` 对象的 [`online`](https://developer.mozilla.org/en-US/docs/Web/API/Window/online_event) 和 [`offline`](https://developer.mozilla.org/en-US/docs/Web/API/Window/offline_event) 事件，然后返回一个清除订阅的函数：
+接下来，你需要实现 `subscribe` 函数。例如，当 `navigator.onLine` 改变，浏览器触发 `window` 对象的 [`online`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/online_event) 和 [`offline`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/offline_event) 事件，然后返回一个清除订阅的函数：
 
 ```js
 function subscribe(callback) {

@@ -255,7 +255,7 @@ function MyComponent() {
   return <input ref={inputRef} />;
 ```
 
-当 React 创建 DOM 节点并将其渲染到屏幕时，React 将会把 DOM 节点设置为你的 ref 对象的 <CodeStep step={2}>`current` 属性</CodeStep>。现在你可以访问 `<input>` 的 DOM 节点，并且可以调用类似于 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) 的方法：
+当 React 创建 DOM 节点并将其渲染到屏幕时，React 将会把 DOM 节点设置为你的 ref 对象的 <CodeStep step={2}>`current` 属性</CodeStep>。现在你可以访问 `<input>` 的 DOM 节点，并且可以调用类似于 [`focus()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus) 的方法：
 
 ```js [[2, 2, "inputRef.current"]]
   function handleClick() {
