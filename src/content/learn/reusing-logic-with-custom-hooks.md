@@ -4,15 +4,15 @@ title: 使用自定义 Hook 复用逻辑
 
 <Intro>
 
-React 有一些内置 Hook，例如 `useState`，`useContext` 和 `useEffect`。有时你需要一个用途更特殊的 Hook：例如获取数据，记录用户是否在线或者连接聊天室。虽然 React 中可能找不到这些 Hook，但是你可以根据应用需求创建自己的 Hook。
+React 有一些内置 Hook，例如 `useState`，`useContext` 和 `useEffect`。有时你需要一个用途更特殊的 Hook：例如获取数据，记录用户是否在线或者连接聊天室。虽然 React 中可能没有这些 Hook，但是你可以根据应用需求创建自己的 Hook。
 
 </Intro>
 
 <YouWillLearn>
 
-- 自定义 Hook 是什么，以及如何编写
+- 什么是自定义 Hook，以及如何编写
 - 如何在组件间重用逻辑
-- 如何命名和构建自定义 Hook
+- 如何给自定义 Hook 命名以及如何构建
 - 提取自定义 Hook 的时机和原因
 
 </YouWillLearn>
@@ -24,7 +24,7 @@ React 有一些内置 Hook，例如 `useState`，`useContext` 和 `useEffect`。
 1. 一个追踪网络是否在线的 state。
 2. 一个订阅全局 [`online`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/online_event) 和 [`offline`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/offline_event) 事件并更新上述 state 的 Effect。
 
-这将让组件与网络状态保持 [同步](/learn/synchronizing-with-effects)。你也许可以像这样开始：
+这会让组件与网络状态保持 [同步](/learn/synchronizing-with-effects)。你也许可以像这样开始：
 
 <Sandpack>
 
@@ -54,11 +54,11 @@ export default function StatusBar() {
 
 </Sandpack>
 
-试着开启和关闭网络，注意 `StatusBar` 组件应对你的行为是如何更新的。
+试着开启和关闭网络，注意观察 `StatusBar` 组件应对你的行为是如何更新的。
 
 假设现在你想在另一个不同的组件里 **也** 使用同样的逻辑。你希望实现一个保存按钮，每当网络断开这个按钮就会不可用并且显示“Reconnecting...”而不是“Save progress”。
 
-你可以从复制粘贴 `isOnline` state 和 Effect 到 `SaveButton` 开始：
+你可以从复制粘贴 `isOnline` state 和 Effect 到 `SaveButton` 组件开始：
 
 <Sandpack>
 
@@ -96,13 +96,13 @@ export default function SaveButton() {
 
 </Sandpack>
 
-如果你关闭网络，可以验证出这个按钮将会变更外观。
+如果你关闭网络，可以发现这个按钮的外观变了。
 
 这两个组件都能很好地工作，但不幸的是他们的逻辑重复了。他们看上去有不同的 **视觉外观**，但你依然想复用他们的逻辑。
 
 ### 从组件中提取自定义 Hook {/*extracting-your-own-custom-hook-from-a-component*/}
 
-假设有一个与 [`useState`](/reference/react/useState) 和 [`useEffect`](/reference/react/useEffect) 相似的内置 Hook `useOnlineStatus`。那么你就可以简化这两个组件并移除他们之间的重复部分：
+假设有一个内置 Hook `useOnlineStatus`，它与 [`useState`](/reference/react/useState) 和 [`useEffect`](/reference/react/useEffect) 相似。那么你就可以简化这两个组件并移除他们之间的重复部分：
 
 ```js {2,7}
 function StatusBar() {
@@ -217,18 +217,18 @@ export function useOnlineStatus() {
 
 ### Hook 的名称必须永远以 `use` 开头 {/*hook-names-always-start-with-use*/}
 
-React 应用是由组件构建的。而组件是由内置或自定义的 Hook 构建。可能你经常使用的是别人写的自定义 Hook，但偶尔可能也要自己写！
+React 应用是由组件构成，而组件由内置或自定义 Hook 构成。可能你经常使用别人写的自定义 Hook，但偶尔也要自己写！
 
 你必须遵循以下这些命名公约：
 
 1. **React 组件名称必须以大写字母开头**，比如 `StatusBar` 和 `SaveButton`。React 组件还需要返回一些 React 能够显示的内容，比如一段 JSX。
 2. **Hook 的名称必须以后跟一个大写字母的 `use` 开头**，像 [`useState`](/reference/react/useState)  (内置) 或者 `useOnlineStatus` (像本文早前的自定义 Hook)。Hook 可以返回任意值。
 
-这个公约保证你始终可以一眼识别出组件并且知道它的 state，Effect 以及其他的 React 特性可能“隐藏”在哪里。例如如果你在组件内部看见 `getColor()` 函数调用，你可以确定它内部不可能包含 React state，因为它的名称没有以 `use` 开头。但是像 `useOnlineStatus()` 这样的函数调用就很可能包含对内部其他 Hook 的调用！
+这个公约保证你始终能一眼识别出组件并且知道它的 state，Effect 以及其他的 React 特性可能“隐藏”在哪里。例如如果你在组件内部看见 `getColor()` 函数调用，就可以确定它里面不可能包含 React state，因为它的名称没有以 `use` 开头。但是像 `useOnlineStatus()` 这样的函数调用就很可能包含对内部其他 Hook 的调用！
 
 <Note>
 
-如果你为 [React 配置了](/learn/editor-setup#linting) 代码检查工具，它会强制执行这个命名公约。现在滑动到上面的 sandbox，并将 `useOnlineStatus` 重命名为 `getOnlineStatus`。注意此时代码检查工具将不会再允许你其内部调用 `useState` 或者 `useEffect`。只有 Hook 和组件可以调用其他 Hook！
+如果你为 [React 配置了](/learn/editor-setup#linting) 代码检查工具，它会强制执行这个命名公约。现在滑动到上面的 sandbox，并将 `useOnlineStatus` 重命名为 `getOnlineStatus`。注意此时代码检查工具将不会再允许你在其内部调用 `useState` 或者 `useEffect`。只有 Hook 和组件可以调用其他 Hook！
 
 </Note>
 
@@ -265,7 +265,7 @@ function List({ items, shouldSort }) {
 }
 ```
 
-如果内部至少使用了一个 Hook，你就应该给这个函数加 `use` 前缀（让它成为一个 Hook）：
+哪怕内部只使用了一个 Hook，你也应该给这个函数加 `use` 前缀（让它成为一个 Hook）：
 
 ```js
 // ✅ Good: 一个使用了其他Hook的Hook
@@ -285,7 +285,7 @@ function useAuth() {
 }
 ```
 
-接下来组件就不能在条件语句里调用这个函数。当你在内部实际添加了 Hook 调用时，这一点将变得很重要。如果你没有计划在内部使用 Hook（现在或者之后），请不要让它变成 Hook。
+接下来组件就不能在条件语句里调用这个函数。当你在内部实际添加了 Hook 调用时，这一点将变得很重要。如果你（现在或者之后）没有计划在内部使用 Hook，请不要让它变成 Hook。
 
 </DeepDive>
 
