@@ -26,7 +26,7 @@ const stream = await renderToReadableStream(reactNode, options?)
 
 ### `renderToReadableStream(reactNode, options?)` {/*rendertoreadablestream*/}
 
-调用 `renderToReadableStream`，将 React 树渲染成 HTML 放到 [Web 可读流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream)中。
+调用 `renderToReadableStream`，将 React 树渲染成 HTML 放到 [Web 可读流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream) 中。
 
 ```js
 import { renderToReadableStream } from 'react-dom/server';
@@ -54,8 +54,8 @@ async function handler(request) {
   * **可选属性** `bootstrapScripts`：一个字符串 URL 的数组， 用于在页面上生成 `<script>` 标签。使用它的话，可在 `<script>` 中调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)。如果你根本不想在客户端上运行 React，则忽略它。
   * **可选属性** `bootstrapModules`：就像 `bootstrapScripts`, 但不同的是，生成 [`<script type="module">`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules) 标签。
   * **可选属性** `identifierPrefix`：一个字符串前缀，React 通过 [`useId`](/reference/react/useId) 来生成 ID。在同一页面上使用多个根组件时，有助于避免冲突。必须与传递给 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters) 的前缀相同。
-  * **可选属性** `namespaceURI`：是一个字符串，带有流的根[命名空间URI](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElementNS#important_namespace_uris)。默认为常规 HTML。如果用于 SVG，传 `'http://www.w3.org/2000/svg'`，如果用于 MathML，传 `'http://www.w3.org/1998/Math/MathML'`。
-  * **可选属性** `nonce`：一个 [`随机字符串`](http://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script#nonce) 让脚本通过 [`script-src` 内容安全策略](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)。
+  * **可选属性** `namespaceURI`：是一个字符串，带有流的根 [命名空间URI](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElementNS#important_namespace_uris)。默认为常规 HTML。如果用于 SVG，传入 `'http://www.w3.org/2000/svg'`，如果用于 MathML，传入 `'http://www.w3.org/1998/Math/MathML'`。
+  * **可选属性** `nonce`：一个 [`nonce`](http://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script#nonce) 字符串，用以使脚本通过 [`script-src` 内容安全策略](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)。
   * **可选属性** `onError`：一个回调函数，只要服务器出错就会触发，无论错误是 [否](#recovering-from-errors-inside-the-shell) 可 [恢复](#recovering-from-errors-outside-the-shell)。默认情况下，它只调用 `console.error`。如果你用 [log crash reports](#logging-crashes-on-the-server) 重写，请确保你仍然调用 `console.error`。你还可以使用它在 shell 触发之前 [调整状态代码](#setting-the-status-code)。
   * **可选属性** `progressiveChunkSize`： 块中的字节数。[阅读更多默认启发式方法](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)。
   * **可选属性** `signal`：一个 [中止信号](https://developer.mozilla.org/zh-CN/docs/Web/API/AbortSignal)，用于 [中止服务端渲染](#aborting-server-rendering) 并在客户端上渲染其余部分。
@@ -142,7 +142,7 @@ hydrateRoot(document, <App />);
 
 最终的资源 URL（像 JavaScript 和 CSS 文件）通常在构建后进行散列。例如，你可能最终得到的不是 `styles.css` 而是 `styles.123456.css`。散列静态资源文件名可以保证同一资源的每个不同构建都有不同的文件名。这个方案是有用处的，因为它可以安全地为静态资源开启长期缓存：有了特定名字的文件，其内容就永远不会变。
 
-但是，如果构建之后才能知道静态资源的URL，那就无法将它们放到源代码中。例如，像前面那样将 `"/styles.css"` 硬编码到 JSX 中是行不通的。为了将它们保持在源代码之外，根组件可以从 prop 传递的映射中读取真实文件名：
+但是，如果构建之后才能知道静态资源的 URL，那就无法将它们放到源代码中。例如，像前面那样将 `"/styles.css"` 硬编码到 JSX 中是行不通的。为了将它们保持在源代码之外，根组件可以从 prop 传递的映射中读取真实文件名：
 
 ```js {1,6}
 export default function App({ assetMap }) {
@@ -232,7 +232,7 @@ function ProfilePage() {
 }
 ```
 
-想象一下，加载 `<Posts/>` 的数据是需要一些时间的。理想情况是希望在不等帖子内容返回的情况下，向用户显示个人资料页面的其余内容。要做到这一点，需要 [将 `Posts` 包装在 `<Suspense>` 边界中](/reference/react/Suspense#displaying-a-fallback-while-content-is-loading)：
+想象一下，加载 `<Posts/>` 的数据是需要一些时间的。理想情况是希望在不等帖子内容返回的情况下，向用户显示个人资料页面的其余内容。要做到这一点，需要 [将 `Posts` 包裹在 `<Suspense>` 边界里](/reference/react/Suspense#displaying-a-fallback-while-content-is-loading)：
 
 ```js {9,11}
 function ProfilePage() {
@@ -253,7 +253,7 @@ function ProfilePage() {
 
 告诉 React 在 `Posts` 加载数据之前开始流式传输 HTML。React 将首先发送加载回滚的 HTML（`PostsGlimmer`），然后，当 `Posts` 完成数据加载后，React 将发送剩余的 HTML，并用该 HTML 替换加载回滚的内联 `<script>` 标签。从用户视角看，该页面会首先显示 `PostsGlimmer` 的内容，然后被替换为 `Posts` 的内容。
 
-你可以进一步 [嵌套`<Suspense>`边界](/reference/react/Suspense#revealing-nested-content-as-it-loads) 来创建更细粒度的加载序列：
+你可以进一步 [嵌套 `<Suspense>` 边界](/reference/react/Suspense#revealing-nested-content-as-it-loads) 来创建更细粒度的加载序列：
 
 ```js {5,13}
 function ProfilePage() {
