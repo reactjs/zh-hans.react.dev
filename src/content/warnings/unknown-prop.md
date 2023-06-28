@@ -1,38 +1,38 @@
 ---
-title: Unknown Prop Warning
+title: 未知属性警告
 ---
 
-The unknown-prop warning will fire if you attempt to render a DOM element with a prop that is not recognized by React as a legal DOM attribute/property. You should ensure that your DOM elements do not have spurious props floating around.
+如果尝试使用 React 不认识的属性来渲染 DOM 元素，将会触发未知属性警告。你应该确保 DOM 元素没有无法识别的冗余属性。
 
-There are a couple of likely reasons this warning could be appearing:
+出现此警告的可能原因有以下几个：
 
-1. Are you using `{...props}` or `cloneElement(element, props)`? When copying props to a child component, you should ensure that you are not accidentally forwarding props that were intended only for the parent component. See common fixes for this problem below.
+1. 你是否正在使用 `{...props}` 或 `cloneElement(element, props)`？在将 props 复制到子组件时，你应该确保不会意外地将仅用于父组件的 props 转发给子组件。请参阅下面针对此问题的常见修复方式。
 
-2. You are using a non-standard DOM attribute on a native DOM node, perhaps to represent custom data. If you are trying to attach custom data to a standard DOM element, consider using a custom data attribute as described [on MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes).
+2. 也许是为了展示自定义数据，你正在将非标准的 DOM 属性应用于 DOM 节点。如果你想将自定义数据附加到标准 DOM 元素上，请考虑使用自定义数据属性，如 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/Using_data_attributes) 中所述。
 
-3. React does not yet recognize the attribute you specified. This will likely be fixed in a future version of React. React will allow you to pass it without a warning if you write the attribute name lowercase.
+3. React 尚未识别指定的属性。这可能会在未来的 React 版本中修复。如果这样的属性名称为小写，React 将允许你传递它而不会出现警告。
 
-4. You are using a React component without an upper case, for example `<myButton />`. React interprets it as a DOM tag because React JSX transform uses the upper vs. lower case convention to distinguish between user-defined components and DOM tags. For your own React components, use PascalCase. For example, write `<MyButton />` instead of `<myButton />`.
+4. 如果你使用一个首字母小写的 React 组件，如 `<myButton />`，React 会将其解释为 DOM 标签，因为 React JSX 使用大小写约定来区分用户自定义组件与 DOM 标签。对于自定义 React 组件，请使用 PascalCase 命名。例如，`<myButton />` 应该写为 `<MyButton />`。
 
 ---
 
-If you get this warning because you pass props like `{...props}`, your parent component needs to "consume" any prop that is intended for the parent component and not intended for the child component. Example:
+如果你因为传递了类似 `{...props}` 的 props 而收到此警告，你的父组件需要使用（consume）任何仅用于父组件而不是子组件的 props。这是一个例子：
 
-**Bad:** Unexpected `layout` prop is forwarded to the `div` tag.
+**错误的做法**：意外地将 `layout` props 转发给 `div` 标签。
 
 ```js
 function MyDiv(props) {
   if (props.layout === 'horizontal') {
-    // BAD! Because you know for sure "layout" is not a prop that <div> understands.
+    // 错误！因为 layout 不是 <div> 能理解的属性。
     return <div {...props} style={getHorizontalStyle()} />
   } else {
-    // BAD! Because you know for sure "layout" is not a prop that <div> understands.
+    // 错误！因为 layout 不是 <div> 能理解的属性。
     return <div {...props} style={getVerticalStyle()} />
   }
 }
 ```
 
-**Good:** The spread syntax can be used to pull variables off props, and put the remaining props into a variable.
+**正确的做法**：使用展开运算符获取其他属性，并将这些属性放在一个变量中。
 
 ```js
 function MyDiv(props) {
@@ -45,7 +45,7 @@ function MyDiv(props) {
 }
 ```
 
-**Good:** You can also assign the props to a new object and delete the keys that you're using from the new object. Be sure not to delete the props from the original `this.props` object, since that object should be considered immutable.
+**正确的做法**：你也可以将 props 拷贝给一个新对象，并从新对象中删除正在使用的键。但要确保不要从原始的 `this.props` 对象中删除属性，因为该对象应被视为不可变的。
 
 ```js
 function MyDiv(props) {

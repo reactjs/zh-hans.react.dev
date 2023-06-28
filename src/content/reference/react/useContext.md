@@ -43,7 +43,7 @@ function MyComponent() {
 #### 注意事项 {/*caveats*/}
 
 * 组件中的 `useContext()` 调用不受 **同一** 组件返回的 provider 的影响。相应的 `<Context.Provider>` 需要位于调用 `useContext()` 的组件 **之上**。
-* 从 provider 接收到不同的 `value` 开始，React 自动重新渲染使用了该特定 context 的所有子级。先前的值和新的值会使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来做比较。使用 [`memo`](/reference/react/memo) 来跳过重新渲染并不妨碍子级接收到新的 context 值。 
+* 从 provider 接收到不同的 `value` 开始，React 自动重新渲染使用了该特定 context 的所有子级。先前的值和新的值会使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来做比较。使用 [`memo`](/reference/react/memo) 来跳过重新渲染并不妨碍子级接收到新的 context 值。 
 * 如果您的构建系统在输出中产生重复的模块（可能发生在符号链接中），这可能会破坏 context。通过 context 传递数据只有在用于传递 context 的 `SomeContext` 和用于读取数据的  `SomeContext` 是完全相同的对象时才有效，这是由 `===` 比较决定的。
 
 ---
