@@ -353,7 +353,7 @@ button { margin: 10px; }
 
 上面的计数器例子，本应该每秒递增，递增量可以通过两个按钮来控制。然而，由于你对 React “撒谎”，说这个 Effect 不依赖于任何东西，React 便一直使用初次渲染时的 `onTick` 函数。[在后续渲染中](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time)， `count` 总是 `0` ，`increment` 总是 `1`。为什么？因为定时器每秒调用 `onTick` 函数，实际运行的是 `setCount(0 + 1)`<sup><a href="#note1">[1]</a></sup>，所以你总是看到 `1`。像这样的错误，当它们分散在多个组件中时，就更难解决了。
 
-这里有一个比忽略 linter 更好的解决方案! 那便是将 `onTick` 添加到依赖中。(为了确保间隔只设置一次，[使 `onTick` 成为 Effect Event](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)。)
+这里有一个比忽略 linter 更好的解决方案! 那便是将 `onTick` 添加到依赖中。(为了确保 interval 只设置一次，[使 `onTick` 成为 Effect Event](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)。)
 
 **我们建议将依赖性 lint 错误作为一个编译错误来处理。如果你不抑制它，你将永远不会遇到像上面这样的错误**。本页面的剩下部分将介绍这个和其他情况的替代方案。
 
@@ -1173,9 +1173,9 @@ function ChatRoom({ getOptions }) {
 
 <Challenges>
 
-#### 修复重置间隔 {/*fix-a-resetting-interval*/}
+#### 修复重置 interval {/*fix-a-resetting-interval*/}
 
-这个 Effect 设置了一个每秒运行的间隔。你已经注意到一些奇怪的事情：似乎每次时间间隔都会被销毁并重新创建。修复代码，使间隔不会被不断重新创建。
+这个 Effect 设置了一个每秒运行的 interval。你已经注意到一些奇怪的事情：似乎每次 interval 都会被销毁并重新创建。修复代码，使 interval 不会被不断重新创建。
 <Hint>
 
 看起来这个 Effect 的代码依赖于 `count`。有什么方法不需要这依赖吗？有，那就是根据其之前的值更新 `count` 状态，从而避免添加对该值的依赖。
@@ -1191,13 +1191,13 @@ export default function Timer() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    console.log('✅ 创建一个间隔定时器');
+    console.log('✅ 创建定时器');
     const id = setInterval(() => {
-      console.log('⏰ 间隔刻度');
+      console.log('⏰ Interval');
       setCount(count + 1);
     }, 1000);
     return () => {
-      console.log('❌ 清除一个间隔定时器');
+      console.log('❌ 清除定时器');
       clearInterval(id);
     };
   }, [count]);
@@ -1210,7 +1210,7 @@ export default function Timer() {
 
 <Solution>
 
-你想要从 Effect 内部将 `count` 状态更新为 `count + 1`。但是，这会使 Effect 依赖于 `count`，它会随着每次滴答而变化，这就是为什么间隔会在每次滴答时重新创建。
+你想要从 Effect 内部将 `count` 状态更新为 `count + 1`。但是，这会使 Effect 依赖于 `count`，它会随着每次滴答而变化，这就是为什么 interval 会在每次滴答时重新创建。
 
 要解决这个问题，请使用 [更新函数](/reference/react/useState#updating-state-based-on-the-previous-state) 并编写 `setCount(c => c + 1)` 而不是 `setCount(count + 1)`:
 
@@ -1223,13 +1223,13 @@ export default function Timer() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    console.log('✅ 创建一个间隔定时器');
+    console.log('✅ 创建定时器');
     const id = setInterval(() => {
-      console.log('⏰ 间隔刻度');
+      console.log('⏰ Interval');
       setCount(c => c + 1);
     }, 1000);
     return () => {
-      console.log('❌ 清除一个间隔定时器');
+      console.log('❌ 清除定时器');
       clearInterval(id);
     };
   }, []);
@@ -1240,7 +1240,7 @@ export default function Timer() {
 
 </Sandpack>
 
-你不应在 Effect 中读取 `count`，而是将 `c => c + 1` 指令（“增加此数字！”）传递给 React。React 将在下一次渲染时执行它。由于你不再需要读取 Effect 中 `count` 的值，因此你可以将 Effect 的依赖保持为空（`[]`）。这可以防止 Effect 在每次执行时重新创建定时器间隔。
+你不应在 Effect 中读取 `count`，而是将 `c => c + 1` 指令（“增加此数字！”）传递给 React。React 将在下一次渲染时执行它。由于你不再需要读取 Effect 中 `count` 的值，因此你可以将 Effect 的依赖保持为空（`[]`）。这可以防止 Effect 在每次执行时重新创建定时器 interval。
 
 </Solution>
 
@@ -1322,7 +1322,7 @@ export default function App() {
           onChange={e => setDuration(Number(e.target.value))}
         />
         <br />
-        淡入间隔: {duration} ms
+        淡入 interval: {duration} ms
       </label>
       <button onClick={() => setShow(!show)}>
         {show ? '移除' : '显示'}
@@ -1453,7 +1453,7 @@ export default function App() {
           onChange={e => setDuration(Number(e.target.value))}
         />
         <br />
-        淡入间隔: {duration} ms
+        淡入 interval: {duration} ms
       </label>
       <button onClick={() => setShow(!show)}>
         {show ? '移除' : '显示'}
