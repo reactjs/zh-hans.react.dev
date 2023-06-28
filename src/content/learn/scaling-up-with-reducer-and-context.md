@@ -1,5 +1,5 @@
 ---
-title: 使用 Reducer 和 Context 来拓展你的应用
+title: 使用 Reducer 和 Context 拓展你的应用
 translators: 
   - Ikaite 
   - KnowsCount 
