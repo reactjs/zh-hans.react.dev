@@ -597,7 +597,7 @@ function Page() {
 }
 ```
 
-稍后向你的站点添加多个路由。现在 `Page` 组件接收一个包含当前路径的 `url` prop。你想把 `url` 作为 `logVisit` 调用的一部分进行传递，但是依赖项检查工具控诉：
+稍后向你的站点添加多个路由。现在 `Page` 组件接收包含当前路径的 `url` props。你想把 `url` 作为 `logVisit` 调用的一部分进行传递，但是依赖项检查工具会提示：
 
 ```js {1,3}
 function Page({ url }) {
