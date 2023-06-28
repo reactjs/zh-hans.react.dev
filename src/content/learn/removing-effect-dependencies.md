@@ -351,7 +351,7 @@ button { margin: 10px; }
 
 比方说，你想“只在 mount 时”运行 Effect。你已经知道可以通过设置 [空（`[]`）依赖](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) 来达到这种效果，所以你决定忽略 linter 的检查，强行指定 `[]` 为依赖。
 
-上面的计数器例子，本应该每秒递增，递增量可以通过两个按钮来控制。然而，由于你对 React “撒谎”，说这个 Effect 不依赖于任何东西，React 便一直使用初次渲染时的 `onTick` 函数。[在后续渲染中，](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) `count` 总是 `0` ，`increment` 总是 `1`。为什么？因为定时器每秒调用 `onTick` 函数，实际运行的是 `setCount(0 + 1)`<sup><a href="#note1">[1]</a></sup>，所以你总是看到 `1`。像这样的错误，当它们分散在多个组件中时，就更难解决了。
+上面的计数器例子，本应该每秒递增，递增量可以通过两个按钮来控制。然而，由于你对 React “撒谎”，说这个 Effect 不依赖于任何东西，React 便一直使用初次渲染时的 `onTick` 函数。[在后续渲染中](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time)， `count` 总是 `0` ，`increment` 总是 `1`。为什么？因为定时器每秒调用 `onTick` 函数，实际运行的是 `setCount(0 + 1)`<sup><a href="#note1">[1]</a></sup>，所以你总是看到 `1`。像这样的错误，当它们分散在多个组件中时，就更难解决了。
 
 这里有一个比忽略 linter 更好的解决方案! 那便是将 `onTick` 添加到依赖中。(为了确保间隔只设置一次，[使 `onTick` 成为 Effect Event](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)。)
 
@@ -436,7 +436,7 @@ function Form() {
 }
 ```
 
-现在，代码在事件处理程序中，它不是响应式的 —— 所以它只在用户提交表单时运行。阅读更多关于 [在事件处理程序和 Effect 之间做出选择](/learn/separating-events-from-effects#reactive-values-and-reactive-logic) 和 [如何删除不必要的 Effect。](/learn/you-might-not-need-an-effect)
+现在，代码在事件处理程序中，它不是响应式的 —— 所以它只在用户提交表单时运行。阅读更多关于 [在事件处理程序和 Effect 之间做出选择](/learn/separating-events-from-effects#reactive-values-and-reactive-logic) 和 [如何删除不必要的 Effect](/learn/you-might-not-need-an-effect)。
 
 ### Effect 是否在做几件不相关的事情？ {/*is-your-effect-doing-several-unrelated-things*/}
 
@@ -658,7 +658,7 @@ function ChatRoom({ roomId }) {
 
 问题是每次 `isMuted` 改变时（例如，当用户按下“静音”开关时），Effect 将重新同步，并重新连接到聊天。这不是理想的用户体验！（在此示例中，即使禁用 linter 也不起作用——如果你这样做，`isMuted` 将“保持”其旧值。）
 
-要解决这个问题，需要将不应该响应式的逻辑从 Effect 中抽取出来。你不希望此 Effect 对 `isMuted` 中的更改做出“反应”。[将这段非响应式逻辑移至 Effect Event 中：](/learn/separating-events-from-effects#declaring-an-effect-event)
+要解决这个问题，需要将不应该响应式的逻辑从 Effect 中抽取出来。你不希望此 Effect 对 `isMuted` 中的更改做出“反应”。[将这段非响应式逻辑移至 Effect Event 中](/learn/separating-events-from-effects#declaring-an-effect-event)：
 
 ```js {1,7-12,18,21}
 import { useState, useEffect, useEffectEvent } from 'react';
@@ -759,7 +759,7 @@ function Chat({ roomId, notificationCount }) {
 }
 ```
 
-你希望逻辑对 `roomId` 做出响应，因此你在 Effect 中读取 `roomId`。但是，你不希望更改 `notificationCount` 来记录额外的日志输出，因此你可以在 Effect Event 中读取 `notificationCount`。[了解使用 Effect Events 在 Effect 中读取最新 props 和 state 的更多信息。](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)
+你希望逻辑对 `roomId` 做出响应，因此你在 Effect 中读取 `roomId`。但是，你不希望更改 `notificationCount` 来记录额外的日志输出，因此你可以在 Effect Event 中读取 `notificationCount`。[了解使用 Effect Events 在 Effect 中读取最新 props 和 state 的更多信息](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)。
 
 ### 一些响应式值是否无意中改变了？ {/*does-some-reactive-value-change-unintentionally*/}
 
@@ -779,7 +779,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-该对象在组件中声明，因此它是 [响应式值。](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) 当你在 Effect 中读取这样的响应式值时，你将其声明为依赖。这可确保 Effect 对其更改做出“反应”：
+该对象在组件中声明，因此它是 [响应式值](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values)。当你在 Effect 中读取这样的响应式值时，你将其声明为依赖。这可确保 Effect 对其更改做出“反应”：
 
 ```js {3,6}
   // ...
