@@ -275,7 +275,7 @@ function ProfilePage() {
 ```
 
 
-在本例中，React 可以更早地开始对页面进行流式传输。只有 `ProfileLayout` 和 `ProfileCover` 是必须先完成渲染的，因为它们没有封装进任何 `<Suspense>` 边界中。但是，如果 `Sidebar` 、 `Friends` 或  `Photos` 需要加载一些数据，React 将发送 HTML 以供 `BigSpinner` 回滚。然后，随着更多的数据变得可用，更多的内容将会被显示，直到所有的内容都可见。
+在本例中，React 可以更早地开始对页面进行流式传输。只有 `ProfileLayout` 和 `ProfileCover` 是必须先完成渲染的，因为它们没有封装进任何 `<Suspense>` 边界中。但是，如果 `Sidebar`、`Friends` 或 `Photos` 需要加载一些数据，React 将发送 HTML 以供 `BigSpinner` 回滚。然后，随着更多的数据变得可用，更多的内容将会被显示，直到所有的内容都可见。
 
 在浏览器中，流不需要等待 React 自身的加载，也不需等待应用变得可交互。在任何 `<script>` 标签加载之前，来自服务器中的 HTML 内容将会逐步的显示出来。
 
@@ -374,7 +374,7 @@ async function handler(request) {
 
 ### shell 内部，从报错中恢复程序 {/*recovering-from-errors-inside-the-shell*/}
 
-在本例中，shell 包含 `ProfileLayout` 、 `ProfileCover` 和 `PostsGlimmer`：
+在本例中，shell 包含 `ProfileLayout`、`ProfileCover` 和 `PostsGlimmer`：
 
 ```js {3-5,7-8}
 function ProfilePage() {
