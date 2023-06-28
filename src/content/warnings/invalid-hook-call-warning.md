@@ -1,5 +1,5 @@
 ---
-title: Hooks 的规则
+title: Hook 的规则
 ---
 
 你进入到这个页面，大概是因为遇到了下面这个错误提示：
@@ -10,19 +10,19 @@ Hooks can only be called inside the body of a function component.
 
 </ConsoleBlock>
 
-这个错误原因，通常有以下3个：
+通常有以下 3 个错误原因：
 
-1. 你可能 **打破了 Hooks 的使用规则**。
+1. 你可能 **打破了 Hook 的使用规则**。
 2. 你可能使用了 **版本不一致** 的 React 和 React DOM。
 3. 你可能在同一个应用当中使用了 **重复的 React 引用**。
 
 让我们来逐个看看这些问题。
 
-## 打破了 Hooks 的使用规则 {/*breaking-rules-of-hooks*/}
+## 打破了 Hook 的使用规则 {/*breaking-rules-of-hooks*/}
 
-在 React 中被调用的且以 `use` 开头命名的函数叫 [*Hooks*](/reference/react)。
+在 React 中被调用的且以 `use` 开头命名的函数叫 [*Hook*](/reference/react)。
 
-**不要在循环语句内、条件语句后或嵌套的函数内调用 Hooks**。 反之，应该始终保证 Hooks 在函数式组件的顶层，并避免在 Hooks 调用前过早终止函数。你只能在 React 渲染一个函数式组件的过程当中调用 Hooks：
+**不要在循环语句内、条件语句后或嵌套的函数内调用 Hook**。 反之，应该始终保证 Hook 在函数式组件的顶层，并避免在 Hook 调用前过早终止函数。你只能在 React 渲染一个函数式组件的过程当中调用 Hook：
 
 * ✅ 在 [函数式组件](/learn/your-first-component) 内部的顶级作用域调用他们。
 * ✅ 在 [自定义 Hook](/learn/reusing-logic-with-custom-hooks) 内部的顶级作用域调用他们。
@@ -41,13 +41,13 @@ function useWindowWidth() {
 }
 ```
 
-以下有几个要点，这些情况下 **不** 支持调用 Hooks （以 `use` 开头的函数），例如：
+以下有几个要点，这些情况下 **不** 支持调用 Hook （以 `use` 开头的函数），例如：
 
-* 🔴 不要在条件语句内或循环语句内调用 Hooks
-* 🔴 不要在包含 `return` 的条件语句之后调用 Hooks
-* 🔴 不要在事件监听器或回调中调用 Hooks
-* 🔴 不要在类式组件内调用 Hooks
-* 🔴 不要在那些传给 `useMemo`，`useReducer` 或 `useEffect` 的函数内调用 Hooks
+* 🔴 不要在条件语句内或循环语句内调用 Hook
+* 🔴 不要在包含 `return` 的条件语句之后调用 Hook
+* 🔴 不要在事件监听器或回调中调用 Hook
+* 🔴 不要在类式组件内调用 Hook
+* 🔴 不要在那些传给 `useMemo`，`useReducer` 或 `useEffect` 的函数内调用 Hook
 
 如果你打破了这些规则，你就会可能看到这个错误提示。
 
@@ -107,17 +107,17 @@ class Bad extends React.Component {
 
 <Note>
 
-[自定义 Hook](/learn/reusing-logic-with-custom-hooks) **可能** 被其他的 Hook 调用 (这仍然符合设计初衷)。为什么呢？因为自定义 Hooks 也是被设定为只能在函数式组件渲染过程中被调用。
+[自定义 Hook](/learn/reusing-logic-with-custom-hooks) **可能** 被其他的 Hook 调用 (这仍然符合设计初衷)。为什么呢？因为自定义 Hook 也是被设定为只能在函数式组件渲染过程中被调用。
 
 </Note>
 
 ## 版本不一致的 React 和 React DOM {/*mismatching-versions-of-react-and-react-dom*/}
 
-你可能正在使用一个还不支持 Hooks 的版本，例如 `react-dom` (< 16.8.0) 或 `react-native` (< 0.59)。你可以在你的应用目录下执行 `npm ls react-dom` 或 `npm ls react-native` 来检查下你正在使用的版本。如果你发现了同一个包有多个版本，那也可能带来其他的问题（下文会详细展开）。
+你可能正在使用一个还不支持 Hook 的版本，例如 `react-dom` (< 16.8.0) 或 `react-native` (< 0.59)。你可以在你的应用目录下执行 `npm ls react-dom` 或 `npm ls react-native` 来检查下你正在使用的版本。如果你发现了同一个包有多个版本，那也可能带来其他的问题（下文会详细展开）。
 
 ## 重复的 React {/*duplicate-react*/}
 
-为了使 Hooks 正常工作，你需要确保你应用代码中所引用的 `react` 和 `react-dom` 内部使用的 `react` 是同一个来源。
+为了使 Hook 正常工作，你需要确保你应用代码中所引用的 `react` 和 `react-dom` 内部使用的 `react` 是同一个来源。
 
 如果上述的两个 `react` 是使用不同模块导出的值，你可能会看到这个警告信息。一般来说，原因都会是你 **意外地使用了重复的** `react` 包。
 
