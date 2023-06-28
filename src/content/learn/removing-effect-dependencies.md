@@ -466,7 +466,7 @@ function ShippingForm({ country }) {
   // ...
 ```
 
-这是一个 [在Effect中获取数据](/learn/you-might-not-need-an-effect#fetching-data) 的好例子：`cities` 状态通过网络和 `country` prop 进行“同步”。但你不能在事件处理程序中这样做，因为你需要在 `ShippingForm` 显示时和 `country` 发生变化时（不管是哪个交互导致的）立即获取。
+这是一个 [在Effect中获取数据](/learn/you-might-not-need-an-effect#fetching-data) 的好例子：`cities` state 通过网络和 `country` props 进行“同步”。但你不能在事件处理程序中这样做，因为你需要在 `ShippingForm` 显示时和 `country` 发生变化时（不管是哪个交互导致的）立即获取。
 
 现在我们假设你要为城市区域添加第二个选择框，它应该获取当前选择的 `city` 的 `areas`。你也许会在同一个 Effect 中添加第二个 `fetch` 调用来获取地区列表：
 
@@ -503,14 +503,14 @@ function ShippingForm({ country }) {
   // ...
 ```
 
-然而，由于 Effect 现在使用 `city` 状态变量，你不得不把 `city` 加入到依赖中。这又带来一个问题：当用户选择不同的城市时，Effect 将重新运行并调用 `fetchCities(country)`。这将导致不必要地多次获取城市列表。
+然而，由于 Effect 现在使用 `city` state 变量，你不得不把 `city` 加入到依赖中。这又带来一个问题：当用户选择不同的城市时，Effect 将重新运行并调用 `fetchCities(country)`。这将导致不必要地多次获取城市列表。
 
-**这段代码的问题在于，你在同步两个不同的不相关的东西**：
+**这段代码的问题在于，你在同步两个不同的、不相关的东西**：
 
-1. 你想要根据 `country` prop 通过网络同步 `city` 状态
-1. 你想要根据 `city` 状态通过网络同步 `areas` 状态
+1. 你想要根据 `country` props 通过网络同步 `city` state
+1. 你想要根据 `city` 状态通过网络同步 `areas` state
 
-将逻辑分到 2 个 Effect 中，每个 Effect 仅响应其需要同步响应的 prop ：
+将逻辑分到 2 个 Effect 中，每个 Effect 仅响应其需要同步响应的 props：
 
 ```js {19-33}
 function ShippingForm({ country }) {
@@ -556,7 +556,7 @@ function ShippingForm({ country }) {
 
 ### 是否在读取一些状态来计算下一个状态？ {/*are-you-reading-some-state-to-calculate-the-next-state*/}
 
-每次有新的消息到达时，这个 Effect 会用新创建的数组更新 `messages` 状态：
+每次有新的消息到达时，这个 Effect 会用新创建的数组更新 `messages` state：
 
 ```js {2,6-8}
 function ChatRoom({ roomId }) {
@@ -590,7 +590,7 @@ function ChatRoom({ roomId }) {
 
 每当你收到一条消息，`setMessages()` 就会使该组件重新渲染一个新的 `messages` 数组，其中包括收到的消息。然而，由于该 Effect 现在依赖于 `messages`，这 **也将** 重新同步该 Effect。所以每条新消息都会使聊天重新连接。用户不会喜欢这样！
 
-为了解决这个问题，不要在 Effect 里面读取 `messages`。相反，应该将一个 [更新函数](/reference/react/useState#updating-state-based-the-previous-state) 传递给 `setMessages`：
+为了解决这个问题，不要在 Effect 里面读取 `messages`。相反，应该将一个 [state 更新函数](/reference/react/useState#updating-state-based-the-previous-state) 传递给 `setMessages`：
 
 ```js {7,10}
 function ChatRoom({ roomId }) {
@@ -685,11 +685,11 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-Effect Events 让你可以将 Effect 分成响应式部分（应该“反应”响应式值，如 `roomId` 及其变化）和非响应式部分（只读取它们的最新值，如 `onMessage` 读取 `isMuted`）。**现在你在 Effect Event 中读取了 `isMuted`，它不需要添加到 Effect 依赖中**。因此，当你开关“静音”设置时，聊天不会重新连接。至此，解决原始问题！
+Effect Events 让你可以将 Effect 分成响应式部分（应该“反应”响应式值，如 `roomId` 及其变化）和非响应式部分（只读取它们的最新值，如 `onMessage` 读取 `isMuted`）。**现在你在 Effect Event 中读取了 `isMuted`，它不需要添加到 Effect 依赖中**。因此，当你打开或者关闭“静音”设置时，聊天不会重新连接。至此，解决原始问题！
 
 #### 包装来自 props 的事件处理程序 {/*wrapping-an-event-handler-from-the-props*/}
 
-当组件接收事件处理函数作为 prop 时，你可能会遇到类似的问题：
+当组件接收事件处理函数作为 props 时，你可能会遇到类似的问题：
 
 ```js {1,8,11}
 function ChatRoom({ roomId, onReceiveMessage }) {
@@ -938,7 +938,7 @@ function ChatRoom() {
 
 #### 将动态对象和函数移动到 Effect 中 {/*move-dynamic-objects-and-functions-inside-your-effect*/}
 
-如果对象依赖于一些可能因重新渲染而改变的响应式值，例如 `roomId` prop，你不能将它放置到组件 **外部**。你可以将其创建移动到 Effect 代码的 **内部**：
+如果对象依赖于一些可能因重新渲染而改变的响应式值，例如 `roomId` props，那么你不能将它放置于组件 **外部**。你可以在 Effect **内部** 创建它：
 
 ```js {7-10,11,14}
 const serverUrl = 'https://localhost:1234';
@@ -1178,7 +1178,7 @@ function ChatRoom({ getOptions }) {
 这个 Effect 设置了一个每秒运行的 interval。你已经注意到一些奇怪的事情：似乎每次 interval 都会被销毁并重新创建。修复代码，使 interval 不会被不断重新创建。
 <Hint>
 
-看起来这个 Effect 的代码依赖于 `count`。有什么方法不需要这依赖吗？有，那就是根据其之前的值更新 `count` 状态，从而避免添加对该值的依赖。
+看起来这个 Effect 的代码依赖于 `count`。有什么方法不需要这依赖吗？有，那就是根据其之前的值更新 `count` state，从而避免添加对该值的依赖。
 
 </Hint>
 
@@ -1706,7 +1706,7 @@ label, button { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-用更具体的 `roomId` 和 `serverUrl` prop 替换对象 `options` prop 会更好：
+用更具体的 `roomId` 和 `serverUrl` props 替换对象 `options` props 会更好：
 
 <Sandpack>
 
@@ -2046,7 +2046,7 @@ export default function ChatRoom({ roomId, createConnection, onMessage }) {
     // ...
 ```
 
-与 `onMessage` prop 不同，`onReceiveMessage` Effect Event 不是响应式的。这就是为什么它不需要成为 Effect 的依赖。因此，对 `onMessage` 的更改不会导致聊天重新连接。
+与 `onMessage` props 不同，`onReceiveMessage` Effect Event 不是响应式的。这就是为什么它不需要成为 Effect 的依赖。因此，对 `onMessage` 的更改不会导致聊天重新连接。
 
 你不能对 `createConnection` 做同样的事情，因为它 **应该** 是响应式的。如果用户在加密和未加密连接之间切换，或者如果用户切换当前房间，你 **希望** 重新触发 Effect。但是，因为 `createConnection` 是函数，你无法检查它读取的信息是否 **实际** 发生了变化。要解决此问题，请传递原始的 `roomId` 和 `isEncrypted` 值，而不是从 App 组件向下传递 `createConnection` ：
 
