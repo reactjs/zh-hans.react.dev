@@ -6,7 +6,7 @@ translators:
 
 <Intro>
 
-由于 React 会自动处理更新 [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) 以匹配你的渲染输出，因此你在组件中通常不需要操作 DOM。但是，有时你可能需要访问由 React 管理的 DOM 元素 —— 例如，让一个节点获得焦点、滚动到它或测量它的尺寸和位置。在 React 中没有内置的方法来做这些事情，所以你需要一个指向 DOM 节点的 *ref* 来实现。
+由于 React 会自动处理更新 [DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction) 以匹配你的渲染输出，因此你在组件中通常不需要操作 DOM。但是，有时你可能需要访问由 React 管理的 DOM 元素 —— 例如，让一个节点获得焦点、滚动到它或测量它的尺寸和位置。在 React 中没有内置的方法来做这些事情，所以你需要一个指向 DOM 节点的 **ref** 来实现。
 
 </Intro>
 
@@ -33,7 +33,7 @@ import { useRef } from 'react';
 const myRef = useRef(null);
 ```
 
-最后，将其作为 `ref` 属性传给 DOM 节点：
+Finally, pass your ref as the `ref` attribute to the JSX tag for which you want to get the DOM node:
 
 ```js
 <div ref={myRef}>
@@ -385,9 +385,9 @@ Warning: Function components cannot be given refs. Attempts to access this ref w
 
 </ConsoleBlock>
 
-发生这种情况是因为默认情况下，React 不允许组件访问其他组件的 DOM 节点。甚至自己的子组件也不行！这是故意的。Refs 是一个应急方案，应该谨慎使用。手动操作 _另一个_ 组件的 DOM 节点会使你的代码更加脆弱。
+发生这种情况是因为默认情况下，React 不允许组件访问其他组件的 DOM 节点。甚至自己的子组件也不行！这是故意的。Refs 是一个应急方案，应该谨慎使用。手动操作 **另一个** 组件的 DOM 节点会使你的代码更加脆弱。
 
-相反，_想要_ 暴露其 DOM 节点的组件必须**选择**该行为。一个组件可以指定将它的 ref “转发”给一个子组件。下面是 `MyInput` 如何使用 `forwardRef` API：
+相反，**想要** 暴露其 DOM 节点的组件必须**选择**该行为。一个组件可以指定将它的 ref “转发”给一个子组件。下面是 `MyInput` 如何使用 `forwardRef` API：
 
 ```js
 const MyInput = forwardRef((props, ref) => {
@@ -501,7 +501,7 @@ React 在提交阶段设置 `ref.current`。在更新 DOM 之前，React 将受�
 
 #### 用 flushSync 同步更新 state {/*flushing-state-updates-synchronously-with-flush-sync*/}
 
-思考这样的代码，它添加一个新的待办事项，并将屏幕向下滚动到列表的最后一个子项。请注意，出于某种原因，它总是滚动到最后一个添加*之前* 的待办事项：
+思考这样的代码，它添加一个新的待办事项，并将屏幕向下滚动到列表的最后一个子项。请注意，出于某种原因，它总是滚动到最后一个添加 **之前** 的待办事项：
 
 <Sandpack>
 
@@ -685,7 +685,7 @@ button {
 
 **避免更改由 React 管理的 DOM 节点。** 对 React 管理的元素进行修改、添加子元素、从中删除子元素会导致不一致的视觉结果，或与上述类似的崩溃。
 
-但是，这并不意味着你完全不能这样做。它需要谨慎。 **你可以安全地修改 React _没有理由_ 更新的部分 DOM。** 例如，如果某些 `<div>` 在 JSX 中始终为空，React 将没有理由去变动其子列表。 因此，在那里手动增删元素是安全的。
+但是，这并不意味着你完全不能这样做。它需要谨慎。 **你可以安全地修改 React 没有理由更新的部分 DOM。** 例如，如果某些 `<div>` 在 JSX 中始终为空，React 将没有理由去变动其子列表。 因此，在那里手动增删元素是安全的。
 
 <Recap>
 
@@ -876,7 +876,7 @@ node.scrollIntoView({
 
 <Hint>
 
-在本练习中，你不需要对每个图像都添加 ref。对当前激活的图像或图像列表本身有一个 ref 就足够了。使用 `flushSync` 确保 DOM 在滚动 *之前* 更新。
+在本练习中，你不需要对每个图像都添加 ref。对当前激活的图像或图像列表本身有一个 ref 就足够了。使用 `flushSync` 确保 DOM 在滚动 **之前** 更新。
 
 </Hint>
 
