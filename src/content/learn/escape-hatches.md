@@ -4,20 +4,20 @@ title: 应急方案
 
 <Intro>
 
-你的一些组件可能需要控制和同步 React 之外的系统。例如，你可能需要使用浏览器 API 聚焦输入框，或者在没有 React 的情况下实现视频播放器，或者连接并监听远程服务器的消息。在本章中，你将学习到一些应急方案，让你可以“走出” React 并连接到外部系统。大多数应用逻辑和数据流不应该依赖这些功能。
+有些组件可能需要控制和同步 React 之外的系统。例如，你可能需要使用浏览器 API 聚焦输入框，或者在没有 React 的情况下实现视频播放器，或者连接并监听远程服务器的消息。在本章中，你将学习到一些应急方案，让你可以“走出” React 并连接到外部系统。大多数应用逻辑和数据流不应该依赖这些功能。
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [如何在不重新渲染的情况下“记住”信息](/learn/referencing-values-with-refs)
-* [如何访问 React 管理的 DOM 元素](/learn/manipulating-the-dom-with-refs)
-* [如何将组件与外部系统同步](/learn/synchronizing-with-effects)
-* [如何从组件中删除不必要的 Effect](/learn/you-might-not-need-an-effect)
+* [在不重新渲染的情况下“记住”信息](/learn/referencing-values-with-refs)
+* [访问 React 管理的 DOM 元素](/learn/manipulating-the-dom-with-refs)
+* [将组件与外部系统同步](/learn/synchronizing-with-effects)
+* [从组件中删除不必要的 Effect](/learn/you-might-not-need-an-effect)
 * [Effect 的生命周期与组件的生命周期有何不同](/learn/lifecycle-of-reactive-effects)
-* [如何防止某些值重新触发 Effect](/learn/separating-events-from-effects)
-* [如何减少 Effect 重新执行的频率](/learn/removing-effect-dependencies)
-* [如何在组件之间共享逻辑](/learn/reusing-logic-with-custom-hooks)
+* [防止某些值重新触发 Effect](/learn/separating-events-from-effects)
+* [减少 Effect 重新执行的频率](/learn/removing-effect-dependencies)
+* [在组件之间共享逻辑](/learn/reusing-logic-with-custom-hooks)
 
 </YouWillLearn>
 
@@ -29,7 +29,7 @@ title: 应急方案
 const ref = useRef(0);
 ```
 
-与状态一样，ref 在重新渲染之间由 React 保留。但是，设置状态会重新渲染组件，而更改 ref 不会！你可以通过 `ref.current` 属性访问该 ref 的当前值。
+与 state 一样，ref 在重新渲染之间由 React 保留。但是，设置 state 会重新渲染组件，而更改 ref 不会！你可以通过 `ref.current` 属性访问该 ref 的当前值。
 
 <Sandpack>
 
@@ -54,7 +54,7 @@ export default function Counter() {
 
 </Sandpack>
 
-Ref 就像组件的一个不被 React 跟踪的秘密口袋。例如，可以使用 ref 来存储 [timeout ID](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#return_value)、[DOM 元素](https://developer.mozilla.org/en-US/docs/Web/API/Element) 和其他不影响组件渲染输出的对象。
+ref 就像组件的一个不被 React 追踪的秘密口袋。例如，可以使用 ref 来存储 [timeout ID](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#return_value)、[DOM 元素](https://developer.mozilla.org/en-US/docs/Web/API/Element) 和其他不影响组件渲染输出的对象。
 
 <LearnMore path="/learn/referencing-values-with-refs">
 
@@ -239,7 +239,7 @@ function Form() {
 
 Effect 的生命周期不同于组件。组件可以挂载、更新或卸载。Effect 只能做两件事：开始同步某些东西，然后停止同步它。如果 Effect 依赖于随时间变化的 props 和 state，这个循环可能会发生多次。
 
-这个 Effect 依赖于 `roomId` 这个 prop 的值。Props 是 **响应值**，这意味着它们可以在重新渲染时改变。注意，如果 `roomId` 更改，Effect **重新同步**（并重新连接到服务器）：
+这个 Effect 依赖于 `roomId` props 的值。props 是 **响应值**，这意味着它们可以在重新渲染时改变。注意，如果 `roomId` 更改，Effect 将会 **重新同步**（并重新连接到服务器）：
 
 <Sandpack>
 
@@ -318,7 +318,7 @@ React 提供了检查工具规则来检查是否正确地指定了 Effect 的依
 
 </Wip>
 
-事件处理程序仅在再次执行相同的交互时重新运行。与事件处理程序不同，如果 Effect 读取的任何值（如 props 或 state）与上次渲染期间不同，则会重新同步。有时，需要混合两种行为： Effect 重新运行以响应某些值而不是其他值。
+事件处理程序仅在再次执行相同的交互时重新运行。与事件处理程序不同，如果 Effect 读取的任何值（如 props 或 state）与上次渲染期间不同，则会重新同步。有时，需要混合两种行为：Effect 重新运行以响应某些值而不是其他值。
 
 Effects 中的所有代码都是 **响应式的**。如果它读取的某些响应式的值由于重新渲染而发生变化，它将再次运行。例如，如果 `roomId` 或 `theme` 发生变化，这个 Effect 将重新连接到聊天：
 
@@ -591,7 +591,7 @@ Effect Events 中的代码不是响应式的，因此更改“主题”不再使
 
 ## 移除 Effect 依赖 {/*removing-effect-dependencies*/}
 
-当你写 Effect 时，linter 会验证是否已经将 Effect 读取的每一个响应式值（如 props 和 state）包含在 Effect 的依赖列表中。这可以确保 Effect 与组件的 props 和 state 保持同步。不必要的依赖关系可能会导致 Effect 运行过于频繁，甚至产生无限循环。删除它们的方式取决于具体情况。
+当你写 Effect 时，代码检查器会验证是否已经将 Effect 读取的每一个响应式值（如 props 和 state）包含在 Effect 的依赖列表中。这可以确保 Effect 与组件的 props 和 state 保持同步。不必要的依赖关系可能会导致 Effect 运行过于频繁，甚至产生无限循环。删除它们的方式取决于具体情况。
 
 例如，这个 Effect 依赖于每次编辑输入时都会重新创建的 `options` 对象：
 
