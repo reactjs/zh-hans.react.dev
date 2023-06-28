@@ -57,7 +57,7 @@ async function handler(request) {
   * **可选属性** `namespaceURI`：是一个字符串，带有流的根 [命名空间URI](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElementNS#important_namespace_uris)。默认为常规 HTML。如果用于 SVG，传 `'http://www.w3.org/2000/svg'`，如果用于 MathML，传 `'http://www.w3.org/1998/Math/MathML'`。
   * **可选属性** `nonce`：一个 [`随机字符串`](http://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script#nonce) 让脚本通过 [`script-src` 内容安全策略](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)。
   * **可选属性** `onError`：一个回调函数，只要服务器出错就会触发，无论错误是 [否](#recovering-from-errors-inside-the-shell) 可 [恢复](#recovering-from-errors-outside-the-shell)。默认情况下，它只调用 `console.error`。如果你用 [log crash reports](#logging-crashes-on-the-server) 重写，请确保你仍然调用 `console.error`。你还可以使用它在 shell 触发之前 [调整状态代码](#setting-the-status-code)。
-  * **可选属性** `progressiveChunkSize`： 块中的字节数。[阅读更多默认启发式方法](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)。
+  * **可选属性** `progressiveChunkSize`：块中的字节数。[阅读更多默认启发式方法](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)。
   * **可选属性** `signal`：一个 [中止信号](https://developer.mozilla.org/zh-CN/docs/Web/API/AbortSignal)，用于 [中止服务端渲染](#aborting-server-rendering) 并在客户端上渲染其余部分。
 
 
