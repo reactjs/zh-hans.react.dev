@@ -655,7 +655,7 @@ function Page({ url }) {
 
 这里的 `onVisit` 是一个 Effect Event。里面的代码不是响应式的。这就是为什么你可以使用 `numberOfItems`（或者任意响应式值！）而不用担心引起周围代码因为变化而重新执行。
 
-另一方面，Effect 本身仍然是响应式的。其内部的代码使用了 `url` prop，所以每次因为不同的 `url` 重新渲染后 Effect 都会重新运行。这会依次调用 `onVisit` 这个 Effect Event。
+另一方面，Effect 本身仍然是响应式的。其内部的代码使用了 `url` props，所以每次因为不同的 `url` 重新渲染后 Effect 都会重新运行。这会依次调用 `onVisit` 这个 Effect Event。
 
 结果是你会因为 `url` 的变化去调用 `logVisit`，并且读取的一直都是最新的 `numberOfItems`。但是如果 `numberOfItems` 自己变化，不会引起任何代码的重新运行。
 
