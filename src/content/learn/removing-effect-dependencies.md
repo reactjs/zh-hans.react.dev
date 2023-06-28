@@ -4,7 +4,7 @@ title: '移除 Effect 依赖'
 
 <Intro>
 
-当编写 Effect 时，linter 会验证是否已经将 Effect 读取的每一个响应式值（如 props 和 state）包含在 Effect 的依赖中。这可以确保 Effect 与组件的 props 和 state 保持同步。不必要的依赖可能会导致 Effect 运行过于频繁，甚至产生一个无限循环。请按照本指南审查并移除 Effect 中不必要的依赖。
+当编写 Effect 时，linter 会验证是否已经将 Effect 读取的每一个响应式值（如 props 和 state）包含在 Effect 的依赖中。这可以确保 Effect 与组件的 props 和 state 保持同步。不必要的依赖可能会导致 Effect 运行过于频繁，甚至产生无限循环。请按照本指南审查并移除 Effect 中不必要的依赖。
 
 </Intro>
 
@@ -12,7 +12,7 @@ title: '移除 Effect 依赖'
 
 - 如何修复无限的 Effect 依赖性循环
 - 当你想移除依赖时，该怎么做？
-- 如何从 Effect 中读出一个值而不对它作出“反应”？
+- 如何从 Effect 中读取值而不对它作出“反应”？
 - 为什么以及如何避免对象和函数的依赖？
 - 为什么抑制依赖 linter 检查是危险的，以及应该如何做？
 
@@ -104,12 +104,12 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ 所有依赖项已声明
+  }, [roomId]); // ✅ 所有依赖已声明
   // ...
 }
 ```
 
-[Effect “反应”响应式值](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) 因为这里的 `roomId` 是一个响应式值（它可能随重新渲染而改变），所以 linter 会验证你是否将它指定为一个依赖项。如果 `roomId` 变成不同的值，React 将重新运行 Effect。这可以确保聊天界面与所选房间保持一致，并把变化“反馈”给下拉菜单：
+[Effect “反应”响应式值](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) 因为这里的 `roomId` 是一个响应式值（它可能随重新渲染而改变），所以 linter 会验证你是否将它指定为依赖。如果 `roomId` 变成不同的值，React 将重新运行 Effect。这可以确保聊天界面与所选房间保持一致，并把变化“反馈”给下拉菜单：
 
 <Sandpack>
 
@@ -188,7 +188,7 @@ function ChatRoom({ roomId }) { // 这是一个响应式值
 }
 ```
 
-[响应式值](/learn/lifecycle-of-reactive-effects#all-variables-declared-in-the-component-body-are-reactive) 包括 props 以及所有你直接在组件中声明的变量和函数。由于 `roomId` 是一个响应式的值，你不能把它从依赖中移除。linter 不允许这样做：
+[响应式值](/learn/lifecycle-of-reactive-effects#all-variables-declared-in-the-component-body-are-reactive) 包括 props 以及所有你直接在组件中声明的变量和函数。由于 `roomId` 是响应式值，你不能把它从依赖中移除。linter 不允许这样做：
 
 ```js {8}
 const serverUrl = 'https://localhost:1234';
@@ -198,7 +198,7 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // 🔴 React Hook useEffect 缺失一个依赖: 'roomId'
+  }, []); // 🔴 React Hook useEffect 缺失依赖: 'roomId'
   // ...
 }
 ```
@@ -217,12 +217,12 @@ function ChatRoom() {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // ✅ 所有依赖项已声明
+  }, []); // ✅ 所有依赖已声明
   // ...
 }
 ```
 
-现在 `roomId` 不是一个响应式的值（并且不能在重新渲染时改变），那它不就不是一个依赖项：
+现在 `roomId` 不是响应式值（并且不能在重新渲染时改变），那它不就不是依赖：
 
 <Sandpack>
 
@@ -264,13 +264,13 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-这就是为什么你现在可以指定一个 [空（`[]`）依赖](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means)。Effect **真的不** 依赖任何响应式值了，也 **真的不** 需要在组件的 props 或 state 改变时重新运行。
+这就是为什么你现在可以指定 [空（`[]`）依赖](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means)。Effect **真的不** 依赖任何响应式值了，也 **真的不** 需要在组件的 props 或 state 改变时重新运行。
 
 ### 要改变依赖，请改变代码 {/*to-change-the-dependencies-change-the-code*/}
 
 你可能已经注意到工作流程中有一个模式：
 
-1. 首先，你 **改变 Effect 的代码** 或响应式数值的声明方式。
+1. 首先，你 **改变 Effect 的代码** 或响应式值的声明方式。
 2. 然后，你采纳 linter 的建议，调整依赖，以 **匹配你所改变的代码**。
 3. 如果你对依赖不满意，你可以 **回到第一步**（并再次修改代码）。
 
@@ -365,7 +365,7 @@ button { margin: 10px; }
 
 * 你可能想在不同的条件下重新执行 Effect 的 **不同部分**。
 * 你可能想只读取某个依赖的 **最新值**，而不是对其变化做出“反应”。
-* 一个依赖可能会因为它的类型是对象或函数而 **无意间** 改变太频繁。
+* 依赖可能会因为它的类型是对象或函数而 **无意间** 改变太频繁。
 
 为了找到正确的解决方案，你需要回答关于 Effect 的几个问题。让我们来看看这些问题。
 
@@ -373,7 +373,7 @@ button { margin: 10px; }
 
 你应该考虑的第一件事是，这段代码是否应该成为 Effect。
 
-想象一个表单，在提交时你将 `submitted` 状态变量设置为 `true`，并在 `submitted` 为 `true` 时，需要发送一个 POST 请求并显示一个通知。你把这个逻辑放在一个 Effect 内，并根据 `submitted` 为 `true` “反应”。
+想象一个表单，在提交时你将 `submitted` 状态变量设置为 `true`，并在 `submitted` 为 `true` 时，需要发送 POST 请求并显示通知。你把这个逻辑放在 Effect 内，并根据 `submitted` 为 `true` “反应”。
 
 ```js {6-8}
 function Form() {
@@ -395,7 +395,7 @@ function Form() {
 }
 ```
 
-后来，你想根据当前的主题来设计通知信息的样式，所以你读取当前的主题。由于 `theme` 是在组件中声明的，它是一个响应式的值，所以你把它作为一个依赖项加入：
+后来，你想通过读取当前的主题值来调整通知信息的样式。因为 `theme` 是在组件中声明的，所以它是响应式值，你决定把它作为依赖加入：
 
 ```js {3,9,11}
 function Form() {
@@ -408,7 +408,7 @@ function Form() {
       post('/api/register');
       showNotification('Successfully registered!', theme);
     }
-  }, [submitted, theme]); // ✅ 所有依赖项已声明
+  }, [submitted, theme]); // ✅ 所有依赖已声明
 
   function handleSubmit() {
     setSubmitted(true);
@@ -418,7 +418,7 @@ function Form() {
 }
 ```
 
-如果这么做，你将引入了一个错误。想象一下，你先提交表单，然后切换暗亮主题。当 `theme` 改变后，Effect 重新运行，这将导致显示两次相同的通知！
+如果这么做，你将引入一个错误。想象一下，你先提交表单，然后切换暗亮主题。当 `theme` 改变后，Effect 重新运行，这将导致显示两次相同的通知！
 
 **首先，这里的问题是，代码不应该以 Effect 实现**。你想发送这个 POST 请求，并在 **提交表单时显示通知**，这是一个特定的交互。特定的交互请将该逻辑直接放到相应的事件处理程序中：
 
@@ -442,7 +442,7 @@ function Form() {
 
 下一个应该问自己的问题是，Effect 是否在做几件不相关的事情。
 
-如下例子，你正在实现一个运输表单，用户需要选择他们的城市和地区。你根据所选的“国家”从服务器上获取“城市”列表，然后在下拉菜单中显示：
+如下例子，你正在实现运输表单，用户需要选择他们的城市和地区。你根据所选的“国家”从服务器上获取“城市”列表，然后在下拉菜单中显示：
 
 ```js
 function ShippingForm({ country }) {
@@ -461,7 +461,7 @@ function ShippingForm({ country }) {
     return () => {
       ignore = true;
     };
-  }, [country]); // ✅ 所有依赖项已声明
+  }, [country]); // ✅ 所有依赖已声明
 
   // ...
 ```
@@ -498,12 +498,12 @@ function ShippingForm({ country }) {
     return () => {
       ignore = true;
     };
-  }, [country, city]); // ✅ 所有依赖项已声明
+  }, [country, city]); // ✅ 所有依赖已声明
 
   // ...
 ```
 
-然而，由于 Effect 现在使用 `city` 状态变量，你不得不把 `city` 加入到依赖中。这又带来了一个问题：当用户选择不同的城市时，Effect 将重新运行并调用 `fetchCities(country)`。这将导致不必要地多次获取城市列表。
+然而，由于 Effect 现在使用 `city` 状态变量，你不得不把 `city` 加入到依赖中。这又带来一个问题：当用户选择不同的城市时，Effect 将重新运行并调用 `fetchCities(country)`。这将导致不必要地多次获取城市列表。
 
 **这段代码的问题在于，你在同步两个不同的不相关的东西**：
 
@@ -527,7 +527,7 @@ function ShippingForm({ country }) {
     return () => {
       ignore = true;
     };
-  }, [country]); // ✅ 所有依赖项已声明
+  }, [country]); // ✅ 所有依赖已声明
 
   const [city, setCity] = useState(null);
   const [areas, setAreas] = useState(null);
@@ -545,7 +545,7 @@ function ShippingForm({ country }) {
         ignore = true;
       };
     }
-  }, [city]); // ✅ 所有依赖项已声明
+  }, [city]); // ✅ 所有依赖已声明
 
   // ...
 ```
@@ -582,7 +582,7 @@ function ChatRoom({ roomId }) {
       setMessages([...messages, receivedMessage]);
     });
     return () => connection.disconnect();
-  }, [roomId, messages]); // ✅ 所有依赖项已声明
+  }, [roomId, messages]); // ✅ 所有依赖已声明
   // ...
 ```
 
@@ -602,7 +602,7 @@ function ChatRoom({ roomId }) {
       setMessages(msgs => [...msgs, receivedMessage]);
     });
     return () => connection.disconnect();
-  }, [roomId]); // ✅ 所有依赖项已声明
+  }, [roomId]); // ✅ 所有依赖已声明
   // ...
 ```
 
@@ -635,7 +635,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-由于 Effect 现在在其代码中使用了 `isMuted` ，因此你必须将其添加到依赖项中：
+由于 Effect 现在在其代码中使用了 `isMuted` ，因此你必须将其添加到依赖中：
 
 ```js {10,15}
 function ChatRoom({ roomId }) {
@@ -652,7 +652,7 @@ function ChatRoom({ roomId }) {
       }
     });
     return () => connection.disconnect();
-  }, [roomId, isMuted]); // ✅ 所有依赖项已声明
+  }, [roomId, isMuted]); // ✅ 所有依赖已声明
   // ...
 ```
 
@@ -681,7 +681,7 @@ function ChatRoom({ roomId }) {
       onMessage(receivedMessage);
     });
     return () => connection.disconnect();
-  }, [roomId]); // ✅ 所有依赖项已声明
+  }, [roomId]); // ✅ 所有依赖已声明
   // ...
 ```
 
@@ -702,7 +702,7 @@ function ChatRoom({ roomId, onReceiveMessage }) {
       onReceiveMessage(receivedMessage);
     });
     return () => connection.disconnect();
-  }, [roomId, onReceiveMessage]); // ✅ 所有依赖项已声明
+  }, [roomId, onReceiveMessage]); // ✅ 所有依赖已声明
   // ...
 ```
 
@@ -717,7 +717,7 @@ function ChatRoom({ roomId, onReceiveMessage }) {
 />
 ```
 
-由于 `onReceiveMessage` 是一个依赖项，它会导致 Effect 在每次父级重新渲染后重新同步。这将导致聊天重新连接。要解决此问题，请用 Effect Event 包裹之后再调用：
+由于 `onReceiveMessage` 是依赖，它会导致 Effect 在每次父级重新渲染后重新同步。这将导致聊天重新连接。要解决此问题，请用 Effect Event 包裹之后再调用：
 
 ```js {4-6,12,15}
 function ChatRoom({ roomId, onReceiveMessage }) {
@@ -734,11 +734,11 @@ function ChatRoom({ roomId, onReceiveMessage }) {
       onMessage(receivedMessage);
     });
     return () => connection.disconnect();
-  }, [roomId]); // ✅ 所有依赖项已声明
+  }, [roomId]); // ✅ 所有依赖已声明
   // ...
 ```
 
-Effect Events 不是响应式的，因此你不需要将它们指定为依赖项。因此，即使父组件传递的函数在每次重新渲染时都不同，聊天也将不再重新连接。
+Effect Events 不是响应式的，因此你不需要将它们指定为依赖。因此，即使父组件传递的函数在每次重新渲染时都不同，聊天也将不再重新连接。
 
 #### 分离响应式和非响应式代码 {/*separating-reactive-and-non-reactive-code*/}
 
@@ -754,7 +754,7 @@ function Chat({ roomId, notificationCount }) {
 
   useEffect(() => {
     onVisit(roomId);
-  }, [roomId]); // ✅ 所有依赖项已声明
+  }, [roomId]); // ✅ 所有依赖已声明
   // ...
 }
 ```
@@ -763,7 +763,7 @@ function Chat({ roomId, notificationCount }) {
 
 ### 一些响应式值是否无意中改变了？ {/*does-some-reactive-value-change-unintentionally*/}
 
-有时，你 **确实** 希望 Effect 对某个值“做出反应”，但该值的变化比你希望的更频繁——并且可能不会从用户的角度反映任何实际变化。例如，假设你在组件中创建了一个 `options` 对象，然后从 Effect 内部读取该对象：
+有时，你 **确实** 希望 Effect 对某个值“做出反应”，但该值的变化比你希望的更频繁——并且可能不会从用户的角度反映任何实际变化。例如，假设你在组件中创建了 `options` 对象，然后从 Effect 内部读取该对象：
 
 ```js {3-6,9}
 function ChatRoom({ roomId }) {
@@ -779,7 +779,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-该对象在组件中声明，因此它是一个 [响应式值。](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) 当你在 Effect 中读取这样的响应式值时，你将其声明为依赖项。这可确保 Effect 对其更改做出“反应”：
+该对象在组件中声明，因此它是 [响应式值。](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) 当你在 Effect 中读取这样的响应式值时，你将其声明为依赖。这可确保 Effect 对其更改做出“反应”：
 
 ```js {3,6}
   // ...
@@ -787,11 +787,11 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // ✅ 所有依赖项已声明
+  }, [options]); // ✅ 所有依赖已声明
   // ...
 ```
 
-将其声明为依赖项很重要！例如，这可以确保如果 `roomId` 发生变化，Effect 将使用新的 `options` 重新连接到聊天。但是，上面的代码也有问题。要查看它，请尝试在下面的沙盒中输入内容，然后观察控制台中发生的情况：
+将其声明为依赖很重要！例如，这可以确保如果 `roomId` 发生变化，Effect 将使用新的 `options` 重新连接到聊天。但是，上面的代码也有问题。要查看它，请尝试在下面的沙盒中输入内容，然后观察控制台中发生的情况：
 
 <Sandpack>
 
@@ -887,7 +887,7 @@ console.log(Object.is(options1, options2)); // false
 
 **对象和函数作为依赖，会使 Effect 比你需要的更频繁地重新同步**。
 
-这就是为什么你应该尽可能避免将对象和函数作为 Effect 的依赖项。所以，尝试将它们移到组件外部、Effect 内部，或从中提取原始值。
+这就是为什么你应该尽可能避免将对象和函数作为 Effect 的依赖。所以，尝试将它们移到组件外部、Effect 内部，或从中提取原始值。
 
 #### 将静态对象和函数移出组件 {/*move-static-objects-and-functions-outside-your-component*/}
 
@@ -906,11 +906,11 @@ function ChatRoom() {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // ✅ 所有依赖项已声明
+  }, []); // ✅ 所有依赖已声明
   // ...
 ```
 
-这样，你向 linter **证明** 它不是响应式的。它不会因为重新渲染而改变，所以它不是依赖项。现在重新渲染 `ChatRoom` 不会导致 Effect 重新同步。
+这样，你向 linter **证明** 它不是响应式的。它不会因为重新渲染而改变，所以它不是依赖。现在重新渲染 `ChatRoom` 不会导致 Effect 重新同步。
 
 这也适用于函数场景：
 
@@ -930,11 +930,11 @@ function ChatRoom() {
     const connection = createConnection();
     connection.connect();
     return () => connection.disconnect();
-  }, []); // ✅ 所有依赖项已声明
+  }, []); // ✅ 所有依赖已声明
   // ...
 ```
 
-由于 `createOptions` 是在组件外部声明的，因此它不是一个响应式值。这就是为什么它不需要在 Effect 的依赖项中指定，以及为什么它永远不会导致 Effect 重新同步。
+由于 `createOptions` 是在组件外部声明的，因此它不是响应式值。这就是为什么它不需要在 Effect 的依赖中指定，以及为什么它永远不会导致 Effect 重新同步。
 
 #### 将动态对象和函数移动到 Effect 中 {/*move-dynamic-objects-and-functions-inside-your-effect*/}
 
@@ -954,11 +954,11 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ 所有依赖项已声明
+  }, [roomId]); // ✅ 所有依赖已声明
   // ...
 ```
 
-现在 `options` 已在 Effect 中声明，它不再是 Effect 的依赖项。相反， Effect 使用的唯一响应式值是 `roomId`。由于 `roomId` 不是对象或函数，你可以确定它不会 **无意间** 变不同。在 JavaScript 中，数字和字符串根据它们的内容进行比较：
+现在 `options` 已在 Effect 中声明，它不再是 Effect 的依赖。相反，Effect 使用的唯一响应式值是 `roomId`。由于 `roomId` 不是对象或函数，你可以确定它不会 **无意间** 变不同。在 JavaScript 中，数字和字符串根据它们的内容进行比较：
 
 ```js {7-8}
 // 第一次渲染
@@ -1066,7 +1066,7 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ 所有依赖项已声明
+  }, [roomId]); // ✅ 所有依赖已声明
   // ...
 ```
 
@@ -1084,7 +1084,7 @@ function ChatRoom({ options }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // ✅ 所有依赖项已声明
+  }, [options]); // ✅ 所有依赖已声明
   // ...
 ```
 
@@ -1114,7 +1114,7 @@ function ChatRoom({ options }) {
     });
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId, serverUrl]); // ✅ 所有依赖项已声明
+  }, [roomId, serverUrl]); // ✅ 所有依赖已声明
   // ...
 ```
 
@@ -1136,7 +1136,7 @@ function ChatRoom({ options }) {
 />
 ```
 
-为避免使其成为依赖项（并导致它在重新渲染时重新连接），请在 Effect 外部调用它。这为你提供了不是对象的 `roomId` 和 `serverUrl` 值，你可以从 Effect 中读取它们：
+为避免使其成为依赖（并导致它在重新渲染时重新连接），请在 Effect 外部调用它。这为你提供了不是对象的 `roomId` 和 `serverUrl` 值，你可以从 Effect 中读取它们：
 
 ```js {1,4}
 function ChatRoom({ getOptions }) {
@@ -1150,7 +1150,7 @@ function ChatRoom({ getOptions }) {
     });
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId, serverUrl]); // ✅ 所有依赖项已声明
+  }, [roomId, serverUrl]); // ✅ 所有依赖已声明
   // ...
 ```
 
@@ -1159,9 +1159,9 @@ function ChatRoom({ getOptions }) {
 <Recap>
 
 - 依赖应始终与代码匹配。
-- 当你对依赖项不满意时，你需要编辑的是代码。
+- 当你对依赖不满意时，你需要编辑的是代码。
 - 抑制 linter 会导致非常混乱的错误，你应该始终避免它。
-- 要移除依赖项，你需要向 linter “证明”它不是必需的。
+- 要移除依赖，你需要向 linter “证明”它不是必需的。
 - 如果某些代码是为了响应特定交互，请将该代码移至事件处理的地方。
 - 如果 Effect 的不同部分因不同原因需要重新运行，请将其拆分为多个 Effect。
 - 如果你想根据以前的状态更新一些状态，传递一个更新函数。
@@ -1240,7 +1240,7 @@ export default function Timer() {
 
 </Sandpack>
 
-你不应在 Effect 中读取 `count`，而是将 `c => c + 1` 指令（“增加此数字！”）传递给 React。React 将在下一次渲染时执行它。由于你不再需要读取 Effect 中 `count` 的值，因此你可以将 Effect 的依赖项保持为空（`[]`）。这可以防止 Effect 在每次执行时重新创建定时器间隔。
+你不应在 Effect 中读取 `count`，而是将 `c => c + 1` 指令（“增加此数字！”）传递给 React。React 将在下一次渲染时执行它。由于你不再需要读取 Effect 中 `count` 的值，因此你可以将 Effect 的依赖保持为空（`[]`）。这可以防止 Effect 在每次执行时重新创建定时器间隔。
 
 </Solution>
 
@@ -1516,7 +1516,7 @@ html, body { min-height: 300px; }
 
 <Hint>
 
-解决这个问题的方法不止一种，但最终你希望避免将对象作为依赖项。
+解决这个问题的方法不止一种，但最终你希望避免将对象作为依赖。
 
 </Hint>
 
@@ -2046,9 +2046,9 @@ export default function ChatRoom({ roomId, createConnection, onMessage }) {
     // ...
 ```
 
-与 `onMessage` prop 不同，`onReceiveMessage` Effect Event 不是响应式的。这就是为什么它不需要成为 Effect 的依赖项。因此，对 `onMessage` 的更改不会导致聊天重新连接。
+与 `onMessage` prop 不同，`onReceiveMessage` Effect Event 不是响应式的。这就是为什么它不需要成为 Effect 的依赖。因此，对 `onMessage` 的更改不会导致聊天重新连接。
 
-你不能对 `createConnection` 做同样的事情，因为它 **应该** 是响应式的。如果用户在加密和未加密连接之间切换，或者如果用户切换当前房间，你 **希望** 重新触发 Effect。但是，因为 `createConnection` 是一个函数，你无法检查它读取的信息是否 **实际** 发生了变化。要解决此问题，请传递原始的 `roomId` 和 `isEncrypted` 值，而不是从 App 组件向下传递 `createConnection` ：
+你不能对 `createConnection` 做同样的事情，因为它 **应该** 是响应式的。如果用户在加密和未加密连接之间切换，或者如果用户切换当前房间，你 **希望** 重新触发 Effect。但是，因为 `createConnection` 是函数，你无法检查它读取的信息是否 **实际** 发生了变化。要解决此问题，请传递原始的 `roomId` 和 `isEncrypted` 值，而不是从 App 组件向下传递 `createConnection` ：
 
 ```js {2-3}
       <ChatRoom
@@ -2109,7 +2109,7 @@ export default function ChatRoom({ roomId, isEncrypted, onMessage }) { // Reacti
     connection.on('message', (msg) => onReceiveMessage(msg));
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId, isEncrypted]); // ✅ 所有依赖项已声明
+  }, [roomId, isEncrypted]); // ✅ 所有依赖已声明
 ```
 
 因此，仅当有意义的内容（`roomId` 或 `isEncrypted`）发生变化时，聊天才会重新连接：
