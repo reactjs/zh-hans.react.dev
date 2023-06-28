@@ -90,7 +90,7 @@ app.use('/', (request, response) => {
 如果可能的话，我们建议使用这些功能完整的替代方法：
 
 * 如果你使用 Node.js，请使用 [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream)。
-* 如果你使用 Deno 或支持 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的现代运行时，请使用 [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)。
+* 如果你使用 Deno 或支持 [Web Streams](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API) 的现代运行时，请使用 [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)。
 
 如果你的服务器环境不支持流式传输，你仍然可以继续使用 `renderToString`。
 
@@ -122,7 +122,7 @@ flushSync(() => {
 console.log(div.innerHTML); // 例如，"<svg>...</svg>"
 ```
 
-[`flushSync`](/reference/react-dom/flushSync) 调用是必要的，以便在读取 [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) 属性之前更新 DOM。
+[`flushSync`](/reference/react-dom/flushSync) 调用是必要的，以便在读取 [`innerHTML`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/innerHTML) 属性之前更新 DOM。
 
 ---
 

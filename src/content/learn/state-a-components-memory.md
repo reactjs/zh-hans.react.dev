@@ -1223,7 +1223,7 @@ img { width: 120px; height: 120px; }
 
 </Sandpack>
 
-注意 `hasPrev` 和 `hasNext` 是如何*同时* 作用于返回的 JSX 和事件处理函数中的！这种简便的模式之所以有效，是因为事件处理函数["闭包"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)了渲染时声明的变量。
+注意 `hasPrev` 和 `hasNext` 是如何*同时* 作用于返回的 JSX 和事件处理函数中的！这种简便的模式之所以有效，是因为事件处理函数["闭包"](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures)了渲染时声明的变量。
 
 </Solution>
 

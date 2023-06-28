@@ -46,7 +46,7 @@ function ChatRoom({ roomId }) {
 
 * `setup`：处理 Effect 的函数。setup 函数选择性返回一个 **清理（cleanup）** 函数。在将组件首次添加到 DOM 之前，React 将运行 setup 函数。在每次依赖项变更重新渲染后，React 将首先使用旧值运行 cleanup 函数（如果你提供了该函数），然后使用新值运行 setup 函数。在组件从 DOM 中移除后，React 将最后一次运行 cleanup 函数。
  
-* **可选** `dependencies`：`setup` 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 [配置了 React](/learn/editor-setup#linting)，那么它将验证是否每个响应式值都被正确地指定为一个依赖项。依赖项列表的元素数量必须是固定的，并且必须像 `[dep1, dep2, dep3]` 这样内联编写。React 将使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来比较每个依赖项和它先前的值。如果省略此参数，则在每次重新渲染组件之后，将重新运行 Effect 函数。如果你想了解更多，请参见 [传递依赖数组、空数组和不传递依赖项之间的区别](#examples-dependencies)。
+* **可选** `dependencies`：`setup` 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 [配置了 React](/learn/editor-setup#linting)，那么它将验证是否每个响应式值都被正确地指定为一个依赖项。依赖项列表的元素数量必须是固定的，并且必须像 `[dep1, dep2, dep3]` 这样内联编写。React 将使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来比较每个依赖项和它先前的值。如果省略此参数，则在每次重新渲染组件之后，将重新运行 Effect 函数。如果你想了解更多，请参见 [传递依赖数组、空数组和不传递依赖项之间的区别](#examples-dependencies)。
 
 #### 返回值 {/*returns*/}
 
@@ -122,8 +122,8 @@ function ChatRoom({ roomId }) {
 
 Effect 可以让你的组件与某些外部系统（比如聊天服务）[保持同步](/learn/synchronizing-with-effects)。在这里，外部系统是指任何不受 React 控制的代码，例如：
 
-* 由 <CodeStep step={1}>[`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)</CodeStep> 和 <CodeStep step={2}>[`clearInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval)</CodeStep> 管理的定时器。
-* 使用 <CodeStep step={1}>[`window.addEventListener()`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)</CodeStep> 和 <CodeStep step={2}>[`window.removeEventListener()`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)</CodeStep> 的事件订阅。
+* 由 <CodeStep step={1}>[`setInterval()`](https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval)</CodeStep> 和 <CodeStep step={2}>[`clearInterval()`](https://developer.mozilla.org/zh-CN/docs/Web/API/clearInterval)</CodeStep> 管理的定时器。
+* 使用 <CodeStep step={1}>[`window.addEventListener()`](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener)</CodeStep> 和 <CodeStep step={2}>[`window.removeEventListener()`](https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/removeEventListener)</CodeStep> 的事件订阅。
 * 一个第三方的动画库，它有一个类似 <CodeStep step={1}>`animation.start()`</CodeStep> 和 <CodeStep step={2}>`animation.reset()`</CodeStep> 的 API。
 
 **如果你没有连接到任何外部系统，[你或许不需要 Effect](/learn/you-might-not-need-an-effect)**。
@@ -218,7 +218,7 @@ button { margin-left: 10px; }
 
 #### 监听全局的浏览器事件 {/*listening-to-a-global-browser-event*/}
 
-在这个例子中，外部系统就是浏览器 DOM 本身。通常，你会使用 JSX 指定事件监听，但是你不能以这种方式监听全局的 [`window`](https://developer.mozilla.org/en-US/docs/Web/API/Window) 对象。你可以通过 Effect 连接到 `window` 对象并监听其事件。如监听 `pointermove` 事件可以让你追踪光标（或手指）的位置，并更新红点以随之移动。
+在这个例子中，外部系统就是浏览器 DOM 本身。通常，你会使用 JSX 指定事件监听，但是你不能以这种方式监听全局的 [`window`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window) 对象。你可以通过 Effect 连接到 `window` 对象并监听其事件。如监听 `pointermove` 事件可以让你追踪光标（或手指）的位置，并更新红点以随之移动。
 
 <Sandpack>
 
@@ -366,7 +366,7 @@ html, body { min-height: 300px; }
 
 #### 控制模态对话框 {/*controlling-a-modal-dialog*/}
 
-在这个例子中，外部系统是浏览器 DOM。`ModalDialog` 组件渲染一个 [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) 元素。它使用 Effect 将 `isOpen` prop 同步到 [`showModal()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal) 和 [`close()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close) 方法调用。
+在这个例子中，外部系统是浏览器 DOM。`ModalDialog` 组件渲染一个 [`<dialog>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dialog) 元素。它使用 Effect 将 `isOpen` prop 同步到 [`showModal()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLDialogElement/showModal) 和 [`close()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLDialogElement/close) 方法调用。
 
 <Sandpack>
 
@@ -426,7 +426,7 @@ body {
 
 #### 跟踪元素可见性 {/*tracking-element-visibility*/}
 
-在这个例子中，外部系统仍然是浏览器 DOM。`App` 组件展示一个长列表，然后是 `Box` 组件，然后是另一个长列表。试试向下滚动列表。请注意，当 `Box` 组件出现在视野中时，背景色会变成黑色。为了实现这一点，`Box` 组件使用 Effect 来管理 [`IntersectionObserver`](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)。这个浏览器 API 会在视野中出现指定 DOM 元素时通知你。
+在这个例子中，外部系统仍然是浏览器 DOM。`App` 组件展示一个长列表，然后是 `Box` 组件，然后是另一个长列表。试试向下滚动列表。请注意，当 `Box` 组件出现在视野中时，背景色会变成黑色。为了实现这一点，`Box` 组件使用 Effect 来管理 [`IntersectionObserver`](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API)。这个浏览器 API 会在视野中出现指定 DOM 元素时通知你。
 
 <Sandpack>
 
@@ -975,7 +975,7 @@ export async function fetchBio(person) {
 
 </Sandpack>
 
-你也可以使用 [`async` / `await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) 语法重写，但是你仍然需要提供一个 cleanup 函数：
+你也可以使用 [`async` / `await`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function) 语法重写，但是你仍然需要提供一个 cleanup 函数：
 
 <Sandpack>
 
@@ -1733,7 +1733,7 @@ function Page({ url, shoppingCart }) {
 
 如果你的应用程序使用服务端（[直接](/reference/react-dom/server) 或通过 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks)）渲染，你的组件将会在两个不同的环境中渲染。在服务器上，它将渲染生成初始 HTML。在客户端，React 将再次运行渲染代码，以便将事件处理附加到该 HTML 上。这就是为什么要让 [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) 发挥作用，你的初始渲染输出必须在客户端和服务器上完全相同的原因。
 
-在极少数情况下，你可能需要在客户端上显示不同的内容。例如，如果你的应用从 [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) 中读取某些数据，服务器上肯定不可能做到这一点。以下是这如何实现的：
+在极少数情况下，你可能需要在客户端上显示不同的内容。例如，如果你的应用从 [`localStorage`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage) 中读取某些数据，服务器上肯定不可能做到这一点。以下是这如何实现的：
 
 ```js
 function MyComponent() {

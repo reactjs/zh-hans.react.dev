@@ -44,7 +44,7 @@ React 将会附加到 `domNode` 内部现有的 HTML，并接管有关的 DOM �
 
 * `reactNode`：此参数用于渲染现有的 HTML。这通常是像 `<App />` 这样的 JSX 片段，并且在 React 17 中使用如 `renderToString(<App />)` 的 `ReactDOM Server` 方法进行渲染。
 
-* `domNode`：在服务器中被渲染为根节点的 [DOM 元素](https://developer.mozilla.org/en-US/docs/Web/API/Element)。
+* `domNode`：在服务器中被渲染为根节点的 [DOM 元素](https://developer.mozilla.org/zh-CN/docs/Web/API/Element)。
 
 * **可选属性** `callback`：一个函数。如果传递了该参数，React 将会在组件 hydrate 后调用它。
 

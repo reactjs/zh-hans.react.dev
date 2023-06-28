@@ -57,7 +57,7 @@ function Greeting({ name }) {
 
 #### 注意事项 {/*caveats*/}
 
-* 你必须 **把 React 元素和它们的 props 视为 [不可变的](https://en.wikipedia.org/wiki/Immutable_object)**，在创建后永远不要改变它们的内容。在开发环境中，React 会浅层 [冻结](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze) 返回的元素及其 `props` 属性，以确保如此。
+* 你必须 **把 React 元素和它们的 props 视为 [不可变的](https://en.wikipedia.org/wiki/Immutable_object)**，在创建后永远不要改变它们的内容。在开发环境中，React 会浅层 [冻结](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze) 返回的元素及其 `props` 属性，以确保如此。
 
 * 当你使用 JSX 时，**你必须以大写字母开头来渲染你的自定义组件**。换句话说，`<Something />` 等价于 `createElement(Something)`，但 `<something />`（小写）等价于 `createElement('something')`（注意它是一个字符串，它会被当作内置的 HTML 标签）。
 

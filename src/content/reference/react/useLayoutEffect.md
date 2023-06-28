@@ -103,7 +103,7 @@ function Tooltip() {
 
 1. `Tooltip` 使用初始值 `tooltipHeight = 0` 进行渲染（因此 tooltip 可能被错误地放置）。
 2. React 将它放在 DOM 中，然后运行 `useLayoutEffect` 中的代码。
-3. `useLayoutEffect` [测量](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) 了 tooltip 内容的高度，并立即触发重新渲染。
+3. `useLayoutEffect` [测量](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect) 了 tooltip 内容的高度，并立即触发重新渲染。
 4. 使用实际的 `tooltipHeight` 再次渲染 `Tooltip`（这样 tooltip 的位置就正确了）。
 5. React 在 DOM 中对它进行更新，浏览器最终显示出 tooltip。
 
