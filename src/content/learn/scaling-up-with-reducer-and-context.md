@@ -1,5 +1,5 @@
 ---
-title: 使用 Reducer 和 Context 来拓展你的应用
+title: 使用 Reducer 和 Context 拓展你的应用
 translators: 
   - Ikaite 
   - KnowsCount 
@@ -212,7 +212,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-Reducer 有助于保持事件处理程序的简短明了。但随着应用规模越来越庞大，你就可能会遇到别的困难。**目前，`tasks` 状态和 `dispatch` 函数仅在顶级 `TaskApp` 组件中可用**。要让其他组件读取任务列表或更改它，你必须显式 [传递](/learn/passing-props-to-a-component) 当前状态和将其更改为 props 的事件处理程序。
+Reducer 有助于保持事件处理程序的简短明了。但随着应用规模越来越庞大，你就可能会遇到别的困难。**目前，`tasks` 状态和 `dispatch` 函数仅在顶级 `TaskApp` 组件中可用**。要让其他组件读取任务列表或更改它，你必须显式 [传递](/learn/passing-props-to-a-component) 当前状态和事件处理程序，将其作为 props。
 
 例如，`TaskApp` 将 一系列 task 和事件处理程序传递给 `TaskList`：
 
