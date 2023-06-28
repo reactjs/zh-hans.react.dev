@@ -7,7 +7,7 @@ translators:
 
 <Intro>
 
-当你希望组件“记住”某些信息，但又不想让这些信息 [触发新的渲染](/learn/render-and-commit) 时，你可以使用 *ref* 。
+当你希望组件“记住”某些信息，但又不想让这些信息 [触发新的渲染](/learn/render-and-commit) 时，你可以使用 **ref** 。
 
 </Intro>
 
@@ -124,7 +124,7 @@ export default function Stopwatch() {
 
 </Sandpack>
 
-当按下“停止”按钮时，你需要取消现有的 interval，以便让它停止更新 `now` state 变量。你可以通过调用 [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval) 来完成此操作。但你需要为其提供 interval ID，此 ID 是之前用户按下 Start、调用 `setInterval` 时返回的。你需要将 interval ID 保留在某处。 **由于 interval ID 不用于渲染，你可以将其保存在 ref 中：**
+当按下“停止”按钮时，你需要取消现有的 interval，以便让它停止更新 `now` state 变量。你可以通过调用 [`clearInterval`](https://developer.mozilla.org/zh-CN/docs/Web/API/clearInterval) 来完成此操作。但你需要为其提供 interval ID，此 ID 是之前用户按下 Start、调用 `setInterval` 时返回的。你需要将 interval ID 保留在某处。 **由于 interval ID 不用于渲染，你可以将其保存在 ref 中：**
 
 <Sandpack>
 
@@ -241,7 +241,7 @@ export default function Counter() {
 
 #### useRef 内部是如何运行的？ {/*how-does-use-ref-work-inside*/}
 
-尽管 `useState` 和 `useRef` 都是由 React 提供的，原则上 `useRef` 可以在 `useState` _的基础上_ 实现。 你可以想象在 React 内部，`useRef` 是这样实现的：
+尽管 `useState` 和 `useRef` 都是由 React 提供的，原则上 `useRef` 可以在 `useState` **的基础上** 实现。 你可以想象在 React 内部，`useRef` 是这样实现的：
 
 ```js
 // React 内部
@@ -306,7 +306,7 @@ console.log(ref.current); // 5
 
 #### 修复坏掉的聊天输入框 {/*fix-a-broken-chat-input*/}
 
-输入消息并单击“发送”。你会注意到，在看到“已发送！”提示框之前有 3 秒的延迟。在此延迟期间，你可以看到一个“撤消”按钮。点击它。这个“撤消”按钮应该阻止“发送！”消息弹出。它通过调用 [`clearTimeout`](https://developer.mozilla.org/en-US/docs/Web/API/clearTimeout) 来做到这点，这一步骤需要使用在 `handleSend` 时保存的 timeout ID。但是，即使在单击“撤消”后，“已发送！”消息仍然出现。找出它不起作用的原因，然后修复它。
+输入消息并单击“发送”。你会注意到，在看到“已发送！”提示框之前有 3 秒的延迟。在此延迟期间，你可以看到一个“撤消”按钮。点击它。这个“撤消”按钮应该阻止“发送！”消息弹出。它通过调用 [`clearTimeout`](https://developer.mozilla.org/zh-CN/docs/Web/API/clearTimeout) 来做到这点，这一步骤需要使用在 `handleSend` 时保存的 timeout ID。但是，即使在单击“撤消”后，“已发送！”消息仍然出现。找出它不起作用的原因，然后修复它。
 
 <Hint>
 
@@ -467,7 +467,7 @@ export default function Toggle() {
 
 #### 修复防抖 {/*fix-debouncing*/}
 
-在这个例子中，所有按钮点击处理器都是 ["防抖的"](https://redd.one/blog/debounce-vs-throttle)。 要了解这意味着什么，请按下其中一个按钮。注意消息在一秒后显示。如果你在等待消息时按下按钮，计时器将重置。因此如果你多次快速单击同一个按钮，则直到你停止单击 *之后* 1 秒钟，该消息才会显示。防抖可以让你将一些动作推迟到用户“停止动作”之后。
+在这个例子中，所有按钮点击处理器都是 ["防抖的"](https://redd.one/blog/debounce-vs-throttle)。 要了解这意味着什么，请按下其中一个按钮。注意消息在一秒后显示。如果你在等待消息时按下按钮，计时器将重置。因此如果你多次快速单击同一个按钮，则直到你停止单击 **之后** 1 秒钟，该消息才会显示。防抖可以让你将一些动作推迟到用户“停止动作”之后。
 
 这个例子可以正常运行，但并不完全符合预期。按钮不是独立的。要查看问题，请单击其中一个按钮，然后立即单击另一个按钮。你本来期望在延迟之后，你会看到两个按钮的消息。但只有最后一个按钮的消息出现了。第一个按钮的消息丢失了。
 
@@ -584,7 +584,7 @@ button { display: block; margin: 10px; }
 
 在此示例中，当你按下“发送”后，在显示消息之前会有一小段延迟。输入“你好”，按下发送，然后再次快速编辑输入。尽管你进行了编辑，提示框仍会显示“你好”（这是按钮被点击 [那一刻](/learn/state-as-a-snapshot#state-over-time) state 的值）。
 
-通常，这种行为是你在应用程序中想要的。但是，有时可能需要一些异步代码来读取某些 state 的 *最新* 版本。你能想出一种方法，让提示框显示 *当前* 输入文本而不是点击时的内容吗？
+通常，这种行为是你在应用程序中想要的。但是，有时可能需要一些异步代码来读取某些 state 的 **最新** 版本。你能想出一种方法，让提示框显示 **当前** 输入文本而不是点击时的内容吗？
 
 <Sandpack>
 
@@ -619,7 +619,7 @@ export default function Chat() {
 
 <Solution>
 
-state 运作起来 [就像快照](/learn/state-as-a-snapshot)，因此你无法从 timeout 等异步操作中读取最新的 state。但是，你可以在 ref 中保存最新的输入文本。ref 是可变的，因此你可以随时读取 `current` 属性。由于当前文本也用于渲染，在这个例子中，你需要 *同时* 使用一个 state 变量（用于渲染）*和* 一个 ref（在 timeout 时读取它）。你需要手动更新当前的 ref 值。
+state 运作起来 [就像快照](/learn/state-as-a-snapshot)，因此你无法从 timeout 等异步操作中读取最新的 state。但是，你可以在 ref 中保存最新的输入文本。ref 是可变的，因此你可以随时读取 `current` 属性。由于当前文本也用于渲染，在这个例子中，你需要 **同时** 使用一个 state 变量（用于渲染）**和** 一个 ref（在 timeout 时读取它）。你需要手动更新当前的 ref 值。
 
 <Sandpack>
 

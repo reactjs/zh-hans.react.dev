@@ -4,7 +4,7 @@ title: "<option>"
 
 <Intro>
 
-The [built-in browser `<option>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) lets you render an option inside a [`<select>`](/reference/react-dom/components/select) box.
+[浏览器内置的 `<option>` 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/option) 允许你渲染 [`<select>`](/reference/react-dom/components/select) 组件的选项（option）。
 
 ```js
 <select>
@@ -19,11 +19,11 @@ The [built-in browser `<option>` component](https://developer.mozilla.org/en-US/
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `<option>` {/*option*/}
 
-The [built-in browser `<option>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select) lets you render an option inside a [`<select>`](/reference/react-dom/components/select) box.
+[浏览器内置的 `<option>` 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/option) 允许你渲染 [`<select>`](/reference/react-dom/components/select) 组件的选项（option）。
 
 ```js
 <select>
@@ -32,31 +32,31 @@ The [built-in browser `<option>` component](https://developer.mozilla.org/en-US/
 </select>
 ```
 
-[See more examples below.](#usage)
+[参见下面更多示例](#usage)。
 
 #### Props {/*props*/}
 
-`<option>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<option>` 支持所有 [常见的元素属性](/reference/react-dom/components/common#props)。
 
-Additionally, `<option>` supports these props:
+除此之外，`<option>` 还支持以下属性：
 
-* [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#disabled): A boolean. If `true`, the option will not be selectable and will appear dimmed.
-* [`label`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#label): A string. Specifies the meaning of the option. If not specified, the text inside the option is used.
-* [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#value): The value to be used [when submitting the parent `<select>` in a form](/reference/react-dom/components/select#reading-the-select-box-value-when-submitting-a-form) if this option is selected.
+* [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/option#disabled)：布尔值。如果 `disabled` 为 `true`，该选项（option）将会被选中，并将展示为暗淡状态（dimmed）。
+* [`label`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/option#label)：字符串。指定选项的含义。如果未指定，则使用选项内部的文本。
+* [`value`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/option#value)：如果选择了此选项，则在提交表单时将使用此选项的 `value` 值作为父级 `<select>` 的值。详细信息请参阅 [在提交表单时读取 `<select>` 值](/reference/react-dom/components/select#reading-the-select-box-value-when-submitting-a-form)。
 
-#### Caveats {/*caveats*/}
+#### 注意 {/*caveats*/}
 
-* React does not support the `selected` attribute on `<option>`. Instead, pass this option's `value` to the parent [`<select defaultValue>`](/reference/react-dom/components/select#providing-an-initially-selected-option) for an uncontrolled select box, or [`<select value>`](/reference/react-dom/components/select#controlling-a-select-box-with-a-state-variable) for a controlled select.
+* React 不支持在 `<option>` 上使用 `selected` 属性。相反，对于非受控选择框，请将此选项的 `value` 属性传递给父级 [`<select defaultValue>`](/reference/react-dom/components/select#providing-an-initially-selected-option)；对于受控选择框，请使用 [`<select value>`](/reference/react-dom/components/select#controlling-a-select-box-with-a-state-variable) 来控制选择框的值。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Displaying a select box with options {/*displaying-a-select-box-with-options*/}
+### 显示带有选项的选择框 {/*displaying-a-select-box-with-options*/}
 
-Render a `<select>` with a list of `<option>` components inside to display a select box. Give each `<option>` a `value` representing the data to be submitted with the form.
+渲染一个包含一系列 `<option>` 组件的 `<select>`，来展示一个选择框，并给每个 `<option>` 都设置一个 `value` 属性，表示要与表单一起提交的数据。
 
-[Read more about displaying a `<select>` with a list of `<option>` components.](/reference/react-dom/components/select)
+在这里了解更多关于 [如何展示一个包含一系列 `<option>` 组件的 `<select>`](/reference/react-dom/components/select) 的信息。
 
 <Sandpack>
 
@@ -64,11 +64,11 @@ Render a `<select>` with a list of `<option>` components inside to display a sel
 export default function FruitPicker() {
   return (
     <label>
-      Pick a fruit:
-      <select name="selectedFruit">
-        <option value="apple">Apple</option>
-        <option value="banana">Banana</option>
-        <option value="orange">Orange</option>
+      选择一个水果：
+      <select name="精选水果">
+        <option value="苹果">苹果</option>
+        <option value="香蕉">香蕉</option>
+        <option value="橘子">橘子</option>
       </select>
     </label>
   );
