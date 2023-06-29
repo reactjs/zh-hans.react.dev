@@ -49,7 +49,7 @@ function useWindowWidth() {
 * 🔴 不要在类式组件内调用 Hook。
 * 🔴 不要在那些传给 `useMemo`，`useReducer` 或 `useEffect` 的函数内调用 Hook。
 
-如果你打破了这些规则，你就会可能看到这个错误提示。
+如果你打破了这些规则，你可能就会看到这个错误提示。
 
 ```js{3-4,11-12,20-21}
 function Bad({ cond }) {
