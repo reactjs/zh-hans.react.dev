@@ -37,7 +37,7 @@ React 将会连接到内部有 `domNode` 的 HTML 上，然后接管其中的 `d
 
 #### 参数 {/*parameters*/}
 
-* `domNode`： 一个在服务器端渲染时呈现为根元素的 [DOM 元素](https://developer.mozilla.org/zh-CN/docs/Web/API/Element)。
+* `domNode`：一个在服务器端渲染时呈现为根元素的 [DOM 元素](https://developer.mozilla.org/zh-CN/docs/Web/API/Element)。
 
 * `reactNode`： 用于渲染已存在 HTML 的 "React 节点"。这个节点通常是一些类似于 `<App />` 的 JSX  ，它会在 `ReactDOM Server` 端使用类似于  `renderToPipeableStream(<App />)` 的方法进行渲染。
 
@@ -45,7 +45,6 @@ React 将会连接到内部有 `domNode` 的 HTML 上，然后接管其中的 `d
 
   * **可选**  `onRecoverableError`：当 React 自动从错误中恢复时调用的回调函数。
   * **可选**  `identifierPrefix`：字符串前缀，用于标识由 [`useId`](/reference/react/useId) 生成的 ID ，可以避免在同一页面上使用多个 React 根元素时出现冲突。必须与服务端使用的前缀相同。
-
 
 #### 返回值 {/*returns*/}
 
@@ -55,14 +54,14 @@ React 将会连接到内部有 `domNode` 的 HTML 上，然后接管其中的 `d
 
 * `hydrateRoot()` 期望渲染内容与服务端渲染的内容完全相同。你应该将不匹配视为错误并进行修复。
 * 在开发模式下，React 会在 hydration 期间发出不匹配警告。在不匹配的情况下，不能保证内容差异会被修补。出于性能原因，这很重要，因为在大多数应用程序中，不匹配很少见，因此验证所有标记将是昂贵而不可行的。
-* 你的应用程序可能只有一个 `hydrateRoot()`  函数调用。如果你使用框架，则可能会为你完成此调用。
+* 你的应用程序可能只有一个 `hydrateRoot()` 函数调用。如果你使用框架，则可能会为你完成此调用。
 * 如果你的应用程序是客户端渲染，并且没有已渲染好的 HTML，则不支持使用 `hydrateRoot()`。请改用 [`createRoot()`](/reference/react-dom/client/createRoot)。
 
 ---
 
 ### `root.render(reactNode)` {/*root-render*/}
 
-使用  `root.render` 更新一个 hydrate 根组件中的 React 组件来渲染浏览器端 DOM 元素。
+使用 `root.render` 更新一个 hydrate 根组件中的 React 组件来渲染浏览器端 DOM 元素。
 
 ```js
 root.render(<App />);
@@ -75,7 +74,6 @@ React 将会在 hydrate `root` 中更新 `<App />`。
 #### 参数 {/*root-render-parameters*/}
 
 * `reactNode`：你想要更新的 "React 节点"。通常这会是一段JSX代码，例如 `<App />`，但你也可以传递一个通过 [`createElement()`](/reference/react/createElement) 创建的 React 元素，一个字符串，一个数字，`null` 值 或者 `undefined` 值。
-
 
 #### 返回值 {/*root-render-returns*/}
 
@@ -103,9 +101,7 @@ root.unmount();
 
 #### 参数 {/*root-unmount-parameters*/}
 
-
 `root.unmount` 不接受任何参数。
-
 
 #### 返回值 {/*root-unmount-returns*/}
 
@@ -115,7 +111,7 @@ root.unmount();
 
 * 调用 `root.unmount` 将卸载树中的所有组件，并“分离” React 与根 DOM 节点之间的连接。
 
-* 一旦你调用 `root.unmount`，就不能再在根节点上调用 `root.render` 。在未挂载的根节点上尝试调用 `root.render` 将抛出“不能更新未挂载的根节点”的错误。
+* 一旦你调用 `root.unmount`，就不能再在根节点上调用 `root.render`。在未挂载的根节点上尝试调用 `root.render` 将抛出“不能更新未挂载的根节点”的错误。
 
 ---
 
@@ -223,7 +219,7 @@ function App() {
 }
 ```
 
-要对整个文档进行  hydrate 处理，将全局的 [`document`](https://developer.mozilla.org/en-US/docs/Web/API/Window/document) 作为 `hydrateRoot` 的第一个参数传递：
+要对整个文档进行 hydrate 处理，将全局的 [`document`](https://developer.mozilla.org/en-US/docs/Web/API/Window/document) 作为 `hydrateRoot` 的第一个参数传递：
 
 ```js {4}
 import { hydrateRoot } from 'react-dom/client';
@@ -328,7 +324,7 @@ export default function App() {
 
 ### 更新 hydrate 根组件 {/*updating-a-hydrated-root-component*/}
 
-在根组件 hydrating 完成之后，你可以调用 [`root.render`](#root-render) 来更新根 React 组件。**与  [`createRoot`](/reference/react-dom/client/createRoot) 不同的是，通常你不需要这样做，因为初始内容已经渲染为HTML。**
+在根组件 hydrating 完成之后，你可以调用 [`root.render`](#root-render) 来更新根 React 组件。**与  [`createRoot`](/reference/react-dom/client/createRoot) 不同的是，通常你不需要这样做，因为初始内容已经渲染为 HTML。**
 
 如果在 hydration 之后某个时刻调用了 `root.render`，并且组件树结构与之前渲染的相匹配，那么 React 将[保留状态](/learn/preserving-and-resetting-state)。请注意，你可以在输入框中输入文字，这意味着在此示例中每秒钟重复调用的 `render` 不会破坏已有的组件状态：
 
