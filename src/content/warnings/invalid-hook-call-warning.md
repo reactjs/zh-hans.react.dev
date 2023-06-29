@@ -46,7 +46,7 @@ function useWindowWidth() {
 * 🔴 不要在条件语句内或循环语句内调用 Hook。
 * 🔴 不要在包含 `return` 的条件语句之后调用 Hook。
 * 🔴 不要在事件监听中调用 Hook。
-* 🔴 不要在类式组件内调用 Hook
+* 🔴 不要在类式组件内调用 Hook。
 * 🔴 不要在那些传给 `useMemo`，`useReducer` 或 `useEffect` 的函数内调用 Hook。
 
 如果你打破了这些规则，你就会可能看到这个错误提示。
