@@ -4,7 +4,7 @@ title: Children
 
 <Pitfall>
 
-使用 `Children` 的场景并不常见，使用它可能会削弱代码的健壮性 [查看常见的替代方案](#alternatives)。
+使用 `Children` 的场景并不常见，使用它可能会削弱代码的健壮性。[查看常见的替代方案](#alternatives)。
 
 </Pitfall>
 
@@ -18,6 +18,7 @@ const mappedChildren = Children.map(children, child =>
     {child}
   </div>
 );
+
 ```
 
 </Intro>
@@ -57,7 +58,7 @@ function RowList({ children }) {
 
 #### 注意事项 {/*children-count-caveats*/}
 
-- 空节点（`null`，`undefined` 以及 布尔值），字符串，数字和 [React 元素](/reference/react/createElement) 都会被统计为一个节点。**在遍历统计的过程中，React 元素不会被渲染，所以其子节点不会被统计**。 [Fragments](/reference/react/Fragment) 也不会被统计。对于数组，它本身也不会被统计，但其中的元素遵循上述规则。
+- 空节点（`null`，`undefined` 以及布尔值），字符串，数字和 [React 元素](/reference/react/createElement) 都会被统计为一个节点。**在遍历统计的过程中，React 元素不会被渲染，所以其子节点不会被统计**。 [Fragment](/reference/react/Fragment) 也不会被统计。对于数组，它本身也不会被统计，但其中的元素遵循上述规则。
 
 ---
 
@@ -91,7 +92,7 @@ function SeparatorList({ children }) {
 
 #### 注意事项 {/*children-foreach-caveats*/}
 
-- 空节点（`null`，`undefined` 以及 布尔值），字符串，数字和 [React 元素](/reference/react/createElement) 都会被统计为单个节点。**在遍历统计的过程中，React 元素不会被渲染，所以其子节点不会被统计**。[Fragments](/reference/react/Fragment) 也不会被统计。对于数组，它本身也不会被统计，但其中的元素遵循上述规则。
+- 空节点（`null`，`undefined` 以及布尔值），字符串，数字和 [React 元素](/reference/react/createElement) 都会被统计为单个节点。**在遍历统计的过程中，React 元素不会被渲染，所以其子节点不会被统计**。[Fragment](/reference/react/Fragment) 也不会被统计。对于数组，它本身也不会被统计，但其中的元素遵循上述规则。
 
 ---
 
@@ -131,10 +132,9 @@ function RowList({ children }) {
 
 #### 注意事项 {/*children-map-caveats*/}
 
-- 空节点（`null`，`undefined` 以及 布尔值），字符串，数字和 [React 元素](/reference/react/createElement) 都会被统计为单个节点。**在遍历统计的过程中，React 元素不会被渲染，所以其子节点不会被统计**。[Fragments](/reference/react/Fragment) 也不会被统计。对于数组，它本身也不会被统计，但其中的元素遵循上述规则。
+- 空节点（`null`，`undefined` 以及布尔值），字符串，数字和 [React 元素](/reference/react/createElement) 都会被统计为单个节点。**在遍历统计的过程中，React 元素不会被渲染，所以其子节点不会被统计**。[Fragment](/reference/react/Fragment) 也不会被统计。对于数组，它本身也不会被统计，但其中的元素遵循上述规则。
+
 - 如果你在 `fn` 中返回了一个具有 key 的元素或者元素数组，**各个元素的 key 将自动与其在 `children` 中对应的原始项的 key 绑定**。当你在 `fn` 中返回了一个包含了多个元素的数组时，其中的每个元素的 key 都需要保证在这个数组中是独一无二的。
-
-
 
 ---
 
@@ -192,7 +192,7 @@ export default function ReversedList({ children }) {
 
 ---
 
-## 使用方式 {/*usage*/}
+## 用法 {/*usage*/}
 
 ### 转化 children {/*transforming-children*/}
 
@@ -295,7 +295,7 @@ export default function RowList({ children }) {
 
 #### 为什么 children 属性并不总是一个数组？ {/*why-is-the-children-prop-not-always-an-array*/}
 
-在 React 中，`children` 属性是被视为不透明的数据结构。这意味着你不应该依赖它的结构。如果要转换，过滤，或者统计子节点，你应该使用 `Children` 方法。
+在 React 中，`children` 属性是被视为 **不透明的** 数据结构。这意味着你不应该依赖它的结构。如果要转换，过滤，或者统计子节点，你应该使用 `Children` 方法。
 
 实际操作过程中，`children` 在底层常常被表示为数组。但是如果这里只有一个子节点，那么 React 将不会创建数组，因为这将导致不必要的内存开销。只要你使用 `Children` 方法而不是直接操作 `children` 底层结构，即使 React 改变了 `children` 数据结构的实际实现方式，你的代码也不会被中断。
 
