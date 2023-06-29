@@ -5,6 +5,7 @@ translators:
  - sooia
  - KnowsCount
  - QC-L
+ - Zhou Chenyang
 ---
 
 <Intro>
@@ -540,4 +541,4 @@ button {
 
 至此，你已经了解了如何编写 React 代码的基本知识。
 
-Check out the [Tutorial](/learn/tutorial-tic-tac-toe) to put them into practice and build your first mini-app with React.
+看看 [教程](/learn/tutorial-tic-tac-toe)，把它们付诸实践，用 React 建立你的第一个迷你应用程序。
