@@ -54,7 +54,7 @@ function useWindowWidth() {
 ```js{3-4,11-12,20-21}
 function Bad({ cond }) {
   if (cond) {
-    // 🔴 错误: 在条件语句内调用（修复办法：把它挪到外层！）
+    // 🔴 错误：在条件语句内调用（修复办法：把它挪到外层！）
     const theme = useContext(ThemeContext);
   }
   // ...
@@ -62,7 +62,7 @@ function Bad({ cond }) {
 
 function Bad() {
   for (let i = 0; i < 10; i++) {
-    // 🔴 错误: 在循环内调用 (修复办法：把它挪到外层!)
+    // 🔴 错误：在循环内调用（修复办法：把它挪到外层！）
     const theme = useContext(ThemeContext);
   }
   // ...
@@ -72,14 +72,14 @@ function Bad({ cond }) {
   if (cond) {
     return;
   }
-  // 🔴 错误: 在一个包含return的条件语句后调用 (修复办法：挪到return之前!)
+  // 🔴 错误：在包含 return 的条件语句后调用（修复办法：挪到 return 之前！）
   const theme = useContext(ThemeContext);
   // ...
 }
 
 function Bad() {
   function handleClick() {
-    // 🔴 错误: 在事件监听器或回调中调用 (修复办法：把它挪到外层!)
+    // 🔴 错误：在事件监听器或回调中调用（修复办法：把它挪到外层！）
     const theme = useContext(ThemeContext);
   }
   // ...
@@ -87,7 +87,7 @@ function Bad() {
 
 function Bad() {
   const style = useMemo(() => {
-    // 🔴 错误: 在 useMemo 内调用 (修复办法：把它挪到外层!)
+    // 🔴 错误：在 useMemo 内调用（修复办法：把它挪到外层！）
     const theme = useContext(ThemeContext);
     return createStyle(theme);
   });
@@ -96,7 +96,7 @@ function Bad() {
 
 class Bad extends React.Component {
   render() {
-    // 🔴 错误: 在类式组件内调用 (修复办法：写一个函数式组件而不是类式组件!)
+    // 🔴 错误：在类式组件内调用（修复办法：写一个函数式组件而不是类式组件！）
     useEffect(() => {})
     // ...
   }
@@ -113,7 +113,7 @@ class Bad extends React.Component {
 
 ## 版本不一致的 React 和 React DOM {/*mismatching-versions-of-react-and-react-dom*/}
 
-你可能正在使用一个还不支持 Hook 的版本，例如 `react-dom` (< 16.8.0) 或 `react-native` (< 0.59)。你可以在你的应用目录下执行 `npm ls react-dom` 或 `npm ls react-native` 来检查下你正在使用的版本。如果你发现了同一个包有多个版本，那也可能带来其他的问题（下文会详细展开）。
+你可能正在使用一个还不支持 Hook 的版本，例如 `react-dom`（< 16.8.0）或 `react-native`（< 0.59）。你可以在你的应用目录下执行 `npm ls react-dom` 或 `npm ls react-native` 来检查下你正在使用的版本。如果你发现了同一个包有多个版本，那也可能带来其他的问题（下文会详细展开）。
 
 ## 重复的 React {/*duplicate-react*/}
 
@@ -121,7 +121,7 @@ class Bad extends React.Component {
 
 如果上述的两个 `react` 是使用不同模块导出的值，你可能会看到这个警告信息。一般来说，原因都会是你 **意外地使用了重复的** `react` 包。
 
-如果你用的是 Node 做包管理，你可以在你的应用目录下执行这个命令做个检查：
+如果你用的是 Node 进行包管理，你可以在你的应用目录下执行这个命令做个检查：
 
 <TerminalBlock>
 
@@ -129,7 +129,7 @@ npm ls react
 
 </TerminalBlock>
 
-如果你看到了超过1个 `React`，你可能需要去搞明白为什么会这样，并且修复一下你的包依赖关系。举个例子：你可能用了一个包，其内部错误地声明了 `react` 作为它的依赖（推荐做法应该是在 peerDependency 中）。在这个包被修复之前， [Yarn resolutions](https://yarnpkg.com/lang/en/docs/selective-version-resolutions/) 可以作为一个临时解决办法。
+如果你看到了超过 1 个 `React`，你可能需要去搞明白为什么会这样，并且修复一下你的包依赖关系。举个例子：你可能用了一个包，其内部错误地声明了 `react` 作为它的依赖（推荐做法应该是在 peerDependency 中）。在这个包被修复之前，[Yarn resolutions](https://yarnpkg.com/lang/en/docs/selective-version-resolutions/) 可以作为一个临时解决办法。
 
 你也可以通过增加一些日志，然后重启你的开发服务器，这样你就可以自己来调试这个问题了：
 
@@ -145,7 +145,7 @@ console.log(window.React1 === window.React2);
 
 如果你在控制台看到打印了 `false`，那代表你的项目中存在两个 React，你需要搞明白这是为什么。[此 issue](https://github.com/facebook/react/issues/13991) 列举了一些常见的可能的原因。
 
-如果你使用了 `npm link` 或者同类操作，也有可能导致这个问题出现。在这种情况下，你的构建工具可能会“看到”两个不同的 React —— 一个在应用目录，另一个则在工具库的目录。假设 `myapp` 和 `mylib` 是两个相邻的目录，一个可能有效的解决办法是在 `mylib` 目录下执行 `npm link ../myapp/node_modules/react`，这样就能让工具库里面使用的 React 和你应用里面使用的是同一个了。
+如果你使用了 `npm link` 或者同类操作，也有可能导致这个问题出现。在这种情况下，你的构建工具可能会“看到”两个不同的 React——一个在应用目录，另一个则在工具库的目录。假设 `myapp` 和 `mylib` 是两个相邻的目录，一个可能有效的解决办法是在 `mylib` 目录下执行 `npm link ../myapp/node_modules/react`，这样就能让工具库里面使用的 React 和你应用里面使用的是同一个了。
 
 <Note>
 
@@ -153,6 +153,6 @@ console.log(window.React1 === window.React2);
 
 </Note>
 
-## 其他的原因 {/*other-causes*/}
+## 其他原因 {/*other-causes*/}
 
 如果上文没有解决你的问题，你可以在 [此 issue](https://github.com/facebook/react/issues/13991) 中提交评论，我们会积极地提供帮助。评论的时候，如果能提供一个小的、能复现的示例那最好不过了。
