@@ -129,7 +129,7 @@ npm ls react
 
 </TerminalBlock>
 
-如果你看到了超过 1 个 `React`，你可能需要去搞明白为什么会这样，并且修复一下你的包依赖关系。举个例子：你可能用了一个包，其内部错误地声明了 `react` 作为它的依赖（推荐做法应该是在 peerDependency 中）。在这个包被修复之前，[Yarn resolutions](https://yarnpkg.com/lang/en/docs/selective-version-resolutions/) 可以作为一个临时解决办法。
+如果你看到了超过 1 个 `React`，你可能需要去搞明白为什么会这样，并且修复一下你的包依赖关系。举个例子：你可能用了一个包，其内部错误地声明了 `react` 作为它的依赖（推荐做法应该是在 peerDependency 中）。在这个包被修复之前，[yarn resolutions](https://yarnpkg.com/lang/en/docs/selective-version-resolutions/) 可以作为一个临时解决办法。
 
 你也可以通过增加一些日志，然后重启你的开发服务器，这样你就可以自己来调试这个问题了：
 
