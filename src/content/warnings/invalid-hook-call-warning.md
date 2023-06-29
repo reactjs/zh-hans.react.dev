@@ -54,7 +54,7 @@ function useWindowWidth() {
 ```js{3-4,11-12,20-21}
 function Bad({ cond }) {
   if (cond) {
-    // 🔴 错误: 在条件语句内调用 (修复办法：把它挪到外层!)
+    // 🔴 错误: 在条件语句内调用（修复办法：把它挪到外层！）
     const theme = useContext(ThemeContext);
   }
   // ...
