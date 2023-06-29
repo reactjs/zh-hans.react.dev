@@ -22,7 +22,7 @@ Hooks can only be called inside the body of a function component.
 
 在 React 中被调用的且以 `use` 开头命名的函数叫 [**Hook**](/reference/react)。
 
-**不要在循环语句内、条件语句后或嵌套的函数内调用 Hook**。 反之，应该始终保证 Hook 在函数式组件的顶层，并避免在 Hook 调用前过早终止函数。你只能在 React 渲染一个函数式组件的过程当中调用 Hook：
+**不要在循环语句内、条件语句后或嵌套的函数内调用 Hook**。反之，应该始终保证 Hook 在函数式组件的顶层，并避免在 Hook 调用前过早终止函数。你只能在 React 渲染函数式组件的过程当中调用 Hook：
 
 * ✅ 在 [函数式组件](/learn/your-first-component) 内部的顶级作用域调用他们。
 * ✅ 在 [自定义 Hook](/learn/reusing-logic-with-custom-hooks) 内部的顶级作用域调用他们。
