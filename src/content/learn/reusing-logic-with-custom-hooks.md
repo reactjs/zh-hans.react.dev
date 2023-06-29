@@ -222,7 +222,7 @@ React 应用是由组件构成，而组件由内置或自定义 Hook 构成。�
 你必须遵循以下这些命名公约：
 
 1. **React 组件名称必须以大写字母开头**，比如 `StatusBar` 和 `SaveButton`。React 组件还需要返回一些 React 能够显示的内容，比如一段 JSX。
-2. **Hook 的名称必须以后跟一个大写字母的 `use` 开头**，像 [`useState`](/reference/react/useState)  (内置) 或者 `useOnlineStatus` (像本文早前的自定义 Hook)。Hook 可以返回任意值。
+2. **Hook 的名称必须以后跟一个大写字母的 `use` 开头**，像 [`useState`](/reference/react/useState)（内置） 或者 `useOnlineStatus`（像本文早前的自定义 Hook）。Hook 可以返回任意值。
 
 这个公约保证你始终能一眼识别出组件并且知道它的 state，Effect 以及其他的 React 特性可能“隐藏”在哪里。例如如果你在组件内部看见 `getColor()` 函数调用，就可以确定它里面不可能包含 React state，因为它的名称没有以 `use` 开头。但是像 `useOnlineStatus()` 这样的函数调用就很可能包含对内部其他 Hook 的调用！
 
@@ -289,7 +289,7 @@ function useAuth() {
 
 </DeepDive>
 
-### 自定义 Hook 共享有状态逻辑，而不是 state 本身 {/*custom-hooks-let-you-share-stateful-logic-not-state-itself*/}
+### 自定义 Hook 共享的是状态逻辑，而不是状态本身 {/*custom-hooks-let-you-share-stateful-logic-not-state-itself*/}
 
 之前的例子里，当你开启或关闭网络时，两个组件一起更新了。但是两个组件共享 state 变量 `isOnline` 这种想法是错的。看这段代码：
 
@@ -441,7 +441,7 @@ function Form() {
 
 这就是为什么它工作的时候像声明了两个单独的 state 变量！
 
-**自定义 Hook 只是共享有状态逻辑而不是 state 本身。对 Hook 的每个调用完全独立于对同一个 Hook 的其他调用**。这就是上面两个 sandbox 结果完全相同的原因。如果愿意，你可以划上去进行比较。提取自定义 Hook 前后组件的行为是一致的。
+**自定义 Hook 共享的只是状态逻辑而不是状态本身。对 Hook 的每个调用完全独立于对同一个 Hook 的其他调用**。这就是上面两个 sandbox 结果完全相同的原因。如果愿意，你可以划上去进行比较。提取自定义 Hook 前后组件的行为是一致的。
 
 当你需要在多个组件之间共享 state 本身时，需要 [将变量提升并传递下去](/learn/sharing-state-between-components)。
 
@@ -449,7 +449,7 @@ function Form() {
 
 每当组件重新渲染，自定义 Hook 中的代码就会重新运行。这就是组件和自定义 Hook 都 [需要是纯函数](/learn/keeping-components-pure) 的原因。我们应该把自定义 Hook 的代码看作组件主体的一部分。
 
-由于自定义 Hook 会随着组件一起重新渲染，所以组件可以永远接收到最新的 props 和 state。想知道这意味着什么，那就看看这个聊天室的示例。修改 Server URL 或者聊天室 ID：
+由于自定义 Hook 会随着组件一起重新渲染，所以组件可以一直接收到最新的 props 和 state。想知道这意味着什么，那就看看这个聊天室的示例。修改 ServeUrl 或者 roomID：
 
 <Sandpack>
 
@@ -1437,7 +1437,7 @@ function ShippingForm({ country }) {
 
 ### 不止一个方法可以做到 {/*there-is-more-than-one-way-to-do-it*/}
 
-假设你想要使用浏览器的 [`requestAnimationFrame`](https://developer.mozilla.org/zh-CN/docs/Web/API/window/requestAnimationFrame) API 实现一个 **从头开始的** fade-in 动画。你也许会从一个设置动画循环的 Effect 开始。在动画的每一帧中，你可以修改 [ref 持有的](/learn/manipulating-the-dom-with-refs) DOM 节点的 opacity 属性直到 `1`。你的代码一开始可能是这样：
+假设你想要使用浏览器的 [`requestAnimationFrame`](https://developer.mozilla.org/zh-CN/docs/Web/API/window/requestAnimationFrame) API **从头开始** 实现一个 fade-in 动画。你也许会从一个设置动画循环的 Effect 开始。在动画的每一帧中，你可以修改 [ref 持有的](/learn/manipulating-the-dom-with-refs) DOM 节点的 opacity 属性直到 `1`。你的代码一开始可能是这样：
 
 <Sandpack>
 
@@ -1876,7 +1876,7 @@ html, body { min-height: 300px; }
 
 - 自定义 Hook 让你可以在组件间共享逻辑。
 - 自定义 Hook 命名必须以后跟一个大写字母的 `use` 开头。
-- 自定义 Hook 共享的只是有状态逻辑，不是 state 本身。
+- 自定义 Hook 共享的只是状态逻辑，不是状态本身。
 - 你可以将响应值从一个 Hook 传到另一个，并且他们会保持最新。
 - 每次组件重新渲染时，所有的 Hook 会重新运行。
 - 自定义 Hook 的代码应该和组件代码一样保持纯粹。
@@ -2064,7 +2064,7 @@ export function useCounter(delay) {
 
 #### 从 `useCounter` 中提取 `useInterval` {/*extract-useinterval-out-of-usecounter*/}
 
-现在 `useCounter` Hook 做两件事。设置一个 interval，并且在每个interval tick 内递增一次 state 变量。将设置 interval 的逻辑拆分到一个独立 Hook `useInterval`。它应该有两个参数：`onTick` 回调函数和 `delay`。本次修改后 `useCounter` 的实现应该如下所示：
+现在 `useCounter` Hook 做两件事。设置一个 interval，并且在每个 interval tick 内递增一次 state 变量。将设置 interval 的逻辑拆分到一个独立 Hook `useInterval`。它应该有两个参数：`onTick` 回调函数和 `delay`。本次修改后 `useCounter` 的实现应该如下所示：
 
 ```js
 export function useCounter(delay) {
@@ -2325,9 +2325,9 @@ export function useInterval(callback, delay) {
 
 这个示例中，`usePointerPosition()` Hook 追踪当前指针位置。尝试移动光标或你的手指到预览区域上方，可以看到有一个红点随着你移动。它的位置被保存在变量 `pos1` 中。
 
-事实上，有 5(!) 个正在被渲染的不同红点。你看不见是因为他们现在都显示在同一位置。这就是你需要修复的问题。你想要实现的是一个“交错”运动：每个圆点应该“跟随”它前一个点的路径。例如如果你快速移动光标，第一个点应该立刻跟着它，第二个应该在小小的延时后跟上第一个点，第三个点应该跟着第二个点等等。
+事实上，有 5（!）个正在被渲染的不同红点。你看不见是因为他们现在都显示在同一位置。这就是你需要修复的问题。你想要实现的是一个“交错”运动：每个圆点应该“跟随”它前一个点的路径。例如如果你快速移动光标，第一个点应该立刻跟着它，第二个应该在小小的延时后跟上第一个点，第三个点应该跟着第二个点等等。
 
-你需要实现自定义 Hook `useDelayedValue`。它当前实现返回的是提供给它的 `value`。而你想从 `delay` 毫秒之前返回 `value`。你可能需要一些 state 和一个 Effect 来完成这个任务。
+你需要实现自定义 Hook `useDelayedValue`。它当前的实现返回的是提供给它的 `value`。而你想从 `delay` 毫秒之前返回 `value`。你可能需要一些 state 和一个 Effect 来完成这个任务。
 
 实现 `useDelayedValue` 后，你应该看见这些点一个接一个运动。
 
