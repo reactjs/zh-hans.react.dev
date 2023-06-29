@@ -40,7 +40,7 @@ function TodoList({ todos, tab }) {
 
 * `calculateValue`: The function calculating the value that you want to cache. It should be pure, should take no arguments, and should return a value of any type. React will call your function during the initial render. On next renders, React will return the same value again if the `dependencies` have not changed since the last render. Otherwise, it will call `calculateValue`, return its result, and store it so it can be reused later.
 
-* `dependencies`: The list of all reactive values referenced inside of the `calculateValue` code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is [configured for React](/learn/editor-setup#linting), it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like `[dep1, dep2, dep3]`. React will compare each dependency with its previous value using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison.
+* `dependencies`: The list of all reactive values referenced inside of the `calculateValue` code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is [configured for React](/learn/editor-setup#linting), it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like `[dep1, dep2, dep3]`. React will compare each dependency with its previous value using the [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison.
 
 #### Returns {/*returns*/}
 
@@ -84,7 +84,7 @@ You need to pass two things to `useMemo`:
 
 On the initial render, the <CodeStep step={3}>value</CodeStep> you'll get from `useMemo` will be the result of calling your <CodeStep step={1}>calculation</CodeStep>.
 
-On every subsequent render, React will compare the <CodeStep step={2}>dependencies</CodeStep> with the dependencies you passed during the last render. If none of the dependencies have changed (compared with [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)), `useMemo` will return the value you already calculated before. Otherwise, React will re-run your calculation and return the new value.
+On every subsequent render, React will compare the <CodeStep step={2}>dependencies</CodeStep> with the dependencies you passed during the last render. If none of the dependencies have changed (compared with [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is)), `useMemo` will return the value you already calculated before. Otherwise, React will re-run your calculation and return the new value.
 
 In other words, `useMemo` caches a calculation result between re-renders until its dependencies change.
 
@@ -1126,7 +1126,7 @@ To memoize a function with `useMemo`, your calculation function would have to re
 export default function Page({ productId, referrer }) {
   const handleSubmit = useMemo(() => {
     return (orderDetails) => {
-      post('/product/' + product.id + '/buy', {
+      post('/product/' + productId + '/buy', {
         referrer,
         orderDetails
       });
@@ -1142,7 +1142,7 @@ This looks clunky! **Memoizing functions is common enough that React has a built
 ```js {2,7}
 export default function Page({ productId, referrer }) {
   const handleSubmit = useCallback((orderDetails) => {
-    post('/product/' + product.id + '/buy', {
+    post('/product/' + productId + '/buy', {
       referrer,
       orderDetails
     });

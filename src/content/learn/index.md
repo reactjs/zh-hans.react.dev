@@ -5,6 +5,7 @@ translators:
  - sooia
  - KnowsCount
  - QC-L
+ - Zhou Chenyang
 ---
 
 <Intro>
@@ -78,7 +79,7 @@ export default function MyApp() {
 
 </Sandpack>
 
-`export default` 关键字指定了文件中的主要组件。如果你对 JavaScript 某些语法不熟悉，可以参考 [MDN](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export) 以及 [javascript.info](https://javascript.info/import-export)，可能会对你有所帮助。
+`export default` 关键字指定了文件中的主要组件。如果你对 JavaScript 某些语法不熟悉，可以参考 [MDN](https://developer.mozilla.org/zh-CN/docs/web/javascript/reference/statements/export) 以及 [javascript.info](https://javascript.info/import-export)，可能会对你有所帮助。
 
 ## 使用 JSX 编写标签 {/*writing-markup-with-jsx*/}
 
@@ -101,7 +102,7 @@ function AboutPage() {
 
 ## 添加样式 {/*adding-styles*/}
 
-在 React 中，你可以使用 `className` 来指定一个 CSS 的 class。它与 HTML 的 [`class`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/class) 属性的工作方式相同：
+在 React 中，你可以使用 `className` 来指定一个 CSS 的 class。它与 HTML 的 [`class`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/class) 属性的工作方式相同：
 
 ```js
 <img className="avatar" />
@@ -116,7 +117,7 @@ function AboutPage() {
 }
 ```
 
-React 并没有规定你如何添加 CSS 文件。最简单的方式，你可以在你的 HTML 中添加一个 [`<link>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link) 标签。如果你使用了构建工具或框架，请阅读其文档，以了解如何将 CSS 文件添加到你的项目中。
+React 并没有规定你如何添加 CSS 文件。最简单的方式，你可以在你的 HTML 中添加一个 [`<link>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link) 标签。如果你使用了构建工具或框架，请阅读其文档，以了解如何将 CSS 文件添加到你的项目中。
 
 ## 显示数据 {/*displaying-data*/}
 
@@ -186,7 +187,7 @@ export default function Profile() {
 
 ## 条件渲染 {/*conditional-rendering*/}
 
-在 React 中，没有特殊的语法来编写条件。因此，你将使用与编写常规 JavaScript 代码时相同的技术。例如，你可以使用 [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) 语句根据条件引入 JSX：
+在 React 中，没有特殊的语法来编写条件。因此，你将使用与编写常规 JavaScript 代码时相同的技术。例如，你可以使用 [`if`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/if...else) 语句根据条件引入 JSX：
 
 ```js
 let content;
@@ -202,7 +203,7 @@ return (
 );
 ```
 
-如果你喜欢更为紧凑的代码，你可以使用 [条件 `?` 运算符](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)。与 `if` 不同的是，它工作于 JSX 内部：
+如果你喜欢更为紧凑的代码，你可以使用 [条件 `?` 运算符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)。与 `if` 不同的是，它工作于 JSX 内部：
 
 ```js
 <div>
@@ -214,7 +215,7 @@ return (
 </div>
 ```
 
-当你不需要 `else` 分支时，你还可以使用 [逻辑 `&&` 语法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND#short-circuit_evaluation)：
+当你不需要 `else` 分支时，你还可以使用 [逻辑 `&&` 语法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_AND#short-circuit_evaluation)：
 
 ```js
 <div>
@@ -226,7 +227,7 @@ return (
 
 ## 渲染列表 {/*rendering-lists*/}
 
-你将依赖 JavaScript 的特性，例如 [`for` 循环](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for) 和 [array 的 `map()` 函数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 来渲染组件列表。
+你将依赖 JavaScript 的特性，例如 [`for` 循环](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for) 和 [array 的 `map()` 函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map) 来渲染组件列表。
 
 例如，假设你有一个产品数组：
 
@@ -540,4 +541,4 @@ button {
 
 至此，你已经了解了如何编写 React 代码的基本知识。
 
-Check out the [Tutorial](/learn/tutorial-tic-tac-toe) to put them into practice and build your first mini-app with React.
+看看 [教程](/learn/tutorial-tic-tac-toe)，把它们付诸实践，用 React 建立你的第一个迷你应用程序。

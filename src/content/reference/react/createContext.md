@@ -158,7 +158,7 @@ function App() {
 
 ### 从一个文件导入和导出上下文 {/*importing-and-exporting-context-from-a-file*/}
 
-通常，来自不同文件的组件都会需要读取同一个 context。因此，在一个单独的文件内定义 context 便成了常见做法。你可以使用 [`export` 语句](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export) 将其导出，以便其他文件读取使用：
+通常，来自不同文件的组件都会需要读取同一个 context。因此，在一个单独的文件内定义 context 便成了常见做法。你可以使用 [`export` 语句](https://developer.mozilla.org/zh-CN/docs/web/javascript/reference/statements/export) 将其导出，以便其他文件读取使用：
 
 ```js {4-5}
 // Contexts.js
@@ -166,9 +166,9 @@ import { createContext } from 'react';
 
 export const ThemeContext = createContext('light');
 export const AuthContext = createContext(null);
-````
+```
 
-被定义在其他文件中的组件则可以使用 [`import`](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/import) 语句来读取或提供该 context：
+被定义在其他文件中的组件则可以使用 [`import`](https://developer.mozilla.org/zh-CN/docs/web/javascript/reference/statements/import) 语句来读取或提供该 context：
 
 ```js {2}
 // Button.js

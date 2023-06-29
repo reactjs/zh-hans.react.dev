@@ -4,15 +4,15 @@ title: unmountComponentAtNode
 
 <Deprecated>
 
-This API will be removed in a future major version of React.
+此 API 将在未来的 React 主要版本中被移除。
 
-In React 18, `unmountComponentAtNode` was replaced by [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount).
+在 React 18, `unmountComponentAtNode` 已被 [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) 取代。
 
 </Deprecated>
 
 <Intro>
 
-`unmountComponentAtNode` removes a mounted React component from the DOM.
+`unmountComponentAtNode` 用于从 DOM 中移除一个已挂载的 React 组件。
 
 ```js
 unmountComponentAtNode(domNode)
@@ -24,11 +24,11 @@ unmountComponentAtNode(domNode)
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `unmountComponentAtNode(domNode)` {/*unmountcomponentatnode*/}
 
-Call `unmountComponentAtNode` to remove a mounted React component from the DOM and clean up its event handlers and state.
+使用 `unmountComponentAtNode` 从 DOM 中移除一个已挂载的 React 组件，并清除相关事件处理程序与状态。
 
 ```js
 import { unmountComponentAtNode } from 'react-dom';
@@ -39,21 +39,21 @@ render(<App />, domNode);
 unmountComponentAtNode(domNode);
 ```
 
-[See more examples below.](#usage)
+[参见下面更多示例](#usage)。
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `domNode`: A [DOM element.](https://developer.mozilla.org/en-US/docs/Web/API/Element) React will remove a mounted React component from this element.
+* `domNode`：[DOM 节点](https://developer.mozilla.org/zh-CN/docs/Web/API/Element)。React 将从此节点移除已挂载的 React 组件。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-`unmountComponentAtNode` returns `true` if a component was unmounted and `false` otherwise.
+如果 `unmountComponentAtNode` 成功移除对应的组件，将返回 `true`，否则返回 `false`。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-Call `unmountComponentAtNode` to remove a <CodeStep step={1}>mounted React component</CodeStep> from a <CodeStep step={2}>browser DOM node</CodeStep> and clean up its event handlers and state.
+使用 `unmountComponentAtNode` 从 <CodeStep step={2}>浏览器 DOM 节点</CodeStep> 中移除 <CodeStep step={1}>已挂载的 React 组件</CodeStep>，并清除有关事件处理程序与状态。
 
 ```js [[1, 5, "<App />"], [2, 5, "rootNode"], [2, 8, "rootNode"]]
 import { render, unmountComponentAtNode } from 'react-dom';
@@ -64,14 +64,14 @@ render(<App />, rootNode);
 
 // ...
 unmountComponentAtNode(rootNode);
-````
+```
 
 
-### Removing a React app from a DOM element {/*removing-a-react-app-from-a-dom-element*/}
+### 从 DOM 节点移除 React 应用程序 {/*removing-a-react-app-from-a-dom-element*/}
 
-Occasionally, you may want to "sprinkle" React on an existing page, or a page that is not fully written in React. In those cases, you may need to "stop" the React app, by removing all of the UI, state, and listeners from the DOM node it was rendered to.
+有时你可能希望在一个已有的页面上添加一些 React 元素，或在一个没有完全使用 React 编写的页面上使用 React。在这些情况下，你可能需要从相关的 DOM 节点上移除所有 UI、状态和监听器，来“停止”React 应用程序。
 
-In this example, clicking "Render React App" will render a React app. Click "Unmount React App" to destroy it:
+在这个例子中，点击“渲染 React 应用程序”将会渲染一个 React 应用程序；而点击“卸载 React 应用程序”将会销毁它：
 
 <Sandpack>
 
@@ -80,8 +80,8 @@ In this example, clicking "Render React App" will render a React app. Click "Unm
 <html>
   <head><title>My app</title></head>
   <body>
-    <button id='render'>Render React App</button>
-    <button id='unmount'>Unmount React App</button>
+    <button id='render'>渲染 React 应用程序</button>
+    <button id='unmount'>卸载 React 应用程序</button>
     <!-- This is the React App node -->
     <div id='root'></div>
   </body>
@@ -106,7 +106,7 @@ document.getElementById('unmount').addEventListener('click', () => {
 
 ```js App.js
 export default function App() {
-  return <h1>Hello, world!</h1>;
+  return <h1>你好，世界！</h1>;
 }
 ```
 

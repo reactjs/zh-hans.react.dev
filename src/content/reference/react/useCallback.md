@@ -40,7 +40,7 @@ export default function ProductPage({ productId, referrer, theme }) {
 
 * `fn` ：你想要缓存的函数。这个函数可以接受任何参数并且返回任何值。React将会在初次渲染中（并不是调用！）将这个函数返回。下一次渲染时， 如果 `dependencies` 自从上一次从未改变，React将会返回相同的函数。否则， React将返回你在最新一次渲染中传入的函数， 并且将其缓存下来以便稍后使用。 React将不会调用你的函数。这个函数返回给你，如此你可以决定何时调用它或者是否调用它。
 
-* `dependencies` ：有关 `fn` 内部代码所有响应式值的一个列表。 Reactive values 包含 props、state，和所有在你组件内部直接声明的变量和函数。如果你的代码检查工具是 [configured for React](/learn/editor-setup#linting)， 那么它将校验每一个正确指定为依赖的响应式值。 依赖列表必须具有确切数量的项，并且像 `[dep1, dep2, dep3]` 的形式编写。React使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较算法比较每一个依赖和它的先前值。
+* `dependencies` ：有关 `fn` 内部代码所有响应式值的一个列表。 Reactive values 包含 props、state，和所有在你组件内部直接声明的变量和函数。如果你的代码检查工具是 [configured for React](/learn/editor-setup#linting)， 那么它将校验每一个正确指定为依赖的响应式值。 依赖列表必须具有确切数量的项，并且像 `[dep1, dep2, dep3]` 的形式编写。React使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较算法比较每一个依赖和它的先前值。
 
 #### 返回值 {/*returns*/}
 
@@ -83,7 +83,7 @@ function ProductPage({ productId, referrer, theme }) {
 
 在最初渲染时，你在 `useCallback` 处接收的 <CodeStep step={3}>返回函数</CodeStep> 将会是你已经传入的函数。
 
-在随后的渲染里，React 将会把 <CodeStep step={2}>当前的依赖</CodeStep> 和已传入的先前依赖进行比较。如果没有任何依赖改变 (使用 [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较)， `useCallback` 将会返回和之前一样的函数。 否则，`useCallback` 返回你在**这次**渲染中传递的函数。
+在随后的渲染里，React 将会把 <CodeStep step={2}>当前的依赖</CodeStep> 和已传入的先前依赖进行比较。如果没有任何依赖改变 (使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较)， `useCallback` 将会返回和之前一样的函数。 否则，`useCallback` 返回你在**这次**渲染中传递的函数。
 
 简言之，`useCallback` 在多次渲染中缓存一个函数，直到这个函数的依赖发生改变。
 
