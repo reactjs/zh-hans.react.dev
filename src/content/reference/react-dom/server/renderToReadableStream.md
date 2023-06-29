@@ -288,7 +288,7 @@ function ProfilePage() {
 - 使用支持 Suspense 的框架获取数据，如 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/getting-started/react-essentials)
 - 用 [`lazy`](/reference/react/lazy) 来懒加载组件代码
 
-Suspense **不会去探测** Effect 内部或事件处理器中获取的数据。
+suspense **不会去探测** Effect 内部或事件处理器中获取的数据。
 
 在上面的 `Posts` 组件中加载数据的具体方式取决于你的框架。如果你使用一个支持 Suspense 的框架，你可以在其数据获取文档中找到详细信息。
 
