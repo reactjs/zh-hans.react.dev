@@ -155,4 +155,4 @@ console.log(window.React1 === window.React2);
 
 ## 其他的原因 {/*other-causes*/}
 
-如果上文没有解决你的问题，你可以在 [这个 GitHub 问题](https://github.com/facebook/react/issues/13991) 中做评论，我们会积极地提供帮助。评论的时候，如果能提供一个小的、能复现的示例那最好不过了。
+如果上文没有解决你的问题，你可以在 [此 issue](https://github.com/facebook/react/issues/13991) 中提交评论，我们会积极地提供帮助。评论的时候，如果能提供一个小的、能复现的示例那最好不过了。
