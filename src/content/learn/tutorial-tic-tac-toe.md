@@ -909,7 +909,7 @@ React 开发者工具可以检查 React 组件的 props 和 state。可以在 Co
 
 <Note>
 
-对于本地开发，React 开发工具可作为 [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)、[Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) 和 [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil) 的浏览器扩展来使用。安装它，*Component* 选项卡将出现在你的浏览器开发者工具中，将被用于使用 React 的站点。
+对于本地开发，React 开发工具可作为 [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)、[Firefox](https://addons.mozilla.org/zh-CN/firefox/addon/react-devtools/) 和 [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil) 的浏览器扩展来使用。安装它，*Component* 选项卡将出现在你的浏览器开发者工具中，将被用于使用 React 的站点。
 
 </Note>
 
