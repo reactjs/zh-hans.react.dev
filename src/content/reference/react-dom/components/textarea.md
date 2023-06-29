@@ -42,7 +42,7 @@ title: "<textarea>"
 
 * `defaultValue`：一个字符串，表示文本框的 [初始值](#providing-an-initial-value-for-a-text-area)。
 
-以下 `<select>` 属性均可用于受控与非受控组件：
+以下 `<textarea>` 属性均可用于受控与非受控组件：
 
 * [`autoComplete`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-autocomplete)：可以为 `'on'` 或 `'off'`，表示自动完成的行为。
 * [`autoFocus`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-autofocus)：布尔值。如果为 `true`，React 将在挂载时聚焦该元素。
