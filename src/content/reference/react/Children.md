@@ -214,7 +214,7 @@ function RowList({ children }) {
 }
 ```
 
-在上述例子中，`RowList` 用  `<div className="Row">` 包裹了接收到的每一个子元素。举个例子，假设父组件将三个 `<p>` 作为 `children` 属性传递给 `RowList`：
+在上述例子中，`RowList` 用 `<div className="Row">` 包裹了接收到的每一个子元素。举个例子，假设父组件将三个 `<p>` 作为 `children` 属性传递给 `RowList`：
 
 ```js
 <RowList>
