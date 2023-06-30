@@ -1,7 +1,7 @@
 ---
-title: Special Props Warning
+title: 特殊属性警告
 ---
 
-Most props on a JSX element are passed on to the component, however, there are two special props (`ref` and `key`) which are used by React, and are thus not forwarded to the component.
+JSX 上的大多数 props 都会传递给组件，但是有两个特殊的 props（`ref` 与 `key`）被 React 自身使用，因此这两个 props 不会被转发给组件。
 
-For instance, you can't read `props.key` from a component. If you need to access the same value within the child component, you should pass it as a different prop (ex: `<ListItemWrapper key={result.id} id={result.id} />` and read `props.id`). While this may seem redundant, it's important to separate app logic from hints to React.
+例如，组件无法读取 `props.key`。如果你需要在子组件中访问相同的值，你应该将其作为不同的 props传递，如 `<ListItemWrapper key={result.id} id={result.id} />` 并读取 `props.id`。尽管这可能看起来很多余，但将应用逻辑与 React 提示分开非常重要。

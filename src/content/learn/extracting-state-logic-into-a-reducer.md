@@ -270,7 +270,7 @@ function handleDeleteTask(taskId) {
 }
 ```
 
-它是一个普通的 JavaScript 对象。它的结构是由你决定的，但通常来说，它应该至少包含可以表明 *发生了什么事情* 的信息。（在后面的步骤中，你将会学习如何添加一个 `dispatch` 函数。）
+它是一个普通的 JavaScript 对象。它的结构是由你决定的，但通常来说，它应该至少包含可以表明 **发生了什么事情** 的信息。（在后面的步骤中，你将会学习如何添加一个 `dispatch` 函数。）
 
 <Note>
 
@@ -385,7 +385,7 @@ function tasksReducer(tasks, action) {
 
 #### 为什么称之为 reducer? {/*why-are-reducers-called-this-way*/}
 
-尽管 `reducer` 可以 “减少” 组件内的代码量，但它实际上是以数组上的 [`reduce()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) 方法命名的。
+尽管 `reducer` 可以 “减少” 组件内的代码量，但它实际上是以数组上的 [`reduce()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce) 方法命名的。
 
 `reduce()` 允许你将数组中的多个值 “累加” 成一个值：
 
@@ -866,7 +866,7 @@ li {
 
 </Sandpack>
 
-当像这样分离关注点时，我们可以更容易地理解组件逻辑。现在，事件处理程序只通过派发 `action` 来指定 *发生了什么*，而 `reducer` 函数通过响应 `actions` 来决定 *状态如何更新*。
+当像这样分离关注点时，我们可以更容易地理解组件逻辑。现在，事件处理程序只通过派发 `action` 来指定 **发生了什么**，而 `reducer` 函数通过响应 `actions` 来决定 **状态如何更新**。
 
 ## 对比 `useState` 和 `useReducer` {/*comparing-usestate-and-usereducer*/}
 
@@ -1107,7 +1107,7 @@ Reducers 应该是纯净的，所以它们不应该去修改 state。而 Immer �
 
 目前，`ContactList.js` 和 `Chat.js` 中的事件处理程序包含 `// TODO` 注释。这就是为什么输入不起作用，点击按钮也不会改变收件人的原因。
 
-将这两个 `// TODO` 替换为 `dispatch` 相应的 action。如果要查看 action 的结构和类型，请查看 `messerreducer.js` 中的 reducer。reducer 已经写好了，你不需要再修改它。你只需要在 `ContactList.js` 和 `Chat.js` 中 dispatch 相应的 action 即可。
+将这两个 `// TODO` 替换为 `dispatch` 相应的 action。如果要查看 action 的结构和类型，请查看 `messengerReducer.js` 中的 reducer。reducer 已经写好了，你不需要再修改它。你只需要在 `ContactList.js` 和 `Chat.js` 中 dispatch 相应的 action 即可。
 
 <Hint>
 
@@ -1879,7 +1879,7 @@ case 'changed_selection': {
 
 这是因为你不希望在多个收件人之间共享单个邮件草稿。但如果你的应用程序能单独 “记住” 每个联系人的草稿，并在你切换联系人时恢复，那就更好了。
 
-你的任务是改变状态的组织形式，以便能记住 *每个联系人* 的消息草稿。你需要对 reducer、初始状态和组件进行一些修改。
+你的任务是改变状态的组织形式，以便能记住 **每个联系人** 的消息草稿。你需要对 reducer、初始状态和组件进行一些修改。
 
 <Hint>
 
@@ -1895,7 +1895,7 @@ export const initialState = {
 };
 ```
 
-这种 `[key]: value` [计算属性](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names) 可以帮你更新 `messages` 对象：
+这种 `[key]: value` [计算属性](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names) 可以帮你更新 `messages` 对象：
 
 ```js
 {
@@ -2057,7 +2057,7 @@ textarea {
 
 <Solution>
 
-You'll need to update the reducer to store and update a separate message draft per contact:
+你将需要更新 reducer 来为每个联系人分别存储并更新一个消息草稿：
 
 ```js
 // 当输入框内容被修改时
@@ -2075,7 +2075,7 @@ case 'edited_message': {
 }
 ```
 
-You would also update the `Messenger` component to read the message for the currently selected contact:
+你还需要更新 `Messenger` 组件来从当前选中的联系人读取信息：
 
 ```js
 const message = state.messages[state.selectedId];

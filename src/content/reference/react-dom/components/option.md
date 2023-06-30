@@ -4,7 +4,7 @@ title: "<option>"
 
 <Intro>
 
-[浏览器内置的 `<option>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) 允许你渲染 [`<select>`](/reference/react-dom/components/select) 组件的选项（option）。
+[浏览器内置的 `<option>` 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/option) 允许你渲染 [`<select>`](/reference/react-dom/components/select) 组件的选项（option）。
 
 ```js
 <select>
@@ -23,7 +23,7 @@ title: "<option>"
 
 ### `<option>` {/*option*/}
 
-[浏览器内置的 `<option>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) 允许你渲染 [`<select>`](/reference/react-dom/components/select) 组件的选项（option）。
+[浏览器内置的 `<option>` 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/option) 允许你渲染 [`<select>`](/reference/react-dom/components/select) 组件的选项（option）。
 
 ```js
 <select>
@@ -40,9 +40,9 @@ title: "<option>"
 
 除此之外，`<option>` 还支持以下属性：
 
-* [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#disabled)：布尔值。如果 `disabled` 为 `true`，该选项（option）将会被选中，并将展示为暗淡状态（dimmed）。
-* [`label`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#label)：字符串。指定选项的含义。如果未指定，则使用选项内部的文本。
-* [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#value)：如果选择了此选项，则在提交表单时将使用此选项的 `value` 值作为父级 `<select>` 的值。详细信息请参阅 [在提交表单时读取 `<select>` 值](/reference/react-dom/components/select#reading-the-select-box-value-when-submitting-a-form)。
+* [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/option#disabled)：布尔值。如果 `disabled` 为 `true`，该选项（option）将会被选中，并将展示为暗淡状态（dimmed）。
+* [`label`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/option#label)：字符串。指定选项的含义。如果未指定，则使用选项内部的文本。
+* [`value`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/option#value)：如果选择了此选项，则在提交表单时将使用此选项的 `value` 值作为父级 `<select>` 的值。详细信息请参阅 [在提交表单时读取 `<select>` 值](/reference/react-dom/components/select#reading-the-select-box-value-when-submitting-a-form)。
 
 #### 注意 {/*caveats*/}
 
