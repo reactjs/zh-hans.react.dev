@@ -534,7 +534,7 @@ export default function ReversedList({ children }) {
 
 <Note>
 
-像下面这样导入的就是（大写字母 `C` 开头的） `Children` API，本章节将会介绍它的一些替代方案：
+像下面这样导入的就是（大写字母 `C` 开头的）`Children` API，本章节将会介绍它的一些替代方案：
 
 ```js
 import { Children } from 'react';
