@@ -81,7 +81,7 @@ React 将会在 hydrate `root` 中更新 `<App />`。
 
 #### 警告 {/*root-render-caveats*/}
 
-* 如果你在根节点还没有完成 hydrating 的情况下调用了 `root.render`，React 将清除现有的服务端渲染 HTML 内容，并将整个根节点切换到客户端渲染。
+* 如果你在根节点还没有完成 hydrate 的情况下调用了 `root.render`，React 将清除现有的服务端渲染 HTML 内容，并将整个根节点切换到客户端渲染。
 
 ---
 
