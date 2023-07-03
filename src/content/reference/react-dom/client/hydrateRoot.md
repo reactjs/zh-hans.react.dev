@@ -39,7 +39,7 @@ React 将会连接到内部有 `domNode` 的 HTML 上，然后接管其中的 `d
 
 * `domNode`：一个在服务器端渲染时呈现为根元素的 [DOM 元素](https://developer.mozilla.org/zh-CN/docs/Web/API/Element)。
 
-* `reactNode`： 用于渲染已存在 HTML 的 "React 节点"。这个节点通常是一些类似于 `<App />` 的 JSX  ，它会在 `ReactDOM Server` 端使用类似于  `renderToPipeableStream(<App />)` 的方法进行渲染。
+* `reactNode`：用于渲染已存在 HTML 的“React 节点”。这个节点通常是一些类似于 `<App />` 的 JSX，它会在 `ReactDOM Server` 端使用类似于 `renderToPipeableStream(<App />)` 的方法进行渲染。
 
 * **可选**  `options`：一个包含此 React 根元素选项的对象。
 
