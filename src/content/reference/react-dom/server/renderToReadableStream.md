@@ -76,7 +76,7 @@ async function handler(request) {
 
 ## 用法 {/*usage*/}
 
-### 将 React 树按照 HTML 渲染成一个 Web 可读流 {/*rendering-a-react-tree-as-html-to-a-readable-web-stream*/}
+### 将 React 树渲染为 HTML 并发送至 Web 可读流 {/*rendering-a-react-tree-as-html-to-a-readable-web-stream*/}
 
 调用 `renderToReadableStream` 将 React 渲染成 HTML 的 [Web 可读流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream)：
 
