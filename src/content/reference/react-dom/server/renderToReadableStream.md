@@ -4,7 +4,7 @@ title: renderToReadableStream
 
 <Intro>
 
-`renderToReadableStream` 将 React 树渲染成 [Web 可读流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream)。
+`renderToReadableStream` 将 React 树渲染后发送至 [Web 可读流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream)。
 
 ```js
 const stream = await renderToReadableStream(reactNode, options?)
