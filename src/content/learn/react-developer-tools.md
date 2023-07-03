@@ -21,7 +21,7 @@ translators:
 调试 React 构建的网站最简单的办法就是安装 React 开发者工具浏览器扩展。它可用于几种流行的浏览器：
 
 * [安装 **Chrome** 扩展](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
-* [安装 **Firefox** 扩展](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)
+* [安装 **Firefox** 扩展](https://addons.mozilla.org/zh-CN/firefox/addon/react-devtools/)
 * [安装 **Edge** 扩展](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil)
 
 现在，如果你访问一个用 **React 构建** 的网站，你将看到 **Components** 和 **Profiler** 面板。

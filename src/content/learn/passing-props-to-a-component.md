@@ -851,7 +851,7 @@ export function getImageUrl(person, size) {
 
 </Sandpack>
 
-你还可以通过考虑 [`window.devicePixelRatio`](https://developer.mozilla.org/en-US/docs/Web/API/Window/devicePixelRatio) 来为高 DPI 屏幕显示更清晰的图像：
+你还可以通过考虑 [`window.devicePixelRatio`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/devicePixelRatio) 来为高 DPI 屏幕显示更清晰的图像：
 
 <Sandpack>
 
