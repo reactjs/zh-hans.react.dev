@@ -53,7 +53,7 @@ flushSync(() => {
 
 * `flushSync` 可能会严重影响性能，因此请谨慎使用。
 * `flushSync` 可能会强制挂起的 Suspense 边界显示其 `fallback` 状态。
-* `flushSync` 可能会在返回之前运行挂起的 effect，并同步应用其包含的任何更新。
+* `flushSync` 可能会在返回之前运行挂起的 Effect，并同步应用其包含的任何更新。
 * `flushSync` 可能会在必要时刷新回调函数之外的更新，以便刷新回调函数内部的更新。例如，如果有来自点击事件的挂起更新，React 可能会在刷新回调函数内部的更新之前刷新这些更新。
 
 ---
@@ -122,7 +122,7 @@ export default function PrintApp() {
 
 </Sandpack>
 
-如果没有使用 `flushSync`，当打印对话框显示时，`isPrinting`会显示为“否”。这是因为 React 将异步批处理更新，而打印对话框在状态更新之前就显示出来了。`flushSync` 可能会严重影响性能，并且可能会意外地强制挂起的 Suspense 边界显示其 fallback 状态。
+如果没有使用 `flushSync`，当打印对话框显示时，`isPrinting`会显示为“否”。这是因为 React 将异步批处理更新，而打印对话框在状态更新之前就显示出来了。
 
 <Pitfall>
 
