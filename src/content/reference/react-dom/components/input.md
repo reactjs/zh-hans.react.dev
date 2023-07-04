@@ -83,7 +83,7 @@ title: "<input>"
 * `size`：数字，类似于设置宽度，但单位取决于控件。
 * `src`：字符串，指定 `type="image"` 输入框的图像源。
 * `step`：正数或 `'any'` 字符串，指定有效值之间的距离。
-* `type`：字符串，指定其中之一的 [输入类型](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#input_types)。
+* `type`：字符串，[输入框类型](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#input_types) 中的一个。
 * `width`：字符串，指定 `type="image"` 输入框的图像宽度。
 
 #### 注意 {/*caveats*/}
@@ -408,7 +408,7 @@ p { font-weight: bold; }
 
 <Pitfall>
 
-如果传递了 `value` 但没有传递 `onChange`，那么将无法输入内容。当你通过传递 `value` 来控制输入框时，你需要保证输入框始终具有你传递的值。因此，如果你将一个 state 作为 `value` 传递，但在 `onChange` 事件处理程序中忘记同步更新该状态变量，React 将在每次输入后将输入框恢复到你指定的 value。
+如果传递了 `value` 但没有传递 `onChange`，那么将无法输入内容。当你通过传递 `value` 来控制输入框时，你需要保证输入框始终具有你传递的值。因此，如果你将一个 state 作为 `value` 传递，但在 `onChange` 事件处理程序中忘记同步更新该状态变量，React 将在每次输入后将输入框恢复到指定的 `value`。
 
 </Pitfall>
 
