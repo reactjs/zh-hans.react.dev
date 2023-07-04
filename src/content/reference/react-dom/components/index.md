@@ -1,40 +1,40 @@
 ---
-title: "React DOM Components"
+title: "React DOM 组件"
 ---
 
 <Intro>
 
-React supports all of the browser built-in [HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element) and [SVG](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element) components.
+React 支持所有浏览器内置的 [HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element) 与 [SVG](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element) 组件。
 
 </Intro>
 
 ---
 
-## Common components {/*common-components*/}
+## 通用组件 {/*common-components*/}
 
-All of the built-in browser components support some props and events.
+所有的浏览器内置组件都支持一些共同的属性与方法。
 
-* [Common components (e.g. `<div>`)](/reference/react-dom/components/common)
+* [Common components（如 `<div>`）](/reference/react-dom/components/common)
 
-This includes React-specific props like `ref` and `dangerouslySetInnerHTML`.
+这包括 React 特定的属性，比如 `ref` 和 `dangerouslySetInnerHTML`。
 
 ---
 
-## Form components {/*form-components*/}
+## 表单组件 {/*form-components*/}
 
-These built-in browser components accept user input:
+这些浏览器内置组件接收用户的输入：
 
 * [`<input>`](/reference/react-dom/components/input)
 * [`<select>`](/reference/react-dom/components/select)
 * [`<textarea>`](/reference/react-dom/components/textarea)
 
-They are special in React because passing the `value` prop to them makes them *[controlled.](/reference/react-dom/components/input#controlling-an-input-with-a-state-variable)*
+将 `value` prop 传递给这些组件会将其变为 [受控组件](/reference/react-dom/components/input#controlling-an-input-with-a-state-variable)。
 
 ---
 
-## All HTML components {/*all-html-components*/}
+## 所有的 HTML 组件 {/*all-html-components*/}
 
-React supports all built-in browser HTML components. This includes:
+React 支持所有浏览器内置的组件，包括：
 
 * [`<aside>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/aside)
 * [`<audio>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio)
@@ -140,38 +140,38 @@ React supports all built-in browser HTML components. This includes:
 
 <Note>
 
-Similar to the [DOM standard,](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model) React uses a `camelCase` convention for prop names. For example, you'll write `tabIndex` instead of `tabindex`. You can convert existing HTML to JSX with an [online converter.](https://transform.tools/html-to-jsx)
+与 [DOM 标准](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model) 类似，React 使用 `camelCase` 命名约定来命名 props。例如，你应该使用 `tabIndex` 而不是 `tabindex`。你可以使用 [在线转换器](https://transform.tools/html-to-jsx) 将现有的 HTML 转换为 JSX。
 
 </Note>
 
 ---
 
-### Custom HTML elements {/*custom-html-elements*/}
+### 自定义 HTML 元素 {/*custom-html-elements*/}
 
-If you render a tag with a dash, like `<my-element>`, React will assume you want to render a [custom HTML element.](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_custom_elements) In React, rendering custom elements works differently from rendering built-in browser tags:
+如果你渲染一个带有连字符的标签，如 `<my-element>`，React 会认为你想要渲染一个 [自定义 HTML 元素](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_custom_elements)。在 React 中，渲染自定义元素与渲染内置的浏览器标签有所不同：
 
-- All custom element props are serialized to strings and are always set using attributes.
-- Custom elements accept `class` rather than `className`, and `for` rather than `htmlFor`.
+- 所有自定义元素的 props 都将被序列化为字符串，并且总是使用属性（attribute）进行设置。
+- 自定义元素接受 `class` 而不是 `className`，接受 `for` 而不是 `htmlFor`。
 
-If you render a built-in browser HTML element with an [`is`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/is) attribute, it will also be treated as a custom element.
+如果你使用 [`is`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/is) 属性渲染一个内置的浏览器 HTML 元素，它也会被视为自定义元素。
 
 <Note>
 
-[A future version of React will include more comprehensive support for custom elements.](https://github.com/facebook/react/issues/11347#issuecomment-1122275286)
+[未来的 React 版本将提供更全面的自定义元素支持](https://github.com/facebook/react/issues/11347#issuecomment-1122275286)。
 
-You can try it by upgrading React packages to the most recent experimental version:
+你可以通过将 React 包升级到最新的实验性版本来尝试：
 
 - `react@experimental`
 - `react-dom@experimental`
 
-Experimental versions of React may contain bugs. Don't use them in production.
+实验性版本的 React 可能包含一些错误，因此不要在生产环境中使用。
 
 </Note>
 ---
 
-## All SVG components {/*all-svg-components*/}
+## 所有 SVG 组件 {/*all-svg-components*/}
 
-React supports all built-in browser SVG components. This includes:
+React 支持所有浏览器内置的 SVG 租一间，包括：
 
 * [`<a>`](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/a)
 * [`<animate>`](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/animate)
@@ -242,9 +242,9 @@ React supports all built-in browser SVG components. This includes:
 
 <Note>
 
-Similar to the [DOM standard,](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model) React uses a `camelCase` convention for prop names. For example, you'll write `tabIndex` instead of `tabindex`. You can convert existing SVG to JSX with an [online converter.](https://transform.tools/)
+与 [DOM 标准](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model) 类似，React 使用 `camelCase` 命名约定来命名 props。例如，你应该使用 `tabIndex` 而不是 `tabindex`。你可以使用 [在线转换器](https://transform.tools/html-to-jsx) 将现有的 SVG 转换为 JSX。
 
-Namespaced attributes also have to be written without the colon:
+命名空间属性（attributes）也必须写成没有冒号的形式：
 
 * `xlink:actuate` becomes `xlinkActuate`.
 * `xlink:arcrole` becomes `xlinkArcrole`.
