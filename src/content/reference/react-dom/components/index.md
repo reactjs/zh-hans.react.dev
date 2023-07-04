@@ -28,7 +28,7 @@ React 支持所有浏览器内置的 [HTML](https://developer.mozilla.org/zh-CN/
 * [`<select>`](/reference/react-dom/components/select)
 * [`<textarea>`](/reference/react-dom/components/textarea)
 
-将 `value` prop 传递给这些组件会将其变为 [受控组件](/reference/react-dom/components/input#controlling-an-input-with-a-state-variable)。
+将 `value` 作为 prop 传递给这些组件会将其变为 [受控组件](/reference/react-dom/components/input#controlling-an-input-with-a-state-variable)。
 
 ---
 
@@ -171,7 +171,7 @@ React 支持所有浏览器内置的组件，包括：
 
 ## 所有 SVG 组件 {/*all-svg-components*/}
 
-React 支持所有浏览器内置的 SVG 租一间，包括：
+React 支持所有浏览器内置的 SVG 组件，包括：
 
 * [`<a>`](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/a)
 * [`<animate>`](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/animate)
