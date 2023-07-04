@@ -302,7 +302,7 @@ label { margin-bottom: 20px; }
 
 像 `<select />` 这样的选择框是非受控的。即使你 [传递了初始值](#providing-an-initially-selected-option)，比如 `<select defaultValue="orange" />`，你的 JSX 也只是指定了初始值，而非当前时刻的值。
 
-**如果要渲染一个受控选择框，请传递 `value` 属性。**React 将强制传递 `value` 属性给选择框。通常，你可以通过声明一个 [state](/reference/react/useState) 来控制选择框：
+**如果要渲染一个受控选择框，请传递 `value` 属性**。React 将强制传递 `value` 属性给选择框。通常，你可以通过声明一个 [state](/reference/react/useState) 来控制选择框：
 
 ```js {2,6,7}
 function FruitPicker() {
