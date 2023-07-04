@@ -14,9 +14,9 @@ React 支持所有浏览器内置的 [HTML](https://developer.mozilla.org/zh-CN/
 
 所有的浏览器内置组件都支持一些共同的属性与方法。
 
-* [Common components（如 `<div>`）](/reference/react-dom/components/common)
+* [通用组件（如 `<div>`）](/reference/react-dom/components/common)
 
-这包括 React 特定的属性，比如 `ref` 和 `dangerouslySetInnerHTML`。
+通用组件可以使用 React 特定的属性，如 `ref` 与 `dangerouslySetInnerHTML`。
 
 ---
 
