@@ -34,15 +34,15 @@ title: "<input>"
 
 你可以传递以下属性中的任意一个，以将其变为 [受控输入框](#controlling-an-input-with-a-state-variable)：
 
-* `checked`：布尔值。控制复选框或单选按钮是否被选中。
-* `value`：字符串。控制文本框的输入文本（如果是单选按钮，则为其表单数据）。
+* `checked`：布尔值，控制复选框或单选按钮是否被选中。
+* `value`：字符串，控制文本框的输入文本（如果是单选按钮，则为其表单数据）。
 
 当你传递它们之一时，你必须同时传递 `onChange` 处理函数，用于更新传递的值。
 
 以下 `<input>` 属性仅在非受控输入框中有效：
 
-* `defaultChecked`：布尔值。指定 `type="checkbox"` 和 `type="radio"` 输入的 [初始值](#providing-an-initial-value-for-an-input)。
-* `defaultValue`：字符串。指定文本框的 [初始值](#providing-an-initial-value-for-an-input)。
+* `defaultChecked`：布尔值，指定 `type="checkbox"` 和 `type="radio"` 输入的 [初始值](#providing-an-initial-value-for-an-input)。
+* `defaultValue`：字符串，指定文本框的 [初始值](#providing-an-initial-value-for-an-input)。
 
 以下 `<input>` 属性均可用于受控与非受控输入框：
 
@@ -72,7 +72,7 @@ title: "<input>"
 * `onChangeCapture`：与 `onChange` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
 * `onInput`：一个 [`Event`](/reference/react-dom/components/common#event-handler) 处理函数。在用户更改值时立即触发。由于历史原因，在 React 中习惯于使用 `onChange`，工作方式类似。
 * `onInputCapture`：与 `onInput` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
-* `onInvalid`：一个 [`Event`](/reference/react-dom/components/common#event-handler) 处理函数。在表单提交时，如果输入框未通过验证将触发。与内置的 `invalid` 事件不同，React 的`onInvalid` 事件可以进行冒泡。
+* `onInvalid`：一个 [`Event`](/reference/react-dom/components/common#event-handler) 处理函数。在表单提交时，如果输入框未通过验证将触发。与内置的 `invalid` 事件不同，React 的 `onInvalid` 事件可以进行冒泡。
 * `onInvalidCapture`：与 `onInvalid` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
 * `onSelect`：一个 [`Event`](/reference/react-dom/components/common#event-handler) 处理函数。在 `<input>` 内的选择更改后触发。React 扩展了 `onSelect` 事件，使其也能在选择为空和编辑时触发（可能会影响选择）。
 * `onSelectCapture`：与 `onSelect` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
@@ -83,7 +83,7 @@ title: "<input>"
 * `size`：数字，类似于设置宽度，但单位取决于控件。
 * `src`：字符串，指定 `type="image"` 输入框的图像源。
 * `step`：正数或 `'any'` 字符串，指定有效值之间的距离。
-* `type`：字符串，其中之一的 [输入类型](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#input_types)。
+* `type`：字符串，指定其中之一的 [输入类型](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#input_types)。
 * `width`：字符串，指定 `type="image"` 输入框的图像宽度。
 
 #### 注意 {/*caveats*/}
