@@ -16,7 +16,7 @@ React 支持所有浏览器内置的 [HTML](https://developer.mozilla.org/zh-CN/
 
 * [通用组件（如 `<div>`）](/reference/react-dom/components/common)
 
-通用组件可以使用 React 特定的属性，如 `ref` 与 `dangerouslySetInnerHTML`。
+这些组件在 React 中可以使用 React 特有的属性，如 `ref` 与 `dangerouslySetInnerHTML`。
 
 ---
 
@@ -244,18 +244,18 @@ React 支持所有浏览器内置的 SVG 组件，包括：
 
 与 [DOM 标准](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model) 类似，React 使用 `camelCase` 命名约定来命名 props。例如，你应该使用 `tabIndex` 而不是 `tabindex`。你可以使用 [在线转换器](https://transform.tools/html-to-jsx) 将现有的 SVG 转换为 JSX。
 
-命名空间属性（attributes）也必须写成没有冒号的形式：
+命名空间属性（attribute）也必须写成没有冒号的形式：
 
-* `xlink:actuate` becomes `xlinkActuate`.
-* `xlink:arcrole` becomes `xlinkArcrole`.
-* `xlink:href` becomes `xlinkHref`.
-* `xlink:role` becomes `xlinkRole`.
-* `xlink:show` becomes `xlinkShow`.
-* `xlink:title` becomes `xlinkTitle`.
-* `xlink:type` becomes `xlinkType`.
-* `xml:base` becomes `xmlBase`.
-* `xml:lang` becomes `xmlLang`.
-* `xml:space` becomes `xmlSpace`.
-* `xmlns:xlink` becomes `xmlnsXlink`.
+* `xlink:actuate` 改为 `xlinkActuate`。
+* `xlink:arcrole` 改为 `xlinkArcrole`。
+* `xlink:href` 改为 `xlinkHref`。
+* `xlink:role` 改为 `xlinkRole`。
+* `xlink:show` 改为 `xlinkShow`。
+* `xlink:title` 改为 `xlinkTitle`。
+* `xlink:type` 改为 `xlinkType`。
+* `xml:base` 改为 `xmlBase`。
+* `xml:lang` 改为 `xmlLang`。
+* `xml:space` 改为 `xmlSpace`。
+* `xmlns:xlink` 改为 `xmlnsXlink`。
 
 </Note>
