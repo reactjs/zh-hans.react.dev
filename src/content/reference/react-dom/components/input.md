@@ -55,11 +55,11 @@ title: "<input>"
 * `disabled`：布尔值。如果为`true`，输入框将无法交互并显示为不可用（dimmed）。
 * `children`：`<input>` 不接受子元素。
 * `form`：字符串，指定此输入框所属的 `<form>` 的 `id`。如果未指定，则为最近的父表单。
-* `formAction`：字符串，指定 `type="submit"` 或 `type="image"` 后覆盖父表单 `<form action>`。
-* `formEnctype`：字符串，指定 `type="submit"` 或 `type="image"` 后覆盖父表单 `<form enctype>`。
-* `formMethod`：字符串，指定 `type="submit"` 或 `type="image"` 后覆盖父表单 `<form method>`。
-* `formNoValidate`：字符串，指定 `type="submit"` 或 `type="image"` 后覆盖父表单 `<form noValidate>`。
-* `formTarget`：字符串，指定 `type="submit"` 或 `type="image"` 后覆盖父表单 `<form target>`。
+* `formAction`：字符串。输入框指定此值并指定 `type="submit"` 或 `type="image"` 后将覆盖父表单对应属性 `<form action>`。
+* `formEnctype`：字符串。输入框指定此值并指定 `type="submit"` 或 `type="image"` 后将覆盖父表单对应属性 `<form enctype>`。
+* `formMethod`：字符串。输入框指定此值并指定 `type="submit"` 或 `type="image"` 后将覆盖父表单对应属性 `<form method>`。
+* `formNoValidate`：字符串。输入框指定此值并指定 `type="submit"` 或 `type="image"` 后将覆盖父表单对应属性 `<form noValidate>`。
+* `formTarget`：字符串。输入框指定此值并指定 `type="submit"` 或 `type="image"` 后将覆盖父表单对应属性 `<form target>`。
 * `height`：字符串，指定 `type="image"` 的图像高度。
 * `list`：字符串，指定带有自动完成选项的 `<datalist>` 的 `id`。
 * `max`：数字，指定数值和日期时间输入的最大值。
