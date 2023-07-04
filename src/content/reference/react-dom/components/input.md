@@ -585,6 +585,7 @@ function handleChange(e) {
 
 ### 收到错误：“A component is changing an uncontrolled input to be controlled” {/*im-getting-an-error-a-component-is-changing-an-uncontrolled-input-to-be-controlled*/}
 
+
 提供的 `value` 属性必须在整个生命周期中都为字符串。
 
 你不能一会传递 `value={undefined}` 一会传递 `value="some string"`，这会导致 React 不清楚你是想指定受控组件还是非受控组件。受控组件的 `value` 属性应该始终接收字符串，而不是 `null` 或 `undefined`。
