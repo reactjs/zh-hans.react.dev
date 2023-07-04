@@ -4,13 +4,13 @@ title: flushSync
 
 <Pitfall>
 
-Using `flushSync` is uncommon and can hurt the performance of your app.
+使用 `flushSync` 是不常见的行为，并且可能损伤应用程序的性能。
 
 </Pitfall>
 
 <Intro>
 
-`flushSync` lets you force React to flush any updates inside the provided callback synchronously. This ensures that the DOM is updated immediately.
+`flushSync` 允许你强制 React 在提供的回调函数内同步刷新任何更新，这将确保 DOM 立即更新。
 
 ```js
 flushSync(callback)
@@ -22,11 +22,11 @@ flushSync(callback)
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `flushSync(callback)` {/*flushsync*/}
 
-Call `flushSync` to force React to flush any pending work and update the DOM synchronously.
+调用 `flushSync` 强制 React 刷新所有挂起的工作，并同步更新 DOM。
 
 ```js
 import { flushSync } from 'react-dom';
@@ -36,50 +36,50 @@ flushSync(() => {
 });
 ```
 
-Most of the time, `flushSync` can be avoided. Use `flushSync` as last resort.
+大多数时候都不需要使用 `flushSync`，请将其作为最后的手段使用。
 
-[See more examples below.](#usage)
+[参见下面更多示例](#usage)。
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
 
-* `callback`: A function. React will immediately call this callback and flush any updates it contains synchronously. It may also flush any pending updates, or Effects, or updates inside of Effects. If an update suspends as a result of this `flushSync` call, the fallbacks may be re-shown.
+* `callback`：一个函数。React 会立即调用这个回调函数，并同步刷新其中包含的任何更新。它也可能会刷新任何挂起的更新、Effect 或 Effect 内部的更新。如果因为调用 `flushSync` 而导致更新挂起（suspend），则可能会重新显示 fallback。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-`flushSync` returns `undefined`.
+`flushSync` 返回 `undefined`。
 
-#### Caveats {/*caveats*/}
+#### 注意 {/*caveats*/}
 
-* `flushSync` can significantly hurt performance. Use sparingly.
-* `flushSync` may force pending Suspense boundaries to show their `fallback` state.
-* `flushSync` may run pending effects and synchronously apply any updates they contain before returning.
-* `flushSync` may flush updates outside the callback when necessary to flush the updates inside the callback. For example, if there are pending updates from a click, React may flush those before flushing the updates inside the callback.
+* `flushSync` 可能会严重影响性能，因此请谨慎使用。
+* `flushSync` 可能会强制挂起的 Suspense 边界显示其 `fallback` 状态。
+* `flushSync` 可能会在返回之前运行挂起的 effect，并同步应用其包含的任何更新。
+* `flushSync` 可能会在必要时刷新回调函数之外的更新，以便刷新回调函数内部的更新。例如，如果有来自点击事件的挂起更新，React 可能会在刷新回调函数内部的更新之前刷新这些更新。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Flushing updates for third-party integrations {/*flushing-updates-for-third-party-integrations*/}
+### 刷新第三方集成更新 {/*flushing-updates-for-third-party-integrations*/}
 
-When integrating with third-party code such as browser APIs or UI libraries, it may be necessary to force React to flush updates. Use `flushSync` to force React to flush any <CodeStep step={1}>state updates</CodeStep> inside the callback synchronously:
+当与浏览器 API 或 UI 库等第三方代码集成时，可能需要强制 React 刷新更新。调用 `flushSync` 以强制 React 同步刷新在回调函数内的任何状态更新：
 
 ```js [[1, 2, "setSomething(123)"]]
 flushSync(() => {
   setSomething(123);
 });
-// By this line, the DOM is updated.
+// 这一行代码运行之后，DOM 将被更新。
 ```
 
-This ensures that, by the time the next line of code runs, React has already updated the DOM.
+这确保了在下一行代码运行时，React 已经更新了 DOM。
 
-**Using `flushSync` is uncommon, and using it often can significantly hurt the performance of your app.** If your app only uses React APIs, and does not integrate with third-party libraries, `flushSync` should be unnecessary.
+**使用 `flushSync` 是不常见的行为，频繁调用可能会严重影响应用程序的性能**。如果你的应用只使用 React API，并且不与第三方库集成，那么 `flushSync` 应该是不必要的。
 
-However, it can be helpful for integrating with third-party code like browser APIs.
+然而，它对于与浏览器 API 等第三方代码集成可能会有帮助。
 
-Some browser APIs expect results inside of callbacks to be written to the DOM synchronously, by the end of the callback, so the browser can do something with the rendered DOM. In most cases, React handles this for you automatically. But in some cases it may be necessary to force a synchronous update.
+一些浏览器 API 希望回调函数内的结果同步写入 DOM，以便在回调函数结束时，浏览器可以对渲染的 DOM 进行操作。在大多数情况下，React 会自动处理这个问题。但在某些情况下，可能需要强制进行同步更新。
 
-For example, the browser `onbeforeprint` API allows you to change the page immediately before the print dialog opens. This is useful for applying custom print styles that allow the document to display better for printing. In the example below, you use `flushSync` inside of the `onbeforeprint` callback to immediately "flush" the React state to the DOM. Then, by the time the print dialog opens, `isPrinting` displays "yes":
+例如，浏览器的 `onbeforeprint` API 允许你在打印对话框打开之前立即更改页面。这对于应用自定义打印样式，使文档在打印时能够更好地显示非常有用。在下面的示例中，你在 `onbeforeprint` 回调函数内调用 `flushSync` 来立即将 React 状态“刷新”到 DOM 中。然后，当打印对话框打开时，`isPrinting` 会显示为“是”：
 
 <Sandpack>
 
@@ -111,9 +111,9 @@ export default function PrintApp() {
   
   return (
     <>
-      <h1>isPrinting: {isPrinting ? 'yes' : 'no'}</h1>
+      <h1>是否打印：{isPrinting ? '是' : '否'}</h1>
       <button onClick={() => window.print()}>
-        Print
+        打印
       </button>
     </>
   );
@@ -122,12 +122,12 @@ export default function PrintApp() {
 
 </Sandpack>
 
-Without `flushSync`, when the print dialog will display `isPrinting` as "no". This is because React batches the updates asynchronously and the print dialog is displayed before the state is updated.
+如果没有使用 `flushSync`，当打印对话框显示时，`isPrinting`会显示为“否”。这是因为 React 将异步批处理更新，而打印对话框在状态更新之前就显示出来了。`flushSync` 可能会严重影响性能，并且可能会意外地强制挂起的 Suspense 边界显示其 fallback 状态。
 
 <Pitfall>
 
-`flushSync` can significantly hurt performance, and may unexpectedly force pending Suspense boundaries to show their fallback state.
+`flushSync` 可能会严重影响性能，并且可能会意外地强制挂起的 Suspense 边界显示其 fallback 状态。
 
-Most of the time, `flushSync` can be avoided, so use `flushSync` as a last resort.
+大多数时候都不需要使用 `flushSync`，请将其作为最后的手段使用。
 
 </Pitfall>
