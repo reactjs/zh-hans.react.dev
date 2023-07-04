@@ -162,7 +162,7 @@ export default function Form() {
   return (
     <>
       <label>
-        你的名：
+        你的名称：
         <input name="firstName" />
       </label>
       <hr />
@@ -328,10 +328,10 @@ function Form() {
   return (
     <>
       <label>
-        你的名：
+        你的名称：
         <input value={firstName} onChange={e => setFirstName(e.target.value)} />
       </label>
-      {firstName !== '' && <p>你的名是 {firstName}。</p>}
+      {firstName !== '' && <p>你的名称是 {firstName}。</p>}
       ...
 ```
 
