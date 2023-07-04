@@ -4,6 +4,7 @@ translators:
   - Jiacheng787
   - QC-L
   - Neo42
+  - Zhou Chenyang
 ---
 
 <Intro>
@@ -320,8 +321,8 @@ button { margin-right: 10px; }
 
 <Note>
 
-Make sure that you use the appropriate HTML tags for your event handlers. For example, to handle clicks, use [`<button onClick={handleClick}>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/button) instead of `<div onClick={handleClick}>`. Using a real browser `<button>` enables built-in browser behaviors like keyboard navigation. If you don't like the default browser styling of a button and want to make it look more like a link or a different UI element, you can achieve it with CSS. [Learn more about writing accessible markup.](https://developer.mozilla.org/zh-CN/docs/Learn/Accessibility/HTML)
-  
+确保为事件处理程序使用适当的 HTML 标签。例如，要处理点击事件，请使用 [`<button onClick={handleClick}>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/button) 而不是 `<div onClick={handleClick}>`。使用真正的浏览器 `<button>` 启用内置的浏览器行为，如键盘导航。如果你不喜欢按钮的默认浏览器样式，并且想让它看起来更像一个链接或不同的 UI 元素，你可以使用 CSS 来实现。[了解有关编写无障碍标签的更多信息](https://developer.mozilla.org/zh-CN/docs/Learn/Accessibility/HTML)。
+
 </Note>
 
 ## 事件传播 {/*event-propagation*/}
