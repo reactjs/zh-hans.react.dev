@@ -17,7 +17,7 @@ Effect 与组件有不同的生命周期。组件可以挂载、更新或卸载�
 - 值是响应式的含义是什么
 - 空依赖数组意味着什么
 - React 如何使用检查工具验证依赖关系是否正确
-- 当你与代码检查工具产生分歧时，该如何处理
+- 与代码检查工具产生分歧时，该如何处理
 
 </YouWillLearn>
 
@@ -200,9 +200,9 @@ function ChatRoom({ roomId /* "travel" */ }) {
 
 之前，你是从组件的角度思考的。当你从组件的角度思考时，很容易将 Effect 视为在特定时间点触发的“回调函数”或“生命周期事件”，例如“渲染后”或“卸载前”。这种思维方式很快变得复杂，所以最好避免使用。
 
-**相反，始终专注于单个启动/停止周期。无论组件是挂载、更新还是卸载，都不应该有影响。你只需要描述如何开始同步和如何停止。如果你做得好，Effect 将能够在需要时始终具备启动和停止的弹性**。
+**相反，始终专注于单个启动/停止周期。无论组件是挂载、更新还是卸载，都不应该有影响。只需要描述如何开始同步和如何停止。如果做得好，Effect 将能够在需要时始终具备启动和停止的弹性**。
 
-这可能会让你想起当你编写创建 JSX 的渲染逻辑时，并不考虑组件是挂载还是更新。你描述的是应该显示在屏幕上的内容，而 React 会 [解决其余的问题](/learn/reacting-to-input-with-state)。
+这可能会让你想起当编写创建 JSX 的渲染逻辑时，并不考虑组件是挂载还是更新。描述的是应该显示在屏幕上的内容，而 React 会 [解决其余的问题](/learn/reacting-to-input-with-state)。
 
 ### React 如何验证 Effect 可以重新进行同步 {/*how-react-verifies-that-your-effect-can-re-synchronize*/}
 
@@ -272,7 +272,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-请注意，当组件首次挂载时，你会看到三个日志：
+请注意，当组件首次挂载时，会看到三个日志：
 
 1. `✅ 连接到 "general" 聊天室，位于 https://localhost:1234...` *(仅限开发环境)*
 2. `❌ 从 "general" 聊天室断开连接，位于 https://localhost:1234.` *(仅限开发环境)*
@@ -305,12 +305,12 @@ function ChatRoom({ roomId }) { // roomId 属性可能会随时间变化。
 下面是它的工作原理：
 
 1. 你知道 `roomId` 是一个 prop，这意味着它可能会随着时间的推移发生变化。
-2. 你知道你 ffect 读取了 `roomId`（因此其逻辑依赖于可能会在之后发生变化的值）。
+2. 你知道 Effect 读取了 `roomId`（因此其逻辑依赖于可能会在之后发生变化的值）。
 3. 这就是为什么你将其指定为 Effect 的依赖项（以便在 `roomId` 发生变化时重新进行同步）。
 
 每次在组件重新渲染后，React 都会查看传递的依赖项数组。如果数组中的任何值与上一次渲染时在相同位置传递的值不同，React 将重新同步 Effect。
 
-例如，如果在初始渲染时传递了 `["general"]`，然后在下一次渲染时传递了 `["travel"]`，React 将比较 `"general"` 和 `"travel"`。这些是不同的值（使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 进行比较），因此 React 将重新同步 Effect。另一方面，如果你的组件重新渲染但 `roomId` 没有发生变化，Effect 将继续连接到相同的房间。
+例如，如果在初始渲染时传递了 `["general"]`，然后在下一次渲染时传递了 `["travel"]`，React 将比较 `"general"` 和 `"travel"`。这些是不同的值（使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 进行比较），因此 React 将重新同步 Effect。另一方面，如果组件重新渲染但 `roomId` 没有发生变化，Effect 将继续连接到相同的房间。
 
 ### 每个 Effect 表示一个独立的同步过程。 {/*each-effect-represents-a-separate-synchronization-process*/}
 
@@ -330,7 +330,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-但是想象一下，如果以后你给这个 Effect 添加了另一个需要重新建立连接的依赖项。如果这个 Effect 重新进行同步，它将为相同的房间调用 `logVisit(roomId)`，而这不是你的意图。记录访问行为是 **一个独立的过程**，与连接不同。将它们作为两个单独的 Effect 编写：
+但是想象一下，如果以后给这个 Effect 添加了另一个需要重新建立连接的依赖项。如果这个 Effect 重新进行同步，它将为相同的房间调用 `logVisit(roomId)`，而这不是你的意图。记录访问行为是 **一个独立的过程**，与连接不同。将它们作为两个单独的 Effect 编写：
 
 ```js {2-4}
 function ChatRoom({ roomId }) {
@@ -352,7 +352,7 @@ function ChatRoom({ roomId }) {
 
 ## Effect 会“响应”于响应式值 {/*effects-react-to-reactive-values*/}
 
-Effect 读取了两个变量（`serverUrl` 和 `roomId`），但是你只将 `roomId` 指定为依赖项：
+Effect 读取了两个变量（`serverUrl` 和 `roomId`），但是只将 `roomId` 指定为依赖项：
 
 ```js {5,10}
 const serverUrl = 'https://localhost:1234';
@@ -492,7 +492,7 @@ function ChatRoom() {
 
 现在 Effect 的代码不使用任何响应式值，因此它的依赖可以是空的 (`[]`)。
 
-从组件的角度来看，空的 `[]` 依赖数组意味着这个 Effect 仅在组件挂载时连接到聊天室，并在组件卸载时断开连接。（请记住，在开发环境中，React 仍会 [额外执行一次](#how-react-verifies-that-your-effect-can-re-synchronize) 来对你的逻辑进行压力测试。）
+从组件的角度来看，空的 `[]` 依赖数组意味着这个 Effect 仅在组件挂载时连接到聊天室，并在组件卸载时断开连接。（请记住，在开发环境中，React 仍会 [额外执行一次](#how-react-verifies-that-your-effect-can-re-synchronize) 来对逻辑进行压力测试。）
 
 
 <Sandpack>
@@ -548,13 +548,13 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-然而，如果你 [从 Effect 的角度思考](#thinking-from-the-effects-perspective)，根本不需要考虑挂载和卸载。重要的是，你已经指定了 Effect 如何开始和停止同步。目前，它没有任何响应式依赖。但是，如果你希望用户随时间改变 `roomId` 或 `serverUrl`（它们将变为响应式），Effect 的代码不需要改变。只需要将它们添加到依赖项中即可。
+然而，如果你 [从 Effect 的角度思考](#thinking-from-the-effects-perspective)，根本不需要考虑挂载和卸载。重要的是，你已经指定了 Effect 如何开始和停止同步。目前，它没有任何响应式依赖。但是，如果希望用户随时间改变 `roomId` 或 `serverUrl`（它们将变为响应式），Effect 的代码不需要改变。只需要将它们添加到依赖项中即可。
 
 ### 在组件主体中声明的所有变量都是响应式的 {/*all-variables-declared-in-the-component-body-are-reactive*/}
 
 Props 和 state 并不是唯一的响应式值。从它们计算出的值也是响应式的。如果 props 或 state 发生变化，组件将重新渲染，从中计算出的值也会随之改变。这就是为什么 Effect 使用的组件主体中的所有变量都应该在依赖列表中。
 
-假设用户可以在下拉菜单中选择聊天服务器，但他们还可以在设置中配置默认服务器。假设你已经将设置状态放入了一个 [上下文](/learn/scaling-up-with-reducer-and-context)，因此你从该上下文中读取 `settings`。现在，你可以根据 props 中选择的服务器和默认服务器来计算 `serverUrl`：
+假设用户可以在下拉菜单中选择聊天服务器，但他们还可以在设置中配置默认服务器。假设你已经将设置状态放入了一个 [上下文](/learn/scaling-up-with-reducer-and-context)，因此从该上下文中读取 `settings`。现在，可以根据 props 中选择的服务器和默认服务器来计算 `serverUrl`：
 
 ```js {3,5,10}
 function ChatRoom({ roomId, selectedServerUrl }) { // roomId 是响应式的
