@@ -25,8 +25,8 @@ title: "常见组件（例如 <div>)"
 #### Props {/*common-props*/}
 
 这些特殊的 React 属性适用于所有内置组件:
-
-* `children`: 一个 React 节点 (可以是元素, 字符串, 数字, [portal,](/reference/react-dom/createPortal) 空节点（ 如`null`, `undefined`） 和 布尔值, 或其他 React 数组节点)。指定组件内部的内容. 当你使用JSX时, 通常会通过嵌套标签 `<div><span /></div>` 隐式地指定 `children`属性。
+ß
+* `children`: 一个 React 节点 (可以是元素, 字符串, 数字, [portal ,](/reference/react-dom/createPortal) 空节点（ 如`null`, `undefined`） 和布尔值, 或其他 React 数组节点)。指定组件内部的内容. 当你使用JSX时, 通常会通过嵌套标签 `<div><span /></div>` 隐式地指定 `children` 属性。
 
 * `dangerouslySetInnerHTML`: 一个形如 `{ __html: '<p>一些 HTML</p>' }` 的对象，其中包含原始的 HTML 字符串。覆盖DOM节点的 [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) 属性 ，并在内部显示传递的HTML内容. 这个属性应该极度谨慎使用! 如果内部的HTML不可信（例如，如果它基于用户数据）, 你有引入 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 漏洞的风险。[阅读更多关于使用`dangerouslySetInnerHTML`的内容](#dangerously-setting-the-inner-html)
 
@@ -56,12 +56,12 @@ title: "常见组件（例如 <div>)"
 * [`inputMode`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode): 一个字符串。指定要显示的键盘类型（例如，文本、数字或电话）。
 * [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop): 一个字符串。指定元素代表的属性，供结构化数据爬取程序使用。
 * [`lang`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang): 一个字符串。指定元素的语言。
-* [`on aimationEnd`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationend_event): 一个 [`动画事件`处理](#动画事件-handler)函数。在CSS动画完成时触发。
-* `on aimationEndCapture`:  一个在[捕获阶段](/learn/responding-to-events#capture-phase-events)触发的`onAimationEnd`版本。
-* [`on aimationIteration`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationiteration_event): 一个 [`动画事件`处理](#动画事件-handler)函数。当 CSS 动画的一次迭代结束并开始另一个迭代时触发。
-* `on aimationIterationCapture`: 在[捕获阶段](/learn/responding-to-events#capture-phase-events)触发的`onAimationIteration`版本。
-* [`on aimationStart`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationstart_event): 一个 [`动画事件`处理](#动画事件-handler)函数。当 CSS 动画开始时触发。
-* `on aimationStartCapture`: 跟`onAimationStart`一样, 但是是在 [捕获阶段.](/learn/responding-to-events#capture-phase-events)触发。
+* [`onAimationEnd`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationend_event): 一个 [`动画事件`处理](#动画事件-handler)函数。在CSS动画完成时触发。
+* `onAimationEndCapture`:  一个在[捕获阶段](/learn/responding-to-events#capture-phase-events)触发的`onAimationEnd`版本。
+* [`onAimationIteration`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationiteration_event): 一个 [`动画事件`处理](#动画事件-handler)函数。当 CSS 动画的一次迭代结束并开始另一个迭代时触发。
+* `onAimationIterationCapture`: 在[捕获阶段](/learn/responding-to-events#capture-phase-events)触发的`onAimationIteration`版本。
+* [`onAimationStart`](https://developer.mozilla.org/en-US/docs/Web/API/Element/animationstart_event): 一个 [`动画事件`处理](#动画事件-handler)函数。当 CSS 动画开始时触发。
+* `onAimationStartCapture`: 跟`onAimationStart`一样, 但是是在 [捕获阶段.](/learn/responding-to-events#capture-phase-events)触发。
 * [`onAuxClick`](https://developer.mozilla.org/en-US/docs/Web/API/Element/auxclick_event): 一个 [`鼠标事件`处理](#mouseevent-handler)函数。当非主要指针按钮被点击时触发。
 * `onAuxClickCapture`:一个在[捕获阶段.](/learn/responding-to-events#capture-phase-events)触发的 onAuxClick 版本。
 * `onBeforeInput`: 一个[`输入事件` 触发](#inputevent-handler) 函数. 在可编辑元素的值被修改之前触发。React 尚未使用原生的 [`beforeinput`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/beforeinput_event) 事件，而是尝试使用其他事件来模拟它。
