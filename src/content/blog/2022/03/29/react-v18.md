@@ -95,7 +95,7 @@ setTimeout(() => {
   setCount(c => c + 1);
   setFlag(f => !f);
   // React 会渲染两次，每次更新一个状态（没有批处理）
-}，1000);
+}, 1000);
 
 // 现在: 超时，promise，本机事件处理程序
 // 原生应用时间处理程序或者任何其他时间都被批处理了
@@ -103,7 +103,7 @@ setTimeout(() => {
   setCount(c => c + 1);
   setFlag(f => !f);
   // 最终，React 将仅会重新渲染一次（这就是批处理！）
-}，1000);
+}, 1000);
 ```
 
 想要了解更多信息，可以阅读 [React 18 中能减少渲染次数的自动批处理机制](https://github.com/reactwg/react-18/discussions/21)。
