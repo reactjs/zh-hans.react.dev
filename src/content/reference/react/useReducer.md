@@ -4,7 +4,7 @@ title: useReducer
 
 <Intro>
 
-`useReducer` is a React Hook that lets you add a [reducer](/learn/extracting-state-logic-into-a-reducer) to your component.
+`useReducer` 是一个 React Hook，它允许你向组件里面添加一个 [reducer](/learn/extracting-state-logic-into-a-reducer)。
 
 ```js
 const [state, dispatch] = useReducer(reducer, initialArg, init?)
@@ -16,11 +16,11 @@ const [state, dispatch] = useReducer(reducer, initialArg, init?)
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `useReducer(reducer, initialArg, init?)` {/*usereducer*/}
 
-Call `useReducer` at the top level of your component to manage its state with a [reducer.](/learn/extracting-state-logic-into-a-reducer)
+在组件的顶层作用域调用 `useReducer` 来创建一个用于管理状态的 [reducer](/learn/extracting-state-logic-into-a-reducer)。
 
 ```js
 import { useReducer } from 'react';
@@ -34,31 +34,31 @@ function MyComponent() {
   // ...
 ```
 
-[See more examples below.](#usage)
+[参见下面的更多示例](#usage)。
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `reducer`: The reducer function that specifies how the state gets updated. It must be pure, should take the state and action as arguments, and should return the next state. State and action can be of any types. 
-* `initialArg`: The value from which the initial state is calculated. It can be a value of any type. How the initial state is calculated from it depends on the next `init` argument.
-* **optional** `init`: The initializer function that should return the initial state. If it's not specified, the initial state is set to `initialArg`. Otherwise, the initial state is set to the result of calling `init(initialArg)`.
+* `reducer`：用于更新 state 的函数，不能有副作用。应该把 state 和 action 作为参数，并且最终返回更新后的 state。state 和 action 可以是任意类型的值。
+* `initialArg`：用于初始化 state 的任意值。如何计算初始值取决于下面的 `init` 参数。
+* **可选的** `init`：用于计算初始值的函数。如果省略，初始值为 `initialArg`，否则为 `init(initialArg)` 的返回值。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-`useReducer` returns an array with exactly two values:
+`useReducer` 返回一个由两个值组成的数组：
 
-1. The current state. During the first render, it's set to `init(initialArg)` or `initialArg` (if there's no `init`).
-2. The [`dispatch` function](#dispatch) that lets you update the state to a different value and trigger a re-render.
+1. 当前的 state。 初次渲染时，它是 `init(initialArg)` 或 `initialArg` （如果没有 `init` 函数）。
+2. [`dispatch` 函数](#dispatch)。用于更新 state 并触发组件的重新渲染。
 
-#### Caveats {/*caveats*/}
+#### 注意事项 {/*caveats*/}
 
-* `useReducer` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a new component and move the state into it.
-* In Strict Mode, React will **call your reducer and initializer twice** in order to [help you find accidental impurities.](#my-reducer-or-initializer-function-runs-twice) This is development-only behavior and does not affect production. If your reducer and initializer are pure (as they should be), this should not affect your logic. The result from one of the calls is ignored.
+* `useReducer` 是一个 Hook，所以你只能在 **组件的顶层作用域** 或者自己的 Hooks 中调用。不能在循环或条件语句中调用。如果你有这种需求，可以创建一个新的组件，并把 state 移入其中。
+* 严格模式下 React 会 **调用两次 reducer 和初始化函数**，这可以 [帮助你发现意外的副作用](#my-reducer-or-initializer-function-runs-twice)。这只是开发模式下的行为，并不会影响生产环境。只要 reducer 和初始化函数是纯函数（理应如此）就不会改变你的逻辑。其中一个调用结果会被忽略。
 
 ---
 
-### `dispatch` function {/*dispatch*/}
+### `dispatch` 函数 {/*dispatch*/}
 
-The `dispatch` function returned by `useReducer` lets you update the state to a different value and trigger a re-render. You need to pass the action as the only argument to the `dispatch` function:
+`useReducer` 返回的 `dispatch` 函数允许你更新 state 并触发组件的重新渲染。它需要传入一个 action 作为参数：
 
 ```js
 const [state, dispatch] = useReducer(reducer, { age: 42 });
@@ -68,7 +68,7 @@ function handleClick() {
   // ...
 ```
 
-React will set the next state to the result of calling the `reducer` function you've provided with the current `state` and the action you've passed to `dispatch`.
+React 会调用 `reducer` 函数来更新 state，`reducer` 函数的参数就是当前的 state 和你通过 `dispatch` 传入的 action。
 
 #### Parameters {/*dispatch-parameters*/}
 
