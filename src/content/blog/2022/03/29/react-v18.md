@@ -258,7 +258,7 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 
 > Note
 >
-> `useInsertionEffect` 旨在供库使用，而不是应用程序代码.
+> `useInsertionEffect` 旨在供库使用，而不是应用程序代码。
 
 ## 如何更新 {/*how-to-upgrade*/}
 
