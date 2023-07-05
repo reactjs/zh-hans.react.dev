@@ -937,9 +937,9 @@ button { margin-left: 10px; }
 
 #### 打开和关闭状态同步 {/*switch-synchronization-on-and-off*/}
 
-在这个例子中，Effect 订阅了 window 的 [`pointermove`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/pointermove_event) 事件，以在屏幕上移动一个粉色的点。尝试在预览区域上悬停（或者如果你使用移动设备，请触摸屏幕），看看粉色的点如何跟随你的移动。
+在这个例子中，Effect 订阅了 window 的 [`pointermove`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/pointermove_event) 事件，以在屏幕上移动一个粉色的点。尝试在预览区域上悬停（或者如果你使用移动设备，请触摸屏幕），看看粉色的点如何跟随你移动。
 
-还有一个复选框。勾选复选框会切换 `canMove` 状态变量，但是这个状态变量在代码中没有被使用。你的任务是修改代码，使得当 `canMove` 为 `false`（复选框未选中）时，点应该停止移动。在你切换复选框回到选中状态（将 `canMove` 设置为 `true`）之后，点应该重新跟随移动。换句话说，点是否可以移动应该与复选框的选中状态保持同步。
+还有一个复选框。勾选复选框会切换 `canMove` 状态变量，但是这个状态变量在代码中没有被使用。你的任务是修改代码，使得当 `canMove` 为 `false`（复选框未选中）时，点应该停止移动。在切换复选框回到选中状态（将 `canMove` 设置为 `true`）之后，点应该重新跟随移动。换句话说，点是否可以移动应该与复选框的选中状态保持同步。
 
 <Hint>
 
@@ -1113,7 +1113,7 @@ body {
 
 </Sandpack>
 
-在这两种情况下，`canMove` 是一个响应式变量，你在 Effect 中读取它。这就是为什么它必须在 Effect 的依赖列表中进行指定。这样可以确保在每次值的更改后，Effect 重新同步。
+在这两种情况下，`canMove` 是一个响应式变量，并在 Effect 中读取它。这就是为什么它必须在 Effect 的依赖列表中进行指定。这样可以确保在每次值的更改后，Effect 重新同步。
 
 </Solution>
 
@@ -1121,11 +1121,11 @@ body {
 
 在这个例子中，当复选框选中时，粉色的点应该移动，当复选框未选中时，点应该停止移动。这个逻辑已经实现了：`handleMove` 事件处理程序检查 `canMove` 状态变量。
 
-然而，出现问题的是在 `handleMove` 内部，`canMove` 状态变量似乎是“过时的”：即使在你取消选中复选框之后，它始终是 `true`。这是怎么可能的？找出代码中的错误并进行修复。
+然而，出现问题的是在 `handleMove` 内部，`canMove` 状态变量似乎是“过时的”：即使在取消选中复选框之后，它始终是 `true`。这是怎么可能的？找出代码中的错误并进行修复。
 
 <Hint>
 
-如果你在代码中看到有一个被禁止的 linter 规则，建议你考虑删除这个禁止。通常情况下，禁止 linter 规则可能隐藏了潜在的错误或代码问题。
+如果你在代码中看到有一个被禁止的 linter 规则，建议考虑删除这个禁止。通常情况下，禁止 linter 规则可能隐藏了潜在的错误或代码问题。
 
 </Hint>
 
@@ -1187,13 +1187,13 @@ body {
 
 <Solution>
 
-原始代码的问题在于禁止了依赖性检查的 linter 规则。如果移除禁止，你会发现这个 Effect 依赖于 `handleMove` 函数。这是有道理的：`handleMove` 是在组件体内声明的，这使得它成为一个响应式值。每个响应式值都必须在依赖列表中进行指定，否则它可能会随着时间的推移变为过时！
+原始代码的问题在于禁止了依赖性检查的 linter 规则。如果移除禁止，会发现这个 Effect 依赖于 `handleMove` 函数。这是有道理的：`handleMove` 是在组件体内声明的，这使得它成为一个响应式值。每个响应式值都必须在依赖列表中进行指定，否则它可能会随着时间的推移变为过时！
 
 原始代码的作者通过声明 Effect 不依赖任何响应式值（`[]`）来欺骗 React。这就是为什么 React 在 `canMove` 改变后（以及 `handleMove`）没有重新同步该 Effect。因为 React 没有重新同步该 Effect，所以附加的 `handleMove` 侦听器是在初始渲染期间创建的 `handleMove` 函数。在初始渲染期间，`canMove` 是 `true`，这就是为什么初始渲染时的 `handleMove` 将永远获取到该值。
 
-**如果从不禁止 linter，就不会遇到过时值的问题**。解决这个 bug 有几种不同的方法，但你应该始终从移除 linter 禁止开始。然后修改代码来修复 lint 错误。
+**如果从不禁止 linter，就不会遇到过时值的问题**。解决这个 bug 有几种不同的方法，但应该始终从移除 linter 禁止开始。然后修改代码来修复 lint 错误。
 
-你可以将 Effect 的依赖项更改为 `[handleMove]`，但由于它在每次渲染时都会被重新定义，你也可以完全删除依赖项数组。然后，Effect 将在 **每次重新渲染后重新同步**：
+可以将 Effect 的依赖项更改为 `[handleMove]`，但由于它在每次渲染时都会被重新定义，也可以完全删除依赖项数组。然后，Effect 将在 **每次重新渲染后重新同步**：
 
 <Sandpack>
 
@@ -1250,9 +1250,9 @@ body {
 
 </Sandpack>
 
-这个解决方案有效，但并不理想。如果在 Effect 内部放置 `console.log('Resubscribing')`，你会注意到它在每次重新渲染后都重新订阅。重新订阅很快，但是正常情况下应该避免频繁进行重新订阅。
+这个解决方案有效，但并不理想。如果在 Effect 内部放置 `console.log('Resubscribing')`，会注意到它在每次重新渲染后都重新订阅。重新订阅很快，但是正常情况下应该避免频繁进行重新订阅。
 
-更好的解决方案是将 `handleMove` 函数 **移动到** Effect 内部。然后，`handleMove` 就不会成为响应式值，因此你的 Effect 不会依赖于函数。相反，它将依赖于你的代码从 Effect 内部读取的 `canMove`。这符合你想要的行为，因为你的 Effect 现在将始终与 `canMove` 的值保持同步：
+更好的解决方案是将 `handleMove` 函数 **移动到** Effect 内部。然后，`handleMove` 就不会成为响应式值，因此 Effect 不会依赖于函数。相反，它将依赖于 Effect 内部的 `canMove`。这符合预期行为，因为 Effect 现在将始终与 `canMove` 的值保持同步：
 
 <Sandpack>
 
@@ -1311,7 +1311,7 @@ body {
 
 请在 Effect 主体中添加 `console.log('Resubscribing')`，注意现在它只在切换复选框（`canMove` 变化）或编辑代码时重新订阅。这使得它比之前的方法更好，因为它只在必要时重新订阅。
 
-你将在[将事件与 Effect 分离](/learn/separating-events-from-effects)中学习到更通用的解决此类问题的方法。
+你将在 [将事件与 Effect 分离](/learn/separating-events-from-effects) 中学习到更通用的解决此类问题的方法。
 
 </Solution>
 
@@ -1518,7 +1518,7 @@ label { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-是的，`createConnection` 是一个依赖项。然而，这段代码并不健壮，因为可以编辑 `App` 组件以将内联函数作为该 prop 的值传递。在这种情况下，每次 `App` 组件重新渲染时，其值都会不同，因此 Effect 可能会过于频繁地重新同步。为了避免这种情况，你可以传 `isEncrypted` 作为 prop 的值：
+是的，`createConnection` 是一个依赖项。然而，这段代码并不健壮，因为可以编辑 `App` 组件以将内联函数作为该 prop 的值传递。在这种情况下，每次 `App` 组件重新渲染时，其值都会不同，因此 Effect 可能会过于频繁地重新同步。为了避免这种情况，可以传 `isEncrypted` 作为 prop 的值：
 
 <Sandpack>
 
@@ -1613,7 +1613,7 @@ label { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-在这个版本中，`App` 组件传递了一个布尔类型的 prop，而不是一个函数。在 Effect 内部，你根据需要决定使用哪个函数。由于 `createEncryptedConnection` 和 `createUnencryptedConnection` 都是在组件外部声明的，它们不是响应式的，因此不需要作为依赖项。你可以在 [移除 Effect 依赖项](/learn/removing-effect-dependencies) 中了解更多相关内容。
+在这个版本中，`App` 组件传递了一个布尔类型的 prop，而不是一个函数。在 Effect 内部，根据需要决定使用哪个函数。由于 `createEncryptedConnection` 和 `createUnencryptedConnection` 都是在组件外部声明的，它们不是响应式的，因此不需要作为依赖项。你可以在 [移除 Effect 依赖项](/learn/removing-effect-dependencies) 中了解更多相关内容。
 
 </Solution>
 
@@ -1625,7 +1625,7 @@ label { display: block; margin-bottom: 10px; }
 
 <Hint>
 
-如果你有两个独立的同步过程，你需要编写两个单独的 Effect。
+如果你有两个独立的同步过程，需要编写两个单独的 Effect。
 
 </Hint>
 
@@ -1937,9 +1937,9 @@ label { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-这段代码有些重复。然而，将其合并为单个 Effect 的理由不充分！如果这样做，你将不得不将两个 Effect 的依赖项合并为一个列表，这样改变行星时将重新获取所有行星的列表。Effect 并不是用于代码复用的工具。
+这段代码有些重复。然而，将其合并为单个 Effect 的理由不充分！如果这样做，将不得不将两个 Effect 的依赖项合并为一个列表，这样改变行星时将重新获取所有行星的列表。Effect 并不是用于代码复用的工具。
 
-相反，为了减少重复，你可以将一些逻辑提取到一个自定义 Hook 中，比如下面的 `useSelectOptions`：
+相反，为了减少重复，可以将一些逻辑提取到一个自定义 Hook 中，比如下面的 `useSelectOptions`：
 
 <Sandpack>
 
@@ -2100,7 +2100,7 @@ label { display: block; margin-bottom: 10px; }
 
 </Sandpack>
 
-请查看沙盒中的 `useSelectOptions.js` 标签以了解其工作原理。理想情况下，你的应用程序中的大多数 Effect 最终都应该由自定义 Hook 替代，无论是由你自己编写还是由社区提供。自定义 Hook 隐藏了同步逻辑，因此调用组件不知道 Effect 的存在。随着你继续开发应用程序，你将开发出一套可供选择的 Hooks，并且最终你将不再经常在组件中编写 Effect。
+请查看沙盒中的 `useSelectOptions.js` 标签以了解其工作原理。理想情况下，应用程序中的大多数 Effect 最终都应该由自定义 Hook 替代，无论是由你自己编写还是由社区提供。自定义 Hook 隐藏了同步逻辑，因此调用组件不知道 Effect 的存在。随着你继续开发应用程序，你将开发出一套可供选择的 Hooks，并且最终将不再经常在组件中编写 Effect。
 
 </Solution>
 
