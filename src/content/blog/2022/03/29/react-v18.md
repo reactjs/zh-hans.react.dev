@@ -2,7 +2,7 @@
 title: "React v18.0"
 ---
 
-2022.3.29，由 [React 团队](/community/team) 发布
+2022 年 3 月 29 日，由 [React 团队](/community/team) 发布
 
 ---
 
