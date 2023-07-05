@@ -84,7 +84,7 @@ React 18 中最重要的更新内容是我们不会要求你过度关注的：�
 
 ## React 18 的新内容 {/*whats-new-in-react-18*/}
 
-### 新功能: 自动批处理 {/*new-feature-automatic-batching*/}
+### 新功能：自动批处理 {/*new-feature-automatic-batching*/}
 
 批处理是指，当 React 在一个单独的重渲染事件中批量处理多个状态更新以此实现优化性能。如果没有自动批处理的话，我们仅能够在 React 事件处理程序中批量更新。promise 内的更新，setTimeout，原生应用的事件处理程序或者任何其他事件，默认情况下在 React 中都不会被批量处理；但现在，这些更新内容都会被自动批处理：
 
