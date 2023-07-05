@@ -76,11 +76,11 @@ React 18 中最重要的更新内容是我们不会要求你过度关注的：�
 
 就像在过去的 React 的版本中，你总是可以使用 Suspense 与客户端侧的 React.lazy 配合进行代码分割。但是我们的对 Suspense 的期望并不仅仅是加载代码——最终的目标是扩展对 Suspense 的支持，以至于相同的声明式 Suspense fallback 能够处理任何异步操作（加载代码，数据，图片等）。
 
-## 服务端组件仍在开发中 {/*server-components-is-still-in-development*/}
+## 服务器组件仍在开发中 {/*server-components-is-still-in-development*/}
 
-[**服务端组件**](/blog/2020/12/21/data-fetching-with-react-server-components) 是一个即将到来的功能，允许开发者构建跨越服务端和客户端的应用，结合客户端应用丰富的交互性和传统服务端渲染的优良性能，服务端组件和并发模式 React 并不是强耦合的，但是它设计的初衷就是为了配合 Suspense 和流式服务端渲染这样的并发功能。
+[**服务器组件**](/blog/2020/12/21/data-fetching-with-react-server-components) 是一个即将到来的功能，允许开发者构建跨越服务端和客户端的应用，结合客户端应用丰富的交互性和传统服务端渲染的优良性能，服务器组件和并发模式 React 并不是强耦合的，但是它设计的初衷就是为了配合 Suspense 和流式服务端渲染这样的并发功能。
 
-服务端组件仍然是实验性的，但是我们预计会在 18.x 的一个小版本中正式发布。同时，我们正在与 Next.js，Hydrogen 和 Remix 等框架合作，以推进提案，并使其准备好被广泛采用。
+服务器组件仍然是实验性的，但是我们预计会在 18.x 的一个小版本中正式发布。同时，我们正在与 Next.js，Hydrogen 和 Remix 等框架合作，以推进提案，并使其准备好被广泛采用。
 
 ## React 18 的新内容 {/*whats-new-in-react-18*/}
 
