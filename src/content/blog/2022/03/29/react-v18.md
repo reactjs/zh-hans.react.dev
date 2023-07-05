@@ -144,7 +144,7 @@ startTransition(() => {
 
 并发渲染中将会加入过渡更新，允许更新被中断。如果更新内容被重新挂起，过渡机制也会告诉 React 在后台渲染过渡内容时继续展示当前内容（查看 [Suspense 意见征求](https://github.com/reactjs/rfcs/blob/main/text/0213-suspense-in-react-18.md) 了解更多信息）。
 
-[更多内容请参阅过渡相关的文档](/reference/react/useTransition)。
+[更多内容请参阅 transition 相关的文档](/reference/react/useTransition)。
 
 ### 新的 Suspense 特性 {/*new-suspense-features*/}
 
