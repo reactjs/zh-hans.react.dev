@@ -34,7 +34,7 @@ React 18 现在可以在 npm 上使用啦！在我们的上一篇文章里，我
 
 </Note>
 
-## 什么是并发 React ？ {/*what-is-concurrent-react*/}
+## 什么是并发 React？ {/*what-is-concurrent-react*/}
 
 React 18 中最重要的更新内容是我们不会要求你过度关注的：并发。我们认为这对于应用开发者而言是一件非常好的事情，尽管这对于库的维护者来说可能有点复杂。
 
