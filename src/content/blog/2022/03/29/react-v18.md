@@ -14,7 +14,7 @@ React 18 现在可以在 npm 上使用啦！在我们的上一篇文章里，我
 
 ---
 
-我们最新的主要版本更新的内容包括自动批处理等开箱即用能力优化，startTransition 等新的 API, 还有支持 Suspense 的流式服务端渲染。
+我们最新的主要版本更新的内容包括自动批处理等开箱即用能力优化，startTransition 等新的 API，还有支持 Suspense 的流式服务端渲染。
 
 这些 React 18 新功能很多都基于我们新推出的并发渲染特性，也就是一种解锁全新能力的底层变动。并发模式 React 是选择性启用的——只有当你使用了一个并发功能的时候才会开启——但是我们认为它将会对人们构建应用的方式产生巨大的影响。
 
@@ -44,7 +44,7 @@ React 18 中最重要的更新内容是我们不会要求你过度关注的：�
 
 不过，并发模式 React 这一更新本身是比其实现细节更重要──它是 React 核心渲染模型的基础性更新。因此，知道并发渲染底层工作原理不是很重要，但如果是为了追求更高的技术层次，倒是可能值得去了解它。
 
-并发模式 React 的一个主要特性是渲染可以被中断。当你第一次升级到 React 18, 在加入任何并发功能之前，更新内容渲染的方式和 React 之前的版本一样——通过一个单一的，同步且不可中断的事务进行处理。同步渲染意味着，一旦开始渲染就无法中断，直到用户可以在屏幕上看到渲染结果。
+并发模式 React 的一个主要特性是渲染可以被中断。当你第一次升级到 React 18，在加入任何并发功能之前，更新内容渲染的方式和 React 之前的版本一样——通过一个单一的，同步且不可中断的事务进行处理。同步渲染意味着，一旦开始渲染就无法中断，直到用户可以在屏幕上看到渲染结果。
 
 在并发渲染中，情况并不总是这样。React 可能开始渲染一个更新，然后中途挂起，稍后又继续。它甚至可能完全放弃一个正在进行的渲染。React 保证即使渲染被中断，UI 也会呈现出一致性。为了实现这一点，它会在整个 DOM 树被计算完毕前一直等待，完毕后执行 DOM 变更。这样做，React 就可以在后台提前准备新的屏幕内容，而不阻塞主线程。这意味着用户输入可以被立即响应，即使存在大量渲染任务，也能有流畅的用户体验。
 
@@ -95,7 +95,7 @@ setTimeout(() => {
   setCount(c => c + 1);
   setFlag(f => !f);
   // React 会渲染两次，每次更新一个状态（没有批处理）
-}, 1000);
+}，1000);
 
 // 现在: 超时，promise，本机事件处理程序
 // 原生应用时间处理程序或者任何其他时间都被批处理了
@@ -103,7 +103,7 @@ setTimeout(() => {
   setCount(c => c + 1);
   setFlag(f => !f);
   // 最终，React 将仅会重新渲染一次（这就是批处理！）
-}, 1000);
+}，1000);
 ```
 
 想要了解更多信息，可以阅读 [React 18 中能减少渲染次数的自动批处理机制](https://github.com/reactwg/react-18/discussions/21)。
@@ -112,7 +112,7 @@ setTimeout(() => {
 
 过渡更新是 React 中一个新的概念，用于区分紧急和非紧急的更新。
 
-* **紧急更新** 对应直接的交互, 如输入，点击，按压等。
+* **紧急更新** 对应直接的交互，如输入，点击，按压等。
 * **过渡更新** 将 UI 从一个视图过渡到另一个。
 
 像输入，点击，按压等紧急更新，需要立刻响应以符合人们对物理对象行为的预期。否则，他们就会觉得“不对劲”。但是，过渡更新不太一样，因为用户对感知到屏幕上的每一个中间值这件事是没有预期的。
@@ -184,7 +184,7 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 
 #### React DOM Server {/*react-dom-server*/}
 
-这些新的 API 现在可以从 `react-dom/server` 中导出, 并且在服务端端完全支持流式 Suspense：
+这些新的 API 现在可以从 `react-dom/server` 中导出，并且在服务端端完全支持流式 Suspense：
 
 * `renderToPipeableStream`：用于 Node 环境中的流式渲染。
 * `renderToReadableStream`：对新式的非主流运行时环境，比如 Deno 和 Cloudflare workers。
@@ -268,13 +268,13 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 
 ### React {/*react*/}
 
-* 添加 `useTransition` 和 `useDeferredValue` 以将紧急更新和过渡更新分开。([#10426](https://github.com/facebook/react/pull/10426), [#10715](https://github.com/facebook/react/pull/10715), [#15593](https://github.com/facebook/react/pull/15593), [#15272](https://github.com/facebook/react/pull/15272), [#15578](https://github.com/facebook/react/pull/15578), [#15769](https://github.com/facebook/react/pull/15769), [#17058](https://github.com/facebook/react/pull/17058), [#18796](https://github.com/facebook/react/pull/18796), [#19121](https://github.com/facebook/react/pull/19121), [#19703](https://github.com/facebook/react/pull/19703), [#19719](https://github.com/facebook/react/pull/19719), [#19724](https://github.com/facebook/react/pull/19724), [#20672](https://github.com/facebook/react/pull/20672), [#20976](https://github.com/facebook/react/pull/20976) [@acdlite](https://github.com/acdlite), [@lunaruan](https://github.com/lunaruan), [@rickhanlonii](https://github.com/rickhanlonii), and [@sebmarkbage](https://github.com/sebmarkbage))
-* 添加 `useId` 用于生成唯一 ID。([#17322](https://github.com/facebook/react/pull/17322), [#18576](https://github.com/facebook/react/pull/18576), [#22644](https://github.com/facebook/react/pull/22644), [#22672](https://github.com/facebook/react/pull/22672), [#21260](https://github.com/facebook/react/pull/21260) [@acdlite](https://github.com/acdlite), [@lunaruan](https://github.com/lunaruan), and [@sebmarkbage](https://github.com/sebmarkbage))
-* 添加 `useSyncExternalStore` 以帮助外部存储库与 React 集成。([#15022](https://github.com/facebook/react/pull/15022), [#18000](https://github.com/facebook/react/pull/18000), [#18771](https://github.com/facebook/react/pull/18771), [#22211](https://github.com/facebook/react/pull/22211), [#22292](https://github.com/facebook/react/pull/22292), [#22239](https://github.com/facebook/react/pull/22239), [#22347](https://github.com/facebook/react/pull/22347), [#23150](https://github.com/facebook/react/pull/23150) [@acdlite](https://github.com/acdlite), [@bvaughn](https://github.com/bvaughn), and [@drarmstr](https://github.com/drarmstr))
+* 添加 `useTransition` 和 `useDeferredValue` 以将紧急更新和过渡更新分开。([#10426](https://github.com/facebook/react/pull/10426)，[#10715](https://github.com/facebook/react/pull/10715)，[#15593](https://github.com/facebook/react/pull/15593)，[#15272](https://github.com/facebook/react/pull/15272)，[#15578](https://github.com/facebook/react/pull/15578)，[#15769](https://github.com/facebook/react/pull/15769)，[#17058](https://github.com/facebook/react/pull/17058)，[#18796](https://github.com/facebook/react/pull/18796)，[#19121](https://github.com/facebook/react/pull/19121)，[#19703](https://github.com/facebook/react/pull/19703)，[#19719](https://github.com/facebook/react/pull/19719)，[#19724](https://github.com/facebook/react/pull/19724)，[#20672](https://github.com/facebook/react/pull/20672)，[#20976](https://github.com/facebook/react/pull/20976) [@acdlite](https://github.com/acdlite)，[@lunaruan](https://github.com/lunaruan)，[@rickhanlonii](https://github.com/rickhanlonii)，and [@sebmarkbage](https://github.com/sebmarkbage))
+* 添加 `useId` 用于生成唯一 ID。([#17322](https://github.com/facebook/react/pull/17322)，[#18576](https://github.com/facebook/react/pull/18576)，[#22644](https://github.com/facebook/react/pull/22644)，[#22672](https://github.com/facebook/react/pull/22672)，[#21260](https://github.com/facebook/react/pull/21260) [@acdlite](https://github.com/acdlite)，[@lunaruan](https://github.com/lunaruan)，and [@sebmarkbage](https://github.com/sebmarkbage))
+* 添加 `useSyncExternalStore` 以帮助外部存储库与 React 集成。([#15022](https://github.com/facebook/react/pull/15022)，[#18000](https://github.com/facebook/react/pull/18000)，[#18771](https://github.com/facebook/react/pull/18771)，[#22211](https://github.com/facebook/react/pull/22211)，[#22292](https://github.com/facebook/react/pull/22292)，[#22239](https://github.com/facebook/react/pull/22239)，[#22347](https://github.com/facebook/react/pull/22347)，[#23150](https://github.com/facebook/react/pull/23150) [@acdlite](https://github.com/acdlite)，[@bvaughn](https://github.com/bvaughn)，and [@drarmstr](https://github.com/drarmstr))
 * 添加 `startTransition` 作为 `useTransition` 的一个版本，不需要等待反馈。 ([#19696](https://github.com/facebook/react/pull/19696) [@rickhanlonii](https://github.com/rickhanlonii))
 * 添加 `useInsertionEffect` 用于 CSS-in-JS 库。([#21913](https://github.com/facebook/react/pull/21913) [@rickhanlonii](https://github.com/rickhanlonii))
-* 当内容重新出现时，使 Suspense 重新装载 layout effect。([#19322](https://github.com/facebook/react/pull/19322), [#19374](https://github.com/facebook/react/pull/19374), [#19523](https://github.com/facebook/react/pull/19523), [#20625](https://github.com/facebook/react/pull/20625), [#21079](https://github.com/facebook/react/pull/21079) [@acdlite](https://github.com/acdlite), [@bvaughn](https://github.com/bvaughn), and [@lunaruan](https://github.com/lunaruan))
-* 使 `<StrictMode>` 重新运行 effect 以检查可恢复的状态。([#19523](https://github.com/facebook/react/pull/19523) , [#21418](https://github.com/facebook/react/pull/21418) [@bvaughn](https://github.com/bvaughn) and [@lunaruan](https://github.com/lunaruan))
+* 当内容重新出现时，使 Suspense 重新装载 layout effect。([#19322](https://github.com/facebook/react/pull/19322)，[#19374](https://github.com/facebook/react/pull/19374)，[#19523](https://github.com/facebook/react/pull/19523)，[#20625](https://github.com/facebook/react/pull/20625)，[#21079](https://github.com/facebook/react/pull/21079) [@acdlite](https://github.com/acdlite)，[@bvaughn](https://github.com/bvaughn)，and [@lunaruan](https://github.com/lunaruan))
+* 使 `<StrictMode>` 重新运行 effect 以检查可恢复的状态。([#19523](https://github.com/facebook/react/pull/19523) ，[#21418](https://github.com/facebook/react/pull/21418) [@bvaughn](https://github.com/bvaughn) and [@lunaruan](https://github.com/lunaruan))
 * 假设 `Symbols` 总是可用的。([#23348](https://github.com/facebook/react/pull/23348) [@sebmarkbage](https://github.com/sebmarkbage))
 * 移除 `object-assign` polyfill。([#23351](https://github.com/facebook/react/pull/23351) [@sebmarkbage](https://github.com/sebmarkbage))
 * 移除不支持的 `unstable_changedBits` API。([#20953](https://github.com/facebook/react/pull/20953) [@acdlite](https://github.com/acdlite))
@@ -301,8 +301,8 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 
 ### React DOM {/*react-dom*/}
 
-* 添加 `createRoot` 和 `hydrateRoot`。([#10239](https://github.com/facebook/react/pull/10239), [#11225](https://github.com/facebook/react/pull/11225), [#12117](https://github.com/facebook/react/pull/12117), [#13732](https://github.com/facebook/react/pull/13732), [#15502](https://github.com/facebook/react/pull/15502), [#15532](https://github.com/facebook/react/pull/15532), [#17035](https://github.com/facebook/react/pull/17035), [#17165](https://github.com/facebook/react/pull/17165), [#20669](https://github.com/facebook/react/pull/20669), [#20748](https://github.com/facebook/react/pull/20748), [#20888](https://github.com/facebook/react/pull/20888), [#21072](https://github.com/facebook/react/pull/21072), [#21417](https://github.com/facebook/react/pull/21417), [#21652](https://github.com/facebook/react/pull/21652), [#21687](https://github.com/facebook/react/pull/21687), [#23207](https://github.com/facebook/react/pull/23207), [#23385](https://github.com/facebook/react/pull/23385) [@acdlite](https://github.com/acdlite), [@bvaughn](https://github.com/bvaughn), [@gaearon](https://github.com/gaearon), [@lunaruan](https://github.com/lunaruan), [@rickhanlonii](https://github.com/rickhanlonii), [@trueadm](https://github.com/trueadm), and [@sebmarkbage](https://github.com/sebmarkbage))
-* 添加选择性 hydrate。([#14717](https://github.com/facebook/react/pull/14717), [#14884](https://github.com/facebook/react/pull/14884), [#16725](https://github.com/facebook/react/pull/16725), [#16880](https://github.com/facebook/react/pull/16880), [#17004](https://github.com/facebook/react/pull/17004), [#22416](https://github.com/facebook/react/pull/22416), [#22629](https://github.com/facebook/react/pull/22629), [#22448](https://github.com/facebook/react/pull/22448), [#22856](https://github.com/facebook/react/pull/22856), [#23176](https://github.com/facebook/react/pull/23176) [@acdlite](https://github.com/acdlite), [@gaearon](https://github.com/gaearon), [@salazarm](https://github.com/salazarm), and [@sebmarkbage](https://github.com/sebmarkbage))
+* 添加 `createRoot` 和 `hydrateRoot`。([#10239](https://github.com/facebook/react/pull/10239)，[#11225](https://github.com/facebook/react/pull/11225)，[#12117](https://github.com/facebook/react/pull/12117)，[#13732](https://github.com/facebook/react/pull/13732)，[#15502](https://github.com/facebook/react/pull/15502)，[#15532](https://github.com/facebook/react/pull/15532)，[#17035](https://github.com/facebook/react/pull/17035)，[#17165](https://github.com/facebook/react/pull/17165)，[#20669](https://github.com/facebook/react/pull/20669)，[#20748](https://github.com/facebook/react/pull/20748)，[#20888](https://github.com/facebook/react/pull/20888)，[#21072](https://github.com/facebook/react/pull/21072)，[#21417](https://github.com/facebook/react/pull/21417)，[#21652](https://github.com/facebook/react/pull/21652)，[#21687](https://github.com/facebook/react/pull/21687)，[#23207](https://github.com/facebook/react/pull/23207)，[#23385](https://github.com/facebook/react/pull/23385) [@acdlite](https://github.com/acdlite)，[@bvaughn](https://github.com/bvaughn)，[@gaearon](https://github.com/gaearon)，[@lunaruan](https://github.com/lunaruan)，[@rickhanlonii](https://github.com/rickhanlonii)，[@trueadm](https://github.com/trueadm)，and [@sebmarkbage](https://github.com/sebmarkbage))
+* 添加选择性 hydrate。([#14717](https://github.com/facebook/react/pull/14717)，[#14884](https://github.com/facebook/react/pull/14884)，[#16725](https://github.com/facebook/react/pull/16725)，[#16880](https://github.com/facebook/react/pull/16880)，[#17004](https://github.com/facebook/react/pull/17004)，[#22416](https://github.com/facebook/react/pull/22416)，[#22629](https://github.com/facebook/react/pull/22629)，[#22448](https://github.com/facebook/react/pull/22448)，[#22856](https://github.com/facebook/react/pull/22856)，[#23176](https://github.com/facebook/react/pull/23176) [@acdlite](https://github.com/acdlite)，[@gaearon](https://github.com/gaearon)，[@salazarm](https://github.com/salazarm)，and [@sebmarkbage](https://github.com/sebmarkbage))
 * 在已知的 ARIA 属性列表中增加 `aria-description`。([#22142](https://github.com/facebook/react/pull/22142) [@mahyareb](https://github.com/mahyareb))
 * 为 video 元素添加 `onResize` 事件。([#21973](https://github.com/facebook/react/pull/21973) [@rileyjshaw](https://github.com/rileyjshaw))
 * 将 `imageSizes` 和 `imageSrcSet` 添加到已知属性中。([#22550](https://github.com/facebook/react/pull/22550) [@eps1lon](https://github.com/eps1lon))
@@ -312,7 +312,7 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 
 ### React DOM Server {/*react-dom-server-1*/}
 
-* 添加新的流式渲染器。([#14144](https://github.com/facebook/react/pull/14144), [#20970](https://github.com/facebook/react/pull/20970), [#21056](https://github.com/facebook/react/pull/21056), [#21255](https://github.com/facebook/react/pull/21255), [#21200](https://github.com/facebook/react/pull/21200), [#21257](https://github.com/facebook/react/pull/21257), [#21276](https://github.com/facebook/react/pull/21276), [#22443](https://github.com/facebook/react/pull/22443), [#22450](https://github.com/facebook/react/pull/22450), [#23247](https://github.com/facebook/react/pull/23247), [#24025](https://github.com/facebook/react/pull/24025), [#24030](https://github.com/facebook/react/pull/24030) [@sebmarkbage](https://github.com/sebmarkbage))
+* 添加新的流式渲染器。([#14144](https://github.com/facebook/react/pull/14144)，[#20970](https://github.com/facebook/react/pull/20970)，[#21056](https://github.com/facebook/react/pull/21056)，[#21255](https://github.com/facebook/react/pull/21255)，[#21200](https://github.com/facebook/react/pull/21200)，[#21257](https://github.com/facebook/react/pull/21257)，[#21276](https://github.com/facebook/react/pull/21276)，[#22443](https://github.com/facebook/react/pull/22443)，[#22450](https://github.com/facebook/react/pull/22450)，[#23247](https://github.com/facebook/react/pull/23247)，[#24025](https://github.com/facebook/react/pull/24025)，[#24030](https://github.com/facebook/react/pull/24030) [@sebmarkbage](https://github.com/sebmarkbage))
 * 修复 SSR 中的上下文提供者在处理多个请求时的问题。([#23171](https://github.com/facebook/react/pull/23171) [@frandiox](https://github.com/frandiox))
 * 文本不匹配时恢复到客户端渲染。([#23354](https://github.com/facebook/react/pull/23354) [@acdlite](https://github.com/acdlite))
 * 弃用 `renderToNodeStream`。([#23359](https://github.com/facebook/react/pull/23359) [@sebmarkbage](https://github.com/sebmarkbage))
