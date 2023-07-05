@@ -4,7 +4,7 @@ title: '响应式 Effect 的生命周期'
 
 <Intro>
 
-Effect 与组件有不同的生命周期。组件可以挂载、更新或卸载。Effect 只能做两件事：开始同步某些东西，然后停止同步它。如果 Effect 依赖于随时间变化的 props 和 state，这个循环可能会发生多次。React 提供了一个代码检查规则来检查是否正确地指定了 Effect 的依赖项，这能够使 Effect 与最新的 props 和 state 保持同步。
+Effect 与组件有不同的生命周期。组件可以挂载、更新或卸载。Effect 只能做两件事：开始同步某些东西，然后停止同步它。如果 Effect 依赖于随时间变化的 props 和 state，这个循环可能会发生多次。React 提供了代码检查规则来检查是否正确地指定了 Effect 的依赖项，这能够使 Effect 与最新的 props 和 state 保持同步。
 
 </Intro>
 
@@ -84,7 +84,7 @@ Effect 返回的清理函数指定了如何 **停止同步**：
 
 ### 为什么同步可能需要多次进行 {/*why-synchronization-may-need-to-happen-more-than-once*/}
 
-想象一下，这个 `ChatRoom` 组件接收一个 `roomId` 属性，用户可以在下拉菜单中选择。假设初始时，用户选择了 `"general"` 作为 `roomId`。应用程序会显示 `"general"` 聊天室：
+想象一下，这个 `ChatRoom` 组件接收 `roomId` 属性，用户可以在下拉菜单中选择。假设初始时，用户选择了 `"general"` 作为 `roomId`。应用程序会显示 `"general"` 聊天室：
 
 ```js {3}
 const serverUrl = 'https://localhost:1234';
@@ -304,7 +304,7 @@ function ChatRoom({ roomId }) { // roomId 属性可能会随时间变化。
 
 下面是它的工作原理：
 
-1. 你知道 `roomId` 是一个 prop，这意味着它可能会随着时间的推移发生变化。
+1. 你知道 `roomId` 是 prop，这意味着它可能会随着时间的推移发生变化。
 2. 你知道 Effect 读取了 `roomId`（因此其逻辑依赖于可能会在之后发生变化的值）。
 3. 这就是为什么你将其指定为 Effect 的依赖项（以便在 `roomId` 发生变化时重新进行同步）。
 
@@ -375,7 +375,7 @@ function ChatRoom({ roomId }) {
 
 另一方面，`roomId` 在重新渲染时可能会不同。**在组件内部声明的 props、state 和其他值都是 响应式 的，因为它们是在渲染过程中计算的，并参与了 React 的数据流**。
 
-如果 `serverUrl` 是一个状态变量，那么它就是响应式的。响应式值必须包含在依赖项中：
+如果 `serverUrl` 是状态变量，那么它就是响应式的。响应式值必须包含在依赖项中：
 
 ```js {2,5,10}
 function ChatRoom({ roomId }) { // Props 随时间变化
@@ -470,7 +470,7 @@ button { margin-left: 10px; }
 
 无论何时更改一个类似 `roomId` 或 `serverUrl` 的响应式值，该 Effect 都会重新连接到聊天服务器。
 
-### 一个没有依赖项的 Effect 的含义 {/*what-an-effect-with-empty-dependencies-means*/}
+### 没有依赖项的 Effect 的含义 {/*what-an-effect-with-empty-dependencies-means*/}
 
 如果将 `serverUrl` 和 `roomId` 都移出组件会发生什么？
 
@@ -554,7 +554,7 @@ button { margin-left: 10px; }
 
 Props 和 state 并不是唯一的响应式值。从它们计算出的值也是响应式的。如果 props 或 state 发生变化，组件将重新渲染，从中计算出的值也会随之改变。这就是为什么 Effect 使用的组件主体中的所有变量都应该在依赖列表中。
 
-假设用户可以在下拉菜单中选择聊天服务器，但他们还可以在设置中配置默认服务器。假设你已经将设置状态放入了一个 [上下文](/learn/scaling-up-with-reducer-and-context)，因此从该上下文中读取 `settings`。现在，可以根据 props 中选择的服务器和默认服务器来计算 `serverUrl`：
+假设用户可以在下拉菜单中选择聊天服务器，但他们还可以在设置中配置默认服务器。假设你已经将设置状态放入了 [上下文](/learn/scaling-up-with-reducer-and-context)，因此从该上下文中读取 `settings`。现在，可以根据 props 中选择的服务器和默认服务器来计算 `serverUrl`：
 
 ```js {3,5,10}
 function ChatRoom({ roomId, selectedServerUrl }) { // roomId 是响应式的
@@ -571,7 +571,7 @@ function ChatRoom({ roomId, selectedServerUrl }) { // roomId 是响应式的
 }
 ```
 
-在这个例子中，`serverUrl` 不是一个 prop 或 state 变量。它是在渲染过程中计算的普通变量。但是它是在渲染过程中计算的，所以它可能会因为重新渲染而改变。这就是为什么它是响应式的。
+在这个例子中，`serverUrl` 不是 prop 或 state 变量。它是在渲染过程中计算的普通变量。但是它是在渲染过程中计算的，所以它可能会因为重新渲染而改变。这就是为什么它是响应式的。
 
 **组件内部的所有值（包括 props、state 和组件体内的变量）都是响应式的。任何响应式值都可以在重新渲染时发生变化，所以需要将响应式值包括在 Effect 的依赖项中**。
 
@@ -585,7 +585,7 @@ function ChatRoom({ roomId, selectedServerUrl }) { // roomId 是响应式的
 
 例如，像 [`location.pathname`](https://developer.mozilla.org/zh-CN/docs/Web/API/Location/pathname) 这样的可变值不能作为依赖项。它是可变的，因此可以在 React 渲染数据流之外的任何时间发生变化。更改它不会触发组件的重新渲染。因此，即使在依赖项中指定了它，React 也无法知道在其更改时重新同步 Effect。这也违反了 React 的规则，因为在渲染过程中读取可变数据（即在计算依赖项时）会破坏 [纯粹的渲染](/learn/keeping-components-pure)。相反，应该使用 [`useSyncExternalStore`](/learn/you-might-not-need-an-effect#subscribing-to-an-external-store) 来读取和订阅外部可变值。
 
-**另外，像 [`ref.current`](/reference/react/useRef#reference) 或从中读取的值也不能作为依赖项。`useRef` 返回的 ref 对象本身可以作为依赖项**，但其 `current` 属性是有意可变的。它允许 [跟踪某些值而不触发重新渲染](/learn/referencing-values-with-refs)。但由于更改它不会触发重新渲染，它不是一个响应式值，React 不会知道在其更改时重新运行 Effect。
+**另外，像 [`ref.current`](/reference/react/useRef#reference) 或从中读取的值也不能作为依赖项。`useRef` 返回的 ref 对象本身可以作为依赖项**，但其 `current` 属性是有意可变的。它允许 [跟踪某些值而不触发重新渲染](/learn/referencing-values-with-refs)。但由于更改它不会触发重新渲染，它不是响应式值，React 不会知道在其更改时重新运行 Effect。
 
 正如你将在本页面下面学到的那样，检查工具将自动检查这些问题。
 
@@ -667,7 +667,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-这可能看起来像是一个 React 错误，但实际上 React 是在指出代码中的一个 bug。`roomId` 和 `serverUrl` 都可能随时间改变，但忘记了在它们改变时重新同步 Effect。即使用户在 UI 中选择了不同的值，仍然保持连接到初始的 `roomId` 和 `serverUrl`。
+这可能看起来像是 React 错误，但实际上 React 是在指出代码中的 bug。`roomId` 和 `serverUrl` 都可能随时间改变，但忘记了在它们改变时重新同步 Effect。即使用户在 UI 中选择了不同的值，仍然保持连接到初始的 `roomId` 和 `serverUrl`。
 
 要修复这个 bug，请按照检查工具的建议将 `roomId` 和 `serverUrl` 作为 Effect 的依赖进行指定：
 
@@ -783,7 +783,7 @@ useEffect(() => {
 
 <Hint>
 
-应该需要为这个 Effect 添加一个依赖数组，那么应该包含哪些依赖项呢？
+应该需要为这个 Effect 添加依赖数组，那么应该包含哪些依赖项呢？
 
 </Hint>
 
@@ -860,7 +860,7 @@ button { margin-left: 10px; }
 
 <Solution>
 
-这个 Effect 实际上没有任何依赖数组，所以它在每次重新渲染后都会重新同步。首先，添加一个依赖数组。然后，确保每个被 Effect 使用的响应式值都在数组中指定。例如，`roomId` 是响应式的（因为它是一个 `prop`），所以它应该包含在数组中。这样可以确保当用户选择一个不同的聊天室时，聊天会重新连接。另一方面，`serverUrl` 是在组件外部定义的，这就是为什么它不需要在数组中的原因。
+这个 Effect 实际上没有任何依赖数组，所以它在每次重新渲染后都会重新同步。首先，添加依赖数组。然后，确保每个被 Effect 使用的响应式值都在数组中指定。例如，`roomId` 是响应式的（因为它是 `prop`），所以它应该包含在数组中。这样可以确保当用户选择不同的聊天室时，聊天会重新连接。另一方面，`serverUrl` 是在组件外部定义的，这就是为什么它不需要在数组中的原因。
 
 <Sandpack>
 
@@ -937,7 +937,7 @@ button { margin-left: 10px; }
 
 #### 打开和关闭状态同步 {/*switch-synchronization-on-and-off*/}
 
-在这个例子中，一个 Effect 订阅了 window 的 [`pointermove`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/pointermove_event) 事件，以在屏幕上移动一个粉色的点。尝试在预览区域上悬停（或者如果你使用移动设备，请触摸屏幕），看看粉色的点如何跟随你的移动。
+在这个例子中，Effect 订阅了 window 的 [`pointermove`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/pointermove_event) 事件，以在屏幕上移动一个粉色的点。尝试在预览区域上悬停（或者如果你使用移动设备，请触摸屏幕），看看粉色的点如何跟随你的移动。
 
 还有一个复选框。勾选复选框会切换 `canMove` 状态变量，但是这个状态变量在代码中没有被使用。你的任务是修改代码，使得当 `canMove` 为 `false`（复选框未选中）时，点应该停止移动。在你切换复选框回到选中状态（将 `canMove` 设置为 `true`）之后，点应该重新跟随移动。换句话说，点是否可以移动应该与复选框的选中状态保持同步。
 
@@ -1252,7 +1252,7 @@ body {
 
 这个解决方案有效，但并不理想。如果在 Effect 内部放置 `console.log('Resubscribing')`，你会注意到它在每次重新渲染后都重新订阅。重新订阅很快，但是正常情况下应该避免频繁进行重新订阅。
 
-更好的解决方案是将 `handleMove` 函数 **移动到** Effect 内部。然后，`handleMove` 就不会成为一个响应式值，因此你的 Effect 不会依赖于一个函数。相反，它将依赖于你的代码从 Effect 内部读取的 `canMove`。这符合你想要的行为，因为你的 Effect 现在将始终与 `canMove` 的值保持同步：
+更好的解决方案是将 `handleMove` 函数 **移动到** Effect 内部。然后，`handleMove` 就不会成为响应式值，因此你的 Effect 不会依赖于函数。相反，它将依赖于你的代码从 Effect 内部读取的 `canMove`。这符合你想要的行为，因为你的 Effect 现在将始终与 `canMove` 的值保持同步：
 
 <Sandpack>
 
