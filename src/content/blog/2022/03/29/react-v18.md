@@ -162,7 +162,7 @@ Suspense 使得“UI 加载状态”成为了 React 编程模型中最高级的�
 
 在 React 18 中，我们已经支持了服务端 Suspense，并且使用并发渲染特性扩展了其功能。
 
-React 18 中的 Suspense 在与过渡 API 结合时效果最好。如果你在过渡期间挂起，React 不会让已显示的内容被之前的内容取代。相反，React 会延迟渲染，直到有足够的数据，以防止出现加载状态错误。
+React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你在 transition 期间挂起，React 不会让已显示的内容被之前的内容取代。相反，React 会延迟渲染，直到有足够的数据，以防止出现加载状态错误。
 
 更多内容参见 [Suspense in React 18](https://github.com/reactjs/rfcs/blob/main/text/0213-suspense-in-react-18.md) 的意见征求。
 
