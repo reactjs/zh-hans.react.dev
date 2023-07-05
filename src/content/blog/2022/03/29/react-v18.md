@@ -338,5 +338,5 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 * 增加服务端上下文支持。([#23244](https://github.com/facebook/react/pull/23244) [@salazarm](https://github.com/salazarm))
 * 增加对 `lazy` 的支持。 ([#24068](https://github.com/facebook/react/pull/24068) [@gnoff](https://github.com/gnoff))
 * 更新 webpack 插件以支持 webpack 5。([#22739](https://github.com/facebook/react/pull/22739) [@michenly](https://github.com/michenly))
-* 修正节点加载器中的一个错误。([#22537](https://github.com/facebook/react/pull/22537) [@btea](https://github.com/btea))
+* 修正 Noder loader 中的一个错误。([#22537](https://github.com/facebook/react/pull/22537) [@btea](https://github.com/btea))
 * 在边缘环境中使用 `globalThis` 而不是 `window`。([#22777](https://github.com/facebook/react/pull/22777) [@huozhi](https://github.com/huozhi))
