@@ -122,7 +122,7 @@ function ChatRoom({ roomId /* "travel" */ }) {
 
 思考接下来应该发生什么。用户在界面中看到 `"travel"` 是当前选定的聊天室。然而，上次运行的 Effect 仍然连接到 `"general"` 聊天室。**`roomId` 属性已经发生了变化，所以之前 Effect 所做的事情（连接到 `"general"` 聊天室）不再与 UI 匹配**。
 
-此时，你希望React执行两个操作：
+此时，你希望 React 执行两个操作：
 
 1. 停止与旧的 `roomId` 同步（断开与 `"general"` 聊天室的连接）
 2. 开始与新的 `roomId` 同步（连接到 `"travel"` 聊天室）
@@ -284,11 +284,11 @@ button { margin-left: 10px; }
 
 实际上，Effect 重新进行同步的主要原因是它所使用的某些数据发生了变化。在上面的示例中，更改所选的聊天室。注意当 `roomId` 发生变化时，Effect 会重新进行同步。
 
-然而，还存在其他一些不寻常的情况需要重新进行同步。例如，在上面的示例中，尝试在聊天打开时编辑 `serverUrl`。注意当修改代码时，Effect会重新进行同步。将来，React可能会添加更多依赖于重新同步的功能。
+然而，还存在其他一些不寻常的情况需要重新进行同步。例如，在上面的示例中，尝试在聊天打开时编辑 `serverUrl`。注意当修改代码时，Effect会重新进行同步。将来，React 可能会添加更多依赖于重新同步的功能。
 
 ### React 如何知道需要重新进行 Effect 的同步 {/*how-react-knows-that-it-needs-to-re-synchronize-the-effect*/}
 
-你可能想知道 React 是如何知道在 `roomId` 更改后需要重新同步 Effect。这是因为 **你告诉了React** 它的代码依赖于 `roomId`，通过将其包含在 [依赖列表](/learn/synchronizing-with-effects#step-2-specify-the-effect-dependencies) 中。
+你可能想知道 React 是如何知道在 `roomId` 更改后需要重新同步 Effect。这是因为 **你告诉了 React** 它的代码依赖于 `roomId`，通过将其包含在 [依赖列表](/learn/synchronizing-with-effects#step-2-specify-the-effect-dependencies) 中。
 
 ```js {1,3,8}
 function ChatRoom({ roomId }) { // roomId 属性可能会随时间变化。
