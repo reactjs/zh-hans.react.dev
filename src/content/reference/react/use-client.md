@@ -4,14 +4,14 @@ title: "'use client'"
 
 <Note>
 
-These directives are needed only if you're [using React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) or building a library compatible with them.
+这些指令仅在你 [使用 React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 或构建可适配库时需要。
 
 </Note>
 
 
 <Intro>
 
-`'use client'` marks source files whose components execute on the client.
+`'use client'` 标记组件在客户端上执行的源文件。
 
 </Intro>
 
@@ -19,7 +19,7 @@ These directives are needed only if you're [using React Server Components](/lear
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `'use client'` {/*use-client*/}
 
