@@ -254,7 +254,7 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 
 #### useInsertionEffect {/*useinsertioneffect*/}
 
-`useInsertionEffect` 是一个新的 Hook ，允许 CSS-in-JS 库解决在渲染中注入样式的性能问题。除非你已经建立了一个 CSS-in-JS 库，否则我们不希望你使用它。这个 hook 将在 DOM 变更发生后，在 layout effect 获取新布局之前运行。这个功能不仅解决了一个在 React 17 及以下版本中已经存在的问题，而且在 React 18 中更加重要，因为 React 在并发渲染时会为浏览器让步，给它一个重新计算布局的机会。 [参阅文档](/reference/react/useInsertionEffect)。
+`useInsertionEffect` 是一个新的 Hook ，允许 CSS-in-JS 库解决在渲染中注入样式的性能问题。除非你已经建立了一个 CSS-in-JS 库，否则我们不希望你使用它。这个 hook 将在 DOM 变更发生后，在 layout effect 获取新布局之前运行。这个功能不仅解决了一个在 React 17 及以下版本中已经存在的问题，而且在 React 18 中更加重要，因为 React 在并发渲染时会为浏览器让步，给它一个重新计算布局的机会。[参阅文档](/reference/react/useInsertionEffect)。
 
 > Note
 >
