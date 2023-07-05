@@ -30,7 +30,7 @@ React 18 现在可以在 npm 上使用啦！在我们的上一篇文章里，我
 
 <Note>
 
-对于 React Native 用户们来说，React 18 将会伴随新的 React Native 体系结构发布。想了解更多信息，可以阅读 [React 大会摘要](https://www.youtube.com/watch?v=FZ0cG47msEk&t=1530s)。
+对于 React Native 用户们来说，React 18 将会伴随新的 React Native 体系结构发布。想了解更多信息，可以阅读 [React Conf 摘要](https://www.youtube.com/watch?v=FZ0cG47msEk&t=1530s)。
 
 </Note>
 
