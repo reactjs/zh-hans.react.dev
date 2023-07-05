@@ -10,7 +10,7 @@ title: Component
 
 <Intro>
 
-`Component` 是一个 [JavaScript 类](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)，被定义为react组件的基类，类组件仍然被 React 支持，但我们不建议在新代码中使用它们。
+`Component` 是一个 [JavaScript 类](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)，是被定义为react组件的基类，类组件仍然被 React 支持，但我们不建议在新代码中使用它们。
 
 ```js
 class Greeting extends Component {
