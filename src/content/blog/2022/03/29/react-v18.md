@@ -14,7 +14,7 @@ React 18 现在可以在 npm 上使用啦！在我们的上一篇文章里，我
 
 ---
 
-我们最新的主要版本更新的内容包括自动批处理等开箱即用能力优化，startTransition 等新的 API，还有支持 Suspense 的流式服务端渲染。
+我们最新的主要版本更新的内容包括自动批处理等开箱即用能力优化，`startTransition` 等新的 API，还有支持 Suspense 的流式服务端渲染。
 
 这些 React 18 新功能很多都基于我们新推出的并发渲染特性，也就是一种解锁全新能力的底层变动。并发模式 React 是选择性启用的——只有当你使用了一个并发功能的时候才会开启——但是我们认为它将会对人们构建应用的方式产生巨大的影响。
 
@@ -60,9 +60,9 @@ React 18 中最重要的更新内容是我们不会要求你过度关注的：�
 
 整体上的升级方案是使你的应用基于 React 18 运行而不用破坏现存的代码。然后你可以渐进地按照你的节奏开始添加并发功能。你可以在开发环境中使用 [`<StrictMode>`](/reference/react/StrictMode) 以利于暴露并发模式相关的问题。严格模式是不影响生产环境的，但是在开发环境中它将会上外额外的警告日志，并且被视为幂等的函数将被调用两次。这没办法捕获所有异常，但是能够有效预防大部分常见的错误类型。
 
-在你升级到 React 18 后，你可以立即开始使用并发模式的功能。例如，你可以使用 startTransition 在屏幕内容之间进行导航，而不会阻塞用户输入。或者使用 useDeferredValue 来节流处理开销巨大的重渲染。
+在你升级到 React 18 后，你可以立即开始使用并发模式的功能。例如，你可以使用 `startTransition` 在屏幕内容之间进行导航，而不会阻塞用户输入。或者使用 `useDeferredValue` 来节流处理开销巨大的重渲染。
 
-无论如何，我们希望你在应用中添加并发渲染能力的主要方式是，使用一个支持并发渲染的库或者框架。在大多数情况中，你不用与并发模式的 API 直接交互。例如，在导航到一个新的屏幕时，开发者无需调用 startTransition，路由库会自动将导航操作包裹在 startTransition 中。
+无论如何，我们希望你在应用中添加并发渲染能力的主要方式是，使用一个支持并发渲染的库或者框架。在大多数情况中，你不用与并发模式的 API 直接交互。例如，在导航到一个新的屏幕时，开发者无需调用 `startTransition`，路由库会自动将导航操作包裹在 `startTransition` 中。
 
 这些库升级到兼容并发模式可能需要一些时间。我们已经提供了新的 API，使这些库更容易利用并发功能。同时，在我们努力逐步迁移 React 生态系统的过程中，请对维护者保持耐心。
 
@@ -74,7 +74,7 @@ React 18 中最重要的更新内容是我们不会要求你过度关注的：�
 
 在未来，我们可能会暴露更多原语，使你能用 `Suspense` 更容易地获取数据，那时也就不一定必须要使用某个的框架。不过，Suspense 被深度整合到你的应用结构中时能产生最好的效果：你的路由，你的数据层，你的服务端渲染环境。因此我们预计，即使在未来相当长一段时间里，库和框架也还会在 React 生态中发挥关键作用。
 
-就像在过去的 React 的版本中，你总是可以使用 Suspense 与客户端侧的 React.lazy 配合进行代码分割。但是我们的对 Suspense 的期望并不仅仅是加载代码——最终的目标是扩展对 Suspense 的支持，以至于相同的声明式 Suspense fallback 能够处理任何异步操作（加载代码，数据，图片等）。
+就像在过去的 React 的版本中，你总是可以使用 Suspense 与客户端侧的 `React.lazy` 配合进行代码分割。但是我们的对 Suspense 的期望并不仅仅是加载代码——最终的目标是扩展对 Suspense 的支持，以至于相同的声明式 Suspense fallback 能够处理任何异步操作（加载代码，数据，图片等）。
 
 ## 服务器组件仍在开发中 {/*server-components-is-still-in-development*/}
 
@@ -86,7 +86,7 @@ React 18 中最重要的更新内容是我们不会要求你过度关注的：�
 
 ### 新功能：自动批处理 {/*new-feature-automatic-batching*/}
 
-批处理是指，当 React 在一个单独的重渲染事件中批量处理多个状态更新以此实现优化性能。如果没有自动批处理的话，我们仅能够在 React 事件处理程序中批量更新。promise 内的更新，setTimeout，原生应用的事件处理程序或者任何其他事件，默认情况下在 React 中都不会被批量处理；但现在，这些更新内容都会被自动批处理：
+批处理是指，当 React 在一个单独的重渲染事件中批量处理多个状态更新以此实现优化性能。如果没有自动批处理的话，我们仅能够在 React 事件处理程序中批量更新。`promise` 内的更新，`setTimeout`，原生应用的事件处理程序以及任何其他事件，默认情况下在 React 中都不会被批量处理；但现在，这些更新内容都会被自动批处理：
 
 
 ```js
@@ -119,7 +119,7 @@ setTimeout(() => {
 
 举个例子，当我们在一个下拉菜单中选择了一个过滤器，你期望的是这个过滤器按钮在你点击的时候立即就能响应。然而，实际结果可能是不连贯的过渡。这样一个较短的延迟是难以察觉的，而且这往往也是能符合预期的。并且如果你在渲染完成之前，再次改变了过滤器，你需要关心的其实只是最新的结果。
 
-通常情况下，为了更好的用户体验，一个用户输入应该同时产生一个紧急更新和一个过渡更新。你可以在一个输入事件中使用 startTransition API告诉 React 哪些更新是紧急更新，哪些又是过渡更新：
+通常情况下，为了更好的用户体验，一个用户输入应该同时产生一个紧急更新和一个过渡更新。你可以在一个输入事件中使用 `startTransition` API告诉 React 哪些更新是紧急更新，哪些又是过渡更新：
 
 
 ```js
@@ -136,7 +136,7 @@ startTransition(() => {
 ```
 
 
-被包裹在 startTransition 中的更新会被处理为过渡更新，如果有紧急更新出现，比如点击或者按键，则会中断过渡更新。如果一个过渡更新被用户中断（比如，快速输入多个字符），React 将会抛弃未完成的渲染结果，然后仅渲染最新的内容。
+被包裹在 `startTransition` 中的更新会被处理为过渡更新，如果有紧急更新出现，比如点击或者按键，则会中断过渡更新。如果一个过渡更新被用户中断（比如，快速输入多个字符），React 将会抛弃未完成的渲染结果，然后仅渲染最新的内容。
 
 
 * `useTransition`： 一个用于开启过渡更新的 hook，用于跟踪待定转场状态。
@@ -158,7 +158,7 @@ Suspense 允许你声明式地为一部分还没有准备好被展示的组件�
 
 Suspense 使得“UI 加载状态”成为了 React 编程模型中最高级的声明式概念。我们基于此能够构建更高级的功能。
 
-几年前，我们推出了一个受限制版的 Suspense。但是唯一支持的场景就是用 React.lazy 拆分代码，而且在服务端渲染时完全没有作用。
+几年前，我们推出了一个受限制版的 Suspense。但是唯一支持的场景就是用 `React.lazy` 拆分代码，而且在服务端渲染时完全没有作用。
 
 在 React 18 中，我们已经支持了服务端 Suspense，并且使用并发渲染特性扩展了其功能。
 
@@ -246,7 +246,7 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 
 #### useSyncExternalStore {/*usesyncexternalstore*/}
 
-`useSyncExternalStore` 是一个新的 hook，允许使用第三方状态管理来支持并发模式，并且能通过对 store 进行强制更新实现数据同步。对第三方数据源的订阅能力的实现上，消除了对 useEffect 的依赖，推荐任何 React 相关的第三方状态管理库使用这个新特性。[参阅文档](/reference/react/useSyncExternalStore)。
+`useSyncExternalStore` 是一个新的 hook，允许使用第三方状态管理来支持并发模式，并且能通过对 store 进行强制更新实现数据同步。对第三方数据源的订阅能力的实现上，消除了对 `useEffect` 的依赖，推荐任何 React 相关的第三方状态管理库使用这个新特性。[参阅文档](/reference/react/useSyncExternalStore)。
 
 > Note
 >
@@ -333,7 +333,7 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 * 在快速刷新中跟踪后期装载的 root。([#22740](https://github.com/facebook/react/pull/22740) [@anc95](https://github.com/anc95))
 * 在 `package.json` 中添加 `exports` 字段。([#23087](https://github.com/facebook/react/pull/23087) [@otakustay](https://github.com/otakustay))
 
-### Server Components (实验性) {/*server-components-experimental*/}
+### 实验性的服务器组件 {/*server-components-experimental*/}
 
 * 增加服务端上下文支持。([#23244](https://github.com/facebook/react/pull/23244) [@salazarm](https://github.com/salazarm))
 * 增加对 `lazy` 的支持。 ([#24068](https://github.com/facebook/react/pull/24068) [@gnoff](https://github.com/gnoff))
