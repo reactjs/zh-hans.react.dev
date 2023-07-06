@@ -298,7 +298,7 @@ class ChatRoom extends Component {
 
 <Note>
 
-对于大多数的使用场景来说，在类组件中一起定义 `componentDidMount`， `componentDidUpdate` 和 `componentWillUnmount` 等同于在函数组件中调用 [`useEffect`](/reference/react/useEffect)。在一些少数的情况，例如在浏览器绘制前执行代码很重要时，更像是等同于 [`useLayoutEffect`](/reference/react/useLayoutEffect)。
+对于大多数的使用场景来说，在类组件中一起定义 `componentDidMount`，`componentDidUpdate` 和 `componentWillUnmount` 等同于在函数组件中调用 [`useEffect`](/reference/react/useEffect)。在一些少数的情况，例如在浏览器绘制前执行代码很重要时，更像是等同于 [`useLayoutEffect`](/reference/react/useLayoutEffect)。
 
 [了解如何迁移](#migrating-a-component-with-lifecycle-methods-from-a-class-to-a-function)。
 
