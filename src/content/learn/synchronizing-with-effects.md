@@ -281,8 +281,6 @@ video { width: 250px; }
 
 </Sandpack>
 
-在上面的例子中，点击按钮、按键都触发了事件，然后事件修改状态，修改状态引起新一轮渲染。
-
 所以，你可以给定一个 **依赖数组** ，传入 `useEffect` 的第二个参数，来告诉 React **跳过非必要的Effect重复执行**。如果你在上面示例的第 14 行中传入一个空数组 `[]`，像这样。
 
 ```js {3}
@@ -441,7 +439,6 @@ function VideoPlayer({ src, isPlaying }) {
       ref.current.pause();
     }
   }, [isPlaying]);
-}
 ```
 
 这是因为 `ref` 对象具有**稳定**的标识：React 保证 [在每一轮渲染中调用 `useRef` 引用对象时，获取到的对象引用总是相同的](/reference/react/useRef#returns)， 也就是说useRef 获取到的对象引用永远不会改变，所以它不会导致 Effect 的重复执行。 因此，是否包含它并不重要。当然也可以包括它，这样也可以：
