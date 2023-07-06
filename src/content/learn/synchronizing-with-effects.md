@@ -4,7 +4,7 @@ title: '同步操作与 Effect'
 
 <Intro>
 
-一些组件需要与外部系统进行同步操作。例如，你可能希望根据 React 状态来控制非 React 组件、连接到服务器，或者是在组件渲染时发送调试分析日志。 **Effect** 允许你在渲染后运行一些代码，这样你就可以将你的组件与 React 的一些外部系统执行同步操作。
+一些组件需要与外部系统进行同步操作。例如，你可能希望根据 React 状态来控制非 React 组件、连接到服务器，或者是在组件渲染时发送调试分析日志。**Effect** 允许你在渲染后运行一些代码，这样你就可以将你的组件与 React 的一些外部系统执行同步操作。
 
 </Intro>
 
@@ -22,9 +22,9 @@ title: '同步操作与 Effect'
 
 在我们开始讨论 Effect 之前，你需要熟悉在 React 组件中两种类型的内部逻辑：
 
-- **渲染逻辑代码** （详见 [描述用户界面](/learn/describing-the-ui) 一节）它位于组件声明区块的顶部位置。也就是你获取属性 (Props)和设置状态 (State) 的地方，程序执行时会对这些代码进行计算，然后返回得到的 JSX 组件，并在屏幕上渲染。 [渲染逻辑代码必须是纯粹的](/learn/keeping-components-pure)。就像数学公式，它只能去**计算**并得到结果，除此之外什么也不要做。
+- **渲染逻辑代码**（详见 [描述用户界面](/learn/describing-the-ui) 一节）它位于组件声明区块的顶部位置。也就是你获取属性(Props)和设置状态 (State) 的地方，程序执行时会对这些代码进行计算，然后返回得到的 JSX 组件，并在屏幕上渲染。[渲染逻辑代码必须是纯粹的](/learn/keeping-components-pure)。就像数学公式，它只能去**计算**并得到结果，除此之外什么也不要做。
 
-- **事件处理程序** （详见 [添加交互](/learn/adding-interactivity) 一节）它是组件内声明的函数，它们 **做** 任务而不仅仅有计算渲染逻辑。还可以是更新输入字段、再比如在电商网站中提交 HTTP 、 POST 请求以发送“购买”的操作，或者将用户导航到另一个页面。事件处理程序还包括特定的用户操作（例如，单击按钮或键入）引起的 [“副作用”](https://en.wikipedia.org/wiki/Side_effect_(computer_science))（因为它会改变程序的 State 状态）。
+- **事件处理程序** （详见 [添加交互](/learn/adding-interactivity) 一节）它是组件内声明的函数，它们 **做** 任务而不仅仅有计算渲染逻辑。还可以是更新输入字段、再比如在电商网站中提交 HTTP 、POST 请求以发送“购买”的操作，或者将用户导航到另一个页面。事件处理程序还包括特定的用户操作（例如，单击按钮或键入）引起的 [“副作用”](https://en.wikipedia.org/wiki/Side_effect_(computer_science))（因为它会改变程序的 State 状态）。
 
 有时候，仅仅有上面这些东西还不够。考虑 `ChatRoom` 这个“聊天室”组件，只要它出现在了屏幕上被渲染、展示了，那么都应当时刻与聊天服务器保持连接。而连接到聊天服务器并不是一个纯粹的操作（也就是说它是一个副作用）所以，它不能在组件渲染的过程中执行。而且，你又不能为这个组件单独设置一个手动点击事件，让它检测到用户点击后再连接服务器。
 
@@ -32,7 +32,7 @@ title: '同步操作与 Effect'
 
 <Note>
 
-在本文和后续文本中，这里的 `Effect` 在 React 里面是一个专有定义，即由渲染引起的副作用。 React 借助了一部分函数式编程的思想。为了指代更广泛的编程概念，也可以称其为 “副作用 (side effect)”。
+在本文和后续文本中，这里的 `Effect` 在 React 里面是一个专有定义，即由渲染引起的副作用。React 借助了一部分函数式编程的思想。为了指代更广泛的编程概念，也可以称其为 “副作用 (side effect)”。
 
 </Note>
 
@@ -46,8 +46,8 @@ title: '同步操作与 Effect'
 编写一个 Effect，遵循以下三种规则：
 
 1. **声明一个 Effect**。默认情况下，你的 Effect 会在每次渲染后都会执行。
-2. **指定 Effect 依赖**。 大多数 Effects 应该按需执行，而不是在每次渲染后都要执行。例如，淡入动画应该只在组件出现时触发。连接和断开服务器的操作只应在组件出现和消失时，或者切换聊天室时执行。你将学习如何通过指定依赖来控制如何按需执行。
-3. **必要时添加清理操作**。 有的 Effects 需要指定如何停止、撤销，或者清除它的效果。 例如， “连接” 操作需要 “断连”，“订阅” 需要 “退订”， 以及 “获取” 既需要 “取消” 也需要 “忽略”。你将学习如何让通过 *清理操作函数* 来做这些。
+2. **指定 Effect 依赖**。大多数 Effects 应该按需执行，而不是在每次渲染后都要执行。例如，淡入动画应该只在组件出现时触发。连接和断开服务器的操作只应在组件出现和消失时，或者切换聊天室时执行。你将学习如何通过指定依赖来控制如何按需执行。
+3. **必要时添加清理操作**。有的 Effects 需要指定如何停止、撤销，或者清除它的效果。例如，“连接”操作需要 “断连”，“订阅”需要 “退订”，以及 “获取”既需要“取消”也需要 “忽略”。你将学习如何让通过 *清理操作函数* 来做这些。
 
 以下是具体步骤
 
@@ -133,7 +133,7 @@ video { width: 250px; }
 
 </Sandpack>
 
-这段代码之所以不正确，是因为它试图在渲染期间对 DOM 节点进行操作。 在React中， [ JSX 的渲染必须是纯粹操作](/learn/keeping-components-pure) 并且不应该包含任何像修改 DOM 的副作用。
+这段代码之所以不正确，是因为它试图在渲染期间对 DOM 节点进行操作。在React中，[ JSX 的渲染必须是纯粹操作](/learn/keeping-components-pure) 并且不应该包含任何像修改 DOM 的副作用。
 
 此外，在首次调用 `VideoPlayer` 时，在没有运行到 return JSX 这一步之前，先执行的是渲染逻辑代码，但此时还不清楚要返回的 JSX 是什么样的。因此 React 还不知道要创建哪些 DOM 对象。所以它要渲染 `<video>` 的 DOM 此时还不存在！这样就还不能调用 `play()` 和 `pause()` 方法，否则会出现 `Reference Error: Cannot read properties of null (reading 'ref.current')` 的引用错误。
 
@@ -159,7 +159,7 @@ function VideoPlayer({ src, isPlaying }) {
 
 把调用 DOM 方法的操作封装在 Effect 中，你可以让 React 先更新屏幕，确定相关 DOM 创建好了以后然后再运行你的 Effect 。
 
-当 `VideoPlayer` 组件渲染时（无论是否为首次渲染），会发生以下事情。 首先，React 会刷新屏幕，确保 `<video>` 元素以正确地出现在 DOM 中。然后 React 将运行你的 Effect。最后，你的 Effect 将根据 `isPlaying` 的值调用 `play()` 或 `pause()` 。
+当 `VideoPlayer` 组件渲染时（无论是否为首次渲染），会发生以下事情。首先，React 会刷新屏幕，确保 `<video>` 元素以正确地出现在 DOM 中。然后 React 将运行你的 Effect。最后，你的 Effect 将根据 `isPlaying` 的值调用 `play()` 或 `pause()` 。
 
 试试按下几次 Play/Pause 操作 ，观察视频播放器的播放、暂停行为是如何与 `isPlaying` 属性值同步的：
 
@@ -211,7 +211,7 @@ video { width: 250px; }
 
 <Pitfall>
 
-一般来说， Effect 会在**每次**渲染时都会执行。**而以下代码会陷入无尽循环之中**。
+一般来说，Effect 会在**每次**渲染时都会执行。**而以下代码会陷入无尽循环之中**。
 
 ```js
 const [count, setCount] = useState(0);
@@ -220,18 +220,18 @@ useEffect(() => {
 });
 ```
 
-这里的 Effect 会**生成新的渲染结果**。也就是说， Effect 会设置新的 `count` 状态，而设置新的 `count` 状态又会**触发**新一轮渲染。但是新一轮渲染时又会再次执行 Effect ，然后 Effect 又开始改变状态，从而又开始触发新一轮渲染。就这样周而复始，它会陷入一个无穷尽的循环。
+这里的 Effect 会**生成新的渲染结果**。也就是说，Effect 会设置新的 `count` 状态，而设置新的 `count` 状态又会**触发**新一轮渲染。但是新一轮渲染时又会再次执行 Effect ，然后 Effect 又开始改变状态，从而又开始触发新一轮渲染。就这样周而复始，它会陷入一个无穷尽的循环。
 
-Effect 通常应该使组件与**外部**系统保持同步。如果没有外部系统，你只想根据其他状态调整一些状态， [那么你也许就不需要 Effect](/learn/you-might-not-need-an-effect)。
+Effect 通常应该使组件与**外部**系统保持同步。如果没有外部系统，你只想根据其他状态调整一些状态，[那么你也许就不需要 Effect](/learn/you-might-not-need-an-effect)。
 
 </Pitfall>
 
 ### 第 2 步：指定 Effect 依赖 {/*step-2-specify-the-effect-dependencies*/}
 
-一般来说， Effects 会在**每次**渲染时执行。**但通常来讲，有时候你并不需要每次渲染的时候都要执行 Effects**。
+一般来说，Effects 会在**每次**渲染时执行。**但通常来讲，有时候你并不需要每次渲染的时候都要执行 Effects**。
 
 - 有时它会拖慢运行速度。因为与外部系统的同步操作总是有一定的时耗，在非必要时你可能希望跳过它。例如，你不想在每次用键盘打字时都重新连接聊天服务器。
-- 有时候，这会导致程序逻辑错误。 例如，组件的淡入动画只需要在第一轮渲染出现时播放一次，而不是每次触发新一轮渲染后都要播放。
+- 有时候，这会导致程序逻辑错误。例如，组件的淡入动画只需要在第一轮渲染出现时播放一次，而不是每次触发新一轮渲染后都要播放。
 
 为了演示这个问题，还是拿前面的代码作示例，调用 `console.log` 指示事件状态的变化。在这里，为 `VideoPlayer` 的父组件 `<App/>` 加入了一个新的 `<input>` 文本输入框标签。请尝试点击按钮、往文本框内输入一些内容，注意点击、打字按键事件如何导致 Effect 重复执行：
 
@@ -289,7 +289,7 @@ video { width: 250px; }
   }, []);
 ```
 
-你会发现 React 会报错： `React Hook useEffect has a missing dependency: 'isPlaying'`。完整代码如下:
+你会发现 React 会报错：`React Hook useEffect has a missing dependency: 'isPlaying'`。完整代码如下:
 
 <Sandpack>
 
@@ -399,7 +399,7 @@ video { width: 250px; }
 
 The dependency array can contain multiple dependencies. React will only skip re-running the Effect if *all* of the dependencies you specify have exactly the same values as they had during the previous render. React compares the dependency values using the [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. See the [`useEffect` reference](/reference/react/useEffect#reference) for details.
 
-**请注意，你不能随意“自选”你的依赖项**。 如果你在 Effect 里实际依赖项和你在依赖数组中所声明的依赖不匹配时，你就会得到 lint 报错。这是一种很不好的习惯，它会在你的代码中引入很多 Bug 。如果你希望在 Effect 实际依赖某个值的情况下，忽略掉某个依赖引发的重复执行，[那么你应当**编辑Effect代码本身**，使其“不需要”该依赖项](/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize)。
+**请注意，你不能随意“自选”你的依赖项**。如果你在 Effect 里实际依赖项和你在依赖数组中所声明的依赖不匹配时，你就会得到 lint 报错。这是一种很不好的习惯，它会在你的代码中引入很多 Bug 。如果你希望在 Effect 实际依赖某个值的情况下，忽略掉某个依赖引发的重复执行，[那么你应当**编辑Effect代码本身**，使其“不需要”该依赖项](/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize)。
 
 <Pitfall>
 
@@ -441,7 +441,7 @@ function VideoPlayer({ src, isPlaying }) {
   }, [isPlaying]);
 ```
 
-这是因为 `ref` 对象具有**稳定**的标识：React 保证 [在每一轮渲染中调用 `useRef` 引用对象时，获取到的对象引用总是相同的](/reference/react/useRef#returns)， 也就是说useRef 获取到的对象引用永远不会改变，所以它不会导致 Effect 的重复执行。 因此，是否包含它并不重要。当然也可以包括它，这样也可以：
+这是因为 `ref` 对象具有**稳定**的标识：React 保证 [在每一轮渲染中调用 `useRef` 引用对象时，获取到的对象引用总是相同的](/reference/react/useRef#returns)，也就是说useRef 获取到的对象引用永远不会改变，所以它不会导致 Effect 的重复执行。因此，是否包含它并不重要。当然也可以包括它，这样也可以：
 
 ```js {9}
 function VideoPlayer({ src, isPlaying }) {
@@ -457,7 +457,7 @@ function VideoPlayer({ src, isPlaying }) {
 
 `useState` 返回的 [`set` 函数](/reference/react/useState#setstate) 也有稳定的标识符。所以你也可以把它从依赖数组中忽略掉。如果 linter 在你忽略某个依赖项时不报错，那么这么做就是安全的。
 
-但是，仅在 linter 可以“看到”对象稳定时，忽略稳定依赖项的规则才起作用。 例如，如果 `ref` 是从父组件传递的，则必须在依赖项数组中指定它。这样做是合适的，因为你无法知道父组件是否始终传递相同的 ref，或者有条件地传递几个 ref 之一。 因此，你的 Effect 将取决于传递的是哪个 ref。
+但是，仅在 linter 可以“看到”对象稳定时，忽略稳定依赖项的规则才起作用。例如，如果 `ref` 是从父组件传递的，则必须在依赖项数组中指定它。这样做是合适的，因为你无法知道父组件是否始终传递相同的 ref，或者有条件地传递几个 ref 之一。因此，你的 Effect 将取决于传递的是哪个 ref。
 
 </DeepDive>
 
@@ -522,9 +522,9 @@ input { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-这里的 Effect 仅在组件挂载时执行，所以你可能预期 `"✅ Connecting..."` 在控制台中只打印一次。 **然而你检查下控制台的输出结果，会发现 `"✅ Connecting..."` 被打印了两次！为什么会这样？**
+这里的 Effect 仅在组件挂载时执行，所以你可能预期 `"✅ Connecting..."` 在控制台中只打印一次。**然而你检查下控制台的输出结果，会发现 `"✅ Connecting..."` 被打印了两次！为什么会这样？**
 
-想象 `ChatRoom` 组件是一个大规模的App中许多界面中的一部分。 用户切换到含有 `ChatRoom` 组件的页面上工作时，该组件被挂载，并调用 `connection.connect()` 方法来连接服务器。然后想象用户此时突然导航到另一个页面，比如切换到“设置”页面。这时候，之前页面利用的 `ChatRoom` 组件就被卸载了。接下来，用户在“设置”页面忙完后，单击“返回”，回到上一个页面，并再次挂载 `ChatRoom` 。这将建立第二次连接，但是，第一次时创建的连接从未被销毁！当用户在应用程序中不断切换界面再返回时，与服务器的连接会不断堆积。
+想象 `ChatRoom` 组件是一个大规模的App中许多界面中的一部分。用户切换到含有 `ChatRoom` 组件的页面上工作时，该组件被挂载，并调用 `connection.connect()` 方法来连接服务器。然后想象用户此时突然导航到另一个页面，比如切换到“设置”页面。这时候，之前页面利用的 `ChatRoom` 组件就被卸载了。接下来，用户在“设置”页面忙完后，单击“返回”，回到上一个页面，并再次挂载 `ChatRoom` 。这将建立第二次连接，但是，第一次时创建的连接从未被销毁！当用户在应用程序中不断切换界面再返回时，与服务器的连接会不断堆积。
 
 如果不进行大量的手动测试，这样的错误很容易被遗漏。为了帮助你快速发现它们，在开发环境中，React 会在初始挂载组件后，立即再挂载一次。
 
@@ -542,7 +542,7 @@ input { display: block; margin-bottom: 20px; }
   }, []);
 ```
 
-每次 Effect 重复执行之前，React 都会调用你的清理函数，组件在被最后一次卸载（被删除）时。 让我们看看执行清理函数会做些什么：
+每次 Effect 重复执行之前，React 都会调用你的清理函数，组件在被最后一次卸载（被删除）时。让我们看看执行清理函数会做些什么：
 
 <Sandpack>
 
@@ -588,11 +588,11 @@ input { display: block; margin-bottom: 20px; }
 
 **在开发环境下出现这样的结果才是符合预期的**。重复挂载组件，可以确保在 React 中离开和返回页面时不会导致代码运行出现问题。上面的代码中规定了挂载组件时连接服务器、卸载组件时断连服务器。所以断开、连接再重新连接是符合预期的行为。当你为 Effect 正确实现清理函数时，无论 Effect 执行一次，还是执行、清理并再执行，用户都不会感受到明显的差异。所以，在开发环境下，出现额外的连接、断连时，这是React正在调试你的代码。这是很正常的现象，不要试图消除它！
 
-**在生产环境下你会看到 `"✅ Connecting..."` 只被打印了一次**。也就是说仅在开发环境下才会重复挂载组件，以帮助你找到需要清理的效果。你可以选择关闭 [严格模式](/reference/react/StrictMode) 来关闭开发环境下特有的行为，但我们建议保留它。 这可以让你发现许多像上面的错误。
+**在生产环境下你会看到 `"✅ Connecting..."` 只被打印了一次**。也就是说仅在开发环境下才会重复挂载组件，以帮助你找到需要清理的效果。你可以选择关闭 [严格模式](/reference/react/StrictMode) 来关闭开发环境下特有的行为，但我们建议保留它。这可以让你发现许多像上面的错误。
 
 ## 如何处理在开发环境中 Effect 执行两次的效果？ {/*how-to-handle-the-effect-firing-twice-in-development*/}
 
-React 会故意在开发中重复挂载你的组件，以查找像上面示例中的错误。 **正确的对待态度是“如何修复我的 Effect 以便它在重复挂在后能正常工作”，而不是“如何只运行一次 Effect”**
+React 会故意在开发中重复挂载你的组件，以查找像上面示例中的错误。**正确的对待态度是“如何修复我的 Effect 以便它在重复挂在后能正常工作”，而不是“如何只运行一次 Effect”**
 
 通常的解决办法是实现清理函数。清理函数应该停止或撤销 Effect 正在执行的任何操作。简单来说，用户不应该感受到 Effect 只执行一次（如在生产环境中）和执行“挂载 → 清理 → 挂载”过程（如在开发环境中）之间的差异。
 
@@ -600,7 +600,7 @@ React 会故意在开发中重复挂载你的组件，以查找像上面示例�
 
 ### 控制非React组件 {/*controlling-non-react-widgets*/}
 
-有时你需要添加不是使用 React 编写的 UI 小部件。 例如，假设你要向页面添加地图组件。 它有一个 `setZoomLevel()` 方法，你希望缩放级别与 React 代码中的 `zoomLevel` 状态变量保持同步。预期的效果看起来类似于：
+有时你需要添加不是使用 React 编写的 UI 小部件。例如，假设你要向页面添加地图组件。它有一个 `setZoomLevel()` 方法，你希望缩放级别与 React 代码中的 `zoomLevel` 状态变量保持同步。预期的效果看起来类似于：
 
 ```js
 useEffect(() => {
@@ -609,7 +609,7 @@ useEffect(() => {
 }, [zoomLevel]);
 ```
 
-请注意，在这种情况下不需要清理。 在开发中，React 会调用 Effect 两次，但这两次挂载时依赖项 `setZoomLevel` 都是相同的，所以会跳过执行第二次挂载时的 Effect 。开发环境中它可能会稍微慢一些，但这问题不大，因为它在生产中不会进行不必要的重复挂载。
+请注意，在这种情况下不需要清理。在开发中，React 会调用 Effect 两次，但这两次挂载时依赖项 `setZoomLevel` 都是相同的，所以会跳过执行第二次挂载时的 Effect 。开发环境中它可能会稍微慢一些，但这问题不大，因为它在生产中不会进行不必要的重复挂载。
 
 Some APIs may not allow you to call them twice in a row. For example, the [`showModal`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLDialogElement/showModal) method of the built-in [`<dialog>`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLDialogElement) element throws if you call it twice. Implement the cleanup function and make it close the dialog:
 
@@ -621,7 +621,7 @@ useEffect(() => {
 }, []);
 ```
 
-在开发中，你的 Effect 将调用 `showModal()`，然后立即调用 `close()`，然后再次调用 `showModal()`。 这与调用只一次 `showModal()` 的效果相同。也正如你在生产环境中看到的那样。
+在开发中，你的 Effect 将调用 `showModal()`，然后立即调用 `close()`，然后再次调用 `showModal()`。这与调用只一次 `showModal()` 的效果相同。也正如你在生产环境中看到的那样。
 
 ### 订阅事件 {/*subscribing-to-events*/}
 
@@ -678,9 +678,9 @@ useEffect(() => {
 }, [userId]);
 ```
 
-你不能“撤消”已经发生的网络请求，但是你的清理功能应该确保获取数据的过程以及获取到的结果不会继续影响程序。 如果 `userId` 从 `'Alice'` 变为 `'Bob'`，确保 `'Alice'` 响应数据被忽略，即使它在 `'Bob'` 之后到达。
+你不能“撤消”已经发生的网络请求，但是你的清理功能应该确保获取数据的过程以及获取到的结果不会继续影响程序。如果 `userId` 从 `'Alice'` 变为 `'Bob'`，确保 `'Alice'` 响应数据被忽略，即使它在 `'Bob'` 之后到达。
 
-**在开发环境，你可以在浏览器调试工具的“network”选项卡中看到两个 Fetch 请求** 。这很正常。 使用上述方法，第一个 Effect 将立即被清理，因此它的 `ignore` 标志变量将被设置为 `true`。 因此，即使有额外的请求，由于有 if (!ignore) 检查，也不会影响程序状态。
+**在开发环境，你可以在浏览器调试工具的“network”选项卡中看到两个 Fetch 请求** 。这很正常。使用上述方法，第一个 Effect 将立即被清理，因此它的 `ignore` 标志变量将被设置为 `true`。因此，即使有额外的请求，由于有 if (!ignore) 检查，也不会影响程序状态。
 
 **在生产环境，只会显示发送了一条获取请求**。如果开发环境中，第二次请求给你造成了困扰，最好的方法是使用一种可以删除重复请求、并缓存请求响应的解决方案：
 
@@ -699,15 +699,15 @@ function TodoList() {
 
 在 Effect 里调用 `fetch` ，[是一种非常受欢迎的数据获取方式](https://www.robinwieruch.de/react-hooks-fetch-data/)，特别是在全客户端的应用中。然而，它非常依赖手动操作，有很多的缺点：
 
-- ** Effects 不能在服务端执行** 这意味着服务器最初传递的 HTML 不包含任何数据。 客户端的浏览器必须下载所有 JavaScript 来呈现应用程序，然后才能加载数据。效果不是很好。
+- ** Effects 不能在服务端执行** 这意味着服务器最初传递的 HTML 不包含任何数据。客户端的浏览器必须下载所有 JavaScript 来呈现应用程序，然后才能加载数据。效果不是很好。
 - **直接在 Effect 里获取数据容易产生 "network waterfalls".** 你首先渲染父组件，它获取一些数据并进行渲染，然后渲染子组件，接着子组件开始获取它们的数据。如果网络速度不够快，这种方式比同时获取所有数据要慢得多。
-- **直接在 Effects 中获取通常意味着你不能预加载或缓存数据**。 例如，如果组件卸载然后再次安装，则它必须再次获取数据。
+- **直接在 Effects 中获取通常意味着你不能预加载或缓存数据**。例如，如果组件卸载然后再次安装，则它必须再次获取数据。
 - **这不是很符合人机交互原则** 如果你不想出现像 [条件竞争](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect) 之类的 Bug ，那么你需要编写更多的样板代码。
 
 以上所列出来的缺点并不是 React 特有的。在任何框架或者库上的组件挂载过程中获取数据，都会遇到这些问题。与路由一样，要做好数据获取并非易事，因此我们推荐以下方法：
 
-- **如果你正在使用 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks) ，使用其内置的数据获取机制**。 现代 React 框架集成了高效的数据获取机制，不会出现上述问题。
-- **否则，请考虑使用或构建客户端缓存**。 目前受欢迎的开源解决方案时 [React Query](https://tanstack.com/query/latest)， [useSWR](https://swr.vercel.app/) ，和 [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) 你也可以构建自己的解决方案，在这种情况下，你可以在幕后使用 Effects，但是要添加用于删除重复请求、缓存响应和避免 network waterfall（通过预加载数据或将数据需求提升到路由）的逻辑。
+- **如果你正在使用 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks) ，使用其内置的数据获取机制**。现代 React 框架集成了高效的数据获取机制，不会出现上述问题。
+- **否则，请考虑使用或构建客户端缓存**。目前受欢迎的开源解决方案时 [React Query](https://tanstack.com/query/latest)，[useSWR](https://swr.vercel.app/) ，和 [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) 你也可以构建自己的解决方案，在这种情况下，你可以在幕后使用 Effects，但是要添加用于删除重复请求、缓存响应和避免 network waterfall（通过预加载数据或将数据需求提升到路由）的逻辑。
 
 如果这些方法都不适合你，你可以继续直接在 Effects 中获取数据。
 
@@ -723,9 +723,9 @@ useEffect(() => {
 }, [url]);
 ```
 
-在开发环境下， `logVisit` 会为每个 URL 发送两次请求。所以你可能会想尝试解决这个问题。 **不过我们建议不用修改这个代码**。因为与前面的示例一样，以用户的角度来看，运行一次和运行两次之间没有**感知**到的行为差异。从实际的角度来看， `logVisit` 不应该在开发环境中做任何影响生产事情，由于每次保存代码文件时都会重新装载组件，因此在开发环境中会额外记录访问次数。
+在开发环境下，`logVisit` 会为每个 URL 发送两次请求。所以你可能会想尝试解决这个问题。**不过我们建议不用修改这个代码**。因为与前面的示例一样，以用户的角度来看，运行一次和运行两次之间没有**感知**到的行为差异。从实际的角度来看，`logVisit` 不应该在开发环境中做任何影响生产事情，由于每次保存代码文件时都会重新装载组件，因此在开发环境中会额外记录访问次数。
 
-**在生产环境中，不会产生有重复的访问日志**。 要调试你发送的事件分析日志，你可以将应用程序部署到一个暂存环境（以生产模式运行），或者暂时退出[严格模式](/reference/react/StrictMode)，仅在开发环境中检查重复挂载。你还可以通过路由更改事件处理程序来发送分析数据，而不是从 Effects 中发送。为了更精确的分析，[intersection observers](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API)可以帮助跟踪哪些组件在视口中，以及它们保持可见的时间。
+**在生产环境中，不会产生有重复的访问日志**。要调试你发送的事件分析日志，你可以将应用程序部署到一个暂存环境（以生产模式运行），或者暂时退出[严格模式](/reference/react/StrictMode)，仅在开发环境中检查重复挂载。你还可以通过路由更改事件处理程序来发送分析数据，而不是从 Effects 中发送。为了更精确的分析，[intersection observers](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API)可以帮助跟踪哪些组件在视口中，以及它们保持可见的时间。
 
 To debug the analytics events you're sending, you can deploy your app to a staging environment (which runs in production mode) or temporarily opt out of [Strict Mode](/reference/react/StrictMode) and its development-only remounting checks. You may also send analytics from the route change event handlers instead of Effects. For more precise analytics, [intersection observers](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API) can help track which components are in the viewport and how long they remain visible.
 
@@ -767,7 +767,7 @@ useEffect(() => {
   }
 ```
 
-**这说明如果重新挂载破坏了程序的逻辑，则通常含有未被发现的错误**。从用户的角度来看，访问这个页面的效果，与访问该页面时单击和页面中其他链接并按下后退没有什么不同。 React 通过在开发环境中重复挂载它们来验证你的组件是否遵守此原则。
+**这说明如果重新挂载破坏了程序的逻辑，则通常含有未被发现的错误**。从用户的角度来看，访问这个页面的效果，与访问该页面时单击和页面中其他链接并按下后退没有什么不同。React 通过在开发环境中重复挂载它们来验证你的组件是否遵守此原则。
 
 ## 总结 {/*putting-it-all-together*/}
 
@@ -827,13 +827,13 @@ export default function App() {
 
 </Sandpack>
 
-你在最开始时可以看到三个 log 输出： `Schedule "a" log` ， `Cancel "a" log` ，还有一个 `Schedule "a" log` 。三秒后，还会有一条 log 显示： `a` 。 正如之前所说，额外 schedule/cancel 产生的原因是因为 React 在开发环境中，会重新挂载组件一次，以验证你是否正确地实现了清理函数。
+你在最开始时可以看到三个 log 输出：`Schedule "a" log` ，`Cancel "a" log` ，还有一个 `Schedule "a" log` 。三秒后，还会有一条 log 显示：`a` 。正如之前所说，额外 schedule/cancel 产生的原因是因为 React 在开发环境中，会重新挂载组件一次，以验证你是否正确地实现了清理函数。
 
-现在编辑输入框，输入 `abc`。 如果你输入速度足够快，你会看到 `Schedule "ab" log` 紧接着是 `Cancel "ab" log` 和 `Schedule "abc" log` 。 **React 总是在执行下一轮渲染的 Effect 之前清理上一轮渲染的 Effect**。这就是为什么即使你快速输入，最多也只安排了一个 Schedule 。可以多次编辑输入框，并观察控制台以了解 Effects 是如何被清理的。
+现在编辑输入框，输入 `abc`。如果你输入速度足够快，你会看到 `Schedule "ab" log` 紧接着是 `Cancel "ab" log` 和 `Schedule "abc" log` 。**React 总是在执行下一轮渲染的 Effect 之前清理上一轮渲染的 Effect**。这就是为什么即使你快速输入，最多也只安排了一个 Schedule 。可以多次编辑输入框，并观察控制台以了解 Effects 是如何被清理的。
 
 在输入框中输入一些内容，然后立即按下“Unmount the component”按钮。注意卸载时如何清理最后一轮渲染的 Effect 。在这里，它在触发卸载之前，清除了最后一次 Schedule。
 
-最后，把上面的代码中注释掉清理函数，这样 Schedule 就不会被取消。尝试快速输入 `abcde`。 你预期三秒钟内会发生什么？计时器安排内的 `console.log(text)` 会打印**最新** `text` 并产生五个 `abcde` 日志吗？ 试试你的直觉吧！
+最后，把上面的代码中注释掉清理函数，这样 Schedule 就不会被取消。尝试快速输入 `abcde`。你预期三秒钟内会发生什么？计时器安排内的 `console.log(text)` 会打印**最新** `text` 并产生五个 `abcde` 日志吗？试试你的直觉吧！
 
 Three seconds later, you should see a sequence of logs (`a`, `ab`, `abc`, `abcd`, and `abcde`) rather than five `abcde` logs. **Each Effect "captures" the `text` value from its corresponding render.**  It doesn't matter that the `text` state changed: an Effect from the render with `text = 'ab'` will always see `'ab'`. In other words, Effects from each render are isolated from each other. If you're curious how this works, you can read about [closures](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures).
 
@@ -883,7 +883,7 @@ React 执行这个连接到 `'general'` 聊天室的 Effect。
 
 #### 依赖相同情况下的重复渲染 {/*re-render-with-same-dependencies*/}
 
-让我们探讨下 `<ChatRoom roomId="general" />` 的重复渲染， JSX 的输出结果仍然相同：
+让我们探讨下 `<ChatRoom roomId="general" />` 的重复渲染，JSX 的输出结果仍然相同：
 
 ```js
   // JSX for the second render (roomId = "general")
@@ -905,7 +905,7 @@ React看到渲染输出没有改变，所以它不会更新 DOM 。
   ['general']
 ```
 
-React 从第二次渲染的 `['general']` 与第一次渲染的 `['general']` 进行比较。 **因为所有的依赖性都是相同的， React 会忽略第二次渲染时的 Effect** 。所以此时 Effect 不会被调用。
+React 从第二次渲染的 `['general']` 与第一次渲染的 `['general']` 进行比较。**因为所有的依赖性都是相同的，React 会忽略第二次渲染时的 Effect** 。所以此时 Effect 不会被调用。
 
 #### 依赖不同情况下的重复渲染 {/*re-render-with-different-dependencies*/}
 
@@ -931,19 +931,19 @@ React 从第二次渲染的 `['general']` 与第一次渲染的 `['general']` �
   ['travel']
 ```
 
-React 将第三次渲染时的 `['travel']` 与第二次渲染时的 `['general']` 相互比较。会发现依赖项不同： `Object.is('travel', 'general')` 为 `false`。所以这次的 Effect 不能跳过。
+React 将第三次渲染时的 `['travel']` 与第二次渲染时的 `['general']` 相互比较。会发现依赖项不同：`Object.is('travel', 'general')` 为 `false`。所以这次的 Effect 不能跳过。
 
-**在 React 执行第三次渲染的 Effect 之前，它需要清理最近渲染的 Effect**。 第二次渲染的 Effect 被跳过了。所以 React 需要清理第一次渲染时的 Effect 。如果你回看第一次渲染的 Effect，你可以看到第一次渲染时的清理函数需要执行的内容，是在 `createConnection('general')` 所创建的连接上调用 `disconnect()` 。也就是从 `'general'` 聊天室断开连接。
+**在 React 执行第三次渲染的 Effect 之前，它需要清理最近渲染的 Effect**。第二次渲染的 Effect 被跳过了。所以 React 需要清理第一次渲染时的 Effect 。如果你回看第一次渲染的 Effect，你可以看到第一次渲染时的清理函数需要执行的内容，是在 `createConnection('general')` 所创建的连接上调用 `disconnect()` 。也就是从 `'general'` 聊天室断开连接。
 
-之后，React 执行第三次渲染的 Effect。 它连接到 `'travel'` 聊天室。
+之后，React 执行第三次渲染的 Effect。它连接到 `'travel'` 聊天室。
 
 #### 卸载 {/*unmount*/}
 
-最后，假设现在用户离开当前页面，并且 `ChatRoom` 组件被卸载的时候， React 执行最近 Effect 的清理函数，也就是第三次渲染时 Effect 的清理函数。第三次渲染后再清理时，清理函数破坏了 `createConnection('travel')` 方法创建的连接。 因此，该应用程序与 `travel` 房间断开了连接。
+最后，假设现在用户离开当前页面，并且 `ChatRoom` 组件被卸载的时候，React 执行最近 Effect 的清理函数，也就是第三次渲染时 Effect 的清理函数。第三次渲染后再清理时，清理函数破坏了 `createConnection('travel')` 方法创建的连接。因此，该应用程序与 `travel` 房间断开了连接。
 
 #### 仅开发环境下的程序行为 {/*development-only-behaviors*/}
 
-在 [严格模式](/reference/react/StrictMode) 下，React 在每次卸载组件后都会重新挂载组件。（但是组件的 State 和 创建的 DOM 都会被保留）。 [它可以帮助你找出需要添加清理函数的 Effect](#step-3-add-cleanup-if-needed) ，及早暴露出像条件竞争那样的 Bug 。 此外，每当你在开发环境中保存更新代码文件时，React 也会重新安装 Effects。 这两种行为都仅限于开发环境下。
+在 [严格模式](/reference/react/StrictMode) 下，React 在每次卸载组件后都会重新挂载组件。（但是组件的 State 和 创建的 DOM 都会被保留）。[它可以帮助你找出需要添加清理函数的 Effect](#step-3-add-cleanup-if-needed) ，及早暴露出像条件竞争那样的 Bug 。此外，每当你在开发环境中保存更新代码文件时，React 也会重新安装 Effects。这两种行为都仅限于开发环境下。
 
 </DeepDive>
 
@@ -951,7 +951,7 @@ React 将第三次渲染时的 `['travel']` 与第二次渲染时的 `['general'
 
 - 与事件不同，Effects 是由渲染本身，而非特定交互引起的。
 - Effects 允许你将组件与某些外部系统（第三方API、网络等）同步。
-- 默认情况下，“Effects” 在每次渲染（包括初始渲染）后运行。
+- 默认情况下，“Effects”在每次渲染（包括初始渲染）后运行。
 - 如果 React 的所有依赖项都与上次渲染时的值相同，则它将跳过本次 Effect。
 - 你不能随意“自选”你的依赖关系。它们是由Effect内部的代码决定的。
 - 空的依赖数组（`[]`）对应于组件“挂载”，即添加到屏幕上。
@@ -1051,7 +1051,7 @@ body {
 
 在渲染期间调用 `ref.current.focus()` 本身是不正确的。因为它就是一个“副作用”。副作用要么应该放在事件处理程序里面，要么用 `useEffect` 声明。在这种情况下，副作用是组件渲染引起的，而不是任何特定的交互引起的，因此应该将它放在 Effect 中。
 
-为了修复这个错误，可以用 Effect 声明包裹对 `ref.current.focus()` 的调用。 然后确保这个 Effect 只在组件挂载时执行而不是在每一轮渲染时都执行，可以为 Effect 的声明加一个空的依赖数组 `[]`。
+为了修复这个错误，可以用 Effect 声明包裹对 `ref.current.focus()` 的调用。然后确保这个 Effect 只在组件挂载时执行而不是在每一轮渲染时都执行，可以为 Effect 的声明加一个空的依赖数组 `[]`。
 
 <Sandpack>
 
@@ -1373,9 +1373,9 @@ body {
 
 <Solution>
 
-当开启 [严格模式](/reference/react/StrictMode) 时 （本站中的示例沙盒就已经开启了严格模式）， React 在开发模式中，每个组件都会重复挂载一次。这也就导致计数器组件被挂载了两次。所以，计时器也被设立了两次，这就是为什么计数器每秒递增两次的原因。
+当开启 [严格模式](/reference/react/StrictMode) 时 （本站中的示例沙盒就已经开启了严格模式），React 在开发模式中，每个组件都会重复挂载一次。这也就导致计数器组件被挂载了两次。所以，计时器也被设立了两次，这就是为什么计数器每秒递增两次的原因。
 
-然而，这个并不是 React 本身的错：而是你的 Effect 代码中本身就存在 Bug 。 React 只不过把这个 Bug 放大了。真正的错误原因是这种 Effect 启动后，但没有提供清理函数，所以上一次的 Effect 残留就没有被除去。
+然而，这个并不是 React 本身的错：而是你的 Effect 代码中本身就存在 Bug 。React 只不过把这个 Bug 放大了。真正的错误原因是这种 Effect 启动后，但没有提供清理函数，所以上一次的 Effect 残留就没有被除去。
 
 To fix this code, save the interval ID returned by `setInterval`, and implement a cleanup function with [`clearInterval`](https://developer.mozilla.org/zh-CN/docs/Web/API/clearInterval):
 
@@ -1431,7 +1431,7 @@ body {
 
 </Sandpack>
 
-在开发环境中，React 仍然会重复挂载一次组件，通过放大 Bug ，以确保你正确地实现了清理函数。这样，调用一次 `setInterval` 后就紧接着调用 `clearInterval` ，然后再调用 `setInterval` 。 在生产环境中与开发环境不同，React 只挂载一次组件，即只调用一次 `setInterval` 。两种情况下用户感知的效果是相同的：计数器每秒递增一次。
+在开发环境中，React 仍然会重复挂载一次组件，通过放大 Bug ，以确保你正确地实现了清理函数。这样，调用一次 `setInterval` 后就紧接着调用 `clearInterval` ，然后再调用 `setInterval` 。在生产环境中与开发环境不同，React 只挂载一次组件，即只调用一次 `setInterval` 。两种情况下用户感知的效果是相同的：计数器每秒递增一次。
 
 </Solution>
 
@@ -1564,7 +1564,7 @@ export async function fetchBio(person) {
 
 </Sandpack>
 
-其实，每个 Effect 都可以在里面设置一个 `ignore` 的标志变量。最初时， `ignore` 变量被设置为 `false` 。然而，当 Effect 执行清理后（就像你选中了列表中不同的人时），`ignore` 变量就会被设置为 `true` 。所以此时请求完成的顺序并不重要。只有最后选中的人在执行它的 Effect 时， `ignore` 会被设为 `false`，所以它会调用 `setBio(result)` 。而之前的 Effects 都被清理掉了。 所以检查 `if (!ignore)` 会阻止调用 `setBio`：
+其实，每个 Effect 都可以在里面设置一个 `ignore` 的标志变量。最初时，`ignore` 变量被设置为 `false` 。然而，当 Effect 执行清理后（就像你选中了列表中不同的人时），`ignore` 变量就会被设置为 `true` 。所以此时请求完成的顺序并不重要。只有最后选中的人在执行它的 Effect 时，`ignore` 会被设为 `false`，所以它会调用 `setBio(result)` 。而之前的 Effects 都被清理掉了。所以检查 `if (!ignore)` 会阻止调用 `setBio`：
 
 - 选中 `'Bob'` 触发 `fetchBio('Bob')`
 - 选中 `'Taylor'` 触发 `fetchBio('Taylor')` **然后清理之前加载 (Bob's) 数据时的Effect**
