@@ -629,13 +629,13 @@ export default function TodoList({ todos, tab, theme }) {
 }
 ```
 
-他们的表现将是相同的。如果 `visibleTodos` 没有改变，`List` 将不会被重新渲染。
+他们的行为表现是一致的。如果 `visibleTodos` 没有改变，`List` 将不会重新渲染。
 
-像 `<List items={visibleTodos} />` 这样的 JSX 节点是一个类似 `{ type: List, props: { items: visibleTodos } }` 这样的对象。创建这个对象开销很低，但是 React 不知道它的内容是否和上次一样。这就是为什么默认情况下，React 会重新渲染 `List` 组件。
+像 `<List items={visibleTodos} />` 这样的 JSX 节点是一个类似 `{ type: List, props: { items: visibleTodos } }` 的对象。创建这个对象的开销很低，但是 React 不知道它的内容是否和上次一样。这就是为什么默认情况下，React 会重新渲染 `List` 组件。
 
-但是，如果 React 看到与之前渲染期间完全相同的 JSX，它不会尝试重新渲染你的组件。这是因为 JSX 节点是 [不可变的](https://en.wikipedia.org/wiki/Immutable_object)。JSX 节点对象不可能随时间改变，因此 React 知道跳过重新渲染是安全的。然而，为了使其工作，节点必须 **实际上是同一个对象**，而不仅仅是在代码中看起来相同。这就是 `useMemo` 在此示例中所做的。
+但是，如果 React 发现其与之前渲染的 JSX 是完全相同的，它不会尝试重新渲染你的组件。这是因为 JSX 节点是 [不可变的（immutable）](https://en.wikipedia.org/wiki/Immutable_object)。JSX 节点对象不可能随时间改变，因此 React 知道跳过重新渲染是安全的。然而，为了使其工作，节点必须 **实际上是同一个对象**，而不仅仅是在代码中看起来相同。这就是 `useMemo` 在此示例中所做的。
 
-手动将 JSX 节点包裹到 `useMemo` 中并不方便。例如，你不能在条件语句中这样做。这通常就是为什么你会用 [`memo`](/reference/react/memo) 包装组件而不是包装 JSX 节点。
+手动将 JSX 节点包裹到 `useMemo` 中并不方便，比如你不能在条件语句中这样做。这就是为什么通常会选择使用 [`memo`](/reference/react/memo) 包装组件而不是使用 `useMemo` 包装 JSX 节点。
 
 </DeepDive>
 
@@ -643,11 +643,11 @@ export default function TodoList({ todos, tab, theme }) {
 
 #### 用 `useMemo` 和 `memo` 跳过重新渲染 {/*skipping-re-rendering-with-usememo-and-memo*/}
 
-在此示例中，`List` 组件被 **人为地减速了**，以便你可以看到当你渲染的 React 组件真正变慢时会发生什么。尝试切换选项卡并切换主题。
+在此示例中，`List` 组件被 **人为地减速了**，以便可以看到当渲染的 React 组件真正变慢时会发生什么。尝试切换选项卡并切换主题。
 
 切换选项卡感觉很慢，因为它迫使减速的 `List` 重新渲染。这是预料之中的，因为选项卡 `tab` 已更改，因此你需要在屏幕上展示用户的新选择。
 
-接下来，尝试切换主题。**感谢 `useMemo` 和 [`memo`](/reference/react/memo)，尽管被人为减速它还是很快的**！`List` 跳过了重新渲染，因为 `visibleItems` 数组从上一次渲染之后就没有发生改变。`visibleItems` 数组没有改变，是因为 `todos` 和 `tab`（作为依赖项传递给 `useMemo`）自上次渲染以来都没有改变。
+接下来，尝试切换主题。**感谢 `useMemo` 和 [`memo`](/reference/react/memo)，尽管被人为减速了，但是它还是很快**！由于作为依赖性传递给 `useMemo` 的 `todos` 与 `tab` 都没有发生改变，因此 `visibaleItems` 不会发生改变。由于 `visibleItems` 数组从上一次渲染之后就没有发生改变，所以 `List` 会跳过重新渲染。
 
 <Sandpack>
 
@@ -787,7 +787,7 @@ label {
 
 #### 总是重新渲染一个组件 {/*always-re-rendering-a-component*/}
 
-在这个例子中，`List` 的实现也被 **人为地减慢了**，这样你就可以看到当你渲染的某些 React 组件真的很慢时会发生什么。尝试切换选项卡并切换主题。
+在这个例子中，`List` 的实现也被 **人为地减慢了**，这样就可以看到当渲染的某些 React 组件真的很慢时会发生什么。尝试切换选项卡并切换主题。
 
 与前面的示例不同，现在切换主题也很慢！这是因为 **此版本中没有使用 `useMemo`**，所以 `visibleTodos` 始终是一个不同的数组，并且速度变慢的 `List` 组件无法跳过重新渲染。
 
@@ -921,7 +921,7 @@ label {
 
 </Sandpack>
 
-然而，这里是 **删除了人为减速** 的相同代码 。缺少 `useMemo` 是否感觉很明显？
+然而，这是 **删除了人为减速后** 的相同代码。此时你应该能感觉到缺少 `useMemo` 后效果差异非常明显。
 
 <Sandpack>
 
@@ -1048,7 +1048,7 @@ label {
 
 很多时候，没有记忆化的代码可以正常工作。如果你的交互足够快，则不需要记忆化。
 
-请记住，你需要在生产环境下运行 React，禁用 [React Developer Tools](/learn/react-developer-tools)，并准备好与使用你应用程序的用户类似的设备，这样可以对你的应用程序性能有一个更加准确的判断。
+请记住，在生产环境下运行 React 进行测试，并且禁用 [React 开发者工具](/learn/react-developer-tools)，并准备好与使用你应用程序的用户类似的设备，这样可以对你的应用程序性能有一个更加准确的判断。
 
 <Solution />
 
@@ -1058,7 +1058,7 @@ label {
 
 ### 记忆另一个 Hook 的依赖 {/*memoizing-a-dependency-of-another-hook*/}
 
-假设你有一个 calculation 函数依赖于直接在组件主体中创建的对象：
+假设你有一个计算函数依赖于直接在组件主体中创建的对象：
 
 ```js {2}
 function Dropdown({ allItems, text }) {
@@ -1206,7 +1206,7 @@ React 调用你的函数两次，所以你会注意到 todo 被添加了两次�
 
 ---
 
-### 我调用的 `useMemo` 应该返回一个对象，但返回 `undefined` {/*my-usememo-call-is-supposed-to-return-an-object-but-returns-undefined*/}
+### 我调用的 `useMemo` 应该返回一个对象，但返回了 `undefined` {/*my-usememo-call-is-supposed-to-return-an-object-but-returns-undefined*/}
 
 这段代码不起作用：
 
@@ -1281,7 +1281,7 @@ Object.is(temp1[1], temp2[1]); // 数组之间的第二个依赖项是否相同�
 Object.is(temp1[2], temp2[2]); // ... 依此类推 ...
 ```
 
-当你发现是哪个依赖项破坏了记忆化时，要么找到一种方法将其删除，要么 [也对其进行记忆](#memoizing-a-dependency-of-another-hook)。
+当你发现是哪个依赖项破坏了记忆化时，要么找到一种方法将其删除，要么 [也对其进行记忆化](#memoizing-a-dependency-of-another-hook)。
 
 ---
 
