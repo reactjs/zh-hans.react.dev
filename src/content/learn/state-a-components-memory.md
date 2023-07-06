@@ -566,8 +566,6 @@ function useState(initialState) {
     updateDOM();
   }
 
-  // Store the pair for future renders
-  // and prepare for the next Hook call.
   // 存储这个 pair 用于将来的渲染
   // 并且为下一次 hook 的调用做准备
   componentHooks[currentHookIndex] = pair;
@@ -1225,7 +1223,7 @@ img { width: 120px; height: 120px; }
 
 </Sandpack>
 
-注意 `hasPrev` 和 `hasNext` 是如何*同时* 作用于返回的 JSX 和事件处理函数中的！这种简便的模式之所以有效，是因为事件处理函数["闭包"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)了渲染时声明的变量。
+注意 `hasPrev` 和 `hasNext` 是如何*同时* 作用于返回的 JSX 和事件处理函数中的！这种简便的模式之所以有效，是因为事件处理函数["闭包"](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures)了渲染时声明的变量。
 
 </Solution>
 
@@ -1416,7 +1414,7 @@ export default function FeedbackForm() {
 请记住，必须在条件语句外并且始终以相同的顺序调用 Hook！
 
 
-你还可以删除不必要的 `else` 分支以减少嵌套。但要保证对 Hook 的所有调用都发生在*第一个 `return` 前，这很重要。
+你还可以删除不必要的 `else` 分支以减少嵌套。但要保证对 Hook 的所有调用都发生在第一个 `return` **前**，这很重要。
 
 <Sandpack>
 
@@ -1462,7 +1460,7 @@ export default function FeedbackForm() {
 当按钮被点击时，这个例子应该询问用户的名字，然后显示一个 alert 欢迎他们。你尝试使用 state 来保存名字，但由于某种原因，它始终显示“Hello, ！”。
 
 
-要修复此代码，请删除不必要的 state 变量。（我们将在稍后讨论[为什么上述代码不起作用](/learn/troubleshooting-state-updates#setting-state-does-not-update-variables)。）
+要修复此代码，请删除不必要的 state 变量。（我们将在稍后讨论[为什么上述代码不起作用](/learn/state-as-a-snapshot)。）
 
 你能解释为什么这个 state 变量是不必要的吗？
 

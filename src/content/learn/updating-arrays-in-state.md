@@ -24,7 +24,7 @@ translators:
 
 在 JavaScript 中，数组只是另一种对象。[同对象一样](/learn/updating-objects-in-state)，**你需要将 React state 中的数组视为只读的**。这意味着你不应该使用类似于 `arr[0] = 'bird'` 这样的方式来重新分配数组中的元素，也不应该使用会直接修改原始数组的方法，例如 `push()` 和 `pop()`。
 
-相反，每次要更新一个数组时，你需要把一个*新*的数组传入 state 的 setting 方法中。为此，你可以通过使用像 `filter()` 和 `map()` 这样不会直接修改原始值的方法，从原始数组生成一个新的数组。然后你就可以将 state 设置为这个新生成的数组。
+相反，每次要更新一个数组时，你需要把一个**新**的数组传入 state 的 setting 方法中。为此，你可以通过使用像 `filter()` 和 `map()` 这样不会直接修改原始值的方法，从原始数组生成一个新的数组。然后你就可以将 state 设置为这个新生成的数组。
 
 下面是常见数组操作的参考表。当你操作 React state 中的数组时，你需要避免使用左列的方法，而首选右列的方法：
 
@@ -39,7 +39,7 @@ translators:
 
 <Pitfall>
 
-不幸的是，虽然 [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) 和 [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 的名字相似，但作用却迥然不同：
+不幸的是，虽然 [`slice`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) 和 [`splice`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 的名字相似，但作用却迥然不同：
 
 * `slice` 让你可以拷贝数组或是数组的一部分。
 * `splice` **会直接修改** 原始数组（插入或者删除元素）。
@@ -92,7 +92,7 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-相反，你应该创建一个 *新* 数组，其包含了原始数组的所有元素 *以及* 一个在末尾的新元素。这可以通过很多种方法实现，最简单的一种就是使用 `...` [数组展开](a-javascript-refresher#array-spread) 语法：
+相反，你应该创建一个 **新** 数组，其包含了原始数组的所有元素 **以及** 一个在末尾的新元素。这可以通过很多种方法实现，最简单的一种就是使用 `...` [数组展开](a-javascript-refresher#array-spread) 语法：
 
 ```js
 setArtists( // 替换 state
@@ -154,11 +154,11 @@ setArtists([
 ]);
 ```
 
-这样一来，展开操作就可以完成 `push()` 和 `unshift()` 的工作，将新元素添加到数组的末尾和开头。你可以在下面的 sandbox 中尝试一下！
+这样一来，展开操作就可以完成 `push()` 和 `unshift()` 的工作，将新元素添加到数组的末尾和开头。你可以在上面的 sandbox 中尝试一下！
 
 ### 从数组中删除元素 {/*removing-from-an-array*/}
 
-从数组中删除一个元素最简单的方法就是将它*过滤出去*。换句话说，你需要生成一个不包含该元素的新数组。这可以通过 `filter` 方法实现，例如：
+从数组中删除一个元素最简单的方法就是将它**过滤出去**。换句话说，你需要生成一个不包含该元素的新数组。这可以通过 `filter` 方法实现，例如：
 
 <Sandpack>
 
@@ -553,7 +553,7 @@ artwork.seen = nextSeen; // 问题：直接修改了已有的元素
 setMyList(myNextList);
 ```
 
-虽然 `myNextList` 这个数组是新的，但是其*内部的元素本身*与原数组 `myList` 是相同的。因此，修改 `artwork.seen`，其实是在修改*原始的* artwork 对象。而这个 artwork 对象也被 `yourList` 使用，这样就带来了 bug。这样的 bug 可能难以想到，但好在如果你避免直接修改 state，它们就会消失。
+虽然 `myNextList` 这个数组是新的，但是其**内部的元素本身**与原数组 `myList` 是相同的。因此，修改 `artwork.seen`，其实是在修改**原始的** artwork 对象。而这个 artwork 对象也被 `yourList` 使用，这样就带来了 bug。这样的 bug 可能难以想到，但好在如果你避免直接修改 state，它们就会消失。
 
 **你可以使用 `map` 在没有 mutation 的前提下将一个旧的元素替换成更新的版本。**
 
@@ -657,7 +657,7 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-通常来讲，**你应该只直接修改你刚刚创建的对象**。如果你正在插入一个*新*的 artwork，你可以修改它，但是如果你想要改变的是 state 中已经存在的东西，你就需要先拷贝一份了。
+通常来讲，**你应该只直接修改你刚刚创建的对象**。如果你正在插入一个**新**的 artwork，你可以修改它，但是如果你想要改变的是 state 中已经存在的东西，你就需要先拷贝一份了。
 
 ### 使用 Immer 编写简洁的更新逻辑 {/*write-concise-update-logic-with-immer*/}
 
@@ -783,7 +783,7 @@ updateMyTodos(draft => {
 <Recap>
 
 - 你可以把数组放入 state 中，但你不应该直接修改它。
-- 不要直接修改数组，而是创建它的一份 *新的* 拷贝，然后使用新的数组来更新它的状态。
+- 不要直接修改数组，而是创建它的一份 **新的** 拷贝，然后使用新的数组来更新它的状态。
 - 你可以使用 `[...arr, newItem]` 这样的数组展开语法来向数组中添加元素。
 - 你可以使用 `filter()` 和 `map()` 来创建一个经过过滤或者变换的数组。
 - 你可以使用 Immer 来保持代码简洁。

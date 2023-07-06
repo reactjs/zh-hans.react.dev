@@ -78,7 +78,7 @@ function MyComponent() {
 <VideoPlayer isPlaying={isPlaying} />;
 ```
 
-你让 `VideoPlayer` 组件渲染浏览器的内置的 [`<video>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video) 标签:
+Your custom `VideoPlayer` component renders the built-in browser [`<video>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video) tag:
 
 ```js
 function VideoPlayer({ src, isPlaying }) {
@@ -87,7 +87,7 @@ function VideoPlayer({ src, isPlaying }) {
 }
 ```
 
-然而， 这个 `<video>` 标签本身并没有 `isPlaying` 这个属性。 它只能在 DOM 上通过手动调用 [`play()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/play) 和 [`pause()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/pause) 方法来控制是否播放内容。**你需要做的是：同步 isPlaying 属性的值，通过调用 `play()` 和 `pause()` 函数。以决定是否要播放当前的视频**。
+However, the browser `<video>` tag does not have an `isPlaying` prop. The only way to control it is to manually call the [`play()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/play) and [`pause()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/pause) methods on the DOM element. **You need to synchronize the value of `isPlaying` prop, which tells whether the video _should_ currently be playing, with calls like `play()` and `pause()`.**
 
 我们首先要为 `<video>` 这个DOM节点 [获取对象引用](/learn/manipulating-the-dom-with-refs)。
 
@@ -399,7 +399,7 @@ video { width: 250px; }
 
 </Sandpack>
 
-依赖数组可以包含多个依赖。当React只有在数组中**所有的**依赖值与前一轮渲染相同时，才会跳过执行本次 Effect 。其中，与前一轮渲染比较依赖值时，React使用的是 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 这个比较方法。也就是说， React 使用这个方法来比较本轮与上一轮的依赖项是否相同，如果方法返回的是 `true` ，则会认为这两次的依赖项都是相同的，也就会跳过执行 Effect 。详见 [`useEffect` reference](/reference/react/useEffect#reference) 。
+The dependency array can contain multiple dependencies. React will only skip re-running the Effect if *all* of the dependencies you specify have exactly the same values as they had during the previous render. React compares the dependency values using the [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. See the [`useEffect` reference](/reference/react/useEffect#reference) for details.
 
 **请注意，你不能随意“自选”你的依赖项**。 如果你在 Effect 里实际依赖项和你在依赖数组中所声明的依赖不匹配时，你就会得到 lint 报错。这是一种很不好的习惯，它会在你的代码中引入很多 Bug 。如果你希望在 Effect 实际依赖某个值的情况下，忽略掉某个依赖引发的重复执行，[那么你应当**编辑Effect代码本身**，使其“不需要”该依赖项](/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize)。
 
@@ -614,7 +614,7 @@ useEffect(() => {
 
 请注意，在这种情况下不需要清理。 在开发中，React 会调用 Effect 两次，但这两次挂载时依赖项 `setZoomLevel` 都是相同的，所以会跳过执行第二次挂载时的 Effect 。开发环境中它可能会稍微慢一些，但这问题不大，因为它在生产中不会进行不必要的重复挂载。
 
-某些 API 可能不允许你连续调用两次。 例如，浏览器内置的 [`<dialog>`](https: //developer.mozilla.org/zh-CN/docs/Web/API/HTMLDialogElement) 元素连续调用两次时会抛出异常。这时候你就可以实现关闭 dialog 的清理函数：
+Some APIs may not allow you to call them twice in a row. For example, the [`showModal`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLDialogElement/showModal) method of the built-in [`<dialog>`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLDialogElement) element throws if you call it twice. Implement the cleanup function and make it close the dialog:
 
 ```js {4}
 useEffect(() => {
@@ -660,7 +660,7 @@ useEffect(() => {
 
 ### 获取数据 {/*fetching-data*/}
 
-如果你的 Effect 获取了一些数据，清理函数应该实现 [中断获取](https://developer.mozilla.org/zh-CN/docs/Web/API/AbortController) 或忽略获取的结果：
+If your Effect fetches something, the cleanup function should either [abort the fetch](https://developer.mozilla.org/zh-CN/docs/Web/API/AbortController) or ignore its result:
 
 ```js {2,6,13-15}
 useEffect(() => {
@@ -730,7 +730,7 @@ useEffect(() => {
 
 **在生产环境中，不会产生有重复的访问日志**。 要调试你发送的事件分析日志，你可以将应用程序部署到一个暂存环境（以生产模式运行），或者暂时退出[严格模式](/reference/react/StrictMode)，仅在开发环境中检查重复挂载。你还可以通过路由更改事件处理程序来发送分析数据，而不是从 Effects 中发送。为了更精确的分析，[intersection observers](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API)可以帮助跟踪哪些组件在视口中，以及它们保持可见的时间。
 
-### 初始化应用操作不是 Effect {/*not-an-effect-initializing-the-application*/}
+To debug the analytics events you're sending, you can deploy your app to a staging environment (which runs in production mode) or temporarily opt out of [Strict Mode](/reference/react/StrictMode) and its development-only remounting checks. You may also send analytics from the route change event handlers instead of Effects. For more precise analytics, [intersection observers](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API) can help track which components are in the viewport and how long they remain visible.
 
 某些逻辑应该只在应用程序启动时运行一次。比如，验证登陆状态和加载本地程序数据。你可以将其放在组件之外：
 
@@ -776,7 +776,7 @@ useEffect(() => {
 
 下面的 playground 可以帮你帮你在实践中找到对 Effect 的感觉。
 
-此示例使用 [`setTimeout`](https://developer.mozilla.org/zh-CN/docs/Web/API/setTimeout) 安排 Effect 执行三秒后，控制台打印输入框里的内容。然后返回一个清理超时等待的清理函数。首先按下“Mount the component”：
+This example uses [`setTimeout`](https://developer.mozilla.org/zh-CN/docs/Web/API/setTimeout) to schedule a console log with the input text to appear three seconds after the Effect runs. The cleanup function cancels the pending timeout. Start by pressing "Mount the component":
 
 <Sandpack>
 
@@ -838,7 +838,7 @@ export default function App() {
 
 最后，把上面的代码中注释掉清理函数，这样 Schedule 就不会被取消。尝试快速输入 `abcde`。 你预期三秒钟内会发生什么？计时器安排内的 `console.log(text)` 会打印**最新** `text` 并产生五个 `abcde` 日志吗？ 试试你的直觉吧！
 
-三秒之后，你可以看到一系列的 logs (`a`， `ab`， `abc`， `abcd` ，还有 `abcde`) 而不是五个 `abcde` 。 **每个 Effect 会“捕捉”它所对应的渲染过程中 `text` 的取值**。 `text` 状态的变化不重要： 以 `text = 'ab'` 渲染的 Effect 将始终只能看到 `'ab'` 这个值。 换句话说，来自每个渲染的 Effect 是相互隔离的。如果你有兴趣，可以了解下 [JavaScript中的闭包](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures).
+Three seconds later, you should see a sequence of logs (`a`, `ab`, `abc`, `abcd`, and `abcde`) rather than five `abcde` logs. **Each Effect "captures" the `text` value from its corresponding render.**  It doesn't matter that the `text` state changed: an Effect from the render with `text = 'ab'` will always see `'ab'`. In other words, Effects from each render are isolated from each other. If you're curious how this works, you can read about [closures](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures).
 
 <DeepDive>
 
@@ -970,7 +970,7 @@ React 将第三次渲染时的 `['travel']` 与第二次渲染时的 `['general'
 
 在这个例子中，表单渲染了 `<MyInput />` 组件。
 
-使用 input 的 [`focus()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus) 方法让 `MyInput` 在加载到屏幕时自动获得焦点。下面代码中已经有一个注释掉的实现，但它没有效果。弄明白为什么没有出现这个效果，并修复它。（如果你想到使用 `autoFocus` 属性，那先忘掉它。我们从头开始，以另一个角度实现相同的效果）。
+Use the input's [`focus()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus) method to make `MyInput` automatically focus when it appears on the screen. There is already a commented out implementation, but it doesn't quite work. Figure out why it doesn't work, and fix it. (If you're familiar with the `autoFocus` attribute, pretend that it does not exist: we are reimplementing the same functionality from scratch.)
 
 <Sandpack>
 
@@ -1313,13 +1313,13 @@ body {
 
 #### 修复计时器触发两次的 Bug {/*fix-an-interval-that-fires-twice*/}
 
-这个 `Counter` 组件展示的是计数器，它应该每秒都递增一次。在组件挂载时，它调用了 [`setInterval`](https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval) 这个函数，每次到点时，就触发递增一次的计数事件。
+This `Counter` component displays a counter that should increment every second. On mount, it calls [`setInterval`.](https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval) This causes `onTick` to run every second. The `onTick` function increments the counter.
 
 然而，它不是每秒递增一次，而是递增两次。为什么？找到错误的原因并进行修复。
 
 <Hint>
 
-记住，`setInterval` 返回一个计时器 ID，你可以将其传递给 [`clearInterval`](https://developer.mozilla.org/zh-CN/docs/Web/API/clearInterval) 方法来销毁计时器。
+Keep in mind that `setInterval` returns an interval ID, which you can pass to [`clearInterval`](https://developer.mozilla.org/zh-CN/docs/Web/API/clearInterval) to stop the interval.
 
 </Hint>
 
@@ -1380,7 +1380,7 @@ body {
 
 然而，这个并不是 React 本身的错：而是你的 Effect 代码中本身就存在 Bug 。 React 只不过把这个 Bug 放大了。真正的错误原因是这种 Effect 启动后，但没有提供清理函数，所以上一次的 Effect 残留就没有被除去。
 
-为了修复这个问题，你可以在保存 `setInterval` 返回的计时器 ID ，然后实现一个清理函数。这个清理函数可以调用 [`clearInterval`](https://developer.mozilla.org/zh-CN/docs/Web/API/clearInterval) 方法，把上一次设置的计时器残留清除掉。
+To fix this code, save the interval ID returned by `setInterval`, and implement a cleanup function with [`clearInterval`](https://developer.mozilla.org/zh-CN/docs/Web/API/clearInterval):
 
 <Sandpack>
 
@@ -1440,7 +1440,7 @@ body {
 
 #### 修复在 Effect 里获取数据的问题 {/*fix-fetching-inside-an-effect*/}
 
-现在，我写一个组件，这个组件要求选择一些人名，然后显示所选人的传记。它会通过 `fetchBio(person)` 这个异步函数，在挂载时以及依赖参数 `person` 发生改变时加载数据。这个异步函数返回的是一个 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) ，且这个Promise在 `resolve` 的情况下返回的是一个文本字符串。当数据加载获取完毕后，调用 `setBio` ，以在选择框下面显示加载好的文本数据。
+This component shows the biography for the selected person. It loads the biography by calling an asynchronous function `fetchBio(person)` on mount and whenever `person` changes. That asynchronous function returns a [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) which eventually resolves to a string. When fetching is done, it calls `setBio` to display that string under the select box.
 
 <Sandpack>
 
@@ -1576,7 +1576,7 @@ export async function fetchBio(person) {
 - 加载完成 `'Bob'` 的数
 - 渲染 `'Bob'` 时的 Effect 不会做任何事情，因为 `ignore` 标志被设为了 `true` 。
 
-除了忽略过时 API 调用的结果外，你还可以使用 [`AbortController`](https://developer.mozilla.org/zh-CN/docs/Web/API/AbortController) 取消正在执行的而又不需要的请求。 然而，这本身并不足以防止条件竞争的发生。在获取数据之后，也可能会链式调用更多的异步步骤。因此使用像 `ignore` 这样的显式标志是解决此类问题的最可靠方法。
+In addition to ignoring the result of an outdated API call, you can also use [`AbortController`](https://developer.mozilla.org/zh-CN/docs/Web/API/AbortController) to cancel the requests that are no longer needed. However, by itself this is not enough to protect against race conditions. More asynchronous steps could be chained after the fetch, so using an explicit flag like `ignore` is the most reliable way to fix this type of problems.
 
 </Solution>
 

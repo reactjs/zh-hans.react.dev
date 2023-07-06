@@ -100,7 +100,7 @@ const today = new Date();
 
 function formatDate(date) {
   return new Intl.DateTimeFormat(
-    'en-US',
+    'zh-CN',
     { weekday: 'long' }
   ).format(date);
 }
@@ -429,9 +429,9 @@ body > div > div { padding: 20px; }
 
 #### 在 JSX 大括号内编写表达式 {/*write-an-expression-inside-jsx-curly-braces*/}
 
-在下面的对象中，完整的图片 URL 被分成了四个部分：base URL、`imageId`、`imageSize` 和文件拓展名。
+在下面的对象中，完整的图片 URL 被分成了四个部分：`baseUrl`、`imageId`、`imageSize` 和`文件拓展名`。
 
-我们希望这些属性组合成图片的 URL：base URL（一直是 `'https://i.imgur.com/'`）、`imageId`（`'7vQD0fP'`）、`imageSize`（`'s'`）和文件拓展（总是 `'.jpg'`）。但是，`<img>` 标签 `src` 指明的方式是有问题的。
+我们希望这些属性组合成图片的 URL：`baseUrl`（一直是 `'https://i.imgur.com/'`）、`imageId`（`'7vQD0fP'`）、`imageSize`（`'s'`）和文件拓展（总是 `'.jpg'`）。但是，`<img>` 标签 `src` 指明的方式是有问题的。
 
 你能修复它吗？
 
