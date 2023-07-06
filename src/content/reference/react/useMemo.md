@@ -165,15 +165,15 @@ console.timeEnd('filter array');
 
 </DeepDive>
 
-<Recipes titleText="使用 useMemo 和直接计算一个值之间的区别" titleId="examples-recalculation">
+<Recipes titleText="使用 useMemo 和直接计算之间的区别" titleId="examples-recalculation">
 
 #### 使用 `useMemo` 跳过重复计算 {/*skipping-recalculation-with-usememo*/}
 
-在这个例子中，`filterTodos` 的执行被 **人为减速了** 这样你就可以看到当你在渲染期间调用的某些 JavaScript 函数确实很慢时会发生什么。尝试切换选项卡并切换主题。
+在这个例子中，`filterTodos` 的执行被 **人为减速了**，这样就可以看到渲染期间调用的某些函数确实很慢时会发生什么。尝试切换选项卡并切换主题。
 
-切换选项卡感觉很慢，因为它迫使减速的 `filterTodos` 重新执行。这是预料之中的，因为“选项卡”已更改，因此整个计算 **需要** 重新运行。(如果你好奇为什么它会运行两次，[此处](#my-calculation-runs-twice-on-every-re-render) 对此进行了解释)。
+切换选项卡会感觉很慢，因为它迫使减速的 `filterTodos` 重新执行。这是预料之中的效果，因为“选项卡”已更改，因此整个计算 **需要** 重新运行。如果你好奇为什么它会运行两次，[此处](#my-calculation-runs-twice-on-every-re-render) 对此进行了解释。
 
-尝试切换主题。**多亏了 `useMemo`，尽管被人为减速，它还是很快的**！缓慢的 `filterTodos` 调用被跳过，因为 `todos` 和 `tab`（你将其作为依赖项传递给 `useMemo` ）自上次渲染以来都没有改变。
+然后试试切换主题。**在 `useMemo` 的帮助下，尽管已经被人为减速，但是它还是很快**！缓慢的 `filterTodos` 调用被跳过，因为 `todos` 和 `tab`（你将其作为依赖项传递给 `useMemo`）自上次渲染以来都没有改变。
 
 <Sandpack>
 
@@ -301,9 +301,9 @@ label {
 
 #### 始终重新计算 {/*always-recalculating-a-value*/}
 
-在这个例子中，`filterTodos` 的实现也被 **人为地减慢了**，这样你就可以看到当你在渲染期间调用的某些 JavaScript 函数确实很慢时会发生什么。尝试切换选项卡并切换主题。
+在这个例子中，`filterTodos` 的执行也被 **人为减慢了**，这样就可以看到渲染期间调用的某些函数确实很慢时会发生什么。尝试切换选项卡并切换主题。
 
-与前面的示例不同，现在切换主题也很慢！这是因为 **此版本中没有 `useMemo` 调用**，因此每次重新渲染时都会调用人为减慢的 `filterTodos`。即使只有 `theme` 发生了变化，它也会被调用。
+与前面的示例不同，现在切换主题也很慢！这是因为 **此版本没有调用 `useMemo`**，因此每次重新渲染都会调用人为减速的 `filterTodos`。即使只有 `theme` 发生了变化，它也会被调用。
 
 <Sandpack>
 
@@ -423,7 +423,7 @@ label {
 
 </Sandpack>
 
-然而，这里是 **删除了人为减速** 的相同代码。缺少 `useMemo` 是否感觉很明显？
+然而，这是 **删除了人为减速后** 的相同代码。此时你应该能感觉缺少 `useMemo` 后效果差异非常明显。
 
 <Sandpack>
 
@@ -538,7 +538,7 @@ label {
 
 </Sandpack>
 
-很多时候，没有记忆化的代码可以正常工作。如果你的交互速度足够快，你可能不需要记忆化。
+很多时候，没有使用记忆化的代码可以正常工作。如果你的交互速度足够快，你可能不需要记忆化。
 
 你可以尝试增加 `utils.js` 中待办事项的数量，看看有什么变化。这个特定的计算一开始并不是很昂贵，但如果待办事项的数量显著增加，大部分开销将用于重新渲染而不是过滤。继续阅读下文，了解如何使用 `useMemo` 优化重新渲染。
 
@@ -579,7 +579,7 @@ const List = memo(function List({ items }) {
 
 ```js {2-3,6-7}
 export default function TodoList({ todos, tab, theme }) {
-  // 每当主题发生变化时，这将是一个不同的数组...
+  // 每当主题发生变化时，这将是一个不同的数组……
   const visibleTodos = filterTodos(todos, tab);
   return (
     <div className={theme}>
@@ -609,7 +609,7 @@ export default function TodoList({ todos, tab, theme }) {
 ```
 
 
-**通过将 `visibleTodos` 包裹在 `useMemo` 中，你可以确保它在重新渲染之间具有相同值**（直到依赖关系发生变化）。你 **不必** 将计算包裹在 `useMemo` 中，除非你出于某些特定原因这样做。在此示例中，原因是你将它传递给包裹在 [`memo`](/reference/react/memo) 中的组件，这让它可以跳过重新渲染。添加 `useMemo` 的其他一些原因将在本页进一步描述。
+**通将 `visibleTodos` 的计算函数包裹在 `useMemo` 中，你可以确保它在重新渲染之间具有相同值**，直到依赖项发生变化。你 **不必** 将计算函数包裹在 `useMemo` 中，除非你出于某些特定原因这样做。在此示例中，这样做的原因是你将它传递给包裹在 [`memo`](/reference/react/memo) 中的组件，这使得它可以跳过重新渲染。添加 `useMemo` 的其他一些原因将在本页进一步描述。
 
 <DeepDive>
 
