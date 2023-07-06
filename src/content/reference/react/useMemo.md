@@ -20,7 +20,7 @@ const cachedValue = useMemo(calculateValue, dependencies)
 
 ### `useMemo(calculateValue, dependencies)` {/*usememo*/}
 
-在组件的顶层调用 `useMemo` 来缓存一个在每次重新渲染中需要计算的结果。
+在组件的顶层调用 `useMemo` 来缓存每次重新渲染都需要计算的结果。
 
 ```js
 import { useMemo } from 'react';
@@ -38,21 +38,21 @@ function TodoList({ todos, tab }) {
 
 #### 参数 {/*parameters*/}
 
-* `calculateValue`：要缓存计算值的函数。它应该是一个纯函数，应该没有任何参数，并且返回任意类型。React 将会在首次渲染时调用该函数。在下一次渲染中，如果 `dependencies` 没有发生变化，React 将直接返回相同值。否则，将会调用 `calculateValue` 并返回结果，然后缓存该结果以便下次重用。
+* `calculateValue`：要缓存计算值的函数。它应该是一个没有任何参数的纯函数，并且可以返回任意类型。React 将会在首次渲染时调用该函数；在之后的渲染中，如果 `dependencies` 没有发生变化，React 将直接返回相同值。否则，将会再次调用 `calculateValue` 并返回最新结果，然后缓存该结果以便下次重复使用。
 
-* `dependencies`：所有在 `calculateValue` 函数中使用的响应式变量组成的数组。响应式变量包括 props、state 和所有你直接在组件中定义的变量和函数。如果你的代码检查工具是 [配置了 React](/learn/editor-setup#linting)，它将会确保每一个响应式数据都被正确的定义为依赖项。依赖项数组的长度必须是固定的并且必须写成 `[dep1, dep2, dep3]` 这种形式。React 使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 将每个依赖项与其之前的值进行比较。
+* `dependencies`：所有在 `calculateValue` 函数中使用的响应式变量组成的数组。响应式变量包括 props、state 和所有你直接在组件中定义的变量和函数。如果你在代码检查工具中 [配置了 React](/learn/editor-setup#linting)，它将会确保每一个响应式数据都被正确地定义为依赖项。依赖项数组的长度必须是固定的并且必须写成 `[dep1, dep2, dep3]` 这种形式。React 使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 将每个依赖项与其之前的值进行比较。
 
 #### 返回值 {/*returns*/}
 
-在初始渲染时，`useMemo` 返回不带参数调用 `calculateValue` 的结果。
+在初次渲染时，`useMemo` 返回不带参数调用 `calculateValue` 的结果。
 
-在接下来的渲染中，如果依赖项没有发生改变，它将返回上次渲染缓存的值；否则将再次调用 `calculateValue`，并返回 `calculateValue` 的最新结果。
+在接下来的渲染中，如果依赖项没有发生改变，它将返回上次缓存的值；否则将再次调用 `calculateValue`，并返回最新结果。
 
 #### 注意 {/*caveats*/}
 
-* `useMemo` 是一个 React Hook，所以你只能 **在组件的顶层** 或者自定义 Hook 中调用它。你不能在循环语句或条件语句中调用它。如有需要，提取为一个新组件并使用 state。
-* 在严格模式下，为了 [帮你发现意外的错误](#my-calculation-runs-twice-on-every-re-render)，React 将会 **调用你的计算函数两次**。这只是一个开发环境下的行为，并不会影响到生产环境。如果计算函数是一个纯函数（它本来就应该是），这将不会影响到代码逻辑。其中一次调用的结果将会被忽略。
-* 除非有特定原因，React **不会丢弃缓存值**。例如，在开发过程中，React 会在你编辑组件文件时丢弃缓存。无论是在开发环境还是在生产环境，如果你的组件在初始挂载期间被终止，React 都会丢弃缓存。在未来，React 可能会添加更多利用丢弃缓存的特性——例如，如果 React 在未来增加了对虚拟化列表的内置支持，那么丢弃那些滚出虚拟化列表视口的缓存是有意义的。仅仅依赖 `useMemo` 作为性能优化手段，是没问题的。否则，[state 变量](/reference/react/useState#avoiding-recreating-the-initial-state) 或者 [ref](/reference/react/useRef#avoiding-recreating-the-ref-contents) 可能更加合适。
+* `useMemo` 是一个 React Hook，所以你只能 **在组件的顶层** 或者自定义 Hook 中调用它。你不能在循环语句或条件语句中调用它。如有需要，将其提取为一个新组件并使用 state。
+* 在严格模式下，为了 [帮你发现意外的错误](#my-calculation-runs-twice-on-every-re-render)，React 将会 **调用你的计算函数两次**。这只是一个开发环境下的行为，并不会影响到生产环境。如果计算函数是一个纯函数（它本来就应该是），这将不会影响到代码逻辑。其中一次的调用结果将被忽略。
+* 除非有特定原因，React **不会丢弃缓存值**。例如，在开发过程中，React 会在你编辑组件文件时丢弃缓存。无论是在开发环境还是在生产环境，如果你的组件在初始挂载期间被终止，React 都会丢弃缓存。在未来，React 可能会添加更多利用丢弃缓存的特性——例如，如果 React 在未来增加了对虚拟化列表的内置支持，那么丢弃那些滚出虚拟化列表视口的缓存是有意义的。你可以仅仅依赖 `useMemo` 作为性能优化手段。否则，使用 [state 变量](/reference/react/useState#avoiding-recreating-the-initial-state) 或者 [ref](/reference/react/useRef#avoiding-recreating-the-ref-contents) 可能更加合适。
 
 <Note>
 
@@ -66,7 +66,7 @@ function TodoList({ todos, tab }) {
 
 ### 跳过代价昂贵的重新计算 {/*skipping-expensive-recalculations*/}
 
-要在重新渲染之间缓存计算结果，请在组件的顶层使用 `useMemo` 调用将其包裹起来：
+在组件顶层调用 `useMemo` 以在重新渲染之间缓存计算结果：
 
 ```js [[3, 4, "visibleTodos"], [1, 4, "() => filterTodos(todos, tab)"], [2, 4, "[todos, tab]"]]
 import { useMemo } from 'react';
@@ -84,13 +84,13 @@ function TodoList({ todos, tab, theme }) {
 
 在初次渲染时，你从 `useMemo` 得到的 <CodeStep step={3}>值</CodeStep> 将会是你的 <CodeStep step={1}>calculation</CodeStep> 函数执行的结果。
 
-在随后的每一次渲染中，React 将会比较前后两次渲染中的 <CodeStep step={2}>所有依赖项</CodeStep> 是否相同。如果所有依赖项都没有发生变化（通过 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较），`useMemo` 将会返回之前已经计算过的那个值。否则，React 将会重新执行 calculation 函数并且返回一个新的值。
+在随后的每一次渲染中，React 将会比较前后两次渲染中的 <CodeStep step={2}>所有依赖项</CodeStep> 是否相同。如果通过 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较所有依赖项都没有发生变化，那么 `useMemo` 将会返回之前已经计算过的那个值。否则，React 将会重新执行 calculation 函数并且返回一个新的值。
 
-换句话说，`useMemo` 在多次重新渲染中缓存了一个 calculation 函数计算的结果直到依赖项的值发生变化。
+换言之，`useMemo` 在多次重新渲染中缓存了 calculation 函数计算的结果直到依赖项的值发生变化。
 
 **让我们通过一个示例来看看这在什么情况下是有用的**。
 
-默认情况下，React 会在每次重新渲染时重新运行组件的整个主体。例如，如果这个 `TodoList` 更新了它的状态或从它的父元素接收到新的 props，`filterTodos` 函数将会重新运行：
+默认情况下，React 会在每次重新渲染时重新运行整个组件。例如，如果 `TodoList` 更新了 state 或从父组件接收到新的 props，`filterTodos` 函数将会重新运行：
 
 ```js {2}
 function TodoList({ todos, tab, theme }) {
@@ -99,21 +99,21 @@ function TodoList({ todos, tab, theme }) {
 }
 ```
 
-通常，这不是问题，因为大多数计算都非常快。但是，如果你正在过滤或转换一个大型数组，或者进行一些昂贵的计算，如果数据没有改变，你可能希望跳过这些重复计算。如果 `todos` 和 `tab` 都与上次渲染时相同，将计算包装在 `useMemo` 中，就像之前那样让你重用已经计算过的 `visibleTodos`。
+如果计算速度很快，这将不会产生问题。但是，当正在过滤转换一个大型数组，或者进行一些昂贵的计算，而数据没有改变，那么可能希望跳过这些重复计算。如果 `todos` 与 `tab` 都与上次渲染时相同，那么像之前那样将计算函数包装在 `useMemo` 中，便可以重用已经计算过的 `visibleTodos`。
 
 这种缓存行为叫做 [记忆化](https://en.wikipedia.org/wiki/Memoization)。
 
 <Note>
 
-**你应该仅仅把 `useMemo` 作为一个性能优化的手段**。如果没有它，你的代码就不能正常工作，那么请先找到潜在的问题并修复它。然后你可以添加 `useMemo` 来提高性能。
+**你应该仅仅把 `useMemo` 作为性能优化的手段**。如果没有它，你的代码就不能正常工作，那么请先找到潜在的问题并修复它。然后再添加 `useMemo` 以提高性能。
 
 </Note>
 
 <DeepDive>
 
-#### 如何衡量一个计算过程开销是否昂贵呢？ {/*how-to-tell-if-a-calculation-is-expensive*/}
+#### 如何衡量计算过程的开销是否昂贵？ {/*how-to-tell-if-a-calculation-is-expensive*/}
 
-一般来说，除非要创建或循环遍历数千个对象，否则开销可能并不大。如果你想获得更详细的信息，可以添加一个控制台日志来测量花费在一段代码上的时间：
+一般来说，除非要创建或循环遍历数千个对象，否则开销可能并不大。如果你想获得更详细的信息，可以在控制台来测量花费这上面的时间：
 
 ```js {1,3}
 console.time('filter array');
@@ -121,7 +121,7 @@ const visibleTodos = filterTodos(todos, tab);
 console.timeEnd('filter array');
 ```
 
-执行你正在检测的交互（例如，在输入框中输入文字）。你将会在控制台看到如下的日志 `filter array: 0.15ms`。如果全部记录的时间加起来很长（`1ms` 或者更多），记忆这个计算结果是有意义的。作为对比，你可以将计算过程包裹在 `useMemo` 中，以验证该交互的总日志时间是否减少了：
+然后执行你正在监测的交互（例如，在输入框中输入文字）。你将会在控制台看到如下的日志 `filter array: 0.15ms`。如果全部记录的时间加起来很长（`1ms` 或者更多），那么记忆此计算结果是有意义的。作为对比，你可以将计算过程包裹在 `useMemo` 中，以验证该交互的总日志时间是否减少了：
 
 ```js
 console.time('filter array');
@@ -133,7 +133,7 @@ console.timeEnd('filter array');
 
 `useMemo` 不会让首次渲染更快，它只会帮助你跳过不必要的更新工作。
 
-请记住，你的开发设备可能比用户的设备性能更强大，因此最好通过人为的降低浏览器性能来测试。例如，Chrome 提供了 [CPU Throttling](https://developer.chrome.com/blog/new-in-devtools-61/#throttling) 选项来降低浏览器性能。
+请记住，你的开发设备可能比用户的设备性能更强大，因此最好人为降低当前浏览器性能来测试。例如，Chrome 提供了 [CPU Throttling](https://developer.chrome.com/blog/new-in-devtools-61/#throttling) 选项来降低浏览器性能。
 
 另外，请注意，在开发环境中测量性能无法为你提供最准确的结果（例如，当开启 [严格模式](/reference/react/StrictMode) 时，你会看到每个组件渲染两次而不是一次）。要获得最准确的时间，请构建用于生产的应用程序并在用户使用的设备上对其进行测试。
 
@@ -143,22 +143,22 @@ console.timeEnd('filter array');
 
 #### 你应该在所有地方添加 useMemo 吗？ {/*should-you-add-usememo-everywhere*/}
 
-如果你的应用程序类似于此站点，并且大多数交互都很粗糙（例如替换页面或整个部分），则通常不需要记忆。反之，如果你的应用程序更像是绘图编辑器，并且大多数交互都是颗粒状的（如移动形状），那么你可能会发现记忆非常有用。
+如果你的应用程序类似于此站点，并且大多数交互都很粗糙（例如替换页面或整个章节），则通常不需要使用记忆化。反之，如果你的应用程序更像是绘图编辑器，并且大多数交互都是颗粒状的（如移动形状），那么你可能会发现记忆化非常有用。
 
 使用 `useMemo` 进行优化仅在少数情况下有价值：
 
-- 你在 `useMemo` 中进行的计算明显很慢，而且它的依赖关系很少改变
-- 你将它作为 props 传递给包裹在 [`memo`](/reference/react/memo) 中的组件。如果值没有改变，你想跳过重新渲染。记忆化让你的组件仅在依赖项不同时才重新渲染。
-- 你传递的值稍后用作某些 Hook 的依赖项。例如，也许另一个 `useMemo` 计算值依赖它。或者 [`useEffect`](/reference/react/useEffect) 依赖这个值。
+- 你在 `useMemo` 中进行的计算明显很慢，而且它的依赖关系很少改变。
+- 将计算结果作为 props 传递给包裹在 [`memo`](/reference/react/memo) 中的组件。当计算结果没有改变时，你会想跳过重新渲染。记忆化让组件仅在依赖项不同时才重新渲染。
+- 你传递的值稍后用作某些 Hook 的依赖项。例如，也许另一个 `useMemo` 计算值依赖它，或者 [`useEffect`](/reference/react/useEffect) 依赖这个值。
 
-在其他情况下，将计算过程包装在 `useMemo` 中没有任何好处。这样做也没有重大危害，所以一些团队选择不考虑具体情况，尽可能多地使用 `useMemo`。这种方法的缺点是降低了代码的可读性。此外，并不是所有 `useMemo` 的使用都是有效的：一个“永远是新的”的单一值就足以破坏整个组件的记忆效果。
+在其他情况下，将计算过程包装在 `useMemo` 中没有任何好处。不过这样做也没有重大危害，所以一些团队选择不考虑具体情况，尽可能多地使用 `useMemo`。不过这种做法会降低代码可读性。此外，并不是所有 `useMemo` 的使用都是有效的：一个“永远是新的”的单一值就足以破坏整个组件的记忆化效果。
 
 **在实践中，你可以通过遵循一些原则来避免 `useMemo` 的滥用**：
 
-1. 当一个组件在视觉上包裹其他组件时，让它 [将 JSX 作为子组件传递](/learn/passing-props-to-a-component#passing-jsx-as-children)。这样，当包装器组件更新自己的状态时，React 知道它的子组件不需要重新渲染。
-2. 首选本地状态，非必要不进行 [状态提升](/learn/sharing-state-between-components)。例如，不要保持像表单这样的瞬时状态，也不要保持组件是否悬停在树的顶部或全局状态库中这样的状态。
-3. 保持你的 [渲染逻辑纯粹](/learn/keeping-components-pure)。如果重新渲染组件导致一些问题或产生一些明显的视觉错误，那么它就是组件中的错误！修复错误而不是添加记忆化。
-4. 避免 [不必要的更新 state 的 Effect](/learn/you-might-not-need-an-effect)。React 应用程序中的大多数性能问题都是由 Effect 创造的更新链引起的，这些更新链导致组件反复重新渲染。
+1. 当一个组件在视觉上包裹其他组件时，让它 [将 JSX 作为子组件传递](/learn/passing-props-to-a-component#passing-jsx-as-children)。这样，当包装器组件更新自己的 state 时，React 知道它的子组件不需要重新渲染。
+2. 首选本地 state，非必要不进行 [状态提升](/learn/sharing-state-between-components)。例如，不要保持像表单、组件是否悬停在组件树顶部这样的瞬时状态。
+3. 保持你的 [渲染逻辑纯粹](/learn/keeping-components-pure)。如果重新渲染组件会导致一些问题或产生一些明显的视觉错误，那么它就是组件中的错误！修复错误而不是使用记忆化。
+4. 避免 [不必要地更新 state 的 Effect](/learn/you-might-not-need-an-effect)。React 应用程序中的大多数性能问题都是由 Effect 创造的更新链引起的，这些更新链导致组件反复重新渲染。
 5. 尽力 [从 Effect 中移除不必要的依赖项](/learn/removing-effect-dependencies)。例如, 相比于记忆化，在 Effect 内部或组件外部移动某些对象或函数通常更简单。
 
 如果某个特定的交互仍然感觉滞后，[使用 React 开发者工具分析器](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) 查看哪些组件将从记忆化中获益最多，并在需要的地方添加记忆化。这些原则使你的组件更易于调试和理解，因此在任何情况下都应该遵循它们。从长远来看，我们正在研究 [自动进行粒度记忆](https://www.youtube.com/watch?v=lGEMwh32soc) 以一劳永逸地解决这个问题。
@@ -1158,7 +1158,7 @@ export default function Page({ productId, referrer }) {
 
 ## 故障排除 {/*troubleshooting*/}
 
-### 我的计算函数在每次重新渲染时运行两次 {/*my-calculation-runs-twice-on-every-re-render*/}
+### 每次重新渲染时计算函数都会运行两次 {/*my-calculation-runs-twice-on-every-re-render*/}
 
 在 [严格模式](/reference/react/StrictMode) 中，React 将调用你的某些函数两次而不是一次：
 
@@ -1244,7 +1244,7 @@ React 调用你的函数两次，所以你会注意到 todo 被添加了两次�
 
 ---
 
-### 每次我的组件渲染时，`useMemo` 中的计算都会重新运行 {/*every-time-my-component-renders-the-calculation-in-usememo-re-runs*/}
+### 组件每次渲染时，`useMemo` 都会重新计算 {/*every-time-my-component-renders-the-calculation-in-usememo-re-runs*/}
 
 确保你已将依赖项数组指定为第二个参数！
 
