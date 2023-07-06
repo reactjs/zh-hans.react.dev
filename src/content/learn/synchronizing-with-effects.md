@@ -688,7 +688,6 @@ useEffect(() => {
 function TodoList() {
   const todos = useSomeDataLibrary(`/api/user/${userId}/todos`);
   // ...
-}
 ```
 
 这不仅可以提高开发体验，还可以让你的应用程序速度更快。例如，用户按下按钮时，如果数据已经被缓存了，那么就不必再次等待加载。你可以自己构建这样的缓存，也可以使用很多在 Effect 中手动加载数据的替代方法。
