@@ -4,13 +4,13 @@ title: "Directives"
 
 <Intro>
 
-React uses two directives to provide instructions to [bundlers compatible with React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks).
+React 使用两个指令（directive）向 [与 React 服务器组件兼容的捆绑器（bundler）](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 提供指令（instruction）。
 
 </Intro>
 
 ---
 
-## Source code directives {/*source-code-directives*/}
+## 源码命令 {/*source-code-directives*/}
 
-* [`'use client'`](/reference/react/use-client) marks source files whose components execute on the client.
-* [`'use server'`](/reference/react/use-server) marks server-side functions that can be called from client-side code.
+* [`'use client'`](/reference/react/use-client) 标记组件在客户端上执行的源文件。
+* [`'use server'`](/reference/react/use-server) 标记可以从客户端代码调用的服务器函数。
