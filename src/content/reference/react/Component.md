@@ -294,7 +294,7 @@ class ChatRoom extends Component {
 
 - 当 [严格模式](/reference/react/StrictMode) 开启时，在开发环境中 React 会调用 `componentDidMount`，然后会立刻调用 [`componentWillUnmount`](#componentwillunmount)， 接着再次调用 `componentDidMount`。 这将帮助你注意到你是否忘记设置 `componentWillUnmount` 或者它的逻辑是否完全对应到 `componentDidMount` 的效果。
 
-- 虽然你可以在 `componentDidMount` 中立即调用 [`setState`](#setstate)，不过最好避免这样做。 因为这将触发一次额外的渲染，但是这是在浏览器更新屏幕之前发生的。 在这种情况下即使 [`render`](#render) 被调用了两次，用户也无法看到中间的状态。请谨慎使用这种模式因为它可能会造成性能问题。在大多数情况下， 你应该能在 [`constructor`](#constructor) 中设置初始的 state。 但是对于 modal 和 tooltip 等当你的渲染依赖于 DOM 节点的大小或位置情况下，这种方法可能是必要的。
+- 虽然你可以在 `componentDidMount` 中立即调用 [`setState`](#setstate)，不过最好避免这样做。 因为这将触发一次额外的渲染，但是这是在浏览器更新屏幕之前发生的。在这种情况下即使 [`render`](#render) 被调用了两次，用户也无法看到中间的状态。请谨慎使用这种模式因为它可能会造成性能问题。在大多数情况下，你应该能在 [`constructor`](#constructor) 中设置初始的 state。 但是对于 modal 和 tooltip 等当你的渲染依赖于 DOM 节点的大小或位置情况下，这种方法可能是必要的。
 
 <Note>
 
