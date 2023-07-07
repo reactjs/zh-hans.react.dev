@@ -1,165 +1,165 @@
 ---
-title: Versioning Policy
+title: 版本策略
 ---
 
 <Intro>
 
-All stable builds of React go through a high level of testing and follow semantic versioning (semver). React also offers unstable release channels to encourage early feedback on experimental features. This page describes what you can expect from React releases.
+所有稳定版本的 React 都经过了高水平的测试，并遵循语义化版本控制（semver）的规范。React 还提供了不稳定的发布渠道，以鼓励对实验性功能的早期反馈。本页面描述了 React 发布版本的预期特性。
 
 </Intro>
 
-## Stable releases {/*stable-releases*/}
+## 稳定版本 {/*stable-releases*/}
 
-Stable React releases (also known as "Latest" release channel) follow [semantic versioning (semver)](https://semver.org/) principles.
+稳定的 React 版本（也被称为 Latest 发布渠道）遵循语义化版本控制（semver）的原则。
 
-That means that with a version number **x.y.z**:
+这意味着，根据版本号 **x.y.z**：
 
-* When releasing **critical bug fixes**, we make a **patch release** by changing the **z** number (ex: 15.6.2 to 15.6.3).
-* When releasing **new features** or **non-critical fixes**, we make a **minor release** by changing the **y** number (ex: 15.6.2 to 15.7.0).
-* When releasing **breaking changes**, we make a **major release** by changing the **x** number (ex: 15.6.2 to 16.0.0).
+- 当发布 **关键性的错误修复** 时，我们通过改变 **z** 数字进行 **补丁发布**（例如：15.6.2 变为 15.6.3）。
+- 当发布 **新功能** 或 **非关键性修复** 时，我们通过改变 **y** 数字进行 **次要版本发布**（例如：15.6.2 变为 15.7.0）。
+- 当发布 **破坏性变更** 时，我们通过改变 **x** 数字进行 **主要版本发布**（例如：15.6.2 变为 16.0.0）。
 
-Major releases can also contain new features, and any release can include bug fixes.
+主要版本发布也可以包含新功能，而任何版本都可以包括错误修复。
 
-Minor releases are the most common type of release.
+次要版本发布是最常见的发布类型。
 
-### Breaking Changes {/*breaking-changes*/}
+### 破坏性版本 {/*breaking-changes*/}
 
-Breaking changes are inconvenient for everyone, so we try to minimize the number of major releases – for example, React 15 was released in April 2016 and React 16 was released in September 2017, and React 17 was released in October 2020.
+破坏性改变对每个人都不方便，因此我们试图尽量减少主要版本的发布数量 - 例如，React 15 发布于 2016 年 4 月，React 16 发布于 2017 年 9 月，React 17 发布于 2020 年 10 月。
 
-Instead, we release new features in minor versions. That means that minor releases are often more interesting and compelling than majors, despite their unassuming name.
+相反，我们在次要版本中发布新功能。这意味着次要版本发布通常比主要版本更有趣和引人注目，尽管它们的名称不太引人注意。
 
-### Commitment to stability {/*commitment-to-stability*/}
+### 致力于稳定 {/*commitment-to-stability*/}
 
-As we change React over time, we try to minimize the effort required to take advantage of new features. When possible, we'll keep an older API working, even if that means putting it in a separate package. For example, [mixins have been discouraged for years](https://legacy.reactjs.org/blog/2016/07/13/mixins-considered-harmful.html) but they're supported to this day [via create-react-class](https://legacy.reactjs.org/docs/react-without-es6.html#mixins) and many codebases continue to use them in stable, legacy code.
+随着时间的推移，我们在改进 React 时，尽量减少利用新功能所需的工作量。如果可能的话，我们会保持旧的 API 可用，即使这意味着将其放在一个单独的包中。例如，[多年来一直不鼓励使用 mixin](https://legacy.reactjs.org/blog/2016/07/13/mixins-considered-harmful.html)，但至今仍然可以通过 [create-react-class](https://legacy.reactjs.org/docs/react-without-es6.html#mixins) 支持，并且许多代码库仍在稳定的遗留代码中使用它们。
 
-Over a million developers use React, collectively maintaining millions of components. The Facebook codebase alone has over 50,000 React components. That means we need to make it as easy as possible to upgrade to new versions of React; if we make large changes without a migration path, people will be stuck on old versions. We test these upgrade paths on Facebook itself – if our team of less than 10 people can update 50,000+ components alone, we hope the upgrade will be manageable for anyone using React. In many cases, we write [automated scripts](https://github.com/reactjs/react-codemod) to upgrade component syntax, which we then include in the open-source release for everyone to use.
+超过一百万的开发人员使用 React，共同维护着数百万个组件。仅 Facebook 的代码库就有超过 50000 个 React 组件。这意味着我们需要尽可能地简化升级到新版本 React 的过程；如果我们在没有迁移路径的情况下进行大规模改变，人们将被困在旧版本上。我们在 Facebook 本身上测试这些升级路径——如果我们不到 10 人的团队能够单独更新 50000 多个组件，我们希望任何使用 React 的人都能够轻松进行升级。在许多情况下，我们编写 [自动化脚本](https://github.com/reactjs/react-codemod) 来升级组件语法，然后将其包含在开源发布中供所有人使用。
 
-### Gradual upgrades via warnings {/*gradual-upgrades-via-warnings*/}
+### 通过警告逐步更新 {/*gradual-upgrades-via-warnings*/}
 
-Development builds of React include many helpful warnings. Whenever possible, we add warnings in preparation for future breaking changes. That way, if your app has no warnings on the latest release, it will be compatible with the next major release. This allows you to upgrade your apps one component at a time.
+React 的开发版本包含许多有用的警告信息。只要可能，我们会为即将发生的破坏性改变添加警告信息。这样，如果你的应用在最新版本中没有警告，它将与下一个主要版本兼容。这使你能够逐个组件地升级你的应用程序。
 
-Development warnings won't affect the runtime behavior of your app. That way, you can feel confident that your app will behave the same way between the development and production builds -- the only differences are that the production build won't log the warnings and that it is more efficient. (If you ever notice otherwise, please file an issue.)
+开发警告不会影响你的应用程序的运行行为。这样，你可以确信你的应用程序在开发版本和生产版本之间的行为是一致的——唯一的区别是生产版本不会记录警告，并且它更高效。如果你发现有其他情况，请提交 issue。
 
-### What counts as a breaking change? {/*what-counts-as-a-breaking-change*/}
+### 怎样算破坏性变更？ {/*what-counts-as-a-breaking-change*/}
 
-In general, we *don't* bump the major version number for changes to:
+总的来说，我们不会为以下更改而增加主要版本号：
 
-* **Development warnings.** Since these don't affect production behavior, we may add new warnings or modify existing warnings in between major versions. In fact, this is what allows us to reliably warn about upcoming breaking changes.
-* **APIs starting with `unstable_`.** These are provided as experimental features whose APIs we are not yet confident in. By releasing these with an `unstable_` prefix, we can iterate faster and get to a stable API sooner.
-* **Alpha and canary versions of React.** We provide alpha versions of React as a way to test new features early, but we need the flexibility to make changes based on what we learn in the alpha period. If you use these versions, note that APIs may change before the stable release.
-* **Undocumented APIs and internal data structures.** If you access internal property names like `__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` or `__reactInternalInstance$uk43rzhitjg`, there is no warranty.  You are on your own.
+* **开发警告**。由于这些不会影响生产行为，我们可能会在主要版本之间添加新的警告或修改现有警告。事实上，这正是我们能够可靠地警告即将发生的重大变化的原因。
+* **以 `unstable_` 开头的 API**。这些被提供作为实验性功能，我们对其 API 还不够自信。通过以` unstable_` 前缀发布这些版本，我们可以更快地迭代并尽快达到稳定的 API。
+* **React 的 alpha 和 canary 版本**。我们提供 React 的 alpha 版本作为早期测试新功能的一种方式，但我们需要根据在 alpha 期间学到的知识来灵活进行更改。如果你使用这些版本，请注意在稳定版本发布之前 API 可能会发生变化。
+* **未记录的 API 和内部数据结构**。如果你访问内部属性名如 `__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` 或 `__reactInternalInstance$uk43rzhitjg`，则无法得到保证，你将自负其责。
 
-This policy is designed to be pragmatic: certainly, we don't want to cause headaches for you. If we bumped the major version for all of these changes, we would end up releasing more major versions and ultimately causing more versioning pain for the community. It would also mean that we can't make progress in improving React as fast as we'd like.
+此策略旨在务实：当然，我们不希望给你带来麻烦。如果我们为所有这些更改增加主要版本，我们将不断发布更多的主要版本，并最终给社区带来更多版本管理的困扰。这也意味着我们无法以我们希望的速度推进改进 React。
 
-That said, if we expect that a change on this list will cause broad problems in the community, we will still do our best to provide a gradual migration path.
+话虽如此，如果我们预计这个列表中的更改将在社区中引起广泛问题，我们仍然会尽力提供渐进迁移路径。
 
-### If a minor release includes no new features, why isn't it a patch? {/*if-a-minor-release-includes-no-new-features-why-isnt-it-a-patch*/}
+### 如果一个次要版本没有包含任何新功能，为什么它不是一个补丁版本呢？ {/*if-a-minor-release-includes-no-new-features-why-isnt-it-a-patch*/}
 
-It's possible that a minor release will not include new features. [This is allowed by semver](https://semver.org/#spec-item-7), which states **"[a minor version] MAY be incremented if substantial new functionality or improvements are introduced within the private code. It MAY include patch level changes."**
+一个次要版本不包含新功能 [是 semver 允许的](https://semver.org/#spec-item-7)，它规定“[次要版本] 可以在私有代码中引入重大的新功能或改进时递增。它可以包含补丁级别的变化。”
 
-However, it does raise the question of why these releases aren't versioned as patches instead.
+然而，这也引出了一个问题，为什么这些发布不被版本化为补丁呢？
 
-The answer is that any change to React (or other software) carries some risk of breaking in unexpected ways. Imagine a scenario where a patch release that fixes one bug accidentally introduces a different bug. This would not only be disruptive to developers, but also harm their confidence in future patch releases. It's especially regrettable if the original fix is for a bug that is rarely encountered in practice.
+答案是，对 React（或其他软件）的任何更改都会带来一些意外破坏的风险。想象一个场景，一个修复一个 bug 的补丁版本却意外引入了另一个 bug。这不仅会对开发者造成困扰，还会损害他们对未来补丁版本的信心。如果原始修复是为了一个在实践中很少遇到的 bug，那就更令人遗憾了。
 
-We have a pretty good track record for keeping React releases free of bugs, but patch releases have an even higher bar for reliability because most developers assume they can be adopted without adverse consequences.
+我们在保持 React 版本无 bug 方面的记录相当不错，但是补丁版本的可靠性要求更高，因为大多数开发者都认为它们可以无副作用地采用。
 
-For these reasons, we reserve patch releases only for the most critical bugs and security vulnerabilities.
+出于这些原因，我们只将补丁版本保留给最关键的 bug 和安全漏洞。
 
-If a release includes non-essential changes — such as internal refactors, changes to implementation details, performance improvements, or minor bugfixes — we will bump the minor version even when there are no new features.
+如果一个发布包含非必要的更改，比如内部重构、实现细节的更改、性能改进或小的 bug 修复，即使没有新功能，我们也会递增次要版本号。
 
-## All release channels {/*all-release-channels*/}
+## 所有发布渠道 {/*all-release-channels*/}
 
-React relies on a thriving open source community to file bug reports, open pull requests, and [submit RFCs](https://github.com/reactjs/rfcs). To encourage feedback we sometimes share special builds of React that include unreleased features.
+React 依赖于充满活力的开源社区来提交 bug 报告、发起拉取请求和 [提交 RFC](https://github.com/reactjs/rfcs)。为了鼓励反馈，我们有时会分享包含未发布功能的特殊版本的 React。
 
 <Note>
 
-This section will be most relevant to developers who work on frameworks, libraries, or developer tooling. Developers who use React primarily to build user-facing applications should not need to worry about our prerelease channels.
+这一部分对于开发框架、库或开发者工具的开发人员来说最相关。主要用 React 构建面向用户的应用程序的开发人员不需要担心我们的预发布渠道。
 
 </Note>
 
-Each of React's release channels is designed for a distinct use case:
+React 的每个发布渠道都针对不同的情况设计：
 
-- [**Latest**](#latest-channel) is for stable, semver React releases. It's what you get when you install React from npm. This is the channel you're already using today. **User-facing applications that consume React directly use this channel.**
-- [**Canary**](#canary-channel) tracks the main branch of the React source code repository. Think of these as release candidates for the next semver release. **[Frameworks or other curated setups may choose to use this channel with a pinned version of React.](/blog/2023/05/03/react-canaries) You can also Canaries for integration testing between React and third party projects.**
-- [**Experimental**](#experimental-channel) includes experimental APIs and features that aren't available in the stable releases. These also track the main branch, but with additional feature flags turned on. Use this to try out upcoming features before they are released.
+- **Latest** 是稳定的、符合语义化版本规范的 React 版本。当从 npm 安装 React 时，就会得到这个版本。这也是大家今天已经在使用的渠道。**直接使用 React 构建面向用户的应用程序使用此渠道**。
+- **Canary** 追踪 React 源代码仓库的主分支，可以将其视为下一个语义化版本发布的候选版本。**[框架或其他经过策划的设置可能会选择使用此渠道，并固定版本的 React](/blog/2023/05/03/react-canaries)**。也可以使用 Canary 进行 React 与第三方项目之间的集成测试。
+- **Experimental** 包含实验性的 API 和在稳定版中不可用的功能。它们也追踪主分支，但是会打开额外的功能开关。使用此渠道可在发布之前尝试即将推出的功能。
 
-All releases are published to npm, but only Latest uses semantic versioning. Prereleases (those in the Canary and Experimental channels) have versions generated from a hash of their contents and the commit date, e.g. `18.3.0-canary-388686f29-20230503` for Canary and `0.0.0-experimental-388686f29-20230503` for Experimental.
+所有版本都会发布到 npm，但只有 Latest 版本使用语义化版本号。预发布版本（Canary 与 Experimental）的版本是根据其内容和提交日期的哈希值生成的，例如 Canary 版本的 `18.3.0-canary-388686f29-20230503` 以及 Experimental 版本的 `0.0.0-experimental-388686f29-20230503`。
 
-**Both Latest and Canary channels are officially supported for user-facing applications, but with different expectations**:
+**Latest 和 Canary 渠道都得到官方支持，用于面向用户的应用程序，但期望不同**：
 
-* Latest releases follow the traditional semver model.
-* Canary releases [must be pinned](/blog/2023/05/03/react-canaries) and may include breaking changes. They exist for curated setups (like frameworks) that want to gradually release new React features and bugfixes on their own release schedule.
+- Latest 版本遵循传统的语义化版本模型。
+- Canary 版本 [必须固定版本](/blog/2023/05/03/react-canaries)，可能包含破坏性更改。它们适用于想要根据自己的发布计划逐步发布新的 React 功能和 bug 修复的经过策划的设置（如框架）。
 
-The Experimental releases are provided for testing purposes only, and we provide no guarantees that behavior won't change between releases. They do not follow the semver protocol that we use for releases from Latest.
+Experimental 版本仅供测试目的提供，并且我们不保证行为在发布之间不会发生变化。它们不遵循我们在 Latest 版本发布中使用的语义化版本协议。
 
-By publishing prereleases to the same registry that we use for stable releases, we are able to take advantage of the many tools that support the npm workflow, like [unpkg](https://unpkg.com) and [CodeSandbox](https://codesandbox.io).
+通过将预发布版本发布到与稳定版本相同的注册表中，我们能够利用许多支持 npm 工作流程的工具，如 [unpkg](https://unpkg.com) 与 [CodeSandbox](https://codesandbox.io)。
 
-### Latest channel {/*latest-channel*/}
+### Latest 渠道 {/*latest-channel*/}
 
-Latest is the channel used for stable React releases. It corresponds to the `latest` tag on npm. It is the recommended channel for all React apps that are shipped to real users.
+Latest 是用于稳定版 React 发布的渠道。它对应于 npm 上的 `latest` 标签。对于所有发布给真实用户的 React 应用程序，推荐使用此渠道。
 
-**If you're not sure which channel you should use, it's Latest.** If you're using React directly, this is what you're already using. You can expect updates to Latest to be extremely stable. Versions follow the semantic versioning scheme, as [described earlier.](#stable-releases)
+**如果你不确定应该使用哪个渠道，那就使用 Latest**。如果你直接使用 React，那使用的就是 Latest 渠道。你可以期望 Latest 的更新非常稳定。版本遵循之前描述的语义化版本方案。
 
-### Canary channel {/*canary-channel*/}
+### Canary 渠道 {/*canary-channel*/}
 
-The Canary channel is a prerelease channel that tracks the main branch of the React repository. We use prereleases in the Canary channel as release candidates for the Latest channel. You can think of Canary as a superset of Latest that is updated more frequently.
+Canary 渠道是一个预发布渠道，追踪 React 仓库的主分支。我们将 Canary 渠道中的预发布版本用作 Latest 渠道的候选发布版本。你可以将 Canary 视为比 Latest 更频繁更新的超集。
 
-The degree of change between the most recent Canary release and the most recent Latest release is approximately the same as you would find between two minor semver releases. However, **the Canary channel does not conform to semantic versioning.** You should expect occasional breaking changes between successive releases in the Canary channel.
+最近的 Canary 版本与最近的 Latest 版本之间的变化程度大致与两个次要 semver 版本之间的变化程度相同。然而，**Canary 渠道不符合语义化版本规范**。你需要注意在 Canary 渠道的连续版本之间会偶尔出现破坏性更改。
 
-**Do not use prereleases in user-facing applications directly unless you're following the [Canary workflow](/blog/2023/05/03/react-canaries).**
+**除非遵循 [Canary 工作流程](/blog/2023/05/03/react-canaries)，否则不要直接在面向用户的应用程序中使用预发布版本**。
 
-Releases in Canary are published with the `canary` tag on npm. Versions are generated from a hash of the build's contents and the commit date, e.g. `18.3.0-canary-388686f29-20230503`.
+Canary 发布使用 npm 上的 `canary` 标签进行标识。版本是根据构建内容和提交日期的哈希值生成的，例如 `18.3.0-canary-388686f29-20230503`。
 
-#### Using the canary channel for integration testing {/*using-the-canary-channel-for-integration-testing*/}
+#### 使用 canary 渠道进行集成测试 {/*using-the-canary-channel-for-integration-testing*/}
 
-The Canary channel also supports integration testing between React and other projects.
+Canary 渠道还支持 React 与其他项目之间的集成测试。
 
-All changes to React go through extensive internal testing before they are released to the public. However, there are a myriad of environments and configurations used throughout the React ecosystem, and it's not possible for us to test against every single one.
+在向公众发布之前，React 的所有更改都经过了广泛的内部测试。然而，在整个 React 生态系统中使用了大量的环境和配置，我们无法对每个环境都进行测试。
 
-If you're the author of a third party React framework, library, developer tool, or similar infrastructure-type project, you can help us keep React stable for your users and the entire React community by periodically running your test suite against the most recent changes. If you're interested, follow these steps:
+如果你是第三方 React 框架、库、开发者工具或类似的基础设施项目的作者，可以通过定期运行测试套件来帮助我们为你的用户和整个 React 社区保持 React 的稳定性。如果你有兴趣，请按照以下步骤进行操作：
 
-- Set up a cron job using your preferred continuous integration platform. Cron jobs are supported by both [CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) and [Travis CI](https://docs.travis-ci.com/user/cron-jobs/).
-- In the cron job, update your React packages to the most recent React release in the Canary channel, using `canary` tag on npm. Using the npm cli:
+- 使用你喜欢的持续集成平台设置一个 cron 作业。cron 作业受到 [CircleCI](https://circleci.com/docs/2.0/triggers/#scheduled-builds) 与 [Travis CI](https://docs.travis-ci.com/user/cron-jobs/) 的支持。
+- 在 cron 作业中，使用 `canary` 标签从 Canary 渠道更新你的 React 包至最新的 React 版本。像下面一样使用 npm 命令行：
 
   ```console
   npm update react@canary react-dom@canary
   ```
 
-  Or yarn:
+  或者使用 yarn：
 
   ```console
   yarn upgrade react@canary react-dom@canary
   ```
-- Run your test suite against the updated packages.
-- If everything passes, great! You can expect that your project will work with the next minor React release.
-- If something breaks unexpectedly, please let us know by [filing an issue](https://github.com/facebook/react/issues).
+- 运行测试套件以测试更新后的包。
+- 如果一切顺利，那太好了！可以开始期望你的项目将与下一个次要版本的 React 配合使用。
+- 如果出现意外的错误，请通过 [提交 issue](https://github.com/facebook/react/issues) 告诉我们。
 
-A project that uses this workflow is Next.js. You can refer to their [CircleCI configuration](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml) as an example.
+Next.js 使用了此工作流程，你可以参考他们的 [CircleCI 配置](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml) 作为示例。
 
-### Experimental channel {/*experimental-channel*/}
+### Experimental 渠道 {/*experimental-channel*/}
 
-Like Canary, the Experimental channel is a prerelease channel that tracks the main branch of the React repository. Unlike Canary, Experimental releases include additional features and APIs that are not ready for wider release.
+与 Canary 类似，Experimental 渠道是一个预发布渠道，追踪 React 仓库的主分支。与 Canary 不同，实验性版本包括尚未准备好广泛发布的其他功能和 API。
 
-Usually, an update to Canary is accompanied by a corresponding update to Experimental. They are based on the same source revision, but are built using a different set of feature flags.
+通常，Canary 的更新会伴随着 Experimental 的相应更新。它们基于相同的源代码修订版本，但使用不同的功能开关进行构建。
 
-Experimental releases may be significantly different than releases to Canary and Latest. **Do not use Experimental releases in user-facing applications.** You should expect frequent breaking changes between releases in the Experimental channel.
+实验性版本可能与 Canary 和 Latest 版本有显著差异。**不要在面向用户的应用程序中使用实验性版本**。你需要注意 Experimental 渠道的版本之间经常会发生破坏性更改。
 
-Releases in Experimental are published with the `experimental` tag on npm. Versions are generated from a hash of the build's contents and the commit date, e.g. `0.0.0-experimental-68053d940-20210623`.
+实验性版本使用 npm 上的 `experimental` 标签进行标识。版本是根据构建内容和提交日期的哈希值生成的，例如 `0.0.0-experimental-68053d940-20210623`。
 
-#### What goes into an experimental release? {/*what-goes-into-an-experimental-release*/}
+#### 实验版的发布内容是什么？ {/*what-goes-into-an-experimental-release*/}
 
-Experimental features are ones that are not ready to be released to the wider public, and may change drastically before they are finalized. Some experiments may never be finalized -- the reason we have experiments is to test the viability of proposed changes.
+实验性功能是那些尚未准备好发布给更广泛的公众使用，并且在最终确定之前可能会发生巨大变化的功能。有些实验性功能可能永远不会最终确定，我们进行实验的目的是为了测试拟议变更的可行性。
 
-For example, if the Experimental channel had existed when we announced Hooks, we would have released Hooks to the Experimental channel weeks before they were available in Latest.
+例如，如果在我们宣布 Hook 时存在 Experimental 渠道，我们会在 Hook 在最新版中可用之前的几周将其发布到 Experimental 渠道。
 
-You may find it valuable to run integration tests against Experimental. This is up to you. However, be advised that Experimental is even less stable than Canary. **We do not guarantee any stability between Experimental releases.**
+你可能会发现对实验版运行集成测试很有价值。这取决于你自己。但请注意，实验性版本的稳定性甚至不如 Canary。**我们不保证实验性版本任何稳定性**。
 
-#### How can I learn more about experimental features? {/*how-can-i-learn-more-about-experimental-features*/}
+#### 如何了解更多关于实验性功能的信息？ {/*how-can-i-learn-more-about-experimental-features*/}
 
-Experimental features may or may not be documented. Usually, experiments aren't documented until they are close to shipping in Canary or Latest.
+实验性功能可能有文档，也可能没有。通常情况下，实验性功能在 Canary 或 Latest 即将发布时才会撰写进入文档。
 
-If a feature is not documented, they may be accompanied by an [RFC](https://github.com/reactjs/rfcs).
+如果一个功能没有文档，可能会有一个 [RFC](https://github.com/reactjs/rfcs) 与之配套。
 
-We will post to the [React blog](/blog) when we're ready to announce new experiments, but that doesn't mean we will publicize every experiment.
+当我们准备好宣布新的实验性功能时，我们会在 [React 博客](/blog) 上发布相关信息，但这并不意味着我们会宣传每一个实验性功能。
 
-You can always refer to our public GitHub repository's [history](https://github.com/facebook/react/commits/main) for a comprehensive list of changes.
+你可以随时参考我们公开的 GitHub 仓库的 [历史记录](https://github.com/facebook/react/commits/main) 以获取完整的变更列表。
