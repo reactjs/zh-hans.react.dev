@@ -161,9 +161,9 @@ button { display: block; margin-top: 10px; }
 
 ---
 
-### Writing the reducer function {/*writing-the-reducer-function*/}
+### 实现 reducer 函数 {/*writing-the-reducer-function*/}
 
-A reducer function is declared like this:
+reducer 函数的定义如下：
 
 ```js
 function reducer(state, action) {
@@ -171,7 +171,7 @@ function reducer(state, action) {
 }
 ```
 
-Then you need to fill in the code that will calculate and return the next state. By convention, it is common to write it as a [`switch` statement.](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/switch) For each `case` in the `switch`, calculate and return some next state.
+你需要往函数体里面添加计算并返回新的 state 的逻辑。一般会使用 [`switch` 语句](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/switch)。在 `switch` 里不同的 `case` 下计算并返回相应的 state。
 
 ```js {4-7,10-13}
 function reducer(state, action) {
@@ -193,7 +193,7 @@ function reducer(state, action) {
 }
 ```
 
-Actions can have any shape. By convention, it's common to pass objects with a `type` property identifying the action. It should include the minimal necessary information that the reducer needs to compute the next state.
+action 可以是任意类型，不过通常实现为存在 `type` 属性的对象。也就是说它需要携带计算新的 state 值所依赖的最少信息。
 
 ```js {5,9-12}
 function Form() {
@@ -212,31 +212,31 @@ function Form() {
   // ...
 ```
 
-The action type names are local to your component. [Each action describes a single interaction, even if that leads to multiple changes in data.](/learn/extracting-state-logic-into-a-reducer#writing-reducers-well) The shape of the state is arbitrary, but usually it'll be an object or an array.
+action 的 type 依赖于组件的实际情况。[每个 action 都只描述一次交互，即使它会导致数据的多次更新](/learn/extracting-state-logic-into-a-reducer#writing-reducers-well)。state 的类型也是任意的，不过一般会使用对象或数组。
 
-Read [extracting state logic into a reducer](/learn/extracting-state-logic-into-a-reducer) to learn more.
+阅读 [将状态逻辑提取到 reducer](/learn/extracting-state-logic-into-a-reducer) 来了解更多内容。
 
 <Pitfall>
 
-State is read-only. Don't modify any objects or arrays in state:
+state 是只读的。即使是对象或数组也不要尝试修改它：
 
 ```js {4,5}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
-      // 🚩 Don't mutate an object in state like this:
+      // 🚩 不要像下面这样修改一个对象类型的 state：
       state.age = state.age + 1;
       return state;
     }
 ```
 
-Instead, always return new objects from your reducer:
+正确的做法是返回新的对象：
 
 ```js {4-8}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
-      // ✅ Instead, return a new object
+      // ✅ 正确的做法是返回新的对象
       return {
         ...state,
         age: state.age + 1
@@ -244,15 +244,15 @@ function reducer(state, action) {
     }
 ```
 
-Read [updating objects in state](/learn/updating-objects-in-state) and [updating arrays in state](/learn/updating-arrays-in-state) to learn more.
+阅读 [更新对象类型的 state](/learn/updating-objects-in-state) 和 [更新数组类型的 state](/learn/updating-arrays-in-state) 来了解更多内容。
 
 </Pitfall>
 
 <Recipes titleText="Basic useReducer examples" titleId="examples-basic">
 
-#### Form (object) {/*form-object*/}
+#### 表单（对象类型） {/*form-object*/}
 
-In this example, the reducer manages a state object with two fields: `name` and `age`.
+在这个示例中，state 是一个有 `name` 和 `age` 属性的对象。
 
 <Sandpack>
 
@@ -316,9 +316,9 @@ button { display: block; margin-top: 10px; }
 
 <Solution />
 
-#### Todo list (array) {/*todo-list-array*/}
+#### 代办事项（数组类型） {/*todo-list-array*/}
 
-In this example, the reducer manages an array of tasks. The array needs to be updated [without mutation.](/learn/updating-arrays-in-state)
+在这个示例中，reducer 管理一个名为 tasks 的数组。数组 [不能使用修改方法](/learn/updating-arrays-in-state) 来更新。
 
 <Sandpack>
 
