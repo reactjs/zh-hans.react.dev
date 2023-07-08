@@ -1,31 +1,31 @@
 ---
-title: "Introducing Zero-Bundle-Size React Server Components"
+title: "介绍零打包大小的 React 服务器组件"
 ---
 
-December 21, 2020 by [Dan Abramov](https://twitter.com/dan_abramov), [Lauren Tan](https://twitter.com/potetotes), [Joseph Savona](https://twitter.com/en_JS), and [Sebastian Markbåge](https://twitter.com/sebmarkbage)
+2020 年 12 月 21 日 [Dan Abramov](https://twitter.com/dan_abramov)、[Lauren Tan](https://twitter.com/potetotes)、[Joseph Savona](https://twitter.com/en_JS) 与 [Sebastian Markbåge](https://twitter.com/sebmarkbage)
 
 ---
 
 <Intro>
 
-2020 has been a long year. As it comes to an end we wanted to share a special Holiday Update on our research into zero-bundle-size **React Server Components**.
+2020 年是漫长的一年。随着它的结束，我们想在节日里分享一份特别的更新，介绍我们对零打包大小的 **React 服务器组件** 的研究。
 
 </Intro>
 
 ---
 
-To introduce React Server Components, we have prepared a talk and a demo. If you want, you can check them out during the holidays, or later when work picks back up in the new year.
+为了介绍 React 服务器组件，我们准备了一次演讲和演示。如果你愿意，在假期期间或新年工作重新开始后查看它们。
 
 <YouTubeIframe src="https://www.youtube.com/embed/TQQPAU21ZUw" />
 
-**React Server Components are still in research and development.** We are sharing this work in the spirit of transparency and to get initial feedback from the React community. There will be plenty of time for that, so **don't feel like you have to catch up right now!**
+**React 服务器组件仍处于研究和开发阶段**。我们将以透明的精神分享这项工作，并希望从 React 社区获得初步反馈。这个过程需要很多时间，所以 **你现在不必急着赶上进展**！
 
-If you want to check them out, we recommend going in the following order:
+如果你想了解它们，我们建议按照以下顺序进行查看：
 
-1. **Watch the talk** to learn about React Server Components and see the demo.
+1. **观看演讲** 以了解 React 服务器组件并观看演示。
 
-2. **[Clone the demo](http://github.com/reactjs/server-components-demo)** to play with React Server Components on your computer.
+2. **[克隆演示](http://github.com/reactjs/server-components-demo)** 并在你的计算机上尝试使用 React 服务器组件。
 
-3. **[Read the RFC (with FAQ at the end)](https://github.com/reactjs/rfcs/pull/188)** for a deeper technical breakdown and to provide feedback.
+3. **[阅读 RFC（文末有FAQ）](https://github.com/reactjs/rfcs/pull/188)** 以深入了解技术细节并提供反馈意见。
 
-We are excited to hear from you on the RFC or in replies to the [@reactjs](https://twitter.com/reactjs) Twitter handle. Happy holidays, stay safe, and see you next year!
+我们非常期待你对 RFC 的反馈或者通过 [@reactjs](https://twitter.com/reactjs) 的 Twitter 账号回复我们。祝你度过愉快的假期，保重，明年再见！
