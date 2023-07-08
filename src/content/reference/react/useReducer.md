@@ -70,29 +70,29 @@ function handleClick() {
 
 React 会调用 `reducer` 函数来更新 state，`reducer` 函数的参数就是当前的 state 和你通过 `dispatch` 传入的 action。
 
-#### Parameters {/*dispatch-parameters*/}
+#### 参数 {/*dispatch-parameters*/}
 
-* `action`: The action performed by the user. It can be a value of any type. By convention, an action is usually an object with a `type` property identifying it and, optionally, other properties with additional information.
+* `action`：用户执行的操作。可以是任意类型的值。按照惯例， action 一般是一个对象，其中 `type` 属性被用来区分类型，其它属性携带额外信息。
 
-#### Returns {/*dispatch-returns*/}
+#### 返回值 {/*dispatch-returns*/}
 
-`dispatch` functions do not have a return value.
+`dispatch` 函数没有返回值。
 
-#### Caveats {/*setstate-caveats*/}
+#### 注意事项 {/*setstate-caveats*/}
 
-* The `dispatch` function **only updates the state variable for the *next* render**. If you read the state variable after calling the `dispatch` function, [you will still get the old value](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value) that was on the screen before your call.
+* `dispatch` 函数 **是用来为 *下一次* 渲染更新 state 的**。如果你在调用 `dispatch` 函数后读取 state，[也不会拿到更新后的值](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value)，也就是说只能获取到调用前的值。
 
-* If the new value you provide is identical to the current `state`, as determined by an [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison, React will **skip re-rendering the component and its children.** This is an optimization. React may still need to call your component before ignoring the result, but it shouldn't affect your code.
+* 如果你提供的新值和当前的 `state` 相同（使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较），React 会 **跳过组件和子组件的重新渲染**。这是一种优化手段。虽然在跳过重新渲染前 React 可能会调用你的组件，但是这不应该影响你的代码。
 
-* React [batches state updates.](/learn/queueing-a-series-of-state-updates) It updates the screen **after all the event handlers have run** and have called their `set` functions. This prevents multiple re-renders during a single event. In the rare case that you need to force React to update the screen earlier, for example to access the DOM, you can use [`flushSync`.](/reference/react-dom/flushSync)
+* React [会批量更新 state](/learn/queueing-a-series-of-state-updates)。state 会在 **所有事件函数执行完毕** 并且已经调用过它的 `set` 函数后进行更新，这可以防止在一个事件中多次进行重新渲染。如果在访问 DOM 等极少数情况下需要强制 react 提前更新，可以使用 [`flushSync`](/reference/react-dom/flushSync)。
 
 ---
 
-## Usage {/*usage*/}
+## 使用 {/*usage*/}
 
-### Adding a reducer to a component {/*adding-a-reducer-to-a-component*/}
+### 向组件添加 reducer {/*adding-a-reducer-to-a-component*/}
 
-Call `useReducer` at the top level of your component to manage state with a [reducer.](/learn/extracting-state-logic-into-a-reducer)
+在组件的顶层作用域调用 `useReducer` 来创建一个用于管理状态的 [reducer](/learn/extracting-state-logic-into-a-reducer)。
 
 ```js [[1, 8, "state"], [2, 8, "dispatch"], [4, 8, "reducer"], [3, 8, "{ age: 42 }"]]
 import { useReducer } from 'react';
@@ -106,12 +106,12 @@ function MyComponent() {
   // ...
 ```
 
-`useReducer` returns an array with exactly two items:
+`useReducer` 返回一个由两个值组成的数组：
 
-1. The <CodeStep step={1}>current state</CodeStep> of this state variable, initially set to the <CodeStep step={3}>initial state</CodeStep> you provided.
-2. The <CodeStep step={2}>`dispatch` function</CodeStep> that lets you change it in response to interaction.
+1. <CodeStep step={1}>当前的 state</CodeStep>，首次渲染时为你提供的 <CodeStep step={3}>初始值</CodeStep>。
+2. <CodeStep step={2}>`dispatch` 函数</CodeStep>，让你可以根据交互修改 state。
 
-To update what's on the screen, call <CodeStep step={2}>`dispatch`</CodeStep> with an object representing what the user did, called an *action*:
+为了更新屏幕上的内容，使用一个表示用户操作的 *action* 来调用 <CodeStep step={2}>`dispatch`</CodeStep> 函数：
 
 ```js [[2, 2, "dispatch"]]
 function handleClick() {
@@ -119,7 +119,7 @@ function handleClick() {
 }
 ```
 
-React will pass the current state and the action to your <CodeStep step={4}>reducer function</CodeStep>. Your reducer will calculate and return the next state. React will store that next state, render your component with it, and update the UI.
+React 会把当前的 state 和这个 action 一起作为参数传给 <CodeStep step={4}>reducer 函数</CodeStep>。reducer 会计算并返回新的 state。React 保存新的 state，并使用它渲染组件和更新 UI。
 
 <Sandpack>
 
@@ -157,7 +157,7 @@ button { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-`useReducer` is very similar to [`useState`](/reference/react/useState), but it lets you move the state update logic from event handlers into a single function outside of your component. Read more about [choosing between `useState` and `useReducer`.](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer)
+`useReducer` 和 [`useState`](/reference/react/useState) 非常相似，但是它可以让你把状态更新逻辑从事件处理函数中移动到组件外部。详情参阅 [选择使用 `useState` 或 `useReducer`](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer)。
 
 ---
 
