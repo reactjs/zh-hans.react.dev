@@ -509,9 +509,9 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution />
 
-#### Writing concise update logic with Immer {/*writing-concise-update-logic-with-immer*/}
+#### 使用 Immer 编写简介的更新逻辑 {/*writing-concise-update-logic-with-immer*/}
 
-If updating arrays and objects without mutation feels tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer#useimmerreducer) to reduce repetitive code. Immer lets you write concise code as if you were mutating objects, but under the hood it performs immutable updates:
+如果使用复制方法更新更新和对象让你觉得麻烦，那么可以使用 [Immer](https://github.com/immerjs/use-immer#useimmerreducer) 这样的库来减少一些重复的样板代码。Immer 让你可以专注于逻辑，因为它在内部均使用复制方法来完成更新：
 
 <Sandpack>
 
@@ -723,9 +723,9 @@ ul, li { margin: 0; padding: 0; }
 
 ---
 
-### Avoiding recreating the initial state {/*avoiding-recreating-the-initial-state*/}
+### 避免重新创建初始值 {/*avoiding-recreating-the-initial-state*/}
 
-React saves the initial state once and ignores it on the next renders.
+React 会保存 state 的初始值并在下一次渲染的时候忽略它。
 
 ```js
 function createInitialState(username) {
@@ -737,9 +737,9 @@ function TodoList({ username }) {
   // ...
 ```
 
-Although the result of `createInitialState(username)` is only used for the initial render, you're still calling this function on every render. This can be wasteful if it's creating large arrays or performing expensive calculations.
+虽然 `createInitialState(username)` 的返回值只用于初次渲染，但是在每一次渲染的时候都会被调用。如果它创建了比较大的数组或者执行了昂贵的计算就会浪费性能。
 
-To solve this, you may **pass it as an _initializer_ function** to `useReducer` as the third argument instead:
+你可以通过给  `useReducer` 的第三个参数传入 **初始化函数** 来解决它：
 
 ```js {6}
 function createInitialState(username) {
@@ -751,15 +751,15 @@ function TodoList({ username }) {
   // ...
 ```
 
-Notice that you’re passing `createInitialState`, which is the *function itself*, and not `createInitialState()`, which is the result of calling it. This way, the initial state does not get re-created after initialization.
+注意你传入的参数是 `createInitialState` 这个 *函数自身*，而不是执行 `createInitialState()` 的返回值。这样传参就可以保证初始化函数不会再次运行。
 
-In the above example, `createInitialState` takes a `username` argument. If your initializer doesn't need any information to compute the initial state, you may pass `null` as the second argument to `useReducer`.
+在上面这个例子中， `createInitialState` 有一个  `username` 参数。如果初始化函数不需要参数就可以计算初始值，可以把 `useReducer` 的第二个参数改为 `null`。
 
 <Recipes titleText="The difference between passing an initializer and passing the initial state directly" titleId="examples-initializer">
 
-#### Passing the initializer function {/*passing-the-initializer-function*/}
+#### 使用初始化函数 {/*passing-the-initializer-function*/}
 
-This example passes the initializer function, so the `createInitialState` function only runs during initialization. It does not run when component re-renders, such as when you type into the input.
+这个示例使用了一个初始化函数，所以 `createInitialState` 函数只会在初次渲染的时候进行调用。组件重新渲染的时候初始化函数也不会再次被调用，比如往输入框中输入内容。
 
 <Sandpack>
 
@@ -847,7 +847,7 @@ export default function TodoList({ username }) {
 
 #### Passing the initial state directly {/*passing-the-initial-state-directly*/}
 
-This example **does not** pass the initializer function, so the `createInitialState` function runs on every render, such as when you type into the input. There is no observable difference in behavior, but this code is less efficient.
+这个示例 **没有使用** 初始化函数，所以当你往输入框输入内容导致组件重新渲染的时候， `createInitialState` 函数就会执行。虽然在渲染结果上看没有什么区别，但是多余的逻辑会导致性能变差。
 
 <Sandpack>
 
