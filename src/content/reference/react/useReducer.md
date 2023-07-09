@@ -936,28 +936,28 @@ export default function TodoList({ username }) {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 疑难解答 {/*troubleshooting*/}
 
-### I've dispatched an action, but logging gives me the old state value {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
+### 我已经 dispatch 了一个 action，但是打印出来仍然还是旧的 state {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
 
-Calling the `dispatch` function **does not change state in the running code**:
+调用 `dispatch` 函数 **不会改变当前渲染的 state**：
 
 ```js {4,5,8}
 function handleClick() {
   console.log(state.age);  // 42
 
-  dispatch({ type: 'incremented_age' }); // Request a re-render with 43
-  console.log(state.age);  // Still 42!
+  dispatch({ type: 'incremented_age' }); // 用 43 进行重新渲染
+  console.log(state.age);  // 还是 42！
 
   setTimeout(() => {
-    console.log(state.age); // Also 42!
+    console.log(state.age); // 一样是 42！
   }, 5000);
 }
 ```
 
-This is because [states behaves like a snapshot.](/learn/state-as-a-snapshot) Updating state requests another render with the new state value, but does not affect the `state` JavaScript variable in your already-running event handler.
+这是因为 [state 的行为和快照一样](/learn/state-as-a-snapshot)。更新 state 会使用新的值来对组件进行重新渲染，但是不会改变当前执行的事件处理函数里面 `state` 的值。
 
-If you need to guess the next state value, you can calculate it manually by calling the reducer yourself:
+如果你需要获取更新后的 state，可以手动调用 reducer 来得到结果：
 
 ```js
 const action = { type: 'incremented_age' };
@@ -970,20 +970,20 @@ console.log(nextState); // { age: 43 }
 
 ---
 
-### I've dispatched an action, but the screen doesn't update {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
+### 我已经 dispatch 了一个 action，但是屏幕并没有更新 {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
 
-React will **ignore your update if the next state is equal to the previous state,** as determined by an [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. This usually happens when you change an object or an array in state directly:
+React 使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较更新前后的 state，如果 **它们相等就会跳过这次更新**。这通常是因为你直接修改了对象或数组：
 
 ```js {4-5,9-10}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
-      // 🚩 Wrong: mutating existing object
+      // 🚩 错误行为：直接修改对象
       state.age++;
       return state;
     }
     case 'changed_name': {
-      // 🚩 Wrong: mutating existing object
+      // 🚩 错误行为：直接修改对象
       state.name = action.nextName;
       return state;
     }
@@ -992,20 +992,20 @@ function reducer(state, action) {
 }
 ```
 
-You mutated an existing `state` object and returned it, so React ignored the update. To fix this, you need to ensure that you're always [updating objects in state](/learn/updating-objects-in-state) and [updating arrays in state](/learn/updating-arrays-in-state) instead of mutating them:
+你直接修改并返回了一个 `state` 对象，所以 React 会跳过这次更新。为了修改这个错误，你应该确保总是 [使用正确的方式更新对象](/learn/updating-objects-in-state) 和 [使用正确的方式更新数组](/learn/updating-arrays-in-state)：
 
 ```js {4-8,11-15}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
-      // ✅ Correct: creating a new object
+      // ✅ 修复：创建一个新的对象
       return {
         ...state,
         age: state.age + 1
       };
     }
     case 'changed_name': {
-      // ✅ Correct: creating a new object
+      // ✅ 修复：创建一个新的对象
       return {
         ...state,
         name: action.nextName
@@ -1018,29 +1018,29 @@ function reducer(state, action) {
 
 ---
 
-### A part of my reducer state becomes undefined after dispatching {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
+### 在 dispatch 后 state 的某些属性变成了 undefined {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
 
-Make sure that every `case` branch **copies all of the existing fields** when returning the new state:
+请确保返回新的 state 的每个 `case` 语句中 **都复制了当前的属性**：
 
 ```js {5}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
       return {
-        ...state, // Don't forget this!
+        ...state, //不要忘记复制之前的属性！
         age: state.age + 1
       };
     }
     // ...
 ```
 
-Without `...state` above, the returned next state would only contain the `age` field and nothing else.
+如果上面的代码没有 `...state` ，返回的新的 state 就只有 `age` 属性。
 
 ---
 
-### My entire reducer state becomes undefined after dispatching {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
+### 在 dispatch 后整个 state 都变成了 undefined {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
 
-If your state unexpectedly becomes `undefined`, you're likely forgetting to `return` state in one of the cases, or your action type doesn't match any of the `case` statements. To find why, throw an error outside the `switch`:
+如果你的 state 错误地变成了 `undefined`，可能是因为你忘记在某个分支返回 state，或者是你遗漏了某些 `case` 分支。为了找到原因，抛出一个错误在 `switch` 语句后面：
 
 ```js {10}
 function reducer(state, action) {
@@ -1056,42 +1056,42 @@ function reducer(state, action) {
 }
 ```
 
-You can also use a static type checker like TypeScript to catch such mistakes.
+你也可以通过使用 TypeScript 等静态检查工具来发现这类错误。
 
 ---
 
-### I'm getting an error: "Too many re-renders" {/*im-getting-an-error-too-many-re-renders*/}
+### 我收到了一个报错："Too many re-renders" {/*im-getting-an-error-too-many-re-renders*/}
 
-You might get an error that says: `Too many re-renders. React limits the number of renders to prevent an infinite loop.` Typically, this means that you're unconditionally dispatching an action *during render*, so your component enters a loop: render, dispatch (which causes a render), render, dispatch (which causes a render), and so on. Very often, this is caused by a mistake in specifying an event handler:
+你可能会得到这样一条报错信息：`Too many re-renders. React limits the number of renders to prevent an infinite loop.` 。通常这意味着你在 *渲染期间*  dispatch 了 action，这导致你的组件进入了无限的渲染循环。dispatch（会导致一次重新渲染）、渲染、dispatch（会导致一次重新渲染），然后无限循环。大多数这样的错误是由于事件处理函数中存在错误的逻辑：
 
 ```js {1-2}
-// 🚩 Wrong: calls the handler during render
+// 🚩 错误：渲染期间调用了处理函数
 return <button onClick={handleClick()}>Click me</button>
 
-// ✅ Correct: passes down the event handler
+// ✅ 修复：传递一个处理函数，而不是调用
 return <button onClick={handleClick}>Click me</button>
 
-// ✅ Correct: passes down an inline function
+// ✅ 修复：传递一个内联的箭头函数
 return <button onClick={(e) => handleClick(e)}>Click me</button>
 ```
 
-If you can't find the cause of this error, click on the arrow next to the error in the console and look through the JavaScript stack to find the specific `dispatch` function call responsible for the error.
+如果你没有发现上述错误，在控制台点开报错旁边的箭头以查看错误堆栈，从中查找是哪个 `dispatch` 函数引发的错误。
 
 ---
 
-### My reducer or initializer function runs twice {/*my-reducer-or-initializer-function-runs-twice*/}
+### 我的 reducer 和初始化函数运行了两次 {/*my-reducer-or-initializer-function-runs-twice*/}
 
-In [Strict Mode](/reference/react/StrictMode), React will call your reducer and initializer functions twice. This shouldn't break your code.
+[严格模式](/reference/react/StrictMode) 下 React 会调用两次 reducer 和初始化函数，这不应该会破坏你的代码逻辑。
+严格模式下 React 会 **调用两次 reducer 和初始化函数**，这可以 [帮助你发现意外的副作用](#my-reducer-or-initializer-function-runs-twice)。这只是开发模式下的行为，并不会影响生产环境。只要 reducer 和初始化函数是纯函数（理应如此）就不会改变你的逻辑。其中一个调用结果会被忽略。
+这个 **开发模式下** 的行为可以帮助你 [保持组件的纯度](/learn/keeping-components-pure)。React 会使用其中一次调用结果，并且忽略另一个结果。如果你的组件、初始化函数以及 reducer 函数都没有副作用，就不会改变你的逻辑。而且一旦存在副作用，这个行为就可以帮助你发现它。
 
-This **development-only** behavior helps you [keep components pure.](/learn/keeping-components-pure) React uses the result of one of the calls, and ignores the result of the other call. As long as your component, initializer, and reducer functions are pure, this shouldn't affect your logic. However, if they are accidentally impure, this helps you notice the mistakes.
-
-For example, this impure reducer function mutates an array in state:
+比如下面这个 reducer 函数直接修改了数组类型的 state：
 
 ```js {4-6}
 function reducer(state, action) {
   switch (action.type) {
     case 'added_todo': {
-      // 🚩 Mistake: mutating state
+      // 🚩 错误：直接修改 state
       state.todos.push({ id: nextId++, text: action.text });
       return state;
     }
@@ -1100,13 +1100,13 @@ function reducer(state, action) {
 }
 ```
 
-Because React calls your reducer function twice, you'll see the todo was added twice, so you'll know that there is a mistake. In this example, you can fix the mistake by [replacing the array instead of mutating it](/learn/updating-arrays-in-state#adding-to-an-array):
+因为 React 会调用 reducer 函数两次，所以你会看到添加了两条代办事项，于是你知道这是错误的行为。在这个示例中，你可以通过 [返回新的数组而不是修改数组](/learn/updating-arrays-in-state#adding-to-an-array) 来修复它：
 
 ```js {4-11}
 function reducer(state, action) {
   switch (action.type) {
     case 'added_todo': {
-      // ✅ Correct: replacing with new state
+      // ✅ 修复：返回一个新的 state 数组
       return {
         ...state,
         todos: [
@@ -1120,6 +1120,6 @@ function reducer(state, action) {
 }
 ```
 
-Now that this reducer function is pure, calling it an extra time doesn't make a difference in behavior. This is why React calling it twice helps you find mistakes. **Only component, initializer, and reducer functions need to be pure.** Event handlers don't need to be pure, so React will never call your event handlers twice.
+现在这个 reducer 是纯函数了，调用两次也不会有不一致的行为。这就是 React 如何通过调用两次函数来帮助你发现错误。**只有组件、初始化函数和 reducer 函数需要是纯函数**。事件处理函数不需要实现为纯函数，所以 React 永远不会两次调用你的事件函数。
 
-Read [keeping components pure](/learn/keeping-components-pure) to learn more.
+阅读 [保持组件纯度](/learn/keeping-components-pure) 来了解更多。
