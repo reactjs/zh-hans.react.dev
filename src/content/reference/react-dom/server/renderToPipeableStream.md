@@ -4,7 +4,7 @@ title: renderToPipeableStream
 
 <Intro>
 
-`renderToPipeableStream` 将一个 React 组件树渲染为管道化的 [Node.js Stream](https://nodejs.org/api/stream.html)。
+`renderToPipeableStream` 将一个 React 组件树渲染为管道化的 [Node.js 流](https://nodejs.org/api/stream.html)。
 
 ```js
 const { pipe, abort } = renderToPipeableStream(reactNode, options?)
@@ -16,17 +16,17 @@ const { pipe, abort } = renderToPipeableStream(reactNode, options?)
 
 <Note>
 
-这个 API 是专供 Node.js 使用的。像 Deno 这类新式非主流运行时环境，可以支持 [Web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API)，它们应该使用另一个 API [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)。
+这个 API 是专供 Node.js 使用的。像 Deno 这类可以支持 [Web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API) 的新式非主流运行时环境，它们应该使用另一个 API [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)。
 
 </Note>
 
 ---
 
-## 参考资料 {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `renderToPipeableStream(reactNode, options?)` {/*rendertopipeablestream*/}
 
-调用 `renderToPipeableStream` 可以将 React 组件树渲染为 HTML 并形成 [Node.js 流](https://nodejs.org/api/stream.html#writable-streams)。
+调用 `renderToPipeableStream` 将 React 组件树渲染为 HTML 后注入 [Node.js 流](https://nodejs.org/api/stream.html#writable-streams)。
 
 ```js
 import { renderToPipeableStream } from 'react-dom/server';
@@ -46,7 +46,7 @@ const { pipe } = renderToPipeableStream(<App />, {
 
 #### 参数 {/*parameters*/}
 
-* `reactNode`: 一个你想要将其渲染为 HTML 的 React 节点。比如，像 `<App />` 这样的 JSX 元素。这样做意味着整个页面文档都将被渲染，所以这里提到的 `App` 组件将渲染 `<html>` 标签.
+* `reactNode`：一个你想要将其渲染为 HTML 的 React 节点。比如，像 `<App />` 这样的 JSX 元素。这样做意味着整个页面文档都将被渲染，所以这里提到的 `App` 组件将渲染 `<html>` 标签.
 
 * **可选** `options`：一个用于配置流的对象.
   * **可选** `bootstrapScriptContent`：指定一个字符串，这个字符串将被放入 `<script>` 标签中作为其内容。 
@@ -75,7 +75,7 @@ const { pipe } = renderToPipeableStream(<App />, {
 
 ### 将 React 组件树渲染为 HTML 并形成 Node.js 流 {/*rendering-a-react-tree-as-html-to-a-nodejs-stream*/}
 
-调用 `renderToPipeableStream` 可以将 React 组件树渲染为 HTML 并形成 [Node.js Stream](https://nodejs.org/api/stream.html#writable-streams)。
+调用 `renderToPipeableStream` 将 React 组件树渲染为 HTML 后注入 [Node.js 流](https://nodejs.org/api/stream.html#writable-streams)。
 
 ```js [[1, 5, "<App />"], [2, 6, "['/main.js']"]]
 import { renderToPipeableStream } from 'react-dom/server';
