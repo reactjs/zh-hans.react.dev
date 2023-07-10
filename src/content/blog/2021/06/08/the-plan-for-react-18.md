@@ -2,7 +2,7 @@
 title: "React 18 发布计划"
 ---
 
-2021 年 7 月 8 日 2021，由 [Andrew Clark](https://twitter.com/acdlite)、[Brian Vaughn](https://github.com/bvaughn)、[Christine Abernathy](https://twitter.com/abernathyca)、[Dan Abramov](https://twitter.com/dan_abramov)、[Rachel Nabors](https://twitter.com/rachelnabors)、[Rick Hanlon](https://twitter.com/rickhanlonii)、[Sebastian Markbåge](https://twitter.com/sebmarkbage) 和 [Seth Webster](https://twitter.com/sethwebster) 发布。
+2021 年 7 月 8 日 [Andrew Clark](https://twitter.com/acdlite)、[Brian Vaughn](https://github.com/bvaughn)、[Christine Abernathy](https://twitter.com/abernathyca)、[Dan Abramov](https://twitter.com/dan_abramov)、[Rachel Nabors](https://twitter.com/rachelnabors)、[Rick Hanlon](https://twitter.com/rickhanlonii)、[Sebastian Markbåge](https://twitter.com/sebmarkbage) 与 [Seth Webster](https://twitter.com/sethwebster)
 
 ---
 
