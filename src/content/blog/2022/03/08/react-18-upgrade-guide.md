@@ -225,7 +225,6 @@ function handleClick() {
 在 React 18 工作组，我们和第三方库的维护者合作，创建需要支持 styles 和外部存储中的特定用例的并发渲染的新 API。为了支持 React 18，一些第三方库可能需要切换到下面的 API 之一：
 
 * `useSyncExternalStore` 是一个新增 hook，它允许外部存储通过对 store 的强制更新保持同步从而支持并发读取。这个新 API 推荐用于任何和 React 的外部状态集成的库。了解更多信息请查看 [useSyncExternalStore 概览](https://github.com/reactwg/react-18/discussions/70) 和 [useSyncExternalStore API 细节](https://github.com/reactwg/react-18/discussions/86)。
-
 * `useInsertionEffect` 是一个新增 hook，它可以让 CSS-in-JS 库解决渲染中注入样式的性能问题。我们希望只有在你已经构建了一个 CSS-in-JS 库的情况下才使用它。这个 hook 会在 DOM 变化之后， layout effect 读取新的布局之前运行。这解决了 React 17 及其以下就已经存在但是在 React 18 更重要的问题，因为在并发渲染期间 React 会阻止浏览器，给了它一个重新计算布局的机会。了解更多信息，查看 [`<style>`库升级指南](https://github.com/reactwg/react-18/discussions/110)。
 
 React 18 也引入了一些并发渲染的新 API，例如 `startTransition`、`useDeferredValue` 以及 `useId`，关于此更多信息我们在 [发布报告](/blog/2022/03/29/react-v18) 中有所分享。
