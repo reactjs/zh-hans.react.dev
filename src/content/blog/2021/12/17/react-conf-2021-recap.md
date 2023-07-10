@@ -95,7 +95,7 @@ React 18 还包括使用 Suspense 对服务端渲染性能的改进。
 
 ## React 文档主题演讲 {/*react-docs-keynote*/}
 
-[Rachel Nabors](https://twitter.com/rachelnabors) 开始了有关 React 学习和设计的部分演讲，并发表了关于我们对 React 新文档（[现已作为 React.dev 发布]((/blog/2023/03/16/introducing-react-dev))）的投入的主题演讲：
+[Rachel Nabors](https://twitter.com/rachelnabors) 开始了有关 React 学习和设计的部分演讲，并发表了关于我们对 React 新文档（[现已作为 React.dev 发布](/blog/2023/03/16/introducing-react-dev)）的投入的主题演讲：
 
 <YouTubeIframe src="https://www.youtube.com/embed/mneDaMYOKP8" />
 
