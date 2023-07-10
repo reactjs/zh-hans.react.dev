@@ -16,7 +16,7 @@ const root = createRoot(domNode, options?)
 
 ---
 
-## 参考资料 {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `createRoot(domNode, options?)` {/*createroot*/}
 
@@ -121,7 +121,7 @@ root.unmount();
 
 ---
 
-## 使用方式 {/*usage*/}
+## 用法 {/*usage*/}
 
 ### 渲染一个完全由 React 构建的应用 {/*rendering-an-app-fully-built-with-react*/}
 
