@@ -1,5 +1,5 @@
 ---
-title: '同步操作与 Effect'
+title: '使用 Effect 进行同步'
 ---
 
 <Intro>
@@ -22,7 +22,7 @@ title: '同步操作与 Effect'
 
 在我们开始讨论 Effect 之前，你需要熟悉在 React 组件中两种类型的内部逻辑：
 
-- **渲染逻辑代码**（详见 [描述用户界面](/learn/describing-the-ui) 一节）它位于组件声明区块的顶部位置。也就是你获取属性(Props)和设置状态 (State) 的地方，程序执行时会对这些代码进行计算，然后返回得到的 JSX 组件，并在屏幕上渲染。[渲染逻辑代码必须是纯粹的](/learn/keeping-components-pure)。就像数学公式，它只能去**计算**并得到结果，除此之外什么也不要做。
+- **渲染逻辑代码**（详见 [描述用户界面](/learn/describing-the-ui) 一节）它位于组件声明区块的顶部位置。也就是你获取 props 和设置 state 的地方，程序执行时会对这些代码进行计算，然后返回得到的 JSX 组件，并在屏幕上渲染。[渲染逻辑代码必须是纯粹的](/learn/keeping-components-pure)。就像数学公式，它只能去 **计算** 并得到结果，除此之外什么也不要做。
 
 - **事件处理程序** （详见 [添加交互](/learn/adding-interactivity) 一节）它是组件内声明的函数，它们 **做** 任务而不仅仅有计算渲染逻辑。还可以是更新输入字段、再比如在电商网站中提交 HTTP 、POST 请求以发送“购买”的操作，或者将用户导航到另一个页面。事件处理程序还包括特定的用户操作（例如，单击按钮或键入）引起的 [“副作用”](https://en.wikipedia.org/wiki/Side_effect_(computer_science))（因为它会改变程序的 State 状态）。
 
@@ -32,14 +32,14 @@ title: '同步操作与 Effect'
 
 <Note>
 
-在本文和后续文本中，这里的 `Effect` 在 React 里面是一个专有定义，即由渲染引起的副作用。React 借助了一部分函数式编程的思想。为了指代更广泛的编程概念，也可以称其为 “副作用 (side effect)”。
+在本文和后续文本中，这里的 `Effect` 在 React 里面是一个专有定义，即由渲染引起的副作用。React 借助了一部分函数式编程的思想。为了指代更广泛的编程概念，也可以称其为 “副作用（side effect）”。
 
 </Note>
 
 
 ## 你可能不需要 Effect {/*you-might-not-need-an-effect*/}
 
-**不要莽然在你的组件中使用 Effect**。记住，Effect 通常用于暂时“跳出”你的 React 代码与一些**外部**系统进行同步。这包括浏览器 API、第三方小部件、网络等。如果你想用 Effect 仅根据其他状态调整某些状态，那么[你可能不需要 Effect](/learn/you-might-not-need-an-effect)。
+**不要莽然在你的组件中使用 Effect**。记住，Effect 通常用于暂时“跳出”你的 React 代码与一些 **外部** 系统进行同步。这包括浏览器 API、第三方小部件、网络等。如果你想用 Effect 仅根据其他状态调整某些状态，那么[你可能不需要 Effect](/learn/you-might-not-need-an-effect)。
 
 ## 如何写一个 Effect {/*how-to-write-an-effect*/}
 
@@ -47,13 +47,13 @@ title: '同步操作与 Effect'
 
 1. **声明一个 Effect**。默认情况下，你的 Effect 会在每次渲染后都会执行。
 2. **指定 Effect 依赖**。大多数 Effect 应该按需执行，而不是在每次渲染后都要执行。例如，淡入动画应该只在组件出现时触发。连接和断开服务器的操作只应在组件出现和消失时，或者切换聊天室时执行。你将学习如何通过指定依赖来控制如何按需执行。
-3. **必要时添加清理操作**。有的 Effect 需要指定如何停止、撤销，或者清除它的效果。例如，“连接”操作需要 “断连”，“订阅”需要 “退订”，以及 “获取”既需要“取消”也需要 “忽略”。你将学习如何让通过 *清理操作函数* 来做这些。
+3. **必要时添加清理操作**。有的 Effect 需要指定如何停止、撤销，或者清除它的效果。例如，“连接”操作需要“断连”，“订阅”需要“退订”，以及“获取”既需要“取消”也需要“忽略”。你将学习如何让通过 **清理函数** 来做到这一切。
 
-以下是具体步骤
+以下是具体步骤。
 
 ### 第 1 步：声明 Effect {/*step-1-declare-an-effect*/}
 
-要在你的组件内声明 Effect ，先从React模块中引入 [`useEffect` Hook](/reference/react/useEffect)：
+要在你的组件内声明 Effect ，先从 React 模块中引入 [`useEffect` Hook](/reference/react/useEffect)：
 
 ```js
 import { useEffect } from 'react';
@@ -64,7 +64,7 @@ import { useEffect } from 'react';
 ```js {2-4}
 function MyComponent() {
   useEffect(() => {
-    // Code here will run after *every* render
+    // 这里的代码每次都会被渲染
   });
   return <div />;
 }
@@ -78,16 +78,16 @@ function MyComponent() {
 <VideoPlayer isPlaying={isPlaying} />;
 ```
 
-Your custom `VideoPlayer` component renders the built-in browser [`<video>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video) tag:
+自定义的 `VideoPlayer` 组件渲染了内置的 [`<video>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video) 标签：
 
 ```js
 function VideoPlayer({ src, isPlaying }) {
-  // TODO: do something with isPlaying
+  // TODO: 使用 isPlaying 做一些事情
   return <video src={src} />;
 }
 ```
 
-However, the browser `<video>` tag does not have an `isPlaying` prop. The only way to control it is to manually call the [`play()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/play) and [`pause()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/pause) methods on the DOM element. **You need to synchronize the value of `isPlaying` prop, which tells whether the video _should_ currently be playing, with calls like `play()` and `pause()`.**
+然而浏览器的 `<video>` tag 没有 `isPlaying` 属性。控制它的唯一方式就是在 DOM 元素上调用 [`play()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/play) 和 [`pause()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/pause) 方法。**你需要将 `isPlaying` 属性的值与 `play()` 和 `pause()` 等函数的调用进行同步，该属性用于告知当前视频是否应该播放。**
 
 我们首先要为 `<video>` 这个DOM节点 [获取对象引用](/learn/manipulating-the-dom-with-refs)。
 
@@ -102,10 +102,9 @@ function VideoPlayer({ src, isPlaying }) {
   const ref = useRef(null);
 
   if (isPlaying) {
-    ref.current.play();  // Calling these while rendering isn't allowed.
+    ref.current.play();  // 渲染期间不能调用 `play()`。 
   } else {
-    ref.current.pause(); // Also, this crashes.
-  }
+    ref.current.pause(); // 这也不行。
 
   return <video ref={ref} src={src} loop playsInline />;
 }
@@ -115,7 +114,7 @@ export default function App() {
   return (
     <>
       <button onClick={() => setIsPlaying(!isPlaying)}>
-        {isPlaying ? 'Pause' : 'Play'}
+        {isPlaying ? '暂停' : '播放'}
       </button>
       <VideoPlayer
         isPlaying={isPlaying}
@@ -133,7 +132,7 @@ video { width: 250px; }
 
 </Sandpack>
 
-这段代码之所以不正确，是因为它试图在渲染期间对 DOM 节点进行操作。在React中，[ JSX 的渲染必须是纯粹操作](/learn/keeping-components-pure) 并且不应该包含任何像修改 DOM 的副作用。
+这段代码之所以不正确，是因为它试图在渲染期间对 DOM 节点进行操作。在 React 中，[JSX 的渲染必须是纯粹操作](/learn/keeping-components-pure) 并且不应该包含任何像修改 DOM 的副作用。
 
 此外，在首次调用 `VideoPlayer` 时，在没有运行到 return JSX 这一步之前，先执行的是渲染逻辑代码，但此时还不清楚要返回的 JSX 是什么样的。因此 React 还不知道要创建哪些 DOM 对象。所以它要渲染 `<video>` 的 DOM 此时还不存在！这样就还不能调用 `play()` 和 `pause()` 方法，否则会出现 `Reference Error: Cannot read properties of null (reading 'ref.current')` 的引用错误。
 
@@ -161,7 +160,7 @@ function VideoPlayer({ src, isPlaying }) {
 
 当 `VideoPlayer` 组件渲染时（无论是否为首次渲染），会发生以下事情。首先，React 会刷新屏幕，确保 `<video>` 元素以正确地出现在 DOM 中。然后 React 将运行你的 Effect。最后，你的 Effect 将根据 `isPlaying` 的值调用 `play()` 或 `pause()` 。
 
-试试按下几次 Play/Pause 操作 ，观察视频播放器的播放、暂停行为是如何与 `isPlaying` 属性值同步的：
+试试按下几次播放和暂停操作，观察视频播放器的播放、暂停行为是如何与 `isPlaying` 属性值同步的：
 
 <Sandpack>
 
@@ -341,15 +340,15 @@ video { width: 250px; }
 
 ```js {2,7}
   useEffect(() => {
-    if (isPlaying) { // It's used here...
+    if (isPlaying) { // 应该这样写
       // ...
     } else {
       // ...
     }
-  }, [isPlaying]); // ...so it must be declared here!
+  }, [isPlaying]); // 一定要在这里声明
 ```
 
-这样，你就向 Effect 声明依赖了这个 `isPlaying` 属性，这样就不会报错了。指定 `[isPlaying]` 作为依赖数组会告诉 React ：当新一轮渲染发生时，如果依赖中的 `isPlaying` 的值与前一轮渲染的值相同，那么就可以跳过这一次的 Effect 。就避免了 Effect 的重复执行。这样，你在向 `<input>` 执行按键输入时，由于 Effect不依赖 `Text` 状态而不会触发执行，但是按下 Play/Pause 按钮时由于修改了 Effect 依赖的 `isPlaying` 值，则会触发执行：
+这样，你就向 Effect 声明依赖了这个 `isPlaying` 属性，这样就不会报错了。指定 `[isPlaying]` 作为依赖数组会告诉 React ：当新一轮渲染发生时，如果依赖中的 `isPlaying` 的值与前一轮渲染的值相同，那么就可以跳过这一次的 Effect 。就避免了 Effect 的重复执行。这样，你在向 `<input>` 执行按键输入时，由于 Effect不依赖 `Text` 状态而不会触发执行，但是按下播放或暂停按钮时由于修改了 Effect 依赖的 `isPlaying` 值，则会触发执行：
 
 <Sandpack>
 
@@ -397,13 +396,13 @@ video { width: 250px; }
 
 </Sandpack>
 
-The dependency array can contain multiple dependencies. React will only skip re-running the Effect if *all* of the dependencies you specify have exactly the same values as they had during the previous render. React compares the dependency values using the [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. See the [`useEffect` reference](/reference/react/useEffect#reference) for details.
+依赖数组可以包含多个依赖项。只有当你指定的所有依赖项在上一次渲染期间的值与当前值完全相同时，React 才会跳过重新运行该 Effect。React 使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 比较依赖项的值。有关详细信息，请参阅 [`useEffect` 参考文档](/reference/react/useEffect#reference)。
 
-**请注意，你不能随意“自选”你的依赖项**。如果你在 Effect 里实际依赖项和你在依赖数组中所声明的依赖不匹配时，你就会得到 lint 报错。这是一种很不好的习惯，它会在你的代码中引入很多 Bug 。如果你希望在 Effect 实际依赖某个值的情况下，忽略掉某个依赖引发的重复执行，[那么你应当**编辑Effect代码本身**，使其“不需要”该依赖项](/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize)。
+**请注意，你不能随意“自选”你的依赖项**。如果你在 Effect 里实际依赖项和你在依赖数组中所声明的依赖不匹配时，你就会得到 lint 报错。这是一种很不好的习惯，它会在你的代码中引入很多 Bug 。如果你希望在 Effect 实际依赖某个值的情况下，忽略掉某个依赖引发的重复执行，[那么你应当 **编辑Effect代码本身**，使其“不需要”该依赖项](/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize)。
 
 <Pitfall>
 
-没有依赖数组和带有**空**依赖数组 `[]` 两种情况的行为是不同的：
+没有依赖数组和带有 **空** 依赖数组 `[]` 两种情况的行为是不同的：
 
 ```js {3,7,11}
 useEffect(() => {
@@ -611,7 +610,7 @@ useEffect(() => {
 
 请注意，在这种情况下不需要清理。在开发中，React 会调用 Effect 两次，但这两次挂载时依赖项 `setZoomLevel` 都是相同的，所以会跳过执行第二次挂载时的 Effect 。开发环境中它可能会稍微慢一些，但这问题不大，因为它在生产中不会进行不必要的重复挂载。
 
-Some APIs may not allow you to call them twice in a row. For example, the [`showModal`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLDialogElement/showModal) method of the built-in [`<dialog>`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLDialogElement) element throws if you call it twice. Implement the cleanup function and make it close the dialog:
+某些 API 可能不允许连续调用两次。例如，内置的 [`<dialog>`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLDialogElement) 元素的 [`showModal`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLDialogElement/showModal) 方法在连续调用两次时会抛出异常。实现清理函数并使其关闭对话框：
 
 ```js {4}
 useEffect(() => {
@@ -657,7 +656,7 @@ useEffect(() => {
 
 ### 获取数据 {/*fetching-data*/}
 
-If your Effect fetches something, the cleanup function should either [abort the fetch](https://developer.mozilla.org/zh-CN/docs/Web/API/AbortController) or ignore its result:
+如果你的 Effect 执行了某个数据获取操作，清理函数应该要么 [中止该数据获取操作](https://developer.mozilla.org/zh-CN/docs/Web/API/AbortController)，要么忽略其结果：
 
 ```js {2,6,13-15}
 useEffect(() => {
@@ -718,15 +717,15 @@ function TodoList() {
 
 ```js
 useEffect(() => {
-  logVisit(url); // Sends a POST request
+  logVisit(url); // 发送 post 请求
 }, [url]);
 ```
 
 在开发环境下，`logVisit` 会为每个 URL 发送两次请求。所以你可能会想尝试解决这个问题。**不过我们建议不用修改这个代码**。因为与前面的示例一样，以用户的角度来看，运行一次和运行两次之间没有**感知**到的行为差异。从实际的角度来看，`logVisit` 不应该在开发环境中做任何影响生产事情，由于每次保存代码文件时都会重新装载组件，因此在开发环境中会额外记录访问次数。
 
-**在生产环境中，不会产生有重复的访问日志**。要调试你发送的事件分析日志，你可以将应用程序部署到一个暂存环境（以生产模式运行），或者暂时退出[严格模式](/reference/react/StrictMode)，仅在开发环境中检查重复挂载。你还可以通过路由更改事件处理程序来发送分析数据，而不是从 Effect 中发送。为了更精确的分析，[intersection observers](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API)可以帮助跟踪哪些组件在视口中，以及它们保持可见的时间。
+**在生产环境中，不会产生有重复的访问日志**。要调试你发送的事件分析日志，你可以将应用程序部署到一个暂存环境（以生产模式运行），或者暂时退出[严格模式](/reference/react/StrictMode)，仅在开发环境中检查重复挂载。你还可以通过路由更改事件处理程序来发送分析数据，而不是从 Effect 中发送。为了更精确的分析，[intersection observers](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API) 可以帮助跟踪哪些组件在视口中，以及它们保持可见的时间。
 
-To debug the analytics events you're sending, you can deploy your app to a staging environment (which runs in production mode) or temporarily opt out of [Strict Mode](/reference/react/StrictMode) and its development-only remounting checks. You may also send analytics from the route change event handlers instead of Effect. For more precise analytics, [intersection observers](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API) can help track which components are in the viewport and how long they remain visible.
+为了调试发送的分析事件，你可以将应用部署到一个运行在生产模式下的暂存环境，或者暂时取消 [Strict Mode](/reference/react/StrictMode) 及其仅在开发环境中重新加载检查。你还可以从路由变更事件处理程序中发送分析数据，而不是从 Effect 中发送。为了更精确的分析，可以使用 [Intersection Observer](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API) 来跟踪哪些组件位于视口中以及它们保持可见的时间。
 
 ### 不需要副作用：初始化应用 {/*not-an-effect-initializing-the-application*/}
 
