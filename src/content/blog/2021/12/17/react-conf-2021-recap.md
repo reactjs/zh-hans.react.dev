@@ -103,24 +103,24 @@ React 18 还包括使用 Suspense 对服务端渲染性能的改进。
 
 **我们还听到了有关使用 React 进行学习和设计的演讲**：
 
-* Debbie O'Brien: [Things I learnt from the new React docs](https://youtu.be/-7odLW_hG7s).
-* Sarah Rainsberger: [Learning in the Browser](https://youtu.be/5X-WEQflCL0).
-* Linton Ye: [The ROI of Designing with React](https://youtu.be/7cPWmID5XAk).
-* Delba de Oliveira: [Interactive playgrounds with React](https://youtu.be/zL8cz2W0z34).
+* 由 Debbie O'Brien 演讲的 [Things I learnt from the new React docs](https://youtu.be/-7odLW_hG7s)。
+* 由 Sarah Rainsberger 演讲的 [Learning in the Browser](https://youtu.be/5X-WEQflCL0)。
+* 由 Linton Ye 演讲的 [The ROI of Designing with React](https://youtu.be/7cPWmID5XAk)。
+* 由 Delba de Oliveira 演讲的 [Interactive playgrounds with React](https://youtu.be/zL8cz2W0z34)。
 
 **来自 Relay、React Native 和 PyTorch 团队的演讲**：
 
-* Robert Balicki: [Re-introducing Relay](https://youtu.be/lhVGdErZuN4).
-* Eric Rozell and Steven Moyes: [React Native Desktop](https://youtu.be/9L4FFrvwJwY).
-* Roman Rädle: [On-device Machine Learning for React Native](https://youtu.be/NLj73vrc2I8)
+* 由 Robert Balicki 演讲的 [Re-introducing Relay](https://youtu.be/lhVGdErZuN4)。
+* 由 Eric Rozell 和 Steven Moyes 演讲的 [React Native Desktop](https://youtu.be/9L4FFrvwJwY)。
+* 由 Roman Rädle 演讲的 [On-device Machine Learning for React Native](https://youtu.be/NLj73vrc2I8)。
 
 **社区中关于可访问性、工具和服务器组件的演讲**：
 
-* Daishi Kato: [React 18 for External Store Libraries](https://youtu.be/oPfSC5bQPR8).
-* Diego Haz: [Building Accessible Components in React 18](https://youtu.be/dcm8fjBfro8).
-* Tafu Nakazaki: [Accessible Japanese Form Components with React](https://youtu.be/S4a0QlsH0pU).
-* Lyle Troxell: [UI tools for artists](https://youtu.be/b3l4WxipFsE).
-* Helen Lin: [Hydrogen + React 18](https://youtu.be/HS6vIYkSNks).
+* 由 Daishi Kato 演讲的 [React 18 for External Store Libraries](https://youtu.be/oPfSC5bQPR8)。
+* 由 Diego Haz 演讲的 [Building Accessible Components in React 18](https://youtu.be/dcm8fjBfro8)。
+* 由 Tafu Nakazaki 演讲的 [Accessible Japanese Form Components with React](https://youtu.be/S4a0QlsH0pU).
+* 由 Lyle Troxell 演讲的 [UI tools for artists](https://youtu.be/b3l4WxipFsE)。
+* 由 Helen Lin 演讲的 [Hydrogen + React 18](https://youtu.be/HS6vIYkSNks)。
 
 ## 感谢 {/*thank-you*/}
 
