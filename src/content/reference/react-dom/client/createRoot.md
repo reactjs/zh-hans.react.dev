@@ -375,6 +375,7 @@ root.render(<App />);
 ```
 举个例子，如果 `domNode` 是 `null`，代表着 [`getElementById`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/getElementById) 返回了 `null`。这意味着你在调用这个方法的时候，页面文档内并不存在指定的 id 对应的元素，于是就出现了这个问题。这里有一些可能的原因：
 
+
 1. 你使用的 id 可能和 HTML 文件中的 id 不同。请检查一下你的拼写是否正确！
 2. 打包构建产物的 HTML 文件中的 `<script>` 标签，不能感知到在它执行 **之后** 才出现的 DOM 节点。
 
@@ -395,6 +396,7 @@ root.render(App);
 // ✅ 正确方式：<App /> 是一个组件。
 root.render(<App />);
 ```
+
 或者你向 `root.render` 传递了一个函数本身，而不是其返回值：
 
 ```js {2,5}
