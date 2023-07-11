@@ -8,7 +8,7 @@ translators:
 
 <Intro>
 
-**组件**是 React 的核心概念之一。它们是构建用户界面（UI）的基础，是你开始 React 之旅的最佳起点！
+**组件** 是 React 的核心概念之一。它们是构建用户界面（UI）的基础，是你开始 React 之旅的最佳起点！
 
 </Intro>
 
@@ -35,9 +35,9 @@ translators:
 </article>
 ```
 
-`<article>` 表示这篇文章，`<h1>` 表示文章的标题，`<ol>` 以有序列表的形式表示文章的（缩写的）目录。每一个侧边栏、头像、模态框、下拉框的背后是都是像这样的（结合了用于样式的 CSS 和用于交互的 JavaScript的）标签——你在 Web 上看到的每一个 UI 模块。
+`<article>` 表示这篇文章，`<h1>` 表示文章的标题，`<ol>` 以有序列表的形式表示文章的（缩写的）目录。每一个侧边栏、头像、模态框、下拉框的背后是都是像这样的（结合了用于样式的 CSS 和用于交互的 JavaScript 的）标签——你在 Web 上看到的每一个 UI 模块。
 
-React 允许你将标签、CSS 和 JavaScript 组合成自定义“组件”，即**应用程序中可复用的 UI 元素。** 上文中表示目录的代码可以改写成一个能够在每个页面中渲染的 `<TableOfContents />` 组件。实际上，使用的依然是 `<article>`、`<h1>` 等相同的 HTML 标签。
+React 允许你将标签、CSS 和 JavaScript 组合成自定义“组件”，即 **应用程序中可复用的 UI 元素**。上文中表示目录的代码可以改写成一个能够在每个页面中渲染的 `<TableOfContents />` 组件。实际上，使用的依然是 `<article>`、`<h1>` 等相同的 HTML 标签。
 
 就像使用 HTML 标签一样，你可以组合、排序和嵌套组件来绘制整个页面。例如，你正在阅读的文档页面就是由 React 组件构成的：
 
@@ -84,7 +84,7 @@ img { height: 200px; }
 
 ### 第一步：导出组件 {/*step-1-export-the-component*/}
 
-`export default` 前缀是一种 [JavaScript 标准语法](https://developer.mozilla.org/docs/web/javascript/reference/statements/export)（非 React 的特性）。它允许你标签一个文件中的主要函数以便你以后可以从其他文件引入它。（欲了解更多关于导入的内容，请参阅 [组件的导入与导出](/learn/importing-and-exporting-components) 章节！）
+`export default` 前缀是一种 [JavaScript 标准语法](https://developer.mozilla.org/docs/web/javascript/reference/statements/export)（非 React 的特性）。它允许你标签一个文件中的主要函数以便你以后可以从其他文件引入它。欲了解更多关于导入的内容，请参阅 [组件的导入与导出](/learn/importing-and-exporting-components) 章节！
 
 ### 第二步：定义函数 {/*step-2-define-the-function*/}
 
@@ -92,7 +92,7 @@ img { height: 200px; }
 
 <Pitfall>
 
-React 组件是常规的 JavaScript 函数，但**组件的名称必须以大写字母开头**，否则它们将无法运行！
+React 组件是常规的 JavaScript 函数，但 **组件的名称必须以大写字母开头**，否则它们将无法运行！
 
 </Pitfall>
 
@@ -160,7 +160,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 注意下面两者的区别：
 
-* `<section>`是小写的，所以 React 知道我们指的是 HTML 标签。
+* `<section>` 是小写的，所以 React 知道我们指的是 HTML 标签。
 * `<Profile />` 以大写 `P` 开头，所以 React 知道我们想要使用名为 `Profile` 的组件。
 
 然而 `Profile` 包含更多的 HTML：`<img />`。这是浏览器最后所看到的：
@@ -178,7 +178,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 组件是常规的 JavaScript 函数，所以你可以将多个组件保存在同一份文件中。当组件相对较小或彼此紧密相关时，这是一种省事的处理方式。如果这个文件变得臃肿，你也可以随时将 `Profile` 移动到单独的文件中。你可以立即在 [关于引入的页面](/learn/importing-and-exporting-components) 中学习如何做到这些。
 
-因为 `Profile` 组件在 `Gallery` 组件中渲染——甚至好几次！——我们可以认为 `Gallery` 是一个 **父组件，** 将每个 `Profile` 渲染为一个“孩子”。这是 React 的神奇之处：你可以只定义组件一次，然后按需多处和多次使用。
+因为 `Profile` 组件在 `Gallery` 组件中渲染——甚至好几次！——我们可以认为 `Gallery` 是一个 **父组件**，将每个 `Profile` 渲染为一个“孩子”。这是 React 的神奇之处：你可以只定义组件一次，然后按需多处和多次使用。
 
 <Pitfall>
 
@@ -194,7 +194,7 @@ export default function Gallery() {
 }
 ```
 
-上面这段代码 [非常慢，并且会导致 bug 产生](/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state)。 因此，你应该在顶层定义每个组件：
+上面这段代码 [非常慢，并且会导致 bug 产生](/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state)。因此，你应该在顶层定义每个组件：
 
 ```js {5-8}
 export default function Gallery() {
@@ -219,7 +219,7 @@ function Profile() {
 
 大多数 React 应用程序只有组件。这意味着你不仅可以将组件用于可复用的部分，例如按钮，还可以用于较大块的部分，例如侧边栏、列表以及最终的完整页面！组件是组织 UI 代码和标签的一种快捷方式，即使其中一些组件只使用了一次。
 
-像 Next.js 这样的框架会做更多事情。与使用一个空白的 HTML 页面并让 React 使用 JavaScript “接手”管理页面不同，框架 *还会* 根据你的 React 组件自动生成 HTML。这使你的应用程序在加载 JavaScript 代码之前能够展示一些内容。
+像 Next.js 这样的框架会做更多事情。与使用一个空白的 HTML 页面并让 React 使用 JavaScript “接手”管理页面不同，框架还会根据你的 React 组件自动生成 HTML。这使你的应用程序在加载 JavaScript 代码之前能够展示一些内容。
 
 尽管如此，许多网站仅使用 React 来 [添加“交互性”](/learn/add-react-to-a-website)。它们有很多根组件，而不是整个页面的单个组件。你可以根据需要尽可能多或尽可能少地使用 React。
 
@@ -229,7 +229,7 @@ function Profile() {
 
 你刚刚第一次体验 React！让我们回顾一些关键点。
 
-* React 允许你创建组件，**应用程序的可复用 UI 元素。**
+* React 允许你创建组件，**应用程序的可复用 UI 元素**。
 * 在 React 应用程序中，每一个 UI 模块都是一个组件。
 * React 是常规的 JavaScript 函数，除了：
 
@@ -300,7 +300,7 @@ img { height: 181px; }
 
 <Hint>
 
-当你尝试修复它时，可能会得到“Unexpected token”的报错。这种情况下，请检查分号是否在右括号*之后*。在 `return ( )` 里面留下分号将会导致报错。
+当你尝试修复它时，可能会得到“Unexpected token”的报错。这种情况下，请检查分号是否在右括号 **之后**。在 `return ( )` 里面留下分号将会导致报错。
 
 </Hint>
 
@@ -363,7 +363,7 @@ img { height: 180px; }
 
 #### 发现错误 {/*spot-the-mistake*/}
 
-下面 `Profile` 组件的声明和使用存在问题。你能指出其中的错误所在吗？（试着想起 React 是如何区分组件和常规的 HTML 标签的！）
+下面 `Profile` 组件的声明和使用存在问题。你能指出其中的错误所在吗？（试着想想 React 是如何区分组件和常规的 HTML 标签的！）
 
 <Sandpack>
 
