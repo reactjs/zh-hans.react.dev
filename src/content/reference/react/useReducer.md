@@ -46,7 +46,7 @@ function MyComponent() {
 
 `useReducer` 返回一个由两个值组成的数组：
 
-1. 当前的 state。 初次渲染时，它是 `init(initialArg)` 或 `initialArg` （如果没有 `init` 函数）。
+1. 当前的 state。初次渲染时，它是 `init(initialArg)` 或 `initialArg` （如果没有 `init` 函数）。
 2. [`dispatch` 函数](#dispatch)。用于更新 state 并触发组件的重新渲染。
 
 #### 注意事项 {/*caveats*/}
