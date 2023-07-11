@@ -4,7 +4,7 @@ title: renderToPipeableStream
 
 <Intro>
 
-`renderToPipeableStream` 将一个 React 组件树渲染为管道化的 [Node.js 流](https://nodejs.org/api/stream.html)。
+`renderToPipeableStream` 将一个 React 组件树渲染为管道化（pipeable）的 [Node.js 流](https://nodejs.org/api/stream.html)。
 
 ```js
 const { pipe, abort } = renderToPipeableStream(reactNode, options?)
@@ -16,7 +16,7 @@ const { pipe, abort } = renderToPipeableStream(reactNode, options?)
 
 <Note>
 
-这个 API 是专供 Node.js 使用的。像 Deno 这类可以支持 [Web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API) 的新式非主流运行时环境，它们应该使用另一个 API [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)。
+这个 API 是专供 Node.js 使用的。像 Deno 这类可以支持 [Web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API) 的新式非主流运行时环境，应该使用另一个 API [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream)。
 
 </Note>
 
@@ -26,7 +26,7 @@ const { pipe, abort } = renderToPipeableStream(reactNode, options?)
 
 ### `renderToPipeableStream(reactNode, options?)` {/*rendertopipeablestream*/}
 
-调用 `renderToPipeableStream` 将 React 组件树渲染为 HTML 后注入 [Node.js 流](https://nodejs.org/api/stream.html#writable-streams)。
+调用 `renderToPipeableStream` 以 React 组件树渲染为 HTML 后注入 [Node.js 流](https://nodejs.org/api/stream.html#writable-streams)。
 
 ```js
 import { renderToPipeableStream } from 'react-dom/server';
@@ -40,24 +40,24 @@ const { pipe } = renderToPipeableStream(<App />, {
 });
 ```
 
-在客户端，可以调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 来让服务端生成的 HTML 中的绑定事件生效，进而让其变得可交互。
+在客户端，调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 以让服务端生成的 HTML 中的绑定事件生效，进而让其变得可交互。
 
-[参阅下方的更多示例](#usage)。
+[参见下方更多示例](#usage)。
 
 #### 参数 {/*parameters*/}
 
-* `reactNode`：一个你想要将其渲染为 HTML 的 React 节点。比如，像 `<App />` 这样的 JSX 元素。这样做意味着整个页面文档都将被渲染，所以这里提到的 `App` 组件将渲染 `<html>` 标签.
+* `reactNode`：想要将其渲染为 HTML 的 React 节点，比如像 `<App />` 这样的 JSX 元素。这样做意味着整个页面文档都将被渲染，所以这里提到的 `App` 组件将渲染 `<html>` 标签.
 
-* **可选** `options`：一个用于配置流的对象.
+* **可选** `options`：用于配置流的对象.
   * **可选** `bootstrapScriptContent`：指定一个字符串，这个字符串将被放入 `<script>` 标签中作为其内容。 
   * **可选** `bootstrapScripts`：一个 URL 字符串数组，它们将被转化为 `<script>` 标签嵌入页面。请将那些调用了 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 的 `<script>` 对应的 URL 放入这个数组中。但是如果你不想让客户都端运行 React 的话，请省略这个参数。
   * **可选** `bootstrapModules`：和 `bootstrapScripts` 相似，但是嵌入页面的是 [`<script type="module">`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules)。
   * **可选** `identifierPrefix`：一个字符串前缀，用于由 [`useId`](/reference/react/useId) 生成的 id。在同一页面下的多人协作场景中会很有用，它能够很好地避免命名冲突。但是注意使用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters) 时也要加上同样的前缀。
   * **可选** `namespaceURI`：一个字符串，指定与流相关联的 [命名空间 URI](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElementNS#important_namespace_uris)。默认是常规的 HTML。可以传入 `'http://www.w3.org/2000/svg'` 指定为 SVG，或者传入 `'http://www.w3.org/1998/Math/MathML'` 指定为 MathML。
   * **可选** `nonce`：[`nonce`](http://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script#nonce) 一个字符串，能为脚本设置跨域限制，即 [`script-src` 浏览器内容安全策略](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)。
-  * **可选** `onAllReady`：一个回调函数，将会在所有渲染完成时触发，包括 [shell](#specifying-what-goes-into-the-shell) 和所有额外的 [content](#streaming-more-content-as-it-loads)。你可以用这个替代 `onShellReady` [用于爬虫和静态内容生成]。(#waiting-for-all-content-to-load-for-crawlers-and-static-generation)如果你在这里开启了流式传输，所有的 HTML 都会被包含在流中直接返回，而不会有任何渐进的加载。
+  * **可选** `onAllReady`：一个回调函数，将会在所有渲染完成时触发，包括 [shell](#specifying-what-goes-into-the-shell) 和所有额外的 [content](#streaming-more-content-as-it-loads)。你可以用这个替代 `onShellReady` [用于爬虫和静态内容生成](#waiting-for-all-content-to-load-for-crawlers-and-static-generation)。如果在此处开启了流式传输，所有的 HTML 都会被包含在流中直接返回，而不会有任何渐进的加载。
   * **可选** `onError`：一个回调函数，只要是出现了异常错误，无论这是 [可恢复的](#recovering-from-errors-outside-the-shell) 还是 [不可恢复的](#recovering-from-errors-inside-the-shell)，它都会触发。默认情况下，它只会调用 `console.error`。如果你想要将它重写为 [日志崩溃报告](#logging-crashes-on-the-server)，记得仍然要使用 `console.error` 为可能不兼容的场景兜底。你也可以在 shell 发送之前使用它来 [修改状态码](#setting-the-status-code)。
-  * **可选** `onShellReady`：一个回调函数，在 [初始化 shell](#specifying-what-goes-into-the-shell) 渲染后立即调用。你可以 [设置状态码](#setting-the-status-code) 然后在这里调用 `pipe` 方法启用流式传输。这样一来，React 将会初始化 shell 渲染完毕后，通过上面提到的 `<script>` 进行 [流式传输更多内容](#streaming-more-content-as-it-loads)，用这些内容替换掉 HTML 的加载动画部分。
+  * **可选** `onShellReady`：一个回调函数，在 [shell 初始化](#specifying-what-goes-into-the-shell) 渲染后立即调用。你可以 [设置状态码](#setting-the-status-code) 然后在这里调用 `pipe` 方法启用流式传输。这样一来，React 将会初始化 shell 渲染完毕后，通过上面提到的 `<script>` 进行 [流式传输更多内容](#streaming-more-content-as-it-loads)，用这些内容替换掉 HTML 的加载动画部分。
   * **可选** `onShellError`：一个回调函数，在初始化 shell 发生错误渲染时调用。它的第一个参数将自动接收捕获到的异常错误。此时，这个流中的任何内容都不会被发送，并且 `onShellReady` 和 `onAllReady` 都不会被调用，所以你还可以 [输出一段备用的 HTML shell](#recovering-from-errors-inside-the-shell) 作为兜底。
   * **可选** `progressiveChunkSize`：一个块中的字节数。[查阅更多关于该参数默认值的信息](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)。
 
@@ -114,7 +114,7 @@ export default function App() {
 }
 ```
 
-React 将会把 [文档类型](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype) 和你的 <CodeStep step={2}>`<script>` 标签</CodeStep> 注入到输出的 HTML 流中：
+React 将会把 [文档类型](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype) 和 <CodeStep step={2}>`<script>` 标签</CodeStep> 注入到输出的 HTML 流中：
 
 ```html [[2, 5, "/main.js"]]
 <!DOCTYPE html>
@@ -139,7 +139,7 @@ hydrateRoot(document, <App />);
 
 #### 从构建输出产物中读取 CSS 和 JS 资源路径 {/*reading-css-and-js-asset-paths-from-the-build-output*/}
 
-在打包构建之后，最终的资源的 URL（比如 JavaScript 和 CSS 文件）总是被哈希映射处理过。举个例子，`styles.css` 最终可能会变成 `styles.123456.css`。被哈希处理过的资源文件名称保证了，同样的资源在每一次不同的构建后都有一个不一样的文件名。这是一个十分有用的机制，因为它让你能够安全地对静态资源进行长期缓存：如果名称固定不变，打包构建工具可能会认为这些资源没有改动，导致缓存的内容将不会发生相应的变化。
+在打包构建之后，最终的资源的 URL（比如 JavaScript 和 CSS 文件）总是被哈希映射处理过。举个例子，`styles.css` 最终可能会变成 `styles.123456.css`。被哈希处理过的资源文件名称能够保证同样的资源在每一次不同的构建后都有一个不一样的文件名。这是一个十分有用的机制，因为它让你能够安全地对静态资源进行长期缓存：如果名称固定不变，打包构建工具可能会认为这些资源没有改动，导致缓存的内容将不会发生相应的变化。
 
 然而，如果在打包构建完成之前你都无法知晓资源最终的 URL 的话，那就无法将它们放进组件的代码之中。举个例子，像以前那样将 `"/styles.css"` 硬编码写入 JSX 的话，是不会有作用的。为了应对这种场景，可以向根组件传递一个映射文件名的 map 作为参数：
 
@@ -178,7 +178,7 @@ app.use('/', (request, response) => {
 });
 ```
 
-因为你的服务端正在渲染 `<App assetMap={assetMap} />`，所以你还需要在客户端将这个带有 `assetMap` 的组件再渲染一次进行同构，以此避免一些 hydration 错误。你可以像下面这样序列化 `assetMap` 之后再传递：
+因为你的服务端正在渲染 `<App assetMap={assetMap} />`，所以你还需要在客户端将这个带有 `assetMap` 的组件再渲染一次进行同构，以此避免 hydrate 错误。你可以像下面这样序列化 `assetMap` 之后再传递：
 
 ```js {9-10}
 // 你需要从你的打包构建工具中获取这个 JSON。
@@ -209,7 +209,7 @@ import App from './App.js';
 hydrateRoot(document, <App assetMap={window.assetMap} />);
 ```
 
-这样一来，客户端和服务端都渲染了带有 `assetMap` 属性的 `App`，因此它们是同构的，就不会出现 hydration 异常错误。
+这样一来，客户端和服务端都渲染了带有 `assetMap` 属性的 `App`，因此它们是同构的，就不会出现 hydrate 异常错误。
 
 </DeepDive>
 
@@ -371,7 +371,7 @@ const { pipe } = renderToPipeableStream(<App />, {
 
 ---
 
-### 将 shell 之内的异常恢复 {/*recovering-from-errors-inside-the-shell*/}
+### 恢复 shell 内的异常 {/*recovering-from-errors-inside-the-shell*/}
 
 在这个例子中，shell 包含 `ProfileLayout`、`ProfileCover`、和 `PostsGlimmer`：
 
@@ -446,7 +446,7 @@ function ProfilePage() {
 
 流式传输引入了一个折衷策略。如果可以的话，你应该尽早开启流式传输，以利于用户能够更快地看到页面内容。然而，一旦你开启了流式渲染，你就不能再设置状态码了。
 
-通过 [将你的应用程序切分](#specifying-what-goes-into-the-shell) 为 shell（`<Suspense>` 之外的部分）和其余部分，你就已经解决了一部分问题。因为如果 shell 出现了异常错误，你就可以触发 `onShellError` 并在此设置错误状态码。相反，如果你知道应用程序可能已经在客户端将异常错误恢复了，就可以发送一个 "OK"。
+通过 [将你的应用程序切分](#specifying-what-goes-into-the-shell) 为 shell（`<Suspense>` 之外的部分）和其余部分，你就已经解决了一部分问题。因为如果 shell 出现了异常错误，你就可以触发 `onShellError` 并在此设置错误状态码。相反，如果你知道应用程序可能已经在客户端将异常错误恢复了，就可以发送“OK”。
 
 ```js {4}
 const { pipe } = renderToPipeableStream(<App />, {
@@ -540,7 +540,7 @@ const { pipe } = renderToPipeableStream(<App />, {
 });
 ```
 
-请记住，一旦你发送了 shell 并开始流式传输，你就不能够再改变状态码了。
+请记住，一旦发送了 shell 并开始流式传输，就不能够再改变状态码了。
 
 ---
 
@@ -548,9 +548,9 @@ const { pipe } = renderToPipeableStream(<App />, {
 
 流式传输提供了更好的用户体验，因为当页面内容可用时，用户可以及时感知到它们。
 
-然而，当一个爬虫访问你的页面时，或者你正处于静态生成页面的构建阶段时，你就可能需要先加载所有内容，然后直接输出整个 HTML 而不是渐进式地加载它。
+然而，当一个爬虫访问该页面时，或者正处于静态生成页面的构建阶段时，就可能需要先加载所有内容，然后直接输出整个 HTML 而不是渐进式地加载它。
 
-你可以使用 `onAllReady` 回调函数，它会在所有内容加载完成时触发：
+可以使用 `onAllReady` 回调函数，它会在所有内容加载完成时触发：
 
 
 ```js {2,7,11,18-24}
@@ -592,7 +592,7 @@ const { pipe } = renderToPipeableStream(<App />, {
 
 ### 终止服务端渲染 {/*aborting-server-rendering*/}
 
-你可以设置一个超时时间，在超时后强制终止服务端渲染：
+可以设置一个超时时间，在超时后强制终止服务端渲染：
 
 ```js {1,5-7}
 const { pipe, abort } = renderToPipeableStream(<App />, {
