@@ -1038,7 +1038,7 @@ function reducer(state, action) {
 
 ---
 
-### 在 dispatch 后整个 state 都变成了 undefined {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
+### 在 dispatch 后整个 state 都变为了 `undefined` {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
 
 如果你的 state 错误地变成了 `undefined`，可能是因为你忘记在某个分支返回 state，或者是你遗漏了某些 `case` 分支。可以通过在 `switch` 语句之后抛出一个错误来查找原因：
 
