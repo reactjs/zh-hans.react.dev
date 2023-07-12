@@ -78,7 +78,7 @@ React 会调用 `reducer` 函数来更新 state，`reducer` 函数的参数就�
 
 `dispatch` 函数没有返回值。
 
-#### 注意事项 {/*setstate-caveats*/}
+#### 注意 {/*setstate-caveats*/}
 
 * `dispatch` 函数 **是用来为下一次渲染更新 state 的**。因此在调用 `dispatch` 函数后读取 state [并不会拿到更新后的值](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value)，也就是说只能获取到调用前的值。
 
