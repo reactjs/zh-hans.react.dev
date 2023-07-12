@@ -1018,7 +1018,7 @@ function reducer(state, action) {
 
 ---
 
-### 在 dispatch 后 state 的某些属性变成了 undefined {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
+### 在 dispatch 后 state 的某些属性变为了 `undefined` {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
 
 请确保每个 `case` 语句中所返回的新的 state **都复制了当前的属性**：
 
