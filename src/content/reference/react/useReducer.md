@@ -1027,7 +1027,7 @@ function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
       return {
-        ...state, //不要忘记复制之前的属性！
+        ...state, // 不要忘记复制之前的属性！
         age: state.age + 1
       };
     }
