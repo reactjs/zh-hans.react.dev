@@ -11,7 +11,7 @@ permalink: community/team.html
 >
 > 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 > 
-> See the [Team](https://zh-hans.react.dev/community/team) page on the new site.
+> 在新网站查看 [团队](https://zh-hans.react.dev/community/team) 页面。
 
 </div>
 
