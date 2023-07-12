@@ -1122,4 +1122,4 @@ function reducer(state, action) {
 
 现在这个 reducer 是纯函数了，调用两次也不会有不一致的行为。这就是 React 如何通过调用两次函数来帮助你发现错误。**只有组件、初始化函数和 reducer 函数需要是纯函数**。事件处理函数不需要实现为纯函数，并且 React 永远不会调用事件函数两次。
 
-阅读 [保持组件纯度](/learn/keeping-components-pure) 来了解更多。
+阅读 [保持组件纯粹](/learn/keeping-components-pure) 以了解更多相关信息。
