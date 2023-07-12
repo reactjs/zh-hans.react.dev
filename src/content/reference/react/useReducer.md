@@ -1083,7 +1083,7 @@ return <button onClick={(e) => handleClick(e)}>Click me</button>
 
 [严格模式](/reference/react/StrictMode) 下 React 会调用两次 reducer 和初始化函数，这不应该会破坏你的代码逻辑。
 
-这个 **仅限于开发模式** 的行为可以帮助你 [保持组件的纯度](/learn/keeping-components-pure)：React 会使用其中一次调用结果并忽略另一个结果。如果你的组件、初始化函数以及 reducer 函数都是纯函数，这并不会影响你的逻辑。不过一旦它们存在副作用，这个额外的行为就可以帮助你发现它。
+这个 **仅限于开发模式** 的行为可以帮助你 [保持组件纯粹](/learn/keeping-components-pure)：React 会使用其中一次调用结果并忽略另一个结果。如果你的组件、初始化函数以及 reducer 函数都是纯函数，这并不会影响你的逻辑。不过一旦它们存在副作用，这个额外的行为就可以帮助你发现它。
 
 比如下面这个 reducer 函数直接修改了数组类型的 state：
 
