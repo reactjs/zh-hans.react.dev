@@ -1014,28 +1014,28 @@ HTML中嵌入的代码将会运行。黑客可以利用这个安全漏洞窃取�
 export default function MouseExample() {
   return (
     <div
-      onMouseEnter={e => console.log('onMouseEnter（父元素）')}
-      onMouseLeave={e => console.log('onMouseLeave（父元素）')}
+      onMouseEnter={e => console.log('onMouseEnter (parent)')}
+      onMouseLeave={e => console.log('onMouseLeave (parent)')}
     >
       <button
-        onClick={e => console.log('onClick（按钮一）')}
-        onMouseDown={e => console.log('onMouseDown （按钮一）')}
-        onMouseEnter={e => console.log('onMouseEnter （按钮一）')}
-        onMouseLeave={e => console.log('onMouseLeave （按钮一）')}
-        onMouseOver={e => console.log('onMouseOver（按钮一）')}
-        onMouseUp={e => console.log('onMouseUp （按钮一）')}
+        onClick={e => console.log('onClick (first button)')}
+        onMouseDown={e => console.log('onMouseDown (first button)')}
+        onMouseEnter={e => console.log('onMouseEnter (first button)')}
+        onMouseLeave={e => console.log('onMouseLeave (first button)')}
+        onMouseOver={e => console.log('onMouseOver (first button)')}
+        onMouseUp={e => console.log('onMouseUp (first button)')}
       >
-        按钮一
+        First button
       </button>
       <button
-        onClick={e => console.log('点击（按钮二）')}
-        onMouseDown={e => console.log('onMouseDown （按钮二）')}
-        onMouseEnter={e => console.log('onMouseEnter （按钮二）')}
-        onMouseLeave={e => console.log('onMouseLeave （按钮二）')}
-        onMouseOver={e => console.log('onMouseOver （按钮二）')}
-        onMouseUp={e => console.log('onMouseUp （按钮二）')}
+        onClick={e => console.log('onClick (second button)')}
+        onMouseDown={e => console.log('onMouseDown (second button)')}
+        onMouseEnter={e => console.log('onMouseEnter (second button)')}
+        onMouseLeave={e => console.log('onMouseLeave (second button)')}
+        onMouseOver={e => console.log('onMouseOver (second button)')}
+        onMouseUp={e => console.log('onMouseUp (second button)')}
       >
-        按钮二
+        Second button
       </button>
     </div>
   );
@@ -1061,29 +1061,29 @@ input { margin-left: 10px; }
 export default function PointerExample() {
   return (
     <div
-      onPointerEnter={e => console.log('onPointerEnter （父元素）')}
-      onPointerLeave={e => console.log('onPointerLeave （父元素）')}
+      onPointerEnter={e => console.log('onPointerEnter (parent)')}
+      onPointerLeave={e => console.log('onPointerLeave (parent)')}
       style={{ padding: 20, backgroundColor: '#ddd' }}
     >
       <div
-        onPointerDown={e => console.log('onPointerDown （子元素一）')}
-        onPointerEnter={e => console.log('onPointerEnter （子元素一）')}
-        onPointerLeave={e => console.log('onPointerLeave （子元素一）')}
-        onPointerMove={e => console.log('onPointerMove （子元素一）')}
-        onPointerUp={e => console.log('onPointerUp （子元素一）')}
+        onPointerDown={e => console.log('onPointerDown (first child)')}
+        onPointerEnter={e => console.log('onPointerEnter (first child)')}
+        onPointerLeave={e => console.log('onPointerLeave (first child)')}
+        onPointerMove={e => console.log('onPointerMove (first child)')}
+        onPointerUp={e => console.log('onPointerUp (first child)')}
         style={{ padding: 20, backgroundColor: 'lightyellow' }}
       >
-        子元素一
+        First child
       </div>
       <div
-        onPointerDown={e => console.log('onPointerDown （子元素二）')}
-        onPointerEnter={e => console.log('onPointerEnter （子元素二）')}
-        onPointerLeave={e => console.log('onPointerLeave （子元素二）')}
-        onPointerMove={e => console.log('onPointerMove （子元素二）')}
-        onPointerUp={e => console.log('onPointerUp （子元素二）')}
+        onPointerDown={e => console.log('onPointerDown (second child)')}
+        onPointerEnter={e => console.log('onPointerEnter (second child)')}
+        onPointerLeave={e => console.log('onPointerLeave (second child)')}
+        onPointerMove={e => console.log('onPointerMove (second child)')}
+        onPointerUp={e => console.log('onPointerUp (second child)')}
         style={{ padding: 20, backgroundColor: 'lightblue' }}
       >
-        子元素二
+        Second child
       </div>
     </div>
   );
