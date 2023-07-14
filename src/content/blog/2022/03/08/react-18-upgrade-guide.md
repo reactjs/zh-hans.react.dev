@@ -129,7 +129,7 @@ const root = hydrateRoot(container, <App tab="home" />);
 
 现在使用这个 API 会发出警告：
 
-* `renderToNodeStream`: **废弃 ⛔️️**
+* `renderToNodeStream`：**废弃 ⛔️️**
 
 取而代之的是，对于 Node 环境中的流我们使用：
 * `renderToPipeableStream`: **新增 ✨**
