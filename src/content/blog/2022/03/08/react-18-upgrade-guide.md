@@ -229,7 +229,7 @@ function handleClick() {
 
 React 18 也引入了一些并发渲染的新 API，例如 `startTransition`、`useDeferredValue` 以及 `useId`，关于此更多信息我们在 [发布报告](/blog/2022/03/29/react-v18) 中有所分享。
 
-## Strict Mode 的变化 {/*updates-to-strict-mode*/}
+## 严格模式的变化 {/*updates-to-strict-mode*/}
 
 在未来，我们想要添加一个特性，它允许 React 在保存 state 的时候添加和移除 UI 块。例如，当用户离开当前 tab 页面又返回时，React 应该能够立刻展示之前的页面。为了达到这个目的，React 会使用和之前一样的组件状态来卸载和重新加载树。
 
