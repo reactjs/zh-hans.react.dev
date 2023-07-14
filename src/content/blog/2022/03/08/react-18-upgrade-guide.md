@@ -263,7 +263,7 @@ React 18 也引入了一些并发渲染的新 API，例如 `startTransition`、`
 
 ## 配置测试环境 {/*configuring-your-testing-environment*/}
 
-第一次更新测试环境使用 `createRoot`,你可能在测试环境的控制台看到这个告警：
+第一次更新测试环境使用 `createRoot`，你可能在测试环境的控制台看到这个警告：
 
 <ConsoleBlock level="error">
 
