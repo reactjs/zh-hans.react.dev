@@ -245,7 +245,7 @@ React 18 也引入了一些并发渲染的新 API，例如 `startTransition`、`
     * 创建 Effect effect。
 ```
 
-在 React 18 的 Strict Mode 中，React 会在开发模式下模仿卸载和重新加载组件：
+在 React 18 的严格模式中，React 会在开发模式下模仿卸载和重新加载组件：
 
 ```
 * React 加载组件。
