@@ -57,7 +57,7 @@ render(<App tab="home" />, container);
 // 现在
 import { createRoot } from 'react-dom/client';
 const container = document.getElementById('app');
-const root = createRoot(container); // 如果你使用 TypeScript, createRoot(container!)
+const root = createRoot(container); // 如果你使用 TypeScript，请使用 createRoot(container!)
 root.render(<App tab="home" />);
 ```
 
