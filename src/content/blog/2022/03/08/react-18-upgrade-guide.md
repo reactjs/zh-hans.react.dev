@@ -218,7 +218,7 @@ function handleClick() {
 }
 ```
 
-更多信息请查看 [深入探索自动化处理](https://github.com/reactwg/react-18/discussions/21)。
+更多信息请查看 [深入探索自动批处理](https://github.com/reactwg/react-18/discussions/21)。
 
 ## 库的新 API {/*new-apis-for-libraries*/}
 
