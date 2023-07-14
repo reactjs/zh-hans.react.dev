@@ -146,7 +146,7 @@ const root = hydrateRoot(container, <App tab="home" />);
 
 更多关于服务端渲染 API 的变化信息，可以查看工作组文章 [在服务端升级到 React 18](https://github.com/reactwg/react-18/discussions/22)，[深入探讨新的 Suspense SSR 架构](https://github.com/reactwg/react-18/discussions/37)，以及 [Shaundai 个人](https://twitter.com/shaundai) 在 React 2021 会议上关于 [使用 Suspense 的流式服务端渲染](https://www.youtube.com/watch?v=pj5N-Khihgc) 的演讲。
 
-## TypeScript 定义的更新 {/*updates-to-typescript-definitions*/}
+## 更新 TypeScript 类型定义 {/*updates-to-typescript-definitions*/}
 
 如果项目使用了 TypeScript，你需要更新 `@types/react` 和 `@types/react-dom` 依赖到最新版。新的类型更加安全并且能捕获过去常常被类型检查器忽略的问题。最值得注意的变化是，现在定义 props 时，`children` prop 需要被明确列出来，例如：
 
