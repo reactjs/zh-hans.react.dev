@@ -252,7 +252,7 @@ title："常见组件（例如 <div>)"
 <div ref={(node) => console.log(node)} />
 ```
 
-[查看使用 `ref` 回调函数的示例。](/learn/manipulating-the-dom-with-refs#how-to-manage-a-list-of-refs-using-a-ref-callback)
+[查看使用 `ref` 回调函数的示例](/learn/manipulating-the-dom-with-refs#how-to-manage-a-list-of-refs-using-a-ref-callback)。
 
 当 `<div>` DOM 节点被添加到屏幕上时，React 将使用该节点作为参数调用你的 `ref` 回调函数。
 
@@ -496,7 +496,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 />
 ```
 
-[看一个例子。](#handling-keyboard-events)
+[看一个例子](#handling-keyboard-events)。
 
 #### 参数 {/*keyboardevent-handler-parameters*/}
 
@@ -537,11 +537,11 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 />
 ```
 
-[看一个例子。](#handling-mouse-events)
+[看一个例子](#handling-mouse-events)。
 
 #### 参数 {/*mouseevent-handler-parameters*/}
 
-* `e`：一个具有这些额外[`鼠标事件`](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent)属性的[React event object](#react-event-object) ：
+* `e`：一个具有这些额外[`鼠标事件`](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent)属性的[React event object](#react-event-object)：
   * [`altKey`](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent/altKey)
   * [`button`](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent/button)
   * [`buttons`](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent/buttons)
@@ -580,7 +580,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 />
 ```
 
-[看一个例子](#handling-pointer-events)
+[看一个例子](#handling-pointer-events)。
 
 #### 参数 {/*pointerevent-handler-parameters*/}
 
@@ -637,7 +637,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 #### 参数 {/*touchevent-handler-parameters*/}
 
-* `e`：一个带有这些额外的[`TouchEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent)属性的[React event object](#react-event-object) ：
+* `e`：一个带有这些额外的[`TouchEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent)属性的[React event object](#react-event-object)：
   * [`altKey`](https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent/altKey)
   * [`ctrlKey`](https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent/ctrlKey)
   * [`changedTouches`](https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent/changedTouches)
@@ -818,7 +818,7 @@ export default function Avatar({ user }) {
 
 要有条件地应用CSS类，你需要使用JavaScript自己生成`className`字符串。
 
-例如，`className={'row ' + (isSelected ? 'selected'：'')}` 将会生成`className="row"` 或者 `className="row selected"` 取决于 `isSelected` 是不是 `true`.
+例如，`className={'row ' + (isSelected ? 'selected'：'')}` 将会生成`className="row"` 或者 `className="row selected"` 取决于 `isSelected` 是不是 `true`。
 
 为了更好的可读性，你可以使用像 [`classnames`:](https://github.com/JedWatson/classnames)这样的小助手库：
 
