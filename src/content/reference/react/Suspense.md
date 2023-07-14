@@ -4,7 +4,7 @@ title: <Suspense>
 
 <Intro>
 
-`<Suspense>` lets you display a fallback until its children have finished loading.
+`<Suspense>` 允许你显示一个退路方案（fallback）直到它的子组件完成加载。
 
 
 ```js
@@ -19,28 +19,28 @@ title: <Suspense>
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `<Suspense>` {/*suspense*/}
 
-#### Props {/*props*/}
-* `children`: The actual UI you intend to render. If `children` suspends while rendering, the Suspense boundary will switch to rendering `fallback`.
-* `fallback`: An alternate UI to render in place of the actual UI if it has not finished loading. Any valid React node is accepted, though in practice, a fallback is a lightweight placeholder view, such as a loading spinner or skeleton. Suspense will automatically switch to `fallback` when `children` suspends, and back to `children` when the data is ready. If `fallback` suspends while rendering, it will activate the closest parent Suspense boundary.
+#### 参数 {/*props*/}
+* `children`：实际的 UI 渲染内容。如果 `children` 在渲染中挂起（suspend），Suspense 边界将切换到渲染 `fallback`。
+* `fallback`：一个在实际的 UI 未渲染完成时代替其渲染的备用 UI。任何有效的 React Node 都被接受，但实际上退路方案（fallback）是一个轻量的占位符，例如加载中图标或者骨架屏。Suspense 将自动切换到 `fallback` 当 `children` 挂起（suspend）时，并在数据就位时切换回`children`。如果 `fallback` 在渲染中挂起（suspend），它将自动激活最近的 Suspense 边界。
 
-#### Caveats {/*caveats*/}
+#### 注意事项 {/*caveats*/}
 
-- React does not preserve any state for renders that got suspended before they were able to mount for the first time. When the component has loaded, React will retry rendering the suspended tree from scratch.
-- If Suspense was displaying content for the tree, but then it suspended again, the `fallback` will be shown again unless the update causing it was caused by [`startTransition`](/reference/react/startTransition) or [`useDeferredValue`](/reference/react/useDeferredValue).
-- If React needs to hide the already visible content because it suspended again, it will clean up [layout Effects](/reference/react/useLayoutEffect) in the content tree. When the content is ready to be shown again, React will fire the layout Effects again. This ensures that Effects measuring the DOM layout don't try to do this while the content is hidden.
-- React includes under-the-hood optimizations like *Streaming Server Rendering* and *Selective Hydration* that are integrated with Suspense. Read [an architectural overview](https://github.com/reactwg/react-18/discussions/37) and watch [a technical talk](https://www.youtube.com/watch?v=pj5N-Khihgc) to learn more.
+- React 不会保留任何在首次挂载前被挂起（suspend）的渲染的任何状态。当组件完成加载后，React 将从头开始重新尝试渲染挂起（suspend）的组件树。
+- 如果 Suspense 正在显示 React 组件树中的内容，但是被再次挂起（suspend），`fallback` 将再次显示，除非导致它的更新是由 [`startTransition`](/reference/react/startTransition) 或 [`useDeferredValue`](/reference/react/useDeferredValue) 发起的。
+- 如果 React 因已经可见的内容被再次挂起（suspend）而需要隐藏它，它将清理内容树中的 [layout Effects](/reference/react/useLayoutEffect)。当内容可以被再次展示时，React 将重新触发 `layout Effects`。这确保了测量 DOM 布局的 Effects 不会在内容不可见时运行。
+- React 带有内置的优化，例如 **Streaming Server Rendering** 和 **Selective Hydration**，它们已经与 Suspense 集成。阅读 [架构概述](https://github.com/reactwg/react-18/discussions/37) 并观看 [技术讲座](https://www.youtube.com/watch?v=pj5N-Khihgc) 以了解更多。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Displaying a fallback while content is loading {/*displaying-a-fallback-while-content-is-loading*/}
+### 当内容正在加载时显示退路方案（fallback） {/*displaying-a-fallback-while-content-is-loading*/}
 
-You can wrap any part of your application with a Suspense boundary:
+你可以使用 Suspense 边界包裹你应用的任何部分：
 
 ```js [[1, 1, "<Loading />"], [2, 2, "<Albums />"]]
 <Suspense fallback={<Loading />}>
@@ -48,9 +48,9 @@ You can wrap any part of your application with a Suspense boundary:
 </Suspense>
 ```
 
-React will display your <CodeStep step={1}>loading fallback</CodeStep> until all the code and data needed by <CodeStep step={2}>the children</CodeStep> has been loaded.
+React 将展示你的 <CodeStep step={1}> 退路方案（fallback） </CodeStep> 直到 <CodeStep step={2}> 子组件 </CodeStep> 需要的所有代码和数据都加载完成。
 
-In the example below, the `Albums` component *suspends* while fetching the list of albums. Until it's ready to render, React switches the closest Suspense boundary above to show the fallback--your `Loading` component. Then, when the data loads, React hides the `Loading` fallback and renders the `Albums` component with data.
+在下面的例子中，`Albums` 组件在获取专辑列表时被 **挂起** 。在它准备好渲染之前，React 切换到最近的 Suspense 边界来显示退路方案（fallback） —— 你的 `Loading` 组件。然后，当数据加载完成时，React 会隐藏 `Loading` 退路方案（fallback）并渲染带有数据的 `Albums` 组件。
 
 <Sandpack>
 
@@ -117,11 +117,11 @@ function Loading() {
 ```js Albums.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：这个组件使用了一个实验性的 API
+// 该 API 并未在 React 的稳定版本中可用
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 对于一个现实的例子，你可以尝试一个
+// 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
@@ -136,8 +136,8 @@ export default function Albums({ artistId }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -163,9 +163,9 @@ function use(promise) {
 ```
 
 ```js data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// 注意：你进行数据获取的方式取决于
+// 你与 Suspense 集成的框架。
+// 通常，缓存逻辑会在框架内部。
 
 let cache = new Map();
 
@@ -185,7 +185,7 @@ async function getData(url) {
 }
 
 async function getAlbums() {
-  // Add a fake delay to make waiting noticeable.
+  // 添加一个假的延迟，以便让等待更加明显。
   await new Promise(resolve => {
     setTimeout(resolve, 3000);
   });
@@ -250,24 +250,24 @@ async function getAlbums() {
 
 <Note>
 
-**Only Suspense-enabled data sources will activate the Suspense component.** They include:
+**只有启用了 Suspense 的数据源才会激活 Suspense 组件**，它们包括：
 
-- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/getting-started/react-essentials)
-- Lazy-loading component code with [`lazy`](/reference/react/lazy)
+- 使用支持 Suspense 的框架 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/getting-started/react-essentials)。
+- 使用 [`lazy`](/reference/react/lazy) 懒加载组件代码。
 
-Suspense **does not** detect when data is fetched inside an Effect or event handler.
+Suspense **无法** 检测在 Effect 或事件处理程序中获取数据的情况。
 
-The exact way you would load data in the `Albums` component above depends on your framework. If you use a Suspense-enabled framework, you'll find the details in its data fetching documentation.
+在上面的 `Albums` 组件中，正确的数据加载方法取决于你使用的框架。如果你使用了支持 Suspense 的框架，你会在其数据获取文档中找到详细信息。
 
-Suspense-enabled data fetching without the use of an opinionated framework is not yet supported. The requirements for implementing a Suspense-enabled data source are unstable and undocumented. An official API for integrating data sources with Suspense will be released in a future version of React. 
+目前还不支持脱离框架使用支持 Suspense 的数据获取。实现支持 Suspense 的数据源的要求是不稳定的，也没有文档。用于将数据源与 Suspense 集成的官方 API 将在未来的 React 版本中发布。
 
 </Note>
 
 ---
 
-### Revealing content together at once {/*revealing-content-together-at-once*/}
+### 同时展示内容 {/*revealing-content-together-at-once*/}
 
-By default, the whole tree inside Suspense is treated as a single unit. For example, even if *only one* of these components suspends waiting for some data, *all* of them together will be replaced by the loading indicator:
+默认情况下，Suspense 内部的整个组件树都被视为一个单独的单元。例如，即使 **只有一个** 组件挂起（suspend）等待某些数据，**所有** 的组件都将被替换为加载中指示器：
 
 ```js {2-5}
 <Suspense fallback={<Loading />}>
@@ -278,9 +278,9 @@ By default, the whole tree inside Suspense is treated as a single unit. For exam
 </Suspense>
 ```
 
-Then, after all of them are ready to be displayed, they will all appear together at once.
+然后，当它们都准备好显示时，它们将一起被显示。
 
-In the example below, both `Biography` and `Albums` fetch some data. However, because they are grouped under a single Suspense boundary, these components always "pop in" together at the same time.
+在下面的例子中，`Biography` 和 `Albums` 都会获取一些数据。但是，因为它们都被分组在一个单独的 Suspense 边界下，这些组件总是一起“浮现”。
 
 <Sandpack>
 
@@ -362,11 +362,11 @@ export default function Panel({ children }) {
 ```js Biography.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：这个组件使用了一个实验性的 API
+// 该 API 未在 React 的稳定版本中可用
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 对于一个现实的例子，你可以尝试一个
+// 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
@@ -377,8 +377,8 @@ export default function Biography({ artistId }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -406,11 +406,11 @@ function use(promise) {
 ```js Albums.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：这个组件使用了一个实验性的 API
+// 该 API 并未在 React 的稳定版本中可用
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 对于一个现实的例子，你可以尝试一个
+// 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
@@ -425,8 +425,8 @@ export default function Albums({ artistId }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -452,9 +452,9 @@ function use(promise) {
 ```
 
 ```js data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// 注意：你进行数据获取的方式取决于
+// 你与 Suspense 集成的框架。
+// 通常，缓存逻辑会在框架内部。
 
 let cache = new Map();
 
@@ -476,7 +476,7 @@ async function getData(url) {
 }
 
 async function getBio() {
-  // Add a fake delay to make waiting noticeable.
+  // 添加一个假的延迟，以便让等待更加明显。
   await new Promise(resolve => {
     setTimeout(resolve, 1500);
   });
@@ -488,7 +488,7 @@ async function getBio() {
 }
 
 async function getAlbums() {
-  // Add a fake delay to make waiting noticeable.
+  // 添加一个假的延迟，以便让等待更加明显。
   await new Promise(resolve => {
     setTimeout(resolve, 3000);
   });
@@ -562,7 +562,7 @@ async function getAlbums() {
 
 </Sandpack>
 
-Components that load data don't have to be direct children of the Suspense boundary. For example, you can move `Biography` and `Albums` into a new `Details` component. This doesn't change the behavior. `Biography` and `Albums` share the same closest parent Suspense boundary, so their reveal is coordinated together.
+加载数据的组件不必是 Suspense 边界的直接子组件。例如，你可以将 `Biography` 和 `Albums` 移动到一个新的 `Details` 组件中。这不会改变其行为。`Biography` 和 `Albums` 共享最近的父级 `<Suspense>` 边界，因此它们的显示是协同进行的。
 
 ```js {2,8-11}
 <Suspense fallback={<Loading />}>
@@ -583,9 +583,9 @@ function Details({ artistId }) {
 
 ---
 
-### Revealing nested content as it loads {/*revealing-nested-content-as-it-loads*/}
+### 逐步加载内容 {/*revealing-nested-content-as-it-loads*/}
 
-When a component suspends, the closest parent Suspense component shows the fallback. This lets you nest multiple Suspense components to create a loading sequence. Each Suspense boundary's fallback will be filled in as the next level of content becomes available. For example, you can give the album list its own fallback:
+当一个组件挂起（suspend）时，最近的父级 `Suspense` 组件会显示退路方案（fallback）。这允许你嵌套多个 `Suspense` 组件来创建一个加载序列。每个 `Suspense` 边界的退路方案（fallback）都会在下一级内容可用时填充。例如，你可以给专辑列表设置自己的退路方案（fallback）：
 
 ```js {3,7}
 <Suspense fallback={<BigSpinner />}>
@@ -598,14 +598,14 @@ When a component suspends, the closest parent Suspense component shows the fallb
 </Suspense>
 ```
 
-With this change, displaying the `Biography` doesn't need to "wait" for the `Albums` to load.
+通过这个改变，显示 `Biography` 不需要“等待” `Albums` 加载。
 
-The sequence will be:
+加载序列将会是：
 
-1. If `Biography` hasn't loaded yet, `BigSpinner` is shown in place of the entire content area.
-1. Once `Biography` finishes loading, `BigSpinner` is replaced by the content.
-1. If `Albums` hasn't loaded yet, `AlbumsGlimmer` is shown in place of `Albums` and its parent `Panel`.
-1. Finally, once `Albums` finishes loading, it replaces `AlbumsGlimmer`.
+1. 如果 `Biography` 没有加载完成，`BigSpinner` 会显示在整个内容区域的位置。
+1. 一旦 `Biography` 加载完成，`BigSpinner` 会被内容替换。
+1. 如果 `Albums` 没有加载完成，`AlbumsGlimmer` 会显示在 `Albums` 和它的父级 `Panel` 的位置。
+1. 最后，一旦 `Albums` 加载完成，它会替换 `AlbumsGlimmer`。
 
 <Sandpack>
 
@@ -699,11 +699,11 @@ export default function Panel({ children }) {
 ```js Biography.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：这个组件使用了一个实验性的 API
+// 该 API 并未在 React 的稳定版本中可用
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 对于一个现实的例子，你可以尝试一个
+// 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
@@ -714,8 +714,8 @@ export default function Biography({ artistId }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -743,11 +743,11 @@ function use(promise) {
 ```js Albums.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：这个组件使用了一个实验性的 API
+// 该 API 并未在 React 的稳定版本中可用
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 对于一个现实的例子，你可以尝试一个
+// 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
@@ -762,8 +762,8 @@ export default function Albums({ artistId }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -789,9 +789,9 @@ function use(promise) {
 ```
 
 ```js data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// 注意：你进行数据获取的方式取决于
+// 你与 Suspense 集成的框架。
+// 通常，缓存逻辑会在框架内部。
 
 let cache = new Map();
 
@@ -813,7 +813,7 @@ async function getData(url) {
 }
 
 async function getBio() {
-  // Add a fake delay to make waiting noticeable.
+  // 添加一个假的延迟，以便让等待更加明显。
   await new Promise(resolve => {
     setTimeout(resolve, 500);
   });
@@ -825,7 +825,7 @@ async function getBio() {
 }
 
 async function getAlbums() {
-  // Add a fake delay to make waiting noticeable.
+  // 添加一个假的延迟，以便让等待更加明显。
   await new Promise(resolve => {
     setTimeout(resolve, 3000);
   });
@@ -916,15 +916,15 @@ async function getAlbums() {
 
 </Sandpack>
 
-Suspense boundaries let you coordinate which parts of your UI should always "pop in" together at the same time, and which parts should progressively reveal more content in a sequence of loading states. You can add, move, or delete Suspense boundaries in any place in the tree without affecting the rest of your app's behavior.
+Suspense 边界允许你协调 UI 的哪些部分应该总是一起“浮现”，以及哪些部分应该按照加载状态的序列逐步显示更多内容。你可以在树的任何位置添加、移动或删除 Suspense 边界，而不会影响应用程序的其余的行为。
 
-Don't put a Suspense boundary around every component. Suspense boundaries should not be more granular than the loading sequence that you want the user to experience. If you work with a designer, ask them where the loading states should be placed--it's likely that they've already included them in their design wireframes.
+不要在每个组件周围都放置 Suspense 边界。为了提供更好的用户体验，Suspense 边界的粒度应该与期望的加载粒度相匹配。如果你与设计师合作，请询问他们应该放置加载状态的位置——他们很可能已经在设计线框图中包含了它们。
 
 ---
 
-### Showing stale content while fresh content is loading {/*showing-stale-content-while-fresh-content-is-loading*/}
+### 在新内容加载时展示过时内容 {/*showing-stale-content-while-fresh-content-is-loading*/}
 
-In this example, the `SearchResults` component suspends while fetching the search results. Type `"a"`, wait for the results, and then edit it to `"ab"`. The results for `"a"` will get replaced by the loading fallback.
+在这个例子中，`SearchResults` 组件在获取搜索结果时挂起（suspend）。输入 `"a"`，等待结果，然后将其编辑为 `"ab"`。`"a"` 的结果将被加载中退路方案（fallback）替换。
 
 <Sandpack>
 
@@ -966,11 +966,11 @@ export default function App() {
 ```js SearchResults.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：这个组件使用了一个实验性的 API
+// 该 API 并未在 React 稳定版本中可用
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 对于一个现实的例子，你可以尝试一个
+// 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
 export default function SearchResults({ query }) {
   if (query === '') {
@@ -991,8 +991,8 @@ export default function SearchResults({ query }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -1018,9 +1018,9 @@ function use(promise) {
 ```
 
 ```js data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// 注意：你进行数据获取的方式取决于
+// 你与 Suspense 集成的框架。
+// 通常，缓存逻辑会在框架内部。
 
 let cache = new Map();
 
@@ -1040,7 +1040,7 @@ async function getData(url) {
 }
 
 async function getSearchResults(query) {
-  // Add a fake delay to make waiting noticeable.
+  // 添加一个假的延迟，以便让等待更加明显。
   await new Promise(resolve => {
     setTimeout(resolve, 500);
   });
@@ -1116,7 +1116,7 @@ input { margin: 10px; }
 
 </Sandpack>
 
-A common alternative UI pattern is to *defer* updating the list and to keep showing the previous results until the new results are ready. The [`useDeferredValue`](/reference/react/useDeferredValue) Hook lets you pass a deferred version of the query down: 
+一个常见的替代 UI 模式是 **延迟** 更新列表，并保持显示之前的结果，直到新的结果准备好。[`useDeferredValue`](/reference/react/useDeferredValue) Hook 允许你传递一个延迟版本的查询：
 
 ```js {3,11}
 export default function App() {
@@ -1136,9 +1136,9 @@ export default function App() {
 }
 ```
 
-The `query` will update immediately, so the input will display the new value. However, the `deferredQuery` will keep its previous value until the data has loaded, so `SearchResults` will show the stale results for a bit.
+`query` 将立即更新，所以输入框会显示新的值。然而，`deferredQuery` 将保持它之前的值，直到数据加载完成，所以 `SearchResults` 会显示过时的结果一会儿。
 
-To make it more obvious to the user, you can add a visual indication when the stale result list is displayed:
+为了让用户更容易理解，你可以在显示过时的结果列表时添加一个视觉指示：
 
 ```js {2}
 <div style={{
@@ -1148,7 +1148,7 @@ To make it more obvious to the user, you can add a visual indication when the st
 </div>
 ```
 
-Enter `"a"` in the example below, wait for the results to load, and then edit the input to `"ab"`. Notice how instead of the Suspense fallback, you now see the dimmed stale result list until the new results have loaded:
+在下面的例子中，输入 `"a"`，等待结果加载，然后编辑输入为 `"ab"`。注意，你现在看到的不是 Suspense 的退路方案（fallback），而是暗淡的过时结果列表，直到新的结果加载完成：
 
 
 <Sandpack>
@@ -1195,11 +1195,11 @@ export default function App() {
 ```js SearchResults.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：这个组件使用了一个实验性的 API
+// 该 API 并未在 React 的稳定版本中可用
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 对于一个现实的例子，你可以尝试一个
+// 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
 export default function SearchResults({ query }) {
   if (query === '') {
@@ -1220,8 +1220,8 @@ export default function SearchResults({ query }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -1247,9 +1247,9 @@ function use(promise) {
 ```
 
 ```js data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// 注意：你进行数据获取的方式取决于
+// 你与 Suspense 集成的框架。
+// 通常，缓存逻辑会在框架内部。
 
 let cache = new Map();
 
@@ -1269,7 +1269,7 @@ async function getData(url) {
 }
 
 async function getSearchResults(query) {
-  // Add a fake delay to make waiting noticeable.
+  // 添加一个假的延迟，以便让等待更加明显。
   await new Promise(resolve => {
     setTimeout(resolve, 500);
   });
@@ -1347,15 +1347,15 @@ input { margin: 10px; }
 
 <Note>
 
-Both deferred values and [transitions](#preventing-already-revealed-content-from-hiding) let you avoid showing Suspense fallback in favor of inline indicators. Transitions mark the whole update as non-urgent so they are typically used by frameworks and router libraries for navigation. Deferred values, on the other hand, are mostly useful in application code where you want to mark a part of UI as non-urgent and let it "lag behind" the rest of the UI.
+延迟值和[过渡](#preventing-already-revealed-content-from-hiding)都可以让你避免显示 Suspense 的退路方案（fallback），而是使用内联指示器。过渡将整个更新标记为非紧急的，因此它们通常由框架和路由库用于导航。另一方面，延迟值在你希望将 UI 的一部分标记为非紧急，并让它“落后于” UI 的其余部分时非常有用。
 
 </Note>
 
 ---
 
-### Preventing already revealed content from hiding {/*preventing-already-revealed-content-from-hiding*/}
+### 阻止已经显示的内容隐藏 {/*preventing-already-revealed-content-from-hiding*/}
 
-When a component suspends, the closest parent Suspense boundary switches to showing the fallback. This can lead to a jarring user experience if it was already displaying some content. Try pressing this button:
+当一个组件挂起（suspend）时，最近的 Suspense 边界会切换到显示退路方案（fallback）。如果它已经显示了一些内容，这可能会导致令人不快的用户体验。试着按下这个按钮：
 
 <Sandpack>
 
@@ -1481,11 +1481,11 @@ function AlbumsGlimmer() {
 ```js Albums.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：这个组件使用了一个实验性的 API
+// 该 API 并未在 React 的稳定版本中可用
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 对于一个现实的例子，你可以尝试一个
+// 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
@@ -1500,8 +1500,8 @@ export default function Albums({ artistId }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -1529,11 +1529,11 @@ function use(promise) {
 ```js Biography.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：这个组件使用了一个实验性的 API
+// 该 API 并未在 React 的稳定版本中可用
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 对于一个现实的例子，你可以尝试一个
+// 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
@@ -1544,8 +1544,8 @@ export default function Biography({ artistId }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -1581,9 +1581,9 @@ export default function Panel({ children }) {
 ```
 
 ```js data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// 注意：你进行数据获取的方式取决于
+// 你与 Suspense 集成的框架。
+// 通常，缓存逻辑会在框架内部。
 
 let cache = new Map();
 
@@ -1605,7 +1605,7 @@ async function getData(url) {
 }
 
 async function getBio() {
-  // Add a fake delay to make waiting noticeable.
+  // 添加一个假的延迟，以便让等待更加明显。
   await new Promise(resolve => {
     setTimeout(resolve, 500);
   });
@@ -1617,7 +1617,7 @@ async function getBio() {
 }
 
 async function getAlbums() {
-  // Add a fake delay to make waiting noticeable.
+  // 添加一个假的延迟，以便让等待更加明显。
   await new Promise(resolve => {
     setTimeout(resolve, 3000);
   });
@@ -1724,9 +1724,9 @@ main {
 
 </Sandpack>
 
-When you pressed the button, the `Router` component rendered `ArtistPage` instead of `IndexPage`. A component inside `ArtistPage` suspended, so the closest Suspense boundary started showing the fallback. The closest Suspense boundary was near the root, so the whole site layout got replaced by `BigSpinner`.
+当你按下按钮时，`Router` 组件渲染了 `ArtistPage`，而不是 `IndexPage`。`ArtistPage` 内部的一个组件挂起（suspend），所以最近的 Suspense 边界开始显示退路方案（fallback）。最近的 Suspense 边界在根附近，所以整个站点布局被 `BigSpinner` 替换了。
 
-To prevent this, you can mark the navigation state update as a *transition* with [`startTransition`:](/reference/react/startTransition)
+为了阻止这种情况，你可以使用 [`startTransition`:](/reference/react/startTransition) 将导航状态更新标记为 **过渡**：
 
 ```js {5,7}
 function Router() {
@@ -1740,7 +1740,7 @@ function Router() {
   // ...
 ```
 
-This tells React that the state transition is not urgent, and it's better to keep showing the previous page instead of hiding any already revealed content. Now clicking the button "waits" for the `Biography` to load:
+这告诉 React 这个 state 过渡不是紧急的，最好继续显示上一页，而不是隐藏任何已经显示的内容。现在点击按钮并等待 `Biography` 加载：
 
 <Sandpack>
 
@@ -1868,11 +1868,11 @@ function AlbumsGlimmer() {
 ```js Albums.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：这个组件使用了一个实验性的 API
+// 该 API 并未在 React 的稳定版本中可用
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 对于一个现实的例子，你可以尝试一个
+// 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
@@ -1887,8 +1887,8 @@ export default function Albums({ artistId }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -1916,11 +1916,11 @@ function use(promise) {
 ```js Biography.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：这个组件使用了一个实验性的 API
+// 该 API 并未在 React 的稳定版本中可用
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 对于一个现实的例子，你可以尝试一个
+// 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
@@ -1931,8 +1931,8 @@ export default function Biography({ artistId }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -1968,9 +1968,9 @@ export default function Panel({ children }) {
 ```
 
 ```js data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// 注意：你进行数据获取的方式取决于
+// 你与 Suspense 集成的框架。
+// 通常，缓存逻辑会在框架内部。
 
 let cache = new Map();
 
@@ -1992,7 +1992,7 @@ async function getData(url) {
 }
 
 async function getBio() {
-  // Add a fake delay to make waiting noticeable.
+  // 添加一个假的延迟，以便让等待更加明显。
   await new Promise(resolve => {
     setTimeout(resolve, 500);
   });
@@ -2004,7 +2004,7 @@ async function getBio() {
 }
 
 async function getAlbums() {
-  // Add a fake delay to make waiting noticeable.
+  // 添加一个假的延迟，以便让等待更加明显。
   await new Promise(resolve => {
     setTimeout(resolve, 3000);
   });
@@ -2111,19 +2111,19 @@ main {
 
 </Sandpack>
 
-A transition doesn't wait for *all* content to load. It only waits long enough to avoid hiding already revealed content. For example, the website `Layout` was already revealed, so it would be bad to hide it behind a loading spinner. However, the nested `Suspense` boundary around `Albums` is new, so the transition doesn't wait for it.
+过渡并不会等待 **所有** 内容加载完成。它只会等待足够长的时间，以避免隐藏已经显示的内容。例如，网站 `Layout` 已经显示，所以将其隐藏在加载中指示器后面是不好的。然而，`Albums` 周围的嵌套 `Suspense` 边界是新出现的，所以过渡不会等待它。
 
 <Note>
 
-Suspense-enabled routers are expected to wrap the navigation updates into transitions by default.
+启用了 Suspense 的路由在默认情况下会将导航更新包装到过渡中。
 
 </Note>
 
 ---
 
-### Indicating that a transition is happening {/*indicating-that-a-transition-is-happening*/}
+### 表明过渡正在发生 {/*indicating-that-a-transition-is-happening*/}
 
-In the above example, once you click the button, there is no visual indication that a navigation is in progress. To add an indicator, you can replace [`startTransition`](/reference/react/startTransition) with [`useTransition`](/reference/react/useTransition) which gives you a boolean `isPending` value. In the example below, it's used to change the website header styling while a transition is happening:
+在上面的例子中，当你点击按钮，没有任何视觉指示表明导航正在进行。为了添加指示器，你可以用 [`useTransition`](/reference/react/useTransition) 替换 [`startTransition`](/reference/react/startTransition)，它会给你一个布尔值 `isPending`。在下面的例子中，它被用来在过渡发生时改变网站头部的样式：
 
 <Sandpack>
 
@@ -2254,11 +2254,11 @@ function AlbumsGlimmer() {
 ```js Albums.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：这个组件使用了一个实验性的 API
+// 该 API 并未在 React 的稳定版本中可用
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 对于一个现实的例子，你可以尝试一个
+// 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
@@ -2273,8 +2273,8 @@ export default function Albums({ artistId }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -2302,11 +2302,11 @@ function use(promise) {
 ```js Biography.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：这个组件使用了一个实验性的 API
+// 该 API 并未在 React 的稳定版本中可用
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 对于一个现实的例子，你可以尝试一个
+// 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
@@ -2317,8 +2317,8 @@ export default function Biography({ artistId }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决 bug 的临时方案，以便让演示运行起来。
+// TODO：当 bug 修复后，用真正的实现替换。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -2354,9 +2354,9 @@ export default function Panel({ children }) {
 ```
 
 ```js data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// 注意：你进行数据获取的方式取决于
+// 你与 Suspense 集成的框架。
+// 通常，缓存逻辑会在框架内部。
 
 let cache = new Map();
 
@@ -2378,7 +2378,7 @@ async function getData(url) {
 }
 
 async function getBio() {
-  // Add a fake delay to make waiting noticeable.
+  // 添加一个假的延迟，以便让等待更加明显。
   await new Promise(resolve => {
     setTimeout(resolve, 500);
   });
@@ -2390,7 +2390,7 @@ async function getBio() {
 }
 
 async function getAlbums() {
-  // Add a fake delay to make waiting noticeable.
+  // 添加一个假的延迟，以便让等待更加明显。
   await new Promise(resolve => {
     setTimeout(resolve, 3000);
   });
@@ -2499,27 +2499,27 @@ main {
 
 ---
 
-### Resetting Suspense boundaries on navigation {/*resetting-suspense-boundaries-on-navigation*/}
+### 在导航时重置 Suspense 边界 {/*resetting-suspense-boundaries-on-navigation*/}
 
-During a transition, React will avoid hiding already revealed content. However, if you navigate to a route with different parameters, you might want to tell React it is *different* content. You can express this with a `key`:
+在过渡发生时，React 将避免隐藏已经显示的内容。但是，如果你导航到具有不同参数的路由，你可能想告诉 React 它是 **不同** 的内容。你可以用 `key` 表示这一点：
 
 ```js
 <ProfilePage key={queryParams.id} />
 ```
 
-Imagine you're navigating within a user's profile page, and something suspends. If that update is wrapped in a transition, it will not trigger the fallback for already visible content. That's the expected behavior.
+想想你在用户的个人资料页面中导航，然后暂停了。如果更新被包装在一个过渡中，它将不会触发已经可见内容的退路方案（fallback）。这是预期的行为。
 
-However, now imagine you're navigating between two different user profiles. In that case, it makes sense to show the fallback. For example, one user's timeline is *different content* from another user's timeline. By specifying a `key`, you ensure that React treats different users' profiles as different components, and resets the Suspense boundaries during navigation. Suspense-integrated routers should do this automatically.
+然而，现在想象一下你在两个不同的用户资料之间导航。在这种情况下，显示退路方案（fallback）是有意义的。例如，一个用户的时间线是与另一个用户的时间线是 **不同的内容**。通过指定一个 `key`，你可以确保 React 将不同用户的个人资料视为不同的组件，并在导航期间重置 Suspense 边界。集成 Suspense 的路由应该自动执行此操作。
 
 ---
 
-### Providing a fallback for server errors and server-only content {/*providing-a-fallback-for-server-errors-and-server-only-content*/}
+### 为服务器错误和服务端内容提供退路方案（fallback） {/*providing-a-fallback-for-server-errors-and-server-only-content*/}
 
-If you use one of the [streaming server rendering APIs](/reference/react-dom/server) (or a framework that relies on them), React will also use your `<Suspense>` boundaries to handle errors on the server. If a component throws an error on the server, React will not abort the server render. Instead, it will find the closest `<Suspense>` component above it and include its fallback (such as a spinner) into the generated server HTML. The user will see a spinner at first.
+如果你使用过 [流式服务器渲染 API](/reference/react-dom/server)（或依赖它们的框架），React 也会使用你的 `<Suspense>` 边界来处理服务器上的错误。如果组件在服务器上抛出错误，React 将不会中止服务器渲染。相反，它将找到最接近的 `<Suspense>` 组件并将其退路方案（fallback）（例如一个加载中指示器）包含到生成的服务端 HTML 中。用户将首先看到一个加载中指示器。
 
-On the client, React will attempt to render the same component again. If it errors on the client too, React will throw the error and display the closest [error boundary.](/reference/react/Component#static-getderivedstatefromerror) However, if it does not error on the client, React will not display the error to the user since the content was eventually displayed successfully.
+在客户端，React 将尝试再次渲染相同的组件。如果它在客户端也出错，React 将抛出错误并显示最接近的 [错误边界](/reference/react/Component#static-getderivedstatefromerror)。然而，如果它在客户端没有错误，React 将不会向用户显示错误，因为内容最终成功显示了。
 
-You can use this to opt out some components from rendering on the server. To do this, throw an error in the server environment and then wrap them in a `<Suspense>` boundary to replace their HTML with fallbacks:
+你可以使用这个来防止一些组件在服务端渲染。为此，你应该在服务器环境中抛出一个错误，然后将其包装在一个 `<Suspense>` 边界中，从而用退路方案（fallback）替换它们的 HTML：
 
 ```js
 <Suspense fallback={<Loading />}>
@@ -2534,17 +2534,17 @@ function Chat() {
 }
 ```
 
-The server HTML will include the loading indicator. It will be replaced by the `Chat` component on the client.
+服务端 HTML 将包含加载中指示器。它将被客户端上的 `Chat` 组件替换。
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 故障排除 {/*troubleshooting*/}
 
-### How do I prevent the UI from being replaced by a fallback during an update? {/*preventing-unwanted-fallbacks*/}
+### 我应该如何阻止 UI 在更新期间被退路方案（fallback）替换 {/*preventing-unwanted-fallbacks*/}
 
-Replacing visible UI with a fallback creates a jarring user experience. This can happen when an update causes a component to suspend, and the nearest Suspense boundary is already showing content to the user.
+用一个退路方案（fallback）替换一个可见的 UI 会带来令人不快的用户体验。当一个更新导致一个组件挂起（suspend）时，而最近的 Suspense 边界已经向用户显示了内容时，这种情况可能发生。
 
-To prevent this from happening, [mark the update as non-urgent using `startTransition`](#preventing-already-revealed-content-from-hiding). During a transition, React will wait until enough data has loaded to prevent an unwanted fallback from appearing:
+为了防止这种情况发生，[使用 `startTransition` 将更新标记为非紧急的](#preventing-already-revealed-content-from-hiding)。在过渡期间，React 将等待足够的数据加载，以防止不需要的退路方案（fallback）出现：
 
 ```js {2-3,5}
 function handleNextPageClick() {
@@ -2555,8 +2555,8 @@ function handleNextPageClick() {
 }
 ```
 
-This will avoid hiding existing content. However, any newly rendered `Suspense` boundaries will still immediately display fallbacks to avoid blocking the UI and let the user see the content as it becomes available.
+这将避免隐藏现有内容。然而，任何新渲染的 `Suspense` 边界仍然会立即显示退路方案（fallback），以避免阻塞 UI 并让用户在内容可用时看到内容。
 
-**React will only prevent unwanted fallbacks during non-urgent updates**. It will not delay a render if it's the result of an urgent update. You must opt in with an API like [`startTransition`](/reference/react/startTransition) or [`useDeferredValue`](/reference/react/useDeferredValue).
+**React 只会在非紧急更新期间阻止不必要的退路方案（fallback）**。这意味着它不会阻止紧急更新的退路方案（fallback）。你必须使用 [`startTransition`](/reference/react/startTransition) 或 [`useDeferredValue`](/reference/react/useDeferredValue) 这样的 API 来选择性的优化。
 
-If your router is integrated with Suspense, it should wrap its updates into [`startTransition`](/reference/react/startTransition) automatically.
+如果你的路由集成了 Suspense，它将会自动将更新包装到 [`startTransition`](/reference/react/startTransition) 中。
