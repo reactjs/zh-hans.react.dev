@@ -325,4 +325,4 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
 ## 更新日志 {/*changelog*/}
 
-你可以在这里查看 [完整的 changelog](https://github.com/facebook/react/blob/main/CHANGELOG.md)。
+你可以在这里查看 [完整更新日志](https://github.com/facebook/react/blob/main/CHANGELOG.md)。
