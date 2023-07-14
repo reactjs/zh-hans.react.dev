@@ -159,7 +159,7 @@ interface MyButtonProps {
 
 查看 [React 18 类型 PR](https://github.com/DefinitelyTyped/DefinitelyTyped/pull/56210) 查看只有类型变了的完整清单。它链接到了在类型库中修复的例子，你可以从中了解如何调整你自己的代码。你可以使用 [自动迁移脚本](https://github.com/eps1lon/types-react-codemod) 来帮助你的应用代码更快变更到更安全的新类型。
 
-如果你发现了类型中的 bug，请在 DefinitelyTyped 仓库 [上报问题](https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/new?category=issues-with-a-types-package)。
+如果你发现了类型中的问题，请在 DefinitelyTyped 仓库 [提交 issue](https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/new?category=issues-with-a-types-package)。
 
 ## 自动批处理 {/*automatic-batching*/}
 
