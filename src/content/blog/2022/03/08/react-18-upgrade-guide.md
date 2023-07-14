@@ -100,7 +100,7 @@ root.render(<AppWithCallbackAfterRender />);
 
 </Note>
 
-最后如果应用通过 hydration 使用了服务端渲染，你需要将 `hydrate` 升级到 `hydrateRoot`：
+最后如果应用通过 hydrate 使用了服务端渲染，你需要将 `hydrate` 升级到 `hydrateRoot`：
 
 ```js
 // 之前
