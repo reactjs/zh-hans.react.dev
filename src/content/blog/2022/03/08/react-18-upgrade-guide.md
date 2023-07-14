@@ -294,7 +294,7 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
 ## 废弃 {/*deprecations*/}
 
-* `react-dom`: `ReactDOM.render` 已经被废弃。使用它会发出告警并且让应用运行在 React 17 模式下。
+* `react-dom`：`ReactDOM.render` 已经被废弃。使用它会发出警告并且让应用运行在 React 17 模式下。
 * `react-dom`: `ReactDOM.hydrate` 已经被废弃。使用它会发出告警并且让应用运行在 React 17 模式下。
 * `react-dom`: `ReactDOM.unmountComponentAtNode` 已经被废弃。
 * `react-dom`: `ReactDOM.renderSubtreeIntoContainer` 已经被废弃。
