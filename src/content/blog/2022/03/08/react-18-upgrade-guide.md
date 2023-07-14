@@ -38,7 +38,7 @@ yarn add react react-dom
 
 ## 客户端渲染 API 的更新 {/*updates-to-client-rendering-apis*/}
 
-当你第一次安装 React 18 的时候，控制台会出现如下告警：
+当你第一次安装 React 18 的时候，控制台会出现如下警告：
 
 <ConsoleBlock level="error">
 
