@@ -10,7 +10,7 @@ title: "如何升级到 React 18"
 
 正如我们在 [发布报告](/blog/2022/03/29/react-v18) 中分享的那样，React 18 借助新的并发渲染引入了许多新特性，对于已经存在的应用可以采用渐进式策略。在这篇文章中，我们会指导你如何逐步升级到 React 18。
 
-如果你在升级的过程中遇到任何问题，可以在 github [提 issue](https://github.com/facebook/react/issues/new/choose)。
+如果你在升级的过程中遇到任何问题，可以在 GitHub [提 issue](https://github.com/facebook/react/issues/new/choose)。
 
 </Intro>
 
