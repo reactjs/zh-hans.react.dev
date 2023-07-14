@@ -282,7 +282,7 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
 你也可以将其设置为 `false` 告诉 React 不需要 `act`。这对于要模拟完整浏览器环境的端到端测试非常有用。
 
-最终我们希望测试库会自动为你配置这些。例如， [下一个版本的 React Testing Library 对于 React 18 提供了内置支持](https://github.com/testing-library/react-testing-library/issues/509#issuecomment-917989936) 而不需要额外的配置。
+最终我们希望测试库会自动为你配置这些。例如，[下一个版本的 React Testing Library 对于 React 18 提供了内置支持](https://github.com/testing-library/react-testing-library/issues/509#issuecomment-917989936) 而不需要额外的配置。
 
 [更多关于 `act` 测试 API 的背景资料和相关的修改](https://github.com/reactwg/react-18/discussions/102) 可在工作组获取。
 
