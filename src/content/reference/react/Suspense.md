@@ -1726,7 +1726,7 @@ main {
 
 当你按下按钮时，`Router` 组件渲染了 `ArtistPage`，而不是 `IndexPage`。`ArtistPage` 内部的一个组件挂起（suspend），所以最近的 Suspense 边界开始显示退路方案（fallback）。最近的 Suspense 边界在根附近，所以整个站点布局被 `BigSpinner` 替换了。
 
-为了阻止这种情况，你可以使用 [`startTransition`:](/reference/react/startTransition) 将导航状态更新标记为 **过渡**。
+为了阻止这种情况，你可以使用 [`startTransition`:](/reference/react/startTransition) 将导航状态更新标记为 **过渡**：
 
 ```js {5,7}
 function Router() {
