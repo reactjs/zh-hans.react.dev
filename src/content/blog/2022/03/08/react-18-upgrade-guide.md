@@ -127,7 +127,7 @@ const root = hydrateRoot(container, <App tab="home" />);
 
 在这次发布中，我们修改 `react-dom/server` API 使它完全支持服务端的 Suspense 和 流式 SSR。作为这些变化的一部分，我们正在废弃旧的 Node 流式 API，因为它不支持服务端的增量 Suspense 流。
 
-现在使用这个 API 会发出告警：
+现在使用这个 API 会发出警告：
 
 * `renderToNodeStream`: **废弃 ⛔️️**
 
