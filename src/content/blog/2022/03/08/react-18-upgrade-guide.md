@@ -138,7 +138,7 @@ const root = hydrateRoot(container, <App tab="home" />);
 * `renderToReadableStream`: **新增 ✨**
 
 下面的 API 会继续工作，但是对于 Suspense 支持是有限的：
-* `renderToString`: **有限制** ⚠️
+* `renderToString`：**有限制** ⚠️
 * `renderToStaticMarkup`: **有限制** ⚠️
 
 最后这个 API 会继续用于渲染电子邮件：
