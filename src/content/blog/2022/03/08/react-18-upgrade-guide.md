@@ -288,7 +288,7 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
 ## 放弃对 Internet Explorer 的支持 {/*dropping-support-for-internet-explorer*/}
 
-在本次发布中，React 正在放弃对 Internet Explorer 的支持，[最终会在 2022 年 6 月 15日完全放弃](https://blogs.windows.com/windowsexperience/2021/05/19/the-future-of-internet-explorer-on-windows-10-is-in-microsoft-edge)。我们现在正在做这一变更，因为 React 18 中引入的新特性是使用现代浏览器特性构建的，例如在 IE 中不能 polyfill 的微任务。
+在本次发布中，React 正在放弃对 Internet Explorer 的支持，[最终会在 2022 年 6 月 15 日完全放弃](https://blogs.windows.com/windowsexperience/2021/05/19/the-future-of-internet-explorer-on-windows-10-is-in-microsoft-edge)。我们现在正在做这一变更，因为 React 18 中引入的新特性是使用现代浏览器特性构建的，例如在 IE 中不能 polyfill 的微任务。
 
 如果你需要支持 Internet Explorer，我们推荐你保持在 React 17。
 
