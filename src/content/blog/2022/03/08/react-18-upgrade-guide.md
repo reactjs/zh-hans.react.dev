@@ -256,7 +256,7 @@ React 18 也引入了一些并发渲染的新 API，例如 `startTransition`、`
     * 销毁 Effect effect。
 * React 模仿加载有上一个状态的组件。
     * Layout effect setup 代码运行
-    * Effect setup 代码运行
+    * 运行 Effect effect setup 代码
 ```
 
 了解更多信息，可以查看工作组的文章：[向严格模式添加可复用的状态](https://github.com/reactwg/react-18/discussions/19) 和 [如何支持 Effect 中的可复用状态](https://github.com/reactwg/react-18/discussions/18)。
