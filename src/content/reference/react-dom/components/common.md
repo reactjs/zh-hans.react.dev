@@ -926,11 +926,11 @@ import { useState } from 'react';
 import MarkdownPreview from './MarkdownPreview.js';
 
 export default function MarkdownEditor() {
-  const [postContent , setPostContent] = useState('_Hello，_ **Markdown**!');
+  const [postContent , setPostContent] = useState('你好，_ **Markdown**!');
   return (
     <>
       <label>
-        Enter some markdown:
+        输入一些markdown:
         <textarea
           value={postContent}
           onChange={e => setPostContent(e.target.value)}
@@ -1014,28 +1014,28 @@ HTML中嵌入的代码将会运行。黑客可以利用这个安全漏洞窃取�
 export default function MouseExample() {
   return (
     <div
-      onMouseEnter={e => console.log('onMouseEnter (parent)')}
-      onMouseLeave={e => console.log('onMouseLeave (parent)')}
+      onMouseEnter={e => console.log('onMouseEnter（父元素）')}
+      onMouseLeave={e => console.log('onMouseLeave（父元素）')}
     >
       <button
-        onClick={e => console.log('onClick (first button)')}
-        onMouseDown={e => console.log('onMouseDown (first button)')}
-        onMouseEnter={e => console.log('onMouseEnter (first button)')}
-        onMouseLeave={e => console.log('onMouseLeave (first button)')}
-        onMouseOver={e => console.log('onMouseOver (first button)')}
-        onMouseUp={e => console.log('onMouseUp (first button)')}
+        onClick={e => console.log('onClick（按钮一）')}
+        onMouseDown={e => console.log('onMouseDown （按钮一）')}
+        onMouseEnter={e => console.log('onMouseEnter （按钮一）')}
+        onMouseLeave={e => console.log('onMouseLeave （按钮一）')}
+        onMouseOver={e => console.log('onMouseOver（按钮一）')}
+        onMouseUp={e => console.log('onMouseUp （按钮一）')}
       >
-        First button
+        按钮一
       </button>
       <button
-        onClick={e => console.log('onClick (second button)')}
-        onMouseDown={e => console.log('onMouseDown (second button)')}
-        onMouseEnter={e => console.log('onMouseEnter (second button)')}
-        onMouseLeave={e => console.log('onMouseLeave (second button)')}
-        onMouseOver={e => console.log('onMouseOver (second button)')}
-        onMouseUp={e => console.log('onMouseUp (second button)')}
+        onClick={e => console.log('点击（按钮二）')}
+        onMouseDown={e => console.log('onMouseDown （按钮二）')}
+        onMouseEnter={e => console.log('onMouseEnter （按钮二）')}
+        onMouseLeave={e => console.log('onMouseLeave （按钮二）')}
+        onMouseOver={e => console.log('onMouseOver （按钮二）')}
+        onMouseUp={e => console.log('onMouseUp （按钮二）')}
       >
-        Second button
+        按钮二
       </button>
     </div>
   );
@@ -1061,29 +1061,29 @@ input { margin-left: 10px; }
 export default function PointerExample() {
   return (
     <div
-      onPointerEnter={e => console.log('onPointerEnter (parent)')}
-      onPointerLeave={e => console.log('onPointerLeave (parent)')}
+      onPointerEnter={e => console.log('onPointerEnter （父元素）')}
+      onPointerLeave={e => console.log('onPointerLeave （父元素）')}
       style={{ padding: 20, backgroundColor: '#ddd' }}
     >
       <div
-        onPointerDown={e => console.log('onPointerDown (first child)')}
-        onPointerEnter={e => console.log('onPointerEnter (first child)')}
-        onPointerLeave={e => console.log('onPointerLeave (first child)')}
-        onPointerMove={e => console.log('onPointerMove (first child)')}
-        onPointerUp={e => console.log('onPointerUp (first child)')}
+        onPointerDown={e => console.log('onPointerDown （子元素一）')}
+        onPointerEnter={e => console.log('onPointerEnter （子元素一）')}
+        onPointerLeave={e => console.log('onPointerLeave （子元素一）')}
+        onPointerMove={e => console.log('onPointerMove （子元素一）')}
+        onPointerUp={e => console.log('onPointerUp （子元素一）')}
         style={{ padding: 20, backgroundColor: 'lightyellow' }}
       >
-        First child
+        子元素一
       </div>
       <div
-        onPointerDown={e => console.log('onPointerDown (second child)')}
-        onPointerEnter={e => console.log('onPointerEnter (second child)')}
-        onPointerLeave={e => console.log('onPointerLeave (second child)')}
-        onPointerMove={e => console.log('onPointerMove (second child)')}
-        onPointerUp={e => console.log('onPointerUp (second child)')}
+        onPointerDown={e => console.log('onPointerDown （子元素二）')}
+        onPointerEnter={e => console.log('onPointerEnter （子元素二）')}
+        onPointerLeave={e => console.log('onPointerLeave （子元素二）')}
+        onPointerMove={e => console.log('onPointerMove （子元素二）')}
+        onPointerUp={e => console.log('onPointerUp （子元素二）')}
         style={{ padding: 20, backgroundColor: 'lightblue' }}
       >
-        Second child
+        子元素二
       </div>
     </div>
   );
