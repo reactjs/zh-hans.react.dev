@@ -96,7 +96,7 @@ root.render(<AppWithCallbackAfterRender />);
 
 <Note>
 
-对于旧的 render 回调函数 API 没有一对一的替换 — 它取决于你的用例。查看工作组的 [使用 createRoot 替换 render](https://github.com/reactwg/react-18/discussions/5) 博文了解更多信息。
+对于旧的 render 回调函数 API 没有一对一的替换——它取决于你的用例。查看工作组的 [使用 createRoot 替换 render](https://github.com/reactwg/react-18/discussions/5) 博文了解更多信息。
 
 </Note>
 
