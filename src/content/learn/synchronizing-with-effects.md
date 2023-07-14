@@ -1,5 +1,5 @@
 ---
-title: '使用 Effect 来同步'
+title: '使用 Effect 同步'
 ---
 
 <Intro>
