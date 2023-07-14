@@ -323,6 +323,6 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 * **`renderToString`**：当在服务端挂起时，它不再会报错。而是会为最接近的 `<Suspense>` 边界发射 fallback HTML，然后在客户端尝试渲染同样的内容。我们仍然推荐你切换到像 `renderToPipeableStream` 或者 `renderToReadableStream` 这样的流式 API。
 * **`renderToStaticMarkup`**：当在服务端挂起时，它不再会报错。而是会为最接近的 `<Suspense>` 边界发射 fallback HTML。
 
-## Changelog {/*changelog*/}
+## 更新日志 {/*changelog*/}
 
 你可以在这里查看 [完整的 changelog](https://github.com/facebook/react/blob/main/CHANGELOG.md)。
