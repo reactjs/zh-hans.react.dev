@@ -144,7 +144,7 @@ const root = hydrateRoot(container, <App tab="home" />);
 最后这个 API 会继续用于渲染电子邮件：
 * `renderToStaticNodeStream`
 
-更多关于服务端渲染 API 的变化信息，可以查看工作组文章 [在服务端升级到 React 18](https://github.com/reactwg/react-18/discussions/22)，[深入探讨新的 Suspense SSR 架构](https://github.com/reactwg/react-18/discussions/37)，以及 [Shaundai 个人](https://twitter.com/shaundai) 在 React 2021 会议上关于[使用 Suspense 的流式服务端渲染](https://www.youtube.com/watch?v=pj5N-Khihgc) 的演讲。
+更多关于服务端渲染 API 的变化信息，可以查看工作组文章 [在服务端升级到 React 18](https://github.com/reactwg/react-18/discussions/22)，[深入探讨新的 Suspense SSR 架构](https://github.com/reactwg/react-18/discussions/37)，以及 [Shaundai 个人](https://twitter.com/shaundai) 在 React 2021 会议上关于 [使用 Suspense 的流式服务端渲染](https://www.youtube.com/watch?v=pj5N-Khihgc) 的演讲。
 
 ## TypeScript 定义的更新 {/*updates-to-typescript-definitions*/}
 
