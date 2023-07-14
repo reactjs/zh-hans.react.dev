@@ -132,7 +132,7 @@ const root = hydrateRoot(container, <App tab="home" />);
 * `renderToNodeStream`：**废弃 ⛔️️**
 
 取而代之的是，对于 Node 环境中的流我们使用：
-* `renderToPipeableStream`: **新增 ✨**
+* `renderToPipeableStream`：**新增 ✨**
 
 同时也引入了新的 API 借助 Suspense 为像 Deno 和 Cloudflare workers 这样的现代分布式运行时环境来支持流式 SSR：
 * `renderToReadableStream`: **新增 ✨**
