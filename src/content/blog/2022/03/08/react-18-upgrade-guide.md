@@ -46,7 +46,7 @@ ReactDOM.render is no longer supported in React 18. Use createRoot instead. Unti
 
 </ConsoleBlock>
 
-React 18 引入了一个新的 root API,这个 API 为管理根节点提供了更符合人类工程学。新的 root API 也可以启用新增的并发渲染，这让你可以选择并发特性。
+React 18 引入了一个新的 root API，它提供了更好的操作根节点的方式。新的 root API 还启用了新的并发渲染器，使开发者能够选择使用并发特性。
 
 ```js
 // 之前
