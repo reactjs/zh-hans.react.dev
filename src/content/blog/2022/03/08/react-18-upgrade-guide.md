@@ -255,7 +255,7 @@ React 18 也引入了一些并发渲染的新 API，例如 `startTransition`、`
     * 销毁 Layout effect。
     * 销毁 Effect effect。
 * React 模仿加载有上一个状态的组件。
-    * Layout effect setup 代码运行
+    * 运行 Layout effect setup 代码
     * 运行 Effect effect setup 代码
 ```
 
