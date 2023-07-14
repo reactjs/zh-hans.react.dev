@@ -307,7 +307,7 @@ function VideoPlayer({ src, isPlaying }) {
       console.log('调用 video.pause()');
       ref.current.pause();
     }
-  }, []); // 浙江产生错误
+  }, []); // 这将产生错误
 
   return <video ref={ref} src={src} loop playsInline />;
 }
@@ -510,7 +510,7 @@ export function createConnection() {
       console.log('✅ 连接中……');
     },
     disconnect() {
-      console.log('❌ 连接失败。');
+      console.log('❌ 连接断开。');
     }
   };
 }
@@ -568,7 +568,7 @@ export function createConnection() {
       console.log('✅ 连接中……');
     },
     disconnect() {
-      console.log('❌ 连接失败。');
+      console.log('❌ 连接断开。');
     }
   };
 }
@@ -583,7 +583,7 @@ input { display: block; margin-bottom: 20px; }
 现在在开发模式下，控制台会打印三条记录：
 
 1. `"✅ 连接中……"`
-2. `"❌ 连接失败。"`
+2. `"❌ 连接断开。"`
 3. `"✅ 连接中……"`
 
 **在开发环境下，出现这样的结果才是符合预期的**。重复挂载组件，可以确保在 React 中离开和返回页面时不会导致代码运行出现问题。上面的代码中规定了挂载组件时连接服务器、卸载组件时断连服务器。所以断开、连接再重新连接是符合预期的行为。当为 Effect 正确实现清理函数时，无论 Effect 执行一次，还是执行、清理、再执行，用户都不会感受到明显的差异。所以，在开发环境下，出现额外的连接、断连时，这是 React 正在调试你的代码。这是很正常的现象，不要试图消除它！
