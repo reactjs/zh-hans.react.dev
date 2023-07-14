@@ -163,7 +163,7 @@ interface MyButtonProps {
 
 ## 自动批处理 {/*automatic-batching*/}
 
-React 18 通过默认做更多批量处理来增加开箱即用性能提升。批量处理指的是 React 为了提高性能将多个 state 更新分组到一个单独的重渲染。React 18 之前，我们只在 React 事件处理函数内部惊醒批量更新，而 promise、setTimeout、本地事件处理函数或者其他事件，在 React 中默认是不进行批量处理的：
+React 18 通过默认做更多批量处理来增加开箱即用性能提升。批量处理指的是 React 为了提高性能将多个 state 更新分组到一个单独的重渲染。React 18 之前，我们只在 React 事件处理函数内部实现批量更新，而 promise、setTimeout、本地事件处理函数或者其他事件中更新状态，在 React 中默认是不进行批量处理的：
 
 ```js
 // React 18 之前，只有 React 事件会被批量处理
