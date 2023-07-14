@@ -480,7 +480,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 #### 属性 {/*inputevent-handler-parameters*/}
 
-* `e`：一个带有这些额外 [`InputEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/InputEvent)属性的[React event object](#react-event-object)：
+* `e`：一个带有这些额外 [`InputEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/InputEvent)属性的[React 事件对象](#react-event-object)：
   * [`data`](https://developer.mozilla.org/zh-CN/docs/Web/API/InputEvent/data)
 
 ---
@@ -770,7 +770,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 ```
 
 
-In the above example，`style={{}}` is not a special syntax，but a regular `{}` object inside the `style={ }` [JSX curly braces.](/learn/javascript-in-jsx-with-curly-braces) We recommend only using the `style` attribute when your styles depend on JavaScript variables.
+在上述例子中，`style={{}}` 不是一个特殊的语法， 而是将 `style={ }` [JSX curly braces.](/learn/javascript-in-jsx-with-curly-braces)放在一个普通 `{}`里。 我们建议只在样式依赖于JavaScript变量时使用 `style` 属性。
 
 <Sandpack>
 
