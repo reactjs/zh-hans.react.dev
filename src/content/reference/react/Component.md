@@ -4,13 +4,13 @@ title: Component
 
 <Pitfall>
 
-我们建议使用函数组件，而不是类组件。[了解如何迁移](#alternatives)。
+我们建议使用函数式组件，而不是类式组件。[了解如何迁移](#alternatives)。
 
 </Pitfall>
 
 <Intro>
 
-`Component` 是一个 [JavaScript 类](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)，是被定义为react组件的基类，类组件仍然被 React 支持，但我们不建议在新代码中使用它们。
+`Component` 是一个 [JavaScript 类](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes)，其被定义为 React 组件的基类，类式组件仍然被 React 支持，但我们不建议在新代码中使用它们。
 
 ```js
 class Greeting extends Component {
@@ -30,7 +30,7 @@ class Greeting extends Component {
 
 ### `Component` {/*component*/}
 
-要想将 React 组件定义为一个类，你需要扩展内置的 `Component` 类并定义一个 [`render` 方法](#render)：
+如果想要使用类式组件，需要继承内置的 `Component` 类并定义 [`render` 方法](#render)：
 
 ```js
 import { Component } from 'react';
@@ -44,15 +44,15 @@ class Greeting extends Component {
 
 只有 `render` 方法是必要的，其他方法是可选的。
 
-[查看以下的更多实例](#usage)。
+[参加下方更多示例](#usage)。
 
 ---
 
 ### `context` {/*context*/}
 
-一个类组件的 [context](/learn/passing-data-deeply-with-context) 可以通过使用 `this.context` 来访问。只有当你使用 [`static contextType`](#static-contexttype) （更新的）或者 [`static contextTypes`](#static-contexttypes) （已被废弃）来特别指定你想要接受 **哪一个** context 时它才会有效。
+可以通过使用 `this.context` 来访问一个类式组件的 [context](/learn/passing-data-deeply-with-context)。只有当你使用 [`static contextType`](#static-contexttype) （最新的）或者 [`static contextTypes`](#static-contexttypes) （已被废弃的）来特别指定你想要接受 **哪一个** context 时它才会有效。
 
-类组件一次只能读取一个context。
+类式组件一次只能读取一个context。
 
 ```js {2,5}
 class Button extends Component {
@@ -73,7 +73,7 @@ class Button extends Component {
 
 <Note>
 
-在类组件中读取 `this.context` 等同于在函数组件中使用的 [`useContext`](/reference/react/useContext)。
+在类式组件中读取 `this.context` 等同于在函数式组件中使用的 [`useContext`](/reference/react/useContext)。
 
 [了解如何迁移](#migrating-a-component-with-context-from-a-class-to-a-function)。
 
@@ -83,7 +83,7 @@ class Button extends Component {
 
 ### `props` {/*props*/}
 
-`this.props` 是使用传递给类组件的 props 的使用形式。
+使用 `this.props` 能够访问一个类组件的 props。
 
 ```js {3}
 class Greeting extends Component {
@@ -97,7 +97,7 @@ class Greeting extends Component {
 
 <Note>
 
-在类组件中读取 `this.props` 等同于在函数组件中使用的 [声明式 props](/learn/passing-props-to-a-component#step-2-read-props-inside-the-child-component)。
+在类式组件中读取 `this.props` 等同于在函数式组件中使用的 [声明式 props](/learn/passing-props-to-a-component#step-2-read-props-inside-the-child-component)。
 
 [了解如何迁移](#migrating-a-simple-component-from-a-class-to-a-function)。
 
@@ -109,17 +109,17 @@ class Greeting extends Component {
 
 <Deprecated>
 
-这个 API 将在未来 React 的主版本中被移除。[使用 `createRef` 来代替](/reference/react/createRef)。
+这个 API 将在 React 未来的主版本中被移除。[使用 `createRef` 来代替](/reference/react/createRef)。
 
 </Deprecated>
 
-允许你获取此组件的 [过时的字符串 refs](https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs) 
+允许你获取此组件的 [非法字符串 ref](https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs) 
 
 ---
 
 ### `state` {/*state*/}
 
-使用 `this.state` 来访问一个类组件的 state。`state` 字段必须是一个对象。请不要直接改变 state 的值。如果你希望改变 state，那么请使用新的 state 来调用 `setState` 函数。
+使用 `this.state` 来访问一个类式组件的 state。`state` 字段必须是一个对象。请不要直接改变 state 的值。如果你希望改变 state，那么请使用新的 state 来调用 `setState` 函数。
 
 ```js {2-4,7-9,18}
 class Counter extends Component {
@@ -137,9 +137,9 @@ class Counter extends Component {
     return (
       <>
         <button onClick={this.handleAgeChange}>
-        Increment age
+        增加年龄
         </button>
-        <p>You are {this.state.age}.</p>
+        <p>你{this.state.age}岁了。</p>
       </>
     );
   }
@@ -148,7 +148,7 @@ class Counter extends Component {
 
 <Note>
 
-在类组件中定义 `state` 等同于在函数组件中通过调用 [`useState`](/reference/react/useState) 函数所创造的 state。
+在类式组件中定义 `state` 等同于在函数式组件中通过调用 [`useState`](/reference/react/useState) 函数所创造的 state。
 
 [了解如何迁移](#migrating-a-component-with-state-from-a-class-to-a-function)。
 
@@ -158,7 +158,7 @@ class Counter extends Component {
 
 ### `constructor(props)` {/*constructor*/}
 
-[constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor) 会在你的类组件 **挂载**（添加到屏幕上）之前运行。一般来说，在 React 中 constructor 仅用于两个目的。它可以让你来声明 state 以及将你的类方法 [绑定](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) 到你的类实例上。
+[constructor](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes/constructor) 会在你的类式组件 **挂载**（添加到屏幕上）之前运行。一般来说，在 React 中 constructor 仅用于两个目的。它可以让你来声明 state 以及将你的类方法 [绑定](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_objects/Function/bind) 到你的类实例上。
 
 ```js {2-6}
 class Counter extends Component {
@@ -173,7 +173,7 @@ class Counter extends Component {
   }
 ```
 
-如果你使用更新的 JavaScript 语法的话，那么很少需要使用到 constructors。相反，你可以使用现代浏览器和像 [Babel](https://babeljs.io/) 这样的工具都支持的 [公有类字段语法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields) 来重写上面的代码。
+如果你使用较新的 JavaScript 语法的话，那么很少需要使用到 constructors。现代浏览器和像 [Babel](https://babeljs.io/) 这样的工具都支持的 [公有类字段语法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes/Public_class_fields)，你可以使用它们来重写上面的代码。
 
 ```js {2,4}
 class Counter extends Component {
@@ -192,23 +192,23 @@ constructor 不应该包含任何副作用或者监听相关的代码。
 
 #### 返回值 {/*constructor-returns*/}
 
-`constructor` 不应该返回任何东西。
+`constructor` 不应该返回任何值。
 
 #### 注意 {/*constructor-caveats*/}
 
-* 不要在 constructor 中运行任何任额外作用或者监听相关的代码。相反，我们使用 [`componentDidMount`](#componentdidmount) 来解决这个问题。
+* 不要在 constructor 中运行任何任额外作用或者监听相关的代码。使用 [`componentDidMount`](#componentdidmount) 来应对这种需求。
 
-* 在 constructor 中，你需要在其他声明之前调用 `super(props)`。如果你不这样做，当 constructor 运行时 `this.props` 就会为 `undefined`，这可能会造成困惑并且导致错误。
- 
+* 在 constructor 中，你需要在其他声明之前调用 `super(props)`。如果你不这样做，`this.props` 在 constructor 运行时就会是 `undefined`，这可能会造成困惑并且导致错误。
+
 * Constructor 是唯一一个你能直接赋值 [`this.state`](#state) 的地方。在其余所有方法中，你需要使用 [`this.setState()`](#setstate) 来代替。不要使用在 constructor 中使用 `setState`。
 
-* 当你使用 [服务端渲染](/reference/react-dom/server) 时，constructor 也将在服务端运行，紧接着运行 [`render`](#render) 方法。然而，像是 `componentDidMount` 或者 `componentWillUnmount` 这样的生命周期方法将不会在服务端运行。
+* 当你使用 [服务端渲染](/reference/react-dom/server) 时，constructor 也将在服务端运行，紧接着运行 [`render`](#render) 方法。然而，像 `componentDidMount` 或者 `componentWillUnmount` 这样的生命周期方法将不会在服务端运行。
 
 * 当 [严格模式](/reference/react/StrictMode) 打开时，React 将会在开发过程中调用两次 `constructor` 然后丢弃其中的一个实例。这有助于你注意到需要从 `constructor` 中移出的意外副作用。
 
 <Note>
 
-在函数组件中没有与 `constructor` 作用完全相同的函数。要在函数组件中声明 state 请调用 [`useState`](/reference/react/useState) 来避免重新计算初始的 state。[传递一个函数给 `useState`](/reference/react/useState#avoiding-recreating-the-initial-state)。
+在函数式组件中没有与 `constructor` 作用完全相同的函数。要在函数式组件中声明 state 请调用 [`useState`](/reference/react/useState) 来避免重新计算初始的 state。[传递一个函数给 `useState`](/reference/react/useState#avoiding-recreating-the-initial-state)。
 
 </Note>
 
@@ -224,7 +224,7 @@ constructor 不应该包含任何副作用或者监听相关的代码。
 
 #### 参数 {/*componentdidcatch-parameters*/}
 
-* `error`：被抛出的错误。实际上，它通常会是一个 [`Error`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) 的实例，不过这并不能保证，因为 JavaScript 允许 [`抛出`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) 所有类型的值，包括字符串甚至是 `null`。
+* `error`：被抛出的错误。实际上，它通常会是一个 [`Error`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Error) 的实例，不过这并不能保证，因为 JavaScript 允许 [`抛出`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/throw) 所有类型的值，包括字符串甚至是 `null`。
 
 * `info`：一个包含有关错误的附加信息的对象。它的 `componentStack` 字段包含一个堆栈跟踪，其中包含抛出的组件，以及其所有父组件的名称和源位置。在生产中，组件名称将被简化。如果你设置了生产错误报告服务，则可以使用源映射来解码组件堆栈，就像处理常规 JavaScript 错误堆栈一样。
 
@@ -236,11 +236,11 @@ constructor 不应该包含任何副作用或者监听相关的代码。
 
 * 在以前经常会在 `componentDidCatch` 中使用 `setState` 来更新UI以及显示回退错误消息。这现在已被废弃，我们更赞同定义 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)。
 
-* React 的生产和开发版本在 `componentDidCatch` 处理错误的方式有所不同，在开发环境下，错误将冒泡至 `window`，这意味着任何 `window.onerror` 或者 `window.addEventListener('error', callback)` 都将中断被 `componentDidCatch` 所捕获到的错误。而在生产环境下相反，错误并不会冒泡，这意味着任何祖先级的错误处理器都只会接收到被 `componentDidCatch` 捕获的非显式错误。
+* `componentDidCatch` 在 React 生产环境和开发环境中处理错误的方式有所不同，在开发环境下，错误将冒泡至 `window`，这意味着任何 `window.onerror` 或者 `window.addEventListener('error', callback)` 都中断被 `componentDidCatch` 所捕获到的错误。而在生产环境下则相反，错误并不会冒泡，这意味着任何父级的错误处理器都只会接收到被 `componentDidCatch` 捕获的非显式错误。
 
 <Note>
 
-在函数组件中没有与 `componentDidCatch` 作用完全相同的函数。如果你想要避免创建类组件，那么可以单独写一个像上面一样的 `错误边界` 并在整个应用中使用它。又或者，你可以使用 [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary) 包，它可以完成同样的工作。
+在函数式组件中没有与 `componentDidCatch` 作用完全相同的函数。如果你想要避免创建类式组件，那么可以单独写一个像上面一样的 `错误边界` 并在整个应用中使用它。又或者，你可以使用 [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary) 包，它可以完成同样的工作。
 
 </Note>
 
@@ -248,9 +248,9 @@ constructor 不应该包含任何副作用或者监听相关的代码。
 
 ### `componentDidMount()` {/*componentdidmount*/}
 
-如果你定义了 `componentDidMount` 方法，React 将会在你的组件添加上屏幕 **（挂载后）** 时调用它。这里是设置数据获取、设置监听或操作DOM节点的常见位置。
+如果你定义了 `componentDidMount` 方法，React 将会在组件被添加到屏幕上 **（挂载）** 后调用它。这里是设置数据获取、订阅监听事件或操作DOM节点的常见位置。
 
-如果你要执行 `componentDidMount`，你通常需要设置一些其他的生命周期函数来避免出错。例如，如果 `componentDidMount` 读取一些 state 或者 props，你还必须要设置 [`componentDidUpdate`](#componentdidupdate) 来处理它们的更新，以及设置 [`componentWillUnmount`](#componentwillunmount) 来清理 `componentDidMount` 的效果。
+如果你要实现 `componentDidMount`，你通常需要设置一些其他的生命周期函数来避免出错。例如，如果 `componentDidMount` 读取一些 state 或者 props，你还必须要设置 [`componentDidUpdate`](#componentdidupdate) 来处理它们的更新，以及设置 [`componentWillUnmount`](#componentwillunmount) 来清理 `componentDidMount` 的效果。
 
 ```js {6-8}
 class ChatRoom extends Component {
@@ -298,7 +298,7 @@ class ChatRoom extends Component {
 
 <Note>
 
-对于大多数的使用场景来说，在类组件中一起定义 `componentDidMount`，`componentDidUpdate` 和 `componentWillUnmount` 等同于在函数组件中调用 [`useEffect`](/reference/react/useEffect)。在一些少数的情况，例如在浏览器绘制前执行代码很重要时，更像是等同于 [`useLayoutEffect`](/reference/react/useLayoutEffect)。
+对于大多数的使用场景来说，在类式组件中一起定义 `componentDidMount`，`componentDidUpdate` 和 `componentWillUnmount` 等同于在函数式组件中调用 [`useEffect`](/reference/react/useEffect)。在一些少数的情况，例如在浏览器绘制前执行代码很重要时，更像是等同于 [`useLayoutEffect`](/reference/react/useLayoutEffect)。
 
 [了解如何迁移](#migrating-a-component-with-lifecycle-methods-from-a-class-to-a-function)。
 
@@ -308,9 +308,9 @@ class ChatRoom extends Component {
 
 ### `componentDidUpdate(prevProps, prevState, snapshot?)` {/*componentdidupdate*/}
 
-如果你定义了 `componentDidUpdate` 方法，当你的组件更新了 props 或 state 重新渲染后，React 将立即调用它。这个方法不会在首次渲染时调用。
+如果你定义了 `componentDidUpdate` 方法，那么 React 会在你的组件更新了 props 或 state 重新渲染后立即调用它。这个方法不会在首次渲染时调用。
 
-你可以在更新后使用它来操作 DOM。这也是进行网络请求的常见位置，只要你将当前的 props 与以前的 props 进行比较即可（例如，如果 props 没有更改，则可能不需要网络请求）。一般来说，这个方法与 [`componentDidMount`](#componentdidmount) 以及 [`componentWillUnmount`](#componentwillunmount) 一起使用：
+你可以在一次更新后使用它来操作 DOM。处理网络请求时也可能会使用这个方法，将当前的 props 与以前的 props 进行比较（例如，如果 props 没有更改，则可能不需要网络请求）。一般来说，这个方法与 [`componentDidMount`](#componentdidmount) 以及 [`componentWillUnmount`](#componentwillunmount) 一起使用：
 
 ```js {10-18}
 class ChatRoom extends Component {
@@ -345,11 +345,11 @@ class ChatRoom extends Component {
 
 #### 参数 {/*componentdidupdate-parameters*/}
 
-* `prevProps`：更新之前的 Props。`prevProps` 将会与 [`this.props`](#props) 进行比较来确定是否改变。
+* `prevProps`：更新之前的 Props。`prevProps` 将会与 [`this.props`](#props) 进行比较来确定发生了什么改变。
 
-* `prevState`：更新之前的 State。`prevState` 将会与 [`this.state`](#state) 进行比较来确定是否改变。
+* `prevState`：更新之前的 State。`prevState` 将会与 [`this.state`](#state) 进行比较来确定发生了什么改变。
 
-* `snapshot`：如果你设置了 [`getSnapshotBeforeUpdate`](#getsnapshotbeforeupdate) 方法，那么 `snapshot` 将包含从该方法返回的值。否则它将是 `undefined`。
+* `snapshot`：如果你实现了 [`getSnapshotBeforeUpdate`](#getsnapshotbeforeupdate) 方法，那么 `snapshot` 将包含从该方法返回的值。否则它将是 `undefined`。
 
 #### 返回值 {/*componentdidupdate-returns*/}
 
@@ -357,15 +357,15 @@ class ChatRoom extends Component {
 
 #### 注意 {/*componentdidupdate-caveats*/}
 
-- 如果你定义了 [`shouldComponentUpdate`](#shouldcomponentupdate) 并且返回 `false` 的话，那么 `componentDidUpdate` 将不会被调用。
+- 如果你定义了 [`shouldComponentUpdate`](#shouldcomponentupdate) 并且返回值是 `false` 的话，那么 `componentDidUpdate` 将不会被调用。
 
 - `componentDidUpdate` 内部的逻辑通常应该包含在比较 `this.props` 与 `prevProps` 以及 `this.state` 与 `prevState` 之中。否则就会存在创建无限循环的风险。
 
-- 虽然可以在 `componentDidUpdate` 中立即调用 [`setState`](#setstate)，但最好尽可能避免这样做。它将触发一个额外的渲染，但它是在浏览器更新屏幕之前发生的。这导致了即使 [`render`](#render) 在这种情况下会被调用两次，用户也看不到中间状态。这种模式通常会导致性能问题，但是对于 modal 和 tooltip 等当你的渲染依赖于 DOM 节点的大小或位置情况下，这种方法可能是必要的。
+- 虽然可以在 `componentDidUpdate` 中直接调用 [`setState`](#setstate)，但最好尽可能避免这样做。因为它将触发一次额外的渲染，而且是在浏览器更新屏幕内容之前发生的。在这种情况下，即使 [`render`](#render) 会被调用两次，用户也看不到中间状态。这种模式通常会导致性能问题，但是对于 modal 和 tooltip 等当你的渲染依赖于 DOM 节点的大小或位置情况下，这种方法可能是必要的。
 
 <Note>
 
-对于大多数用例来说，在类组件中一起定义 `componentDidMount`，`componentDidUpdate` 和 `componentWillUnmount` 等同于在函数组件中定义 [`useEffect`](/reference/react/useEffect)。在一些少数的情况，例如在浏览器绘制前执行代码很重要时，更像是等同于 [`useLayoutEffect`](/reference/react/useLayoutEffect)。
+对于大多数用例来说，在类式组件中一起定义 `componentDidMount`，`componentDidUpdate` 和 `componentWillUnmount` 等同于在函数式组件中定义 [`useEffect`](/reference/react/useEffect)。在一些少数的情况，例如在浏览器绘制前执行代码很重要时，更像是等同于 [`useLayoutEffect`](/reference/react/useLayoutEffect)。
 
 [了解如何迁移](#migrating-a-component-with-lifecycle-methods-from-a-class-to-a-function)。
 
@@ -376,9 +376,9 @@ class ChatRoom extends Component {
 
 <Deprecated>
 
-此 API 已从 `componentWillMount` 重命名为 [`UNSAFE_componentWillMount`](#unsafe_componentwillmount)。旧名称已被弃用，在 React 未来主要的版本中，只有新名称才有效。
+此 API 已从 `componentWillMount` 重命名为 [`UNSAFE_componentWillMount`](#unsafe_componentwillmount)。旧名称已被弃用，在 React 未来的主版本中，只有新名称才有效。
 
-运行 [`rename-unsafe-lifecycles` 重构器](https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles) 来自动更新你的组件。
+运行 [`rename-unsafe-lifecycles` codemod](https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles) 来自动更新你的组件。
 
 </Deprecated>
 
@@ -388,9 +388,9 @@ class ChatRoom extends Component {
 
 <Deprecated>
 
-此 API 已从 `componentWillReceiveProps` 重命名为 [`UNSAFE_componentWillReceiveProps`](#unsafe_componentwillreceiveprops)。旧名称已被弃用，在 React 未来主要的版本中，只有新名称才有效。
+此 API 已从 `componentWillReceiveProps` 重命名为 [`UNSAFE_componentWillReceiveProps`](#unsafe_componentwillreceiveprops)。旧名称已被弃用，在 React 未来的主版本中，只有新名称才有效。
 
-运行 [`rename-unsafe-lifecycles` 重构器](https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles) 来自动更新你的组件。
+运行 [`rename-unsafe-lifecycles` codemod](https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles) 来自动更新你的组件。
 
 </Deprecated>
 
@@ -400,7 +400,7 @@ class ChatRoom extends Component {
 
 <Deprecated>
 
-此 API 已从 `componentWillUpdate` 重命名为 [`UNSAFE_componentWillUpdate`](#unsafe_componentwillupdate)。旧名称已被弃用，在 React 的未来主要版本中，只有新名称才有效。
+此 API 已从 `componentWillUpdate` 重命名为 [`UNSAFE_componentWillUpdate`](#unsafe_componentwillupdate)。旧名称已被弃用，在 React 未来的主版本中，只有新名称才有效。
 
 运行 [`rename-unsafe-lifecycles` 重构器](https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles) 来自动更新你的组件。
 
@@ -410,9 +410,9 @@ class ChatRoom extends Component {
 
 ### `componentWillUnmount()` {/*componentwillunmount*/}
 
-如果你定义了 `componentWillUnmount` 方法，React 会在你的组件被移除屏幕(**卸载**)之前调用它。这是取消数据获取或删除监听的常用位置。
+如果你定义了 `componentWillUnmount` 方法，React 会在你的组件被移除屏幕（**卸载**）之前调用它。此方法常常用于取消数据获取或移除监听事件。
 
-`componentWillUnmount` 内部的逻辑应该完全“对应”到 [`componentDidMount`](#componentdidmount) 内部的逻辑，例如，如果你在 `componentDidMount` 中设置了一个监听，那么 `componentWillUnmount` 中就应该清除掉这个监听。如果你的 `componentWillUnmount` 的清理逻辑中读取了一些 props 或者 state，那么你通常还需要实现一个 [`componentDidUpdate`](#componentdidupdate) 来清理使用了旧 props 和 state 的资源（例如监听）。
+`componentWillUnmount` 内部的逻辑应该完全“对应”到 [`componentDidMount`](#componentdidmount) 内部的逻辑，例如，如果你在 `componentDidMount` 中设置了一个监听事件，那么 `componentWillUnmount` 中就应该清除掉这个监听事件。如果你的 `componentWillUnmount` 的清理逻辑中读取了一些 props 或者 state，那么你通常还需要实现一个 [`componentDidUpdate`](#componentdidupdate) 来清理使用了旧 props 和 state 的资源（例如监听事件）。
 
 ```js {20-22}
 class ChatRoom extends Component {
@@ -454,11 +454,11 @@ class ChatRoom extends Component {
 
 #### 注意 {/*componentwillunmount-caveats*/}
 
-- 当 [严格模式](/reference/react/StrictMode) 开启时，在开发中 React 会调用 [`componentDidMount`](#componentdidmount) 然后立即调用 `componentWillUnmount`，接着再次调用 `componentDidMount`。这可以帮助你注意到你是否忘记实现 `componentWillUnmount`，或者它的逻辑是否没有完全对应到 `componentDidMount` 的效果。
+- 当 [严格模式](/reference/react/StrictMode) 开启时，在开发中 React 会在调用 [`componentDidMount`](#componentdidmount) 后立即调用 `componentWillUnmount`，接着再次调用 `componentDidMount`。这可以帮助你注意到你是否忘记实现 `componentWillUnmount`，或者它的逻辑是否没有完全对应到 `componentDidMount` 的效果。
 
 <Note>
 
-对于许多用例来说，在类组件中一起定义 `componentDidMount`、`componentDidUpdate` 和 `componentWillUnmount` 相当于在函数组件中调用 [`useEffect`](/reference/react/useEffect)。在一些少数的情况，例如在浏览器绘制前执行代码很重要时，更像是等同于 [`useLayoutEffect`](/reference/react/useLayoutEffect)。
+对于许多用例来说，在类式组件中一起定义 `componentDidMount`、`componentDidUpdate` 和 `componentWillUnmount` 等同于在函数式组件中使用 [`useEffect`](/reference/react/useEffect)。在一些少数的情况，例如在浏览器绘制前执行代码很重要时，更像是等同于 [`useLayoutEffect`](/reference/react/useLayoutEffect)。
 
 [了解如何迁移](#migrating-a-component-with-lifecycle-methods-from-a-class-to-a-function)。
 
@@ -470,13 +470,13 @@ class ChatRoom extends Component {
 
 强制组件重新渲染。
 
-通常来说，这是没必要的。如果组件的 [`render`](#render) 方法仅读取了 [`this.props`](#props)、[`this.state`](#state) 或 [`this.context`]( #context) 时，当你在组件或其任一父组件内调用 [`setState`](#setstate) 时，它就将自动重新渲染。但是，如果组件的 `render` 方法是直接读取外部数据源时，则必须告诉 React 在该数据源更改时更新用户界面。这就是你可以用 `forceUpdate` 做的事。
+通常来说，这是没必要的。如果组件的 [`render`](#render) 方法仅读取了 [`this.props`](#props)、[`this.state`](#state) 或 [`this.context`]( #context) 时，当你在组件或其任一父组件内调用 [`setState`](#setstate) 时，它就将自动重新渲染。但是，如果组件的 `render` 方法是直接读取外部数据源时，则必须告诉 React 在该数据源更改时更新用户界面。这就是 `forceUpdate` 的作用。
 
-尽量避免使用 `forceUpdate` 并且在 `render` 中只读取 `this.props` 和 `this.state`。
+尽量避免使用 `forceUpdate` 并且在 `render` 中尽量只读取 `this.props` 和 `this.state`。
 
 #### 参数 {/*forceupdate-parameters*/}
 
-* **可选的** 如果指定了 `callback`，React 将在提交更新后调用你提供的 `callback`。
+* **可选的** 如果指定了 `callback`，React 将在提交完更新后调用你提供的 `callback`。
 
 #### 返回值 {/*forceupdate-returns*/}
 
@@ -488,7 +488,7 @@ class ChatRoom extends Component {
 
 <Note>
 
-读取外部数据源并强制类组件使用 `forceUpdate` 来重新渲染更改已被函数组件中的 [`useSyncExternalStore`](/reference/react/useSyncExternalStore) 所取代。
+读取外部数据源并强制类式组件使用 `forceUpdate` 来重新渲染更改已被函数式组件中的 [`useSyncExternalStore`](/reference/react/useSyncExternalStore) 所取代。
 
 </Note>
 
@@ -498,17 +498,17 @@ class ChatRoom extends Component {
 
 <Deprecated>
 
-该 API 将在 React 未来主要的版本中删除。[使用 `Context.Provider` 代替](/reference/react/createContext#provider)。
+该 API 将在 React 未来的主版本中删除。[使用 `Context.Provider` 代替](/reference/react/createContext#provider)。
 
 </Deprecated>
 
-允许你指定由该组件提供的 [过时的 context](https://reactjs.org/docs/legacy-context.html) 的值。
+允许你指定由该组件提供的 [非法的 context](https://reactjs.org/docs/legacy-context.html) 的值。
 
 ---
 
 ### `getSnapshotBeforeUpdate(prevProps, prevState)` {/*getsnapshotbeforeupdate*/}
 
-如果你实现了 `getSnapshotBeforeUpdate`，React 会在 React 更新 DOM 之前时立即调用它。它使你的组件能够在 DOM 发生更改之前捕获一些信息（例如滚动位置）。此生命周期方法返回的任何值都将作为参数传递给 [`componentDidUpdate`](#componentdidupdate)。
+如果你实现了 `getSnapshotBeforeUpdate`，React 会在 React 更新 DOM 之前时直接调用它。它使你的组件能够在 DOM 发生更改之前捕获一些信息（例如滚动的位置）。此生命周期方法返回的任何值都将作为参数传递给 [`componentDidUpdate`](#componentdidupdate)。
 
 例如，你可以在像是需要在更新期间保留其滚动位置的聊天消息的 UI 中来使用它。
 
@@ -520,8 +520,8 @@ class ScrollingList extends React.Component {
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
-    // 我们是否要向列表中添加新项目？
-    // 捕获滚动​​位置，以便我们稍后可以调整滚动。
+    // 我们是否要向列表中添加新内容？
+    // 捕获滚动的​​位置，以便我们稍后可以调整滚动。
     if (prevProps.list.length < this.props.list.length) {
       const list = this.listRef.current;
       return list.scrollHeight - list.scrollTop;
@@ -530,8 +530,8 @@ class ScrollingList extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    // 如果我们有快照值，那么我们刚刚添加了新项目。
-    // 调整滚动，使这些新项目不会将旧项目推出视野。
+    // 如果我们有快照值，那么说明我们刚刚添加了新内容。
+    // 调整滚动，使得这些新内容不会将旧内容推出视野。
     // （这里的 snapshot 是 getSnapshotBeforeUpdate 返回的值）
     if (snapshot !== null) {
       const list = this.listRef.current;
@@ -547,13 +547,13 @@ class ScrollingList extends React.Component {
 }
 ```
 
-在上面的示例中，直接在 `getSnapshotBeforeUpdate` 中读取 `scrollHeight` 属性非常重要。在 [`render`](#render)、[`UNSAFE_componentWillReceiveProps`](#unsafe_componentwillreceiveprops) 或 [`UNSAFE_componentWillUpdate`](#unsafe_componentwillupdate) 中读取它是不安全的，因为在这些方法被调用和 React 更新 DOM 之间存在潜在的时间间隔。
+在上面的示例中，能直接在 `getSnapshotBeforeUpdate` 中读取到 `scrollHeight` 属性非常重要。在 [`render`](#render)、[`UNSAFE_componentWillReceiveProps`](#unsafe_componentwillreceiveprops) 或 [`UNSAFE_componentWillUpdate`](#unsafe_componentwillupdate) 中读取它是不安全的，因为这些方法被调用与 React 更新 DOM 之间存在潜在的时间间隔。
 
 #### 参数 {/*getsnapshotbeforeupdate-parameters*/}
 
-* `prevProps`：更新之前的 Props。`prevProps` 将会与 [`this.props`](#props) 进行比较来确定是否改变。
+* `prevProps`：更新之前的 Props。`prevProps` 将会与 [`this.props`](#props) 进行比较来确定发生了什么改变。
 
-* `prevState`：更新之前的 State。`prevState` 将会与 [`this.state`](#state) 进行比较来确定是否改变。
+* `prevState`：更新之前的 State。`prevState` 将会与 [`this.state`](#state) 进行比较来确定发生了什么改变。
 
 #### 返回值 {/*getsnapshotbeforeupdate-returns*/}
 
@@ -565,7 +565,7 @@ class ScrollingList extends React.Component {
 
 <Note>
 
-目前，函数组件中还没有与 `getSnapshotBeforeUpdate` 等同的方法。这种使用场景非常罕见，但如果你有这种需求，那么你就必须编写一个类组件。
+目前，函数式组件中还没有与 `getSnapshotBeforeUpdate` 等同的方法。这种使用场景非常罕见，但如果你有这种需求，那么你就必须编写一个类式组件。
 
 </Note>
 
@@ -573,7 +573,7 @@ class ScrollingList extends React.Component {
 
 ### `render()` {/*render*/}
 
-`render` 方法是类组件中唯一必需的方法。
+`render` 方法是类式组件中唯一必需的方法。
 
 `render` 方法应该指定你想要在屏幕上显示的内容，例如：
 
@@ -587,15 +587,15 @@ class Greeting extends Component {
 }
 ```
 
-React 可能随时调用 `render`，因此你不应该假设它在特定时间运行。一般来说，`render` 方法应该返回一段 [JSX](/learn/writing-markup-with-jsx)，但也支持一些 [其他的返回类型](#render-returns)（如字符串）。为了计算返回的 JSX，`render` 方法可以读取 [`this.props`](#props)、[`this.state`](#state) 和 [`this.context`](#context)。
+React 可能随时调用 `render` 方法，因此你不应该假设它将在某一特定时间运行。一般来说，`render` 方法应该返回一段 [JSX](/learn/writing-markup-with-jsx)，但它也支持一些 [其他的返回类型](#render-returns)（如字符串）。为了计算返回的 JSX，`render` 方法可以读取 [`this.props`](#props)、[`this.state`](#state) 和 [`this.context`](#context)。
 
-你应该将 `render` 方法编写为纯函数，这意味着如果 props、state 和 context 相同，它应该返回相同的结果。它也不应该包含副作用（例如设置监听）或与浏览器 API 交互。副作用应该发生在事件处理程序或 [`componentDidMount`](#componentdidmount) 等方法中。
+你应该将 `render` 方法编写为纯函数，这意味着如果它使用的 props、state 和 context 相同的话，它应该返回相同的结果。它也不应该包含副作用（例如订阅监听事件）或与浏览器 API 交互。副作用应该发生在事件处理程序或 [`componentDidMount`](#componentdidmount) 等方法中。
 
 #### 参数 {/*render-parameters*/}
 
-* `prevProps`：更新之前的 Props。`prevProps` 将会与 [`this.props`](#props) 进行比较来确定是否改变。
+* `prevProps`：更新之前的 Props。`prevProps` 将会与 [`this.props`](#props) 进行比较来确定发生了什么改变。
 
-* `prevState`：更新之前的 State。`prevState` 将会与 [`this.state`](#state) 进行比较来确定是否改变。
+* `prevState`：更新之前的 State。`prevState` 将会与 [`this.state`](#state) 进行比较来确定发生了什么改变。
 
 #### 返回值 {/*render-returns*/}
 
@@ -609,7 +609,7 @@ React 可能随时调用 `render`，因此你不应该假设它在特定时间�
 
 - 当 [严格模式](/reference/react/StrictMode) 开启时，React 将在开发过程中调用两次 `render`，然后丢弃其中一个结果。这可以帮助你注意到需要从 `render` 方法中移出的意外的副作用。
 
-- `render` 调用和后续的 `componentDidMount` 或 `componentDidUpdate` 调用之间没有一一对应的关系。React 可能会在有益的情况下丢弃一些 `render` 的调用结果。
+- `render` 的调用和后续的 `componentDidMount` 或 `componentDidUpdate` 的调用之间没有一一对应的关系。React 可能会在有益的情况下丢弃一些 `render` 的调用结果。
 ---
 
 
@@ -641,11 +641,11 @@ class Form extends Component {
 }
 ```
 
-`setState` 将组件的 state 的更改加入队列。它告诉 React 该组件及其子组件需要使用新状态重新渲染。这是更新用户界面来响应交互的主要方式。
+`setState` 将组件的 state 的更改加入队列。它告诉 React 该组件及其子组件需要使用新的 state 来重新渲染。这是更新用户界面来响应交互的主要方式。
 
 <Pitfall>
 
-调用 `setState` 时 **不会** 更改已执行代码中的当前 state：
+调用 `setState` 时 **不会** 更改已执行代码中当前的 state：
 
 ```js {6}
 function handleClick() {
@@ -679,9 +679,9 @@ function handleClick() {
 
 * `nextState`：一个对象或者函数。
   * 如果你传递一个对象作为 `nextState`，它将浅层合并到 `this.state` 中。
-  * 如果你传递一个函数作为 `nextState`，它将被视为 **更新函数**。它必须是个纯函数，应该以已加载的 state 和 props 作为参数，并且应该返回要浅层合并到 `this.state` 中的对象。React 会将你的更新函数放入队列中并重新渲染你的组件。在下一次渲染期间，React 将通过应用队列中的所有更新程序来计算下一个 state。
+  * 如果你传递一个函数作为 `nextState`，它将被视为 **更新函数**。它必须是个纯函数，应该以已加载的 state 和 props 作为参数，并且应该返回要浅层合并到 `this.state` 中的对象。React 会将你的更新函数放入队列中并重新渲染你的组件。在下一次渲染期间，React 将通过应用队列中的所有的更新函数来计算下一个 state。
 
-* **可选的** `callback`：如果你指定，React 将在提交更新后调用你提供的`回调函数`。
+* **可选的** `callback`：如果你指定该函数，React 将在提交更新后调用你提供的 `callback`。
 
 #### 返回值 {/*setstate-returns*/}
 
@@ -689,13 +689,13 @@ function handleClick() {
 
 #### 注意 {/*setstate-caveats*/}
 
-- 将 `setState` 视为 **请求**，而不是立即会更新组件的命令。当多个组件更新它们的 state 以响应事件时，React 将批量更新它们，并在这次事件结束时将它们一并重新渲染。在极少数情况下，你需要强制同步应用特定的状态更新，你可以将其包装在 [`flushSync`](/reference/react-dom/flushSync) 中，但这可能会损害性能。
+- 将 `setState` 视为 **请求** 而会不是立即更新组件的命令。当多个组件更新它们的 state 来响应事件时，React 将批量更新它们，并在这次事件结束时将它们一并重新渲染。在极少数情况下，你需要强制同步应用特定的 state 更新，这时你可以将其包装在 [`flushSync`](/reference/react-dom/flushSync) 中，但这可能会损害性能。
 
-- `setState` 不会立即更新 `this.state`。这让在调用 `setState` 之后立即读取 `setState` 成为一个潜在的陷阱。相反请使用 [`componentDidUpdate`](#componentdidupdate) 或设置 setState `callback` 参数，其中任何一个都保证读取在 state 更新后触发。如果需要根据前一个 state 来设置 state，可以将函数传递给 `nextState`，如上所述。
+- `setState` 不会立即更新 `this.state`。这让在调用 `setState` 之后立即读取 `setState` 成为了一个潜在的陷阱。相反请使用 [`componentDidUpdate`](#componentdidupdate) 或设置 setState的 `callback` 参数，其中任何一个都保证读取 state 将在 state 的更新后触发。如果需要根据前一个 state 来设置 state，那么可以传递给 `nextState` 一个函数，如上所述。
 
 <Note>
 
-在类组件中调用 `setState` 等同于在函数组件中调用 [`set` 函数](/reference/react/useState#setstate)。
+在类式组件中调用 `setState` 等同于在函数式组件中调用 [`set` 函数](/reference/react/useState#setstate)。
 
 [了解如何迁移](#migrating-a-component-with-state-from-a-class-to-a-function)。
 
@@ -744,7 +744,7 @@ class Rectangle extends Component {
 
 #### 返回值 {/*shouldcomponentupdate-returns*/}
 
-如果你希望组件重新渲染的话，返回 `true`。这是也是默认执行的操作。
+如果你希望组件重新渲染的话就返回 `true`。这是也是默认执行的操作。
 
 返回 `false` 来告诉 React 可以跳过重新渲染。
 
@@ -752,17 +752,17 @@ class Rectangle extends Component {
 
 - 此方法 **仅仅** 作为性能优化而存在。如果你的组件在没有它的情况下损坏，请先修复组件。
 
-- 可以考虑使用 [`PureComponent`](/reference/react/PureComponent) 而不是手写 `shouldComponentUpdate`。`PureComponent` 浅比较 props 和 state，这样可以减少错过必要更新的概率。
+- 可以考虑使用 [`PureComponent`](/reference/react/PureComponent) 而不是手写 `shouldComponentUpdate`。`PureComponent` 会浅比较 props 和 state 以及减少错过必要更新的概率。
 
-- 我们不建议在 `shouldComponentUpdate` 中进行深度相等检查或使用 `JSON.stringify`。因为它使性能变得不可预测并且它与每个 prop 和 state 的数据结构有关。在最好的情况下，你可能会面临给应用程序引入多秒停顿的风险，而在最坏的情况下，你可能会面临使应用程序崩溃的风险。
+- 我们不建议在 `shouldComponentUpdate` 中使用深度相等检查或使用 `JSON.stringify`。因为它使性能变得不可预测并且它与每个 prop 和 state 的数据结构有关。在最好的情况下，你可能会面临给应用程序引入多秒停顿的风险，而在最坏的情况下，你可能会面临使应用程序崩溃的风险。
 
 - 返回 `false` 并不会阻止子组件在 **他们的** state 发生变化时重新渲染。
 
-- 返回 `false` 并不能 **确保** 组件不会重新渲染。React 将使用返回值作为提示，但如果出于其他有意义原因，它仍然可能选择重新渲染你的组件。
+- 返回 `false` 并不能 **确保** 组件不会重新渲染。React 将使用返回值作为提示，但如果是出于其他有意义的原因，它仍然可能选择重新渲染你的组件。
 
 <Note>
 
-使用 `shouldComponentUpdate` 来优化类组件与使用 [`memo`](/reference/react/memo) 来优化函数组件类似。函数组件还使用 [`useMemo`](/reference/react/useMemo) 来提供更精细的优化。
+使用 `shouldComponentUpdate` 来优化类式组件与使用 [`memo`](/reference/react/memo) 来优化函数式组件类似。函数式组件还使用 [`useMemo`](/reference/react/useMemo) 来提供更精细的优化。
 
 </Note>
 
@@ -770,10 +770,10 @@ class Rectangle extends Component {
 
 ### `UNSAFE_componentWillMount()` {/*unsafe_componentwillmount*/}
 
-如果你定义了 `UNSAFE_componentWillMount`，React 会在 [`constructor`](#constructor) 之后立即调用它。它仅因历史原因而存在，不应在任何新代码中使用。相反请使用其他替代方案：
+如果你定义了 `UNSAFE_componentWillMount`，React 会在 [`constructor`](#constructor) 之后就立即调用它。它仅因历史原因而存在，不应在任何新代码中使用。相反请使用其他替代方案：
 
 - 要初始化状态，请将 [`state`](#state) 声明为类字段或在 [`constructor`](#constructor) 内设置 `this.state`。
-- 如果你需要运行额外作用或设置监听，请将该逻辑移至 [`componentDidMount`](#componentdidmount)。
+- 如果你需要运行额外作用或订阅监听事件事件，请将该逻辑移至 [`componentDidMount`](#componentdidmount)。
 
 [查看避免不安全生命周期的示例](https://legacy.reactjs.org/blog/2018/03/27/update-on-async-rendering.html#examples)。
 
@@ -789,13 +789,13 @@ class Rectangle extends Component {
 
 - 如果组件实现了 [`static getDerivedStateFromProps`](#static-getdrivenstatefromprops) 或 [`getSnapshotBeforeUpdate`](#getsnapshotbeforeupdate)，则不会调用 `UNSAFE_componentWillMount`。
 
-- 即使它的名字是这样的，但是如果你的应用程序使用 [`Suspense`](/reference/react/Sus​​pense) 等新式的 React 功能时，`UNSAFE_componentWillMount` 不保证组件 **将** 被挂载。如果渲染尝试被中止（例如，因为某些子组件的代码尚未加载），那么 React 将丢弃正在进行的树，并在下一次尝试期间尝试从头开始构建组件。这就是为什么这种方法是 **不安全** 的。依赖于挂载（例如添加监听）的代码应放入 [`componentDidMount`](#componentdidmount)。
+- 尽管它的名字是这样的，但是如果你的应用程序使用 [`Suspense`](/reference/react/Sus​​pense) 等新式的 React 功能时，`UNSAFE_componentWillMount` 不保证组件 **将** 被挂载。如果渲染尝试被中止（例如，因为某些子组件的代码尚未加载），那么 React 将丢弃正在进行的树，并在下一次尝试期间尝试从头开始构建组件。这就是为什么这种方法是 **不安全** 的。依赖于挂载（例如添加监听事件）的代码应放入 [`componentDidMount`](#componentdidmount)。
 
-- `UNSAFE_componentWillMount` 是运行 [服务器渲染](/reference/react-dom/server) 期间运行的唯一生命周期方法。对于所有实际用途来说，它与 [`constructor`](#constructor) 相同，因此你应该使用 `constructor` 来代替这种类型的逻辑。
+- `UNSAFE_componentWillMount` 是运行 [服务器渲染](/reference/react-dom/server) 期间运行的唯一生命周期方法。对于所有实际上的用途来说，它与 [`constructor`](#constructor) 相同，因此你应该使用 `constructor` 来代替这种类型的逻辑。
 
 <Note>
 
-在类组件中的 `UNSAFE_componentWillMount` 内部调用 [`setState`](#setstate) 来初始化状态等同于函数组件中用该 state 作为初始 state 传递给 [`useState`]。
+在类式组件中的 `UNSAFE_componentWillMount` 内部调用 [`setState`](#setstate) 来初始化状态等同于函数式组件中用该 state 作为初始 state 传递给 [`useState`]。
 
 </Note>
 
@@ -805,10 +805,10 @@ class Rectangle extends Component {
 
 如果你定义了 `UNSAFE_componentWillReceiveProps`，React 会在组件收到新的 props 时调用它。它仅因历史原因而存在，不应在任何新代码中使用。相反请使用以下替代方案：
 
-- 如果你需要 **运行额外作用**（例如，获取数据、运行动画或重新初始化监听）来响应 prop 更改，请将该逻辑移至 [`componentDidUpdate`](#componentdidupdate)。
-- 如果你需要 **避免仅在 prop 更改时重新计算某些数据** 时，请使用 [memoization helper](https://legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization) 来代替。
-- 如果你需要 **在 prop 更改时`重置`某些状态** 时，请考虑使组件 [完全控制](https://legacy.reactjs.org/blog/2018/06/07/you-probously-不需要派生状态。html#recommendation-fully-controlled-component) 或者 [使用 key 使组件完全不受控](https://legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) 来代替。
-- 如果你需要 **在 prop 更改时`调整`某些状态，** 检查你是否可以在渲染期间单独从 props 计算所有必要的信息。如果不能，请使用 [`static getDerivedStateFromProps`](/reference/react/Component#static-getdrivenstatefromprops) 代替。
+- 如果你需要 **运行副作用**（例如，获取数据、运行动画或重新初始化监听）来响应 prop 的更改，那么请将该逻辑移至 [`componentDidUpdate`](#componentdidupdate)。
+- 如果你需要 **避免仅 prop 更改时就重新计算某些数据** 时，请使用 [memoization helper](https://legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization) 来代替。
+- 如果你需要 **在 prop 更改时“重置”某些状态** 时，请考虑使组件 [完全控制](https://legacy.reactjs.org/blog/2018/06/07/you-probously-不需要派生状态。html#recommendation-fully-controlled-component) 或者 [使用 key 使组件完全不受控](https://legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) 来代替。
+- 如果你需要 **在 prop 更改时“调整”某些状态** 时，请检查你是否可以在渲染期间单独从 props 计算所有必要的信息。如果不能，请使用 [`static getDerivedStateFromProps`](/reference/react/Component#static-getdrivenstatefromprops) 代替。
 
 [查看避免不安全生命周期的示例](https://legacy.reactjs.org/blog/2018/03/27/update-on-async-rendering.html#updating-state-based-on-props)。
 
@@ -825,7 +825,7 @@ class Rectangle extends Component {
 
 - 如果组件实现了 [`static getDerivedStateFromProps`](#static-getdrivenstatefromprops) 或 [`getSnapshotBeforeUpdate`](#getsnapshotbeforeupdate)，则不会调用 `UNSAFE_componentWillReceiveProps`。
 
-- 即使它的名字是这样的，但如果你的应用程序使用 [`Suspense`](/reference/react/Sus​​pense) 等新式的 React 功能时，`UNSAFE_componentWillReceiveProps` 不保证组件 **将会** 接收这些 Props。如果渲染尝试被中止（例如，因为某些子组件的代码尚未加载），React 将丢弃正在进行的树，并在下一次尝试期间尝试从头开始构建组件。到下一次渲染尝试时，Props 可能会有所不同。这就是为什么这种方法 **不安全**。仅为更新（例如重置监听）的代码应放入 [`componentDidUpdate`](#componentdidupdate)。
+- 尽管它的名字是这样的，但如果你的应用程序使用 [`Suspense`](/reference/react/Sus​​pense) 等新式的 React 功能时，`UNSAFE_componentWillReceiveProps` 不保证组件 **将会** 接收这些 Props。如果渲染尝试被中止（例如，因为某些子组件的代码尚未加载），React 将丢弃正在进行的树，并在下一次尝试期间尝试从头开始构建组件。到下一次渲染尝试时，Props 可能会有所不同。这就是为什么这种方法 **不安全**。仅为了提交更新（例如重置监听事件）的代码应放入 [`componentDidUpdate`](#componentdidupdate)。
 
 - `UNSAFE_componentWillReceiveProps` 并不意味着组件收到了与上次 **不同的** props。你需要自己比较 `nextProps` 和 `this.props` 以检查是否发生了变化。
 
@@ -833,7 +833,7 @@ class Rectangle extends Component {
 
 <Note>
 
-在类组件中的 `UNSAFE_componentWillReceiveProps` 里调用 [`setState`](#setstate) 来“调整”state 等同于在函数组件在 [渲染期间从 `useState` 调用 `set` 函数](/reference/react/useState#storing-information-from-previous-renders)。
+在类式组件中的 `UNSAFE_componentWillReceiveProps` 里调用 [`setState`](#setstate) 来“调整”state 等同于在函数式组件在 [渲染期间从 `useState` 调用 `set` 函数](/reference/react/useState#storing-information-from-previous-renders)。
 
 </Note>
 
@@ -844,8 +844,8 @@ class Rectangle extends Component {
 
 如果你定义了 `UNSAFE_componentWillUpdate`，React 会在使用新的 props 或 state 渲染之前调用它。它仅因历史原因而存在，不应在任何新代码中使用。相反请使用下面的替代方案：
 
-- 如果你需要运行额外作用（例如，获取数据、运行动画或重新初始化监听）来响应 prop 或 state 更改，请将该逻辑移至 [`componentDidUpdate`](#componentdidupdate)。
-- 如果需要从 DOM 中读取一些信息（例如，保存当前滚动位置）以便稍后在 [`componentDidUpdate`](#componentdidupdate) 中使用的话，那么请在 [`getSnapshotBeforeUpdate`](#getsnapshotbeforeupdate) 中读取。
+- 如果你需要运行副作用（例如，获取数据、运行动画或重新初始化监听）来响应 prop 或 state 的更改，请将该逻辑移至 [`componentDidUpdate`](#componentdidupdate)。
+- 如果需要从 DOM 中读取一些信息（例如，保存当前滚动位置）以便稍后在 [`componentDidUpdate`](#componentdidupdate) 中使用的话，那么请在 [`getSnapshotBeforeUpdate`](#getsnapshotbeforeupdate) 中读取这些信息。
 
 [查看避免不安全生命周期的示例](https://legacy.reactjs.org/blog/2018/03/27/update-on-async-rendering.html#examples)。
 
@@ -866,7 +866,7 @@ class Rectangle extends Component {
 
 - 不支持在 `componentWillUpdate` 期间调用 [`setState`](#setstate)（或任何导致调用 `setState` 的方法，例如调度 Redux 操作）。
 
-- 尽管它的命名是这样，但如果你的应用程序使用如 [`Suspense`](/reference/react/Sus​​pense) 时等新式的 React 功能时，`UNSAFE_componentWillUpdate` 并不能保证组件 **将会** 更新。如果渲染尝试被中止（例如，因为某些子组件的代码尚未加载），React 将丢弃正在进行的树，并在下一次尝试期间尝试从头开始构建组件。到下一次渲染尝试时，props 和 state 可能会有所不同。这就是为什么这种方法“不安全”。仅针对更新（例如重置监听）运行的代码应放入 [`componentDidUpdate`](#componentdidupdate)。
+- 尽管它的命名是这样，但如果你的应用程序使用如 [`Suspense`](/reference/react/Sus​​pense) 时等新式的 React 功能时，`UNSAFE_componentWillUpdate` 并不能保证组件 **将会** 更新。如果渲染尝试被中止（例如，因为某些子组件的代码尚未加载），React 将丢弃正在进行的树，并在下一次尝试期间尝试从头开始构建组件。到下一次渲染尝试时，props 和 state 可能会有所不同。这就是为什么这种方法“不安全”。仅针对提交更新（例如重置监听）而运行的代码应放入 [`componentDidUpdate`](#componentdidupdate)。
 
 - `UNSAFE_componentWillUpdate` 并不意味着组件收到了与上次不同的 props 或 state。你需要自己将 `nextProps` 与 `this.props` 以及 `nextState` 与 `this.state` 进行比较，以检查是否发生了变化。
 
@@ -874,7 +874,7 @@ class Rectangle extends Component {
 
 <Note>
 
-函数组件中没有与 `UNSAFE_componentWillUpdate` 直接等同的方法。
+函数式组件中没有与 `UNSAFE_componentWillUpdate` 直接等同的方法。
 
 </Note>
 
@@ -884,7 +884,7 @@ class Rectangle extends Component {
 
 <Deprecated>
 
-该 API 将在 React 未来主要的版本中删除。[使用 `static contextType` 代替](#static-contexttype)。
+该 API 将在 React 未来的主版本中删除。[使用 `static contextType` 代替](#static-contexttype)。
 
 </Deprecated>
 
@@ -906,7 +906,7 @@ class Rectangle extends Component {
 
 ### `static contextType` {/*static-contexttype*/}
 
-如果你想从类组件中读取 [`this.context`](#context-instance-field)，则必须指定它需要读取哪个 context。你指定为 `static contextType` 的 context 必须是之前由 [`createContext` 创建的值](/reference/react/createContext)。
+如果你想从类式组件中读取 [`this.context`](#context-instance-field)，则必须指定它需要读取哪个 context。你指定为 `static contextType` 的 context 必须是之前由 [`createContext` 创建的值](/reference/react/createContext)。
 
 ```js {2}
 class Button extends Component {
@@ -926,7 +926,7 @@ class Button extends Component {
 
 <Note>
 
-在类组件中读取 `this.context` 等同于在函数组件中读取 [`useContext`](/reference/react/useContext)。
+在类式组件中读取 `this.context` 等同于在函数式组件中读取 [`useContext`](/reference/react/useContext)。
 
 [了解如何迁移](#migrating-a-component-with-context-from-a-class-to-a-function)。
 
@@ -972,7 +972,7 @@ class Button extends Component {
 
 <Note>
 
-在类组件中定义 `defaultProps` 类似于在函数组件中使用 [默认值](/learn/passing-props-to-a-component#specifying-a-default-value-for-a-prop)。
+在类式组件中定义 `defaultProps` 类似于在函数式组件中使用 [默认值](/learn/passing-props-to-a-component#specifying-a-default-value-for-a-prop)。
 
 </Note>
 
@@ -1016,7 +1016,7 @@ class Greeting extends React.Component {
 
 #### 参数 {/*static-getderivedstatefromerror-parameters*/}
 
-* `error`：被抛出的错误。实际上，它通常是 [`Error`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) 的实例，但这并不能保证，因为 JavaScript 允许 [`抛出`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw) 任何类型的值，包括字符串甚至是 `null`。
+* `error`：被抛出的错误。实际上，它通常是 [`Error`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Error) 的实例，但这并不能保证，因为 JavaScript 允许 [`抛出`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/throw) 任何类型的值，包括字符串甚至是 `null`。
 
 #### 返回值 {/*static-getderivedstatefromerror-returns*/}
 
@@ -1024,11 +1024,11 @@ class Greeting extends React.Component {
 
 #### 注意 {/*static-getderivedstatefromerror-caveats*/}
 
-* `static getDerivedStateFromError` 应该是一个纯函数。如果你想执行额外作用（例如调用分析服务），你还需要实现 [`componentDidCatch`](#componentdidcatch)。
+* `static getDerivedStateFromError` 应该是一个纯函数。如果你想执行副作用（例如调用分析服务），你还需要实现 [`componentDidCatch`](#componentdidcatch)。
 
 <Note>
 
-函数组件中目前还没有与 `static getDerivedStateFromError` 直接等同的东西。如果你想避免创建类组件，请像上面那样编写一个 `ErrorBoundary` 组件，并在整个应用程序中使用它。或者使用 [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary) 包来执行此操作。
+函数式组件中目前还没有与 `static getDerivedStateFromError` 直接等同的东西。如果你想避免创建类式组件，请像上面那样编写一个 `ErrorBoundary` 组件，并在整个应用程序中使用它。或者使用 [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary) 包来执行此操作。
 
 </Note>
 
@@ -1036,8 +1036,8 @@ class Greeting extends React.Component {
 
 ### `static getDerivedStateFromProps(props, state)` {/*static-getderivedstatefromprops*/}
 
-如果你定义了 `static getDerivedStateFromProps`，React 会在初始挂载和后续更新调用 [`render`](#render) 的之前调用它。它应该返回一个对象来更新 state，或者返回 `null` 不更新任何内容。
- 
+如果你定义了 `static getDerivedStateFromProps`，React 会在初始挂载和后续更新调用 [`render`](#render) 的之前调用它。它应该返回一个对象来更新 state，或者返回 `null` 就不更新任何内容。
+
 此方法适用于 [少数罕见用例](https://legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state)，其中 state 取决于 props 随着时间的推移的变化。例如，当 `userID` 属性更改时，此 `Form` 组件会重置 `email` 状态：
 
 ```js {7-18}
@@ -1087,13 +1087,13 @@ class Form extends Component {
 
 #### 注意 {/*static-getderivedstatefromprops-caveats*/}
 
-- 无论什么原因，此方法都会在 **每次** 渲染前触发。这与 [`UNSAFE_componentWillReceiveProps`](#unsafe_cmoponentwillreceiveprops) 不同，后者仅在父组件重新渲染时触发，而不是在内部调用 `setState` 时。
+- 无论什么原因，此方法都会在 **每次** 渲染时触发。这与 [`UNSAFE_componentWillReceiveProps`](#unsafe_cmoponentwillreceiveprops) 不同，后者仅在父组件不是因为调用了本地的 `setState` 而重新渲染时触发。
 
-- 此方法无权访问组件实例。如果你愿意，您可以在 `static getDerivedStateFromProps` 和其他类方法之间重用一些代码，也就是通过提取类定义之外的组件 props 和 state 的纯函数。
+- 此方法无权访问组件实例。如果你愿意，您可以在 `static getDerivedStateFromProps` 和其他类方法之间重用一些代码，也就是提取类定义之外的组件 props 和 state 的纯函数。
 
 <Note>
 
-在类组件中实现 `static getDerivedStateFromProps` 等同于在函数组件中 [在渲染期间从 useState 调用 set 函数](/reference/react/useState#storing-information-from-previous-renders)。
+在类式组件中实现 `static getDerivedStateFromProps` 等同于在函数式组件中 [在渲染期间从 useState 调用 set 函数](/reference/react/useState#storing-information-from-previous-renders)。
 
 </Note>
 
@@ -1101,7 +1101,7 @@ class Form extends Component {
 
 ## 用法 {/*usage*/}
 
-### 定义类组件 {/*defining-a-class-component*/}
+### 定义类式组件 {/*defining-a-class-component*/}
 
 要将 React 组件定义为类，请扩展内置的 `Component` 类并定义 [`render` 方法](#render)：
 
@@ -1110,14 +1110,14 @@ import { Component } from 'react';
 
 class Greeting extends Component {
   render() {
-    return <h1>Hello, {this.props.name}!</h1>;
+    return <h1>你好, {this.props.name}!</h1>;
   }
 }
 ```
 
 每当 React 需要确定屏幕上显示的内容时，它就会调用你的 [`render`](#render) 方法。一般来说，你会让它返回一些 [JSX](/learn/writing-markup-with-jsx)。你的 `render` 方法应该是一个 [纯函数](https://en.wikipedia.org/wiki/Pure_function)：它应该只计算 JSX。
 
-与 [函数组件](/learn/your-first-component#defining-a-component) 类似，类组件可以从它的父组件 [通过 props 接收信息](/learn/your-first-component#defining-a-component)。然而，读取 props 的语法是不同的。例如，如果父组件渲染 `<Greeting name="Taylor" />`，那么你可以从 [`this.props`](#props) 读取 `name` 属性，例如 `this.props.name`：
+与 [函数式组件](/learn/your-first-component#defining-a-component) 类似，类式组件可以从它的父组件 [通过 props 接收信息](/learn/your-first-component#defining-a-component)。然而，读取 props 的语法是不同的。例如，如果父组件渲染了 `<Greeting name="Taylor" />` 组件，那么你可以从 [`this.props`](#props) 读取 `name` 属性，例如 `this.props.name`：
 
 <Sandpack>
 
@@ -1126,7 +1126,7 @@ import { Component } from 'react';
 
 class Greeting extends Component {
   render() {
-    return <h1>Hello, {this.props.name}!</h1>;
+    return <h1>你好, {this.props.name}!</h1>;
   }
 }
 
@@ -1143,19 +1143,19 @@ export default function App() {
 
 </Sandpack>
 
-请注意，类组件内部不支持 Hook 函数（以 `use` 开头的函数，例如 [`useState`](/reference/react/useState) ）。
+请注意，类式组件内部不支持 Hook 函数（以 `use` 开头的函数，例如 [`useState`](/reference/react/useState)）。
 
 <Pitfall>
 
-我们建议使用函数组件，而不是类组件。[了解如何迁移](#migrating-a-simple-component-from-a-class-to-a-function)。
+我们建议使用函数式组件，而不是类式组件。[了解如何迁移](#migrating-a-simple-component-from-a-class-to-a-function)。
 
 </Pitfall>
 
 ---
 
-### 向类组件添加 state {/*adding-state-to-a-class-component*/}
+### 向类式组件添加 state {/*adding-state-to-a-class-component*/}
 
-为了向类组件添加 [state](/learn/state-a-components-memory)，请将一个对象分配给一个名为 [`state`](#state) 的属性。要更新 state 的话，请调用 [`this.setState`](#setstate)。
+为了向类式组件添加 [state](/learn/state-a-components-memory)，请将一个对象分配给一个名为 [`state`](#state) 的属性。要更新 state 的话，请调用 [`this.setState`](#setstate)。
 
 <Sandpack>
 
@@ -1205,13 +1205,13 @@ button { display: block; margin-top: 10px; }
 
 <Pitfall>
 
-我们建议使用函数组件，而不是类组件。[了解如何迁移](#migrating-a-component-with-state-from-a-class-to-a-function)。
+我们建议使用函数式组件，而不是类式组件。[了解如何迁移](#migrating-a-component-with-state-from-a-class-to-a-function)。
 
 </Pitfall>
 
 ---
 
-### 向类组件中添加生命周期方法 {/*adding-lifecycle-methods-to-a-class-component*/}
+### 向类式组件中添加生命周期方法 {/*adding-lifecycle-methods-to-a-class-component*/}
 
 你可以在类中定义一些特殊方法。
 
@@ -1233,18 +1233,18 @@ export default function App() {
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        选择一个聊天室:{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
         >
-          <option value="general">general</option>
-          <option value="travel">travel</option>
-          <option value="music">music</option>
+          <option value="general">日常</option>
+          <option value="travel">旅行</option>
+          <option value="music">音乐</option>
         </select>
       </label>
       <button onClick={() => setShow(!show)}>
-        {show ? 'Close chat' : 'Open chat'}
+        {show ? '关闭聊天' : '开启聊天'}
       </button>
       {show && <hr />}
       {show && <ChatRoom roomId={roomId} />}
@@ -1307,7 +1307,7 @@ export default class ChatRoom extends Component {
             }}
           />
         </label>
-        <h1>Welcome to the {this.props.roomId} room!</h1>
+        <h1>欢迎来到 {this.props.roomId} 聊天室！</h1>
       </>
     );
   }
@@ -1319,10 +1319,10 @@ export function createConnection(serverUrl, roomId) {
   // 真正的实现将实际地连接到服务器
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ 成功连接到 "' + roomId + '" 号聊天室，服务端 Url：' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ 无法连接到 "' + roomId + '" 号聊天室，服务端 Url：' + serverUrl);
     }
   };
 }
@@ -1339,7 +1339,7 @@ button { margin-left: 10px; }
 
 <Pitfall>
 
-我们建议使用函数组件，而不是类组件。[了解如何迁移](#migrating-a-component-with-lifecycle-methods-from-a-class-to-a-function)。
+我们建议使用函数式组件，而不是类式组件。[了解如何迁移](#migrating-a-component-with-lifecycle-methods-from-a-class-to-a-function)。
 
 </Pitfall>
 
@@ -1347,9 +1347,9 @@ button { margin-left: 10px; }
 
 ### 使用错误边界捕获渲染错误 {/*catching-rendering-errors-with-an-error-boundary*/}
 
-默认情况下，如果你的应用程序在渲染过程中抛出错误，React 将从屏幕上删除其 UI。为了防止这种情况，你可以将 UI 的一部分包装到 **错误边界** 中。错误边界是一个特殊的组件，可让你显示一些备用 UI，而不是例如错误消息这样崩溃的部分。
+默认情况下，如果你的应用程序在渲染过程中抛出错误，React 将从屏幕上删除其 UI。为了防止这种情况，你可以将 UI 的一部分包装到 **错误边界** 中。错误边界是一个特殊的组件，可让你显示一些备用 UI，而不是显示例如错误消息这样崩溃的部分。
 
-要实现错误边界组件，你需要提供 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)，它允许你更新状态以响应错误并向用户显示错误消息。你还可以选择实现 [`componentDidCatch`](#componentdidcatch) 来添加一些额外的逻辑，例如将错误记录到分析服务。
+要实现错误边界组件，你需要提供 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)，它允许你更新状态以响应错误并向用户显示错误消息。你还可以选择实现 [`componentDidCatch`](#componentdidcatch) 来添加一些额外的逻辑，例如将错误添加到分析服务。
 
 ```js {7-10,12-19}
 class ErrorBoundary extends React.Component {
@@ -1397,7 +1397,7 @@ class ErrorBoundary extends React.Component {
 
 <Note>
 
-目前还没有办法将错误边界编写为函数组件。但是你不必自己编写错误边界类。例如，你可以使用 [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary) 包来代替。
+目前还没有办法将错误边界编写为函数式组件。但是你不必自己编写错误边界类。例如，你可以使用 [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary) 包来代替。
 
 </Note>
 
@@ -1405,11 +1405,11 @@ class ErrorBoundary extends React.Component {
 
 ## 备选方案 {/*alternatives*/}
 
-### 将简单的类组件迁移为函数式 {/*migrating-a-simple-component-from-a-class-to-a-function*/}
+### 将简单的类式组件迁移为函数式 {/*migrating-a-simple-component-from-a-class-to-a-function*/}
 
-一般来说，你会把 [组件定义为函数](/learn/your-first-component#defining-a-component)。
+一般来说，你应该把 [组件定义为函数](/learn/your-first-component#defining-a-component)。
 
-例如，假设你要将 `Greeting` 从类组件转换为函数：
+例如，假设你要将 `Greeting` 从类式组件转换为函数：
 
 <Sandpack>
 
@@ -1475,9 +1475,9 @@ export default function App() {
 
 ---
 
-### 将具有 state 的类组件迁移到函数 {/*migrating-a-component-with-state-from-a-class-to-a-function*/}
+### 将具有 state 的类式组件迁移到函数 {/*migrating-a-component-with-state-from-a-class-to-a-function*/}
 
-假设你要将这个 `Counter` 从类组件转换为函数：
+假设你要将这个 `Counter` 从类式组件转换为函数：
 
 <Sandpack>
 
@@ -1599,7 +1599,7 @@ button { display: block; margin-top: 10px; }
 
 ### 将具有生命周期方法的组件从类迁移到函数 {/*migrating-a-component-with-lifecycle-methods-from-a-class-to-a-function*/}
 
-假设你要将具有生命周期方法的 `ChatRoom` 类组件转换为函数：
+假设你要将具有生命周期方法的 `ChatRoom` 类式组件转换为函数：
 
 <Sandpack>
 
@@ -1687,7 +1687,7 @@ export default class ChatRoom extends Component {
             }}
           />
         </label>
-        <h1>Welcome to the {this.props.roomId} room!</h1>
+        <h1>欢迎俩到 {this.props.roomId} 聊天室！</h1>
       </>
     );
   }
@@ -1699,10 +1699,10 @@ export function createConnection(serverUrl, roomId) {
   // 真正的实现将实际连接到服务器
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ 成功连接到 "' + roomId + '" 号聊天室，服务端 Url：' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ 无法连接到 "' + roomId + '" 号聊天室，服务端 Url：' + serverUrl);
     }
   };
 }
@@ -1717,9 +1717,9 @@ button { margin-left: 10px; }
 
 首先，验证你的 [`componentWillUnmount`](#componentwillunmount) 是否与 [`componentDidMount`](#componentdidmount) 执行相反的操作。在上面的示例中操作是正确的：它会断开 `componentDidMount` 设置的连接。如果缺少这样的逻辑，请先添加它。
 
-接下来，验证你的 [`componentDidUpdate`](#componentdidupdate) 方法是否可以处理对 `componentDidMount` 中使用的任何 props 和 state 的更改。在上面的例子中，`componentDidMount` 调用 `setupConnection` 来读取 `this.state.serverUrl` 和 `this.props.roomId`。这就是为什么 `componentDidUpdate` 检查 `this.state.serverUrl` 和 `this.props.roomId` 是否已更改，如果更改了则重置连接。如果你的 `componentDidUpdate` 逻辑丢失或无法处理所有相关 props 和 state 的更改，请首先修复该问题。
+接下来，验证你的 [`componentDidUpdate`](#componentdidupdate) 方法是否可以处理对 `componentDidMount` 中使用的任何 props 和 state 的更改。在上面的例子中，`componentDidMount` 调用 `setupConnection` 来读取 `this.state.serverUrl` 和 `this.props.roomId`。这就是为什么 `componentDidUpdate` 检查 `this.state.serverUrl` 和 `this.props.roomId` 是否已更改，如果更改了则重置连接。如果你的 `componentDidUpdate` 逻辑丢失或无法处理所有相关 props 和 state 的更改，那么请首先修复该问题。
 
-在上面的示例中，生命周期方法内的逻辑将组件连接到 React 外部的系统（聊天服务器）。要将组件连接到外部系统，[请将此逻辑描述为单个效果](/reference/react/useEffect#connecting-to-an-external-system)：
+在上面的示例中，生命周期方法内的逻辑将组件连接到 React 外部的系统（聊天服务器）。要将组件连接到外部系统，[请将此逻辑描述为单个 Effect](/reference/react/useEffect#connecting-to-an-external-system)：
 
 ```js {6-12}
 import { useState, useEffect } from 'react';
@@ -1739,7 +1739,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-这个 [`useEffect`](/reference/react/useEffect) 的调用就相当于实现了上面所有生命周期方法中的逻辑。如果你的生命周期方法做了多个互不相关的事，[将它们分成多个独立的效果](/learn/removing-effect-dependencies#is-your-effect-doing-several-unrelated-things)。这是一个你可以使用的完整示例：
+这个 [`useEffect`](/reference/react/useEffect) 的调用就相当于实现了上面所有生命周期方法中的逻辑。如果你的生命周期方法做了多个互不相关的事，[将它们分成多个独立的 Effect](/learn/removing-effect-dependencies#is-your-effect-doing-several-unrelated-things)。这是一个你可以使用的完整示例：
 
 <Sandpack>
 
@@ -1808,10 +1808,10 @@ export function createConnection(serverUrl, roomId) {
   // 真正的实现将实际连接到服务器
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ 成功连接到 "' + roomId + '" 号聊天室，服务端 Url：' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ 无法连接到 "' + roomId + '" 号聊天室，服务端 Url：' + serverUrl);
     }
   };
 }
@@ -1834,7 +1834,7 @@ button { margin-left: 10px; }
 
 ### 将具有 context 的组件从类迁移到函数 {/*migrating-a-component-with-context-from-a-class-to-a-function*/}
 
-在这个例子中，`Panel` 和 `Button` 类组件从 [`this.context`](#context) 读取 [context](/learn/passing-data-deeply-with-context)：
+在这个例子中，`Panel` 和 `Button` 类式组件从 [`this.context`](#context) 读取 [context](/learn/passing-data-deeply-with-context)：
 
 <Sandpack>
 
@@ -1875,8 +1875,8 @@ class Button extends Component {
 function Form() {
   return (
     <Panel title="Welcome">
-      <Button>Sign up</Button>
-      <Button>Log in</Button>
+      <Button>注册</Button>
+      <Button>登录</Button>
     </Panel>
   );
 }
@@ -1928,7 +1928,7 @@ export default function MyApp() {
 
 </Sandpack>
 
-当你将它们转换为函数组件时，将 `this.context` 用调用 [`useContext`](/reference/react/useContext) 来替换：
+当你将它们转换为函数式组件时，将 `this.context` 用调用 [`useContext`](/reference/react/useContext) 来替换：
 
 <Sandpack>
 
@@ -1961,8 +1961,8 @@ function Button({ children }) {
 function Form() {
   return (
     <Panel title="Welcome">
-      <Button>Sign up</Button>
-      <Button>Log in</Button>
+      <Button>注册</Button>
+      <Button>登录</Button>
     </Panel>
   );
 }
