@@ -1,41 +1,41 @@
 ---
-title: "Meet the Team"
+title: "认识我们的团队"
 ---
 
 <Intro>
 
-React development is led by a dedicated team working full time at Meta. It also receives contributions from people all over the world.
+React的开发工作由 Meta 全职团队负责领导，并得到来自世界各地人们的贡献。
 
 </Intro>
 
-## React Core {/*react-core*/}
+## 核心团队成员 {/*react-core*/}
 
-The React Core team members work full time on the core component APIs, the engine that powers React DOM and React Native, React DevTools, and the React documentation website.
+React 核心团队成员全职致力于核心组件 API 的开发，负责 React DOM 和 React Native 的引擎，React DevTools，以及 React 的文档网站。
 
-Current members of the React team are listed in alphabetical order below.
+以下按字母顺序列出 React 团队的现任成员。
 
 <TeamMember name="Andrew Clark" permalink="andrew-clark" photo="/images/team/acdlite.jpg" github="acdlite" twitter="acdlite" title="Engineer at Vercel">
-    Andrew got started with web development by making sites with WordPress, and eventually tricked himself into doing JavaScript. His favorite pastime is karaoke. Andrew is either a Disney villain or a Disney princess, depending on the day.
+    Andrew 最初通过使用 WordPress 来制作网站，进入了网页开发领域，最终他自我投入到 JavaScript 的编程中。他最喜欢的娱乐活动是唱卡拉OK。根据不同的日子，Andrew 有时候像是迪士尼的反派角色，有时候又像是迪士尼的公主。
 </TeamMember>
 
 <TeamMember name="Andrey Lunyov" permalink="andrey-lunyov" photo="/images/team/andrey-lunyov.jpg" github="alunyov" twitter="alunyov" title="Engineer at Meta">
-    Andrey started his career as a designer and then gradually transitioned into web development. After joining the React Data team at Meta he worked on adding an incremental JavaScript compiler to Relay, and then later on, worked on removing the same compiler from Relay. Outside of work, Andrey likes to play music and engage in various sports.
+    Andrey 最初从事设计工作，然后逐渐转行到网页开发。在加入 React Data 团队后，他参与了向 Relay 添加渐进式 JavaScript 编译器的工作，后来又负责从 Relay 中移除了同样的编译器。在工作之余，Andrey 喜欢演奏音乐，参与各种体育活动。
 </TeamMember>
 
 <TeamMember name="Dan Abramov" permalink="dan-abramov" photo="/images/team/gaearon.jpg" github="gaearon" twitter="dan_abramov" title="Engineer at Meta">
-    Dan got into programming after he accidentally discovered Visual Basic inside Microsoft PowerPoint. He has found his true calling in turning [Sebastian](#sebastian-markbåge)'s tweets into long-form blog posts. Dan occasionally wins at Fortnite by hiding in a bush until the game ends.
+    Dan 在意外发现 Microsoft PowerPoint 内部的 Visual Basic 后进入了编程行业。他发现了自己的真正使命，就是将 [Sebastian](#sebastian-markbåge) 的推特转化为长篇博客文章。Dan 偶尔会通过整局游戏都躲在草丛里的方式，在《堡垒之夜》中赢得胜利。
 </TeamMember>
 
 <TeamMember name="Dave McCabe" permalink="dave-mccabe" photo="/images/team/dave-mccabe.jpg" github="davidmccabe" twitter="mcc_abe" title="Engineer at Meta">
-    An engineer by trade and outdoorsman at heart, David has long been an innovator in the field of programming-while-sunbathing. Besides surprising his colleagues with unique outdoor video-call backgrounds, he enjoys playing guitar (in sunlit meadows, of course) and martial arts (still indoors, gotta work on that). 
+    作为一名工程师和一个热爱户外活动的人，David 一直是在边晒太阳边编程这个领域中的创新者。他不仅喜欢在户外视频通话中展示独特的背景给同事们带来惊喜，还享受在阳光明媚的草地上弹吉他，以及练习武术（虽然这个还是在室内进行，还需要多多练习）。
 </TeamMember>
 
 <TeamMember name="Eli White" permalink="eli-white" photo="/images/team/eli-white.jpg" github="TheSavior" twitter="Eli_White" title="Engineering Manager at Meta">
-    Eli got into programming after he got suspended from middle school for hacking. He has been working on React and React Native since 2017. He enjoys eating treats, especially ice cream and apple pie. You can find Eli trying quirky activities like parkour, indoor skydiving, and aerial silks.
+    Eli 因为在中学时期的黑客行为被学校暂时开除，从此踏入了编程的世界。自 2017 年起，他就一直致力于 React 和 React Native 的工作。他是个美食爱好者，特别喜欢冰淇淋和苹果派。你常常能发现 Eli 在尝试一些别出心裁的活动，如跑酷、室内跳伞，以及空中丝绸表演。
 </TeamMember>
 
 <TeamMember name="Jason Bonta" permalink="jason-bonta" photo="/images/team/jasonbonta.jpg" title="Engineering Manager at Meta">
-    Jason likes having large volumes of Amazon packages delivered to the office so that he can build forts. Despite literally walling himself off from his team at times and not understanding how for-of loops work, we appreciate him for the unique qualities he brings to his work.
+    Jason 喜欢将大批的亚马逊包裹送到办公室，这样他就能用它们搭建堡垒。虽然他有时会真的用这些包裹筑成墙，将自己和团队隔离，甚至还不理解 for-of 循环是怎样工作的，但我们仍然非常欣赏他在工作中表现出的独特品质。
 </TeamMember>
 
 <TeamMember name="Joe Savona" permalink="joe-savona" photo="/images/team/joe.jpg" github="josephsavona" twitter="en_JS" title="Engineer at Meta">
