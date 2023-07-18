@@ -8,7 +8,7 @@ React的开发工作由 Meta 全职团队负责领导，并得到来自世界各
 
 </Intro>
 
-## 核心团队成员 {/*react-core*/}
+## React Core {/*react-core*/}
 
 React 核心团队成员全职致力于核心组件 API 的开发，负责 React DOM 和 React Native 的引擎，React DevTools，以及 React 的文档网站。
 
@@ -39,81 +39,81 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
 </TeamMember>
 
 <TeamMember name="Joe Savona" permalink="joe-savona" photo="/images/team/joe.jpg" github="josephsavona" twitter="en_JS" title="Engineer at Meta">
-    Joe was planning to major in math and philosophy but got into computer science after writing physics simulations in Matlab. Prior to React, he worked on Relay, RSocket.js, and the Skip programming language. While he’s not building some sort of reactive system he enjoys running, studying Japanese, and spending time with his family.
+    Joe 原计划专攻数学和哲学，然而在用 Matlab 编写物理模拟后，他转行投入了计算机科学领域。在投身React之前，他曾先后在 Relay、RSocket.js 以及 Skip 编程语言上有过工作经验。闲暇之余，乔喜欢跑步、学习日语，还有陪伴家人。
 </TeamMember>
 
 <TeamMember name="Josh Story" permalink="josh-story" photo="/images/team/josh.jpg" github="gnoff" twitter="joshcstory" title="Engineer at Vercel">
-    Josh majored in Mathematics and discovered programming while in college. His first professional developer job was to program insurance rate calculations in Microsoft Excel, the paragon of Reactive Programming which must be why he now works on React. In between that time Josh has been an IC, Manager, and Executive at a few startups. outside of work he likes to push his limits with cooking.
+    Josh 大学主修数学，并在那时期初次接触到编程。他的职业生涯起步于在 Microsoft Excel 上编程进行保险费率计算，这是反应式编程的典型案例，或许也是他后来投身 React 的原因。此后，Josh 在数家创业公司中担任过独立贡献者、经理甚至高级管理者。工作之外，他享受烹饪的挑战。
 </TeamMember>
 
 <TeamMember name="Kathryn Middleton" permalink="kathryn-middleton" photo="/images/team/kathryn-middleton.jpg" github="kmiddleton14" twitter="kmiddleton14" title="Engineering Manager at Meta">
-    Kathryn initially discovered web development when she wanted to make her myspace page look cool. She ended up majoring in Computer Science, and quickly became a huge fan of React building features on the Instagram.com team. Outside of work she loves playing pingpong, teaching spin classes, and going plant shopping.
+    Kathryn 最初因为想让自己的 myspace 页面看起来更酷，所以开始接触网页开发。后来，她选择专攻计算机科学，并迅速成为了 React 的狂热粉丝，在 Instagram.com 团队中积极参与功能开发。闲暇之余，她喜欢打乒乓球，教授动感单车课程，还喜欢逛花店购买植物。
 </TeamMember>
 
 <TeamMember name="Lauren Tan" permalink="lauren-tan" photo="/images/team/lauren.jpg" github="poteto" twitter="potetotes" personal="no.lol" title="Engineer at Meta">
-    Lauren’s programming career peaked when she first discovered the `<marquee>` tag. She’s been chasing that high ever since. When she’s not adding bugs into React, she enjoys dropping cheeky memes in chat, and playing all too many video games with her partner, and her dog Zelda.
+    Lauren 的编程生涯在她首次发现 `<marquee>` 标签时达到了巅峰，自此以后，她就一直追求这种感觉。在为React除错之余，她喜欢在聊天中发送风趣的表情包，还喜欢和伴侣以及她的狗狗Zelda一起玩各种电子游戏。
 </TeamMember>
 
 <TeamMember name="Luna Ruan" permalink="luna-ruan" photo="/images/team/lunaruan.jpg" github="lunaruan" twitter="lunaruan" title="Independent Engineer">
-    Luna learned programming because she thought it meant creating video games. Instead, she ended up working on the Pinterest web app, and now on React itself. Luna doesn't want to make video games anymore, but she plans to do creative writing if she ever gets bored.
+    Luna 最初学习编程是因为她以为这将使她能创造视频游戏。然而，最后她却在 Pinterest 的网络应用和现如今的 React 项目上付出了大量努力。虽然Luna不再希望制作视频游戏，但如果有一天她觉得生活乏味，她计划会尝试一些创意写作。
 </TeamMember>
 
 <TeamMember name="Luna Wei" permalink="luna-wei" photo="/images/team/luna-wei.jpg" github="lunaleaps" twitter="lunaleaps" title="Engineer at Meta">
-    Luna first learnt the fundamentals of python at the age of 6 from her father. Since then, she has been unstoppable. Luna aspires to be a gen z, and the road to success is paved with environmental advocacy, urban gardening and lots of quality time with her Voo-Doo’d (as pictured). 
+    Luna 在仅有6岁的时候，就从父亲那里学到了 Python 的基本原理。从那以后，她的学习之路一直畅通无阻。Luna 有志成为Z世代的一员，她的成功之路充满了对环境的倡导，城市园艺的热爱，以及与她的 Voo-Doo'd（如图）共享的宝贵时光。
 </TeamMember>
 
 <TeamMember name="Matt Carroll" permalink="matt-carroll" photo="/images/team/matt-carroll.png" github="mattcarrollcode" twitter="mattcarrollcode" title="Developer Advocate at Meta">
-    Matt stumbled into coding, and since then, has become enamored with creating things in communities that can’t be created alone. Prior to React, he worked on YouTube, the Google Assistant, Fuchsia, and Google Cloud AI and Evernote. When he's not trying to make better developer tools he enjoys the mountains, jazz, and spending time with his family.
+    Matt 偶然地踏入了编程领域，并从那时起就对于在社区中创造一些个人无法独立完成的事物产生了浓厚兴趣。在加入 React 之前，他在 YouTube、Google Assistant、Fuchsia、Google Cloud AI 以及 Evernote 有过工作经验。在他不忙于创造更好的开发工具时，他喜欢享受山区的美景，欣赏爵士乐，以及陪伴他的家人。
 </TeamMember>
 
 <TeamMember name="Mengdi Chen" permalink="mengdi-chen" photo="/images/team/mengdi-chen.jpg" github="mondaychen" twitter="mengdi_en" title="Engineer at Meta">
-    While working on his Digital Arts degree Mengdi was conceited about his front-end skills because his CSS worked perfectly even on IE6. But soon React opened a new door of programming for him, and he has been dreaming of joining the React team ever since. Outside of work, he is usually busy chasing his two kids around or collecting strange recipes.
+    Mengdi 在攻读数字艺术学位时，因为他的 CSS 代码即使在 IE6 上也能完美运行，所以对自己的前端技能颇为自负。但是，React 很快为他打开了新的编程大门，他从那时起便一直梦想能够加入 React 团队。在工作之外，他经常忙于追逐自己的两个孩子，或者收集一些奇特的菜谱。
 </TeamMember>
 
 <TeamMember name="Mofei Zhang" permalink="mofei-zhang" photo="/images/team/mofei-zhang.png" github="mofeiZ" title="Engineer at Meta">
-    Mofei started programming when she realized it can help her cheat in video games. She focused on operating systems in undergrad / grad school, but now finds herself happily tinkering on React. Outside of work, she enjoys debugging bouldering problems and planning her next backpacking trip(s).
+    Mofei 在意识到编程可以帮她在视频游戏中作弊时开始了编程生涯。她在本科和研究生期间专注于操作系统的研究，但现在她发现自己非常享受在 React上 的编程工作。在工作之外，她喜欢解决攀岩中遇到的问题，并且正在计划她的下一次背包旅行。
 </TeamMember>
 
 <TeamMember name="Rick Hanlon" permalink="rick-hanlon" photo="/images/team/rickhanlonii.jpg" github="rickhanlonii" twitter="rickhanlonii" personal="rickhanlon.codes" title="Engineer at Meta">
-    Ricky majored in theoretical math and somehow found himself on the React Native team for a couple years before joining the React team. When he's not programming you can find him snowboarding, biking, climbing, golfing, or closing GitHub issues that do not match the issue template.
+    Ricky 主修理论数学，然而他却在 React Native 团队工作了几年，之后又加入了 React 团队。当他不在编程时，你可以找到他在滑雪，骑自行车，攀岩，打高尔夫球，或者在 GitHub 上关闭一些不符合问题模板的问题。
 </TeamMember>
 
 <TeamMember name="Samuel Susla" permalink="samuel-susla" photo="/images/team/sam.jpg" github="sammy-SC" twitter="SamuelSusla" title="Engineer at Meta">
-    Samuel’s interest in programming started with the movie Matrix. He still has Matrix screen saver. Before working on React, he was focused on writing iOS apps. Outside of work, Samuel enjoys playing beach volleyball, squash, badminton and spending time with his family.
+    电影《黑客帝国》激发了 Samuel 对编程的热情，他至今仍用着这部电影的屏幕保护程序。在投身 React 开发前，他主要致力于编写 iOS 应用程序。在业余时间，Samuel 乐于享受打沙滩排球、壁球、羽毛球的乐趣，也喜欢与家人共享美好时光。
 </TeamMember>
 
 <TeamMember name="Sathya Gunasekaran " permalink="sathya-gunasekaran" photo="/images/team/sathya.jpg" github="gsathya" twitter="_gsathya" title="Engineer at Meta">
-    Sathya hated the Dragon Book in school but somehow ended up working on compilers all his career. When he's not compiling React components, he's either drinking coffee or eating yet another Dosa.
+    尽管Sathya在学校时对《龙书》并无好感，但奇妙的是，他的整个职业生涯都与编译器紧密相连。当他不忙于编译 React 组件的时候，他可能正品尝一杯咖啡，或者正在享受又一份美味的 Dosa。
 </TeamMember>
 
 <TeamMember name="Sean Keegan" permalink="sean-keegan" photo="/images/team/sean-keegan.jpg" github="seanryankeegan" twitter="DevRelSean" title="Developer Advocate at Meta">
-    After a first career as a math teacher, Sean remembered that one intro to comp sci class he had to take as a prereq and thought “that was kind of fun!”. One coding bootcamp and several tech jobs later, Sean discovered developer advocacy and hasn’t looked back. Outside of work, Sean enjoys ultimate frisbee, video games, and researching (but rarely implementing) better ways to care for his houseplants.
+    Sean 最初是一名数学老师，在回忆起他必修的一门计算机科学引论课时，他想到：“那其实挺有趣的！”经过一次编程训练营和几份科技工作后，Sean 发现了开发者倡导这个领域并且一发不可收拾。工作之外，Sean 喜欢玩飞盘，视频游戏，以及研究（但很少实践）照顾他的室内植物的更好方法。
 </TeamMember>
 
 <TeamMember name="Sebastian Markbåge" permalink="sebastian-markbåge" photo="/images/team/sebmarkbage.jpg" github="sebmarkbage" twitter="sebmarkbage" title="Engineer at Vercel">
-    Sebastian majored in psychology. He's usually quiet. Even when he says something, it often doesn't make sense to the rest of us until a few months later. The correct way to pronounce his surname is "mark-boa-geh" but he settled for "mark-beige" out of pragmatism -- and that's how he approaches React.
+    Sebastian 主修心理学。他通常比较沉默寡言。即使他说些什么，我们其他人通常也要等几个月后才能理解他的意思。他的姓氏正确的发音是"mark-boa-geh"，但出于实用考虑，他接受了"mark-beige"的发音——这也是他处理React问题的方式。
 </TeamMember>
 
 <TeamMember name="Sebastian Silbermann" permalink="sebastian-silbermann" photo="/images/team/sebsilbermann.jpg" github="eps1lon" twitter="sebsilbermann" title="Independent Engineer">
-    Sebastian learned programming to make the browser games he played during class more enjoyable. Eventually this lead to contributing to as much open source code as possible. Outside of coding he's busy making sure people don't confuse him with the other Sebastians and Zilberman of the React community.
+    Sebastian 学习编程的目的是让他在课堂上玩的浏览器游戏变得更有趣。最终，这引领他尽可能多地为开源代码做贡献。在编程之外，他忙于确保人们不会把他和 React 社区的其他 Sebastians 和 Zilberman 混淆。
 </TeamMember>
 
 <TeamMember name="Seth Webster" permalink="seth-webster" photo="/images/team/seth.jpg" github="sethwebster" twitter="sethwebster" personal="sethwebster.com" title="Engineering Manager at Meta">
-    Seth started programming as a kid growing up in Tucson, AZ. After school, he was bitten by the music bug and was a touring musician for about 10 years before returning to *work*, starting with Intuit. In his spare time, he loves [taking pictures](https://www.sethwebster.com) and flying for animal rescues in the northeastern United States.
+    Seth 是在亚利桑那州图森市长大的孩子时代开始编程的。学校毕业后，他被音乐病咬了一口，成为了巡回演出的音乐家，这持续了大约10年，然后他回到了“工作”，从 Intuit 开始。在他的业余时间，他喜欢[拍照](https://www.sethwebster.com)，并在美国东北部为动物救援飞行。
 </TeamMember>
 
 <TeamMember name="Sophie Alpert" permalink="sophie-alpert" photo="/images/team/sophiebits.jpg" github="sophiebits" twitter="sophiebits" personal="sophiebits.com" title="Independent Engineer">
-    Four days after React was released, Sophie rewrote the entirety of her then-current project to use it, which she now realizes was perhaps a bit reckless. After she became the project's #1 committer, she wondered why she wasn't getting paid by Facebook like everyone else was and joined the team officially to lead React through its adolescent years. Though she quit that job years ago, somehow she's still in the team's group chats and “providing value”.
+    在React刚刚发布的四天后，Sophie 就将她当时的整个项目全部改写成了使用 React，现在回想起来，她认为这可能有些鲁莽。但在成为该项目的最大贡献者之后，她开始思考为何自己没有像其他人那样从 Facebook 那里得到报酬。于是，她正式加入了 Facebook 的团队，带领 React 度过了它的青少年时期。虽然她在几年前已经离开了那个职位，但她仍然是团队群聊的一员，继续“提供价值”。
 </TeamMember>
 
 <TeamMember name="Tianyu Yao" permalink="tianyu-yao" photo="/images/team/tianyu.jpg" github="tyao1" twitter="tianyu0" title="Engineer at Meta">
-    Tianyu’s interest in computers started as a kid because he loves video games. So he majored in computer science and still plays childish games like League of Legends. When he is not in front of a computer, he enjoys playing with his two kittens, hiking and kayaking.
+    Tianyu 对计算机的兴趣源自他对视频游戏的热爱，这使得他选择了计算机科学作为自己的专业，至今他依然热衷于一些看似孩子气的游戏，如《英雄联盟》。当他不在电脑前时，他喜欢和他的两只小猫一起玩耍，或者去徒步旅行和划皮艇。
 </TeamMember>
 
 <TeamMember name="Yuzhi Zheng" permalink="yuzhi-zheng" photo="/images/team/yuzhi.jpg" github="yuzhi" twitter="yuzhiz" title="Engineering Manager at Meta">
-    Yuzhi studied Computer Science in school. She liked the instant gratification of seeing code come to life without having to physically be in a laboratory. Now she’s a manager in the React org. Before management, she used to work on the Relay data fetching framework. In her spare time, Yuzhi enjoys optimizing her life via gardening and home improvement projects.
+    Yuzhi 在学校期间学习的是计算机科学。她喜欢看到自己的代码能在无需实验室的情况下就能实现效果，这给她带来了即时的满足感。现在，她是 React 组织的一名经理。在成为经理之前，她曾在 Relay 数据获取框架上有过工作经历。在业余时间，Yuzhi 享受通过园艺和家居改善项目来优化自己的生活。
 </TeamMember>
 
 ## Past contributors {/*past-contributors*/}
 
-You can find the past team members and other people who significantly contributed to React over the years on the [acknowledgements](/community/acknowledgements) page.
+你可以访问我们的[鸣谢](/community/acknowledgements)页面，查看那些曾在过去为 React 付出过重要贡献的团队成员和其他人士。
