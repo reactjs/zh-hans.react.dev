@@ -441,7 +441,7 @@ function VideoPlayer({ src, isPlaying }) {
   }, [isPlaying]);
 ```
 
-这是因为 `ref` 具有 **稳定** 的标识：React 保证 [每轮渲染中调用 `useRef` 所产生的引用对象时，获取到的对象引用总是相同的](/reference/react/useRef#returns)，即获取到的对象引用永远不会改变，所以它不会导致重新运行 Effect。因此，依赖数组中是否包含它并不重要。当然也可以包括它：，这样也可以：
+这是因为 `ref` 具有 **稳定** 的标识：React 保证 [每轮渲染中调用 `useRef` 所产生的引用对象时，获取到的对象引用总是相同的](/reference/react/useRef#returns)，即获取到的对象引用永远不会改变，所以它不会导致重新运行 Effect。因此，依赖数组中是否包含它并不重要。当然也可以包括它，这样也可以：
 
 ```js {9}
 function VideoPlayer({ src, isPlaying }) {
