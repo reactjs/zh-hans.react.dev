@@ -4,18 +4,18 @@ title: "认识我们的团队"
 
 <Intro>
 
-React的开发工作由 Meta 全职团队负责领导，并得到来自世界各地人们的贡献。
+React 的开发工作由 Meta 全职团队负责领导，并得到来自世界各地人们的贡献。
 
 </Intro>
 
-## React Core {/*react-core*/}
+## React 核心团队 {/*react-core*/}
 
-React 核心团队成员全职致力于核心组件 API 的开发，负责 React DOM 和 React Native 的引擎，React DevTools，以及 React 的文档网站。
+React 核心团队成员全职致力于核心组件 API 的开发，负责 React DOM 和 React Native 的引擎，React 开发者工具，以及 React 的文档网站。
 
 以下按字母顺序列出 React 团队的现任成员。
 
 <TeamMember name="Andrew Clark" permalink="andrew-clark" photo="/images/team/acdlite.jpg" github="acdlite" twitter="acdlite" title="Engineer at Vercel">
-    Andrew 最初通过使用 WordPress 来制作网站，进入了网页开发领域，最终他自我投入到 JavaScript 的编程中。他最喜欢的娱乐活动是唱卡拉OK。根据不同的日子，Andrew 有时候像是迪士尼的反派角色，有时候又像是迪士尼的公主。
+    Andrew 最初通过使用 WordPress 来制作网站，进入了网页开发领域，最终他自我投入到 JavaScript 的编程中。他最喜欢的娱乐活动是唱卡拉 OK。根据不同的日子，Andrew 有时候像是迪士尼的反派角色，有时候又像是迪士尼的公主。
 </TeamMember>
 
 <TeamMember name="Andrey Lunyov" permalink="andrey-lunyov" photo="/images/team/andrey-lunyov.jpg" github="alunyov" twitter="alunyov" title="Engineer at Meta">
@@ -39,7 +39,7 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
 </TeamMember>
 
 <TeamMember name="Joe Savona" permalink="joe-savona" photo="/images/team/joe.jpg" github="josephsavona" twitter="en_JS" title="Engineer at Meta">
-    Joe 原计划专攻数学和哲学，然而在用 Matlab 编写物理模拟后，他转行投入了计算机科学领域。在投身React之前，他曾先后在 Relay、RSocket.js 以及 Skip 编程语言上有过工作经验。闲暇之余，乔喜欢跑步、学习日语，还有陪伴家人。
+    Joe 原计划专攻数学和哲学，然而在用 Matlab 编写物理模拟后，他转行投入了计算机科学领域。在投身 React 之前，他曾先后在 Relay、RSocket.js 以及 Skip 编程语言上有过工作经验。闲暇之余，乔喜欢跑步、学习日语，还有陪伴家人。
 </TeamMember>
 
 <TeamMember name="Josh Story" permalink="josh-story" photo="/images/team/josh.jpg" github="gnoff" twitter="joshcstory" title="Engineer at Vercel">
@@ -51,15 +51,15 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
 </TeamMember>
 
 <TeamMember name="Lauren Tan" permalink="lauren-tan" photo="/images/team/lauren.jpg" github="poteto" twitter="potetotes" personal="no.lol" title="Engineer at Meta">
-    Lauren 的编程生涯在她首次发现 `<marquee>` 标签时达到了巅峰，自此以后，她就一直追求这种感觉。在为React除错之余，她喜欢在聊天中发送风趣的表情包，还喜欢和伴侣以及她的狗狗Zelda一起玩各种电子游戏。
+    Lauren 的编程生涯在她首次发现 `<marquee>` 标签时达到了巅峰，自此以后，她就一直追求这种感觉。在为 React 除错之余，她喜欢在聊天中发送风趣的表情包，还喜欢和伴侣以及她的狗狗 Zelda 一起玩各种电子游戏。
 </TeamMember>
 
 <TeamMember name="Luna Ruan" permalink="luna-ruan" photo="/images/team/lunaruan.jpg" github="lunaruan" twitter="lunaruan" title="Independent Engineer">
-    Luna 最初学习编程是因为她以为这将使她能创造视频游戏。然而，最后她却在 Pinterest 的网络应用和现如今的 React 项目上付出了大量努力。虽然Luna不再希望制作视频游戏，但如果有一天她觉得生活乏味，她计划会尝试一些创意写作。
+    Luna 最初学习编程是因为她以为这将使她能创造视频游戏。然而，最后她却在 Pinterest 的网络应用和现如今的 React 项目上付出了大量努力。虽然 Luna 不再希望制作视频游戏，但如果有一天她觉得生活乏味，她计划会尝试一些创意写作。
 </TeamMember>
 
 <TeamMember name="Luna Wei" permalink="luna-wei" photo="/images/team/luna-wei.jpg" github="lunaleaps" twitter="lunaleaps" title="Engineer at Meta">
-    Luna 在仅有6岁的时候，就从父亲那里学到了 Python 的基本原理。从那以后，她的学习之路一直畅通无阻。Luna 有志成为Z世代的一员，她的成功之路充满了对环境的倡导，城市园艺的热爱，以及与她的 Voo-Doo'd（如图）共享的宝贵时光。
+    Luna 在仅有6岁的时候，就从父亲那里学到了 Python 的基本原理。从那以后，她的学习之路一直畅通无阻。Luna 有志成为 Z 世代的一员，她的成功之路充满了对环境的倡导，城市园艺的热爱，以及与她的 Voo-Doo'd（如图）共享的宝贵时光。
 </TeamMember>
 
 <TeamMember name="Matt Carroll" permalink="matt-carroll" photo="/images/team/matt-carroll.png" github="mattcarrollcode" twitter="mattcarrollcode" title="Developer Advocate at Meta">
@@ -83,7 +83,7 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
 </TeamMember>
 
 <TeamMember name="Sathya Gunasekaran " permalink="sathya-gunasekaran" photo="/images/team/sathya.jpg" github="gsathya" twitter="_gsathya" title="Engineer at Meta">
-    尽管Sathya在学校时对《龙书》并无好感，但奇妙的是，他的整个职业生涯都与编译器紧密相连。当他不忙于编译 React 组件的时候，他可能正品尝一杯咖啡，或者正在享受又一份美味的 Dosa。
+    尽管 Sathya 在学校时对《龙书》并无好感，但奇妙的是，他的整个职业生涯都与编译器紧密相连。当他不忙于编译 React 组件的时候，他可能正品尝一杯咖啡，或者正在享受又一份美味的 Dosa。
 </TeamMember>
 
 <TeamMember name="Sean Keegan" permalink="sean-keegan" photo="/images/team/sean-keegan.jpg" github="seanryankeegan" twitter="DevRelSean" title="Developer Advocate at Meta">
@@ -91,7 +91,7 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
 </TeamMember>
 
 <TeamMember name="Sebastian Markbåge" permalink="sebastian-markbåge" photo="/images/team/sebmarkbage.jpg" github="sebmarkbage" twitter="sebmarkbage" title="Engineer at Vercel">
-    Sebastian 主修心理学。他通常比较沉默寡言。即使他说些什么，我们其他人通常也要等几个月后才能理解他的意思。他的姓氏正确的发音是"mark-boa-geh"，但出于实用考虑，他接受了"mark-beige"的发音——这也是他处理React问题的方式。
+    Sebastian 主修心理学。他通常比较沉默寡言。即使他说些什么，我们其他人通常也要等几个月后才能理解他的意思。他的姓氏正确的发音是“mark-boa-geh”，但出于实用考虑，他接受了“mark-beige”的发音——这也是他处理 React 问题的方式。
 </TeamMember>
 
 <TeamMember name="Sebastian Silbermann" permalink="sebastian-silbermann" photo="/images/team/sebsilbermann.jpg" github="eps1lon" twitter="sebsilbermann" title="Independent Engineer">
@@ -99,11 +99,11 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
 </TeamMember>
 
 <TeamMember name="Seth Webster" permalink="seth-webster" photo="/images/team/seth.jpg" github="sethwebster" twitter="sethwebster" personal="sethwebster.com" title="Engineering Manager at Meta">
-    Seth 是在亚利桑那州图森市长大的孩子时代开始编程的。学校毕业后，他被音乐病咬了一口，成为了巡回演出的音乐家，这持续了大约10年，然后他回到了“工作”，从 Intuit 开始。在他的业余时间，他喜欢[拍照](https://www.sethwebster.com)，并在美国东北部为动物救援飞行。
+    Seth 是在亚利桑那州图森市长大的孩子时代开始编程的。学校毕业后，他被音乐病咬了一口，成为了巡回演出的音乐家，这持续了大约 10 年，然后他回到了“工作”，从 Intuit 开始。在他的业余时间，他喜欢 [拍照](https://www.sethwebster.com)，并在美国东北部为动物救援飞行。
 </TeamMember>
 
 <TeamMember name="Sophie Alpert" permalink="sophie-alpert" photo="/images/team/sophiebits.jpg" github="sophiebits" twitter="sophiebits" personal="sophiebits.com" title="Independent Engineer">
-    在React刚刚发布的四天后，Sophie 就将她当时的整个项目全部改写成了使用 React，现在回想起来，她认为这可能有些鲁莽。但在成为该项目的最大贡献者之后，她开始思考为何自己没有像其他人那样从 Facebook 那里得到报酬。于是，她正式加入了 Facebook 的团队，带领 React 度过了它的青少年时期。虽然她在几年前已经离开了那个职位，但她仍然是团队群聊的一员，继续“提供价值”。
+    在 React 刚刚发布的四天后，Sophie 就将她当时的整个项目全部改写成了使用 React，现在回想起来，她认为这可能有些鲁莽。但在成为该项目的最大贡献者之后，她开始思考为何自己没有像其他人那样从 Facebook 那里得到报酬。于是，她正式加入了 Facebook 的团队，带领 React 度过了它的青少年时期。虽然她在几年前已经离开了那个职位，但她仍然是团队群聊的一员，继续“提供价值”。
 </TeamMember>
 
 <TeamMember name="Tianyu Yao" permalink="tianyu-yao" photo="/images/team/tianyu.jpg" github="tyao1" twitter="tianyu0" title="Engineer at Meta">
@@ -114,6 +114,6 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Yuzhi 在学校期间学习的是计算机科学。她喜欢看到自己的代码能在无需实验室的情况下就能实现效果，这给她带来了即时的满足感。现在，她是 React 组织的一名经理。在成为经理之前，她曾在 Relay 数据获取框架上有过工作经历。在业余时间，Yuzhi 享受通过园艺和家居改善项目来优化自己的生活。
 </TeamMember>
 
-## Past contributors {/*past-contributors*/}
+## 过去的贡献者 {/*past-contributors*/}
 
-你可以访问我们的[鸣谢](/community/acknowledgements)页面，查看那些曾在过去为 React 付出过重要贡献的团队成员和其他人士。
+你可以访问我们的 [鸣谢](/community/acknowledgements) 页面，查看那些曾在过去为 React 付出过重要贡献的团队成员和其他人士。
