@@ -32,9 +32,9 @@ import { createPortal } from 'react-dom';
 // ...
 
 <div>
-  <p>This child is placed in the parent div.</p>
+  <p>这个子节点被放置在父节点 div 中。</p>
   {createPortal(
-    <p>This child is placed in the document body.</p>,
+    <p>这个子节点被放置在 document body 中。</p>,
     document.body
   )}
 </div>
@@ -76,9 +76,9 @@ import { createPortal } from 'react-dom';
 function MyComponent() {
   return (
     <div style={{ border: '2px solid black' }}>
-      <p>This child is placed in the parent div.</p>
+      <p>这个子节点被放置在父节点 div 中。</p>
       {createPortal(
-        <p>This child is placed in the document body.</p>,
+        <p>这个子节点被放置在 document body 中。</p>,
         document.body
       )}
     </div>
@@ -98,9 +98,9 @@ import { createPortal } from 'react-dom';
 export default function MyComponent() {
   return (
     <div style={{ border: '2px solid black' }}>
-      <p>This child is placed in the parent div.</p>
+      <p>这个子节点被放置在父节点 div 中。</p>
       {createPortal(
-        <p>This child is placed in the document body.</p>,
+        <p>这个子节点被放置在 document body 中。</p>,
         document.body
       )}
     </div>
@@ -117,11 +117,11 @@ export default function MyComponent() {
   <div id="root">
     ...
       <div style="border: 2px solid black">
-        <p>This child is placed inside the parent div.</p>
+        <p>这个子节点被放置在父节点 div 中。</p>
       </div>
     ...
   </div>
-  <p>This child is placed in the document body.</p>
+  <p>这个子节点被放置在 document body 中。</p>
 </body>
 ```
 
@@ -164,7 +164,7 @@ export default function NoPortalExample() {
   return (
     <>
       <button onClick={() => setShowModal(true)}>
-        Show modal without a portal
+        不使用 portal 展示模态（modal）
       </button>
       {showModal && (
         <ModalContent onClose={() => setShowModal(false)} />
@@ -184,7 +184,7 @@ export default function PortalExample() {
   return (
     <>
       <button onClick={() => setShowModal(true)}>
-        Show modal using a portal
+        使用 portal 展示模态（motal）
       </button>
       {showModal && createPortal(
         <ModalContent onClose={() => setShowModal(false)} />,
@@ -199,8 +199,8 @@ export default function PortalExample() {
 export default function ModalContent({ onClose }) {
   return (
     <div className="modal">
-      <div>I'm a modal dialog</div>
-      <button onClick={onClose}>Close</button>
+      <div>这是一个模态对话框</div>
+      <button onClick={onClose}>关闭</button>
     </div>
   );
 }
@@ -255,12 +255,12 @@ export default function ModalContent({ onClose }) {
 ```html index.html
 <!DOCTYPE html>
 <html>
-  <head><title>My app</title></head>
+  <head><title>我的应用程序</title></head>
   <body>
-    <h1>Welcome to my hybrid app</h1>
+    <h1>我的网站一部分使用了 React，另外一部分没有使用</h1>
     <div class="parent">
       <div class="sidebar">
-        This is server non-React markup
+        这是一个非 React 服务器标记
         <div id="sidebar-content"></div>
       </div>
       <div id="root"></div>
@@ -301,11 +301,11 @@ export default function App() {
 }
 
 function MainContent() {
-  return <p>This part is rendered by React</p>;
+  return <p>这一部分是被 React 渲染的。</p>;
 }
 
 function SidebarContent() {
-  return <p>This part is also rendered by React!</p>;
+  return <p>这一部分也是被 React 渲染的！</p>;
 }
 ```
 
@@ -369,7 +369,7 @@ useEffect(() => {
 return (
   <div style={{ width: 250, height: 250 }} ref={containerRef}>
     {popupContainer !== null && createPortal(
-      <p>Hello from React!</p>,
+      <p>来自 React 的你，你好！</p>,
       popupContainer
     )}
   </div>
@@ -420,7 +420,7 @@ export default function Map() {
   return (
     <div style={{ width: 250, height: 250 }} ref={containerRef}>
       {popupContainer !== null && createPortal(
-        <p>Hello from React!</p>,
+        <p>来自 React 的你，你好！</p>,
         popupContainer
       )}
     </div>
