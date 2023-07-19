@@ -70,7 +70,7 @@ portal 只改变 DOM 节点的所处位置。在其他方面，渲染至 portal 
 
 调用 `createPortal` 并传入 <CodeStep step={1}>JSX</CodeStep> 与 <CodeStep step={2}> 应该放置的 DOM 节点</CodeStep> 作为参数，然后渲染返回值以创建 portal：
 
-```js [[1, 8, "<p>This child is placed in the document body.</p>"], [2, 9, "document.body"]]
+```js [[1, 8, "<p>这个子节点被放置在 document body 中。</p>"], [2, 9, "document.body"]]
 import { createPortal } from 'react-dom';
 
 function MyComponent() {
