@@ -441,7 +441,7 @@ function VideoPlayer({ src, isPlaying }) {
   }, [isPlaying]);
 ```
 
-这是因为 `ref` 具有 **稳定** 的标识：React 保证 [每轮渲染中调用 `useRef` 所产生的引用对象时，获取到的对象引用总是相同的](/reference/react/useRef#returns)，即获取到的对象引用永远不会改变，所以它不会导致重新运行 Effect。因此，依赖数组中是否包含它并不重要。当然也可以包括它：，这样也可以：
+这是因为 `ref` 具有 **稳定** 的标识：React 保证 [每轮渲染中调用 `useRef` 所产生的引用对象时，获取到的对象引用总是相同的](/reference/react/useRef#returns)，即获取到的对象引用永远不会改变，所以它不会导致重新运行 Effect。因此，依赖数组中是否包含它并不重要。当然也可以包括它，这样也可以：
 
 ```js {9}
 function VideoPlayer({ src, isPlaying }) {
@@ -637,7 +637,7 @@ useEffect(() => {
 }, []);
 ```
 
-在开发环境中，Effect 会调用两次 `addEventListener()`，然后立即调用 `removeEventListener()`，然后再调用相同的 `addEventListener()`，这与只订阅一次事件的 Effect 等效；这也与用户在生产环境中只调用一次 `addEventListener()` 具有相同的感知效果。
+在开发环境中，Effect 会调用 `addEventListener()`，然后立即调用 `removeEventListener()`，然后再调用相同的 `addEventListener()`，这与只订阅一次事件的 Effect 等效；这也与用户在生产环境中只调用一次 `addEventListener()` 具有相同的感知效果。
 
 ### 触发动画 {/*triggering-animations*/}
 
