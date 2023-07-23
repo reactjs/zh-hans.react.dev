@@ -1703,7 +1703,7 @@ async function fetchPlanets() {
     setTimeout(() => {
       resolve([{
         id: 'earth',
-        name: '火星'
+        name: '地球'
       }, {
         id: 'venus',
         name: '金星'
@@ -1871,7 +1871,7 @@ async function fetchPlanets() {
     setTimeout(() => {
       resolve([{
         id: 'earth',
-        name: '火星'
+        name: '地球'
       }, {
         id: 'venus',
         name: '金星'
@@ -2034,7 +2034,7 @@ async function fetchPlanets() {
     setTimeout(() => {
       resolve([{
         id: 'earth',
-        name: '火星'
+        name: '地球'
       }, {
         id: 'venus',
         name: '金星'
