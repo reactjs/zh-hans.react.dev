@@ -1004,7 +1004,7 @@ input { margin-top: 10px; }
 
 #### 不用 Effect 缓存计算结果 {/*cache-a-calculation-without-effects*/}
 
-在这个例子中，筛选 totos 的逻辑被提取到了一个叫做 `getVisibleTodos()` 的函数中，该函数内部包含一个 `console.log()`，它可以帮你了解函数的调用情况。切换 “只显示未完成的事项” 会导致 `getVisibleTodos()` 重新执行。这符合预期，因为切换未完成的待办事项会导致可见的待办事项发生变化。
+在这个例子中，筛选 todos 的逻辑被提取到了一个叫做 `getVisibleTodos()` 的函数中，该函数内部包含一个 `console.log()`，它可以帮你了解函数的调用情况。切换 “只显示未完成的事项” 会导致 `getVisibleTodos()` 重新执行。这符合预期，因为切换未完成的待办事项会导致可见的待办事项发生变化。
 
 你的任务是移除 `TodoList` 组件中重复计算 `visibleTodos` 列表的 Effect。但是，你需要确保在输入框中输入时，`getVisibleTodos()` **不会** 重新执行（因此不会打印任何日志）。
 
