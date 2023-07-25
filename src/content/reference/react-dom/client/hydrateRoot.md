@@ -105,15 +105,11 @@ root.unmount();
 
 #### 返回值 {/*root-unmount-returns*/}
 
-`render` 返回 `null` 值。
+`render` 返回 `undefined` 值。
 
 #### 警告 {/*root-unmount-caveats*/}
 
-<<<<<<< HEAD
 * 调用 `root.unmount` 将卸载树中的所有组件，并“分离” React 与根 DOM 节点之间的连接。
-=======
-`root.unmount` returns `undefined`.
->>>>>>> a472775b7c15f41b21865db1698113ca49ca95c4
 
 * 一旦你调用 `root.unmount`，就不能再在根节点上调用 `root.render`。在未挂载的根节点上尝试调用 `root.render` 将抛出“不能更新未挂载的根节点”的错误。
 
