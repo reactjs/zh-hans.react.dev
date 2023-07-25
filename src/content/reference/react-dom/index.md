@@ -36,7 +36,15 @@ title: React DOM API
 
 </Deprecated>
 
+<<<<<<< HEAD
 * [`findDOMNode`](/reference/react-dom/findDOMNode) 用于查找与类式组件实例对应的最近的 DOM 节点。
 * [`hydrate`](/reference/react-dom/hydrate) 可以将服务器生成的 HTML 作为浏览器 DOM 节点，并在其中渲染 React 组件。目前已被 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 取代。
 * [`render`](/reference/react-dom/render) 可以在浏览器的 DOM 元素中渲染 React 组件，目前已被 [`createRoot`](/reference/react-dom/client/createRoot) 取代。
 * [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode) 可以从 DOM 中移除一个已挂载的 React 组件，目前已被 [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) 取代。
+=======
+* [`findDOMNode`](/reference/react-dom/findDOMNode) finds the closest DOM node corresponding to a class component instance.
+* [`hydrate`](/reference/react-dom/hydrate) mounts a tree into the DOM created from server HTML. Deprecated in favor of [`hydrateRoot`](/reference/react-dom/client/hydrateRoot).
+* [`render`](/reference/react-dom/render) mounts a tree into the DOM. Deprecated in favor of [`createRoot`](/reference/react-dom/client/createRoot).
+* [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode) unmounts a tree from the DOM. Deprecated in favor of [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount).
+
+>>>>>>> a472775b7c15f41b21865db1698113ca49ca95c4
