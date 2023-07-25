@@ -103,7 +103,6 @@ title："常见组件（例如 <div>）"
 * [`onKeyDown`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/keydown_event)：一个[`KeyboardEvent` 处理](#pointerevent-handler) 函数。当按键被按下时触发。
 * `onKeyDownCapture`：一个在捕获阶段[捕获阶段](/learn/responding-to-events#capture-phase-events)触发的 `onKeyDown` 版本。
 * [`onKeyPress`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/keypress_event)：一个[`KeyboardEvent` 处理](#pointerevent-handler) 函数。已废弃。用 `onKeyDown` 或 `onBeforeInput` 替代。
-
 * `onKeyPressCapture`：一个在捕获阶段[捕获阶段](/learn/responding-to-events#capture-phase-events)触发的 `onKeyPress` 版本。
 * [`onKeyUp`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/keyup_event)：一个[`KeyboardEvent` 处理](#pointerevent-handler) 函数。当按键被释放时触发。
 * `onKeyUpCapture`：一个在捕获阶段[捕获阶段](/learn/responding-to-events#capture-phase-events)触发的 `onKeyUp` 版本。
