@@ -169,6 +169,7 @@ title："常见组件（例如 <div>）"
 
 * [`onCancel`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLDialogElement/cancel_event)：一个 [`Event` 处理](#event-handler) 函数。当用户尝试关闭对话框时触发。
 * `onCancelCapture`：一个在捕获阶段[捕获阶段](/learn/responding-to-events#capture-phase-events)触发的 `onCancel` 版本。
+
 * [`onClose`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLDialogElement/close_event)：一个 [`Event` 处理](#event-handler) 函数。当对话框已关闭时触发。
 * `onCloseCapture`：一个在捕获阶段[捕获阶段](/learn/responding-to-events#capture-phase-events)触发的 `onClose` 版本。
 
