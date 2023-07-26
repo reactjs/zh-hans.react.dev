@@ -2513,7 +2513,7 @@ main {
 
 ---
 
-### 为服务器错误和服务端内容提供退路方案（fallback） {/*providing-a-fallback-for-server-errors-and-server-only-content*/}
+### 为服务器错误和客户端内容提供退路方案（fallback） {/*providing-a-fallback-for-server-errors-and-client-only-content*/}
 
 如果你使用过 [流式服务器渲染 API](/reference/react-dom/server)（或依赖它们的框架），React 也会使用你的 `<Suspense>` 边界来处理服务器上的错误。如果组件在服务器上抛出错误，React 将不会中止服务器渲染。相反，它将找到最接近的 `<Suspense>` 组件并将其退路方案（fallback）（例如一个加载中指示器）包含到生成的服务端 HTML 中。用户将首先看到一个加载中指示器。
 
