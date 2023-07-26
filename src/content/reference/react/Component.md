@@ -50,7 +50,7 @@ class Greeting extends Component {
 
 ### `context` {/*context*/}
 
-可以通过使用 `this.context` 来访问一个类式组件的 [context](/learn/passing-data-deeply-with-context)。只有当你使用 [`static contextType`](#static-contexttype)（最新的）或者 [`static contextTypes`](#static-contexttypes)（已被废弃的）来特别指定你想要接受 **哪一个** context 时它才会有效。
+类式组件可以通过使用 `this.context` 访问 [context](/learn/passing-data-deeply-with-context)。只有使用 [`static contextType`](#static-contexttype)（最新的）或者 [`static contextTypes`](#static-contexttypes)（已废弃）特别指定想要接受 **哪一个** context 时才会有效。
 
 类式组件一次只能读取一个 context。
 
