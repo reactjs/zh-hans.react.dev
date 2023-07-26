@@ -105,7 +105,7 @@ root.unmount();
 
 #### 返回值 {/*root-unmount-returns*/}
 
-`render` 返回 `null` 值。
+`render` 返回 `undefined` 值。
 
 #### 警告 {/*root-unmount-caveats*/}
 
