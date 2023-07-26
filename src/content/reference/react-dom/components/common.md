@@ -149,7 +149,6 @@ title: "普通组件（例如 <div>）"
 * [`onWheel`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/wheel_event)：一个 [`WheelEvent` 处理](#wheelevent-handler) 函数。当用户旋转滚轮按钮时触发。
 * `onWheelCapture`：一个在捕获阶段[捕获阶段](/learn/responding-to-events#capture-phase-events)触发的 `onWheel` 版本。
 * [`role`](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Roles)：一个字符串。为辅助技术明确指定元素角色
-
 * [`slot`](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Roles)：一个字符串。当使用 shadow DOM 时，指定插槽名称。在 React 中，通常通过将 JSX 作为 props 传递来实现等效模式。例如 `<Layout left={<Sidebar />} right={<Content />} />`。
 * [`spellCheck`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/spellcheck):布尔值或空值。如果明确设置为 true 或 false ，则启用或禁用拼写检查。
 * [`tabIndex`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/tabindex)：一个数字。覆盖默认的 Tab 按钮行为。[避免使用除了-1和0以外的值](https://www.tpgi.com/using-the-tabindex-attribute/)。
@@ -176,7 +175,6 @@ title: "普通组件（例如 <div>）"
 
 * [`onToggle`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLDetailsElement/toggle_event)：一个 [`Event` 处理](#event-handler) 函数。当用户切换详细信息时触发。
 * `onToggleCapture`:一个在捕获阶段[捕获阶段](/learn/responding-to-events#capture-phase-events)触发的 `onToggle` 版本。
-
 
 这些事件会触发在 [`<img>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img)，[`<iframe>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe)，[`<object>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object)，[`<embed>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/embed)，[`<link>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link)，和 [SVG `<image>`](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/SVG_Image_Tag) 元素。与浏览器事件不同，React 中的事件会冒泡：
 
