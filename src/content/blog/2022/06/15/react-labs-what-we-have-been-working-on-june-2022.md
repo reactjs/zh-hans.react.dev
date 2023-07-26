@@ -20,7 +20,7 @@ title: "React Labs：我们正在努力的方向——2022 年 6 月"
 
 ## 服务器组件 {/*server-components*/}
 
-我们在 2020 年 12 月发布了 [React 服务端组件](https://reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components)（RSC）的实验性演示。从那时起，我们一直在完成 React 18 中的依赖项，并根据实验性反馈进行改进。
+我们在 2020 年 12 月发布了 [React 服务端组件](https://legacy.reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html)（RSC）的实验性演示。从那时起，我们一直在完成 React 18 中的依赖项，并根据实验性反馈进行改进。
 
 特别地，我们放弃了拥有分叉 I/O 库（例如 react-fetch）的想法，转而采用了具有更好兼容性的 async/await 模型。这从技术上讲并不阻碍 RSC 的发布，因为还可以使用路由器进行数据获取。另一个变化是我们也放弃了文件扩展名的方法，而是采用了 [注释边界](https://github.com/reactjs/rfcs/pull/189#issuecomment-1116482278) 的方式。
 
