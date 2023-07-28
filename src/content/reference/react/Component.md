@@ -113,7 +113,7 @@ class Greeting extends Component {
 
 </Deprecated>
 
-允许你获取此组件的 [历史用法的字符串 ref](https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs)。
+允许你获取此组件 [过时的字符串 ref](https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs)。
 
 ---
 
