@@ -345,9 +345,9 @@ class ChatRoom extends Component {
 
 #### 参数 {/*componentdidupdate-parameters*/}
 
-* `prevProps`：更新之前的 Props。`prevProps` 将会与 [`this.props`](#props) 进行比较来确定发生了什么改变。
+* `prevProps`：更新之前的 props。`prevProps` 将会与 [`this.props`](#props) 进行比较来确定发生了什么改变。
 
-* `prevState`：更新之前的 State。`prevState` 将会与 [`this.state`](#state) 进行比较来确定发生了什么改变。
+* `prevState`：更新之前的 state。`prevState` 将会与 [`this.state`](#state) 进行比较来确定发生了什么改变。
 
 * `snapshot`：如果你实现了 [`getSnapshotBeforeUpdate`](#getsnapshotbeforeupdate) 方法，那么 `snapshot` 将包含从该方法返回的值。否则它将是 `undefined`。
 
