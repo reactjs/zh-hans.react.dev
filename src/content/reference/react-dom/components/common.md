@@ -41,9 +41,9 @@ title: "普通组件（例如 <div>）"
 所有内置组件也支持这些标准的 DOM 属性：
 
 * [`accessKey`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/accesskey)：一个字符串。为该元素指定一个键盘快捷键。[通常不建议](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/accesskey#accessibility_concerns)。
-* [`aria-*`](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes)：ARIA 属性允许你为此元素指定辅助功能树信息。请参阅 [ARIA属性](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes) 以获取完整的参考。在 React 中，所有 ARIA 属性名称与 HTML 中完全相同。
+* [`aria-*`](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes)：ARIA 属性允许你为此元素指定辅助功能树信息。请参阅 [ARIA 属性](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes) 以获取完整的参考。在 React 中，所有 ARIA 属性名称与 HTML 中完全相同。
 * [`autoCapitalize`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/autocapitalize)：一个字符串。指定用户输入的大小写形式。
-* [`className`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/className)：一个字符串。指定元素的 CSS 类名。[阅读更多关于应用CSS样式的内容](#applying-css-styles)。
+* [`className`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/className)：一个字符串。指定元素的 CSS 类名。[阅读更多关于应用 CSS 样式的内容](#applying-css-styles)。
 * [`contentEditable`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/contenteditable)：一个布尔值。如果是 `true`，浏览器允许用户直接编辑渲染的元素。这被用于实现像 [Lexical](https://lexical.dev/) 这样的富文本输入库。如果你尝试将 React 子元素传递给具有 `contentEditable={true}` 属性的元素，则 React 会发出警告，因为在用户编辑后，React 将无法更新其内容。
 * [`data-*`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/data-*)：数据属性允许你将一些字符串数据附加到元素上，例如 `data-fruit="banana"`。在 React 中它们不常用，因为通常你会从 props 或 state 中读取数据。
 * [`dir`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/dir)：可以是 `ltr` 或 `rtl` 。指定元素的文本方向。
@@ -351,7 +351,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 #### 参数 {/*clipboadevent-handler-parameters*/}
 
-* `e`：带有这些额外 [`ClipboardEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/ClipboardEvent) 属性的 [React事件对象](#react-event-object)：
+* `e`：一个带有这些额外 [`ClipboardEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/ClipboardEvent) 属性的 [React事件对象](#react-event-object)：
 
   * [`clipboardData`](https://developer.mozilla.org/zh-CN/docs/Web/API/ClipboardEvent/clipboardData)
 
@@ -371,7 +371,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 #### 参数 {/*compositionevent-handler-parameters*/}
 
-* `e`:具有这些额外[`CompositionEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/CompositionEvent) 属性的 React 事件对象
+* `e`:一个具有这些额外[`CompositionEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/CompositionEvent) 属性的 React 事件对象
   * [`data`](https://developer.mozilla.org/zh-CN/docs/Web/API/CompositionEvent/data)
 
 ---
@@ -447,10 +447,10 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 #### 参数 {/*focusevent-handler-parameters*/}
 
-  * `e`：一个有额外 [`FocusEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/FocusEvent) 属性的 [React事件对象](#react-event-object):
+* `e`：一个有额外 [`FocusEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/FocusEvent) 属性的 [React事件对象](#react-event-object):
   * [`relatedTarget`](https://developer.mozilla.org/zh-CN/docs/Web/API/FocusEvent/relatedTarget)
 
-它还包括继承的 [`UIEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent) 属性:
+  它还包括继承的 [`UIEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent) 属性:
 
   * [`detail`](https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent/detail)
   * [`view`](https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent/view)
@@ -682,7 +682,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 #### 参数 {/*uievent-handler-parameters*/}
 
-* `e`:带有这些额外 [`UIEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent) 属性的 [React 事件对象](#react-event-object)：
+* `e`:一个带有这些额外 [`UIEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent) 属性的 [React 事件对象](#react-event-object)：
   * [`detail`](https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent/detail)
   * [`view`](https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent/view)
 
@@ -748,7 +748,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 ```css
 /* In your CSS */
 .avatar {
-  border-radius:50%;
+  border-radius: 50%;
 }
 ```
 
@@ -775,9 +775,9 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 import Avatar from './Avatar.js';
 
 const user = {
-  name:'Hedy Lamarr',
-  imageUrl:'https://i.imgur.com/yXOvdOSs.jpg',
-  imageSize:90,
+  name: 'Hedy Lamarr',
+  imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
+  imageSize: 90,
 };
 
 export default function App() {
@@ -793,8 +793,8 @@ export default function Avatar({ user }) {
       alt={'Photo of ' + user.name}
       className="avatar"
       style={{
-        width:user.imageSize,
-        height:user.imageSize
+        width: user.imageSize,
+        height: user.imageSize
       }}
     />
   );
@@ -838,10 +838,10 @@ import cn from 'classnames';
 
 function Row({ isSelected, size }) {
   return (
-    <div className={cn('row',{
-      selected:isSelected,
-      large:size === 'large',
-      small:size === 'small',
+    <div className={cn('row', {
+      selected: isSelected,
+      large: size === 'large',
+      small: size === 'small',
     })}>
       ...
     </div>
@@ -897,7 +897,7 @@ export default function Form() {
 
 </Sandpack>
 
-阅读更多关于 [使用 refs 操纵 DOM](/learn/manipulating-the-dom-with-refs) 的内容并 [查看更多示例](/reference/react/useRef#examples-dom)。
+阅读更多关于 [使用 ref 操纵 DOM](/learn/manipulating-the-dom-with-refs) 的内容并 [查看更多示例](/reference/react/useRef#examples-dom)。
 
 对于更高级的用例，`ref` 属性还可以接受 [回调函数](#ref-callback)。
 
@@ -950,7 +950,7 @@ function renderMarkdownToHTML(markdown) {
   // 仅显示给同一用户，
   // 并且你信任此 Markdown 解析器没有漏洞。
   const renderedHTML = md.render(markdown);
-  return {__html:renderedHTML};
+  return {__html: renderedHTML};
 }
 
 export default function MarkdownPreview({ markdown }) {
@@ -977,14 +977,14 @@ export default function MarkdownPreview({ markdown }) {
 ```
 
 ```css
-textarea { display:block; margin-top:5px; margin-bottom:10px; }
+textarea { display: block; margin-top: 5px; margin-bottom: 10px; }
 ```
 
 </Sandpack>
 
 要了解为什么渲染任意 HTML 是危险的，请将上面的代码替换为此代码:
 
-```js {1-4，7，8}
+```js {1-4,7,8}
 const post = {
   // 想象这个内容被存储在数据库中
   content: `<img src="" onerror='alert("你被入侵了")'>`
@@ -992,7 +992,7 @@ const post = {
 
 export default function MarkdownPreview() {
   // 🔴 安全漏洞：将不受信任的输入传递给 dangerouslySetInnerHTML
-  const markup = { __html:post.content };
+  const markup = { __html: post.content };
   return <div dangerouslySetInnerHTML={markup} />;
 }
 ```
@@ -1109,24 +1109,24 @@ export default function FocusExample() {
       tabIndex={1}
       onFocus={(e) => {
         if (e.currentTarget === e.target) {
-          console.log('父元素聚焦');
+          console.log('focused parent');
         } else {
-          console.log('子元素聚焦', e.target.name);
+          console.log('focused child', e.target.name);
         }
         if (!e.currentTarget.contains(e.relatedTarget)) {
           // 在子元素之间切换焦点时不会触发
-          console.log('焦点进入父级');
+          console.log('focus entered parent');
         }
       }}
       onBlur={(e) => {
         if (e.currentTarget === e.target) {
-          console.log('父元素失焦');
+          console.log('unfocused parent');
         } else {
-          console.log('子元素失焦', e.target.name);
+          console.log('unfocused child', e.target.name);
         }
         if (!e.currentTarget.contains(e.relatedTarget)) {
           // 在子元素之间切换焦点时不会触发
-          console.log('焦点离开父元素');
+          console.log('focus left parent');
         }
       }}
     >
