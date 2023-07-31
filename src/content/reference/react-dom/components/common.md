@@ -56,12 +56,12 @@ title: "普通组件（例如 <div>）"
 * [`inputMode`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/inputmode)：一个字符串。指定要显示的键盘类型（例如，文本、数字或电话）。
 * [`itemProp`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/itemprop)：一个字符串。指定元素代表的属性，供结构化数据爬取程序使用。
 * [`lang`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/lang)：一个字符串。指定元素的语言。
-* [`onAimationEnd`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/animationend_event)：一个 [`动画事件`处理](#animationevent-handler) 函数。在 CSS 动画完成时触发。
-* `onAimationEndCapture`：一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onAimationEnd` 版本。
-* [`onAimationIteration`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/animationiteration_event)：一个 [`动画事件`处理](#animationevent-handler)函数。当 CSS 动画的一次迭代结束并开始另一个迭代时触发。
-* `onAimationIterationCapture`：在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onAimationIteration` 版本。
-* [`onAimationStart`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/animationstart_event)：一个 [`动画事件`处理](#animationevent-handler) 函数。当 CSS 动画开始时触发。
-* `onAimationStartCapture`：跟 `onAimationStart` 一样，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
+* [`onAnimationEnd`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/animationend_event)：一个 [`动画事件`处理](#animationevent-handler) 函数。在 CSS 动画完成时触发。
+* `onAnimationEndCapture`：一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onAnimationEnd` 版本。
+* [`onAnimationIteration`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/animationiteration_event)：一个 [`动画事件`处理](#animationevent-handler)函数。当 CSS 动画的一次迭代结束并开始另一个迭代时触发。
+* `onAnimationIterationCapture`：在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onAnimationIteration` 版本。
+* [`onAnimationStart`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/animationstart_event)：一个 [`动画事件`处理](#animationevent-handler) 函数。当 CSS 动画开始时触发。
+* `onAnimationStartCapture`：跟 `onAnimationStart` 一样，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
 * [`onAuxClick`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/auxclick_event)：一个 [`鼠标事件`处理](#mouseevent-handler)函数。当非主要指针按钮被点击时触发。
 * `onAuxClickCapture`:一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 onAuxClick 版本。
 * `onBeforeInput`：一个 [`输入事件` 触发](#inputevent-handler) 函数。在可编辑元素的值被修改之前触发。React 尚未使用原生的 [`beforeinput`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/beforeinput_event) 事件，而是尝试使用其他事件来模拟它。
@@ -322,9 +322,9 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ```js
 <div
-  on aimationStart={e => console.log('on aimationStart')}
-  on aimationIteration={e => console.log('on aimationIteration')}
-  on aimationEnd={e => console.log('on aimationEnd')}
+  on animationStart={e => console.log('on animationStart')}
+  on animationIteration={e => console.log('on animationIteration')}
+  on animationEnd={e => console.log('on animationEnd')}
 />
 ```
 
