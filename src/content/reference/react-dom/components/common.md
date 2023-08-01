@@ -178,7 +178,6 @@ title: "普通组件（例如 <div>）"
 
 这些事件会触发在 [`<img>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img)、[`<iframe>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe)、[`<object>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object)、[`<embed>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/embed)、[`<link>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link) 和 [SVG `<image>`](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/SVG_Image_Tag) 元素。与浏览器事件不同，React 中的事件会冒泡：
 
-
 * `onLoad`：一个 [`Event` 处理](#event-handler) 函数。与浏览器事件不同，React 中的事件会冒泡：
 * `onLoadCapture`：一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onLoad` 版本。
 * [`onError`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLMediaElement/error_event)：一个 [`Event` 处理](#event-handler) 函数。当资源无法加载时触发。
