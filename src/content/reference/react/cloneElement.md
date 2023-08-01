@@ -40,7 +40,7 @@ const clonedElement = cloneElement(
   'Goodbye'
 );
 
-console.log(clonedElement); // <Row title="Cabbage">Goodbye</Row>
+console.log(clonedElement); // <Row title="Cabbage" isHighlighted={true}>Goodbye</Row>
 ```
 
 [请参阅下面的更多示例](#usage)。
