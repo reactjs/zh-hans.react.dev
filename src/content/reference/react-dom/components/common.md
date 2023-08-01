@@ -463,7 +463,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 #### 参数 {/*event-handler-parameters*/}
 
-* `e`:一个没有 额外属性](#react-event-object) 的 React 事件对象。
+* `e`:一个没有额外属性的 [React 事件对象](#react-event-object)。
 
 ---
 
