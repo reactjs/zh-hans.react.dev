@@ -866,7 +866,7 @@ export default function Form() {
   const inputRef = useRef(null);
   // ...
   return (
-    <input ref={inputRef} />)}
+    <input ref={inputRef} />
     // ...
 ```
 
