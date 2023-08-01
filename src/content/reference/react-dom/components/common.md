@@ -923,7 +923,8 @@ import { useState } from 'react';
 import MarkdownPreview from './MarkdownPreview.js';
 
 export default function MarkdownEditor() {
-  const [postContent , setPostContent] = useState('你好，_ **Markdown**!');
+  const [postContent, setPostContent] = useState('你好，_ **Markdown**!');
+
   return (
     <>
       <label>
