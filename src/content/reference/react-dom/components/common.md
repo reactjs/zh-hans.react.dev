@@ -26,7 +26,7 @@ title: "普通组件（例如 <div>）"
 
 这些特殊的 React 属性适用于所有内置组件：
 
-* `children`：一个 React 节点 (可以是元素，字符串，数字，[portal](/reference/react-dom/createPortal) ，空节点（ 如 `null`，`undefined`） 和布尔值，或其他 React 数组节点)。指定组件内部的内容。当你使用 JSX 时，通常会通过嵌套标签 `<div><span /></div>` 隐式地指定 `children` 属性。
+* `children`：一个 React 节点 (可以是元素，字符串，数字，[portal](/reference/react-dom/createPortal) ，如 `null`，`undefined`这样的空节点和布尔值，或其他 React 数组节点)。指定组件内部的内容。当你使用 JSX 时，通常会通过嵌套标签 `<div><span /></div>` 隐式地指定 `children` 属性。
 
 * `dangerouslySetInnerHTML`：一个形如 `{ __html: '<p>一些 HTML</p>' }` 的对象，其中包含原始的 HTML 字符串。覆盖 DOM 节点的 [`innerHTML`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/innerHTML) 属性 ，并在内部显示传递的 HTML 内容。这个属性应该极度谨慎使用! 如果内部的 HTML 不可信（例如，如果它基于用户数据），你有引入 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 漏洞的风险。[阅读更多关于使用`dangerouslySetInnerHTML`的内容](#dangerously-setting-the-inner-html)。
 
@@ -322,9 +322,9 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ```js
 <div
-  on animationStart={e => console.log('on animationStart')}
-  on animationIteration={e => console.log('on animationIteration')}
-  on animationEnd={e => console.log('on animationEnd')}
+  onAnimationStart={e => console.log('onAnimationStart')}
+  onAnimationIteration={e => console.log('onAnimationIteration')}
+  onAnimationEnd={e => console.log('onAnimationEnd')}
 />
 ```
 
@@ -359,7 +359,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `CompositionEvent` 处理函数 {/*compositionevent-handler*/}
 
-一个用于 [输入法编辑器（IME）](https://developer.mozilla.org/zh-CN/docs/Glossary/Input_method_editor) 事件的事件处理程序类型。
+一个用于 [输入法编辑器（IME）](https://developer.mozilla.org/zh-CN/docs/Glossary/Input_method_editor) 的事件处理程序类型。
 
 ```js
 <input
@@ -378,7 +378,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `DragEvent` 处理 {/*dragevent-handler*/}
 
- 一个 [HTML_Drag_and_Drop_API](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_Drag_and_Drop_API) 事件的一个事件处理程序类型。
+ 一个 [HTML Drag 和 Drop API] (https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_Drag_and_Drop_API) 事件的一个事件处理程序类型。
 
 ```js
 <>
@@ -653,7 +653,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `TransitionEvent` 处理函数 {/*transitionevent-handler*/}
 
-一个用于 CSS 过渡事件的事件处理程序类型。
+一个用于 CSS 过渡的事件处理程序类型。
 
 ```js
 <div
@@ -767,7 +767,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 ```
 
 
-在上述例子中，`style={{}}` 不是一个特殊的语法， 而是将 `style={ }` [JSX curly braces.](/learn/javascript-in-jsx-with-curly-braces) 放在一个普通 `{}`里。我们建议只在样式依赖于 JavaScript 变量时使用 `style` 属性。
+在上述例子中，`style={{}}` 不是一个特殊的语法，而是将 `style={ }` [JSX 花括号](/learn/javascript-in-jsx-with-curly-braces) 放在一个普通 `{}`里。我们建议只在样式依赖于 JavaScript 变量时使用 `style` 属性。
 
 <Sandpack>
 
