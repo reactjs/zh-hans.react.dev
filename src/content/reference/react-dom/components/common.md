@@ -176,7 +176,7 @@ title: "普通组件（例如 <div>）"
 * [`onToggle`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLDetailsElement/toggle_event)：一个 [`Event` 处理](#event-handler) 函数。当用户切换详细信息时触发。
 * `onToggleCapture`:一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onToggle` 版本。
 
-这些事件会触发在 [`<img>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img)、[`<iframe>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe)、[`<object>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object)、[`<embed>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/embed)、[`<link>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link)、和 [SVG `<image>`](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/SVG_Image_Tag) 元素。与浏览器事件不同，React 中的事件会冒泡：
+这些事件会触发在 [`<img>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img)、[`<iframe>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe)、[`<object>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object)、[`<embed>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/embed)、[`<link>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link) 和 [SVG `<image>`](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/SVG_Image_Tag) 元素。与浏览器事件不同，React 中的事件会冒泡：
 
 * `onLoad`：一个 [`Event` 处理](#event-handler) 函数。与浏览器事件不同，React 中的事件会冒泡：
 * `onLoadCapture`：一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onLoad` 版本。
@@ -318,7 +318,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `AnimationsEvent` 处理函数 {/*animationsevent-handler*/}
 
-一个用于 [CSS 动画](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Animations/Using_CSS_animations) 事件的处理函数。
+一个用于 [CSS 动画](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Animations/Using_CSS_animations) 事件的事件处理程序类型。
 
 ```js
 <div
@@ -339,7 +339,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `ClipboardEvent` 处理函数 {/*clipboadevent-handler*/}
 
-一个用于 [Clipboard_API](https://developer.mozilla.org/zh-CN/docs/Web/API/Clipboard_API) 事件的处理函数。
+一个用于 [Clipboard_API](https://developer.mozilla.org/zh-CN/docs/Web/API/Clipboard_API) 事件的处理程序类型。
 
 ```js
 <input
@@ -359,7 +359,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `CompositionEvent` 处理函数 {/*compositionevent-handler*/}
 
-一个用于 [输入法编辑器（IME）](https://developer.mozilla.org/zh-CN/docs/Glossary/Input_method_editor) 事件的处理函数。
+一个用于 [输入法编辑器（IME）](https://developer.mozilla.org/zh-CN/docs/Glossary/Input_method_editor) 的事件处理程序类型。
 
 ```js
 <input
@@ -376,9 +376,9 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ---
 
-### `DragEvent` 处理函数 {/*dragevent-handler*/}
+### `DragEvent` 处理 {/*dragevent-handler*/}
 
- 一个用于 [HTML Drag 和 Drop API] (https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_Drag_and_Drop_API) 事件的处理函数。
+ 一个 [HTML Drag 和 Drop API] (https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_Drag_and_Drop_API) 事件的一个事件处理程序类型。
 
 ```js
 <>
@@ -434,7 +434,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `FocusEvent` 处理函数 {/*focusevent-handler*/}
 
- 一个用于焦点事件的处理函数。
+ 一个用于焦点事件的事件处理程序类型。
  
 ```js
 <input
@@ -459,7 +459,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `Event` 处理函数 {/*event-handler*/}
 
-一个通用事件的处理函数。
+一个通用事件的事件处理程序类型。
 
 #### 参数 {/*event-handler-parameters*/}
 
@@ -469,7 +469,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `InputEvent` 处理函数 {/*inputevent-handler*/}
 
-一个用于 `onBeforeInput` 事件的处理函数。
+一个用于 `onBeforeInput` 事件的事件处理程序类型。
 
 ```js
 <input onBeforeInput={e => console.log('onBeforeInput')} />
@@ -484,7 +484,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `KeyboardEvent` 处理函数 {/*keyboardevent-handler*/}
 
-一个用于键盘事件的处理函数。
+一个用于键盘事件的事件处理程序类型。
 
 ```js
 <input
@@ -521,7 +521,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `MouseEvent` 处理函数 {/*mouseevent-handler*/}
 
-一个用于鼠标事件的处理函数。
+一个用于鼠标事件的事件处理程序类型。
 
 ```js
 <div
@@ -565,7 +565,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `PointerEvent` 处理函数 {/*pointerevent-handler*/}
 
-一个用于 [pointer events](https://developer.mozilla.org/zh-CN/docs/Web/API/Pointer_events) 事件的处理函数。
+一个 [pointer events](https://developer.mozilla.org/zh-CN/docs/Web/API/Pointer_events) 的事件处理程序类型。
 
 ```js
 <div
@@ -621,7 +621,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `TouchEvent` 处理函数 {/*touchevent-handler*/}
 
- 一个用于 [touch events](https://developer.mozilla.org/zh-CN/docs/Web/API/Touch_events) 的事件处理函数。
+ 一个用于 [touch events](https://developer.mozilla.org/zh-CN/docs/Web/API/Touch_events) 的事件处理程序类型。
 
 ```js
 <div
@@ -653,7 +653,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `TransitionEvent` 处理函数 {/*transitionevent-handler*/}
 
-一个用于 CSS 过渡的事件处理函数。
+一个用于 CSS 过渡的事件处理程序类型。
 
 ```js
 <div
@@ -672,7 +672,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `UIEvent` 处理函数 {/*uievent-handler*/}
 
- 一个通用 UI 事件的处理函数。
+ 一个通用 UI 事件的事件处理程序类型。
 
 ```js
 <div
@@ -690,7 +690,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `WheelEvent` 处理函数 {/*wheelevent-handler*/}
 
-一个用于 `onWheel` 事件的处理函数。
+一个用于 `onWheel` 事件的事件处理程序类型。
 
 ```js
 <div
