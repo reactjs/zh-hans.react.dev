@@ -4,9 +4,9 @@
 
 ## 参与贡献
 
-关于翻译进程的一切问题和相关讨论，请移步至 [这个讨论](https://github.com/reactjs/zh-hans.react.dev/discussions/1089)。
+目前，大部分的翻译工作都已经完成。现在主要工作是同步和完善已有翻译。
 
-**翻译前，请仔细阅读 [翻译指南](https://github.com/reactjs/zh-hans.react.dev/blob/main/TRANSLATION.md)**。
+**参与贡献前，请仔细阅读 [React 中文文档译文规范](https://github.com/reactjs/zh-hans.react.dev/wiki/React-Translation-Guide)**。
 
 ---
 
