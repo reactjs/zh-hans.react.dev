@@ -447,7 +447,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 #### 参数 {/*focusevent-handler-parameters*/}
 
-* `e`：一个有额外 [`FocusEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/FocusEvent) 属性的 [React事件对象](#react-event-object):
+* `e`：一个有额外 [`FocusEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/FocusEvent) 属性的 [React 事件对象](#react-event-object)：
   * [`relatedTarget`](https://developer.mozilla.org/zh-CN/docs/Web/API/FocusEvent/relatedTarget)
 
   它还包括继承的 [`UIEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent) 属性:
@@ -463,7 +463,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 #### 参数 {/*event-handler-parameters*/}
 
-* `e`:一个没有额外属性的 [React 事件对象](#react-event-object)。
+* `e`：一个没有额外属性的 [React 事件对象](#react-event-object)。
 
 ---
 
@@ -497,7 +497,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 #### 参数 {/*keyboardevent-handler-parameters*/}
 
-* `e`：一个带有这些额外的 [`KeyboardEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent) 属性的 [React event object](#react-event-object)：
+* `e`：一个带有这些额外的 [`KeyboardEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent) 属性的 [React 事件对象](#react-event-object)：
   * [`altKey`](https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent/altKey)
   * [`charCode`](https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent/charCode)
   * [`code`](https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent/code)
@@ -538,7 +538,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 #### 参数 {/*mouseevent-handler-parameters*/}
 
-* `e`：一个具有这些额外 [`鼠标事件`](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent) 属性的 [React event object](#react-event-object)：
+* `e`：一个具有这些额外 [`鼠标事件`](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent) 属性的 [React 事件对象](#react-event-object)：
   * [`altKey`](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent/altKey)
   * [`button`](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent/button)
   * [`buttons`](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent/buttons)
@@ -565,7 +565,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `PointerEvent` 处理函数 {/*pointerevent-handler*/}
 
-一个 [pointer events](https://developer.mozilla.org/zh-CN/docs/Web/API/Pointer_events) 的事件处理程序类型。
+一个 [指针事件](https://developer.mozilla.org/zh-CN/docs/Web/API/Pointer_events) 的事件处理程序类型。
 
 ```js
 <div
@@ -581,7 +581,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 #### 参数 {/*pointerevent-handler-parameters*/}
 
-* `e`：具有这些额外 [`PointerEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/PointerEvent) 属性的 [React event object](#react-event-object)：
+* `e`：具有这些额外 [`PointerEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/PointerEvent) 属性的 [React 事件对象](#react-event-object)：
   * [`height`](https://developer.mozilla.org/zh-CN/docs/Web/API/PointerEvent/height)
   * [`isPrimary`](https://developer.mozilla.org/zh-CN/docs/Web/API/PointerEvent/isPrimary)
   * [`pointerId`](https://developer.mozilla.org/zh-CN/docs/Web/API/PointerEvent/pointerId)
@@ -621,7 +621,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ### `TouchEvent` 处理函数 {/*touchevent-handler*/}
 
- 一个用于 [touch events](https://developer.mozilla.org/zh-CN/docs/Web/API/Touch_events) 的事件处理程序类型。
+ 一个用于 [触摸事件](https://developer.mozilla.org/zh-CN/docs/Web/API/Touch_events) 的事件处理程序类型。
 
 ```js
 <div
@@ -634,7 +634,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 #### 参数 {/*touchevent-handler-parameters*/}
 
-* `e`：一个带有这些额外的 [`TouchEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent) 属性的 [React event object](#react-event-object)：
+* `e`：一个带有这些额外的 [`TouchEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent) 属性的 [React 事件对象](#react-event-object)：
   * [`altKey`](https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent/altKey)
   * [`ctrlKey`](https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent/ctrlKey)
   * [`changedTouches`](https://developer.mozilla.org/zh-CN/docs/Web/API/TouchEvent/changedTouches)
@@ -682,7 +682,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 #### 参数 {/*uievent-handler-parameters*/}
 
-* `e`:一个带有这些额外 [`UIEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent) 属性的 [React 事件对象](#react-event-object)：
+* `e`：一个带有这些额外 [`UIEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent) 属性的 [React 事件对象](#react-event-object)：
   * [`detail`](https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent/detail)
   * [`view`](https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent/view)
 
@@ -700,14 +700,14 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 #### 参数 {/*wheelevent-handler-parameters*/}
 
-* `e`:带有这些额外 [`WheelEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/WheelEvent) 属性的 [React 事件对象](#react-event-object)：
+* `e`：带有这些额外 [`WheelEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/WheelEvent) 属性的 [React 事件对象](#react-event-object)：
   * [`deltaMode`](https://developer.mozilla.org/zh-CN/docs/Web/API/WheelEvent/deltaMode)
   * [`deltaX`](https://developer.mozilla.org/zh-CN/docs/Web/API/WheelEvent/deltaX)
   * [`deltaY`](https://developer.mozilla.org/zh-CN/docs/Web/API/WheelEvent/deltaY)
   * [`deltaZ`](https://developer.mozilla.org/zh-CN/docs/Web/API/WheelEvent/deltaZ)
 
 
- 它还包括继承的 [`鼠标事件`](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent) 属性：
+ 它还包括继承的 [`MouseEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent) 属性：
 
   * [`altKey`](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent/altKey)
   * [`button`](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent/button)
@@ -733,7 +733,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
 ### 应用 CSS 样式 {/*applying-css-styles*/}
 
@@ -746,7 +746,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 然后你在单独的 CSS 文件中编写它的 CSS 规则：
 
 ```css
-/* In your CSS */
+/* 在你 CSS 文件中 CSS */
 .avatar {
   border-radius: 50%;
 }
@@ -767,7 +767,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 ```
 
 
-在上述例子中，`style={{}}` 不是一个特殊的语法，而是将 `style={ }` [JSX 花括号](/learn/javascript-in-jsx-with-curly-braces) 放在一个普通 `{}`里。我们建议只在样式依赖于 JavaScript 变量时使用 `style` 属性。
+在上述例子中，`style={{}}` 不是一个特殊的语法，而是将 `style={ }` [JSX 花括号](/learn/javascript-in-jsx-with-curly-braces) 放在一个普通 `{}` 中。我们建议只在样式依赖于 JavaScript 变量时使用 `style` 属性。
 
 <Sandpack>
 
@@ -815,9 +815,9 @@ export default function Avatar({ user }) {
 
 要有条件地应用 CSS 类，你需要使用 JavaScript 自己生成 `className` 字符串。
 
-例如，`className={'row ' + (isSelected ? 'selected'：'')}` 将会生成 `className="row"` 或者 `className="row selected"` 取决于 `isSelected` 是不是 `true`。
+例如，`className={'row ' + (isSelected ? 'selected'：'')}` 将会生成 `className="row"` 还是 `className="row selected"` 取决于 `isSelected` 是否为 `true`。
 
-为了更好的可读性，你可以使用像 [`classnames`](https://github.com/JedWatson/classnames) 这样的小助手库：
+使用像 [`classnames`](https://github.com/JedWatson/classnames) 这样的小助手库以维持代码可读性：
 
 ```js
 import cn from 'classnames';
@@ -855,9 +855,9 @@ function Row({ isSelected, size }) {
 
 ### 使用 ref 操作 DOM 节点 {/*manipulating-a-dom-node-with-a-ref*/}
 
-有时候，你需要获取与 JSX 标签相关联的浏览器 DOM 节点。举个例子，当你希望在点击一个按钮的时候聚焦一个 `<input>`，你需要在浏览器的`<input>` DOM 节点上调用 [`focus()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus) 方法。
+有时需要获取与 JSX 标签相关联的浏览器 DOM 节点。举个例子，当你希望在点击按钮时聚焦于一个 `<input>`，你需要在浏览器的`<input>` DOM 节点上调用 [`focus()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus) 方法。
 
-要获取标签的浏览器 DOM 节点，请 [声明一个ref](/reference/react/useRef) 并将其作为一个 `ref` 属性传递给标签:
+要获取标签的浏览器 DOM 节点，请 [声明一个 ref](/reference/react/useRef) 并将其作为一个 `ref` 属性传递给标签:
 
 ```js {7}
 import { useRef } from 'react';
@@ -912,7 +912,7 @@ const markup = { __html:'<p>some raw html</p>' };
 return <div dangerouslySetInnerHTML={markup} />;
 ```
 
-**这很危险。与底层的 DOM [`innerHTML`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/innerHTML) 属性一样，你必须极度谨慎！ 除非标记语言来自完全可信的来源，否则通过这种方式引入 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 是容易被攻击的**。
+**这很危险。与底层的 DOM [`innerHTML`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/innerHTML) 属性一样，你必须极度谨慎！除非标记语言来自完全可信的来源，否则通过这种方式引入 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 是容易被攻击的**。
 
 例如，如果你使用将 Markdown 转换为 HTML 的 Markdown 库，你得相信它的解析器没有漏洞，用户只能看到自己的输入，你可以像这样显示生成的 HTML:
 
@@ -982,7 +982,7 @@ textarea { display: block; margin-top: 5px; margin-bottom: 10px; }
 
 </Sandpack>
 
-要了解为什么渲染任意 HTML 是危险的，请将上面的代码替换为此代码:
+要了解为什么渲染任意 HTML 是危险的，请将上面的代码替换为此代码：
 
 ```js {1-4,7,8}
 const post = {
