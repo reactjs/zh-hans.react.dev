@@ -924,7 +924,6 @@ import MarkdownPreview from './MarkdownPreview.js';
 
 export default function MarkdownEditor() {
   const [postContent, setPostContent] = useState('你好，**Markdown**!');
-
   return (
     <>
       <label>
