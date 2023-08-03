@@ -14,7 +14,7 @@ title: "普通组件（例如 <div>）"
 
 ## 参考 {/*reference*/}
 
-### 通用组件 (例如 `<div>`) {/*common*/}
+### 通用组件（例如 `<div>`） {/*common*/}
 
 ```js
 <div className="wrapper">一些内容</div>
@@ -26,17 +26,17 @@ title: "普通组件（例如 <div>）"
 
 这些特殊的 React 属性适用于所有内置组件：
 
-* `children`：一个 React 节点（可以是元素、字符串、数字、[portal](/reference/react-dom/createPortal)，如 `null`，`undefined` 这样的空节点和布尔值，或其他 React 节点数组）。`children` 属性指定了组件内部的内容。当使用 JSX 时，通常会通过嵌套标签 `<div><span /></div>` 隐式地指定 `children` 属性。
+* `children`：React 节点（可以是元素、字符串、数字、[portal](/reference/react-dom/createPortal)，如 `null`，`undefined` 这样的空节点和布尔值，或其他 React 节点数组）。`children` 属性指定了组件内部的内容。当使用 JSX 时，通常会通过嵌套标签 `<div><span /></div>` 隐式地指定 `children` 属性。
 
-* `dangerouslySetInnerHTML`：一个形如 `{ __html: '<p>一些 HTML</p>' }` 的对象，其中包含原始的 HTML 字符串。此属性将会覆盖 DOM 节点的 [`innerHTML`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/innerHTML) 属性，并在内部显示传递的 HTML 内容。这个属性应该极度谨慎使用! 如果内部的 HTML 不可信（例如它来源于用户数据），那么会有引入 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 漏洞的风险。[阅读更多关于使用 `dangerouslySetInnerHTML` 的内容](#dangerously-setting-the-inner-html)。
+* `dangerouslySetInnerHTML`：一个形如 `{ __html: '<p>一些 HTML</p>' }` 的对象，其中包含原始的 HTML 字符串。此属性将会覆盖 DOM 节点的 [`innerHTML`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/innerHTML) 属性，并在内部显示传递的 HTML 内容。这个属性应该极度谨慎使用！如果内部的 HTML 不可信（例如它来源于用户数据），那么会有引入 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 漏洞的风险。[阅读更多关于使用 `dangerouslySetInnerHTML` 的内容](#dangerously-setting-the-inner-html)。
 
-* `ref`：来自 [`useRef`](/reference/react/useRef) 或者 [`createRef`](/reference/react/createRef) 的 ref 对象，或者一个 [`ref` 回调函数](#ref-callback)，再或者一个用于 [传统 ref](https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs) 的字符串。ref 将被填充为此节点的 DOM 元素。[阅读更多关于使用 ref 操纵 DOM 的内容](#manipulating-a-dom-node-with-a-ref)。
+* `ref`：使用 [`useRef`](/reference/react/useRef) 或者 [`createRef`](/reference/react/createRef) 的 ref 对象，或者一个 [`ref` 回调函数](#ref-callback)，再或者一个用于 [传统 ref](https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs) 的字符串。ref 将被填充为此节点的 DOM 元素。[阅读更多关于使用 ref 操纵 DOM 的内容](#manipulating-a-dom-node-with-a-ref)。
 
 * `suppressContentEditableWarning`：布尔值。如果为 `true` 将会抑制 React 对同时具有 `child` 和 `contentEditable={true}` 属性的元素发出的警告（这两者通常不能同时使用）。如果你正在构建一个手动管理 `contentEditable` 内容的文本输入库，请使用此选项。
 
-* `suppressHydrationWarning`：一个布尔值。如果你使用 [服务器渲染](/reference/react-dom/server)，通常会在服务器和客户端渲染不同内容时发出警告。在一些罕见的情况下（比如时间戳），很难或者不可能保证完全匹配。如果你设置 `suppressHydrationWarning` 为 `true`，React 不会警告你有关元素属性和内容不匹配的问题。它只能在一个层级上工作，并且旨在用作紧急逃生通道。[阅读有关抑制混合错误的内容](/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors)。
+* `suppressHydrationWarning`：布尔值。如果你使用 [服务器渲染](/reference/react-dom/server)，通常会在服务器和客户端渲染不同内容时发出警告。在一些罕见的情况下（比如时间戳），很难或者不可能保证完全匹配。如果你设置 `suppressHydrationWarning` 为 `true`，React 不会在元素属性和内容不匹配时发出警告。它只能在同级工作，并被作为应急方案。[阅读有关抑制 hydrate 错误的内容](/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors)。
 
-* `style`：CSS 样式对象，如 `{ fontWeight：'bold'，margin：20 }`。与 DOM [`style`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/style) 属性类似，CSS 属性应该使用像 `camelCase` 这样的驼峰命名法。如你应该使用 `fontWeight` 而不是 `font-weight`。你可以将字符串或数字作为值传递，类似 `width: 100`，React 会自动将值附加为 `px`（“像素”），除非它是一个 [无单位的属性](https://github.com/facebook/react/blob/81d4ee9ca5c405dce62f64e61506b8e155f38d8d/packages/react-dom-bindings/src/shared/CSSProperty.js#L8-L57)。我们建议仅在动态样式中使用 `style`，其中是事先不知道样式值。在其他情况下，使用普通的 CSS 类和 `className` 更有效。[了解有关 `className` 和 `style` 的更多信息](#applying-css-styles)。
+* `style`：CSS 样式对象，如 `{ fontWeight：'bold'，margin：20 }`。与 DOM [`style`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/style) 属性类似，CSS 属性应该使用像 `camelCase` 这样的驼峰命名法，如应该使用 `fontWeight` 而不是 `font-weight`。你可以将字符串或数字作为值传递，类似 `width: 100`，React 会自动将值附加为 `px`（“像素”），除非它是一个 [无单位的属性](https://github.com/facebook/react/blob/81d4ee9ca5c405dce62f64e61506b8e155f38d8d/packages/react-dom-bindings/src/shared/CSSProperty.js#L8-L57)。我们建议仅在动态样式中使用 `style`，即事先不知道样式值。在其他情况下，使用普通的 CSS 类和 `className` 更有效。[了解有关 `className` 和 `style` 的更多信息](#applying-css-styles)。
 
 所有内置组件也支持这些标准的 DOM 属性：
 
