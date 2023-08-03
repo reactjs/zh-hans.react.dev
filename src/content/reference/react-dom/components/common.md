@@ -20,31 +20,31 @@ title: "普通组件（例如 <div>）"
 <div className="wrapper">一些内容</div>
 ```
 
-[查看更多用例](#usage)。
+[参见下方更多示例](#usage)。
 
-#### Props {/*common-props*/}
+#### 属性 {/*common-props*/}
 
 这些特殊的 React 属性适用于所有内置组件：
 
-* `children`：一个 React 节点 (可以是元素，字符串，数字，[portal](/reference/react-dom/createPortal) ，如 `null`，`undefined`这样的空节点和布尔值，或其他 React 数组节点)。指定组件内部的内容。当你使用 JSX 时，通常会通过嵌套标签 `<div><span /></div>` 隐式地指定 `children` 属性。
+* `children`：一个 React 节点（可以是元素、字符串、数字、[portal](/reference/react-dom/createPortal)，如 `null`，`undefined` 这样的空节点和布尔值，或其他 React 节点数组）。`children` 属性指定了组件内部的内容。当使用 JSX 时，通常会通过嵌套标签 `<div><span /></div>` 隐式地指定 `children` 属性。
 
-* `dangerouslySetInnerHTML`：一个形如 `{ __html: '<p>一些 HTML</p>' }` 的对象，其中包含原始的 HTML 字符串。覆盖 DOM 节点的 [`innerHTML`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/innerHTML) 属性 ，并在内部显示传递的 HTML 内容。这个属性应该极度谨慎使用! 如果内部的 HTML 不可信（例如，如果它基于用户数据），你有引入 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 漏洞的风险。[阅读更多关于使用`dangerouslySetInnerHTML`的内容](#dangerously-setting-the-inner-html)。
+* `dangerouslySetInnerHTML`：一个形如 `{ __html: '<p>一些 HTML</p>' }` 的对象，其中包含原始的 HTML 字符串。此属性将会覆盖 DOM 节点的 [`innerHTML`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/innerHTML) 属性，并在内部显示传递的 HTML 内容。这个属性应该极度谨慎使用! 如果内部的 HTML 不可信（例如它来源于用户数据），那么会有引入 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 漏洞的风险。[阅读更多关于使用 `dangerouslySetInnerHTML` 的内容](#dangerously-setting-the-inner-html)。
 
-* `ref`：来自 [`useRef`](/reference/react/useRef) 或者 [`createRef`](/reference/react/createRef)的 ref 对象，或者一个 [`ref` 回调函数](#ref-callback)。 或者一个用于 [传统 refs](https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs) 的字符串，你的引用将被填充为此节点的 DOM 元素。[阅读更多关于使用 ref 操纵 DOM 的内容](#manipulating-a-dom-node-with-a-ref)。
+* `ref`：来自 [`useRef`](/reference/react/useRef) 或者 [`createRef`](/reference/react/createRef) 的 ref 对象，或者一个 [`ref` 回调函数](#ref-callback)，再或者一个用于 [传统 ref](https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs) 的字符串。ref 将被填充为此节点的 DOM 元素。[阅读更多关于使用 ref 操纵 DOM 的内容](#manipulating-a-dom-node-with-a-ref)。
 
-* `suppressContentEditableWarning`：一个布尔值。如果是 `true`，抑制 React 对同时具有 `child` 和 `contentEditable={true}` 属性的元素发出的警告（这两者通常不能同时使用）。如果你正在构建一个手动管理 `contentEditable` 内容的文本输入库，请使用此选项。
+* `suppressContentEditableWarning`：布尔值。如果为 `true` 将会抑制 React 对同时具有 `child` 和 `contentEditable={true}` 属性的元素发出的警告（这两者通常不能同时使用）。如果你正在构建一个手动管理 `contentEditable` 内容的文本输入库，请使用此选项。
 
-* `suppressHydrationWarning`：一个布尔值。如果你使用 [服务器渲染](/reference/react-dom/server)，通常会在服务器和客户端呈现不同内容时发出警告。在一些罕见的情况下（比如时间戳），很难或者不可能保证完全匹配。如果你设置 `suppressHydrationWarning` 为 `true`，React 不会警告你有关元素属性和内容不匹配的问题。它只能在一个层级上工作，并且旨在用作紧急逃生通道。[阅读有关抑制混合错误的内容](/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors)。
+* `suppressHydrationWarning`：一个布尔值。如果你使用 [服务器渲染](/reference/react-dom/server)，通常会在服务器和客户端渲染不同内容时发出警告。在一些罕见的情况下（比如时间戳），很难或者不可能保证完全匹配。如果你设置 `suppressHydrationWarning` 为 `true`，React 不会警告你有关元素属性和内容不匹配的问题。它只能在一个层级上工作，并且旨在用作紧急逃生通道。[阅读有关抑制混合错误的内容](/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors)。
 
-* `style`：一个带有 CSS 样式的对象，例如`{ fontWeight：'bold'，margin：20 }`。与 DOM [`样式`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/style) 属性类似，CSS 属性名称需要写成`驼峰式`，例如 `fontWeight` 而不是 `font-weight` 。你可以将字符串或数字作为值传递，类似 `width：100`，React 会自动将值附加为 `px`（“像素”），除非它是一个 [无单位的属性](https://github.com/facebook/react/blob/81d4ee9ca5c405dce62f64e61506b8e155f38d8d/packages/react-dom-bindings/src/shared/CSSProperty.js#L8-L57)。我们建议仅在动态样式中使用`样式`，其中是你事先不知道样式值。在其他情况下，使用普通的 CSS 类和 `className` 更有效。[了解有关 `className` 和 `style` 的更多信息](#applying-css-styles)。
+* `style`：CSS 样式对象，如 `{ fontWeight：'bold'，margin：20 }`。与 DOM [`style`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/style) 属性类似，CSS 属性应该使用像 `camelCase` 这样的驼峰命名法。如你应该使用 `fontWeight` 而不是 `font-weight`。你可以将字符串或数字作为值传递，类似 `width: 100`，React 会自动将值附加为 `px`（“像素”），除非它是一个 [无单位的属性](https://github.com/facebook/react/blob/81d4ee9ca5c405dce62f64e61506b8e155f38d8d/packages/react-dom-bindings/src/shared/CSSProperty.js#L8-L57)。我们建议仅在动态样式中使用 `style`，其中是事先不知道样式值。在其他情况下，使用普通的 CSS 类和 `className` 更有效。[了解有关 `className` 和 `style` 的更多信息](#applying-css-styles)。
 
 所有内置组件也支持这些标准的 DOM 属性：
 
-* [`accessKey`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/accesskey)：一个字符串。为该元素指定一个键盘快捷键。[通常不建议](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/accesskey#accessibility_concerns)。
+* [`accessKey`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/accesskey)：一个字符串。为该元素指定一个键盘快捷键。[通常不建议使用](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/accesskey#accessibility_concerns)。
 * [`aria-*`](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes)：ARIA 属性允许你为此元素指定辅助功能树信息。请参阅 [ARIA 属性](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility/ARIA/Attributes) 以获取完整的参考。在 React 中，所有 ARIA 属性名称与 HTML 中完全相同。
 * [`autoCapitalize`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/autocapitalize)：一个字符串。指定用户输入的大小写形式。
 * [`className`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/className)：一个字符串。指定元素的 CSS 类名。[阅读更多关于应用 CSS 样式的内容](#applying-css-styles)。
-* [`contentEditable`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/contenteditable)：一个布尔值。如果是 `true`，浏览器允许用户直接编辑渲染的元素。这被用于实现像 [Lexical](https://lexical.dev/) 这样的富文本输入库。如果你尝试将 React 子元素传递给具有 `contentEditable={true}` 属性的元素，则 React 会发出警告，因为在用户编辑后，React 将无法更新其内容。
+* [`contentEditable`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/contenteditable)：一个布尔值。如果为 `true`，浏览器允许用户直接编辑渲染的元素。这被用于实现像 [Lexical](https://lexical.dev/) 这样的富文本输入库。如果你尝试将 React 子元素传递给具有 `contentEditable={true}` 属性的元素，则 React 会发出警告，因为在用户编辑后，React 将无法更新其内容。
 * [`data-*`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/data-*)：数据属性允许你将一些字符串数据附加到元素上，例如 `data-fruit="banana"`。在 React 中它们不常用，因为通常你会从 props 或 state 中读取数据。
 * [`dir`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/dir)：可以是 `ltr` 或 `rtl` 。指定元素的文本方向。
 * [`draggable`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/draggable)：一个布尔值。指定元素是否可拖动。属于 [HTML_Drag_and_Drop_API](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_Drag_and_Drop_API) 的一部分。
