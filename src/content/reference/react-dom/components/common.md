@@ -746,7 +746,7 @@ React 事件对象实现了一些标准的 [`事件`](https://developer.mozilla.
 然后你在单独的 CSS 文件中编写它的 CSS 规则：
 
 ```css
-/* 在你 CSS 文件中 CSS */
+/* 在你的 CSS 文件中 */
 .avatar {
   border-radius: 50%;
 }
