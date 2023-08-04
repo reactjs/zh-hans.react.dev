@@ -456,7 +456,7 @@ nextList[0].seen = true; // 问题：直接修改了 list[0] 的值
 setList(nextList);
 ```
 
-虽然 `nextList` 和 `list` 是两个不同的数组，**`nextList[0]` 和 `list[0]` 却指向了同一个对象**。因此，通过改变 `nextList[0].seen`，`list[0].seen` 的值也被改变了。这是一种 state 的 mutation 操作，你应该避免这么做！你可以用类似于 [更新嵌套的 JavaScript 对象](docs/updating-objects-in-state#updating-a-nested-object) 的方式解决这个问题——拷贝想要修改的特定元素，而不是直接修改它。下面是具体的操作。
+虽然 `nextList` 和 `list` 是两个不同的数组，**`nextList[0]` 和 `list[0]` 却指向了同一个对象**。因此，通过改变 `nextList[0].seen`，`list[0].seen` 的值也被改变了。这是一种 state 的 mutation 操作，你应该避免这么做！你可以用类似于 [更新嵌套的 JavaScript 对象](learn/updating-objects-in-state#updating-a-nested-object) 的方式解决这个问题——拷贝想要修改的特定元素，而不是直接修改它。下面是具体的操作。
 
 ## 更新数组内部的对象 {/*updating-objects-inside-arrays*/}
 
