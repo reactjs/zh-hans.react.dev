@@ -1,12 +1,18 @@
 ---
 title: "'use client'"
+canary: true
 ---
 
-<Note>
+<Canary>
 
+<<<<<<< HEAD
 这些指令仅在你 [使用 React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 或构建可适配库时需要。
 
 </Note>
+=======
+`'use client'` is needed only if you're [using React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) or building a library compatible with them.
+</Canary>
+>>>>>>> ae06008d574e44992133f4cc74563ce968fde04c
 
 
 <Intro>

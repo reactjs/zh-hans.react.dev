@@ -1078,7 +1078,7 @@ function Button({ children, onClick }) {
 
 你可以根据需要多次嵌套和覆盖 provider。
 
-<Recipes title="Examples of overriding context">
+<Recipes titleText="Examples of overriding context">
 
 #### 覆盖主题 {/*overriding-a-theme*/}
 
