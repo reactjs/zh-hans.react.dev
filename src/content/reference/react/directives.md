@@ -1,10 +1,17 @@
 ---
 title: "Directives"
+canary: true
 ---
+
+<Canary>
+
+These directives are needed only if you're [using React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) or building a library compatible with them.
+
+</Canary>
 
 <Intro>
 
-React 使用两个指令（directive）向 [与 React 服务器组件兼容的捆绑器（bundler）](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 提供指令（instruction）。
+指令（directive）向 [与 React 服务器组件兼容的捆绑器（bundler）](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 提供指令（instruction）。
 
 </Intro>
 

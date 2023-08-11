@@ -1,14 +1,13 @@
 ---
 title: "'use server'"
+canary: true
 ---
 
-<Wip>
-
-此章节仍在完善中。
+<Canary>
 
 这些指令仅在你 [使用 React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 或构建可适配库时需要。
 
-</Wip>
+</Canary>
 
 
 <Intro>
@@ -46,3 +45,11 @@ async function addToCart(data) {
 * 为了避免将客户端和服务器代码混合在同一文件中从而导致混淆，`'use server'` 只能在服务器文件中使用；生成的函数可以通过 props 传递给客户端组件。
 * 底层的网络调用总是异步的，所以 `'use server'` 只能在异步函数上使用。
 * 像 `'use server'` 这样的指令必须位于文件或函数的最开头，位于任何导入或其他代码之上（指令上方可以存在注释）。它们必须用单引号或双引号编写，而不是反引号。`'use xyz'` 指令格式类似于 `'useXyz'` Hook 命名约定，但相似之处纯属巧合。
+
+## 用法 {/*usage*/}
+
+<Wip>
+
+此章节尚未完成，参见 [Next.js 服务端组件的文档](https://beta.nextjs.org/docs/rendering/server-and-client-components)。
+
+</Wip>

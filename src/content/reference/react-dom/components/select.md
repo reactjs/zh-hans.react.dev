@@ -50,21 +50,21 @@ title: "<select>"
 
 以下 `<select>` 属性均可用于受控与非受控选择框组件：
 
-* [`autoComplete`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#attr-autocomplete)：字符串，用于指定可能的 [自动完成行为](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/autocomplete#values) 之一。
-* [`autoFocus`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#attr-autofocus)：布尔值。如果为 `true`，React 将在挂载时聚焦该元素。
+* [`autoComplete`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#autocomplete)：字符串，用于指定可能的 [自动完成行为](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/autocomplete#values) 之一。
+* [`autoFocus`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#autofocus)：布尔值。如果为 `true`，React 将在挂载时聚焦该元素。
 * `children`：`<select>` 接受 [`<option>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/option)、[`<optgroup>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/optgroup) 与 [`<datalist>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/optgroup) 组件作为子元素。只要最终渲染的是其中之一，你也可以传递自己的组件。如果最终渲染的是 `<option>`，则每个 `<option>` 都必须具有 `value` 属性。
-* [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#attr-disabled)：布尔值。如果为 `true`，选择框将不会交互并展示为暗淡状态（dimmed）。
-* [`form`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#attr-form)：字符串，表示此选择框所属的 `<form>` 的 `id`。如果未指定，则为最近的父表单。
-* [`multiple`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#attr-multiple)：布尔值。如果为 `true`，则浏览器允许 [多选](#enabling-multiple-selection)。
-* [`name`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#attr-name)：字符串，用于指定此选择框的名称，该名称将在 [提交表单时](#reading-the-select-box-value-when-submitting-a-form) 一起提交。
+* [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#disabled)：布尔值。如果为 `true`，选择框将不会交互并展示为暗淡状态（dimmed）。
+* [`form`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#form)：字符串，表示此选择框所属的 `<form>` 的 `id`。如果未指定，则为最近的父表单。
+* [`multiple`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#multiple)：布尔值。如果为 `true`，则浏览器允许 [多选](#enabling-multiple-selection)。
+* [`name`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#name)：字符串，用于指定此选择框的名称，该名称将在 [提交表单时](#reading-the-select-box-value-when-submitting-a-form) 一起提交。
 * `onChange`：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)，其对于 [受控选择框](#controlling-a-select-box-with-a-state-variable) 是必需的。当用户选择不同的选项时立即触发。此行为类似于浏览器 [`input` 事件](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/input_event)。
 * `onChangeCapture`：与 `onChange` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的。
 * [`onInput`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/input_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。当用户更改值时立即触发。由于历史原因，在 React 习惯于使用 `onChange`，工作方式类似。
 * `onInputCapture`：与 `onInput` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的。
 * [`onInvalid`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLInputElement/invalid_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。如果输入的内容在表单提交时未通过验证，则会触发此事件。与内置的 `invalid` 事件不同，React 的 `onInvalid` 事件可以进行冒泡。
 * `onInvalidCapture`：与 `onInvalid` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的。
-* [`required`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#attr-required)：布尔值。如果为 `true`，则必须提供值才能提交表单。
-* [`size`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#attr-size)：数字。当指定 `multiple={true}` 时可选，表示同时可见的项目数。
+* [`required`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#required)：布尔值。如果为 `true`，则必须提供值才能提交表单。
+* [`size`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#size)：数字。当指定 `multiple={true}` 时可选，表示同时可见的项目数。
 
 #### 注意 {/*caveats*/}
 
