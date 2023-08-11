@@ -68,8 +68,8 @@
           "path": "/blog/2021/06/08/the-plan-for-react-18"
         },
         {
-          "title": "介绍服务器组件",
-          "titleForHomepage": "介绍服务器组件",
+          "title": "介绍服务端组件",
+          "titleForHomepage": "介绍服务端组件",
           "icon": "labs",
           "date": "December 21, 2020",
           "path": "/blog/2020/12/21/data-fetching-with-react-server-components"

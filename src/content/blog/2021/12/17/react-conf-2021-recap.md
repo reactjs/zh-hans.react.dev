@@ -28,7 +28,7 @@ title: "回顾 React Conf 2021"
 
 **这意味着没有并发模式，只有并发功能**。
 
-在主题演讲中，我们还分享了对 Suspense、服务器组件、新 React 工作组的愿景，以及对 React Native 的长期多平台愿景。
+在主题演讲中，我们还分享了对 Suspense、服务端组件、新 React 工作组的愿景，以及对 React Native 的长期多平台愿景。
 
 请在此处观看 [Andrew Clark](https://twitter.com/acdlite)、[Juan Tejada](https://twitter.com/_jstejada)、[Lauren Tan](https://twitter.com/potetotes) 和 [Rick Hanlon](https://twitter.com/rickhanlonii) 的完整主题演讲：
 
@@ -114,7 +114,7 @@ React 18 还包括使用 Suspense 对服务端渲染性能的改进。
 * 由 Eric Rozell 和 Steven Moyes 演讲的 [React Native Desktop](https://youtu.be/9L4FFrvwJwY)。
 * 由 Roman Rädle 演讲的 [On-device Machine Learning for React Native](https://youtu.be/NLj73vrc2I8)。
 
-**社区中关于可访问性、工具和服务器组件的演讲**：
+**社区中关于可访问性、工具和服务端组件的演讲**：
 
 * 由 Daishi Kato 演讲的 [React 18 for External Store Libraries](https://youtu.be/oPfSC5bQPR8)。
 * 由 Diego Haz 演讲的 [Building Accessible Components in React 18](https://youtu.be/dcm8fjBfro8)。

@@ -5,7 +5,7 @@ canary: true
 
 <Canary>
 
-这些指令仅在你 [使用 React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 或构建可适配库时需要。
+这些指令仅在你 [使用 React 服务端组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 或构建可适配库时需要。
 
 </Canary>
 
