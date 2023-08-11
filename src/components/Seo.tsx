@@ -53,7 +53,7 @@ export const Seo = withRouter(
     const canonicalUrl = `https://${siteDomain}${
       router.asPath.split(/[\?\#]/)[0]
     }`;
-    const pageTitle = isHomePage ? title : title + ' – React';
+    const pageTitle = isHomePage ? title : title + ' – React 中文文档';
     // Twitter's meta parser is not very good.
     const twitterTitle = pageTitle.replace(/[<>]/g, '');
     return (
