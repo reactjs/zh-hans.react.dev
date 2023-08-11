@@ -62,13 +62,18 @@ function SendFeedback({onSubmit}: {onSubmit: () => void}) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   return (
     <div className="max-w-xs w-80 lg:w-auto py-3 shadow-lg rounded-lg m-4 bg-wash dark:bg-gray-95 px-4 flex">
+<<<<<<< HEAD
       <p className="w-full font-bold text-primary dark:text-primary-dark text-lg mr-4">
         {isSubmitted ? '谢谢你的反馈意见！' : '这个页面有用吗？'}
+=======
+      <p className="w-full font-bold text-primary dark:text-primary-dark text-lg me-4">
+        {isSubmitted ? 'Thank you for your feedback!' : 'Is this page useful?'}
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
       </p>
       {!isSubmitted && (
         <button
           aria-label="Yes"
-          className="bg-secondary-button dark:bg-secondary-button-dark rounded-lg text-primary dark:text-primary-dark px-3 mr-2"
+          className="bg-secondary-button dark:bg-secondary-button-dark rounded-lg text-primary dark:text-primary-dark px-3 me-2"
           onClick={() => {
             setIsSubmitted(true);
             onSubmit();

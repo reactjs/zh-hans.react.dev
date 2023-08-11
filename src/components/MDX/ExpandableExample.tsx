@@ -70,14 +70,24 @@ function ExpandableExample({children, excerpt, type}: ExpandableExampleProps) {
           })}>
           {isDeepDive && (
             <>
+<<<<<<< HEAD
               <IconDeepDive className="inline mr-2 dark:text-purple-30 text-purple-40" />
               深入探讨
+=======
+              <IconDeepDive className="inline me-2 dark:text-purple-30 text-purple-40" />
+              Deep Dive
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
             </>
           )}
           {isExample && (
             <>
+<<<<<<< HEAD
               <IconCodeBlock className="inline mr-2 dark:text-yellow-30 text-yellow-50" />
               示例
+=======
+              <IconCodeBlock className="inline me-2 dark:text-yellow-30 text-yellow-50" />
+              Example
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
             </>
           )}
         </h5>
@@ -98,7 +108,7 @@ function ExpandableExample({children, excerpt, type}: ExpandableExampleProps) {
               isExample,
           })}
           onClick={() => setIsExpanded((current) => !current)}>
-          <span className="mr-1">
+          <span className="me-1">
             <IconChevron displayDirection={isExpanded ? 'up' : 'down'} />
           </span>
           {isExpanded ? '收起' : '显示更多'}

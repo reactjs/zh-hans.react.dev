@@ -61,26 +61,42 @@ export function Challenge({
       <div className="flex justify-between items-center mt-4">
         {currentChallenge.hint ? (
           <div>
+<<<<<<< HEAD
             <Button className="mr-2" onClick={toggleHint} active={showHint}>
               <IconHint className="mr-1.5" />{' '}
               {showHint ? '隐藏提示' : '展现提示'}
+=======
+            <Button className="me-2" onClick={toggleHint} active={showHint}>
+              <IconHint className="me-1.5" />{' '}
+              {showHint ? 'Hide hint' : 'Show hint'}
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
             </Button>
             <Button
-              className="mr-2"
+              className="me-2"
               onClick={toggleSolution}
               active={showSolution}>
+<<<<<<< HEAD
               <IconSolution className="mr-1.5" />{' '}
               {showSolution ? '隐藏答案' : '显示答案'}
+=======
+              <IconSolution className="me-1.5" />{' '}
+              {showSolution ? 'Hide solution' : 'Show solution'}
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
             </Button>
           </div>
         ) : (
           !isRecipes && (
             <Button
-              className="mr-2"
+              className="me-2"
               onClick={toggleSolution}
               active={showSolution}>
+<<<<<<< HEAD
               <IconSolution className="mr-1.5" />{' '}
               {showSolution ? '隐藏答案' : '显示答案'}
+=======
+              <IconSolution className="me-1.5" />{' '}
+              {showSolution ? 'Hide solution' : 'Show solution'}
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
             </Button>
           )
         )}
@@ -94,8 +110,13 @@ export function Challenge({
             )}
             onClick={handleClickNextChallenge}
             active>
+<<<<<<< HEAD
             下一个{isRecipes ? '示例' : '挑战'}
             <IconArrowSmall displayDirection="right" className="block ml-1.5" />
+=======
+            Next {isRecipes ? 'Example' : 'Challenge'}
+            <IconArrowSmall displayDirection="end" className="block ms-1.5" />
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
           </Button>
         )}
       </div>
@@ -118,8 +139,8 @@ export function Challenge({
                 active>
                 下一个挑战
                 <IconArrowSmall
-                  displayDirection="right"
-                  className="block ml-1.5"
+                  displayDirection="end"
+                  className="block ms-1.5"
                 />
               </Button>
             )}

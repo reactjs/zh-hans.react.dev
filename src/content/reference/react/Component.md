@@ -593,9 +593,13 @@ React 可能随时调用 `render` 方法，因此你不应该假设它将在某�
 
 #### 参数 {/*render-parameters*/}
 
+<<<<<<< HEAD
 * `prevProps`：更新之前的 Props。`prevProps` 将会与 [`this.props`](#props) 进行比较来确定发生了什么改变。
 
 * `prevState`：更新之前的 State。`prevState` 将会与 [`this.state`](#state) 进行比较来确定发生了什么改变。
+=======
+`render` does not take any parameters.
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
 
 #### 返回值 {/*render-returns*/}
 

@@ -55,7 +55,11 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 在此示例中，所有组件目前都定义在**根组件** `App.js` 文件中，在 [Create React App](https://create-react-app.dev/) 中，你的应用应在 `src/App.js` 文件中定义。具体还需根据项目配置决定，有些根组件可能会声明在其他文件中。如果你使用的框架基于文件进行路由，如 Next.js，那你每个页面的根组件都会不一样。
+=======
+These currently live in a **root component file,** named `App.js` in this example. Depending on your setup, your root component could be in another file, though. If you use a framework with file-based routing, such as Next.js, your root component will be different for every page.
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
 
 ## 导出和导入一个组件 {/*exporting-and-importing-a-component*/}
 

@@ -28,8 +28,13 @@ function YouWillLearnCard({title, path, children}: YouWillLearnCardProps) {
           type="primary"
           size="md"
           label={title}>
+<<<<<<< HEAD
           了解更多
           <IconNavArrow displayDirection="right" className="inline ml-1" />
+=======
+          Read More
+          <IconNavArrow displayDirection="end" className="inline ms-1" />
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
         </ButtonLink>
       </div>
     </div>
