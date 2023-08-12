@@ -318,7 +318,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 </LearnMore>
 
-## 排队一系列状态更改 {/*queueing-a-series-of-state-changes*/}
+## 把一系列 state 更新加入队列 {/*queueing-a-series-of-state-changes*/}
 
 这个组件有问题：点击“+3”只能增加一次分数。
 
@@ -402,7 +402,7 @@ button { display: inline-block; margin: 10px; font-size: 20px; }
 
 <LearnMore path="/learn/queueing-a-series-of-state-updates">
 
-阅读 **[排队一系列状态更改](/learn/queueing-a-series-of-state-changes)** 了解如何在下一次渲染前排队多个更新。
+阅读 **[把一系列 state 更新加入队列](/learn/queueing-a-series-of-state-updates)** 了解如何在下一次渲染前排队多个更新。
 
 </LearnMore>
 
