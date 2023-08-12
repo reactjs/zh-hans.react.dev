@@ -426,7 +426,7 @@ body {
 
 #### 跟踪元素可见性 {/*tracking-element-visibility*/}
 
-在这个例子中，外部系统仍然是浏览器 DOM。`App` 组件展示一个长列表，然后是 `Box` 组件，然后是另一个长列表。试试向下滚动列表。请注意，当 `Box` 组件出现在视野中时，背景色会变成黑色。为了实现这一点，`Box` 组件使用 Effect 来管理 [`IntersectionObserver`](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API)。这个浏览器 API 会在视野中出现指定 DOM 元素时通知你。
+在这个例子中，外部系统仍然是浏览器 DOM。`App` 组件展示一个长列表，然后是 `Box` 组件，然后是另一个长列表。试试向下滚动列表。请注意，所有的 `Box` 组件完全在视口中可见时，背景色会变成黑色。为了实现这一点，`Box` 组件使用 Effect 来管理 [`IntersectionObserver`](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API)。这个浏览器 API 会在视野中出现指定 DOM 元素时通知你。
 
 <Sandpack>
 
@@ -471,10 +471,10 @@ export default function Box() {
         document.body.style.backgroundColor = 'white';
         document.body.style.color = 'black';
       }
+    }, {
+       threshold: 1.0
     });
-    observer.observe(div, {
-      threshold: 1.0
-    });
+    observer.observe(div);
     return () => {
       observer.disconnect();
     }
@@ -763,10 +763,10 @@ export function useIntersectionObserver(ref) {
     const observer = new IntersectionObserver(entries => {
       const entry = entries[0];
       setIsIntersecting(entry.isIntersecting);
+    }, {
+       threshold: 1.0
     });
-    observer.observe(div, {
-      threshold: 1.0
-    });
+    observer.observe(div);
     return () => {
       observer.disconnect();
     }

@@ -333,7 +333,7 @@ React 事件对象实现了一些标准的 [`Event`](https://developer.mozilla.o
 * `e`：带有这些额外 [`animationevent`](https://developer.mozilla.org/zh-CN/docs/Web/API/animationevent) 属性的 [React 事件对象](#react-event-object)：
   * [`animationName`](https://developer.mozilla.org/zh-CN/docs/Web/API/animationevent/animationName)
   * [`elapsedTime`](https://developer.mozilla.org/zh-CN/docs/Web/API/animationevent/elapsedTime)
-  * [`pseudoElement`](https://developer.mozilla.org/zh-CN/docs/Web/API/animationevent)
+  * [`pseudoElement`](https://developer.mozilla.org/zh-CN/docs/Web/API/animationevent/pseudoElement)
 
 ---
 

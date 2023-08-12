@@ -61,26 +61,26 @@ export function Challenge({
       <div className="flex justify-between items-center mt-4">
         {currentChallenge.hint ? (
           <div>
-            <Button className="mr-2" onClick={toggleHint} active={showHint}>
-              <IconHint className="mr-1.5" />{' '}
-              {showHint ? '隐藏提示' : '展现提示'}
+            <Button className="me-2" onClick={toggleHint} active={showHint}>
+              <IconHint className="me-1.5" />{' '}
+              {showHint ? '隐藏提示' : '展示提示'}
             </Button>
             <Button
-              className="mr-2"
+              className="me-2"
               onClick={toggleSolution}
               active={showSolution}>
-              <IconSolution className="mr-1.5" />{' '}
-              {showSolution ? '隐藏答案' : '显示答案'}
+              <IconSolution className="me-1.5" />{' '}
+              {showSolution ? '隐藏答案' : '展示答案'}
             </Button>
           </div>
         ) : (
           !isRecipes && (
             <Button
-              className="mr-2"
+              className="me-2"
               onClick={toggleSolution}
               active={showSolution}>
-              <IconSolution className="mr-1.5" />{' '}
-              {showSolution ? '隐藏答案' : '显示答案'}
+              <IconSolution className="me-1.5" />{' '}
+              {showSolution ? '隐藏答案' : '展示答案'}
             </Button>
           )
         )}
@@ -94,8 +94,8 @@ export function Challenge({
             )}
             onClick={handleClickNextChallenge}
             active>
-            下一个{isRecipes ? '示例' : '挑战'}
-            <IconArrowSmall displayDirection="right" className="block ml-1.5" />
+            Next {isRecipes ? '示例' : '挑战'}
+            <IconArrowSmall displayDirection="end" className="block ms-1.5" />
           </Button>
         )}
       </div>
@@ -118,8 +118,8 @@ export function Challenge({
                 active>
                 下一个挑战
                 <IconArrowSmall
-                  displayDirection="right"
-                  className="block ml-1.5"
+                  displayDirection="end"
+                  className="block ms-1.5"
                 />
               </Button>
             )}
