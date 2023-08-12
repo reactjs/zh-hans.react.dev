@@ -318,7 +318,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 </LearnMore>
 
-## 把一系列 state 更新加入队列 {/*queueing-a-series-of-state-changes*/}
+## 把一系列 state 更新加入队列 {/*queueing-a-series-of-state-updates*/}
 
 这个组件有问题：点击“+3”只能增加一次分数。
 
