@@ -698,13 +698,6 @@ export const initialTravelPlan = {
         childPlaces: []
       }, {
         id: 21,
-<<<<<<< HEAD
-        title: 'Indonesia',
-        childPlaces: []
-      }, {
-        id: 22,
-=======
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
         title: 'India',
         childPlaces: []
       }, {
@@ -986,11 +979,7 @@ export const initialTravelPlan = {
   },
   21: {
     id: 21,
-<<<<<<< HEAD
-    title: 'Indonesia',
-=======
     title: 'India',
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
     childIds: []
   },
   22: {
@@ -1326,11 +1315,7 @@ export const initialTravelPlan = {
   },
   21: {
     id: 21,
-<<<<<<< HEAD
-    title: 'Indonesia',
-=======
     title: 'India',
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
     childIds: []
   },
   22: {
@@ -1669,11 +1654,7 @@ export const initialTravelPlan = {
   },
   21: {
     id: 21,
-<<<<<<< HEAD
-    title: 'Indonesia',
-=======
     title: 'India',
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
     childIds: []
   },
   22: {

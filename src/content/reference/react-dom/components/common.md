@@ -330,17 +330,10 @@ React 事件对象实现了一些标准的 [`Event`](https://developer.mozilla.o
 
 #### 参数 {/*animationevent-handler-parameters*/}
 
-<<<<<<< HEAD
 * `e`：带有这些额外 [`animationevent`](https://developer.mozilla.org/zh-CN/docs/Web/API/animationevent) 属性的 [React 事件对象](#react-event-object)：
   * [`animationName`](https://developer.mozilla.org/zh-CN/docs/Web/API/animationevent/animationName)
   * [`elapsedTime`](https://developer.mozilla.org/zh-CN/docs/Web/API/animationevent/elapsedTime)
-  * [`pseudoElement`](https://developer.mozilla.org/zh-CN/docs/Web/API/animationevent)
-=======
-* `e`: A [React event object](#react-event-object) with these extra [`AnimationEvent`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent) properties:
-  * [`animationName`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent/animationName)
-  * [`elapsedTime`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent/elapsedTime)
-  * [`pseudoElement`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent/pseudoElement)
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
+  * [`pseudoElement`](https://developer.mozilla.org/zh-CN/docs/Web/API/animationevent/pseudoElement)
 
 ---
 

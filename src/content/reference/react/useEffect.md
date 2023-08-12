@@ -426,11 +426,7 @@ body {
 
 #### 跟踪元素可见性 {/*tracking-element-visibility*/}
 
-<<<<<<< HEAD
-在这个例子中，外部系统仍然是浏览器 DOM。`App` 组件展示一个长列表，然后是 `Box` 组件，然后是另一个长列表。试试向下滚动列表。请注意，当 `Box` 组件出现在视野中时，背景色会变成黑色。为了实现这一点，`Box` 组件使用 Effect 来管理 [`IntersectionObserver`](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API)。这个浏览器 API 会在视野中出现指定 DOM 元素时通知你。
-=======
-In this example, the external system is again the browser DOM. The `App` component displays a long list, then a `Box` component, and then another long list. Scroll the list down. Notice that when all of the `Box` component is fully visible in the viewport, the background color changes to black. To implement this, the `Box` component uses an Effect to manage an [`IntersectionObserver`](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API). This browser API notifies you when the DOM element is visible in the viewport.
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
+在这个例子中，外部系统仍然是浏览器 DOM。`App` 组件展示一个长列表，然后是 `Box` 组件，然后是另一个长列表。试试向下滚动列表。请注意，所有的 `Box` 组件完全在视口中可见时，背景色会变成黑色。为了实现这一点，`Box` 组件使用 Effect 来管理 [`IntersectionObserver`](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API)。这个浏览器 API 会在视野中出现指定 DOM 元素时通知你。
 
 <Sandpack>
 

@@ -126,13 +126,8 @@ function LearnMore({
               label="Read More"
               href={path}
               type="primary">
-<<<<<<< HEAD
-              阅读更多有关内容
-              <IconNavArrow displayDirection="right" className="inline ml-1" />
-=======
-              Read More
+              阅读更多
               <IconNavArrow displayDirection="end" className="inline ms-1" />
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
             </ButtonLink>
           ) : null}
         </div>
@@ -145,13 +140,8 @@ function LearnMore({
 function ReadBlogPost({path}: {path: string}) {
   return (
     <ButtonLink className="mt-1" label="Read Post" href={path} type="primary">
-<<<<<<< HEAD
       阅读文章
-      <IconNavArrow displayDirection="right" className="inline ml-1" />
-=======
-      Read Post
       <IconNavArrow displayDirection="end" className="inline ms-1" />
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
     </ButtonLink>
   );
 }
@@ -410,7 +400,7 @@ export const MDXComponents = {
     children: React.ReactNode;
     title: string;
     excerpt: string;
-  }) => <ExpandableExample {...props} type="DeepDive" />,
+  }) => <ExpandableExample {...props} type="深入探讨" />,
   Diagram,
   DiagramGroup,
   FullWidth({children}: {children: any}) {

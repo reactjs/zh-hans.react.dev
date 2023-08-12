@@ -366,18 +366,10 @@ export function HomeContent() {
                           </Link>{' '}
                           和{' '}
                           <Link href="https://github.com/expo/expo">Expo</Link>{' '}
-<<<<<<< HEAD
                           让你可以使用 React 构建 Android、iOS
                           等应用程序。它们的样式和体验都和原生应用程序一样，因为它们的用户界面是真正的原生用户界面。这不是一个
                           Web 视图——你的 React 组件由平台提供的真实 Android 或
                           iOS 视图来渲染。
-=======
-                          let you build apps in React for Android, iOS, and
-                          more. They look and feel native because their UIs{' '}
-                          <i>are</i> truly native. It’s not a web view—your
-                          React components render real Android and iOS views
-                          provided by the platform.
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
                         </p>
                       </div>
                     </div>
@@ -402,13 +394,8 @@ export function HomeContent() {
         <Section background="right-card">
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row px-5">
             <div className="max-w-3xl lg:max-w-7xl gap-5 flex flex-col lg:flex-row lg:px-5">
-<<<<<<< HEAD
-              <div className="w-full lg:w-6/12 max-w-3xl flex flex-col items-start justify-start lg:pl-5 lg:pr-10">
-                <Header>充分测试，安心升级</Header>
-=======
               <div className="w-full lg:w-6/12 max-w-3xl flex flex-col items-start justify-start lg:ps-5 lg:pe-10">
-                <Header>Upgrade when the future is ready</Header>
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
+                <Header>充分测试，安心升级</Header>
                 <Para>
                   React 非常谨慎地处理每个改动。每个 React
                   提交都在拥有超过十亿用户的关键业务页面上进行测试。Meta 的 10
@@ -484,14 +471,8 @@ export function HomeContent() {
           <div className="mt-20 px-5 lg:px-0 mb-6 max-w-4xl text-center text-opacity-80">
             <Logo className="text-link dark:text-link-dark w-24 lg:w-28 mb-10 lg:mb-8 mt-12 h-auto mx-auto self-start" />
             <Header>
-<<<<<<< HEAD
-              欢迎来到
-              <br className="" />
+              欢迎来到 <br className="hidden lg:inline" />
               React 社区
-=======
-              Welcome to the <br className="hidden lg:inline" />
-              React community
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
             </Header>
             <ButtonLink
               href={'/learn'}

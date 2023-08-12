@@ -71,20 +71,12 @@ function FooterLink({
       className={cn(
         'flex gap-x-4 md:gap-x-6 items-center w-full md:w-80 px-4 md:px-5 py-6 border-2 border-transparent text-base leading-base text-link dark:text-link-dark rounded-lg group focus:text-link dark:focus:text-link-dark focus:bg-highlight focus:border-link dark:focus:bg-highlight-dark dark:focus:border-link-dark focus:border-opacity-100 focus:border-2 focus:ring-1 focus:ring-offset-4 focus:ring-blue-40 active:ring-0 active:ring-offset-0 hover:bg-gray-5 dark:hover:bg-gray-80',
         {
-<<<<<<< HEAD
-          'flex-row-reverse justify-self-end text-right': type === '下一页',
-=======
-          'flex-row-reverse justify-self-end text-end': type === 'Next',
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
+          'flex-row-reverse justify-self-end text-end': type === '下一页',
         }
       )}>
       <IconNavArrow
         className="text-tertiary dark:text-tertiary-dark inline group-focus:text-link dark:group-focus:text-link-dark"
-<<<<<<< HEAD
-        displayDirection={type === '上一页' ? 'left' : 'right'}
-=======
-        displayDirection={type === 'Previous' ? 'start' : 'end'}
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
+        displayDirection={type === '上一页' ? 'start' : 'end'}
       />
       <span>
         <span className="block no-underline text-sm tracking-wide text-secondary dark:text-secondary-dark uppercase font-bold group-focus:text-link dark:group-focus:text-link-dark group-focus:text-opacity-100">

@@ -15,7 +15,7 @@ import {useEffect, useRef, useState} from 'react';
 interface ExpandableExampleProps {
   children: React.ReactNode;
   excerpt?: string;
-  type: 'DeepDive' | 'Example';
+  type: '深入探讨' | '示例';
 }
 
 function ExpandableExample({children, excerpt, type}: ExpandableExampleProps) {
@@ -24,8 +24,8 @@ function ExpandableExample({children, excerpt, type}: ExpandableExampleProps) {
       `Expandable content ${type} is missing a corresponding title at the beginning`
     );
   }
-  const isDeepDive = type === 'DeepDive';
-  const isExample = type === 'Example';
+  const isDeepDive = type === '深入探讨';
+  const isExample = type === '示例';
   const id = children[0].props.id;
 
   const {asPath} = useRouter();
@@ -70,24 +70,14 @@ function ExpandableExample({children, excerpt, type}: ExpandableExampleProps) {
           })}>
           {isDeepDive && (
             <>
-<<<<<<< HEAD
-              <IconDeepDive className="inline mr-2 dark:text-purple-30 text-purple-40" />
-              深入探讨
-=======
               <IconDeepDive className="inline me-2 dark:text-purple-30 text-purple-40" />
-              Deep Dive
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
+              深入探讨
             </>
           )}
           {isExample && (
             <>
-<<<<<<< HEAD
-              <IconCodeBlock className="inline mr-2 dark:text-yellow-30 text-yellow-50" />
-              示例
-=======
               <IconCodeBlock className="inline me-2 dark:text-yellow-30 text-yellow-50" />
-              Example
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
+              示例
             </>
           )}
         </h5>
