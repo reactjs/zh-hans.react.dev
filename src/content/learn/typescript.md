@@ -451,6 +451,7 @@ interface MyComponentProps {
 
 本指南已经介绍了如何在 React 中使用 TypeScript 的基础知识，但还有更多内容等待学习。官网中的单个 API 页面或许包含了如何与 TypeScript 一起使用它们的更深入的说明。
 
+
 我们推荐以下资源：
 
 * [The TypeScript handbook](https://www.typescriptlang.org/docs/handbook/) 是 TypeScript 的官方文档，涵盖了大多数关键的语言特性。
@@ -458,6 +459,5 @@ interface MyComponentProps {
 * [The TypeScript release notes](https://devblogs.microsoft.com/typescript/) 深入介绍了每一个新特性。
 
 * [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/) 是一个社区维护的速查表，用于使用 TypeScript 与 React，涵盖了许多有用的边缘情况，并提供了比本文更广泛的内容。
-
 
 * [TypeScript Community Discord](discord.com/invite/typescript) 是一个提问和获取 TypeScript 和 React 问题帮助的好地方。
