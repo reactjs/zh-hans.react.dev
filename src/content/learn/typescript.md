@@ -121,6 +121,7 @@ export default App = AppTSX;
 
 描述组件的 props 的类型可以根据你的需要简单或复杂，但它们应该是用 `type` 或 `interface` 描述的对象类型。你可以在 [对象类型](https://www.typescriptlang.org/docs/handbook/2/objects.html) 中了解 TypeScript 如何描述对象，但你可能还对使用 [联合类型](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) 描述可以是几种不同类型之一的 prop 以及 [从类型创建类型](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html) 指南进行更高级的用例感兴趣。
 
+
 ## Hooks 示例 {/*example-hooks*/}
 
 来自 `@types/react` 的类型定义包括内置的 hooks，因此你可以在组件中使用它们，无需任何额外设置。它们是根据你在组件中编写的代码构建的，所以你会得到很多 [类型推断](https://www.typescriptlang.org/docs/handbook/type-inference.html)，并且理想情况下不需要处理提供类型的细节。
@@ -218,6 +219,7 @@ export default App = AppTSX;
 ```
 
 </Sandpack>
+
 
 我们在几个关键位置使用了 TypeScript：
 
@@ -443,6 +445,10 @@ interface MyComponentProps {
 
 ## 更多学习资源 {/*further-learning*/}
 
+
+
+
+
 本指南已经介绍了如何在 React 中使用 TypeScript 的基础知识，但还有更多内容等待学习。官网中的单个 API 页面或许包含了如何与 TypeScript 一起使用它们的更深入的说明。
 
 我们推荐以下资源：
@@ -452,5 +458,6 @@ interface MyComponentProps {
 * [The TypeScript release notes](https://devblogs.microsoft.com/typescript/) 深入介绍了每一个新特性。
 
 * [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/) 是一个社区维护的速查表，用于使用 TypeScript 与 React，涵盖了许多有用的边缘情况，并提供了比本文更广泛的内容。
+
 
 * [TypeScript Community Discord](discord.com/invite/typescript) 是一个提问和获取 TypeScript 和 React 问题帮助的好地方。
