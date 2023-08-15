@@ -409,6 +409,8 @@ export default App = AppTSX;
 
 React 类型中提供了许多事件类型 - 完整的列表可以在 [这里](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/b580df54c0819ec9df62b0835a315dd48b8594a9/types/react/index.d.ts#L1247C1-L1373)找到，它是 [基于 DOM 的最流行事件](https://developer.mozilla.org/en-US/docs/Web/Events)。
 
+当你需要确定某个类型时，可以先将鼠标悬停在你使用的事件处理器上，这样可以查看到事件的具体类型。
+
 当你需要使用不包含在此列表中的事件时，你可以使用 `React.SyntheticEvent` 类型，这是所有事件的基类型。
 
 ### 子元素 {/*typing-children*/}
@@ -447,18 +449,14 @@ interface MyComponentProps {
 
 ## 更多学习资源 {/*further-learning*/}
 
-
-
-
-
 本指南已经介绍了如何在 React 中使用 TypeScript 的基础知识，但还有更多内容等待学习。官网中的单个 API 页面或许包含了如何与 TypeScript 一起使用它们的更深入的说明。
 
 
 我们推荐以下资源：
 
-* [The TypeScript handbook](https://www.typescriptlang.org/docs/handbook/) 是 TypeScript 的官方文档，涵盖了大多数关键的语言特性。
+* [TypeScript 官方文档](https://www.typescriptlang.org/docs/handbook/)，涵盖了大多数关键的语言特性。
 
-* [The TypeScript release notes](https://devblogs.microsoft.com/typescript/) 深入介绍了每一个新特性。
+* [The TypeScript 发布笔记](https://devblogs.microsoft.com/typescript/) 深入介绍了每一个新特性。
 
 * [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/) 是一个社区维护的速查表，用于使用 TypeScript 与 React，涵盖了许多有用的边缘情况，并提供了比本文更广泛的内容。
 
