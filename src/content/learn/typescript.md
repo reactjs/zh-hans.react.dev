@@ -336,8 +336,8 @@ function MyComponent() {
 const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
 ```
 
-### `useCallback` {/*typing-usecallback*/}
 
+### `useCallback` {/*typing-usecallback*/}
 
 [`useCallback`](/reference/react/useCallback) 只要传递到第二个参数的依赖项保持不变，就会提供对函数的稳定引用。像 `useMemo` 一样，函数的类型是从第一个参数中的函数的返回值推断的，你可以通过为 hook 提供类型参数来更明确地指定。
 
