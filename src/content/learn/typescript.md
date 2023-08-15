@@ -20,7 +20,7 @@ TypeScript 是一种流行的方式，用于为 JavaScript 代码库添加类型
 
 ## 安装 {/*installation*/}
 
-所有的[生产级 React 框架](https://react-dev-git-fork-orta-typescriptpage-fbopensource.vercel.app/learn/start-a-new-react-project#production-grade-react-frameworks)都支持使用 TypeScript。请按照框架特定的指南进行安装：
+所有的 [生产级 React 框架](https://react-dev-git-fork-orta-typescriptpage-fbopensource.vercel.app/learn/start-a-new-react-project#production-grade-react-frameworks)都支持使用 TypeScript。请按照框架特定的指南进行安装：
 
 * [Next.js](https://nextjs.org/docs/pages/building-your-application/configuring/typescript)
 * [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
@@ -152,7 +152,7 @@ type Status = "idle" | "loading" | "success" | "error";
 const [status, setStatus] = useState<Status>("idle");
 ```
 
-或者，如[选择状态结构的原则](/learn/choosing-the-state-structure#principles-for-structuring-state)中推荐的，你可以将相关的状态作为一个对象分组，并通过对象类型描述不同的可能性：
+或者，如 [选择状态结构的原则](/learn/choosing-the-state-structure#principles-for-structuring-state)中推荐的，你可以将相关的状态作为一个对象分组，并通过对象类型描述不同的可能性：
 
 ```ts
 type RequestState =
@@ -338,7 +338,10 @@ const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
 
 ### `useCallback` {/*typing-usecallback*/}
 
-[`useCallback`](/reference/react/useCallback) 只要传递到第二个参数的依赖项保持不变，就会提供对函数的稳定引用。像 `useMemo` 一样，函数的类型是从第一个参数中的函数的返回值推断的，你可以通过为 hook 提供类型参数来更明确地指定。
+[`useCallback`](/reference/react/useCallback) 只要传递到第二个参数的依赖项保持不变，
+就会提供对函数的稳定引用。像 `useMemo` 一样，
+函数的类型是从第一个参数中的函数的返回值推断的，
+你可以通过为 hook 提供类型参数来更明确地指定。
 
 ```ts
 const handleClick = useCallback(() => {
@@ -405,7 +408,7 @@ export default App = AppTSX;
 
 </Sandpack>
 
-React 类型中提供了许多事件类型 - 完整的列表可以在[这里](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/b580df54c0819ec9df62b0835a315dd48b8594a9/types/react/index.d.ts#L1247C1-L1373)找到，它是[基于 DOM 的最流行事件](https://developer.mozilla.org/en-US/docs/Web/Events)。
+React 类型中提供了许多事件类型 - 完整的列表可以在 [这里](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/b580df54c0819ec9df62b0835a315dd48b8594a9/types/react/index.d.ts#L1247C1-L1373)找到，它是 [基于 DOM 的最流行事件](https://developer.mozilla.org/en-US/docs/Web/Events)。
 
 当你需要使用不包含在此列表中的事件时，你可以使用 `React.SyntheticEvent` 类型，这是所有事件的基类型。
 
