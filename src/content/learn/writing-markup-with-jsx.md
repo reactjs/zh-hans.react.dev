@@ -74,7 +74,7 @@ JavaScript
 假设你现在有一些（完全有效的）HTML 标签：
 
 ```html
-<h1>海蒂·拉玛的代办事项</h1>
+<h1>海蒂·拉玛的待办事项</h1>
 <img 
   src="https://i.imgur.com/yXOvdOSs.jpg" 
   alt="Hedy Lamarr" 
@@ -106,7 +106,7 @@ export default function TodoList() {
 export default function TodoList() {
   return (
     // 这不起作用！
-    <h1>海蒂·拉玛的代办事项</h1>
+    <h1>海蒂·拉玛的待办事项</h1>
     <img 
       src="https://i.imgur.com/yXOvdOSs.jpg" 
       alt="Hedy Lamarr" 
@@ -145,7 +145,7 @@ img { height: 90px }
 
 ```js {1,11}
 <div>
-  <h1>海蒂·拉玛的代办事项</h1>
+  <h1>海蒂·拉玛的待办事项</h1>
   <img 
     src="https://i.imgur.com/yXOvdOSs.jpg" 
     alt="Hedy Lamarr" 
@@ -162,7 +162,7 @@ img { height: 90px }
 
 ```js {1,11}
 <>
-  <h1>海蒂·拉玛的代办事项</h1>
+  <h1>海蒂·拉玛的待办事项</h1>
   <img 
     src="https://i.imgur.com/yXOvdOSs.jpg" 
     alt="Hedy Lamarr" 
@@ -174,7 +174,7 @@ img { height: 90px }
 </>
 ```
 
-这个空标签被称作 *[Fragment](/reference/react/Fragment)*. React Fragment 允许你将子元素分组，而不会在 HTML 结构中添加额外节点。
+这个空标签被称作 *[Fragment](/reference/react/Fragment)*。React Fragment 允许你将子元素分组，而不会在 HTML 结构中添加额外节点。
 
 <DeepDive>
 
@@ -188,7 +188,7 @@ JSX 虽然看起来很像 HTML，但在底层其实被转化为了 JavaScript �
 
 JSX 要求标签必须正确闭合。像 `<img>` 这样的自闭合标签必须书写成 `<img />`，而像 `<li>oranges` 这样只有开始标签的元素必须带有闭合标签，需要改为 `<li>oranges</li>`。
 
-海蒂·拉玛的照片和代办事项的标签经修改后变为：
+海蒂·拉玛的照片和待办事项的标签经修改后变为：
 
 ```js {2-6,8-10}
 <>
@@ -239,7 +239,7 @@ JSX 最终会被转化为 JavaScript，而 JSX 中的属性也会变成 JavaScri
 export default function TodoList() {
   return (
     <>
-      <h1>海蒂·拉玛的代办事项</h1>
+      <h1>海蒂·拉玛的待办事项</h1>
       <img 
         src="https://i.imgur.com/yXOvdOSs.jpg" 
         alt="Hedy Lamarr" 
