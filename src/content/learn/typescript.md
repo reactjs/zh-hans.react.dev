@@ -5,7 +5,7 @@ re: https://github.com/reactjs/react.dev/issues/5960
 
 <Intro>
 
-TypeScript 是一种流行的方式，用于为 JavaScript 代码库添加类型定义。开箱即用，TypeScript 支持 JSX，只需在项目中添加 [`@types/react`](https://www.npmjs.com/package/@types/react) 和 [`@types/react-dom`](https://www.npmjs.com/package/@types/react-dom) 即可获得完整的 React Web 支持。
+TypeScript 是一种向 JavaScript 代码添加类型定义的常用方法。TypeScript 天然支持 JSX——只需在项目中添加 [`@types/react`](https://www.npmjs.com/package/@types/react) 和 [`@types/react-dom`](https://www.npmjs.com/package/@types/react-dom) 即可获得完整的 React Web 支持。
 
 </Intro>
 
@@ -20,12 +20,12 @@ TypeScript 是一种流行的方式，用于为 JavaScript 代码库添加类型
 
 ## 安装 {/*installation*/}
 
-所有的 [生产级 React 框架](https://react-dev-git-fork-orta-typescriptpage-fbopensource.vercel.app/learn/start-a-new-react-project#production-grade-react-frameworks)都支持使用 TypeScript。请按照框架特定的指南进行安装：
+所有的 [生产级 React 框架](https://react-dev-git-fork-orta-typescriptpage-fbopensource.vercel.app/learn/start-a-new-react-project#production-grade-react-frameworks) 都支持使用 TypeScript。请按照框架特定的指南进行安装：
 
-* [Next.js](https://nextjs.org/docs/pages/building-your-application/configuring/typescript)
-* [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
-* [Gatsby](https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/)
-* [Expo](https://docs.expo.dev/guides/typescript/)
+- [Next.js](https://nextjs.org/docs/pages/building-your-application/configuring/typescript)
+- [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
+- [Gatsby](https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/)
+- [Expo](https://docs.expo.dev/guides/typescript/)
 
 ### 在现有的 React 项目中添加 TypeScrip {/*adding-typescript-to-an-existing-react-project*/}
 
@@ -450,7 +450,7 @@ interface MyComponentProps {
 ## 更多学习资源 {/*further-learning*/}
 
 本指南已经介绍了如何在 React 中使用 TypeScript 的基础知识，但还有更多内容等待学习。官网中的单个 API 页面或许包含了如何与 TypeScript 一起使用它们的更深入的说明。
-
+文档中的各个 API 页面可能会包含更深入的说明，介绍如何在 TypeScript 中使用它们。
 
 我们推荐以下资源：
 
