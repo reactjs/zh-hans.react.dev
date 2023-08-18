@@ -27,17 +27,17 @@ TypeScript 是一种向 JavaScript 代码添加类型定义的常用方法。Typ
 - [Gatsby](https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/)
 - [Expo](https://docs.expo.dev/guides/typescript/)
 
-### 在现有的 React 项目中添加 TypeScrip {/*adding-typescript-to-an-existing-react-project*/}
+### 在现有 React 项目中添加 TypeScript {/*adding-typescript-to-an-existing-react-project*/}
 
-要安装 React 的最新版本的类型定义：
+使用下面命令安装最新版本的 React 类型定义：
 
 <TerminalBlock>
 npm install @types/react @types/react-dom
 </TerminalBlock>
 
-你需要在 `tsconfig.json` 中设置以下编译器选项：
+然后在 `tsconfig.json` 中设置以下编译器选项：
 
-1. 必须在 [`lib`](https://www.typescriptlang.org/tsconfig/#lib) 中包含 `dom`（注意：如果没有指定 lib 选项，默认情况下会包含 dom）。
+1. 必须在 [`lib`](https://www.typescriptlang.org/tsconfig/#lib) 中包含 `dom`（注意：如果没有指定 `lib` 选项，默认情况下会包含 `dom`）。
 1. [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) 必须设置为一个有效的选项。对于大多数应用程序，`preserve` 应该足够了。
 如果你正在发布一个库，请查阅 [`jsx` 文档](https://www.typescriptlang.org/tsconfig/#jsx) 以选择合适的值。
 
@@ -51,7 +51,7 @@ npm install @types/react @types/react-dom
 
 使用 TypeScript 编写 React 与使用 JavaScript 编写 React 非常相似。与组件一起工作时的关键区别是，你可以为组件的 props 提供类型。这些类型可用于正确性检查，并在编辑器中提供内联文档。
 
-以 快速入门 指南中的 [`MyButton` 组件](/learn#components) 为例，我们可以为按钮的 `title` 添加一个描述类型：
+以 [快速入门](/learn) 指南中的 [`MyButton` 组件](/learn#components) 为例，我们可以为按钮的 `title` 添加一个描述类型：
 
 <Sandpack>
 
@@ -119,7 +119,7 @@ export default App = AppTSX;
 
 </Sandpack>
 
-描述组件的 props 的类型可以根据你的需要简单或复杂，但它们应该是用 `type` 或 `interface` 描述的对象类型。你可以在 [对象类型](https://www.typescriptlang.org/docs/handbook/2/objects.html) 中了解 TypeScript 如何描述对象，但你可能还对使用 [联合类型](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) 描述可以是几种不同类型之一的 prop 以及 [从类型创建类型](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html) 指南进行更高级的用例感兴趣。
+描述组件 props 的类型可以根据需要变得简单或复杂，但它们应该是使用 `type` 或 `interface` 描述的对象类型。你可以在 [对象类型](https://www.typescriptlang.org/docs/handbook/2/objects.html) 中了解 TypeScript 如何描述对象，但你可能还对使用 [联合类型](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) 描述可以是几种不同类型之一的 prop，以及在 [从类型创建类型](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html) 指南中参考更高级的用例。
 
 
 ## Hooks 示例 {/*example-hooks*/}
@@ -137,14 +137,14 @@ export default App = AppTSX;
 const [enabled, setEnabled] = useState(false);
 ```
 
-这将为 `enabled` 分配 `boolean` 类型，而 `setEnabled` 将是一个接受 `boolean` 参数的函数，或者返回 `boolean` 的函数。如果你想为状态显式提供一个类型，你可以通过为 `useState` 调用提供一个类型参数来实现：
+这将为 `enabled` 分配 `boolean` 类型，而 `setEnabled` 将是一个接受 `boolean` 参数的函数，或者返回 `boolean` 的函数。如果你想为 state 显式提供一个类型，你可以通过为 `useState` 调用提供一个类型参数来实现：
 
 ```ts
 // 显式设置类型为 "boolean"
 const [enabled, setEnabled] = useState<boolean>(false);
 ```
 
-在这种情况下，这并不是很有用，但是当你有一个联合类型时，你可能想要提供一个类型。例如，这里的 `status` 可以是几个不同的字符串之一：
+在这种情况下，这并不是很有用，但是当你有一个联合类型时，你可能想要提供一个 `type`。例如，这里的 `status` 可以是几个不同的字符串之一：
 
 ```ts
 type Status = "idle" | "loading" | "success" | "error";
@@ -152,7 +152,7 @@ type Status = "idle" | "loading" | "success" | "error";
 const [status, setStatus] = useState<Status>("idle");
 ```
 
-或者，如 [选择状态结构的原则](/learn/choosing-the-state-structure#principles-for-structuring-state)中推荐的，你可以将相关的状态作为一个对象分组，并通过对象类型描述不同的可能性：
+或者，如 [选择 state 结构原则](/learn/choosing-the-state-structure#principles-for-structuring-state) 中推荐的，你可以将相关的 state 作为一个对象分组，并通过对象类型描述不同的可能性：
 
 ```ts
 type RequestState =
@@ -166,8 +166,8 @@ const [requestState, setRequestState] = useState<RequestState>({ status: 'idle' 
 
 ### `useReducer` {/*typing-usereducer*/}
 
-[`useReducer` hook](/reference/react/useReducer) 是一个更复杂的 hook，它接受一个 reducer 函数和一个初始状态。从初始状态推断出 reducer 函数的类型。你可以选择性地为 `useReducer` 调用提供一个类型参数来为状态提供一个类型，但最好是在初始状态上设置类型：
-
+[`useReducer` hook](/reference/react/useReducer) 是一个更复杂的 hook，它接受一个 reducer 函数和一个初始 state，它将从初始 state 推断出 reducer 函数的类型。你可以选择性地为 `useReducer` 调用提供一个类型参数来为 state 提供一个类型，但最好是在初始 state 上设置类型：
+ 
 <Sandpack>
 
 ```tsx App.tsx active
