@@ -75,7 +75,6 @@ export default function MyApp() {
 import AppTSX from "./App.tsx";
 export default App = AppTSX;
 ```
-
 </Sandpack>
 
  <Note>
@@ -223,10 +222,10 @@ export default App = AppTSX;
 
 我们在几个关键位置使用了 TypeScript：
 
-* `interface State` 描述了 reducer 的状态的形状。
-* `type CounterAction` 描述了可以分派给 reducer 的不同操作。
-* `const initialState: State` 为初始状态提供了一个类型，并且也是 `useReducer` 默认使用的类型。
-* `stateReducer(state: State, action: CounterAction): State` 设置了 reducer 函数参数和返回值的类型。
+- `interface State` 描述了 reducer 的状态的形状。
+- `type CounterAction` 描述了可以分派给 reducer 的不同操作。
+- `const initialState: State` 为初始状态提供了一个类型，并且也是 `useReducer` 默认使用的类型。
+- `stateReducer(state: State, action: CounterAction): State` 设置了 reducer 函数参数和返回值的类型。
 
 为 `useReducer` 提供类型参数的更明确的替代方法是在 `initialState` 上设置类型：
 
