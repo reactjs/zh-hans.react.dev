@@ -38,7 +38,8 @@ npm install @types/react @types/react-dom
 你需要在 `tsconfig.json` 中设置以下编译器选项：
 
 1. 必须在 [`lib`](https://www.typescriptlang.org/tsconfig/#lib) 中包含 `dom`（注意：如果没有指定 lib 选项，默认情况下会包含 dom）。
-2. [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) 必须设置为一个有效的选项。对于大多数应用程序，`preserve` 应该足够了。如果你正在发布一个库，请查阅 [`jsx` 文档](https://www.typescriptlang.org/tsconfig/#jsx) 以选择合适的值。
+1. [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) 必须设置为一个有效的选项。对于大多数应用程序，`preserve` 应该足够了。
+如果你正在发布一个库，请查阅 [`jsx` 文档](https://www.typescriptlang.org/tsconfig/#jsx) 以选择合适的值。
 
 ## 在 React 组件中使用 TypeScript {/*typescript-with-react-components*/}
 
