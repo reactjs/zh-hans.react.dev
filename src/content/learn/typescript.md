@@ -167,7 +167,7 @@ const [requestState, setRequestState] = useState<RequestState>({ status: 'idle' 
 ### `useReducer` {/*typing-usereducer*/}
 
 [`useReducer` hook](/reference/react/useReducer) 是一个更复杂的 hook，它接受一个 reducer 函数和一个初始 state，它将从初始 state 推断出 reducer 函数的类型。你可以选择性地为 `useReducer` 调用提供一个类型参数来为 state 提供一个类型，但最好是在初始 state 上设置类型：
- 
+
 <Sandpack>
 
 ```tsx App.tsx active
