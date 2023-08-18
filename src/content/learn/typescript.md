@@ -460,4 +460,4 @@ interface MyComponentProps {
 
  - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/) 是一个社区维护的速查表，用于使用 TypeScript 与 React，涵盖了许多有用的边缘情况，并提供了比本文更广泛的内容。
 
- - [TypeScript Community Discord](discord.com/invite/typescript) 是一个提问和获取 TypeScript 和 React 问题帮助的好地方。
+ - [TypeScript Community Discord](https://discord.com/invite/typescript) 是一个提问和获取 TypeScript 和 React 问题帮助的好地方。
