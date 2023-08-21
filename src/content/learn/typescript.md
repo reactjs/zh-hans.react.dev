@@ -407,7 +407,7 @@ export default App = AppTSX;
 
 </Sandpack>
 
-React 类型中提供了许多事件类型 —— 完整列表可以在 [这里](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/b580df54c0819ec9df62b0835a315dd48b8594a9/types/react/index.d.ts#L1247C1-L1373) 查看，它基于 [DOM 的常用事件](https://developer.mozilla.org/en-US/docs/Web/Events)。
+React 类型中提供了许多事件类型 —— 完整列表可以在 [这里](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/b580df54c0819ec9df62b0835a315dd48b8594a9/types/react/index.d.ts#L1247C1-L1373) 查看，它基于 [DOM 的常用事件](https://developer.mozilla.org/zh-CN/docs/Web/Events)。
 
 当你需要确定某个类型时，可以先将鼠标悬停在你使用的事件处理器上，这样可以查看到事件的具体类型。
 
