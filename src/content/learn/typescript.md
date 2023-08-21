@@ -166,7 +166,7 @@ const [requestState, setRequestState] = useState<RequestState>({ status: 'idle' 
 
 ### `useReducer` {/*typing-usereducer*/}
 
-[`useReducer` hook](/reference/react/useReducer) 是一个更复杂的 hook，它接受一个 reducer 函数和一个初始 state，它将从初始 state 推断出 reducer 函数的类型。你可以选择性地为 `useReducer` 调用提供一个类型参数来为 state 提供一个类型，但最好是在初始 state 上设置类型：
+[`useReducer`](/reference/react/useReducer) 是一个更复杂的 hook，它接受一个 reducer 函数和一个初始 state 作为参数，并将从初始 state 推断出 reducer 函数的类型。你可以选择性地为 `useReducer` 提供类型参数以为 state 提供类型。但是更高的做法仍然是在初始 state 上添加类型：
 
 <Sandpack>
 
@@ -223,9 +223,9 @@ export default App = AppTSX;
 
 我们在几个关键位置使用了 TypeScript：
 
-- `interface State` 描述了 reducer 的状态的形状。
-- `type CounterAction` 描述了可以分派给 reducer 的不同操作。
-- `const initialState: State` 为初始状态提供了一个类型，并且也是 `useReducer` 默认使用的类型。
+- `interface State` 描述了 reducer state 的类型。
+- `type CounterAction` 描述了可以 dispatch 至 reducer 的不同 action。
+- `const initialState: State` 为初始 state 提供类型，并且也将成为 `useReducer` 默认使用的类型。
 - `stateReducer(state: State, action: CounterAction): State` 设置了 reducer 函数参数和返回值的类型。
 
 为 `useReducer` 提供类型参数的更明确的替代方法是在 `initialState` 上设置类型：
@@ -242,9 +242,9 @@ export default function App() {
 
 ### `useContext` {/*typing-usecontext*/}
 
-[`useContext` hook](/reference/react/useContext) 是一种在组件树中传递数据的技术，无需通过组件传递 props。它是通过创建一个provider组件来使用的，通常还会创建一个 hook 来在子组件中使用该值。
+[`useContext`](/reference/react/useContext) 是一种无需通过组件传递 props 而可以直接在组件树中传递数据的技术。它是通过创建 provider 组件使用，通常还会创建一个 hook 以在子组件中使用该值。
 
-从传递给 `createContext` 调用的值推断出上下文提供的值的类型：
+从传递给 `createContext` 调用的值推断 context 提供的值的类型：
 
 <Sandpack>
 
@@ -271,7 +271,7 @@ function MyComponent() {
 
   return (
     <div>
-      <p>当前主题： {theme}</p>
+      <p>当前主题：{theme}</p>
     </div>
   )
 }
@@ -299,7 +299,7 @@ type ComplexObject = {
 // 上下文在类型中创建为 `| null`，以准确反映默认值。
 const Context = createContext<ComplexObject | null>(null);
 
-// 这个 hook 会在运行时检查上下文是否存在，并在不存在时抛出一个错误。
+// 这个 hook 会在运行时检查 context 是否存在，并在不存在时抛出一个错误。
 const useGetComplexObject = () => {
   const object = useContext(Context);
   if (!object) { throw new Error("useGetComplexObject must be used within a Provider") }
@@ -329,7 +329,7 @@ function MyComponent() {
 
 ### `useMemo` {/*typing-usememo*/}
 
-[`useMemo`](/reference/react/useMemo) hooks 会从函数调用中创建/重新访问一个记忆化的值，只有当作为第二个参数传递的依赖项发生变化时，才会重新运行该函数。从第一个参数中的函数的返回值推断出调用 hooks 的结果。你可以通过为 hooks 提供类型参数来更明确地指定。
+[`useMemo`](/reference/react/useMemo) 会从函数调用中创建/重新访问记忆化值，只有在第二个参数中传入的依赖项发生变化时，才会重新运行该函数。函数的类型是根据第一个参数中函数的返回值进行推断的，如果希望明确指定，可以为这个钩子提供一个类型参数以指定函数类型。
 
 ```ts
 // 从 filterTodos 的返回值推断 visibleTodos 的类型
@@ -339,7 +339,7 @@ const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
 
 ### `useCallback` {/*typing-usecallback*/}
 
-[`useCallback`](/reference/react/useCallback) 只要传递到第二个参数的依赖项保持不变，就会提供对函数的稳定引用。像 `useMemo` 一样，函数的类型是从第一个参数中的函数的返回值推断的，你可以通过为 hook 提供类型参数来更明确地指定。
+[`useCallback`](/reference/react/useCallback) 会在第二个参数中传入的依赖项保持不变的情况下，为函数提供相同的引用。与 `useMemo` 类似，函数的类型是根据第一个参数中函数的返回值进行推断的，如果希望明确指定，可以为这个钩子提供一个类型参数以指定函数类型。
 
 
 ```ts
@@ -348,9 +348,9 @@ const handleClick = useCallback(() => {
 }, [todos]);
 ```
 
-当在 TypeScript 严格模式下工作时，`useCallback` 需要为回调中的参数添加类型。这是因为回调的类型是从函数的返回值推断的，没有参数，类型就不能完全理解。
+当在 TypeScript 严格模式下，使用 `useCallback` 需要为回调函数中的参数添加类型注解。这是因为回调函数的类型是根据函数的返回值进行推断的——如果没有参数，那么类型就不能完全理解。
 
-取决于你的代码风格偏好，你可以使用 React 类型中的 `*EventHandler` 函数在定义回调的同时为事件处理程序提供类型：
+根据自身的代码风格偏好，你可以使用 React 类型中的 `*EventHandler` 函数以在定义回调函数的同时为事件处理程序提供类型注解：
 
 ```ts
 import { useState, useCallback } from 'react';
@@ -373,9 +373,9 @@ export default function Form() {
 
 ## 常用类型 {/*useful-types*/}
 
-当你逐渐适应 React 和 TypeScript的搭配使用后, 可以去尝试阅读 `@types/react` ，此库提供了一整套类型。你可以在 [DefinitelyTyped 的 React 目录中](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts) 找到它们。我们将在这里介绍一些更常见的类型。
+当逐渐适应 React 和 TypeScript 的搭配使用后, 可以尝试阅读 `@types/react`，此库提供了一整套类型。你可以在 [DefinitelyTyped 的 React 目录中](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts) 找到它们。我们将在这里介绍一些更常见的类型。
 
-### DOM Events {/*typing-dom-events*/}
+### DOM 事件 {/*typing-dom-events*/}
 
 在 React 中处理 DOM 事件时，事件的类型通常可以从事件处理程序中推断出来。但是，当你想提取一个函数以传递给事件处理程序时，你需要明确设置事件的类型。
 
@@ -407,7 +407,7 @@ export default App = AppTSX;
 
 </Sandpack>
 
-React 类型中提供了许多事件类型 - 完整的列表可以在 [这里](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/b580df54c0819ec9df62b0835a315dd48b8594a9/types/react/index.d.ts#L1247C1-L1373)找到，它是 [基于 DOM 的最流行事件](https://developer.mozilla.org/en-US/docs/Web/Events)。
+React 类型中提供了许多事件类型 —— 完整列表可以在 [这里](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/b580df54c0819ec9df62b0835a315dd48b8594a9/types/react/index.d.ts#L1247C1-L1373) 查看，它基于 [DOM 的常用事件](https://developer.mozilla.org/en-US/docs/Web/Events)。
 
 当你需要确定某个类型时，可以先将鼠标悬停在你使用的事件处理器上，这样可以查看到事件的具体类型。
 
@@ -415,7 +415,7 @@ React 类型中提供了许多事件类型 - 完整的列表可以在 [这里](h
 
 ### 子元素 {/*typing-children*/}
 
-描述组件的子元素有两种常见的方法。第一种是使用 `React.ReactNode` 类型，这是可以在 JSX 中作为子元素传递的所有可能类型的并集：
+描述组件的子元素有两种常见方法。第一种是使用 `React.ReactNode` 类型，这是可以在 JSX 中作为子元素传递的所有可能类型的并集：
 
 ```ts
 interface ModalRendererProps {
@@ -424,7 +424,7 @@ interface ModalRendererProps {
 }
 ```
 
-这是对子元素的一个非常宽泛的定义。第二种方法是使用 `React.ReactElement` 类型，这只是 JSX 元素，而不是 JavaScript 原始类型，如 string 或 number：
+这是对子元素的一个非常宽泛的定义。第二种方法是使用 `React.ReactElement` 类型，它只包括 JSX 元素，而不包括 JavaScript 原始类型，如 string 或 number：
 
 ```ts
 interface ModalRendererProps {
@@ -435,7 +435,7 @@ interface ModalRendererProps {
 
 注意，你不能使用 TypeScript 来描述子元素是某种类型的 JSX 元素，所以你不能使用类型系统来描述一个只接受 `<li>` 子元素的组件。
 
-你可以在这个 [TypeScript playground](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnN9Dilq+nh8pD8AXgCHdMrCkWisVoAet0R6fXqhWKhjKllZVVxMcavpd4Zg7U6Qaj+2hmdG4zeRF10uu-Aeq0LBfLMEe-V+T2L7zLVu+FBWLdLeq+lc7DYFf39deFVOotMCACNOCh1dq219a+30uC8YWoZsRyuEdjkevR8uvoVMdjyTWt4WiSSydXD4NqZP4AymeZE072ZzuUeZQKheQgA)中查看 `React.ReactNode` 和 `React.ReactElement` 的示例，并使用类型检查器进行验证。
+你可以在这个 [TypeScript playground](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnN9Dilq+nh8pD8AXgCHdMrCkWisVoAet0R6fXqhWKhjKllZVVxMcavpd4Zg7U6Qaj+2hmdG4zeRF10uu-Aeq0LBfLMEe-V+T2L7zLVu+FBWLdLeq+lc7DYFf39deFVOotMCACNOCh1dq219a+30uC8YWoZsRyuEdjkevR8uvoVMdjyTWt4WiSSydXD4NqZP4AymeZE072ZzuUeZQKheQgA) 中查看 `React.ReactNode` 和 `React.ReactElement` 的示例，并使用类型检查器进行验证。
 
 ### 样式属性 {/*typing-style-props*/}
 
