@@ -424,7 +424,7 @@ interface ModalRendererProps {
 }
 ```
 
-这是对子元素的一个非常宽泛的定义。第二种方法是使用 `React.ReactElement` 类型，这只是 JSX 元素，而不是 JavaScript 原始类型，如字符串或数字：
+这是对子元素的一个非常宽泛的定义。第二种方法是使用 `React.ReactElement` 类型，这只是 JSX 元素，而不是 JavaScript 原始类型，如 string 或 number：
 
 ```ts
 interface ModalRendererProps {
