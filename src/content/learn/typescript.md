@@ -130,7 +130,7 @@ export default App = AppTSX;
 
 ### `useState` {/*typing-usestate*/}
 
-[`useState` hook](/reference/react/useState) 会重用作为初始状态传入的值来确定值的类型应该是什么。例如：
+[`useState` hook](/reference/react/useState) 会重用作为初始 state 传入的值以确定值的类型。例如：
 
 ```ts
 // 推断类型为 "boolean"
