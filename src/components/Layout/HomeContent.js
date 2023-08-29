@@ -168,7 +168,7 @@ export function HomeContent() {
           <Center>
             <Para>
               无论你是独自工作还是与成千上万的其他开发人员合作，使用 React
-              的感觉都是相同的。它旨在让你轻松地组合由独立个人、团队或组织编写的组件。
+              的感觉都是相同的。它旨在让你轻松地组合由独立开发者、团队或组织编写的组件。
             </Para>
           </Center>
         </Section>
@@ -189,8 +189,9 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              这种标签语法称为 JSX。它是由 React 推广的 JavaScript 语法扩展。将
-              JSX 标签与相关的渲染逻辑放在一起，使得创建、维护和删除 React
+              这种标签语法被称为 JSX。它是由 React 推广的 JavaScript
+              语法扩展。将 JSX
+              标签与相关的渲染逻辑放在一起，使得创建、维护和删除 React
               组件变得容易。
             </Para>
           </Center>
@@ -286,7 +287,7 @@ export function HomeContent() {
                         可以让你在获取数据的同时开始流式传输 HTML，在任何
                         JavaScript
                         代码加载之前逐步填充剩余内容。在客户端，即使是在渲染过程中，React
-                        可以使用标准的 Web API 使 UI 能够快速响应。
+                        也会使用标准的 Web API 使 UI 快速响应。
                       </p>
                     </div>
                   </div>
