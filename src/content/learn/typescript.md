@@ -454,10 +454,10 @@ interface MyComponentProps {
 
 我们推荐以下资源：
 
- - [TypeScript 官方文档](https://www.typescriptlang.org/docs/handbook/)，涵盖了大多数关键的语言特性。
+ - [TypeScript 官方文档](https://www.typescriptlang.org/docs/handbook/) 涵盖了大多数关键的语言特性。
 
- - [The TypeScript 发布笔记](https://devblogs.microsoft.com/typescript/) 深入介绍了每一个新特性。
+ - [TypeScript 发布笔记](https://devblogs.microsoft.com/typescript/) 深入介绍了每一个新特性。
 
- - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/) 是一个社区维护的速查表，用于使用 TypeScript 与 React，涵盖了许多有用的边缘情况，并提供了比本文更广泛的内容。
+ - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/) 是一个社区维护的，用于在 React 中使用 TypeScript 的速查表，涵盖了许多有用的边界情况，并提供了比本文更广泛全面的内容。
 
- - [TypeScript Community Discord](https://discord.com/invite/typescript) 是一个提问和获取 TypeScript 和 React 问题帮助的好地方。
+ - [TypeScript Community Discord](https://discord.com/invite/typescript) 是一个提问并获得有关 TypeScript 和 React issues 帮助的好地方。
