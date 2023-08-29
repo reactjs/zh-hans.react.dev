@@ -135,7 +135,7 @@ function Form() {
 
 请记住，将组件内部的 ref 暴露给 DOM 节点会使得在稍后更改组件内部更加困难。通常，你会将 DOM 节点从可重用的低级组件中暴露出来，例如按钮或文本输入框，但不会在应用程序级别的组件中这样做，例如头像或评论。
 
-<Recipes title="Examples of forwarding a ref">
+<Recipes titleText="Examples of forwarding a ref">
 
 #### 聚焦文本输入框 {/*focusing-a-text-input*/}
 

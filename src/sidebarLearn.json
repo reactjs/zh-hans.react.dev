@@ -25,7 +25,7 @@
       "path": "/learn/installation",
       "routes": [
         {
-          "title": "开始一个新的项目",
+          "title": "启动一个新的 React 项目",
           "path": "/learn/start-a-new-react-project"
         },
         {
@@ -37,7 +37,11 @@
           "path": "/learn/editor-setup"
         },
         {
-          "title": "React 开发工具",
+          "title": "使用 TypeScript",
+          "path": "/learn/typescript"
+        },
+        {
+          "title": "React 开发者工具",
           "path": "/learn/react-developer-tools"
         }
       ]
@@ -56,11 +60,11 @@
           "path": "/learn/your-first-component"
         },
         {
-          "title": "导入和导出组件",
+          "title": "组件的导入与导出",
           "path": "/learn/importing-and-exporting-components"
         },
         {
-          "title": "使用 JSX 标签",
+          "title": "使用 JSX 书写标签语言",
           "path": "/learn/writing-markup-with-jsx"
         },
         {
@@ -156,7 +160,7 @@
       ]
     },
     {
-      "title": "逃脱方案",
+      "title": "应急方案",
       "path": "/learn/escape-hatches",
       "tags": ["advanced"],
       "routes": [
@@ -169,7 +173,7 @@
           "path": "/learn/manipulating-the-dom-with-refs"
         },
         {
-          "title": "Synchronizing with Effects",
+          "title": "使用 Effect 同步",
           "path": "/learn/synchronizing-with-effects"
         },
         {
@@ -177,7 +181,7 @@
           "path": "/learn/you-might-not-need-an-effect"
         },
         {
-          "title": "Lifecycle of Reactive Effects",
+          "title": "响应式 Effect 的生命周期",
           "path": "/learn/lifecycle-of-reactive-effects"
         },
         {
@@ -185,11 +189,11 @@
           "path": "/learn/separating-events-from-effects"
         },
         {
-          "title": "Removing Effect Dependencies",
+          "title": "移除 Effect 依赖",
           "path": "/learn/removing-effect-dependencies"
         },
         {
-          "title": "Reusing Logic with Custom Hooks",
+          "title": "使用自定义 Hook 复用逻辑",
           "path": "/learn/reusing-logic-with-custom-hooks"
         }
       ]

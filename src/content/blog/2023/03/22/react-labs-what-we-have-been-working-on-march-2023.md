@@ -8,23 +8,23 @@ title: "React Labs：我们正在努力的方向——2023 年 3 月"
 
 <Intro>
 
-在 React Labs 的文章中，我们讲述了正在进行研究和开发的项目。自 [上次更新](https://react.dev/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022) 以来，我们在 React 服务器组件、资产加载、优化编译器、离屏渲染和过渡追踪方面取得了重要进展，并希望分享我们所学到的知识。
+在 React Labs 的文章中，我们讲述了正在进行研究和开发的项目。自 [上次更新](https://react.dev/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022) 以来，我们在 React 服务端组件、资产加载、优化编译器、离屏渲染和过渡追踪方面取得了重要进展，并希望分享我们所学到的知识。
 
 </Intro>
 
 ---
 
-## React 服务器组件 {/*react-server-components*/}
+## React 服务端组件 {/*react-server-components*/}
 
-React 服务器组件（React Server Components，简称 RSC）是由 React 团队设计的新的应用架构。
+React 服务端组件（React Server Components，简称 RSC）是由 React 团队设计的新的应用架构。
 
-我们之前在 [introductory talk](/blog/2020/12/21/data-fetching-with-react-server-components) 与 [RFC](https://github.com/reactjs/rfcs/pull/188) 中分享了有关 RSC 的研究。之前我们提到，我们引入了一种新的组件类型——服务器组件。服务器组件会提前运行，并在打包时被排除在外。服务器组件也可以在构建期间运行，并允许你从文件系统中读取或提取静态内容。它们也可以在服务器上运行，让你可以访问数据层而不必构建 API。你可以通过 props 将数据从服务器组件传递到浏览器中的交互式客户端组件中。
+我们之前在 [introductory talk](/blog/2020/12/21/data-fetching-with-react-server-components) 与 [RFC](https://github.com/reactjs/rfcs/pull/188) 中分享了有关 RSC 的研究。之前我们提到，我们引入了一种新的组件类型——服务端组件。服务端组件会提前运行，并在打包时被排除在外。服务端组件也可以在构建期间运行，并允许你从文件系统中读取或提取静态内容。它们也可以在服务器上运行，让你可以访问数据层而不必构建 API。你可以通过 props 将数据从服务端组件传递到浏览器中的交互式客户端组件中。
 
 RSC 将面向服务器的多页面应用程序的简单“请求/响应”思维模型与面向客户端的单页面应用程序的无缝交互性相结合，为你提供了两者的最佳结合。
 
 自上次更新以来，我们已将 [RFC](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md) 合并以批准提案。我们解决了 [React 服务器模块约定](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md) 提案中未解决的问题，并与我们的合作伙伴达成共识，采用 `use client` 协定。这些文件还作为符合 RSC 兼容实现应支持的规范。
 
-最大的变化是我们引入了 [`async` / `await`](https://github.com/reactjs/rfcs/pull/229) 作为从服务器组件中进行数据提取的主要方式。我们还计划通过引入一个名为 `use` 的新钩子，从客户端支持数据加载，该钩子也将取消 Promises。虽然我们不能在仅限客户端的应用程序中的任意组件中支持 `async / await`，但我们计划在将客户端仅应用程序结构化类似于 RSC 应用程序的方式时添加支持。
+最大的变化是我们引入了 [`async` / `await`](https://github.com/reactjs/rfcs/pull/229) 作为从服务端组件中进行数据提取的主要方式。我们还计划通过引入一个名为 `use` 的新钩子，从客户端支持数据加载，该钩子也将取消 Promises。虽然我们不能在仅限客户端的应用程序中的任意组件中支持 `async / await`，但我们计划在将客户端仅应用程序结构化类似于 RSC 应用程序的方式时添加支持。
 
 现在我们已经相当好地解决了数据提取的问题，我们正在探索另一个方向：从客户端向服务器发送数据，以便可以执行数据库变更和实现表单。我们通过在服务器/客户端边界传递 Server Action 函数来实现这一点。客户端可以调用该函数，提供无缝 RPC。而在 JavaScript 加载之前，Server Action 还可以提供逐步增强的表单。
 
@@ -94,7 +94,7 @@ React 的核心思想是开发人员将其 UI 定义为当前状态的函数。�
 * * *
 除了这个更新，我们的团队最近还在社区播客和直播中客串，更多地讲述我们的工作并回答问题。
 
-* [Dan Abramov](https://twitter.com/dan_abramov) 和 [Joe Savona](https://twitter.com/en_JS) 在 [Kent C. Dodds 的 YouTube 频道](https://www.youtube.com/watch?v=h7tur48JSaw) 上接受了采访，讨论了关于 React 服务器组件的问题。
+* [Dan Abramov](https://twitter.com/dan_abramov) 和 [Joe Savona](https://twitter.com/en_JS) 在 [Kent C. Dodds 的 YouTube 频道](https://www.youtube.com/watch?v=h7tur48JSaw) 上接受了采访，讨论了关于 React 服务端组件的问题。
 * [Dan Abramov](https://twitter.com/dan_abramov) 和 [Joe Savona](https://twitter.com/en_JS) 在 [JSParty podcast](https://jsparty.fm/267) 上作为嘉宾，分享了他们对 React 未来的看法。
 
 感谢 [Andrew Clark](https://twitter.com/acdlite)、[Dan Abramov](https://twitter.com/dan_abramov)、[Dave McCabe](https://twitter.com/mcc_abe)、[Luna Wei](https://twitter.com/lunaleaps)、[Matt Carroll](https://twitter.com/mattcarrollcode)、[Sean Keegan](https://twitter.com/DevRelSean)、[Sebastian Silbermann](https://twitter.com/sebsilbermann)、[Seth Webster](https://twitter.com/sethwebster) 和 [Sophie Alpert](https://twitter.com/sophiebits) 对本篇文章进行审查。

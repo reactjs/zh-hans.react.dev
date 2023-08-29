@@ -15,7 +15,7 @@ import {useEffect, useRef, useState} from 'react';
 interface ExpandableExampleProps {
   children: React.ReactNode;
   excerpt?: string;
-  type: 'DeepDive' | 'Example';
+  type: '深入探讨' | '示例';
 }
 
 function ExpandableExample({children, excerpt, type}: ExpandableExampleProps) {
@@ -24,8 +24,8 @@ function ExpandableExample({children, excerpt, type}: ExpandableExampleProps) {
       `Expandable content ${type} is missing a corresponding title at the beginning`
     );
   }
-  const isDeepDive = type === 'DeepDive';
-  const isExample = type === 'Example';
+  const isDeepDive = type === '深入探讨';
+  const isExample = type === '示例';
   const id = children[0].props.id;
 
   const {asPath} = useRouter();
@@ -70,13 +70,13 @@ function ExpandableExample({children, excerpt, type}: ExpandableExampleProps) {
           })}>
           {isDeepDive && (
             <>
-              <IconDeepDive className="inline mr-2 dark:text-purple-30 text-purple-40" />
+              <IconDeepDive className="inline me-2 dark:text-purple-30 text-purple-40" />
               深入探讨
             </>
           )}
           {isExample && (
             <>
-              <IconCodeBlock className="inline mr-2 dark:text-yellow-30 text-yellow-50" />
+              <IconCodeBlock className="inline me-2 dark:text-yellow-30 text-yellow-50" />
               示例
             </>
           )}
@@ -98,7 +98,7 @@ function ExpandableExample({children, excerpt, type}: ExpandableExampleProps) {
               isExample,
           })}
           onClick={() => setIsExpanded((current) => !current)}>
-          <span className="mr-1">
+          <span className="me-1">
             <IconChevron displayDirection={isExpanded ? 'up' : 'down'} />
           </span>
           {isExpanded ? '收起' : '显示更多'}

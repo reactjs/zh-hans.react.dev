@@ -12,29 +12,29 @@
       "skipBreadcrumb": true,
       "routes": [
         {
-          "title": "React Canaries: Enabling Incremental Feature Rollout Outside Meta",
-          "titleForHomepage": "React Canaries: Incremental Feature Rollout",
+          "title": "React Canaries：在 Meta 之外逐步推出新功能",
+          "titleForHomepage": "React Canaries：逐步推出新功能",
           "icon": "blog",
           "date": "May 3, 2023",
           "path": "/blog/2023/05/03/react-canaries"
         },
         {
-          "title": "React Labs: What We've Been Working On – March 2023",
-          "titleForHomepage": "React Labs: March 2023",
+          "title": "React Labs：我们正在努力的方向——2023 年 3 月",
+          "titleForHomepage": "React Labs：2023 年 3 月",
           "icon": "labs",
           "date": "March 22, 2023",
           "path": "/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023"
         },
         {
-          "title": "Introducing react.dev",
-          "titleForHomepage": "Introducing react.dev",
+          "title": "介绍 react.dev",
+          "titleForHomepage": "介绍 react.dev",
           "icon": "blog",
           "date": "March 16, 2023",
           "path": "/blog/2023/03/16/introducing-react-dev"
         },
         {
-          "title": "React Labs: What We've Been Working On – June 2022",
-          "titleForHomepage": "React Labs: June 2022",
+          "title": "React Labs：我们正在努力的方向——2022 年 6 月",
+          "titleForHomepage": "React Labs：2022 年 6 月",
           "icon": "labs",
           "date": "June 15, 2022",
           "path": "/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022"
@@ -47,29 +47,29 @@
           "path": "/blog/2022/03/29/react-v18"
         },
         {
-          "title": "How to Upgrade to React 18",
-          "titleForHomepage": "Upgrading to React 18",
+          "title": "如何升级到 React 18",
+          "titleForHomepage": "升级到 React 18",
           "icon": "blog",
           "date": "March 8, 2022",
           "path": "/blog/2022/03/08/react-18-upgrade-guide"
         },
         {
-          "title": "React Conf 2021 Recap",
-          "titleForHomepage": "React Conf 2021 Recap",
+          "title": "回顾 React Conf 2021",
+          "titleForHomepage": "回顾 React Conf 2021",
           "icon": "blog",
           "date": "December 17, 2021",
           "path": "/blog/2021/12/17/react-conf-2021-recap"
         },
         {
-          "title": "The Plan for React 18",
-          "titleForHomepage": "The Plan for React 18",
+          "title": "React 18 的有关计划",
+          "titleForHomepage": "React 18 的有关计划",
           "icon": "blog",
           "date": "June 8, 2021",
           "path": "/blog/2021/06/08/the-plan-for-react-18"
         },
         {
-          "title": "Introducing Server Components",
-          "titleForHomepage": "Introducing Server Components",
+          "title": "介绍服务端组件",
+          "titleForHomepage": "介绍服务端组件",
           "icon": "labs",
           "date": "December 21, 2020",
           "path": "/blog/2020/12/21/data-fetching-with-react-server-components"

@@ -44,14 +44,14 @@ title: "<textarea>"
 
 以下 `<textarea>` 属性均可用于受控与非受控组件：
 
-* [`autoComplete`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-autocomplete)：可以为 `'on'` 或 `'off'`，表示自动完成的行为。
-* [`autoFocus`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-autofocus)：布尔值。如果为 `true`，React 将在挂载时聚焦该元素。
+* [`autoComplete`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#autocomplete)：可以为 `'on'` 或 `'off'`，表示自动完成的行为。
+* [`autoFocus`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#autofocus)：布尔值。如果为 `true`，React 将在挂载时聚焦该元素。
 * `children`：`<textarea>` 不接受子元素，如果要设置初始值，请使用 `defaultValue`。
-* [`cols`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-cols)：数字，表示默认宽度，以平均字符宽度计算。默认为 `20`。
-* [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-disabled)：布尔值。如果为 `true`，则输入框将不可交互且显示为禁用状态（dimmed）。
-* [`form`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-form)：字符串，表示此文本框所属的 `<form>` 的 `id`。如果未指定，则为最近的父表单。
-* [`maxLength`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-maxlength)：数字，表示文本的最大长度。
-* [`minLength`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-minlength)：数字，表示文本的最小长度。
+* [`cols`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#cols)：数字，表示默认宽度，以平均字符宽度计算。默认为 `20`。
+* [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#disabled)：布尔值。如果为 `true`，则输入框将不可交互且显示为禁用状态（dimmed）。
+* [`form`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#form)：字符串，表示此文本框所属的 `<form>` 的 `id`。如果未指定，则为最近的父表单。
+* [`maxLength`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#maxlength)：数字，表示文本的最大长度。
+* [`minLength`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#minlength)：数字，表示文本的最小长度。
 * [`name`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#name)：字符串，表示在表单提交时与此输入框关联的名称。
 * `onChange`：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。对于 [受控文本框](#controlling-a-text-area-with-a-state-variable)，在用户更改输入值时立即触发（例如，对于每个按键）。此行为类似于浏览器 [`input` 事件](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/input_event)。
 * `onChangeCapture`：与 `onChange` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
@@ -61,11 +61,11 @@ title: "<textarea>"
 * `onInvalidCapture`：与 `onInvalid` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
 * [`onSelect`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLTextAreaElement/select_event)：一个 [`Event` 处理函数](/reference/react-dom/components/common#event-handler)。当 `<textarea>` 的选择内容发生变化后触发。React 扩展了 `onSelect` 事件，还会在空选择和编辑（可能会影响选择）时触发。
 * `onSelectCapture`: 与 `onSelect` 类似，但是是在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发。
-* [`placeholder`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-placeholder)：字符串，表示当文本框的值为空时，以淡色显示的占位符。
-* [`readOnly`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-readonly)：布尔值，如果为 `true`，文本框将无法被用户编辑。
-* [`required`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-required)：布尔值，如果为 `true`，则必须提供值才能在表单中提交。
-* [`rows`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-rows)：数字，表示默认高度，以平均字符高度计算。默认为 `2`。
-* [`wrap`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#attr-wrap)：可以是 `'hard'`、`'soft'` 或 `'off'` 中的一个值，表示提交表单时文本应如何换行。
+* [`placeholder`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#placeholder)：字符串，表示当文本框的值为空时，以淡色显示的占位符。
+* [`readOnly`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#readonly)：布尔值，如果为 `true`，文本框将无法被用户编辑。
+* [`required`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#required)：布尔值，如果为 `true`，则必须提供值才能在表单中提交。
+* [`rows`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#rows)：数字，表示默认高度，以平均字符高度计算。默认为 `2`。
+* [`wrap`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea#wrap)：可以是 `'hard'`、`'soft'` 或 `'off'` 中的一个值，表示提交表单时文本应如何换行。
 
 #### 注意 {/*caveats*/}
 

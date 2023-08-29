@@ -46,6 +46,7 @@ React 将会连接到内部有 `domNode` 的 HTML 上，然后接管其中的 `d
   * **可选**  `onRecoverableError`：当 React 自动从错误中恢复时调用的回调函数。
   * **可选**  `identifierPrefix`：字符串前缀，用于标识由 [`useId`](/reference/react/useId) 生成的 ID ，可以避免在同一页面上使用多个 React 根元素时出现冲突。必须与服务端使用的前缀相同。
 
+
 #### 返回值 {/*returns*/}
 
 `hydrateRoot` 返回一个包含两个方法的对象 [`render`](#root-render) 和 [`unmount`](#root-unmount)。
@@ -75,6 +76,7 @@ React 将会在 hydrate `root` 中更新 `<App />`。
 
 * `reactNode`：你想要更新的 "React 节点"。通常这会是一段JSX代码，例如 `<App />`，但你也可以传递一个通过 [`createElement()`](/reference/react/createElement) 创建的 React 元素，一个字符串，一个数字，`null` 值 或者 `undefined` 值。
 
+
 #### 返回值 {/*root-render-returns*/}
 
 `root.render` 返回 `undefined` 值。
@@ -99,13 +101,15 @@ root.unmount();
 
 调用 `root.unmount` 将卸载根节点中的所有组件，并“分离” React 与根 DOM 节点之间的连接，包括删除树中的任何事件处理程序或状态。
 
+
 #### 参数 {/*root-unmount-parameters*/}
+
 
 `root.unmount` 不接受任何参数。
 
 #### 返回值 {/*root-unmount-returns*/}
 
-`render` 返回 `null` 值。
+`render` 返回 `undefined` 值。
 
 #### 警告 {/*root-unmount-caveats*/}
 
