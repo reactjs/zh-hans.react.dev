@@ -4,7 +4,7 @@ title: <Suspense>
 
 <Intro>
 
-`<Suspense>` 允许你显示一个退路方案（fallback）直到它的子组件完成加载。
+`<Suspense>` 允许在子组件完成加载前展示一个 fallback。
 
 
 ```js
@@ -24,21 +24,21 @@ title: <Suspense>
 ### `<Suspense>` {/*suspense*/}
 
 #### 参数 {/*props*/}
-* `children`：实际的 UI 渲染内容。如果 `children` 在渲染中挂起（suspend），Suspense 边界将切换到渲染 `fallback`。
-* `fallback`：一个在实际的 UI 未渲染完成时代替其渲染的备用 UI。任何有效的 React Node 都被接受，但实际上退路方案（fallback）是一个轻量的占位符，例如加载中图标或者骨架屏。Suspense 将自动切换到 `fallback` 当 `children` 挂起（suspend）时，并在数据就位时切换回`children`。如果 `fallback` 在渲染中挂起（suspend），它将自动激活最近的 Suspense 边界。
+* `children`：真正的 UI 渲染内容。如果 `children` 在渲染中被挂起，Suspense 边界将会渲染 `fallback`。
+* `fallback`：真正的 UI 未渲染完成时代替其渲染的备用 UI，它可以是任何有效的 React 节点。fallback 通常是一个轻量的占位符，例如表示加载中的图标或者骨架屏。当 `children` 被挂起时，Suspense 将自动切换至渲染 `fallback`；当数据准备好时，又会自动切换至渲染 `children`。如果 `fallback` 在渲染中被挂起，那么将自动激活最近的 Suspense 边界。
 
-#### 注意事项 {/*caveats*/}
+#### 注意 {/*caveats*/}
 
-- React 不会保留任何在首次挂载前被挂起（suspend）的渲染的任何状态。当组件完成加载后，React 将从头开始重新尝试渲染挂起（suspend）的组件树。
-- 如果 Suspense 正在显示 React 组件树中的内容，但是被再次挂起（suspend），`fallback` 将再次显示，除非导致它的更新是由 [`startTransition`](/reference/react/startTransition) 或 [`useDeferredValue`](/reference/react/useDeferredValue) 发起的。
-- 如果 React 因已经可见的内容被再次挂起（suspend）而需要隐藏它，它将清理内容树中的 [layout Effects](/reference/react/useLayoutEffect)。当内容可以被再次展示时，React 将重新触发 `layout Effects`。这确保了测量 DOM 布局的 Effects 不会在内容不可见时运行。
-- React 带有内置的优化，例如 **Streaming Server Rendering** 和 **Selective Hydration**，它们已经与 Suspense 集成。阅读 [架构概述](https://github.com/reactwg/react-18/discussions/37) 并观看 [技术讲座](https://www.youtube.com/watch?v=pj5N-Khihgc) 以了解更多。
+- 在组件首次挂载前，如果组件被挂起，那么 React 将不会保留其任何状态。当组件完成加载后，React 将从头开始重新尝试渲染被挂起的组件树。
+- 如果 Suspense 正在展示 React 组件树中的内容，那么当再次被挂起时，除非导致此处更新是由 [`startTransition`](/reference/react/startTransition) 或 [`useDeferredValue`](/reference/react/useDeferredValue) 引起，否则 Suspense 将展示 `fallback`。
+- 如果 React 需要隐藏被再次挂起的可见内容，它将清理内容树中的 [layout effect](/reference/react/useLayoutEffect)。当内容可以被再次展示时，React 将重新触发 layout effect。这确保了测量 DOM 布局的 effect 不会在内容不可见时运行。
+- React 带有内置优化，例如 **流式服务器渲染（Streaming Server Rendering）** 和 **Selective Hydration**，它们已经与 Suspense 集成。参见 [架构概述](https://github.com/reactwg/react-18/discussions/37) 并观看 [技术讲座](https://www.youtube.com/watch?v=pj5N-Khihgc) 以了解更多。
 
 ---
 
 ## 用法 {/*usage*/}
 
-### 当内容正在加载时显示退路方案（fallback） {/*displaying-a-fallback-while-content-is-loading*/}
+### 当内容正在加载时显示 fallback {/*displaying-a-fallback-while-content-is-loading*/}
 
 你可以使用 Suspense 边界包裹你应用的任何部分：
 
