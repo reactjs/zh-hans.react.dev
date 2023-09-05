@@ -48,9 +48,9 @@ title: <Suspense>
 </Suspense>
 ```
 
-React 将展示你的 <CodeStep step={1}> 退路方案（fallback） </CodeStep> 直到 <CodeStep step={2}> 子组件 </CodeStep> 需要的所有代码和数据都加载完成。
+React 将展示 <CodeStep step={1}> fallback </CodeStep> 直到 <CodeStep step={2}> children </CodeStep> 需要的所有代码和数据都加载完成。
 
-在下面的例子中，`Albums` 组件在获取专辑列表时被 **挂起** 。在它准备好渲染之前，React 切换到最近的 Suspense 边界来显示退路方案（fallback） —— 你的 `Loading` 组件。然后，当数据加载完成时，React 会隐藏 `Loading` 退路方案（fallback）并渲染带有数据的 `Albums` 组件。
+在下面的例子中，`Albums` 组件在获取专辑列表时被 **挂起**。在它准备好渲染前，`Albums` 祖先组件中距离其最近的 Suspense 将展示 fallback —— 即 `Loading` 组件。当数据加载完成时，React 会隐藏 `Loading` fallback 并渲染带有数据的 `Albums` 组件。
 
 <Sandpack>
 
@@ -120,7 +120,7 @@ import { fetchData } from './data.js';
 // 注意：这个组件使用了一个实验性的 API
 // 该 API 并未在 React 的稳定版本中可用
 
-// 对于一个现实的例子，你可以尝试一个
+// 在实际中你可以尝试已经
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
 export default function Albums({ artistId }) {
@@ -252,14 +252,14 @@ async function getAlbums() {
 
 **只有启用了 Suspense 的数据源才会激活 Suspense 组件**，它们包括：
 
-- 使用支持 Suspense 的框架 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/getting-started/react-essentials)。
+- 支持 Suspense 的框架如 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/getting-started/react-essentials)。
 - 使用 [`lazy`](/reference/react/lazy) 懒加载组件代码。
 
 Suspense **无法** 检测在 Effect 或事件处理程序中获取数据的情况。
 
 在上面的 `Albums` 组件中，正确的数据加载方法取决于你使用的框架。如果你使用了支持 Suspense 的框架，你会在其数据获取文档中找到详细信息。
 
-目前还不支持脱离框架使用支持 Suspense 的数据获取。实现支持 Suspense 的数据源的要求是不稳定的，也没有文档。用于将数据源与 Suspense 集成的官方 API 将在未来的 React 版本中发布。
+目前还不支持脱离框架但又使用 Suspense 的数据获取。实现支持 Suspense 的数据源的要求是不稳定的，也没有文档。用于将数据源与 Suspense 集成的官方 API 将在未来的 React 版本中发布。
 
 </Note>
 
