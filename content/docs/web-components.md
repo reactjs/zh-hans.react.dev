@@ -10,7 +10,7 @@ redirect_from:
 
 > 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 >
-> See [Custom HTML elements](https://zh-hans.react.dev/reference/react-dom/components#custom-html-elements) in the new docs.
+> 在新的文档查看 [自定义 HTML 元素](https://zh-hans.react.dev/reference/react-dom/components#custom-html-elements)。
 >
 </div>
 

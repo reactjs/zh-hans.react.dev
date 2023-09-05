@@ -12,7 +12,7 @@ redirect_from:
 
 > 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 >
-> See the [Videos](https://zh-hans.react.dev/community/videos) page on the new site.
+> 在新的站点查看 [Videos](https://zh-hans.react.dev/community/videos)。
 >
 </div>
 

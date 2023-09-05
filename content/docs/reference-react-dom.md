@@ -10,7 +10,7 @@ permalink: docs/react-dom.html
 
 > 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 >
-> These new documentation pages teach modern React:
+> 这些新的文档使用现代 React 语法：
 >
 > - [`react-dom`: Components](https://zh-hans.react.dev/reference/react-dom/components)
 > - [`react-dom`: APIs](https://zh-hans.react.dev/reference/react-dom)

@@ -11,7 +11,7 @@ next: release-channels.html
 >
 > 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 > 
-> See [Add React to an Existing Project](https://zh-hans.react.dev/learn/add-react-to-an-existing-project) for the recommended ways to add React.
+> 查看 [将 React 添加到已有项目](https://zh-hans.react.dev/learn/add-react-to-an-existing-project) 可以获得推荐的 React 添加方式。
 
 </div>
 

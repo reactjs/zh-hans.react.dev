@@ -11,7 +11,7 @@ next: introducing-jsx.html
 >
 > 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 > 
-> See [Quick Start](https://zh-hans.react.dev/learn) for an introduction to React.
+> 查看 [快速开始](https://zh-hans.react.dev/learn) 获得对 React 的介绍。
 
 </div>
 

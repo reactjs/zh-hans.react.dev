@@ -13,7 +13,7 @@ redirect_from:
 >
 > 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 > 
-> See the [Community](https://zh-hans.react.dev/community) resources on the new site.
+> 在新的站点查看 [Community](https://zh-hans.react.dev/community)。
 
 </div>
 

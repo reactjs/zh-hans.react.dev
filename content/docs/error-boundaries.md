@@ -8,7 +8,7 @@ permalink: docs/error-boundaries.html
 
 > 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 > 
-> These new documentation pages teach modern React:
+> 这些新的文档使用现代 React 语法：
 >
 > - [`React.Component`: Catching rendering errors with an error boundary](https://zh-hans.react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)
 

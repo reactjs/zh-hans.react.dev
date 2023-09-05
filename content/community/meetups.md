@@ -10,7 +10,7 @@ permalink: community/meetups.html
 
 > 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 >
-> See the [Meetups](https://zh-hans.react.dev/community/meetups) page on the new site.
+> 在新的站点查看 [Meetups](https://zh-hans.react.dev/community/meetups)。
 >
 </div>
 

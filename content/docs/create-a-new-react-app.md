@@ -13,7 +13,7 @@ next: cdn-links.html
 >
 > 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 > 
-> See [Start a New React Project](https://zh-hans.react.dev/learn/start-a-new-react-project) for the recommended ways to create an app.
+> 查看 [创建一个新的 React 项目](https://zh-hans.react.dev/learn/start-a-new-react-project) 以获得推荐的方式创建 React 应用。
 
 </div>
 

@@ -13,7 +13,7 @@ next: hello-world.html
 >
 > 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 > 
-> See [Versioning Policy](https://zh-hans.react.dev/community/versioning-policy) to learn about the React release channels.
+> 查看 [版本策略](https://zh-hans.react.dev/community/versioning-policy) 了解 React 的发布渠道。
 
 </div>
 

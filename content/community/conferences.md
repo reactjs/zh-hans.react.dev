@@ -12,7 +12,7 @@ redirect_from:
 
 > 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 >
-> See the [Conferences](https://zh-hans.react.dev/community/conferences) page on the new site.
+> 在新站点查看 [Conference](https://zh-hans.react.dev/community/conferences)。
 >
 </div>
 

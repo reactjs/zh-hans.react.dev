@@ -23,7 +23,7 @@ redirect_from:
 >
 > 这些文档已经过时且不再更新，访问 [zh-hans.react.dev](https://zh-hans.react.dev) 查看新的 React 文档。
 > 
-> The new [Quick Start](https://zh-hans.react.dev/learn) teaches modern React and includes live examples.
+> 新的 [快速开始](https://zh-hans.react.dev/learn) 使用最新的 React 语法，还有在线示例！
 
 </div>
 
