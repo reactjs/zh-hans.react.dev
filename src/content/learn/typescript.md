@@ -20,11 +20,7 @@ TypeScript 是一种向 JavaScript 代码添加类型定义的常用方法。Typ
 
 ## 安装 {/*installation*/}
 
-<<<<<<< HEAD
-所有的 [生产级 React 框架](https://react-dev-git-fork-orta-typescriptpage-fbopensource.vercel.app/learn/start-a-new-react-project#production-grade-react-frameworks) 都支持使用 TypeScript。请按照框架特定的指南进行安装：
-=======
-All [production-grade React frameworks](/learn/start-a-new-react-project#production-grade-react-frameworks) offer support for using TypeScript. Follow the framework specific guide for installation:
->>>>>>> 14629a7e19e283e415976973f33ceb2a0e4756e3
+所有的 [生产级 React 框架](/learn/start-a-new-react-project#production-grade-react-framework) 都支持使用 TypeScript。请按照框架特定的指南进行安装：
 
 - [Next.js](https://nextjs.org/docs/pages/building-your-application/configuring/typescript)
 - [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
