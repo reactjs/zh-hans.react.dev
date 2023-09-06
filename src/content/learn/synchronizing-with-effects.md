@@ -1503,7 +1503,7 @@ export async function fetchBio(person) {
 
 - 选中 `'Bob'` 触发 `fetchBio('Bob')`
 - 选中 `'Taylor'` 触发 `fetchBio('Taylor')`
-- **在加载 `'Bob'` 的数据完成之前，就已经加载完成了 `'Taylor'` 的数据**
+- **在 `'Bob'` 的数据完成加载之前，就已经完成了对 `'Taylor'` 的数据的加载**
 - 加载 `'Taylor'` 数据的 Effect 调用了 `setBio('这是Taylor的传记')`
 - 加载完成 `'Bob'` 的数据
 - 加载 `'Bob'` 数据的 Effect 调用了 `setBio('这是Bob的传记')`
