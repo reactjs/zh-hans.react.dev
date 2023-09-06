@@ -89,14 +89,14 @@ import { flushSync } from 'react-dom';
 
 export default function PrintApp() {
   const [isPrinting, setIsPrinting] = useState(false);
-  
+
   useEffect(() => {
     function handleBeforePrint() {
       flushSync(() => {
         setIsPrinting(true);
       })
     }
-    
+
     function handleAfterPrint() {
       setIsPrinting(false);
     }
@@ -108,7 +108,7 @@ export default function PrintApp() {
       window.removeEventListener('afterprint', handleAfterPrint);
     }
   }, []);
-  
+
   return (
     <>
       <h1>是否打印：{isPrinting ? '是' : '否'}</h1>
@@ -122,7 +122,11 @@ export default function PrintApp() {
 
 </Sandpack>
 
+<<<<<<< HEAD
 如果没有使用 `flushSync`，当打印对话框显示时，`isPrinting`会显示为“否”。这是因为 React 将异步批处理更新，而打印对话框在状态更新之前就显示出来了。
+=======
+Without `flushSync`, the print dialog will display `isPrinting` as "no". This is because React batches the updates asynchronously and the print dialog is displayed before the state is updated.
+>>>>>>> ee98f75cf191820c08df7e039406407b820a8353
 
 <Pitfall>
 
