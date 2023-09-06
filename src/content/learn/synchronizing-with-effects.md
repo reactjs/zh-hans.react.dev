@@ -943,7 +943,7 @@ React 将第三次渲染时的 `['travel']` 与第二次渲染时的 `['general'
 
 #### 仅开发环境下的行为 {/*development-only-behaviors*/}
 
-在 [严格模式](/reference/react/StrictMode) 下，React 在每次卸载组件后都会重新挂载组件（但是组件的 state 与 创建的 DOM 都会被保留）。[它可以帮助你找出需要添加清理函数的 Effect](#step-3-add-cleanup-if-needed)，以及早暴露出像条件竞争那样的问题。此外，每当你在开发环境中保存更新代码文件时，React 也会重新挂载 Effect，不过这两种行为都仅限于开发环境。
+在 [严格模式](/reference/react/StrictMode) 下，React 在每次挂载组件后都会重新挂载组件（但是组件的 state 与 创建的 DOM 都会被保留）。[它可以帮助你找出需要添加清理函数的 Effect](#step-3-add-cleanup-if-needed)，以及早暴露出像条件竞争那样的问题。此外，每当你在开发环境中保存更新代码文件时，React 也会重新挂载 Effect，不过这两种行为都仅限于开发环境。
 
 </DeepDive>
 
@@ -1503,7 +1503,7 @@ export async function fetchBio(person) {
 
 - 选中 `'Bob'` 触发 `fetchBio('Bob')`
 - 选中 `'Taylor'` 触发 `fetchBio('Taylor')`
-- **在加载 `'Taylor'` 的数据完成之前，就已经加载完成了 `'Bob'` 的数据**
+- **在加载 `'Bob'` 的数据完成之前，就已经加载完成了 `'Taylor'` 的数据**
 - 加载 `'Taylor'` 数据的 Effect 调用了 `setBio('这是Taylor的传记')`
 - 加载完成 `'Bob'` 的数据
 - 加载 `'Bob'` 数据的 Effect 调用了 `setBio('这是Bob的传记')`
