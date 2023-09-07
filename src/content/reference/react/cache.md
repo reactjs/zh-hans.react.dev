@@ -315,7 +315,7 @@ React 只允许在组件内访问记忆化函数的缓存。在组件外部调�
 
 <DeepDive>
 
-#### 何时应该使用 `cache`，[`memo`](/reference/react/memo)，或者 [`useMemo`](/reference/react/useMemo)？ {/*cache-memo-usememo*/}
+#### 应该何时使用 `cache`、[`memo`](/reference/react/memo) 和 [`useMemo`](/reference/react/useMemo)？ {/*cache-memo-usememo*/}
 
 所有提到的 API 都提供了记忆化功能，但它们的区别在于它们意图记忆化什么，谁可以访问缓存以及何时缓存会失效。
 
