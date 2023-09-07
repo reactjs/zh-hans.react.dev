@@ -175,7 +175,7 @@ export default function Precipitation({cityData}) {
 
 ### 共享数据快照 {/*take-and-share-snapshot-of-data*/}
 
-要在组件之间共享数据快照，请使用类似 `fetch`` 的数据获取函数调用 `cache`。当多个组件进行相同的数据获取时，只会发出一个请求，并且返回的数据会被缓存并在各个组件之间共享。所有组件在服务器渲染期间都引用相同的数据快照。
+要在组件之间共享数据快照，请使用类似 `fetch` 的数据获取函数调用 `cache`。当多个组件进行相同的数据获取时，只会发出一个请求，并且返回的数据会被缓存并在各个组件之间共享。所有组件在服务器渲染期间都引用相同的数据快照。
 
 ```js [[1, 4, "city"], [1, 5, "fetchTemperature(city)"], [2, 4, "getTemperature"], [2, 9, "getTemperature"], [1, 9, "city"], [2, 14, "getTemperature"], [1, 14, "city"]]
 import {cache} from 'react';
