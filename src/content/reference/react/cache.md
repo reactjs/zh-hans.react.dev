@@ -260,7 +260,7 @@ function Page({id}) {
 
 在评估 [异步函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function) 时，你将收到一个 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)，该 Promise 包含了该工作的状态（pending，fulfilled，failed）和最终的完成结果。
 
-在这个示例中，异步函数 <CodeStep step={1}>`fetchData`</CodeStep> 返回一个等待 `fetch`` 的 promise。
+在这个示例中，异步函数 <CodeStep step={1}>`fetchData`</CodeStep> 返回一个等待 `fetch` 的 promise。
 
 ```js [[1, 1, "fetchData()"], [2, 8, "getData()"], [3, 10, "getData()"]]
 async function fetchData() {
