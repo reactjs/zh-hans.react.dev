@@ -200,7 +200,7 @@ async function MinimalWeatherCard({city}) {
 
 如果 `AnimatedWeatherCard` 和 `MinimalWeatherCard` 向 <CodeStep step={2}>`getTemperature`</CodeStep> 提供不同的 <CodeStep step={1}>`city`</CodeStep> 参数，那么将调用两次 `fetchTemperature`，并且每个调用站点将接收不同的数据。
 
-<CodeStep step={1}>`城市`</CodeStep> 在其中充当缓存键。
+<CodeStep step={1}>`city`</CodeStep> 在其中充当缓存键。
 
 <Note>
 
