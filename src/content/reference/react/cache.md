@@ -398,7 +398,7 @@ function App() {
 
 在这个示例中，两个 `MemoWeatherReport` 组件在首次渲染时都会调用 `calculateAvg`。然而，如果 `App` 重新渲染，但没有更改 `record`，则没有 props 发生更改，`MemoWeatherReport` 将不会重新渲染。
 
-与 `useMemo` 相比，`memo` 根据 `props` 而不是特定计算来记忆化组件渲染。与 `useMemo` 类似，记忆化的组件只缓存了具有最后一组 prop 值的最后一次渲染。一旦 props 更改，缓存将失效，组件将重新渲染。
+与 `useMemo` 相比，`memo` 根据 props 而不是特定计算来记忆化组件渲染。与 `useMemo` 类似，记忆化的组件只缓存了具有最后一组 prop 值的最后一次渲染。一旦 props 更改，缓存将失效，组件将重新渲染。
 
 </DeepDive>
 
