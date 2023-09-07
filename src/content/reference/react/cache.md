@@ -4,9 +4,9 @@ canary: true
 ---
 
 <Canary>
-* `cache` 仅供与 [React 服务器组件](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) 一起使用。请参阅支持 React 服务器组件的 [框架](https://react.dev/learn/start-a-new-react-project#bleeding-edge-react-frameworks)。
+* `cache` 仅供与 [React 服务器组件](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) 一起使用。请参阅支持 React 服务器组件的 [框架](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)。
 
-* `cache` 仅在 React 的 [Canary](https://react.dev/community/versioning-policy#canary-channel) 和 [experimental](https://react.dev/community/versioning-policy#experimental-channel) 渠道中可用。在将 `cache` 用于生产环境之前，请确保了解其限制。查看此处了解有关 [React 发布渠道的更多信息](/community/versioning-policy#all-release-channels)。
+* `cache` 仅在 React 的 [Canary](/community/versioning-policy#canary-channel) 和 [experimental](/community/versioning-policy#experimental-channel) 渠道中可用。在将 `cache` 用于生产环境之前，请确保了解其限制。查看此处了解有关 [React 发布渠道的更多信息](/community/versioning-policy#all-release-channels)。
 </Canary>
 
 <Intro>
@@ -68,7 +68,7 @@ function Chart({data}) {
 - React 将在每次服务器请求时使所有记忆化函数的缓存失效。
 - 每次调用 `cache` 都会创建一个新函数。这意味着多次使用相同的函数调用 `cache` 将返回不共享相同缓存的不同记忆化函数。
 - `cachedFn` 还会缓存错误。如果对于某些参数 `fn` 抛出错误，错误将被缓存，当使用相同参数调用 `cachedFn` 时，相同的错误将被重新抛出。
-- `cache` 仅供在 [服务器组件](https://react.dev/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) 中使用。
+- `cache` 仅供在 [服务器组件](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) 中使用。
 
 ---
 
