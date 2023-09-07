@@ -141,7 +141,7 @@ export function Precipitation({cityData}) {
 
 此外，`Temperature` 每次组件渲染时都创建一个 <CodeStep step={1}>新的记忆化函数</CodeStep>，这不允许任何缓存共享。
 
-为了最大化缓存命中率并减少工作量，这两个组件应该调用相同的记忆化函数以访问相同的缓存。因此应该在专用模块中定义记忆化函数，以在不同组件之间使用 [`import`-ed](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) 进行共享。
+为了最大化缓存命中率并减少工作量，这两个组件应该调用相同的记忆化函数以访问相同的缓存。因此应该在专用模块中定义记忆化函数，以在不同组件之间使用 [`import`-ed](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/import) 进行共享。
 
 ```js [[3, 5, "export default cache(calculateWeekReport)"]]
 // getWeekReport.js
@@ -258,7 +258,7 @@ function Page({id}) {
 
 #### 缓存异步工作 {/*caching-asynchronous-work*/}
 
-在评估 [异步函数](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) 时，你将收到一个 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)，该 Promise 包含了该工作的状态（pending，fulfilled，failed）和最终的完成结果。
+在评估 [异步函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function) 时，你将收到一个 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)，该 Promise 包含了该工作的状态（pending，fulfilled，failed）和最终的完成结果。
 
 在这个示例中，异步函数 <CodeStep step={1}>`fetchData`</CodeStep> 返回一个等待 `fetch`` 的 promise。
 
@@ -279,7 +279,7 @@ async function MyComponent() {
 
 在第一次调用 <CodeStep step={2}>`getData`</CodeStep> 时，从 <CodeStep step={1}>`fetchData`</CodeStep> 返回的 promise 将被缓存。随后的查找将返回相同的 promise。
 
-请注意，第一次调用 <CodeStep step={2}>`getData`</CodeStep> 不使用 `await`，而 <CodeStep step={3}>第二次</CodeStep> 调用会使用。[`await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await) 是 JavaScript 中的一个操作符，它会等待并返回 promise 的已解决结果。第一次调用 <CodeStep step={2}>`getData`</CodeStep> 仅启动 `fetch` 以缓存 promise，以供 <CodeStep step={3}>第二次</CodeStep> 查找。
+请注意，第一次调用 <CodeStep step={2}>`getData`</CodeStep> 不使用 `await`，而 <CodeStep step={3}>第二次</CodeStep> 调用会使用。[`await`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/await) 是 JavaScript 中的一个操作符，它会等待并返回 promise 的已解决结果。第一次调用 <CodeStep step={2}>`getData`</CodeStep> 仅启动 `fetch` 以缓存 promise，以供 <CodeStep step={3}>第二次</CodeStep> 查找。
 
 如果在 <CodeStep step={3}>第二次</CodeStep> 调用时，promise 仍处于 pending 状态，那么 `await` 会等待结果。优化之处在于，在等待 `fetch` 的同时，React 可以继续进行计算工作，从而减少了第二次调用的等待时间。
 
@@ -443,7 +443,7 @@ function App() {
 
 在这种情况下，两个 `MapMarker` 看起来执行相同的工作，并使用相同的值 `{x: 10, y: 10, z: 10}` 调用 `calculateNorm`。尽管这些对象包含相同的值，但它们不是相同的对象引用，因为每个组件都创建了自己的 props 对象。
 
-React 将调用 [Object.is](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来验证是否存在缓存命中。
+React 将调用 [Object.is](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来验证是否存在缓存命中。
 
 ```js {3,9}
 import {cache} from 'react';
@@ -471,7 +471,6 @@ function App() {
 解决这个问题的一种方法是将向量的维度传递给 `calculateNorm`。这个方法有效，因为维度本身是原始数据类型。
 
 另一种解决方案可能是将向量对象本身作为一个 prop 传递给组件。我们需要将相同的对象传递给两个组件实例。
-
 
 ```js {3,9,14}
 import {cache} from 'react';
