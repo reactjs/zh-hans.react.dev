@@ -102,7 +102,7 @@ function TeamReport({users}) {
 
 假设首先渲染了 `Profile`。它将调用 <CodeStep step={1}>`getUserMetrics`</CodeStep>，并检查是否有缓存的结果。由于这是第一次以该 `user` 调用 `getUserMetrics`，所以缓存未命中。于是 `getUserMetrics` 将会使用 `user` 调用 `calculateUserMetrics` 并将结果写入缓存。
 
-当 `TeamReport` 渲染其 `users` 列表并达到相同的 `user` 对象时，它将调用 <CodeStep step={2}>`getUserMetrics`</CodeStep> 并从缓存中读取结果。
+当 `TeamReport` 使用相同的 `user` 对象来渲染 `users` 列表时，它将调用 <CodeStep step={2}>`getUserMetrics`</CodeStep> 并从缓存中读取结果。
 
 <Pitfall>
 
