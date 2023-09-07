@@ -51,7 +51,7 @@ function Chart({data}) {
 
 #### 返回值 {/*returns*/}
 
-`cache`` 返回一个与 `fn` 具有相同类型签名的已缓存版本。在此过程中，它不会调用 `fn`。
+`cache` 返回一个与 `fn` 具有相同类型签名的已缓存版本。在此过程中，它不会调用 `fn`。
 
 在使用给定的参数调用 `cachedFn` 时，它首先检查缓存中是否存在缓存的结果。如果存在缓存的结果，它将返回该结果。如果没有，它将使用参数调用 `fn`，将结果存储在缓存中，并返回该结果。只有在缓存未命中时才会调用 `fn`。
 
@@ -283,7 +283,7 @@ async function MyComponent() {
 
 如果在 <CodeStep step={3}>第二次</CodeStep> 调用时，promise 仍处于 pending 状态，那么 `await` 会等待结果。优化之处在于，在等待 `fetch` 的同时，React 可以继续进行计算工作，从而减少了第二次调用的等待时间。
 
-如果 promise 已经解决，无论是得到错误还是 fulfilled 的结果，`await`` 都会立即返回该值。在这两种结果中，都存在性能优势。
+如果 promise 已经解决，无论是得到错误还是 fulfilled 的结果，`await` 都会立即返回该值。在这两种结果中，都存在性能优势。
 </DeepDive>
 
 <Pitfall>
@@ -369,7 +369,7 @@ function App() {
 ```
 使用 `cache` 重新编写前面的示例，在这种情况下，<CodeStep step={3}>`WeatherReport` 的第二个实例</CodeStep> 将能够跳过重复的工作并从与第一个 `WeatherReport` 相同的缓存中读取。与前面的示例不同的另一个地方是，`cache` 也推荐用于 <CodeStep step={2}>记忆化数据获取</CodeStep>，而 `useMemo` 只应用于计算。
 
-目前 `cache`` 应该仅在服务器组件中使用，并且缓存会在服务器请求之间失效。
+目前 `cache` 应该仅在服务器组件中使用，并且缓存会在服务器请求之间失效。
 
 #### `memo` {/*deep-dive-memo*/}
 
