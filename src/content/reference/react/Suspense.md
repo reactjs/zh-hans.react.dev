@@ -2540,7 +2540,7 @@ function Chat() {
 
 ## 故障排除 {/*troubleshooting*/}
 
-### 应该如何阻止 UI 在更新期间被 fallback 替换 {/*preventing-unwanted-fallbacks*/}
+### 如何阻止 UI 在更新期间被 fallback 替换 {/*preventing-unwanted-fallbacks*/}
 
 使用 fallback 替换一个可见的 UI 会带来令人不快的用户体验。当一个更新导致一个组件被挂起时，而最近的 Suspense 边界已经向用户显示了内容时，这种情况可能发生。
 
