@@ -2548,7 +2548,7 @@ function Chat() {
 
 ```js {2-3,5}
 function handleNextPageClick() {
-  // 如果此更新被挂起，不要隐藏已经展示的内容
+  // 如果此更新被挂起，不会隐藏已经展示的内容
   startTransition(() => {
     setCurrentPage(currentPage + 1);
   });
