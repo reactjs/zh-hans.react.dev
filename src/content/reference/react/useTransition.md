@@ -126,7 +126,7 @@ function TabContainer() {
 
 transition 可以使用户界面的更新在慢速设备上仍保持响应性。
 
-通过 transition，UI 仍将在重新渲染过程中保持响应性。例如，如果用户单击一个选项卡，但改变了主意并单击另一个选项卡，他们可以在不等待第一个重新渲染完成的情况下完成操作。
+通过 transition，UI 仍将在重新渲染过程中保持响应性。例如，如果用户点击一个选项卡，但改变了主意并点击另一个选项卡，他们可以在不等待第一个重新渲染完成的情况下完成操作。
 
 <Recipes titleText="使用 useTransition 与寻常状态更新的区别" titleId="examples">
 
@@ -134,7 +134,7 @@ transition 可以使用户界面的更新在慢速设备上仍保持响应性。
 
 在此示例中，“文章”选项卡被 **人为地减慢**，以便至少需要一秒钟才能渲染。
 
-单击“Posts”，然后立即单击“Contact”。请注意，这会中断“Posts”的缓慢渲染，而“联系人”选项卡将会立即显示。因为此状态更新被标记为 transition，所以缓慢的重新渲染不会冻结用户界面。
+点击“Posts”，然后立即点击“Contact”。请注意，这会中断“Posts”的缓慢渲染，而“联系人”选项卡将会立即显示。因为此状态更新被标记为 transition，所以缓慢的重新渲染不会冻结用户界面。
 
 <Sandpack>
 
@@ -431,7 +431,7 @@ export default function TabButton({ children, isActive, onClick }) {
 }
 ```
 
-由于父组件的状态更新在 `onClick` 事件处理程序内，所以该状态更新会被标记为 transition。这就是为什么，就像之前的例子一样，单击“Posts”后可以立即单击“Contact”。由于更新选定选项卡被标记为了 transition，因此它不会阻止用户交互。
+由于父组件的状态更新在 `onClick` 事件处理程序内，所以该状态更新会被标记为 transition。这就是为什么，就像之前的例子一样，点击“Posts”后可以立即点击“Contact”。由于更新选定选项卡被标记为了 transition，因此它不会阻止用户交互。
 
 <Sandpack>
 
@@ -574,7 +574,7 @@ function TabButton({ children, isActive, onClick }) {
   // ...
 ```
 
-请注意，现在单击“Posts”感觉更加灵敏，因为选项卡按钮本身立即更新了：
+请注意，现在点击“Posts”感觉更加灵敏，因为选项卡按钮本身立即更新了：
 
 <Sandpack>
 
@@ -709,7 +709,7 @@ b { display: inline-block; margin-right: 10px; }
 
 ### 避免不必要的加载指示器 {/*preventing-unwanted-loading-indicators*/}
 
-在这个例子中，`PostsTab` 组件从启用了 [Suspense](/reference/react/Suspense) 的数据源中获取了一些数据。当你单击“Posts”选项卡时，`PostsTab` 组件将 **挂起**，导致最近的加载占位符出现：
+在这个例子中，`PostsTab` 组件从启用了 [Suspense](/reference/react/Suspense) 的数据源中获取了一些数据。当你点击“Posts”选项卡时，`PostsTab` 组件将 **挂起**，导致最近的加载占位符出现：
 
 <Sandpack>
 
@@ -895,7 +895,7 @@ b { display: inline-block; margin-right: 10px; }
 
 隐藏整个选项卡容器以显示加载指示符会导致用户体验不连贯。如果你将 `useTransition` 添加到 `TabButton` 中，你可以改为在选项卡按钮中指示待处理状态。
 
-请注意，现在单击“帖子”不再用一个旋转器替换整个选项卡容器：
+请注意，现在点击“帖子”不再用一个旋转器替换整个选项卡容器：
 
 <Sandpack>
 
