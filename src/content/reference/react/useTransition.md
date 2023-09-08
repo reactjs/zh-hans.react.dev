@@ -1606,7 +1606,7 @@ console.log(3);
 **期望打印 1, 2, 3**。传递给 `startTransition` 的函数不会被延迟执行。与浏览器的 `setTimeout` 不同，它不会延迟执行回调。React 会立即执行你的函数，但是在它运行的同时安排的任何状态更新都被标记为 transition。你可以将其想象为以下方式：
 
 ```js
-// React 工作的简易版本
+// React 运行的简易版本
 
 let isInsideTransition = false;
 
