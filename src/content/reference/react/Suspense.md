@@ -2544,7 +2544,7 @@ function Chat() {
 
 使用 fallback 替换一个可见的 UI 会带来令人不快的用户体验。当一个更新导致一个组件被挂起时，而最近的 Suspense 边界已经向用户显示了内容时，这种情况可能发生。
 
-为了防止这种情况发生，[使用 `startTransition` 将更新标记为非紧急的](#preventing-already-revealed-content-from-hiding)。在 transition 期间，React 将等待足够的数据加载，以防止不需要的退路方案 fallback 出现：
+为了防止这种情况发生，[使用 `startTransition` 将更新标记为非紧急的](#preventing-already-revealed-content-from-hiding)。在 transition 期间，React 将等待足够的数据加载，以防止不需要的 fallback 出现：
 
 ```js {2-3,5}
 function handleNextPageClick() {
