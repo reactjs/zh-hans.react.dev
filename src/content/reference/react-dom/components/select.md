@@ -52,7 +52,7 @@ title: "<select>"
 
 * [`autoComplete`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#autocomplete)：字符串，用于指定可能的 [自动完成行为](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/autocomplete#values) 之一。
 * [`autoFocus`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#autofocus)：布尔值。如果为 `true`，React 将在挂载时聚焦该元素。
-* `children`：`<select>` 接受 [`<option>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/option)、[`<optgroup>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/optgroup) 与 [`<datalist>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/optgroup) 组件作为子元素。只要最终渲染的是其中之一，你也可以传递自己的组件。如果最终渲染的是 `<option>`，则每个 `<option>` 都必须具有 `value` 属性。
+* `children`：`<select>` 接受 [`<option>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/option)、[`<optgroup>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/optgroup) 与 [`<datalist>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/datalist) 组件作为子元素。只要最终渲染的是其中之一，你也可以传递自己的组件。如果最终渲染的是 `<option>`，则每个 `<option>` 都必须具有 `value` 属性。
 * [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#disabled)：布尔值。如果为 `true`，选择框将不会交互并展示为暗淡状态（dimmed）。
 * [`form`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#form)：字符串，表示此选择框所属的 `<form>` 的 `id`。如果未指定，则为最近的父表单。
 * [`multiple`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select#multiple)：布尔值。如果为 `true`，则浏览器允许 [多选](#enabling-multiple-selection)。
