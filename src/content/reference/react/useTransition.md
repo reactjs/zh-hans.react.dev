@@ -4,7 +4,7 @@ title: useTransition
 
 <Intro>
 
-`useTransition` 是一个让你在不阻塞 UI 的情况下来更新状态的 React Hook。
+`useTransition` 是一个帮助你在不阻塞 UI 的情况下更新状态的 React Hook。
 
 ```js
 const [isPending, startTransition] = useTransition()
@@ -20,18 +20,18 @@ const [isPending, startTransition] = useTransition()
 
 ### `useTransition()` {/*usetransition*/}
 
-在组件的顶层调用 `useTransition`，将某些状态更新标记为转换状态。
+在组件顶层调用 `useTransition`，将某些状态更新标记为 transition。
 
 ```js
 import { useTransition } from 'react';
 
 function TabContainer() {
   const [isPending, startTransition] = useTransition();
-  // ...
+  // ……
 }
 ```
 
-[请参阅下面的更多示例](#usage)。
+[参见下方更多示例](#usage)。
 
 #### 参数 {/*parameters*/}
 
@@ -41,14 +41,14 @@ function TabContainer() {
 
 `useTransition` 返回一个由两个元素组成的数组：
 
-1. `isPending` 标志，告诉你是否存在待处理的转换。
-2. [`startTransition` 函数](#starttransition) 允许你将状态更新标记为转换状态。
+1. `isPending`，告诉你是否存在待处理的 transition。
+2. [`startTransition` 函数](#starttransition)，你可以使用此方法将状态更新标记为 transition。
 
 ---
 
 ### `startTransition` 函数 {/*starttransition*/}
 
-`useTransition` 返回的 `startTransition` 函数允许你将状态更新标记为转换状态。
+`useTransition` 返回的 `startTransition` 函数允许你将状态更新标记为 transition。
 
 ```js {6,8}
 function TabContainer() {
@@ -60,55 +60,55 @@ function TabContainer() {
       setTab(nextTab);
     });
   }
-  // ...
+  // ……
 }
 ```
 
 #### 参数 {/*starttransition-parameters*/}
 
-* 作用域（scope）：一个通过调用一个或多个 [`set` 函数](/reference/react/useState#setstate)。 函数更新某些状态的函数。React 会立即不带参数地调用此函数，并将在作用域函数调用期间计划同步执行的所有状态更新标记为转换状态。它们将是非阻塞的，并且 [不会显示不想要的加载指示器](#preventing-unwanted-loading-indicators)。
+* 作用域（scope）：一个通过调用一个或多个 [`set` 函数](/reference/react/useState#setstate) 更新状态的函数。React 会立即不带参数地调用此函数，并将在 `scope` 调用期间将所有同步安排的状态更新标记为 transition。它们将是非阻塞的，并且 [不会显示不想要的加载指示器](#preventing-unwanted-loading-indicators)。
 
 #### 返回值 {/*starttransition-returns*/}
 
-`startTransition` 不会返回任何值。
+`startTransition` 不返回任何值。
 
-#### 注意事项 {/*starttransition-caveats*/}
+#### 注意 {/*starttransition-caveats*/}
 
-* `useTransition` 是一个 Hook，因此只能在组件或自定义 Hook 内部调用。如果你需要在其他地方启动转换（例如从数据库），请调用独立的 [`startTransition`](/reference/react/startTransition) 函数。
+* `useTransition` 是一个 Hook，因此只能在组件或自定义 Hook 内部调用。如果需要在其他地方启动 transition（例如从数据库），请调用独立的 [`startTransition`](/reference/react/startTransition) 函数。
 
-* 只有在你可以访问该状态的 `set` 函数时，才能将更新包装为转换状态。如果你想响应某个 prop 或自定义 Hook 值启动转换，请尝试使用 [`useDeferredValue`](/reference/react/useDeferredValue)。
+* 只有在可以访问该状态的 `set` 函数时，才能将其对应的状态更新包装为 transition。如果你想启用 transition 以响应某个 prop 或自定义 Hook 值，请尝试使用 [`useDeferredValue`](/reference/react/useDeferredValue)。
 
-* 你传递给 `startTransition` 的函数必须是同步的。React 立即执行此函数，标记其执行期间发生的所有状态更新为转换状态。如果你稍后尝试执行更多的状态更新（例如在一个定时器中），它们将不会被标记为转换状态。
+* 传递给 `startTransition` 的函数必须是同步的。React 会立即执行此函数，并将在其执行期间发生的所有状态更新标记为 transition。如果在其执行期间，尝试稍后执行状态更新（例如在一个定时器中执行状态更新），这些状态更新不会被标记为 transition。
 
-* 标记为转换状态的状态更新将被其他状态更新打断。例如，如果你在转换状态中更新图表组件，但在图表正在重新渲染时开始在输入框中输入，React 将在处理输入更新后重新启动对图表组件的渲染工作。
+* 标记为 transition 的状态更新将被其他状态更新打断。例如，如果你在 transition 中更新图表组件，并在图表组件仍在重新渲染时继续在输入框中输入，React 将首先处理输入框的更新，之后再重新启动对图表组件的渲染工作。
 
-* 转换状态更新不能用于控制文本输入。
+* transition 更新不能用于控制文本输入。
 
-* 如果有多个正在进行的转换状态，React 目前会将它们批处理在一起。这是一个限制，可能会在未来的版本中被删除。
+* 目前，React 会批处理多个同时进行的 transition。这是一个限制，可能会在未来的版本中被删除。
 
 ---
 
 ## 用法 {/*usage*/}
 
-### 将状态更新标记为非阻塞转换状态 {/*marking-a-state-update-as-a-non-blocking-transition*/}
+### 将状态更新标记为非阻塞的 transition {/*marking-a-state-update-as-a-non-blocking-transition*/}
 
-在组件的顶层调用 `useTransition`，将状态更新标记为非阻塞的转换状态。
+在组件的顶层调用 `useTransition` 以将状态更新标记为非阻塞的 transition。
 
 ```js [[1, 4, "isPending"], [2, 4, "startTransition"]]
 import { useState, useTransition } from 'react';
 
 function TabContainer() {
   const [isPending, startTransition] = useTransition();
-  // ...
+  // ……
 }
 ```
 
-`useTransition` 返回一个具有两个项的数组：
+`useTransition` 返回一个由两个元素组成的数组：
 
-1. <CodeStep step={1}>`isPending` 标志</CodeStep>，告诉你是否存在挂起的转换状态。
-2. <CodeStep step={2}>`startTransition` 方法</CodeStep> 允许你将状态更新标记为转换状态。
+1. <CodeStep step={1}>`isPending`</CodeStep>，告诉你是否存在待处理的 transition。
+2. <CodeStep step={2}>`startTransition` 函数</CodeStep>，你可以使用此方法将状态更新标记为 transition。
 
-你可以按照以下方式将状态更新标记为转换状态：
+你可以按照以下方式将状态更新标记为 transition：
 
 ```js {6,8}
 function TabContainer() {
@@ -120,21 +120,21 @@ function TabContainer() {
       setTab(nextTab);
     });
   }
-  // ...
+  // ……
 }
 ```
 
-转换状态可以使用户界面更新在慢速设备上仍保持响应性。
+transition 可以使用户界面的更新在慢速设备上仍保持响应性。
 
-通过转换状态，在重新渲染过程中你的用户界面保持响应。例如，如果用户单击一个选项卡，但改变了主意并单击另一个选项卡，他们可以在不等待第一个重新渲染完成的情况下完成操作。
+通过 transition，UI 仍将在重新渲染过程中保持响应性。例如，如果用户单击一个选项卡，但改变了主意并单击另一个选项卡，他们可以在不等待第一个重新渲染完成的情况下完成操作。
 
-<Recipes titleText="The difference between useTransition and regular state updates" titleId="examples">
+<Recipes titleText="使用 useTransition 与寻常状态更新的区别" titleId="examples">
 
-#### 在转换状态中更新当前选项卡 {/*updating-the-current-tab-in-a-transition*/}
+#### 在 transition 中更新当前选项卡 {/*updating-the-current-tab-in-a-transition*/}
 
-在此示例中，“文章”选项卡被 **人为地减慢**，以便至少需要一秒钟才能呈现。
+在此示例中，“文章”选项卡被 **人为地减慢**，以便至少需要一秒钟才能渲染。
 
-单击“文章”，然后立即单击“联系人”。请注意，这会中断“文章”的缓慢渲染。 “联系人”选项卡立即显示。因为此状态更新被标记为转换状态，因此缓慢的重新渲染不会冻结用户界面。
+单击“Posts”，然后立即单击“Contact”。请注意，这会中断“Posts”的缓慢渲染，而“联系人”选项卡将会立即显示。因为此状态更新被标记为 transition，所以缓慢的重新渲染不会冻结用户界面。
 
 <Sandpack>
 
@@ -214,7 +214,7 @@ export default function AboutTab() {
 import { memo } from 'react';
 
 const PostsTab = memo(function PostsTab() {
-  // Log once. The actual slowdown is inside SlowPost.
+  // 打印一次。真正变慢的地方在 SlowPost 内。
   console.log('[ARTIFICIALLY SLOW] Rendering 500 <SlowPost />');
 
   let items = [];
@@ -231,7 +231,7 @@ const PostsTab = memo(function PostsTab() {
 function SlowPost({ index }) {
   let startTime = performance.now();
   while (performance.now() - startTime < 1) {
-    // Do nothing for 1 ms per item to emulate extremely slow code
+    // 每个 item 都等待 1 毫秒以模拟极慢的代码。
   }
 
   return (
@@ -269,11 +269,11 @@ b { display: inline-block; margin-right: 10px; }
 
 <Solution />
 
-#### 在不使用转换状态的情况下更新当前选项卡 {/*updating-the-current-tab-without-a-transition*/}
+#### 在不使用 transition 的情况下更新当前选项卡 {/*updating-the-current-tab-without-a-transition*/}
 
-在此示例中，“帖子”选项卡同样被 **人为地减慢**，以便至少需要一秒钟才能渲染。与之前的示例不同，这个状态更新 **不是一个转换状态**。
+在此示例中，“Posts”选项卡同样被 **人为地减慢**，以便至少需要一秒钟才能渲染。与之前的示例不同，这个状态更新 **没有使用 transition**。
 
-点击“帖子”，然后立即点击“联系人”。请注意，应用程序在渲染减速选项卡时会冻结，UI变得不响应。这个状态更新 **不是一个转换状态**，所以慢速的重新渲染会冻结用户界面。
+点击“Posts”，然后立即点击“Contact”。请注意，应用程序在渲染减速选项卡时会冻结，UI 将变得无响应。由于这个状态更新 **没有使用 transition**，所以慢速的重新渲染会冻结用户界面。
 
 <Sandpack>
 
@@ -350,7 +350,7 @@ export default function AboutTab() {
 import { memo } from 'react';
 
 const PostsTab = memo(function PostsTab() {
-  // Log once. The actual slowdown is inside SlowPost.
+  // 打印一次。真正变慢的地方在 SlowPost 内。
   console.log('[ARTIFICIALLY SLOW] Rendering 500 <SlowPost />');
 
   let items = [];
@@ -367,7 +367,7 @@ const PostsTab = memo(function PostsTab() {
 function SlowPost({ index }) {
   let startTime = performance.now();
   while (performance.now() - startTime < 1) {
-    // Do nothing for 1 ms per item to emulate extremely slow code
+    // 每个 item 都等待 1 毫秒以模拟极慢的代码。
   }
 
   return (
@@ -409,9 +409,9 @@ b { display: inline-block; margin-right: 10px; }
 
 ---
 
-### 在转换中更新父组件 {/*updating-the-parent-component-in-a-transition*/}
+### 在 transition 中更新父组件 {/*updating-the-parent-component-in-a-transition*/}
 
-你也可以通过 `useTransition` 调用来更新父组件的状态。例如，`TabButton` 组件在一个转换中包装了它的onClick逻辑：
+你也可以通过调用 `useTransition` 以更新父组件状态。例如，`TabButton` 组件在 transition 中包装了 `onClick` 逻辑：
 
 ```js {8-10}
 export default function TabButton({ children, isActive, onClick }) {
@@ -431,7 +431,7 @@ export default function TabButton({ children, isActive, onClick }) {
 }
 ```
 
-因为父组件在 `onClick` 事件处理程序内更新了它的状态，所以该状态更新被标记为一个转换。这就是为什么，就像之前的例子一样，你可以单击“帖子”，然后立即单击“联系人”。更新选定选项卡被标记为一个转换，因此它不会阻止用户交互。
+由于父组件的状态更新在 `onClick` 事件处理程序内，所以该状态更新会被标记为 transition。这就是为什么，就像之前的例子一样，单击“Posts”后可以立即单击“Contact”。由于更新选定选项卡被标记为了 transition，因此它不会阻止用户交互。
 
 <Sandpack>
 
@@ -505,7 +505,7 @@ export default function AboutTab() {
 import { memo } from 'react';
 
 const PostsTab = memo(function PostsTab() {
-  // Log once. The actual slowdown is inside SlowPost.
+  // 打印一次。真正变慢的地方在 SlowPost 内。
   console.log('[ARTIFICIALLY SLOW] Rendering 500 <SlowPost />');
 
   let items = [];
@@ -522,7 +522,7 @@ const PostsTab = memo(function PostsTab() {
 function SlowPost({ index }) {
   let startTime = performance.now();
   while (performance.now() - startTime < 1) {
-    // Do nothing for 1 ms per item to emulate extremely slow code
+    // 每个 item 都等待 1 毫秒以模拟极慢的代码。
   }
 
   return (
@@ -560,9 +560,9 @@ b { display: inline-block; margin-right: 10px; }
 
 ---
 
-### 在转换期间显示待处理的视觉状态 {/*displaying-a-pending-visual-state-during-the-transition*/}
+### 在 transition 期间显示待处理的视觉状态 {/*displaying-a-pending-visual-state-during-the-transition*/}
 
-你可以使用 `useTransition` 返回的 `isPending `布尔值来向用户指示转换正在进行中。例如，选项卡按钮可以有一个特殊的“待处理”视觉状态：
+你可以使用 `useTransition` 返回的 `isPending` 布尔值来向用户表明存在 transition 正在进行中。例如，选项卡按钮可以有一个特殊的“pending”视觉状态：
 
 ```js {4-6}
 function TabButton({ children, isActive, onClick }) {
@@ -574,7 +574,7 @@ function TabButton({ children, isActive, onClick }) {
   // ...
 ```
 
-请注意，现在单击“帖子”感觉更加灵敏，因为选项卡按钮本身立即更新了：
+请注意，现在单击“Posts”感觉更加灵敏，因为选项卡按钮本身立即更新了：
 
 <Sandpack>
 
@@ -651,7 +651,7 @@ export default function AboutTab() {
 import { memo } from 'react';
 
 const PostsTab = memo(function PostsTab() {
-  // Log once. The actual slowdown is inside SlowPost.
+  // 打印一次。真正变慢的地方在 SlowPost 内。
   console.log('[ARTIFICIALLY SLOW] Rendering 500 <SlowPost />');
 
   let items = [];
@@ -668,7 +668,7 @@ const PostsTab = memo(function PostsTab() {
 function SlowPost({ index }) {
   let startTime = performance.now();
   while (performance.now() - startTime < 1) {
-    // Do nothing for 1 ms per item to emulate extremely slow code
+    // 每个 item 都等待 1 毫秒以模拟极慢的代码。
   }
 
   return (
@@ -709,7 +709,7 @@ b { display: inline-block; margin-right: 10px; }
 
 ### 避免不必要的加载指示器 {/*preventing-unwanted-loading-indicators*/}
 
-在这个例子中，`PostsTab` 组件使用启用了 [Suspense-enabled](/reference/react/Suspense) 的数据源获取一些数据。当你单击“帖子”选项卡时，`PostsTab` 组件将 **挂起**，导致最近的加载占位符出现：
+在这个例子中，`PostsTab` 组件从启用了 [Suspense](/reference/react/Suspense) 的数据源中获取了一些数据。当你单击“Posts”选项卡时，`PostsTab` 组件将 **挂起**，导致最近的加载占位符出现：
 
 <Sandpack>
 
@@ -777,11 +777,11 @@ export default function AboutTab() {
 ```js PostsTab.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：此组件使用了实验性 API 编写
+// 这在 React 稳定版本中无法访问
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 在实际的例子中，试试
+// 像 Relay 或 Next.js 一样集成了 Suspense 的框架。
 
 function PostsTab() {
   const posts = use(fetchData('/posts'));
@@ -804,8 +804,8 @@ function Post({ title }) {
 
 export default PostsTab;
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决演示运行问题的临时方法。
+// TODO: 当 bug 修复后使用真实的实现替代此处。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -848,9 +848,9 @@ export default function ContactTab() {
 
 
 ```js data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// 注意：数据获取的方式取决于
+// 取决于与 Suspense 一同使用的框架
+// 通常，缓存逻辑会嵌入在框架内部。
 
 let cache = new Map();
 
@@ -971,11 +971,11 @@ export default function AboutTab() {
 ```js PostsTab.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：此组件使用了实验性 API 编写
+// 这在 React 稳定版本中无法访问
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 在实际的例子中，试试
+// 像 Relay 或 Next.js 一样集成了 Suspense 的框架。
 
 function PostsTab() {
   const posts = use(fetchData('/posts'));
@@ -998,8 +998,8 @@ function Post({ title }) {
 
 export default PostsTab;
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决演示运行问题的临时方法。
+// TODO: 当 bug 修复后使用真实的实现替代此处。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -1042,9 +1042,9 @@ export default function ContactTab() {
 
 
 ```js data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// 注意：数据获取的方式取决于
+// 取决于与 Suspense 一同使用的框架
+// 通常，缓存逻辑会嵌入在框架内部。
 
 let cache = new Map();
 
@@ -1250,11 +1250,11 @@ function AlbumsGlimmer() {
 ```js Albums.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：此组件使用了实验性 API 编写
+// 这在 React 稳定版本中无法访问
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 在实际的例子中，试试
+// 像 Relay 或 Next.js 一样集成了 Suspense 的框架。
 
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
@@ -1269,8 +1269,8 @@ export default function Albums({ artistId }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决演示运行问题的临时方法。
+// TODO: 当 bug 修复后使用真实的实现替代此处。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -1298,11 +1298,11 @@ function use(promise) {
 ```js Biography.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// 注意：此组件使用了实验性 API 编写
+// 这在 React 稳定版本中无法访问
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// 在实际的例子中，试试
+// 像 Relay 或 Next.js 一样集成了 Suspense 的框架。
 
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
@@ -1313,8 +1313,8 @@ export default function Biography({ artistId }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// 这是一个解决演示运行问题的临时方法。
+// TODO: 当 bug 修复后使用真实的实现替代此处。
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -1350,9 +1350,9 @@ export default function Panel({ children }) {
 ```
 
 ```js data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// 注意：数据获取的方式取决于
+// 取决于与 Suspense 一同使用的框架
+// 通常，缓存逻辑会嵌入在框架内部。
 
 let cache = new Map();
 
@@ -1495,7 +1495,7 @@ main {
 
 <Note>
 
-[Suspense-enabled](/reference/react/Suspense) 的路由默认情况下会将页面导航更新包装成转换效果。
+启用 [Suspense](/reference/react/Suspense) 的路由默认情况下会将页面导航更新包装为 transition。
 
 </Note>
 
@@ -1503,15 +1503,15 @@ main {
 
 ## 疑难解答 {/*troubleshooting*/}
 
-### 在转换过程中更新输入无法正常工作 {/*updating-an-input-in-a-transition-doesnt-work*/}
+### 在 transition 中无法更新输入框内容 {/*updating-an-input-in-a-transition-doesnt-work*/}
 
-你不能使用转换来控制输入的状态变量：
+不应在将控制输入框的状态变量标记为 transition：
 
 ```js {4,10}
 const [text, setText] = useState('');
 // ...
 function handleChange(e) {
-  // ❌ Can't use transitions for controlled input state
+  // ❌ 不能将受控输入框的状态变量标记为 transition
   startTransition(() => {
     setText(e.target.value);
   });
@@ -1520,31 +1520,31 @@ function handleChange(e) {
 return <input value={text} onChange={handleChange} />;
 ```
 
-这是因为转换是非阻塞的，但是在响应更改事件时更新输入应该是同步的。如果你想在输入时运行一个转换，有两个选项：
+这是因为 transition 是非阻塞的，但是在响应更改事件时更新输入应该是同步的。如果想在输入时运行一个 transition，那么有两种做法：
 
-1. 你可以声明两个分开的状态变量：一个用于输入状态（它总是同步更新），另一个用于在转换中更新的状态变量。这样，你可以使用同步状态控制输入，并将转换状态变量（它将“滞后”于输入）传递给其余的渲染逻辑。
-2. 或者，你可以有一个状态变量，并添加 [`useDeferredValue`](/reference/react/useDeferredValue)，它将“滞后”于实际值。它会自动触发非阻塞的重新渲染以“追赶”新值。
+1. 声明两个独立的状态变量：一个用于输入状态（它总是同步更新），另一个用于在 transition 中更新。这样，便可以使用同步状态控制输入，并将用于 transition 的状态变量（它将“滞后”于输入）传递给其余的渲染逻辑。
+2. 或者，使用一个状态变量，并添加 [`useDeferredValue`](/reference/react/useDeferredValue)，它将“滞后”于实际值。它会自动触发非阻塞的重新渲染以“追赶”新值。
 
 ---
 
-### React 没有将我的状态更新视为转换 {/*react-doesnt-treat-my-state-update-as-a-transition*/}
+### React 没有将状态更新视为 transition {/*react-doesnt-treat-my-state-update-as-a-transition*/}
 
-当你在转换中包装一个状态更新时，请确保它发生在 `startTransition` 调用期间：
+当在 transition 中包装状态更新时，请确保它发生在 `startTransition` 调用期间：
 
 ```js
 startTransition(() => {
-  // ✅ Setting state *during* startTransition call
+  // ✅ 在调用 startTransition 中更新状态
   setPage('/about');
 });
 ```
 
 传递给 `startTransition` 的函数必须是同步的。
 
-你不能像这样将更新标记为转换：
+你不能像这样将更新标记为 transition：
 
 ```js
 startTransition(() => {
-  // ❌ Setting state *after* startTransition call
+  // ❌ 在调用 startTransition 后更新状态
   setTimeout(() => {
     setPage('/about');
   }, 1000);
@@ -1556,18 +1556,18 @@ startTransition(() => {
 ```js
 setTimeout(() => {
   startTransition(() => {
-    // ✅ Setting state *during* startTransition call
+    // ✅ 在调用 startTransition 中更新状态
     setPage('/about');
   });
 }, 1000);
 ```
 
-类似地，你不能像这样将更新标记为转换：
+类似地，你不能像这样将更新标记为 transition：
 
 ```js
 startTransition(async () => {
   await someAsyncFunction();
-  // ❌ Setting state *after* startTransition call
+  // ❌ 在调用 startTransition 后更新状态
   setPage('/about');
 });
 ```
@@ -1577,7 +1577,7 @@ startTransition(async () => {
 ```js
 await someAsyncFunction();
 startTransition(() => {
-  // ✅ Setting state *during* startTransition call
+  // ✅ 在调用 startTransition 中更新状态
   setPage('/about');
 });
 ```
@@ -1586,7 +1586,7 @@ startTransition(() => {
 
 ### 我想在组件外部调用 `useTransition` {/*i-want-to-call-usetransition-from-outside-a-component*/}
 
-你不能在组件外部调用 `useTransition`，因为它是一个 Hook。在这种情况下，请改用独立的 [`startTransition`](/reference/react/startTransition) 方法。它的工作方式相同，但不提供 `isPending` 指示器。
+`useTransition` 是一个 Hook，因此不能在组件外部调用 `useTransition`；否则，请使用独立的 [`startTransition`](/reference/react/startTransition) 方法。它的工作方式相同，但不提供 `isPending` 指示器。
 
 ---
 
@@ -1603,10 +1603,10 @@ startTransition(() => {
 console.log(3);
 ```
 
-**期望打印 1, 2, 3**。 传递给 `startTransition` 的函数不会被延迟执行。与浏览器的 `setTimeout` 不同，它不会延迟执行回调。React 会立即执行你的函数，但是在它运行的同时安排的任何状态更新都被标记为转换。你可以将其想象为以下方式：
+**期望打印 1, 2, 3**。传递给 `startTransition` 的函数不会被延迟执行。与浏览器的 `setTimeout` 不同，它不会延迟执行回调。React 会立即执行你的函数，但是在它运行的同时安排的任何状态更新都被标记为 transition。你可以将其想象为以下方式：
 
 ```js
-// A simplified version of how React works
+// React 工作的简易版本
 
 let isInsideTransition = false;
 
@@ -1618,9 +1618,9 @@ function startTransition(scope) {
 
 function setState() {
   if (isInsideTransition) {
-    // ... schedule a transition state update ...
+    // ……安排 transition 状态更新……
   } else {
-    // ... schedule an urgent state update ...
+    // ……安排紧急状态更新……
   }
 }
 ```
