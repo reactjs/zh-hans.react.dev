@@ -120,7 +120,7 @@ import { fetchData } from './data.js';
 // 注意：这个组件使用了一个实验性的 API
 // 该 API 并未在 React 的稳定版本中可用
 
-// 在实际中你可以尝试已经
+// 在实际的例子中，你可以尝试已经
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
 export default function Albums({ artistId }) {
