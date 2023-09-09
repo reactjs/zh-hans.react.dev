@@ -216,10 +216,6 @@ function Button({ show, children }) {
 
 数据可以通过将 Promise 作为 prop 从 <CodeStep step={1}>服务器组件</CodeStep> 传递到 <CodeStep step={2}>客户端组件</CodeStep> 以从服务器流式传输到客户端。
 
-然后<CodeStep step={2}>客户端组件</CodeStep>将<CodeStep step={4}>作为属性接收到的Promise</CodeStep>传递给<CodeStep step={5}>`use`</CodeStep>钩子。这允许<CodeStep step={2}>客户端组件</CodeStep>从最初由服务器组件创建的<CodeStep step={4}>Promise</CodeStep>中读取值。
-
-Data can be streamed from the server to the client by passing a Promise as a prop from a <CodeStep step={1}>Server Component</CodeStep> to a <CodeStep step={2}>Client Component</CodeStep>.
-
 ```js [[1, 4, "App"], [2, 2, "Message"], [3, 7, "Suspense"], [4, 8, "messagePromise", 30], [4, 5, "messagePromise"]]
 import { fetchMessage } from './lib.js';
 import { Message } from './message.js';
