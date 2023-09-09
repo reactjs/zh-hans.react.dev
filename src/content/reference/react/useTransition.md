@@ -84,7 +84,7 @@ function TabContainer() {
 
 * transition 更新不能用于控制文本输入。
 
-* 目前，React 会批处理多个同时进行的 transition。这是一个限制，可能会在未来的版本中被删除。
+* 目前，React 会批处理多个同时进行的 transition。这是一个限制，可能会在未来版本中删除。
 
 ---
 
