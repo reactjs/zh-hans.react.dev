@@ -1352,7 +1352,7 @@ export default function Panel({ children }) {
 ```js data.js hidden
 // 注意：数据获取的方式取决于
 // 取决于与 Suspense 一同使用的框架
-// 通常，缓存逻辑会嵌入在框架内部。
+// 通常缓存逻辑是由框架内部处理的。
 
 let cache = new Map();
 
