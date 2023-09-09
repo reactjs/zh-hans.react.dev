@@ -50,7 +50,7 @@ function MessageComponent({ messagePromise }) {
 
 #### 返回值 {/*returns*/}
 
-`use` Hook 返回从资源中读取的值，类似于 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context) 的已解决值。
+`use` Hook 返回从资源中读取的值，类似于 fullfilled [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context)。
 
 #### 注意 {/*caveats*/}
 
