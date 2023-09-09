@@ -849,7 +849,7 @@ export default function ContactTab() {
 
 ```js data.js hidden
 // 注意：数据获取的方式取决于
-// 取决于与 Suspense 一同使用的框架
+// 与 Suspense 一同使用的框架
 // 通常，缓存逻辑会嵌入在框架内部。
 
 let cache = new Map();
