@@ -106,9 +106,6 @@ function TodoList({ todos, tab, theme }) {
 
 ---
 
-<<<<<<< HEAD
-## 其他 Hook {/*other-hooks*/}
-=======
 ## Resource Hooks {/*resource-hooks*/}
 
 *Resources* can be accessed by a component without having them as part of their state. For example, a component can read a message from a Promise or read styling information from a context.
@@ -127,8 +124,7 @@ function MessageComponent({ messagePromise }) {
 
 ---
 
-## Other Hooks {/*other-hooks*/}
->>>>>>> 742d2bff8f30effb905cc4a0fc972741c8ff1960
+## 其他 Hook {/*other-hooks*/}
 
 这些 Hook 主要对库的作者有用，在应用代码中并不常用。
 
