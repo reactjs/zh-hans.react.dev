@@ -5,13 +5,13 @@ canary: true
 
 <Canary>
 
-The `use` Hook is currently only available in React's canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+`use` Hook 仅在 canary 与 experimental 渠道中可用。参阅有关 [React 发布渠道的更多信息](/community/versioning-policy#all-release-channels) 以了解更多。
 
 </Canary>
 
 <Intro>
 
-`use` is a React Hook that lets you read the value of a resource like a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+`use` 是一个 React Hook，它允许你读取类似于 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context) 的资源的值。
 
 ```js
 const value = use(resource);
@@ -23,11 +23,11 @@ const value = use(resource);
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `use(resource)` {/*use*/}
 
-Call `use` in your component to read the value of a resource like a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+在组件中调用 `use` 以读取类似于 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context) 的资源的值。
 
 ```jsx
 import { use } from 'react';
@@ -38,33 +38,33 @@ function MessageComponent({ messagePromise }) {
   // ...
 ```
 
-Unlike all other React Hooks, `use` can be called within loops and conditional statements like `if`. Like other React Hooks, the function that calls `use` must be a Component or Hook.
+与所有其他 React Hook 不同，可以在循环和条件语句（如 `if`）中调用 `use`。不过与其他 React Hook 一样，调用 `use` 的函数必须是一个组件或 Hook。
 
-When called with a Promise, the `use` Hook integrates with [`Suspense`](/reference/react/Suspense) and [error boundaries](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). The component calling `use` *suspends* while the Promise passed to `use` is pending. If the component that calls `use` is wrapped in a Suspense boundary, the fallback will be displayed.  Once the Promise is resolved, the Suspense fallback is replaced by the rendered components using the data returned by the `use` Hook. If the Promise passed to `use` is rejected, the fallback of the nearest Error Boundary will be displayed.
+当使用 Promise 调用 `use` Hook 时，它会与 [`Suspense`](/reference/react/Suspense) 和 [错误边界](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) 集成。当传递给 `use` 的 Promise 处于 pending 时，调用 `use` 的组件也会 **挂起**。如果调用 `use` 的组件被包装在 Suspense 边界内，将显示 fallback UI。一旦 Promise 被解决，Suspense fallback 将被使用 `use` Hook 返回的数据替换。如果传递给 `use` 的 Promise 被拒绝，将显示最近错误边界的 fallback UI。
 
-[See more examples below.](#usage)
+[参见下方更多示例)(#usage)。
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `resource`: this is the source of the data you want to read a value from. A resource can be a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or a [context](/learn/passing-data-deeply-with-context).
+* `resource`：想要从中读取值的数据源。资源可以是 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context)。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-The `use` Hook returns the value that was read from the resource like the resolved value of a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+`use` Hook 返回从资源中读取的值，类似于 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context) 的已解决值。
 
-#### Caveats {/*caveats*/}
+#### 注意 {/*caveats*/}
 
-* The `use` Hook must be called inside a Component or a Hook.
-* When fetching data in a [Server Component](/reference/react/use-server), prefer `async` and `await` over `use`. `async` and `await` pick up rendering from the point where `await` was invoked, whereas `use` re-renders the component after the data is resolved.
-* Prefer creating Promises in [Server Components](/reference/react/use-server) and passing them to [Client Components](/reference/react/use-client) over creating Promises in Client Components. Promises created in Client Components are recreated on every render. Promises passed from a Server Component to a Client Component are stable across re-renders. [See this example](#streaming-data-from-server-to-client).
+* `use` Hook 必须在组件或 Hook 内部调用。
+* 在 [服务器组件](/reference/react/use-server) 中获取数据时，应优先使用 `async` 和 `await` 而不是 `use`。`async` 和 `await` 会从调用 `await` 的点开始渲染，而 `use` 会在数据解决后重新渲染组件。
+* 在 [服务器组件](/reference/react/use-server) 中创建 Promise 并将其传递给 [客户端组件](/reference/react/use-client) 优于在客户端组件中创建 Promise。在客户端组件中创建的 Promise 每次渲染都会重新创建。从服务器组件传递到客户端组件的 Promise 在重新渲染时保持稳定。[请参阅此示例](#streaming-data-from-server-to-client)。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Reading context with `use` {/*reading-context-with-use*/}
+### 使用 `use` 读取 context {/*reading-context-with-use*/}
 
-When a [context](/learn/passing-data-deeply-with-context) is passed to `use`, it works similarly to [`useContext`](/reference/react/useContext). While `useContext` must be called at the top level of your component, `use` can be called inside conditionals like `if` and loops like `for`. `use` is preferred over `useContext` because it is more flexible.
+当 [context](/learn/passing-data-deeply-with-context) 被传递给 `use` 时，它的工作方式类似于[`useContext`](/reference/react/useContext)。而 `useContext` 必须在组件的顶层调用，`use` 可以在条件语句如 `if` 和循环如 `for` 内调用。相比之下，`use` 比 `useContext`更加灵活。
 
 ```js [[2, 4, "theme"], [1, 4, "ThemeContext"]]
 import { use } from 'react';
@@ -74,9 +74,9 @@ function Button() {
   // ... 
 ```
 
-`use` returns the <CodeStep step={2}>context value</CodeStep> for the <CodeStep step={1}>context</CodeStep> you passed. To determine the context value, React searches the component tree and finds **the closest context provider above** for that particular context.
+`use` 返回传递的 <CodeStep step={1}>context</CodeStep> 的 <CodeStep step={2}>context 值</CodeStep>。React 会搜索组件树并找到 **最接近的 context provider** 以确定需要返回的 context 值。
 
-To pass context to a `Button`, wrap it or one of its parent components into the corresponding context provider.
+如果要将上下文传递给 `Button`，请将其或其父组件之一包装在相应的 context provdier 内。
 
 ```js [[1, 3, "ThemeContext"], [2, 3, "\\"dark\\""], [1, 5, "ThemeContext"]]
 function MyPage() {
@@ -88,13 +88,13 @@ function MyPage() {
 }
 
 function Form() {
-  // ... renders buttons inside ...
+  // ……在这里面渲染按钮……
 }
 ```
 
-It doesn't matter how many layers of components there are between the provider and the `Button`. When a `Button` *anywhere* inside of `Form` calls `use(ThemeContext)`, it will receive `"dark"` as the value.
+无论在 provider 和 `Button` 之间有多少层组件，都不会有影响。当 `Form` 内的任何位置的 `Button` 调用 `use(ThemeContext)` 时，它将接收到值为 `"dark"`。
 
-Unlike [`useContext`](/reference/react/useContext), <CodeStep step={2}>`use`</CodeStep> can be called in conditionals and loops like <CodeStep step={1}>`if`</CodeStep>.
+不同于 [`useContext`](/reference/react/useContext)，<CodeStep step={1}>`use`</CodeStep> 可以在条件语句和循环中调用，比如 <CodeStep step={2}>`if`</CodeStep>。
 
 ```js [[1, 2, "if"], [2, 3, "use"]]
 function HorizontalRule({ show }) {
@@ -106,11 +106,11 @@ function HorizontalRule({ show }) {
 }
 ```
 
-<CodeStep step={2}>`use`</CodeStep> is called from inside a <CodeStep step={1}>`if`</CodeStep> statement, allowing you to conditionally read values from a Context.
+<CodeStep step={1}>`if`</CodeStep> 语句内部调用了 <CodeStep step={2}>`use`</CodeStep>，允许有条件地从 context 中读取值。
 
 <Pitfall>
 
-Like `useContext`, `use(context)` always looks for the closest context provider *above* the component that calls it. It searches upwards and **does not** consider context providers in the component from which you're calling `use(context)`.
+与 `useContext` 类似，`use(context)` 始终查找调用它的组件上方最近的 context provider。它向上搜索并忽略调用 `use(context)` 的组件中的 context provider。
 
 </Pitfall>
 
@@ -212,7 +212,11 @@ function Button({ show, children }) {
 
 </Sandpack>
 
-### Streaming data from the server to the client {/*streaming-data-from-server-to-client*/}
+### 将数据从服务器流式传递给客户端 {/*streaming-data-from-server-to-client*/}
+
+数据可以通过将 Promise 作为 prop 从 <CodeStep step={1}>服务器组件</CodeStep> 传递到 <CodeStep step={2}>客户端组件</CodeStep> 以从服务器流式传输到客户端。
+
+然后<CodeStep step={2}>客户端组件</CodeStep>将<CodeStep step={4}>作为属性接收到的Promise</CodeStep>传递给<CodeStep step={5}>`use`</CodeStep>钩子。这允许<CodeStep step={2}>客户端组件</CodeStep>从最初由服务器组件创建的<CodeStep step={4}>Promise</CodeStep>中读取值。
 
 Data can be streamed from the server to the client by passing a Promise as a prop from a <CodeStep step={1}>Server Component</CodeStep> to a <CodeStep step={2}>Client Component</CodeStep>.
 
@@ -230,7 +234,7 @@ export default function App() {
 }
 ```
 
-The <CodeStep step={2}>Client Component</CodeStep> then takes <CodeStep step={4}>the Promise it received as a prop</CodeStep> and passes it to the <CodeStep step={5}>`use`</CodeStep> Hook. This allows the <CodeStep step={2}>Client Component</CodeStep> to read the value from <CodeStep step={4}>the Promise</CodeStep> that was initially created by the Server Component.
+<CodeStep step={2}>客户端组件</CodeStep>将<CodeStep step={4}> 从 prop 中接收到的 Promise </CodeStep> 传递给 <CodeStep step={5}>`use`</CodeStep> Hook。这允许 <CodeStep step={2}>客户端组件</CodeStep> 从最初由服务器组件创建的 <CodeStep step={4}>Promise</CodeStep> 中读取值。
 
 ```js [[2, 6, "Message"], [4, 6, "messagePromise"], [4, 7, "messagePromise"], [5, 7, "use"]]
 // message.js
@@ -243,7 +247,7 @@ export function Message({ messagePromise }) {
   return <p>Here is the message: {messageContent}</p>;
 }
 ```
-Because <CodeStep step={2}>`Message`</CodeStep> is wrapped in <CodeStep step={3}>[`Suspense`](/reference/react/Suspense)</CodeStep>, the fallback will be displayed until the Promise is resolved. When the Promise is resolved, the value will be read by the <CodeStep step={5}>`use`</CodeStep> Hook and the <CodeStep step={2}>`Message`</CodeStep> component will replace the Suspense fallback.
+由于 <CodeStep step={2}>`Message`</CodeStep> 被包裹在 <CodeStep step={3}>[`Suspense`](/reference/react/Suspense)</CodeStep> 中，所以在 Promise 解析之前将显示回退内容。当 Promise 解析完成时，<CodeStep step={5}>`use`</CodeStep> Hook 将读取值，然后 <CodeStep step={2}>`Message`</CodeStep> 组件将替换 Suspense fallback。
 
 <Sandpack>
 
@@ -291,16 +295,16 @@ export default function App() {
 ```
 
 ```js index.js hidden
-// TODO: update to import from stable
-// react instead of canary once the `use`
-// Hook is in a stable release of React
+// TODO: 在稳定版本中更新 import
+// 以替代此处 canary 版本中的导入方式，一旦 `use`
+// Hook 在 React 稳定版本中发布
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
-// TODO: update this example to use
-// the Codesandbox Server Component
-// demo environment once it is created
+// TODO: 更新此处示例
+// 以使用 Codesandbox 服务器组件
+// demo 环境，一旦其被创建
 import App from './App';
 
 const root = createRoot(document.getElementById('root'));
@@ -325,16 +329,16 @@ root.render(
 
 <Note>
 
-When passing a Promise from a Server Component to a Client Component, its resolved value must be serializable to pass between server and client. Data types like functions aren't serializable and cannot be the resolved value of such a Promise.
+将来自服务器组件的 Promise 传递至客户端组件时，其解析值必须可序列化以在服务器和客户端之间传递。像函数这样的数据类型不可序列化，不能成为这种 Promise 的解析值。
 
 </Note>
 
 
 <DeepDive>
 
-#### Should I resolve a Promise in a Server or Client Component? {/*resolve-promise-in-server-or-client-component*/}
+#### 应该在服务器组件还是客户端组件解析 Promise？ {/*resolve-promise-in-server-or-client-component*/}
 
-A Promise can be passed from a Server Component to a Client Component and resolved in the Client component with the `use` Hook. You can also resolve the Promise in a Server Component with `await` and pass the required data to the Client Component as a prop.
+Promise 可以从服务器组件传递至客户端组件，并且刻意在客户端组件中使用 `use` Hook 解析它。也可以在服务器组件中使用 `await` 解析 Promise，并将所需的数据作为 prop 传递给客户端组件。
 
 ```js
 export default function App() {
@@ -343,24 +347,24 @@ export default function App() {
 }
 ```
 
-But using `await` in a [Server Component](/reference/react/components#server-components) will block its rendering until the `await` statement is finished. Passing a Promise from a Server Component to a Client Component prevents the Promise from blocking the rendering of the Server Component.
+但是在 [服务器组件](/reference/react/components#server-components) 中使用 `await` 会在 `await` 执行完成前阻塞渲染。而将 Promise 从服务器组件传递到客户端组件可以防止 Promise 阻塞服务器组件渲染。
 
 </DeepDive>
 
-### Dealing with rejected Promises {/*dealing-with-rejected-promises*/}
+### 处理 rejected Promise {/*dealing-with-rejected-promises*/}
 
-In some cases a Promise passed to `use` could be rejected. You can handle rejected Promises by either:
+在某些情况下，传递给 `use` 的 Promise 可能会被拒绝（rejected）。可以通过以下方式处理 rejected Promise：
 
-1. [Displaying an error to users with error boundary.](#displaying-an-error-to-users-with-error-boundary)
-2. [Providing an alternative value with `Promise.catch`](#providing-an-alternative-value-with-promise-catch)
+1. [使用错误边界向用户显示错误信息](#displaying-an-error-to-users-with-error-boundary)。
+2. [使用 `Promise.catch` 提供替代值](#providing-an-alternative-value-with-promise-catch)。
 
 <Pitfall>
-`use` cannot be called in a try-catch block. Instead of a try-catch block [wrap your component in an Error Boundary](#displaying-an-error-to-users-with-error-boundary), or [provide an alternative value to use with the Promise's `.catch` method](#providing-an-alternative-value-with-promise-catch).
+不能在 try-catch 块中调用 `use`。可以选择将组件 [包装在错误边界中](#displaying-an-error-to-users-with-error-boundary)，或者 [使用 Promise `.catch` 方法提供替代值给 `use`](#providing-an-alternative-value-with-promise-catch)。
 </Pitfall>
 
-#### Displaying an error to users with a error boundary {/*displaying-an-error-to-users-with-error-boundary*/}
+#### 使用错误边界将错误展示给用户 {/*displaying-an-error-to-users-with-error-boundary*/}
 
-If you'd like to display an error to your users when a Promise is rejected, you can use an [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). To use an error boundary, wrap the component where you are calling the `use` Hook in an error boundary. If the Promise passed to `use` is rejected the fallback for the error boundary will be displayed.
+如果希望在 Promise 被拒绝（rejected）时向用户显示错误信息，可以使用 [错误边界](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)。如果需要使用错误边界，请将调用 `use` Hook 的组件包装在错误边界中。如果传递给 `use` 的 Promise 被拒绝（rejected），将显示错误边界的 fallback。
 
 <Sandpack>
 
@@ -411,16 +415,16 @@ export default function App() {
 ```
 
 ```js index.js hidden
-// TODO: update to import from stable
-// react instead of canary once the `use`
-// Hook is in a stable release of React
+// TODO: 在稳定版本中更新 import
+// 以替代此处 canary 版本中的导入方式，一旦 `use`
+// Hook 在 React 稳定版本中发布
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
-// TODO: update this example to use
-// the Codesandbox Server Component
-// demo environment once it is created
+// TODO: 更新此处示例
+// 以使用 Codesandbox 服务器组件
+// demo 环境，一旦其被创建
 import App from './App';
 
 const root = createRoot(document.getElementById('root'));
@@ -444,9 +448,9 @@ root.render(
 ```
 </Sandpack>
 
-#### Providing an alternative value with `Promise.catch` {/*providing-an-alternative-value-with-promise-catch*/}
+#### 使用 `Promise.catch` 提供替代值 {/*providing-an-alternative-value-with-promise-catch*/}
 
-If you'd like to provide an alternative value when the Promise passed to `use` is rejected you can use the Promise's <CodeStep step={1}>[`catch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)</CodeStep> method.
+如果希望在传递给 `use` 的 Promise 被拒绝（rejected）时提供替代值，可以使用 Promise 的 <CodeStep step={1}>[`catch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)</CodeStep> 方法。
 
 ```js [[1, 6, "catch"],[2, 7, "return"]]
 import { Message } from './message.js';
@@ -466,31 +470,31 @@ export default function App() {
 }
 ```
 
-To use the Promise's <CodeStep step={1}>`catch`</CodeStep> method, call <CodeStep step={1}>`catch`</CodeStep> on the Promise object. <CodeStep step={1}>`catch`</CodeStep> takes a single argument: a function that takes an error message as an argument. Whatever is <CodeStep step={2}>returned</CodeStep> by the function passed to <CodeStep step={1}>`catch`</CodeStep> will be used as the resolved value of the Promise.
+要使用 Promise 的 <CodeStep step={1}>`catch`</CodeStep> 方法，请在 Promise 对象上调用 <CodeStep step={1}>`catch`</CodeStep>。<CodeStep step={1}>`catch`</CodeStep> 接受一个参数：一个接受错误消息作为参数的函数。由传递给 <CodeStep step={1}>`catch`</CodeStep> 的函数 <CodeStep step={2}>返回</CodeStep> 的任何内容都将视为 Promise 的解决值。<CodeStep step={2}>返回</CodeStep>。
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 疑难解答 {/*troubleshooting*/}
 
 ### "Suspense Exception: This is not a real error!" {/*suspense-exception-error*/}
 
-You are either calling `use` outside of a React component or Hook function, or calling `use` in a try–catch block. If you are calling `use` inside a try–catch block, wrap your component in an error boundary, or call the Promise's `catch` to catch the error and resolve the Promise with another value. [See these examples](#dealing-with-rejected-promises).
+要么在 React 组件或 Hook 函数之外调用 `use`，或者在 try-catch 块中调用 `use`。如果你在 try-catch 块中调用 `use`，请将组件包裹在错误边界中，或者使用 Promise 的 `catch` 方法来捕获错误并提供给替代值。[参见这些示例](#dealing-with-rejected-promises)。
 
-If you are calling `use` outside a React component or Hook function, move the `use` call to a React component or Hook function.
+如果在 React 组件或 Hook 函数之外调用 `use`，请将 `use` 调用移至 React 组件或 Hook 函数中。
 
 ```jsx
 function MessageComponent({messagePromise}) {
   function download() {
-    // ❌ the function calling `use` is not a Component or Hook
+    // ❌ 调用 `use` 的函数不是组件或者 Hook
     const message = use(messagePromise);
     // ...
 ```
 
-Instead, call `use` outside any component closures, where the function that calls `use` is a component or Hook.
+相反，请在任何组件封闭区域之外调用 `use`，而调用 `use` 的函数本身应为组件或 Hook。
 
 ```jsx
 function MessageComponent({messagePromise}) {
-  // ✅ `use` is being called from a component. 
+  // ✅ `use` 正在组件内被调用
   const message = use(messagePromise);
   // ...
 ```
