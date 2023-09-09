@@ -94,7 +94,7 @@ function Form() {
 
 无论在 provider 和 `Button` 之间有多少层组件，都不会有影响。当 `Form` 内的任何位置的 `Button` 调用 `use(ThemeContext)` 时，它将接收到值为 `"dark"`。
 
-不同于 [`useContext`](/reference/react/useContext)，<CodeStep step={1}>`use`</CodeStep> 可以在条件语句和循环中调用，比如 <CodeStep step={2}>`if`</CodeStep>。
+不同于 [`useContext`](/reference/react/useContext)，<CodeStep step={2}>`use`</CodeStep> 可以在条件语句和循环中调用，比如 <CodeStep step={1}>`if`</CodeStep>。
 
 ```js [[1, 2, "if"], [2, 3, "use"]]
 function HorizontalRule({ show }) {
