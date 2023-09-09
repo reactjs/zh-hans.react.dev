@@ -243,7 +243,7 @@ export function Message({ messagePromise }) {
   return <p>Here is the message: {messageContent}</p>;
 }
 ```
-由于 <CodeStep step={2}>`Message`</CodeStep> 被包裹在 <CodeStep step={3}>[`Suspense`](/reference/react/Suspense)</CodeStep> 中，所以在 Promise 解析之前将显示回退内容。当 Promise 解析完成时，<CodeStep step={5}>`use`</CodeStep> Hook 将读取值，然后 <CodeStep step={2}>`Message`</CodeStep> 组件将替换 Suspense fallback。
+由于 <CodeStep step={2}>`Message`</CodeStep> 被包裹在 <CodeStep step={3}>[`Suspense`](/reference/react/Suspense)</CodeStep> 中，所以在 Promise 解决之前将显示 fallback。当 Promise 被解决后，<CodeStep step={5}>`use`</CodeStep> Hook 将读取值，然后 <CodeStep step={2}>`Message`</CodeStep> 组件将替换 Suspense fallback。
 
 <Sandpack>
 
