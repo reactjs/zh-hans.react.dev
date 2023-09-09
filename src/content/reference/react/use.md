@@ -55,7 +55,7 @@ function MessageComponent({ messagePromise }) {
 #### 注意 {/*caveats*/}
 
 * `use` Hook 必须在组件或 Hook 内部调用。
-* 在 [服务器组件](/reference/react/use-server) 中获取数据时，应优先使用 `async` 和 `await` 而不是 `use`。`async` 和 `await` 会从调用 `await` 的点开始渲染，而 `use` 会在数据解决后重新渲染组件。
+* 在 [服务器组件](/reference/react/use-server) 中获取数据时，应优先使用 `async` 和 `await` 而不是 `use`。`async` 和 `await` 会从调用 `await` 的点开始渲染，而 `use` 会在数据获取到后重新渲染组件。
 * 在 [服务器组件](/reference/react/use-server) 中创建 Promise 并将其传递给 [客户端组件](/reference/react/use-client) 优于在客户端组件中创建 Promise。在客户端组件中创建的 Promise 每次渲染都会重新创建。从服务器组件传递到客户端组件的 Promise 在重新渲染时保持稳定。[请参阅此示例](#streaming-data-from-server-to-client)。
 
 ---
