@@ -1586,7 +1586,7 @@ startTransition(() => {
 
 ### 我想在组件外部调用 `useTransition` {/*i-want-to-call-usetransition-from-outside-a-component*/}
 
-`useTransition` 是一个 Hook，因此不能在组件外部调用 `useTransition`；否则，请使用独立的 [`startTransition`](/reference/react/startTransition) 方法。它的工作方式相同，但不提供 `isPending` 指示器。
+`useTransition` 是一个 Hook，因此不能在组件外部调用。请使用独立的 [`startTransition`](/reference/react/startTransition) 方法。它们的工作方式相同，但不提供 `isPending` 标记。
 
 ---
 
