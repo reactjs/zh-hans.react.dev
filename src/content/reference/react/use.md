@@ -11,7 +11,7 @@ canary: true
 
 <Intro>
 
-`use` 是一个 React Hook，它可以让你读取类似于 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context) 的资源的值。
+`use` 是一个 React Hook，它可以让你读取类似于 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context) 的资源的值。
 
 ```js
 const value = use(resource);
@@ -27,7 +27,7 @@ const value = use(resource);
 
 ### `use(resource)` {/*use*/}
 
-在组件中调用 `use` 以读取类似于 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context) 的资源的值。
+在组件中调用 `use` 以读取类似于 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context) 的资源的值。
 
 ```jsx
 import { use } from 'react';
@@ -46,11 +46,11 @@ function MessageComponent({ messagePromise }) {
 
 #### 参数 {/*parameters*/}
 
-* `resource`：想要从中读取值的数据源。资源可以是 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context)。
+* `resource`：想要从中读取值的数据源。资源可以是 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context)。
 
 #### 返回值 {/*returns*/}
 
-`use` Hook 返回从资源中读取的值，类似于 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context) 的已解决值。
+`use` Hook 返回从资源中读取的值，类似于 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context) 的已解决值。
 
 #### 注意 {/*caveats*/}
 
@@ -446,7 +446,7 @@ root.render(
 
 #### 使用 `Promise.catch` 提供替代值 {/*providing-an-alternative-value-with-promise-catch*/}
 
-如果希望在传递给 `use` 的 Promise 被拒绝（rejected）时提供替代值，可以使用 Promise 的 <CodeStep step={1}>[`catch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)</CodeStep> 方法。
+如果希望在传递给 `use` 的 Promise 被拒绝（rejected）时提供替代值，可以使用 Promise 的 <CodeStep step={1}>[`catch`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)</CodeStep> 方法。
 
 ```js [[1, 6, "catch"],[2, 7, "return"]]
 import { Message } from './message.js';
