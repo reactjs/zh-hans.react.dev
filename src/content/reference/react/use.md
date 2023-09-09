@@ -38,7 +38,7 @@ function MessageComponent({ messagePromise }) {
   // ...
 ```
 
-与所有其他 React Hook 不同，可以在循环和条件语句（如 `if`）中调用 `use`。不过与其他 React Hook 一样，调用 `use` 的函数必须是一个组件或 Hook。
+与其他 React Hook 不同的是，可以在循环和条件语句（如 `if`）中调用 `use`。但需要注意的是，调用 `use` 的函数仍然必须是一个组件或 Hook。
 
 当使用 Promise 调用 `use` Hook 时，它会与 [`Suspense`](/reference/react/Suspense) 和 [错误边界](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) 集成。当传递给 `use` 的 Promise 处于 pending 时，调用 `use` 的组件也会 **挂起**。如果调用 `use` 的组件被包装在 Suspense 边界内，将显示 fallback UI。一旦 Promise 被解决，Suspense fallback 将被使用 `use` Hook 返回的数据替换。如果传递给 `use` 的 Promise 被拒绝，将显示最近错误边界的 fallback UI。
 
