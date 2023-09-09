@@ -562,7 +562,7 @@ b { display: inline-block; margin-right: 10px; }
 
 ### 在 transition 期间显示待处理的视觉状态 {/*displaying-a-pending-visual-state-during-the-transition*/}
 
-你可以使用 `useTransition` 返回的 `isPending` 布尔值来向用户表明存在 transition 正在进行中。例如，选项卡按钮可以有一个特殊的“pending”视觉状态：
+你可以使用 `useTransition` 返回的 `isPending` 布尔值来向用户表明当前处于 transition 中。例如，选项卡按钮可以有一个特殊的“pending”视觉状态：
 
 ```js {4-6}
 function TabButton({ children, isActive, onClick }) {
