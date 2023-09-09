@@ -1505,7 +1505,7 @@ main {
 
 ### 在 transition 中无法更新输入框内容 {/*updating-an-input-in-a-transition-doesnt-work*/}
 
-不应在将控制输入框的状态变量标记为 transition：
+不应将控制输入框的状态变量标记为 transition：
 
 ```js {4,10}
 const [text, setText] = useState('');
