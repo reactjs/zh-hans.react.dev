@@ -1523,7 +1523,7 @@ return <input value={text} onChange={handleChange} />;
 这是因为 transition 是非阻塞的，但是在响应更改事件时更新输入应该是同步的。如果想在输入时运行一个 transition，那么有两种做法：
 
 1. 声明两个独立的状态变量：一个用于输入状态（它总是同步更新），另一个用于在 transition 中更新。这样，便可以使用同步状态控制输入，并将用于 transition 的状态变量（它将“滞后”于输入）传递给其余的渲染逻辑。
-2. 或者，使用一个状态变量，并添加 [`useDeferredValue`](/reference/react/useDeferredValue)，它将“滞后”于实际值。它会自动触发非阻塞的重新渲染以“追赶”新值。
+2. 或者使用一个状态变量，并添加 [`useDeferredValue`](/reference/react/useDeferredValue)，它将“滞后”于实际值，并自动触发非阻塞的重新渲染以“追赶”新值。
 
 ---
 
