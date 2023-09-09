@@ -431,7 +431,7 @@ export default function TabButton({ children, isActive, onClick }) {
 }
 ```
 
-由于父组件的状态更新在 `onClick` 事件处理程序内，所以该状态更新会被标记为 transition。这就是为什么，就像之前的例子一样，点击“Posts”后可以立即点击“Contact”。由于更新选定选项卡被标记为了 transition，因此它不会阻止用户交互。
+由于父组件的状态更新在 `onClick` 事件处理程序内，所以该状态更新会被标记为 transition。这就是为什么可以在点击“Posts”后立即点击“Contact”。由于更新选定选项卡被标记为了 transition，因此它不会阻止用户交互。
 
 <Sandpack>
 
