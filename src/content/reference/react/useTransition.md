@@ -126,7 +126,7 @@ function TabContainer() {
 
 transition 可以使用户界面的更新在慢速设备上仍保持响应性。
 
-通过 transition，UI 仍将在重新渲染过程中保持响应性。例如，如果用户点击一个选项卡，但改变了主意并点击另一个选项卡，他们可以在不等待第一个重新渲染完成的情况下完成操作。
+通过 transition，UI 仍将在重新渲染过程中保持响应性。例如用户点击一个选项卡，但改变了主意并点击另一个选项卡，他们可以在不等待第一个重新渲染完成的情况下完成操作。
 
 <Recipes titleText="使用 useTransition 与寻常状态更新的区别" titleId="examples">
 
