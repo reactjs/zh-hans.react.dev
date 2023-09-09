@@ -1511,7 +1511,7 @@ main {
 const [text, setText] = useState('');
 // ...
 function handleChange(e) {
-  // ❌ 不能将受控输入框的状态变量标记为 transition
+  // ❌ 不应将受控输入框的状态变量标记为 transition
   startTransition(() => {
     setText(e.target.value);
   });
