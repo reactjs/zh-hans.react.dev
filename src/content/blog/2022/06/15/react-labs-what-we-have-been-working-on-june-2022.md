@@ -18,9 +18,9 @@ title: "React Labs：我们正在努力的方向——2022 年 6 月"
 
 我们并不在此给出具有明确时间表的路线图：许多项目正在积极研究中，很难确定具体的发布日期。根据我们的学习情况，它们甚至可能在当前迭代中不会发布。相反，我们想与你分享我们正在积极思考的问题领域以及我们迄今为止学到的东西。
 
-## 服务端组件 {/*server-components*/}
+## 服务器组件 {/*server-components*/}
 
-我们在 2020 年 12 月发布了 [React 服务端组件](https://legacy.reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html)（RSC）的实验性演示。从那时起，我们一直在完成 React 18 中的依赖项，并根据实验性反馈进行改进。
+我们在 2020 年 12 月发布了 [React 服务器组件](https://legacy.reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html)（RSC）的实验性演示。从那时起，我们一直在完成 React 18 中的依赖项，并根据实验性反馈进行改进。
 
 特别地，我们放弃了拥有分叉 I/O 库（例如 react-fetch）的想法，转而采用了具有更好兼容性的 async/await 模型。这从技术上讲并不阻碍 RSC 的发布，因为还可以使用路由器进行数据获取。另一个变化是我们也放弃了文件扩展名的方法，而是采用了 [注释边界](https://github.com/reactjs/rfcs/pull/189#issuecomment-1116482278) 的方式。
 
@@ -28,7 +28,7 @@ title: "React Labs：我们正在努力的方向——2022 年 6 月"
 
 ## 资源加载 {/*asset-loading*/}
 
-目前，像脚本、外部样式、字体和图像等资源通常是通过预加载和外部系统加载的。这可能在新的环境（如流媒体、服务端组件等）之间协调起来比较棘手。
+目前，像脚本、外部样式、字体和图像等资源通常是通过预加载和外部系统加载的。这可能在新的环境（如流媒体、服务器组件等）之间协调起来比较棘手。
 
 我们正在考虑通过 React API 添加预加载和加载去重的外部资源的 API，以在所有 React 环境中使用。
 
