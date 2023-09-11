@@ -126,7 +126,7 @@ function MessageComponent({ messagePromise }) {
 
 ## 其他 Hook {/*other-hooks*/}
 
-这些 Hook 主要对库作者有用，但是在应用代码中并不常用。
+这些 Hook 主要对库作者有用，而不常用于应用程序代码。
 
 * [`useDebugValue`](/reference/react/useDebugValue) 允许在 React 开发者工具中为自定义 Hook 添加一个标签。
 * [`useId`](/reference/react/useId) 允许组件绑定一个唯一 ID，其通常与可访问性 API 一起使用。
