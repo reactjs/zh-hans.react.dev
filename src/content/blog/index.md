@@ -18,7 +18,7 @@ title: React Blog
 
 <BlogCard title="React Labs：我们正在努力的方向——2023 年 3 月" date="2023 年 3 月 22 日" url="/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023">
 
-在 React Labs 的文章中，我们讲述了正在进行研究和开发的项目。自上次更新以来，我们在 React 服务端组件、资产加载、优化编译器、离屏渲染和过渡追踪方面取得了重要进展，并希望分享我们所学到的知识。
+在 React Labs 的文章中，我们讲述了正在进行研究和开发的项目。自上次更新以来，我们在 React 服务器组件、资产加载、优化编译器、离屏渲染和过渡追踪方面取得了重要进展，并希望分享我们所学到的知识。
 
 </BlogCard>
 
@@ -54,8 +54,8 @@ React 团队很高兴分享一些更新：
 - 我们发布了 React 18 Alpha，以便库作者可以尝试并提供反馈……
 </BlogCard>
 
-<BlogCard title="介绍零打包大小的 React 服务端组件" date="2020 年 12 月 21 日" url="/blog/2020/12/21/data-fetching-with-react-server-components">
-2020 年是漫长的一年。随着它的结束，我们想在节日里分享一份特别的更新，介绍我们对零打包大小的 React 服务端组件的研究。为了介绍 React 服务端组件，我们准备了一次演讲和演示。如果你愿意，在假期期间或新年工作重新开始后查看它们……
+<BlogCard title="介绍零打包大小的 React 服务器组件" date="2020 年 12 月 21 日" url="/blog/2020/12/21/data-fetching-with-react-server-components">
+2020 年是漫长的一年。随着它的结束，我们想在节日里分享一份特别的更新，介绍我们对零打包大小的 React 服务器组件的研究。为了介绍 React 服务器组件，我们准备了一次演讲和演示。如果你愿意，在假期期间或新年工作重新开始后查看它们……
 </BlogCard>
 
 </div>
