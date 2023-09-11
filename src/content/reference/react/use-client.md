@@ -52,9 +52,9 @@ export default function RichTextEditor(props) {
 ## 用法 {/*usage*/}
 
 <Wip>
-This section is a work in progress. 
+此章节仍在编写中。
 
-This API can be used in any framework that supports React Server Components. You may find additional documentation from them.
-* [Next.js documentation](https://nextjs.org/docs/getting-started/react-essentials)
-* More coming soon
+此 API 可以在任何支持 React 服务器组件的框架中使用，你可以从这些框架的相关文档中找到额外的内容。
+* [Next.js 文档](https://nextjs.org/docs/getting-started/react-essentials)
+* 敬请期待。
 </Wip>
