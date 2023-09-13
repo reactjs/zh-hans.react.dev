@@ -1,10 +1,10 @@
 ---
-title: Server React DOM APIs
+title: Server React DOM API
 ---
 
 <Intro>
 
-`react-dom/server` API 允许你在服务器上将 React 组件渲染为 HTML。这些 API 仅在顶层应用程序服务器上使用，用于生成初始 HTML。有的 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks) 可能会为你调用相关 API，大多数组件不需要导入或使用这些 API。
+`react-dom/server` API 允许你在服务器上将 React 组件渲染为 HTML。这些 API 仅在服务器应用程序顶层调用，以生成初始 HTML。有的 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks) 可能会为你调用相关 API，大多数组件不需要导入或使用这些 API。
 
 </Intro>
 
@@ -21,9 +21,9 @@ title: Server React DOM APIs
 
 ## Web 流服务器 API {/*server-apis-for-web-streams*/}
 
-以下方法仅在具有 [Web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API) 的环境中可用，包括浏览器、Deno，以及一些现代 edge 运行时：
+以下方法仅在具有 [web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API) 的环境中可用，包括浏览器、Deno，以及一些现代 edge 运行时：
 
-+   [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) 将 React 树渲染为 [可读的 Web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream)。
++   [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) 将 React 树渲染为 [可读的 web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream)。
 
 ---
 
@@ -46,4 +46,4 @@ title: Server React DOM APIs
 
 </Deprecated>
 
-* [`renderToNodeStream`](/reference/react-dom/server/renderToNodeStream) 为 [Node.js 只读流](https://nodejs.org/api/stream.html#readable-streams) 渲染 React 树（已弃用）。
+* [`renderToNodeStream`](/reference/react-dom/server/renderToNodeStream) 能够将 React 树渲染为 [Node.js 只读流](https://nodejs.org/api/stream.html#readable-streams)（已弃用）。
