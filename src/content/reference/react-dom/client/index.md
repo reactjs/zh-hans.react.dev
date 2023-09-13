@@ -1,5 +1,5 @@
 ---
-title: 客户端 React DOM APIs
+title: Client React DOM API
 translators:
   - neo-of-matrix
 ---
