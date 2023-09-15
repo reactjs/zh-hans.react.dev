@@ -812,8 +812,8 @@ class Rectangle extends Component {
 
 #### 参数 {/*unsafe_componentwillreceiveprops-parameters*/}
 
-- `nextProps`：组件将从其父组件接收的下一个 props。将 `nextProps` 与 [`this.props`](#props) 进行比较以确定发生了什么变化。
-- `nextContext`：组件将从最近的提供者处接收的下一个 props。将 `nextContext` 与 [`this.context`](#context) 进行比较以确定发生了什么变化。仅当你指定 [`static contextType`](#static-contexttype)（更新的）或 [`static contextTypes`](#static-contexttypes)（旧版）时才可用。
+- `nextProps`：组件即将从父组件接收的下一个 props。可以将 `nextProps` 与 [`this.props`](#props) 进行比较以确定具体是什么地方发生了变化。
+- `nextContext`：组件即将从最近的 provider 中接收的下一个 context。可以将 `nextContext` 与 [`this.context`](#context) 进行比较以确定具体是什么地方发生了变化。仅在指定 [`static contextType`](#static-contexttype)）（最新用法）或 [`static contextTypes`](#static-contexttypes) 时可用（传统用法）。
 
 #### 返回值 {/*unsafe_componentwillreceiveprops-returns*/}
 
