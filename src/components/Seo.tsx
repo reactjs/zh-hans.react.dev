@@ -21,18 +21,11 @@ const deployedTranslations = [
   'en',
   'zh-hans',
   'es',
+  'fr',
   // We'll add more languages when they have enough content.
   // Please DO NOT edit this list without a discussion in the reactjs/react.dev repo.
   // It must be the same between all translations.
 ];
-
-let shouldPreventIndexing = false;
-if (
-  siteConfig.languageCode !== 'en' &&
-  !deployedTranslations.includes(siteConfig.languageCode)
-) {
-  shouldPreventIndexing = true;
-}
 
 function getDomain(languageCode: string): string {
   const subdomain = languageCode === 'en' ? '' : languageCode + '.';
@@ -69,7 +62,6 @@ export const Seo = withRouter(
           href={canonicalUrl.replace(siteDomain, getDomain('en'))}
           hrefLang="x-default"
         />
-        {shouldPreventIndexing && <meta name="robots" content="noindex" />}
         {deployedTranslations.map((languageCode) => (
           <link
             key={'alt-' + languageCode}
