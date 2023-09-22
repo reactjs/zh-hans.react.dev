@@ -26,10 +26,13 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Dan 在意外发现 Microsoft PowerPoint 内部的 Visual Basic 后进入了编程行业。他发现了自己的真正使命，就是将 [Sebastian](#sebastian-markbåge) 的推特转化为长篇博客文章。Dan 偶尔会通过整局游戏都躲在草丛里的方式，在《堡垒之夜》中赢得胜利。
 </TeamMember>
 
+<<<<<<< HEAD
 <TeamMember name="Dave McCabe" permalink="dave-mccabe" photo="/images/team/dave-mccabe.jpg" github="davidmccabe" twitter="mcc_abe" title="Engineer at Meta">
     作为一名工程师和一个热爱户外活动的人，David 一直是在边晒太阳边编程这个领域中的创新者。他不仅喜欢在户外视频通话中展示独特的背景给同事们带来惊喜，还享受在阳光明媚的草地上弹吉他，以及练习武术（虽然这个还是在室内进行，还需要多多练习）。
 </TeamMember>
 
+=======
+>>>>>>> bad7e90edfb9d5fbf22ce81a0135a72be1667676
 <TeamMember name="Eli White" permalink="eli-white" photo="/images/team/eli-white.jpg" github="TheSavior" twitter="Eli_White" title="Engineering Manager at Meta">
     Eli 因为在中学时期的黑客行为被学校暂时开除，从此踏入了编程的世界。自 2017 年起，他就一直致力于 React 和 React Native 的工作。他是个美食爱好者，特别喜欢冰淇淋和苹果派。你常常能发现 Eli 在尝试一些别出心裁的活动，如跑酷、室内跳伞，以及空中丝绸表演。
 </TeamMember>
@@ -54,10 +57,13 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Lauren 的编程生涯在她首次发现 `<marquee>` 标签时达到了巅峰，自此以后，她就一直追求这种感觉。在为 React 除错之余，她喜欢在聊天中发送风趣的表情包，还喜欢和伴侣以及她的狗狗 Zelda 一起玩各种电子游戏。
 </TeamMember>
 
+<<<<<<< HEAD
 <TeamMember name="Luna Ruan" permalink="luna-ruan" photo="/images/team/lunaruan.jpg" github="lunaruan" twitter="lunaruan" title="Independent Engineer">
     Luna 最初学习编程是因为她以为这将使她能创造视频游戏。然而，最后她却在 Pinterest 的网络应用和现如今的 React 项目上付出了大量努力。虽然 Luna 不再希望制作视频游戏，但如果有一天她觉得生活乏味，她计划会尝试一些创意写作。
 </TeamMember>
 
+=======
+>>>>>>> bad7e90edfb9d5fbf22ce81a0135a72be1667676
 <TeamMember name="Luna Wei" permalink="luna-wei" photo="/images/team/luna-wei.jpg" github="lunaleaps" twitter="lunaleaps" title="Engineer at Meta">
     Luna 在仅有6岁的时候，就从父亲那里学到了 Python 的基本原理。从那以后，她的学习之路一直畅通无阻。Luna 有志成为 Z 世代的一员，她的成功之路充满了对环境的倡导，城市园艺的热爱，以及与她的 Voo-Doo'd（如图）共享的宝贵时光。
 </TeamMember>
@@ -66,10 +72,13 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Matt 偶然地踏入了编程领域，并从那时起就对于在社区中创造一些个人无法独立完成的事物产生了浓厚兴趣。在加入 React 之前，他在 YouTube、Google Assistant、Fuchsia、Google Cloud AI 以及 Evernote 有过工作经验。在他不忙于创造更好的开发工具时，他喜欢享受山区的美景，欣赏爵士乐，以及陪伴他的家人。
 </TeamMember>
 
+<<<<<<< HEAD
 <TeamMember name="Mengdi Chen" permalink="mengdi-chen" photo="/images/team/mengdi-chen.jpg" github="mondaychen" twitter="mengdi_en" title="Engineer at Meta">
     Mengdi 在攻读数字艺术学位时，因为他的 CSS 代码即使在 IE6 上也能完美运行，所以对自己的前端技能颇为自负。但是，React 很快为他打开了新的编程大门，他从那时起便一直梦想能够加入 React 团队。在工作之外，他经常忙于追逐自己的两个孩子，或者收集一些奇特的菜谱。
 </TeamMember>
 
+=======
+>>>>>>> bad7e90edfb9d5fbf22ce81a0135a72be1667676
 <TeamMember name="Mofei Zhang" permalink="mofei-zhang" photo="/images/team/mofei-zhang.png" github="mofeiZ" title="Engineer at Meta">
     Mofei 在意识到编程可以帮她在视频游戏中作弊时开始了编程生涯。她在本科和研究生期间专注于操作系统的研究，但现在她发现自己非常享受在 React上 的编程工作。在工作之外，她喜欢解决攀岩中遇到的问题，并且正在计划她的下一次背包旅行。
 </TeamMember>
@@ -86,10 +95,13 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     尽管 Sathya 在学校时对《龙书》并无好感，但奇妙的是，他的整个职业生涯都与编译器紧密相连。当他不忙于编译 React 组件的时候，他可能正品尝一杯咖啡，或者正在享受又一份美味的 Dosa。
 </TeamMember>
 
+<<<<<<< HEAD
 <TeamMember name="Sean Keegan" permalink="sean-keegan" photo="/images/team/sean-keegan.jpg" github="seanryankeegan" twitter="DevRelSean" title="Developer Advocate at Meta">
     Sean 最初是一名数学老师，在回忆起他必修的一门计算机科学引论课时，他想到：“那其实挺有趣的！”经过一次编程训练营和几份科技工作后，Sean 发现了开发者倡导这个领域并且一发不可收拾。工作之外，Sean 喜欢玩飞盘，视频游戏，以及研究（但很少实践）照顾他的室内植物的更好方法。
 </TeamMember>
 
+=======
+>>>>>>> bad7e90edfb9d5fbf22ce81a0135a72be1667676
 <TeamMember name="Sebastian Markbåge" permalink="sebastian-markbåge" photo="/images/team/sebmarkbage.jpg" github="sebmarkbage" twitter="sebmarkbage" title="Engineer at Vercel">
     Sebastian 主修心理学。他通常比较沉默寡言。即使他说些什么，我们其他人通常也要等几个月后才能理解他的意思。他的姓氏正确的发音是“mark-boa-geh”，但出于实用考虑，他接受了“mark-beige”的发音——这也是他处理 React 问题的方式。
 </TeamMember>
