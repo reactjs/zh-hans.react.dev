@@ -62,11 +62,7 @@ function ChatRoom({ roomId }) {
 
 * 如果你的一些依赖项是组件内部定义的对象或函数，则存在这样的风险，即它们将 **导致 Effect 过多地重新运行**。要解决这个问题，请删除不必要的 [对象](/reference/react/useEffect#removing-unnecessary-object-dependencies) 和 [函数](/reference/react/useEffect#removing-unnecessary-function-dependencies) 依赖项。你还可以 [抽离状态更新](/reference/react/useEffect#updating-state-based-on-previous-state-from-an-effect) 和 [非响应式的逻辑](/reference/react/useEffect#reading-the-latest-props-and-state-from-an-effect) 到 Effect 之外。
 
-<<<<<<< HEAD
 * 如果你的 Effect 不是由交互（比如点击）引起的，那么 React 会让浏览器 **在运行 Effect 前先绘制出更新后的屏幕**。如果你的 Effect 正在做一些视觉相关的事情（例如，定位一个 tooltip），并且有显著的延迟（例如，它会闪烁），那么将 `useEffect` 替换为 [`useLayoutEffect`](/reference/react/useLayoutEffect)。
-=======
-* If your Effect wasn't caused by an interaction (like a click), React will generally let the browser **paint the updated screen first before running your Effect.** If your Effect is doing something visual (for example, positioning a tooltip), and the delay is noticeable (for example, it flickers), replace `useEffect` with [`useLayoutEffect`.](/reference/react/useLayoutEffect)
->>>>>>> 2390627c9cb305216e6bd56e67c6603a89e76e7f
 
 * 即使你的 Effect 是由一个交互（比如点击）引起的，**浏览器也可能在处理 Effect 内部的状态更新之前重新绘制屏幕**。通常，这就是你想要的。但是，如果你一定要阻止浏览器重新绘制屏幕，则需要用 [`useLayoutEffect`](/reference/react/useLayoutEffect) 替换 `useEffect`。
 
