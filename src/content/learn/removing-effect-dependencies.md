@@ -1612,11 +1612,7 @@ label, button { display: block; margin-bottom: 5px; }
 
 Effect 因依赖于 `options` 对象，导致其重新运行。对象可能会在无意中被重新创建，你应该尽可能避免将它们作为 Effect 的依赖。
 
-<<<<<<< HEAD
 侵入性最小的修复方法是在 Effect 外部读取 `roomId` 和 `serverUrl`，然后使 Effect 依赖于这些原始值（不能无意地更改）。在 Effect 内部，创建一个对象并将其传递给 `createConnection`：
-=======
-The least invasive fix is to read `roomId` and `serverUrl` right outside the Effect, and then make the Effect depend on those primitive values (which can't change unintentionally). Inside the Effect, create an object and pass it to `createConnection`:
->>>>>>> 2390627c9cb305216e6bd56e67c6603a89e76e7f
 
 <Sandpack>
 
