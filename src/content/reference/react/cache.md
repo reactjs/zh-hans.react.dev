@@ -8,11 +8,6 @@ canary: true
 * `cache` 仅供与 [React 服务器组件](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) 一起使用。请参阅支持 React 服务器组件的 [框架](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)。
 
 * `cache` 仅在 React 的 [Canary](/community/versioning-policy#canary-channel) 和 [experimental](/community/versioning-policy#experimental-channel) 渠道中可用。在将 `cache` 用于生产环境之前，请确保了解其限制。查看此处了解有关 [React 发布渠道的更多信息](/community/versioning-policy#all-release-channels)。
-=======
-* `cache` is only for use with [React Server Components](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components). See [frameworks](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) that support React Server Components.
-
-* `cache` is only available in React’s [Canary](/community/versioning-policy#canary-channel) and [experimental](/community/versioning-policy#experimental-channel) channels. Please ensure you understand the limitations before using `cache` in production. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
->>>>>>> 2390627c9cb305216e6bd56e67c6603a89e76e7f
 </Canary>
 
 <Intro>
@@ -71,17 +66,10 @@ function Chart({data}) {
 
 [//]: # 'TODO: 一旦 https://github.com/reactjs/react.dev/pull/6177 被合并，将为服务器组件/客户端组件（Server/Client Component）引用添加链接'
 
-<<<<<<< HEAD
 - React 将在每次服务器请求时使所有记忆化函数的缓存失效。
 - 每次调用 `cache` 都会创建一个新函数。这意味着多次使用相同的函数调用 `cache` 将返回不共享相同缓存的不同记忆化函数。
 - `cachedFn` 还会缓存错误。如果对于某些参数 `fn` 抛出错误，错误将被缓存，当使用相同参数调用 `cachedFn` 时，相同的错误将被重新抛出。
 - `cache` 仅供在 [服务器组件](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) 中使用。
-=======
-- React will invalidate the cache for all memoized functions for each server request. 
-- Each call to `cache` creates a new function. This means that calling `cache` with the same function multiple times will return different memoized functions that do not share the same cache.
-- `cachedFn` will also cache errors. If `fn` throws an error for certain arguments, it will be cached, and the same error is re-thrown when `cachedFn` is called with those same arguments.
-- `cache` is for use in [Server Components](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) only.
->>>>>>> 2390627c9cb305216e6bd56e67c6603a89e76e7f
 
 ---
 
