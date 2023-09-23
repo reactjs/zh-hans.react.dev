@@ -80,15 +80,9 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 当 React 重新渲染一个组件时：
 
-<<<<<<< HEAD
 1. React 会再次调用你的函数
-2. 你的函数会返回新的 JSX 快照
-3. React 会更新界面来匹配你返回的快照
-=======
-1. React calls your function again.
-2. Your function returns a new JSX snapshot.
-3. React then updates the screen to match the snapshot your function returned.
->>>>>>> 2390627c9cb305216e6bd56e67c6603a89e76e7f
+2. 函数会返回新的 JSX 快照
+3. React 会更新界面以匹配返回的快照
 
 <IllustrationBlock title="重新渲染" sequential>
     <Illustration caption="React 执行函数" src="/images/docs/illustrations/i_render1.png" />
