@@ -767,11 +767,7 @@ useEffect(() => {
   }
 ```
 
-<<<<<<< HEAD
-**这个例子说明如果重新挂载破坏了程序的逻辑，则通常含有未被发现的错误**。从用户的角度来看，访问这个页面的效果，与访问该页面时单击和页面中其他链接并按下后退没有什么不同。React 通过在开发环境中重复挂载组件来验证组件是否遵守此原则。
-=======
-**This illustrates that if remounting breaks the logic of your application, this usually uncovers existing bugs.** From a user's perspective, visiting a page shouldn't be different from visiting it, clicking a link, then pressing Back to view the page again. React verifies that your components abide by this principle by remounting them once in development.
->>>>>>> 2390627c9cb305216e6bd56e67c6603a89e76e7f
+**这个例子说明如果重新挂载破坏了应用程序的逻辑，则通常含有未被发现的错误**。从用户的角度来看，访问一个页面不应该与访问它、点击链接然后按下返回键再次查看页面有什么不同。React 通过在开发环境中重复挂载组件以验证组件是否遵守此原则。
 
 ## 总结 {/*putting-it-all-together*/}
 
