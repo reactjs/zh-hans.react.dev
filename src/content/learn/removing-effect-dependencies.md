@@ -927,7 +927,7 @@ function ChatRoom() {
 
   useEffect(() => {
     const options = createOptions();
-    const connection = createConnection();
+    const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
   }, []); // ✅ 所有依赖已声明

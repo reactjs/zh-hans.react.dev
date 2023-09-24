@@ -100,11 +100,11 @@ title: "普通组件（例如 <div>）"
 * `onFocusCapture`：一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events)时触发的 `onFocus` 版本。
 * [`onGotPointerCapture`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/gotpointercapture_event)：一个 [`PointerEvent` 事件处理函数](#pointerevent-handler)。当元素以编程方式捕获指针时触发。
 * `onGotPointerCaptureCapture`：一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onGotPointerCapture` 版本。
-* [`onKeyDown`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/keydown_event)：一个 [`KeyboardEvent` 事件处理函数](#pointerevent-handler)。当按键被按下时触发。
+* [`onKeyDown`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/keydown_event)：一个 [`KeyboardEvent` 事件处理函数](#keyboardevent-handler)。当按键被按下时触发。
 * `onKeyDownCapture`：一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onKeyDown` 版本。
-* [`onKeyPress`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/keypress_event)：一个 [`KeyboardEvent` 事件处理函数](#pointerevent-handler)。此属性已废弃，请使用 `onKeyDown` 或 `onBeforeInput` 替代。
+* [`onKeyPress`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/keypress_event)：一个 [`KeyboardEvent` 事件处理函数](#keyboardevent-handler)。此属性已废弃，请使用 `onKeyDown` 或 `onBeforeInput` 替代。
 * `onKeyPressCapture`：一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onKeyPress` 版本。
-* [`onKeyUp`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/keyup_event)：一个 [`KeyboardEvent` 事件处理函数](#pointerevent-handler)。当按键被释放时触发。
+* [`onKeyUp`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/keyup_event)：一个 [`KeyboardEvent` 事件处理函数](#keyboardevent-handler)。当按键被释放时触发。
 * `onKeyUpCapture`：一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onKeyUp` 版本。
 * [`onLostPointerCapture`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/lostpointercapture_event)：一个 [`PointerEvent` 事件处理函数](#pointerevent-handler)。当元素停止捕获指针时触发。
 * `onLostPointerCaptureCapture`：一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onLostPointerCapture` 版本。

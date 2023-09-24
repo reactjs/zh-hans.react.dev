@@ -465,7 +465,7 @@ export default function Gallery() {
           </li>
           <li>
             <b>Discovered: </b>
-            polonium (element)
+            polonium (chemical element)
           </li>
         </ul>
       </section>
