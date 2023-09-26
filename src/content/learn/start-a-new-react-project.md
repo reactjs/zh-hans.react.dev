@@ -93,6 +93,7 @@ Expo 是由 [Expo 这家公司](https://expo.dev/about) 维护的。用 Expo 构
 
 ### Next.js (App Router) {/*nextjs-app-router*/}
 
+<<<<<<< HEAD
 **[Next.js 的 App Router](https://beta.nextjs.org/docs/getting-started) 是对 Next.js API 的重新设计，旨在实现 React 团队的全栈架构愿景**。它让你在异步组件中获取数据，这些组件甚至能在服务端构建过程中运行。
 
 Next.js 由 [Vercel](https://vercel.com/) 维护。你可以将 [Next.js 应用](https://nextjs.org/docs/deployment) 部署到 Node.js 或 serverless 主机上，或部署到你自己的服务器上。Next.js 还支持 [静态导出](https://beta.nextjs.org/docs/configuring/static-export)，不需要服务器。
@@ -101,6 +102,11 @@ Next.js 由 [Vercel](https://vercel.com/) 维护。你可以将 [Next.js 应用]
 Next.js 的 App Router 目前处于 **测试阶段，还不建议用于生产环境**（截止到 2023 年 3 月）。要在现有的 Next.js 项目进行实验，[参见逐步迁移指南](https://beta.nextjs.org/docs/upgrade-guide#migrating-from-pages-to-app)。
 
 </Pitfall>
+=======
+**[Next.js's App Router](https://nextjs.org/docs) is a redesign of the Next.js APIs aiming to fulfill the React team’s full-stack architecture vision.** It lets you fetch data in asynchronous components that run on the server or even during the build.
+
+Next.js is maintained by [Vercel](https://vercel.com/). You can [deploy a Next.js app](https://nextjs.org/docs/deployment) to any Node.js or serverless hosting, or to your own server. Next.js also supports [static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) which doesn't require a server.
+>>>>>>> 8afb1ef5fcfaa1017542fb2b223de3edfdb82462
 
 <DeepDive>
 
