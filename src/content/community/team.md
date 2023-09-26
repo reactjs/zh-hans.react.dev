@@ -59,7 +59,7 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
 </TeamMember>
 
 <TeamMember name="Mofei Zhang" permalink="mofei-zhang" photo="/images/team/mofei-zhang.png" github="mofeiZ" title="Engineer at Meta">
-    Mofei 在意识到编程可以帮她在视频游戏中作弊时开始了编程生涯。她在本科和研究生期间专注于操作系统的研究，但现在她发现自己非常享受在 React上 的编程工作。在工作之外，她喜欢解决攀岩中遇到的问题，并且正在计划她的下一次背包旅行。
+    Mofei 在意识到编程可以帮她在视频游戏中作弊时开始了编程生涯。她在本科和研究生期间专注于操作系统的研究，但现在她发现自己非常享受在 React 上的编程工作。在工作之外，她喜欢解决攀岩中遇到的问题，并且正在计划她的下一次背包旅行。
 </TeamMember>
 
 <TeamMember name="Rick Hanlon" permalink="rick-hanlon" photo="/images/team/rickhanlonii.jpg" github="rickhanlonii" twitter="rickhanlonii" personal="rickhanlon.codes" title="Engineer at Meta">
