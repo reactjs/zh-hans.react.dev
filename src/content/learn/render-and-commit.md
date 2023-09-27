@@ -73,7 +73,7 @@ export default function Image() {
 
 ### 状态更新时重新渲染 {/*re-renders-when-state-updates*/}
 
-一旦组件被初次渲染，您就可以通过使用 [`set` 函数](/reference/react/useState#setstate) 更新其状态来触发之后的渲染。更新组件的状态会自动将一次渲染送入队列。（您可以想象这种情况成餐厅客人在第一次下单之后又点了茶、点心和各种东西，具体取决于他们的胃口。）
+一旦组件被初次渲染，您就可以通过使用 [`set` 函数](/reference/react/useState#setstate) 更新其状态来触发之后的渲染。更新组件的状态会自动将一次渲染送入队列。（您可以把这种情况想象成餐厅客人在第一次下单之后又点了茶、点心和各种东西，具体取决于他们的胃口。）
 
 <IllustrationBlock sequential>
   <Illustration caption="状态更新..." alt="React 作为餐厅服务员将一份 Card UI 送到用户那里，这里的用户以头部为光标的顾客表示。顾客说她想要一个粉色的 Card，而不是黑色的。" src="/images/docs/illustrations/i_rerender1.png" />
