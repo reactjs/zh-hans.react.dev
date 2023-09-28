@@ -58,7 +58,7 @@ function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime
 * `actualDuration`：在此次更新中，渲染 `<Profiler>` 组件树的毫秒数。这可以显示子树在使用记忆化（例如 [`memo`](/reference/react/memo) 和 [`useMemo`](/reference/react/useMemo)）后的效果如何。理想情况下，此值在挂载后应显著减少，因为许多后代组件只会在特定的 props 变化时重新渲染。
 * `baseDuration`：估算在没有任何优化的情况下重新渲染整棵 `<Profiler>` 子树所需的毫秒数。它通过累加树中每个组件的最近一次渲染持续时间来计算。此值估计了渲染的最差情况成本（例如初始挂载或没有使用记忆化的树）。将其与 `actualDuration` 进行比较，以确定记忆化是否起作用。
 * `startTime`：当 React 开始渲染此次更新时的时间戳。
-* `endTime`：当 React 提交此次更新时的时间戳。此值在提交的所有 profiler 中共享，如果需要，可以对它们进行分组。
+* `commitTime`：当 React 提交此次更新时的时间戳。此值在提交的所有 profiler 中共享，如果需要，可以对它们进行分组。
 
 ---
 
