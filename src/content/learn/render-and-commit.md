@@ -10,7 +10,7 @@ translators:
 
 <Intro>
 
-组件显示到屏幕之前，其必须被 React 渲染。理解这些处理步骤将帮助您思考代码的执行过程并能解释其行为。
+组件显示到屏幕之前，其必须被 React 渲染。理解这些处理步骤将帮助你思考代码的执行过程并能解释其行为。
 
 </Intro>
 
@@ -23,7 +23,7 @@ translators:
 
 </YouWillLearn>
 
-想象一下，您的组件是厨房里的厨师，把食材烹制成美味的菜肴。在这种场景下，React 就是一名服务员，他会帮客户们下单并为他们送来所点的菜品。这种请求和提供 UI 的过程总共包括三个步骤： 
+想象一下，你的组件是厨房里的厨师，把食材烹制成美味的菜肴。在这种场景下，React 就是一名服务员，他会帮客户们下单并为他们送来所点的菜品。这种请求和提供 UI 的过程总共包括三个步骤： 
 
 1. **触发** 一次渲染（把客人的点单分发到厨房）
 2. **渲染** 组件（在厨房准备订单）
@@ -69,11 +69,11 @@ export default function Image() {
 
 </Sandpack>
 
-试着注释掉 `root.render()`，然后您将会看到组件消失。
+试着注释掉 `root.render()`，然后你将会看到组件消失。
 
 ### 状态更新时重新渲染 {/*re-renders-when-state-updates*/}
 
-一旦组件被初次渲染，您就可以通过使用 [`set` 函数](/reference/react/useState#setstate) 更新其状态来触发之后的渲染。更新组件的状态会自动将一次渲染送入队列。（您可以想象这种情况成餐厅客人在第一次下单之后又点了茶、点心和各种东西，具体取决于他们的胃口。）
+一旦组件被初次渲染，你就可以通过使用 [`set` 函数](/reference/react/useState#setstate) 更新其状态来触发之后的渲染。更新组件的状态会自动将一次渲染送入队列。（你可以把这种情况想象成餐厅客人在第一次下单之后又点了茶、点心和各种东西，具体取决于他们的胃口。）
 
 <IllustrationBlock sequential>
   <Illustration caption="状态更新..." alt="React 作为餐厅服务员将一份 Card UI 送到用户那里，这里的用户以头部为光标的顾客表示。顾客说她想要一个粉色的 Card，而不是黑色的。" src="/images/docs/illustrations/i_rerender1.png" />
@@ -81,9 +81,9 @@ export default function Image() {
   <Illustration caption="...渲染!" alt="Card 主厨把粉色 Card 交给 React。" src="/images/docs/illustrations/i_rerender3.png" />
 </IllustrationBlock>
 
-## 步骤 2: React 渲染您的组件 {/*step-2-react-renders-your-components*/}
+## 步骤 2: React 渲染你的组件 {/*step-2-react-renders-your-components*/}
 
-在您触发渲染后，React 会调用您的组件来确定要在屏幕上显示的内容。**"渲染中" 即 React 在调用您的组件。** 
+在你触发渲染后，React 会调用你的组件来确定要在屏幕上显示的内容。**"渲染中" 即 React 在调用你的组件。** 
 
 * **在进行初次渲染时,** React 会调用根组件。
 * **对于后续的渲染,** React 会调用内部状态更新触发了渲染的函数组件。
@@ -140,7 +140,7 @@ img { margin: 0 10px 10px 0; }
 * **输入相同，输出相同。** 给定相同的输入，组件应始终返回相同的 JSX。（当有人点了西红柿沙拉时，他们不应该收到洋葱沙拉！）
 * **只做它自己的事情。** 它不应更改任何存在于渲染之前的对象或变量。（一个订单不应更改其他任何人的订单。）
 
-否则，随着代码库复杂性的增加，您可能会遇到令人困惑的错误和不可预测的行为。在 "严格模式" 下开发时，React 会调用每个组件的函数两次，这可以帮助发现由不纯函数引起的错误。
+否则，随着代码库复杂性的增加，你可能会遇到令人困惑的错误和不可预测的行为。在 "严格模式" 下开发时，React 会调用每个组件的函数两次，这可以帮助发现由不纯函数引起的错误。
 
 </Pitfall>
 
@@ -148,18 +148,18 @@ img { margin: 0 10px 10px 0; }
 
 #### 性能优化 {/*optimizing-performance*/}
 
-如果更新的组件在树中的位置非常高，渲染更新后的组件内部所有嵌套组件的默认行为将不会获得最佳性能。如果您遇到了性能问题，[性能](https://reactjs.org/docs/optimizing-performance.html) 章节描述了几种可选的解决方案 。**不要过早进行优化！**
+如果更新的组件在树中的位置非常高，渲染更新后的组件内部所有嵌套组件的默认行为将不会获得最佳性能。如果你遇到了性能问题，[性能](https://reactjs.org/docs/optimizing-performance.html) 章节描述了几种可选的解决方案 。**不要过早进行优化！**
 
 </DeepDive>
 
 ## 步骤 3: React 把更改提交到 DOM 上 {/*step-3-react-commits-changes-to-the-dom*/}
 
-在渲染（调用）您的组件之后，React 将会修改 DOM。
+在渲染（调用）你的组件之后，React 将会修改 DOM。
 
 * **对于初次渲染，** React 会使用 [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) DOM API 将其创建的所有 DOM 节点放在屏幕上。
 * **对于重渲染，** React 将应用最少的必要操作（在渲染时计算！），以使得 DOM 与最新的渲染输出相互匹配。
 
-**React 仅在渲染之间存在差异时才会更改 DOM 节点。** 例如，有一个组件，它每秒使用从父组件传递下来的不同属性重新渲染一次。注意，您可以添加一些文本到 `<input>` 标签，更新它的 `value`，但是文本不会在组件重渲染时消失：
+**React 仅在渲染之间存在差异时才会更改 DOM 节点。** 例如，有一个组件，它每秒使用从父组件传递下来的不同属性重新渲染一次。注意，你可以添加一些文本到 `<input>` 标签，更新它的 `value`，但是文本不会在组件重渲染时消失：
 
 <Sandpack>
 
@@ -212,7 +212,7 @@ export default function App() {
   1. 触发
   2. 渲染
   3. 提交
-* 您可以使用严格模式去找到组件中的错误
+* 你可以使用严格模式去找到组件中的错误
 * 如果渲染结果与上次一样，那么 React 将不会修改 DOM
 
 </Recap>
