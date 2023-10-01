@@ -647,7 +647,11 @@ export default function TodoList({ todos, tab, theme }) {
 
 切换选项卡感觉很慢，因为它迫使减速的 `List` 重新渲染。这是预料之中的，因为选项卡 `tab` 已更改，因此你需要在屏幕上展示用户的新选择。
 
+<<<<<<< HEAD
 接下来，尝试切换主题。**感谢 `useMemo` 和 [`memo`](/reference/react/memo)，尽管被人为减速了，但是它还是很快**！由于作为依赖性传递给 `useMemo` 的 `todos` 与 `tab` 都没有发生改变，因此 `visibaleItems` 不会发生改变。由于 `visibleItems` 数组从上一次渲染之后就没有发生改变，所以 `List` 会跳过重新渲染。
+=======
+Next, try toggling the theme. **Thanks to `useMemo` together with [`memo`](/reference/react/memo), it’s fast despite the artificial slowdown!** The `List` skipped re-rendering because the `visibleTodos` array has not changed since the last render. The `visibleTodos` array has not changed because both `todos` and `tab` (which you pass as dependencies to `useMemo`) haven't changed since the last render.
+>>>>>>> 68f417a600c7d7b8c4131e39f8a843a856ae3909
 
 <Sandpack>
 
