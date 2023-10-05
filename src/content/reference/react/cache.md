@@ -414,7 +414,11 @@ function App() {
 
 如果以上问题都不适用，那么可能是与 React 检查缓存中是否存在内容的方式有关。
 
+<<<<<<< HEAD
 如果参数不是原始数据类型（例如对象、函数、数组），请确保传递的是相同的对象引用。
+=======
+If your arguments are not [primitives](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) (ex. objects, functions, arrays), ensure you're passing the same object reference.
+>>>>>>> c45fa10a95e3ec757d2997c18f5053daa0b4cc39
 
 在调用记忆化函数时，React 将查找输入参数，以查看是否已经缓存了结果。React 将使用浅相等确定是否存在缓存。
 
