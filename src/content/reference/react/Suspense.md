@@ -252,8 +252,14 @@ async function getAlbums() {
 
 **只有启用了 Suspense 的数据源才会激活 Suspense 组件**，它们包括：
 
+<<<<<<< HEAD
 - 支持 Suspense 的框架如 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/getting-started/react-essentials)。
 - 使用 [`lazy`](/reference/react/lazy) 懒加载组件代码。
+=======
+- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/getting-started/react-essentials)
+- Lazy-loading component code with [`lazy`](/reference/react/lazy)
+- Reading the value of a Promise with [`use`](/reference/react/use)
+>>>>>>> 9aa84b19222838f38863ce4bd8f516dbfe193bbc
 
 Suspense **无法** 检测在 Effect 或事件处理程序中获取数据的情况。
 
