@@ -287,6 +287,7 @@ function ProfilePage() {
 
 - 使用支持 Suspense 的框架获取数据，如 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/getting-started/react-essentials)
 - 用 [`lazy`](/reference/react/lazy) 来懒加载组件代码
+- 使用 [`use`](/reference/react/use) 读取 Promise 的值
 
 suspense **不会去探测** Effect 内部或事件处理器中获取的数据。
 

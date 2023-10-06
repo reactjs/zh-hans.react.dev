@@ -254,6 +254,7 @@ async function getAlbums() {
 
 - 支持 Suspense 的框架如 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/getting-started/react-essentials)。
 - 使用 [`lazy`](/reference/react/lazy) 懒加载组件代码。
+- 使用 [`use`](/reference/react/use) 读取 Promise 的值。
 
 Suspense **无法** 检测在 Effect 或事件处理程序中获取数据的情况。
 
