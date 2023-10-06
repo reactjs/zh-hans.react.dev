@@ -286,14 +286,9 @@ function ProfilePage() {
 
 **只有支持 Suspense 的数据源才会激活 Suspense 组件**。它们包括：
 
-<<<<<<< HEAD
 - 使用像 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/getting-started/react-essentials) 这样支持用 Suspence 获取数据的框架。
 - 使用 [`lazy`](/reference/react/lazy) 懒加载组件。
-=======
-- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/getting-started/react-essentials)
-- Lazy-loading component code with [`lazy`](/reference/react/lazy)
-- Reading the value of a Promise with [`use`](/reference/react/use)
->>>>>>> 9aa84b19222838f38863ce4bd8f516dbfe193bbc
+- 使用 [`use`](/reference/react/use) 读取 Promise 的值。
 
 当数据是在 Effect 或者事件处理程序中被获取时，Suspense **不会** 对此生效。
 
