@@ -78,7 +78,7 @@ experimental_taintObjectReference(
 
 ### 防止用户数据无意间传递到客户端 {/*prevent-user-data-from-unintentionally-reaching-the-client*/}
 
-客户端组件不应接受携带敏感数据的对象。理想情况下，数据获取函数不应暴露当前用户不应访问的数据。有时在重构过程中会发生错误。为了防止这些错误在以后发生，我们可以在数据 API 中“标记”用户对象。
+客户端组件不应接受携带敏感数据的对象。理想情况下数据获取函数不应暴露当前用户不允许访问的数据。有时在重构过程中会发生错误。为了防止这些错误在以后发生，我们可以在数据 API 中“标记”用户对象。
 
 ```js
 import {experimental_taintObjectReference} from 'react';
