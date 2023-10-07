@@ -100,7 +100,7 @@ export async function getUser(id) {
 
 #### 防止数据获取中的泄漏 {/*protecting-against-leaks-in-data-fetching*/}
 
-如果正在运行具有对敏感数据访问权限的服务器组件环境，必须小心不要直接传递对象：
+如果处于对敏感数据具有访问权限的服务器组件环境，必须牢记不要直接传递对象：
 
 ```js
 // api.js
