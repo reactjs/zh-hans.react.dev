@@ -64,7 +64,7 @@ experimental_taintObjectReference(
 
 #### 注意 {/*caveats*/}
 
-- 重新创建或克隆一个被标记的对象会创建一个新的未标记的对象，其中可能包含敏感数据。例如，如果有一个被标记的 `user` 对象，`const userInfo = {name: user.name, ssn: user.ssn}` 或 `{...user}` 将创建新的未标记对象。`taintObjectReference` 仅在对象无改变地传递给客户端组件时防止简单的错误。
+- 重新创建或克隆一个被标记的对象会创建一个新的未标记的对象，其中可能包含敏感数据。如果有一个被标记的 `user` 对象，执行 `const userInfo = {name: user.name, ssn: user.ssn}` 或 `{...user}` 将创建新的未标记对象。`taintObjectReference` 只能防止把未修改的对象传递给客户端组件这种简单的错误。
 
 <Pitfall>
 
