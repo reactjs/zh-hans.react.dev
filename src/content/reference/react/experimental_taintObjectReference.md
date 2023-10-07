@@ -4,7 +4,7 @@ title: experimental_taintObjectReference
 
 <Wip>
 
-**此 API 为实验性 API，尚未在 React 的稳定版本中提供**。
+**此实验性 API 尚未在 React 的稳定版本中提供**。
 
 可以尝试升级 React 包到最新的实验版本：
 
