@@ -56,7 +56,7 @@ experimental_taintObjectReference(
 
 * `message`：对象被传递给客户端组件希望显示的消息。如果对象被传递给客户端组件，此消息将作为错误的一部分显示。
 
-* `object`：要标记的对象。函数和类实例可以作为 `object` 传递给 `taintObjectReference`。已经阻止将函数和类传递给客户端组件，但 React 的默认错误消息将被替换为您在 `message` 中定义的内容。当将特定类型数组的实例作为 `object` 传递给 `taintObjectReference` 时，该类型数组的其他副本将不会被标记。
+* `object`：要标记的对象。函数和类实例可以作为 `object` 传递给 `taintObjectReference`。React 已经阻止直接将函数和类传递给客户端组件，而默认错误消息将被替换为在 `message` 中定义的内容。当将特定类型数组的实例作为 `object` 传递给 `taintObjectReference` 时，该类型数组的其他副本将不会被标记。
 
 #### 返回值 {/*returns*/}
 
