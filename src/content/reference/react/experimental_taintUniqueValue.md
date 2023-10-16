@@ -12,7 +12,7 @@ title: experimental_taintUniqueValue
 - `react-dom@experimental`
 - `eslint-plugin-react-hooks@experimental`
 
-React 的实验版本可能包含错误，请勿在生产环境中使用。
+React 的实验版本可能有一些问题，请勿在生产环境中使用。
 
 此 API 仅在 [React 服务器组件](/reference/react/use-client) 内可用。
 
