@@ -57,7 +57,7 @@ experimental_taintUniqueValue(
 
 * `message`：`value` 被传递给客户端组件时显示的消息。如果将 `value` 传递给客户端组件，此消息将作为错误的一部分显示。
 
-* `lifetime`：指示 `value` 应该被标记多长时间的任何对象。只要此对象仍然存在，将阻止将 `value` 发送到任何客户端组件。例如，传递 `globalThis` 将阻止该值在应用程序的生命周期内。`lifetime` 通常是一个对象，其属性包含 `value`。
+* `lifetime`：指示 `value` 应该被标记多长时间的任何对象。只要此对象仍然存在，将阻止把 `value` 发送到任何客户端组件。例如，传递 `globalThis` 将在应用程序的生命周期内阻止该值的传递。`lifetime` 通常是一个包含 `value` 属性的对象。
 
 * `value`：字符串、bigint 或 TypedArray。`value` 必须是具有高熵的字符或字节的唯一序列，例如加密令牌、私钥、哈希值或长密码。将阻止将 `value` 发送到任何客户端组件。
 
