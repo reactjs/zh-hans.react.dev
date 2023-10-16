@@ -34,7 +34,7 @@ JSON API 返回如下的数据:
 
 <img src="/images/docs/s_thinking-in-react_ui.png" width="300" style={{margin: '0 auto'}} />
 
-仅需跟随下面的五步，即可使用 React 中实现 UI。
+仅需跟随下面的五步，即可使用 React 来实现 UI。
 
 ## 步骤一：将 UI 拆解为组件层级结构 {/*step-1-break-the-ui-into-a-component-hierarchy*/}
 
@@ -42,7 +42,7 @@ JSON API 返回如下的数据:
 
 取决于你的使用背景，可以考虑通过不同的方式将设计分割为组件:
 
-* **程序设计**——使用同样的技术决定你是否应该创建一个新的函数或者对象。这一技术即 [单一功能原理](https://en.wikipedia.org/wiki/Single_responsibility_principle)，也就是说，一个组件理想得仅做一件事情。但随着功能的持续增长，它应该被分解为更小的子组件。
+* **程序设计**——使用同样的技术决定你是否应该创建一个新的函数或者对象。这一技术即 [单一功能原理](https://en.wikipedia.org/wiki/Single_responsibility_principle)，也就是说，一个组件理想情况下应仅做一件事情。但随着功能的持续增长，它应该被分解为更小的子组件。
 * **CSS**——思考你将把类选择器用于何处。(然而，组件并没有那么细的粒度。)
 * **设计**——思考你将如何组织布局的层级。
 
