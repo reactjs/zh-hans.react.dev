@@ -75,7 +75,7 @@ experimental_taintUniqueValue(
 
 ### 防止将令牌传递给客户端组件 {/*prevent-a-token-from-being-passed-to-client-components*/}
 
-为了确保敏感信息，如密码、会话令牌或其他唯一值，不会意外传递给客户端组件，`taintUniqueValue` 函数提供了一层保护。当一个值被标记时，任何尝试将其传递给客户端组件的操作都将导致错误。
+为了确保敏感信息（如密码、会话令牌或其他唯一值）不会被意外地传递给客户端组件，`taintUniqueValue` 函数提供了一层保护。当一个值被标记时，任何尝试将其传递给客户端组件的操作都将导致错误。
 
 `lifetime` 参数定义了值保持受标记状态的持续时间。对于应该永久保持受标记状态的值，可以使用像 [`globalThis`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/globalThis) 或 `process` 这样的对象作为 `lifetime` 参数。这些对象的生命周期跨越应用程序执行的整个持续时间。
 
