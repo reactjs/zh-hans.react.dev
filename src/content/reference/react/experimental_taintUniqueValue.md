@@ -27,7 +27,7 @@ React 的实验版本可能有一些问题，请勿在生产环境中使用。
 taintUniqueValue(errMessage, lifetime, value)
 ```
 
-参阅 [`taintObjectReference`](/reference/react/experimental_taintObjectReference) 以了解更多关于放置传递包含敏感数据的对象的更多信息。
+参阅 [`taintObjectReference`](/reference/react/experimental_taintObjectReference) 以了解更多关于防止传递包含敏感数据的对象的更多信息。
 
 </Intro>
 
