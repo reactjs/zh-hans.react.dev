@@ -55,7 +55,7 @@ experimental_taintUniqueValue(
 
 #### 参数 {/*parameters*/}
 
-* `message`：如果将 `value` 传递给客户端组件，想要显示的消息。如果将 `value` 传递给客户端组件，此消息将作为错误的一部分显示。
+* `message`：`value` 被传递给客户端组件时显示的消息。如果将 `value` 传递给客户端组件，此消息将作为错误的一部分显示。
 
 * `lifetime`：指示 `value` 应该被标记多长时间的任何对象。只要此对象仍然存在，将阻止将 `value` 发送到任何客户端组件。例如，传递 `globalThis` 将阻止该值在应用程序的生命周期内。`lifetime` 通常是一个对象，其属性包含 `value`。
 
