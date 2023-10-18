@@ -162,7 +162,22 @@
       "sectionHeader": "react-dom@18.2.0"
     },
     {
+<<<<<<< HEAD
       "title": "组件",
+=======
+      "title": "Hooks",
+      "path": "/reference/react-dom/hooks",
+      "routes": [
+        {
+          "title": "useFormStatus",
+          "path": "/reference/react-dom/hooks/useFormStatus",
+          "canary": true
+        }
+      ]
+    },
+    {
+      "title": "Components",
+>>>>>>> 10574e59a81425e9e8f63f0b094d09e3636b3198
       "path": "/reference/react-dom/components",
       "routes": [
         {
