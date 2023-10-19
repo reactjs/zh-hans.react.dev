@@ -11,7 +11,7 @@ canary: true
 
 <Intro>
 
-`useFormStatus` 是一个 Hook，用于提供上次表单提交的状态信息。
+`useFormStatus` 是一个用于提供上次表单提交的状态信息的 Hook。
 
 ```js
 const { pending, data, method, action } = useFormStatus();
