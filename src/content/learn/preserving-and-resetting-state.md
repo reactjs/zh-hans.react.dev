@@ -14,6 +14,7 @@ translators:
 
 <YouWillLearn>
 
+<<<<<<< HEAD
 * React 如何“处理”组件结构
 * React 何时选择保留或重置 state
 * 如何强制 React 重置组件的 state
@@ -40,7 +41,19 @@ React 会根据组件创建了一棵 UI 树，React DOM 用它来渲染 DOM
 ## state 与树中的某个位置相关联 {/*state-is-tied-to-a-position-in-the-tree*/}
 
 当你为一个组件添加 state 时，你可能会觉得 state “活”在组件内部。但实际上，state 被保存在 React 内部。根据组件在 UI 树中的位置，React 将它所持有的每个 state 与正确的组件关联起来。
+=======
+* When React chooses to preserve or reset the state
+* How to force React to reset component's state
+* How keys and types affect whether the state is preserved
 
+</YouWillLearn>
+
+## State is tied to a position in the render tree {/*state-is-tied-to-a-position-in-the-tree*/}
+
+React builds [render trees](learn/understanding-your-ui-as-a-tree#the-render-tree) for the component structure in your UI.
+>>>>>>> 9af01e2bb2c6517c3ca14b551cdfa42424370a6e
+
+When you give a component state, you might think the state "lives" inside the component. But the state is actually held inside React. React associates each piece of state it's holding with the correct component by where that component sits in the render tree.
 
 下面只定义了一个 `<Counter />` JSX 标签，但将它渲染在了两个不同的位置：
 
@@ -194,7 +207,11 @@ Updating state
 </DiagramGroup>
 
 
+<<<<<<< HEAD
 只有当你在相同的位置渲染相同的组件时，React 才会一直保留着组件的 state。想要验证这一点，可以将两个计数器的值递增，取消勾选 “渲染第二个计数器” 复选框，然后再次勾选它：
+=======
+React will keep the state around for as long as you render the same component at the same position in the tree. To see this, increment both counters, then remove the second component by unchecking "Render the second counter" checkbox, and then add it back by ticking it again:
+>>>>>>> 9af01e2bb2c6517c3ca14b551cdfa42424370a6e
 
 <Sandpack>
 

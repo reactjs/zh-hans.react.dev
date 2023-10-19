@@ -15,6 +15,7 @@ React 是一个用于构建用户界面（UI）的 JavaScript 库，用户界面
 
 <YouWillLearn isChapter={true}>
 
+<<<<<<< HEAD
 * [如何创建你的第一个组件](/learn/your-first-component)
 * [在什么时候以及如何创建多文件组件](/learn/importing-and-exporting-components)
 * [如何使用 JSX 为 JavaScript 添加标签](/learn/writing-markup-with-jsx)
@@ -23,6 +24,17 @@ React 是一个用于构建用户界面（UI）的 JavaScript 库，用户界面
 * [如何有条件地渲染组件](/learn/conditional-rendering)
 * [如何在同一时间渲染多个组件](/learn/rendering-lists)
 * [如何通过保持组件的纯粹性来避免令人困惑的错误](/learn/keeping-components-pure)
+=======
+* [How to write your first React component](/learn/your-first-component)
+* [When and how to create multi-component files](/learn/importing-and-exporting-components)
+* [How to add markup to JavaScript with JSX](/learn/writing-markup-with-jsx)
+* [How to use curly braces with JSX to access JavaScript functionality from your components](/learn/javascript-in-jsx-with-curly-braces)
+* [How to configure components with props](/learn/passing-props-to-a-component)
+* [How to conditionally render components](/learn/conditional-rendering)
+* [How to render multiple components at a time](/learn/rendering-lists)
+* [How to avoid confusing bugs by keeping components pure](/learn/keeping-components-pure)
+* [Why understanding your UI as trees is useful](/learn/understanding-your-ui-as-a-tree)
+>>>>>>> 9af01e2bb2c6517c3ca14b551cdfa42424370a6e
 
 </YouWillLearn>
 
@@ -526,7 +538,34 @@ export default function TeaSet() {
 
 </LearnMore>
 
+<<<<<<< HEAD
 ## 下节预告 {/*whats-next*/}
+=======
+## Your UI as a tree {/*your-ui-as-a-tree*/}
+
+React uses trees to model the relationships between components and modules. 
+
+A React render tree is a representation of the parent and child relationship between components. 
+
+<Diagram name="generic_render_tree" height={250} width={500} alt="A tree graph with five nodes, with each node representing a component. The root node is located at the top the tree graph and is labelled 'Root Component'. It has two arrows extending down to two nodes labelled 'Component A' and 'Component C'. Each of the arrows is labelled with 'renders'. 'Component A' has a single 'renders' arrow to a node labelled 'Component B'. 'Component C' has a single 'renders' arrow to a node labelled 'Component D'.">An example React render tree.</Diagram>
+
+Components near the top of the tree, near the root component, are considered top-level components. Components with no child components are leaf components. This categorization of components is useful for understanding data flow and rendering performance.
+
+Modelling the relationship between JavaScript modules is another useful way to understand your app. We refer to it as a module dependency tree. 
+
+<Diagram name="generic_dependency_tree" height={250} width={500} alt="A tree graph with five nodes. Each node represents a JavaScript module. The top-most node is labelled 'RootModule.js'. It has three arrows extending to the nodes: 'ModuleA.js', 'ModuleB.js', and 'ModuleC.js'. Each arrow is labelled as 'imports'. 'ModuleC.js' node has a single 'imports' arrow that points to a node labelled 'ModuleD.js'.">An example module dependency tree.</Diagram>
+
+A dependency tree is often used by build tools to bundle all the relevant JavaScript code for the client to download and render. A large bundle size regresses user experience for React apps. Understanding the module dependency tree is helpful to debug such issues. 
+
+<LearnMore path="/learn/understanding-your-ui-as-a-tree">
+
+Read **[Your UI as a Tree](/learn/understanding-your-ui-as-a-tree)** to learn how to create a render and module dependency trees for a React app and how they're useful mental models for improving user experience and performance.
+
+</LearnMore>
+
+
+## What's next? {/*whats-next*/}
+>>>>>>> 9af01e2bb2c6517c3ca14b551cdfa42424370a6e
 
 请访问 [你的第一个组件](/learn/your-first-component) 这个章节并开始阅读！
 
