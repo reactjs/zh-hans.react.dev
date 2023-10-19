@@ -252,11 +252,7 @@ function Page({id}) {
 
 在渲染 `Page` 时，组件调用 <CodeStep step={1}>`getUser`</CodeStep>，但请注意它并不使用返回的数据。这个早期的 <CodeStep step={1}>`getUser`</CodeStep> 调用会启动异步数据库查询，而在 `Page` 执行其他计算工作并渲染子组件时进行。
 
-<<<<<<< HEAD
 在渲染 `Profile` 时，我们再次调用 <CodeStep step={2}>`getUser`</CodeStep>。如果初始 <CodeStep step={1}>`getUser`</CodeStep> 调用已经返回并缓存了用户数据，那么当 `Profile` 在 <CodeStep step={2}>请求并等待这些数据</CodeStep> 时，它可以简单地从缓存中读取，而无需进行另一个远程过程调用。如果初始 <CodeStep step={1}>`fetchData`</CodeStep> 还没有完成，那么在这种模式下预加载数据可以减少数据获取的延迟。
-=======
-When rendering `Profile`, we call <CodeStep step={2}>`getUser`</CodeStep> again. If the initial <CodeStep step={1}>`getUser`</CodeStep> call has already returned and cached the user data, when `Profile` <CodeStep step={2}>asks and waits for this data</CodeStep>, it can simply read from the cache without requiring another remote procedure call. If the <CodeStep step={1}> initial data request</CodeStep> hasn't been completed, preloading data in this pattern reduces delay in data-fetching.
->>>>>>> 10574e59a81425e9e8f63f0b094d09e3636b3198
 
 <DeepDive>
 

@@ -162,10 +162,7 @@
       "sectionHeader": "react-dom@18.2.0"
     },
     {
-<<<<<<< HEAD
-      "title": "组件",
-=======
-      "title": "Hooks",
+      "title": "Hook",
       "path": "/reference/react-dom/hooks",
       "routes": [
         {
@@ -176,8 +173,7 @@
       ]
     },
     {
-      "title": "Components",
->>>>>>> 10574e59a81425e9e8f63f0b094d09e3636b3198
+      "title": "组件",
       "path": "/reference/react-dom/components",
       "routes": [
         {
