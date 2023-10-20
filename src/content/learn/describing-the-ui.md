@@ -15,7 +15,6 @@ React 是一个用于构建用户界面（UI）的 JavaScript 库，用户界面
 
 <YouWillLearn isChapter={true}>
 
-<<<<<<< HEAD
 * [如何创建你的第一个组件](/learn/your-first-component)
 * [在什么时候以及如何创建多文件组件](/learn/importing-and-exporting-components)
 * [如何使用 JSX 为 JavaScript 添加标签](/learn/writing-markup-with-jsx)
@@ -24,17 +23,7 @@ React 是一个用于构建用户界面（UI）的 JavaScript 库，用户界面
 * [如何有条件地渲染组件](/learn/conditional-rendering)
 * [如何在同一时间渲染多个组件](/learn/rendering-lists)
 * [如何通过保持组件的纯粹性来避免令人困惑的错误](/learn/keeping-components-pure)
-=======
-* [How to write your first React component](/learn/your-first-component)
-* [When and how to create multi-component files](/learn/importing-and-exporting-components)
-* [How to add markup to JavaScript with JSX](/learn/writing-markup-with-jsx)
-* [How to use curly braces with JSX to access JavaScript functionality from your components](/learn/javascript-in-jsx-with-curly-braces)
-* [How to configure components with props](/learn/passing-props-to-a-component)
-* [How to conditionally render components](/learn/conditional-rendering)
-* [How to render multiple components at a time](/learn/rendering-lists)
-* [How to avoid confusing bugs by keeping components pure](/learn/keeping-components-pure)
 * [Why understanding your UI as trees is useful](/learn/understanding-your-ui-as-a-tree)
->>>>>>> 9af01e2bb2c6517c3ca14b551cdfa42424370a6e
 
 </YouWillLearn>
 
@@ -538,9 +527,6 @@ export default function TeaSet() {
 
 </LearnMore>
 
-<<<<<<< HEAD
-## 下节预告 {/*whats-next*/}
-=======
 ## Your UI as a tree {/*your-ui-as-a-tree*/}
 
 React uses trees to model the relationships between components and modules. 
@@ -565,7 +551,6 @@ Read **[Your UI as a Tree](/learn/understanding-your-ui-as-a-tree)** to learn ho
 
 
 ## What's next? {/*whats-next*/}
->>>>>>> 9af01e2bb2c6517c3ca14b551cdfa42424370a6e
 
 请访问 [你的第一个组件](/learn/your-first-component) 这个章节并开始阅读！
 
