@@ -120,7 +120,7 @@ export default [
 
 <Diagram name="render_tree" height={250} width={500} alt="带有五个节点的树形图。每个节点代表一个组件。树的根是 App，从它延伸出两条箭头，分别指向 InspirationGenerator 和 FancyText。这些箭头标有 renders 一词。InspirationGenerator 节点还有两个箭头指向节点 FancyText 和 Copyright。">
 
-React 创建了一个由渲染的组件构成的 UI 树，被称为渲染树。
+React 创建的 UI 树是由渲染过的组件构成的，被称为渲染树。
 
 </Diagram>
 
