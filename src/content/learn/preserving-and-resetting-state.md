@@ -14,19 +14,19 @@ translators:
 
 <YouWillLearn>
 
-* When React chooses to preserve or reset the state
-* How to force React to reset component's state
-* How keys and types affect whether the state is preserved
+* React 合适选择保留或重置状态
+* 如何强制 React 重置组件的状态
+* 键和类型如何影响状态是否被保留
 
 </YouWillLearn>
 
-## State is tied to a position in the render tree {/*state-is-tied-to-a-position-in-the-tree*/}
+## 状态与渲染树中的位置相关 {/*state-is-tied-to-a-position-in-the-tree*/}
 
-React builds [render trees](learn/understanding-your-ui-as-a-tree#the-render-tree) for the component structure in your UI.
+React 会为 UI 中的组件结构构建 [渲染树](learn/understanding-your-ui-as-a-tree#the-render-tree)。
 
-When you give a component state, you might think the state "lives" inside the component. But the state is actually held inside React. React associates each piece of state it's holding with the correct component by where that component sits in the render tree.
+当向一个组件添加状态时，那么可能会认为状态“存在”在组件内。但实际上，状态是由 React 保存的。React 通过组件在渲染树中的位置将它保存的每个状态与正确的组件关联起来。
 
-Here, there is only one `<Counter />` JSX tag, but it's rendered at two different positions:
+下面的例子中只有一个 `<Counter />` JSX 标签，但它会在两个不同的位置渲染：
 
 <Sandpack>
 
