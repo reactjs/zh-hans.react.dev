@@ -63,7 +63,7 @@ export default App() {
 
 * `pending`：布尔值。如果为 `true`，则表示父级 `<form>` 正在等待提交；否则为 `false`。
 
-* `data`：实现了 [`FormData interface`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) 的对象，包含父级 `<form>` 正在提交的数据；如果没有活动提交或没有父级 `<form>`，它将为 `null`。
+* `data`：实现了 [`FormData interface`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) 的对象，包含父级 `<form>` 正在提交的数据；如果没有进行提交或没有父级 `<form>`，它将为 `null`。
 
 * `method`：字符串，可以是 `'get'` 或 `'post'`。表示父级 `<form>` 使用 `GET` 或 `POST` [HTTP 方法](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) 进行提交。默认情况下，`<form>` 将使用 `GET` 方法，并可以通过 [`method`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#method) 属性指定。
 
