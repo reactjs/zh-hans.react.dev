@@ -68,7 +68,7 @@ export default App() {
 * `method`：字符串，可以是 `'get'` 或 `'post'`。表示父级 `<form>` 使用 `GET` 或 `POST` [HTTP 方法](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) 进行提交。默认情况下，`<form>` 将使用 `GET` 方法，并可以通过 [`method`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#method) 属性指定。
 
 [//]: # (链接到 `<form>` 文档。"在 `<form>` 上的 `action` 属性上阅读更多信息。")
-* `action`：引用传递给父级 `<form>` 的 `action` 属性的函数。如果没有父级 `<form>`，则该属性为 `null`。如果在 `action` 属性上提供了 URI 值，或者未指定 `action` 属性，`status.action` 将为 `null`。
+* `action`：一个传递给父级 `<form>` 的 `action` 属性的函数引用。如果没有父级 `<form>`，则该属性为 `null`。如果在 `action` 属性上提供了 URI 值，或者未指定 `action` 属性，`status.action` 将为 `null`。
 
 #### 注意 {/*caveats*/}
 
