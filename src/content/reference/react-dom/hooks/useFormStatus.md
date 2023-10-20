@@ -80,7 +80,7 @@ export default App() {
 ## 用法 {/*usage*/}
 
 ### 在表单提交期间显示待定状态 {/*display-a-pending-state-during-form-submission*/}
-可以在一个在 `<form>` 中渲染的组件中调用 `useFormStatus` Hook，并读取返回的 `pending` 属性，以在表单提交期间显示待定状态。
+可以在 `<form>` 中渲染的子组件中调用 `useFormStatus` Hook，并读取返回的 `pending` 属性，以在表单提交期间显示待定状态。
 
 下面的示例使用 `pending` 属性指示表单正在提交。
 
