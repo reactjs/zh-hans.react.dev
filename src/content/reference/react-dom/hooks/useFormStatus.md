@@ -146,7 +146,7 @@ function Form() {
 }
 ```
 
-而应该从位于 `<form>` 内部的组件中调用 `useFormStatus`。
+正确的做法是从位于 `<form>` 内部的组件中调用 `useFormStatus`。
 
 ```js
 function Submit() {
