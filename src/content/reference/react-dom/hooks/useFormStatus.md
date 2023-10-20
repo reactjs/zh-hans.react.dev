@@ -256,6 +256,6 @@ export async function submitForm(query) {
 
 `useFormStatus` 仅会返回父级 `<form>` 的状态信息。
 
-如果调用 `useFormStatus` 的组件未嵌套在 `<form>` 中，`status.pending` 总是返回 `false`。请验证 `useFormStatus` 是否在一个 `<form>` 元素的子组件中调用。
+如果调用 `useFormStatus` 的组件未嵌套在 `<form>` 中，`status.pending` 总是返回 `false`。请验证 `useFormStatus` 是否在 `<form>` 元素的子组件中调用。
 
 `useFormStatus` 不会追踪同一组件中渲染的 `<form>` 的状态。参阅 [陷阱](#useformstatus-will-not-return-status-information-for-a-form-rendered-in-the-same-component) 以了解更多详细信息。
