@@ -296,4 +296,4 @@ Inspirations 应用程序的模块依赖树。
 
 </Recap>
 
-[TODO]: <> (添加 challenge)
+[TODO]: <> (Add challenges)
