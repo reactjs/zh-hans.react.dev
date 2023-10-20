@@ -14,7 +14,7 @@ translators:
 
 <YouWillLearn>
 
-* React 合适选择保留或重置状态
+* React 何时选择保留或重置状态
 * 如何强制 React 重置组件的状态
 * 键和类型如何影响状态是否被保留
 
