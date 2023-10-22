@@ -694,7 +694,7 @@ React 事件对象实现了一些标准的 [`Event`](https://developer.mozilla.o
 
 ```js
 <div
-  onScroll={e => console.log('onScroll')}
+  onWheel={e => console.log('onWheel')}
 />
 ```
 
