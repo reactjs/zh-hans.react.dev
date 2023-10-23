@@ -176,7 +176,7 @@ export default function FancyText({title, text}) {
 
 ```js Color.js
 export default function Color({value}) {
-  return <div className="colorbox" style={{backgroundColor: value}} / >
+  return <div className="colorbox" style={{backgroundColor: value}} />
 }
 ```
 
@@ -197,7 +197,7 @@ export default function InspirationGenerator({children}) {
       {inspiration.type === 'quote'
       ? <FancyText text={inspiration.value} />
       : <Color value={inspiration.value} />}
-      
+
       <button onClick={next}>Inspire me again</button>
       {children}
     </>
