@@ -67,7 +67,12 @@ experimental_taintUniqueValue(
 
 #### 注意 {/*caveats*/}
 
+<<<<<<< HEAD
 - 从受标记的值派生新值可能会破坏标记保护。通过将受标记的值大写、将受标记的字符串值连接成较大的字符串、将受标记的值转换为 base64、对受标记的值进行子字符串操作以及其他类似的转换来创建的新值，除非明确调用 `taintUniqueValue` 标记这些新创建的值，否则它们不会受到标记。
+=======
+* Deriving new values from tainted values can compromise tainting protection. New values created by uppercasing tainted values, concatenating tainted string values into a larger string, converting tainted values to base64, substringing tainted values, and other similar transformations are not tainted unless you explicity call `taintUniqueValue` on these newly created values.
+* Do not use `taintUniqueValue` to protect low-entropy values such as PIN codes or phone numbers. If any value in a request is controlled by an attacker, they could infer which value is tainted by enumerating all possible values of the secret.
+>>>>>>> 2779615e647f3a99d95b6daf072426e222d5fdd3
 
 ---
 
