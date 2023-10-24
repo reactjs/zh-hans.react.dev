@@ -246,7 +246,7 @@ export default [
 
 <Diagram name="conditional_render_tree" height={250} width={561} alt="带有六个节点的树形图。树的顶部节点标有 App ，有两个箭头指向标有 InspirationGenerator 和 FancyText 的节点。箭头是实线，标有 renders 一词。InspirationGenerator 节点还有三个箭头。指向 FancyText 和 Color 节点的箭头是虚线，标有 renders?。最后一个箭头指向标有 Copyright 的节点，是实线，标有 renders 一词。">
 
-在条件渲染中，不同的渲染过程中，渲染树可能会渲染不同的组件。
+在条件渲染的不同渲染过程中，渲染树可能会渲染不同的组件。
 
 </Diagram>
 
