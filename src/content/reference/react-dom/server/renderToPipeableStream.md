@@ -410,7 +410,7 @@ const { pipe } = renderToPipeableStream(<App />, {
 });
 ```
 
-如果在生成 shell 的过程中出现异常错误，`onError` 和 `onShellError` 都会触发。使用 `onError` 来做错误上报，并且使用 `onShellError` 发送一个后备 HTML 文档。你的备用 HTML 不一定要是一个错误提示页面。你还可以引入一个可交互的、并且只在客户端渲染你的应用程序的 shell。
+如果在生成 shell 的过程中出现异常错误，`onError` 和 `onShellError` 都会触发。使用 `onError` 来做错误上报，并且使用 `onShellError` 发送一个后备 HTML 文档。你的后备 HTML 不一定要是一个错误提示页面。你还可以引入一个可交互的、并且只在客户端渲染你的应用程序的 shell。
 
 ---
 
