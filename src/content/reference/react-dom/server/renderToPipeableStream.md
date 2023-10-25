@@ -58,7 +58,7 @@ const { pipe } = renderToPipeableStream(<App />, {
   * **可选** `onAllReady`：一个回调函数，将会在所有渲染完成时触发，包括 [shell](#specifying-what-goes-into-the-shell) 和所有额外的 [content](#streaming-more-content-as-it-loads)。你可以用这个替代 `onShellReady` [用于爬虫和静态内容生成](#waiting-for-all-content-to-load-for-crawlers-and-static-generation)。如果在此处开启了流式传输，所有的 HTML 都会被包含在流中直接返回，而不会有任何渐进的加载。
   * **可选** `onError`：一个回调函数，只要是出现了异常错误，无论这是 [可恢复的](#recovering-from-errors-outside-the-shell) 还是 [不可恢复的](#recovering-from-errors-inside-the-shell)，它都会触发。默认情况下，它只会调用 `console.error`。如果你想要将它重写为 [日志崩溃报告](#logging-crashes-on-the-server)，记得仍然要使用 `console.error` 为可能不兼容的场景兜底。你也可以在 shell 发送之前使用它来 [修改状态码](#setting-the-status-code)。
   * **可选** `onShellReady`：一个回调函数，在 [shell 初始化](#specifying-what-goes-into-the-shell) 渲染后立即调用。你可以 [设置状态码](#setting-the-status-code) 然后在这里调用 `pipe` 方法启用流式传输。这样一来，React 将会初始化 shell 渲染完毕后，通过上面提到的 `<script>` 进行 [流式传输更多内容](#streaming-more-content-as-it-loads)，用这些内容替换掉 HTML 的加载中的后备方案。
-  * **可选** `onShellError`：一个回调函数，在初始化 shell 发生错误渲染时调用。它的第一个参数将自动接收捕获到的异常错误。此时，这个流中的任何内容都不会被发送，并且 `onShellReady` 和 `onAllReady` 都不会被调用，所以你还可以 [输出一段备用 HTML shell](#recovering-from-errors-inside-the-shell) 作为兜底。
+  * **可选** `onShellError`：一个回调函数，在初始化 shell 发生错误渲染时调用。它的第一个参数将自动接收捕获到的异常错误。此时，这个流中的任何内容都不会被发送，并且 `onShellReady` 和 `onAllReady` 都不会被调用，所以你还可以 [输出一段后备 HTML shell](#recovering-from-errors-inside-the-shell) 作为兜底。
   * **可选** `progressiveChunkSize`：一个块中的字节数。[查阅更多关于该参数默认值的信息](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)。
 
 
