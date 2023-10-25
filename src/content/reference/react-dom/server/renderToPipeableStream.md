@@ -439,7 +439,7 @@ function ProfilePage() {
 
 如果在客户端重试渲染 `Posts` **也** 失败了，React 将会在客户端抛出一个异常错误。当渲染过程中的所有异常错误都被抛出时，距离它们[最近的父级异常错误边界](/reference/react/Component#static-getderivedstatefromerror) 会定义这个异常错误将如何呈现给用户。实际上，这意味着用户将看到一个加载指示器，直到这个异常错误被判定为是不可恢复的。
 
-如果在客户端重试渲染 `Posts` 成功了，加载中的备用方案将被替换为客户端渲染的内容。这样一来用户感知到服务端出现了异常错误。不过，服务端的 `onError` 回调函数和客户端的 [`onRecoverableError`](/reference/react-dom/client/hydrateRoot#hydrateroot) 回调函数仍然会触发，所以你也可以获取到一些关于这个异常错误的提示信息。
+如果在客户端重试渲染 `Posts` 成功了，加载中的后备方案将被替换为客户端渲染的内容。这样一来用户感知到服务端出现了异常错误。不过，服务端的 `onError` 回调函数和客户端的 [`onRecoverableError`](/reference/react-dom/client/hydrateRoot#hydrateroot) 回调函数仍然会触发，所以你也可以获取到一些关于这个异常错误的提示信息。
 
 ---
 
