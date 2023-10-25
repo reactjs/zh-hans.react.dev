@@ -276,7 +276,7 @@ function ProfilePage() {
 }
 ```
 
-在这个例子中，React 甚至能够更早地启用流式传输。因为 `ProfileLayout` 和 `ProfileCover` 没有被包裹在 `<Suspense>` 中，所以它们必须先完成渲染。然而，如果 `Sidebar`、`Friend` 或者 `Photos` 需要加载更多数据，React 将会发送加载中的 `BigSpinner` 备用方案对应的 HTML 暂时替代有效内容。然后，当这些数据加载完成时，有效内容将渐进地显示直至全部可见。
+在这个例子中，React 甚至能够更早地启用流式传输。因为 `ProfileLayout` 和 `ProfileCover` 没有被包裹在 `<Suspense>` 中，所以它们必须先完成渲染。然而，如果 `Sidebar`、`Friend` 或者 `Photos` 需要加载更多数据，React 将会发送加载中的 `BigSpinner` 后备方案对应的 HTML 暂时替代有效内容。然后，当这些数据加载完成时，有效内容将渐进地显示直至全部可见。
 
 流式传输不需要等待 React 本身在浏览器中的加载，也不需要等待你的应用程序变得可交互。在任何 `<script>` 标签加载之前，服务端发送的 HTML 内容就会开始渐进式地显示。
 
