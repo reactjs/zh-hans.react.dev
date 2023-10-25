@@ -253,7 +253,7 @@ function ProfilePage() {
 }
 ```
 
-这样做将通知 React 在 `Posts` 加载数据之前就开始流式传输 HTML。React 首先会发送加载中的备用方案（`PostsGlimmer`）对应的 HTML，然后当 `Posts` 的数据加载完成时，React 会将剩下的 HTML 带上一个 `<script>` 标签一并发送，这个 `<script>` 的作用是将加载中的备用方案替换为这段 HTML。从用户的角度上看，页面上首先出现的是 `PostsGlimmer`，稍后被替换为 `Posts`。
+这样做将通知 React 在 `Posts` 加载数据之前就开始流式传输 HTML。React 首先会发送加载中的后备方案（`PostsGlimmer`）对应的 HTML，然后当 `Posts` 的数据加载完成时，React 会将剩下的 HTML 带上一个 `<script>` 标签一并发送，这个 `<script>` 的作用是将加载中的后备方案替换为这段 HTML。从用户的角度上看，页面上首先出现的是 `PostsGlimmer`，稍后被替换为 `Posts`。
 
 你可以进一步地 [嵌套 `<Suspense>`](/reference/react/Suspense#revealing-nested-content-as-it-loads) 来创建一个更加细致的加载序列：
 
