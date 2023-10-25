@@ -251,7 +251,7 @@ function ProfilePage() {
 }
 ```
 
-告诉 React 在 `Posts` 加载数据之前开始流式传输 HTML。React 将首先发送加载后备 HTML（`PostsGlimmer`），然后，当 `Posts` 完成数据加载后，React 将发送剩余的 HTML，并用该 HTML 替换之前替代内联 `<script>` 标签的备用方案。从用户视角看，该页面会首先显示 `PostsGlimmer` 的内容，然后被替换为 `Posts` 的内容。
+告诉 React 在 `Posts` 加载数据之前开始流式传输 HTML。React 将首先发送加载后备 HTML（`PostsGlimmer`），然后，当 `Posts` 完成数据加载后，React 将发送剩余的 HTML，并用该 HTML 替换之前替代内联 `<script>` 标签的后备方案。从用户视角看，该页面会首先显示 `PostsGlimmer` 的内容，然后被替换为 `Posts` 的内容。
 
 你可以进一步 [嵌套 `<Suspense>` 边界](/reference/react/Suspense#revealing-nested-content-as-it-loads) 来创建更细粒度的加载序列：
 
