@@ -252,11 +252,7 @@ export default [
 
 在这个示例中，根据 `inspiration.type` 的值可能会渲染 `<FancyText>` 或 `<Color>`。每次渲染过程的渲染树可能都不同。
 
-<<<<<<< HEAD
 尽管渲染树可能在不同的渲染过程中有所不同，但通常这些树有助于识别 React 应用程序中的顶级和叶子组件。顶级组件是离根组件最近的组件，它们影响其下所有组件的渲染性能，通常包含最多复杂性。叶子组件位于树的底部，没有子组件，通常会频繁重新渲染。
-=======
-Although render trees may differ across render passes, these trees are generally helpful for identifying what the *top-level* and *leaf components* are in a React app. Top-level components are the components nearest to the root component and affect the rendering performance of all the components beneath them and often contain the most complexity. Leaf components are near the bottom of the tree and have no child components and are often frequently re-rendered.
->>>>>>> 2779615e647f3a99d95b6daf072426e222d5fdd3
 
 识别这些组件类别有助于理解应用程序的数据流和性能。
 

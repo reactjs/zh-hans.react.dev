@@ -1502,9 +1502,6 @@ main {
 
 ---
 
-<<<<<<< HEAD
-## 疑难解答 {/*troubleshooting*/}
-=======
 ### Displaying an error to users with a error boundary {/*displaying-an-error-to-users-with-error-boundary*/}
 
 <Canary>
@@ -1600,7 +1597,6 @@ root.render(
 ---
 
 ## Troubleshooting {/*troubleshooting*/}
->>>>>>> 2779615e647f3a99d95b6daf072426e222d5fdd3
 
 ### 在 transition 中无法更新输入框内容 {/*updating-an-input-in-a-transition-doesnt-work*/}
 
