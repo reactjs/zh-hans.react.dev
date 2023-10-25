@@ -32,7 +32,7 @@ const ThemeContext = createContext('light');
 
 #### 参数 {/*parameters*/}
 
-* `defaultValue`：当包裹需要读取上下文的组件树中没有匹配的上下文时，你可以用该值作上下文的。倘若你没有任何有意义的默认值，可指定其为 `null`。该默认值是用于作为”最后的手段“的备选值。它是静态的，永远不会随时间改变。
+* `defaultValue`：当包裹需要读取上下文的组件树中没有匹配的上下文时，你可以用该值作上下文的。倘若你没有任何有意义的默认值，可指定其为 `null`。该默认值是用于作为”最后的手段“的后备方案。它是静态的，永远不会随时间改变。
 
 #### 返回值 {/*returns*/}
 
@@ -211,7 +211,7 @@ function App() {
 const ThemeContext = createContext('light');
 ```
 
-该值永远不会发生改变。当 React 无法找到匹配的 provider 时，该值会被作为备选值。
+该值永远不会发生改变。当 React 无法找到匹配的 provider 时，该值会被作为后备方案。
 
 要想使上下文的值随时间变化，[添加状态并用一个 context provider 包裹组件](/reference/react/useContext#updating-data-passed-via-context)。
 

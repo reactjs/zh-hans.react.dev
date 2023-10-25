@@ -234,7 +234,7 @@ class Counter extends Component {
 
 #### 注意 {/*componentdidcatch-caveats*/}
 
-* 在以前经常会在 `componentDidCatch` 中使用 `setState` 来更新 UI 以及显示回退错误消息。我们反对这种方法，更赞同定义 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)。
+* 在以前经常会在 `componentDidCatch` 中使用 `setState` 来更新 UI 以及显示后备错误消息。我们反对这种方法，更赞同定义 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)。
 
 * `componentDidCatch` 在 React 生产环境和开发环境中处理错误的方式有所不同，在开发环境下，错误将冒泡至 `window`，这意味着任何 `window.onerror` 或者 `window.addEventListener('error', callback)` 事件都将中断被 `componentDidCatch` 所捕获到的错误。而在生产环境下则相反，错误并不会冒泡，这意味着任何父级的错误处理器都只会接收到被 `componentDidCatch` 捕获的非显式错误。
 
@@ -1345,7 +1345,7 @@ button { margin-left: 10px; }
 
 ### 使用错误边界捕获渲染错误 {/*catching-rendering-errors-with-an-error-boundary*/}
 
-默认情况下，如果你的应用程序在渲染过程中抛出错误，React 将从屏幕上删除其 UI。为了防止这种情况，你可以将 UI 的一部分包装到 **错误边界** 中。错误边界是一个特殊的组件，可让你显示一些备用 UI，而不是显示例如错误消息这样崩溃的部分。
+默认情况下，如果你的应用程序在渲染过程中抛出错误，React 将从屏幕上删除其 UI。为了防止这种情况，你可以将 UI 的一部分包装到 **错误边界** 中。错误边界是一个特殊的组件，可让你显示一些后背 UI，而不是显示例如错误消息这样崩溃的部分。
 
 要实现错误边界组件，你需要提供 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)，它允许你更新状态以响应错误并向用户显示错误消息。你还可以选择实现 [`componentDidCatch`](#componentdidcatch) 来添加一些额外的逻辑，例如将错误添加到分析服务。
 

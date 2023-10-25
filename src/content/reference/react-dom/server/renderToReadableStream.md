@@ -66,7 +66,7 @@ async function handler(request) {
 `renderToReadableStream` 返回一个 Promise：
 
 - 如果渲染 [shell](#specifying-what-goes-into-the-shell) 成功，那么 Promise 将 resolve [Web 可读流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream)。
-- 如果渲染 shell 失败，Promise 将 reject。[使用这个输出回滚 shell ](#recovering-from-errors-inside-the-shell)。
+- 如果渲染 shell 失败，Promise 将 reject。[使用这个输出后备 shell ](#recovering-from-errors-inside-the-shell)。
 
 返回的流具有附加属性：
 
@@ -251,7 +251,7 @@ function ProfilePage() {
 }
 ```
 
-告诉 React 在 `Posts` 加载数据之前开始流式传输 HTML。React 将首先发送加载回滚的 HTML（`PostsGlimmer`），然后，当 `Posts` 完成数据加载后，React 将发送剩余的 HTML，并用该 HTML 替换加载回滚的内联 `<script>` 标签。从用户视角看，该页面会首先显示 `PostsGlimmer` 的内容，然后被替换为 `Posts` 的内容。
+告诉 React 在 `Posts` 加载数据之前开始流式传输 HTML。React 将首先发送加载后备 HTML（`PostsGlimmer`），然后，当 `Posts` 完成数据加载后，React 将发送剩余的 HTML，并用该 HTML 替换之前替代内联 `<script>` 标签的备用方案。从用户视角看，该页面会首先显示 `PostsGlimmer` 的内容，然后被替换为 `Posts` 的内容。
 
 你可以进一步 [嵌套 `<Suspense>` 边界](/reference/react/Suspense#revealing-nested-content-as-it-loads) 来创建更细粒度的加载序列：
 
@@ -275,7 +275,7 @@ function ProfilePage() {
 ```
 
 
-在本例中，React 可以更早地开始对页面进行流式传输。只有 `ProfileLayout` 和 `ProfileCover` 是必须先完成渲染的，因为它们没有封装进任何 `<Suspense>` 边界中。但是，如果 `Sidebar`、`Friends` 或 `Photos` 需要加载一些数据，React 将发送 HTML 以供 `BigSpinner` 回滚。然后，随着更多的数据变得可用，更多的内容将会被显示，直到所有的内容都可见。
+在本例中，React 可以更早地开始对页面进行流式传输。只有 `ProfileLayout` 和 `ProfileCover` 是必须先完成渲染的，因为它们没有封装进任何 `<Suspense>` 边界中。但是，如果 `Sidebar`、`Friends` 或 `Photos` 需要加载一些数据，React 将发送 HTML 以供回退 `BigSpinner`。然后，随着更多的数据变得可用，更多的内容将会被显示，直到所有的内容都可见。
 
 在浏览器中，流不需要等待 React 自身的加载，也不需等待应用变得可交互。在任何 `<script>` 标签加载之前，来自服务器中的 HTML 内容将会逐步的显示出来。
 
@@ -390,7 +390,7 @@ function ProfilePage() {
 }
 ```
 
-如果在渲染这些组件时发生错误，React 将不会向客户端发送任何有意义的 HTML。将 `renderToReadableStream` 的调用放到 `try...catch` 里，发送一个不依赖服务端渲染的回滚 HTML 作为最后的备用方案：
+如果在渲染这些组件时发生错误，React 将不会向客户端发送任何有意义的 HTML。将 `renderToReadableStream` 的调用放到 `try...catch` 里，发送一个不依赖服务端渲染的回滚 HTML 作为最后的后备方案：
 
 ```js {2,13-18}
 async function handler(request) {
@@ -414,7 +414,7 @@ async function handler(request) {
 }
 ```
 
-如果在生成 shell 时出错，`onError` 和 `catch` 都会被触发。用 `onError` 报告错误，并用 `catch` 发送回滚 HTML。你的回滚 HTML 不一定必须是个错误页面。相反，你可以返回一个替代的 shell，这个 shell 只在客户端上渲染你的应用。
+如果在生成 shell 时出错，`onError` 和 `catch` 都会被触发。用 `onError` 报告错误，并用 `catch` 发送后备 HTML。你的后备 HTML 不一定必须是个错误页面。相反，你可以返回一个替代的 shell，这个 shell 只在客户端上渲染你的应用。
 
 ---
 
@@ -437,13 +437,13 @@ function ProfilePage() {
 
 如果 `Posts` 组件或其内部发生错误，React 将 [尝试从中恢复](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content)：
 
-1. 它将为最近的 `<Suspense>` 边界（`PostsGlimmer`）触发加载回滚到 HTML。
+1. 它将为最近的 `<Suspense>` 边界（`PostsGlimmer`）触发加载中的后备方案到 HTML。
 2. 它将 **放弃** 再尝试在服务器上渲染 `Posts`。
 3. 当 JavaScript 代码加载到客户端上时，React **重新尝试** 在客户端上渲染 `Posts`。
 
 如果在客户端上重新尝试渲染 `Posts` **也** 失败，React 将在客户端上抛出错误。与渲染过程中抛出的所有错误一样，[最近的父级错误边界](/reference/reflect/Component#staticgetderivedstatefromwerror) 决定如何向用户展示错误。在实践中，这意味着用户将看到加载指示符，直到确定错误不可恢复为止。
 
-如果在客户端上重新尝试渲染 `Posts` 成功，则从服务器加载回滚将被客户端渲染的输出所取代。用户不会知道有服务器错误。但是，服务器的 `onError` 回调和客户端的 [`onRecoverableError`](/reference/react-dom/client/hydrateRoot#hydrateroot) 回调将被触发，以便你可以收到有关错误通知。
+如果在客户端上重新尝试渲染 `Posts` 成功，则从服务器加载中的后备方案将被客户端渲染的输出所取代。用户不会知道有服务器错误。但是，服务器的 `onError` 回调和客户端的 [`onRecoverableError`](/reference/react-dom/client/hydrateRoot#hydrateroot) 回调将被触发，以便你可以收到有关错误通知。
 
 ---
 
@@ -622,4 +622,4 @@ async function handler(request) {
     // ...
 ```
 
-React 会把剩余的加载回滚刷新成 HTML，并尝试在客户端上渲染其余部分。
+React 会把剩余的加载中的后备方案刷新为 HTML，并尝试在客户端上渲染其余部分。

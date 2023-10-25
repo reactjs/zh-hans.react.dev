@@ -305,7 +305,7 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 * **一致的 useEffect 时间**：现在，如果更新是在类似点击或者敲击键盘事件这样的离散用户输入事件期间触发，React 总是同步刷新 effect 函数。而之前的行为不是一直可预测或者一致的。
 * **更严格的 hydrate 报错**：由于缺失或者额外的文本而导致的 hydrate 不匹配现在会作为错误而不是告警对待。React 将不再试图通过在客户端增加或删除节点来“修补”单个节点来匹配服务端标记，并且将会回退客户端渲染到树中最近的 `<Suspense>` 边界。这可以保证 hydrate 树保持一致并且避免可能由 hydrate 不匹配导致的隐私和安全漏洞。
 * **Suspense 树一直保持一致**：如果一个组件在它完全被添加到树上之前挂起，React 将不会把它以不完整的状态添加到树或者触发它的 effect。React 会完全扔掉新树，等待异步操作结束，然后重新尝试从头开始再次渲染。React 会同时渲染重试尝试，并且不会阻塞浏览器。
-* **使用 Suspense 的 Layout Effect**：当一个树重新挂起并恢复为回退时，现在的 React 会清理 layout effect，然后在边界内的内容再次显示时重新创建它们。这修复了一个在与 Suspense 一起使用时的问题：阻止组件库正确测量布局。
+* **使用 Suspense 的 Layout Effect**：当一个树重新挂起并恢复为后备方案时，现在的 React 会清理 layout effect，然后在边界内的内容再次显示时重新创建它们。这修复了一个在与 Suspense 一起使用时的问题：阻止组件库正确测量布局。
 * **新的 JavaScript 环境要求**：React 现在依赖于现代浏览器特性，包括 `Promise`、`Symbol` 和 `Object.assign`。如果你需要支持像 Internet Explorer 这样较老版本的浏览器和设备，它们本身不提供现代浏览器特性或者有不兼容的实现，可以考虑在打包后的应用中包含全局的 polyfill。
 
 ## 其他值得注意的变化 {/*other-notable-changes*/}
@@ -320,8 +320,8 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
 ### React DOM Server {/*react-dom-server*/}
 
-* **`renderToString`**：当在服务端挂起时，它不再会报错。而是会为最接近的 `<Suspense>` 边界发射 fallback HTML，然后在客户端尝试渲染同样的内容。我们仍然推荐你切换到像 `renderToPipeableStream` 或者 `renderToReadableStream` 这样的流式 API。
-* **`renderToStaticMarkup`**：当在服务端挂起时，它不再会报错。而是会为最接近的 `<Suspense>` 边界发射 fallback HTML。
+* **`renderToString`**：当在服务端挂起时，它不再会报错。而是会为最接近的 `<Suspense>` 边界发射后备 HTML，然后在客户端尝试渲染同样的内容。我们仍然推荐你切换到像 `renderToPipeableStream` 或者 `renderToReadableStream` 这样的流式 API。
+* **`renderToStaticMarkup`**：当在服务端挂起时，它不再会报错。而是会为最接近的 `<Suspense>` 边界发射后备 HTML。
 
 ## 更新日志 {/*changelog*/}
 

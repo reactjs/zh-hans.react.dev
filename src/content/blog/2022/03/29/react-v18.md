@@ -74,7 +74,7 @@ React 18 中最重要的更新内容是我们希望你永远不会考虑的：�
 
 在未来，我们可能会暴露更多原语，使你能用 `Suspense` 更容易地获取数据，那时也就不一定必须要使用某个的框架。不过，Suspense 被深度整合到你的应用结构中时能产生最好的效果：你的路由，你的数据层，你的服务端渲染环境。因此我们预计，即使在未来相当长一段时间里，库和框架也还会在 React 生态中发挥关键作用。
 
-就像在过去的 React 的版本中，你总是可以使用 Suspense 与客户端侧的 `React.lazy` 配合进行代码分割。但是我们的对 Suspense 的期望并不仅仅是加载代码——最终的目标是扩展对 Suspense 的支持，以至于相同的声明式 Suspense fallback 能够处理任何异步操作（加载代码，数据，图片等）。
+就像在过去的 React 的版本中，你总是可以使用 Suspense 与客户端侧的 `React.lazy` 配合进行代码分割。但是我们的对 Suspense 的期望并不仅仅是加载代码——最终的目标是扩展对 Suspense 的支持，以至于相同的声明式 Suspense 后备方案能够处理任何异步操作（加载代码，数据，图片等）。
 
 ## 服务器组件仍在开发中 {/*server-components-is-still-in-development*/}
 
@@ -162,7 +162,7 @@ Suspense 使得“UI 加载状态”成为了 React 编程模型中最高级的�
 
 在 React 18 中，我们已经支持了服务端 Suspense，并且使用并发渲染特性扩展了其功能。
 
-React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你在 transition 期间挂起，React 不会让已显示的内容被之前的内容取代。相反，React 会延迟渲染，直到有足够的数据，以防止出现加载状态错误。
+React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你在 transition 期间挂起，React 不会让已显示的内容被后备方案取代。相反，React 会延迟渲染，直到有足够的数据，以防止出现加载状态错误。
 
 更多内容参见 [React 18 中的 Suspense](https://github.com/reactjs/rfcs/blob/main/text/0213-suspense-in-react-18.md) 的意见征求。
 

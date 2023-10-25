@@ -947,7 +947,7 @@ ul, li { margin: 0; padding: 0; }
 
 ---
 
-### 指定回退默认值 {/*specifying-a-fallback-default-value*/}
+### 指定后备方案默认值 {/*specifying-a-fallback-default-value*/}
 
 如果 React 没有在父树中找到该特定 <CodeStep step={1}>context</CodeStep> 的任何 provider，`useContext()` 返回的 context 值将等于你在 [创建 context](/reference/react/createContext) 时指定的 <CodeStep step={3}>默认值</CodeStep>：
 
