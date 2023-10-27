@@ -56,6 +56,11 @@
           "path": "/reference/react/useMemo"
         },
         {
+          "title": "useOptimistic",
+          "path": "/reference/react/useOptimistic",
+          "canary": true
+        },
+        {
           "title": "useReducer",
           "path": "/reference/react/useReducer"
         },
@@ -185,6 +190,11 @@
         {
           "title": "Common (e.g. <div>)",
           "path": "/reference/react-dom/components/common"
+        },
+        {
+          "title": "<form>",
+          "path": "/reference/react-dom/components/form",
+          "canary": true
         },
         {
           "title": "<input>",

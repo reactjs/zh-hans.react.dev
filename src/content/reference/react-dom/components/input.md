@@ -32,7 +32,18 @@ title: "<input>"
 
 `<input>` 支持所有 [常见的元素属性](/reference/react-dom/components/common#props)。
 
+<<<<<<< HEAD
 你可以传递以下属性中的任意一个，以将其变为 [受控输入框](#controlling-an-input-with-a-state-variable)：
+=======
+<Canary>
+
+React's extensions to the `formAction` prop are currently only available in React's canary and experimental channels. In stable releases of React `formAction` works only as a [built-in browser HTML component](https://react.dev/reference/react-dom/components#all-html-components). Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+</Canary>
+
+[`formAction`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formaction): A string or function. Overrides the parent `<form action>` for `type="submit"` and `type="image"`. When a URL is passed to `action` the form will behave like a standard HTML form. When a function is passed to `formAction` the function will handle the form submission. See [`<form action>`](/reference/react-dom/components/form#props).
+
+You can [make an input controlled](#controlling-an-input-with-a-state-variable) by passing one of these props:
+>>>>>>> 46b45fb873a9f410be8e56107756eb08be6081c9
 
 * `checked`：布尔值，控制复选框或单选按钮是否被选中。
 * `value`：字符串，控制文本框的输入文本（如果是单选按钮，则为其表单数据）。
