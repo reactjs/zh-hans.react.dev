@@ -1,20 +1,20 @@
 ---
-title: useFormState
-canary: true
+标题: 使用表单状态
+金丝雀: 真的
 ---
 
-<Canary>
+<金丝雀>
 
-The `useFormState` Hook is currently only available in React's canary and experimental channels. Learn more about [release channels here](/community/versioning-policy#all-release-channels). In addition, you need to use a framework that supports [React Server Components](/reference/react/use-client) to get the full benefit of `useFormState`.
+`使用表单状态` 钩 目前仅在 反应 的金丝雀和实验通道中可用。详细了解[发布渠道](/社区/版本控制-政策#全部-发布-渠道)。此外，您需要使用支持 反应服务器组件](/参考/反应/使用客户端) 的框架才能充分发挥 使用表单状态 的优势。
 
-</Canary>
+</金丝雀>
 
 <Intro>
 
-`useFormState` is a Hook that allows you to update state based on the result of a form action.
+`使用表单状态` 是一个 钩，允许您根据表单操作的结果更新状态。
 
 ```js
-const [state, formAction] = useFormState(fn, initialState);
+常量 [状态、表单动作] = 使用表单状态(号, 初始状态);
 ```
 
 </Intro>
@@ -23,253 +23,252 @@ const [state, formAction] = useFormState(fn, initialState);
 
 ---
 
-## Reference {/*reference*/}
+##参考 {/*参考*/}
 
-### `useFormState(action, initialState)` {/*useformstate*/}
+### `使用表单状态(动作，初始状态)` {/*使用表单状态*/}
 
-{/* TODO T164397693: link to actions documentation once it exists */}
+{/* 待办 T164397693: 链接到操作文档（一旦存在） */}
 
-Call `useFormState` at the top level of your component to create component state that is updated [when a form action is invoked](/reference/react-dom/components/form). You pass `useFormState` an existing form action function as well as an initial state, and it returns a new action that you use in your form, along with the latest form state. The latest form state is also passed to the function that you provided.
+称呼 `使用表单状态` 在组件的顶层创建更新的组件状态 [当调用表单操作时](/参考/反应-多姆/成分/形式). 你过关了 `使用表单状态` 现有的表单操作函数以及初始状态，它返回您在表单中使用的新操作以及最新的表单状态。最新的表单状态也会传递给您提供的函数。
 
 ```js
-import { useFormState } from "react-dom";
+进口 { 使用表单状态 } 从 "反应-多姆";
 
-async function increment(previousState, formData) {
-  return previousState + 1;
+异步函数增量(先前状态，表单数据) {
+  返回前一个状态 + 1;
 }
 
-function StatefulForm({}) {
-  const [state, formAction] = useFormState(increment, 0);
-  return (
-    <form>
-      {state}
-      <button formAction={formAction}>Increment</button>
-    </form>
+函数 有状态表单({}) {
+  常量 [状态、表单动作] = 使用表单状态(增量, 0);
+  返回 (
+    <形式>
+      {状态}
+      <按钮 表单动作 = {表单动作}>增量</按钮>
+    </形式>
   )
 }
 ```
+表单状态是上次提交表单时操作返回的值。如果表单尚未提交，则为您通过的初始状态。
 
-The form state is the value returned by the action when the form was last submitted. If the form has not yet been submitted, it is the initial state that you pass.
+如果与服务器操作一起使用, `使用表单状态` 允许在 Hydration 完成之前显示服务器提交表单的响应。
 
-If used with a server action, `useFormState` allows the server's response from submitting the form to be shown even before hydration has completed.
+[请参阅下面的更多示例.](#用法)
 
-[See more examples below.](#usage)
+#### 参数 {/*参数*/}
 
-#### Parameters {/*parameters*/}
+* `号`:提交表单或按下按钮时要调用的函数。当函数被调用时，它将接收表单的先前状态（最初是您传递的“初始状态”，随后是其先前的返回值）作为其初始参数，后面是表单操作通常接收的参数。
+* `初始状态`：您希望初始状态的值。它可以是任何可序列化的值。首次调用操作后，该参数将被忽略。
 
-* `fn`: The function to be called when the form is submitted or button pressed. When the function is called, it will receive the previous state of the form (initially the `initialState` that you pass, subsequently its previous return value) as its initial argument, followed by the arguments that a form action normally receives.
-* `initialState`: The value you want the state to be initially. It can be any serializable value. This argument is ignored after the action is first invoked.
+{/* 去做 T164397693：链接到可序列化值文档（一旦存在） */}
 
-{/* TODO T164397693: link to serializable values docs once it exists */}
+#### 退货 {/*退货*/}
 
-#### Returns {/*returns*/}
+`使用表单状态`返回一个恰好有两个值的数组:
 
-`useFormState` returns an array with exactly two values:
+1. 目前的状态。在第一次渲染期间，它将匹配您传递的 “初始状态”。调用操作后，它将匹配操作返回的值。
+2.一个新操作，您可以将其作为“行动”道具传递给 “形式” 组件，或将 “表单动作” 道具传递给表单中的任何 “按钮” 组件。
 
-1. The current state. During the first render, it will match the `initialState` you have passed. After the action is invoked, it will match the value returned by the action.
-2. A new action that you can pass as the `action` prop to your `form` component or `formAction` prop to any `button` component within the form.
+#### 注意事项 {/*注意事项*/}
 
-#### Caveats {/*caveats*/}
-
-* When used with a framework that supports React Server Components, `useFormState` lets you make forms interactive before JavaScript has executed on the client. When used without Server Components, it is equivalent to component local state.
-* The function passed to `useFormState` receives an extra argument, the previous or initial state, as its first argument. This makes its signature different than if it were used directly as a form action without using `useFormState`.
+* 与支持 反应 Server 组件的框架一起使用时, `使用表单状态` 允许您在 爪哇脚本 在客户端上执行之前使表单具有交互性。当不使用服务器组件时，它相当于组件本地状态。
+* 该函数传递给 `使用表单状态`接收一个额外的参数，即先前或初始状态，作为其第一个参数。这使得它的签名不同于直接用作表单操作而不使用 `使用表单状态`.
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*用法*/}
 
-### Using information returned by a form action {/*using-information-returned-by-a-form-action*/}
+### 使用表单操作返回的信息 {/*使用-信息-回-经过-诶-形式-行动*/}
 
-Call `useFormState` at the top level of your component to access the return value of an action from the last time a form was submitted.
+称呼 `使用表单状态` 在组件的顶层访问上次提交表单时操作的返回值。
 
-```js [[1, 5, "state"], [2, 5, "formAction"], [3, 5, "action"], [4, 5, "null"], [2, 8, "formAction"]]
-import { useFormState } from 'react-dom';
-import { action } from './actions.js';
+```js [[1, 5, "状态"], [2, 5, "表单动作"], [3, 5, "行动"], [4, 5, "无效的"], [2, 8, "表单动作"]]
+进口 { 使用表单状态 } 从 '反应-多姆';
+进口 { 行动 } 从 './行动.js';
 
-function MyComponent() {
-  const [state, formAction] = useFormState(action, null);
+功能 我的组件() {
+  常量 [状态, 表单动作] = 使用表单状态(行动, 无效的);
   // ...
-  return (
-    <form action={formAction}>
+  返回 (
+    <形式 行动={表单动作}>
       {/* ... */}
-    </form>
+    </形式>
   );
 }
 ```
 
-`useFormState` returns an array with exactly two items:
+`使用表单状态` 返回 恰好包含两个项目的数组:
 
-1. The <CodeStep step={1}>current state</CodeStep> of the form, which is initially set to the <CodeStep step={4}>initial state</CodeStep> you provided, and after the form is submitted is set to the return value of the <CodeStep step={3}>action</CodeStep> you provided.
-2. A <CodeStep step={2}>new action</CodeStep> that you pass to `<form>` as its `action` prop.
+1. 表单的<代码步骤 步={1}>当前状态</代码步骤>，最初设置为您提供的<代码步骤 步={4}>初始状态</代码步骤>，并在表单提交后设置为您提供的 <代码步骤 步={3}>行动</代码步骤> 的返回值。
+2. 诶 <代码步骤 步={2}>新的 行动</代码步骤> 你传递给 `<形式>` 就像它一样 `行动` 支柱.
 
-When the form is submitted, the <CodeStep step={3}>action</CodeStep> function that you provided will be called. Its return value will become the new <CodeStep step={1}>current state</CodeStep> of the form.
+当。。。的时候 形式 已提交, 这 <代码步骤 步={3}>行动</代码步骤> 功能 您提供的将被称为. 它是 返回 价值将成为新的 <代码步骤 步={1}>当前的 状态</代码步骤> 的 形式.
 
-The <CodeStep step={3}>action</CodeStep> that you provide will also receive a new first argument, namely the <CodeStep step={1}>current state</CodeStep> of the form. The first time the form is submitted, this will be the <CodeStep step={4}>initial state</CodeStep> you provided, while with subsequent submissions, it will be the return value from the last time the action was called. The rest of the arguments are the same as if `useFormState` had not been used
+这 <代码步骤 步={3}>行动</代码步骤>您提供的还将收到一个新的第一个参数，即 <代码步骤 步={1}>当前的 状态</代码步骤> 的 形式. 第一次 形式 已提交，这将是 <代码步骤 步={4}>最初的 状态</代码步骤>您提供的，而后续提交的内容将是 返回 价值 从 上次的 行动 被称为。其余参数与假设相同 `使用表单状态` 没有被使用过
 
-```js [[3, 1, "action"], [1, 1, "currentState"]]
-function action(currentState, formData) {
+```js [[3, 1, "行动"], [1, 1, "当前状态"]]
+功能 行动(当前状态, 形式数据) {
   // ...
-  return 'next state';
+  返回 '下一个状态';
 }
 ```
 
-<Recipes titleText="Display information after submitting a form" titleId="display-information-after-submitting-a-form">
+<食谱 标题文本="展示 信息 提交后 形式" 标题ID="展示-信息-后-提交-	诶-形式">
 
-#### Display form errors {/*display-form-errors*/}
+#### 展示 形式 错误 {/*展示-形式-错误*/}
 
-To display messages such as an error message or toast that's returned by a server action, wrap the action in a call to `useFormState`.
+显示 信息s 比如一个错误 信息 或吐司那是 返回 通过服务器 行动, 包裹住 行动 在通话中 `使用表单状态`.
 
 <Sandpack>
 
-```js App.js
-import { useState } from "react";
-import { useFormState } from "react-dom";
-import { addToCart } from "./actions.js";
+```js 应用程序.js
+进口 { 使用状态 } 从 "反应";
+进口 { 使用表单状态 } 从 "反应-多姆";
+进口 { 添加到购物车 } 从 "./行动.js";
 
-function AddToCartForm({itemID, itemTitle}) {
-  const [message, formAction] = useFormState(addToCart, null);
-  return (
-    <form action={formAction}>
-      <h2>{itemTitle}</h2>
-      <input type="hidden" name="itemID" value={itemID} />
-      <button type="submit">Add to Cart</button>
-      {message}
-    </form>
+功能 添加到购物车表格({物品ID, 项目标题}) {
+  常量 [信息, 表单动作] = 使用表单状态(添加到购物车, 无效的);
+  返回 (
+    <形式 行动={表单动作}>
+      <h2>{项目标题}</h2>
+      <输入 类型="隐" 姓名="物品ID" 价值={物品ID} />
+      <按钮 类型="提交">添加到购物车</按钮>
+      {信息}
+    </形式>
   );
 }
 
-export default function App() {
-  return (
+出口 默认 功能 应用程序() {
+  返回 (
     <>
-      <AddToCartForm itemID="1" itemTitle="JavaScript: The Definitive Guide" />
-      <AddToCartForm itemID="2" itemTitle="JavaScript: The Good Parts" />
+      <添加到购物车表格 物品ID="1" 项目标题="爪哇脚本: 权威指南" />
+      <添加到购物车表格 物品ID="2" 项目标题="爪哇脚本: 好的部分" />
     </>
   )
 }
 ```
 
-```js actions.js
-"use server";
+```js 行动.js
+"使用服务器";
 
-export async function addToCart(prevState, queryData) {
-  const itemID = queryData.get('itemID');
-  if (itemID === "1") {
-    return "Added to cart";
-  } else {
-    return "Couldn't add to cart: the item is sold out.";
+出口 异步 功能 添加到购物车(上一页状态, 查询数据) {
+  常量 物品ID = 查询数据.得到('物品ID');
+  如果 (物品ID === "1") {
+    返回 “已添加到购物车";
+  } 别的 {
+    返回 "无法添加到购物车：该商品已售完。";
   }
 }
 ```
 
-```css styles.css hidden
-form {
-  border: solid 1px black;
-  margin-bottom: 24px;
-  padding: 12px
+```css styles.css 隐
+形式 {
+  边界: 坚硬的 1px 黑色的;
+  利润-底部: 24px;
+  填充: 12px
 }
 
-form button {
-  margin-right: 12px;
+形式 按钮 {
+  利润-正确的: 12px;
 }
 ```
 
-```json package.json hidden
+```json package.json 隐
 {
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
+  "依赖关系": {
+    "反应": "金丝雀",
+    "反应-多姆": "金丝雀",
+    "反应-脚本": "^5.0.0"
   },
-  "main": "/index.js",
-  "devDependencies": {}
+  "主要的": "/i指数.js",
+  "开发依赖": {}
 }
 ```
 </Sandpack>
 
 <Solution />
 
-#### Display structured information after submitting a form {/*display-structured-information-after-submitting-a-form*/}
+#### 显示结构化 信息 提交后 形式 {/*展示-结构化的-信息-后-提交-诶-形式*/}
 
-The return value from a server action can be any serializable value. For example, it could be an object that includes a boolean indicating whether the action was successful, an error message, or updated information.
+这 返回 价值 从 一台服务器 行动 可以是任何可序列化的值。例如， 它可以是一个包含布尔值的对象，指示是否 行动 成功了，出现错误 信息, 或更新 信息.
 
 <Sandpack>
 
-```js App.js
-import { useState } from "react";
-import { useFormState } from "react-dom";
-import { addToCart } from "./actions.js";
+```js 应用程序.js
+进口 { 使用状态 } 从 "反应";
+进口 { 使用表单状态 } 从 "反应-多姆";
+进口 { 添加到购物车 } 从 "./行动.js";
 
-function AddToCartForm({itemID, itemTitle}) {
-  const [formState, formAction] = useFormState(addToCart, {});
-  return (
-    <form action={formAction}>
-      <h2>{itemTitle}</h2>
-      <input type="hidden" name="itemID" value={itemID} />
-      <button type="submit">Add to Cart</button>
-      {formState?.success &&
-        <div className="toast">
-          Added to cart! Your cart now has {formState.cartSize} items.
-        </div>
+功能 添加到购物车表格({物品ID, 项目标题}) {
+  常量 [形式状态, 表单动作] = 使用表单状态(添加到购物车, {});
+  返回 (
+    <形式 行动={表单动作}>
+      <h2>{项目标题}</h2>
+      <输入 类型="隐" 姓名="物品ID" 价值={物品ID} />
+      <按钮 类型="提交">添加到购物车</按钮>
+      {形式状态?.成功 &&
+        <分区 班级姓名="吐司">
+          已添加到购物车！您的购物车现在有 {形式状态.购物车尺寸} 项目.
+        </分区>
       }
-      {formState?.success === false &&
-        <div className="error">
-          Failed to add to cart: {formState.message}
-        </div>
+      {形式状态?.成功 === 错误的 &&
+        <分区 班级姓名="错误">
+          无法添加到购物车: {形式状态.信息}
+        </分区>
       }
-    </form>
+    </形式>
   );
 }
 
-export default function App() {
-  return (
+出口 默认 功能 应用程序() {
+  返回 (
     <>
-      <AddToCartForm itemID="1" itemTitle="JavaScript: The Definitive Guide" />
-      <AddToCartForm itemID="2" itemTitle="JavaScript: The Good Parts" />
+      <添加到购物车表格 物品ID="1" 项目标题="爪哇脚本: 权威指南" />
+      <添加到购物车表格 物品ID="2" 项目标题="爪哇脚本: 好的部分" />
     </>
   )
 }
 ```
 
-```js actions.js
-"use server";
+```js 行动.js
+"使用服务器";
 
-export async function addToCart(prevState, queryData) {
-  const itemID = queryData.get('itemID');
-  if (itemID === "1") {
-    return {
-      success: true,
-      cartSize: 12,
+出口 async 功能 添加到购物车(prev状态, 查询数据) {
+  常量 物品ID = 查询数据.get('物品ID');
+  如果 (物品ID === "1") {
+    返回 {
+      成功: 真的,
+      购物车尺寸: 12,
     };
-  } else {
-    return {
-      success: false,
-      message: "The item is sold out.",
+  } 别的 {
+    返回 {
+      成功: 错误的,
+      信息: "该商品已售完。",
     };
   }
 }
 ```
 
-```css styles.css hidden
-form {
-  border: solid 1px black;
-  margin-bottom: 24px;
-  padding: 12px
+```css styles.css 隐
+形式 {
+  边界: 坚硬的 1px 黑色的;
+  利润-底部: 24px;
+  填充: 12px
 }
 
-form button {
-  margin-right: 12px;
+形式 按钮 {
+  利润-正确的: 12px;
 }
 ```
 
-```json package.json hidden
+```json package.json 隐
 {
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
+  "依赖关系": {
+    "反应": "金丝雀",
+    "反应-多姆": "金丝雀",
+    "反应-脚本": "^5.0.0"
   },
-  "main": "/index.js",
-  "devDependencies": {}
+  "主要的": "/指数.js",
+  "开发依赖": {}
 }
 ```
 </Sandpack>
@@ -278,14 +277,14 @@ form button {
 
 </Recipes>
 
-## Troubleshooting {/*troubleshooting*/}
+## 故障排除 {/*故障排除*/}
 
-### My action can no longer read the submitted form data {/*my-action-can-no-longer-read-the-submitted-form-data*/}
+### 我的 行动 能 不 更长 读 这 提交 形式 数据 {/*我的-行动-能-不-更长-读-这-提交-形式-数据*/}
 
-When you wrap an action with `useFormState`, it gets an extra argument *as its first argument*. The submitted form data is therefore its *second* argument instead of its first as it would usually be. The new first argument that gets added is the current state of the form.
+当你包裹一个 行动 和 `使用表单状态`, 它得到一个额外的参数 *作为它的第一个参数*. 这 提交 形式 数据 是 所以 它是 *第二* 参数而不是通常的第一个参数. 这 添加的新第一个参数是 这 当前的 状态 的 这 形式.
 
 ```js
-function action(currentState, formData) {
+功能 行动(当前的状态, 形式数据) {
   // ...
 }
 ```
