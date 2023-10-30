@@ -32,18 +32,13 @@ title: "<input>"
 
 `<input>` 支持所有 [常见的元素属性](/reference/react-dom/components/common#props)。
 
-<<<<<<< HEAD
-你可以传递以下属性中的任意一个，以将其变为 [受控输入框](#controlling-an-input-with-a-state-variable)：
-=======
 <Canary>
 
-React's extensions to the `formAction` prop are currently only available in React's canary and experimental channels. In stable releases of React `formAction` works only as a [built-in browser HTML component](https://react.dev/reference/react-dom/components#all-html-components). Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
-</Canary>
+React 对 `formAction` 属性的扩展目前仅在 React canary 与实验性发布渠道中可用。在 React 的稳定版本中，`formAction` 仅作为 [内置浏览器 HTML 组件](https://react.dev/reference/react-dom/components#all-html-components)。了解更多关于 [React 发布渠道的信息](/community/versioning-policy#all-release-channels)。
 
-[`formAction`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formaction): A string or function. Overrides the parent `<form action>` for `type="submit"` and `type="image"`. When a URL is passed to `action` the form will behave like a standard HTML form. When a function is passed to `formAction` the function will handle the form submission. See [`<form action>`](/reference/react-dom/components/form#props).
+[`formAction`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formaction)：一个字符串或函数。用于覆盖 `type="submit"` 和 `type="image"` 的父 `<form action>`。当将 URL 传递给 `action` 时，表单将表现得像标准的 HTML 表单。当将函数传递给 `formAction` 时，函数将处理表单提交。参见 [`<form action>`](/reference/react-dom/components/form#props) 以了解更多。
 
-You can [make an input controlled](#controlling-an-input-with-a-state-variable) by passing one of these props:
->>>>>>> 4bdb87b172a7723d56d03a5630c8a9870f6f03ec
+可以传递以下属性中的任意一个，以将其变为 [受控输入框](#controlling-an-input-with-a-state-variable)：
 
 * `checked`：布尔值，控制复选框或单选按钮是否被选中。
 * `value`：字符串，控制文本框的输入文本（如果是单选按钮，则为其表单数据）。
