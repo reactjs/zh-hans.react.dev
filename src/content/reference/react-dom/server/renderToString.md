@@ -48,7 +48,7 @@ const html = renderToString(<App />);
 
 #### 注意事项 {/*caveats*/}
 
-* `renderToString` 对 Suspense 的支持有限。如果一个组件挂起（suspend），`renderToString` 会立即将其 fallback 作为 HTML 发送。
+* `renderToString` 对 Suspense 的支持有限。如果一个组件挂起（suspend），`renderToString` 会立即将其后备方案作为 HTML 发送。
 
 * `renderToString` 可以在浏览器中工作，但 [不推荐](#removing-rendertostring-from-the-client-code) 在客户端代码中使用它。
 
@@ -128,7 +128,7 @@ console.log(div.innerHTML); // 例如，"<svg>...</svg>"
 
 ## 故障排除 {/*troubleshooting*/}
 
-### 当组件暂停时，HTML 中始终包含一个 fallback {/*when-a-component-suspends-the-html-always-contains-a-fallback*/}
+### 当组件暂停时，HTML 中始终包含一个后备方案 {/*when-a-component-suspends-the-html-always-contains-a-fallback*/}
 
 `renderToString` 不完全支持 Suspense。
 

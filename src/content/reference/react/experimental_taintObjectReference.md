@@ -56,7 +56,7 @@ experimental_taintObjectReference(
 
 * `message`：对象被传递给客户端组件时显示的消息。如果对象被传递给客户端组件，此消息将作为错误的一部分显示。
 
-* `object`：要标记的对象。函数和类实例可以作为 `object` 传递给 `taintObjectReference`。React 会阻止直接将函数和类传递给客户端组件，并把默认的错误消息替换为在 `message` 中定义的内容。当将特定类型数组的实例作为 `object` 传递给 `taintObjectReference` 时，该类型数组的其他副本将不会被标记。
+* `object`：被污染的对象。函数和类实例可以作为 `object` 传递给 `taintObjectReference`。React 会阻止直接将函数和类传递给客户端组件，并把默认的错误消息替换为在 `message` 中定义的内容。当将特定类型数组的实例作为 `object` 传递给 `taintObjectReference` 时，该类型数组的其他副本将不会被污染。
 
 #### 返回值 {/*returns*/}
 
@@ -64,11 +64,11 @@ experimental_taintObjectReference(
 
 #### 注意 {/*caveats*/}
 
-- 重新创建或克隆一个被标记的对象会创建一个新的未标记的对象，其中可能包含敏感数据。如果有一个被标记的 `user` 对象，执行 `const userInfo = {name: user.name, ssn: user.ssn}` 或 `{...user}` 将创建新的未标记对象。`taintObjectReference` 只能防止把未修改的对象传递给客户端组件这种简单的错误。
+- 重新创建或克隆一个被污染的对象会创建一个新的未被污染的对象，其中可能包含敏感数据。如果有一个被污染的 `user` 对象，执行 `const userInfo = {name: user.name, ssn: user.ssn}` 或 `{...user}` 将创建新的未被污染的对象。`taintObjectReference` 只能防止把未修改的对象传递给客户端组件这种简单的错误。
 
 <Pitfall>
 
-**不要仅依赖于标记来确保安全**。标记对象并不防止泄露每一个可能的派生值。例如，被标记对象的克隆将创建一个新的未标记对象。使用来自被标记对象的数据（例如 `{secret: taintedObj.secret}`）将创建一个新的值或对象，它不被标记。标记只是一层保护，安全的应用程序应该有多层保护、精心设计的 API 和隔离模式。
+**不要仅依赖于污点标记来确保安全**。被污染的对象并不防止泄露每一个可能的派生值。例如，被污染的对象的克隆将创建一个新的未被污染的对象。使用来自被污染的对象的数据（例如 `{secret: taintedObj.secret}`）将创建一个新的值或对象，它不被污染。污点标记只是一层保护，安全的应用程序应该有多层保护、精心设计的 API 和隔离模式。
 
 </Pitfall>
 
@@ -78,7 +78,7 @@ experimental_taintObjectReference(
 
 ### 防止用户数据被无意间传递到客户端 {/*prevent-user-data-from-unintentionally-reaching-the-client*/}
 
-客户端组件不应接受携带敏感数据的对象。理想情况下数据获取函数不应暴露当前用户不允许访问的数据。有时在重构过程中会发生错误。为了防止这些错误在以后发生，我们可以在数据 API 中“标记”用户对象。
+客户端组件不应接受携带敏感数据的对象。理想情况下数据获取函数不应暴露当前用户不允许访问的数据。有时在重构过程中会发生错误。为了防止这些错误在以后发生，我们可以在数据 API 中“污染”用户对象。
 
 ```js
 import {experimental_taintObjectReference} from 'react';
@@ -130,7 +130,7 @@ export async function InfoCard({ user }) {
 }
 ```
 
-理想情况下 `getUser` 不应暴露当前用户不允许访问的数据。为了防止将来把 `user` 对象传递给客户端组件，我们可以对用户对象进行“标记”：
+理想情况下 `getUser` 不应暴露当前用户不允许访问的数据。为了防止将来把 `user` 对象传递给客户端组件，我们可以对用户对象进行“污染”：
 
 
 ```js

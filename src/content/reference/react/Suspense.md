@@ -4,7 +4,7 @@ title: <Suspense>
 
 <Intro>
 
-`<Suspense>` 允许在子组件完成加载前展示一个 fallback。
+`<Suspense>` 允许在子组件完成加载前展示后备方案。
 
 
 ```js
@@ -25,7 +25,7 @@ title: <Suspense>
 
 #### 参数 {/*props*/}
 * `children`：真正的 UI 渲染内容。如果 `children` 在渲染中被挂起，Suspense 边界将会渲染 `fallback`。
-* `fallback`：真正的 UI 未渲染完成时代替其渲染的备用 UI，它可以是任何有效的 React 节点。fallback 通常是一个轻量的占位符，例如表示加载中的图标或者骨架屏。当 `children` 被挂起时，Suspense 将自动切换至渲染 `fallback`；当数据准备好时，又会自动切换至渲染 `children`。如果 `fallback` 在渲染中被挂起，那么将自动激活最近的 Suspense 边界。
+* `fallback`：真正的 UI 未渲染完成时代替其渲染的备用 UI，它可以是任何有效的 React 节点。后备方案通常是一个轻量的占位符，例如表示加载中的图标或者骨架屏。当 `children` 被挂起时，Suspense 将自动切换至渲染 `fallback`；当数据准备好时，又会自动切换至渲染 `children`。如果 `fallback` 在渲染中被挂起，那么将自动激活最近的 Suspense 边界。
 
 #### 注意 {/*caveats*/}
 
@@ -38,7 +38,7 @@ title: <Suspense>
 
 ## 用法 {/*usage*/}
 
-### 当内容正在加载时显示 fallback {/*displaying-a-fallback-while-content-is-loading*/}
+### 当内容正在加载时显示后备方案 {/*displaying-a-fallback-while-content-is-loading*/}
 
 你可以使用 Suspense 边界包裹你应用的任何部分：
 
@@ -48,9 +48,9 @@ title: <Suspense>
 </Suspense>
 ```
 
-React 将展示 <CodeStep step={1}> fallback </CodeStep> 直到 <CodeStep step={2}> children </CodeStep> 需要的所有代码和数据都加载完成。
+React 将展示 <CodeStep step={1}>后备方案</CodeStep> 直到 <CodeStep step={2}> children </CodeStep> 需要的所有代码和数据都加载完成。
 
-在下面的例子中，`Albums` 组件在获取专辑列表时被 **挂起**。在它准备好渲染前，`Albums` 祖先组件中距离其最近的 Suspense 将展示 fallback —— 即 `Loading` 组件。当数据加载完成时，React 会隐藏 `Loading` fallback 并渲染带有数据的 `Albums` 组件。
+在下面的例子中，`Albums` 组件在获取专辑列表时被 **挂起**。在它准备好渲染前，`Albums` 祖先组件中距离其最近的 Suspense 将展示后备方案 —— 即 `Loading` 组件。当数据加载完成时，React 会隐藏 `Loading` 后备方案并渲染带有数据的 `Albums` 组件。
 
 <Sandpack>
 
@@ -586,7 +586,7 @@ function Details({ artistId }) {
 
 ### 逐步加载内容 {/*revealing-nested-content-as-it-loads*/}
 
-当一个组件被挂起时，最近的父级 `Suspense` 组件会展示 fallback。这允许你嵌套多个 `Suspense` 组件创建一个加载序列。每个 `Suspense` 边界的 fallback 都会在下一级内容可用时填充。例如，你可以给专辑列表设置自己的 fallback：
+当一个组件被挂起时，最近的父级 `Suspense` 组件会展示后备方案。这允许你嵌套多个 `Suspense` 组件创建一个加载序列。每个 `Suspense` 边界的后备方案都会在下一级内容可用时填充。例如，你可以给专辑列表设置自己的后备方案
 
 ```js {3,7}
 <Suspense fallback={<BigSpinner />}>
@@ -925,7 +925,7 @@ Suspense 边界允许协调 UI 的哪些部分应该总是一起“浮现”，�
 
 ### 在新内容加载时展示过时内容 {/*showing-stale-content-while-fresh-content-is-loading*/}
 
-在这个例子中，`SearchResults` 组件在获取搜索结果时被挂起。输入 `"a"`，等待结果，然后将其编辑为 `"ab"`。`"a"` 的结果将被加载中 fallback 替换。
+在这个例子中，`SearchResults` 组件在获取搜索结果时被挂起。输入 `"a"`，等待结果，然后将其编辑为 `"ab"`。`"a"` 的结果将被加载中的后备方案替换。
 
 <Sandpack>
 
@@ -1149,7 +1149,7 @@ export default function App() {
 </div>
 ```
 
-在下面的例子中，输入 `"a"`，等待结果加载，然后编辑输入为 `"ab"`。注意，你现在看到的不是 Suspense 的 fallback，而是暗淡的过时结果列表，直到新的结果加载完成：
+在下面的例子中，输入 `"a"`，等待结果加载，然后编辑输入为 `"ab"`。注意，你现在看到的不是 Suspense 的后备方案，而是暗淡的过时结果列表，直到新的结果加载完成：
 
 
 <Sandpack>
@@ -1348,7 +1348,7 @@ input { margin: 10px; }
 
 <Note>
 
-延迟值和 [transition](#preventing-already-revealed-content-from-hiding) 都可以让你避免显示 Suspense fallback，而是使用内联指示器。transition 将整个更新标记为非紧急的，因此它们通常由框架和路由库用于导航。另一方面，延迟值在你希望将 UI 的一部分标记为非紧急，并让它“落后于” UI 的其余部分时非常有用。
+延迟值和 [transition](#preventing-already-revealed-content-from-hiding) 都可以让你避免显示 Suspense 后备方案，而是使用内联指示器。transition 将整个更新标记为非紧急的，因此它们通常由框架和路由库用于导航。另一方面，延迟值在你希望将 UI 的一部分标记为非紧急，并让它“落后于” UI 的其余部分时非常有用。
 
 </Note>
 
@@ -1356,7 +1356,7 @@ input { margin: 10px; }
 
 ### 阻止隐藏已经显示的内容 {/*preventing-already-revealed-content-from-hiding*/}
 
-当一个组件被挂起时，最近的 Suspense 边界会切换到显示 fallback。如果它已经显示了一些内容，这可能会导致令人不快的用户体验。试着按下这个按钮：
+当一个组件被挂起时，最近的 Suspense 边界会切换到显示后备方案。如果它已经显示了一些内容，这可能会导致令人不快的用户体验。试着按下这个按钮：
 
 <Sandpack>
 
@@ -1725,7 +1725,7 @@ main {
 
 </Sandpack>
 
-当你按下按钮时，`Router` 组件渲染了 `ArtistPage` 而不是 `IndexPage`。因为 `ArtistPage` 内部的一个组件被挂起，所以最近的 Suspense 边界开始显示 fallback。最近的 Suspense 边界在根附近，所以整个站点布局被 `BigSpinner` 替换了。
+当你按下按钮时，`Router` 组件渲染了 `ArtistPage` 而不是 `IndexPage`。因为 `ArtistPage` 内部的一个组件被挂起，所以最近的 Suspense 边界开始显示后备方案。最近的 Suspense 边界在根附近，所以整个站点布局被 `BigSpinner` 替换了。
 
 为了阻止这种情况，你可以使用 [`startTransition`](/reference/react/startTransition) 将导航状态更新标记为 **transition**：
 
@@ -2508,19 +2508,19 @@ main {
 <ProfilePage key={queryParams.id} />
 ```
 
-想想在用户的个人资料页面中导航，然后暂停了。如果更新被包装在 transition 中，它将不会触发已经可见内容的 fallback。这是预期的行为。
+想想在用户的个人资料页面中导航，然后暂停了。如果更新被包装在 transition 中，它将不会触发已经可见内容的后备方案。这是预期的行为。
 
-然而，现在想象一下你在两个不同的用户资料之间导航。在这种情况下，显示 fallback 是有意义的。例如，一个用户的时间线是与另一个用户的时间线是 **不同的内容**。通过指定一个 `key`，你可以确保 React 将不同用户的个人资料视为不同的组件，并在导航期间重置 Suspense 边界。集成 Suspense 的路由应该自动执行此操作。
+然而，现在想象一下你在两个不同的用户资料之间导航。在这种情况下，显示后备方案是有意义的。例如，一个用户的时间线是与另一个用户的时间线是 **不同的内容**。通过指定一个 `key`，你可以确保 React 将不同用户的个人资料视为不同的组件，并在导航期间重置 Suspense 边界。集成 Suspense 的路由应该自动执行此操作。
 
 ---
 
-### 为服务器错误和客户端内容提供 fallback {/*providing-a-fallback-for-server-errors-and-client-only-content*/}
+### 为服务器错误和客户端内容提供后备方案 {/*providing-a-fallback-for-server-errors-and-client-only-content*/}
 
-如果你使用过 [流式服务器渲染 API](/reference/react-dom/server)（或依赖它们的框架），React 也会使用你的 `<Suspense>` 边界来处理服务器上的错误。如果组件在服务器上抛出错误，React 将不会中止服务器渲染。相反，它将找到最接近的 `<Suspense>` 组件并将其退路方案（fallback）（例如一个加载中指示器）包含到生成的服务端 HTML 中。用户将首先看到一个加载中指示器。
+如果你使用过 [流式服务器渲染 API](/reference/react-dom/server)（或依赖它们的框架），React 也会使用你的 `<Suspense>` 边界来处理服务器上的错误。如果组件在服务器上抛出错误，React 将不会中止服务器渲染。相反，它将找到最接近的 `<Suspense>` 组件并将其后备方案（例如一个加载中指示器）包含到生成的服务端 HTML 中。用户将首先看到一个加载中指示器。
 
 在客户端，React 将尝试再次渲染相同的组件。如果它在客户端也出错，React 将抛出错误并显示最接近的 [错误边界](/reference/react/Component#static-getderivedstatefromerror)。然而，如果它在客户端没有错误，React 将不会向用户显示错误，因为内容最终成功显示了。
 
-你可以使用这个来防止一些组件在服务端渲染。为此，你应该在服务器环境中抛出一个错误，然后将其包装在一个 `<Suspense>` 边界中，从而使用 fallback 替换它们的 HTML：
+你可以使用这个来防止一些组件在服务端渲染。为此，你应该在服务器环境中抛出一个错误，然后将其包装在一个 `<Suspense>` 边界中，从而使用后备方案替换它们的 HTML：
 
 ```js
 <Suspense fallback={<Loading />}>
@@ -2541,11 +2541,11 @@ function Chat() {
 
 ## 故障排除 {/*troubleshooting*/}
 
-### 如何阻止 UI 在更新期间被 fallback 替换 {/*preventing-unwanted-fallbacks*/}
+### 如何阻止 UI 在更新期间被后备方案替换 {/*preventing-unwanted-fallbacks*/}
 
-使用 fallback 替换一个可见的 UI 会带来令人不快的用户体验。当一个更新导致一个组件被挂起时，而最近的 Suspense 边界已经向用户显示了内容时，这种情况可能发生。
+使用后备方案替换一个可见的 UI 会带来令人不快的用户体验。当一个更新导致一个组件被挂起时，而最近的 Suspense 边界已经向用户显示了内容时，这种情况可能发生。
 
-为了防止这种情况发生，[使用 `startTransition` 将更新标记为非紧急的](#preventing-already-revealed-content-from-hiding)。在 transition 期间，React 将等待足够的数据加载，以防止不需要的 fallback 出现：
+为了防止这种情况发生，[使用 `startTransition` 将更新标记为非紧急的](#preventing-already-revealed-content-from-hiding)。在 transition 期间，React 将等待足够的数据加载，以防止不需要的后备方案出现：
 
 ```js {2-3,5}
 function handleNextPageClick() {
@@ -2556,8 +2556,8 @@ function handleNextPageClick() {
 }
 ```
 
-这将避免隐藏现有内容。然而，任何新渲染的 `Suspense` 边界仍然会立即显示 fallback，以避免阻塞 UI 并让用户在内容可用时看到内容。
+这将避免隐藏现有内容。然而，任何新渲染的 `Suspense` 边界仍然会立即显示后备方案，以避免阻塞 UI 并让用户在内容可用时看到内容。
 
-**React 只会在非紧急更新期间阻止不必要的 fallback**。这意味着它不会阻止紧急更新的 fallback。你必须使用 [`startTransition`](/reference/react/startTransition) 或 [`useDeferredValue`](/reference/react/useDeferredValue) 这样的 API 来选择性的优化。
+**React 只会在非紧急更新期间阻止不必要的后备方案**。这意味着它不会阻止紧急更新的 fallback。你必须使用 [`startTransition`](/reference/react/startTransition) 或 [`useDeferredValue`](/reference/react/useDeferredValue) 这样的 API 来选择性的优化。
 
 如果你的路由集成了 Suspense，它将会自动将更新包装到 [`startTransition`](/reference/react/startTransition) 中。

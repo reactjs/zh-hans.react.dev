@@ -48,7 +48,7 @@ function SearchPage() {
 
 - 当 `useDeferredValue` 接收到与之前不同的值（使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 进行比较）时，除了当前渲染（此时它仍然使用旧值），它还会安排一个后台重新渲染。这个后台重新渲染是可以被中断的，如果 `value` 有新的更新，React 会从头开始重新启动后台渲染。举个例子，如果用户在输入框中的输入速度比接收延迟值的图表重新渲染的速度快，那么图表只会在用户停止输入后重新渲染。
 
-- `useDeferredValue` 与 [`<Suspense>`](/reference/react/Suspense) 集成。如果由于新值引起的后台更新导致 UI 暂停，用户将不会看到 fallback 效果。他们将看到旧的延迟值，直到数据加载完成。
+- `useDeferredValue` 与 [`<Suspense>`](/reference/react/Suspense) 集成。如果由于新值引起的后台更新导致 UI 暂停，用户将不会看到后备方案。他们将看到旧的延迟值，直到数据加载完成。
 
 - `useDeferredValue` 本身并不能阻止额外的网络请求。
 
@@ -93,7 +93,7 @@ function SearchPage() {
 </Note>
 
 
-这个例子中，在获取搜索结果时，`SearchResults` 组件会 [suspend](/reference/react/Suspense#displaying-a-fallback-while-content-is-loading)。尝试输入 `"a"`，等待结果出现后，将其编辑为 `"ab"`。此时 `"a"` 的结果会被加载中的 fallback 替代。
+这个例子中，在获取搜索结果时，`SearchResults` 组件会 [suspend](/reference/react/Suspense#displaying-a-fallback-while-content-is-loading)。尝试输入 `"a"`，等待结果出现后，将其编辑为 `"ab"`。此时 `"a"` 的结果会被加载中的后备方案替代。
 
 <Sandpack>
 
@@ -307,7 +307,7 @@ export default function App() {
 
 `query` 会立即更新，所以输入框将显示新值。然而，`deferredQuery` 在数据加载完成前会保留以前的值，因此 `SearchResults` 将暂时显示旧的结果。
 
-在下面的示例中，输入 `"a"`，等待结果加载完成，然后将输入框编辑为 `"ab"`。注意，现在你看到的不是 suspense fallback，而是旧的结果列表，直到新的结果加载完成：
+在下面的示例中，输入 `"a"`，等待结果加载完成，然后将输入框编辑为 `"ab"`。注意，现在你看到的不是 suspense 后备方案，而是旧的结果列表，直到新的结果加载完成：
 
 <Sandpack>
 
