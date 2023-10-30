@@ -37,11 +37,7 @@ function getDomain(languageCode: string): string {
 export const Seo = withRouter(
   ({
     title,
-<<<<<<< HEAD
-    description = '用于构建 Web 和原生交互界面的库',
-=======
     titleForTitleTag,
->>>>>>> 4bdb87b172a7723d56d03a5630c8a9870f6f03ec
     image = '/images/og-default.png',
     router,
     children,
@@ -52,18 +48,14 @@ export const Seo = withRouter(
     const canonicalUrl = `https://${siteDomain}${
       router.asPath.split(/[\?\#]/)[0]
     }`;
-<<<<<<< HEAD
-    const pageTitle = isHomePage ? title : title + ' – React 中文文档';
-=======
     // Allow setting a different title for Google results
     const pageTitle =
-      (titleForTitleTag ?? title) + (isHomePage ? '' : ' – React');
->>>>>>> 4bdb87b172a7723d56d03a5630c8a9870f6f03ec
+      (titleForTitleTag ?? title) + (isHomePage ? '' : ' – React 中文文档');
     // Twitter's meta parser is not very good.
     const twitterTitle = pageTitle.replace(/[<>]/g, '');
     let description = isHomePage
-      ? 'React is the library for web and native user interfaces. Build user interfaces out of individual pieces called components written in JavaScript. React is designed to let you seamlessly combine components written by independent people, teams, and organizations.'
-      : 'The library for web and native user interfaces';
+      ? 'React 是用于 web 和原生用户界面的库。React 使用 JavaScript 编写称为组件的各个部分构建用户界面。React 旨在让开发者无缝组合由独立人员、团队和组织编写的组件。'
+      : 'React 是用于 web 和原生用户界面的库';
     return (
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
