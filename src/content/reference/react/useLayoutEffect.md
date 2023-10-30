@@ -732,7 +732,11 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 - 用 [`useEffect`](/reference/react/useEffect) 替换 `useLayoutEffect`。React 可以在不阻塞绘制的情况下显示初始的渲染结果（因为初始的 HTML 将在 Effect 运行之前显示出来）。
 
+<<<<<<< HEAD
 - 或者，[将组件标记为仅客户端](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content)。这告诉 React 在服务端渲染时用一个加载中的后备方案（例如，一个 spinner 或者 glimmer）替换其内容到上方最近的 [`<Suspense>`](/reference/react/Suspense) 边界。
+=======
+- Alternatively, [mark your component as client-only.](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content) This tells React to replace its content up to the closest [`<Suspense>`](/reference/react/Suspense) boundary with a loading fallback (for example, a spinner or a glimmer) during server rendering.
+>>>>>>> 4bdb87b172a7723d56d03a5630c8a9870f6f03ec
 
 - 或者，只有在水合之后，使用 `useLayoutEffect` 渲染组件。保留一个初始化为 `false` 的 `isMounted` 布尔状态，并在 `useEffect` 调用中将其设置为 `true`。然后你的渲染逻辑就会像 `return isMounted ? <RealContent /> : <FallbackContent />` 这样。在服务端和水合过程中，用户将看到 `FallbackContent`，它不应该调用 `useLayoutEffect`。然后 React 将用 `RealContent` 替换它，`RealContent` 仅在客户端上运行并且可以包含 `useLayoutEffect` 调用。
 
