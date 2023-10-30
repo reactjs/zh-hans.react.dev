@@ -5,13 +5,13 @@ canary: true
 
 <Canary>
 
-`useFormState` Hook 当前仅在 React canary 与 experimental 渠道中可用。 请点此了解更多关于 [React 发布渠道](/community/versioning-policy#all-release-channels)的信息。此外，你需要一款完全支持 [React 服务器组件](/reference/react/use-client) 特性的框架才可以使用 `useFormState` 的所有特性。
+`useFormState` Hook 当前仅在 React canary 与 experimental 渠道中可用。请点此了解更多关于 [React 发布渠道](/community/versioning-policy#all-release-channels) 的信息。此外，你需要一款完全支持 [React 服务器组件](/reference/react/use-client) 特性的框架才可以使用 `useFormState` 的所有特性。
 
 </Canary>
 
 <Intro>
 
-`useFormState` 是一个可以让你根据某个 form action 的结果更新 State 的 Hook。
+`useFormState` 是一个可以让你根据某个 form action 的结果更新 state 的 Hook。
 
 ```js
 const [state, formAction] = useFormState(fn, initialState);
@@ -29,7 +29,7 @@ const [state, formAction] = useFormState(fn, initialState);
 
 {/* TODO T164397693: link to actions documentation once it exists */}
 
-在组件的顶层调用 `useFormState` 即可创建一个随 [form action 被调用](/reference/react-dom/components/form) 而更新的State。 在调用 `useFormState` 时在参数中传入现有的 form action 函数以及一个初始状态，它就会返回一个新的 action 函数和一个 form state 可供在 form 中使用。这个新的 form state 也会作为参数传入你提供的 form action 函数。
+在组件的顶层调用 `useFormState` 即可创建一个随 [form action 被调用](/reference/react-dom/components/form) 而更新的 state。在调用 `useFormState` 时在参数中传入现有的 form action 函数以及一个初始状态，它就会返回一个新的 action 函数和一个 form state 可供在 form 中使用。这个新的 form state 也会作为参数传入你提供的 form action 函数。
 
 ```js
 import { useFormState } from "react-dom";
@@ -49,16 +49,16 @@ function StatefulForm({}) {
 }
 ```
 
-Form state 是一个只在表单被提交触发 action 后才会被更新的值。如果该表单没有被提交，该值会保持你传入的初始值不变。
+form state 是一个只在表单被提交触发 action 后才会被更新的值。如果该表单没有被提交，该值会保持你传入的初始值不变。
 
-如果配合服务器操作一起使用， `useFormState` 允许与表单交互的服务器的返回值在 hydration 完成前显示。
+如果配合服务器操作一起使用，`useFormState` 允许与表单交互的服务器的返回值在 hydration 完成前显示。
 
 [在下面查看更多用法](#usage)。
 
 #### 参数 {/*parameters*/}
 
-* `fn`: 当按钮被按下或者表单被提交时触发的函数。当函数被调用时，该函数会接收到表单的上一个 state（初始值是你传入的 `initialState` 参数，在其他情况下是上一次执行完该函数的结果）作为函数的第一个参数，第二个参数为普通 form action 接到的参数。
-* `initialState`: state 的初始值。任何可序列化的值都可接收。当 action 被调用一次后该参数会被忽略。
+* `fn`：当按钮被按下或者表单被提交时触发的函数。当函数被调用时，该函数会接收到表单的上一个 state（初始值是你传入的 `initialState` 参数，在其他情况下是上一次执行完该函数的结果）作为函数的第一个参数，余下参数为普通 form action 接到的参数。
+* `initialState`：state 的初始值。任何可序列化的值都可接收。当 action 被调用一次后该参数会被忽略。
 
 {/* TODO T164397693: link to serializable values docs once it exists */}
 
@@ -100,7 +100,7 @@ function MyComponent() {
 `useFormState` 返回一个包含两个值的数组：
 
 1. 该 form 的 <CodeStep step={1}>当前 state</CodeStep>，初始值为你提供的 <CodeStep step={4}>初始 state</CodeStep>，当表单被提交后则改为你传入的 <CodeStep step={3}>action</CodeStep> 的返回值。
-2. 传入 `<form>` 标签的 `action` 属性的<CodeStep step={2}>新 action</CodeStep>。
+2. 传入 `<form>` 标签的 `action` 属性的 <CodeStep step={2}>新 action</CodeStep>。
 
 表单被提交后，你传入的 <CodeStep step={3}>action</CodeStep> 函数会被执行。返回值将会作为该 form 新的 <CodeStep step={1}>当前 state</CodeStep>。
 
