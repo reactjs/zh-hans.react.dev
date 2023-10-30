@@ -64,7 +64,11 @@ experimental_taintObjectReference(
 
 #### 注意 {/*caveats*/}
 
+<<<<<<< HEAD
 - 重新创建或克隆一个被污染的对象会创建一个新的未被污染的对象，其中可能包含敏感数据。如果有一个被污染的 `user` 对象，执行 `const userInfo = {name: user.name, ssn: user.ssn}` 或 `{...user}` 将创建新的未被污染的对象。`taintObjectReference` 只能防止把未修改的对象传递给客户端组件这种简单的错误。
+=======
+- Recreating or cloning a tainted object creates a new untained object which may contain sensitive data. For example, if you have a tainted `user` object, `const userInfo = {name: user.name, ssn: user.ssn}` or `{...user}` will create new objects which are not tainted. `taintObjectReference` only protects against simple mistakes when the object is passed through to a Client Component unchanged.
+>>>>>>> 9c60167bf966286bafb99492e31b0609ccb56b5c
 
 <Pitfall>
 
@@ -78,7 +82,11 @@ experimental_taintObjectReference(
 
 ### 防止用户数据被无意间传递到客户端 {/*prevent-user-data-from-unintentionally-reaching-the-client*/}
 
+<<<<<<< HEAD
 客户端组件不应接受携带敏感数据的对象。理想情况下数据获取函数不应暴露当前用户不允许访问的数据。有时在重构过程中会发生错误。为了防止这些错误在以后发生，我们可以在数据 API 中“污染”用户对象。
+=======
+A Client Component should never accept objects that carry sensitive data. Ideally, the data fetching functions should not expose data that the current user should not have access to. Sometimes mistakes happen during refactoring. To protect against these mistakes happening down the line we can "taint" the user object in our data API.
+>>>>>>> 9c60167bf966286bafb99492e31b0609ccb56b5c
 
 ```js
 import {experimental_taintObjectReference} from 'react';

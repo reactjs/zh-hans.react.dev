@@ -9,6 +9,7 @@ import {siteConfig} from '../siteConfig';
 
 export interface SeoProps {
   title: string;
+  titleForTitleTag: undefined | string;
   description?: string;
   image?: string;
   // jsonld?: JsonLDType | Array<JsonLDType>;
@@ -36,7 +37,11 @@ function getDomain(languageCode: string): string {
 export const Seo = withRouter(
   ({
     title,
+<<<<<<< HEAD
     description = '用于构建 Web 和原生交互界面的库',
+=======
+    titleForTitleTag,
+>>>>>>> 9c60167bf966286bafb99492e31b0609ccb56b5c
     image = '/images/og-default.png',
     router,
     children,
@@ -47,14 +52,24 @@ export const Seo = withRouter(
     const canonicalUrl = `https://${siteDomain}${
       router.asPath.split(/[\?\#]/)[0]
     }`;
+<<<<<<< HEAD
     const pageTitle = isHomePage ? title : title + ' – React 中文文档';
+=======
+    // Allow setting a different title for Google results
+    const pageTitle =
+      (titleForTitleTag ?? title) + (isHomePage ? '' : ' – React');
+>>>>>>> 9c60167bf966286bafb99492e31b0609ccb56b5c
     // Twitter's meta parser is not very good.
     const twitterTitle = pageTitle.replace(/[<>]/g, '');
+    let description = isHomePage
+      ? 'React is the library for web and native user interfaces. Build user interfaces out of individual pieces called components written in JavaScript. React is designed to let you seamlessly combine components written by independent people, teams, and organizations.'
+      : 'The library for web and native user interfaces';
     return (
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {title != null && <title key="title">{pageTitle}</title>}
-        {description != null && (
+        {isHomePage && (
+          // Let Google figure out a good description for each page.
           <meta name="description" key="description" content={description} />
         )}
         <link rel="canonical" href={canonicalUrl} />
