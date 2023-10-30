@@ -57,8 +57,8 @@ const { pipe } = renderToPipeableStream(<App />, {
   * **可选** `nonce`：[`nonce`](http://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script#nonce) 一个字符串，能为脚本设置跨域限制，即 [`script-src` 浏览器内容安全策略](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)。
   * **可选** `onAllReady`：一个回调函数，将会在所有渲染完成时触发，包括 [shell](#specifying-what-goes-into-the-shell) 和所有额外的 [content](#streaming-more-content-as-it-loads)。你可以用这个替代 `onShellReady` [用于爬虫和静态内容生成](#waiting-for-all-content-to-load-for-crawlers-and-static-generation)。如果在此处开启了流式传输，所有的 HTML 都会被包含在流中直接返回，而不会有任何渐进的加载。
   * **可选** `onError`：一个回调函数，只要是出现了异常错误，无论这是 [可恢复的](#recovering-from-errors-outside-the-shell) 还是 [不可恢复的](#recovering-from-errors-inside-the-shell)，它都会触发。默认情况下，它只会调用 `console.error`。如果你想要将它重写为 [日志崩溃报告](#logging-crashes-on-the-server)，记得仍然要使用 `console.error` 为可能不兼容的场景兜底。你也可以在 shell 发送之前使用它来 [修改状态码](#setting-the-status-code)。
-  * **可选** `onShellReady`：一个回调函数，在 [shell 初始化](#specifying-what-goes-into-the-shell) 渲染后立即调用。你可以 [设置状态码](#setting-the-status-code) 然后在这里调用 `pipe` 方法启用流式传输。这样一来，React 将会初始化 shell 渲染完毕后，通过上面提到的 `<script>` 进行 [流式传输更多内容](#streaming-more-content-as-it-loads)，用这些内容替换掉 HTML 的加载动画部分。
-  * **可选** `onShellError`：一个回调函数，在初始化 shell 发生错误渲染时调用。它的第一个参数将自动接收捕获到的异常错误。此时，这个流中的任何内容都不会被发送，并且 `onShellReady` 和 `onAllReady` 都不会被调用，所以你还可以 [输出一段备用的 HTML shell](#recovering-from-errors-inside-the-shell) 作为兜底。
+  * **可选** `onShellReady`：一个回调函数，在 [shell 初始化](#specifying-what-goes-into-the-shell) 渲染后立即调用。你可以 [设置状态码](#setting-the-status-code) 然后在这里调用 `pipe` 方法启用流式传输。这样一来，React 将会初始化 shell 渲染完毕后，通过上面提到的 `<script>` 进行 [流式传输更多内容](#streaming-more-content-as-it-loads)，用这些内容替换掉 HTML 的加载中的后备方案。
+  * **可选** `onShellError`：一个回调函数，在初始化 shell 发生错误渲染时调用。它的第一个参数将自动接收捕获到的异常错误。此时，这个流中的任何内容都不会被发送，并且 `onShellReady` 和 `onAllReady` 都不会被调用，所以你还可以 [输出一段后备 HTML shell](#recovering-from-errors-inside-the-shell) 作为兜底。
   * **可选** `progressiveChunkSize`：一个块中的字节数。[查阅更多关于该参数默认值的信息](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)。
 
 
@@ -253,7 +253,7 @@ function ProfilePage() {
 }
 ```
 
-这样做将通知 React 在 `Posts` 加载数据之前就开始流式传输 HTML。React 首先会发送加载动画（`PostsGlimmer`）对应的 HTML，然后当 `Posts` 的数据加载完成时，React 会将剩下的 HTML 带上一个 `<script>` 标签一并发送，这个 `<script>` 的作用是将加载动画替换为这段 HTML。从用户的角度上看，页面上首先出现的是 `PostsGlimmer`，稍后被替换为 `Posts`。
+这样做将通知 React 在 `Posts` 加载数据之前就开始流式传输 HTML。React 首先会发送加载中的后备方案（`PostsGlimmer`）对应的 HTML，然后当 `Posts` 的数据加载完成时，React 会将剩下的 HTML 带上一个 `<script>` 标签一并发送，这个 `<script>` 的作用是将加载中的后备方案替换为这段 HTML。从用户的角度上看，页面上首先出现的是 `PostsGlimmer`，稍后被替换为 `Posts`。
 
 你可以进一步地 [嵌套 `<Suspense>`](/reference/react/Suspense#revealing-nested-content-as-it-loads) 来创建一个更加细致的加载序列：
 
@@ -276,7 +276,7 @@ function ProfilePage() {
 }
 ```
 
-在这个例子中，React 甚至能够更早地启用流式传输。因为 `ProfileLayout` 和 `ProfileCover` 没有被包裹在 `<Suspense>` 中，所以它们必须先完成渲染。然而，如果 `Sidebar`、`Friend` 或者 `Photos` 需要加载更多数据，React 将会发送加载动画 `BigSpinner` 对应的 HTML 暂时替代有效内容。然后，当这些数据加载完成时，有效内容将渐进地显示直至全部可见。
+在这个例子中，React 甚至能够更早地启用流式传输。因为 `ProfileLayout` 和 `ProfileCover` 没有被包裹在 `<Suspense>` 中，所以它们必须先完成渲染。然而，如果 `Sidebar`、`Friend` 或者 `Photos` 需要加载更多数据，React 将会发送后备方案 `BigSpinner` 所对应的 HTML 暂时替代有效内容。然后，当这些数据加载完成时，有效内容将渐进地显示直至全部可见。
 
 流式传输不需要等待 React 本身在浏览器中的加载，也不需要等待你的应用程序变得可交互。在任何 `<script>` 标签加载之前，服务端发送的 HTML 内容就会开始渐进式地显示。
 
@@ -389,7 +389,7 @@ function ProfilePage() {
 }
 ```
 
-在这些组件渲染的过程中，如果发生了异常错误，React 就不会发送任何有效的 HTML 到客户端。重载 `onShellError` ，发送一个不依赖服务端渲染的 HTML 作为兜底处理方案：
+在这些组件渲染的过程中，如果发生了异常错误，React 就不会发送任何有效的 HTML 到客户端。重载 `onShellError`，发送一个不依赖服务端渲染的 HTML 作为后备方案：
 
 ```js {7-11}
 const { pipe } = renderToPipeableStream(<App />, {
@@ -410,7 +410,7 @@ const { pipe } = renderToPipeableStream(<App />, {
 });
 ```
 
-如果在生成 shell 的过程中出现异常错误，`onError` 和 `onShellError` 都会触发。使用 `onError` 来做错误上报，并且使用 `onShellError` 发送一个兜底的 HTML 文档。你的兜底 HTML 不一定要是一个错误提示页面。你还可以引入一个可交互的、并且只在客户端渲染你的应用程序的 shell。
+如果在生成 shell 的过程中出现异常错误，`onError` 和 `onShellError` 都会触发。使用 `onError` 来做错误上报，并且使用 `onShellError` 发送一个后备 HTML 文档。你的后备 HTML 不一定要是一个错误提示页面。你还可以引入一个可交互的、并且只在客户端渲染你的应用程序的 shell。
 
 ---
 
@@ -433,13 +433,13 @@ function ProfilePage() {
 
 如果 `Post` 组件本身或者其内部的某处发生异常报错，React 将会 [试图将它恢复](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content)：
 
-1. 它将用在结构上和异常发生的位置最近的一个父级 `<Suspense>` 的加载动画（`PostsGlimmer`）替代这段 HTML。
+1. 它将用在结构上和异常发生的位置最近的一个父级 `<Suspense>` 的加载中的后备方案（`PostsGlimmer`）替代这段 HTML。
 2. 它将会“放弃”尝试在服务端渲染 `Posts` 组件的内容。
 3. 当 JavaScript 在客户端代码加载时，React 将会在客户端 **重试** 渲染 `Posts` 组件。
 
 如果在客户端重试渲染 `Posts` **也** 失败了，React 将会在客户端抛出一个异常错误。当渲染过程中的所有异常错误都被抛出时，距离它们[最近的父级异常错误边界](/reference/react/Component#static-getderivedstatefromerror) 会定义这个异常错误将如何呈现给用户。实际上，这意味着用户将看到一个加载指示器，直到这个异常错误被判定为是不可恢复的。
 
-如果在客户端重试渲染 `Posts` 成功了，加载动画将被替换为客户端渲染的内容。这样一来用户感知到服务端出现了异常错误。不过，服务端的 `onError` 回调函数和客户端的 [`onRecoverableError`](/reference/react-dom/client/hydrateRoot#hydrateroot) 回调函数仍然会触发，所以你也可以获取到一些关于这个异常错误的提示信息。
+如果在客户端重试渲染 `Posts` 成功了，加载中的后备方案将被替换为客户端渲染的内容。这样一来用户感知到服务端出现了异常错误。不过，服务端的 `onError` 回调函数和客户端的 [`onRecoverableError`](/reference/react-dom/client/hydrateRoot#hydrateroot) 回调函数仍然会触发，所以你也可以获取到一些关于这个异常错误的提示信息。
 
 ---
 
@@ -605,4 +605,4 @@ setTimeout(() => {
 }, 10000);
 ```
 
-React 将会刷新内容，把剩余的加载动画转为 HTML，然后尝试在客户端渲染剩下的内容。
+React 将会刷新内容，把剩余的加载中的后备方案转为 HTML，然后尝试在客户端渲染剩下的内容。
