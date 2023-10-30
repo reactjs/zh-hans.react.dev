@@ -54,8 +54,8 @@ export const Seo = withRouter(
     // Twitter's meta parser is not very good.
     const twitterTitle = pageTitle.replace(/[<>]/g, '');
     let description = isHomePage
-      ? 'React 是用于 web 和原生用户界面的库。React 使用 JavaScript 编写称为组件的各个部分构建用户界面。React 旨在让开发者无缝组合由独立人员、团队和组织编写的组件。'
-      : 'React 是用于 web 和原生用户界面的库';
+      ? 'React 是用于构建 web 和原生用户界面的库。React 使用 JavaScript 编写称为组件的各个部分构建用户界面。React 旨在让开发者无缝组合由独立人员、团队和组织编写的组件。'
+      : 'React 是用于构建 web 和原生用户界面的库';
     return (
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
