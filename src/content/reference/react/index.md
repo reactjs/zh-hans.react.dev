@@ -3,7 +3,7 @@ title: React 参考总览
 ---
 
 <Intro>
-本部分提供了与 React 一起工作的详细参考文档。
+本部分提供了使用 React 的详细参考文档。
 如果需要了解 React 的介绍，请访问 [学习](/learn) 部分。
 </Intro>
 
