@@ -361,7 +361,7 @@ function subscribe(callback) {
 - 在服务端生成 HTML 时。
 - 在客户端 [hydration](/reference/react-dom/client/hydrateRoot) 时，即：当 React 拿到服务端的 HTML 并使其可交互。
 
-这使得你能提供在应用可交互前可用的初始快照值。如果没有对服务器端渲染来说有意义的初始值，就省略这个参数来 [强制客户端渲染](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-server-only-content)。
+This lets you provide the initial snapshot value which will be used before the app becomes interactive. If there is no meaningful initial value for the server rendering, omit this argument to [force rendering on the client.](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content)
 
 <Note>
 

@@ -67,8 +67,8 @@ experimental_taintUniqueValue(
 
 #### 注意 {/*caveats*/}
 
-* 从被污染的值派生新值可能会破坏污点标记保护。通过将被污染的值大写、将被污染的字符串值连接成较大的字符串、将被污染的值转换为 base64、对被污染的值进行子字符串操作以及其他类似的转换来创建的新值，除非明确调用 `taintUniqueValue` 污染这些新创建的值，否则它们不会被污染。
-* 不要使用 `taintUniqueValue` 保护诸如 PIN 码与电话号码这类低熵值。如果请求中的任何值都可以受攻击者控制，那么他们可以秘密枚举所有值来判断那个值是被污染的。
+* Deriving new values from tainted values can compromise tainting protection. New values created by uppercasing tainted values, concatenating tainted string values into a larger string, converting tainted values to base64, substringing tainted values, and other similar transformations are not tainted unless you explicitly call `taintUniqueValue` on these newly created values.
+* Do not use `taintUniqueValue` to protect low-entropy values such as PIN codes or phone numbers. If any value in a request is controlled by an attacker, they could infer which value is tainted by enumerating all possible values of the secret.
 
 ---
 
