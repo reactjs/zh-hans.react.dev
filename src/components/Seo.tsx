@@ -37,11 +37,7 @@ function getDomain(languageCode: string): string {
 export const Seo = withRouter(
   ({
     title,
-<<<<<<< HEAD
-    description = '用于构建 Web 和原生交互界面的库',
-=======
     titleForTitleTag,
->>>>>>> 9c60167bf966286bafb99492e31b0609ccb56b5c
     image = '/images/og-default.png',
     router,
     children,
@@ -52,13 +48,9 @@ export const Seo = withRouter(
     const canonicalUrl = `https://${siteDomain}${
       router.asPath.split(/[\?\#]/)[0]
     }`;
-<<<<<<< HEAD
-    const pageTitle = isHomePage ? title : title + ' – React 中文文档';
-=======
     // Allow setting a different title for Google results
     const pageTitle =
-      (titleForTitleTag ?? title) + (isHomePage ? '' : ' – React');
->>>>>>> 9c60167bf966286bafb99492e31b0609ccb56b5c
+      (titleForTitleTag ?? title) + (isHomePage ? '' : ' – React 中文文档');
     // Twitter's meta parser is not very good.
     const twitterTitle = pageTitle.replace(/[<>]/g, '');
     let description = isHomePage
