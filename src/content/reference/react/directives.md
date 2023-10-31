@@ -19,5 +19,5 @@ canary: true
 
 ## 源码命令 {/*source-code-directives*/}
 
-* [`'use client'`](/reference/react/use-client) 标记组件在客户端上执行的源文件。
-* [`'use server'`](/reference/react/use-server) 标记可以从客户端代码调用的服务器函数。
+* [`'use client'`](/reference/react/use-client) lets you mark what code runs on the client.
+* [`'use server'`](/reference/react/use-server) marks server-side functions that can be called from client-side code.
