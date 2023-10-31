@@ -43,7 +43,7 @@ function Button() {
 
 ## Ref Hook {/*ref-hooks*/}
 
-ref 允许组件 [保存一些不用于渲染的信息](/learn/referencing-values-with-refs)，比如 DOM 节点或 timeout ID。与状态不同，更新 ref 不会重新渲染组件。ref 是从 React 范例中的“后备方案”。当需要与非 React 系统如浏览器内置 API 一同工作时，ref 将会非常有用。
+ref 允许组件 [保存一些不用于渲染的信息](/learn/referencing-values-with-refs)，比如 DOM 节点或 timeout ID。与状态不同，更新 ref 不会重新渲染组件。ref 是从 React 范例中的“脱围机制”。当需要与非 React 系统如浏览器内置 API 一同工作时，ref 将会非常有用。
 
 * 使用 [`useRef`](/reference/react/useRef) 声明 ref。你可以在其中保存任何值，但最常用于保存 DOM 节点。
 * 使用 [`useImperativeHandle`](/reference/react/useImperativeHandle) 自定义从组件中暴露的 ref，但是很少使用。
@@ -72,7 +72,7 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-Effect 是从 React 范例中的“后备方案”。避免使用 Effect 协调应用程序的数据流。如果不需要与外部系统交互，那么 [可能不需要 Effect](/learn/you-might-not-need-an-effect)。
+Effect 是从 React 范例中的“脱围机制”。避免使用 Effect 协调应用程序的数据流。如果不需要与外部系统交互，那么 [可能不需要 Effect](/learn/you-might-not-need-an-effect)。
 
 `useEffect` 有两个很少使用的变换形式，它们在执行时机有所不同：
 
