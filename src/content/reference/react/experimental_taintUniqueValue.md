@@ -131,7 +131,11 @@ const uppercasePassword = password.toUpperCase() // `uppercasePassword` 不被�
 
 从被污染的值派生新值的其他类似方式，如将其连接到较大的字符串中、将其转换为 base64 或返回子字符串，会创建未被污染的值。
 
+<<<<<<< HEAD
 污点标记仅保护免受简单错误的影响，比如明确将机密值传递给客户端的错误。在调用 `taintUniqueValue` 时出现的错误，例如在 React 外部使用全局存储，没有相应的生命周期对象，可能会导致被污染的值变为未被污染。污点标记是一层保护，安全的应用程序将具有多层保护、精心设计的 API 和隔离模式。
+=======
+Tainting only protects against simple mistakes like explicitly passing secret values to the client. Mistakes in calling the `taintUniqueValue` like using a global store outside of React, without the corresponding lifetime object, can cause the tainted value to become untainted. Tainting is a layer of protection; a secure app will have multiple layers of protection, well designed APIs, and isolation patterns.
+>>>>>>> a8790ca810c1cebd114db35a433b90eb223dbb04
 
 </Pitfall>
 
