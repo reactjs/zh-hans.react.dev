@@ -375,10 +375,6 @@ These libraries may rely on component Hooks or client APIs. Third-party componen
 * [startTransition](/reference/react/startTransition)
 * If they use client APIs, ex. DOM insertion or native platform views
 
-<<<<<<< HEAD
-[TODO]: <> (Troubleshooting - need use-cases)
-=======
 If these libraries have been updated to be compatible with React Server Components, then they will already include `'use client'` markers of their own, allowing you to use them directly from your Server Components. If a library hasn't been updated, or if a component needs props like event handlers that can only be specified on the client, you may need to add your own Client Component file in between the third-party Client Component and your Server Component where you'd like to use it.
 
 [TODO]: <> (Troubleshooting - need use-cases)
->>>>>>> a8790ca810c1cebd114db35a433b90eb223dbb04

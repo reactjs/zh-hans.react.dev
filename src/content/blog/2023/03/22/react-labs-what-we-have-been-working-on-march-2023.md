@@ -74,11 +74,7 @@ React 的核心思想是开发人员将其 UI 定义为当前状态的函数。�
 
 ## 离屏渲染 {/*offscreen-rendering*/}
 
-<<<<<<< HEAD
 离屏渲染是 React 即将推出的一种功能，用于在后台渲染屏幕，而无需额外的性能开销。可以将其视为 [`content-visibility` CSS 属性](https://developer.mozilla.org/ch-ZN/docs/Web/CSS/content-visibility) 的一个版本，它不仅适用于 DOM 元素，还适用于 React 组件。在我们的研究中，我们发现了各种用例：
-=======
-Offscreen rendering is an upcoming capability in React for rendering screens in the background without additional performance overhead. You can think of it as a version of the [`content-visibility` CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility) that works not only for DOM elements but React components, too. During our research, we've discovered a variety of use cases:
->>>>>>> a8790ca810c1cebd114db35a433b90eb223dbb04
 
 - 路由可以在后台预渲染屏幕，以便当用户导航到它们时，可以立即使用。
 - 切换选项卡组件可以保留隐藏选项卡的状态，以便用户可以在不丢失进度的情况下在它们之间切换。

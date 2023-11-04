@@ -309,11 +309,7 @@ async function DemoProfile() {
 
 React 只允许在组件内访问记忆化函数的缓存。在组件外部调用 <CodeStep step={1}>`getUser`</CodeStep> 时，它仍会评估函数，但不会读取或更新缓存。
 
-<<<<<<< HEAD
 这是因为缓存访问是通过 [上下文（context）](/learn/passing-data-deeply-with-context) 提供的，而上下文只能从组件中访问。
-=======
-This is because cache access is provided through a [context](/learn/passing-data-deeply-with-context) which is only accessible from a component. 
->>>>>>> a8790ca810c1cebd114db35a433b90eb223dbb04
 
 </Pitfall>
 

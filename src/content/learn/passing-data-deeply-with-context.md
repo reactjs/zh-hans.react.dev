@@ -988,13 +988,8 @@ export const places = [{
   imageId: 'kxsph5C'
 }, {
   id: 5, 
-<<<<<<< HEAD
   name: '摩洛哥舍夫沙万',
   description: '关于为什么房屋被涂成蓝色，有几种理论，包括这几种颜色可以驱蚊或者它象征着天空和天堂。',
-=======
-  name: 'Chefchaouen, Marocco',
-  description: 'There are a few theories on why the houses are painted blue, including that the color repels mosquitos or that it symbolizes sky and heaven.',
->>>>>>> a8790ca810c1cebd114db35a433b90eb223dbb04
   imageId: 'rTqKo46'
 }, {
   id: 6,
@@ -1132,13 +1127,8 @@ export const places = [{
   imageId: 'kxsph5C'
 }, {
   id: 5, 
-<<<<<<< HEAD
   name: '摩洛哥舍夫沙万',
   description: '关于为什么房屋被涂成蓝色，有几种理论，包括这几种颜色可以驱蚊或者它象征着天空和天堂。',
-=======
-  name: 'Chefchaouen, Marocco',
-  description: 'There are a few theories on why the houses are painted blue, including that the color repels mosquitos or that it symbolizes sky and heaven.',
->>>>>>> a8790ca810c1cebd114db35a433b90eb223dbb04
   imageId: 'rTqKo46'
 }, {
   id: 6,
