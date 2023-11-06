@@ -117,7 +117,7 @@ function action(currentState, formData) {
 
 #### 展示表单错误 {/*display-form-errors*/}
 
-想要展示诸如错误信息或服务器操作返回的 toast 等信息，将 action 包裹进 `useFormState` 即可。
+想要展示诸如错误信息或 Server Action 返回的 toast 等信息，将 action 包裹进 `useFormState` 即可。
 
 <Sandpack>
 
