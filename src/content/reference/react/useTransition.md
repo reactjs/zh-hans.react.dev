@@ -1,6 +1,5 @@
 ---
 title: useTransition
-canary: true
 ---
 
 <Intro>
@@ -710,7 +709,7 @@ b { display: inline-block; margin-right: 10px; }
 
 ### 避免不必要的加载指示器 {/*preventing-unwanted-loading-indicators*/}
 
-在这个例子中，`PostsTab` 组件从启用了 [Suspense](/reference/react/Suspense) 的数据源中获取了一些数据。当你点击“Posts”选项卡时，`PostsTab` 组件将 **挂起**，导致最近的加载占位符出现：
+在这个例子中，`PostsTab` 组件从启用了 [Suspense](/reference/react/Suspense) 的数据源中获取了一些数据。当你点击“Posts”选项卡时，`PostsTab` 组件将 **挂起**，导致最近的加载中的后备方案出现：
 
 <Sandpack>
 

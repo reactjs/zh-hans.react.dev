@@ -1046,8 +1046,8 @@ export async function fetchBio(person) {
 
 这些缺点并不仅仅体现在 React 上，它可能出现在所有挂载时请求数据的地方。与路由一样，要做好数据请求并非易事，因此我们推荐以下方法：
 
-- **如果使用 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks)，请使用其内置的数据请求机制**。现代的 React 框架集成了高效的数据请求机制，不会受到上述问题的影响。
-否则，请考虑使用或构建客户端缓存。流行的开源解决方案包括 [React Query](https://react-query.tanstack.com/)、[useSWR](https://swr.vercel.app/) 和 [React Router v6.4+](https://beta.reactrouter.com/en/main/start/overview)。你也可以构建自己的解决方案，在这种情况下，你可以在掌控下使用 Effect，但也要添加逻辑来处理重复的请求、缓存响应和避免“网络瀑布”（通过预加载数据或将数据需求提升到路由层面）。
+- **If you use a [framework](/learn/start-a-new-react-project#production-grade-react-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
+- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [React Query](https://tanstack.com/query/latest/), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood but also add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
 
 如果这两种方法都不适合你，你可以继续直接在 Effect 中请求数据。
 

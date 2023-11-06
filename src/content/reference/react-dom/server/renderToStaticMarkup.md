@@ -44,7 +44,7 @@ const html = renderToStaticMarkup(<Page />);
 
 * `renderToStaticMarkup` 的输出无法进行二次渲染。
 
-* `renderToStaticMarkup` 对 Suspense 的支持有限。如果一个组件触发了 Suspense，`renderToStaticMarkup` 立即将它的 fallback 作为 HTML 输出。
+* `renderToStaticMarkup` 对 Suspense 的支持有限。如果一个组件触发了 Suspense，`renderToStaticMarkup` 立即将它的后备方案作为 HTML 输出。
 
 * `renderToStaticMarkup` 在浏览器中可以使用，但不建议在客户端代码中使用它。如果你需要在浏览器中将组件渲染成 HTML，[请把它渲染到 DOM 节点中以获取 HTML](/reference/react-dom/server/renderToString#removing-rendertostring-from-the-client-code)。
 

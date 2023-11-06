@@ -57,7 +57,7 @@ experimental_taintUniqueValue(
 
 * `message`：`value` 被传递给客户端组件时显示的消息。如果将 `value` 传递给客户端组件，此消息将作为错误的一部分显示。
 
-* `lifetime`：指示 `value` 应该被标记多长时间的任何对象。只要此对象仍然存在，将阻止把 `value` 发送到任何客户端组件。例如，传递 `globalThis` 将在应用程序的生命周期内阻止该值的传递。`lifetime` 通常是一个包含 `value` 属性的对象。
+* `lifetime`：指示 `value` 应该被污染多长时间的任何对象。只要此对象仍然存在，将阻止把 `value` 发送到任何客户端组件。例如，传递 `globalThis` 将在应用程序的生命周期内阻止该值的传递。`lifetime` 通常是一个包含 `value` 属性的对象。
 
 * `value`：字符串、bigint 或 TypedArray。`value` 必须是具有高熵的字符或字节的唯一序列，例如加密令牌、私钥、哈希值或长密码。`value` 将被阻止发送到任何客户端组件。
 
@@ -67,7 +67,7 @@ experimental_taintUniqueValue(
 
 #### 注意 {/*caveats*/}
 
-* 从受标记的值派生新值可能会破坏标记保护。通过将受标记的值大写、将受标记的字符串值连接成较大的字符串、将受标记的值转换为 base64、对受标记的值进行子字符串操作以及其他类似的转换来创建的新值，除非明确调用 `taintUniqueValue` 标记这些新创建的值，否则它们不会受到标记。
+* Deriving new values from tainted values can compromise tainting protection. New values created by uppercasing tainted values, concatenating tainted string values into a larger string, converting tainted values to base64, substringing tainted values, and other similar transformations are not tainted unless you explicitly call `taintUniqueValue` on these newly created values.
 * Do not use `taintUniqueValue` to protect low-entropy values such as PIN codes or phone numbers. If any value in a request is controlled by an attacker, they could infer which value is tainted by enumerating all possible values of the secret.
 
 ---
@@ -76,9 +76,9 @@ experimental_taintUniqueValue(
 
 ### 防止将令牌传递给客户端组件 {/*prevent-a-token-from-being-passed-to-client-components*/}
 
-为了确保敏感信息（如密码、会话令牌或其他唯一值）不会被意外地传递给客户端组件，`taintUniqueValue` 函数提供了一层保护。当一个值被标记时，任何尝试将其传递给客户端组件的操作都将导致错误。
+为了确保敏感信息（如密码、会话令牌或其他唯一值）不会被意外地传递给客户端组件，`taintUniqueValue` 函数提供了一层保护。当一个值被污染时，任何尝试将其传递给客户端组件的操作都将导致错误。
 
-`lifetime` 参数定义了值保持受标记状态的持续时间。对于应该永久保持受标记状态的值，可以使用像 [`globalThis`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/globalThis) 或 `process` 这样的对象作为 `lifetime` 参数。这些对象的生命周期跨越应用程序执行的整个持续时间。
+`lifetime` 参数定义了值保持被污染的状态的持续时间。对于应该永久保持被污染的状态的值，可以使用像 [`globalThis`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/globalThis) 或 `process` 这样的对象作为 `lifetime` 参数。这些对象的生命周期跨越应用程序执行的整个持续时间。
 
 ```js
 import {experimental_taintUniqueValue} from 'react';
@@ -90,7 +90,7 @@ experimental_taintUniqueValue(
 );
 ```
 
-如果受标记值的寿命与某个对象相关联，那么 `lifetime` 应该是封装该值的对象。这样可以确保受标记值在封装对象的生命周期内保持受保护状态。
+如果被污染的值的寿命与某个对象相关联，那么 `lifetime` 应该是封装该值的对象。这样可以确保被污染的值在封装对象的生命周期内保持受保护状态。
 
 ```js
 import {experimental_taintUniqueValue} from 'react';
@@ -106,11 +106,11 @@ export async function getUser(id) {
 }
 ```
 
-在此示例中，`user` 对象用作 `lifetime` 参数。如果此对象存储在全局缓存中或可以被其他请求访问，会话令牌将保持受标记状态。
+在此示例中，`user` 对象用作 `lifetime` 参数。如果此对象存储在全局缓存中或可以被其他请求访问，会话令牌将保持被污染的状态。
 
 <Pitfall>
 
-**不要仅依赖于标记来确保安全**。对一个值进行标记不会阻止每一个可能派生出的值。例如，通过将受标记的字符串大写来创建新值，将不会标记新值。
+**不要仅依赖于污点标记来确保安全**。污染一个值不会阻止每一个可能派生出的值。例如，通过将被污染的字符串大写来创建新值，将不会污染新值。
 
 
 ```js
@@ -124,14 +124,14 @@ experimental_taintUniqueValue(
   password
 );
 
-const uppercasePassword = password.toUpperCase() // `uppercasePassword` 不受标记
+const uppercasePassword = password.toUpperCase() // `uppercasePassword` 不被污染
 ```
 
-在此示例中，常量 `password` 受到标记。然后，通过在 `password` 上调用 `toUpperCase` 方法使用 `password` 创建新值 `uppercasePassword`。新创建的 `uppercasePassword` 不受标记。
+在此示例中，常量 `password` 被污染。然后，通过在 `password` 上调用 `toUpperCase` 方法使用 `password` 创建新值 `uppercasePassword`。新创建的 `uppercasePassword` 不被污染。
 
-从受标记值派生新值的其他类似方式，如将其连接到较大的字符串中、将其转换为 base64 或返回子字符串，会创建未受标记的值。
+从被污染的值派生新值的其他类似方式，如将其连接到较大的字符串中、将其转换为 base64 或返回子字符串，会创建未被污染的值。
 
-标记仅保护免受简单错误的影响，比如明确将机密值传递给客户端的错误。在调用 `taintUniqueValue` 时出现的错误，例如在 React 外部使用全局存储，没有相应的生命周期对象，可能会导致受标记的值变为未受标记。标记是一层保护，安全的应用程序将具有多层保护、精心设计的 API 和隔离模式。
+污点标记仅保护免受简单错误的影响，比如明确将机密值传递给客户端的错误。在调用 `taintUniqueValue` 时出现的错误，例如在 React 外部使用全局存储，没有相应的生命周期对象，可能会导致被污染的值变为未被污染。污点标记是一层保护，安全的应用程序将具有多层保护、精心设计的 API 和隔离模式。
 
 </Pitfall>
 
@@ -166,7 +166,7 @@ export async function Overview({ password }) {
 
 [comment]: <> (TODO: 一旦 `server-only` 文档写好就就将其链接到对应处)
 
-理想情况下，像这样的机密信息应该被抽象到一个单独的辅助文件中，只有服务器上的可信数据工具才能导入它。这个辅助文件甚至可以被标记为 [`server-only`](https://www.npmjs.com/package/server-only)，以确保此文件不会在客户端被导入。
+理想情况下，像这样的机密信息应该被抽象到一个单独的辅助文件中，只有服务器上的可信数据工具才能导入它。这个辅助文件甚至可以被污染为 [`server-only`](https://www.npmjs.com/package/server-only)，以确保此文件不会在客户端被导入。
 
 ```js
 import "server-only";
@@ -178,7 +178,7 @@ export function fetchAPI(url) {
 ```
 
 有时，在重构过程中可能会发生错误，而且不是所有同事都可能知道这一点。
-为了防止此类错误在后续发生，我们可以对实际密码进行“标记”：
+为了防止此类错误在后续发生，我们可以对实际密码进行“污染”：
 
 ```js
 import "server-only";

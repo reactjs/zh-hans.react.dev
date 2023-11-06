@@ -40,7 +40,7 @@ function MessageComponent({ messagePromise }) {
 
 与其他 React Hook 不同的是，可以在循环和条件语句（如 `if`）中调用 `use`。但需要注意的是，调用 `use` 的函数仍然必须是一个组件或 Hook。
 
-当使用 Promise 调用 `use` Hook 时，它会与 [`Suspense`](/reference/react/Suspense) 和 [错误边界](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) 集成。当传递给 `use` 的 Promise 处于 pending 时，调用 `use` 的组件也会 **挂起**。如果调用 `use` 的组件被包装在 Suspense 边界内，将显示 fallback UI。一旦 Promise 被解决，Suspense fallback 将被使用 `use` Hook 返回的数据替换。如果传递给 `use` 的 Promise 被拒绝，将显示最近错误边界的 fallback UI。
+当使用 Promise 调用 `use` Hook 时，它会与 [`Suspense`](/reference/react/Suspense) 和 [错误边界](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) 集成。当传递给 `use` 的 Promise 处于 pending 时，调用 `use` 的组件也会 **挂起**。如果调用 `use` 的组件被包装在 Suspense 边界内，将显示后备 UI。一旦 Promise 被解决，Suspense 后备方案将被使用 `use` Hook 返回的数据替换。如果传递给 `use` 的 Promise 被拒绝，将显示最近错误边界的后备 UI。
 
 [参见下方更多示例)(#usage)。
 
@@ -243,7 +243,7 @@ export function Message({ messagePromise }) {
   return <p>Here is the message: {messageContent}</p>;
 }
 ```
-由于 <CodeStep step={2}>`Message`</CodeStep> 被包裹在 <CodeStep step={3}>[`Suspense`](/reference/react/Suspense)</CodeStep> 中，所以在 Promise 解决之前将显示 fallback。当 Promise 被解决后，<CodeStep step={5}>`use`</CodeStep> Hook 将读取值，然后 <CodeStep step={2}>`Message`</CodeStep> 组件将替换 Suspense fallback。
+由于 <CodeStep step={2}>`Message`</CodeStep> 被包裹在 <CodeStep step={3}>[`Suspense`](/reference/react/Suspense)</CodeStep> 中，所以在 Promise 解决之前将显示后备方案。当 Promise 被解决后，<CodeStep step={5}>`use`</CodeStep> Hook 将读取值，然后 <CodeStep step={2}>`Message`</CodeStep> 组件将替换 Suspense 后备方案。
 
 <Sandpack>
 
@@ -360,7 +360,7 @@ export default function App() {
 
 #### 使用错误边界将错误展示给用户 {/*displaying-an-error-to-users-with-error-boundary*/}
 
-如果希望在 Promise 被拒绝（rejected）时向用户显示错误信息，可以使用 [错误边界](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)。如果需要使用错误边界，请将调用 `use` Hook 的组件包装在错误边界中。如果传递给 `use` 的 Promise 被拒绝（rejected），将显示错误边界的 fallback。
+如果希望在 Promise 被拒绝（rejected）时向用户显示错误信息，可以使用 [错误边界](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)。如果需要使用错误边界，请将调用 `use` Hook 的组件包装在错误边界中。如果传递给 `use` 的 Promise 被拒绝（rejected），将显示错误边界的后备方案。
 
 <Sandpack>
 
