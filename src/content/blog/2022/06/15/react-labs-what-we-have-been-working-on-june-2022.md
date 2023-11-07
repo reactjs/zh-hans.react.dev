@@ -28,7 +28,12 @@ title: "React Labs：我们正在努力的方向——2022 年 6 月"
 
 ## 资源加载 {/*asset-loading*/}
 
+<<<<<<< HEAD
 目前，像脚本、外部样式、字体和图像等资源通常是通过预加载和外部系统加载的。这可能在新的环境（如流媒体、服务器组件等）之间协调起来比较棘手。
+=======
+Currently, assets like scripts, external styles, fonts, and images are typically preloaded and loaded using external systems. This can make it tricky to coordinate across new environments like streaming, Server Components, and more.
+We’re looking at adding APIs to preload and load deduplicated external assets through React APIs that work in all React environments.
+>>>>>>> 721479b34668cb1bdfe2e312a86c04f08cd5d659
 
 我们正在考虑通过 React API 添加预加载和加载去重的外部资源的 API，以在所有 React 环境中使用。
 
