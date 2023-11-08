@@ -11,7 +11,7 @@ canary: true
 
 <Intro>
 
-`useFormState` 是一个可以让你根据某个 form action 的结果更新 state 的 Hook。
+`useFormState` 是一个可以让你根据某个表单动作的结果更新 state 的 Hook。
 
 ```js
 const [state, formAction] = useFormState(fn, initialState);
@@ -29,7 +29,7 @@ const [state, formAction] = useFormState(fn, initialState);
 
 {/* TODO T164397693: link to actions documentation once it exists */}
 
-在组件的顶层调用 `useFormState` 即可创建一个随 [form action 被调用](/reference/react-dom/components/form) 而更新的 state。在调用 `useFormState` 时在参数中传入现有的 form action 函数以及一个初始状态，它就会返回一个新的 action 函数和一个 form state 可供在 form 中使用。这个新的 form state 也会作为参数传入你提供的 form action 函数。
+在组件的顶层调用 `useFormState` 即可创建一个随 [form action 被调用](/reference/react-dom/components/form) 而更新的 state。在调用 `useFormState` 时在参数中传入现有的表单动作函数以及一个初始状态，它就会返回一个新的 action 函数和一个 form state 可供在 form 中使用。这个新的 form state 也会作为参数传入你提供的表单动作函数。
 
 ```js
 import { useFormState } from "react-dom";
@@ -57,7 +57,7 @@ form state 是一个只在表单被提交触发 action 后才会被更新的值�
 
 #### 参数 {/*parameters*/}
 
-* `fn`：当按钮被按下或者表单被提交时触发的函数。当函数被调用时，该函数会接收到表单的上一个 state（初始值是你传入的 `initialState` 参数，在其他情况下是上一次执行完该函数的结果）作为函数的第一个参数，余下参数为普通 form action 接到的参数。
+* `fn`：当按钮被按下或者表单被提交时触发的函数。当函数被调用时，该函数会接收到表单的上一个 state（初始值是你传入的 `initialState` 参数，在其他情况下是上一次执行完该函数的结果）作为函数的第一个参数，余下参数为普通表单动作接到的参数。
 * `initialState`：state 的初始值。任何可序列化的值都可接收。当 action 被调用一次后该参数会被忽略。
 
 {/* TODO T164397693: link to serializable values docs once it exists */}
@@ -72,13 +72,13 @@ form state 是一个只在表单被提交触发 action 后才会被更新的值�
 #### 注意 {/*caveats*/}
 
 * 在支持 React 服务器组件的框架中使用该功能时，`useFormState` 允许表单在服务器渲染阶段时获得部分交互性。当不使用服务器组件时，它的特性与本地 state 相同。
-* 与直接通过 form action 调用的函数不同，传入 `useFormState` 的函数被调用时，会多传入一个代表 state 的上一个值或初始值的参数作为该函数的第一个参数。
+* 与直接通过表单动作调用的函数不同，传入 `useFormState` 的函数被调用时，会多传入一个代表 state 的上一个值或初始值的参数作为该函数的第一个参数。
 
 ---
 
 ## 用法 {/*usage*/}
 
-### 使用某个 form action 返回的信息 {/*using-information-returned-by-a-form-action*/}
+### 使用某个表单动作返回的信息 {/*using-information-returned-by-a-form-action*/}
 
 在组件的顶层调用 `useFormState` 来获取上一次表单被提交时触发的 action 的返回值。
 
@@ -282,7 +282,7 @@ form button {
 
 ### 我的 action 无法再获取提交的 form data 了 {/*my-action-can-no-longer-read-the-submitted-form-data*/}
 
-当你使用 `useFormState` 包裹你的 action 时，*第一个参数*变为了 form 的当前 state，提交的表单数据被顺移到了*第二个*参数中，与直接使用 form action 是不同的。
+当你使用 `useFormState` 包裹你的 action 时，*第一个参数*变为了 form 的当前 state，提交的表单数据被顺移到了*第二个*参数中，与直接使用表单动作是不同的。
 
 ```js
 function action(currentState, formData) {
