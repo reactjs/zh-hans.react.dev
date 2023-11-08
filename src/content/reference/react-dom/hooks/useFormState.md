@@ -29,7 +29,7 @@ const [state, formAction] = useFormState(fn, initialState);
 
 {/* TODO T164397693: link to actions documentation once it exists */}
 
-在组件的顶层调用 `useFormState` 即可创建一个随 [form action 被调用](/reference/react-dom/components/form) 而更新的 state。在调用 `useFormState` 时在参数中传入现有的表单动作函数以及一个初始状态，它就会返回一个新的 action 函数和一个 form state 可供在 form 中使用。这个新的 form state 也会作为参数传入你提供的表单动作函数。
+在组件的顶层调用 `useFormState` 即可创建一个随 [表单动作 被调用](/reference/react-dom/components/form) 而更新的 state。在调用 `useFormState` 时在参数中传入现有的表单动作函数以及一个初始状态，它就会返回一个新的 action 函数和一个 form state 可供在 form 中使用。这个新的 form state 也会作为参数传入你提供的表单动作函数。
 
 ```js
 import { useFormState } from "react-dom";
@@ -51,7 +51,7 @@ function StatefulForm({}) {
 
 form state 是一个只在表单被提交触发 action 后才会被更新的值。如果该表单没有被提交，该值会保持你传入的初始值不变。
 
-如果配合服务器操作一起使用，`useFormState` 允许与表单交互的服务器的返回值在 hydration 完成前显示。
+如果配合 Server Action 一起使用，`useFormState` 允许与表单交互的服务器的返回值在 hydration 完成前显示。
 
 [在下面查看更多用法](#usage)。
 
