@@ -18,7 +18,7 @@ React 参考文档分为以下功能子部分：
 
 ## React DOM {/*react-dom*/}
 React-dom 仅支持在 web 应用程序中使用
-（在浏览器 DOM 环境中运行）。本部分分为以下部分：
+（在浏览器 DOM 环境中运行）。本节分为以下部分：
 
 * [Hook](/reference/react-dom/hooks) - 适用于在浏览器 DOM 环境中运行的 web 应用程序的 Hook。
 * [组件](/reference/react-dom/components) - React 支持所有内置的 HTML 和 SVG 组件。
