@@ -24,7 +24,7 @@ React-dom 仅支持在 web 应用程序中使用
 * [组件](/reference/react-dom/components) - React 支持所有内置的 HTML 和 SVG 组件。
 * [API](/reference/react-dom) - `react-dom` 包含仅在 Web 应用程序中支持的方法。
 * [客户端 API](/reference/react-dom/client) - `react-dom/client` API 允许在客户端（浏览器中）呈现 React 组件。
-* [服务器 API](/reference/react-dom/server) - `react-dom/server` API 允许将 React 组件呈现为服务器端的 HTML。
+* [服务器 API](/reference/react-dom/server) - `react-dom/server` API 允许在服务器端将 React 组件渲染为 HTML。
 
 ## 旧版 API {/*legacy-apis*/}
 * [旧版 API](/reference/react/legacy) - 从 react 包中导出，但不建议在新编写的代码中使用。
