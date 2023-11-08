@@ -17,7 +17,7 @@ React 参考文档分为以下功能子部分：
 * [指令](/reference/react/directives) —— 为与 React 服务器组件兼容的捆绑器提供指示。
 
 ## React DOM {/*react-dom*/}
-React-dom 包含仅支持在 web 应用程序中运行的功能
+React-dom 仅支持在 web 应用程序中使用
 （在浏览器 DOM 环境中运行）。本部分分为以下部分：
 
 * [Hook](/reference/react-dom/hooks) - 适用于在浏览器 DOM 环境中运行的 web 应用程序的 Hook。
