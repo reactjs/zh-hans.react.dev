@@ -334,11 +334,7 @@ root.render(
 
 #### 应该在服务器组件还是客户端组件解析 Promise？ {/*resolve-promise-in-server-or-client-component*/}
 
-<<<<<<< HEAD
-Promise 可以从服务器组件传递至客户端组件，并且刻意在客户端组件中使用 `use` Hook 解析它。也可以在服务器组件中使用 `await` 解析 Promise，并将所需的数据作为 prop 传递给客户端组件。
-=======
-A Promise can be passed from a Server Component to a Client Component and resolved in the Client Component with the `use` Hook. You can also resolve the Promise in a Server Component with `await` and pass the required data to the Client Component as a prop.
->>>>>>> 721479b34668cb1bdfe2e312a86c04f08cd5d659
+Promise 可以从服务器组件传递至客户端组件，并且可以在客户端组件中使用 `use` Hook 解析它。也可以在服务器组件中使用 `await` 解析 Promise，并将所需的数据作为 prop 传递给客户端组件。
 
 ```js
 export default function App() {
