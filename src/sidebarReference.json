@@ -11,7 +11,7 @@
       "path": "/reference/react"
     },
     {
-      "title": "Hooks",
+      "title": "Hook",
       "path": "/reference/react/hooks",
       "routes": [
         {
@@ -82,8 +82,7 @@
         },
         {
           "title": "useTransition",
-          "path": "/reference/react/useTransition",
-          "canary": true
+          "path": "/reference/react/useTransition"
         }
       ]
     },
