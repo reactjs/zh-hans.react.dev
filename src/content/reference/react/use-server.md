@@ -212,8 +212,4 @@ export default async incrementLike() {
 }
 ```
 
-<<<<<<< HEAD
 To read a server action return value, you'll need to `await` the promise returned.
-=======
-To read a Server Action return value, you'll need to `await` the promise returned.
->>>>>>> 721479b34668cb1bdfe2e312a86c04f08cd5d659
