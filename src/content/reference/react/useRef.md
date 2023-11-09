@@ -4,7 +4,7 @@ title: useRef
 
 <Intro>
 
-`useRef` 是一个 React Hook，它能让你引用一个不需要渲染的值。
+`useRef` 是一个 React Hook，它能帮助引用一个不需要渲染的值。
 
 ```js
 const ref = useRef(initialValue)
@@ -20,7 +20,7 @@ const ref = useRef(initialValue)
 
 ### `useRef(initialValue)` {/*useref*/}
 
-在你组件的顶层调用 `useRef` 声明一个 [ref](/learn/referencing-values-with-refs)。
+在组件顶层调用 `useRef` 以声明一个 [ref](/learn/referencing-values-with-refs)。
 
 ```js
 import { useRef } from 'react';
@@ -31,34 +31,34 @@ function MyComponent() {
   // ...
 ```
 
-[请看下面的更多例子](#usage)
+[请参阅下方更多示例](#usage)。
 
 #### 参数 {/*parameters*/}
 
-* `initialValue`：ref 对象的 `current` 属性的初始值。可以是任意类型的值。这个参数会首次渲染后被忽略。
+* `initialValue`：ref 对象的 `current` 属性的初始值。可以是任意类型的值。这个参数在首次渲染后被忽略。
 
 #### 返回值 {/*returns*/}
 
 `useRef` 返回一个只有一个属性的对象:
 
-* `current`：最初，它被设置为你传递的 `initialValue`。之后你可以把它设置为其他值。如果你把 ref 对象作为一个 JSX 节点的 `ref` 属性传递给 React，React 将为它设置 `current` 属性。
+* `current`：初始值为传递的 `initialValue`。之后可以将其设置为其他值。如果将 ref 对象作为一个 JSX 节点的 `ref` 属性传递给 React，React 将为它设置 `current` 属性。
 
 在后续的渲染中，`useRef` 将返回同一个对象。
 
-#### 注意事项 {/*caveats*/}
+#### 注意 {/*caveats*/}
 
-* 你可以修改 `ref.current` 属性。与 state 不同，它是可变的。然而，如果它持有一个用于渲染的对象（例如，你的 state 的一部分），那么你就不应该修改这个对象。
-* 当你改变 `ref.current` 属性时，React 不会重新渲染你的组件。React 不知道你何时改变它，因为 ref 是一个普通的 JavaScript 对象。
-* 除了 [初始化](#avoiding-recreating-the-ref-contents) 外不要在渲染期间写入 **或者读取** `ref.current`。这会使你的组件的行为不可预测。
-* 在严格模式下，React 将会 **调用两次组件方法**，这是为了 [帮助你发现意外的问题](#my-initializer-or-updater-function-runs-twice)。这只是开发模式下的行为，不影响生产模式。每个 ref 对象将会创建两次，但是其中一个版本将被丢弃。如果你的组件函数是纯的（应该如此），这不会影响其行为。
+* 可以修改 `ref.current` 属性。与 state 不同，它是可变的。然而，如果它持有一个用于渲染的对象（例如 state 的一部分），那么就不应该修改这个对象。
+* 改变 `ref.current` 属性时，React 不会重新渲染组件。React 不知道它何时会发生改变，因为 ref 是一个普通的 JavaScript 对象。
+* 除了 [初始化](#avoiding-recreating-the-ref-contents) 外不要在渲染期间写入或者读取 `ref.current`，否则会使组件行为变得不可预测。
+* 在严格模式下，React 将会 **调用两次组件方法**，这是为了 [帮助发现意外问题](#my-initializer-or-updater-function-runs-twice)。但这只是开发模式下的行为，不会影响生产模式。每个 ref 对象都将会创建两次，但是其中一个版本将被丢弃。如果使用的是组件纯函数（也应当如此），那么这不会影响其行为。
 
 ---
 
-## 使用方法 {/*usage*/}
+## 使用 {/*usage*/}
 
-### 用 ref 引用一个值 {/*referencing-a-value-with-a-ref*/}
+### 使用用 ref 引用一个值 {/*referencing-a-value-with-a-ref*/}
 
-在你的组件的顶层调用 `useRef` 声明一个或多个 [refs](/learn/referencing-values-with-refs)。
+在组件顶层调用 `useRef` 声明一个或多个 [ref](/learn/referencing-values-with-refs)。
 
 ```js [[1, 4, "intervalRef"], [3, 4, "0"]]
 import { useRef } from 'react';
@@ -68,11 +68,11 @@ function Stopwatch() {
   // ...
 ```
 
-`useRef` 返回一个具有单个 <CodeStep step={2}>`current` 属性</CodeStep> 的 <CodeStep step={1}>ref 对象</CodeStep>，并初始化为你提供的 <CodeStep step={3}>initial value</CodeStep>
+`useRef` 返回一个具有单个 <CodeStep step={2}>`current` 属性</CodeStep> 的 <CodeStep step={1}>ref 对象</CodeStep>，并初始化为你提供的 <CodeStep step={3}>初始值</CodeStep>。
 
-在后续的渲染中，`useRef` 将返回相同的对象。你可以改变它的 `current` 属性来存储信息，并在之后读取它。这会让你联想起 [state](/reference/react/useState)，但是有一个重要的区别。
+在后续的渲染中，`useRef` 将返回相同的对象。你可以改变它的 `current` 属性来存储信息，并在之后读取它。这会让人联想到 [state](/reference/react/useState)，但是有一个重要的区别。
 
-**改变 ref 不会触发重新渲染。** 这意味着 ref 是存储一些不影响组件视图输出的信息的完美选择。例如，如果你需要存储一个 [intervalID](https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval) 并在以后检索它，你可以把它放在一个 ref 中。如果要更新 ref 里面的值，你需要手动改变它的 <CodeStep step={2}>`current` 属性</CodeStep>：
+**改变 ref 不会触发重新渲染**。这意味着 ref 是存储一些不影响组件视图输出信息的完美选择。例如，如果需要存储一个 [interval ID](https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval) 并在以后检索它，那么可以将它存储在 ref 中。只需要手动改变它的 <CodeStep step={2}>`current` 属性</CodeStep> 即可修改 ref 的值：
 
 ```js [[2, 5, "intervalRef.current"]]
 function handleStartClick() {
@@ -83,7 +83,7 @@ function handleStartClick() {
 }
 ```
 
-在之后，你可以从 ref 中读取 interval ID，这样你就可以 [清除定时器](https://developer.mozilla.org/zh-CN/docs/Web/API/clearInterval)：
+在之后，从 ref 中读取 interval ID 便可以 [清除定时器](https://developer.mozilla.org/zh-CN/docs/Web/API/clearInterval)：
 
 ```js [[2, 2, "intervalRef.current"]]
 function handleStopClick() {
@@ -92,11 +92,11 @@ function handleStopClick() {
 }
 ```
 
-通过使用 ref，你可以确保：
+使用 ref 可以确保：
 
-- 你可以在重新渲染之间 **存储信息**（不像是普通对象，每次渲染都会重置）。
-- 改变它 **不会触发重新渲染**（不像是 state 变量，会触发重新渲染）。
-- 对于你的组件的每个副本来说，**这些信息都是本地的**（不像是外面的变量，是共享的）。
+- 可以在重新渲染之间 **存储信息**（普通对象存储的值每次渲染都会重置）。
+- 改变它 **不会触发重新渲染**（状态变量会触发重新渲染）。
+- 对于组件的每个副本而言，**这些信息都是本地的**（外部变量则是共享的）。
 
 改变 ref 不会触发重新渲染，所以 ref 不适合用于存储期望显示在屏幕上的信息。如有需要，使用 state 代替。阅读更多关于 [在 `useRef` 和 `useState` 之间选择](/learn/referencing-values-with-refs#differences-between-refs-and-state) 的信息。
 
