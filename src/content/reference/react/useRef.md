@@ -104,7 +104,7 @@ function handleStopClick() {
 
 #### 点击计数器 {/*click-counter*/}
 
-这个组件使用 ref 来记录按钮被点击的次数。注意，在这里使用 ref 而不是 state 是可以的，因为点击次数只在事件处理程序中被读取和写入。
+这个组件使用 ref 记录按钮被点击的次数。注意，在这里使用 ref 而不是 state 是可以的，因为点击次数只在事件处理程序中被读取和写入。
 
 <Sandpack>
 
@@ -121,7 +121,7 @@ export default function Counter() {
 
   return (
     <button onClick={handleClick}>
-      Click me!
+      点击！
     </button>
   );
 }
@@ -129,13 +129,13 @@ export default function Counter() {
 
 </Sandpack>
 
-如果你在 JSX 中显示 `{ref.current}`，数字不会在点击时更新。这是因为修改 `ref.current` 不会触发重新渲染。用于渲染的信息应该使用 state。
+如果在 JSX 中显示 `{ref.current}`，数字不会在点击时更新。这是因为修改 `ref.current` 不会触发重新渲染——用于渲染的信息应该使用 state。
 
 <Solution />
 
 #### 秒表 {/*a-stopwatch*/}
 
-这个例子使用了 state 和 ref 的组合。`startTime` 和 `now` 都是 state 变量，因为它们是用来渲染的。但是我们还需要持有一个 [interval ID](https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval)，这样我们就可以在按下按钮时停止定时器。因为 interval ID 不用于渲染，所以应该把它保存在一个 ref 中，并且手动更新它。
+这个例子使用了 state 和 ref 的组合。`startTime` 和 `now` 都是 state 变量，因为它们是用来渲染的。但是还需要持有 [interval ID](https://developer.mozilla.org/zh-CN/docs/Web/API/setInterval) 以在按下按钮时停止定时器。因为 interval ID 不用于渲染，所以应该把它保存在一个 ref 中，并且手动更新它。
 
 <Sandpack>
 
@@ -170,10 +170,10 @@ export default function Stopwatch() {
     <>
       <h1>Time passed: {secondsPassed.toFixed(3)}</h1>
       <button onClick={handleStart}>
-        Start
+        开始
       </button>
       <button onClick={handleStop}>
-        Stop
+        停止
       </button>
     </>
   );
@@ -188,11 +188,11 @@ export default function Stopwatch() {
 
 <Pitfall>
 
-**不要在渲染期间写入 _或者读取_ `ref.current`。**
+**不要在渲染期间写入或者读取 `ref.current`**。
 
-React 期望你的组件的主体 [表现得像一个纯函数](/learn/keeping-components-pure)：
+React 期望组件主体 [表现得像一个纯函数](/learn/keeping-components-pure)：
 
-- 如果输入的（[props](/learn/passing-props-to-a-component)、[state](/learn/state-a-components-memory) 和 [context](/learn/passing-data-deeply-with-context)）都是一样的，那么就应该返回一样的 JSX。
+- 如果输入的（[props](/learn/passing-props-to-a-component)、[state](/learn/state-a-components-memory) 与 [上下文](/learn/passing-data-deeply-with-context)）都是一样的，那么就应该返回一样的 JSX。
 - 以不同的顺序或用不同的参数调用它，不应该影响其他调用的结果。
 
 在 **渲染期间** 读取或写入 ref 会破坏这些预期行为。
@@ -208,27 +208,27 @@ function MyComponent() {
 }
 ```
 
-你可以在 **事件处理程序或者 effects** 中读取和写入 ref。
+可以在 **事件处理程序或者 Effect** 中读取和写入 ref。
 
 ```js {4-5,9-10}
 function MyComponent() {
   // ...
   useEffect(() => {
-    // ✅ 你可以在 effects 中读取和写入 ref
+    // ✅ 可以在 Effect 中读取和写入 ref
     myRef.current = 123;
   });
   // ...
   function handleClick() {
-    // ✅ 你可以在事件处理程序中读取和写入 ref
+    // ✅ 可以在事件处理程序中读取和写入 ref
     doSomething(myOtherRef.current);
   }
   // ...
 }
 ```
 
-如果 **不得不** 在渲染期间读取 [或者写入](/reference/react/useState#storing-information-from-previous-renders)，[使用 state](/reference/react/useState) 代替。
+如果不得不在渲染期间读取 [或者写入](/reference/react/useState#storing-information-from-previous-renders)，那么应该 [使用 state](/reference/react/useState) 代替。
 
-当你打破这些规则时，你的组件可能仍然可以工作，但是我们为 React 添加的大多数新功能将依赖于这些预期行为。阅读 [保持你的组件纯粹](/learn/keeping-components-pure#where-you-_can_-cause-side-effects) 以了解更多信息。
+当打破这些规则时，组件可能仍然可以工作，但是我们为 React 添加的大多数新功能将依赖于这些预期行为。阅读 [保持组件纯粹](/learn/keeping-components-pure#where-you-_can_-cause-side-effects) 以了解更多信息。
 
 </Pitfall>
 
@@ -236,9 +236,9 @@ function MyComponent() {
 
 ### 通过 ref 操作 DOM {/*manipulating-the-dom-with-a-ref*/}
 
-使用 ref 操作 [DOM](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API) 是非常常见的。React 内置了对它的支持。
+使用 ref 操作 [DOM](https://developer.mozilla.org/zh-CN/docs/Web/API/HTML_DOM_API) 是非常常见的行为。React 内置了对它的支持。
 
-首先，声明一个 <CodeStep step={3}>initial value</CodeStep> 为 `null` 的 <CodeStep step={1}>ref 对象</CodeStep>
+首先，声明一个 <CodeStep step={3}>初始值</CodeStep> 为 `null` 的 <CodeStep step={1}>ref 对象</CodeStep>
 
 ```js [[1, 4, "inputRef"], [3, 4, "null"]]
 import { useRef } from 'react';
@@ -248,14 +248,14 @@ function MyComponent() {
   // ...
 ```
 
-然后将你的 ref 对象作为 `ref` 属性传递给你想要操作的 DOM 节点的 JSX：
+然后将 ref 对象作为 `ref` 属性传递给想要操作的 DOM 节点的 JSX：
 
 ```js [[1, 2, "inputRef"]]
   // ...
   return <input ref={inputRef} />;
 ```
 
-当 React 创建 DOM 节点并将其渲染到屏幕时，React 将会把 DOM 节点设置为你的 ref 对象的 <CodeStep step={2}>`current` 属性</CodeStep>。现在你可以访问 `<input>` 的 DOM 节点，并且可以调用类似于 [`focus()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus) 的方法：
+当 React 创建 DOM 节点并将其渲染到屏幕时，React 将会把 DOM 节点设置为 ref 对象的 <CodeStep step={2}>`current` 属性</CodeStep>。现在可以借助 ref 对象访问 `<input>` 的 DOM 节点，并且可以调用类似于 [`focus()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus) 的方法：
 
 ```js [[2, 2, "inputRef.current"]]
   function handleClick() {
@@ -263,7 +263,7 @@ function MyComponent() {
   }
 ```
 
-当节点从屏幕上移除时，React 将把 `current` 属性设回 `null`。
+当节点从屏幕上移除时，React 将把 `current` 属性设置回 `null`。
 
 阅读 [用 ref 操纵 DOM](/learn/manipulating-the-dom-with-refs) 以了解更多信息。
 
@@ -271,7 +271,7 @@ function MyComponent() {
 
 #### 聚焦文字输入框 {/*focusing-a-text-input*/}
 
-在这个示例中，点击按钮将会聚焦 input：
+在这个示例中，点击按钮将会聚焦输入框：
 
 <Sandpack>
 
@@ -289,7 +289,7 @@ export default function Form() {
     <>
       <input ref={inputRef} />
       <button onClick={handleClick}>
-        Focus the input
+        聚焦输入框
       </button>
     </>
   );
@@ -302,7 +302,7 @@ export default function Form() {
 
 #### 滚动图片到视图 {/*scrolling-an-image-into-view*/}
 
-在这个示例中，点击按钮将会把图片滚动到视图。这里使用 ref 绑定到列表的 DOM 节点，然后调用 DOM 的 [`querySelectorAll`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/querySelectorAll) API 找到我们想要滚动的图片。
+在这个示例中，点击按钮将会把图片滚动到视图。这里使用 ref 绑定到列表的 DOM 节点，然后调用 DOM 的 [`querySelectorAll`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/querySelectorAll) API 找到想要滚动的图片。
 
 <Sandpack>
 
@@ -420,7 +420,7 @@ export default function VideoPlayer() {
   return (
     <>
       <button onClick={handleClick}>
-        {isPlaying ? 'Pause' : 'Play'}
+        {isPlaying ? '暂停' : '播放'}
       </button>
       <video
         width="250"
@@ -446,9 +446,9 @@ button { display: block; margin-bottom: 20px; }
 
 <Solution />
 
-#### 向你的组件暴露 ref {/*exposing-a-ref-to-your-own-component*/}
+#### 向组件暴露 ref {/*exposing-a-ref-to-your-own-component*/}
 
-有时，你可能想让父级组件在你的组件中操纵 DOM。例如，也许你正在写一个 `MyInput` 组件，但你希望父组件能够聚焦 input（父组件无法访问）。你可以使用一个组合，通过 `useRef` 持有 input 并且通过 [`forwardRef`](/reference/react/forwardRef) 来将其暴露给父组件。在这里阅读 [详细演练](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)。
+有时可能想让父级组件在组件中操纵 DOM。例如，假设正在编写一个 `MyInput` 组件，但希望父组件能够聚焦 input（不过父组件无法访问）。此时可以使用组件组合，通过 `useRef` 持有输入框并通过 [`forwardRef`](/reference/react/forwardRef) 将其暴露给父组件。在这里阅读 [详细演练](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)。
 
 <Sandpack>
 
@@ -470,7 +470,7 @@ export default function Form() {
     <>
       <MyInput ref={inputRef} />
       <button onClick={handleClick}>
-        Focus the input
+        聚焦输入框
       </button>
     </>
   );
@@ -487,7 +487,7 @@ export default function Form() {
 
 ### 避免重复创建 ref 的内容 {/*avoiding-recreating-the-ref-contents*/}
 
-React 保存首次的 ref 初始值，并在后续的渲染中忽略它。
+React 会保存 ref 初始值，并在后续的渲染中忽略它。
 
 ```js
 function Video() {
@@ -495,7 +495,7 @@ function Video() {
   // ...
 ```
 
-虽然 `new VideoPlayer()` 的结果只会在首次渲染时使用，但是你依然在每次渲染时都在调用这个方法。如果是创建昂贵的对象，这可能是一种浪费。
+虽然 `new VideoPlayer()` 的结果只会在首次渲染时使用，但是依然在每次渲染时都在调用这个方法。如果是创建昂贵的对象，这可能是一种浪费。
 
 为了解决这个问题，你可以像这样初始化 ref：
 
@@ -508,13 +508,13 @@ function Video() {
   // ...
 ```
 
-通常情况下，在渲染过程中写入或读取 `ref.current` 是不允许的。然而，在这种情况下是可以的，因为结果总是一样的，而且条件只在初始化时执行，所以是完全可以预测的。
+通常情况下，在渲染过程中写入或读取 `ref.current` 是不允许的。然而，在这种情况下是可以的，因为结果总是一样的，而且条件只在初始化时执行，所以是完全可预测的。
 
 <DeepDive>
 
-#### 如何避免在初始化 `useRef` 之后进行 `null` 的类型检查 {/*how-to-avoid-null-checks-when-initializing-use-ref-later*/}
+#### 避免在初始化 `useRef` 之后进行 `null` 的类型检查 {/*how-to-avoid-null-checks-when-initializing-use-ref-later*/}
 
-如果你使用一个类型检查器，并且不想总是检查 `null`，你可以尝试用这样的模式来代替：
+如果使用了类型检查器，并且不想总是检查 `null`，可以尝试用这样的模式来代替：
 
 ```js
 function Video() {
@@ -532,7 +532,7 @@ function Video() {
   // ...
 ```
 
-在这里，`playerRef` 本身是可以为空的。然而，你应该能够使你的类型检查器确信，不存在 `getPlayer()` 返回 `null` 的情况。然后在你的事件处理程序中使用 `getPlayer()`。
+在这里，`playerRef` 本身是可以为空的。然而，应该能够使类型检查器确信，不存在 `getPlayer()` 返回 `null` 的情况。然后在事件处理程序中调用 `getPlayer()`。
 
 </DeepDive>
 
@@ -540,9 +540,9 @@ function Video() {
 
 ## 疑难解答 {/*troubleshooting*/}
 
-### 我无法获取自定义组件的 ref {/*i-cant-get-a-ref-to-a-custom-component*/}
+### 无法获取自定义组件的 ref {/*i-cant-get-a-ref-to-a-custom-component*/}
 
-如果你尝试像这样传递 `ref` 到你自己的组件：
+如果尝试像这样传递 `ref` 到自定义组件：
 
 ```js
 const inputRef = useRef(null);
@@ -558,9 +558,9 @@ Warning: Function components cannot be given refs. Attempts to access this ref w
 
 </ConsoleBlock>
 
-默认情况下，你自己的组件不会暴露它们内部 DOM 节点的 ref。
+默认情况下，自定义组件不会暴露它们内部 DOM 节点的 ref。
 
-为了解决这个问题，首先，找到你想获得 ref 的组件：
+为了解决这个问题，首先，找到想获得 ref 的组件：
 
 ```js
 export default function MyInput({ value, onChange }) {
@@ -593,4 +593,4 @@ export default MyInput;
 
 最后，父级组件就可以得到它的 ref。
 
-阅读 [访问另一个组件的 DOM 节点](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) 了解更多信息。
+阅读 [访问另一个组件的 DOM 节点](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) 以了解更多信息。
