@@ -139,8 +139,13 @@ startTransition(() => {
 被包裹在 `startTransition` 中的更新会被处理为过渡更新，如果有紧急更新出现，比如点击或者按键，则会中断过渡更新。如果一个过渡更新被用户中断（比如，快速输入多个字符），React 将会抛弃未完成的渲染结果，然后仅渲染最新的内容。
 
 
+<<<<<<< HEAD
 * `useTransition`： 一个用于开启过渡更新的 hook，用于跟踪待定转场状态。
 * `startTransition`： 当 hook 不能使用时，用于开启过渡的方法。
+=======
+* `useTransition`: a Hook to start transitions, including a value to track the pending state.
+* `startTransition`: a method to start transitions when the Hook cannot be used.
+>>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
 
 并发渲染中将会加入过渡更新，允许更新被中断。如果更新内容被重新挂起，过渡机制也会告诉 React 在后台渲染过渡内容时继续展示当前内容（查看 [Suspense 意见征求](https://github.com/reactjs/rfcs/blob/main/text/0213-suspense-in-react-18.md) 了解更多信息）。
 
@@ -229,8 +234,12 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 
 #### useId {/*useid*/}
 
+<<<<<<< HEAD
 `useId` 是一个新的 hook，用于生成在客户端和服务端两侧都独一无二的 id，避免 hydrate 后两侧内容不匹配。它主要用于需要唯一 id 的，具有集成 API 的组件库。这个更新不仅解决了一个在 React 17 及更低版本中的存在的问题，而且它会在 React 18 中发挥更重要的作用，因为新的流式服务端渲染响应 HTML 的方式将是无序的，需要独一无二的 id 作为索引。[参阅文档](/reference/react/useId)。
 
+=======
+`useId` is a new Hook for generating unique IDs on both the client and server, while avoiding hydration mismatches. It is primarily useful for component libraries integrating with accessibility APIs that require unique IDs. This solves an issue that already exists in React 17 and below, but it's even more important in React 18 because of how the new streaming server renderer delivers HTML out-of-order. [See docs here](/reference/react/useId).
+>>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
 
 > Note
 >
@@ -246,7 +255,11 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 
 #### useSyncExternalStore {/*usesyncexternalstore*/}
 
+<<<<<<< HEAD
 `useSyncExternalStore` 是一个新的 hook，允许使用第三方状态管理来支持并发模式，并且能通过对 store 进行强制更新实现数据同步。对第三方数据源的订阅能力的实现上，消除了对 `useEffect` 的依赖，推荐任何 React 相关的第三方状态管理库使用这个新特性。[参阅文档](/reference/react/useSyncExternalStore)。
+=======
+`useSyncExternalStore` is a new Hook that allows external stores to support concurrent reads by forcing updates to the store to be synchronous. It removes the need for useEffect when implementing subscriptions to external data sources, and is recommended for any library that integrates with state external to React. [See docs here](/reference/react/useSyncExternalStore).
+>>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
 
 > Note
 >
@@ -254,7 +267,11 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 
 #### useInsertionEffect {/*useinsertioneffect*/}
 
+<<<<<<< HEAD
 `useInsertionEffect` 是一个新的 Hook ，允许 CSS-in-JS 库解决在渲染中注入样式的性能问题。除非你已经建立了一个 CSS-in-JS 库，否则我们不希望你使用它。这个 hook 将在 DOM 变更发生后，在 layout effect 获取新布局之前运行。这个功能不仅解决了一个在 React 17 及以下版本中已经存在的问题，而且在 React 18 中更加重要，因为 React 在并发渲染时会为浏览器让步，给它一个重新计算布局的机会。[参阅文档](/reference/react/useInsertionEffect)。
+=======
+`useInsertionEffect` is a new Hook that allows CSS-in-JS libraries to address performance issues of injecting styles in render. Unless you’ve already built a CSS-in-JS library we don’t expect you to ever use this. This Hook will run after the DOM is mutated, but before layout effects read the new layout. This solves an issue that already exists in React 17 and below, but is even more important in React 18 because React yields to the browser during concurrent rendering, giving it a chance to recalculate layout. [See docs here](/reference/react/useInsertionEffect).
+>>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
 
 > Note
 >
@@ -333,6 +350,7 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 * 在快速刷新中跟踪后期装载的 root。([#22740](https://github.com/facebook/react/pull/22740) [@anc95](https://github.com/anc95))
 * 在 `package.json` 中添加 `exports` 字段。([#23087](https://github.com/facebook/react/pull/23087) [@otakustay](https://github.com/otakustay))
 
+<<<<<<< HEAD
 ### 实验性的服务器组件 {/*server-components-experimental*/}
 
 * 增加服务端上下文支持。([#23244](https://github.com/facebook/react/pull/23244) [@salazarm](https://github.com/salazarm))
@@ -340,3 +358,12 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 * 更新 webpack 插件以支持 webpack 5。([#22739](https://github.com/facebook/react/pull/22739) [@michenly](https://github.com/michenly))
 * 修正 Noder loader 中的一个错误。([#22537](https://github.com/facebook/react/pull/22537) [@btea](https://github.com/btea))
 * 在边缘环境中使用 `globalThis` 而不是 `window`。([#22777](https://github.com/facebook/react/pull/22777) [@huozhi](https://github.com/huozhi))
+=======
+### Server Components (Experimental) {/*server-components-experimental*/}
+
+* Add Server Context support. ([#23244](https://github.com/facebook/react/pull/23244)  by [@salazarm](https://github.com/salazarm))
+* Add `lazy` support. ([#24068](https://github.com/facebook/react/pull/24068)  by [@gnoff](https://github.com/gnoff))
+* Update webpack plugin for webpack 5 ([#22739](https://github.com/facebook/react/pull/22739)  by [@michenly](https://github.com/michenly))
+* Fix a mistake in the Node loader. ([#22537](https://github.com/facebook/react/pull/22537)  by [@btea](https://github.com/btea))
+* Use `globalThis` instead of `window` for edge environments. ([#22777](https://github.com/facebook/react/pull/22777)  by [@huozhi](https://github.com/huozhi))
+>>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
