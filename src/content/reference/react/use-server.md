@@ -84,7 +84,7 @@ Server Actions 的参数完全由客户端控制。出于安全考虑，始终�
 * [Date](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date)
 * [FormData](https://developer.mozilla.org/zh-CN/docs/Web/API/FormData) 实例
 * 普通 [对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)：使用 [对象初始化器](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Object_initializer) 创建的、具有可序列化属性
-* [Server Actions](/reference/react/use-server) 中的函数
+* 充当 Server Actions 的函数
 * 客户端或服务器组件元素（JSX）
 
 值得注意的是，以下内容不受支持：
