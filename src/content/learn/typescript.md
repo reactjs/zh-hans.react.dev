@@ -11,17 +11,10 @@ TypeScript 是一种向 JavaScript 代码添加类型定义的常用方法。Typ
 
 <YouWillLearn>
 
-<<<<<<< HEAD
 * [在 React 组件中使用 TypeScript](/learn/typescript#typescript-with-react-components)
-* [带有 hooks 的类型示例](/learn/typescript#example-hooks)
+* [带有 Hook 的类型示例](/learn/typescript#example-hooks)
 * [来自 `@types/react` 的常见类型](/learn/typescript/#useful-types)
 * [更多学习资源](/learn/typescript/#further-learning)
-=======
-* [TypeScript with React Components](/learn/typescript#typescript-with-react-components)
-* [Examples of typing with Hooks](/learn/typescript#example-hooks)
-* [Common types from `@types/react`](/learn/typescript/#useful-types)
-* [Further learning locations](/learn/typescript/#further-learning)
->>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
 
 </YouWillLearn>
 
@@ -131,23 +124,13 @@ export default App = AppTSX;
 
 ## Hooks 示例 {/*example-hooks*/}
 
-<<<<<<< HEAD
-来自 `@types/react` 的类型定义包括内置的 hooks，因此你可以在组件中使用它们，无需任何额外设置。它们是根据你在组件中编写的代码构建的，所以你会得到很多 [类型推断](https://www.typescriptlang.org/docs/handbook/type-inference.html)，并且理想情况下不需要处理提供类型的细节。
+来自 `@types/react` 的类型定义包括内置的 Hook，因此你可以在组件中使用它们，无需任何额外设置。它们是根据你在组件中编写的代码构建的，所以你会得到很多 [类型推断](https://www.typescriptlang.org/docs/handbook/type-inference.html)，并且理想情况下不需要处理提供类型的细节。
 
-但是，我们可以看一下如何为 hooks 提供类型的几个示例。
-
-### `useState` {/*typing-usestate*/}
-
-[`useState` hook](/reference/react/useState) 会重用作为初始 state 传入的值以确定值的类型。例如：
-=======
-The type definitions from `@types/react` include types for the built-in Hooks, so you can use them in your components without any additional setup. They are built to take into account the code you write in your component, so you will get [inferred types](https://www.typescriptlang.org/docs/handbook/type-inference.html) a lot of the time and ideally do not need to handle the minutiae of providing the types. 
-
-However, we can look at a few examples of how to provide types for Hooks.
+但是，我们可以看一下如何为 Hook 提供类型的几个示例。
 
 ### `useState` {/*typing-usestate*/}
 
-The [`useState` Hook](/reference/react/useState) will re-use the value passed in as the initial state to determine what the type of the value should be. For example:
->>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
+[`useState` Hook](/reference/react/useState) 会重用作为初始 state 传入的值以确定值的类型。例如：
 
 ```ts
 // 推断类型为 "boolean"
@@ -183,11 +166,7 @@ const [requestState, setRequestState] = useState<RequestState>({ status: 'idle' 
 
 ### `useReducer` {/*typing-usereducer*/}
 
-<<<<<<< HEAD
-[`useReducer`](/reference/react/useReducer) 是一个更复杂的 hook，它接受一个 reducer 函数和一个初始 state 作为参数，并将从初始 state 推断出 reducer 函数的类型。你可以选择性地为 `useReducer` 提供类型参数以为 state 提供类型。但是更高的做法仍然是在初始 state 上添加类型：
-=======
-The [`useReducer` Hook](/reference/react/useReducer) is a more complex Hook that takes a reducer function and an initial state. The types for the reducer function are inferred from the initial state. You can optionally provide a type argument to the `useReducer` call to provide a type for the state, but it is often better to set the type on the initial state instead:
->>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
+[`useReducer`](/reference/react/useReducer) 是一个更复杂的 Hook，它接受一个 reducer 函数和一个初始 state 作为参数，并将从初始 state 推断出 reducer 函数的类型。你可以选择性地为 `useReducer` 提供类型参数以为 state 提供类型。但是更高的做法仍然是在初始 state 上添加类型：
 
 <Sandpack>
 
@@ -263,11 +242,7 @@ export default function App() {
 
 ### `useContext` {/*typing-usecontext*/}
 
-<<<<<<< HEAD
-[`useContext`](/reference/react/useContext) 是一种无需通过组件传递 props 而可以直接在组件树中传递数据的技术。它是通过创建 provider 组件使用，通常还会创建一个 hook 以在子组件中使用该值。
-=======
-The [`useContext` Hook](/reference/react/useContext) is a technique for passing data down the component tree without having to pass props through components. It is used by creating a provider component and often by creating a Hook to consume the value in a child component.
->>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
+[`useContext`](/reference/react/useContext) 是一种无需通过组件传递 props 而可以直接在组件树中传递数据的技术。它是通过创建 provider 组件使用，通常还会创建一个 Hook 以在子组件中使用该值。
 
 从传递给 `createContext` 调用的值推断 context 提供的值的类型：
 
@@ -311,11 +286,7 @@ export default App = AppTSX;
 
 当你没有一个合理的默认值时，这种技术是有效的，而在这些情况下，`null` 作为默认值可能感觉是合理的。但是，为了让类型系统理解你的代码，你需要在 `createContext` 上显式设置 `ContextShape | null`。
 
-<<<<<<< HEAD
-这会导致一个问题，你需要在 context consumer 中消除 `| null` 的类型。我们建议让 hook 在运行时检查它的存在，并在不存在时抛出一个错误：
-=======
-This causes the issue that you need to eliminate the `| null` in the type for context consumers. Our recommendation is to have the Hook do a runtime check for it's existence and throw an error when not present:
->>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
+这会导致一个问题，你需要在 context consumer 中消除 `| null` 的类型。我们建议让 Hook 在运行时检查它的存在，并在不存在时抛出一个错误：
 
 ```js {5, 16-20}
 import { createContext, useContext, useState, useMemo } from 'react';
@@ -328,11 +299,7 @@ type ComplexObject = {
 // 上下文在类型中创建为 `| null`，以准确反映默认值。
 const Context = createContext<ComplexObject | null>(null);
 
-<<<<<<< HEAD
-// 这个 hook 会在运行时检查 context 是否存在，并在不存在时抛出一个错误。
-=======
-// The `| null` will be removed via the check in the Hook.
->>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
+// 这个 Hook 会在运行时检查 context 是否存在，并在不存在时抛出一个错误。
 const useGetComplexObject = () => {
   const object = useContext(Context);
   if (!object) { throw new Error("useGetComplexObject must be used within a Provider") }
@@ -362,11 +329,7 @@ function MyComponent() {
 
 ### `useMemo` {/*typing-usememo*/}
 
-<<<<<<< HEAD
-[`useMemo`](/reference/react/useMemo) 会从函数调用中创建/重新访问记忆化值，只有在第二个参数中传入的依赖项发生变化时，才会重新运行该函数。函数的类型是根据第一个参数中函数的返回值进行推断的，如果希望明确指定，可以为这个钩子提供一个类型参数以指定函数类型。
-=======
-The [`useMemo`](/reference/react/useMemo) Hooks will create/re-access a memorized value from a function call, re-running the function only when dependencies passed as the 2nd parameter are changed. The result of calling the Hook is inferred from the return value from the function in the first parameter. You can be more explicit by providing a type argument to the Hook.
->>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
+[`useMemo`](/reference/react/useMemo) 会从函数调用中创建/重新访问记忆化值，只有在第二个参数中传入的依赖项发生变化时，才会重新运行该函数。函数的类型是根据第一个参数中函数的返回值进行推断的，如果希望明确指定，可以为该 Hook 提供一个类型参数以指定函数类型。
 
 ```ts
 // 从 filterTodos 的返回值推断 visibleTodos 的类型
@@ -376,11 +339,7 @@ const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
 
 ### `useCallback` {/*typing-usecallback*/}
 
-<<<<<<< HEAD
-[`useCallback`](/reference/react/useCallback) 会在第二个参数中传入的依赖项保持不变的情况下，为函数提供相同的引用。与 `useMemo` 类似，函数的类型是根据第一个参数中函数的返回值进行推断的，如果希望明确指定，可以为这个钩子提供一个类型参数以指定函数类型。
-=======
-The [`useCallback`](/reference/react/useCallback) provide a stable reference to a function as long as the dependencies passed into the second parameter are the same. Like `useMemo`, the function's type is inferred from the return value of the function in the first parameter, and you can be more explicit by providing a type argument to the Hook.
->>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
+[`useCallback`](/reference/react/useCallback) 会在第二个参数中传入的依赖项保持不变的情况下，为函数提供相同的引用。与 `useMemo` 类似，函数的类型是根据第一个参数中函数的返回值进行推断的，如果希望明确指定，可以为这个 Hook 提供一个类型参数以指定函数类型。
 
 
 ```ts

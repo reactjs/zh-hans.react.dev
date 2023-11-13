@@ -40,11 +40,7 @@ title: "React Labs：我们正在努力的方向——2022 年 6 月"
 
 ## React 优化编译器 {/*react-compiler*/}
 
-<<<<<<< HEAD
 我们在 React Conf 2021 上提供了 React Forget 的 [早期预览](https://www.youtube.com/watch?v=lGEMwh32soc)。它是一个编译器，可以自动生成等效的 `useMemo` 和 `useCallback` 调用，以最小化重新渲染的成本，同时保留 React 的编程模型。
-=======
-Recently, we finished a rewrite of the compiler to make it more reliable and capable. This new architecture allows us to analyze and memoize more complex patterns such as the use of [local mutations](/learn/keeping-components-pure#local-mutation-your-components-little-secret), and opens up many new compile-time optimization opportunities beyond just being on par with memoization Hooks.
->>>>>>> fcd00068bd1bdd4eb37e3e0ab0488a9d093670bc
 
 最近，我们完成了编译器的重写，使其更可靠且功能更强大。这种新的架构使我们能够分析和缓存更复杂的模式，比如使用 [local mutation](/learn/keeping-components-pure#local-mutation-your-components-little-secret)，并开启了许多新的编译时优化机会，不仅仅与记忆化 hook 持平。
 
