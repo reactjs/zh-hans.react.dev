@@ -139,8 +139,8 @@ startTransition(() => {
 被包裹在 `startTransition` 中的更新会被处理为过渡更新，如果有紧急更新出现，比如点击或者按键，则会中断过渡更新。如果一个过渡更新被用户中断（比如，快速输入多个字符），React 将会抛弃未完成的渲染结果，然后仅渲染最新的内容。
 
 
-* `useTransition`： 一个用于开启过渡更新的 hook，用于跟踪待定转场状态。
-* `startTransition`： 当 hook 不能使用时，用于开启过渡的方法。
+* `useTransition`： 一个用于开启过渡更新的 Hook，用于跟踪待定转场状态。
+* `startTransition`： 当 Hook 不能使用时，用于开启过渡的方法。
 
 并发渲染中将会加入过渡更新，允许更新被中断。如果更新内容被重新挂起，过渡机制也会告诉 React 在后台渲染过渡内容时继续展示当前内容（查看 [Suspense 意见征求](https://github.com/reactjs/rfcs/blob/main/text/0213-suspense-in-react-18.md) 了解更多信息）。
 
@@ -229,8 +229,7 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 
 #### useId {/*useid*/}
 
-`useId` 是一个新的 hook，用于生成在客户端和服务端两侧都独一无二的 id，避免 hydrate 后两侧内容不匹配。它主要用于需要唯一 id 的，具有集成 API 的组件库。这个更新不仅解决了一个在 React 17 及更低版本中的存在的问题，而且它会在 React 18 中发挥更重要的作用，因为新的流式服务端渲染响应 HTML 的方式将是无序的，需要独一无二的 id 作为索引。[参阅文档](/reference/react/useId)。
-
+`useId` 是一个新的Hook，用于生成在客户端和服务端两侧都独一无二的 id，避免 hydrate 后两侧内容不匹配。它主要用于需要唯一 id 的，具有集成 API 的组件库。这个更新不仅解决了一个在 React 17 及更低版本中的存在的问题，而且它会在 React 18 中发挥更重要的作用，因为新的流式服务端渲染响应 HTML 的方式将是无序的，需要独一无二的 id 作为索引。[参阅文档](/reference/react/useId)。
 
 > Note
 >
@@ -246,7 +245,7 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 
 #### useSyncExternalStore {/*usesyncexternalstore*/}
 
-`useSyncExternalStore` 是一个新的 hook，允许使用第三方状态管理来支持并发模式，并且能通过对 store 进行强制更新实现数据同步。对第三方数据源的订阅能力的实现上，消除了对 `useEffect` 的依赖，推荐任何 React 相关的第三方状态管理库使用这个新特性。[参阅文档](/reference/react/useSyncExternalStore)。
+`useSyncExternalStore` 是一个新的 Hook，允许使用第三方状态管理来支持并发模式，并且能通过对 store 进行强制更新实现数据同步。对第三方数据源的订阅能力的实现上，消除了对 `useEffect` 的依赖，推荐任何 React 相关的第三方状态管理库使用这个新特性。[参阅文档](/reference/react/useSyncExternalStore)。
 
 > Note
 >
@@ -254,7 +253,7 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 
 #### useInsertionEffect {/*useinsertioneffect*/}
 
-`useInsertionEffect` 是一个新的 Hook ，允许 CSS-in-JS 库解决在渲染中注入样式的性能问题。除非你已经建立了一个 CSS-in-JS 库，否则我们不希望你使用它。这个 hook 将在 DOM 变更发生后，在 layout effect 获取新布局之前运行。这个功能不仅解决了一个在 React 17 及以下版本中已经存在的问题，而且在 React 18 中更加重要，因为 React 在并发渲染时会为浏览器让步，给它一个重新计算布局的机会。[参阅文档](/reference/react/useInsertionEffect)。
+`useInsertionEffect` 是一个新的 Hook ，允许 CSS-in-JS 库解决在渲染中注入样式的性能问题。除非你已经建立了一个 CSS-in-JS 库，否则我们不希望你使用它。这个 Hook 将在 DOM 变更发生后，在 layout effect 获取新布局之前运行。这个功能不仅解决了一个在 React 17 及以下版本中已经存在的问题，而且在 React 18 中更加重要，因为 React 在并发渲染时会为浏览器让步，给它一个重新计算布局的机会。[参阅文档](/reference/react/useInsertionEffect)。
 
 > Note
 >
