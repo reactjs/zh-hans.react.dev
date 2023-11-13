@@ -88,7 +88,7 @@ Server Actions 的参数完全由客户端控制。出于安全考虑，始终�
 * 客户端或服务器组件元素（JSX）
 
 值得注意的是，以下内容不受支持：
-* 未从客户端标记的模块中导出或未标记为 [`'use server'`](/reference/react/use-server) 的 [函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function)
+* React 元素或 [JSX](https://react.dev/learn/writing-markup-with-jsx)
 * 函数，包括组件函数和其他并非 Server Actions 的函数
 * [类](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
 * 任何类的实例对象（除了提到的内置类）或具有 [null 原型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects) 的对象
