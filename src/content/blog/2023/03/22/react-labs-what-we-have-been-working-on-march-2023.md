@@ -24,7 +24,7 @@ RSC 将面向服务器的多页面应用程序的简单“请求/响应”思维
 
 自上次更新以来，我们已将 [RFC](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md) 合并以批准提案。我们解决了 [React 服务器模块约定](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md) 提案中未解决的问题，并与我们的合作伙伴达成共识，采用 `use client` 协定。这些文件还作为符合 RSC 兼容实现应支持的规范。
 
-最大的变化是我们引入了 [`async` / `await`](https://github.com/reactjs/rfcs/pull/229) 作为从服务器组件中进行数据提取的主要方式。我们还计划通过引入一个名为 `use` 的新钩子，从客户端支持数据加载，该钩子也将取消 Promises。虽然我们不能在仅限客户端的应用程序中的任意组件中支持 `async / await`，但我们计划在将客户端仅应用程序结构化类似于 RSC 应用程序的方式时添加支持。
+最大的变化是我们引入了 [`async` / `await`](https://github.com/reactjs/rfcs/pull/229) 作为从服务器组件中进行数据提取的主要方式。我们还计划通过引入一个名为 `use` 的新 Hook，从客户端支持数据加载，该 Hook 也将取消 Promises。虽然我们不能在仅限客户端的应用程序中的任意组件中支持 `async / await`，但我们计划在将客户端仅应用程序结构化类似于 RSC 应用程序的方式时添加支持。
 
 现在我们已经相当好地解决了数据提取的问题，我们正在探索另一个方向：从客户端向服务器发送数据，以便可以执行数据库变更和实现表单。我们通过在服务器/客户端边界传递 Server Action 函数来实现这一点。客户端可以调用该函数，提供无缝 RPC。而在 JavaScript 加载之前，Server Action 还可以提供逐步增强的表单。
 
