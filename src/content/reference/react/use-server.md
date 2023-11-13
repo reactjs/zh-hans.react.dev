@@ -101,7 +101,7 @@ Server Actions 的参数完全由客户端控制。出于安全考虑，始终�
 
 ### 表格中的 Server Actions {/*server-actions-in-forms*/}
 
-Server Actions 的最常见用法将是调用会更改数据的服务器函数。在浏览器中，[HTML form 元素](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) 是用户提交变更的传统方法。通过 React 服务器组件，React在 [表单](/reference/react-dom/components/form) 中首次引入了对 Server Actions 的一流支持。
+Server Actions 的最常见用法将是调用会更改数据的服务器函数。在浏览器中，[HTML form 元素](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) 是用户提交变更的传统方法。通过 React 服务器组件，React 在 [表单](/reference/react-dom/components/form) 中首次引入了对 Server Actions 的一流支持。
 
 以下是一个允许用户请求用户名的表单。
 
