@@ -53,7 +53,7 @@ form state 是一个只在表单被提交触发 action 后才会被更新的值�
 
 如果配合 Server Actions 一起使用，`useFormState` 允许与表单交互的服务器的返回值在 hydration 完成前显示。
 
-[在下面查看更多用法](#usage)。
+[请参阅下方更多示例](#usage)。
 
 #### 参数 {/*parameters*/}
 
