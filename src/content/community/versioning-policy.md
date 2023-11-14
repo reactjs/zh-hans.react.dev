@@ -44,10 +44,17 @@ React 的开发版本包含许多有用的警告信息。只要可能，我们�
 
 总的来说，我们不会为以下更改而增加主要版本号：
 
+<<<<<<< HEAD
 * **开发警告**。由于这些不会影响生产行为，我们可能会在主要版本之间添加新的警告或修改现有警告。事实上，这正是我们能够可靠地警告即将发生的重大变化的原因。
 * **以 `unstable_` 开头的 API**。这些被提供作为实验性功能，我们对其 API 还不够自信。通过以` unstable_` 前缀发布这些版本，我们可以更快地迭代并尽快达到稳定的 API。
 * **React 的 alpha 和 canary 版本**。我们提供 React 的 alpha 版本作为早期测试新功能的一种方式，但我们需要根据在 alpha 期间学到的知识来灵活进行更改。如果你使用这些版本，请注意在稳定版本发布之前 API 可能会发生变化。
 * **未记录的 API 和内部数据结构**。如果你访问内部属性名如 `__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` 或 `__reactInternalInstance$uk43rzhitjg`，则无法得到保证，你将自负其责。
+=======
+* **Development warnings.** Since these don't affect production behavior, we may add new warnings or modify existing warnings in between major versions. In fact, this is what allows us to reliably warn about upcoming breaking changes.
+* **APIs starting with `unstable_`.** These are provided as experimental features whose APIs we are not yet confident in. By releasing these with an `unstable_` prefix, we can iterate faster and get to a stable API sooner.
+* **Alpha and Canary versions of React.** We provide alpha versions of React as a way to test new features early, but we need the flexibility to make changes based on what we learn in the alpha period. If you use these versions, note that APIs may change before the stable release.
+* **Undocumented APIs and internal data structures.** If you access internal property names like `__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED` or `__reactInternalInstance$uk43rzhitjg`, there is no warranty.  You are on your own.
+>>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
 
 此策略旨在务实：当然，我们不希望给你带来麻烦。如果我们为所有这些更改增加主要版本，我们将不断发布更多的主要版本，并最终给社区带来更多版本管理的困扰。这也意味着我们无法以我们希望的速度推进改进 React。
 
