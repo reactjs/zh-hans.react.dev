@@ -428,11 +428,7 @@ export default function PackingList() {
 
 请注意，你必须写成 `importance > 0 && ...` 而不是 `importance && ...`，这样如果 `importance` 的值为 `0` 时，就不会将 `0` 作为结果进行渲染！
 
-<<<<<<< HEAD
-在这个解决方案中，使用了两个独立的条件来在名称和 importance label 之间插入一个空格。或者，你可以使用带有前导空格的片段：`importance > 0 && <> <i>...</i></>`，或者在 `<i>` 标签内立即添加一个空格：`importance > 0 && <i> ...</i>`。
-=======
-In this solution, two separate conditions are used to insert a space between then name and the importance label. Alternatively, you could use a Fragment with a leading space: `importance > 0 && <> <i>...</i></>` or add a space immediately inside the `<i>`:  `importance > 0 && <i> ...</i>`.
->>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
+在这个解决方案中，使用了两个独立的条件来在名称和 importance label 之间插入一个空格。或者，你可以使用带有前导空格的 Fragment：`importance > 0 && <> <i>...</i></>`，或者在 `<i>` 标签内立即添加一个空格：`importance > 0 && <i> ...</i>`。
 
 </Solution>
 
@@ -646,9 +642,4 @@ button { display: block; margin-top: 10px; }
 
 非常感谢那些自愿参加 alpha 和 beta 测试计划的人。你们的热情和宝贵的反馈帮助我们塑造了这些文档。特别感谢我们的 beta 测试人员 [Debbie O'Brien](https://twitter.com/debs_obrien)，她在 React Conf 2021 上分享了她使用 React 文档的经验。
 
-<<<<<<< HEAD
 最后，感谢 React 社区的启发，是你们促使我们完成了这个新的项目。我们希望新文档将帮助大家使用 React 构建任何你想要的用户界面。
-
-=======
-Finally, thanks to the React community for being the inspiration behind this effort. You are the reason we do this, and we hope that the new docs will help you use React to build any user interface that you want.
->>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc

@@ -366,11 +366,7 @@ export default function Square() {
 
 </ConsoleBlock>
 
-<<<<<<< HEAD
-React 组件必须返回单个 JSX 元素，不能像两个按钮那样返回多个相邻的 JSX 元素。要解决此问题，可以使用 `<>` 和 `</>` 来包裹多个相邻的 JSX 元素，如下所示：
-=======
-React components need to return a single JSX element and not multiple adjacent JSX elements like two buttons. To fix this you can use *Fragments* (`<>` and `</>`) to wrap multiple adjacent JSX elements like this:
->>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
+React 组件必须返回单个 JSX 元素，不能像两个按钮那样返回多个相邻的 JSX 元素。要解决此问题，可以使用 Fragment（`<>` 与 `</>`）包裹多个相邻的 JSX 元素，如下所示：
 
 ```js {3-6}
 export default function Square() {

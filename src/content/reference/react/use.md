@@ -5,11 +5,7 @@ canary: true
 
 <Canary>
 
-<<<<<<< HEAD
-`use` Hook 仅在 canary 与 experimental 渠道中可用。参阅 [React 发布渠道](/community/versioning-policy#all-release-channels) 以了解更多信息。
-=======
-The `use` Hook is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
->>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
+`use` Hook 仅在 Canary 与 experimental 渠道中可用。参阅 [React 发布渠道](/community/versioning-policy#all-release-channels) 以了解更多信息。
 
 </Canary>
 

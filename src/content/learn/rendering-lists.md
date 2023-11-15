@@ -1206,11 +1206,7 @@ hr {
 
 <Hint>
 
-<<<<<<< HEAD
-你可以尝试把原本的 `map` 改造成手动循环，或者试下 fragment 语法。
-=======
-You'll either need to convert `map` to a manual loop, or use a Fragment.
->>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
+你可以尝试把原本的 `map` 改造成手动循环，或者试下 Fragment 语法。
 
 </Hint>
 
@@ -1273,11 +1269,7 @@ hr {
 
 原本使用诗句顺序索引作为 `key` 的方法已经行不通了，因为现在数组里同时包含了分隔符和诗句。但是，你可以用添加后缀的形式给它们赋予独一无二的 key 值，比如 `key={i + '-text'}` 这样。
 
-<<<<<<< HEAD
-另一种做法是，生成包含 `<hr />` 和 `<p>...</p>` 的 fragment 集合，但因其简写语法 `<> </>` 不支持指定 key，所以你需要写成 `<Fragment>` 的形式。
-=======
-Alternatively, you could render a collection of Fragments which contain `<hr />` and `<p>...</p>`. However, the `<>...</>` shorthand syntax doesn't support passing keys, so you'd have to write `<Fragment>` explicitly:
->>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
+另一种做法是，生成包含 `<hr />` 和 `<p>...</p>` 的 Fragment 集合，但因其简写语法 `<> </>` 不支持指定 key，所以需要写成 `<Fragment>` 的形式。
 
 <Sandpack>
 
@@ -1323,11 +1315,7 @@ hr {
 
 </Sandpack>
 
-<<<<<<< HEAD
-记住，采用 fragment 语法（通常写作 `<> </>`）来包裹 JSX 节点可以避免引入额外的 `<div>` 元素！
-=======
-Remember, Fragments (often written as `<> </>`) let you group JSX nodes without adding extra `<div>`s!
->>>>>>> 4f9e9a56611c7a56b9506cf0a7ca84ab409824bc
+记住，使用 Fragment 语法（通常写作 `<> </>`）来包裹 JSX 节点可以避免引入额外的 `<div>` 元素！
 
 </Solution>
 
