@@ -25,7 +25,7 @@ canary: true
 
 ### `'use server'` {/*use-server*/}
 
-在异步函数顶部添加 `'use server'` 以将该函数标记为可由客户端调用。我们将这些函数称为  **Server Actions**。
+在异步函数顶部添加 `'use server'` 以将该函数标记为可由客户端调用。我们将这些函数称为  **Server Action**。
 
 ```js {2}
 async function addToCart(data) {
@@ -36,26 +36,26 @@ async function addToCart(data) {
 
 在客户端调用服务器动作时，它将向服务器发出网络请求，其中包含传递的任何参数的序列化副本。如果服务器动作返回一个值，该值将被序列化并返回给客户端。
 
-可以将 `'use server'` 指令添加到文件顶部，而不是逐个标记函数为 `'use server'`，以将文件中的所有导出都标记为可在任何地方使用的 Server Actions，包括在客户端代码中导入。
+可以将 `'use server'` 指令添加到文件顶部，而不是逐个标记函数为 `'use server'`，以将文件中的所有导出都标记为可在任何地方使用的 Server Action，包括在客户端代码中导入。
 
 #### 注意 {/*caveats*/}
 * `'use server'` 必须位于文件的最前方，位于任何导入或其他代码之上（可以位于代码顶部的注释之下）。它们必须用单引号或双引号编写，但不能用反引号。
-* `'use server'` 只能在服务器端文件中使用。生成的 Server Actions 可以通过 props 传递给客户端组件。请参阅支持的 [序列化参数和返回值类型](#serializable-parameters-and-return-values)。
-* 要从 [客户端代码](/reference/react/use-client) 导入 Server Actions，必须在模块级别使用该指令。
+* `'use server'` 只能在服务器端文件中使用。生成的 Server Action 可以通过 props 传递给客户端组件。请参阅支持的 [序列化参数和返回值类型](#serializable-parameters-and-return-values)。
+* 要从 [客户端代码](/reference/react/use-client) 导入 Server Action，必须在模块级别使用该指令。
 * 由于底层网络调用始终是异步的，`'use server'` 只能用于异步函数。
 * 始终将服务器动作的参数视为不受信任的输入，并授权任何变更。请参阅 [安全考虑](#security)。
-* 应在 [transition](/reference/react/useTransition) 中调用 Server Actions。传递给 [`<form action>`](/reference/react-dom/components/form#props) 或 [`formAction`](/reference/react-dom/components/input#props) 的 Server Actions 将自动在 transition 中被调用。
-* Server Actions 专为更新服务器端状态的变更而设计，不建议用于数据获取。因此，实现 Server Actions 的框架通常一次只处理一个 Action，没有缓存返回值的方式。
+* 应在 [transition](/reference/react/useTransition) 中调用 Server Action。传递给 [`<form action>`](/reference/react-dom/components/form#props) 或 [`formAction`](/reference/react-dom/components/input#props) 的 Server Action 将自动在 transition 中被调用。
+* Server Action 专为更新服务器端状态的变更而设计，不建议用于数据获取。因此，实现 Server Action 的框架通常一次只处理一个 Action，没有缓存返回值的方式。
 
 ### 安全考虑 {/*security*/}
 
-Server Actions 的参数完全由客户端控制。出于安全考虑，始终将它们视为不受信任的输入，并确保根据需要验证和转义参数。
+Server Action 的参数完全由客户端控制。出于安全考虑，始终将它们视为不受信任的输入，并确保根据需要验证和转义参数。
 
-在任何 Server Actions 中，请确保验证已登录的用户是否被允许执行该操作。
+在任何 Server Action 中，请确保验证已登录的用户是否被允许执行该操作。
 
 <Wip>
 
-为防止从 Server Actions 中发送敏感数据，提供了实验性的污染 API 用于阻止唯一值和对象传递到客户端代码。
+为防止从 Server Action 中发送敏感数据，提供了实验性的污染 API 用于阻止唯一值和对象传递到客户端代码。
 
 请参阅 [experimental_taintUniqueValue](/reference/react/experimental_taintUniqueValue) 与 [experimental_taintObjectReference](/reference/react/experimental_taintObjectReference) 以了解更多。
 
@@ -63,9 +63,9 @@ Server Actions 的参数完全由客户端控制。出于安全考虑，始终�
 
 ### 可序列化参数和返回值 {/*serializable-parameters-and-return-values*/}
 
-当客户端代码通过网络调用 Server Actions 时，传递的任何参数都必须是可序列化的。
+当客户端代码通过网络调用 Server Action 时，传递的任何参数都必须是可序列化的。
 
-以下是 Server Actions 参数支持的类型：
+以下是 Server Action 参数支持的类型：
 
 * 原始类型
 	* [string](https://developer.mozilla.org/zh-CN/docs/Glossary/String)
@@ -84,12 +84,12 @@ Server Actions 的参数完全由客户端控制。出于安全考虑，始终�
 * [Date](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date)
 * [FormData](https://developer.mozilla.org/zh-CN/docs/Web/API/FormData) 实例
 * 普通 [对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)：使用 [对象初始化器](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Object_initializer) 创建的、具有可序列化属性
-* 充当 Server Actions 的函数
+* 充当 Server Action 的函数
 * [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
 值得注意的是，以下内容不受支持：
 * React 元素或 [JSX](https://react.dev/learn/writing-markup-with-jsx)
-* 函数，包括组件函数和其他并非 Server Actions 的函数
+* 函数，包括组件函数和其他并非 Server Action 的函数
 * [类](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
 * 任何类的实例对象（除了提到的内置类）或具有 [null 原型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects) 的对象
 * 未全局注册的符号，例如 `Symbol('my new symbol')`
@@ -100,9 +100,9 @@ Server Actions 的参数完全由客户端控制。出于安全考虑，始终�
 
 ## 用法 {/*usage*/}
 
-### 表格中的 Server Actions {/*server-actions-in-forms*/}
+### 表格中的 Server Action {/*server-actions-in-forms*/}
 
-Server Actions 的最常见用法将是调用会更改数据的服务器函数。在浏览器中，[HTML form 元素](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) 是用户提交变更的传统方法。通过 React 服务器组件，React 在 [表单](/reference/react-dom/components/form) 中首次引入了对 Server Actions 的一流支持。
+Server Action 的最常见用法将是调用会更改数据的服务器函数。在浏览器中，[HTML form 元素](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) 是用户提交变更的传统方法。通过 React 服务器组件，React 在 [表单](/reference/react-dom/components/form) 中首次引入了对 Server Action 的一流支持。
 
 以下是一个允许用户请求用户名的表单。
 
@@ -123,15 +123,15 @@ export default App() {
 }
 ```
 
-在这个示例中，`requestUsername` 是一个传递给 `<form>` 的 Server Actions。当用户提交此表单时，会发起一个网络请求到服务器函数 `requestUsername`。在调用表单中的 Server Actions 时，React 将 `FormData` 作为第一个参数提供给 Server Actions。
+在这个示例中，`requestUsername` 是一个传递给 `<form>` 的 Server Action。当用户提交此表单时，会发起一个网络请求到服务器函数 `requestUsername`。在调用表单中的 Server Action 时，React 将 `FormData` 作为第一个参数提供给 Server Action。
 
-通过将 Server Actions 传递给表单的 `action`，React 可以 [逐步增强](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement) 表单。这意味着表单可以在 JavaScript 捆绑加载之前提交。
+通过将 Server Action 传递给表单的 `action`，React 可以 [逐步增强](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement) 表单。这意味着表单可以在 JavaScript 捆绑加载之前提交。
 
 #### 处理表单中的返回值 {/*handling-return-values*/}
 
 在用户名请求表单中，可能存在用户名不可用的情况。`requestUsername` 应该告诉我们它是否失败。
 
-请使用 [`useFormState`](/reference/react-dom/hooks/useFormState) 以根据 Server Actions 的结果更新 UI 并支持逐步增强。
+请使用 [`useFormState`](/reference/react-dom/hooks/useFormState) 以根据 Server Action 的结果更新 UI 并支持逐步增强。
 
 ```js
 // requestUsername.js
@@ -171,11 +171,11 @@ function UsernameForm() {
 
 请注意，与大多数 Hook 一样，`useFormState` 只能在 <CodeStep step={1}>[客户端代码](/reference/react/use-client)</CodeStep> 中调用。
 
-### 在 `<form>` 之外调用 Server Actions {/*calling-a-server-action-outside-of-form*/}
+### 在 `<form>` 之外调用 Server Action {/*calling-a-server-action-outside-of-form*/}
 
-Server Actions 是暴露的服务器端点，可以在客户端代码的任何位置调用。
+Server Action 是暴露的服务器端点，可以在客户端代码的任何位置调用。
 
-在 `<form>` 之外使用 Server Actions 时，调用 Server Actions 时请使用 [transition](/reference/react/useTransition)，这允许显示加载指示器、显示 [乐观状态更新](/reference/react/useOptimistic) 和处理意外错误。表单会自动在 transition 中包装 Server Actions。
+在 `<form>` 之外使用 Server Action 时，调用 Server Action 时请使用 [transition](/reference/react/useTransition)，这允许显示加载指示器、显示 [乐观状态更新](/reference/react/useOptimistic) 和处理意外错误。表单会自动在 transition 中包装 Server Action。
 
 ```js {9-12}
 import incrementLike from './actions';
@@ -212,4 +212,4 @@ export default async incrementLike() {
 }
 ```
 
-可以使用 `await` 获取 Promise 的返回值以读取 Server Actions 的返回值。
+可以使用 `await` 获取 Promise 的返回值以读取 Server Action 的返回值。
