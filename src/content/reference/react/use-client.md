@@ -6,14 +6,14 @@ canary: true
 
 <Canary>
 
-`'use client'` 仅在你 [使用 React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 或构建可适配库时需要。
+`'use client'` 仅在 [使用 React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 或构建可适配库时需要。
 
 </Canary>
 
 
 <Intro>
 
-`'use client'` lets you mark what code runs on the client.
+`'use client'` 标记在客户端运行的代码。
 
 </Intro>
 
@@ -25,7 +25,7 @@ canary: true
 
 ### `'use client'` {/*use-client*/}
 
-Add `'use client'` at the top of a file to mark the module and its transitive dependencies as client code.
+在文件顶部添加 `'use client'` 以将模块及其传递的依赖项标记为客户端代码。
 
 ```js {1}
 'use client';
@@ -42,26 +42,26 @@ export default function RichTextEditor({ timestamp, text }) {
 }
 ```
 
-When a file marked with `'use client'` is imported from a Server Component, [compatible bundlers](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) will treat the module import as a boundary between server-run and client-run code.
+当从服务器组件导入带有 `'use client'` 标记的文件时，[兼容的捆绑工具](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 将模块导入视为服务器运行和客户端运行代码之间的边界。
 
-As dependencies of `RichTextEditor`, `formatDate` and `Button` will also be evaluated on the client regardless of whether their modules contain a `'use client'` directive. Note that a single module may be evaluated on the server when imported from server code and on the client when imported from client code.
+作为 `RichTextEditor` 的依赖项，无论 `formatDate` 与 `Button` 的模块是否包含 `'use client'`，其都将在客户端上进行评估。请注意，当从服务器代码导入时，单个模块可能在服务器上进行评估，并且当从客户端代码导入时，可能在客户端上进行评估。
 
-#### Caveats {/*caveats*/}
+#### 注意 {/*caveats*/}
 
-* `'use client'` must be at the very beginning of a file, above any imports or other code (comments are OK). They must be written with single or double quotes, but not backticks.
-* When a `'use client'` module is imported from another client-rendered module, the directive has no effect.
-* When a component module contains a `'use client'` directive, any usage of that component is guaranteed to be a Client Component. However, a component can still be evaluated on the client even if it does not have a `'use client'` directive.
-	* A component usage is considered a Client Component if it is defined in module with `'use client'` directive or when it is a transitive dependency of a module that contains a `'use client'` directive. Otherwise, it is a Server Component.
-* Code that is marked for client evaluation is not limited to components. All code that is a part of the Client module sub-tree is sent to and run by the client.
-* When a server evaluated module imports values from a `'use client'` module, the values must either be a React component or [supported serializable prop values](#passing-props-from-server-to-client-components) to be passed to a Client Component. Any other use case will throw an exception.
+* `'use client'` 必须位于文件的最前方，位于任何导入或其他代码之上（可以位于代码顶部的注释之下）。它们必须用单引号或双引号编写，但不能用反引号。
+* 当从另一个客户端渲染的模块导入 `'use client'` 模块时，该指令不起作用。
+* 当组件模块包含 `'use client'` 指令时，保证对该组件的任何使用都将是客户端组件。然而，即使没有 `'use client'` 指令，组件仍可以在客户端上进行评估。
+  * 如果在带有 `'use client'` 指令的模块中定义了组件使用，那么该使用将被视为客户端组件，或者当它是包含 `'use client'` 指令的模块的传递依赖时。否则，它将是服务器组件。
+* 标记为客户端评估的代码不仅限于组件。客户端模块子树的所有代码都将被发送到客户端并由客户端运行。
+* 当服务器评估的模块从 `'use client'` 模块导入值时，这些值必须是 React 组件或 [受支持的可序列化属性值](#passing-props-from-server-to-client-components)，以传递给客户端组件。其他用例将引发异常。
 
-### How `'use client'` marks client code {/*how-use-client-marks-client-code*/}
+### `'use client'` 如何标记客户端代码 {/*how-use-client-marks-client-code*/}
 
-In a React app, components are often split into separate files, or [modules](/learn/importing-and-exporting-components#exporting-and-importing-a-component).
+在 React 应用程序中，组件通常被拆分为单独的文件，或称之为 [模块](/learn/importing-and-exporting-components#exporting-and-importing-a-component)。
 
-For apps that use React Server Components, the app is server-rendered by default. `'use client'` introduces a server-client boundary in the [module dependency tree](/learn/understanding-your-ui-as-a-tree#the-module-dependency-tree), effectively creating a subtree of Client modules.
+对于使用 React 服务器组件的应用程序，默认情况下是由服务器渲染的。`'use client'` 引入了 [模块依赖树](/learn/understanding-your-ui-as-a-tree#the-module-dependency-tree) 中的服务器客户端边界，有效地创建了一个客户端模块的子树。
 
-To better illustrate this, consider the following React Server Components app.
+为了更好地说明这一点，请参考下面的 React 服务器组件应用程序示例。
 
 <Sandpack>
 
@@ -146,144 +146,144 @@ export default [
 
 </Sandpack>
 
-In the module dependency tree of this example app, the `'use client'` directive in `InspirationGenerator.js` marks that module and all of its transitive dependencies as Client modules. The subtree starting at `InspirationGenerator.js` is now marked as Client modules.
+在这个示例应用程序的模块依赖树中，`InspirationGenerator.js` 中的 `'use client'` 指令标记了该模块及其所有传递依赖为客户端模块。从 `InspirationGenerator.js` 开始的子树现在被标记为客户端模块。
 
-<Diagram name="use_client_module_dependency" height={250} width={545} alt="A tree graph with the top node representing the module 'App.js'. 'App.js' has three children: 'Copyright.js', 'FancyText.js', and 'InspirationGenerator.js'. 'InspirationGenerator.js' has two children: 'FancyText.js' and 'inspirations.js'. The nodes under and including 'InspirationGenerator.js' have a yellow background color to signify that this sub-graph is client-rendered due to the 'use client' directive in 'InspirationGenerator.js'.">
-`'use client'` segments the module dependency tree of the React Server Components app, marking `InspirationGenerator.js` and all of its dependencies as client-rendered.
+<Diagram name="use_client_module_dependency" height={250} width={545} alt="一个树形图，顶部节点代表模块 'App.js'。'App.js' 有三个子节点：'Copyright.js'、'FancyText.js' 和 'InspirationGenerator.js'。'InspirationGenerator.js' 有两个子节点：'FancyText.js' 和 'inspirations.js'。'InspirationGenerator.js' 及其下面的节点都具有黄色背景颜色，表示由于 'InspirationGenerator.js' 中的 'use client' 指令，这个子图是由客户端渲染的。">
+`'use client'` 划分了 React 服务器组件应用程序的模块依赖树，标记了 `InspirationGenerator.js` 以及其所有依赖为客户端渲染。
 </Diagram>
 
-During render, the framework will server-render the root component and continue through the [render tree](/learn/understanding-your-ui-as-a-tree#the-render-tree), opting-out of evaluating any code imported from client-marked code.
+在渲染过程中，框架将服务器渲染根组件，并继续通过 [渲染树](/learn/understanding-your-ui-as-a-tree#the-render-tree) 进行渲染，选择不评估从客户端标记的代码导入的任何代码。
 
-The server-rendered portion of the render tree is then sent to the client. The client, with its client code downloaded, then completes rendering the rest of the tree.
+然后，渲染树的服务器渲染部分将发送到客户端。客户端，具有其客户端代码下载，然后完成渲染树的其余部分。
 
-<Diagram name="use_client_render_tree" height={250} width={500} alt="A tree graph where each node represents a component and its children as child components. The top-level node is labelled 'App' and it has two child components 'InspirationGenerator' and 'FancyText'. 'InspirationGenerator' has two child components, 'FancyText' and 'Copyright'. Both 'InspirationGenerator' and its child component 'FancyText' are marked to be client-rendered.">
-The render tree for the React Server Components app. `InspirationGenerator` and its child component `FancyText` are components exported from client-marked code and considered Client Components.
+<Diagram name="use_client_render_tree" height={250} width={500} alt="一个树形图，其中每个节点代表一个组件及其子组件作为子组件。顶级节点标记为 'App'，它有两个子组件 'InspirationGenerator' 和 'FancyText'。'InspirationGenerator' 有两个子组件，'FancyText' 和 'Copyright'。'InspirationGenerator' 和其子组件 'FancyText' 都标记为客户端渲染。">
+React服务器组件应用程序的渲染树。`InspirationGenerator` 和其子组件 `FancyText` 都是从客户端标记的代码中导出的组件，被视为客户端组件。
 </Diagram>
 
-We introduce the following definitions:
+我们引入以下定义：
 
-* **Client Components** are components in a render tree that are rendered on the client.
-* **Server Components** are components in a render tree that are rendered on the server.
+* **客户端组件** 是渲染树中在客户端上渲染的组件。
+* **服务器组件** 是渲染树中在服务器上渲染的组件。
 
-Working through the example app, `App`, `FancyText` and `Copyright` are all server-rendered and considered Server Components. As `InspirationGenerator.js` and its transitive dependencies are marked as client code, the component `InspirationGenerator` and its child component `FancyText` are Client Components.
+通过示例应用程序，`App`、`FancyText` 和 `Copyright` 都是服务器渲染的，被视为服务器组件。由于 `InspirationGenerator.js` 及其传递依赖被标记为客户端代码，组件 `InspirationGenerator` 及其子组件 `FancyText` 都是客户端组件。
 
 <DeepDive>
-#### How is `FancyText` both a Server and a Client Component? {/*how-is-fancytext-both-a-server-and-a-client-component*/}
+#### `FancyText` 是如何实现既是服务器组件也是客户端组件？ {/*how-is-fancytext-both-a-server-and-a-client-component*/}
 
-By the above definitions, the component `FancyText` is both a Server and Client Component, how can that be?
+根据上述定义，组件 `FancyText` 如何实现既是服务器组件又是客户端组件的呢？
 
-First, let's clarify that the term "component" is not very precise. Here are just two ways "component" can be understood:
+首先，术语“组件”并不是非常精确的。以下是“组件”可以被理解的两种方式：
 
-1. A "component" can refer to a **component definition**. In most cases this will be a function.
+1. “组件”可以指的是 **组件定义**。在大多数情况下，这将是一个函数。
 
 ```js
-// This is a definition of a component
+// 这是组件的定义
 function MyComponent() {
   return <p>My Component</p>
 }
 ```
 
-2. A "component" can also refer to a **component usage** of its definition.
+2. “组件”可以指的是定义的 **组件的使用**。
 ```js
 import MyComponent from './MyComponent';
 
 function App() {
-  // This is a usage of a component
+  // 这是组件的用法
   return <MyComponent />;
 }
 ```
 
-Often, the imprecision is not important when explaining concepts, but in this case it is.
+通常，在解释概念时，不太精确的性质并不重要，但在这种情况下是重要的。
 
-When we talk about Server or Client Components, we are referring to component usages.
+当谈论服务器组件或客户端组件时，我们指的是组件的使用。
 
-* If the component is defined in a module with a `'use client'` directive, or the component is imported and called in a Client Component, then the component usage is a Client Component.
-* Otherwise, the component usage is a Server Component.
+* 如果组件在带有 `'use client'` 指令的模块中定义，或者组件在客户端组件中导入并调用，那么组件的使用将是客户端组件。
+* 否则，组件的使用将是服务器组件。
 
 
-<Diagram name="use_client_render_tree" height={150} width={450} alt="A tree graph where each node represents a component and its children as child components. The top-level node is labelled 'App' and it has two child components 'InspirationGenerator' and 'FancyText'. 'InspirationGenerator' has two child components, 'FancyText' and 'Copyright'. Both 'InspirationGenerator' and its child component 'FancyText' are marked to be client-rendered.">A render tree illustrates component usages.</Diagram>
+<Diagram name="use_client_render_tree" height={150} width={450} alt="一个树形图，其中每个节点代表一个组件及其子组件作为子组件。顶级节点标记为 'App'，它有两个子组件 'InspirationGenerator' 和 'FancyText'。'InspirationGenerator' 有两个子组件，'FancyText' 和 'Copyright'。'InspirationGenerator' 和其子组件 'FancyText' 都标记为客户端渲染。">渲染树展示了组件的使用。</Diagram>
 
-Back to the question of `FancyText`, we see that the component definition does _not_ have a `'use client'` directive and it has two usages.
+回到关于 `FancyText` 的问题，我们可以看到组件定义没有包含 `'use client'` 指令，并且它有两个使用方式。
 
-The usage of `FancyText` as a child of `App`, marks that usage as a Server Component. When `FancyText` is imported and called under `InspirationGenerator`, that usage of `FancyText` is a Client Component as `InspirationGenerator` contains a `'use client'` directive.
+将 `FancyText` 作为 `App` 的子组件使用，将该使用标记为服务器组件。当 `FancyText` 在 `InspirationGenerator` 下导入并调用时，`FancyText` 的这种使用是客户端组件，因为 `InspirationGenerator` 包含 `'use client'` 指令。
 
-This means that the component definition for `FancyText` will both be evaluated on the server and also downloaded by the client to render its Client Component usage.
+这意味着 `FancyText` 的组件定义将在服务器上进行评估，同时也将被客户端下载以渲染其客户端组件的使用。
 
 </DeepDive>
 
 <DeepDive>
 
-#### Why is `Copyright` a Server Component? {/*why-is-copyright-a-server-component*/}
+#### 为什么 `Copyright` 是服务器组件？ {/*why-is-copyright-a-server-component*/}
 
-Because `Copyright` is rendered as a child of the Client Component `InspirationGenerator`, you might be surprised that it is a Server Component.
+由于 `Copyright` 是作为客户端组件 `InspirationGenerator` 的子组件进行渲染，这可能会让人感到惊讶，它却是一个服务器组件。
 
-Recall that `'use client'` defines the boundary between server and client code on the _module dependency tree_, not the render tree.
+请回想一下，`'use client'` 定义了在 **模块依赖树** 上的服务器和客户端代码的边界，而不是在渲染树上。
 
-<Diagram name="use_client_module_dependency" height={200} width={500} alt="A tree graph with the top node representing the module 'App.js'. 'App.js' has three children: 'Copyright.js', 'FancyText.js', and 'InspirationGenerator.js'. 'InspirationGenerator.js' has two children: 'FancyText.js' and 'inspirations.js'. The nodes under and including 'InspirationGenerator.js' have a yellow background color to signify that this sub-graph is client-rendered due to the 'use client' directive in 'InspirationGenerator.js'.">
-`'use client'` defines the boundary between server and client code on the module dependency tree.
+<Diagram name="use_client_module_dependency" height={200} width={500} alt="一个树形图，顶部节点代表模块 'App.js'。'App.js' 有三个子节点：'Copyright.js'、'FancyText.js' 和 'InspirationGenerator.js'。'InspirationGenerator.js' 有两个子节点：'FancyText.js' 和 'inspirations.js'。'InspirationGenerator.js' 及其下面的节点都具有黄色背景颜色，表示由于 'InspirationGenerator.js' 中的 'use client' 指令，这个子图是客户端渲染的。">
+`'use client'` 在模块依赖树上定义了服务器和客户端代码之间的边界。
 </Diagram>
 
-In the module dependency tree, we see that `App.js` imports and calls `Copyright` from the `Copyright.js` module. As `Copyright.js` does not contain a `'use client'` directive, the component usage is rendered on the server. `App` is rendered on the server as it is the root component.
+在模块依赖树中可以看到 `App.js` 从 `Copyright.js` 模块导入并调用 `Copyright`。由于 `Copyright.js` 没有包含 `'use client'` 指令，该组件的使用在服务器上进行渲染。`App` 作为根组件在服务器上进行渲染。
 
-Client Components can render Server Components because you can pass JSX as props. In this case, `InspirationGenerator` receives `Copyright` as [children](/learn/passing-props-to-a-component#passing-jsx-as-children). However, the `InspirationGenerator` module never directly imports the `Copyright` module nor calls the component, all of that is done by `App`. In fact, the `Copyright` component is fully executed before `InspirationGenerator` starts rendering.
+由于可以将 JSX 作为 props 传递，客户端组件可以渲染服务器组件。在这种情况下，`InspirationGenerator` 以 [children](/learn/passing-props-to-a-component#passing-jsx-as-children) 的形式接收 `Copyright`。然而，`InspirationGenerator` 模块从未直接导入 `Copyright` 模块，也不调用该组件，所有这些都是由 `App` 完成的。实际上，在 `InspirationGenerator` 开始渲染之前，`Copyright` 组件已经完全执行完毕。
 
-The takeaway is that a parent-child render relationship between components does not guarantee the same render environment.
+请牢记，组件之间的父子渲染关系并不保证相同的渲染环境。
 
 </DeepDive>
 
-### When to use `'use client'` {/*when-to-use-use-client*/}
+### 何时使用 `'use client'`？ {/*when-to-use-use-client*/}
 
-With `'use client'`, you can determine when components are Client Components. As Server Components are default, here is a brief overview of the advantages and limitations to Server Components to determine when you need to mark something as client rendered.
+通过 `'use client'` 可以确定哪些组件是客户端组件。由于服务器组件是默认的，以下是关于服务器组件的优势和限制的简要概述，以确定何时需要将某些内容标记为客户端渲染。
 
-For simplicity, we talk about Server Components, but the same principles apply to all code in your app that is server run.
+为简单起见，我们只谈论了服务器组件，但相同的原则适用于应用程序中的所有在服务器上运行的代码。
 
-#### Advantages of Server Components {/*advantages*/}
-* Server Components can reduce the amount of code sent and run by the client. Only Client modules are bundled and evaluated by the client.
-* Server Components benefit from running on the server. They can access the local filesystem and may experience low latency for data fetches and network requests.
+#### 服务器组件的优点 {/*advantages*/}
+* 服务器组件可以减少客户端发送和运行的代码量。只有客户端模块会被捆绑和由客户端进行评估。
+* 服务器组件受益于在服务器上运行。它们可以访问本地文件系统，并且可能在数据获取和网络请求方面体验较低的延迟。
 
-#### Limitations of Server Components {/*limitations*/}
-* Server Components cannot support interaction as event handlers must be registered and triggered by a client.
-	* For example, event handlers like `onClick` can only be defined in Client Components.
-* Server Components cannot use most Hooks.
-	* When Server Components are rendered, their output is essentially a list of components for the client to render. Server Components do not persist in memory after render and cannot have their own state.
+#### 服务器组件的限制 {/*limitations*/}
+* 服务器组件不能支持交互，因为事件处理程序必须由客户端注册和触发。
+  * 例如，像 `onClick` 这样的事件处理程序只能在客户端组件中定义。
+* 服务器组件不能使用大多数 Hooks。
+  * 当服务器组件被渲染时，它们的输出基本上是客户端渲染的一系列组件。服务器组件在渲染后不会在内存中保留，并且不能拥有自己的状态。
 
-### Serializable types returned by Server Components {/*serializable-types*/}
+### 服务器组件返回的可序列化类型 {/*serializable-types*/}
 
-As in any React app, parent components pass data to child components. As they are rendered in different environments, passing data from a Server Component to a Client Component requires extra consideration.
+与任何 React 应用程序一样，父组件会向子组件传递数据。由于它们在不同的环境中渲染，因此需要额外考虑将数据从服务器组件传递到客户端组件。
 
-Prop values passed from a Server Component to Client Component must be serializable.
+从服务器组件传递给客户端组件的属性值必须是可序列化的。
 
-Serializable props include:
-* Primitives
-	* [string](https://developer.mozilla.org/en-US/docs/Glossary/String)
-	* [number](https://developer.mozilla.org/en-US/docs/Glossary/Number)
-	* [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
-	* [boolean](https://developer.mozilla.org/en-US/docs/Glossary/Boolean)
-	* [undefined](https://developer.mozilla.org/en-US/docs/Glossary/Undefined)
-	* [null](https://developer.mozilla.org/en-US/docs/Glossary/Null)
-	* [symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol), only symbols registered in the global Symbol registry via [`Symbol.for`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)
-* Iterables containing serializable values
-	* [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-	* [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
-	* [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
-	* [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
-	* [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) and [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
-* [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
-* Plain [objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object): those created with [object initializers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer), with serializable properties
-* Functions that are [Server Actions](/reference/react/use-server)
-* Client or Server Component elements (JSX)
-* [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+可序列化属性包括：
+* 原始类型
+	* [string](https://developer.mozilla.org/zh-CN/docs/Glossary/String)
+	* [number](https://developer.mozilla.org/zh-CN/docs/Glossary/Number)
+	* [bigint](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
+	* [boolean](https://developer.mozilla.org/zh-CN/docs/Glossary/Boolean)
+	* [undefined](https://developer.mozilla.org/zh-CN/docs/Glossary/Undefined)
+	* [null](https://developer.mozilla.org/zh-CN/docs/Glossary/Null)
+	* [symbol](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol)，仅包含在全局符号注册表中使用 [`Symbol.for`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for) 注册的符号。
+* 包含可序列化值的迭代类型
+	* [String](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String)
+	* [Array](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array)
+	* [Map](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map)
+	* [Set](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set)
+	* [TypedArray](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) 与 [ArrayBuffer](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
+* [Date](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date)
+* 普通 [对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)：使用 [对象初始化器](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Object_initializer) 创建的、具有可序列化属性
+* [Server Action](/reference/react/use-server) 中的函数
+* 客户端或服务器组件元素（JSX）
+* [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-Notably, these are not supported:
-* [Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function) that are not exported from client-marked modules or marked with [`'use server'`](/reference/react/use-server)
-* [Classes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
-* Objects that are instances of any class (other than the built-ins mentioned) or objects with [a null prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)
-* Symbols not registered globally, ex. `Symbol('my new symbol')`
+值得注意的是，以下内容不受支持：
+* 未从客户端标记的模块中导出或未标记为 [`'use server'`](/reference/react/use-server) 的 [函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function)
+* [类](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
+* 任何类的实例对象（除了提到的内置类）或具有 [null 原型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects) 的对象
+* 未全局注册的符号，例如 `Symbol('my new symbol')`
 
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Building with interactivity and state {/*building-with-interactivity-and-state*/}
+### 构建交互性与状态 {/*building-with-interactivity-and-state*/}
 
 <Sandpack>
 
@@ -308,9 +308,9 @@ export default function Counter({initialValue = 0}) {
 
 </Sandpack>
 
-As `Counter` requires both the `useState` Hook and event handlers to increment or decrement the value, this component must be a Client Component and will require a `'use client'` directive at the top.
+由于 `Counter` 需要使用 `useState` Hook 和事件处理程序来增加或减少值，因此该组件必须是客户端组件，并且需要在顶部添加 `'use client'` 指令。
 
-In contrast, a component that renders UI without interaction will not need to be a Client Component.
+相比之下，一个渲染 UI 而没有交互的组件不需要成为客户端组件。
 
 ```js
 import { readFile } from 'node:fs/promises';
@@ -322,9 +322,9 @@ export default async function CounterContainer() {
 }
 ```
 
-For example, `Counter`'s parent component, `CounterContainer`, does not require `'use client'` as it is not interactive and does not use state. In addition, `CounterContainer` must be a Server Component as it reads from the local file system on the server, which is possible only in a Server Component.
+例如，`Counter` 的父组件 `CounterContainer` 不需要 `'use client'`，因为它没有交互并且不使用状态。此外，`CounterContainer` 必须是服务器组件，因为它在服务器上从本地文件系统读取数据，这仅在服务器组件中可行。
 
-There are also components that don't use any server or client-only features and can be agnostic to where they render. In our earlier example, `FancyText` is one such component.
+还有一些组件不使用任何特定于服务器或客户端的功能，可以在渲染位置上保持中立。在之前的示例中，`FancyText` 就是这样一个组件。
 
 ```js
 export default function FancyText({title, text}) {
@@ -334,15 +334,15 @@ export default function FancyText({title, text}) {
 }
 ```
 
-In this case, we don't add the `'use client'` directive, resulting in `FancyText`'s _output_ (rather than its source code) to be sent to the browser when referenced from a Server Component. As demonstrated in the earlier Inspirations app example, `FancyText` is used as both a Server or Client Component, depending on where it is imported and used.
+在这种情况下，不添加 `'use client'` 指令的结果是，当从服务器组件引用时，`FancyText` 的输出（而不是其源代码）将被发送到浏览器。正如在之前的 Inspirations 应用程序示例中演示的，`FancyText` 既可以作为服务器组件也可以作为客户端组件使用，具体取决于它被导入和使用的位置。
 
-But if `FancyText`'s HTML output was large relative to its source code (including dependencies), it might be more efficient to force it to always be a Client Component. Components that return a long SVG path string are one case where it may be more efficient to force a component to be a Client Component.
+但如果 `FancyText` 的 HTML 输出相对于其源代码（包括依赖项）较大，那么强制将其始终作为客户端组件可能更高效。返回较长 SVG 路径字符串的组件就是可能更高效地强制组件成为客户端组件的一种情况。
 
-### Using client APIs {/*using-client-apis*/}
+### 使用客户端 API {/*using-client-apis*/}
 
-Your React app may use client-specific APIs, such as the browser's APIs for web storage, audio and video manipulation, and device hardware, among [others](https://developer.mozilla.org/en-US/docs/Web/API).
+React 应用程序可能使用特定于客户端的 API，例如浏览器的 web 存储 API、音频和视频处理 API 以及有关设备硬件 API 等 [其他 API](https://developer.mozilla.org/zh-CN/docs/Web/API)。
 
-In this example, the component uses [DOM APIs](https://developer.mozilla.org/en-US/docs/Glossary/DOM) to manipulate a [`canvas`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas) element. Since those APIs are only available in the browser, it must be marked as a Client Component.
+在这个示例中，该组件使用 [DOM API](https://developer.mozilla.org/zh-CN/docs/Glossary/DOM) 来操作 [`canvas`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/canvas) 元素。由于这些 API 仅在浏览器中可用，因此必须将其标记为客户端组件。
 
 ```js
 'use client';
@@ -363,18 +363,18 @@ export default function Circle() {
 }
 ```
 
-### Using third-party libraries {/*using-third-party-libraries*/}
+### 使用第三方库 {/*using-third-party-libraries*/}
 
-Often in a React app, you'll leverage third-party libraries to handle common UI patterns or logic.
+在 React 应用程序中，通常会利用第三方库来处理常见的 UI 模式或逻辑。
 
-These libraries may rely on component Hooks or client APIs. Third-party components that use any of the following React APIs must run on the client:
+这些库可能依赖于组件 Hook 或客户端 API。使用以下 React API 中的任何一个的第三方组件必须在客户端上运行：
 * [createContext](/reference/react/createContext)
-* [`react`](/reference/react/hooks) and [`react-dom`](/reference/react-dom/hooks) Hooks, excluding [`use`](/reference/react/use) and [`useId`](/reference/react/useId)
+* [`react`](/reference/react/hooks) 和 [`react-dom`](/reference/react-dom/hooks) Hook，但不包括 [`use`](/reference/react/use) 和 [`useId`](/reference/react/useId)
 * [forwardRef](/reference/react/forwardRef)
 * [memo](/reference/react/memo)
 * [startTransition](/reference/react/startTransition)
-* If they use client APIs, ex. DOM insertion or native platform views
+* 如果这些库使用了客户端 API，例如向 DOM 插入元素或查看本机平台视图
 
-If these libraries have been updated to be compatible with React Server Components, then they will already include `'use client'` markers of their own, allowing you to use them directly from your Server Components. If a library hasn't been updated, or if a component needs props like event handlers that can only be specified on the client, you may need to add your own Client Component file in between the third-party Client Component and your Server Component where you'd like to use it.
+如果这些库已经更新为与 React 服务器组件兼容，那么它们将已经包含自己的 `'use client'` 标记，从而使开发者可以直接在服务器组件中使用它们。如果某个库尚未更新，或者某个组件需要像事件处理程序这样只能在客户端上指定的 props，那么可能需要在第三方客户端组件和希望使用它的服务器组件之间添加自己的客户端组件文件。
 
 [TODO]: <> (Troubleshooting - need use-cases)
