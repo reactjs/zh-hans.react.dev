@@ -5,7 +5,7 @@ canary: true
 
 <Canary>
 
-`useFormState` Hook 当前仅在 React canary 与 experimental 渠道中可用。请点此了解更多关于 [React 发布渠道](/community/versioning-policy#all-release-channels) 的信息。此外，需要一款完全支持 [React 服务器组件](/reference/react/use-client) 特性的框架才可以使用 `useFormState` 的所有特性。
+`useFormState` Hook 当前仅在 React Canary 与 experimental 渠道中可用。请点此了解更多关于 [React 发布渠道](/community/versioning-policy#all-release-channels) 的信息。此外，需要一款完全支持 [React 服务器组件](/reference/react/use-client) 特性的框架才可以使用 `useFormState` 的所有特性。
 
 </Canary>
 
