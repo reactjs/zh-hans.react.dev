@@ -91,7 +91,7 @@ Server Action 的参数完全由客户端控制。出于安全考虑，始终将
 * React 元素或 [JSX](https://react.dev/learn/writing-markup-with-jsx)
 * 函数，包括组件函数和其他并非 Server Action 的函数
 * [类](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
-* 任何类的实例对象（除了提到的内置类）或具有 [null 原型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects) 的对象
+* 任何类的实例对象（除了提到的内置类）或 [使用 null 作为原型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects) 的对象
 * 未全局注册的符号，例如 `Symbol('my new symbol')`
 
 
