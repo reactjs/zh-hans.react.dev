@@ -39,7 +39,7 @@ async function addToCart(data) {
 可以将 `'use server'` 指令添加到文件顶部来代替逐个在函数中添加它。位于文件顶部的指令会将所有导出都标记为可在任何地方使用的 Server Action，包括在客户端代码中导入。
 
 #### 注意 {/*caveats*/}
-* `'use server'` 必须位于文件的最前方，位于任何导入或其他代码之上（可以位于代码顶部的注释之下）。它们必须用单引号或双引号编写，但不能用反引号。
+* `'use server'` 必须位于函数或模块的顶部，在任何导入或其他代码之前（可以位于代码顶部的注释之后）。它们必须用单引号或双引号编写，但不能用反引号。
 * `'use server'` 只能在服务器端文件中使用。生成的 Server Action 可以通过 props 传递给客户端组件。请参阅支持的 [序列化参数和返回值类型](#serializable-parameters-and-return-values)。
 * 要从 [客户端代码](/reference/react/use-client) 导入 Server Action，必须在模块级别使用该指令。
 * 由于底层网络调用始终是异步的，`'use server'` 只能用于异步函数。
