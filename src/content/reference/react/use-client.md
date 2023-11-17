@@ -59,7 +59,7 @@ export default function RichTextEditor({ timestamp, text }) {
 
 在 React 应用程序中，组件通常被拆分为单独的文件，或称之为 [模块](/learn/importing-and-exporting-components#exporting-and-importing-a-component)。
 
-对于使用 React 服务器组件的应用程序，默认情况下是由服务器渲染的。`'use client'` 引入了 [模块依赖树](/learn/understanding-your-ui-as-a-tree#the-module-dependency-tree) 中的服务器客户端边界，有效地创建了一个客户端模块的子树。
+对于使用 React 服务器组件的应用程序，默认情况下是由服务器渲染的。`'use client'` 在服务器客户端边界中引入了 [模块依赖树](/learn/understanding-your-ui-as-a-tree#the-module-dependency-tree) ，从而有效地创建了一个客户端模块的子树。
 
 为了更好地说明这一点，请参考下面的 React 服务器组件应用程序示例。
 
