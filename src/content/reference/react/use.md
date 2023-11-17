@@ -5,7 +5,7 @@ canary: true
 
 <Canary>
 
-`use` Hook 仅在 canary 与 experimental 渠道中可用。参阅 [React 发布渠道](/community/versioning-policy#all-release-channels) 以了解更多信息。
+`use` Hook 仅在 Canary 与 experimental 渠道中可用。参阅 [React 发布渠道](/community/versioning-policy#all-release-channels) 以了解更多信息。
 
 </Canary>
 

@@ -5,7 +5,7 @@ canary: true
 
 <Canary>
 
-`useFormStatus` Hook 目前仅在 React canary 与 experimental 渠道中可用。在此处了解更多关于 [React 发布渠道](/community/versioning-policy#all-release-channels) 的信息。
+`useFormStatus` Hook 目前仅在 React Canary 与 experimental 渠道中可用。在此处了解更多关于 [React 发布渠道](/community/versioning-policy#all-release-channels) 的信息。
 
 </Canary>
 
