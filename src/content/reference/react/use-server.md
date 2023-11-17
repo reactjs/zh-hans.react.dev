@@ -34,7 +34,7 @@ async function addToCart(data) {
 }
 ```
 
-在客户端调用服务器动作时，它将向服务器发出网络请求，其中包含传递的任何参数的序列化副本。如果服务器动作返回一个值，该值将被序列化并返回给客户端。
+在客户端调用 Server Action 时，它将向服务器发出网络请求，其中包含传递的任何参数的序列化副本。如果 Server Action 返回一个值，该值将被序列化并返回给客户端。
 
 可以将 `'use server'` 指令添加到文件顶部来代替逐个在函数中添加它。位于文件顶部的指令会将所有导出都标记为可在任何地方使用的 Server Action，包括在客户端代码中导入。
 
@@ -43,7 +43,7 @@ async function addToCart(data) {
 * `'use server'` 只能在服务器端文件中使用。生成的 Server Action 可以通过 props 传递给客户端组件。请参阅支持的 [序列化参数和返回值类型](#serializable-parameters-and-return-values)。
 * 要从 [客户端代码](/reference/react/use-client) 导入 Server Action，必须在模块级别使用该指令。
 * 由于底层网络调用始终是异步的，`'use server'` 只能用于异步函数。
-* 始终将服务器动作的参数视为不受信任的输入，并授权任何变更。请参阅 [安全考虑](#security)。
+* 始终将 Server Action 的参数视为不受信任的输入，并授权任何变更。请参阅 [安全考虑](#security)。
 * 应在 [transition](/reference/react/useTransition) 中调用 Server Action。传递给 [`<form action>`](/reference/react-dom/components/form#props) 或 [`formAction`](/reference/react-dom/components/input#props) 的 Server Action 将自动在 transition 中被调用。
 * Server Action 专为更新服务器端状态的变更而设计，不建议用于数据获取。因此，实现 Server Action 的框架通常一次只处理一个 Action，没有缓存返回值的方式。
 
