@@ -152,7 +152,7 @@ export default [
 `'use client'` 划分了 React 服务器组件应用程序的模块依赖树，标记了 `InspirationGenerator.js` 以及其所有依赖为客户端渲染。
 </Diagram>
 
-在渲染过程中，框架将服务器渲染根组件，并继续通过 [渲染树](/learn/understanding-your-ui-as-a-tree#the-render-tree) 进行渲染，选择不评估从客户端标记的代码导入的任何代码。
+在渲染过程中，框架将在服务端渲染根组件，然后沿着 [渲染树](/learn/understanding-your-ui-as-a-tree#the-render-tree) 进行渲染，在此过程中不评估从客户端标记的代码中导入的任何代码。
 
 然后，渲染树的服务器渲染部分将发送到客户端。客户端，具有其客户端代码下载，然后完成渲染树的其余部分。
 
