@@ -154,7 +154,7 @@ export default [
 
 在渲染过程中，框架将在服务端渲染根组件，然后沿着 [渲染树](/learn/understanding-your-ui-as-a-tree#the-render-tree) 进行渲染，在此过程中不评估从客户端标记的代码中导入的任何代码。
 
-然后，渲染树的服务器渲染部分将发送到客户端。客户端，具有其客户端代码下载，然后完成渲染树的其余部分。
+然后，渲染树的服务器渲染部分将发送到客户端。客户端在代码下载完毕后，接着完成渲染树的其余部分。
 
 <Diagram name="use_client_render_tree" height={250} width={500} alt="一个树形图，其中每个节点代表一个组件及其子组件作为子组件。顶级节点标记为 'App'，它有两个子组件 'InspirationGenerator' 和 'FancyText'。'InspirationGenerator' 有两个子组件，'FancyText' 和 'Copyright'。'InspirationGenerator' 和其子组件 'FancyText' 都标记为客户端渲染。">
 React服务器组件应用程序的渲染树。`InspirationGenerator` 和其子组件 `FancyText` 都是从客户端标记的代码中导出的组件，被视为客户端组件。
