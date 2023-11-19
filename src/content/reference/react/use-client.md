@@ -170,7 +170,7 @@ React服务器组件应用程序的渲染树。`InspirationGenerator` 和其子�
 <DeepDive>
 #### `FancyText` 是如何实现既是服务器组件也是客户端组件？ {/*how-is-fancytext-both-a-server-and-a-client-component*/}
 
-根据上述定义，组件 `FancyText` 如何实现既是服务器组件又是客户端组件的呢？
+根据上述定义，组件 `FancyText` 是如何实现既是服务器组件又是客户端组件的呢？
 
 首先，术语“组件”并不是非常精确的。以下是“组件”可以被理解的两种方式：
 
