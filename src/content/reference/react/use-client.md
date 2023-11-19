@@ -277,7 +277,7 @@ function App() {
 值得注意的是，以下内容不受支持：
 * 未从客户端标记的模块中导出或未标记为 [`'use server'`](/reference/react/use-server) 的 [函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function)
 * [类](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
-* 任何类的实例对象（除了提到的内置类）或具有 [null 原型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects) 的对象
+* 任何类的实例对象（除了提到的内置类）或 [使用 null 作为原型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects) 的对象
 * 未全局注册的符号，例如 `Symbol('my new symbol')`
 
 
