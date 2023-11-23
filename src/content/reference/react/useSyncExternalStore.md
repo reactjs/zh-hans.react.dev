@@ -57,7 +57,7 @@ function TodosApp() {
 
 * 如果在重新渲染时传入一个不同的 `subscribe` 函数，React 会用新传入的 `subscribe` 函数重新订阅该 store。你可以通过在组件外声明 `subscribe` 来避免。
 
-* If the store is mutated during a [non-blocking transition update](/reference/react/useTransition), React will fall back to performing that update as blocking. Specifically, React will call `getSnapshot` a second time just before applying changes to the DOM. If it returns a different value than when it was called originally, React will restart the transition update from scratch, this time applying it as a blocking update, to ensure that every component on screen is reflecting the same version of the store.
+* If the store is mutated during a [non-blocking transition update](/reference/react/useTransition), React will fall back to performing that update as blocking. Specifically, for every transition update, React will call `getSnapshot` a second time just before applying changes to the DOM. If it returns a different value than when it was called originally, React will restart the update from scratch, this time applying it as a blocking update, to ensure that every component on screen is reflecting the same version of the store.
 
 * It's not recommended to _suspend_ a render based on a store value returned by `useSyncExternalStore`. The reason is that mutations to the external store cannot be [marked as non-blocking transition updates](/reference/react/useTransition), so they will trigger the nearest [`Suspense` fallback](/reference/react/Suspense), replacing already-rendered content on screen with a loading spinner, which typically makes a poor UX.
 
