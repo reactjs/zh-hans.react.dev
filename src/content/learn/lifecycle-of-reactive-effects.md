@@ -346,7 +346,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-**代码中的每个 Effect 应该代表一个独立的同步过程。.**
+**代码中的每个 Effect 应该代表一个独立的同步过程。**
 
 在上面的示例中，删除一个 Effect 不会影响另一个 Effect 的逻辑。这表明它们同步不同的内容，因此将它们拆分开是有意义的。另一方面，如果将一个内聚的逻辑拆分成多个独立的 Effects，代码可能会看起来更加“清晰”，但 [维护起来会更加困难](/learn/you-might-not-need-an-effect#chains-of-computations)。这就是为什么你应该考虑这些过程是相同还是独立的，而不是只考虑代码是否看起来更整洁。
 
