@@ -4,7 +4,7 @@ title: forwardRef
 
 <Intro>
 
-`forwardRef` 允许你的组件使用 [ref](/learn/manipulating-the-dom-with-refs) 将一个 DOM 节点暴露给父组件。
+`forwardRef` 允许组件使用 [ref](/learn/manipulating-the-dom-with-refs) 将 DOM 节点暴露给父组件。
 
 ```js
 const SomeComponent = forwardRef(render)
@@ -20,7 +20,7 @@ const SomeComponent = forwardRef(render)
 
 ### `forwardRef(render)` {/*forwardref*/}
 
-使用 `forwardRef()` 来让你的组件接收一个 ref 并将其传递给一个子组件：
+使用 `forwardRef()` 让组件接收 ref 并将其传递给子组件：
 
 ```js
 import { forwardRef } from 'react';
@@ -30,11 +30,11 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 });
 ```
 
-[请看下面的更多例子](#usage)。
+[请参阅下方更多示例](#usage)。
 
 #### 参数 {/*parameters*/}
 
-* `render`：组件的渲染函数。React 会调用该函数并传入父组件传递来的参数和 `ref`。返回的 JSX 将成为组件的输出。
+* `render`：组件的渲染函数。React 会调用该函数并传入父组件传递的 props 和 `ref`。返回的 JSX 将作为组件的输出。
 
 #### 返回值 {/*returns*/}
 
@@ -42,7 +42,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 #### 警告 {/*caveats*/}
 
-* 在严格模式中，为了 [帮助你找到意外的副作用](#my-initializer-or-updater-function-runs-twice)，React 将会 **调用两次你的渲染函数**。不过这仅限于开发环境，并不会影响生产环境。如果你的渲染函数是纯函数（也应该是），这应该不会影响你的组件逻辑。其中一个调用的结果将被忽略。
+* 在严格模式中，为了 [帮助找到意外的副作用](#my-initializer-or-updater-function-runs-twice)，React 将会 **调用两次渲染函数**。不过这仅限于开发环境，并不会影响生产环境。如果渲染函数是纯函数（也应该是），这不应该影响组件逻辑。其中一个调用的结果将被忽略。
 
 
 ---
@@ -64,7 +64,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 #### 参数 {/*render-parameters*/}
 
-* `props`：父组件传递过来的参数。
+* `props`：父组件传递过来的 props。
 
 * `ref`：父组件传递的 `ref` 属性。`ref` 可以是一个对象或函数。如果父组件没有传递一个 ref，那么它将会是 `null`。你应该将接收到的 `ref` 转发给另一个组件，或者将其传递给 [`useImperativeHandle`](/reference/react/useImperativeHandle)。
 
@@ -78,7 +78,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 ### 将 DOM 节点暴露给父组件 {/*exposing-a-dom-node-to-the-parent-component*/}
 
-默认情况下，每个组件的 DOM 节点都是私有的。然而，有时候将 DOM 节点公开给父组件是很有用的，比如允许对它进行聚焦。如果你想将其公开，可以将组件定义包装在 `forwardRef()` 中：
+默认情况下，每个组件的 DOM 节点都是私有的。然而，有时候将 DOM 节点公开给父组件是很有用的，比如允许对它进行聚焦。将组件定义包装在 `forwardRef()` 中便可以公开 DOM 节点：
 
 ```js {3,11}
 import { forwardRef } from 'react';
@@ -124,7 +124,7 @@ function Form() {
     <form>
       <MyInput label="Enter your name:" ref={ref} />
       <button type="button" onClick={handleClick}>
-        Edit
+        编辑
       </button>
     </form>
   );
@@ -133,9 +133,9 @@ function Form() {
 
 该 `Form` 组件 [将 ref 传递至](/reference/react/useRef#manipulating-the-dom-with-a-ref) `MyInput`。`MyInput` 组件将该 ref **转发** 至 `<input>` 浏览器标签。因此，`Form` 组件可以访问该 `<input>` DOM 节点并对其调用 [`focus()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus)。
 
-请记住，将组件内部的 ref 暴露给 DOM 节点会使得在稍后更改组件内部更加困难。通常，你会将 DOM 节点从可重用的低级组件中暴露出来，例如按钮或文本输入框，但不会在应用程序级别的组件中这样做，例如头像或评论。
+请记住，将组件内部的 ref 暴露给 DOM 节点会使得在稍后更改组件内部更加困难。通常会暴露可重用的低级组件的 DOM 节点，例如按钮或文本输入框，但不会在应用程序级别的组件中这样做，例如头像或评论。
 
-<Recipes titleText="Examples of forwarding a ref">
+<Recipes titleText="转发 ref 的示例">
 
 #### 聚焦文本输入框 {/*focusing-a-text-input*/}
 
@@ -254,7 +254,7 @@ button { margin-bottom: 10px; margin-right: 10px; }
 
 ### 在多个组件中转发 ref {/*forwarding-a-ref-through-multiple-components*/}
 
-除了将 `ref` 转发到 DOM 节点外，你还可以将其转发到你自己的组件，例如 `MyInput` 组件：
+除了将 `ref` 转发到 DOM 节点外，还可以将其转发到自定义组件，例如 `MyInput` 组件：
 
 ```js {1,5}
 const FormField = forwardRef(function FormField(props, ref) {
@@ -307,9 +307,9 @@ export default function Form() {
 
   return (
     <form>
-      <FormField label="Enter your name:" ref={ref} isRequired={true} />
+      <FormField label="输入你的名字：" ref={ref} isRequired={true} />
       <button type="button" onClick={handleClick}>
-        Edit
+        编辑
       </button>
     </form>
   );
@@ -331,7 +331,7 @@ const FormField = forwardRef(function FormField({ label, isRequired }, ref) {
         onChange={e => setValue(e.target.value)} 
       />
       {(isRequired && value === '') &&
-        <i>Required</i>
+        <i>必填</i>
       }
     </>
   );
@@ -367,9 +367,9 @@ input, button {
 
 ---
 
-### 暴露一个命令式句柄而不是 DOM 节点 {/*exposing-an-imperative-handle-instead-of-a-dom-node*/}
+### 暴露命令式句柄而非 DOM 节点 {/*exposing-an-imperative-handle-instead-of-a-dom-node*/}
 
-可以使用一个被称为 **命令式句柄（imperative handle）** 的自定义对象来暴露一个更加受限制的方法集，而不是暴露整个 DOM 节点。为了实现这个目的，你需要定义一个单独的 ref 来存储 DOM 节点：
+可以使用被称为 **命令式句柄（imperative handle）** 的自定义对象暴露一个更加受限制的方法集，而非整个 DOM 节点。为了实现这个目的需要定义一个单独的 ref 存储 DOM 节点：
 
 ```js {2,6}
 const MyInput = forwardRef(function MyInput(props, ref) {
@@ -404,7 +404,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 });
 ```
 
-如果某个组件得到了 `MyInput` 的 ref，则只会接收到 `{ focus, scrollIntoView }` 对象，而不是整个 DOM 节点。这可以让 DOM 节点暴露的信息限制到最小。
+如果某个组件得到了 `MyInput` 的 ref，则只会接收到 `{ focus, scrollIntoView }` 对象，而非整个 DOM 节点。这可以让 DOM 节点暴露的信息限制到最小。
 
 <Sandpack>
 
@@ -463,20 +463,19 @@ input {
 
 </Sandpack>
 
-[了解更多关于使用命令式句柄的内容](/reference/react/useImperativeHandle)。
+[了解更多关于命令式句柄的内容](/reference/react/useImperativeHandle)。
 
 <Pitfall>
 
-**不要滥用 refs**。只有对于作为 props 无法表达的 **命令式** 行为才应该使用 ref：例如滚动到节点、将焦点放在节点上、触发动画，以及选择文本等等。
+**不要滥用 ref**。只应在无法使用 props 表达的 **命令式** 行为中使用 ref：例如滚动到节点、将焦点放在节点上、触发动画，以及选择文本等等。
 
 
-**如果可以将某些东西使用 props 表达，那就不应该使用 ref**。例如，不要从一个 Modal 组件中暴露一个命令式的句柄，如 `{ open, close }`，更好的做法是像这样使用 `isOpen` 作为一个像 `<Modal isOpen={isOpen} />` 的
-prop。[Effects](/learn/synchronizing-with-effects) 可以帮助你通过 props 暴露命令式行为。
+**如果可以将某些东西使用 props 表达，那就不应该使用 ref**。例如，不要从一个 Modal 组件中暴露像 `{ open, close }` 一样的命令式句柄，更好的做法是将 `isOpen` 作为 prop，像这样 `<Modal isOpen={isOpen} />`。[Effect](/learn/synchronizing-with-effects) 可以帮助通过 props 暴露命令式行为。
 </Pitfall>
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 疑难解答 {/*troubleshooting*/}
 
 ### 我的组件使用了 `forwardRef`，但是它的 `ref` 总是为 `null` {/*my-component-is-wrapped-in-forwardref-but-the-ref-to-it-is-always-null*/}
 
