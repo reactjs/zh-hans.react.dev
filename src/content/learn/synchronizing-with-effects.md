@@ -461,7 +461,7 @@ function VideoPlayer({ src, isPlaying }) {
 
 </DeepDive>
 
-### 第三部：按需添加清理（cleanup）函数 {/*step-3-add-cleanup-if-needed*/}
+### 第三步：按需添加清理（cleanup）函数 {/*step-3-add-cleanup-if-needed*/}
 
 考虑一个不同的例子。你正在编写一个 `ChatRoom` 组件，该组件出现时需要连接到聊天服务器。现在为你提供了 `createConnection()` API，该 API 返回一个包含 `connect()` 与 `disconnection()` 方法的对象。考虑当组件展示给用户时，应该如何保持连接？
 
