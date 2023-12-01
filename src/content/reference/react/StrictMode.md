@@ -95,11 +95,7 @@ root.render(
 
 ---
 
-<<<<<<< HEAD
-### 为应用的一部分启用严格模式 {/*enabling-strict-mode-for-a-part-of-the-app*/}
-=======
-### Enabling Strict Mode for a part of the app {/*enabling-strict-mode-for-a-part-of-the-app*/}
->>>>>>> 943e3ce4e52be56bcd75b679448847302f557da1
+### 为应用程序的一部分启用严格模式 {/*enabling-strict-mode-for-a-part-of-the-app*/}
 
 你也可以为应用程序的任意一部分启用严格模式：
 
