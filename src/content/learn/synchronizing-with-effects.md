@@ -698,7 +698,7 @@ function TodoList() {
 
 在 Effect 中调用 `fetch` 请求数据 [是一种非常受欢迎的方式](https://www.robinwieruch.de/react-hooks-fetch-data/)，特别是在客户端应用中。然而，它非常依赖手动操作，有很多的缺点：
 
-- **Effect 不能在服务端执行**。这意味着服务器最初传递的 HTML 不会包含任何数据。客户端的浏览器必须下载所有 JavaScript 脚本来渲染应用程序，然后才能加载数据——这并不搞笑。
+- **Effect 不能在服务端执行**。这意味着服务器最初传递的 HTML 不会包含任何数据。客户端的浏览器必须下载所有 JavaScript 脚本来渲染应用程序，然后才能加载数据——这并不高效。
 - **直接在 Effect 中获取数据容易产生网络瀑布（network waterfall）**。首先渲染了父组件，它会获取一些数据并进行渲染；然后渲染子组件，接着子组件开始获取它们的数据。如果网络速度不够快，这种方式比同时获取所有数据要慢得多。
 - **直接在 Effect 中获取数据通常意味着无法预加载或缓存数据**。例如，在组件卸载后然后再次挂载，那么它必须再次获取数据。
 - **这不是很符合人机交互原则**。如果你不想出现像 [条件竞争（race condition）](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect) 之类的问题，那么你需要编写更多的样板代码。
