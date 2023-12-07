@@ -28,11 +28,7 @@ translators:
 npx create-next-app@latest
 </TerminalBlock>
 
-<<<<<<< HEAD
-如果你是 Next.js 的新手，请查看 [Next.js 教程](https://nextjs.org/learn/foundations/about-nextjs)。
-=======
-If you're new to Next.js, check out the [Next.js documentation.](https://nextjs.org/docs)
->>>>>>> ae4be842dd7f464f0e45a1391845dcec5115ad91
+如果你是 Next.js 的新手，请查看 [Next.js 文档](https://nextjs.org/docs)。
 
 Next.js 由 [Vercel](https://vercel.com/) 维护。你可以 [将 Next.js 应用](https://nextjs.org/docs/app/building-your-application/deploying) 部署到 Node.js 或 serverless 上，也可以部署到你自己的服务器上。[完全静态的 Next.js 应用](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports) 可以部署在任何支持静态服务的地方。
 
