@@ -4,7 +4,7 @@ title: createContext
 
 <Intro>
 
-使用 `createContext` 创建组件能够提供与读取的 [上下问（context）](/learn/passing-data-deeply-with-context)。
+使用 `createContext` 创建组件能够提供与读取的 [上下文（context）](/learn/passing-data-deeply-with-context)。
 
 ```js
 const SomeContext = createContext(defaultValue)
