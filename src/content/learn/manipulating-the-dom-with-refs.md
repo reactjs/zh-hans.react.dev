@@ -33,7 +33,7 @@ import { useRef } from 'react';
 const myRef = useRef(null);
 ```
 
-最后，将你的 ref 作为 `ref` 属性的值传递给你想要获取的 DOM 节点的 JSX 标签：
+最后，将 ref 作为 `ref` 属性值传递给想要获取的 DOM 节点的 JSX 标签：
 
 ```js
 <div ref={myRef}>
