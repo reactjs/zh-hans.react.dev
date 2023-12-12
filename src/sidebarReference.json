@@ -150,7 +150,7 @@
       ]
     },
     {
-      "title": "Directives",
+      "title": "指示符",
       "path": "/reference/react/directives",
       "canary": true,
       "routes": [
