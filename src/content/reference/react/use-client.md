@@ -1,6 +1,6 @@
 ---
 title: "'use client'"
-titleForTitleTag: "'use client' directive"
+titleForTitleTag: "'use client' 指示符"
 canary: true
 ---
 
