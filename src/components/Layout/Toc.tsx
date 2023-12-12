@@ -16,7 +16,7 @@ export function Toc({headings}: {headings: Toc}) {
     <nav role="navigation" className="pt-20 sticky top-0 end-0">
       {headings.length > 0 && (
         <h2 className="mb-3 lg:mb-3 uppercase tracking-wide font-bold text-sm text-secondary dark:text-secondary-dark px-4 w-full">
-          On this page
+          目录
         </h2>
       )}
       <div

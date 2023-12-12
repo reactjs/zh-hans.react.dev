@@ -65,7 +65,7 @@ function getTableOfContents(children, depth) {
   if (anchors.length > 0) {
     anchors.unshift({
       url: '#',
-      text: 'Overview',
+      text: '概览',
       depth: 2,
     });
   }
