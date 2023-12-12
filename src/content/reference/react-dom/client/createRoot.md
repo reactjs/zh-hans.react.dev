@@ -41,7 +41,7 @@ root.render(<App />);
 
 #### 参数 {/*parameters*/}
 
-* `domNode`：一个 [DOM 元素](https：//developer.mozilla.org/zh-CN/docs/Web/API/Element)。React 将为这个 DOM 元素创建一个根节点然后允许你在这个根节点上调用函数，比如 `render` 来显示渲染的 React 内容。
+* `domNode`：一个 [DOM 元素](https://developer.mozilla.org/zh-CN/docs/Web/API/Element)。React 将为这个 DOM 元素创建一个根节点然后允许你在这个根节点上调用函数，比如 `render` 来显示渲染的 React 内容。
 
 * **可选** `options`：用于配置这个 React 根节点的对象。
 
