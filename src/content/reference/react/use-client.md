@@ -49,9 +49,9 @@ export default function RichTextEditor({ timestamp, text }) {
 #### 注意 {/*caveats*/}
 
 * `'use client'` 必须位于文件顶部，在任何导入或其他代码之前（可以位于代码顶部的注释之后）。它们必须用单引号或双引号编写，不能用反引号。
-* 当从另一个客户端渲染的模块导入 `'use client'` 模块时，该指令不起作用。
-* 当组件模块包含 `'use client'` 指令时，保证对该组件的任何使用都将是客户端组件。然而，即使没有 `'use client'` 指令，组件仍可以在客户端上进行评估。
-  * 如果组件是在带有 `'use client'` 指令的模块中定义的，或者是带有 `'use client'` 指令的模块的依赖，那么该组件将被视为客户端组件。否则，它将是服务器组件。
+* 当从另一个客户端渲染的模块导入 `'use client'` 模块时，该指示符不起作用。
+* 当组件模块包含 `'use client'` 指示符时，保证对该组件的任何使用都将是客户端组件。然而，即使没有 `'use client'` 指示符，组件仍可以在客户端上进行评估。
+  * 如果组件是在带有 `'use client'` 指示符的模块中定义的，或者是带有 `'use client'` 指示符的模块的依赖，那么该组件将被视为客户端组件。否则，它将是服务器组件。
 * 标记为客户端评估的代码不仅限于组件。客户端模块子树的所有代码都将被发送到客户端并由客户端运行。
 * 当服务器评估的模块从 `'use client'` 模块导入值时，这些值必须是 React 组件或 [受支持的可序列化属性值](#passing-props-from-server-to-client-components)，以传递给客户端组件。其他用例将引发异常。
 
@@ -146,9 +146,9 @@ export default [
 
 </Sandpack>
 
-在这个示例应用程序的模块依赖树中，`InspirationGenerator.js` 中的 `'use client'` 指令标记了该模块及其所有传递依赖为客户端模块。从 `InspirationGenerator.js` 开始的子树现在被标记为客户端模块。
+在这个示例应用程序的模块依赖树中，`InspirationGenerator.js` 中的 `'use client'` 指示符标记了该模块及其所有传递依赖为客户端模块。从 `InspirationGenerator.js` 开始的子树现在被标记为客户端模块。
 
-<Diagram name="use_client_module_dependency" height={250} width={545} alt="一个树形图，顶部节点代表模块 'App.js'。'App.js' 有三个子节点：'Copyright.js'、'FancyText.js' 和 'InspirationGenerator.js'。'InspirationGenerator.js' 有两个子节点：'FancyText.js' 和 'inspirations.js'。'InspirationGenerator.js' 及其下面的节点都具有黄色背景颜色，表示由于 'InspirationGenerator.js' 中的 'use client' 指令，这个子图是由客户端渲染的。">
+<Diagram name="use_client_module_dependency" height={250} width={545} alt="一个树形图，顶部节点代表模块 'App.js'。'App.js' 有三个子节点：'Copyright.js'、'FancyText.js' 和 'InspirationGenerator.js'。'InspirationGenerator.js' 有两个子节点：'FancyText.js' 和 'inspirations.js'。'InspirationGenerator.js' 及其下面的节点都具有黄色背景颜色，表示由于 'InspirationGenerator.js' 中的 'use client' 指示符，这个子图是由客户端渲染的。">
 `'use client'` 划分了 React 服务器组件应用程序的模块依赖树，标记了 `InspirationGenerator.js` 以及其所有依赖为客户端渲染。
 </Diagram>
 
@@ -197,15 +197,15 @@ function App() {
 
 当谈论服务器组件或客户端组件时，我们指的是组件的使用。
 
-* 如果组件在带有 `'use client'` 指令的模块中定义，或者组件在客户端组件中导入并调用，那么组件的使用将是客户端组件。
+* 如果组件在带有 `'use client'` 指示符的模块中定义，或者组件在客户端组件中导入并调用，那么组件的使用将是客户端组件。
 * 否则，组件的使用将是服务器组件。
 
 
 <Diagram name="use_client_render_tree" height={150} width={450} alt="一个树形图，其中每个节点代表一个组件及其子组件作为子组件。顶级节点标记为 'App'，它有两个子组件 'InspirationGenerator' 和 'FancyText'。'InspirationGenerator' 有两个子组件，'FancyText' 和 'Copyright'。'InspirationGenerator' 和其子组件 'FancyText' 都标记为客户端渲染。">渲染树展示了组件的使用。</Diagram>
 
-回到关于 `FancyText` 的问题，我们可以看到组件定义没有包含 `'use client'` 指令，并且它有两个使用方式。
+回到关于 `FancyText` 的问题，我们可以看到组件定义没有包含 `'use client'` 指示符，并且它有两个使用方式。
 
-将 `FancyText` 作为 `App` 的子组件使用，将该使用标记为服务器组件。当 `FancyText` 在 `InspirationGenerator` 下导入并调用时，`FancyText` 的这种使用是客户端组件，因为 `InspirationGenerator` 包含 `'use client'` 指令。
+将 `FancyText` 作为 `App` 的子组件使用，将该使用标记为服务器组件。当 `FancyText` 在 `InspirationGenerator` 下导入并调用时，`FancyText` 的这种使用是客户端组件，因为 `InspirationGenerator` 包含 `'use client'` 指示符。
 
 这意味着 `FancyText` 的组件定义将在服务器上进行评估，同时也将被客户端下载以渲染其客户端组件的使用。
 
@@ -219,11 +219,11 @@ function App() {
 
 请回想一下，`'use client'` 定义了在 **模块依赖树** 上的服务器和客户端代码的边界，而不是在渲染树上。
 
-<Diagram name="use_client_module_dependency" height={200} width={500} alt="一个树形图，顶部节点代表模块 'App.js'。'App.js' 有三个子节点：'Copyright.js'、'FancyText.js' 和 'InspirationGenerator.js'。'InspirationGenerator.js' 有两个子节点：'FancyText.js' 和 'inspirations.js'。'InspirationGenerator.js' 及其下面的节点都具有黄色背景颜色，表示由于 'InspirationGenerator.js' 中的 'use client' 指令，这个子图是客户端渲染的。">
+<Diagram name="use_client_module_dependency" height={200} width={500} alt="一个树形图，顶部节点代表模块 'App.js'。'App.js' 有三个子节点：'Copyright.js'、'FancyText.js' 和 'InspirationGenerator.js'。'InspirationGenerator.js' 有两个子节点：'FancyText.js' 和 'inspirations.js'。'InspirationGenerator.js' 及其下面的节点都具有黄色背景颜色，表示由于 'InspirationGenerator.js' 中的 'use client' 指示符，这个子图是客户端渲染的。">
 `'use client'` 在模块依赖树上定义了服务器和客户端代码之间的边界。
 </Diagram>
 
-在模块依赖树中可以看到 `App.js` 从 `Copyright.js` 模块导入并调用 `Copyright`。由于 `Copyright.js` 没有包含 `'use client'` 指令，该组件的使用在服务器上进行渲染。`App` 作为根组件在服务器上进行渲染。
+在模块依赖树中可以看到 `App.js` 从 `Copyright.js` 模块导入并调用 `Copyright`。由于 `Copyright.js` 没有包含 `'use client'` 指示符，该组件的使用在服务器上进行渲染。`App` 作为根组件在服务器上进行渲染。
 
 由于可以将 JSX 作为 props 传递，客户端组件可以渲染服务器组件。在这种情况下，`InspirationGenerator` 以 [children](/learn/passing-props-to-a-component#passing-jsx-as-children) 的形式接收 `Copyright`。然而，`InspirationGenerator` 模块从未直接导入 `Copyright` 模块，也不调用该组件，所有这些都是由 `App` 完成的。实际上，在 `InspirationGenerator` 开始渲染之前，`Copyright` 组件已经完全执行完毕。
 
@@ -308,7 +308,7 @@ export default function Counter({initialValue = 0}) {
 
 </Sandpack>
 
-由于 `Counter` 需要使用 `useState` Hook 和事件处理程序来增加或减少值，因此该组件必须是客户端组件，并且需要在顶部添加 `'use client'` 指令。
+由于 `Counter` 需要使用 `useState` Hook 和事件处理程序来增加或减少值，因此该组件必须是客户端组件，并且需要在顶部添加 `'use client'` 指示符。
 
 相比之下，一个渲染 UI 而没有交互的组件不需要成为客户端组件。
 
@@ -334,7 +334,7 @@ export default function FancyText({title, text}) {
 }
 ```
 
-在这种不添加 `'use client'` 指令的情况下，当从服务器组件引用时，`FancyText` 的输出（而不是其源代码）将被发送到浏览器。正如之前在 Inspirations 应用程序示例中所演示的那样，`FancyText` 既可以作为服务器组件也可以作为客户端组件使用，这取决于它被导入和使用的位置。
+在这种不添加 `'use client'` 指示符的情况下，当从服务器组件引用时，`FancyText` 的输出（而不是其源代码）将被发送到浏览器。正如之前在 Inspirations 应用程序示例中所演示的那样，`FancyText` 既可以作为服务器组件也可以作为客户端组件使用，这取决于它被导入和使用的位置。
 
 但如果 `FancyText` 的 HTML 输出相对于其源代码（包括依赖项）较大，那么强制将其始终作为客户端组件可能更高效。返回较长 SVG 路径字符串的组件就是可能更高效地强制组件成为客户端组件的一种情况。
 

@@ -17,7 +17,7 @@ React 参考文档分为以下功能子部分：
 * [Hook](/reference/react/hooks) —— 在组件中使用不同的 React 特性。
 * [组件](/reference/react/components) —— 记录了可以在 JSX 中使用的内置组件。
 * [API](/reference/react/apis) —— 用于定义组件的有用 API。
-* [指令](/reference/react/directives) —— 为与 React 服务器组件兼容的捆绑器提供指示。
+* [指示符](/reference/react/directives) —— 为与 React 服务器组件兼容的捆绑器提供指示。
 
 ## React DOM {/*react-dom*/}
 
