@@ -322,7 +322,7 @@ button { display: block; margin-top: 10px; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useReducer } from 'react';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
@@ -405,7 +405,7 @@ const initialTasks = [
 ];
 ```
 
-```js AddTask.js hidden
+```js src/AddTask.js hidden
 import { useState } from 'react';
 
 export default function AddTask({ onAddTask }) {
@@ -426,7 +426,7 @@ export default function AddTask({ onAddTask }) {
 }
 ```
 
-```js TaskList.js hidden
+```js src/TaskList.js hidden
 import { useState } from 'react';
 
 export default function TaskList({
@@ -515,7 +515,7 @@ ul, li { margin: 0; padding: 0; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useImmerReducer } from 'use-immer';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
@@ -597,7 +597,7 @@ const initialTasks = [
 ];
 ```
 
-```js AddTask.js hidden
+```js src/AddTask.js hidden
 import { useState } from 'react';
 
 export default function AddTask({ onAddTask }) {
@@ -618,7 +618,7 @@ export default function AddTask({ onAddTask }) {
 }
 ```
 
-```js TaskList.js hidden
+```js src/TaskList.js hidden
 import { useState } from 'react';
 
 export default function TaskList({
@@ -763,7 +763,7 @@ function TodoList({ username }) {
 
 <Sandpack>
 
-```js App.js hidden
+```js src/App.js hidden
 import TodoList from './TodoList.js';
 
 export default function App() {
@@ -771,7 +771,7 @@ export default function App() {
 }
 ```
 
-```js TodoList.js active
+```js src/TodoList.js active
 import { useReducer } from 'react';
 
 function createInitialState(username) {
@@ -851,7 +851,7 @@ export default function TodoList({ username }) {
 
 <Sandpack>
 
-```js App.js hidden
+```js src/App.js hidden
 import TodoList from './TodoList.js';
 
 export default function App() {
@@ -859,7 +859,7 @@ export default function App() {
 }
 ```
 
-```js TodoList.js active
+```js src/TodoList.js active
 import { useReducer } from 'react';
 
 function createInitialState(username) {

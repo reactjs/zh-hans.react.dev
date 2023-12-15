@@ -990,7 +990,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import Background from './Background.js';
 import Box from './Box.js';
@@ -1043,7 +1043,7 @@ export default function Canvas() {
 }
 ```
 
-```js Box.js
+```js src/Box.js
 import { useState } from 'react';
 
 export default function Box({
@@ -1106,7 +1106,7 @@ export default function Box({
 }
 ```
 
-```js Background.js
+```js src/Background.js
 export default function Background({
   position
 }) {
@@ -1140,7 +1140,7 @@ select { margin-bottom: 10px; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import Background from './Background.js';
 import Box from './Box.js';
@@ -1198,7 +1198,7 @@ export default function Canvas() {
 }
 ```
 
-```js Box.js
+```js src/Box.js
 import { useState } from 'react';
 
 export default function Box({
@@ -1261,7 +1261,7 @@ export default function Box({
 }
 ```
 
-```js Background.js
+```js src/Background.js
 export default function Background({
   position
 }) {
@@ -1295,7 +1295,7 @@ select { margin-bottom: 10px; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import { useImmer } from 'use-immer';
 import Background from './Background.js';
@@ -1349,7 +1349,7 @@ export default function Canvas() {
 }
 ```
 
-```js Box.js
+```js src/Box.js
 import { useState } from 'react';
 
 export default function Box({
@@ -1412,7 +1412,7 @@ export default function Box({
 }
 ```
 
-```js Background.js
+```js src/Background.js
 export default function Background({
   position
 }) {
@@ -1462,7 +1462,7 @@ select { margin-bottom: 10px; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useImmer } from 'use-immer';
 import Background from './Background.js';
 import Box from './Box.js';
@@ -1516,7 +1516,7 @@ export default function Canvas() {
 }
 ```
 
-```js Box.js
+```js src/Box.js
 import { useState } from 'react';
 
 export default function Box({
@@ -1579,7 +1579,7 @@ export default function Box({
 }
 ```
 
-```js Background.js
+```js src/Background.js
 export default function Background({
   position
 }) {
