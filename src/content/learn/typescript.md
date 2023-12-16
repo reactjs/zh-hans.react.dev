@@ -55,7 +55,7 @@ npm install @types/react @types/react-dom
 
 <Sandpack>
 
-```tsx App.tsx active
+```tsx src/App.tsx active
 function MyButton({ title }: { title: string }) {
   return (
     <button>{title}</button>
@@ -88,7 +88,7 @@ export default App = AppTSX;
 
 <Sandpack>
 
-```tsx App.tsx active
+```tsx src/App.tsx active
 interface MyButtonProps {
   /** 按钮文字 */
   title: string;
@@ -170,7 +170,7 @@ const [requestState, setRequestState] = useState<RequestState>({ status: 'idle' 
 
 <Sandpack>
 
-```tsx App.tsx active
+```tsx src/App.tsx active
 import {useReducer} from 'react';
 
 interface State {
@@ -248,7 +248,7 @@ export default function App() {
 
 <Sandpack>
 
-```tsx App.tsx active
+```tsx src/App.tsx active
 import { createContext, useContext, useState } from 'react';
 
 type Theme = "light" | "dark" | "system";
@@ -381,7 +381,7 @@ export default function Form() {
 
 <Sandpack>
 
-```tsx App.tsx active
+```tsx src/App.tsx active
 import { useState } from 'react';
 
 export default function Form() {

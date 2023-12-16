@@ -43,7 +43,11 @@ function TabContainer() {
 
 #### 参数 {/*parameters*/}
 
+<<<<<<< HEAD
 * `scope`：调用一个或多个 [`set` 函数](/reference/react/useState#setstate) 来更新 state 的函数。React 会立即调用没有参数的 `scope`，并将在 `scope` 函数调用期间，调度所有的 state，并将同步更新标记为 transition。它们是 [非阻塞的](/reference/react/useTransition#marking-a-state-update-as-a-non-blocking-transition)，并且 [不会显示不想要的加载提示](/reference/react/useTransition#preventing-unwanted-loading-indicators)。
+=======
+* `scope`: A function that updates some state by calling one or more [`set` functions.](/reference/react/useState#setstate) React immediately calls `scope` with no arguments and marks all state updates scheduled synchronously during the `scope` function call as transitions. They will be [non-blocking](/reference/react/useTransition#marking-a-state-update-as-a-non-blocking-transition) and [will not display unwanted loading indicators.](/reference/react/useTransition#preventing-unwanted-loading-indicators)
+>>>>>>> 303ecae3dd4c7b570cf18e0115b94188f6aad5a1
 
 #### 返回值 {/*returns*/}
 
