@@ -131,15 +131,9 @@ export default function TodosApp() {
 }
 ```
 
-<<<<<<< HEAD
-```js todoStore.js
+```js src/todoStore.js
 // 这是一个第三方 store 的例子，
 // 你可能需要把它与 React 集成。
-=======
-```js src/todoStore.js
-// This is an example of a third-party store
-// that you might need to integrate with React.
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 
 // 如果你的应用完全由 React 构建，
 // 我们推荐使用 React state 替代。

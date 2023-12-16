@@ -290,17 +290,10 @@ export default function App() {
 }
 ```
 
-<<<<<<< HEAD
-```js index.js hidden
+```js src/index.js hidden
 // TODO: 在稳定版本中更新 import
 // 以替代此处 canary 版本中的导入方式，一旦 `use`
 // Hook 在 React 稳定版本中发布
-=======
-```js src/index.js hidden
-// TODO: update to import from stable
-// react instead of canary once the `use`
-// Hook is in a stable release of React
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
@@ -417,17 +410,10 @@ export default function App() {
 }
 ```
 
-<<<<<<< HEAD
-```js index.js hidden
+```js src/index.js hidden
 // TODO: 在稳定版本中更新 import
 // 以替代此处 canary 版本中的导入方式，一旦 `use`
 // Hook 在 React 稳定版本中发布
-=======
-```js src/index.js hidden
-// TODO: update to import from stable
-// react instead of canary once the `use`
-// Hook is in a stable release of React
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';

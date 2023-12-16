@@ -162,17 +162,10 @@ function use(promise) {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js hidden
+```js src/data.js hidden
 // 注意：你进行数据获取的方式取决于
 // 你与 Suspense 集成的框架。
 // 通常，缓存逻辑会在框架内部。
-=======
-```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 
 let cache = new Map();
 
@@ -459,17 +452,10 @@ function use(promise) {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js hidden
+```js src/data.js hidden
 // 注意：你进行数据获取的方式取决于
 // 你与 Suspense 集成的框架。
 // 通常，缓存逻辑会在框架内部。
-=======
-```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 
 let cache = new Map();
 
@@ -803,17 +789,10 @@ function use(promise) {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js hidden
+```js src/data.js hidden
 // 注意：你进行数据获取的方式取决于
 // 你与 Suspense 集成的框架。
 // 通常，缓存逻辑会在框架内部。
-=======
-```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 
 let cache = new Map();
 
@@ -1039,17 +1018,10 @@ function use(promise) {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js hidden
+```js src/data.js hidden
 // 注意：你进行数据获取的方式取决于
 // 你与 Suspense 集成的框架。
 // 通常，缓存逻辑会在框架内部。
-=======
-```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 
 let cache = new Map();
 
@@ -1275,17 +1247,10 @@ function use(promise) {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js hidden
+```js src/data.js hidden
 // 注意：你进行数据获取的方式取决于
 // 你与 Suspense 集成的框架。
 // 通常，缓存逻辑会在框架内部。
-=======
-```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 
 let cache = new Map();
 
@@ -1616,17 +1581,10 @@ export default function Panel({ children }) {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js hidden
+```js src/data.js hidden
 // 注意：你进行数据获取的方式取决于
 // 你与 Suspense 集成的框架。
 // 通常，缓存逻辑会在框架内部。
-=======
-```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 
 let cache = new Map();
 
@@ -2010,17 +1968,10 @@ export default function Panel({ children }) {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js hidden
+```js src/data.js hidden
 // 注意：你进行数据获取的方式取决于
 // 你与 Suspense 集成的框架。
 // 通常，缓存逻辑会在框架内部。
-=======
-```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 
 let cache = new Map();
 
@@ -2403,17 +2354,10 @@ export default function Panel({ children }) {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js hidden
+```js src/data.js hidden
 // 注意：你进行数据获取的方式取决于
 // 你与 Suspense 集成的框架。
 // 通常，缓存逻辑会在框架内部。
-=======
-```js src/data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 
 let cache = new Map();
 

@@ -193,8 +193,7 @@ export default function List() {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js
+```js srcdata.js
 export const people = [
   {
     id: 0,
@@ -232,40 +231,6 @@ export const people = [
     imageId: 'lrWQx8l',
   },
 ];
-=======
-```js src/data.js
-export const people = [{
-  id: 0,
-  name: 'Creola Katherine Johnson',
-  profession: 'mathematician',
-  accomplishment: 'spaceflight calculations',
-  imageId: 'MK3eW3A'
-}, {
-  id: 1,
-  name: 'Mario José Molina-Pasquel Henríquez',
-  profession: 'chemist',
-  accomplishment: 'discovery of Arctic ozone hole',
-  imageId: 'mynHUSa'
-}, {
-  id: 2,
-  name: 'Mohammad Abdus Salam',
-  profession: 'physicist',
-  accomplishment: 'electromagnetism theory',
-  imageId: 'bE7W1ji'
-}, {
-  id: 3,
-  name: 'Percy Lavon Julian',
-  profession: 'chemist',
-  accomplishment: 'pioneering cortisone drugs, steroids and birth control pills',
-  imageId: 'IOjWm71'
-}, {
-  id: 4,
-  name: 'Subrahmanyan Chandrasekhar',
-  profession: 'astrophysicist',
-  accomplishment: 'white dwarf star mass calculations',
-  imageId: 'lrWQx8l'
-}];
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 ```
 
 ```js src/utils.js
@@ -364,8 +329,7 @@ export default function List() {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js active
+```js src/data.js active
 export const people = [
   {
     id: 0, // 在 JSX 中作为 key 使用
@@ -403,40 +367,6 @@ export const people = [
     imageId: 'lrWQx8l',
   },
 ];
-=======
-```js src/data.js active
-export const people = [{
-  id: 0, // Used in JSX as a key
-  name: 'Creola Katherine Johnson',
-  profession: 'mathematician',
-  accomplishment: 'spaceflight calculations',
-  imageId: 'MK3eW3A'
-}, {
-  id: 1, // Used in JSX as a key
-  name: 'Mario José Molina-Pasquel Henríquez',
-  profession: 'chemist',
-  accomplishment: 'discovery of Arctic ozone hole',
-  imageId: 'mynHUSa'
-}, {
-  id: 2, // Used in JSX as a key
-  name: 'Mohammad Abdus Salam',
-  profession: 'physicist',
-  accomplishment: 'electromagnetism theory',
-  imageId: 'bE7W1ji'
-}, {
-  id: 3, // Used in JSX as a key
-  name: 'Percy Lavon Julian',
-  profession: 'chemist',
-  accomplishment: 'pioneering cortisone drugs, steroids and birth control pills',
-  imageId: 'IOjWm71'
-}, {
-  id: 4, // Used in JSX as a key
-  name: 'Subrahmanyan Chandrasekhar',
-  profession: 'astrophysicist',
-  accomplishment: 'white dwarf star mass calculations',
-  imageId: 'lrWQx8l'
-}];
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 ```
 
 ```js src/utils.js
@@ -566,8 +496,7 @@ export default function List() {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js
+```js src/data.js
 export const people = [
   {
     id: 0,
@@ -605,40 +534,6 @@ export const people = [
     imageId: 'lrWQx8l',
   },
 ];
-=======
-```js src/data.js
-export const people = [{
-  id: 0,
-  name: 'Creola Katherine Johnson',
-  profession: 'mathematician',
-  accomplishment: 'spaceflight calculations',
-  imageId: 'MK3eW3A'
-}, {
-  id: 1,
-  name: 'Mario José Molina-Pasquel Henríquez',
-  profession: 'chemist',
-  accomplishment: 'discovery of Arctic ozone hole',
-  imageId: 'mynHUSa'
-}, {
-  id: 2,
-  name: 'Mohammad Abdus Salam',
-  profession: 'physicist',
-  accomplishment: 'electromagnetism theory',
-  imageId: 'bE7W1ji'
-}, {
-  id: 3,
-  name: 'Percy Lavon Julian',
-  profession: 'chemist',
-  accomplishment: 'pioneering cortisone drugs, steroids and birth control pills',
-  imageId: 'IOjWm71'
-}, {
-  id: 4,
-  name: 'Subrahmanyan Chandrasekhar',
-  profession: 'astrophysicist',
-  accomplishment: 'white dwarf star mass calculations',
-  imageId: 'lrWQx8l'
-}];
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 ```
 
 ```js src/utils.js
@@ -722,8 +617,7 @@ export default function List() {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js
+```js src/data.js
 export const people = [
   {
     id: 0,
@@ -761,40 +655,6 @@ export const people = [
     imageId: 'lrWQx8l',
   },
 ];
-=======
-```js src/data.js
-export const people = [{
-  id: 0,
-  name: 'Creola Katherine Johnson',
-  profession: 'mathematician',
-  accomplishment: 'spaceflight calculations',
-  imageId: 'MK3eW3A'
-}, {
-  id: 1,
-  name: 'Mario José Molina-Pasquel Henríquez',
-  profession: 'chemist',
-  accomplishment: 'discovery of Arctic ozone hole',
-  imageId: 'mynHUSa'
-}, {
-  id: 2,
-  name: 'Mohammad Abdus Salam',
-  profession: 'physicist',
-  accomplishment: 'electromagnetism theory',
-  imageId: 'bE7W1ji'
-}, {
-  id: 3,
-  name: 'Percy Lavon Julian',
-  profession: 'chemist',
-  accomplishment: 'pioneering cortisone drugs, steroids and birth control pills',
-  imageId: 'IOjWm71'
-}, {
-  id: 4,
-  name: 'Subrahmanyan Chandrasekhar',
-  profession: 'astrophysicist',
-  accomplishment: 'white dwarf star mass calculations',
-  imageId: 'lrWQx8l'
-}];
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 ```
 
 ```js src/utils.js
@@ -877,8 +737,7 @@ export default function List() {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js
+```js src/data.js
 export const people = [
   {
     id: 0,
@@ -916,40 +775,6 @@ export const people = [
     imageId: 'lrWQx8l',
   },
 ];
-=======
-```js src/data.js
-export const people = [{
-  id: 0,
-  name: 'Creola Katherine Johnson',
-  profession: 'mathematician',
-  accomplishment: 'spaceflight calculations',
-  imageId: 'MK3eW3A'
-}, {
-  id: 1,
-  name: 'Mario José Molina-Pasquel Henríquez',
-  profession: 'chemist',
-  accomplishment: 'discovery of Arctic ozone hole',
-  imageId: 'mynHUSa'
-}, {
-  id: 2,
-  name: 'Mohammad Abdus Salam',
-  profession: 'physicist',
-  accomplishment: 'electromagnetism theory',
-  imageId: 'bE7W1ji'
-}, {
-  id: 3,
-  name: 'Percy Lavon Julian',
-  profession: 'chemist',
-  accomplishment: 'pioneering cortisone drugs, steroids and birth control pills',
-  imageId: 'IOjWm71'
-}, {
-  id: 4,
-  name: 'Subrahmanyan Chandrasekhar',
-  profession: 'astrophysicist',
-  accomplishment: 'white dwarf star mass calculations',
-  imageId: 'lrWQx8l'
-}];
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 ```
 
 ```js src/utils.js
@@ -1036,8 +861,7 @@ export default function List() {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js
+```js src/data.js
 export const people = [
   {
     id: 0,
@@ -1075,40 +899,6 @@ export const people = [
     imageId: 'lrWQx8l',
   },
 ];
-=======
-```js src/data.js
-export const people = [{
-  id: 0,
-  name: 'Creola Katherine Johnson',
-  profession: 'mathematician',
-  accomplishment: 'spaceflight calculations',
-  imageId: 'MK3eW3A'
-}, {
-  id: 1,
-  name: 'Mario José Molina-Pasquel Henríquez',
-  profession: 'chemist',
-  accomplishment: 'discovery of Arctic ozone hole',
-  imageId: 'mynHUSa'
-}, {
-  id: 2,
-  name: 'Mohammad Abdus Salam',
-  profession: 'physicist',
-  accomplishment: 'electromagnetism theory',
-  imageId: 'bE7W1ji'
-}, {
-  id: 3,
-  name: 'Percy Lavon Julian',
-  profession: 'chemist',
-  accomplishment: 'pioneering cortisone drugs, steroids and birth control pills',
-  imageId: 'IOjWm71'
-}, {
-  id: 4,
-  name: 'Subrahmanyan Chandrasekhar',
-  profession: 'astrophysicist',
-  accomplishment: 'white dwarf star mass calculations',
-  imageId: 'lrWQx8l'
-}];
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 ```
 
 ```js src/utils.js
@@ -1161,8 +951,7 @@ export default function RecipeList() {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js
+```js src/data.js
 export const recipes = [
   {
     id: 'greek-salad',
@@ -1180,22 +969,6 @@ export const recipes = [
     ingredients: ['鹰嘴豆', '橄榄油', '蒜瓣', '柠檬', '芝麻酱'],
   },
 ];
-=======
-```js src/data.js
-export const recipes = [{
-  id: 'greek-salad',
-  name: 'Greek Salad',
-  ingredients: ['tomatoes', 'cucumber', 'onion', 'olives', 'feta']
-}, {
-  id: 'hawaiian-pizza',
-  name: 'Hawaiian Pizza',
-  ingredients: ['pizza crust', 'pizza sauce', 'mozzarella', 'ham', 'pineapple']
-}, {
-  id: 'hummus',
-  name: 'Hummus',
-  ingredients: ['chickpeas', 'olive oil', 'garlic cloves', 'lemon', 'tahini']
-}];
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 ```
 
 </Sandpack>
@@ -1230,8 +1003,7 @@ export default function RecipeList() {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js
+```js src/data.js
 export const recipes = [
   {
     id: 'greek-salad',
@@ -1249,22 +1021,6 @@ export const recipes = [
     ingredients: ['鹰嘴豆', '橄榄油', '蒜瓣', '柠檬', '芝麻酱'],
   },
 ];
-=======
-```js src/data.js
-export const recipes = [{
-  id: 'greek-salad',
-  name: 'Greek Salad',
-  ingredients: ['tomatoes', 'cucumber', 'onion', 'olives', 'feta']
-}, {
-  id: 'hawaiian-pizza',
-  name: 'Hawaiian Pizza',
-  ingredients: ['pizza crust', 'pizza sauce', 'mozzarella', 'ham', 'pineapple']
-}, {
-  id: 'hummus',
-  name: 'Hummus',
-  ingredients: ['chickpeas', 'olive oil', 'garlic cloves', 'lemon', 'tahini']
-}];
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 ```
 
 </Sandpack>
@@ -1303,8 +1059,7 @@ export default function RecipeList() {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js
+```js src/data.js
 export const recipes = [
   {
     id: 'greek-salad',
@@ -1322,22 +1077,6 @@ export const recipes = [
     ingredients: ['鹰嘴豆', '橄榄油', '蒜瓣', '柠檬', '芝麻酱'],
   },
 ];
-=======
-```js src/data.js
-export const recipes = [{
-  id: 'greek-salad',
-  name: 'Greek Salad',
-  ingredients: ['tomatoes', 'cucumber', 'onion', 'olives', 'feta']
-}, {
-  id: 'hawaiian-pizza',
-  name: 'Hawaiian Pizza',
-  ingredients: ['pizza crust', 'pizza sauce', 'mozzarella', 'ham', 'pineapple']
-}, {
-  id: 'hummus',
-  name: 'Hummus',
-  ingredients: ['chickpeas', 'olive oil', 'garlic cloves', 'lemon', 'tahini']
-}];
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 ```
 
 </Sandpack>
@@ -1378,8 +1117,7 @@ export default function RecipeList() {
 }
 ```
 
-<<<<<<< HEAD
-```js data.js
+```js src/data.js
 export const recipes = [
   {
     id: 'greek-salad',
@@ -1397,22 +1135,6 @@ export const recipes = [
     ingredients: ['鹰嘴豆', '橄榄油', '蒜瓣', '柠檬', '芝麻酱'],
   },
 ];
-=======
-```js src/data.js
-export const recipes = [{
-  id: 'greek-salad',
-  name: 'Greek Salad',
-  ingredients: ['tomatoes', 'cucumber', 'onion', 'olives', 'feta']
-}, {
-  id: 'hawaiian-pizza',
-  name: 'Hawaiian Pizza',
-  ingredients: ['pizza crust', 'pizza sauce', 'mozzarella', 'ham', 'pineapple']
-}, {
-  id: 'hummus',
-  name: 'Hummus',
-  ingredients: ['chickpeas', 'olive oil', 'garlic cloves', 'lemon', 'tahini']
-}];
->>>>>>> bb65ace6e0b844561153e0011e20ec317dc2899d
 ```
 
 </Sandpack>
