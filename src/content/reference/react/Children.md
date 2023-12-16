@@ -33,7 +33,7 @@ const mappedChildren = Children.map(children, child =>
 
 调用 `Children.count(children)` 可以获取 `children` 中的节点数量。
 
-```js RowList.js active
+```js src/RowList.js active
 import { Children } from 'react';
 
 function RowList({ children }) {
@@ -66,7 +66,7 @@ function RowList({ children }) {
 
 调用 `Children.forEach(children, fn, thisArg?)` 可以为每个 `children` 中的每个子节点执行一段代码。
 
-```js RowList.js active
+```js src/RowList.js active
 import { Children } from 'react';
 
 function SeparatorList({ children }) {
@@ -100,7 +100,7 @@ function SeparatorList({ children }) {
 
 调用 `Children.map(children, fn, thisArg?)` 可以对 `children` 中的每个子节点进行映射或转换。
 
-```js RowList.js active
+```js src/RowList.js active
 import { Children } from 'react';
 
 function RowList({ children }) {
@@ -169,7 +169,7 @@ function Box({ children }) {
 
 调用 `Children.toArray(children)` 能够通过 `children` 创建一个数组。
 
-```js ReversedList.js active
+```js src/ReversedList.js active
 import { Children } from 'react';
 
 export default function ReversedList({ children }) {
@@ -258,7 +258,7 @@ export default function App() {
 }
 ```
 
-```js RowList.js active
+```js src/RowList.js active
 import { Children } from 'react';
 
 export default function RowList({ children }) {
@@ -336,7 +336,7 @@ function MoreRows() {
 }
 ```
 
-```js RowList.js
+```js src/RowList.js
 import { Children } from 'react';
 
 export default function RowList({ children }) {
@@ -395,7 +395,7 @@ export default function App() {
 }
 ```
 
-```js SeparatorList.js active
+```js src/SeparatorList.js active
 import { Children } from 'react';
 
 export default function SeparatorList({ children }) {
@@ -439,7 +439,7 @@ export default function App() {
 }
 ```
 
-```js RowList.js active
+```js src/RowList.js active
 import { Children } from 'react';
 
 export default function RowList({ children }) {
@@ -510,7 +510,7 @@ export default function App() {
 }
 ```
 
-```js ReversedList.js active
+```js src/ReversedList.js active
 import { Children } from 'react';
 
 export default function ReversedList({ children }) {
@@ -572,7 +572,7 @@ export default function App() {
 }
 ```
 
-```js RowList.js
+```js src/RowList.js
 export function RowList({ children }) {
   return (
     <div className="RowList">
@@ -639,7 +639,7 @@ function MoreRows() {
 }
 ```
 
-```js RowList.js
+```js src/RowList.js
 export function RowList({ children }) {
   return (
     <div className="RowList">
@@ -698,7 +698,7 @@ export default function App() {
 }
 ```
 
-```js RowList.js
+```js src/RowList.js
 export function RowList({ rows }) {
   return (
     <div className="RowList">
@@ -761,7 +761,7 @@ export default function App() {
 }
 ```
 
-```js TabSwitcher.js
+```js src/TabSwitcher.js
 import { useState } from 'react';
 
 export default function TabSwitcher({ tabs }) {
@@ -817,7 +817,7 @@ export default function App() {
 }
 ```
 
-```js TabSwitcher.js
+```js src/TabSwitcher.js
 import { useState } from 'react';
 
 export default function TabSwitcher({ tabIds, getHeader, renderContent }) {
@@ -869,7 +869,7 @@ export default function App() {
 }
 ```
 
-```js RowList.js
+```js src/RowList.js
 import { Fragment } from 'react';
 
 export function RowList({ rowIds, renderRow }) {

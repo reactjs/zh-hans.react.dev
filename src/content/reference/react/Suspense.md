@@ -69,7 +69,7 @@ React 将展示 <CodeStep step={1}>后备方案</CodeStep> 直到 <CodeStep step
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from 'react';
 import ArtistPage from './ArtistPage.js';
 
@@ -94,7 +94,7 @@ export default function App() {
 }
 ```
 
-```js ArtistPage.js active
+```js src/ArtistPage.js active
 import { Suspense } from 'react';
 import Albums from './Albums.js';
 
@@ -114,7 +114,7 @@ function Loading() {
 }
 ```
 
-```js Albums.js hidden
+```js src/Albums.js hidden
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
@@ -162,7 +162,7 @@ function use(promise) {
 }
 ```
 
-```js data.js hidden
+```js src/data.js hidden
 // 注意：你进行数据获取的方式取决于
 // 你与 Suspense 集成的框架。
 // 通常，缓存逻辑会在框架内部。
@@ -300,7 +300,7 @@ Suspense **无法** 检测在 Effect 或事件处理程序中获取数据的情�
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from 'react';
 import ArtistPage from './ArtistPage.js';
 
@@ -325,7 +325,7 @@ export default function App() {
 }
 ```
 
-```js ArtistPage.js active
+```js src/ArtistPage.js active
 import { Suspense } from 'react';
 import Albums from './Albums.js';
 import Biography from './Biography.js';
@@ -350,7 +350,7 @@ function Loading() {
 }
 ```
 
-```js Panel.js
+```js src/Panel.js
 export default function Panel({ children }) {
   return (
     <section className="panel">
@@ -360,7 +360,7 @@ export default function Panel({ children }) {
 }
 ```
 
-```js Biography.js hidden
+```js src/Biography.js hidden
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
@@ -404,7 +404,7 @@ function use(promise) {
 }
 ```
 
-```js Albums.js hidden
+```js src/Albums.js hidden
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
@@ -452,7 +452,7 @@ function use(promise) {
 }
 ```
 
-```js data.js hidden
+```js src/data.js hidden
 // 注意：你进行数据获取的方式取决于
 // 你与 Suspense 集成的框架。
 // 通常，缓存逻辑会在框架内部。
@@ -625,7 +625,7 @@ function Details({ artistId }) {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from 'react';
 import ArtistPage from './ArtistPage.js';
 
@@ -650,7 +650,7 @@ export default function App() {
 }
 ```
 
-```js ArtistPage.js active
+```js src/ArtistPage.js active
 import { Suspense } from 'react';
 import Albums from './Albums.js';
 import Biography from './Biography.js';
@@ -687,7 +687,7 @@ function AlbumsGlimmer() {
 }
 ```
 
-```js Panel.js
+```js src/Panel.js
 export default function Panel({ children }) {
   return (
     <section className="panel">
@@ -697,7 +697,7 @@ export default function Panel({ children }) {
 }
 ```
 
-```js Biography.js hidden
+```js src/Biography.js hidden
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
@@ -741,7 +741,7 @@ function use(promise) {
 }
 ```
 
-```js Albums.js hidden
+```js src/Albums.js hidden
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
@@ -789,7 +789,7 @@ function use(promise) {
 }
 ```
 
-```js data.js hidden
+```js src/data.js hidden
 // 注意：你进行数据获取的方式取决于
 // 你与 Suspense 集成的框架。
 // 通常，缓存逻辑会在框架内部。
@@ -944,7 +944,7 @@ Suspense 边界允许协调 UI 的哪些部分应该总是一起“浮现”，�
 }
 ```
 
-```js App.js
+```js src/App.js
 import { Suspense, useState } from 'react';
 import SearchResults from './SearchResults.js';
 
@@ -964,7 +964,7 @@ export default function App() {
 }
 ```
 
-```js SearchResults.js hidden
+```js src/SearchResults.js hidden
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
@@ -1018,7 +1018,7 @@ function use(promise) {
 }
 ```
 
-```js data.js hidden
+```js src/data.js hidden
 // 注意：你进行数据获取的方式取决于
 // 你与 Suspense 集成的框架。
 // 通常，缓存逻辑会在框架内部。
@@ -1169,7 +1169,7 @@ export default function App() {
 }
 ```
 
-```js App.js
+```js src/App.js
 import { Suspense, useState, useDeferredValue } from 'react';
 import SearchResults from './SearchResults.js';
 
@@ -1193,7 +1193,7 @@ export default function App() {
 }
 ```
 
-```js SearchResults.js hidden
+```js src/SearchResults.js hidden
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
@@ -1247,7 +1247,7 @@ function use(promise) {
 }
 ```
 
-```js data.js hidden
+```js src/data.js hidden
 // 注意：你进行数据获取的方式取决于
 // 你与 Suspense 集成的框架。
 // 通常，缓存逻辑会在框架内部。
@@ -1375,7 +1375,7 @@ input { margin: 10px; }
 }
 ```
 
-```js App.js
+```js src/App.js
 import { Suspense, useState } from 'react';
 import IndexPage from './IndexPage.js';
 import ArtistPage from './ArtistPage.js';
@@ -1423,7 +1423,7 @@ function BigSpinner() {
 }
 ```
 
-```js Layout.js
+```js src/Layout.js
 export default function Layout({ children }) {
   return (
     <div className="layout">
@@ -1438,7 +1438,7 @@ export default function Layout({ children }) {
 }
 ```
 
-```js IndexPage.js
+```js src/IndexPage.js
 export default function IndexPage({ navigate }) {
   return (
     <button onClick={() => navigate('/the-beatles')}>
@@ -1448,7 +1448,7 @@ export default function IndexPage({ navigate }) {
 }
 ```
 
-```js ArtistPage.js
+```js src/ArtistPage.js
 import { Suspense } from 'react';
 import Albums from './Albums.js';
 import Biography from './Biography.js';
@@ -1479,7 +1479,7 @@ function AlbumsGlimmer() {
 }
 ```
 
-```js Albums.js hidden
+```js src/Albums.js hidden
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
@@ -1527,7 +1527,7 @@ function use(promise) {
 }
 ```
 
-```js Biography.js hidden
+```js src/Biography.js hidden
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
@@ -1571,7 +1571,7 @@ function use(promise) {
 }
 ```
 
-```js Panel.js hidden
+```js src/Panel.js hidden
 export default function Panel({ children }) {
   return (
     <section className="panel">
@@ -1581,7 +1581,7 @@ export default function Panel({ children }) {
 }
 ```
 
-```js data.js hidden
+```js src/data.js hidden
 // 注意：你进行数据获取的方式取决于
 // 你与 Suspense 集成的框架。
 // 通常，缓存逻辑会在框架内部。
@@ -1760,7 +1760,7 @@ function Router() {
 }
 ```
 
-```js App.js
+```js src/App.js
 import { Suspense, startTransition, useState } from 'react';
 import IndexPage from './IndexPage.js';
 import ArtistPage from './ArtistPage.js';
@@ -1810,7 +1810,7 @@ function BigSpinner() {
 }
 ```
 
-```js Layout.js
+```js src/Layout.js
 export default function Layout({ children }) {
   return (
     <div className="layout">
@@ -1825,7 +1825,7 @@ export default function Layout({ children }) {
 }
 ```
 
-```js IndexPage.js
+```js src/IndexPage.js
 export default function IndexPage({ navigate }) {
   return (
     <button onClick={() => navigate('/the-beatles')}>
@@ -1835,7 +1835,7 @@ export default function IndexPage({ navigate }) {
 }
 ```
 
-```js ArtistPage.js
+```js src/ArtistPage.js
 import { Suspense } from 'react';
 import Albums from './Albums.js';
 import Biography from './Biography.js';
@@ -1866,7 +1866,7 @@ function AlbumsGlimmer() {
 }
 ```
 
-```js Albums.js hidden
+```js src/Albums.js hidden
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
@@ -1914,7 +1914,7 @@ function use(promise) {
 }
 ```
 
-```js Biography.js hidden
+```js src/Biography.js hidden
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
@@ -1958,7 +1958,7 @@ function use(promise) {
 }
 ```
 
-```js Panel.js hidden
+```js src/Panel.js hidden
 export default function Panel({ children }) {
   return (
     <section className="panel">
@@ -1968,7 +1968,7 @@ export default function Panel({ children }) {
 }
 ```
 
-```js data.js hidden
+```js src/data.js hidden
 // 注意：你进行数据获取的方式取决于
 // 你与 Suspense 集成的框架。
 // 通常，缓存逻辑会在框架内部。
@@ -2143,7 +2143,7 @@ transition 并不会等待 **所有** 内容加载完成。它只会等待足够
 }
 ```
 
-```js App.js
+```js src/App.js
 import { Suspense, useState, useTransition } from 'react';
 import IndexPage from './IndexPage.js';
 import ArtistPage from './ArtistPage.js';
@@ -2194,7 +2194,7 @@ function BigSpinner() {
 }
 ```
 
-```js Layout.js
+```js src/Layout.js
 export default function Layout({ children, isPending }) {
   return (
     <div className="layout">
@@ -2211,7 +2211,7 @@ export default function Layout({ children, isPending }) {
 }
 ```
 
-```js IndexPage.js
+```js src/IndexPage.js
 export default function IndexPage({ navigate }) {
   return (
     <button onClick={() => navigate('/the-beatles')}>
@@ -2221,7 +2221,7 @@ export default function IndexPage({ navigate }) {
 }
 ```
 
-```js ArtistPage.js
+```js src/ArtistPage.js
 import { Suspense } from 'react';
 import Albums from './Albums.js';
 import Biography from './Biography.js';
@@ -2252,7 +2252,7 @@ function AlbumsGlimmer() {
 }
 ```
 
-```js Albums.js hidden
+```js src/Albums.js hidden
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
@@ -2300,7 +2300,7 @@ function use(promise) {
 }
 ```
 
-```js Biography.js hidden
+```js src/Biography.js hidden
 import { fetchData } from './data.js';
 
 // 注意：这个组件使用了一个实验性的 API
@@ -2344,7 +2344,7 @@ function use(promise) {
 }
 ```
 
-```js Panel.js hidden
+```js src/Panel.js hidden
 export default function Panel({ children }) {
   return (
     <section className="panel">
@@ -2354,7 +2354,7 @@ export default function Panel({ children }) {
 }
 ```
 
-```js data.js hidden
+```js src/data.js hidden
 // 注意：你进行数据获取的方式取决于
 // 你与 Suspense 集成的框架。
 // 通常，缓存逻辑会在框架内部。

@@ -131,7 +131,7 @@ export default function TodosApp() {
 }
 ```
 
-```js todoStore.js
+```js src/todoStore.js
 // 这是一个第三方 store 的例子，
 // 你可能需要把它与 React 集成。
 
@@ -300,7 +300,7 @@ export default function App() {
 }
 ```
 
-```js useOnlineStatus.js
+```js src/useOnlineStatus.js
 import { useSyncExternalStore } from 'react';
 
 export function useOnlineStatus() {

@@ -112,7 +112,7 @@ function SearchPage() {
 }
 ```
 
-```js App.js
+```js src/App.js
 import { Suspense, useState } from 'react';
 import SearchResults from './SearchResults.js';
 
@@ -132,7 +132,7 @@ export default function App() {
 }
 ```
 
-```js SearchResults.js hidden
+```js src/SearchResults.js hidden
 import { fetchData } from './data.js';
 
 // 注意：此组件使用了一种实验性 API
@@ -186,7 +186,7 @@ function use(promise) {
 }
 ```
 
-```js data.js hidden
+```js src/data.js hidden
 // 注意：使用 suspense 进行数据获取的方式
 // 取决于与其配合使用的框架。
 // 缓存逻辑通常会在框架内部处理。
@@ -326,7 +326,7 @@ export default function App() {
 }
 ```
 
-```js App.js
+```js src/App.js
 import { Suspense, useState, useDeferredValue } from 'react';
 import SearchResults from './SearchResults.js';
 
@@ -347,7 +347,7 @@ export default function App() {
 }
 ```
 
-```js SearchResults.js hidden
+```js src/SearchResults.js hidden
 import { fetchData } from './data.js';
 
 // 注意：此组件使用了一种实验性 API
@@ -401,7 +401,7 @@ function use(promise) {
 }
 ```
 
-```js data.js hidden
+```js src/data.js hidden
 // 注意：使用 suspense 进行数据获取的方式
 // 取决于与其配合使用的框架。
 // 缓存逻辑通常会在框架内部处理。
@@ -549,7 +549,7 @@ input { margin: 10px; }
 }
 ```
 
-```js App.js
+```js src/App.js
 import { Suspense, useState, useDeferredValue } from 'react';
 import SearchResults from './SearchResults.js';
 
@@ -576,7 +576,7 @@ export default function App() {
 }
 ```
 
-```js SearchResults.js hidden
+```js src/SearchResults.js hidden
 import { fetchData } from './data.js';
 
 // 注意：此组件使用了一种实验性 API
@@ -630,7 +630,7 @@ function use(promise) {
 }
 ```
 
-```js data.js hidden
+```js src/data.js hidden
 // 注意：使用 suspense 进行数据获取的方式
 // 取决于与其配合使用的框架。
 // 缓存逻辑通常会在框架内部处理。
@@ -800,7 +800,7 @@ export default function App() {
 }
 ```
 
-```js SlowList.js
+```js src/SlowList.js
 import { memo } from 'react';
 
 const SlowList = memo(function SlowList({ text }) {
@@ -877,7 +877,7 @@ export default function App() {
 }
 ```
 
-```js SlowList.js
+```js src/SlowList.js
 import { memo } from 'react';
 
 const SlowList = memo(function SlowList({ text }) {
