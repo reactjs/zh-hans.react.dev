@@ -982,6 +982,8 @@ textarea { display: block; margin-top: 5px; margin-bottom: 10px; }
 
 </Sandpack>
 
+`{__html}` 对象应尽可能在接近生成 HTML 的位置创建，就像上面的示例在 `renderMarkdownToHTML` 函数中所做的那样。这确保了代码中使用的所有原始 HTML 都明确标记为这样，并且只有你期望包含 HTML 的变量被传递给 `dangerouslySetInnerHTML`。不建议像 `<div dangerouslySetInnerHTML={{__html: markup}} />` 这样内联创建对象。
+
 要了解为什么渲染任意 HTML 是危险的，请将上面的代码替换为此代码：
 
 ```js {1-4,7,8}
