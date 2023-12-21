@@ -22,7 +22,11 @@ React 以及许多其他 UI 库，将 UI 建模为树。将应用程序视为树
 
 树是项目和 UI 之间的关系模型，通常使用树结构来表示 UI。例如，浏览器使用树结构来建模 HTML（[DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction)）与CSS（[CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model)）。移动平台也使用树来表示其视图层次结构。
 
+<<<<<<< HEAD
 <Diagram name="preserving_state_dom_tree" height={193} width={864} alt="水平排列的三个部分的图表。第一部分中，有三个垂直堆叠的矩形，标有 Component A、Component B 和 Component C 的标签。过渡到下一个窗格的是一个带有 React 标志的箭头，标有 React。中间部分包含组件树，根标有 A，有两个子节点标有 B 和 C。下一个部分再次使用带有 React 标志的箭头过渡。第三和最后部分是浏览器的线框图，包含 8 个节点的树，只有一部分突出显示（表示来自中间部分的子树）">
+=======
+<Diagram name="preserving_state_dom_tree" height={193} width={864} alt="Diagram with three sections arranged horizontally. In the first section, there are three rectangles stacked vertically, with labels 'Component A', 'Component B', and 'Component C'. Transitioning to the next pane is an arrow with the React logo on top labeled 'React'. The middle section contains a tree of components, with the root labeled 'A' and two children labeled 'B' and 'C'. The next section is again transitioned using an arrow with the React logo on top labeled 'React DOM'. The third and final section is a wireframe of a browser, containing a tree of 8 nodes, which has only a subset highlighted (indicating the subtree from the middle section).">
+>>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
 
 React 从组件中创建 UI 树。在这个示例中，UI 树最后会用于渲染 DOM。
 </Diagram>
