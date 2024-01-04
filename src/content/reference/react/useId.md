@@ -305,9 +305,9 @@ input { margin: 5px; }
 
 ---
 
-### Using the same ID prefix on the client and the server {/*using-the-same-id-prefix-on-the-client-and-the-server*/}
+### 在客户端和服务端上使用相同的 ID 前缀 {/*using-the-same-id-prefix-on-the-client-and-the-server*/}
 
-If you [render multiple independent React apps on the same page](#specifying-a-shared-prefix-for-all-generated-ids), and some of these apps are server-rendered, make sure that the `identifierPrefix` you pass to the [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) call on the client side is the same as the `identifierPrefix` you pass to the [server APIs](/reference/react-dom/server) such as [`renderToPipeableStream`.](/reference/react-dom/server/renderToPipeableStream)
+如果你 [在同一页面上渲染多个独立的 React 应用程序](#specifying-a-shared-prefix-for-all-generated-ids)，并且其中一些应用程序是服务端渲染，请确保你在客户端向 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 调用传递的标识符前缀 `identifierPrefix` 与你向 [服务器 API ](/reference/react-dom/server) 如 [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) 传递的标识符前缀 `identifierPrefix` 相同。
 
 ```js
 // Server
@@ -331,4 +331,4 @@ const root = hydrateRoot(
 );
 ```
 
-You do not need to pass `identifierPrefix` if you only have one React app on the page.
+如果页面上只有一个 React 应用程序，则无需传递 `identifierPrefix` 。
