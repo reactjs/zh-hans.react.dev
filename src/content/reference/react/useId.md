@@ -331,4 +331,4 @@ const root = hydrateRoot(
 );
 ```
 
-如果页面上只有一个 React 应用程序，则无需传递 `identifierPrefix` 。
+如果页面上只有一个 React 应用程序，则无需传递 `identifierPrefix`。
