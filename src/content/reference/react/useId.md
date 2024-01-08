@@ -307,7 +307,7 @@ input { margin: 5px; }
 
 ### 在客户端和服务端上使用相同的 ID 前缀 {/*using-the-same-id-prefix-on-the-client-and-the-server*/}
 
-如果你 [在同一页面上渲染多个独立的 React 应用程序](#specifying-a-shared-prefix-for-all-generated-ids)，并且其中一些应用程序是服务端渲染，请确保你在客户端向 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 调用传递的标识符前缀 `identifierPrefix` 与你向 [服务器 API ](/reference/react-dom/server) 如 [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) 传递的标识符前缀 `identifierPrefix` 相同。
+如果你 [在同一页面上渲染多个独立的 React 应用程序](#specifying-a-shared-prefix-for-all-generated-ids)，并且其中一些应用程序是服务端渲染，请确保你在客户端向 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 调用传递的标识符前缀 `identifierPrefix` 与你向 [服务器 API ](/reference/react-dom/server) （如 [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) ）传递的标识符前缀 `identifierPrefix` 相同。
 
 ```js
 // Server
