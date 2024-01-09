@@ -64,11 +64,19 @@ experimental_taintObjectReference(
 
 #### 注意 {/*caveats*/}
 
+<<<<<<< HEAD
 - 重新创建或克隆一个被污染的对象会创建一个新的未被污染的对象，其中可能包含敏感数据。如果有一个被污染的 `user` 对象，执行 `const userInfo = {name: user.name, ssn: user.ssn}` 或 `{...user}` 将创建新的未被污染的对象。`taintObjectReference` 只能防止把未修改的对象传递给客户端组件这种简单的错误。
 
 <Pitfall>
 
 **不要仅依赖于污点标记来确保安全**。被污染的对象并不防止泄露每一个可能的派生值。例如，被污染的对象的克隆将创建一个新的未被污染的对象。使用来自被污染的对象的数据（例如 `{secret: taintedObj.secret}`）将创建一个新的值或对象，它不被污染。污点标记只是一层保护，安全的应用程序应该有多层保护、精心设计的 API 和隔离模式。
+=======
+- Recreating or cloning a tainted object creates a new untainted object which may contain sensitive data. For example, if you have a tainted `user` object, `const userInfo = {name: user.name, ssn: user.ssn}` or `{...user}` will create new objects which are not tainted. `taintObjectReference` only protects against simple mistakes when the object is passed through to a Client Component unchanged.
+
+<Pitfall>
+
+**Do not rely on just tainting for security.** Tainting an object doesn't prevent leaking of every possible derived value. For example, the clone of a tainted object will create a new untainted object. Using data from a tainted object (e.g. `{secret: taintedObj.secret}`) will create a new value or object that is not tainted. Tainting is a layer of protection; a secure app will have multiple layers of protection, well designed APIs, and isolation patterns.
+>>>>>>> 6f8d4e60999f335ef2dd4eb2650e701deb7bb581
 
 </Pitfall>
 

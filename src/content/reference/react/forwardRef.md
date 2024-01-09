@@ -42,7 +42,11 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 #### 警告 {/*caveats*/}
 
+<<<<<<< HEAD
 * 在严格模式中，为了 [帮助找到意外的副作用](#my-initializer-or-updater-function-runs-twice)，React 将会 **调用两次渲染函数**。不过这仅限于开发环境，并不会影响生产环境。如果渲染函数是纯函数（也应该是），这不应该影响组件逻辑。其中一个调用的结果将被忽略。
+=======
+* In Strict Mode, React will **call your render function twice** in order to [help you find accidental impurities.](/reference/react/useState#my-initializer-or-updater-function-runs-twice) This is development-only behavior and does not affect production. If your render function is pure (as it should be), this should not affect the logic of your component. The result from one of the calls will be ignored.
+>>>>>>> 6f8d4e60999f335ef2dd4eb2650e701deb7bb581
 
 
 ---
