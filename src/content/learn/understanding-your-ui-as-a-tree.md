@@ -22,7 +22,8 @@ React 以及许多其他 UI 库，将 UI 建模为树。将应用程序视为树
 
 树是项目和 UI 之间的关系模型，通常使用树结构来表示 UI。例如，浏览器使用树结构来建模 HTML（[DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction)）与CSS（[CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model)）。移动平台也使用树来表示其视图层次结构。
 
-<Diagram name="preserving_state_dom_tree" height={193} width={864} alt="水平排列的三个部分的图表。第一部分中，有三个垂直堆叠的矩形，标有 Component A、Component B 和 Component C 的标签。过渡到下一个窗格的是一个带有 React 标志的箭头，标有 React。中间部分包含组件树，根标有 A，有两个子节点标有 B 和 C。下一个部分再次使用带有 React 标志的箭头过渡。第三和最后部分是浏览器的线框图，包含 8 个节点的树，只有一部分突出显示（表示来自中间部分的子树）">
+<Diagram name="preserving_state_dom_tree" height={193} width={864} alt="水平排列的三个部分的图表。第一部分有三个垂直堆叠的矩形，并分别标记为 Component A、Component B 和 Component C。向下一个窗格过渡的是一个带有 React 标志的箭头，标记为 React。中间部分包含一棵组件树，根节点标记为 A，有两个子节点分别标记为 B 和 C。下一个部分再次使用带有 React 标志的箭头进行过渡，标记为 React DOM。第三和最后一个部分是浏览器的线框图，包含一棵有 8 个节点的树，其中只有一个子集被突出显示（表示中间部分的子树）。
+">
 
 React 从组件中创建 UI 树。在这个示例中，UI 树最后会用于渲染 DOM。
 </Diagram>
@@ -39,7 +40,7 @@ React 从组件中创建 UI 树。在这个示例中，UI 树最后会用于渲�
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import FancyText from './FancyText';
 import InspirationGenerator from './InspirationGenerator';
 import Copyright from './Copyright';
@@ -57,7 +58,7 @@ export default function App() {
 
 ```
 
-```js FancyText.js
+```js src/FancyText.js
 export default function FancyText({title, text}) {
   return title
     ? <h1 className='fancy title'>{text}</h1>
@@ -65,7 +66,7 @@ export default function FancyText({title, text}) {
 }
 ```
 
-```js InspirationGenerator.js
+```js src/InspirationGenerator.js
 import * as React from 'react';
 import quotes from './quotes';
 import FancyText from './FancyText';
@@ -86,13 +87,13 @@ export default function InspirationGenerator({children}) {
 }
 ```
 
-```js Copyright.js
+```js src/Copyright.js
 export default function Copyright({year}) {
   return <p className='small'>©️ {year}</p>;
 }
 ```
 
-```js quotes.js
+```js src/quotes.js
 export default [
   "Don’t let yesterday take up too much of today.” — Will Rogers",
   "Ambition is putting a ladder against the sky.",
@@ -148,7 +149,7 @@ React 是跨平台的 UI 框架。react.dev 展示了一些渲染到使用 HTML 
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import FancyText from './FancyText';
 import InspirationGenerator from './InspirationGenerator';
 import Copyright from './Copyright';
@@ -166,7 +167,7 @@ export default function App() {
 
 ```
 
-```js FancyText.js
+```js src/FancyText.js
 export default function FancyText({title, text}) {
   return title
     ? <h1 className='fancy title'>{text}</h1>
@@ -174,13 +175,13 @@ export default function FancyText({title, text}) {
 }
 ```
 
-```js Color.js
+```js src/Color.js
 export default function Color({value}) {
   return <div className="colorbox" style={{backgroundColor: value}} />
 }
 ```
 
-```js InspirationGenerator.js
+```js src/InspirationGenerator.js
 import * as React from 'react';
 import inspirations from './inspirations';
 import FancyText from './FancyText';
@@ -205,13 +206,13 @@ export default function InspirationGenerator({children}) {
 }
 ```
 
-```js Copyright.js
+```js src/Copyright.js
 export default function Copyright({year}) {
   return <p className='small'>©️ {year}</p>;
 }
 ```
 
-```js inspirations.js
+```js src/inspirations.js
 export default [
   {type: 'quote', value: "Don’t let yesterday take up too much of today.” — Will Rogers"},
   {type: 'color', value: "#B73636"},

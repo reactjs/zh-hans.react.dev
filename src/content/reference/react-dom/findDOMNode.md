@@ -80,7 +80,7 @@ class AutoselectingInput extends Component {
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import AutoselectingInput from './AutoselectingInput.js';
 
@@ -98,7 +98,7 @@ export default function App() {
 }
 ```
 
-```js AutoselectingInput.js active
+```js src/AutoselectingInput.js active
 import { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 
@@ -128,7 +128,7 @@ export default AutoselectingInput;
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import AutoselectingInput from './AutoselectingInput.js';
 
@@ -146,7 +146,7 @@ export default function App() {
 }
 ```
 
-```js AutoselectingInput.js active
+```js src/AutoselectingInput.js active
 import { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 
@@ -171,7 +171,7 @@ export default AutoselectingInput;
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import AutoselectingInput from './AutoselectingInput.js';
 
@@ -189,7 +189,7 @@ export default function App() {
 }
 ```
 
-```js AutoselectingInput.js active
+```js src/AutoselectingInput.js active
 import { createRef, Component } from 'react';
 
 class AutoselectingInput extends Component {
@@ -216,7 +216,7 @@ export default AutoselectingInput;
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import AutoselectingInput from './AutoselectingInput.js';
 
@@ -234,7 +234,7 @@ export default function App() {
 }
 ```
 
-```js AutoselectingInput.js active
+```js src/AutoselectingInput.js active
 import { useRef, useEffect } from 'react';
 
 export default function AutoselectingInput() {
@@ -261,7 +261,7 @@ export default function AutoselectingInput() {
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import AutoselectingInput from './AutoselectingInput.js';
 
@@ -279,7 +279,7 @@ export default function App() {
 }
 ```
 
-```js AutoselectingInput.js active
+```js src/AutoselectingInput.js active
 import { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import MyInput from './MyInput.js';
@@ -297,7 +297,7 @@ class AutoselectingInput extends Component {
 export default AutoselectingInput;
 ```
 
-```js MyInput.js
+```js src/MyInput.js
 export default function MyInput() {
   return <input defaultValue="你好" />;
 }
@@ -316,7 +316,7 @@ export default function MyInput() {
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import AutoselectingInput from './AutoselectingInput.js';
 
@@ -334,7 +334,7 @@ export default function App() {
 }
 ```
 
-```js AutoselectingInput.js active
+```js src/AutoselectingInput.js active
 import { createRef, Component } from 'react';
 import MyInput from './MyInput.js';
 
@@ -356,7 +356,7 @@ class AutoselectingInput extends Component {
 export default AutoselectingInput;
 ```
 
-```js MyInput.js
+```js src/MyInput.js
 import { forwardRef } from 'react';
 
 const MyInput = forwardRef(function MyInput(props, ref) {
@@ -372,7 +372,7 @@ export default MyInput;
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import AutoselectingInput from './AutoselectingInput.js';
 
@@ -390,7 +390,7 @@ export default function App() {
 }
 ```
 
-```js AutoselectingInput.js active
+```js src/AutoselectingInput.js active
 import { useRef, useEffect } from 'react';
 import MyInput from './MyInput.js';
 
@@ -406,7 +406,7 @@ export default function AutoselectingInput() {
 }
 ```
 
-```js MyInput.js
+```js src/MyInput.js
 import { forwardRef } from 'react';
 
 const MyInput = forwardRef(function MyInput(props, ref) {

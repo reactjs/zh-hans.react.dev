@@ -42,7 +42,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 #### 警告 {/*caveats*/}
 
-* 在严格模式中，为了 [帮助找到意外的副作用](#my-initializer-or-updater-function-runs-twice)，React 将会 **调用两次渲染函数**。不过这仅限于开发环境，并不会影响生产环境。如果渲染函数是纯函数（也应该是），这不应该影响组件逻辑。其中一个调用的结果将被忽略。
+* 在严格模式中，为了 [帮助找到意外的副作用](/reference/react/useState#my-initializer-or-updater-function-runs-twice)，React 将会 **调用两次渲染函数**。不过这仅限于开发环境，并不会影响生产环境。如果渲染函数是纯函数（也应该是），这不应该影响组件逻辑。其中一个调用的结果将被忽略。
 
 
 ---
@@ -165,7 +165,7 @@ export default function Form() {
 }
 ```
 
-```js MyInput.js
+```js src/MyInput.js
 import { forwardRef } from 'react';
 
 const MyInput = forwardRef(function MyInput(props, ref) {
@@ -223,7 +223,7 @@ export default function App() {
 }
 ```
 
-```js MyVideoPlayer.js
+```js src/MyVideoPlayer.js
 import { forwardRef } from 'react';
 
 const VideoPlayer = forwardRef(function VideoPlayer({ src, type, width }, ref) {
@@ -316,7 +316,7 @@ export default function Form() {
 }
 ```
 
-```js FormField.js
+```js src/FormField.js
 import { forwardRef, useState } from 'react';
 import MyInput from './MyInput.js';
 
@@ -341,7 +341,7 @@ export default FormField;
 ```
 
 
-```js MyInput.js
+```js src/MyInput.js
 import { forwardRef } from 'react';
 
 const MyInput = forwardRef((props, ref) => {
@@ -432,7 +432,7 @@ export default function Form() {
 }
 ```
 
-```js MyInput.js
+```js src/MyInput.js
 import { forwardRef, useRef, useImperativeHandle } from 'react';
 
 const MyInput = forwardRef(function MyInput(props, ref) {

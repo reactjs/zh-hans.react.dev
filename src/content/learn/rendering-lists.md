@@ -168,7 +168,7 @@ return <ul>{listItems}</ul>;
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -193,7 +193,7 @@ export default function List() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const people = [
   {
     id: 0,
@@ -233,7 +233,7 @@ export const people = [
 ];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -307,7 +307,7 @@ Warning: Each child in a list should have a unique "key" prop.
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -329,7 +329,7 @@ export default function List() {
 }
 ```
 
-```js data.js active
+```js src/data.js active
 export const people = [
   {
     id: 0, // 在 JSX 中作为 key 使用
@@ -369,7 +369,7 @@ export const people = [
 ];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -469,7 +469,7 @@ React 里需要 key 和文件夹里的文件需要有文件名的道理是类似
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -496,7 +496,7 @@ export default function List() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const people = [
   {
     id: 0,
@@ -536,7 +536,7 @@ export const people = [
 ];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -566,7 +566,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -617,7 +617,7 @@ export default function List() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const people = [
   {
     id: 0,
@@ -657,7 +657,7 @@ export const people = [
 ];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -687,7 +687,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -737,7 +737,7 @@ export default function List() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const people = [
   {
     id: 0,
@@ -777,7 +777,7 @@ export const people = [
 ];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -807,7 +807,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -861,7 +861,7 @@ export default function List() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const people = [
   {
     id: 0,
@@ -901,7 +901,7 @@ export const people = [
 ];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -939,7 +939,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { recipes } from './data.js';
 
 export default function RecipeList() {
@@ -951,7 +951,7 @@ export default function RecipeList() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const recipes = [
   {
     id: 'greek-salad',
@@ -979,7 +979,7 @@ export const recipes = [
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { recipes } from './data.js';
 
 export default function RecipeList() {
@@ -1003,7 +1003,7 @@ export default function RecipeList() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const recipes = [
   {
     id: 'greek-salad',
@@ -1035,7 +1035,7 @@ export const recipes = [
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { recipes } from './data.js';
 
 export default function RecipeList() {
@@ -1059,7 +1059,7 @@ export default function RecipeList() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const recipes = [
   {
     id: 'greek-salad',
@@ -1117,7 +1117,7 @@ export default function RecipeList() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const recipes = [
   {
     id: 'greek-salad',

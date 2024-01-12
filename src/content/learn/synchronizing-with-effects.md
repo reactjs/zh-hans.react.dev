@@ -502,7 +502,7 @@ export default function ChatRoom() {
 }
 ```
 
-```js chat.js
+```js src/chat.js
 export function createConnection() {
   // 真实的实现会将其连接到服务器，此处代码只是示例
   return {
@@ -560,7 +560,7 @@ export default function ChatRoom() {
 }
 ```
 
-```js chat.js
+```js src/chat.js
 export function createConnection() {
   // 真实的实现会将其连接到服务器，此处代码只是示例
   return {
@@ -971,7 +971,7 @@ React 将第三次渲染时的 `['travel']` 与第二次渲染时的 `['general'
 
 <Sandpack>
 
-```js MyInput.js active
+```js src/MyInput.js active
 import { useEffect, useRef } from 'react';
 
 export default function MyInput({ value, onChange }) {
@@ -990,7 +990,7 @@ export default function MyInput({ value, onChange }) {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from 'react';
 import MyInput from './MyInput.js';
 
@@ -1055,7 +1055,7 @@ body {
 
 <Sandpack>
 
-```js MyInput.js active
+```js src/MyInput.js active
 import { useEffect, useRef } from 'react';
 
 export default function MyInput({ value, onChange }) {
@@ -1075,7 +1075,7 @@ export default function MyInput({ value, onChange }) {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from 'react';
 import MyInput from './MyInput.js';
 
@@ -1139,7 +1139,7 @@ body {
 
 <Sandpack>
 
-```js MyInput.js active
+```js src/MyInput.js active
 import { useEffect, useRef } from 'react';
 
 export default function MyInput({ shouldFocus, value, onChange }) {
@@ -1160,7 +1160,7 @@ export default function MyInput({ shouldFocus, value, onChange }) {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from 'react';
 import MyInput from './MyInput.js';
 
@@ -1229,7 +1229,7 @@ body {
 
 <Sandpack>
 
-```js MyInput.js active
+```js src/MyInput.js active
 import { useEffect, useRef } from 'react';
 
 export default function MyInput({ shouldFocus, value, onChange }) {
@@ -1251,7 +1251,7 @@ export default function MyInput({ shouldFocus, value, onChange }) {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from 'react';
 import MyInput from './MyInput.js';
 
@@ -1322,7 +1322,7 @@ body {
 
 <Sandpack>
 
-```js Counter.js active
+```js src/Counter.js active
 import { useState, useEffect } from 'react';
 
 export default function Counter() {
@@ -1340,7 +1340,7 @@ export default function Counter() {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from 'react';
 import Counter from './Counter.js';
 
@@ -1381,7 +1381,7 @@ body {
 
 <Sandpack>
 
-```js Counter.js active
+```js src/Counter.js active
 import { useState, useEffect } from 'react';
 
 export default function Counter() {
@@ -1400,7 +1400,7 @@ export default function Counter() {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from 'react';
 import Counter from './Counter.js';
 
@@ -1441,7 +1441,7 @@ body {
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 
@@ -1472,7 +1472,7 @@ export default function Page() {
 }
 ```
 
-```js api.js hidden
+```js src/api.js hidden
 export async function fetchBio(person) {
   const delay = person === 'Bob' ? 2000 : 200;
   return new Promise(resolve => {
@@ -1514,7 +1514,7 @@ export async function fetchBio(person) {
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 
@@ -1550,7 +1550,7 @@ export default function Page() {
 }
 ```
 
-```js api.js hidden
+```js src/api.js hidden
 export async function fetchBio(person) {
   const delay = person === 'Bob' ? 2000 : 200;
   return new Promise(resolve => {

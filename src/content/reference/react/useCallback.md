@@ -251,7 +251,7 @@ function useCallback(fn, dependencies) {
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import ProductPage from './ProductPage.js';
 
@@ -278,7 +278,7 @@ export default function App() {
 }
 ```
 
-```js ProductPage.js active
+```js src/ProductPage.js active
 import { useCallback } from 'react';
 import ShippingForm from './ShippingForm.js';
 
@@ -304,7 +304,7 @@ function post(url, data) {
 }
 ```
 
-```js ShippingForm.js
+```js src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -391,7 +391,7 @@ button[type="button"] {
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import ProductPage from './ProductPage.js';
 
@@ -418,7 +418,7 @@ export default function App() {
 }
 ```
 
-```js ProductPage.js active
+```js src/ProductPage.js active
 import ShippingForm from './ShippingForm.js';
 
 export default function ProductPage({ productId, referrer, theme }) {
@@ -443,7 +443,7 @@ function post(url, data) {
 }
 ```
 
-```js ShippingForm.js
+```js src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -525,7 +525,7 @@ button[type="button"] {
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import ProductPage from './ProductPage.js';
 
@@ -552,7 +552,7 @@ export default function App() {
 }
 ```
 
-```js ProductPage.js active
+```js src/ProductPage.js active
 import ShippingForm from './ShippingForm.js';
 
 export default function ProductPage({ productId, referrer, theme }) {
@@ -577,7 +577,7 @@ function post(url, data) {
 }
 ```
 
-```js ShippingForm.js
+```js src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -662,7 +662,7 @@ button[type="button"] {
 
 ### 从记忆化回调中更新 state {/*updating-state-from-a-memoized-callback*/}
 
-有时，你可能在记忆化回调汇中基于之前的 state 来更新 state。
+有时，你可能在记忆化回调中基于之前的 state 来更新 state。
 
 下面的 `handleAddTodo` 函数将 `todos` 指定为依赖项，因为它会从中计算下一个 todos：
 

@@ -771,7 +771,7 @@ React 事件对象实现了一些标准的 [`Event`](https://developer.mozilla.o
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import Avatar from './Avatar.js';
 
 const user = {
@@ -785,7 +785,7 @@ export default function App() {
 }
 ```
 
-```js Avatar.js active
+```js src/Avatar.js active
 export default function Avatar({ user }) {
   return (
     <img
@@ -801,7 +801,7 @@ export default function Avatar({ user }) {
 }
 ```
 
-```css styles.css
+```css src/styles.css
 .avatar {
   border-radius: 50%;
 }
@@ -940,7 +940,7 @@ export default function MarkdownEditor() {
 }
 ```
 
-```js MarkdownPreview.js active
+```js src/MarkdownPreview.js active
 import { Remarkable } from 'remarkable';
 
 const md = new Remarkable();
@@ -981,6 +981,8 @@ textarea { display: block; margin-top: 5px; margin-bottom: 10px; }
 ```
 
 </Sandpack>
+
+`{__html}` 对象应尽可能在接近生成 HTML 的位置创建，就像上面的示例在 `renderMarkdownToHTML` 函数中所做的那样。这确保了代码中使用的所有原始 HTML 都明确标记为这样，并且只有你期望包含 HTML 的变量被传递给 `dangerouslySetInnerHTML`。不建议像 `<div dangerouslySetInnerHTML={{__html: markup}} />` 这样内联创建对象。
 
 要了解为什么渲染任意 HTML 是危险的，请将上面的代码替换为此代码：
 

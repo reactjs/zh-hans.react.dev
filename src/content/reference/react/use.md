@@ -247,7 +247,7 @@ export function Message({ messagePromise }) {
 
 <Sandpack>
 
-```js message.js active
+```js src/message.js active
 "use client";
 
 import { use, Suspense } from "react";
@@ -266,7 +266,7 @@ export function MessageContainer({ messagePromise }) {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from "react";
 import { MessageContainer } from "./message.js";
 
@@ -290,7 +290,7 @@ export default function App() {
 }
 ```
 
-```js index.js hidden
+```js src/index.js hidden
 // TODO: 在稳定版本中更新 import
 // 以替代此处 canary 版本中的导入方式，一旦 `use`
 // Hook 在 React 稳定版本中发布
@@ -364,7 +364,7 @@ export default function App() {
 
 <Sandpack>
 
-```js message.js active
+```js src/message.js active
 "use client";
 
 import { use, Suspense } from "react";
@@ -386,7 +386,7 @@ function Message({ messagePromise }) {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from "react";
 import { MessageContainer } from "./message.js";
 
@@ -410,7 +410,7 @@ export default function App() {
 }
 ```
 
-```js index.js hidden
+```js src/index.js hidden
 // TODO: 在稳定版本中更新 import
 // 以替代此处 canary 版本中的导入方式，一旦 `use`
 // Hook 在 React 稳定版本中发布
