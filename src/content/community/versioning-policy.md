@@ -79,15 +79,9 @@ React 依赖于充满活力的开源社区来提交 bug 报告、发起拉取请
 
 React 的每个发布渠道都针对不同的情况设计：
 
-<<<<<<< HEAD
 - **Latest** 是稳定的、符合语义化版本规范的 React 版本。当从 npm 安装 React 时，就会得到这个版本。这也是大家今天已经在使用的渠道。**直接使用 React 构建面向用户的应用程序使用此渠道**。
 - **Canary** 追踪 React 源代码仓库的主分支，可以将其视为下一个语义化版本发布的候选版本。**[框架或其他经过策划的设置可能会选择使用此渠道，并固定版本的 React](/blog/2023/05/03/react-canaries)**。也可以使用 Canary 进行 React 与第三方项目之间的集成测试。
 - **Experimental** 包含实验性的 API 和在稳定版中不可用的功能。它们也追踪主分支，但是会打开额外的功能开关。使用此渠道可在发布之前尝试即将推出的功能。
-=======
-- [**Latest**](#latest-channel) is for stable, semver React releases. It's what you get when you install React from npm. This is the channel you're already using today. **User-facing applications that consume React directly use this channel.**
-- [**Canary**](#canary-channel) tracks the main branch of the React source code repository. Think of these as release candidates for the next semver release. **[Frameworks or other curated setups may choose to use this channel with a pinned version of React.](/blog/2023/05/03/react-canaries) You can also use Canaries for integration testing between React and third party projects.**
-- [**Experimental**](#experimental-channel) includes experimental APIs and features that aren't available in the stable releases. These also track the main branch, but with additional feature flags turned on. Use this to try out upcoming features before they are released.
->>>>>>> a3f5b133a18be27ddcc44189a0f39375744bd3df
 
 所有版本都会发布到 npm，但只有 Latest 版本使用语义化版本号。预发布版本（Canary 与 Experimental）的版本是根据其内容和提交日期的哈希值生成的，例如 Canary 版本的 `18.3.0-canary-388686f29-20230503` 以及 Experimental 版本的 `0.0.0-experimental-388686f29-20230503`。
 
