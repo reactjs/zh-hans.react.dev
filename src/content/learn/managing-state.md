@@ -1018,4 +1018,4 @@ ul, li { margin: 0; padding: 0; }
 
 跳转到 [使用状态响应输入](/learn/reacting-to-input-with-state) 这一节并开始一页页的阅读！
 
-当然，如果你已经熟悉了这些内容，可以去读一读 [Escape Hatches](/learn/escape-hatches)?
+当然，如果你已经熟悉了这些内容，可以去读一读 [脱围机制](/learn/escape-hatches)?
