@@ -44,7 +44,7 @@ const ref = useRef(0);
 
 <Illustration src="/images/docs/illustrations/i_ref.png" alt="An arrow with 'current' written on it stuffed into a pocket with 'ref' written on it." />
 
-你可以用 `ref.current` 属性访问该 ref 的当前值。这个值是有意被设置为可变的，意味着你既可以读取它也可以写入它。就像一个 React 追踪不到的、用来存储组件信息的秘密“口袋”。（这就是让它成为 React 单向数据流的“应急方案”的原因 —— 详见下文！）
+你可以用 `ref.current` 属性访问该 ref 的当前值。这个值是有意被设置为可变的，意味着你既可以读取它也可以写入它。就像一个 React 追踪不到的、用来存储组件信息的秘密“口袋”。（这就是让它成为 React 单向数据流的“脱围机制”的原因 —— 详见下文！）
 
 这里，每次点击按钮时会使 `ref.current` 递增：
 
@@ -175,7 +175,7 @@ export default function Stopwatch() {
 
 ## ref 和 state 的不同之处 {/*differences-between-refs-and-state*/}
 
-也许你觉得 ref 似乎没有 state 那样“严格” —— 例如，你可以改变它们而非总是必须使用 state 设置函数。但在大多数情况下，我们建议你使用 state。ref 是一个“应急方案”，你并不会经常用到它。 以下是 state 和 ref 的对比：
+也许你觉得 ref 似乎没有 state 那样“严格” —— 例如，你可以改变它们而非总是必须使用 state 设置函数。但在大多数情况下，我们建议你使用 state。ref 是一个“脱围机制”，你并不会经常用到它。 以下是 state 和 ref 的对比：
 
 | ref                                                                                  | state                                                                                                                     |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -271,7 +271,7 @@ React 提供了一个内置版本的 `useRef`，因为它在实践中很常见�
 
 遵循这些原则将使你的组件更具可预测性：
 
-- **将 ref 视为应急方案。** 当你使用外部系统或浏览器 API 时，ref 很有用。如果你很大一部分应用程序逻辑和数据流都依赖于 ref，你可能需要重新考虑你的方法。
+- **将 ref 视为脱围机制。** 当你使用外部系统或浏览器 API 时，ref 很有用。如果你很大一部分应用程序逻辑和数据流都依赖于 ref，你可能需要重新考虑你的方法。
 - **不要在渲染过程中读取或写入 `ref.current`。** 如果渲染过程中需要某些信息，请使用 [state](/learn/state-a-components-memory) 代替。由于 React 不知道 `ref.current` 何时发生变化，即使在渲染时读取它也会使组件的行为难以预测。（唯一的例外是像 `if (!ref.current) ref.current = new Thing()` 这样的代码，它只在第一次渲染期间设置一次 ref。）
 
 React state 的限制不适用于 ref。例如，state 就像 [每次渲染的快照](/learn/state-as-a-snapshot)，并且 [不会同步更新](/learn/queueing-a-series-of-state-updates)。但是当你改变 ref 的 current 值时，它会立即改变：
@@ -291,7 +291,7 @@ console.log(ref.current); // 5
 
 <Recap>
 
-- ref 是一个应急方案，用于保留不用于渲染的值。 你不会经常需要它们。
+- ref 是一个脱围机制，用于保留不用于渲染的值。 你不会经常需要它们。
 - ref 是一个普通的 JavaScript 对象，具有一个名为 `current` 的属性，你可以对其进行读取或设置。
 - 你可以通过调用 `useRef` Hook 来让 React 给你一个 ref。
 - 与 state 一样，ref 允许你在组件的重新渲染之间保留信息。
