@@ -75,13 +75,8 @@ function FooterLink({
         }
       )}>
       <IconNavArrow
-<<<<<<< HEAD
-        className="text-tertiary dark:text-tertiary-dark inline group-focus:text-link dark:group-focus:text-link-dark"
-        displayDirection={type === '上一页' ? 'start' : 'end'}
-=======
         className="inline text-tertiary dark:text-tertiary-dark group-focus:text-link dark:group-focus:text-link-dark"
-        displayDirection={type === 'Previous' ? 'start' : 'end'}
->>>>>>> 6bfde58c109ec86fd6c5767421404cb679ffba9a
+        displayDirection={type === '上一页' ? 'start' : 'end'}
       />
       <div className="flex flex-col overflow-hidden">
         <span className="text-sm font-bold tracking-wide no-underline uppercase text-secondary dark:text-secondary-dark group-focus:text-link dark:group-focus:text-link-dark group-focus:text-opacity-100">

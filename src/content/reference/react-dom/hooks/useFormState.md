@@ -104,11 +104,7 @@ function MyComponent() {
 
 表单被提交后，传入的 <CodeStep step={3}>action</CodeStep> 函数会被执行。返回值将会作为该表单的新的 <CodeStep step={1}>当前 state</CodeStep>。
 
-<<<<<<< HEAD
 传入的 <CodeStep step={3}>action</CodeStep> 接受到的第一个参数将会变为该表单的 <CodeStep step={1}>当前 state</CodeStep>。当表单第一次被提交时将会传入提供的 <CodeStep step={4}>初始 state</CodeStep>，之后都将传入上一次调用 <CodeStep step={3}>action</CodeStep> 函数的返回值。余下参数与未使用 `useFormState` 前接受的参数别无二致<sup><a href="#note1">[1]</a></sup>。
-=======
-The <CodeStep step={3}>action</CodeStep> that you provide will also receive a new first argument, namely the <CodeStep step={1}>current state</CodeStep> of the form. The first time the form is submitted, this will be the <CodeStep step={4}>initial state</CodeStep> you provided, while with subsequent submissions, it will be the return value from the last time the action was called. The rest of the arguments are the same as if `useFormState` had not been used.
->>>>>>> 6bfde58c109ec86fd6c5767421404cb679ffba9a
 
 ```js [[3, 1, "action"], [1, 1, "currentState"]]
 function action(currentState, formData) {
