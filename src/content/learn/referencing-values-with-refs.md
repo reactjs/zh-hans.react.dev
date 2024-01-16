@@ -291,7 +291,7 @@ console.log(ref.current); // 5
 
 <Recap>
 
-- ref 是一个脱围机制，用于保留不用于渲染的值。 你不会经常需要它们。
+- ref 是一种脱围机制，用于保留不用于渲染的值。 你不会经常需要它们。
 - ref 是一个普通的 JavaScript 对象，具有一个名为 `current` 的属性，你可以对其进行读取或设置。
 - 你可以通过调用 `useRef` Hook 来让 React 给你一个 ref。
 - 与 state 一样，ref 允许你在组件的重新渲染之间保留信息。

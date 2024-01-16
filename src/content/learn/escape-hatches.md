@@ -193,7 +193,7 @@ input { display: block; margin-bottom: 20px; }
 
 ## 你可能不需要 Effect {/*you-might-not-need-an-effect*/}
 
-Effect 是 React 范式中的一个脱围机制。它们可以“逃出” React 并使组件和一些外部系统同步。如果没有涉及到外部系统（例如，需要根据一些 props 或 state 的变化来更新一个组件的 state），不应该使用 Effect。移除不必要的 Effect 可以让代码更容易理解，运行得更快，并且更少出错。
+Effect 是 React 范式中的一种脱围机制。它们可以“逃出” React 并使组件和一些外部系统同步。如果没有涉及到外部系统（例如，需要根据一些 props 或 state 的变化来更新一个组件的 state），不应该使用 Effect。移除不必要的 Effect 可以让代码更容易理解，运行得更快，并且更少出错。
 
 有两种常见的不必使用 Effect 的情况：
 - **不必为了渲染而使用 Effect 来转换数据。**
