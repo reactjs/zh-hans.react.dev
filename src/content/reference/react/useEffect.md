@@ -502,7 +502,7 @@ export default function Box() {
 
 ### 在自定义 Hook 中封装 Effect {/*wrapping-effects-in-custom-hooks*/}
 
-Effect 是一个 [脱围机制](/learn/escape-hatches)：当你需要“走出 React 之外”或者当你的使用场景没有更好的内置解决方案时，你可以使用它们。如果你发现自己经常需要手动编写 Effect，那么这通常表明你需要为组件所依赖的通用行为提取一些 [自定义 Hook](/learn/reusing-logic-with-custom-hooks)。 
+Effect 是一种 [脱围机制](/learn/escape-hatches)：当你需要“走出 React 之外”或者当你的使用场景没有更好的内置解决方案时，你可以使用它们。如果你发现自己经常需要手动编写 Effect，那么这通常表明你需要为组件所依赖的通用行为提取一些 [自定义 Hook](/learn/reusing-logic-with-custom-hooks)。 
 
 例如，这个 `useChatRoom` 自定义 Hook 把 Effect 的逻辑“隐藏”在一个更具声明性的 API 之后：
 
