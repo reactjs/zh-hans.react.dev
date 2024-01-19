@@ -1268,7 +1268,7 @@ function ChatRoom({ roomId }) {
 
 ### 自定义 Hook 帮助你迁移到更好的模式 {/*custom-hooks-help-you-migrate-to-better-patterns*/}
 
-Effect 是一个 [“逃脱方案”](/learn/escape-hatches)：当需要“走出 React”且用例没有更好的内置解决方案时你可以使用他们。随着时间的推移，React 团队的目标是通过给更具体的问题提供更具体的解决方案来最小化应用中的 Effect 数量。把你的 Effect 包裹进自定义 Hook，当这些解决方案可用时升级代码会更加容易。
+Effect 是一个 [脱围机制](/learn/escape-hatches)：当需要“走出 React”且用例没有更好的内置解决方案时你可以使用他们。随着时间的推移，React 团队的目标是通过给更具体的问题提供更具体的解决方案来最小化应用中的 Effect 数量。把你的 Effect 包裹进自定义 Hook，当这些解决方案可用时升级代码会更加容易。
 
 让我们回到这个示例：
 

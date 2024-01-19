@@ -242,7 +242,7 @@ body {
 接下来的两章持续深入，将带你了解更棘手的部分：
 
 - **[管理状态](/learn/managing-state)** 章节介绍了如何在应用程序变得越来越复杂时组织逻辑。
-- **[应急方案](/learn/escape-hatches)** 章节介绍了如何“走出”React，并在何时做出最明智的决策。
+- **[脱围机制](/learn/escape-hatches)** 章节介绍了如何“走出”React，并在何时做出最明智的决策。
 
 每个章节都由几个相关的页面组成。其中大部分页面将介绍特定的技能或技术，例如 [使用 JSX 编写标记](/learn/writing-markup-with-jsx)、[更新状态中的对象](/learn/updating-objects-in-state) 或 [在组件间共享状态](/learn/sharing-state-between-components)。一些页面聚焦于解释一个概念，例如 [渲染和提交](/learn/render-and-commit) 或 [将状态作为快照（snapshot）](/learn/state-as-a-snapshot)。还有一些页面如 [你可能不需要 Effect](/learn/you-might-not-need-an-effect) 是基于我们多年的经验而分享的建议。
 
