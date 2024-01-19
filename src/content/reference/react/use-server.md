@@ -87,21 +87,12 @@ Server Action 的参数完全由客户端控制。出于安全考虑，始终将
 * 充当 Server Action 的函数
 * [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-<<<<<<< HEAD
 值得注意的是，以下内容不受支持：
-* React 元素或 [JSX](https://react.dev/learn/writing-markup-with-jsx)
+* React 元素或 [JSX](/learn/writing-markup-with-jsx)
 * 函数，包括组件函数和其他并非 Server Action 的函数
 * [类](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
 * 任何类的实例对象（除了提到的内置类）或 [使用 null 作为原型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects) 的对象
 * 未全局注册的符号，例如 `Symbol('my new symbol')`
-=======
-Notably, these are not supported:
-* React elements, or [JSX](/learn/writing-markup-with-jsx)
-* Functions, including component functions or any other function that is not a Server Action
-* [Classes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
-* Objects that are instances of any class (other than the built-ins mentioned) or objects with [a null prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)
-* Symbols not registered globally, ex. `Symbol('my new symbol')`
->>>>>>> 82723c1b4dc1877e7adc040530691bc28b264d3b
 
 
 支持的可序列化返回值与边界客户端组件的 [可序列化 props](/reference/react/use-client#passing-props-from-server-to-client-components) 相同。
