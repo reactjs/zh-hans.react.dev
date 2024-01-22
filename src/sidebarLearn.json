@@ -88,7 +88,7 @@
           "path": "/learn/keeping-components-pure"
         },
         {
-          "title": "Your UI as a Tree",
+          "title": "将 UI 视为树",
           "path": "/learn/understanding-your-ui-as-a-tree"
         }
       ]
@@ -164,7 +164,7 @@
       ]
     },
     {
-      "title": "应急方案",
+      "title": "脱围机制",
       "path": "/learn/escape-hatches",
       "tags": ["advanced"],
       "routes": [

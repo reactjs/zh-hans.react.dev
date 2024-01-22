@@ -42,7 +42,7 @@ const MyInput = forwardRef(function MyInput(props, ref) {
 
 #### 警告 {/*caveats*/}
 
-* 在严格模式中，为了 [帮助找到意外的副作用](#my-initializer-or-updater-function-runs-twice)，React 将会 **调用两次渲染函数**。不过这仅限于开发环境，并不会影响生产环境。如果渲染函数是纯函数（也应该是），这不应该影响组件逻辑。其中一个调用的结果将被忽略。
+* 在严格模式中，为了 [帮助找到意外的副作用](/reference/react/useState#my-initializer-or-updater-function-runs-twice)，React 将会 **调用两次渲染函数**。不过这仅限于开发环境，并不会影响生产环境。如果渲染函数是纯函数（也应该是），这不应该影响组件逻辑。其中一个调用的结果将被忽略。
 
 
 ---

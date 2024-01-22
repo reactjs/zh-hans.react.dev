@@ -8,7 +8,7 @@ title: "React Labs：我们正在努力的方向——2023 年 3 月"
 
 <Intro>
 
-在 React Labs 的文章中，我们讲述了正在进行研究和开发的项目。自 [上次更新](https://react.dev/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022) 以来，我们在 React 服务器组件、资产加载、优化编译器、离屏渲染和过渡追踪方面取得了重要进展，并希望分享我们所学到的知识。
+在 React Labs 的文章中，我们讲述了正在进行研究和开发的项目。自 [上次更新](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022) 以来，我们在 React 服务器组件、资产加载、优化编译器、离屏渲染和过渡追踪方面取得了重要进展，并希望分享我们所学到的知识。
 
 </Intro>
 
