@@ -337,7 +337,11 @@ import './styles.css';
 import App from './App';
 ```
 
+<<<<<<< HEAD
 第 1-5 行将所有必要的部分组合在一起：
+=======
+Lines 1-5 bring all the necessary pieces together: 
+>>>>>>> 4886261ee72f3715f35460ef312f9b394f6d8001
 
 * React
 * React 与 Web 浏览器对话的库（React DOM）
