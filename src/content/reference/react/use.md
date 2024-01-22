@@ -337,7 +337,7 @@ root.render(
 Promise 可以从服务器组件传递至客户端组件，并且可以在客户端组件中使用 `use` Hook 解析它。也可以在服务器组件中使用 `await` 解析 Promise，并将所需的数据作为 prop 传递给客户端组件。
 
 ```js
-export default function App() {
+export default async function App() {
   const messageContent = await fetchMessage();
   return <Message messageContent={messageContent} />
 }
