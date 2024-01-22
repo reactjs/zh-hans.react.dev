@@ -267,15 +267,9 @@ export default function TopNav({
                   'flex 3xl:w-[56rem] 3xl:mx-0 relative ps-4 pe-1 py-1 h-10 bg-gray-30/20 dark:bg-gray-40/20 outline-none focus:outline-link betterhover:hover:bg-opacity-80 pointer items-center text-start w-full text-gray-30 rounded-full align-middle text-base'
                 )}
                 onClick={onOpenSearch}>
-<<<<<<< HEAD
-                <IconSearch className="me-3 align-middle text-gray-30 shrink-0 group-betterhover:hover:text-gray-70" />
-                搜索
-                <span className="ms-auto hidden sm:flex item-center me-1">
-=======
                 <IconSearch className="align-middle me-3 text-gray-30 shrink-0 group-betterhover:hover:text-gray-70" />
-                Search
+                搜索
                 <span className="hidden ms-auto sm:flex item-center me-1">
->>>>>>> b9f4f971d950e281afaaa9ea7df18dc9c5fe3beb
                   <Kbd data-platform="mac">⌘</Kbd>
                   <Kbd data-platform="win" wide>
                     Ctrl

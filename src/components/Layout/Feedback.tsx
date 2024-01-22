@@ -66,13 +66,8 @@ function SendFeedback({onSubmit}: {onSubmit: () => void}) {
         'max-w-custom-xs w-80 lg:w-auto py-3 shadow-lg rounded-lg m-4 bg-wash dark:bg-gray-95 px-4 flex',
         {exit: isSubmitted}
       )}>
-<<<<<<< HEAD
-      <p className="w-full font-bold text-primary dark:text-primary-dark text-lg me-4">
-        {isSubmitted ? '谢谢你的反馈意见！' : '这个页面对你有帮助吗？'}
-=======
       <p className="w-full text-lg font-bold text-primary dark:text-primary-dark me-4">
-        {isSubmitted ? 'Thank you for your feedback!' : 'Is this page useful?'}
->>>>>>> b9f4f971d950e281afaaa9ea7df18dc9c5fe3beb
+        {isSubmitted ? '谢谢你的反馈意见！' : '这个页面对你有帮助吗？'}
       </p>
       {!isSubmitted && (
         <button
