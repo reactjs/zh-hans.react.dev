@@ -269,7 +269,7 @@ export default function TopNav({
                 onClick={onOpenSearch}>
                 <IconSearch className="align-middle me-3 text-gray-30 shrink-0 group-betterhover:hover:text-gray-70" />
                 搜索
-                <span className="ms-auto hidden sm:flex item-center me-1">
+                <span className="hidden ms-auto sm:flex item-center me-1">
                   <Kbd data-platform="mac">⌘</Kbd>
                   <Kbd data-platform="win" wide>
                     Ctrl
