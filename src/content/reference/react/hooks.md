@@ -72,7 +72,7 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-Effect 是从 React 范例中的“脱围机制”。避免使用 Effect 协调应用程序的数据流。如果不需要与外部系统交互，那么 [可能不需要 Effect](/learn/you-might-not-need-an-effect)。
+Effect 是从 React 范式中的“脱围机制”。避免使用 Effect 协调应用程序的数据流。如果不需要与外部系统交互，那么 [可能不需要 Effect](/learn/you-might-not-need-an-effect)。
 
 `useEffect` 有两个很少使用的变换形式，它们在执行时机有所不同：
 
