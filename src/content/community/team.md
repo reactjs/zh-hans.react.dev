@@ -42,10 +42,6 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Josh 大学主修数学，并在那时期初次接触到编程。他的职业生涯起步于在 Microsoft Excel 上编程进行保险费率计算，这是反应式编程的典型案例，或许也是他后来投身 React 的原因。此后，Josh 在数家创业公司中担任过独立贡献者、经理甚至高级管理者。工作之外，他享受烹饪的挑战。
 </TeamMember>
 
-<TeamMember name="Kathryn Middleton" permalink="kathryn-middleton" photo="/images/team/kathryn-middleton.jpg" github="kmiddleton14" twitter="kmiddleton14" title="Engineering Manager at Meta">
-    Kathryn 最初因为想让自己的 myspace 页面看起来更酷，所以开始接触网页开发。后来，她选择专攻计算机科学，并迅速成为了 React 的狂热粉丝，在 Instagram.com 团队中积极参与功能开发。闲暇之余，她喜欢打乒乓球，教授动感单车课程，还喜欢逛花店购买植物。
-</TeamMember>
-
 <TeamMember name="Lauren Tan" permalink="lauren-tan" photo="/images/team/lauren.jpg" github="poteto" twitter="potetotes" threads="potetotes" personal="no.lol" title="Engineer at Meta">
     Lauren 的编程生涯在她首次发现 `<marquee>` 标签时达到了巅峰，自此以后，她就一直追求这种感觉。在为 React 除错之余，她喜欢在聊天中发送风趣的表情包，还喜欢和伴侣以及她的狗狗 Zelda 一起玩各种电子游戏。
 </TeamMember>
@@ -62,12 +58,12 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Mofei 在意识到编程可以帮她在视频游戏中作弊时开始了编程生涯。她在本科和研究生期间专注于操作系统的研究，但现在她发现自己非常享受在 React 上的编程工作。在工作之外，她喜欢解决攀岩中遇到的问题，并且正在计划她的下一次背包旅行。
 </TeamMember>
 
-<TeamMember name="Rick Hanlon" permalink="rick-hanlon" photo="/images/team/rickhanlonii.jpg" github="rickhanlonii" twitter="rickhanlonii" threads="rickhanlonii" personal="rickhanlon.codes" title="Engineer at Meta">
-    Ricky 主修理论数学，然而他却在 React Native 团队工作了几年，之后又加入了 React 团队。当他不在编程时，你可以找到他在滑雪，骑自行车，攀岩，打高尔夫球，或者在 GitHub 上关闭一些不符合问题模板的问题。
+<TeamMember name="Noah Lemen" permalink="noah-lemen" photo="/images/team/noahlemen.jpg" github="noahlemen" twitter="noahlemen" threads="noahlemen" personal="noahle.men" title="Engineer at Meta">
+    Noah 在纽约大学接受音乐技术教育期间，对 UI 编程产生了兴趣。在 Meta，他从事内部工具、浏览器、网络性能方面的工作，目前专注于 React。在工作之余，他会捣鼓合成器，或者和他的猫在一起玩耍。
 </TeamMember>
 
-<TeamMember name="Samuel Susla" permalink="samuel-susla" photo="/images/team/sam.jpg" github="sammy-SC" twitter="SamuelSusla" threads="samuelsusla" title="Engineer at Meta">
-    电影《黑客帝国》激发了 Samuel 对编程的热情，他至今仍用着这部电影的屏幕保护程序。在投身 React 开发前，他主要致力于编写 iOS 应用程序。在业余时间，Samuel 乐于享受打沙滩排球、壁球、羽毛球的乐趣，也喜欢与家人共享美好时光。
+<TeamMember name="Rick Hanlon" permalink="rick-hanlon" photo="/images/team/rickhanlonii.jpg" github="rickhanlonii" twitter="rickhanlonii" threads="rickhanlonii" personal="rickhanlon.codes" title="Engineer at Meta">
+    Ricky 主修理论数学，然而他却在 React Native 团队工作了几年，之后又加入了 React 团队。当他不在编程时，你可以找到他在滑雪，骑自行车，攀岩，打高尔夫球，或者在 GitHub 上关闭一些不符合问题模板的问题。
 </TeamMember>
 
 <TeamMember name="Sathya Gunasekaran " permalink="sathya-gunasekaran" photo="/images/team/sathya.jpg" github="gsathya" twitter="_gsathya" threads="gsathya.03" title="Engineer at Meta">
