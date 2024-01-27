@@ -24,7 +24,7 @@ if (typeof window !== 'undefined') {
 
 Router.events.on('routeChangeComplete', (url) => {
   try {
-    window?._hmt.push(['_trackPageview', url]);
+    (window as any)._hmt.push(['_trackPageview', url]);
   } catch (e) {}
 });
 
