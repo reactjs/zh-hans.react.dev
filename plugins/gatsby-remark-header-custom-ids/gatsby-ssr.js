@@ -66,7 +66,7 @@ exports.onRenderBody = ({setHeadComponents}, pluginOptions) => {
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?c88f5803e0859af7a24814bbb4b85791";
+      hm.src = "https://hm.baidu.com/hm.js?6c42f175403a43b961ef0799f22f1e69";
       var s = document.getElementsByTagName("script")[0]; 
       s.parentNode.insertBefore(hm, s);
     })();
