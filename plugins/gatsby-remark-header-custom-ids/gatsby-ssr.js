@@ -62,16 +62,6 @@ exports.onRenderBody = ({setHeadComponents}, pluginOptions) => {
     })
   `;
 
-  const baidu_script = `
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?c88f5803e0859af7a24814bbb4b85791";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
-    })();
-  `;
-
   const style = icon ? (
     <style key="gatsby-remark-header-custom-ids-style" type="text/css">
       {styles}
@@ -83,10 +73,6 @@ exports.onRenderBody = ({setHeadComponents}, pluginOptions) => {
     <script
       key="gatsby-remark-header-custom-ids-script"
       dangerouslySetInnerHTML={{__html: script}}
-    />,
-    <script
-      key="gatsby-remark-header-custom-ids-script"
-      dangerouslySetInnerHTML={{__html: baidu_script}}
     />,
   ]);
 };

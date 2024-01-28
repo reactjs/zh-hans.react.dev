@@ -9,6 +9,7 @@ import {ExternalLink} from 'components/ExternalLink';
 import {IconFacebookCircle} from 'components/Icon/IconFacebookCircle';
 import {IconTwitter} from 'components/Icon/IconTwitter';
 import {IconGitHub} from 'components/Icon/IconGitHub';
+import Script from 'next/script';
 
 export function Footer() {
   const socialLinkClasses = 'hover:text-primary dark:text-primary-dark';
@@ -349,6 +350,17 @@ export function Footer() {
           </div>
         </div>
       </div>
+      <Script id="baidu-hm">
+        {`
+          var _hmt = _hmt || [];
+          (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?63a3dfef37295d635cba53c7750c6fca";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+          })();
+        `}
+      </Script>
     </footer>
   );
 }

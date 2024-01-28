@@ -4,7 +4,7 @@
 
 import {useEffect} from 'react';
 import {AppProps} from 'next/app';
-import {useRouter} from 'next/router';
+import {useRouter, Router} from 'next/router';
 
 import '@docsearch/css';
 import '../styles/algolia.css';
@@ -21,6 +21,12 @@ if (typeof window !== 'undefined') {
     });
   });
 }
+
+Router.events.on('routeChangeComplete', (url) => {
+  try {
+    (window as any)._hmt.push(['_trackPageview', url]);
+  } catch (e) {}
+});
 
 export default function MyApp({Component, pageProps}: AppProps) {
   const router = useRouter();
