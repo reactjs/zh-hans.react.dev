@@ -14,7 +14,7 @@ canary: true
 `useFormState` 是一个可以根据某个表单动作的结果更新 state 的 Hook。
 
 ```js
-const [state, formAction] = useFormState(fn, initialState);
+const [state, formAction] = useFormState(fn, initialState, permalink?);
 ```
 
 </Intro>
@@ -25,7 +25,7 @@ const [state, formAction] = useFormState(fn, initialState);
 
 ## 参考 {/*reference*/}
 
-### `useFormState(action, initialState)` {/*useformstate*/}
+### `useFormState(action, initialState, permalink?)` {/*useformstate*/}
 
 {/* TODO T164397693: link to actions documentation once it exists */}
 
@@ -59,7 +59,7 @@ form state 是一个只在表单被提交触发 action 后才会被更新的值�
 
 * `fn`：当按钮被按下或者表单被提交时触发的函数。当函数被调用时，该函数会接收到表单的上一个 state（初始值为传入的 `initialState` 参数，否则为上一次执行完该函数的结果）作为函数的第一个参数，余下参数为普通表单动作接到的参数。
 * `initialState`：state 的初始值。任何可序列化的值都可接收。当 action 被调用一次后该参数会被忽略。
-
+* **可选** `permalink`: A string containing the unique page URL that this form modifies. For use on pages with dynamic content (eg: feeds) in conjunction with progressive enhancement: if `fn` is a [server action](/reference/react/use-server) and the form is submitted before the JavaScript bundle loads, the browser will navigate to the specified permalink URL, rather than the current page's URL. Ensure that the same form component is rendered on the destination page (including the same action `fn` and `permalink`) so that React knows how to pass the state through. Once the form has been hydrated, this parameter has no effect.
 {/* TODO T164397693: link to serializable values docs once it exists */}
 
 #### 返回值 {/*returns*/}
