@@ -488,14 +488,6 @@ function FilterableProductTable({ products }) {
 
 在 `SearchBar` 中，添加一个 `onChange` 事件处理器，使用其设置父组件的 state：
 
-<<<<<<< HEAD
-```js {5}
-<input
-  type="text"
-  value={filterText}
-  placeholder="Search..."
-  onChange={(e) => onFilterTextChange(e.target.value)} />
-=======
 ```js {4,5,13,19}
 function SearchBar({
   filterText,
@@ -508,7 +500,7 @@ function SearchBar({
       <input
         type="text"
         value={filterText}
-        placeholder="Search..."
+        placeholder="搜索"
         onChange={(e) => onFilterTextChange(e.target.value)}
       />
       <label>
@@ -516,7 +508,6 @@ function SearchBar({
           type="checkbox"
           checked={inStockOnly}
           onChange={(e) => onInStockOnlyChange(e.target.checked)}
->>>>>>> 1ab7108159cc8856168e0cf9f44ebedcaa5e96aa
 ```
 
 现在应用程序可以完整工作了！
