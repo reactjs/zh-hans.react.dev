@@ -263,11 +263,19 @@ body {
 
 如果你想要使用本地开发环境来学习这个教程，需要按照下面的流程进行：
 
+<<<<<<< HEAD
 1. 安装 [Node.js](https://nodejs.org/zh-cn/)
 2. 在之前打开的 CodeSandbox 选项卡中，按左上角的按钮打开菜单，然后选择 **File > Export to ZIP**，将代码压缩包下载到本地。
 3. 将压缩包解压，打开终端并使用 `cd` 命令切换到你解压后的目录。
 4. 使用 `npm install` 安装依赖。
 5. 运行 `npm start` 启动本地服务器，按照提示在浏览器中查看运行效果。
+=======
+1. Install [Node.js](https://nodejs.org/en/)
+1. In the CodeSandbox tab you opened earlier, press the top-left corner button to open the menu, and then choose **Download Sandbox** in that menu to download an archive of the files locally
+1. Unzip the archive, then open a terminal and `cd` to the directory you unzipped
+1. Install the dependencies with `npm install`
+1. Run `npm start` to start a local server and follow the prompts to view the code running in a browser
+>>>>>>> be8668c0ff4e308072c76110c3abb673ffde9702
 
 如果你遇到了困难，不要花费时间去找解决方案。请改为在线进行操作，稍后再尝试本地配置。
 

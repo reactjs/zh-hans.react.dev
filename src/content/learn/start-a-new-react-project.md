@@ -8,21 +8,52 @@ translators:
 
 <Intro>
 
+<<<<<<< HEAD
 如果你想完全用 React 构建一个新的应用或网站，我们建议选择社区中流行的、由 React 驱动的框架。这些框架提供大多数应用和网站最终需要的功能，包括路由、数据获取和生成 HTML。
+=======
+If you want to build a new app or a new website fully with React, we recommend picking one of the React-powered frameworks popular in the community.
+>>>>>>> be8668c0ff4e308072c76110c3abb673ffde9702
 
 </Intro>
 
-<Note>
 
+<<<<<<< HEAD
 **你需要安装 [Node.js](https://nodejs.org/zh-cn) 用于本地开发**。你也可以选择在生产环境中使用 Node.js，但你不一定要这样。许多 React 框架支持导出 HTML/CSS/JS 等静态文件。
+=======
+You can use React without a framework, however we’ve found that most apps and sites eventually build solutions to common problems such as code-splitting, routing, data fetching, and generating HTML. These problems are common to all UI libraries, not just React.
+>>>>>>> be8668c0ff4e308072c76110c3abb673ffde9702
 
-</Note>
+By starting with a framework, you can get started with React quickly, and avoid essentially building your own framework later.
+
+<DeepDive>
+
+#### Can I use React without a framework? {/*can-i-use-react-without-a-framework*/}
+
+You can definitely use React without a framework--that's how you'd [use React for a part of your page.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) **However, if you're building a new app or a site fully with React, we recommend using a framework.**
+
+Here's why.
+
+Even if you don't need routing or data fetching at first, you'll likely want to add some libraries for them. As your JavaScript bundle grows with every new feature, you might have to figure out how to split code for every route individually. As your data fetching needs get more complex, you are likely to encounter server-client network waterfalls that make your app feel very slow. As your audience includes more users with poor network conditions and low-end devices, you might need to generate HTML from your components to display content early--either on the server, or during the build time. Changing your setup to run some of your code on the server or during the build can be very tricky.
+
+**These problems are not React-specific. This is why Svelte has SvelteKit, Vue has Nuxt, and so on.** To solve these problems on your own, you'll need to integrate your bundler with your router and with your data fetching library. It's not hard to get an initial setup working, but there are a lot of subtleties involved in making an app that loads quickly even as it grows over time. You'll want to send down the minimal amount of app code but do so in a single client–server roundtrip, in parallel with any data required for the page. You'll likely want the page to be interactive before your JavaScript code even runs, to support progressive enhancement. You may want to generate a folder of fully static HTML files for your marketing pages that can be hosted anywhere and still work with JavaScript disabled. Building these capabilities yourself takes real work.
+
+**React frameworks on this page solve problems like these by default, with no extra work from your side.** They let you start very lean and then scale your app with your needs. Each React framework has a community, so finding answers to questions and upgrading tooling is easier. Frameworks also give structure to your code, helping you and others retain context and skills between different projects. Conversely, with a custom setup it's easier to get stuck on unsupported dependency versions, and you'll essentially end up creating your own framework—albeit one with no community or upgrade path (and if it's anything like the ones we've made in the past, more haphazardly designed).
+
+If your app has unusual constraints not served well by these frameworks, or you prefer to solve these problems yourself, you can roll your own custom setup with React. Grab `react` and `react-dom` from npm, set up your custom build process with a bundler like [Vite](https://vitejs.dev/) or [Parcel](https://parceljs.org/), and add other tools as you need them for routing, static generation or server-side rendering, and more.
+
+</DeepDive>
 
 ## 生产级的 React 框架 {/*production-grade-react-frameworks*/}
 
-### Next.js {/*nextjs*/}
+These frameworks support all the features you need to deploy and scale your app in production and are working towards supporting our [full-stack architecture vision](#which-features-make-up-the-react-teams-full-stack-architecture-vision). All of the frameworks we recommend are open source with active communities for support, and can be deployed to your own server or a hosting provider. If you’re a framework author interested in being included on this list, [please let us know](https://github.com/reactjs/react.dev/issues/new?assignees=&labels=type%3A+framework&projects=&template=3-framework.yml&title=%5BFramework%5D%3A+).
 
+<<<<<<< HEAD
 **[Next.js](https://nextjs.org/) 是一个全栈式的 React 框架**。它用途广泛，可以让你创建任意规模的 React 应用——可以是静态博客，也可以是复杂的动态应用。要创建一个新的 Next.js 项目，请在你的终端运行：
+=======
+### Next.js {/*nextjs-pages-router*/}
+
+**[Next.js' Pages Router](https://nextjs.org/) is a full-stack React framework.** It's versatile and lets you create React apps of any size--from a mostly static blog to a complex dynamic application. To create a new Next.js project, run in your terminal:
+>>>>>>> be8668c0ff4e308072c76110c3abb673ffde9702
 
 <TerminalBlock>
 npx create-next-app@latest
@@ -68,6 +99,7 @@ npx create-expo-app
 
 Expo 是由 [Expo 这家公司](https://expo.dev/about) 维护的。用 Expo 构建应用是免费的，而且你可以不受限制地将它们提交到谷歌和苹果的应用商店。此外，Expo 还提供选择性的付费云服务。
 
+<<<<<<< HEAD
 <DeepDive>
 
 #### 我可以在没有框架的情况下使用 React 吗？ {/*can-i-use-react-without-a-framework*/}
@@ -86,6 +118,9 @@ Expo 是由 [Expo 这家公司](https://expo.dev/about) 维护的。用 Expo 构
 </DeepDive>
 
 ## 领先的 React 框架 {/*bleeding-edge-react-frameworks*/}
+=======
+## Bleeding-edge React frameworks {/*bleeding-edge-react-frameworks*/}
+>>>>>>> be8668c0ff4e308072c76110c3abb673ffde9702
 
 在我们探索如何继续改进 React 的过程中，我们意识到将 React 与框架（特别是路由、bundle 和服务端技术）更紧密地结合起来是我们帮助 React 用户构建更好的应用的最大机会。Next.js 团队已经同意与我们合作，研究、开发、集成和测试与框架无关的 React 前沿功能，如 [React 服务器组件](/blog/2023/03/22/react-labs-what-we-have-been-working-march-2023#react-server-components)。
 
