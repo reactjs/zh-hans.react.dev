@@ -32,9 +32,6 @@ React 支持所有浏览器内置的 [HTML](https://developer.mozilla.org/zh-CN/
 
 ---
 
-<<<<<<< HEAD
-## 所有的 HTML 组件 {/*all-html-components*/}
-=======
 ## Resource and Metadata Components {/*resource-and-metadata-components*/}
 
 These bulit-in browser components let you load external resources or annotate the document with metadata:
@@ -49,8 +46,7 @@ They are special in React because React can render them into the document head, 
 
 ---
 
-## All HTML components {/*all-html-components*/}
->>>>>>> 2372ecf920ac4cda7c900f9ac7f9c0cd4284f281
+## 所有的 HTML 组件 {/*all-html-components*/}
 
 React 支持所有浏览器内置的组件，包括：
 
