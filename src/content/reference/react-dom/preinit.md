@@ -11,7 +11,7 @@ canary: true
 
 <Note>
 
-[基于 React 的框架](/learn/start-a-new-react-project) 经常会帮助处理资源加载，因此可能不必自己调用此 API。请查阅框架文档以获取详细信息。
+[基于 React 的框架](/learn/start-a-new-react-project) 通常会内置资源处理方案，因此你可能不必手动调用此 API。请查阅框架文档以获取详细信息。
 
 </Note>
 
@@ -53,11 +53,11 @@ function AppRoot() {
 
 * `href`：字符串，要下载的资源的 URL。
 * `options`：对象，可以包含以下属性：
-  *  `as`：必需的字符串，表示资源的类型，[可能的值](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#as) 包括 `audio`、`document`、`embed`、`fetch`、`font`、`image`、`object`、`script`、`style`、`track`、`video` 与 `worker`。
+  *  `as`：必需的字符串，表示资源的类型，[可能的值](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link#as) 包括 `audio`、`document`、`embed`、`fetch`、`font`、`image`、`object`、`script`、`style`、`track`、`video` 与 `worker`。
   * `precedence`：字符串，与样式表一起使用时必需。指定样式表相对于其他样式表的插入位置。具有较高优先级的样式表可以覆盖具有较低优先级的样式表，可能的值包括 `reset`、`low`、`medium` 与 `high`。
-  *  `crossOrigin`：字符串，表示要使用的 [CORS 策略](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)，可能的值为 `anonymous` 与 `use-credentials`。当 `as` 设置为 `"fetch"` 时是必需的。
-  *  `integrity`：字符串，为资源的加密哈希，用于 [验证其真实性](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)。
-  *  `nonce`：字符串，表示使用严格内容安全策略时允许资源的 [加密随机数](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce)。
+  *  `crossOrigin`：字符串，表示要使用的 [CORS 策略](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/crossorigin)，可能的值为 `anonymous` 与 `use-credentials`。当 `as` 设置为 `"fetch"` 时是必需的。
+  *  `integrity`：字符串，为资源的加密哈希，用于 [验证其真实性](https://developer.mozilla.org/zh-CN/docs/Web/Security/Subresource_Integrity)。
+  *  `nonce`：字符串，表示使用严格内容安全策略时允许资源的 [加密随机数](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/nonce)。
   *  `fetchPriority`：字符串，表示建议获取资源的相对优先级，可能的值为 `auto`（默认值）、`high` 与 `low`。
 
 #### 返回值 {/*returns*/}
@@ -114,9 +114,9 @@ function AppRoot() {
 
 </Recipes>
 
-### 预初始化事件处理程序 {/*preiniting-in-an-event-handler*/}
+### 在事件处理程序中预初始化 {/*preiniting-in-an-event-handler*/}
 
-在转换到需要外部资源的页面或状态之前，在事件处理程序中调用 `preinit`。这比在渲染新页面或状态时调用它更早地启动了该过程。
+在转换到需要外部资源的页面或状态之前，于事件处理程序中调用 `preinit`。这会比在渲染新页面或状态时调用它更早地启动了该过程。
 
 ```js
 import { preinit } from 'react-dom';
