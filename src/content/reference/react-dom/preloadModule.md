@@ -17,7 +17,7 @@ canary: true
 
 <Intro>
 
-`preload` 可以帮助急切地预获取期望使用的 ESM 模块。
+`preloadModule` 可以急切地预获取期望使用的 ESM 模块。
 
 ```js
 preloadModule("https://example.com/module.js", {as: "script"});
