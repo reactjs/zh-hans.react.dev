@@ -47,7 +47,7 @@ function AppRoot() {
 
 [参见下方更多示例](#usage)。
 
-`preloadModule` 函数向浏览器提供一个提示，告诉它应该开始下载给定的资源，这将帮助节省时间。
+`preloadModule` 函数向浏览器提供一个提示，告诉它应该开始下载给定的资源，这将会节省时间。
 
 #### 参数 {/*parameters*/}
 
