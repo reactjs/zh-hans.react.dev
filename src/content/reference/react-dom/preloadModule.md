@@ -5,19 +5,19 @@ canary: true
 
 <Canary>
 
-The `preloadModule` function is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+`preloadModule` 函数当前仅在 React Canary 与 experimental 渠道中可用，请在 [此处了解更多关于 React 发布渠道的信息](/community/versioning-policy#all-release-channels)。
 
 </Canary>
 
 <Note>
 
-[React-based frameworks](/learn/start-a-new-react-project) frequently handle resource loading for you, so you might not have to call this API yourself. Consult your framework's documentation for details.
+[基于 React 的框架](/learn/start-a-new-react-project) 经常会帮助处理资源加载，因此可能不必自己调用此 API。请查阅框架文档以获取详细信息。
 
 </Note>
 
 <Intro>
 
-`preloadModule` lets you eagerly fetch an ESM module that you expect to use.
+`preload` 可以帮助急切地预获取期望使用的 ESM 模块。
 
 ```js
 preloadModule("https://example.com/module.js", {as: "script"});
@@ -29,53 +29,53 @@ preloadModule("https://example.com/module.js", {as: "script"});
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `preloadModule(href, options)` {/*preloadmodule*/}
 
-To preload an ESM module, call the `preloadModule` function from `react-dom`.
+ 调用 `react-dom` 中的 `preloadModule` 函数以实现预加载资源。
 
 ```js
 import { preloadModule } from 'react-dom';
 
 function AppRoot() {
   preloadModule("https://example.com/module.js", {as: "script"});
-  // ...
+  // ……
 }
 
 ```
 
-[See more examples below.](#usage)
+[参见下方更多示例](#usage)。
 
-The `preloadModule` function provides the browser with a hint that it should start downloading the given module, which can save time.
+`preloadModule` 函数向浏览器提供一个提示，告诉它应该开始下载给定的资源，这将帮助节省时间。
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `href`: a string. The URL of the module you want to download.
-* `options`: an object. It contains the following properties:
-  *  `as`: a required string. It must be `'script'`.
-  *  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`.
-  *  `integrity`: a string. A cryptographic hash of the module, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
-  *  `nonce`: a string. A cryptographic [nonce to allow the module](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy. 
+* `href`：字符串，要下载的资源的 URL。
+* `options`：对象，可以包含以下属性：
+  *  `as`：必需的字符串，表示资源的类型，[可能的值](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link#as) 包括 `audio`、`document`、`embed`、`fetch`、`font`、`image`、`object`、`script`、`style`、`track`、`video` 与 `worker`。
+  *  `crossOrigin`：字符串，表示要使用的 [CORS 策略](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/crossorigin)，可能的值为 `anonymous` 与 `use-credentials`。当 `as` 设置为 `"fetch"` 时是必需的。
+  *  `integrity`：字符串，为资源的加密哈希，用于 [验证其真实性](https://developer.mozilla.org/zh-CN/docs/Web/Security/Subresource_Integrity)。
+  *  `nonce`：字符串，表示使用严格内容安全策略时允许资源的 [加密随机数](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/nonce)。
 
 
 #### Returns {/*returns*/}
 
-`preloadModule` returns nothing.
+`preloadModule` 不返回任何值。
 
-#### Caveats {/*caveats*/}
+#### 注意 {/*caveats*/}
 
-* Multiple calls to `preloadModule` with the same `href` have the same effect as a single call.
-* In the browser, you can call `preloadModule` in any situation: while rendering a component, in an effect, in an event handler, and so on.
-* In server-side rendering or when rendering Server Components, `preloadModule` only has an effect if you call it while rendering a component or in an async context originating from rendering a component. Any other calls will be ignored.
+* 对于相同的 `href`，多次调用 `preloadModule` 具有与单次调用相同的效果。
+* 在浏览器中，您可以在任何情况下调用 `preloadModule`：在渲染组件时，在 Effect 中，在事件处理程序中等等。
+* 在服务器端渲染或渲染服务器组件时，只有在渲染组件或在从渲染组件中发起的异步上下文中调用 `preloadModule` 时才会生效。任何其他调用都将被忽略。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Preloading when rendering {/*preloading-when-rendering*/}
+### 在渲染时预加载 {/*preloading-when-rendering*/}
 
-Call `preloadModule` when rendering a component if you know that it or its children will use a specific module.
+如果知道组件或其子组件将使用特定资源，那么在渲染组件时调用 `preloadModule`。
 
 ```js
 import { preloadModule } from 'react-dom';
@@ -86,11 +86,11 @@ function AppRoot() {
 }
 ```
 
-If you want the browser to start executing the module immediately (rather than just downloading it), use [`preinitModule`](/reference/react-dom/preinitModule) instead. If you want to load a script that isn't an ESM module, use [`preload`](/reference/react-dom/preload).
+如果希望浏览器立即开始执行模块（而不仅仅是下载它），请改用 [`preinitModule`](/reference/react-dom/preinitModule)；如果想加载一个不是 ESM 模块的脚本，请使用 [`preload`](/reference/react-dom/preload)。
 
-### Preloading in an event handler {/*preloading-in-an-event-handler*/}
+### 在事件处理程序中预加载 {/*preloading-in-an-event-handler*/}
 
-Call `preloadModule` in an event handler before transitioning to a page or state where the module will be needed. This gets the process started earlier than if you call it during the rendering of the new page or state.
+在转换到需要外部资源的页面或状态之前，在事件处理程序中调用 `preloadModule`。这比在渲染新页面或状态时调用它更早地启动了该过程。
 
 ```js
 import { preloadModule } from 'react-dom';
