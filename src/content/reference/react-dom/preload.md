@@ -17,7 +17,7 @@ canary: true
 
 <Intro>
 
-`preload` 可以帮助预获取期望使用的资源，比如样式表、字体或外部脚本。
+`preload` 可以预获取期望使用的资源，比如样式表、字体或外部脚本。
 
 ```js
 preload("https://example.com/font.woff2", {as: "font"});
