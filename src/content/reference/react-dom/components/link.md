@@ -80,7 +80,7 @@ React 对 `<link>` 的扩展当前仅在 React Canary 与 experimental 渠道中
 
 #### 特殊的渲染行为 {/*special-rendering-behavior*/}
 
-无论 `<link>` 组件在 React 树中的哪个位置被渲染，React 都会始终将其对应的 DOM 元素放在文档的 `<head>` 中。`<head>` 是 `<link>` 存在于 DOM 中的唯一有效位置，但如果表示特定页面的组件可以自行渲染 `<link>` 组件，则这种做法既方便又保持了可组合性。
+无论 `<link>` 组件在 React 树中的哪个位置被渲染，React 都会始终将其对应的 DOM 元素放在文档的 `<head>` 中。`<head>` 是 `<link>` 在 DOM 中唯一有效的位置，但如果表示特定页面的组件可以自行渲染 `<link>` 组件，则这种做法既方便又保持了可组合性。
 
 但是，有几个例外情况：
 
