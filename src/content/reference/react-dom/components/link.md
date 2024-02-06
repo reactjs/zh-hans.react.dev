@@ -28,7 +28,7 @@ React 对 `<link>` 的扩展当前仅在 React Canary 与 experimental 渠道中
 
 ### `<link>` {/*link*/}
 
-渲染 [浏览器内置的 `<link>` 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link) 以链接外部资源，例如样式表、字体和图标，或者在文档中注释链接元数据。可以在任何组件中渲染 `<link>`，并且 React 会在大多数情况下将相应的 DOM 元素放在文档头部。
+渲染 [浏览器内置的 `<link>` 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link) 以链接外部资源，例如样式表、字体和图标，或者在文档中通过链接元数据进行注释。可以在任何组件中渲染 `<link>`，并且 React 会在大多数情况下将相应的 DOM 元素放在文档头部。
 
 ```js
 <link rel="icon" href="favicon.ico" />
