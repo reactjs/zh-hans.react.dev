@@ -137,7 +137,7 @@ export default function BlogPage() {
 如果一个组件依赖于某个样式表以正确显示，可以在组件内部渲染一个指向该样式表的链接。当样式表加载时，组件将会 [挂起](http://localhost:3000/reference/react/Suspense)。因此必须提供 `precedence` 属性，该属性告诉 React 将此样式表放置在其他样式表的何处——具有较高优先级的样式表可以覆盖较低优先级的样式表。
 
 <Note>
-当想使用样式表时，调用 [preinit](/reference/react-dom/preinit) 函数可能是有益的。调用此函数可能使浏览器比仅渲染一个 `<link>` 组件更早地开始获取样式表，例如通过发送 [HTTP 更早的提示响应](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/103)。
+当想使用样式表时，调用 [preinit](/reference/react-dom/preinit) 函数可能是有益的。调用此函数可能使浏览器比仅渲染一个 `<link>` 组件更早地开始获取样式表，例如通过发送 [HTTP 103 Early Hints 响应](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/103)。
 </Note>
 
 <SandpackWithHTMLOutput>
