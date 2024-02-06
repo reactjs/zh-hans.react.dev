@@ -5,13 +5,13 @@ canary: true
 
 <Canary>
 
-React's extensions to `<script>` are currently only available in React's canary and experimental channels. In stable releases of React `<script>` works only as a [built-in browser HTML component](https://react.dev/reference/react-dom/components#all-html-components). Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+React 对 `<script>` 的扩展当前仅在 React Canary 与 experimental 渠道中可用。在 React 的稳定版本中，`<script>` 仅作为 [浏览器内置 HTML 组件](https://react.dev/reference/react-dom/components#all-html-components) 使用。请在 [此处了解更多关于 React 发布渠道的信息](/community/versioning-policy#all-release-channels)。
 
 </Canary>
 
 <Intro>
 
-The [built-in browser `<script>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) lets you add a script to your document.
+[浏览器内置的 `<script>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) 允许向文档添加脚本。元数据。
 
 ```js
 <script> alert("hi!") </script>
@@ -23,71 +23,71 @@ The [built-in browser `<script>` component](https://developer.mozilla.org/en-US/
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `<script>` {/*script*/}
 
-To add inline or external scripts to your document, render the [built-in browser `<script>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script). You can render `<script>` from any component and React will [in certain cases](#special-rendering-behavior) place the corresponding DOM element in the document head and de-duplicate identical scripts.
+渲染 [浏览器内置的 `<script>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) 以向文档添加内联或外部脚本。可以在任何组件中渲染 `<script>`，React 将在某些情况下将相应的 DOM 元素放置在文档头部，并对相同的脚本进行去重。
 
 ```js
 <script> alert("hi!") </script>
 <script src="script.js" />
 ```
 
-[See more examples below.](#usage)
+[参见下方更多示例](#usage)。
 
-#### Props {/*props*/}
+#### 属性 {/*props*/}
 
-`<script>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<script>` 支持所有 [通用元素属性](/reference/react-dom/components/common#props)。
 
-It should have *either* `children` or a `src` prop.
+它应该要么具有 `children` 属性，要么具有 `src` 属性。
 
-* `children`: a string. The source code of an inline script.
-* `src`: a string. The URL of an external script.
+* `children`：字符串，内联脚本的源代码。
+* `src`：字符串，外部脚本的 URL。
 
-Other supported props:
+但也支持其他属性：
 
-* `async`: a boolean. Allows the browser to defer execution of the script until the rest of the document has been processed — the preferred behavior for performance.
-*  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`.
-* `fetchPriority`: a string. Lets the browser rank scripts in priority when fetching multiple scripts at the same time. Can be `"high"`, `"low"`, or `"auto"` (the default).
-* `integrity`: a string. A cryptographic hash of the script, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
-* `noModule`: a boolean. Disables the script in browsers that support ES modules — allowing for a fallback script for browsers that do not.
-* `nonce`: a string. A cryptographic [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy.
-* `referrer`: a string. Says [what Referer header to send](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#referrerpolicy) when fetching the script and any resources that the script fetches in turn. 
-* `type`: a string. Says whether the script is a [classic script, ES module, or import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type).
+* `async`：布尔值，允许浏览器延迟执行脚本，直到文档的其余部分已经处理完毕——这是性能优化的首选行为。
+* `crossOrigin`：字符串，表示要使用的 [CORS 策略](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)，其可能的值为 `anonymous` 和 `use-credentials`。
+* `fetchPriority`：字符串，用于指示浏览器在同时获取多个脚本时按优先级对脚本进行排名，可能的值包括 `"high"`、`"low"` 与 `"auto"`（默认值）。
+* `integrity`：字符串，脚本的密码哈希，用于 [验证其真实性](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)。
+* `noModule`：布尔值，表示在支持 ES 模块的浏览器中禁用脚本——为不支持的浏览器提供一个回退脚本。
+* `nonce`：字符串，表示使用严格内容安全策略时允许资源的 [加密随机数](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/nonce)。
+* `referrer`：字符串，指定在获取脚本以及脚本反过来获取的任何资源时发送的 [referer 请求头](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#referrerpolicy)。
+* `type`：字符串，指定脚本是一个 [传统脚本、ES 模块还是导入映射](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type)。
 
-Props that disable React's [special treatment of scripts](#special-rendering-behavior):
+禁用 React 对脚本的 [特殊处理](#special-rendering-behavior) 的属性：
 
-* `onError`: a function. Called when the script fails to load.
-* `onLoad`: a function. Called when the script finishes being loaded.
+* `onError`：脚本加载失败时调用的函数。
+* `onLoad`：脚本加载完成时调用的函数。
 
-Props that are **not recommended** for use with React:
+不建议与 React 一起使用的属性：
 
-* `blocking`: a string. If set to `"render"`, instructs the browser not to render the page until the scriptsheet is loaded. React provides more fine-grained control using Suspense.
-* `defer`: a string. Prevents the browser from executing the script until the document is done loading. Not compatible with streaming server-rendered components. Use the `async` prop instead.
+* `blocking`：字符串。如果其设置为 `"render"`，指示浏览器在脚本加载完成之前不要渲染页面。React 使用 Suspense 提供了更精细的控制。
+* `defer`：字符串，用于防止浏览器在文档加载完成之前执行脚本。与流式服务器端渲染组件不兼容。请改用 `async` 属性。
 
-#### Special rendering behavior {/*special-rendering-behavior*/}
+#### 特殊的渲染行为 {/*special-rendering-behavior*/}
 
-React can move `<script>` components to the document's `<head>`, de-duplicate identical scripts, and [suspend](http://localhost:3000/reference/react/Suspense) while the script is loading.
+React 可以将 `<script>` 组件移动到文档的 `<head>` 中，并对相同脚本进行去重，并在脚本加载时 [挂起](http://localhost:3000/reference/react/Suspense)。
 
-To opt into this behavior, provide the `src` and `async={true}` props. React will de-duplicate scripts if they have the same `src`. The `async` prop must be true to allow scripts to be safely moved.
+可以提供 `src` 和 `async={true}` 属性以选择行为。如果脚本具有相同的 `src`，React 将对脚本去重。`async` 属性必须为 true 才能安全地移动脚本。
 
-If you supply any of the `onLoad` or `onError` props, there is no special behavior, because these props indicate that you are managing the loading of the script manually within your component.
+如果提供了 `onLoad` 或 `onError` 之类的任何属性，则没有特殊行为，因为这些属性表明正在组件内手动管理脚本的加载。
 
-This special treatment comes with two caveats:
+这种特殊处理带来两个注意事项：
 
-* React will ignore changes to props after the script has been rendered. (React will issue a warning in development if this happens.)
-* React may leave the script in the DOM even after the component that rendered it has been unmounted. (This has no effect as scripts just execute once when they are inserted into the DOM.)
+* 在脚本被渲染后，React 将忽略属性的更改（在开发模式下，如果发生这种情况，React 将发出警告）。
+* 即使渲染它的组件已被卸载，React 也可能将脚本保留在 DOM 中（这不会产生影响，因为脚本只在插入到 DOM 中时执行一次）。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Rendering an external script {/*rendering-an-external-script*/}
+### 渲染内部脚本 {/*rendering-an-external-script*/}
 
-If a component depends on certain scripts in order to be displayed correctly, you can render a `<script>` within the component.
+如果一个组件依赖于某些脚本才能正确显示，则可以在组件内部渲染 `<script>`。
 
-If you supply an `src` and `async` prop, your component will suspend while the script is loading. React will de-duplicate scripts that have the same `src`, inserting only one of them into the DOM even if multiple components render it.
+如果提供了 `src` 和 `async` 属性，组件会在脚本加载时挂起。React 会对具有相同 `src` 的脚本去重，因此即使多个组件渲染了相同的脚本，也只会将其中一个插入到 DOM 中。
 
 <SandpackWithHTMLOutput>
 
@@ -115,12 +115,12 @@ export default function Page() {
 </SandpackWithHTMLOutput>
 
 <Note>
-When you want to use a script, it can be beneficial to call the [preinit](/reference/react-dom/preinit) function. Calling this function may allow the browser to start fetching the script earlier than if you just render a `<script>` component, for example by sending an [HTTP Early Hints response](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103).
+想要使用脚本时，调用 [preinit](/reference/react-dom/preinit) 函数可能会有益处。调用此函数可能会使浏览器比仅渲染 `<script>` 组件更早地开始获取脚本，例如通过发送 [HTTP 103 Early Hints 响应](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/103)。
 </Note>
 
-### Rendering an inline script {/*rendering-an-inline-script*/}
+### 渲染内联脚本 {/*rendering-an-inline-script*/}
 
-To include an inline script, render the `<script>` component with the script source code as its children. Inline scripts are not de-duplicated or moved to the document `<head>`, and since they don't load any external resources, they will not cause your component to suspend.
+如果需要包含内联脚本，请将 `<script>` 组件渲染为其子元素的脚本源代码。内联脚本不会被去重或移动到文档 `<head>` 中，由于它们不加载任何外部资源，因此不会导致组件挂起。
 
 <SandpackWithHTMLOutput>
 
