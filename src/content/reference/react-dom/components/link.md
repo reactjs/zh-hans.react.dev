@@ -69,7 +69,7 @@ React 对 `<link>` 的扩展当前仅在 React Canary 与 experimental 渠道中
 * `href`：字符串，表示链接资源的 URL。
 * `crossOrigin`：字符串，表示要使用的 [CORS策略](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/crossorigin)。当 `as` 设置为 `"fetch"` 时，此字段是必需的。
 * `referrerPolicy`：字符串，表示获取时发送的 [referer 请求头](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link#referrerpolicy)，可能的值包括 `no-referrer-when-downgrade`（默认值）、`no-referrer`、`origin`、`origin-when-cross-origin` 与 `unsafe-url`。
-* `fetchPriority`：字符串，用于为获取资源建议一个相对优先级，可能的值包括 `auto`（默认值）、`high` 与 `low`。
+* `fetchPriority`：字符串，为获取资源建议的相对优先级，可能的值包括 `auto`（默认值）、`high` 与 `low`。
 * `hrefLang`：字符串，表示链接资源的语言。
 * `integrity`：字符串，表示资源的加密哈希，用于 [验证其真实性](https://developer.mozilla.org/zh-CN/docs/Web/Security/Subresource_Integrity)。
 * `type`：字符串，表示链接资源的 MIME 类型。
