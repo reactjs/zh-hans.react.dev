@@ -152,7 +152,7 @@ function AppRoot() {
 
 </Recipes>
 
-### 在事件处理程序在预加载 {/*preloading-in-an-event-handler*/}
+### 在事件处理程序中预加载 {/*preloading-in-an-event-handler*/}
 
 在转换到需要外部资源的页面或状态之前，于事件处理程序中调用 `preload`。这会比在渲染新页面或状态时调用它更早地启动了该过程。
 
