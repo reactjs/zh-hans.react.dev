@@ -85,7 +85,7 @@ React 对 `<link>` 的扩展当前仅在 React Canary 与 experimental 渠道中
 但是，有几个例外情况：
 
 * 如果 `<link>` 具有 `rel="stylesheet"` 属性，则它还必须具有 `precedence` 属性才能保持此特殊行为。这是因为文档中样式表的顺序很重要，因此 React 需要知道如何将此样式表与其他样式表排序，这可以使用 `precedence` 属性指定。如果省略了 `precedence` 属性，则没有特殊行为。
-* 如果 `<link>` 具有 [`itemProp`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/itemprop) 属性，则没有特殊行为，因为在这种情况下，它不适用于文档，而是表示页面的特定部分的元数据。
+* 如果 `<link>` 具有 [`itemProp`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/itemprop) 属性，则没有特殊行为，因为在这种情况下，它不适用于文档，而只是表示页面特定部分的元数据。
 * 如果 `<link>` 具有 `onLoad` 或 `onError` 属性，则没有特殊行为，因为在这种情况下，正在在 React 组件中手动管理链接资源的加载。
 
 #### 链接到样式表的特殊行为 {/*special-behavior-for-stylesheets*/}
