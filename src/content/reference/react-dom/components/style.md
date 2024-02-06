@@ -54,7 +54,7 @@ React 对 `<style>` 的扩展当前仅在 React Canary 与 experimental 渠道�
 
 React 可以将 `<style>` 组件移动到文档的 `<head>` 中，去重相同的样式表，并在样式表加载时 [挂起](/reference/react/Suspense)。
 
-请提供 `href` 和 `precedence` 属性以选择此行为。如果样式表具有相同的 `href`，React 将去重样式。优先级属性告诉 React 在文档的 `<head>` 中排列 `<style>` DOM 节点的位置，从而确定哪个样式表可以覆盖另一个。
+请提供 `href` 和 `precedence` 属性以选择此行为。如果样式表具有相同的 `href`，React 将对样式去重。优先级属性告诉 React 在文档的 `<head>` 中排列 `<style>` DOM 节点的位置，从而确定哪个样式表可以覆盖另一个。
 
 这种特殊处理带来两个注意事项：
 
