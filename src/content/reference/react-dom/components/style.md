@@ -41,7 +41,7 @@ React 对 `<style>` 的扩展当前仅在 React Canary 与 experimental 渠道�
 
 * `children`：字符串，必需字段，表示样式表的内容。
 * `precedence`：字符串，告诉 React 在文档 `<head>` 中排列 `<style>` DOM 节点的位置，确定哪个样式表可以覆盖另一个，可能的值包括（按优先级排序）`"reset"`、`"low"`、`"medium"` 与 `"high"`。无论是 `<link>` 还是内联 `<style>` 标签，或者使用 [`preload`](/reference/react-dom/preload) 或 [`preinit`](/reference/react-dom/preinit) 函数加载的样式表，具有相同优先级的将一起处理。
-* `href`：字符串，允许 React [去重具有相同 `href` 的样式](#special-rendering-behavior)。
+* `href`：字符串，允许 React [对 `href` 相同的样式进行去重](#special-rendering-behavior)。
 * `media`：字符串，将样式表限制为特定的 [媒体查询](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries)。
 * `nonce`：字符串，表示使用严格内容安全策略时允许资源的 [加密随机数](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/nonce)。
 * `title`：字符串，用于指定 [替代样式表](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Alternative_style_sheets) 的名称。
