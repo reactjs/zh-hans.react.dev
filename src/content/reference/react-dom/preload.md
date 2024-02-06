@@ -59,7 +59,7 @@ function AppRoot() {
   *  `integrity`：字符串，为资源的加密哈希，用于 [验证其真实性](https://developer.mozilla.org/zh-CN/docs/Web/Security/Subresource_Integrity)。
   *  `type`：字符串，表示资源的 MIME 类型。
   *  `nonce`：字符串，表示使用严格内容安全策略时允许资源的 [加密随机数](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/nonce)。
-  *  `fetchPriority`：字符串，表示建议获取资源的相对优先级，可能的值为 `auto`（默认值）、`high` 与 `low`。
+  *  `fetchPriority`：字符串，为获取资源建议的相对优先级，可能的值为 `auto`（默认值）、`high` 与 `low`。
   *  `imageSrcSet`：字符串，仅与 `as: "image"` 一起使用，用于指定 [图像的源集](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)。
   *  `imageSizes`：字符串，仅与 `as: "image"` 一起使用，用于指定 [图像的尺寸](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)。
 
