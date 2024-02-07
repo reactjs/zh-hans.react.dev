@@ -17,7 +17,7 @@ canary: true
 
 <Intro>
 
-`preinit` 可以帮助急切地获取和评估样式表或外部脚本。
+`preinit` 可以预获取和评估样式表或外部脚本。
 
 ```js
 preinit("https://example.com/script.js", {as: "style"});
