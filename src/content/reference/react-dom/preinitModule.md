@@ -51,7 +51,7 @@ function AppRoot() {
 
 #### 参数 {/*parameters*/}
 
-* `href`：字符串，要下载的资源的 URL。
+* `href`：字符串，要下载并执行的模块的 URL。
 * `options`：对象，可以包含以下属性：
   *  `as`：必需的字符串，表示资源的类型，[可能的值](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link#as) 包括 `audio`、`document`、`embed`、`fetch`、`font`、`image`、`object`、`script`、`style`、`track`、`video` 与 `worker`。
   *  `crossOrigin`：字符串，表示要使用的 [CORS 策略](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/crossorigin)，可能的值为 `anonymous` 与 `use-credentials`。当 `as` 设置为 `"fetch"` 时是必需的。
