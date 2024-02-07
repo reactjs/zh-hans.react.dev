@@ -79,7 +79,7 @@ function AppRoot() {
 
 ### 在事件处理程序中预获取 DNS {/*prefetching-dns-in-an-event-handler*/}
 
-在转换到需要外部资源的页面或状态之前，于事件处理程序中调用 `prefetchDNS`。这会比在渲染新页面或状态时调用它更早地启动了该过程。
+在转换到需要外部资源的页面或状态之前，于事件处理程序中调用 `prefetchDNS`。这会比在渲染新页面或状态时调用它更早地启动该过程。
 
 ```js
 import { prefetchDNS } from 'react-dom';
