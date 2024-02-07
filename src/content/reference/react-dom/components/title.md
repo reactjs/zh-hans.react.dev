@@ -40,7 +40,7 @@ React 对 `<title>` 的扩展当前仅在 React Canary 与 experimental 渠道�
 
 `<title>` 支持所有 [常见元素属性](/reference/react-dom/components/common#props)。
 
-* `children`：`<title>` 只接受文本作为子元素。该文本将成为文档的标题。只要它们只渲染文本，也可以传递自定义组件。
+* `children`：`<title>` 只接受文本作为子元素。该文本将成为文档的标题，也可以传递只渲染文本的自定义组件。
 
 #### 特殊的渲染行为 {/*special-rendering-behavior*/}
 
