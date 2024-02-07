@@ -74,7 +74,7 @@ function AppRoot() {
 
 ### 渲染时预加载 {/*preloading-when-rendering*/}
 
-如果知道组件或其子元素将使用特定模块，并且希望在下载后立即生效，可以在渲染组件时调用 `preinitModule`。
+如果你知道组件或其子元素将使用特定模块，并且可以接受开始评估模块并在下载后立即生效，可以在渲染组件时调用 `preinitModule`。
 
 ```js
 import { preinitModule } from 'react-dom';
