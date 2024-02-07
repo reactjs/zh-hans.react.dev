@@ -65,7 +65,7 @@ function AppRoot() {
 #### 注意 {/*caveats*/}
 
 * 对于具有相同 `href` 的多个 `preinitModule` 调用具有与单个调用相同的效果。
-* 在浏览器中，可以在任何情况下调用 `preinitModule`：在渲染组件时，在 Effect 中，在事件处理程序中等等。
+* 在浏览器中，可以在任何情况下调用 `preinitModule`：例如渲染组件时、Effect 中以及事件处理程序中等等。
 * 在服务器端渲染或渲染服务器组件时，只有在渲染组件时调用 `preinitModule` 或在源自渲染组件的异步上下文中调用时，`preinitModule` 才会生效。其他任何调用都将被忽略。
 
 ---
