@@ -5,17 +5,17 @@ canary: true
 
 <Canary>
 
-React's extensions to `<title>` are currently only available in React's canary and experimental channels. In stable releases of React `<title>` works only as a [built-in browser HTML component](https://react.dev/reference/react-dom/components#all-html-components). Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+React 对 `<title>` 的扩展当前仅在 React Canary 与 experimental 渠道中可用。在 React 的稳定版本中，`<title>` 仅作为 [浏览器内置 HTML 组件](https://react.dev/reference/react-dom/components#all-html-components) 使用。请在 [此处了解更多关于 React 发布渠道的信息](/community/versioning-policy#all-release-channels)。
 
 </Canary>
 
 
 <Intro>
 
-The [built-in browser `<title>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title) lets you specify the title of the document.
+[浏览器内置的 `<title>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title) 允许向文档指定标题。
 
 ```js
-<title>My Blog</title>
+<title>我的博客</title>
 ```
 
 </Intro>
@@ -24,45 +24,45 @@ The [built-in browser `<title>` component](https://developer.mozilla.org/en-US/d
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `<title>` {/*title*/}
 
-To specify the title of the document, render the [built-in browser `<title>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title). You can render `<title>` from any component and React will always place the corresponding DOM element in the document head.
+渲染 [浏览器内置的 `<title>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title) 以指定文档标题。可以在任何组件中渲染 `<title>`，React 会始终将相应的 DOM 元素放置在文档头部。
 
 ```js
-<title>My Blog</title>
+<title>我的博客</title>
 ```
 
-[See more examples below.](#usage)
+[参见下方更多示例](#usage)。
 
-#### Props {/*props*/}
+#### 属性 {/*props*/}
 
-`<title>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<title>` 支持所有 [常见元素属性](/reference/react-dom/components/common#props)。
 
-* `children`: `<title>` accepts only text as a child. This text will become the title of the document. You can also pass your own components as long as they only render text.
+* `children`：`<title>` 只接受文本作为子元素。该文本将成为文档的标题，也可以传递只渲染文本的自定义组件。
 
-#### Special rendering behavior {/*special-rendering-behavior*/}
+#### 特殊的渲染行为 {/*special-rendering-behavior*/}
 
-React will always place the DOM element corresponding to the `<title>` component within the document’s `<head>`, regardless of where in the React tree it is rendered. The `<head>` is the only valid place for `<title>` to exist within the DOM, yet it’s convenient and keeps things composable if a component representing a specific page can render its `<title>` itself. 
+无论在 React 树中的哪个位置被渲染，React 将始终将与 `<title>` 组件对应的 DOM 元素放置在文档的 `<head>` 中。`<head>` 是 `<title>` 在 DOM 中唯一有效的位置，但如果表示特定页面的组件可以自行渲染其 `<title>`，这样做既方便又保持了可组合性。
 
-There are two exception to this:
-* If `<title>` is within an `<svg>` component, then there is no special behavior, because in this context it doesn’t represent the document’s title but rather is an [accessibility annotation for that SVG graphic](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title).
-* If the `<title>` has an [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop) prop, there is no special behavior, because in this case it doesn’t represent the document’s title but rather metadata about a specific part of the page. 
+有两个例外情况：
+* 如果 `<title>` 在 `<svg>` 组件内部，则没有特殊行为，因为在这种情况下它不代表文档的标题，而是 [SVG 图形的可访问性注释](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title)。
+* 如果 `<title>` 具有 [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop) 属性，也没有特殊行为，因为在这种情况下它不代表文档的标题，而是页面特定部分的元数据。
 
 <Pitfall>
 
-Only render a single `<title>` at a time. If more than one component renders a `<title>` tag at the same time, React will place all of those titles in the document head. When this happens, the behavior of browsers and search engines is undefined.
+一次只渲染呈现一个 `<title>`。如果多个组件同时渲染那 `<title>` 标签，React 将把所有这些标题放在文档头部。发生这种情况时，浏览器和搜索引擎的行为是不确定的。
 
 </Pitfall>
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Set the document title {/*set-the-document-title*/}
+### 设置文档标题 {/*set-the-document-title*/}
 
-Render the `<title>` component from any component with text as its children. React will put a `<title>` DOM node in the document `<head>`.
+从任何组件中使用文本作为其子元素渲染 `<title>` 组件。React 将在文档的 `<head>` 中放置一个 `<title>` DOM 节点。
 
 <SandpackWithHTMLOutput>
 
@@ -72,9 +72,9 @@ import ShowRenderedHTML from './ShowRenderedHTML.js';
 export default function ContactUsPage() {
   return (
     <ShowRenderedHTML>
-      <title>My Site: Contact Us</title>
-      <h1>Contact Us</h1>
-      <p>Email us at support@example.com</p>
+      <title>我的网站：联系我们</title>
+      <h1>联系我们</h1>
+      <p>通过电子邮件 support@example.com 联系我们</p>
     </ShowRenderedHTML>
   );
 }
@@ -82,15 +82,15 @@ export default function ContactUsPage() {
 
 </SandpackWithHTMLOutput>
 
-### Use variables in the title {/*use-variables-in-the-title*/}
+### 在标题中使用变量 {/*use-variables-in-the-title*/}
 
-The children of the `<title>` component must be a single string of text. (Or a single number or a single object with a `toString` method.) It might not be obvious, but using JSX curly braces like this:
+`<title>` 组件的子元素必须是单个文本字符串（或者是单个数字或带有 `toString` 方法的单个对象）。可能并不明显，但这样使用 JSX 大括号是存在问题的：
 
 ```js
-<title>Results page {pageNumber}</title> // 🔴 Problem: This is not a single string
+<title>Results page {pageNumber}</title> // 🔴 问题：这不是单个字符串
 ```
 
-... actually causes the `<title>` component to get a two-element array as its children (the string `"Results page"` and the value of `pageNumber`). This will cause an error. Instead, use string interpolation to pass `<title>` a single string:
+……实际上会导致 `<title>` 组件的子元素是一个包含两个元素的数组（字符串 `"Results page"` 和 `pageNumber` 的值）。这将导致错误，应该使用字符串插值传递给 `<title>` 一个单个字符串：
 
 ```js
 <title>{`Results page ${pageNumber}`}</title>
