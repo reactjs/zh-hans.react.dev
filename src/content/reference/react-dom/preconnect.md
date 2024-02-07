@@ -5,13 +5,13 @@ canary: true
 
 <Canary>
 
-The `preconnect` function is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+`preconnect` 函数当前仅在 React Canary 与 experimental 渠道中可用，请在 [此处了解更多关于 React 发布渠道的信息](/community/versioning-policy#all-release-channels)。
 
 </Canary>
 
 <Intro>
 
-`preconnect` lets you eagerly connect to a server that you expect to load resources from.
+`preconnect` 可以帮助提前连接到一个期望从中加载资源的服务器。
 
 ```js
 preconnect("https://example.com");
@@ -23,50 +23,50 @@ preconnect("https://example.com");
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `preconnect(href)` {/*preconnect*/}
 
-To preconnect to a host, call the `preconnect` function from `react-dom`.
+调用 `react-dom` 中的 `preconnect` 函数以实现预连接到主机。
 
 ```js
 import { preconnect } from 'react-dom';
 
 function AppRoot() {
   preconnect("https://example.com");
-  // ...
+  // ……
 }
 
 ```
 
-[See more examples below.](#usage)
+[参见下方更多示例](#usage)。
 
-The `preconnect` function provides the browser with a hint that it should open a connection to the given server. If the browser chooses to do so, this can speed up the loading of resources from that server. 
+`preconnect` 函数向浏览器提供一个提示，告诉它应该打开到给定服务器的连接。如果浏览器选择这样做，则可以加快从该服务器加载资源的速度。
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `href`: a string. The URL of the server you want to connect to.
+* `href`：字符串，表示希望连接到的服务器 URL。
 
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-`preconnect` returns nothing.
+`preconnect` 不返回任何值。
 
-#### Caveats {/*caveats*/}
+#### 注意 {/*caveats*/}
 
-* Multiple calls to `preconnect` with the same server have the same effect as a single call.
-* In the browser, you can call `preconnect` in any situation: while rendering a component, in an effect, in an event handler, and so on.
-* In server-side rendering or when rendering Server Components, `preconnect` only has an effect if you call it while rendering a component or in an async context originating from rendering a component. Any other calls will be ignored.
-* If you know the specific resources you'll need, you can call [other functions](/reference/react-dom/#resource-preloading-apis) instead that will start loading the resources right away.
-* There is no benefit to preconnecting to the same server the webpage itself is hosted from because it's already been connected to by the time the hint would be given.
+* 对同一服务器进行多次调用 `preconnect` 具有与单次调用相同的效果。
+* 在浏览器中，可以在任何情况下调用 `preconnect`：例如渲染组件时、Effect 中以及事件处理程序中等等。
+* 在服务器端渲染或渲染服务器组件时，只有在渲染组件或在从渲染组件中发起的异步上下文中调用 `preconnect` 时才会生效。任何其他调用都将被忽略。
+* 如果知道即将需要的具体资源，可以调用 [其他函数](/reference/react-dom/#resource-preloading-apis)，这些函数将立即开始加载资源。
+* 预连接到托管网页本身的相同服务器没有好处，因为在给出提示时它已经连接。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Preconnecting when rendering {/*preconnecting-when-rendering*/}
+### 渲染时预连接 {/*preconnecting-when-rendering*/}
 
-Call `preconnect` when rendering a component if you know that its children will load external resources from that host.
+如果知道组件的子元素将从该主机加载外部资源，请在渲染组件时调用 `preconnect`。
 
 ```js
 import { preconnect } from 'react-dom';
@@ -77,9 +77,9 @@ function AppRoot() {
 }
 ```
 
-### Preconnecting in an event handler {/*preconnecting-in-an-event-handler*/}
+### 在事件处理程序中预连接 {/*preconnecting-in-an-event-handler*/}
 
-Call `preconnect` in an event handler before transitioning to a page or state where external resources will be needed. This gets the process started earlier than if you call it during the rendering of the new page or state.
+在转换到需要外部资源的页面或状态之前，于事件处理程序中调用 `preconnect`。这会比在渲染新页面或状态时调用它更早地启动该过程。
 
 ```js
 import { preconnect } from 'react-dom';
