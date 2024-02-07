@@ -17,7 +17,7 @@ canary: true
 
 <Intro>
 
-`preinit` 可以帮助急切地获取和评估 ESM 模块。
+`preinitModule` 可以预获取和评估 ESM 模块。
 
 ```js
 preinitModule("https://example.com/module.js", {as: "script"});
