@@ -53,7 +53,7 @@ React 对 `<script>` 的扩展当前仅在 React Canary 与 experimental 渠道�
 * `integrity`：字符串，脚本的密码哈希，用于 [验证其真实性](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)。
 * `noModule`：布尔值，表示在支持 ES 模块的浏览器中禁用脚本——用于为不支持的浏览器提供一个后备脚本。
 * `nonce`：字符串，表示使用严格内容安全策略时允许资源的 [加密随机数](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/nonce)。
-* `referrer`：字符串，指定在获取脚本以及脚本反过来获取的任何资源时发送的 [referer 请求头](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#referrerpolicy)。
+* `referrer`：字符串，指定在获取脚本以及脚本依次获取任何资源时发送的 [referer 请求头](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#referrerpolicy)。
 * `type`：字符串，指定脚本是一个 [传统脚本、ES 模块还是导入映射](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type)。
 
 禁用 React 对脚本的 [特殊处理](#special-rendering-behavior) 的属性：
