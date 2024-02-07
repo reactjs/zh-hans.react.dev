@@ -11,7 +11,7 @@ React 对 `<script>` 的扩展当前仅在 React Canary 与 experimental 渠道�
 
 <Intro>
 
-[浏览器内置的 `<script>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) 允许向文档添加脚本。元数据。
+[浏览器内置的 `<script>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) 允许向文档添加脚本。
 
 ```js
 <script> alert("hi!") </script>
