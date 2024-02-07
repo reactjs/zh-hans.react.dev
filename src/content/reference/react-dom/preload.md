@@ -5,19 +5,19 @@ canary: true
 
 <Canary>
 
-The `preload` function is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+`preload` 函数当前仅在 React Canary 与 experimental 渠道中可用，请在 [此处了解更多关于 React 发布渠道的信息](/community/versioning-policy#all-release-channels)。
 
 </Canary>
 
 <Note>
 
-[React-based frameworks](/learn/start-a-new-react-project) frequently handle resource loading for you, so you might not have to call this API yourself. Consult your framework's documentation for details.
+ [基于 React 的框架](/learn/start-a-new-react-project) 通常会内置资源处理方案，因此你可能不必手动调用此 API。请查阅框架文档以获取详细信息。
 
 </Note>
 
 <Intro>
 
-`preload` lets you eagerly fetch a resource such as a stylesheet, font, or external script that you expect to use.
+`preload` 可以预获取期望使用的资源，比如样式表、字体或外部脚本。
 
 ```js
 preload("https://example.com/font.woff2", {as: "font"});
@@ -29,63 +29,63 @@ preload("https://example.com/font.woff2", {as: "font"});
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `preload(href, options)` {/*preload*/}
 
-To preload a resource, call the `preload` function from `react-dom`.
+调用 `react-dom` 中的 `preload` 函数以实现预加载资源。
 
 ```js
 import { preload } from 'react-dom';
 
 function AppRoot() {
   preload("https://example.com/font.woff2", {as: "font"});
-  // ...
+  // ……
 }
 
 ```
 
-[See more examples below.](#usage)
+[参见下方更多示例。](#usage)
 
-The `preload` function provides the browser with a hint that it should start downloading the given resource, which can save time.
+`preload` 函数向浏览器提供一个提示，告诉它应该开始下载给定的资源，这将会节省时间。
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `href`: a string. The URL of the resource you want to download.
-* `options`: an object. It contains the following properties:
-  *  `as`: a required string. The type of resource. Its [possible values](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#as) are `audio`, `document`, `embed`, `fetch`, `font`, `image`, `object`, `script`, `style`, `track`, `video`, `worker`.
-  *  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`. It is required when `as` is set to `"fetch"`.
-  *  `referrerPolicy`: a string. The [Referrer header](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#referrerpolicy) to send when fetching. Its possible values are `no-referrer-when-downgrade` (the default), `no-referrer`, `origin`, `origin-when-cross-origin`, and `unsafe-url`.
-  *  `integrity`: a string. A cryptographic hash of the resource, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
-  *  `type`: a string. The MIME type of the resource.
-  *  `nonce`: a string. A cryptographic [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy. 
-  *  `fetchPriority`: a string. Suggests a relative priority for fetching the resource. The possible values are `auto` (the default), `high`, and `low`.
-  *  `imageSrcSet`: a string. For use only with `as: "image"`. Specifies the [source set of the image](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
-  *  `imageSizes`: a string. For use only with `as: "image"`. Specifies the [sizes of the image](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
+* `href`：字符串，要下载的资源的 URL。
+* `options`：对象，可以包含以下属性：
+  *  `as`：必需的字符串，表示资源的类型，[可能的值](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link#as) 包括 `audio`、`document`、`embed`、`fetch`、`font`、`image`、`object`、`script`、`style`、`track`、`video` 与 `worker`。
+  *  `crossOrigin`：字符串，表示要使用的 [CORS 策略](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/crossorigin)，可能的值为 `anonymous` 与 `use-credentials`。当 `as` 设置为 `"fetch"` 时是必需的。
+  *  `referrerPolicy`：字符串，表示在获取时发送的 [referer 请求头](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link#referrerpolicy)，可能的值为 `no-referrer-when-downgrade`（默认值）、`no-referrer`、`origin`、`origin-when-cross-origin` 与 `unsafe-url`。
+  *  `integrity`：字符串，为资源的加密哈希，用于 [验证其真实性](https://developer.mozilla.org/zh-CN/docs/Web/Security/Subresource_Integrity)。
+  *  `type`：字符串，表示资源的 MIME 类型。
+  *  `nonce`：字符串，表示使用严格内容安全策略时允许资源的 [加密随机数](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/nonce)。
+  *  `fetchPriority`：字符串，为获取资源建议的相对优先级，可能的值为 `auto`（默认值）、`high` 与 `low`。
+  *  `imageSrcSet`：字符串，仅与 `as: "image"` 一起使用，用于指定 [图像的源集](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)。
+  *  `imageSizes`：字符串，仅与 `as: "image"` 一起使用，用于指定 [图像的尺寸](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-`preload` returns nothing.
+`preload` 不返回任何值。
 
-#### Caveats {/*caveats*/}
+#### 注意 {/*caveats*/}
 
-* Multiple equivalent calls to `preload` have the same effect as a single call. Calls to `preload` are considered equivalent according to the following rules:
-  * Two calls are equivalent if they have the same `href`, except:
-  * If `as` is set to `image`, two calls are equivalent if they have the same `href`, `imageSrcSet`, and `imageSizes`.
-* In the browser, you can call `preload` in any situation: while rendering a component, in an effect, in an event handler, and so on.
-* In server-side rendering or when rendering Server Components, `preload` only has an effect if you call it while rendering a component or in an async context originating from rendering a component. Any other calls will be ignored.
+* 对 `preload` 的多个等效调用与单个调用具有相同的效果。根据以下规则，对 `preload` 的调用被视为等效：
+  * 如果两个调用具有相同的 `href`，则它们是等效的，除非：
+  * 如果 `as` 设置为 `image`，并且两个调用具有相同的 `href`、`imageSrcSet` 和 `imageSizes`，则它们是等效的。
+* 在浏览器中，可以在任何情况下调用 `preload`：例如渲染组件时、Effect 中以及事件处理程序中等等。
+* 在服务器端渲染或渲染服务器组件时，只有在渲染组件时调用 `preload` 或在源自渲染组件的异步上下文中调用时，`preload` 才会生效。其他任何调用都将被忽略。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Preloading when rendering {/*preloading-when-rendering*/}
+### 渲染时进行预加载 {/*preloading-when-rendering*/}
 
-Call `preload` when rendering a component if you know that it or its children will use a specific resource.
+如果知道组件或其子组件将使用特定资源，那么在渲染组件时调用 `preload`。
 
-<Recipes titleText="Examples of preloading">
+<Recipes titleText="预加载的例子">
 
-#### Preloading an external script {/*preloading-an-external-script*/}
+#### 预加载外部脚本 {/*preloading-an-external-script*/}
 
 ```js
 import { preload } from 'react-dom';
@@ -96,11 +96,11 @@ function AppRoot() {
 }
 ```
 
-If you want the browser to start executing the script immediately (rather than just downloading it), use [`preinit`](/reference/react-dom/preinit) instead. If you want to load an ESM module, use [`preloadModule`](/reference/react-dom/preloadModule).
+如果希望浏览器立即开始执行脚本（而不仅仅是下载它），请使用 [`preinit`](/reference/react-dom/preinit)；如果想加载一个 ESM 模块，请使用 [`preloadModule`](/reference/react-dom/preloadModule)。
 
 <Solution />
 
-#### Preloading a stylesheet {/*preloading-a-stylesheet*/}
+#### 预加载样式表 {/*preloading-a-stylesheet*/}
 
 ```js
 import { preload } from 'react-dom';
@@ -111,11 +111,11 @@ function AppRoot() {
 }
 ```
 
-If you want the stylesheet to be inserted into the document immediately (which means the browser will start parsing it immediately rather than just downloading it), use [`preinit`](/reference/react-dom/preinit) instead.
+如果希望样式表立即被插入到文档中（这意味着浏览器将立即开始解析它而不仅仅是下载它），请使用 [`preinit`](/reference/react-dom/preinit)。
 
 <Solution />
 
-#### Preloading a font {/*preloading-a-font*/}
+#### 预加载字体 {/*preloading-a-font*/}
 
 ```js
 import { preload } from 'react-dom';
@@ -127,11 +127,11 @@ function AppRoot() {
 }
 ```
 
-If you preload a stylesheet, it's smart to also preload any fonts that the stylesheet refers to. That way, the browser can start downloading the font before it's downloaded and parsed the stylesheet.
+如果预加载样式表，最好也预加载样式表引用的任何字体。这样，浏览器可以在下载和解析样式表之前开始下载字体。
 
 <Solution />
 
-#### Preloading an image {/*preloading-an-image*/}
+#### 预加载图片 {/*preloading-an-image*/}
 
 ```js
 import { preload } from 'react-dom';
@@ -146,15 +146,15 @@ function AppRoot() {
 }
 ```
 
-When preloading an image, the `imageSrcSet` and `imageSizes` options help the browser [fetch the correctly sized image for the size of the screen]((https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)).
+当预加载图像时，`imageSrcSet` 和 `imageSizes` 选项可以帮助浏览器 [为屏幕尺寸获取正确大小的图像](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)。
 
 <Solution />
 
 </Recipes>
 
-### Preloading in an event handler {/*preloading-in-an-event-handler*/}
+### 在事件处理程序中预加载 {/*preloading-in-an-event-handler*/}
 
-Call `preload` in an event handler before transitioning to a page or state where external resources will be needed. This gets the process started earlier than if you call it during the rendering of the new page or state.
+在转换到需要外部资源的页面或状态之前，于事件处理程序中调用 `preload`。这会比在渲染新页面或状态时调用它更早地启动该过程。
 
 ```js
 import { preload } from 'react-dom';
