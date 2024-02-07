@@ -5,19 +5,19 @@ canary: true
 
 <Canary>
 
-The `preinit` function is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+`preinit` 函数当前仅在 React Canary 与 experimental 渠道中可用，请在 [此处了解更多关于 React 发布渠道的信息](/community/versioning-policy#all-release-channels)。
 
 </Canary>
 
 <Note>
 
-[React-based frameworks](/learn/start-a-new-react-project) frequently handle resource loading for you, so you might not have to call this API yourself. Consult your framework's documentation for details.
+[基于 React 的框架](/learn/start-a-new-react-project) 通常会内置资源处理方案，因此你可能不必手动调用此 API。请查阅框架文档以获取详细信息。
 
 </Note>
 
 <Intro>
 
-`preinit` lets you eagerly fetch and evaluate a stylesheet or external script.
+`preinit` 可以预获取和评估样式表或外部脚本。
 
 ```js
 preinit("https://example.com/script.js", {as: "style"});
@@ -29,58 +29,58 @@ preinit("https://example.com/script.js", {as: "style"});
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `preinit(href, options)` {/*preinit*/}
 
-To preinit a script or stylesheet, call the `preinit` function from `react-dom`.
+调用 `react-dom` 中的 `preinit` 函数以实现预初始化脚本或样式表。
 
 ```js
 import { preinit } from 'react-dom';
 
 function AppRoot() {
   preinit("https://example.com/script.js", {as: "script"});
-  // ...
+  // ……
 }
 
 ```
 
-[See more examples below.](#usage)
+[参见下方更多示例](#usage)。
 
-The `preinit` function provides the browser with a hint that it should start downloading and executing the given resource, which can save time. Scripts that you `preinit` are executed when they finish downloading. Stylesheets that you preinit are inserted into the document, which causes them to go into effect right away.
+`preinit` 函数向浏览器提供一个提示，告诉它应该开始下载并执行给定的资源，这可以节省时间。`preinit` 的脚本在下载完成后执行。预初始化的样式表被插入到文档中，这会使它们立即生效。
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `href`: a string. The URL of the resource you want to download and execute.
-* `options`: an object. It contains the following properties:
-  *  `as`: a required string. The type of resource. Its possible values are `script` and `style`.
-  * `precedence`: a string. Required with stylesheets. Says where to insert the stylesheet relative to others. Stylesheets with higher precedence can override those with lower precedence. The possible values are `reset`, `low`, `medium`, `high`. 
-  *  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`. It is required when `as` is set to `"fetch"`.
-  *  `integrity`: a string. A cryptographic hash of the resource, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
-  *  `nonce`: a string. A cryptographic [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy. 
-  *  `fetchPriority`: a string. Suggests a relative priority for fetching the resource. The possible values are `auto` (the default), `high`, and `low`.
+* `href`：字符串，要下载并执行的资源的 URL。
+* `options`：对象，可以包含以下属性：
+  *  `as`：必需的字符串，表示资源的类型，可能的值包括 `script` 与 `style`。
+  *  `precedence`：字符串，与样式表一起使用时必需。指定样式表相对于其他样式表的插入位置。具有较高优先级的样式表可以覆盖具有较低优先级的样式表，可能的值包括 `reset`、`low`、`medium` 与 `high`。
+  *  `crossOrigin`：字符串，表示要使用的 [CORS 策略](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/crossorigin)，可能的值为 `anonymous` 与 `use-credentials`。
+  *  `integrity`：字符串，为资源的加密哈希，用于 [验证其真实性](https://developer.mozilla.org/zh-CN/docs/Web/Security/Subresource_Integrity)。
+  *  `nonce`：字符串，表示使用严格内容安全策略时允许资源的 [加密随机数](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/nonce)。
+  *  `fetchPriority`：字符串，表示建议获取资源的相对优先级，可能的值为 `auto`（默认值）、`high` 与 `low`。
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-`preinit` returns nothing.
+`preinit` 不返回任何值。
 
-#### Caveats {/*caveats*/}
+#### 注意 {/*caveats*/}
 
-* Multiple calls to `preinit` with the same `href` have the same effect as a single call.
-* In the browser, you can call `preinit` in any situation: while rendering a component, in an effect, in an event handler, and so on.
-* In server-side rendering or when rendering Server Components, `preinit` only has an effect if you call it while rendering a component or in an async context originating from rendering a component. Any other calls will be ignored.
+* 对于具有相同 `href` 的多个 `preinit` 调用具有与单个调用相同的效果。
+* 在浏览器中，可以在任何情况下调用 `preinit`：例如渲染组件时、Effect 中以及事件处理程序中等等。
+* 在服务器端渲染或渲染服务器组件时，只有在渲染组件时调用 `preinit` 或在源自渲染组件的异步上下文中调用时，`preinit` 才会生效。其他任何调用都将被忽略。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Preiniting when rendering {/*preiniting-when-rendering*/}
+### 渲染时预初始化 {/*preiniting-when-rendering*/}
 
-Call `preinit` when rendering a component if you know that it or its children will use a specific resource, and you're OK with the resource being evaluated and thereby taking effect immediately upon being downloaded.
+如果知道组件或其子组件将使用特定资源，并且可以接受资源被评估并在下载后立即生效，请在渲染组件时调用 `preinit`。
 
-<Recipes titleText="Examples of preiniting">
+<Recipes titleText="预初始化的例子">
 
-#### Preiniting an external script {/*preiniting-an-external-script*/}
+#### 预初始化外部脚本 {/*preiniting-an-external-script*/}
 
 ```js
 import { preinit } from 'react-dom';
@@ -91,11 +91,11 @@ function AppRoot() {
 }
 ```
 
-If you want the browser to download the script but not to execute it right away, use [`preload`](/reference/react-dom/preload) instead. If you want to load an ESM module, use [`preinitModule`](/reference/react-dom/preinitModule).
+如果希望浏览器下载脚本但不立即执行它，请使用 [`preload`](/reference/react-dom/preload)。如果想加载一个 ESM 模块，请使用 [`preinitModule`](/reference/react-dom/preinitModule)。
 
 <Solution />
 
-#### Preiniting a stylesheet {/*preiniting-a-stylesheet*/}
+#### 预初始化样式表 {/*preiniting-a-stylesheet*/}
 
 ```js
 import { preinit } from 'react-dom';
@@ -106,17 +106,17 @@ function AppRoot() {
 }
 ```
 
-The `precedence` option, which is required, lets you control the order of stylesheets within the document. Stylesheets with higher precedence can overrule those with lower precedence.
+`precedence` 选项是必需的，它允许控制文档中样式表的顺序。具有较高优先级的样式表可以覆盖具有较低优先级的样式表。
 
-If you want to download the stylesheet but not to insert it into the document right away, use [`preload`](/reference/react-dom/preload) instead.
+如果希望下载样式表但不立即将其插入文档中，请改用 [`preload`](/reference/react-dom/preload)。
 
 <Solution />
 
 </Recipes>
 
-### Preiniting in an event handler {/*preiniting-in-an-event-handler*/}
+### 在事件处理程序中预初始化 {/*preiniting-in-an-event-handler*/}
 
-Call `preinit` in an event handler before transitioning to a page or state where external resources will be needed. This gets the process started earlier than if you call it during the rendering of the new page or state.
+在转换到需要外部资源的页面或状态之前，于事件处理程序中调用 `preinit`。这会比在渲染新页面或状态时调用它更早地启动该过程。
 
 ```js
 import { preinit } from 'react-dom';
