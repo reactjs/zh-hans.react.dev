@@ -51,7 +51,7 @@ function AppRoot() {
 
 #### 参数 {/*parameters*/}
 
-* `href`：字符串，要下载的资源的 URL。
+* `href`：字符串，要下载并执行的资源的 URL。
 * `options`：对象，可以包含以下属性：
   *  `as`：必需的字符串，表示资源的类型，[可能的值](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link#as) 包括 `audio`、`document`、`embed`、`fetch`、`font`、`image`、`object`、`script`、`style`、`track`、`video` 与 `worker`。
   * `precedence`：字符串，与样式表一起使用时必需。指定样式表相对于其他样式表的插入位置。具有较高优先级的样式表可以覆盖具有较低优先级的样式表，可能的值包括 `reset`、`low`、`medium` 与 `high`。
