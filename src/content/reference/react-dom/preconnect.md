@@ -27,7 +27,7 @@ preconnect("https://example.com");
 
 ### `preconnect(href)` {/*preconnect*/}
 
-调用 `react-dom` 中的 `preinit` 函数以实现预连接到主机。
+调用 `react-dom` 中的 `preconnect` 函数以实现预连接到主机。
 
 ```js
 import { preconnect } from 'react-dom';
