@@ -116,7 +116,7 @@ function AppRoot() {
 
 ### 在事件处理程序中预初始化 {/*preiniting-in-an-event-handler*/}
 
-在转换到需要外部资源的页面或状态之前，于事件处理程序中调用 `preinit`。这会比在渲染新页面或状态时调用它更早地启动了该过程。
+在转换到需要外部资源的页面或状态之前，于事件处理程序中调用 `preinit`。这会比在渲染新页面或状态时调用它更早地启动该过程。
 
 ```js
 import { preinit } from 'react-dom';
