@@ -53,7 +53,7 @@ function AppRoot() {
 
 * `href`：字符串，要下载并执行的资源的 URL。
 * `options`：对象，可以包含以下属性：
-  *  `as`：必需的字符串，表示资源的类型，[可能的值](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link#as) 包括 `audio`、`document`、`embed`、`fetch`、`font`、`image`、`object`、`script`、`style`、`track`、`video` 与 `worker`。
+  *  `as`：必需的字符串，表示资源的类型，可能的值包括 `script` 与 `style`。
   * `precedence`：字符串，与样式表一起使用时必需。指定样式表相对于其他样式表的插入位置。具有较高优先级的样式表可以覆盖具有较低优先级的样式表，可能的值包括 `reset`、`low`、`medium` 与 `high`。
   *  `crossOrigin`：字符串，表示要使用的 [CORS 策略](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/crossorigin)，可能的值为 `anonymous` 与 `use-credentials`。当 `as` 设置为 `"fetch"` 时是必需的。
   *  `integrity`：字符串，为资源的加密哈希，用于 [验证其真实性](https://developer.mozilla.org/zh-CN/docs/Web/Security/Subresource_Integrity)。
