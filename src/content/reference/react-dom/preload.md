@@ -146,7 +146,11 @@ function AppRoot() {
 }
 ```
 
+<<<<<<< HEAD
 当预加载图像时，`imageSrcSet` 和 `imageSizes` 选项可以帮助浏览器 [为屏幕尺寸获取正确大小的图像](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)。
+=======
+When preloading an image, the `imageSrcSet` and `imageSizes` options help the browser [fetch the correctly sized image for the size of the screen](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images).
+>>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
 
 <Solution />
 
