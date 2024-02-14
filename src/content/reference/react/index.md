@@ -8,7 +8,7 @@ title: React 参考总览
 
 </Intro>
 
-React 参考文档分为以下功能子部分：
+React 参考文档分为以下内容：
 
 ## React {/*react*/}
 
