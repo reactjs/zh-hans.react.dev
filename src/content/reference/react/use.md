@@ -351,23 +351,14 @@ export default async function App() {
 
 在某些情况下，传递给 `use` 的 Promise 可能会被拒绝（rejected）。可以通过以下方式处理 rejected Promise：
 
-<<<<<<< HEAD
 1. [使用错误边界向用户显示错误信息](#displaying-an-error-to-users-with-error-boundary)。
 2. [使用 `Promise.catch` 提供替代值](#providing-an-alternative-value-with-promise-catch)。
-=======
-1. [Displaying an error to users with an error boundary.](#displaying-an-error-to-users-with-error-boundary)
-2. [Providing an alternative value with `Promise.catch`](#providing-an-alternative-value-with-promise-catch)
->>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
 
 <Pitfall>
 不能在 try-catch 块中调用 `use`。可以选择将组件 [包装在错误边界中](#displaying-an-error-to-users-with-error-boundary)，或者 [使用 Promise `.catch` 方法提供替代值给 `use`](#providing-an-alternative-value-with-promise-catch)。
 </Pitfall>
 
-<<<<<<< HEAD
 #### 使用错误边界将错误展示给用户 {/*displaying-an-error-to-users-with-error-boundary*/}
-=======
-#### Displaying an error to users with an error boundary {/*displaying-an-error-to-users-with-error-boundary*/}
->>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
 
 如果希望在 Promise 被拒绝（rejected）时向用户显示错误信息，可以使用 [错误边界](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)。如果需要使用错误边界，请将调用 `use` Hook 的组件包装在错误边界中。如果传递给 `use` 的 Promise 被拒绝（rejected），将显示错误边界的后备方案。
 

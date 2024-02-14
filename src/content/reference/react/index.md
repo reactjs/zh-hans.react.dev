@@ -8,11 +8,7 @@ title: React 参考总览
 
 </Intro>
 
-<<<<<<< HEAD
-React 参考文档分为以下功能子部分：
-=======
-The React reference documentation is broken down into functional subsections:
->>>>>>> bb3a0f5c10aaeba6e6fb35f31f36b47812ece158
+React 参考文档分为以下内容：
 
 ## React {/*react*/}
 
