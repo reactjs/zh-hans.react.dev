@@ -12,10 +12,6 @@
       "skipBreadcrumb": true,
       "routes": [
         {
-<<<<<<< HEAD
-          "title": "React Canaries：在 Meta 之外逐步推出新功能",
-          "titleForHomepage": "React Canaries：逐步推出新功能",
-=======
           "title": "React Labs: What We've Been Working On – February 2024",
           "titleForHomepage": "React Labs: February 2024",
           "icon": "labs",
@@ -25,7 +21,6 @@
         {
           "title": "React Canaries: Enabling Incremental Feature Rollout Outside Meta",
           "titleForHomepage": "React Canaries: Incremental Feature Rollout",
->>>>>>> bce6e55452b981e9d3b4054f747d306fcf92f464
           "icon": "blog",
           "date": "May 3, 2023",
           "path": "/blog/2023/05/03/react-canaries"
