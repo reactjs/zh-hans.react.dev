@@ -68,11 +68,7 @@ React 对 `<script>` 的扩展当前仅在 React Canary 与 experimental 渠道�
 
 #### 特殊的渲染行为 {/*special-rendering-behavior*/}
 
-<<<<<<< HEAD
-React 可以将 `<script>` 组件移动到文档的 `<head>` 中，并对相同脚本进行去重，并在脚本加载时 [挂起](http://localhost:3000/reference/react/Suspense)。
-=======
-React can move `<script>` components to the document's `<head>`, de-duplicate identical scripts, and [suspend](/reference/react/Suspense) while the script is loading.
->>>>>>> 156765fc763bb85a7a6dc5eb1bd155801bbebaee
+React 可以将 `<script>` 组件移动到文档的 `<head>` 中，并对相同脚本进行去重，并在脚本加载时 [挂起](/reference/react/Suspense)。
 
 可以提供 `src` 和 `async={true}` 属性以选择行为。如果脚本具有相同的 `src`，React 将对脚本去重。`async` 属性必须为 true 才能安全地移动脚本。
 
