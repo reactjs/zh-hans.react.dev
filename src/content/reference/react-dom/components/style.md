@@ -14,7 +14,7 @@ React 对 `<style>` 的扩展当前仅在 React Canary 与 experimental 渠道�
 [浏览器内置的 `<style>` ](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) 允许向文档添加内联 CSS 样式表。
 
 ```js
-<style> p { color: red; } </style>
+<style>{` p { color: red; } `}</style>
 ```
 
 </Intro>
@@ -30,7 +30,7 @@ React 对 `<style>` 的扩展当前仅在 React Canary 与 experimental 渠道�
 渲染 [内置的浏览器 `<style>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) 以向文档添加内联样式。可以在任何组件中渲染 `<style>`，React 将在某些情况下将相应的 DOM 元素放置在文档头部，并对相同的样式进行去重。
 
 ```js
-<style> p { color: red; } </style>
+<style>{` p { color: red; } `}</style>
 ```
 
 [参见下方更多示例](#usage)。
