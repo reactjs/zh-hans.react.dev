@@ -11,7 +11,7 @@ canary: true
 
 <Intro>
 
-`useOptimistic` 是一个 React Hook，它可以帮助更乐观地更新用户界面。
+`useOptimistic` 是一个 React Hook，它可以帮助你更乐观地更新用户界面。
 
 ```js
   const [optimisticState, addOptimistic] = useOptimistic(state, updateFn);
