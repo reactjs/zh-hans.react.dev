@@ -56,7 +56,7 @@ JavaScript 是一个因其松散规则和动态特性而闻名的具有挑战性
 
 默认情况下，Action 在 [transition](/reference/react/useTransition) 中提交，使当前页面在操作处理过程中保持交互性。由于 Action 支持异步函数，我们还添加了在 transitions 中使用 `async/await` 的功能，这允许在异步请求（如 `fetch`）开始时使用转换的 `isPending` 状态显示待处理 UI，并在应用更新时始终显示待处理 UI。
 
-除了 Action，我们还引入了一个名为 [`useOptimistic`](/reference/react/useOptimistic) 的功能，用于管理乐观状态更新。使用此 Hook 可以应用临时更新，一旦最终状态提交，它们就会自动回滚。对于 Action，这将帮助乐观地设置客户端数据的最终状态，假设提交成功，并恢复为从服务器接收到的数据值。它使用常规的 `async`/`await` 工作，因此无论是在客户端上使用 `fetch` 还是在服务器上使用 Server Action，都可以工作。
+除了 Action，我们还引入了一个名为 [`useOptimistic`](/reference/react/useOptimistic) 的功能，用于管理乐观状态更新。使用此 Hook 可以应用临时更新，一旦最终状态提交，它们就会自动回滚。对于 Action，这将帮助乐观地设置客户端数据的最终状态，假设提交成功，并恢复为从服务器接收到的数据值。它使用常规的 `async`/`await`，因此无论是在客户端上使用 `fetch` 还是在服务器上使用 Server Action，都可以工作。
 
 库作者可以使用 `useTransition` 在其自己的组件中实现自定义 `action={fn}` props。我们的目的是，当设计他们的组件 API 时，库应采用 Action 模式，为 React 开发人员提供一致的体验。例如，如果你的库提供了一个 `<Calendar onSelect={eventHandler}>` 组件，则还可以考虑暴露一个 `<Calendar selectAction={action}>` API。
 
