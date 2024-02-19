@@ -66,7 +66,7 @@ Action 现在在 Canary 通道中可用，并将在下一个 React 发布版本�
 
 ## React Canary 版本中的新特性 {/*new-features-in-react-canary*/}
 
-我们将 [React Canaries](/blog/2023/05/03/react-canaries) 作为一个选项引入，以便在它们的设计接近最终状态之前，即将发布到稳定 semver 版本之前，采用个别新的稳定功能。
+我们将 [React Canaries](/blog/2023/05/03/react-canaries) 作为一个选项引入，可以在它们的设计接近完成时立即采用个别新的稳定功能，然后再发布到稳定的 semver 版本中。
 
 Canaries 是我们开发 React 的一种变化。以前，功能会在 Meta 内部进行研究和构建，因此用户只会在发布到 Stable 时看到最终成品。通过 Canaries，我们正在与社区的帮助下公开构建，以完成我们在 React Labs 博客系列中分享的功能。这意味着开发者能够更早地了解新功能，因为它们正在完成而不是完成后。
 
