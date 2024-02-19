@@ -86,7 +86,6 @@ React 服务器组件、资源加载、文档元数据与 Action 都已经加入
 
 目前在 React Canary 中的功能已经完整并且准备发布。
 
-
 ## React 的下一个主要版本 {/*the-next-major-version-of-react*/}
 
 经过几年的迭代，`react@canary` 现在已经准备好发布到 `react@latest`。上面提到的新功能与应用程序运行的任何环境兼容，提供了生产使用所需的一切。由于资源加载与文档元数据可能对一些应用程序造成破坏性变化，因此下一个 React 版本将是一个主要版本：**React 19**。
