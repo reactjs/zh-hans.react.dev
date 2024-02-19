@@ -80,7 +80,7 @@ React 服务器组件、资源加载、文档元数据与 Action 都已经加入
 
 - **Action**：如上所述，我们已将 Action 添加到管理从客户端发送数据到服务器的功能中。现在可以将 `action` 添加到像 [`<form/>`](/reference/react-dom/components/form) 这样的元素中，使用 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) 访问状态，使用 [`useFormState`](/reference/react-dom/hooks/useFormState) 处理结果，并使用 [`useOptimistic`](/reference/react/useOptimistic) 乐观地更新 UI。
 
-由于所有这些功能是相互配合的，因此单独在稳定渠道中发布它们是困难的。发布 Action 而不带有用于访问表单状态的补充 Hook 会限制 Action 的实际可用性。引入 React 服务器组件而不集成 Server Action 会复杂化对服务器上的数据进行修改。
+由于所有这些功能是相互配合的，因此单独在稳定渠道中发布它们是困难的。发布 Action 而不带有用于访问表单状态的补充 Hook 会限制 Action 的实际可用性。引入 React 服务器组件而不集成 Server Action 会把在服务器上修改数据变得复杂化。
 
 在我们可以将一组功能发布到稳定渠道之前，我们需要确保它们能够协同工作，并且开发人员拥有在生产环境中使用它们所需的一切。React Canaries 允许我们逐个开发这些功能，并逐步释放稳定的 API，直到整个功能集完成。
 
