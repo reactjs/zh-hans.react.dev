@@ -115,4 +115,4 @@ Activity 仍处于研究阶段，我们剩下的工作是最终确定向库开�
 
 感谢 [Lauren Tan](https://twitter.com/potetotes)、[Sophie Alpert](https://twitter.com/sophiebits)、[Jason Bonta](https://threads.net/someextent)、[Eli White](https://twitter.com/Eli_White) 和 [Sathya Gunasekaran](https://twitter.com/_gsathya) 对本文的审核。
 
-感谢你阅读，期待在 [React Conf](https://conf.react.dev/) 见到你！
+感谢你的阅读，期待在 [React Conf](https://conf.react.dev/) 见到你！
