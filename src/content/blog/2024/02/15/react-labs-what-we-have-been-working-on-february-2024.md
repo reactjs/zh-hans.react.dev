@@ -28,7 +28,7 @@ React 编译器不再是一个研究项目：该编译器现在已经在生产�
 
 正如我们在 [之前的文章](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-optimizing-compiler) 中所讨论的，当状态发生变化时，React 有时会过度重新渲染。自 React 早期以来，我们对这种情况的解决方案一直是手动记忆化。在我们当前的 API 中，这意味着使用 [`useMemo`](/reference/react/useMemo)、[`useCallback`](/reference/react/useCallback) 和 [`memo`](/reference/react/memo) API 手动调整 React 在状态变化时重新渲染的程度。但是手动记忆化是一种妥协。它会使我们的代码变得混乱、很容易出错，并且需要额外的工作来保持更新。
 
-手动记忆化是一个合理的妥协，但我们并不满意。我们的愿景是，当状态发生变化时，React 将自动重新渲染 UI 的恰当部分，而不是向 React 的核心心智模型妥协。我们相信，React 的方法——将 UI 视为状态的简单函数，使用标准的 JavaScript 值和习惯用法——是 React 为许多开发人员提供可接近性的关键部分。这就是为什么我们投资于构建 React 的优化编译器的原因。
+手动记忆化是一个合理的妥协，但我们并不满意。我们的愿景是当状态发生变化时 React 可以自动重新渲染 UI 的恰当部分，而不是向 React 的核心心智模型妥协。我们相信 React 的方式——将 UI 视为状态的简单函数，使用标准的 JavaScript 值和习惯用法——是 React 为许多开发人员提供可接近性的关键部分。这就是为什么我们投资于构建 React 的优化编译器的原因。
 
 JavaScript 是一个因其松散规则和动态特性而闻名的具有挑战性的语言。React 编译器能够通过模拟 JavaScript 的规则和“React 的规则”来安全地编译代码。例如，React 组件必须是幂等的——给定相同的输入返回相同的值——并且不能突变 props 或状态值。这些规则限制了开发人员可以做的事情，并帮助为编译器优化开辟了一个安全的空间。
 
