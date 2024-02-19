@@ -57,7 +57,7 @@ function AppContainer() {
 #### 返回值 {/*returns*/}
 
 * `optimisticState`：结果乐观状态。除非有操作挂起，否则它等于 `state`，在这种情况下，它等于 `updateFn` 返回的值。
-* `addOptimistic`：触发乐观更新时调用的 dispatch 函数。它接受一个可以是任何类型的参数 `optimisticValue`，并将调用 `updateFn` 以 `state` 和 `optimisticValue` 作为参数。
+* `addOptimistic`：触发乐观更新时调用的 dispatch 函数。它接受一个可以是任何类型的参数 `optimisticValue`，并以 `state` 和 `optimisticValue` 作为参数来调用 `updateFn`。
 
 ---
 
