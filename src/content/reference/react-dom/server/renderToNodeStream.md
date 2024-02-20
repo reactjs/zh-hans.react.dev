@@ -13,7 +13,7 @@ title: renderToNodeStream
 `renderToNodeStream` 可以为 [Node.js 只读流](https://nodejs.org/api/stream.html#readable-streams) 渲染 React 树。
 
 ```js
-const stream = renderToNodeStream(reactNode)
+const stream = renderToNodeStream(reactNode, options?)
 ```
 
 </Intro>
@@ -24,7 +24,7 @@ const stream = renderToNodeStream(reactNode)
 
 ## 参考 {/*reference*/}
 
-### `renderToNodeStream(reactNode)` {/*rendertonodestream*/}
+### `renderToNodeStream(reactNode, options?)` {/*rendertonodestream*/}
 
 在服务端调用 `renderToNodeStream` 获取 [Node.js 只读流](https://nodejs.org/api/stream.html#readable-streams)，你也可以将其管道（pipe）传输到响应中。
 

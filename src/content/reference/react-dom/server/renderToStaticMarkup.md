@@ -7,7 +7,7 @@ title: renderToStaticMarkup
 `renderToStaticMarkup` 会将非交互的 React 组件树渲染成 HTML 字符串。
 
 ```js
-const html = renderToStaticMarkup(reactNode)
+const html = renderToStaticMarkup(reactNode, options?)
 ```
 
 </Intro>
@@ -18,7 +18,7 @@ const html = renderToStaticMarkup(reactNode)
 
 ## 参考 {/*reference*/}
 
-### `renderToStaticMarkup(reactNode)` {/*rendertostaticmarkup*/}
+### `renderToStaticMarkup(reactNode, options?)` {/*rendertostaticmarkup*/}
 
 在服务器上，调用 `renderToStaticMarkup` 将你的应用程序渲染成 HTML。
 

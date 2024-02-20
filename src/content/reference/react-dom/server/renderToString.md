@@ -13,7 +13,7 @@ title: renderToString
 `renderToString` 将 React 树渲染为一个 HTML 字符串。
 
 ```js
-const html = renderToString(reactNode)
+const html = renderToString(reactNode, options?)
 ```
 
 </Intro>
@@ -24,7 +24,7 @@ const html = renderToString(reactNode)
 
 ## Reference {/*reference*/}
 
-### `renderToString(reactNode)` {/*rendertostring*/}
+### `renderToString(reactNode, options?)` {/*rendertostring*/}
 
 在服务器，调用 `renderToString` 将你的应用渲染为 HTML。
 
