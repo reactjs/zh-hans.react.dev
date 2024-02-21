@@ -556,9 +556,13 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 (或者，你可以将所选索引保持在 state 中。)
 
 state 过去常常是这样复制的：
+=======
+The state used to be duplicated like this:
+>>>>>>> 93aec2784b26e0b0a69cb587fd59e35554afb774
 
 * `items = [{ id: 0, title: 'pretzels'}, ...]`
 * `selectedItem = {id: 0, title: 'pretzels'}`
