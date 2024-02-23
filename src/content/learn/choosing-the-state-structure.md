@@ -556,8 +556,6 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-(或者，你可以将所选索引保持在 state 中。)
-
 state 过去常常是这样复制的：
 
 * `items = [{ id: 0, title: 'pretzels'}, ...]`
