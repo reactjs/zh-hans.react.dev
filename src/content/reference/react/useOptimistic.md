@@ -5,13 +5,13 @@ canary: true
 
 <Canary>
 
-The `useOptimistic` Hook is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+`useOptimistic` Hook 仅在 Canary 与 experimental 渠道中可用。参阅 [React 发布渠道](/community/versioning-policy#all-release-channels) 以了解更多信息。
 
 </Canary>
 
 <Intro>
 
-`useOptimistic` is a React Hook that lets you optimistically update the UI.
+`useOptimistic` 是一个 React Hook，它可以帮助你更乐观地更新用户界面。
 
 ```js
   const [optimisticState, addOptimistic] = useOptimistic(state, updateFn);
@@ -23,13 +23,13 @@ The `useOptimistic` Hook is currently only available in React's Canary and exper
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `useOptimistic(state, updateFn)` {/*use*/}
 
-`useOptimistic` is a React Hook that lets you show a different state while an async action is underway. It accepts some state as an argument and returns a copy of that state that can be different during the duration of an async action such as a network request. You provide a function that takes the current state and the input to the action, and returns the optimistic state to be used while the action is pending.
+`useOptimistic` 是一个 React Hook，它允许你在进行异步操作时显示不同 state。它接受 state 作为参数，并返回该 state 的副本，在异步操作（如网络请求）期间可以不同。你需要提供一个函数，该函数接受当前 state 和操作的输入，并返回在操作挂起期间要使用的乐观状态。
 
-This state is called the "optimistic" state because it is usually used to immediately present the user with the result of performing an action, even though the action actually takes time to complete.
+这个状态被称为“乐观”状态是因为通常用于立即向用户呈现执行操作的结果，即使实际上操作需要一些时间来完成。
 
 ```js
 import { useOptimistic } from 'react';
@@ -37,37 +37,37 @@ import { useOptimistic } from 'react';
 function AppContainer() {
   const [optimisticState, addOptimistic] = useOptimistic(
     state,
-    // updateFn
+    // 更新函数
     (currentState, optimisticValue) => {
-      // merge and return new state
-      // with optimistic value
+      // 使用乐观值
+      // 合并并返回新 state
     }
   );
 }
 ```
 
-[See more examples below.](#usage)
+[参阅下方更多示例](#usage)。
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
-* `state`: the value to be returned initially and whenever no action is pending.
-* `updateFn(currentState, optimisticValue)`: a function that takes the current state and the optimistic value passed to `addOptimistic` and returns the resulting optimistic state. It must be a pure function. `updateFn` takes in two parameters. The `currentState` and the `optimisticValue`. The return value will be the merged value of the `currentState` and `optimisticValue`.
+* `state`：初始时和没有挂起操作时要返回的值。
+* `updateFn(currentState, optimisticValue)`：一个函数，接受当前 state 和传递给 `addOptimistic` 的乐观值，并返回结果乐观状态。它必须是一个纯函数。`updateFn` 接受两个参数：`currentState` 和 `optimisticValue`。返回值将是 `currentState` 和 `optimisticValue` 的合并值。
 
 
-#### Returns {/*returns*/}
+#### 返回值 {/*returns*/}
 
-* `optimisticState`: The resulting optimistic state. It is equal to `state` unless an action is pending, in which case it is equal to the value returned by `updateFn`.
-* `addOptimistic`: `addOptimistic` is the dispatching function to call when you have an optimistic update. It takes one argument, `optimisticValue`, of any type and will call the `updateFn` with `state` and `optimisticValue`.
+* `optimisticState`：结果乐观状态。除非有操作挂起，否则它等于 `state`，在这种情况下，它等于 `updateFn` 返回的值。
+* `addOptimistic`：触发乐观更新时调用的 dispatch 函数。它接受一个可以是任何类型的参数 `optimisticValue`，并以 `state` 和 `optimisticValue` 作为参数来调用 `updateFn`。
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Optimistically updating forms {/*optimistically-updating-with-forms*/}
+### 乐观地更新表单 {/*optimistically-updating-with-forms*/}
 
-The `useOptimistic` Hook provides a way to optimistically update the user interface before a background operation, like a network request, completes. In the context of forms, this technique helps to make apps feel more responsive. When a user submits a form, instead of waiting for the server's response to reflect the changes, the interface is immediately updated with the expected outcome.
+`useOptimistic` Hook 提供了一种在后台操作（如网络请求）完成之前乐观地更新用户界面的方式。在表单的上下文中，这种技术有助于使应用程序在感觉上响应地更加快速。当用户提交表单时，界面立即更新为预期的结果，而不是等待服务器的响应来反映更改。
 
-For example, when a user types a message into the form and hits the "Send" button, the `useOptimistic` Hook allows the message to immediately appear in the list with a "Sending..." label, even before the message is actually sent to a server. This "optimistic" approach gives the impression of speed and responsiveness. The form then attempts to truly send the message in the background. Once the server confirms the message has been received, the "Sending..." label is removed.
+例如，当用户在表单中输入消息并点击“发送”按钮时，`useOptimistic` Hook 允许消息立即出现在列表中，并带有“发送中……”标签，即使消息实际上还没有发送到服务器。这种“乐观”方法给人一种快速和响应灵敏的印象。然后，表单在后台尝试真正发送消息。一旦服务器确认消息已收到，“发送中……”标签就会被移除。
 
 <Sandpack>
 
@@ -99,12 +99,12 @@ function Thread({ messages, sendMessage }) {
       {optimisticMessages.map((message, index) => (
         <div key={index}>
           {message.text}
-          {!!message.sending && <small> (Sending...)</small>}
+          {!!message.sending && <small>（发送中……）</small>}
         </div>
       ))}
       <form action={formAction} ref={formRef}>
-        <input type="text" name="message" placeholder="Hello!" />
-        <button type="submit">Send</button>
+        <input type="text" name="message" placeholder="你好！" />
+        <button type="submit">发送</button>
       </form>
     </>
   );
@@ -112,7 +112,7 @@ function Thread({ messages, sendMessage }) {
 
 export default function App() {
   const [messages, setMessages] = useState([
-    { text: "Hello there!", sending: false, key: 1 }
+    { text: "你好，在这儿！", sending: false, key: 1 }
   ]);
   async function sendMessage(formData) {
     const sentMessage = await deliverMessage(formData.get("message"));
