@@ -1,117 +1,117 @@
 ---
-title: "React Labs: What We've Been Working On – February 2024"
+title: "React Labs：我们正在努力的方向——2024 年 2 月"
 ---
 
-February 15, 2024 by [Joseph Savona](https://twitter.com/en_JS), [Ricky Hanlon](https://twitter.com/rickhanlonii), [Andrew Clark](https://twitter.com/acdlite), [Matt Carroll](https://twitter.com/mattcarrollcode), and [Dan Abramov](https://twitter.com/dan_abramov).
+2024 年 2 月 15 日 [Joseph Savona](https://twitter.com/en_JS)、[Ricky Hanlon](https://twitter.com/rickhanlonii)、[Andrew Clark](https://twitter.com/acdlite)、[Matt Carroll](https://twitter.com/mattcarrollcode) 与 [Dan Abramov](https://twitter.com/dan_abramov)
 
 ---
 
 <Intro>
 
-In React Labs posts, we write about projects in active research and development. We’ve made significant progress since our [last update](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023), and we’d like to share our progress.
+在 React Labs 的文章中，我们讲述了正在进行研究与开发的项目。自 [上次更新](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023) 以来，我们又取得了巨大进展，现在我们想将这些内容分享给大家。
 
 </Intro>
 
 <Note>
 
-React Conf 2024 is scheduled for May 15–16 in Henderson, Nevada! If you’re interested in attending React Conf in person, you can [sign up for the ticket lottery](https://forms.reform.app/bLaLeE/react-conf-2024-ticket-lottery/1aRQLK) until February 28th. 
+React Conf 2024 定于 5 月 15 日至 16 日在内华达州亨德森举行！如果有兴趣亲临 React Conf，请在 2 月 28 日之前 [注册门票抽签](https://forms.reform.app/bLaLeE/react-conf-2024-ticket-lottery/1aRQLK)。
 
-For more info on tickets, free streaming, sponsoring, and more, see [the React Conf website](https://conf.react.dev).
+有关门票、免费直播、赞助等更多信息，请访问 [React Conf 网站](https://conf.react.dev)。
 
 </Note>
 
 ---
 
-## React Compiler {/*react-compiler*/}
+## React 编译器 {/*react-compiler*/}
 
-React Compiler is no longer a research project: the compiler now powers instagram.com in production, and we are working to ship the compiler across additional surfaces at Meta and to prepare the first open source release.
+React 编译器不再是一个研究项目：该编译器现在已经在生产环境中为 instagram.com 提供动力，并且我们正在努力将该编译器推广到 Meta 的其他平台，并准备进行第一次开源发布。
 
-As discussed in our [previous post](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-optimizing-compiler), React can *sometimes* re-render too much when state changes. Since the early days of React our solution for such cases has been manual memoization. In our current APIs, this means applying the [`useMemo`](/reference/react/useMemo), [`useCallback`](/reference/react/useCallback), and [`memo`](/reference/react/memo) APIs to manually tune how much React re-renders on state changes. But manual memoization is a compromise. It clutters up our code, is easy to get wrong, and requires extra work to keep up to date.
+正如我们在 [之前的文章](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-optimizing-compiler) 中所讨论的，当状态发生变化时，React 有时会过度重新渲染。自 React 早期以来，我们对这种情况的解决方案一直是手动记忆化。在我们当前的 API 中，这意味着使用 [`useMemo`](/reference/react/useMemo)、[`useCallback`](/reference/react/useCallback) 和 [`memo`](/reference/react/memo) API 手动调整 React 在状态变化时重新渲染的程度。但是手动记忆化是一种妥协。它会使我们的代码变得混乱、很容易出错，并且需要额外的工作来保持更新。
 
-Manual memoization is a reasonable compromise, but we weren’t satisfied. Our vision is for React to *automatically* re-render just the right parts of the UI when state changes, *without compromising on React’s core mental model*. We believe that React’s approach — UI as a simple function of state, with standard JavaScript values and idioms — is a key part of why React has been approachable for so many developers. That’s why we’ve invested in building an optimizing compiler for React.
+手动记忆化是一个合理的妥协，但我们并不满意。我们的愿景是当状态发生变化时 React 可以自动重新渲染 UI 的恰当部分，而不是向 React 的核心心智模型妥协。我们相信 React 的方式——将 UI 视为状态的简单函数，使用标准的 JavaScript 值和习惯用法——是 React 为许多开发人员提供可接近性的关键部分。这就是为什么我们投资于构建 React 的优化编译器的原因。
 
-JavaScript is a notoriously challenging language to optimize, thanks to its loose rules and dynamic nature. React Compiler is able to compile code safely by modeling both the rules of JavaScript *and* the “rules of React”. For example, React components must be idempotent — returning the same value given the same inputs — and can’t mutate props or state values. These rules limit what developers can do and help to carve out a safe space for the compiler to optimize.
+JavaScript 是一个因其松散规则和动态特性而闻名的具有挑战性的语言。React 编译器能够通过模拟 JavaScript 的规则和“React 的规则”来安全地编译代码。例如，React 组件必须是幂等的——给定相同的输入返回相同的值——并且不能突变 props 或状态值。这些规则限制了开发人员可以做的事情，并为编译器优化开辟了一个安全的空间。
 
-Of course, we understand that developers sometimes bend the rules a bit, and our goal is to make React Compiler work out of the box on as much code as possible. The compiler attempts to detect when code doesn’t strictly follow React’s rules and will either compile the code where safe or skip compilation if it isn’t safe. We’re testing against Meta’s large and varied codebase in order to help validate this approach.
+当然，我们理解开发人员有时会在规则上有所放宽，我们的目标是使 React 编译器能够在尽可能多的代码上立即生效。编译器会尝试检测代码是否严格遵循 React 的规则，如果安全则编译代码，否则跳过编译。我们正在针对 Meta 庞大且多样化的代码库进行测试，以帮助验证这种方法。
 
-For developers who are curious about making sure their code follows React’s rules, we recommend [enabling Strict Mode](/reference/react/StrictMode) and [configuring React’s ESLint plugin](/learn/editor-setup#linting). These tools can help to catch subtle bugs in your React code, improving the quality of your applications today, and future-proofs your applications for upcoming features such as React Compiler. We are also working on consolidated documentation of the rules of React and updates to our ESLint plugin to help teams understand and apply these rules to create more robust apps.
+对于那些对确保其代码遵循 React 规则感兴趣的开发人员，我们建议 [启用严格模式](/reference/react/StrictMode) 并 [配置 React 的 ESLint 插件](/learn/editor-setup#linting)。这些工具可以帮助捕获 React 代码中的微妙错误，提高应用程序的质量，并为即将推出的功能（如 React 编译器）做好准备。我们还正在努力整理 React 规则的综合文档并更新我们的 ESLint 插件，以帮助团队理解和应用这些规则，从而创建更健壮的应用程序。
 
-To see the compiler in action, you can check out our [talk from last fall](https://www.youtube.com/watch?v=qOQClO3g8-Y). At the time of the talk, we had early experimental data from trying React Compiler on one page of instagram.com. Since then, we shipped the compiler to production across instagram.com. We’ve also expanded our team to accelerate the rollout to additional surfaces at Meta and to open source. We’re excited about the path ahead and will have more to share in the coming months.
+欢迎查看我们 [去年秋季的演讲](https://www.youtube.com/watch?v=qOQClO3g8-Y) 以查看编译器的实际效果。在演讲时，我们从尝试在 instagram.com 的一个页面上使用 React 编译器获取了早期的实验数据。自那时以来，我们已将编译器推广到了 instagram.com 的生产环境。我们还扩大了团队规模，加快了在 Meta 的其他平台和开源的推出速度。我们对未来的道路充满期待，并将在未来几个月内分享更多内容。
 
-## Actions {/*actions*/}
+## Action {/*actions*/}
 
 
-We [previously shared](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) that we were exploring solutions for sending data from the client to the server with Server Actions, so that you can execute database mutations and implement forms. During development of Server Actions, we extended these APIs to support data handling in client-only applications as well.
+我们 [之前分享过](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)，我们正在探索使用服务器操作将数据从客户端发送到服务器的解决方案，以便可以执行数据库变更和实现表单。在开发 Server Action 期间，我们扩展了这些 API，以支持仅客户端应用程序中的数据处理。
 
-We refer to this broader collection of features as simply "Actions". Actions allow you to pass a function to DOM elements such as [`<form/>`](/reference/react-dom/components/form):
+我们将含有此更广泛含义的操作称为 Action。Action 允许将一个函数传递给诸如 [`<form/>`](/reference/react-dom/components/form) 等 DOM 元素：
 
 ```js
 <form action={search}>
   <input name="query" />
-  <button type="submit">Search</button>
+  <button type="submit">搜索</button>
 </form>
 ```
 
-The `action` function can operate synchronously or asynchronously. You can define them on the client side using standard JavaScript or on the server with the  [`'use server'`](/reference/react/use-server) directive. When using an action, React will manage the life cycle of the data submission for you, providing hooks like [`useFormStatus`](/reference/react-dom/hooks/useFormStatus), and [`useFormState`](/reference/react-dom/hooks/useFormState) to access the current state and response of the form action. 
+`action` 函数可以同步或异步执行。你可以在客户端使用标准 JavaScript 定义它们，也可以在服务器上使用 [`'use server'`](/reference/react/use-server) 指示符。当使用 action 时，React 将帮助管理数据提交的生命周期，提供类似 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) 和 [`useFormState`](/reference/react-dom/hooks/useFormState) 的 Hook，以访问表单操作的当前 state 与响应。
 
-By default, Actions are submitted within a [transition](/reference/react/useTransition), keeping the current page interactive while the action is processing. Since Actions support async functions, we've also added the ability to use `async/await` in transitions. This allows you to show pending UI with the `isPending` state of a transition when an async request like `fetch` starts, and show the pending UI all the way through the update being applied. 
+默认情况下，Action 在 [transition](/reference/react/useTransition) 中提交，使当前页面在操作处理过程中保持交互性。由于 Action 支持异步函数，我们还添加了在 transitions 中使用 `async/await` 的功能，这允许在异步请求（如 `fetch`）开始时使用转换的 `isPending` 状态显示待处理 UI，并在应用更新时始终显示待处理 UI。
 
-Alongside Actions, we're introducing a feature named [`useOptimistic`](/reference/react/useOptimistic) for managing optimistic state updates. With this hook, you can apply temporary updates that are automatically reverted once the final state commits. For Actions, this allows you to optimistically set the final state of the data on the client, assuming the submission is successful, and revert to the value for data received from the server. It works using regular `async`/`await`, so it works the same whether you're using `fetch` on the client, or a Server Action from the server.
+除了 Action，我们还引入了一个名为 [`useOptimistic`](/reference/react/useOptimistic) 的功能，用于管理乐观状态更新。使用此 Hook 可以应用临时更新，一旦最终状态提交，它们就会自动回滚。对于 Action，这将帮助乐观地设置客户端数据的最终状态，假设提交成功，并恢复为从服务器接收到的数据值。它使用常规的 `async`/`await`，因此无论是在客户端上使用 `fetch` 还是在服务器上使用 Server Action，都可以工作。
 
-Library authors can implement custom `action={fn}` props in their own components with `useTransition`. Our intent is for libraries to adopt the Actions pattern when designing their component APIs, to provide a consistent experience for React developers. For example, if your library provides a `<Calendar onSelect={eventHandler}>` component, consider also exposing a `<Calendar selectAction={action}>` API, too.
+库作者可以使用 `useTransition` 在自己的组件中实现自定义 `action={fn}` props。我们的目的是，当设计他们的组件 API 时，库应采用 Action 模式，为 React 开发人员提供一致的体验。例如，如果你的库提供了一个 `<Calendar onSelect={eventHandler}>` 组件，则还可以考虑暴露一个 `<Calendar selectAction={action}>` API。
 
-While we initially focused on Server Actions for client-server data transfer, our philosophy for React is to provide the same programming model across all platforms and environments. When possible, if we introduce a feature on the client, we aim to make it also work on the server, and vice versa. This philosophy allows us to create a single set of APIs that work no matter where your app runs, making it easier to upgrade to different environments later. 
+尽管我们最初专注于 Server Action 用于客户端/服务器数据传输，但我们对 React 的理念是在所有平台和环境中提供相同的编程模型。在可能的情况下，如果我们在客户端引入一个功能，我们也会使它在服务器上起作用，反之亦然。这一理念使我们能够创建一组 API，无论您的应用在何处运行，都可以工作，从而使以后更容易升级到不同的环境。
 
-Actions are now available in the Canary channel and will ship in the next release of React.
+Action 现在在 Canary 通道中可用，并将在下一个 React 发布版本中发布。
 
-## New Features in React Canary {/*new-features-in-react-canary*/}
+## React Canary 版本中的新特性 {/*new-features-in-react-canary*/}
 
-We introduced [React Canaries](/blog/2023/05/03/react-canaries) as an option to adopt individual new stable features as soon as their design is close to final, before they’re released in a stable semver version. 
+我们将 [React Canaries](/blog/2023/05/03/react-canaries) 作为一个选项引入，可以在它们的设计接近完成时立即采用个别新的稳定功能，然后再发布到稳定的 semver 版本中。
 
-Canaries are a change to the way we develop React. Previously, features would be researched and built privately inside of Meta, so users would only see the final polished product when released to Stable. With Canaries, we’re building in public with the help of the community to finalize features we share in the React Labs blog series. This means you hear about new features sooner, as they’re being finalized instead of after they’re complete.
+Canaries 是我们开发 React 的一种变化。以前，功能会在 Meta 内部进行研究和构建，因此用户只会在发布到 Stable 时看到最终成品。通过 Canaries，我们正在社区的帮助下公开构建，以完成我们在 React Labs 博客系列中分享的功能。这意味着开发者能够更早地了解新功能，因为它们正在完成而不是已经完成。
 
-React Server Components, Asset Loading, Document Metadata, and Actions have all landed in the React Canary, and we've added docs for these features on react.dev:
+React 服务器组件、资源加载、文档元数据与 Action 都已经加入了 React Canary，并且我们已经在 react.dev 上为这些功能添加了文档：
 
-- **Directives**: [`"use client"`](/reference/react/use-client) and [`"use server"`](/reference/react/use-server) are bundler features designed for full-stack React frameworks. They mark the "split points" between the two environments: `"use client"` instructs the bundler to generate a `<script>` tag (like [Astro Islands](https://docs.astro.build/en/concepts/islands/#creating-an-island)), while `"use server"` tells the bundler to generate a POST endpoint (like [tRPC Mutations](https://trpc.io/docs/concepts)). Together, they let you write reusable components that compose client-side interactivity with the related server-side logic.
+- **指示符**：[`"use client"`](/reference/react/use-client) 与 [`"use server"`](/reference/react/use-server) 是设计用于全栈 React 框架的打包功能。它们标记了两个环境之间的“分割点”：use client 指示符指示打包工具生成一个 `<script>` 标签（类似于 [Astro Islands](https://docs.astro.build/en/concepts/islands/#creating-an-island)），而 use server 告诉打包工具生成一个 POST 端点（类似于 [tRPC Mutations](https://trpc.io/docs/concepts)）。它们让你可以编写将客户端交互性与相关的服务器端逻辑组合在一起的可重用组件。
 
-- **Document Metadata**: we added built-in support for rendering [`<title>`](/reference/react-dom/components/title), [`<meta>`](/reference/react-dom/components/meta), and metadata [`<link>`](/reference/react-dom/components/link) tags anywhere in your component tree. These work the same way in all environments, including fully client-side code, SSR, and RSC. This provides built-in support for features pioneered by libraries like [React Helmet](https://github.com/nfl/react-helmet).
+- **文档元数据**：我们内置支持在组件树中的任何位置渲染 [`<title>`](/reference/react-dom/components/title)、[`<meta>`](/reference/react-dom/components/meta) 和元数据 [`<link>`](/reference/react-dom/components/link) 标签。这些在所有环境中都以相同的方式工作，包括完全客户端代码、SSR 和 RSC。这为像 [React Helmet](https://github.com/nfl/react-helmet) 这样的库开创的功能提供了内置支持。
 
-- **Asset Loading**: we integrated Suspense with the loading lifecycle of resources such as stylesheets, fonts, and scripts so that React takes them into account to determine whether the content in elements like [`<style>`](/reference/react-dom/components/style), [`<link>`](/reference/react-dom/components/link), and [`<script>`](/reference/react-dom/components/script) are ready to be displayed. We’ve also added new [Resource Loading APIs](/reference/react-dom#resource-preloading-apis) like `preload` and `preinit` to provide greater control for when a resource should load and initialize.
+- **资源加载**：我们将 Suspense 与样式表、字体和脚本等资源的加载生命周期集成在一起，以便 React 考虑它们来确定像 [`<style>`](/reference/react-dom/components/style)、[`<link>`](/reference/react-dom/components/link) 和 [`<script>`](/reference/react-dom/components/script) 这样的元素中的内容是否已准备就绪。我们还添加了新的 [资源加载 API](/reference/react-dom#resource-preloading-apis)，如 `preload` 和 `preinit`，以提供更大的控制权，指示何时应加载和初始化资源。
 
-- **Actions**: As shared above, we've added Actions to manage sending data from the client to the server. You can add `action` to elements like [`<form/>`](/reference/react-dom/components/form), access the status with [`useFormStatus`](/reference/react-dom/hooks/useFormStatus), handle the result with [`useFormState`](/reference/react-dom/hooks/useFormState), and optimistically update the UI with [`useOptimistic`](/reference/react/useOptimistic).
+- **Action**：如上所述，我们已将 Action 添加到管理从客户端发送数据到服务器的功能中。现在可以将 `action` 添加到像 [`<form/>`](/reference/react-dom/components/form) 这样的元素中，使用 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) 访问状态，使用 [`useFormState`](/reference/react-dom/hooks/useFormState) 处理结果，并使用 [`useOptimistic`](/reference/react/useOptimistic) 乐观地更新 UI。
 
-Since all of these features work together, it’s difficult to release them in the Stable channel individually. Releasing Actions without the complementary hooks for accessing form states would limit the practical usability of Actions. Introducing React Server Components without integrating Server Actions would complicate modifying data on the server. 
+由于所有这些功能是相互配合的，因此单独在稳定渠道中发布它们是困难的。发布 Action 而不带有用于访问表单状态的补充 Hook 会限制 Action 的实际可用性。引入 React 服务器组件而不集成 Server Action 会把在服务器上修改数据变得复杂化。
 
-Before we can release a set of features to the Stable channel, we need to ensure they work cohesively and developers have everything they need to use them in production. React Canaries allow us to develop these features individually, and release the stable APIs incrementally until the entire feature set is complete.
+在我们可以将一组功能发布到稳定渠道之前，我们需要确保它们能够协同工作，并且开发人员拥有在生产环境中使用它们所需的一切。React Canaries 允许我们逐个开发这些功能，并逐步释放稳定的 API，直到整个功能集完成。
 
-The current set of features in React Canary are complete and ready to release.
+目前在 React Canary 中的功能已经完整并且准备发布。
 
-## The Next Major Version of React {/*the-next-major-version-of-react*/}
+## React 的下一个主要版本 {/*the-next-major-version-of-react*/}
 
-After a couple of years of iteration, `react@canary` is now ready to ship to `react@latest`. The new features mentioned above are compatible with any environment your app runs in, providing everything needed for production use. Since Asset Loading and Document Metadata may be a breaking change for some apps, the next version of React will be a major version: **React 19**.
+经过几年的迭代，`react@canary` 现在已经准备好发布到 `react@latest`。上面提到的新功能与应用程序运行的任何环境兼容，提供了生产使用所需的一切。由于资源加载与文档元数据可能对一些应用程序造成破坏性变化，因此下一个 React 版本将是一个主要版本：**React 19**。
 
-There’s still more to be done to prepare for release. In React 19, we’re also adding long-requested improvements which require breaking changes like support for Web Components. Our focus now is to land these changes, prepare for release, finalize docs for new features, and publish announcements for what’s included.
+我们仍然需要做更多准备工作才能发布。在 React 19 中，我们还将添加一些长期请求的改进，这些改进需要进行破坏性更改，如支持 Web Components。我们现在的重点是完成这些改进、为新功能制定最终文档，并发布关于包含哪些内容的公告。
 
-We’ll share more information about everything React 19 includes, how to adopt the new client features, and how to build support for React Server Components in the coming months.
+在接下来的几个月中，我们将分享有关 React 19 包含的所有内容、如何采用新的客户端功能以及如何为 React 服务器组件构建支持的更多信息。
 
-## Offscreen (renamed to Activity). {/*offscreen-renamed-to-activity*/}
+## Offscreen（已经重命名为 Activity） {/*offscreen-renamed-to-activity*/}
 
-Since our last update, we’ve renamed a capability we’re researching from “Offscreen” to “Activity”. The name “Offscreen” implied that it only applied to parts of the app that were not visible, but while researching the feature we realized that it’s possible for parts of the app to be visible and inactive, such as content behind a modal. The new name more closely reflects the behavior of marking certain parts of the app “active” or “inactive”.
+自上次更新以来，我们已经将我们正在研究的一个功能从“Offscreen”重命名为“Activity”。“Offscreen”意味着它仅适用于不可见的应用程序部分，但在研究该功能时，我们意识到应用程序的某些部分可能是可见但不活动的，例如模态框后面的内容。新名称更贴近于标记应用程序的某些部分为“active”或“inactive”的行为。
 
-Activity is still under research and our remaining work is to finalize the primitives that are exposed to library developers. We’ve deprioritized this area while we focus on shipping features that are more complete.
+Activity 仍处于研究阶段，我们剩下的工作是最终确定向库开发人员公开的基本原语。在我们专注于发布更完整功能的同时，我们已将此领域的优先级降低。
 
 * * *
 
-In addition to this update, our team has presented at conferences and made appearances on podcasts to speak more on our work and answer questions.
+除了此更新之外，我们的团队还在会议上发表了演讲并在播客中露面，更多地讲述我们的工作并回答问题。
 
-- [Sathya Gunasekaran](/community/team#sathya-gunasekaran) spoke about the React Compiler at the [React India](https://www.youtube.com/watch?v=kjOacmVsLSE) conference
+- [Sathya Gunasekaran](/community/team#sathya-gunasekaran) 在 [React India](https://www.youtube.com/watch?v=kjOacmVsLSE) 大会上介绍了 React 编译器。
 
-- [Dan Abramov](/community/team#dan-abramov) gave a talk at [RemixConf](https://www.youtube.com/watch?v=zMf_xeGPn6s) titled “React from Another Dimension” which explores an alternative history of how React Server Components and Actions could have been created
+- [Dan Abramov](/community/team#dan-abramov) 在 [RemixConf](https://www.youtube.com/watch?v=zMf_xeGPn6s) 上发表了名为“React from Another Dimension”的演讲，探讨了 React 服务器组件与 Action 可能是如何创建的另一种历史。
 
-- [Dan Abramov](/community/team#dan-abramov) was interviewed on [the Changelog’s JS Party podcast](https://changelog.com/jsparty/311) about React Server Components
+- [Dan Abramov](/community/team#dan-abramov) 在 [the Changelog’s JS Party podcast](https://changelog.com/jsparty/311) 上接受了关于 React 服务器组件的采访
 
-- [Matt Carroll](/community/team#matt-carroll) was interviewed on the [Front-End Fire podcast](https://www.buzzsprout.com/2226499/14462424-interview-the-two-reacts-with-rachel-nabors-evan-bacon-and-matt-carroll) where he discussed [The Two Reacts](https://overreacted.io/the-two-reacts/)
+- [Matt Carroll](/community/team#matt-carroll) 在 [Front-End Fire podcast](https://www.buzzsprout.com/2226499/14462424-interview-the-two-reacts-with-rachel-nabors-evan-bacon-and-matt-carroll) 上接受了采访，他讨论了 [The Two Reacts](https://overreacted.io/the-two-reacts/)。
 
-Thanks [Lauren Tan](https://twitter.com/potetotes), [Sophie Alpert](https://twitter.com/sophiebits), [Jason Bonta](https://threads.net/someextent), [Eli White](https://twitter.com/Eli_White), and [Sathya Gunasekaran](https://twitter.com/_gsathya) for reviewing this post.
+感谢 [Lauren Tan](https://twitter.com/potetotes)、[Sophie Alpert](https://twitter.com/sophiebits)、[Jason Bonta](https://threads.net/someextent)、[Eli White](https://twitter.com/Eli_White) 和 [Sathya Gunasekaran](https://twitter.com/_gsathya) 对本文的审核。
 
-Thanks for reading, and [see you at React Conf](https://conf.react.dev/)!
+感谢你的阅读，期待在 [React Conf](https://conf.react.dev/) 见到你！
