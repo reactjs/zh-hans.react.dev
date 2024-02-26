@@ -10,13 +10,13 @@ title: React Blog
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<BlogCard title="React Labs: What We've Been Working On – February 2024" date="February 15, 2024" url="/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024">
+<BlogCard title="React Labs：我们正在努力的方向——2024 年 2 月" date="February 15, 2024" url="/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024">
 
-In React Labs posts, we write about projects in active research and development. Since our last update, we've made significant progress on React Compiler, new features, and React 19, and we'd like to share what we learned.
+在 React Labs 的文章中，我们讲述了正在进行研究与开发的项目。自从上次更新以来，我们在 React 编译器、新功能和 React 19 方面取得了重大进展，除此之外我们还想要分享我们从中学到的东西。
 
 </BlogCard>
 
-<BlogCard title="React Canaries: Incremental Feature Rollout Outside Meta" date="May 3, 2023" url="/blog/2023/05/03/react-canaries">
+<BlogCard title="React Canaries：在 Meta 之外逐步推出新功能" date="May 3, 2023" url="/blog/2023/05/03/react-canaries">
 
 在过去，React 的新功能将仅在 Meta 中使用，然后才会在开源版本中发布。我们希望为 React 社区提供一种选择，使他们能够在新功能设计接近最终状态时立即采用这些功能——类似于 Meta 内部使用 React 的方式。我们正在推出一个新的官方支持的 Canary 发布渠道。它允许像框架这样的精选设置，对单个 React 功能的采用与 React 发布计划分离开。
 

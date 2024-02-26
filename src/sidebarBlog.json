@@ -12,15 +12,15 @@
       "skipBreadcrumb": true,
       "routes": [
         {
-          "title": "React Labs: What We've Been Working On – February 2024",
-          "titleForHomepage": "React Labs: February 2024",
+          "title": "React Labs：我们正在努力的方向——2024 年 2 月",
+          "titleForHomepage": "React Labs：2024 年 2 月",
           "icon": "labs",
           "date": "February 15, 2024",
           "path": "/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024"
         },
         {
-          "title": "React Canaries: Enabling Incremental Feature Rollout Outside Meta",
-          "titleForHomepage": "React Canaries: Incremental Feature Rollout",
+          "title": "React Canaries：在 Meta 之外逐步推出新功能",
+          "titleForHomepage": "React Canaries：逐步推出新功能",
           "icon": "blog",
           "date": "May 3, 2023",
           "path": "/blog/2023/05/03/react-canaries"
