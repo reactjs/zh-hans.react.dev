@@ -182,26 +182,8 @@ import {useFormStatus} from 'react-dom';
 export default function UsernameForm() {
   const {pending, data} = useFormStatus();
 
-  const [showSubmitted, setShowSubmitted] = useState(false);
-  const submittedUsername = useRef(null);
-  const timeoutId = useRef(null);
-
-  useMemo(() => {
-    if (pending) {
-      submittedUsername.current = data?.get('username');
-      if (timeoutId.current != null) {
-        clearTimeout(timeoutId.current);
-      }
-
-      timeoutId.current = setTimeout(() => {
-        timeoutId.current = null;
-        setShowSubmitted(false);
-      }, 2000);
-      setShowSubmitted(true);
-    }
-  }, [pending, data]);
-
   return (
+<<<<<<< HEAD
     <>
       <label>请求用户名：</label><br />
       <input type="text" name="username" />
@@ -212,6 +194,17 @@ export default function UsernameForm() {
         <p>提交请求用户名：{submittedUsername.current}</p>
       ) : null}
     </>
+=======
+    <div>
+      <h3>Request a Username: </h3>
+      <input type="text" name="username" disabled={pending}/>
+      <button type="submit" disabled={pending}>
+        Submit
+      </button>
+      <br />
+      <p>{data ? `Requesting ${data?.get("username")}...`: ''}</p>
+    </div>
+>>>>>>> 081d1008dd1eebffb9550a3ff623860a7d977acf
   );
 }
 ```
@@ -219,10 +212,15 @@ export default function UsernameForm() {
 ```js src/App.js
 import UsernameForm from './UsernameForm';
 import { submitForm } from "./actions.js";
+import {useRef} from 'react';
 
 export default function App() {
+  const ref = useRef(null);
   return (
-    <form action={submitForm}>
+    <form ref={ref} action={async (formData) => {
+      await submitForm(formData);
+      ref.current.reset();
+    }}>
       <UsernameForm />
     </form>
   );
@@ -231,8 +229,22 @@ export default function App() {
 
 ```js src/actions.js hidden
 export async function submitForm(query) {
-    await new Promise((res) => setTimeout(res, 1000));
+    await new Promise((res) => setTimeout(res, 2000));
 }
+```
+
+```css
+p {
+    height: 14px;
+    padding: 0;
+    margin: 2px 0 0 0 ;
+    font-size: 14px
+}
+
+button {
+    margin-left: 2px;
+}
+
 ```
 
 ```json package.json hidden
