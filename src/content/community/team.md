@@ -22,8 +22,13 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Andrey 最初从事设计工作，然后逐渐转行到网页开发。在加入 React Data 团队后，他参与了向 Relay 添加渐进式 JavaScript 编译器的工作，后来又负责从 Relay 中移除了同样的编译器。在工作之余，Andrey 喜欢演奏音乐，参与各种体育活动。
 </TeamMember>
 
+<<<<<<< HEAD
 <TeamMember name="Dan Abramov" permalink="dan-abramov" photo="/images/team/gaearon.jpg" github="gaearon" twitter="dan_abramov" title="Engineer at Meta">
     Dan 在意外发现 Microsoft PowerPoint 内部的 Visual Basic 后进入了编程行业。他发现了自己的真正使命，就是将 [Sebastian](#sebastian-markbåge) 的推特转化为长篇博客文章。Dan 偶尔会通过整局游戏都躲在草丛里的方式，在《堡垒之夜》中赢得胜利。
+=======
+<TeamMember name="Dan Abramov" permalink="dan-abramov" photo="/images/team/gaearon.jpg" github="gaearon" twitter="dan_abramov2" title="Independent Engineer">
+    Dan got into programming after he accidentally discovered Visual Basic inside Microsoft PowerPoint. He has found his true calling in turning [Sebastian](#sebastian-markbåge)'s tweets into long-form blog posts. Dan occasionally wins at Fortnite by hiding in a bush until the game ends.
+>>>>>>> 41b1bb3b7c440c108f4fa95fbca172564feda10f
 </TeamMember>
 
 <TeamMember name="Eli White" permalink="eli-white" photo="/images/team/eli-white.jpg" github="TheSavior" twitter="Eli_White" threads="elicwhite" title="Engineering Manager at Meta">
