@@ -183,7 +183,6 @@ export default function UsernameForm() {
   const {pending, data} = useFormStatus();
 
   return (
-<<<<<<< HEAD
     <>
       <label>请求用户名：</label><br />
       <input type="text" name="username" />
@@ -194,17 +193,6 @@ export default function UsernameForm() {
         <p>提交请求用户名：{submittedUsername.current}</p>
       ) : null}
     </>
-=======
-    <div>
-      <h3>Request a Username: </h3>
-      <input type="text" name="username" disabled={pending}/>
-      <button type="submit" disabled={pending}>
-        Submit
-      </button>
-      <br />
-      <p>{data ? `Requesting ${data?.get("username")}...`: ''}</p>
-    </div>
->>>>>>> 081d1008dd1eebffb9550a3ff623860a7d977acf
   );
 }
 ```
