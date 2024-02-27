@@ -98,7 +98,7 @@ React 组件是常规的 JavaScript 函数，但 **组件的名称必须以大�
 
 ### 第三步：添加标签 {/*step-3-add-markup*/}
 
-这个组件返回一个带有 `src` 和 `alt` 属性的 `<img />` 标签。`<img />` 写得像 HTML，但实际上是 JavaScript！这种语法被称为 [JSX](/learn/writing-markup-with-jsx)，它允许你在 JavaScript 中嵌入使用标签。
+这个组件返回一个带有 `src` 和 `alt` 属性的 `<img />` 标签。`<img />` 写得像 HTML，但实际上是 JavaScript！这种语法被称为 [JSX](/learn/writing-markup-with-jsx)，它允许你在 JavaScript 中嵌入标签。
 
 返回语句可以全写在一行上，如下面组件中所示：
 
