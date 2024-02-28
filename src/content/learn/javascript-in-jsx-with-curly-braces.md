@@ -233,7 +233,7 @@ const person = {
   <h1>{person.name}'s Todos</h1>
 ```
 
-JSX 是一种模板语言的最小实现，因为它允许你通过 JavaScript 来组织数据和逻辑。
+JSX作为一种模板语言非常简洁，因为它允许你通过 JavaScript 来组织数据和逻辑。
 
 <Recap>
 
