@@ -74,7 +74,7 @@ export default function Avatar() {
 
 ## 使用大括号：一扇进入 JavaScript 世界的窗户 {/*using-curly-braces-a-window-into-the-javascript-world*/}
 
-JSX 是一种编写 JavaScript 的特殊方式。这为在大括号 `{ }` 中使用 JavaScript 带来了可能。下面的示例中声明了科学家的名字，`name`，然后在 `<h1>` 后的大括号内嵌入它：
+JSX 作为一种模板语言非常简洁。这为在大括号 `{ }` 中使用 JavaScript 带来了可能。下面的示例中声明了科学家的名字，`name`，然后在 `<h1>` 后的大括号内嵌入它：
 
 <Sandpack>
 
