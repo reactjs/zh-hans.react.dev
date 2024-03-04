@@ -44,7 +44,7 @@ translators:
 
 ### 初次渲染 {/*initial-render*/}
 
-当应用启动时，会触发初次渲染。框架和沙箱有时会隐藏这部分代码，但它是通过调用目标 DOM 节点的 [`createRoot`](/reference/react-dom/client/createRoot)，然后用你的组件调用 `render` 函数完成的：
+当应用启动时，会触发初次渲染。框架和沙箱有时会隐藏这部分代码，但它是通过调用 [`createRoot`](/reference/react-dom/client/createRoot) 方法并传入目标 DOM 节点，然后用你的组件调用 `render` 函数完成的：
 
 <Sandpack>
 
