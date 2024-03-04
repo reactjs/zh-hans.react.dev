@@ -40,11 +40,7 @@ function SearchPage() {
 
 #### 返回值 {/*returns*/}
 
-<<<<<<< HEAD
 在组件的初始渲染期间，返回的延迟值将与你提供的值相同。但是在组件更新时，React 将会先尝试使用旧值进行重新渲染（因此它将返回旧值），然后再在后台使用新值进行另一个重新渲染（这时它将返回更新后的值）。
-=======
-During the initial render, the returned deferred value will be the same as the value you provided. During updates, React will first attempt a re-render with the old value (so it will return the old value), and then try another re-render in the background with the new value (so it will return the updated value). 
->>>>>>> 265fa26e3b39739f06c956140d9acf618c6b4e6b
 
 #### 注意事项 {/*caveats*/}
 
@@ -80,11 +76,7 @@ function SearchPage() {
 
 在初始渲染期间，返回的 <CodeStep step={2}>延迟值</CodeStep> 与你提供的 <CodeStep step={1}>值</CodeStep> 相同。
 
-<<<<<<< HEAD
 在更新期间，<CodeStep step={2}>延迟值</CodeStep> 会“滞后于”最新的 <CodeStep step={1}>值</CodeStep>。具体地说，React 首先会在不更新延迟值的情况下进行重新渲染，然后在后台尝试使用新接收到的值进行重新渲染。
-=======
-During updates, the <CodeStep step={2}>deferred value</CodeStep> will "lag behind" the latest <CodeStep step={1}>value</CodeStep>. In particular, React will first re-render *without* updating the deferred value, and then try to re-render with the newly received value in the background.
->>>>>>> 265fa26e3b39739f06c956140d9acf618c6b4e6b
 
 **让我们通过一个例子来看看什么时候该使用它**。
 
@@ -516,11 +508,7 @@ input { margin: 10px; }
 
 1. **首先，React 会使用新的 `query` 值（`"ab"`）和旧的 `deferredQuery` 值（仍为 `"a"`）重新渲染。** 传递给结果列表的 `deferredQuery` 值是**延迟**的，它“滞后于” `query` 值。
 
-<<<<<<< HEAD
 2. **在后台，React 尝试重新渲染，并将 `query` 和 `deferredQuery` 两个值都更新为 `"ab"`。** 如果此次重新渲染完成，React 将在屏幕上显示它。但是，如果它 suspense（即 `"ab"` 的结果尚未加载），React 将放弃这次渲染，并在数据加载后再次尝试重新渲染。用户将一直看到旧的延迟值，直到数据准备就绪。
-=======
-2. **In the background, React tries to re-render with *both* `query` and `deferredQuery` updated to `"ab"`.** If this re-render completes, React will show it on the screen. However, if it suspends (the results for `"ab"` have not loaded yet), React will abandon this rendering attempt, and retry this re-render again after the data has loaded. The user will keep seeing the stale deferred value until the data is ready.
->>>>>>> 265fa26e3b39739f06c956140d9acf618c6b4e6b
 
 被推迟的“后台”渲染是可中断的。例如，如果你再次在输入框中输入，React 将会中断渲染，并从新值开始重新渲染。React 总是使用最新提供的值。
 
@@ -964,11 +952,7 @@ export default SlowList;
 
 与防抖或节流不同，`useDeferredValue` 不需要选择任何固定延迟时间。如果用户的设备很快（比如性能强劲的笔记本电脑），延迟的重渲染几乎会立即发生并且不会被察觉。如果用户的设备较慢，那么列表会相应地“滞后”于输入，滞后的程度与设备的速度有关。
 
-<<<<<<< HEAD
 此外，与防抖或节流不同，`useDeferredValue` 执行的延迟重新渲染默认是可中断的。这意味着，如果 React 正在重新渲染一个大型列表，但用户进行了另一次键盘输入，React 会放弃该重新渲染，先处理键盘输入，然后再次开始在后台渲染。相比之下，防抖和节流仍会产生不顺畅的体验，因为它们是阻塞的：它们仅仅是将渲染阻塞键盘输入的时刻推迟了。
-=======
-Also, unlike with debouncing or throttling, deferred re-renders done by `useDeferredValue` are interruptible by default. This means that if React is in the middle of re-rendering a large list, but the user makes another keystroke, React will abandon that re-render, handle the keystroke, and then start rendering in the background again. By contrast, debouncing and throttling still produce a janky experience because they're *blocking:* they merely postpone the moment when rendering blocks the keystroke.
->>>>>>> 265fa26e3b39739f06c956140d9acf618c6b4e6b
 
 如果你要优化的工作不是在渲染期间发生的，那么防抖和节流仍然非常有用。例如，它们可以让你减少网络请求的次数。你也可以同时使用这些技术。
 
