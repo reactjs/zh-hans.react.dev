@@ -101,7 +101,7 @@ React 的渲染过程必须自始至终是纯粹的。组件应该只 **返回**
 let guest = 0;
 
 function Cup() {
-  // Bad: changing a preexisting variable!
+  // Bad：正在更改预先存在的变量！
   guest = guest + 1;
   return <h2>Tea cup for guest #{guest}</h2>;
 }
@@ -773,10 +773,10 @@ li {
 
 ```js src/StoryTray.js active
 export default function StoryTray({ stories }) {
-  // Copy the array!
+  // 复制数组！
   let storiesToDisplay = stories.slice();
 
-  // Does not affect the original array:
+  // 不影响原始数组：
   storiesToDisplay.push({
     id: 'create',
     label: 'Create Story'
