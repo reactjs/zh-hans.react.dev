@@ -476,7 +476,7 @@ export default function App() {
 
 要么在 React 组件或 Hook 函数之外调用 `use`，或者在 try-catch 块中调用 `use`。如果你在 try-catch 块中调用 `use`，请将组件包裹在错误边界中，或者使用 Promise 的 `catch` 方法来捕获错误并提供给替代值。[参见这些示例](#dealing-with-rejected-promises)。
 
-如果在 React 组件或 Hook 函数之外调用 `use`，请将 `use` 调用移至 React 组件或 Hook 函数中。
+如果你在 React 组件或 Hook 函数之外调用 `use`，请将 `use` 调用移至 React 组件或 Hook 函数中。
 
 ```jsx
 function MessageComponent({messagePromise}) {
