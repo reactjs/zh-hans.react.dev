@@ -24,7 +24,7 @@ translators:
 
 </YouWillLearn>
 
-## 使用状态响应输入 {/*reacting-to-input-with-state*/}
+## 用 State 响应输入 {/*reacting-to-input-with-state*/}
 
 使用 React，你不用直接从代码层面修改 UI。例如，不用编写诸如“禁用按钮”、“启用按钮”、“显示成功消息”等命令。相反，你只需要描述组件在不同状态（“初始状态”、“输入状态”、“成功状态”）下希望展现的 UI，然后根据用户输入触发状态更改。这和设计师对 UI 的理解很相似。
 
@@ -112,11 +112,11 @@ function submitForm(answer) {
 
 <LearnMore path="/learn/reacting-to-input-with-state">
 
-阅读 **[用状态对输入作出响应](/learn/reacting-to-input-with-state)** 来学习如何以状态驱动的思维处理交互。
+阅读 **[用 State 响应输入](/learn/reacting-to-input-with-state)** 来学习如何以状态驱动的思维处理交互。
 
 </LearnMore>
 
-## 选择状态结构 {/*choosing-the-state-structure*/}
+## 选择 State 结构 {/*choosing-the-state-structure*/}
 
 良好的状态组织，可以区分开易于修改和调试的组件与频繁出问题的组件。最重要的原则是，状态不应包含冗余或重复的信息。如果包含一些多余的状态，我们会很容易忘记去更新它，从而导致问题产生！
 
@@ -228,7 +228,7 @@ label { display: block; margin-bottom: 5px; }
 这看起来似乎只是一个小改动，但却可以避免很多潜在的问题。
 <LearnMore path="/learn/choosing-the-state-structure">
 
-阅读 **[选择状态结构](/learn/choosing-the-state-structure)** 来学习如何组织状态并避开错误。
+阅读 **[选择 State 结构](/learn/choosing-the-state-structure)** 来学习如何组织状态并避开错误。
 
 </LearnMore>
 
@@ -303,7 +303,7 @@ h3, p { margin: 5px 0px; }
 
 </LearnMore>
 
-## 保留和重置状态 {/*preserving-and-resetting-state*/}
+## 对 state 进行保留和重置 {/*preserving-and-resetting-state*/}
 
 当你重新渲染一个组件时， React 需要决定组件树中的哪些部分要保留和更新，以及丢弃或重新创建。在大多数情况下， React 的自动处理机制已经做得足够好了。默认情况下，React 会保留树中与先前渲染的组件树“匹配”的部分。
 
@@ -499,11 +499,11 @@ textarea {
 
 <LearnMore path="/learn/preserving-and-resetting-state">
 
-阅读 **[保留和重置状态](/learn/preserving-and-resetting-state)** 来学习状态的生命周期以及如何控制它。
+阅读 **[对 state 进行保留和重置](/learn/preserving-and-resetting-state)** 来学习状态的生命周期以及如何控制它。
 
 </LearnMore>
 
-## 提取状态逻辑到 reducer 中 {/*extracting-state-logic-into-a-reducer*/}
+## 迁移状态逻辑至 Reducer 中 {/*extracting-state-logic-into-a-reducer*/}
 
 对于那些需要更新多个状态的组件来说，过于分散的事件处理程序可能会令人不知所措。对于这种情况，你可以在组件外部将所有状态更新逻辑合并到一个称为 “reducer” 的函数中。这样，事件处理程序就会变得简洁，因为它们只需要指定用户的 “actions”。在文件的底部，reducer 函数指定状态应该如何更新以响应每个 action！
 
@@ -696,11 +696,11 @@ ul, li { margin: 0; padding: 0; }
 
 <LearnMore path="/learn/extracting-state-logic-into-a-reducer">
 
-阅读 **[提取状态逻辑到 reducer 中](/learn/extracting-state-logic-into-a-reducer)** 来学习如何在 reducer 函数中整合逻辑。
+阅读 **[迁移状态逻辑至 Reducer 中](/learn/extracting-state-logic-into-a-reducer)** 来学习如何在 reducer 函数中整合逻辑。
 
 </LearnMore>
 
-## 使用 Context 进行深层数据传递 {/*passing-data-deeply-with-context*/}
+## 使用 Context 深层传递参数 {/*passing-data-deeply-with-context*/}
 
 通常，你会通过 props 将信息从父组件传递给子组件。但是，如果要在组件树中深入传递一些 prop，或者树里的许多组件需要使用相同的 prop，那么传递 prop 可能会变得很麻烦。Context 允许父组件将一些信息提供给它下层的任何组件，不管该组件多深层也无需通过 props 逐层透传。
 
@@ -798,11 +798,11 @@ export const LevelContext = createContext(0);
 
 <LearnMore path="/learn/passing-data-deeply-with-context">
 
-阅读 **[使用 Context 进行深层数据传递](/learn/passing-data-deeply-with-context)** 来学习如何使用 Context 来代替传递 props。
+阅读 **[使用 Context 深层传递参数](/learn/passing-data-deeply-with-context)** 来学习如何使用 Context 来代替传递 props。
 
 </LearnMore>
 
-## 使用 Reducer 和 Context 进行状态扩展 {/*scaling-up-with-reducer-and-context*/}
+## 使用 Reducer 和 Context 拓展你的应用 {/*scaling-up-with-reducer-and-context*/}
 
 Reducer 帮助你合并组件的状态更新逻辑。Context 帮助你将信息深入传递给其他组件。你可以将 reducers 和 context 组合在一起使用，以管理复杂应用的状态。
 
@@ -1010,12 +1010,12 @@ ul, li { margin: 0; padding: 0; }
 
 <LearnMore path="/learn/scaling-up-with-reducer-and-context">
 
-阅读 **[使用 Reducer 和 Context 进行扩展](/learn/scaling-up-with-reducer-and-context)** 来学习如何在不断增长的应用程序中扩展状态管理。
+阅读 **[使用 Reducer 和 Context 拓展你的应用](/learn/scaling-up-with-reducer-and-context)** 来学习如何在不断增长的应用程序中扩展状态管理。
 
 </LearnMore>
 
 ## 下节预告 {/*whats-next*/}
 
-跳转到 [使用状态响应输入](/learn/reacting-to-input-with-state) 这一节并开始一页页的阅读！
+跳转到 [用 State 响应输入](/learn/reacting-to-input-with-state) 这一节并开始一页页的阅读！
 
 当然，如果你已经熟悉了这些内容，可以去读一读 [脱围机制](/learn/escape-hatches)?
