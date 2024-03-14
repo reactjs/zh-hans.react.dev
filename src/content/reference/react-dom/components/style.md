@@ -52,7 +52,11 @@ React 对 `<style>` 的扩展当前仅在 React Canary 与 experimental 渠道�
 
 #### 特殊的渲染行为 {/*special-rendering-behavior*/}
 
+<<<<<<< HEAD
 React 可以将 `<style>` 组件移动到文档的 `<head>` 中，去重相同的样式表，并在样式表加载时 [挂起](/reference/react/Suspense)。
+=======
+React can move `<style>` components to the document's `<head>`, de-duplicate identical stylesheets, and [suspend](/reference/react/Suspense) while the stylesheet is loading.
+>>>>>>> 1a839ff74e40f40a1a8ea6ae1d4837b68696550c
 
 请提供 `href` 和 `precedence` 属性以选择此行为。如果样式表具有相同的 `href`，React 将对样式去重。优先级属性告诉 React 在文档的 `<head>` 中排列 `<style>` DOM 节点的位置，从而确定哪个样式表可以覆盖另一个。
 
