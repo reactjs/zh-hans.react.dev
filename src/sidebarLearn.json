@@ -29,11 +29,11 @@
           "path": "/learn/start-a-new-react-project"
         },
         {
-          "title": "将 React 添加到已有项目中",
+          "title": "将 React 添加到现有项目中",
           "path": "/learn/add-react-to-an-existing-project"
         },
         {
-          "title": "编辑器配置",
+          "title": "编辑器设置",
           "path": "/learn/editor-setup"
         },
         {
@@ -51,12 +51,12 @@
       "sectionHeader": "学习 React"
     },
     {
-      "title": "描述 UI",
+      "title": "描述用户界面",
       "tags": [],
       "path": "/learn/describing-the-ui",
       "routes": [
         {
-          "title": "第一个组件",
+          "title": "你的第一个组件",
           "path": "/learn/your-first-component"
         },
         {
