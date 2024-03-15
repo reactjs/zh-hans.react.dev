@@ -92,7 +92,7 @@ React 对 `<link>` 的扩展当前仅在 React Canary 与 experimental 渠道中
 
 此外，如果 `<link>` 指向的是样式表（即，在其属性中具有 `rel="stylesheet"`），React 会以以下方式对其进行特殊处理：
 
-* 渲染 `<link>` 的组件将在样式表加载时进行 [挂起](http://localhost:3000/reference/react/Suspense)。
+* 渲染 `<link>` 的组件将在样式表加载时进行 [挂起](/reference/react/Suspense)。
 * 如果多个组件渲染指向相同样式表的链接，React 将对它们进行去重，并只将单个链接放入 DOM 中。如果两个链接具有相同的 `href` 属性，则认为它们是相同的。
 
 但是，有两个例外情况：
@@ -134,7 +134,7 @@ export default function BlogPage() {
 
 ### 链接到样式表 {/*linking-to-a-stylesheet*/}
 
-如果一个组件依赖于某个样式表以正确显示，可以在组件内部渲染一个指向该样式表的链接。当样式表加载时，组件将会 [挂起](http://localhost:3000/reference/react/Suspense)。因此必须提供 `precedence` 属性，该属性告诉 React 将此样式表放置在其他样式表的何处——具有较高优先级的样式表可以覆盖较低优先级的样式表。
+如果一个组件依赖于某个样式表以正确显示，可以在组件内部渲染一个指向该样式表的链接。当样式表加载时，组件将会 [挂起](/reference/react/Suspense)。因此必须提供 `precedence` 属性，该属性告诉 React 将此样式表放置在其他样式表的何处——具有较高优先级的样式表可以覆盖较低优先级的样式表。
 
 <Note>
 当想使用样式表时，调用 [preinit](/reference/react-dom/preinit) 函数可能是有益的。调用此函数可能使浏览器比仅渲染一个 `<link>` 组件更早地开始获取样式表，例如通过发送 [HTTP 103 Early Hints 响应](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status/103)。
