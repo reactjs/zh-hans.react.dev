@@ -67,7 +67,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </LearnMore>
 
-## 导入与导出组件 {/*importing-and-exporting-components*/}
+## 组件的导入与导出 {/*importing-and-exporting-components*/}
 
 你可以在一个文件中声明许多组件，但文件的体积过大会变得难以浏览。为了解决这个问题，你可以在一个文件中只*导出*一个组件，然后再从另一个文件中*导入*该组件：
 
@@ -117,10 +117,10 @@ img { margin: 0 10px 10px 0; }
 
 <LearnMore path="/learn/importing-and-exporting-components">
 
-请参阅 **[导入与导出组件](/learn/importing-and-exporting-components)** 以学习如何切分组件。
+请参阅 **[组件的导入与导出](/learn/importing-and-exporting-components)** 以学习如何切分组件。
 </LearnMore>
 
-## 使用 JSX 编写标签 {/*writing-markup-with-jsx*/}
+## 使用 JSX 书写标签语言 {/*writing-markup-with-jsx*/}
 
 每个 React 组件都是一个 JavaScript 函数，它可能包含一些标签，React 会将其渲染到浏览器中。React 组件使用一种叫做 JSX 的语法扩展来表示该标签。JSX 看起来很像 HTML，但它更为严格，可以显示动态信息。
 
@@ -185,11 +185,11 @@ img { height: 90px; }
 
 <LearnMore path="/learn/writing-markup-with-jsx">
 
-请参阅 **[使用 JSX 编写标签](/learn/writing-markup-with-jsx)** 以学习如何编写有效的 JSX。
+请参阅 **[使用 JSX 书写标签语言](/learn/writing-markup-with-jsx)** 以学习如何编写有效的 JSX。
 
 </LearnMore>
 
-## 在 JSX 中使用大括号编写 JavaScript {/*javascript-in-jsx-with-curly-braces*/}
+## 在 JSX 中通过大括号使用 JavaScript {/*javascript-in-jsx-with-curly-braces*/}
 
 JSX 可以让你在 JavaScript 文件中编写类似 HTML 的标签语法，使渲染逻辑和内容展示维护在同一个地方。有时你会想在标签中添加一点 JavaScript 逻辑或引用一个动态属性。在这种情况下，你可以在 JSX 中使用花括号来为 JavaScript "开辟通道"：
 
@@ -233,11 +233,11 @@ body > div > div { padding: 20px; }
 
 <LearnMore path="/learn/javascript-in-jsx-with-curly-braces">
 
-请参阅 **[在 JSX 中使用大括号编写 JavaScript](/learn/javascript-in-jsx-with-curly-braces)** 以学习如何从 JSX 中访问 JavaScript 数据。
+请参阅 **[在 JSX 中通过大括号使用 JavaScript](/learn/javascript-in-jsx-with-curly-braces)** 以学习如何从 JSX 中访问 JavaScript 数据。
 
 </LearnMore>
 
-## 将 `props` 传递给一个组件 {/*passing-props-to-a-component*/}
+## 将 Props 传递给组件 {/*passing-props-to-a-component*/}
 
 React 组件使用 *props* 来进行组件之间的通讯。每个父组件都可以通过为子组件提供 props 的方式来传递信息。props 可能会让你想起 HTML 属性，但你可以通过它们传递任何 JavaScript 的值，包括对象、数组、函数、甚至是 JSX!
 
@@ -314,7 +314,7 @@ export function getImageUrl(person, size = 's') {
 
 <LearnMore path="/learn/passing-props-to-a-component">
 
-请参阅 **[向组件传递 props](/learn/passing-props-to-a-component)** 以了解如何传递并读取 props。
+请参阅 **[将 Props 传递给组件](/learn/passing-props-to-a-component)** 以了解如何传递并读取 props。
 
 </LearnMore>
 
@@ -466,7 +466,7 @@ h2 { font-size: 20px; }
 
 </LearnMore>
 
-## 保持组件的纯粹 {/*keeping-components-pure*/}
+## 保持组件纯粹 {/*keeping-components-pure*/}
 
 有些 JavaScript 函数是 **纯粹** 的。纯函数的基本定义：
 
@@ -523,7 +523,7 @@ export default function TeaSet() {
 
 <LearnMore path="/learn/keeping-components-pure">
 
-请参阅 **[保持组件的纯粹](/learn/keeping-components-pure)** 以学习如何将组件写成纯粹且可预测的函数。
+请参阅 **[保持组件纯粹](/learn/keeping-components-pure)** 以学习如何将组件写成纯粹且可预测的函数。
 
 </LearnMore>
 
@@ -562,4 +562,4 @@ React 渲染树是组件之间父子关系的表示。
 
 请访问 [你的第一个组件](/learn/your-first-component) 这个章节并开始阅读！
 
-如若你已熟悉这些主题，可直接阅读 [增加交互](/learn/adding-interactivity) 一节。
+如若你已熟悉这些主题，可直接阅读 [添加交互](/learn/adding-interactivity) 一节。

@@ -255,7 +255,7 @@ button {
 
 </LearnMore>
 
-## 作为快照的状态 {/*state-as-a-snapshot*/}
+## state 如同一张快照 {/*state-as-a-snapshot*/}
 
 与普通 JavaScript 变量不同，React 状态的行为更像一个快照。设置它并不改变你已有的状态变量，而是触发一次重新渲染。这在一开始可能会让人感到惊讶！
 
@@ -314,7 +314,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 <LearnMore path="/learn/state-as-a-snapshot">
 
-阅读 **[作为快照的状态](/learn/state-as-a-snapshot)** 了解为什么状态在事件处理程序中是“固定的”和不变的。
+阅读 **[state 如同一张快照](/learn/state-as-a-snapshot)** 了解为什么状态在事件处理程序中是“固定的”和不变的。
 
 </LearnMore>
 
@@ -354,7 +354,7 @@ button { display: inline-block; margin: 10px; font-size: 20px; }
 
 </Sandpack>
 
-[作为快照的状态](/learn/state-as-a-snapshot) 解释了为什么会出现这种情况。设置状态会请求一个新的重新渲染，但不会在已运行的代码中更改它。所以在你调用 `setScore(score + 1)` 后，`score` 仍然是 `0`。
+[state 如同一张快照](/learn/state-as-a-snapshot) 解释了为什么会出现这种情况。设置状态会请求一个新的重新渲染，但不会在已运行的代码中更改它。所以在你调用 `setScore(score + 1)` 后，`score` 仍然是 `0`。
 
 ```js
 console.log(score);  // 0
@@ -406,7 +406,7 @@ button { display: inline-block; margin: 10px; font-size: 20px; }
 
 </LearnMore>
 
-## 更新状态中的对象 {/*updating-objects-in-state*/}
+## 更新 state 中的对象 {/*updating-objects-in-state*/}
 
 状态可以持有任何类型的 JavaScript 值，包括对象。但你不应该直接改变你在 React 状态中持有的对象和数组。相反，当你想更新一个对象和数组时，你需要创建一个新的对象（或复制现有的对象），然后用这个副本来更新状态。
 
@@ -633,11 +633,11 @@ img { width: 200px; height: 200px; }
 
 <LearnMore path="/learn/updating-objects-in-state">
 
-阅读 **[更新状态中的对象](/learn/updating-objects-in-state)** 了解如何正确地更新对象。
+阅读 **[更新 state 中的对象](/learn/updating-objects-in-state)** 了解如何正确地更新对象。
 
 </LearnMore>
 
-## 更新状态中的数组 {/*updating-arrays-in-state*/}
+## 更新 state 中的数组 {/*updating-arrays-in-state*/}
 
 数组是另一种可以存在状态中的可变 JavaScript 对象，应将其视为只读。就像对象一样，当你想更新存在状态中的数组时，你需要创建一个新数组（或者复制现有数组），然后用新数组来更新状态。
 
@@ -789,7 +789,7 @@ function ItemList({ artworks, onToggle }) {
 
 <LearnMore path="/learn/updating-arrays-in-state">
 
-阅读 **[更新状态中的数组](/learn/updating-arrays-in-state)** 了解如何正确地更新数组。
+阅读 **[更新 state 中的数组](/learn/updating-arrays-in-state)** 了解如何正确地更新数组。
 
 </LearnMore>
 
