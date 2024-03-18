@@ -4,7 +4,7 @@ title: useId
 
 <Intro>
 
-`useId` 是一个 React Hook，可以生成传递给无障碍属性的唯一 ID。
+`useId` 是一个 React Hook，用于生成可以传递给可访问性属性的唯一 ID。
 
 ```js
 const id = useId()
