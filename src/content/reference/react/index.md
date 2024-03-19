@@ -30,7 +30,7 @@ React-dom 仅支持在 web 应用程序中使用（在浏览器 DOM 环境中运
 * [服务端 API](/reference/react-dom/server) —— `react-dom/server` API 允许在服务器端将 React 组件渲染为 HTML。
 
 
-## Rules of React {/*rules-of-react*/}
+## React 规则 {/*rules-of-react*/}
 
 React 有一套表达模式的俗语与规则，它们以一种易于理解并能帮助实现高质量应用程序的方式表达出来：
 
