@@ -49,5 +49,3 @@ Hook 是使用 JavaScript 函数定义的，但它们代表一种特殊类型的
 
 * [只在顶层调用 Hook](/reference/rules/rules-of-hooks#only-call-hooks-at-the-top-level) —— 不要在循环、条件或嵌套函数内调用 Hook。相反，应当始终在 React 函数的顶层使用 Hook，即在返回任何值之前。
 * [只从 React 函数中调用 Hook](/reference/rules/rules-of-hooks#only-call-hooks-from-react-functions) —— 不要在常规的 JavaScript 函数中调用 Hook。
-
-
