@@ -32,7 +32,6 @@ title: React 规则
 * [返回给 Hook 的值和参数是不可变的](/reference/rules/components-and-hooks-must-be-pure#return-values-and-arguments-to-hooks-are-immutable) —— 一旦值被传递给一个 Hook，那么就不应该修改它们。与 JSX 中的 props 类似，传递给 Hook 的值在传递后变为不可变。
 * [值在传递给 JSX 后是不可变的](/reference/rules/components-and-hooks-must-be-pure#values-are-immutable-after-being-passed-to-jsx) —— 不要改变已经在 JSX 中使用的值，应当在创建 JSX 之前改变。
 
-
 ---
 
 ## React 调用组件与 Hook 的方式 {/*react-calls-components-and-hooks*/}
