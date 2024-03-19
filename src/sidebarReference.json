@@ -352,10 +352,7 @@
     },
     {
       "hasSectionHeader": true,
-<<<<<<< HEAD
-      "sectionHeader": "过时的 API"
-=======
-      "sectionHeader": "Rules of React"
+      "sectionHeader": "React 规则"
     },
     {
       "title": "Overview",
@@ -375,8 +372,7 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "Legacy APIs"
->>>>>>> f55d9487c6648570fc80f1421d7dca0a3b9b94b6
+      "sectionHeader": "过时的 API"
     },
     {
       "title": "过时的 React API",
