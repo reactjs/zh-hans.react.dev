@@ -44,7 +44,7 @@ function useCSS(rule) {
 
 #### 参数 {/*parameters*/}
 
-* `setup`：处理副作用的函数。setup 函数选择性返回一个 **清理（cleanup）** 函数。当您的组件添加到 DOM 中，但在任何布局触发之前，React 将运行您的 setup 函数。在每次重新渲染时，如果依赖项发生变化，React 首先会使用旧值运行 cleanup 函数（如果提供），然后使用新值运行您的 setup 函数。当您的组件从 DOM 中移除时，React 将运行您的 cleanup 函数。
+* `setup`：处理副作用的函数。setup 函数选择性返回一个 **清理（cleanup）** 函数。当您的组件添加到 DOM 中，但在任何布局触发之前，React 将运行您的 setup 函数。在每次重新渲染时，如果依赖项发生变化，React 首先会使用旧值运行 cleanup 函数（如果提供），然后使用新值运行您的 setup 函数。当您的组件从 DOM 中移除时，React 将运行你的 cleanup 函数。
 
 * **可选** `dependencies`：`setup` 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 [配置了 React](/learn/editor-setup#linting)，那么它将验证是否每个响应式值都被正确地指定为依赖项。依赖列表必须具有固定数量的项，并且必须像 `[dep1, dep2, dep3]` 这样内联编写。React 将使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来比较每个依赖项和它先前的值。如果省略此参数，则将在每次重新渲染组件之后重新运行 Effect。
 
