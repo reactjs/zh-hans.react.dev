@@ -56,7 +56,7 @@ function useCSS(rule) {
 * 你不能在 `useInsertionEffect` 内部更新状态。
 * 当 `useInsertionEffect` 运行时，`refs` 尚未附加。
 * `useInsertionEffect` 可能在 DOM 更新之前或之后运行。你不应该依赖于 DOM 在任何特定时间的更新状态。
-* 与其他类型的 Effects 不同，它们会先为每个 Effect 触发 cleanup 函数，然后再触发 setup 函数。而 `useInsertionEffect` 会同时触发 cleanup 函数和 setup 函数。这会导致 cleanup 函数和 setup 函数的"交错"执行。
+* 与其他类型的 Effects 不同，它们会先为每个 Effect 触发 cleanup 函数，然后再触发 setup 函数。而 `useInsertionEffect` 会同时触发 cleanup 函数和 setup 函数。这会导致 cleanup 函数和 setup 函数的“交错”执行。
 ---
 
 ## 用法 {/*usage*/}
