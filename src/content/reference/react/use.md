@@ -466,7 +466,7 @@ export default function App() {
 }
 ```
 
-要使用 Promise 的 <CodeStep step={1}>`catch`</CodeStep> 方法，请在 Promise 对象上调用 <CodeStep step={1}>`catch`</CodeStep>。<CodeStep step={1}>`catch`</CodeStep> 接受一个参数：一个接受错误消息作为参数的函数。由传递给 <CodeStep step={1}>`catch`</CodeStep> 的函数 <CodeStep step={2}>返回</CodeStep> 的任何内容都将视为 Promise 的解决值。<CodeStep step={2}>返回</CodeStep>。
+要使用 Promise 的 <CodeStep step={1}>`catch`</CodeStep> 方法，请在 Promise 对象上调用 <CodeStep step={1}>`catch`</CodeStep>。<CodeStep step={1}>`catch`</CodeStep> 接受一个参数：一个接受错误消息作为参数的函数。由传递给 <CodeStep step={1}>`catch`</CodeStep> 的函数 <CodeStep step={2}>返回</CodeStep> 的任何内容都将视为 Promise 的解决值。
 
 ---
 
