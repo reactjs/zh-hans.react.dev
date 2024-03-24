@@ -431,7 +431,7 @@ function ProfilePage() {
 }
 ```
 
-If an error happens in the `Posts` component or somewhere inside it, React will [try to recover from it:](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content)
+如果在 `Posts` 组件或其内部某处发生错误，React将 [尝试从中恢复:](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content) 
 
 1. 它将用在结构上和异常发生的位置最近的一个父级 `<Suspense>` 的加载中的后备方案（`PostsGlimmer`）替代这段 HTML。
 2. 它将会“放弃”尝试在服务端渲染 `Posts` 组件的内容。
