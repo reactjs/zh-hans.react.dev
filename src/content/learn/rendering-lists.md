@@ -103,31 +103,27 @@ Warning: Each child in a list should have a unique "key" prop.
 让我们把 `people` 数组变得更加结构化一点。
 
 ```js
-const people = [
-  {
-    id: 0,
-    name: '凯瑟琳·约翰逊',
-    profession: '数学家',
-  },
-  {
-    id: 1,
-    name: '马里奥·莫利纳',
-    profession: '化学家',
-  },
-  {
-    id: 2,
-    name: '穆罕默德·阿卜杜勒·萨拉姆',
-    profession: '物理学家',
-  },
-  {
-    name: '珀西·莱温·朱利亚',
-    profession: '化学家',
-  },
-  {
-    name: '苏布拉马尼扬·钱德拉塞卡',
-    profession: '天体物理学家',
-  },
-];
+const people = [{
+  id: 0,
+  name: 'Creola Katherine Johnson',
+  profession: 'mathematician',
+}, {
+  id: 1,
+  name: 'Mario José Molina-Pasquel Henríquez',
+  profession: 'chemist',
+}, {
+  id: 2,
+  name: 'Mohammad Abdus Salam',
+  profession: 'physicist',
+}, {
+  id: 3,
+  name: 'Percy Lavon Julian',
+  profession: 'chemist',  
+}, {
+  id: 4,
+  name: 'Subrahmanyan Chandrasekhar',
+  profession: 'astrophysicist',
+}];
 ```
 
 现在，假设你只想在屏幕上显示职业是 `化学家` 的人。那么你可以使用 JavaScript 的 `filter()` 方法来返回满足条件的项。这个方法会让数组的子项经过 “过滤器”（一个返回值为 `true` 或 `false` 的函数）的筛选，最终返回一个只包含满足条件的项的新数组。
