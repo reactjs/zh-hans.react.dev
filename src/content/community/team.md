@@ -74,7 +74,7 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Sebastian 主修心理学。他通常比较沉默寡言。即使他说些什么，我们其他人通常也要等几个月后才能理解他的意思。他的姓氏正确的发音是“mark-boa-geh”，但出于实用考虑，他接受了“mark-beige”的发音——这也是他处理 React 问题的方式。
 </TeamMember>
 
-<TeamMember name="Sebastian Silbermann" permalink="sebastian-silbermann" photo="/images/team/sebsilbermann.jpg" github="eps1lon" twitter="sebsilbermann" threads="sebsilbermann" title="Independent Engineer">
+<TeamMember name="Sebastian Silbermann" permalink="sebastian-silbermann" photo="/images/team/sebsilbermann.jpg" github="eps1lon" twitter="sebsilbermann" threads="sebsilbermann" title="Engineer at Vercel">
     Sebastian 学习编程的目的是让他在课堂上玩的浏览器游戏变得更有趣。最终，这引领他尽可能多地为开源代码做贡献。在编程之外，他忙于确保人们不会把他和 React 社区的其他 Sebastians 和 Zilberman 混淆。
 </TeamMember>
 
