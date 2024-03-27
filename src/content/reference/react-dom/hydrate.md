@@ -152,7 +152,11 @@ export default function App() {
 
 ### 处理不同的客户端和服务器内容 {/*handling-different-client-and-server-content*/}
 
+<<<<<<< HEAD
 如果需要在服务器和客户端上故意渲染不同的内容，可以进行双重渲染。在客户端上渲染不同内容的组件可以读取像 `isClient` 这样的 [state 变量](/reference/react/useState)，你可以在 [effect](/reference/react/useEffect) 中将其设置为 `true`：
+=======
+If you intentionally need to render something different on the server and the client, you can do a two-pass rendering. Components that render something different on the client can read a [state variable](/reference/react/useState) like `isClient`, which you can set to `true` in an [Effect](/reference/react/useEffect):
+>>>>>>> 2aa9594184e5cdd6cd52771d6a343b45e0e829cf
 
 <Sandpack>
 
