@@ -38,6 +38,7 @@ async function addToCart(data) {
 
 可以将 `'use server'` 指示符添加到文件顶部来代替逐个在函数中添加它。位于文件顶部的指示符会将所有导出都标记为可在任何地方使用的 Server Action，包括在客户端代码中导入。
 
+<<<<<<< HEAD
 #### 注意 {/*caveats*/}
 * `'use server'` 必须位于函数或模块的顶部，在任何导入或其他代码之前（可以位于代码顶部的注释之后）。它们必须用单引号或双引号编写，但不能用反引号。
 * `'use server'` 只能在服务器端文件中使用。生成的 Server Action 可以通过 props 传递给客户端组件。请参阅支持的 [序列化参数和返回值类型](#serializable-parameters-and-return-values)。
@@ -46,6 +47,16 @@ async function addToCart(data) {
 * 始终将 Server Action 的参数视为不受信任的输入，并授权任何变更。请参阅 [安全考虑](#security)。
 * 应在 [transition](/reference/react/useTransition) 中调用 Server Action。传递给 [`<form action>`](/reference/react-dom/components/form#props) 或 [`formAction`](/reference/react-dom/components/input#props) 的 Server Action 将自动在 transition 中被调用。
 * Server Action 专为更新服务器端状态的变更而设计，不建议用于数据获取。因此，实现 Server Action 的框架通常一次只处理一个 Action，没有缓存返回值的方式。
+=======
+#### Caveats {/*caveats*/}
+* `'use server'` must be at the very beginning of their function or module; above any other code including imports (comments above directives are OK). They must be written with single or double quotes, not backticks.
+* `'use server'` can only be used in server-side files. The resulting Server Actions can be passed to Client Components through props. See supported [types for serialization](#serializable-parameters-and-return-values).
+* To import a Server Action from [client code](/reference/react/use-client), the directive must be used on a module level.
+* Because the underlying network calls are always asynchronous, `'use server'` can only be used on async functions.
+* Always treat arguments to Server Actions as untrusted input and authorize any mutations. See [security considerations](#security).
+* Server Actions should be called in a [Transition](/reference/react/useTransition). Server Actions passed to [`<form action>`](/reference/react-dom/components/form#props) or [`formAction`](/reference/react-dom/components/input#props) will automatically be called in a transition.
+* Server Actions are designed for mutations that update server-side state; they are not recommended for data fetching. Accordingly, frameworks implementing Server Actions typically process one action at a time and do not have a way to cache the return value.
+>>>>>>> 9b4de7ceb504619b78d6043d0f90a5e85c22544c
 
 ### 安全考虑 {/*security*/}
 
@@ -177,7 +188,11 @@ function UsernameForm() {
 
 Server Action 是暴露的服务器端点，可以在客户端代码的任何位置调用。
 
+<<<<<<< HEAD
 在 `<form>` 之外使用 Server Action 时，调用 Server Action 时请使用 [transition](/reference/react/useTransition)，这允许显示加载指示器、显示 [乐观状态更新](/reference/react/useOptimistic) 和处理意外错误。表单会自动在 transition 中包装 Server Action。
+=======
+When using a Server Action outside of a [form](/reference/react-dom/components/form), call the Server Action in a [Transition](/reference/react/useTransition), which allows you to display a loading indicator, show [optimistic state updates](/reference/react/useOptimistic), and handle unexpected errors. Forms will automatically wrap Server Actions in transitions.
+>>>>>>> 9b4de7ceb504619b78d6043d0f90a5e85c22544c
 
 ```js {9-12}
 import incrementLike from './actions';
