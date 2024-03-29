@@ -57,9 +57,15 @@ function TodosApp() {
 
 * 如果在重新渲染时传入一个不同的 `subscribe` 函数，React 会用新传入的 `subscribe` 函数重新订阅该 store。你可以通过在组件外声明 `subscribe` 来避免。
 
+<<<<<<< HEAD
 * 如果在 [非阻塞 transition 更新](/reference/react/useTransition) 过程中更改了 store，React 将会回退并将该更新视为阻塞更新。具体来说，在每次 transition 更新时，React 将在将更改应用到 DOM 之前第二次调用 `getSnapshot`。如果它返回的值与最初调用时不同，React 将重新从头开始进行更新，这次将其作为阻塞更新应用，以确保屏幕上的每个组件都反映 store 的相同版本。
 
 * 不建议根据 `useSyncExternalStore` 返回的 store 值暂停渲染。原因是对外部 store 的变更无法 [被标记为非阻塞 transition 更新](/reference/react/useTransition)，因此它们会触发最近的 [`Suspense` 后备方案](/reference/react/Suspense)，用加载旋转器替换已经呈现在屏幕上的内容，通常会导致较差的用户体验。
+=======
+* If the store is mutated during a [non-blocking Transition update](/reference/react/useTransition), React will fall back to performing that update as blocking. Specifically, for every Transition update, React will call `getSnapshot` a second time just before applying changes to the DOM. If it returns a different value than when it was called originally, React will restart the update from scratch, this time applying it as a blocking update, to ensure that every component on screen is reflecting the same version of the store.
+
+* It's not recommended to _suspend_ a render based on a store value returned by `useSyncExternalStore`. The reason is that mutations to the external store cannot be marked as [non-blocking Transition updates](/reference/react/useTransition), so they will trigger the nearest [`Suspense` fallback](/reference/react/Suspense), replacing already-rendered content on screen with a loading spinner, which typically makes a poor UX.
+>>>>>>> 307679521bb050565a6a8bdf807f94a919998504
 
   例如，以下操作是不建议的：
 

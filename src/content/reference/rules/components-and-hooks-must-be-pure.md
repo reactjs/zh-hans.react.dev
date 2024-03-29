@@ -3,7 +3,7 @@ title: Components and Hooks must be pure
 ---
 
 <Intro>
-Pure functions only perform a calculation and nothing more. It makes your code easier to understand, debug, and allows React to automatically optimize your components and hooks correctly.
+Pure functions only perform a calculation and nothing more. It makes your code easier to understand, debug, and allows React to automatically optimize your components and Hooks correctly.
 </Intro>
 
 <Note>
@@ -18,7 +18,7 @@ One of the key concepts that makes React, _React_ is _purity_. A pure component 
 
 * **Idempotent** – You [always get the same result everytime](/learn/keeping-components-pure#purity-components-as-formulas) you run it with the same inputs – props, state, context for component inputs; and arguments for hook inputs.
 * **Has no side effects in render** – Code with side effects should run [**separately from rendering**](#how-does-react-run-your-code). For example as an [event handler](/learn/responding-to-events) – where the user interacts with the UI and causes it to update; or as an [Effect](/reference/react/useEffect) – which runs after render.
-* **Does not mutate non-local values**: Components and hooks should [never modify values that aren't created locally](#mutation) in render.
+* **Does not mutate non-local values**: Components and Hooks should [never modify values that aren't created locally](#mutation) in render.
 
 When render is kept pure, React can understand how to prioritize which updates are most important for the user to see first. This is made possible because of render purity: since components don't have side effects [in render](#how-does-react-run-your-code), React can pause rendering components that aren't as important to update, and only come back to them later when it's needed.
 
@@ -28,7 +28,7 @@ Concretely, this means that rendering logic can be run multiple times in a way t
 
 React is declarative: you tell React _what_ to render, and React will figure out _how_ best to display it to your user. To do this, React has a few phases where it runs your code. You don't need to know about all of these phases to use React well. But at a high level, you should know about what code runs in _render_, and what runs outside of it.
 
-_Rendering_ refers to calculating what the next version of your UI should look like. After rendering, [Effects](/reference/react/useEffect) are _flushed_ (meaning they are run until there are no more left) and may update the calculation if the Effects have impacts on layout. React takes this new calculation and compares it to the calulation used to create the previous version of your UI, then _commits_ just the minimum changes needed to the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) (what your user actually sees) to catch it up to the latest version.
+_Rendering_ refers to calculating what the next version of your UI should look like. After rendering, [Effects](/reference/react/useEffect) are _flushed_ (meaning they are run until there are no more left) and may update the calculation if the Effects have impacts on layout. React takes this new calculation and compares it to the calculation used to create the previous version of your UI, then _commits_ just the minimum changes needed to the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) (what your user actually sees) to catch it up to the latest version.
 
 <DeepDive>
 
@@ -68,7 +68,7 @@ function Dropdown() {
 
 ---
 
-## Components and hooks must be idempotent {/*components-and-hooks-must-be-idempotent*/}
+## Components and Hooks must be idempotent {/*components-and-hooks-must-be-idempotent*/}
 
 Components must always return the same output with respect to their inputs – props, state, and context. This is known as _idempotency_. [Idempotency](https://en.wikipedia.org/wiki/Idempotence) is a term popularized in functional programming. It refers to the idea that you [always get the same result everytime](learn/keeping-components-pure) you run that piece of code with the same inputs.
 
@@ -307,7 +307,7 @@ function useIconStyle(icon) {
 }
 ```
 
-If you were to mutate the hooks arguments, the custom hook's memoization will become incorrect,  so it's important to avoid doing that.
+If you were to mutate the Hooks arguments, the custom hook's memoization will become incorrect,  so it's important to avoid doing that.
 
 ```js {4}
 style = useIconStyle(icon);         // `style` is memoized based on `icon`
@@ -321,7 +321,7 @@ icon = { ...icon, enabled: false }; // Good: ✅ make a copy instead
 style = useIconStyle(icon);         // new value of `style` is calculated
 ```
 
-Similarly, it's important to not modify the return values of hooks, as they may have been memoized.
+Similarly, it's important to not modify the return values of Hooks, as they may have been memoized.
 
 ---
 

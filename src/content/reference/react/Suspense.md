@@ -1348,7 +1348,11 @@ input { margin: 10px; }
 
 <Note>
 
+<<<<<<< HEAD
 延迟值和 [transition](#preventing-already-revealed-content-from-hiding) 都可以让你避免显示 Suspense 后备方案，而是使用内联指示器。transition 将整个更新标记为非紧急的，因此它们通常由框架和路由库用于导航。另一方面，延迟值在你希望将 UI 的一部分标记为非紧急，并让它“落后于” UI 的其余部分时非常有用。
+=======
+Both deferred values and [Transitions](#preventing-already-revealed-content-from-hiding) let you avoid showing Suspense fallback in favor of inline indicators. Transitions mark the whole update as non-urgent so they are typically used by frameworks and router libraries for navigation. Deferred values, on the other hand, are mostly useful in application code where you want to mark a part of UI as non-urgent and let it "lag behind" the rest of the UI.
+>>>>>>> 307679521bb050565a6a8bdf807f94a919998504
 
 </Note>
 
@@ -1727,7 +1731,11 @@ main {
 
 当你按下按钮时，`Router` 组件渲染了 `ArtistPage` 而不是 `IndexPage`。因为 `ArtistPage` 内部的一个组件被挂起，所以最近的 Suspense 边界开始显示后备方案。最近的 Suspense 边界在根附近，所以整个站点布局被 `BigSpinner` 替换了。
 
+<<<<<<< HEAD
 为了阻止这种情况，你可以使用 [`startTransition`](/reference/react/startTransition) 将导航状态更新标记为 **transition**：
+=======
+To prevent this, you can mark the navigation state update as a *Transition* with [`startTransition`:](/reference/react/startTransition)
+>>>>>>> 307679521bb050565a6a8bdf807f94a919998504
 
 ```js {5,7}
 function Router() {
@@ -1741,7 +1749,11 @@ function Router() {
   // ...
 ```
 
+<<<<<<< HEAD
 这告诉 React 此 state transition 是不紧急的，最好继续显示上一页，而不是隐藏任何已经显示的内容。现在点击按钮并等待 `Biography` 加载：
+=======
+This tells React that the state Transition is not urgent, and it's better to keep showing the previous page instead of hiding any already revealed content. Now clicking the button "waits" for the `Biography` to load:
+>>>>>>> 307679521bb050565a6a8bdf807f94a919998504
 
 <Sandpack>
 
@@ -2112,19 +2124,33 @@ main {
 
 </Sandpack>
 
+<<<<<<< HEAD
 transition 并不会等待 **所有** 内容加载完成。它只会等待足够长的时间，以避免隐藏已经显示的内容。例如，网站 `Layout` 已经显示，所以将其隐藏在加载中指示器后面是不好的。然而，`Albums` 周围的嵌套 `Suspense` 边界是新出现的，所以 transition 不会等待它。
 
 <Note>
 
 启用了 Suspense 的路由在默认情况下会将导航更新包装至 transition 中。
+=======
+A Transition doesn't wait for *all* content to load. It only waits long enough to avoid hiding already revealed content. For example, the website `Layout` was already revealed, so it would be bad to hide it behind a loading spinner. However, the nested `Suspense` boundary around `Albums` is new, so the Transition doesn't wait for it.
+
+<Note>
+
+Suspense-enabled routers are expected to wrap the navigation updates into Transitions by default.
+>>>>>>> 307679521bb050565a6a8bdf807f94a919998504
 
 </Note>
 
 ---
 
+<<<<<<< HEAD
 ### 表明 transition 正在发生 {/*indicating-that-a-transition-is-happening*/}
 
 在上面的例子中，当你点击按钮，没有任何视觉指示表明导航正在进行。为了添加指示器，你可以用 [`useTransition`](/reference/react/useTransition) 替换 [`startTransition`](/reference/react/startTransition)，它会给你一个布尔值 `isPending`。在下面的例子中，它被用于当 transition 发生时改变网站头部的样式：
+=======
+### Indicating that a Transition is happening {/*indicating-that-a-transition-is-happening*/}
+
+In the above example, once you click the button, there is no visual indication that a navigation is in progress. To add an indicator, you can replace [`startTransition`](/reference/react/startTransition) with [`useTransition`](/reference/react/useTransition) which gives you a boolean `isPending` value. In the example below, it's used to change the website header styling while a Transition is happening:
+>>>>>>> 307679521bb050565a6a8bdf807f94a919998504
 
 <Sandpack>
 
@@ -2502,13 +2528,21 @@ main {
 
 ### 在导航时重置 Suspense 边界 {/*resetting-suspense-boundaries-on-navigation*/}
 
+<<<<<<< HEAD
 在 transition 发生时，React 将避免隐藏已经显示的内容。但是，如果你导航到具有不同参数的路由，你可能想告诉 React 它是 **不同** 的内容。你可以用 `key` 表示这一点：
+=======
+During a Transition, React will avoid hiding already revealed content. However, if you navigate to a route with different parameters, you might want to tell React it is *different* content. You can express this with a `key`:
+>>>>>>> 307679521bb050565a6a8bdf807f94a919998504
 
 ```js
 <ProfilePage key={queryParams.id} />
 ```
 
+<<<<<<< HEAD
 想想在用户的个人资料页面中导航，然后暂停了。如果更新被包装在 transition 中，它将不会触发已经可见内容的后备方案。这是预期的行为。
+=======
+Imagine you're navigating within a user's profile page, and something suspends. If that update is wrapped in a Transition, it will not trigger the fallback for already visible content. That's the expected behavior.
+>>>>>>> 307679521bb050565a6a8bdf807f94a919998504
 
 然而，现在想象一下你在两个不同的用户资料之间导航。在这种情况下，显示后备方案是有意义的。例如，一个用户的时间线是与另一个用户的时间线是 **不同的内容**。通过指定一个 `key`，你可以确保 React 将不同用户的个人资料视为不同的组件，并在导航期间重置 Suspense 边界。集成 Suspense 的路由应该自动执行此操作。
 
@@ -2545,7 +2579,11 @@ function Chat() {
 
 使用后备方案替换一个可见的 UI 会带来令人不快的用户体验。当一个更新导致一个组件被挂起时，而最近的 Suspense 边界已经向用户显示了内容时，这种情况可能发生。
 
+<<<<<<< HEAD
 为了防止这种情况发生，[使用 `startTransition` 将更新标记为非紧急的](#preventing-already-revealed-content-from-hiding)。在 transition 期间，React 将等待足够的数据加载，以防止不需要的后备方案出现：
+=======
+To prevent this from happening, [mark the update as non-urgent using `startTransition`](#preventing-already-revealed-content-from-hiding). During a Transition, React will wait until enough data has loaded to prevent an unwanted fallback from appearing:
+>>>>>>> 307679521bb050565a6a8bdf807f94a919998504
 
 ```js {2-3,5}
 function handleNextPageClick() {
