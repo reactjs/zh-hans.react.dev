@@ -1824,7 +1824,7 @@ button { margin-left: 10px; }
 
 <Note>
 
-如果你的组件不与任何外部系统同步，[你可能不需要 effect ](/learn/you-might-not-need-an-effect)。
+如果你的组件不与任何外部系统同步，[你可能不需要 Effect ](/learn/you-might-not-need-an-effect)。
 
 </Note>
 

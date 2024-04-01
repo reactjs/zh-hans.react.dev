@@ -51,17 +51,10 @@ flushSync(() => {
 
 #### 注意 {/*caveats*/}
 
-<<<<<<< HEAD
 * `flushSync` 可能会严重影响性能，因此请谨慎使用。
 * `flushSync` 可能会强制挂起的 Suspense 边界显示其 `fallback` 状态。
 * `flushSync` 可能会在返回之前运行挂起的 Effect，并同步应用其包含的任何更新。
 * `flushSync` 可能会在必要时刷新回调函数之外的更新，以便刷新回调函数内部的更新。例如，如果有来自点击事件的挂起更新，React 可能会在刷新回调函数内部的更新之前刷新这些更新。
-=======
-* `flushSync` can significantly hurt performance. Use sparingly.
-* `flushSync` may force pending Suspense boundaries to show their `fallback` state.
-* `flushSync` may run pending Effects and synchronously apply any updates they contain before returning.
-* `flushSync` may flush updates outside the callback when necessary to flush the updates inside the callback. For example, if there are pending updates from a click, React may flush those before flushing the updates inside the callback.
->>>>>>> 97489434323b0c4cce78588cd0f48e3808e0eba4
 
 ---
 

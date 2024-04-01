@@ -66,15 +66,9 @@ function AppRoot() {
 
 #### 注意 {/*caveats*/}
 
-<<<<<<< HEAD
 * 对于具有相同 `href` 的多个 `preinit` 调用具有与单个调用相同的效果。
 * 在浏览器中，可以在任何情况下调用 `preinit`：例如渲染组件时、Effect 中以及事件处理程序中等等。
 * 在服务器端渲染或渲染服务器组件时，只有在渲染组件时调用 `preinit` 或在源自渲染组件的异步上下文中调用时，`preinit` 才会生效。其他任何调用都将被忽略。
-=======
-* Multiple calls to `preinit` with the same `href` have the same effect as a single call.
-* In the browser, you can call `preinit` in any situation: while rendering a component, in an Effect, in an event handler, and so on.
-* In server-side rendering or when rendering Server Components, `preinit` only has an effect if you call it while rendering a component or in an async context originating from rendering a component. Any other calls will be ignored.
->>>>>>> 97489434323b0c4cce78588cd0f48e3808e0eba4
 
 ---
 

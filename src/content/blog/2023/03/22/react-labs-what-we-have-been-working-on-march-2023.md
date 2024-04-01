@@ -87,9 +87,9 @@ React 的核心思想是开发人员将其 UI 定义为当前状态的函数。�
 
 自上次更新以来，我们在 Meta 的 React Native 应用程序上测试了一个实验性的预渲染版本，包括 Android 和 iOS，性能表现良好。我们还改进了离屏渲染与 Suspense 的配合方式——在离屏树中挂起（suspend）但不会触发 Suspense 后备方案。我们剩下的工作是完成向库开发人员公开的基本组件。我们预计将于今年晚些时候发布一个 RFC，同时发布一个实验性的 API 用于测试和反馈。
 
-## 追踪 transition {/*transition-tracing*/}
+## 追踪 Transition {/*transition-tracing*/}
 
-追踪 transition 的 API 可以检测 [React transition](/reference/react/useTransition) 变慢的原因，并调查为什么会变慢。在上次更新后，我们完成了 API 的初始设计，并发布了一个 [RFC](https://github.com/reactjs/rfcs/pull/238)，基本功能也已经实现。该项目目前处于暂停状态。我们欢迎对 RFC 进行反馈，并期待恢复其开发，为 React 提供更好的性能测量工具。这将特别对基于 React transition 构建的路由非常有用，例如 [Next.js App Router](/learn/start-a-new-react-project#nextjs-app-router)。
+追踪 Transition 的 API 可以检测 [React Transition](/reference/react/useTransition) 变慢的原因，并调查为什么会变慢。在上次更新后，我们完成了 API 的初始设计，并发布了一个 [RFC](https://github.com/reactjs/rfcs/pull/238)，基本功能也已经实现。该项目目前处于暂停状态。我们欢迎对 RFC 进行反馈，并期待恢复其开发，为 React 提供更好的性能测量工具。这将特别对基于 React Transition 构建的路由非常有用，例如 [Next.js App Router](/learn/start-a-new-react-project#nextjs-app-router)。
 
 * * *
 除了这个更新，我们的团队最近还在社区播客和直播中客串，更多地讲述我们的工作并回答问题。

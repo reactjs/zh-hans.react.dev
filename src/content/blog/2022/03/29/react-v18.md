@@ -144,7 +144,7 @@ startTransition(() => {
 
 并发渲染中将会加入过渡更新，允许更新被中断。如果更新内容被重新挂起，过渡机制也会告诉 React 在后台渲染过渡内容时继续展示当前内容（查看 [Suspense 意见征求](https://github.com/reactjs/rfcs/blob/main/text/0213-suspense-in-react-18.md) 了解更多信息）。
 
-[更多内容请参阅 transition 相关的文档](/reference/react/useTransition)。
+[更多内容请参阅 Transition 相关的文档](/reference/react/useTransition)。
 
 ### 新的 Suspense 特性 {/*new-suspense-features*/}
 
@@ -162,7 +162,7 @@ Suspense 使得“UI 加载状态”成为了 React 编程模型中最高级的�
 
 在 React 18 中，我们已经支持了服务端 Suspense，并且使用并发渲染特性扩展了其功能。
 
-React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你在 transition 期间挂起，React 不会让已显示的内容被后备方案取代。相反，React 会延迟渲染，直到有足够的数据，以防止出现加载状态错误。
+React 18 中的 Suspense 在与 Transition API 结合时效果最好。如果你在 Transition 期间挂起，React 不会让已显示的内容被后备方案取代。相反，React 会延迟渲染，直到有足够的数据，以防止出现加载状态错误。
 
 更多内容参见 [React 18 中的 Suspense](https://github.com/reactjs/rfcs/blob/main/text/0213-suspense-in-react-18.md) 的意见征求。
 
@@ -204,8 +204,8 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 
 ```
 * React 装载组件
-  * layout effect 创建
-  * effect 创建
+  * layout Effect 创建
+  * Effect 创建
 ```
 
 
@@ -213,14 +213,14 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 
 ```
 * React 挂载组件
-  * layout effect 创建
-  * effect 创建
+  * layout Effect 创建
+  * Effect 创建
 * React 模拟卸载组件
-  * layout effect 销毁
-  * effect 销毁
+  * layout Effect 销毁
+  * Effect 销毁
 * React 模拟挂载组件，并复用之前的状态
-  * layout effect 创建
-  * effect 创建
+  * layout Effect 创建
+  * Effect 创建
 ```
 
 [参阅确保状态可复用的文档](/reference/react/StrictMode#fixing-bugs-found-by-re-running-effects-in-development)。
@@ -253,7 +253,7 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 
 #### useInsertionEffect {/*useinsertioneffect*/}
 
-`useInsertionEffect` 是一个新的 Hook ，允许 CSS-in-JS 库解决在渲染中注入样式的性能问题。除非你已经建立了一个 CSS-in-JS 库，否则我们不希望你使用它。这个 Hook 将在 DOM 变更发生后，在 layout effect 获取新布局之前运行。这个功能不仅解决了一个在 React 17 及以下版本中已经存在的问题，而且在 React 18 中更加重要，因为 React 在并发渲染时会为浏览器让步，给它一个重新计算布局的机会。[参阅文档](/reference/react/useInsertionEffect)。
+`useInsertionEffect` 是一个新的 Hook ，允许 CSS-in-JS 库解决在渲染中注入样式的性能问题。除非你已经建立了一个 CSS-in-JS 库，否则我们不希望你使用它。这个 Hook 将在 DOM 变更发生后，在 layout Effect 获取新布局之前运行。这个功能不仅解决了一个在 React 17 及以下版本中已经存在的问题，而且在 React 18 中更加重要，因为 React 在并发渲染时会为浏览器让步，给它一个重新计算布局的机会。[参阅文档](/reference/react/useInsertionEffect)。
 
 > Note
 >
@@ -273,7 +273,7 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 * 添加 `startTransition` 作为 `useTransition` 的一个版本，不需要等待反馈。 ([#19696](https://github.com/facebook/react/pull/19696) [@rickhanlonii](https://github.com/rickhanlonii))
 * 添加 `useInsertionEffect` 用于 CSS-in-JS 库。([#21913](https://github.com/facebook/react/pull/21913) [@rickhanlonii](https://github.com/rickhanlonii))
 * 当内容重新出现时，使 Suspense 重新装载 layout effect。([#19322](https://github.com/facebook/react/pull/19322)，[#19374](https://github.com/facebook/react/pull/19374)，[#19523](https://github.com/facebook/react/pull/19523)，[#20625](https://github.com/facebook/react/pull/20625)，[#21079](https://github.com/facebook/react/pull/21079) [@acdlite](https://github.com/acdlite)，[@bvaughn](https://github.com/bvaughn)，and [@lunaruan](https://github.com/lunaruan))
-* 使 `<StrictMode>` 重新运行 effect 以检查可恢复的状态。([#19523](https://github.com/facebook/react/pull/19523) ，[#21418](https://github.com/facebook/react/pull/21418) [@bvaughn](https://github.com/bvaughn) and [@lunaruan](https://github.com/lunaruan))
+* 使 `<StrictMode>` 重新运行 Effect 以检查可恢复的状态。([#19523](https://github.com/facebook/react/pull/19523) ，[#21418](https://github.com/facebook/react/pull/21418) [@bvaughn](https://github.com/bvaughn) and [@lunaruan](https://github.com/lunaruan))
 * 假设 `Symbols` 总是可用的。([#23348](https://github.com/facebook/react/pull/23348) [@sebmarkbage](https://github.com/sebmarkbage))
 * 移除 `object-assign` polyfill。([#23351](https://github.com/facebook/react/pull/23351) [@sebmarkbage](https://github.com/sebmarkbage))
 * 移除不支持的 `unstable_changedBits` API。([#20953](https://github.com/facebook/react/pull/20953) [@acdlite](https://github.com/acdlite))
@@ -325,7 +325,7 @@ React 18 中的 Suspense 在与 transition API 结合时效果最好。如果你
 * 支持使用 `global.IS_REACT_ACT_ENVIRONMENT` 禁用 act 警告。 ([#22561](https://github.com/facebook/react/pull/22561) [@acdlite](https://github.com/acdlite))
 * 扩大 act 警告，以覆盖所有可能预计 React 工作的 API。([#22607](https://github.com/facebook/react/pull/22607) [@acdlite](https://github.com/acdlite))
 * 使 act 批量更新。([#21797](https://github.com/facebook/react/pull/21797) [@acdlite](https://github.com/acdlite))
-* 移除对被挂起的 effect 的警告。([#22609](https://github.com/facebook/react/pull/22609) [@acdlite](https://github.com/acdlite))
+* 移除对被挂起的 Effect 的警告。([#22609](https://github.com/facebook/react/pull/22609) [@acdlite](https://github.com/acdlite))
 
 ### React Refresh {/*react-refresh*/}
 
