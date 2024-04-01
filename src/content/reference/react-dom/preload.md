@@ -69,11 +69,19 @@ function AppRoot() {
 
 #### 注意 {/*caveats*/}
 
+<<<<<<< HEAD
 * 对 `preload` 的多个等效调用与单个调用具有相同的效果。根据以下规则，对 `preload` 的调用被视为等效：
   * 如果两个调用具有相同的 `href`，则它们是等效的，除非：
   * 如果 `as` 设置为 `image`，并且两个调用具有相同的 `href`、`imageSrcSet` 和 `imageSizes`，则它们是等效的。
 * 在浏览器中，可以在任何情况下调用 `preload`：例如渲染组件时、Effect 中以及事件处理程序中等等。
 * 在服务器端渲染或渲染服务器组件时，只有在渲染组件时调用 `preload` 或在源自渲染组件的异步上下文中调用时，`preload` 才会生效。其他任何调用都将被忽略。
+=======
+* Multiple equivalent calls to `preload` have the same effect as a single call. Calls to `preload` are considered equivalent according to the following rules:
+  * Two calls are equivalent if they have the same `href`, except:
+  * If `as` is set to `image`, two calls are equivalent if they have the same `href`, `imageSrcSet`, and `imageSizes`.
+* In the browser, you can call `preload` in any situation: while rendering a component, in an Effect, in an event handler, and so on.
+* In server-side rendering or when rendering Server Components, `preload` only has an effect if you call it while rendering a component or in an async context originating from rendering a component. Any other calls will be ignored.
+>>>>>>> 97489434323b0c4cce78588cd0f48e3808e0eba4
 
 ---
 

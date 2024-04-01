@@ -10,7 +10,11 @@ title: useInsertionEffect
 
 <Intro>
 
+<<<<<<< HEAD
 `useInsertionEffect` 可以在布局副作用触发之前将元素插入到 DOM 中。
+=======
+`useInsertionEffect` allows inserting elements into the DOM before any layout Effects fire.
+>>>>>>> 97489434323b0c4cce78588cd0f48e3808e0eba4
 
 ```js
 useInsertionEffect(setup, dependencies?)
@@ -26,7 +30,11 @@ useInsertionEffect(setup, dependencies?)
 
 ### `useInsertionEffect(setup, dependencies?)` {/*useinsertioneffect*/}
 
+<<<<<<< HEAD
 调用 `useInsertionEffect` 在任何可能需要读取布局的副作用启动之前插入样式：
+=======
+Call `useInsertionEffect` to insert styles before any Effects fire that may need to read layout:
+>>>>>>> 97489434323b0c4cce78588cd0f48e3808e0eba4
 
 ```js
 import { useInsertionEffect } from 'react';
@@ -44,7 +52,13 @@ function useCSS(rule) {
 
 #### 参数 {/*parameters*/}
 
+<<<<<<< HEAD
 * `setup`：处理 Effect 的函数。setup 函数选择性返回一个 **清理（cleanup）** 函数。当你的组件添加到 DOM 中，但在任何布局触发之前，React 将运行你的 setup 函数。在每次重新渲染时，如果依赖项发生变化并且提供了 cleanup 函数，React 首先会使用旧值运行 cleanup 函数，然后使用新值运行你的 setup 函数。当你的组件从 DOM 中移除时，React 将运行你的 cleanup 函数。
+=======
+* `setup`: The function with your Effect's logic. Your setup function may also optionally return a *cleanup* function. When your component is added to the DOM, but before any layout Effects fire, React will run your setup function. After every re-render with changed dependencies, React will first run the cleanup function (if you provided it) with the old values, and then run your setup function with the new values. When your component is removed from the DOM, React will run your cleanup function.
+ 
+* **optional** `dependencies`: The list of all reactive values referenced inside of the `setup` code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is [configured for React](/learn/editor-setup#linting), it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like `[dep1, dep2, dep3]`. React will compare each dependency with its previous value using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison algorithm. If you don't specify the dependencies at all, your Effect will re-run after every re-render of the component.
+>>>>>>> 97489434323b0c4cce78588cd0f48e3808e0eba4
 
 * **可选** `dependencies`：`setup` 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 [配置了 React](/learn/editor-setup#linting)，那么它将验证是否每个响应式值都被正确地指定为依赖项。依赖列表必须具有固定数量的项，并且必须像 `[dep1, dep2, dep3]` 这样内联编写。React 将使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来比较每个依赖项和它先前的值。如果省略此参数，则将在每次重新渲染组件之后重新运行 Effect。
 
@@ -86,7 +100,7 @@ function useCSS(rule) {
 
 第一个问题无法解决，但是 `useInsertionEffect` 可以帮助你解决第二个问题。
 
-Call `useInsertionEffect` to insert the styles before any layout effects fire:
+Call `useInsertionEffect` to insert the styles before any layout Effects fire:
 
 ```js {4-11}
 // 在你的 CSS-in-JS 库中

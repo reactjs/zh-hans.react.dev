@@ -330,7 +330,11 @@ textarea { display: block; margin-top: 5px; margin-bottom: 10px; }
 
 <Pitfall>
 
+<<<<<<< HEAD
 **如果传递了 `value` 但没有传递 `onChange`，那么将无法在文本框输入任何内容**。当你通过传递 `value` 来控制文本框时，你需要保证文本框始终具有你传递的值。因此，如果你将一个 state 作为 `value` 传递，但在 `onChange` 事件处理程序中忘记同步更新该状态变量，React 将在每次插入字符后将选择框恢复到你指定的 `value`。
+=======
+**If you pass `value` without `onChange`, it will be impossible to type into the text area.** When you control a text area by passing some `value` to it, you *force* it to always have the value you passed. So if you pass a state variable as a `value` but forget to update that state variable synchronously during the `onChange` event handler, React will revert the text area after every keystroke back to the `value` that you specified.
+>>>>>>> 97489434323b0c4cce78588cd0f48e3808e0eba4
 
 </Pitfall>
 
