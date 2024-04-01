@@ -44,7 +44,7 @@ async function addToCart(data) {
 * 要从 [客户端代码](/reference/react/use-client) 导入 Server Action，必须在模块级别使用该指示符。
 * 由于底层网络调用始终是异步的，`'use server'` 只能用于异步函数。
 * 始终将 Server Action 的参数视为不受信任的输入，并授权任何变更。请参阅 [安全考虑](#security)。
-* 应在 [transition](/reference/react/useTransition) 中调用 Server Action。传递给 [`<form action>`](/reference/react-dom/components/form#props) 或 [`formAction`](/reference/react-dom/components/input#props) 的 Server Action 将自动在 transition 中被调用。
+* 应在 [transition](/reference/react/useTransition) 中调用 Server Action。传递给 [`<form action>`](/reference/react-dom/components/form#props) 或 [`formAction`](/reference/react-dom/components/input#props) 的 Server Action 将自动在 Transition 中被调用。
 * Server Action 专为更新服务器端状态的变更而设计，不建议用于数据获取。因此，实现 Server Action 的框架通常一次只处理一个 Action，没有缓存返回值的方式。
 
 ### 安全考虑 {/*security*/}
@@ -177,7 +177,7 @@ function UsernameForm() {
 
 Server Action 是暴露的服务器端点，可以在客户端代码的任何位置调用。
 
-在 `<form>` 之外使用 Server Action 时，调用 Server Action 时请使用 [transition](/reference/react/useTransition)，这允许显示加载指示器、显示 [乐观状态更新](/reference/react/useOptimistic) 和处理意外错误。表单会自动在 transition 中包装 Server Action。
+在 `<form>` 之外使用 Server Action 时，调用 Server Action 时请使用 [transition](/reference/react/useTransition)，这允许显示加载指示器、显示 [乐观状态更新](/reference/react/useOptimistic) 和处理意外错误。表单会自动在 Transition 中包装 Server Action。
 
 ```js {9-12}
 import incrementLike from './actions';

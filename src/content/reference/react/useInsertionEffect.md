@@ -86,7 +86,7 @@ function useCSS(rule) {
 
 第一个问题无法解决，但是 `useInsertionEffect` 可以帮助你解决第二个问题。
 
-Call `useInsertionEffect` to insert the styles before any layout effects fire:
+Call `useInsertionEffect` to insert the styles before any layout Effects fire:
 
 ```js {4-11}
 // 在你的 CSS-in-JS 库中

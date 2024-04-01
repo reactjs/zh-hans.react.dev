@@ -57,9 +57,9 @@ function TodosApp() {
 
 * 如果在重新渲染时传入一个不同的 `subscribe` 函数，React 会用新传入的 `subscribe` 函数重新订阅该 store。你可以通过在组件外声明 `subscribe` 来避免。
 
-* 如果在 [非阻塞 transition 更新](/reference/react/useTransition) 过程中更改了 store，React 将会回退并将该更新视为阻塞更新。具体来说，在每次 transition 更新时，React 将在将更改应用到 DOM 之前第二次调用 `getSnapshot`。如果它返回的值与最初调用时不同，React 将重新从头开始进行更新，这次将其作为阻塞更新应用，以确保屏幕上的每个组件都反映 store 的相同版本。
+* 如果在 [非阻塞 Transition 更新](/reference/react/useTransition) 过程中更改了 store，React 将会回退并将该更新视为阻塞更新。具体来说，在每次 Transition 更新时，React 将在将更改应用到 DOM 之前第二次调用 `getSnapshot`。如果它返回的值与最初调用时不同，React 将重新从头开始进行更新，这次将其作为阻塞更新应用，以确保屏幕上的每个组件都反映 store 的相同版本。
 
-* 不建议根据 `useSyncExternalStore` 返回的 store 值暂停渲染。原因是对外部 store 的变更无法 [被标记为非阻塞 transition 更新](/reference/react/useTransition)，因此它们会触发最近的 [`Suspense` 后备方案](/reference/react/Suspense)，用加载旋转器替换已经呈现在屏幕上的内容，通常会导致较差的用户体验。
+* 不建议根据 `useSyncExternalStore` 返回的 store 值暂停渲染。原因是对外部 store 的变更无法 [被标记为非阻塞 Transition 更新](/reference/react/useTransition)，因此它们会触发最近的 [`Suspense` 后备方案](/reference/react/Suspense)，用加载旋转器替换已经呈现在屏幕上的内容，通常会导致较差的用户体验。
 
   例如，以下操作是不建议的：
 
