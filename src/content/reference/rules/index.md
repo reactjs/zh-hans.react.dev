@@ -18,8 +18,6 @@ title: React 规则
 
 这些规则被称为 **React 规则**. 它们是规则 – 而不仅仅是指导原则 – 的意义在于，如果这些规则被违反，你的应用程序可能会有 bug。你的代码也会变得不符合 React 习惯，更难以理解和推理。
 
-我们强烈推荐使用 Strict Mode 以及 React 的 ESLint 插件 来帮助你的代码库遵循 React 规则。通过遵循 React 规则，你将能够发现并解决这些 bug，并保持你的应用程序易于维护。
-
 我们强烈推荐使用 [Strict Mode](/reference/react/StrictMode) 以及 React 的 [ESLint 插件](https://www.npmjs.com/package/eslint-plugin-react-hooks) 来帮助你的代码库遵循 React 规则。通过遵循 React 规则，你将能够发现并解决这些 bug，并保持你的应用程序易于维护。
 
 ---
@@ -28,7 +26,7 @@ title: React 规则
 
 [组件和钩子中的纯净性](/reference/rules/components-and-hooks-must-be-pure) 是 React 的一个关键规则，它使你的应用程序变得可预测、易于调试，并允许 React 自动优化你的代码。
 
-* [组件必须是幂等的](/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent) – React 组件被假定为总是针对它们的输入 – props, state, 和 context 返回相同的输出。
+* [组件必须是幂等的](/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent) – React 组件被假定为总是针对它们一样的输入 – props, state, 和 context 返回相同的输出。
 * [副作用必须在渲染之外运行](/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render) – 副作用不应该在渲染中运行，因为 React 可能会多次渲染组件以创建最佳的用户体验。
 * [属性和状态是不可变的](/reference/rules/components-and-hooks-must-be-pure#props-and-state-are-immutable) – 一个组件的属性和状态是针对单次渲染的不可变快照。永远不要直接修改它们。
 * [钩子的返回值和参数是不可变的](/reference/rules/components-and-hooks-must-be-pure#return-values-and-arguments-to-hooks-are-immutable) – 一旦值被传递给钩子，你不应该修改它们。就像在 JSX 中的属性一样，值在被传递给钩子时变得不可变。
