@@ -11,7 +11,7 @@ title: React 规则
 ---
 
 <Note>
-要了解更多关于使用 React 表达 UI 的信息，我们推荐阅读 [Thinking in React](/learn/thinking-in-react)。
+要了解更多关于使用 React 表达 UI 的信息，我们推荐阅读 [React 哲学](/learn/thinking-in-react)。
 </Note>
 
 本节描述了您需要遵循的规则，以编写符合 React 习惯的代码。编写符合 React 习惯的代码可以帮助您编写组织良好、安全、可组合的应用程序。这些属性使您的应用程序更加适应变化，并且使得与其他开发人员、库和工具合作更加容易。
