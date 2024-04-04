@@ -47,7 +47,7 @@ title: React 规则
 
 ## Hooks 的规则 {/*rules-of-hooks*/}
 
-钩子使用 JavaScript 函数定义，但它们代表一种特殊的可重用 UI 逻辑，并且它们在调用位置有限制。当你使用钩子时，需要遵循 [Hooks 的规则](/reference/rules/rules-of-hooks)。
+钩子使用 JavaScript 函数定义，但它们代表一种特殊的可重用 UI 逻辑，并且它们在调用位置上有限制。当你使用钩子时，需要遵循 [Hooks 的规则](/reference/rules/rules-of-hooks)。
 
 * [只在顶层调用钩子](/reference/rules/rules-of-hooks#only-call-hooks-at-the-top-level) – 不要在循环、条件或嵌套函数中调用钩子。相反，总是在你的 React 函数的顶层使用钩子，并且在任何早期返回之前使用。
 * [只在 React 函数中调用钩子](/reference/rules/rules-of-hooks#only-call-hooks-from-react-functions) – 不要从常规 JavaScript 函数中调用钩子。
