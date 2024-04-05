@@ -3,21 +3,21 @@ title: Hooks 规则
 ---
 
 <Intro>
-Hooks 是通过 JavaScript 函数定义的, 代表了一种特殊的可重用的 UI 逻辑，它们的调用位置有一定的限制。
+Hooks 是通过 JavaScript 函数定义的, 但它们代表了一种特殊的可重用的 UI 逻辑，并且对它们的调用位置有限制。
 </Intro>
 
 <InlineToc />
 
 ---
 
-## 只能在顶层调用 Hooks {/*only-call-hooks-at-the-top-level*/}
+## 只在顶层调用 Hooks {/*only-call-hooks-at-the-top-level*/}
 
 名称以 `use` 开头的函数在 React 中被称为 [*Hooks*](/reference/react) 。
 
-**不要在循环、条件、嵌套函数或 `try`/`catch`/`finally` 块中调用 Hooks ** 相反，你应该在 React 函数的顶层使用 Hooks ，并且在任何提前返回之前。且你只能在 React 函数组件中调用 Hooks ：
+** 不要在循环、条件、嵌套函数或 `try`/`catch`/`finally` 块中调用 Hooks ** 相反，你应该在 React 函数的顶层调用 Hooks ，并且在任何提前返回之前。你只能在 React 渲染函数组件时调用 Hooks ：
 
-* ✅ 在[函数组件](/learn/your-first-component)的顶层调用它们。
-* ✅ 在[自定义 Hooks ](/learn/reusing-logic-with-custom-hooks)的顶层调用它们。
+* ✅ 在[函数组件](/learn/your-first-component)的顶层调用 Hooks 。
+* ✅ 在[自定义 Hooks ](/learn/reusing-logic-with-custom-hooks)的顶层调用 Hooks 。
 
 ```js{2-3,8-9}
 function Counter() {
@@ -117,7 +117,7 @@ function Bad() {
 
 ## 只在 React 函数中调用 Hooks {/*only-call-hooks-from-react-functions*/}
 
-不要在常规 JavaScript 函数中调用 Hooks 。相反，你可以：
+不要在常规的 JavaScript 函数中调用 Hooks 。相反，你可以：
 
 ✅ 在 React 函数组件中调用 Hooks 。
 ✅ 在 [自定义 Hooks ](/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component) 中调用 Hooks 。
