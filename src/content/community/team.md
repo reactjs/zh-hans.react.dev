@@ -66,6 +66,10 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Ricky 主修理论数学，然而他却在 React Native 团队工作了几年，之后又加入了 React 团队。当他不在编程时，你可以找到他在滑雪，骑自行车，攀岩，打高尔夫球，或者在 GitHub 上关闭一些不符合问题模板的问题。
 </TeamMember>
 
+<TeamMember name="Ruslan Lesiutin" permalink="ruslan-lesiutin" photo="/images/team/lesiutin.jpg" github="hoxyq" twitter="ruslanlesiutin" threads="lesiutin" title="Engineer at Meta">
+    Ruslan's introduction to UI programming started when he was a kid by manually editing HTML templates for his custom gaming forums. Somehow, he ended up majoring in Computer Science. He enjoys music, games, and memes. Mostly memes.
+</TeamMember>
+
 <TeamMember name="Sathya Gunasekaran " permalink="sathya-gunasekaran" photo="/images/team/sathya.jpg" github="gsathya" twitter="_gsathya" threads="gsathya.03" title="Engineer at Meta">
     尽管 Sathya 在学校时对《龙书》并无好感，但奇妙的是，他的整个职业生涯都与编译器紧密相连。当他不忙于编译 React 组件的时候，他可能正品尝一杯咖啡，或者正在享受又一份美味的 Dosa。
 </TeamMember>
