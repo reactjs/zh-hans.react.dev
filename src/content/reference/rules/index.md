@@ -26,7 +26,7 @@ title: React 规则
 
 [组件和 Hook 中的纯净性](/reference/rules/components-and-hooks-must-be-pure) 是 React 的一个关键规则，它使你的应用程序变得可预测、易于调试，并允许 React 自动优化你的代码。
 
-* [组件必须是幂等的](/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent)——React 组件被假定为总是针对它们一样的输入——props,state,和 context 返回相同的输出。
+* [组件必须是幂等的](/reference/rules/components-and-hooks-must-be-pure#components-and-hooks-must-be-idempotent)——React 组件被假定为总是针对它们一样的输入——props、state 和 context 返回相同的输出。
 * [副作用必须在渲染之外运行](/reference/rules/components-and-hooks-must-be-pure#side-effects-must-run-outside-of-render)——副作用不应该在渲染中运行，因为 React 可能会多次渲染组件以创建最佳的用户体验。
 * [属性和状态是不可变的](/reference/rules/components-and-hooks-must-be-pure#props-and-state-are-immutable)——一个组件的属性和状态是针对单次渲染的不可变快照。永远不要直接修改它们。
 * [Hook 的返回值和参数是不可变的](/reference/rules/components-and-hooks-must-be-pure#return-values-and-arguments-to-hooks-are-immutable)——一旦值被传递给 Hook，你不应该修改它们。就像在 JSX 中的属性一样，值在被传递给 Hook 时变得不可变。
