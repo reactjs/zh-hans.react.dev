@@ -14,10 +14,10 @@ Hook 是通过 JavaScript 函数定义的，但它们代表了一种特殊的可
 
 名称以 `use` 开头的函数在 React 中被称为 **[Hook](/reference/react)**。
 
-**不要在循环、条件、嵌套函数或 `try`/`catch`/`finally` 块中调用 Hook** 相反，你应该在 React 函数的顶层调用 Hook，并且在任何提前返回之前。你只能在 React 渲染函数组件时调用 Hook：
+**不要在循环、条件、嵌套函数或 `try`/`catch`/`finally` 块中调用 Hook**。相反，你应该在 React 函数的顶层调用 Hook，并且在任何提前返回之前。你只能在 React 渲染函数组件时调用 Hook：
 
-* ✅ 在[函数组件](/learn/your-first-component)的顶层调用 Hook。
-* ✅ 在[自定义 Hook](/learn/reusing-logic-with-custom-hooks)的顶层调用 Hook。
+* ✅ 在 [函数组件](/learn/your-first-component) 的顶层调用 Hook。
+* ✅ 在 [自定义 Hook](/learn/reusing-logic-with-custom-hooks) 的顶层调用 Hook。
 
 ```js{2-3,8-9}
 function Counter() {
