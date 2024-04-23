@@ -3,7 +3,7 @@ title: Hook 规则
 ---
 
 <Intro>
-Hook 是通过 JavaScript 函数定义的, 但它们代表了一种特殊的可重用的 UI 逻辑，并且对它们的调用位置有限制。
+Hook 是通过 JavaScript 函数定义的，但它们代表了一种特殊的可重用的 UI 逻辑，并且对它们的调用位置有限制。
 </Intro>
 
 <InlineToc />
