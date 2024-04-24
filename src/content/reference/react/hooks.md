@@ -106,6 +106,7 @@ function TodoList({ todos, tab, theme }) {
 
 ---
 
+<<<<<<< HEAD
 ## 资源 Hook {/*resource-hooks*/}
 
 资源可以被组件访问，而无需将它们作为状态的一部分。例如，组件可以从 Promise 中读取消息，或从上下文中读取样式信息。
@@ -125,6 +126,9 @@ function MessageComponent({ messagePromise }) {
 ---
 
 ## 其他 Hook {/*other-hooks*/}
+=======
+## Other Hooks {/*other-hooks*/}
+>>>>>>> 9fb2f0dd12ef0babc9dc30c0eb984e49a94a9a20
 
 这些 Hook 主要适用于库作者，不常在应用程序代码中使用。
 
