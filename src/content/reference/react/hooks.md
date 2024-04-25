@@ -106,6 +106,7 @@ function TodoList({ todos, tab, theme }) {
 
 ---
 
+<<<<<<< HEAD
 ## 资源 Hook {/*resource-hooks*/}
 
 资源可以被组件访问，而无需将它们作为状态的一部分。例如，组件可以从 Promise 中读取消息，或从上下文中读取样式信息。
@@ -125,12 +126,22 @@ function MessageComponent({ messagePromise }) {
 ---
 
 ## 其他 Hook {/*other-hooks*/}
+=======
+## Other Hooks {/*other-hooks*/}
+>>>>>>> 64beb657a2c3c0b102862509ebb8cf599f7cafd5
 
 这些 Hook 主要适用于库作者，不常在应用程序代码中使用。
 
+<<<<<<< HEAD
 - 使用 [`useDebugValue`](/reference/react/useDebugValue) 自定义 React 开发者工具为自定义 Hook 添加的标签。
 - 使用 [`useId`](/reference/react/useId) 将唯一的 ID 与组件相关联，其通常与可访问性 API 一起使用。
 - 使用 [`useSyncExternalStore`](/reference/react/useSyncExternalStore) 订阅外部 store。
+=======
+- [`useDebugValue`](/reference/react/useDebugValue) lets you customize the label React DevTools displays for your custom Hook.
+- [`useId`](/reference/react/useId) lets a component associate a unique ID with itself. Typically used with accessibility APIs.
+- [`useSyncExternalStore`](/reference/react/useSyncExternalStore) lets a component subscribe to an external store.
+* [`useActionState`](/reference/react/useActionState) allows you to manage state of actions.
+>>>>>>> 64beb657a2c3c0b102862509ebb8cf599f7cafd5
 
 ---
 

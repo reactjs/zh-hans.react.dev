@@ -133,7 +133,11 @@ export default function App() {
 
 在用户名请求表单中，可能存在用户名不可用的情况。`requestUsername` 应该告诉我们它是否失败。
 
+<<<<<<< HEAD:src/content/reference/react/use-server.md
 请使用 [`useFormState`](/reference/react-dom/hooks/useFormState) 以根据 Server Action 的结果更新 UI 并支持逐步增强。
+=======
+To update the UI based on the result of a Server Action while supporting progressive enhancement, use [`useActionState`](/reference/react/useActionState).
+>>>>>>> 64beb657a2c3c0b102862509ebb8cf599f7cafd5:src/content/reference/rsc/use-server.md
 
 ```js
 // requestUsername.js
@@ -153,11 +157,11 @@ export default async function requestUsername(formData) {
 // UsernameForm.js
 'use client';
 
-import { useFormState } from 'react-dom';
+import { useActionState } from 'react';
 import requestUsername from './requestUsername';
 
 function UsernameForm() {
-  const [returnValue, action] = useFormState(requestUsername, 'n/a');
+  const [returnValue, action] = useActionState(requestUsername, 'n/a');
 
   return (
     <>
@@ -171,7 +175,11 @@ function UsernameForm() {
 }
 ```
 
+<<<<<<< HEAD:src/content/reference/react/use-server.md
 请注意，与大多数 Hook 一样，`useFormState` 只能在 <CodeStep step={1}>[客户端代码](/reference/react/use-client)</CodeStep> 中调用。
+=======
+Note that like most Hooks, `useActionState` can only be called in <CodeStep step={1}>[client code](/reference/react/use-client)</CodeStep>.
+>>>>>>> 64beb657a2c3c0b102862509ebb8cf599f7cafd5:src/content/reference/rsc/use-server.md
 
 ### 在 `<form>` 之外调用 Server Action {/*calling-a-server-action-outside-of-form*/}
 
