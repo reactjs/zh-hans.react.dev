@@ -1,19 +1,19 @@
 ---
-title: React calls Components and Hooks
+title: React 调用组件和 Hook
 ---
 
 <Intro>
-React is responsible for rendering components and hooks when necessary to optimize the user experience. It is declarative: you tell React what to render in your component’s logic, and React will figure out how best to display it to your user.
+React 负责在必要时渲染组件和 Hook，以优化用户体验。它是声明式的：你只需要告诉 React 在你的组件逻辑中渲染什么，React 会找出向用户展示的最佳方式。
 </Intro>
 
 <InlineToc />
 
 ---
 
-## Never call component functions directly {/*never-call-component-functions-directly*/}
-Components should only be used in JSX. Don't call them as regular functions. React should call it.
+## 绝不要直接调用组件函数 {/*never-call-component-functions-directly*/}
+组件应该只在 JSX 中使用。不要将它们作为常规函数调用。React 应该来调用它们。
 
-React must decide when your component function is called [during rendering](/reference/rules/components-and-hooks-must-be-pure#how-does-react-run-your-code). In React, you do this using JSX.
+React 必须决定何时调用你的组件函数 [在渲染过程中](/reference/rules/components-and-hooks-must-be-pure#how-does-react-run-your-code)。在 React 中，你通过 JSX 来实现这一点。
 
 ```js {2}
 function BlogPost() {
@@ -27,29 +27,29 @@ function BlogPost() {
 }
 ```
 
-If a component contains hooks, it's easy to violate the [Rules of Hooks](/reference/rules/rules-of-hooks) when components are called directly in a loop or conditionally.
+如果组件包含 Hook，在循环或条件语句中直接调用组件时，很容易违反 [Hook 的规则](/reference/rules/rules-of-hooks)。
 
-Letting React orchestrate rendering also allows a number of benefits:
+让 React 来协调渲染还允许许多好处：
 
-* **Components become more than functions.** React can augment them with features like _local state_ through Hooks that are tied to the component's identity in the tree.
-* **Component types participate in reconciliation.** By letting React call your components, you also tell it more about the conceptual structure of your tree. For example, when you move from rendering `<Feed>` to the `<Profile>` page, React won’t attempt to re-use them.
-* **React can enhance your user experience.** For example, it can let the browser do some work between component calls so that re-rendering a large component tree doesn’t block the main thread.
-* **A better debugging story.** If components are first-class citizens that the library is aware of, we can build rich developer tools for introspection in development.
-* **More efficient reconciliation.** React can decide exactly which components in the tree need re-rendering and skip over the ones that don't. That makes your app faster and more snappy.
+* **组件不仅仅是函数**。 React 可以通过 Hook 向它们添加特性，如与组件在树中身份相关联的局部状态。
+* **组件类型参与协调**。通过让 React 调用你的组件，你也告诉它更多关于你的树的概念结构。例如，当你从渲染 `<Feed>` 转移到 `<Profile>` 页面时，React不会尝试重用它们。
+* **React 可以提升你的用户体验**。 例如，它可以允许浏览器在组件调用之间做一些工作，这样重新渲染大型组件树就不会阻塞主线程。
+* **更好的调试体验**。 如果组件在库中被视为“一等公民”，我们可以围绕这些组件构建丰富的开发者工具，以便在开发过程中进行检查和理解程序内部结构和状态的过程。
+* **更高效的协调**。 React 可以决定树中哪些组件需要重新渲染，并跳过不需要的组件。这使你的应用程序更快，更灵敏。
 
 ---
 
-## Never pass around hooks as regular values {/*never-pass-around-hooks-as-regular-values*/}
+## 绝不要像常规值一样传递 Hook {/*never-pass-around-hooks-as-regular-values*/}
 
-Hooks should only be called inside of components or hooks. Never pass it around as a regular value.
+Hook 只能在组件或 Hook 内部调用。永远不要像常规值一样传递它们。
 
-Hooks allow you to augment a component with React features. They should always be called as a function, and never passed around as a regular value. This enables _local reasoning_, or the ability for developers to understand everything a component can do by looking at that component in isolation.
+Hook 允许你用 React 特性增强组件。它们应该始终作为函数调用，永远不要作为常规值传递。这使得局部推理成为可能，或者开发者可以通过单独查看组件来理解组件可以做的所有事情的能力。
 
-Breaking this rule will cause React to not automatically optimize your component.
+违反这条规则将导致 React 无法自动优化你的组件。
 
-### Don't dynamically mutate a hook {/*dont-dynamically-mutate-a-hook*/}
+### 不要动态地修改 Hook {/*dont-dynamically-mutate-a-hook*/}
 
-Hooks should be as "static" as possible. This means you shouldn't dynamically mutate them. For example, this means you shouldn't write higher order hooks:
+Hook 应该尽可能地“静态”。这意味着你不应该动态地修改它们。例如，这意味着你不应该编写高阶 Hook：
 
 ```js {2}
 function ChatInput() {
@@ -58,7 +58,7 @@ function ChatInput() {
 }
 ```
 
-Hooks should be immutable and not be mutated. Instead of mutating a hook dynamically, create a static version of the hook with the desired functionality.
+Hook 应该是不可变的，不应该被修改。与其动态地修改 Hook，不如创建一个具有所需功能的静态版本的 Hook。
 
 ```js {2,6}
 function ChatInput() {
@@ -70,9 +70,9 @@ function useDataWithLogging() {
 }
 ```
 
-### Don't dynamically use hooks {/*dont-dynamically-use-hooks*/}
+### 不要动态地使用 Hook {/*dont-dynamically-use-hooks*/}
 
-Hooks should also not be dynamically used: for example, instead of doing dependency injection in a component by passing a hook as a value:
+Hook 也不应该被动态使用：例如，不要通过将 Hook 作为值传递来进行组件的依赖注入：
 
 ```js {2}
 function ChatInput() {
@@ -80,7 +80,7 @@ function ChatInput() {
 }
 ```
 
-You should always inline the call of the hook into that component and handle any logic in there.
+你应该始终将 Hook 的调用内联到那个组件中，并在那里处理任何逻辑。
 
 ```js {6}
 function ChatInput() {
@@ -97,5 +97,5 @@ function useDataWithLogging() {
 }
 ```
 
-This way, `<Button />` is much easier to understand and debug. When Hooks are used in dynamic ways, it increases the complexity of your app greatly and inhibits local reasoning, making your team less productive in the long term. It also makes it easier to accidentally break the [Rules of Hooks](/reference/rules/rules-of-hooks) that hooks should not be called conditionally. If you find yourself needing to mock components for tests, it's better to mock the server instead to respond with canned data. If possible, it's also usually more effective to test your app with end-to-end tests.
+这样，`<Button />` 更容易理解并调试。当 Hook 以动态方式使用时，它大大增加了你的应用程序的复杂性，并抑制了局部推理，这从长远来看使你的团队生产力降低。它还更容易意外地违反 [Hook 的规则](/reference/rules/rules-of-hooks)，即 Hook 不应该被条件性地调用。如果你发现自己需要为测试模拟组件，最好是模拟服务器以响应罐装数据。如果可能，通常进行端到端测试你的应用程序也是更有效的。
 
