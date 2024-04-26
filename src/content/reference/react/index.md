@@ -14,10 +14,17 @@ React 参考文档分为以下内容：
 
 编程式 React 功能：
 
+<<<<<<< HEAD
 * [Hook](/reference/react/hooks) —— 在组件中使用不同的 React 特性。
 * [组件](/reference/react/components) —— 记录了可以在 JSX 中使用的内置组件。
 * [API](/reference/react/apis) —— 用于定义组件的有用 API。
 * [指示符](/reference/react/directives) —— 为与 React 服务器组件兼容的捆绑器提供指示。
+=======
+* [Hooks](/reference/react/hooks) - Use different React features from your components.
+* [Components](/reference/react/components) - Documents built-in components that you can use in your JSX.
+* [APIs](/reference/react/apis) - APIs that are useful for defining components.
+* [Directives](/reference/rsc/directives) - Provide instructions to bundlers compatible with React Server Components.
+>>>>>>> 01edd5c1070c2c563f86ee508cff3e8cca6a36c3
 
 ## React DOM {/*react-dom*/}
 
