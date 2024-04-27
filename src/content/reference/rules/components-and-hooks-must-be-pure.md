@@ -1,40 +1,40 @@
 ---
-title: Components and Hooks must be pure
+title: 组件和 Hook 必须是纯的
 ---
 
 <Intro>
-Pure functions only perform a calculation and nothing more. It makes your code easier to understand, debug, and allows React to automatically optimize your components and hooks correctly.
+纯函数只执行计算，不做其他任何事情。这使得你的代码更容易理解、调试，并允许 React 自动优化你的组件和 Hook。
 </Intro>
 
 <Note>
-This reference page covers advanced topics and requires familiarity with the concepts covered in the [Keeping Components Pure](/learn/keeping-components-pure) page.
+本参考页面涵盖高级话题，需要熟悉 [保持组件纯粹](/learn/keeping-components-pure) 页面中涉及的概念。
 </Note>
 
 <InlineToc />
 
-### Why does purity matter? {/*why-does-purity-matter*/}
+### 为什么纯粹很重要 {/*why-does-purity-matter*/}
 
-One of the key concepts that makes React, _React_ is _purity_. A pure component or hook is one that is:
+React 中的一个核心概念是纯粹。一个纯组件或钩子是指：
 
-* **Idempotent** – You [always get the same result everytime](/learn/keeping-components-pure#purity-components-as-formulas) you run it with the same inputs – props, state, context for component inputs; and arguments for hook inputs.
-* **Has no side effects in render** – Code with side effects should run [**separately from rendering**](#how-does-react-run-your-code). For example as an [event handler](/learn/responding-to-events) – where the user interacts with the UI and causes it to update; or as an [Effect](/reference/react/useEffect) – which runs after render.
-* **Does not mutate non-local values**: Components and hooks should [never modify values that aren't created locally](#mutation) in render.
+* **幂等性** ——每次使用相同的输入运行它——组件输入的 props、state、context 以及 Hook 输入的参数，你 [总是得到相同的结果](/learn/keeping-components-pure#purity-components-as-formulas)。
+* **在渲染中没有副作用** ——具有副作用的代码应该与渲染过程分开执行。例如，可以作为 [响应事件](/learn/responding-to-events)——在用户与用户界面交互并导致其更新时触发；或者作为一个 [Effect](/reference/react/useEffect)，它将在渲染之后运行。
+* **不要修改非局部作用域中的值**: 组件和 Hook 在渲染过程中 [绝不应该修改非局部创建的值](#mutation)。
 
-When render is kept pure, React can understand how to prioritize which updates are most important for the user to see first. This is made possible because of render purity: since components don't have side effects [in render](#how-does-react-run-your-code), React can pause rendering components that aren't as important to update, and only come back to them later when it's needed.
+当渲染保持纯净时，React 能够理解哪些更新对用户来说最重要，应该优先显示。这是因为渲染的纯粹：由于组件 [在渲染过程中](#how-does-react-run-your-code) 不会产生副作用，React 可以暂停渲染那些不是那么重要的组件，等到真正需要时再继续渲染它们。
 
-Concretely, this means that rendering logic can be run multiple times in a way that allows React to give your user a pleasant user experience. However, if your component has an untracked side effect – like modifying the value of a global variable [during render](#how-does-react-run-your-code) – when React runs your rendering code again, your side effects will be triggered in a way that won't match what you want. This often leads to unexpected bugs that can degrade how your users experience your app. You can see an [example of this in the Keeping Components Pure page](/learn/keeping-components-pure#side-effects-unintended-consequences).
+具体来说，这意味着渲染逻辑可以多次运行，这样 React 就能够为你的用户提供愉快的体验。然而，如果你的组件 [在渲染过程中](#how-does-react-run-your-code) 有无追踪的副作用——比如修改全局变量的值——那么当 React 再次运行你的渲染代码时，这些副作用会以你不希望的方式被触发。这通常会导致意外的 bug，从而降低用户对你应用的体验感。你可以看到这样一个 [例子在保持组件纯粹页面中](/learn/keeping-components-pure#side-effects-unintended-consequences).。
 
-#### How does React run your code? {/*how-does-react-run-your-code*/}
+#### React 是如何运行你的代码的？ {/*how-does-react-run-your-code*/}
 
-React is declarative: you tell React _what_ to render, and React will figure out _how_ best to display it to your user. To do this, React has a few phases where it runs your code. You don't need to know about all of these phases to use React well. But at a high level, you should know about what code runs in _render_, and what runs outside of it.
+React 是声明式的，即你告诉 React 你想要渲染的内容，React 会自己选择最佳的方式向用户展示它。为了做到这一点，React 在执行你的代码时分为几个阶段。虽然你不必了解所有这些阶段就能很好地使用 React。但是，从高层次来看，你应该了解哪些代码在渲染阶段运行，哪些代码在渲染阶段之外运行。
 
-_Rendering_ refers to calculating what the next version of your UI should look like. After rendering, [Effects](/reference/react/useEffect) are _flushed_ (meaning they are run until there are no more left) and may update the calculation if the Effects have impacts on layout. React takes this new calculation and compares it to the calulation used to create the previous version of your UI, then _commits_ just the minimum changes needed to the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) (what your user actually sees) to catch it up to the latest version.
+“渲染”指的是计算你的用户界面（UI）下一个版本应该呈现的样子。渲染完成后，[Effect](/reference/react/useEffect)  会被“清空”（意思是一直运行完所有的 Effect 为止），如果这些 Effect 对布局有影响，比如它们可能会改变之前的计算结果。React 会用这个新的计算结果与你 UI 上一个版本所用的计算结果进行比较，然后仅对 [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)——也就是用户实际看到的部分——进行最小的必要更改，以确保 UI 更新至最新内容。
 
 <DeepDive>
 
-#### How to tell if code runs in render {/*how-to-tell-if-code-runs-in-render*/}
+#### 如何判断代码是否在渲染中运行 {/*how-to-tell-if-code-runs-in-render*/}
 
-One quick heuristic to tell if code runs during render is to examine where it is: if it's written at the top level like in the example below, there's a good chance it runs during render.
+一个快速判断代码是否在渲染过程中运行的方法是检查代码的位置：如果它像下面的例子那样写在顶层，那么它很可能会在渲染过程中运行。
 
 ```js {2}
 function Dropdown() {
@@ -68,11 +68,11 @@ function Dropdown() {
 
 ---
 
-## Components and hooks must be idempotent {/*components-and-hooks-must-be-idempotent*/}
+## 组件和 Hook 必须是幂等的 {/*components-and-hooks-must-be-idempotent*/}
 
-Components must always return the same output with respect to their inputs – props, state, and context. This is known as _idempotency_. [Idempotency](https://en.wikipedia.org/wiki/Idempotence) is a term popularized in functional programming. It refers to the idea that you [always get the same result everytime](learn/keeping-components-pure) you run that piece of code with the same inputs.
+组件必须始终根据其输入（props、state、和 context）返回相同的输出。这被称为“幂等性”。[幂等性](https://en.wikipedia.org/wiki/Idempotence)  是函数式编程中经常使用的一个术语，它指的是，只要你使用相同的输入运行代码 [得到的结果总是一样的](learn/keeping-components-pure)。
 
-This means that _all_ code that runs [during render](#how-does-react-run-your-code) must also be idempotent in order for this rule to hold. For example, this line of code is not idempotent (and therefore, neither is the component):
+这意味着，为了遵循这一规则，所有 [在渲染期间](#how-does-react-run-your-code)  执行的代码也必须是幂等的。例如，以下这行代码就不是幂等的（因此，包含这行代码的组件也不是幂等的）：
 
 ```js {2}
 function Clock() {
@@ -81,9 +81,9 @@ function Clock() {
 }
 ```
 
-`new Date()` is not idempotent as it always returns the current date and changes its result every time it's called. When you render the above component, the time displayed on the screen will stay stuck on the time that the component was rendered. Similarly, functions like `Math.random()` also aren't idempotent, because they return different results every time they're called, even when the inputs are the same.
+`new Date()` 函数不是幂等的，因为它总是返回当前的日期和时间，并且每次调用时返回的结果都不同。当你渲染上面的组件时，屏幕上显示的时间将会停留在组件被渲染的那一刻的时间。类似地，像 `Math.random()` 这样的函数也不是幂等的，因为即使输入相同，它们每次调用也都会返回不同的结果。
 
-This doesn't mean you shouldn't use non-idempotent functions like `new Date()` _at all_ – you should just avoid using them [during render](#how-does-react-run-your-code). In this case, we can _synchronize_ the latest date to this component using an [Effect](/reference/react/useEffect):
+这并不意味着你完全不能使用像 `new Date()` 这样非幂等的函数——你只需要避免 [在渲染过程](#how-does-react-run-your-code) 中使用它们即可。在这种情况下，我们可以使用一个 [Effect](/reference/react/useEffect) 来将最新的日期与这个组件进行“同步”：
 
 <Sandpack>
 
@@ -116,28 +116,28 @@ export default function Clock() {
 
 </Sandpack>
 
-By wrapping the non-idempotent `new Date()` call in an Effect, it moves that calculation [outside of rendering](#how-does-react-run-your-code).
+通过将非幂等的 `new Date()` 调用包装在一个 Effect 中，就可以将这个计算移动到 [渲染之外](#how-does-react-run-your-code)。
 
-If you don't need to synchronize some external state with React, you can also consider using an [event handler](/learn/responding-to-events) if it only needs to be updated in response to a user interaction.
+如果你不需要将某些外部状态与 React 同步，只需要在响应用户交互时更新，你可以考虑使用一个 [事件处理函数](/learn/responding-to-events)。
 
 ---
 
-## Side effects must run outside of render {/*side-effects-must-run-outside-of-render*/}
+## 副作用必须在渲染之外执行 {/*side-effects-must-run-outside-of-render*/}
 
-[Side effects](/learn/keeping-components-pure#side-effects-unintended-consequences) should not run [in render](#how-does-react-run-your-code), as React can render components multiple times to create the best possible user experience.
+[副作用](/learn/keeping-components-pure#side-effects-unintended-consequences) 不应该 [在渲染中](#how-does-react-run-your-code) 执行，因为 React 可能会多次渲染组件以提供最佳的用户体验。
 
 <Note>
-Side effects are a broader term than Effects. Effects specifically refer to code that's wrapped in `useEffect`, while a side effect is a general term for code that has any observable effect other than its primary result of returning a value to the caller.
+副作用是一个比 Effect 更广泛的概念。Effect 特指被包裹在 `useEffect` 中的代码，而“副作用”是一般术语，指除了将其主要结果（返回值）传递给调用者之外，对外部世界有任何可观察影响的代码。
 
-Side effects are typically written inside of [event handlers](/learn/responding-to-events) or Effects. But never during render.
+副作用通常写在 [事件处理函数](/learn/responding-to-events) 或 Effect 内部。但绝不能在渲染过程中写。
 </Note>
 
-While render must be kept pure, side effects are necessary at some point in order for your app to do anything interesting, like showing something on the screen! The key point of this rule is that side effects should not run [in render](#how-does-react-run-your-code), as React can render components multiple times. In most cases, you'll use [event handlers](learn/responding-to-events) to handle side effects. Using an event handler explicitly tells React that this code doesn't need to run during render, keeping render pure. If you've exhausted all options – and only as a last resort – you can also handle side effects using `useEffect`.
+尽管渲染必须保持纯净，但副作用对于你的应用来说是应当也是非常必要的，这样才能做一些有趣的事情，比如在屏幕上显示内容！这条规则的关键点在于，副作用不应该 [在渲染中](#how-does-react-run-your-code) 执行，因为 React 可能会多次渲染组件。在大多数情况下，你会使用 [事件处理函数](learn/responding-to-events) 来处理副作用。使用事件处理函数明确地告诉 React 这段代码不需要在渲染过程中执行，从而保持渲染的纯粹。如果你已经尝试了所有可能的方法——并且只是作为最后的解决办法——你也可以使用 `useEffect` 来处理副作用。
 
-### When is it okay to have mutation? {/*mutation*/}
+### 什么时候可以进行 mutation {/*mutation*/}
 
-#### Local mutation {/*local-mutation*/}
-One common example of a side effect is mutation, which in JavaScript refers to changing the value of a non-[primitive](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) value. In general, while mutation is not idiomatic in React, _local_ mutation is absolutely fine:
+#### 局部 mutation {/*local-mutation*/}
+一个常见的副作用示例是突变（mutation），这在 JavaScript 中指的是改变一个非 [原始值](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) 的值。通常来说，在 React 中 mutation 操作并不符合最佳实践，但是进行局部 mutation 是完全可以接受的：
 
 ```js {2,7}
 function FriendList({ friends }) {
@@ -152,11 +152,11 @@ function FriendList({ friends }) {
 }
 ```
 
-There is no need to contort your code to avoid local mutation. [`Array.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) could also be used here for brevity, but there is nothing wrong with creating a local array and then pushing items into it [during render](#how-does-react-run-your-code).
+你没有必要为了回避局部 mutation 而刻意编写复杂的代码。虽然为了简洁，这里可以使用 [`Array.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)，但创建一个局部数组，然后[在渲染时](#how-does-react-run-your-code)向其中添加数组项也是完全可以的。
 
-Even though it looks like we are mutating `items`, the key point to note is that this code only does so _locally_ – the mutation isn't "remembered" when the component is rendered again. In other words, `items` only stays around as long as the component does. Because `items` is always _recreated_ every time `<FriendList />` is rendered, the component will always return the same result.
+尽管看起来我们正在变异 `items`，但关键的一点是这种 mutation 是局部的——当组件再次渲染时，这种 mutation 不会被“记住”。换句话说，`items` 只在组件存在期间有效。因为每次渲染 `<FriendList />` 时，`items` 都会被重新创建，所以组件总能返回相同的结果。
 
-On the other hand, if `items` was created outside of the component, it holds on to its previous values and remembers changes:
+另一方面，如果 `items` 是在组件外部创建的，那么它会保留其之前的值，并记住所做的更改：
 
 ```js {1,7}
 const items = []; // 🔴 Bad: created outside of the component
@@ -171,11 +171,11 @@ function FriendList({ friends }) {
 }
 ```
 
-When `<FriendList />` runs again, we will continue appending `friends` to `items` every time that component is run, leading to multiple duplicated results. This version of `<FriendList />` has observable side effects [during render](#how-does-react-run-your-code) and **breaks the rule**.
+每当 `<FriendList />` 组件再次运行时，我们都会持续地向 `items` 数组追加 `friends`，这将导致产生多个重复的结果。这个版本的 `<FriendList />` [在渲染中](#how-does-react-run-your-code) 具有可观察的副作用，所以违反了规则。
 
-#### Lazy initialization {/*lazy-initialization*/}
+#### 延迟初始化 {/*lazy-initialization*/}
 
-Lazy initialization is also fine despite not being fully "pure":
+即使不是完全“纯粹”的，延迟初始化也是完全可以接受的：
 
 ```js {2}
 function ExpenseForm() {
@@ -184,9 +184,9 @@ function ExpenseForm() {
 }
 ```
 
-#### Changing the DOM {/*changing-the-dom*/}
+#### 改变 DOM {/*changing-the-dom*/}
 
-Side effects that are directly visible to the user are not allowed in the render logic of React components. In other words, merely calling a component function shouldn’t by itself produce a change on the screen.
+在 React 组件的渲染逻辑中不允许有直接对用户可见的副作用。换句话说，仅仅调用一个组件函数本身不应当在屏幕上产生变化。
 
 ```js {2}
 function ProductDetailPage({ product }) {
@@ -194,20 +194,20 @@ function ProductDetailPage({ product }) {
 }
 ```
 
-One way to achieve the desired result of updating `window.title` outside of render is to [synchronize the component with `window`](/learn/synchronizing-with-effects).
+要在渲染之外更新 `window.title` 的一个方法是 [将组件与 `window` 进行同步](/learn/synchronizing-with-effects)。
 
-As long as calling a component multiple times is safe and doesn’t affect the rendering of other components, React doesn’t care if it’s 100% pure in the strict functional programming sense of the word. It is more important that [components must be idempotent](/reference/rules/components-and-hooks-must-be-pure).
+只要多次调用组件是安全的，并且不会影响其他组件的渲染，React 就不会在意组件是否在严格的函数式编程意义上是百分之百纯粹的。更重要的是，[组件必须是幂等的](/reference/rules/components-and-hooks-must-be-pure)。
 
 ---
 
-## Props and state are immutable {/*props-and-state-are-immutable*/}
+## props 和 state 是不可变的 {/*props-and-state-are-immutable*/}
 
-A component's props and state are immutable [snapshots](learn/state-as-a-snapshot). Never mutate them directly. Instead, pass new props down, and use the setter function from `useState`.
+组件的 props 和 state 是不可变的 [快照](learn/state-as-a-snapshot)。永远不要直接修改它们。相反，你应该向下传递新的属性，以及使用 `useState` 提供的 setter 函数。
 
-You can think of the props and state values as snapshots that are updated after rendering. For this reason, you don't modify the props or state variables directly: instead you pass new props, or use the setter function provided to you to tell React that state needs to update the next time the component is rendered.
+你可以将 props 和 state 视为在渲染后更新的快照。因此，你不会直接修改 props 或 state：相反，你传递新的 props，或者使用提供给你的 setter 函数来告诉 React，state 需要在下一次组件渲染时更新。
 
-### Don't mutate Props {/*props*/}
-Props are immutable because if you mutate them, the application will produce inconsistent output, which can be hard to debug since it may or may not work depending on the circumstance.
+### 不要修改 props {/*props*/}
+props 是不可变的，因为如果你改变了它们，应用程序可能会产生不一致的结果，这会让调试变得困难，因为程序可能会在某些情况下工作，而在另一些情况下不工作。
 
 ```js {2}
 function Post({ item }) {
@@ -223,14 +223,14 @@ function Post({ item }) {
 }
 ```
 
-### Don't mutate State {/*state*/}
-`useState` returns the state variable and a setter to update that state.
+### 不要修改 state {/*state*/}
+`useState` 返回一个 state 和一个用于更新该状态的 setter。
 
 ```js
 const [stateVariable, setter] = useState(0);
 ```
 
-Rather than updating the state variable in-place, we need to update it using the setter function that is returned by `useState`. Changing values on the state variable doesn't cause the component to update, leaving your users with an outdated UI. Using the setter function informs React that the state has changed, and that we need to queue a re-render to update the UI.
+我们不应该直接在 state 变量上进行更新，而应该使用 `useState` 返回的 setter 函数来进行更新。如果在 state 变量上直接修改值，并不会导致组件界面更新，这样用户界面就会显示过时的信息。通过使用 setter 函数，我们告诉 React 状态已经发生了变化，需要进行重新渲染，以便更新用户界面。
 
 ```js {5}
 function Counter() {
@@ -266,9 +266,9 @@ function Counter() {
 
 ---
 
-## Return values and arguments to Hooks are immutable {/*return-values-and-arguments-to-hooks-are-immutable*/}
+## Hook 的返回值和参数是不可变的。 {/*return-values-and-arguments-to-hooks-are-immutable*/}
 
-Once values are passed to a hook, you should not modify them. Like props in JSX, values become immutable when passed to a hook.
+一旦值被传递给 Hook，就不应该再对它们进行修改。就像在 JSX 中的属性（props）一样，当值被传递给 Hook 时，它们就应该是不可变的了。
 
 ```js {4}
 function useIconStyle(icon) {
@@ -291,7 +291,7 @@ function useIconStyle(icon) {
 }
 ```
 
-One important principle in React is _local reasoning_: the ability to understand what a component or hook does by looking at its code in isolation. Hooks should be treated like "black boxes" when they are called. For example, a custom hook might have used its arguments as dependencies to memoize values inside it:
+在 React 中有一个重要的原则叫做局部推理，即通过单独查看组件或钩子的代码，就能理解它的作用。当调用钩子时，应该把它们当作“黑盒子”。例如，自定义钩子可能使用其参数作为依赖项，在内部缓存值：
 
 ```js {4}
 function useIconStyle(icon) {
@@ -307,7 +307,7 @@ function useIconStyle(icon) {
 }
 ```
 
-If you were to mutate the hooks arguments, the custom hook's memoization will become incorrect,  so it's important to avoid doing that.
+如果你改变了 Hook 的参数，那么自定义 Hook 的缓存（memoization）就会变得不正确，因此避免这样做非常重要。
 
 ```js {4}
 style = useIconStyle(icon);         // `style` is memoized based on `icon`
@@ -321,15 +321,15 @@ icon = { ...icon, enabled: false }; // Good: ✅ make a copy instead
 style = useIconStyle(icon);         // new value of `style` is calculated
 ```
 
-Similarly, it's important to not modify the return values of hooks, as they may have been memoized.
+同样重要的是不要修改 Hook 的返回值，因为这些值可能已经被缓存了。
 
 ---
 
-## Values are immutable after being passed to JSX {/*values-are-immutable-after-being-passed-to-jsx*/}
+## 不要改变传递给 JSX 后的值 {/*values-are-immutable-after-being-passed-to-jsx*/}
 
-Don't mutate values after they've been used in JSX. Move the mutation before the JSX is created.
+不要在 JSX 使用过值之后改变它们。应该在创建 JSX 之前完成值的更改。
 
-When you use JSX in an expression, React may eagerly evaluate the JSX before the component finishes rendering. This means that mutating values after they've been passed to JSX can lead to outdated UIs, as React won't know to update the component's output.
+当你在表达式中使用 JSX 时，React 可能会在组件完成渲染之前就急于计算 JSX。这意味着，如果在将值传递给 JSX 之后对它们进行更改，可能会导致 UI 过时，因为 React 不会知道需要更新组件的输出。
 
 ```js {4}
 function Page({ colour }) {
