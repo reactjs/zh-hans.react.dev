@@ -12,7 +12,7 @@ title: 组件和 Hook 必须是纯粹的
 
 <InlineToc />
 
-### 为什么保持纯粹很重要 {/*why-does-purity-matter*/}
+### 为什么保持纯粹很重要？ {/*why-does-purity-matter*/}
 
 React 中的一个核心概念是保持纯粹。一个纯组件或 Hook 是指：
 
@@ -134,7 +134,7 @@ export default function Clock() {
 
 尽管渲染必须保持纯净，但副作用对于你的应用来说是应当也是非常必要的，这样才能做一些有趣的事情，比如在屏幕上显示内容！这条规则的关键点在于，副作用不应该 [在渲染中](#how-does-react-run-your-code) 执行，因为 React 可能会多次渲染组件。在大多数情况下，你会使用 [事件处理函数](learn/responding-to-events) 来处理副作用。使用事件处理函数明确地告诉 React 这段代码不需要在渲染过程中执行，从而保持渲染的纯粹。如果你已经尝试了所有可能的方法——并且只是作为最后的解决办法——你也可以使用 `useEffect` 来处理副作用。
 
-### 什么时候可以进行 mutation {/*mutation*/}
+### 什么时候可以进行 mutation？ {/*mutation*/}
 
 #### 局部 mutation {/*local-mutation*/}
 一个常见的副作用示例是突变（mutation），这在 JavaScript 中指的是改变一个非 [原始值](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) 的值。通常来说，在 React 中 mutation 操作并不符合最佳实践，但是进行局部 mutation 是完全可以接受的：
@@ -266,7 +266,7 @@ function Counter() {
 
 ---
 
-## Hook 的返回值和参数是不可变的。 {/*return-values-and-arguments-to-hooks-are-immutable*/}
+## Hook 的返回值和参数是不可变的 {/*return-values-and-arguments-to-hooks-are-immutable*/}
 
 一旦值被传递给 Hook，就不应该再对它们进行修改。就像在 JSX 中的 props 一样，当值被传递给 Hook 时，它们就应该是不可变的了。
 
