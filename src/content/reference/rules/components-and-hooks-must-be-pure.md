@@ -1,5 +1,5 @@
 ---
-title: 组件和 Hook 必须是纯的
+title: 组件和 Hook 必须是纯粹的
 ---
 
 <Intro>
@@ -12,9 +12,9 @@ title: 组件和 Hook 必须是纯的
 
 <InlineToc />
 
-### 为什么纯粹很重要 {/*why-does-purity-matter*/}
+### 为什么保持纯粹很重要 {/*why-does-purity-matter*/}
 
-React 中的一个核心概念是纯粹。一个纯组件或钩子是指：
+React 中的一个核心概念是保持纯粹。一个纯组件或 Hook 是指：
 
 * **幂等性** ——每次使用相同的输入运行它——组件输入的 props、state、context 以及 Hook 输入的参数，你 [总是得到相同的结果](/learn/keeping-components-pure#purity-components-as-formulas)。
 * **在渲染中没有副作用** ——具有副作用的代码应该与渲染过程分开执行。例如，可以作为 [响应事件](/learn/responding-to-events)——在用户与用户界面交互并导致其更新时触发；或者作为一个 [Effect](/reference/react/useEffect)，它将在渲染之后运行。
@@ -22,7 +22,7 @@ React 中的一个核心概念是纯粹。一个纯组件或钩子是指：
 
 当渲染保持纯净时，React 能够理解哪些更新对用户来说最重要，应该优先显示。这是因为渲染的纯粹：由于组件 [在渲染过程中](#how-does-react-run-your-code) 不会产生副作用，React 可以暂停渲染那些不是那么重要的组件，等到真正需要时再继续渲染它们。
 
-具体来说，这意味着渲染逻辑可以多次运行，这样 React 就能够为你的用户提供愉快的体验。然而，如果你的组件 [在渲染过程中](#how-does-react-run-your-code) 有无追踪的副作用——比如修改全局变量的值——那么当 React 再次运行你的渲染代码时，这些副作用会以你不希望的方式被触发。这通常会导致意外的 bug，从而降低用户对你应用的体验感。你可以看到这样一个 [例子在保持组件纯粹页面中](/learn/keeping-components-pure#side-effects-unintended-consequences).。
+具体来说，这意味着渲染逻辑可以多次运行，这样 React 就能够为你的用户提供愉快的体验。然而，如果你的组件 [在渲染过程中](#how-does-react-run-your-code) 有无追踪的副作用——比如修改全局变量的值——那么当 React 再次运行你的渲染代码时，这些副作用会以你不希望的方式被触发。这通常会导致意外的 bug，从而降低用户对你应用的体验感。你可以看到这样一个 [例子在保持组件纯粹页面中](/learn/keeping-components-pure#side-effects-unintended-consequences)。
 
 #### React 是如何运行你的代码的？ {/*how-does-react-run-your-code*/}
 
@@ -152,7 +152,7 @@ function FriendList({ friends }) {
 }
 ```
 
-你没有必要为了回避局部 mutation 而刻意编写复杂的代码。虽然为了简洁，这里可以使用 [`Array.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)，但创建一个局部数组，然后[在渲染时](#how-does-react-run-your-code)向其中添加数组项也是完全可以的。
+你没有必要为了回避局部 mutation 而刻意编写复杂的代码。虽然为了简洁，这里可以使用 [`Array.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)，但创建一个局部数组，然后 [在渲染时](#how-does-react-run-your-code) 向其中添加数组项也是完全可以的。
 
 尽管看起来我们正在变异 `items`，但关键的一点是这种 mutation 是局部的——当组件再次渲染时，这种 mutation 不会被“记住”。换句话说，`items` 只在组件存在期间有效。因为每次渲染 `<FriendList />` 时，`items` 都会被重新创建，所以组件总能返回相同的结果。
 
@@ -268,7 +268,7 @@ function Counter() {
 
 ## Hook 的返回值和参数是不可变的。 {/*return-values-and-arguments-to-hooks-are-immutable*/}
 
-一旦值被传递给 Hook，就不应该再对它们进行修改。就像在 JSX 中的属性（props）一样，当值被传递给 Hook 时，它们就应该是不可变的了。
+一旦值被传递给 Hook，就不应该再对它们进行修改。就像在 JSX 中的 props 一样，当值被传递给 Hook 时，它们就应该是不可变的了。
 
 ```js {4}
 function useIconStyle(icon) {
@@ -291,7 +291,7 @@ function useIconStyle(icon) {
 }
 ```
 
-在 React 中有一个重要的原则叫做局部推理，即通过单独查看组件或钩子的代码，就能理解它的作用。当调用钩子时，应该把它们当作“黑盒子”。例如，自定义钩子可能使用其参数作为依赖项，在内部缓存值：
+在 React 中有一个重要的原则叫做局部推理，即通过单独查看组件或 Hook 的代码，就能理解它的作用。当调用 Hook 时，应该把它们当作“黑盒子”。例如，自定义 Hook 可能使用其参数作为依赖项，在内部缓存值：
 
 ```js {4}
 function useIconStyle(icon) {
