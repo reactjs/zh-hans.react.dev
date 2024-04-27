@@ -53,7 +53,7 @@ Hook 应当尽可能保持“静态”。这意味着你不应该动态地改变
 
 ```js {2}
 function ChatInput() {
-  const useDataWithLogging = withLogging(useData); // 🔴 Bad: don't write higher order hooks
+  const useDataWithLogging = withLogging(useData); // 🔴 Bad: don't write higher order Hooks
   const data = useDataWithLogging();
 }
 ```
@@ -62,7 +62,7 @@ Hook 应该是不可变的，不应被动态改变。与其动态地改变 Hook�
 
 ```js {2,6}
 function ChatInput() {
-  const data = useDataWithLogging(); // ✅ Good: Create a new version of the hook
+  const data = useDataWithLogging(); // ✅ Good: Create a new version of the Hook
 }
 
 function useDataWithLogging() {
@@ -76,7 +76,7 @@ Hook 也不应该被动态使用，例如，不应该通过将 Hook 作为值传
 
 ```js {2}
 function ChatInput() {
-  return <Button useData={useDataWithLogging} /> // 🔴 Bad: don't pass hooks as props
+  return <Button useData={useDataWithLogging} /> // 🔴 Bad: don't pass Hooks as props
 }
 ```
 
@@ -88,12 +88,12 @@ function ChatInput() {
 }
 
 function Button() {
-  const data = useDataWithLogging(); // ✅ Good: Use the hook directly
+  const data = useDataWithLogging(); // ✅ Good: Use the Hook directly
 }
 
 function useDataWithLogging() {
-  // If there's any conditional logic to change the hook's behavior, it should be inlined into
-  // the hook
+  // If there's any conditional logic to change the Hook's behavior, it should be inlined into
+  // the Hook
 }
 ```
 

@@ -42,7 +42,7 @@ function MessageComponent({ messagePromise }) {
 
 当使用 Promise 调用 `use` Hook 时，它会与 [`Suspense`](/reference/react/Suspense) 和 [错误边界](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) 集成。当传递给 `use` 的 Promise 处于 pending 时，调用 `use` 的组件也会 **挂起**。如果调用 `use` 的组件被包装在 Suspense 边界内，将显示后备 UI。一旦 Promise 被解决，Suspense 后备方案将被使用 `use` Hook 返回的数据替换。如果传递给 `use` 的 Promise 被拒绝，将显示最近错误边界的后备 UI。
 
-[参见下方更多示例)(#usage)。
+[参见下方更多示例](#usage)。
 
 #### 参数 {/*parameters*/}
 
@@ -474,7 +474,7 @@ export default function App() {
 
 ### "Suspense Exception: This is not a real error!" {/*suspense-exception-error*/}
 
-要么在 React 组件或 Hook 函数之外调用 `use`，或者在 try-catch 块中调用 `use`。如果你在 try-catch 块中调用 `use`，请将组件包裹在错误边界中，或者使用 Promise 的 `catch` 方法来捕获错误并提供给替代值。[参见这些示例](#dealing-with-rejected-promises)。
+你要么是在 React 组件或 Hook 函数之外调用了 `use`，或者在 try-catch 块中调用了 `use`。如果你在 try-catch 块中调用 `use`，请将组件包裹在错误边界中，或者使用 Promise 的 `catch` 方法来捕获错误并提供给替代值。[参见这些示例](#dealing-with-rejected-promises)。
 
 如果在 React 组件或 Hook 函数之外调用 `use`，请将 `use` 调用移至 React 组件或 Hook 函数中。
 
