@@ -58,7 +58,7 @@ function ChatInput() {
 }
 ```
 
-Hook 应该是不可变的，不应被动态改变。与其动态地变异一个 Hook，不如在创建时就定义一个包含所需功能的静态版本的 Hook。
+Hook 应该是不可变的，不应被动态改变。与其动态地改变 Hook，不如在创建时就定义一个包含所需功能的静态版本的 Hook。
 
 ```js {2,6}
 function ChatInput() {
