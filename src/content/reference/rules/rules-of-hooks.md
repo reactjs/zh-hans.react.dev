@@ -21,13 +21,13 @@ Hook 是使用 JavaScript 函数定义的，但它们代表了一种特殊的可
 
 ```js{2-3,8-9}
 function Counter() {
-  // ✅ Good: 在函数组件顶层
+  // ✅ 正确的：在函数组件顶层
   const [count, setCount] = useState(0);
   // ...
 }
 
 function useWindowWidth() {
-  // ✅ Good: 在自定义 Hooks 顶层
+  // ✅ 正确的：在自定义 Hooks 顶层
   const [width, setWidth] = useState(window.innerWidth);
   // ...
 }
@@ -47,7 +47,7 @@ function useWindowWidth() {
 ```js{3-4,11-12,20-21}
 function Bad({ cond }) {
   if (cond) {
-    // 🔴 Bad: inside a condition (to fix, move it outside!)
+    // 🔴 错误的：在条件语句内部（要修复这个问题，将其移到外部！）
     const theme = useContext(ThemeContext);
   }
   // ...
@@ -55,7 +55,7 @@ function Bad({ cond }) {
 
 function Bad() {
   for (let i = 0; i < 10; i++) {
-    // 🔴 Bad: inside a loop (to fix, move it outside!)
+    // 🔴 错误的：在循环语句内部（要修复这个问题，将其移到外部！）
     const theme = useContext(ThemeContext);
   }
   // ...
@@ -65,14 +65,14 @@ function Bad({ cond }) {
   if (cond) {
     return;
   }
-  // 🔴 Bad: after a conditional return (to fix, move it before the return!)
+  // 🔴 错误的：在条件性 return 语句之后（要修复这个问题，将其移到 return 之前！）
   const theme = useContext(ThemeContext);
   // ...
 }
 
 function Bad() {
   function handleClick() {
-    // 🔴 Bad: inside an event handler (to fix, move it outside!)
+    // 🔴 错误的：在事件处理函数内部（要修复这个问题，将其移到 return 之前！）
     const theme = useContext(ThemeContext);
   }
   // ...
@@ -80,7 +80,7 @@ function Bad() {
 
 function Bad() {
   const style = useMemo(() => {
-    // 🔴 Bad: inside useMemo (to fix, move it outside!)
+    // 🔴 错误的：在 useMemo 内部调用（要修复这个问题，将其移到外部！）
     const theme = useContext(ThemeContext);
     return createStyle(theme);
   });
@@ -89,7 +89,7 @@ function Bad() {
 
 class Bad extends React.Component {
   render() {
-    // 🔴 Bad: inside a class component (to fix, write a function component instead of a class!)
+    // 🔴 错误的：在类组件内部调用（要修复这个问题，改写为函数组件！）
     useEffect(() => {})
     // ...
   }
@@ -97,7 +97,7 @@ class Bad extends React.Component {
 
 function Bad() {
   try {
-    // 🔴 Bad: inside try/catch/finally block (to fix, move it outside!)
+    // 🔴 错误的：在 try、catch、finally 代码块内部调用（要修复这个问题，将其移到外部！）
     const [x, setX] = useState(0);
   } catch {
     const [x, setX] = useState(1);
