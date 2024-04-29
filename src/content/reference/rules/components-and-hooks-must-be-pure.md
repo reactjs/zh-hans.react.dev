@@ -49,7 +49,7 @@ function Dropdown() {
 function Dropdown() {
   const selectedItems = new Set();
   const onSelect = (item) => {
-    // 这段代码位于事件处理器中，因此只有在用户触发这个事件时才会运行。
+    // 这段代码位于事件处理函数中，因此只有在用户触发这个事件时才会运行。
     selectedItems.add(item);
   }
 }
@@ -99,7 +99,7 @@ function useTime() {
   useEffect(() => {
     // 2. 使用 `setInterval` 每秒更新当前日期。
     const id = setInterval(() => {
-      setTime(new Date()); // ✅ Good：非幂等代码不再在渲染中运行。
+      setTime(new Date()); // ✅ 正确的：非幂等代码不再在渲染中运行。
     }, 1000);
     // 3. 返回一个清理函数，这样我们就不会忘记清理 `setInterval` 定时器，导致内存泄漏。
     return () => clearInterval(id);
