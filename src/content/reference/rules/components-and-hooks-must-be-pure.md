@@ -38,7 +38,7 @@ React 是声明式的，即你告诉 React 你想要渲染的内容，React 会�
 
 ```js {2}
 function Dropdown() {
-  const selectedItems = new Set(); // created during render
+  const selectedItems = new Set(); // 在渲染过程中创建
   // ...
 }
 ```
@@ -49,7 +49,7 @@ function Dropdown() {
 function Dropdown() {
   const selectedItems = new Set();
   const onSelect = (item) => {
-    // this code is in an event handler, so it's only run when the user triggers this
+    // 这段代码位于事件处理器中，因此只有在用户触发这个事件时才会运行。
     selectedItems.add(item);
   }
 }
@@ -59,7 +59,7 @@ function Dropdown() {
 function Dropdown() {
   const selectedItems = new Set();
   useEffect(() => {
-    // this code is inside of an Effect, so it only runs after rendering
+    // 这段代码位于 Effect 内部，因此它只在渲染完成后运行。
     logForAnalytics(selectedItems);
   }, [selectedItems]);
 }
@@ -76,7 +76,7 @@ function Dropdown() {
 
 ```js {2}
 function Clock() {
-  const time = new Date(); // 🔴 Bad: always returns a different result!
+  const time = new Date(); // 🔴 错误的：总是返回不同的结果！
   return <span>{time.toLocaleString()}</span>
 }
 ```
@@ -91,17 +91,17 @@ function Clock() {
 import { useState, useEffect } from 'react';
 
 function useTime() {
-  // 1. Keep track of the current date's state. `useState` receives an initializer function as its
-  //    initial state. It only runs once when the hook is called, so only the current date at the
-  //    time the hook is called is set first.
+  // 1. 跟踪当前日期的状态。`useState` 接受一个初始化函数作为其
+  //    初始状态。它只在调用 Hook 时运行一次，因此只有调用 Hook 时的
+  //    当前日期才被首先设置。
   const [time, setTime] = useState(() => new Date());
 
   useEffect(() => {
-    // 2. Update the current date every second using `setInterval`.
+    // 2. 使用 `setInterval` 每秒更新当前日期。
     const id = setInterval(() => {
-      setTime(new Date()); // ✅ Good: non-idempotent code no longer runs in render
+      setTime(new Date()); // ✅ Good：非幂等代码不再在渲染中运行。
     }, 1000);
-    // 3. Return a cleanup function so we don't leak the `setInterval` timer.
+    // 3. 返回一个清理函数，这样我们就不会忘记清理 `setInterval` 定时器，导致内存泄漏。
     return () => clearInterval(id);
   }, []);
 
@@ -141,12 +141,12 @@ export default function Clock() {
 
 ```js {2,7}
 function FriendList({ friends }) {
-  const items = []; // ✅ Good: locally created
+  const items = []; // ✅ 正确的：在局部创建
   for (let i = 0; i < friends.length; i++) {
     const friend = friends[i];
     items.push(
       <Friend key={friend.id} friend={friend} />
-    ); // ✅ Good: local mutation is okay
+    ); // ✅ 正确的：局部修改是可以的。
   }
   return <section>{items}</section>;
 }
@@ -159,13 +159,13 @@ function FriendList({ friends }) {
 另一方面，如果 `items` 是在组件外部创建的，那么它会保留其之前的值，并记住所做的更改：
 
 ```js {1,7}
-const items = []; // 🔴 Bad: created outside of the component
+const items = []; // 🔴 错误的：在组件外部创建
 function FriendList({ friends }) {
   for (let i = 0; i < friends.length; i++) {
     const friend = friends[i];
     items.push(
       <Friend key={friend.id} friend={friend} />
-    ); // 🔴 Bad: mutates a value created outside of render
+    ); // 🔴 错误的：修改了一个在渲染之外创建的值。
   }
   return <section>{items}</section>;
 }
@@ -179,7 +179,7 @@ function FriendList({ friends }) {
 
 ```js {2}
 function ExpenseForm() {
-  SuperCalculator.initializeIfNotReady(); // ✅ Good: if it doesn't affect other components
+  SuperCalculator.initializeIfNotReady(); // ✅ 正确的：如果它对其他组件没有影响。
   // Continue rendering...
 }
 ```
@@ -190,7 +190,7 @@ function ExpenseForm() {
 
 ```js {2}
 function ProductDetailPage({ product }) {
-  document.window.title = product.title; // 🔴 Bad: Changes the DOM
+  document.window.title = product.title; // 🔴 错误的：改变 DOM
 }
 ```
 
@@ -211,14 +211,14 @@ props 是不可变的，因为如果你改变了它们，应用程序可能会�
 
 ```js {2}
 function Post({ item }) {
-  item.url = new Url(item.url, base); // 🔴 Bad: never mutate props directly
+  item.url = new Url(item.url, base); // 🔴 错误的：永远不要直接修改 props
   return <Link url={item.url}>{item.title}</Link>;
 }
 ```
 
 ```js {2}
 function Post({ item }) {
-  const url = new Url(item.url, base); // ✅ Good: make a copy instead
+  const url = new Url(item.url, base); // ✅ 正确的：创建一个新的副本替代
   return <Link url={url}>{item.title}</Link>;
 }
 ```
@@ -237,7 +237,7 @@ function Counter() {
   const [count, setCount] = useState(0);
 
   function handleClick() {
-    count = count + 1; // 🔴 Bad: never mutate state directly
+    count = count + 1; // 🔴 错误的：永远不要直接修改 state
   }
 
   return (
@@ -253,7 +253,7 @@ function Counter() {
   const [count, setCount] = useState(0);
 
   function handleClick() {
-    setCount(count + 1); // ✅ Good: use the setter function returned by useState
+    setCount(count + 1); // ✅ 正确的：使用由 useState 返回的 setter 函数来修改 state。
   }
 
   return (
@@ -274,7 +274,7 @@ function Counter() {
 function useIconStyle(icon) {
   const theme = useContext(ThemeContext);
   if (icon.enabled) {
-    icon.className = computeStyle(icon, theme); // 🔴 Bad: never mutate hook arguments directly
+    icon.className = computeStyle(icon, theme); // 🔴 错误的：永远不要直接修改 Hook 的参数。
   }
   return icon;
 }
@@ -283,7 +283,7 @@ function useIconStyle(icon) {
 ```js {3}
 function useIconStyle(icon) {
   const theme = useContext(ThemeContext);
-  const newIcon = { ...icon }; // ✅ Good: make a copy instead
+  const newIcon = { ...icon }; // ✅ 正确的：创建一个新的副本替代
   if (icon.enabled) {
     newIcon.className = computeStyle(icon, theme);
   }
@@ -310,15 +310,15 @@ function useIconStyle(icon) {
 如果你改变了 Hook 的参数，那么自定义 Hook 的缓存（memoization）就会变得不正确，因此避免这样做非常重要。
 
 ```js {4}
-style = useIconStyle(icon);         // `style` is memoized based on `icon`
-icon.enabled = false;               // Bad: 🔴 never mutate hook arguments directly
-style = useIconStyle(icon);         // previously memoized result is returned
+style = useIconStyle(icon);         // `style` 是基于 `icon` 进行记忆化的
+icon.enabled = false;               // 错误的： 🔴 永远不要直接修改 Hook 的参数
+style = useIconStyle(icon);         // 返回之前记忆化的结果
 ```
 
 ```js {4}
-style = useIconStyle(icon);         // `style` is memoized based on `icon`
-icon = { ...icon, enabled: false }; // Good: ✅ make a copy instead
-style = useIconStyle(icon);         // new value of `style` is calculated
+style = useIconStyle(icon);         // `style` 是基于 `icon` 进行记忆化的
+icon = { ...icon, enabled: false }; // 正确的: ✅ 创建一个新的副本替代
+style = useIconStyle(icon);         // 计算 `style` 的新值
 ```
 
 同样重要的是不要修改 Hook 的返回值，因为这些值可能已经被缓存了。
@@ -335,7 +335,7 @@ style = useIconStyle(icon);         // new value of `style` is calculated
 function Page({ colour }) {
   const styles = { colour, size: "large" };
   const header = <Header styles={styles} />;
-  styles.size = "small"; // 🔴 Bad: styles was already used in the JSX above
+  styles.size = "small"; // 🔴 错误的：styles 已经在上面的 JSX 中使用了。
   const footer = <Footer styles={styles} />;
   return (
     <>
@@ -351,7 +351,7 @@ function Page({ colour }) {
 function Page({ colour }) {
   const headerStyles = { colour, size: "large" };
   const header = <Header styles={headerStyles} />;
-  const footerStyles = { colour, size: "small" }; // ✅ Good: we created a new value
+  const footerStyles = { colour, size: "small" }; // ✅ 正确的：我们创建了一个新的值。
   const footer = <Footer styles={footerStyles} />;
   return (
     <>
