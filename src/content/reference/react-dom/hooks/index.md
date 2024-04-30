@@ -20,15 +20,19 @@ Form Hooks 目前仅在 React canary 与 experimental 渠道中可用。在此�
 
 **Form** 允许创建用于提交信息的交互式控件。要在组件中管理表单，请使用以下其中一个 Hook：
 
+<<<<<<< HEAD
 * [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) 允许根据表单的状态更新用户界面。
 * `useFormState`(/reference/react-dom/hooks/useFormState) 允许管理表单内部的状态。
+=======
+* [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) allows you to make updates to the UI based on the status of the a form.
+>>>>>>> 74697fb4f1fc542c302089cfc0a176510db35e33
 
 ```js
 function Form({ action }) {
   async function increment(n) {
     return n + 1;
   }
-  const [count, incrementFormAction] = useFormState(increment, 0);
+  const [count, incrementFormAction] = useActionState(increment, 0);
   return (
     <form action={action}>
       <button formAction={incrementFormAction}>Count: {count}</button>
@@ -46,4 +50,3 @@ function Button() {
   );
 }
 ```
-

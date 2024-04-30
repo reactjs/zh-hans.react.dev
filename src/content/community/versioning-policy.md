@@ -8,7 +8,13 @@ title: 版本策略
 
 </Intro>
 
+<<<<<<< HEAD
 ## 稳定版本 {/*stable-releases*/}
+=======
+For a list of previous releases, see the [Versions](/versions) page.
+
+## Stable releases {/*stable-releases*/}
+>>>>>>> 74697fb4f1fc542c302089cfc0a176510db35e33
 
 稳定的 React 版本（也被称为 Latest 发布渠道）遵循语义化版本控制（semver）的原则。
 

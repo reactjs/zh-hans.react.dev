@@ -10,6 +10,7 @@ import {
   startTransition,
   Suspense,
 } from 'react';
+import Image from 'next/image';
 import * as React from 'react';
 import cn from 'classnames';
 import NextLink from 'next/link';
@@ -24,6 +25,7 @@ import {Logo} from '../../Logo';
 import {Feedback} from '../Feedback';
 import {SidebarRouteTree} from '../Sidebar';
 import type {RouteItem} from '../getRouteMeta';
+import {siteConfig} from 'siteConfig';
 
 declare global {
   interface Window {
@@ -247,16 +249,38 @@ export default function TopNav({
                 )}>
                 {isMenuOpen ? <IconClose /> : <IconHamburger />}
               </button>
-              <div className="flex 3xl:flex-1 align-center">
+              <div className="f">
+                <div className="uwu-visible flex items-center justify-center h-full">
+                  <NextLink href="/">
+                    <Image
+                      alt="logo by @sawaratsuki1004"
+                      title="logo by @sawaratsuki1004"
+                      className="h-8"
+                      priority
+                      width={63}
+                      height={32}
+                      src="/images/uwu.png"
+                    />
+                  </NextLink>
+                </div>
+                <div className="uwu-hidden">
+                  <NextLink
+                    href="/"
+                    className={`active:scale-95 overflow-hidden transition-transform relative items-center text-primary dark:text-primary-dark p-1 whitespace-nowrap outline-link rounded-full 3xl:rounded-xl inline-flex text-lg font-normal gap-2`}>
+                    <Logo
+                      className={cn(
+                        'text-sm me-0 w-10 h-10 text-link dark:text-link-dark flex origin-center transition-all ease-in-out'
+                      )}
+                    />
+                    <span className="sr-only 3xl:not-sr-only">React</span>
+                  </NextLink>
+                </div>
+              </div>
+              <div className="flex flex-column justify-center items-center">
                 <NextLink
-                  href="/"
-                  className={`active:scale-95 overflow-hidden transition-transform relative items-center text-primary dark:text-primary-dark p-1 whitespace-nowrap outline-link rounded-full 3xl:rounded-xl inline-flex text-lg font-normal gap-2`}>
-                  <Logo
-                    className={cn(
-                      'text-sm me-0 w-10 h-10 text-link dark:text-link-dark flex origin-center transition-all ease-in-out'
-                    )}
-                  />
-                  <span className="sr-only 3xl:not-sr-only">React</span>
+                  href="/versions"
+                  className=" flex py-2 flex-column justify-center items-center text-gray-50 dark:text-gray-30 hover:text-link hover:dark:text-link-dark hover:underline text-sm ms-1 cursor-pointer">
+                  v{siteConfig.version}
                 </NextLink>
               </div>
             </div>
