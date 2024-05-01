@@ -43,11 +43,19 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
 </TeamMember>
 
 <TeamMember name="Lauren Tan" permalink="lauren-tan" photo="/images/team/lauren.jpg" github="poteto" twitter="potetotes" threads="potetotes" personal="no.lol" title="Engineer at Meta">
+<<<<<<< HEAD
     Lauren 的编程生涯在她首次发现 `<marquee>` 标签时达到了巅峰，自此以后，她就一直追求这种感觉。在为 React 除错之余，她喜欢在聊天中发送风趣的表情包，还喜欢和伴侣以及她的狗狗 Zelda 一起玩各种电子游戏。
 </TeamMember>
 
 <TeamMember name="Luna Wei" permalink="luna-wei" photo="/images/team/luna-wei.jpg" github="lunaleaps" twitter="lunaleaps" threads="lunaleaps" title="Engineer at Meta">
     Luna 在仅有 6 岁的时候，就从父亲那里学到了 Python 的基本原理。从那以后，她的学习之路一直畅通无阻。Luna 有志成为 Z 世代的一员，她的成功之路充满了对环境的倡导，城市园艺的热爱，以及与她的 Voo-Doo'd（如图）共享的宝贵时光。
+=======
+    Lauren's programming career peaked when she first discovered the `<marquee>` tag. She’s been chasing that high ever since. She studied Finance instead of CS in college, so she learned to code using Excel instead of Java. Lauren enjoys dropping cheeky memes in chat, playing video games with her partner, and petting her dog Zelda.
+</TeamMember>
+
+<TeamMember name="Luna Wei" permalink="luna-wei" photo="/images/team/luna-wei.jpg" github="lunaleaps" twitter="lunaleaps" threads="lunaleaps" title="Engineer at Meta">
+    Luna first learnt the fundamentals of python at the age of 6 from her father. Since then, she has been unstoppable. Luna aspires to be a gen z, and the road to success is paved with environmental advocacy, urban gardening and lots of quality time with her Voo-Doo’d (as pictured).
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 </TeamMember>
 
 <TeamMember name="Matt Carroll" permalink="matt-carroll" photo="/images/team/matt-carroll.png" github="mattcarrollcode" twitter="mattcarrollcode" threads="mattcarrollcode" title="Developer Advocate at Meta">

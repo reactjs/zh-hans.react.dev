@@ -19,5 +19,10 @@ canary: true
 
 ## 源码命令 {/*source-code-directives*/}
 
+<<<<<<< HEAD:src/content/reference/react/directives.md
 * 使用 [`'use client'`](/reference/react/use-client) 标记运行在客户端的代码。
 * 使用 [`'use server'`](/reference/react/use-server) 标记可以被客户端代码调用的服务端函数。
+=======
+* [`'use client'`](/reference/rsc/use-client) lets you mark what code runs on the client.
+* [`'use server'`](/reference/rsc/use-server) marks server-side functions that can be called from client-side code.
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951:src/content/reference/rsc/directives.md

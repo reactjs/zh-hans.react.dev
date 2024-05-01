@@ -5,13 +5,21 @@ canary: true
 
 <Canary>
 
+<<<<<<< HEAD
 `use` Hook 仅在 Canary 与 experimental 渠道中可用。参阅 [React 发布渠道](/community/versioning-policy#all-release-channels) 以了解更多信息。
+=======
+The `use` API is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 
 </Canary>
 
 <Intro>
 
+<<<<<<< HEAD
 `use` 是一个 React Hook，它可以让你读取类似于 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context) 的资源的值。
+=======
+`use` is a React API that lets you read the value of a resource like a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 
 ```js
 const value = use(resource);
@@ -38,9 +46,15 @@ function MessageComponent({ messagePromise }) {
   // ...
 ```
 
+<<<<<<< HEAD
 与其他 React Hook 不同的是，可以在循环和条件语句（如 `if`）中调用 `use`。但需要注意的是，调用 `use` 的函数仍然必须是一个组件或 Hook。
 
 当使用 Promise 调用 `use` Hook 时，它会与 [`Suspense`](/reference/react/Suspense) 和 [错误边界](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) 集成。当传递给 `use` 的 Promise 处于 pending 时，调用 `use` 的组件也会 **挂起**。如果调用 `use` 的组件被包装在 Suspense 边界内，将显示后备 UI。一旦 Promise 被解决，Suspense 后备方案将被使用 `use` Hook 返回的数据替换。如果传递给 `use` 的 Promise 被拒绝，将显示最近错误边界的后备 UI。
+=======
+Unlike React Hooks, `use` can be called within loops and conditional statements like `if`. Like React Hooks, the function that calls `use` must be a Component or Hook.
+
+When called with a Promise, the `use` API integrates with [`Suspense`](/reference/react/Suspense) and [error boundaries](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). The component calling `use` *suspends* while the Promise passed to `use` is pending. If the component that calls `use` is wrapped in a Suspense boundary, the fallback will be displayed.  Once the Promise is resolved, the Suspense fallback is replaced by the rendered components using the data returned by the `use` API. If the Promise passed to `use` is rejected, the fallback of the nearest Error Boundary will be displayed.
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 
 [参见下方更多示例](#usage)。
 
@@ -50,13 +64,23 @@ function MessageComponent({ messagePromise }) {
 
 #### 返回值 {/*returns*/}
 
+<<<<<<< HEAD
 `use` Hook 返回从资源中读取的值，类似于 fullfilled [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context)。
+=======
+The `use` API returns the value that was read from the resource like the resolved value of a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 
 #### 注意 {/*caveats*/}
 
+<<<<<<< HEAD
 * `use` Hook 必须在组件或 Hook 内部调用。
 * 在 [服务器组件](/reference/react/use-server) 中获取数据时，应优先使用 `async` 和 `await` 而不是 `use`。`async` 和 `await` 会从调用 `await` 的点开始渲染，而 `use` 会在数据获取到后重新渲染组件。
 * 在 [服务器组件](/reference/react/use-server) 中创建 Promise 并将其传递给 [客户端组件](/reference/react/use-client) 优于在客户端组件中创建 Promise。在客户端组件中创建的 Promise 每次渲染都会重新创建。从服务器组件传递到客户端组件的 Promise 在重新渲染时保持稳定。[请参阅此示例](#streaming-data-from-server-to-client)。
+=======
+* The `use` API must be called inside a Component or a Hook.
+* When fetching data in a [Server Component](/reference/rsc/use-server), prefer `async` and `await` over `use`. `async` and `await` pick up rendering from the point where `await` was invoked, whereas `use` re-renders the component after the data is resolved.
+* Prefer creating Promises in [Server Components](/reference/rsc/use-server) and passing them to [Client Components](/reference/rsc/use-client) over creating Promises in Client Components. Promises created in Client Components are recreated on every render. Promises passed from a Server Component to a Client Component are stable across re-renders. [See this example](#streaming-data-from-server-to-client).
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 
 ---
 
@@ -230,7 +254,11 @@ export default function App() {
 }
 ```
 
+<<<<<<< HEAD
 <CodeStep step={2}>客户端组件</CodeStep>将<CodeStep step={4}> 从 prop 中接收到的 Promise </CodeStep> 传递给 <CodeStep step={5}>`use`</CodeStep> Hook。这允许 <CodeStep step={2}>客户端组件</CodeStep> 从最初由服务器组件创建的 <CodeStep step={4}>Promise</CodeStep> 中读取值。
+=======
+The <CodeStep step={2}>Client Component</CodeStep> then takes <CodeStep step={4}>the Promise it received as a prop</CodeStep> and passes it to the <CodeStep step={5}>`use`</CodeStep> API. This allows the <CodeStep step={2}>Client Component</CodeStep> to read the value from <CodeStep step={4}>the Promise</CodeStep> that was initially created by the Server Component.
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 
 ```js [[2, 6, "Message"], [4, 6, "messagePromise"], [4, 7, "messagePromise"], [5, 7, "use"]]
 // message.js
@@ -243,7 +271,11 @@ export function Message({ messagePromise }) {
   return <p>Here is the message: {messageContent}</p>;
 }
 ```
+<<<<<<< HEAD
 由于 <CodeStep step={2}>`Message`</CodeStep> 被包裹在 <CodeStep step={3}>[`Suspense`](/reference/react/Suspense)</CodeStep> 中，所以在 Promise 解决之前将显示后备方案。当 Promise 被解决后，<CodeStep step={5}>`use`</CodeStep> Hook 将读取值，然后 <CodeStep step={2}>`Message`</CodeStep> 组件将替换 Suspense 后备方案。
+=======
+Because <CodeStep step={2}>`Message`</CodeStep> is wrapped in <CodeStep step={3}>[`Suspense`](/reference/react/Suspense)</CodeStep>, the fallback will be displayed until the Promise is resolved. When the Promise is resolved, the value will be read by the <CodeStep step={5}>`use`</CodeStep> API and the <CodeStep step={2}>`Message`</CodeStep> component will replace the Suspense fallback.
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 
 <Sandpack>
 
@@ -291,9 +323,15 @@ export default function App() {
 ```
 
 ```js src/index.js hidden
+<<<<<<< HEAD
 // TODO: 在稳定版本中更新 import
 // 以替代此处 canary 版本中的导入方式，一旦 `use`
 // Hook 在 React 稳定版本中发布
+=======
+// TODO: update to import from stable
+// react instead of canary once the `use`
+// API is in a stable release of React
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
@@ -334,7 +372,11 @@ root.render(
 
 #### 应该在服务器组件还是客户端组件解析 Promise？ {/*resolve-promise-in-server-or-client-component*/}
 
+<<<<<<< HEAD
 Promise 可以从服务器组件传递至客户端组件，并且可以在客户端组件中使用 `use` Hook 解析它。也可以在服务器组件中使用 `await` 解析 Promise，并将所需的数据作为 prop 传递给客户端组件。
+=======
+A Promise can be passed from a Server Component to a Client Component and resolved in the Client Component with the `use` API. You can also resolve the Promise in a Server Component with `await` and pass the required data to the Client Component as a prop.
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 
 ```js
 export default async function App() {
@@ -360,7 +402,11 @@ export default async function App() {
 
 #### 使用错误边界将错误展示给用户 {/*displaying-an-error-to-users-with-error-boundary*/}
 
+<<<<<<< HEAD
 如果希望在 Promise 被拒绝（rejected）时向用户显示错误信息，可以使用 [错误边界](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)。如果需要使用错误边界，请将调用 `use` Hook 的组件包装在错误边界中。如果传递给 `use` 的 Promise 被拒绝（rejected），将显示错误边界的后备方案。
+=======
+If you'd like to display an error to your users when a Promise is rejected, you can use an [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). To use an error boundary, wrap the component where you are calling the `use` API in an error boundary. If the Promise passed to `use` is rejected the fallback for the error boundary will be displayed.
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 
 <Sandpack>
 
@@ -411,9 +457,15 @@ export default function App() {
 ```
 
 ```js src/index.js hidden
+<<<<<<< HEAD
 // TODO: 在稳定版本中更新 import
 // 以替代此处 canary 版本中的导入方式，一旦 `use`
 // Hook 在 React 稳定版本中发布
+=======
+// TODO: update to import from stable
+// react instead of canary once the `use`
+// API is in a stable release of React
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
@@ -474,9 +526,15 @@ export default function App() {
 
 ### "Suspense Exception: This is not a real error!" {/*suspense-exception-error*/}
 
+<<<<<<< HEAD
 你要么是在 React 组件或 Hook 函数之外调用了 `use`，或者在 try-catch 块中调用了 `use`。如果你在 try-catch 块中调用 `use`，请将组件包裹在错误边界中，或者使用 Promise 的 `catch` 方法来捕获错误并提供给替代值。[参见这些示例](#dealing-with-rejected-promises)。
 
 如果在 React 组件或 Hook 函数之外调用 `use`，请将 `use` 调用移至 React 组件或 Hook 函数中。
+=======
+You are either calling `use` outside of a React Component or Hook function, or calling `use` in a try–catch block. If you are calling `use` inside a try–catch block, wrap your component in an error boundary, or call the Promise's `catch` to catch the error and resolve the Promise with another value. [See these examples](#dealing-with-rejected-promises).
+
+If you are calling `use` outside a React Component or Hook function, move the `use` call to a React Component or Hook function.
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 
 ```jsx
 function MessageComponent({messagePromise}) {
@@ -486,7 +544,11 @@ function MessageComponent({messagePromise}) {
     // ...
 ```
 
+<<<<<<< HEAD
 相反，请在任何组件封闭区域之外调用 `use`，而调用 `use` 的函数本身应为组件或 Hook。
+=======
+Instead, call `use` outside any component closures, where the function that calls `use` is a Component or Hook.
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 
 ```jsx
 function MessageComponent({messagePromise}) {

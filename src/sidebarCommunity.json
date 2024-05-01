@@ -32,7 +32,15 @@
           "path": "/community/docs-contributors"
         },
         {
+<<<<<<< HEAD
           "title": "鸣谢",
+=======
+          "title": "Translations",
+          "path": "/community/translations"
+        },
+        {
+          "title": "Acknowledgements",
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
           "path": "/community/acknowledgements"
         },
         {
