@@ -38,6 +38,7 @@ async function addToCart(data) {
 
 可以将 `'use server'` 指示符添加到文件顶部来代替逐个在函数中添加它。位于文件顶部的指示符会将所有导出都标记为可在任何地方使用的 Server Action，包括在客户端代码中导入。
 
+<<<<<<< HEAD:src/content/reference/react/use-server.md
 #### 注意 {/*caveats*/}
 * `'use server'` 必须位于函数或模块的顶部，在任何导入或其他代码之前（可以位于代码顶部的注释之后）。它们必须用单引号或双引号编写，但不能用反引号。
 * `'use server'` 只能在服务器端文件中使用。生成的 Server Action 可以通过 props 传递给客户端组件。请参阅支持的 [序列化参数和返回值类型](#serializable-parameters-and-return-values)。
@@ -46,6 +47,16 @@ async function addToCart(data) {
 * 始终将 Server Action 的参数视为不受信任的输入，并授权任何变更。请参阅 [安全考虑](#security)。
 * 应在 [transition](/reference/react/useTransition) 中调用 Server Action。传递给 [`<form action>`](/reference/react-dom/components/form#props) 或 [`formAction`](/reference/react-dom/components/input#props) 的 Server Action 将自动在 Transition 中被调用。
 * Server Action 专为更新服务器端状态的变更而设计，不建议用于数据获取。因此，实现 Server Action 的框架通常一次只处理一个 Action，没有缓存返回值的方式。
+=======
+#### Caveats {/*caveats*/}
+* `'use server'` must be at the very beginning of their function or module; above any other code including imports (comments above directives are OK). They must be written with single or double quotes, not backticks.
+* `'use server'` can only be used in server-side files. The resulting Server Actions can be passed to Client Components through props. See supported [types for serialization](#serializable-parameters-and-return-values).
+* To import a Server Action from [client code](/reference/rsc/use-client), the directive must be used on a module level.
+* Because the underlying network calls are always asynchronous, `'use server'` can only be used on async functions.
+* Always treat arguments to Server Actions as untrusted input and authorize any mutations. See [security considerations](#security).
+* Server Actions should be called in a [Transition](/reference/react/useTransition). Server Actions passed to [`<form action>`](/reference/react-dom/components/form#props) or [`formAction`](/reference/react-dom/components/input#props) will automatically be called in a transition.
+* Server Actions are designed for mutations that update server-side state; they are not recommended for data fetching. Accordingly, frameworks implementing Server Actions typically process one action at a time and do not have a way to cache the return value.
+>>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134:src/content/reference/rsc/use-server.md
 
 ### 安全考虑 {/*security*/}
 
@@ -95,7 +106,11 @@ Server Action 的参数完全由客户端控制。出于安全考虑，始终将
 * 未全局注册的符号，例如 `Symbol('my new symbol')`
 
 
+<<<<<<< HEAD:src/content/reference/react/use-server.md
 支持的可序列化返回值与边界客户端组件的 [可序列化 props](/reference/react/use-client#passing-props-from-server-to-client-components) 相同。
+=======
+Supported serializable return values are the same as [serializable props](/reference/rsc/use-client#passing-props-from-server-to-client-components) for a boundary Client Component.
+>>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134:src/content/reference/rsc/use-server.md
 
 
 ## 用法 {/*usage*/}
@@ -133,7 +148,11 @@ export default function App() {
 
 在用户名请求表单中，可能存在用户名不可用的情况。`requestUsername` 应该告诉我们它是否失败。
 
+<<<<<<< HEAD:src/content/reference/react/use-server.md
 请使用 [`useFormState`](/reference/react-dom/hooks/useFormState) 以根据 Server Action 的结果更新 UI 并支持逐步增强。
+=======
+To update the UI based on the result of a Server Action while supporting progressive enhancement, use [`useActionState`](/reference/react/useActionState).
+>>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134:src/content/reference/rsc/use-server.md
 
 ```js
 // requestUsername.js
@@ -153,11 +172,11 @@ export default async function requestUsername(formData) {
 // UsernameForm.js
 'use client';
 
-import { useFormState } from 'react-dom';
+import { useActionState } from 'react';
 import requestUsername from './requestUsername';
 
 function UsernameForm() {
-  const [returnValue, action] = useFormState(requestUsername, 'n/a');
+  const [state, action] = useActionState(requestUsername, null, 'n/a');
 
   return (
     <>
@@ -165,13 +184,21 @@ function UsernameForm() {
         <input type="text" name="username" />
         <button type="submit">请求</button>
       </form>
+<<<<<<< HEAD:src/content/reference/react/use-server.md
       <p>最后一次提交的请求的返回值： {returnValue}</p>
+=======
+      <p>Last submission request returned: {state}</p>
+>>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134:src/content/reference/rsc/use-server.md
     </>
   );
 }
 ```
 
+<<<<<<< HEAD:src/content/reference/react/use-server.md
 请注意，与大多数 Hook 一样，`useFormState` 只能在 <CodeStep step={1}>[客户端代码](/reference/react/use-client)</CodeStep> 中调用。
+=======
+Note that like most Hooks, `useActionState` can only be called in <CodeStep step={1}>[client code](/reference/rsc/use-client)</CodeStep>.
+>>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134:src/content/reference/rsc/use-server.md
 
 ### 在 `<form>` 之外调用 Server Action {/*calling-a-server-action-outside-of-form*/}
 

@@ -1,5 +1,12 @@
 ---
+<<<<<<< HEAD
 title: "React Labs：我们正在努力的方向——2024 年 2 月"
+=======
+title: "React Labs: What We've Been Working On – February 2024"
+author: Joseph Savona, Ricky Hanlon, Andrew Clark, Matt Carroll, and Dan Abramov
+date: 2024/02/15
+description: In React Labs posts, we write about projects in active research and development. We’ve made significant progress since our last update, and we’d like to share our progress.
+>>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134
 ---
 
 2024 年 2 月 15 日 [Joseph Savona](https://twitter.com/en_JS)、[Ricky Hanlon](https://twitter.com/rickhanlonii)、[Andrew Clark](https://twitter.com/acdlite)、[Matt Carroll](https://twitter.com/mattcarrollcode) 与 [Dan Abramov](https://twitter.com/dan_abramov)
@@ -52,7 +59,11 @@ JavaScript 是一个因其松散规则和动态特性而闻名的具有挑战性
 </form>
 ```
 
+<<<<<<< HEAD
 `action` 函数可以同步或异步执行。你可以在客户端使用标准 JavaScript 定义它们，也可以在服务器上使用 [`'use server'`](/reference/react/use-server) 指示符。当使用 action 时，React 将帮助管理数据提交的生命周期，提供类似 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) 和 [`useFormState`](/reference/react-dom/hooks/useFormState) 的 Hook，以访问表单操作的当前 state 与响应。
+=======
+The `action` function can operate synchronously or asynchronously. You can define them on the client side using standard JavaScript or on the server with the  [`'use server'`](/reference/rsc/use-server) directive. When using an action, React will manage the life cycle of the data submission for you, providing hooks like [`useFormStatus`](/reference/react-dom/hooks/useFormStatus), and [`useActionState`](/reference/react/useActionState) to access the current state and response of the form action.
+>>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134
 
 默认情况下，Action 在 [transition](/reference/react/useTransition) 中提交，使当前页面在操作处理过程中保持交互性。由于 Action 支持异步函数，我们还添加了在 transitions 中使用 `async/await` 的功能，这允许在异步请求（如 `fetch`）开始时使用转换的 `isPending` 状态显示待处理 UI，并在应用更新时始终显示待处理 UI。
 
@@ -72,13 +83,21 @@ Canaries 是我们开发 React 的一种变化。以前，功能会在 Meta 内�
 
 React 服务器组件、资源加载、文档元数据与 Action 都已经加入了 React Canary，并且我们已经在 react.dev 上为这些功能添加了文档：
 
+<<<<<<< HEAD
 - **指示符**：[`"use client"`](/reference/react/use-client) 与 [`"use server"`](/reference/react/use-server) 是设计用于全栈 React 框架的打包功能。它们标记了两个环境之间的“分割点”：use client 指示符指示打包工具生成一个 `<script>` 标签（类似于 [Astro Islands](https://docs.astro.build/en/concepts/islands/#creating-an-island)），而 use server 告诉打包工具生成一个 POST 端点（类似于 [tRPC Mutations](https://trpc.io/docs/concepts)）。它们让你可以编写将客户端交互性与相关的服务器端逻辑组合在一起的可重用组件。
+=======
+- **Directives**: [`"use client"`](/reference/rsc/use-client) and [`"use server"`](/reference/rsc/use-server) are bundler features designed for full-stack React frameworks. They mark the "split points" between the two environments: `"use client"` instructs the bundler to generate a `<script>` tag (like [Astro Islands](https://docs.astro.build/en/concepts/islands/#creating-an-island)), while `"use server"` tells the bundler to generate a POST endpoint (like [tRPC Mutations](https://trpc.io/docs/concepts)). Together, they let you write reusable components that compose client-side interactivity with the related server-side logic.
+>>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134
 
 - **文档元数据**：我们内置支持在组件树中的任何位置渲染 [`<title>`](/reference/react-dom/components/title)、[`<meta>`](/reference/react-dom/components/meta) 和元数据 [`<link>`](/reference/react-dom/components/link) 标签。这些在所有环境中都以相同的方式工作，包括完全客户端代码、SSR 和 RSC。这为像 [React Helmet](https://github.com/nfl/react-helmet) 这样的库开创的功能提供了内置支持。
 
 - **资源加载**：我们将 Suspense 与样式表、字体和脚本等资源的加载生命周期集成在一起，以便 React 考虑它们来确定像 [`<style>`](/reference/react-dom/components/style)、[`<link>`](/reference/react-dom/components/link) 和 [`<script>`](/reference/react-dom/components/script) 这样的元素中的内容是否已准备就绪。我们还添加了新的 [资源加载 API](/reference/react-dom#resource-preloading-apis)，如 `preload` 和 `preinit`，以提供更大的控制权，指示何时应加载和初始化资源。
 
+<<<<<<< HEAD
 - **Action**：如上所述，我们已将 Action 添加到管理从客户端发送数据到服务器的功能中。现在可以将 `action` 添加到像 [`<form/>`](/reference/react-dom/components/form) 这样的元素中，使用 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) 访问状态，使用 [`useFormState`](/reference/react-dom/hooks/useFormState) 处理结果，并使用 [`useOptimistic`](/reference/react/useOptimistic) 乐观地更新 UI。
+=======
+- **Actions**: As shared above, we've added Actions to manage sending data from the client to the server. You can add `action` to elements like [`<form/>`](/reference/react-dom/components/form), access the status with [`useFormStatus`](/reference/react-dom/hooks/useFormStatus), handle the result with [`useActionState`](/reference/react/useActionState), and optimistically update the UI with [`useOptimistic`](/reference/react/useOptimistic).
+>>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134
 
 由于所有这些功能是相互配合的，因此单独在稳定渠道中发布它们是困难的。发布 Action 而不带有用于访问表单状态的补充 Hook 会限制 Action 的实际可用性。引入 React 服务器组件而不集成 Server Action 会把在服务器上修改数据变得复杂化。
 

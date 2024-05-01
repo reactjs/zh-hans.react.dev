@@ -253,6 +253,7 @@ function App() {
 
 从服务器组件传递给客户端组件的属性值必须是可序列化的。
 
+<<<<<<< HEAD:src/content/reference/react/use-client.md
 可序列化属性包括：
 * 原始类型
 	* [string](https://developer.mozilla.org/zh-CN/docs/Glossary/String)
@@ -279,6 +280,34 @@ function App() {
 * [类](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
 * 任何类的实例对象（除了提到的内置类）或 [使用 null 作为原型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects) 的对象
 * 未全局注册的符号，例如 `Symbol('my new symbol')`
+=======
+Serializable props include:
+* Primitives
+	* [string](https://developer.mozilla.org/en-US/docs/Glossary/String)
+	* [number](https://developer.mozilla.org/en-US/docs/Glossary/Number)
+	* [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
+	* [boolean](https://developer.mozilla.org/en-US/docs/Glossary/Boolean)
+	* [undefined](https://developer.mozilla.org/en-US/docs/Glossary/Undefined)
+	* [null](https://developer.mozilla.org/en-US/docs/Glossary/Null)
+	* [symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol), only symbols registered in the global Symbol registry via [`Symbol.for`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)
+* Iterables containing serializable values
+	* [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
+	* [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+	* [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
+	* [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
+	* [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) and [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
+* [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+* Plain [objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object): those created with [object initializers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer), with serializable properties
+* Functions that are [Server Actions](/reference/rsc/use-server)
+* Client or Server Component elements (JSX)
+* [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+Notably, these are not supported:
+* [Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function) that are not exported from client-marked modules or marked with [`'use server'`](/reference/rsc/use-server)
+* [Classes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
+* Objects that are instances of any class (other than the built-ins mentioned) or objects with [a null prototype](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)
+* Symbols not registered globally, ex. `Symbol('my new symbol')`
+>>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134:src/content/reference/rsc/use-client.md
 
 
 ## 用法 {/*usage*/}

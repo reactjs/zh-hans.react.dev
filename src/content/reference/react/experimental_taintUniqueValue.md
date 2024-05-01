@@ -14,7 +14,11 @@ title: experimental_taintUniqueValue
 
 React 的实验版本可能有一些问题，请勿在生产环境中使用。
 
+<<<<<<< HEAD
 此 API 仅在 [React 服务器组件](/reference/react/use-client) 内可用。
+=======
+This API is only available inside [React Server Components](/reference/rsc/use-client).
+>>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134
 
 </Wip>
 
