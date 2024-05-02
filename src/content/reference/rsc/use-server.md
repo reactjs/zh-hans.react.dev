@@ -95,7 +95,7 @@ Server Action 的参数完全由客户端控制。出于安全考虑，始终将
 * 未全局注册的符号，例如 `Symbol('my new symbol')`
 
 
-支持的可序列化返回值与边界客户端组件的 [可序列化 props](/reference/react/use-client#passing-props-from-server-to-client-components) 相同。
+支持的可序列化返回值与边界客户端组件的 [可序列化 props](/reference/rsc/use-client#passing-props-from-server-to-client-components) 相同。
 
 
 ## 用法 {/*usage*/}
@@ -133,7 +133,7 @@ export default function App() {
 
 在用户名请求表单中，可能存在用户名不可用的情况。`requestUsername` 应该告诉我们它是否失败。
 
-请使用 [`useFormState`](/reference/react-dom/hooks/useFormState) 以根据 Server Action 的结果更新 UI 并支持逐步增强。
+请使用 [`useActionState`](/reference/react/useActionState) 以根据 Server Action 的结果更新 UI 并支持逐步增强。
 
 ```js
 // requestUsername.js
@@ -153,11 +153,11 @@ export default async function requestUsername(formData) {
 // UsernameForm.js
 'use client';
 
-import { useFormState } from 'react-dom';
+import { useActionState } from 'react';
 import requestUsername from './requestUsername';
 
 function UsernameForm() {
-  const [returnValue, action] = useFormState(requestUsername, 'n/a');
+  const [state, action] = useActionState(requestUsername, null, 'n/a');
 
   return (
     <>
@@ -171,7 +171,7 @@ function UsernameForm() {
 }
 ```
 
-请注意，与大多数 Hook 一样，`useFormState` 只能在 <CodeStep step={1}>[客户端代码](/reference/react/use-client)</CodeStep> 中调用。
+请注意，与大多数 Hook 一样，`useActionState` 只能在 <CodeStep step={1}>[客户端代码](/reference/react/use-client)</CodeStep> 中调用。
 
 ### 在 `<form>` 之外调用 Server Action {/*calling-a-server-action-outside-of-form*/}
 
