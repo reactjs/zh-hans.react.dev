@@ -12,10 +12,6 @@
       "skipBreadcrumb": true,
       "routes": [
         {
-<<<<<<< HEAD
-          "title": "React Labs：我们正在努力的方向——2024 年 2 月",
-          "titleForHomepage": "React Labs：2024 年 2 月",
-=======
           "title": "React 19 Beta",
           "titleForHomepage": "React 19 Beta",
           "icon": "blog",
@@ -32,7 +28,6 @@
         {
           "title": "React Labs: What We've Been Working On – February 2024",
           "titleForHomepage": "React Labs: February 2024",
->>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134
           "icon": "labs",
           "date": "February 15, 2024",
           "path": "/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024"

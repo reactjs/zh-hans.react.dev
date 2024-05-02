@@ -331,19 +331,11 @@ li {
   ref={node => {
     const map = getMap();
     if (node) {
-<<<<<<< HEAD
-      // 添加到 Map
-      map.set(cat.id, node);
-    } else {
-      // 从 Map 删除
-      map.delete(cat.id);
-=======
       // Add to the Map
       map.set(cat, node);
     } else {
       // Remove from the Map
       map.delete(cat);
->>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134
     }
   }}
 >

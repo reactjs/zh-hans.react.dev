@@ -131,9 +131,6 @@ export function Page({
         image={`/images/og-` + section + '.png'}
         searchOrder={searchOrder}
       />
-<<<<<<< HEAD
-      {/* <SocialBanner /> */}
-=======
       {(isHomePage || isBlogIndex) && (
         <Head>
           <link
@@ -144,8 +141,7 @@ export function Page({
           />
         </Head>
       )}
-      <SocialBanner />
->>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134
+      {/* <SocialBanner /> */}
       <TopNav
         section={section}
         routeTree={routeTree}

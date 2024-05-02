@@ -10,9 +10,6 @@ title: React Blog
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<<<<<<< HEAD
-<BlogCard title="React Labs：我们正在努力的方向——2024 年 2 月" date="February 15, 2024" url="/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024">
-=======
 <BlogCard title="React 19 Beta " date="April 25, 2024" url="/blog/2024/04/25/react-19">
 
 In the React 19 Beta Upgrade Guide, we shared step-by-step instructions for upgrading your app to React 19 Beta. In this post, we'll give an overview of the new features in React 19, and how you can adopt them.
@@ -26,7 +23,6 @@ The improvements added to React 19 require some breaking changes, but we've work
 </BlogCard>
 
 <BlogCard title="React Labs: What We've Been Working On – February 2024" date="February 15, 2024" url="/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024">
->>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134
 
 在 React Labs 的文章中，我们讲述了正在进行研究与开发的项目。自从上次更新以来，我们在 React 编译器、新功能和 React 19 方面取得了重大进展，除此之外我们还想要分享我们从中学到的东西。
 

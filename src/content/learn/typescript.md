@@ -137,11 +137,7 @@ export default App = AppTSX;
 const [enabled, setEnabled] = useState(false);
 ```
 
-<<<<<<< HEAD
 这将为 `enabled` 分配 `boolean` 类型，而 `setEnabled` 将是一个接受 `boolean` 参数的函数，或者返回 `boolean` 的函数。如果你想为 state 显式提供一个类型，你可以通过为 `useState` 调用提供一个类型参数来实现：
-=======
-This will assign the type of `boolean` to `enabled`, and `setEnabled` will be a function accepting either a `boolean` argument, or a function that returns a `boolean`. If you want to explicitly provide a type for the state, you can do so by providing a type argument to the `useState` call:
->>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134
 
 ```ts
 // 显式设置类型为 "boolean"

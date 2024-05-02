@@ -155,26 +155,6 @@
       ]
     },
     {
-<<<<<<< HEAD
-      "title": "指示符",
-      "path": "/reference/react/directives",
-      "canary": true,
-      "routes": [
-        {
-          "title": "'use client'",
-          "path": "/reference/react/use-client",
-          "canary": true
-        },
-        {
-          "title": "'use server'",
-          "path": "/reference/react/use-server",
-          "canary": true
-        }
-      ]
-    },
-    {
-=======
->>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134
       "hasSectionHeader": true,
       "sectionHeader": "react-dom@{{version}}"
     },
@@ -358,22 +338,6 @@
       "sectionHeader": "React 规则"
     },
     {
-<<<<<<< HEAD
-      "title": "概述",
-      "path": "/reference/rules"
-    },
-    {
-      "title": "组件和 Hook 必须是纯粹的",
-      "path": "/reference/rules/components-and-hooks-must-be-pure"
-    },
-    {
-      "title": "React 调用组件和 Hook",
-      "path": "/reference/rules/react-calls-components-and-hooks"
-    },
-    {
-      "title": "Hook 的规则",
-      "path": "/reference/rules/rules-of-hooks"
-=======
       "title": "Overview",
       "path": "/reference/rules",
       "routes": [
@@ -421,7 +385,6 @@
           "canary": true
         }
       ]
->>>>>>> a2f8ff3cfd9348dc69ea3347a6b9e836f0ebc134
     },
     {
       "hasSectionHeader": true,
