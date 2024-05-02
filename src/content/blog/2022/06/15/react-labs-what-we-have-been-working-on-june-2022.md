@@ -78,6 +78,10 @@ description: React 18 was years in the making, and with it brought valuable less
 
 去年，我们宣布了新版文档网站的测试版本（[后来发布为 react.dev](/blog/2023/03/16/introducing-react-dev)）。新的学习材料首先介绍了 Hook，并提供了新的图表、插图，以及许多交互式示例和挑战。之前我们暂时中断了这项工作，专注于 React 18 的发布；但现在 React 18 已经发布，我们正在积极努力完成和发布新的文档。
 
+<<<<<<< HEAD
 我们目前正在撰写关于 Effect 的详细部分，因为我们听说这是对新手和有经验的 React 用户来说最具挑战性的主题之一。[与 Effect 保持同步](/learn/synchronizing-with-effects) 是系列中首个发布的页面，接下来的几周还会有更多页面发布。当我们开始撰写关于 Effect 的详细部分时，我们意识到许多常见的 Effect 模式可以通过向 React 添加一个新的原语来简化。我们在 [useEvent RFC](https://github.com/reactjs/rfcs/pull/220) 中分享了一些初步想法。目前还处于早期研究阶段，我们仍在对这个想法进行迭代。我们非常感谢社区对 RFC 的意见，以及对正在进行的文档重写的 [反馈](https://github.com/reactjs/reactjs.org/issues/3308) 和贡献。我们特别要感谢 [Harish Kumar](https://github.com/harish-sethuraman) 为新网站实现提交和审查了许多改进的工作。
+=======
+We are currently writing a detailed section about effects, as we’ve heard that is one of the more challenging topics for both new and experienced React users. [Synchronizing with Effects](/learn/synchronizing-with-effects) is the first published page in the series, and there are more to come in the following weeks. When we first started writing a detailed section about effects, we’ve realized that many common effect patterns can be simplified by adding a new primitive to React. We’ve shared some initial thoughts on that in the [useEvent RFC](https://github.com/reactjs/rfcs/pull/220). It is currently in early research, and we are still iterating on the idea. We appreciate the community’s comments on the RFC so far, as well as the [feedback](https://github.com/reactjs/react.dev/issues/3308) and contributions to the ongoing documentation rewrite. We’d specifically like to thank [Harish Kumar](https://github.com/harish-sethuraman) for submitting and reviewing many improvements to the new website implementation.
+>>>>>>> e69ec587e4768cf82df48cfdd2bb27fb4c764fe4
 
 感谢 [Sophie Alpert](https://twitter.com/sophiebits) 对本篇博客文章的审查！

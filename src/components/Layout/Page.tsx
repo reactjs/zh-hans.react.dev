@@ -11,8 +11,6 @@ import {Toc} from './Toc';
 
 import {DocsPageFooter} from 'components/DocsFooter';
 import {Seo} from 'components/Seo';
-import ButtonLink from 'components/ButtonLink';
-import {IconNavArrow} from 'components/Icon/IconNavArrow';
 import PageHeading from 'components/PageHeading';
 import {getRouteMeta} from './getRouteMeta';
 import {TocContext} from '../MDX/TocContext';
@@ -105,12 +103,10 @@ export function Page({
   let hasColumns = true;
   let showSidebar = true;
   let showToc = true;
-  let showSurvey = true;
   if (isHomePage || isBlogIndex) {
     hasColumns = false;
     showSidebar = false;
     showToc = false;
-    showSurvey = false;
   } else if (section === 'blog') {
     showToc = false;
     hasColumns = false;
@@ -178,6 +174,7 @@ export function Page({
               )}>
               {!isHomePage && (
                 <div className="w-full px-5 pt-10 mx-auto sm:px-12 md:px-12 md:pt-12 lg:pt-10">
+<<<<<<< HEAD
                   {
                     <hr className="mx-auto max-w-7xl border-border dark:border-border-dark" />
                   }
@@ -205,6 +202,9 @@ export function Page({
                       <hr className="mx-auto max-w-7xl border-border dark:border-border-dark" />
                     </>
                   )}
+=======
+                  <hr className="mx-auto max-w-7xl border-border dark:border-border-dark" />
+>>>>>>> e69ec587e4768cf82df48cfdd2bb27fb4c764fe4
                 </div>
               )}
               <div

@@ -4,7 +4,11 @@ title: 文档贡献者
 
 <Intro>
 
+<<<<<<< HEAD
 React 文档由 [React 团队](/community/team) 和 [外部贡献者](https://github.com/reactjs/reactjs.org/graphs/contributors) 编写和维护。在本页面上，我们要感谢一些为该网站做出重大贡献的人员。
+=======
+React documentation is written and maintained by the [React team](/community/team) and [external contributors.](https://github.com/reactjs/react.dev/graphs/contributors) On this page, we'd like to thank a few people who've made significant contributions to this site.
+>>>>>>> e69ec587e4768cf82df48cfdd2bb27fb4c764fe4
 
 </Intro>
 
