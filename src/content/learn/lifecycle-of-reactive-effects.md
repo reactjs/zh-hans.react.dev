@@ -133,7 +133,7 @@ function ChatRoom({ roomId /* "travel" */ }) {
 
 回想一下，`ChatRoom` 组件已经接收到了 `roomId` 属性的新值。之前它是 `"general"`，现在变成了 `"travel"`。React 需要重新同步 Effect，以重新连接到不同的聊天室。
 
-为了 **停止同步**，React 将调用 Effect 返回的清理函数，该函数在连接到 `"general"` 聊天室后返回。由于 `roomId` 为 `"general"`，清理函数将断开与 `"general"` 聊天室的连接：
+为了 **停止同步**，React 将调用 Effect 返回的清理函数，该函数在连接到 `"general"` 聊天室后返回。由于 `roomId` 为 `"travel"`，清理函数将断开与 `"general"` 聊天室的连接：
 
 ```js {6}
 function ChatRoom({ roomId /* "general" */ }) {
