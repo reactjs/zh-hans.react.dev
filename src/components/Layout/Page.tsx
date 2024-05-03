@@ -174,37 +174,7 @@ export function Page({
               )}>
               {!isHomePage && (
                 <div className="w-full px-5 pt-10 mx-auto sm:px-12 md:px-12 md:pt-12 lg:pt-10">
-<<<<<<< HEAD
-                  {
-                    <hr className="mx-auto max-w-7xl border-border dark:border-border-dark" />
-                  }
-                  {showSurvey && (
-                    <>
-                      <div className="flex flex-col items-center m-4 p-4">
-                        <p className="mb-4 text-lg font-bold text-primary dark:text-primary-dark">
-                          你觉得这些文档怎么样？
-                        </p>
-                        <div>
-                          <ButtonLink
-                            href="https://www.surveymonkey.co.uk/r/PYRPF3X"
-                            className="mt-1"
-                            type="primary"
-                            size="md"
-                            target="_blank">
-                            参与我们的调查吧！
-                            <IconNavArrow
-                              displayDirection="end"
-                              className="inline ms-1"
-                            />
-                          </ButtonLink>
-                        </div>
-                      </div>
-                      <hr className="mx-auto max-w-7xl border-border dark:border-border-dark" />
-                    </>
-                  )}
-=======
                   <hr className="mx-auto max-w-7xl border-border dark:border-border-dark" />
->>>>>>> e69ec587e4768cf82df48cfdd2bb27fb4c764fe4
                 </div>
               )}
               <div

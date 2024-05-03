@@ -613,11 +613,7 @@ button { display: block; margin-top: 10px; }
 
 ## 接下来还有什么 {/*whats-next*/}
 
-<<<<<<< HEAD
-对新文档的介绍到此结束！浏览一下新网站，看看你喜欢或不喜欢什么，欢迎在 [匿名调查](https://www.surveymonkey.co.uk/r/PYRPF3X) 或 [问题跟踪器](https://github.com/reactjs/reactjs.org/issues) 中提供反馈。
-=======
-That's a wrap for our little tour! Have a look around the new website, see what you like or don't like, and keep the feedback coming in our [issue tracker](https://github.com/reactjs/react.dev/issues).
->>>>>>> e69ec587e4768cf82df48cfdd2bb27fb4c764fe4
+对新文档的介绍到此结束！浏览一下新网站，看看你喜欢或不喜欢什么，欢迎在 [匿名调查](https://www.surveymonkey.co.uk/r/PYRPF3X) 或 [问题跟踪器](https://github.com/reactjs/react.dev/issues) 中提供反馈。
 
 我们承认这个项目花费了很长时间才发布。我们希望 React 社区保持应该拥有的高质量标准。在编写这些文档和创建所有示例的过程中，我们发现了一些自己解释中的错误、React 中的错误，甚至是 React 设计中的空缺，我们现在正在努力解决。我们希望新文档将帮助我们在未来将 React 本身保持在更高的标准上。
 
