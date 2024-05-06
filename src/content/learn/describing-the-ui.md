@@ -1,5 +1,5 @@
 ---
-title: 描述用户界面
+title: 描述 UI
 translators:
   - ChelesteWang
   - QC-L
