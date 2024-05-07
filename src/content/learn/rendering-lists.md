@@ -105,24 +105,24 @@ Warning: Each child in a list should have a unique "key" prop.
 ```js
 const people = [{
   id: 0,
-  name: 'Creola Katherine Johnson',
-  profession: 'mathematician',
+  name: '凯瑟琳·约翰逊',
+  profession: '数学家',
 }, {
   id: 1,
-  name: 'Mario José Molina-Pasquel Henríquez',
-  profession: 'chemist',
+  name: '马里奥·莫利纳:',
+  profession: '化学家',
 }, {
   id: 2,
-  name: 'Mohammad Abdus Salam',
-  profession: 'physicist',
+  name: '穆罕默德·阿卜杜勒·萨拉姆',
+  profession: '物理学家',
 }, {
   id: 3,
-  name: 'Percy Lavon Julian',
-  profession: 'chemist',  
+  name: '珀西·莱温·朱利亚',
+  profession: '化学家',  
 }, {
   id: 4,
-  name: 'Subrahmanyan Chandrasekhar',
-  profession: 'astrophysicist',
+  name: '苏布拉马尼扬·钱德拉塞卡',
+  profession: '天体物理学家',
 }];
 ```
 
