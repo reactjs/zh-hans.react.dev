@@ -118,7 +118,7 @@ const people = [{
 }, {
   id: 3,
   name: '珀西·莱温·朱利亚',
-  profession: '化学家',  
+  profession: '化学家',
 }, {
   id: 4,
   name: '苏布拉马尼扬·钱德拉塞卡',
