@@ -240,11 +240,7 @@ React 18 中的 Suspense 在与 Transition API 结合时效果最好。如果你
 
 #### useTransition {/*usetransition*/}
 
-<<<<<<< HEAD
 `useTransition` 和 `startTransition` 让你能够将一些状态更新标记为过渡更新。默认情况下，状态更新都被视为紧急更新。React 将允许紧急更新（例如，更新一个文本输入内容）打断过渡更新（例如，渲染一个搜索结果列表）。[参阅文档](/reference/react/useTransition)。
-=======
-`useTransition` and `startTransition` let you mark some state updates as not urgent. Other state updates are considered urgent by default. React will allow urgent state updates (for example, updating a text input) to interrupt non-urgent state updates (for example, rendering a list of search results). [See docs here](/reference/react/useTransition).
->>>>>>> 46437c2b12b14073d614b94befc012c21013327a
 
 #### useDeferredValue {/*usedeferredvalue*/}
 
