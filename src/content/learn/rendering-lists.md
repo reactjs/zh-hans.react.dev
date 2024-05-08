@@ -109,7 +109,7 @@ const people = [{
   profession: '数学家',
 }, {
   id: 1,
-  name: '马里奥·莫利纳:',
+  name: '马里奥·莫利纳',
   profession: '化学家',
 }, {
   id: 2,
