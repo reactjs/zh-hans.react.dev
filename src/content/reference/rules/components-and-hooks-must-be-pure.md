@@ -7,7 +7,7 @@ title: 组件和 Hook 必须是纯粹的
 </Intro>
 
 <Note>
-本参考文档讨论了一些高级议题，因此建议先了了解 [保持组件纯粹](/learn/keeping-components-pure) 页面中涉及的相关概念。
+本参考文档讨论了一些高级议题，因此建议先了解 [保持组件纯粹](/learn/keeping-components-pure) 页面中涉及的相关概念。
 </Note>
 
 <InlineToc />
