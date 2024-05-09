@@ -598,9 +598,6 @@ input { display: block; margin-bottom: 20px; }
 
 下面提供一些常用的 Effect 应用模式。
 
-<<<<<<< HEAD
-### 控制非 React 组件 {/*controlling-non-react-widgets*/}
-=======
 <Pitfall>
 
 #### Don't use refs to prevent Effects from firing {/*dont-use-refs-to-prevent-effects-from-firing*/}
@@ -628,8 +625,7 @@ See the examples below for how to handle common patterns.
 
 </Pitfall>
 
-### Controlling non-React widgets {/*controlling-non-react-widgets*/}
->>>>>>> 0b9ae66066cccce35832c35097d6cafacd99c098
+### 控制非 React 组件 {/*controlling-non-react-widgets*/}
 
 有时需要添加不是使用 React 编写的 UI 小部件。例如，假设你要向页面添加地图组件，并且它有一个 `setZoomLevel()` 方法，你希望调整缩放级别（zoom level）并与 React 代码中的 `zoomLevel` state 变量保持同步。Effect 看起来应该与下面类似：
 
