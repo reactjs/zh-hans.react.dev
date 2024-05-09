@@ -7,34 +7,34 @@ title: 组件和 Hook 必须是纯粹的
 </Intro>
 
 <Note>
-本参考页面涵盖高级话题，需要熟悉 [保持组件纯粹](/learn/keeping-components-pure) 页面中涉及的概念。
+本参考文档涵盖讨论了一些高级议题，因此建议先了了解 [保持组件纯粹](/learn/keeping-components-pure) 页面中涉及的相关概念。
 </Note>
 
 <InlineToc />
 
 ### 为什么保持纯粹很重要？ {/*why-does-purity-matter*/}
 
-React 中的一个核心概念是保持纯粹。一个纯组件或 Hook 是指：
+React 中的一个核心概念是保持纯粹。一个纯组件或 Hook 应该是：
 
-* **幂等性** ——每次使用相同的输入（组件输入的 props、state、context 以及 Hook 输入的参数）运行它，你 [总是得到相同的结果](/learn/keeping-components-pure#purity-components-as-formulas)。
-* **在渲染中没有副作用** ——具有副作用的代码应该 [与渲染过程分开执行](#how-does-react-run-your-code)。例如，可以作为 [响应事件](/learn/responding-to-events)——在用户与用户界面交互并导致其更新时触发。或者作为一个 [Effect](/reference/react/useEffect)，它将在渲染之后运行。
-* **不要修改非局部作用域中的值**: 组件和 Hook 在渲染时中 [绝不应该修改非局部创建的值](#mutation)。
+* **幂等的** ——每次使用相同的输入（组件输入的 props、state、context 以及 Hook 输入的参数）运行它，你 [总是得到相同的结果](/learn/keeping-components-pure#purity-components-as-formulas)。
+* **在渲染中没有副作用** ——具有副作用的代码应该 [与渲染过程分开执行](#how-does-react-run-your-code)。例如，可以作为 [响应事件](/learn/responding-to-events)，在用户与用户界面交互并导致其更新时触发。或者作为一个 [Effect](/reference/react/useEffect)，在渲染之后运行。
+* **不要修改非局部作用域中的值**：组件和 Hook 在渲染时中 [绝不应该修改非局部创建的值](#mutation)。
 
-当渲染保持纯净时，React 能够理解哪些更新对用户来说最重要，应该优先显示。这是因为渲染的纯粹，即由于组件 [在渲染过程中](#how-does-react-run-your-code) 不会产生副作用，React 可以暂停渲染那些不是那么重要的组件，等到真正需要时再继续渲染它们。
+当渲染保持纯粹时，React 能够理解哪些更新对用户来说最重要，应该优先显示。因为渲染的纯粹，即组件 [在渲染过程中](#how-does-react-run-your-code) 不会产生副作用，React 可以暂停渲染那些不是那么重要的组件，等到真正需要时再继续渲染它们。
 
-具体来说，这意味着渲染逻辑可以多次运行，这样 React 就能够为你的用户提供愉快的体验。然而，如果你的组件 [在渲染过程中](#how-does-react-run-your-code) 有无追踪的副作用，比如修改全局变量的值，那么当 React 再次运行你的渲染代码时，这些副作用会以你不希望的方式被触发。这通常会导致意外的 bug，从而降低用户对你应用的体验感。你可以看到这样一个 [例子在保持组件纯粹页面中](/learn/keeping-components-pure#side-effects-unintended-consequences)。
+具体来说，这意味着渲染逻辑可以多次运行，这样 React 就能够为你的用户提供最佳的体验。然而，如果你的组件 [在渲染过程中](#how-does-react-run-your-code) 有无追踪的副作用，比如修改全局变量的值，那么当 React 再次运行你的渲染代码时，这些副作用会以你不希望的方式被触发。这通常会导致意外的 bug，从而降低用户对你应用的体验感。你可以再 [保持组件纯粹页面中](/learn/keeping-components-pure#side-effects-unintended-consequences) 看到这样一个例子。
 
 #### React 是如何运行你的代码的？ {/*how-does-react-run-your-code*/}
 
-React 是声明式的，即你告诉 React 你想要渲染的内容，React 会自己选择最佳的方式向用户展示它。为了做到这一点，React 在执行你的代码时分为几个阶段。虽然你不必了解所有这些阶段就能很好地使用 React。但是，从高层次来看，你应该了解哪些代码在渲染阶段运行，哪些代码在渲染阶段之外运行。
+React 是声明式的，即你告诉 React 你想要渲染的内容，React 会自己选择最佳的方式向用户展示它。为了做到这一点，React 在执行你的代码时分为几个阶段。虽然你不必了解所有这些阶段就能很好地使用 React。但是，了解哪些代码在渲染阶段运行，哪些代码在渲染阶段之外运行，可以让你更高层次地理解 React。
 
-“渲染”指的是计算你的用户界面（UI）下一个版本应该呈现的样子。渲染完成后，[Effect](/reference/react/useEffect)  会被“清空”（意思是一直运行完所有的 Effect 为止），如果这些 Effect 对布局有影响，比如它们可能会改变之前的计算结果。React 会用这个新的计算结果与你 UI 上一个版本所用的计算结果进行比较，然后仅对 [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)——也就是用户实际看到的部分进行最小的必要更改，以确保 UI 更新至最新内容。
+“渲染”指的是计算你的用户界面（UI）下一个版本应该呈现的样子。渲染完成后，[Effect](/reference/react/useEffect)  会被“清空”（意思是一直运行完所有的 Effect 为止），如果这些 Effect 对布局有影响，比如它们可能会改变之前的计算结果。React 会用这个新的计算结果与你 UI 上一个版本所用的计算结果进行比较，然后仅对 [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)，也就是用户实际看到的部分进行最小的必要更改，以确保 UI 更新至最新内容。
 
 <DeepDive>
 
 #### 如何判断代码是否在渲染中运行 {/*how-to-tell-if-code-runs-in-render*/}
 
-一个快速判断代码是否在渲染过程中运行的方法是检查代码的位置：如果它像下面的例子那样写在顶层，那么它很可能会在渲染过程中运行。
+一个快速判断代码是否在渲染过程中运行的方法是检查代码书写的位置：如果它像下面的例子这样写在顶层，那么它很可能会在渲染过程中运行。
 
 ```js {2}
 function Dropdown() {
@@ -70,7 +70,7 @@ function Dropdown() {
 
 ## 组件和 Hook 必须是幂等的 {/*components-and-hooks-must-be-idempotent*/}
 
-组件必须始终根据其输入（props、state、和 context）返回相同的输出。这被称为“幂等性”。[幂等性](https://en.wikipedia.org/wiki/Idempotence)  是函数式编程中经常使用的一个术语，它指的是，只要你使用相同的输入运行代码 [得到的结果总是一样的](learn/keeping-components-pure)。
+组件必须始终根据其输入（props、state、和 context）返回相同的输出。这被称为“幂等性”。[幂等性](https://en.wikipedia.org/wiki/Idempotence)  是函数式编程中经常使用的一个术语，它指的是只要你使用相同的输入运行代码， [得到的结果总是一样的](learn/keeping-components-pure)。
 
 这意味着，为了遵循这一规则，所有 [在渲染期间](#how-does-react-run-your-code)  执行的代码也必须是幂等的。例如，以下这行代码就不是幂等的（因此，包含这行代码的组件也不是幂等的）：
 
@@ -81,9 +81,9 @@ function Clock() {
 }
 ```
 
-`new Date()` 函数不是幂等的，因为它总是返回当前的日期和时间，并且每次调用时返回的结果都不同。当你渲染上面的组件时，屏幕上显示的时间将会停留在组件被渲染的那一刻的时间。类似地，像 `Math.random()` 这样的函数也不是幂等的，因为即使输入相同，它们每次调用也都会返回不同的结果。
+`new Date()` 函数不是幂等的，因为每次调用时返回的结果都不同，它总是返回调用时刻的日期和时间。当你渲染上面的组件时，屏幕上显示的时间将会停留在组件被渲染的那一刻的时间。类似地，像 `Math.random()` 这样的函数也不是幂等的，因为即使输入相同，它们每次调用也都会返回不同的结果。
 
-这并不意味着你完全不能使用像 `new Date()` 这样非幂等的函数——你只需要避免 [在渲染过程](#how-does-react-run-your-code) 中使用它们即可。在这种情况下，我们可以使用一个 [Effect](/reference/react/useEffect) 来将最新的日期与这个组件进行“同步”：
+这并不意味着你完全不能使用像 `new Date()` 这样非幂等的函数，你只需要避免 [在渲染过程](#how-does-react-run-your-code) 中使用它们即可。在这种情况下，我们可以使用一个 [Effect](/reference/react/useEffect) 来将最新的日期与这个组件进行“同步”：
 
 <Sandpack>
 
@@ -127,17 +127,17 @@ export default function Clock() {
 [副作用](/learn/keeping-components-pure#side-effects-unintended-consequences) 不应该 [在渲染中](#how-does-react-run-your-code) 执行，因为 React 可能会多次渲染组件以提供最佳的用户体验。
 
 <Note>
-副作用是一个比 Effect 更广泛的概念。Effect 特指被包裹在 `useEffect` 中的代码，而“副作用”是一般术语，指除了将其主要结果（返回值）传递给调用者之外，对外部世界有任何可观察影响的代码。
+副作用是一个比 Effect 更广泛的概念。Effect 特指被包裹在 `useEffect` 中的代码，而“副作用”是一般术语，指除了将其主要结果（返回值）传递给调用者之外，对外部环境有任何可观察影响的代码。
 
 副作用通常写在 [事件处理函数](/learn/responding-to-events) 或 Effect 内部。但绝不能在渲染过程中写。
 </Note>
 
-尽管渲染必须保持纯净，但副作用对于你的应用来说是应当也是非常必要的，这样才能做一些有趣的事情，比如在屏幕上显示内容！这条规则的关键点在于，副作用不应该 [在渲染中](#how-does-react-run-your-code) 执行，因为 React 可能会多次渲染组件。在大多数情况下，你会使用 [事件处理函数](learn/responding-to-events) 来处理副作用。使用事件处理函数明确地告诉 React 这段代码不需要在渲染过程中执行，从而保持渲染的纯粹。如果你已经尝试了所有可能的方法——并且只是作为最后的解决办法——你也可以使用 `useEffect` 来处理副作用。
+尽管渲染必须保持纯净，但副作用对于你的应用来说是也是非常必要的，这样才能做一些有趣的事情，比如在屏幕上显示内容！这条规则的关键点在于，副作用不应该 [在渲染中](#how-does-react-run-your-code) 执行，因为 React 可能会多次渲染组件。在大多数情况下，你会使用 [事件处理函数](learn/responding-to-events) 来处理副作用。使用事件处理函数明确地告诉 React 这段代码不需要在渲染过程中执行，从而保持渲染的纯粹。如果你已经尝试了所有可能的方法，并且只是作为最后的解决办法，你也可以使用 `useEffect` 来处理副作用。
 
 ### 什么时候可以进行 mutation？ {/*mutation*/}
 
 #### 局部 mutation {/*local-mutation*/}
-一个常见的副作用示例是突变（mutation），这在 JavaScript 中指的是改变一个非 [原始值](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) 的值。通常来说，在 React 中 mutation 操作并不符合最佳实践，但是进行局部 mutation 是完全可以接受的：
+一个常见的具有副作用的例子是突变（mutation），在 JavaScript 中指的是改变一个非 [原始值](https://developer.mozilla.org/en-US/docs/Glossary/Primitive) 的值。通常来说，在 React 中 mutation 操作并不符合最佳实践，但是进行局部 mutation 是完全可以接受的：
 
 ```js {2,7}
 function FriendList({ friends }) {
@@ -171,7 +171,7 @@ function FriendList({ friends }) {
 }
 ```
 
-每当 `<FriendList />` 组件再次运行时，我们都会持续地向 `items` 数组追加 `friends`，这将导致产生多个重复的结果。这个版本的 `<FriendList />` [在渲染中](#how-does-react-run-your-code) 具有可观察的副作用，所以违反了规则。
+每当 `<FriendList />` 组件再次运行时，我们都会持续地向 `items` 数组追加 `friends`，这会产生多个重复的结果。`<FriendList />` [在渲染中](#how-does-react-run-your-code) 具有了可观察的副作用，所以违反了规则。
 
 #### 延迟初始化 {/*lazy-initialization*/}
 
