@@ -1,5 +1,8 @@
 ---
-title: "React Labs：我们正在努力的方向——2022 年 6 月"
+title: "React Labs: What We've Been Working On – June 2022"
+author:  Andrew Clark, Dan Abramov, Jan Kassens, Joseph Savona, Josh Story, Lauren Tan, Luna Ruan, Mengdi Chen, Rick Hanlon, Robert Zhang, Sathya Gunasekaran, Sebastian Markbage, and Xuan Huang
+date: 2022/06/15
+description: React 18 was years in the making, and with it brought valuable lessons for the React team. Its release was the result of many years of research and exploring many paths. Some of those paths were successful; many more were dead-ends that led to new insights. One lesson we’ve learned is that it’s frustrating for the community to wait for new features without having insight into these paths that we’re exploring.
 ---
 
 2022 年 6 月 15 日 [Andrew Clark](https://twitter.com/acdlite)、[Dan Abramov](https://twitter.com/dan_abramov)、[Jan Kassens](https://twitter.com/kassens)、[Joseph Savona](https://twitter.com/en_JS)、[Josh Story](https://twitter.com/joshcstory)、[Lauren Tan](https://twitter.com/potetotes)、[Luna Ruan](https://twitter.com/lunaruan)、[Mengdi Chen](https://twitter.com/mengdi_en)、[Rick Hanlon](https://twitter.com/rickhanlonii)、[Robert Zhang](https://twitter.com/jiaxuanzhang01)、[Sathya Gunasekaran](https://twitter.com/_gsathya)、[Sebastian Markbåge](https://twitter.com/sebmarkbage) 与 [Xuan Huang](https://twitter.com/Huxpro)
@@ -75,6 +78,6 @@ title: "React Labs：我们正在努力的方向——2022 年 6 月"
 
 去年，我们宣布了新版文档网站的测试版本（[后来发布为 react.dev](/blog/2023/03/16/introducing-react-dev)）。新的学习材料首先介绍了 Hook，并提供了新的图表、插图，以及许多交互式示例和挑战。之前我们暂时中断了这项工作，专注于 React 18 的发布；但现在 React 18 已经发布，我们正在积极努力完成和发布新的文档。
 
-我们目前正在撰写关于 effect 的详细部分，因为我们听说这是对新手和有经验的 React 用户来说最具挑战性的主题之一。[与 Effect 保持同步](/learn/synchronizing-with-effects) 是系列中首个发布的页面，接下来的几周还会有更多页面发布。当我们开始撰写关于 effect 的详细部分时，我们意识到许多常见的 effect 模式可以通过向 React 添加一个新的原语来简化。我们在 [useEvent RFC](https://github.com/reactjs/rfcs/pull/220) 中分享了一些初步想法。目前还处于早期研究阶段，我们仍在对这个想法进行迭代。我们非常感谢社区对 RFC 的意见，以及对正在进行的文档重写的 [反馈](https://github.com/reactjs/reactjs.org/issues/3308) 和贡献。我们特别要感谢 [Harish Kumar](https://github.com/harish-sethuraman) 为新网站实现提交和审查了许多改进的工作。
+我们目前正在撰写关于 Effect 的详细部分，因为我们听说这是对新手和有经验的 React 用户来说最具挑战性的主题之一。[与 Effect 保持同步](/learn/synchronizing-with-effects) 是系列中首个发布的页面，接下来的几周还会有更多页面发布。当我们开始撰写关于 Effect 的详细部分时，我们意识到许多常见的 Effect 模式可以通过向 React 添加一个新的原语来简化。我们在 [useEvent RFC](https://github.com/reactjs/rfcs/pull/220) 中分享了一些初步想法。目前还处于早期研究阶段，我们仍在对这个想法进行迭代。我们非常感谢社区对 RFC 的意见，以及对正在进行的文档重写的 [反馈](https://github.com/reactjs/react.dev/issues/3308) 和贡献。我们特别要感谢 [Harish Kumar](https://github.com/harish-sethuraman) 为新网站实现提交和审查了许多改进的工作。
 
 感谢 [Sophie Alpert](https://twitter.com/sophiebits) 对本篇博客文章的审查！

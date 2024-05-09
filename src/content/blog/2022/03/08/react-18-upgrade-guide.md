@@ -1,5 +1,8 @@
 ---
-title: "如何升级到 React 18"
+title: "How to Upgrade to React 18"
+author: Rick Hanlon
+date: 2022/03/08
+description: As we shared in the release post, React 18 introduces features powered by our new concurrent renderer, with a gradual adoption strategy for existing applications. In this post, we will guide you through the steps for upgrading to React 18.
 ---
 
 2022 年 8 月 3 日 [Rick Hanlon](https://twitter.com/rickhanlonii)
@@ -225,7 +228,7 @@ function handleClick() {
 在 React 18 工作组，我们和第三方库的维护者合作，创建需要支持 styles 和外部存储中的特定用例的并发渲染的新 API。为了支持 React 18，一些第三方库可能需要切换到下面的 API 之一：
 
 * `useSyncExternalStore` 是一个新增 Hook，它允许外部存储通过对 store 的强制更新保持同步从而支持并发读取。这个新 API 推荐用于任何和 React 的外部状态集成的库。了解更多信息请查看 [useSyncExternalStore 概览](https://github.com/reactwg/react-18/discussions/70) 和 [useSyncExternalStore API 细节](https://github.com/reactwg/react-18/discussions/86)。
-* `useInsertionEffect` 是一个新增 Hook，它可以让 CSS-in-JS 库解决渲染中注入样式的性能问题。我们希望只有在你已经构建了一个 CSS-in-JS 库的情况下才使用它。这个 Hook 会在 DOM 变化之后，layout effect 读取新的布局之前运行。这解决了 React 17 及其以下就已经存在但是在 React 18 更重要的问题，因为在并发渲染期间 React 会阻止浏览器，给了它一个重新计算布局的机会。了解更多信息，查看 [`<style>` 库升级指南](https://github.com/reactwg/react-18/discussions/110)。
+* `useInsertionEffect` 是一个新增 Hook，它可以让 CSS-in-JS 库解决渲染中注入样式的性能问题。我们希望只有在你已经构建了一个 CSS-in-JS 库的情况下才使用它。这个 Hook 会在 DOM 变化之后，layout Effect 读取新的布局之前运行。这解决了 React 17 及其以下就已经存在但是在 React 18 更重要的问题，因为在并发渲染期间 React 会阻止浏览器，给了它一个重新计算布局的机会。了解更多信息，查看 [`<style>` 库升级指南](https://github.com/reactwg/react-18/discussions/110)。
 
 React 18 也引入了一些并发渲染的新 API，例如 `startTransition`、`useDeferredValue` 以及 `useId`，关于此更多信息我们在 [发布报告](/blog/2022/03/29/react-v18) 中有所分享。
 
@@ -233,7 +236,7 @@ React 18 也引入了一些并发渲染的新 API，例如 `startTransition`、`
 
 在未来，我们想要添加一个特性，它允许 React 在保存 state 的时候添加和移除 UI 块。例如，当用户离开当前 tab 页面又返回时，React 应该能够立刻展示之前的页面。为了达到这个目的，React 会使用和之前一样的组件状态来卸载和重新加载树。
 
-这个特性会让 React 拥有更好的开箱即用性能，但是它需要组件能够灵活应对多次加载和销毁的 effect。大部分 effect 工作方式没有任何变化，但是一些 effect 希望它们只加载或者销毁一次。
+这个特性会让 React 拥有更好的开箱即用性能，但是它需要组件能够灵活应对多次加载和销毁的 effect。大部分 Effect 工作方式没有任何变化，但是一些 Effect 希望它们只加载或者销毁一次。
 
 为了帮助让这些问题浮出水面，React 18 向严格模式中引入了一个只在开发环境进行的新检查。每当组件第一次加载时，新的检查会自动卸载和重新加载每一个组件，并在第二次加载的时候存储之前的状态。
 
@@ -255,8 +258,8 @@ React 18 也引入了一些并发渲染的新 API，例如 `startTransition`、`
     * 销毁 Layout effect。
     * 销毁 Effect effect。
 * React 模仿加载有上一个状态的组件。
-    * 运行 Layout effect setup 代码
-    * 运行 Effect effect setup 代码
+    * 运行 Layout Effect setup 代码
+    * 运行 Effect Effect setup 代码
 ```
 
 了解更多信息，可以查看工作组的文章：[向严格模式添加可复用的状态](https://github.com/reactwg/react-18/discussions/19) 和 [如何支持 Effect 中的可复用状态](https://github.com/reactwg/react-18/discussions/18)。
@@ -302,7 +305,7 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
 ## 其他破坏性变更 {/*other-breaking-changes*/}
 
-* **一致的 useEffect 时间**：现在，如果更新是在类似点击或者敲击键盘事件这样的离散用户输入事件期间触发，React 总是同步刷新 effect 函数。而之前的行为不是一直可预测或者一致的。
+* **一致的 useEffect 时间**：现在，如果更新是在类似点击或者敲击键盘事件这样的离散用户输入事件期间触发，React 总是同步刷新 Effect 函数。而之前的行为不是一直可预测或者一致的。
 * **更严格的 hydrate 报错**：由于缺失或者额外的文本而导致的 hydrate 不匹配现在会作为错误而不是告警对待。React 将不再试图通过在客户端增加或删除节点来“修补”单个节点来匹配服务端标记，并且将会回退客户端渲染到树中最近的 `<Suspense>` 边界。这可以保证 hydrate 树保持一致并且避免可能由 hydrate 不匹配导致的隐私和安全漏洞。
 * **Suspense 树一直保持一致**：如果一个组件在它完全被添加到树上之前挂起，React 将不会把它以不完整的状态添加到树或者触发它的 effect。React 会完全扔掉新树，等待异步操作结束，然后重新尝试从头开始再次渲染。React 会同时渲染重试尝试，并且不会阻塞浏览器。
 * **使用 Suspense 的 Layout Effect**：当一个树重新挂起并恢复为后备方案时，现在的 React 会清理 layout effect，然后在边界内的内容再次显示时重新创建它们。这修复了一个在与 Suspense 一起使用时的问题：阻止组件库正确测量布局。

@@ -44,7 +44,7 @@ async function addToCart(data) {
 * 要从 [客户端代码](/reference/react/use-client) 导入 Server Action，必须在模块级别使用该指示符。
 * 由于底层网络调用始终是异步的，`'use server'` 只能用于异步函数。
 * 始终将 Server Action 的参数视为不受信任的输入，并授权任何变更。请参阅 [安全考虑](#security)。
-* 应在 [transition](/reference/react/useTransition) 中调用 Server Action。传递给 [`<form action>`](/reference/react-dom/components/form#props) 或 [`formAction`](/reference/react-dom/components/input#props) 的 Server Action 将自动在 transition 中被调用。
+* 应在 [transition](/reference/react/useTransition) 中调用 Server Action。传递给 [`<form action>`](/reference/react-dom/components/form#props) 或 [`formAction`](/reference/react-dom/components/input#props) 的 Server Action 将自动在 Transition 中被调用。
 * Server Action 专为更新服务器端状态的变更而设计，不建议用于数据获取。因此，实现 Server Action 的框架通常一次只处理一个 Action，没有缓存返回值的方式。
 
 ### 安全考虑 {/*security*/}
@@ -95,7 +95,7 @@ Server Action 的参数完全由客户端控制。出于安全考虑，始终将
 * 未全局注册的符号，例如 `Symbol('my new symbol')`
 
 
-支持的可序列化返回值与边界客户端组件的 [可序列化 props](/reference/react/use-client#passing-props-from-server-to-client-components) 相同。
+支持的可序列化返回值与边界客户端组件的 [可序列化 props](/reference/rsc/use-client#passing-props-from-server-to-client-components) 相同。
 
 
 ## 用法 {/*usage*/}
@@ -133,7 +133,7 @@ export default function App() {
 
 在用户名请求表单中，可能存在用户名不可用的情况。`requestUsername` 应该告诉我们它是否失败。
 
-请使用 [`useFormState`](/reference/react-dom/hooks/useFormState) 以根据 Server Action 的结果更新 UI 并支持逐步增强。
+请使用 [`useActionState`](/reference/react/useActionState) 以根据 Server Action 的结果更新 UI 并支持逐步增强。
 
 ```js
 // requestUsername.js
@@ -153,11 +153,11 @@ export default async function requestUsername(formData) {
 // UsernameForm.js
 'use client';
 
-import { useFormState } from 'react-dom';
+import { useActionState } from 'react';
 import requestUsername from './requestUsername';
 
 function UsernameForm() {
-  const [returnValue, action] = useFormState(requestUsername, 'n/a');
+  const [state, action] = useActionState(requestUsername, null, 'n/a');
 
   return (
     <>
@@ -171,13 +171,13 @@ function UsernameForm() {
 }
 ```
 
-请注意，与大多数 Hook 一样，`useFormState` 只能在 <CodeStep step={1}>[客户端代码](/reference/react/use-client)</CodeStep> 中调用。
+请注意，与大多数 Hook 一样，`useActionState` 只能在 <CodeStep step={1}>[客户端代码](/reference/react/use-client)</CodeStep> 中调用。
 
 ### 在 `<form>` 之外调用 Server Action {/*calling-a-server-action-outside-of-form*/}
 
 Server Action 是暴露的服务器端点，可以在客户端代码的任何位置调用。
 
-在 `<form>` 之外使用 Server Action 时，调用 Server Action 时请使用 [transition](/reference/react/useTransition)，这允许显示加载指示器、显示 [乐观状态更新](/reference/react/useOptimistic) 和处理意外错误。表单会自动在 transition 中包装 Server Action。
+在 `<form>` 之外使用 Server Action 时，调用 Server Action 时请使用 [transition](/reference/react/useTransition)，这允许显示加载指示器、显示 [乐观状态更新](/reference/react/useOptimistic) 和处理意外错误。表单会自动在 Transition 中包装 Server Action。
 
 ```js {9-12}
 import incrementLike from './actions';

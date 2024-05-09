@@ -31,7 +31,7 @@ title: <Suspense>
 
 - 在组件首次挂载前，如果组件被挂起，那么 React 将不会保留其任何状态。当组件完成加载后，React 将从头开始重新尝试渲染被挂起的组件树。
 - 如果 Suspense 正在展示 React 组件树中的内容，那么当再次被挂起时，除非导致此处更新是由 [`startTransition`](/reference/react/startTransition) 或 [`useDeferredValue`](/reference/react/useDeferredValue) 引起，否则 Suspense 将展示 `fallback`。
-- 如果 React 需要隐藏被再次挂起的可见内容，它将清理内容树中的 [layout effect](/reference/react/useLayoutEffect)。当内容可以被再次展示时，React 将重新触发 layout effect。这确保了测量 DOM 布局的 effect 不会在内容不可见时运行。
+- 如果 React 需要隐藏被再次挂起的可见内容，它将清理内容树中的 [layout Effect](/reference/react/useLayoutEffect)。当内容可以被再次展示时，React 将重新触发 layout Effect。这确保了测量 DOM 布局的 Effect 不会在内容不可见时运行。
 - React 带有内置优化，例如 **流式服务器渲染（Streaming Server Rendering）** 和 **Selective Hydration**，它们已经与 Suspense 集成。参见 [架构概述](https://github.com/reactwg/react-18/discussions/37) 并观看 [技术讲座](https://www.youtube.com/watch?v=pj5N-Khihgc) 以了解更多。
 
 ---
@@ -1741,7 +1741,7 @@ function Router() {
   // ...
 ```
 
-这告诉 React 此 state transition 是不紧急的，最好继续显示上一页，而不是隐藏任何已经显示的内容。现在点击按钮并等待 `Biography` 加载：
+这告诉 React 这个状态转移是不紧急的，最好继续显示上一页，而不是隐藏任何已经显示的内容。现在点击按钮并等待 `Biography` 加载：
 
 <Sandpack>
 
@@ -2112,19 +2112,19 @@ main {
 
 </Sandpack>
 
-transition 并不会等待 **所有** 内容加载完成。它只会等待足够长的时间，以避免隐藏已经显示的内容。例如，网站 `Layout` 已经显示，所以将其隐藏在加载中指示器后面是不好的。然而，`Albums` 周围的嵌套 `Suspense` 边界是新出现的，所以 transition 不会等待它。
+transition 并不会等待 **所有** 内容加载完成。它只会等待足够长的时间，以避免隐藏已经显示的内容。例如，网站 `Layout` 已经显示，所以将其隐藏在加载中指示器后面是不好的。然而，`Albums` 周围的嵌套 `Suspense` 边界是新出现的，所以 Transition 不会等待它。
 
 <Note>
 
-启用了 Suspense 的路由在默认情况下会将导航更新包装至 transition 中。
+启用了 Suspense 的路由在默认情况下会将导航更新包装至 Transition 中。
 
 </Note>
 
 ---
 
-### 表明 transition 正在发生 {/*indicating-that-a-transition-is-happening*/}
+### 表明 Transition 正在发生 {/*indicating-that-a-transition-is-happening*/}
 
-在上面的例子中，当你点击按钮，没有任何视觉指示表明导航正在进行。为了添加指示器，你可以用 [`useTransition`](/reference/react/useTransition) 替换 [`startTransition`](/reference/react/startTransition)，它会给你一个布尔值 `isPending`。在下面的例子中，它被用于当 transition 发生时改变网站头部的样式：
+在上面的例子中，当你点击按钮，没有任何视觉指示表明导航正在进行。为了添加指示器，你可以用 [`useTransition`](/reference/react/useTransition) 替换 [`startTransition`](/reference/react/startTransition)，它会给你一个布尔值 `isPending`。在下面的例子中，它被用于当 Transition 发生时改变网站头部的样式：
 
 <Sandpack>
 
@@ -2502,13 +2502,13 @@ main {
 
 ### 在导航时重置 Suspense 边界 {/*resetting-suspense-boundaries-on-navigation*/}
 
-在 transition 发生时，React 将避免隐藏已经显示的内容。但是，如果你导航到具有不同参数的路由，你可能想告诉 React 它是 **不同** 的内容。你可以用 `key` 表示这一点：
+在 Transition 发生时，React 将避免隐藏已经显示的内容。但是，如果你导航到具有不同参数的路由，你可能想告诉 React 它是 **不同** 的内容。你可以用 `key` 表示这一点：
 
 ```js
 <ProfilePage key={queryParams.id} />
 ```
 
-想想在用户的个人资料页面中导航，然后暂停了。如果更新被包装在 transition 中，它将不会触发已经可见内容的后备方案。这是预期的行为。
+想想在用户的个人资料页面中导航，然后暂停了。如果更新被包装在 Transition 中，它将不会触发已经可见内容的后备方案。这是预期的行为。
 
 然而，现在想象一下你在两个不同的用户资料之间导航。在这种情况下，显示后备方案是有意义的。例如，一个用户的时间线是与另一个用户的时间线是 **不同的内容**。通过指定一个 `key`，你可以确保 React 将不同用户的个人资料视为不同的组件，并在导航期间重置 Suspense 边界。集成 Suspense 的路由应该自动执行此操作。
 
@@ -2545,7 +2545,7 @@ function Chat() {
 
 使用后备方案替换一个可见的 UI 会带来令人不快的用户体验。当一个更新导致一个组件被挂起时，而最近的 Suspense 边界已经向用户显示了内容时，这种情况可能发生。
 
-为了防止这种情况发生，[使用 `startTransition` 将更新标记为非紧急的](#preventing-already-revealed-content-from-hiding)。在 transition 期间，React 将等待足够的数据加载，以防止不需要的后备方案出现：
+为了防止这种情况发生，[使用 `startTransition` 将更新标记为非紧急的](#preventing-already-revealed-content-from-hiding)。在 Transition 期间，React 将等待足够的数据加载，以防止不需要的后备方案出现：
 
 ```js {2-3,5}
 function handleNextPageClick() {

@@ -4,7 +4,7 @@ title: 文档贡献者
 
 <Intro>
 
-React 文档由 [React 团队](/community/team) 和 [外部贡献者](https://github.com/reactjs/reactjs.org/graphs/contributors) 编写和维护。在本页面上，我们要感谢一些为该网站做出重大贡献的人员。
+React 文档由 [React 团队](/community/team) 和 [外部贡献者](https://github.com/reactjs/react.dev/graphs/contributors) 编写和维护。在本页面上，我们要感谢一些为该网站做出重大贡献的人员。
 
 </Intro>
 

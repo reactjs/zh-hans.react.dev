@@ -18,16 +18,16 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Andrew 最初通过使用 WordPress 来制作网站，进入了网页开发领域，最终他自我投入到 JavaScript 的编程中。他最喜欢的娱乐活动是唱卡拉 OK。根据不同的日子，Andrew 有时候像是迪士尼的反派角色，有时候又像是迪士尼的公主。
 </TeamMember>
 
-<TeamMember name="Andrey Lunyov" permalink="andrey-lunyov" photo="/images/team/andrey-lunyov.jpg" github="alunyov" twitter="alunyov" threads="alunyov" title="Engineer at Meta">
-    Andrey 最初从事设计工作，然后逐渐转行到网页开发。在加入 React Data 团队后，他参与了向 Relay 添加渐进式 JavaScript 编译器的工作，后来又负责从 Relay 中移除了同样的编译器。在工作之余，Andrey 喜欢演奏音乐，参与各种体育活动。
-</TeamMember>
-
-<TeamMember name="Dan Abramov" permalink="dan-abramov" photo="/images/team/gaearon.jpg" github="gaearon" twitter="dan_abramov2" title="Engineer at Meta">
+<TeamMember name="Dan Abramov" permalink="dan-abramov" photo="/images/team/gaearon.jpg" github="gaearon" twitter="dan_abramov2" title="Independent Engineer">
     Dan 在意外发现 Microsoft PowerPoint 内部的 Visual Basic 后进入了编程行业。他发现了自己的真正使命，就是将 [Sebastian](#sebastian-markbåge) 的推特转化为长篇博客文章。Dan 偶尔会通过整局游戏都躲在草丛里的方式，在《堡垒之夜》中赢得胜利。
 </TeamMember>
 
 <TeamMember name="Eli White" permalink="eli-white" photo="/images/team/eli-white.jpg" github="TheSavior" twitter="Eli_White" threads="elicwhite" title="Engineering Manager at Meta">
     Eli 因为在中学时期的黑客行为被学校暂时开除，从此踏入了编程的世界。自 2017 年起，他就一直致力于 React 和 React Native 的工作。他是个美食爱好者，特别喜欢冰淇淋和苹果派。你常常能发现 Eli 在尝试一些别出心裁的活动，如跑酷、室内跳伞，以及空中丝绸表演。
+</TeamMember>
+
+<TeamMember name="Jack Pope" permalink="jack-pope" photo="/images/team/jack-pope.jpg" github="jackpope" personal="jackpope.me" title="Engineer at Meta">
+    Shortly after being introduced to AutoHotkey, Jack had written scripts to automate everything he could think of. When reaching limitations there, he dove headfirst into web app development and hasn't looked back. Most recently, Jack worked on the web platform at Instagram before moving to React. His favorite programming language is JSX.
 </TeamMember>
 
 <TeamMember name="Jason Bonta" permalink="jason-bonta" photo="/images/team/jasonbonta.jpg" threads="someextent" title="Engineering Manager at Meta">
@@ -43,11 +43,11 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
 </TeamMember>
 
 <TeamMember name="Lauren Tan" permalink="lauren-tan" photo="/images/team/lauren.jpg" github="poteto" twitter="potetotes" threads="potetotes" personal="no.lol" title="Engineer at Meta">
-    Lauren 的编程生涯在她首次发现 `<marquee>` 标签时达到了巅峰，自此以后，她就一直追求这种感觉。在为 React 除错之余，她喜欢在聊天中发送风趣的表情包，还喜欢和伴侣以及她的狗狗 Zelda 一起玩各种电子游戏。
+    Lauren's programming career peaked when she first discovered the `<marquee>` tag. She’s been chasing that high ever since. She studied Finance instead of CS in college, so she learned to code using Excel instead of Java. Lauren enjoys dropping cheeky memes in chat, playing video games with her partner, and petting her dog Zelda.
 </TeamMember>
 
 <TeamMember name="Luna Wei" permalink="luna-wei" photo="/images/team/luna-wei.jpg" github="lunaleaps" twitter="lunaleaps" threads="lunaleaps" title="Engineer at Meta">
-    Luna 在仅有 6 岁的时候，就从父亲那里学到了 Python 的基本原理。从那以后，她的学习之路一直畅通无阻。Luna 有志成为 Z 世代的一员，她的成功之路充满了对环境的倡导，城市园艺的热爱，以及与她的 Voo-Doo'd（如图）共享的宝贵时光。
+    Luna first learnt the fundamentals of python at the age of 6 from her father. Since then, she has been unstoppable. Luna aspires to be a gen z, and the road to success is paved with environmental advocacy, urban gardening and lots of quality time with her Voo-Doo’d (as pictured).
 </TeamMember>
 
 <TeamMember name="Matt Carroll" permalink="matt-carroll" photo="/images/team/matt-carroll.png" github="mattcarrollcode" twitter="mattcarrollcode" threads="mattcarrollcode" title="Developer Advocate at Meta">
@@ -64,6 +64,10 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
 
 <TeamMember name="Rick Hanlon" permalink="rick-hanlon" photo="/images/team/rickhanlonii.jpg" github="rickhanlonii" twitter="rickhanlonii" threads="rickhanlonii" personal="rickhanlon.codes" title="Engineer at Meta">
     Ricky 主修理论数学，然而他却在 React Native 团队工作了几年，之后又加入了 React 团队。当他不在编程时，你可以找到他在滑雪，骑自行车，攀岩，打高尔夫球，或者在 GitHub 上关闭一些不符合问题模板的问题。
+</TeamMember>
+
+<TeamMember name="Ruslan Lesiutin" permalink="ruslan-lesiutin" photo="/images/team/lesiutin.jpg" github="hoxyq" twitter="ruslanlesiutin" threads="lesiutin" title="Engineer at Meta">
+    Ruslan's introduction to UI programming started when he was a kid by manually editing HTML templates for his custom gaming forums. Somehow, he ended up majoring in Computer Science. He enjoys music, games, and memes. Mostly memes.
 </TeamMember>
 
 <TeamMember name="Sathya Gunasekaran " permalink="sathya-gunasekaran" photo="/images/team/sathya.jpg" github="gsathya" twitter="_gsathya" threads="gsathya.03" title="Engineer at Meta">

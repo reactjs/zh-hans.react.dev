@@ -192,7 +192,7 @@ const [index, setIndex] = useState(0);
 `index` 是一个 state 变量，`setIndex` 是对应的 setter 函数。
 
 
-> 这里的 `[` 和 `]` 语法称为[数组解构](/learn/a-javascript-refresher#array-destructuring)，它允许你从数组中读取值。 `useState` 返回的数组总是正好有两项。
+> 这里的 `[` 和 `]` 语法称为[数组解构](https://zh.javascript.info/destructuring-assignment)，它允许你从数组中读取值。 `useState` 返回的数组总是正好有两项。
 
 以下展示了它们在 `handleClick()` 中是如何共同起作用的：
 

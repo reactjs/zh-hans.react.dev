@@ -3,7 +3,7 @@ title: 组件和 Hook 必须是纯粹的
 ---
 
 <Intro>
-纯函数只执行计算，除此之外不做任何事情。这使得你的代码更易于理解和调试，并允许 React 自动正确地优化你的组件和 Hook。
+Pure functions only perform a calculation and nothing more. It makes your code easier to understand, debug, and allows React to automatically optimize your components and Hooks correctly.
 </Intro>
 
 <Note>
@@ -16,9 +16,9 @@ title: 组件和 Hook 必须是纯粹的
 
 React 中的一个核心概念是保持纯粹。一个纯组件或 Hook 是指：
 
-* **幂等性** ——每次使用相同的输入（组件输入的 props、state、context 以及 Hook 输入的参数）运行它，你 [总是得到相同的结果](/learn/keeping-components-pure#purity-components-as-formulas)。
-* **在渲染中没有副作用** ——具有副作用的代码应该与渲染过程分开执行。例如，可以作为 [响应事件](/learn/responding-to-events)——在用户与用户界面交互并导致其更新时触发。或者作为一个 [Effect](/reference/react/useEffect)，它将在渲染之后运行。
-* **不要修改非局部作用域中的值**: 组件和 Hook 在渲染时中 [绝不应该修改非局部创建的值](#mutation)。
+* **Idempotent** – You [always get the same result every time](/learn/keeping-components-pure#purity-components-as-formulas) you run it with the same inputs – props, state, context for component inputs; and arguments for hook inputs.
+* **Has no side effects in render** – Code with side effects should run [**separately from rendering**](#how-does-react-run-your-code). For example as an [event handler](/learn/responding-to-events) – where the user interacts with the UI and causes it to update; or as an [Effect](/reference/react/useEffect) – which runs after render.
+* **Does not mutate non-local values**: Components and Hooks should [never modify values that aren't created locally](#mutation) in render.
 
 当渲染保持纯净时，React 能够理解哪些更新对用户来说最重要，应该优先显示。这是因为渲染的纯粹，即由于组件 [在渲染过程中](#how-does-react-run-your-code) 不会产生副作用，React 可以暂停渲染那些不是那么重要的组件，等到真正需要时再继续渲染它们。
 
@@ -28,7 +28,7 @@ React 中的一个核心概念是保持纯粹。一个纯组件或 Hook 是指�
 
 React 是声明式的，即你告诉 React 你想要渲染的内容，React 会自己选择最佳的方式向用户展示它。为了做到这一点，React 在执行你的代码时分为几个阶段。虽然你不必了解所有这些阶段就能很好地使用 React。但是，从高层次来看，你应该了解哪些代码在渲染阶段运行，哪些代码在渲染阶段之外运行。
 
-“渲染”指的是计算你的用户界面（UI）下一个版本应该呈现的样子。渲染完成后，[Effect](/reference/react/useEffect)  会被“清空”（意思是一直运行完所有的 Effect 为止），如果这些 Effect 对布局有影响，比如它们可能会改变之前的计算结果。React 会用这个新的计算结果与你 UI 上一个版本所用的计算结果进行比较，然后仅对 [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)——也就是用户实际看到的部分进行最小的必要更改，以确保 UI 更新至最新内容。
+_Rendering_ refers to calculating what the next version of your UI should look like. After rendering, [Effects](/reference/react/useEffect) are _flushed_ (meaning they are run until there are no more left) and may update the calculation if the Effects have impacts on layout. React takes this new calculation and compares it to the calculation used to create the previous version of your UI, then _commits_ just the minimum changes needed to the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) (what your user actually sees) to catch it up to the latest version.
 
 <DeepDive>
 
@@ -68,9 +68,9 @@ function Dropdown() {
 
 ---
 
-## 组件和 Hook 必须是幂等的 {/*components-and-hooks-must-be-idempotent*/}
+## Components and Hooks must be idempotent {/*components-and-hooks-must-be-idempotent*/}
 
-组件必须始终根据其输入（props、state、和 context）返回相同的输出。这被称为“幂等性”。[幂等性](https://en.wikipedia.org/wiki/Idempotence)  是函数式编程中经常使用的一个术语，它指的是，只要你使用相同的输入运行代码 [得到的结果总是一样的](learn/keeping-components-pure)。
+Components must always return the same output with respect to their inputs – props, state, and context. This is known as _idempotency_. [Idempotency](https://en.wikipedia.org/wiki/Idempotence) is a term popularized in functional programming. It refers to the idea that you [always get the same result every time](learn/keeping-components-pure) you run that piece of code with the same inputs.
 
 这意味着，为了遵循这一规则，所有 [在渲染期间](#how-does-react-run-your-code)  执行的代码也必须是幂等的。例如，以下这行代码就不是幂等的（因此，包含这行代码的组件也不是幂等的）：
 
@@ -307,7 +307,7 @@ function useIconStyle(icon) {
 }
 ```
 
-如果你改变了 Hook 的参数，那么自定义 Hook 的缓存（memoization）就会变得不正确，因此避免这样做非常重要。
+If you were to mutate the Hooks arguments, the custom hook's memoization will become incorrect,  so it's important to avoid doing that.
 
 ```js {4}
 style = useIconStyle(icon);         // `style` 是基于 `icon` 进行记忆化的
@@ -321,7 +321,7 @@ icon = { ...icon, enabled: false }; // 正确的: ✅ 创建一个新的副本�
 style = useIconStyle(icon);         // 计算 `style` 的新值
 ```
 
-同样重要的是不要修改 Hook 的返回值，因为这些值可能已经被缓存了。
+Similarly, it's important to not modify the return values of Hooks, as they may have been memoized.
 
 ---
 

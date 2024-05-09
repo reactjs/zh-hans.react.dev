@@ -76,13 +76,13 @@ function TabContainer() {
 
 * `useTransition` 是一个 Hook，因此只能在组件或自定义 Hook 内部调用。如果需要在其他地方启动 transition（例如从数据库），请调用独立的 [`startTransition`](/reference/react/startTransition) 函数。
 
-* 只有在可以访问该状态的 `set` 函数时，才能将其对应的状态更新包装为 transition。如果你想启用 transition 以响应某个 prop 或自定义 Hook 值，请尝试使用 [`useDeferredValue`](/reference/react/useDeferredValue)。
+* 只有在可以访问该状态的 `set` 函数时，才能将其对应的状态更新包装为 transition。如果你想启用 Transition 以响应某个 prop 或自定义 Hook 值，请尝试使用 [`useDeferredValue`](/reference/react/useDeferredValue)。
 
 * 传递给 `startTransition` 的函数必须是同步的。React 会立即执行此函数，并将在其执行期间发生的所有状态更新标记为 transition。如果在其执行期间，尝试稍后执行状态更新（例如在一个定时器中执行状态更新），这些状态更新不会被标记为 transition。
 
-* 标记为 transition 的状态更新将被其他状态更新打断。例如在 transition 中更新图表组件，并在图表组件仍在重新渲染时继续在输入框中输入，React 将首先处理输入框的更新，之后再重新启动对图表组件的渲染工作。
+* 标记为 Transition 的状态更新将被其他状态更新打断。例如在 Transition 中更新图表组件，并在图表组件仍在重新渲染时继续在输入框中输入，React 将首先处理输入框的更新，之后再重新启动对图表组件的渲染工作。
 
-* transition 更新不能用于控制文本输入。
+* Transition 更新不能用于控制文本输入。
 
 * 目前，React 会批处理多个同时进行的 transition。这是一个限制，可能会在未来版本中删除。
 
@@ -90,7 +90,7 @@ function TabContainer() {
 
 ## 用法 {/*usage*/}
 
-### 将状态更新标记为非阻塞的 transition {/*marking-a-state-update-as-a-non-blocking-transition*/}
+### 将状态更新标记为非阻塞的 Transition {/*marking-a-state-update-as-a-non-blocking-transition*/}
 
 在组件的顶层调用 `useTransition` 以将状态更新标记为非阻塞的 transition。
 
@@ -130,7 +130,7 @@ transition 可以使用户界面的更新在慢速设备上仍保持响应性。
 
 <Recipes titleText="使用 useTransition 与常规状态更新的区别" titleId="examples">
 
-#### 在 transition 中更新当前选项卡 {/*updating-the-current-tab-in-a-transition*/}
+#### 在 Transition 中更新当前选项卡 {/*updating-the-current-tab-in-a-transition*/}
 
 在此示例中，“文章”选项卡被 **人为地减慢**，以便至少需要一秒钟才能渲染。
 
@@ -269,11 +269,11 @@ b { display: inline-block; margin-right: 10px; }
 
 <Solution />
 
-#### 在不使用 transition 的情况下更新当前选项卡 {/*updating-the-current-tab-without-a-transition*/}
+#### 在不使用 Transition 的情况下更新当前选项卡 {/*updating-the-current-tab-without-a-transition*/}
 
-在此示例中，“Posts”选项卡同样被 **人为地减慢**，以便至少需要一秒钟才能渲染。与之前的示例不同，这个状态更新 **没有使用 transition**。
+在此示例中，“Posts”选项卡同样被 **人为地减慢**，以便至少需要一秒钟才能渲染。与之前的示例不同，这个状态更新 **没有使用 Transition**。
 
-点击“Posts”，然后立即点击“Contact”。请注意，应用程序在渲染减速选项卡时会冻结，UI 将变得无响应。由于这个状态更新 **没有使用 transition**，所以慢速的重新渲染会冻结用户界面。
+点击“Posts”，然后立即点击“Contact”。请注意，应用程序在渲染减速选项卡时会冻结，UI 将变得无响应。由于这个状态更新 **没有使用 Transition**，所以慢速的重新渲染会冻结用户界面。
 
 <Sandpack>
 
@@ -409,9 +409,9 @@ b { display: inline-block; margin-right: 10px; }
 
 ---
 
-### 在 transition 中更新父组件 {/*updating-the-parent-component-in-a-transition*/}
+### 在 Transition 中更新父组件 {/*updating-the-parent-component-in-a-transition*/}
 
-你也可以通过调用 `useTransition` 以更新父组件状态。例如，`TabButton` 组件在 transition 中包装了 `onClick` 逻辑：
+你也可以通过调用 `useTransition` 以更新父组件状态。例如，`TabButton` 组件在 Transition 中包装了 `onClick` 逻辑：
 
 ```js {8-10}
 export default function TabButton({ children, isActive, onClick }) {
@@ -560,9 +560,9 @@ b { display: inline-block; margin-right: 10px; }
 
 ---
 
-### 在 transition 期间显示待处理的视觉状态 {/*displaying-a-pending-visual-state-during-the-transition*/}
+### 在 Transition 期间显示待处理的视觉状态 {/*displaying-a-pending-visual-state-during-the-transition*/}
 
-你可以使用 `useTransition` 返回的 `isPending` 布尔值来向用户表明当前处于 transition 中。例如，选项卡按钮可以有一个特殊的“pending”视觉状态：
+你可以使用 `useTransition` 返回的 `isPending` 布尔值来向用户表明当前处于 Transition 中。例如，选项卡按钮可以有一个特殊的“pending”视觉状态：
 
 ```js {4-6}
 function TabButton({ children, isActive, onClick }) {
@@ -1598,7 +1598,7 @@ root.render(
 
 ## Troubleshooting {/*troubleshooting*/}
 
-### 在 transition 中无法更新输入框内容 {/*updating-an-input-in-a-transition-doesnt-work*/}
+### 在 Transition 中无法更新输入框内容 {/*updating-an-input-in-a-transition-doesnt-work*/}
 
 不应将控制输入框的状态变量标记为 transition：
 
@@ -1606,7 +1606,7 @@ root.render(
 const [text, setText] = useState('');
 // ...
 function handleChange(e) {
-  // ❌ 不应将受控输入框的状态变量标记为 transition
+  // ❌ 不应将受控输入框的状态变量标记为 Transition
   startTransition(() => {
     setText(e.target.value);
   });
@@ -1615,16 +1615,16 @@ function handleChange(e) {
 return <input value={text} onChange={handleChange} />;
 ```
 
-这是因为 transition 是非阻塞的，但是在响应更改事件时更新输入应该是同步的。如果想在输入时运行一个 transition，那么有两种做法：
+这是因为 Transition 是非阻塞的，但是在响应更改事件时更新输入应该是同步的。如果想在输入时运行一个 transition，那么有两种做法：
 
-1. 声明两个独立的状态变量：一个用于输入状态（它总是同步更新），另一个用于在 transition 中更新。这样，便可以使用同步状态控制输入，并将用于 transition 的状态变量（它将“滞后”于输入）传递给其余的渲染逻辑。
+1. 声明两个独立的状态变量：一个用于输入状态（它总是同步更新），另一个用于在 Transition 中更新。这样，便可以使用同步状态控制输入，并将用于 Transition 的状态变量（它将“滞后”于输入）传递给其余的渲染逻辑。
 2. 或者使用一个状态变量，并添加 [`useDeferredValue`](/reference/react/useDeferredValue)，它将“滞后”于实际值，并自动触发非阻塞的重新渲染以“追赶”新值。
 
 ---
 
-### React 没有将状态更新视为 transition {/*react-doesnt-treat-my-state-update-as-a-transition*/}
+### React 没有将状态更新视为 Transition {/*react-doesnt-treat-my-state-update-as-a-transition*/}
 
-当在 transition 中包装状态更新时，请确保它发生在 `startTransition` 调用期间：
+当在 Transition 中包装状态更新时，请确保它发生在 `startTransition` 调用期间：
 
 ```js
 startTransition(() => {
@@ -1713,7 +1713,7 @@ function startTransition(scope) {
 
 function setState() {
   if (isInsideTransition) {
-    // ……安排 transition 状态更新……
+    // ……安排 Transition 状态更新……
   } else {
     // ……安排紧急状态更新……
   }

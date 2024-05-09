@@ -106,24 +106,6 @@ function TodoList({ todos, tab, theme }) {
 
 ---
 
-## 资源 Hook {/*resource-hooks*/}
-
-资源可以被组件访问，而无需将它们作为状态的一部分。例如，组件可以从 Promise 中读取消息，或从上下文中读取样式信息。
-
-使用以下 Hook 以从资源中读取值：
-
-- [`use`](/reference/react/use) 允许读取像 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [上下文](/learn/passing-data-deeply-with-context) 这样的资源的值。
-
-```js
-function MessageComponent({ messagePromise }) {
-  const message = use(messagePromise);
-  const theme = use(ThemeContext);
-  // ...
-}
-```
-
----
-
 ## 其他 Hook {/*other-hooks*/}
 
 这些 Hook 主要适用于库作者，不常在应用程序代码中使用。
@@ -131,6 +113,7 @@ function MessageComponent({ messagePromise }) {
 - 使用 [`useDebugValue`](/reference/react/useDebugValue) 自定义 React 开发者工具为自定义 Hook 添加的标签。
 - 使用 [`useId`](/reference/react/useId) 将唯一的 ID 与组件相关联，其通常与可访问性 API 一起使用。
 - 使用 [`useSyncExternalStore`](/reference/react/useSyncExternalStore) 订阅外部 store。
+* [`useActionState`](/reference/react/useActionState) allows you to manage state of actions.
 
 ---
 
