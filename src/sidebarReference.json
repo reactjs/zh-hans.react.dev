@@ -338,19 +338,19 @@
       "sectionHeader": "React 规则"
     },
     {
-      "title": "Overview",
+      "title": "概述",
       "path": "/reference/rules",
       "routes": [
         {
-        "title": "Components and Hooks must be pure",
+        "title": "组件和 Hook 必须是纯粹的",
         "path": "/reference/rules/components-and-hooks-must-be-pure"
         },
         {
-          "title": "React calls Components and Hooks",
+          "title": "React 调用组件和 Hook",
           "path": "/reference/rules/react-calls-components-and-hooks"
         },
         {
-          "title": "Rules of Hooks",
+          "title": "Hook 的规则",
           "path": "/reference/rules/rules-of-hooks"
         }
       ]
