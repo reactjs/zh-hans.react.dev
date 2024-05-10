@@ -1,3 +1,11 @@
+# tango
+
+<details><summary>Tick... Tock... Tick... Tock...⏱</summary>
+
+**KABOOM!!**
+
+</details>
+
 # [React 中文文档](https://zh-hans.react.dev/)
 
 此仓库包含 [React 中文文档](https://zh-hans.react.dev/) 的文档及源码，并由官方实时同步。
