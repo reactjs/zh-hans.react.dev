@@ -45,9 +45,15 @@ title: '使用 Effect 同步'
 
 编写 Effect 需要遵循以下三个规则：
 
+<<<<<<< HEAD
 1. **声明 Effect**。默认情况下，Effect 会在每次渲染后都会执行。
 2. **指定 Effect 依赖**。大多数 Effect 应该按需执行，而不是在每次渲染后都执行。例如，淡入动画应该只在组件出现时触发。连接和断开服务器的操作只应在组件出现和消失时，或者切换聊天室时执行。文章将介绍如何通过指定依赖来控制如何按需执行。
 3. **必要时添加清理（cleanup）函数**。有时 Effect 需要指定如何停止、撤销，或者清除它的效果。例如，“连接”操作需要“断连”，“订阅”需要“退订”，“获取”既需要“取消”也需要“忽略”。你将学习如何使用 **清理函数** 来做到这一切。
+=======
+1. **Declare an Effect.** By default, your Effect will run after every [commit](/learn/render-and-commit).
+2. **Specify the Effect dependencies.** Most Effects should only re-run *when needed* rather than after every render. For example, a fade-in animation should only trigger when a component appears. Connecting and disconnecting to a chat room should only happen when the component appears and disappears, or when the chat room changes. You will learn how to control this by specifying *dependencies.*
+3. **Add cleanup if needed.** Some Effects need to specify how to stop, undo, or clean up whatever they were doing. For example, "connect" needs "disconnect", "subscribe" needs "unsubscribe", and "fetch" needs either "cancel" or "ignore". You will learn how to do this by returning a *cleanup function*.
+>>>>>>> b7bf6c16fb3152626a71c115b3242df6eb93bc6e
 
 以下是具体步骤。
 
