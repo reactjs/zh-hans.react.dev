@@ -269,12 +269,12 @@ import { useState } from 'react';
 
 export default function Form() {
   const [to, setTo] = useState('Alice');
-  const [message, setMessage] = useState('Hello');
+  const [message, setMessage] = useState('你好');
 
   function handleSubmit(e) {
     e.preventDefault();
     setTimeout(() => {
-      alert(`You said ${message} to ${to}`);
+      alert(`你向 ${to} 说了${message}`);
     }, 5000);
   }
 
@@ -294,7 +294,7 @@ export default function Form() {
         value={message}
         onChange={e => setMessage(e.target.value)}
       />
-      <button type="submit">Send</button>
+      <button type="submit">发送</button>
     </form>
   );
 }
@@ -306,7 +306,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 </Sandpack>
 
-**React 会使 state 的值始终”固定“在一次渲染的各个事件处理函数内部。** 你无需担心代码运行时 state 是否发生了变化。
+**React 会使 state 的值始终“固定”在一次渲染的各个事件处理函数内部**。你无需担心代码运行时 state 是否发生了变化。
 
 但是，万一你想在重新渲染之前读取最新的 state 怎么办？你应该使用 [状态更新函数](/learn/queueing-a-series-of-state-updates)，下一页将会介绍！
 
