@@ -2915,4 +2915,8 @@ body {
 1. 当有人获胜时，突出显示致使获胜的三个方块（当没有人获胜时，显示一条关于结果为平局的消息）。
 1. 在“落子”的历史列表中以 (row, col) 格式显示每步的位置。
 
+<<<<<<< HEAD
 在本教程中，你已经接触到了 React 概念，包括元素、组件、props 和 state。现在你已经了解了这些概念在构建游戏时是如何工作的，请查看 [React 哲学](/learn/thinking-in-react) 以了解这些 React 概念在构建应用的 UI 时是如何工作的。
+=======
+Throughout this tutorial, you've touched on React concepts including elements, components, props, and state. Now that you've seen how these concepts work when building a game, check out [Thinking in React](/learn/thinking-in-react) to see how the same React concepts work when building an app's UI.
+>>>>>>> f053b53b0501a6c9a4ec2d4de80a633e01ec2174
