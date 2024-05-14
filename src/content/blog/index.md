@@ -1,5 +1,8 @@
 ---
 title: React Blog
+author: Arlen
+date: 2024/05/17
+description: React Blog Descriptions
 ---
 
 <Intro>
@@ -10,15 +13,15 @@ title: React Blog
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<BlogCard title="React 19 Beta " date="April 25, 2024" url="/blog/2024/04/25/react-19">
+<BlogCard title="React 19 Beta 介绍 " date="April 25, 2024" url="/blog/2024/04/25/react-19">
 
-In the React 19 Beta Upgrade Guide, we shared step-by-step instructions for upgrading your app to React 19 Beta. In this post, we'll give an overview of the new features in React 19, and how you can adopt them.
+随着 React 19 Beta 版本的推出，我们此前发布一份官方升级手册，旨在协助您将现有项目无缝升级至 React 19 Beta。在本篇博客中，我们将详细介绍 React 19 Beta 的新特性及其应用方法。
 
 </BlogCard>
 
-<BlogCard title="React 19 Beta Upgrade Guide" date="April 25, 2024" url="/blog/2024/04/25/react-19-upgrade-guide">
+<BlogCard title="React 19 Beta 升级手册" date="April 25, 2024" url="/blog/2024/04/25/react-19-upgrade-guide">
 
-The improvements added to React 19 require some breaking changes, but we've worked to make the upgrade as smooth as possible and we don't expect the changes to impact most apps. In this post, we will guide you through the steps for upgrading libraries to React 19 beta.
+React 19 引入的新功能对需要原有设计进行一些破坏性更改，但我们已经努力优化，使得升级过程尽可能顺畅，并且我们预计这些更改在大多数应用程序中不会造成影响。在本篇博客中，我们将引导您完成将库升级到 React 19 Beta 版本的步骤。
 
 </BlogCard>
 
