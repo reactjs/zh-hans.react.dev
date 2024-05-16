@@ -31,7 +31,11 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
 </TeamMember>
 
 <TeamMember name="Jason Bonta" permalink="jason-bonta" photo="/images/team/jasonbonta.jpg" threads="someextent" title="Engineering Manager at Meta">
+<<<<<<< HEAD
     Jason 喜欢将大批的亚马逊包裹送到办公室，这样他就能用它们搭建堡垒。虽然他有时会真的用这些包裹筑成墙，将自己和团队隔离，甚至还不理解 for-of 循环是怎样工作的，但我们仍然非常欣赏他在工作中表现出的独特品质。
+=======
+    Jason abandoned embedded C for a career in front-end engineering and never looked back. Armed with esoteric CSS knowledge and a passion for beautiful UI, Jason joined Facebook in 2010, where he now feels privileged to have seen JavaScript development come of age. Though he may not understand how `for...of` loops work, he loves getting to work with brilliant people on projects that enable amazing UX.
+>>>>>>> 8d69e6ebf9a89114c8cafc78b4464a74a384aa33
 </TeamMember>
 
 <TeamMember name="Joe Savona" permalink="joe-savona" photo="/images/team/joe.jpg" github="josephsavona" twitter="en_JS" threads="joesavona" title="Engineer at Meta">
