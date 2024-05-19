@@ -44,15 +44,27 @@ React 对 `<link>` 的扩展当前仅在 React Canary 与 experimental 渠道中
 
 当 `rel="stylesheet"` 时，应用以下属性：
 
+<<<<<<< HEAD
 * `precedence`：字符串，用于告诉 React 在文档 `<head>` 中将 `<link>` DOM 节点排在其他节点之前的位置，这决定了哪个样式表可以覆盖其他样式表。它的值可以是（按优先级顺序）`"reset"`、`"low"`、`"medium"` 或 `"high"`。无论是 `<link>` 还是内联 `<style>` 标签，或者使用 [`preload`](/reference/react-dom/preload) 或 [`preinit`](/reference/react-dom/preinit) 函数加载的内容，具有相同优先级的样式表将一起处理。
 * `media`：字符串，用于将样式表限制为特定的 [媒体查询](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_media_queries/Using_media_queries)。
 * `title`：字符串，用于指定 [替代样式表](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Alternative_style_sheets) 的名称。
+=======
+* `precedence`: a string. Tells React where to rank the `<link>` DOM node relative to others in the document `<head>`, which determines which stylesheet can override the other. Its value can be (in order of precedence) `"reset"`, `"low"`, `"medium"`, `"high"`. Stylesheets with the same precedence go together whether they are `<link>` or inline `<style>` tags or loaded using the [`preload`](/reference/react-dom/preload) or [`preinit`](/reference/react-dom/preinit) functions.
+* `media`: a string. Restricts the stylesheet to a certain [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries).
+* `title`: a string. Specifies the name of an [alternative stylesheet](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets).
+>>>>>>> 9967ded394d85af74e0ecdbf00feeb7921a28142
 
 当 `rel="stylesheet"` 但禁用了 React 的 [样式表特殊处理](#special-rendering-behavior) 时，应当应用以下属性：
 
+<<<<<<< HEAD
 * `disabled`：布尔值，表示禁用样式表。
 * `onError`：函数，当样式表加载失败时调用。
 * `onLoad`：函数，当样式表加载完成时调用。
+=======
+* `disabled`: a boolean. Disables the stylesheet.
+* `onError`: a function. Called when the stylesheet fails to load.
+* `onLoad`: a function. Called when the stylesheet finishes being loaded.
+>>>>>>> 9967ded394d85af74e0ecdbf00feeb7921a28142
 
 当 `rel="preload"` 或 `rel="modulepreload"` 时，应当应用以下属性：
 
