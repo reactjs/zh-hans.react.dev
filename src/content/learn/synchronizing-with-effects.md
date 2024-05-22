@@ -1600,7 +1600,11 @@ export async function fetchBio(person) {
 - 加载完成 `'Bob'` 的数据
 - 渲染 `'Bob'` 时的 Effect 不会做任何事情，因为 `ignore` 已经被设为了 `true`。
 
+<<<<<<< HEAD
 除了忽略过时 API 调用的结果外，你还可以使用 [`AbortController`](https://developer.mozilla.org/zh-CN/docs/Web/API/AbortController) 来取消不再需要的请求。然而，仅靠这个还不足以防止竞态条件。更多的异步步骤可能会在获取之后链接起来，因此使用显式标记，如 `ignore` 变量，是修复这类问题最可靠的方法。
+=======
+In addition to ignoring the result of an outdated API call, you can also use [`AbortController`](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) to cancel the requests that are no longer needed. However, by itself this is not enough to protect against race conditions. More asynchronous steps could be chained after the fetch, so using an explicit flag like `ignore` is the most reliable way to fix this type of problem.
+>>>>>>> f055f8f3c2c9a8e5dbfe3a57e5a63b7769075abc
 
 </Solution>
 
