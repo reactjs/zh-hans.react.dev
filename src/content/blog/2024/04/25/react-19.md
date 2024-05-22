@@ -456,7 +456,7 @@ https://react.dev/link/hydration-mismatch {'\n'}
 
 ### `<Context>` 作为提供者 {/*context-as-a-provider*/}
 
-在 React 19 中，你可以将 `<Context>` 渲染为提供者，就无需再使用 <Context.Provider> 了：
+在 React 19 中，你可以将 `<Context>` 渲染为提供者，就无需再使用 `<Context.Provider>` 了：
 
 
 ```js {5,7}
