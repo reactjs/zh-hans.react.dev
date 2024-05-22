@@ -8,11 +8,7 @@ import {useRouter} from 'next/router';
 import {SidebarNav} from './SidebarNav';
 import {Footer} from './Footer';
 import {Toc} from './Toc';
-<<<<<<< HEAD
-
-=======
 // import SocialBanner from '../SocialBanner';
->>>>>>> adb3bedd4bca408058e807d777ce5fd88ecd0794
 import {DocsPageFooter} from 'components/DocsFooter';
 import {Seo} from 'components/Seo';
 import PageHeading from 'components/PageHeading';
@@ -141,11 +137,7 @@ export function Page({
           />
         </Head>
       )}
-<<<<<<< HEAD
-      {/* <SocialBanner /> */}
-=======
       {/*<SocialBanner />*/}
->>>>>>> adb3bedd4bca408058e807d777ce5fd88ecd0794
       <TopNav
         section={section}
         routeTree={routeTree}
