@@ -170,7 +170,7 @@ const [error, submitAction, isPending] = useActionState(
 );
 ```
 
-`useActionState` 接受一个函数（"Action"），并返回一个被包装的用于调用的 Action。这是因为 Actions 是可以组合的。当调用被包装的 Action 时，`useActionState` 将返回 Action 的最后结果作为 `data`，以及 Action 的待处理状态作为 `pending`。
+`useActionState` 接受一个函数（“Action”），并返回一个被包装的用于调用的 Action。这是因为 Actions 是可以组合的。当调用被包装的 Action 时，`useActionState` 将返回 Action 的最后结果作为 `data`，以及 Action 的待处理状态作为 `pending`。
 
 <Note>
 
