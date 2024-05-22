@@ -283,6 +283,6 @@ export default AddComment;
 
 **不要滥用 ref。** 你应当仅在你没法通过 prop 来表达 *命令式* 行为的时候才使用 ref：例如，滚动到指定节点、聚焦某个节点、触发一次动画，以及选择文本等等。
 
-**如果可以通过 prop 实现，那就不应该使用 ref**。例如，你不应该从一个 `Model` 组件暴露出 `{open, close}` 这样的命令式句柄，最好是像 `<Modal isOpen={isOpen} />` 这样，将 `isOpen` 作为一个 prop。[副作用](/learn/synchronizing-with-effects) 可以帮你通过 prop 来暴露一些命令式的行为。
+**如果可以通过 prop 实现，那就不应该使用 ref**。例如，你不应该从一个 `Modal` 组件暴露出 `{open, close}` 这样的命令式句柄，最好是像 `<Modal isOpen={isOpen} />` 这样，将 `isOpen` 作为一个 prop。[副作用](/learn/synchronizing-with-effects) 可以帮你通过 prop 来暴露一些命令式的行为。
 
 </Pitfall>
