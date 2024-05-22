@@ -5,7 +5,7 @@ date: 2024/04/25
 description: React 19 测试版现在可以在 npm 上使用了! 在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
 ---
 
-2023 年 4 月 25 日 [The React Team](/community/team)
+2024 年 4 月 25 日 [The React Team](/community/team)
 
 ---
 
@@ -21,7 +21,7 @@ React 19 测试版现在可以在 npm 上使用了!
 
 </Intro>
 
-在我们的 [React 19 Beta 升级指南](/blog/2024/04/25/react-19-upgrade-guide) 中，我们分享了将您的应用升级到 React 19 Beta 的逐步指南。在这篇文章中，我们将概述 React 19 中的新功能，以及您如何采用它们。
+在我们的 [React 19 Beta 升级指南](/blog/2024/04/25/react-19-upgrade-guide) 中，我们分享了将你的应用升级到 React 19 Beta 的逐步指南。在这篇文章中，我们将概述 React 19 中的新功能，以及你如何采用它们。
 
 - [React 19 中的新功能](#whats-new-in-react-19)
 - [React 19 中的改进](#improvements-in-react-19)
@@ -40,7 +40,7 @@ React 19 测试版现在可以在 npm 上使用了!
 例如，你可以在 `useState` 中处理待处理和错误状态：
 
 ```js
-// Before Actions
+// 没有 Actions 之前
 function UpdateName({}) {
   const [name, setName] = useState("");
   const [error, setError] = useState(null);
@@ -123,7 +123,7 @@ Actions 自动为你管理数据提交：
 在 React 19 中，上述示例可以简化为：
 
 ```js
-// Using <form> Actions and useActionState
+// 使用表单的 Actions 和 useActionState
 function ChangeName({ name, setName }) {
   const [error, submitAction, isPending] = useActionState(
     async (previousState, formData) => {
@@ -319,9 +319,9 @@ function Heading({children}) {
 有关更多信息，请参阅 [`use`](/reference/react/use) 文档。
 
 
-## React Server Components {/*react-server-components*/}
+## React 服务端组件 {/*react-server-components*/}
 
-### Server Components {/*server-components*/}
+### 服务端组件 {/*server-components*/}
 
 服务器组件是一种新的选项，允许在打包前提前渲染组件，在与你的客户端应用程序或 SSR 服务器不同的环境中。这个独立的环境就是 React 服务器组件中的 "服务器"。服务器组件可以在你的 CI 服务器上在构建时运行一次，或者可以在每次请求时使用 web 服务器运行。
 
@@ -341,7 +341,7 @@ React 19 包含了所有从 Canary 频道引入的 React 服务器组件功能�
 
 有关更多信息，请参阅文档 [React Server Components](/reference/rsc/server-components).
 
-### Server Actions {/*server-actions*/}
+### 服务端操作 {/*server-actions*/}
 
 服务器 Actions 允许客户端组件调用在服务器上执行的异步函数。
 
@@ -386,7 +386,7 @@ function MyInput({placeholder, ref}) {
 
 ### 水合错误的差异 {/*diffs-for-hydration-errors*/}
 
-在 `react-dom` 中，我们也改进了 hydration 错误的错误报告。例如，现在不再在 DEV 中记录多个没有任何不匹配信息的错误：
+在 `react-dom` 中，我们也改进了水合错误的错误报告。例如，现在不再在 DEV 中记录多个没有任何不匹配信息的错误：
 
 <ConsoleBlockMulti>
 
@@ -456,7 +456,7 @@ https://react.dev/link/hydration-mismatch {'\n'}
 
 ### `<Context>` 作为提供者 {/*context-as-a-provider*/}
 
-在 React 19 中，你可以将 `<Context>` 渲染为提供者，而不是 `<Context.Provider>`：
+在 React 19 中，你可以将 `<Context>` 渲染为提供者，就无需再使用 <Context.Provider> 了：
 
 
 ```js {5,7}
