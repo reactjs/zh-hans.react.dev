@@ -27,7 +27,7 @@ React 19 测试版现在可以在 npm 上使用了!
 - [React 19 中的改进](#improvements-in-react-19)
 - [如何升级](#how-to-upgrade)
 
-有关破坏性更改的列表，请参阅 [升级指南](/blog/2024/04/25/react-19-upgrade-guide).
+有关破坏性更改的列表，请参阅 [升级指南](/blog/2024/04/25/react-19-upgrade-guide)。
 
 ---
 
