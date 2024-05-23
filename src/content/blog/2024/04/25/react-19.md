@@ -35,7 +35,7 @@ React 19 测试版现在可以在 npm 上使用了!
 
 ### Actions {/*actions*/}
 
-在 React 应用中，一个常见的用例是执行数据变更，然后响应更新状态。例如，当用户提交一个表单来更改他们的名字，你会发起一个 API 请求，然后处理响应。在过去，你需要手动处理待处理状态、错误、乐观更新和顺序请求。
+在 React 应用中，一个常见的用例是执行数据变更，然后响应更新状态。例如，当用户提交一个表单来更改他们的名字，你会发起一个 API 请求，然后处理响应。在过去，你需要手动处理待定状态、错误、乐观更新和顺序请求。
 
 例如，你可以在 `useState` 中处理待处理和错误状态：
 
@@ -69,12 +69,12 @@ function UpdateName({}) {
 }
 ```
 
-在 React 19 中，我们添加了在过渡中使用异步函数的支持，以自动处理待处理状态、错误、表单和乐观更新。
+在 React 19 中，我们正在添加在过渡中使用异步函数的支持，以自动处理待定状态、错误、表单和乐观更新。
 
-例如，你可以使用 `useTransition` 来为你处理待处理状态：
+例如，你可以使用 `useTransition` 来为你处理待定状态：
 
 ```js
-// 使用 Actions 中的待处理状态
+// 使用 Actions 中的待定状态
 function UpdateName({}) {
   const [name, setName] = useState("");
   const [error, setError] = useState(null);
@@ -111,7 +111,7 @@ function UpdateName({}) {
 
 Actions 自动为你管理数据提交：
 
-- **待处理状态**: Actions 提供一个待处理状态，该状态在请求开始时启动，并在最终状态更新提交时自动重置。
+- **待定状态**: Actions 提供一个待定状态，该状态在请求开始时启动，并在最终状态更新提交时自动重置。
 - **乐观更新**: Actions 支持新的 [`useOptimistic`](#new-hook-optimistic-updates) 钩子，因此你可以在请求提交时向用户显示即时反馈。
 - **错误处理**: Actions 提供错误处理，因此当请求失败时，你可以显示错误边界，并自动将乐观更新恢复到其原始值。
 - **表单**: `<form>` 元素现在支持将函数传递给 `action` 和 `formAction` 属性。将函数传递给 `action` 属性默认使用 Actions，并在提交后自动重置表单。
@@ -158,19 +158,19 @@ const [error, submitAction, isPending] = useActionState(
   async (previousState, newName) => {
     const error = await updateName(newName);
     if (error) {
-      // You can return any result of the action.
-      // Here, we return only the error.
+      // 您可以返回操作的任何结果。
+      // 这里，我们只返回错误。
       return error;
     }
 
-    // handle success
+    // 处理成功的情况。
     return null;
   },
   null,
 );
 ```
 
-`useActionState` 接受一个函数（“Action”），并返回一个被包装的用于调用的 Action。这是因为 Actions 是可以组合的。当调用被包装的 Action 时，`useActionState` 将返回 Action 的最后结果作为 `data`，以及 Action 的待处理状态作为 `pending`。
+`useActionState` 接受一个函数（"Action"），并返回一个被包装的用于调用的 Action。这是因为 Actions 是可以组合的。当调用被包装的 Action 时，`useActionState` 将返回 Action 的最后结果作为 `data`，以及 Action 的待定状态作为 `pending`。
 
 <Note>
 
@@ -196,7 +196,7 @@ Actions 也与 React 19 的新 `<form>` 功能集成在 `react-dom` 中。我们
 
 ### React DOM: 新钩子: `useFormStatus` {/*new-hook-useformstatus*/}
 
-在设计系统中，常常需要编写设计组件，这些组件需要访问它们所在的 `<form>` 的信息，而无需将属性传递到组件中。这可以通过 Context 来实现，但为了使常见情况更简单，我们添加了一个新的钩子 `useFormStatus`：
+在设计系统中，常常需要编写设计一类能够访问其所在的 `<form>` 的信息而无需将属性传递到组件内的组件。这可以通过 Context 来实现，但为了使这类常见情况更简单，我们添加了一个新的钩子 `useFormStatus`：
 
 ```js [[1, 4, "pending"], [1, 5, "pending"]]
 import {useFormStatus} from 'react-dom';
@@ -256,14 +256,14 @@ function ChangeName({currentName, onUpdateName}) {
 import {use} from 'react';
 
 function Comments({commentsPromise}) {
-  // `use` will suspend until the promise resolves.
+  // `use` 将被暂停直到 promise 被解决.
   const comments = use(commentsPromise);
   return comments.map(comment => <p key={comment.id}>{comment}</p>);
 }
 
 function Page({commentsPromise}) {
-  // When `use` suspends in Comments,
-  // this Suspense boundary will be shown.
+  // 当“use”在注释中暂停时,
+  // 将显示此悬念边界。
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Comments commentsPromise={commentsPromise} />
@@ -302,9 +302,7 @@ function Heading({children}) {
   if (children == null) {
     return null;
   }
-  
-  // This would not work with useContext
-  // because of the early return.
+  // 因为过早的返回，导致 useContext 无法使用
   const theme = use(ThemeContext);
   return (
     <h1 style={{color: theme.color}}>
@@ -319,9 +317,9 @@ function Heading({children}) {
 有关更多信息，请参阅 [`use`](/reference/react/use) 文档。
 
 
-## React 服务端组件 {/*react-server-components*/}
+## React 服务器组件 {/*react-server-components*/}
 
-### 服务端组件 {/*server-components*/}
+### 服务器组件 {/*server-components*/}
 
 服务器组件是一种新的选项，允许在打包前提前渲染组件，在与你的客户端应用程序或 SSR 服务器不同的环境中。这个独立的环境就是 React 服务器组件中的 "服务器"。服务器组件可以在你的 CI 服务器上在构建时运行一次，或者可以在每次请求时使用 web 服务器运行。
 
@@ -480,10 +478,9 @@ function App({children}) {
 ```js {7-9}
 <input
   ref={(ref) => {
-    // ref created
+    // ref 创建
 
-    // NEW: return a cleanup function to reset
-    // the ref when element is removed from DOM.
+    // 新特性: 当元素从 DOM 中被移除时返回一个清理函数来重置 ref
     return () => {
       // ref cleanup
     };
