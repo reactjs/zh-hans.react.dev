@@ -10,25 +10,25 @@ title: React Blog
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<BlogCard title="React Conf 2024 Recap" date="May 22, 2024" url="/blog/2024/05/22/react-conf-2024-recap">
+<BlogCard title="回顾 React Conf 2024" date="May 22, 2024" url="/blog/2024/05/22/react-conf-2024-recap">
 
-Last week we hosted React Conf 2024, a two-day conference in Henderson, Nevada where 700+ attendees gathered in-person to discuss the latest in UI engineering. This was our first in-person conference since 2019, and we were thrilled to be able to bring the community together again ...
+上周我们在内华达州亨德森举办了为期两天的 React Conf 2024 大会，有 700 多名与会者亲临现场，讨论 UI 工程领域的最新进展。这是我们自 2019 年以来举办的第一次线下会议，我们很高兴能够再次将社区聚集在一起 ...
 
 </BlogCard>
 
 <BlogCard title="React 19 RC " date="April 25, 2024" url="/blog/2024/04/25/react-19">
 
-In the React 19 RC Upgrade Guide, we shared step-by-step instructions for upgrading your app to React 19. In this post, we'll give an overview of the new features in React 19, and how you can adopt them ...
+在我们的 React 19 RC 升级指南中, 我们分享了将应用程序升级到 React 19 的分步说明。在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们 ...
 
 </BlogCard>
 
-<BlogCard title="React 19 RC Upgrade Guide" date="April 25, 2024" url="/blog/2024/04/25/react-19-upgrade-guide">
+<BlogCard title="React 19 RC 升级指南" date="April 25, 2024" url="/blog/2024/04/25/react-19-upgrade-guide">
 
-The improvements added to React 19 require some breaking changes, but we've worked to make the upgrade as smooth as possible, and we don't expect the changes to impact most apps. In this post, we will guide you through the steps for upgrading libraries to React 19 ...
+React 19 中新增的改进需要一些破坏性变更，但我们已经尽力让升级过程尽可能平滑，我们预计这些变更不会影响大多数应用。在这篇文章中，我们将指导你完成将库升级到 React 19 的步骤 ...
 
 </BlogCard>
 
-<BlogCard title="React Labs: What We've Been Working On – February 2024" date="February 15, 2024" url="/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024">
+<BlogCard title="React Labs：我们正在努力的方向——2024 年 2 月" date="February 15, 2024" url="/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024">
 
 在 React Labs 的文章中，我们讲述了正在进行研究与开发的项目。自从上次更新以来，我们在 React 编译器、新功能和 React 19 方面取得了重大进展，除此之外我们还想要分享我们从中学到的东西。
 
