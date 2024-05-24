@@ -1,8 +1,8 @@
 ---
-title: "React Labs: What We've Been Working On – June 2022"
+title: "React Labs：我们正在努力的方向——2022 年 6 月"
 author:  Andrew Clark, Dan Abramov, Jan Kassens, Joseph Savona, Josh Story, Lauren Tan, Luna Ruan, Mengdi Chen, Rick Hanlon, Robert Zhang, Sathya Gunasekaran, Sebastian Markbage, and Xuan Huang
 date: 2022/06/15
-description: React 18 was years in the making, and with it brought valuable lessons for the React team. Its release was the result of many years of research and exploring many paths. Some of those paths were successful; many more were dead-ends that led to new insights. One lesson we’ve learned is that it’s frustrating for the community to wait for new features without having insight into these paths that we’re exploring.
+description: React 18 经过多年的努力才得以问世，它为 React 团队带来了宝贵的经验教训。它的发布是多年的研究和探索的结果。其中一些路径是成功的，但更多的是死胡同，但是也带来了新的见解。我们学到的一个教训是，对社区来说，在等待新功能时没有了解我们正在探索的路径是令人沮丧的。
 ---
 
 2022 年 6 月 15 日 [Andrew Clark](https://twitter.com/acdlite)、[Dan Abramov](https://twitter.com/dan_abramov)、[Jan Kassens](https://twitter.com/kassens)、[Joseph Savona](https://twitter.com/en_JS)、[Josh Story](https://twitter.com/joshcstory)、[Lauren Tan](https://twitter.com/potetotes)、[Luna Ruan](https://twitter.com/lunaruan)、[Mengdi Chen](https://twitter.com/mengdi_en)、[Rick Hanlon](https://twitter.com/rickhanlonii)、[Robert Zhang](https://twitter.com/jiaxuanzhang01)、[Sathya Gunasekaran](https://twitter.com/_gsathya)、[Sebastian Markbåge](https://twitter.com/sebmarkbage) 与 [Xuan Huang](https://twitter.com/Huxpro)

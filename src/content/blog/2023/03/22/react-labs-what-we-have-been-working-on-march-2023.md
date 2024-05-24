@@ -1,8 +1,8 @@
 ---
-title: "React Labs: What We've Been Working On – March 2023"
+title: "React Labs：我们正在努力的方向——2023 年 3 月"
 author: Joseph Savona, Josh Story, Lauren Tan, Mengdi Chen, Samuel Susla, Sathya Gunasekaran, Sebastian Markbage, and Andrew Clark
 date: 2023/03/22
-description: In React Labs posts, we write about projects in active research and development. We've made significant progress on them since our last update, and we'd like to share what we learned.
+description: 在 React Labs 的文章中，我们讲述了正在进行研究和开发的项目。自上次更新以来，我们取得了重要进展，希望能分享我们所学到的知识。
 ---
 
 2023 年 3 月 22 日 [Joseph Savona](https://twitter.com/en_JS)、[Josh Story](https://twitter.com/joshcstory)、[Lauren Tan](https://twitter.com/potetotes)、[Mengdi Chen](https://twitter.com/mengdi_en)、[Samuel Susla](https://twitter.com/SamuelSusla)、[Sathya Gunasekaran](https://twitter.com/_gsathya)、[Sebastian Markbåge](https://twitter.com/sebmarkbage) 与 [Andrew Clark](https://twitter.com/acdlite)

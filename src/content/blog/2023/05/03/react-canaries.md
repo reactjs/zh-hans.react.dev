@@ -1,8 +1,8 @@
 ---
-title: "React Canaries: Enabling Incremental Feature Rollout Outside Meta"
+title: "React Canaries：在 Meta 之外逐步推出新功能"
 author: Dan Abramov, Sophie Alpert, Rick Hanlon, Sebastian Markbage, and Andrew Clark
 date: 2023/05/03
-description: We'd like to offer the React community an option to adopt individual new features as soon as their design is close to final, before they're released in a stable version--similar to how Meta has long used bleeding-edge versions of React internally. We are introducing a new officially supported [Canary release channel](/community/versioning-policy#canary-channel). It lets curated setups like frameworks decouple adoption of individual React features from the React release schedule.
+description: 我们希望为 React 社区提供一种选择，使他们能够在新功能设计接近最终状态时立即采用这些功能——类似于 Meta 内部使用 React 的方式。我们正在推出一个新的官方支持的 [Canary 发布渠道](/community/versioning-policy#canary-channel)。它允许如框架一样的 curated setup，将对单个 React 功能的采用与 React 发布计划分离开。
 ---
 
 2023 年 5 月 3 日 [Dan Abramov](https://twitter.com/dan_abramov)、[Sophie Alpert](https://twitter.com/sophiebits)、[Rick Hanlon](https://twitter.com/rickhanlonii)、[Sebastian Markbåge](https://twitter.com/sebmarkbage) 与 [Andrew Clark](https://twitter.com/acdlite)
