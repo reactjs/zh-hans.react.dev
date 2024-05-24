@@ -1,27 +1,21 @@
 ---
-title: "React 19 Beta"
+title: "React 19 RC"
 author: The React Team
 date: 2024/04/25
-description: React 19 测试版现在可以在 npm 上使用了! 在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
+description: React 19 RC 版现在可以在 npm 上使用了! 在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
 ---
 
 2024 年 4 月 25 日 [The React Team](/community/team)
 
 ---
 
-<Note>
-
-这个测试版的发布是为了 React 19 正式版做准备。应用开发者应先升级到 18.3.0，并等待 React 19 稳定版发布，因为我们正在维护这个库，并根据反馈进行更改。
-
-</Note>
-
 <Intro>
 
-React 19 测试版现在可以在 npm 上使用了!
+React 19 RC 版本现在可以在 npm 上使用了!
 
 </Intro>
 
-在我们的 [React 19 Beta 升级指南](/blog/2024/04/25/react-19-upgrade-guide) 中，我们分享了将你的应用升级到 React 19 Beta 的逐步指南。在这篇文章中，我们将概述 React 19 中的新功能，以及你如何采用它们。
+在我们的 [React 19 RC Upgrade Guide](/blog/2024/04/25/react-19-upgrade-guide) 中, 我们分享了将应用程序升级到 React 19 的分步说明。在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
 
 - [React 19 中的新功能](#whats-new-in-react-19)
 - [React 19 中的改进](#improvements-in-react-19)
