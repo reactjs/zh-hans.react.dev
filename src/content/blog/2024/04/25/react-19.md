@@ -475,8 +475,8 @@ function App({children}) {
   ref={(ref) => {
     // ref 创建
 
-    // 新特性: 当元素从 DOM 中被移除时返回一个清理函数来重置 ref
-
+    // 新特性: 当元素从 DOM 中被移除时
+    // 返回一个清理函数来重置 ref
     return () => {
       // ref cleanup
     };
