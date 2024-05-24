@@ -106,13 +106,13 @@ function UpdateName({}) {
 Actions 自动为你管理数据提交：
 
 - **待定状态**: Actions 提供一个待定状态，该状态在请求开始时启动，并在最终状态更新提交时自动重置。
-- **乐观更新**: Actions 支持新的 [`useOptimistic`](#new-hook-optimistic-updates) 钩子，因此你可以在请求提交时向用户显示即时反馈。
+- **乐观更新**: Actions 支持新的 [`useOptimistic`](#new-hook-optimistic-updates)  Hook，因此你可以在请求提交时向用户显示即时反馈。
 - **错误处理**: Actions 提供错误处理，因此当请求失败时，你可以显示错误边界，并自动将乐观更新恢复到其原始值。
 - **表单**: `<form>` 元素现在支持将函数传递给 `action` 和 `formAction` 属性。将函数传递给 `action` 属性默认使用 Actions，并在提交后自动重置表单。
 
 </Note>
 
-在 Actions 的基础上，React 19 引入了 [`useOptimistic`](#new-hook-optimistic-updates) 来管理乐观更新，以及一个新的钩子 [`React.useActionState`](#new-hook-useactionstate) 来处理 Actions 的常见情况。在 `react-dom` 中我们添加了 [`<form>` Actions](#form-actions) 来自动管理表单和 `useFormStatus` 来支持表单中 Actions 的常见情况。
+在 Actions 的基础上，React 19 引入了 [`useOptimistic`](#new-hook-optimistic-updates) 来管理乐观更新，以及一个新的 Hook [`React.useActionState`](#new-hook-useactionstate) 来处理 Actions 的常见情况。在 `react-dom` 中我们添加了 [`<form>` Actions](#form-actions) 来自动管理表单和 `useFormStatus` 来支持表单中 Actions 的常见情况。
 
 在 React 19 中，上述示例可以简化为：
 
@@ -143,9 +143,9 @@ function ChangeName({ name, setName }) {
 
 在下一节中，我们将详细介绍 React 19 中的每一个新的 Action 功能。
 
-### 新的钩子: `useActionState` {/*new-hook-useactionstate*/}
+### 新的 Hook: `useActionState` {/*new-hook-useactionstate*/}
 
-为了使 Actions 的常见情况更加简单，我们添加了一个名为 `useActionState` 的新钩子：
+为了使 Actions 的常见情况更加简单，我们添加了一个名为 `useActionState` 的新 Hook：
 
 ```js
 const [error, submitAction, isPending] = useActionState(
@@ -168,13 +168,13 @@ const [error, submitAction, isPending] = useActionState(
 
 <Note>
 
-`React.useActionState` 在 Canary 版本中曾被称为 `ReactDOM.useActionState`，但我们已经将其重命名并弃用了 `useActionState。`
+`React.useActionState` 在 Canary 版本中曾被称为 `ReactDOM.useActionState`，但我们已经将其重命名并弃用了 `useActionState`。
 
 有关更多信息，请参见 [#28491](https://github.com/facebook/react/pull/28491)。
 
 </Note>
 
-相关的更多信息，请参阅文档 [`useActionState`](/reference/react/useActionState).
+相关的更多信息，请参阅文档 [`useActionState`](/reference/react/useActionState)。
 
 ### React DOM: `<form>` Actions {/*form-actions*/}
 
@@ -188,9 +188,9 @@ Actions 也与 React 19 的新 `<form>` 功能集成在 `react-dom` 中。我们
 
 有关更多信息，请参阅 `react-dom` 文档中的 [`<form>`](/reference/react-dom/components/form)、[`<input>`](/reference/react-dom/components/input) 和 `<button>`。
 
-### React DOM: 新钩子: `useFormStatus` {/*new-hook-useformstatus*/}
+### React DOM: 新 Hook: `useFormStatus` {/*new-hook-useformstatus*/}
 
-在设计系统中，常常需要编写设计一类能够访问其所在的 `<form>` 的信息而无需将属性传递到组件内的组件。这可以通过 Context 来实现，但为了使这类常见情况更简单，我们添加了一个新的钩子 `useFormStatus`：
+在设计系统中，常常需要编写设计一类能够访问其所在的 `<form>` 的信息而无需将属性传递到组件内的组件。这可以通过 Context 来实现，但为了使这类常见情况更简单，我们添加了一个新的 Hook `useFormStatus`：
 
 ```js [[1, 4, "pending"], [1, 5, "pending"]]
 import {useFormStatus} from 'react-dom';
@@ -205,9 +205,9 @@ function DesignButton() {
 
 有关更多信息，请参阅 `react-dom` 文档中的 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus)。
 
-### 新钩子: `useOptimistic` {/*new-hook-optimistic-updates*/}
+### 新 Hook: `useOptimistic` {/*new-hook-optimistic-updates*/}
 
-执行数据变更时的另一个常见 UI 模式是在异步请求进行时乐观地显示最终状态。在 React 19 中，我们添加了一个名为 `useOptimistic` 的新钩子，以便更容易实现这一点：
+执行数据变更时的另一个常见 UI 模式是在异步请求进行时乐观地显示最终状态。在 React 19 中，我们添加了一个名为 `useOptimistic` 的新 Hook，以便更容易实现这一点：
 
 ```js {2,6,13,19}
 function ChangeName({currentName, onUpdateName}) {
@@ -236,7 +236,7 @@ function ChangeName({currentName, onUpdateName}) {
 }
 ```
 
-`useOptimistic` 钩子会在 `updateName` 请求进行时立即渲染 `optimisticName`。当更新完成或出错时，React 将自动切换回 `currentName` 值。
+`useOptimistic` Hook 会在 `updateName` 请求进行时立即渲染 `optimisticName`。当更新完成或出错时，React 将自动切换回 `currentName` 值。
 
 有关更多信息，请参阅 [`useOptimistic`](/reference/react/useOptimistic) 文档。
 
@@ -377,7 +377,7 @@ function MyInput({placeholder, ref}) {
 
 </Note>
 
-### 水合错误的差异 {/*diffs-for-hydration-errors*/}
+### hydration 错误的差异 {/*diffs-for-hydration-errors*/}
 
 在 `react-dom` 中，我们也改进了水合错误的错误报告。例如，现在不再在 DEV 中记录多个没有任何不匹配信息的错误：
 
