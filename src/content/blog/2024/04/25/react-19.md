@@ -15,7 +15,7 @@ React 19 RC 版本现在可以在 npm 上使用了!
 
 </Intro>
 
-在我们的 [React 19 RC Upgrade Guide](/blog/2024/04/25/react-19-upgrade-guide) 中, 我们分享了将应用程序升级到 React 19 的分步说明。在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
+在我们的 [React 19 RC 升级指南](/blog/2024/04/25/react-19-upgrade-guide) 中, 我们分享了将应用程序升级到 React 19 的分步说明。在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
 
 - [React 19 中的新功能](#whats-new-in-react-19)
 - [React 19 中的改进](#improvements-in-react-19)
