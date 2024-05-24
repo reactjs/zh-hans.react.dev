@@ -296,6 +296,7 @@ function Heading({children}) {
   if (children == null) {
     return null;
   }
+  
   // 因为过早的返回
   // 这里 useContext 无法正常工作。
   const theme = use(ThemeContext);
