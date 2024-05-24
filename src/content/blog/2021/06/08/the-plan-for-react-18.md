@@ -1,8 +1,8 @@
 ---
-title: "The Plan for React 18"
+title: "React 18 的有关计划"
 author: Andrew Clark, Brian Vaughn, Christine Abernathy, Dan Abramov, Rachel Nabors, Rick Hanlon, Sebastian Markbage, and Seth Webster
 date: 2021/06/08
-description: The React team is excited to share a few updates. We’ve started work on the React 18 release, which will be our next major version. We’ve created a Working Group to prepare the community for gradual adoption of new features in React 18. We’ve published a React 18 Alpha so that library authors can try it and provide feedback...
+description: React 团队很高兴分享一些更新。我们已经开始推进 React 18 的更新，也正是我们的下一个主要版本。我们已经创建了一些工作组，筹备 React 18 新功能在社区内逐步推广的相关工作。我们已经发布了一个 React 18 Alpha 版本，以便于一些库的作者们能够测试并反馈……
 ---
 
 2021 年 7 月 8 日 [Andrew Clark](https://twitter.com/acdlite)、[Brian Vaughn](https://github.com/bvaughn)、[Christine Abernathy](https://twitter.com/abernathyca)、[Dan Abramov](https://twitter.com/dan_abramov)、[Rachel Nabors](https://twitter.com/rachelnabors)、[Rick Hanlon](https://twitter.com/rickhanlonii)、[Sebastian Markbåge](https://twitter.com/sebmarkbage) 与 [Seth Webster](https://twitter.com/sethwebster)

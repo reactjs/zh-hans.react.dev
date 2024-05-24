@@ -1,8 +1,8 @@
 ---
-title: "Introducing Zero-Bundle-Size React Server Components"
+title: "介绍服务器组件"
 author: Dan Abramov, Lauren Tan, Joseph Savona, and Sebastian Markbage
 date: 2020/12/21
-description: 2020 has been a long year. As it comes to an end we wanted to share a special Holiday Update on our research into zero-bundle-size React Server Components.
+description: 2020 年是漫长的一年。随着它的结束，我们想在节日里分享一份特别的更新，介绍我们对零打包大小的 React 服务器组件的研究。
 ---
 
 2020 年 12 月 21 日 [Dan Abramov](https://twitter.com/dan_abramov)、[Lauren Tan](https://twitter.com/potetotes)、[Joseph Savona](https://twitter.com/en_JS) 与 [Sebastian Markbåge](https://twitter.com/sebmarkbage)
