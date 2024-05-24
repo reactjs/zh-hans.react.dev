@@ -296,8 +296,8 @@ function Heading({children}) {
   if (children == null) {
     return null;
   }
-  // 这里 useContext 无法正常工作
-  // 因为过早的返回。
+  // 因为过早的返回
+  // 这里 useContext 无法正常工作。
   const theme = use(ThemeContext);
   return (
     <h1 style={{color: theme.color}}>
@@ -476,7 +476,7 @@ function App({children}) {
     // ref 创建
 
     // 新特性: 当元素从 DOM 中被移除时返回一个清理函数来重置 ref
-    
+
     return () => {
       // ref cleanup
     };
