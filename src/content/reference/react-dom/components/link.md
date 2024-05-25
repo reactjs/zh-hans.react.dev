@@ -44,7 +44,7 @@ React 对 `<link>` 的扩展当前仅在 React Canary 与 experimental 渠道中
 
 当 `rel="stylesheet"` 时，应用以下属性：
 
-* `precedence`：字符串，用于告诉 React 在文档 `<head>` 中将 `<link>` DOM 节点排在其他节点之前的位置，这决定了哪个样式表可以覆盖其他样式表。它的值可以是（按优先级顺序）`"reset"`、`"low"`、`"medium"` 或 `"high"`。无论是 `<link>` 还是内联 `<style>` 标签，或者使用 [`preload`](/reference/react-dom/preload) 或 [`preinit`](/reference/react-dom/preinit) 函数加载的内容，具有相同优先级的样式表将一起处理。
+* `precedence`：字符串，用于告诉 React 在文档 `<head>` 中将 `<link>` DOM 节点排在其他节点之前的位置，这决定了哪个样式表可以覆盖其他样式表。React 会推断其首先发现的 `precedence` 值为“较低”，而后来发现的 `precedence` 值为“较高”。许多样式系统使用单个 `precedence` 值能够很好地工作，因为样式规则是原子的。无论是 `<link>` 还是内联 `<style>` 标签，或者使用 [`preinit`](/reference/react-dom/preinit) 函数加载的内容，具有相同优先级的样式表将一起处理。
 * `media`：字符串，用于将样式表限制为特定的 [媒体查询](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_media_queries/Using_media_queries)。
 * `title`：字符串，用于指定 [替代样式表](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Alternative_style_sheets) 的名称。
 
