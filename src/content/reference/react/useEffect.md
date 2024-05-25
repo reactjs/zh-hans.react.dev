@@ -64,13 +64,9 @@ function ChatRoom({ roomId }) {
 
 * 如果你的 Effect 不是由交互（比如点击）引起的，那么 React 会让浏览器 **在运行 Effect 前先绘制出更新后的屏幕**。如果你的 Effect 正在做一些视觉相关的事情（例如，定位一个 tooltip），并且有显著的延迟（例如，它会闪烁），那么将 `useEffect` 替换为 [`useLayoutEffect`](/reference/react/useLayoutEffect)。
 
-<<<<<<< HEAD
-* 即使你的 Effect 是由一个交互（比如点击）引起的，**浏览器也可能在处理 Effect 内部的状态更新之前重新绘制屏幕**。通常，这就是你想要的。但是，如果你一定要阻止浏览器重新绘制屏幕，则需要用 [`useLayoutEffect`](/reference/react/useLayoutEffect) 替换 `useEffect`。
-=======
-* If your Effect is caused be an interaction (like a click), **React may run your Effect before the browser paints the updated screen**. This ensures that the result of the Effect can be observed by the event system. Usually, this works as expected. However, if you must defer the work until after paint, such as an `alert()`, you can use `setTimeout`. See [reactwg/react-18/128](https://github.com/reactwg/react-18/discussions/128) for more information.
+* 如果你的 Effect 是由一个交互（比如点击）引起的，**React 可能会在浏览器重新绘制屏幕之前执行 Effect**。通常情况下，这样是符合预期的。但是，如果你必须要推迟 Effect 执行到浏览器绘制之后，和使用 `alert()` 类似，可以使用 `setTimeout`。有关更多信息，请参阅 [reactwg/react-18/128](https://github.com/reactwg/react-18/discussions/128)。
 
-* Even if your Effect was caused by an interaction (like a click), **React may allow the browser may repaint the screen before processing the state updates inside your Effect.** Usually, this works as expected. However, if you must block the browser from repainting the screen, you need to replace `useEffect` with [`useLayoutEffect`.](/reference/react/useLayoutEffect)
->>>>>>> ef23197db151c195f1c4590c09782642e0cd5630
+* 即使你的 Effect 是由一个交互（比如点击）引起的，**React 也可能允许浏览器在处理 Effect 内部的状态更新之前重新绘制屏幕**。通常，这样是符合预期的。但是，如果你一定要阻止浏览器重新绘制屏幕，则需要用 [`useLayoutEffect`](/reference/react/useLayoutEffect) 替换 `useEffect`。
 
 * Effect **只在客户端上运行**，在服务端渲染中不会运行。
 
