@@ -1,5 +1,5 @@
 ---
-title: "介绍服务器组件"
+title: "介绍零打包大小的 React 服务器组件"
 author: Dan Abramov, Lauren Tan, Joseph Savona, and Sebastian Markbage
 date: 2020/12/21
 description: 2020 年是漫长的一年。随着它的结束，我们想在节日里分享一份特别的更新，介绍我们对零打包大小的 React 服务器组件的研究。
