@@ -346,13 +346,8 @@
       "path": "/reference/rules",
       "routes": [
         {
-<<<<<<< HEAD
-        "title": "组件和 Hook 必须是纯粹的",
-        "path": "/reference/rules/components-and-hooks-must-be-pure"
-=======
-          "title": "Components and Hooks must be pure",
+          "title": "组件和 Hook 必须是纯粹的",
           "path": "/reference/rules/components-and-hooks-must-be-pure"
->>>>>>> 12fca4c24f218daea883080db476fb71ed160f36
         },
         {
           "title": "React 调用组件和 Hook",
