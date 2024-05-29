@@ -113,6 +113,10 @@
       "path": "/reference/react/apis",
       "routes": [
         {
+          "title": "act",
+          "path": "/reference/react/act"
+        },
+        {
           "title": "cache",
           "path": "/reference/react/cache",
           "canary": true
@@ -342,8 +346,8 @@
       "path": "/reference/rules",
       "routes": [
         {
-        "title": "组件和 Hook 必须是纯粹的",
-        "path": "/reference/rules/components-and-hooks-must-be-pure"
+          "title": "组件和 Hook 必须是纯粹的",
+          "path": "/reference/rules/components-and-hooks-must-be-pure"
         },
         {
           "title": "React 调用组件和 Hook",
