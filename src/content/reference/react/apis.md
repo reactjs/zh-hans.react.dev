@@ -19,6 +19,7 @@ translators:
 * [`memo`](/reference/react/memo) 允许你在 props 没有变化的情况下跳过组件的重渲染。通常 [`useMemo`](/reference/react/useMemo) 与 [`useCallback`](/reference/react/useCallback) 会一起配合使用。
 * [`startTransition`](/reference/react/startTransition) 允许你可以标记一个状态更新是不紧急的。类似于 [`useTransition`](/reference/react/useTransition)。
 * [`act`](/reference/react/act) 允许你在测试中包装渲染和交互，以确保在断言之前已完成更新。
+
 ---
 
 ## Resource APIs {/*resource-apis*/}
