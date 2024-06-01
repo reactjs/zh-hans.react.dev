@@ -17,9 +17,9 @@ description: 上周我们在内华达州亨德森举办了为期两天的 React 
 
 ---
 
-在 React Conf 2024 上，我们宣布了 [React 19 RC](/blog/2024/04/25/react-19)、[React Native 新架构 Beta 版](https://github.com/reactwg/react-native-new-architecture/discussions/189)，以及 [React Compiler](/learn/react-compiler) 的实验版本。社区同时登台宣布了 [React Router v7](https://remix.run/blog/merging-remix-and-react-router)、Expo Router 中的[通用服务器组件](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=20765s)、[RedwoodJS](https://redwoodjs.com/blog/rsc-now-in-redwoodjs) 中的 React 服务器组件等等。
+在 React Conf 2024 上，我们宣布了 [React 19 RC](/blog/2024/04/25/react-19)、[React Native 新架构 Beta 版](https://github.com/reactwg/react-native-new-architecture/discussions/189)，以及 [React Compiler](/learn/react-compiler) 的实验版本。社区同时登台宣布了 [React Router v7](https://remix.run/blog/merging-remix-and-react-router)、Expo Router 中的 [通用服务器组件](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=20765s)、[RedwoodJS](https://redwoodjs.com/blog/rsc-now-in-redwoodjs) 中的 React 服务器组件等等。
 
-完整的[第一天](https://www.youtube.com/watch?v=T8TZQ6k4SLE)和[第二天](https://www.youtube.com/watch?v=0ckOUBiuxVY)的直播已经可以在线观看了。在这篇文章中，我们将总结活动中的演讲和公告。
+完整的 [第一天](https://www.youtube.com/watch?v=T8TZQ6k4SLE) 和 [第二天](https://www.youtube.com/watch?v=0ckOUBiuxVY) 的直播已经可以在线观看了。在这篇文章中，我们将总结活动中的演讲和公告。
 
 ## 第一天 {/*day-1*/}
 
@@ -45,7 +45,7 @@ _[点击这里观看第一天完整直播。](https://www.youtube.com/watch?v=T8
 - [为两台计算机设计的 React](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=18825s)，来自 [Dan Abramov](https://twitter.com/dan_abramov2)
 - [现在你应该理解了 React 服务器组件](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=11256s)，来自 [Kent C. Dodds](https://twitter.com/kentcdodds)
 
-最后，[Joe Savona](https://twitter.com/en_JS)、[Sathya Gunasekaran](https://twitter.com/_gsathya) 和 [Mofei Zhang](https://twitter.com/zmofei) 宣布 React Compiler 现已[开源](https://github.com/facebook/react/pull/29061)，并分享了一个实验版本的 React Compiler 供大家尝试。
+最后，[Joe Savona](https://twitter.com/en_JS)、[Sathya Gunasekaran](https://twitter.com/_gsathya) 和 [Mofei Zhang](https://twitter.com/zmofei) 宣布 React Compiler 现已 [开源](https://github.com/facebook/react/pull/29061)，并分享了一个实验版本的 React Compiler 供大家尝试。
 
 有关使用 React Compile 及其工作原理的更多信息，请查看[文档](/learn/react-compiler)以及如下演讲：
 
@@ -104,7 +104,7 @@ React 和 React Native 团队也在每天结束时进行了问答环节：
 
 感谢 [Barbara Markiewicz](https://twitter.com/barbara_markie)、[Callstack](https://www.callstack.com/) 团队和我们的 React 团队开发者倡导者 [Matt Carroll](https://twitter.com/mattcarrollcode) 帮助策划整个活动；感谢 [Sunny Leggett](https://zeroslopeevents.com/about) 和 [Zero Slope](https://zeroslopeevents.com) 的所有人帮助组织活动。
 
-感谢 [Ashley Narcisse](https://twitter.com/_darkfadr) 担任我们的主持人和首席氛围官；感谢[Michael Chan](https://twitter.com/chantastic) 和 [Jamon Holmgren](https://twitter.com/jamonholmgren) 主持问答环节。
+感谢 [Ashley Narcisse](https://twitter.com/_darkfadr) 担任我们的主持人和首席氛围官；感谢 [Michael Chan](https://twitter.com/chantastic) 和 [Jamon Holmgren](https://twitter.com/jamonholmgren) 主持问答环节。
 
 感谢 [Seth Webster](https://twitter.com/sethwebster) 和 [Eli White](https://x.com/Eli_White) 每天欢迎我们，并提供结构和内容方面的指导；感谢 [Tom Occhino](https://twitter.com/tomocchino) 在聚会后加入我们，并发表特别讯息。
 
