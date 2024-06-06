@@ -11,7 +11,7 @@ canary: true
 
 <Note>
 
-In earlier React Canary versions, this API was part of React DOM and called `useActionState`.
+In earlier React Canary versions, this API was part of React DOM and called `useFormState`.
 
 </Note>
 
