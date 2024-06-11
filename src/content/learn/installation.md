@@ -39,7 +39,11 @@ export default function App() {
 
 你可以直接对它进行编辑，或点击右上角的 "Fork" 按钮在一个新的标签页中打开。
 
+<<<<<<< HEAD
 React 文档中的大部分页面都包含这样的 sandbox。除 React 文档以外，还存在许多支持 React 的在线代码编辑器：例如 [CodeSandbox](https://codesandbox.io/s/new)，[StackBlitz](https://stackblitz.com/fork/react)，或者 [CodePen](https://codepen.io/pen?&editors=0010&layout=left&prefill_data_id=3f4569d1-1b11-4bce-bd46-89090eed5ddb)。
+=======
+Most pages in the React documentation contain sandboxes like this. Outside of the React documentation, there are many online sandboxes that support React: for example, [CodeSandbox](https://codesandbox.io/s/new), [StackBlitz](https://stackblitz.com/fork/react), or [CodePen.](https://codepen.io/pen?template=QWYVwWN)
+>>>>>>> 438ee7abfd6523eb5aa2ad8d1aa789dbb4645f8a
 
 ### 本地尝试 React {/*try-react-locally*/}
 
