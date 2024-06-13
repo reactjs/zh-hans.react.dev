@@ -20,7 +20,7 @@ canary: true
 `preinit` 可以预获取和评估样式表或外部脚本。
 
 ```js
-preinit("https://example.com/script.js", {as: "style"});
+preinit("https://example.com/script.js", {as: "script"});
 ```
 
 </Intro>

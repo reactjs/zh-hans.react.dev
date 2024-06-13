@@ -68,11 +68,9 @@ React 对 `<script>` 的扩展当前仅在 React Canary 与 experimental 渠道�
 
 #### 特殊的渲染行为 {/*special-rendering-behavior*/}
 
-React 可以将 `<script>` 组件移动到文档的 `<head>` 中，并对相同脚本进行去重，并在脚本加载时 [挂起](/reference/react/Suspense)。
+React 可以将 `<script>` 组件移动到文档的 `<head>` 中，并对相同脚本进行去重。
 
 可以提供 `src` 和 `async={true}` 属性以选择行为。如果脚本具有相同的 `src`，React 将对脚本去重。`async` 属性必须为 true 才能安全地移动脚本。
-
-如果提供了 `onLoad` 或 `onError` 之类的任何属性，则没有特殊行为，因为这些属性表明正在组件内手动管理脚本的加载。
 
 这种特殊处理带来两个注意事项：
 
@@ -85,9 +83,11 @@ React 可以将 `<script>` 组件移动到文档的 `<head>` 中，并对相同�
 
 ### 渲染内部脚本 {/*rendering-an-external-script*/}
 
-如果一个组件依赖于某些脚本才能正确显示，则可以在组件内部渲染 `<script>`。
+If a component depends on certain scripts in order to be displayed correctly, you can render a `<script>` within the component.
+However, the component might be committed before the script has finished loading.
+You can start depending on the script content once the `load` event is fired e.g. by using the `onLoad` prop.
 
-如果提供了 `src` 和 `async` 属性，组件会在脚本加载时挂起。React 会对具有相同 `src` 的脚本去重，因此即使多个组件渲染了相同的脚本，也只会将其中一个插入到 DOM 中。
+React will de-duplicate scripts that have the same `src`, inserting only one of them into the DOM even if multiple components render it.
 
 <SandpackWithHTMLOutput>
 
@@ -97,7 +97,7 @@ import ShowRenderedHTML from './ShowRenderedHTML.js';
 function Map({lat, long}) {
   return (
     <>
-      <script async src="map-api.js" />
+      <script async src="map-api.js" onLoad={() => console.log('script loaded')} />
       <div id="map" data-lat={lat} data-long={long} />
     </>
   );
@@ -120,7 +120,7 @@ export default function Page() {
 
 ### 渲染内联脚本 {/*rendering-an-inline-script*/}
 
-如果需要包含内联脚本，请将 `<script>` 组件渲染为其子元素的脚本源代码。内联脚本不会被去重或移动到文档 `<head>` 中，由于它们不加载任何外部资源，因此不会导致组件挂起。
+如果需要包含内联脚本，请将 `<script>` 组件渲染为其子元素的脚本源代码。内联脚本不会被去重或移动到文档 `<head>` 中。
 
 <SandpackWithHTMLOutput>
 
