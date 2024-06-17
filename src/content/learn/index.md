@@ -215,7 +215,7 @@ return (
 </div>
 ```
 
-当你不需要 `else` 分支时，你还可以使用 [逻辑 `&&` 语法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_AND#short-circuit_evaluation)：
+当你不需要 `else` 分支时，你也可以使用更简短的 [逻辑 `&&` 语法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_AND#short-circuit_evaluation)：
 
 ```js
 <div>
@@ -223,7 +223,7 @@ return (
 </div>
 ```
 
-所有这些方法也适用于有条件地指定属性。如果你对 JavaScript 语法不熟悉，你可以从一直使用 `if...else` 开始。
+所有这些方法也适用于有条件地指定属性。如果你对 JavaScript 语法不熟悉，你可以先使用 `if...else`。
 
 ## 渲染列表 {/*rendering-lists*/}
 
