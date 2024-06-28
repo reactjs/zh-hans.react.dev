@@ -345,7 +345,7 @@ li {
 
 <Canary>
 
-This example shows another approach for managing the Map with a `ref` callback cleanup function.
+这个例子展示了另一种使用 `ref` 回调清理函数来管理 Map 的方法。
 
 ```js
 <li
