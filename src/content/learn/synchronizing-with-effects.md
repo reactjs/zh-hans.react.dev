@@ -319,7 +319,7 @@ export default function App() {
     <>
       <input value={text} onChange={e => setText(e.target.value)} />
       <button onClick={() => setIsPlaying(!isPlaying)}>
-        {isPlaying ? 'Pause' : 'Play'}
+        {isPlaying ? '暂停' : '播放'}
       </button>
       <VideoPlayer
         isPlaying={isPlaying}
@@ -361,10 +361,10 @@ function VideoPlayer({ src, isPlaying }) {
 
   useEffect(() => {
     if (isPlaying) {
-      console.log('Calling video.play()');
+      console.log('调用 video.play()');
       ref.current.play();
     } else {
-      console.log('Calling video.pause()');
+      console.log('调用 video.pause()');
       ref.current.pause();
     }
   }, [isPlaying]);
@@ -379,7 +379,7 @@ export default function App() {
     <>
       <input value={text} onChange={e => setText(e.target.value)} />
       <button onClick={() => setIsPlaying(!isPlaying)}>
-        {isPlaying ? 'Pause' : 'Play'}
+        {isPlaying ? '暂停' : '播放'}
       </button>
       <VideoPlayer
         isPlaying={isPlaying}
