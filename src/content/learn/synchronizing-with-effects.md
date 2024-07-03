@@ -28,7 +28,7 @@ title: '使用 Effect 同步'
 
 有时这还不够。考虑一个 `ChatRoom` 组件，它在屏幕上可见时必须连接到聊天服务器。连接到服务器不是一个纯计算（它包含副作用），因此它不能在渲染过程中发生。然而，并没有一个特定的事件（比如点击）导致 `ChatRoom` 被显示。
 
-**Effect 允许你指定由渲染本身，而不是特定事件引起的副作用**。在聊天中发送消息是一个“事件”，因为它直接由用户点击特定按钮引起。然而，建立服务器连接是 Effect，因为它应该发生无论哪种交互导致组件出现。Effect 在屏幕更新后的 [提交阶段](/learn/render-and-commit) 运行。这是一个很好的时机，可以将 React 组件与某个外部系统（如网络或第三方库）同步。
+**Effect 允许你指定由渲染本身，而不是特定事件引起的副作用**。在聊天中发送消息是一个“事件”，因为它直接由用户点击特定按钮引起。然而，建立服务器连接是 Effect，因为无论哪种交互致使组件出现，它都会发生。Effect 在屏幕更新后的 [提交阶段](/learn/render-and-commit) 运行。这是一个很好的时机，可以将 React 组件与某个外部系统（如网络或第三方库）同步。
 
 <Note>
 
@@ -600,9 +600,9 @@ input { display: block; margin-bottom: 20px; }
 
 <Pitfall>
 
-#### Don't use refs to prevent Effects from firing {/*dont-use-refs-to-prevent-effects-from-firing*/}
+#### 不要使用 refs 来防止触发 Effects {/*dont-use-refs-to-prevent-effects-from-firing*/}
 
-A common pitfall for preventing Effects firing twice in development is to use a `ref` to prevent the Effect from running more than once. For example, you could "fix" the above bug with a `useRef`:
+在开发过程中，防止Effects触发两次的一个常见陷阱是使用 `ref` 来防止Effect运行多次。例如，你使用 `useRef` “修复”上述错误：
 
 ```js {1,3-4}
   const connectionRef = useRef(null);
@@ -615,13 +615,13 @@ A common pitfall for preventing Effects firing twice in development is to use a 
   }, []);
 ```
 
-This makes it so you only see `"✅ Connecting..."` once in development, but it doesn't fix the bug.
+这使得你在开发过程中确实只看到了一次 `“✅ 正在连接...”`，但其实并没有修复这个错误。
 
-When the user navigates away, the connection still isn't closed and when they navigate back, a new connection is created. As the user navigates across the app, the connections would keep piling up, the same as it would before the "fix". 
+当用户导航离开时，连接仍未关闭，当他们导航返回时，又会创建一个新的连接。当用户在应用程序中导航时，连接会不断堆积，就像“修复”之前一样。
 
-To fix the bug, it is not enough to just make the Effect run once. The effect needs to work after re-mounting, which means the connection needs to be cleaned up like in the solution above.
+要修复这个错误，仅仅让Effect只运行一次是不够的。要让副作用在重载后能正确工作，意味着需要像上面的解决方案一样清理连接。
 
-See the examples below for how to handle common patterns.
+请看下面的示例，了解如何处理常见模式。
 
 </Pitfall>
 
