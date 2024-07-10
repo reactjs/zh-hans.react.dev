@@ -607,7 +607,7 @@ input { display: block; margin-bottom: 20px; }
 ```js {1,3-4}
   const connectionRef = useRef(null);
   useEffect(() => {
-    // 🚩 This wont fix the bug!!!
+    // 🚩 这并不能修复这个错误！！！
     if (!connectionRef.current) {
       connectionRef.current = createConnection();
       connectionRef.current.connect();
