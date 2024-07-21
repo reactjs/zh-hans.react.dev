@@ -265,11 +265,7 @@ setCount(count + 1); // 请求用 1 重新渲染
 console.log(count);  // 仍然是 0！
 ```
 
-<<<<<<< HEAD
 React 这样工作是为了帮助你避免微妙的 bug。这里有一个小的聊天应用程序。试着猜一猜，如果先按下“发送”，然后再把收件人改为 Bob，会发生什么？五秒钟后，谁的名字会出现在 `alert` 中？
-=======
-This behavior helps you avoid subtle bugs. Here is a little chat app. Try to guess what happens if you press "Send" first and *then* change the recipient to Bob. Whose name will appear in the `alert` five seconds later?
->>>>>>> 6274d4faf5afcef74357871d06191558050e23d3
 
 <Sandpack>
 
