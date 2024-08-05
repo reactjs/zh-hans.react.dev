@@ -67,6 +67,7 @@ function FriendList({ friends }) {
   );
 }
 ```
+
 [**在 React Compiler Playground 中查看此示例**](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAMygOzgFwJYSYAEAYjHgpgCYAyeYOAFMEWuZVWEQL4CURwADrEicQgyKEANnkwIAwtEw4iAXiJQwCMhWoB5TDLmKsTXgG5hRInjRFGbXZwB0UygHMcACzWr1ABn4hEWsYBBxYYgAeADkIHQ4uAHoAPksRbisiMIiYYkYs6yiqPAA3FMLrIiiwAAcAQ0wU4GlZBSUcbklDNqikusaKkKrgR0TnAFt62sYHdmp+VRT7SqrqhOo6Bnl6mCoiAGsEAE9VUfmqZzwqLrHqM7ubolTVol5eTOGigFkEMDB6u4EAAhKA4HCEZ5DNZ9ErlLIWYTcEDcIA)
 
 React Compiler 会自动应用等效的手动记忆，确保只有应用的相关部分在状态发生变化时重新渲染，这有时被称为“细粒度反应”。在上面的例子中，React Compiler 确定 `<FriendListCard />` 的返回值即使在 `friends` 发生变化时也可以重用，并且可以避免重新创建此 JSX，**并**避免在 `onlineCount` 变化时重新渲染 `<MessageButton>`。
@@ -86,6 +87,7 @@ function TableContainer({ items }) {
   // ...
 }
 ```
+
 [**在 React Compiler Playground 中查看此示例**](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAejQAgFTYHIQAuumAtgqRAJYBeCAJpgEYCemASggIZyGYDCEUgAcqAGwQwANJjBUAdokyEAFlTCZ1meUUxdMcIcIjyE8vhBiYVECAGsAOvIBmURYSonMCAB7CzcgBuCGIsAAowEIhgYACCnFxioQAyXDAA5gixMDBcLADyzvlMAFYIvGAAFACUmMCYaNiYAHStOFgAvk5OGJgAshTUdIysHNy8AkbikrIKSqpaWvqGIiZmhE6u7p7ymAAqXEwSguZcCpKV9VSEFBodtcBOmAYmYHz0XIT6ALzefgFUYKhCJRBAxeLcJIsVIZLI5PKFYplCqVa63aoAbm6u0wMAQhFguwAPPRAQA+YAfL4dIloUmBMlODogDpAA)
 
 但是，如果 `expensivelyProcessAReallyLargeArrayOfObjects` 确实是一个昂贵的函数，你可能需要考虑在 React 之外实现它自己的记忆，因为：
@@ -177,6 +179,7 @@ const ReactCompilerConfig = {
   },
 };
 ```
+
 在罕见的情况下，你还可以使用 `compilationMode: "annotation"` 选项将编译器配置为以 "opt-in" 模式运行。这样编译器将只编译带有 `"use memo"` 指令的组件和钩子。请注意，`annotation` 模式是为了帮助早期采用者而设立的临时模式，我们并不打算长期使用 `"use memo"` 指令。
 
 ```js {2,7}
