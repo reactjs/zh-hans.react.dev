@@ -123,7 +123,7 @@ React Compiler 可以静态验证 React 的许多规则，并且在检测到错�
 在安装编译器之前，你可以先检查你的代码库是否兼容：
 
 <TerminalBlock>
-npx react-compiler-healthcheck@latest
+npx react-compiler-healthcheck@experimental
 </TerminalBlock>
 
 此脚本将：
@@ -145,7 +145,7 @@ Found no usage of incompatible libraries.
 React Compiler 还为 ESLint 插件提供支持。ESLint 插件可以**独立**于编译器使用，这意味着即使你不使用编译器，也可以使用 ESLint 插件。
 
 <TerminalBlock>
-npm install eslint-plugin-react-compiler
+npm install eslint-plugin-react-compiler@experimental
 </TerminalBlock>
 
 然后，将其添加到你的 ESLint 配置中：
@@ -205,7 +205,7 @@ export default function App() {
 ### Babel {/*usage-with-babel*/}
 
 <TerminalBlock>
-npm install babel-plugin-react-compiler
+npm install babel-plugin-react-compiler@experimental
 </TerminalBlock>
 
 编译器包含一个 Babel 插件，你可以在构建流水线中使用它来运行编译器。
@@ -260,7 +260,7 @@ Next.js 有一个实验性配置来启用 React 编译器。它会自动确保 B
 - 安装 `babel-plugin-react-compiler`
 
 <TerminalBlock>
-npm install next@canary babel-plugin-react-compiler
+npm install next@canary babel-plugin-react-compiler@experimental
 </TerminalBlock>
 
 然后在 `next.config.js` 中配置实验选项：
