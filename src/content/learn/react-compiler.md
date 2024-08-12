@@ -67,7 +67,6 @@ function FriendList({ friends }) {
   );
 }
 ```
-
 [**在 React Compiler Playground 中查看此示例**](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAMygOzgFwJYSYAEAYjHgpgCYAyeYOAFMEWuZVWEQL4CURwADrEicQgyKEANnkwIAwtEw4iAXiJQwCMhWoB5TDLmKsTXgG5hRInjRFGbXZwB0UygHMcACzWr1ABn4hEWsYBBxYYgAeADkIHQ4uAHoAPksRbisiMIiYYkYs6yiqPAA3FMLrIiiwAAcAQ0wU4GlZBSUcbklDNqikusaKkKrgR0TnAFt62sYHdmp+VRT7SqrqhOo6Bnl6mCoiAGsEAE9VUfmqZzwqLrHqM7ubolTVol5eTOGigFkEMDB6u4EAAhKA4HCEZ5DNZ9ErlLIWYTcEDcIA)
 
 React Compiler 会自动应用等效的手动记忆，确保只有应用的相关部分在状态发生变化时重新渲染，这有时被称为“细粒度反应”。在上面的例子中，React Compiler 确定 `<FriendListCard />` 的返回值即使在 `friends` 发生变化时也可以重用，并且可以避免重新创建此 JSX，**并**避免在 `onlineCount` 变化时重新渲染 `<MessageButton>`。
@@ -380,8 +379,7 @@ React Native 通过 Metro 使用 Babel，因此请参考 [使用 Babel](#usage-w
 
 ### 我如何知道我的组件已被优化？ {/*how-do-i-know-my-components-have-been-optimized*/}
 
-[React 开发工具](/learn/react-developer-tools)（v5.0 及以上版本）对 React Compiler 有内置支持，并会在已被编译器优化的组件旁边显示
-“Memo ✨”徽章。
+[React 开发工具](/learn/react-developer-tools)（v5.0 及以上版本）对 React Compiler 有内置支持，并会在已被编译器优化的组件旁边显示“Memo ✨”徽章。
 
 ### 编译后某些内容无法正常工作 {/*something-is-not-working-after-compilation*/}
 如果你安装了 eslint-plugin-react-compiler ，编译器将在你的编辑器中显示任何违反 React 规则的情况。当它这样做时，意味着编译器跳过了对该组件或钩子的优化。这完全没问题，并且编译器可以恢复并继续优化你代码库中的其他组件。**你不必立即修复所有的违反 ESLint 规则的代码。** 你可以按照自己的节奏来处理它们，以增加被优化的组件和钩子的数量。
