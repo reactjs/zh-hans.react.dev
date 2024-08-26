@@ -54,11 +54,7 @@ export default function PackingList() {
 
 </Sandpack>
 
-<<<<<<< HEAD
-需要注意的是，有些 `Item` 组件的 `isPacked` 属性是被设为 `true` 而不是 `false`。你可以在那些满足 `isPacked={true}` 条件的物品旁加上一个勾选符号（✔）。
-=======
-Notice that some of the `Item` components have their `isPacked` prop set to `true` instead of `false`. You want to add a checkmark (✅) to packed items if `isPacked={true}`.
->>>>>>> 7d50c3ffd4df2dc7903f4e41069653a456a9c223
+需要注意的是，有些 `Item` 组件的 `isPacked` 属性是被设为 `true` 而不是 `false`。你可以在那些满足 `isPacked={true}` 条件的物品旁加上一个勾选符号（✅）。
 
 你可以用 [if/else 语句](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/if...else) 去判断：
 
@@ -208,11 +204,7 @@ return (
 );
 ```
 
-<<<<<<< HEAD
-你可以认为，*“如果 `isPacked` 为 true 时，则（`?`）渲染 `name + ' ✔'`，否则（`:`）渲染 `name`。”*
-=======
-You can read it as *"if `isPacked` is true, then (`?`) render `name + ' ✅'`, otherwise (`:`) render `name`"*.
->>>>>>> 7d50c3ffd4df2dc7903f4e41069653a456a9c223
+你可以认为，*“如果 `isPacked` 为 true 时，则（`?`）渲染 `name + ' ✅'`，否则（`:`）渲染 `name`。”*
 
 <DeepDive>
 
