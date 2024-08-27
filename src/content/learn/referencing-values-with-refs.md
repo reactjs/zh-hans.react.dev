@@ -235,7 +235,7 @@ export default function Counter() {
 
 </Sandpack>
 
-这就是为什么在渲染期间读取 `ref.current` 会导致代码不可靠的原因。如果需要，请改用 state。 
+这就是在渲染期间读取 `ref.current` 会导致代码不可靠的原因。如果需要，请改用 state。 
 
 <DeepDive>
 
@@ -528,7 +528,7 @@ button { display: block; margin: 10px; }
 
 <Solution>
 
-像 `timeoutID` 这样的变量是被所有组件共享的。这就是为什么单击第二个按钮会重置第一个按钮未完成的 timeout 的原因。要解决此问题，你可以把 timeout 保存在 ref 中。每个按钮都有自己的 ref，因此它们不会相互冲突。请注意快速单击两个按钮如何显示两个消息。
+像 `timeoutID` 这样的变量是被所有组件共享的。这就是单击第二个按钮会重置第一个按钮未完成的 timeout 的原因。要解决此问题，你可以把 timeout 保存在 ref 中。每个按钮都有自己的 ref，因此它们不会相互冲突。请注意快速单击两个按钮如何显示两个消息。
 
 <Sandpack>
 

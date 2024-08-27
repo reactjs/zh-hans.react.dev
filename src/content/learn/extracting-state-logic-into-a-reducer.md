@@ -1086,7 +1086,7 @@ li {
 
 </Sandpack>
 
-Reducers 应该是纯净的，所以它们不应该去修改 state。而 Immer 为你提供了一种特殊的 `draft` 对象，你可以通过它安全的修改 state。在底层，Immer 会基于当前 state 创建一个副本。这就是为什么通过 `useImmerReducer` 来管理 reducers 时，可以修改第一个参数，且不需要返回一个新的 state 的原因。
+Reducers 应该是纯净的，所以它们不应该去修改 state。而 Immer 为你提供了一种特殊的 `draft` 对象，你可以通过它安全的修改 state。在底层，Immer 会基于当前 state 创建一个副本。这就是通过 `useImmerReducer` 来管理 reducers 时，可以修改第一个参数，且不需要返回一个新的 state 的原因。
 
 <Recap>
 
@@ -1105,7 +1105,7 @@ Reducers 应该是纯净的，所以它们不应该去修改 state。而 Immer �
 
 #### 通过事件处理函数 dispatch actions {/*dispatch-actions-from-event-handlers*/}
 
-目前，`ContactList.js` 和 `Chat.js` 中的事件处理程序包含 `// TODO` 注释。这就是为什么输入不起作用，点击按钮也不会改变收件人的原因。
+目前，`ContactList.js` 和 `Chat.js` 中的事件处理程序包含 `// TODO` 注释。这就是输入不起作用，点击按钮也不会改变收件人的原因。
 
 将这两个 `// TODO` 替换为 `dispatch` 相应的 action。如果要查看 action 的结构和类型，请查看 `messengerReducer.js` 中的 reducer。reducer 已经写好了，你不需要再修改它。你只需要在 `ContactList.js` 和 `Chat.js` 中 dispatch 相应的 action 即可。
 
@@ -1860,7 +1860,7 @@ textarea {
 
 结果虽然是一样的。但请记住，action 的类型应该准确描述 “用户做了什么”，而不是 “你希望状态如何改变”。这使得以后添加更多特性变的容易。
 
-不管是哪一种解决方案，最重要的是你 **不要** 把 `alert` 放置在 reducer 中。reducer 必须是一个纯函数——它应该只计算下一个状态。而不应该 “做” 其它事情，包括向用户显示消息。这应该在事件处理程序中处理。（为了便于捕获这样的错误，React 会在严格模式下多次调用你的 reducer。这就是为什么当你在 reducer 中加入一个 alert，它会触发两次的原因。）
+不管是哪一种解决方案，最重要的是你 **不要** 把 `alert` 放置在 reducer 中。reducer 必须是一个纯函数——它应该只计算下一个状态。而不应该 “做” 其它事情，包括向用户显示消息。这应该在事件处理程序中处理。（为了便于捕获这样的错误，React 会在严格模式下多次调用你的 reducer。这就是当你在 reducer 中加入一个 alert，它会触发两次的原因。）
 
 </Solution>
 
