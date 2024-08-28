@@ -253,7 +253,7 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 </Sandpack>
 
-注意，即使 `Tooltip` 组件需要两次渲染（首先，使用初始值为 0 的 `tooltipHeight` 渲染，然后使用实际测量的高度渲染），你也只能看到最终结果。这就是为什么在这个例子中需要 `useLayoutEffect` 而不是 [`useEffect`](/reference/react/useEffect) 的原因。让我们来看看下面的细节差别。
+注意，即使 `Tooltip` 组件需要两次渲染（首先，使用初始值为 0 的 `tooltipHeight` 渲染，然后使用实际测量的高度渲染），你也只能看到最终结果。这就是在这个例子中需要 `useLayoutEffect` 而不是 [`useEffect`](/reference/react/useEffect) 的原因。让我们来看看下面的细节差别。
 
 <Recipes titleText="useLayoutEffect vs useEffect" titleId="examples">
 
