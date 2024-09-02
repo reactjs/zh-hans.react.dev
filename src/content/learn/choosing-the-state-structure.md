@@ -2393,7 +2393,7 @@ li { border-radius: 5px; }
 
 <Solution>
 
-这个问题点在于你将信件对象存储在 `highlightedLetter` 中。但是，你也将相同的信息存储在 `letters` 数组中。因此，你的 state 存在重复！当你在按钮点击后更新 `letters` 数组时，会创建一个新的信件对象，它与 `highlightedLetter` 不同。这就是为什么 `highlightedLetter === letter` 执行变为 `false`，并且高亮消失的原因。当指针移动时下一次调用 `setHighlightedLetter` 时它会重新出现。
+这个问题点在于你将信件对象存储在 `highlightedLetter` 中。但是，你也将相同的信息存储在 `letters` 数组中。因此，你的 state 存在重复！当你在按钮点击后更新 `letters` 数组时，会创建一个新的信件对象，它与 `highlightedLetter` 不同。这就是 `highlightedLetter === letter` 执行变为 `false`，并且高亮消失的原因。当指针移动时下一次调用 `setHighlightedLetter` 时它会重新出现。
 
 为了解决这个问题，请从 state 中删除重复项。不要在两个地方存储 **信件对象本身**，而是存储 `highlightedId`。然后，您可以使用 `letter.id === highlightedId` 检查每个带有 `isHighlighted` 属性的信件，即使 `letter` 对象在上次渲染后发生了变化，这也是可行的。
 
@@ -2824,7 +2824,7 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 现在每个项目都会进行 `selectedIds.has(letter.id)` 检查，这非常快。
 
-请记住，你[不应该在 state 中改变对象](/learn/updating-objects-in-state)，包括 Set 中。这就是为什么 `handleToggle` 函数首先创建 Set 的 **副本**，然后更新该副本的原因。
+请记住，你[不应该在 state 中改变对象](/learn/updating-objects-in-state)，包括 Set 中。这就是 `handleToggle` 函数首先创建 Set 的 **副本**，然后更新该副本的原因。
 
 </Solution>
 

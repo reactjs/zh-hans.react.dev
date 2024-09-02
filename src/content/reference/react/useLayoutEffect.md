@@ -67,7 +67,7 @@ function Tooltip() {
 
 * `useLayoutEffect` 内部的代码和所有计划的状态更新阻塞了浏览器重新绘制屏幕。如果过度使用，这会使你的应用程序变慢。如果可能的话，尽量选择 [`useEffect`](/reference/react/useEffect)。
 
-* If you trigger a state update inside `useLayoutEffect`, React will execute all remaining Effects immediately including `useEffect`.
+* 如果你在 `useLayoutEffect` 内部触发状态更新，React 将立即执行所有剩余的 Effects，包括 `useEffect`。
 
 ---
 
@@ -253,7 +253,7 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 </Sandpack>
 
-注意，即使 `Tooltip` 组件需要两次渲染（首先，使用初始值为 0 的 `tooltipHeight` 渲染，然后使用实际测量的高度渲染），你也只能看到最终结果。这就是为什么在这个例子中需要 `useLayoutEffect` 而不是 [`useEffect`](/reference/react/useEffect) 的原因。让我们来看看下面的细节差别。
+注意，即使 `Tooltip` 组件需要两次渲染（首先，使用初始值为 0 的 `tooltipHeight` 渲染，然后使用实际测量的高度渲染），你也只能看到最终结果。这就是在这个例子中需要 `useLayoutEffect` 而不是 [`useEffect`](/reference/react/useEffect) 的原因。让我们来看看下面的细节差别。
 
 <Recipes titleText="useLayoutEffect vs useEffect" titleId="examples">
 

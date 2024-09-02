@@ -424,7 +424,7 @@ export default MyInput;
 
 有时，一个组件想要知道子元素的位置和大小。这会让你想要使用 `findDOMNode(this)` 查找子元素，然后使用 [`getBoundingClientRect`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect) 等 DOM 方法来进行测量。
 
-目前，还没有直接适用于此场景的替代方法，这就是为什么 `findDOMNode` 已弃用但尚未从 React 中完全删除的原因。在此期间，你可以尝试在内容周围使用 `<div>` 包装，并向其添加 ref。但是，额外的包装可能会破坏样式。
+目前，还没有直接适用于此场景的替代方法，这就是 `findDOMNode` 已弃用但尚未从 React 中完全删除的原因。在此期间，你可以尝试在内容周围使用 `<div>` 包装，并向其添加 ref。但是，额外的包装可能会破坏样式。
 
 ```js
 <div ref={someRef}>
