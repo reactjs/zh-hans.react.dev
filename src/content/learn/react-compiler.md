@@ -285,6 +285,7 @@ module.exports = nextConfig;
 
 ### Remix {/*usage-with-remix*/}
 安装 `vite-plugin-babel`, 并将编译器的 Babel 插件添加到其中：
+
 <TerminalBlock>
 npm install vite-plugin-babel
 </TerminalBlock>
