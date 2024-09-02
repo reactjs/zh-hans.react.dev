@@ -39,7 +39,7 @@ React Compiler 是一个新的实验性编译器，我们已经开源以获得�
 <DeepDive>
 #### React Compiler 添加了什么样的记忆？ {/*what-kind-of-memoization-does-react-compiler-add*/}
 
-React编译器的初始版本主要专注于**改善更新性能**（重新渲染现有组件），因此它专注于以下两种用例：
+React 编译器的初始版本主要专注于**改善更新性能**（重新渲染现有组件），因此它专注于以下两种用例：
 
 1. **跳过组件的级联重新渲染**
     * 重新渲染 `<Parent />` 会导致其组件树中的许多组件重新渲染，即使只有 `<Parent />` 发生了变化
@@ -373,7 +373,7 @@ React Native 通过 Metro 使用 Babel，因此请参考 [使用 Babel](#usage-w
 
 ### `(0 , _c) is not a function` error {/*0--_c-is-not-a-function-error*/}
 
-如果你没有使用React 19 RC 及更高版本，则会发生这种情况。要解决此问题，请先 [将你的项目升级到 React 19 RC](https://react.dev/blog/2024/04/25/react-19-upgrade-guide)。
+如果你没有使用 React 19 RC 及更高版本，则会发生这种情况。要解决此问题，请先 [将你的项目升级到 React 19 RC](https://react.dev/blog/2024/04/25/react-19-upgrade-guide)。
 
 如果你无法升级到 React 19，你可以尝试根据 [工作组](https://github.com/reactwg/react-compiler/discussions/6) 描述的缓存功能的用户空间实现。但是，请注意这并不建议，你应尽快升级到React 19。
 
