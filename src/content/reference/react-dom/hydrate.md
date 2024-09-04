@@ -110,7 +110,7 @@ export default function App() {
 
 ---
 
-### 抑制不可避免的激活不匹配错误 {/*suppressing-unavoidable-hydration-mismatch-errors*/}
+### 抑制不可避免的激活内容不匹配错误 {/*suppressing-unavoidable-hydration-mismatch-errors*/}
 
 如果服务器和客户端之间某个元素的属性或文本内容无法避免不同（比如一个时间戳），你可以禁止激活警告。
 
