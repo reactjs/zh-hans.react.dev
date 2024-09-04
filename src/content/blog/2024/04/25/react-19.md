@@ -378,7 +378,7 @@ function MyInput({placeholder, ref}) {
 
 </Note>
 
-###激活错误的差异 {/*diffs-for-hydration-errors*/}
+### 激活错误的差异 {/*diffs-for-hydration-errors*/}
 
 在 `react-dom` 中，我们也改进了水合错误的错误报告。例如，现在不再在 DEV 中记录多个没有任何不匹配信息的错误：
 
