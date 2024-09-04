@@ -135,7 +135,7 @@ hydrateRoot(document.getElementById('root'), <App />);
 
 对于你的应用程序来说，这将激活你的服务端 HTML 来复苏里面的 <CodeStep step={1}>浏览器 DOM 节点</CodeStep>和 <CodeStep step={2}>React 组件</CodeStep>。通常，你只需要在启动时执行一次。如果你使用框架，则可能会自动在幕后执行此操作。
 
-为了进行 hydrate，React 将把你的组件逻辑连接到服务器上生成的初始 HTML 中。hydrate 可以将来自服务器的初始 HTML 快照转换为在浏览器中运行的完全可交互应用。
+为了进行激活，React 将把你的组件逻辑连接到服务器上生成的初始 HTML 中。激活可以将来自服务器的初始 HTML 快照转换为在浏览器中运行的完全可交互应用。
 
 <Sandpack>
 
