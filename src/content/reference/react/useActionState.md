@@ -57,7 +57,7 @@ function StatefulForm({}) {
 
 form state 是一个只在表单被提交触发 action 后才会被更新的值。如果该表单没有被提交，该值会保持传入的初始值不变。
 
-如果配合 Server Action 一起使用，`useActionState` 允许与表单交互的服务器的返回值在 hydration 完成前显示。
+如果配合 Server Action 一起使用，`useActionState` 允许与表单交互的服务器的返回值在激活完成前显示。
 
 [请参阅下方更多示例](#usage)。
 
