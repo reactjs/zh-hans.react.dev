@@ -76,7 +76,7 @@ app.use('/', (request, response) => {
 
 <Pitfall>
 
-此方法将会渲染 **无法被 hydrate 的非交互式 HTML**。如果你想将 React 用作简单的静态页面生成器，或者渲染完全静态的内容（如电子邮件），那么这将会很有用。
+此方法将会渲染 **无法被激活的非交互式 HTML**。如果你想将 React 用作简单的静态页面生成器，或者渲染完全静态的内容（如电子邮件），那么这将会很有用。
 
 交互式应用程序应该在服务端使用 [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) 并在客户端结合使用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)。
 

@@ -73,7 +73,7 @@ app.use('/', (request, response) => {
 });
 ```
 
-这将生成你的 React 组件的初始非交互式 HTML 输出。在客户端上，你需要调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 来将服务器生成的 HTML 进行 hydrate 处理，使其具有交互功能。
+这将生成你的 React 组件的初始非交互式 HTML 输出。在客户端上，你需要调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 来将服务器生成的 HTML 进行激活处理，使其具有交互功能。
 
 
 <Pitfall>

@@ -178,7 +178,7 @@ app.use('/', (request, response) => {
 });
 ```
 
-因为你的服务端正在渲染 `<App assetMap={assetMap} />`，所以你还需要在客户端将这个带有 `assetMap` 的组件再渲染一次进行同构，以此避免 hydrate 错误。你可以像下面这样序列化 `assetMap` 之后再传递：
+因为你的服务端正在渲染 `<App assetMap={assetMap} />`，所以你还需要在客户端将这个带有 `assetMap` 的组件再渲染一次进行同构，以此避免激活错误。你可以像下面这样序列化 `assetMap` 之后再传递：
 
 ```js {9-10}
 // 你需要从你的打包构建工具中获取这个 JSON。
@@ -209,7 +209,7 @@ import App from './App.js';
 hydrateRoot(document, <App assetMap={window.assetMap} />);
 ```
 
-这样一来，客户端和服务端都渲染了带有 `assetMap` 属性的 `App`，因此它们是同构的，就不会出现 hydrate 异常错误。
+这样一来，客户端和服务端都渲染了带有 `assetMap` 属性的 `App`，因此它们是同构的，就不会出现激活异常错误。
 
 </DeepDive>
 
