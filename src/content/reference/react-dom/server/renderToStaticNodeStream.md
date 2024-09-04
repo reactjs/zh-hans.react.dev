@@ -42,11 +42,11 @@ stream.pipe(response);
 
 #### 返回值 {/*returns*/}
 
-输出 HTML 字符串的 [Node.js 只读流](https://nodejs.org/api/stream.html#readable-streams)，以此法输出的 HTML 不能被客户端 hydrate。
+输出 HTML 字符串的 [Node.js 只读流](https://nodejs.org/api/stream.html#readable-streams)，以此法输出的 HTML 不能被客户端激活。
 
 #### 注意 {/*caveats*/}
 
-* `renderToStaticNodeStream` 的输出不能被 hydrate。
+* `renderToStaticNodeStream` 的输出不能被激活。
 
 * 此方法会等待所有 [Suspense边界](/reference/react/Suspense) 完成后才返回输出。
 

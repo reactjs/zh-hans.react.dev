@@ -682,7 +682,7 @@ function MyComponent() {
 
 ### 兼容第三方脚本和扩展 {/*compatibility-with-third-party-scripts-and-extensions*/}
 
-我们改进了 hydration，以考虑第三方脚本和浏览器扩展。
+我们改进了激活机制，以考虑第三方脚本和浏览器扩展。
 
 在激活过程中，如果在客户端渲染的元素与从服务器获取的 HTML 中找到的元素不匹配，React 将强制进行客户端重新渲染以修复内容。以前，如果一个元素是由第三方脚本或浏览器扩展插入的，它会触发一个不匹配的错误并进行客户端渲染。
 
