@@ -42,11 +42,11 @@ stream.pipe(response);
 
 #### 返回值 {/*returns*/}
 
-输出 HTML 字符串的 [Node.js 只读流](https://nodejs.org/api/stream.html#readable-streams)，以此法输出的 HTML 不能被客户端 hydrate。
+输出 HTML 字符串的 [Node.js 只读流](https://nodejs.org/api/stream.html#readable-streams)，以此法输出的 HTML 不能被客户端激活。
 
 #### 注意 {/*caveats*/}
 
-* `renderToStaticNodeStream` 的输出不能被 hydrate。
+* `renderToStaticNodeStream` 的输出不能被激活。
 
 * 此方法会等待所有 [Suspense边界](/reference/react/Suspense) 完成后才返回输出。
 
@@ -76,7 +76,7 @@ app.use('/', (request, response) => {
 
 <Pitfall>
 
-此方法将会渲染 **无法被 hydrate 的非交互式 HTML**。如果你想将 React 用作简单的静态页面生成器，或者渲染完全静态的内容（如电子邮件），那么这将会很有用。
+此方法将会渲染 **无法被激活的非交互式 HTML**。如果你想将 React 用作简单的静态页面生成器，或者渲染完全静态的内容（如电子邮件），那么这将会很有用。
 
 交互式应用程序应该在服务端使用 [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) 并在客户端结合使用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)。
 

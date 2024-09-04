@@ -179,7 +179,7 @@ input { margin: 5px; }
 
 `useId` 的主要好处是 React 确保它能够与 [服务端渲染](/reference/react-dom/server)一起工作。 在服务器渲染期间，你的组件生成输出 HTML。随后，在客户端，[hydration](/reference/react-dom/client/hydrateRoot) 会将你的事件处理程序附加到生成的 HTML 上。由于 hydration，客户端必须匹配服务器输出的 HTML。
 
-使用递增计数器很难保证这一点，因为客户端组件被 hydrate 处理后的顺序可能与服务器 HTML 的顺序不匹配。调用 `useId` 可以确保 hydration 正常工作，以及服务器和客户端之间的输出相匹配。
+使用递增计数器很难保证这一点，因为客户端组件被激活处理后的顺序可能与服务器 HTML 的顺序不匹配。调用 `useId` 可以确保激活正常工作，以及服务器和客户端之间的输出相匹配。
 
 在 React 内部，调用组件的“父路径”生成 `useId`。这就是为什么如果客户端和服务器的树相同，不管渲染顺序如何，“父路径”始终都匹配。
 

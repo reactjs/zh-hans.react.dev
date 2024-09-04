@@ -180,7 +180,7 @@ React 18 中的 Suspense 在与 Transition API 结合时效果最好。如果你
 * `createRoot`：为 `render` 或者 `unmount` 创建根节点的新方法。请用它替代 `ReactDOM.render`。如果没有它，React 18 中的新功能就无法生效。
 * `hydrateRoot`：hydrate 服务端渲染的应用的新方法。使用它来替代 `ReactDOM.hydrate` 与新的 React DOM 服务端 API 一起使用。如果没有它，React 18 中的新功能就无法生效。
 
-`createRoot` 和 `hydrateRoot` 都能接受一个新的可选参数叫做 `onRecoverableError`，它能在 React 在渲染或者 hydrate 过程发生错误后又恢复时，做日志记录对你进行通知。默认情况下，React 会使用 [`reportError`](https://developer.mozilla.org/en-US/docs/Web/API/reportError)，如果在老旧版本浏览器中，则会使用 `console.error`。
+`createRoot` 和 `hydrateRoot` 都能接受一个新的可选参数叫做 `onRecoverableError`，它能在 React 在渲染或者激活过程发生错误后又恢复时，做日志记录对你进行通知。默认情况下，React 会使用 [`reportError`](https://developer.mozilla.org/en-US/docs/Web/API/reportError)，如果在老旧版本浏览器中，则会使用 `console.error`。
 
 
 [参阅 React DOM Client 的文档](/reference/react-dom/client)。
@@ -232,7 +232,7 @@ React 18 中的 Suspense 在与 Transition API 结合时效果最好。如果你
 
 #### useId {/*useid*/}
 
-`useId` 是一个新的Hook，用于生成在客户端和服务端两侧都独一无二的 id，避免 hydrate 后两侧内容不匹配。它主要用于需要唯一 id 的，具有集成 API 的组件库。这个更新不仅解决了一个在 React 17 及更低版本中的存在的问题，而且它会在 React 18 中发挥更重要的作用，因为新的流式服务端渲染响应 HTML 的方式将是无序的，需要独一无二的 id 作为索引。[参阅文档](/reference/react/useId)。
+`useId` 是一个新的Hook，用于生成在客户端和服务端两侧都独一无二的 id，避免激活后两侧内容不匹配。它主要用于需要唯一 id 的，具有集成 API 的组件库。这个更新不仅解决了一个在 React 17 及更低版本中的存在的问题，而且它会在 React 18 中发挥更重要的作用，因为新的流式服务端渲染响应 HTML 的方式将是无序的，需要独一无二的 id 作为索引。[参阅文档](/reference/react/useId)。
 
 > Note
 >
@@ -299,12 +299,12 @@ React 18 中的 Suspense 在与 Transition API 结合时效果最好。如果你
 * 修复生成的 License 头。([#23004](https://github.com/facebook/react/pull/23004) [@vitaliemiron](https://github.com/vitaliemiron))
 * 添加 `package.json` 作为入口点之一。 ([#22954](https://github.com/facebook/react/pull/22954) [@Jack](https://github.com/Jack-Works))
 * 允许在 Suspense 边界外挂起。([#23267](https://github.com/facebook/react/pull/23267) [@acdlite](https://github.com/acdlite))
-* 每当 hydrate 失败时记录一个可恢复的错误。([#23319](https://github.com/facebook/react/pull/23319) [@acdlite](https://github.com/acdlite))
+* 每当激活失败时记录一个可恢复的错误。([#23319](https://github.com/facebook/react/pull/23319) [@acdlite](https://github.com/acdlite))
 
 ### React DOM {/*react-dom*/}
 
 * 添加 `createRoot` 和 `hydrateRoot`。([#10239](https://github.com/facebook/react/pull/10239)，[#11225](https://github.com/facebook/react/pull/11225)，[#12117](https://github.com/facebook/react/pull/12117)，[#13732](https://github.com/facebook/react/pull/13732)，[#15502](https://github.com/facebook/react/pull/15502)，[#15532](https://github.com/facebook/react/pull/15532)，[#17035](https://github.com/facebook/react/pull/17035)，[#17165](https://github.com/facebook/react/pull/17165)，[#20669](https://github.com/facebook/react/pull/20669)，[#20748](https://github.com/facebook/react/pull/20748)，[#20888](https://github.com/facebook/react/pull/20888)，[#21072](https://github.com/facebook/react/pull/21072)，[#21417](https://github.com/facebook/react/pull/21417)，[#21652](https://github.com/facebook/react/pull/21652)，[#21687](https://github.com/facebook/react/pull/21687)，[#23207](https://github.com/facebook/react/pull/23207)，[#23385](https://github.com/facebook/react/pull/23385) [@acdlite](https://github.com/acdlite)，[@bvaughn](https://github.com/bvaughn)，[@gaearon](https://github.com/gaearon)，[@lunaruan](https://github.com/lunaruan)，[@rickhanlonii](https://github.com/rickhanlonii)，[@trueadm](https://github.com/trueadm)，and [@sebmarkbage](https://github.com/sebmarkbage))
-* 添加选择性 hydrate。([#14717](https://github.com/facebook/react/pull/14717)，[#14884](https://github.com/facebook/react/pull/14884)，[#16725](https://github.com/facebook/react/pull/16725)，[#16880](https://github.com/facebook/react/pull/16880)，[#17004](https://github.com/facebook/react/pull/17004)，[#22416](https://github.com/facebook/react/pull/22416)，[#22629](https://github.com/facebook/react/pull/22629)，[#22448](https://github.com/facebook/react/pull/22448)，[#22856](https://github.com/facebook/react/pull/22856)，[#23176](https://github.com/facebook/react/pull/23176) [@acdlite](https://github.com/acdlite)，[@gaearon](https://github.com/gaearon)，[@salazarm](https://github.com/salazarm)，and [@sebmarkbage](https://github.com/sebmarkbage))
+* 添加选择性激活。([#14717](https://github.com/facebook/react/pull/14717)，[#14884](https://github.com/facebook/react/pull/14884)，[#16725](https://github.com/facebook/react/pull/16725)，[#16880](https://github.com/facebook/react/pull/16880)，[#17004](https://github.com/facebook/react/pull/17004)，[#22416](https://github.com/facebook/react/pull/22416)，[#22629](https://github.com/facebook/react/pull/22629)，[#22448](https://github.com/facebook/react/pull/22448)，[#22856](https://github.com/facebook/react/pull/22856)，[#23176](https://github.com/facebook/react/pull/23176) [@acdlite](https://github.com/acdlite)，[@gaearon](https://github.com/gaearon)，[@salazarm](https://github.com/salazarm)，and [@sebmarkbage](https://github.com/sebmarkbage))
 * 在已知的 ARIA 属性列表中增加 `aria-description`。([#22142](https://github.com/facebook/react/pull/22142) [@mahyareb](https://github.com/mahyareb))
 * 为 video 元素添加 `onResize` 事件。([#21973](https://github.com/facebook/react/pull/21973) [@rileyjshaw](https://github.com/rileyjshaw))
 * 将 `imageSizes` 和 `imageSrcSet` 添加到已知属性中。([#22550](https://github.com/facebook/react/pull/22550) [@eps1lon](https://github.com/eps1lon))
