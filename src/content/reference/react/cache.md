@@ -226,7 +226,7 @@ async function AnimatedWeatherCard({city}) {
 ```jsx [[2, 6, "await getUser(id)"], [1, 17, "getUser(id)"]]
 const getUser = cache(async (id) => {
   return await db.user.query(id);
-})
+});
 
 async function Profile({id}) {
   const user = await getUser(id);
@@ -327,7 +327,7 @@ React 只允许在组件内访问记忆化函数的缓存。在组件外部调�
 'use client';
 
 function WeatherReport({record}) {
-  const avgTemp = useMemo(() => calculateAvg(record)), record);
+  const avgTemp = useMemo(() => calculateAvg(record), record);
   // ...
 }
 

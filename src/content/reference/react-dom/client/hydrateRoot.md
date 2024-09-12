@@ -56,7 +56,7 @@ React 将会连接到内部有 `domNode` 的 HTML 上，然后接管其中的 `d
 #### 警告 {/*caveats*/}
 
 * `hydrateRoot()` 期望渲染内容与服务端渲染的内容完全相同。你应该将不匹配视为错误并进行修复。
-* 在开发模式下，React 会在 hydrate 期间发出不匹配警告。在不匹配的情况下，不能保证内容差异会被修补。出于性能原因，这很重要，因为在大多数应用程序中，不匹配很少见，因此验证所有标记将是昂贵而不可行的。
+* 在开发模式下，React 会在激活期间发出不匹配警告。在不匹配的情况下，不能保证内容差异会被修补。出于性能原因，这很重要，因为在大多数应用程序中，不匹配很少见，因此验证所有标记将是昂贵而不可行的。
 * 你的应用程序可能只有一个 `hydrateRoot()` 函数调用。如果你使用框架，则可能会为你完成此调用。
 * 如果你的应用程序是客户端渲染，并且没有已渲染好的 HTML，则不支持使用 `hydrateRoot()`。请改用 [`createRoot()`](/reference/react-dom/client/createRoot)。
 
@@ -64,13 +64,13 @@ React 将会连接到内部有 `domNode` 的 HTML 上，然后接管其中的 `d
 
 ### `root.render(reactNode)` {/*root-render*/}
 
-使用 `root.render` 更新一个 hydrate 根组件中的 React 组件来渲染浏览器端 DOM 元素。
+使用 `root.render` 更新一个激活根组件中的 React 组件来渲染浏览器端 DOM 元素。
 
 ```js
 root.render(<App />);
 ```
 
-React 将会在 hydrate `root` 中更新 `<App />`。
+React 将会在激活 `root` 中更新 `<App />`。
 
 [参见下面更多示例](#usage)。
 
@@ -85,7 +85,7 @@ React 将会在 hydrate `root` 中更新 `<App />`。
 
 #### 警告 {/*root-render-caveats*/}
 
-* 如果你在根节点还没有完成 hydrate 的情况下调用了 `root.render`，React 将清除现有的服务端渲染 HTML 内容，并将整个根节点切换到客户端渲染。
+* 如果你在根节点还没有完成激活的情况下调用了 `root.render`，React 将清除现有的服务端渲染 HTML 内容，并将整个根节点切换到客户端渲染。
 
 ---
 
@@ -123,7 +123,7 @@ root.unmount();
 
 ## 用法 {/*usage*/}
 
-### hydrate 服务端渲染的 HTML {/*hydrating-server-rendered-html*/}
+### 激活服务端渲染的 HTML {/*hydrating-server-rendered-html*/}
 
 如果你的应用程序的 HTML 是由 [`react-dom/server`](/reference/react-dom/client/createRoot) 生成的，你需要在客户端上进行 **hydrate**。
 
@@ -133,9 +133,9 @@ import { hydrateRoot } from 'react-dom/client';
 hydrateRoot(document.getElementById('root'), <App />);
 ```
 
-对于你的应用程序来说，这将  hydrate 你的服务端 HTML 来复苏里面的 <CodeStep step={1}>浏览器 DOM 节点</CodeStep>和 <CodeStep step={2}>React 组件</CodeStep>。通常，你只需要在启动时执行一次。如果你使用框架，则可能会自动在幕后执行此操作。
+对于你的应用程序来说，这将激活你的服务端 HTML 来复苏里面的 <CodeStep step={1}>浏览器 DOM 节点</CodeStep>和 <CodeStep step={2}>React 组件</CodeStep>。通常，你只需要在启动时执行一次。如果你使用框架，则可能会自动在幕后执行此操作。
 
-为了进行 hydrate，React 将把你的组件逻辑连接到服务器上生成的初始 HTML 中。hydrate 可以将来自服务器的初始 HTML 快照转换为在浏览器中运行的完全可交互应用。
+为了进行激活，React 将把你的组件逻辑连接到服务器上生成的初始 HTML 中。激活可以将来自服务器的初始 HTML 快照转换为在浏览器中运行的完全可交互应用。
 
 <Sandpack>
 
@@ -190,20 +190,20 @@ function Counter() {
 
 这对于用户体验非常重要。用户会在你的 JavaScript 代码加载前花费一些时间来查看服务端生成的 HTML。服务端渲染通过显示应用输出的 HTML 快照来产生了应用程序加速加载的错觉。突然出现不同的内容会破坏这种错觉。这就是为什么服务端渲染输出必须与客户端初始渲染输出匹配。
 
-导致 hydrate 错误的最常见原因包括：
+导致激活错误的最常见原因包括：
 
 * 根节点 React 生成的 HTML 周围存在额外的空白符（如换行符）。
 * 在渲染逻辑中使用 `typeof window !== 'undefined'` 这样的判断。
 * 在渲染逻辑中使用仅限于浏览器端的 API，例如 [`window.matchMedia`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/matchMedia)。
 * 在服务器和客户端渲染不同的数据。
 
-React 可以从一些 hydrate 错误中恢复，但 **你必须像处理其他 bug 一样修复它们**。在最好的情况下，它们会导致应用程序加载变慢；在最坏的情况下，事件处理程序可能会附加到错误的元素上。
+React 可以从一些激活错误中恢复，但 **你必须像处理其他 bug 一样修复它们**。在最好的情况下，它们会导致应用程序加载变慢；在最坏的情况下，事件处理程序可能会附加到错误的元素上。
 
 </Pitfall>
 
 ---
 
-### hydrate 整个文档 {/*hydrating-an-entire-document*/}
+### 激活整个文档 {/*hydrating-an-entire-document*/}
 
 完全使用 React 构建的应用程序可以将整个文档作为 JSX 渲染，包括 [`<html>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html) 标签：
 
@@ -225,7 +225,7 @@ function App() {
 }
 ```
 
-要对整个文档进行 hydrate 处理，将全局的 [`document`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/document) 作为 `hydrateRoot` 的第一个参数传递：
+要对整个文档进行激活处理，将全局的 [`document`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/document) 作为 `hydrateRoot` 的第一个参数传递：
 
 ```js {4}
 import { hydrateRoot } from 'react-dom/client';
@@ -236,11 +236,11 @@ hydrateRoot(document, <App />);
 
 ---
 
-### 抑制不可避免的 hydrate 处理不匹配错误 {/*suppressing-unavoidable-hydration-mismatch-errors*/}
+### 抑制不可避免的激活处理不匹配错误 {/*suppressing-unavoidable-hydration-mismatch-errors*/}
 
-如果一个单独元素属性或文本内容在服务器和客户端之间是不可避免地不同的（例如，时间戳），则可以抑制 hydrate 处理不匹配警告。
+如果一个单独元素属性或文本内容在服务器和客户端之间是不可避免地不同的（例如，时间戳），则可以抑制激活处理不匹配警告。
 
-要消除对元素的 hydrate 处理警告，请添加 `suppressHydrationWarning={true}`：
+要消除对元素的激活处理警告，请添加 `suppressHydrationWarning={true}`：
 
 <Sandpack>
 
@@ -318,21 +318,21 @@ export default function App() {
 
 </Sandpack>
 
-这样，初始渲染将呈现与服务器相同的内容，避免不匹配，但是在 hydrate 之后会同步进行额外的渲染。
+这样，初始渲染将呈现与服务器相同的内容，避免不匹配，但是在激活之后会同步进行额外的渲染。
 
 <Pitfall>
 
-这种方法使得 hydrate 变慢，因为你的组件需要渲染两次。要注意在网络连接较慢的情况下用户的体验。JavaScript 代码的加载时间可能会比初始的 HTML 渲染慢很多，因此在 hydrate 之后立即呈现不同的 UI 对用户来说可能也会感到不适。
+这种方法使得激活变慢，因为你的组件需要渲染两次。要注意在网络连接较慢的情况下用户的体验。JavaScript 代码的加载时间可能会比初始的 HTML 渲染慢很多，因此在激活之后立即呈现不同的 UI 对用户来说可能也会感到不适。
 
 </Pitfall>
 
 ---
 
-### 更新 hydrate 根组件 {/*updating-a-hydrated-root-component*/}
+### 更新激活根组件 {/*updating-a-hydrated-root-component*/}
 
-在根组件 hydrate 完成之后，你可以调用 [`root.render`](#root-render) 来更新根 React 组件。**与  [`createRoot`](/reference/react-dom/client/createRoot) 不同的是，通常你不需要这样做，因为初始内容已经渲染为 HTML**。
+在根组件激活完成之后，你可以调用 [`root.render`](#root-render) 来更新根 React 组件。**与  [`createRoot`](/reference/react-dom/client/createRoot) 不同的是，通常你不需要这样做，因为初始内容已经渲染为 HTML**。
 
-如果在 hydrate 之后某个时刻调用了 `root.render`，并且组件树结构与之前渲染的相匹配，那么 React 将 [保留重置 state](/learn/preserving-and-resetting-state)。请注意，你可以在输入框中输入文字，这意味着在此示例中每秒钟重复调用的 `render` 不会破坏已有的组件状态：
+如果在激活之后某个时刻调用了 `root.render`，并且组件树结构与之前渲染的相匹配，那么 React 将 [保留重置 state](/learn/preserving-and-resetting-state)。请注意，你可以在输入框中输入文字，这意味着在此示例中每秒钟重复调用的 `render` 不会破坏已有的组件状态：
 
 <Sandpack>
 

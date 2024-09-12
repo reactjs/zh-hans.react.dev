@@ -228,7 +228,7 @@ export default App = AppTSX;
 - `const initialState: State` 为初始 state 提供类型，并且也将成为 `useReducer` 默认使用的类型。
 - `stateReducer(state: State, action: CounterAction): State` 设置了 reducer 函数参数和返回值的类型。
 
-为 `useReducer` 提供类型参数的更明确的替代方法是在 `initialState` 上设置类型：
+除了在 `initialState` 上设置类型外，一个更明确的替代方法是为 `useReducer` 提供一个类型参数：
 
 ```ts
 import { stateReducer, State } from './your-reducer-implementation';

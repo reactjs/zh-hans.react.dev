@@ -80,7 +80,7 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 <Suspense fallback={<Loading />}>
   <h2>Preview</h2>
   <MarkdownPreview />
- </Suspense>
+</Suspense>
 ```
 
 在这个例子中，`MarkdownPreview` 的代码只有在你尝试渲染它时才会被加载。如果 `MarkdownPreview` 还没有加载完成，将显示 `Loading`。请尝试勾选复选框：

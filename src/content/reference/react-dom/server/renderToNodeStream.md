@@ -76,4 +76,4 @@ app.use('/', (request, response) => {
 });
 ```
 
-这里的流会将 React 组件初始输出为非交互式 HTML。在客户端上，你需要调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 方法来 hydrate 服务器生成的 HTML 并使其具有交互功能。
+这里的流会将 React 组件初始输出为非交互式 HTML。在客户端上，你需要调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 方法来激活服务器生成的 HTML 并使其具有交互功能。

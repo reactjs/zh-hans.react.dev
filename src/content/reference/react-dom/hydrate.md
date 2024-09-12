@@ -46,7 +46,7 @@ React 将会附加到 `domNode` 内部现有的 HTML，并接管有关的 DOM �
 
 * `domNode`：在服务器中被渲染为根节点的 [DOM 元素](https://developer.mozilla.org/zh-CN/docs/Web/API/Element)。
 
-* **可选属性** `callback`：一个函数。如果传递了该参数，React 将会在组件 hydrate 后调用它。
+* **可选属性** `callback`：一个函数。如果传递了该参数，React 将会在组件激活后调用它。
 
 #### 返回值 {/*returns*/}
 
@@ -54,7 +54,7 @@ React 将会附加到 `domNode` 内部现有的 HTML，并接管有关的 DOM �
 
 #### 注意 {/*caveats*/}
 * `hydrate` 要求渲染的内容与服务器渲染的内容完全相同。尽管 React 可以修复文本内容的差异，但你应该首先将不匹配视为错误并进行修复。
-* 在开发模式下，React 会在 hydration 期间警告不匹配的错误。如果存在不匹配情况，无法保证属性的差异会被修补。在大多数应用程序中不匹配是很少见的，所以验证所有标记的代价将会很高。因此考虑到性能原因，这是很重要的。
+* 在开发模式下，React 会在激活期间警告不匹配的错误。如果存在不匹配情况，无法保证属性的差异会被修补。在大多数应用程序中不匹配是很少见的，所以验证所有标记的代价将会很高。因此考虑到性能原因，这是很重要的。
 * 你的应用程序中可能只有一个 `hydrate` 调用。如果你使用了框架，它可能会为你执行此调用。
 * 如果你的应用程序是客户端渲染的，并且没有已经渲染的 HTML，则不支持使用 `hydrate()`。请改用 [render()](/reference/react-dom/render)（适用于 React 17 及以下版本）或 [createRoot()](/reference/react-dom/client/createRoot)（适用于 React 18 及以上版本）。
 
@@ -72,9 +72,9 @@ hydrate(<App />, document.getElementById('root'));
 
 不支持使用 `hydrate()` 渲染仅用于客户端的应用程序（没有服务器渲染的 HTML）。请改用 [`render()`](/reference/react-dom/render)（适用于 React 17 及以下版本）或 [`createRoot()`](/reference/react-dom/client/createRoot)（适用于 React 18 及以上版本）。
 
-### hydrate 服务器渲染的 HTML {/*hydrating-server-rendered-html*/}
+### 激活服务器渲染的 HTML {/*hydrating-server-rendered-html*/}
 
-在 React 中，hydrate 是指将 React “附加（attach）”到在服务器环境中已由 React 渲染的现有 HTML 上。在 hydrate 期间，React 将尝试将事件监听器附加（attach）到现有标记，并在客户端上接管渲染应用程序。
+在 React 中，激活（hydrate）是指将 React “附加（attach）”到在服务器环境中已由 React 渲染的现有 HTML 上。在激活期间，React 将尝试将事件监听器附加（attach）到现有标记，并在客户端上接管渲染应用程序。
 
 在完全使用 React 构建的应用程序中，**通常只会在第一次启动整个应用程序时，hydrate “根”节点**。
 
@@ -106,15 +106,15 @@ export default function App() {
 
 通常情况下，你不需要再次调用 `hydrate`，也不需要在更多地方调用它。从此时开始，React 将会管理你的应用程序的 DOM。为了更新 UI，你的组件将会 [使用 state](/reference/react/useState)。
 
-有关 hydrate 的更多信息，请参阅 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)。
+有关激活的更多信息，请参阅 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot)。
 
 ---
 
-### 抑制不可避免的 hydrate 不匹配错误 {/*suppressing-unavoidable-hydration-mismatch-errors*/}
+### 抑制不可避免的激活内容不匹配错误 {/*suppressing-unavoidable-hydration-mismatch-errors*/}
 
-如果服务器和客户端之间某个元素的属性或文本内容无法避免不同（比如一个时间戳），你可以禁止 hydrate 警告。
+如果服务器和客户端之间某个元素的属性或文本内容无法避免不同（比如一个时间戳），你可以禁止激活警告。
 
-使用 `suppressHydrationWarning={true}` 禁止 hydrate 警告：
+使用 `suppressHydrationWarning={true}` 禁止激活警告：
 
 <Sandpack>
 
@@ -192,10 +192,10 @@ export default function App() {
 
 </Sandpack>
 
-这样，初始渲染过程将呈现与服务器相同的内容，并且避免不匹配的情况，但会在 hydrate 后立即同步并进行额外的渲染。
+这样，初始渲染过程将呈现与服务器相同的内容，并且避免不匹配的情况，但会在激活后立即同步并进行额外的渲染。
 
 <Pitfall>
 
-这种方法会使 hydrate 变慢，因为你的组件必须渲染两次，因此要注意在网络不好情况下的用户体验。JavaScript 代码的加载可能比初始 HTML 渲染要晚许多，因此在 hydrate 后立即渲染不同的 UI 可能会让用户感到不适。
+这种方法会使激活变慢，因为你的组件必须渲染两次，因此要注意在网络不好情况下的用户体验。JavaScript 代码的加载可能比初始 HTML 渲染要晚许多，因此在激活后立即渲染不同的 UI 可能会让用户感到不适。
 
 </Pitfall>

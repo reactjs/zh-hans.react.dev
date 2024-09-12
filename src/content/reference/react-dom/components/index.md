@@ -34,7 +34,7 @@ React 支持所有浏览器内置的 [HTML](https://developer.mozilla.org/zh-CN/
 
 ## Resource and Metadata Components {/*resource-and-metadata-components*/}
 
-These bulit-in browser components let you load external resources or annotate the document with metadata:
+These built-in browser components let you load external resources or annotate the document with metadata:
 
 * [`<link>`](/reference/react-dom/components/link)
 * [`<meta>`](/reference/react-dom/components/meta)

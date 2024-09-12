@@ -67,6 +67,8 @@ function Tooltip() {
 
 * `useLayoutEffect` 内部的代码和所有计划的状态更新阻塞了浏览器重新绘制屏幕。如果过度使用，这会使你的应用程序变慢。如果可能的话，尽量选择 [`useEffect`](/reference/react/useEffect)。
 
+* 如果你在 `useLayoutEffect` 内部触发状态更新，React 将立即执行所有剩余的 Effects，包括 `useEffect`。
+
 ---
 
 ## 用法 {/*usage*/}
@@ -251,7 +253,7 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 </Sandpack>
 
-注意，即使 `Tooltip` 组件需要两次渲染（首先，使用初始值为 0 的 `tooltipHeight` 渲染，然后使用实际测量的高度渲染），你也只能看到最终结果。这就是为什么在这个例子中需要 `useLayoutEffect` 而不是 [`useEffect`](/reference/react/useEffect) 的原因。让我们来看看下面的细节差别。
+注意，即使 `Tooltip` 组件需要两次渲染（首先，使用初始值为 0 的 `tooltipHeight` 渲染，然后使用实际测量的高度渲染），你也只能看到最终结果。这就是在这个例子中需要 `useLayoutEffect` 而不是 [`useEffect`](/reference/react/useEffect) 的原因。让我们来看看下面的细节差别。
 
 <Recipes titleText="useLayoutEffect vs useEffect" titleId="examples">
 
@@ -734,6 +736,6 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 - 或者，[将你的组件标记为仅在客户端上渲染](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content) 。这告诉 React 在服务器渲染期间将其内容替换为最接近的 [`<Suspense>`](/reference/react/Suspense) 处的表示加载中的后备方案（例如，一个加载动画或者光效）。
 
-- 或者，只有在水合之后，使用 `useLayoutEffect` 渲染组件。保留一个初始化为 `false` 的 `isMounted` 布尔状态，并在 `useEffect` 调用中将其设置为 `true`。然后你的渲染逻辑就会像 `return isMounted ? <RealContent /> : <FallbackContent />` 这样。在服务端和水合过程中，用户将看到 `FallbackContent`，它不应该调用 `useLayoutEffect`。然后 React 将用 `RealContent` 替换它，`RealContent` 仅在客户端上运行并且可以包含 `useLayoutEffect` 调用。
+- 或者，只有在激活之后，使用 `useLayoutEffect` 渲染组件。保留一个初始化为 `false` 的 `isMounted` 布尔状态，并在 `useEffect` 调用中将其设置为 `true`。然后你的渲染逻辑就会像 `return isMounted ? <RealContent /> : <FallbackContent />` 这样。在服务端和激活过程中，用户将看到 `FallbackContent`，它不应该调用 `useLayoutEffect`。然后 React 将用 `RealContent` 替换它，`RealContent` 仅在客户端上运行并且可以包含 `useLayoutEffect` 调用。
 
 - 如果你将组件与外部数据存储同步，并且依赖 `useLayouteffect` 的原因不同于测量布局，可以考虑使用 [支持服务端渲染](/reference/react/useSyncExternalStore#adding-support-for-server-rendering) 的 [`useSyncExternalStore`](/reference/react/useSyncExternalStore)。

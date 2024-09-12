@@ -2284,9 +2284,9 @@ ul, li { margin: 0; padding: 0; }
 
 #### 修复消失的选项 {/*fix-the-disappearing-selection*/}
 
-有一个 `letters` 列表在 state 中。当你悬停或聚焦到特定的字母时，它会被突出显示。当前突出显示的字母存储在 `highlightedLetter` state 变量中。您可以“Star”和“Unstar”单个字母，这将更新 state 中的 `letters` 数组。
+有一个 `letters` 列表在 state 中。当你悬停或聚焦到特定的信件时，它会被突出显示。当前突出显示的信件存储在 `highlightedLetter` state 变量中。您可以“Star”和“Unstar”单个信件，这将更新 state 中的 `letters` 数组。
 
-虽然这段代码可以运行，但是有一个小的 UI 问题。当你点击“Star”或“Unstar”时，高亮会短暂消失。不过只要你移动鼠标指针或者用键盘切换到另一个字母，它就会重新出现。为什么会这样？请修复它，使得在按钮点击后高亮不会消失。
+虽然这段代码可以运行，但是有一个小的 UI 问题。当你点击“Star”或“Unstar”时，高亮会短暂消失。不过只要你移动鼠标指针或者用键盘切换到另一个信件，它就会重新出现。为什么会这样？请修复它，使得在按钮点击后高亮不会消失。
 
 <Sandpack>
 
@@ -2393,9 +2393,9 @@ li { border-radius: 5px; }
 
 <Solution>
 
-这个问题点在于你将字母对象存储在 `highlightedLetter` 中。但是，你也将相同的信息存储在 `letters` 数组中。因此，你的 state 存在重复！当你在按钮点击后更新 `letters` 数组时，会创建一个新的字母对象，它与 `highlightedLetter` 不同。这就是为什么 `highlightedLetter === letter` 执行变为 `false`，并且高亮消失的原因。当指针移动时下一次调用 `setHighlightedLetter` 时它会重新出现。
+这个问题点在于你将信件对象存储在 `highlightedLetter` 中。但是，你也将相同的信息存储在 `letters` 数组中。因此，你的 state 存在重复！当你在按钮点击后更新 `letters` 数组时，会创建一个新的信件对象，它与 `highlightedLetter` 不同。这就是 `highlightedLetter === letter` 执行变为 `false`，并且高亮消失的原因。当指针移动时下一次调用 `setHighlightedLetter` 时它会重新出现。
 
-为了解决这个问题，请从 state 中删除重复项。不要在两个地方存储 **字母对象本身**，而是存储 `highlightedId`。然后，您可以使用 `letter.id === highlightedId` 检查每个带有 `isHighlighted` 属性的字母，即使 `letter` 对象在上次渲染后发生了变化，这也是可行的。
+为了解决这个问题，请从 state 中删除重复项。不要在两个地方存储 **信件对象本身**，而是存储 `highlightedId`。然后，您可以使用 `letter.id === highlightedId` 检查每个带有 `isHighlighted` 属性的信件，即使 `letter` 对象在上次渲染后发生了变化，这也是可行的。
 
 <Sandpack>
 
@@ -2611,7 +2611,7 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 <Solution>
 
-在 state 中保留一个 `selectedIds` **数组**，而不是单个的 `selectedId`。例如，如果您选择了第一个和最后一个字母，则它将包含 `[0, 2]`。当没有选定任何内容时，它将为空数组 `[]`：
+在 state 中保留一个 `selectedIds` **数组**，而不是单个的 `selectedId`。例如，如果您选择了第一个和最后一个信件，则它将包含 `[0, 2]`。当没有选定任何内容时，它将为空数组 `[]`：
 
 <Sandpack>
 
@@ -2824,7 +2824,7 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 现在每个项目都会进行 `selectedIds.has(letter.id)` 检查，这非常快。
 
-请记住，你[不应该在 state 中改变对象](/learn/updating-objects-in-state)，包括 Set 中。这就是为什么 `handleToggle` 函数首先创建 Set 的 **副本**，然后更新该副本的原因。
+请记住，你[不应该在 state 中改变对象](/learn/updating-objects-in-state)，包括 Set 中。这就是 `handleToggle` 函数首先创建 Set 的 **副本**，然后更新该副本的原因。
 
 </Solution>
 

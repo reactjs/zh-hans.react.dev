@@ -1733,7 +1733,7 @@ function Page({ url, shoppingCart }) {
 
 ### 在服务器和客户端上显示不同的内容 {/*displaying-different-content-on-the-server-and-the-client*/}
 
-如果你的应用程序使用服务端（[直接](/reference/react-dom/server) 或通过 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks)）渲染，你的组件将会在两个不同的环境中渲染。在服务器上，它将渲染生成初始 HTML。在客户端，React 将再次运行渲染代码，以便将事件处理附加到该 HTML 上。这就是为什么要让 [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) 发挥作用，你的初始渲染输出必须在客户端和服务器上完全相同的原因。
+如果你的应用程序使用服务端（[直接](/reference/react-dom/server) 或通过 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks)）渲染，你的组件将会在两个不同的环境中渲染。在服务器上，它将渲染生成初始 HTML。在客户端，React 将再次运行渲染代码，以便将事件处理附加到该 HTML 上。这就是为什么要让 [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) 发挥作用，你的初始渲染输出必须在客户端和服务器上完全相同。
 
 在极少数情况下，你可能需要在客户端上显示不同的内容。例如，如果你的应用从 [`localStorage`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage) 中读取某些数据，服务器上肯定不可能做到这一点。以下是这如何实现的：
 
@@ -1753,7 +1753,7 @@ function MyComponent() {
 }
 ```
 
-当应用加载时，用户首先会看到初始渲染的输出。然后，当它加载完并进行 hydrate 时，Effect 将会运行并且将 `didMount` 设置为 `true`，从而触发重新渲染。这将切换到仅在客户端的渲染输出。Effect 不在服务器上运行，这就是为什么 `didMount` 在初始服务器渲染期间为 `false` 的原因。
+当应用加载时，用户首先会看到初始渲染的输出。然后，当它加载完并进行激活时，Effect 将会运行并且将 `didMount` 设置为 `true`，从而触发重新渲染。这将切换到仅在客户端的渲染输出。Effect 不在服务器上运行，这就是 `didMount` 在初始服务器渲染期间为 `false` 的原因。
 
 谨慎使用此模式。请记住，网络连接速度较慢的用户将在相当长的时间内（可能是数秒钟）看到初始内容，因此你不希望对组件的外观进行突兀的更改。在许多情况下，你可以通过使用 CSS 条件性地显示不同的内容来避免这种需要。
 
