@@ -760,10 +760,10 @@ React will try to recreate this component tree from scratch using the error boun
 
 React 19 添加了对自定义元素的全面支持，并通过了 [Custom Elements Everywhere](https://custom-elements-everywhere.com/) 上的所有测试。
 
-在过去的版本中，使用 React 中的自定义元素很困难，因为 React 将无法识别的 props 视为 HTML attribute 而不是 DOM property 。在 React 19 中，我们添加了对 DOM property 的支持，该支持在客户端和 SSR 期间都有效，策略如下：
+在过去的版本中，使用 React 中的自定义元素很困难，因为 React 将无法识别的 props 视为 HTML attribute 而不是 DOM property。在 React 19 中，我们添加了对 DOM property 的支持，该支持在客户端和 SSR 期间都有效，策略如下：
 
 - **服务器端渲染**：传递给自定义元素的 props 将作为 HTML attribute 渲染，如果它们的类型是原始值，如 `string`、`number`，或者值为 `true`。具有非原始类型的 props，如 `object`、`symbol`、`function`，或者值为 `false` 的 props 将被省略。
-- **客户端渲染**：匹配自定义元素实例上的属性的 props 将被赋值为 DOM property ，否则它们将被赋值为 HTML attribute 。
+- **客户端渲染**：匹配自定义元素实例上的属性的 props 将被赋值为 DOM property，否则它们将被赋值为 HTML attribute。
 
 感谢 [Joey Arhar](https://github.com/josepharhar) 在 React 中推动自定义元素支持的设计和实现。
 
