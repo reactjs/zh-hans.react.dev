@@ -102,7 +102,7 @@ button { margin-right: 10px; }
 
 区别很微妙。在第一个示例中，`handleClick` 函数作为 `onClick` 事件处理函数传递。这会让 React 记住它，并且只在用户点击按钮时调用你的函数。
 
-在第二个示例中，`handleClick()` 中最后的 `()` 会在 [渲染](/learn/render-and-commit) 过程中 **立即** 触发函数，即使没有任何点击。这是因为在 [JSX `{` 和 `}`](/learn/javascript-in-jsx-with-curly-braces) 之间的 JavaScript 会立即执行。
+在第二个示例中，`handleClick()` 中最后的 `()` 会在 [渲染](/learn/render-and-commit) 过程中 **立即** 触发函数，即使没有任何点击。这是因为位于 [JSX `{}`](/learn/javascript-in-jsx-with-curly-braces) 之间的 JavaScript 会立即执行。
 
 当你编写内联代码时，同样的陷阱可能会以不同的方式出现：
 
