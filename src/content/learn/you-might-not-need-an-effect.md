@@ -408,11 +408,7 @@ function Game() {
 
 这段代码里有两个问题。
 
-<<<<<<< HEAD
 第一个问题是它非常低效：在链式的每个 `set` 调用之间，组件（及其子组件）都不得不重新渲染。在上面的例子中，在最坏的情况下（`setCard` → 渲染 → `setGoldCardCount` → 渲染 → `setRound` → 渲染 → `setIsGameOver` → 渲染）有三次不必要的重新渲染。
-=======
-The first problem is that it is very inefficient: the component (and its children) have to re-render between each `set` call in the chain. In the example above, in the worst case (`setCard` → render → `setGoldCardCount` → render → `setRound` → render → `setIsGameOver` → render) there are three unnecessary re-renders of the tree below.
->>>>>>> 505c85db8c232b474282d55391c67884de8d99dd
 
 第二个问题是，即使不考虑渲染效率问题，随着代码不断扩展，你会遇到这条 “链式” 调用不符合新需求的情况。试想一下，你现在需要添加一种方法来回溯游戏的历史记录，可以通过更新每个 state 变量到之前的值来实现。然而，将 `card` 设置为之前的的某个值会再次触发 Effect 链并更改你正在显示的数据。这样的代码往往是僵硬而脆弱的。
 
