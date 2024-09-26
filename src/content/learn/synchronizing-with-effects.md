@@ -22,7 +22,7 @@ title: '使用 Effect 进行同步'
 
 在接触 Effect 之前，你需要熟悉 React 组件中的两种逻辑类型：
 
-- **渲染代码**（在 [描述 UI](/learn/describing-the-ui) 中有介绍）位于组件的顶层。你在这里处理 props 和 state，对它们进行转换，并返回你希望在页面上显示的 JSX。[渲染代码必须是纯粹的](/learn/keeping-components-pure)——就像数学公式一样，它只应该“计算”结果，而不做其他任何事情。
+- **渲染代码**（在 [描述 UI](/learn/describing-the-ui) 中有介绍）位于组件的顶层。你在这里处理 props 和 state，对它们进行转换，并返回希望在页面上显示的 JSX。[渲染代码必须是纯粹的](/learn/keeping-components-pure)——就像数学公式一样，它只应该“计算”结果，而不做其他任何事情。
 
 - **事件处理程序**（在 [添加交互性](/learn/adding-interactivity) 中有介绍）是组件内部的嵌套函数，它们不光进行计算, 还会执行一些操作。事件处理程序可能会更新输入字段、提交 HTTP POST 请求来购买产品，或者将用户导航到另一个页面。事件处理程序包含由特定用户操作（例如按钮点击或输入）引起的“副作用”（它们改变了程序的状态）。
 
@@ -32,7 +32,7 @@ title: '使用 Effect 进行同步'
 
 <Note>
 
-在本文此处和后续文本中，大写的 `Effect` 是 React 中的专有定义——由渲染引起的副作用。至于更广泛的编程概念(任何改变程序状态或外部系统的行为)，我们则使用“副作用（side effect）”。
+在本文此处和后续文本中，大写的 `Effect` 是 React 中的专有定义——由渲染引起的副作用。至于更广泛的编程概念(任何改变程序状态或外部系统的行为)，我们则使用“副作用（side effect）” 来指代。
 
 </Note>
 
@@ -45,7 +45,7 @@ title: '使用 Effect 进行同步'
 
 要编写一个 Effect, 请遵循以下三个步骤：
 
-1. **声明 Effect**。通常，Effect 会在每次 [提交](/learn/render-and-commit) 后运行。
+1. **声明 Effect**。通常 Effect 会在每次 [提交](/learn/render-and-commit) 后运行。
 2. **指定 Effect 依赖**。大多数 Effect 应该按需运行，而不是在每次渲染后都运行。例如，淡入动画应该只在组件出现时触发。连接和断开服务器的操作只应在组件出现和消失时，或者切换聊天室时执行。你将通过指定 **依赖项** 来学习如何控制这一点。
 3. **必要时添加清理操作**。一些 Effect 需要指定如何停止、撤销，或者清除它们所执行的操作。例如，“连接”需要“断开”，“订阅”需要“退订”，而“获取数据”需要“取消”或者“忽略”。你将学习如何通过返回一个 **清理函数** 来实现这些。
 
@@ -157,11 +157,11 @@ function VideoPlayer({ src, isPlaying }) {
 }
 ```
 
-通过将 DOM 更新封装在 Effect 中，你可以让 React 先更新页面，然后再运行你的 Effect。
+通过将 DOM 更新封装在 Effect 中，你可以让 React 先更新页面，然后再运行 Effect。
 
-当 `VideoPlayer` 组件渲染时（无论是否为首次渲染），会发生以下几件事。首先，React 会更新页面，确保 `<video>` 标签带着正确的 props 出现在 DOM 中；然后，React 将运行 Effect；最后，Effect 将根据 `isPlaying` 的值调用 `play()` 或 `pause()`。
+当 `VideoPlayer` 组件渲染时（无论是否为首次渲染），会发生以下几件事：首先 React 会更新页面，确保 `<video>` 标签带着正确的 props 出现在 DOM 中；接着 React 将运行 Effect；最后 Effect 将根据 `isPlaying` 的值调用 `play()` 或 `pause()`。
 
-试试点击几次播放／暂停，观察视频播放器的行为是如何与 `isPlaying` 的值相同步的：
+试试点击几次播放和暂停按钮，观察视频播放器的行为是如何与 `isPlaying` 的值相同步的：
 
 <Sandpack>
 
@@ -207,7 +207,7 @@ video { width: 250px; }
 
 在这个示例中，你同步到 React state 的“外部系统”是浏览器媒体 API。你也可以使用类似的方法将传统的非 React 代码（如 jQuery 插件）封装成声明式的 React 组件。
 
-需要注意的是，控制视频播放器在实际应用中要复杂得多：比如调用 `play()` 可能会失败、用户可能会使用内置的浏览器控件来播放或暂停，等等。本例子是一个非常简化且不完整的示例。
+需要注意的是，控制视频播放器在实际应用中要复杂得多：比如调用 `play()` 可能会失败、用户可能会使用内置的浏览器控件来进行播放或暂停等操作。本例子是一个非常简化且不完整的示例。
 
 <Pitfall>
 
@@ -220,7 +220,7 @@ useEffect(() => {
 });
 ```
 
-Effect 在渲染结束后运行。更新 state 会触发重新渲染。在 Effect 中直接更新 state 就像是把电源插座的插头插回自身：Effect 运行，更新 state，触发重新渲染，于是又触发 Effect 运行，再次更新 state，继而再次触发重新渲染，如此反复，从而陷入死循环。
+Effect 在渲染结束后运行。更新 state 会触发重新渲染。在 Effect 中直接更新 state 就像是把电源插座的插头插回自身：Effect 运行、更新 state、触发重新渲染、于是又触发 Effect 运行、再次更新 state，继而再次触发重新渲染。如此反复，从而陷入死循环。
 
 Effect 应该用于将你的组件与一个 **外部** 的系统保持同步。如果没有外部系统，你只是想根据其他状态调整一些状态，那么 [你也许不需要 Effect](/learn/you-might-not-need-an-effect)。
 
@@ -349,7 +349,7 @@ video { width: 250px; }
   }, [isPlaying]); // ……所以它必须在此处声明！
 ```
 
-现在所有的依赖都已经声明，所以没有错误了。指定 `[isPlaying]` 作为依赖数组会告诉 React，如果 `isPlaying` 与上次渲染时相同，就跳过重新运行 Effect。这样一来，输入框的输入不会触发 Effect 重新运行，只有按下播放/暂停按钮会触发。
+现在所有的依赖都已经声明，所以没有错误了。指定 `[isPlaying]` 作为依赖数组会告诉 React：如果 `isPlaying` 与上次渲染时相同，就跳过重新运行 Effect。这样一来，输入框的输入不会触发 Effect 重新运行，只有按下播放/暂停按钮会触发。
 
 <Sandpack>
 
@@ -399,7 +399,7 @@ video { width: 250px; }
 
 依赖数组可以包含多个依赖项。只有当你指定的 **所有** 依赖项的值都与上一次渲染时完全相同，React 才会跳过重新运行该 Effect。React 使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来比较依赖项的值。有关详细信息，请参阅 [`useEffect` 参考文档](/reference/react/useEffect#reference)。
 
-**请注意，你不能随意“选择”依赖项**。如果你指定的依赖项与 React 根据 Effect 内部代码所推断出的依赖项不匹配，你将收到 lint 错误提示。这有助于捕捉代码中的许多 bug。如果你不希望某些代码重新运行，[那么你应当 **修改 Effect 代码本身**，使其不再“需要”该依赖项](/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize)。
+**请注意，你不能随意“选择”依赖项**。如果你指定的依赖项与 React 根据 Effect 内部代码所推断出的依赖项不匹配，你将收到来自 lint 的错误提示。这有助于捕捉代码中的许多 bug。如果你不希望某些代码重新运行，[那么你应当 **修改 Effect 代码本身**，使其不再“需要”该依赖项](/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize)。
 
 <Pitfall>
 
@@ -415,7 +415,7 @@ useEffect(() => {
 }, []);
 
 useEffect(() => {
-  //这里的代码不但会在组件挂载时运行，而且当 a 或 b 的值自上次渲染后发生变化了，也会运行
+  // 这里的代码不但会在组件挂载时运行，而且当 a 或 b 的值自上次渲染后发生变化后也会运行
 }, [a, b]);
 ```
 
@@ -474,7 +474,7 @@ useEffect(() => {
 });
 ```
 
-如果每次重新渲染后都得进行连接，这会很耗时，所以你需要添加依赖数组：
+如果每次重新渲染后都得进行连接，这会很慢，所以你需要添加依赖数组：
 
 ```js {4}
 useEffect(() => {
@@ -522,13 +522,13 @@ input { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-这里的 Effect 仅在组件挂载时运行，所以你可能以为在控制台中 `"✅ 连接中……"` 只会被打印一次。**然而实际情况是 `"✅ 连接中……"` 被打印了两次！为什么会这样**？
+这里的 Effect 仅在组件挂载时运行，所以你可能以为 `"✅ 连接中……"` 只会在控制台中被打印一次。**然而实际情况是 `"✅ 连接中……"` 被打印了两次！为什么会这样**？
 
-假设 `ChatRoom` 组件是一个大型多页面应用中的一部分。用户最初在 `ChatRoom` 页面上。组件挂载并调用 `connection.connect()` 。接着，用户可能会导航到另一个页面，比如切换到“设置”页面。`ChatRoom` 组件便卸载。最后，当用户点击“返回”时，`ChatRoom` 组件再次挂载。这将建立第二个连接——但第一个连接从未被销毁！随着用户在应用中来回切换，连接将会不断累积。
+假设 `ChatRoom` 组件是一个大型多页面应用中的一部分。用户最初在 `ChatRoom` 页面上。组件挂载并调用 `connection.connect()` 。接着用户可能会导航到另一个页面，比如切换到“设置”页面，于是 `ChatRoom` 组件被卸载。最后，当用户点击“返回”时，`ChatRoom` 组件再次挂载。这将建立第二个连接——但第一个连接从未被销毁！随着用户在应用中来回切换，连接将会不断累积。
 
 这类 bug 在没有大量手动测试的情况下很容易被忽略。为了帮助你快速发现它们，在开发环境中，React 会在组件首次挂载后立即重新挂载一次。
 
-观察到 `"✅ 连接中……"` 出现了两次，能够帮助你注意到真正的问题：在代码中，组件被卸载时没有关闭连接。
+两次出现 `"✅ 连接中……"` 能够帮助你注意到真正的问题：在代码中，组件被卸载时没有关闭连接。
 
 为了解决这个问题，可以在 Effect 中返回一个 **清理（cleanup）函数** 。
 
@@ -580,7 +580,7 @@ input { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-现在在开发环境下，你会看到三条日志：
+现在在开发环境下，你会看到三条控制台日志：
 
 1. `"✅ 连接中……"`
 2. `"❌ 连接断开。"`
@@ -627,7 +627,7 @@ React 有意在开发环境下重新挂载你的组件，来找到类似上例�
 
 ### 管理非 React 小部件 {/*controlling-non-react-widgets*/}
 
-有时你需要添加非 React 内置的 UI 小部件。比如说你想在你的页面添加一个地图组件。它有一个 `setZoomLevel()` 方法，然后你希望地图的缩放比例和代码中的 `zoomLevel` state 保持同步。你的 Effect 应该类似于：
+有时你需要添加不是用 React 实现的 UI 小部件。比如说你想在你的页面添加一个地图组件。它有一个 `setZoomLevel()` 方法，然后你希望地图的缩放比例和代码中的 `zoomLevel` state 保持同步。你的 Effect 应该类似于：
 
 ```js
 useEffect(() => {
@@ -709,7 +709,7 @@ useEffect(() => {
 
 **在开发环境中，你会在浏览器调试工具的“网络”选项卡中看到两条请求**。这是正常的。使用上述方法，第一个 Effect 将立即被清理，所以它的 `ignore` 变量会被设置为 `true`。因此，即使有额外的请求，由于有 `if (!ignore)` 的检查，也不会影响 state。
 
-**在生产环境中，只会有一条请求**。如果开发环境中的第二次请求给你造成了困扰，最好的办法是使用一个能够去重请求并缓存响应的方案：
+**在生产环境中，只会有一条请求**。如果开发环境中的第二次请求给你造成了困扰，最好的办法是使用一个能够对请求去重并缓存响应的方案：
 
 ```js
 function TodoList() {
@@ -725,15 +725,15 @@ function TodoList() {
 
 在 Effect 中直接编写 `fetch` 请求 [是一种常见的数据获取方式](https://www.robinwieruch.de/react-hooks-fetch-data/)，特别是在完全客户端渲染的应用中。然而，这种方法非常手动化，并且有明显的弊端：
 
-- **Effect 不会在服务端运行**。这意味着最初由服务器渲染的 HTML 只会包含加载状态，而没有实际数据。客户端必须先下载所有的 JavaScript 并渲染应用，才会发现它需要加载数据。这并不高效。
-- **直接在 Effect 中进行数据请求，容易产生“网络瀑布”**。首先父组件渲染时请求一些数据，随后渲染子组件，接着子组件开始请求它们的数据。如果网络速度不快，这种方式会比并行获取所有数据慢得多。
+- **Effect 不会在服务端运行**。这意味着最初由服务器渲染的 HTML 只会包含加载状态，而没有实际数据。客户端必须先下载所有的 JavaScript 并渲染应用，才会发现它需要加载数据——这并不高效。
+- **直接在 Effect 中进行数据请求，容易产生“网络瀑布（network waterfall）”**。首先父组件渲染时请求一些数据，随后渲染子组件，接着子组件开始请求它们的数据。如果网络速度不快，这种方式会比并行获取所有数据慢得多。
 - **直接在 Effect 中进行数据请求往往无法预加载或缓存数据**。例如，如果组件卸载后重新挂载，它必须重新获取数据。
 - **不够简洁**。编写 fecth 请求时为了避免 [竞态条件（race condition）](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect) 等问题，会需要很多样板代码。
 
 这些弊端并不仅限于 React。任何库在组件挂载时进行数据获取都会遇到这些问题。与路由处理一样，要做好数据获取并非易事，因此我们推荐以下方法：
 
 - **如果你正在使用 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks) ，请使用其内置的数据获取机制**。现代 React 框架集成了高效的数据获取机制，不会出现上述问题。
-- **否则，请考虑使用或构建客户端缓存**。流行的开源解决方案包括 [React Query](https://tanstack.com/query/latest)、[useSWR](https://swr.vercel.app/) 和 [React Router v6.4+](https://beta.reactrouter.com/en/main/start/overview)。你也可以自己构建解决方案：在底层使用 Effect，但添加去重请求、缓存响应以及避免网络瀑布（通过预加载数据或将数据请求提升到路由层次）的逻辑。
+- **否则，请考虑使用或构建客户端缓存**。流行的开源解决方案包括 [React Query](https://tanstack.com/query/latest)、[useSWR](https://swr.vercel.app/) 和 [React Router v6.4+](https://beta.reactrouter.com/en/main/start/overview)。你也可以自己构建解决方案：在底层使用 Effect，但添加对请求的去重、缓存响应以及避免网络瀑布（通过预加载数据或将数据请求提升到路由层次）的逻辑。
 
 如果这些方法都不适合你，你可以继续直接在 Effect 中获取数据。
 
@@ -755,7 +755,7 @@ useEffect(() => {
 
 为了调试发送的分析事件，你可以将应用部署到一个运行在生产模式下的暂存环境，或者暂时禁用 [严格模式](/reference/react/StrictMode) 及其仅在开发环境中的重新挂载检查。你还可以在路由更改的事件处理程序中发送分析数据，而不是在 Effect 中发送。对于更精确的分析，可以使用[交叉观察器](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API) 来跟踪哪些组件位于视口中以及它们保持可见的时间。
 
-### 不是 Effect：初始化应用 {/*not-an-effect-initializing-the-application*/}
+### 不适用于 Effect：初始化应用 {/*not-an-effect-initializing-the-application*/}
 
 某些逻辑应该只在应用启动时运行一次。你可以将它放在组件外部：
 
@@ -772,7 +772,7 @@ function App() {
 
 这可以确保此类逻辑只在浏览器加载页面后运行一次。
 
-### 不是 Effect：购买商品 {/*not-an-effect-buying-a-product*/}
+### 不适用于 Effect：购买商品 {/*not-an-effect-buying-a-product*/}
 
 有时，即使你编写了清理函数，也无法避免用户观察到 Effect 运行了两次。比如你的 Effect 发送了一个像购买商品这样的 POST 请求：
 
@@ -783,7 +783,7 @@ useEffect(() => {
 }, []);
 ```
 
-你肯定不希望购买两次商品。这也是为什么你不应该把这种逻辑放在 Effect 中。试想如果用户跳转到另一个页面，然后按下“返回”按钮？你的 Effect 会再次运行。你不希望用户在访问页面时就购买产品，而是在他们点击“购买”按钮时才购买。
+你肯定不希望购买两次商品。这也是为什么你不应该把这种逻辑放在 Effect 中。如果用户跳转到另一个页面，然后按下“返回”按钮，你的 Effect 就会再次运行。你不希望用户在访问页面时就购买产品，而是在他们点击“购买”按钮时才购买。
 
 购买操作并不是由渲染引起的，而是由特定的交互引起的。它应该只在用户按下按钮时执行。因此，**它不应该写在 Effect 中，应当把 `/api/buy` 请求移动到“购买”按钮的事件处理程序中**：
 
@@ -858,7 +858,7 @@ export default function App() {
 
 现在编辑输入框，输入 `abc`。如果输入速度足够快，你会看到 `调度 "ab" 日志`，紧接着 `取消 "ab" 日志` 和 `调度 "abc" 日志`。**React 总是在执行下一轮渲染的 Effect 之前清理上一轮渲染的 Effect**。这就是为什么即使你快速输入，最多也只有一个延时器被调度。试试多次编辑输入框，并观察控制台以了解 Effect 是如何被清理的。
 
-在输入框中输入一些内容，然后立即按下“卸载组件”。注意卸载组件时是如何清理最后一轮渲染的 Effect。在这里，它会在最后一个延迟器要触发之前取消它。
+在输入框中输入一些内容，然后立即按下“卸载组件”。注意卸载组件时是如何清理最后一轮渲染的 Effect 的。在这里，它会在最后一个延迟器要触发之前取消它。
 
 最后，在上面的代码中注释掉清理函数，这样延时器就不会被取消。尝试快速输入 `abcde`。你觉得三秒后会发生什么？延时器中的 `console.log(text)` 会打印 **最新** 的 `text` 值并生成五条 `abcde` 日志吗？试试看吧，验证一下你的直觉！
 
@@ -906,7 +906,7 @@ export default function ChatRoom({ roomId }) {
   ['general']
 ```
 
-React 运行这个 Effect，连接到 `'general'` 聊天室。
+React 运行这个 Effect 来连接到 `'general'` 聊天室。
 
 #### 依赖项相同时的重新渲染 {/*re-render-with-same-dependencies*/}
 
@@ -976,7 +976,7 @@ React 将第三次渲染时的 `['travel']` 与第二次渲染时的 `['general'
 
 <Recap>
 
-- 与事件不同，Effect 是由渲染本身引起，而非特定的交互。
+- 与事件不同，Effect 由渲染本身引起，而非特定的交互。
 - Effect 允许你将组件与某些外部系统（第三方 API、网络等）同步。
 - 默认情况下，Effect 在每次渲染（包括初始渲染）后运行。
 - 如果所有依赖项都与上一次渲染时相同，React 会跳过本次 Effect。
@@ -1160,9 +1160,9 @@ body {
 
 下面的表单渲染两个 `<MyInput />` 组件。
 
-点击“展示表单”后，注意第二个输入框会自动获取焦点。这是因为两个 `<MyInput />` 组件在内部争相想要获取焦点。当你连续为两个输入框调用 `focus()` 时，最后一个总会“获胜”。
+点击“展示表单”后，注意第二个输入框会自动获取焦点。这是因为两个 `<MyInput />` 组件在内部抢占焦点。当你连续为两个输入框调用 `focus()` 时，最后一个总会“获胜”。
 
-假设你希望聚焦于第一个输入框。现在，第一个 `MyInput` 组件接收一个布尔类型的 `shouldFocus` 属性，且值设置为 `true`。请修改程序逻辑，使得仅当 `MyInput` 接收到的 `shouldFocus` 属性为 `true` 时，才调用 `focus()` 。
+假设你希望聚焦于第一个输入框。现在，第一个 `MyInput` 组件接收一个布尔类型的 `shouldFocus` 属性，且值设置为 `true`。请修改程序逻辑，使得仅当 `MyInput` 接收到的 `shouldFocus` 属性为 `true` 时才调用 `focus()` 。
 
 <Sandpack>
 
