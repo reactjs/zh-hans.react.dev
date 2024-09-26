@@ -230,7 +230,7 @@ function handleDeleteTask(taskId) {
 - `handleChangeTask(task)` 在用户切换任务或点击 “保存” 时被调用。
 - `handleDeleteTask(taskId)` 在用户点击 “删除” 时被调用。
 
-使用 reducers 管理状态与直接设置状态略有不同。它不是通过设置状态来告诉 React “要做什么”，而是通过事件处理程序 dispatch 一个 “action” 来指明 “用户刚刚做了什么”。（而状态更新逻辑则保存在其他地方！）因此，我们不再通过事件处理器直接 “设置 `task`”，而是 dispatch 一个 “添加/修改/删除任务” 的 action。这更加符合用户的思维。
+使用 reducer 管理状态与直接设置状态略有不同。它不是通过设置状态来告诉 React “要做什么”，而是通过事件处理程序 dispatch 一个 “action” 来指明 “用户刚刚做了什么”。（而状态更新逻辑则保存在其他地方！）因此，我们不再通过事件处理器直接 “设置 `task`”，而是 dispatch 一个 “添加/修改/删除任务” 的 action。这更加符合用户的思维。
 
 ```js
 function handleAddTask(text) {
@@ -339,7 +339,7 @@ function tasksReducer(tasks, action) {
 
 <Note>
 
-上面的代码使用了 `if/else` 语句，但是在 reducers 中使用 [switch 语句](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/switch) 是一种惯例。两种方式结果是相同的，但 `switch` 语句读起来一目了然。
+上面的代码使用了 `if/else` 语句，但是在 reducer 中使用 [switch 语句](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/switch) 是一种惯例。两种方式结果是相同的，但 `switch` 语句读起来一目了然。
 
 在本文档的后续部分我们会像这样使用：
 
@@ -870,7 +870,7 @@ li {
 
 ## 对比 `useState` 和 `useReducer` {/*comparing-usestate-and-usereducer*/}
 
-Reducers 并非没有缺点！以下是比较它们的几种方法：
+Reducer 并非没有缺点！以下是比较它们的几种方法：
 
 * **代码体积：** 通常，在使用 `useState` 时，一开始只需要编写少量代码。而 `useReducer` 必须提前编写 reducer 函数和需要调度的 actions。但是，当多个事件处理程序以相似的方式修改 state 时，`useReducer` 可以减少代码量。
 * **可读性：** 当状态更新逻辑足够简单时，`useState` 的可读性还行。但是，一旦逻辑变得复杂起来，它们会使组件变得臃肿且难以阅读。在这种情况下，`useReducer` 允许你将状态更新逻辑与事件处理程序分离开来。
@@ -880,14 +880,14 @@ Reducers 并非没有缺点！以下是比较它们的几种方法：
 
 如果你在修改某些组件状态时经常出现问题或者想给组件添加更多逻辑时，我们建议你还是使用 reducer。当然，你也不必整个项目都用 reducer，这是可以自由搭配的。你甚至可以在一个组件中同时使用 `useState` 和 `useReducer`。
 
-## 编写一个好的 reducers {/*writing-reducers-well*/}
+## 编写一个好的 reducer {/*writing-reducers-well*/}
 
-编写 `reducers` 时最好牢记以下两点：
+编写 `reducer` 时最好牢记以下两点：
 
-* **reducers 必须是纯粹的。** 这一点和 [状态更新函数](/learn/queueing-a-series-of-state-updates) 是相似的，`reducers` 是在渲染时运行的！（actions 会排队直到下一次渲染)。 这就意味着 `reducers` [必须纯净](/learn/keeping-components-pure)，即当输入相同时，输出也是相同的。它们不应该包含异步请求、定时器或者任何副作用（对组件外部有影响的操作）。它们应该以不可变值的方式去更新 [对象](/learn/updating-objects-in-state) 和 [数组](/learn/updating-arrays-in-state)。
+* **reducer 必须是纯粹的。** 这一点和 [状态更新函数](/learn/queueing-a-series-of-state-updates) 是相似的，`reducer` 是在渲染时运行的！（actions 会排队直到下一次渲染)。 这就意味着 `reducer` [必须纯净](/learn/keeping-components-pure)，即当输入相同时，输出也是相同的。它们不应该包含异步请求、定时器或者任何副作用（对组件外部有影响的操作）。它们应该以不可变值的方式去更新 [对象](/learn/updating-objects-in-state) 和 [数组](/learn/updating-arrays-in-state)。
 * **每个 action 都描述了一个单一的用户交互，即使它会引发数据的多个变化。** 举个例子，如果用户在一个由 `reducer` 管理的表单（包含五个表单项）中点击了 `重置按钮`，那么 dispatch 一个 `reset_form` 的 action 比 dispatch 五个单独的 `set_field` 的 action 更加合理。如果你在一个 `reducer` 中打印了所有的 `action` 日志，那么这个日志应该是很清晰的，它能让你以某种步骤复现已发生的交互或响应。这对代码调试很有帮助！
 
-## 使用 Immer 简化 reducers {/*writing-concise-reducers-with-immer*/}
+## 使用 Immer 简化 reducer {/*writing-concise-reducers-with-immer*/}
 
 与在平常的 state 中 [修改对象](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) 和 [数组](/learn/updating-arrays-in-state#write-concise-update-logic-with-immer) 一样，你可以使用 `Immer` 这个库来简化 `reducer`。在这里，[`useImmerReducer`](https://github.com/immerjs/use-immer#useimmerreducer) 让你可以通过 `push` 或 `arr[i] =` 来修改 state ：
 
@@ -1086,7 +1086,7 @@ li {
 
 </Sandpack>
 
-Reducers 应该是纯净的，所以它们不应该去修改 state。而 Immer 为你提供了一种特殊的 `draft` 对象，你可以通过它安全的修改 state。在底层，Immer 会基于当前 state 创建一个副本。这就是通过 `useImmerReducer` 来管理 reducers 时，可以修改第一个参数，且不需要返回一个新的 state 的原因。
+Reducer 应该是纯净的，所以它们不应该去修改 state。而 Immer 为你提供了一种特殊的 `draft` 对象，你可以通过它安全地修改 state。在底层，Immer 会基于当前 state 创建一个副本。这就是通过 `useImmerReducer` 来管理 reducer 时，可以修改第一个参数，且不需要返回一个新的 state 的原因。
 
 <Recap>
 
@@ -1094,8 +1094,8 @@ Reducers 应该是纯净的，所以它们不应该去修改 state。而 Immer �
   1. 通过事件处理函数 dispatch actions；
   2. 编写一个 reducer 函数，它接受传入的 state 和一个 action，并返回一个新的 state；
   3. 使用 `useReducer` 替换 `useState`；
-* Reducers 可能需要你写更多的代码，但是这有利于代码的调试和测试。
-* Reducers 必须是纯净的。
+* Reducer 可能需要你写更多的代码，但是这有利于代码的调试和测试。
+* Reducer 必须是纯净的。
 * 每个 action 都描述了一个单一的用户交互。
 * 使用 Immer 来帮助你在 reducer 里直接修改状态。
 
