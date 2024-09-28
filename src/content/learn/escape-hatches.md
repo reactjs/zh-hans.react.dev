@@ -97,7 +97,7 @@ export default function Form() {
 
 </LearnMore>
 
-## 使用 Effect 同步 {/*synchronizing-with-effects*/}
+## 使用 Effect 进行同步 {/*synchronizing-with-effects*/}
 
 有些组件需要与外部系统同步。例如，可能需要根据 React 状态控制非 React 组件、设置服务器连接或在组件出现在屏幕上时发送分析日志。与处理特定事件的事件处理程序不同，**Effect** 在渲染后运行一些代码。使用它将组件与 React 之外的系统同步。
 
@@ -187,7 +187,7 @@ input { display: block; margin-bottom: 20px; }
 
 <LearnMore path="/learn/synchronizing-with-effects">
 
-阅读 **[使用 Effect 同步](/learn/synchronizing-with-effects)** 以了解如何将组件与外部系统同步。
+阅读 **[使用 Effect 进行同步](/learn/synchronizing-with-effects)** 以了解如何将组件与外部系统同步。
 
 </LearnMore>
 
