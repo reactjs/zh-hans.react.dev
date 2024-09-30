@@ -627,7 +627,11 @@ React 有意在开发环境下重新挂载你的组件，来找到类似上例�
 
 ### 管理非 React 小部件 {/*controlling-non-react-widgets*/}
 
+<<<<<<< HEAD
 有时你需要添加不是用 React 实现的 UI 小部件。比如说你想在你的页面添加一个地图组件。它有一个 `setZoomLevel()` 方法，然后你希望地图的缩放比例和代码中的 `zoomLevel` state 保持同步。你的 Effect 应该类似于：
+=======
+Sometimes you need to add UI widgets that aren't written in React. For example, let's say you're adding a map component to your page. It has a `setZoomLevel()` method, and you'd like to keep the zoom level in sync with a `zoomLevel` state variable in your React code. Your Effect would look similar to this:
+>>>>>>> 589a1d3a8182d851718840f91bec80b0a13e2495
 
 ```js
 useEffect(() => {
