@@ -1133,7 +1133,7 @@ export default function Board() {
 
 <Note>
 
-JavaScript 支持闭包，这意味着内部函数（例如 `handleClick`）可以访问外部函数（例如 `Board`）中定义的变量和函数。`handleClick` 函数可以读取 `squares` state 并调用 `setSquares` 方法，因为它们都是在 `Board` 函数内部定义的。
+JavaScript 支持 [闭包](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures)，这意味着内部函数（例如 `handleClick`）可以访问外部函数（例如 `Board`）中定义的变量和函数。`handleClick` 函数可以读取 `squares` state 并调用 `setSquares` 方法，因为它们都是在 `Board` 函数内部定义的。
 
 </Note>
 

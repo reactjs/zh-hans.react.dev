@@ -190,7 +190,7 @@ function ExpenseForm() {
 
 ```js {2}
 function ProductDetailPage({ product }) {
-  document.window.title = product.title; // 🔴 错误的：改变 DOM
+  document.title = product.title; // 🔴 错误的：改变 DOM
 }
 ```
 
