@@ -1056,12 +1056,9 @@ label {
 
 ---
 
-<<<<<<< HEAD
-### 记忆另一个 Hook 的依赖 {/*memoizing-a-dependency-of-another-hook*/}
-=======
-### Preventing an Effect from firing too often {/*preventing-an-effect-from-firing-too-often*/}
+### 防止过于频繁地触发 Effect {/*preventing-an-effect-from-firing-too-often*/}
 
-Sometimes, you might want to use a value inside an [Effect:](/learn/synchronizing-with-effects)
+有时你可能会想要在 [Effect](/learn/synchronizing-with-effects) 中使用变量：
 
 ```js {4-7,10}
 function ChatRoom({ roomId }) {
@@ -1078,7 +1075,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-This creates a problem. [Every reactive value must be declared as a dependency of your Effect.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) However, if you declare `options` as a dependency, it will cause your Effect to constantly reconnect to the chat room:
+但是这样做会带来一些问题。因为 [Effect 中的每一个响应式值都应该声明为其依赖。](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) 然而如果你将 `options` 声明为依赖，会导致在 Effect 中不断地重新连接到聊天室：
 
 
 ```js {5}
@@ -1086,11 +1083,11 @@ This creates a problem. [Every reactive value must be declared as a dependency o
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // 🔴 Problem: This dependency changes on every render
+  }, [options]); // 🔴 问题：每次渲染这个依赖项都会发生改变
   // ...
 ```
 
-To solve this, you can wrap the object you need to call from an Effect in `useMemo`:
+为了解决这个场景，你可以使用 `useMemo` 将 Effect 中使用的对象包装起来：
 
 ```js {4-9,16}
 function ChatRoom({ roomId }) {
@@ -1101,27 +1098,27 @@ function ChatRoom({ roomId }) {
       serverUrl: 'https://localhost:1234',
       roomId: roomId
     };
-  }, [roomId]); // ✅ Only changes when roomId changes
+  }, [roomId]); // ✅ 只有当 roomId 改变时才会被改变
 
   useEffect(() => {
     const options = createOptions();
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // ✅ Only changes when createOptions changes
+  }, [options]); // ✅ 只有当 createOptions 改变时才会被改变
   // ...
 ```
 
-This ensures that the `options` object is the same between re-renders if `useMemo` returns the cached object.
+因为 `useMemo` 返回了缓存的对象，所以这将确保 `options` 对象在重新渲染期间保持不变。
 
-However, since `useMemo` is performance optimization, not a semantic guarantee, React may throw away the cached value if [there is a specific reason to do that](#caveats). This will also cause the effect to re-fire, **so it's even better to remove the need for a function dependency** by moving your object *inside* the Effect:
+然而，因为 `useMemo` 只是一个性能优化手段，而并不是语义上的保证，所以 React 在 [特定场景下](#caveats) 会丢弃缓存值。这也会导致重新触发 Effect，因此 **最好通过将对象移动到 Effect 内部来消除对函数的依赖**：
 
 ```js {5-8,13}
 function ChatRoom({ roomId }) {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    const options = { // ✅ No need for useMemo or object dependencies!
+    const options = { // ✅ 不需要将 useMemo 或对象作为依赖！
       serverUrl: 'https://localhost:1234',
       roomId: roomId
     }
@@ -1129,15 +1126,14 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ Only changes when roomId changes
+  }, [roomId]); // ✅ 只有当 roomId 改变时才会被改变
   // ...
 ```
 
-Now your code is simpler and doesn't need `useMemo`. [Learn more about removing Effect dependencies.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
+现在你的代码不需要使用 `useMemo` 并且更加简洁。[了解移除 Effect 依赖项的更多信息。](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
 
 
-### Memoizing a dependency of another Hook {/*memoizing-a-dependency-of-another-hook*/}
->>>>>>> c003ac4eb130fca70b88cf3a1b80ce5f76c51ae3
+### 记忆另一个 Hook 的依赖 {/*memoizing-a-dependency-of-another-hook*/}
 
 假设你有一个计算函数依赖于直接在组件主体中创建的对象：
 
