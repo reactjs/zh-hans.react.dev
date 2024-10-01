@@ -59,7 +59,11 @@ React 从最初由 [Jordan Walke](https://github.com/jordwalke) 创立至今, �
 
 这份名单并不详尽。
 
+<<<<<<< HEAD
 我们要特别感谢 [Tom Occhino](https://github.com/tomocchino) 和 [Adam Wolff](https://github.com/wolffiex)，感谢他们多年来的指导和支持。我们还要感谢所有 [将 React 翻译为其他语言的志愿者们](https://translations.reactjs.org/)。
+=======
+We'd like to give special thanks to [Tom Occhino](https://github.com/tomocchino) and [Adam Wolff](https://github.com/wolffiex) for their guidance and support over the years. We are also thankful to all the volunteers who [translated React into other languages.](https://translations.react.dev/)
+>>>>>>> 56b383273fb60f7d73af2496d6eb419cc2370d9e
 
 ## Additional Thanks {/*additional-thanks*/}
 
