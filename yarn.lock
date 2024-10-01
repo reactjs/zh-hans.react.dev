@@ -7075,10 +7075,5 @@ zod@3.21.4:
 
 zwitch@^2.0.0:
   version "2.0.2"
-<<<<<<< HEAD
-  resolved "https://registry.yarnpkg.com/zwitch/-/zwitch-2.0.2.tgz#91f8d0e901ffa3d66599756dde7f57b17c95dce1"
-  integrity sha512-JZxotl7SxAJH0j7dN4pxsTV6ZLXoLdGME+PsjkL/DaBrVryK9kTGq06GfKrwcSOqypP+fdXGoCHE36b99fWVoA==
-=======
   resolved "https://registry.npmjs.org/zwitch/-/zwitch-2.0.2.tgz"
   integrity sha512-JZxotl7SxAJH0j7dN4pxsTV6ZLXoLdGME+PsjkL/DaBrVryK9kTGq06GfKrwcSOqypP+fdXGoCHE36b99fWVoA==
->>>>>>> 589a1d3a8182d851718840f91bec80b0a13e2495

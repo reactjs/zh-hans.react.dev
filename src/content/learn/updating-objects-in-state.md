@@ -383,11 +383,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 #### 使用一个事件处理函数来更新多个字段 {/*using-a-single-event-handler-for-multiple-fields*/}
 
-<<<<<<< HEAD
 你也可以在对象的定义中使用 `[` 和 `]` 括号来实现属性的动态命名。下面是同一个例子，但它使用了一个事件处理函数而不是三个：
-=======
-You can also use the `[` and `]` braces inside your object definition to specify a property with a dynamic name. Here is the same example, but with a single event handler instead of three different ones:
->>>>>>> 589a1d3a8182d851718840f91bec80b0a13e2495
 
 <Sandpack>
 

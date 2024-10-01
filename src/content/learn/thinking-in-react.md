@@ -270,19 +270,11 @@ props 和 state 是不同的，但它们可以共同工作。父组件将经常�
 
 现在为这个 state 贯彻我们的策略:
 
-<<<<<<< HEAD
 1. **验证使用 state 的组件**：
     * `ProductTable` 需要基于 state (搜索文本和复选框值) 过滤产品列表。
     * `SearchBar` 需要展示 state (搜索文本和复选框值)。
 2. **寻找它们的父组件**：它们的第一个共同父组件为 `FilterableProductTable`。
-3. **决定 state 放置的地方**：我们将放置过滤文本和勾选 state 的值于 `FilterableProductTable`。
-=======
-1. **Identify components that use state:**
-    * `ProductTable` needs to filter the product list based on that state (search text and checkbox value). 
-    * `SearchBar` needs to display that state (search text and checkbox value).
-2. **Find their common parent:** The first parent component both components share is `FilterableProductTable`.
-3. **Decide where the state lives**: We'll keep the filter text and checked state values in `FilterableProductTable`.
->>>>>>> 589a1d3a8182d851718840f91bec80b0a13e2495
+3. **决定 state 放置的地方**：我们将过滤文本和勾选 state 的值放置于 `FilterableProductTable` 中。
 
 所以 state 将被放置在 `FilterableProductTable`。
 
