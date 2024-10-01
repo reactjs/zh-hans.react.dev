@@ -1056,6 +1056,83 @@ label {
 
 ---
 
+### 防止过于频繁地触发 Effect {/*preventing-an-effect-from-firing-too-often*/}
+
+有时你可能会想要在 [Effect](/learn/synchronizing-with-effects) 中使用变量：
+
+```js {4-7,10}
+function ChatRoom({ roomId }) {
+  const [message, setMessage] = useState('');
+
+  const options = {
+    serverUrl: 'https://localhost:1234',
+    roomId: roomId
+  }
+
+  useEffect(() => {
+    const connection = createConnection(options);
+    connection.connect();
+    // ...
+```
+
+但是这样做会带来一些问题。因为 [Effect 中的每一个响应式值都应该声明为其依赖。](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) 然而如果你将 `options` 声明为依赖，会导致在 Effect 中不断地重新连接到聊天室：
+
+
+```js {5}
+  useEffect(() => {
+    const connection = createConnection(options);
+    connection.connect();
+    return () => connection.disconnect();
+  }, [options]); // 🔴 问题：每次渲染这个依赖项都会发生改变
+  // ...
+```
+
+为了解决这个场景，你可以使用 `useMemo` 将 Effect 中使用的对象包装起来：
+
+```js {4-9,16}
+function ChatRoom({ roomId }) {
+  const [message, setMessage] = useState('');
+
+  const options = useMemo(() => {
+    return {
+      serverUrl: 'https://localhost:1234',
+      roomId: roomId
+    };
+  }, [roomId]); // ✅ 只有当 roomId 改变时才会被改变
+
+  useEffect(() => {
+    const options = createOptions();
+    const connection = createConnection(options);
+    connection.connect();
+    return () => connection.disconnect();
+  }, [options]); // ✅ 只有当 createOptions 改变时才会被改变
+  // ...
+```
+
+因为 `useMemo` 返回了缓存的对象，所以这将确保 `options` 对象在重新渲染期间保持不变。
+
+然而，因为 `useMemo` 只是一个性能优化手段，而并不是语义上的保证，所以 React 在 [特定场景下](#caveats) 会丢弃缓存值。这也会导致重新触发 Effect，因此 **最好通过将对象移动到 Effect 内部来消除对函数的依赖**：
+
+```js {5-8,13}
+function ChatRoom({ roomId }) {
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    const options = { // ✅ 不需要将 useMemo 或对象作为依赖！
+      serverUrl: 'https://localhost:1234',
+      roomId: roomId
+    }
+    
+    const connection = createConnection(options);
+    connection.connect();
+    return () => connection.disconnect();
+  }, [roomId]); // ✅ 只有当 roomId 改变时才会被改变
+  // ...
+```
+
+现在你的代码不需要使用 `useMemo` 并且更加简洁。[了解移除 Effect 依赖项的更多信息。](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
+
+
 ### 记忆另一个 Hook 的依赖 {/*memoizing-a-dependency-of-another-hook*/}
 
 假设你有一个计算函数依赖于直接在组件主体中创建的对象：
