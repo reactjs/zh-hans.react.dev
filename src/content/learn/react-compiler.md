@@ -19,9 +19,13 @@ title: React Compiler
 </YouWillLearn>
 
 <Note>
+<<<<<<< HEAD
 React Compiler 是一个新的实验性编译器，我们已经开源，以便从社区中获得早期反馈。它仍然存在一些问题，还没有完全准备好投入生产。
 
 React Compiler 需要 React 19 RC。如果你无法升级到 React 19，你可以尝试 userspace 实现缓存功能，如 [工作组](https://github.com/reactwg/react-compiler/discussions/6) 中所述。但请注意，这并不推荐，你应尽可能升级到 React 19。
+=======
+React Compiler is a new experimental compiler that we've open sourced to get early feedback from the community. It still has rough edges and is not yet fully ready for production.
+>>>>>>> 2b2d0f2309f49c82cf5bb88ea62fb2e44661c634
 </Note>
 
 React Compiler 是一个新的实验性编译器，我们已经开源以获得社区的早期反馈。它是一个仅在构建时使用的工具，可以自动优化你的 React 应用程序。它可以与纯 JavaScript 一起使用，并且了解 [React 规则](/reference/rules)，因此你无需重写任何代码即可使用它。
@@ -225,6 +229,29 @@ module.exports = function () {
 ```
 
 `babel-plugin-react-compiler` 应该在其他 Babel 插件之前运行，因为编译器需要输入源信息进行声音分析。
+
+React Compiler works best with React 19 RC. If you are unable to upgrade, you can install the extra `react-compiler-runtime` package which will allow the compiled code to run on versions prior to 19. However, note that the minimum supported version is 17.
+
+<TerminalBlock>
+npm install react-compiler-runtime@experimental
+</TerminalBlock>
+
+You should also add the correct `target` to your compiler config, where `target` is the major version of React you are targeting:
+
+```js {3}
+// babel.config.js
+const ReactCompilerConfig = {
+  target: '18' // '17' | '18' | '19'
+};
+
+module.exports = function () {
+  return {
+    plugins: [
+      ['babel-plugin-react-compiler', ReactCompilerConfig],
+    ],
+  };
+};
+```
 
 ### Vite {/*usage-with-vite*/}
 
