@@ -19,12 +19,10 @@ title: React Compiler
 </YouWillLearn>
 
 <Note>
-React Compiler 是一个新的实验性编译器，我们已经开源，以便从社区中获得早期反馈。它仍然存在一些问题，还没有完全准备好投入生产。
-
-React Compiler 需要 React 19 RC。如果你无法升级到 React 19，你可以尝试 userspace 实现缓存功能，如 [工作组](https://github.com/reactwg/react-compiler/discussions/6) 中所述。但请注意，这并不推荐，你应尽可能升级到 React 19。
+React Compiler 是一个新的实验性编译器，我们已经将其开源，以便从社区中获得早期反馈。它仍然存在一些问题，所以还没有完全准备好投入生产。
 </Note>
 
-React Compiler 是一个新的实验性编译器，我们已经开源以获得社区的早期反馈。它是一个仅在构建时使用的工具，可以自动优化你的 React 应用程序。它可以与纯 JavaScript 一起使用，并且了解 [React 规则](/reference/rules)，因此你无需重写任何代码即可使用它。
+React Compiler 是一个新的实验性编译器，我们已经将其开源，以便从社区中获得早期反馈。它是一个仅在构建时使用的工具，可以自动优化你的 React 应用程序。它可以与纯 JavaScript 一起使用，并且了解 [React 规则](/reference/rules)，因此你无需重写任何代码即可使用它。
 
 编译器还包括一个 [ESLint 插件](#installing-eslint-plugin-react-compiler)，可以在你的编辑器中直接显示编译器的分析结果。该插件独立运行，即使你的应用程序中没有使用编译器也可以使用。我们建议所有 React 开发人员使用这个 ESLint 插件来帮助提高代码库的质量。
 
@@ -225,6 +223,29 @@ module.exports = function () {
 ```
 
 `babel-plugin-react-compiler` 应该在其他 Babel 插件之前运行，因为编译器需要输入源信息进行声音分析。
+
+React Compiler 与 React 19 RC 配合使用效果最佳。如果你无法升级，可以安装额外的 `react-compiler-runtime` 包来编译代码并在 19 之前的版本上运行。 但请注意，支持的最低版本是 17。
+
+<TerminalBlock>
+npm install react-compiler-runtime@experimental
+</TerminalBlock>
+
+你还应该在编译器配置中添加正确的 `target`，值为你所使用的 React 大版本。
+
+```js {3}
+// babel.config.js
+const ReactCompilerConfig = {
+  target: '18' // '17' | '18' | '19'
+};
+
+module.exports = function () {
+  return {
+    plugins: [
+      ['babel-plugin-react-compiler', ReactCompilerConfig],
+    ],
+  };
+};
+```
 
 ### Vite {/*usage-with-vite*/}
 

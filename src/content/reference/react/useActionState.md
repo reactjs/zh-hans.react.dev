@@ -20,7 +20,7 @@ In earlier React Canary versions, this API was part of React DOM and called `use
 `useActionState` 是一个可以根据某个表单动作的结果更新 state 的 Hook。
 
 ```js
-const [state, formAction] = useActionState(fn, initialState, permalink?);
+const [state, formAction, isPending] = useActionState(fn, initialState, permalink?);
 ```
 
 </Intro>
@@ -35,7 +35,7 @@ const [state, formAction] = useActionState(fn, initialState, permalink?);
 
 {/* TODO T164397693: link to actions documentation once it exists */}
 
-在组件的顶层调用 `useActionState` 即可创建一个随 [表单动作被调用](/reference/react-dom/components/form) 而更新的 state。在调用 `useActionState` 时在参数中传入现有的表单动作函数以及一个初始状态，它就会返回一个新的 action 函数和一个 form state 以供在 form 中使用。这个新的 form state 也会作为参数传入提供的表单动作函数。
+在组件的顶层调用 `useActionState` 即可创建一个随 [表单动作被调用](/reference/react-dom/components/form) 而更新的 state。在调用 `useActionState` 时在参数中传入现有的表单动作函数以及一个初始状态，无论 Action 是否在 pending 中，它都会返回一个新的 action 函数和一个 form state 以供在 form 中使用。这个新的 form state 也会作为参数传入提供的表单动作函数。
 
 ```js
 import { useActionState } from "react";
@@ -70,10 +70,11 @@ form state 是一个只在表单被提交触发 action 后才会被更新的值�
 
 #### 返回值 {/*returns*/}
 
-`useActionState` 返回一个包含两个值的数组：
+`useActionState` 返回一个包含以下值的数组：
 
 1. 当前的 state。第一次渲染期间，该值为传入的 `initialState` 参数值。在 action 被调用后该值会变为 action 的返回值。
 2. 一个新的 action 函数用于在你的 `form` 组件的 `action` 参数或表单中任意一个 `button` 组件的 `formAction` 参数中传递。
+3. 一个 `isPending` 标识，用于表明是否有正在 pending 的 Transition。
 
 #### 注意 {/*caveats*/}
 
@@ -103,10 +104,11 @@ function MyComponent() {
 }
 ```
 
-`useActionState` 返回一个包含两个值的数组：
+`useActionState` 返回一个包含以下值的数组：
 
 1. 该表单的 <CodeStep step={1}>当前 state</CodeStep>，初始值为提供的 <CodeStep step={4}>初始 state</CodeStep>，当表单被提交后则改为传入的 <CodeStep step={3}>action</CodeStep> 的返回值。
 2. 传入 `<form>` 标签的 `action` 属性的 <CodeStep step={2}>新 action</CodeStep>。
+3. 一个 <CodeStep step={1}>pending state</CodeStep>，可以在处理 action 的过程中使用它。
 
 表单被提交后，传入的 <CodeStep step={3}>action</CodeStep> 函数会被执行。返回值将会作为该表单的新的 <CodeStep step={1}>当前 state</CodeStep>。
 
@@ -132,13 +134,13 @@ import { useActionState, useState } from "react";
 import { addToCart } from "./actions.js";
 
 function AddToCartForm({itemID, itemTitle}) {
-  const [message, formAction] = useActionState(addToCart, null);
+  const [message, formAction, isPending] = useActionState(addToCart, null);
   return (
     <form action={formAction}>
       <h2>{itemTitle}</h2>
       <input type="hidden" name="itemID" value={itemID} />
       <button type="submit">加入购物车</button>
-      {message}
+      {isPending ? "加载中……" : message}
     </form>
   );
 }
@@ -161,6 +163,10 @@ export async function addToCart(prevState, queryData) {
   if (itemID === "1") {
     return "已加入购物车";
   } else {
+    // 认为添加延迟以使等待更明显。
+    await new Promise(resolve => {
+      setTimeout(resolve, 2000);
+    });
     return "无法加入购物车：商品已售罄";
   }
 }
