@@ -192,7 +192,36 @@ export default function App() {
 
 当你对编译器的推出更有信心时，你也可以将覆盖范围扩展到其他目录，并逐渐将其推出到整个应用程序。
 
+<<<<<<< HEAD
 #### 新项目 {/*new-projects*/}
+=======
+### Using React Compiler with React 17 or 18 {/*using-react-compiler-with-react-17-or-18*/}
+
+React Compiler works best with React 19 RC. If you are unable to upgrade, you can install the extra `react-compiler-runtime` package which will allow the compiled code to run on versions prior to 19. However, note that the minimum supported version is 17.
+
+<TerminalBlock>
+npm install react-compiler-runtime@experimental
+</TerminalBlock>
+
+You should also add the correct `target` to your compiler config, where `target` is the major version of React you are targeting:
+
+```js {3}
+// babel.config.js
+const ReactCompilerConfig = {
+  target: '18' // '17' | '18' | '19'
+};
+
+module.exports = function () {
+  return {
+    plugins: [
+      ['babel-plugin-react-compiler', ReactCompilerConfig],
+    ],
+  };
+};
+```
+
+#### New projects {/*new-projects*/}
+>>>>>>> ee094926d54eef5cec54c9299842eeb822c7859b
 
 如果你正在启动一个新项目，你可以在整个代码库上启用编译器，这是默认行为。
 
@@ -224,6 +253,7 @@ module.exports = function () {
 
 `babel-plugin-react-compiler` 应该在其他 Babel 插件之前运行，因为编译器需要输入源信息进行声音分析。
 
+<<<<<<< HEAD
 React Compiler 与 React 19 RC 配合使用效果最佳。如果你无法升级，可以安装额外的 `react-compiler-runtime` 包来编译代码并在 19 之前的版本上运行。 但请注意，支持的最低版本是 17。
 
 <TerminalBlock>
@@ -247,6 +277,8 @@ module.exports = function () {
 };
 ```
 
+=======
+>>>>>>> ee094926d54eef5cec54c9299842eeb822c7859b
 ### Vite {/*usage-with-vite*/}
 
 如果你使用 Vite，你可以将插件添加到 vite-plugin-react 中：
@@ -392,6 +424,7 @@ React Native 通过 Metro 使用 Babel，因此请参考 [使用 Babel](#usage-w
 
 你也可以通过申请成为成员，在 React Compiler 工作组中提供反馈意见。请查看 [README](https://github.com/reactwg/react-compiler) 以获取更多加入详情。
 
+<<<<<<< HEAD
 ### `(0 , _c) is not a function` error {/*0--_c-is-not-a-function-error*/}
 
 如果你没有使用 React 19 RC 及更高版本，则会发生这种情况。要解决此问题，请先 [将你的项目升级到 React 19 RC](https://react.dev/blog/2024/04/25/react-19-upgrade-guide)。
@@ -399,6 +432,9 @@ React Native 通过 Metro 使用 Babel，因此请参考 [使用 Babel](#usage-w
 如果你无法升级到 React 19，你可以尝试根据 [工作组](https://github.com/reactwg/react-compiler/discussions/6) 描述的缓存功能的用户空间实现。但是，请注意这并不建议，你应尽快升级到React 19。
 
 ### 我如何知道我的组件已被优化？ {/*how-do-i-know-my-components-have-been-optimized*/}
+=======
+### How do I know my components have been optimized? {/*how-do-i-know-my-components-have-been-optimized*/}
+>>>>>>> ee094926d54eef5cec54c9299842eeb822c7859b
 
 [React 开发工具](/learn/react-developer-tools)（v5.0 及以上版本）对 React Compiler 有内置支持，并会在已被编译器优化的组件旁边显示“Memo ✨”徽章。
 
