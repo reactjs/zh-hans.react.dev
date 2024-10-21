@@ -3,7 +3,11 @@ title: React Compiler
 ---
 
 <Intro>
+<<<<<<< HEAD
 本页面将为你介绍新的实验性 React Compiler，以及如何成功试用。
+=======
+This page will give you an introduction to React Compiler and how to try it out successfully.
+>>>>>>> 9467bc58868e66c53ca9385c8531dcf7b02178c2
 </Intro>
 
 <Wip>
@@ -19,12 +23,37 @@ title: React Compiler
 </YouWillLearn>
 
 <Note>
+<<<<<<< HEAD
 React Compiler 是一个新的实验性编译器，我们已经将其开源，以便从社区中获得早期反馈。它仍然存在一些问题，所以还没有完全准备好投入生产。
 </Note>
 
 React Compiler 是一个新的实验性编译器，我们已经将其开源，以便从社区中获得早期反馈。它是一个仅在构建时使用的工具，可以自动优化你的 React 应用程序。它可以与纯 JavaScript 一起使用，并且了解 [React 规则](/reference/rules)，因此你无需重写任何代码即可使用它。
 
 编译器还包括一个 [ESLint 插件](#installing-eslint-plugin-react-compiler)，可以在你的编辑器中直接显示编译器的分析结果。该插件独立运行，即使你的应用程序中没有使用编译器也可以使用。我们建议所有 React 开发人员使用这个 ESLint 插件来帮助提高代码库的质量。
+=======
+React Compiler is a new compiler currently in Beta, that we've open sourced to get early feedback from the community. While it has been used in production at companies like Meta, rolling out the compiler to production for your app will depend on the health of your codebase and how well you’ve followed the [Rules of React](/reference/rules).
+
+The latest Beta release can be found with the `@beta` tag, and daily experimental releases with `@experimental`.
+</Note>
+
+React Compiler is a new compiler that we've open sourced to get early feedback from the community. It is a build-time only tool that automatically optimizes your React app. It works with plain JavaScript, and understands the [Rules of React](/reference/rules), so you don't need to rewrite any code to use it.
+
+The compiler also includes an [eslint plugin](#installing-eslint-plugin-react-compiler) that surfaces the analysis from the compiler right in your editor. **We strongly recommend everyone use the linter today.** The linter does not require that you have the compiler installed, so you can use it even if you are not ready to try out the compiler.
+
+The compiler is currently released as `beta`, and is available to try out on React 17+ apps and libraries. To install the Beta:
+
+<TerminalBlock>
+npm install -D babel-plugin-react-compiler@beta eslint-plugin-react-compiler@beta
+</TerminalBlock>
+
+Or, if you're using Yarn:
+
+<TerminalBlock>
+yarn add -D babel-plugin-react-compiler@beta eslint-plugin-react-compiler@beta
+</TerminalBlock>
+
+If you are not using React 19 yet, please see [the section below](#using-react-compiler-with-react-17-or-18) for further instructions.
+>>>>>>> 9467bc58868e66c53ca9385c8531dcf7b02178c2
 
 ### 编译器是做什么的？ {/*what-does-the-compiler-do*/}
 
@@ -94,6 +123,7 @@ function TableContainer({ items }) {
 因此，如果在许多不同的组件中使用 `expensivelyProcessAReallyLargeArrayOfObjects`，即使传递相同的 `items`，那昂贵的计算也会被重复运行。我们建议先进行 [性能分析](/reference/react/useMemo#how-to-tell-if-a-calculation-is-expensive)，看看是否真的那么昂贵，然后再使代码更加复杂。
 </DeepDive>
 
+<<<<<<< HEAD
 ### 编译器假设什么？ {/*what-does-the-compiler-assume*/}
 
 React Compiler 假设你的代码：
@@ -107,6 +137,11 @@ React Compiler 可以静态验证 React 的许多规则，并且在检测到错�
 ### 我应该尝试一下编译器吗？ {/*should-i-try-out-the-compiler*/}
 
 请注意，编译器仍处于实验阶段，存在许多不完善之处。虽然它已经在 Meta 等公司的生产环境中使用过，但将编译器应用于你的应用程序生产环境将取决于你的代码库的健康状况以及你是否遵循了 [React的规则](/reference/rules)。
+=======
+### Should I try out the compiler? {/*should-i-try-out-the-compiler*/}
+
+Please note that the compiler is still in Beta and has many rough edges. While it has been used in production at companies like Meta, rolling out the compiler to production for your app will depend on the health of your codebase and how well you've followed the [Rules of React](/reference/rules).
+>>>>>>> 9467bc58868e66c53ca9385c8531dcf7b02178c2
 
 **你现在不必急着使用编译器。在采用它之前等到它达到稳定版本是可以的。** 然而，我们确实赞赏在你的应用程序中进行小型实验，以便你可以向我们 [提供反馈](#reporting-issues)，帮助使编译器更好。
 
@@ -119,7 +154,7 @@ React Compiler 可以静态验证 React 的许多规则，并且在检测到错�
 在安装编译器之前，你可以先检查你的代码库是否兼容：
 
 <TerminalBlock>
-npx react-compiler-healthcheck@experimental
+npx react-compiler-healthcheck@beta
 </TerminalBlock>
 
 此脚本将：
@@ -141,7 +176,7 @@ Found no usage of incompatible libraries.
 React Compiler 还为 ESLint 插件提供支持。ESLint 插件可以**独立**于编译器使用，这意味着即使你不使用编译器，也可以使用 ESLint 插件。
 
 <TerminalBlock>
-npm install eslint-plugin-react-compiler@experimental
+npm install -D eslint-plugin-react-compiler@beta
 </TerminalBlock>
 
 然后，将其添加到你的 ESLint 配置中：
@@ -176,6 +211,7 @@ const ReactCompilerConfig = {
 };
 ```
 
+<<<<<<< HEAD
 在罕见的情况下，你还可以使用 `compilationMode: "annotation"` 选项将编译器配置为以 "opt-in" 模式运行。这样编译器将只编译带有 `"use memo"` 指令的组件和钩子。请注意，`annotation` 模式是为了帮助早期采用者而设立的临时模式，我们并不打算长期使用 `"use memo"` 指令。
 
 ```js {2,7}
@@ -191,17 +227,59 @@ export default function App() {
 ```
 
 当你对编译器的推出更有信心时，你也可以将覆盖范围扩展到其他目录，并逐渐将其推出到整个应用程序。
+=======
+When you have more confidence with rolling out the compiler, you can expand coverage to other directories as well and slowly roll it out to your whole app.
+>>>>>>> 9467bc58868e66c53ca9385c8531dcf7b02178c2
 
 #### 新项目 {/*new-projects*/}
 
 如果你正在启动一个新项目，你可以在整个代码库上启用编译器，这是默认行为。
 
+<<<<<<< HEAD
 ## 用法 {/*installation*/}
+=======
+### Using React Compiler with React 17 or 18 {/*using-react-compiler-with-react-17-or-18*/}
+
+React Compiler works best with React 19 RC. If you are unable to upgrade, you can install the extra `react-compiler-runtime` package which will allow the compiled code to run on versions prior to 19. However, note that the minimum supported version is 17.
+
+<TerminalBlock>
+npm install react-compiler-runtime@beta
+</TerminalBlock>
+
+You should also add the correct `target` to your compiler config, where `target` is the major version of React you are targeting:
+
+```js {3}
+// babel.config.js
+const ReactCompilerConfig = {
+  target: '18' // '17' | '18' | '19'
+};
+
+module.exports = function () {
+  return {
+    plugins: [
+      ['babel-plugin-react-compiler', ReactCompilerConfig],
+    ],
+  };
+};
+```
+
+### Using the compiler on libraries {/*using-the-compiler-on-libraries*/}
+
+React Compiler can also be used to compile libraries. Because React Compiler needs to run on the original source code prior to any code transformations, it is not possible for an application's build pipeline to compile the libraries they use. Hence, our recommendation is for library maintainers to independently compile and test their libraries with the compiler, and ship compiled code to npm.
+
+Because your code is pre-compiled, users of your library will not need to have the compiler enabled in order to benefit from the automatic memoization applied to your library. If your library targets apps not yet on React 19, specify a minimum [`target` and add `react-compiler-runtime` as a direct dependency](#using-react-compiler-with-react-17-or-18). The runtime package will use the correct implementation of APIs depending on the application's version, and polyfill the missing APIs if necessary.
+
+Library code can often require more complex patterns and usage of escape hatches. For this reason, we recommend ensuring that you have sufficient testing in order to identify any issues that might arise from using the compiler on your library. If you identify any issues, you can always opt-out the specific components or hooks with the [`'use no memo'` directive](#something-is-not-working-after-compilation).
+
+Similarly to apps, it is not necessary to fully compile 100% of your components or hooks to see benefits in your library. A good starting point might be to identify the most performance sensitive parts of your library and ensuring that they don't break the [Rules of React](/reference/rules), which you can use `eslint-plugin-react-compiler` to identify.
+
+## Usage {/*installation*/}
+>>>>>>> 9467bc58868e66c53ca9385c8531dcf7b02178c2
 
 ### Babel {/*usage-with-babel*/}
 
 <TerminalBlock>
-npm install babel-plugin-react-compiler@experimental
+npm install babel-plugin-react-compiler@beta
 </TerminalBlock>
 
 编译器包含一个 Babel 插件，你可以在构建流水线中使用它来运行编译器。
@@ -224,6 +302,7 @@ module.exports = function () {
 
 `babel-plugin-react-compiler` 应该在其他 Babel 插件之前运行，因为编译器需要输入源信息进行声音分析。
 
+<<<<<<< HEAD
 React Compiler 与 React 19 RC 配合使用效果最佳。如果你无法升级，可以安装额外的 `react-compiler-runtime` 包来编译代码并在 19 之前的版本上运行。 但请注意，支持的最低版本是 17。
 
 <TerminalBlock>
@@ -247,6 +326,8 @@ module.exports = function () {
 };
 ```
 
+=======
+>>>>>>> 9467bc58868e66c53ca9385c8531dcf7b02178c2
 ### Vite {/*usage-with-vite*/}
 
 如果你使用 Vite，你可以将插件添加到 vite-plugin-react 中：
@@ -273,6 +354,7 @@ export default defineConfig(() => {
 
 ### Next.js {/*usage-with-nextjs*/}
 
+<<<<<<< HEAD
 Next.js 有一个实验性配置来启用 React 编译器。它会自动确保 Babel 已经配置了 `babel-plugin-react-compiler`。
 
 - 安装使用 React 19 RC 版本的 Next.js canary
@@ -303,6 +385,9 @@ module.exports = nextConfig;
 - Webpack (default)
 - Turbopack (通过 `--turbo` 接入)
 
+=======
+Please refer to the [Next.js docs](https://nextjs.org/docs/canary/app/api-reference/next-config-js/reactCompiler) for more information.
+>>>>>>> 9467bc58868e66c53ca9385c8531dcf7b02178c2
 
 ### Remix {/*usage-with-remix*/}
 安装 `vite-plugin-babel`, 并将编译器的 Babel 插件添加到其中：
@@ -335,6 +420,7 @@ export default defineConfig({
 
 ### Webpack {/*usage-with-webpack*/}
 
+<<<<<<< HEAD
 你可以为 React Compiler 创建自己的 loader，就像这样：
 
 ```js
@@ -369,6 +455,9 @@ function reactCompilerLoader(sourceCode, sourceMap) {
 
 module.exports = reactCompilerLoader;
 ```
+=======
+A community Webpack loader is [now available here](https://github.com/SukkaW/react-compiler-webpack).
+>>>>>>> 9467bc58868e66c53ca9385c8531dcf7b02178c2
 
 ### Expo {/*usage-with-expo*/}
 
@@ -392,11 +481,21 @@ React Native 通过 Metro 使用 Babel，因此请参考 [使用 Babel](#usage-w
 
 你也可以通过申请成为成员，在 React Compiler 工作组中提供反馈意见。请查看 [README](https://github.com/reactwg/react-compiler) 以获取更多加入详情。
 
-### `(0 , _c) is not a function` error {/*0--_c-is-not-a-function-error*/}
+### What does the compiler assume? {/*what-does-the-compiler-assume*/}
 
+<<<<<<< HEAD
 如果你没有使用 React 19 RC 及更高版本，则会发生这种情况。要解决此问题，请先 [将你的项目升级到 React 19 RC](https://react.dev/blog/2024/04/25/react-19-upgrade-guide)。
 
 如果你无法升级到 React 19，你可以尝试根据 [工作组](https://github.com/reactwg/react-compiler/discussions/6) 描述的缓存功能的用户空间实现。但是，请注意这并不建议，你应尽快升级到React 19。
+=======
+React Compiler assumes that your code:
+
+1. Is valid, semantic JavaScript.
+2. Tests that nullable/optional values and properties are defined before accessing them (for example, by enabling [`strictNullChecks`](https://www.typescriptlang.org/tsconfig/#strictNullChecks) if using TypeScript), i.e., `if (object.nullableProperty) { object.nullableProperty.foo }` or with optional-chaining `object.nullableProperty?.foo`.
+3. Follows the [Rules of React](https://react.dev/reference/rules).
+
+React Compiler can verify many of the Rules of React statically, and will safely skip compilation when it detects an error. To see the errors we recommend also installing [eslint-plugin-react-compiler](https://www.npmjs.com/package/eslint-plugin-react-compiler).
+>>>>>>> 9467bc58868e66c53ca9385c8531dcf7b02178c2
 
 ### 我如何知道我的组件已被优化？ {/*how-do-i-know-my-components-have-been-optimized*/}
 
