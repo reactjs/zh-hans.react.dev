@@ -12,8 +12,20 @@
       "skipBreadcrumb": true,
       "routes": [
         {
+<<<<<<< HEAD
           "title": "回顾 React Conf 2024",
           "titleForHomepage": "回顾 React Conf 2024",
+=======
+          "title": "React Compiler Beta Release and Roadmap",
+          "titleForHomepage": "React Compiler Beta Release and Roadmap",
+          "icon": "blog",
+          "date": "October 21, 2024",
+          "path": "/blog/2024/10/21/react-compiler-beta-release"
+        },
+        {
+          "title": "React Conf 2024 Recap",
+          "titleForHomepage": "React Conf 2024 Recap",
+>>>>>>> 1bda70ac459659d5ec916b6c130a3e27a8a49b0f
           "icon": "blog",
           "date": "May 22, 2024",
           "path": "/blog/2024/05/22/react-conf-2024-recap"
