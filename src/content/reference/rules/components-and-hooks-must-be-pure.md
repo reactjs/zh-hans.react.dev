@@ -194,7 +194,7 @@ function ProductDetailPage({ product }) {
 }
 ```
 
-要在渲染之外更新 `window.title` 的一个方法是 [将组件与 `window` 进行同步](/learn/synchronizing-with-effects)。
+在渲染之外更新 `document.title` 的一个方法是 [将组件与 `document` 进行同步](/learn/synchronizing-with-effects)。
 
 只要多次调用组件是安全的，并且不会影响其他组件的渲染，React 就不会在意组件是否在严格的函数式编程意义上是百分之百纯粹的。更重要的是，[组件必须是幂等的](/reference/rules/components-and-hooks-must-be-pure)。
 
