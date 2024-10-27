@@ -1,8 +1,8 @@
 ---
-title: "React Compiler Beta Release"
+title: "React Compiler 发布 Beta 版本"
 author: Lauren Tan
 date: 2024/10/21
-description: At React Conf 2024, we announced the experimental release of React Compiler, a build-time tool that optimizes your React app through automatic memoization. In this post, we want to share what's next for open source, and our progress on the compiler.
+description: 在 React Conf 2024 上，我们宣布了 React Compiler 的实验性版本，这是一个构建时工具，可通过自动记忆来优化 React 应用程序。在这篇文章中，我们想分享开源的下一步发展，以及我们在编译器方面的进展。
 
 ---
 
@@ -12,115 +12,115 @@ October 21, 2024 by [Lauren Tan](https://twitter.com/potetotes).
 
 <Intro>
 
-The React team is excited to share new updates:
+React 团队很高兴分享新的内容：
 
 </Intro>
 
-1. We're publishing React Compiler Beta today, so that early adopters and library maintainers can try it and provide feedback.
-2. We're officially supporting React Compiler for apps on React 17+, through an optional `react-compiler-runtime` package.
-3. We're opening up public membership of the [React Compiler Working Group](https://github.com/reactwg/react-compiler) to prepare the community for gradual adoption of the compiler.
+1. 今天我们发布了 React Compiler Beta 版本，以便早期采用者和库维护者可以尝试它并提供反馈。
+2. 我们通过可选的 `react-compiler-runtime` 包来正式支持在 React 17+ 上的应用程序使用 React Compiler。
+3. 我们正在开放 [React Compiler 工作组](https://github.com/reactwg/react-compiler) 的公共成员资格，为社区逐步采用该编译器做好准备。
 
 ---
 
-At [React Conf 2024](/blog/2024/05/22/react-conf-2024-recap), we announced the experimental release of React Compiler, a build-time tool that optimizes your React app through automatic memoization. [You can find an introduction to React Compiler here](/learn/react-compiler).
+在 [React Conf 2024](/blog/2024/05/22/react-conf-2024-recap) 上，我们宣布了 React Compiler 的实验版本，这是一个构建时工具，可通过自动记忆来优化 React 应用程序。[您可以在这里找到对 React Compiler 的介绍](/learn/react-compiler)。
 
-Since the first release, we've fixed numerous bugs reported by the React community, received several high quality bug fixes and contributions[^1] to the compiler, made the compiler more resilient to the broad diversity of JavaScript patterns, and have continued to roll out the compiler more widely at Meta.
+自第一个版本以来，我们修复了 React 社区报告的许多错误, 收到了多个高质量的错误修复和对编译器的贡献 [^1]，使编译器能够更好地适应多种 JavaScript 模式，并继续在 Meta 上更广泛地推出编译器。
 
-In this post, we want to share what's next for React Compiler.
+在这篇文章中，我们想分享 React Compiler 的下一步发展。
 
-## Try React Compiler Beta today {/*try-react-compiler-beta-today*/}
+## 从今天起开始尝试 React Compiler Beta 版本吧 {/*try-react-compiler-beta-today*/}
 
-At [React India 2024](https://www.youtube.com/watch?v=qd5yk2gxbtg), we shared an update on React Compiler. Today, we are excited to announce a new Beta release of React Compiler and ESLint plugin. New betas are published to npm using the `@beta` tag.
+在 [React India 2024](https://www.youtube.com/watch?v=qd5yk2gxbtg) 上，我们分享了 React Compiler 的更新。今天，我们很高兴地宣布 React Compiler 和 ESLint 插件的新 Beta 版本。新的测试版使用 `@beta` 标签发布到 npm。
 
-To install React Compiler Beta:
+使用下面的方式来安装 React Compiler Beta 版本：
 
 <TerminalBlock>
 npm install -D babel-plugin-react-compiler@beta eslint-plugin-react-compiler@beta
 </TerminalBlock>
 
-Or, if you're using Yarn:
+或者使用 Yarn：
 
 <TerminalBlock>
 yarn add -D babel-plugin-react-compiler@beta eslint-plugin-react-compiler@beta
 </TerminalBlock>
 
-You can watch [Sathya Gunasekaran's](https://twitter.com/_gsathya) talk at React India here:
+你可以在此处观看 [Sathya Gunasekaran](https://twitter.com/_gsathya) 在 React India 的演讲：
 
 <YouTubeIframe src="https://www.youtube.com/embed/qd5yk2gxbtg" />
 
-## We recommend everyone use the React Compiler linter today {/*we-recommend-everyone-use-the-react-compiler-linter-today*/}
+## 从今天起我们建议大家使用 React Compiler linter {/*we-recommend-everyone-use-the-react-compiler-linter-today*/}
 
-React Compiler’s ESLint plugin helps developers proactively identify and correct [Rules of React](/reference/rules) violations. **We strongly recommend everyone use the linter today**. The linter does not require that you have the compiler installed, so you can use it independently, even if you are not ready to try out the compiler.
+React Compiler 的 ESLint 插件可帮助开发人员主动识别和纠正对于 [React 规则](/reference/rules) 的违规行为。**我们强烈建议大家从今天开始就使用 linter**。linter 不需要安装编译器，因此即使你还没有准备好尝试编译器，也可以独立使用它。
 
-To install the linter only:
+安装 linter 只需要执行：
 
 <TerminalBlock>
 npm install -D eslint-plugin-react-compiler@beta
 </TerminalBlock>
 
-Or, if you're using Yarn:
+或者使用 Yarn：
 
 <TerminalBlock>
 yarn add -D eslint-plugin-react-compiler@beta
 </TerminalBlock>
 
-After installation you can enable the linter by [adding it to your ESLint config](/learn/react-compiler#installing-eslint-plugin-react-compiler). Using the linter helps identify Rules of React breakages, making it easier to adopt the compiler when it's fully released.
+安装后你可以通过[将其添加到 ESLint 配置](/learn/react-compiler#installing-eslint-plugin-react-compiler) 来启用 linter。使用 linter 有助于发现破坏 React 规则的地方，从而在编译器完全发布后更容易采用它。
 
-## Backwards Compatibility {/*backwards-compatibility*/}
+## 向后兼容性 {/*backwards-compatibility*/}
 
-React Compiler produces code that depends on runtime APIs added in React 19, but we've since added support for the compiler to also work with React 17 and 18. If you are not on React 19 yet, in the Beta release you can now try out React Compiler by specifying a minimum `target` in your compiler config, and adding `react-compiler-runtime` as a dependency. [You can find docs on this here](/learn/react-compiler#using-react-compiler-with-react-17-or-18).
+React Compiler 生成的代码依赖于 React 19 中添加的运行时 API，但我们后来添加了对 React 17 和 18 的支持。如果你还没有使用 React 19，在 Beta 版本中可以通过在 compiler 配置中设置 `target` 来使用 React Compiler，并添加 `react-compiler-runtime` 作为依赖项。[你可以在这里找到相关文档](/learn/react-compiler#using-react-compiler-with-react-17-or-18)。
 
-## Using React Compiler in libraries {/*using-react-compiler-in-libraries*/}
+## 在库中使用 React Compiler {/*using-react-compiler-in-libraries*/}
 
-Our initial release was focused on identifying major issues with using the compiler in applications. We've gotten great feedback and have substantially improved the compiler since then. We're now ready for broad feedback from the community, and for library authors to try out the compiler to improve performance and the developer experience of maintaining your library.
+我们的初始版本侧重于识别在应用程序中使用编译器的主要问题。从那时起我们得到了很好的反馈，并对编译器进行了实质性改进。我们现在已准备好接受社区的广泛反馈，并让库作者尝试编译器以提高性能和维护体验。
 
-React Compiler can also be used to compile libraries. Because React Compiler needs to run on the original source code prior to any code transformations, it is not possible for an application's build pipeline to compile the libraries they use. Hence, our recommendation is for library maintainers to independently compile and test their libraries with the compiler, and ship compiled code to npm.
+React Compiler 还可以用来编译库。由于 React Compiler 需要在代码转换之前的源码上运行，因此应用程序无法使用 pipeline 来编译所使用的库。因此我们建议库维护人员使用编译器独立编译和测试他们的库，并将编译后的代码发布到 npm。
 
-Because your code is pre-compiled, users of your library will not need to have the compiler enabled in order to benefit from the automatic memoization applied to your library. If your library targets apps not yet on React 19, specify a minimum `target` and add `react-compiler-runtime` as a direct dependency. The runtime package will use the correct implementation of APIs depending on the application's version, and polyfill the missing APIs if necessary.
+由于库的代码是预编译的，因此用户无需启用 Compiler 即可从编译器的自动记忆化中受益。如果库的 target 不是 React 19，请指定一个最小的 [`target` 并且将 `react-compiler-runtime` 添加为直接依赖](#using-react-compiler-with-react-17-or-18)。这个运行时包将根据应用程序的版本使用正确的 API 实现，并在必要时填充缺失的 API。
 
-[You can find more docs on this here.](/learn/react-compiler#using-the-compiler-on-libraries)
+[您可以在此处找到更多相关文档。](/learn/react-compiler#using-the-compiler-on-libraries)
 
-## Opening up React Compiler Working Group to everyone {/*opening-up-react-compiler-working-group-to-everyone*/}
+## 向所有人开放 React Compiler 工作组 {/*opening-up-react-compiler-working-group-to-everyone*/}
 
-We previously announced the invite-only [React Compiler Working Group](https://github.com/reactwg/react-compiler) at React Conf to provide feedback, ask questions, and collaborate on the compiler's experimental release.
+我们之前在 React Conf 上宣布成立仅限邀请的 [React Compiler 工作组](https://github.com/reactwg/react-compiler) 以提供反馈、提出问题并就编译器的实验版本进行协作。
 
-From today, together with the Beta release of React Compiler, we are opening up Working Group membership to everyone. The goal of the React Compiler Working Group is to prepare the ecosystem for a smooth, gradual adoption of React Compiler by existing applications and libraries. Please continue to file bug reports in the [React repo](https://github.com/facebook/react), but please leave feedback, ask questions, or share ideas in the [Working Group discussion forum](https://github.com/reactwg/react-compiler/discussions).
+从今天开始，随着 React Compiler 的测试版发布，我们向所有人开放工作组成员资格。React Compiler 工作组的目标是为生态系统做好准备，以便现有应用程序和库顺利、逐步采用 React Compiler。请继续在 [React 仓库中](https://github.com/facebook/react) 提交错误报告，但是在 [工作组论坛](https://github.com/reactwg/react-compiler/discussions) 中留下反馈、提出问题或分享想法。
 
-The core team will also use the discussions repo to share our research findings. As the Stable Release gets closer, any important information will also be posted on this forum.
+核心团队还将使用工作组论坛来分享我们的研究成果。随着稳定版本的临近，任何重要信息也将发布在该论坛上。
 
-## React Compiler at Meta {/*react-compiler-at-meta*/}
+## React Compiler 在 Meta {/*react-compiler-at-meta*/}
 
-At [React Conf](/blog/2024/05/22/react-conf-2024-recap), we shared that our rollout of the compiler on Quest Store and Instagram were successful. Since then, we've deployed React Compiler across several more major web apps at Meta, including [Facebook](https://www.facebook.com) and [Threads](https://www.threads.net). That means if you've used any of these apps recently, you may have had your experience powered by the compiler. We were able to onboard these apps onto the compiler with few code changes required, in a monorepo with more than 100,000 React components.
+在 [React Conf](/blog/2024/05/22/react-conf-2024-recap) 上，我们分享了在 Quest Store 和 Instagram 上成功推出编译器的消息。从那时起，我们在包括 [Facebook](https://www.facebook.com) 和 [Threads](https://www.threads.net) 的几个 Meta 主要 Web 应用程序中部署了 React Compiler。这意味着如果你最近使用过这些应用程序中的任何一个，你的体验可能是由编译器提供支持的。我们能够在包含超过 100,000 个 React 组件的 monorepo 中将这些应用程序加载到编译器上，只需进行少量代码更改。
 
-We've seen notable performance improvements across all of these apps. As we've rolled out, we're continuing to see results on the order of [the wins we shared previously at ReactConf](https://youtu.be/lyEKhv8-3n0?t=3223). These apps have already been heavily hand tuned and optimized by Meta engineers and React experts over the years, so even improvements on the order of a few percent are a huge win for us.
+我们发现所有这些应用程序的性能都有显着提高。随着编译器的推出，我们将继续看到 [之前在 ReactConf 上分享的成功经验](https://youtu.be/lyEKhv8-3n0?t=3223) 的结果。多年来 Meta 工程师和 React 专家对这些应用程序经过了大量手工调整和优化，因此即使是几个百分点的改进对我们来说也是一个巨大的胜利。
 
-We also expected developer productivity wins from React Compiler. To measure this, we collaborated with our data science partners at Meta[^2] to conduct a thorough statistical analysis of the impact of manual memoization on productivity. Before rolling out the compiler at Meta, we discovered that only about 8% of React pull requests used manual memoization and that these pull requests took 31-46% longer to author[^3]. This confirmed our intuition that manual memoization introduces cognitive overhead, and we anticipate that React Compiler will lead to more efficient code authoring and review. Notably, React Compiler also ensures that *all* code is memoized by default, not just the (in our case) 8% where developers explicitly apply memoization.
+我们还预计 React Compiler 会提高开发人员的生产力。为了衡量这一点，我们与 Meta[^2] 的数据科学合作伙伴合作，对手动记忆化对生产力的影响进行了彻底的统计分析。在 Meta 推出编译器之前，我们发现只有大约 8% 的 React PR 使用手动记忆化，并且这些 PR 的编写时间比其他 PR 增加了 31-46%[^3]。这证实了我们的直觉，即手动记忆化会带来认知开销，我们预计 React Compiler 将带来更高效的代码创作和审查。值得注意的是，React Compiler 还确保默认情况下记忆 **所有** 代码，而不仅仅是（在我们的例子中）开发人员明确记忆化的 8%。
 
-## Roadmap to Stable {/*roadmap-to-stable*/}
+## 稳定版本路线图 {/*roadmap-to-stable*/}
 
-*This is not a final roadmap, and is subject to change.*
+**这不是最终的路线图，可能会发生变化。**
 
-We intend to ship a Release Candidate of the compiler in the near future following the Beta release, when the majority of apps and libraries that follow the Rules of React have been proven to work well with the compiler. After a period of final feedback from the community, we plan on a Stable Release for the compiler. The Stable Release will mark the beginning of a new foundation for React, and all apps and libraries will be strongly recommended to use the compiler and ESLint plugin.
+我们打算在 Beta 版本发布后不久发布编译器的候选版本，届时大多数遵循 React 规则的应用程序和库已被证明可以与编译器良好配合。经过一段时间的社区最终反馈后，我们计划为编译器提供稳定版本。稳定版本将标志着 React 新基础的开始，强烈建议所有应用程序和库使用编译器和 ESLint 插件。
 
-* ✅ Experimental: Released at React Conf 2024, primarily for feedback from early adopters.
-* ✅ Public Beta: Available today, for feedback from the wider community.
-* 🚧 Release Candidate (RC): React Compiler works for the majority of rule-following apps and libraries without issue.
-* 🚧 General Availability: After final feedback period from the community.
+* ✅ 实验性（Experimental）：在 React Conf 2024 上发布，主要是为了获得早期采用者的反馈。 
+* ✅ 公开测试版（Public Beta）：现已推出，以获取更广泛社区的反馈。
+* 🚧 候选发布版（RC）： React Compiler 适用于大多数遵循规则的应用程序和库，不会引入任何问题。
+* 🚧 普遍适用（General Availability）：在社区的最终反馈期之后。
 
-These releases also include the compiler's ESLint plugin, which surfaces diagnostics statically analyzed by the compiler. We plan to combine the existing eslint-plugin-react-hooks plugin with the compiler's ESLint plugin, so only one plugin needs to be installed.
+这些版本还包括编译器的 ESLint 插件，该插件提供编译器静态分析的诊断信息。我们计划将现有的 eslint-plugin-react-hooks 插件与编译器的 ESLint 插件结合起来，因此最终只需要安装一个插件。
 
-Post-Stable, we plan to add more compiler optimizations and improvements. This includes both continual improvements to automatic memoization, and new optimizations altogether, with minimal to no change of product code. Upgrading to each new release of the compiler is aimed to be straightforward, and each upgrade will continue to improve performance and add better handling of diverse JavaScript and React patterns.
+稳定后，我们计划在少改动甚至不改动产品代码的情况下添加更多对编译器的优化和改进，这包括了对自动记忆化的持续优化和新的整体优化。升级到每个新版本的编译器都是为了更加简单明了，每次升级都将继续提高性能并更好地处理不同的 JavaScript 和 React 模式。
 
-Throughout this process, we also plan to prototype an IDE extension for React. It is still very early in research, so we expect to be able to share more of our findings with you in a future React Labs blog post.
-
----
-
-Thanks to [Sathya Gunasekaran](https://twitter.com/_gsathya), [Joe Savona](https://twitter.com/en_JS), [Ricky Hanlon](https://twitter.com/rickhanlonii), [Alex Taylor](https://github.com/alexmckenley), [Jason Bonta](https://twitter.com/someextent), and [Eli White](https://twitter.com/Eli_White) for reviewing and editing this post.
+在整个过程中，我们还计划为 React 制作一个 IDE 扩展原型。研究还处于早期阶段，因此我们希望能够在未来的 React Labs 博客文章中与您分享更多我们的发现。
 
 ---
 
-[^1]: Thanks [@nikeee](https://github.com/facebook/react/pulls?q=is%3Apr+author%3Anikeee), [@henryqdineen](https://github.com/facebook/react/pulls?q=is%3Apr+author%3Ahenryqdineen), [@TrickyPi](https://github.com/facebook/react/pulls?q=is%3Apr+author%3ATrickyPi), and several others for their contributions to the compiler.
+感谢 [Sathya Gunasekaran](https://twitter.com/_gsathya)、[Joe Savona](https://twitter.com/en_JS)、[Ricky Hanlon](https://twitter.com/rickhanlonii)、[Alex Taylor](https://github.com/alexmckenley)、[Jason Bonta](https://twitter.com/someextent) 和 [Eli White](https://twitter.com/Eli_White) 对本篇博客的审阅和编辑。
 
-[^2]: Thanks [Vaishali Garg](https://www.linkedin.com/in/vaishaligarg09) for leading this study on React Compiler at Meta, and for reviewing this post.
+---
 
-[^3]: After controlling on author tenure, diff length/complexity, and other potential confounding factors.
+[^1]: 感谢 [@nikeee](https://github.com/facebook/react/pulls?q=is%3Apr+author%3Anikeee)、[@henryqdineen](https://github.com/facebook/react/pulls?q=is%3Apr+author%3Ahenryqdineen)、[@TrickyPi](https://github.com/facebook/react/pulls?q=is%3Apr+author%3ATrickyPi) 以及其他为编译器做出贡献的人。
+
+[^2]: 感谢 [Vaishali Garg](https://www.linkedin.com/in/vaishaligarg09) 在 Meta 领导这项关于 React 编译器的研究，并审阅这篇文章。
+
+[^3]: 在平衡了作者任期、代码 diff 长度和复杂性以及其他潜在的混杂因素之后。

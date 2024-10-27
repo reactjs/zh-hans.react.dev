@@ -10,17 +10,13 @@ title: React Blog
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<<<<<<< HEAD
-<BlogCard title="回顾 React Conf 2024" date="May 22, 2024" url="/blog/2024/05/22/react-conf-2024-recap">
-=======
-<BlogCard title="React Compiler Beta Release" date="October 21, 2024" url="/blog/2024/10/21/react-compiler-beta-release">
+<BlogCard title="React Compiler 发布 Beta 版本" date="October 21, 2024" url="/blog/2024/10/21/react-compiler-beta-release">
 
-We announced an experimental release of React Compiler at React Conf 2024. We've made a lot of progress since then, and in this post we want to share what's next for React Compiler ...
+我们在 React Conf 2024 上宣布了 React Compiler 的实验性版本。从那时起我们已经取得了很多进展，在这篇文章中，我们将分享 React Compiler 下一步要做的事情……
 
 </BlogCard>
 
-<BlogCard title="React Conf 2024 Recap" date="May 22, 2024" url="/blog/2024/05/22/react-conf-2024-recap">
->>>>>>> eb174dd932613fb0784a78ee2d9360554538cc08
+<BlogCard title="回顾 React Conf 2024" date="May 22, 2024" url="/blog/2024/05/22/react-conf-2024-recap">
 
 上周我们在内华达州亨德森举办了为期两天的 React Conf 2024 大会，有 700 多名与会者亲临现场，讨论 UI 工程领域的最新进展。这是我们自 2019 年以来首次举办线下会议，我们很高兴能够再次将社区团结在一起……
 
