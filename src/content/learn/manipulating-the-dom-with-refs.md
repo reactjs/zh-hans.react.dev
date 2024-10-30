@@ -402,7 +402,7 @@ export default function MyForm() {
 
 </Sandpack>
 
-为了帮助您注意到这个问题，React 还会向控制台打印一条错误消息：
+为了帮助你注意到这个问题，React 还会向控制台打印一条错误消息：
 
 <ConsoleBlock level="error">
 
@@ -717,7 +717,7 @@ button {
 - Refs 是一个通用概念，但大多数情况下你会使用它们来保存 DOM 元素。
 - 你通过传递 `<div ref={myRef}>` 指示 React 将 DOM 节点放入 `myRef.current`。
 - 通常，你会将 refs 用于非破坏性操作，例如聚焦、滚动或测量 DOM 元素。
-- 默认情况下，组件不暴露其 DOM 节点。 您可以通过使用 `forwardRef` 并将第二个 `ref` 参数传递给特定节点来暴露 DOM 节点。
+- 默认情况下，组件不暴露其 DOM 节点。 你可以通过使用 `forwardRef` 并将第二个 `ref` 参数传递给特定节点来暴露 DOM 节点。
 - 避免更改由 React 管理的 DOM 节点。
 - 如果你确实修改了 React 管理的 DOM 节点，请修改 React 没有理由更新的部分。
 
@@ -766,7 +766,7 @@ button { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-对于额外的挑战，即使用户右键单击视频并使用内置浏览器媒体控件播放，也要使“播放”按钮与视频是否正在播放同步。 您可能需要在视频中监听 `onPlay` 和 `onPause` 才能做到这一点。
+对于额外的挑战，即使用户右键单击视频并使用内置浏览器媒体控件播放，也要使“播放”按钮与视频是否正在播放同步。 你可能需要在视频中监听 `onPlay` 和 `onPause` 才能做到这一点。
 
 <Solution>
 
@@ -819,7 +819,7 @@ button { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-为了处理内置浏览器控件，您可以将 `onPlay` 和 `onPause` 处理程序添加到 `<video>` 元素，并调用它们的 `setIsPlaying`。 这样，如果用户使用浏览器控件播放视频，状态将相应调整。
+为了处理内置浏览器控件，你可以将 `onPlay` 和 `onPause` 处理程序添加到 `<video>` 元素，并调用它们的 `setIsPlaying`。 这样，如果用户使用浏览器控件播放视频，状态将相应调整。
 
 </Solution>
 

@@ -22,7 +22,7 @@ React 团队很高兴分享新的内容：
 
 ---
 
-在 [React Conf 2024](/blog/2024/05/22/react-conf-2024-recap) 上，我们宣布了 React Compiler 的实验版本，这是一个构建时工具，可通过自动记忆来优化 React 应用程序。[您可以在这里找到对 React Compiler 的介绍](/learn/react-compiler)。
+在 [React Conf 2024](/blog/2024/05/22/react-conf-2024-recap) 上，我们宣布了 React Compiler 的实验版本，这是一个构建时工具，可通过自动记忆来优化 React 应用程序。[你可以在这里找到对 React Compiler 的介绍](/learn/react-compiler)。
 
 自第一个版本以来，我们修复了 React 社区报告的许多错误, 收到了多个高质量的错误修复和对编译器的贡献 [^1]，使编译器能够更好地适应多种 JavaScript 模式，并继续在 Meta 上更广泛地推出编译器。
 
@@ -78,7 +78,7 @@ React Compiler 还可以用来编译库。由于 React Compiler 需要在代码�
 
 由于库的代码是预编译的，因此用户无需启用 Compiler 即可从编译器的自动记忆化中受益。如果库的 target 不是 React 19，请指定一个最小的 [`target` 并且将 `react-compiler-runtime` 添加为直接依赖](#using-react-compiler-with-react-17-or-18)。这个运行时包将根据应用程序的版本使用正确的 API 实现，并在必要时填充缺失的 API。
 
-[您可以在此处找到更多相关文档。](/learn/react-compiler#using-the-compiler-on-libraries)
+[你可以在此处找到更多相关文档。](/learn/react-compiler#using-the-compiler-on-libraries)
 
 ## 向所有人开放 React Compiler 工作组 {/*opening-up-react-compiler-working-group-to-everyone*/}
 
@@ -111,7 +111,7 @@ React Compiler 还可以用来编译库。由于 React Compiler 需要在代码�
 
 稳定后，我们计划在少改动甚至不改动产品代码的情况下添加更多对编译器的优化和改进，这包括了对自动记忆化的持续优化和新的整体优化。升级到每个新版本的编译器都是为了更加简单明了，每次升级都将继续提高性能并更好地处理不同的 JavaScript 和 React 模式。
 
-在整个过程中，我们还计划为 React 制作一个 IDE 扩展原型。研究还处于早期阶段，因此我们希望能够在未来的 React Labs 博客文章中与您分享更多我们的发现。
+在整个过程中，我们还计划为 React 制作一个 IDE 扩展原型。研究还处于早期阶段，因此我们希望能够在未来的 React Labs 博客文章中与你分享更多我们的发现。
 
 ---
 
