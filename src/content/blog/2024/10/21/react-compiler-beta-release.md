@@ -2,7 +2,7 @@
 title: "React Compiler 发布 Beta 版本"
 author: Lauren Tan
 date: 2024/10/21
-description: 在 React Conf 2024 上，我们宣布了 React Compiler 的实验性版本，这是一个构建时工具，可通过自动记忆来优化 React 应用程序。在这篇文章中，我们想分享开源的下一步发展，以及我们在编译器方面的进展。
+description: 在 React Conf 2024 上，我们宣布了 React Compiler 的实验性版本，这是一个构建时工具，可通过自动记忆化来优化 React 应用程序。在这篇文章中，我们想分享开源的下一步发展，以及我们在编译器方面的进展。
 
 ---
 
@@ -22,7 +22,7 @@ React 团队很高兴分享新的内容：
 
 ---
 
-在 [React Conf 2024](/blog/2024/05/22/react-conf-2024-recap) 上，我们宣布了 React Compiler 的实验版本，这是一个构建时工具，可通过自动记忆来优化 React 应用程序。[您可以在这里找到对 React Compiler 的介绍](/learn/react-compiler)。
+在 [React Conf 2024](/blog/2024/05/22/react-conf-2024-recap) 上，我们宣布了 React Compiler 的实验版本，这是一个构建时工具，可通过自动记忆化来优化 React 应用程序。[你可以在这里找到对 React Compiler 的介绍](/learn/react-compiler)。
 
 自第一个版本以来，我们修复了 React 社区报告的许多错误, 收到了多个高质量的错误修复和对编译器的贡献 [^1]，使编译器能够更好地适应多种 JavaScript 模式，并继续在 Meta 上更广泛地推出编译器。
 
@@ -78,11 +78,11 @@ React Compiler 还可以用来编译库。由于 React Compiler 需要在代码�
 
 由于库的代码是预编译的，因此用户无需启用 Compiler 即可从编译器的自动记忆化中受益。如果库的 target 不是 React 19，请指定一个最小的 [`target` 并且将 `react-compiler-runtime` 添加为直接依赖](#using-react-compiler-with-react-17-or-18)。这个运行时包将根据应用程序的版本使用正确的 API 实现，并在必要时填充缺失的 API。
 
-[您可以在此处找到更多相关文档。](/learn/react-compiler#using-the-compiler-on-libraries)
+[你可以在此处找到更多相关文档。](/learn/react-compiler#using-the-compiler-on-libraries)
 
 ## 向所有人开放 React Compiler 工作组 {/*opening-up-react-compiler-working-group-to-everyone*/}
 
-我们之前在 React Conf 上宣布成立仅限邀请的 [React Compiler 工作组](https://github.com/reactwg/react-compiler) 以提供反馈、提出问题并就编译器的实验版本进行协作。
+我们之前在 React Conf 上宣布成立邀请制的 [React Compiler 工作组](https://github.com/reactwg/react-compiler) 以提供反馈、提出问题并就编译器的实验版本进行协作。
 
 从今天开始，随着 React Compiler 的测试版发布，我们向所有人开放工作组成员资格。React Compiler 工作组的目标是为生态系统做好准备，以便现有应用程序和库顺利、逐步采用 React Compiler。请继续在 [React 仓库中](https://github.com/facebook/react) 提交错误报告，但是在 [工作组论坛](https://github.com/reactwg/react-compiler/discussions) 中留下反馈、提出问题或分享想法。
 
@@ -90,11 +90,11 @@ React Compiler 还可以用来编译库。由于 React Compiler 需要在代码�
 
 ## React Compiler 在 Meta {/*react-compiler-at-meta*/}
 
-在 [React Conf](/blog/2024/05/22/react-conf-2024-recap) 上，我们分享了在 Quest Store 和 Instagram 上成功推出编译器的消息。从那时起，我们在包括 [Facebook](https://www.facebook.com) 和 [Threads](https://www.threads.net) 的几个 Meta 主要 Web 应用程序中部署了 React Compiler。这意味着如果你最近使用过这些应用程序中的任何一个，你的体验可能是由编译器提供支持的。我们能够在包含超过 100,000 个 React 组件的 monorepo 中将这些应用程序加载到编译器上，只需进行少量代码更改。
+在 [React Conf](/blog/2024/05/22/react-conf-2024-recap) 上，我们分享了在 Quest Store 和 Instagram 上成功推出编译器的消息。从那时起，我们在包括 [Facebook](https://www.facebook.com) 和 [Threads](https://www.threads.net) 的几个主要 Web 应用程序中部署了 React Compiler。这意味着如果你最近使用过这些应用程序中的任何一个，你的体验可能是由编译器提供支持的。我们能够在包含超过 100,000 个 React 组件的 monorepo 中将这些应用程序加载到编译器上，只需进行少量代码更改。
 
 我们发现所有这些应用程序的性能都有显着提高。随着编译器的推出，我们将继续看到 [之前在 ReactConf 上分享的成功经验](https://youtu.be/lyEKhv8-3n0?t=3223) 的结果。多年来 Meta 工程师和 React 专家对这些应用程序经过了大量手工调整和优化，因此即使是几个百分点的改进对我们来说也是一个巨大的胜利。
 
-我们还预计 React Compiler 会提高开发人员的生产力。为了衡量这一点，我们与 Meta[^2] 的数据科学合作伙伴合作，对手动记忆化对生产力的影响进行了彻底的统计分析。在 Meta 推出编译器之前，我们发现只有大约 8% 的 React PR 使用手动记忆化，并且这些 PR 的编写时间比其他 PR 增加了 31-46%[^3]。这证实了我们的直觉，即手动记忆化会带来认知开销，我们预计 React Compiler 将带来更高效的代码创作和审查。值得注意的是，React Compiler 还确保默认情况下记忆 **所有** 代码，而不仅仅是（在我们的例子中）开发人员明确记忆化的 8%。
+我们还预计 React Compiler 会提高开发人员的生产力。为了衡量这一点，我们与 Meta[^2] 的数据科学合作伙伴合作，将手动记忆化对生产力的影响进行了彻底的统计分析。在 Meta 推出编译器之前，我们发现只有大约 8% 的 React PR 使用手动记忆化，并且这些 PR 的编写时间比其他 PR 增加了 31-46%[^3]。这证实了我们的直觉，即手动记忆化会带来认知开销，我们预计 React Compiler 将带来更高效的代码创作和审查。值得注意的是，React Compiler 还确保默认情况下记忆 **所有** 代码，而不仅仅是（在我们的例子中）开发人员明确记忆化的 8%。
 
 ## 稳定版本路线图 {/*roadmap-to-stable*/}
 
@@ -105,13 +105,13 @@ React Compiler 还可以用来编译库。由于 React Compiler 需要在代码�
 * ✅ 实验性（Experimental）：在 React Conf 2024 上发布，主要是为了获得早期采用者的反馈。 
 * ✅ 公开测试版（Public Beta）：现已推出，以获取更广泛社区的反馈。
 * 🚧 候选发布版（RC）： React Compiler 适用于大多数遵循规则的应用程序和库，不会引入任何问题。
-* 🚧 普遍适用（General Availability）：在社区的最终反馈期之后。
+* 🚧 普遍适用（General Availability）：在社区的最终反馈期结束后。
 
 这些版本还包括编译器的 ESLint 插件，该插件提供编译器静态分析的诊断信息。我们计划将现有的 eslint-plugin-react-hooks 插件与编译器的 ESLint 插件结合起来，因此最终只需要安装一个插件。
 
 稳定后，我们计划在少改动甚至不改动产品代码的情况下添加更多对编译器的优化和改进，这包括了对自动记忆化的持续优化和新的整体优化。升级到每个新版本的编译器都是为了更加简单明了，每次升级都将继续提高性能并更好地处理不同的 JavaScript 和 React 模式。
 
-在整个过程中，我们还计划为 React 制作一个 IDE 扩展原型。研究还处于早期阶段，因此我们希望能够在未来的 React Labs 博客文章中与您分享更多我们的发现。
+在整个过程中，我们还计划为 React 制作一个 IDE 扩展原型。研究还处于早期阶段，因此我们希望能够在未来的 React Labs 博客文章中与你分享更多我们的发现。
 
 ---
 

@@ -402,7 +402,7 @@ const [status, setStatus] = useState('typing'); // 'typing', 'submitting', or 's
 
 #### 通过 reducer 来减少“不可能” state {/*eliminating-impossible-states-with-a-reducer*/}
 
-尽管这三个变量对于表示这个表单的状态来说已经足够好了，仍然是有一些中间状态并不是完全有意义的。例如一个非空的 `error` 当 `status` 的值为 `success` 时没有意义。为了更精确地模块化状态，你可以 [将状态提取到一个 reducer 中](/learn/extracting-state-logic-into-a-reducer)。Reducer 可以让您合并多个状态变量到一个对象中并巩固所有相关的逻辑！
+尽管这三个变量对于表示这个表单的状态来说已经足够好了，仍然是有一些中间状态并不是完全有意义的。例如一个非空的 `error` 当 `status` 的值为 `success` 时没有意义。为了更精确地模块化状态，你可以 [将状态提取到一个 reducer 中](/learn/extracting-state-logic-into-a-reducer)。Reducer 可以让你合并多个状态变量到一个对象中并巩固所有相关的逻辑！
 
 </DeepDive>
 

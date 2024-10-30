@@ -20,7 +20,7 @@ translators:
 
 ## 构建 state 的原则 {/*principles-for-structuring-state*/}
 
-当你编写一个存有 state 的组件时，你需要选择使用多少个 state 变量以及它们都是怎样的数据格式。尽管选择次优的 state 结构下也可以编写正确的程序，但有几个原则可以指导您做出更好的决策：
+当你编写一个存有 state 的组件时，你需要选择使用多少个 state 变量以及它们都是怎样的数据格式。尽管选择次优的 state 结构下也可以编写正确的程序，但有几个原则可以指导你做出更好的决策：
 
 1. **合并关联的 state**。如果你总是同时更新两个或更多的 state 变量，请考虑将它们合并为一个单独的 state 变量。
 2. **避免互相矛盾的 state**。当 state 结构中存在多个相互矛盾或“不一致”的 state 时，你就可能为此会留下隐患。应尽量避免这种情况。
@@ -1122,7 +1122,7 @@ export const initialTravelPlan = {
 
 **现在 state 已经“扁平化”（也称为“规范化”），更新嵌套项会变得更加容易。**
 
-现在要删除一个地点，您只需要更新两个 state 级别：
+现在要删除一个地点，你只需要更新两个 state 级别：
 
 - 其 **父级** 地点的更新版本应该从其 `childIds` 数组中排除已删除的 ID。
 - 其根级“表”对象的更新版本应包括父级地点的更新版本。
@@ -1466,7 +1466,7 @@ button { margin: 10px; }
 
 #### 改善内存使用 {/*improving-memory-usage*/}
 
-理想情况下，您还应该从“表”对象中删除已删除的项目（以及它们的子项！）以改善内存使用。还可以 [使用 Immer](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) 使更新逻辑更加简洁。
+理想情况下，你还应该从“表”对象中删除已删除的项目（以及它们的子项！）以改善内存使用。还可以 [使用 Immer](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) 使更新逻辑更加简洁。
 
 <Sandpack>
 
@@ -1826,8 +1826,8 @@ button { margin: 10px; }
 * 如果两个 state 变量总是一起更新，请考虑将它们合并为一个。
 * 仔细选择你的 state 变量，以避免创建“极难处理”的 state。
 * 用一种减少出错更新的机会的方式来构建你的 state。
-* 避免冗余和重复的 state，这样您就不需要保持同步。
-* 除非您特别想防止更新，否则不要将 props **放入** state 中。 
+* 避免冗余和重复的 state，这样你就不需要保持同步。
+* 除非你特别想防止更新，否则不要将 props **放入** state 中。 
 * 对于选择类型的 UI 模式，请在 state 中保存 ID 或索引而不是对象本身。
 * 如果深度嵌套 state 更新很复杂，请尝试将其展开扁平化。
 
@@ -1837,7 +1837,7 @@ button { margin: 10px; }
 
 #### 修复一个未更新的组件 {/*fix-a-component-thats-not-updating*/}
 
-这个 `Clock` 组件接收两个属性：`color` 和 `time`。当您在选择框中选择不同的颜色时，`Clock` 组件将从其父组件接收到一个不同的 `color` 属性。然而，由于某种原因，显示的颜色没有更新。为什么？请修复这个问题。
+这个 `Clock` 组件接收两个属性：`color` 和 `time`。当你在选择框中选择不同的颜色时，`Clock` 组件将从其父组件接收到一个不同的 `color` 属性。然而，由于某种原因，显示的颜色没有更新。为什么？请修复这个问题。
 
 <Sandpack>
 
@@ -2284,7 +2284,7 @@ ul, li { margin: 0; padding: 0; }
 
 #### 修复消失的选项 {/*fix-the-disappearing-selection*/}
 
-有一个 `letters` 列表在 state 中。当你悬停或聚焦到特定的信件时，它会被突出显示。当前突出显示的信件存储在 `highlightedLetter` state 变量中。您可以“Star”和“Unstar”单个信件，这将更新 state 中的 `letters` 数组。
+有一个 `letters` 列表在 state 中。当你悬停或聚焦到特定的信件时，它会被突出显示。当前突出显示的信件存储在 `highlightedLetter` state 变量中。你可以“Star”和“Unstar”单个信件，这将更新 state 中的 `letters` 数组。
 
 虽然这段代码可以运行，但是有一个小的 UI 问题。当你点击“Star”或“Unstar”时，高亮会短暂消失。不过只要你移动鼠标指针或者用键盘切换到另一个信件，它就会重新出现。为什么会这样？请修复它，使得在按钮点击后高亮不会消失。
 
@@ -2395,7 +2395,7 @@ li { border-radius: 5px; }
 
 这个问题点在于你将信件对象存储在 `highlightedLetter` 中。但是，你也将相同的信息存储在 `letters` 数组中。因此，你的 state 存在重复！当你在按钮点击后更新 `letters` 数组时，会创建一个新的信件对象，它与 `highlightedLetter` 不同。这就是 `highlightedLetter === letter` 执行变为 `false`，并且高亮消失的原因。当指针移动时下一次调用 `setHighlightedLetter` 时它会重新出现。
 
-为了解决这个问题，请从 state 中删除重复项。不要在两个地方存储 **信件对象本身**，而是存储 `highlightedId`。然后，您可以使用 `letter.id === highlightedId` 检查每个带有 `isHighlighted` 属性的信件，即使 `letter` 对象在上次渲染后发生了变化，这也是可行的。
+为了解决这个问题，请从 state 中删除重复项。不要在两个地方存储 **信件对象本身**，而是存储 `highlightedId`。然后，你可以使用 `letter.id === highlightedId` 检查每个带有 `isHighlighted` 属性的信件，即使 `letter` 对象在上次渲染后发生了变化，这也是可行的。
 
 <Sandpack>
 
@@ -2611,7 +2611,7 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 <Solution>
 
-在 state 中保留一个 `selectedIds` **数组**，而不是单个的 `selectedId`。例如，如果您选择了第一个和最后一个信件，则它将包含 `[0, 2]`。当没有选定任何内容时，它将为空数组 `[]`：
+在 state 中保留一个 `selectedIds` **数组**，而不是单个的 `selectedId`。例如，如果你选择了第一个和最后一个信件，则它将包含 `[0, 2]`。当没有选定任何内容时，它将为空数组 `[]`：
 
 <Sandpack>
 

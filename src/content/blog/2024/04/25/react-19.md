@@ -152,7 +152,7 @@ const [error, submitAction, isPending] = useActionState(
   async (previousState, newName) => {
     const error = await updateName(newName);
     if (error) {
-      // 您可以返回操作的任何结果。
+      // 你可以返回操作的任何结果。
       // 这里，我们只返回错误。
       return error;
     }
