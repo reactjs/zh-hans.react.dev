@@ -4,7 +4,11 @@ title: 鸣谢
 
 <Intro>
 
+<<<<<<< HEAD
 React 从最初由 [Jordan Walke](https://github.com/jordwalke) 创立至今, 已拥有 [专门的团队在全职从事这项工作](/community/team), 同时社区拥有超过 1k+ 的 [开源贡献者](https://github.com/facebook/react/blob/main/AUTHORS) 参与。
+=======
+React was originally created by [Jordan Walke.](https://github.com/jordwalke) Today, React has a [dedicated full-time team working on it](/community/team), as well as over a thousand [open source contributors.](https://github.com/facebook/react/graphs/contributors)
+>>>>>>> 75e4d400bedd1e200511963f26919f688ec92157
 
 </Intro>
 

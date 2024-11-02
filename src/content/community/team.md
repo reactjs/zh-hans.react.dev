@@ -18,8 +18,13 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Andrew 最初通过使用 WordPress 来制作网站，进入了网页开发领域，最终他自我投入到 JavaScript 的编程中。他最喜欢的娱乐活动是唱卡拉 OK。根据不同的日子，Andrew 有时候像是迪士尼的反派角色，有时候又像是迪士尼的公主。
 </TeamMember>
 
+<<<<<<< HEAD
 <TeamMember name="Dan Abramov" permalink="dan-abramov" photo="/images/team/gaearon.jpg" github="gaearon" twitter="dan_abramov2" title="Independent Engineer">
     Dan 在意外发现 Microsoft PowerPoint 内部的 Visual Basic 后进入了编程行业。他发现了自己的真正使命，就是将 [Sebastian](#sebastian-markbåge) 的推特转化为长篇博客文章。Dan 偶尔会通过整局游戏都躲在草丛里的方式，在《堡垒之夜》中赢得胜利。
+=======
+<TeamMember name="Dan Abramov" permalink="dan-abramov" photo="/images/team/gaearon.jpg" github="gaearon" bsky="danabra.mov" title="Independent Engineer">
+    Dan got into programming after he accidentally discovered Visual Basic inside Microsoft PowerPoint. He has found his true calling in turning [Sebastian](#sebastian-markbåge)'s tweets into long-form blog posts. Dan occasionally wins at Fortnite by hiding in a bush until the game ends.
+>>>>>>> 75e4d400bedd1e200511963f26919f688ec92157
 </TeamMember>
 
 <TeamMember name="Eli White" permalink="eli-white" photo="/images/team/eli-white.jpg" github="TheSavior" twitter="Eli_White" threads="elicwhite" title="Engineering Manager at Meta">
@@ -62,8 +67,13 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Noah 在纽约大学接受音乐技术教育期间，对 UI 编程产生了兴趣。在 Meta，他从事内部工具、浏览器、网络性能方面的工作，目前专注于 React。在工作之余，他会捣鼓合成器，或者和他的猫在一起玩耍。
 </TeamMember>
 
+<<<<<<< HEAD
 <TeamMember name="Rick Hanlon" permalink="rick-hanlon" photo="/images/team/rickhanlonii.jpg" github="rickhanlonii" twitter="rickhanlonii" threads="rickhanlonii" personal="rickhanlon.codes" title="Engineer at Meta">
     Ricky 主修理论数学，然而他却在 React Native 团队工作了几年，之后又加入了 React 团队。当他不在编程时，你可以找到他在滑雪，骑自行车，攀岩，打高尔夫球，或者在 GitHub 上关闭一些不符合问题模板的问题。
+=======
+<TeamMember name="Rick Hanlon" permalink="rick-hanlon" photo="/images/team/rickhanlonii.jpg" github="rickhanlonii" twitter="rickhanlonii" threads="rickhanlonii" bsky="ricky.fm" title="Engineer at Meta">
+    Ricky majored in theoretical math and somehow found himself on the React Native team for a couple years before joining the React team. When he's not programming you can find him snowboarding, biking, climbing, golfing, or closing GitHub issues that do not match the issue template.
+>>>>>>> 75e4d400bedd1e200511963f26919f688ec92157
 </TeamMember>
 
 <TeamMember name="Ruslan Lesiutin" permalink="ruslan-lesiutin" photo="/images/team/lesiutin.jpg" github="hoxyq" twitter="ruslanlesiutin" threads="lesiutin" title="Engineer at Meta">
