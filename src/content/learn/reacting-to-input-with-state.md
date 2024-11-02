@@ -353,7 +353,7 @@ body { margin: 0; }
 
 </DiagramGroup>
 
-### 步骤 3：通过 `useState` {/*step-3-represent-the-state-in-memory-with-usestate*/} 表示内存中的 state
+### 步骤 3：通过 `useState` 表示内存中的 state {/*step-3-represent-the-state-in-memory-with-usestate*/}
 
 接下来你会需要在内存中通过 [`useState`](/reference/react/useState) 表示组件中的视图状态。诀窍很简单：state 的每个部分都是“处于变化中的”，并且**你需要让“变化的部分”尽可能的少**。更复杂的程序会产生更多 bug！
 
