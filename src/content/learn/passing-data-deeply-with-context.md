@@ -207,9 +207,9 @@ export default function Heading({ level, children }) {
 
 你不能只通过 props 来实现它。这就是 context 大显身手的地方。你可以通过以下三个步骤来实现它：
 
-1. **创建** 一个 context。（你可以将其命名为 `LevelContext`, 因为它表示的是标题级别。)
+1. **创建** 一个 context。（你可以将其命名为 `LevelContext`, 因为它表示的是标题级别。）
 2. 在需要数据的组件内 **使用** 刚刚创建的 context。（`Heading` 将会使用 `LevelContext`。）
-3. 在指定数据的组件中 **提供** 这个 context。 （`Section` 将会提供 `LevelContext`。）
+3. 在指定数据的组件中 **提供** 这个 context。（`Section` 将会提供 `LevelContext`。）
 
 Context 可以让父节点，甚至是很远的父节点都可以为其内部的整个组件树提供数据。
 
@@ -463,7 +463,7 @@ export default function Section({ children }) {
 }
 ```
 
-**把它们用 context provider 包裹起来**  以提供 `LevelContext` 给它们：
+**把它们用 context provider 包裹起来** 以提供 `LevelContext` 给它们：
 
 ```js {1,6,8}
 import { LevelContext } from './LevelContext.js';
