@@ -42,7 +42,7 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Josh 大学主修数学，并在那时期初次接触到编程。他的职业生涯起步于在 Microsoft Excel 上编程进行保险费率计算，这是反应式编程的典型案例，或许也是他后来投身 React 的原因。此后，Josh 在数家创业公司中担任过独立贡献者、经理甚至高级管理者。工作之外，他享受烹饪的挑战。
 </TeamMember>
 
-<TeamMember name="Lauren Tan" permalink="lauren-tan" photo="/images/team/lauren.jpg" github="poteto" twitter="potetotes" threads="potetotes" personal="no.lol" title="Engineer at Meta">
+<TeamMember name="Lauren Tan" permalink="lauren-tan" photo="/images/team/lauren.jpg" github="poteto" twitter="potetotes" threads="potetotes" bsky="no.lol" title="Engineer at Meta">
     Lauren's programming career peaked when she first discovered the `<marquee>` tag. She’s been chasing that high ever since. She studied Finance instead of CS in college, so she learned to code using Excel instead of Java. Lauren enjoys dropping cheeky memes in chat, playing video games with her partner, and petting her dog Zelda.
 </TeamMember>
 
