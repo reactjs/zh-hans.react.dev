@@ -1621,6 +1621,8 @@ label { display: block; margin-bottom: 10px; }
 
 当前的示例中有两个下拉框。一个下拉框允许用户选择一个行星，而另一个下拉框应该显示该选定行星上的地点。然而，目前这两个下拉框都还没有正常工作。你的任务是添加一些额外的代码，使得选择一个行星时，`placeList` 状态变量被填充为 `"/planets/" + planetId + "/places"` API 调用的结果。
 
+看看第一个下拉框是如何工作的。它用 `"/planets"` API 调用的结果来填充 `planetList` 状态。当前选中的行星 ID 保存在 `planetId` 状态变量中。你需要找到合适的位置添加一些额外的代码，以便用 `"/planets/" + planetId + "/places"` API 调用的结果来填充 `placeList` 状态变量。
+
 如果你正确实现了这个功能，选择一个行星应该会填充地点列表，而更改行星应该会相应地改变地点列表。
 
 <Hint>
