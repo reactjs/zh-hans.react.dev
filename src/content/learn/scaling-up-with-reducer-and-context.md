@@ -455,7 +455,7 @@ ul, li { margin: 0; padding: 0; }
 
 在这里，你把 `null` 作为默认值传递给两个 context。实际值是由 `TaskApp` 组件提供的。
 
-### 第二步: 将 state 和 dispatch 函数 放入 context {/*step-2-put-state-and-dispatch-into-context*/}
+### 第二步: 将 state 和 dispatch 函数放入 context {/*step-2-put-state-and-dispatch-into-context*/}
 
 现在，你可以将所有的 context 导入 `TaskApp` 组件。获取 `useReducer()` 返回的 `tasks` 和 `dispatch` 并将它们 [提供](/learn/passing-data-deeply-with-context#step-3-provide-the-context) 给整个组件树：
 
