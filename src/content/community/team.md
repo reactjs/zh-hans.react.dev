@@ -38,13 +38,8 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Joe 原计划专攻数学和哲学，然而在用 Matlab 编写物理模拟后，他转行投入了计算机科学领域。在投身 React 之前，他曾先后在 Relay、RSocket.js 以及 Skip 编程语言上有过工作经验。闲暇之余，乔喜欢跑步、学习日语，还有陪伴家人。
 </TeamMember>
 
-<<<<<<< HEAD
-<TeamMember name="Josh Story" permalink="josh-story" photo="/images/team/josh.jpg" github="gnoff" twitter="joshcstory" title="Engineer at Vercel">
-    Josh 大学主修数学，并在那时期初次接触到编程。他的职业生涯起步于在 Microsoft Excel 上编程进行保险费率计算，这是反应式编程的典型案例，或许也是他后来投身 React 的原因。此后，Josh 在数家创业公司中担任过独立贡献者、经理甚至高级管理者。工作之外，他享受烹饪的挑战。
-=======
 <TeamMember name="Josh Story" permalink="josh-story" photo="/images/team/josh.jpg" github="gnoff" bsky="gnoff.bsky.social" title="Engineer at Vercel">
-    Josh majored in Mathematics and discovered programming while in college. His first professional developer job was to program insurance rate calculations in Microsoft Excel, the paragon of Reactive Programming which must be why he now works on React. In between that time Josh has been an IC, Manager, and Executive at a few startups. outside of work he likes to push his limits with cooking.
->>>>>>> b214f78433756914ec32526dda48e76176dbf4fc
+    Josh 大学主修数学，并在那时期初次接触到编程。他的职业生涯起步于在 Microsoft Excel 上编程进行保险费率计算，这是反应式编程的典型案例，或许也是他后来投身 React 的原因。此后，Josh 在数家创业公司中担任过独立贡献者、经理甚至高级管理者。工作之外，他享受烹饪的挑战。
 </TeamMember>
 
 <TeamMember name="Lauren Tan" permalink="lauren-tan" photo="/images/team/lauren.jpg" github="poteto" twitter="potetotes" threads="potetotes" bsky="no.lol" title="Engineer at Meta">
