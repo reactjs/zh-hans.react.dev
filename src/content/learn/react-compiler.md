@@ -316,11 +316,7 @@ export default defineConfig({
 
 ### Expo {/*usage-with-expo*/}
 
-<<<<<<< HEAD
-请参考 [Expo 文档](https://docs.expo.dev/preview/react-compiler/) 应用程序中启用和使用 React Compiler。
-=======
-Please refer to [Expo's docs](https://docs.expo.dev/guides/react-compiler/) to enable and use the React Compiler in Expo apps.
->>>>>>> 3246989c210dc5d4239b0638b2418572ba123ad4
+请参考 [Expo 文档](https://docs.expo.dev/guides/react-compiler/) 应用程序中启用和使用 React Compiler。
 
 ### Metro (React Native) {/*usage-with-react-native-metro*/}
 
