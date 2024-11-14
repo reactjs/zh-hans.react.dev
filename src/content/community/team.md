@@ -38,7 +38,7 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Joe 原计划专攻数学和哲学，然而在用 Matlab 编写物理模拟后，他转行投入了计算机科学领域。在投身 React 之前，他曾先后在 Relay、RSocket.js 以及 Skip 编程语言上有过工作经验。闲暇之余，乔喜欢跑步、学习日语，还有陪伴家人。
 </TeamMember>
 
-<TeamMember name="Josh Story" permalink="josh-story" photo="/images/team/josh.jpg" github="gnoff" bsky="gnoff.bsky.social" title="Engineer at Vercel">
+<TeamMember name="Josh Story" permalink="josh-story" photo="/images/team/josh.jpg" github="gnoff" bsky="storyhb.com" title="Engineer at Vercel">
     Josh 大学主修数学，并在那时期初次接触到编程。他的职业生涯起步于在 Microsoft Excel 上编程进行保险费率计算，这是反应式编程的典型案例，或许也是他后来投身 React 的原因。此后，Josh 在数家创业公司中担任过独立贡献者、经理甚至高级管理者。工作之外，他享受烹饪的挑战。
 </TeamMember>
 
