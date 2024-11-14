@@ -279,7 +279,11 @@ export default defineConfig(() => {
 
 ### Next.js {/*usage-with-nextjs*/}
 
+<<<<<<< HEAD
 请参考 [Next.js 文档](https://nextjs.org/docs/canary/app/api-reference/next-config-js/reactCompiler) 来了解更多信息。
+=======
+Please refer to the [Next.js docs](https://nextjs.org/docs/app/api-reference/next-config-js/reactCompiler) for more information.
+>>>>>>> 84f29eb20af17e9c154b9ad71c21af4c9171e4a2
 
 ### Remix {/*usage-with-remix*/}
 安装 `vite-plugin-babel`, 并将编译器的 Babel 插件添加到其中：
