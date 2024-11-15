@@ -325,7 +325,7 @@ export default function Timer() {
     <>
       <h1>
         计数器：{count}
-        <button onClick={() => setCount(0)}>重制</button>
+        <button onClick={() => setCount(0)}>重置</button>
       </h1>
       <hr />
       <p>
