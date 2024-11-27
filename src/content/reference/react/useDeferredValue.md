@@ -37,7 +37,7 @@ function SearchPage() {
 #### 参数 {/*parameters*/}
 
 * `value`: 你想延迟的值，可以是任何类型。
-* <CanaryBadge title="这个功能只在 Canary 频道中可用" /> **可选** `initialValue`: 组件初始渲染时使用的值。如果省略此选项，`useDeferredValue` 在初始渲染期间不会延迟，因为没有以前的版本可以渲染。
+* <CanaryBadge title="这个功能只在 Canary 渠道中可用" /> **可选的** `initialValue`: 组件初始渲染时使用的值。如果省略此选项，`useDeferredValue` 在初始渲染期间不会延迟，因为没有以前的版本可以渲染。
 
 #### 返回值 {/*returns*/}
 
