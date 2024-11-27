@@ -53,7 +53,7 @@ function SearchPage() {
 
 - 当更新发生在 Transition 内部时，`useDeferredValue` 总是返回新的 `value` 并且不会产生延迟渲染，因为该更新已经被延迟了。
 
-- 传递给 `useDeferredValue` 的值应该是原始值(如字符串和数字)或在渲染之外创建的对象。如果你在渲染期间创建一个新对象并立即将其传递给 `useDeferredValue`，它在每次渲染时都会不同，从而导致不必要的后台重新渲染。
+- 传递给 `useDeferredValue` 的值应该是原始值（如字符串和数字）或是在渲染之外创建的对象。如果你在渲染期间创建一个新对象并立即将其传递给 `useDeferredValue`，它在每次渲染时都会不同，从而导致不必要的后台重新渲染。
 
 - 当 `useDeferredValue` 接收到与之前不同的值（使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 进行比较）时，除了当前渲染（此时它仍然使用旧值），它还会安排一个后台重新渲染。这个后台重新渲染是可以被中断的，如果 `value` 有新的更新，React 会从头开始重新启动后台渲染。举个例子，如果用户在输入框中的输入速度比接收延迟值的图表重新渲染的速度快，那么图表只会在用户停止输入后重新渲染。
 
