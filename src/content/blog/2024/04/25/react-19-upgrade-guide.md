@@ -735,12 +735,12 @@ const reducer = (state: State, action: Action) => state;
 
 ### Other breaking changes {/*other-breaking-changes*/}
 
-- **react-dom**: Error for javascript URLs in src/href [#26507](https://github.com/facebook/react/pull/26507)
+- **react-dom**: Error for javascript URLs in `src` and `href` [#26507](https://github.com/facebook/react/pull/26507)
 - **react-dom**: Remove `errorInfo.digest` from `onRecoverableError` [#28222](https://github.com/facebook/react/pull/28222)
 - **react-dom**: Remove `unstable_flushControlled` [#26397](https://github.com/facebook/react/pull/26397)
 - **react-dom**: Remove `unstable_createEventHandle` [#28271](https://github.com/facebook/react/pull/28271)
 - **react-dom**: Remove `unstable_renderSubtreeIntoContainer` [#28271](https://github.com/facebook/react/pull/28271)
-- **react-dom**: Remove `unstable_runWithPrioirty` [#28271](https://github.com/facebook/react/pull/28271)
+- **react-dom**: Remove `unstable_runWithPriority` [#28271](https://github.com/facebook/react/pull/28271)
 - **react-is**: Remove deprecated methods from `react-is` [28224](https://github.com/facebook/react/pull/28224)
 
 ### Other notable changes {/*other-notable-changes*/}
