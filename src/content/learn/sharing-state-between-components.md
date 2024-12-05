@@ -312,7 +312,7 @@ h3, p { margin: 5px 0px; }
 
 你的应用会随着你的操作而变化。当你将状态上下移动时，你依然会想要确定每个状态在哪里“活跃”。这都是过程的一部分！
 
-想了解在更多组件中的实践，请阅读 [React 思维](/learn/thinking-in-react).
+想了解在更多组件中的实践，请阅读 [React 哲学](/learn/thinking-in-react).
 
 <Recap>
 
