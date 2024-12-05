@@ -3,12 +3,15 @@ title: useFormStatus
 canary: true
 ---
 
+<<<<<<< HEAD
 <Canary>
 
 `useFormStatus` Hook 目前仅在 React Canary 与 experimental 渠道中可用。在此处了解更多关于 [React 发布渠道](/community/versioning-policy#all-release-channels) 的信息。
 
 </Canary>
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 <Intro>
 
 `useFormStatus` 是一个提供上次表单提交状态信息的 Hook。
@@ -117,18 +120,6 @@ export async function submitForm(query) {
     await new Promise((res) => setTimeout(res, 1000));
 }
 ```
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
-}
-```
 </Sandpack>  
 
 <Pitfall>
@@ -234,17 +225,6 @@ button {
 
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
-}
-```
 </Sandpack>  
 
 ---

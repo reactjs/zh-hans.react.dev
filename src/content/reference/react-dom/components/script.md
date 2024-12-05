@@ -1,14 +1,16 @@
 ---
 script: "<script>"
-canary: true
 ---
 
+<<<<<<< HEAD
 <Canary>
 
 React 对 `<script>` 的扩展当前仅在 React Canary 与 experimental 渠道中可用。在 React 的稳定版本中，`<script>` 仅作为 [浏览器内置 HTML 组件](https://react.dev/reference/react-dom/components#all-html-components) 使用。请在 [此处了解更多关于 React 发布渠道的信息](/community/versioning-policy#all-release-channels)。
 
 </Canary>
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 <Intro>
 
 [浏览器内置的 `<script>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) 允许向文档添加脚本。

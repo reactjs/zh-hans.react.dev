@@ -1,13 +1,21 @@
 ---
+<<<<<<< HEAD
 title: "指示符"
 canary: true
+=======
+title: Directives
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 ---
 
-<Canary>
+<RSC>
 
+<<<<<<< HEAD
 这些指令仅在 [使用 React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 或构建可适配库时需要。
+=======
+Directives are for use in [React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks).
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 
-</Canary>
+</RSC>
 
 <Intro>
 

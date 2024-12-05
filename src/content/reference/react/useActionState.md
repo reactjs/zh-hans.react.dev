@@ -1,8 +1,8 @@
 ---
 title: useActionState
-canary: true
 ---
 
+<<<<<<< HEAD
 <Canary>
 
 `useActionState` Hook 当前仅在 React Canary 与 experimental 渠道中可用。请点此了解更多关于 [React 发布渠道](/community/versioning-policy#all-release-channels) 的信息。此外，需要一款完全支持 [React 服务器组件](/reference/react/use-client) 特性的框架才可以使用 `useActionState` 的所有特性。
@@ -15,6 +15,8 @@ In earlier React Canary versions, this API was part of React DOM and called `use
 
 </Note>
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 <Intro>
 
 `useActionState` 是一个可以根据某个表单动作的结果更新 state 的 Hook。
@@ -24,6 +26,13 @@ const [state, formAction, isPending] = useActionState(fn, initialState, permalin
 ```
 
 </Intro>
+
+<Note>
+
+In earlier React Canary versions, this API was part of React DOM and called `useFormState`.
+
+</Note>
+
 
 <InlineToc />
 
@@ -57,11 +66,23 @@ function StatefulForm({}) {
 
 form state 是一个只在表单被提交触发 action 后才会被更新的值。如果该表单没有被提交，该值会保持传入的初始值不变。
 
+<<<<<<< HEAD
 如果配合 Server Action 一起使用，`useActionState` 允许与表单交互的服务器的返回值在激活完成前显示。
+=======
+If used with a Server Function, `useActionState` allows the server's response from submitting the form to be shown even before hydration has completed.
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 
 [请参阅下方更多示例](#usage)。
 
+<<<<<<< HEAD
 #### 参数 {/*parameters*/}
+=======
+#### Parameters {/*parameters*/}
+
+* `fn`: The function to be called when the form is submitted or button pressed. When the function is called, it will receive the previous state of the form (initially the `initialState` that you pass, subsequently its previous return value) as its initial argument, followed by the arguments that a form action normally receives.
+* `initialState`: The value you want the state to be initially. It can be any serializable value. This argument is ignored after the action is first invoked.
+* **optional** `permalink`: A string containing the unique page URL that this form modifies. For use on pages with dynamic content (eg: feeds) in conjunction with progressive enhancement: if `fn` is a [server function](/reference/rsc/server-functions) and the form is submitted before the JavaScript bundle loads, the browser will navigate to the specified permalink URL, rather than the current page's URL. Ensure that the same form component is rendered on the destination page (including the same action `fn` and `permalink`) so that React knows how to pass the state through. Once the form has been hydrated, this parameter has no effect.
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 
 * `fn`：当按钮被按下或者表单被提交时触发的函数。当函数被调用时，该函数会接收到表单的上一个 state（初始值为传入的 `initialState` 参数，否则为上一次执行完该函数的结果）作为函数的第一个参数，余下参数为普通表单动作接到的参数。
 * `initialState`：state 的初始值。任何可序列化的值都可接收。当 action 被调用一次后该参数会被忽略。
@@ -125,7 +146,11 @@ function action(currentState, formData) {
 
 #### 展示表单错误 {/*display-form-errors*/}
 
+<<<<<<< HEAD
 将 action 包裹进 `useActionState` 即可展示诸如错误信息或 Server Action 返回的 toast 等信息。
+=======
+To display messages such as an error message or toast that's returned by a Server Function, wrap the action in a call to `useActionState`.
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 
 <Sandpack>
 
@@ -183,25 +208,17 @@ form button {
   margin-right: 12px;
 }
 ```
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
-}
-```
 </Sandpack>
 
 <Solution />
 
 #### 提交表单后展示结构性数据 {/*display-structured-information-after-submitting-a-form*/}
 
+<<<<<<< HEAD
 Server Actions 的返回值可以为任意可序列化的值。例如，可以返回一个实例，该实例携带一个 boolean 类型的属性表示操作是否成功，同时附带错误信息或更新消息。
+=======
+The return value from a Server Function can be any serializable value. For example, it could be an object that includes a boolean indicating whether the action was successful, an error message, or updated information.
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 
 <Sandpack>
 
@@ -268,18 +285,6 @@ form {
 
 form button {
   margin-right: 12px;
-}
-```
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
 }
 ```
 </Sandpack>

@@ -17,7 +17,11 @@ description: 上周我们在内华达州亨德森举办了为期两天的 React 
 
 ---
 
+<<<<<<< HEAD
 在 React Conf 2024 上，我们宣布了 [React 19 RC](/blog/2024/04/25/react-19)、[React Native 新架构 Beta 版](https://github.com/reactwg/react-native-new-architecture/discussions/189)，以及 [React Compiler](/learn/react-compiler) 的实验版本。社区同时登台宣布了 [React Router v7](https://remix.run/blog/merging-remix-and-react-router)、Expo Router 中的 [通用服务器组件](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=20765s)、[RedwoodJS](https://redwoodjs.com/blog/rsc-now-in-redwoodjs) 中的 React 服务器组件等等。
+=======
+At React Conf 2024, we announced the [React 19 RC](/blog/2024/12/05/react-19), the [React Native New Architecture Beta](https://github.com/reactwg/react-native-new-architecture/discussions/189), and an experimental release of the [React Compiler](/learn/react-compiler). The community also took the stage to announce [React Router v7](https://remix.run/blog/merging-remix-and-react-router), [Universal Server Components](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=20765s) in Expo Router, React Server Components in [RedwoodJS](https://redwoodjs.com/blog/rsc-now-in-redwoodjs), and much more.
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 
 完整的 [第一天](https://www.youtube.com/watch?v=T8TZQ6k4SLE) 和 [第二天](https://www.youtube.com/watch?v=0ckOUBiuxVY) 的直播已经可以在线观看了。在这篇文章中，我们将总结活动中的演讲和公告。
 
@@ -36,7 +40,11 @@ _[点击这里观看第一天完整直播。](https://www.youtube.com/watch?v=T8
 - [RedwoodJS 现已支持 React 服务器组件](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=26815s)，来自 [Amy Dutton](https://twitter.com/selfteachme)
 - [介绍 Expo Router 中的通用 React 服务器组件](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=20765s)，来自 [Evan Bacon](https://twitter.com/Baconbrix)
 
+<<<<<<< HEAD
 接下来的主题演讲中，[Josh Story](https://twitter.com/joshcstory) 和 [Andrew Clark](https://twitter.com/acdlite) 分享了 React 19 即将推出的新功能，并宣布了 React 19 RC，该版本已准备好用于生产环境测试。你可以在 [React 19 RC](/blog/2024/04/25/react-19) 这篇文章中查看 React 19 的全部功能，也可以查看以下关于新功能深入分析的演讲：
+=======
+Next in the keynote, [Josh Story](https://twitter.com/joshcstory) and [Andrew Clark](https://twitter.com/acdlite) shared new features coming in React 19, and announced the React 19 RC which is ready for testing in production. Check out all the features in the [React 19 release post](/blog/2024/12/05/react-19), and see these talks for deep dives on the new features:
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 
 - [React 19 有哪些更新](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=8880s)，来自 [Lydia Hallie](https://twitter.com/lydiahallie)
 - [React 解读：React 19 路线图](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=10112s)，来自 [Sam Selikoff](https://twitter.com/samselikoff)
