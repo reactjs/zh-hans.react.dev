@@ -41,6 +41,7 @@ These APIs can be used to make apps faster by pre-loading resources such as scri
 
 ---
 
+<<<<<<< HEAD
 ## 已弃用 API {/*deprecated-apis*/}
 
 <Deprecated>
@@ -53,3 +54,15 @@ These APIs can be used to make apps faster by pre-loading resources such as scri
 * [`hydrate`](/reference/react-dom/hydrate) 可以将服务器生成的 HTML 作为浏览器 DOM 节点，并在其中渲染 React 组件。目前已被 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 取代。
 * [`render`](/reference/react-dom/render) 可以在浏览器的 DOM 元素中渲染 React 组件，目前已被 [`createRoot`](/reference/react-dom/client/createRoot) 取代。
 * [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode) 可以从 DOM 中移除一个已挂载的 React 组件，目前已被 [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) 取代。
+=======
+## Removed APIs {/*removed-apis*/}
+
+These APIs were removed in React 19:
+
+* [`findDOMNode`](https://18.react.dev/reference/react-dom/findDOMNode): see [alternatives](https://18.react.dev/reference/react-dom/findDOMNode#alternatives).
+* [`hydrate`](https://18.react.dev/reference/react-dom/hydrate): use [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) instead.
+* [`render`](https://18.react.dev/reference/react-dom/render): use [`createRoot`](/reference/react-dom/client/createRoot) instead.
+* [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode): use [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) instead.
+* [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
+* [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
