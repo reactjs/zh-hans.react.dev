@@ -314,7 +314,7 @@ function ChatRoom({ roomId }) { // roomId 属性可能会随时间变化。
 
 ### 每个 Effect 表示一个独立的同步过程。 {/*each-effect-represents-a-separate-synchronization-process*/}
 
-不要仅仅因为某个逻辑需要和你已经写好的 useEffect 一起运行，就将它添加到 useEffect 中。例如，假设你想在用户访问房间时发送一个分析事件。你已经有一个依赖于 `roomId` 的 Effect，所以你可能会想要将分析调用添加到那里：
+不要仅仅因为某个逻辑需要和你已经写好的 Effect 一起运行，就将它添加到 Effect 中。例如，假设你想在用户访问房间时发送一个分析事件。你已经有一个依赖于 `roomId` 的 Effect，所以你可能会想要将分析调用添加到那里：
 
 ```js {3}
 function ChatRoom({ roomId }) {
