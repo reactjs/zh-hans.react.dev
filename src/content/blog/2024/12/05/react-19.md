@@ -1,49 +1,33 @@
 ---
 title: "React v19"
 author: The React Team
-<<<<<<< HEAD:src/content/blog/2024/04/25/react-19.md
-date: 2024/04/25
-description: React 19 RC 版现在可以在 npm 上使用了! 在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
----
-
-2024 年 4 月 25 日 [The React Team](/community/team)
-=======
 date: 2024/12/05
-description: React 19 is now available on npm! In this post, we'll give an overview of the new features in React 19, and how you can adopt them.
+description: React 19 版现在可以在 npm 上使用了! 在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
 ---
 
-December 05, 2024 by [The React Team](/community/team)
->>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c:src/content/blog/2024/12/05/react-19.md
+2024 年 12 月 25 日 [The React Team](/community/team)
 
 ---
 <Note>
 
-### React 19 is now stable! {/*react-19-is-now-stable*/}
+### React 19 现已稳定！ {/*react-19-is-now-stable*/}
 
-Additions since this post was originally shared with the React 19 RC in April:
+从 4 月份发布这篇介绍 React 19 RC 的博客以来有以下新增内容：
 
-- **Pre-warming for suspended trees**: see [Improvements to Suspense](/blog/2024/04/25/react-19-upgrade-guide#improvements-to-suspense).
-- **React DOM static APIs**: see [New React DOM Static APIs](#new-react-dom-static-apis).
+- **预热 suspend 树**：阅读 [改善 Suspense](/blog/2024/04/25/react-19-upgrade-guide#improvements-to-suspense) 来了解更多。
+- **React DOM 静态 API**：阅读 [新的 React DOM 静态 API](#new-react-dom-static-apis) 来了解更多。
 
-_The date for this post has been update to reflect the stable release date._
+__本文的日期已更新，以反映稳定版的发布日期。__
 
 </Note>
 
 <Intro>
 
-<<<<<<< HEAD:src/content/blog/2024/04/25/react-19.md
-React 19 RC 版本现在可以在 npm 上使用了!
+React 19 版本现在可以在 npm 上使用了!
 
 </Intro>
 
-在我们的 [React 19 RC 升级指南](/blog/2024/04/25/react-19-upgrade-guide) 中, 我们分享了将应用程序升级到 React 19 的分步说明。在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
-=======
-React v19 is now available on npm!
-
-</Intro>
-
-In our [React 19 Upgrade Guide](/blog/2024/04/25/react-19-upgrade-guide), we shared step-by-step instructions for upgrading your app to React 19. In this post, we'll give an overview of the new features in React 19, and how you can adopt them.
->>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c:src/content/blog/2024/12/05/react-19.md
+在我们的 [React 19 升级指南](/blog/2024/04/25/react-19-upgrade-guide) 中, 我们分享了将应用程序升级到 React 19 的分步说明。在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
 
 - [React 19 中的新功能](#whats-new-in-react-19)
 - [React 19 中的改进](#improvements-in-react-19)
@@ -823,4 +807,4 @@ React 19 添加了对自定义元素的全面支持，并通过了 [Custom Eleme
 
 请查看 [React 19 升级指南](/blog/2024/04/25/react-19-upgrade-guide) 以获取逐步指导和完整的破坏性和显著变化列表。
 
-_Note: this post was originally published 04/25/2024 and has been updated to 12/05/2024 with the stable release._
+__注意：这篇文章最初发布于 2024 年 4 月 25 日，并已将内容更新至 2024 年 12 月 5 日发布的稳定版本。__
