@@ -54,21 +54,6 @@ React 将展示 <CodeStep step={1}>后备方案</CodeStep> 直到 <CodeStep step
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js hidden
 import { useState } from 'react';
 import ArtistPage from './ArtistPage.js';
@@ -114,15 +99,19 @@ function Loading() {
 }
 ```
 
-```js src/Albums.js hidden
+```js src/Albums.js
+import {use} from 'react';
 import { fetchData } from './data.js';
 
+<<<<<<< HEAD
 // 注意：这个组件使用了一个实验性的 API
 // 该 API 并未在 React 的稳定版本中可用
 
 // 在实际的例子中，你可以尝试已经
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
   return (
@@ -135,6 +124,7 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // 这是一个解决 bug 的临时方案，以便让演示运行起来。
 // TODO：当 bug 修复后，用真正的实现替换。
@@ -160,6 +150,8 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 ```
 
 ```js src/data.js hidden
@@ -252,9 +244,15 @@ async function getAlbums() {
 
 **只有启用了 Suspense 的数据源才会激活 Suspense 组件**，它们包括：
 
+<<<<<<< HEAD
 - 支持 Suspense 的框架如 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/getting-started/react-essentials)。
 - 使用 [`lazy`](/reference/react/lazy) 懒加载组件代码。
 - 使用 [`use`](/reference/react/use) 读取 Promise 的值。
+=======
+- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/getting-started/react-essentials)
+- Lazy-loading component code with [`lazy`](/reference/react/lazy)
+- Reading the value of a cached Promise with [`use`](/reference/react/use)
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 
 Suspense **无法** 检测在 Effect 或事件处理程序中获取数据的情况。
 
@@ -284,21 +282,6 @@ Suspense **无法** 检测在 Effect 或事件处理程序中获取数据的情�
 在下面的例子中，`Biography` 和 `Albums` 都会获取一些数据。但是由于它们都处于同一个 Suspense 下，所以这些组件总是一起“浮现”。
 
 <Sandpack>
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
 
 ```js src/App.js hidden
 import { useState } from 'react';
@@ -360,15 +343,19 @@ export default function Panel({ children }) {
 }
 ```
 
-```js src/Biography.js hidden
+```js src/Biography.js
+import {use} from 'react';
 import { fetchData } from './data.js';
 
+<<<<<<< HEAD
 // 注意：这个组件使用了一个实验性的 API
 // 该 API 未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
   return (
@@ -377,6 +364,7 @@ export default function Biography({ artistId }) {
     </section>
   );
 }
+<<<<<<< HEAD
 
 // 这是一个解决 bug 的临时方案，以便让演示运行起来。
 // TODO：当 bug 修复后，用真正的实现替换。
@@ -402,17 +390,23 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 ```
 
-```js src/Albums.js hidden
+```js src/Albums.js
+import {use} from 'react';
 import { fetchData } from './data.js';
 
+<<<<<<< HEAD
 // 注意：这个组件使用了一个实验性的 API
 // 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
   return (
@@ -425,6 +419,7 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // 这是一个解决 bug 的临时方案，以便让演示运行起来。
 // TODO：当 bug 修复后，用真正的实现替换。
@@ -450,6 +445,8 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 ```
 
 ```js src/data.js hidden
@@ -603,27 +600,19 @@ function Details({ artistId }) {
 
 加载序列将会是：
 
+<<<<<<< HEAD
 1. 如果 `Biography` 没有加载完成，`BigSpinner` 会显示在整个内容区域的位置。
 1. 一旦 `Biography` 加载完成，`BigSpinner` 会被内容替换。
 1. 如果 `Albums` 没有加载完成，`AlbumsGlimmer` 会显示在 `Albums` 和它的父级 `Panel` 的位置。
 1. 最后，一旦 `Albums` 加载完成，它会替换 `AlbumsGlimmer`。
+=======
+1. If `Biography` hasn't loaded yet, `BigSpinner` is shown in place of the entire content area.
+2. Once `Biography` finishes loading, `BigSpinner` is replaced by the content.
+3. If `Albums` hasn't loaded yet, `AlbumsGlimmer` is shown in place of `Albums` and its parent `Panel`.
+4. Finally, once `Albums` finishes loading, it replaces `AlbumsGlimmer`.
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 
 <Sandpack>
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
 
 ```js src/App.js hidden
 import { useState } from 'react';
@@ -697,15 +686,19 @@ export default function Panel({ children }) {
 }
 ```
 
-```js src/Biography.js hidden
+```js src/Biography.js
+import {use} from 'react';
 import { fetchData } from './data.js';
 
+<<<<<<< HEAD
 // 注意：这个组件使用了一个实验性的 API
 // 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
   return (
@@ -714,6 +707,7 @@ export default function Biography({ artistId }) {
     </section>
   );
 }
+<<<<<<< HEAD
 
 // 这是一个解决 bug 的临时方案，以便让演示运行起来。
 // TODO：当 bug 修复后，用真正的实现替换。
@@ -739,17 +733,23 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 ```
 
-```js src/Albums.js hidden
+```js src/Albums.js
+import {use} from 'react';
 import { fetchData } from './data.js';
 
+<<<<<<< HEAD
 // 注意：这个组件使用了一个实验性的 API
 // 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
   return (
@@ -762,6 +762,7 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // 这是一个解决 bug 的临时方案，以便让演示运行起来。
 // TODO：当 bug 修复后，用真正的实现替换。
@@ -787,6 +788,8 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 ```
 
 ```js src/data.js hidden
@@ -929,21 +932,6 @@ Suspense 边界允许协调 UI 的哪些部分应该总是一起“浮现”，�
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js
 import { Suspense, useState } from 'react';
 import SearchResults from './SearchResults.js';
@@ -964,15 +952,19 @@ export default function App() {
 }
 ```
 
-```js src/SearchResults.js hidden
+```js src/SearchResults.js
+import {use} from 'react';
 import { fetchData } from './data.js';
 
+<<<<<<< HEAD
 // 注意：这个组件使用了一个实验性的 API
 // 该 API 并未在 React 稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 export default function SearchResults({ query }) {
   if (query === '') {
     return null;
@@ -991,6 +983,7 @@ export default function SearchResults({ query }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // 这是一个解决 bug 的临时方案，以便让演示运行起来。
 // TODO：当 bug 修复后，用真正的实现替换。
@@ -1016,6 +1009,8 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 ```
 
 ```js src/data.js hidden
@@ -1154,21 +1149,6 @@ export default function App() {
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js
 import { Suspense, useState, useDeferredValue } from 'react';
 import SearchResults from './SearchResults.js';
@@ -1194,14 +1174,18 @@ export default function App() {
 ```
 
 ```js src/SearchResults.js hidden
+import {use} from 'react';
 import { fetchData } from './data.js';
 
+<<<<<<< HEAD
 // 注意：这个组件使用了一个实验性的 API
 // 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 export default function SearchResults({ query }) {
   if (query === '') {
     return null;
@@ -1220,6 +1204,7 @@ export default function SearchResults({ query }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // 这是一个解决 bug 的临时方案，以便让演示运行起来。
 // TODO：当 bug 修复后，用真正的实现替换。
@@ -1245,6 +1230,8 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 ```
 
 ```js src/data.js hidden
@@ -1360,21 +1347,6 @@ input { margin: 10px; }
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js
 import { Suspense, useState } from 'react';
 import IndexPage from './IndexPage.js';
@@ -1479,15 +1451,19 @@ function AlbumsGlimmer() {
 }
 ```
 
-```js src/Albums.js hidden
+```js src/Albums.js
+import {use} from 'react';
 import { fetchData } from './data.js';
 
+<<<<<<< HEAD
 // 注意：这个组件使用了一个实验性的 API
 // 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
   return (
@@ -1500,6 +1476,7 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // 这是一个解决 bug 的临时方案，以便让演示运行起来。
 // TODO：当 bug 修复后，用真正的实现替换。
@@ -1525,17 +1502,23 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 ```
 
-```js src/Biography.js hidden
+```js src/Biography.js
+import {use} from 'react';
 import { fetchData } from './data.js';
 
+<<<<<<< HEAD
 // 注意：这个组件使用了一个实验性的 API
 // 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
   return (
@@ -1544,6 +1527,7 @@ export default function Biography({ artistId }) {
     </section>
   );
 }
+<<<<<<< HEAD
 
 // 这是一个解决 bug 的临时方案，以便让演示运行起来。
 // TODO：当 bug 修复后，用真正的实现替换。
@@ -1569,9 +1553,11 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 ```
 
-```js src/Panel.js hidden
+```js src/Panel.js
 export default function Panel({ children }) {
   return (
     <section className="panel">
@@ -1745,21 +1731,6 @@ function Router() {
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js
 import { Suspense, startTransition, useState } from 'react';
 import IndexPage from './IndexPage.js';
@@ -1866,15 +1837,19 @@ function AlbumsGlimmer() {
 }
 ```
 
-```js src/Albums.js hidden
+```js src/Albums.js
+import {use} from 'react';
 import { fetchData } from './data.js';
 
+<<<<<<< HEAD
 // 注意：这个组件使用了一个实验性的 API
 // 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
   return (
@@ -1887,6 +1862,7 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // 这是一个解决 bug 的临时方案，以便让演示运行起来。
 // TODO：当 bug 修复后，用真正的实现替换。
@@ -1912,17 +1888,23 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 ```
 
-```js src/Biography.js hidden
+```js src/Biography.js
+import {use} from 'react';
 import { fetchData } from './data.js';
 
+<<<<<<< HEAD
 // 注意：这个组件使用了一个实验性的 API
 // 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
   return (
@@ -1931,6 +1913,7 @@ export default function Biography({ artistId }) {
     </section>
   );
 }
+<<<<<<< HEAD
 
 // 这是一个解决 bug 的临时方案，以便让演示运行起来。
 // TODO：当 bug 修复后，用真正的实现替换。
@@ -1956,9 +1939,11 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 ```
 
-```js src/Panel.js hidden
+```js src/Panel.js
 export default function Panel({ children }) {
   return (
     <section className="panel">
@@ -2128,21 +2113,6 @@ transition 并不会等待 **所有** 内容加载完成。它只会等待足够
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js
 import { Suspense, useState, useTransition } from 'react';
 import IndexPage from './IndexPage.js';
@@ -2252,15 +2222,19 @@ function AlbumsGlimmer() {
 }
 ```
 
-```js src/Albums.js hidden
+```js src/Albums.js
+import {use} from 'react';
 import { fetchData } from './data.js';
 
+<<<<<<< HEAD
 // 注意：这个组件使用了一个实验性的 API
 // 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
   return (
@@ -2273,6 +2247,7 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // 这是一个解决 bug 的临时方案，以便让演示运行起来。
 // TODO：当 bug 修复后，用真正的实现替换。
@@ -2298,17 +2273,23 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 ```
 
-```js src/Biography.js hidden
+```js src/Biography.js
+import {use} from 'react';
 import { fetchData } from './data.js';
 
+<<<<<<< HEAD
 // 注意：这个组件使用了一个实验性的 API
 // 该 API 并未在 React 的稳定版本中可用
 
 // 对于一个现实的例子，你可以尝试一个
 // 与 Suspense 集成的框架，例如 Relay 或 Next.js。
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
   return (
@@ -2317,6 +2298,7 @@ export default function Biography({ artistId }) {
     </section>
   );
 }
+<<<<<<< HEAD
 
 // 这是一个解决 bug 的临时方案，以便让演示运行起来。
 // TODO：当 bug 修复后，用真正的实现替换。
@@ -2342,9 +2324,11 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 ```
 
-```js src/Panel.js hidden
+```js src/Panel.js
 export default function Panel({ children }) {
   return (
     <section className="panel">

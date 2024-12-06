@@ -36,11 +36,17 @@ function SearchPage() {
 
 #### 参数 {/*parameters*/}
 
+<<<<<<< HEAD
 * `value`: 你想延迟的值，可以是任何类型。
 * <CanaryBadge title="这个功能只在 Canary 渠道中可用" /> **可选的** `initialValue`: 组件初始渲染时使用的值。如果省略此选项，`useDeferredValue` 在初始渲染期间不会延迟，因为没有以前的版本可以渲染。
+=======
+* `value`: The value you want to defer. It can have any type.
+* **optional** `initialValue`: A value to use during the initial render of a component. If this option is omitted, `useDeferredValue` will not defer during the initial render, because there's no previous version of `value` that it can render instead.
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 
 #### 返回值 {/*returns*/}
 
+<<<<<<< HEAD
 - `currentValue`: 在初始渲染期间，返回的延迟值将与你提供的值相同。在更新期间，React 首先尝试使用旧值重新渲染（因此返回旧值），然后在后台尝试使用新值重新渲染（因此返回更新后的值）。
 
 <Canary>
@@ -48,6 +54,11 @@ function SearchPage() {
 在最新的 React Canary 版本中，`useDeferredValue` 在初始渲染期间返回 `initialValue`，并在后台使用返回的 `value` 重新调度渲染。
 
 </Canary>
+=======
+#### Returns {/*returns*/}
+
+- `currentValue`: During the initial render, the returned deferred value will be the `initialValue`, or the same as the value you provided. During updates, React will first attempt a re-render with the old value (so it will return the old value), and then try another re-render in the background with the new value (so it will return the updated value).
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 
 #### 注意事项 {/*caveats*/}
 
@@ -106,21 +117,6 @@ function SearchPage() {
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js
 import { Suspense, useState } from 'react';
 import SearchResults from './SearchResults.js';
@@ -141,15 +137,19 @@ export default function App() {
 }
 ```
 
-```js src/SearchResults.js hidden
+```js src/SearchResults.js
+import {use} from 'react';
 import { fetchData } from './data.js';
 
+<<<<<<< HEAD
 // 注意：此组件使用了一种实验性 API
 // 该 API 尚未在稳定版本的 React 中发布。
 
 // 如果想找实际的例子，可以尝试一个
 // 已经集成了 suspense 的框架，比如 Relay 或 Next.js。
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 export default function SearchResults({ query }) {
   if (query === '') {
     return null;
@@ -168,6 +168,7 @@ export default function SearchResults({ query }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // 这是一个解决演示中的一个 bug 的临时实现。
 // TODO：待 bug 修复后替换为真正的实现。
@@ -193,6 +194,8 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 ```
 
 ```js src/data.js hidden
@@ -220,7 +223,7 @@ async function getData(url) {
 async function getSearchResults(query) {
   // 添加一个假延迟来让等待更加明显。
   await new Promise(resolve => {
-    setTimeout(resolve, 500);
+    setTimeout(resolve, 1000);
   });
 
   const allAlbums = [{
@@ -320,21 +323,6 @@ export default function App() {
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js
 import { Suspense, useState, useDeferredValue } from 'react';
 import SearchResults from './SearchResults.js';
@@ -356,15 +344,19 @@ export default function App() {
 }
 ```
 
-```js src/SearchResults.js hidden
+```js src/SearchResults.js
+import {use} from 'react';
 import { fetchData } from './data.js';
 
+<<<<<<< HEAD
 // 注意：此组件使用了一种实验性 API
 // 该 API 尚未在稳定版本的 React 中发布。
 
 // 如果想找实际的例子，可以尝试一个
 // 已经集成了 suspense 的框架，比如 Relay 或 Next.js。
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 export default function SearchResults({ query }) {
   if (query === '') {
     return null;
@@ -383,6 +375,7 @@ export default function SearchResults({ query }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // 这是一个解决演示中的一个 bug 的临时实现。
 // TODO：待 bug 修复后应该替换为真正的实现。
@@ -408,6 +401,8 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 ```
 
 ```js src/data.js hidden
@@ -435,7 +430,7 @@ async function getData(url) {
 async function getSearchResults(query) {
 // 添加一个假延迟来让等待更加明显。
   await new Promise(resolve => {
-    setTimeout(resolve, 500);
+    setTimeout(resolve, 1000);
   });
 
   const allAlbums = [{
@@ -543,21 +538,6 @@ input { margin: 10px; }
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js
 import { Suspense, useState, useDeferredValue } from 'react';
 import SearchResults from './SearchResults.js';
@@ -585,15 +565,19 @@ export default function App() {
 }
 ```
 
-```js src/SearchResults.js hidden
+```js src/SearchResults.js
+import {use} from 'react';
 import { fetchData } from './data.js';
 
+<<<<<<< HEAD
 // 注意：此组件使用了一种实验性 API
 // 该 API 尚未在稳定版本的 React 中发布。
 
 // 如果想找实际的例子，可以尝试一个
 // 已经集成了 suspense 的框架，比如 Relay 或 Next.js。
 
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 export default function SearchResults({ query }) {
   if (query === '') {
     return null;
@@ -612,6 +596,7 @@ export default function SearchResults({ query }) {
     </ul>
   );
 }
+<<<<<<< HEAD
 
 // 这是一个解决演示中的一个 bug 的临时实现。
 // TODO：待 bug 修复后应该替换为真正的实现。
@@ -637,6 +622,8 @@ function use(promise) {
     throw promise;
   }
 }
+=======
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 ```
 
 ```js src/data.js hidden
@@ -664,7 +651,7 @@ async function getData(url) {
 async function getSearchResults(query) {
 // 添加一个假延迟来让等待更加明显。
   await new Promise(resolve => {
-    setTimeout(resolve, 500);
+    setTimeout(resolve, 1000);
   });
 
   const allAlbums = [{

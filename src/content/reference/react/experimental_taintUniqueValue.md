@@ -192,7 +192,11 @@ experimental_taintUniqueValue(
 );
 ```
 
+<<<<<<< HEAD
 现在无论何时有人试图将此密码传递给客户端组件，或者通过服务器操作将密码发送给客户端组件时都会引发一个错误，错误消息则是在调用 `taintUniqueValue` 时定义的。
+=======
+Now whenever anyone tries to pass this password to a Client Component, or send the password to a Client Component with a Server Function, an error will be thrown with message you defined when you called `taintUniqueValue`.
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 
 </DeepDive>
 

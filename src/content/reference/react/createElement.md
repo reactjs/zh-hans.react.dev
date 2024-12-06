@@ -48,10 +48,17 @@ function Greeting({ name }) {
 
 `createElement` 返回一个 React 元素，它有这些属性：
 
+<<<<<<< HEAD
 * `type`：你传入的 `type`。
 * `props`：你传入的 `props`，不包括 `ref` 和 `key`。如果 `type` 是一个组件，且带有过时的 `type.defaultProps` 属性，那么 `props` 中任何缺失或未定义的字段都会采用 `type.defaultProps` 中的值。
 * `ref`：你传入的 `ref`。如果缺失则为 `null`。
 * `key`：你传入的 `key`，会被强制转换为字符串。如果缺失则为 `null`。
+=======
+* `type`: The `type` you have passed.
+* `props`: The `props` you have passed except for `ref` and `key`.
+* `ref`: The `ref` you have passed. If missing, `null`.
+* `key`: The `key` you have passed, coerced to a string. If missing, `null`.
+>>>>>>> acda167885d7db3a5e61d5d992135a1f5f574f6c
 
 通常你会在你组件的最后返回这个元素，或者把它作为另一个元素的子元素。虽然你可以读取元素的属性，但你最好把创建的元素作为黑盒，只用于渲染。
 
