@@ -109,7 +109,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-[Effect “反应”响应式值](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) 因为这里的 `roomId` 是一个响应式值（它可能随重新渲染而改变），所以 linter 会验证你是否将它指定为依赖。如果 `roomId` 变成不同的值，React 将重新运行 Effect。这可以确保聊天界面与所选房间保持一致，并把变化“反馈”给下拉菜单：
+[Effect 会对响应式值作出“反应”。](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) 因为这里的 `roomId` 是一个响应式值（它可能随重新渲染而改变），所以 linter 会验证你是否将它指定为依赖。如果 `roomId` 变成不同的值，React 将重新运行 Effect。这可以确保聊天界面与所选房间保持一致，并把变化“反馈”给下拉菜单：
 
 <Sandpack>
 
