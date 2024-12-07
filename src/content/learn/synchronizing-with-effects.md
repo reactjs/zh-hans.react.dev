@@ -399,7 +399,7 @@ video { width: 250px; }
 
 依赖数组可以包含多个依赖项。只有当你指定的 **所有** 依赖项的值都与上一次渲染时完全相同，React 才会跳过重新运行该 Effect。React 使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来比较依赖项的值。有关详细信息，请参阅 [`useEffect` 参考文档](/reference/react/useEffect#reference)。
 
-**请注意，你不能随意“选择”依赖项**。如果你指定的依赖项与 React 根据 Effect 内部代码所推断出的依赖项不匹配，你将收到来自 lint 的错误提示。这有助于捕捉代码中的许多 bug。如果你不希望某些代码重新运行，[那么你应当 **修改 Effect 代码本身**，使其不再“需要”该依赖项](/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize)。
+**请注意，你不能随意“选择”依赖项**。如果你指定的依赖项与 React 根据 Effect 内部代码所推断出的依赖项不匹配，你将收到来自 linter 的错误提示。这有助于捕捉代码中的许多 bug。如果你不希望某些代码重新运行，[那么你应当 **修改 Effect 代码本身**，使其不再“需要”该依赖项](/learn/lifecycle-of-reactive-effects#what-to-do-when-you-dont-want-to-re-synchronize)。
 
 <Pitfall>
 
