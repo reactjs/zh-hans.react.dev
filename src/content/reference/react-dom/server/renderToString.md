@@ -86,9 +86,15 @@ app.use('/', (request, response) => {
 
 ## 替代方案 {/*alternatives*/}
 
+<<<<<<< HEAD
 ### 从 `renderToString` 迁移到服务器上的流式传输方法 {/*migrating-from-rendertostring-to-a-streaming-method-on-the-server*/}
 
 `renderToString` 立即返回一个字符串，因此不支持流式传输或等待数据。
+=======
+### Migrating from `renderToString` to a streaming render on the server {/*migrating-from-rendertostring-to-a-streaming-method-on-the-server*/}
+
+`renderToString` returns a string immediately, so it does not support streaming content as it loads.
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 
 如果可能的话，我们建议使用这些功能完整的替代方法：
 
@@ -99,7 +105,24 @@ app.use('/', (request, response) => {
 
 ---
 
+<<<<<<< HEAD
 ### 从客户端代码中移除 `renderToString` {/*removing-rendertostring-from-the-client-code*/}
+=======
+### Migrating from `renderToString` to a static prerender on the server {/*migrating-from-rendertostring-to-a-static-prerender-on-the-server*/}
+
+`renderToString` returns a string immediately, so it does not support waiting for data to load for static HTML generation.
+
+We recommend using these fully-featured alternatives:
+
+* If you use Node.js, use [`prerenderToNodeStream`.](/reference/react-dom/static/prerenderToNodeStream)
+* If you use Deno or a modern edge runtime with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), use [`prerender`.](/reference/react-dom/static/prerender)
+
+You can continue using `renderToString` if your static site generation environment does not support streams.
+
+---
+
+### Removing `renderToString` from the client code {/*removing-rendertostring-from-the-client-code*/}
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 
 有时，`renderToString` 用于在客户端将某个组件转换为 HTML。
 
@@ -137,5 +160,9 @@ console.log(div.innerHTML); // 例如，"<svg>...</svg>"
 
 如果某个组件 suspend（例如，因为它使用 [`lazy`](/reference/react/lazy) 定义或获取数据），`renderToString` 不会等待其内容解析完成。相反，`renderToString` 将找到最近的 [`<Suspense>`](/reference/react/Suspense) 边界，并在 HTML 中渲染其 `fallback` 属性。直到客户端代码加载后，内容才会显示出来。
 
+<<<<<<< HEAD
 要解决这个问题，请使用其中一个 [推荐的流式解决方案](#migrating-from-rendertostring-to-a-streaming-method-on-the-server)。它们可以在服务器上逐步以块的形式流式传输内容，使用户在客户端代码加载之前逐步看到页面填充。
+=======
+To solve this, use one of the [recommended streaming solutions.](#alternatives) For server side rendering, they can stream content in chunks as it resolves on the server so that the user sees the page being progressively filled in before the client code loads. For static site generation, they can wait for all the content to resolve before generating the static HTML.
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 

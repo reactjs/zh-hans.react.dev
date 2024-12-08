@@ -1,14 +1,16 @@
 ---
 title: use
-canary: true
 ---
 
+<<<<<<< HEAD
 <Canary>
 
 `use` API 仅在 Canary 与 experimental 渠道中可用。参阅 [React 发布渠道](/community/versioning-policy#all-release-channels) 以了解更多信息。
 
 </Canary>
 
+=======
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 <Intro>
 
 `use` 是一个 React API，它可以让你读取类似于 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context) 的资源的值。
@@ -54,9 +56,15 @@ function MessageComponent({ messagePromise }) {
 
 #### 注意 {/*caveats*/}
 
+<<<<<<< HEAD
 * `use` API 必须在组件或 Hook 内部调用。
 * 在 [服务器组件](/reference/rsc/use-server) 中获取数据时，应优先使用 `async` 和 `await` 而不是 `use`。`async` 和 `await` 会从调用 `await` 的点开始渲染，而 `use` 会在数据获取到后重新渲染组件。
 * 在 [服务器组件](/reference/rsc/use-server) 中创建 Promise 并将其传递给 [客户端组件](/reference/rsc/use-client) 优于在客户端组件中创建 Promise。在客户端组件中创建的 Promise 每次渲染都会重新创建。从服务器组件传递到客户端组件的 Promise 在重新渲染时保持稳定。[请参阅此示例](#streaming-data-from-server-to-client)。
+=======
+* The `use` API must be called inside a Component or a Hook.
+* When fetching data in a [Server Component](/reference/rsc/server-components), prefer `async` and `await` over `use`. `async` and `await` pick up rendering from the point where `await` was invoked, whereas `use` re-renders the component after the data is resolved.
+* Prefer creating Promises in [Server Components](/reference/rsc/server-components) and passing them to [Client Components](/reference/rsc/use-client) over creating Promises in Client Components. Promises created in Client Components are recreated on every render. Promises passed from a Server Component to a Client Component are stable across re-renders. [See this example](#streaming-data-from-server-to-client).
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 
 ---
 
@@ -199,17 +207,6 @@ function Button({ show, children }) {
 }
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "18.3.0-canary-9377e1010-20230712",
-    "react-dom": "18.3.0-canary-9377e1010-20230712",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js"
-}
-```
-
 </Sandpack>
 
 ### 将数据从服务器流式传递给客户端 {/*streaming-data-from-server-to-client*/}
@@ -291,9 +288,12 @@ export default function App() {
 ```
 
 ```js src/index.js hidden
+<<<<<<< HEAD
 // TODO: 在稳定版本中更新 import
 // 以替代此处 canary 版本中的导入方式，一旦 `use`
 // API 在 React 稳定版本中发布
+=======
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
@@ -311,16 +311,6 @@ root.render(
 );
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "18.3.0-canary-9377e1010-20230712",
-    "react-dom": "18.3.0-canary-9377e1010-20230712",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js"
-}
-```
 </Sandpack>
 
 <Note>
@@ -411,9 +401,12 @@ export default function App() {
 ```
 
 ```js src/index.js hidden
+<<<<<<< HEAD
 // TODO: 在稳定版本中更新 import
 // 以替代此处 canary 版本中的导入方式，一旦 `use`
 // API 在 React 稳定版本中发布
+=======
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
@@ -431,17 +424,6 @@ root.render(
 );
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "18.3.0-canary-9377e1010-20230712",
-    "react-dom": "18.3.0-canary-9377e1010-20230712",
-    "react-scripts": "^5.0.0",
-    "react-error-boundary": "4.0.3"
-  },
-  "main": "/index.js"
-}
-```
 </Sandpack>
 
 #### 使用 `Promise.catch` 提供替代值 {/*providing-an-alternative-value-with-promise-catch*/}

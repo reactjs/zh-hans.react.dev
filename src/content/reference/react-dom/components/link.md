@@ -1,8 +1,8 @@
 ---
 link: "<link>"
-canary: true
 ---
 
+<<<<<<< HEAD
 <Canary>
 
 React 对 `<link>` 的扩展当前仅在 React Canary 与 experimental 渠道中可用。在 React 的稳定版本中，`<link>` 仅作为 [浏览器内置 HTML 组件](https://react.dev/reference/react-dom/components#all-html-components) 使用。
@@ -10,6 +10,8 @@ React 对 `<link>` 的扩展当前仅在 React Canary 与 experimental 渠道中
 
 </Canary>
 
+=======
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 <Intro>
 
 浏览器内置的 `<link>` 组件允许使用外部资源，例如样式表，或使用链接元数据注释文档。

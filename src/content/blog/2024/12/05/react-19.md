@@ -1,21 +1,49 @@
 ---
-title: "React 19 RC"
+title: "React v19"
 author: The React Team
+<<<<<<< HEAD:src/content/blog/2024/04/25/react-19.md
 date: 2024/04/25
 description: React 19 RC 版现在可以在 npm 上使用了! 在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
 ---
 
 2024 年 4 月 25 日 [The React Team](/community/team)
+=======
+date: 2024/12/05
+description: React 19 is now available on npm! In this post, we'll give an overview of the new features in React 19, and how you can adopt them.
+---
+
+December 05, 2024 by [The React Team](/community/team)
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e:src/content/blog/2024/12/05/react-19.md
 
 ---
+<Note>
+
+### React 19 is now stable! {/*react-19-is-now-stable*/}
+
+Additions since this post was originally shared with the React 19 RC in April:
+
+- **Pre-warming for suspended trees**: see [Improvements to Suspense](/blog/2024/04/25/react-19-upgrade-guide#improvements-to-suspense).
+- **React DOM static APIs**: see [New React DOM Static APIs](#new-react-dom-static-apis).
+
+_The date for this post has been update to reflect the stable release date._
+
+</Note>
 
 <Intro>
 
+<<<<<<< HEAD:src/content/blog/2024/04/25/react-19.md
 React 19 RC 版本现在可以在 npm 上使用了!
 
 </Intro>
 
 在我们的 [React 19 RC 升级指南](/blog/2024/04/25/react-19-upgrade-guide) 中, 我们分享了将应用程序升级到 React 19 的分步说明。在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
+=======
+React v19 is now available on npm!
+
+</Intro>
+
+In our [React 19 Upgrade Guide](/blog/2024/04/25/react-19-upgrade-guide), we shared step-by-step instructions for upgrading your app to React 19. In this post, we'll give an overview of the new features in React 19, and how you can adopt them.
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e:src/content/blog/2024/12/05/react-19.md
 
 - [React 19 中的新功能](#whats-new-in-react-19)
 - [React 19 中的改进](#improvements-in-react-19)
@@ -312,6 +340,30 @@ function Heading({children}) {
 
 有关更多信息，请参阅 [`use`](/reference/react/use) 文档。
 
+## New React DOM Static APIs {/*new-react-dom-static-apis*/}
+
+We've added two new APIs to `react-dom/static` for static site generation:
+- [`prerender`](/reference/react-dom/static/prerender)
+- [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream)
+
+These new APIs improve on `renderToString` by waiting for data to load for static HTML generation. They are designed to work with streaming environments like Node.js Streams and Web Streams. For example, in a Web Stream environment, you can prerender a React tree to static HTML with `prerender`: 
+
+```js
+import { prerender } from 'react-dom/static';
+
+async function handler(request) {
+  const {prelude} = await prerender(<App />, {
+    bootstrapScripts: ['/main.js']
+  });
+  return new Response(prelude, {
+    headers: { 'content-type': 'text/html' },
+  });
+}
+```
+
+Prerender APIs will wait for all data to load before returning the static HTML stream. Streams can be converted to strings, or sent with a streaming response. They do not support streaming content as it loads, which is supported by the existing [React DOM server rendering APIs](/reference/react-dom/server).
+
+For more information, see [React DOM Static APIs](/reference/react-dom/static).
 
 ## React 服务器组件 {/*react-server-components*/}
 
@@ -771,5 +823,4 @@ React 19 添加了对自定义元素的全面支持，并通过了 [Custom Eleme
 
 请查看 [React 19 升级指南](/blog/2024/04/25/react-19-upgrade-guide) 以获取逐步指导和完整的破坏性和显著变化列表。
 
-
-
+_Note: this post was originally published 04/25/2024 and has been updated to 12/05/2024 with the stable release._
