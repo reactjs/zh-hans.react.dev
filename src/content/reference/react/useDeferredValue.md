@@ -36,29 +36,13 @@ function SearchPage() {
 
 #### 参数 {/*parameters*/}
 
-<<<<<<< HEAD
 * `value`: 你想延迟的值，可以是任何类型。
-* <CanaryBadge title="这个功能只在 Canary 渠道中可用" /> **可选的** `initialValue`: 组件初始渲染时使用的值。如果省略此选项，`useDeferredValue` 在初始渲染期间不会延迟，因为没有以前的版本可以渲染。
-=======
-* `value`: The value you want to defer. It can have any type.
-* **optional** `initialValue`: A value to use during the initial render of a component. If this option is omitted, `useDeferredValue` will not defer during the initial render, because there's no previous version of `value` that it can render instead.
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
+* **可选的** `initialValue`: 组件初始渲染时使用的值。如果省略此选项，`useDeferredValue` 在初始渲染期间不会延迟，因为没有以前的版本可以渲染。
+
 
 #### 返回值 {/*returns*/}
 
-<<<<<<< HEAD
-- `currentValue`: 在初始渲染期间，返回的延迟值将与你提供的值相同。在更新期间，React 首先尝试使用旧值重新渲染（因此返回旧值），然后在后台尝试使用新值重新渲染（因此返回更新后的值）。
-
-<Canary>
-
-在最新的 React Canary 版本中，`useDeferredValue` 在初始渲染期间返回 `initialValue`，并在后台使用返回的 `value` 重新调度渲染。
-
-</Canary>
-=======
-#### Returns {/*returns*/}
-
-- `currentValue`: During the initial render, the returned deferred value will be the `initialValue`, or the same as the value you provided. During updates, React will first attempt a re-render with the old value (so it will return the old value), and then try another re-render in the background with the new value (so it will return the updated value).
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
+- `currentValue`: 在初始渲染期间，返回的延迟值是 `initialValue` 或你提供的值。在更新期间，React 首先尝试使用旧值重新渲染（因此返回旧值），然后在后台尝试使用新值重新渲染（因此返回更新后的值）。
 
 #### 注意事项 {/*caveats*/}
 
@@ -141,15 +125,6 @@ export default function App() {
 import {use} from 'react';
 import { fetchData } from './data.js';
 
-<<<<<<< HEAD
-// 注意：此组件使用了一种实验性 API
-// 该 API 尚未在稳定版本的 React 中发布。
-
-// 如果想找实际的例子，可以尝试一个
-// 已经集成了 suspense 的框架，比如 Relay 或 Next.js。
-
-=======
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 export default function SearchResults({ query }) {
   if (query === '') {
     return null;
@@ -168,34 +143,6 @@ export default function SearchResults({ query }) {
     </ul>
   );
 }
-<<<<<<< HEAD
-
-// 这是一个解决演示中的一个 bug 的临时实现。
-// TODO：待 bug 修复后替换为真正的实现。
-function use(promise) {
-  if (promise.status === 'fulfilled') {
-    return promise.value;
-  } else if (promise.status === 'rejected') {
-    throw promise.reason;
-  } else if (promise.status === 'pending') {
-    throw promise;
-  } else {
-    promise.status = 'pending';
-    promise.then(
-      result => {
-        promise.status = 'fulfilled';
-        promise.value = result;
-      },
-      reason => {
-        promise.status = 'rejected';
-        promise.reason = reason;
-      },      
-    );
-    throw promise;
-  }
-}
-=======
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 ```
 
 ```js src/data.js hidden
@@ -348,15 +295,6 @@ export default function App() {
 import {use} from 'react';
 import { fetchData } from './data.js';
 
-<<<<<<< HEAD
-// 注意：此组件使用了一种实验性 API
-// 该 API 尚未在稳定版本的 React 中发布。
-
-// 如果想找实际的例子，可以尝试一个
-// 已经集成了 suspense 的框架，比如 Relay 或 Next.js。
-
-=======
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 export default function SearchResults({ query }) {
   if (query === '') {
     return null;
@@ -375,34 +313,6 @@ export default function SearchResults({ query }) {
     </ul>
   );
 }
-<<<<<<< HEAD
-
-// 这是一个解决演示中的一个 bug 的临时实现。
-// TODO：待 bug 修复后应该替换为真正的实现。
-function use(promise) {
-  if (promise.status === 'fulfilled') {
-    return promise.value;
-  } else if (promise.status === 'rejected') {
-    throw promise.reason;
-  } else if (promise.status === 'pending') {
-    throw promise;
-  } else {
-    promise.status = 'pending';
-    promise.then(
-      result => {
-        promise.status = 'fulfilled';
-        promise.value = result;
-      },
-      reason => {
-        promise.status = 'rejected';
-        promise.reason = reason;
-      },      
-    );
-    throw promise;
-  }
-}
-=======
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 ```
 
 ```js src/data.js hidden
@@ -569,15 +479,6 @@ export default function App() {
 import {use} from 'react';
 import { fetchData } from './data.js';
 
-<<<<<<< HEAD
-// 注意：此组件使用了一种实验性 API
-// 该 API 尚未在稳定版本的 React 中发布。
-
-// 如果想找实际的例子，可以尝试一个
-// 已经集成了 suspense 的框架，比如 Relay 或 Next.js。
-
-=======
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 export default function SearchResults({ query }) {
   if (query === '') {
     return null;
@@ -596,34 +497,6 @@ export default function SearchResults({ query }) {
     </ul>
   );
 }
-<<<<<<< HEAD
-
-// 这是一个解决演示中的一个 bug 的临时实现。
-// TODO：待 bug 修复后应该替换为真正的实现。
-function use(promise) {
-  if (promise.status === 'fulfilled') {
-    return promise.value;
-  } else if (promise.status === 'rejected') {
-    throw promise.reason;
-  } else if (promise.status === 'pending') {
-    throw promise;
-  } else {
-    promise.status = 'pending';
-    promise.then(
-      result => {
-        promise.status = 'fulfilled';
-        promise.value = result;
-      },
-      reason => {
-        promise.status = 'rejected';
-        promise.reason = reason;
-      },      
-    );
-    throw promise;
-  }
-}
-=======
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 ```
 
 ```js src/data.js hidden

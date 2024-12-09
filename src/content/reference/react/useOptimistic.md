@@ -2,15 +2,6 @@
 title: useOptimistic
 ---
 
-<<<<<<< HEAD
-<Canary>
-
-`useOptimistic` Hook 仅在 Canary 与 experimental 渠道中可用。参阅 [React 发布渠道](/community/versioning-policy#all-release-channels) 以了解更多信息。
-
-</Canary>
-
-=======
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 <Intro>
 
 `useOptimistic` 是一个 React Hook，它可以帮助你更乐观地更新用户界面。

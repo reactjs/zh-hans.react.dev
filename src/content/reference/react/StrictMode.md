@@ -42,16 +42,10 @@ root.render(
 
 严格模式启用了以下仅在开发环境下有效的行为：
 
-<<<<<<< HEAD
-- 组件将 [重新渲染一次](#fixing-bugs-found-by-double-rendering-in-development)，以查找由于非纯渲染而引起的错误。
-- 组件将 [重新运行 Effect 一次](#fixing-bugs-found-by-re-running-effects-in-development)，以查找由于缺少 Effect 清理而引起的错误。
+- 组件将 [额外重新渲染一次](#fixing-bugs-found-by-double-rendering-in-development) 以查找由于非纯渲染而引起的错误。
+- 组件将 [额外重新运行一次 Effect ](#fixing-bugs-found-by-re-running-effects-in-development) 以查找由于缺少 Effect 清理而引起的错误。
+- 组件将 [额外重新运行一次 refs 回调](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) 以查找由于缺少 ref 清理函数而引起的错误。
 - 组件将被 [检查是否使用了已弃用的 API](#fixing-deprecation-warnings-enabled-by-strict-mode)。
-=======
-- Your components will [re-render an extra time](#fixing-bugs-found-by-double-rendering-in-development) to find bugs caused by impure rendering.
-- Your components will [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) to find bugs caused by missing Effect cleanup.
-- Your components will [re-run refs callbacks an extra time](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) to find bugs caused by missing ref cleanup.
-- Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode)
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 
 #### 参数 {/*props*/}
 
@@ -92,16 +86,10 @@ root.render(
 
 严格模式启用了以下仅在开发环境下有效的行为：
 
-<<<<<<< HEAD
-- 组件将 [重新渲染一次](#fixing-bugs-found-by-double-rendering-in-development)，以查找由于非纯渲染而引起的错误。
-- 组件将 [重新运行 Effect 一次](#fixing-bugs-found-by-re-running-effects-in-development)，以查找由于缺少 Effect 清理而引起的错误。
+- 组件将 [重新渲染一次](#fixing-bugs-found-by-double-rendering-in-development) 以查找由于非纯渲染而引起的错误。
+- 组件将 [重新运行一次 Effect](#fixing-bugs-found-by-re-running-effects-in-development) 以查找由于缺少 Effect 清理而引起的错误。
+- 组件将 [额外重新运行一次 refs 回调](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) 以查找由于缺少 ref 清理函数而引起的错误。
 - 组件将被 [检查是否使用了已弃用的 API](#fixing-deprecation-warnings-enabled-by-strict-mode)。
-=======
-- Your components will [re-render an extra time](#fixing-bugs-found-by-double-rendering-in-development) to find bugs caused by impure rendering.
-- Your components will [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) to find bugs caused by missing Effect cleanup.
-- Your components will [re-run ref callbacks an extra time](#fixing-bugs-found-by-cleaning-up-and-re-attaching-dom-refs-in-development) to find bugs caused by missing ref cleanup.
-- Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode)
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 
 **所有这些检查仅在开发环境中进行，不会影响生产构建。**
 
@@ -841,9 +829,6 @@ button { margin-left: 10px; }
 ---
 ### Fixing bugs found by re-running ref callbacks in development {/*fixing-bugs-found-by-re-running-ref-callbacks-in-development*/}
 
-<<<<<<< HEAD
-### 修复严格模式发出的弃用警告 {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
-=======
 Strict Mode can also help find bugs in [callbacks refs.](/learn/manipulating-the-dom-with-refs)
 
 Every callback `ref` has some setup code and may have some cleanup code. Normally, React calls setup when the element is *created* (is added to the DOM) and calls cleanup when the element is *removed* (is removed from the DOM).
@@ -1254,18 +1239,10 @@ Now on inital mount in StrictMode, the ref callbacks are all setup, cleaned up, 
 Without Strict Mode, it was easy to miss the bug until you clicked around to app to notice broken features. Strict Mode made the bugs appear right away, before you push them to production.
 
 --- 
-### Fixing deprecation warnings enabled by Strict Mode {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
+### 修复严格模式发出的弃用警告 {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
 
 React 会在任何一个位于 `<StrictMode>` 树中的组件使用以下弃用 API 时发出警告：
 
-<<<<<<< HEAD
-* [`findDOMNode`](/reference/react-dom/findDOMNode)，[请参考替代方案](https://reactjs.org/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)。
 * `UNSAFE_` 类生命周期方法，例如 [`UNSAFE_componentWillMount`](/reference/react/Component#unsafe_componentwillmount)，[请参考替代方案](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#migrating-from-legacy-lifecycles)。
-* 旧版上下文（[`childContextTypes`](/reference/react/Component#static-childcontexttypes)、[`contextTypes`](/reference/react/Component#static-contexttypes) 和 [`getChildContext`](/reference/react/Component#getchildcontext)），[请参考替代方案](/reference/react/createContext)。
-* 旧版字符串引用（[`this.refs`](/reference/react/Component#refs)）,[请参考替代方案](https://reactjs.org/docs/strict-mode.html#warning-about-legacy-string-ref-api-usage)。
-=======
-* `UNSAFE_` class lifecycle methods like [`UNSAFE_componentWillMount`](/reference/react/Component#unsafe_componentwillmount). [See alternatives.](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#migrating-from-legacy-lifecycles)
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 
 这些 API 主要用于旧版的 [类式组件](/reference/react/Component)，因此在新版程序中很少出现。
