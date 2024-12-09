@@ -10,7 +10,17 @@ title: React Blog
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
+<<<<<<< HEAD
 <BlogCard title="React Compiler 发布 Beta 版本" date="October 21, 2024" url="/blog/2024/10/21/react-compiler-beta-release">
+=======
+<BlogCard title="React v19 " date="December 5, 2024" url="/blog/2024/12/05/react-19">
+
+In the React 19 Upgrade Guide, we shared step-by-step instructions for upgrading your app to React 19. In this post, we'll give an overview of the new features in React 19, and how you can adopt them ...
+
+</BlogCard>
+
+<BlogCard title="React Compiler Beta Release" date="October 21, 2024" url="/blog/2024/10/21/react-compiler-beta-release">
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 
 我们在 React Conf 2024 上宣布了 React Compiler 的实验性版本。从那时起我们已经取得了很多进展，在这篇文章中，我们将分享 React Compiler 下一步要做的事情……
 
@@ -22,6 +32,7 @@ title: React Blog
 
 </BlogCard>
 
+<<<<<<< HEAD
 <BlogCard title="React 19 RC " date="April 25, 2024" url="/blog/2024/04/25/react-19">
 
 在我们的 React 19 RC 升级指南中, 我们分享了将应用程序升级到 React 19 的分步说明。在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们……
@@ -29,6 +40,9 @@ title: React Blog
 </BlogCard>
 
 <BlogCard title="React 19 RC 升级指南" date="April 25, 2024" url="/blog/2024/04/25/react-19-upgrade-guide">
+=======
+<BlogCard title="React 19 Upgrade Guide" date="April 25, 2024" url="/blog/2024/04/25/react-19-upgrade-guide">
+>>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 
 React 19 中新增的改进需要一些破坏性变更，但我们已经尽力让升级过程尽可能平滑，我们预计这些变更不会影响大多数应用。在这篇文章中，我们将指导你完成将库升级到 React 19 的步骤……
 
