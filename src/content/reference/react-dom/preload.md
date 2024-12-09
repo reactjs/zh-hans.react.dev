@@ -2,15 +2,7 @@
 title: preload
 ---
 
-<<<<<<< HEAD
-<Canary>
 
-`preload` 函数当前仅在 React Canary 与 experimental 渠道中可用，请在 [此处了解更多关于 React 发布渠道的信息](/community/versioning-policy#all-release-channels)。
-
-</Canary>
-
-=======
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 <Note>
 
  [基于 React 的框架](/learn/start-a-new-react-project) 通常会内置资源处理方案，因此你可能不必手动调用此 API。请查阅框架文档以获取详细信息。

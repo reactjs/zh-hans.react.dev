@@ -3,15 +3,7 @@ title: useFormStatus
 canary: true
 ---
 
-<<<<<<< HEAD
-<Canary>
 
-`useFormStatus` Hook 目前仅在 React Canary 与 experimental 渠道中可用。在此处了解更多关于 [React 发布渠道](/community/versioning-policy#all-release-channels) 的信息。
-
-</Canary>
-
-=======
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 <Intro>
 
 `useFormStatus` 是一个提供上次表单提交状态信息的 Hook。

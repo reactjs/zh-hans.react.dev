@@ -50,11 +50,7 @@ class Greeting extends Component {
 
 ### `context` {/*context*/}
 
-<<<<<<< HEAD
-类式组件可以通过使用 `this.context` 访问 [context](/learn/passing-data-deeply-with-context)。只有使用 [`static contextType`](#static-contexttype)（最新的）或者 [`static contextTypes`](#static-contexttypes)（已废弃）特别指定想要接受 **哪一个** context 时才会有效。
-=======
-The [context](/learn/passing-data-deeply-with-context) of a class component is available as `this.context`. It is only available if you specify *which* context you want to receive using [`static contextType`](#static-contexttype).
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
+类式组件可以通过使用 `this.context` 访问 [context](/learn/passing-data-deeply-with-context)。但是只有使用 [`static contextType`](#static-contexttype) 指定想要接受 **哪一个** context 时才会有效。
 
 类式组件一次只能读取一个 context。
 
@@ -109,21 +105,7 @@ class Greeting extends Component {
 
 ---
 
-<<<<<<< HEAD
-### `refs` {/*refs*/}
 
-<Deprecated>
-
-这个 API 将在 React 未来的主版本中被移除。[使用 `createRef` 来代替](/reference/react/createRef)。
-
-</Deprecated>
-
-允许你获取此组件 [过时的字符串 ref](https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs)。
-
----
-
-=======
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 ### `state` {/*state*/}
 
 使用 `this.state` 来访问一个类式组件的 state。`state` 字段必须是一个对象。请不要直接改变 state 的值。如果你希望改变 state，那么请使用新的 state 来调用 `setState` 函数。
@@ -501,21 +483,7 @@ class ChatRoom extends Component {
 
 ---
 
-<<<<<<< HEAD
-### `getChildContext()` {/*getchildcontext*/}
 
-<Deprecated>
-
-该 API 将在 React 未来的主版本中删除。[使用 `Context.Provider` 代替](/reference/react/createContext#provider)。
-
-</Deprecated>
-
-允许你指定由该组件提供的 [历史用法的 context](https://reactjs.org/docs/legacy-context.html) 的值。
-
----
-
-=======
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 ### `getSnapshotBeforeUpdate(prevProps, prevState)` {/*getsnapshotbeforeupdate*/}
 
 如果你实现了 `getSnapshotBeforeUpdate`，React 会在 React 更新 DOM 之前时直接调用它。它使你的组件能够在 DOM 发生更改之前捕获一些信息（例如滚动的位置）。此生命周期方法返回的任何值都将作为参数传递给 [`componentDidUpdate`](#componentdidupdate)。
@@ -746,15 +714,9 @@ class Rectangle extends Component {
 
 #### 参数 {/*shouldcomponentupdate-parameters*/}
 
-<<<<<<< HEAD
 - `nextProps`：组件即将用来渲染的下一个 props。将 `nextProps` 与 [`this.props`](#props) 进行比较以确定发生了什么变化。
 - `nextState`：组件即将渲染的下一个 state。将 `nextState` 与 [`this.state`](#props) 进行比较以确定发生了什么变化。
-- `nextContext`：组件将要渲染的下一个 context。将 `nextContext` 与 [`this.context`](#context) 进行比较以确定发生了什么变化。仅当你指定了 [`static contextType`](#static-contexttype)（更新的）或 [`static contextTypes`](#static-contexttypes)（旧版）时才可用。
-=======
-- `nextProps`: The next props that the component is about to render with. Compare `nextProps` to [`this.props`](#props) to determine what changed.
-- `nextState`: The next state that the component is about to render with. Compare `nextState` to [`this.state`](#props) to determine what changed.
-- `nextContext`: The next context that the component is about to render with. Compare `nextContext` to [`this.context`](#context) to determine what changed. Only available if you specify [`static contextType`](#static-contexttype).
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
+- `nextContext`：组件将要渲染的下一个 context。将 `nextContext` 与 [`this.context`](#context) 进行比较以确定发生了什么变化。仅当你指定了 [`static contextType`](#static-contexttype) 时才可用。
 
 #### 返回值 {/*shouldcomponentupdate-returns*/}
 
@@ -828,13 +790,8 @@ class Rectangle extends Component {
 
 #### 参数 {/*unsafe_componentwillreceiveprops-parameters*/}
 
-<<<<<<< HEAD
 - `nextProps`：组件即将从父组件接收的下一个 props。可以将 `nextProps` 与 [`this.props`](#props) 进行比较以确定具体是什么地方发生了变化。
-- `nextContext`：组件即将从最近的 provider 中接收的下一个 context。可以将 `nextContext` 与 [`this.context`](#context) 进行比较以确定具体是什么地方发生了变化。仅在指定 [`static contextType`](#static-contexttype)）（最新用法）或 [`static contextTypes`](#static-contexttypes) 时可用（传统用法）。
-=======
-- `nextProps`: The next props that the component is about to receive from its parent component. Compare `nextProps` to [`this.props`](#props) to determine what changed.
-- `nextContext`: The next context that the component is about to receive from the closest provider. Compare `nextContext` to [`this.context`](#context) to determine what changed. Only available if you specify [`static contextType`](#static-contexttype).
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
+- `nextContext`：组件即将从最近的 provider 中接收的下一个 context。可以将 `nextContext` 与 [`this.context`](#context) 进行比较以确定具体是什么地方发生了变化。仅在指定 [`static contextType`](#static-contexttype) 时可用。
 
 #### 返回值 {/*unsafe_componentwillreceiveprops-returns*/}
 
@@ -899,33 +856,7 @@ class Rectangle extends Component {
 
 ---
 
-<<<<<<< HEAD
-### `static childContextTypes` {/*static-childcontexttypes*/}
 
-<Deprecated>
-
-该 API 将在 React 未来的主版本中删除。[使用 `static contextType` 代替](#static-contexttype)。
-
-</Deprecated>
-
-允许你指定此组件提供哪个 [历史用法的 context](https://reactjs.org/docs/legacy-context.html)。
-
----
-
-### `static contextTypes` {/*static-contexttypes*/}
-
-<Deprecated>
-
-该 API 将在 React 的未来主要版本中删除。[使用 `static contextType` 代替](#static-contexttype)。
-
-</Deprecated>
-
-允许你指定此组件使用哪个 [历史用法的 context](https://reactjs.org/docs/legacy-context.html)。
-
----
-
-=======
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 ### `static contextType` {/*static-contexttype*/}
 
 如果你想从类式组件中读取 [`this.context`](#context-instance-field)，则必须指定它需要读取哪个 context。你指定为 `static contextType` 的 context 必须是之前由 [`createContext` 创建的值](/reference/react/createContext)。
@@ -1000,37 +931,7 @@ class Button extends Component {
 
 ---
 
-<<<<<<< HEAD
-### `static propTypes` {/*static-proptypes*/}
 
-你可以定义 `static propTypes` 和 [`prop-types`](https://www.npmjs.com/package/prop-types) 库来声明组件可接受的 props 类型。这些类型仅在渲染和开发过程中进行检查。
-
-```js
-import PropTypes from 'prop-types';
-
-class Greeting extends React.Component {
-  static propTypes = {
-    name: PropTypes.string
-  };
-
-  render() {
-    return (
-      <h1>Hello, {this.props.name}</h1>
-    );
-  }
-}
-```
-
-<Note>
-
-我们建议使用 [TypeScript](https://www.typescriptlang.org/) 而不是在运行时检查 prop 类型。
-
-</Note>
-
----
-
-=======
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 ### `static getDerivedStateFromError(error)` {/*static-getderivedstatefromerror*/}
 
 如果你定义了 `static getDerivedStateFromError`，那么当子组件（包括远亲组件）在渲染过程中抛出错误时，React 就会调用它。这使你可以显示错误消息而不是直接清理 UI。

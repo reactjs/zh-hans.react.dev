@@ -2,15 +2,7 @@
 title: preconnect
 ---
 
-<<<<<<< HEAD
-<Canary>
 
-`preconnect` 函数当前仅在 React Canary 与 experimental 渠道中可用，请在 [此处了解更多关于 React 发布渠道的信息](/community/versioning-policy#all-release-channels)。
-
-</Canary>
-
-=======
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 <Intro>
 
 `preconnect` 可以帮助提前连接到一个期望从中加载资源的服务器。
