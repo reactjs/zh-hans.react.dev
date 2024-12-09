@@ -320,51 +320,27 @@ li {
   key={cat.id}
   ref={node => {
     const map = getMap();
-<<<<<<< HEAD
-    if (node) {
-      // Add to the Map
-      map.set(cat, node);
-    } else {
-      // Remove from the Map
-      map.delete(cat);
-    }
-  }}
->
-```
-
-这使你可以之后从 Map 读取单个 DOM 节点。
-
-<Canary>
-
-这个例子展示了另一种使用 `ref` 回调清理函数来管理 Map 的方法。
-
-```js
-<li
-  key={cat.id}
-  ref={node => {
-    const map = getMap();
-=======
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
-    // Add to the Map
+    // 添加到 Map 中
     map.set(cat, node);
 
     return () => {
-      // Remove from the Map
+      // 从 Map 中移除
       map.delete(cat);
     };
   }}
 >
 ```
 
-This lets you read individual DOM nodes from the Map later.
+这使你可以之后从 Map 读取单个 DOM 节点。
 
 <Note>
 
-When Strict Mode is enabled, ref callbacks will run twice in development.
+启用严格模式后，ref 回调将在开发中运行两次。
 
-Read more about [how this helps find bugs](/reference/react/StrictMode#fixing-bugs-found-by-re-running-ref-callbacks-in-development) in callback refs.
+阅读更多这将 [如何帮助你在 ref 回调中找到 bug](/reference/react/StrictMode#fixing-bugs-found-by-re-running-ref-callbacks-in-development) 的细节。
 
 </Note>
+=======
 
 </DeepDive>
 
