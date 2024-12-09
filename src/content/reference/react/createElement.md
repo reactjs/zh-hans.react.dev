@@ -49,7 +49,7 @@ function Greeting({ name }) {
 `createElement` 返回一个 React 元素，它有这些属性：
 
 * `type`：你传入的 `type`。
-* `props`：你传入的 `props`，不包括 `ref` 和 `key`。如果 `type` 是一个组件，且带有过时的 `type.defaultProps` 属性，那么 `props` 中任何缺失或未定义的字段都会采用 `type.defaultProps` 中的值。
+* `props`：你传入的 `props`，不包括 `ref` 和 `key`。
 * `ref`：你传入的 `ref`。如果缺失则为 `null`。
 * `key`：你传入的 `key`，会被强制转换为字符串。如果缺失则为 `null`。
 
