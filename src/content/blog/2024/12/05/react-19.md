@@ -1,21 +1,33 @@
 ---
-title: "React 19 RC"
+title: "React v19"
 author: The React Team
-date: 2024/04/25
-description: React 19 RC 版现在可以在 npm 上使用了! 在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
+date: 2024/12/05
+description: React 19 版现在可以在 npm 上使用了! 在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
 ---
 
-2024 年 4 月 25 日 [The React Team](/community/team)
+2024 年 12 月 25 日 [The React Team](/community/team)
 
 ---
+<Note>
+
+### React 19 现已稳定！ {/*react-19-is-now-stable*/}
+
+从 4 月份发布这篇介绍 React 19 RC 的博客以来有以下新增内容：
+
+- **预热 suspend 树**：阅读 [改善 Suspense](/blog/2024/04/25/react-19-upgrade-guide#improvements-to-suspense) 来了解更多。
+- **React DOM 静态 API**：阅读 [新的 React DOM 静态 API](#new-react-dom-static-apis) 来了解更多。
+
+__本文的日期已更新，以反映稳定版的发布日期。__
+
+</Note>
 
 <Intro>
 
-React 19 RC 版本现在可以在 npm 上使用了!
+React 19 版本现在可以在 npm 上使用了!
 
 </Intro>
 
-在我们的 [React 19 RC 升级指南](/blog/2024/04/25/react-19-upgrade-guide) 中, 我们分享了将应用程序升级到 React 19 的分步说明。在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
+在我们的 [React 19 升级指南](/blog/2024/04/25/react-19-upgrade-guide) 中, 我们分享了将应用程序升级到 React 19 的分步说明。在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
 
 - [React 19 中的新功能](#whats-new-in-react-19)
 - [React 19 中的改进](#improvements-in-react-19)
@@ -312,6 +324,30 @@ function Heading({children}) {
 
 有关更多信息，请参阅 [`use`](/reference/react/use) 文档。
 
+## New React DOM Static APIs {/*new-react-dom-static-apis*/}
+
+We've added two new APIs to `react-dom/static` for static site generation:
+- [`prerender`](/reference/react-dom/static/prerender)
+- [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream)
+
+These new APIs improve on `renderToString` by waiting for data to load for static HTML generation. They are designed to work with streaming environments like Node.js Streams and Web Streams. For example, in a Web Stream environment, you can prerender a React tree to static HTML with `prerender`: 
+
+```js
+import { prerender } from 'react-dom/static';
+
+async function handler(request) {
+  const {prelude} = await prerender(<App />, {
+    bootstrapScripts: ['/main.js']
+  });
+  return new Response(prelude, {
+    headers: { 'content-type': 'text/html' },
+  });
+}
+```
+
+Prerender APIs will wait for all data to load before returning the static HTML stream. Streams can be converted to strings, or sent with a streaming response. They do not support streaming content as it loads, which is supported by the existing [React DOM server rendering APIs](/reference/react-dom/server).
+
+For more information, see [React DOM Static APIs](/reference/react-dom/static).
 
 ## React 服务器组件 {/*react-server-components*/}
 
@@ -771,5 +807,4 @@ React 19 添加了对自定义元素的全面支持，并通过了 [Custom Eleme
 
 请查看 [React 19 升级指南](/blog/2024/04/25/react-19-upgrade-guide) 以获取逐步指导和完整的破坏性和显著变化列表。
 
-
-
+__注意：这篇文章最初发布于 2024 年 4 月 25 日，并已将内容更新至 2024 年 12 月 5 日发布的稳定版本。__

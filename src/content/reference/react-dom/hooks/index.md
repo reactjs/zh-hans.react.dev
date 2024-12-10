@@ -12,12 +12,6 @@ title: "Built-in React DOM Hooks"
 
 ## Form Hooks {/*form-hooks*/}
 
-<Canary>
-
-Form Hooks 目前仅在 React canary 与 experimental 渠道中可用。在此处了解更多关于 [React 发布渠道](/community/versioning-policy#all-release-channels) 的信息。
-
-</Canary>
-
 **Form** 允许创建用于提交信息的交互式控件。要在组件中管理表单，请使用以下其中一个 Hook：
 
 * [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) 允许根据表单的状态更新用户界面。

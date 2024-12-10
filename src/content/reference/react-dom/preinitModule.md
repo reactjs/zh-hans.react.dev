@@ -1,13 +1,6 @@
 ---
 title: preinitModule
-canary: true
 ---
-
-<Canary>
-
-`preinitModule` 函数当前仅在 React Canary 与 experimental 渠道中可用，请在 [此处了解更多关于 React 发布渠道的信息](/community/versioning-policy#all-release-channels)。
-
-</Canary>
 
 <Note>
 

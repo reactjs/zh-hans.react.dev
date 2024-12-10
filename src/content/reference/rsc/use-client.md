@@ -1,14 +1,13 @@
 ---
 title: "'use client'"
 titleForTitleTag: "'use client' 指示符"
-canary: true
 ---
 
-<Canary>
+<RSC>
 
-`'use client'` 仅在 [使用 React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 或构建可适配库时需要。
+`'use client'` 用于 [React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)。
 
-</Canary>
+</RSC>
 
 
 <Intro>
@@ -270,7 +269,7 @@ function App() {
 	* [TypedArray](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) 与 [ArrayBuffer](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
 * [Date](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date)
 * 普通 [对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)：使用 [对象初始化器](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Object_initializer) 创建的、具有可序列化属性
-* [Server Action](/reference/rsc/use-server) 中的函数
+* [服务器函数](/reference/rsc/use-server) 中的函数
 * 客户端或服务器组件元素（JSX）
 * [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 

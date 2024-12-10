@@ -1,14 +1,6 @@
 ---
 meta: "<meta>"
-canary: true
 ---
-
-<Canary>
-
-React 对 `<meta>` 的扩展当前仅在 React Canary 与 experimental 渠道中可用。在 React 的稳定版本中，`<meta>` 仅作为 [浏览器内置 HTML 组件](https://react.dev/reference/react-dom/components#all-html-components) 使用。请在 [此处了解更多关于 React 发布渠道的信息](/community/versioning-policy#all-release-channels)。
-
-</Canary>
-
 
 <Intro>
 

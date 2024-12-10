@@ -50,7 +50,7 @@ class Greeting extends Component {
 
 ### `context` {/*context*/}
 
-类式组件可以通过使用 `this.context` 访问 [context](/learn/passing-data-deeply-with-context)。只有使用 [`static contextType`](#static-contexttype)（最新的）或者 [`static contextTypes`](#static-contexttypes)（已废弃）特别指定想要接受 **哪一个** context 时才会有效。
+类式组件可以通过使用 `this.context` 访问 [context](/learn/passing-data-deeply-with-context)。但是只有使用 [`static contextType`](#static-contexttype) 指定想要接受 **哪一个** context 时才会有效。
 
 类式组件一次只能读取一个 context。
 
@@ -102,18 +102,6 @@ class Greeting extends Component {
 [了解如何迁移](#migrating-a-simple-component-from-a-class-to-a-function)。
 
 </Note>
-
----
-
-### `refs` {/*refs*/}
-
-<Deprecated>
-
-这个 API 将在 React 未来的主版本中被移除。[使用 `createRef` 来代替](/reference/react/createRef)。
-
-</Deprecated>
-
-允许你获取此组件 [过时的字符串 ref](https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs)。
 
 ---
 
@@ -494,18 +482,6 @@ class ChatRoom extends Component {
 
 ---
 
-### `getChildContext()` {/*getchildcontext*/}
-
-<Deprecated>
-
-该 API 将在 React 未来的主版本中删除。[使用 `Context.Provider` 代替](/reference/react/createContext#provider)。
-
-</Deprecated>
-
-允许你指定由该组件提供的 [历史用法的 context](https://reactjs.org/docs/legacy-context.html) 的值。
-
----
-
 ### `getSnapshotBeforeUpdate(prevProps, prevState)` {/*getsnapshotbeforeupdate*/}
 
 如果你实现了 `getSnapshotBeforeUpdate`，React 会在 React 更新 DOM 之前时直接调用它。它使你的组件能够在 DOM 发生更改之前捕获一些信息（例如滚动的位置）。此生命周期方法返回的任何值都将作为参数传递给 [`componentDidUpdate`](#componentdidupdate)。
@@ -738,7 +714,7 @@ class Rectangle extends Component {
 
 - `nextProps`：组件即将用来渲染的下一个 props。将 `nextProps` 与 [`this.props`](#props) 进行比较以确定发生了什么变化。
 - `nextState`：组件即将渲染的下一个 state。将 `nextState` 与 [`this.state`](#props) 进行比较以确定发生了什么变化。
-- `nextContext`：组件将要渲染的下一个 context。将 `nextContext` 与 [`this.context`](#context) 进行比较以确定发生了什么变化。仅当你指定了 [`static contextType`](#static-contexttype)（更新的）或 [`static contextTypes`](#static-contexttypes)（旧版）时才可用。
+- `nextContext`：组件将要渲染的下一个 context。将 `nextContext` 与 [`this.context`](#context) 进行比较以确定发生了什么变化。仅当你指定了 [`static contextType`](#static-contexttype) 时才可用。
 
 #### 返回值 {/*shouldcomponentupdate-returns*/}
 
@@ -813,7 +789,7 @@ class Rectangle extends Component {
 #### 参数 {/*unsafe_componentwillreceiveprops-parameters*/}
 
 - `nextProps`：组件即将从父组件接收的下一个 props。可以将 `nextProps` 与 [`this.props`](#props) 进行比较以确定具体是什么地方发生了变化。
-- `nextContext`：组件即将从最近的 provider 中接收的下一个 context。可以将 `nextContext` 与 [`this.context`](#context) 进行比较以确定具体是什么地方发生了变化。仅在指定 [`static contextType`](#static-contexttype)）（最新用法）或 [`static contextTypes`](#static-contexttypes) 时可用（传统用法）。
+- `nextContext`：组件即将从最近的 provider 中接收的下一个 context。可以将 `nextContext` 与 [`this.context`](#context) 进行比较以确定具体是什么地方发生了变化。仅在指定 [`static contextType`](#static-contexttype) 时可用。
 
 #### 返回值 {/*unsafe_componentwillreceiveprops-returns*/}
 
@@ -875,30 +851,6 @@ class Rectangle extends Component {
 函数式组件中没有与 `UNSAFE_componentWillUpdate` 直接等同的方法。
 
 </Note>
-
----
-
-### `static childContextTypes` {/*static-childcontexttypes*/}
-
-<Deprecated>
-
-该 API 将在 React 未来的主版本中删除。[使用 `static contextType` 代替](#static-contexttype)。
-
-</Deprecated>
-
-允许你指定此组件提供哪个 [历史用法的 context](https://reactjs.org/docs/legacy-context.html)。
-
----
-
-### `static contextTypes` {/*static-contexttypes*/}
-
-<Deprecated>
-
-该 API 将在 React 的未来主要版本中删除。[使用 `static contextType` 代替](#static-contexttype)。
-
-</Deprecated>
-
-允许你指定此组件使用哪个 [历史用法的 context](https://reactjs.org/docs/legacy-context.html)。
 
 ---
 
@@ -971,34 +923,6 @@ class Button extends Component {
 <Note>
 
 在类式组件中定义 `defaultProps` 类似于在函数式组件中使用 [默认值](/learn/passing-props-to-a-component#specifying-a-default-value-for-a-prop)。
-
-</Note>
-
----
-
-### `static propTypes` {/*static-proptypes*/}
-
-你可以定义 `static propTypes` 和 [`prop-types`](https://www.npmjs.com/package/prop-types) 库来声明组件可接受的 props 类型。这些类型仅在渲染和开发过程中进行检查。
-
-```js
-import PropTypes from 'prop-types';
-
-class Greeting extends React.Component {
-  static propTypes = {
-    name: PropTypes.string
-  };
-
-  render() {
-    return (
-      <h1>Hello, {this.props.name}</h1>
-    );
-  }
-}
-```
-
-<Note>
-
-我们建议使用 [TypeScript](https://www.typescriptlang.org/) 而不是在运行时检查 prop 类型。
 
 </Note>
 

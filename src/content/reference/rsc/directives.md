@@ -1,13 +1,12 @@
 ---
 title: "指示符"
-canary: true
 ---
 
-<Canary>
+<RSC>
 
-这些指令仅在 [使用 React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 或构建可适配库时需要。
+这些指令用于 [React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)。
 
-</Canary>
+</RSC>
 
 <Intro>
 

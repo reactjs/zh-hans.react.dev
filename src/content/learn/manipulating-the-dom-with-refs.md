@@ -258,11 +258,11 @@ export default function CatFriends() {
               key={cat}
               ref={(node) => {
                 const map = getMap();
-                if (node) {
-                  map.set(cat, node);
-                } else {
+                map.set(cat, node);
+
+                return () => {
                   map.delete(cat);
-                }
+                };
               }}
             >
               <img src={cat} />
@@ -311,16 +311,6 @@ li {
 }
 ```
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  }
-}
-```
-
 </Sandpack>
 
 在这个例子中，`itemsRef` 保存的不是单个 DOM 节点，而是保存了包含列表项 ID 和 DOM 节点的 [Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)。([Ref 可以保存任何值！](/learn/referencing-values-with-refs)) 每个列表项上的 [`ref` 回调](/reference/react-dom/components/common#ref-callback)负责更新 Map：
@@ -330,40 +320,26 @@ li {
   key={cat.id}
   ref={node => {
     const map = getMap();
-    if (node) {
-      // Add to the Map
-      map.set(cat, node);
-    } else {
-      // Remove from the Map
-      map.delete(cat);
-    }
-  }}
->
-```
-
-这使你可以之后从 Map 读取单个 DOM 节点。
-
-<Canary>
-
-这个例子展示了另一种使用 `ref` 回调清理函数来管理 Map 的方法。
-
-```js
-<li
-  key={cat.id}
-  ref={node => {
-    const map = getMap();
-    // Add to the Map
+    // 添加到 Map 中
     map.set(cat, node);
 
     return () => {
-      // Remove from the Map
+      // 从 Map 中移除
       map.delete(cat);
     };
   }}
 >
 ```
 
-</Canary>
+这使你可以之后从 Map 读取单个 DOM 节点。
+
+<Note>
+
+启用严格模式后，ref 回调将在开发中运行两次。
+
+阅读更多这将 [如何帮助你在 ref 回调中找到 bug](/reference/react/StrictMode#fixing-bugs-found-by-re-running-ref-callbacks-in-development) 的细节。
+
+</Note>
 
 </DeepDive>
 

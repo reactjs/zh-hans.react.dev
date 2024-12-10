@@ -1,19 +1,6 @@
 ---
 title: useActionState
-canary: true
 ---
-
-<Canary>
-
-`useActionState` Hook 当前仅在 React Canary 与 experimental 渠道中可用。请点此了解更多关于 [React 发布渠道](/community/versioning-policy#all-release-channels) 的信息。此外，需要一款完全支持 [React 服务器组件](/reference/react/use-client) 特性的框架才可以使用 `useActionState` 的所有特性。
-
-</Canary>
-
-<Note>
-
-In earlier React Canary versions, this API was part of React DOM and called `useFormState`.
-
-</Note>
 
 <Intro>
 
@@ -24,6 +11,13 @@ const [state, formAction, isPending] = useActionState(fn, initialState, permalin
 ```
 
 </Intro>
+
+<Note>
+
+在早期的 React Canary 版本中，此 API 是 React DOM 的一部分，称为 `useFormState`。
+
+</Note>
+
 
 <InlineToc />
 
@@ -57,7 +51,7 @@ function StatefulForm({}) {
 
 form state 是一个只在表单被提交触发 action 后才会被更新的值。如果该表单没有被提交，该值会保持传入的初始值不变。
 
-如果配合 Server Action 一起使用，`useActionState` 允许与表单交互的服务器的返回值在激活完成前显示。
+如果与服务器函数一起使用，`useActionState` 允许与表单交互的服务器的返回值在激活完成前显示。
 
 [请参阅下方更多示例](#usage)。
 
@@ -65,7 +59,8 @@ form state 是一个只在表单被提交触发 action 后才会被更新的值�
 
 * `fn`：当按钮被按下或者表单被提交时触发的函数。当函数被调用时，该函数会接收到表单的上一个 state（初始值为传入的 `initialState` 参数，否则为上一次执行完该函数的结果）作为函数的第一个参数，余下参数为普通表单动作接到的参数。
 * `initialState`：state 的初始值。任何可序列化的值都可接收。当 action 被调用一次后该参数会被忽略。
-* **可选** `permalink`: A string containing the unique page URL that this form modifies. For use on pages with dynamic content (eg: feeds) in conjunction with progressive enhancement: if `fn` is a [server action](/reference/react/use-server) and the form is submitted before the JavaScript bundle loads, the browser will navigate to the specified permalink URL, rather than the current page's URL. Ensure that the same form component is rendered on the destination page (including the same action `fn` and `permalink`) so that React knows how to pass the state through. Once the form has been hydrated, this parameter has no effect.
+* **可选的** `permalink`: A string containing the unique page URL that this form modifies. For use on pages with dynamic content (eg: feeds) in conjunction with progressive enhancement: if `fn` is a [server function](/reference/rsc/server-functions) and the form is submitted before the JavaScript bundle loads, the browser will navigate to the specified permalink URL, rather than the current page's URL. Ensure that the same form component is rendered on the destination page (including the same action `fn` and `permalink`) so that React knows how to pass the state through. Once the form has been hydrated, this parameter has no effect.
+
 {/* TODO T164397693: link to serializable values docs once it exists */}
 
 #### 返回值 {/*returns*/}
@@ -125,7 +120,7 @@ function action(currentState, formData) {
 
 #### 展示表单错误 {/*display-form-errors*/}
 
-将 action 包裹进 `useActionState` 即可展示诸如错误信息或 Server Action 返回的 toast 等信息。
+将 action 包裹进 `useActionState` 即可展示诸如错误信息或服务器函数返回的 toast 等信息。
 
 <Sandpack>
 
@@ -183,25 +178,13 @@ form button {
   margin-right: 12px;
 }
 ```
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
-}
-```
 </Sandpack>
 
 <Solution />
 
 #### 提交表单后展示结构性数据 {/*display-structured-information-after-submitting-a-form*/}
 
-Server Actions 的返回值可以为任意可序列化的值。例如，可以返回一个实例，该实例携带一个 boolean 类型的属性表示操作是否成功，同时附带错误信息或更新消息。
+服务器函数的返回值可以为任意可序列化的值。例如，可以返回一个实例，该实例携带一个 boolean 类型的属性表示操作是否成功，同时附带错误信息或更新消息。
 
 <Sandpack>
 
@@ -268,18 +251,6 @@ form {
 
 form button {
   margin-right: 12px;
-}
-```
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
 }
 ```
 </Sandpack>

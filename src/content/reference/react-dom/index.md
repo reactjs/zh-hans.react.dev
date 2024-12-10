@@ -41,15 +41,13 @@ These APIs can be used to make apps faster by pre-loading resources such as scri
 
 ---
 
-## 已弃用 API {/*deprecated-apis*/}
+## 已移除的 API {/*removed-apis*/}
 
-<Deprecated>
+这些 API 将在 React 19 中被移除。
 
-这些 API 将在未来的 React 主要版本中被移除。
-
-</Deprecated>
-
-* [`findDOMNode`](/reference/react-dom/findDOMNode) 用于查找与类式组件实例对应的最近的 DOM 节点。
-* [`hydrate`](/reference/react-dom/hydrate) 可以将服务器生成的 HTML 作为浏览器 DOM 节点，并在其中渲染 React 组件。目前已被 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 取代。
-* [`render`](/reference/react-dom/render) 可以在浏览器的 DOM 元素中渲染 React 组件，目前已被 [`createRoot`](/reference/react-dom/client/createRoot) 取代。
-* [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode) 可以从 DOM 中移除一个已挂载的 React 组件，目前已被 [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) 取代。
+* [`findDOMNode`](https://18.react.dev/reference/react-dom/findDOMNode): 查看 [替代方案](https://18.react.dev/reference/react-dom/findDOMNode#alternatives)。
+* [`hydrate`](https://18.react.dev/reference/react-dom/hydrate): 使用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 来替代。
+* [`render`](https://18.react.dev/reference/react-dom/render): 使用 [`createRoot`](/reference/react-dom/client/createRoot) 来替代。
+* [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode): 使用 [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) 来替代。
+* [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream): 使用 [`react-dom/server`](/reference/react-dom/server) API 来替代。
+* [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream): 使用 [`react-dom/server`](/reference/react-dom/server) API 来替代。
