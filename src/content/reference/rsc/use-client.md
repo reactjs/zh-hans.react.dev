@@ -1,24 +1,13 @@
 ---
 title: "'use client'"
-<<<<<<< HEAD
 titleForTitleTag: "'use client' 指示符"
-canary: true
-=======
-titleForTitleTag: "'use client' directive"
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 ---
 
 <RSC>
 
-<<<<<<< HEAD
-`'use client'` 仅在 [使用 React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 或构建可适配库时需要。
-
-</Canary>
-=======
-`'use client'` is for use with [React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks).
+`'use client'` 用于 [React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)。
 
 </RSC>
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 
 
 <Intro>
@@ -263,7 +252,6 @@ function App() {
 
 从服务器组件传递给客户端组件的属性值必须是可序列化的。
 
-<<<<<<< HEAD
 可序列化属性包括：
 * 原始类型
 	* [string](https://developer.mozilla.org/zh-CN/docs/Glossary/String)
@@ -281,31 +269,9 @@ function App() {
 	* [TypedArray](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) 与 [ArrayBuffer](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
 * [Date](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date)
 * 普通 [对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)：使用 [对象初始化器](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Object_initializer) 创建的、具有可序列化属性
-* [Server Action](/reference/rsc/use-server) 中的函数
+* [服务器函数](/reference/rsc/use-server) 中的函数
 * 客户端或服务器组件元素（JSX）
 * [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
-=======
-Serializable props include:
-* Primitives
-	* [string](https://developer.mozilla.org/en-US/docs/Glossary/String)
-	* [number](https://developer.mozilla.org/en-US/docs/Glossary/Number)
-	* [bigint](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt)
-	* [boolean](https://developer.mozilla.org/en-US/docs/Glossary/Boolean)
-	* [undefined](https://developer.mozilla.org/en-US/docs/Glossary/Undefined)
-	* [null](https://developer.mozilla.org/en-US/docs/Glossary/Null)
-	* [symbol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol), only symbols registered in the global Symbol registry via [`Symbol.for`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for)
-* Iterables containing serializable values
-	* [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
-	* [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
-	* [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
-	* [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
-	* [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) and [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
-* [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
-* Plain [objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object): those created with [object initializers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer), with serializable properties
-* Functions that are [Server Functions](/reference/rsc/server-functions)
-* Client or Server Component elements (JSX)
-* [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
->>>>>>> 69edd845b9a654c6ac9ed68da19d5b42897e636e
 
 值得注意的是，以下内容不受支持：
 * 未从客户端标记的模块中导出或未标记为 [`'use server'`](/reference/rsc/use-server) 的 [函数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function)
