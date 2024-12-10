@@ -2,7 +2,6 @@
 title: "<title>"
 ---
 
-
 <Intro>
 
 [浏览器内置的 `<title>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title) 允许向文档指定标题。

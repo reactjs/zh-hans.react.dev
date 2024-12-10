@@ -2,7 +2,6 @@
 meta: "<meta>"
 ---
 
-
 <Intro>
 
 [浏览器内置的 `<meta>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta) 允许向文档添加元数据。

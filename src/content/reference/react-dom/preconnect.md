@@ -2,7 +2,6 @@
 title: preconnect
 ---
 
-
 <Intro>
 
 `preconnect` 可以帮助提前连接到一个期望从中加载资源的服务器。

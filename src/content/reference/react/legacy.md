@@ -21,7 +21,6 @@ title: "过时的 React API"
 * [`isValidElement`](/reference/react/isValidElement) 检测参数值是否为 React 元素，通常会与 [`cloneElement`.](/reference/react/cloneElement) 一起使用。
 * [`PureComponent`](/reference/react/PureComponent) 与 [`Component`](/reference/react/Component) 类似，但是当 props 相同时会跳过重新渲染。[查看替代方案](/reference/react/PureComponent#alternatives)。
 
-
 ---
 
 ## 已移除的 API {/*removed-apis*/}

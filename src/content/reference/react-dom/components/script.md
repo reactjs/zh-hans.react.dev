@@ -2,7 +2,6 @@
 script: "<script>"
 ---
 
-
 <Intro>
 
 [浏览器内置的 `<script>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) 允许向文档添加脚本。

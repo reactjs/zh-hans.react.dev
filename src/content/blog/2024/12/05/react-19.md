@@ -6,7 +6,6 @@ description: React 19 版现在可以在 npm 上使用了! 在这篇文章中，
 ---
 
 2024 年 12 月 25 日 [The React Team](/community/team)
-=======
 
 ---
 <Note>

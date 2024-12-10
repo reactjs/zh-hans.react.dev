@@ -103,7 +103,6 @@ function Loading() {
 import {use} from 'react';
 import { fetchData } from './data.js';
 
-
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
   return (
@@ -116,7 +115,6 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
-
 ```
 
 ```js src/data.js hidden
@@ -306,7 +304,6 @@ export default function Panel({ children }) {
 import {use} from 'react';
 import { fetchData } from './data.js';
 
-
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
   return (
@@ -315,13 +312,11 @@ export default function Biography({ artistId }) {
     </section>
   );
 }
-
 ```
 
 ```js src/Albums.js
 import {use} from 'react';
 import { fetchData } from './data.js';
-
 
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
@@ -335,7 +330,6 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
-
 ```
 
 ```js src/data.js hidden
@@ -572,7 +566,6 @@ export default function Panel({ children }) {
 import {use} from 'react';
 import { fetchData } from './data.js';
 
-
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
   return (
@@ -581,13 +574,11 @@ export default function Biography({ artistId }) {
     </section>
   );
 }
-
 ```
 
 ```js src/Albums.js
 import {use} from 'react';
 import { fetchData } from './data.js';
-
 
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
@@ -601,7 +592,6 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
-
 ```
 
 ```js src/data.js hidden
@@ -768,7 +758,6 @@ export default function App() {
 import {use} from 'react';
 import { fetchData } from './data.js';
 
-
 export default function SearchResults({ query }) {
   if (query === '') {
     return null;
@@ -787,7 +776,6 @@ export default function SearchResults({ query }) {
     </ul>
   );
 }
-
 ```
 
 ```js src/data.js hidden
@@ -954,7 +942,6 @@ export default function App() {
 import {use} from 'react';
 import { fetchData } from './data.js';
 
-
 export default function SearchResults({ query }) {
   if (query === '') {
     return null;
@@ -973,7 +960,6 @@ export default function SearchResults({ query }) {
     </ul>
   );
 }
-
 ```
 
 ```js src/data.js hidden
@@ -1197,7 +1183,6 @@ function AlbumsGlimmer() {
 import {use} from 'react';
 import { fetchData } from './data.js';
 
-
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
   return (
@@ -1210,13 +1195,11 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
-
 ```
 
 ```js src/Biography.js
 import {use} from 'react';
 import { fetchData } from './data.js';
-
 
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
@@ -1226,7 +1209,6 @@ export default function Biography({ artistId }) {
     </section>
   );
 }
-
 ```
 
 ```js src/Panel.js
@@ -1513,7 +1495,6 @@ function AlbumsGlimmer() {
 import {use} from 'react';
 import { fetchData } from './data.js';
 
-
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
   return (
@@ -1526,13 +1507,11 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
-
 ```
 
 ```js src/Biography.js
 import {use} from 'react';
 import { fetchData } from './data.js';
-
 
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
@@ -1542,7 +1521,6 @@ export default function Biography({ artistId }) {
     </section>
   );
 }
-
 ```
 
 ```js src/Panel.js
@@ -1828,7 +1806,6 @@ function AlbumsGlimmer() {
 import {use} from 'react';
 import { fetchData } from './data.js';
 
-
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
   return (
@@ -1841,13 +1818,11 @@ export default function Albums({ artistId }) {
     </ul>
   );
 }
-
 ```
 
 ```js src/Biography.js
 import {use} from 'react';
 import { fetchData } from './data.js';
-
 
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
@@ -1857,7 +1832,6 @@ export default function Biography({ artistId }) {
     </section>
   );
 }
-
 ```
 
 ```js src/Panel.js

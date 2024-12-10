@@ -2,7 +2,6 @@
 title: use
 ---
 
-
 <Intro>
 
 `use` 是一个 React API，它可以让你读取类似于 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context) 的资源的值。

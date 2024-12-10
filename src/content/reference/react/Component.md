@@ -105,7 +105,6 @@ class Greeting extends Component {
 
 ---
 
-
 ### `state` {/*state*/}
 
 使用 `this.state` 来访问一个类式组件的 state。`state` 字段必须是一个对象。请不要直接改变 state 的值。如果你希望改变 state，那么请使用新的 state 来调用 `setState` 函数。
@@ -483,7 +482,6 @@ class ChatRoom extends Component {
 
 ---
 
-
 ### `getSnapshotBeforeUpdate(prevProps, prevState)` {/*getsnapshotbeforeupdate*/}
 
 如果你实现了 `getSnapshotBeforeUpdate`，React 会在 React 更新 DOM 之前时直接调用它。它使你的组件能够在 DOM 发生更改之前捕获一些信息（例如滚动的位置）。此生命周期方法返回的任何值都将作为参数传递给 [`componentDidUpdate`](#componentdidupdate)。
@@ -856,7 +854,6 @@ class Rectangle extends Component {
 
 ---
 
-
 ### `static contextType` {/*static-contexttype*/}
 
 如果你想从类式组件中读取 [`this.context`](#context-instance-field)，则必须指定它需要读取哪个 context。你指定为 `static contextType` 的 context 必须是之前由 [`createContext` 创建的值](/reference/react/createContext)。
@@ -930,7 +927,6 @@ class Button extends Component {
 </Note>
 
 ---
-
 
 ### `static getDerivedStateFromError(error)` {/*static-getderivedstatefromerror*/}
 

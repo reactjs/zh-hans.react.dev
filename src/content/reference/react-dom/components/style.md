@@ -2,7 +2,6 @@
 style: "<style>"
 ---
 
-
 <Intro>
 
 [浏览器内置的 `<style>` ](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) 允许向文档添加内联 CSS 样式表。

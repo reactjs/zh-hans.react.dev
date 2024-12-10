@@ -2,7 +2,6 @@
 title: prefetchDNS
 ---
 
-
 <Intro>
 
 `prefetchDNS` 允许提前查找期望从中加载资源的服务器的 IP。
