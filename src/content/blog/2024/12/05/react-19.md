@@ -5,7 +5,7 @@ date: 2024/12/05
 description: React 19 版现在可以在 npm 上使用了! 在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
 ---
 
-2024 年 12 月 25 日 [The React Team](/community/team)
+2024 年 12 月 05 日 [The React Team](/community/team)
 
 ---
 <Note>
