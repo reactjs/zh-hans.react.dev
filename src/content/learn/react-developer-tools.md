@@ -52,27 +52,12 @@ react-devtools
 
 现在在浏览器里刷新你的网站，你可以在开发者工具里查看它。
 
-![React Developer Tools standalone](/images/docs/react-devtools-standalone.png)
+![独立的 React Developer Tools](/images/docs/react-devtools-standalone.png)
 
 ## 移动端（React Native） {/*mobile-react-native*/}
-React 开发者工具同样可检查用 [React Native](https://reactnative.dev/) 构建的应用程序。
 
-使用 React 开发者工具最简单的办法就是全局安装它：
-```bash
-# Yarn
-yarn global add react-devtools
-
-# Npm
-npm install -g react-devtools
-```
-
-接下来从终端打开开发者工具：
-```bash
-react-devtools
-```
-
-它应该可以连接到任何正在运行的本地 React Native 应用程序。
-
-> 如果几秒钟后开发者工具未连接，请尝试重新加载应用程序。
+你可以使用 [React Native DevTools](https://reactnative.dev/docs/debugging/react-native-devtools) 来检查 [React Native](https://reactnative.dev/) 应用程序，它的内置调试器与 React Developer Tools 进行了深度集成。所有功能与浏览器扩展的工作方式相同，包括本机元素突出显示和选择。
 
 [了解有关调试 React Native 的更多信息](https://reactnative.dev/docs/debugging)。
+
+> 对于 React Native 0.76 之前的版本，请按照上面的 [Safari and other browsers](#safari-and-other-browsers) 指南独立构建 React DevTools。
