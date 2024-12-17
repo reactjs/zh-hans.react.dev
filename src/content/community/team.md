@@ -43,7 +43,7 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
 </TeamMember>
 
 <TeamMember name="Lauren Tan" permalink="lauren-tan" photo="/images/team/lauren.jpg" github="poteto" twitter="potetotes" threads="potetotes" bsky="no.lol" title="Engineer at Meta">
-    Lauren's programming career peaked when she first discovered the `<marquee>` tag. She’s been chasing that high ever since. She studied Finance instead of CS in college, so she learned to code using Excel instead of Java. Lauren enjoys dropping cheeky memes in chat, playing video games with her partner, and petting her dog Zelda.
+    Lauren's programming career peaked when she first discovered the `<marquee>` tag. She’s been chasing that high ever since. She studied Finance instead of CS in college, so she learned to code using Excel. Lauren enjoys dropping cheeky memes in chat, playing video games with her partner, learning Korean, and petting her dog Zelda.
 </TeamMember>
 
 <TeamMember name="Luna Wei" permalink="luna-wei" photo="/images/team/luna-wei.jpg" github="lunaleaps" twitter="lunaleaps" threads="lunaleaps" title="Engineer at Meta">
