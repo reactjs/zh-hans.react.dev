@@ -10,7 +10,11 @@ translators:
 
 <Intro>
 
+<<<<<<< HEAD
 欢迎来到 React 文档！本章节将介绍你每天都会使用的 80% 的 React 概念。
+=======
+Welcome to the React documentation! This page will give you an introduction to 80% of the React concepts that you will use on a daily basis.
+>>>>>>> 03e74dd76bca889f7a608e0a058813fa04710a89
 
 </Intro>
 
