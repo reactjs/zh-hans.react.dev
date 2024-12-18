@@ -12,8 +12,20 @@
       "skipBreadcrumb": true,
       "routes": [
         {
+<<<<<<< HEAD
           "title": "React Compiler 发布 Beta 版本以及路线图",
           "titleForHomepage": "React Compiler 发布 Beta 版本以及路线图",
+=======
+          "title": "React 19",
+          "titleForHomepage": "React 19",
+          "icon": "blog",
+          "date": "December 05, 2024",
+          "path": "/blog/2024/12/05/react-19"
+        },
+        {
+          "title": "React Compiler Beta Release and Roadmap",
+          "titleForHomepage": "React Compiler Beta Release and Roadmap",
+>>>>>>> 03e74dd76bca889f7a608e0a058813fa04710a89
           "icon": "blog",
           "date": "October 21, 2024",
           "path": "/blog/2024/10/21/react-compiler-beta-release"

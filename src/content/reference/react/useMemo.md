@@ -1101,11 +1101,14 @@ function ChatRoom({ roomId }) {
   }, [roomId]); // ✅ 只有当 roomId 改变时才会被改变
 
   useEffect(() => {
-    const options = createOptions();
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
+<<<<<<< HEAD
   }, [options]); // ✅ 只有当 createOptions 改变时才会被改变
+=======
+  }, [options]); // ✅ Only changes when options changes
+>>>>>>> 03e74dd76bca889f7a608e0a058813fa04710a89
   // ...
 ```
 
