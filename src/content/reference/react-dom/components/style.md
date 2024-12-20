@@ -62,7 +62,15 @@ React 可以将 `<style>` 组件移动到文档的 `<head>` 中，去重相同�
 
 如果一个组件依赖于某些 CSS 样式以正确显示，可以在组件内部渲染一个内联样式表。
 
+<<<<<<< HEAD
 如果提供了 `href` 和 `precedence` 属性，组件将在样式表加载时挂起（即使是内联样式表，由于样式表引用的字体和图像，可能也会有加载时间）。`href` 属性应该唯一地标识样式表，因为 React 将对 `href` 的样式表进行去重。
+=======
+The `href` prop should uniquely identify the stylesheet, because React will de-duplicate stylesheets that have the same `href`.
+If you supply a `precedence` prop, React will reorder inline stylesheets based on the order these values appear in the component tree.
+
+Inline stylesheets will not trigger Suspense boundaries while they're loading.
+Even if they load async resources like fonts or images.
+>>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 
 <SandpackWithHTMLOutput>
 

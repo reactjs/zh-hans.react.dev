@@ -17,7 +17,11 @@ description: React 19 版现在可以在 npm 上使用了! 在这篇文章中，
 - **预热 suspend 树**：阅读 [改善 Suspense](/blog/2024/04/25/react-19-upgrade-guide#improvements-to-suspense) 来了解更多。
 - **React DOM 静态 API**：阅读 [新的 React DOM 静态 API](#new-react-dom-static-apis) 来了解更多。
 
+<<<<<<< HEAD
 __本文的日期已更新，以反映稳定版的发布日期。__
+=======
+_The date for this post has been updated to reflect the stable release date._
+>>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 
 </Note>
 
@@ -362,7 +366,11 @@ React 19 包含了所有从 Canary 渠道引入的 React 服务器组件功能�
 
 #### 如何构建对服务器组件的支持? {/*how-do-i-build-support-for-server-components*/}
 
+<<<<<<< HEAD
 虽然 React 19 中的 React 服务器组件是稳定的，并且在主版本之间不会发生破坏，但用于实现 React 服务器组件打包器或框架的底层 API 不遵循 semver，并可能在 React 19.x 的小版本之间发生破坏。
+=======
+While React Server Components in React 19 are stable and will not break between minor versions, the underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x. 
+>>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 
 为了支持 React 服务器组件作为打包器或框架，我们建议固定到特定的 React 版本，或者使用 Canary 发行版。我们将继续与打包器和框架合作，以稳定用于实现 React 服务器组件的 API。
 
@@ -807,4 +815,8 @@ React 19 添加了对自定义元素的全面支持，并通过了 [Custom Eleme
 
 请查看 [React 19 升级指南](/blog/2024/04/25/react-19-upgrade-guide) 以获取逐步指导和完整的破坏性和显著变化列表。
 
+<<<<<<< HEAD
 __注意：这篇文章最初发布于 2024 年 4 月 25 日，并已将内容更新至 2024 年 12 月 5 日发布的稳定版本。__
+=======
+_Note: this post was originally published 04/25/2024 and has been updated to 12/05/2024 with the stable release._
+>>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
