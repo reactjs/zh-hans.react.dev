@@ -448,16 +448,16 @@ button { display: block; margin-bottom: 20px; }
 
 #### 向组件暴露 ref {/*exposing-a-ref-to-your-own-component*/}
 
-有时可能想让父级组件在组件中操纵 DOM。例如，假设正在编写一个 `MyInput` 组件，但希望父组件能够聚焦 input（不过父组件无法访问）。此时可以使用组件组合，通过 `useRef` 持有输入框并通过 [`forwardRef`](/reference/react/forwardRef) 将其暴露给父组件。在这里阅读 [详细演练](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)。
+有时你可能想让父组件在组件中操纵 DOM。例如，假设正在编写一个 `MyInput` 组件，但希望父组件能够聚焦 input（不过父组件无法访问）。此时可以在父组件中创建一个 `ref` 并作为 prop 传递给子组件。在这里阅读 [详细演练](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)。
 
 <Sandpack>
 
 ```js
-import { forwardRef, useRef } from 'react';
+import { useRef } from 'react';
 
-const MyInput = forwardRef((props, ref) => {
-  return <input {...props} ref={ref} />;
-});
+function MyInput({ ref }) {
+  return <input ref={ref} />;
+};
 
 export default function Form() {
   const inputRef = useRef(null);
@@ -554,7 +554,7 @@ return <MyInput ref={inputRef} />;
 
 <ConsoleBlock level="error">
 
-Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
+TypeError: Cannot read properties of null
 
 </ConsoleBlock>
 
@@ -573,12 +573,10 @@ export default function MyInput({ value, onChange }) {
 }
 ```
 
-然后像这样将其包装在 [`forwardRef`](/reference/react/forwardRef) 里：
+然后在组件的 props 参数中提取 `ref`，并将它作为参数传递给相关的 [内置组件](/reference/react-dom/components/common)。如下所示：
 
-```js {3,8}
-import { forwardRef } from 'react';
-
-const MyInput = forwardRef(({ value, onChange }, ref) => {
+```js {1,6}
+function MyInput({ value, onChange, ref }) {
   return (
     <input
       value={value}
@@ -586,7 +584,7 @@ const MyInput = forwardRef(({ value, onChange }, ref) => {
       ref={ref}
     />
   );
-});
+};
 
 export default MyInput;
 ```
