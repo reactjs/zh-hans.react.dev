@@ -38,27 +38,19 @@ function MyInput({ ref }) {
 
 #### 参数 {/*parameters*/}
 
-<<<<<<< HEAD
-* `ref`：该 `ref` 是你从 [`forwardRef` 渲染函数](/reference/react/forwardRef#render-function) 中获得的第二个参数。
-=======
-* `ref`: The `ref` you received as a prop to the `MyInput` component.
->>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
+* `ref`：该 `ref` 是你从 `MyInput` 组件的 prop 中提取的参数。
 
 * `createHandle`：该函数无需参数，它返回你想要暴露的 ref 的句柄。该句柄可以包含任何类型。通常，你会返回一个包含你想暴露的方法的对象。
 
 * **可选的** `dependencies`：函数 `createHandle` 代码中所用到的所有反应式的值的列表。反应式的值包含 props、状态和其他所有直接在你组件体内声明的变量和函数。倘若你的代码检查器已 [为 React 配置好](/learn/editor-setup#linting)，它会验证每一个反应式的值是否被正确指定为依赖项。该列表的长度必须是一个常数项，并且必须按照 `[dep1, dep2, dep3]` 的形式罗列各依赖项。React 会使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来比较每一个依赖项与其对应的之前值。如果一次重新渲染导致某些依赖项发生了改变，或你没有提供这个参数列表，你的函数 `createHandle` 将会被重新执行，而新生成的句柄则会被分配给 ref。
 
-<<<<<<< HEAD
-#### 返回值 {/*returns*/}
-=======
 <Note>
 
 Starting with React 19, [`ref` is available a prop.](/blog/2024/12/05/react-19#ref-as-a-prop) In React 18 and earlier, it was necessary to get the `ref` from [`forwardRef`.](/reference/react/forwardRef) 
 
 </Note>
 
-#### Returns {/*returns*/}
->>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
+#### 返回值 {/*returns*/}
 
 `useImperativeHandle` 返回 `undefined`。
 
@@ -68,11 +60,7 @@ Starting with React 19, [`ref` is available a prop.](/blog/2024/12/05/react-19#r
 
 ### 向父组件暴露一个自定义的 ref 句柄 {/*exposing-a-custom-ref-handle-to-the-parent-component*/}
 
-<<<<<<< HEAD
-默认情况下，组件不会将它们的 DOM 节点暴露给父组件。举例来说，如果你想要 `MyInput` 的父组件 [能访问到](/learn/manipulating-the-dom-with-refs) `<input>` DOM 节点，你必须选择使用 [`forwardRef`:](/reference/react/forwardRef)。
-=======
-To expose a DOM node to the parent element, pass in the `ref` prop to the node.
->>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
+要在父元素中访问 DOM 节点，需要在节点上设置 `ref` 属性。
 
 ```js {2}
 function MyInput({ ref }) {
@@ -80,11 +68,7 @@ function MyInput({ ref }) {
 };
 ```
 
-<<<<<<< HEAD
-在上方的代码中，[`MyInput` 的 ref 会接收到 `<input>` DOM 节点](/reference/react/forwardRef#exposing-a-dom-node-to-the-parent-component)。然而，你可以选择暴露一个自定义的值。为了修改被暴露的句柄，在你的顶层组件调用 `useImperativeHandle`：
-=======
-With the code above, [a ref to `MyInput` will receive the `<input>` DOM node.](/learn/manipulating-the-dom-with-refs) However, you can expose a custom value instead. To customize the exposed handle, call `useImperativeHandle` at the top level of your component:
->>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
+在上方的代码中，[`MyInput` 的 ref 会接收到 `<input>` DOM 节点](/learn/manipulating-the-dom-with-refs)。然而，你可以选择暴露一个自定义的值。为了修改被暴露的句柄，在你的顶层组件调用 `useImperativeHandle`：
 
 ```js {4-8}
 import { useImperativeHandle } from 'react';
@@ -100,11 +84,7 @@ function MyInput({ ref }) {
 };
 ```
 
-<<<<<<< HEAD
 注意在上述代码中，该 `ref` 已不再被转发到 `<input>` 中。
-=======
-Note that in the code above, the `ref` is no longer passed to the `<input>`.
->>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 
 举例来说，假设你不想暴露出整个 `<input>` DOM 节点，但你想要它其中两个方法：`focus` 和 `scrollIntoView`。为此，用单独额外的 ref 来指向真实的浏览器 DOM。然后使用 `useImperativeHandle` 来暴露一个句柄，它只返回你想要父组件去调用的方法：
 

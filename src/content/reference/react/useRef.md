@@ -448,11 +448,7 @@ button { display: block; margin-bottom: 20px; }
 
 #### 向组件暴露 ref {/*exposing-a-ref-to-your-own-component*/}
 
-<<<<<<< HEAD
-有时可能想让父级组件在组件中操纵 DOM。例如，假设正在编写一个 `MyInput` 组件，但希望父组件能够聚焦 input（不过父组件无法访问）。此时可以使用组件组合，通过 `useRef` 持有输入框并通过 [`forwardRef`](/reference/react/forwardRef) 将其暴露给父组件。在这里阅读 [详细演练](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)。
-=======
-Sometimes, you may want to let the parent component manipulate the DOM inside of your component. For example, maybe you're writing a `MyInput` component, but you want the parent to be able to focus the input (which the parent has no access to). You can create a `ref` in the parent and pass the `ref` as prop to the child component. Read a [detailed walkthrough](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) here.
->>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
+有时你可能想让父组件在组件中操纵 DOM。例如，假设正在编写一个 `MyInput` 组件，但希望父组件能够聚焦 input（不过父组件无法访问）。此时可以在父组件中创建一个 `ref` 并作为 prop 传递给子组件。在这里阅读 [详细演练](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes)。
 
 <Sandpack>
 
@@ -577,11 +573,7 @@ export default function MyInput({ value, onChange }) {
 }
 ```
 
-<<<<<<< HEAD
-然后像这样将其包装在 [`forwardRef`](/reference/react/forwardRef) 里：
-=======
-And then add `ref` to the list of props your component accepts and pass `ref` as a prop to the relevent child [built-in component](/reference/react-dom/components/common) like this:
->>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
+然后在组件的 props 参数中提取 `ref`，并将它作为参数传递给相关的 [内置组件](/reference/react-dom/components/common)。如下所示：
 
 ```js {1,6}
 function MyInput({ value, onChange, ref }) {

@@ -348,11 +348,7 @@ React Compiler 可以静态验证 React 的许多规则，并且在检测到错�
 
 ### 我如何知道我的组件已被优化？ {/*how-do-i-know-my-components-have-been-optimized*/}
 
-<<<<<<< HEAD
-[React 开发工具](/learn/react-developer-tools)（v5.0 及以上版本）对 React Compiler 有内置支持，并会在已被编译器优化的组件旁边显示“Memo ✨”徽章。
-=======
-[React DevTools](/learn/react-developer-tools) (v5.0+) and [React Native DevTools](https://reactnative.dev/docs/react-native-devtools) have built-in support for React Compiler and will display a "Memo ✨" badge next to components that have been optimized by the compiler.
->>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
+[React DevTools](/learn/react-developer-tools)（v5.0+）和 [React Native DevTools](https://reactnative.dev/docs/react-native-devtools) 内置支持 React Compiler，并会在已被编译器优化的组件旁边显示“Memo ✨”徽章。
 
 ### 编译后某些内容无法正常工作 {/*something-is-not-working-after-compilation*/}
 如果你安装了 eslint-plugin-react-compiler ，编译器将在你的编辑器中显示任何违反 React 规则的情况。当它这样做时，意味着编译器跳过了对该组件或钩子的优化。这完全没问题，并且编译器可以恢复并继续优化你代码库中的其他组件。**你不必立即修复所有的违反 ESLint 规则的代码。** 你可以按照自己的节奏来处理它们，以增加被优化的组件和钩子的数量。

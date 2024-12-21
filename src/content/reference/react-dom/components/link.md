@@ -151,13 +151,9 @@ export default function SiteMapPage() {
 
 ### 控制样式表优先级 {/*controlling-stylesheet-precedence*/}
 
-<<<<<<< HEAD
-样式表可能会相互冲突，当发生冲突时，浏览器会选择文档中排在后面的样式表。React 允许使用 `precedence` 属性来控制样式表的顺序。在这个例子中，两个组件渲染样式表，具有较高优先级的组件在文档中排在较后位置，即使渲染它的组件出现在较早位置。
+样式表可能会相互冲突，当发生冲突时，浏览器会选择文档中排在后面的样式表。React 允许使用 `precedence` 属性来控制样式表的顺序。在这个例子中，三个组件渲染样式表，具有相同优先级的组件在 `<head>` 中将会被分组在一起。
 
 {/*FIXME: this doesn't appear to actually work -- I guess precedence isn't implemented yet?*/}
-=======
-Stylesheets can conflict with each other, and when they do, the browser goes with the one that comes later in the document. React lets you control the order of stylesheets with the `precedence` prop. In this example, three components render stylesheets, and the ones with the same precedence are grouped together in the `<head>`. 
->>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
 
 <SandpackWithHTMLOutput>
 
@@ -191,13 +187,9 @@ function ThirdComponent() {
 
 </SandpackWithHTMLOutput>
 
-<<<<<<< HEAD
-### 去除样式表的重复渲染 {/*deduplicated-stylesheet-rendering*/}
-=======
 Note the `precedence` values themselves are arbitrary and their naming is up to you. React will infer that precedence values it discovers first are "lower" and precedence values it discovers later are "higher".
 
-### Deduplicated stylesheet rendering {/*deduplicated-stylesheet-rendering*/}
->>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
+### 去除样式表的重复渲染 {/*deduplicated-stylesheet-rendering*/}
 
 如果在多个组件渲染相同的样式表，React 将只在文档头部放置单个 `<link>`。
 

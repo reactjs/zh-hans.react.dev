@@ -48,11 +48,7 @@ function TabContainer() {
 
 ### `startTransition` 函数 {/*starttransition*/}
 
-<<<<<<< HEAD
-`useTransition` 返回的 `startTransition` 函数允许你将更新标记为 transition。
-=======
-The `startTransition` function returned by `useTransition` lets you mark an update as a Transition.
->>>>>>> 6ae99dddc3b503233291da96e8fd4b118ed6d682
+`useTransition` 返回的 `startTransition` 函数允许你将更新标记为 Transition。
 
 ```js {6,8}
 function TabContainer() {
