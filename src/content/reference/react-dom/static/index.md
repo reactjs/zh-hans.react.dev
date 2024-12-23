@@ -4,25 +4,25 @@ title: Static React DOM APIs
 
 <Intro>
 
-The `react-dom/static` APIs let you generate static HTML for React components. They have limited functionality compared to the streaming APIs. A [framework](/learn/start-a-new-react-project#production-grade-react-frameworks) may call them for you. Most of your components don't need to import or use them.
+`react-dom/static` API 允许你为 React 组件生成静态 HTML。与流式 API 相比，它们的功能有限。[框架](/learn/start-a-new-react-project#production-grade-react-frameworks) 可能会调用它们。你的大多数组件不需要导入或使用它们。
 
 </Intro>
 
 ---
 
-## Static APIs for Web Streams {/*static-apis-for-web-streams*/}
+## Web 流的静态 API {/*static-apis-for-web-streams*/}
 
-These methods are only available in the environments with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), which includes browsers, Deno, and some modern edge runtimes:
+这些方法仅在支持 [Web 流](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的环境中可用，包括浏览器、Deno 和一些现代的边缘运行时环境：
 
-* [`prerender`](/reference/react-dom/static/prerender) renders a React tree to static HTML with a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
+* [`prerender`](/reference/react-dom/static/prerender) 使用 [可读的 Web 流](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) 将 React 树渲染为静态 HTML。
 
 
 ---
 
-## Static APIs for Node.js Streams {/*static-apis-for-nodejs-streams*/}
+## Node.js 流的静态 API {/*static-apis-for-nodejs-streams*/}
 
-These methods are only available in the environments with [Node.js Streams](https://nodejs.org/api/stream.html):
+这些方法仅在支持 [Node.js 流](https://nodejs.org/api/stream.html) 的环境中可用：
 
-* [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream) renders a React tree to static HTML with a [Node.js Stream.](https://nodejs.org/api/stream.html)
+* [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream) 使用 [Node.js 流](https://nodejs.org/api/stream.html) 将 React 树渲染为静态 HTML。
 
 
