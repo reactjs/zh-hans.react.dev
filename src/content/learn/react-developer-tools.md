@@ -56,7 +56,7 @@ react-devtools
 
 ## 移动端（React Native） {/*mobile-react-native*/}
 
-你可以使用 [React Native DevTools](https://reactnative.dev/docs/debugging/react-native-devtools) 来检查 [React Native](https://reactnative.dev/) 应用程序，它的内置调试器与 React Developer Tools 进行了深度集成。所有功能与浏览器扩展的工作方式相同，包括本机元素突出显示和选择。
+你可以使用 [React Native DevTools](https://reactnative.dev/docs/react-native-devtools) 来检查 [React Native](https://reactnative.dev/) 应用程序，它的内置调试器与 React Developer Tools 进行了深度集成。所有功能与浏览器扩展的工作方式相同，包括本机元素突出显示和选择。
 
 [了解有关调试 React Native 的更多信息](https://reactnative.dev/docs/debugging)。
 
