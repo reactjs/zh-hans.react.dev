@@ -76,7 +76,7 @@ const variantMap = {
       'linear-gradient(rgba(249, 247, 243, 0), rgba(249, 247, 243, 1)',
   },
   rsc: {
-    title: 'React Server Components',
+    title: 'React 服务器组件',
     Icon: null,
     containerClasses: 'bg-blue-10 dark:bg-blue-60 dark:bg-opacity-20',
     textColor: 'text-blue-50 dark:text-blue-40',
