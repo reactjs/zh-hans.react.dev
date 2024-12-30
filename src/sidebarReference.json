@@ -331,10 +331,10 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "React Server Components"
+      "sectionHeader": "React 服务器组件"
     },
     {
-      "title": "Server Components",
+      "title": "服务器组件",
       "path": "/reference/rsc/server-components"
     },
     {
