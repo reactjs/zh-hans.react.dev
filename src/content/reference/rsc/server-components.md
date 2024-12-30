@@ -39,7 +39,7 @@ import sanitizeHtml from 'sanitize-html'; // 206K (63.3K gzipped)
 
 function Page({page}) {
   const [content, setContent] = useState('');
-  // 注意: 在第一次页面渲染 *之后* 加载。
+  // 注意: 在第一次页面渲染 **之后** 加载。
   useEffect(() => {
     fetch(`/api/content/${page}`).then((data) => {
       setContent(data.content);
@@ -67,14 +67,14 @@ import marked from 'marked'; // 不会包括在 bundle 中
 import sanitizeHtml from 'sanitize-html'; // 不会包括在 bundle 中
 
 async function Page({page}) {
-  // 注意: 会在应用构建的 *渲染过程中* 加载
+  // 注意: 会在应用构建的 **渲染过程中** 加载
   const content = await file.readFile(`${page}.md`);
   
   return <div>{sanitizeHtml(marked(content))}</div>;
 }
 ```
 
-渲染的输出接着可以被服务端渲染（SSR）成 HTML 并上传至 CDN。当应用加载时，客户端不会看到原始的 `Page` 组件，或者用于渲染 markdown 且体积大的包。客户端只会看到渲染出来的内容：
+渲染的输出接着可以被服务端渲染（SSR）成 HTML 并上传至 CDN。当应用加载时，客户端不会看到原始的 `Page` 组件，也不会看到用于渲染 markdown 且体积较大的包。客户端只会看到最终渲染出来的 HTML 内容：
 
 ```js
 <div><!-- html for markdown --></div>
@@ -99,15 +99,15 @@ async function Page({page}) {
 </Note>
 
 ### 使用服务器的服务器组件 {/*server-components-with-a-server*/}
-服务器组件也可以在一次页面的请求时，在 Web 服务器上运行，从而让你不需要建立 API 就可以访问数据层。这类服务器组件在应用打包之前被渲染，并且可以向客户端组件传递数据和 JSX 作为 prop。
+服务器组件也可以在请求页面时在 Web 服务器上运行，从而让你不需要建立 API 就可以访问数据层。这类服务器组件在应用打包之前被渲染，并且可以将数据和 JSX 作为 props 传递给客户端组件。
 
-不使用服务器组件，通常会在客户端的一个 Effect 里获取动态数据：
+如果不使用服务器组件，通常会在客户端的 Effect 里获取动态数据：
 
 ```js
 // bundle.js
 function Note({id}) {
   const [note, setNote] = useState('');
-  // 注意: 在第一次渲染 *之后* 加载。
+  // 注意: 在第一次渲染 **之后** 加载。
   useEffect(() => {
     fetch(`/api/notes/${id}`).then(data => {
       setNote(data.note);
@@ -124,7 +124,7 @@ function Note({id}) {
 
 function Author({id}) {
   const [author, setAuthor] = useState('');
-  // 注意: 在 Note 渲染 *之后* 加载。
+  // 注意: 在 Note 渲染 **之后** 加载。
   // 造成昂贵的客户端-服务器瀑布
   useEffect(() => {
     fetch(`/api/authors/${id}`).then(data => {
@@ -156,7 +156,7 @@ app.get(`/api/authors/:id`, async (req, res) => {
 import db from './database';
 
 async function Note({id}) {
-  // 注意: 在 *渲染时* 加载。
+  // 注意: 在 **渲染时** 加载。
   const note = await db.notes.get(id);
   return (
     <div>
@@ -167,14 +167,14 @@ async function Note({id}) {
 }
 
 async function Author({id}) {
-  // 注意: 在 Note 之 *后* 加载，
-  // 如果数据存储在一个地方会加载很快。
+  // 注意: 在 Note **之后** 加载，
+  // 如果服务器组件和数据库在同一个位置（例如在同一台服务器上），这里读取数据的加载速度会很快。
   const author = await db.authors.get(id);
   return <span>By: {author.name}</span>;
 }
 ```
 
-打包器接着会整合数据，渲染服务器组件和动态客户端组件成一个包。接着可以选择将这个包服务端渲染（SSR）以创建页面初始的 HTML。页面加载时，浏览器不会看到原始的 `Note` 和 `Author` 组件，只有渲染后的输出才会发送到客户端：
+打包器接着会整合数据、渲染服务器组件并和动态客户端组件一起打成一个包。接着可以选择将这个包进行服务端渲染（SSR）以创建初始的 HTML 页面。当页面加载时，浏览器不会看到原始的 `Note` 和 `Author` 组件，只有渲染后的输出才会发送到客户端：
 
 ```js
 <div>
@@ -183,7 +183,7 @@ async function Author({id}) {
 </div>
 ```
 
-可以通过重新请求服务器来使服务器组件动态化，重新请求时，它们可以访问数据并重新渲染。这种新的应用结构融合了以服务器为中心多页应用的「请求/响应」心智模型，和以客户端为中心单页应用的无缝交互性，给你提供两者的优点。
+可以通过重新请求服务器来使服务器组件动态化，重新请求时，它们可以访问数据并重新渲染。这种新的应用结构将以服务器为中心多页应用的「请求/响应」心智模型和以客户端为中心单页应用的无缝交互性的优点融合在一起，给你提供两全其美的体验。
 
 ### 给服务器组件添加交互性 {/*adding-interactivity-to-server-components*/}
 
@@ -237,7 +237,7 @@ export default function Expandable({children}) {
 }
 ```
 
-其工作原理是，首先将 `Notes` 作为服务器组件渲染，然后指引打包器为客户端组件 `Expandable` 创建一个包。在浏览器中，客户端组件会接收服务器组件的输出作为 prop 传递。
+其工作原理是，首先将 `Notes` 作为服务器组件渲染，然后指引打包器为客户端组件 `Expandable` 创建一个包。在浏览器中，客户端组件会接收服务器组件的输出并作为 props 传递。
 
 ```js
 <head>
@@ -259,7 +259,7 @@ export default function Expandable({children}) {
 
 ### 使用服务器组件的异步组件 {/*async-components-with-server-components*/}
 
-服务器组件引入了一种使用 async/await 编写组件的新方法。当你在一个异步组件里 `await` 时，React 会暂停，等待 promise 解析完成后再继续渲染。这在服务器/客户端边界之间有效，并且支持 Suspense 的流式传输。
+服务器组件引入了一种使用 async/await 编写组件的新方法。当你在一个异步组件里 `await` 时，React 会暂停，等待 promise 解析完成后再继续渲染。这种等待可以跨越服务器和客户端的边界生效，并且支持 Suspense 的流式传输。
 
 你甚至可以在服务器上创建一个 promise，然后再客户端上 await 它。
 
@@ -268,10 +268,10 @@ export default function Expandable({children}) {
 import db from './database';
 
 async function Page({id}) {
-  // 使用了await，会使服务器组件暂停
+  // 使用 await 会使服务器组件暂停
   const note = await db.notes.get(id);
   
-  // 注意: 没有使用 await, 从这里开始，到客户端上去 awiat
+  // 注意: 没有使用 await, 所以从这里开始执行，但是客户端上面进行 await
   const commentsPromise = db.comments.get(note.id);
   return (
     <div>
@@ -290,7 +290,7 @@ async function Page({id}) {
 import {use} from 'react';
 
 function Comments({commentsPromise}) {
-  // 注意: 这样做会继续服务器上的 promise
+  // 注意: 这样做会复用服务器上的 promise
   // 它会一直等到数据可用之后才继续
   const comments = use(commentsPromise);
   return comments.map(commment => <p>{comment}</p>);
