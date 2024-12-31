@@ -10,7 +10,7 @@ title: React Blog
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<BlogCard title="React v19 " date="April 25, 2024" url="/blog/2024/12/05/react-19">
+<BlogCard title="React v19 " date="December 05, 2024" url="/blog/2024/12/05/react-19">
 
 在我们的 React 19 升级指南中, 我们分享了将应用程序升级到 React 19 的分步说明。在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们……
 
