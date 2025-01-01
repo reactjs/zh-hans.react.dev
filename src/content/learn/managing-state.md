@@ -303,7 +303,7 @@ h3, p { margin: 5px 0px; }
 
 </LearnMore>
 
-## 对 state 进行保留和重置 {/*preserving-and-resetting-state*/}
+## 对 State 进行保留和重置 {/*preserving-and-resetting-state*/}
 
 当你重新渲染一个组件时， React 需要决定组件树中的哪些部分要保留和更新，以及丢弃或重新创建。在大多数情况下， React 的自动处理机制已经做得足够好了。默认情况下，React 会保留树中与先前渲染的组件树“匹配”的部分。
 
@@ -499,7 +499,7 @@ textarea {
 
 <LearnMore path="/learn/preserving-and-resetting-state">
 
-阅读 **[对 state 进行保留和重置](/learn/preserving-and-resetting-state)** 来学习状态的生命周期以及如何控制它。
+阅读 **[对 State 进行保留和重置](/learn/preserving-and-resetting-state)** 来学习状态的生命周期以及如何控制它。
 
 </LearnMore>
 
