@@ -481,7 +481,7 @@ h2 { font-size: 20px; }
 let guest = 0;
 
 function Cup() {
-  // Bad: changing a preexisting variable!
+  // 不推荐的做法：直接修改一个已存在的变量。
   guest = guest + 1;
   return <h2>Tea cup for guest #{guest}</h2>;
 }

@@ -34,7 +34,7 @@ React 组件是返回标签的 JavaScript 函数：
 ```js
 function MyButton() {
   return (
-    <button>I'm a button</button>
+    <button>我是一个按钮</button>
   );
 }
 ```
@@ -45,7 +45,7 @@ function MyButton() {
 export default function MyApp() {
   return (
     <div>
-      <h1>Welcome to my app</h1>
+      <h1>欢迎来到我的应用</h1>
       <MyButton />
     </div>
   );
@@ -62,7 +62,7 @@ export default function MyApp() {
 function MyButton() {
   return (
     <button>
-      I'm a button
+      我是一个按钮
     </button>
   );
 }
@@ -70,7 +70,7 @@ function MyButton() {
 export default function MyApp() {
   return (
     <div>
-      <h1>Welcome to my app</h1>
+      <h1>欢迎来到我的应用</h1>
       <MyButton />
     </div>
   );
@@ -91,8 +91,8 @@ JSX 比 HTML 更加严格。你必须闭合标签，如 `<br />`。你的组件�
 function AboutPage() {
   return (
     <>
-      <h1>About</h1>
-      <p>Hello there.<br />How do you do?</p>
+      <h1>关于</h1>
+      <p>你好。<br />最近怎么样？</p>
     </>
   );
 }
@@ -111,7 +111,7 @@ function AboutPage() {
 然后，你可以在一个单独的 CSS 文件中为它编写 CSS 规则：
 
 ```css
-/* In your CSS */
+/* 在你的 CSS 文件中修改 */
 .avatar {
   border-radius: 50%;
 }
@@ -259,9 +259,9 @@ return (
 
 ```js
 const products = [
-  { title: 'Cabbage', isFruit: false, id: 1 },
-  { title: 'Garlic', isFruit: false, id: 2 },
-  { title: 'Apple', isFruit: true, id: 3 },
+  { title: '卷心菜', isFruit: false, id: 1 },
+  { title: '大蒜', isFruit: false, id: 2 },
+  { title: '苹果', isFruit: true, id: 3 },
 ];
 
 export default function ShoppingList() {
@@ -296,7 +296,7 @@ function MyButton() {
 
   return (
     <button onClick={handleClick}>
-      Click me
+      点我
     </button>
   );
 }
@@ -354,7 +354,7 @@ import { useState } from 'react';
 export default function MyApp() {
   return (
     <div>
-      <h1>Counters that update separately</h1>
+      <h1>独立更新的计数器</h1>
       <MyButton />
       <MyButton />
     </div>
@@ -370,7 +370,7 @@ function MyButton() {
 
   return (
     <button onClick={handleClick}>
-      Clicked {count} times
+      点了 {count} 次
     </button>
   );
 }
@@ -449,7 +449,7 @@ export default function MyApp() {
 
   return (
     <div>
-      <h1>Counters that update separately</h1>
+      <h1>独立更新的计数器</h1>
       <MyButton />
       <MyButton />
     </div>
@@ -457,7 +457,7 @@ export default function MyApp() {
 }
 
 function MyButton() {
-  // ... we're moving code from here ...
+  // ... 我们将把代码移动到这里 ...
 }
 
 ```
@@ -474,7 +474,7 @@ export default function MyApp() {
 
   return (
     <div>
-      <h1>Counters that update together</h1>
+      <h1>共同更新的计数器</h1>
       <MyButton count={count} onClick={handleClick} />
       <MyButton count={count} onClick={handleClick} />
     </div>
@@ -490,7 +490,7 @@ export default function MyApp() {
 function MyButton({ count, onClick }) {
   return (
     <button onClick={onClick}>
-      Clicked {count} times
+      点了 {count} 次
     </button>
   );
 }
@@ -512,7 +512,7 @@ export default function MyApp() {
 
   return (
     <div>
-      <h1>Counters that update together</h1>
+      <h1>共同更新的计数器</h1>
       <MyButton count={count} onClick={handleClick} />
       <MyButton count={count} onClick={handleClick} />
     </div>
@@ -522,7 +522,7 @@ export default function MyApp() {
 function MyButton({ count, onClick }) {
   return (
     <button onClick={onClick}>
-      Clicked {count} times
+      点了 {count} 次
     </button>
   );
 }

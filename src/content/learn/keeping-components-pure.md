@@ -619,8 +619,8 @@ export default function App() {
   let [stories, setStories] = useState([...initialStories])
   let time = useTime();
 
-  // HACK: Prevent the memory from growing forever while you read docs.
-  // We're breaking our own rules here.
+  // 临时解决方案：防止在阅读文档时内存无限制增长。
+  // 我们在这里违反了自己的规则。
   if (stories.length > 100) {
     stories.length = 100;
   }
@@ -633,7 +633,7 @@ export default function App() {
         textAlign: 'center',
       }}
     >
-      <h2>It is {time.toLocaleTimeString()} now.</h2>
+      <h2>现在是 {time.toLocaleTimeString()}。</h2>
       <StoryTray stories={stories} />
     </div>
   );
@@ -715,8 +715,8 @@ export default function App() {
   let [stories, setStories] = useState([...initialStories])
   let time = useTime();
 
-  // HACK: Prevent the memory from growing forever while you read docs.
-  // We're breaking our own rules here.
+  // 临时解决方案：防止在阅读文档时内存无限制增长。
+  // 我们在这里违反了自己的规则。
   if (stories.length > 100) {
     stories.length = 100;
   }
@@ -729,7 +729,7 @@ export default function App() {
         textAlign: 'center',
       }}
     >
-      <h2>It is {time.toLocaleTimeString()} now.</h2>
+      <h2>现在是 {time.toLocaleTimeString()}。</h2>
       <StoryTray stories={stories} />
     </div>
   );
@@ -807,8 +807,8 @@ export default function App() {
   let [stories, setStories] = useState([...initialStories])
   let time = useTime();
 
-  // HACK: Prevent the memory from growing forever while you read docs.
-  // We're breaking our own rules here.
+  // 临时解决方案：防止在阅读文档时内存无限制增长。
+  // 我们在这里违反了自己的规则。
   if (stories.length > 100) {
     stories.length = 100;
   }
@@ -821,7 +821,7 @@ export default function App() {
         textAlign: 'center',
       }}
     >
-      <h2>It is {time.toLocaleTimeString()} now.</h2>
+      <h2>现在是 {time.toLocaleTimeString()}。</h2>
       <StoryTray stories={stories} />
     </div>
   );
