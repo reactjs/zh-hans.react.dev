@@ -252,7 +252,7 @@ export default function ModalContent({ onClose }) {
 
 <Sandpack>
 
-```html index.html
+```html public/index.html
 <!DOCTYPE html>
 <html>
   <head><title>我的应用程序</title></head>
