@@ -62,12 +62,8 @@ npm install react react-dom
 <html>
   <head><title>My app</title></head>
   <body>
-<<<<<<< HEAD
     <!-- 你现有的页面内容（在这个例子中，它将被替换） -->
-=======
-    <!-- Your existing page content (in this example, it gets replaced) -->
     <div id="root"></div>
->>>>>>> ee8a829f99ee813f36fed1f553b2deee5a1cc0b4
   </body>
 </html>
 ```
