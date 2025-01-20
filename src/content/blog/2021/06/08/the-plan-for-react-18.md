@@ -5,7 +5,11 @@ date: 2021/06/08
 description: React 团队很高兴分享一些更新。我们已经开始推进 React 18 的更新，也正是我们的下一个主要版本。我们已经创建了一些工作组，筹备 React 18 新功能在社区内逐步推广的相关工作。我们已经发布了一个 React 18 Alpha 版本，以便于一些库的作者们能够测试并反馈……
 ---
 
+<<<<<<< HEAD
 2021 年 7 月 8 日 [Andrew Clark](https://twitter.com/acdlite)、[Brian Vaughn](https://github.com/bvaughn)、[Christine Abernathy](https://twitter.com/abernathyca)、[Dan Abramov](https://twitter.com/dan_abramov)、[Rachel Nabors](https://twitter.com/rachelnabors)、[Rick Hanlon](https://twitter.com/rickhanlonii)、[Sebastian Markbåge](https://twitter.com/sebmarkbage) 与 [Seth Webster](https://twitter.com/sethwebster)
+=======
+June 8, 2021 by [Andrew Clark](https://twitter.com/acdlite), [Brian Vaughn](https://github.com/bvaughn), [Christine Abernathy](https://twitter.com/abernathyca), [Dan Abramov](https://bsky.app/profile/danabra.mov), [Rachel Nabors](https://twitter.com/rachelnabors), [Rick Hanlon](https://twitter.com/rickhanlonii), [Sebastian Markbåge](https://twitter.com/sebmarkbage), and [Seth Webster](https://twitter.com/sethwebster)
+>>>>>>> b22cbc3fed310b39c99fdd0f01621ac1903d1e8e
 
 ---
 
