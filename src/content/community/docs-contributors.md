@@ -11,7 +11,7 @@ React 文档由 [React 团队](/community/team) 和 [外部贡献者](https://gi
 ## 内容 {/*content*/}
 
 * [Rachel Nabors](https://twitter.com/RachelNabors)：编辑、写作、插图
-* [Dan Abramov](https://twitter.com/dan_abramov)：写作、教程设计
+* [Dan Abramov](https://bsky.app/profile/danabra.mov)：写作、教程设计
 * [Sylwia Vargas](https://twitter.com/SylwiaVargas)：示例代码、写作
 * [Rick Hanlon](https://twitter.com/rickhanlonii)：写作
 * [David McCabe](https://twitter.com/mcc_abe)：写作
@@ -34,7 +34,7 @@ React 文档由 [React 团队](/community/team) 和 [外部贡献者](https://gi
 * [Jared Palmer](https://twitter.com/jaredpalmer)：站点开发
 * [ThisDotLabs](https://www.thisdot.co/) ([Dane Grant](https://twitter.com/danecando)、[Dustin Goodman](https://twitter.com/dustinsgoodman))：站点开发
 * [CodeSandbox](https://codesandbox.io/) ([Ives van Hoorne](https://twitter.com/CompuIves)、[Alex Moldovan](https://twitter.com/alexnmoldovan)、[Jasper De Moor](https://twitter.com/JasperDeMoor)、[Danilo Woznica](https://twitter.com/danilowoz))：沙箱集成
-* [Dan Abramov](https://twitter.com/dan_abramov)：站点开发
+* [Dan Abramov](https://bsky.app/profile/danabra.mov)：站点开发
 * [Rick Hanlon](https://twitter.com/rickhanlonii)：站点开发
 * [Harish Kumar](https://www.strek.in/)：开发和维护
 * [Luna Ruan](https://twitter.com/lunaruan)：沙箱改进

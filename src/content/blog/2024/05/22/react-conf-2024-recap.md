@@ -42,7 +42,7 @@ _[点击这里观看第一天完整直播。](https://www.youtube.com/watch?v=T8
 - [React 解读：React 19 路线图](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=10112s)，来自 [Sam Selikoff](https://twitter.com/samselikoff)
 - [React 19 深入：协调 HTML](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=24916s)，来自 [Josh Story](https://twitter.com/joshcstory)
 - [使用 React 服务器组件增强表单](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=25280s)，来自 [Aurora Walberg Scharff](https://twitter.com/aurorascharff)
-- [为两台计算机设计的 React](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=18825s)，来自 [Dan Abramov](https://twitter.com/dan_abramov2)
+- [为两台计算机设计的 React](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=18825s)，来自 [Dan Abramov](https://bsky.app/profile/danabra.mov)
 - [现在你应该理解了 React 服务器组件](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=11256s)，来自 [Kent C. Dodds](https://twitter.com/kentcdodds)
 
 最后，[Joe Savona](https://twitter.com/en_JS)、[Sathya Gunasekaran](https://twitter.com/_gsathya) 和 [Mofei Zhang](https://twitter.com/zmofei) 宣布 React Compiler 现已 [开源](https://github.com/facebook/react/pull/29061)，并分享了一个实验版本的 React Compiler 供大家尝试。

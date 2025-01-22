@@ -5,7 +5,7 @@ date: 2024/02/15
 description: 在 React Labs 的文章中，我们讲述了正在进行研究与开发的项目。自上次更新以来，我们又取得了巨大进展，现在我们想将这些内容分享给大家。
 ---
 
-2024 年 2 月 15 日 [Joseph Savona](https://twitter.com/en_JS)、[Ricky Hanlon](https://twitter.com/rickhanlonii)、[Andrew Clark](https://twitter.com/acdlite)、[Matt Carroll](https://twitter.com/mattcarrollcode) 与 [Dan Abramov](https://twitter.com/dan_abramov)
+2024 年 2 月 15 日 [Joseph Savona](https://twitter.com/en_JS)、[Ricky Hanlon](https://twitter.com/rickhanlonii)、[Andrew Clark](https://twitter.com/acdlite)、[Matt Carroll](https://twitter.com/mattcarrollcode) 与 [Dan Abramov](https://bsky.app/profile/danabra.mov)
 
 ---
 

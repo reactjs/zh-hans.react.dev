@@ -97,9 +97,9 @@ React 的核心思想是开发人员将其 UI 定义为当前状态的函数。�
 * * *
 除了这个更新，我们的团队最近还在社区播客和直播中客串，更多地讲述我们的工作并回答问题。
 
-* [Dan Abramov](https://twitter.com/dan_abramov) 和 [Joe Savona](https://twitter.com/en_JS) 在 [Kent C. Dodds 的 YouTube 频道](https://www.youtube.com/watch?v=h7tur48JSaw) 上接受了采访，讨论了关于 React 服务器组件的问题。
-* [Dan Abramov](https://twitter.com/dan_abramov) 和 [Joe Savona](https://twitter.com/en_JS) 在 [JSParty podcast](https://jsparty.fm/267) 上作为嘉宾，分享了他们对 React 未来的看法。
+* [Dan Abramov](https://bsky.app/profile/danabra.mov) 和 [Joe Savona](https://twitter.com/en_JS) 在 [Kent C. Dodds 的 YouTube 频道](https://www.youtube.com/watch?v=h7tur48JSaw) 上接受了采访，讨论了关于 React 服务器组件的问题。
+* [Dan Abramov](https://bsky.app/profile/danabra.mov) 和 [Joe Savona](https://twitter.com/en_JS) 在 [JSParty podcast](https://jsparty.fm/267) 上作为嘉宾，分享了他们对 React 未来的看法。
 
-感谢 [Andrew Clark](https://twitter.com/acdlite)、[Dan Abramov](https://twitter.com/dan_abramov)、[Dave McCabe](https://twitter.com/mcc_abe)、[Luna Wei](https://twitter.com/lunaleaps)、[Matt Carroll](https://twitter.com/mattcarrollcode)、[Sean Keegan](https://twitter.com/DevRelSean)、[Sebastian Silbermann](https://twitter.com/sebsilbermann)、[Seth Webster](https://twitter.com/sethwebster) 和 [Sophie Alpert](https://twitter.com/sophiebits) 对本篇文章进行审查。
+感谢 [Andrew Clark](https://twitter.com/acdlite)、[Dan Abramov](https://bsky.app/profile/danabra.mov)、[Dave McCabe](https://twitter.com/mcc_abe)、[Luna Wei](https://twitter.com/lunaleaps)、[Matt Carroll](https://twitter.com/mattcarrollcode)、[Sean Keegan](https://twitter.com/DevRelSean)、[Sebastian Silbermann](https://twitter.com/sebsilbermann)、[Seth Webster](https://twitter.com/sethwebster) 和 [Sophie Alpert](https://twitter.com/sophiebits) 对本篇文章进行审查。
 
 感谢阅读，我们下次更新见！
