@@ -5,11 +5,7 @@ date: 2020/12/21
 description: 2020 年是漫长的一年。随着它的结束，我们想在节日里分享一份特别的更新，介绍我们对零打包大小的 React 服务器组件的研究。
 ---
 
-<<<<<<< HEAD
-2020 年 12 月 21 日 [Dan Abramov](https://twitter.com/dan_abramov)、[Lauren Tan](https://twitter.com/potetotes)、[Joseph Savona](https://twitter.com/en_JS) 与 [Sebastian Markbåge](https://twitter.com/sebmarkbage)
-=======
-December 21, 2020 by [Dan Abramov](https://bsky.app/profile/danabra.mov), [Lauren Tan](https://twitter.com/potetotes), [Joseph Savona](https://twitter.com/en_JS), and [Sebastian Markbåge](https://twitter.com/sebmarkbage)
->>>>>>> b03017aaee6541c0b3c653edb4b82c56ee99a88d
+2020 年 12 月 21 日 [Dan Abramov](https://bsky.app/profile/danabra.mov)、[Lauren Tan](https://twitter.com/potetotes)、[Joseph Savona](https://twitter.com/en_JS) 与 [Sebastian Markbåge](https://twitter.com/sebmarkbage)
 
 ---
 

@@ -10,9 +10,8 @@ React 文档由 [React 团队](/community/team) 和 [外部贡献者](https://gi
 
 ## 内容 {/*content*/}
 
-<<<<<<< HEAD
 * [Rachel Nabors](https://twitter.com/RachelNabors)：编辑、写作、插图
-* [Dan Abramov](https://twitter.com/dan_abramov)：写作、教程设计
+* [Dan Abramov](https://bsky.app/profile/danabra.mov)：写作、教程设计
 * [Sylwia Vargas](https://twitter.com/SylwiaVargas)：示例代码、写作
 * [Rick Hanlon](https://twitter.com/rickhanlonii)：写作
 * [David McCabe](https://twitter.com/mcc_abe)：写作
@@ -22,19 +21,6 @@ React 文档由 [React 团队](/community/team) 和 [外部贡献者](https://gi
 * [Matt Carroll](https://twitter.com/mattcarrollcode)：编辑、写作
 * [Natalia Tepluhina](https://twitter.com/n_tepluhina)：审查、建议
 * [Sebastian Markbåge](https://twitter.com/sebmarkbage)：反馈
-=======
-* [Rachel Nabors](https://twitter.com/RachelNabors): editing, writing, illustrating
-* [Dan Abramov](https://bsky.app/profile/danabra.mov): writing, curriculum design
-* [Sylwia Vargas](https://twitter.com/SylwiaVargas): example code
-* [Rick Hanlon](https://twitter.com/rickhanlonii): writing
-* [David McCabe](https://twitter.com/mcc_abe): writing
-* [Sophie Alpert](https://twitter.com/sophiebits): writing
-* [Pete Hunt](https://twitter.com/floydophone): writing
-* [Andrew Clark](https://twitter.com/acdlite): writing
-* [Matt Carroll](https://twitter.com/mattcarrollcode): editing, writing
-* [Natalia Tepluhina](https://twitter.com/n_tepluhina): reviews, advice
-* [Sebastian Markbåge](https://twitter.com/sebmarkbage): feedback
->>>>>>> b03017aaee6541c0b3c653edb4b82c56ee99a88d
 
 ## 设计 {/*design*/}
 
@@ -45,22 +31,12 @@ React 文档由 [React 团队](/community/team) 和 [外部贡献者](https://gi
 
 ## 开发 {/*development*/}
 
-<<<<<<< HEAD
 * [Jared Palmer](https://twitter.com/jaredpalmer)：站点开发
 * [ThisDotLabs](https://www.thisdot.co/) ([Dane Grant](https://twitter.com/danecando)、[Dustin Goodman](https://twitter.com/dustinsgoodman))：站点开发
 * [CodeSandbox](https://codesandbox.io/) ([Ives van Hoorne](https://twitter.com/CompuIves)、[Alex Moldovan](https://twitter.com/alexnmoldovan)、[Jasper De Moor](https://twitter.com/JasperDeMoor)、[Danilo Woznica](https://twitter.com/danilowoz))：沙箱集成
-* [Dan Abramov](https://twitter.com/dan_abramov)：站点开发
+* [Dan Abramov](https://bsky.app/profile/danabra.mov)：站点开发
 * [Rick Hanlon](https://twitter.com/rickhanlonii)：站点开发
 * [Harish Kumar](https://www.strek.in/)：开发和维护
 * [Luna Ruan](https://twitter.com/lunaruan)：沙箱改进
-=======
-* [Jared Palmer](https://twitter.com/jaredpalmer): site development
-* [ThisDotLabs](https://www.thisdot.co/) ([Dane Grant](https://twitter.com/danecando), [Dustin Goodman](https://twitter.com/dustinsgoodman)): site development
-* [CodeSandbox](https://codesandbox.io/) ([Ives van Hoorne](https://twitter.com/CompuIves), [Alex Moldovan](https://twitter.com/alexnmoldovan), [Jasper De Moor](https://twitter.com/JasperDeMoor), [Danilo Woznica](https://twitter.com/danilowoz)): sandbox integration
-* [Dan Abramov](https://bsky.app/profile/danabra.mov): site development
-* [Rick Hanlon](https://twitter.com/rickhanlonii): site development
-* [Harish Kumar](https://www.strek.in/): development and maintenance
-* [Luna Ruan](https://twitter.com/lunaruan): sandbox improvements
->>>>>>> b03017aaee6541c0b3c653edb4b82c56ee99a88d
 
 我们还要感谢无数的 alpha 测试人员和社区成员，在这个过程中给予我们反馈意见。
