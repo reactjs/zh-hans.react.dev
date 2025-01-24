@@ -466,7 +466,7 @@ function SearchBar({ filterText, inStockOnly }) {
 
 ## 步骤五：添加反向数据流 {/*step-5-add-inverse-data-flow*/}
 
-目前你的应用程序可以带着 props 和 state 随着层级结构进行正确渲染。但是根据用户的输入改变 state，需要通过其它的方式支持数据流：深层结构的表单组件需要在 `FilterableProductTable` 中更新 state。
+目前你的应用程序可以带着 props 和 state 随着层级结构进行渲染。但是为了支持通过用户输入来改变 state，你需要让数据反向传输：深层结构的表单组件需要更新 `FilterableProductTable` 的 state。
 
 React 使数据流显式展示，是与双向数据绑定相比，需要更多的输入。如果你尝试在上述的例子中输入或者勾选复选框，发现 React 忽视了你的输入。这点是有意为之的。通过 `<input value={filterText} />`，已经设置了 `input` 的 `value` 属性，使之恒等于从 `FilterableProductTable` 传递的 `filterText` state。只要 `filterText` state 不设置，（输入框的）输入就不会改变。
 
