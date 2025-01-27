@@ -294,7 +294,11 @@ A component was suspended by an uncached promise. Creating promises inside a Cli
 
 </ConsoleBlockMulti>
 
+<<<<<<< HEAD
 为了解决这个问题，你需要从支持 promise 缓存的 Suspense 强化库或框架中传递一个 promise。在未来，我们计划推出功能，使在渲染中缓存 promise 更加容易。
+=======
+To fix, you need to pass a promise from a Suspense powered library or framework that supports caching for promises. In the future we plan to ship features to make it easier to cache promises in render.
+>>>>>>> 3bb7a4eb249b25ef6b47e1664d8985d4813c5f80
 
 </Note>
 

@@ -23,7 +23,7 @@ useEffect(setup, dependencies?)
 在组件的顶层调用 `useEffect` 来声明一个 Effect：
 
 ```js
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { createConnection } from './chat.js';
 
 function ChatRoom({ roomId }) {
@@ -81,7 +81,7 @@ function ChatRoom({ roomId }) {
 要 [将组件连接到某个外部系统](/learn/synchronizing-with-effects)，请在组件的顶层调用 `useEffect`：
 
 ```js [[1, 8, "const connection = createConnection(serverUrl, roomId);"], [1, 9, "connection.connect();"], [2, 11, "connection.disconnect();"], [3, 13, "[serverUrl, roomId]"]]
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { createConnection } from './chat.js';
 
 function ChatRoom({ roomId }) {

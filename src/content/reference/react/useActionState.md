@@ -67,9 +67,15 @@ form state 是一个只在表单被提交触发 action 后才会被更新的值�
 
 `useActionState` 返回一个包含以下值的数组：
 
+<<<<<<< HEAD
 1. 当前的 state。第一次渲染期间，该值为传入的 `initialState` 参数值。在 action 被调用后该值会变为 action 的返回值。
 2. 一个新的 action 函数用于在你的 `form` 组件的 `action` 参数或表单中任意一个 `button` 组件的 `formAction` 参数中传递。
 3. 一个 `isPending` 标识，用于表明是否有正在 pending 的 Transition。
+=======
+1. The current state. During the first render, it will match the `initialState` you have passed. After the action is invoked, it will match the value returned by the action.
+2. A new action that you can pass as the `action` prop to your `form` component or `formAction` prop to any `button` component within the form. The action can also be called manually within [`startTransition`](/reference/react/startTransition).
+3. The `isPending` flag that tells you whether there is a pending Transition.
+>>>>>>> 3bb7a4eb249b25ef6b47e1664d8985d4813c5f80
 
 #### 注意 {/*caveats*/}
 
@@ -101,9 +107,15 @@ function MyComponent() {
 
 `useActionState` 返回一个包含以下值的数组：
 
+<<<<<<< HEAD
 1. 该表单的 <CodeStep step={1}>当前 state</CodeStep>，初始值为提供的 <CodeStep step={4}>初始 state</CodeStep>，当表单被提交后则改为传入的 <CodeStep step={3}>action</CodeStep> 的返回值。
 2. 传入 `<form>` 标签的 `action` 属性的 <CodeStep step={2}>新 action</CodeStep>。
 3. 一个 <CodeStep step={1}>pending state</CodeStep>，可以在处理 action 的过程中使用它。
+=======
+1. The <CodeStep step={1}>current state</CodeStep> of the form, which is initially set to the <CodeStep step={4}>initial state</CodeStep> you provided, and after the form is submitted is set to the return value of the <CodeStep step={3}>action</CodeStep> you provided.
+2. A <CodeStep step={2}>new action</CodeStep> that you pass to `<form>` as its `action` prop or call manually within `startTransition`.
+3. A <CodeStep step={1}>pending state</CodeStep> that you can utilise while your action is processing.
+>>>>>>> 3bb7a4eb249b25ef6b47e1664d8985d4813c5f80
 
 表单被提交后，传入的 <CodeStep step={3}>action</CodeStep> 函数会被执行。返回值将会作为该表单的新的 <CodeStep step={1}>当前 state</CodeStep>。
 
