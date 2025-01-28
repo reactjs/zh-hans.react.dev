@@ -22,13 +22,8 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Dan 在意外发现 Microsoft PowerPoint 内部的 Visual Basic 后进入了编程行业。他发现了自己的真正使命，就是将 [Sebastian](#sebastian-markbåge) 的推特转化为长篇博客文章。Dan 偶尔会通过整局游戏都躲在草丛里的方式，在《堡垒之夜》中赢得胜利。
 </TeamMember>
 
-<<<<<<< HEAD
-<TeamMember name="Eli White" permalink="eli-white" photo="/images/team/eli-white.jpg" github="TheSavior" twitter="Eli_White" threads="elicwhite" title="Engineering Manager at Meta">
-    Eli 因为在中学时期的黑客行为被学校暂时开除，从此踏入了编程的世界。自 2017 年起，他就一直致力于 React 和 React Native 的工作。他是个美食爱好者，特别喜欢冰淇淋和苹果派。你常常能发现 Eli 在尝试一些别出心裁的活动，如跑酷、室内跳伞，以及空中丝绸表演。
-=======
 <TeamMember name="Eli White" permalink="eli-white" photo="/images/team/eli-white.jpg" github="elicwhite" twitter="Eli_White" threads="elicwhite" title="Engineering Manager at Meta">
-    Eli got into programming after he got suspended from middle school for hacking. He has been working on React and React Native since 2017. He enjoys eating treats, especially ice cream and apple pie. You can find Eli trying quirky activities like parkour, indoor skydiving, and aerial silks.
->>>>>>> 3bb7a4eb249b25ef6b47e1664d8985d4813c5f80
+    Eli 因为在中学时期的黑客行为被学校暂时开除，从此踏入了编程的世界。自 2017 年起，他就一直致力于 React 和 React Native 的工作。他是个美食爱好者，特别喜欢冰淇淋和苹果派。你常常能发现 Eli 在尝试一些别出心裁的活动，如跑酷、室内跳伞，以及空中丝绸表演。
 </TeamMember>
 
 <TeamMember name="Hendrik Liebau" permalink="hendrik-liebau" photo="/images/team/hendrik.jpg" github="unstubbable" bsky="unstubbable.bsky.social" twitter="unstubbable" title="Engineer at Vercel">
@@ -71,13 +66,8 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Mofei 在意识到编程可以帮她在视频游戏中作弊时开始了编程生涯。她在本科和研究生期间专注于操作系统的研究，但现在她发现自己非常享受在 React 上的编程工作。在工作之外，她喜欢解决攀岩中遇到的问题，并且正在计划她的下一次背包旅行。
 </TeamMember>
 
-<<<<<<< HEAD
-<TeamMember name="Noah Lemen" permalink="noah-lemen" photo="/images/team/noahlemen.jpg" github="noahlemen" twitter="noahlemen" threads="noahlemen" personal="noahle.men" title="Engineer at Meta">
-    Noah 在纽约大学接受音乐技术教育期间，对 UI 编程产生了兴趣。在 Meta，他从事内部工具、浏览器、网络性能方面的工作，目前专注于 React。在工作之余，他会捣鼓合成器，或者和他的猫在一起玩耍。
-=======
 <TeamMember name="Pieter Vanderwerff" permalink="pieter-vanderwerff" photo="/images/team/pieter.jpg" github="pieterv" threads="pietervanderwerff" title="Engineer at Meta">
     Pieter studied building science but after failing to get a job he made himself a website and things escalated from there. At Meta, he enjoys working on performance, languages and now React. When he's not programming you can find him off-road in the mountains.
->>>>>>> 3bb7a4eb249b25ef6b47e1664d8985d4813c5f80
 </TeamMember>
 
 <TeamMember name="Rick Hanlon" permalink="rick-hanlon" photo="/images/team/rickhanlonii.jpg" github="rickhanlonii" twitter="rickhanlonii" threads="rickhanlonii" bsky="ricky.fm" title="Engineer at Meta">
@@ -88,13 +78,6 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     Ruslan's introduction to UI programming started when he was a kid by manually editing HTML templates for his custom gaming forums. Somehow, he ended up majoring in Computer Science. He enjoys music, games, and memes. Mostly memes.
 </TeamMember>
 
-<<<<<<< HEAD
-<TeamMember name="Sathya Gunasekaran " permalink="sathya-gunasekaran" photo="/images/team/sathya.jpg" github="gsathya" twitter="_gsathya" threads="gsathya.03" title="Engineer at Meta">
-    尽管 Sathya 在学校时对《龙书》并无好感，但奇妙的是，他的整个职业生涯都与编译器紧密相连。当他不忙于编译 React 组件的时候，他可能正品尝一杯咖啡，或者正在享受又一份美味的 Dosa。
-</TeamMember>
-
-=======
->>>>>>> 3bb7a4eb249b25ef6b47e1664d8985d4813c5f80
 <TeamMember name="Sebastian Markbåge" permalink="sebastian-markbåge" photo="/images/team/sebmarkbage.jpg" github="sebmarkbage" twitter="sebmarkbage" threads="sebmarkbage" title="Engineer at Vercel">
     Sebastian 主修心理学。他通常比较沉默寡言。即使他说些什么，我们其他人通常也要等几个月后才能理解他的意思。他的姓氏正确的发音是“mark-boa-geh”，但出于实用考虑，他接受了“mark-beige”的发音——这也是他处理 React 问题的方式。
 </TeamMember>
@@ -111,13 +94,6 @@ React 核心团队成员全职致力于核心组件 API 的开发，负责 React
     在 React 刚刚发布的四天后，Sophie 就将她当时的整个项目全部改写成了使用 React，现在回想起来，她认为这可能有些鲁莽。但在成为该项目的最大贡献者之后，她开始思考为何自己没有像其他人那样从 Facebook 那里得到报酬。于是，她正式加入了 Facebook 的团队，带领 React 度过了它的青少年时期。虽然她在几年前已经离开了那个职位，但她仍然是团队群聊的一员，继续“提供价值”。
 </TeamMember>
 
-<<<<<<< HEAD
-<TeamMember name="Tianyu Yao" permalink="tianyu-yao" photo="/images/team/tianyu.jpg" github="tyao1" twitter="tianyu0" title="Engineer at Meta">
-    Tianyu 对计算机的兴趣源自他对视频游戏的热爱，这使得他选择了计算机科学作为自己的专业，至今他依然热衷于一些看似孩子气的游戏，如《英雄联盟》。当他不在电脑前时，他喜欢和他的两只小猫一起玩耍，或者去徒步旅行和划皮艇。
-</TeamMember>
-
-=======
->>>>>>> 3bb7a4eb249b25ef6b47e1664d8985d4813c5f80
 <TeamMember name="Yuzhi Zheng" permalink="yuzhi-zheng" photo="/images/team/yuzhi.jpg" github="yuzhi" twitter="yuzhiz" threads="yuzhiz" title="Engineering Manager at Meta">
     Yuzhi 在学校期间学习的是计算机科学。她喜欢看到自己的代码能在无需实验室的情况下就能实现效果，这给她带来了即时的满足感。现在，她是 React 组织的一名经理。在成为经理之前，她曾在 Relay 数据获取框架上有过工作经历。在业余时间，Yuzhi 享受通过园艺和家居改善项目来优化自己的生活。
 </TeamMember>
