@@ -68,7 +68,7 @@ form state 是一个只在表单被提交触发 action 后才会被更新的值�
 `useActionState` 返回一个包含以下值的数组：
 
 1. 当前的 state。第一次渲染期间，该值为传入的 `initialState` 参数值。在 action 被调用后该值会变为 action 的返回值。
-2. 一个新的 action 函数用于在你的 `form` 组件的 `action` 参数或表单中任意一个 `button` 组件的 `formAction` 参数中传递。
+2. 一个新的 action 函数用于在你的 `form` 组件的 `action` 参数或表单中任意一个 `button` 组件的 `formAction` 参数中传递。这个 action 也可以手动在 [`startTransition`](/reference/react/startTransition) 中调用。
 3. 一个 `isPending` 标识，用于表明是否有正在 pending 的 Transition。
 
 #### 注意 {/*caveats*/}
@@ -102,7 +102,7 @@ function MyComponent() {
 `useActionState` 返回一个包含以下值的数组：
 
 1. 该表单的 <CodeStep step={1}>当前 state</CodeStep>，初始值为提供的 <CodeStep step={4}>初始 state</CodeStep>，当表单被提交后则改为传入的 <CodeStep step={3}>action</CodeStep> 的返回值。
-2. 传入 `<form>` 标签的 `action` 属性的 <CodeStep step={2}>新 action</CodeStep>。
+2. 传入 `<form>` 标签的 `action` 属性的 <CodeStep step={2}>新 action</CodeStep>，或者手动在 `startTransition` 中调用它。
 3. 一个 <CodeStep step={1}>pending state</CodeStep>，可以在处理 action 的过程中使用它。
 
 表单被提交后，传入的 <CodeStep step={3}>action</CodeStep> 函数会被执行。返回值将会作为该表单的新的 <CodeStep step={1}>当前 state</CodeStep>。
