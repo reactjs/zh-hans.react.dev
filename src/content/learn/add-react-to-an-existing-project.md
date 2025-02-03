@@ -85,7 +85,7 @@ root.render(<h1>Hello, world</h1>);
 
 <Note>
 
-第一次将模块化 JavaScript 环境集成到现有项目中可能会让人感到害怕，但这是值得的！如果遇到困难，请尝试我们的 [社区资源](/community) 或 [Vite Chat](https://chat.vitejs.dev/)。
+第一次将模块化 JavaScript 环境集成到现有项目中可能会让人感到害怕，但这是值得的！如果遇到困难，请尝试我们的 [社区资源](/community) 或 [Vite Chat](https://chat.vite.dev/)。
 
 </Note>
 
