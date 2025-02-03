@@ -31,11 +31,7 @@ translators:
 
 此页面上的 React 框架默认解决此类问题，无需进行额外的工作。它们让你能够非常精简地开始，然后根据你的需求扩展应用程序。每个 React 框架都有一个社区，因此寻找问题的答案和升级工具变得更加容易。框架还为你的代码提供结构，帮助你和其他人保留不同项目之间的上下文和技巧。相反，使用自定义设置更容易陷入不受支持的依赖版本，并且你基本上最终会创建自己的框架——但这没有社区支持或升级路径（如果它和我们过去做的一样，设计得比较草率的话）。
 
-<<<<<<< HEAD
 如果你的应用程序具有这些框架无法很好地满足的异常约束，或者你更喜欢自己解决这些问题，则可以使用 React 进行自己的自定义设置。从 npm 获取 `react` 和 `react-dom`，使用 [Vite](https://cn.vitejs.dev/) 或 [Parcel](https://parceljs.org/) 等打包工具设置自定义构建流程，并根据需要添加其他工具用于路由、静态内容生成或服务端渲染等。
-=======
-If your app has unusual constraints not served well by these frameworks, or you prefer to solve these problems yourself, you can roll your own custom setup with React. Grab `react` and `react-dom` from npm, set up your custom build process with a bundler like [Vite](https://vite.dev/) or [Parcel](https://parceljs.org/), and add other tools as you need them for routing, static generation or server-side rendering, and more.
->>>>>>> 6fc98fffdaad3b84e6093d1eb8def8f2cedeee16
 
 </DeepDive>
 
