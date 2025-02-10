@@ -8,7 +8,7 @@ title: 版本策略
 
 </Intro>
 
-For a list of previous releases, see the [Versions](/versions) page.
+This versioning policy describes our approach to version numbers for packages such as `react` and `react-dom`. For a list of previous releases, see the [Versions](/versions) page.
 
 ## 稳定版本 {/*stable-releases*/}
 
@@ -23,6 +23,8 @@ For a list of previous releases, see the [Versions](/versions) page.
 主要版本发布也可以包含新功能，而任何版本都可以包括错误修复。
 
 次要版本发布是最常见的发布类型。
+
+我们知道我们的用户仍然在生产中使用旧版本的 React。如果我们发现了 React 的安全漏洞，我们将为受漏洞影响的所有主要版本发布一个向后移植的修复补丁。
 
 ### 破坏性版本 {/*breaking-changes*/}
 
