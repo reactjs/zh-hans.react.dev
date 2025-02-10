@@ -24,13 +24,9 @@ This versioning policy describes our approach to version numbers for packages su
 
 次要版本发布是最常见的发布类型。
 
-<<<<<<< HEAD
-### 破坏性版本 {/*breaking-changes*/}
-=======
-We know our users continue to use old versions of React in production. If we learn of a security vulnerability in React, we release a backported fix for all major versions that are affected by the vulnerability.
+我们知道我们的用户仍然在生产中使用旧版本的 React。如果我们发现了 React 的安全漏洞，我们将为受漏洞影响的所有主要版本发布一个向后移植的修复补丁。
 
-### Breaking changes {/*breaking-changes*/}
->>>>>>> 91614a51a1be9078777bc337ba83fc62e606cc14
+### 破坏性版本 {/*breaking-changes*/}
 
 破坏性改变对每个人都不方便，因此我们试图尽量减少主要版本的发布数量 - 例如，React 15 发布于 2016 年 4 月，React 16 发布于 2017 年 9 月，React 17 发布于 2020 年 10 月。
 
