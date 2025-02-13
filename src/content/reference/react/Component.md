@@ -1273,7 +1273,11 @@ button { margin-left: 10px; }
 
 要实现错误边界组件，你需要提供 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)，它允许你更新状态以响应错误并向用户显示错误消息。你还可以选择实现 [`componentDidCatch`](#componentdidcatch) 来添加一些额外的逻辑，例如将错误添加到分析服务。
 
-```js {7-10,12-19}
+<CanaryBadge /> With [`captureOwnerStack`](/reference/react/captureOwnerStack) you can include the Owner Stack during development.
+
+```js {9-12,14-27}
+import * as React from 'react';
+
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -1286,12 +1290,27 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, info) {
+<<<<<<< HEAD
     // 示例“组件堆栈”：
     //   在 ComponentThatThrows 中（由 App 创建）
     //   在 ErrorBoundary 中（由 APP 创建）
     //   在 div 中（由 APP 创建）
     //   在 App 中
     logErrorToMyService(error, info.componentStack);
+=======
+    logErrorToMyService(
+      error,
+      // Example "componentStack":
+      //   in ComponentThatThrows (created by App)
+      //   in ErrorBoundary (created by App)
+      //   in div (created by App)
+      //   in App
+      info.componentStack,
+      // Only available in react@canary.
+      // Warning: Owner Stack is not available in production.
+      React.captureOwnerStack(),
+    );
+>>>>>>> dfc4448e0d0987d1643ddc5360f215e804badabb
   }
 
   render() {
