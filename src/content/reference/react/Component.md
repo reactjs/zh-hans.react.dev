@@ -1290,27 +1290,18 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, info) {
-<<<<<<< HEAD
-    // 示例“组件堆栈”：
-    //   在 ComponentThatThrows 中（由 App 创建）
-    //   在 ErrorBoundary 中（由 APP 创建）
-    //   在 div 中（由 APP 创建）
-    //   在 App 中
-    logErrorToMyService(error, info.componentStack);
-=======
     logErrorToMyService(
       error,
-      // Example "componentStack":
-      //   in ComponentThatThrows (created by App)
-      //   in ErrorBoundary (created by App)
-      //   in div (created by App)
-      //   in App
+      // 示例“组件堆栈”：
+      //   在 ComponentThatThrows 中（由 App 创建）
+      //   在 ErrorBoundary 中（由 APP 创建）
+      //   在 div 中（由 APP 创建）
+      //   在 App 中
       info.componentStack,
-      // Only available in react@canary.
-      // Warning: Owner Stack is not available in production.
+      // 仅在 react@canary 版本可用
+      // 警告：Owner Stack 在生产中不可用
       React.captureOwnerStack(),
     );
->>>>>>> dfc4448e0d0987d1643ddc5360f215e804badabb
   }
 
   render() {

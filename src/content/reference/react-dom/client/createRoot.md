@@ -465,13 +465,8 @@ export default function App() {
 
 </Sandpack>
 
-<<<<<<< HEAD
-
 ---
 ## 错误排查 {/*troubleshooting*/}
-=======
-## Troubleshooting {/*troubleshooting*/}
->>>>>>> dfc4448e0d0987d1643ddc5360f215e804badabb
 
 ### 我已经创建了一个根节点，但是页面没有显示任何内容 {/*ive-created-a-root-but-nothing-is-displayed*/}
 
