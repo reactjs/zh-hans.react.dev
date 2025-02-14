@@ -1293,10 +1293,10 @@ class ErrorBoundary extends React.Component {
     logErrorToMyService(
       error,
       // 示例“组件堆栈”：
-      //   在 ComponentThatThrows 中（由 App 创建）
-      //   在 ErrorBoundary 中（由 APP 创建）
-      //   在 div 中（由 APP 创建）
-      //   在 App 中
+      // 在 ComponentThatThrows 中（由 App 创建）
+      // 在 ErrorBoundary 中（由 APP 创建）
+      // 在 div 中（由 APP 创建）
+      // 在 App 中
       info.componentStack,
       // 仅在 react@canary 版本可用
       // 警告：Owner Stack 在生产中不可用
