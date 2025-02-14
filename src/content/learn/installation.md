@@ -10,6 +10,7 @@ React 从诞生之初就是可被渐进式使用的。因此你可以选择性�
 
 </Intro>
 
+<<<<<<< HEAD
 <YouWillLearn isChapter={true}>
 
 * [如何开始一个新的 React 项目](/learn/start-a-new-react-project)
@@ -20,6 +21,9 @@ React 从诞生之初就是可被渐进式使用的。因此你可以选择性�
 </YouWillLearn>
 
 ## 尝试 React {/*try-react*/}
+=======
+## Try React {/*try-react*/}
+>>>>>>> 3ba4f8cee38738981c0a020f6b06e48850594af5
 
 无需进行任何安装，即可体验：
 
@@ -41,6 +45,7 @@ export default function App() {
 
 React 文档中的大部分页面都包含这样的 sandbox。除 React 文档以外，还存在许多支持 React 的在线代码编辑器：例如 [CodeSandbox](https://codesandbox.io/s/new)，[StackBlitz](https://stackblitz.com/fork/react)，或者 [CodePen](https://codepen.io/pen?template=QWYVwWN)。
 
+<<<<<<< HEAD
 ### 本地尝试 React {/*try-react-locally*/}
 
 如果想在电脑本地上进行尝试, [下载这个HTML页面](https://gist.githubusercontent.com/gaearon/0275b1e1518599bbeafcde4722e79ed1/raw/db72dcbf3384ee1708c4a07d3be79860db04bff0/example.html)。 然后在你的编辑器和浏览器中打开!
@@ -48,10 +53,33 @@ React 文档中的大部分页面都包含这样的 sandbox。除 React 文档�
 ## 开始一个新的 React 项目 {/*start-a-new-react-project*/}
 
 如果你想完全使用 React 建立一个应用或者一个网站, [开始一个新的 React 项目](/learn/start-a-new-react-project)。
+=======
+To try React locally on your computer, [download this HTML page.](https://gist.githubusercontent.com/gaearon/0275b1e1518599bbeafcde4722e79ed1/raw/db72dcbf3384ee1708c4a07d3be79860db04bff0/example.html) Open it in your editor and in your browser!
+
+## Creating a React App {/*creating-a-react-app*/}
+
+If you want to start a new React app, you can [create a React app](/learn/creating-a-react-app) using a recommended framework.
+
+## Build a React Framework {/*build-a-react-framework*/}
+
+If a framework is not a good fit for your project, or you prefer to start by building your own framework, you can [build your own React framework](/learn/building-a-react-framework).
+>>>>>>> 3ba4f8cee38738981c0a020f6b06e48850594af5
 
 ## 添加 React 到一个已有的项目 {/*add-react-to-an-existing-project*/}
 
+<<<<<<< HEAD
 如果你想在一个现有的应用或者网站上尝试 React, [添加 React 到一个现有的项目](/learn/add-react-to-an-existing-project)。
+=======
+If want to try using React in your existing app or a website, you can [add React to an existing project.](/learn/add-react-to-an-existing-project)
+
+## Deprecated Options {/*deprecated-options*/}
+
+### Create React App (Deprecated) {/*create-react-app-deprecated*/}
+
+Create React App is a deprecated tool, previously recommended for creating new React apps. If you want to start a new React app, you can [create a React app](/learn/creat-a-react-app) using a recommended framework. 
+
+For more information, see [Sunsetting Create React App](/blog/2025/02/14/sunsetting-create-react-app).
+>>>>>>> 3ba4f8cee38738981c0a020f6b06e48850594af5
 
 ## 下一节 {/*next-steps*/}
 
