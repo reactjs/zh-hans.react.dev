@@ -25,13 +25,23 @@
       "path": "/learn/installation",
       "routes": [
         {
-          "title": "启动一个新的 React 项目",
-          "path": "/learn/start-a-new-react-project"
+          "title": "创建一个 React 应用",
+          "path": "/learn/creating-a-react-app"
+        },
+        {
+          "title": "构建一个 React 框架",
+          "path": "/learn/building-a-react-framework"
         },
         {
           "title": "将 React 添加到现有项目中",
           "path": "/learn/add-react-to-an-existing-project"
-        },
+        }
+      ]
+    },
+    {
+      "title": "Setup",
+      "path": "/learn/setup",
+      "routes": [
         {
           "title": "编辑器设置",
           "path": "/learn/editor-setup"

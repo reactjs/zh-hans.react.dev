@@ -4,13 +4,20 @@ title: React Blog
 
 <Intro>
 
-这个博客是 React 团队更新的官方来源。任何重要的内容，包括发布说明或弃用通知，都会首先在这里发布。你也可以关注 Twitter 的 [@reactjs](https://twitter.com/reactjs) 账号，但如果你只阅读这个博客，你也不会错过任何重要的内容。
+这个博客是 React 团队更新的官方来源。任何重要的内容，包括发布说明或弃用通知，都会首先在这里发布。
 
+你也可以在 Bluesky 上关注 [@react.dev](https://bsky.app/profiles/react.js) 的账号，Twitter 的 [@reactjs](https://twitter.com/reactjs) 账号，但如果你只阅读这个博客，你也不会错过任何重要的内容。
 </Intro>
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<BlogCard title="React v19 " date="December 05, 2024" url="/blog/2024/12/05/react-19">
+<BlogCard title="Sunsetting Create React App" date="February 13, 2025" url="/blog/2025/02/14/sunsetting-create-react-app">
+
+Today, we’re deprecating Create React App for new apps, and encouraging existing apps to migrate to a framework. We’re also providing docs for when a framework isn’t a good fit for your project, or you prefer to start by building a framework.
+
+</BlogCard>
+
+<BlogCard title="React v19 " date="December 5, 2024" url="/blog/2024/12/05/react-19">
 
 在我们的 React 19 升级指南中, 我们分享了将应用程序升级到 React 19 的分步说明。在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们……
 
