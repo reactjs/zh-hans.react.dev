@@ -25,17 +25,12 @@
       "path": "/learn/installation",
       "routes": [
         {
-<<<<<<< HEAD
-          "title": "启动一个新的 React 项目",
-          "path": "/learn/start-a-new-react-project"
-=======
-          "title": "Creating a React App",
+          "title": "创建一个 React 应用",
           "path": "/learn/creating-a-react-app"
         },
         {
-          "title": "Building a React Framework",
+          "title": "构建一个 React 框架",
           "path": "/learn/building-a-react-framework"
->>>>>>> 49284218b1f5c94f930f8a9b305040dbe7d3dd48
         },
         {
           "title": "将 React 添加到现有项目中",
