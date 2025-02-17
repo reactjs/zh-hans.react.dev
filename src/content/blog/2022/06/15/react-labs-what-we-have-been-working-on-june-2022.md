@@ -27,7 +27,11 @@ description: React 18 经过多年的努力才得以问世，它为 React 团队
 
 特别地，我们放弃了拥有分叉 I/O 库（例如 react-fetch）的想法，转而采用了具有更好兼容性的 async/await 模型。这从技术上讲并不阻碍 RSC 的发布，因为还可以使用路由器进行数据获取。另一个变化是我们也放弃了文件扩展名的方法，而是采用了 [注释边界](https://github.com/reactjs/rfcs/pull/189#issuecomment-1116482278) 的方式。
 
+<<<<<<< HEAD
 我们正在与 Vercel 和 Shopify 合作，在 Webpack 和 Vite 中统一打包器（bundler）对共享语义的支持。在发布之前，我们希望确保整个 React 生态系统中的 RSC 的语义是一致的。这是达到稳定状态的主要障碍。
+=======
+We’re working together with Vercel and Shopify to unify bundler support for shared semantics in both webpack and Vite. Before launch, we want to make sure that the semantics of RSCs are the same across the whole React ecosystem. This is the major blocker for reaching stable.
+>>>>>>> 09f39a07a1abacf92f9c92a6e36102ca2c3be2c7
 
 ## 资源加载 {/*asset-loading*/}
 

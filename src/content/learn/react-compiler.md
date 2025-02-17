@@ -312,7 +312,11 @@ export default defineConfig({
 
 ### Webpack {/*usage-with-webpack*/}
 
+<<<<<<< HEAD
 由社区提供的 Webpack loader 可以 [在这里找到](https://github.com/SukkaW/react-compiler-webpack)。
+=======
+A community webpack loader is [now available here](https://github.com/SukkaW/react-compiler-webpack).
+>>>>>>> 09f39a07a1abacf92f9c92a6e36102ca2c3be2c7
 
 ### Expo {/*usage-with-expo*/}
 
