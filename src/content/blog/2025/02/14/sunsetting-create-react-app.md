@@ -251,9 +251,9 @@ const router = createBrowserRouter([
   </ul>
 </div>
 
-所有这些（因素/元素/部分等，需结合前文确定）共同作用，以打造出最理想的 [加载顺序](https://www.patterns.dev/vanilla/loading-sequence)。
+所有这些共同作用，以打造出最理想的 [加载顺序](https://www.patterns.dev/vanilla/loading-sequence)。
 
-在 Create React App 中逐个解决这些问题可能颇具难度，因为每个问题都相互关联，而且解决这些问题可能需要用户深入掌握他们或许并不熟悉的领域的专业知识。为了解决这些问题，用户最终会在 Create React App 的基础上构建自己的定制化解决方案，而这恰恰是 Create React App 最初试图解决的问题。 
+在 Create React App 中逐个解决这些问题可能颇具难度，因为每个问题都相互关联，而且解决这些问题可能需要用户深入掌握他们或许并不熟悉的领域的专业知识。为了解决这些问题，用户最终会在 Create React App 的基础上构建自己的定制化解决方案，而这恰恰是 Create React App 最初试图解决的问题。
 
 ## 为什么我们推荐框架 {/*why-we-recommend-frameworks*/}
 
@@ -263,7 +263,7 @@ const router = createBrowserRouter([
 
 框架会对应用的架构设计提出一些规范建议，目的是为用户带来更好的体验，这就如同构建工具会给出一些规范建议以使工具的使用更加便捷一样。这就是我们开始为新项目推荐像 [Next.js](https://nextjs.org/)、[React Router](https://reactrouter.com/) 和 [Expo](https://expo.dev/) 这类框架的原因。
 
-框架提供了与Create React App相同的入门体验，但同时也为用户在实际生产应用中必须解决的问题提供了解决方案。
+框架提供了与 Create React App 相同的入门体验，但同时也为用户在实际生产应用中必须解决的问题提供了解决方案。
 
 <DeepDive>
 
@@ -287,7 +287,7 @@ const router = createBrowserRouter([
 
 服务器组件并不一定需要实时运行的服务器支持。它们既可以在持续集成（CI）服务器的构建阶段运行，以创建一个静态网站生成（SSG）应用；也可以在 Web 服务器的运行时阶段使用，从而实现服务器端渲染（SSR）应用。
 
-有关更多信息，请参阅 [介绍零捆绑包大小的 React 服务器组件](/blog/2020/12/21/data-fetching-with-react-server-components) 和 [相关文档](/reference/rsc/server-components)。
+有关更多信息，请参阅 [介绍零 bundle 大小的 React 服务器组件](/blog/2020/12/21/data-fetching-with-react-server-components) 和 [相关文档](/reference/rsc/server-components)。
 
 </DeepDive>
 
