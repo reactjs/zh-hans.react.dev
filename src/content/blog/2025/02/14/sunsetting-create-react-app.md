@@ -1,8 +1,8 @@
 ---
-title: "停止维护 Create React App"
+title: "逐步淘汰 Create React App"
 author: Matt Carroll 和 Ricky Hanlon
 date: 2025/02/14
-description: 今天，我们不再推荐在新应用中使用 Create React App，并鼓励现有应用迁移到框架。当框架不适合你的项目，或者你更倾向于从构建框架开始时，我们还提供了文档。 
+description: 今天，我们不再推荐在新应用中使用 Create React App，并鼓励现有应用迁移到框架。当框架不适合你的项目，或者你更倾向于从构建一个框架开始时，我们还提供了文档。 
 ---
 
 2025 年 2 月 14 日，作者：[Matt Carroll](https://twitter.com/mattcarrollcode) 和 [Ricky Hanlon](https://bsky.app/profile/ricky.fm)
@@ -11,7 +11,7 @@ description: 今天，我们不再推荐在新应用中使用 Create React App�
 
 <Intro>
 
-今天，我们不再推荐在新应用中使用 [Create React App](https://create-react-app.dev/)，并鼓励现有应用迁移到 [框架](/learn/creating-a-react-app)。当框架不适合你的项目，或者你更倾向于从 [构建框架](/learn/building-a-react-framework)开始时，我们还提供了文档。
+今天，我们不再推荐在新应用中使用 [Create React App](https://create-react-app.dev/)，并鼓励现有应用迁移到 [框架](/learn/creating-a-react-app)。当框架不适合你的项目，或者你更倾向于从 [构建一个框架](/learn/building-a-react-framework)开始时，我们还提供了文档。
 
 </Intro>
 
@@ -68,7 +68,7 @@ Create React App 将继续以维护模式运行，并且我们已经发布了一
 
 React Router v7 是一个基于 Vite 的框架，它能让你在一个具备路由和数据获取功能的框架中，使用 Vite 快速的开发服务器和构建工具。就像我们推荐的其他框架一样，你可以使用 React Router v7 构建单页应用（SPA）。 
 
-我们也推荐在 [将 React 添加到现有项目](/learn/add-react-to-an-existing-project) 或 [构建框架](/learn/building-a-react-framework) 时使用 Vite。
+我们也推荐在 [将 React 添加到现有项目](/learn/add-react-to-an-existing-project) 或 [构建一个框架](/learn/building-a-react-framework) 时使用 Vite。
 
 就像 Svelte 有 SvelteKit、Vue 有 Nuxt、Solid 有 SolidStart 一样，对于新项目，React 建议使用能与 Vite 这类构建工具集成的框架。 
 
@@ -269,9 +269,9 @@ const router = createBrowserRouter([
 
 #### 服务器端渲染是可选的 {/*server-rendering-is-optional*/}
 
-我们推荐的框架都提供了创建 [客户端渲染（CSR）](https://developer.mozilla.org/en-US/docs/Glossary/CSR) 应用的选项。
+我们推荐的框架都提供了创建 [客户端渲染（CSR）](https://developer.mozilla.org/zh-CN/docs/Glossary/CSR) 应用的选项。
 
-在某些情况下，客户端渲染（CSR）对于某个页面来说是正确的选择，但很多时候并非如此。即使你的应用大部分采用客户端渲染，通常也会有一些单独的页面能够从服务器端渲染特性中获益，比如 [静态网站生成（SSG）](https://developer.mozilla.org/en-US/docs/Glossary/SSG) 或 [服务器端渲染（SSR）](https://developer.mozilla.org/en-US/docs/Glossary/SSR)，例如服务条款页面或文档页面。
+在某些情况下，客户端渲染（CSR）对于某个页面来说是正确的选择，但很多时候并非如此。即使你的应用大部分采用客户端渲染，通常也会有一些单独的页面能够从服务器端渲染特性中获益，比如 [静态网站生成（SSG）](https://developer.mozilla.org/zh-CN/docs/Glossary/SSG) 或 [服务器端渲染（SSR）](https://developer.mozilla.org/zh-CN/docs/Glossary/SSR)，例如服务条款页面或文档页面。
 
 服务器渲染通常会向客户端发送更少的JavaScript代码，并生成一个完整的HTML文档，这通过减少 [总阻塞时间（TBT）](https://web.dev/articles/tbt) 来提高 [首次内容绘制（FCP）](https://web.dev/articles/fcp) 的速度，同时也可能降低 [下一次绘制的交互时间（INP）](https://web.dev/articles/inp)。这就是为什么 [Chrome 团队鼓励](https://web.dev/articles/rendering-on-the-web) 开发者考虑使用静态或服务器端渲染，而不是完全的客户端渲染方法，以实现最佳性能。
 
@@ -295,7 +295,7 @@ const router = createBrowserRouter([
 
 #### 服务器渲染不仅仅用于 SEO {/*server-rendering-is-not-just-for-seo*/}
 
-一个常见的误解是，服务器端渲染仅仅是为了 [SEO](https://developer.mozilla.org/en-US/docs/Glossary/SEO)。
+一个常见的误解是，服务器端渲染仅仅是为了 [SEO](https://developer.mozilla.org/zh-CN/docs/Glossary/SEO)。
 
 虽然服务器端渲染可以提升搜索引擎优化效果，但它还能通过减少用户在看到屏幕上的内容之前需要下载和解析的 JavaScript 代码量来提高性能。 
 
