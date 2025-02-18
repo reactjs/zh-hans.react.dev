@@ -1457,7 +1457,11 @@ export default function FeedbackForm() {
 
 #### 移除不必要的 state {/*remove-unnecessary-state*/}
 
+<<<<<<< HEAD
 当按钮被点击时，这个例子应该询问用户的名字，然后显示一个 alert 欢迎他们。你尝试使用 state 来保存名字，但由于某种原因，它始终显示“Hello, ！”。
+=======
+When the button is clicked, this example should ask for the user's name and then display an alert greeting them. You tried to use state to keep the name, but for some reason the first time it shows "Hello, !", and then "Hello, [name]!" with the previous input every time after.
+>>>>>>> c03f0290502e0b1210f50faaa464489accd57c35
 
 
 要修复此代码，请删除不必要的 state 变量。（我们将在稍后讨论[为什么上述代码不起作用](/learn/state-as-a-snapshot)。）

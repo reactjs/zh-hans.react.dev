@@ -76,9 +76,15 @@ export default function Image() {
 一旦组件被初次渲染，你就可以通过使用 [`set` 函数](/reference/react/useState#setstate) 更新其状态来触发之后的渲染。更新组件的状态会自动将一次渲染送入队列。（你可以把这种情况想象成餐厅客人在第一次下单之后又点了茶、点心和各种东西，具体取决于他们的胃口。）
 
 <IllustrationBlock sequential>
+<<<<<<< HEAD
   <Illustration caption="状态更新..." alt="React 作为餐厅服务员将一份 Card UI 送到用户那里，这里的用户以头部为光标的顾客表示。顾客说她想要一个粉色的 Card，而不是黑色的。" src="/images/docs/illustrations/i_rerender1.png" />
   <Illustration caption="...触发..." alt="React 回到组件厨房并告诉 Card 主厨他们需要一个粉色 Card。" src="/images/docs/illustrations/i_rerender2.png" />
   <Illustration caption="...渲染!" alt="Card 主厨把粉色 Card 交给 React。" src="/images/docs/illustrations/i_rerender3.png" />
+=======
+  <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. The patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
+  <Illustration caption="...triggers..." alt="React returns to the Component Kitchen and tells the Card Chef they need a pink Card." src="/images/docs/illustrations/i_rerender2.png" />
+  <Illustration caption="...render!" alt="The Card Chef gives React the pink Card." src="/images/docs/illustrations/i_rerender3.png" />
+>>>>>>> c03f0290502e0b1210f50faaa464489accd57c35
 </IllustrationBlock>
 
 ## 步骤 2: React 渲染你的组件 {/*step-2-react-renders-your-components*/}
@@ -90,7 +96,11 @@ export default function Image() {
 
 这个过程是递归的：如果更新后的组件会返回某个另外的组件，那么 React 接下来就会渲染 _那个_ 组件，而如果那个组件又返回了某个组件，那么 React 接下来就会渲染 _那个_ 组件，以此类推。这个过程会持续下去，直到没有更多的嵌套组件并且 React 确切知道哪些东西应该显示到屏幕上为止。
 
+<<<<<<< HEAD
 在接下来的例子中，React 将会调用 `Gallery()` 和 `Image()` 若干次：
+=======
+In the following example, React will call `Gallery()` and `Image()` several times:
+>>>>>>> c03f0290502e0b1210f50faaa464489accd57c35
 
 <Sandpack>
 
@@ -154,10 +164,17 @@ img { margin: 0 10px 10px 0; }
 
 ## 步骤 3: React 把更改提交到 DOM 上 {/*step-3-react-commits-changes-to-the-dom*/}
 
+<<<<<<< HEAD
 在渲染（调用）你的组件之后，React 将会修改 DOM。
 
 * **对于初次渲染，** React 会使用 [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) DOM API 将其创建的所有 DOM 节点放在屏幕上。
 * **对于重渲染，** React 将应用最少的必要操作（在渲染时计算！），以使得 DOM 与最新的渲染输出相互匹配。
+=======
+After rendering (calling) your components, React will modify the DOM.
+
+* **For the initial render,** React will use the [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) DOM API to put all the DOM nodes it has created on screen.
+* **For re-renders,** React will apply the minimal necessary operations (calculated while rendering!) to make the DOM match the latest rendering output.
+>>>>>>> c03f0290502e0b1210f50faaa464489accd57c35
 
 **React 仅在渲染之间存在差异时才会更改 DOM 节点。** 例如，有一个组件，它每秒使用从父组件传递下来的不同属性重新渲染一次。注意，你可以添加一些文本到 `<input>` 标签，更新它的 `value`，但是文本不会在组件重渲染时消失：
 

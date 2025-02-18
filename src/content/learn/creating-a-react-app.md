@@ -8,15 +8,29 @@ title: 创建一个 React 应用
 
 </Intro>
 
+<<<<<<< HEAD
 ## 推荐的 React 框架 {/*bleeding-edge-react-frameworks*/}
+=======
+If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, you can [build a React app from scratch](/learn/build-a-react-app-from-scratch).
+
+## Full-stack frameworks {/*full-stack-frameworks*/}
+>>>>>>> c03f0290502e0b1210f50faaa464489accd57c35
 
 这些推荐的框架支持你在生产环境中部署和扩展应用所需的所有功能。它们集成了 React 的最新特性，并充分利用了 React 的架构。
 
 <Note>
 
+<<<<<<< HEAD
 #### React 框架不需要服务器。 {/*react-frameworks-do-not-require-a-server*/}
 
 本页面中的所有框架都可以创建单页应用。单页应用可以部署到 [CDN](https://developer.mozilla.org/en-US/docs/Glossary/CDN) 或静态托管服务上，而无需服务器。如果你希望启用需要服务器的功能（例如服务器端渲染），你可以在不重写应用的情况下，为个别路由启用这些功能。
+=======
+#### Full-stack frameworks do not require a server. {/*react-frameworks-do-not-require-a-server*/}
+
+All the frameworks on this page support client-side rendering ([CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)), single-page apps ([SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA)), and static-site generation ([SSG](https://developer.mozilla.org/en-US/docs/Glossary/SSG)). These apps can be deployed to a [CDN](https://developer.mozilla.org/en-US/docs/Glossary/CDN) or static hosting service without a server. Additionally, these frameworks allow you to add server-side rendering on a per-route basis, when it makes sense for your use case.
+
+This allows you to start with a client-only app, and if your needs change later, you can opt-in to using server features on individual routes without rewriting your app. See your framework's documentation for configuring the rendering strategy.
+>>>>>>> c03f0290502e0b1210f50faaa464489accd57c35
 
 </Note>
 
@@ -55,7 +69,11 @@ npx create-expo-app@latest
 Expo 由 [Expo 公司](https://expo.dev/about) 维护。使用 Expo 构建应用是免费的，你可以将应用提交到 Google 和 Apple 应用商店，没有任何限制。Expo 还提供可选的付费云服务。
 
 
+<<<<<<< HEAD
 ## 其它选项 {/*other-options*/}
+=======
+## Other frameworks {/*other-frameworks*/}
+>>>>>>> c03f0290502e0b1210f50faaa464489accd57c35
 
 还有一些新兴的框架正在努力实现我们的全栈 React 愿景：
 
@@ -96,9 +114,11 @@ Next.js 的 App Router 还集成了 [使用 Suspense 的数据获取](/blog/2022
 
 </DeepDive>
 
-<Note>
+## Start From Scratch {/*start-from-scratch*/}
 
+If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, there are other options available for starting a React project from scratch.
 
+<<<<<<< HEAD
 #### 你推荐使用 Vite 吗？ {/*do-you-recommend-vite*/}
 
 我们推荐了一些基于 Vite 的选择。
@@ -110,6 +130,11 @@ React Router v7 是一个基于 Vite 的框架，允许你使用 Vite 的快速�
 就像 Svelte 有 Sveltekit、Vue 有 Nuxt、Solid 有 SolidStart 一样，React 推荐使用集成了 Vite 等构建工具的框架来创建新项目。
 
 </Note>
+=======
+Starting from scratch gives you more flexibility, but does require that you make choices on which tools to use for routing, data fetching, and other common usage patterns.  It's a lot like building your own framework, instead of using a framework that already exists. The [frameworks we recommend](#recommended-react-frameworks) have built-in solutions for these problems.  
+
+If you want to build your own solutions, see our guide to [build a React app from Scratch](/learn/build-a-react-app-from-scratch) for instructions on how to set up a new React project starting with a built tool like [Vite](https://vite.dev/), [Parcel](https://parceljs.org/), or [RSbuild](https://rsbuild.dev/).
+>>>>>>> c03f0290502e0b1210f50faaa464489accd57c35
 
 -----
 

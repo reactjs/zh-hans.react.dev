@@ -29,8 +29,13 @@
           "path": "/learn/creating-a-react-app"
         },
         {
+<<<<<<< HEAD
           "title": "构建一个 React 框架",
           "path": "/learn/building-a-react-framework"
+=======
+          "title": "Build a React App from Scratch",
+          "path": "/learn/build-a-react-app-from-scratch"
+>>>>>>> c03f0290502e0b1210f50faaa464489accd57c35
         },
         {
           "title": "将 React 添加到现有项目中",
