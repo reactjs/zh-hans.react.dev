@@ -143,7 +143,7 @@ export default function App() {
 
 ### 数据获取 {/*data-fetching*/}
 
-在Create React App中，另一个常见的问题是数据获取。Create React App并未内置特定的数据获取解决方案。一个常见的选择是在 副作用函数(useEffect) 中使用 `fetch` 来加载数据。
+在 Create React App 中，另一个常见的问题是数据获取。Create React App并未内置特定的数据获取解决方案。一个常见的选择是在 副作用函数(useEffect) 中使用 `fetch` 来加载数据。
 
 但是，这样做意味着数据是在组件渲染之后才获取的，这可能会导致 网络瀑布流问题（network waterfalls）。网络瀑布流问题的产生是因为数据是在应用程序渲染时才开始获取的，而不是在代码下载的同时并行获取数据：
 
