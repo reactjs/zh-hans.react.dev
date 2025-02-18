@@ -71,6 +71,7 @@ React Router v7 是一个基于 Vite 的框架，它能让你在一个具备路�
 我们也推荐在 [将 React 添加到现有项目](/learn/add-react-to-an-existing-project) 或 [构建框架](/learn/building-a-react-framework) 时使用 Vite。
 
 就像 Svelte 有 SvelteKit、Vue 有 Nuxt、Solid 有 SolidStart 一样，对于新项目，React 建议使用能与 Vite 这类构建工具集成的框架。 
+
 </Note>
 
 ## Create React App 的局限性 {/*limitations-of-create-react-app*/}
