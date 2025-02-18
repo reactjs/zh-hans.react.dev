@@ -306,5 +306,3 @@ const router = createBrowserRouter([
 ---
 
 感谢 [Dan Abramov](https://bsky.app/profile/danabra.mov) 创建了 Create React App，也感谢 [Joe Haddad](https://github.com/Timer)、 [Ian Schmitz](https://github.com/ianschmitz)、 [Brody McKee](https://github.com/mrmckeb) 以及 [其他众多贡献者](https://github.com/facebook/create-react-app/graphs/contributors) 多年来对 Create React App 的维护。感谢 [Brooks Lybrand](https://bsky.app/profile/brookslybrand.bsky.social)、[Dan Abramov](https://bsky.app/profile/danabra.mov)、[Devon Govett](https://bsky.app/profile/devongovett.bsky.social)、[Eli White](https://x.com/Eli_White)、[Jack Herrington](https://bsky.app/profile/jherr.dev)、[Joe Savona](https://x.com/en_JS)、[Lauren Tan](https://bsky.app/profile/no.lol)、[Lee Robinson](https://x.com/leeerob)、[Mark Erikson](https://bsky.app/profile/acemarke.dev)、[Ryan Florence](https://x.com/ryanflorence)、[Sophie Alpert](https://bsky.app/profile/sophiebits.com)、[Tanner Linsley](https://bsky.app/profile/tannerlinsley.com) 和 [Theo Browne](https://x.com/theo) 对这篇文章进行审阅并提供反馈。
-
-
