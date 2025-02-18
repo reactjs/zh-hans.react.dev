@@ -101,7 +101,7 @@ Next.js 的 App Router 还集成了 [使用 Suspense 的数据获取](/blog/2022
 
 #### 你推荐使用 Vite 吗？ {/*do-you-recommend-vite*/}
 
-我们推荐了一些基于 Vite 的选项。
+我们推荐了一些基于 Vite 的选择。
 
 React Router v7 是一个基于 Vite 的框架，允许你使用 Vite 的快速开发服务器和构建工具，同时提供路由和数据获取功能。与其他推荐的框架一样，你可以用 React Router v7 构建单页应用。
 
