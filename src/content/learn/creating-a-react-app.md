@@ -44,7 +44,7 @@ React Router 由 [Shopify](https://www.shopify.com) 维护。
 
 ### Expo (for native apps) {/*expo*/}
 
-**[Expo](https://expo.dev/) 是一个 React 框架，让你可以创建支持真正原生 UI 的通用 Android、iOS 和 Web 应用。** 它为 [React Native](https://reactnative.dev/) 提供了一个 SDK，让原生部分更易于使用。要创建一个新的 Expo 项目，请运行：
+**[Expo](https://expo.dev/) 是一个 React 框架，让你可以创建支持真正原生 UI 的通用 Android、iOS 和 Web 应用**。它为 [React Native](https://reactnative.dev/) 提供了一个 SDK，让原生部分更易于使用。要创建一个新的 Expo 项目，请运行：
 
 <TerminalBlock>
 npx create-expo-app@latest
