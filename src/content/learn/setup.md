@@ -1,32 +1,32 @@
 ---
-title: Setup
+title: 配置
 ---
 <Intro>
 
-React integrates with tools like editors, TypeScript, browser extensions, and compliers. This section will help you get your environment set up.
+React 与编辑器、TypeScript、浏览器扩展和编译器等多种工具集成。本节将帮助您完成环境的配置。
 
 </Intro>
 
-## Editor Setup {/*editor-setup*/}
+## 编辑器配置 {/*editor-setup*/}
 
-See our [recommended editors](/learn/editor-setup) and learn how to set them up to work with React.
+请参阅我们的 [推荐编辑器](/learn/editor-setup)，了解如何配置它们以与 React 协同工作。
 
-## Using TypeScript {/*using-typescript*/}
+## 使用 TypeScript {/*using-typescript*/}
 
-TypeScript is a popular way to add type definitions to JavaScript codebases. [Learn how to integrate TypeScript into your React projects](/learn/typescript).
+使用 TypeScript 是一种为 JavaScript 代码库添加类型定义的流行方式。[了解如何将 TypeScript 集成到您的 React 项目中](/learn/typescript)。
 
-## React Developer Tools {/*react-developer-tools*/}
+## React 开发者工具 {/*react-developer-tools*/}
 
-React Developer Tools is a browser extension that can inspect React components, edit props and state, and identify performance problems. Learn how to install it [here](learn/react-developer-tools).
+React 开发者工具是一款浏览器扩展，它能够检查 React 组件、编辑 props 和 state，并识别性能问题。在 [这里](learn/react-developer-tools) 了解如何安装它。
 
 ## React Compiler {/*react-compiler*/}
 
-React Compiler is a tool that automatically optimizes your React app. [Learn more](/learn/react-compiler).
+React Compiler 是一款能自动优化您的 React 应用程序的工具。[了解更多](/learn/react-compiler)。
 
-## Start a React Project from scratch {/*start-a-react-project-from-scratch*/}
+## 从头开始创建一个 React 项目 {/*start-a-react-project-from-scratch*/}
 
-If you want to build your own framework, you can [start a React project from scratch](/learn/start-a-react-project-from-scratch).
+如果您想构建自己的框架，可以 [从头开始创建一个 React 项目](/learn/start-a-react-project-from-scratch)。
 
 ## Next steps {/*next-steps*/}
 
-Head to the [Quick Start](/learn) guide for a tour of the most important React concepts you will encounter every day.
+前往 [快速入门](/learn) 指南，了解您每天都会遇到的最重要的 React 概念。
