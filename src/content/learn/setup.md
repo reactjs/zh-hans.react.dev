@@ -27,6 +27,6 @@ React Compiler 是一款能自动优化您的 React 应用程序的工具。[了
 
 如果您想构建自己的框架，可以 [从头开始创建一个 React 项目](/learn/start-a-react-project-from-scratch)。
 
-## Next steps {/*next-steps*/}
+## 下一步 {/*next-steps*/}
 
 前往 [快速入门](/learn) 指南，了解您每天都会遇到的最重要的 React 概念。
