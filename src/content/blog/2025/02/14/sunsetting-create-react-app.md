@@ -21,13 +21,13 @@ description: 今天，我们不再推荐在新应用中使用 Create React App�
 
 要创建一个 React 应用，你必须安装一堆工具，并手动将它们配置在一起，以支持 JSX、代码检查（linting）和热更新（hot reloading）等基本功能。这很难正确的完成，因此 [社区](https://github.com/react-boilerplate/react-boilerplate) 为 [常见的](https://github.com/gaearon/react-hot-boilerplate) [设置](https://github.com/erikras/react-redux-universal-hot-example) [创建] 了(https://github.com/kriasoft/react-starter-kit) [模板代码](https://github.com/petehunt/react-boilerplate)。然而，模板代码很难更新，而且代码碎片化的情况使得 React 难以推出新功能。
 
-Create React App 通过将多个工具整合到一个推荐的配置中，解决了这些问题。这使得应用程序能够以简单的方式升级到新的工具特性，同时也让 React 团队能够将重要的工具变更（如快速刷新支持、React Hooks 的 lint 规则）部署给尽可能广泛的用户群体。
+Create React App 通过将多个工具整合到一个推荐的配置中，解决了这些问题。这使得应用程序能够以简单的方式升级到新的工具特性，同时也让 React 团队能够将重要的工具变更（如快速刷新支持、React Hook 的 lint 规则）部署给尽可能广泛的用户群体。
 
 这种模式变得非常流行，以至于如今有一整类工具都采用这种方式工作。
 
 ## 弃用 Create React App {/*deprecating-create-react-app*/}
 
-尽管 Create React App 可以轻松上手，但仍存在 [一些限制](#limitations-of-create-react-app)，这些限制使得构建高性能的生产应用程序变得困难。原则上，我们可以通过将其逐步发展成一个 [framework](#why-we-recommend-frameworks) 来解决这些问题。
+尽管 Create React App 可以轻松上手，但仍存在 [一些限制](#limitations-of-create-react-app)，这些限制使得构建高性能的生产应用程序变得困难。原则上，我们可以通过将其逐步发展成一个 [框架](#why-we-recommend-frameworks) 来解决这些问题。
 
 然而，由于 Create React App 目前没有活跃的维护者，并且已经有许多现有的框架能够解决这些问题，我们决定弃用 Create React App。
 
@@ -77,7 +77,7 @@ React Router v7 是一个基于 Vite 的框架，它能让你在一个具备路�
 
 Create React App 及类似的构建工具使得开始构建 React 应用程序变得非常容易。运行 `npx create-react-app my-app` 后，你会得到一个完全配置好的 React 应用程序，包括开发服务器、代码检查和生产构建。
 
-例如，如果你正在构建一个内部管理工具，你可以从一个登录页面开始：
+例如，如果你正在构建一个内部管理工具，你可以从一个落地页开始：
 
 ```js
 export default function App() {
