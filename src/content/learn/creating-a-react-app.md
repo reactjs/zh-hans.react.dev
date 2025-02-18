@@ -16,7 +16,7 @@ title: 创建一个 React 应用
 
 #### React 框架不需要服务器。 {/*react-frameworks-do-not-require-a-server*/}
 
-本页面中的所有框架都可以创建单页应用。单页应用可以部署到 [CDN](https://developer.mozilla.org/en-US/docs/Glossary/CDN) 或静态托管服务，而无需服务器。如果你希望启用需要服务器的功能（例如服务器端渲染），你可以在不重写应用的情况下，为个别路由启用这些功能。
+本页面中的所有框架都可以创建单页应用。单页应用可以部署到 [CDN](https://developer.mozilla.org/en-US/docs/Glossary/CDN) 或静态托管服务上，而无需服务器。如果你希望启用需要服务器的功能（例如服务器端渲染），你可以在不重写应用的情况下，为个别路由启用这些功能。
 
 </Note>
 
