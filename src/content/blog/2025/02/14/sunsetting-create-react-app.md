@@ -2,7 +2,7 @@
 title: "逐步淘汰 Create React App"
 author: Matt Carroll 和 Ricky Hanlon
 date: 2025/02/14
-description: 今天，我们不再推荐在新应用中使用 Create React App，并鼓励现有应用迁移到框架。当框架不适合你的项目，或者你更倾向于从构建一个框架开始时，我们还提供了文档。 
+description: Today, we’re deprecating Create React App for new apps, and encouraging existing apps to migrate to a framework, or to migrate to a build tool like Vite, Parcel, or RSBuild. We’re also providing docs for when a framework isn’t a good fit for your project, you want to build your own framework, or you just want to learn how React works by building a React app from scratch.
 ---
 
 2025 年 2 月 14 日，作者：[Matt Carroll](https://twitter.com/mattcarrollcode) 和 [Ricky Hanlon](https://bsky.app/profile/ricky.fm)
@@ -11,7 +11,9 @@ description: 今天，我们不再推荐在新应用中使用 Create React App�
 
 <Intro>
 
-今天，我们不再推荐在新应用中使用 [Create React App](https://create-react-app.dev/)，并鼓励现有应用迁移到 [框架](/learn/creating-a-react-app)。当框架不适合你的项目，或者你更倾向于从 [构建一个框架](/learn/building-a-react-framework)开始时，我们还提供了文档。
+Today, we’re deprecating [Create React App](https://create-react-app.dev/) for new apps, and encouraging existing apps to migrate to a [framework](#how-to-migrate-to-a-framework), or to [migrate to a build tool](#how-to-migrate-to-a-build-tool) like Vite, Parcel, or RSBuild. 
+
+We’re also providing docs for when a framework isn’t a good fit for your project, you want to build your own framework, or you just want to learn how React works by [building a React app from scratch](/learn/build-a-react-app-from-scratch).
 
 </Intro>
 
@@ -27,7 +29,7 @@ Create React App 通过将多个工具整合到一个推荐的配置中，解决
 
 ## 弃用 Create React App {/*deprecating-create-react-app*/}
 
-尽管 Create React App 可以轻松上手，但仍存在 [一些限制](#limitations-of-create-react-app)，这些限制使得构建高性能的生产应用程序变得困难。原则上，我们可以通过将其逐步发展成一个 [框架](#why-we-recommend-frameworks) 来解决这些问题。
+Although Create React App makes it easy to get started, [there are several limitations](#limitations-of-build-tools) that make it difficult to build high performant production apps. In principle, we could solve these problems by essentially evolving it into a [framework](#why-we-recommend-frameworks).
 
 然而，由于 Create React App 目前没有活跃的维护者，并且已经有许多现有的框架能够解决这些问题，我们决定弃用 Create React App。
 
@@ -46,7 +48,10 @@ This error message will only be shown once per install.
 </ConsoleLogLine>
 </ConsoleBlockMulti>
 
-我们推荐使用框架来 [创建新的 React 应用程序](/learn/creating-a-react-app)。我们推荐的所有框架都支持仅客户端的单页应用（SPA），并且可以在没有服务器的情况下部署到 CDN 或静态托管服务。
+We've also added a deprecation notice to the Create React App [website](https://create-react-app.dev/) and GitHub [repo](https://github.com/facebook/create-react-app). Create React App will continue working in maintenance mode, and we've published a new version of Create React App to work with React 19.
+
+## How to Migrate to a Framework {/*how-to-migrate-to-a-framework*/}
+We recommend [creating new React apps](/learn/creating-a-react-app) with a framework. All the frameworks we recommend support client-side rendering ([CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)) and single-page apps ([SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA)), and can be deployed to a CDN or static hosting service without a server.
 
 对于现有的应用程序，这些指南将帮助你迁移到仅客户端的单页应用（SPA）：
 
@@ -54,27 +59,33 @@ This error message will only be shown once per install.
 * [React Router 的框架适配指南](https://reactrouter.com/upgrading/component-routes).
 * [Expo webpack 到 Expo Router 的迁移指南](https://docs.expo.dev/router/migrate/from-expo-webpack/)
 
-Create React App 将继续以维护模式运行，并且我们已经发布了一个新版本的 Create React App 以支持 React 19。
+## How to Migrate to a Build Tool {/*how-to-migrate-to-a-build-tool*/}
 
 如果你的应用程序有特殊的限制，或者你更喜欢通过构建自己的框架来解决这些问题，或者你只是想从头学习 React 的工作原理，你可以使用 Vite、Parcel 或 Rsbuild 来定制自己的 React 设置。
 
-为了帮助用户开始使用 Vite、Parcel 或 Rsbuild，我们发布了新的文档，介绍如何 [构建一个框架](/learn/building-a-react-framework)。继续阅读以了解更多关于 [Create React App 的限制](#limitations-of-create-react-app)，以及 [为什么我们推荐使用框架](#why-we-recommend-frameworks)。
+For existing apps, these guides will help you migrate to a build tool:
 
-<Note>
+* [Vite Create React App migration guide](https://www.robinwieruch.de/vite-create-react-app/)
+* [Parcel Create React App migration guide](https://stackoverflow.com/a/49605484)
+* [Rsbuild Create React App migration guide](https://rsbuild.dev/guide/migration/cra)
 
-#### 你推荐 Vite 吗？ {/*do-you-recommend-vite*/}
+To help get started with Vite, Parcel or Rsbuild, we've added new docs for [Building a React App from Scratch](/learn/build-a-react-app-from-scratch).
 
-我们提供了几个基于 Vite 的建议。 
+<DeepDive>
 
-React Router v7 是一个基于 Vite 的框架，它能让你在一个具备路由和数据获取功能的框架中，使用 Vite 快速的开发服务器和构建工具。就像我们推荐的其他框架一样，你可以使用 React Router v7 构建单页应用（SPA）。 
+#### Do I need a framework? {/*do-i-need-a-framework*/}
 
-我们也推荐在 [将 React 添加到现有项目](/learn/add-react-to-an-existing-project) 或 [构建一个框架](/learn/building-a-react-framework) 时使用 Vite。
+Most apps would benefit from a framework, but there are valid cases to build a React app from scratch. A good rule of thumb is if your app needs routing, you would probably benefit from a framework. 
 
-就像 Svelte 有 SvelteKit、Vue 有 Nuxt、Solid 有 SolidStart 一样，对于新项目，React 建议使用能与 Vite 这类构建工具集成的框架。 
+Just like Svelte has Sveltekit, Vue has Nuxt, and Solid has SolidStart, [React recommends using a framework](#why-we-recommend-frameworks) that fully integrates routing into features like data-fetching and code-splitting out of the box. This avoids the pain of needing to write your own complex configurations and essentially build a framework yourself.
 
-</Note>
+However, you can always [build a React app from scratch](/learn/build-a-react-app-from-scratch) using a build tool like Vite, Parcel, or Rsbuild.
 
-## Create React App 的局限性 {/*limitations-of-create-react-app*/}
+</DeepDive>
+
+Continue reading to learn more about the [limitations of build tools](#limitations-of-build-tools) and [why we recommend frameworks](#why-we-recommend-frameworks).
+
+## Limitations of Build Tools {/*limitations-of-build-tools*/}
 
 Create React App 及类似的构建工具使得开始构建 React 应用程序变得非常容易。运行 `npx create-react-app my-app` 后，你会得到一个完全配置好的 React 应用程序，包括开发服务器、代码检查和生产构建。
 

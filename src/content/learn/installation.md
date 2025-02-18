@@ -38,20 +38,21 @@ React 文档中的大部分页面都包含这样的 sandbox。除 React 文档�
 
 如果你想开始一个新的 React 应用，你可以用我们推荐的框架 [创建一个 React 应用](/learn/creating-a-react-app)。
 
-## Build a React Framework {/*build-a-react-framework*/}
+## Build a React App from Scratch {/*build-a-react-app-from-scratch*/}
 
-如果某个框架不适合你的项目，或者你更愿意从构建自己的框架开始，则可以 [构建你自己的 React 框架](/learn/building-a-react-framework)。
+If a framework is not a good fit for your project, you prefer to build your own framework, or you just want to learn the basics of a React app you can [build a React app from scratch](/learn/build-a-react-app-from-scratch).
 
 
 ## 添加 React 到一个已有的项目 {/*add-react-to-an-existing-project*/}
 
-如果你想尝试在现有应用程序或网站中使用 React，你可以 [将 React 添加到现有项目](/learn/add-react-to-an-existing-project)。
 
-## 弃用的选项 {/*deprecated-options*/}
+<Note>
 
-### Create React App（已弃用） {/*create-react-app-deprecated*/}
+#### Should I use Create React App? {/*should-i-use-create-react-app*/}
 
-Create React App 是一个已弃用的工具，以前建议用于创建新的 React 应用。如果你想启动新的 React 应用，你可以 [创建 React 应用](/learn/creating-a-react-app)并使用推荐的框架。
+No. Create React App has been deprecated. For more information, see [Sunsetting Create React App](/blog/2025/02/14/sunsetting-create-react-app).
+
+</Note>
 
 更多信息，参见 [逐步淘汰 Create React App](/blog/2025/02/14/sunsetting-create-react-app)。
 
