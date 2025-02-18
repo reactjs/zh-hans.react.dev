@@ -22,7 +22,7 @@ title: 创建一个 React 应用
 
 ### Next.js (App Router) {/*nextjs-app-router*/}
 
-**[Next.js's App Router](https://nextjs.org/docs) 是一个 React 框架，充分利用了 React 的架构，支持全栈 React 应用。**
+**[Next.js 的 App Router](https://nextjs.org/docs) 是一个 React 框架，充分利用了 React 的架构，支持全栈 React 应用。**
 
 <TerminalBlock>
 npx create-next-app@latest
