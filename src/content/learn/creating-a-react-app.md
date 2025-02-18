@@ -32,7 +32,7 @@ Next.js 由 [Vercel](https://vercel.com/) 维护。你可以 [将 Next.js 应用
 
 ### React Router (v7) {/*react-router-v7*/}
 
-**[React Router](https://reactrouter.com/start/framework/installation) 是 React 最流行的路由库，可以与 Vite 结合创建一个全栈 React 框架**。它强调标准的 Web APIs 并提供了多个 [可部署的模板](https://github.com/remix-run/react-router-templates) 适用于各种 JavaScript 运行时和平台.
+**[React Router](https://reactrouter.com/start/framework/installation) 是 React 最流行的路由库，可以与 Vite 结合创建一个全栈 React 框架**。它强调标准的 Web API 并提供了多个 [可部署的模板](https://github.com/remix-run/react-router-templates) 适用于各种 JavaScript 运行时和平台。
 
 要创建一个新的 React Router 框架项目，请运行:
 
