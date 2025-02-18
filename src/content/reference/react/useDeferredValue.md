@@ -88,15 +88,9 @@ function SearchPage() {
 
 这个例子假设你使用了支持 `Suspense` 的数据源：
 
-<<<<<<< HEAD
-- 使用支持 suspense 的框架进行数据获取，例如 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/getting-started/react-essentials)
+- 使用支持 suspense 的框架进行数据获取，例如 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/app/getting-started/fetching-data#with-suspenses)
 - 使用 [`lazy`](/reference/react/lazy) 懒加载组件代码
 - 使用 [`use`](/reference/react/use) 读取 Promise 的值
-=======
-- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/app/getting-started/fetching-data#with-suspense)
-- Lazy-loading component code with [`lazy`](/reference/react/lazy)
-- Reading the value of a Promise with [`use`](/reference/react/use)
->>>>>>> c03f0290502e0b1210f50faaa464489accd57c35
 
 [了解更多有关 suspense 及其限制的信息](/reference/react/Suspense)。
 

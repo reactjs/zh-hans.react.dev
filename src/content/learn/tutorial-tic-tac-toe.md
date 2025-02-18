@@ -295,11 +295,7 @@ export default function Square() {
 }
 ```
 
-<<<<<<< HEAD
 _browser_ 部分应该会像下面这样在方块里面显示一个 X：
-=======
-The _browser_ section should be displaying a square with an X in it like this:
->>>>>>> c03f0290502e0b1210f50faaa464489accd57c35
 
 ![里面是“X”的方块](../images/tutorial/x-filled-square.png)
 
@@ -1329,11 +1325,7 @@ body {
 1. `handleClick` 使用参数（`0`）将 `squares` 数组的第一个元素从 `null` 更新为 `X`。
 1. `Board` 组件的 `squares` state 已更新，因此 `Board` 及其所有子组件都将重新渲染。这会导致索引为 `0` 的 `Square` 组件的 `value` props 从 `null` 更改为 `X`。
 
-<<<<<<< HEAD
 最后，用户看到左上角的方块在单击后从空变为 `X`。
-=======
-In the end the user sees that the upper left square has changed from empty to having an `X` after clicking it.
->>>>>>> c03f0290502e0b1210f50faaa464489accd57c35
 
 <Note>
 
@@ -1414,11 +1406,7 @@ export default function Board() {
 
  `X` 被 `O` 覆盖！虽然这会给游戏带来非常有趣的变化，但我们现在将坚持原来的规则。
 
-<<<<<<< HEAD
 当你用 `X` 或 `O` 标记方块时，你没有检查该方块是否已经具有 `X` 或 `O` 值。你可以通过提早返回来解决此问题。我们将检查方块是否已经有 `X` 或 `O`。如果方块已经填满，你将尽早在 `handleClick` 函数中 `return`——在它尝试更新棋盘 state 之前。
-=======
-When you mark a square with an `X` or an `O` you aren't first checking to see if the square already has an `X` or `O` value. You can fix this by *returning early*. You'll check to see if the square already has an `X` or an `O`. If the square is already filled, you will `return` in the `handleClick` function early--before it tries to update the board state.
->>>>>>> c03f0290502e0b1210f50faaa464489accd57c35
 
 ```js {2,3,4}
 function handleClick(i) {
@@ -1568,11 +1556,7 @@ function calculateWinner(squares) {
 
 </Note>
 
-<<<<<<< HEAD
 你将在 `Board` 组件的 `handleClick` 函数中调用 `calculateWinner(squares)` 来检查玩家是否获胜。你可以在检查用户是否单击了已经具有 `X` 或 `O` 的方块的同时执行此检查。在这两种情况下，我们都希望尽早返回：
-=======
-You will call `calculateWinner(squares)` in the `Board` component's `handleClick` function to check if a player has won. You can perform this check at the same time you check if a user has clicked a square that already has an `X` or an `O`. We'd like to return early in both cases:
->>>>>>> c03f0290502e0b1210f50faaa464489accd57c35
 
 ```js {2}
 function handleClick(i) {
