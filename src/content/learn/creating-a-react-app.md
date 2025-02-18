@@ -71,7 +71,7 @@ Next.js 的 App Router 打包器完全实现了官方的 [React Server Component
 例如，你可以编写一个仅在服务器端运行（或在构建期间运行）的服务器端 React 组件，作为 async 函数从数据库或文件中读取数据。然后，你可以将数据传递给将在浏览器中运行的交互式组件：
 
 ```js
-// 该组件*仅*在服务器端运行（或在构建期间运行）。
+// 该组件**仅**在服务器端运行（或在构建期间运行）。
 async function Talks({ confId }) {
   // 1. 你在服务器端，因此可以直接与数据层交互。无需 API 端点。
   const talks = await db.Talks.findAll({ confId });
