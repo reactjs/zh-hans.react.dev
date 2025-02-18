@@ -51,7 +51,7 @@ This error message will only be shown once per install.
 对于现有的应用程序，这些指南将帮助你迁移到仅客户端的单页应用（SPA）：
 
 * [Next.js 的 Create React App 迁移指南](https://nextjs.org/docs/app/building-your-application/upgrading/from-create-react-app)
-* [React Router 的框架采用指南](https://reactrouter.com/upgrading/component-routes).
+* [React Router 的框架适配指南](https://reactrouter.com/upgrading/component-routes).
 * [Expo webpack 到 Expo Router 的迁移指南](https://docs.expo.dev/router/migrate/from-expo-webpack/)
 
 Create React App 将继续以维护模式运行，并且我们已经发布了一个新版本的 Create React App 以支持 React 19。
