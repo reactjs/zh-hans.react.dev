@@ -52,7 +52,7 @@ npx create-expo-app@latest
 
 如果你是 Expo 新手，请查看 [Expo 教程](https://docs.expo.dev/tutorial/introduction/).
 
-Expo 由 [Expo (the company)](https://expo.dev/about) 维护。使用 Expo 构建应用是免费的，你可以将应用提交到 Google 和 Apple 应用商店，没有任何限制。Expo 还提供可选的付费云服务。
+Expo 由 [Expo 公司](https://expo.dev/about) 维护。使用 Expo 构建应用是免费的，你可以将应用提交到 Google 和 Apple 应用商店，没有任何限制。Expo 还提供可选的付费云服务。
 
 
 ## 其它选项 {/*other-options*/}
