@@ -105,7 +105,7 @@ Next.js 的 App Router 还集成了 [使用 Suspense 的数据获取](/blog/2022
 
 React Router v7 是一个基于 Vite 的框架，允许你使用 Vite 的快速开发服务器和构建工具，同时提供路由和数据获取功能。与其他推荐的框架一样，你可以用 React Router v7 构建单页应用。
 
-我们也推荐在 [将 React 添加到现有项目中](/learn/add-react-to-an-existing-project), or [构建一个 React 框架](/learn/building-a-react-framework) 时使用 Vite。
+我们也推荐在 [将 React 添加到现有项目中](/learn/add-react-to-an-existing-project)，或者 [构建一个 React 框架](/learn/building-a-react-framework) 时使用 Vite。
 
 就像 Svelte 有 Sveltekit、Vue 有 Nuxt、Solid 有 SolidStart 一样，React 推荐使用集成了 Vite 等构建工具的框架来创建新项目。
 
