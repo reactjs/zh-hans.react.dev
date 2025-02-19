@@ -79,7 +79,6 @@ This error message will only be shown once per install.
 
 正如 Svelte 拥有 SvelteKit、Vue 拥有 Nuxt、Solid 拥有 SolidStart，[React 推荐使用框架](#why-we-recommend-frameworks)——这类框架已原生集成路由功能，并与数据获取、代码分割等特性深度整合。此举可避免开发者陷入自行编写复杂配置的困境，本质上规避了重复造轮子的风险。
 
-
 不过，你仍可选择使用 Vite、Parcel 或 Rsbuild 等 [构建工具从零搭建 React 应用](/learn/build-a-react-app-from-scratch)。
 
 </DeepDive>
