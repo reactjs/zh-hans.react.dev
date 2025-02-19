@@ -154,7 +154,7 @@ export default function App() {
 
 ### 数据获取 {/*data-fetching*/}
 
-在 Create React App 中，另一个常见的问题是数据获取。Create React App并未内置特定的数据获取解决方案。一个常见的选择是在 副作用函数(useEffect) 中使用 `fetch` 来加载数据。
+React 应用开发中的另一个常见问题是数据获取。Create React App 并没有内置特定的数据获取解决方案。如果你刚刚入门，常见的做法是在 副作用（effect） 中使用 fetch 方法来加载数据。
 
 但是，这样做意味着数据是在组件渲染之后才获取的，这可能会导致 网络瀑布流问题（network waterfalls）。网络瀑布流问题的产生是因为数据是在应用程序渲染时才开始获取的，而不是在代码下载的同时并行获取数据：
 
@@ -177,7 +177,7 @@ export default function Dashboard() {
 }
 ```
 
-在 副作用函数（useEffect） 中获取数据意味着用户需要等待更长时间才能看到内容，即使这些数据本可以更早地获取。为了解决这个问题，你可以使用一些数据获取库，例如：[React Query](https://react-query.tanstack.com/)、[SWR](https://swr.vercel.app/)、[Apollo](https://www.apollographql.com/docs/react) 或 [Relay](https://relay.dev/)，这些库提供了预取数据的功能，使得请求可以在组件渲染之前就开始，从而减少用户等待时间并提升性能
+在 副作用（effect） 中获取数据意味着用户需要等待更长时间才能看到内容，即使这些数据本可以更早地获取。为了解决这个问题，你可以使用一些数据获取库，例如：[React Query](https://react-query.tanstack.com/)、[SWR](https://swr.vercel.app/)、[Apollo](https://www.apollographql.com/docs/react) 或 [Relay](https://relay.dev/)，这些库提供了预取数据的功能，使得请求可以在组件渲染之前就开始，从而减少用户等待时间并提升性能
 
 这些库在与路由的 "loader" 模式 集成时效果最佳，可以在路由级别指定数据依赖关系，从而使路由器能够优化数据获取：
 
@@ -316,5 +316,5 @@ const router = createBrowserRouter([
 
 ---
 
-感谢 [Dan Abramov](https://bsky.app/profile/danabra.mov) 创建了 Create React App，也感谢 [Joe Haddad](https://github.com/Timer)、 [Ian Schmitz](https://github.com/ianschmitz)、 [Brody McKee](https://github.com/mrmckeb) 以及 [其他众多贡献者](https://github.com/facebook/create-react-app/graphs/contributors) 多年来对 Create React App 的维护。感谢 [Brooks Lybrand](https://bsky.app/profile/brookslybrand.bsky.social)、[Dan Abramov](https://bsky.app/profile/danabra.mov)、[Devon Govett](https://bsky.app/profile/devongovett.bsky.social)、[Eli White](https://x.com/Eli_White)、[Jack Herrington](https://bsky.app/profile/jherr.dev)、[Joe Savona](https://x.com/en_JS)、[Lauren Tan](https://bsky.app/profile/no.lol)、[Lee Robinson](https://x.com/leeerob)、[Mark Erikson](https://bsky.app/profile/acemarke.dev)、[Ryan Florence](https://x.com/ryanflorence)、[Sophie Alpert](https://bsky.app/profile/sophiebits.com)、[Tanner Linsley](https://bsky.app/profile/tannerlinsley.com) 和 [Theo Browne](https://x.com/theo) 对这篇文章进行审阅并提供反馈。
+感谢 [Dan Abramov](https://bsky.app/profile/danabra.mov) 创建了 Create React App，也感谢 [Joe Haddad](https://github.com/Timer)、[Ian Schmitz](https://github.com/ianschmitz)、[Brody McKee](https://github.com/mrmckeb) 以及 [其他众多贡献者](https://github.com/facebook/create-react-app/graphs/contributors) 多年来对 Create React App 的维护。感谢 [Brooks Lybrand](https://bsky.app/profile/brookslybrand.bsky.social)、[Dan Abramov](https://bsky.app/profile/danabra.mov)、[Devon Govett](https://bsky.app/profile/devongovett.bsky.social)、[Eli White](https://x.com/Eli_White)、[Jack Herrington](https://bsky.app/profile/jherr.dev)、[Joe Savona](https://x.com/en_JS)、[Lauren Tan](https://bsky.app/profile/no.lol)、[Lee Robinson](https://x.com/leeerob)、[Mark Erikson](https://bsky.app/profile/acemarke.dev)、[Ryan Florence](https://x.com/ryanflorence)、[Sophie Alpert](https://bsky.app/profile/sophiebits.com)、[Tanner Linsley](https://bsky.app/profile/tannerlinsley.com) 和 [Theo Browne](https://x.com/theo) 对这篇文章进行审阅并提供反馈。
 
