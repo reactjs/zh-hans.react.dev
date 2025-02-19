@@ -2,7 +2,7 @@
 title: "逐步淘汰 Create React App"
 author: Matt Carroll 和 Ricky Hanlon
 date: 2025/02/14
-description: Today, we’re deprecating Create React App for new apps, and encouraging existing apps to migrate to a framework, or to migrate to a build tool like Vite, Parcel, or RSBuild. We’re also providing docs for when a framework isn’t a good fit for your project, you want to build your own framework, or you just want to learn how React works by building a React app from scratch.
+description: 今天，我们正式宣布弃用 Create React App 作为新应用的推荐工具，并建议现有应用迁移至主流框架（如 Next.js、Remix 等），或迁移到 Vite、Parcel、RSBuild 等现代构建工具。我们还同步更新了相关文档，涵盖以下场景：当框架不适合你的项目时；当你希望自行构建框架时；以及当你希望通过从零开始搭建 React 应用来深入理解其工作原理时。
 ---
 
 2025 年 2 月 14 日，作者：[Matt Carroll](https://twitter.com/mattcarrollcode) 和 [Ricky Hanlon](https://bsky.app/profile/ricky.fm)
@@ -11,9 +11,11 @@ description: Today, we’re deprecating Create React App for new apps, and encou
 
 <Intro>
 
-Today, we’re deprecating [Create React App](https://create-react-app.dev/) for new apps, and encouraging existing apps to migrate to a [framework](#how-to-migrate-to-a-framework), or to [migrate to a build tool](#how-to-migrate-to-a-build-tool) like Vite, Parcel, or RSBuild. 
+今日起，我们将正式弃用 [Create React App](https://create-react-app.dev/) 作为新应用的推荐工具，并建议现有应用迁移至 [框架](#how-to-migrate-to-a-framework)，或迁移至 [构建工具](#how-to-migrate-to-a-build-tool)（如 Vite、Parcel 或 RSBuild）。
 
-We’re also providing docs for when a framework isn’t a good fit for your project, you want to build your own framework, or you just want to learn how React works by [building a React app from scratch](/learn/build-a-react-app-from-scratch).
+我们还提供了相关文档，适用于你的项目不适合使用框架的情况、你想要构建自己的框架，或者你只是想通过 [从零开始构建一个 React 应用](/learn/build-a-react-app-from-scratch) 来了解React的工作原理。
+
+
 
 </Intro>
 
@@ -29,7 +31,7 @@ Create React App 通过将多个工具整合到一个推荐的配置中，解决
 
 ## 弃用 Create React App {/*deprecating-create-react-app*/}
 
-Although Create React App makes it easy to get started, [there are several limitations](#limitations-of-build-tools) that make it difficult to build high performant production apps. In principle, we could solve these problems by essentially evolving it into a [framework](#why-we-recommend-frameworks).
+虽然 Create React App 让入门变得简单，[但其存在的若干限制](#limitations-of-build-tools) 使得构建高性能的生产级应用颇具挑战。理论上，我们可以通过将其逐步发展为 [框架](#why-we-recommend-frameworks) 的方式来解决这些问题。
 
 然而，由于 Create React App 目前没有活跃的维护者，并且已经有许多现有的框架能够解决这些问题，我们决定弃用 Create React App。
 
@@ -48,10 +50,10 @@ This error message will only be shown once per install.
 </ConsoleLogLine>
 </ConsoleBlockMulti>
 
-We've also added a deprecation notice to the Create React App [website](https://create-react-app.dev/) and GitHub [repo](https://github.com/facebook/create-react-app). Create React App will continue working in maintenance mode, and we've published a new version of Create React App to work with React 19.
+我们已在 Create React App 的 [官网](https://create-react-app.dev/) 和 GitHub [代码仓库](https://github.com/facebook/create-react-app) 添加了弃用通知。Create React App 将以维护模式继续运行，并发布了与 React 19 兼容的新版本 Create React App。
 
-## How to Migrate to a Framework {/*how-to-migrate-to-a-framework*/}
-We recommend [creating new React apps](/learn/creating-a-react-app) with a framework. All the frameworks we recommend support client-side rendering ([CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)) and single-page apps ([SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA)), and can be deployed to a CDN or static hosting service without a server.
+## 如何迁移到框架 {/*how-to-migrate-to-a-framework*/}
+我们推荐使用 [框架创建新的 React 应用](/learn/creating-a-react-app)。所有推荐的框架均支持客户端渲染（[CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)）和单页面应用（[SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA)），并可通过 CDN 或静态托管服务部署，无需服务器支持。
 
 对于现有的应用程序，这些指南将帮助你迁移到仅客户端的单页应用（SPA）：
 
@@ -59,31 +61,32 @@ We recommend [creating new React apps](/learn/creating-a-react-app) with a frame
 * [React Router 的框架适配指南](https://reactrouter.com/upgrading/component-routes).
 * [Expo webpack 到 Expo Router 的迁移指南](https://docs.expo.dev/router/migrate/from-expo-webpack/)
 
-## How to Migrate to a Build Tool {/*how-to-migrate-to-a-build-tool*/}
+## 如何迁移到构建工具 {/*how-to-migrate-to-a-build-tool*/}
 
 如果你的应用程序有特殊的限制，或者你更喜欢通过构建自己的框架来解决这些问题，或者你只是想从头学习 React 的工作原理，你可以使用 Vite、Parcel 或 Rsbuild 来定制自己的 React 设置。
 
-For existing apps, these guides will help you migrate to a build tool:
+针对现有应用，以下指南将协助你迁移至构建工具：
 
-* [Vite Create React App migration guide](https://www.robinwieruch.de/vite-create-react-app/)
-* [Parcel Create React App migration guide](https://stackoverflow.com/a/49605484)
-* [Rsbuild Create React App migration guide](https://rsbuild.dev/guide/migration/cra)
+* [Create React App 到 Vite 迁移指南](https://www.robinwieruch.de/vite-create-react-app/)
+* [Create React App 到 Parcel 迁移指南](https://stackoverflow.com/a/49605484)
+* [Create React App 到 Rsbuild 迁移指南](https://rsbuild.dev/guide/migration/cra)
 
-To help get started with Vite, Parcel or Rsbuild, we've added new docs for [Building a React App from Scratch](/learn/build-a-react-app-from-scratch).
+为帮助开发者快速上手 Vite、Parcel 或 Rsbuild，我们新增了 [从零开始构建 React 应用](/learn/build-a-react-app-from-scratch) 文档。
 
 <DeepDive>
 
-#### Do I need a framework? {/*do-i-need-a-framework*/}
+#### 是否需要使用框架？ {/*do-i-need-a-framework*/}
 
-Most apps would benefit from a framework, but there are valid cases to build a React app from scratch. A good rule of thumb is if your app needs routing, you would probably benefit from a framework. 
+大多数应用都能从使用框架中获益，但在某些合理场景下从零开始构建 React 应用也是可行的。经验法则是：若你的应用需要路由功能，使用框架将更具优势。
 
-Just like Svelte has Sveltekit, Vue has Nuxt, and Solid has SolidStart, [React recommends using a framework](#why-we-recommend-frameworks) that fully integrates routing into features like data-fetching and code-splitting out of the box. This avoids the pain of needing to write your own complex configurations and essentially build a framework yourself.
+正如 Svelte 拥有 SvelteKit、Vue 拥有 Nuxt、Solid 拥有 SolidStart，[React 推荐使用框架](#why-we-recommend-frameworks)——这类框架已原生集成路由功能，并与数据获取、代码分割等特性深度整合。此举可避免开发者陷入自行编写复杂配置的困境，本质上规避了重复造轮子的风险。
 
-However, you can always [build a React app from scratch](/learn/build-a-react-app-from-scratch) using a build tool like Vite, Parcel, or Rsbuild.
+
+不过，你仍可选择使用 Vite、Parcel 或 Rsbuild 等 [构建工具从零搭建 React 应用](/learn/build-a-react-app-from-scratch)。
 
 </DeepDive>
 
-Continue reading to learn more about the [limitations of build tools](#limitations-of-build-tools) and [why we recommend frameworks](#why-we-recommend-frameworks).
+请继续阅读以深入了解 [构建工具的局限性](#limitations-of-build-tools) 以及 [我们推荐框架的原因](#why-we-recommend-frameworks)。
 
 ## Limitations of Build Tools {/*limitations-of-build-tools*/}
 
@@ -116,7 +119,7 @@ import Home from './Home';
 import Dashboard from './Dashboard';
 
 export default function App() {
-  // ❌ Routing in state does not create URLs
+  // ❌ 状态管理式路由无法生成有效 URL
   const [route, setRoute] = useState('home');
   return (
     <div>
@@ -135,7 +138,7 @@ import {RouterProvider, createBrowserRouter} from 'react-router';
 import Home from './Home';
 import Dashboard from './Dashboard';
 
-// ✅ Each route has it's own URL
+// ✅ 每个路由对应独立 URL
 const router = createBrowserRouter([
   {path: '/', element: <Home />},
   {path: '/dashboard', element: <Dashboard />}
@@ -162,7 +165,7 @@ export default function App() {
 export default function Dashboard() {
   const [data, setData] = useState(null);
 
-  // ❌ Fetching data in a component causes network waterfalls
+  // ❌ 在组件内获取数据会引发网络瀑布流
   useEffect(() => {
     fetch('/api/data')
       .then(response => response.json())
@@ -188,7 +191,7 @@ export async function loader() {
   return data;
 }
 
-// ✅ Fetching data in parallel while the code is downloading
+// ✅ 在代码下载期间并行获取数据
 export default function Dashboard({loaderData}) {
   return (
     <div>
@@ -226,7 +229,7 @@ Create React App 中的另一个常见问题是 [代码分割](https://www.patte
 import Home from './Home';
 import Dashboard from './Dashboard';
 
-// ✅ Routes are downloaded before rendering
+// ✅ 路由代码在渲染前完成加载
 const router = createBrowserRouter([
   {path: '/', lazy: () => import('./Home')},
   {path: '/dashboard', lazy: () => import('Dashboard')}
