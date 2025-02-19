@@ -3,7 +3,7 @@ title: 配置
 ---
 <Intro>
 
-React 与编辑器、TypeScript、浏览器扩展和编译器等多种工具集成。本节将帮助你完成环境的配置。
+React 可与编辑器、TypeScript、浏览器扩展和编译器等多种工具集成。本节将帮助你完成环境的配置。
 
 </Intro>
 
