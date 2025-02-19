@@ -21,7 +21,7 @@ React 开发者工具是一款浏览器扩展，它能够检查 React 组件、�
 
 ## React Compiler {/*react-compiler*/}
 
-React Compiler 是一款能自动优化您的 React 应用程序的工具。[了解更多](/learn/react-compiler)。
+React Compiler 是一款自动优化 React 应用程序的工具。[了解更多](/learn/react-compiler)。
 
 ## 从头开始创建一个 React 项目 {/*start-a-react-project-from-scratch*/}
 
