@@ -1,143 +1,143 @@
 ---
-title: Build a React app from Scratch
+title: 从头构建一个 React 应用
 ---
 
 <Intro>
 
-If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, you can build a React app from scratch.
+如果你的应用程序有一些现有框架无法很好满足的限制，那么你更愿意构建自己的框架，或者你只是想学习 React 应用程序的基础知识，那么你可以从头开始构建 React 应用程序。
 
 </Intro>
 
 <DeepDive>
 
-#### Consider using a framework {/*consider-using-a-framework*/}
+#### 考虑使用框架 {/*consider-using-a-framework*/}
 
-Starting from scratch is an easy way to get started using React, but a major tradeoff to be aware of is that going this route is often the same as building your own adhoc framework. As your requirements evolve, you may need to solve more framework-like problems that our recommended frameworks already have well developed and supported solutions for. 
+从头开始使用 React 是一种简单的入门方式，但需要注意的是，这通常相当于构建自己的临时框架。随着需求的变化，你可能需要解决一些框架相关的问题，而我们推荐的框架已经具备成熟且得到支持的解决方案。
 
-For example, if in the future your app needs support for server-side rendering (SSR), static site generation (SSG), and/or React Server Components (RSC), you will have to implement those on your own. Similarly, future React features that require integrating at the framework level will have to be implemented on your own if you want to use them.
+例如，如果将来你的应用需要支持服务器端渲染（SSR）、静态站点生成（SSG）和/或 React 服务器组件（RSC），你将需要自行实现这些功能。同样，如果你希望使用将来 React 的特性，这些特性需要在框架层面集成，你也必须自行实现。
 
-Our recommended frameworks also help you build better performing apps. For example, reducing or eliminating waterfalls from network requests makes for a better user experience. This might not be a high priority when you are building a toy project, but if your app gains users you may want to improve its performance.
+我们的推荐框架还帮助你构建性能更好的应用。例如，减少或消除网络请求中的瀑布效应可以提升用户体验。在构建小项目时，这可能不是优先考虑的事项，但如果你的应用获得用户，你可能会希望提高其性能。
 
-Going this route also makes it more difficult to get support, since the way you develop routing, data-fetching, and other features will be unique to your situation. You should only choose this option if you are comfortable tackling these problems on your own, or if you’re confident that you will never need these features.
+选择这种方式会使获取支持变得更困难，因为你开发路由、数据获取和其他功能的方式将独特于你的情况。只有在你能够独立解决这些问题，或你确信自己永远不需要这些功能时，才应该选择这个选项。
 
-For a list of recommended frameworks, check out [Creating a React App](/learn/creating-a-react-app).
+有关推荐框架的列表，请查看 [创建一个 React 应用](/learn/creating-a-react-app)。
 
 </DeepDive>
 
 
-## Step 1: Install a build tool {/*step-1-install-a-build-tool*/}
+## 步骤 1: 安装构建工具 {/*step-1-install-a-build-tool*/}
 
-The first step is to install a build tool like `vite`, `parcel`, or `rsbuild`. These build tools provide features to package and run source code, provide a development server for local development and a build command to deploy your app to a production server.
+第一步是安装一个构建工具，如 Vite、Parcel 或 rsbuild。这些构建工具提供了打包和运行源代码的功能，提供本地开发的开发服务器，以及部署应用到生产服务器的构建命令。
 
 ### Vite {/*vite*/}
 
-[Vite](https://vite.dev/) is a build tool that aims to provide a faster and leaner development experience for modern web projects.
+[Vite](https://vite.dev/) 是一个构建工具，旨在为现代网络项目提供更快更简洁的开发体验。
 
 <TerminalBlock>
 {`npm create vite@latest my-app -- --template react`}
 </TerminalBlock>
 
-Vite is opinionated and comes with sensible defaults out of the box. Vite has a rich ecosystem of plugins to support fast refresh, JSX,  Babel/SWC, and other common features. See Vite's [React plugin](https://vite.dev/plugins/#vitejs-plugin-react) or [React SWC plugin](https://vite.dev/plugins/#vitejs-plugin-react-swc) and [React SSR example project](https://vite.dev/guide/ssr.html#example-projects) to get started.
+Vite 是一个有明确意见的工具，开箱即用时提供了合理的默认配置。 它拥有丰富的插件生态，支持快速刷新, JSX,  Babel/SWC, 以及其他常见功能。 你可以查看 Vite 的 [React 插件](https://vite.dev/plugins/#vitejs-plugin-react) 或 [React SWC 插件](https://vite.dev/plugins/#vitejs-plugin-react-swc) 和 [React 服务器端渲染示例项目](https://vite.dev/guide/ssr.html#example-projects) 来开始使用。
 
-Vite is already being used as a build tool in one of our [recommended frameworks](/learn/creating-a-react-app): [React Router](https://reactrouter.com/start/framework/installation).
+Vite已经作为构建工具在我们 [推荐的框架](/learn/creating-a-react-app)之一中使用: [React Router](https://reactrouter.com/start/framework/installation)。
 
 ### Parcel {/*parcel*/}
 
-[Parcel](https://parceljs.org/) combines a great out-of-the-box development experience with a scalable architecture that can take your project from just getting started to massive production applications.
+[Parcel](https://parceljs.org/) 结合了出色的开箱即用开发体验和可扩展的架构，可以将你的项目从刚开始的阶段推向大规模的生产应用。
 
 <TerminalBlock>
 {`npm install --save-dev parcel`}
 </TerminalBlock>
 
-Parcel supports fast refresh, JSX, TypeScript, Flow, and styling out of the box. See [Parcel's React recipe](https://parceljs.org/recipes/react/#getting-started) to get started.
+Parcel 支持快速刷新、 JSX、 TypeScript、 Flow 和开箱即用的样式。 请查看 [Parcel 的 React 教程](https://parceljs.org/recipes/react/#getting-started) 以开始。
 
 ### Rsbuild {/*rsbuild*/}
 
-[Rsbuild](https://rsbuild.dev/) is an Rspack-powered build tool that provides a seamless development experience for React applications. It comes with carefully tuned defaults and performance optimizations ready to use.
+[Rsbuild](https://rsbuild.dev/) 是一个基于 Rspack 的构建工具，旨在为 React 应用程序提供无缝的开发体验。它配备了精心调优的默认设置和现成的性能优化。
 
 <TerminalBlock>
 {`npx create-rsbuild --template react`}
 </TerminalBlock>
 
-Rsbuild includes built-in support for React features like fast refresh, JSX, TypeScript, and styling. See [Rsbuild's React guide](https://rsbuild.dev/guide/framework/react) to get started.
+Rsbuild 内置了对 React 特性的支持，如快速刷新、JSX、TypeScript 和样式。 请查看 [Rsbuild 的 React 指南](https://rsbuild.dev/guide/framework/react) 以开始使用。
 
 <Note>
 
-#### Metro for React Native {/*react-native*/}
+#### React Native 的 Metro {/*react-native*/}
 
-If you'd you're starting from scratch with React Native you'll need to use [Metro](https://metrobundler.dev/), the JavaScript bundler for React Native. Metro supports bundling for platforms like iOS and Android, but lacks many features when compared to the tools here. We recommend starting with Vite, Parcel, or Rsbuild unless your project requires React Native support.
+如果你从头开始使用 React Native，你将需要使用 [Metro](https://metrobundler.dev/), 这是 React Native 的 JavaScript 打包工具。 Metro 支持 iOS 和 Android 等平台的打包，但与这里提到的工具相比，它缺少许多功能。除非你的项目需要 React Native 支持，否则我们建议从 Vite、Parcel 或 Rsbuild 开始。
 
 </Note>
 
-## Step 2: Build Common Application Patterns {/*step-2-build-common-application-patterns*/}
+## 步骤 2: 构建常见的应用程序模式 {/*step-2-build-common-application-patterns*/}
 
-The build tools listed above start off with a client-only, single-page app (SPA), but don't include any further solutions for common functionality like routing, data fetching, or styling.
+上面列出的构建工具从客户端单页应用程序（SPA）开始，但不包括路由、数据获取或样式等常见功能的进一步解决方案。
 
-The React ecosystem includes many tools for these problems. We've listed a few that are widely used as a starting point, but feel free to choose other tools if those work better for you.
+React 生态系统中包含许多用于解决这些问题的工具。我们列出了一些广泛使用的工具作为起点，但如果其他工具更适合你，欢迎选择使用。
 
-### Routing {/*routing*/}
+### 路由 {/*routing*/}
 
-Routing determines what content or pages to display when a user visits a particular URL. You need to set up a router to map URLs to different parts of your app. You'll also need to handle nested routes, route parameters, and query parameters.  Routers can be configured within your code, or defined based on your component folder and file structures.
+路由决定了当用户访问特定 URL 时显示的内容或页面。你需要设置一个路由器来将 URL 映射到应用程序的不同部分。你还需要处理嵌套路由、路由参数和查询参数。路由器可以在代码中配置，也可以根据组件文件夹和文件结构定义。
 
-Routers are a core part of modern applications, and are usually integrated with data fetching (including prefetching data for a whole page for faster loading), code splitting (to minimize client bundle sizes), and page rendering approaches (to decide how each page gets generated).
+路由器是现代应用程序的核心部分，通常与数据获取（包括为整个页面预取数据以加快加载速度）、代码拆分（以最小化客户端包的大小）和页面渲染方法（决定每个页面的生成方式）集成在一起。
 
-We suggest using:
+我们建议使用:
 
 - [React Router](https://reactrouter.com/start/framework/custom)
 - [Tanstack Router](https://tanstack.com/router/latest)
 
 
-### Data Fetching {/*data-fetching*/}
+### 数据获取 {/*data-fetching*/}
 
-Fetching data from a server or other data source is a key part of most applications. Doing this properly requires handling loading states, error states, and caching the fetched data, which can be complex.
+从服务器或其他数据源获取数据是大多数应用程序的关键部分。要正确地执行此操作，需要处理加载状态、错误状态以及缓存获取的数据，这可能会很复杂。
 
-Purpose-built data fetching libraries do the hard work of fetching and caching the data for you, letting you focus on what data your app needs and how to display it.  These libraries are typically used directly in your components, but can also be integrated into routing loaders for faster pre-fetching and better performance, and in server rendering as well.
+专门构建的数据获取库为你完成数据获取和缓存的繁重工作，让你专注于应用程序需要哪些数据以及如何显示这些数据。这些库通常直接在组件中使用，但也可以集成到路由加载器中，以实现更快的预取和更好的性能，并且也可以用于服务器渲染。
 
-Note that fetching data directly in components can lead to slower loading times due to network request waterfalls, so we recommend prefetching data in router loaders or on the server as much as possible!  This allows a page's data to be fetched all at once as the page is being displayed.
+请注意，直接在组件中获取数据可能会导致加载时间变慢，因为会出现网络请求瀑布效应，因此我们建议尽可能在路由加载器或服务器上预取数据！这样可以在页面显示时一次性获取页面的数据。
 
-If you're fetching data from most backends or REST-style APIs, we suggest using:
+如果你从大多数后端或 REST 风格的 API 获取数据，我们建议使用：
 
 - [React Query](https://react-query.tanstack.com/)
 - [SWR](https://swr.vercel.app/)
 - [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
 
-If you're fetching data from a GraphQL API, we suggest using:
+如果你从 GraphQL API 获取数据，我们建议使用：
 
 - [Apollo](https://www.apollographql.com/docs/react)
 - [Relay](https://relay.dev/)
 
 
-### Code-splitting {/*code-splitting*/}
+### 代码拆分 {/*code-splitting*/}
 
-Code-splitting is the process of breaking your app into smaller bundles that can be loaded on demand. An app's code size increases with every new feature and additional dependency. Apps can become slow to load because all of the code for the entire app needs to be sent before it can be used. Caching, reducing features/dependencies, and moving some code to run on the server can help mitigate slow loading but are incomplete solutions that can sacrifice functionality if overused.
+代码拆分是将应用程序分解为可以按需加载的小型包的过程。随着每个新功能和额外依赖的增加，应用程序的代码体积会增大。应用程序可能会因为需要在使用前发送整个应用程序的所有代码而变得加载缓慢。缓存、减少功能/依赖项以及将部分代码移至服务器运行可以帮助缓解加载缓慢的问题，但如果过度使用，这些都是不完整的解决方案，可能会牺牲功能。
 
-Similarly, if you rely on the apps using your framework to split the code, you might encounter situations where loading becomes slower than if no code splitting were happening at all. For example, [lazily loading](/reference/react/lazy) a chart delays sending the code needed to render the chart, splitting the chart code from the rest of the app. [Parcel supports code splitting with React.lazy](https://parceljs.org/recipes/react/#code-splitting). However, if the chart loads its data *after* it has been initially rendered you are now waiting twice. This is a waterfall: rather than fetching the data for the chart and sending the code to render it simultaneously, you must wait for each step to complete one after the other.
+同样，如果你依赖使用框架的应用程序来拆分代码，可能会遇到加载速度比不进行代码拆分时更慢的情况。例如， [懒加载](/reference/react/lazy) 图表会延迟发送渲染图表所需的代码，将图表代码与应用程序的其余部分分开。 [Parcel 支持使用 React.lazy 进行代码拆分](https://parceljs.org/recipes/react/#code-splitting)。然而，如果图表在初始渲染后才加载其数据，你就需要等待两次。这就是所谓的瀑布效应：与其同时获取图表的数据和发送渲染代码，你必须等待每个步骤依次完成。
 
-Splitting code by route, when integrated with bundling and data fetching, can reduce the initial load time of your app and the time it takes for the largest visible content of the app to render ([Largest Contentful Paint](https://web.dev/articles/lcp)).
+通过路由拆分代码，并与打包和数据获取集成，可以减少应用程序的初始加载时间以及渲染应用程序最大可见内容所需的时间 ([最大内容绘制](https://web.dev/articles/lcp))。
 
-For code-splitting instructions, see your build tool docs:
+有关代码拆分的说明，请参阅你的构建工具文档:
 - [Vite build optimizations](https://v3.vitejs.dev/guide/features.html#build-optimizations)
 - [Parcel code splitting](https://parceljs.org/features/code-splitting/)
 - [Rsbuild code splitting](https://rsbuild.dev/guide/optimization/code-splitting)
 
-### Improving Application Performance {/*improving-application-performance*/}
+### 提高应用程序性能 {/*improving-application-performance*/}
 
-Since the build tool you select only support single page apps (SPAs) you'll need to implement other [rendering patterns](https://www.patterns.dev/vanilla/rendering-patterns) like server-side rendering (SSR), static site generation (SSG), and/or React Server Components (RSC). Even if you don't need these features at first, in the future there may be some routes that would benefit SSR, SSG or RSC.
+由于你选择的构建工具仅支持单页应用程序（SPA），你需要实现其他 [渲染模式](https://www.patterns.dev/vanilla/rendering-patterns) 如服务器端渲染（SSR）、静态站点生成（SSG）和/或 React 服务器组件（RSC）。即使你一开始不需要这些功能，将来也可能有一些路由会从 SSR、SSG 或 RSC 中受益。
 
-* **Single-page apps (SPA)** load a single HTML page and dynamically updates the page as the user interacts with the app. SPAs are easier to get started with, but they can have slower initial load times. SPAs are the default architecture for most build tools.
+* **单页面应用程序 (SPA)** 加载单个 HTML 页面，并在用户与应用程序交互时动态更新页面。SPAs 更容易入门，但初始加载时间可能较慢。SPAs 是大多数构建工具的默认架构。
 
-* **Streaming Server-side rendering (SSR)** renders a page on the server and sends the fully rendered page to the client. SSR can improve performance, but it can be more complex to set up and maintain than a single-page app. With the addition of streaming, SSR can be very complex to set up and maintain. See [Vite's SSR guide]( https://vite.dev/guide/ssr).
+* **流式服务器端渲染 (SSR)** 在服务器上渲染页面并将完全渲染的页面发送到客户端。SSR 可以提高性能，但设置和维护比单页应用程序更复杂。随着流式处理的加入，SSR 的设置和维护可能会变得非常复杂。 请参阅 [Vite 的 SSR 指南]( https://vite.dev/guide/ssr)。
 
-* **Static site generation (SSG)** generates static HTML files for your app at build time. SSG can improve performance, but it can be more complex to set up and maintain than server-side rendering. See [Vite's SSG guide](https://vite.dev/guide/ssr.html#pre-rendering-ssg).
+* **静态站点生成 (SSG)** 在构建时为你的应用生成静态 HTML 文件。SSG 可以提高性能，但设置和维护可能比服务器端渲染更复杂。请参阅[Vite 的 SSG 指南](https://vite.dev/guide/ssr.html#pre-rendering-ssg)。
 
-* **React Server Components (RSC)** lets you mix build-time, server-only, and interactive components in a single React tree. RSC can improve performance, but it currently requires deep expertise to set up and maintain. See [Parcel's RSC examples](https://github.com/parcel-bundler/rsc-examples).
+* **React 服务器组件 (RSC)** 允许你在单个 React 树中混合构建时、仅服务器和交互式组件。RSC 可以提高性能，但目前需要深入的专业知识来设置和维护。 请参阅 [Parcel 的 RSC 示例](https://github.com/parcel-bundler/rsc-examples)。
 
-Your rendering strategies need to integrate with your router so apps built with your framework can choose the rendering strategy on a per-route level. This will enable different rendering strategies without having to rewrite your whole app. For example, the landing page for your app might benefit from being statically generated (SSG), while a page with a content feed might perform best with server-side rendering. 
+你的渲染策略需要与路由器集成，以便使用你的框架构建的应用程序可以在每个路由级别选择渲染策略。这将使你能够在不重写整个应用程序的情况下使用不同的渲染策略。例如，你的应用程序的登录页面可能会从静态生成 (SSG) 中受益，而具有内容提要的页面可能在服务器端渲染时表现最佳。
 
-Using the right rendering strategy for the right routes can decrease the time it takes for the first byte of content to be loaded ([Time to First Byte](https://web.dev/articles/ttfb)), the first piece of content to render ([First Contentful Paint](https://web.dev/articles/fcp)), and the largest visible content of the app to render ([Largest Contentful Paint](https://web.dev/articles/lcp)).
+使用合适的渲染策略针对合适的路由可以减少加载第一个内容字节的时间 ([首字节时间](https://web.dev/articles/ttfb)), 第一个内容元素渲染的时间 ([首次内容绘制](https://web.dev/articles/fcp)), 以及应用程序最大可见内容渲染的时间 ([最大内容绘制](https://web.dev/articles/lcp)).
 
-### And more... {/*and-more*/}
+### 更多... {/*and-more*/}
 
-These are just a few examples of the features a new app will need to consider when building from scratch. Many limitations you'll hit can be difficult to solve as each problem is interconnected with the others and can require deep expertise in problem areas you may not be familiar with. 
+这些只是新应用在从头开始构建时需要考虑的功能的几个例子。你会遇到的许多限制可能很难解决，因为每个问题都与其他问题相互关联，并且可能需要你不熟悉的领域的深入专业知识。
 
-If you don't want to solve these problems on your own, you can [get started with a framework](/learn/creating-a-react-app) that provides these features out of the box. 
+如果你不想自己解决这些问题, 你可以 [从一个框架开始](/learn/creating-a-react-app)，该框架开箱即用地提供这些功能。
