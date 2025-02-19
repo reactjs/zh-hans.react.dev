@@ -3,7 +3,7 @@ title: 配置
 ---
 <Intro>
 
-React 与编辑器、TypeScript、浏览器扩展和编译器等多种工具集成。本节将帮助您完成环境的配置。
+React 与编辑器、TypeScript、浏览器扩展和编译器等多种工具集成。本节将帮助你完成环境的配置。
 
 </Intro>
 
@@ -13,7 +13,7 @@ React 与编辑器、TypeScript、浏览器扩展和编译器等多种工具集�
 
 ## 使用 TypeScript {/*using-typescript*/}
 
-TypeScript 是一种为 JavaScript 代码库添加类型定义的流行方式。[了解如何将 TypeScript 集成到您的 React 项目中](/learn/typescript)。
+TypeScript 是一种为 JavaScript 代码库添加类型定义的流行方式。[了解如何将 TypeScript 集成到你的 React 项目中](/learn/typescript)。
 
 ## React 开发者工具 {/*react-developer-tools*/}
 
