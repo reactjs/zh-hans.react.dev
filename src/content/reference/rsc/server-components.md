@@ -299,4 +299,4 @@ function Comments({commentsPromise}) {
 
 因为 `note` 内容是页面渲染所需的重要数据，所以我们在服务器上进行 `await`。comments 数据在折叠部分中，优先级较低，所以我们在服务器上开始 promise，然后在客户端使用 `use` API 进行等待。这会在客户端上暂停，但不会阻塞 `note` 内容的渲染。
 
-由于异步组件 [在客户端不受支持](#why-cant-i-use-async-components-on-the-client)，所以我们通过 `use` 来 await promise。
+由于异步组件在客户端不受支持，所以我们通过 `use` 来 await promise。
