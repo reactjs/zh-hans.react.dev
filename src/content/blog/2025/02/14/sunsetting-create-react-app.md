@@ -310,7 +310,7 @@ const router = createBrowserRouter([
 
 虽然服务器端渲染可以提升搜索引擎优化效果，但它还能通过减少用户在看到屏幕上的内容之前需要下载和解析的 JavaScript 代码量来提高性能。 
 
-这就是为什么 Chrome 团队 [has encouraged](https://web.dev/articles/rendering-on-the-web) 开发者考虑采用静态渲染或服务器端渲染，而非完全的客户端渲染方式，以实现尽可能最佳的性能。
+这就是为什么 Chrome 团队 [已经鼓励](https://web.dev/articles/rendering-on-the-web) 开发者考虑采用静态渲染或服务器端渲染，而非完全的客户端渲染方式，以实现尽可能最佳的性能。
 
 </Note>
 
