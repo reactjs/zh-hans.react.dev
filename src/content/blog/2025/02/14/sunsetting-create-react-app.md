@@ -13,7 +13,7 @@ description: 今天，我们正式宣布弃用 Create React App 作为新应用�
 
 今日起，我们将正式弃用 [Create React App](https://create-react-app.dev/) 作为新应用的推荐工具，并建议现有应用迁移至 [框架](#how-to-migrate-to-a-framework)，或迁移至 [构建工具](#how-to-migrate-to-a-build-tool)（如 Vite、Parcel 或 RSBuild）。
 
-我们还提供了相关文档，适用于你的项目不适合使用框架的情况、你想要构建自己的框架，或者你只是想通过 [从零开始构建一个 React 应用](/learn/build-a-react-app-from-scratch) 来了解React的工作原理。
+我们还提供了相关文档，适用于你的项目不适合使用框架的情况、你想要构建自己的框架，或者你只是想通过 [从零开始构建一个 React 应用](/learn/build-a-react-app-from-scratch) 来了解 React 的工作原理。
 
 </Intro>
 
