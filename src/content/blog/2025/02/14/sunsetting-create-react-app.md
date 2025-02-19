@@ -206,7 +206,7 @@ export default function Dashboard({loaderData}) {
 
 Create React App 中的另一个常见问题是 [代码分割](https://www.patterns.dev/vanilla/bundle-splitting)。Create React App 并未包含特定的代码分割解决方案。如果你刚刚开始开发，你可能根本不会考虑代码分割。
 
-这意味着你的应用会作为一个单一的 bundle 进行发布（部署）。
+这意味着你的应用会作为一个单一的 bundle 进行发布。
 
 ```txt
 - bundle.js    75kb
