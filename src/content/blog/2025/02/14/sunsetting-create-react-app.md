@@ -15,8 +15,6 @@ description: 今天，我们正式宣布弃用 Create React App 作为新应用�
 
 我们还提供了相关文档，适用于你的项目不适合使用框架的情况、你想要构建自己的框架，或者你只是想通过 [从零开始构建一个 React 应用](/learn/build-a-react-app-from-scratch) 来了解React的工作原理。
 
-
-
 </Intro>
 
 -----
