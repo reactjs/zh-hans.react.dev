@@ -49,7 +49,7 @@ Vite 已经作为构建工具在我们 [推荐的框架](/learn/creating-a-react
 {`npm install --save-dev parcel`}
 </TerminalBlock>
 
-Parcel 支持快速刷新、 JSX、 TypeScript、 Flow 和开箱即用的样式。 请查看 [Parcel 的 React 教程](https://parceljs.org/recipes/react/#getting-started) 以开始。
+Parcel 支持快速刷新、JSX、TypeScript、Flow 和开箱即用的样式。请查看 [Parcel 的 React 教程](https://parceljs.org/recipes/react/#getting-started) 以开始。
 
 ### Rsbuild {/*rsbuild*/}
 
