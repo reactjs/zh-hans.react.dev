@@ -39,7 +39,7 @@ title: 从头构建一个 React 应用
 
 Vite 是一个有明确意见的工具，开箱即用时提供了合理的默认配置。 它拥有丰富的插件生态，支持快速刷新, JSX,  Babel/SWC, 以及其他常见功能。 你可以查看 Vite 的 [React 插件](https://vite.dev/plugins/#vitejs-plugin-react) 或 [React SWC 插件](https://vite.dev/plugins/#vitejs-plugin-react-swc) 和 [React 服务器端渲染示例项目](https://vite.dev/guide/ssr.html#example-projects) 来开始使用。
 
-Vite已经作为构建工具在我们 [推荐的框架](/learn/creating-a-react-app)之一中使用: [React Router](https://reactrouter.com/start/framework/installation)。
+Vite 已经作为构建工具在我们 [推荐的框架](/learn/creating-a-react-app) 之一 [React Router](https://reactrouter.com/start/framework/installation) 中使用。
 
 ### Parcel {/*parcel*/}
 
