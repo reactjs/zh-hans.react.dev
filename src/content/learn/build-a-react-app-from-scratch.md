@@ -1,5 +1,5 @@
 ---
-title: 从头构建一个 React 应用
+title: 从零开始构建 React 应用
 ---
 
 <Intro>
