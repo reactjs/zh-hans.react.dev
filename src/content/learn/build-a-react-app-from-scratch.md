@@ -130,7 +130,7 @@ React 生态系统中包含许多用于解决这些问题的工具。我们列�
 
 * **静态站点生成 (SSG)** 在构建时为你的应用生成静态 HTML 文件。SSG 可以提高性能，但设置和维护可能比服务器端渲染更复杂。请参阅[Vite 的 SSG 指南](https://vite.dev/guide/ssr.html#pre-rendering-ssg)。
 
-* **React 服务器组件 (RSC)** 允许你在单个 React 树中混合构建时、仅服务器和交互式组件。RSC 可以提高性能，但目前需要深入的专业知识来设置和维护。 请参阅 [Parcel 的 RSC 示例](https://github.com/parcel-bundler/rsc-examples)。
+* **React 服务器组件 (RSC)** 允许你在单个 React 树中混合构建时、仅服务器和交互式组件。RSC 可以提高性能，但目前需要深入的专业知识来设置和维护。请参阅 [Parcel 的 RSC 示例](https://github.com/parcel-bundler/rsc-examples)。
 
 你的渲染策略需要与路由器集成，以便使用你的框架构建的应用程序可以在每个路由级别选择渲染策略。这将使你能够在不重写整个应用程序的情况下使用不同的渲染策略。例如，你的应用程序的登录页面可能会从静态生成 (SSG) 中受益，而具有内容提要的页面可能在服务器端渲染时表现最佳。
 
