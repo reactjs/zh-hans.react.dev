@@ -59,7 +59,7 @@ Parcel 支持快速刷新、JSX、TypeScript、Flow 和开箱即用的样式。�
 {`npx create-rsbuild --template react`}
 </TerminalBlock>
 
-Rsbuild 内置了对 React 特性的支持，如快速刷新、JSX、TypeScript 和样式。 请查看 [Rsbuild 的 React 指南](https://rsbuild.dev/guide/framework/react) 以开始使用。
+Rsbuild 内置了对 React 特性的支持，如快速刷新、JSX、TypeScript 和样式。请查看 [Rsbuild 的 React 指南](https://rsbuild.dev/zh/guide/framework/react) 以开始使用。
 
 <Note>
 
