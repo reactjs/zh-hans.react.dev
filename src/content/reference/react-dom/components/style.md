@@ -51,8 +51,14 @@ React 可以将 `<style>` 组件移动到文档的 `<head>` 中，去重相同�
 
 这种特殊处理带来两个注意事项：
 
+<<<<<<< HEAD
 * 在样式被渲染后，React 将忽略属性的更改（React 在开发环境中会对这种情况发出警告）。
 * 即使渲染它的组件已被卸载，React 也可能将样式保留在 DOM 中。
+=======
+* React will ignore changes to props after the style has been rendered. (React will issue a warning in development if this happens.)
+* React will drop all extraneous props when using the `precedence` prop (beyond `href` and `precedence`).
+* React may leave the style in the DOM even after the component that rendered it has been unmounted.
+>>>>>>> fc29603434ec04621139738f4740caed89d659a7
 
 ---
 
