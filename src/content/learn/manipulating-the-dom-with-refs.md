@@ -646,21 +646,12 @@ button {
 
 <Recap>
 
-<<<<<<< HEAD
 - Refs 是一个通用概念，但大多数情况下你会使用它们来保存 DOM 元素。
 - 你通过传递 `<div ref={myRef}>` 指示 React 将 DOM 节点放入 `myRef.current`。
 - 通常，你会将 refs 用于非破坏性操作，例如聚焦、滚动或测量 DOM 元素。
-- 默认情况下，组件不暴露其 DOM 节点。 你可以通过使用 `forwardRef` 并将第二个 `ref` 参数传递给特定节点来暴露 DOM 节点。
+- 默认情况下，组件不暴露其 DOM 节点。 你可以通过使用 `ref` 属性来暴露 DOM 节点。
 - 避免更改由 React 管理的 DOM 节点。
 - 如果你确实修改了 React 管理的 DOM 节点，请修改 React 没有理由更新的部分。
-=======
-- Refs are a generic concept, but most often you'll use them to hold DOM elements.
-- You instruct React to put a DOM node into `myRef.current` by passing `<div ref={myRef}>`.
-- Usually, you will use refs for non-destructive actions like focusing, scrolling, or measuring DOM elements.
-- A component doesn't expose its DOM nodes by default. You can opt into exposing a DOM node by using the `ref` prop.
-- Avoid changing DOM nodes managed by React.
-- If you do modify DOM nodes managed by React, modify parts that React has no reason to update.
->>>>>>> fc29603434ec04621139738f4740caed89d659a7
 
 </Recap>
 
@@ -1060,11 +1051,7 @@ img {
 
 <Hint>
 
-<<<<<<< HEAD
-你需要 `forwardRef` 来主动从你自己的组件中暴露一个 DOM 节点，比如 `SearchInput`。
-=======
-You'll need to pass `ref` as a prop to opt into exposing a DOM node from your own component like `SearchInput`.
->>>>>>> fc29603434ec04621139738f4740caed89d659a7
+你需要使用 `ref` 属性来主动从你自己的组件中暴露一个 DOM 节点，比如 `SearchInput`。
 
 </Hint>
 
@@ -1149,29 +1136,14 @@ export default function SearchButton({ onClick }) {
 ```
 
 ```js src/SearchInput.js
-<<<<<<< HEAD
-import { forwardRef } from 'react';
-
-export default forwardRef(
-  function SearchInput(props, ref) {
-    return (
-      <input
-        ref={ref}
-        placeholder="找什么呢？"
-      />
-    );
-  }
-);
-=======
 export default function SearchInput({ ref }) {
   return (
     <input
       ref={ref}
-      placeholder="Looking for something?"
+      placeholder="找什么呢？"
     />
   );
 }
->>>>>>> fc29603434ec04621139738f4740caed89d659a7
 ```
 
 ```css

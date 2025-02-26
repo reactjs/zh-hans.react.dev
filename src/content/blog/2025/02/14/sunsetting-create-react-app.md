@@ -65,15 +65,9 @@ This error message will only be shown once per install.
 
 针对现有应用，以下指南将协助你迁移至构建工具：
 
-<<<<<<< HEAD
 * [Create React App 到 Vite 迁移指南](https://www.robinwieruch.de/vite-create-react-app/)
-* [Create React App 到 Parcel 迁移指南](https://stackoverflow.com/a/49605484)
+* [Create React App 到 Parcel 迁移指南](https://parceljs.org/migration/cra/)
 * [Create React App 到 Rsbuild 迁移指南](https://rsbuild.dev/guide/migration/cra)
-=======
-* [Vite Create React App migration guide](https://www.robinwieruch.de/vite-create-react-app/)
-* [Parcel Create React App migration guide](https://parceljs.org/migration/cra/)
-* [Rsbuild Create React App migration guide](https://rsbuild.dev/guide/migration/cra)
->>>>>>> fc29603434ec04621139738f4740caed89d659a7
 
 为帮助开发者快速上手 Vite、Parcel 或 Rsbuild，我们新增了 [从零开始构建 React 应用](/learn/build-a-react-app-from-scratch) 文档。
 
