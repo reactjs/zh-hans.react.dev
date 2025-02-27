@@ -38,9 +38,9 @@ React 文档中的大部分页面都包含这样的 sandbox。除 React 文档�
 
 如果你想开始一个新的 React 应用，你可以用我们推荐的框架 [创建一个 React 应用](/learn/creating-a-react-app)。
 
-## Build a React App from Scratch {/*build-a-react-app-from-scratch*/}
+## 从零构建一个 React 应用 {/*build-a-react-app-from-scratch*/}
 
-If a framework is not a good fit for your project, you prefer to build your own framework, or you just want to learn the basics of a React app you can [build a React app from scratch](/learn/build-a-react-app-from-scratch).
+如果框架不适合你的项目，你更倾向于自己配置框架，或者你只是单纯想学习配置 React 应用的基础知识，你可以参照 [从零构建一个 React 应用](/learn/build-a-react-app-from-scratch).
 
 
 ## 添加 React 到一个已有的项目 {/*add-react-to-an-existing-project*/}
@@ -48,9 +48,9 @@ If a framework is not a good fit for your project, you prefer to build your own 
 
 <Note>
 
-#### Should I use Create React App? {/*should-i-use-create-react-app*/}
+#### 我还应该用 Create React App 么？ {/*should-i-use-create-react-app*/}
 
-No. Create React App has been deprecated. For more information, see [Sunsetting Create React App](/blog/2025/02/14/sunsetting-create-react-app).
+不， Create React App 已经不建议使用。更多信息可参照 [Sunsetting Create React App](/blog/2025/02/14/sunsetting-create-react-app).
 
 </Note>
 
