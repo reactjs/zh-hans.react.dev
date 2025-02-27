@@ -101,11 +101,7 @@ root.unmount();
 
 这主要适用于 React 根节点的 DOM 节点（或其任何祖先节点）可能会被其他代码从 DOM 中移除的情况。例如，想象一下一个 jQuery 标签面板，它会将非活动标签从 DOM 中移除。如果一个标签被移除，其内部的所有内容（包括其中的 React 根节点）也将从 DOM 中移除。你需要调用 `root.unmount` 来告诉 React “停止”管理已移除根节点的内容。否则，已移除根节点内的组件将无法清理和释放已使用的资源，例如订阅。
 
-<<<<<<< HEAD
 调用 `root.unmount` 将卸载根节点中的所有组件，并“分离” React 与根 DOM 节点之间的连接，包括删除树中的任何事件处理程序或状态。
-=======
-Calling `root.unmount` will unmount all the components in the root and "detach" React from the root DOM node, including removing any event handlers or state in the tree.
->>>>>>> 4a4e579fdb4fd4b97bc4b983487c2e83291211fd
 
 
 #### 参数 {/*root-unmount-parameters*/}
@@ -276,11 +272,7 @@ export default function App() {
 
 </Sandpack>
 
-<<<<<<< HEAD
-此方法仅适用于当前层级，并且旨在作为一种脱围机制。不要滥用它。除非是文本内容，否则 React 不会尝试修补它，因此可能会保持不一致，直到未来的更新来到。
-=======
-This only works one level deep, and is intended to be an escape hatch. Don’t overuse it. React will **not** attempt to patch mismatched text content.
->>>>>>> 4a4e579fdb4fd4b97bc4b983487c2e83291211fd
+此方法仅适用于当前层级，并且旨在作为一种脱围机制。不要滥用它。React **不会** 尝试修补不匹配的文本内容。
 
 ---
 
