@@ -471,15 +471,19 @@ import { LevelContext } from './LevelContext.js';
 export default function Section({ level, children }) {
   return (
     <section className="section">
-      <LevelContext.Provider value={level}>
+      <LevelContext value={level}>
         {children}
-      </LevelContext.Provider>
+      </LevelContext>
     </section>
   );
 }
 ```
 
+<<<<<<< HEAD
 这告诉 React：“如果在 `<Section>` 组件中的任何子组件请求 `LevelContext`，给他们这个 `level`。”组件会使用 UI 树中在它上层最近的那个 `<LevelContext.Provider>` 传递过来的值。
+=======
+This tells React: "if any component inside this `<Section>` asks for `LevelContext`, give them this `level`." The component will use the value of the nearest `<LevelContext>` in the UI tree above it.
+>>>>>>> 5f09d9f4467871955d794aa5fbc7bf3c4e7a5f4f
 
 <Sandpack>
 
@@ -517,9 +521,9 @@ import { LevelContext } from './LevelContext.js';
 export default function Section({ level, children }) {
   return (
     <section className="section">
-      <LevelContext.Provider value={level}>
+      <LevelContext value={level}>
         {children}
-      </LevelContext.Provider>
+      </LevelContext>
     </section>
   );
 }
@@ -569,9 +573,15 @@ export const LevelContext = createContext(1);
 
 这与原始代码的运行结果相同，但是你不需要向每个 `Heading` 组件传递 `level` 参数了！取而代之的是，它通过访问上层最近的 `Section` 来“断定”它的标题级别：
 
+<<<<<<< HEAD
 1. 你将一个 `level` 参数传递给 `<Section>`。
 2. `Section` 把它的子元素包在 `<LevelContext.Provider value={level}>` 里面。
 3. `Heading` 使用 `useContext(LevelContext)` 访问上层最近的 `LevelContext` 提供的值。
+=======
+1. You pass a `level` prop to the `<Section>`.
+2. `Section` wraps its children into `<LevelContext value={level}>`.
+3. `Heading` asks the closest value of `LevelContext` above with `useContext(LevelContext)`.
+>>>>>>> 5f09d9f4467871955d794aa5fbc7bf3c4e7a5f4f
 
 ## 在相同的组件中使用并提供 context {/*using-and-providing-context-from-the-same-component*/}
 
@@ -599,9 +609,9 @@ export default function Section({ children }) {
   const level = useContext(LevelContext);
   return (
     <section className="section">
-      <LevelContext.Provider value={level + 1}>
+      <LevelContext value={level + 1}>
         {children}
-      </LevelContext.Provider>
+      </LevelContext>
     </section>
   );
 }
@@ -647,9 +657,9 @@ export default function Section({ children }) {
   const level = useContext(LevelContext);
   return (
     <section className="section">
-      <LevelContext.Provider value={level + 1}>
+      <LevelContext value={level + 1}>
         {children}
-      </LevelContext.Provider>
+      </LevelContext>
     </section>
   );
 }
@@ -780,9 +790,9 @@ export default function Section({ children, isFancy }) {
       'section ' +
       (isFancy ? 'fancy' : '')
     }>
-      <LevelContext.Provider value={level + 1}>
+      <LevelContext value={level + 1}>
         {children}
-      </LevelContext.Provider>
+      </LevelContext>
     </section>
   );
 }
@@ -868,6 +878,7 @@ Context 不局限于静态值。如果你在下一次渲染时传递不同的值
 
 <Recap>
 
+<<<<<<< HEAD
 * Context 使组件向其下方的整个树提供信息。
 * 传递 Context 的方法:
   1. 通过 `export const MyContext = createContext(defaultValue)` 创建并导出 context。
@@ -876,6 +887,16 @@ Context 不局限于静态值。如果你在下一次渲染时传递不同的值
 * Context 会穿过中间的任何组件。
 * Context 可以让你写出 “较为通用” 的组件。
 * 在使用 context 之前，先试试传递 props 或者将 JSX 作为 `children` 传递。
+=======
+* Context lets a component provide some information to the entire tree below it.
+* To pass context:
+  1. Create and export it with `export const MyContext = createContext(defaultValue)`.
+  2. Pass it to the `useContext(MyContext)` Hook to read it in any child component, no matter how deep.
+  3. Wrap children into `<MyContext value={...}>` to provide it from a parent.
+* Context passes through any components in the middle.
+* Context lets you write components that "adapt to their surroundings".
+* Before you use context, try passing props or passing JSX as `children`.
+>>>>>>> 5f09d9f4467871955d794aa5fbc7bf3c4e7a5f4f
 
 </Recap>
 
@@ -1026,7 +1047,11 @@ li {
 
 移除掉所有组件中的 `imageSize` 参数。
 
+<<<<<<< HEAD
 在 `Context.js` 中创建并导出 `ImageSizeContext`。然后用 `<ImageSizeContext.Provider value={imageSize}>` 包裹住整个列表来向下传递值，最后在 `PlaceImage` 中使用 `useContext(ImageSizeContext)` 来读取它。
+=======
+Create and export `ImageSizeContext` from `Context.js`. Then wrap the List into `<ImageSizeContext value={imageSize}>` to pass the value down, and `useContext(ImageSizeContext)` to read it in the `PlaceImage`:
+>>>>>>> 5f09d9f4467871955d794aa5fbc7bf3c4e7a5f4f
 
 <Sandpack>
 
@@ -1040,7 +1065,7 @@ export default function App() {
   const [isLarge, setIsLarge] = useState(false);
   const imageSize = isLarge ? 150 : 100;
   return (
-    <ImageSizeContext.Provider
+    <ImageSizeContext
       value={imageSize}
     >
       <label>
@@ -1055,7 +1080,7 @@ export default function App() {
       </label>
       <hr />
       <List />
-    </ImageSizeContext.Provider>
+    </ImageSizeContext>
   )
 }
 
