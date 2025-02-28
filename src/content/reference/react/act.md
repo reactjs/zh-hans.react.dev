@@ -15,7 +15,7 @@ await act(async actFn)
 要将组件准备好进行断言，请将渲染代码和执行更新的操作包裹在 `await act()` 中。这能让你的测试更接近 React 在浏览器中的实际工作方式。
 
 <Note>
-你可能会发现直接使用 `act()` 略显繁琐。为了减少样板代码，可以使用像 [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)这样的库，其辅助方法已经内置了 `act()` 封装。
+你可能会发现直接使用 `act()` 略显繁琐。为了减少样板代码，可以使用像 [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)这样的库，其辅助方法已经内置了对 `act()` 的封装。
 </Note>
 
 
