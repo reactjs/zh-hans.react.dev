@@ -4,15 +4,9 @@ title: React Blog
 
 <Intro>
 
-<<<<<<< HEAD
 这个博客是 React 团队更新的官方来源。任何重要的内容，包括发布说明或弃用通知，都会首先在这里发布。
-=======
-This blog is the official source for the updates from the React team. Anything important, including release notes or deprecation notices, will be posted here first. 
 
-You can also follow the [@react.dev](https://bsky.app/profile/react.dev) account on Bluesky, or [@reactjs](https://twitter.com/reactjs) account on Twitter, but you won’t miss anything essential if you only read this blog.
->>>>>>> 5f09d9f4467871955d794aa5fbc7bf3c4e7a5f4f
-
-你也可以在 Bluesky 上关注 [@react.dev](https://bsky.app/profiles/react.js) 的账号，Twitter 的 [@reactjs](https://twitter.com/reactjs) 账号，但如果你只阅读这个博客，你也不会错过任何重要的内容。
+你也可以在 Bluesky 上关注 [@react.dev](https://bsky.app/profile/react.dev)，或者在 Twitter 上关注 [@reactjs](https://twitter.com/reactjs)。不过只要你阅读这个博客，就不会错过任何重要内容。
 </Intro>
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
