@@ -16,11 +16,11 @@ title: 创建一个 React 应用
 
 <Note>
 
-#### Full-stack frameworks do not require a server. {/*react-frameworks-do-not-require-a-server*/}
+#### 全栈框架不需要服务器 {/*react-frameworks-do-not-require-a-server*/}
 
-All the frameworks on this page support client-side rendering ([CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)), single-page apps ([SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA)), and static-site generation ([SSG](https://developer.mozilla.org/en-US/docs/Glossary/SSG)). These apps can be deployed to a [CDN](https://developer.mozilla.org/en-US/docs/Glossary/CDN) or static hosting service without a server. Additionally, these frameworks allow you to add server-side rendering on a per-route basis, when it makes sense for your use case.
+本页列出的所有框架都支持客户端渲染（[CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)）、单页应用（[SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA)）和静态站点生成（[SSG](https://developer.mozilla.org/en-US/docs/Glossary/SSG)）。这些应用可以部署到 [CDN](https://developer.mozilla.org/en-US/docs/Glossary/CDN) 或静态托管服务（无需服务器）。此外，这些框架允许你根据实际需求，针对特定路由单独启用服务端渲染。
 
-This allows you to start with a client-only app, and if your needs change later, you can opt-in to using server features on individual routes without rewriting your app. See your framework's documentation for configuring the rendering strategy.
+这意味着你可以从纯客户端应用开始构建，后续需求变更时，无需重写整个应用，即可在特定路由上启用服务端功能。具体渲染策略的配置方法，请参考各框架的官方文档。
 
 </Note>
 
