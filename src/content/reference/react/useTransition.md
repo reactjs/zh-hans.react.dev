@@ -95,7 +95,7 @@ function SubmitButton({ submitAction }) {
 
 #### 参数 {/*starttransition-parameters*/}
 
-* `action`：通过调用一个或多个 [`set` 函数](/reference/react/useState#setstate) 来更新某些状态的函数。React 会立即调用 `action`（无需参数），并将 `action` 函数调用期间同步调度的所有状态更新标记为 Transition。在 `action` 中通过 `await` 等待的异步调用会被包含在 Transition 中，但目前需要在 `await` 之后将任何 `set` 函数再次包裹在 `startTransition` 中（参见[问题排查](#react-doesnt-treat-my-state-update-after-await-as-a-transition)）。标记为 Transition 的状态更新将具备[非阻塞特性](#marking-a-state-update-as-a-non-blocking-transition)，并且[不会显示不必要的加载指示](#preventing-unwanted-loading-indicators)。
+* `action`：通过调用一个或多个 [`set` 函数](/reference/react/useState#setstate) 来更新某些状态的函数。React 会立即调用 `action`（无需参数），并将 `action` 函数调用期间同步调度的所有状态更新标记为 Transition。在 `action` 中通过 `await` 等待的异步调用会被包含在 Transition 中，但目前需要在 `await` 之后将任何 `set` 函数再次包裹在 `startTransition` 中（参见[疑难解答](#react-doesnt-treat-my-state-update-after-await-as-a-transition)）。标记为 Transition 的状态更新将具备[非阻塞特性](#marking-a-state-update-as-a-non-blocking-transition)，并且[不会显示不必要的加载指示](#preventing-unwanted-loading-indicators)。
 
 #### 返回值 {/*starttransition-returns*/}
 
@@ -109,7 +109,7 @@ function SubmitButton({ submitAction }) {
 
 * 传递给 `startTransition` 的函数会被立即执行，并将在其执行期间发生的所有状态更新标记为 transition。如果你尝试在 `setTimeout` 中执行状态更新，它们将不会被标记为 transition。
 
-* You must wrap any state updates after any async requests in another `startTransition` to mark them as Transitions. This is a known limitation that we will fix in the future (see [Troubleshooting](#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
+* 您必须将任意异步请求之后的状态更新用 `startTransition` 包裹，以将其标记为 Transition 更新。这是一个已知限制，我们将在未来版本中修复（参见[疑难解答](#react-doesnt-treat-my-state-update-after-await-as-a-transition)）。
 
 * `startTransition` 函数具有稳定的标识，所以你经常会看到 Effect 的依赖数组中会省略它，即使包含它也不会导致 Effect 重新触发。如果 linter 允许你省略依赖项并且没有报错，那么你就可以安全地省略它。[了解移除 Effect 依赖项的更多信息。](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
 
@@ -171,7 +171,7 @@ function CheckoutForm() {
 
 在这个示例中，`updateQuantity` 函数模拟向服务端发送请求来更新购物车中的商品数量。该函数*被人为地减慢*，使得完成请求至少需要一秒钟。
 
-快速多次更新数量。请注意，当任何请求在进行中时，都会显示挂起的“Total”状态，并且“Total”只会在最后一个请求完成后更新。由于更新操作在 Action 中进行，在请求处理期间仍可继续更新“quantity"”。
+快速多次更新数量。请注意，当任何请求在进行中时，都会显示挂起的 “Total” 状态，并且 “Total” 只会在最后一个请求完成后更新。由于更新操作在 Action 中进行，在请求处理期间仍可继续更新“quantity"”。
 
 <Sandpack>
 
@@ -305,7 +305,7 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-这是一个演示 Actions 工作原理的基础示例，但此示例未处理请求完成顺序错乱的问题。当多次更新数量时，较早的请求可能会在较晚的请求之后完成，导致数量更新顺序混乱。这是一个已知限制，我们将在未来版本中修复（参见下方的[问题排查](#my-state-updates-in-transitions-are-out-of-order)）。
+这是一个演示 Actions 工作原理的基础示例，但此示例未处理请求完成顺序错乱的问题。当多次更新数量时，较早的请求可能会在较晚的请求之后完成，导致数量更新顺序混乱。这是一个已知限制，我们将在未来版本中修复（参见下方的[疑难解答](#my-state-updates-in-transitions-are-out-of-order)）。
 
 对于常见用例，React 提供了以下内置抽象方案：
 - [`useActionState`](/reference/react/useActionState) 
@@ -320,7 +320,7 @@ export async function updateQuantity(newQuantity) {
 
 在这个示例中，`updateQuantity` 函数同样模拟向服务端发送请求来更新购物车中的商品数量。该函数*被人为地减慢*，使得完成请求至少需要一秒钟。
 
-快速多次更新数量。请注意，当任何请求在进行中时都会显示「总计」的挂起状态，但「总计」会根据每次点击「数量」进行多次更新：
+快速多次更新数量。请注意，当任何请求在进行中时都会显示 “Total” 的挂起状态，但 “Total” 会根据每次点击 “quantity” 进行多次更新：
 
 <Sandpack>
 
@@ -583,10 +583,9 @@ export async function updateQuantity(newQuantity) {
 
 ### 在组件中公开 `action` 属性 {/*exposing-action-props-from-components*/}
 
-You can expose an `action` prop from a component to allow a parent to call an Action.
+您可以通过组件暴露一个 `action` 属性，允许父组件调用一个 Action。
 
-
-For example, this `TabButton` component wraps its `onClick` logic in an `action` prop:
+例如，这个 `TabButton` 组件将其点击事件逻辑封装到 `action` 属性中：
 
 ```js {8-10}
 export default function TabButton({ action, children, isActive }) {
@@ -1624,7 +1623,7 @@ root.render(
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 疑难解答 {/*troubleshooting*/}
 
 ### 在 Transition 中无法更新输入框内容 {/*updating-an-input-in-a-transition-doesnt-work*/}
 
