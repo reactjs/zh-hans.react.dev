@@ -1930,6 +1930,6 @@ export async function updateQuantity(newName) {
 
 多次点击时，较早的请求可能会在较晚的请求之后完成。当这种情况发生时，React 目前无法知道预期的顺序。这是因为更新是异步调度的，而 React 在异步边界处丢失了顺序的上下文。
 
-这是预期内的，因为在 Transition 中的 Actions 不保证执行顺序。对于常见用例，React 提供了更高级的抽象，如 [`useActionState`](/reference/react/useActionState) 和 [`<form>` actions](/reference/react-dom/components/form) 来为你处理顺序问题。对于高级用例，你需要自行实现队列和中止逻辑来处理这种情况。
+这是预期内的，因为在 Transition 中的 Action 不保证执行顺序。对于常见用例，React 提供了更高级的抽象，如 [`useActionState`](/reference/react/useActionState) 和 [`<form>` actions](/reference/react-dom/components/form) 来为你处理顺序问题。对于高级用例，你需要自行实现队列和中止逻辑来处理这种情况。
 
 
