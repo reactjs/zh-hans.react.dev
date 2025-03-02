@@ -573,7 +573,7 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-这种解决方案会让应用显得卡顿，因为用户必须每次更新数量时都等待。虽然可以手动添加更复杂的处理逻辑来允许用户在更新数量时继续操作界面，但 React Actions 通过直观的内置 API 就能轻松处理这种情况。
+这种解决方案会让应用显得卡顿，因为用户必须每次更新数量时都等待。虽然可以手动添加更复杂的处理逻辑来允许用户在更新数量时继续操作界面，但 React Action 通过直观的内置 API 就能轻松处理这种情况。
 
 <Solution />
 
