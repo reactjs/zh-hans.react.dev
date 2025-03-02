@@ -583,7 +583,7 @@ export async function updateQuantity(newQuantity) {
 
 ### 在组件中公开 `action` 属性 {/*exposing-action-props-from-components*/}
 
-您可以通过组件暴露一个 `action` 属性，允许父组件调用一个 Action。
+你可以通过组件暴露一个 `action` 属性，允许父组件调用一个 Action。
 
 例如，这个 `TabButton` 组件将其点击事件逻辑封装到 `action` 属性中：
 
