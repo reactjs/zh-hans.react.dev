@@ -34,7 +34,7 @@ title: "<input>"
 
 [`formAction`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formaction): 字符串或函数。设置了 `type="submit"` 或 `type="image"` 属性的 `input` 标签，会覆盖父表单对应属性 `<form action>`。当向 `formAction` 传递 URL 时，表单会表现为标准 HTML 表单；当传递函数时，该函数将处理表单提交。详见 [`<form action>`](/reference/react-dom/components/form#props)。
 
-你可以通过传递以下属性之来[使输入框成为受控组件](#controlling-an-input-with-a-state-variable)：
+你可以通过传递以下属性之一来[使输入框成为受控组件](#controlling-an-input-with-a-state-variable)：
 
 * `checked`：布尔值，控制复选框或单选按钮是否被选中。
 * `value`：字符串，控制文本框的输入文本（如果是单选按钮，则为其表单数据）。
