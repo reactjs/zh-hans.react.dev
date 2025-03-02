@@ -65,9 +65,9 @@ function TabContainer() {
 ```
 
 <Note>
-#### Functions called in `startTransition` are called "Actions". {/*functions-called-in-starttransition-are-called-actions*/}
+#### 传递给 `startTransition` 的函数被称为 "Actions" {/*functions-called-in-starttransition-are-called-actions*/}
 
-The function passed to `startTransition` is called an "Action". By convention, any callback called inside `startTransition` (such as a callback prop) should be named `action` or include the "Action" suffix:
+传递给 `startTransition` 的函数被称为 "Action" 。按照约定，任何在 `startTransition` 内调用的回调函数（例如作为回调的 prop）应命名为 `action` 或包含 "Action" 后缀：
 
 ```js {1,9}
 function SubmitButton({ submitAction }) {
@@ -95,7 +95,7 @@ function SubmitButton({ submitAction }) {
 
 #### 参数 {/*starttransition-parameters*/}
 
-* `action`: A function that updates some state by calling one or more [`set` functions](/reference/react/useState#setstate). React calls `action` immediately with no parameters and marks all state updates scheduled synchronously during the `action` function call as Transitions. Any async calls that are awaited in the `action` will be included in the Transition, but currently require wrapping any `set` functions after the `await` in an additional `startTransition` (see [Troubleshooting](#react-doesnt-treat-my-state-update-after-await-as-a-transition)). State updates marked as Transitions will be [non-blocking](#marking-a-state-update-as-a-non-blocking-transition) and [will not display unwanted loading indicators](#preventing-unwanted-loading-indicators).
+* `action`：通过调用一个或多个 [`set` 函数](/reference/react/useState#setstate) 来更新某些状态的函数。React 会立即调用 `action`（无需参数），并将 `action` 函数调用期间同步调度的所有状态更新标记为 Transition。在 `action` 中通过 `await` 等待的异步调用会被包含在 Transition 中，但目前需要在 `await` 之后将任何 `set` 函数再次包裹在 `startTransition` 中（参见[疑难解答](#react-doesnt-treat-my-state-update-after-await-as-a-transition)）。标记为 Transition 的状态更新将具备[非阻塞特性](#marking-a-state-update-as-a-non-blocking-transition)，并且[不会显示不必要的加载指示](#preventing-unwanted-loading-indicators)。
 
 #### 返回值 {/*starttransition-returns*/}
 
@@ -109,7 +109,7 @@ function SubmitButton({ submitAction }) {
 
 * 传递给 `startTransition` 的函数会被立即执行，并将在其执行期间发生的所有状态更新标记为 transition。如果你尝试在 `setTimeout` 中执行状态更新，它们将不会被标记为 transition。
 
-* You must wrap any state updates after any async requests in another `startTransition` to mark them as Transitions. This is a known limitation that we will fix in the future (see [Troubleshooting](#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
+* 你必须将任意异步请求之后的状态更新用 `startTransition` 包裹，以将其标记为 Transition 更新。这是一个已知限制，我们将在未来版本中修复（参见[疑难解答](#react-doesnt-treat-my-state-update-after-await-as-a-transition)）。
 
 * `startTransition` 函数具有稳定的标识，所以你经常会看到 Effect 的依赖数组中会省略它，即使包含它也不会导致 Effect 重新触发。如果 linter 允许你省略依赖项并且没有报错，那么你就可以安全地省略它。[了解移除 Effect 依赖项的更多信息。](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
 
@@ -161,17 +161,17 @@ function CheckoutForm() {
 }
 ```
 
-The function passed to `startTransition` is called the "Action". You can update state and (optionally) perform side effects within an Action, and the work will be done in the background without blocking user interactions on the page. A Transition can include multiple Actions, and while a Transition is in progress, your UI stays responsive. For example, if the user clicks a tab but then changes their mind and clicks another tab, the second click will be immediately handled without waiting for the first update to finish. 
+传递给 `startTransition` 的函数被称为 "Action"。你可以在 Action 中更新状态和执行副作用操作，这些工作将在后台执行，不会阻塞页面的用户交互。一个 Transition 可以包含多个 Action，且在 Transition 进行期间，你的用户界面将保持流畅响应。例如，如果用户点击一个标签页后又改变主意点击另一个标签页，第二个点击会立即被处理，无需等待第一个更新完成。
 
-To give the user feedback about in-progress Transitions, to `isPending` state switches to `true` at the first call to `startTransition`, and stays `true` until all Actions complete and the final state is shown to the user. Transitions ensure side effects in Actions to complete in order to [prevent unwanted loading indicators](#preventing-unwanted-loading-indicators), and you can provide immediate feedback while the Transition is in progress with `useOptimistic`.
+为了向用户提供 Transition 进行中的反馈， `isPending` 状态会在首次调用 `startTransition` 时切换为 `true`，并会在所有 Action 完成且最终状态呈现给用户前一直保持为 `true`。Transition 机制确保 Action 中的副作用会完整执行以[避免不必要的加载指示](#preventing-unwanted-loading-indicators)，同时你可以通过 `useOptimistic` 在 Transition 进行期间提供即时反馈。
 
-<Recipes titleText="The difference between Actions and regular event handling">
+<Recipes titleText="Action 与常规事件处理的区别">
 
-#### Updating the quantity in an Action {/*updating-the-quantity-in-an-action*/}
+#### 在 Action 中更新数量 {/*updating-the-quantity-in-an-action*/}
 
-In this example, the `updateQuantity` function simulates a request to the server to update the item's quantity in the cart. This function is *artificially slowed down* so that it takes at least a second to complete the request.
+在这个示例中，`updateQuantity` 函数模拟向服务端发送请求来更新购物车中的商品数量。该函数*被人为地减慢*，使得完成请求至少需要一秒钟。
 
-Update the quantity multiple times quickly. Notice that the pending "Total" state is shown while any requests are in progress, and the "Total" updates only after the final request is complete. Because the update is in an Action, the "quantity" can continue to be updated while the request is in progress.
+快速多次更新数量。请注意，当任何请求在进行中时，都会显示挂起的 “Total” 状态，并且 “Total” 只会在最后一个请求完成后更新。由于更新操作在 Action 中进行，在请求处理期间仍可继续更新“quantity"”。
 
 <Sandpack>
 
@@ -305,22 +305,22 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-This is a basic example to demonstrate how Actions work, but this example does not handle requests completing out of order. When updating the quantity multiple times, it's possible for the previous requests to finish after later requests causing the quantity to update out of order. This is a known limitation that we will fix in the future (see [Troubleshooting](#my-state-updates-in-transitions-are-out-of-order) below).
+这是一个演示 Action 工作原理的基础示例，但此示例未处理请求完成顺序错乱的问题。当多次更新数量时，较早的请求可能会在较晚的请求之后完成，导致数量更新顺序混乱。这是一个已知限制，我们将在未来版本中修复（参见下方的[疑难解答](#my-state-updates-in-transitions-are-out-of-order)）。
 
-For common use cases, React provides built-in abstractions such as:
-- [`useActionState`](/reference/react/useActionState)
-- [`<form>` actions](/reference/react-dom/components/form)
-- [Server Functions](/reference/rsc/server-functions)
+对于常见用例，React 提供了以下内置抽象方案：
+- [`useActionState`](/reference/react/useActionState) 
+- [`<form>` 表单操作](/reference/react-dom/components/form)
+- [服务端函数](/reference/rsc/server-functions)
 
-These solutions handle request ordering for you. When using Transitions to build your own custom hooks or libraries that manage async state transitions, you have greater control over the request ordering, but you must handle it yourself.
+这些方案会为你自动处理请求顺序问题。当使用 Transitions 构建自定义钩子或管理异步状态转换的库时，你虽然可以获得更精细的控制，但也需要自行处理请求顺序逻辑。
 
 <Solution />
 
 #### 在不使用 Action 的情况下更新数量 {/*updating-the-users-name-without-an-action*/}
 
-In this example, the `updateQuantity` function also simulates a request to the server to update the item's quantity in the cart. This function is *artificially slowed down* so that it takes at least a second to complete the request.
+在这个示例中，`updateQuantity` 函数同样模拟向服务端发送请求来更新购物车中的商品数量。该函数*被人为地减慢*，使得完成请求至少需要一秒钟。
 
-Update the quantity multiple times quickly. Notice that the pending "Total" state is shown while any requests is in progress, but the "Total" updates multiple times for each time the "quantity" was clicked:
+快速多次更新数量。请注意，当任何请求在进行中时都会显示 “Total” 的挂起状态，但 “Total” 会根据每次点击 “quantity” 进行多次更新：
 
 <Sandpack>
 
@@ -447,7 +447,7 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-A common solution to this problem is to prevent the user from making changes while the quantity is updating:
+针对此问题的常见解决方案是在数量更新期间阻止用户进行更改：
 
 <Sandpack>
 
@@ -573,7 +573,7 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-This solution makes the app feel slow, because the user must wait each time they update the quantity. It's possible to add more complex handling manually to allow the user to interact with the UI while the quantity is updating, but Actions handle this case with a straight-forward built-in API.
+这种解决方案会让应用显得卡顿，因为用户必须每次更新数量时都等待。虽然可以手动添加更复杂的处理逻辑来允许用户在更新数量时继续操作界面，但 React Action 通过直观的内置 API 就能轻松处理这种情况。
 
 <Solution />
 
@@ -583,10 +583,9 @@ This solution makes the app feel slow, because the user must wait each time they
 
 ### 在组件中公开 `action` 属性 {/*exposing-action-props-from-components*/}
 
-You can expose an `action` prop from a component to allow a parent to call an Action.
+你可以通过组件暴露一个 `action` 属性，允许父组件调用一个 Action。
 
-
-For example, this `TabButton` component wraps its `onClick` logic in an `action` prop:
+例如，这个 `TabButton` 组件将其点击事件逻辑封装到 `action` 属性中：
 
 ```js {8-10}
 export default function TabButton({ action, children, isActive }) {
@@ -1542,9 +1541,9 @@ main {
 
 ---
 
-### Displaying an error to users with an error boundary {/*displaying-an-error-to-users-with-error-boundary*/}
+### 使用错误边界向用户显示错误 {/*displaying-an-error-to-users-with-error-boundary*/}
 
-If a function passed to `startTransition` throws an error, you can display an error to your user with an [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). To use an error boundary, wrap the component where you are calling the `useTransition` in an error boundary. Once the function passed to `startTransition` errors, the fallback for the error boundary will be displayed.
+如果传递给 `startTransition` 的函数抛出错误，可以通过[错误边界（error boundary）](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) 向用户显示错误。要使用错误边界，请将调用 `useTransition` 的组件包裹在错误边界中。当传递给 `startTransition` 的函数报错时，错误边界的备用 UI 将会显示。
 
 <Sandpack>
 
@@ -1624,7 +1623,7 @@ root.render(
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 疑难解答 {/*troubleshooting*/}
 
 ### 在 Transition 中无法更新输入框内容 {/*updating-an-input-in-a-transition-doesnt-work*/}
 
@@ -1687,7 +1686,7 @@ setTimeout(() => {
 
 ### React 不会将 `await` 之后的状态更新视为 Transition {/*react-doesnt-treat-my-state-update-after-await-as-a-transition*/}
 
-When you use `await` inside a `startTransition` function, the state updates that happen after the `await` are not marked as Transitions. You must wrap state updates after each `await` in a `startTransition` call:
+当你在 `startTransition` 函数内部使用 `await` 时，`await` 之后的状态更新不会被标记为 Transition 更新。你必须将每个 `await` 之后的状态更新再次包裹在 `startTransition` 调用中：
 
 ```js
 startTransition(async () => {
@@ -1709,7 +1708,7 @@ startTransition(async () => {
 });
 ```
 
-This is a JavaScript limitation due to React losing the scope of the async context. In the future, when [AsyncContext](https://github.com/tc39/proposal-async-context) is available, this limitation will be removed.
+这是由于 JavaScript 的限制，React 无法跟踪异步上下文的范围。未来当 [AsyncContext](https://github.com/tc39/proposal-async-context) 提案实现后，该限制将被消除。
 
 ---
 
@@ -1754,13 +1753,14 @@ function setState() {
 }
 ```
 
-### My state updates in Transitions are out of order {/*my-state-updates-in-transitions-are-out-of-order*/}
+### Transitions 中的状态更新顺序混乱 {/*my-state-updates-in-transitions-are-out-of-order*/}
 
-If you `await` inside `startTransition`, you might see the updates happen out of order.
 
-In this example, the `updateQuantity` function simulates a request to the server to update the item's quantity in the cart. This function *artificially returns the every other request after the previous* to simulate race conditions for network requests.
+如果在 `startTransition` 内部使用 `await`，你可能会看到更新出现顺序错乱。
 
-Try updating the quantity once, then update it quickly multiple times. You might see the incorrect total:
+在这个示例中，`updateQuantity` 函数模拟向服务端发送请求以更新购物车中的商品数量。该函数*人为地让每隔一次请求在前一次之后返回*，用于模拟网络请求的竞态条件。
+
+尝试更新一次数量，然后快速多次更新。你可能会看到错误的总计：
 
 <Sandpack>
 
@@ -1928,8 +1928,8 @@ export async function updateQuantity(newName) {
 </Sandpack>
 
 
-When clicking multiple times, it's possible for previous requests to finish after later requests. When this happens, React currently has no way to know the intended order. This is because the updates are scheduled asynchronously, and React loses context of the order across the async boundary.
+多次点击时，较早的请求可能会在较晚的请求之后完成。当这种情况发生时，React 目前无法知道预期的顺序。这是因为更新是异步调度的，而 React 在异步边界处丢失了顺序的上下文。
 
-This is expected, because Actions within a Transition do not guarantee execution order. For common use cases, React provides higher-level abstractions like [`useActionState`](/reference/react/useActionState) and [`<form>` actions](/reference/react-dom/components/form) that handle ordering for you. For advanced use cases, you'll need to implement your own queuing and abort logic to handle this.
+这是预期内的，因为在 Transition 中的 Action 不保证执行顺序。对于常见用例，React 提供了更高级的抽象，如 [`useActionState`](/reference/react/useActionState) 和 [`<form>` actions](/reference/react-dom/components/form) 来为你处理顺序问题。对于高级用例，你需要自行实现队列和中止逻辑来处理这种情况。
 
 
