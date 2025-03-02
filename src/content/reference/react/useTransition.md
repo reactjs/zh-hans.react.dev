@@ -109,7 +109,7 @@ function SubmitButton({ submitAction }) {
 
 * 传递给 `startTransition` 的函数会被立即执行，并将在其执行期间发生的所有状态更新标记为 transition。如果你尝试在 `setTimeout` 中执行状态更新，它们将不会被标记为 transition。
 
-* 您必须将任意异步请求之后的状态更新用 `startTransition` 包裹，以将其标记为 Transition 更新。这是一个已知限制，我们将在未来版本中修复（参见[疑难解答](#react-doesnt-treat-my-state-update-after-await-as-a-transition)）。
+* 你必须将任意异步请求之后的状态更新用 `startTransition` 包裹，以将其标记为 Transition 更新。这是一个已知限制，我们将在未来版本中修复（参见[疑难解答](#react-doesnt-treat-my-state-update-after-await-as-a-transition)）。
 
 * `startTransition` 函数具有稳定的标识，所以你经常会看到 Effect 的依赖数组中会省略它，即使包含它也不会导致 Effect 重新触发。如果 linter 允许你省略依赖项并且没有报错，那么你就可以安全地省略它。[了解移除 Effect 依赖项的更多信息。](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
 
