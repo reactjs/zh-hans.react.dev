@@ -165,7 +165,7 @@ function CheckoutForm() {
 
 为了向用户提供 Transition 进行中的反馈， `isPending` 状态会在首次调用 `startTransition` 时切换为 `true`，并会在所有 Action 完成且最终状态呈现给用户前一直保持为 `true`。Transition 机制确保 Action 中的副作用会完整执行以[避免不必要的加载指示](#preventing-unwanted-loading-indicators)，同时你可以通过 `useOptimistic` 在 Transition 进行期间提供即时反馈。
 
-<Recipes titleText="Actions 与常规事件处理的区别">
+<Recipes titleText="Action 与常规事件处理的区别">
 
 #### 在 Action 中更新数量 {/*updating-the-quantity-in-an-action*/}
 
