@@ -1543,7 +1543,7 @@ main {
 
 ### 使用错误边界向用户显示错误 {/*displaying-an-error-to-users-with-error-boundary*/}
 
-如果传递给 `startTransition` 的函数抛出错误，可以通过[错误边界（error boundary）](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)向用户显示错误。要使用错误边界，请将调用 `useTransition` 的组件包裹在错误边界中。当传递给 `startTransition` 的函数报错时，错误边界的备用UI将会显示。
+如果传递给 `startTransition` 的函数抛出错误，可以通过[错误边界（error boundary）](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) 向用户显示错误。要使用错误边界，请将调用 `useTransition` 的组件包裹在错误边界中。当传递给 `startTransition` 的函数报错时，错误边界的备用 UI 将会显示。
 
 <Sandpack>
 
