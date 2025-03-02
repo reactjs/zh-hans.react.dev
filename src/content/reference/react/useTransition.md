@@ -305,7 +305,7 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-这是一个演示 Actions 工作原理的基础示例，但此示例未处理请求完成顺序错乱的问题。当多次更新数量时，较早的请求可能会在较晚的请求之后完成，导致数量更新顺序混乱。这是一个已知限制，我们将在未来版本中修复（参见下方的[疑难解答](#my-state-updates-in-transitions-are-out-of-order)）。
+这是一个演示 Action 工作原理的基础示例，但此示例未处理请求完成顺序错乱的问题。当多次更新数量时，较早的请求可能会在较晚的请求之后完成，导致数量更新顺序混乱。这是一个已知限制，我们将在未来版本中修复（参见下方的[疑难解答](#my-state-updates-in-transitions-are-out-of-order)）。
 
 对于常见用例，React 提供了以下内置抽象方案：
 - [`useActionState`](/reference/react/useActionState) 
