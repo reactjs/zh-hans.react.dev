@@ -68,7 +68,7 @@ JSON API 返回如下的数据:
 
 看向 `ProductTable`（淡紫色），可以看到表头（包含 "Name" 和 "Price" 标签）并不是独立的组件。这是个人喜好的问题，你可以采取任何一种方式继续。在这个例子中，它是作为 `ProductTable` 的一部分，因为它展现在 `ProductTable` 列表之中。然而，如果这个表头变得复杂（举个例子，如果添加排序），创建独立的 `ProductTableHeader` 组件就变得有意义了。
 
-现在你已经在原型中辨别了组件，并将它们转化为了层级结构。在原型中，组件可以展示在其它组件之中，在层级结构中如同其孩子一般:
+现在你已经在原型中辨别了组件，并将它们转化为了层级结构。在原型中出现在其他组件内部的组件在层级结构中应作为子项出现:
 
 * `FilterableProductTable`
     * `SearchBar`
@@ -214,7 +214,7 @@ td {
 
 为了使 UI 可交互，你需要用户更改潜在的数据结构。你将可以使用 **state** 进行实现。
 
-考虑将 state 作为应用程序需要记住改变数据的最小集合。组织 state 最重要的一条原则是保持它 [DRY（不要自我重复）](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)。计算出你应用程序需要的绝对精简 state 表示，按需计算其它一切。举个例子，如果你正在构建一个购物列表，你可将他们在 state 中存储为数组。如果你同时想展示列表中物品数量，不需要将其另存为一个新的 state。取而代之，可以通过读取你数组的长度来实现。
+考虑将 state 作为应用程序需要记住改变数据的最小集合。组织 state 最重要的一条原则是保持它 [DRY（不要自我重复）](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)。计算出你应用程序需要的绝对精简 state 表示，按需计算其它一切。举个例子，如果你正在构建一个购物列表，你可将他们在 state 中存储为数组。如果你同时想展示列表中物品数量，不需要将其另存为一个新的 state。而是，可以通过读取你数组的长度来实现。
 
 现在考虑示例应用程序中的每一条数据:
 
@@ -264,7 +264,7 @@ props 和 state 是不同的，但它们可以共同工作。父组件将经常�
 3. 决定 state 应该被放置于哪里:
     1. 通常情况下，你可以直接放置 state 于它们共同的父组件。
     2. 你也可以将 state 放置于它们父组件上层的组件。
-    3. 如果你找不到一个有意义拥有这个 state 的地方，单独创建一个新的组件去管理这个 state，并将它添加到它们父组件上层的某个地方。
+    3. 如果你找不到一个合适来放这个 state 的地方，单独创建一个新的组件去管理这个 state，并将它添加到它们父组件上层的某个地方。
 
 在之前的步骤中，你已在应用程序中创建了两个 state：输入框文本和复选框的值。在这个例子中，它们总在一起展示，将其视为一个 state 非常简单。
 
@@ -468,7 +468,7 @@ function SearchBar({ filterText, inStockOnly }) {
 
 目前你的应用程序可以带着 props 和 state 随着层级结构进行渲染。但是为了支持通过用户输入来改变 state，你需要让数据反向传输：深层结构的表单组件需要更新 `FilterableProductTable` 的 state。
 
-React 使数据流显式展示，是与双向数据绑定相比，需要更多的输入。如果你尝试在上述的例子中输入或者勾选复选框，发现 React 忽视了你的输入。这点是有意为之的。通过 `<input value={filterText} />`，已经设置了 `input` 的 `value` 属性，使之恒等于从 `FilterableProductTable` 传递的 `filterText` state。只要 `filterText` state 不设置，（输入框的）输入就不会改变。
+React 使数据流变得明确，但比双向数据绑定需要多写一些代码。如果你尝试在上述的例子中输入或者勾选复选框，发现 React 忽视了你的输入。这点是有意为之的。通过 `<input value={filterText} />`，已经设置了 `input` 的 `value` 属性，使之恒等于从 `FilterableProductTable` 传递的 `filterText` state。只要 `filterText` state 不设置，（输入框的）输入就不会改变。
 
 当用户更改表单输入时，state 将更新以反映这些更改。state 由 `FilterableProductTable` 所拥有，所以只有它可以调用 `setFilterText` 和 `setInStockOnly`。使 `SearchBar` 更新 `FilterableProductTable` 的 state，需要将这些函数传递到 `SearchBar`：
 
