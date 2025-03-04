@@ -11,9 +11,9 @@ title: React Blog
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<BlogCard title="Sunsetting Create React App" date="February 13, 2025" url="/blog/2025/02/14/sunsetting-create-react-app">
+<BlogCard title="逐步淘汰 Create React App" date="February 13, 2025" url="/blog/2025/02/14/sunsetting-create-react-app">
 
-Today, we’re deprecating Create React App for new apps, and encouraging existing apps to migrate to a framework, or to migrate to a build tool like Vite, Parcel, or RSBuild. We’re also providing docs for when a framework isn’t a good fit for your project, you want to build your own framework, or you just want to learn how React works by building a React app from scratch ...
+今日起，我们将正式弃用 Create React App 作为新应用的推荐工具，并建议现有应用迁移至框架，或迁移至构建工具（如 Vite、Parcel 或 RSBuild）。我们还提供了相关文档，适用于你的项目不适合使用框架的情况、你想要构建自己的框架，或者你只是想通过从零开始构建一个 React 应用 来了解 React 的工作原理 ...
 
 </BlogCard>
 
