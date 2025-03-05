@@ -13,7 +13,7 @@ title: React Blog
 
 <BlogCard title="逐步淘汰 Create React App" date="February 13, 2025" url="/blog/2025/02/14/sunsetting-create-react-app">
 
-今日起，我们将正式弃用 Create React App 作为新应用的推荐工具，并建议现有应用迁移至框架，或迁移至构建工具（如 Vite、Parcel 或 RSBuild）。我们还提供了相关文档，适用于你的项目不适合使用框架的情况、你想要构建自己的框架，或者你只是想通过从零开始构建一个 React 应用 来了解 React 的工作原理 ...
+今日起，我们将正式弃用 Create React App 作为新应用的推荐工具，并建议现有应用迁移至框架或构建工具（如 Vite、Parcel 和 RSBuild）。我们还提供了相关文档用于这些情况：你的项目不适合使用框架、你想要构建自己的框架，或者只是想通过从零开始构建一个 React 应用来了解 React 的工作原理等等……
 
 </BlogCard>
 
