@@ -104,10 +104,18 @@ Next.js 的 App Router 还集成了 [使用 Suspense 的数据获取](/blog/2022
 
 如果你的应用存在现有框架无法很好满足的限制，你希望构建自己的框架，或者你只是想学习 React 应用的基础知识，那么从零开始启动一个 React 项目还有其他可用的选项。
 
+<<<<<<< HEAD
 从零开始可以给你更多的灵活性，但同时也要求你必须自己选择用于路由、数据获取以及其他常见使用模式的工具。这更像自己构建一个框架，而不是使用一个已经存在的框架。[我们推荐的框架](#recommended-react-frameworks) 为这些问题提供了内置的解决方案。
+=======
+Starting from scratch gives you more flexibility, but does require that you make choices on which tools to use for routing, data fetching, and other common usage patterns.  It's a lot like building your own framework, instead of using a framework that already exists. The [frameworks we recommend](#full-stack-frameworks) have built-in solutions for these problems.  
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
 
 如果你想构建自己的解决方案，请参阅我们的 [从零构建一个 React 应用](/learn/build-a-react-app-from-scratch) 指南，该指南提供了如何使用 [Vite](https://vite.dev/)， [Parcel](https://parceljs.org/)，或 [RSbuild](https://rsbuild.dev/) 等构建工具设置新 React 项目的说明。
 
 -----
 
+<<<<<<< HEAD
 _如果你是一个框架开发者，希望在本页面被推荐，[请告知我们](https://github.com/reactjs/react.dev/issues/new?assignees=&labels=type%3A+framework&projects=&template=3-framework.yml&title=%5BFramework%5D%3A+)。_
+=======
+_If you’re a framework author interested in being included on this page, [please let us know](https://github.com/reactjs/react.dev/issues/new?assignees=&labels=type%3A+framework&projects=&template=3-framework.yml&title=%5BFramework%5D%3A+)._
+>>>>>>> ab18d2f0f5151ab0c927a12eb0a64f8170762eff
