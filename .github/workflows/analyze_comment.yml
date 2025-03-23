@@ -27,12 +27,7 @@ jobs:
           echo "event-type=$event_type" >> $GITHUB_OUTPUT
 
       - name: Download base branch bundle stats
-<<<<<<< HEAD
-        if: github.event.workflow_run.conclusion == 'success' && steps.get-type.outputs.event-type == 'pull_request'
-        uses: dawidd6/action-download-artifact@v3
-=======
         uses: dawidd6/action-download-artifact@268677152d06ba59fcec7a7f0b5d961b6ccd7e1e
->>>>>>> f6d762cbbf958ca45bb8d1d011b31e5289e43a3d
         with:
           workflow: analyze.yml
           run_id: ${{ github.event.workflow_run.id }}
@@ -40,12 +35,7 @@ jobs:
           path: analysis_comment.txt
 
       - name: Download PR number
-<<<<<<< HEAD
-        if: github.event.workflow_run.conclusion == 'success' && steps.get-type.outputs.event-type == 'pull_request'
-        uses: dawidd6/action-download-artifact@v3
-=======
         uses: dawidd6/action-download-artifact@268677152d06ba59fcec7a7f0b5d961b6ccd7e1e
->>>>>>> f6d762cbbf958ca45bb8d1d011b31e5289e43a3d
         with:
           workflow: analyze.yml
           run_id: ${{ github.event.workflow_run.id }}
