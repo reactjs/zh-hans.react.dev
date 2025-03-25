@@ -14,7 +14,11 @@ title: "Built-in React DOM Hooks"
 
 **Form** 允许创建用于提交信息的交互式控件。要在组件中管理表单，请使用以下其中一个 Hook：
 
+<<<<<<< HEAD
 * [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) 允许根据表单的状态更新用户界面。
+=======
+* [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) allows you to make updates to the UI based on the status of a form.
+>>>>>>> 2859efa07357dfc2927517ce9765515acf903c7c
 
 ```js
 function Form({ action }) {
