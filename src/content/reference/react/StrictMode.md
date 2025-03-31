@@ -122,6 +122,12 @@ function App() {
 
 在这个例子中，严格模式的检查不会对 `Header` 和 `Footer` 组件运行。然而，它们会在 `Sidebar` 和 `Content` 以及它们内部的所有组件上运行，无论多深。
 
+<Note>
+
+When `StrictMode` is enabled for a part of the app, React will only enable behaviors that are possible in production. For example, if `<StrictMode>` is not enabled at the root of the app, it will not [re-run Effects an extra time](#fixing-bugs-found-by-cleaning-up-and-re-attaching-dom-refs-in-development) on initial mount, since this would cause child effects to double fire without the parent effects, which cannot happen in production.
+
+</Note>
+
 ---
 
 ### 修复在开发过程中通过双重渲染发现的错误 {/*fixing-bugs-found-by-double-rendering-in-development*/}
