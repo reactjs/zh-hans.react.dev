@@ -83,7 +83,7 @@ React 生态系统中包含许多用于解决这些问题的工具。我们列�
 
 我们建议使用:
 
-- [React Router](https://reactrouter.com/start/framework/custom)
+- [React Router](https://reactrouter.com/start/data/custom)
 - [Tanstack Router](https://tanstack.com/router/latest)
 
 
