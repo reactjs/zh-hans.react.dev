@@ -17,13 +17,13 @@ React 必须决定 [在渲染过程中](/reference/rules/components-and-hooks-mu
 
 ```js {2}
 function BlogPost() {
-  return <Layout><Article /></Layout>; // ✅ Good: Only use components in JSX
+  return <Layout><Article /></Layout>; // ✅ 正确的：只在 JSX 中使用组件
 }
 ```
 
 ```js {2}
 function BlogPost() {
-  return <Layout>{Article()}</Layout>; // 🔴 Bad: Never call them directly
+  return <Layout>{Article()}</Layout>; // 🔴 错误的：不要直接调用组件函数
 }
 ```
 
@@ -53,7 +53,7 @@ Hook 应当尽可能保持“静态”。这意味着你不应该动态地改变
 
 ```js {2}
 function ChatInput() {
-  const useDataWithLogging = withLogging(useData); // 🔴 Bad: don't write higher order Hooks
+  const useDataWithLogging = withLogging(useData); // 🔴 错误的：不要编写高阶 Hook
   const data = useDataWithLogging();
 }
 ```
@@ -62,11 +62,11 @@ Hook 应该是不可变的，不应被动态改变。与其动态地改变 Hook�
 
 ```js {2,6}
 function ChatInput() {
-  const data = useDataWithLogging(); // ✅ Good: Create a new version of the Hook
+  const data = useDataWithLogging(); // ✅ 正确的：创建一个新的 Hook
 }
 
 function useDataWithLogging() {
-  // ... Create a new version of the Hook and inline the logic here
+  // ... 创建一个新的 Hook，并将逻辑直接内联到这里
 }
 ```
 
@@ -76,7 +76,7 @@ Hook 也不应该被动态使用，例如，不应该通过将 Hook 作为值传
 
 ```js {2}
 function ChatInput() {
-  return <Button useData={useDataWithLogging} /> // 🔴 Bad: don't pass Hooks as props
+  return <Button useData={useDataWithLogging} /> // 🔴 错误的：不要通过 props 传递 Hook
 }
 ```
 
@@ -88,12 +88,12 @@ function ChatInput() {
 }
 
 function Button() {
-  const data = useDataWithLogging(); // ✅ Good: Use the Hook directly
+  const data = useDataWithLogging(); // ✅ 正确的：直接使用 Hook
 }
 
 function useDataWithLogging() {
-  // If there's any conditional logic to change the Hook's behavior, it should be inlined into
-  // the Hook
+  // 如果有任何条件逻辑需要改变 Hook 的行为，应将其直接内联到 Hook 中
+  
 }
 ```
 
