@@ -85,7 +85,7 @@ This error message will only be shown once per install.
 
 请继续阅读以深入了解 [构建工具的局限性](#limitations-of-build-tools) 以及 [我们推荐框架的原因](#why-we-recommend-frameworks)。
 
-## Limitations of Build Tools {/*limitations-of-build-tools*/}
+## 构建工具的局限性 {/*limitations-of-build-tools*/}
 
 Create React App 及类似的构建工具使得开始构建 React 应用程序变得非常容易。运行 `npx create-react-app my-app` 后，你会得到一个完全配置好的 React 应用程序，包括开发服务器、代码检查和生产构建。
 
