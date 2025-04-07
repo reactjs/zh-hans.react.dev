@@ -86,10 +86,17 @@ root.render(
 
 严格模式启用了以下仅在开发环境下有效的行为：
 
+<<<<<<< HEAD
 - 组件将 [重新渲染一次](#fixing-bugs-found-by-double-rendering-in-development) 以查找由于非纯渲染而引起的错误。
 - 组件将 [重新运行一次 Effect](#fixing-bugs-found-by-re-running-effects-in-development) 以查找由于缺少 Effect 清理而引起的错误。
 - 组件将 [额外重新运行一次 refs 回调](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) 以查找由于缺少 ref 清理函数而引起的错误。
 - 组件将被 [检查是否使用了已弃用的 API](#fixing-deprecation-warnings-enabled-by-strict-mode)。
+=======
+- Your components will [re-render an extra time](#fixing-bugs-found-by-double-rendering-in-development) to find bugs caused by impure rendering.
+- Your components will [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) to find bugs caused by missing Effect cleanup.
+- Your components will [re-run ref callbacks an extra time](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) to find bugs caused by missing ref cleanup.
+- Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode)
+>>>>>>> 6ead1fae680c3ead42614f62ffae51a57f559f4f
 
 **所有这些检查仅在开发环境中进行，不会影响生产构建。**
 
@@ -124,7 +131,7 @@ function App() {
 
 <Note>
 
-When `StrictMode` is enabled for a part of the app, React will only enable behaviors that are possible in production. For example, if `<StrictMode>` is not enabled at the root of the app, it will not [re-run Effects an extra time](#fixing-bugs-found-by-cleaning-up-and-re-attaching-dom-refs-in-development) on initial mount, since this would cause child effects to double fire without the parent effects, which cannot happen in production.
+When `StrictMode` is enabled for a part of the app, React will only enable behaviors that are possible in production. For example, if `<StrictMode>` is not enabled at the root of the app, it will not [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) on initial mount, since this would cause child effects to double fire without the parent effects, which cannot happen in production.
 
 </Note>
 

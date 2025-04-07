@@ -405,14 +405,20 @@ function getSnapshot() {
 
 这里的 `subscribe` 函数是在组件 **内部** 定义的，所以它每次渲染都不同：
 
-```js {4-7}
+```js {2-5}
 function ChatIndicator() {
+<<<<<<< HEAD
   const isOnline = useSyncExternalStore(subscribe, getSnapshot);
   
   // 🚩 总是不同的函数，所以 React 每次重新渲染都会重新订阅
+=======
+  // 🚩 Always a different function, so React will resubscribe on every re-render
+>>>>>>> 6ead1fae680c3ead42614f62ffae51a57f559f4f
   function subscribe() {
     // ...
   }
+  
+  const isOnline = useSyncExternalStore(subscribe, getSnapshot);
 
   // ...
 }
@@ -420,28 +426,39 @@ function ChatIndicator() {
   
 如果重新渲染时你传一个不同的 `subscribe` 函数，React 会重新订阅你的 store。如果这造成了性能问题，因而你想避免重新订阅，就把 `subscribe` 函数移到外面：
 
-```js {6-9}
-function ChatIndicator() {
-  const isOnline = useSyncExternalStore(subscribe, getSnapshot);
+```js {1-4}
+// ✅ Always the same function, so React won't need to resubscribe
+function subscribe() {
   // ...
 }
 
+<<<<<<< HEAD
 // ✅ 总是相同的函数，所以 React 不需要重新订阅
 function subscribe() {
+=======
+function ChatIndicator() {
+  const isOnline = useSyncExternalStore(subscribe, getSnapshot);
+>>>>>>> 6ead1fae680c3ead42614f62ffae51a57f559f4f
   // ...
 }
 ```
 
 或者，把 `subscribe` 包在 [`useCallback`](/reference/react/useCallback) 里面以便只在某些参数改变时重新订阅：
 
-```js {4-8}
+```js {2-5}
 function ChatIndicator({ userId }) {
+<<<<<<< HEAD
   const isOnline = useSyncExternalStore(subscribe, getSnapshot);
   
   // ✅ 只要 userId 不变，都是同一个函数
+=======
+  // ✅ Same function as long as userId doesn't change
+>>>>>>> 6ead1fae680c3ead42614f62ffae51a57f559f4f
   const subscribe = useCallback(() => {
     // ...
   }, [userId]);
+  
+  const isOnline = useSyncExternalStore(subscribe, getSnapshot);
 
   // ...
 }

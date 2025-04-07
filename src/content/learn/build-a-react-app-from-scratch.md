@@ -65,7 +65,11 @@ Rsbuild 内置了对 React 特性的支持，如快速刷新、JSX、TypeScript 
 
 #### React Native 的 Metro {/*react-native*/}
 
+<<<<<<< HEAD
 如果你从头开始使用 React Native，你将需要使用 [Metro](https://metrobundler.dev/), 这是 React Native 的 JavaScript 打包工具。Metro 支持 iOS 和 Android 等平台的打包，但与这里提到的工具相比，它缺少许多功能。除非你的项目需要 React Native 支持，否则我们建议从 Vite、Parcel 或 Rsbuild 开始。
+=======
+If you're starting from scratch with React Native you'll need to use [Metro](https://metrobundler.dev/), the JavaScript bundler for React Native. Metro supports bundling for platforms like iOS and Android, but lacks many features when compared to the tools here. We recommend starting with Vite, Parcel, or Rsbuild unless your project requires React Native support.
+>>>>>>> 6ead1fae680c3ead42614f62ffae51a57f559f4f
 
 </Note>
 
