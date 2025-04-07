@@ -2247,7 +2247,11 @@ body {
 
 </Sandpack>
 
+<<<<<<< HEAD
 当你在传递给 `map` 的函数中遍历 `history` 数组时，`squares` 参数遍历 `history` 的每个元素，`move` 参数遍历每个数组索引：`0` 、`1`、`2`……（在大多数情况下，你需要数组元素，但要渲染落子列表，你只需要索引。）
+=======
+As you iterate through the `history` array inside the function you passed to `map`, the `squares` argument goes through each element of `history`, and the `move` argument goes through each array index: `0`, `1`, `2`, …. (In most cases, you'd need the actual array elements, but to render a list of moves you will only need indexes.)
+>>>>>>> 5138e605225b24d25701a1a1f68daa90499122a4
 
 对于井字棋游戏历史中的每一步，你创建一个列表项 `<li>`，其中包含一个按钮 `<button>`。该按钮有一个 `onClick` 处理程序，它调用一个名为 `jumpTo` 的函数（你尚未实现）。
 
