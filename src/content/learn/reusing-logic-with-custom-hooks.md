@@ -1333,7 +1333,7 @@ export function useOnlineStatus() {
 
 在上述示例中，`useOnlineStatus` 借助一组 [`useState`](/reference/react/useState) 和 [`useEffect`](/reference/react/useEffect) 实现。但这不是最好的解决方案。它有许多边界用例没有考虑到。例如，它认为当组件加载时，`isOnline` 已经为 `true`，但是如果网络已经离线的话这就是错误的。你可以使用浏览器的 [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API 来检查，但是在生成初始 HTML 的服务端直接使用它是没用的。简而言之这段代码可以改进。
 
-幸运的是，React 18 包含了一个叫做 [`useSyncExternalStore`](/reference/react/useSyncExternalStore) 的专用 API，它可以解决你所有这些问题。这里展示了如何利用这个新 API 来重写你的 `useOnlineStatus` Hook：
+React 包含了一个叫做 [`useSyncExternalStore`](/reference/react/useSyncExternalStore) 的专用 API，它可以解决你所有这些问题。这里展示了如何利用这个新 API 来重写你的 `useOnlineStatus` Hook：
 
 <Sandpack>
 
