@@ -1298,12 +1298,7 @@ class ErrorBoundary extends React.Component {
       // 在 div 中（由 APP 创建）
       // 在 App 中
       info.componentStack,
-<<<<<<< HEAD
-      // 仅在 react@canary 版本可用
       // 警告：Owner Stack 在生产中不可用
-=======
-      // Warning: `captureOwnerStack` is not available in production.
->>>>>>> 6ead1fae680c3ead42614f62ffae51a57f559f4f
       React.captureOwnerStack(),
     );
   }
