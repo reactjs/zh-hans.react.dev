@@ -2154,7 +2154,7 @@ export default function Contact({ contact }) {
       <button onClick={() => {
         setExpanded(!expanded);
       }}>
-        {expanded ? '显示' : '隐藏'}邮箱
+        {expanded ? '隐藏' : '显示'}邮箱
       </button>
     </>
   );
