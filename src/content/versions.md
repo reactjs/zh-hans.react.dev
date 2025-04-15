@@ -3,13 +3,14 @@ title: React 版本
 ---
 
 <Intro>
+
 React 文档位于 [react.dev](https://react.dev)，提供最新版本 React 的文档。
 
 </Intro>
 
 我们致力于在主要版本内保持文档的更新，并不会为每个次要版本或补丁版本发布单独的文档版本。当一个新的主要版本发布时，我们会将前一个版本的文档存档为 `x.react.dev`。有关更多信息，请参阅我们的[版本控制政策](/community/versioning-policy)。
 
-您可以在下方找到以前主要版本的存档。
+你可以在下方找到以前主要版本的存档。
 ## 最新版本: 19.0 {/*latest-version*/}
 
 - [react.dev](https://react.dev) {/*docs-19*/}
