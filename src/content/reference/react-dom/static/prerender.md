@@ -47,21 +47,21 @@ async function handler(request) {
 
 #### 参数 {/*parameters*/}
 
-* `reactNode`: 需要渲染为 HTML 的 React 节点。例如，一个像 `<App />` 的 JSX 节点。它应表示整个文档，因此 App 组件应渲染 `<html>` 标签。
+* `reactNode`： 需要渲染为 HTML 的 React 节点。例如，一个像 `<App />` 的 JSX 节点。它应表示整个文档，因此 App 组件应渲染 `<html>` 标签。
 
-* **可选** `options`: 一个包含静态生成选项的对象。
-  * **可选** `bootstrapScriptContent`: 如果指定，此字符串将被放置在一个内联的 `<script>` 标签中。
-  * **可选** `bootstrapScripts`: 一个字符串 URL 的数组，用于在页面上生成 `<script>` 标签。使用此选项包含调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 的 `<script>`。如果不希望在客户端运行 React，可以省略此选项。
-  * **可选** `bootstrapModules`: 类似于 `bootstrapScripts`，但会生成 [`<script type="module">`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)。
-  * **可选** `identifierPrefix`: React 用于 [`useId`](/reference/react/useId) 生成的 ID 的字符串前缀。当在同一页面上使用多个根时，这对于避免冲突非常有用。必须与传递给 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters) 的前缀相同。
-  * **可选** `namespaceURI`: 流的根 [命名空间 URI](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris) 的字符串。默认为常规 HTML。对于 SVG，请传递 `'http://www.w3.org/2000/svg'`；对于 MathML，请传递 `'http://www.w3.org/1998/Math/MathML'`。
-  * **可选** `onError`: 每当发生服务器错误时触发的回调，无论是 [可恢复的](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) 还是 [不可恢复的](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)。默认情况下，它只调用 `console.error`。如果你重写它用来 [记录崩溃报告](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server) ，请确保仍然调用 `console.error`。你还可以使用它在 shell 被生成之前 [调整状态码](/reference/react-dom/server/renderToReadableStream#setting-the-status-code)。
-  * **可选** `progressiveChunkSize`: 每个块的字节数。[阅读更多关于默认启发式的信息。](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
-  * **可选** `signal`: 一个 [中止信号](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)，允许你 [中止服务器渲染](/reference/react-dom/server/renderToReadableStream#aborting-server-rendering) 并在客户端渲染剩余内容。
+* **可选** `options`： 一个包含静态生成选项的对象。
+  * **可选** `bootstrapScriptContent`： 如果指定，此字符串将被放置在一个内联的 `<script>` 标签中。
+  * **可选** `bootstrapScripts`： 一个字符串 URL 的数组，用于在页面上生成 `<script>` 标签。使用此选项包含调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 的 `<script>`。如果不希望在客户端运行 React，可以省略此选项。
+  * **可选** `bootstrapModules`： 类似于 `bootstrapScripts`，但会生成 [`<script type="module">`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)。
+  * **可选** `identifierPrefix`： React 用于 [`useId`](/reference/react/useId) 生成的 ID 的字符串前缀。当在同一页面上使用多个根时，这对于避免冲突非常有用。必须与传递给 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters) 的前缀相同。
+  * **可选** `namespaceURI`： 流的根 [命名空间 URI](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris) 的字符串。默认为常规 HTML。对于 SVG，请传递 `'http://www.w3.org/2000/svg'`；对于 MathML，请传递 `'http://www.w3.org/1998/Math/MathML'`。
+  * **可选** `onError`： 每当发生服务器错误时触发的回调，无论是 [可恢复的](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) 还是 [不可恢复的](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)。默认情况下，它只调用 `console.error`。如果你重写它用来 [记录崩溃报告](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server) ，请确保仍然调用 `console.error`。你还可以使用它在 shell 被生成之前 [调整状态码](/reference/react-dom/server/renderToReadableStream#setting-the-status-code)。
+  * **可选** `progressiveChunkSize`： 每个块的字节数。[阅读更多关于默认启发式的信息。](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
+  * **可选** `signal`： 一个 [中止信号](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)，允许你 [中止服务器渲染](/reference/react-dom/server/renderToReadableStream#aborting-server-rendering) 并在客户端渲染剩余内容。
 
 #### 返回值 {/*returns*/}
 
-`prerender` 返回一个 Promise 对象:
+`prerender` 返回一个 Promise 对象：
 - 如果渲染成功，Promise 将解析为一个包含以下内容的对象：
   - `prelude`：一个 [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的 HTML。你可以使用此流以块的形式发送响应，或者将整个流读取为字符串。
 - 如果渲染失败，Promise 将被拒绝。[使用此方法输出一个回退 shell。](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
@@ -83,7 +83,7 @@ async function handler(request) {
 
 ### 将 React 树渲染为静态 HTML 流 {/*rendering-a-react-tree-to-a-stream-of-static-html*/}
 
-调用 `prerender` 将 React 树渲染为静态 HTML，并生成一个 [可读的 Web 流](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream):
+调用 `prerender` 将 React 树渲染为静态 HTML，并生成一个 [可读的 Web 流](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)：
 
 ```js [[1, 4, "<App />"], [2, 5, "['/main.js']"]]
 import { prerender } from 'react-dom/static';
@@ -100,7 +100,7 @@ async function handler(request) {
 
 与 <CodeStep step={1}>根组件</CodeStep>一起, 你需要提供一组 <CodeStep step={2}> 引导 `<script>` 路径 </CodeStep>。 根组件应返回 **包含 `<html>` 标签** 的整个文档。
 
-例如，它可能看起来像这样:
+例如，它可能看起来像这样：
 
 ```js [[1, 1, "App"]]
 export default function App() {
@@ -120,7 +120,7 @@ export default function App() {
 }
 ```
 
-React 将会把 [doctype](https://developer.mozilla.org/en-US/docs/Glossary/Doctype) 和 <CodeStep step={2}>引导 `<script>` 标签</CodeStep> 注入到生成的 HTML 流中:
+React 将会把 [doctype](https://developer.mozilla.org/en-US/docs/Glossary/Doctype) 和 <CodeStep step={2}>引导 `<script>` 标签</CodeStep> 注入到生成的 HTML 流中：
 
 ```html [[2, 5, "/main.js"]]
 <!DOCTYPE html>

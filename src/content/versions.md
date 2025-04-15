@@ -26,10 +26,6 @@ React 文档位于 [react.dev](https://react.dev)，提供最新版本 React 的
 
 #### 旧版文档 {/*legacy-docs*/}
 
-在 2023 年，我们为 React 18 推出了全新文档 [react.dev](https://react.dev)。旧版 React 18 文档可在 [legacy.reactjs.org](https://legacy.reactjs.org) 查看。React 17 及更早版本的文档托管在旧版网站上。
-
-对于 React 15 之前的版本，请参阅 [15.react.dev](https://15.react.dev)。
-
 在 2023 年，我们为 React 18 [推出了全新文档](/blog/2023/03/16/introducing-react-dev)，并将其托管在 [react.dev](https://react.dev)。旧版 React 18 文档可在 [legacy.reactjs.org](https://legacy.reactjs.org) 查看。React 17 及更早版本的文档托管在旧版网站上。
 
 对于早于 React 15 的版本，请参阅 [15.react.dev](https://15.react.dev)。
