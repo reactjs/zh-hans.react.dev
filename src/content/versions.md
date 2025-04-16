@@ -1,21 +1,21 @@
 ---
-title: React Versions
+title: React 版本
 ---
 
 <Intro>
 
-The React docs at [react.dev](https://react.dev) provide documentation for the latest version of React.
+React 文档位于 [react.dev](https://react.dev)，提供最新版本 React 的文档。
 
 </Intro>
 
-We aim to keep the docs updated within major versions, and do not publish versions for each minor or patch version. When a new major is released, we archive the docs for the previous version as `x.react.dev`. See our [versioning policy](/community/versioning-policy) for more info.
+我们致力于在主要版本内保持文档的更新，并不会为每个次要版本或补丁版本发布单独的文档版本。当一个新的主要版本发布时，我们会将前一个版本的文档存档为 `x.react.dev`。有关更多信息，请参阅我们的[版本控制政策](/community/versioning-policy)。
 
-You can find an archive of previous major versions below.
-## Latest version: 19.0 {/*latest-version*/}
+你可以在下方找到以前主要版本的存档。
+## 最新版本：19.0 {/*latest-version*/}
 
 - [react.dev](https://react.dev) {/*docs-19*/}
 
-## Previous versions {/*previous-versions*/}
+## 历史版本 {/*previous-versions*/}
 
 - [18.react.dev](https://18.react.dev) {/*docs-18*/}
 - [17.react.dev](https://17.react.dev) {/*docs-17*/}
@@ -24,19 +24,19 @@ You can find an archive of previous major versions below.
 
 <Note>
 
-#### Legacy Docs {/*legacy-docs*/}
+#### 旧版文档 {/*legacy-docs*/}
 
-In 2023, we [launched our new docs](/blog/2023/03/16/introducing-react-dev) for React 18 as [react.dev](https://react.dev). The legacy React 18 docs are available at [legacy.reactjs.org](https://legacy.reactjs.org). Versions 17 and below are hosted on legacy sites.
+在 2023 年，我们为 React 18 [推出了全新文档](/blog/2023/03/16/introducing-react-dev)，并将其托管在 [react.dev](https://react.dev)。旧版 React 18 文档可在 [legacy.reactjs.org](https://legacy.reactjs.org) 查看。React 17 及更早版本的文档托管在旧版网站上。
 
-For versions older than React 15, see [15.react.dev](https://15.react.dev).
+对于早于 React 15 的版本，请参阅 [15.react.dev](https://15.react.dev)。
 
 </Note>
 
-## Changelog {/*changelog*/}
+## 更新日志 {/*changelog*/}
 
 ### React 19 {/*react-19*/}
 
-**Blog Posts**
+**博客文章**
 - [React v19](/blog/2024/12/05/react-19)
 - [React 19 Upgrade Guide](/blog/2024/04/25/react-19-upgrade-guide)
 - [React Compiler Beta Release](/blog/2024/10/21/react-compiler-beta-release)
@@ -50,17 +50,17 @@ For versions older than React 15, see [15.react.dev](https://15.react.dev).
 - [React Compiler Case Studies](https://www.youtube.com/watch?v=lvhPq5chokM)
 - [React 19 Deep Dive: Coordinating HTML](https://www.youtube.com/watch?v=IBBN-s77YSI)
 
-**Releases**
+**发布版本**
 - [v19.0.0 (December, 2024)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1900-december-5-2024)
 
 ### React 18 {/*react-18*/}
 
-**Blog Posts**
+**博客文章**
 - [React v18.0](/blog/2022/03/29/react-v18)
 - [How to Upgrade to React 18](/blog/2022/03/08/react-18-upgrade-guide)
 - [The Plan for React 18](/blog/2021/06/08/the-plan-for-react-18)
 
-**Talks**
+**演讲**
 - [React 18 Keynote](https://www.youtube.com/watch?v=FZ0cG47msEk)
 - [React 18 for app developers](https://www.youtube.com/watch?v=ytudH8je5ko)
 - [Streaming Server Rendering with Suspense](https://www.youtube.com/watch?v=pj5N-Khihgc)
@@ -70,7 +70,7 @@ For versions older than React 15, see [15.react.dev](https://15.react.dev).
 - [The first React Working Group](https://www.youtube.com/watch?v=qn7gRClrC9U)
 - [React 18 for External Store Libraries](https://www.youtube.com/watch?v=oPfSC5bQPR8)
 
-**Releases**
+**发布版本**
 - [v18.3.1 (April, 2024)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1831-april-26-2024)
 - [v18.3.0 (April, 2024)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1830-april-25-2024)
 - [v18.2.0 (June, 2022)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1820-june-14-2022)
@@ -79,19 +79,19 @@ For versions older than React 15, see [15.react.dev](https://15.react.dev).
 
 ### React 17 {/*react-17*/}
 
-**Blog Posts**
+**博客文章**
 - [React v17.0](https://legacy.reactjs.org/blog/2020/10/20/react-v17.html)
 - [Introducing the New JSX Transform](https://legacy.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html)
 - [React v17.0 Release Candidate: No New Features](https://legacy.reactjs.org/blog/2020/08/10/react-v17-rc.html)
 
-**Releases**
+**发布版本**
 - [v17.0.2 (March 2021)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1702-march-22-2021)
 - [v17.0.1 (October 2020)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1701-october-22-2020)
 - [v17.0.0 (October 2020)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1700-october-20-2020)
 
 ### React 16 {/*react-16*/}
 
-**Blog Posts**
+**博客文章**
 - [React v16.0](https://legacy.reactjs.org/blog/2017/09/26/react-v16.0.html)
 - [DOM Attributes in React 16](https://legacy.reactjs.org/blog/2017/09/08/dom-attributes-in-react-16.html)
 - [Error Handling in React 16](https://legacy.reactjs.org/blog/2017/07/26/error-handling-in-react-16.html)
@@ -104,7 +104,7 @@ For versions older than React 15, see [15.react.dev](https://15.react.dev).
 - [React v16.9.0 and the Roadmap Update](https://legacy.reactjs.org/blog/2019/08/08/react-v16.9.0.html)
 - [React v16.13.0](https://legacy.reactjs.org/blog/2020/02/26/react-v16.13.0.html)
 
-**Releases**
+**发布版本**
 - [v16.14.0 (October 2020)](https://github.com/facebook/react/blob/main/CHANGELOG.md#16140-october-14-2020)
 - [v16.13.1 (March 2020)](https://github.com/facebook/react/blob/main/CHANGELOG.md#16131-march-19-2020)
 - [v16.13.0 (February 2020)](https://github.com/facebook/react/blob/main/CHANGELOG.md#16130-february-26-2020)
@@ -146,7 +146,7 @@ For versions older than React 15, see [15.react.dev](https://15.react.dev).
 
 ### React 15 {/*react-15*/}
 
-**Blog Posts**
+**博客文章**
 - [React v15.0](https://legacy.reactjs.org/blog/2016/04/07/react-v15.html)
 - [React v15.0 Release Candidate 2](https://legacy.reactjs.org/blog/2016/03/16/react-v15-rc2.html)
 - [React v15.0 Release Candidate](https://legacy.reactjs.org/blog/2016/03/07/react-v15-rc1.html)
@@ -159,7 +159,7 @@ For versions older than React 15, see [15.react.dev](https://15.react.dev).
 - [React v15.6.0](https://legacy.reactjs.org/blog/2017/06/13/react-v15.6.0.html)
 - [React v15.6.2](https://legacy.reactjs.org/blog/2017/09/25/react-v15.6.2.html)
 
-**Releases**
+**发布版本**
 - [v15.7.0 (October 2017)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1570-october-14-2020)
 - [v15.6.2 (September 2017)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1562-september-25-2017)
 - [v15.6.1 (June 2017)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1561-june-14-2017)
@@ -184,7 +184,7 @@ For versions older than React 15, see [15.react.dev](https://15.react.dev).
 
 ### React 0.14 {/*react-14*/}
 
-**Blog Posts**
+**博客文章**
 - [React v0.14](https://legacy.reactjs.org/blog/2015/10/07/react-v0.14.html)
 - [React v0.14 Release Candidate](https://legacy.reactjs.org/blog/2015/09/10/react-v0.14-rc1.html)
 - [React v0.14 Beta 1](https://legacy.reactjs.org/blog/2015/07/03/react-v0.14-beta-1.html)
@@ -196,7 +196,7 @@ For versions older than React 15, see [15.react.dev](https://15.react.dev).
 - [React v0.14.4](https://legacy.reactjs.org/blog/2015/12/29/react-v0.14.4.html)
 - [React v0.14.8](https://legacy.reactjs.org/blog/2016/03/29/react-v0.14.8.html)
 
-**Releases**
+**发布版本**
 - [v0.14.10 (October 2020)](https://github.com/facebook/react/blob/main/CHANGELOG.md#01410-october-14-2020)
 - [v0.14.8 (March 2016)](https://github.com/facebook/react/blob/main/CHANGELOG.md#0148-march-29-2016)
 - [v0.14.7 (January 2016)](https://github.com/facebook/react/blob/main/CHANGELOG.md#0147-january-28-2016)
@@ -210,7 +210,7 @@ For versions older than React 15, see [15.react.dev](https://15.react.dev).
 
 ### React 0.13 {/*react-13*/}
 
-**Blog Posts**
+**博客文章**
 - [React Native v0.4](https://legacy.reactjs.org/blog/2015/04/17/react-native-v0.4.html)
 - [React v0.13](https://legacy.reactjs.org/blog/2015/03/10/react-v0.13.html)
 - [React v0.13 RC2](https://legacy.reactjs.org/blog/2015/03/03/react-v0.13-rc2.html)
@@ -223,7 +223,7 @@ For versions older than React 15, see [15.react.dev](https://15.react.dev).
 - [React v0.13.2](https://legacy.reactjs.org/blog/2015/04/18/react-v0.13.2.html)
 - [React v0.13.3](https://legacy.reactjs.org/blog/2015/05/08/react-v0.13.3.html)
 
-**Releases**
+**发布版本**
 - [v0.13.3 (May 2015)](https://github.com/facebook/react/blob/main/CHANGELOG.md#0133-may-8-2015)
 - [v0.13.2 (April 2015)](https://github.com/facebook/react/blob/main/CHANGELOG.md#0132-april-18-2015)
 - [v0.13.1 (March 2015)](https://github.com/facebook/react/blob/main/CHANGELOG.md#0131-march-16-2015)
@@ -231,20 +231,20 @@ For versions older than React 15, see [15.react.dev](https://15.react.dev).
 
 ### React 0.12 {/*react-12*/}
 
-**Blog Posts**
+**博客文章**
 - [React v0.12](https://legacy.reactjs.org/blog/2014/10/28/react-v0.12.html)
 - [React v0.12 RC](https://legacy.reactjs.org/blog/2014/10/16/react-v0.12-rc1.html)
 - [Introducing React Elements](https://legacy.reactjs.org/blog/2014/10/14/introducing-react-elements.html)
 - [React v0.12.2](https://legacy.reactjs.org/blog/2014/12/18/react-v0.12.2.html)
 
-**Releases**
+**发布版本**
 - [v0.12.2 (December 2014)](https://github.com/facebook/react/blob/main/CHANGELOG.md#0122-december-18-2014)
 - [v0.12.1 (November 2014)](https://github.com/facebook/react/blob/main/CHANGELOG.md#0121-november-18-2014)
 - [v0.12.0 (October 2014)](https://github.com/facebook/react/blob/main/CHANGELOG.md#0120-october-28-2014)
 
 ### React 0.11 {/*react-11*/}
 
-**Blog Posts**
+**博客文章**
 - [React v0.11](https://legacy.reactjs.org/blog/2014/07/17/react-v0.11.html)
 - [React v0.11 RC](https://legacy.reactjs.org/blog/2014/07/13/react-v0.11-rc1.html)
 - [One Year of Open-Source React](https://legacy.reactjs.org/blog/2014/05/29/one-year-of-open-source-react.html)
@@ -253,14 +253,14 @@ For versions older than React 15, see [15.react.dev](https://15.react.dev).
 - [React v0.11.2](https://legacy.reactjs.org/blog/2014/09/16/react-v0.11.2.html)
 - [Introducing the JSX Specificaion](https://legacy.reactjs.org/blog/2014/09/03/introducing-the-jsx-specification.html)
 
-**Releases**
+**发布版本**
 - [v0.11.2 (September 2014)](https://github.com/facebook/react/blob/main/CHANGELOG.md#0112-september-16-2014)
 - [v0.11.1 (July 2014)](https://github.com/facebook/react/blob/main/CHANGELOG.md#0111-july-24-2014)
 - [v0.11.0 (July 2014)](https://github.com/facebook/react/blob/main/CHANGELOG.md#0110-july-17-2014)
 
-### React 0.10 and below {/*react-10-and-below*/}
+### React 0.10 及以下 {/*react-10-and-below*/}
 
-**Blog Posts**
+**博客文章**
 - [React v0.10](https://legacy.reactjs.org/blog/2014/03/21/react-v0.10.html)
 - [React v0.10 RC](https://legacy.reactjs.org/blog/2014/03/19/react-v0.10-rc1.html)
 - [React v0.9](https://legacy.reactjs.org/blog/2014/02/20/react-v0.9.html)
@@ -276,7 +276,7 @@ For versions older than React 15, see [15.react.dev](https://15.react.dev).
 - [New in React v0.4: Autobind by Default](https://legacy.reactjs.org/blog/2013/07/02/react-v0-4-autobind-by-default.html)
 - [React v0.3.3](https://legacy.reactjs.org/blog/2013/07/02/react-v0-4-autobind-by-default.html)
 
-**Releases**
+**发布版本**
 - [v0.10.0 (March 2014)](https://github.com/facebook/react/blob/main/CHANGELOG.md#0100-march-21-2014)
 - [v0.9.0 (February 2014)](https://github.com/facebook/react/blob/main/CHANGELOG.md#090-february-20-2014)
 - [v0.8.0 (December 2013)](https://github.com/facebook/react/blob/main/CHANGELOG.md#080-december-19-2013)
@@ -290,12 +290,12 @@ For versions older than React 15, see [15.react.dev](https://15.react.dev).
 - [v0.3.1 (May 2013)](https://github.com/facebook/react/blob/main/CHANGELOG.md#031-may-30-2013)
 - [v0.3.0 (May 2013)](https://github.com/facebook/react/blob/main/CHANGELOG.md#031-may-30-2013)
 
-### Initial Commit {/*initial-commit*/}
+### 初始提交 {/*initial-commit*/}
 
-React was open-sourced on May 29, 2013. The initial commit is: [`75897c`: Initial public release](https://github.com/facebook/react/commit/75897c2dcd1dd3a6ca46284dd37e13d22b4b16b4)
+React 于 2013 年 5 月 29 日开源。初始提交为：[`75897c`: Initial public release](https://github.com/facebook/react/commit/75897c2dcd1dd3a6ca46284dd37e13d22b4b16b4)。
 
-See the first blog post: [Why did we build React?](https://legacy.reactjs.org/blog/2013/06/05/why-react.html) 
+请参阅第一篇博客文章：[Why did we build React?](https://legacy.reactjs.org/blog/2013/06/05/why-react.html)
 
-React was open sourced at Facebook Seattle in 2013:
+React 于 2013 年在 Facebook 西雅图办公室开源：
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XxVg_s8xAms?si=466vSJrnXTn05j9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XxVg_s8xAms?si=466vSJrnXTn05j9A" title="YouTube 视频播放器" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
