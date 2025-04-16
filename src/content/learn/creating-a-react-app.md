@@ -106,7 +106,11 @@ Next.js 的 App Router 还集成了 [使用 Suspense 的数据获取](/blog/2022
 
 从零开始可以给你更多的灵活性，但同时也要求你必须自己选择用于路由、数据获取以及其他常见使用模式的工具。这更像自己构建一个框架，而不是使用一个已经存在的框架。[我们推荐的框架](#full-stack-frameworks) 为这些问题提供了内置的解决方案。
 
+<<<<<<< HEAD
 如果你想构建自己的解决方案，请参阅我们的 [从零构建一个 React 应用](/learn/build-a-react-app-from-scratch) 指南，该指南提供了如何使用 [Vite](https://vite.dev/)， [Parcel](https://parceljs.org/)，或 [RSbuild](https://rsbuild.dev/) 等构建工具设置新 React 项目的说明。
+=======
+If you want to build your own solutions, see our guide to [build a React app from Scratch](/learn/build-a-react-app-from-scratch) for instructions on how to set up a new React project starting with a build tool like [Vite](https://vite.dev/), [Parcel](https://parceljs.org/), or [RSbuild](https://rsbuild.dev/).
+>>>>>>> 4bea66b021679e307f3ccb05fdd8fbdf80dd04d7
 
 -----
 
