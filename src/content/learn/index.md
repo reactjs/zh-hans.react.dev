@@ -457,7 +457,7 @@ export default function MyApp() {
 }
 
 function MyButton() {
-  // ... 我们将把代码移动到这里 ...
+  // ... 我们正在从这里移动代码...
 }
 
 ```
