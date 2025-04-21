@@ -6,10 +6,13 @@ title: React Compiler
 本页面将为你介绍新的 React Compiler，以及如何成功试用。
 </Intro>
 
+<<<<<<< HEAD
 <Wip>
 这些文档仍在不断完善中。更多文档可在 [React Compiler 工作组代码库](https://github.com/reactwg/react-compiler/discussions) 中找到，并在这些文档更加稳定时被整合进来。
 </Wip>
 
+=======
+>>>>>>> 740016e4dea7e518bd045309bc3e828cc2a787a4
 <YouWillLearn>
 
 * 开始使用 React Compiler
@@ -19,6 +22,7 @@ title: React Compiler
 </YouWillLearn>
 
 <Note>
+<<<<<<< HEAD
 React Compiler 是一个处于 Beta 阶段的新的编译器，我们将其开源以获取社区的早期反馈。虽然Meta 等公司已经在生产中使用它，但是能否在你的应用程序中使用它取决于代码库的健康状态以及你遵守 [React 规则](/reference/rules) 的程度。
 
 最新的 Beta 版本发布于 `@beta` 标签，每日实验版本发布于 `@experimental` 标签。
@@ -30,15 +34,27 @@ React Compiler 是一个新编译器，我们将其开源以获取社区的早�
 编译器还包括一个 [ESLint 插件](#installing-eslint-plugin-react-compiler)，可以在你的编辑器中直接显示编译器的分析结果。**我们强烈建议大家使用 linter。** 不过 linter 并不需要安装编译器，因此即使你还没有准备好尝试编译器也可以使用它。
 
 编译器目前处于 `beta` 阶段，并且可以在 React 17+ 应用程序和库上使用。安装方式如下：
+=======
+React Compiler is a new compiler currently in RC, that we've open sourced to get feedback from the community. We now recommend everyone to try the compiler and provide feedback.
+
+The latest RC release can be found with the `@rc` tag, and daily experimental releases with `@experimental`.
+</Note>
+
+React Compiler is a new compiler that we've open sourced to get feedback from the community. It is a build-time only tool that automatically optimizes your React app. It works with plain JavaScript, and understands the [Rules of React](/reference/rules), so you don't need to rewrite any code to use it.
+
+eslint-plugin-react-hooks also includes an [ESLint rule](#installing-eslint-plugin-react-compiler) that surfaces the analysis from the compiler right in your editor. **We strongly recommend everyone use the linter today.** The linter does not require that you have the compiler installed, so you can use it even if you are not ready to try out the compiler.
+
+The compiler is currently released as `rc`, and is available to try out on React 17+ apps and libraries. To install the RC:
+>>>>>>> 740016e4dea7e518bd045309bc3e828cc2a787a4
 
 <TerminalBlock>
-npm install -D babel-plugin-react-compiler@beta eslint-plugin-react-compiler@beta
+{`npm install -D babel-plugin-react-compiler@rc eslint-plugin-react-hooks@^6.0.0-rc.1`}
 </TerminalBlock>
 
 或者使用 Yarn：
 
 <TerminalBlock>
-yarn add -D babel-plugin-react-compiler@beta eslint-plugin-react-compiler@beta
+{`yarn add -D babel-plugin-react-compiler@rc eslint-plugin-react-hooks@^6.0.0-rc.1`}
 </TerminalBlock>
 
 如果你还没有使用 React 19，请参考 [此内容](#using-react-compiler-with-react-17-or-18) 以获得进一步说明。
@@ -117,7 +133,11 @@ function TableContainer({ items }) {
 
 ### 我应该尝试一下编译器吗？ {/*should-i-try-out-the-compiler*/}
 
+<<<<<<< HEAD
 请注意，编译器仍处于 Beta 阶段，存在许多不完善之处。虽然它已经在 Meta 等公司的生产环境中使用过，但将编译器应用于你的应用程序生产环境将取决于你的代码库的健康状况以及你是否遵循了 [React 的规则](/reference/rules)。
+=======
+The compiler is now in RC and has been tested extensively in production. While it has been used in production at companies like Meta, rolling out the compiler to production for your app will depend on the health of your codebase and how well you've followed the [Rules of React](/reference/rules).
+>>>>>>> 740016e4dea7e518bd045309bc3e828cc2a787a4
 
 **你现在不必急着使用编译器。在采用它之前等到它达到稳定版本是可以的。** 然而，我们确实赞赏在你的应用程序中进行小型实验，以便你可以向我们 [提供反馈](#reporting-issues)，帮助使编译器更好。
 
@@ -125,14 +145,21 @@ function TableContainer({ items }) {
 
 除了这些文档之外，我们还建议查看 [React Compiler 工作组](https://github.com/reactwg/react-compiler)，以获取有关编译器的更多信息和讨论。
 
+<<<<<<< HEAD
 ### 安装 eslint-plugin-react-compiler {/*installing-eslint-plugin-react-compiler*/}
 
 React Compiler 还为 ESLint 插件提供支持。ESLint 插件可以**独立**于编译器使用，这意味着即使你不使用编译器，也可以使用 ESLint 插件。
+=======
+### Installing eslint-plugin-react-hooks {/*installing-eslint-plugin-react-compiler*/}
+
+React Compiler also powers an ESLint plugin. You can try it out by installing eslint-plugin-react-hooks@^6.0.0-rc.1.
+>>>>>>> 740016e4dea7e518bd045309bc3e828cc2a787a4
 
 <TerminalBlock>
-npm install -D eslint-plugin-react-compiler@beta
+{`npm install -D eslint-plugin-react-hooks@^6.0.0-rc.1`}
 </TerminalBlock>
 
+<<<<<<< HEAD
 然后，将其添加到你的 ESLint 配置中：
 
 ```js
@@ -162,6 +189,9 @@ module.exports = {
   },
 }
 ```
+=======
+See our [editor setup](/learn/editor-setup#linting) guide for more details.
+>>>>>>> 740016e4dea7e518bd045309bc3e828cc2a787a4
 
 ESLint 插件将在编辑器中显示任何违反 React 规则的行为。当它这样做时，这意味着编译器跳过了优化该组件或钩子。这是完全可以的，编译器可以恢复并继续优化代码库中的其他组件。
 
@@ -195,7 +225,7 @@ const ReactCompilerConfig = {
 React Compiler 与 React 19 RC 配合使用效果最佳。如果你无法升级，可以安装额外的 `react-compiler-runtime` 包来编译代码并在 19 之前的版本上运行。 但请注意，支持的最低版本是 17。
 
 <TerminalBlock>
-npm install react-compiler-runtime@beta
+{`npm install react-compiler-runtime@rc`}
 </TerminalBlock>
 
 你还应该在编译器配置中添加正确的 `target`，值为你所使用的 React 大版本。
@@ -230,7 +260,7 @@ React Compiler 还可用于编译库。由于 React Compiler 需要在代码转�
 ### Babel {/*usage-with-babel*/}
 
 <TerminalBlock>
-npm install babel-plugin-react-compiler@beta
+{`npm install babel-plugin-react-compiler@rc`}
 </TerminalBlock>
 
 编译器包含一个 Babel 插件，你可以在构建流水线中使用它来运行编译器。
@@ -285,7 +315,7 @@ export default defineConfig(() => {
 安装 `vite-plugin-babel`, 并将编译器的 Babel 插件添加到其中：
 
 <TerminalBlock>
-npm install vite-plugin-babel
+{`npm install vite-plugin-babel`}
 </TerminalBlock>
 
 ```js {2,14}
