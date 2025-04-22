@@ -13,7 +13,6 @@ title: React Blog
 
 <BlogCard title="React Compiler RC" date="April 21, 2025" url="/blog/2025/04/21/react-compiler-rc">
 
-We are releasing the compiler's first Release Candidate (RC) today.
 我们今天将发布 React Compiler 的第一个候选发布版（RC）。
 
 </BlogCard>
