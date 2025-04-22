@@ -11,7 +11,7 @@ React 文档位于 [react.dev](https://react.dev)，提供最新版本 React 的
 我们致力于在主要版本内保持文档的更新，并不会为每个次要版本或补丁版本发布单独的文档版本。当一个新的主要版本发布时，我们会将前一个版本的文档存档为 `x.react.dev`。有关更多信息，请参阅我们的[版本控制政策](/community/versioning-policy)。
 
 你可以在下方找到以前主要版本的存档。
-## 最新版本：19.0 {/*latest-version*/}
+## 最新版本：19.1 {/*latest-version*/}
 
 - [react.dev](https://react.dev) {/*docs-19*/}
 
@@ -51,6 +51,7 @@ React 文档位于 [react.dev](https://react.dev)，提供最新版本 React 的
 - [React 19 Deep Dive: Coordinating HTML](https://www.youtube.com/watch?v=IBBN-s77YSI)
 
 **发布版本**
+- [v19.1.0 (March, 2025)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1910-march-28-2025)
 - [v19.0.0 (December, 2024)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1900-december-5-2024)
 
 ### React 18 {/*react-18*/}

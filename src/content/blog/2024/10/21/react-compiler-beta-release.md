@@ -10,6 +10,14 @@ October 21, 2024 by [Lauren Tan](https://twitter.com/potetotes).
 
 ---
 
+<Note>
+
+### React Compiler 现在处于 RC 版本！{/*react-compiler-is-now-in-rc*/}
+
+有关详细信息，请参阅 [RC 博客文章](/blog/2025/04/21/react-compiler-rc)。
+
+</Note>
+
 <Intro>
 
 React 团队很高兴分享新的内容：
