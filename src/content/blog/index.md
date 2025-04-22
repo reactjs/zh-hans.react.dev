@@ -4,30 +4,21 @@ title: React Blog
 
 <Intro>
 
-<<<<<<< HEAD
 这个博客是 React 团队更新的官方来源。任何重要的内容，包括发布说明或弃用通知，都会首先在这里发布。
-=======
-This blog is the official source for the updates from the React team. Anything important, including release notes or deprecation notices, will be posted here first.
-
-You can also follow the [@react.dev](https://bsky.app/profile/react.dev) account on Bluesky, or [@reactjs](https://twitter.com/reactjs) account on Twitter, but you won’t miss anything essential if you only read this blog.
->>>>>>> 740016e4dea7e518bd045309bc3e828cc2a787a4
 
 你也可以在 Bluesky 上关注 [@react.dev](https://bsky.app/profile/react.dev)，或者在 Twitter 上关注 [@reactjs](https://twitter.com/reactjs)。不过只要你阅读这个博客，就不会错过任何重要内容。
 </Intro>
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<<<<<<< HEAD
-<BlogCard title="逐步淘汰 Create React App" date="February 13, 2025" url="/blog/2025/02/14/sunsetting-create-react-app">
-=======
 <BlogCard title="React Compiler RC" date="April 21, 2025" url="/blog/2025/04/21/react-compiler-rc">
 
 We are releasing the compiler's first Release Candidate (RC) today.
+我们今天将发布 React Compiler 的第一个候选发布版（RC）。
 
 </BlogCard>
 
-<BlogCard title="Sunsetting Create React App" date="February 14, 2025" url="/blog/2025/02/14/sunsetting-create-react-app">
->>>>>>> 740016e4dea7e518bd045309bc3e828cc2a787a4
+<BlogCard title="逐步淘汰 Create React App" date="February 14, 2025" url="/blog/2025/02/14/sunsetting-create-react-app">
 
 今日起，我们将正式弃用 Create React App 作为新应用的推荐工具，并建议现有应用迁移至框架或构建工具（如 Vite、Parcel 和 RSBuild）。我们还提供了相关文档用于这些情况：你的项目不适合使用框架、你想要构建自己的框架，或者只是想通过从零开始构建一个 React 应用来了解 React 的工作原理等等……
 
