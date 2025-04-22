@@ -899,7 +899,7 @@ function Timer() {
     setCount(count + 1);
   });
 
-  useTimer(onTick, 1000); // 🔴 Avoid: 传递 Effect Event
+  useTimer(onTick, 1000); // 🔴 避免: 传递 Effect Event
 
   return <h1>{count}</h1>
 }
@@ -912,7 +912,7 @@ function useTimer(callback, delay) {
     return () => {
       clearInterval(id);
     };
-  }, [delay, callback]); // 需要在依赖项中指定“callback”
+  }, [delay, callback]); // 需要在依赖项中指定 “callback”
 }
 ```
 
@@ -934,7 +934,7 @@ function useTimer(callback, delay) {
 
   useEffect(() => {
     const id = setInterval(() => {
-      onTick(); // ✅ Good: 只在 Effect 内部局部调用
+      onTick(); // ✅ 好: 只在 Effect 内部局部调用
     }, delay);
     return () => {
       clearInterval(id);
