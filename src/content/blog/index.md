@@ -11,6 +11,12 @@ title: React Blog
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
+<BlogCard title="React Labs: View Transitions, Activity, and more" date="April 23, 2025" url="/blog/2025/04/23/react-labs-view-transitions-activity-and-more">
+
+In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and sharing other areas we're working on now ...
+
+</BlogCard>
+
 <BlogCard title="React Compiler RC" date="April 21, 2025" url="/blog/2025/04/21/react-compiler-rc">
 
 我们今天将发布 React Compiler 的第一个候选发布版（RC）。
