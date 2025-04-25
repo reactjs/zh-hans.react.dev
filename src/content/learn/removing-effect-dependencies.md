@@ -222,7 +222,7 @@ function ChatRoom() {
 }
 ```
 
-现在 `roomId` 不是响应式值（并且不能在重新渲染时改变），那它不就不是依赖：
+现在 `roomId` 不是响应式值（并且不会在重新渲染时改变），因此它不需要作为依赖项：
 
 <Sandpack>
 
@@ -274,7 +274,7 @@ button { margin-left: 10px; }
 2. 然后，你采纳 linter 的建议，调整依赖，以 **匹配你所改变的代码**。
 3. 如果你对依赖不满意，你可以 **回到第一步**（并再次修改代码）。
 
-最后一部分很重要。**如果你想改变依赖，首先要改变所涉及到的代码**。你可以把依赖看作是 [Effect的代码所依赖的所有响应式值的列表](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。你不要 **选择** 把什么放在这个列表上。该列表 **描述了** 代码。要改变依赖，请改变代码。
+最后一部分很重要。**如果你想改变依赖，首先要改变所涉及到的代码**。你可以把依赖看作是 [Effect 的代码所依赖的所有响应式值的列表](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency)。你不要 **选择** 把什么放在这个列表上。该列表 **描述了** 代码。要改变依赖，请改变代码。
 
 这可能感觉就像解方程一样。你有一个目标（例如，移除一个依赖），你需要“找到”与该目标相匹配的代码。不是每个人都觉得解方程很有趣，写 Effect 也是如此！幸运的是，下面有一些常见的解决方案你可以去尝试。
 
