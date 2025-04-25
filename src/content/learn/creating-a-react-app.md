@@ -32,7 +32,11 @@ title: 创建一个 React 应用
 npx create-next-app@latest
 </TerminalBlock>
 
+<<<<<<< HEAD
 Next.js 由 [Vercel](https://vercel.com/) 维护。你可以 [将 Next.js 应用部署](https://nextjs.org/docs/app/building-your-application/deploying) 到任何支持 Node.js 或 serverless 的托管平台，或者部署到你自己的服务器。 Next.js 也支持 [静态导出](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) 无需服务器。Vercel 还提供可选的付费云服务。
+=======
+Next.js is maintained by [Vercel](https://vercel.com/). You can [deploy a Next.js app](https://nextjs.org/docs/app/building-your-application/deploying) to any hosting provider that supports Node.js or Docker containers, or to your own server. Next.js also supports [static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) which doesn't require a server.
+>>>>>>> 594ff452e29440c40012c9ff3b7000c2ec054e22
 
 ### React Router (v7) {/*react-router-v7*/}
 

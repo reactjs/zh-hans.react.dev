@@ -25,6 +25,11 @@ May 27 - 31, 2025. In-person in Athens, Greece
 
 [Website](https://athens.cityjsconf.org/) - [Twitter](https://x.com/cityjsconf) - [Bluesky](https://bsky.app/profile/cityjsconf.bsky.social)
 
+### React Norway 2025 {/*react-norway-2025*/}
+June 13, 2025. In-person in Oslo, Norway + remote (virtual event)
+
+[Website](https://reactnorway.com/) - [Twitter](https://x.com/ReactNorway)
+
 ### React Summit 2025 {/*react-summit-2025*/}
 June 13 - 17, 2025. In-person in Amsterdam, Netherlands + remote (hybrid event)
 
@@ -49,6 +54,16 @@ October 7-8, 2025. Henderson, Nevada, USA and free livestream
 October 31 - November 01, 2025. In-person in Goa, India (hybrid event) + Oct 15 2025 - remote day
 
 [Website](https://www.reactindia.io) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia) - [Youtube](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w)
+
+### React Summit US 2025 {/*react-summit-us-2025*/}
+November 18 - 21, 2025. In-person in New York, USA + remote (hybrid event)
+
+[Website](https://reactsummit.us/) - [Twitter](https://x.com/reactsummit)
+
+### React Advanced London 2025 {/*react-advanced-london-2025*/}
+November 28 & December 1, 2025. In-person in London, UK + online (hybrid event)
+
+[Website](https://reactadvanced.com/) - [Twitter](https://x.com/reactadvanced)
 
 
 ## Past Conferences {/*past-conferences*/}
