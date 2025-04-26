@@ -57,23 +57,23 @@ During the RC period, we encourage all React users to try the compiler and provi
 As noted in the Beta announcement, React Compiler is compatible with React 17 and up. If you are not yet on React 19, you can use React Compiler by specifying a minimum target in your compiler config, and adding `react-compiler-runtime` as a dependency. You can find docs on this [here](https://react.dev/learn/react-compiler#using-react-compiler-with-react-17-or-18).
 
 ## Migrating from eslint-plugin-react-compiler to eslint-plugin-react-hooks {/*migrating-from-eslint-plugin-react-compiler-to-eslint-plugin-react-hooks*/}
-If you have already installed eslint-plugin-react-compiler, you can now remove it and use `eslint-plugin-react-hooks@^6.0.0-rc.1`. Many thanks to [@michaelfaith](https://bsky.app/profile/michael.faith) for contributing to this improvement!
+If you have already installed eslint-plugin-react-compiler, you can now remove it and use `eslint-plugin-react-hooks@6.0.0-rc.1`. Many thanks to [@michaelfaith](https://bsky.app/profile/michael.faith) for contributing to this improvement!
 
 To install:
 
 npm
 <TerminalBlock>
-{`npm install --save-dev eslint-plugin-react-hooks@^6.0.0-rc.1`}
+{`npm install --save-dev eslint-plugin-react-hooks@6.0.0-rc.1`}
 </TerminalBlock>
 
 pnpm
 <TerminalBlock>
-{`pnpm add --save-dev eslint-plugin-react-hooks@^6.0.0-rc.1`}
+{`pnpm add --save-dev eslint-plugin-react-hooks@6.0.0-rc.1`}
 </TerminalBlock>
 
 yarn
 <TerminalBlock>
-{`yarn add --dev eslint-plugin-react-hooks@^6.0.0-rc.1`}
+{`yarn add --dev eslint-plugin-react-hooks@6.0.0-rc.1`}
 </TerminalBlock>
 
 ```js
@@ -89,14 +89,16 @@ export default [
 ];
 ```
 
+To enable the React Compiler rule, add `'react-hooks/react-compiler': 'error'` to your ESLint configuration.
+
 The linter does not require the compiler to be installed, so there's no risk in upgrading eslint-plugin-react-hooks. We recommend everyone upgrade today.
 
 ## swc support (experimental) {/*swc-support-experimental*/}
 React Compiler can be installed across [several build tools](/learn/react-compiler#installation) such as Babel, Vite, and Rsbuild.
 
-In addition to those tools, we have been collaborating with Kang Dongyoong ([@kdy1dev](https://x.com/kdy1dev)) from the [swc](https://swc.rs/) team on adding additional support for React Compiler as an swc plugin. As part of the RC release, you can now integrate the compiler into your [Next.js app with swc](https://nextjs.org/docs/app/api-reference/config/next-config-js/reactCompiler) instead of Babel.
+In addition to those tools, we have been collaborating with Kang Dongyoon ([@kdy1dev](https://x.com/kdy1dev)) from the [swc](https://swc.rs/) team on adding additional support for React Compiler as an swc plugin. While this work isn't done, Next.js build performance should now be considerably faster when the [React Compiler is enabled in your Next.js app](https://nextjs.org/docs/app/api-reference/config/next-config-js/reactCompiler).
 
-Next.js users can upgrade to [15.3.1](https://github.com/vercel/next.js/releases/tag/v15.3.1) or greater to try this out. If you have already enabled the compiler in your Next.js's config, swc support will be enabled automatically.
+We recommend using Next.js [15.3.1](https://github.com/vercel/next.js/releases/tag/v15.3.1) or greater to get the best build performance.
 
 Vite users can continue to use [vite-plugin-react](https://github.com/vitejs/vite-plugin-react) to enable the compiler, by adding it as a [Babel plugin](https://react.dev/learn/react-compiler#usage-with-vite). We are also working with the [oxc](https://oxc.rs/) team to [add support for the compiler](https://github.com/oxc-project/oxc/issues/10048). Once [rolldown](https://github.com/rolldown/rolldown) is officially released and supported in Vite and oxc support is added for React Compiler, we'll update the docs with information on how to migrate.
 

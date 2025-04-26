@@ -5,7 +5,11 @@ titleForTitleTag: "'use server' 指示符"
 
 <RSC>
 
+<<<<<<< HEAD
 `'use server'` 用于 [React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)。
+=======
+`'use server'` is for use with [using React Server Components](/reference/rsc/server-components).
+>>>>>>> d05547b9b8268db7a29e80908eddb15dbd863ae6
 
 </RSC>
 
