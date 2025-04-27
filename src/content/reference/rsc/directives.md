@@ -4,7 +4,7 @@ title: "指示符"
 
 <RSC>
 
-这些指令用于 [React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)。
+这些指令用于 [React 服务器组件](/reference/rsc/server-components)。
 
 </RSC>
 

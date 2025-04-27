@@ -5,7 +5,7 @@ titleForTitleTag: "'use client' 指示符"
 
 <RSC>
 
-`'use client'` 用于 [React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)。
+`'use client'` 用于 [React 服务器组件](/reference/rsc/server-components)。
 
 </RSC>
 

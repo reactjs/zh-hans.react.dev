@@ -1,8 +1,9 @@
 ---
 title: experimental_useEffectEvent
+version: experimental
 ---
 
-<Wip>
+<Experimental>
 
 **这是实验性 API，并且在 React 的稳定版中还不可用**。
 
@@ -14,7 +15,7 @@ title: experimental_useEffectEvent
 
 实验性 API 可能存在 bug，所以不要在生产环境使用。
 
-</Wip>
+</Experimental>
 
 
 <Intro>

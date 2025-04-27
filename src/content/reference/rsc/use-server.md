@@ -5,7 +5,7 @@ titleForTitleTag: "'use server' 指示符"
 
 <RSC>
 
-`'use server'` 用于 [React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)。
+`'use server'` 用于 [React 服务器组件](/reference/rsc/server-components)。
 
 </RSC>
 
