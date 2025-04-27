@@ -4,11 +4,7 @@ title: "指示符"
 
 <RSC>
 
-<<<<<<< HEAD
-这些指令用于 [React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks)。
-=======
-Directives are for use in [React Server Components](/reference/rsc/server-components).
->>>>>>> d05547b9b8268db7a29e80908eddb15dbd863ae6
+这些指令用于 [React 服务器组件](/reference/rsc/server-components)。
 
 </RSC>
 
