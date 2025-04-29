@@ -66,39 +66,47 @@ function AppContainer() {
 
 
 ```js src/App.js
-import { useOptimistic, useState, useRef } from "react";
+import { useOptimistic, useState, useRef, startTransition } from "react";
 import { deliverMessage } from "./actions.js";
 
-function Thread({ messages, sendMessage }) {
+function Thread({ messages, sendMessageAction }) {
   const formRef = useRef();
-  async function formAction(formData) {
+  function formAction(formData) {
     addOptimisticMessage(formData.get("message"));
     formRef.current.reset();
-    await sendMessage(formData);
+    sendMessageAction(formData);
   }
   const [optimisticMessages, addOptimisticMessage] = useOptimistic(
     messages,
     (state, newMessage) => [
-      ...state,
       {
         text: newMessage,
         sending: true
-      }
+      },
+      ...state,
     ]
   );
 
   return (
     <>
+      <form action={formAction} ref={formRef}>
+        <input type="text" name="message" placeholder="Hello!" />
+        <button type="submit">Send</button>
+      </form>
       {optimisticMessages.map((message, index) => (
         <div key={index}>
           {message.text}
           {!!message.sending && <small>（发送中……）</small>}
         </div>
       ))}
+<<<<<<< HEAD
       <form action={formAction} ref={formRef}>
         <input type="text" name="message" placeholder="你好！" />
         <button type="submit">发送</button>
       </form>
+=======
+      
+>>>>>>> d6c4c0fee514d06e329d08774bf2f37a7e4e594e
     </>
   );
 }
@@ -107,11 +115,15 @@ export default function App() {
   const [messages, setMessages] = useState([
     { text: "你好，在这儿！", sending: false, key: 1 }
   ]);
-  async function sendMessage(formData) {
-    const sentMessage = await deliverMessage(formData.get("message"));
-    setMessages((messages) => [...messages, { text: sentMessage }]);
+  function sendMessageAction(formData) {
+    startTransition(async () => {
+      const sentMessage = await deliverMessage(formData.get("message"));
+      startTransition(() => {
+        setMessages((messages) => [{ text: sentMessage }, ...messages]);
+      })
+    })
   }
-  return <Thread messages={messages} sendMessage={sendMessage} />;
+  return <Thread messages={messages} sendMessageAction={sendMessageAction} />;
 }
 ```
 
