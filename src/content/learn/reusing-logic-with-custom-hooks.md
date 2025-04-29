@@ -241,12 +241,12 @@ React 应用是由组件构成，而组件由内置或自定义 Hook 构成。�
 如果你创建的函数没有调用任何 Hook 方法，在命名时应避免使用 `use` 前缀，把它当成一个常规函数去命名。如下案例中的 `useSorted` 函数就没有调用任何 Hook 方法，所以更推荐用 `getSorted` 来命名：
 
 ```js
-// 🔴 Avoid: 没有调用其他Hook的Hook
+// 🔴 避免：没有调用其他 Hook 的 Hook
 function useSorted(items) {
   return items.slice().sort();
 }
 
-// ✅ Good: 没有使用Hook的常规函数
+// ✅ 好：没有使用 Hook 的常规函数
 function getSorted(items) {
   return items.slice().sort();
 }
@@ -258,7 +258,7 @@ function getSorted(items) {
 function List({ items, shouldSort }) {
   let displayedItems = items;
   if (shouldSort) {
-    // ✅ 在条件分支里调用getSorted()是没问题的，因为它不是Hook
+    // ✅ 在条件分支里调用 getSorted() 是没问题的，因为它不是 Hook
     displayedItems = getSorted(items);
   }
   // ...
@@ -268,7 +268,7 @@ function List({ items, shouldSort }) {
 哪怕内部只使用了一个 Hook，你也应该给这个函数加 `use` 前缀（让它成为一个 Hook）：
 
 ```js
-// ✅ Good: 一个使用了其他Hook的Hook
+// ✅ 好：一个使用了其他 Hook 的 Hook
 function useAuth() {
   return useContext(Auth);
 }
@@ -277,7 +277,7 @@ function useAuth() {
 技术上 React 对此并不强制要求。原则上你可以写出不调用其他 Hook 的 Hook。但这常常会难以理解且受限，所以最好避免这种方式。但是它在极少数场景下可能是有益的。例如函数目前也许并没有使用任何 Hook，但是你计划未来在该函数内部添加一些 Hook 调用。那么使用 `use` 前缀命名就很有意义：
 
 ```js {3-4}
-// ✅ Good: 之后可能使用其他Hook的Hook
+// ✅ 好：之后可能使用其他 Hook 的 Hook
 function useAuth() {
   // TODO: 当认证功能实现以后，替换这一行：
   // 返回 useContext(Auth)；
@@ -449,7 +449,7 @@ function Form() {
 
 每当组件重新渲染，自定义 Hook 中的代码就会重新运行。这就是组件和自定义 Hook 都 [需要是纯函数](/learn/keeping-components-pure) 的原因。我们应该把自定义 Hook 的代码看作组件主体的一部分。
 
-由于自定义 Hook 会随着组件一起重新渲染，所以组件可以一直接收到最新的 props 和 state。想知道这意味着什么，那就看看这个聊天室的示例。修改 ServeUrl 或者 roomID：
+由于自定义 Hook 会随着组件一起重新渲染，所以组件可以一直接收到最新的 props 和 state。想知道这意味着什么，那就看看这个聊天室的示例。修改 serverUrl 或者 roomId：
 
 <Sandpack>
 
@@ -1207,7 +1207,7 @@ function ShippingForm({ country }) {
 function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
-  // 🔴 Avoid: 使用自定义“生命周期” Hook
+  // 🔴 避免：使用自定义“生命周期” Hook
   useMount(() => {
     const connection = createConnection({ roomId, serverUrl });
     connection.connect();
@@ -1217,7 +1217,7 @@ function ChatRoom({ roomId }) {
   // ...
 }
 
-// 🔴 Avoid: 创建自定义“生命周期” Hook
+// 🔴 避免：创建自定义“生命周期” Hook
 function useMount(fn) {
   useEffect(() => {
     fn();
@@ -1233,7 +1233,7 @@ function useMount(fn) {
 function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
-  // ✅ Good: 通过用途分割的两个原始Effect
+  // ✅ 好：通过用途分割的两个原始Effect
 
   useEffect(() => {
     const connection = createConnection({ serverUrl, roomId });
@@ -1255,7 +1255,7 @@ function ChatRoom({ roomId }) {
 function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
-  // ✅ Great: 以用途命名的自定义Hook
+  // ✅ 非常好：以用途命名的自定义Hook
   useChatRoom({ serverUrl, roomId });
   useImpressionLog('visit_chat', { roomId });
   // ...
