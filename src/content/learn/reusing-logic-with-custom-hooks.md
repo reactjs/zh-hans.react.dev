@@ -1233,7 +1233,7 @@ function useMount(fn) {
 function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
-  // ✅ 好：通过用途分割的两个原始Effect
+  // ✅ 好：通过用途分割的两个原始 Effect
 
   useEffect(() => {
     const connection = createConnection({ serverUrl, roomId });
@@ -1255,7 +1255,7 @@ function ChatRoom({ roomId }) {
 function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
-  // ✅ 非常好：以用途命名的自定义Hook
+  // ✅ 非常好：以用途命名的自定义 Hook
   useChatRoom({ serverUrl, roomId });
   useImpressionLog('visit_chat', { roomId });
   // ...
