@@ -90,8 +90,8 @@ function Thread({ messages, sendMessageAction }) {
   return (
     <>
       <form action={formAction} ref={formRef}>
-        <input type="text" name="message" placeholder="Hello!" />
-        <button type="submit">Send</button>
+        <input type="text" name="message" placeholder="你好！" />
+        <button type="submit">发送</button>
       </form>
       {optimisticMessages.map((message, index) => (
         <div key={index}>
@@ -99,14 +99,7 @@ function Thread({ messages, sendMessageAction }) {
           {!!message.sending && <small>（发送中……）</small>}
         </div>
       ))}
-<<<<<<< HEAD
-      <form action={formAction} ref={formRef}>
-        <input type="text" name="message" placeholder="你好！" />
-        <button type="submit">发送</button>
-      </form>
-=======
       
->>>>>>> d6c4c0fee514d06e329d08774bf2f37a7e4e594e
     </>
   );
 }
