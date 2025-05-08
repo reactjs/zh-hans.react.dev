@@ -585,11 +585,7 @@ export async function updateQuantity(newQuantity) {
 
 你可以通过组件暴露一个 `action` 属性，允许父组件调用一个 Action。
 
-<<<<<<< HEAD
-例如，这个 `TabButton` 组件将其点击事件逻辑封装到 `action` 属性中：
-=======
-For example, this `TabButton` component wraps its `onClick` logic in an `action` prop:
->>>>>>> a3e9466dfeea700696211533a3570bc48d7bc3d3
+例如，这个 `TabButton` 组件将 `onClick` 事件逻辑封装到 `action` 属性中：
 
 ```js {8-12}
 export default function TabButton({ action, children, isActive }) {
