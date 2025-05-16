@@ -2081,7 +2081,6 @@ export function useCounter(delay) {
 <Sandpack>
 
 ```js
-import { useState } from 'react';
 import { useCounter } from './useCounter.js';
 
 export default function Counter() {

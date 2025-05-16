@@ -163,7 +163,11 @@ function CheckoutForm() {
 
 传递给 `startTransition` 的函数被称为 "Action"。你可以在 Action 中更新状态和执行副作用操作，这些工作将在后台执行，不会阻塞页面的用户交互。一个 Transition 可以包含多个 Action，且在 Transition 进行期间，你的用户界面将保持流畅响应。例如，如果用户点击一个标签页后又改变主意点击另一个标签页，第二个点击会立即被处理，无需等待第一个更新完成。
 
+<<<<<<< HEAD
 为了向用户提供 Transition 进行中的反馈， `isPending` 状态会在首次调用 `startTransition` 时切换为 `true`，并会在所有 Action 完成且最终状态呈现给用户前一直保持为 `true`。Transition 机制确保 Action 中的副作用会完整执行以[避免不必要的加载指示](#preventing-unwanted-loading-indicators)，同时你可以通过 `useOptimistic` 在 Transition 进行期间提供即时反馈。
+=======
+To give the user feedback about in-progress Transitions, the `isPending` state switches to `true` at the first call to `startTransition`, and stays `true` until all Actions complete and the final state is shown to the user. Transitions ensure side effects in Actions to complete in order to [prevent unwanted loading indicators](#preventing-unwanted-loading-indicators), and you can provide immediate feedback while the Transition is in progress with `useOptimistic`.
+>>>>>>> 7ab1969da1b7edd5cc268535aef5e4b4bdaa7ece
 
 <Recipes titleText="Action 与常规事件处理的区别">
 
@@ -1949,3 +1953,162 @@ export async function updateQuantity(newName) {
 这是预期内的，因为在 Transition 中的 Action 不保证执行顺序。对于常见用例，React 提供了更高级的抽象，如 [`useActionState`](/reference/react/useActionState) 和 [`<form>` actions](/reference/react-dom/components/form) 来为你处理顺序问题。对于高级用例，你需要自行实现队列和中止逻辑来处理这种情况。
 
 
+Example of `useActionState` handling execution order:
+
+<Sandpack>
+
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "beta",
+    "react-dom": "beta"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+```
+
+```js src/App.js
+import { useState, useActionState } from "react";
+import { updateQuantity } from "./api";
+import Item from "./Item";
+import Total from "./Total";
+
+export default function App({}) {
+  // Store the actual quantity in separate state to show the mismatch.
+  const [clientQuantity, setClientQuantity] = useState(1);
+  const [quantity, updateQuantityAction, isPending] = useActionState(
+    async (prevState, payload) => {
+      setClientQuantity(payload);
+      const savedQuantity = await updateQuantity(payload);
+      return savedQuantity; // Return the new quantity to update the state
+    },
+    1 // Initial quantity
+  );
+
+  return (
+    <div>
+      <h1>Checkout</h1>
+      <Item action={updateQuantityAction}/>
+      <hr />
+      <Total clientQuantity={clientQuantity} savedQuantity={quantity} isPending={isPending} />
+    </div>
+  );
+}
+
+```
+
+```js src/Item.js
+import {startTransition} from 'react';
+
+export default function Item({action}) {
+  function handleChange(e) {
+    // Update the quantity in an Action.
+    startTransition(() => {
+      action(e.target.value);
+    });
+  }  
+  return (
+    <div className="item">
+      <span>Eras Tour Tickets</span>
+      <label htmlFor="name">Quantity: </label>
+      <input
+        type="number"
+        onChange={handleChange}
+        defaultValue={1}
+        min={1}
+      />
+    </div>
+  )
+}
+```
+
+```js src/Total.js
+const intl = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD"
+});
+
+export default function Total({ clientQuantity, savedQuantity, isPending }) {
+  return (
+    <div className="total">
+      <span>Total:</span>
+      <div>
+        <div>
+          {isPending
+            ? "🌀 Updating..."
+            : `${intl.format(savedQuantity * 9999)}`}
+        </div>
+        <div className="error">
+          {!isPending &&
+            clientQuantity !== savedQuantity &&
+            `Wrong total, expected: ${intl.format(clientQuantity * 9999)}`}
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+```js src/api.js
+let firstRequest = true;
+export async function updateQuantity(newName) {
+  return new Promise((resolve, reject) => {
+    if (firstRequest === true) {
+      firstRequest = false;
+      setTimeout(() => {
+        firstRequest = true;
+        resolve(newName);
+        // Simulate every other request being slower
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        resolve(newName);
+      }, 50);
+    }
+  });
+}
+```
+
+```css
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.item label {
+  flex: 1;
+  text-align: right;
+}
+
+.item input {
+  margin-left: 4px;
+  width: 60px;
+  padding: 4px;
+}
+
+.total {
+  height: 50px;
+  line-height: 25px;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.total div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.error {
+  color: red;
+}
+```
+
+</Sandpack>
