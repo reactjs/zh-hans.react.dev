@@ -29,8 +29,4 @@ Stack Overflow 是非常受欢迎的论坛，在论坛中，你可以提出代�
 
 ## 新闻 {/*news*/}
 
-<<<<<<< HEAD
-关于 React 的最新消息，请在 Twitter 上关注 [**@reactjs**](https://twitter.com/reactjs)，同时关注本站中的 [React 的官方博客](/blog/)。
-=======
-For the latest news about React, [follow **@reactjs** on Twitter](https://twitter.com/reactjs), [**@react.dev** on Bluesky](https://bsky.app/profile/react.dev) and the [official React blog](/blog/) on this website.
->>>>>>> 7ab1969da1b7edd5cc268535aef5e4b4bdaa7ece
+关于 React 的最新消息，请在 Twitter 上关注 [**@reactjs**](https://twitter.com/reactjs)、 在 Bluesky 关注 [**@react.dev**](https://bsky.app/profile/react.dev) 以及关注本站的 [React 的官方博客](/blog/)。

@@ -163,11 +163,7 @@ function CheckoutForm() {
 
 传递给 `startTransition` 的函数被称为 "Action"。你可以在 Action 中更新状态和执行副作用操作，这些工作将在后台执行，不会阻塞页面的用户交互。一个 Transition 可以包含多个 Action，且在 Transition 进行期间，你的用户界面将保持流畅响应。例如，如果用户点击一个标签页后又改变主意点击另一个标签页，第二个点击会立即被处理，无需等待第一个更新完成。
 
-<<<<<<< HEAD
 为了向用户提供 Transition 进行中的反馈， `isPending` 状态会在首次调用 `startTransition` 时切换为 `true`，并会在所有 Action 完成且最终状态呈现给用户前一直保持为 `true`。Transition 机制确保 Action 中的副作用会完整执行以[避免不必要的加载指示](#preventing-unwanted-loading-indicators)，同时你可以通过 `useOptimistic` 在 Transition 进行期间提供即时反馈。
-=======
-To give the user feedback about in-progress Transitions, the `isPending` state switches to `true` at the first call to `startTransition`, and stays `true` until all Actions complete and the final state is shown to the user. Transitions ensure side effects in Actions to complete in order to [prevent unwanted loading indicators](#preventing-unwanted-loading-indicators), and you can provide immediate feedback while the Transition is in progress with `useOptimistic`.
->>>>>>> 7ab1969da1b7edd5cc268535aef5e4b4bdaa7ece
 
 <Recipes titleText="Action 与常规事件处理的区别">
 

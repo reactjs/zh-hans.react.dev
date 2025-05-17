@@ -115,17 +115,10 @@ React 生态系统中包含许多用于解决这些问题的工具。我们列�
 
 通过路由拆分代码，并与打包和数据获取集成，可以减少应用程序的初始加载时间以及渲染应用程序最大可见内容所需的时间 ([最大内容绘制](https://web.dev/articles/lcp))。
 
-<<<<<<< HEAD
 有关代码拆分的说明，请参阅你的构建工具文档:
-- [Vite 构建优化](https://v3.vitejs.dev/guide/features.html#build-optimizations)
+- [Vite 构建优化](https://vite.dev/guide/features.html#build-optimizations)
 - [Parcel 代码拆分](https://parceljs.org/features/code-splitting/)
 - [Rsbuild 代码拆分](https://rsbuild.dev/guide/optimization/code-splitting)
-=======
-For code-splitting instructions, see your build tool docs:
-- [Vite build optimizations](https://vite.dev/guide/features.html#build-optimizations)
-- [Parcel code splitting](https://parceljs.org/features/code-splitting/)
-- [Rsbuild code splitting](https://rsbuild.dev/guide/optimization/code-splitting)
->>>>>>> 7ab1969da1b7edd5cc268535aef5e4b4bdaa7ece
 
 ### 提高应用程序性能 {/*improving-application-performance*/}
 
