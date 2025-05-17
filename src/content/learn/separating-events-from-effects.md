@@ -439,7 +439,7 @@ function ChatRoom({ roomId, theme }) {
   // ...
 ```
 
-这个方法解决了问题。注意你必须从 Effect 依赖项中 **移除** `onConnected`。**Effect Event 是非响应式的并且必须从依赖项中删除**。
+这个方法解决了问题。注意你必须从 Effect 依赖项中 **移除** `theme`，因为 Effect 中没有使用它。你也不需要 **添加** `onConnected`，因为 **Effect Event 是非响应式的并且必须从依赖项中删除**。
 
 验证新表现是否和你预期的一样：
 
