@@ -820,7 +820,11 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
+<<<<<<< HEAD
 并把它作为输入传给另一个 Hook：
+=======
+and passing it as an input to another Hook:
+>>>>>>> 65d297e93b36be5370e58ab7828d022c741ecbe2
 
 ```js {6}
 export default function ChatRoom({ roomId }) {

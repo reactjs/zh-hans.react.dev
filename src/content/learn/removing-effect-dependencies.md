@@ -1240,7 +1240,11 @@ export default function Timer() {
 
 </Sandpack>
 
+<<<<<<< HEAD
 你不应在 Effect 中读取 `count`，而是将 `c => c + 1` 指令（“增加此数字！”）传递给 React。React 将在下一次渲染时执行它。由于你不再需要读取 Effect 中 `count` 的值，因此你可以将 Effect 的依赖保持为空（`[]`）。这可以防止 Effect 在每次执行时重新创建定时器 interval。
+=======
+Instead of reading `count` inside the Effect, you pass a `c => c + 1` instruction ("increment this number!") to React. React will apply it on the next render. And since you don't need to read the value of `count` inside your Effect anymore, you can keep your Effect's dependencies empty (`[]`). This prevents your Effect from re-creating the interval on every tick.
+>>>>>>> 65d297e93b36be5370e58ab7828d022c741ecbe2
 
 </Solution>
 
