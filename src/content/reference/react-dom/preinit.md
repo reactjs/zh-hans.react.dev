@@ -44,6 +44,7 @@ function AppRoot() {
 
 #### 参数 {/*parameters*/}
 
+<<<<<<< HEAD
 * `href`：字符串，要下载并执行的资源的 URL。
 * `options`：对象，可以包含以下属性：
   *  `as`：必需的字符串，表示资源的类型，可能的值包括 `script` 与 `style`。
@@ -52,6 +53,16 @@ function AppRoot() {
   *  `integrity`：字符串，为资源的加密哈希，用于 [验证其真实性](https://developer.mozilla.org/zh-CN/docs/Web/Security/Subresource_Integrity)。
   *  `nonce`：字符串，表示使用严格内容安全策略时允许资源的 [加密随机数](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/nonce)。
   *  `fetchPriority`：字符串，表示建议获取资源的相对优先级，可能的值为 `auto`（默认值）、`high` 与 `low`。
+=======
+* `href`: a string. The URL of the resource you want to download and execute.
+* `options`: an object. It contains the following properties:
+  *  `as`: a required string. The type of resource. Its possible values are `script` and `style`.
+  * `precedence`: a string. Required with stylesheets. Says where to insert the stylesheet relative to others. Stylesheets with higher precedence can override those with lower precedence. The possible values are `reset`, `low`, `medium`, `high`. 
+  *  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`.
+  *  `integrity`: a string. A cryptographic hash of the resource, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
+  *  `nonce`: a string. A cryptographic [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy. 
+  *  `fetchPriority`: a string. Suggests a relative priority for fetching the resource. The possible values are `auto` (the default), `high`, and `low`.
+>>>>>>> 2571aee6dba2e9790172a70224dac8371640b772
 
 #### 返回值 {/*returns*/}
 

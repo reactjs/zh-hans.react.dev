@@ -973,6 +973,23 @@ Effect Event 是 Effect 代码的非响应式“片段”。他们应该在使�
 
 <Sandpack>
 
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "experimental",
+    "react-dom": "experimental",
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+```
+
+
 ```js
 import { useState, useEffect } from 'react';
 
@@ -1025,6 +1042,22 @@ button { margin: 10px; }
 如果你移除了抑制注释，React 就会告诉你这个 Effect 的代码依赖于 `increment`，但是你通过宣称这个 Effect 不依赖于响应式值（`[]`）“欺骗”了 React。将 `increment` 添加到依赖项数组：
 
 <Sandpack>
+
+```json package.json hidden
+{
+  "dependencies": {
+    "react": "experimental",
+    "react-dom": "experimental",
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
+```
 
 ```js
 import { useState, useEffect } from 'react';
