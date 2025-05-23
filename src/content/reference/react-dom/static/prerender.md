@@ -57,7 +57,7 @@ async function handler(request) {
   * **可选** `namespaceURI`：流的根 [命名空间 URI](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris) 的字符串。默认为常规 HTML。对于 SVG，请传递 `'http://www.w3.org/2000/svg'`；对于 MathML，请传递 `'http://www.w3.org/1998/Math/MathML'`。
   * **可选** `onError`：每当发生服务器错误时触发的回调，无论是 [可恢复的](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) 还是 [不可恢复的](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)。默认情况下，它只调用 `console.error`。如果你重写它用来 [记录崩溃报告](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server) ，请确保仍然调用 `console.error`。你还可以使用它在 shell 被生成之前 [调整状态码](/reference/react-dom/server/renderToReadableStream#setting-the-status-code)。
   * **可选** `progressiveChunkSize`：每个块的字节数。[阅读更多关于默认启发式的信息。](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
-  * **可选** `signal`：一个 [中止信号](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)，允许你 [中止服务器渲染](/reference/react-dom/server/renderToReadableStream#aborting-server-rendering) 并在客户端渲染剩余内容。
+  * **可选** `signal`：一个 [中止信号](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)，允许你 [中止预渲染](#aborting-prerendering) 并在客户端渲染剩余内容。
 
 #### 返回值 {/*returns*/}
 
@@ -66,7 +66,9 @@ async function handler(request) {
   - `prelude`：一个 [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的 HTML。你可以使用此流以块的形式发送响应，或者将整个流读取为字符串。
 - 如果渲染失败，Promise 将被拒绝。[使用此方法输出一个回退 shell。](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
 
+#### Caveats {/*caveats*/}
 
+`nonce` is not an available option when prerendering. Nonces must be unique per request and if you use nonces to secure your application with [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) it would be inappropriate and insecure to include the a nonce value in the prerender itself.
 
 
 <Note>
@@ -284,6 +286,31 @@ Suspense **无法** 检测在 Effect 或事件处理程序中获取的数据。
 在没有使用特定框架的情况下，支持 Suspense 的数据获取尚未得到支持。实现支持 Suspense 的数据源的要求目前不稳定且未记录。React 未来版本将发布用于集成数据源与 Suspense 的官方 API。
 
 </Note>
+
+---
+
+### 中止预渲染 {/*aborting-prerendering*/}
+
+可以通过设置超时，来强制“终止”预渲染进程：
+
+
+```js {2-5,11}
+async function renderToString() {
+  const controller = new AbortController();
+  setTimeout(() => {
+    controller.abort()
+  }, 10000);
+
+  try {
+    // the prelude will contain all the HTML that was prerendered
+    // before the controller aborted.
+    const {prelude} = await prerender(<App />, {
+      signal: controller.signal,
+    });
+    //...
+```
+
+所有包含未完成子组件的 Suspense 边界都将以 fallback 状态包含在 prelude 中。
 
 ---
 
