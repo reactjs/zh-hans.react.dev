@@ -67,6 +67,14 @@ The documentation is divided into several sections with a different tone and pur
 1. Follow GitHub's instructions.
 1. If possible, include screenshots of visual changes. A preview build is triggered after your changes are pushed to GitHub.
 
+### Active contributors
+
+The active contributors in the past three months:
+
+<a href="https://openomy.app/github/reactjs/zh-hans.react.dev" target="_blank" style="display: block; width: 100%;" align="center">
+  <img src="https://www.openomy.app/svg?repo=reactjs/zh-hans.react.dev&chart=bubble&latestMonth=3" target="_blank" alt="Contribution Leaderboard" style="display: block; width: 100%;" />
+</a>
+
 ## Translation
 
 If you are interested in translating `react.dev`, please see the current translation efforts [here](https://github.com/reactjs/react.dev/issues/4135).
