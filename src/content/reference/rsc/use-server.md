@@ -24,7 +24,7 @@ titleForTitleTag: "'use server' 指示符"
 
 ### `'use server'` {/*use-server*/}
 
-在异步函数顶部添加 `'use server'` 以将该函数标记为可由客户端调用。我们将这些函数称为 **[服务器函数]((/reference/rsc/server-functions))**。
+在异步函数顶部添加 `'use server'` 以将该函数标记为可由客户端调用。我们将这些函数称为 **[服务器函数](/reference/rsc/server-functions)**。
 
 ```js {2}
 async function addToCart(data) {
