@@ -676,7 +676,11 @@ label {
 
 </Sandpack>
 
+<<<<<<< HEAD
 当你勾选复选框后计数器的 state 被重置了。虽然你渲染了一个 `Counter`，但是 `div` 的第一个子组件从 `div` 变成了 `section`。当子组件 `div` 从 DOM 中被移除的时候，它底下的整棵树（包含 `Counter` 以及它的 state）也都被销毁了。
+=======
+The counter state gets reset when you click the checkbox. Although you render a `Counter`, the first child of the `div` changes from a `section` to a `div`. When the child `section` was removed from the DOM, the whole tree below it (including the `Counter` and its state) was destroyed as well.
+>>>>>>> e90179047b1e7dd1ef19a37eed52765d8e04c484
 
 <DiagramGroup>
 

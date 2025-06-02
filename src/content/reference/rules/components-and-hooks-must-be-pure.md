@@ -206,8 +206,13 @@ function ProductDetailPage({ product }) {
 
 你可以将 props 和 state 视为在渲染后更新的快照。因此，你不会直接修改 props 或 state，相反，你传递新的 props，或者使用提供给你的 setter 函数来告诉 React，state 需要在下一次组件渲染时更新。
 
+<<<<<<< HEAD
 ### 不要修改 props {/*props*/}
 props 是不可变的，因为如果你改变了它们，应用程序可能会产生不一致的结果，这会让调试变得困难，因为程序可能会在某些情况下工作，而在另一些情况下不工作。
+=======
+### Don't mutate Props {/*props*/}
+Props are immutable because if you mutate them, the application will produce inconsistent output, which can be hard to debug as it may or may not work depending on the circumstances.
+>>>>>>> e90179047b1e7dd1ef19a37eed52765d8e04c484
 
 ```js {2}
 function Post({ item }) {
@@ -306,7 +311,12 @@ function useIconStyle(icon) {
   }, [icon, theme]);
 }
 ```
+<<<<<<< HEAD
 如果你改变了 Hook 的参数，那么自定义 Hook 的缓存（memoization）就会变得不正确，因此避免这样做非常重要。
+=======
+
+If you were to mutate the Hook's arguments, the custom hook's memoization will become incorrect,  so it's important to avoid doing that.
+>>>>>>> e90179047b1e7dd1ef19a37eed52765d8e04c484
 
 ```js {4}
 style = useIconStyle(icon);         // `style` 是基于 `icon` 进行记忆化的
@@ -326,7 +336,11 @@ style = useIconStyle(icon);         // 计算 `style` 的新值
 
 ## 不要改变传递给 JSX 后的值 {/*values-are-immutable-after-being-passed-to-jsx*/}
 
+<<<<<<< HEAD
 不要在 JSX 使用过值之后改变它们。应该在创建 JSX 之前完成值的更改。
+=======
+Don't mutate values after they've been used in JSX. Move the mutation to before the JSX is created.
+>>>>>>> e90179047b1e7dd1ef19a37eed52765d8e04c484
 
 当你在表达式中使用 JSX 时，React 可能会在组件完成渲染之前就急于计算 JSX。这意味着，如果在将值传递给 JSX 之后对它们进行更改，可能会导致 UI 过时，因为 React 不会知道需要更新组件的输出。
 
