@@ -51,7 +51,7 @@ export function Challenge({
           id={currentChallenge.id}>
           <div className="font-bold block md:inline">
             第 {currentChallenge.order} 个{isRecipes ? '示例' : '挑战'} 共{' '}
-            {totalChallenges} 个挑战
+            {totalChallenges} 个{isRecipes ? '示例' : '挑战'}
             <span className="text-primary dark:text-primary-dark">: </span>
           </div>
           {currentChallenge.name}
