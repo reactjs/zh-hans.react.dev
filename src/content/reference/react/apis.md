@@ -13,12 +13,20 @@ translators:
 
 ---
 
+<<<<<<< HEAD
 * [`createContext`](/reference/react/createContext) API 可以创建一个 context，你可以将其提供给子组件，通常会与 [`useContext`](/reference/react/useContext) 一起配合使用。
 * [`forwardRef`](/reference/react/forwardRef) 允许组件将 DOM 节点作为 ref 暴露给父组件。
 * [`lazy`](/reference/react/lazy) 允许你延迟加载组件，直到该组件需要第一次被渲染。
 * [`memo`](/reference/react/memo) 允许你在 props 没有变化的情况下跳过组件的重渲染。通常 [`useMemo`](/reference/react/useMemo) 与 [`useCallback`](/reference/react/useCallback) 会一起配合使用。
 * [`startTransition`](/reference/react/startTransition) 允许你可以标记一个状态更新是不紧急的。类似于 [`useTransition`](/reference/react/useTransition)。
 * [`act`](/reference/react/act) 允许你在测试中包装渲染和交互，以确保在断言之前已完成更新。
+=======
+* [`createContext`](/reference/react/createContext) lets you define and provide context to the child components. Used with [`useContext`.](/reference/react/useContext)
+* [`lazy`](/reference/react/lazy) lets you defer loading a component's code until it's rendered for the first time.
+* [`memo`](/reference/react/memo) lets your component skip re-renders with same props. Used with [`useMemo`](/reference/react/useMemo) and [`useCallback`.](/reference/react/useCallback)
+* [`startTransition`](/reference/react/startTransition) lets you mark a state update as non-urgent. Similar to [`useTransition`.](/reference/react/useTransition)
+* [`act`](/reference/react/act) lets you wrap renders and interactions in tests to ensure updates have processed before making assertions.
+>>>>>>> 5dca5201881bedcda8baaaac1c9376f796c1b23c
 
 ---
 

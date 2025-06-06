@@ -410,7 +410,11 @@ function MyInput({placeholder, ref}) {
 
 <Note>
 
+<<<<<<< HEAD
 在类组件中，`ref` 不作为 props 传递，因为它们引用的是组件实例。这意味着，如果你在类组件中需要访问 `ref`，你需要使用 `React.forwardRef` 或者 `React.createRef`。
+=======
+`ref`s passed to classes are not passed as props since they reference the component instance.
+>>>>>>> 5dca5201881bedcda8baaaac1c9376f796c1b23c
 
 </Note>
 
