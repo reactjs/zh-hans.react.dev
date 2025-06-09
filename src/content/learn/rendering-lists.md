@@ -419,7 +419,7 @@ const listItems = people.map(person =>
 不同来源的数据往往对应不同的 key 值获取方式：
 
 * **来自数据库的数据：** 如果你的数据是从数据库中获取的，那你可以直接使用数据表中的主键，因为它们天然具有唯一性。
-* **本地产生数据：** 如果你数据的产生和保存都在本地（例如笔记软件里的笔记），那么你可以使用一个自增计数器或者一个类似 [`uuid`](https://www.npmjs.com/package/uuid) 的库来生成 key。
+* **本地产生数据：** 如果你数据的产生和保存都在本地（例如笔记软件里的笔记），那么你可以使用一个自增计数器，[`crypto.randomUUID()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Crypto/randomUUID) 或者一个类似 [`uuid`](https://www.npmjs.com/package/uuid) 的库来生成 key。
 
 ### key 需要满足的条件 {/*rules-of-keys*/}
 
