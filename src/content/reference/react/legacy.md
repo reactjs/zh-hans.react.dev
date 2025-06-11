@@ -30,6 +30,6 @@ title: "过时的 React API"
 * [`createFactory`](https://18.react.dev/reference/react/createFactory)：使用 JSX 来替代。
 * 类组件：[`static contextTypes`](https://18.react.dev//reference/react/Component#static-contexttypes): 使用 [`static contextType`](#static-contexttype) 来替代。
 * 类组件：[`static childContextTypes`](https://18.react.dev//reference/react/Component#static-childcontexttypes): 使用 [`static contextType`](#static-contexttype) 来替代。
-* 类组件：[`static getChildContext`](https://18.react.dev//reference/react/Component#getchildcontext): 使用 [`Context.Provider`](/reference/react/createContext#provider) 来替代。
+* 类组件：[`static getChildContext`](https://18.react.dev//reference/react/Component#getchildcontext): 使用 [`Context`](/reference/react/createContext#provider) 来替代。
 * 类组件：[`static propTypes`](https://18.react.dev//reference/react/Component#static-proptypes): 使用 [TypeScript](https://www.typescriptlang.org/) 等类型系统来替代。
 * 类组件：[`this.refs`](https://18.react.dev//reference/react/Component#refs): 使用 [`createRef`](/reference/react/createRef) 来替代。

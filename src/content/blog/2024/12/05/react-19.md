@@ -410,7 +410,7 @@ function MyInput({placeholder, ref}) {
 
 <Note>
 
-在类组件中，`ref` 不作为 props 传递，因为它们引用的是组件实例。这意味着，如果你在类组件中需要访问 `ref`，你需要使用 `React.forwardRef` 或者 `React.createRef`。
+在类组件中，`ref` 不作为 props 传递，因为它们引用的是组件实例。
 
 </Note>
 

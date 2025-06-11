@@ -38,14 +38,15 @@ const ThemeContext = createContext('light');
 
 `createContext` 返回一个上下文对象。
 
-**该上下文对象本身不包含任何信息**。它只表示其他组件读取或提供的那个上下文。一般来说，在组件上方使用 [`SomeContext.Provider`](#provider) 指定上下文的值，并在被包裹的下方组件内调用 [`useContext(SomeContext)`](/reference/react/useContext) 读取它。上下文对象有一些属性：
+**该上下文对象本身不包含任何信息**。它只表示其他组件读取或提供的那个上下文。一般来说，在组件上方使用 [`SomeContext`](#provider) 指定上下文的值，并在被包裹的下方组件内调用 [`useContext(SomeContext)`](/reference/react/useContext) 读取它。上下文对象有一些属性：
 
-* `SomeContext.Provider` 让你为被它包裹的组件提供上下文的值。
+* `SomeContext` 为组件提供上下文的值。
 * `SomeContext.Consumer` 是一个很少会用到的备选方案，它用于读取上下文的值。
+* `SomeContext.Provider` 是在 React 19 之前提供上下文值的遗留方法。
 
 ---
 
-### `SomeContext.Provider` {/*provider*/}
+### `SomeContext` Provider {/*provider*/}
 
 用上下文 provider 包裹组件，以为里面所有的组件指定一个上下文的值：
 
@@ -54,12 +55,20 @@ function App() {
   const [theme, setTheme] = useState('light');
   // ……
   return (
-    <ThemeContext.Provider value={theme}>
+    <ThemeContext value={theme}>
       <Page />
-    </ThemeContext.Provider>
+    </ThemeContext>
   );
 }
 ```
+
+<Note>
+
+从 React 19 开始，你可以将 `<SomeContext>` 作为渲染的上下文 provider。
+
+较旧版本的 React 需要使用 `<SomeContext.Provider>`。
+
+</Note>
 
 #### Props {/*provider-props*/}
 
@@ -141,11 +150,11 @@ function App() {
   // ...
 
   return (
-    <ThemeContext.Provider value={theme}>
-      <AuthContext.Provider value={currentUser}>
+    <ThemeContext value={theme}>
+      <AuthContext value={currentUser}>
         <Page />
-      </AuthContext.Provider>
-    </ThemeContext.Provider>
+      </AuthContext>
+    </ThemeContext>
   );
 }
 ```
@@ -187,11 +196,11 @@ import { ThemeContext, AuthContext } from './Contexts.js';
 function App() {
   // ...
   return (
-    <ThemeContext.Provider value={theme}>
-      <AuthContext.Provider value={currentUser}>
+    <ThemeContext value={theme}>
+      <AuthContext value={currentUser}>
         <Page />
-      </AuthContext.Provider>
-    </ThemeContext.Provider>
+      </AuthContext>
+    </ThemeContext>
   );
 }
 ```

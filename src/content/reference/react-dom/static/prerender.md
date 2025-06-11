@@ -68,7 +68,7 @@ async function handler(request) {
 
 #### Caveats {/*caveats*/}
 
-`nonce` is not an available option when prerendering. Nonces must be unique per request and if you use nonces to secure your application with [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) it would be inappropriate and insecure to include the a nonce value in the prerender itself.
+`nonce` is not an available option when prerendering. Nonces must be unique per request and if you use nonces to secure your application with [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) it would be inappropriate and insecure to include the nonce value in the prerender itself.
 
 
 <Note>
@@ -231,7 +231,7 @@ async function renderToString() {
   const {prelude} = await prerender(<App />, {
     bootstrapScripts: ['/main.js']
   });
-  
+
   const reader = prelude.getReader();
   let content = '';
   while (true) {
@@ -321,4 +321,3 @@ async function renderToString() {
 `prerender` 的响应会等待整个应用渲染完成，包括所有 Suspense 边界的内容加载完成后，才会解析。这种设计适用于静态站点生成（SSG），并不支持在内容加载时进行流式加载。
 
 如果需要在内容加载时进行流式加载，可以使用类似 [renderToReadableStream](/reference/react-dom/server/renderToReadableStream) 的流式服务器渲染 API。
- 
