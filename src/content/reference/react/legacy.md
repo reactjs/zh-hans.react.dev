@@ -27,18 +27,9 @@ title: "过时的 React API"
 
 这些 API 在 React 19 中被移除。
 
-<<<<<<< HEAD
 * [`createFactory`](https://18.react.dev/reference/react/createFactory)：使用 JSX 来替代。
 * 类组件：[`static contextTypes`](https://18.react.dev//reference/react/Component#static-contexttypes): 使用 [`static contextType`](#static-contexttype) 来替代。
 * 类组件：[`static childContextTypes`](https://18.react.dev//reference/react/Component#static-childcontexttypes): 使用 [`static contextType`](#static-contexttype) 来替代。
-* 类组件：[`static getChildContext`](https://18.react.dev//reference/react/Component#getchildcontext): 使用 [`Context.Provider`](/reference/react/createContext#provider) 来替代。
+* 类组件：[`static getChildContext`](https://18.react.dev//reference/react/Component#getchildcontext): 使用 [`Context`](/reference/react/createContext#provider) 来替代。
 * 类组件：[`static propTypes`](https://18.react.dev//reference/react/Component#static-proptypes): 使用 [TypeScript](https://www.typescriptlang.org/) 等类型系统来替代。
 * 类组件：[`this.refs`](https://18.react.dev//reference/react/Component#refs): 使用 [`createRef`](/reference/react/createRef) 来替代。
-=======
-* [`createFactory`](https://18.react.dev/reference/react/createFactory): use JSX instead.
-* Class Components: [`static contextTypes`](https://18.react.dev//reference/react/Component#static-contexttypes): use [`static contextType`](#static-contexttype) instead.
-* Class Components: [`static childContextTypes`](https://18.react.dev//reference/react/Component#static-childcontexttypes): use [`static contextType`](#static-contexttype) instead.
-* Class Components: [`static getChildContext`](https://18.react.dev//reference/react/Component#getchildcontext): use [`Context`](/reference/react/createContext#provider) instead.
-* Class Components: [`static propTypes`](https://18.react.dev//reference/react/Component#static-proptypes): use a type system like [TypeScript](https://www.typescriptlang.org/) instead.
-* Class Components: [`this.refs`](https://18.react.dev//reference/react/Component#refs): use [`createRef`](/reference/react/createRef) instead.
->>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91

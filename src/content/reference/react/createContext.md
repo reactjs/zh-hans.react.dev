@@ -38,18 +38,11 @@ const ThemeContext = createContext('light');
 
 `createContext` 返回一个上下文对象。
 
-<<<<<<< HEAD
-**该上下文对象本身不包含任何信息**。它只表示其他组件读取或提供的那个上下文。一般来说，在组件上方使用 [`SomeContext.Provider`](#provider) 指定上下文的值，并在被包裹的下方组件内调用 [`useContext(SomeContext)`](/reference/react/useContext) 读取它。上下文对象有一些属性：
+**该上下文对象本身不包含任何信息**。它只表示其他组件读取或提供的那个上下文。一般来说，在组件上方使用 [`SomeContext`](#provider) 指定上下文的值，并在被包裹的下方组件内调用 [`useContext(SomeContext)`](/reference/react/useContext) 读取它。上下文对象有一些属性：
 
-* `SomeContext.Provider` 让你为被它包裹的组件提供上下文的值。
+* `SomeContext` 为组件提供上下文的值。
 * `SomeContext.Consumer` 是一个很少会用到的备选方案，它用于读取上下文的值。
-=======
-**The context object itself does not hold any information.** It represents _which_ context other components read or provide. Typically, you will use [`SomeContext`](#provider) in components above to specify the context value, and call [`useContext(SomeContext)`](/reference/react/useContext) in components below to read it. The context object has a few properties:
-
-* `SomeContext` lets you provide the context value to components.
-* `SomeContext.Consumer` is an alternative and rarely used way to read the context value.
-* `SomeContext.Provider` is a legacy way to provide the context value before React 19.
->>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91
+* `SomeContext.Provider` 是在 React 19 之前提供上下文值的遗留方法。
 
 ---
 
@@ -71,9 +64,9 @@ function App() {
 
 <Note>
 
-Starting in React 19, you can render `<SomeContext>` as a provider. 
+从 React 19 开始，你可以将 `<SomeContext>` 作为渲染的上下文 provider。
 
-In older versions of React, use `<SomeContext.Provider>`.
+较旧版本的 React 需要使用 `<SomeContext.Provider>`。
 
 </Note>
 
@@ -229,9 +222,5 @@ const ThemeContext = createContext('light');
 
 该值永远不会发生改变。当 React 无法找到匹配的 provider 时，该值会被作为后备方案。
 
-<<<<<<< HEAD
 要想使上下文的值随时间变化，[添加状态并使用一个上下文 provider 包裹组件](/reference/react/useContext#updating-data-passed-via-context)。
 
-=======
-To make context change over time, [add state and wrap components in a context provider.](/reference/react/useContext#updating-data-passed-via-context)
->>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91

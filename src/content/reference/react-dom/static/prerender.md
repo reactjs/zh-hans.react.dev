@@ -318,13 +318,6 @@ async function renderToString() {
 
 ### 我的流要等到整个应用渲染完成后才会启动。 {/*my-stream-doesnt-start-until-the-entire-app-is-rendered*/}
 
-<<<<<<< HEAD
 `prerender` 的响应会等待整个应用渲染完成，包括所有 Suspense 边界的内容加载完成后，才会解析。这种设计适用于静态站点生成（SSG），并不支持在内容加载时进行流式加载。
 
 如果需要在内容加载时进行流式加载，可以使用类似 [renderToReadableStream](/reference/react-dom/server/renderToReadableStream) 的流式服务器渲染 API。
- 
-=======
-The `prerender` response waits for the entire app to finish rendering, including waiting for all Suspense boundaries to resolve, before resolving. It is designed for static site generation (SSG) ahead of time and does not support streaming more content as it loads.
-
-To stream content as it loads, use a streaming server render API like [renderToReadableStream](/reference/react-dom/server/renderToReadableStream).
->>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91

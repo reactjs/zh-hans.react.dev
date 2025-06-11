@@ -467,11 +467,7 @@ export default function Toggle() {
 
 #### 修复防抖 {/*fix-debouncing*/}
 
-<<<<<<< HEAD
-在这个例子中，所有按钮点击处理器都是 ["防抖的"](https://redd.one/blog/debounce-vs-throttle)。 要了解这意味着什么，请按下其中一个按钮。注意消息在一秒后显示。如果你在等待消息时按下按钮，计时器将重置。因此如果你多次快速单击同一个按钮，则直到你停止单击 **之后** 1 秒钟，该消息才会显示。防抖可以让你将一些动作推迟到用户“停止动作”之后。
-=======
-In this example, all button click handlers are ["debounced".](https://kettanaito.com/blog/debounce-vs-throttle) To see what this means, press one of the buttons. Notice how the message appears a second later. If you press the button while waiting for the message, the timer will reset. So if you keep clicking the same button fast many times, the message won't appear until a second *after* you stop clicking. Debouncing lets you delay some action until the user "stops doing things".
->>>>>>> 50d6991ca6652f4bc4c985cf0c0e593864f2cc91
+在这个例子中，所有按钮点击处理器都是 ["防抖的"](https://kettanaito.com/blog/debounce-vs-throttle)。 要了解这意味着什么，请按下其中一个按钮。注意消息在一秒后显示。如果你在等待消息时按下按钮，计时器将重置。因此如果你多次快速单击同一个按钮，则直到你停止单击 **之后** 1 秒钟，该消息才会显示。防抖可以让你将一些动作推迟到用户“停止动作”之后。
 
 这个例子可以正常运行，但并不完全符合预期。按钮不是独立的。要查看问题，请单击其中一个按钮，然后立即单击另一个按钮。你本来期望在延迟之后，你会看到两个按钮的消息。但只有最后一个按钮的消息出现了。第一个按钮的消息丢失了。
 
