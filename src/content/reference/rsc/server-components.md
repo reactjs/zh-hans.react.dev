@@ -4,7 +4,11 @@ title: 服务器组件
 
 <RSC>
 
+<<<<<<< HEAD
 服务器组件被用在 [React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 中。
+=======
+Server Components are for use in [React Server Components](/learn/start-a-new-react-project#full-stack-frameworks).
+>>>>>>> 341c312916e1b657262bbe14b134a6f1779fecf1
 
 </RSC>
 
@@ -22,7 +26,11 @@ React 服务器组件中的「服务器」就是指这个独立的环境。服�
 
 #### 我如何构建对服务器组件的支持？ {/*how-do-i-build-support-for-server-components*/}
 
+<<<<<<< HEAD
 虽然 React 19 中的 React 服务器组件是稳定的，并且在小版本之间不会发生破坏，但用于实现 React 服务器组件打包器或框架的底层 API 不遵循 semver，并可能在 React 19.x 的小版本之间发生破坏。
+=======
+While React Server Components in React 19 are stable and will not break between minor versions, the underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x.
+>>>>>>> 341c312916e1b657262bbe14b134a6f1779fecf1
 
 为了支持 React 服务器组件作为打包器或框架，我们建议固定到特定的 React 版本，或者使用 Canary 发行版。我们将继续与打包器和框架合作，以在未来稳定用于实现 React 服务器组件的 API。
 
@@ -45,7 +53,7 @@ function Page({page}) {
       setContent(data.content);
     });
   }, [page]);
-  
+
   return <div>{sanitizeHtml(marked(content))}</div>;
 }
 ```
@@ -69,7 +77,7 @@ import sanitizeHtml from 'sanitize-html'; // 不会包括在 bundle 中
 async function Page({page}) {
   // 注意: 会在应用构建的 **渲染过程中** 加载
   const content = await file.readFile(`${page}.md`);
-  
+
   return <div>{sanitizeHtml(marked(content))}</div>;
 }
 ```
@@ -113,7 +121,7 @@ function Note({id}) {
       setNote(data.note);
     });
   }, [id]);
-  
+
   return (
     <div>
       <Author id={note.authorId} />
@@ -253,7 +261,7 @@ export default function Expandable({children}) {
       <p>this is the second note</p>
     </Expandable>
     <!--...-->
-  </div> 
+  </div>
 </body>
 ```
 
@@ -270,8 +278,13 @@ import db from './database';
 async function Page({id}) {
   // 使用 await 会使服务器组件暂停
   const note = await db.notes.get(id);
+<<<<<<< HEAD
   
   // 注意: 没有使用 await, 所以从这里开始执行，但是客户端上面进行 await
+=======
+
+  // NOTE: not awaited, will start here and await on the client.
+>>>>>>> 341c312916e1b657262bbe14b134a6f1779fecf1
   const commentsPromise = db.comments.get(note.id);
   return (
     <div>

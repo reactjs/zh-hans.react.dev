@@ -690,7 +690,11 @@ ul, li { margin: 0; padding: 0; }
 </TasksContext>
 ```
 
+<<<<<<< HEAD
 相反，任何需要 tasks 的组件都可以从 `TaskContext` 中读取它：
+=======
+Instead, any component that needs the task list can read it from the `TasksContext`:
+>>>>>>> 341c312916e1b657262bbe14b134a6f1779fecf1
 
 ```js {2}
 export default function TaskList() {
