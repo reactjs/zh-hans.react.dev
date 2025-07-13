@@ -10,7 +10,7 @@ title: "指示符"
 
 <Intro>
 
-指示符（directive）向 [与 React 服务器组件兼容的捆绑器](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 提供指令（instruction）。
+指示符（directive）向 [与 React 服务器组件兼容的捆绑器](/learn/start-a-new-react-project#full-stack-frameworks) 提供指令（instruction）。
 
 </Intro>
 

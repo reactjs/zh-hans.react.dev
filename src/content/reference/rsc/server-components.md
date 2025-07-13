@@ -4,7 +4,7 @@ title: 服务器组件
 
 <RSC>
 
-服务器组件被用在 [React 服务器组件](/learn/start-a-new-react-project#bleeding-edge-react-frameworks) 中。
+服务器组件被用在 [React 服务器组件](/learn/start-a-new-react-project#full-stack-frameworks) 中。
 
 </RSC>
 
@@ -45,7 +45,7 @@ function Page({page}) {
       setContent(data.content);
     });
   }, [page]);
-  
+
   return <div>{sanitizeHtml(marked(content))}</div>;
 }
 ```
@@ -69,7 +69,7 @@ import sanitizeHtml from 'sanitize-html'; // 不会包括在 bundle 中
 async function Page({page}) {
   // 注意: 会在应用构建的 **渲染过程中** 加载
   const content = await file.readFile(`${page}.md`);
-  
+
   return <div>{sanitizeHtml(marked(content))}</div>;
 }
 ```
@@ -113,7 +113,7 @@ function Note({id}) {
       setNote(data.note);
     });
   }, [id]);
-  
+
   return (
     <div>
       <Author id={note.authorId} />
@@ -253,7 +253,7 @@ export default function Expandable({children}) {
       <p>this is the second note</p>
     </Expandable>
     <!--...-->
-  </div> 
+  </div>
 </body>
 ```
 
@@ -270,7 +270,7 @@ import db from './database';
 async function Page({id}) {
   // 使用 await 会使服务器组件暂停
   const note = await db.notes.get(id);
-  
+
   // 注意: 没有使用 await, 所以从这里开始执行，但是客户端上面进行 await
   const commentsPromise = db.comments.get(note.id);
   return (

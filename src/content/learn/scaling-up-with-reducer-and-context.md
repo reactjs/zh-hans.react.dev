@@ -690,7 +690,7 @@ ul, li { margin: 0; padding: 0; }
 </TasksContext>
 ```
 
-相反，任何需要 tasks 的组件都可以从 `TaskContext` 中读取它：
+相反，任何需要 tasks 的组件都可以从 `TasksContext` 中读取它：
 
 ```js {2}
 export default function TaskList() {
