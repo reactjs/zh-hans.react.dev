@@ -1306,8 +1306,8 @@ import {unstable_ViewTransition as ViewTransition} from 'react'; import Details 
 export default function App() {
   const {url} = useRouter();
 
-  // Use ViewTransition to animate between pages.
-  // No additional CSS needed by default.
+  // 使用 ViewTransition 在页面间进行动画。
+  // 默认情况下不需要添加 CSS。
   return (
     <ViewTransition>
       {url === '/' ? <Home /> : <Details />}
