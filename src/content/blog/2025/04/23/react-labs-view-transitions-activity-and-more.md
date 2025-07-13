@@ -9393,7 +9393,7 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
+      // 因为恢复必须是同步的，所以应该没有动画。
       // Even though it's a transition.
       startTransition(() => {
         setRouterState({
@@ -10270,14 +10270,14 @@ function VideoInfo({ id }) {
 import { useId, useState, use, useDeferredValue, unstable_ViewTransition as ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
-  // Activate with useDeferredValue ("when")
+  // 通过 useDeferredValue来激活(何时) 
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
     <div className="video-list">
       <div className="videos">
         {filteredVideos.map((video) => (
-          // Animate each item in list ("what")
+          // 对列表中的每一个子项目进行动画（何地）
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
@@ -11459,7 +11459,7 @@ root.render(
 
 如果你想了解更多关于它们如何工作的信息，请查看文档中的[`<ViewTransition>` 如何工作](/reference/react/ViewTransition#how-does-viewtransition-work)。
 
-_关于我们如何构建视图过渡的更多背景信息，请参阅：[#31975](https://github.com/facebook/react/pull/31975)、[#32105](https://github.com/facebook/react/pull/32105)、[#32041](https://github.com/facebook/react/pull/32041)、[#32734](https://github.com/facebook/react/pull/32734)、[#32797](https://github.com/facebook/react/pull/32797)、[#31999](https://github.com/facebook/react/pull/31999)、[#32031](https://github.com/facebook/react/pull/32031)、[#32050](https://github.com/facebook/react/pull/32050)、[#32820](https://github.com/facebook/react/pull/32820)、[#32029](https://github.com/facebook/react/pull/32029)、[#32028](https://github.com/facebook/react/pull/32028) 和 [#32038](https://github.com/facebook/react/pull/32038)，由 [@sebmarkbage](https://twitter.com/sebmarkbage) 完成（感谢 Seb！）。_
+**关于我们如何构建视图过渡的更多背景信息，请参阅：[#31975](https://github.com/facebook/react/pull/31975)、[#32105](https://github.com/facebook/react/pull/32105)、[#32041](https://github.com/facebook/react/pull/32041)、[#32734](https://github.com/facebook/react/pull/32734)、[#32797](https://github.com/facebook/react/pull/32797)、[#31999](https://github.com/facebook/react/pull/31999)、[#32031](https://github.com/facebook/react/pull/32031)、[#32050](https://github.com/facebook/react/pull/32050)、[#32820](https://github.com/facebook/react/pull/32820)、[#32029](https://github.com/facebook/react/pull/32029)、[#32028](https://github.com/facebook/react/pull/32028) 和 [#32038](https://github.com/facebook/react/pull/32038)，由 [@sebmarkbage](https://twitter.com/sebmarkbage) 完成（感谢 Seb！）。**
 
 ---
 
@@ -11485,7 +11485,7 @@ _关于我们如何构建视图过渡的更多背景信息，请参阅：[#31975
 
 <Note>
 
-**Effects don’t mount when an Activity is hidden.**
+**当 Activity 处于 hidden 状态的时候 Effect 不会启动**
 
 当 `<Activity>` 处于 `hidden` 状态时，Effect 会被卸载。从概念上讲，组件被卸载了，但 React 会保存状态以供以后使用。
 
@@ -11531,7 +11531,7 @@ function App() {
 
 通过这个更改，我们可以改进上面的视图过渡示例。之前，当你搜索视频、选择一个视频并返回时，你的搜索过滤器会丢失。使用 Activity，你的搜索过滤器会被恢复，你可以从离开的地方继续。
 
-尝试搜索一个视频，选择它，然后点击"返回"：
+尝试搜索一个视频，选择它，然后点击“返回”：
 
 <Sandpack>
 
@@ -11542,7 +11542,7 @@ export default function App() {
   const { url } = useRouter();
 
   return (
-    // View Transitions know about Activity
+    // 视图过渡知道如何处理 Activity
     <ViewTransition>
       {/* Render Home in Activity so we don't lose state */}
       <Activity mode={url === '/' ? 'visible' : 'hidden'}>
@@ -11633,7 +11633,7 @@ function VideoInfo({ id }) {
 import { useId, useState, use, useDeferredValue, unstable_ViewTransition as ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
-  // Activate with useDeferredValue ("when")
+  // 通过 useDeferredValue来激活(何时) 
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
@@ -11643,7 +11643,7 @@ function SearchList({searchText, videos}) {
       )}
       <div className="videos">
         {filteredVideos.map((video) => (
-          // Animate each item in list ("what")
+          // 对列表中的每一个子项目进行动画（何地）
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
@@ -12071,7 +12071,7 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
+      // 因为恢复必须是同步的，所以应该没有动画。
       // Even though it's a transition.
       startTransition(() => {
         setRouterState({
@@ -12882,7 +12882,7 @@ export default function App() {
 
   return (
     <ViewTransition>
-      {/* Render videos in Activity to pre-render them */}
+      {/* 在视图过渡中渲染视频以预渲染它们 */}
       {videos.map(({id}) => (
         <Activity key={id} mode={videoId === id ? 'visible' : 'hidden'}>
           <Details id={id}/>
@@ -14216,7 +14216,7 @@ root.render(
 
 在我们迭代可能的解决方案时，你可能会看到我们正在测试的一些潜在 API，这些 API 基于我们正在合并的 PR 进行分享。请记住，当我们尝试不同的想法时，我们通常会在尝试后更改或删除不同的解决方案。
 
-当我们正在开发的解决方案过早分享时，可能会在社区中造成混乱和困惑。为了平衡透明度和减少困惑，我们分享了我们当前正在为其开发解决方案的问题，而不分享我们心中的特定解决方案。
+如果我们过早分享正在开发的解决方案，可能会在社区中造成混乱和困惑。为了平衡透明度和减少困惑，我们只分享了当前正在为其开发解决方案的问题，而不分享我们心中的特定解决方案。
 
 随着这些功能的进展，我们将在博客上宣布它们，并附上文档，以便你可以尝试它们。
 
@@ -14237,7 +14237,7 @@ root.render(
   </picture>
 </div>
 
-我们计划解决一些已知问题，如性能问题，以及调度器追踪不总是能在 Suspended 树之间"连接"工作，所以它还不完全可用。我们还在收集早期采用者的反馈，以改进追踪的设计和可用性。
+我们计划解决一些已知问题，如性能问题，以及调度器追踪不总是能在 Suspended 树之间“连接”工作，所以它还不完全可用。我们还在收集早期采用者的反馈，以改进追踪的设计和可用性。
 
 一旦我们解决了这些问题，我们将发布实验性文档并分享它已准备好供尝试。
 
@@ -14251,7 +14251,7 @@ root.render(
 - **以函数而非生命周期的方式思考**：hooks 让你可以根据相关的部分（如设置订阅或获取数据）将一个组件拆分成更小的函数，而不是强制基于生命周期方法进行拆分。
 - **支持提前编译**：hooks 的设计支持提前编译，减少了由生命周期方法和类的限制导致的无意去优化的陷阱。
 
-自发布以来，hooks 在*在组件之间共享代码*方面取得了成功。Hooks 现在是在组件之间共享逻辑的首选方式，render props 和高阶组件的使用场景减少了。Hooks 还成功支持了像 Fast Refresh 这样的功能，这在类组件中是不可能实现的。
+自发布以来，hooks 在 **在组件之间共享代码** 方面取得了成功。Hooks 现在是在组件之间共享逻辑的首选方式，render props 和高阶组件的使用场景减少了。Hooks 还成功支持了像 Fast Refresh 这样的功能，这在类组件中是不可能实现的。
 
 ### Effects 可能很难理解 {/*effects-can-be-hard*/}
 
@@ -14259,7 +14259,7 @@ root.render(
 
 我们发现，困惑通常来自于在不需要的情况下使用 Effect。[你可能不需要 Effect](/learn/you-might-not-need-an-effect) 指南涵盖了许多 Effects 不是正确解决方案的情况。然而，即使 Effect 是解决问题的正确选择，Effects 仍然可能比类组件生命周期更难理解。
 
-我们认为造成困惑的原因之一是开发者从*组件*的角度（像生命周期一样）思考 Effects，而不是从 *Effects* 的角度（Effect 做什么）思考。
+我们认为造成困惑的原因之一是开发者从 **组件** 的角度（像生命周期一样）思考 Effects，而不是从 **Effects** 的角度（Effect 做什么）思考。
 
 让我们看一个[文档中的例子](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective)：
 
@@ -14275,7 +14275,7 @@ useEffect(() => {
 }, [roomId]);
 ```
 
-许多用户会将这段代码理解为"在挂载时，连接到 roomId。每当 `roomId` 改变时，断开与旧房间的连接并重新创建连接"。然而，这是从组件的生命周期角度思考，这意味着你需要考虑每个组件生命周期状态才能正确编写 Effect。这可能很困难，所以当使用组件角度时，Effects 看起来比类生命周期更难理解是可以理解的。
+许多用户会将这段代码理解为“在挂载时，连接到 roomId。每当 `roomId` 改变时，断开与旧房间的连接并重新创建连接”。然而，这是从组件的生命周期角度思考，这意味着你需要考虑每个组件生命周期状态才能正确编写 Effect。这可能很困难，所以当使用组件角度时，Effects 看起来比类生命周期更难理解是可以理解的。
 
 ### 没有依赖的 Effects {/*effects-without-dependencies*/}
 
@@ -14331,7 +14331,7 @@ Fragment refs 仍在研究中。当我们接近完成最终 API 时，我们将�
 
 - **手势是连续的**：当你滑动时，动画与你的手指放置时间相关联，而不是触发并运行到完成。
 - **手势不一定完成**：当你释放手指时，手势动画可以运行到完成，或者根据你滑动的距离恢复到原始状态（比如当你只是部分打开菜单时）。
-- **手势颠倒了旧状态和新状态**：在动画过程中，你希望你正在从中进行动画的页面保持"活跃"和可交互。这颠倒了浏览器视图过渡模型，在该模型中，"旧"状态是快照，而"新"状态是实时 DOM。
+- **手势颠倒了旧状态和新状态**：在动画过程中，你希望你正在从中进行动画的页面保持“活跃”和可交互。这颠倒了浏览器视图过渡模型，在该模型中，“旧”状态是快照，而“新”状态是实时 DOM。
 
 我们相信已经找到了一种行之有效的方法，并可能引入一个新的 API 来触发手势过渡。目前，我们专注于发布 `<ViewTransition>`，之后再重新审视手势相关功能。
 
@@ -14355,4 +14355,4 @@ const value = use(store);
 
 ---
 
-_感谢 [Aurora Scharff](https://bsky.app/profile/aurorascharff.no)、[Dan Abramov](https://bsky.app/profile/danabra.mov)、[Eli White](https://twitter.com/Eli_White)、[Lauren Tan](https://bsky.app/profile/no.lol)、[Luna Wei](https://github.com/lunaleaps)、[Matt Carroll](https://twitter.com/mattcarrollcode)、[Jack Pope](https://jackpope.me)、[Jason Bonta](https://threads.net/someextent)、[Jordan Brown](https://github.com/jbrown215)、[Jordan Eldredge](https://bsky.app/profile/capt.dev)、[Mofei Zhang](https://threads.net/z_mofei)、[Sebastien Lorber](https://bsky.app/profile/sebastienlorber.com)、[Sebastian Markbåge](https://bsky.app/profile/sebmarkbage.calyptus.eu) 和 [Tim Yung](https://github.com/yungsters) 审阅本文。_
+**感谢 [Aurora Scharff](https://bsky.app/profile/aurorascharff.no)、[Dan Abramov](https://bsky.app/profile/danabra.mov)、[Eli White](https://twitter.com/Eli_White)、[Lauren Tan](https://bsky.app/profile/no.lol)、[Luna Wei](https://github.com/lunaleaps)、[Matt Carroll](https://twitter.com/mattcarrollcode)、[Jack Pope](https://jackpope.me)、[Jason Bonta](https://threads.net/someextent)、[Jordan Brown](https://github.com/jbrown215)、[Jordan Eldredge](https://bsky.app/profile/capt.dev)、[Mofei Zhang](https://threads.net/z_mofei)、[Sebastien Lorber](https://bsky.app/profile/sebastienlorber.com)、[Sebastian Markbåge](https://bsky.app/profile/sebmarkbage.calyptus.eu) 和 [Tim Yung](https://github.com/yungsters) 审阅本文。**
