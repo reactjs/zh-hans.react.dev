@@ -5449,7 +5449,7 @@ export function Router({ children }) {
 
   function navigate(url) {
     startTransition(() => {
-      // Transition type for the cause "nav forward"
+      // 原因为“向前导航”的过渡类型
       addTransitionType('nav-forward');
       go(url);
     });
