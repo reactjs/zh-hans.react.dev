@@ -4906,7 +4906,7 @@ root.render(
 ```js {4,11}
 function navigate(url) {
   startTransition(() => {
-    // 原因为"向前导航"的过渡类型
+    // 原因为“向前导航”的过渡类型
     addTransitionType('nav-forward');
     go(url);
   });
