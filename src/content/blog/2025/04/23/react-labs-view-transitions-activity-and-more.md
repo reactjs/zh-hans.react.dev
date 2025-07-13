@@ -1295,6 +1295,7 @@ function navigate(url) {
 
 当 `url` 改变时，`<ViewTransition>` 和新路由会被渲染。由于 `<ViewTransition>` 是在 `startTransition` 内部更新的，因此 `<ViewTransition>` 会被激活以进行动画处理。
 
+
 默认情况下，视图过渡包含浏览器默认的交叉淡入淡出动画。将其添加到我们的示例中，现在每当我们在页面之间导航时都会有交叉淡入淡出效果：
 
 <Sandpack>
