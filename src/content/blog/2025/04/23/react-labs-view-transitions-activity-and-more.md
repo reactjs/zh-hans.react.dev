@@ -4920,7 +4920,7 @@ function navigateBack(url) {
 }
 ```
 
-通过过渡类型，你可以通过 `<ViewTransition>` 的属性提供自定义动画。让我们为"6 个视频"和"返回"的标题添加共享元素过渡：
+通过过渡类型，你可以通过 `<ViewTransition>` 的属性提供自定义动画。让我们为“6 个视频”和“返回”的标题添加共享元素过渡：
 
 ```js {4,5}
 <ViewTransition
