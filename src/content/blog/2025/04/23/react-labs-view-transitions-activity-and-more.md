@@ -1,96 +1,96 @@
 ---
-title: "React Labs: View Transitions, Activity, and more"
+title: "React Labs：视图过渡、Activity 等功能"
 author: Ricky Hanlon
 date: 2025/04/23
-description: In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and updates on other areas we're working on now.
+description: 在 React Labs 系列文章中，我们会介绍正在积极研究和开发的项目。本文将分享两个已经可供测试的新实验性功能，以及其他正在开发中功能的最新进展。
 ---
 
-April 23, 2025 by [Ricky Hanlon](https://twitter.com/rickhanlonii)
+2025 年 4 月 23 日，作者：[Ricky Hanlon](https://twitter.com/rickhanlonii)
 
 ---
 
 <Intro>
 
-In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and updates on other areas we're working on now.
+在 React Labs 系列文章中，我们会介绍正在积极研究和开发的项目。本文将分享两个已经可供测试的新实验性功能，以及其他正在开发中功能的最新进展。
 
 </Intro>
 
 
 <Note>
 
-React Conf 2025 is scheduled for October 7–8 in Henderson, Nevada! 
+React Conf 2025 将于 10 月 7-8 日在内华达州亨德森举行！
 
-We're looking for speakers to help us create talks about the features covered in this post. If you're interested in speaking at ReactConf, [please apply here](https://forms.reform.app/react-conf/call-for-speakers/) (no talk proposal required).
+我们正在寻找演讲者，帮助我们创建关于本文所涵盖功能的演讲。如果你有兴趣在 ReactConf 上发言，[请在此申请](https://forms.reform.app/react-conf/call-for-speakers/)（无需提交演讲提案）。
 
-For more info on tickets, free streaming, sponsoring, and more, see [the React Conf website](https://conf.react.dev).
+有关门票、免费直播、赞助等更多信息，请查看 [React Conf 网站](https://conf.react.dev)。
 
 </Note>
 
-Today, we're excited to release documentation for two new experimental features that are ready for testing:
+今天，我们很高兴发布两个可供测试的新实验性功能的文档：
 
-- [View Transitions](#view-transitions)
+- [视图过渡（View Transitions）](#view-transitions)
 - [Activity](#activity)
 
-We're also sharing updates on new features currently in development:
-- [React Performance Tracks](#react-performance-tracks)
-- [Compiler IDE Extension](#compiler-ide-extension)
-- [Automatic Effect Dependencies](#automatic-effect-dependencies)
+我们还分享了目前正在开发的新功能的最新进展：
+- [React 性能追踪（Performance Tracks）](#react-performance-tracks)
+- [编译器 IDE 扩展](#compiler-ide-extension)
+- [自动 Effect 依赖](#automatic-effect-dependencies)
 - [Fragment Refs](#fragment-refs)
-- [Concurrent Stores](#concurrent-stores)
+- [并发存储（Concurrent Stores）](#concurrent-stores)
 
 ---
 
-# New Experimental Features {/*new-experimental-features*/}
+# 新的实验性功能 {/*new-experimental-features*/}
 
-View Transitions and Activity are now ready for testing in `react@experimental`. These features have been tested in production and are stable, but the final API may still change as we incorporate feedback.
+视图过渡和 Activity 现在已经可以在 `react@experimental` 中进行测试。这些功能已经在生产环境中经过测试并且稳定，但最终的 API 可能会随着我们采纳反馈而发生变化。
 
-You can try them by upgrading React packages to the most recent experimental version:
+你可以通过将 React 包升级到最新的实验版本来尝试它们：
 
 - `react@experimental`
 - `react-dom@experimental`
 
-Read on to learn how to use these features in your app, or check out the newly published docs:
+继续阅读以了解如何在你的应用中使用这些功能，或者查看新发布的文档：
 
-- [`<ViewTransition>`](/reference/react/ViewTransition): A component that lets you activate an animation for a Transition.
-- [`addTransitionType`](/reference/react/addTransitionType): A function that allows you to specify the cause of a Transition.
-- [`<Activity>`](/reference/react/Activity): A component that lets you hide and show parts of the UI.
+- [`<ViewTransition>`](/reference/react/ViewTransition)：一个让你为 Transition 激活动画的组件。
+- [`addTransitionType`](/reference/react/addTransitionType)：一个允许你指定 Transition 原因的函数。
+- [`<Activity>`](/reference/react/Activity)：一个让你隐藏和显示 UI 部分的组件。
 
-## View Transitions {/*view-transitions*/}
+## 视图过渡 {/*view-transitions*/}
 
-React View Transitions are a new experimental feature that makes it easier to add animations to UI transitions in your app. Under-the-hood, these animations use the new [`startViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition) API available in most modern browsers.
+React 视图过渡是一个新的实验性功能，它让你能更轻松地为应用中的 UI 过渡添加动画效果。在底层，这些动画使用了大多数现代浏览器提供的新 [`startViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition) API。
 
-To opt-in to animating an element, wrap it in the new `<ViewTransition>` component:
+要选择为元素添加动画，请将其包装在新的 `<ViewTransition>` 组件中：
 
 ```js
-// "what" to animate.
+// "要"动画的内容
 <ViewTransition>
-  <div>animate me</div>
+  <div>为我添加动画</div>
 </ViewTransition>
 ```
 
-This new component lets you declaratively define "what" to animate when an animation is activated. 
+这个新组件让你可以声明式地定义"要"在动画激活时进行动画处理的内容。
 
-You can define "when" to animate by using one of these three triggers for a View Transition:
+你可以通过使用以下三种触发器之一来定义"何时"进行动画：
 
 ```js
-// "when" to animate.
+// "何时"进行动画
 
 // Transitions
 startTransition(() => setState(...));
 
-// Deferred Values
+// 延迟值
 const deferred = useDeferredValue(value);
 
 // Suspense
 <Suspense fallback={<Fallback />}>
-  <div>Loading...</div>
+  <div>加载中...</div>
 </Suspense>
 ```
 
-By default, these animations use the [default CSS animations for View Transitions](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#customizing_your_animations) applied (typically a smooth cross-fade). You can use [view transition pseudo-selectors](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#the_view_transition_pseudo-element_tree) to define "how" the animation runs. For example, you can use `*` to change the default animation for all transitions:
+默认情况下，这些动画使用[视图过渡的默认 CSS 动画](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#customizing_your_animations)（通常是平滑的交叉淡入淡出）。你可以使用[视图过渡伪选择器](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#the_view_transition_pseudo-element_tree)来定义动画"如何"运行。例如，你可以使用 `*` 来更改所有过渡的默认动画：
 
 ```
-// "how" to animate.
+// "如何"进行动画
 ::view-transition-old(*) {
   animation: 300ms ease-out fade-out;
 }
@@ -99,16 +99,16 @@ By default, these animations use the [default CSS animations for View Transition
 }
 ```
 
-When the DOM updates due to an animation trigger&mdash;like `startTransition`, `useDeferredValue`, or a `Suspense` fallback switching to content&mdash;React will use [declarative heuristics](/reference/react/ViewTransition#viewtransition) to automatically determine which `<ViewTransition>` components to activate for the animation. The browser will then run the animation that's defined in CSS.
+当 DOM 因动画触发器（如 `startTransition`、`useDeferredValue` 或 `Suspense` 后备方案切换到内容）而更新时，React 将使用[声明式启发法](/reference/react/ViewTransition#viewtransition)自动确定要为动画激活哪些 `<ViewTransition>` 组件。然后浏览器将运行在 CSS 中定义的动画。
 
-If you're familiar with the browser's View Transition API and want to know how React supports it, check out [How does `<ViewTransition>` Work](/reference/react/ViewTransition#how-does-viewtransition-work) in the docs. 
+如果你熟悉浏览器的视图过渡 API 并想了解 React 如何支持它，请查看文档中的[`<ViewTransition>` 如何工作](/reference/react/ViewTransition#how-does-viewtransition-work)。
 
-In this post, let's take a look at a few examples of how to use View Transitions. 
+在本文中，让我们看几个使用视图过渡的例子。
 
-We'll start with this app, which doesn't animate any of the following interactions:
-- Click a video to view the details.
-- Click "back" to go back to the feed.
-- Type in the list to filter the videos.
+我们将从这个应用开始，它不会为以下任何交互添加动画：
+- 点击视频查看详情。
+- 点击“返回”回到信息流。
+- 在列表中输入以筛选视频。
 
 <Sandpack>
 
@@ -118,7 +118,7 @@ import TalkDetails from './Details'; import Home from './Home'; import {useRoute
 export default function App() {
   const {url} = useRouter();
 
-  // 🚩This version doesn't include any animations yet
+  // 🚩这个版本还没有包含任何动画
   return url === '/' ? <Home /> : <TalkDetails />;
 }
 ```
@@ -396,8 +396,8 @@ export default function Page({ heading, children }) {
 import {useState} from 'react';
 import {Heart} from './Icons';
 
-// A hack since we don't actually have a backend.
-// Unlike local state, this survives videos being filtered.
+// 这是一个技巧，因为我们实际上没有后端。
+// 与本地状态不同，这在视频被筛选时仍然保留。
 const likedVideos = new Set();
 
 export default function LikeButton({video}) {
@@ -1264,17 +1264,17 @@ root.render(
 
 <Note>
 
-#### View Transitions do not replace CSS and JS driven animations {/*view-transitions-do-not-replace-css-and-js-driven-animations*/}
+#### 视图过渡不会替代由 CSS 和 JS 驱动的动画 {/*view-transitions-do-not-replace-css-and-js-driven-animations*/}
 
-View Transitions are meant to be used for UI transitions such as navigation, expanding, opening, or re-ordering. They are not meant to replace all the animations in your app.
+视图过渡旨在用于 UI 过渡，如导航、展开、打开或重新排序。它们并不是为了替代应用中的所有动画。
 
-In our example app above, notice that there are already animations when you click the "like" button and in the Suspense fallback glimmer. These are good use cases for CSS animations because they are animating a specific element.
+在我们上面的示例应用中，请注意当你点击"喜欢"按钮以及在 Suspense 后备方案闪烁时已经有动画了。这些是 CSS 动画的良好用例，因为它们是为特定元素添加动画。
 
 </Note>
 
-### Animating navigations {/*animating-navigations*/}
+### 为导航添加动画 {/*animating-navigations*/}
 
-Our app includes a Suspense-enabled router, with [page transitions already marked as Transitions](/reference/react/useTransition#building-a-suspense-enabled-router), which means navigations are performed with `startTransition`:
+我们的应用包含一个支持 Suspense 的路由器，其中[页面过渡已标记为 Transitions](/reference/react/useTransition#building-a-suspense-enabled-router)，这意味着导航是通过 `startTransition` 执行的：
 
 ```js
 function navigate(url) {
@@ -1284,19 +1284,19 @@ function navigate(url) {
 }
 ```
 
-`startTransition` is a View Transition trigger, so we can add `<ViewTransition>` to animate between pages:
+`startTransition` 是一个视图过渡触发器，因此我们可以添加 `<ViewTransition>` 来为页面之间的切换添加动画：
 
 ```js
-// "what" to animate
+// "要"动画的内容
 <ViewTransition key={url}>
   {url === '/' ? <Home /> : <TalkDetails />}
 </ViewTransition>
 ```
 
-When the `url` changes, the `<ViewTransition>` and new route are rendered. Since the `<ViewTransition>` was updated inside of `startTransition`, the `<ViewTransition>` is activated for an animation.
+当 `url` 改变时，`<ViewTransition>` 和新路由会被渲染。由于 `<ViewTransition>` 是在 `startTransition` 内部更新的，因此 `<ViewTransition>` 会被激活以进行动画处理。
 
 
-By default, View Transitions include the browser default cross-fade animation. Adding this to our example, we now have a cross-fade whenever we navigate between pages: 
+默认情况下，视图过渡包含浏览器默认的交叉淡入淡出动画。将其添加到我们的示例中，现在每当我们在页面之间导航时都会有交叉淡入淡出效果：
 
 <Sandpack>
 
@@ -1305,9 +1305,9 @@ import {unstable_ViewTransition as ViewTransition} from 'react'; import Details 
 
 export default function App() {
   const {url} = useRouter();
-  
-  // Use ViewTransition to animate between pages.
-  // No additional CSS needed by default.
+
+  // 使用 ViewTransition 在页面间进行动画。
+  // 默认情况下不需要添加 CSS。
   return (
     <ViewTransition>
       {url === '/' ? <Home /> : <Details />}
@@ -1568,7 +1568,7 @@ import {unstable_ViewTransition as ViewTransition} from 'react'; import { useIsN
 
 export default function Page({ heading, children }) {
   const isPending = useIsNavPending();
-  
+
   return (
     <div className="page">
       <div className="top">
@@ -1772,22 +1772,22 @@ import {useState, createContext,use,useTransition,useLayoutEffect,useEffect} fro
 
 export function Router({ children }) {
   const [isPending, startTransition] = useTransition();
-  
+
   function navigate(url) {
-    // Update router state in transition.
+    // 在过渡中更新路由器状态。
     startTransition(() => {
       go(url);
     });
   }
-  
-  
-  
-  
+
+
+
+
   const [routerState, setRouterState] = useState({
     pendingNav: () => {},
     url: document.location.pathname,
   });
-  
+
 
   function go(url) {
     setRouterState({
@@ -1797,7 +1797,7 @@ export function Router({ children }) {
       },
     });
   }
-  
+
 
   function navigateBack(url) {
     startTransition(() => {
@@ -2458,17 +2458,17 @@ root.render(
 
 </Sandpack>
 
-Since our router already updates the route using `startTransition`, this one line change to add `<ViewTransition>` activates with the default cross-fade animation. 
+由于我们的路由器已经使用 `startTransition` 更新路由，添加 `<ViewTransition>` 的这一行更改就会激活默认的交叉淡入淡出动画。
 
-If you're curious how this works, see the docs for [How does `<ViewTransition>` work?](/reference/react/ViewTransition#how-does-viewtransition-work)
+如果你好奇这是如何工作的，请查看文档中的 [`<ViewTransition>` 如何工作？](/reference/react/ViewTransition#how-does-viewtransition-work)
 
 <Note>
 
-#### Opting out of `<ViewTransition>` animations {/*opting-out-of-viewtransition-animations*/}
+#### 退出 `<ViewTransition>` 动画 {/*opting-out-of-viewtransition-animations*/}
 
-In this example, we're wrapping the root of the app in `<ViewTransition>` for simplicity, but this means that all transitions in the app will be animated, which can lead to unexpected animations. 
+在这个例子中，为了简单起见，我们将应用的根部分包装在 `<ViewTransition>` 中，但这意味着应用中的所有过渡都将有动画效果，这可能会导致意外的动画。
 
-To fix, we're wrapping route children with `"none"` so each page can control its own animation:
+为了解决这个问题，我们用 `"none"` 包装路由子组件，这样每个页面都可以控制自己的动画：
 
 ```js
 // Layout.js
@@ -2477,17 +2477,17 @@ To fix, we're wrapping route children with `"none"` so each page can control its
 </ViewTransition>
 ```
 
-In practice, navigations should be done via "enter" and "exit" props, or by using Transition Types. 
+在实践中，导航应该通过 "enter" 和 "exit" 属性或使用 Transition Types 来完成。
 
 </Note>
 
-### Customizing animations {/*customizing-animations*/}
+### 自定义动画 {/*customizing-animations*/}
 
-By default, `<ViewTransition>` includes the default cross-fade from the browser.
+默认情况下，`<ViewTransition>` 包含浏览器默认的交叉淡入淡出效果。
 
-To customize animations, you can provide props to the `<ViewTransition>` component to specify which animations to use, based on [how the `<ViewTransition>` activates](/reference/react/ViewTransition#props).
+要自定义动画，你可以根据 [`<ViewTransition>` 的激活方式](/reference/react/ViewTransition#props)，为 `<ViewTransition>` 组件提供属性来指定要使用的动画。
 
-For example, we can slow down the `default` cross fade animation:
+例如，我们可以减慢 `default` 交叉淡入淡出动画：
 
 ```js
 <ViewTransition default="slow-fade">
@@ -2495,7 +2495,7 @@ For example, we can slow down the `default` cross fade animation:
 </ViewTransition>
 ```
 
-And define `slow-fade` in CSS using [view transition classes](/reference/react/ViewTransition#view-transition-classes):
+并使用[视图过渡类](/reference/react/ViewTransition#view-transition-classes)在 CSS 中定义 `slow-fade`：
 
 ```css
 ::view-transition-old(.slow-fade) {
@@ -2507,7 +2507,7 @@ And define `slow-fade` in CSS using [view transition classes](/reference/react/V
 }
 ```
 
-Now, the cross fade is slower:
+现在，交叉淡入淡出更慢了：
 
 <Sandpack>
 
@@ -3686,13 +3686,13 @@ root.render(
 
 </Sandpack>
 
-See [Styling View Transitions](/reference/react/ViewTransition#styling-view-transitions) for a full guide on styling `<ViewTransition>`.
+有关样式化 `<ViewTransition>` 的完整指南，请参阅[样式化视图过渡](/reference/react/ViewTransition#styling-view-transitions)。
 
-### Shared Element Transitions {/*shared-element-transitions*/}
+### 共享元素过渡 {/*shared-element-transitions*/}
 
-When two pages include the same element, often you want to animate it from one page to the next.
+当两个页面包含相同的元素时，你通常希望将其从一个页面动画到下一个页面。
 
-To do this you can add a unique `name` to the `<ViewTransition>`:
+要做到这一点，你可以为 `<ViewTransition>` 添加一个唯一的 `name`：
 
 ```js
 <ViewTransition name={`video-${video.id}`}>
@@ -3700,7 +3700,7 @@ To do this you can add a unique `name` to the `<ViewTransition>`:
 </ViewTransition>
 ```
 
-Now the video thumbnail animates between the two pages:
+现在视频缩略图在两个页面之间有动画效果：
 
 <Sandpack>
 
@@ -4895,32 +4895,32 @@ root.render(
 
 </Sandpack>
 
-By default, React automatically generates a unique `name` for each element activated for a transition (see [How does `<ViewTransition>` work](/reference/react/ViewTransition#how-does-viewtransition-work)). When React sees a transition where a `<ViewTransition>` with a `name` is removed and a new `<ViewTransition>` with the same `name` is added, it will activate a shared element transition.
+默认情况下，React 会为每个激活过渡的元素自动生成一个唯一的 `name`（参见 [`<ViewTransition>` 如何工作](/reference/react/ViewTransition#how-does-viewtransition-work)）。当 React 看到一个带有 `name` 的 `<ViewTransition>` 被移除，而一个带有相同 `name` 的新 `<ViewTransition>` 被添加时，它将激活共享元素过渡。
 
-For more info, see the docs for [Animating a Shared Element](/reference/react/ViewTransition#animating-a-shared-element).
+有关更多信息，请参阅文档中的[为共享元素添加动画](/reference/react/ViewTransition#animating-a-shared-element)。
 
-### Animating based on cause {/*animating-based-on-cause*/}
+### 基于原因的动画 {/*animating-based-on-cause*/}
 
-Sometimes, you may want elements to animate differently based on how it was triggered. For this use case, we've added a new API called `addTransitionType` to specify the cause of a transition:
+有时，你可能希望元素根据触发方式以不同方式进行动画。对于这种用例，我们添加了一个名为 `addTransitionType` 的新 API 来指定过渡的原因：
 
 ```js {4,11}
 function navigate(url) {
   startTransition(() => {
-    // Transition type for the cause "nav forward"
+    // 原因为“向前导航”的过渡类型
     addTransitionType('nav-forward');
     go(url);
   });
 }
 function navigateBack(url) {
   startTransition(() => {
-    // Transition type for the cause "nav backward"
+    // 原因为“向后导航”的过渡类型
     addTransitionType('nav-back');
     go(url);
   });
 }
 ```
 
-With transition types, you can provide custom animations via props to `<ViewTransition>`. Let's add a shared element transition to the header for "6 Videos" and "Back":
+通过过渡类型，你可以通过 `<ViewTransition>` 的属性提供自定义动画。让我们为“6 个视频”和“返回”的标题添加共享元素过渡：
 
 ```js {4,5}
 <ViewTransition
@@ -5446,10 +5446,10 @@ import {useState, createContext, use, useTransition, useLayoutEffect, useEffect,
 
 export function Router({ children }) {
   const [isPending, startTransition] = useTransition();
-  
+
   function navigate(url) {
     startTransition(() => {
-      // Transition type for the cause "nav forward"
+      // 原因为“向前导航”的过渡类型
       addTransitionType('nav-forward');
       go(url);
     });
@@ -5473,10 +5473,10 @@ export function Router({ children }) {
       },
     });
   }
-  
+
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
+      // 因为恢复必须是同步的，所以应该没有动画。
       // Even though it's a transition.
       startTransition(() => {
         setRouterState({
@@ -6211,11 +6211,11 @@ root.render(
 
 </Sandpack>
 
-### Animating Suspense Boundaries {/*animating-suspense-boundaries*/}
+### 为 Suspense 边界添加动画 {/*animating-suspense-boundaries*/}
 
-Suspense will also activate View Transitions. 
+Suspense 也会激活视图过渡。
 
-To animate the fallback to content, we can wrap `Suspense` with `<ViewTranstion>`:
+要为后备方案到内容的过渡添加动画，我们可以用 `<ViewTransition>` 包装 `Suspense`：
 
 ```js
 <ViewTransition>
@@ -6225,7 +6225,7 @@ To animate the fallback to content, we can wrap `Suspense` with `<ViewTranstion>
 </ViewTransition>
 ```
 
-By adding this, the fallback will cross-fade into the content. Click a video and see the video info animate in:
+通过添加这个，后备方案将交叉淡入淡出到内容。点击一个视频，看看视频信息如何动画显示：
 
 <Sandpack>
 
@@ -6742,10 +6742,10 @@ export function Router({ children }) {
       },
     });
   }
-  
+
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
+      // 因为恢复必须是同步的，所以应该没有动画。
       // Even though it's a transition.
       startTransition(() => {
         setRouterState({
@@ -7509,7 +7509,7 @@ root.render(
 
 </Sandpack>
 
-We can also provide custom animations using an `exit` on the fallback, and `enter` on the content:
+我们还可以使用后备方案上的 `exit` 和内容上的 `enter` 提供自定义动画：
 
 ```js {3,8}
 <Suspense
@@ -7525,10 +7525,10 @@ We can also provide custom animations using an `exit` on the fallback, and `ente
 </Suspense>
 ```
 
-Here's how we'll define `slide-down` and `slide-up` with CSS:
+以下是我们如何在 CSS 中定义 `slide-down` 和 `slide-up`：
 
 ```css {1, 6}
-::view-transition-old(.slide-down) { 
+::view-transition-old(.slide-down) {
   /* Slide the fallback down */
   animation: ...;
 }
@@ -8063,10 +8063,10 @@ export function Router({ children }) {
       },
     });
   }
-  
+
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
+      // 因为恢复必须是同步的，所以应该没有动画。
       // Even though it's a transition.
       startTransition(() => {
         setRouterState({
@@ -8831,9 +8831,9 @@ root.render(
 </Sandpack>
 
 
-### Animating Lists {/*animating-lists*/}
+### 为列表添加动画 {/*animating-lists*/}
 
-You can also use `<ViewTransition>` to animate lists of items as they re-order, like in a searchable list of items:
+你还可以使用 `<ViewTransition>` 为重新排序的项目列表添加动画，例如在可搜索的项目列表中：
 
 ```js {3,5}
 <div className="videos">
@@ -8845,7 +8845,7 @@ You can also use `<ViewTransition>` to animate lists of items as they re-order, 
 </div>
 ```
 
-To activate the ViewTransition, we can use `useDeferredValue`:
+要激活 ViewTransition，我们可以使用 `useDeferredValue`：
 
 ```js {2}
 const [searchText, setSearchText] = useState('');
@@ -8954,14 +8954,14 @@ function VideoInfo({ id }) {
 import { useId, useState, use, useDeferredValue, unstable_ViewTransition as ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
-  // Activate with useDeferredValue ("when") 
+  // 通过 useDeferredValue来激活(何时) 
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
     <div className="video-list">
       <div className="videos">
         {filteredVideos.map((video) => (
-          // Animate each item in list ("what") 
+          // 对列表中的每一个子项目进行动画（何地）
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
@@ -8978,7 +8978,7 @@ export default function Home() {
   const videos = use(fetchVideos());
   const count = videos.length;
   const [searchText, setSearchText] = useState('');
-  
+
   return (
     <Layout heading={<div className="fit">{count} Videos</div>}>
       <SearchInput value={searchText} onChange={setSearchText} />
@@ -9390,10 +9390,10 @@ export function Router({ children }) {
       },
     });
   }
-  
+
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
+      // 因为恢复必须是同步的，所以应该没有动画。
       // Even though it's a transition.
       startTransition(() => {
         setRouterState({
@@ -10270,14 +10270,14 @@ function VideoInfo({ id }) {
 import { useId, useState, use, useDeferredValue, unstable_ViewTransition as ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
-  // Activate with useDeferredValue ("when") 
+  // 通过 useDeferredValue来激活(何时) 
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
     <div className="video-list">
       <div className="videos">
         {filteredVideos.map((video) => (
-          // Animate each item in list ("what") 
+          // 对列表中的每一个子项目进行动画（何地）
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
@@ -10294,7 +10294,7 @@ export default function Home() {
   const videos = use(fetchVideos());
   const count = videos.length;
   const [searchText, setSearchText] = useState('');
-  
+
   return (
     <Layout heading={<div className="fit">{count} Videos</div>}>
       <SearchInput value={searchText} onChange={setSearchText} />
@@ -10694,7 +10694,7 @@ export function Router({ children }) {
   }
 
   const [routerState, setRouterState] = useState({pendingNav: () => {}, url: document.location.pathname});
-  
+
   function go(url) {
     setRouterState({
       url,
@@ -10703,7 +10703,7 @@ export function Router({ children }) {
       },
     });
   }
-  
+
   useEffect(() => {
     function handlePopState() {
       // This should not animate because restoration has to be synchronous.
@@ -11457,19 +11457,19 @@ root.render(
 
 </Sandpack>
 
-If you're curious to know more about how they work, check out [How Does `<ViewTransition>` Work](/reference/react/ViewTransition#how-does-viewtransition-work) in the docs.
+如果你想了解更多关于它们如何工作的信息，请查看文档中的[`<ViewTransition>` 如何工作](/reference/react/ViewTransition#how-does-viewtransition-work)。
 
-_For more background on how we built View Transitions, see: [#31975](https://github.com/facebook/react/pull/31975), [#32105](https://github.com/facebook/react/pull/32105), [#32041](https://github.com/facebook/react/pull/32041), [#32734](https://github.com/facebook/react/pull/32734), [#32797](https://github.com/facebook/react/pull/32797) [#31999](https://github.com/facebook/react/pull/31999), [#32031](https://github.com/facebook/react/pull/32031), [#32050](https://github.com/facebook/react/pull/32050), [#32820](https://github.com/facebook/react/pull/32820), [#32029](https://github.com/facebook/react/pull/32029), [#32028](https://github.com/facebook/react/pull/32028), and [#32038](https://github.com/facebook/react/pull/32038) by [@sebmarkbage](https://twitter.com/sebmarkbage) (thanks Seb!)._
+**关于我们如何构建视图过渡的更多背景信息，请参阅：[#31975](https://github.com/facebook/react/pull/31975)、[#32105](https://github.com/facebook/react/pull/32105)、[#32041](https://github.com/facebook/react/pull/32041)、[#32734](https://github.com/facebook/react/pull/32734)、[#32797](https://github.com/facebook/react/pull/32797)、[#31999](https://github.com/facebook/react/pull/31999)、[#32031](https://github.com/facebook/react/pull/32031)、[#32050](https://github.com/facebook/react/pull/32050)、[#32820](https://github.com/facebook/react/pull/32820)、[#32029](https://github.com/facebook/react/pull/32029)、[#32028](https://github.com/facebook/react/pull/32028) 和 [#32038](https://github.com/facebook/react/pull/32038)，由 [@sebmarkbage](https://twitter.com/sebmarkbage) 完成（感谢 Seb！）。**
 
 ---
 
 ## Activity {/*activity*/}
 
-In [past](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022#offscreen) [updates](/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024#offscreen-renamed-to-activity), we shared that we were researching an API to allow components to be visually hidden and deprioritized, preserving UI state with reduced performance costs relative to unmounting or hiding with CSS.
+在[过去](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022#offscreen)的[更新](/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024#offscreen-renamed-to-activity)中，我们分享了我们正在研究一个 API，允许组件在视觉上被隐藏并降低优先级，相比卸载或使用 CSS 隐藏，这种方式能以更低的性能成本保留 UI 状态。
 
-We're now ready to share the API and how it works, so you can start testing it in experimental React versions.
+现在我们准备分享这个 API 及其工作原理，这样你就可以开始在实验性 React 版本中测试它了。
 
-`<Activity>` is a new component to hide and show parts of the UI:
+`<Activity>` 是一个用于隐藏和显示 UI 部分的新组件：
 
 ```js [[1, 1, "'visible'"], [2, 1, "'hidden'"]]
 <Activity mode={isVisible ? 'visible' : 'hidden'}>
@@ -11477,30 +11477,30 @@ We're now ready to share the API and how it works, so you can start testing it i
 </Activity>
 ```
 
-When an Activity is <CodeStep step={1}>visible</CodeStep> it's rendered as normal. When an Activity is <CodeStep step={2}>hidden</CodeStep> it is unmounted, but will save its state and continue to render at a lower priority than anything visible on screen.
+当 Activity 处于 <CodeStep step={1}>visible</CodeStep>（可见）状态时，它会正常渲染。当 Activity 处于 <CodeStep step={2}>hidden</CodeStep>（隐藏）状态时，它会被卸载，但会保存其状态并继续以低于屏幕上任何可见内容的优先级进行渲染。
 
-You can use `Activity` to save state for parts of the UI the user isn't using, or pre-render parts that a user is likely to use next.
+你可以使用 `Activity` 来保存用户当前未使用的 UI 部分的状态，或预渲染用户可能接下来会使用的部分。
 
-Let's look at some examples improving the View Transition examples above.
+让我们看一些改进上面视图过渡示例的例子。
 
 <Note>
 
-**Effects don’t mount when an Activity is hidden.**
+**当 Activity 处于 hidden 状态的时候 Effect 不会启动**
 
-When an `<Activity>` is `hidden`, Effects are unmounted. Conceptually, the component is unmounted, but React saves the state for later.
+当 `<Activity>` 处于 `hidden` 状态时，Effect 会被卸载。从概念上讲，组件被卸载了，但 React 会保存状态以供以后使用。
 
-In practice, this works as expected if you have followed the [You Might Not Need an Effect](/learn/you-might-not-need-an-effect) guide. To eagerly find problematic Effects, we recommend adding [`<StrictMode>`](/reference/react/StrictMode) which will eagerly perform Activity unmounts and mounts to catch any unexpected side effects.
+在实践中，如果你遵循了[你可能不需要 Effect](/learn/you-might-not-need-an-effect)指南，这将按预期工作。为了及早发现有问题的 Effect，我们建议添加 [`<StrictMode>`](/reference/react/StrictMode)，它将积极执行 Activity 的卸载和挂载，以捕获任何意外的副作用。
 
 </Note>
 
-### Restoring state with Activity {/*restoring-state-with-activity*/}
+### 使用 Activity 恢复状态 {/*restoring-state-with-activity*/}
 
-When a user navigates away from a page, it's common to stop rendering the old page:
+当用户离开一个页面时，通常会停止渲染旧页面：
 
 ```js {6,7}
 function App() {
   const { url } = useRouter();
-  
+
   return (
     <>
       {url === '/' && <Home />}
@@ -11510,14 +11510,14 @@ function App() {
 }
 ```
 
-However, this means if the user goes back to the old page, all of the previous state is lost. For example, if the `<Home />` page has an `<input>` field, when the user leaves the page the `<input>` is unmounted, and all of the text they had typed is lost.
+然而，这意味着如果用户返回到旧页面，所有之前的状态都会丢失。例如，如果 `<Home />` 页面有一个 `<input>` 字段，当用户离开页面时，`<input>` 会被卸载，他们输入的所有文本都会丢失。
 
-Activity allows you to keep the state around as the user changes pages, so when they come back they can resume where they left off. This is done by wrapping part of the tree in `<Activity>` and toggling the `mode`:
+Activity 允许你在用户切换页面时保留状态，这样当他们返回时可以从离开的地方继续。这是通过将树的一部分包装在 `<Activity>` 中并切换 `mode` 来实现的：
 
 ```js {6-8}
 function App() {
   const { url } = useRouter();
-  
+
   return (
     <>
       <Activity mode={url === '/' ? 'visible' : 'hidden'}>
@@ -11529,9 +11529,9 @@ function App() {
 }
 ```
 
-With this change, we can improve on our View Transitions example above. Before, when you searched for a video, selected one, and returned, your search filter was lost. With Activity, your search filter is restored and you can pick up where you left off.
+通过这个更改，我们可以改进上面的视图过渡示例。之前，当你搜索视频、选择一个视频并返回时，你的搜索过滤器会丢失。使用 Activity，你的搜索过滤器会被恢复，你可以从离开的地方继续。
 
-Try searching for a video, selecting it, and clicking "back":
+尝试搜索一个视频，选择它，然后点击“返回”：
 
 <Sandpack>
 
@@ -11540,9 +11540,9 @@ import { unstable_ViewTransition as ViewTransition, unstable_Activity as Activit
 
 export default function App() {
   const { url } = useRouter();
-  
+
   return (
-    // View Transitions know about Activity
+    // 视图过渡知道如何处理 Activity
     <ViewTransition>
       {/* Render Home in Activity so we don't lose state */}
       <Activity mode={url === '/' ? 'visible' : 'hidden'}>
@@ -11633,7 +11633,7 @@ function VideoInfo({ id }) {
 import { useId, useState, use, useDeferredValue, unstable_ViewTransition as ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
-  // Activate with useDeferredValue ("when") 
+  // 通过 useDeferredValue来激活(何时) 
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
@@ -11643,7 +11643,7 @@ function SearchList({searchText, videos}) {
       )}
       <div className="videos">
         {filteredVideos.map((video) => (
-          // Animate each item in list ("what") 
+          // 对列表中的每一个子项目进行动画（何地）
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
@@ -11657,7 +11657,7 @@ export default function Home() {
   const videos = use(fetchVideos());
   const count = videos.length;
   const [searchText, setSearchText] = useState('');
-  
+
   return (
     <Layout heading={<div className="fit">{count} Videos</div>}>
       <SearchInput value={searchText} onChange={setSearchText} />
@@ -12068,10 +12068,10 @@ export function Router({ children }) {
       },
     });
   }
-  
+
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
+      // 因为恢复必须是同步的，所以应该没有动画。
       // Even though it's a transition.
       startTransition(() => {
         setRouterState({
@@ -12879,10 +12879,10 @@ export default function App() {
   const { url } = useRouter();
   const videoId = url.split("/").pop();
   const videos = use(fetchVideos());
-  
+
   return (
     <ViewTransition>
-      {/* Render videos in Activity to pre-render them */}
+      {/* 在视图过渡中渲染视频以预渲染它们 */}
       {videos.map(({id}) => (
         <Activity key={id} mode={videoId === id ? 'visible' : 'hidden'}>
           <Details id={id}/>
@@ -12971,7 +12971,7 @@ function VideoInfo({ id }) {
 import { useId, useState, use, useDeferredValue, unstable_ViewTransition as ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
-  // Activate with useDeferredValue ("when") 
+  // 通过 useDeferredValue来激活(何时) 
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
@@ -12981,7 +12981,7 @@ function SearchList({searchText, videos}) {
       )}
       <div className="videos">
         {filteredVideos.map((video) => (
-          // Animate each item in list ("what") 
+          // 对列表中的每一个子项目进行动画（何地）
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
@@ -12995,7 +12995,7 @@ export default function Home() {
   const videos = use(fetchVideos());
   const count = videos.length;
   const [searchText, setSearchText] = useState('');
-  
+
   return (
     <Layout heading={<div className="fit">{count} Videos</div>}>
       <SearchInput value={searchText} onChange={setSearchText} />
@@ -13406,10 +13406,10 @@ export function Router({ children }) {
       },
     });
   }
-  
+
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
+      // 因为恢复必须是同步的，所以应该没有动画。
       // Even though it's a transition.
       startTransition(() => {
         setRouterState({
@@ -14186,45 +14186,45 @@ root.render(
 
 </Sandpack>
 
-### Server-Side Rendering with Activity {/*server-side-rendering-with-activity*/}
+### 使用 Activity 进行服务端渲染 {/*server-side-rendering-with-activity*/}
 
-When using Activity on a page that uses server-side rendering (SSR), there are additional optimizations.
+在使用服务端渲染（SSR）的页面上使用 Activity 时，有额外的优化。
 
-If part of the page is rendered with `mode="hidden"`, then it will not be included in the SSR response. Instead, React will schedule a client render for the content inside Activity while the rest of the page hydrates, prioritizing the visible content on screen.
+如果页面的一部分使用 `mode="hidden"` 渲染，那么它将不会包含在 SSR 响应中。相反，React 会在页面其余部分进行水合（hydrate）的同时，为 Activity 内部的内容安排客户端渲染，优先处理屏幕上可见的内容。
 
-For parts of the UI rendered with `mode="visible"`, React will de-prioritize hydration of content within Activity, similar to how Suspense content is hydrated at a lower priority. If the user interacts with the page, we'll prioritize hydration within the boundary if needed.
+对于使用 `mode="visible"` 渲染的 UI 部分，React 会降低 Activity 内容的水合优先级，类似于 Suspense 内容以较低优先级进行水合的方式。如果用户与页面交互，我们会在需要时优先处理边界内的水合。
 
-These are advanced use cases, but they show the additional benefits considered with Activity.
+这些是高级用例，但它们展示了 Activity 考虑的额外好处。
 
-### Future modes for Activity {/*future-modes-for-activity*/}
+### Activity 的未来模式 {/*future-modes-for-activity*/}
 
-In the future, we may add more modes to Activity.
+未来，我们可能会为 Activity 添加更多模式。
 
-For example, a common use case is rendering a modal, where the previous "inactive" page is visible behind the "active" modal view. The "hidden" mode does not work for this use case because it's not visible and not included in SSR.
+例如，一个常见的用例是渲染模态框，其中之前的“非活动”页面在“活动”模态视图后面可见。“hidden”模式不适用于这种情况，因为它不可见且不包含在 SSR 中。
 
-Instead, we're considering a new mode that would keep the content visible&mdash;and included in SSR&mdash;but keep it unmounted and de-prioritize updates. This mode may also need to "pause" DOM updates, since it can be distracting to see backgrounded content updating while a modal is open.
+相反，我们正在考虑一种新模式，它会保持内容可见——并包含在 SSR 中——但保持它卸载并降低更新优先级。这种模式可能还需要“暂停”DOM 更新，因为在模态框打开时看到背景内容更新可能会分散注意力。
 
-Another mode we're considering for Activity is the ability to automatically destroy state for hidden Activities if there is too much memory being used. Since the component is already unmounted, it may be preferable to destroy state for the least recently used hidden parts of the app rather than consume too many resources.
+我们正在考虑的 Activity 的另一种模式是，如果使用了太多内存，能够自动销毁隐藏的 Activity 的状态。由于组件已经卸载，与消耗过多资源相比，销毁应用中最近最少使用的隐藏部分的状态可能更可取。
 
-These are areas we're still exploring, and we'll share more as we make progress. For more information on what Activity includes today, [check out the docs](/reference/react/Activity).
+这些是我们仍在探索的领域，随着进展我们会分享更多信息。有关 Activity 当前包含的功能的更多信息，[请查看文档](/reference/react/Activity)。
 
 ---
 
-# Features in development {/*features-in-development*/}
+# 正在开发的功能 {/*features-in-development*/}
 
-We're also developing features to help solve the common problems below. 
+我们还在开发功能来帮助解决以下常见问题。
 
-As we iterate on possible solutions, you may see some potential APIs we're testing being shared based on the PRs we are landing. Please keep in mind that as we try different ideas, we often change or remove different solutions after trying them out. 
+在我们迭代可能的解决方案时，你可能会看到我们正在测试的一些潜在 API，这些 API 基于我们正在合并的 PR 进行分享。请记住，当我们尝试不同的想法时，我们通常会在尝试后更改或删除不同的解决方案。
 
-When the solutions we're working on are shared too early, it can create churn and confusion in the community. To balance being transparent and limiting confusion, we're sharing the problems we're currently developing solutions for, without sharing a particular solution we have in mind. 
+如果我们过早分享正在开发的解决方案，可能会在社区中造成混乱和困惑。为了平衡透明度和减少困惑，我们只分享了当前正在为其开发解决方案的问题，而不分享我们心中的特定解决方案。
 
-As these features progress, we'll announce them on the blog with docs included so you can try them out. 
+随着这些功能的进展，我们将在博客上宣布它们，并附上文档，以便你可以尝试它们。
 
-## React Performance Tracks {/*react-performance-tracks*/}
+## React 性能追踪 {/*react-performance-tracks*/}
 
-We're working on a new set of custom tracks to performance profilers using browser APIs that [allow adding custom tracks](https://developer.chrome.com/docs/devtools/performance/extension) to provide more information about the performance of your React app.
+我们正在开发一套新的自定义性能分析器追踪功能，使用浏览器 API [允许添加自定义追踪](https://developer.chrome.com/docs/devtools/performance/extension)，以提供有关 React 应用性能的更多信息。
 
-This feature is still in progress, so we're not ready to publish docs to fully release it as an experimental feature yet. You can get a sneak preview when using an experimental version of React, which will automatically add the performance tracks to profiles:
+这个功能仍在开发中，因此我们还没有准备好发布文档将其作为实验性功能完全发布。当使用 React 的实验版本时，你可以获得一个预览，它会自动将性能追踪添加到分析中：
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
   <picture >
@@ -14237,53 +14237,53 @@ This feature is still in progress, so we're not ready to publish docs to fully r
   </picture>
 </div>
 
-There are a few known issues we plan to address such as performance, and the scheduler track not always "connecting" work across Suspended trees, so it's not quite ready to try. We're also still collecting feedback from early adopters to improve the design and usability of the tracks.
+我们计划解决一些已知问题，如性能问题，以及调度器追踪不总是能在 Suspended 树之间“连接”工作，所以它还不完全可用。我们还在收集早期采用者的反馈，以改进追踪的设计和可用性。
 
-Once we solve those issues, we'll publish experimental docs and share that it's ready to try.
+一旦我们解决了这些问题，我们将发布实验性文档并分享它已准备好供尝试。
 
 ---
 
-## Automatic Effect Dependencies {/*automatic-effect-dependencies*/}
+## 自动 Effect 依赖 {/*automatic-effect-dependencies*/}
 
-When we released hooks, we had three motivations:
+当我们发布 hooks 时，我们有三个动机：
 
-- **Sharing code between components**: hooks replaced patterns like render props and higher-order components to allow you to reuse stateful logic without changing your component hierarchy.
-- **Think in terms of function, not lifecycles**: hooks let you split one component into smaller functions based on what pieces are related (such as setting up a subscription or fetching data), rather than forcing a split based on lifecycle methods.
-- **Support ahead-of-time compilation**: hooks were designed to support ahead-of-time compilation with less pitfalls causing unintentional de-optimizations caused by lifecycle methods, and limitations of classes.
+- **在组件之间共享代码**：hooks 替代了像 render props 和高阶组件这样的模式，允许你在不改变组件层次结构的情况下重用有状态逻辑。
+- **以函数而非生命周期的方式思考**：hooks 让你可以根据相关的部分（如设置订阅或获取数据）将一个组件拆分成更小的函数，而不是强制基于生命周期方法进行拆分。
+- **支持提前编译**：hooks 的设计支持提前编译，减少了由生命周期方法和类的限制导致的无意去优化的陷阱。
 
-Since their release, hooks have been successful at *sharing code between components*. Hooks are now the favored way to share logic between components, and there are less use cases for render props and higher order components. Hooks have also been successful at supporting features like Fast Refresh that were not possible with class components. 
+自发布以来，hooks 在 **在组件之间共享代码** 方面取得了成功。Hooks 现在是在组件之间共享逻辑的首选方式，render props 和高阶组件的使用场景减少了。Hooks 还成功支持了像 Fast Refresh 这样的功能，这在类组件中是不可能实现的。
 
-### Effects can be hard {/*effects-can-be-hard*/}
+### Effects 可能很难理解 {/*effects-can-be-hard*/}
 
-Unfortunately, some hooks are still hard to think in terms of function instead of lifecycles. Effects specifically are still hard to understand and are the most common pain point we hear from developers. Last year, we spent a significant amount of time researching how Effects were used, and how those use cases could be simplified and easier to understand.
+不幸的是，有些 hooks 仍然很难以函数而非生命周期的方式思考。特别是 Effects 仍然很难理解，是我们从开发者那里听到的最常见的痛点。去年，我们花了大量时间研究 Effects 的使用方式，以及如何简化这些用例并使其更容易理解。
 
-We found that often, the confusion is from using an Effect when you don't need to. The [You Might Not Need an Effect](/learn/you-might-not-need-an-effect) guide covers many cases for when Effects are not the right solution. However, even when an Effect is the right fit for a problem, Effects can still be harder to understand than class component lifecycles.
+我们发现，困惑通常来自于在不需要的情况下使用 Effect。[你可能不需要 Effect](/learn/you-might-not-need-an-effect) 指南涵盖了许多 Effects 不是正确解决方案的情况。然而，即使 Effect 是解决问题的正确选择，Effects 仍然可能比类组件生命周期更难理解。
 
-We believe one of the reasons for confusion is that developers to think of Effects from the _component's_ perspective (like a lifecycle), instead of the _Effects_ point of view (what the Effect does).
+我们认为造成困惑的原因之一是开发者从 **组件** 的角度（像生命周期一样）思考 Effects，而不是从 **Effects** 的角度（Effect 做什么）思考。
 
-Let's look at an example [from the docs](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective):
+让我们看一个[文档中的例子](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective)：
 
 ```js
 useEffect(() => {
-  // Your Effect connected to the room specified with roomId...
+  // 你的 Effect 连接到由 roomId 指定的房间...
   const connection = createConnection(serverUrl, roomId);
   connection.connect();
   return () => {
-    // ...until it disconnected
+    // ...直到它断开连接
     connection.disconnect();
   };
 }, [roomId]);
 ```
 
-Many users would read this code as "on mount, connect to the roomId. whenever `roomId` changes, disconnect to the old room and re-create the connection". However, this is thinking from the component's lifecycle perspective, which means you will need to think of every component lifecycle state to write the Effect correctly. This can be difficult, so it's understandable that Effects seem harder than class lifecycles when using the component perspective.
+许多用户会将这段代码理解为“在挂载时，连接到 roomId。每当 `roomId` 改变时，断开与旧房间的连接并重新创建连接”。然而，这是从组件的生命周期角度思考，这意味着你需要考虑每个组件生命周期状态才能正确编写 Effect。这可能很困难，所以当使用组件角度时，Effects 看起来比类生命周期更难理解是可以理解的。
 
-### Effects without dependencies {/*effects-without-dependencies*/}
+### 没有依赖的 Effects {/*effects-without-dependencies*/}
 
-Instead, it's better to think from the Effect's perspective. The Effect doesn't know about the component lifecycles. It only describes how to start synchronization and how to stop it. When users think of Effects in this way, their Effects tend to be easier to write, and more resilient to being started and stopped as many times as is needed.
+相反，最好从 Effect 的角度思考。Effect 不了解组件的生命周期。它只描述如何开始同步和如何停止同步。当用户以这种方式思考 Effects 时，他们的 Effects 往往更容易编写，并且更能适应根据需要多次启动和停止。
 
-We spent some time researching why Effects are thought of from the component perspective, and we think one of the reasons is the dependency array. Since you have to write it, it's right there and in your face reminding you of what you're "reacting" to and baiting you into the mental model of 'do this when these values change'.
+我们花了一些时间研究为什么 Effects 会从组件角度思考，我们认为原因之一是依赖数组。由于你必须编写它，它就在那里，提醒你你在"响应"什么，并引导你进入"当这些值改变时做这件事"的心智模型。
 
-When we released hooks, we knew we could make them easier to use with ahead-of-time compilation. With the React Compiler, you're now able to avoid writing `useCallback` and `useMemo` yourself in most cases. For Effects, the compiler can insert the dependencies for you:
+当我们发布 hooks 时，我们知道可以通过提前编译使它们更易于使用。使用 React 编译器，你现在可以在大多数情况下避免自己编写 `useCallback` 和 `useMemo`。对于 Effects，编译器可以为你插入依赖项：
 
 ```js
 useEffect(() => {
@@ -14292,67 +14292,67 @@ useEffect(() => {
   return () => {
     connection.disconnect();
   };
-}); // compiler inserted dependencies. 
+}); // 编译器插入的依赖项。
 ```
 
-With this code, the React Compiler can infer the dependencies for you and insert them automatically so you don't need to see or write them. With features like [the IDE extension](#compiler-ide-extension) and [`useEffectEvent`](/reference/react/experimental_useEffectEvent), we can provide a CodeLens to show you what the Compiler inserted for times you need to debug, or to optimize by removing a dependency. This helps reinforce the correct mental model for writing Effects, which can run at any time to synchronize your component or hook's state with something else.
+使用这段代码，React 编译器可以为你推断依赖项并自动插入它们，这样你就不需要看到或编写它们。通过像[IDE 扩展](#compiler-ide-extension)和[`useEffectEvent`](/reference/react/experimental_useEffectEvent)这样的功能，我们可以提供一个 CodeLens 来显示编译器在你需要调试时插入的内容，或通过移除依赖项来优化。这有助于强化编写 Effects 的正确心智模型，即 Effects 可以在任何时候运行，以将你的组件或 hook 的状态与其他内容同步。
 
-Our hope is that automatically inserting dependencies is not only easier to write, but that it also makes them easier to understand by forcing you to think in terms of what the Effect does, and not in component lifecycles. 
+我们希望自动插入依赖项不仅更容易编写，而且通过迫使你从 Effect 的作用角度思考，而不是从组件生命周期角度思考，使它们更容易理解。
 
 ---
 
-## Compiler IDE Extension {/*compiler-ide-extension*/}
+## 编译器 IDE 扩展 {/*compiler-ide-extension*/}
 
-Earlier this week [we shared](/blog/2025/04/21/react-compiler-rc) the React Compiler release candidate, and we're working towards shipping the first SemVer stable version of the compiler in the coming months.
+本周早些时候[我们分享了](/blog/2025/04/21/react-compiler-rc) React 编译器的候选发布版本，我们正在努力在未来几个月内发布编译器的第一个语义化版本稳定版。
 
-We've also begun exploring ways to use the React Compiler to provide information that can improve understanding and debugging your code. One idea we've started exploring is a new experimental LSP-based React IDE extension powered by React Compiler, similar to the extension used in [Lauren Tan's React Conf talk](https://conf2024.react.dev/talks/5).
+我们还开始探索使用 React 编译器提供信息的方法，以改进对代码的理解和调试。我们开始探索的一个想法是一个由 React 编译器驱动的基于 LSP 的新实验性 React IDE 扩展，类似于 [Lauren Tan 在 React Conf 演讲](https://conf2024.react.dev/talks/5)中使用的扩展。
 
-Our idea is that we can use the compiler's static analysis to provide more information, suggestions, and optimization opportunities directly in your IDE. For example, we can provide diagnostics for code breaking the Rules of React, hovers to show if components and hooks were optimized by the compiler, or a CodeLens to see [automatically inserted Effect dependencies](#automatic-effect-dependencies).
+我们的想法是，我们可以使用编译器的静态分析直接在你的 IDE 中提供更多信息、建议和优化机会。例如，我们可以为违反 React 规则的代码提供诊断，悬停显示组件和 hooks 是否被编译器优化，或者提供 CodeLens 来查看[自动插入的 Effect 依赖项](#automatic-effect-dependencies)。
 
-The IDE extension is still an early exploration, but we'll share our progress in future updates.
+IDE 扩展仍处于早期探索阶段，但我们将在未来的更新中分享我们的进展。
 
 ---
 
 ## Fragment Refs {/*fragment-refs*/}
 
-Many DOM APIs like those for event management, positioning, and focus are difficult to compose when writing with React. This often leads developers to reach for Effects, managing multiple Refs, by using APIs like `findDOMNode` (removed in React 19).
+许多 DOM API，如事件管理、定位和焦点等，在使用 React 编写时很难组合。这通常导致开发者求助于 Effects，管理多个 Refs，或使用像 `findDOMNode`（在 React 19 中已移除）这样的 API。
 
-We are exploring adding refs to Fragments that would point to a group of DOM elements, rather than just a single element. Our hope is that this will simplify managing multiple children and make it easier to write composable React code when calling DOM APIs.
+我们正在探索向 Fragment 添加 refs，这些 refs 将指向一组 DOM 元素，而不仅仅是单个元素。我们希望这将简化管理多个子元素，并在调用 DOM API 时使编写可组合的 React 代码变得更容易。
 
-Fragment refs are still being researched. We'll share more when we're closer to having the final API finished.
-
----
-
-## Gesture Animations {/*gesture-animations*/}
-
-We're also researching ways to enhance View Transitions to support gesture animations such as swiping to open a menu, or scroll through a photo carousel. 
-
-Gestures present new challenges for a few reasons:
-
-- **Gestures are continuous**: as you swipe the animation is tied to your finger placement time, rather than triggering and running to completion.
-- **Gestures don't complete**: when you release your finger gesture animations can run to completion, or revert to their original state (like when you only partially open a menu) depending on how far you go.
-- **Gestures invert old and new**: while you're animating, you want the page you are animating from to stay "alive" and interactive. This inverts the browser View Transition model where the "old" state is a snapshot and the "new" state is the live DOM.
-
-We believe we’ve found an approach that works well and may introduce a new API for triggering gesture transitions. For now, we're focused on shipping `<ViewTransition>`, and will revisit gestures afterward.
+Fragment refs 仍在研究中。当我们接近完成最终 API 时，我们将分享更多信息。
 
 ---
 
-## Concurrent Stores {/*concurrent-stores*/}
+## 手势动画 {/*gesture-animations*/}
 
-When we released React 18 with concurrent rendering, we also released `useSyncExternalStore` so external store libraries that did not use React state or context could [support concurrent rendering](https://github.com/reactwg/react-18/discussions/70) by forcing a synchronous render when the store is updated.
+我们还在研究增强视图过渡以支持手势动画的方法，例如滑动打开菜单或滚动浏览照片轮播。
 
-Using `useSyncExternalStore` comes at a cost though, since it forces a bail out from concurrent features like transitions, and forces existing content to show Suspense fallbacks.
+手势因以下几个原因带来新的挑战：
 
-Now that React 19 has shipped, we're revisiting this problem space to create a primitive to fully support concurrent external stores with the `use` API:
+- **手势是连续的**：当你滑动时，动画与你的手指放置时间相关联，而不是触发并运行到完成。
+- **手势不一定完成**：当你释放手指时，手势动画可以运行到完成，或者根据你滑动的距离恢复到原始状态（比如当你只是部分打开菜单时）。
+- **手势颠倒了旧状态和新状态**：在动画过程中，你希望你正在从中进行动画的页面保持“活跃”和可交互。这颠倒了浏览器视图过渡模型，在该模型中，“旧”状态是快照，而“新”状态是实时 DOM。
+
+我们相信已经找到了一种行之有效的方法，并可能引入一个新的 API 来触发手势过渡。目前，我们专注于发布 `<ViewTransition>`，之后再重新审视手势相关功能。
+
+---
+
+## 并发存储 {/*concurrent-stores*/}
+
+当我们发布带有并发渲染的 React 18 时，我们还发布了 `useSyncExternalStore`，这样不使用 React 状态或上下文的外部存储库可以通过在存储更新时强制同步渲染来[支持并发渲染](https://github.com/reactwg/react-18/discussions/70)。
+
+使用 `useSyncExternalStore` 是有代价的，因为它会强制退出过渡等并发功能，并强制现有内容显示 Suspense 后备方案。
+
+现在 React 19 已经发布，我们正在重新审视这个问题领域，创建一个原语，通过 `use` API 完全支持并发外部存储：
 
 ```js
 const value = use(store);
 ```
 
-Our goal is to allow external state to be read during render without tearing, and to work seamlessly with all of the concurrent features React offers. 
+我们的目标是允许在渲染期间读取外部状态而不会撕裂，并与 React 提供的所有并发功能无缝协作。
 
-This research is still early. We'll share more, and what the new APIs will look like, when we're further along. 
+这项研究仍处于早期阶段。当我们进一步推进时，我们将分享更多信息，以及新 API 的样子。
 
 ---
 
-_Thanks to [Aurora Scharff](https://bsky.app/profile/aurorascharff.no), [Dan Abramov](https://bsky.app/profile/danabra.mov), [Eli White](https://twitter.com/Eli_White), [Lauren Tan](https://bsky.app/profile/no.lol), [Luna Wei](https://github.com/lunaleaps), [Matt Carroll](https://twitter.com/mattcarrollcode), [Jack Pope](https://jackpope.me), [Jason Bonta](https://threads.net/someextent), [Jordan Brown](https://github.com/jbrown215), [Jordan Eldredge](https://bsky.app/profile/capt.dev), [Mofei Zhang](https://threads.net/z_mofei), [Sebastien Lorber](https://bsky.app/profile/sebastienlorber.com), [Sebastian Markbåge](https://bsky.app/profile/sebmarkbage.calyptus.eu), and [Tim Yung](https://github.com/yungsters) for reviewing this post._
+**感谢 [Aurora Scharff](https://bsky.app/profile/aurorascharff.no)、[Dan Abramov](https://bsky.app/profile/danabra.mov)、[Eli White](https://twitter.com/Eli_White)、[Lauren Tan](https://bsky.app/profile/no.lol)、[Luna Wei](https://github.com/lunaleaps)、[Matt Carroll](https://twitter.com/mattcarrollcode)、[Jack Pope](https://jackpope.me)、[Jason Bonta](https://threads.net/someextent)、[Jordan Brown](https://github.com/jbrown215)、[Jordan Eldredge](https://bsky.app/profile/capt.dev)、[Mofei Zhang](https://threads.net/z_mofei)、[Sebastien Lorber](https://bsky.app/profile/sebastienlorber.com)、[Sebastian Markbåge](https://bsky.app/profile/sebmarkbage.calyptus.eu) 和 [Tim Yung](https://github.com/yungsters) 审阅本文。**
