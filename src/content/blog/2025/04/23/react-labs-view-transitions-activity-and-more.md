@@ -1774,7 +1774,7 @@ export function Router({ children }) {
   const [isPending, startTransition] = useTransition();
 
   function navigate(url) {
-    // Update router state in transition.
+    // 在过渡中更新路由器状态。
     startTransition(() => {
       go(url);
     });
