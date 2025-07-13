@@ -6745,7 +6745,7 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
+      // 因为恢复必须是同步的，所以应该没有动画。
       // Even though it's a transition.
       startTransition(() => {
         setRouterState({
