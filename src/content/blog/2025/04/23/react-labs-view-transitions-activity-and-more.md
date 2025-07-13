@@ -12981,7 +12981,7 @@ function SearchList({searchText, videos}) {
       )}
       <div className="videos">
         {filteredVideos.map((video) => (
-          // Animate each item in list ("what")
+          // 对列表中的每一个子项目进行动画（何地）
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
