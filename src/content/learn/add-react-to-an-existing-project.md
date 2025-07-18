@@ -20,11 +20,19 @@ title: 将 React 添加到现有项目中
 
 以下是推荐的配置方式：
 
+<<<<<<< HEAD
 1. 使用一个 [基于 React 的框架](/learn/start-a-new-react-project) 构建 **应用的 React 部分**。
 2. **在框架配置中将 `/some-app` 指定为基本路径**（这里有 [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath) 与 [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/) 的配置样例）。
 3. **配置服务器或代理**，以便所有位于 `/some-app/` 下的请求都由 React 应用处理。
 
 这可以确保应用的 React 部分可以受益于这些框架中内置的 [最佳实践](/learn/start-a-new-react-project#can-i-use-react-without-a-framework)。
+=======
+1. **Build the React part of your app** using one of the [React-based frameworks](/learn/creating-a-react-app).
+2. **Specify `/some-app` as the *base path*** in your framework's configuration (here's how: [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath), [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/)).
+3. **Configure your server or a proxy** so that all requests under `/some-app/` are handled by your React app.
+
+This ensures the React part of your app can [benefit from the best practices](/learn/creating-a-react-app#full-stack-frameworks) baked into those frameworks.
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 许多基于 React 的框架都是全栈的，从而可以让你的 React 应用充分利用服务器。但是，即使无法或不想在服务器上运行 JavaScript，也可以使用相同的方法。在这种情况下，将 HTML/CSS/JS 导出（Next.js 的 [`next export` output](https://nextjs.org/docs/advanced-features/static-html-export)，Gatsby 的 default）替换为 `/some-app/`。
 
@@ -149,7 +157,11 @@ root.render(<NavigationBar />);
 
 请注意 `index.html` 中的原始 HTML 内容是如何保留的，但现在你自己的 `NavigationBar` React 组件出现在 HTML 的 `<nav id="navigation">` 中。阅读 [`createRoot` 用法文档](/reference/react-dom/client/createRoot#rendering-a-page-partially-built-with-react) 以了解如何在现有 HTML 页面中渲染 React 组件。
 
+<<<<<<< HEAD
 当在现有项目中采用 React 时，通常会从小型交互式组件（例如按钮）开始，然后逐渐“向上移动”，直到最终整个页面都由 React 构建。到那个时候，我们建议立即迁移到 [一个 React 框架](/learn/start-a-new-react-project)，以充分利用 React 的优势。
+=======
+When you adopt React in an existing project, it's common to start with small interactive components (like buttons), and then gradually keep "moving upwards" until eventually your entire page is built with React. If you ever reach that point, we recommend migrating to [a React framework](/learn/creating-a-react-app) right after to get the most out of React.
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 ## 在现有的原生移动应用中使用 React Native {/*using-react-native-in-an-existing-native-mobile-app*/}
 

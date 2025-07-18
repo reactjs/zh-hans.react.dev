@@ -4,7 +4,11 @@ title: preinitModule
 
 <Note>
 
+<<<<<<< HEAD
 [基于 React 的框架](/learn/start-a-new-react-project) 通常会内置资源处理方案，因此你可能不必手动调用此 API。请查阅框架文档以获取详细信息。
+=======
+[React-based frameworks](/learn/creating-a-react-app) frequently handle resource loading for you, so you might not have to call this API yourself. Consult your framework's documentation for details.
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 </Note>
 

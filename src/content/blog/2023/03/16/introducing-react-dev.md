@@ -41,8 +41,13 @@ description: 今天，我们非常高兴推出 react.dev，React 及其文档的
 
 **新文档从一开始就使用 Hook 来介绍 React**。新文档分为两个主要部分：
 
+<<<<<<< HEAD
 * **[学习 React](/learn)** 是一个自学课程，从头开始介绍 React。
 * **[API 参考](/reference)** 提供了每个 React API 的详细信息和使用示例。
+=======
+* **[Learn React](/learn)** is a self-paced course that teaches React from scratch.
+* **[API Reference](/reference/react)** provides the details and usage examples for every React API.
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 让我们更仔细地看看可以从每个部分中找到什么。
 
@@ -607,7 +612,11 @@ button { display: block; margin-top: 10px; }
 
 </Recipes>
 
+<<<<<<< HEAD
 一些 API 页面还包括针对常见问题的 [故障排除](/reference/react/useEffect#troubleshooting) 和针对弃用 API 的 [替代方案](/reference/react-dom/findDOMNode#alternatives)。
+=======
+Some API pages also include [Troubleshooting](/reference/react/useEffect#troubleshooting) (for common problems) and [Alternatives](https://18.react.dev/reference/react-dom/findDOMNode#alternatives) (for deprecated APIs).
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 我们希望 API 参考不仅仅是用来查找参数，还可以用来查看任何给定 API 可以做的所有不同事情以及与其他 API 相关联的方法。
 
