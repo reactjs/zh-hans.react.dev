@@ -4,7 +4,11 @@ title: 服务器组件
 
 <RSC>
 
+<<<<<<< HEAD
 服务器组件被用在 [React 服务器组件](/learn/start-a-new-react-project#full-stack-frameworks) 中。
+=======
+Server Components are for use in [React Server Components](/learn/creating-a-react-app#full-stack-frameworks).
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 </RSC>
 

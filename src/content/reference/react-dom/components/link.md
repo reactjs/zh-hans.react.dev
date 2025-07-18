@@ -30,7 +30,11 @@ link: "<link>"
 
 #### 属性 {/*props*/}
 
+<<<<<<< HEAD
 `<link>` 支持所有 [常见元素属性](/reference/react-dom/components/common#props)。
+=======
+`<link>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 * `rel`：字符串，必需字段，用于指定 [与资源的关系](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/rel)。React [将具有 `rel="stylesheet"` 的链接](#special-rendering-behavior) 与其他链接区别对待。
 

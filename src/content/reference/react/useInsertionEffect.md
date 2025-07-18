@@ -131,7 +131,11 @@ function useCSS(rule) {
 
 #### 这与在渲染期间或 `useLayoutEffect` 中注入样式相比有何优势？ {/*how-is-this-better-than-injecting-styles-during-rendering-or-uselayouteffect*/}
 
+<<<<<<< HEAD
 如果你在渲染期间注入样式并且 React 正在处理 [非阻塞更新](/reference/react/useTransition#marking-a-state-update-as-a-non-blocking-transition)，那么浏览器将在渲染组件树时每一帧都会重新计算样式，这可能会 **非常慢**。
+=======
+If you insert styles during rendering and React is processing a [non-blocking update,](/reference/react/useTransition#perform-non-blocking-updates-with-actions) the browser will recalculate the styles every single frame while rendering a component tree, which can be **extremely slow.**
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 `useInsertionEffect` 比在 [`useLayoutEffect`](/reference/react/useLayoutEffect) 或 [`useEffect`](/reference/react/useEffect) 期间注入样式更好。因为它会确保 `<style>` 标签在其它 Effect 运行前被注入。否则，正常的 Effect 中的布局计算将由于过时的样式而出错。
 

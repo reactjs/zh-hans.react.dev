@@ -30,7 +30,11 @@ title: "<input>"
 
 #### 属性 {/*props*/}
 
+<<<<<<< HEAD
 `<input>` 支持所有 [常见的元素属性](/reference/react-dom/components/common#props)。
+=======
+`<input>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 [`formAction`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formaction): 字符串或函数。设置了 `type="submit"` 或 `type="image"` 属性的 `input` 标签，会覆盖父表单对应属性 `<form action>`。当向 `formAction` 传递 URL 时，表单会表现为标准 HTML 表单；当传递函数时，该函数将处理表单提交。详见 [`<form action>`](/reference/react-dom/components/form#props)。
 
