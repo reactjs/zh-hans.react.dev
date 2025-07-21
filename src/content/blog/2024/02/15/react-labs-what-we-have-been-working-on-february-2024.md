@@ -107,7 +107,11 @@ Activity 仍处于研究阶段，我们剩下的工作是最终确定向库开�
 
 除了此更新之外，我们的团队还在会议上发表了演讲并在播客中露面，更多地讲述我们的工作并回答问题。
 
+<<<<<<< HEAD
 - [Sathya Gunasekaran](/community/team#sathya-gunasekaran) 在 [React India](https://www.youtube.com/watch?v=kjOacmVsLSE) 大会上介绍了 React 编译器。
+=======
+- [Sathya Gunasekaran](https://github.com/gsathya) spoke about the React Compiler at the [React India](https://www.youtube.com/watch?v=kjOacmVsLSE) conference
+>>>>>>> b6450e8f2d89235350932e332195f8549dcf2391
 
 - [Dan Abramov](/community/team#dan-abramov) 在 [RemixConf](https://www.youtube.com/watch?v=zMf_xeGPn6s) 上发表了名为“React from Another Dimension”的演讲，探讨了 React 服务器组件与 Action 可能是如何创建的另一种历史。
 

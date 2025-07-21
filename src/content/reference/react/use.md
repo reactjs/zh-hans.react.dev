@@ -312,7 +312,11 @@ export default async function App() {
 }
 ```
 
+<<<<<<< HEAD
 但是在 [服务器组件](/reference/react/components#server-components) 中使用 `await` 会在 `await` 执行完成前阻塞渲染。而将 Promise 从服务器组件传递到客户端组件可以防止 Promise 阻塞服务器组件渲染。
+=======
+But using `await` in a [Server Component](/reference/rsc/server-components) will block its rendering until the `await` statement is finished. Passing a Promise from a Server Component to a Client Component prevents the Promise from blocking the rendering of the Server Component.
+>>>>>>> b6450e8f2d89235350932e332195f8549dcf2391
 
 </DeepDive>
 

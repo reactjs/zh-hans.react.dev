@@ -6,7 +6,11 @@ translators:
 
 <Intro>
 
+<<<<<<< HEAD
 `react-dom/client` API 允许你在客户端（浏览器）渲染 React 组件。这些 API 通常在应用程序顶层调用，以初始化 React 树。有的 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks) 可能会为你调用相关 API，大多数组件不需要导入和使用这些 API。
+=======
+The `react-dom/client` APIs let you render React components on the client (in the browser). These APIs are typically used at the top level of your app to initialize your React tree. A [framework](/learn/start-a-new-react-project#full-stack-frameworks) may call them for you. Most of your components don't need to import or use them.
+>>>>>>> b6450e8f2d89235350932e332195f8549dcf2391
 
 </Intro>
 

@@ -36,7 +36,11 @@ title: "<select>"
 
 #### 属性 {/*props*/}
 
+<<<<<<< HEAD
 `<select>` 支持所有 [常见的元素属性](/reference/react-dom/components/common#props)。
+=======
+`<select>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+>>>>>>> b6450e8f2d89235350932e332195f8549dcf2391
 
 你可以通过传递 `value` 属性 [以控制选择框](#controlling-a-select-box-with-a-state-variable):
 

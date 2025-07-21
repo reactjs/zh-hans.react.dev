@@ -31,7 +31,11 @@ script: "<script>"
 
 #### 属性 {/*props*/}
 
+<<<<<<< HEAD
 `<script>` 支持所有 [通用元素属性](/reference/react-dom/components/common#props)。
+=======
+`<script>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+>>>>>>> b6450e8f2d89235350932e332195f8549dcf2391
 
 它应该要么具有 `children` 属性，要么具有 `src` 属性。
 
