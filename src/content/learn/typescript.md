@@ -11,16 +11,27 @@ TypeScript 是一种向 JavaScript 代码添加类型定义的常用方法。Typ
 
 <YouWillLearn>
 
+<<<<<<< HEAD
 * [在 React 组件中使用 TypeScript](/learn/typescript#typescript-with-react-components)
 * [带有 Hook 的类型示例](/learn/typescript#example-hooks)
 * [来自 `@types/react` 的常见类型](/learn/typescript/#useful-types)
 * [更多学习资源](/learn/typescript/#further-learning)
+=======
+* [TypeScript with React Components](/learn/typescript#typescript-with-react-components)
+* [Examples of typing with Hooks](/learn/typescript#example-hooks)
+* [Common types from `@types/react`](/learn/typescript#useful-types)
+* [Further learning locations](/learn/typescript#further-learning)
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 </YouWillLearn>
 
 ## 安装 {/*installation*/}
 
+<<<<<<< HEAD
 所有的 [生产级 React 框架](/learn/start-a-new-react-project#production-grade-react-framework) 都支持使用 TypeScript。请按照框架特定的指南进行安装：
+=======
+All [production-grade React frameworks](/learn/creating-a-react-app#full-stack-frameworks) offer support for using TypeScript. Follow the framework specific guide for installation:
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 - [Next.js](https://nextjs.org/docs/app/building-your-application/configuring/typescript)
 - [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)

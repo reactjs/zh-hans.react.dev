@@ -36,7 +36,11 @@ title: "<option>"
 
 #### Props {/*props*/}
 
+<<<<<<< HEAD
 `<option>` 支持所有 [常见的元素属性](/reference/react-dom/components/common#props)。
+=======
+`<option>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 除此之外，`<option>` 还支持以下属性：
 
