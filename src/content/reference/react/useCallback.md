@@ -14,7 +14,7 @@ const cachedFn = useCallback(fn, dependencies)
 
 <Note>
 
-[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useCallback` calls. You can use the compiler to handle memoization automatically.
+[React Compiler](/learn/react-compiler) 会自动对值和函数进行记忆化处理，从而减少手动调用 `useCallback` 的需求。你可以使用编译器自动处理记忆化。
 
 </Note>
 

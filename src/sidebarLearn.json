@@ -62,19 +62,19 @@
       "canary": true,
       "routes": [
         {
-          "title": "Introduction",
+          "title": "介绍",
           "path": "/learn/react-compiler/introduction"
         },
         {
-          "title": "Installation",
+          "title": "安装",
           "path": "/learn/react-compiler/installation"
         },
         {
-          "title": "Incremental Adoption",
+          "title": "逐步使用",
           "path": "/learn/react-compiler/incremental-adoption"
         },
         {
-          "title": "Debugging and Troubleshooting",
+          "title": "调试和故障排除",
           "path": "/learn/react-compiler/debugging"
         }
       ]

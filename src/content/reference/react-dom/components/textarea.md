@@ -30,11 +30,7 @@ title: "<textarea>"
 
 #### 属性 {/*props*/}
 
-<<<<<<< HEAD
-`<textarea>` 支持所有 [常见的元素属性](/reference/react-dom/components/common#props)。
-=======
-`<textarea>` supports all [common element props.](/reference/react-dom/components/common#common-props)
->>>>>>> b6450e8f2d89235350932e332195f8549dcf2391
+`<textarea>` 支持所有 [常见的元素属性](/reference/react-dom/components/common#common-props)。
 
 你可以通过传递 `value` 属性 [以控制文本框](#controlling-a-text-area-with-a-state-variable)。
 

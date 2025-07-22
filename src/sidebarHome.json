@@ -80,9 +80,6 @@
     },
     {
       "hasSectionHeader": true,
-<<<<<<< HEAD
-      "sectionHeader": "参与贡献"
-=======
       "sectionHeader": "REACT COMPILER API"
     },
     {
@@ -99,8 +96,7 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET INVOLVED"
->>>>>>> b6450e8f2d89235350932e332195f8549dcf2391
+      "sectionHeader": "参与贡献"
     },
     {
       "title": "React 社区",

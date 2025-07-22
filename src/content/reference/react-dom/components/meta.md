@@ -30,11 +30,7 @@ meta: "<meta>"
 
 #### 属性 {/*props*/}
 
-<<<<<<< HEAD
-`<meta>` 支持所有 [常见元素属性](/reference/react-dom/components/common#props)。
-=======
-`<meta>` supports all [common element props.](/reference/react-dom/components/common#common-props)
->>>>>>> b6450e8f2d89235350932e332195f8549dcf2391
+`<meta>` 支持所有 [常见元素属性](/reference/react-dom/components/common#common-props)。
 
 它应该有恰好一个以下属性之一：`name`、`httpEquiv`、`charset` 或 `itemProp`。根据指定的属性，`<meta>` 组件会执行不同的操作。
 

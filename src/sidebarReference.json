@@ -327,13 +327,10 @@
     },
     {
       "hasSectionHeader": true,
-<<<<<<< HEAD
-      "sectionHeader": "React 规则"
-=======
       "sectionHeader": "React Compiler"
     },
     {
-      "title": "Configuration",
+      "title": "配置",
       "path": "/reference/react-compiler/configuration",
       "routes": [
         {
@@ -359,7 +356,7 @@
       ]
     },
     {
-      "title": "Directives",
+      "title": "指令",
       "path": "/reference/react-compiler/directives",
       "routes": [
         {
@@ -378,8 +375,7 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "Rules of React"
->>>>>>> b6450e8f2d89235350932e332195f8549dcf2391
+      "sectionHeader": "React 规则"
     },
     {
       "title": "概述",

@@ -4,11 +4,7 @@ title: Static React DOM APIs
 
 <Intro>
 
-<<<<<<< HEAD
-`react-dom/static` API 允许你为 React 组件生成静态 HTML。与流式 API 相比，它们的功能有限。[框架](/learn/start-a-new-react-project#production-grade-react-frameworks) 可能会调用它们。你的大多数组件不需要导入或使用它们。
-=======
-The `react-dom/static` APIs let you generate static HTML for React components. They have limited functionality compared to the streaming APIs. A [framework](/learn/start-a-new-react-project#full-stack-frameworks) may call them for you. Most of your components don't need to import or use them.
->>>>>>> b6450e8f2d89235350932e332195f8549dcf2391
+`react-dom/static` API 允许你为 React 组件生成静态 HTML。与流式 API 相比，它们的功能有限。[框架](/learn/start-a-new-react-project#full-stack-frameworks) 可能会调用它们。你的大多数组件不需要导入或使用它们。
 
 </Intro>
 
