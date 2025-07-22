@@ -30,7 +30,7 @@ title: "<title>"
 
 #### 属性 {/*props*/}
 
-`<title>` 支持所有 [常见元素属性](/reference/react-dom/components/common#props)。
+`<title>` 支持所有 [常见元素属性](/reference/react-dom/components/common#common-props)。
 
 * `children`：`<title>` 只接受文本作为子元素。该文本将成为文档的标题，也可以传递只渲染文本的自定义组件。
 

@@ -30,6 +30,14 @@ React-dom 仅支持在 web 应用程序中使用（在浏览器 DOM 环境中运
 * [服务端 API](/reference/react-dom/server) —— `react-dom/server` API 允许在服务器端将 React 组件渲染为 HTML。
 
 
+## React Compiler {/*react-compiler*/}
+
+The React Compiler is a build-time optimization tool that automatically memoizes your React components and values:
+
+* [Configuration](/reference/react-compiler/configuration) - Configuration options for React Compiler.
+* [Directives](/reference/react-compiler/directives) - Function-level directives to control compilation.
+* [Compiling Libraries](/reference/react-compiler/compiling-libraries) - Guide for shipping pre-compiled library code.
+
 ## Rules of React {/*rules-of-react*/}
 
 React 有一套表达模式的俗语与规则，它们以一种易于理解并能帮助实现高质量应用程序的方式表达出来：

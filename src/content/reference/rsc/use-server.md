@@ -95,7 +95,7 @@ async function addToCart(data) {
 * 来自事件处理程序的事件
 
 
-支持的可序列化返回值与边界客户端组件的 [可序列化 props](/reference/rsc/use-client#passing-props-from-server-to-client-components) 相同。
+支持的可序列化返回值与边界客户端组件的 [可序列化 props](/reference/rsc/use-client#serializable-types) 相同。
 
 
 ## 用法 {/*usage*/}

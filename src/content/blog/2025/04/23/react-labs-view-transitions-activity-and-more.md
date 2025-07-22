@@ -2495,7 +2495,7 @@ root.render(
 </ViewTransition>
 ```
 
-并使用[视图过渡类](/reference/react/ViewTransition#view-transition-classes)在 CSS 中定义 `slow-fade`：
+并使用[视图过渡类](/reference/react/ViewTransition#view-transition-class)在 CSS 中定义 `slow-fade`：
 
 ```css
 ::view-transition-old(.slow-fade) {

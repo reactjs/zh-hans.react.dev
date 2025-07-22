@@ -36,7 +36,7 @@ title: "<option>"
 
 #### Props {/*props*/}
 
-`<option>` 支持所有 [常见的元素属性](/reference/react-dom/components/common#props)。
+`<option>` 支持所有 [常见的元素属性](/reference/react-dom/components/common#common-props)。
 
 除此之外，`<option>` 还支持以下属性：
 

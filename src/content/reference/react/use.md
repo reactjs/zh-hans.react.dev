@@ -312,7 +312,7 @@ export default async function App() {
 }
 ```
 
-但是在 [服务器组件](/reference/react/components#server-components) 中使用 `await` 会在 `await` 执行完成前阻塞渲染。而将 Promise 从服务器组件传递到客户端组件可以防止 Promise 阻塞服务器组件渲染。
+但是在 [服务器组件](/reference/rsc/server-component) 中使用 `await` 会在 `await` 执行完成前阻塞渲染。而将 Promise 从服务器组件传递到客户端组件可以防止 Promise 阻塞服务器组件渲染。
 
 </DeepDive>
 

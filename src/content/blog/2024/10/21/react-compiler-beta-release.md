@@ -72,11 +72,11 @@ npm install -D eslint-plugin-react-compiler@beta
 yarn add -D eslint-plugin-react-compiler@beta
 </TerminalBlock>
 
-安装后你可以通过[将其添加到 ESLint 配置](/learn/react-compiler#installing-eslint-plugin-react-compiler) 来启用 linter。使用 linter 有助于发现破坏 React 规则的地方，从而在编译器完全发布后更容易采用它。
+安装后你可以通过[将其添加到 ESLint 配置](/learn/react-compiler/installation#eslint-integration) 来启用 linter。使用 linter 有助于发现破坏 React 规则的地方，从而在编译器完全发布后更容易采用它。
 
 ## 向后兼容性 {/*backwards-compatibility*/}
 
-React Compiler 生成的代码依赖于 React 19 中添加的运行时 API，但我们后来添加了对 React 17 和 18 的支持。如果你还没有使用 React 19，在 Beta 版本中可以通过在 compiler 配置中设置 `target` 来使用 React Compiler，并添加 `react-compiler-runtime` 作为依赖项。[你可以在这里找到相关文档](/learn/react-compiler#using-react-compiler-with-react-17-or-18)。
+React Compiler 生成的代码依赖于 React 19 中添加的运行时 API，但我们后来添加了对 React 17 和 18 的支持。如果你还没有使用 React 19，在 Beta 版本中可以通过在 compiler 配置中设置 `target` 来使用 React Compiler，并添加 `react-compiler-runtime` 作为依赖项。[你可以在这里找到相关文档](/reference/react-compiler/configuration#react-17-18)。
 
 ## 在库中使用 React Compiler {/*using-react-compiler-in-libraries*/}
 
@@ -86,7 +86,7 @@ React Compiler 还可以用来编译库。由于 React Compiler 需要在代码�
 
 由于库的代码是预编译的，因此用户无需启用 Compiler 即可从编译器的自动记忆化中受益。如果库的 target 不是 React 19，请指定一个最小的 [`target` 并且将 `react-compiler-runtime` 添加为直接依赖](#using-react-compiler-with-react-17-or-18)。这个运行时包将根据应用程序的版本使用正确的 API 实现，并在必要时填充缺失的 API。
 
-[你可以在此处找到更多相关文档。](/learn/react-compiler#using-the-compiler-on-libraries)
+[你可以在此处找到更多相关文档。](/reference/react-compiler/compiling-libraries)
 
 ## 向所有人开放 React Compiler 工作组 {/*opening-up-react-compiler-working-group-to-everyone*/}
 

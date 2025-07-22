@@ -30,7 +30,7 @@ title: "<progress>"
 
 #### 参数 {/*props*/}
 
-`<progress>` 支持所有 [常见的元素属性](/reference/react-dom/components/common#props)。
+`<progress>` 支持所有 [常见的元素属性](/reference/react-dom/components/common#common-props)。
 
 除此之外，`<progress>` 还支持以下属性：
 

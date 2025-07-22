@@ -53,11 +53,29 @@
         {
           "title": "React 开发者工具",
           "path": "/learn/react-developer-tools"
+        }
+      ]
+    },
+    {
+      "title": "React Compiler",
+      "path": "/learn/react-compiler",
+      "canary": true,
+      "routes": [
+        {
+          "title": "介绍",
+          "path": "/learn/react-compiler/introduction"
         },
         {
-          "title": "React Compiler",
-          "path": "/learn/react-compiler",
-          "canary": true
+          "title": "安装",
+          "path": "/learn/react-compiler/installation"
+        },
+        {
+          "title": "逐步使用",
+          "path": "/learn/react-compiler/incremental-adoption"
+        },
+        {
+          "title": "调试和故障排除",
+          "path": "/learn/react-compiler/debugging"
         }
       ]
     },

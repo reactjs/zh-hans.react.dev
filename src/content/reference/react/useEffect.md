@@ -896,7 +896,7 @@ button { margin: 5px; }
 
 ### 使用 Effect 请求数据 {/*fetching-data-with-effects*/}
 
-你可以使用 Effect 来为组件请求数据。请注意，[如果你使用框架](/learn/start-a-new-react-project#production-grade-react-frameworks)，使用框架的数据请求方式将比在 Effect 中手动编写要有效得多。
+你可以使用 Effect 来为组件请求数据。请注意，[如果你使用框架](/learn/start-a-new-react-project#full-stack-frameworks)，使用框架的数据请求方式将比在 Effect 中手动编写要有效得多。
 
 如果你想手动从 Effect 中请求数据，你的代码可能是这样的：
 
@@ -1048,7 +1048,7 @@ export async function fetchBio(person) {
 
 这些缺点并不仅仅体现在 React 上，它可能出现在所有挂载时请求数据的地方。与路由一样，要做好数据请求并非易事，因此我们推荐以下方法：
 
-- **如果正在使用 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks)，那么请使用其内置的数据获取机制**。现代 React 框架已经集成了高效的数据获取机制，不会受到上述问题的影响。
+- **如果正在使用 [框架](/learn/start-a-new-react-project#full-stack-frameworks)，那么请使用其内置的数据获取机制**。现代 React 框架已经集成了高效的数据获取机制，不会受到上述问题的影响。
 - **否则，请考虑使用或构建客户端缓存**。流行的开源解决方案包括 [React Query](https://tanstack.com/query/latest/)、[useSWR](https://swr.vercel.app/) 和 [React Router v6.4+](https://beta.reactrouter.com/en/main/start/overview)。你也可以构建自己的解决方案，在这种情况下，你将在底层使用 Effect，但还需添加逻辑以避免重复请求、缓存响应并避免网络瀑布效应（通过预加载数据或将数据需求提升到路由级别）。
 
 如果这两种方法都不适合你，可以继续直接在 Effect 中请求数据。
@@ -1733,7 +1733,7 @@ function Page({ url, shoppingCart }) {
 
 ### 在服务器和客户端上显示不同的内容 {/*displaying-different-content-on-the-server-and-the-client*/}
 
-如果你的应用程序使用服务端（[直接](/reference/react-dom/server) 或通过 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks)）渲染，你的组件将会在两个不同的环境中渲染。在服务器上，它将渲染生成初始 HTML。在客户端，React 将再次运行渲染代码，以便将事件处理附加到该 HTML 上。这就是为什么要让 [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) 发挥作用，你的初始渲染输出必须在客户端和服务器上完全相同。
+如果你的应用程序使用服务端（[直接](/reference/react-dom/server) 或通过 [框架](/learn/start-a-new-react-project#full-stack-frameworks)）渲染，你的组件将会在两个不同的环境中渲染。在服务器上，它将渲染生成初始 HTML。在客户端，React 将再次运行渲染代码，以便将事件处理附加到该 HTML 上。这就是为什么要让 [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) 发挥作用，你的初始渲染输出必须在客户端和服务器上完全相同。
 
 在极少数情况下，你可能需要在客户端上显示不同的内容。例如，如果你的应用从 [`localStorage`](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage) 中读取某些数据，服务器上肯定不可能做到这一点。以下是这如何实现的：
 

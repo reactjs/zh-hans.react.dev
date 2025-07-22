@@ -30,7 +30,7 @@ style: "<style>"
 
 #### 属性 {/*props*/}
 
-`<style>` 支持所有 [常见元素属性](/reference/react-dom/components/common#props)。
+`<style>` 支持所有 [常见元素属性](/reference/react-dom/components/common#common-props)。
 
 * `children`：字符串，必需字段，表示样式表的内容。
 * `precedence`：字符串，告诉 React 在文档 `<head>` 中排列 `<style>` DOM 节点的位置，确定哪个样式表可以覆盖另一个。React 会推断其首先发现的 `precedence` 值为“较低”，而后来发现的 `precedence` 值为“较高”。许多样式系统使用单个 `precedence` 值能够很好地工作，因为样式规则是原子的。无论是 `<link>` 还是内联 `<style>` 标签，或者使用 [`preinit`](/reference/react-dom/preinit) 函数加载的样式表，具有相同优先级的将一起处理。

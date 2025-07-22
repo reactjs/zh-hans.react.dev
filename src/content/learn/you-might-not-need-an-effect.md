@@ -26,7 +26,7 @@ Effect 是 React 范式中的一种脱围机制。它们让你可以 “逃出�
 * **你不必使用 Effect 来转换渲染所需的数据**。例如，你想在展示一个列表前先做筛选。你的直觉可能是写一个当列表变化时更新 state 变量的 Effect。然而，这是低效的。当你更新这个 state 时，React 首先会调用你的组件函数来计算应该显示在屏幕上的内容。然后 React 会把这些变化“[提交](/learn/render-and-commit)”到 DOM 中来更新屏幕。然后 React 会执行你的 Effect。如果你的 Effect 也立即更新了这个 state，就会重新执行整个流程。为了避免不必要的渲染流程，应在你的组件顶层转换数据。这些代码会在你的 props 或 state 变化时自动重新执行。
 * **你不必使用 Effect 来处理用户事件**。例如，你想在用户购买一个产品时发送一个 `/api/buy` 的 POST 请求并展示一个提示。在这个购买按钮的点击事件处理函数中，你确切地知道会发生什么。但是当一个 Effect 运行时，你却不知道用户做了什么（例如，点击了哪个按钮）。这就是为什么你通常应该在相应的事件处理函数中处理用户事件。
 
-你 **的确** 可以使用 Effect 来和外部系统 [同步](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events) 。例如，你可以写一个 Effect 来保持一个 jQuery 的组件和 React state 之间的同步。你也可以使用 Effect 来获取数据：例如，你可以同步当前的查询搜索和查询结果。请记住，比起直接在你的组件中写 Effect，现代 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks) 提供了更加高效的，内置的数据获取机制。
+你 **的确** 可以使用 Effect 来和外部系统 [同步](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events) 。例如，你可以写一个 Effect 来保持一个 jQuery 的组件和 React state 之间的同步。你也可以使用 Effect 来获取数据：例如，你可以同步当前的查询搜索和查询结果。请记住，比起直接在你的组件中写 Effect，现代 [框架](/learn/start-a-new-react-project#full-stack-frameworks) 提供了更加高效的，内置的数据获取机制。
 
 为了帮助你获得正确的直觉，让我们来看一些常见的实例吧！
 
@@ -94,6 +94,12 @@ function TodoList({ todos, filter }) {
 一般来说，这段代码没有问题！但是，`getFilteredTodos()` 的耗时可能会很长，或者你有很多 `todos`。这些情况下，当 `newTodo` 这样不相关的 state 变量变化时，你并不想重新执行 `getFilteredTodos()`。
 
 你可以使用 [`useMemo`](/reference/react/useMemo) Hook 缓存（或者说 [记忆（memoize）](https://en.wikipedia.org/wiki/Memoization)）一个昂贵的计算。
+
+<Note>
+
+[React Compiler](/learn/react-compiler) 可以自动记忆化昂贵计算，从而减少很多手动调用 `useMemo` 的场景。
+
+</Note>
 
 ```js {5-8}
 import { useMemo, useState } from 'react';
@@ -751,7 +757,7 @@ function SearchResults({ query }) {
 
 处理竞态条件并不是实现数据获取的唯一难点。你可能还需要考虑缓存响应结果（使用户点击后退按钮时可以立即看到先前的屏幕内容），如何在服务端获取数据（使服务端初始渲染的 HTML 中包含获取到的内容而不是加载动画），以及如何避免网络瀑布（使子组件不必等待每个父组件的数据获取完毕后才开始获取数据）。
 
-**这些问题适用于任何 UI 库，而不仅仅是 React。解决这些问题并不容易，这也是现代 [框架](/learn/start-a-new-react-project#production-grade-react-frameworks) 提供了比在 Effect 中获取数据更有效的内置数据获取机制的原因。**
+**这些问题适用于任何 UI 库，而不仅仅是 React。解决这些问题并不容易，这也是现代 [框架](/learn/start-a-new-react-project#full-stack-frameworks) 提供了比在 Effect 中获取数据更有效的内置数据获取机制的原因。**
 
 如果你不使用框架（也不想开发自己的框架），但希望使从 Effect 中获取数据更符合人类直觉，请考虑像这个例子一样，将获取逻辑提取到一个自定义 Hook 中：
 

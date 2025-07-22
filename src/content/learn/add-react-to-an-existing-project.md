@@ -24,7 +24,7 @@ title: 将 React 添加到现有项目中
 2. **在框架配置中将 `/some-app` 指定为基本路径**（这里有 [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath) 与 [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/) 的配置样例）。
 3. **配置服务器或代理**，以便所有位于 `/some-app/` 下的请求都由 React 应用处理。
 
-这可以确保应用的 React 部分可以受益于这些框架中内置的 [最佳实践](/learn/start-a-new-react-project#can-i-use-react-without-a-framework)。
+这可以确保应用的 React 部分可以受益于这些框架中内置的 [最佳实践](/learn/build-a-react-app-from-scratch#consider-using-a-framework)。
 
 许多基于 React 的框架都是全栈的，从而可以让你的 React 应用充分利用服务器。但是，即使无法或不想在服务器上运行 JavaScript，也可以使用相同的方法。在这种情况下，将 HTML/CSS/JS 导出（Next.js 的 [`next export` output](https://nextjs.org/docs/advanced-features/static-html-export)，Gatsby 的 default）替换为 `/some-app/`。
 

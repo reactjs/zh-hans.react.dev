@@ -13,14 +13,14 @@ TypeScript 是一种向 JavaScript 代码添加类型定义的常用方法。Typ
 
 * [在 React 组件中使用 TypeScript](/learn/typescript#typescript-with-react-components)
 * [带有 Hook 的类型示例](/learn/typescript#example-hooks)
-* [来自 `@types/react` 的常见类型](/learn/typescript/#useful-types)
-* [更多学习资源](/learn/typescript/#further-learning)
+* [来自 `@types/react` 的常见类型](/learn/typescript#useful-types)
+* [更多学习资源](/learn/typescript#further-learning)
 
 </YouWillLearn>
 
 ## 安装 {/*installation*/}
 
-所有的 [生产级 React 框架](/learn/start-a-new-react-project#production-grade-react-framework) 都支持使用 TypeScript。请按照框架特定的指南进行安装：
+所有的 [生产级 React 框架](/learn/start-a-new-react-project#full-stack-frameworks) 都支持使用 TypeScript。请按照框架特定的指南进行安装：
 
 - [Next.js](https://nextjs.org/docs/app/building-your-application/configuring/typescript)
 - [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
@@ -174,7 +174,7 @@ const [requestState, setRequestState] = useState<RequestState>({ status: 'idle' 
 import {useReducer} from 'react';
 
 interface State {
-   count: number 
+   count: number
 };
 
 type CounterAction =
@@ -284,7 +284,7 @@ export default App = AppTSX;
 
 </Sandpack>
 
-当你没有一个合理的默认值时，这种技术是有效的，而在这些情况下，`null` 作为默认值可能感觉是合理的。但是，为了让类型系统理解你的代码，你需要在 `createContext` 上显式设置 `ContextShape | null`。
+当你有一个合理的默认值情况下，这种技术是有效的。但是当你没有合理的默认值的时候，`null` 作为默认值可能感觉是合理的。但是为了让类型系统理解你的代码，你需要在 `createContext` 上显式设置 `ContextShape | null`。
 
 这会导致一个问题，你需要在 context consumer 中消除 `| null` 的类型。我们建议让 Hook 在运行时检查它的存在，并在不存在时抛出一个错误：
 
@@ -329,6 +329,12 @@ function MyComponent() {
 
 ### `useMemo` {/*typing-usememo*/}
 
+<Note>
+
+[React Compiler](/learn/react-compiler) 会自动对值和函数进行记忆化处理，从而减少手动调用 `useMemo` 的需求。你可以使用编译器自动处理记忆化。
+
+</Note>
+
 [`useMemo`](/reference/react/useMemo) 会从函数调用中创建/重新访问记忆化值，只有在第二个参数中传入的依赖项发生变化时，才会重新运行该函数。函数的类型是根据第一个参数中函数的返回值进行推断的，如果希望明确指定，可以为该 Hook 提供一个类型参数以指定函数类型。
 
 ```ts
@@ -338,6 +344,12 @@ const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
 
 
 ### `useCallback` {/*typing-usecallback*/}
+
+<Note>
+
+[React Compiler](/learn/react-compiler) 会自动对值和函数进行记忆化处理，从而减少手动调用 `useCallback` 的需求。你可以使用编译器自动处理记忆化。
+
+</Note>
 
 [`useCallback`](/reference/react/useCallback) 会在第二个参数中传入的依赖项保持不变的情况下，为函数提供相同的引用。与 `useMemo` 类似，函数的类型是根据第一个参数中函数的返回值进行推断的，如果希望明确指定，可以为这个 Hook 提供一个类型参数以指定函数类型。
 
@@ -361,7 +373,7 @@ export default function Form() {
   const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
     setValue(event.currentTarget.value);
   }, [setValue])
-  
+
   return (
     <>
       <input value={value} onChange={handleChange} />

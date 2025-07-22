@@ -12,6 +12,12 @@ const MemoizedComponent = memo(SomeComponent, arePropsEqual?)
 
 </Intro>
 
+<Note>
+
+[React Compiler](/learn/react-compiler) automatically applies the equivalent of `memo` to all components, reducing the need for manual memoization. You can use the compiler to handle component memoization automatically.
+
+</Note>
+
 <InlineToc />
 
 ---
@@ -222,7 +228,7 @@ export default function MyApp() {
   const [theme, setTheme] = useState('dark');
 
   function handleClick() {
-    setTheme(theme === 'dark' ? 'light' : 'dark'); 
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   }
 
   return (
@@ -354,6 +360,87 @@ function arePropsEqual(oldProps, newProps) {
 避免在 `arePropsEqual` 中进行深比较，除非你 100％ 确定你正在处理的数据结构具有已知有限的深度。**深比较可能会变得非常缓慢**，并且如果有人稍后更改数据结构，这可能会卡住你的应用数秒钟。
 
 </Pitfall>
+
+---
+
+### Do I still need React.memo if I use React Compiler? {/*react-compiler-memo*/}
+
+When you enable [React Compiler](/learn/react-compiler), you typically don't need `React.memo` anymore. The compiler automatically optimizes component re-rendering for you.
+
+Here's how it works:
+
+**Without React Compiler**, you need `React.memo` to prevent unnecessary re-renders:
+
+```js
+// Parent re-renders every second
+function Parent() {
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds(s => s + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <>
+      <h1>Seconds: {seconds}</h1>
+      <ExpensiveChild name="John" />
+    </>
+  );
+}
+
+// Without memo, this re-renders every second even though props don't change
+const ExpensiveChild = memo(function ExpensiveChild({ name }) {
+  console.log('ExpensiveChild rendered');
+  return <div>Hello, {name}!</div>;
+});
+```
+
+**With React Compiler enabled**, the same optimization happens automatically:
+
+```js
+// No memo needed - compiler prevents re-renders automatically
+function ExpensiveChild({ name }) {
+  console.log('ExpensiveChild rendered');
+  return <div>Hello, {name}!</div>;
+}
+```
+
+Here's the key part of what the React Compiler generates:
+
+```js {6-12}
+function Parent() {
+  const $ = _c(7);
+  const [seconds, setSeconds] = useState(0);
+  // ... other code ...
+
+  let t3;
+  if ($[4] === Symbol.for("react.memo_cache_sentinel")) {
+    t3 = <ExpensiveChild name="John" />;
+    $[4] = t3;
+  } else {
+    t3 = $[4];
+  }
+  // ... return statement ...
+}
+```
+
+Notice the highlighted lines: The compiler wraps `<ExpensiveChild name="John" />` in a cache check. Since the `name` prop is always `"John"`, this JSX is created once and reused on every parent re-render. This is exactly what `React.memo` does - it prevents the child from re-rendering when its props haven't changed.
+
+The React Compiler automatically:
+1. Tracks that the `name` prop passed to `ExpensiveChild` hasn't changed
+2. Reuses the previously created JSX for `<ExpensiveChild name="John" />`
+3. Skips re-rendering `ExpensiveChild` entirely
+
+This means **you can safely remove `React.memo` from your components when using React Compiler**. The compiler provides the same optimization automatically, making your code cleaner and easier to maintain.
+
+<Note>
+
+The compiler's optimization is actually more comprehensive than `React.memo`. It also memoizes intermediate values and expensive computations within your components, similar to combining `React.memo` with `useMemo` throughout your component tree.
+
+</Note>
 
 ---
 

@@ -916,7 +916,7 @@ export default function Form() {
 
 </Sandpack>
 
-阅读更多关于 [使用 ref 操纵 DOM](/learn/manipulating-the-dom-with-refs) 的内容并 [查看更多示例](/reference/react/useRef#examples-dom)。
+阅读更多关于 [使用 ref 操纵 DOM](/learn/manipulating-the-dom-with-refs) 的内容并 [查看更多示例](/reference/react/useRef#usage)。
 
 对于更高级的用例，`ref` 属性还可以接受 [回调函数](#ref-callback)。
 

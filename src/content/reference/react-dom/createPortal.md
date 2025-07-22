@@ -50,7 +50,7 @@ portal 只改变 DOM 节点的所处位置。在其他方面，渲染至 portal 
 
 * `domNode`：某个已经存在的 DOM 节点，例如由 `document.getElementById()` 返回的节点。在更新过程中传递不同的 DOM 节点将导致 portal 内容被重建。
 
-* **可选参数** `key`：用作 portal [key](/learn/rendering-lists/#keeping-list-items-in-order-with-key) 的独特字符串或数字。
+* **可选参数** `key`：用作 portal [key](/learn/rendering-lists#keeping-list-items-in-order-with-key) 的独特字符串或数字。
 
 #### 返回值 {/*returns*/}
 
