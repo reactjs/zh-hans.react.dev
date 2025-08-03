@@ -72,14 +72,14 @@ function ExpensiveComponent({ data, onClick }) {
 }
 ```
 
-_[在 React 编译器游乐场中查看此示例](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAMygOzgFwJYSYAEAogB4AOCmYeAbggMIQC2Fh1OAFMEQCYBDHAIA0RQowA2eOAGsiAXwCURYAB1iROITA4iFGBERgwCPgBEhAogF4iCStVoMACoeO1MAcy6DhSgG4NDSItHT0ACwFMPkkmaTlbIi48HAQWFRsAPlUQ0PFMKRlZFLSWADo8PkC8hSDMPJgEHFhiLjzQgB4+eiyO-OADIwQTM0thcpYBClL02xz2zXz8zoBJMqJZBABPG2BU9Mq+BQKiuT2uTJyomLizkoOMk4B6PqX8pSUFfs7nnro3qEapgFCAFEA)_
+__[在 React 编译器游乐场中查看此示例](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAMygOzgFwJYSYAEAogB4AOCmYeAbggMIQC2Fh1OAFMEQCYBDHAIA0RQowA2eOAGsiAXwCURYAB1iROITA4iFGBERgwCPgBEhAogF4iCStVoMACoeO1MAcy6DhSgG4NDSItHT0ACwFMPkkmaTlbIi48HAQWFRsAPlUQ0PFMKRlZFLSWADo8PkC8hSDMPJgEHFhiLjzQgB4+eiyO-OADIwQTM0thcpYBClL02xz2zXz8zoBJMqJZBABPG2BU9Mq+BQKiuT2uTJyomLizkoOMk4B6PqX8pSUFfs7nnro3qEapgFCAFEA)__
 
 React 编译器会自动应用等效的优化，确保你的应用只在必要时重新渲染。
 
 <DeepDive>
 #### React 编译器添加了哪种类型的记忆化？ {/*what-kind-of-memoization-does-react-compiler-add*/}
 
-React 编译器的自动记忆化主要专注于**提高更新性能**（重新渲染现有组件），因此它聚焦于以下两种使用场景：
+React 编译器的自动记忆化主要专注于 **提高更新性能（重新渲染现有组件）**，因此它聚焦于以下两种使用场景：
 
 1. **跳过组件的级联重新渲染**
     * 重新渲染 `<Parent />` 会导致其组件树中的许多组件重新渲染，即使只有 `<Parent />` 发生了变化
@@ -88,7 +88,7 @@ React 编译器的自动记忆化主要专注于**提高更新性能**（重新�
 
 #### 优化重新渲染 {/*optimizing-re-renders*/}
 
-React 允许你将 UI 表达为其当前状态的函数（更具体地说：其 props、state 和 context）。在其当前的实现中，当一个组件的状态发生变化时，React 会重新渲染该组件 _及其所有子组件_，除非你使用了 `useMemo()`、`useCallback()` 或 `React.memo()` 进行手动记忆优化。例如，在以下示例中，每当 `<FriendList>` 的状态变化时，`<MessageButton>` 都会重新渲染：
+React 允许你将 UI 表达为其当前状态的函数（更具体地说：其 props、state 和 context）。在其当前的实现中，当一个组件的状态发生变化时，React 会重新渲染该组件 __及其所有子组件__，除非你使用了 `useMemo()`、`useCallback()` 或 `React.memo()` 进行手动记忆优化。例如，在以下示例中，每当 `<FriendList>` 的状态变化时，`<MessageButton>` 都会重新渲染：
 
 ```javascript
 function FriendList({ friends }) {
