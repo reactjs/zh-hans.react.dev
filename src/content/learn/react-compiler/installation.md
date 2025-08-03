@@ -1,60 +1,60 @@
 ---
-title: Installation
+title: 安装
 ---
 
 <Intro>
-This guide will help you install and configure React Compiler in your React application.
+本指南将帮助你在 React 应用程序中安装和配置 React Compiler。
 </Intro>
 
 <YouWillLearn>
 
-* How to install React Compiler
-* Basic configuration for different build tools
-* How to verify your setup is working
+* 如何安装 React 编译器
+* 不同构建工具的基本配置
+* 如何验证你的设置是否正常工作
 
 </YouWillLearn>
 
-## Prerequisites {/*prerequisites*/}
+## 前提条件 {/*prerequisites*/}
 
-React Compiler is designed to work best with React 19, but it also supports React 17 and 18. Learn more about [React version compatibility](/reference/react-compiler/target).
+React 编译器专为与 React 19 配合使用而设计，但也支持 React 17 和 18。了解有关 [React 版本兼容性](/reference/react-compiler/target) 的更多信息。
 
 <Note>
-React Compiler is currently in RC. Install it using the `@rc` tag to get the latest release candidate version.
+React Compiler 当前处于 RC 阶段。请使用 `@rc` 标签安装，以获取最新的发布候选版本。
 </Note>
 
-## Installation {/*installation*/}
+## 安装 {/*installation*/}
 
-Install React Compiler as a `devDependency`:
+将 React 编译器安装为 `devDependency`：
 
 <TerminalBlock>
 npm install -D babel-plugin-react-compiler@rc
 </TerminalBlock>
 
-Or with Yarn:
+或者使用 Yarn：
 
 <TerminalBlock>
 yarn add -D babel-plugin-react-compiler@rc
 </TerminalBlock>
 
-Or with pnpm:
+或者使用 pnpm：
 
 <TerminalBlock>
 pnpm install -D babel-plugin-react-compiler@rc
 </TerminalBlock>
 
-## Basic Setup {/*basic-setup*/}
+## 基本设置 {/*basic-setup*/}
 
-React Compiler is designed to work by default without any configuration. However, if you need to configure it in special circumstances (for example, to target React versions below 19), refer to the [compiler options reference](/reference/react-compiler/configuration).
+React Compiler 默认无需任何配置即可工作。不过，如果你需要在特殊情况下进行配置（例如，要支持低于 19 版本的 React），请参考[编译器选项参考文档](/reference/react-compiler/configuration)。
 
-The setup process depends on your build tool. React Compiler includes a Babel plugin that integrates with your build pipeline.
+设置过程取决于你使用的构建工具。React Compiler 包含一个 Babel 插件，可以集成到你的构建流程中。
 
 <Pitfall>
-React Compiler must run **first** in your Babel plugin pipeline. The compiler needs the original source information for proper analysis, so it must process your code before other transformations.
+React Compiler 必须在你的 Babel 插件管道中 **首先** 运行。编译器需要原始的源代码信息来进行正确的分析，因此它必须在其他转换操作之前处理你的代码。
 </Pitfall>
 
 ### Babel {/*babel*/}
 
-Create or update your `babel.config.js`:
+创建或更新你的 `babel.config.js`：
 
 ```js {3}
 module.exports = {
@@ -68,7 +68,7 @@ module.exports = {
 
 ### Vite {/*vite*/}
 
-If you use Vite, you can add the plugin to vite-plugin-react:
+如果你使用 Vite，可以将插件添加到 vite-plugin-react 中：
 
 ```js {3,9}
 // vite.config.js
@@ -86,7 +86,7 @@ export default defineConfig({
 });
 ```
 
-Alternatively, if you prefer a separate Babel plugin for Vite:
+或者，如果你更倾向于为 Vite 使用一个独立的 Babel 插件：
 
 <TerminalBlock>
 npm install -D vite-plugin-babel
@@ -112,10 +112,10 @@ export default defineConfig({
 
 ### Next.js {/*usage-with-nextjs*/}
 
-Please refer to the [Next.js docs](https://nextjs.org/docs/app/api-reference/next-config-js/reactCompiler) for more information.
+更多信息请参考 [Next.js 文档](https://nextjs.org/docs/app/api-reference/next-config-js/reactCompiler)。
 
 ### React Router {/*usage-with-react-router*/}
-Install `vite-plugin-babel`, and add the compiler's Babel plugin to it:
+安装 `vite-plugin-babel`，并将其编译器的 Babel 插件添加到其中：
 
 <TerminalBlock>
 {`npm install vite-plugin-babel`}
@@ -147,36 +147,36 @@ export default defineConfig({
 
 ### Webpack {/*usage-with-webpack*/}
 
-A community webpack loader is [now available here](https://github.com/SukkaW/react-compiler-webpack).
+社区开发的 webpack loader 现在可以从[这里](https://github.com/SukkaW/react-compiler-webpack)获取。
 
 ### Expo {/*usage-with-expo*/}
 
-Please refer to [Expo's docs](https://docs.expo.dev/guides/react-compiler/) to enable and use the React Compiler in Expo apps.
+请参考 [Expo 文档](https://docs.expo.dev/guides/react-compiler/) 以了解如何在 Expo 应用中启用并使用 React 编译器。
 
 ### Metro (React Native) {/*usage-with-react-native-metro*/}
 
-React Native uses Babel via Metro, so refer to the [Usage with Babel](#babel) section for installation instructions.
+React Native 通过 Metro 使用 Babel，因此请参考 [与 Babel 配合使用](#babel) 章节获取安装说明。
 
 ### Rspack {/*usage-with-rspack*/}
 
-Please refer to [Rspack's docs](https://rspack.dev/guide/tech/react#react-compiler) to enable and use the React Compiler in Rspack apps.
+请参考 [Rspack 文档](https://rspack.dev/guide/tech/react#react-compiler) 以了解如何在 Rspack 应用中启用并使用 React 编译器。
 
 ### Rsbuild {/*usage-with-rsbuild*/}
 
-Please refer to [Rsbuild's docs](https://rsbuild.dev/guide/framework/react#react-compiler) to enable and use the React Compiler in Rsbuild apps.
+请参考 [Rsbuild 文档](https://rsbuild.dev/guide/framework/react#react-compiler) 以了解如何在 Rsbuild 应用中启用并使用 React 编译器。
 
 
 ## ESLint Integration {/*eslint-integration*/}
 
-React Compiler includes an ESLint rule that helps identify code that can't be optimized. When the ESLint rule reports an error, it means the compiler will skip optimizing that specific component or hook. This is safe: the compiler will continue optimizing other parts of your codebase. You don't need to fix all violations immediately. Address them at your own pace to gradually increase the number of optimized components.
+React Compiler 包含一条 ESLint 规则，可帮助识别无法优化的代码。当 ESLint 规则报告错误时，意味着编译器将跳过对该特定组件或 Hook 的优化。这是安全的：编译器将继续优化代码库的其他部分。你不需要立即修复所有违规之处。可以按照自己的节奏逐步解决这些问题，以逐渐增加已优化组件的数量。
 
-Install the ESLint plugin:
+安装 ESLint 插件：
 
 <TerminalBlock>
 npm install -D eslint-plugin-react-hooks@rc
 </TerminalBlock>
 
-Then enable the compiler rule in your ESLint configuration:
+然后在你的 ESLint 配置中启用编译器规则：
 
 ```js {3}
 // .eslintrc.js
@@ -187,32 +187,32 @@ module.exports = {
 };
 ```
 
-The ESLint rule will:
-- Identify violations of the [Rules of React](/reference/rules)
-- Show which components can't be optimized
-- Provide helpful error messages for fixing issues
+ESLint 规则将会：
+- 识别对 [React 规则](/reference/rules) 的违反情况
+- 显示哪些组件无法被优化
+- 提供有用的错误信息来帮助修复问题
 
-## Verify Your Setup {/*verify-your-setup*/}
+## 验证你的设置 {/*verify-your-setup*/}
 
-After installation, verify that React Compiler is working correctly.
+安装后，请验证 React 编译器是否正常工作。
 
-### Check React DevTools {/*check-react-devtools*/}
+### 检查 React DevTools {/*check-react-devtools*/}
 
-Components optimized by React Compiler will show a "Memo ✨" badge in React DevTools:
+由 React 编译器优化的组件会在 React DevTools 中显示一个 "Memo ✨" 徽章：
 
-1. Install the [React Developer Tools](/learn/react-developer-tools) browser extension
-2. Open your app in development mode
-3. Open React DevTools
-4. Look for the ✨ emoji next to component names
+1. 安装 [React Developer Tools](/learn/react-developer-tools) 浏览器扩展
+2. 在开发模式下打开你的应用
+3. 打开 React DevTools
+4. 查看组件名称旁边的 ✨ 表情符号
 
-If the compiler is working:
-- Components will show a "Memo ✨" badge in React DevTools
-- Expensive calculations will be automatically memoized
-- No manual `useMemo` is required
+如果编译器正在工作：
+- 组件将在 React DevTools 中显示一个 "Memo ✨" 徽章
+- 昂贵的计算将自动被记忆化
+- 无需手动使用 `useMemo`
 
-### Check Build Output {/*check-build-output*/}
+### 检查构建输出 {/*check-build-output*/}
 
-You can also verify the compiler is running by checking your build output. The compiled code will include automatic memoization logic that the compiler adds automatically.
+你还可以通过检查构建输出来验证编译器是否正在运行。编译后的代码将包含编译器自动添加的自动记忆化逻辑。
 
 ```js
 import { c as _c } from "react/compiler-runtime";
@@ -230,11 +230,11 @@ export default function MyApp() {
 
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## 故障排除 {/*troubleshooting*/}
 
-### Opting out specific components {/*opting-out-specific-components*/}
+### 排除特定组件 {/*opting-out-specific-components*/}
 
-If a component is causing issues after compilation, you can temporarily opt it out using the `"use no memo"` directive:
+如果某个组件在编译后引发问题，可以使用 `"use no memo"` 指令暂时将其排除：
 
 ```js
 function ProblematicComponent() {
@@ -243,16 +243,16 @@ function ProblematicComponent() {
 }
 ```
 
-This tells the compiler to skip optimization for this specific component. You should fix the underlying issue and remove the directive once resolved.
+这会告诉编译器跳过对该特定组件的优化。你应该修复根本问题，并在解决后移除该指令。
 
-For more troubleshooting help, see the [debugging guide](/learn/react-compiler/debugging).
+如需更多故障排除帮助，请参阅[调试指南](/learn/react-compiler/debugging)。
 
-## Next Steps {/*next-steps*/}
+## 下一步 {/*next-steps*/}
 
-Now that you have React Compiler installed, learn more about:
+既然你已经安装了 React 编译器，可以进一步了解以下内容：
 
-- [React version compatibility](/reference/react-compiler/target) for React 17 and 18
-- [Configuration options](/reference/react-compiler/configuration) to customize the compiler
-- [Incremental adoption strategies](/learn/react-compiler/incremental-adoption) for existing codebases
-- [Debugging techniques](/learn/react-compiler/debugging) for troubleshooting issues
-- [Compiling Libraries guide](/reference/react-compiler/compiling-libraries) for compiling your React library
+- [React 版本兼容性](/reference/react-compiler/target)，适用于 React 17 和 18
+- [配置选项](/reference/react-compiler/configuration)，用于自定义编译器
+- [渐进采用策略](/learn/react-compiler/incremental-adoption)，用于现有的代码库
+- [调试技巧](/learn/react-compiler/debugging)，用于排查问题
+- [编译库指南](/reference/react-compiler/compiling-libraries)，用于编译你的 React 库
