@@ -100,7 +100,7 @@ async function addToCart(data) {
 
 ## 用法 {/*usage*/}
 
-### 表格中的服务器函数 {/*server-actions-in-forms*/}
+### 表格中的服务器函数 {/*server-functions-in-forms*/}
 
 服务器函数的最常见用法将是调用会更改数据的函数。在浏览器中，[HTML form 元素](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) 是用户提交变更的传统方法。通过 React 服务器组件，React 在 [表单](/reference/react-dom/components/form) 中首次引入了对服务器函数的一流支持。
 
@@ -173,7 +173,7 @@ function UsernameForm() {
 
 请注意，与大多数 Hook 一样，`useActionState` 只能在 <CodeStep step={1}>[客户端代码](/reference/react/use-client)</CodeStep> 中调用。
 
-### 在 `<form>` 之外调用服务器函数 {/*calling-a-server-action-outside-of-form*/}
+### 在 `<form>` 之外调用服务器函数 {/*calling-a-server-function-outside-of-form*/}
 
 Server Action 是暴露的服务器端点，可以在客户端代码的任何位置调用。
 

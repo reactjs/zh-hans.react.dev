@@ -193,7 +193,7 @@ export default function TeaGathering() {
 
 但是，这里不会有影响，因为每次渲染时，你都是在 `TeaGathering` 函数内部创建的它们。`TeaGathering` 之外的代码并不会知道发生了什么。这就被称为 **“局部 mutation”** — 如同藏在组件里的小秘密。
 
-## 哪些地方 **可能** 引发副作用 {/*where-you-can-cause-side-effects*/}
+## 哪些地方 **可能** 引发副作用 {/*where-you-_can_-cause-side-effects*/}
 
 函数式编程在很大程度上依赖于纯函数，但 **某些事物** 在特定情况下不得不发生改变。这是编程的要义！这些变动包括更新屏幕、启动动画、更改数据等，它们被称为 **副作用**。它们是 **“额外”** 发生的事情，与渲染过程无关。
 
