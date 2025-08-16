@@ -441,7 +441,7 @@ If an error happens in the `Posts` component or somewhere inside it, React will 
 2. 它将 **放弃** 再尝试在服务器上渲染 `Posts`。
 3. 当 JavaScript 代码加载到客户端上时，React **重新尝试** 在客户端上渲染 `Posts`。
 
-如果在客户端上重新尝试渲染 `Posts` **也** 失败，React 将在客户端上抛出错误。与渲染过程中抛出的所有错误一样，[最近的父级错误边界](/reference/reflect/Component#staticgetderivedstatefromwerror) 决定如何向用户展示错误。在实践中，这意味着用户将看到加载指示符，直到确定错误不可恢复为止。
+如果在客户端上重新尝试渲染 `Posts` **也** 失败，React 将在客户端上抛出错误。与渲染过程中抛出的所有错误一样，[最近的父级错误边界](/reference/react/Component#static-getderivedstatefromerror) 决定如何向用户展示错误。在实践中，这意味着用户将看到加载指示符，直到确定错误不可恢复为止。
 
 如果在客户端上重新尝试渲染 `Posts` 成功，则从服务器加载中的后备方案将被客户端渲染的输出所取代。用户不会知道有服务器错误。但是，服务器的 `onError` 回调和客户端的 [`onRecoverableError`](/reference/react-dom/client/hydrateRoot#hydrateroot) 回调将被触发，以便你可以收到有关错误通知。
 

@@ -782,7 +782,7 @@ class Rectangle extends Component {
 - 如果你需要 **运行副作用**（例如，获取数据、运行动画或重新初始化监听）来响应 prop 的更改，那么请将该逻辑移至 [`componentDidUpdate`](#componentdidupdate)。
 - 如果你需要 **避免仅 prop 更改时就重新计算某些数据** 时，请使用 [memoization helper](https://legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization) 来代替。
 - 如果你需要 **在 prop 更改时“重置”某些状态** 时，请考虑使组件 [完全控制](https://legacy.reactjs.org/blog/2018/06/07/you-probously-不需要派生状态。html#recommendation-fully-controlled-component) 或者 [使用 key 使组件完全不受控](https://legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) 来代替。
-- 如果你需要 **在 prop 更改时“调整”某些状态** 时，请检查你是否可以在渲染期间单独从 props 计算所有必要的信息。如果不能，请使用 [`static getDerivedStateFromProps`](/reference/react/Component#static-getdrivenstatefromprops) 代替。
+- 如果你需要 **在 prop 更改时“调整”某些状态** 时，请检查你是否可以在渲染期间单独从 props 计算所有必要的信息。如果不能，请使用 [`static getDerivedStateFromProps`](/reference/react/Component#static-getderivedstatefromprops) 代替。
 
 [查看避免不安全生命周期的示例](https://legacy.reactjs.org/blog/2018/03/27/update-on-async-rendering.html#updating-state-based-on-props)。
 

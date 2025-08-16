@@ -221,7 +221,7 @@ function Profile() {
 
 像 Next.js 这样的框架会做更多事情。与使用一个空白的 HTML 页面并让 React 使用 JavaScript “接手”管理页面不同，框架还会根据你的 React 组件自动生成 HTML。这使你的应用程序在加载 JavaScript 代码之前能够展示一些内容。
 
-尽管如此，许多网站仅使用 React 来 [添加“交互性”](/learn/add-react-to-a-website)。它们有很多根组件，而不是整个页面的单个组件。你可以根据需要尽可能多或尽可能少地使用 React。
+尽管如此，许多网站仅使用 React 来 [添加“交互性”](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page)。它们有很多根组件，而不是整个页面的单个组件。你可以根据需要尽可能多或尽可能少地使用 React。
 
 </DeepDive>
 
