@@ -20,7 +20,7 @@ React 文档由全球社区翻译成多种语言，涵盖世界各地。
 
 <LanguageList progress="complete" />
 
-## 翻译进行中 {/*in-progress-translations*/}
+## 正在进行的翻译工作 {/*in-progress-translations*/}
 
 有关每种翻译的进度，请参见: [React 是否已被翻译？](https://translations.react.dev/)
 
