@@ -1,10 +1,11 @@
-name: Analyze Bundle (Comment)
+name: Analyze Bundle
 
 on:
-  workflow_run:
-    workflows: ['Analyze Bundle']
-    types:
-      - completed
+  pull_request:
+  push:
+    branches:
+      - main # change this if your default branch is named differently
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -12,62 +13,113 @@ permissions:
   pull-requests: write
   
 jobs:
-  comment:
+  event_type:
     runs-on: ubuntu-latest
     steps:
-      - name: Download Event Type
-        uses: dawidd6/action-download-artifact@v3
-        with:
-          workflow: analyze.yml
-          run_id: ${{ github.event.workflow_run.id }}
-          name: event_type
-          path: event_type
+      - uses: actions/checkout@v3
 
-      - name: get type
-        id: get-type
-        run: |
-          event_type=$(cat event_type/event_type)
-          echo "event-type=$event_type" >> $GITHUB_OUTPUT
+      - name: Save Event Type
+        run: echo ${{ github.event_name }} > ./event_type
+
+      - name: Upload Event Type
+        uses: actions/upload-artifact@v4
+        with:
+          path: ./event_type
+          name: event_type
+
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: yarn
+          cache-dependency-path: yarn.lock
+
+      - name: Restore cached node_modules
+        uses: actions/cache@v4
+        with:
+          path: '**/node_modules'
+          key: node_modules-${{ runner.arch }}-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+
+      - name: Install deps
+        run: yarn install --frozen-lockfile
+
+      - name: Restore next build
+        uses: actions/cache@v4
+        id: restore-build-cache
+        env:
+          cache-name: cache-next-build
+        with:
+          path: .next/cache
+          # change this if you prefer a more strict cache
+          key: ${{ runner.os }}-build-${{ env.cache-name }}
+
+      - name: Build next.js app
+        # change this if your site requires a custom build command
+        run: ./node_modules/.bin/next build
+
+      # Here's the first place where next-bundle-analysis' own script is used
+      # This step pulls the raw bundle stats for the current bundle
+      - name: Analyze bundle
+        run: npx -p nextjs-bundle-analysis@0.5.0 report
+
+      - name: Upload bundle
+        uses: actions/upload-artifact@v4
+        with:
+          path: .next/analyze/__bundle_analysis.json
+          name: bundle_analysis.json
 
       - name: Download base branch bundle stats
-        if: github.event.workflow_run.conclusion == 'success' && steps.get-type.outputs.event-type == 'pull_request'
         uses: dawidd6/action-download-artifact@268677152d06ba59fcec7a7f0b5d961b6ccd7e1e
+        if: success() && github.event.number
         with:
           workflow: analyze.yml
-          run_id: ${{ github.event.workflow_run.id }}
+          branch: ${{ github.event.pull_request.base.ref || 'main' }}
+          name: bundle_analysis.json
+          path: .next/analyze/base/bundle
+
+      # And here's the second place - this runs after we have both the current and
+      # base branch bundle stats, and will compare them to determine what changed.
+      # There are two configurable arguments that come from package.json:
+      #
+      # - budget: optional, set a budget (bytes) against which size changes are measured
+      #           it's set to 350kb here by default, as informed by the following piece:
+      #           https://infrequently.org/2021/03/the-performance-inequality-gap/
+      #
+      # - red-status-percentage: sets the percent size increase where you get a red
+      #                          status indicator, defaults to 20%
+      #
+      # Either of these arguments can be changed or removed by editing the `nextBundleAnalysis`
+      # entry in your package.json file.
+      - name: Compare with base branch bundle
+        if: success()
+        run: ls -laR .next/analyze/base && npx -p nextjs-bundle-analysis compare
+
+      - name: Upload analysis comment
+        uses: actions/upload-artifact@v4
+        with:
           name: analysis_comment.txt
-          path: analysis_comment.txt
+          path: .next/analyze/__bundle_analysis_comment.txt
 
-      - name: Download PR number
-        if: github.event.workflow_run.conclusion == 'success' && steps.get-type.outputs.event-type == 'pull_request'
-        uses: dawidd6/action-download-artifact@268677152d06ba59fcec7a7f0b5d961b6ccd7e1e
+  number:
+    runs-on: ubuntu-latest
+    needs: analyze
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Save PR number
+        run: echo ${{ github.event.number }} > ./pr_number
+
+      - name: Upload PR number
+        uses: actions/upload-artifact@v4
         with:
-          workflow: analyze.yml
-          run_id: ${{ github.event.workflow_run.id }}
           name: pr_number
-          path: pr_number
+          path: ./pr_number
 
-      - name: Get comment body
-        id: get-comment-body
-        if: success() && github.event.workflow_run.conclusion == 'success' && steps.get-type.outputs.event-type == 'pull_request'
-        run: |
-          echo 'body<<EOF' >> $GITHUB_OUTPUT
-          echo '' >>  $GITHUB_OUTPUT
-          echo '## Size changes' >>  $GITHUB_OUTPUT
-          echo '' >>  $GITHUB_OUTPUT
-          echo '<details>' >>  $GITHUB_OUTPUT
-          echo '' >>  $GITHUB_OUTPUT
-          cat analysis_comment.txt/__bundle_analysis_comment.txt >> $GITHUB_OUTPUT
-          echo '' >>  $GITHUB_OUTPUT
-          echo '</details>' >>  $GITHUB_OUTPUT
-          echo '' >>  $GITHUB_OUTPUT
-          echo 'EOF' >> $GITHUB_OUTPUT
-          pr_number=$(cat pr_number/pr_number)
-          echo "pr-number=$pr_number" >> $GITHUB_OUTPUT
-
-      - name: Comment
-        uses: marocchino/sticky-pull-request-comment@52423e01640425a022ef5fd42c6fb5f633a02728
-        with:
-          header: next-bundle-analysis
-          number: ${{ steps.get-comment-body.outputs.pr-number }}
-          message: ${{ steps.get-comment-body.outputs.body }}
+      # The actual commenting happens in the other action, matching the guidance in
+      # https://securitylab.github.com/research/github-actions-preventing-pwn-requests/
