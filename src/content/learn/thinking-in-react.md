@@ -38,7 +38,7 @@ JSON API 返回如下的数据:
 
 ## 步骤一：将 UI 拆解为组件层级结构 {/*step-1-break-the-ui-into-a-component-hierarchy*/}
 
-一开始，在绘制原型中的每个组件和子组件周围绘制盒子并命名它们。如果你与设计师一起工作，他们可能早已在其设计工具中对这些组件进行了命名。检查一下它们!
+首先，为原型中的每个组件和子组件绘制包围盒并命名它们。如果你与设计师一起工作，他们可能早已在其设计工具中对这些组件进行了命名。检查一下它们!
 
 取决于你的使用背景，可以考虑通过不同的方式将设计分割为组件:
 
@@ -50,10 +50,6 @@ JSON API 返回如下的数据:
 
 以下展示了五个组件:
 
-<FullWidth>
-
-<CodeDiagram flip>
-
 <img src="/images/docs/s_thinking-in-react_ui_outline.png" width="500" style={{margin: '0 auto'}} />
 
 1. `FilterableProductTable`（灰色）包含完整的应用。
@@ -61,10 +57,6 @@ JSON API 返回如下的数据:
 3. `ProductTable`（淡紫色）根据用户输入，展示和过滤清单。
 4. `ProductCategoryRow`（绿色）展示每个类别的表头。
 5. `ProductRow`（黄色）展示每个产品的行。
-
-</CodeDiagram>
-
-</FullWidth>
 
 看向 `ProductTable`（淡紫色），可以看到表头（包含 "Name" 和 "Price" 标签）并不是独立的组件。这是个人喜好的问题，你可以采取任何一种方式继续。在这个例子中，它是作为 `ProductTable` 的一部分，因为它展现在 `ProductTable` 列表之中。然而，如果这个表头变得复杂（举个例子，如果添加排序），创建独立的 `ProductTableHeader` 组件就变得有意义了。
 
