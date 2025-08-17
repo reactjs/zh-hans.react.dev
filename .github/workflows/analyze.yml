@@ -72,7 +72,7 @@ jobs:
 
       - name: Download base branch bundle stats
         uses: dawidd6/action-download-artifact@268677152d06ba59fcec7a7f0b5d961b6ccd7e1e
-        if: success() && github.event.number
+        if: success()
         with:
           workflow: analyze.yml
           branch: ${{ github.event.pull_request.base.ref || 'main' }}
