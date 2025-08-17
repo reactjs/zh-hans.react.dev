@@ -994,7 +994,7 @@ React 将第三次渲染时的 `['travel']` 与第二次渲染时的 `['general'
 
 在下面的例子中，表单中渲染了一个 `<MyInput />` 组件。
 
-使用输入框的 [`focus()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus) 方法，让 `MyInput` 在页面上出现时自动聚焦。已经有一个被注释掉的实现，但它并不能正常工作。找出它为什么不起作用，并修复它。如果你熟悉 `autoFocus` 属性，请假装它不存在：我们正在从头开始实现相同的功能。
+使用输入框的 [`focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) 方法，让 `MyInput` 在页面上出现时自动聚焦。已经有一个被注释掉的实现，但它并不能正常工作。找出它为什么不起作用，并修复它。如果你熟悉 `autoFocus` 属性，请假装它不存在：我们正在从头开始实现相同的功能。
 
 <Sandpack>
 
