@@ -583,7 +583,7 @@ function ChatRoom({ roomId, selectedServerUrl }) { // roomId 是响应式的
 
 可变值（包括全局变量）不是响应式的。
 
-例如，像 [`location.pathname`](https://developer.mozilla.org/zh-CN/docs/Web/API/Location/pathname) 这样的可变值不能作为依赖项。它是可变的，因此可以在 React 渲染数据流之外的任何时间发生变化。更改它不会触发组件的重新渲染。因此，即使在依赖项中指定了它，React 也无法知道在其更改时重新同步 Effect。这也违反了 React 的规则，因为在渲染过程中读取可变数据（即在计算依赖项时）会破坏 [纯粹的渲染](/learn/keeping-components-pure)。相反，应该使用 [`useSyncExternalStore`](/learn/you-might-not-need-an-effect#subscribing-to-an-external-store) 来读取和订阅外部可变值。
+例如，像 [`location.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname) 这样的可变值不能作为依赖项。它是可变的，因此可以在 React 渲染数据流之外的任何时间发生变化。更改它不会触发组件的重新渲染。因此，即使在依赖项中指定了它，React 也无法知道在其更改时重新同步 Effect。这也违反了 React 的规则，因为在渲染过程中读取可变数据（即在计算依赖项时）会破坏 [纯粹的渲染](/learn/keeping-components-pure)。相反，应该使用 [`useSyncExternalStore`](/learn/you-might-not-need-an-effect#subscribing-to-an-external-store) 来读取和订阅外部可变值。
 
 **另外，像 [`ref.current`](/reference/react/useRef#reference) 或从中读取的值也不能作为依赖项。`useRef` 返回的 ref 对象本身可以作为依赖项**，但其 `current` 属性是有意可变的。它允许 [跟踪某些值而不触发重新渲染](/learn/referencing-values-with-refs)。但由于更改它不会触发重新渲染，它不是响应式值，React 不会知道在其更改时重新运行 Effect。
 
