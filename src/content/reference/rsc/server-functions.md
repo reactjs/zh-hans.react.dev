@@ -145,7 +145,7 @@ function UpdateName() {
 
 This allows you to access the `isPending` state of the Server Function by wrapping it in an Action on the client.
 
-For more, see the docs for [Calling a Server Function outside of `<form>`](/reference/rsc/use-server#calling-a-server-function-outside-of-form)
+For more, see the docs for [Calling a Server Function outside of `<form>`](#calling-a-server-function-outside-of-form)
 
 ### Server Functions with Form Actions {/*using-server-functions-with-form-actions*/}
 
