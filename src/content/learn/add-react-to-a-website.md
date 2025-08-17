@@ -24,7 +24,7 @@ translators:
 
 React 从一开始就是为渐进式开发而生。大多数网站并没有（也不需要）完全使用 React 进行构建。本小节中，我们将向你展示如何在现有 HTML 页面中添加交互式组件的方法。
 
-你可以在你自己的网站上尝试，或者创建一个 [空的 HTML 文件](https://gist.github.com/gaearon/edf814aeee85062bc9b9830aeaf27b88/archive/3b31c3cdcea7dfcfd38a81905a0052dd8e5f71ec.zip) 来进行练习。只需将电脑连接到网络并安装一款文本编辑器即可，如 Notepad 或者 VSCode。（如需语法高亮，可以通过 [如何配置你的编辑器](/learn/editor-setup/) 章节来实现！)
+你可以在你自己的网站上尝试，或者创建一个 [空的 HTML 文件](https://gist.github.com/gaearon/edf814aeee85062bc9b9830aeaf27b88/archive/3b31c3cdcea7dfcfd38a81905a0052dd8e5f71ec.zip) 来进行练习。只需将电脑连接到网络并安装一款文本编辑器即可，如 Notepad 或者 VSCode。（如需语法高亮，可以通过 [如何配置你的编辑器](/learn/editor-setup) 章节来实现！)
 
 ### 步骤 1：添加一个根标签 {/*step-1-add-a-root-html-tag*/}
 
