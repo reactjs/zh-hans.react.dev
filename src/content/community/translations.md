@@ -30,6 +30,6 @@ React 文档由全球社区翻译成多种语言，涵盖世界各地。
 
 你可以为这项翻译工作贡献出自己的力量！
 
-社区在每个针对特定语言的 react.dev 分支上进行 React 文档的翻译工作。典型的翻译流程是直接翻译 Markdown 文件并创建拉取请求。点击上方的“Contribute”链接，前往你所用语言的 GitHub 仓库，并按照那里的说明参与翻译工作。
+每个语言在社区有其对应的 react.dev 的 fork，来进行 React 文档的翻译工作。典型的翻译流程是直接翻译 Markdown 文件并创建拉取请求。你可以点击上方的“Contribute”链接，前往你所用语言的 GitHub 仓库，并按照那里的说明参与翻译工作。
 
 如果你想为你的语言启动新的翻译项目，请访问: [translations.react.dev](https://github.com/reactjs/translations.react.dev)
