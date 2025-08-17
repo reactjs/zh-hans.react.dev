@@ -55,7 +55,7 @@ app.use('/', async (request, response) => {
   * **可选** `bootstrapScripts`：要在页面中输出的 `<script>` 标签 URL 字符串数组。用于包含调用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 的脚本；如果不希望在客户端运行 React，可省略此项。
   * **可选** `bootstrapModules`：与 `bootstrapScripts` 类似，但输出的是 [`<script type="module">`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)。
   * **可选** `identifierPrefix`：React 用于 [`useId`](/reference/react/useId) 生成 ID 的字符串前缀。当页面上存在多个 root 时可避免冲突。此值必须与传给 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters) 的前缀相同。
-  * **可选** `namespaceURI`：流的根 [namespace URI](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris) 字符串。默认是普通 HTML。若为 SVG，请传 `'http://www.w3.org/2000/svg'`；若为 MathML，请传 `'http://www.w3.org/1998/Math/MathML'`。
+  * **可选** `namespaceURI`：流的根 [namespace URI](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElementNS#important_namespace_uris) 字符串。默认是普通 HTML。若为 SVG，请传 `'http://www.w3.org/2000/svg'`；若为 MathML，请传 `'http://www.w3.org/1998/Math/MathML'`。
   * **可选** `onError`：当服务器发生错误（可恢复或不可恢复）时触发的回调。默认仅会调用 `console.error`。如果你重写它以记录崩溃报告，请确保仍然调用 `console.error`。你也可以在 shell 发出之前使用它来调整响应状态码。
   * **可选** `progressiveChunkSize`：每个 chunk 的字节数。 [了解默认启发式的更多信息。](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
   * **可选** `signal`：一个 [abort signal](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)，可以用来 [中止 prerender](#aborting-prerendering)，并在客户端渲染剩余部分。
