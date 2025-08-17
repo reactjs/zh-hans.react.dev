@@ -51,7 +51,7 @@ This error message will only be shown once per install.
 我们已在 Create React App 的 [官网](https://create-react-app.dev/) 和 GitHub [代码仓库](https://github.com/facebook/create-react-app) 添加了弃用通知。Create React App 将以维护模式继续运行，并发布了与 React 19 兼容的新版本 Create React App。
 
 ## 如何迁移到框架 {/*how-to-migrate-to-a-framework*/}
-我们推荐使用 [框架创建新的 React 应用](/learn/creating-a-react-app)。所有推荐的框架均支持客户端渲染（[CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)）和单页面应用（[SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA)），并可通过 CDN 或静态托管服务部署，无需服务器支持。
+我们推荐使用 [框架创建新的 React 应用](/learn/creating-a-react-app)。所有推荐的框架均支持客户端渲染（[CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)）和单页面应用（[SPA](https://developer.mozilla.org/zh-CN/docs/Glossary/SPA)），并可通过 CDN 或静态托管服务部署，无需服务器支持。
 
 对于现有的应用程序，这些指南将帮助你迁移到仅客户端的单页应用（SPA）：
 
@@ -280,7 +280,7 @@ const router = createBrowserRouter([
 
 #### 服务器端渲染是可选的 {/*server-rendering-is-optional*/}
 
-我们推荐的框架都提供了创建 [客户端渲染（CSR）](https://developer.mozilla.org/zh-CN/docs/Glossary/CSR) 应用的选项。
+我们推荐的框架都提供了创建 [客户端渲染（CSR）](https://developer.mozilla.org/en-US/docs/Glossary/CSR) 应用的选项。
 
 在某些情况下，客户端渲染（CSR）对于某个页面来说是正确的选择，但很多时候并非如此。即使你的应用大部分采用客户端渲染，通常也会有一些单独的页面能够从服务器端渲染特性中获益，比如 [静态网站生成（SSG）](https://developer.mozilla.org/zh-CN/docs/Glossary/SSG) 或 [服务器端渲染（SSR）](https://developer.mozilla.org/zh-CN/docs/Glossary/SSR)，例如服务条款页面或文档页面。
 
