@@ -51,7 +51,7 @@ This error message will only be shown once per install.
 我们已在 Create React App 的 [官网](https://create-react-app.dev/) 和 GitHub [代码仓库](https://github.com/facebook/create-react-app) 添加了弃用通知。Create React App 将以维护模式继续运行，并发布了与 React 19 兼容的新版本 Create React App。
 
 ## 如何迁移到框架 {/*how-to-migrate-to-a-framework*/}
-我们推荐使用 [框架创建新的 React 应用](/learn/creating-a-react-app)。所有推荐的框架均支持客户端渲染（[CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)）和单页面应用（[SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA)），并可通过 CDN 或静态托管服务部署，无需服务器支持。
+我们推荐使用 [框架创建新的 React 应用](/learn/creating-a-react-app)。所有推荐的框架均支持客户端渲染（[CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)）和单页面应用（[SPA](https://developer.mozilla.org/zh-CN/docs/Glossary/SPA)），并可通过 CDN 或静态托管服务部署，无需服务器支持。
 
 对于现有的应用程序，这些指南将帮助你迁移到仅客户端的单页应用（SPA）：
 

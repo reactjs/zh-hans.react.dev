@@ -590,7 +590,7 @@ function ChatRoom({ roomId }) {
 
 每当你收到一条消息，`setMessages()` 就会使该组件重新渲染一个新的 `messages` 数组，其中包括收到的消息。然而，由于该 Effect 现在依赖于 `messages`，这 **也将** 重新同步该 Effect。所以每条新消息都会使聊天重新连接。用户不会喜欢这样！
 
-为了解决这个问题，不要在 Effect 里面读取 `messages`。相反，应该将一个 [state 更新函数](/reference/react/useState#updating-state-based-the-previous-state) 传递给 `setMessages`：
+为了解决这个问题，不要在 Effect 里面读取 `messages`。相反，应该将一个 [state 更新函数](/reference/react/useState#updating-state-based-on-the-previous-state) 传递给 `setMessages`：
 
 ```js {7,10}
 function ChatRoom({ roomId }) {

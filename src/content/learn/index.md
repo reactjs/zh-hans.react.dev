@@ -79,7 +79,7 @@ export default function MyApp() {
 
 </Sandpack>
 
-`export default` 关键字指定了文件中的主要组件。如果你对 JavaScript 某些语法不熟悉，可以参考 [MDN](https://developer.mozilla.org/zh-CN/docs/web/javascript/reference/statements/export) 和 [javascript.info](https://javascript.info/import-export)。
+`export default` 关键字指定了文件中的主要组件。如果你对 JavaScript 某些语法不熟悉，可以参考 [MDN](https://developer.mozilla.org/zh-CN/docs/web/javascript/reference/statements/export) 和 [javascript.info](https://zh.javascript.info/import-export)。
 
 ## 使用 JSX 编写标签 {/*writing-markup-with-jsx*/}
 

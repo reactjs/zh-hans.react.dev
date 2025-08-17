@@ -81,7 +81,7 @@ React 服务器组件、资源加载、文档元数据与 Action 都已经加入
 
 - **资源加载**：我们将 Suspense 与样式表、字体和脚本等资源的加载生命周期集成在一起，以便 React 考虑它们来确定像 [`<style>`](/reference/react-dom/components/style)、[`<link>`](/reference/react-dom/components/link) 和 [`<script>`](/reference/react-dom/components/script) 这样的元素中的内容是否已准备就绪。我们还添加了新的 [资源加载 API](/reference/react-dom#resource-preloading-apis)，如 `preload` 和 `preinit`，以提供更大的控制权，指示何时应加载和初始化资源。
 
-- **Action**：如上所述，我们已将 Action 添加到管理从客户端发送数据到服务器的功能中。现在可以将 `action` 添加到像 [`<form/>`](/reference/react-dom/components/form) 这样的元素中，使用 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) 访问状态，使用 [`useActionState`](/reference/react/useActionState) 处理结果，并使用 [`useOptimistic`](/reference/rsc/useOptimistic) 乐观地更新 UI。
+- **Action**：如上所述，我们已将 Action 添加到管理从客户端发送数据到服务器的功能中。现在可以将 `action` 添加到像 [`<form/>`](/reference/react-dom/components/form) 这样的元素中，使用 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) 访问状态，使用 [`useActionState`](/reference/react/useActionState) 处理结果，并使用 [`useOptimistic`](/reference/react/useOptimistic) 乐观地更新 UI。
 
 由于所有这些功能是相互配合的，因此单独在稳定渠道中发布它们是困难的。发布 Action 而不带有用于访问表单状态的补充 Hook 会限制 Action 的实际可用性。引入 React 服务器组件而不集成 Server Action 会把在服务器上修改数据变得复杂化。
 

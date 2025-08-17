@@ -761,9 +761,9 @@ class Rectangle extends Component {
 
 #### 注意 {/*unsafe_componentwillmount-caveats*/}
 
-- 如果组件实现了 [`static getDerivedStateFromProps`](#static-getdrivenstatefromprops) 或 [`getSnapshotBeforeUpdate`](#getsnapshotbeforeupdate)，则不会调用 `UNSAFE_componentWillMount`。
+- 如果组件实现了 [`static getDerivedStateFromProps`](#static-getderivedstatefromprops) 或 [`getSnapshotBeforeUpdate`](#getsnapshotbeforeupdate)，则不会调用 `UNSAFE_componentWillMount`。
 
-- 尽管它的名字是这样的，但是如果你的应用程序使用 [`Suspense`](/reference/react/Sus​​pense) 等新式的 React 功能时，`UNSAFE_componentWillMount` 不保证组件 **将** 被挂载。如果渲染尝试被中止（例如，因为某些子组件的代码尚未加载），那么 React 将丢弃正在进行的树，并在下一次尝试期间尝试从头开始构建组件。这就是为什么这种方法是 **不安全** 的。依赖于挂载（例如添加监听事件）的代码应放入 [`componentDidMount`](#componentdidmount)。
+- 尽管它的名字是这样的，但是如果你的应用程序使用 [`Suspense`](/reference/react/Suspense) 等新式的 React 功能时，`UNSAFE_componentWillMount` 不保证组件 **将** 被挂载。如果渲染尝试被中止（例如，因为某些子组件的代码尚未加载），那么 React 将丢弃正在进行的树，并在下一次尝试期间尝试从头开始构建组件。这就是为什么这种方法是 **不安全** 的。依赖于挂载（例如添加监听事件）的代码应放入 [`componentDidMount`](#componentdidmount)。
 
 - `UNSAFE_componentWillMount` 是运行 [服务器渲染](/reference/react-dom/server) 期间运行的唯一生命周期方法。对于所有实际上的用途来说，它与 [`constructor`](#constructor) 相同，因此你应该使用 `constructor` 来代替这种类型的逻辑。
 
@@ -782,7 +782,7 @@ class Rectangle extends Component {
 - 如果你需要 **运行副作用**（例如，获取数据、运行动画或重新初始化监听）来响应 prop 的更改，那么请将该逻辑移至 [`componentDidUpdate`](#componentdidupdate)。
 - 如果你需要 **避免仅 prop 更改时就重新计算某些数据** 时，请使用 [memoization helper](https://legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization) 来代替。
 - 如果你需要 **在 prop 更改时“重置”某些状态** 时，请考虑使组件 [完全控制](https://legacy.reactjs.org/blog/2018/06/07/you-probously-不需要派生状态。html#recommendation-fully-controlled-component) 或者 [使用 key 使组件完全不受控](https://legacy.reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key) 来代替。
-- 如果你需要 **在 prop 更改时“调整”某些状态** 时，请检查你是否可以在渲染期间单独从 props 计算所有必要的信息。如果不能，请使用 [`static getDerivedStateFromProps`](/reference/react/Component#static-getdrivenstatefromprops) 代替。
+- 如果你需要 **在 prop 更改时“调整”某些状态** 时，请检查你是否可以在渲染期间单独从 props 计算所有必要的信息。如果不能，请使用 [`static getDerivedStateFromProps`](/reference/react/Component#static-getderivedstatefromprops) 代替。
 
 [查看避免不安全生命周期的示例](https://legacy.reactjs.org/blog/2018/03/27/update-on-async-rendering.html#updating-state-based-on-props)。
 
@@ -799,7 +799,7 @@ class Rectangle extends Component {
 
 - 如果组件实现了 [`static getDerivedStateFromProps`](#static-getdrivenstatefromprops) 或 [`getSnapshotBeforeUpdate`](#getsnapshotbeforeupdate)，则不会调用 `UNSAFE_componentWillReceiveProps`。
 
-- 尽管它的名字是这样的，但如果你的应用程序使用 [`Suspense`](/reference/react/Sus​​pense) 等新式的 React 功能时，`UNSAFE_componentWillReceiveProps` 不保证组件 **将会** 接收这些 Props。如果渲染尝试被中止（例如，因为某些子组件的代码尚未加载），React 将丢弃正在进行的树，并在下一次尝试期间尝试从头开始构建组件。到下一次渲染尝试时，Props 可能会有所不同。这就是为什么这种方法 **不安全**。仅为了提交更新（例如重置监听事件）的代码应放入 [`componentDidUpdate`](#componentdidupdate)。
+- 尽管它的名字是这样的，但如果你的应用程序使用 [`Suspense`](/reference/react/Suspense) 等新式的 React 功能时，`UNSAFE_componentWillReceiveProps` 不保证组件 **将会** 接收这些 Props。如果渲染尝试被中止（例如，因为某些子组件的代码尚未加载），React 将丢弃正在进行的树，并在下一次尝试期间尝试从头开始构建组件。到下一次渲染尝试时，Props 可能会有所不同。这就是为什么这种方法 **不安全**。仅为了提交更新（例如重置监听事件）的代码应放入 [`componentDidUpdate`](#componentdidupdate)。
 
 - `UNSAFE_componentWillReceiveProps` 并不意味着组件收到了与上次 **不同的** props。你需要自己比较 `nextProps` 和 `this.props` 以检查是否发生了变化。
 
@@ -840,7 +840,7 @@ class Rectangle extends Component {
 
 - 不支持在 `componentWillUpdate` 期间调用 [`setState`](#setstate)（或任何导致调用 `setState` 的方法，例如调度 Redux 操作）。
 
-- 尽管它的命名是这样，但如果你的应用程序使用如 [`Suspense`](/reference/react/Sus​​pense) 时等新式的 React 功能时，`UNSAFE_componentWillUpdate` 并不能保证组件 **将会** 更新。如果渲染尝试被中止（例如，因为某些子组件的代码尚未加载），React 将丢弃正在进行的树，并在下一次尝试期间尝试从头开始构建组件。到下一次渲染尝试时，props 和 state 可能会有所不同。这就是为什么这种方法“不安全”。仅针对提交更新（例如重置监听）而运行的代码应放入 [`componentDidUpdate`](#componentdidupdate)。
+- 尽管它的命名是这样，但如果你的应用程序使用如 [`Suspense`](/reference/react/Suspense) 时等新式的 React 功能时，`UNSAFE_componentWillUpdate` 并不能保证组件 **将会** 更新。如果渲染尝试被中止（例如，因为某些子组件的代码尚未加载），React 将丢弃正在进行的树，并在下一次尝试期间尝试从头开始构建组件。到下一次渲染尝试时，props 和 state 可能会有所不同。这就是为什么这种方法“不安全”。仅针对提交更新（例如重置监听）而运行的代码应放入 [`componentDidUpdate`](#componentdidupdate)。
 
 - `UNSAFE_componentWillUpdate` 并不意味着组件收到了与上次不同的 props 或 state。你需要自己将 `nextProps` 与 `this.props` 以及 `nextState` 与 `this.state` 进行比较，以检查是否发生了变化。
 
