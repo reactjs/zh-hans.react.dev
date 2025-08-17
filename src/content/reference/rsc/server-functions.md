@@ -170,7 +170,7 @@ function UpdateName() {
 
 When the Form submission succeeds, React will automatically reset the form. You can add `useActionState` to access the pending state, last response, or to support progressive enhancement.
 
-For more, see the docs for [Server Functions in Forms](/reference/rsc/use-server#server-functions-in-forms).
+For more, see the docs for [Server Functions in Forms](#server-functions-in-forms).
 
 ### Server Functions with `useActionState` {/*server-functions-with-use-action-state*/}
 
