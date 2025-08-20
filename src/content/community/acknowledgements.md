@@ -8,7 +8,7 @@ React 最初由 [Jordan Walke](https://github.com/jordwalke) 创立。如今 Rea
 
 </Intro>
 
-## Past contributors {/*past-contributors*/}
+## 曾参与贡献的开发者 {/*past-contributors*/}
 
 我们想表彰一些人，他们在过去对 React 及其文档方面做出了重大贡献，并且多年来一直帮助维护它们：
 
@@ -64,7 +64,7 @@ React 最初由 [Jordan Walke](https://github.com/jordwalke) 创立。如今 Rea
 
 我们要特别感谢 [Tom Occhino](https://github.com/tomocchino) 和 [Adam Wolff](https://github.com/wolffiex) 多年来的指导和支持，以及所有 [将 React 翻译为其他语言的志愿者们](https://translations.react.dev/)。
 
-## Additional Thanks {/*additional-thanks*/}
+## 特别鸣谢 {/*additional-thanks*/}
 
 此外，我们还要感谢：
 
