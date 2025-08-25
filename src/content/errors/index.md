@@ -1,10 +1,9 @@
 <Intro>
 
-In the minified production build of React, we avoid sending down full error messages in order to reduce the number of bytes sent over the wire.
+在为生产环境所构建的压缩版 React 中，我们避免发送完整的错误信息，以减少网络传输的字节数。
 
 </Intro>
 
+我们强烈建议你在本地调试应用时使用开发环境构建，因为它会追踪额外的调试信息，并针对应用中的潜在问题提供有用的警告。但是，如果你在使用生产环境构建时遇到异常，错误信息将只包含一个指向相关错误文档的链接。
 
-We highly recommend using the development build locally when debugging your app since it tracks additional debug info and provides helpful warnings about potential problems in your apps, but if you encounter an exception while using the production build, the error message will include just a link to the docs for the error.
-
-For an example, see: [https://react.dev/errors/149](/errors/421).
+参阅 [https://react.dev/errors/149](/errors/421) 查看示例。
