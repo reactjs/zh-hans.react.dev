@@ -162,14 +162,7 @@ React 支持所有浏览器内置的组件，包括：
 
 ### 自定义 HTML 元素 {/*custom-html-elements*/}
 
-<<<<<<< HEAD
-如果你渲染一个带有连字符的标签，如 `<my-element>`，React 会认为你想要渲染一个 [自定义 HTML 元素](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_custom_elements)。在 React 中，渲染自定义元素与渲染内置的浏览器标签有所不同：
-
-- 所有自定义元素的 props 都将被序列化为字符串，并且总是使用属性（attribute）进行设置。
-- 自定义元素接受 `class` 而不是 `className`，接受 `for` 而不是 `htmlFor`。
-=======
-If you render a tag with a dash, like `<my-element>`, React will assume you want to render a [custom HTML element.](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements)
->>>>>>> 27d86ffe6ec82e3642c6490d2187bae2271020a4
+如果你渲染一个带有连字符的标签，如 `<my-element>`，React 会认为你想要渲染一个 [自定义 HTML 元素](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_custom_elements)。
 
 如果你使用 [`is`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/is) 属性渲染一个内置的浏览器 HTML 元素，它也会被视为自定义元素。
 
@@ -292,16 +285,6 @@ export function App() {
 
 <Note>
 
-<<<<<<< HEAD
-[未来的 React 版本将提供更全面的自定义元素支持](https://github.com/facebook/react/issues/11347#issuecomment-1122275286)。
-
-你可以通过将 React 包升级到最新的实验性版本来尝试：
-
-- `react@experimental`
-- `react-dom@experimental`
-
-实验性版本的 React 可能包含一些错误，因此不要在生产环境中使用。
-=======
 Events are case-sensitive and support dashes (`-`). Preserve the casing of the event and include all dashes when listening for custom element's events:
 
 ```jsx
@@ -310,7 +293,6 @@ Events are case-sensitive and support dashes (`-`). Preserve the casing of the e
 // Listens for `sayHi` events
 <my-element onsayHi={console.log}></my-element>
 ```
->>>>>>> 27d86ffe6ec82e3642c6490d2187bae2271020a4
 
 </Note>
 ---
