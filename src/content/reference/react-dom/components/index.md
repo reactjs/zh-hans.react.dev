@@ -162,23 +162,137 @@ React 支持所有浏览器内置的组件，包括：
 
 ### 自定义 HTML 元素 {/*custom-html-elements*/}
 
-如果你渲染一个带有连字符的标签，如 `<my-element>`，React 会认为你想要渲染一个 [自定义 HTML 元素](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_custom_elements)。在 React 中，渲染自定义元素与渲染内置的浏览器标签有所不同：
-
-- 所有自定义元素的 props 都将被序列化为字符串，并且总是使用属性（attribute）进行设置。
-- 自定义元素接受 `class` 而不是 `className`，接受 `for` 而不是 `htmlFor`。
+如果你渲染一个带有连字符的标签，如 `<my-element>`，React 会认为你想要渲染一个 [自定义 HTML 元素](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_custom_elements)。
 
 如果你使用 [`is`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/is) 属性渲染一个内置的浏览器 HTML 元素，它也会被视为自定义元素。
 
+#### Setting values on custom elements {/*attributes-vs-properties*/}
+
+Custom elements have two methods of passing data into them:
+
+1) Attributes: Which are displayed in markup and can only be set to string values
+2) Properties: Which are not displayed in markup and can be set to arbitrary JavaScript values
+
+By default, React will pass values bound in JSX as attributes:
+
+```jsx
+<my-element value="Hello, world!"></my-element>
+```
+
+Non-string JavaScript values passed to custom elements will be serialized by default:
+
+```jsx
+// Will be passed as `"1,2,3"` as the output of `[1,2,3].toString()`
+<my-element value={[1,2,3]}></my-element>
+```
+
+React will, however, recognize an custom element's property as one that it may pass arbitrary values to if the property name shows up on the class during construction:
+
+<Sandpack>
+
+```js src/index.js hidden
+import {MyElement} from './MyElement.js';
+import { createRoot } from 'react-dom/client';
+import {App} from "./App.js";
+
+customElements.define('my-element', MyElement);
+
+const root = createRoot(document.getElementById('root'))
+root.render(<App />);
+```
+
+```js src/MyElement.js active
+export class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    // The value here will be overwritten by React 
+    // when initialized as an element
+    this.value = undefined;
+  }
+
+  connectedCallback() {
+    this.innerHTML = this.value.join(", ");
+  }
+}
+```
+
+```js src/App.js
+export function App() {
+  return <my-element value={[1,2,3]}></my-element>
+}
+```
+
+</Sandpack>
+
+#### Listening for events on custom elements {/*custom-element-events*/}
+
+A common pattern when using custom elements is that they may dispatch [`CustomEvent`s](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) rather than accept a function to call when an event occur. You can listen for these events using an `on` prefix when binding to the event via JSX.
+
+<Sandpack>
+
+```js src/index.js hidden
+import {MyElement} from './MyElement.js';
+import { createRoot } from 'react-dom/client';
+import {App} from "./App.js";
+
+customElements.define('my-element', MyElement);
+
+const root = createRoot(document.getElementById('root'))
+root.render(<App />);
+```
+
+```javascript src/MyElement.js
+export class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    this.test = undefined;
+    this.emitEvent = this._emitEvent.bind(this);
+  }
+
+  _emitEvent() {
+    const event = new CustomEvent('speak', {
+      detail: {
+        message: 'Hello, world!',
+      },
+    });
+    this.dispatchEvent(event);
+  }
+
+  connectedCallback() {
+    this.el = document.createElement('button');
+    this.el.innerText = 'Say hi';
+    this.el.addEventListener('click', this.emitEvent);
+    this.appendChild(this.el);
+  }
+
+  disconnectedCallback() {
+    this.el.removeEventListener('click', this.emitEvent);
+  }
+}
+```
+
+```jsx src/App.js active
+export function App() {
+  return (
+    <my-element
+      onspeak={e => console.log(e.detail.message)}
+    ></my-element>
+  )
+}
+```
+
+</Sandpack>
+
 <Note>
 
-[未来的 React 版本将提供更全面的自定义元素支持](https://github.com/facebook/react/issues/11347#issuecomment-1122275286)。
+Events are case-sensitive and support dashes (`-`). Preserve the casing of the event and include all dashes when listening for custom element's events:
 
-你可以通过将 React 包升级到最新的实验性版本来尝试：
-
-- `react@experimental`
-- `react-dom@experimental`
-
-实验性版本的 React 可能包含一些错误，因此不要在生产环境中使用。
+```jsx
+// Listens for `say-hi` events
+<my-element onsay-hi={console.log}></my-element>
+// Listens for `sayHi` events
+<my-element onsayHi={console.log}></my-element>
+```
 
 </Note>
 ---
