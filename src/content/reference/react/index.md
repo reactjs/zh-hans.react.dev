@@ -32,11 +32,11 @@ React-dom 仅支持在 web 应用程序中使用（在浏览器 DOM 环境中运
 
 ## React Compiler {/*react-compiler*/}
 
-The React Compiler is a build-time optimization tool that automatically memoizes your React components and values:
+React Compiler 是一个构建时优化工具，可以自动为你的 React 组件和数值添加记忆优化（memoization）：
 
-* [Configuration](/reference/react-compiler/configuration) - Configuration options for React Compiler.
-* [Directives](/reference/react-compiler/directives) - Function-level directives to control compilation.
-* [Compiling Libraries](/reference/react-compiler/compiling-libraries) - Guide for shipping pre-compiled library code.
+* [配置](/reference/react-compiler/configuration) —— React Compiler 的配置选项。
+* [指令](/reference/react-compiler/directives) —— 用于控制编译的函数级指令。
+* [编译库](/reference/react-compiler/compiling-libraries) —— 发布预编译库代码的指南。
 
 ## Rules of React {/*rules-of-react*/}
 
