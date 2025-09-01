@@ -175,7 +175,7 @@ function useSortedData(data) {
 
 ## 运行时控制 {/*runtime-feature-flags-with-gating*/}
 
-`gating`选项使你能够在运行时使用功能标志控制编译。这对于运行A/B测试或根据用户细分逐步推出编译器非常有用。
+`gating`选项使你能够在运行时使用功能标志控制编译。这对于运行 A/B 测试或根据用户细分逐步推出编译器非常有用。
 
 ### 运行时控制工作原理 {/*how-gating-works*/}
 
