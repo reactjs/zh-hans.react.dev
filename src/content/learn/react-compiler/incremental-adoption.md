@@ -1,49 +1,49 @@
 ---
-title: Incremental Adoption
+title: 逐步使用
 ---
 
 <Intro>
-React Compiler can be adopted incrementally, allowing you to try it on specific parts of your codebase first. This guide shows you how to gradually roll out the compiler in existing projects.
+React Compiler 可以逐步采用，允许你首先在代码库的特定部分尝试使用。本指南将向你展示如何在现有项目中逐步推广该编译器的使用。
 </Intro>
 
 <YouWillLearn>
 
-* Why incremental adoption is recommended
-* Using Babel overrides for directory-based adoption
-* Using the "use memo" directive for opt-in compilation
-* Using the "use no memo" directive to exclude components
-* Runtime feature flags with gating
-* Monitoring your adoption progress
+* 为何推荐增量式采用
+* 使用 Babel 覆写进行基于目录的采用
+* 使用 "use memo" 指令进行选择性编译
+* 使用 "use no memo" 指令排除组件
+* 带有 gating 的运行时特性标志
+* 监控你的采用进度
 
 </YouWillLearn>
 
-## Why Incremental Adoption? {/*why-incremental-adoption*/}
+## 为何采用渐进式迁移？ {/*why-incremental-adoption*/}
 
-React Compiler is designed to optimize your entire codebase automatically, but you don't have to adopt it all at once. Incremental adoption gives you control over the rollout process, letting you test the compiler on small parts of your app before expanding to the rest.
+React Compiler 的设计目的是自动优化你的整个代码库，但你不必一次性全部采用。渐进式采用让你能够控制推行过程，在扩展到其余部分之前，先在应用程序的小部分上测试编译器。
 
-Starting small helps you build confidence in the compiler's optimizations. You can verify that your app behaves correctly with compiled code, measure performance improvements, and identify any edge cases specific to your codebase. This approach is especially valuable for production applications where stability is critical.
+从小处着手有助于建立对编译器优化的信心。你可以验证应用在编译代码下的行为是否正确，测量性能提升，并识别代码库中的任何特定边缘情况。这种方法对于稳定性至关重要的生产应用程序尤其有价值。
 
-Incremental adoption also makes it easier to address any Rules of React violations the compiler might find. Instead of fixing violations across your entire codebase at once, you can tackle them systematically as you expand compiler coverage. This keeps the migration manageable and reduces the risk of introducing bugs.
+渐进式采用还使得更容易处理编译器可能发现的任何违反 React 规则的问题。你可以在扩展编译器覆盖范围的同时有条不紊地解决这些问题，而不是一次性修复整个代码库中的违规问题。这使迁移过程更易于管理，并降低了引入错误的风险。
 
-By controlling which parts of your code get compiled, you can also run A/B tests to measure the real-world impact of the compiler's optimizations. This data helps you make informed decisions about full adoption and demonstrates the value to your team.
+通过控制代码中哪些部分被编译，你还可以运行 A/B 测试以衡量编译器优化在实际应用中的效果。这些数据有助于你做出是否全面采用的明智决策，并向团队展示其价值。
 
-## Approaches to Incremental Adoption {/*approaches-to-incremental-adoption*/}
+## 渐进式采用的方法 {/*approaches-to-incremental-adoption*/}
 
-There are three main approaches to adopt React Compiler incrementally:
+有三种主要方法可以逐步采用 React 编译器：
 
-1. **Babel overrides** - Apply the compiler to specific directories
-2. **Opt-in with "use memo"** - Only compile components that explicitly opt in
-3. **Runtime gating** - Control compilation with feature flags
+1. **覆盖 Babel** - 将编译器应用于特定目录  
+2. **通过 "use memo" 选择加入** - 仅编译明确选择加入的组件  
+3. **运行时控制** - 通过功能标志控制编译  
 
-All approaches allow you to test the compiler on specific parts of your application before full rollout.
+所有方法都允许你在完全上线之前，在应用程序的特定部分上测试该编译器。
 
-## Directory-Based Adoption with Babel Overrides {/*directory-based-adoption*/}
+## 基于目录的采用与 Babel 覆盖 {/*directory-based-adoption*/}
 
-Babel's `overrides` option lets you apply different plugins to different parts of your codebase. This is ideal for gradually adopting React Compiler directory by directory.
+Babel 的 `overrides` 选项允许你将不同的插件应用于代码库的不同部分。这对于逐步在各个目录中采用 React 编译器非常理想。
 
-### Basic Configuration {/*basic-configuration*/}
+### 基本配置 {/*basic-configuration*/}
 
-Start by applying the compiler to a specific directory:
+首先将编译器应用到特定目录：
 
 ```js
 // babel.config.js
@@ -62,9 +62,9 @@ module.exports = {
 };
 ```
 
-### Expanding Coverage {/*expanding-coverage*/}
+### 扩展覆盖范围 {/*expanding-coverage*/}
 
-As you gain confidence, add more directories:
+随着你信心的增加，添加更多目录：
 
 ```js
 // babel.config.js
@@ -89,9 +89,9 @@ module.exports = {
 };
 ```
 
-### With Compiler Options {/*with-compiler-options*/}
+### 使用配置编译器选项 {/*with-compiler-options*/}
 
-You can also configure compiler options per override:
+你还可以使用重写来配置编译器选项：
 
 ```js
 // babel.config.js
@@ -119,15 +119,15 @@ module.exports = {
 ```
 
 
-## Opt-in Mode with "use memo" {/*opt-in-mode-with-use-memo*/}
+## 使用 "use memo" 的选择加入模式 {/*opt-in-mode-with-use-memo*/}
 
-For maximum control, you can use `compilationMode: 'annotation'` to only compile components and hooks that explicitly opt in with the `"use memo"` directive.
+如需最大程度的控制，你可以使用 `compilationMode: 'annotation'`，仅编译那些通过 `"use memo"` 指令显式选择加入的组件和 Hook。
 
 <Note>
-This approach gives you fine-grained control over individual components and hooks. It's useful when you want to test the compiler on specific components without affecting entire directories.
+这种方法可以让你对各个组件和挂钩进行细粒度的控制。当你希望在不影响整个目录的情况下，针对特定组件测试编译器时，这种方法非常有用。
 </Note>
 
-### Annotation Mode Configuration {/*annotation-mode-configuration*/}
+### 选择加入模式配置 {/*annotation-mode-configuration*/}
 
 ```js
 // babel.config.js
@@ -140,9 +140,9 @@ module.exports = {
 };
 ```
 
-### Using the Directive {/*using-the-directive*/}
+### 选择加入指令 {/*using-the-directive*/}
 
-Add `"use memo"` at the beginning of functions you want to compile:
+在要编译的函数开头添加 `"use memo"`：
 
 ```js
 function TodoList({ todos }) {
@@ -166,22 +166,22 @@ function useSortedData(data) {
 }
 ```
 
-With `compilationMode: 'annotation'`, you must:
-- Add `"use memo"` to every component you want optimized
-- Add `"use memo"` to every custom hook
-- Remember to add it to new components
+使用 `compilationMode: 'annotation'` 时，你必须：
+- 在每个需要优化的组件中添加 `"use memo"`
+- 在每个自定义 Hook 中添加 `"use memo"`
+- 记得在新组件中也添加它
 
-This gives you precise control over which components are compiled while you evaluate the compiler's impact.
+这可以在你评估编译器影响的同时，精确控制哪些组件会被编译。
 
-## Runtime Feature Flags with Gating {/*runtime-feature-flags-with-gating*/}
+## 运行时控制 {/*runtime-feature-flags-with-gating*/}
 
-The `gating` option enables you to control compilation at runtime using feature flags. This is useful for running A/B tests or gradually rolling out the compiler based on user segments.
+`gating`选项使你能够在运行时使用功能标志控制编译。这对于运行 A/B 测试或根据用户细分逐步推出编译器非常有用。
 
-### How Gating Works {/*how-gating-works*/}
+### 运行时控制工作原理 {/*how-gating-works*/}
 
-The compiler wraps optimized code in a runtime check. If the gate returns `true`, the optimized version runs. Otherwise, the original code runs.
+编译器会在优化后的代码周围添加运行时检查。如果开关返回 `true`，则运行优化版本；否则运行原始代码。
 
-### Gating Configuration {/*gating-configuration*/}
+### 控制配置 {/*gating-configuration*/}
 
 ```js
 // babel.config.js
@@ -197,9 +197,9 @@ module.exports = {
 };
 ```
 
-### Implementing the Feature Flag {/*implementing-the-feature-flag*/}
+### 实现功能标志 {/*implementing-the-feature-flag*/}
 
-Create a module that exports your gating function:
+创建一个模块来导出你的门控函数：
 
 ```js
 // ReactCompilerFeatureFlags.js
@@ -209,17 +209,17 @@ export function isCompilerEnabled() {
 }
 ```
 
-## Troubleshooting Adoption {/*troubleshooting-adoption*/}
+## 故障排除 {/*troubleshooting-adoption*/}
 
-If you encounter issues during adoption:
+如果在采用过程中遇到问题：
 
-1. Use `"use no memo"` to temporarily exclude problematic components
-2. Check the [debugging guide](/learn/react-compiler/debugging) for common issues
-3. Fix Rules of React violations identified by the ESLint plugin
-4. Consider using `compilationMode: 'annotation'` for more gradual adoption
+1. 使用 `"use no memo"` 临时排除有问题的组件
+2. 查阅 [调试指南](/learn/react-compiler/debugging) 以了解常见问题
+3. 修复 ESLint 插件识别出的 React 规则违规
+4. 考虑使用 `compilationMode: 'annotation'` 以更渐进的方式采用
 
-## Next Steps {/*next-steps*/}
+## 下一步 {/*next-steps*/}
 
-- Read the [configuration guide](/reference/react-compiler/configuration) for more options
-- Learn about [debugging techniques](/learn/react-compiler/debugging)
-- Check the [API reference](/reference/react-compiler/configuration) for all compiler options
+- 阅读 [配置指南](/reference/react-compiler/configuration) 了解更多信息和选项
+- 学习 [调试技巧](/learn/react-compiler/debugging)
+- 查看 [API 参考](/reference/react-compiler/configuration) 获取所有编译器选项
