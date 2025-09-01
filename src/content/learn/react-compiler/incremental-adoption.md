@@ -173,7 +173,7 @@ function useSortedData(data) {
 
 这可以在你评估编译器影响的同时，精确控制哪些组件会被编译。
 
-## 运行时控制 {/*runtime-gating*/}
+## 运行时控制 {/*runtime-feature-flags-with-gating*/}
 
 `gating`选项使你能够在运行时使用功能标志控制编译。这对于运行A/B测试或根据用户细分逐步推出编译器非常有用。
 
