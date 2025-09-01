@@ -127,7 +127,7 @@ module.exports = {
 这种方法可以让你对各个组件和挂钩进行细粒度的控制。当你希望在不影响整个目录的情况下，针对特定组件测试编译器时，这种方法非常有用。
 </Note>
 
-### 选择加入模式配置 {/*opt-in-mode-configuration*/}
+### 选择加入模式配置 {/*annotation-mode-configuration*/}
 
 ```js
 // babel.config.js
