@@ -1772,7 +1772,11 @@ function setState() {
 ### Transitions 中的状态更新顺序混乱 {/*my-state-updates-in-transitions-are-out-of-order*/}
 
 
+<<<<<<< HEAD
 如果在 `startTransition` 内部使用 `await`，你可能会看到更新出现顺序错乱。
+=======
+In this example, the `updateQuantity` function simulates a request to the server to update the item's quantity in the cart. This function *artificially returns every other request after the previous* to simulate race conditions for network requests.
+>>>>>>> ff11cd2818338befaa8ba42fce16bf1532e19af8
 
 在这个示例中，`updateQuantity` 函数模拟向服务端发送请求以更新购物车中的商品数量。该函数*人为地让每隔一次请求在前一次之后返回*，用于模拟网络请求的竞态条件。
 
