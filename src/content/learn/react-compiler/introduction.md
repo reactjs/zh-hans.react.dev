@@ -50,7 +50,26 @@ const ExpensiveComponent = memo(function ExpensiveComponent({ data, onClick }) {
 });
 ```
 
+<<<<<<< HEAD
 ### 在使用 React 编译器之后 {/*after-react-compiler*/}
+=======
+
+<Note>
+
+This manual memoization has a subtle bug that breaks memoization:
+
+```js [[2, 1, "() => handleClick(item)"]]
+<Item key={item.id} onClick={() => handleClick(item)} />
+```
+
+Even though `handleClick` is wrapped in `useCallback`, the arrow function `() => handleClick(item)` creates a new function every time the component renders. This means that `Item` will always receive a new `onClick` prop, breaking memoization.
+
+React Compiler is able to optimize this correctly with or without the arrow function, ensuring that `Item` only re-renders when `props.onClick` changes.
+
+</Note>
+
+### After React Compiler {/*after-react-compiler*/}
+>>>>>>> 4d3d4959190d8377444c77957af895df624a63ec
 
 使用 React 编译器，你可以编写相同的代码而无需手动进行记忆化：
 
@@ -74,7 +93,11 @@ function ExpensiveComponent({ data, onClick }) {
 
 __[在 React 编译器游乐场中查看此示例](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAMygOzgFwJYSYAEAogB4AOCmYeAbggMIQC2Fh1OAFMEQCYBDHAIA0RQowA2eOAGsiAXwCURYAB1iROITA4iFGBERgwCPgBEhAogF4iCStVoMACoeO1MAcy6DhSgG4NDSItHT0ACwFMPkkmaTlbIi48HAQWFRsAPlUQ0PFMKRlZFLSWADo8PkC8hSDMPJgEHFhiLjzQgB4+eiyO-OADIwQTM0thcpYBClL02xz2zXz8zoBJMqJZBABPG2BU9Mq+BQKiuT2uTJyomLizkoOMk4B6PqX8pSUFfs7nnro3qEapgFCAFEA)__
 
+<<<<<<< HEAD
 React 编译器会自动应用等效的优化，确保你的应用只在必要时重新渲染。
+=======
+React Compiler automatically applies the optimal memoization, ensuring your app only re-renders when necessary.
+>>>>>>> 4d3d4959190d8377444c77957af895df624a63ec
 
 <DeepDive>
 #### React 编译器添加了哪种类型的记忆化？ {/*what-kind-of-memoization-does-react-compiler-add*/}
@@ -154,7 +177,11 @@ Next.js 用户可以通过使用 [v15.3.1](https://github.com/vercel/next.js/rel
 
 ## 关于 useMemo、useCallback 和 React.memo 我应该怎么做？ {/*what-should-i-do-about-usememo-usecallback-and-reactmemo*/}
 
+<<<<<<< HEAD
 如果你正在使用 React 编译器，可以移除 [`useMemo`](/reference/react/useMemo)、[`useCallback`](/reference/react/useCallback) 和 [`React.memo`](/reference/react/memo)。React 编译器能够比使用这些 Hook 更精确和细致地添加自动记忆化功能。如果你选择保留手动记忆化，React 编译器会分析它们，并判断你的手动记忆化是否与其自动推断出的记忆化一致。如果不一致，编译器将选择放弃优化该组件。
+=======
+React Compiler adds automatic memoization more precisely and granularly than is possible with [`useMemo`](/reference/react/useMemo), [`useCallback`](/reference/react/useCallback), and [`React.memo`](/reference/react/memo). If you choose to keep manual memoization, React Compiler will analyze them and determine if your manual memoization matches its automatically inferred memoization. If there isn't a match, the compiler will choose to bail out of optimizing that component.
+>>>>>>> 4d3d4959190d8377444c77957af895df624a63ec
 
 这样做是出于谨慎考虑，因为手动记忆化常见的反模式是为了保证程序的正确性。这意味着你的应用依赖于对特定值进行记忆化才能正常运行。例如，为了防止无限循环，你可能会记忆某些值来阻止 `useEffect` 被触发。这违反了 React 的规则，但因为编译器自动移除手动记忆化可能会有潜在危险，所以会直接放弃优化。你应该手动移除自己的手动记忆化代码，并验证应用是否仍能按预期运行。
 
