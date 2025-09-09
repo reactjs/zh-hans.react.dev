@@ -1419,10 +1419,36 @@ function SaveButton() {
 
 #### React 会为数据获取提供内置解决方案么？ {/*will-react-provide-any-built-in-solution-for-data-fetching*/}
 
+<<<<<<< HEAD
 我们仍然在规划细节，但是期望未来可以像这样写数据获取：
 
 ```js {1,4,6}
 import { use } from 'react'; // 还不可用！
+=======
+Today, with the [`use`](/reference/react/use#streaming-data-from-server-to-client) API, data can be read in render by passing a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to `use`:
+
+```js {1,4,11}
+import { use, Suspense } from "react";
+
+function Message({ messagePromise }) {
+  const messageContent = use(messagePromise);
+  return <p>Here is the message: {messageContent}</p>;
+}
+
+export function MessageContainer({ messagePromise }) {
+  return (
+    <Suspense fallback={<p>⌛Downloading message...</p>}>
+      <Message messagePromise={messagePromise} />
+    </Suspense>
+  );
+}
+```
+
+We're still working out the details, but we expect that in the future, you'll write data fetching like this:
+
+```js {1,4,6}
+import { use } from 'react';
+>>>>>>> 4d3d4959190d8377444c77957af895df624a63ec
 
 function ShippingForm({ country }) {
   const cities = use(fetch(`/api/cities?country=${country}`));
