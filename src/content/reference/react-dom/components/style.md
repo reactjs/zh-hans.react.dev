@@ -49,7 +49,11 @@ React 可以将 `<style>` 组件移动到文档的 `<head>` 中，去重相同�
 
 请提供 `href` 和 `precedence` 属性以选择此行为。如果样式表具有相同的 `href`，React 将对样式去重。优先级属性告诉 React 在文档的 `<head>` 中排列 `<style>` DOM 节点的位置，从而确定哪个样式表可以覆盖另一个。
 
+<<<<<<< HEAD
 这种特殊处理带来两个注意事项：
+=======
+This special treatment comes with three caveats:
+>>>>>>> 0bfd418252167fc7cce16452ae319e1071498ccc
 
 * 在样式被渲染后，React 将忽略属性的更改（React 在开发环境中会对这种情况发出警告）。
 * 当设置了 `precedence` 属性的时候，React 会丢弃除了 `href` 和 `precedence` 的之外所有无关属性。
