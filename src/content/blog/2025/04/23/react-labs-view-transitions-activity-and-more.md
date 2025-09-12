@@ -2521,7 +2521,7 @@ export default function App() {
   const { url } = useRouter();
 
   // Define a default animation of .slow-fade.
-  // See animations.css for the animation definiton.
+  // See animations.css for the animation definition.
   return (
     <ViewTransition default="slow-fade">
       {url === '/' ? <Home /> : <Details />}
@@ -11465,7 +11465,19 @@ root.render(
 
 ## Activity {/*activity*/}
 
+<<<<<<< HEAD
 在[过去](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022#offscreen)的[更新](/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024#offscreen-renamed-to-activity)中，我们分享了我们正在研究一个 API，允许组件在视觉上被隐藏并降低优先级，相比卸载或使用 CSS 隐藏，这种方式能以更低的性能成本保留 UI 状态。
+=======
+<Note>
+
+**`<Activity />` is now available in React’s Canary channel.**
+
+[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
+
+</Note>
+
+In [past](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022#offscreen) [updates](/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024#offscreen-renamed-to-activity), we shared that we were researching an API to allow components to be visually hidden and deprioritized, preserving UI state with reduced performance costs relative to unmounting or hiding with CSS.
+>>>>>>> a5181c291f01896735b65772f156cfde34df20ee
 
 现在我们准备分享这个 API 及其工作原理，这样你就可以开始在实验性 React 版本中测试它了。
 
