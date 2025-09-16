@@ -122,7 +122,11 @@ React 生态系统中包含许多用于解决这些问题的工具。我们列�
 
 ### 提高应用程序性能 {/*improving-application-performance*/}
 
+<<<<<<< HEAD
 由于你选择的构建工具仅支持单页应用程序（SPA），你需要实现其他 [渲染模式](https://www.patterns.dev/vanilla/rendering-patterns) 如服务器端渲染（SSR）、静态站点生成（SSG）和/或 React 服务器组件（RSC）。即使你一开始不需要这些功能，将来也可能有一些路由会从 SSR、SSG 或 RSC 中受益。
+=======
+Since the build tool you select only supports single page apps (SPAs), you'll need to implement other [rendering patterns](https://www.patterns.dev/vanilla/rendering-patterns) like server-side rendering (SSR), static site generation (SSG), and/or React Server Components (RSC). Even if you don't need these features at first, in the future there may be some routes that would benefit SSR, SSG or RSC.
+>>>>>>> 5b9a2ce6495f706cfba0140aa91481daf7756fbd
 
 * **单页面应用程序 (SPA)** 加载单个 HTML 页面，并在用户与应用程序交互时动态更新页面。SPA 更容易入门，但初始加载时间可能较慢。SPA 是大多数构建工具的默认架构。
 

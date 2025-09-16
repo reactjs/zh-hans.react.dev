@@ -283,9 +283,15 @@ body {
 
 ![CodeSandbox 的初始代码](../images/tutorial/react-starter-code-codesandbox.png)
 
+<<<<<<< HEAD
 1. _Files_ 部分列出了一些文件：`App.js`、`index.js`、`styles.css` 和 `public` 文件夹。
 2. _code editor_ 部分可以看到你所选中文件的源码。
 3. _browser_ 部分可以预览代码的实时结果。
+=======
+1. The _Files_ section with a list of files like `App.js`, `index.js`, `styles.css` in `src` folder and a folder called `public`
+1. The _code editor_ where you'll see the source code of your selected file
+1. The _browser_ section where you'll see how the code you've written will be displayed
+>>>>>>> 5b9a2ce6495f706cfba0140aa91481daf7756fbd
 
 `App.js` 文件里面的内容应该是这样的：
 
