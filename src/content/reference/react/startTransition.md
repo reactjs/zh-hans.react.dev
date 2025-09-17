@@ -43,7 +43,7 @@ function TabContainer() {
 
 #### 参数 {/*parameters*/}
 
-* `action`：调用一个或多个 [`set` 函数](/reference/react/useState#setstate) 来更新 state 的函数。React 会立即调用没有参数的 `action`，并将在 `action` 函数调用期间，调度所有的 state，并将同步更新标记为 transition。任何在 `action` 中等待的异步调用都将包含在 transition 中，但是目前需要将 `await` 之后的任何 `set` 函数包装在 `startTransition` 中 (查看 [故障排除](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition) 了解更多)。被标记为 Transitions 的状态更新是 [非阻塞的](#marking-a-state-update-as-a-non-blocking-transition)，并且 [不会显示不想要的加载提示](/reference/react/useTransition#preventing-unwanted-loading-indicators)。
+* `action`：调用一个或多个 [`set` 函数](/reference/react/useState#setstate) 来更新 state 的函数。React 会立即调用没有参数的 `action`，并将在 `action` 函数调用期间，调度所有的 state，并将同步更新标记为 transition。任何在 `action` 中等待的异步调用都将包含在 transition 中，但是目前需要将 `await` 之后的任何 `set` 函数包装在 `startTransition` 中（查看 [故障排除](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition) 了解更多）。被标记为 Transitions 的状态更新是 [非阻塞的](#marking-a-state-update-as-a-non-blocking-transition)，并且 [不会显示不想要的加载提示](/reference/react/useTransition#preventing-unwanted-loading-indicators)。
 
 #### 返回值 {/*returns*/}
 
@@ -57,7 +57,7 @@ function TabContainer() {
 
 * 你传递给 `startTransition` 的函数会立即被调用，并将其执行时发生的所有状态更新标记为 Transitions。如果你试图在 `setTimeout` 中进行状态更新，它们将不会被标记为 Transitions。
 
-* You must wrap any state updates after any async requests in another `startTransition` to mark them as Transitions. This is a known limitation that we will fix in the future (see [Troubleshooting](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
+* 你必须将任何异步请求之后的所有状态更新再包裹一次 `startTransition`，以将它们标记为 Transition。这是一个已知的限制，未来会修复（参见 [故障排除](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition)）。
 
 * 一个被标记为 Transition 的 state 更新时将会被其他 state 更新打断。例如，如果你在 Transition 内部更新图表组件，但在图表重新渲染时在输入框中打字，则 React 将先处理输入 state 更新，之后才会重新启动对图表组件的渲染工作。
 
