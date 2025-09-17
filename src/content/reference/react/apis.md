@@ -21,13 +21,13 @@ translators:
 
 ---
 
-## Resource APIs {/*resource-apis*/}
+## 资源 API {/*resource-apis*/}
 
-*Resources* can be accessed by a component without having them as part of their state. For example, a component can read a message from a Promise or read styling information from a context.
+组件可以在不将 **资源** 作为其 state 一部分的情况下访问。 例如，组件可以从 Promise 中读取消息，或从 context 中读取样式信息。
 
-To read a value from a resource, use this API:
+要从资源中读取一个值，使用以下 API：
 
-* [`use`](/reference/react/use) lets you read the value of a resource like a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+* [`use`](/reference/react/use) 让你读取资源的值，比如：[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) 或 [context](/learn/passing-data-deeply-with-context).
 ```js
 function MessageComponent({ messagePromise }) {
   const message = use(messagePromise);
