@@ -8,7 +8,7 @@ title: 版本策略
 
 </Intro>
 
-This versioning policy describes our approach to version numbers for packages such as `react` and `react-dom`. For a list of previous releases, see the [Versions](/versions) page.
+本版本策略描述了我们对诸如 `react` 和 `react-dom` 等包的版本号处理方式。要查看以往的版本列表，参阅 [Versions](/versions) 页面。
 
 ## 稳定版本 {/*stable-releases*/}
 
