@@ -321,7 +321,11 @@ React 只允许在组件内访问记忆化函数的缓存。在组件外部调�
 
 #### `useMemo` {/*deep-dive-use-memo*/}
 
+<<<<<<< HEAD
 一般来说，[`useMemo`](/reference/react/useMemo) 用于在客户端组件跨渲染时缓存昂贵的计算。例如，可以用它来记忆化组件内部数据的转换。
+=======
+In general, you should use [`useMemo`](/reference/react/useMemo) for caching an expensive computation in a Client Component across renders. As an example, to memoize a transformation of data within a component.
+>>>>>>> 2a9ef2d173e01c8ca926939334a5cd19943c469b
 
 ```jsx {4}
 'use client';

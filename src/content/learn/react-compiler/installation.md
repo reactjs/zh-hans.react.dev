@@ -176,6 +176,7 @@ React Compiler 包含一条 ESLint 规则，可帮助识别无法优化的代码
 npm install -D eslint-plugin-react-hooks@rc
 </TerminalBlock>
 
+<<<<<<< HEAD
 然后在你的 ESLint 配置中启用编译器规则：
 
 ```js {3}
@@ -186,6 +187,9 @@ module.exports = {
   },
 };
 ```
+=======
+If you haven't already configured eslint-plugin-react-hooks, follow the [installation instructions in the readme](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation). The compiler rule is enabled by default in the latest RC, so no additional configuration is needed.
+>>>>>>> 2a9ef2d173e01c8ca926939334a5cd19943c469b
 
 ESLint 规则将会：
 - 识别对 [React 规则](/reference/rules) 的违反情况
