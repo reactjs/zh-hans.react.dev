@@ -14,7 +14,7 @@ const MemoizedComponent = memo(SomeComponent, arePropsEqual?)
 
 <Note>
 
-[React Compiler](/learn/react-compiler) 会自动为所有组件应用与 memo 等价的优化，从而减少手动记忆化的需要。你可以使用编译器自动处理组件记忆化。
+[React Compiler](/learn/react-compiler) 会自动为所有组件应用与 `memo` 等价的优化，从而减少手动记忆化的需要。你可以使用编译器自动处理组件记忆化。
 
 </Note>
 
