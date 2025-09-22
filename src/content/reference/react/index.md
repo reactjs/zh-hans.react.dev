@@ -38,6 +38,12 @@ React Compiler 是一个构建时优化工具，可以自动为你的 React 组�
 * [指令](/reference/react-compiler/directives) —— 用于控制编译的函数级指令。
 * [编译库](/reference/react-compiler/compiling-libraries) —— 发布预编译库代码的指南。
 
+## ESLint Plugin React Hooks {/*eslint-plugin-react-hooks*/}
+
+The [ESLint plugin for React Hooks](/reference/eslint-plugin-react-hooks) helps enforce the Rules of React:
+
+* [Lints](/reference/eslint-plugin-react-hooks) - Detailed documentation for each lint with examples.
+
 ## Rules of React {/*rules-of-react*/}
 
 React 有一套表达模式的俗语与规则，它们以一种易于理解并能帮助实现高质量应用程序的方式表达出来：

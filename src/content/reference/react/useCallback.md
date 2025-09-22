@@ -130,7 +130,7 @@ function ProductPage({ productId, referrer, theme }) {
       orderDetails,
     });
   }
-  
+
   return (
     <div className={theme}>
       {/* 这将导致 ShippingForm props 永远都不会是相同的，并且每次它都会重新渲染 */}
@@ -207,8 +207,13 @@ function ProductPage({ productId, referrer }) {
 
 如果你已经熟悉了 [`useMemo`](/reference/react/useMemo)，你可能发现将 `useCallback` 视为以下内容会很有帮助：
 
+<<<<<<< HEAD
 ```js
 // 在 React 内部的简化实现
+=======
+```js {expectedErrors: {'react-compiler': [3]}}
+// Simplified implementation (inside React)
+>>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 function useCallback(fn, dependencies) {
   return useMemo(() => fn, dependencies);
 }
@@ -222,7 +227,11 @@ function useCallback(fn, dependencies) {
 
 #### 是否应该在任何地方添加 `useCallback`？ {/*should-you-add-usecallback-everywhere*/}
 
+<<<<<<< HEAD
 如果你的应用程序与本网站类似，并且大多数交互都很粗糙（例如替换页面或整个部分），则通常不需要缓存。另一方面，如果你的应用更像是一个绘图编辑器，并且大多数交互都是精细的（如移动形状），那么你可能会发现缓存非常有用。
+=======
+If your app is like this site, and most interactions are coarse (like replacing a page or an entire section), memoization is usually unnecessary. On the other hand, if your app is more like a drawing editor, and most interactions are granular (like moving shapes), then you might find memoization very helpful.
+>>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 
 使用 `useCallback` 缓存函数仅在少数情况下有意义：
 
@@ -310,7 +319,7 @@ function post(url, data) {
 }
 ```
 
-```js src/ShippingForm.js
+```js {expectedErrors: {'react-compiler': [7, 8]}} src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -449,7 +458,7 @@ function post(url, data) {
 }
 ```
 
-```js src/ShippingForm.js
+```js {expectedErrors: {'react-compiler': [7, 8]}} src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -868,7 +877,7 @@ Object.is(temp1[2], temp2[2]); // 数组之间的每一个依赖关系是否相�
 
 假设 `Chart` 组件被包裹在 [`memo`](/reference/react/memo) 中。你希望在 `ReportList` 组件重新渲染时跳过重新渲染列表中的每个 `Chart`。但是，你不能在循环中调用 `useCallback`。
 
-```js {5-14}
+```js {expectedErrors: {'react-compiler': [6]}} {5-14}
 function ReportList({ items }) {
   return (
     <article>

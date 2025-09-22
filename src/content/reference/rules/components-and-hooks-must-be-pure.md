@@ -209,7 +209,7 @@ function ProductDetailPage({ product }) {
 ### 不要修改 props {/*props*/}
 props 是不可变的，因为如果你改变了它们，应用程序可能会产生不一致的结果，这会让调试变得困难，因为程序可能会在某些情况下工作，而在另一些情况下不工作。
 
-```js {2}
+```js {expectedErrors: {'react-compiler': [2]}} {2}
 function Post({ item }) {
   item.url = new Url(item.url, base); // 🔴 错误的：永远不要直接修改 props
   return <Link url={item.url}>{item.title}</Link>;
@@ -232,7 +232,7 @@ const [stateVariable, setter] = useState(0);
 
 我们不应该直接在 state 变量上进行更新，而应该使用 `useState` 返回的 setter 函数来进行更新。如果在 state 变量上直接修改值，并不会导致组件界面更新，这样用户界面就会显示过时的信息。通过使用 setter 函数，我们告诉 React 状态已经发生了变化，需要进行重新渲染，以便更新用户界面。
 
-```js {5}
+```js {expectedErrors: {'react-compiler': [2, 5]}} {5}
 function Counter() {
   const [count, setCount] = useState(0);
 
@@ -270,7 +270,7 @@ function Counter() {
 
 一旦值被传递给 Hook，就不应该再对它们进行修改。就像在 JSX 中的 props 一样，当值被传递给 Hook 时，它们就应该是不可变的了。
 
-```js {4}
+```js {expectedErrors: {'react-compiler': [4]}} {4}
 function useIconStyle(icon) {
   const theme = useContext(ThemeContext);
   if (icon.enabled) {
@@ -330,7 +330,7 @@ style = useIconStyle(icon);         // 计算 `style` 的新值
 
 当你在表达式中使用 JSX 时，React 可能会在组件完成渲染之前就急于计算 JSX。这意味着，如果在将值传递给 JSX 之后对它们进行更改，可能会导致 UI 过时，因为 React 不会知道需要更新组件的输出。
 
-```js {4}
+```js {expectedErrors: {'react-compiler': [4]}} {4}
 function Page({ colour }) {
   const styles = { colour, size: "large" };
   const header = <Header styles={styles} />;

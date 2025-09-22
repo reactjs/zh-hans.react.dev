@@ -161,7 +161,11 @@ function CheckoutForm() {
 }
 ```
 
+<<<<<<< HEAD
 传递给 `startTransition` 的函数被称为 "Action"。你可以在 Action 中更新状态和执行副作用操作，这些工作将在后台执行，不会阻塞页面的用户交互。一个 Transition 可以包含多个 Action，且在 Transition 进行期间，你的用户界面将保持流畅响应。例如，如果用户点击一个标签页后又改变主意点击另一个标签页，第二个点击会立即被处理，无需等待第一个更新完成。
+=======
+The function passed to `startTransition` is called the "Action". You can update state and (optionally) perform side effects within an Action, and the work will be done in the background without blocking user interactions on the page. A Transition can include multiple Actions, and while a Transition is in progress, your UI stays responsive. For example, if the user clicks a tab but then changes their mind and clicks another tab, the second click will be immediately handled without waiting for the first update to finish.
+>>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 
 为了向用户提供 Transition 进行中的反馈， `isPending` 状态会在首次调用 `startTransition` 时切换为 `true`，并会在所有 Action 完成且最终状态呈现给用户前一直保持为 `true`。Transition 机制确保 Action 中的副作用会完整执行以[避免不必要的加载指示](#preventing-unwanted-loading-indicators)，同时你可以通过 `useOptimistic` 在 Transition 进行期间提供即时反馈。
 
@@ -597,7 +601,7 @@ export default function TabButton({ action, children, isActive }) {
     <button onClick={() => {
       startTransition(async () => {
         // await the action that's passed in.
-        // This allows it to be either sync or async. 
+        // This allows it to be either sync or async.
         await action();
       });
     }}>
@@ -664,7 +668,7 @@ export default function TabButton({ action, children, isActive }) {
     <button onClick={async () => {
       startTransition(async () => {
         // await the action that's passed in.
-        // This allows it to be either sync or async. 
+        // This allows it to be either sync or async.
         await action();
       });
     }}>
@@ -682,7 +686,7 @@ export default function AboutTab() {
 }
 ```
 
-```js src/PostsTab.js
+```js {expectedErrors: {'react-compiler': [19, 20]}} src/PostsTab.js
 import { memo } from 'react';
 
 const PostsTab = memo(function PostsTab() {
@@ -742,7 +746,7 @@ b { display: inline-block; margin-right: 10px; }
 
 <Note>
 
-When exposing an `action` prop from a component, you should `await` it inside the transition. 
+When exposing an `action` prop from a component, you should `await` it inside the transition.
 
 This allows the `action` callback to be either synchronous or asynchronous without requiring an additional `startTransition` to wrap the `await` in the action.
 
@@ -837,7 +841,7 @@ export default function AboutTab() {
 }
 ```
 
-```js src/PostsTab.js
+```js {expectedErrors: {'react-compiler': [19, 20]}} src/PostsTab.js
 import { memo } from 'react';
 
 const PostsTab = memo(function PostsTab() {
@@ -1772,7 +1776,11 @@ function setState() {
 ### Transitions 中的状态更新顺序混乱 {/*my-state-updates-in-transitions-are-out-of-order*/}
 
 
+<<<<<<< HEAD
 如果在 `startTransition` 内部使用 `await`，你可能会看到更新出现顺序错乱。
+=======
+In this example, the `updateQuantity` function simulates a request to the server to update the item's quantity in the cart. This function *artificially returns every other request after the previous* to simulate race conditions for network requests.
+>>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 
 在这个示例中，`updateQuantity` 函数模拟向服务端发送请求以更新购物车中的商品数量。该函数*人为地让每隔一次请求在前一次之后返回*，用于模拟网络请求的竞态条件。
 
@@ -1806,7 +1814,7 @@ export default function App({}) {
   const [isPending, startTransition] = useTransition();
   // Store the actual quantity in separate state to show the mismatch.
   const [clientQuantity, setClientQuantity] = useState(1);
-  
+
   const updateQuantityAction = newQuantity => {
     setClientQuantity(newQuantity);
 
@@ -1841,7 +1849,7 @@ export default function Item({action}) {
     startTransition(async () => {
       await action(e.target.value);
     });
-  }  
+  }
   return (
     <div className="item">
       <span>Eras Tour Tickets</span>
@@ -2007,7 +2015,7 @@ export default function Item({action}) {
     startTransition(() => {
       action(e.target.value);
     });
-  }  
+  }
   return (
     <div className="item">
       <span>Eras Tour Tickets</span>

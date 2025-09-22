@@ -711,7 +711,7 @@ function Page({ url }) {
 
 在已经存在的代码库中，你可能有时会看见像这样的检查规则抑制：
 
-```js {7-9}
+```js {expectedErrors: {'react-compiler': [8]}} {7-9}
 function Page({ url }) {
   const { items } = useContext(ShoppingCartContext);
   const numberOfItems = items.length;
@@ -735,7 +735,7 @@ function Page({ url }) {
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [16]}}
 import { useState, useEffect } from 'react';
 
 export default function App() {
@@ -990,7 +990,7 @@ Effect Event 是 Effect 代码的非响应式“片段”。他们应该在使�
 ```
 
 
-```js
+```js {expectedErrors: {'react-compiler': [14]}}
 import { useState, useEffect } from 'react';
 
 export default function Timer() {

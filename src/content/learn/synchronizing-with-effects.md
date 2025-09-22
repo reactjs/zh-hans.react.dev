@@ -95,7 +95,7 @@ function VideoPlayer({ src, isPlaying }) {
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [7, 9]}}
 import { useState, useRef, useEffect } from 'react';
 
 function VideoPlayer({ src, isPlaying }) {
@@ -617,7 +617,11 @@ React 有意在开发环境下重新挂载你的组件，来找到类似上例�
 
 它虽然使你在开发环境下只看到一次 `“✅ 正在连接...”`，但并没有修复这个 bug。
 
+<<<<<<< HEAD
 当用户离开时，连接没有被关闭，当用户返回时，又会创建一个新的连接。随着用户浏览应用，连接会不断累积，就像“修复”之前一样。
+=======
+When the user navigates away, the connection still isn't closed and when they navigate back, a new connection is created. As the user navigates across the app, the connections would keep piling up, the same as it would before the "fix".
+>>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 
 要修复这个 bug，仅仅让 Effect 只运行一次是不够的。想要 Effect 在重新挂载后正常运行，就得按照之前的方法清除连接。
 
@@ -1004,8 +1008,13 @@ import { useEffect, useRef } from 'react';
 export default function MyInput({ value, onChange }) {
   const ref = useRef(null);
 
+<<<<<<< HEAD
   // TODO：下面的这种做法不会生效，请修复。
   // ref.current.focus()    
+=======
+  // TODO: This doesn't quite work. Fix it.
+  // ref.current.focus()
+>>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 
   return (
     <input
@@ -1468,7 +1477,8 @@ body {
 
 <Sandpack>
 
-```js src/App.js
+{/* not the most efficient, but this validation is enabled in the linter only, so it's fine to ignore it here since we know what we're doing */}
+```js {expectedErrors: {'react-compiler': [9]}} src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 
@@ -1541,7 +1551,8 @@ export async function fetchBio(person) {
 
 <Sandpack>
 
-```js src/App.js
+{/* not the most efficient, but this validation is enabled in the linter only, so it's fine to ignore it here since we know what we're doing */}
+```js {expectedErrors: {'react-compiler': [9]}} src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 
@@ -1605,4 +1616,3 @@ export async function fetchBio(person) {
 </Solution>
 
 </Challenges>
-
