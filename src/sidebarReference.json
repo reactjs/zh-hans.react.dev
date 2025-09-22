@@ -375,9 +375,6 @@
     },
     {
       "hasSectionHeader": true,
-<<<<<<< HEAD
-      "sectionHeader": "React 规则"
-=======
       "sectionHeader": "eslint-plugin-react-hooks"
     },
     {
@@ -456,8 +453,7 @@
     },
     {
       "hasSectionHeader": true,
-      "sectionHeader": "Rules of React"
->>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
+      "sectionHeader": "React 规则"
     },
     {
       "title": "概述",

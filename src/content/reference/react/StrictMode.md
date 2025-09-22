@@ -224,11 +224,7 @@ li {
 
 上面的代码中有一个错误，但很容易被忽视，因为初始输出看起来是正确的。
 
-<<<<<<< HEAD
 如果 `StoryTray` 组件重新渲染多次，这个错误将变得更加明显。例如，当鼠标悬停在 `StoryTray` 组件上时，以不同的背景颜色重新渲染它：
-=======
-This mistake will become more noticeable if the `StoryTray` component re-renders multiple times. For example, let's make the `StoryTray` re-render with a different background color whenever you hover over it:
->>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 
 <Sandpack>
 
@@ -1245,13 +1241,8 @@ Now on inital mount in StrictMode, the ref callbacks are all setup, cleaned up, 
 
 Without Strict Mode, it was easy to miss the bug until you clicked around to app to notice broken features. Strict Mode made the bugs appear right away, before you push them to production.
 
-<<<<<<< HEAD
---- 
-### 修复严格模式发出的弃用警告 {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
-=======
 ---
-### Fixing deprecation warnings enabled by Strict Mode {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
->>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
+### 修复严格模式发出的弃用警告 {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
 
 React 会在任何一个位于 `<StrictMode>` 树中的组件使用以下弃用 API 时发出警告：
 
