@@ -107,7 +107,7 @@
         {
           "title": "<Activity>",
           "path": "/reference/react/Activity",
-          "version": "experimental"
+          "version": "canary"
         },
         {
           "title": "<ViewTransition>",
@@ -375,7 +375,106 @@
     },
     {
       "hasSectionHeader": true,
+<<<<<<< HEAD
       "sectionHeader": "React 规则"
+=======
+      "sectionHeader": "eslint-plugin-react-hooks"
+    },
+    {
+      "title": "Lints",
+      "path": "/reference/eslint-plugin-react-hooks",
+      "routes": [
+        {
+          "title": "exhaustive-deps",
+          "path": "/reference/eslint-plugin-react-hooks/lints/exhaustive-deps"
+        },
+        {
+          "title": "rules-of-hooks",
+          "path": "/reference/eslint-plugin-react-hooks/lints/rules-of-hooks"
+        },
+        {
+          "title": "component-hook-factories",
+          "path": "/reference/eslint-plugin-react-hooks/lints/component-hook-factories",
+          "version": "rc"
+        },
+        {
+          "title": "config",
+          "path": "/reference/eslint-plugin-react-hooks/lints/config",
+          "version": "rc"
+        },
+        {
+          "title": "error-boundaries",
+          "path": "/reference/eslint-plugin-react-hooks/lints/error-boundaries",
+          "version": "rc"
+        },
+        {
+          "title": "gating",
+          "path": "/reference/eslint-plugin-react-hooks/lints/gating",
+          "version": "rc"
+        },
+        {
+          "title": "globals",
+          "path": "/reference/eslint-plugin-react-hooks/lints/globals",
+          "version": "rc"
+        },
+        {
+          "title": "immutability",
+          "path": "/reference/eslint-plugin-react-hooks/lints/immutability",
+          "version": "rc"
+        },
+        {
+          "title": "incompatible-library",
+          "path": "/reference/eslint-plugin-react-hooks/lints/incompatible-library",
+          "version": "rc"
+        },
+        
+        {
+          "title": "preserve-manual-memoization",
+          "path": "/reference/eslint-plugin-react-hooks/lints/preserve-manual-memoization",
+          "version": "rc"
+        },
+        {
+          "title": "purity",
+          "path": "/reference/eslint-plugin-react-hooks/lints/purity",
+          "version": "rc"
+        },
+        {
+          "title": "refs",
+          "path": "/reference/eslint-plugin-react-hooks/lints/refs",
+          "version": "rc"
+        },
+        
+        {
+          "title": "set-state-in-effect",
+          "path": "/reference/eslint-plugin-react-hooks/lints/set-state-in-effect",
+          "version": "rc"
+        },
+        {
+          "title": "set-state-in-render",
+          "path": "/reference/eslint-plugin-react-hooks/lints/set-state-in-render",
+          "version": "rc"
+        },
+        {
+          "title": "static-components",
+          "path": "/reference/eslint-plugin-react-hooks/lints/static-components",
+          "version": "rc"
+        },
+        {
+          "title": "unsupported-syntax",
+          "path": "/reference/eslint-plugin-react-hooks/lints/unsupported-syntax",
+          "version": "rc"
+        },
+        {
+          "title": "use-memo",
+          "path": "/reference/eslint-plugin-react-hooks/lints/use-memo",
+          "version": "rc"
+        }
+      ]
+    },
+    {
+      "hasSectionHeader": true,
+      "sectionHeader": "Rules of React"
+>>>>>>> c8211fc21ead0cee9c59e9f77ded9e8c65d72775
     },
     {
       "title": "概述",

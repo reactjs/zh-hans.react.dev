@@ -201,7 +201,7 @@ Effect 是 React 范式中的一种脱围机制。它们可以“逃出” React
 
 例如，不需要 Effect 来根据其他状态调整某些状态：
 
-```js {5-9}
+```js {expectedErrors: {'react-compiler': [8]}} {5-9}
 function Form() {
   const [firstName, setFirstName] = useState('泰勒');
   const [lastName, setLastName] = useState('斯威夫特');
