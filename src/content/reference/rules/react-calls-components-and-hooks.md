@@ -21,7 +21,7 @@ function BlogPost() {
 }
 ```
 
-```js {2}
+```js {expectedErrors: {'react-compiler': [2]}} {2}
 function BlogPost() {
   return <Layout>{Article()}</Layout>; // 🔴 错误的：不要直接调用组件函数
 }
@@ -51,7 +51,7 @@ Hook 允许你使用 React 功能来增强组件。它们应该始终作为函�
 
 Hook 应当尽可能保持“静态”。这意味着你不应该动态地改变它们。这意味着你不应该编写高阶 Hook。
 
-```js {2}
+```js {expectedErrors: {'react-compiler': [2, 3]}} {2}
 function ChatInput() {
   const useDataWithLogging = withLogging(useData); // 🔴 错误的：不要编写高阶 Hook
   const data = useDataWithLogging();
@@ -74,7 +74,7 @@ function useDataWithLogging() {
 
 Hook 也不应该被动态使用，例如，不应该通过将 Hook 作为值传递来在一个组件中实现依赖注入。
 
-```js {2}
+```js {expectedErrors: {'react-compiler': [2]}} {2}
 function ChatInput() {
   return <Button useData={useDataWithLogging} /> // 🔴 错误的：不要通过 props 传递 Hook
 }

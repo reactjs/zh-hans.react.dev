@@ -130,7 +130,7 @@ function ProductPage({ productId, referrer, theme }) {
       orderDetails,
     });
   }
-  
+
   return (
     <div className={theme}>
       {/* 这将导致 ShippingForm props 永远都不会是相同的，并且每次它都会重新渲染 */}
@@ -207,7 +207,7 @@ function ProductPage({ productId, referrer }) {
 
 如果你已经熟悉了 [`useMemo`](/reference/react/useMemo)，你可能发现将 `useCallback` 视为以下内容会很有帮助：
 
-```js
+```js {expectedErrors: {'react-compiler': [3]}}
 // 在 React 内部的简化实现
 function useCallback(fn, dependencies) {
   return useMemo(() => fn, dependencies);
@@ -310,7 +310,7 @@ function post(url, data) {
 }
 ```
 
-```js src/ShippingForm.js
+```js {expectedErrors: {'react-compiler': [7, 8]}} src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -449,7 +449,7 @@ function post(url, data) {
 }
 ```
 
-```js src/ShippingForm.js
+```js {expectedErrors: {'react-compiler': [7, 8]}} src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -868,7 +868,7 @@ Object.is(temp1[2], temp2[2]); // 数组之间的每一个依赖关系是否相�
 
 假设 `Chart` 组件被包裹在 [`memo`](/reference/react/memo) 中。你希望在 `ReportList` 组件重新渲染时跳过重新渲染列表中的每个 `Chart`。但是，你不能在循环中调用 `useCallback`。
 
-```js {5-14}
+```js {expectedErrors: {'react-compiler': [6]}} {5-14}
 function ReportList({ items }) {
   return (
     <article>

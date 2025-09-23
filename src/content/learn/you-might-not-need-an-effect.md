@@ -34,7 +34,7 @@ Effect 是 React 范式中的一种脱围机制。它们让你可以 “逃出�
 
 假设你有一个包含了两个 state 变量的组件：`firstName` 和 `lastName`。你想通过把它们联结起来计算出 `fullName`。此外，每当 `firstName` 和 `lastName` 变化时，你希望 `fullName` 都能更新。你的第一直觉可能是添加一个 state 变量：`fullName`，并在一个 Effect 中更新它：
 
-```js {5-9}
+```js {expectedErrors: {'react-compiler': [8]}} {5-9}
 function Form() {
   const [firstName, setFirstName] = useState('Taylor');
   const [lastName, setLastName] = useState('Swift');
@@ -66,7 +66,7 @@ function Form() {
 
 这个组件使用它接收到的 props 中的 `filter` 对另一个 prop `todos` 进行筛选，计算得出 `visibleTodos`。你的直觉可能是把结果存到一个 state 中，并在 Effect 中更新它：
 
-```js {4-8}
+```js {expectedErrors: {'react-compiler': [7]}} {4-8}
 function TodoList({ todos, filter }) {
   const [newTodo, setNewTodo] = useState('');
 
@@ -165,7 +165,7 @@ console.timeEnd('筛选数组');
 
 `ProfilePage` 组件接收一个 prop：`userId`。页面上有一个评论输入框，你用了一个 state：`comment` 来保存它的值。有一天，你发现了一个问题：当你从一个人的个人资料导航到另一个时，`comment` 没有被重置。这导致很容易不小心把评论发送到不正确的个人资料。为了解决这个问题，你想在 `userId` 变化时，清除 `comment` 变量：
 
-```js {4-7}
+```js {expectedErrors: {'react-compiler': [6]}} {4-7}
 export default function ProfilePage({ userId }) {
   const [comment, setComment] = useState('');
 
@@ -208,7 +208,7 @@ function Profile({ userId }) {
 
 `List` 组件接收一个 `items` 列表作为 prop，然后用 state 变量 `selection` 来保持已选中的项。当 `items` 接收到一个不同的数组时，你想将 `selection` 重置为 `null`：
 
-```js {5-8}
+```js {expectedErrors: {'react-compiler': [7]}} {5-8}
 function List({ items }) {
   const [isReverse, setIsReverse] = useState(false);
   const [selection, setSelection] = useState(null);
@@ -819,7 +819,7 @@ function useData(url) {
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [12, 16, 20]}}
 import { useState, useEffect } from 'react';
 import { initialTodos, createTodo } from './todos.js';
 
@@ -1022,7 +1022,7 @@ input { margin-top: 10px; }
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [11]}}
 import { useState, useEffect } from 'react';
 import { initialTodos, createTodo, getVisibleTodos } from './todos.js';
 
@@ -1106,7 +1106,7 @@ input { margin-top: 10px; }
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [8]}}
 import { useState, useMemo } from 'react';
 import { initialTodos, createTodo, getVisibleTodos } from './todos.js';
 
@@ -1363,7 +1363,7 @@ export default function ContactList({
 }
 ```
 
-```js src/EditContact.js active
+```js {expectedErrors: {'react-compiler': [8, 9]}} src/EditContact.js active
 import { useState, useEffect } from 'react';
 
 export default function EditContact({ savedContact, onSave }) {

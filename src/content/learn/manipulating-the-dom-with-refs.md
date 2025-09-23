@@ -249,13 +249,13 @@ export default function CatFriends() {
       <nav>
         <button onClick={() => scrollToCat(catList[0])}>Neo</button>
         <button onClick={() => scrollToCat(catList[5])}>Millie</button>
-        <button onClick={() => scrollToCat(catList[9])}>Bella</button>
+        <button onClick={() => scrollToCat(catList[8])}>Bella</button>
       </nav>
       <div>
         <ul>
           {catList.map((cat) => (
             <li
-              key={cat}
+              key={cat.id}
               ref={(node) => {
                 const map = getMap();
                 map.set(cat, node);
@@ -265,7 +265,7 @@ export default function CatFriends() {
                 };
               }}
             >
-              <img src={cat} />
+              <img src={cat.imageUrl} />
             </li>
           ))}
         </ul>
@@ -275,11 +275,22 @@ export default function CatFriends() {
 }
 
 function setupCatList() {
-  const catList = [];
-  for (let i = 0; i < 10; i++) {
-    catList.push("https://loremflickr.com/320/240/cat?lock=" + i);
+  const catCount = 10;
+  const catList = new Array(catCount)
+  for (let i = 0; i < catCount; i++) {
+    let imageUrl = '';
+    if (i < 5) {
+      imageUrl = "https://placecats.com/neo/320/240";
+    } else if (i < 8) {
+      imageUrl = "https://placecats.com/millie/320/240";
+    } else {
+      imageUrl = "https://placecats.com/bella/320/240";
+    }
+    catList[i] = {
+      id: i,
+      imageUrl,
+    };
   }
-
   return catList;
 }
 
@@ -878,12 +889,30 @@ export default function CatFriends() {
   );
 }
 
-const catList = [];
-for (let i = 0; i < 10; i++) {
-  catList.push({
+const catCount = 10;
+const catList = new Array(catCount);
+for (let i = 0; i < catCount; i++) {
+  const bucket = Math.floor(Math.random() * catCount) % 2;
+  let imageUrl = '';
+  switch (bucket) {
+    case 0: {
+      imageUrl = "https://placecats.com/neo/250/200";
+      break;
+    }
+    case 1: {
+      imageUrl = "https://placecats.com/millie/250/200";
+      break;
+    }
+    case 2:
+    default: {
+      imageUrl = "https://placecats.com/bella/250/200";
+      break;
+    }
+  }
+  catList[i] = {
     id: i,
-    imageUrl: 'https://loremflickr.com/250/200/cat?lock=' + i
-  });
+    imageUrl,
+  };
 }
 
 ```
@@ -963,7 +992,7 @@ export default function CatFriends() {
             behavior: 'smooth',
             block: 'nearest',
             inline: 'center'
-          });            
+          });
         }}>
           下一步
         </button>
@@ -995,12 +1024,30 @@ export default function CatFriends() {
   );
 }
 
-const catList = [];
-for (let i = 0; i < 10; i++) {
-  catList.push({
+const catCount = 10;
+const catList = new Array(catCount);
+for (let i = 0; i < catCount; i++) {
+  const bucket = Math.floor(Math.random() * catCount) % 2;
+  let imageUrl = '';
+  switch (bucket) {
+    case 0: {
+      imageUrl = "https://placecats.com/neo/250/200";
+      break;
+    }
+    case 1: {
+      imageUrl = "https://placecats.com/millie/250/200";
+      break;
+    }
+    case 2:
+    default: {
+      imageUrl = "https://placecats.com/bella/250/200";
+      break;
+    }
+  }
+  catList[i] = {
     id: i,
-    imageUrl: 'https://loremflickr.com/250/200/cat?lock=' + i
-  });
+    imageUrl,
+  };
 }
 
 ```

@@ -225,7 +225,8 @@ export default function App() {
 
 ```
 
-```js src/TodoList.js active
+{/* TODO(@poteto) - investigate potential false positives in react compiler validation */}
+```js {expectedErrors: {'react-compiler': [5]}} src/TodoList.js active
 import { useMemo } from 'react';
 import { filterTodos } from './utils.js'
 
@@ -717,7 +718,7 @@ export default function TodoList({ todos, theme, tab }) {
 }
 ```
 
-```js src/List.js
+```js {expectedErrors: {'react-compiler': [5, 6]}} src/List.js
 import { memo } from 'react';
 
 const List = memo(function List({ items }) {
@@ -855,7 +856,7 @@ export default function TodoList({ todos, theme, tab }) {
 }
 ```
 
-```js src/List.js
+```js {expectedErrors: {'react-compiler': [5, 6]}} src/List.js
 import { memo } from 'react';
 
 const List = memo(function List({ items }) {
@@ -1127,7 +1128,7 @@ function ChatRoom({ roomId }) {
       serverUrl: 'https://localhost:1234',
       roomId: roomId
     }
-    
+
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
@@ -1371,7 +1372,7 @@ Object.is(temp1[2], temp2[2]); // ... 依此类推 ...
 
 假设 `Chart` 组件被包裹在 [`memo`](/reference/react/memo) 中。当 `ReportList` 组件重新渲染时，你想跳过重新渲染列表中的每个 `Chart`。但是，你不能在循环中调用 `useMemo`：
 
-```js {5-11}
+```js {expectedErrors: {'react-compiler': [6]}} {5-11}
 function ReportList({ items }) {
   return (
     <article>

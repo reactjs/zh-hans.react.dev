@@ -283,7 +283,7 @@ body {
 
 ![CodeSandbox 的初始代码](../images/tutorial/react-starter-code-codesandbox.png)
 
-1. _Files_ 部分列出了一些文件：`App.js`、`index.js`、`styles.css` 和 `public` 文件夹。
+1. _Files_ 部分列出了一些文件：`src` 文件夹中的 `App.js`、`index.js`、`styles.css` 文件和 `public` 文件夹。
 2. _code editor_ 部分可以看到你所选中文件的源码。
 3. _browser_ 部分可以预览代码的实时结果。
 

@@ -95,7 +95,7 @@ function VideoPlayer({ src, isPlaying }) {
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [7, 9]}}
 import { useState, useRef, useEffect } from 'react';
 
 function VideoPlayer({ src, isPlaying }) {
@@ -1468,7 +1468,8 @@ body {
 
 <Sandpack>
 
-```js src/App.js
+{/* not the most efficient, but this validation is enabled in the linter only, so it's fine to ignore it here since we know what we're doing */}
+```js {expectedErrors: {'react-compiler': [9]}} src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 
@@ -1541,7 +1542,8 @@ export async function fetchBio(person) {
 
 <Sandpack>
 
-```js src/App.js
+{/* not the most efficient, but this validation is enabled in the linter only, so it's fine to ignore it here since we know what we're doing */}
+```js {expectedErrors: {'react-compiler': [9]}} src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 
@@ -1605,4 +1607,3 @@ export async function fetchBio(person) {
 </Solution>
 
 </Challenges>
-

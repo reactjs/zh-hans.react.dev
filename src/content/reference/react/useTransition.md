@@ -597,7 +597,7 @@ export default function TabButton({ action, children, isActive }) {
     <button onClick={() => {
       startTransition(async () => {
         // await the action that's passed in.
-        // This allows it to be either sync or async. 
+        // This allows it to be either sync or async.
         await action();
       });
     }}>
@@ -664,7 +664,7 @@ export default function TabButton({ action, children, isActive }) {
     <button onClick={async () => {
       startTransition(async () => {
         // await the action that's passed in.
-        // This allows it to be either sync or async. 
+        // This allows it to be either sync or async.
         await action();
       });
     }}>
@@ -682,7 +682,7 @@ export default function AboutTab() {
 }
 ```
 
-```js src/PostsTab.js
+```js {expectedErrors: {'react-compiler': [19, 20]}} src/PostsTab.js
 import { memo } from 'react';
 
 const PostsTab = memo(function PostsTab() {
@@ -742,7 +742,7 @@ b { display: inline-block; margin-right: 10px; }
 
 <Note>
 
-When exposing an `action` prop from a component, you should `await` it inside the transition. 
+When exposing an `action` prop from a component, you should `await` it inside the transition.
 
 This allows the `action` callback to be either synchronous or asynchronous without requiring an additional `startTransition` to wrap the `await` in the action.
 
@@ -837,7 +837,7 @@ export default function AboutTab() {
 }
 ```
 
-```js src/PostsTab.js
+```js {expectedErrors: {'react-compiler': [19, 20]}} src/PostsTab.js
 import { memo } from 'react';
 
 const PostsTab = memo(function PostsTab() {
@@ -1771,10 +1771,9 @@ function setState() {
 
 ### Transitions 中的状态更新顺序混乱 {/*my-state-updates-in-transitions-are-out-of-order*/}
 
-
 如果在 `startTransition` 内部使用 `await`，你可能会看到更新出现顺序错乱。
 
-在这个示例中，`updateQuantity` 函数模拟向服务端发送请求以更新购物车中的商品数量。该函数*人为地让每隔一次请求在前一次之后返回*，用于模拟网络请求的竞态条件。
+在这个示例中，`updateQuantity` 函数模拟向服务端发送请求以更新购物车中的商品数量。该函数 **人为地让每隔一次请求在前一次之后返回**，用于模拟网络请求的竞态条件。
 
 尝试更新一次数量，然后快速多次更新。你可能会看到错误的总计：
 
@@ -1806,7 +1805,7 @@ export default function App({}) {
   const [isPending, startTransition] = useTransition();
   // Store the actual quantity in separate state to show the mismatch.
   const [clientQuantity, setClientQuantity] = useState(1);
-  
+
   const updateQuantityAction = newQuantity => {
     setClientQuantity(newQuantity);
 
@@ -1841,7 +1840,7 @@ export default function Item({action}) {
     startTransition(async () => {
       await action(e.target.value);
     });
-  }  
+  }
   return (
     <div className="item">
       <span>Eras Tour Tickets</span>
@@ -2007,7 +2006,7 @@ export default function Item({action}) {
     startTransition(() => {
       action(e.target.value);
     });
-  }  
+  }
   return (
     <div className="item">
       <span>Eras Tour Tickets</span>

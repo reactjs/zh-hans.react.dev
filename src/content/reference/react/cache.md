@@ -323,7 +323,7 @@ React 只允许在组件内访问记忆化函数的缓存。在组件外部调�
 
 一般来说，[`useMemo`](/reference/react/useMemo) 用于在客户端组件跨渲染时缓存昂贵的计算。例如，可以用它来记忆化组件内部数据的转换。
 
-```jsx {4}
+```jsx {expectedErrors: {'react-compiler': [4]}} {4}
 'use client';
 
 function WeatherReport({record}) {
@@ -379,7 +379,7 @@ function App() {
 'use client';
 
 function WeatherReport({record}) {
-  const avgTemp = calculateAvg(record); 
+  const avgTemp = calculateAvg(record);
   // ...
 }
 
@@ -495,4 +495,3 @@ function App() {
   );
 }
 ```
-

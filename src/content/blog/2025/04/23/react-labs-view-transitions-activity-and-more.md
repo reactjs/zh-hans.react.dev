@@ -2521,7 +2521,7 @@ export default function App() {
   const { url } = useRouter();
 
   // Define a default animation of .slow-fade.
-  // See animations.css for the animation definiton.
+  // See animations.css for the animation definition.
   return (
     <ViewTransition default="slow-fade">
       {url === '/' ? <Home /> : <Details />}
@@ -11464,6 +11464,14 @@ root.render(
 ---
 
 ## Activity {/*activity*/}
+
+<Note>
+
+**`<Activity />` 现在可以在 React Canary 版本使用。**
+
+[了解更多关于 React 版本发布的内容。](/community/versioning-policy#all-release-channels)
+
+</Note>
 
 在[过去](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022#offscreen)的[更新](/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024#offscreen-renamed-to-activity)中，我们分享了我们正在研究一个 API，允许组件在视觉上被隐藏并降低优先级，相比卸载或使用 CSS 隐藏，这种方式能以更低的性能成本保留 UI 状态。
 
