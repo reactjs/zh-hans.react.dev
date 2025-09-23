@@ -65,7 +65,7 @@ function ProblematicComponent() {
 
 如果问题消失，则很可能与违反 React 规则有关。
 
-你还可以尝试从问题组件中移除手动的 memoization（useMemo、useCallback、memo），以验证在没有任何 memoization 的情况下应用程序是否能正常工作。如果在所有 memoization 都被移除后问题仍然存在，则说明存在需要修复的 React 规则违反情况。
+你还可以尝试从问题组件中移除手动的 memoization（useMemo、useCallback 和 memo），以验证在没有任何 memoization 的情况下应用程序是否能正常工作。如果在所有 memoization 都被移除后问题仍然存在，则说明存在需要修复的 React 规则违反情况。
 
 ### 2. 逐步修复问题 {/*fix-issues-step-by-step*/}
 
