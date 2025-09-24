@@ -365,7 +365,7 @@ function arePropsEqual(oldProps, newProps) {
 
 ### 使用 React Compiler 时我还需要 React.memo 吗？ {/*react-compiler-memo*/}
 
-当你启用 [React Compiler](/learn/react-compiler)，通常不再需要 `React.memo` anymore。编译器会为你自动优化组件的重新渲染。
+当你启用 [React Compiler](/learn/react-compiler) 后，通常不再需要 `React.memo` 了。编译器会为你自动优化组件的重新渲染。
 
 其工作方式如下：
 
