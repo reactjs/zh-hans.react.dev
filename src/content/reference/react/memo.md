@@ -426,6 +426,7 @@ function Parent() {
   // ... 返回语句 ...
 }
 ```
+
 注意这些高亮行: 编译器会包裹 `<ExpensiveChild name="John" />` 在缓存里检查。由于 `name` prop 始终是 `"John"`, 这段 JSX 只创建一次，并在每次父组件重新渲染时重用。这正是 `React.memo` 的作用 - 当子组件的 props 没有变化时，防止其重新渲染。
 
 React Compiler 会自动：
