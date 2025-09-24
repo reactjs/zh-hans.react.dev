@@ -4,7 +4,7 @@ title: panicThreshold
 
 <Intro>
 
-  `panicThreshold` 选项用于控制 React 编译器在编译过程中如何处理错误。
+`panicThreshold` 选项用于控制 React 编译器在编译过程中如何处理错误。
 
 </Intro>
 
