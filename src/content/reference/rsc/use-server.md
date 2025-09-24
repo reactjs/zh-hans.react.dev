@@ -102,7 +102,7 @@ async function addToCart(data) {
 
 ### 表格中的服务器函数 {/*server-actions-in-forms*/}
 
-服务器函数的最常见用法将是调用会更改数据的函数。在浏览器中，[HTML form 元素](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) 是用户提交变更的传统方法。通过 React 服务器组件，React 在 [表单](/reference/react-dom/components/form) 中首次引入了对服务器函数的一流支持。
+服务器函数的最常见用法将是调用会更改数据的函数。在浏览器中，[HTML form 元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form) 是用户提交变更的传统方法。通过 React 服务器组件，React 在 [表单](/reference/react-dom/components/form) 中首次引入了对服务器函数的一流支持。
 
 以下是一个允许用户请求用户名的表单。
 
@@ -127,7 +127,7 @@ export default function App() {
 
 在这个示例中，`requestUsername` 是一个传递给 `<form>` 的服务器函数。当用户提交此表单时，会发起一个网络请求到服务器函数 `requestUsername`。在调用表单中的服务器函数时，React 将 `FormData` 作为第一个参数提供给服务器函数。
 
-通过将服务器函数传递给表单的 `action`，React 可以 [逐步增强](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement) 表单。这意味着表单可以在 JavaScript 捆绑加载之前提交。
+通过将服务器函数传递给表单的 `action`，React 可以 [逐步增强](https://developer.mozilla.org/zh-CN/docs/Glossary/Progressive_Enhancement) 表单。这意味着表单可以在 JavaScript 捆绑加载之前提交。
 
 #### 处理表单中的返回值 {/*handling-return-values*/}
 
