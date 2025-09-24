@@ -435,6 +435,7 @@ React Compiler 会自动：
 3. 完全跳过 `ExpensiveChild` 的重新渲染
 
 这意味着 **在使用 React Compiler 时，你可以放心移除 `React.memo`**. 编译器会自动提供相同的优化，让代码更简洁更易维护。
+
 <Note>
 
 编译器的优化实际上比 `React.memo` 更全面。 它也会记忆化组件内部的中间值和昂贵计算，类似在整个组件树中结合使用 `React.memo` 和 `useMemo`。
