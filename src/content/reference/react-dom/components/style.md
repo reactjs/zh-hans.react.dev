@@ -4,7 +4,7 @@ style: "<style>"
 
 <Intro>
 
-[浏览器内置的 `<style>` ](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) 允许向文档添加内联 CSS 样式表。
+[浏览器内置的 `<style>` ](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/style) 允许向文档添加内联 CSS 样式表。
 
 ```js
 <style>{` p { color: red; } `}</style>
@@ -20,7 +20,7 @@ style: "<style>"
 
 ### `<style>` {/*style*/}
 
-渲染 [内置的浏览器 `<style>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) 以向文档添加内联样式。可以在任何组件中渲染 `<style>`，React 将在某些情况下将相应的 DOM 元素放置在文档头部，并对相同的样式进行去重。
+渲染 [内置的浏览器 `<style>` 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/style) 以向文档添加内联样式。可以在任何组件中渲染 `<style>`，React 将在某些情况下将相应的 DOM 元素放置在文档头部，并对相同的样式进行去重。
 
 ```js
 <style>{` p { color: red; } `}</style>
@@ -35,7 +35,7 @@ style: "<style>"
 * `children`：字符串，必需字段，表示样式表的内容。
 * `precedence`：字符串，告诉 React 在文档 `<head>` 中排列 `<style>` DOM 节点的位置，确定哪个样式表可以覆盖另一个。React 会推断其首先发现的 `precedence` 值为“较低”，而后来发现的 `precedence` 值为“较高”。许多样式系统使用单个 `precedence` 值能够很好地工作，因为样式规则是原子的。无论是 `<link>` 还是内联 `<style>` 标签，或者使用 [`preinit`](/reference/react-dom/preinit) 函数加载的样式表，具有相同优先级的将一起处理。
 * `href`：字符串，允许 React [对 `href` 相同的样式进行去重](#special-rendering-behavior)。
-* `media`：字符串，将样式表限制为特定的 [媒体查询](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries)。
+* `media`：字符串，将样式表限制为特定的 [媒体查询](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_media_queries/Using_media_queries)。
 * `nonce`：字符串，表示使用严格内容安全策略时允许资源的 [加密随机数](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/nonce)。
 * `title`：字符串，用于指定 [替代样式表](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Alternative_style_sheets) 的名称。
 
