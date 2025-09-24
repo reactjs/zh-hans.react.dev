@@ -53,7 +53,6 @@ title: logger
 - **`PipelineError`**： 意外的编译管线错误
 - **`Timing`**：性能计时信息
 
-
 #### 注意事项 {/*caveats*/}
 
 - 事件结构可能在不同版本之间发生变化
