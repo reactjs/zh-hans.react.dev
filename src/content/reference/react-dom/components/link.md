@@ -187,7 +187,7 @@ function ThirdComponent() {
 
 </SandpackWithHTMLOutput>
 
-Note the `precedence` values themselves are arbitrary and their naming is up to you. React will infer that precedence values it discovers first are "lower" and precedence values it discovers later are "higher".
+注意，`precedence` 值本身是任意的，其命名由你决定。React 会将最先遇到的 precedence 值推断为“较低”优先级，而将后续遇到的 precedence 值推断为“较高”优先级。
 
 ### 去除样式表的重复渲染 {/*deduplicated-stylesheet-rendering*/}
 
