@@ -52,11 +52,7 @@ export default function ProductPage({ productId, referrer, theme }) {
 
 在初次渲染时，`useCallback` 返回你已经传入的 `fn` 函数
 
-<<<<<<< HEAD
 在之后的渲染中, 如果依赖没有改变，`useCallback` 返回上一次渲染中缓存的 `fn` 函数；否则返回这一次渲染传入的 `fn`。
-=======
-During subsequent renders, it will either return an already stored `fn` function from the last render (if the dependencies haven't changed), or return the `fn` function you have passed during this render.
->>>>>>> 790625fd221a079b06325df027d69f684b161b75
 
 #### 注意 {/*caveats*/}
 
@@ -228,11 +224,7 @@ function useCallback(fn, dependencies) {
 
 如果你的应用程序与本网站类似，并且大多数交互都很粗糙（例如替换页面或整个部分），则通常不需要缓存。另一方面，如果你的应用更像是一个绘图编辑器，并且大多数交互都是精细的（如移动形状），那么你可能会发现缓存非常有用。
 
-<<<<<<< HEAD
 使用 `useCallback` 缓存函数仅在少数情况下有意义：
-=======
-Caching a function with `useCallback` is only valuable in a few cases:
->>>>>>> 790625fd221a079b06325df027d69f684b161b75
 
 - 将其作为 props 传递给包装在 [`memo`] 中的组件。如果 props 未更改，则希望跳过重新渲染。缓存允许组件仅在依赖项更改时重新渲染。
 - 传递的函数可能作为某些 Hook 的依赖。比如，另一个包裹在 `useCallback` 中的函数依赖于它，或者依赖于 [`useEffect`](/reference/react/useEffect) 中的函数。
