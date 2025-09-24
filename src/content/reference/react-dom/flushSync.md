@@ -134,26 +134,26 @@ export default function PrintApp() {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 故障排除 {/*troubleshooting*/}
 
-### I'm getting an error: "flushSync was called from inside a lifecycle method" {/*im-getting-an-error-flushsync-was-called-from-inside-a-lifecycle-method*/}
+### 我收到了一个错误："flushSync was called from inside a lifecycle method" {/*im-getting-an-error-flushsync-was-called-from-inside-a-lifecycle-method*/}
 
 
-React cannot `flushSync` in the middle of a render. If you do, it will noop and warn:
+React 不能在渲染中调用 `flushSync`。如果你这样做，它将不执行任何操作并发出警告：
 
 <ConsoleBlock level="error">
 
-Warning: flushSync was called from inside a lifecycle method. React cannot flush when React is already rendering. Consider moving this call to a scheduler task or micro task.
+警告: flushSync 在生命周期方法中被调用。当 React 已经在渲染时，React 无法刷新。考虑将此调用移至调度器任务或微任务中。
 
 </ConsoleBlock>
 
-This includes calling `flushSync` inside:
+这包括在以下场景中调用 `flushSync`：
 
-- rendering a component.
-- `useLayoutEffect` or `useEffect` hooks.
-- Class component lifecycle methods.
+- 渲染组件时。
+- `useLayoutEffect` 或 `useEffect` hooks 中。
+- 类组件的生命周期方法中。
 
-For example, calling `flushSync` in an Effect will noop and warn:
+例如，在 Effect 中调用 `flushSync` 将不执行任何操作并发出警告：
 
 ```js
 import { useEffect } from 'react';
@@ -161,7 +161,7 @@ import { flushSync } from 'react-dom';
 
 function MyComponent() {
   useEffect(() => {
-    // 🚩 Wrong: calling flushSync inside an effect
+    // 🚩 错误：在 Effect 内部调用 flushSync
     flushSync(() => {
       setSomething(newValue);
     });
@@ -171,11 +171,11 @@ function MyComponent() {
 }
 ```
 
-To fix this, you usually want to move the `flushSync` call to an event:
+要修复此问题，通常需要将 `flushSync` 调用移至一个事件处理函数：
 
 ```js
 function handleClick() {
-  // ✅ Correct: flushSync in event handlers is safe
+  // ✅ 正确: 在事件处理函数中使用 flushSync 是安全的
   flushSync(() => {
     setSomething(newValue);
   });
@@ -183,11 +183,11 @@ function handleClick() {
 ```
 
 
-If it's difficult to move to an event, you can defer `flushSync` in a microtask:
+如果很难将其移至事件处理函数中，你可以通过微任务来延迟 `flushSync`：
 
 ```js {3,7}
 useEffect(() => {
-  // ✅ Correct: defer flushSync to a microtask
+  // ✅ 正确: 将 flushSync 延迟到微任务中
   queueMicrotask(() => {
     flushSync(() => {
       setSomething(newValue);
@@ -196,10 +196,10 @@ useEffect(() => {
 }, []);
 ```
 
-This will allow the current render to finish and schedule another syncronous render to flush the updates.
+这将允许当前渲染完成，并调度另一次同步渲染来刷新更新。
 
 <Pitfall>
 
-`flushSync` can significantly hurt performance, but this particular pattern is even worse for performance. Exhaust all other options before calling `flushSync` in a microtask as an escape hatch.
+`flushSync` 会严重影响性能，而在微任务中调用 `flushSync` 这种特殊模式对性能的损害则更为严重。因此，仅当所有其他方案都无效时，才应考虑在微任务中调用 `flushSync` 作为最后的应急手段。
 
 </Pitfall>
