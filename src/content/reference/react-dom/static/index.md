@@ -12,9 +12,9 @@ title: Static React DOM APIs
 
 ## Web 流的静态 API {/*static-apis-for-web-streams*/}
 
-这些方法仅在支持 [Web 流](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的环境中可用，包括浏览器、Deno 和一些现代的边缘运行时环境：
+这些方法仅在支持 [Web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API) 的环境中可用，包括浏览器、Deno 和一些现代的边缘运行时环境：
 
-* [`prerender`](/reference/react-dom/static/prerender) 使用 [可读的 Web 流](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) 将 React 树渲染为静态 HTML。
+* [`prerender`](/reference/react-dom/static/prerender) 使用 [可读的 Web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream) 将 React 树渲染为静态 HTML。
 
 
 ---
