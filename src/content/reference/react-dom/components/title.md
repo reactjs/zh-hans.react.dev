@@ -4,7 +4,7 @@ title: "<title>"
 
 <Intro>
 
-[浏览器内置的 `<title>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title) 允许向文档指定标题。
+[浏览器内置的 `<title>` 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/title) 允许向文档指定标题。
 
 ```js
 <title>我的博客</title>
@@ -20,7 +20,7 @@ title: "<title>"
 
 ### `<title>` {/*title*/}
 
-渲染 [浏览器内置的 `<title>` 组件](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title) 以指定文档标题。可以在任何组件中渲染 `<title>`，React 会始终将相应的 DOM 元素放置在文档头部。
+渲染 [浏览器内置的 `<title>` 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/title) 以指定文档标题。可以在任何组件中渲染 `<title>`，React 会始终将相应的 DOM 元素放置在文档头部。
 
 ```js
 <title>我的博客</title>
