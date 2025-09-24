@@ -1,33 +1,33 @@
 ---
-title: React Compiler
+title: React 编译器
 ---
 
-## Introduction {/*introduction*/}
+## 介绍  {/*introduction*/}
 
-Learn [what React Compiler does](/learn/react-compiler/introduction) and how it automatically optimizes your React application by handling memoization for you, eliminating the need for manual `useMemo`, `useCallback`, and `React.memo`.
+学习 [React 编译器的作用](/learn/react-compiler/introduction) 以及它如何通过自动处理记忆化（memoization）来优化你的 React 应用，从而无需再手动使用 `useMemo`，`useCallback`，和 `React.memo`。
 
-## Installation {/*installation*/}
+## 安装 {/*installation*/}
 
-Get started with [installing React Compiler](/learn/react-compiler/installation) and learn how to configure it with your build tools.
+开始使用与 [安装 React 编译器](/learn/react-compiler/installation) 并学习如何配置你的构建工具以集成它。
 
 
-## Incremental Adoption {/*incremental-adoption*/}
+## 渐进式采用 {/*incremental-adoption*/}
 
-Learn [strategies for gradually adopting React Compiler](/learn/react-compiler/incremental-adoption) in your existing codebase if you're not ready to enable it everywhere yet.
+如果你尚未准备好在整个项目中启用，学习 [渐进式采用 React 编译器的策略](/learn/react-compiler/incremental-adoption)，在现有代码库中逐步引入它。
 
-## Debugging and Troubleshooting {/*debugging-and-troubleshooting*/}
+## 调试与故障排除 {/*debugging-and-troubleshooting*/}
 
-When things don't work as expected, use our [debugging guide](/learn/react-compiler/debugging) to understand the difference between compiler errors and runtime issues, identify common breaking patterns, and follow a systematic debugging workflow.
+当程序未按预期工作时，使用我们的 [调试指南](/learn/react-compiler/debugging) 以理解编译器错误和运行时问题的区别，识别常见的破坏性模式，并遵循系统化的调试流程。
 
-## Configuration and Reference {/*configuration-and-reference*/}
+## 配置与参考 {/*configuration-and-reference*/}
 
-For detailed configuration options and API reference:
+有关详细的配置选项和 API 参考：
 
-- [Configuration Options](/reference/react-compiler/configuration) - All compiler configuration options including React version compatibility
-- [Directives](/reference/react-compiler/directives) - Function-level compilation control
-- [Compiling Libraries](/reference/react-compiler/compiling-libraries) - Shipping pre-compiled libraries
+- [配置选项](/reference/react-compiler/configuration) - 包含所有编译器配置选项，包括 React 版本兼容性
+- [指令](/reference/react-compiler/directives) - 用于函数级别的编译控制
+- [编译库](/reference/react-compiler/compiling-libraries) - 提供预编译的库
 
-## Additional resources {/*additional-resources*/}
+## 额外的资源 {/*additional-resources*/}
 
-In addition to these docs, we recommend checking the [React Compiler Working Group](https://github.com/reactwg/react-compiler) for additional information and discussion about the compiler.
+除了本文档之外，我们建议你关注 [React 编译器工作组](https://github.com/reactwg/react-compiler)，以获取有关编译器的更多信息和讨论。
 
