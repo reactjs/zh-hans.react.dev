@@ -4,7 +4,7 @@ title: logger
 
 <Intro>
 
-The `logger` option provides custom logging for React Compiler events during compilation.
+`logger` 选项在编译期间为 React 编译器事件提供自定义日志记录。
 
 </Intro>
 
@@ -22,13 +22,13 @@ The `logger` option provides custom logging for React Compiler events during com
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `logger` {/*logger*/}
 
-Configures custom logging to track compiler behavior and debug issues.
+配置自定义日志以跟踪编译器行为并调试问题。
 
-#### Type {/*type*/}
+#### 类型 {/*type*/}
 
 ```
 {
@@ -36,35 +36,35 @@ Configures custom logging to track compiler behavior and debug issues.
 } | null
 ```
 
-#### Default value {/*default-value*/}
+#### 默认值 {/*default-value*/}
 
 `null`
 
-#### Methods {/*methods*/}
+#### 方法 {/*methods*/}
 
-- **`logEvent`**: Called for each compiler event with the filename and event details
+- **`logEvent`**：传入文件名和事件详情来记录每次编译器事件
 
-#### Event types {/*event-types*/}
+#### 事件类型 {/*event-types*/}
 
-- **`CompileSuccess`**: Function successfully compiled
-- **`CompileError`**: Function skipped due to errors
-- **`CompileDiagnostic`**: Non-fatal diagnostic information
-- **`CompileSkip`**: Function skipped for other reasons
-- **`PipelineError`**: Unexpected compilation error
-- **`Timing`**: Performance timing information
+- **`CompileSuccess`**：函数成功编译
+- **`CompileError`**： 由于错误而跳过该函数
+- **`CompileDiagnostic`**：非致命的诊断信息
+- **`CompileSkip`**： 因其他原因跳过该函数
+- **`PipelineError`**： 意外的编译管线错误
+- **`Timing`**：性能计时信息
 
-#### Caveats {/*caveats*/}
+#### 注意事项 {/*caveats*/}
 
-- Event structure may change between versions
-- Large codebases generate many log entries
+- 事件结构可能在不同版本之间发生变化
+- 大型代码库会生成大量日志条目
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Basic logging {/*basic-logging*/}
+### 基础日志 {/*basic-logging*/}
 
-Track compilation success and failures:
+跟踪编译成功和失败：
 
 ```js
 {
@@ -86,9 +86,9 @@ Track compilation success and failures:
 }
 ```
 
-### Detailed error logging {/*detailed-error-logging*/}
+### 详细错误日志 {/*detailed-error-logging*/}
 
-Get specific information about compilation failures:
+获取编译失败的具体信息：
 
 ```js
 {
@@ -115,4 +115,3 @@ Get specific information about compilation failures:
   }
 }
 ```
-
