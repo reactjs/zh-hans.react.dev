@@ -4,13 +4,13 @@ title: panicThreshold
 
 <Intro>
 
-The `panicThreshold` option controls how the React Compiler handles errors during compilation.
+`panicThreshold` 选项用于控制 React 编译器在编译过程中如何处理错误。
 
 </Intro>
 
 ```js
 {
-  panicThreshold: 'none' // Recommended
+  panicThreshold: 'none' // 推荐
 }
 ```
 
@@ -18,42 +18,42 @@ The `panicThreshold` option controls how the React Compiler handles errors durin
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `panicThreshold` {/*panicthreshold*/}
 
-Determines whether compilation errors should fail the build or skip optimization.
+决定编译错误是导致构建失败，还是仅跳过优化。
 
-#### Type {/*type*/}
+#### 类型 {/*type*/}
 
 ```
 'none' | 'critical_errors' | 'all_errors'
 ```
 
-#### Default value {/*default-value*/}
+#### 默认值 {/*default-value*/}
 
 `'none'`
 
-#### Options {/*options*/}
+#### 选项 {/*options*/}
 
-- **`'none'`** (default, recommended): Skip components that can't be compiled and continue building
-- **`'critical_errors'`**: Fail the build only on critical compiler errors
-- **`'all_errors'`**: Fail the build on any compiler diagnostic
+- **`'none'`** (默认, 推荐): 跳过无法编译的组件并继续构建
+- **`'critical_errors'`**: 仅在关键编译器错误时使构建失败
+- **`'all_errors'`**: 遇到任何编译诊断即使构建失败
+  
+#### 注意事项 {/*caveats*/}
 
-#### Caveats {/*caveats*/}
-
-- Production builds should always use `'none'`
-- Build failures prevent your application from building
-- The compiler automatically detects and skips problematic code with `'none'`
-- Higher thresholds are only useful during development for debugging
+- 生产环境构建应始终使用 `'none'`
+- 构建失败会阻止你的应用构建
+- 使用 `'none'` 时，编译器会自动检测并跳过有问题的代码
+- 更高的阈值仅在开发调试时有用
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Production configuration (recommended) {/*production-configuration*/}
+### 生产环境配置（推荐） {/*production-configuration*/}
 
-For production builds, always use `'none'`. This is the default value:
+对于生产构建，始终使用 `'none'`。这是默认值：
 
 ```js
 {
@@ -61,15 +61,15 @@ For production builds, always use `'none'`. This is the default value:
 }
 ```
 
-This ensures:
-- Your build never fails due to compiler issues
-- Components that can't be optimized run normally
-- Maximum components get optimized
-- Stable production deployments
+这样可以确保：
+- 构建不会因编译器问题而失败
+- 无法优化的组件仍可正常运行
+- 尽可能多的组件会被优化
+- 生产部署更加稳定
 
-### Development debugging {/*development-debugging*/}
+### 开发调试 {/*development-debugging*/}
 
-Temporarily use stricter thresholds to find issues:
+可临时使用更严格的阈值来定位问题：
 
 ```js
 const isDevelopment = process.env.NODE_ENV === 'development';
