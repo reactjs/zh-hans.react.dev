@@ -4,7 +4,7 @@ title: prerender
 
 <Intro>
 
-`prerender` 使用 [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 将 React 树渲染为静态 HTML 字符串。
+`prerender` 使用 [Web 流](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 将 React 树渲染为静态 HTML 字符串。
 
 ```js
 const {prelude} = await prerender(reactNode, options?)
@@ -16,7 +16,7 @@ const {prelude} = await prerender(reactNode, options?)
 
 <Note>
 
-此 API 依赖于 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)。对于 Node.js，请使用 [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream)。
+此 API 依赖于 [Web 流](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)。对于 Node.js，请使用 [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream)。
 
 </Note>
 
@@ -66,9 +66,9 @@ async function handler(request) {
   - `prelude`：一个 [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的 HTML。你可以使用此流以块的形式发送响应，或者将整个流读取为字符串。
 - 如果渲染失败，Promise 将被拒绝。[使用此方法输出一个回退 shell。](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
 
-#### Caveats {/*caveats*/}
+#### 注意事项 {/*caveats*/}
 
-`nonce` is not an available option when prerendering. Nonces must be unique per request and if you use nonces to secure your application with [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) it would be inappropriate and insecure to include the nonce value in the prerender itself.
+在预渲染时，`nonce` 不是一个可用的选项。Nonce 必须在每个请求中都是唯一的，如果你使用 nonce 和 [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP) 来保护你的应用，那么将 nonce 值包含在预渲染产物中本身是不恰当且不安全的。
 
 
 <Note>
@@ -302,8 +302,8 @@ async function renderToString() {
   }, 10000);
 
   try {
-    // the prelude will contain all the HTML that was prerendered
-    // before the controller aborted.
+    // prelude 将包含在控制器中止前
+    // 已被预渲染的所有 HTML。
     const {prelude} = await prerender(<App />, {
       signal: controller.signal,
     });
