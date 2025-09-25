@@ -135,7 +135,7 @@ export default defineConfig({
     babel({
       filter: /\.[jt]sx?$/,
       babelConfig: {
-        presets: ["@babel/preset-typescript"], // if you use TypeScript
+        presets: ["@babel/preset-typescript"], // 如果你使用 TypeScript 
         plugins: [
           ["babel-plugin-react-compiler", ReactCompilerConfig],
         ],
