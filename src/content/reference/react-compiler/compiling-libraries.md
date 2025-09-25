@@ -3,7 +3,7 @@ title: 编译库
 ---
 
 <Intro>
-本指南旨在帮助库作者理解如何使用 React Compiler 来为用户提供经过优化的库代码。  
+本指南旨在帮助库作者理解如何使用 React 编译器来为用户提供经过优化的库代码。  
 </Intro>
 
 <InlineToc />
