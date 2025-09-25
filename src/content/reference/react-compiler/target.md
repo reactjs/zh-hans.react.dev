@@ -10,7 +10,7 @@ title: target
 
 ```js
 {
-  target: '19' // or '18', '17'
+  target: '19' // 或 '18', '17'
 }
 ```
 
@@ -57,7 +57,7 @@ title: target
 
 ```js
 {
-  // defaults to target: '19'
+  // 默认目标为: '19'
 }
 ```
 
@@ -95,7 +95,7 @@ npm install react-compiler-runtime@rc
 编译器会在这两个版本上使用 polyfill 运行环境：
 
 ```js
-// Compiled output uses the polyfill
+// 编译后的输出使用 polyfill
 import { c as _c } from 'react-compiler-runtime';
 ```
 
@@ -129,7 +129,7 @@ import { c as _c } from 'react-compiler-runtime';
 请确保运行环境包：
 
 1. 安装在你的项目中（而非全局）
-2. 被列在 `package.json` 的 dependencies 中
+2. 被列在 `package.json` 的依赖中
 3. 使用正确版本（`@rc` 标签）
 4. 不在 `devDependencies` 中（运行环境需要）
 

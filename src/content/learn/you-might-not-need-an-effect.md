@@ -97,7 +97,7 @@ function TodoList({ todos, filter }) {
 
 <Note>
 
-[React Compiler](/learn/react-compiler) 可以自动记忆化昂贵计算，从而减少很多手动调用 `useMemo` 的场景。
+[React 编译器](/learn/react-compiler) 可以自动记忆化昂贵计算，从而减少很多手动调用 `useMemo` 的场景。
 
 </Note>
 
