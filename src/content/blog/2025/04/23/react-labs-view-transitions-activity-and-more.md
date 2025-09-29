@@ -14303,7 +14303,11 @@ useEffect(() => {
 }); // 编译器插入的依赖项。
 ```
 
+<<<<<<< HEAD
 使用这段代码，React 编译器可以为你推断依赖项并自动插入它们，这样你就不需要看到或编写它们。通过像[IDE 扩展](#compiler-ide-extension)和[`useEffectEvent`](/reference/react/experimental_useEffectEvent)这样的功能，我们可以提供一个 CodeLens 来显示编译器在你需要调试时插入的内容，或通过移除依赖项来优化。这有助于强化编写 Effects 的正确心智模型，即 Effects 可以在任何时候运行，以将你的组件或 hook 的状态与其他内容同步。
+=======
+With this code, the React Compiler can infer the dependencies for you and insert them automatically so you don't need to see or write them. With features like [the IDE extension](#compiler-ide-extension) and [`useEffectEvent`](/reference/react/useEffectEvent), we can provide a CodeLens to show you what the Compiler inserted for times you need to debug, or to optimize by removing a dependency. This helps reinforce the correct mental model for writing Effects, which can run at any time to synchronize your component or hook's state with something else.
+>>>>>>> 49c2d26722fb1b5865ce0221a4cadc71b615e4cf
 
 我们希望自动插入依赖项不仅更容易编写，而且通过迫使你从 Effect 的作用角度思考，而不是从组件生命周期角度思考，使它们更容易理解。
 
