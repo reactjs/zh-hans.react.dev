@@ -20,7 +20,7 @@ module.exports = {
   plugins: [
     [
       'babel-plugin-react-compiler', {
-        // compiler options
+        // 编译选项 
       }
     ]
   ]
@@ -97,7 +97,7 @@ React 版本配置可确保编译器生成的代码与你的 React 版本兼容�
 
 条件式编译使你控制何时使用优化后的代码。
 
-[`gating`](/reference/react-compiler/gating) 启用运行环境 feature flags，用于 A/B 测试或渐进式发布。
+[`gating`](/reference/react-compiler/gating) 启用运行时的特性开关，用于 A/B 测试或渐进式发布。
 
 ```js
 {
@@ -135,7 +135,7 @@ npm install react-compiler-runtime@rc
 
 ```js
 {
-  target: '18' // or '17'
+  target: '18' // 或 '17'
 }
 ```
 
