@@ -6,9 +6,9 @@ version: canary
 
 <Canary>
 
-**The `useEffectEvent` API is currently only available in React’s Canary and Experimental channels.** 
+**`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。
 
-[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
+[了解更多关于 React 版本发布的内容](/community/versioning-policy#all-release-channels)。
 
 </Canary>
 

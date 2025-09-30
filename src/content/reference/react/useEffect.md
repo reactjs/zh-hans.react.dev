@@ -1693,13 +1693,9 @@ button { margin-left: 10px; }
 
 <Canary>
 
-<<<<<<< HEAD
-本节描述了一个 **实验性的 API**，它还没有在一个稳定的 React 版本中发布。
-=======
-**The `useEffectEvent` API is currently only available in React’s Canary and Experimental channels.** 
->>>>>>> 49c2d26722fb1b5865ce0221a4cadc71b615e4cf
+**`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。
 
-[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
+[了解更多关于 React 版本发布的内容](/community/versioning-policy#all-release-channels)。
 
 </Canary>
 
@@ -1716,11 +1712,7 @@ function Page({ url, shoppingCart }) {
 }
 ```
 
-<<<<<<< HEAD
-**如果你想在每次 `url` 更改后记录一次新的页面访问，而不是在 `shoppingCart` 更改后记录，该怎么办**？你不能在不违反 [响应规则](#specifying-reactive-dependencies) 的情况下将 `shoppingCart` 从依赖项中移除。然而，你可以表达你 **不希望** 某些代码对更改做出“响应”，即使它是在 Effect 内部调用的。使用 [`useEffectEvent`](/reference/react/experimental_useEffectEvent) Hook [声明 **Effect 事件**](/learn/separating-events-from-effects#declaring-an-effect-event)，并将读取 `shoppingCart` 的代码移入其中：
-=======
-<CanaryBadge /> **What if you want to log a new page visit after every `url` change, but *not* if only the `shoppingCart` changes?** You can't exclude `shoppingCart` from dependencies without breaking the [reactivity rules.](#specifying-reactive-dependencies) However, you can express that you *don't want* a piece of code to "react" to changes even though it is called from inside an Effect. [Declare an *Effect Event*](/learn/separating-events-from-effects#declaring-an-effect-event) with the [`useEffectEvent`](/reference/react/useEffectEvent) Hook, and move the code reading `shoppingCart` inside of it:
->>>>>>> 49c2d26722fb1b5865ce0221a4cadc71b615e4cf
+**如果你想在每次 `url` 更改后记录一次新的页面访问，而不是在 `shoppingCart` 更改后记录，该怎么办**？你不能在不违反 [响应规则](#specifying-reactive-dependencies) 的情况下将 `shoppingCart` 从依赖项中移除。然而，你可以表达你 **不希望** 某些代码对更改做出“响应”，即使它是在 Effect 内部调用的。使用 [`useEffectEvent`](/reference/react/useEffectEvent) Hook [声明 **Effect 事件**](/learn/separating-events-from-effects#declaring-an-effect-event)，并将读取 `shoppingCart` 的代码移入其中：
 
 ```js {2-4,7,8}
 function Page({ url, shoppingCart }) {

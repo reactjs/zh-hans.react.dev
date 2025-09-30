@@ -612,13 +612,9 @@ function ChatRoom({ roomId }) {
 
 <Canary>
 
-<<<<<<< HEAD
-本节描述了一个在稳定版本的 React 中 **尚未发布的实验性** API。
-=======
-**The `useEffectEvent` API is currently only available in React’s Canary and Experimental channels.** 
->>>>>>> 49c2d26722fb1b5865ce0221a4cadc71b615e4cf
+**`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。 
 
-[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
+[了解更多关于 React 版本发布的内容](/community/versioning-policy#all-release-channels)。
 
 </Canary>
 
