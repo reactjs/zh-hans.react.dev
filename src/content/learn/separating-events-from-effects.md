@@ -400,6 +400,7 @@ label { display: block; margin-top: 10px; }
 
 ### 声明一个 Effect Event {/*declaring-an-effect-event*/}
 
+<<<<<<< HEAD
 <Canary>
 
 **`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。 
@@ -409,6 +410,9 @@ label { display: block; margin-top: 10px; }
 </Canary>
 
 使用 [`useEffectEvent`](/reference/react/useEffectEvent) 这个特殊的 Hook 从 Effect 中提取非响应式逻辑：
+=======
+Use a special Hook called [`useEffectEvent`](/reference/react/useEffectEvent) to extract this non-reactive logic out of your Effect:
+>>>>>>> 0a803f61d84723e87f2481f31ea77da9606664c9
 
 ```js {1,4-6}
 import { useEffect, useEffectEvent } from 'react';
@@ -580,6 +584,7 @@ label { display: block; margin-top: 10px; }
 
 ### 使用 Effect Event 读取最新的 props 和 state {/*reading-latest-props-and-state-with-effect-events*/}
 
+<<<<<<< HEAD
 <Canary>
 
 **`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。 
@@ -589,6 +594,9 @@ label { display: block; margin-top: 10px; }
 </Canary>
 
 Effect Event 可以修复之前许多你可能试图抑制依赖项检查工具的地方。
+=======
+Effect Events let you fix many patterns where you might be tempted to suppress the dependency linter.
+>>>>>>> 0a803f61d84723e87f2481f31ea77da9606664c9
 
 例如，假设你有一个记录页面访问的 Effect：
 
@@ -729,7 +737,11 @@ function Page({ url }) {
 }
 ```
 
+<<<<<<< HEAD
 等 `useEffectEvent` 成为 React 稳定部分后，我们会推荐 **永远不要抑制代码检查工具**。
+=======
+We recommend **never suppressing the linter**.
+>>>>>>> 0a803f61d84723e87f2481f31ea77da9606664c9
 
 抑制规则的第一个缺点是当 Effect 需要对一个已经在代码中出现过的新响应式依赖项做出“响应”时，React 不会再发出警告。在稍早之前的示例中，你将 `url` 添加为依赖项，**是因为** React 提醒你去做这件事。如果禁用代码检查，你未来将不会再收到任何关于 Effect 修改的提醒。这引起了 bug。
 
@@ -882,6 +894,7 @@ body {
 
 ### Effect Event 的局限性 {/*limitations-of-effect-events*/}
 
+<<<<<<< HEAD
 <Canary>
 
 **`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。 
@@ -891,6 +904,9 @@ body {
 </Canary>
 
 Effect Event 的局限性在于你如何使用他们：
+=======
+Effect Events are very limited in how you can use them:
+>>>>>>> 0a803f61d84723e87f2481f31ea77da9606664c9
 
 * **只在 Effect 内部调用他们**。
 * **永远不要把他们传给其他的组件或者 Hook**。
