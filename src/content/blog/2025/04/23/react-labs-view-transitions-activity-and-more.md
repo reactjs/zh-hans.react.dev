@@ -18,11 +18,17 @@ description: 在 React Labs 系列文章中，我们会介绍正在积极研究�
 
 <Note>
 
+<<<<<<< HEAD
 React Conf 2025 将于 10 月 7-8 日在内华达州亨德森举行！
 
 我们正在寻找演讲者，帮助我们创建关于本文所涵盖功能的演讲。如果你有兴趣在 ReactConf 上发言，[请在此申请](https://forms.reform.app/react-conf/call-for-speakers/)（无需提交演讲提案）。
 
 有关门票、免费直播、赞助等更多信息，请查看 [React Conf 网站](https://conf.react.dev)。
+=======
+React Conf 2025 is scheduled for October 7–8 in Henderson, Nevada!
+
+Watch the livestream on [the React Conf website](https://conf.react.dev).
+>>>>>>> 996ef72c1a9f7ecc003588a897be85fc647393c3
 
 </Note>
 
@@ -11544,7 +11550,7 @@ function App() {
 <Sandpack>
 
 ```js src/App.js
-import { unstable_ViewTransition as ViewTransition, unstable_Activity as Activity } from "react"; import Details from "./Details"; import Home from "./Home"; import { useRouter } from "./router";
+import { unstable_ViewTransition as ViewTransition } from "react"; import Details from "./Details"; import Home from "./Home"; import { useRouter } from "./router";  import { unstable_Activity, Activity as ActivityStable} from 'react'; let Activity = ActivityStable ?? unstable_Activity;
 
 export default function App() {
   const { url } = useRouter();
@@ -12881,7 +12887,7 @@ With this update, if the content on the next page has time to pre-render, it wil
 <Sandpack>
 
 ```js src/App.js
-import { unstable_ViewTransition as ViewTransition, unstable_Activity as Activity, use } from "react"; import Details from "./Details"; import Home from "./Home"; import { useRouter } from "./router"; import {fetchVideos} from './data'
+import { unstable_ViewTransition as ViewTransition, use } from "react"; import Details from "./Details"; import Home from "./Home"; import { useRouter } from "./router"; import {fetchVideos} from './data';  import { unstable_Activity, Activity as ActivityStable} from 'react'; let Activity = ActivityStable ?? unstable_Activity;
 
 export default function App() {
   const { url } = useRouter();
