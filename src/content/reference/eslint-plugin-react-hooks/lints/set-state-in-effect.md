@@ -9,13 +9,11 @@ Validates against calling setState synchronously in an effect, which can lead to
 
 </Intro>
 
-<RC>
+<Note>
 
-This rule is available in the RC version of `eslint-plugin-react-hooks`.
+This rule is available in `eslint-plugin-react-hooks` v6.
 
-You can try it by upgrading the lint plugin [to the most recent RC version](/learn/react-compiler/installation#eslint-integration).
-
-</RC>
+</Note>
 
 ## Rule Details {/*rule-details*/}
 
@@ -80,7 +78,7 @@ function Component({selectedId, items}) {
 
 Examples of correct code for this rule:
 
-```js {expectedErrors: {'react-compiler': [8]}}
+```js
 // ✅ setState in an effect is fine if the value comes from a ref
 function Tooltip() {
   const ref = useRef(null);

@@ -28,7 +28,7 @@ React Compiler 会在构建时自动优化你的 React 应用。通常情况下�
 
 没有编译器的情况下，你需要手动对组件和值进行记忆化以优化重新渲染：
 
-```js {expectedErrors: {'react-compiler': [4]}}
+```js
 import { useMemo, useCallback, memo } from 'react';
 
 const ExpensiveComponent = memo(function ExpensiveComponent({ data, onClick }) {
