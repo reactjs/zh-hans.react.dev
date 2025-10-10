@@ -10,6 +10,7 @@ title: Server React DOM API
 
 ---
 
+<<<<<<< HEAD
 ## Node.js 流服务器 API {/*server-apis-for-nodejs-streams*/}
 
 以下方法仅在具有 [Node.js 流](https://nodejs.org/api/stream.html) 的环境中可用：
@@ -19,10 +20,33 @@ title: Server React DOM API
 ---
 
 ## Web 流服务器 API {/*server-apis-for-web-streams*/}
+=======
+## Server APIs for Web Streams {/*server-apis-for-web-streams*/}
+>>>>>>> be77c2a257c8137d030538eb3db4e8c8926f20a8
 
 以下方法仅在具有 [web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API) 的环境中可用，包括浏览器、Deno，以及一些现代 edge 运行时：
 
+<<<<<<< HEAD
 +   [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) 将 React 树渲染为 [可读的 web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream)。
+=======
+* [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) renders a React tree to a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
+* [`resume`](/reference/react-dom/server/renderToPipeableStream) resumes [`prerender`](/reference/react-dom/static/prerender) to a [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
+
+
+<Note>
+
+Node.js also includes these methods for compatibility, but they are not recommended due to worse performance. Use the [dedicated Node.js APIs](#server-apis-for-nodejs-streams) instead.
+
+</Note>
+---
+
+## Server APIs for Node.js Streams {/*server-apis-for-nodejs-streams*/}
+
+These methods are only available in the environments with [Node.js Streams:](https://nodejs.org/api/stream.html)
+
+* [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) renders a React tree to a pipeable [Node.js Stream.](https://nodejs.org/api/stream.html)
+* [`resumeToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) resumes [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream) to a pipeable [Node.js Stream.](https://nodejs.org/api/stream.html)
+>>>>>>> be77c2a257c8137d030538eb3db4e8c8926f20a8
 
 ---
 
