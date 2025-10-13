@@ -7,7 +7,7 @@ title: prerender
 `prerender` 使用 [Web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API) 将 React 树渲染为静态 HTML 字符串。
 
 ```js
-const {prelude} = await prerender(reactNode, options?)
+const {prelude, postponed} = await prerender(reactNode, options?)
 ```
 
 </Intro>
@@ -31,7 +31,7 @@ const {prelude} = await prerender(reactNode, options?)
 ```js
 import { prerender } from 'react-dom/static';
 
-async function handler(request) {
+async function handler(request, response) {
   const {prelude} = await prerender(<App />, {
     bootstrapScripts: ['/main.js']
   });
@@ -61,21 +61,30 @@ async function handler(request) {
 
 #### 返回值 {/*returns*/}
 
+<<<<<<< HEAD
 `prerender` 返回一个 Promise 对象：
 - 如果渲染成功，Promise 将解析为一个包含以下内容的对象：
   - `prelude`：一个 [Web Stream](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API) 的 HTML。你可以使用此流以块的形式发送响应，或者将整个流读取为字符串。
 - 如果渲染失败，Promise 将被拒绝。[使用此方法输出一个回退 shell。](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
+=======
+`prerender` returns a Promise:
+- If rendering the is successful, the Promise will resolve to an object containing:
+  - `prelude`: a [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) of HTML. You can use this stream to send a response in chunks, or you can read the entire stream into a string.
+  - `postponed`: a JSON-serializeable, opaque object that can be passed to [`resume`](/reference/react-dom/server/resume) if `prerender` did not finish. Otherwise `null` indicating that the `prelude` contains all the content and no resume is necessary.
+- If rendering fails, the Promise will be rejected. [Use this to output a fallback shell.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
+>>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 #### 注意事项 {/*caveats*/}
 
 在预渲染时，`nonce` 不是一个可用的选项。Nonce 必须在每个请求中都是唯一的，如果你使用 nonce 和 [CSP](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Guides/CSP) 来保护你的应用，那么将 nonce 值包含在预渲染产物中本身是不恰当且不安全的。
-
 
 <Note>
 
 ### 何时使用 `prerender` ？ {/*when-to-use-prerender*/}
 
 静态 `prerender` API 用于静态服务器端生成 (SSG)。与 `renderToString` 不同， `prerender` 会等待所有数据加载完成后再解析。这使其适合为整个页面生成静态 HTML，包括需要通过 Suspense 获取的数据。要在加载内容时进行流式传输，请使用流式服务器端渲染 (SSR) API，例如 [renderToReadableStream](/reference/react-dom/server/renderToReadableStream)。
+
+`prerender` can be aborted and later either continued with `resumeAndPrerender` or resumed with `resume` to support partial pre-rendering.
 
 </Note>
 
@@ -312,7 +321,7 @@ async function renderToString() {
 
 所有包含未完成子组件的 Suspense 边界都将以 fallback 状态包含在 prelude 中。
 
----
+This can be used for partial prerendering together with [`resume`](/reference/react-dom/server/resume) or [`resumeAndPrerender`](/reference/react-dom/static/resumeAndPrerender).
 
 ## 疑难解答 {/*troubleshooting*/}
 
