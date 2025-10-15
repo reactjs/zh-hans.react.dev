@@ -18,11 +18,17 @@ description: 在 React Labs 系列文章中，我们会介绍正在积极研究�
 
 <Note>
 
+<<<<<<< HEAD
 React Conf 2025 将于 10 月 7-8 日在内华达州亨德森举行！
 
 我们正在寻找演讲者，帮助我们创建关于本文所涵盖功能的演讲。如果你有兴趣在 ReactConf 上发言，[请在此申请](https://forms.reform.app/react-conf/call-for-speakers/)（无需提交演讲提案）。
 
 有关门票、免费直播、赞助等更多信息，请查看 [React Conf 网站](https://conf.react.dev)。
+=======
+React Conf 2025 is scheduled for October 7–8 in Henderson, Nevada!
+
+Watch the livestream on [the React Conf website](https://conf.react.dev).
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
 
 </Note>
 
@@ -68,7 +74,11 @@ React 视图过渡是一个新的实验性功能，它让你能更轻松地为�
 </ViewTransition>
 ```
 
+<<<<<<< HEAD
 这个新组件让你可以声明式地定义"要"在动画激活时进行动画处理的内容。
+=======
+This new component lets you declaratively define "what" to animate when an animation is activated.
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
 
 你可以通过使用以下三种触发器之一来定义"何时"进行动画：
 
@@ -101,9 +111,15 @@ const deferred = useDeferredValue(value);
 
 当 DOM 因动画触发器（如 `startTransition`、`useDeferredValue` 或 `Suspense` 后备方案切换到内容）而更新时，React 将使用[声明式启发法](/reference/react/ViewTransition#viewtransition)自动确定要为动画激活哪些 `<ViewTransition>` 组件。然后浏览器将运行在 CSS 中定义的动画。
 
+<<<<<<< HEAD
 如果你熟悉浏览器的视图过渡 API 并想了解 React 如何支持它，请查看文档中的[`<ViewTransition>` 如何工作](/reference/react/ViewTransition#how-does-viewtransition-work)。
 
 在本文中，让我们看几个使用视图过渡的例子。
+=======
+If you're familiar with the browser's View Transition API and want to know how React supports it, check out [How does `<ViewTransition>` Work](/reference/react/ViewTransition#how-does-viewtransition-work) in the docs.
+
+In this post, let's take a look at a few examples of how to use View Transitions.
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
 
 我们将从这个应用开始，它不会为以下任何交互添加动画：
 - 点击视频查看详情。
@@ -1247,8 +1263,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -1296,18 +1312,28 @@ function navigate(url) {
 当 `url` 改变时，`<ViewTransition>` 和新路由会被渲染。由于 `<ViewTransition>` 是在 `startTransition` 内部更新的，因此 `<ViewTransition>` 会被激活以进行动画处理。
 
 
+<<<<<<< HEAD
 默认情况下，视图过渡包含浏览器默认的交叉淡入淡出动画。将其添加到我们的示例中，现在每当我们在页面之间导航时都会有交叉淡入淡出效果：
+=======
+By default, View Transitions include the browser default cross-fade animation. Adding this to our example, we now have a cross-fade whenever we navigate between pages:
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
 
 <Sandpack>
 
 ```js src/App.js active
-import {unstable_ViewTransition as ViewTransition} from 'react'; import Details from './Details'; import Home from './Home'; import {useRouter} from './router';
+import {ViewTransition} from 'react'; import Details from './Details';
+import Home from './Home'; import {useRouter} from './router';
 
 export default function App() {
   const {url} = useRouter();
 
+<<<<<<< HEAD
   // 使用 ViewTransition 在页面间进行动画。
   // 默认情况下不需要添加 CSS。
+=======
+  // Use ViewTransition to animate between pages.
+  // No additional CSS needed by default.
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
   return (
     <ViewTransition>
       {url === '/' ? <Home /> : <Details />}
@@ -1564,7 +1590,7 @@ export function IconSearch(props) {
 ```
 
 ```js src/Layout.js
-import {unstable_ViewTransition as ViewTransition} from 'react'; import { useIsNavPending } from "./router";
+import {ViewTransition} from 'react'; import { useIsNavPending } from "./router";
 
 export default function Page({ heading, children }) {
   const isPending = useIsNavPending();
@@ -2443,8 +2469,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -2458,7 +2484,11 @@ root.render(
 
 </Sandpack>
 
+<<<<<<< HEAD
 由于我们的路由器已经使用 `startTransition` 更新路由，添加 `<ViewTransition>` 的这一行更改就会激活默认的交叉淡入淡出动画。
+=======
+Since our router already updates the route using `startTransition`, this one line change to add `<ViewTransition>` activates with the default cross-fade animation.
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
 
 如果你好奇这是如何工作的，请查看文档中的 [`<ViewTransition>` 如何工作？](/reference/react/ViewTransition#how-does-viewtransition-work)
 
@@ -2466,7 +2496,11 @@ root.render(
 
 #### 退出 `<ViewTransition>` 动画 {/*opting-out-of-viewtransition-animations*/}
 
+<<<<<<< HEAD
 在这个例子中，为了简单起见，我们将应用的根部分包装在 `<ViewTransition>` 中，但这意味着应用中的所有过渡都将有动画效果，这可能会导致意外的动画。
+=======
+In this example, we're wrapping the root of the app in `<ViewTransition>` for simplicity, but this means that all transitions in the app will be animated, which can lead to unexpected animations.
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
 
 为了解决这个问题，我们用 `"none"` 包装路由子组件，这样每个页面都可以控制自己的动画：
 
@@ -2477,7 +2511,11 @@ root.render(
 </ViewTransition>
 ```
 
+<<<<<<< HEAD
 在实践中，导航应该通过 "enter" 和 "exit" 属性或使用 Transition Types 来完成。
+=======
+In practice, navigations should be done via "enter" and "exit" props, or by using Transition Types.
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
 
 </Note>
 
@@ -2512,7 +2550,7 @@ root.render(
 <Sandpack>
 
 ```js src/App.js active
-import { unstable_ViewTransition as ViewTransition } from "react";
+import { ViewTransition } from "react";
 import Details from "./Details";
 import Home from "./Home";
 import { useRouter } from "./router";
@@ -2778,7 +2816,7 @@ export function IconSearch(props) {
 ```
 
 ```js src/Layout.js hidden
-import {unstable_ViewTransition as ViewTransition} from 'react'; import { useIsNavPending } from "./router";
+import {ViewTransition} from 'react'; import { useIsNavPending } from "./router";
 
 export default function Page({ heading, children }) {
   const isPending = useIsNavPending();
@@ -3671,8 +3709,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -3705,7 +3743,7 @@ root.render(
 <Sandpack>
 
 ```js src/App.js
-import { unstable_ViewTransition as ViewTransition } from "react";
+import { ViewTransition } from "react";
 import Details from "./Details";
 import Home from "./Home";
 import { useRouter } from "./router";
@@ -3972,7 +4010,7 @@ export function IconSearch(props) {
 ```
 
 ```js src/Layout.js hidden
-import {unstable_ViewTransition as ViewTransition} from 'react'; import { useIsNavPending } from "./router";
+import {ViewTransition} from 'react'; import { useIsNavPending } from "./router";
 
 export default function Page({ heading, children }) {
   const isPending = useIsNavPending();
@@ -4029,7 +4067,7 @@ export default function LikeButton({video}) {
 ```
 
 ```js src/Videos.js active
-import { useState, unstable_ViewTransition as ViewTransition } from "react"; import LikeButton from "./LikeButton"; import { useRouter } from "./router"; import { PauseIcon, PlayIcon } from "./Icons"; import { startTransition } from "react";
+import { useState, ViewTransition } from "react"; import LikeButton from "./LikeButton"; import { useRouter } from "./router"; import { PauseIcon, PlayIcon } from "./Icons"; import { startTransition } from "react";
 
 export function Thumbnail({ video, children }) {
   // Add a name to animate with a shared element transition.
@@ -4880,8 +4918,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -4962,7 +5000,7 @@ Now we can animate the header along with thumbnail based on navigation type:
 <Sandpack>
 
 ```js src/App.js hidden
-import { unstable_ViewTransition as ViewTransition } from "react";
+import { ViewTransition } from "react";
 import Details from "./Details";
 import Home from "./Home";
 import { useRouter } from "./router";
@@ -5227,7 +5265,7 @@ export function IconSearch(props) {
 ```
 
 ```js src/Layout.js active
-import {unstable_ViewTransition as ViewTransition} from 'react'; import { useIsNavPending } from "./router";
+import {ViewTransition} from 'react'; import { useIsNavPending } from "./router";
 
 export default function Page({ heading, children }) {
   const isPending = useIsNavPending();
@@ -5291,7 +5329,7 @@ export default function LikeButton({video}) {
 ```
 
 ```js src/Videos.js hidden
-import { useState, unstable_ViewTransition as ViewTransition } from "react";
+import { useState, ViewTransition } from "react";
 import LikeButton from "./LikeButton";
 import { useRouter } from "./router";
 import { PauseIcon, PlayIcon } from "./Icons";
@@ -5442,7 +5480,7 @@ export function fetchVideoDetails(id) {
 ```
 
 ```js src/router.js
-import {useState, createContext, use, useTransition, useLayoutEffect, useEffect, unstable_addTransitionType as addTransitionType} from "react";
+import {useState, createContext, use, useTransition, useLayoutEffect, useEffect, addTransitionType} from "react";
 
 export function Router({ children }) {
   const [isPending, startTransition] = useTransition();
@@ -6196,8 +6234,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -6213,7 +6251,11 @@ root.render(
 
 ### 为 Suspense 边界添加动画 {/*animating-suspense-boundaries*/}
 
+<<<<<<< HEAD
 Suspense 也会激活视图过渡。
+=======
+Suspense will also activate View Transitions.
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
 
 要为后备方案到内容的过渡添加动画，我们可以用 `<ViewTransition>` 包装 `Suspense`：
 
@@ -6230,7 +6272,7 @@ Suspense 也会激活视图过渡。
 <Sandpack>
 
 ```js src/App.js hidden
-import { unstable_ViewTransition as ViewTransition } from "react";
+import { ViewTransition } from "react";
 import Details from "./Details";
 import Home from "./Home";
 import { useRouter } from "./router";
@@ -6248,7 +6290,7 @@ export default function App() {
 ```
 
 ```js src/Details.js active
-import { use, Suspense, unstable_ViewTransition as ViewTransition } from "react"; import { fetchVideo, fetchVideoDetails } from "./data"; import { Thumbnail, VideoControls } from "./Videos"; import { useRouter } from "./router"; import Layout from "./Layout"; import { ChevronLeft } from "./Icons";
+import { use, Suspense, ViewTransition } from "react"; import { fetchVideo, fetchVideoDetails } from "./data"; import { Thumbnail, VideoControls } from "./Videos"; import { useRouter } from "./router"; import Layout from "./Layout"; import { ChevronLeft } from "./Icons";
 
 function VideoDetails({ id }) {
   // Cross-fade the fallback to content.
@@ -6498,7 +6540,7 @@ export function IconSearch(props) {
 ```
 
 ```js src/Layout.js hidden
-import {unstable_ViewTransition as ViewTransition} from 'react';
+import {ViewTransition} from 'react';
 import { useIsNavPending } from "./router";
 
 export default function Page({ heading, children }) {
@@ -6563,7 +6605,7 @@ export default function LikeButton({video}) {
 ```
 
 ```js src/Videos.js hidden
-import { useState, unstable_ViewTransition as ViewTransition } from "react";
+import { useState, ViewTransition } from "react";
 import LikeButton from "./LikeButton";
 import { useRouter } from "./router";
 import { PauseIcon, PlayIcon } from "./Icons";
@@ -6714,7 +6756,7 @@ export function fetchVideoDetails(id) {
 ```
 
 ```js src/router.js hidden
-import {useState, createContext, use, useTransition, useLayoutEffect, useEffect, unstable_addTransitionType as addTransitionType} from "react";
+import {useState, createContext, use, useTransition, useLayoutEffect, useEffect, addTransitionType} from "react";
 
 export function Router({ children }) {
   const [isPending, startTransition] = useTransition();
@@ -7494,8 +7536,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -7544,7 +7586,7 @@ Now, the Suspense content replaces the fallback with a sliding animation:
 <Sandpack>
 
 ```js src/App.js hidden
-import { unstable_ViewTransition as ViewTransition } from "react";
+import { ViewTransition } from "react";
 import Details from "./Details";
 import Home from "./Home";
 import { useRouter } from "./router";
@@ -7562,7 +7604,7 @@ export default function App() {
 ```
 
 ```js src/Details.js active
-import { use, Suspense, unstable_ViewTransition as ViewTransition } from "react"; import { fetchVideo, fetchVideoDetails } from "./data"; import { Thumbnail, VideoControls } from "./Videos"; import { useRouter } from "./router"; import Layout from "./Layout"; import { ChevronLeft } from "./Icons";
+import { use, Suspense, ViewTransition } from "react"; import { fetchVideo, fetchVideoDetails } from "./data"; import { Thumbnail, VideoControls } from "./Videos"; import { useRouter } from "./router"; import Layout from "./Layout"; import { ChevronLeft } from "./Icons";
 
 function VideoDetails({ id }) {
   return (
@@ -7819,7 +7861,7 @@ export function IconSearch(props) {
 ```
 
 ```js src/Layout.js hidden
-import {unstable_ViewTransition as ViewTransition} from 'react';
+import {ViewTransition} from 'react';
 import { useIsNavPending } from "./router";
 
 export default function Page({ heading, children }) {
@@ -7884,7 +7926,7 @@ export default function LikeButton({video}) {
 ```
 
 ```js src/Videos.js hidden
-import { useState, unstable_ViewTransition as ViewTransition } from "react";
+import { useState, ViewTransition } from "react";
 import LikeButton from "./LikeButton";
 import { useRouter } from "./router";
 import { PauseIcon, PlayIcon } from "./Icons";
@@ -8035,7 +8077,7 @@ export function fetchVideoDetails(id) {
 ```
 
 ```js src/router.js hidden
-import {useState, createContext, use, useTransition, useLayoutEffect, useEffect, unstable_addTransitionType as addTransitionType} from "react";
+import {useState, createContext, use, useTransition, useLayoutEffect, useEffect, addTransitionType} from "react";
 
 export function Router({ children }) {
   const [isPending, startTransition] = useTransition();
@@ -8815,8 +8857,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -8858,7 +8900,7 @@ Now the items animate as you type in the search bar:
 <Sandpack>
 
 ```js src/App.js hidden
-import { unstable_ViewTransition as ViewTransition } from "react";
+import { ViewTransition } from "react";
 import Details from "./Details";
 import Home from "./Home";
 import { useRouter } from "./router";
@@ -8876,7 +8918,7 @@ export default function App() {
 ```
 
 ```js src/Details.js hidden
-import { use, Suspense, unstable_ViewTransition as ViewTransition } from "react";
+import { use, Suspense, ViewTransition } from "react";
 import { fetchVideo, fetchVideoDetails } from "./data";
 import { Thumbnail, VideoControls } from "./Videos";
 import { useRouter } from "./router";
@@ -8951,17 +8993,25 @@ function VideoInfo({ id }) {
 ```
 
 ```js src/Home.js
-import { useId, useState, use, useDeferredValue, unstable_ViewTransition as ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
+import { useId, useState, use, useDeferredValue, ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
+<<<<<<< HEAD
   // 通过 useDeferredValue来激活(何时) 
+=======
+  // Activate with useDeferredValue ("when")
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
     <div className="video-list">
       <div className="videos">
         {filteredVideos.map((video) => (
+<<<<<<< HEAD
           // 对列表中的每一个子项目进行动画（何地）
+=======
+          // Animate each item in list ("what")
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
@@ -9146,7 +9196,7 @@ export function IconSearch(props) {
 ```
 
 ```js src/Layout.js hidden
-import {unstable_ViewTransition as ViewTransition} from 'react';
+import {ViewTransition} from 'react';
 import { useIsNavPending } from "./router";
 
 export default function Page({ heading, children }) {
@@ -9211,7 +9261,7 @@ export default function LikeButton({video}) {
 ```
 
 ```js src/Videos.js hidden
-import { useState, unstable_ViewTransition as ViewTransition } from "react";
+import { useState, ViewTransition } from "react";
 import LikeButton from "./LikeButton";
 import { useRouter } from "./router";
 import { PauseIcon, PlayIcon } from "./Icons";
@@ -9362,7 +9412,7 @@ export function fetchVideoDetails(id) {
 ```
 
 ```js src/router.js hidden
-import {useState, createContext, use, useTransition, useLayoutEffect, useEffect, unstable_addTransitionType as addTransitionType} from "react";
+import {useState, createContext, use, useTransition, useLayoutEffect, useEffect, addTransitionType} from "react";
 
 export function Router({ children }) {
   const [isPending, startTransition] = useTransition();
@@ -10156,8 +10206,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -10182,7 +10232,7 @@ Let's remove the slow fade, and take a look at the final result:
 <Sandpack>
 
 ```js src/App.js
-import {unstable_ViewTransition as ViewTransition} from 'react'; import Details from './Details'; import Home from './Home'; import {useRouter} from './router';
+import {ViewTransition} from 'react'; import Details from './Details'; import Home from './Home'; import {useRouter} from './router';
 
 export default function App() {
   const {url} = useRouter();
@@ -10197,7 +10247,7 @@ export default function App() {
 ```
 
 ```js src/Details.js
-import { use, Suspense, unstable_ViewTransition as ViewTransition } from "react"; import { fetchVideo, fetchVideoDetails } from "./data"; import { Thumbnail, VideoControls } from "./Videos"; import { useRouter } from "./router"; import Layout from "./Layout"; import { ChevronLeft } from "./Icons";
+import { use, Suspense, ViewTransition } from "react"; import { fetchVideo, fetchVideoDetails } from "./data"; import { Thumbnail, VideoControls } from "./Videos"; import { useRouter } from "./router"; import Layout from "./Layout"; import { ChevronLeft } from "./Icons";
 
 function VideoDetails({id}) {
   // Animate from Suspense fallback to content
@@ -10267,17 +10317,25 @@ function VideoInfo({ id }) {
 ```
 
 ```js src/Home.js
-import { useId, useState, use, useDeferredValue, unstable_ViewTransition as ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
+import { useId, useState, use, useDeferredValue, ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
+<<<<<<< HEAD
   // 通过 useDeferredValue来激活(何时) 
+=======
+  // Activate with useDeferredValue ("when")
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
     <div className="video-list">
       <div className="videos">
         {filteredVideos.map((video) => (
+<<<<<<< HEAD
           // 对列表中的每一个子项目进行动画（何地）
+=======
+          // Animate each item in list ("what")
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
@@ -10462,7 +10520,7 @@ export function IconSearch(props) {
 ```
 
 ```js src/Layout.js
-import {unstable_ViewTransition as ViewTransition} from 'react'; import { useIsNavPending } from "./router";
+import {ViewTransition} from 'react'; import { useIsNavPending } from "./router";
 
 export default function Page({ heading, children }) {
   const isPending = useIsNavPending();
@@ -10526,7 +10584,7 @@ export default function LikeButton({video}) {
 ```
 
 ```js src/Videos.js
-import { useState, unstable_ViewTransition as ViewTransition } from "react"; import LikeButton from "./LikeButton"; import { useRouter } from "./router"; import { PauseIcon, PlayIcon } from "./Icons"; import { startTransition } from "react";
+import { useState, ViewTransition } from "react"; import LikeButton from "./LikeButton"; import { useRouter } from "./router"; import { PauseIcon, PlayIcon } from "./Icons"; import { startTransition } from "react";
 
 export function Thumbnail({ video, children }) {
   // Add a name to animate with a shared element transition.
@@ -10674,7 +10732,7 @@ export function fetchVideoDetails(id) {
 ```
 
 ```js src/router.js
-import {useState, createContext, use, useTransition, useLayoutEffect, useEffect, unstable_addTransitionType as addTransitionType} from "react";
+import {useState, createContext, use, useTransition, useLayoutEffect, useEffect, addTransitionType} from "react";
 
 export function Router({ children }) {
   const [isPending, startTransition] = useTransition();
@@ -11442,8 +11500,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -11544,7 +11602,7 @@ function App() {
 <Sandpack>
 
 ```js src/App.js
-import { unstable_ViewTransition as ViewTransition, unstable_Activity as Activity } from "react"; import Details from "./Details"; import Home from "./Home"; import { useRouter } from "./router";
+import { ViewTransition } from "react"; import Details from "./Details"; import Home from "./Home"; import { useRouter } from "./router";  import { unstable_Activity, Activity as ActivityStable} from 'react'; let Activity = ActivityStable ?? unstable_Activity;
 
 export default function App() {
   const { url } = useRouter();
@@ -11563,7 +11621,7 @@ export default function App() {
 ```
 
 ```js src/Details.js hidden
-import { use, Suspense, unstable_ViewTransition as ViewTransition } from "react";
+import { use, Suspense, ViewTransition } from "react";
 import { fetchVideo, fetchVideoDetails } from "./data";
 import { Thumbnail, VideoControls } from "./Videos";
 import { useRouter } from "./router";
@@ -11638,10 +11696,14 @@ function VideoInfo({ id }) {
 ```
 
 ```js src/Home.js hidden
-import { useId, useState, use, useDeferredValue, unstable_ViewTransition as ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
+import { useId, useState, use, useDeferredValue, ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
+<<<<<<< HEAD
   // 通过 useDeferredValue来激活(何时) 
+=======
+  // Activate with useDeferredValue ("when")
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
@@ -11651,7 +11713,11 @@ function SearchList({searchText, videos}) {
       )}
       <div className="videos">
         {filteredVideos.map((video) => (
+<<<<<<< HEAD
           // 对列表中的每一个子项目进行动画（何地）
+=======
+          // Animate each item in list ("what")
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
@@ -11833,7 +11899,7 @@ export function IconSearch(props) {
 ```
 
 ```js src/Layout.js hidden
-import {unstable_ViewTransition as ViewTransition} from 'react'; import { useIsNavPending } from "./router";
+import {ViewTransition} from 'react'; import { useIsNavPending } from "./router";
 
 export default function Page({ heading, children }) {
   const isPending = useIsNavPending();
@@ -11897,7 +11963,7 @@ export default function LikeButton({video}) {
 ```
 
 ```js src/Videos.js hidden
-import { useState, unstable_ViewTransition as ViewTransition } from "react";
+import { useState, ViewTransition } from "react";
 import LikeButton from "./LikeButton";
 import { useRouter } from "./router";
 import { PauseIcon, PlayIcon } from "./Icons";
@@ -12048,7 +12114,7 @@ export function fetchVideoDetails(id) {
 ```
 
 ```js src/router.js hidden
-import {useState, createContext, use, useTransition, useLayoutEffect, useEffect, unstable_addTransitionType as addTransitionType} from "react";
+import {useState, createContext, use, useTransition, useLayoutEffect, useEffect, addTransitionType} from "react";
 
 export function Router({ children }) {
   const [isPending, startTransition] = useTransition();
@@ -12841,8 +12907,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -12881,7 +12947,7 @@ With this update, if the content on the next page has time to pre-render, it wil
 <Sandpack>
 
 ```js src/App.js
-import { unstable_ViewTransition as ViewTransition, unstable_Activity as Activity, use } from "react"; import Details from "./Details"; import Home from "./Home"; import { useRouter } from "./router"; import {fetchVideos} from './data'
+import { ViewTransition, use } from "react"; import Details from "./Details"; import Home from "./Home"; import { useRouter } from "./router"; import {fetchVideos} from './data';  import { unstable_Activity, Activity as ActivityStable} from 'react'; let Activity = ActivityStable ?? unstable_Activity;
 
 export default function App() {
   const { url } = useRouter();
@@ -12905,7 +12971,7 @@ export default function App() {
 ```
 
 ```js src/Details.js
-import { use, Suspense, unstable_ViewTransition as ViewTransition } from "react"; import { fetchVideo, fetchVideoDetails } from "./data"; import { Thumbnail, VideoControls } from "./Videos"; import { useRouter } from "./router"; import Layout from "./Layout"; import { ChevronLeft } from "./Icons";
+import { use, Suspense, ViewTransition } from "react"; import { fetchVideo, fetchVideoDetails } from "./data"; import { Thumbnail, VideoControls } from "./Videos"; import { useRouter } from "./router"; import Layout from "./Layout"; import { ChevronLeft } from "./Icons";
 
 function VideoDetails({id}) {
   // Animate from Suspense fallback to content.
@@ -12976,10 +13042,14 @@ function VideoInfo({ id }) {
 ```
 
 ```js src/Home.js hidden
-import { useId, useState, use, useDeferredValue, unstable_ViewTransition as ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
+import { useId, useState, use, useDeferredValue, ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
+<<<<<<< HEAD
   // 通过 useDeferredValue来激活(何时) 
+=======
+  // Activate with useDeferredValue ("when")
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
@@ -12989,7 +13059,11 @@ function SearchList({searchText, videos}) {
       )}
       <div className="videos">
         {filteredVideos.map((video) => (
+<<<<<<< HEAD
           // 对列表中的每一个子项目进行动画（何地）
+=======
+          // Animate each item in list ("what")
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
@@ -13171,7 +13245,7 @@ export function IconSearch(props) {
 ```
 
 ```js src/Layout.js hidden
-import {unstable_ViewTransition as ViewTransition} from 'react'; import { useIsNavPending } from "./router";
+import {ViewTransition} from 'react'; import { useIsNavPending } from "./router";
 
 export default function Page({ heading, children }) {
   const isPending = useIsNavPending();
@@ -13235,7 +13309,7 @@ export default function LikeButton({video}) {
 ```
 
 ```js src/Videos.js hidden
-import { useState, unstable_ViewTransition as ViewTransition } from "react";
+import { useState, ViewTransition } from "react";
 import LikeButton from "./LikeButton";
 import { useRouter } from "./router";
 import { PauseIcon, PlayIcon } from "./Icons";
@@ -13386,7 +13460,7 @@ export function fetchVideoDetails(id) {
 ```
 
 ```js src/router.js hidden
-import {useState, createContext, use, useTransition, useLayoutEffect, useEffect, unstable_addTransitionType as addTransitionType} from "react";
+import {useState, createContext, use, useTransition, useLayoutEffect, useEffect, addTransitionType} from "react";
 
 export function Router({ children }) {
   const [isPending, startTransition] = useTransition();
@@ -14179,8 +14253,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -14220,6 +14294,7 @@ root.render(
 
 # 正在开发的功能 {/*features-in-development*/}
 
+<<<<<<< HEAD
 我们还在开发功能来帮助解决以下常见问题。
 
 在我们迭代可能的解决方案时，你可能会看到我们正在测试的一些潜在 API，这些 API 基于我们正在合并的 PR 进行分享。请记住，当我们尝试不同的想法时，我们通常会在尝试后更改或删除不同的解决方案。
@@ -14227,6 +14302,15 @@ root.render(
 如果我们过早分享正在开发的解决方案，可能会在社区中造成混乱和困惑。为了平衡透明度和减少困惑，我们只分享了当前正在为其开发解决方案的问题，而不分享我们心中的特定解决方案。
 
 随着这些功能的进展，我们将在博客上宣布它们，并附上文档，以便你可以尝试它们。
+=======
+We're also developing features to help solve the common problems below.
+
+As we iterate on possible solutions, you may see some potential APIs we're testing being shared based on the PRs we are landing. Please keep in mind that as we try different ideas, we often change or remove different solutions after trying them out.
+
+When the solutions we're working on are shared too early, it can create churn and confusion in the community. To balance being transparent and limiting confusion, we're sharing the problems we're currently developing solutions for, without sharing a particular solution we have in mind.
+
+As these features progress, we'll announce them on the blog with docs included so you can try them out.
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
 
 ## React 性能追踪 {/*react-performance-tracks*/}
 
@@ -14259,7 +14343,11 @@ root.render(
 - **以函数而非生命周期的方式思考**：hooks 让你可以根据相关的部分（如设置订阅或获取数据）将一个组件拆分成更小的函数，而不是强制基于生命周期方法进行拆分。
 - **支持提前编译**：hooks 的设计支持提前编译，减少了由生命周期方法和类的限制导致的无意去优化的陷阱。
 
+<<<<<<< HEAD
 自发布以来，hooks 在 **在组件之间共享代码** 方面取得了成功。Hooks 现在是在组件之间共享逻辑的首选方式，render props 和高阶组件的使用场景减少了。Hooks 还成功支持了像 Fast Refresh 这样的功能，这在类组件中是不可能实现的。
+=======
+Since their release, hooks have been successful at *sharing code between components*. Hooks are now the favored way to share logic between components, and there are less use cases for render props and higher order components. Hooks have also been successful at supporting features like Fast Refresh that were not possible with class components.
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
 
 ### Effects 可能很难理解 {/*effects-can-be-hard*/}
 
@@ -14300,18 +14388,30 @@ useEffect(() => {
   return () => {
     connection.disconnect();
   };
+<<<<<<< HEAD
 }); // 编译器插入的依赖项。
+=======
+}); // compiler inserted dependencies.
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
 ```
 
 使用这段代码，React 编译器可以为你推断依赖项并自动插入它们，这样你就不需要看到或编写它们。通过像[IDE 扩展](#compiler-ide-extension)和[`useEffectEvent`](/reference/react/useEffectEvent)这样的功能，我们可以提供一个 CodeLens 来显示编译器在你需要调试时插入的内容，或通过移除依赖项来优化。这有助于强化编写 Effects 的正确心智模型，即 Effects 可以在任何时候运行，以将你的组件或 hook 的状态与其他内容同步。
 
+<<<<<<< HEAD
 我们希望自动插入依赖项不仅更容易编写，而且通过迫使你从 Effect 的作用角度思考，而不是从组件生命周期角度思考，使它们更容易理解。
+=======
+Our hope is that automatically inserting dependencies is not only easier to write, but that it also makes them easier to understand by forcing you to think in terms of what the Effect does, and not in component lifecycles.
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
 
 ---
 
 ## 编译器 IDE 扩展 {/*compiler-ide-extension*/}
 
+<<<<<<< HEAD
 本周早些时候[我们分享了](/blog/2025/04/21/react-compiler-rc) React 编译器的候选发布版本，我们正在努力在未来几个月内发布编译器的第一个语义化版本稳定版。
+=======
+Later in 2025 [we shared](/blog/2025/10/07/react-compiler-1) the first stable release of React Compiler, and we're continuing to invest in shipping more improvements.
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
 
 我们还开始探索使用 React 编译器提供信息的方法，以改进对代码的理解和调试。我们开始探索的一个想法是一个由 React 编译器驱动的基于 LSP 的新实验性 React IDE 扩展，类似于 [Lauren Tan 在 React Conf 演讲](https://conf2024.react.dev/talks/5)中使用的扩展。
 
@@ -14333,7 +14433,11 @@ Fragment refs 仍在研究中。当我们接近完成最终 API 时，我们将�
 
 ## 手势动画 {/*gesture-animations*/}
 
+<<<<<<< HEAD
 我们还在研究增强视图过渡以支持手势动画的方法，例如滑动打开菜单或滚动浏览照片轮播。
+=======
+We're also researching ways to enhance View Transitions to support gesture animations such as swiping to open a menu, or scroll through a photo carousel.
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
 
 手势因以下几个原因带来新的挑战：
 
@@ -14357,9 +14461,15 @@ Fragment refs 仍在研究中。当我们接近完成最终 API 时，我们将�
 const value = use(store);
 ```
 
+<<<<<<< HEAD
 我们的目标是允许在渲染期间读取外部状态而不会撕裂，并与 React 提供的所有并发功能无缝协作。
 
 这项研究仍处于早期阶段。当我们进一步推进时，我们将分享更多信息，以及新 API 的样子。
+=======
+Our goal is to allow external state to be read during render without tearing, and to work seamlessly with all of the concurrent features React offers.
+
+This research is still early. We'll share more, and what the new APIs will look like, when we're further along.
+>>>>>>> 9ef1c4741776a14b034711cc03e4124ccc53e337
 
 ---
 
