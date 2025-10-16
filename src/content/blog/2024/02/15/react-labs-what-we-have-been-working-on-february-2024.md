@@ -15,6 +15,7 @@ description: 在 React Labs 的文章中，我们讲述了正在进行研究与�
 
 </Intro>
 
+<<<<<<< HEAD
 <Note>
 
 React Conf 2024 定于 5 月 15 日至 16 日在内华达州亨德森举行！如果有兴趣亲临 React Conf，请在 2 月 28 日之前 [注册门票抽签](https://forms.reform.app/bLaLeE/react-conf-2024-ticket-lottery/1aRQLK)。
@@ -23,6 +24,8 @@ React Conf 2024 定于 5 月 15 日至 16 日在内华达州亨德森举行！�
 
 </Note>
 
+=======
+>>>>>>> 7ecf008d84d12ee1e56638804fa657ad7c67b446
 ---
 
 ## React 编译器 {/*react-compiler*/}

@@ -245,12 +245,20 @@ export function HomeContent() {
               进行全栈开发
             </Header>
             <Para>
+<<<<<<< HEAD
               React
               是一个库。它允许你将组件放在一起，但不关注路由和数据获取。要使用
               React 构建整个应用程序，我们建议使用像{' '}
               <Link href="https://nextjs.org">Next.js</Link> 或{' '}
               <Link href="https://remix.run">Remix</Link> 这样的全栈 React
               框架。
+=======
+              React is a library. It lets you put components together, but it
+              doesn’t prescribe how to do routing and data fetching. To build an
+              entire app with React, we recommend a full-stack React framework
+              like <Link href="https://nextjs.org">Next.js</Link> or{' '}
+              <Link href="https://reactrouter.com">React Router</Link>.
+>>>>>>> 7ecf008d84d12ee1e56638804fa657ad7c67b446
             </Para>
           </Center>
           <FullBleed>

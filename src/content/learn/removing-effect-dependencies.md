@@ -610,6 +610,7 @@ function ChatRoom({ roomId }) {
 
 ### 你想读取一个值而不对其变化做出“反应”吗？ {/*do-you-want-to-read-a-value-without-reacting-to-its-changes*/}
 
+<<<<<<< HEAD
 <Canary>
 
 **`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。 
@@ -619,6 +620,9 @@ function ChatRoom({ roomId }) {
 </Canary>
 
 假设你希望在用户收到新消息时播放声音，`isMuted` 为 `true` 除外：
+=======
+Suppose that you want to play a sound when the user receives a new message unless `isMuted` is `true`:
+>>>>>>> 7ecf008d84d12ee1e56638804fa657ad7c67b446
 
 ```js {3,10-12}
 function ChatRoom({ roomId }) {
@@ -1260,22 +1264,6 @@ Effect 中是否有一行代码不应该是响应式的？如何将非响应式�
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "latest"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js
 import { useState, useEffect, useRef } from 'react';
 import { useEffectEvent } from 'react';
@@ -1386,22 +1374,6 @@ html, body { min-height: 300px; }
 Effect 需要读取 `duration` 的最新值，但你不希望它对 `duration` 的变化做出“反应”。你使用 `duration` 来启动动画，但启动动画不是响应式的。将非响应式代码行提取到 Effect Event 中，并从 Effect 中调用该函数。
 
 <Sandpack>
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "latest"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
 
 ```js
 import { useState, useEffect, useRef } from 'react';
@@ -1826,8 +1798,8 @@ label, button { display: block; margin-bottom: 5px; }
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "latest",
+    "react-dom": "latest",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -2121,8 +2093,8 @@ export default function ChatRoom({ roomId, isEncrypted, onMessage }) { // Reacti
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "latest",
+    "react-dom": "latest",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },

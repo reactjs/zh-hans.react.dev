@@ -42,9 +42,15 @@ JSON API 返回如下的数据:
 
 取决于你的使用背景，可以考虑通过不同的方式将设计分割为组件:
 
+<<<<<<< HEAD
 * **程序设计**——使用同样的技术决定你是否应该创建一个新的函数或者对象。这一技术即 [单一功能原理](https://en.wikipedia.org/wiki/Single_responsibility_principle)，也就是说，一个组件理想情况下应仅做一件事情。但随着功能的持续增长，它应该被分解为更小的子组件。
 * **CSS**——思考你将把类选择器用于何处。(然而，组件并没有那么细的粒度。)
 * **设计**——思考你将如何组织布局的层级。
+=======
+* **Programming**--use the same techniques for deciding if you should create a new function or object. One such technique is the [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns), that is, a component should ideally only be concerned with one thing. If it ends up growing, it should be decomposed into smaller subcomponents. 
+* **CSS**--consider what you would make class selectors for. (However, components are a bit less granular.)
+* **Design**--consider how you would organize the design's layers.
+>>>>>>> 7ecf008d84d12ee1e56638804fa657ad7c67b446
 
 如果你的 JSON 结构非常棒，经常会发现其映射到 UI 中的组件结构是一件自然而然的事情。那是因为 UI 和原型常拥有相同的信息结构--即，相同的形状。将你的 UI 分割到组件，每个组件匹配到原型中的每个部分。
 
