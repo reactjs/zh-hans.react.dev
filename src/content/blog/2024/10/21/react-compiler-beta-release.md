@@ -58,7 +58,7 @@ yarn add -D babel-plugin-react-compiler@beta eslint-plugin-react-compiler@beta
 
 ## 从今天起我们建议大家使用 React 编译器的 linter {/*we-recommend-everyone-use-the-react-compiler-linter-today*/}
 
-React 编译器 的 ESLint 插件可帮助开发人员主动识别和纠正对于 [React 规则](/reference/rules) 的违规行为。**我们强烈建议大家从今天开始就使用 linter**。linter 不需要安装编译器，因此即使你还没有准备好尝试编译器，也可以独立使用它。
+React 编译器的 ESLint 插件可帮助开发人员主动识别和纠正对于 [React 规则](/reference/rules) 的违规行为。**我们强烈建议大家从今天开始就使用 linter**。linter 不需要安装编译器，因此即使你还没有准备好尝试编译器，也可以独立使用它。
 
 安装 linter 只需要执行：
 
