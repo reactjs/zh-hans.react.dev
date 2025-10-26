@@ -142,7 +142,7 @@ function TableContainer({ items }) {
 ```
 [__在 React 编译器游乐场中查看此示例__](https://playground.react.dev/#N4Igzg9grgTgxgUxALhAejQAgFTYHIQAuumAtgqRAJYBeCAJpgEYCemASggIZyGYDCEUgAcqAGwQwANJjBUAdokyEAFlTCZ1meUUxdMcIcIjyE8vhBiYVECAGsAOvIBmURYSonMCAB7CzcgBuCGIsAAowEIhgYACCnFxioQAyXDAA5gixMDBcLADyzvlMAFYIvGAAFACUmMCYaNiYAHStOFgAvk5OGJgAshTUdIysHNy8AkbikrIKSqpaWvqGIiZmhE6u7p7ymAAqXEwSguZcCpKV9VSEFBodtcBOmAYmYHz0XIT6ALzefgFUYKhCJRBAxeLcJIsVIZLI5PKFYplCqVa63aoAbm6u0wMAQhFguwAPPRAQA+YAfL4dIloUmBMlODogDpAA)
 
-然而，如果  `expensivelyProcessAReallyLargeArrayOfObjects` 真的是一个昂贵的函数，你可能需要考虑在 React 之外实现其自身的记忆化，因为：
+然而，如果 `expensivelyProcessAReallyLargeArrayOfObjects` 真的是一个昂贵的函数，你可能需要考虑在 React 之外实现其自身的记忆化，因为：
 
 - React 编译器只对 React 组件和 Hook 进行记忆化，而不是所有函数
 - React 编译器的记忆化不会在多个组件或 Hook 之间共
