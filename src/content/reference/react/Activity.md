@@ -7,7 +7,7 @@ version: canary
 
 **The `<Activity />` API is currently only available in React’s Canary and Experimental channels.** 
 
-[Learn more about React’s release channels here.](/community/versioning-policy#all-release-channels)
+[了解更多关于 React 版本发布的内容](/community/versioning-policy#all-release-channels)。
 
 </Canary>
 
