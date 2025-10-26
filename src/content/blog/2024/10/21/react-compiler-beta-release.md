@@ -76,7 +76,7 @@ yarn add -D eslint-plugin-react-compiler@beta
 
 ## 向后兼容性 {/*backwards-compatibility*/}
 
-React 编译器 生成的代码依赖于 React 19 中添加的运行时 API，但我们后来添加了对 React 17 和 18 的支持。如果你还没有使用 React 19，在 Beta 版本中可以通过在 compiler 配置中设置 `target` 来使用 React 编译器，并添加 `react-compiler-runtime` 作为依赖项。[你可以在这里找到相关文档](/reference/react-compiler/configuration#react-17-18)。
+React 编译器生成的代码依赖于 React 19 中添加的运行时 API，但我们后来添加了对 React 17 和 18 的支持。如果你还没有使用 React 19，在 Beta 版本中可以通过在 compiler 配置中设置 `target` 来使用 React 编译器，并添加 `react-compiler-runtime` 作为依赖项。[你可以在这里找到相关文档](/reference/react-compiler/configuration#react-17-18)。
 
 ## 在库中使用 React 编译器 {/*using-react-compiler-in-libraries*/}
 
