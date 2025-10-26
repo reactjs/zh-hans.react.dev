@@ -1,5 +1,5 @@
 ---
-title: 指令（Directives）
+title: 指令
 ---
 
 <Intro>
@@ -93,7 +93,7 @@ function Component3() {
 
 ### 谨慎使用指令 {/*use-sparingly*/}
 
-指令是一种应急方案 (escape hatch)。应优先考虑在项目级别进行编译器配置：
+指令是一种脱围机制 (escape hatch)。应优先考虑在项目级别进行编译器配置：
 
 ```js
 // ✅ Good - 项目的全局配置
