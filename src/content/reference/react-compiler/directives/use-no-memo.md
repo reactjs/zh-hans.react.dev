@@ -26,7 +26,7 @@ function MyComponent() {
 }
 ```
 
-当一个函数包含 "use no memo" 时，React 编译器会在优化过程中完全跳过它。在调试或处理与编译器不兼容的代码时，这是一个很有用的临时后门。
+当一个函数包含 "use no memo" 时，React 编译器会在优化过程中完全跳过它。在调试或处理与编译器不兼容的代码时，这是一个很有用的脱围机制。
 
 #### 注意事项 {/*caveats*/}
 
@@ -48,10 +48,10 @@ React 编译器会在构建时分析你的代码以应用优化。`"use no memo"
 
 ### 何时使用 `"use no memo"` {/*when-to-use*/}
 
-`"use no memo"` s应谨慎并临时使用。常见场景包括：
+`"use no memo"` 应谨慎并临时使用。常见场景包括：
 
 #### 调试编译器问题 {/*debugging-compiler*/}
-当你怀疑编译器引起问题时，可以暂时禁用优化来定位问题：
+当你怀疑编译器引起问题时，可以暂时禁用优化来隔离问题：
 
 ```js
 function ProblematicComponent({ data }) {
@@ -95,7 +95,7 @@ function MyComponent() {
 // 此文件中的所有函数都将被编译器跳过
 ```
 
-`"use no memo"` at the function level overrides the module level directive.
+`"use no memo"` 在函数级别覆盖模块级别指令。
 
 ---
 
