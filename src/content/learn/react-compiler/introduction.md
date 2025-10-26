@@ -145,7 +145,7 @@ function TableContainer({ items }) {
 然而，如果 `expensivelyProcessAReallyLargeArrayOfObjects` 真的是一个昂贵的函数，你可能需要考虑在 React 之外实现其自身的记忆化，因为：
 
 - React 编译器只对 React 组件和 Hook 进行记忆化，而不是所有函数
-- React 编译器的记忆化不会在多个组件或 Hook 之间共
+- React 编译器的记忆化不会在多个组件或 Hook 之间共享
 
 因此，如果 `expensivelyProcessAReallyLargeArrayOfObjects` 在许多不同的组件中使用，即使传递了完全相同的 items，这个昂贵的计算也会被重复运行。我们建议在使代码变得更复杂之前，先 [profiling](reference/react/useMemo#how-to-tell-if-a-calculation-is-expensive) 以确定计算是否真的那么昂贵。
 </DeepDive>
