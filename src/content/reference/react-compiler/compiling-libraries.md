@@ -87,7 +87,7 @@ npm install react-compiler-runtime@rc
 
 某些 Babel 插件可能与 React 编译器存在冲突：
 
-1.  将 `babel-plugin-react-compiler` 放在插件列表的靠前位置
+1. 将 `babel-plugin-react-compiler` 放在插件列表的靠前位置
 2. 在其他插件中禁用可能引起冲突的优化选项
 3. 对你的构建输出进行彻底的测试
 
