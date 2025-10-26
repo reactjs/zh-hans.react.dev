@@ -67,7 +67,7 @@ function ChatRoom({ roomId, theme }) {
 - **不是依赖数组的捷径**：不要用 `useEffectEvent` 来避免在 Effect 的依赖数组中声明依赖。这可能会隐藏 bug 并让代码更难理解。更推荐显式依赖，或使用 ref 来比较之前的值。
 - **用于非响应式逻辑**：仅在逻辑不依赖变化的值时使用 `useEffectEvent` 来提取。
 
----
+___
 
 ## 用法 {/*usage*/}
 
