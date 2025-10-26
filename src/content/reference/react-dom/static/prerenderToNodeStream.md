@@ -4,7 +4,7 @@ title: prerenderToNodeStream
 
 <Intro>
 
-`prerenderToNodeStream` 使用 [Node.js Stream.](https://nodejs.org/api/stream.html) 将 React 树渲染为静态 HTML 字符串。
+`prerenderToNodeStream` 使用 [Node.js 流](https://nodejs.org/api/stream.html) 将 React 树渲染为静态 HTML 字符串。
 
 ```js
 const {prelude} = await prerenderToNodeStream(reactNode, options?)
@@ -16,7 +16,7 @@ const {prelude} = await prerenderToNodeStream(reactNode, options?)
 
 <Note>
 
-此 API 针对 Node.js。具有 [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的环境（例如 Deno 和现代 edge 运行时）应改用 [`prerender`](/reference/react-dom/static/prerender)。
+此 API 针对 Node.js。具有 [Web 流](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的环境（例如 Deno 和现代 edge 运行时）应改用 [`prerender`](/reference/react-dom/static/prerender)。
 
 </Note>
 
@@ -46,7 +46,7 @@ app.use('/', async (request, response) => {
 
 [详见下面的更多示例。](#usage)
 
-#### Parameters {/*parameters*/}
+#### 参数 {/*parameters*/}
 
 * `reactNode`：要渲染为 HTML 的 React 节点。例如 JSX 节点 `<App />`。它应代表整个文档，因此 `App` 组件应渲染 `<html>` 标签。
 
@@ -60,11 +60,11 @@ app.use('/', async (request, response) => {
   * **可选** `progressiveChunkSize`：每个 chunk 的字节数。 [了解默认启发式的更多信息。](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
   * **可选** `signal`：一个 [abort signal](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)，可以用来 [中止 prerender](#aborting-prerendering)，并在客户端渲染剩余部分。
 
-#### Returns {/*returns*/}
+#### 返回 {/*returns*/}
 
 `prerenderToNodeStream` 返回一个 Promise：
 - 如果渲染成功，该 Promise 会解析为一个对象，包含：
-  - `prelude`：用于 HTML 的 [Node.js Stream](https://nodejs.org/api/stream.html)。你可以使用这个流按块（chunk）发送响应，也可以将整个流读取为一个字符串。
+  - `prelude`：用于 HTML 的 [Node.js 流](https://nodejs.org/api/stream.html)。你可以使用这个流按块（chunk）发送响应，也可以将整个流读取为一个字符串。
 - 如果渲染失败，该 Promise 将被拒绝。请参阅 [使用此方法输出 fallback（占位 UI）外壳](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)，了解如何在出错时提供占位页面。
 
 #### 注意事项 {/*caveats*/}
@@ -85,7 +85,7 @@ app.use('/', async (request, response) => {
 
 ### 将 React 树渲染到静态 HTML 的流中 {/*rendering-a-react-tree-to-a-stream-of-static-html*/}
 
-调用 `prerenderToNodeStream` 可将 React 树渲染为指向 [Node.js Stream](https://nodejs.org/api/stream.html) 的静态 HTML：
+调用 `prerenderToNodeStream` 可将 React 树渲染为指向 [Node.js 流](https://nodejs.org/api/stream.html) 的静态 HTML：
 
 ```js [[1, 5, "<App />"], [2, 6, "['/main.js']"]]
 import { prerenderToNodeStream } from 'react-dom/static';

@@ -420,7 +420,7 @@ input { margin: 10px; }
 
 你可以将其看成两个步骤：
 
-1. **首先，React 会使用新的 `query` 值（`"ab"`）和旧的 `deferredQuery` 值（仍为 `"a"`）重新渲染。** 传递给结果列表的 `deferredQuery` 值是**延迟**的，它“滞后于” `query` 值。
+1. **首先，React 会使用新的 `query` 值（`"ab"`）和旧的 `deferredQuery` 值（仍为 `"a"`）重新渲染。** 传递给结果列表的 `deferredQuery` 值是 **延迟** 的，它“滞后于” `query` 值。
 
 2. **在后台，React 尝试重新渲染，并将 `query` 和 `deferredQuery` 两个值都更新为 `"ab"`。** 如果此次重新渲染完成，React 将在屏幕上显示它。但是，如果它 suspense（即 `"ab"` 的结果尚未加载），React 将放弃这次渲染，并在数据加载后再次尝试重新渲染。用户将一直看到旧的延迟值，直到数据准备就绪。
 
