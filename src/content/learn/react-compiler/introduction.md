@@ -162,9 +162,9 @@ React 编译器目前已进入 RC 阶段，并已在生产环境中进行了广�
 
 React 编译器可以在多个构建工具中安装，例如 [Babel、Vite、Metro 和 Rsbuild](/learn/react-compiler/installation)。
 
-React 编译器主要是围绕核心编译器构建的一个轻量级 Babel 插件封装，其设计初衷是为了与 Babel 本身解耦。尽管编译器的第一个稳定版本主要仍然是一个 Babel 插件，但我们正在与 swc 和 [oxc](https://github.com/oxc-project/oxc/issues/10048) 团队合作，为 React Compiler 构建一流的支持，这样你将来无需再将 Babel 添加到你的构建流程中。
+React 编译器主要是围绕核心编译器构建的一个轻量级 Babel 插件封装，其设计初衷是为了与 Babel 本身解耦。尽管编译器的第一个稳定版本主要仍然是一个 Babel 插件，但我们正在与 swc 和 [oxc](https://github.com/oxc-project/oxc/issues/10048) 团队合作，为 React 编译器构建一流的支持，这样你将来无需再将 Babel 添加到你的构建流程中。
 
-Next.js 用户可以通过使用 [v15.3.1](https://github.com/vercel/next.js/releases/tag/v15.3.1) 或更高版本来启用由 swc 调用的 React Compiler。
+Next.js 用户可以通过使用 [v15.3.1](https://github.com/vercel/next.js/releases/tag/v15.3.1) 或更高版本来启用由 swc 调用的 React 编译器。
 
 ## 关于 useMemo、useCallback 和 React.memo 我应该怎么做？ {/*what-should-i-do-about-usememo-usecallback-and-reactmemo*/}
 
