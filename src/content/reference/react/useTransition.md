@@ -1717,7 +1717,7 @@ startTransition(async () => {
 ```js
 startTransition(async () => {
   await someAsyncFunction();
-  // ✅ 在 startTransition **之后** 再 await
+  // ✅ 在 await 之后 调用 startTransition
   startTransition(() => {
     setPage('/about');
   });

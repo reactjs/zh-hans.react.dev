@@ -400,13 +400,15 @@ label { display: block; margin-top: 10px; }
 
 ### 声明一个 Effect Event {/*declaring-an-effect-event*/}
 
-<Wip>
+<Canary>
 
-本章节描述了一个在 React 稳定版中 **还没有发布的实验性 API**。
+**`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。 
 
-</Wip>
+[了解更多关于 React 版本发布的内容](/community/versioning-policy#all-release-channels)。
 
-使用 [`useEffectEvent`](/reference/react/experimental_useEffectEvent) 这个特殊的 Hook 从 Effect 中提取非响应式逻辑：
+</Canary>
+
+使用 [`useEffectEvent`](/reference/react/useEffectEvent) 这个特殊的 Hook 从 Effect 中提取非响应式逻辑：
 
 ```js {1,4-6}
 import { useEffect, useEffectEvent } from 'react';
@@ -448,8 +450,8 @@ function ChatRoom({ roomId, theme }) {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -464,7 +466,7 @@ function ChatRoom({ roomId, theme }) {
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 import { createConnection, sendMessage } from './chat.js';
 import { showNotification } from './notifications.js';
 
@@ -578,11 +580,13 @@ label { display: block; margin-top: 10px; }
 
 ### 使用 Effect Event 读取最新的 props 和 state {/*reading-latest-props-and-state-with-effect-events*/}
 
-<Wip>
+<Canary>
 
-本章节描述了一个在 React 稳定版中 **还没有发布的实验性 API**。
+**`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。 
 
-</Wip>
+[了解更多关于 React 版本发布的内容](/community/versioning-policy#all-release-channels)。
+
+</Canary>
 
 Effect Event 可以修复之前许多你可能试图抑制依赖项检查工具的地方。
 
@@ -803,8 +807,8 @@ body {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -818,7 +822,7 @@ body {
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 
 export default function App() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -878,11 +882,13 @@ body {
 
 ### Effect Event 的局限性 {/*limitations-of-effect-events*/}
 
-<Wip>
+<Canary>
 
-本章节描述了一个在 React 稳定版中 **还没有发布的实验性 API**。
+**`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。 
 
-</Wip>
+[了解更多关于 React 版本发布的内容](/community/versioning-policy#all-release-channels)。
+
+</Canary>
 
 Effect Event 的局限性在于你如何使用他们：
 
@@ -976,8 +982,8 @@ Effect Event 是 Effect 代码的非响应式“片段”。他们应该在使�
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -1046,8 +1052,8 @@ button { margin: 10px; }
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -1124,8 +1130,8 @@ button { margin: 10px; }
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -1139,7 +1145,7 @@ button { margin: 10px; }
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 
 export default function Timer() {
   const [count, setCount] = useState(0);
@@ -1193,8 +1199,8 @@ button { margin: 10px; }
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -1208,7 +1214,7 @@ button { margin: 10px; }
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 
 export default function Timer() {
   const [count, setCount] = useState(0);
@@ -1275,8 +1281,8 @@ Effect Event 内部的代码是非响应式的。哪些情况下你会 **想要*
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -1290,7 +1296,7 @@ Effect Event 内部的代码是非响应式的。哪些情况下你会 **想要*
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 
 export default function Timer() {
   const [count, setCount] = useState(0);
@@ -1362,8 +1368,8 @@ button { margin: 10px; }
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -1377,7 +1383,7 @@ button { margin: 10px; }
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 
 export default function Timer() {
   const [count, setCount] = useState(0);
@@ -1458,8 +1464,8 @@ button { margin: 10px; }
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -1474,7 +1480,7 @@ button { margin: 10px; }
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 import { createConnection, sendMessage } from './chat.js';
 import { showNotification } from './notifications.js';
 
@@ -1599,8 +1605,8 @@ Effect Event 伴随着两秒的延迟被调用。如果你快速地从 travel �
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -1615,7 +1621,7 @@ Effect Event 伴随着两秒的延迟被调用。如果你快速地从 travel �
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 import { createConnection, sendMessage } from './chat.js';
 import { showNotification } from './notifications.js';
 
@@ -1737,8 +1743,8 @@ label { display: block; margin-top: 10px; }
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "canary",
+    "react-dom": "canary",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -1753,7 +1759,7 @@ label { display: block; margin-top: 10px; }
 
 ```js
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 import { createConnection, sendMessage } from './chat.js';
 import { showNotification } from './notifications.js';
 
