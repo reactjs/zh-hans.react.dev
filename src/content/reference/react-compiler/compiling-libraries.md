@@ -93,7 +93,7 @@ npm install react-compiler-runtime@rc
 
 ### 找不到运行时模块 {/*runtime-module-not-found*/}
 
-如果用户遇到“Cannot find module 'react-compiler-runtime'”错误:
+如果用户遇到 “Cannot find module 'react-compiler-runtime'” 错误:
 
 1. 确保该运行时包被列在 `dependencies` 中，而不是 `devDependencies`
 2. 检查您的打包工具是否将该运行时包含在了输出中
