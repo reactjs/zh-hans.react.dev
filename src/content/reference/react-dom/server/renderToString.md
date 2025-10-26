@@ -43,7 +43,7 @@ const html = renderToString(<App />);
 * `reactNode`：你要渲染为 HTML 的 React 节点。例如，一个 JSX 节点，就像 `<App />`。
 
 * **可选的** `options`：服务器渲染的对象。
-  * **可选的** `identifierPrefix`：[`useId`.](/reference/react/useId) 是 React 用于生成的ID的字符串前缀，用于避免在同一页面使用多个根时发生冲突。必须与传递给 [`hydrateRoot`.](/reference/react-dom/client/hydrateRoot#parameters) 的前缀相同。
+* **可选的** `identifierPrefix`：React 使用 [`useId`.](/reference/react/useId) 生成的 ID 的字符串前缀。用于避免在同一页面使用多个根时发生冲突。必须与传递给 [`hydrateRoot`.](/reference/react-dom/client/hydrateRoot#parameters) 的前缀相同。
 
 #### 返回 {/*returns*/}
 
@@ -105,9 +105,9 @@ app.use('/', (request, response) => {
 
 我们建议使用这些功能齐全的替代产品：
 
-* 如果你使用 Node.js，可使用 [`prerenderToNodeStream`.](/reference/react-dom/static/prerenderToNodeStream)
-* 如果你使用 Deno 或者一个 [Web 流](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的现代边缘运行环境，可使用 [`prerender`.](/reference/react-dom/static/prerender)
- 
+* 如果你使用 Node.js，可使用 [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream)。
+* 如果你使用 Deno 或者一个 [Web 流](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) 的现代边缘运行环境，可使用 [`prerender`](/reference/react-dom/static/prerender)。
+
 如果你的静态网站生成环境不支持流，你可以继续使用 `renderToString`。
 
 ---
