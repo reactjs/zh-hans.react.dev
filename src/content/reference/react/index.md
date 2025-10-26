@@ -40,7 +40,7 @@ React 编译器是一个构建时优化工具，可以自动为你的 React 组�
 
 ## React Hook 的 ESLint 插件 {/*eslint-plugin-react-hooks*/}
 
-[ 针对 React Hook 的 ESLint 插件](/reference/eslint-plugin-react-hooks) 帮助强制执行 React 的规则：
+[针对 React Hook 的 ESLint 插件](/reference/eslint-plugin-react-hooks) 有助于强制执行 React 的规则：
 
 * [Lints](/reference/eslint-plugin-react-hooks) —— 每种 lint 的详细文档和示例。 
 
