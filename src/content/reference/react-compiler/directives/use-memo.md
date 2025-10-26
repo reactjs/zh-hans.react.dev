@@ -5,7 +5,7 @@ titleForTitleTag: "'use memo' 指令"
 
 <Intro>
 
-`"use memo"`  用于标记一个函数，以便 React 编译器对其进行优化。
+`"use memo"` 用于标记一个函数，以便 React 编译器对其进行优化。
 
 </Intro>
 
@@ -104,7 +104,7 @@ function ButtonGroup({ buttons }) {
 module.exports = {
   plugins: [
     ['babel-plugin-react-compiler', {
-      compilationMode: 'annotation' // 或 'infer' 或 'all'
+      compilationMode: 'annotation' // 或 'infer' 和 'all'
     }]
   ]
 };
@@ -124,7 +124,7 @@ function ProductList({ products }) {
 }
 ```
 
-#### Infer 模式（默认） {/*infer-mode-example*/}
+#### Infer 模式（默认）{/*infer-mode-example*/}
 ```js
 // 会被自动记忆化，因为它的命名符合组件规范
 function ComplexDashboard({ data }) {
@@ -148,9 +148,9 @@ function simpleDisplay({ text }) {
 要确认你的组件是否被成功优化，可以：
 
 1. 检查你构建产物中被编译后的输出代码
-2.  使用 React 开发工具检查组件是否带有 Memo ✨ 徽章
+2. 使用 React 开发工具检查组件是否带有 Memo ✨ 徽章
 
-### 另请参阅 {/*see-also*/}
+### 参见 {/*see-also*/}
 
 * [`"use no memo"`](/reference/react-compiler/directives/use-no-memo) - 选择退出编译
 * [`compilationMode`](/reference/react-compiler/compilationMode) - 配置编译行为
