@@ -43,7 +43,7 @@ const html = renderToString(<App />);
 * `reactNode`：你要渲染为 HTML 的 React 节点。例如，一个 JSX 节点，就像 `<App />`。
 
 * **可选的** `options`：服务器渲染的对象。
-* **可选的** `identifierPrefix`：React 使用 [`useId`.](/reference/react/useId) 生成的 ID 的字符串前缀。用于避免在同一页面使用多个根时发生冲突。必须与传递给 [`hydrateRoot`.](/reference/react-dom/client/hydrateRoot#parameters) 的前缀相同。
+* **可选的** `identifierPrefix`：React 使用 [`useId`](/reference/react/useId) 生成的 ID 的字符串前缀。用于避免在同一页面使用多个根时发生冲突。必须与传递给 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot#parameters) 的前缀相同。
 
 #### 返回 {/*returns*/}
 
