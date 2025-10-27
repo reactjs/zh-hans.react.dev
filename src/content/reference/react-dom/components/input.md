@@ -526,7 +526,7 @@ function SignupForm() {
 <input type="checkbox" defaultChecked={something} />
 ```
 
-If you want [to control this checkbox with a state variable,](#controlling-an-input-with-a-state-variable) specify an `onChange` handler:
+如果你想 [用一个状态变量来控制这个复选框](#controlling-an-input-with-a-state-variable)，指定一个 `onChange` 处理：
 
 ```js
 // ✅ Good：具有 onChange 事件处理程序的受控多选框
