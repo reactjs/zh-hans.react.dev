@@ -7,7 +7,11 @@ translators:
 
 <Intro>
 
+<<<<<<< HEAD
 除了 [Hooks](/reference/react) 和 [Components](/reference/react/components) 之外，`react` 包还导出了一些其他的 API，这些 API 对于创建组件非常有用。本页面将介绍这些剩余的 React API。
+=======
+In addition to [Hooks](/reference/react/hooks) and [Components](/reference/react/components), the `react` package exports a few other APIs that are useful for defining components. This page lists all the remaining modern React APIs.
+>>>>>>> 2c7798dcc51fbd07ebe41f49e5ded4839a029f72
 
 </Intro>
 

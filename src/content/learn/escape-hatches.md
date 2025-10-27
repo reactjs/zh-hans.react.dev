@@ -312,6 +312,7 @@ React 提供了检查工具规则来检查是否正确地指定了 Effect 的依
 
 ## 将事件从 Effect 中分开 {/*separating-events-from-effects*/}
 
+<<<<<<< HEAD
 <Wip>
 
 本节描述了一个在稳定版本的 React 中 **尚未发布** 的实验性 API。
@@ -319,6 +320,9 @@ React 提供了检查工具规则来检查是否正确地指定了 Effect 的依
 </Wip>
 
 事件处理程序仅在再次执行相同的交互时重新运行。与事件处理程序不同，如果 Effect 读取的任何值（如 props 或 state）与上次渲染期间不同，则会重新同步。有时，需要混合两种行为：Effect 重新运行以响应某些值而不是其他值。
+=======
+Event handlers only re-run when you perform the same interaction again. Unlike event handlers, Effects re-synchronize if any of the values they read, like props or state, are different than during last render. Sometimes, you want a mix of both behaviors: an Effect that re-runs in response to some values but not others.
+>>>>>>> 2c7798dcc51fbd07ebe41f49e5ded4839a029f72
 
 Effect 中的所有代码都是 **响应式的**。如果它读取的某些响应式的值由于重新渲染而发生变化，它将再次运行。例如，如果 `roomId` 或 `theme` 发生变化，这个 Effect 将重新连接到聊天：
 
@@ -455,8 +459,8 @@ label { display: block; margin-top: 10px; }
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "latest",
+    "react-dom": "latest",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
