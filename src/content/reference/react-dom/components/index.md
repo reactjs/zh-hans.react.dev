@@ -32,9 +32,9 @@ React 支持所有浏览器内置的 [HTML](https://developer.mozilla.org/zh-CN/
 
 ---
 
-## Resource and Metadata Components {/*resource-and-metadata-components*/}
+## 资源和元数据组件 {/*resource-and-metadata-components*/}
 
-These built-in browser components let you load external resources or annotate the document with metadata:
+通过这些内置浏览器组件，您可以加载外部资源或为文档添加元数据注释：
 
 * [`<link>`](/reference/react-dom/components/link)
 * [`<meta>`](/reference/react-dom/components/meta)
@@ -42,7 +42,7 @@ These built-in browser components let you load external resources or annotate th
 * [`<style>`](/reference/react-dom/components/style)
 * [`<title>`](/reference/react-dom/components/title)
 
-They are special in React because React can render them into the document head, suspend while resources are loading, and enact other behaviors that are described on the reference page for each specific component.
+它们在 React 中是特殊的，因为 React 可以将它们渲染到文档头部，在资源加载时暂停，并执行参考页面中针对每个特定组件描述的其他行为。
 
 ---
 
@@ -166,27 +166,27 @@ React 支持所有浏览器内置的组件，包括：
 
 如果你使用 [`is`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/is) 属性渲染一个内置的浏览器 HTML 元素，它也会被视为自定义元素。
 
-#### Setting values on custom elements {/*attributes-vs-properties*/}
+#### 在自定义元素上设置值 {/*attributes-vs-properties*/}
 
-Custom elements have two methods of passing data into them:
+自定义元素有两种数据传递方法：
 
-1) Attributes: Which are displayed in markup and can only be set to string values
-2) Properties: Which are not displayed in markup and can be set to arbitrary JavaScript values
+1) Attributes：显示在标记中，只能设置为字符串值 
+2) Properties：不在标记中显示，可设置为任意 JavaScript 值
 
-By default, React will pass values bound in JSX as attributes:
+默认情况下，React 会将 JSX 中绑定的值作为 attributes 传递：
 
 ```jsx
 <my-element value="Hello, world!"></my-element>
 ```
 
-Non-string JavaScript values passed to custom elements will be serialized by default:
+默认情况下，传递给自定义元素的非字符串 JavaScript 值将被序列化：
 
 ```jsx
-// Will be passed as `"1,2,3"` as the output of `[1,2,3].toString()`
+// 将以 `[1,2,3].toString()` 的输出结果 `"1,2,3"` 的形式传递
 <my-element value={[1,2,3]}></my-element>
 ```
 
-React will, however, recognize an custom element's property as one that it may pass arbitrary values to if the property name shows up on the class during construction:
+不过，如果自定义元素的属性名称在构建过程中出现在类上，React 就会将其识别为可以传递任意值的 arbitrary：
 
 <Sandpack>
 
@@ -205,8 +205,8 @@ root.render(<App />);
 export class MyElement extends HTMLElement {
   constructor() {
     super();
-    // The value here will be overwritten by React 
-    // when initialized as an element
+    // 初始化为元素时
+    // 此处的值将被 React 覆盖
     this.value = undefined;
   }
 
@@ -224,9 +224,9 @@ export function App() {
 
 </Sandpack>
 
-#### Listening for events on custom elements {/*custom-element-events*/}
+#### 监听自定义元素上的事件 {/*custom-element-events*/}
 
-A common pattern when using custom elements is that they may dispatch [`CustomEvent`s](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) rather than accept a function to call when an event occur. You can listen for these events using an `on` prefix when binding to the event via JSX.
+使用自定义元素时的一个常见模式是，它们可能会派发 [`自定义事件`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent)，而不是在事件发生时接受函数调用。在通过 JSX 绑定事件时，可以使用 `on` 前缀来监听这些事件。
 
 <Sandpack>
 
@@ -285,12 +285,12 @@ export function App() {
 
 <Note>
 
-Events are case-sensitive and support dashes (`-`). Preserve the casing of the event and include all dashes when listening for custom element's events:
+事件区分大小写，并支持破折号（`-`）。在监听自定义元素事件时，请保留事件的大小写并包含所有破折号：
 
 ```jsx
-// Listens for `say-hi` events
+// 监听 `say-hi` 事件
 <my-element onsay-hi={console.log}></my-element>
-// Listens for `sayHi` events
+// 监听 `sayHi` 事件
 <my-element onsayHi={console.log}></my-element>
 ```
 
