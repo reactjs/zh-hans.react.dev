@@ -3,7 +3,7 @@ title: 逐步使用
 ---
 
 <Intro>
-React Compiler 可以逐步采用，允许你首先在代码库的特定部分尝试使用。本指南将向你展示如何在现有项目中逐步推广该编译器的使用。
+React 编译器可以逐步采用，允许你首先在代码库的特定部分尝试使用。本指南将向你展示如何在现有项目中逐步推广该编译器的使用。
 </Intro>
 
 <YouWillLearn>
@@ -19,7 +19,7 @@ React Compiler 可以逐步采用，允许你首先在代码库的特定部分�
 
 ## 为何采用渐进式迁移？ {/*why-incremental-adoption*/}
 
-React Compiler 的设计目的是自动优化你的整个代码库，但你不必一次性全部采用。渐进式采用让你能够控制推行过程，在扩展到其余部分之前，先在应用程序的小部分上测试编译器。
+React 编译器的设计目的是自动优化你的整个代码库，但你不必一次性全部采用。渐进式采用让你能够控制推行过程，在扩展到其余部分之前，先在应用程序的小部分上测试编译器。
 
 从小处着手有助于建立对编译器优化的信心。你可以验证应用在编译代码下的行为是否正确，测量性能提升，并识别代码库中的任何特定边缘情况。这种方法对于稳定性至关重要的生产应用程序尤其有价值。
 
@@ -70,7 +70,7 @@ module.exports = {
 // babel.config.js
 module.exports = {
   plugins: [
-    // Global plugins
+    // 全局插件
   ],
   overrides: [
     {
@@ -82,7 +82,7 @@ module.exports = {
     {
       test: './src/legacy/**/*.{js,jsx,ts,tsx}',
       plugins: [
-        // Different plugins for legacy code
+        // 针对旧代码的不同插件
       ]
     }
   ]
@@ -102,7 +102,7 @@ module.exports = {
       test: './src/experimental/**/*.{js,jsx,ts,tsx}',
       plugins: [
         ['babel-plugin-react-compiler', {
-          // options ...
+          // 选项 ...
         }]
       ]
     },
@@ -110,7 +110,7 @@ module.exports = {
       test: './src/production/**/*.{js,jsx,ts,tsx}',
       plugins: [
         ['babel-plugin-react-compiler', {
-          // options ...
+          // 选项  ...
         }]
       ]
     }
@@ -146,7 +146,7 @@ module.exports = {
 
 ```js
 function TodoList({ todos }) {
-  "use memo"; // Opt this component into compilation
+  "use memo"; // 这个组件在编译里的选项 
 
   const sortedTodos = todos.slice().sort();
 
@@ -160,7 +160,7 @@ function TodoList({ todos }) {
 }
 
 function useSortedData(data) {
-  "use memo"; // Opt this hook into compilation
+  "use memo"; // 这个组件在编译里的选项
 
   return data.slice().sort();
 }
@@ -204,7 +204,7 @@ module.exports = {
 ```js
 // ReactCompilerFeatureFlags.js
 export function isCompilerEnabled() {
-  // Use your feature flag system
+  // 使用你的特性开关系统 
   return getFeatureFlag('react-compiler-enabled');
 }
 ```
