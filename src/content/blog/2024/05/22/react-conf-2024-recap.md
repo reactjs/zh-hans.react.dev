@@ -17,7 +17,7 @@ description: 上周我们在内华达州亨德森举办了为期两天的 React 
 
 ---
 
-在 React Conf 2024 上，我们宣布了 [React 19 RC](/blog/2024/12/05/react-19)、[React Native 新架构 Beta 版](https://github.com/reactwg/react-native-new-architecture/discussions/189)，以及 [React Compiler](/learn/react-compiler) 的实验版本。社区同时登台宣布了 [React Router v7](https://remix.run/blog/merging-remix-and-react-router)、Expo Router 中的 [通用服务器组件](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=20765s)、[RedwoodJS](https://redwoodjs.com/blog/rsc-now-in-redwoodjs) 中的 React 服务器组件等等。
+在 React Conf 2024 上，我们宣布了 [React 19 RC](/blog/2024/12/05/react-19)、[React Native 新架构 Beta 版](https://github.com/reactwg/react-native-new-architecture/discussions/189)，以及 [React 编译器](/learn/react-compiler) 的实验版本。社区同时登台宣布了 [React Router v7](https://remix.run/blog/merging-remix-and-react-router)、Expo Router 中的 [通用服务器组件](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=20765s)、[RedwoodJS](https://redwoodjs.com/blog/rsc-now-in-redwoodjs) 中的 React 服务器组件等等。
 
 完整的 [第一天](https://www.youtube.com/watch?v=T8TZQ6k4SLE) 和 [第二天](https://www.youtube.com/watch?v=0ckOUBiuxVY) 的直播已经可以在线观看了。在这篇文章中，我们将总结活动中的演讲和公告。
 
@@ -45,12 +45,12 @@ _[点击这里观看第一天完整直播。](https://www.youtube.com/watch?v=T8
 - [为两台计算机设计的 React](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=18825s)，来自 [Dan Abramov](https://bsky.app/profile/danabra.mov)
 - [现在你应该理解了 React 服务器组件](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=11256s)，来自 [Kent C. Dodds](https://twitter.com/kentcdodds)
 
-最后，[Joe Savona](https://twitter.com/en_JS)、[Sathya Gunasekaran](https://twitter.com/_gsathya) 和 [Mofei Zhang](https://twitter.com/zmofei) 宣布 React Compiler 现已 [开源](https://github.com/facebook/react/pull/29061)，并分享了一个实验版本的 React Compiler 供大家尝试。
+最后，[Joe Savona](https://twitter.com/en_JS)、[Sathya Gunasekaran](https://twitter.com/_gsathya) 和 [Mofei Zhang](https://twitter.com/zmofei) 宣布 React 编译器现已 [开源](https://github.com/facebook/react/pull/29061)，并分享了一个实验版本的 React 编译器供大家尝试。
 
 有关使用 React Compile 及其工作原理的更多信息，请查看[文档](/learn/react-compiler)以及如下演讲：
 
 - [忘了 Memo 吧](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=12020s)，来自 [Lauren Tan](https://twitter.com/potetotes)
-- [深入解析 React Compiler](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=9313s)，来自 [Sathya Gunasekaran](https://twitter.com/_gsathya) 和 [Mofei Zhang](https://twitter.com/zmofei)
+- [深入解析 React 编译器](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=9313s)，来自 [Sathya Gunasekaran](https://twitter.com/_gsathya) 和 [Mofei Zhang](https://twitter.com/zmofei)
 
 观看完整的第一天主题演讲：
 
