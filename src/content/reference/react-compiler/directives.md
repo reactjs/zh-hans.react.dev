@@ -1,14 +1,14 @@
 ---
-title: Directives
+title: 指令
 ---
 
 <Intro>
-React Compiler directives are special string literals that control whether specific functions are compiled.
+React 编译器指令是特殊的字符串文字，用于控制特定函数是否被编译。
 </Intro>
 
 ```js
 function MyComponent() {
-  "use memo"; // Opt this component into compilation
+  "use memo"; // 选择让该组件加入编译
   return <div>{/* ... */}</div>;
 }
 ```
@@ -17,86 +17,86 @@ function MyComponent() {
 
 ---
 
-## Overview {/*overview*/}
+## 概览 {/*overview*/}
 
-React Compiler directives provide fine-grained control over which functions are optimized by the compiler. They are string literals placed at the beginning of a function body or at the top of a module.
+React 编译器指令让你能够精细化地控制哪些函数由编译器进行优化。它们是放置在函数体开头或模块顶部的字符串文字。
 
-### Available directives {/*available-directives*/}
+### 可用的指令 {/*available-directives*/}
 
-* **[`"use memo"`](/reference/react-compiler/directives/use-memo)** - Opts a function into compilation
-* **[`"use no memo"`](/reference/react-compiler/directives/use-no-memo)** - Opts a function out of compilation
+* **[`"use memo"`](/reference/react-compiler/directives/use-memo)** - 让一个函数选择加入编译
+* **[`"use no memo"`](/reference/react-compiler/directives/use-no-memo)** - 让一个函数选择退出编译
+  
+### 快速比较 {/*quick-comparison*/}
 
-### Quick comparison {/*quick-comparison*/}
-
-| Directive | Purpose | When to use |
+| 指令 | 目的 | 使用场景 |
 |-----------|---------|-------------|
-| [`"use memo"`](/reference/react-compiler/directives/use-memo) | Force compilation | When using `annotation` mode or to override `infer` mode heuristics |
-| [`"use no memo"`](/reference/react-compiler/directives/use-no-memo) | Prevent compilation | Debugging issues or working with incompatible code |
+| [`"use memo"`](/reference/react-compiler/directives/use-memo) | 强制编译 | 当使用 `annotation` 模式时，或需要覆盖 `infer` 模式的推断逻辑时 |
+| [`"use no memo"`](/reference/react-compiler/directives/use-no-memo) | 阻止编译 | 调试问题或处理不兼容的代码时 |
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Function-level directives {/*function-level*/}
+### 函数级别的指令 {/*function-level*/}
 
-Place directives at the beginning of a function to control its compilation:
+将指令放置在函数体的最开始，以控制该函数的编译行为：
 
 ```js
-// Opt into compilation
+// 选择加入编译
 function OptimizedComponent() {
   "use memo";
-  return <div>This will be optimized</div>;
+  return <div>这个组件将被优化</div>;
 }
 
-// Opt out of compilation
+// 选择退出编译
 function UnoptimizedComponent() {
   "use no memo";
-  return <div>This won't be optimized</div>;
+  return <div>这个组件不会被优化</div>;
 }
 ```
 
-### Module-level directives {/*module-level*/}
+### 模块级别的指令 {/*module-level*/}
 
-Place directives at the top of a file to affect all functions in that module:
+将指令放置在文件的顶部，以影响该模块中的所有函数：
 
 ```js
-// At the very top of the file
+// 在文件的最顶部
 "use memo";
 
-// All functions in this file will be compiled
+// 该文件中的所有函数都将被编译
 function Component1() {
-  return <div>Compiled</div>;
+  return <div>已编译</div>;
 }
 
 function Component2() {
-  return <div>Also compiled</div>;
+  return <div>同样已编译</div>;
 }
 
-// Can be overridden at function level
+// 可以在函数级别被覆盖
 function Component3() {
-  "use no memo"; // This overrides the module directive
-  return <div>Not compiled</div>;
+  "use no memo"; // 这会覆盖模块指令
+  return <div>未编译</div>;
 }
 ```
 
-### Compilation modes interaction {/*compilation-modes*/}
+### 与编译模式的交互 {/*compilation-modes*/}
 
-Directives behave differently depending on your [`compilationMode`](/reference/react-compiler/compilationMode):
+指令的行为因你的 [`compilationMode`](/reference/react-compiler/compilationMode) 配置而异：
 
-* **`annotation` mode**: Only functions with `"use memo"` are compiled
-* **`infer` mode**: Compiler decides what to compile, directives override decisions
-* **`all` mode**: Everything is compiled, `"use no memo"` can exclude specific functions
+* **`annotation` 模式**: 仅有带 `"use memo"` 的函数会被编译
+* **`infer` 模式**: 编译器自行决定编译哪些内容，指令可以覆盖编译器的决定
+* **`all` 模式**: 所有内容都会被编译，`"use no memo"` 可以用来排除特定的函数
 
 ---
 
-## Best practices {/*best-practices*/}
+## 最佳实践 {/*best-practices*/}
 
-### Use directives sparingly {/*use-sparingly*/}
+### 谨慎使用指令 {/*use-sparingly*/}
 
-Directives are escape hatches. Prefer configuring the compiler at the project level:
+指令是一种脱围机制 (escape hatch)。应优先考虑在项目级别进行编译器配置：
 
 ```js
-// ✅ Good - project-wide configuration
+// ✅ Good - 项目的全局配置
 {
   plugins: [
     ['babel-plugin-react-compiler', {
@@ -105,70 +105,70 @@ Directives are escape hatches. Prefer configuring the compiler at the project le
   ]
 }
 
-// ⚠️ Use directives only when needed
+// ⚠️ 仅在必要时使用指令
 function SpecialCase() {
-  "use no memo"; // Document why this is needed
+  "use no memo"; // 务必注释说明为何需要这样做
   // ...
 }
 ```
 
-### Document directive usage {/*document-usage*/}
+### 为指令的使用添加文档说明 {/*document-usage*/}
 
-Always explain why a directive is used:
+务必解释为何要使用某个指令：
 
 ```js
-// ✅ Good - clear explanation
+// ✅ 推荐 - 清晰的解释
 function DataGrid() {
-  "use no memo"; // TODO: Remove after fixing issue with dynamic row heights (JIRA-123)
-  // Complex grid implementation
+  "use no memo"; // TODO:修复动态行高问题后移除 (JIRA-123)
+  // 复杂的表格实现
 }
 
-// ❌ Bad - no explanation
+// ❌ 不推荐 - 没有解释
 function Mystery() {
   "use no memo";
   // ...
 }
 ```
 
-### Plan for removal {/*plan-removal*/}
+### 为移除指令制定计划 {/*plan-removal*/}
 
-Opt-out directives should be temporary:
+选择退出编译的指令应该是临时性的：
 
-1. Add the directive with a TODO comment
-2. Create a tracking issue
-3. Fix the underlying problem
-4. Remove the directive
+1. 添加指令，并附上 TODO 注释
+2. 创建一个跟踪此问题的事项
+3. 修复底层的问题
+4. 移除该指令
 
 ```js
 function TemporaryWorkaround() {
-  "use no memo"; // TODO: Remove after upgrading ThirdPartyLib to v2.0
+  "use no memo"; // TODO: 待 ThirdPartyLib 升级到 v2.0 后移除
   return <ThirdPartyComponent />;
 }
 ```
 
 ---
 
-## Common patterns {/*common-patterns*/}
+## 常见模式 {/*common-patterns*/}
 
-### Gradual adoption {/*gradual-adoption*/}
+### 渐进式引入 {/*gradual-adoption*/}
 
-When adopting the React Compiler in a large codebase:
+在大型代码库中引入 React 编译器时：
 
 ```js
-// Start with annotation mode
+// 从 annotation 模式开始
 {
   compilationMode: 'annotation'
 }
 
-// Opt in stable components
+// 将稳定的组件加入编译
 function StableComponent() {
   "use memo";
-  // Well-tested component
+  // 经过充分测试的组件
 }
 
-// Later, switch to infer mode and opt out problematic ones
+// 后续可以切换到 infer 模式，并将有问题的组件排除掉
 function ProblematicComponent() {
-  "use no memo"; // Fix issues before removing
+  "use no memo"; // 在移除此指令前先修复相关问题
   // ...
 }
 ```
@@ -176,23 +176,23 @@ function ProblematicComponent() {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 故障排除 {/*troubleshooting*/}
 
-For specific issues with directives, see the troubleshooting sections in:
+关于指令的具体问题，请参阅以下页面的问题排查部分：
 
-* [`"use memo"` troubleshooting](/reference/react-compiler/directives/use-memo#troubleshooting)
-* [`"use no memo"` troubleshooting](/reference/react-compiler/directives/use-no-memo#troubleshooting)
+* [`"use memo"` 问题排查](/reference/react-compiler/directives/use-memo#troubleshooting)
+* [`"use no memo"` 问题排查](/reference/react-compiler/directives/use-no-memo#troubleshooting)
 
-### Common issues {/*common-issues*/}
+### 常见问题 {/*common-issues*/}
 
-1. **Directive ignored**: Check placement (must be first) and spelling
-2. **Compilation still happens**: Check `ignoreUseNoForget` setting
-3. **Module directive not working**: Ensure it's before all imports
+1. **指令被忽略**: 检查指令的位置（必须在最前面）和拼写
+2. **代码仍然被编译**: 检查 `ignoreUseNoForget` 配置项
+3. **模块级指令不生效**: 确保它在所有 `import` 语句之前
 
 ---
 
-## See also {/*see-also*/}
+## 另请参阅 {/*see-also*/}
 
-* [`compilationMode`](/reference/react-compiler/compilationMode) - Configure how the compiler chooses what to optimize
-* [`Configuration`](/reference/react-compiler/configuration) - Full compiler configuration options
-* [React Compiler documentation](https://react.dev/learn/react-compiler) - Getting started guide
+* [`compilationMode`](/reference/react-compiler/compilationMode) - 配置编译器如何选择要优化的内容
+* [`Configuration`](/reference/react-compiler/configuration) - 完整的编译器配置选项
+* [React 编译器文档](https://react.dev/learn/react-compiler) - 入门指南
