@@ -21,7 +21,7 @@ title: 编译库
 将 React 编译器添加到你的库的构建过程中：
 
 <TerminalBlock>
-npm install -D babel-plugin-react-compiler@rc
+npm install -D babel-plugin-react-compiler@latest
 </TerminalBlock>
 
 配置你的构建工具来编译你的库。例如，使用 Babel：
@@ -45,13 +45,13 @@ module.exports = {
 我们推荐将 react-compiler-runtime 作为直接依赖安装：
 
 <TerminalBlock>
-npm install react-compiler-runtime@rc
+npm install react-compiler-runtime@latest
 </TerminalBlock>
 
 ```json
 {
   "dependencies": {
-    "react-compiler-runtime": "^19.1.0-rc.2"
+    "react-compiler-runtime": "^1.0.0"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0 || ^19.0.0"

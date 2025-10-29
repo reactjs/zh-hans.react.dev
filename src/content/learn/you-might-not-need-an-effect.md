@@ -1106,7 +1106,7 @@ input { margin-top: 10px; }
 
 <Sandpack>
 
-```js {expectedErrors: {'react-compiler': [8]}}
+```js
 import { useState, useMemo } from 'react';
 import { initialTodos, createTodo, getVisibleTodos } from './todos.js';
 

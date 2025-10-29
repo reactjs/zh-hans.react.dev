@@ -87,8 +87,7 @@ function Tooltip() {
 
 **所有这些都需要在浏览器重新绘制屏幕之前完成**。你不希望用户看到 tooltip 在移动。调用 `useLayoutEffect` 在浏览器重新绘制屏幕之前执行布局测量：
 
-{/* TODO(@poteto) - fixed by https://github.com/facebook/react/pull/34462. need a new release */}
-```js {expectedErrors: {'react-compiler': [7]}} {5-8}
+```js {5-8}
 function Tooltip() {
   const ref = useRef(null);
   const [tooltipHeight, setTooltipHeight] = useState(0); // 你还不知道真正的高度
@@ -188,8 +187,7 @@ export default function ButtonWithTooltip({ tooltipContent, ...rest }) {
 }
 ```
 
-{/* TODO(@poteto) - fixed by https://github.com/facebook/react/pull/34462. need a new release */}
-```js {expectedErrors: {'react-compiler': [11]}} src/Tooltip.js active
+```js src/Tooltip.js active
 import { useRef, useLayoutEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import TooltipContainer from './TooltipContainer.js';
@@ -339,8 +337,7 @@ export default function ButtonWithTooltip({ tooltipContent, ...rest }) {
 }
 ```
 
-{/* TODO(@poteto) - fixed by https://github.com/facebook/react/pull/34462. need a new release */}
-```js {expectedErrors: {'react-compiler': [11]}} src/Tooltip.js active
+```js src/Tooltip.js active
 import { useRef, useLayoutEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import TooltipContainer from './TooltipContainer.js';
@@ -487,8 +484,7 @@ export default function ButtonWithTooltip({ tooltipContent, ...rest }) {
 }
 ```
 
-{/* TODO(@poteto) - fixed by https://github.com/facebook/react/pull/34462. need a new release */}
-```js {expectedErrors: {'react-compiler': [11]}} src/Tooltip.js active
+```js src/Tooltip.js active
 import { useRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import TooltipContainer from './TooltipContainer.js';

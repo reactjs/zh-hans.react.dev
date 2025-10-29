@@ -573,7 +573,11 @@ export default function MyInput({ value, onChange }) {
 }
 ```
 
+<<<<<<< HEAD
 然后在组件的 props 参数中提取 `ref`，并将它作为参数传递给相关的 [内置组件](/reference/react-dom/components/common)。如下所示：
+=======
+And then add `ref` to the list of props your component accepts and pass `ref` as a prop to the relevant child [built-in component](/reference/react-dom/components/common) like this:
+>>>>>>> c0af2d01cba44225dece12fa9e71476ce30a4af3
 
 ```js {1,6}
 function MyInput({ value, onChange, ref }) {
