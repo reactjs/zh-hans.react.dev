@@ -1,8 +1,8 @@
 ---
 title: useEffectEvent
-version: canary
 ---
 
+<<<<<<< HEAD
 
 <Canary>
 
@@ -12,6 +12,8 @@ version: canary
 
 </Canary>
 
+=======
+>>>>>>> c0af2d01cba44225dece12fa9e71476ce30a4af3
 <Intro>
 
 `useEffectEvent` 是一个 React Hook，它可以让你将 Effect 中的非响应式逻辑提取到一个可复用的函数中，这个函数称为 [Effect Event](/learn/separating-events-from-effects#declaring-an-effect-event)。
@@ -63,9 +65,15 @@ function ChatRoom({ roomId, theme }) {
 
 #### 注意事项 {/*caveats*/}
 
+<<<<<<< HEAD
 - **仅在 Effect 中调用**：Effect Event 应该只在 Effect 中调用。在使用它的 Effect 之前定义它。不要将它传递给其他组件或 hooks。
 - **不是依赖数组的捷径**：不要用 `useEffectEvent` 来避免在 Effect 的依赖数组中声明依赖。这可能会隐藏 bug 并让代码更难理解。更推荐显式依赖，或使用 ref 来比较之前的值。
 - **用于非响应式逻辑**：仅在逻辑不依赖变化的值时使用 `useEffectEvent` 来提取。
+=======
+- **Only call inside Effects:** Effect Events should only be called within Effects. Define them just before the Effect that uses them. Do not pass them to other components or hooks. The [`eslint-plugin-react-hooks`](/reference/eslint-plugin-react-hooks) linter (version 6.1.1 or higher) will enforce this restriction to prevent calling Effect Events in the wrong context.
+- **Not a dependency shortcut:** Do not use `useEffectEvent` to avoid specifying dependencies in your Effect's dependency array. This can hide bugs and make your code harder to understand. Prefer explicit dependencies or use refs to compare previous values if needed.
+- **Use for non-reactive logic:** Only use `useEffectEvent` to extract logic that does not depend on changing values.
+>>>>>>> c0af2d01cba44225dece12fa9e71476ce30a4af3
 
 ___
 
@@ -98,4 +106,11 @@ function Page({ url }) {
 }
 ```
 
+<<<<<<< HEAD
 你可以将 `url` 这样的响应式值作为参数传递给 Effect Event。这让你可以访问最新的值，而不必因为这些值的改变而让 Effect 重新运行。
+=======
+In this example, the Effect should re-run after a render when `url` changes (to log the new page visit), but it should **not** re-run when `numberOfItems` changes. By wrapping the logging logic in an Effect Event, `numberOfItems` becomes non-reactive. It's always read from the latest value without triggering the Effect.
+
+You can pass reactive values like `url` as arguments to the Effect Event to keep them reactive while accessing the latest non-reactive values inside the event.
+
+>>>>>>> c0af2d01cba44225dece12fa9e71476ce30a4af3
