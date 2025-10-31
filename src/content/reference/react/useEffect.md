@@ -1691,6 +1691,7 @@ button { margin-left: 10px; }
 
 ### 从 Effect 读取最新的 props 和 state {/*reading-the-latest-props-and-state-from-an-effect*/}
 
+<<<<<<< HEAD
 <Canary>
 
 **`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。
@@ -1700,6 +1701,9 @@ button { margin-left: 10px; }
 </Canary>
 
 默认情况下，在 Effect 中读取响应式值时，必须将其添加为依赖项。这样可以确保你的 Effect 对该值的每次更改都“作出响应”。对于大多数依赖项，这是你想要的行为。
+=======
+By default, when you read a reactive value from an Effect, you have to add it as a dependency. This ensures that your Effect "reacts" to every change of that value. For most dependencies, that's the behavior you want.
+>>>>>>> e57e9122852b5c64129dd71b5beb1e982be6708d
 
 **然而，有时你想要从 Effect 中获取 **最新的** props 和 state，而不“响应”它们**。例如，假设你想记录每次页面访问时购物车中的商品数量：
 
@@ -1712,7 +1716,11 @@ function Page({ url, shoppingCart }) {
 }
 ```
 
+<<<<<<< HEAD
 **如果你想在每次 `url` 更改后记录一次新的页面访问，而不是在 `shoppingCart` 更改后记录，该怎么办**？你不能在不违反 [响应规则](#specifying-reactive-dependencies) 的情况下将 `shoppingCart` 从依赖项中移除。然而，你可以表达你 **不希望** 某些代码对更改做出“响应”，即使它是在 Effect 内部调用的。使用 [`useEffectEvent`](/reference/react/useEffectEvent) Hook [声明 **Effect 事件**](/learn/separating-events-from-effects#declaring-an-effect-event)，并将读取 `shoppingCart` 的代码移入其中：
+=======
+**What if you want to log a new page visit after every `url` change, but *not* if only the `shoppingCart` changes?** You can't exclude `shoppingCart` from dependencies without breaking the [reactivity rules.](#specifying-reactive-dependencies) However, you can express that you *don't want* a piece of code to "react" to changes even though it is called from inside an Effect. [Declare an *Effect Event*](/learn/separating-events-from-effects#declaring-an-effect-event) with the [`useEffectEvent`](/reference/react/useEffectEvent) Hook, and move the code reading `shoppingCart` inside of it:
+>>>>>>> e57e9122852b5c64129dd71b5beb1e982be6708d
 
 ```js {2-4,7,8}
 function Page({ url, shoppingCart }) {
