@@ -130,7 +130,7 @@ module.exports = {
 较旧的 React 版本需要安装运行环境包并设置 target：
 
 ```bash
-npm install react-compiler-runtime@rc
+npm install react-compiler-runtime@latest
 ```
 
 ```js
