@@ -33,7 +33,11 @@ function MessageComponent({ messagePromise }) {
 
 与 React Hook 不同的是，可以在循环和条件语句（如 `if`）中调用 `use`。但需要注意的是，调用 `use` 的函数仍然必须是一个组件或 Hook。
 
+<<<<<<< HEAD
 当使用 Promise 调用 `use` API 时，它会与 [`Suspense`](/reference/react/Suspense) 和 [错误边界](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) 集成。当传递给 `use` 的 Promise 处于 pending 时，调用 `use` 的组件也会 **挂起**。如果调用 `use` 的组件被包装在 Suspense 边界内，将显示后备 UI。一旦 Promise 被解决，Suspense 后备方案将被使用 `use` API 返回的数据替换。如果传递给 `use` 的 Promise 被拒绝，将显示最近错误边界的后备 UI。
+=======
+When called with a Promise, the `use` API integrates with [`Suspense`](/reference/react/Suspense) and [Error Boundaries](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). The component calling `use` *suspends* while the Promise passed to `use` is pending. If the component that calls `use` is wrapped in a Suspense boundary, the fallback will be displayed.  Once the Promise is resolved, the Suspense fallback is replaced by the rendered components using the data returned by the `use` API. If the Promise passed to `use` is rejected, the fallback of the nearest Error Boundary will be displayed.
+>>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 [参见下方更多示例](#usage)。
 
@@ -320,16 +324,27 @@ export default async function App() {
 
 在某些情况下，传递给 `use` 的 Promise 可能会被拒绝（rejected）。可以通过以下方式处理 rejected Promise：
 
+<<<<<<< HEAD
 1. [使用错误边界向用户显示错误信息](#displaying-an-error-to-users-with-error-boundary)。
 2. [使用 `Promise.catch` 提供替代值](#providing-an-alternative-value-with-promise-catch)。
+=======
+1. [Displaying an error to users with an Error Boundary.](#displaying-an-error-to-users-with-error-boundary)
+2. [Providing an alternative value with `Promise.catch`](#providing-an-alternative-value-with-promise-catch)
+>>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 <Pitfall>
 不能在 try-catch 块中调用 `use`。可以选择将组件 [包装在错误边界中](#displaying-an-error-to-users-with-error-boundary)，或者 [使用 Promise `.catch` 方法提供替代值给 `use`](#providing-an-alternative-value-with-promise-catch)。
 </Pitfall>
 
+<<<<<<< HEAD
 #### 使用错误边界将错误展示给用户 {/*displaying-an-error-to-users-with-error-boundary*/}
 
 如果希望在 Promise 被拒绝（rejected）时向用户显示错误信息，可以使用 [错误边界](/reference/react/Component#catching-rendering-errors-with-an-error-boundary)。如果需要使用错误边界，请将调用 `use` API 的组件包装在错误边界中。如果传递给 `use` 的 Promise 被拒绝（rejected），将显示错误边界的后备方案。
+=======
+#### Displaying an error to users with an Error Boundary {/*displaying-an-error-to-users-with-error-boundary*/}
+
+If you'd like to display an error to your users when a Promise is rejected, you can use an [Error Boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). To use an Error Boundary, wrap the component where you are calling the `use` API in an Error Boundary. If the Promise passed to `use` is rejected the fallback for the Error Boundary will be displayed.
+>>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 <Sandpack>
 
@@ -440,7 +455,11 @@ export default function App() {
 
 ### "Suspense Exception: This is not a real error!" {/*suspense-exception-error*/}
 
+<<<<<<< HEAD
 你要么是在 React 组件或 Hook 函数之外调用了 `use`，或者在 try-catch 块中调用了 `use`。如果你在 try-catch 块中调用 `use`，请将组件包裹在错误边界中，或者使用 Promise 的 `catch` 方法来捕获错误并提供给替代值。[参见这些示例](#dealing-with-rejected-promises)。
+=======
+You are either calling `use` outside of a React Component or Hook function, or calling `use` in a try–catch block. If you are calling `use` inside a try–catch block, wrap your component in an Error Boundary, or call the Promise's `catch` to catch the error and resolve the Promise with another value. [See these examples](#dealing-with-rejected-promises).
+>>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 如果在 React 组件或 Hook 函数之外调用 `use`，请将 `use` 调用移至 React 组件或 Hook 函数中。
 

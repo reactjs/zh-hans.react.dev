@@ -20,7 +20,11 @@ React 以及许多其他 UI 库，将 UI 建模为树。将应用程序视为树
 
 ## 将 UI 视为树 {/*your-ui-as-a-tree*/}
 
+<<<<<<< HEAD
 树是项目和 UI 之间的关系模型，通常使用树结构来表示 UI。例如，浏览器使用树结构来建模 HTML（[DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction)）与CSS（[CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model)）。移动平台也使用树来表示其视图层次结构。
+=======
+Trees are a relationship model between items. The UI is often represented using tree structures. For example, browsers use tree structures to model HTML ([DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction)) and CSS ([CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model)). Mobile platforms also use trees to represent their view hierarchy.
+>>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 <Diagram name="preserving_state_dom_tree" height={193} width={864} alt="水平排列的三个部分的图表。第一部分有三个垂直堆叠的矩形，并分别标记为 Component A、Component B 和 Component C。向下一个窗格过渡的是一个带有 React 标志的箭头，标记为 React。中间部分包含一棵组件树，根节点标记为 A，有两个子节点分别标记为 B 和 C。下一个部分再次使用带有 React 标志的箭头进行过渡，标记为 React DOM。第三和最后一个部分是浏览器的线框图，包含一棵有 8 个节点的树，其中只有一个子集被突出显示（表示中间部分的子树）。
 ">

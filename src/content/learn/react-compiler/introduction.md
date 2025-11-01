@@ -16,11 +16,15 @@ React 编译器是一个新的构建时工具，它可以自动优化你的 Reac
 
 </YouWillLearn>
 
+<<<<<<< HEAD
 <Note>
 React 编译器目前处于发布候选（RC）阶段。我们现在建议所有人尝试使用该编译器并提供反馈。最新的 RC 版本可以通过 `@rc` 标签找到。
 </Note>
 
 ## React 编译器是做什么的？ {/*what-does-react-compiler-do*/}
+=======
+## What does React Compiler do? {/*what-does-react-compiler-do*/}
+>>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 React 编译器会在构建时自动优化你的 React 应用。通常情况下，即使不进行优化，React 的性能也已经足够快，但有时你需要手动对组件和值进行记忆化（memoization）以保持应用的响应速度。这种手动记忆化既繁琐又容易出错，并且会增加需要维护的额外代码。React 编译器为你自动完成这些优化，减轻了你的思维负担，使你可以专注于功能的开发。
 
@@ -28,7 +32,7 @@ React 编译器会在构建时自动优化你的 React 应用。通常情况下�
 
 没有编译器的情况下，你需要手动对组件和值进行记忆化以优化重新渲染：
 
-```js {expectedErrors: {'react-compiler': [4]}}
+```js
 import { useMemo, useCallback, memo } from 'react';
 
 const ExpensiveComponent = memo(function ExpensiveComponent({ data, onClick }) {
@@ -156,7 +160,11 @@ function TableContainer({ items }) {
 
 ### 使用起来安全吗？ {/*is-it-safe-to-use*/}
 
+<<<<<<< HEAD
 React 编译器目前已进入 RC 阶段，并已在生产环境中进行了广泛测试。虽然像 Meta 这样的公司已经在生产中使用了它，但是否将编译器部署到你的应用程序生产环境，将取决于你的代码库状况以及你对 [React 规则](/reference/rules) 的遵循程度。
+=======
+React Compiler is now stable and has been tested extensively in production. While it has been used in production at companies like Meta, rolling out the compiler to production for your app will depend on the health of your codebase and how well you've followed the [Rules of React](/reference/rules).
+>>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 ## 支持哪些构建工具？ {/*what-build-tools-are-supported*/}
 
@@ -168,9 +176,19 @@ Next.js 用户可以通过使用 [v15.3.1](https://github.com/vercel/next.js/rel
 
 ## 关于 useMemo、useCallback 和 React.memo 我应该怎么做？ {/*what-should-i-do-about-usememo-usecallback-and-reactmemo*/}
 
+<<<<<<< HEAD
 React 编译器能够比手动使用 [`useMemo`](/reference/react/useMemo)、[`useCallback`](/reference/react/useCallback) 和 [`React.memo`](/reference/react/memo) 更精确和细致地添加自动记忆化。如果你选择保留手动记忆化，React 编译器会分析它们，并判断你的手动记忆化是否与其自动推断出的记忆化一致。如果不一致，编译器将选择放弃优化该组件。
 
 这样做是出于谨慎考虑，因为手动记忆化常见的反模式是为了保证程序的正确性。这意味着你的应用依赖于对特定值进行记忆化才能正常运行。例如，为了防止无限循环，你可能会记忆某些值来阻止 `useEffect` 被触发。这违反了 React 的规则，但因为编译器自动移除手动记忆化可能会有潜在危险，所以会直接放弃优化。你应该手动移除自己的手动记忆化代码，并验证应用是否仍能按预期运行。
+=======
+By default, React Compiler will memoize your code based on its analysis and heuristics. In most cases, this memoization will be as precise, or moreso, than what you may have written.
+
+However, in some cases developers may need more control over memoization. The `useMemo` and `useCallback` hooks can continue to be used with React Compiler as an escape hatch to provide control over which values are memoized. A common use-case for this is if a memoized value is used as an effect dependency, in order to ensure that an effect does not fire repeatedly even when its dependencies do not meaningfully change.
+
+For new code, we recommend relying on the compiler for memoization and using `useMemo`/`useCallback` where needed to achieve precise control.
+
+For existing code, we recommend either leaving existing memoization in place (removing it can change compilation output) or carefully testing before removing the memoization.
+>>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 ## 尝试 React 编译器 {/*try-react-compiler*/}
 

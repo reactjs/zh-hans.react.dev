@@ -10,8 +10,14 @@ React 文档位于 [react.dev](https://react.dev)，提供最新版本 React 的
 
 我们致力于在主要版本内保持文档的更新，并不会为每个次要版本或补丁版本发布单独的文档版本。当一个新的主要版本发布时，我们会将前一个版本的文档存档为 `x.react.dev`。有关更多信息，请参阅我们的[版本控制政策](/community/versioning-policy)。
 
+<<<<<<< HEAD
 你可以在下方找到以前主要版本的存档。
 ## 最新版本：19.1 {/*latest-version*/}
+=======
+You can find an archive of previous major versions below.
+
+## Latest version: 19.2 {/*latest-version*/}
+>>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 - [react.dev](https://react.dev) {/*docs-19*/}
 
@@ -40,6 +46,8 @@ React 文档位于 [react.dev](https://react.dev)，提供最新版本 React 的
 - [React v19](/blog/2024/12/05/react-19)
 - [React 19 Upgrade Guide](/blog/2024/04/25/react-19-upgrade-guide)
 - [React Compiler Beta Release](/blog/2024/10/21/react-compiler-beta-release)
+- [React Compiler v1.0](/blog/2025/10/07/react-compiler-1)
+- [React 19.2](/blog/2025/10/01/react-19-2)
 
 **Talks**
 - [React 19 Keynote](https://www.youtube.com/watch?v=lyEKhv8-3n0)
@@ -50,7 +58,12 @@ React 文档位于 [react.dev](https://react.dev)，提供最新版本 React 的
 - [React Compiler Case Studies](https://www.youtube.com/watch?v=lvhPq5chokM)
 - [React 19 Deep Dive: Coordinating HTML](https://www.youtube.com/watch?v=IBBN-s77YSI)
 
+<<<<<<< HEAD
 **发布版本**
+=======
+**Releases**
+- [v19.2.0 (October, 2025)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1920-october-1st-2025)
+>>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 - [v19.1.0 (March, 2025)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1910-march-28-2025)
 - [v19.0.0 (December, 2024)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1900-december-5-2024)
 
@@ -295,7 +308,11 @@ React 文档位于 [react.dev](https://react.dev)，提供最新版本 React 的
 
 React 于 2013 年 5 月 29 日开源。初始提交为：[`75897c`: Initial public release](https://github.com/facebook/react/commit/75897c2dcd1dd3a6ca46284dd37e13d22b4b16b4)。
 
+<<<<<<< HEAD
 请参阅第一篇博客文章：[Why did we build React?](https://legacy.reactjs.org/blog/2013/06/05/why-react.html)
+=======
+See the first blog post: [Why did we build React?](https://legacy.reactjs.org/blog/2013/06/05/why-react.html)
+>>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 React 于 2013 年在 Facebook 西雅图办公室开源：
 
