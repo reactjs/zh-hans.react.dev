@@ -14,7 +14,7 @@ const MemoizedComponent = memo(SomeComponent, arePropsEqual?)
 
 <Note>
 
-[React Compiler](/learn/react-compiler) 会自动为所有组件应用与 `memo` 等价的优化，从而减少手动记忆化的需要。你可以使用编译器自动处理组件记忆化。
+[React 编译器](/learn/react-compiler) 会自动为所有组件应用与 `memo` 等价的优化，从而减少手动记忆化的需要。你可以使用编译器自动处理组件记忆化。
 
 </Note>
 
@@ -363,13 +363,13 @@ function arePropsEqual(oldProps, newProps) {
 
 ---
 
-### 使用 React Compiler 时我还需要 React.memo 吗？ {/*react-compiler-memo*/}
+### 使用 React 编译器时我还需要 React.memo 吗？ {/*react-compiler-memo*/}
 
-当你启用 [React Compiler](/learn/react-compiler) 后，通常不再需要 `React.memo` 了。编译器会为你自动优化组件的重新渲染。
+当你启用 [React 编译器](/learn/react-compiler) 后，通常不再需要 `React.memo` 了。编译器会为你自动优化组件的重新渲染。
 
 其工作方式如下：
 
-在 **未启用 React Compiler** 时，你需要 `React.memo` 来避免不必要的重新渲染：
+在 **未启用 React 编译器** 时，你需要 `React.memo` 来避免不必要的重新渲染：
 
 ```js
 // 父级每秒重新渲染一次
@@ -398,7 +398,7 @@ const ExpensiveChild = memo(function ExpensiveChild({ name }) {
 });
 ```
 
-**启用 React Compiler** 后，相同的优化会自动发生：
+**启用 React 编译器** 后，相同的优化会自动发生：
 
 ```js
 // 无需 memo - 编译器会自动阻止重新渲染 
@@ -408,7 +408,7 @@ function ExpensiveChild({ name }) {
 }
 ```
 
-下面是 React Compiler 生成代码的关键部分：
+下面是 React 编译器生成代码的关键部分：
 
 ```js {6-12}
 function Parent() {
@@ -429,12 +429,12 @@ function Parent() {
 
 注意这些高亮行: 编译器会包裹 `<ExpensiveChild name="John" />` 在缓存里检查。由于 `name` prop 始终是 `"John"`, 这段 JSX 只创建一次，并在每次父组件重新渲染时重用。这正是 `React.memo` 的作用 - 当子组件的 props 没有变化时，防止其重新渲染。
 
-React Compiler 会自动：
+React 编译器会自动：
 1. 追踪传给 `ExpensiveChild` 的 `name` 有无变化
 2. 为 `<ExpensiveChild name="John" />` 重用先前创建的 JSX
 3. 完全跳过 `ExpensiveChild` 的重新渲染
 
-这意味着 **在使用 React Compiler 时，你可以放心移除 `React.memo`**. 编译器会自动提供相同的优化，让代码更简洁更易维护。
+这意味着 **在使用 React 编译器时，你可以放心移除 `React.memo`**. 编译器会自动提供相同的优化，让代码更简洁更易维护。
 
 <Note>
 

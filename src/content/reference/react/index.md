@@ -30,21 +30,21 @@ React-dom 仅支持在 web 应用程序中使用（在浏览器 DOM 环境中运
 * [服务端 API](/reference/react-dom/server) —— `react-dom/server` API 允许在服务器端将 React 组件渲染为 HTML。
 
 
-## React Compiler {/*react-compiler*/}
+## React 编译器 {/*react-compiler*/}
 
-React Compiler 是一个构建时优化工具，可以自动为你的 React 组件和数值添加记忆优化（memoization）：
+React 编译器是一个构建时优化工具，可以自动为你的 React 组件和数值添加记忆优化（memoization）：
 
-* [配置](/reference/react-compiler/configuration) —— React Compiler 的配置选项。
+* [配置](/reference/react-compiler/configuration) —— React 编译器的配置选项。
 * [指令](/reference/react-compiler/directives) —— 用于控制编译的函数级指令。
 * [编译库](/reference/react-compiler/compiling-libraries) —— 发布预编译库代码的指南。
 
-## ESLint Plugin React Hooks {/*eslint-plugin-react-hooks*/}
+## React Hook 的 ESLint 插件 {/*eslint-plugin-react-hooks*/}
 
-The [ESLint plugin for React Hooks](/reference/eslint-plugin-react-hooks) helps enforce the Rules of React:
+[针对 React Hook 的 ESLint 插件](/reference/eslint-plugin-react-hooks) 有助于强制执行 React 的规则：
 
-* [Lints](/reference/eslint-plugin-react-hooks) - Detailed documentation for each lint with examples.
+* [Lints](/reference/eslint-plugin-react-hooks) —— 每种 lint 的详细文档和示例。 
 
-## Rules of React {/*rules-of-react*/}
+## React 的规则 {/*rules-of-react*/}
 
 React 有一套表达模式的俗语与规则，它们以一种易于理解并能帮助实现高质量应用程序的方式表达出来：
 
