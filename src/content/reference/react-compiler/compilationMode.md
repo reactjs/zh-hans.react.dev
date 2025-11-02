@@ -4,13 +4,13 @@ title: compilationMode
 
 <Intro>
 
-The `compilationMode` option controls how the React Compiler selects which functions to compile.
+`compilationMode` 选项控制 React 编译器如何选择要编译的函数。
 
 </Intro>
 
 ```js
 {
-  compilationMode: 'infer' // or 'annotation', 'syntax', 'all'
+  compilationMode: 'infer' // 或 'annotation'、'syntax' 和 'all'
 }
 ```
 
@@ -18,48 +18,48 @@ The `compilationMode` option controls how the React Compiler selects which funct
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `compilationMode` {/*compilationmode*/}
 
-Controls the strategy for determining which functions the React Compiler will optimize.
+控制用于确定 React 编译器将优化哪些函数的策略。
 
-#### Type {/*type*/}
+#### 类型 {/*type*/}
 
 ```
 'infer' | 'syntax' | 'annotation' | 'all'
 ```
 
-#### Default value {/*default-value*/}
+#### 默认值 {/*default-value*/}
 
 `'infer'`
 
-#### Options {/*options*/}
+#### 选项 {/*options*/}
 
-- **`'infer'`** (default): The compiler uses intelligent heuristics to identify React components and hooks:
-  - Functions explicitly annotated with `"use memo"` directive
-  - Functions that are named like components (PascalCase) or hooks (`use` prefix) AND create JSX and/or call other hooks
+- **`'infer'`**（默认值）：编译器使用智能的启发式方法来识别 React 组件和 Hook：
+  - 明确使用 `"use memo"` 指令注释的函数 
+  - 命名类似组件（PascalCase）或 Hook（`use` 前缀）并且创建了 JSX 和/或调用了其他 Hook 的函数
 
-- **`'annotation'`**: Only compile functions explicitly marked with the `"use memo"` directive. Ideal for incremental adoption.
+- **`'annotation'`**：仅编译使用 `"use memo"` 指示符明确标记的函数。是增量采用的理想选择。
 
-- **`'syntax'`**: Only compile components and hooks that use Flow's [component](https://flow.org/en/docs/react/component-syntax/) and [hook](https://flow.org/en/docs/react/hook-syntax/) syntax.
+- **`'syntax'`**：仅编译使用 Flow 的 [component](https://flow.org/en/docs/react/component-syntax/) 和 [hook](https://flow.org/en/docs/react/hook-syntax/) 语法的组件和 Hook。
 
-- **`'all'`**: Compile all top-level functions. Not recommended as it may compile non-React functions.
+- **`'all'`**：编译所有顶层函数。不推荐，因为它可能会编译非 React 函数。
 
-#### Caveats {/*caveats*/}
+#### 注意事项 {/*caveats*/}
 
-- The `'infer'` mode requires functions to follow React naming conventions to be detected
-- Using `'all'` mode may negatively impact performance by compiling utility functions
-- The `'syntax'` mode requires Flow and won't work with TypeScript
-- Regardless of mode, functions with `"use no memo"` directive are always skipped
+- `'infer'`  模式要求函数遵循 React 的命名约定才能被检测到
+- 使用 `'all'` 模式可能会因编译工具函数而对性能产生负面影响
+- `'syntax'` 模式需要 Flow，无法与 TypeScript 一起使用
+- 无论在哪种模式下，带有 `"use no memo"` 指令的函数总会被跳过
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-### Default inference mode {/*default-inference-mode*/}
+### 默认推断模式 {/*default-inference-mode*/}
 
-The default `'infer'` mode works well for most codebases that follow React conventions:
+默认的 `'infer'` 模式适用于大多数遵循 React 约定的代码库：
 
 ```js
 {
@@ -67,35 +67,35 @@ The default `'infer'` mode works well for most codebases that follow React conve
 }
 ```
 
-With this mode, these functions will be compiled:
+在此模式下，以下函数将被编译：
 
 ```js
-// ✅ Compiled: Named like a component + returns JSX
+// ✅ 已编译：命名类似组件 + 返回 JSX
 function Button(props) {
   return <button>{props.label}</button>;
 }
 
-// ✅ Compiled: Named like a hook + calls hooks
+// ✅ 已编译：命名类似 Hook + 调用 Hook
 function useCounter() {
   const [count, setCount] = useState(0);
   return [count, setCount];
 }
 
-// ✅ Compiled: Explicit directive
+// ✅ 已编译：显式指令
 function expensiveCalculation(data) {
   "use memo";
   return data.reduce(/* ... */);
 }
 
-// ❌ Not compiled: Not a component/hook pattern
+// ❌ 未编译：不是组件/Hook 模式
 function calculateTotal(items) {
   return items.reduce((a, b) => a + b, 0);
 }
 ```
 
-### Incremental adoption with annotation mode {/*incremental-adoption*/}
+### 使用注解模式进行增量采用 {/*incremental-adoption*/}
 
-For gradual migration, use `'annotation'` mode to only compile marked functions:
+为了逐步迁移，可以使用 `'annotation'` 模式，仅编译被标记的函数：
 
 ```js
 {
@@ -103,10 +103,10 @@ For gradual migration, use `'annotation'` mode to only compile marked functions:
 }
 ```
 
-Then explicitly mark functions to compile:
+然后显式地标记要编译的函数：
 
 ```js
-// Only this function will be compiled
+// 只有这个函数会被编译
 function ExpensiveList(props) {
   "use memo";
   return (
@@ -118,15 +118,15 @@ function ExpensiveList(props) {
   );
 }
 
-// This won't be compiled without the directive
+// 如果没有指令，这个函数将不会被编译
 function NormalComponent(props) {
   return <div>{props.content}</div>;
 }
 ```
 
-### Using Flow syntax mode {/*flow-syntax-mode*/}
+### 使用 Flow 语法模式 {/*flow-syntax-mode*/}
 
-If your codebase uses Flow instead of TypeScript:
+如果你的代码库使用 Flow 而不是 TypeScript：
 
 ```js
 {
@@ -134,35 +134,35 @@ If your codebase uses Flow instead of TypeScript:
 }
 ```
 
-Then use Flow's component syntax:
+然后使用 Flow 的组件语法：
 
 ```js
-// Compiled: Flow component syntax
+// 已编译：Flow 组件语法
 component Button(label: string) {
   return <button>{label}</button>;
 }
 
-// Compiled: Flow hook syntax
+// 已编译：Flow hook 语法
 hook useCounter(initial: number) {
   const [count, setCount] = useState(initial);
   return [count, setCount];
 }
 
-// Not compiled: Regular function syntax
+// 未编译：常规函数语法
 function helper(data) {
   return process(data);
 }
 ```
 
-### Opting out specific functions {/*opting-out*/}
+### 选择性地跳过特定函数 {/*opting-out*/}
 
-Regardless of compilation mode, use `"use no memo"` to skip compilation:
+无论编译模式如何，都可以使用 `"use no memo"` 来跳过编译：
 
 ```js
 function ComponentWithSideEffects() {
-  "use no memo"; // Prevent compilation
+  "use no memo"; // 阻止编译
 
-  // This component has side effects that shouldn't be memoized
+  // 这个组件有不应被 memoize 的副作用
   logToAnalytics('component_rendered');
 
   return <div>Content</div>;
@@ -171,29 +171,29 @@ function ComponentWithSideEffects() {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 故障排除 {/*troubleshooting*/}
 
-### Component not being compiled in infer mode {/*component-not-compiled-infer*/}
+### 在 infer 模式下组件未被编译 {/*component-not-compiled-infer*/}
 
-In `'infer'` mode, ensure your component follows React conventions:
+在 `'infer'` 模式下，请确保你的组件遵循 React 的约定：
 
 ```js
-// ❌ Won't be compiled: lowercase name
+// ❌ 不会编译：小写名称
 function button(props) {
   return <button>{props.label}</button>;
 }
 
-// ✅ Will be compiled: PascalCase name
+// ✅ 将会编译：PascalCase 名称
 function Button(props) {
   return <button>{props.label}</button>;
 }
 
-// ❌ Won't be compiled: doesn't create JSX or call hooks
+// ❌ 不会编译：未创建 JSX 或调用 Hook
 function useData() {
   return window.localStorage.getItem('data');
 }
 
-// ✅ Will be compiled: calls a hook
+// ✅ 将会编译：调用了一个 Hook
 function useData() {
   const [data] = useState(() => window.localStorage.getItem('data'));
   return data;
