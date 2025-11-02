@@ -42,7 +42,7 @@ title: compilationMode
 
 - **`'annotation'`**：仅编译使用 `"use memo"` 指示符明确标记的函数。是增量采用的理想选择。
 
-- **`'syntax'`**：仅编译使用 Flow 的 [component](https://flow.org/en/docs/react/component-syntax/) and [hook](https://flow.org/en/docs/react/hook-syntax/) 语法的组件和 Hook。
+- **`'syntax'`**：仅编译使用 Flow 的 [component](https://flow.org/en/docs/react/component-syntax/) 和 [hook](https://flow.org/en/docs/react/hook-syntax/) 语法的组件和 Hook。
 
 - **`'all'`**：编译所有顶层函数。不推荐，因为它可能会编译非 React 函数。
 
