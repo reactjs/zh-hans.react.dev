@@ -61,18 +61,11 @@ async function handler(request, response) {
 
 #### 返回值 {/*returns*/}
 
-<<<<<<< HEAD
 `prerender` 返回一个 Promise 对象：
 - 如果渲染成功，Promise 将解析为一个包含以下内容的对象：
   - `prelude`：一个 [Web Stream](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API) 的 HTML。你可以使用此流以块的形式发送响应，或者将整个流读取为字符串。
-- 如果渲染失败，Promise 将被拒绝。[使用此方法输出一个回退 shell。](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
-=======
-`prerender` returns a Promise:
-- If rendering the is successful, the Promise will resolve to an object containing:
-  - `prelude`: a [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) of HTML. You can use this stream to send a response in chunks, or you can read the entire stream into a string.
   - `postponed`: a JSON-serializeable, opaque object that can be passed to [`resume`](/reference/react-dom/server/resume) if `prerender` did not finish. Otherwise `null` indicating that the `prelude` contains all the content and no resume is necessary.
-- If rendering fails, the Promise will be rejected. [Use this to output a fallback shell.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
+- 如果渲染失败，Promise 将被拒绝。[使用此方法输出一个回退 shell。](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
 
 #### 注意事项 {/*caveats*/}
 

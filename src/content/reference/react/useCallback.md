@@ -235,19 +235,11 @@ function useCallback(fn, dependencies) {
 
 **在实践中, 你可以通过遵循一些原则来减少许多不必要的记忆化**：
 
-<<<<<<< HEAD
 1. 当一个组件在视觉上包装其他组件时，让它 [接受 JSX 作为子元素](/learn/passing-props-to-a-component#passing-jsx-as-children)。随后，如果包装组件更新自己的 state，React 知道它的子组件不需要重新渲染。
 2. 建议使用 state 并且不要 [提升状态](/learn/sharing-state-between-components) 超过必要的程度。不要将表单和项是否悬停等短暂状态保存在树的顶部或全局状态库中。
 3. 保持 [渲染逻辑纯粹](/learn/keeping-components-pure)。如果重新渲染组件会导致问题或产生一些明显的视觉瑕疵，那么这是组件自身的问题！请修复这个错误，而不是添加记忆化。
 4. 避免 [不必要地更新 Effect](/learn/you-might-not-need-an-effect)。React 应用程序中的大多数性能问题都是由 Effect 的更新链引起的，这些更新链不断导致组件重新渲染。
 5. 尝试 [从 Effect 中删除不必要的依赖关系](/learn/removing-effect-dependencies)。例如，将某些对象或函数移动到副作用内部或组件外部通常更简单，而不是使用记忆化。
-=======
-1. When a component visually wraps other components, let it [accept JSX as children.](/learn/passing-props-to-a-component#passing-jsx-as-children) Then, if the wrapper component updates its own state, React knows that its children don't need to re-render.
-2. Prefer local state and don't [lift state up](/learn/sharing-state-between-components) any further than necessary. Don't keep transient state like forms and whether an item is hovered at the top of your tree or in a global state library.
-3. Keep your [rendering logic pure.](/learn/keeping-components-pure) If re-rendering a component causes a problem or produces some noticeable visual artifact, it's a bug in your component! Fix the bug instead of adding memoization.
-4. Avoid [unnecessary Effects that update state.](/learn/you-might-not-need-an-effect) Most performance problems in React apps are caused by chains of updates originating from Effects that cause your components to render over and over.
-5. Try to [remove unnecessary dependencies from your Effects.](/learn/removing-effect-dependencies) For example, instead of memoization, it's often simpler to move some object or a function inside an Effect or outside the component.
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 如果特定的交互仍然感觉滞后，[使用 React 开发者工具](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) 查看哪些组件在记忆化中受益最大，并在需要时添加记忆化。这些原则使你的组件更易于调试和理解，因此在任何情况下都最好遵循它们。从长远来看，我们正在研究 [自动记忆化](https://www.youtube.com/watch?v=lGEMwh32soc) 以一劳永逸地解决这个问题。
 

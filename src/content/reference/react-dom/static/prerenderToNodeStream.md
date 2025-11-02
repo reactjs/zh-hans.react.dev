@@ -4,11 +4,7 @@ title: prerenderToNodeStream
 
 <Intro>
 
-<<<<<<< HEAD
 `prerenderToNodeStream` 使用 [Node.js 流](https://nodejs.org/api/stream.html) 将 React 树渲染为静态 HTML 字符串。
-=======
-`prerenderToNodeStream` renders a React tree to a static HTML string using a [Node.js Stream.](https://nodejs.org/api/stream.html)
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 ```js
 const {prelude, postponed} = await prerenderToNodeStream(reactNode, options?)
@@ -66,18 +62,11 @@ app.use('/', async (request, response) => {
 
 #### 返回 {/*returns*/}
 
-<<<<<<< HEAD
 `prerenderToNodeStream` 返回一个 Promise：
 - 如果渲染成功，该 Promise 会解析为一个对象，包含：
   - `prelude`：用于 HTML 的 [Node.js 流](https://nodejs.org/api/stream.html)。你可以使用这个流按块（chunk）发送响应，也可以将整个流读取为一个字符串。
-- 如果渲染失败，该 Promise 将被拒绝。请参阅 [使用此方法输出 fallback（占位 UI）外壳](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)，了解如何在出错时提供占位页面。
-=======
-`prerenderToNodeStream` returns a Promise:
-- If rendering the is successful, the Promise will resolve to an object containing:
-  - `prelude`: a [Node.js Stream.](https://nodejs.org/api/stream.html) of HTML. You can use this stream to send a response in chunks, or you can read the entire stream into a string.
   - `postponed`: a JSON-serializeable, opaque object that can be passed to [`resumeToPipeableStream`](/reference/react-dom/server/resumeToPipeableStream) if `prerenderToNodeStream` did not finish. Otherwise `null` indicating that the `prelude` contains all the content and no resume is necessary.
-- If rendering fails, the Promise will be rejected. [Use this to output a fallback shell.](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
+- 如果渲染失败，该 Promise 将被拒绝。请参阅 [使用此方法输出 fallback（占位 UI）外壳](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)，了解如何在出错时提供占位页面。
 
 #### 注意事项 {/*caveats*/}
 

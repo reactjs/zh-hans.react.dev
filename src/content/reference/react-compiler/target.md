@@ -40,21 +40,12 @@ title: target
 - **`'18'`**: 以 React 18 为目标。需要安装 `react-compiler-runtime` 包。
 - **`'17'`**: 以 React 17 为目标。需要安装 `react-compiler-runtime` 包。
 
-<<<<<<< HEAD
 #### 注意事项 {/*caveats*/}
-=======
-#### Caveats {/*caveats*/}
-
-- Always use string values, not numbers (e.g., `'17'` not `17`)
-- Don't include patch versions (e.g., use `'18'` not `'18.2.0'`)
-- React 19 includes built-in compiler runtime APIs
-- React 17 and 18 require installing `react-compiler-runtime@latest`
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 - 始终使用字符串值，不要用数字（例如使用 `'17'` 而非 `17`）
 - 不要包含补丁版本号（例如使用 `'18'` 而非 `'18.2.0'`）
 - React 19 已内置编译器运行时 API
-- React 17 与 18 需要安装 `react-compiler-runtime@rc`
+- React 17 与 18 需要安装 `react-compiler-runtime@latest`
   
 ---
 
@@ -137,17 +128,10 @@ import { c as _c } from 'react-compiler-runtime';
 
 请确保运行环境包：
 
-<<<<<<< HEAD
 1. 安装在你的项目中（而非全局）
 2. 被列在 `package.json` 的依赖中
-3. 使用正确版本（`@rc` 标签）
+3. 使用正确版本（`@latest` 标签）
 4. 不在 `devDependencies` 中（运行环境需要）
-=======
-1. Installed in your project (not globally)
-2. Listed in your `package.json` dependencies
-3. The correct version (`@latest` tag)
-4. Not in `devDependencies` (it's needed at runtime)
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 ### 检查编译输出 {/*checking-output*/}
 

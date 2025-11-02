@@ -206,11 +206,7 @@ class Counter extends Component {
 
 如果你定义了 `componentDidCatch`，那么 React 将在某些子组件（包括后代组件）在渲染过程中抛出错误时调用它。这使得你可以在生产中将该错误记录到错误报告服务中。
 
-<<<<<<< HEAD
 一般来说，它与 [`static getDerivedStateFromError`](#static-getderivedstatefromerror) 一起使用，这样做允许你更新 state 来响应错误并向用户显示错误消息。具有这些方法的组件称为 **错误边界**。
-=======
-Typically, it is used together with [`static getDerivedStateFromError`](#static-getderivedstatefromerror) which lets you update state in response to an error and display an error message to the user. A component with these methods is called an *Error Boundary*.
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 [查看示例](#catching-rendering-errors-with-an-error-boundary)。
 
@@ -936,11 +932,7 @@ class Button extends Component {
 
 如果你定义了 `static getDerivedStateFromError`，那么当子组件（包括远亲组件）在渲染过程中抛出错误时，React 就会调用它。这使你可以显示错误消息而不是直接清理 UI。
 
-<<<<<<< HEAD
 通常，它与 [`componentDidCatch`](#componentDidCatch) 一起使用，它可以让你将错误报告发送到某些分析服务。具有这些方法的组件称为 **错误边界**。
-=======
-Typically, it is used together with [`componentDidCatch`](#componentdidcatch) which lets you send the error report to some analytics service. A component with these methods is called an *Error Boundary*.
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 [查看示例](#catching-rendering-errors-with-an-error-boundary)。
 
@@ -1275,16 +1267,9 @@ button { margin-left: 10px; }
 
 ---
 
-<<<<<<< HEAD
 ### 使用错误边界捕获渲染错误 {/*catching-rendering-errors-with-an-error-boundary*/}
 
 默认情况下，如果你的应用程序在渲染过程中抛出错误，React 将从屏幕上删除其 UI。为了防止这种情况，你可以将 UI 的一部分包装到 **错误边界** 中。错误边界是一个特殊的组件，可让你显示一些后备 UI，而不是显示例如错误消息这样崩溃的部分。
-
-要实现错误边界组件，你需要提供 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)，它允许你更新状态以响应错误并向用户显示错误消息。你还可以选择实现 [`componentDidCatch`](#componentdidcatch) 来添加一些额外的逻辑，例如将错误添加到分析服务。
-=======
-### Catching rendering errors with an Error Boundary {/*catching-rendering-errors-with-an-error-boundary*/}
-
-By default, if your application throws an error during rendering, React will remove its UI from the screen. To prevent this, you can wrap a part of your UI into an *Error Boundary*. An Error Boundary is a special component that lets you display some fallback UI instead of the part that crashed--for example, an error message.
 
 <Note>
 Error boundaries do not catch errors for:
@@ -1296,8 +1281,7 @@ Error boundaries do not catch errors for:
 
 </Note>
 
-To implement an Error Boundary component, you need to provide [`static getDerivedStateFromError`](#static-getderivedstatefromerror) which lets you update state in response to an error and display an error message to the user. You can also optionally implement [`componentDidCatch`](#componentdidcatch) to add some extra logic, for example, to log the error to an analytics service.
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
+要实现错误边界组件，你需要提供 [`static getDerivedStateFromError`](#static-getderivedstatefromerror)，它允许你更新状态以响应错误并向用户显示错误消息。你还可以选择实现 [`componentDidCatch`](#componentdidcatch) 来添加一些额外的逻辑，例如将错误添加到分析服务。
 
 With [`captureOwnerStack`](/reference/react/captureOwnerStack) you can include the Owner Stack during development.
 

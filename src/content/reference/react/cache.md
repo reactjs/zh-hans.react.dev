@@ -3,14 +3,9 @@ title: cache
 ---
 
 <RSC>
-* `cache` 仅供与 [React 服务器组件](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) 一起使用。
 
-<<<<<<< HEAD
-* `cache` 仅在 React 的 [Canary](/community/versioning-policy#canary-channel) 和 [experimental](/community/versioning-policy#experimental-channel) 渠道中可用。在将 `cache` 用于生产环境之前，请确保了解其限制。查看此处了解有关 [React 发布渠道的更多信息](/community/versioning-policy#all-release-channels)。
-=======
-`cache` is only for use with [React Server Components](/reference/rsc/server-components).
+* `cache` 仅供与 [React 服务器组件](/reference/rsc/server-components) 一起使用。
 
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 </RSC>
 
 <Intro>

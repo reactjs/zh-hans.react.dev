@@ -4,11 +4,7 @@ title: "Built-in React DOM Hooks"
 
 <Intro>
 
-<<<<<<< HEAD
-`react-dom` 包含的 Hook 仅支持 web 应用程序，即在浏览器 DOM 环境中运行的应用程序。这些 Hook 不支持非浏览器环境，如 iOS、Android 或 Windows 应用程序。如果正在寻找在 web 浏览器以及其他环境中支持的 Hook，请参阅 [React Hooks 页面](/reference/react)。该页面列出了 `react-dom` 包中的所有 Hook。
-=======
-The `react-dom` package contains Hooks that are only supported for web applications (which run in the browser DOM environment). These Hooks are not supported in non-browser environments like iOS, Android, or Windows applications. If you are looking for Hooks that are supported in web browsers *and other environments* see [the React Hooks page](/reference/react/hooks). This page lists all the Hooks in the `react-dom` package.
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
+`react-dom` 包含的 Hook 仅支持 web 应用程序，即在浏览器 DOM 环境中运行的应用程序。这些 Hook 不支持非浏览器环境，如 iOS、Android 或 Windows 应用程序。如果正在寻找在 web 浏览器以及其他环境中支持的 Hook，请参阅 [React Hooks 页面](/reference/react/hooks)。该页面列出了 `react-dom` 包中的所有 Hook。
 
 </Intro>
 

@@ -2,15 +2,6 @@
 title: 服务器组件
 ---
 
-<<<<<<< HEAD
-<RSC>
-
-服务器组件被用在 [React 服务器组件](/learn/start-a-new-react-project#full-stack-frameworks) 中。
-
-</RSC>
-
-=======
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 <Intro>
 
 服务器组件是一种新型的组件，它在打包之前，在独立于客户端应用程序或 SSR 服务器的环境中提前渲染。

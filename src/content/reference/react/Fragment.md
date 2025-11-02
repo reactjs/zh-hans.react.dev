@@ -4,13 +4,9 @@ title: <Fragment> (<>...</>)
 
 <Intro>
 
-<<<<<<< HEAD
 `<Fragment>` 通常使用 `<>...</>` 代替，它们都允许你在不添加额外节点的情况下将子元素组合。
-=======
-`<Fragment>`, often used via `<>...</>` syntax, lets you group elements without a wrapper node. 
 
 <Canary> Fragments can also accept refs, which enable interacting with underlying DOM nodes without adding wrapper elements. See reference and usage below.</Canary>
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 ```js
 <>
@@ -33,10 +29,7 @@ title: <Fragment> (<>...</>)
 
 #### 参数 {/*props*/}
 
-<<<<<<< HEAD
 - **可选** `key`：列表中 `<Fragment>` 的可以拥有 [keys](/learn/rendering-lists#keeping-list-items-in-order-with-key)。
-=======
-- **optional** `key`: Fragments declared with the explicit `<Fragment>` syntax may have [keys.](/learn/rendering-lists#keeping-list-items-in-order-with-key)
 - <CanaryBadge />  **optional** `ref`: A ref object (e.g. from [`useRef`](/reference/react/useRef)) or [callback function](/reference/react-dom/components/common#ref-callback). React provides a `FragmentInstance` as the ref value that implements methods for interacting with the DOM nodes wrapped by the Fragment.
 
 ### <CanaryBadge /> FragmentInstance {/*fragmentinstance*/}
@@ -64,7 +57,6 @@ When you pass a ref to a fragment, React provides a `FragmentInstance` object wi
 **Observer methods:**
 - `observeUsing(observer)`: Starts observing the Fragment's DOM children with an IntersectionObserver or ResizeObserver.
 - `unobserveUsing(observer)`: Stops observing the Fragment's DOM children with the specified observer.
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 #### 注意事项 {/*caveats*/}
 

@@ -14,12 +14,8 @@ title: Static React DOM APIs
 
 这些方法仅在支持 [Web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API) 的环境中可用，包括浏览器、Deno 和一些现代的边缘运行时环境：
 
-<<<<<<< HEAD
 * [`prerender`](/reference/react-dom/static/prerender) 使用 [可读的 Web 流](https://developer.mozilla.org/zh-CN/docs/Web/API/ReadableStream) 将 React 树渲染为静态 HTML。
-=======
-* [`prerender`](/reference/react-dom/static/prerender) renders a React tree to static HTML with a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
 * <ExperimentalBadge /> [`resumeAndPrerender`](/reference/react-dom/static/resumeAndPrerender) continues a prerendered React tree to static HTML with a [Readable Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 Node.js also includes these methods for compatibility, but they are not recommended due to worse performance. Use the [dedicated Node.js APIs](#static-apis-for-nodejs-streams) instead.
 
@@ -29,11 +25,6 @@ Node.js also includes these methods for compatibility, but they are not recommen
 
 这些方法仅在支持 [Node.js 流](https://nodejs.org/api/stream.html) 的环境中可用：
 
-<<<<<<< HEAD
 * [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream) 使用 [Node.js 流](https://nodejs.org/api/stream.html) 将 React 树渲染为静态 HTML。
-
-=======
-* [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream) renders a React tree to static HTML with a [Node.js Stream.](https://nodejs.org/api/stream.html)
 * <ExperimentalBadge /> [`resumeAndPrerenderToNodeStream`](/reference/react-dom/static/resumeAndPrerenderToNodeStream) continues a prerendered React tree to static HTML with a [Node.js Stream.](https://nodejs.org/api/stream.html)
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 

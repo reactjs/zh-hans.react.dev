@@ -12,15 +12,9 @@ October 21, 2024 by [Lauren Tan](https://twitter.com/potetotes).
 
 <Note>
 
-<<<<<<< HEAD
-### React 编译器现在处于 RC 版本！{/*react-compiler-is-now-in-rc*/}
+### React 编译器现在处于稳定版本！{/*react-compiler-is-now-in-rc*/}
 
-有关详细信息，请参阅 [RC 博客文章](/blog/2025/04/21/react-compiler-rc)。
-=======
-### React Compiler is now stable! {/*react-compiler-is-now-in-rc*/}
-
-Please see the [stable release blog post](/blog/2025/10/07/react-compiler-1) for details.
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
+有关详细信息，请参阅 [稳定版博客文章](/blog/2025/10/07/react-compiler-1)。
 
 </Note>
 

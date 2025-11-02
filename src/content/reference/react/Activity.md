@@ -2,17 +2,6 @@
 title: <Activity>
 ---
 
-<<<<<<< HEAD
-<Canary>
-
-**The `<Activity />` API is currently only available in React’s Canary and Experimental channels.** 
-
-[了解更多关于 React 版本发布的内容](/community/versioning-policy#all-release-channels)。
-
-</Canary>
-
-=======
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 <Intro>
 
 `<Activity>` lets you hide and restore the UI and internal state of its children.

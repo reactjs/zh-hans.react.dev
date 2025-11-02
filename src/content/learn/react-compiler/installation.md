@@ -18,15 +18,7 @@ title: 安装
 
 React 编译器专为与 React 19 配合使用而设计，但也支持 React 17 和 18。了解有关 [React 版本兼容性](/reference/react-compiler/target) 的更多信息。
 
-<<<<<<< HEAD
-<Note>
-React 编译器当前处于 RC 阶段。请使用 `@rc` 标签安装，以获取最新的发布候选版本。
-</Note>
-
 ## 安装 {/*installation*/}
-=======
-## Installation {/*installation*/}
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 将 React 编译器安装为 `devDependency`：
 
@@ -180,11 +172,7 @@ React 编译器包含一条 ESLint 规则，可帮助识别无法优化的代码
 npm install -D eslint-plugin-react-hooks@latest
 </TerminalBlock>
 
-<<<<<<< HEAD
-如果你尚未配置好 eslint-plugin-react-hooks，参考 [readme 的安装说明来进行配置](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation)。最新的 RC 版本中默认启用了编译器规则，因此不需要其他配置。
-=======
-If you haven't already configured eslint-plugin-react-hooks, follow the [installation instructions in the readme](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation). The compiler rules are available in the `recommended-latest` preset.
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
+如果你尚未配置好 eslint-plugin-react-hooks，参考 [readme 的安装说明来进行配置](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation)。编译器规则可在 `recommended-latest` 预设中找到。
 
 ESLint 规则将会：
 - 识别对 [React 规则](/reference/rules) 的违反情况
@@ -250,16 +238,8 @@ function ProblematicComponent() {
 
 既然你已经安装了 React 编译器，可以进一步了解以下内容：
 
-<<<<<<< HEAD
 - [React 版本兼容性](/reference/react-compiler/target)，适用于 React 17 和 18
 - [配置选项](/reference/react-compiler/configuration)，用于自定义编译器
 - [渐进采用策略](/learn/react-compiler/incremental-adoption)，用于现有的代码库
 - [调试技巧](/learn/react-compiler/debugging)，用于排查问题
 - [编译库指南](/reference/react-compiler/compiling-libraries)，用于编译你的 React 库
-=======
-- [React version compatibility](/reference/react-compiler/target) for React 17 and 18
-- [Configuration options](/reference/react-compiler/configuration) to customize the compiler
-- [Incremental adoption strategies](/learn/react-compiler/incremental-adoption) for existing codebases
-- [Debugging techniques](/learn/react-compiler/debugging) for troubleshooting issues
-- [Compiling Libraries guide](/reference/react-compiler/compiling-libraries) for compiling your React library
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2

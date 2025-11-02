@@ -2008,11 +2008,7 @@ main {
 
 如果你使用过 [流式服务器渲染 API](/reference/react-dom/server)（或依赖它们的框架），React 也会使用你的 `<Suspense>` 边界来处理服务器上的错误。如果组件在服务器上抛出错误，React 将不会中止服务器渲染。相反，它将找到最接近的 `<Suspense>` 组件并将其后备方案（例如一个加载中指示器）包含到生成的服务端 HTML 中。用户将首先看到一个加载中指示器。
 
-<<<<<<< HEAD
 在客户端，React 将尝试再次渲染相同的组件。如果它在客户端也出错，React 将抛出错误并显示最接近的 [错误边界](/reference/react/Component#static-getderivedstatefromerror)。然而，如果它在客户端没有错误，React 将不会向用户显示错误，因为内容最终成功显示了。
-=======
-On the client, React will attempt to render the same component again. If it errors on the client too, React will throw the error and display the closest [Error Boundary.](/reference/react/Component#static-getderivedstatefromerror) However, if it does not error on the client, React will not display the error to the user since the content was eventually displayed successfully.
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 你可以使用这个来防止一些组件在服务端渲染。为此，你应该在服务器环境中抛出一个错误，然后将其包装在一个 `<Suspense>` 边界中，从而使用后备方案替换它们的 HTML：
 

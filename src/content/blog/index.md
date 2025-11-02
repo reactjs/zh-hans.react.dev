@@ -19,10 +19,7 @@ Last week we hosted React Conf 2025. In this post, we summarize the talks and an
 
 <BlogCard title="React Compiler v1.0" date="October 7, 2025" url="/blog/2025/10/07/react-compiler-1">
 
-<<<<<<< HEAD
-我们今天将发布 React Compiler 的第一个候选发布版（RC）。
-=======
-We're releasing the compiler's first stable release today, plus linting and tooling improvements to make adoption easier.
+我们今天将发布 React Compiler 的第一个稳定发布版，以及 linting 和工具改进，使采用更加容易。
 
 </BlogCard>
 
@@ -41,7 +38,6 @@ React 19.2 adds new features like Activity, React Performance Tracks, useEffectE
 <BlogCard title="React Labs: View Transitions, Activity, and more" date="April 23, 2025" url="/blog/2025/04/23/react-labs-view-transitions-activity-and-more">
 
 In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and sharing other areas we're working on now ...
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 </BlogCard>
 

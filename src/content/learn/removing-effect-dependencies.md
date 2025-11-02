@@ -610,19 +610,7 @@ function ChatRoom({ roomId }) {
 
 ### 你想读取一个值而不对其变化做出“反应”吗？ {/*do-you-want-to-read-a-value-without-reacting-to-its-changes*/}
 
-<<<<<<< HEAD
-<Canary>
-
-**`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。 
-
-[了解更多关于 React 版本发布的内容](/community/versioning-policy#all-release-channels)。
-
-</Canary>
-
 假设你希望在用户收到新消息时播放声音，`isMuted` 为 `true` 除外：
-=======
-Suppose that you want to play a sound when the user receives a new message unless `isMuted` is `true`:
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 ```js {3,10-12}
 function ChatRoom({ roomId }) {

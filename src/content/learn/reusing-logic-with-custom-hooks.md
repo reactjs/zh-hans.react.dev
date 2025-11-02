@@ -837,19 +837,7 @@ export default function ChatRoom({ roomId }) {
 
 ### 把事件处理函数传到自定义 Hook 中 {/*passing-event-handlers-to-custom-hooks*/}
 
-<<<<<<< HEAD
-<Canary>
-
-**`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。 
-
-[了解更多关于 React 版本发布的内容](/community/versioning-policy#all-release-channels)。
-
-</Canary>
-
 当你在更多组件中使用 `useChatRoom` 时，你可能希望组件能定制它的行为。例如现在 Hook 内部收到消息的处理逻辑是硬编码：
-=======
-As you start using `useChatRoom` in more components, you might want to let components customize its behavior. For example, currently, the logic for what to do when a message arrives is hardcoded inside the Hook:
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 ```js {9-11}
 export function useChatRoom({ serverUrl, roomId }) {

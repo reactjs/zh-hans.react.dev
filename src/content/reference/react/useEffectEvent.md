@@ -2,18 +2,6 @@
 title: useEffectEvent
 ---
 
-<<<<<<< HEAD
-
-<Canary>
-
-**`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。
-
-[了解更多关于 React 版本发布的内容](/community/versioning-policy#all-release-channels)。
-
-</Canary>
-
-=======
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 <Intro>
 
 `useEffectEvent` 是一个 React Hook，它可以让你将 Effect 中的非响应式逻辑提取到一个可复用的函数中，这个函数称为 [Effect Event](/learn/separating-events-from-effects#declaring-an-effect-event)。
@@ -63,17 +51,13 @@ function ChatRoom({ roomId, theme }) {
 
 返回一个 Effect Event 函数。你可以在 `useEffect`、`useLayoutEffect` 或 `useInsertionEffect` 中调用这个函数。
 
+将强制执行此限制，以防止在错误的上下文中调用效果事件。
+
 #### 注意事项 {/*caveats*/}
 
-<<<<<<< HEAD
-- **仅在 Effect 中调用**：Effect Event 应该只在 Effect 中调用。在使用它的 Effect 之前定义它。不要将它传递给其他组件或 hooks。
+- **仅在 Effect 中调用**：Effect Event 应该只在 Effect 中调用。在使用它的 Effect 之前定义它。不要将它传递给其他组件或 hooks。[`eslint-plugin-react-hooks`](/reference/eslint-plugin-react-hooks) linter（6.1.1 或者更高版本）将强制执行此限制，以防止在错误的上下文中调用 Effect Events。
 - **不是依赖数组的捷径**：不要用 `useEffectEvent` 来避免在 Effect 的依赖数组中声明依赖。这可能会隐藏 bug 并让代码更难理解。更推荐显式依赖，或使用 ref 来比较之前的值。
 - **用于非响应式逻辑**：仅在逻辑不依赖变化的值时使用 `useEffectEvent` 来提取。
-=======
-- **Only call inside Effects:** Effect Events should only be called within Effects. Define them just before the Effect that uses them. Do not pass them to other components or hooks. The [`eslint-plugin-react-hooks`](/reference/eslint-plugin-react-hooks) linter (version 6.1.1 or higher) will enforce this restriction to prevent calling Effect Events in the wrong context.
-- **Not a dependency shortcut:** Do not use `useEffectEvent` to avoid specifying dependencies in your Effect's dependency array. This can hide bugs and make your code harder to understand. Prefer explicit dependencies or use refs to compare previous values if needed.
-- **Use for non-reactive logic:** Only use `useEffectEvent` to extract logic that does not depend on changing values.
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 ___
 
