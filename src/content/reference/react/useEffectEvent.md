@@ -90,11 +90,7 @@ function Page({ url }) {
 }
 ```
 
-<<<<<<< HEAD
-你可以将 `url` 这样的响应式值作为参数传递给 Effect Event。这让你可以访问最新的值，而不必因为这些值的改变而让 Effect 重新运行。
-=======
 In this example, the Effect should re-run after a render when `url` changes (to log the new page visit), but it should **not** re-run when `numberOfItems` changes. By wrapping the logging logic in an Effect Event, `numberOfItems` becomes non-reactive. It's always read from the latest value without triggering the Effect.
 
 You can pass reactive values like `url` as arguments to the Effect Event to keep them reactive while accessing the latest non-reactive values inside the event.
 
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2

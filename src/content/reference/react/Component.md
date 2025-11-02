@@ -1334,19 +1334,11 @@ class ErrorBoundary extends React.Component {
 
 如果 `Profile` 或其子组件抛出错误，`ErrorBoundary` 将“捕获”该错误，然后显示带有你提供的错误消息的后备 UI，并向你的错误报告服务发送生产错误报告。
 
-<<<<<<< HEAD
 你不需要将每个组件包装到单独的错误边界中。当你考虑 [错误边界的布置](https://aweary.dev/fault-tolerance-react/) 时，请考虑在哪里显示错误消息才有意义。例如，在消息传递应用程序中，在对话列表周围放置错误边界是有意义的。在每条单独的消息周围放置一个也是有意义的。然而，在每个头像周围设置边界是没有意义的。
 
 <Note>
 
 目前还没有办法将错误边界编写为函数式组件。但是你不必自己编写错误边界类。例如，你可以使用 [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary) 包来代替。
-=======
-You don't need to wrap every component into a separate Error Boundary. When you think about the [granularity of Error Boundaries,](https://www.brandondail.com/posts/fault-tolerance-react) consider where it makes sense to display an error message. For example, in a messaging app, it makes sense to place an Error Boundary around the list of conversations. It also makes sense to place one around every individual message. However, it wouldn't make sense to place a boundary around every avatar.
-
-<Note>
-
-There is currently no way to write an Error Boundary as a function component. However, you don't have to write the Error Boundary class yourself. For example, you can use [`react-error-boundary`](https://github.com/bvaughn/react-error-boundary) instead.
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 </Note>
 

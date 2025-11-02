@@ -52,12 +52,8 @@ React 文档位于 [react.dev](https://react.dev)，提供最新版本 React 的
 - [React Compiler Case Studies](https://www.youtube.com/watch?v=lvhPq5chokM)
 - [React 19 Deep Dive: Coordinating HTML](https://www.youtube.com/watch?v=IBBN-s77YSI)
 
-<<<<<<< HEAD
 **发布版本**
-=======
-**Releases**
 - [v19.2.0 (October, 2025)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1920-october-1st-2025)
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 - [v19.1.0 (March, 2025)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1910-march-28-2025)
 - [v19.0.0 (December, 2024)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1900-december-5-2024)
 
@@ -302,11 +298,7 @@ React 文档位于 [react.dev](https://react.dev)，提供最新版本 React 的
 
 React 于 2013 年 5 月 29 日开源。初始提交为：[`75897c`: Initial public release](https://github.com/facebook/react/commit/75897c2dcd1dd3a6ca46284dd37e13d22b4b16b4)。
 
-<<<<<<< HEAD
 请参阅第一篇博客文章：[Why did we build React?](https://legacy.reactjs.org/blog/2013/06/05/why-react.html)
-=======
-See the first blog post: [Why did we build React?](https://legacy.reactjs.org/blog/2013/06/05/why-react.html)
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 React 于 2013 年在 Facebook 西雅图办公室开源：
 

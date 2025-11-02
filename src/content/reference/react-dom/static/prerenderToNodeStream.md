@@ -88,11 +88,7 @@ app.use('/', async (request, response) => {
 
 ### 将 React 树渲染到静态 HTML 的流中 {/*rendering-a-react-tree-to-a-stream-of-static-html*/}
 
-<<<<<<< HEAD
 调用 `prerenderToNodeStream` 可将 React 树渲染为指向 [Node.js 流](https://nodejs.org/api/stream.html) 的静态 HTML：
-=======
-Call `prerenderToNodeStream` to render your React tree to static HTML into a [Node.js Stream](https://nodejs.org/api/stream.html):
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 ```js [[1, 5, "<App />"], [2, 6, "['/main.js']"]]
 import { prerenderToNodeStream } from 'react-dom/static';

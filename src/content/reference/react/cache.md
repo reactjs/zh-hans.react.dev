@@ -62,19 +62,10 @@ function Chart({data}) {
 
 #### 注意 {/*caveats*/}
 
-<<<<<<< HEAD
-[//]: # 'TODO: 一旦 https://github.com/reactjs/react.dev/pull/6177 被合并，将为服务器组件/客户端组件（Server/Client Component）引用添加链接'
-
 - React 将在每次服务器请求时使所有记忆化函数的缓存失效。
 - 每次调用 `cache` 都会创建一个新函数。这意味着多次使用相同的函数调用 `cache` 将返回不共享相同缓存的不同记忆化函数。
 - `cachedFn` 还会缓存错误。如果对于某些参数 `fn` 抛出错误，错误将被缓存，当使用相同参数调用 `cachedFn` 时，相同的错误将被重新抛出。
 - `cache` 仅供在 [服务器组件](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) 中使用。
-=======
-- React will invalidate the cache for all memoized functions for each server request.
-- Each call to `cache` creates a new function. This means that calling `cache` with the same function multiple times will return different memoized functions that do not share the same cache.
-- `cachedFn` will also cache errors. If `fn` throws an error for certain arguments, it will be cached, and the same error is re-thrown when `cachedFn` is called with those same arguments.
-- `cache` is for use in [Server Components](/reference/rsc/server-components) only.
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 ---
 
@@ -212,13 +203,7 @@ async function MinimalWeatherCard({city}) {
 
 <Note>
 
-<<<<<<< HEAD
-[//]: # 'TODO: 合并后向服务器组件添加链接。'
-
 <CodeStep step={3}>异步渲染</CodeStep> 只在服务器组件中支持。
-=======
-<CodeStep step={3}>Asynchronous rendering</CodeStep> is only supported for Server Components.
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 ```js [[3, 1, "async"], [3, 2, "await"]]
 async function AnimatedWeatherCard({city}) {
@@ -226,13 +211,8 @@ async function AnimatedWeatherCard({city}) {
 	// ...
 }
 ```
-<<<<<<< HEAD
-[//]: # 'TODO: 合并后在文档中添加链接和提醒。'
-[//]: # '参与 `use` 相关文档以了解更多关于在客户端组件中使用异步数据渲染组件的内容。'
-=======
 
 To render components that use asynchronous data in Client Components, see [`use()` documentation](/reference/react/use).
->>>>>>> f9e2c1396769bb5da87db60f9ff03683d18711e2
 
 </Note>
 
