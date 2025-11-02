@@ -69,10 +69,10 @@ function TodosApp() {
   function ShoppingApp() {
     const selectedProductId = useSyncExternalStore(...);
 
-    // ❌ Calling `use` with a Promise dependent on `selectedProductId`
+    // ❌ 使用依赖于 `selectedProductId` 的 Promise 调用 `use`
     const data = use(fetchItem(selectedProductId))
 
-    // ❌ Conditionally rendering a lazy component based on `selectedProductId`
+    // ❌ 根据 `selectedProductId` 有条件地渲染懒组件
     return selectedProductId != null ? <LazyProductDetailPage /> : <FeaturedProducts />;
   }
   ```
@@ -119,7 +119,7 @@ export default function TodosApp() {
   const todos = useSyncExternalStore(todosStore.subscribe, todosStore.getSnapshot);
   return (
     <>
-      <button onClick={() => todosStore.addTodo()}>Add todo</button>
+      <button onClick={() => todosStore.addTodo()}>增加 todo</button>
       <hr />
       <ul>
         {todos.map(todo => (
@@ -220,7 +220,7 @@ import { useSyncExternalStore } from 'react';
 
 export default function ChatIndicator() {
   const isOnline = useSyncExternalStore(subscribe, getSnapshot);
-  return <h1>{isOnline ? '✅ Online' : '❌ Disconnected'}</h1>;
+  return <h1>{isOnline ? '✅ 在线' : '❌ 离线'}</h1>;
 }
 
 function getSnapshot() {
@@ -273,19 +273,19 @@ import { useOnlineStatus } from './useOnlineStatus.js';
 
 function StatusBar() {
   const isOnline = useOnlineStatus();
-  return <h1>{isOnline ? '✅ Online' : '❌ Disconnected'}</h1>;
+  return <h1>{isOnline ? '✅ 在线' : '❌ 离线'}</h1>;
 }
 
 function SaveButton() {
   const isOnline = useOnlineStatus();
 
   function handleSaveClick() {
-    console.log('✅ Progress saved');
+    console.log('✅ 保存的进度');
   }
 
   return (
     <button disabled={!isOnline} onClick={handleSaveClick}>
-      {isOnline ? 'Save progress' : 'Reconnecting...'}
+      {isOnline ? '保存的进度' : '重新连接...'}
     </button>
   );
 }

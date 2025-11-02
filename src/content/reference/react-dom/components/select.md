@@ -19,7 +19,7 @@ title: "<select>"
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `<select>` {/*select*/}
 
