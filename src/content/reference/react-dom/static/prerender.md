@@ -127,7 +127,7 @@ React 将会把 [doctype](https://developer.mozilla.org/zh-CN/docs/Glossary/Doct
 ```html [[2, 5, "/main.js"]]
 <!DOCTYPE html>
 <html>
-  <!-- ... HTML from your components ... -->
+  <!-- ... 组件中的 HTML ... -->
 </html>
 <script src="/main.js" async=""></script>
 ```
