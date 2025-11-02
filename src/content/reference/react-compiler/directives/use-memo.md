@@ -39,8 +39,8 @@ function MyComponent() {
 * `"use memo"` 必须位于函数体的最开始，在任何 import 语句或其他代码之前（注释除外）。
 * 该指令必须使用双引号或单引号，而不是反引号。
 * 该指令必须与 `"use memo"` 完全匹配。
-*   只有一个函数中的第一个指令会被处理；其余的指令将被忽略。
-*   指令的效果取决于你的 [`compilationMode`](/reference/react-compiler/compilationMode) 配置。
+* 只有一个函数中的第一个指令会被处理；其余的指令将被忽略。
+* 指令的效果取决于你的 [`compilationMode`](/reference/react-compiler/compilationMode) 配置。
 
 ### `"use memo"` 如何标记函数以进行优化 {/*how-use-memo-marks*/}
 
