@@ -1691,14 +1691,6 @@ button { margin-left: 10px; }
 
 ### 从 Effect 读取最新的 props 和 state {/*reading-the-latest-props-and-state-from-an-effect*/}
 
-<Canary>
-
-**`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。
-
-[了解更多关于 React 版本发布的内容](/community/versioning-policy#all-release-channels)。
-
-</Canary>
-
 默认情况下，在 Effect 中读取响应式值时，必须将其添加为依赖项。这样可以确保你的 Effect 对该值的每次更改都“作出响应”。对于大多数依赖项，这是你想要的行为。
 
 **然而，有时你想要从 Effect 中获取 **最新的** props 和 state，而不“响应”它们**。例如，假设你想记录每次页面访问时购物车中的商品数量：

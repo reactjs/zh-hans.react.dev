@@ -3,9 +3,9 @@ title: cache
 ---
 
 <RSC>
-* `cache` 仅供与 [React 服务器组件](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) 一起使用。
 
-* `cache` 仅在 React 的 [Canary](/community/versioning-policy#canary-channel) 和 [experimental](/community/versioning-policy#experimental-channel) 渠道中可用。在将 `cache` 用于生产环境之前，请确保了解其限制。查看此处了解有关 [React 发布渠道的更多信息](/community/versioning-policy#all-release-channels)。
+* `cache` 仅供与 [React 服务器组件](/reference/rsc/server-components) 一起使用。
+
 </RSC>
 
 <Intro>
@@ -62,8 +62,6 @@ function Chart({data}) {
 
 #### 注意 {/*caveats*/}
 
-[//]: # 'TODO: 一旦 https://github.com/reactjs/react.dev/pull/6177 被合并，将为服务器组件/客户端组件（Server/Client Component）引用添加链接'
-
 - React 将在每次服务器请求时使所有记忆化函数的缓存失效。
 - 每次调用 `cache` 都会创建一个新函数。这意味着多次使用相同的函数调用 `cache` 将返回不共享相同缓存的不同记忆化函数。
 - `cachedFn` 还会缓存错误。如果对于某些参数 `fn` 抛出错误，错误将被缓存，当使用相同参数调用 `cachedFn` 时，相同的错误将被重新抛出。
@@ -102,6 +100,8 @@ function TeamReport({users}) {
 假设首先渲染了 `Profile`。它将调用 <CodeStep step={1}>`getUserMetrics`</CodeStep>，并检查是否有缓存的结果。由于这是第一次以该 `user` 调用 `getUserMetrics`，所以缓存未命中。于是 `getUserMetrics` 将会使用 `user` 调用 `calculateUserMetrics` 并将结果写入缓存。
 
 当 `TeamReport` 使用相同的 `user` 对象来渲染 `users` 列表时，它将调用 <CodeStep step={2}>`getUserMetrics`</CodeStep> 并从缓存中读取结果。
+
+If `calculateUserMetrics` can be aborted by passing an [`AbortSignal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal), you can use [`cacheSignal()`](/reference/react/cacheSignal) to cancel the expensive computation if React has finished rendering. `calculateUserMetrics` may already handle cancellation internally by using `cacheSignal` directly.
 
 <Pitfall>
 
@@ -203,8 +203,6 @@ async function MinimalWeatherCard({city}) {
 
 <Note>
 
-[//]: # 'TODO: 合并后向服务器组件添加链接。'
-
 <CodeStep step={3}>异步渲染</CodeStep> 只在服务器组件中支持。
 
 ```js [[3, 1, "async"], [3, 2, "await"]]
@@ -213,8 +211,8 @@ async function AnimatedWeatherCard({city}) {
 	// ...
 }
 ```
-[//]: # 'TODO: 合并后在文档中添加链接和提醒。'
-[//]: # '参与 `use` 相关文档以了解更多关于在客户端组件中使用异步数据渲染组件的内容。'
+
+To render components that use asynchronous data in Client Components, see [`use()` documentation](/reference/react/use).
 
 </Note>
 

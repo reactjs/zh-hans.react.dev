@@ -1,16 +1,6 @@
 ---
 title: useEffectEvent
-version: canary
 ---
-
-
-<Canary>
-
-**`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。
-
-[了解更多关于 React 版本发布的内容](/community/versioning-policy#all-release-channels)。
-
-</Canary>
 
 <Intro>
 
@@ -61,9 +51,11 @@ function ChatRoom({ roomId, theme }) {
 
 返回一个 Effect Event 函数。你可以在 `useEffect`、`useLayoutEffect` 或 `useInsertionEffect` 中调用这个函数。
 
+将强制执行此限制，以防止在错误的上下文中调用效果事件。
+
 #### 注意事项 {/*caveats*/}
 
-- **仅在 Effect 中调用**：Effect Event 应该只在 Effect 中调用。在使用它的 Effect 之前定义它。不要将它传递给其他组件或 hooks。
+- **仅在 Effect 中调用**：Effect Event 应该只在 Effect 中调用。在使用它的 Effect 之前定义它。不要将它传递给其他组件或 hooks。[`eslint-plugin-react-hooks`](/reference/eslint-plugin-react-hooks) linter（6.1.1 或者更高版本）将强制执行此限制，以防止在错误的上下文中调用 Effect Events。
 - **不是依赖数组的捷径**：不要用 `useEffectEvent` 来避免在 Effect 的依赖数组中声明依赖。这可能会隐藏 bug 并让代码更难理解。更推荐显式依赖，或使用 ref 来比较之前的值。
 - **用于非响应式逻辑**：仅在逻辑不依赖变化的值时使用 `useEffectEvent` 来提取。
 
@@ -98,4 +90,7 @@ function Page({ url }) {
 }
 ```
 
-你可以将 `url` 这样的响应式值作为参数传递给 Effect Event。这让你可以访问最新的值，而不必因为这些值的改变而让 Effect 重新运行。
+In this example, the Effect should re-run after a render when `url` changes (to log the new page visit), but it should **not** re-run when `numberOfItems` changes. By wrapping the logging logic in an Effect Event, `numberOfItems` becomes non-reactive. It's always read from the latest value without triggering the Effect.
+
+You can pass reactive values like `url` as arguments to the Effect Event to keep them reactive while accessing the latest non-reactive values inside the event.
+

@@ -45,7 +45,7 @@ title: target
 - 始终使用字符串值，不要用数字（例如使用 `'17'` 而非 `17`）
 - 不要包含补丁版本号（例如使用 `'18'` 而非 `'18.2.0'`）
 - React 19 已内置编译器运行时 API
-- React 17 与 18 需要安装 `react-compiler-runtime@rc`
+- React 17 与 18 需要安装 `react-compiler-runtime@latest`
   
 ---
 
@@ -75,7 +75,7 @@ import { c as _c } from 'react/compiler-runtime';
 1. 安装运行环境包：
 
 ```bash
-npm install react-compiler-runtime@rc
+npm install react-compiler-runtime@latest
 ```
 
 2. 配置 target:
@@ -114,7 +114,7 @@ import { c as _c } from 'react-compiler-runtime';
 
 2. 如果使用 React 17 或 18，安装运行环境：
    ```bash
-   npm install react-compiler-runtime@rc
+   npm install react-compiler-runtime@latest
    ```
 
 3. 确保你的 target 和你的 React 版本一致：
@@ -130,7 +130,7 @@ import { c as _c } from 'react-compiler-runtime';
 
 1. 安装在你的项目中（而非全局）
 2. 被列在 `package.json` 的依赖中
-3. 使用正确版本（`@rc` 标签）
+3. 使用正确版本（`@latest` 标签）
 4. 不在 `devDependencies` 中（运行环境需要）
 
 ### 检查编译输出 {/*checking-output*/}

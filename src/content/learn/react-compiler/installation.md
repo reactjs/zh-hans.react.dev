@@ -18,28 +18,24 @@ title: 安装
 
 React 编译器专为与 React 19 配合使用而设计，但也支持 React 17 和 18。了解有关 [React 版本兼容性](/reference/react-compiler/target) 的更多信息。
 
-<Note>
-React 编译器当前处于 RC 阶段。请使用 `@rc` 标签安装，以获取最新的发布候选版本。
-</Note>
-
 ## 安装 {/*installation*/}
 
 将 React 编译器安装为 `devDependency`：
 
 <TerminalBlock>
-npm install -D babel-plugin-react-compiler@rc
+npm install -D babel-plugin-react-compiler@latest
 </TerminalBlock>
 
 或者使用 Yarn：
 
 <TerminalBlock>
-yarn add -D babel-plugin-react-compiler@rc
+yarn add -D babel-plugin-react-compiler@latest
 </TerminalBlock>
 
 或者使用 pnpm：
 
 <TerminalBlock>
-pnpm install -D babel-plugin-react-compiler@rc
+pnpm install -D babel-plugin-react-compiler@latest
 </TerminalBlock>
 
 ## 基本设置 {/*basic-setup*/}
@@ -173,10 +169,10 @@ React 编译器包含一条 ESLint 规则，可帮助识别无法优化的代码
 安装 ESLint 插件：
 
 <TerminalBlock>
-npm install -D eslint-plugin-react-hooks@rc
+npm install -D eslint-plugin-react-hooks@latest
 </TerminalBlock>
 
-如果你尚未配置好 eslint-plugin-react-hooks，参考 [readme 的安装说明来进行配置](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation)。最新的 RC 版本中默认启用了编译器规则，因此不需要其他配置。
+如果你尚未配置好 eslint-plugin-react-hooks，参考 [readme 的安装说明来进行配置](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation)。编译器规则可在 `recommended-latest` 预设中找到。
 
 ESLint 规则将会：
 - 识别对 [React 规则](/reference/rules) 的违反情况

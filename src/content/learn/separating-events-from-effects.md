@@ -400,14 +400,6 @@ label { display: block; margin-top: 10px; }
 
 ### 声明一个 Effect Event {/*declaring-an-effect-event*/}
 
-<Canary>
-
-**`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。 
-
-[了解更多关于 React 版本发布的内容](/community/versioning-policy#all-release-channels)。
-
-</Canary>
-
 使用 [`useEffectEvent`](/reference/react/useEffectEvent) 这个特殊的 Hook 从 Effect 中提取非响应式逻辑：
 
 ```js {1,4-6}
@@ -450,8 +442,8 @@ function ChatRoom({ roomId, theme }) {
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "latest",
+    "react-dom": "latest",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -579,14 +571,6 @@ label { display: block; margin-top: 10px; }
 你可以将 Effect Event 看成和事件处理函数相似的东西。主要区别是事件处理函数只在响应用户交互的时候运行，而 Effect Event 是你在 Effect 中触发的。Effect Event 让你在 Effect 响应性和不应是响应式的代码间“打破链条”。
 
 ### 使用 Effect Event 读取最新的 props 和 state {/*reading-latest-props-and-state-with-effect-events*/}
-
-<Canary>
-
-**`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。 
-
-[了解更多关于 React 版本发布的内容](/community/versioning-policy#all-release-channels)。
-
-</Canary>
 
 Effect Event 可以修复之前许多你可能试图抑制依赖项检查工具的地方。
 
@@ -729,7 +713,7 @@ function Page({ url }) {
 }
 ```
 
-等 `useEffectEvent` 成为 React 稳定部分后，我们会推荐 **永远不要抑制代码检查工具**。
+我们建议 **永远不要抑制代码检查工具**。
 
 抑制规则的第一个缺点是当 Effect 需要对一个已经在代码中出现过的新响应式依赖项做出“响应”时，React 不会再发出警告。在稍早之前的示例中，你将 `url` 添加为依赖项，**是因为** React 提醒你去做这件事。如果禁用代码检查，你未来将不会再收到任何关于 Effect 修改的提醒。这引起了 bug。
 
@@ -804,22 +788,6 @@ body {
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "latest"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js
 import { useState, useEffect } from 'react';
 import { useEffectEvent } from 'react';
@@ -881,14 +849,6 @@ body {
 </DeepDive>
 
 ### Effect Event 的局限性 {/*limitations-of-effect-events*/}
-
-<Canary>
-
-**`useEffectEvent` API 当前仅在 React Canary 和 实验发行版中可用**。 
-
-[了解更多关于 React 版本发布的内容](/community/versioning-policy#all-release-channels)。
-
-</Canary>
 
 Effect Event 的局限性在于你如何使用他们：
 
@@ -979,23 +939,6 @@ Effect Event 是 Effect 代码的非响应式“片段”。他们应该在使�
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "latest"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
-
 ```js {expectedErrors: {'react-compiler': [14]}}
 import { useState, useEffect } from 'react';
 
@@ -1048,22 +991,6 @@ button { margin: 10px; }
 如果你移除了抑制注释，React 就会告诉你这个 Effect 的代码依赖于 `increment`，但是你通过宣称这个 Effect 不依赖于响应式值（`[]`）“欺骗”了 React。将 `increment` 添加到依赖项数组：
 
 <Sandpack>
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "latest"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
 
 ```js
 import { useState, useEffect } from 'react';
@@ -1127,22 +1054,6 @@ button { margin: 10px; }
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "latest"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js
 import { useState, useEffect } from 'react';
 import { useEffectEvent } from 'react';
@@ -1195,22 +1106,6 @@ button { margin: 10px; }
 为了解决这个问题，需要从 Effect 中提取一个 Effect Event `onTick`：
 
 <Sandpack>
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "latest"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
 
 ```js
 import { useState, useEffect } from 'react';
@@ -1277,22 +1172,6 @@ Effect Event 内部的代码是非响应式的。哪些情况下你会 **想要*
 </Hint>
 
 <Sandpack>
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "latest"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
 
 ```js
 import { useState, useEffect } from 'react';
@@ -1364,22 +1243,6 @@ button { margin: 10px; }
 上面这个示例的问题在于它没有考虑代码实际正在做什么就直接提取了一个叫做 `onMount` 的 Effect Event。你应该只为特定的原因提取 Effect Event：你想让代码的一部分称为非响应式。但是，`setInterval` 调用 state 变量 `delay` 的变化 **应该** 是响应式的。如果 `delay` 变化了，你想要重新设置 interval！为了修复这个问题，你需要将所有的响应式代码放回到 Effect 内部：
 
 <Sandpack>
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "latest"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
 
 ```js
 import { useState, useEffect } from 'react';
@@ -1464,8 +1327,8 @@ button { margin: 10px; }
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "latest",
+    "react-dom": "latest",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -1605,8 +1468,8 @@ Effect Event 伴随着两秒的延迟被调用。如果你快速地从 travel �
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "latest",
+    "react-dom": "latest",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -1743,8 +1606,8 @@ label { display: block; margin-top: 10px; }
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "latest",
+    "react-dom": "latest",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },

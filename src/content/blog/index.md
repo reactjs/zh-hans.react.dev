@@ -11,15 +11,33 @@ title: React Blog
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<BlogCard title="React Labs: View Transitions, Activity, and more" date="April 23, 2025" url="/blog/2025/04/23/react-labs-view-transitions-activity-and-more">
+<BlogCard title="React Conf 2025 Recap" date="October 16, 2025" url="/blog/2025/10/16/react-conf-2025-recap">
 
-In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and sharing other areas we're working on now ...
+Last week we hosted React Conf 2025. In this post, we summarize the talks and announcements from the event...
 
 </BlogCard>
 
-<BlogCard title="React Compiler RC" date="April 21, 2025" url="/blog/2025/04/21/react-compiler-rc">
+<BlogCard title="React Compiler v1.0" date="October 7, 2025" url="/blog/2025/10/07/react-compiler-1">
 
-我们今天将发布 React Compiler 的第一个候选发布版（RC）。
+我们今天将发布 React Compiler 的第一个稳定发布版，以及 linting 和工具改进，使采用更加容易。
+
+</BlogCard>
+
+<BlogCard title="Introducing the React Foundation" date="October 7, 2025" url="/blog/2025/10/07/introducing-the-react-foundation">
+
+Today, we're announcing our plans to create the React Foundation and a new technical governance structure ...
+
+</BlogCard>
+
+<BlogCard title="React 19.2" date="October 1, 2025" url="/blog/2025/10/01/react-19-2">
+
+React 19.2 adds new features like Activity, React Performance Tracks, useEffectEvent, and more. In this post ...
+
+</BlogCard>
+
+<BlogCard title="React Labs: View Transitions, Activity, and more" date="April 23, 2025" url="/blog/2025/04/23/react-labs-view-transitions-activity-and-more">
+
+In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and sharing other areas we're working on now ...
 
 </BlogCard>
 

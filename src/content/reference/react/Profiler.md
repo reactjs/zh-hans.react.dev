@@ -37,7 +37,7 @@ title: <Profiler>
 
 #### 注意 {/*caveats*/}
 
-* 进行性能分析会增加一些额外的开销，因此 **在默认情况下，它在生产环境中是被禁用的**。如果要启用生产环境下的性能分析，你需要启用一个 [特殊的带有性能分析功能的生产构建](https://fb.me/react-profiling)。
+* 进行性能分析会增加一些额外的开销，因此 **在默认情况下，它在生产环境中是被禁用的**。如果要启用生产环境下的性能分析，你需要启用一个 [特殊的带有性能分析功能的生产构建](/reference/dev-tools/react-performance-tracks#using-profiling-builds)。
 
 ---
 
@@ -81,13 +81,16 @@ function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime
 
 <Pitfall>
 
-进行性能分析会增加一些额外的开销，因此 **在默认情况下，它在生产环境中是被禁用的**。如果要启用生产环境下的性能分析，你需要启用 [特殊的带有性能分析功能的生产构建](https://fb.me/react-profiling)。
+进行性能分析会增加一些额外的开销，因此 **在默认情况下，它在生产环境中是被禁用的**。如果要启用生产环境下的性能分析，你需要启用 [特殊的带有性能分析功能的生产构建](/reference/dev-tools/react-performance-tracks#using-profiling-builds)。
 
 </Pitfall>
 
 <Note>
 
 `<Profiler>` 允许你编程式收集性能测量数据。如果你正在寻找一个交互式的性能分析工具，可以尝试使用 [React 开发者工具](/learn/react-developer-tools) 中的 Profiler 标签页。它提供了类似浏览器扩展程序的功能。
+
+Components wrapped in `<Profiler>` will also be marked in the [Component tracks](/reference/dev-tools/react-performance-tracks#components) of React Performance tracks even in profiling builds.
+In development builds, all components are marked in the Components track regardless of whether they're wrapped in `<Profiler>`.
 
 </Note>
 

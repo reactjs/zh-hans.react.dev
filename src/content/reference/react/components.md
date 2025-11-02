@@ -16,6 +16,7 @@ React 提供了一些内置的组件，你可以在 JSX 中使用它们。
 * [`<Profiler>`](/reference/react/Profiler) 让你可以以编程方式衡量 React 树的渲染性能。
 * [`<Suspense>`](/reference/react/Suspense) 让你可以在子组件加载时显示后备方案。
 * [`<StrictMode>`](/reference/react/StrictMode) 可以开启一些额外的，仅用于开发环境的检测，帮助你更早地发现 bug。
+* [`<Activity>`](/reference/react/Activity) lets you hide and restore the UI and internal state of its children.
 
 ---
 
