@@ -10,7 +10,7 @@ title: compilationMode
 
 ```js
 {
-  compilationMode: 'infer' // 或 'annotation', 'syntax', 'all'
+  compilationMode: 'infer' // 或 'annotation'、'syntax' 和 'all'
 }
 ```
 
