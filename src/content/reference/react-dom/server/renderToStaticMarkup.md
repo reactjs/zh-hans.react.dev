@@ -34,9 +34,9 @@ const html = renderToStaticMarkup(<Page />);
 
 #### 参数 {/*parameters*/}
 
-* `reactNode`：A React node you want to render to HTML. For example, a JSX node like `<Page />`.
-* **选项** `options`：一个服务器渲染的对象。
-  * **选项** `identifierPrefix`：一个 React 使用 [`useId`](/reference/react/useId) 生成的 ID 的字符串前缀，用于避免在同一页面上使用多个 root 时发生冲突。
+* `reactNode`：你想要渲染到 HTML 的 React 节点。例如像是 `<Page />` 之类的 JSX。
+* **可选的** `options`：一个服务器渲染的对象。
+  * **可选的** `identifierPrefix`：一个 React 使用 [`useId`](/reference/react/useId) 生成的 ID 的字符串前缀，用于避免在同一页面上使用多个 root 时发生冲突。
 
 #### 返回值 {/*returns*/}
 
