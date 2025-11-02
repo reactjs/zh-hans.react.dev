@@ -1,11 +1,11 @@
 ---
 title: "use no memo"
-titleForTitleTag: "'use no memo' directive"
+titleForTitleTag: "'use no memo' 指令"
 ---
 
 <Intro>
 
-`"use no memo"` prevents a function from being optimized by React Compiler.
+`"use no memo"` 可以防止函数被 React 编译器优化。
 
 </Intro>
 
@@ -13,11 +13,11 @@ titleForTitleTag: "'use no memo' directive"
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `"use no memo"` {/*use-no-memo*/}
 
-Add `"use no memo"` at the beginning of a function to prevent React Compiler optimization.
+在函数的开头添加 `"use no memo"` 可以阻止 React 编译器进行优化。
 
 ```js {1}
 function MyComponent() {
@@ -26,122 +26,122 @@ function MyComponent() {
 }
 ```
 
-When a function contains `"use no memo"`, the React Compiler will skip it entirely during optimization. This is useful as a temporary escape hatch when debugging or when dealing with code that doesn't work correctly with the compiler.
+当一个函数包含 "use no memo" 时，React 编译器会在优化过程中完全跳过它。在调试或处理与编译器不兼容的代码时，这是一个很有用的脱围机制。
 
-#### Caveats {/*caveats*/}
+#### 注意事项 {/*caveats*/}
 
-* `"use no memo"` must be at the very beginning of a function body, before any imports or other code (comments are OK).
-* The directive must be written with double or single quotes, not backticks.
-* The directive must exactly match `"use no memo"` or its alias `"use no forget"`.
-* This directive takes precedence over all compilation modes and other directives.
-* It's intended as a temporary debugging tool, not a permanent solution.
+* `"use no memo"` 必须位于函数体的最开始，在任何导入或其他代码之前（注释可以）。
+* 该指令必须使用双引号或单引号，而不是反引号。
+* 该指令必须与 `"use no memo"` 或其别名 `"use no forget"` 完全匹配。
+* 该指令的优先级高于所有编译模式和其他指令。
+* 它旨在作为一种临时的调试工具，而非永久的解决方案。
 
-### How `"use no memo"` opts-out of optimization {/*how-use-no-memo-opts-out*/}
+### `"use no memo"` 如何选择退出优化 {/*how-use-no-memo-opts-out*/}
 
-React Compiler analyzes your code at build time to apply optimizations. `"use no memo"` creates an explicit boundary that tells the compiler to skip a function entirely.
+React 编译器会在构建时分析你的代码以应用优化。`"use no memo"` 创建了一个明确的边界，告诉编译器完全跳过一个函数。
 
-This directive takes precedence over all other settings:
-* In `all` mode: The function is skipped despite the global setting
-* In `infer` mode: The function is skipped even if heuristics would optimize it
+该指令的优先级高于所有其他设置：
+* 在 `all` 模式下：尽管有全局设置，该函数仍会被跳过
+* 在 `infer` 模式下：即使启发式算法会优化该函数，它也仍会被跳过
 
-The compiler treats these functions as if the React Compiler wasn't enabled, leaving them exactly as written.
+编译器会像未启用 React 编译器一样对待这些函数，让它们保持原样。
 
-### When to use `"use no memo"` {/*when-to-use*/}
+### 何时使用 `"use no memo"` {/*when-to-use*/}
 
-`"use no memo"` should be used sparingly and temporarily. Common scenarios include:
+`"use no memo"` 应谨慎并临时使用。常见场景包括：
 
-#### Debugging compiler issues {/*debugging-compiler*/}
-When you suspect the compiler is causing issues, temporarily disable optimization to isolate the problem:
+#### 调试编译器问题 {/*debugging-compiler*/}
+当你怀疑编译器引起问题时，可以暂时禁用优化来隔离问题：
 
 ```js
 function ProblematicComponent({ data }) {
-  "use no memo"; // TODO: Remove after fixing issue #123
+  "use no memo"; // TODO: 修复 issue #123 后移除
 
-  // Rules of React violations that weren't statically detected
+  // 未被静态检测到的违反 React 规则的代码
   // ...
 }
 ```
 
-#### Third-party library integration {/*third-party*/}
-When integrating with libraries that might not be compatible with the compiler:
+#### 第三方库集成 {/*third-party*/}
+当与可能不兼容编译器的库集成时：
 
 ```js
 function ThirdPartyWrapper() {
   "use no memo";
 
-  useThirdPartyHook(); // Has side effects that compiler might optimize incorrectly
+  useThirdPartyHook(); // 存在可能被编译器错误优化的副作用
   // ...
 }
 ```
 
 ---
 
-## Usage {/*usage*/}
+## 用法 {/*usage*/}
 
-The `"use no memo"` directive is placed at the beginning of a function body to prevent React Compiler from optimizing that function:
-
+ `"use no memo"` 指令放在函数体的开头，以防止 React 编译器优化该函数：
+ 
 ```js
 function MyComponent() {
   "use no memo";
-  // Function body
+  // 函数体
 }
 ```
 
-The directive can also be placed at the top of a file to affect all functions in that module:
+该指令也可以放在文件的顶部，以影响该模块中的所有函数：
 
 ```js
 "use no memo";
 
-// All functions in this file will be skipped by the compiler
+// 此文件中的所有函数都将被编译器跳过
 ```
 
-`"use no memo"` at the function level overrides the module level directive.
+`"use no memo"` 在函数级别覆盖模块级别指令。
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## 故障排查 {/*troubleshooting*/}
 
-### Directive not preventing compilation {/*not-preventing*/}
+### 指令未阻止编译 {/*not-preventing*/}
 
-If `"use no memo"` isn't working:
+如果 `"use no memo"` 不起作用：
 
 ```js
-// ❌ Wrong - directive after code
+// ❌ 错误 - 指令在代码之后
 function Component() {
   const data = getData();
-  "use no memo"; // Too late!
+  "use no memo"; // 太晚了！
 }
 
-// ✅ Correct - directive first
+// ✅ 正确 - 指令在最前面
 function Component() {
   "use no memo";
   const data = getData();
 }
 ```
 
-Also check:
-* Spelling - must be exactly `"use no memo"`
-* Quotes - must use single or double quotes, not backticks
+同时检查：
+* 拼写 - 必须是 `"use no memo"`
+* 引号 - 必须使用单引号或双引号，而不是反引号
 
-### Best practices {/*best-practices*/}
+### 最佳实践 {/*best-practices*/}
 
-**Always document why** you're disabling optimization:
+**始终记录** 你禁用优化的 **原因**：
 
 ```js
-// ✅ Good - clear explanation and tracking
+// ✅ 好的 - 有清晰的解释和追踪
 function DataProcessor() {
-  "use no memo"; // TODO: Remove after fixing rule of react violation
+  "use no memo"; // TODO:修复违反 React 规则的问题后移除
   // ...
 }
 
-// ❌ Bad - no explanation
+// ❌ 坏的 - 没有解释
 function Mystery() {
   "use no memo";
   // ...
 }
 ```
 
-### See also {/*see-also*/}
+### 参见 {/*see-also*/}
 
-* [`"use memo"`](/reference/react-compiler/directives/use-memo) - Opt into compilation
-* [React Compiler](/learn/react-compiler) - Getting started guide
+* [`"use memo"`](/reference/react-compiler/directives/use-memo) - 选择加入编译
+* [React 编译器](/learn/react-compiler) - 入门指南

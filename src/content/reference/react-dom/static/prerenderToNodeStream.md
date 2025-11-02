@@ -31,7 +31,7 @@ const {prelude} = await prerenderToNodeStream(reactNode, options?)
 ```js
 import { prerenderToNodeStream } from 'react-dom/static';
 
-// The route handler syntax depends on your backend framework
+// 路由处理的语法取决于后端框架 
 app.use('/', async (request, response) => {
   const { prelude } = await prerenderToNodeStream(<App />, {
     bootstrapScripts: ['/main.js'],
@@ -90,7 +90,7 @@ app.use('/', async (request, response) => {
 ```js [[1, 5, "<App />"], [2, 6, "['/main.js']"]]
 import { prerenderToNodeStream } from 'react-dom/static';
 
-// The route handler syntax depends on your backend framework
+// 路由处理的语法取决于后端框架
 app.use('/', async (request, response) => {
   const { prelude } = await prerenderToNodeStream(<App />, {
     bootstrapScripts: ['/main.js'],
@@ -128,7 +128,7 @@ React 会将 [doctype](https://developer.mozilla.org/en-US/docs/Glossary/Doctype
 ```html [[2, 5, "/main.js"]]
 <!DOCTYPE html>
 <html>
-  <!-- ... HTML from your components ... -->
+  <!-- ... 组件中的 HTML ... -->
 </html>
 <script src="/main.js" async=""></script>
 ```
@@ -169,7 +169,7 @@ export default function App({ assetMap }) {
 在服务器端，渲染 `<App assetMap={assetMap} />` 并传入 `assetMap`：
 
 ```js {1-5,8,9}
-// You'd need to get this JSON from your build tooling, e.g. read it from the build output.
+// 您需要从构建工具中获取 JSON。例如，从构建输出中阅读。
 const assetMap = {
   'styles.css': '/styles.123456.css',
   'main.js': '/main.123456.js'
@@ -188,7 +188,7 @@ app.use('/', async (request, response) => {
 因为现在服务器端是用 `assetMap` 渲染 `<App assetMap={assetMap} />`，客户端也需要以相同方式渲染以避免 hydration 错误。你可以像下面这样将 `assetMap` 序列化并传给客户端：
 
 ```js {9-10}
-// You'd need to get this JSON from your build tooling.
+// 您需要从构建工具中获取 JSON。
 const assetMap = {
   'styles.css': '/styles.123456.css',
   'main.js': '/main.123456.js'
@@ -301,8 +301,8 @@ async function renderToString() {
   }, 10000);
 
   try {
-    // the prelude will contain all the HTML that was prerendered
-    // before the controller aborted.
+    // prelude 将包含预渲染的所有 HTML 代码
+    // 在控制器终止之前。
     const {prelude} = await prerenderToNodeStream(<App />, {
       signal: controller.signal,
     });

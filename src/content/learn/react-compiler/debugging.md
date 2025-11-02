@@ -3,7 +3,7 @@ title: 调试和故障排除
 ---
 
 <Intro>
-本指南可帮助您在使用 React Compiler 时识别和修复问题。学习如何调试编译问题并解决常见错误。
+本指南可帮助你在使用 React 编译器时识别和修复问题。学习如何调试编译问题并解决常见错误。
 </Intro>
 
 <YouWillLearn>
@@ -58,8 +58,8 @@ React Complier 可能导致你的应用出错的一个主要方式是，如果�
 
 ```js
 function ProblematicComponent() {
-  "use no memo"; // Skip compilation for this component
-  // ... rest of component
+  "use no memo"; // 跳过该组件的编译
+  // ... 其余的组件
 }
 ```
 
