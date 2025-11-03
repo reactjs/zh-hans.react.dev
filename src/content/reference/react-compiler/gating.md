@@ -21,13 +21,13 @@ title: gating
 
 ---
 
-## Reference {/*reference*/}
+## 参考 {/*reference*/}
 
 ### `gating` {/*gating*/}
 
 为已编译函数配置运行时特性开关的 gating。
 
-#### Type {/*type*/}
+#### 类型 {/*type*/}
 
 ```
 {
@@ -62,7 +62,7 @@ title: gating
 ```js
 // src/utils/feature-flags.js
 export function shouldUseCompiler() {
-  // your logic here
+  // 此处是你的逻辑
   return getFeatureFlag('react-compiler-enabled');
 }
 ```
@@ -90,8 +90,8 @@ function Button(props) {
 import { shouldUseCompiler } from './src/utils/feature-flags';
 
 const Button = shouldUseCompiler()
-  ? function Button_optimized(props) { /* compiled version */ }
-  : function Button_original(props) { /* original version */ };
+  ? function Button_optimized(props) { /* 编译后的版本 */ } 
+  : function Button_original(props) { /* 源版本 */ }; 
 ```
 
 注意，gating 函数在模块加载时只会执行一次，因此一旦 JS 包被解析并执行，组件的选择将在本次浏览器会话的剩余时间内保持不变。

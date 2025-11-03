@@ -81,12 +81,12 @@ npm install react-compiler-runtime@latest
 2. 配置 target:
 
 ```js
-// For React 18
+// 对于 React 18 
 {
   target: '18'
 }
 
-// For React 17
+// 对于 React 17
 {
   target: '17'
 }
