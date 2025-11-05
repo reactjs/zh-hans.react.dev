@@ -63,8 +63,13 @@ Expo 由 [Expo 公司](https://expo.dev/about) 维护。使用 Expo 构建应用
 
 还有一些新兴的框架正在努力实现我们的全栈 React 愿景：
 
+<<<<<<< HEAD
 - [TanStack Start (Beta)](https://tanstack.com/): TanStack Start 是一个由 TanStack Router 驱动的全栈 React 框架。它使用 Nitro 和 Vite 等工具提供完整的文档服务端渲染、流式传输、服务器函数、打包等功能。
 - [RedwoodJS](https://redwoodjs.com/): Redwood 是一个全栈 React 框架，带有许多预装的包和配置，方便构建全栈 Web 应用。
+=======
+- [TanStack Start (Beta)](https://tanstack.com/start/): TanStack Start is a full-stack React framework powered by TanStack Router. It provides a full-document SSR, streaming, server functions, bundling, and more using tools like Nitro and Vite.
+- [RedwoodSDK](https://rwsdk.com/): Redwood is a full stack React framework with lots of pre-installed packages and configuration that makes it easy to build full-stack web applications.
+>>>>>>> 6a708898a695fc4af8d854101464aa02a4befae8
 
 <DeepDive>
 

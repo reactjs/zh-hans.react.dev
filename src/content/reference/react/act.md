@@ -152,7 +152,11 @@ it.only('can render and update a counter', async () => {
 
 ## 疑难解答 {/*troubleshooting*/}
 
+<<<<<<< HEAD
 ### 出现错误 "The current testing environment is not configured to support act"(...)" {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
+=======
+### I'm getting an error: "The current testing environment is not configured to support act(...)" {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
+>>>>>>> 6a708898a695fc4af8d854101464aa02a4befae8
 
 使用 `act` 需要在测试环境中设置 `global.IS_REACT_ACT_ENVIRONMENT=true` 。这是为了确保 `act` 仅在正确的环境中使用。
 
