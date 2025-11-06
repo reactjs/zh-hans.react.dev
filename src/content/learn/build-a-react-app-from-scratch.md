@@ -34,7 +34,7 @@ title: 从零开始构建 React 应用
 [Vite](https://vite.dev/) 是一个构建工具，旨在为现代网络项目提供更快更简洁的开发体验。
 
 <TerminalBlock>
-{`npm create vite@latest my-app -- --template react`}
+{`npm create vite@latest my-app -- --template react-ts`}
 </TerminalBlock>
 
 Vite 采用约定式设计，开箱即提供合理的默认配置。它拥有丰富的插件生态系统，能够支持快速热更新、JSX、Babel/SWC 等常见功能。你可以查看 Vite 的 [React 插件](https://vite.dev/plugins/#vitejs-plugin-react) 或 [React SWC 插件](https://vite.dev/plugins/#vitejs-plugin-react-swc) 和 [React 服务器端渲染示例项目](https://vite.dev/guide/ssr.html#example-projects) 来开始使用。
@@ -97,7 +97,7 @@ React 生态系统中包含许多用于解决这些问题的工具。我们列�
 
 如果你从大多数后端或 REST 风格的 API 获取数据，我们建议使用：
 
-- [React Query](https://react-query.tanstack.com/)
+- [TanStack Query](https://tanstack.com/query/)
 - [SWR](https://swr.vercel.app/)
 - [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
 
