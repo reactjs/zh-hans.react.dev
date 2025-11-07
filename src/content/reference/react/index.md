@@ -21,7 +21,6 @@ React 参考文档分为以下内容：
 
 ## React DOM {/*react-dom*/}
 
-<<<<<<< HEAD
 React-dom 仅支持在 web 应用程序中使用（在浏览器 DOM 环境中运行）。本节分为以下部分：
 
 * [Hook](/reference/react-dom/hooks) —— 适用于在浏览器 DOM 环境中运行的 web 应用程序的 Hook。
@@ -29,16 +28,7 @@ React-dom 仅支持在 web 应用程序中使用（在浏览器 DOM 环境中运
 * [API](/reference/react-dom) —— `react-dom` 包含仅在 web 应用程序中支持的方法。
 * [客户端 API](/reference/react-dom/client) —— `react-dom/client` API 允许在客户端（浏览器中）渲染 React 组件。
 * [服务端 API](/reference/react-dom/server) —— `react-dom/server` API 允许在服务器端将 React 组件渲染为 HTML。
-=======
-React DOM contains features that are only supported for web applications (which run in the browser DOM environment). This section is broken into the following:
-
-* [Hooks](/reference/react-dom/hooks) - Hooks for web applications which run in the browser DOM environment.
-* [Components](/reference/react-dom/components) - React supports all of the browser built-in HTML and SVG components.
-* [APIs](/reference/react-dom) - The `react-dom` package contains methods supported only in web applications.
-* [Client APIs](/reference/react-dom/client) - The `react-dom/client` APIs let you render React components on the client (in the browser).
-* [Server APIs](/reference/react-dom/server) - The `react-dom/server` APIs let you render React components to HTML on the server.
-* [Static APIs](/reference/react-dom/static) - The `react-dom/static` APIs let you generate static HTML for React components.
->>>>>>> d271a7ac11d2bf0d6e95ebdfacaf1038421f9be0
+* [静态 API](/reference/react-dom/static) - `react-dom/static` API 允许将 React 组件生成静态 HTML。
 
 
 ## React 编译器 {/*react-compiler*/}

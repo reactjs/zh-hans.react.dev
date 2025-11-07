@@ -177,11 +177,7 @@ export default function Dashboard() {
 }
 ```
 
-<<<<<<< HEAD
-在副作用中获取数据意味着用户需要等待更长时间才能看到内容，即使这些数据本可以更早地获取。为了解决这个问题，你可以使用一些数据获取库，例如：[React Query](https://react-query.tanstack.com/)、[SWR](https://swr.vercel.app/)、[Apollo](https://www.apollographql.com/docs/react) 或 [Relay](https://relay.dev/)，这些库提供了预取数据的功能，使得请求可以在组件渲染之前就开始，从而减少用户等待时间并提升性能
-=======
-Fetching in an effect means the user has to wait longer to see the content, even though the data could have been fetched earlier. To solve this, you can use a data fetching library like [TanStack Query](https://tanstack.com/query/), [SWR](https://swr.vercel.app/), [Apollo](https://www.apollographql.com/docs/react), or [Relay](https://relay.dev/) which provide options to prefetch data so the request is started before the component renders.
->>>>>>> d271a7ac11d2bf0d6e95ebdfacaf1038421f9be0
+在副作用中获取数据意味着用户需要等待更长时间才能看到内容，即使这些数据本可以更早地获取。为了解决这个问题，你可以使用一些数据获取库，例如：[TanStack Query](https://tanstack.com/query/)、[SWR](https://swr.vercel.app/)、[Apollo](https://www.apollographql.com/docs/react) 或 [Relay](https://relay.dev/)，这些库提供了预取数据的功能，使得请求可以在组件渲染之前就开始，从而减少用户等待时间并提升性能。
 
 这些库在与路由的“loader”模式集成时效果最佳，可以在路由级别指定数据依赖关系，从而使路由器能够优化数据获取：
 
