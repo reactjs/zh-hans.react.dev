@@ -112,7 +112,7 @@ React 和 React Native 团队也在每天结束时进行了问答环节：
 
 感谢 [Callstack](https://www.callstack.com/) 建设大会网站；感谢 [Kadi Kraman](https://twitter.com/kadikraman) 和 [Expo](https://expo.dev/) 团队建设大会移动应用。
 
-感谢所有赞助商使本次活动得以实现：[Remix](https://remix.run/)、[Amazon](https://developer.amazon.com/apps-and-games?cmp=US_2024_05_3P_React-Conf-2024&ch=prtnr&chlast=prtnr&pub=ref&publast=ref&type=org&typelast=org)、[MUI](https://mui.com/)、[Sentry](https://sentry.io/for/react/?utm_source=sponsored-conf&utm_medium=sponsored-event&utm_campaign=frontend-fy25q2-evergreen&utm_content=logo-reactconf2024-learnmore)、[Abbott](https://www.jobs.abbott/software)、[Expo](https://expo.dev/)、[RedwoodJS](https://redwoodjs.com/) 以及 [Vercel](https://vercel.com)。
+感谢所有赞助商使本次活动得以实现：[Remix](https://remix.run/)、[Amazon](https://developer.amazon.com/apps-and-games?cmp=US_2024_05_3P_React-Conf-2024&ch=prtnr&chlast=prtnr&pub=ref&publast=ref&type=org&typelast=org)、[MUI](https://mui.com/)、[Sentry](https://sentry.io/for/react/?utm_source=sponsored-conf&utm_medium=sponsored-event&utm_campaign=frontend-fy25q2-evergreen&utm_content=logo-reactconf2024-learnmore)、[Abbott](https://www.jobs.abbott/software)、[Expo](https://expo.dev/)、[RedwoodJS](https://rwsdk.com/) 以及 [Vercel](https://vercel.com)。
 
 感谢音视频团队为我们提供的视觉、舞台和声音；感谢威斯汀酒店为我们提供的住宿。
 

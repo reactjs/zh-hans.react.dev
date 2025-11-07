@@ -28,6 +28,7 @@ React-dom 仅支持在 web 应用程序中使用（在浏览器 DOM 环境中运
 * [API](/reference/react-dom) —— `react-dom` 包含仅在 web 应用程序中支持的方法。
 * [客户端 API](/reference/react-dom/client) —— `react-dom/client` API 允许在客户端（浏览器中）渲染 React 组件。
 * [服务端 API](/reference/react-dom/server) —— `react-dom/server` API 允许在服务器端将 React 组件渲染为 HTML。
+* [静态 API](/reference/react-dom/static) - `react-dom/static` API 允许将 React 组件生成静态 HTML。
 
 
 ## React 编译器 {/*react-compiler*/}

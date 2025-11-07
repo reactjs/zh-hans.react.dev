@@ -437,7 +437,7 @@ function Game() {
     // ✅ 在事件处理函数中计算剩下的所有 state
     setCard(nextCard);
     if (nextCard.gold) {
-      if (goldCardCount <= 3) {
+      if (goldCardCount < 3) {
         setGoldCardCount(goldCardCount + 1);
       } else {
         setGoldCardCount(0);
