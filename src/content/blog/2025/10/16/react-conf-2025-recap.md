@@ -57,7 +57,7 @@ Lauren Tan 宣布 [React 编译器 v1.0](https://react.dev/blog/2025/10/07/react
 
 _[点击这里观看第二天完整直播。](https://www.youtube.com/watch?v=p9OcztRyDl0&t=2299s)_
 
-在第二天的主题演讲中，Jorge Cohen 和 Nicola Corti 重点介绍了 React Native 的惊人增长 —— 每周下载量达 400 万次（同比增长 100%），以及 Shopify、Zalando 和 HelloFresh 等公司值得关注的应用迁移，RISE、RUNNA 和 Partyful 等获奖应用，以及来自 Mistral、Replit 和 v0 的 AI 应用。
+在第二天的主题演讲中，Jorge Cohen 和 Nicola Corti 开场就重点介绍了 React Native 的惊人增长 —— 每周下载量达 400 万次（同比增长 100%），以及 Shopify、Zalando 和 HelloFresh 等公司值得关注的应用迁移，RISE、RUNNA 和 Partyful 等获奖应用，以及来自 Mistral、Replit 和 v0 的 AI 应用。
 
 Riccardo Cipolleschi 分享了 React Native 的两个重大公告：
 - [React Native 0.82 将仅支持新架构](https://reactnative.dev/blog/2025/10/08/react-native-0.82#new-architecture-only)
@@ -116,7 +116,7 @@ Ruben Norte 和 Alex Hunt 继续主题演讲，宣布了：
 
 感谢 [Matt Carroll](https://x.com/mattcarrollcode) 策划整个活动并搭建了大会网站。
 
-感谢 [Michael Chan](https://x.com/chantastic) 以极大的热忱活力的主持了 React Conf，在整个活动中，他不仅为每个演讲者做了精心的介绍，还带来了有趣的笑话，展现出了真挚的热情。感谢 [Jorge Cohen](https://x.com/JorgeWritesCode) 主持直播，采访每位演讲者，并将现场的 React Conf 体验搬到了线上。
+感谢 [Michael Chan](https://x.com/chantastic) 以极大的热忱和活力主持了 React Conf，在整个活动中，他不仅为每个演讲者做了精心的介绍，还带来了有趣的笑话，展现出了真挚的热情。感谢 [Jorge Cohen](https://x.com/JorgeWritesCode) 主持直播，采访每位演讲者，并将现场的 React Conf 体验搬到了线上。
 
 感谢 [Mateusz Kornacki](https://x.com/mat_kornacki)、[Mike Grabowski](https://x.com/grabbou)、[Kris Lis](https://www.linkedin.com/in/krzysztoflisakakris/) 和 [Callstack](https://www.callstack.com/) 团队共同组织 React Conf，并提供设计、工程和营销支持。感谢 [ZeroSlope 团队](https://zeroslopeevents.com/contact-us/) 的 Sunny Leggett、Tracey Harrison、Tara Larish、Whitney Pogue 和 Brianne Smythia 帮助组织活动。
 
@@ -128,6 +128,6 @@ Ruben Norte 和 Alex Hunt 继续主题演讲，宣布了：
 
 感谢所有与社区分享他们的知识和经验的演讲者。
 
-最后，感谢所有现场以及在线参加大会的每一位。是你们成就了 React 的今天。React 不仅仅是一个库，它更是一个社区，看到大家齐聚一堂、共同分享和学习，真是令人备受鼓舞。
+最后，感谢所有现场以及在线参加大会的每一位，正是因为有你们，React 才成为了今天的 React。React 不仅仅是一个库，它更是一个社区，看到大家齐聚一堂、共同分享和学习，真是令人鼓舞。
 
 下次见！
