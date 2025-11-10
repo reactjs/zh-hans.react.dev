@@ -208,7 +208,11 @@ function Counter() {
 <div id="root"></div>
 ```
 
+<<<<<<< HEAD
 这个过程太慢了！要解决这个问题，可以在 [服务端或者应用构建期间](/reference/react-dom/server) 通过组件生成一些初始 HTML。这样一来，在 JavaScript 加载之前，用户就能看到一些文字、图片，也能点击链接。我们推荐 [使用框架](/learn/start-a-new-react-project#full-stack-frameworks)，通过框架开箱即用的能力轻易地完成这个优化。根据框架运行的时机，分为 **服务端渲染（SSR）** 和 **静态站点生成（SSG）**。
+=======
+This can feel very slow! To solve this, you can generate the initial HTML from your components [on the server or during the build.](/reference/react-dom/server) Then your visitors can read text, see images, and click links before any of the JavaScript code loads. We recommend [using a framework](/learn/creating-a-react-app#full-stack-frameworks) that does this optimization out of the box. Depending on when it runs, this is called *server-side rendering (SSR)* or *static site generation (SSG).*
+>>>>>>> b440d6698f6e21d56a78b10f625bd23191183588
 
 </Note>
 
