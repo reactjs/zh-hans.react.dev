@@ -21,7 +21,11 @@ title: React DOM API
 
 一旦你确定会用到某些资源，这些 API 可用于预加载脚本、样式表和字体等资源，从而让应用更快。例如，在跳转到将使用这些资源的另一个页面之前加载。
 
+<<<<<<< HEAD
 [基于 React 的框架](/learn/start-a-new-react-project) 通常会为你处理资源加载，因此你可能无需手动调用这些 API。具体请查阅你的框架文档。
+=======
+[React-based frameworks](/learn/creating-a-react-app) frequently handle resource loading for you, so you might not have to call these APIs yourself. Consult your framework's documentation for details.
+>>>>>>> 27576f10bdfd57fa30977818b641c7b6c9d032ec
 
 * [`prefetchDNS`](/reference/react-dom/prefetchDNS) 让你预取出希望连接的 DNS 域名的 IP 地址。
 * [`preconnect`](/reference/react-dom/preconnect) 让你连接到预计请求资源的服务器，即使你尚不确定具体需要哪些资源。
