@@ -10,7 +10,11 @@ title: "指示符"
 
 <Intro>
 
+<<<<<<< HEAD
 指示符（directive）向 [与 React 服务器组件兼容的捆绑器](/learn/start-a-new-react-project#full-stack-frameworks) 提供指令（instruction）。
+=======
+Directives provide instructions to [bundlers compatible with React Server Components](/learn/creating-a-react-app#full-stack-frameworks).
+>>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
 
 </Intro>
 

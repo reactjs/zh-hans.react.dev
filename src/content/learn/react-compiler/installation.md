@@ -114,7 +114,7 @@ export default defineConfig({
 安装 `vite-plugin-babel`，并将其编译器的 Babel 插件添加到其中：
 
 <TerminalBlock>
-{`npm install vite-plugin-babel`}
+npm install vite-plugin-babel
 </TerminalBlock>
 
 ```js {3-4,16}

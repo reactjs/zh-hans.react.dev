@@ -265,8 +265,13 @@ export function HomeContent() {
               <CTA
                 color="gray"
                 icon="framework"
+<<<<<<< HEAD
                 href="/learn/start-a-new-react-project">
                 使用框架开始一个新项目
+=======
+                href="/learn/creating-a-react-app">
+                Get started with a framework
+>>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
               </CTA>
             </div>
           </Center>
