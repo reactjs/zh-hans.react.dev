@@ -355,7 +355,7 @@ For more information, see [React DOM Static APIs](/reference/react-dom/static).
 
 服务器组件是一种新的选项，允许在打包前提前渲染组件，在与你的客户端应用程序或 SSR 服务器不同的环境中。这个独立的环境就是 React 服务器组件中的 "服务器"。服务器组件可以在你的 CI 服务器上在构建时运行一次，或者可以在每次请求时使用 web 服务器运行。
 
-React 19 包含了所有从 Canary 渠道引入的 React 服务器组件功能。这意味着，现在可以将 React 19 作为 peer 依赖项来发布带有服务器组件的库，使用 `react-server` [导出条件](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md#react-server-conditional-exports) 用于支持 [全栈 React 架构](/learn/start-a-new-react-project#which-features-make-up-the-react-teams-full-stack-architecture-vision) 的框架。
+React 19 包含了所有从 Canary 渠道引入的 React 服务器组件功能。这意味着，现在可以将 React 19 作为 peer 依赖项来发布带有服务器组件的库，使用 `react-server` [导出条件](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md#react-server-conditional-exports) 用于支持 [全栈 React 架构](/learn/creating-a-react-app#which-features-make-up-the-react-teams-full-stack-architecture-vision) 的框架。
 
 
 <Note>

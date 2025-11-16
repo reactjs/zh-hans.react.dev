@@ -95,7 +95,7 @@ function SubmitButton({ submitAction }) {
 
 #### 参数 {/*starttransition-parameters*/}
 
-* `action`：通过调用一个或多个 [`set` 函数](/reference/react/useState#setstate) 来更新某些状态的函数。React 会立即调用 `action`（无需参数），并将 `action` 函数调用期间同步调度的所有状态更新标记为 Transition。在 `action` 中通过 `await` 等待的异步调用会被包含在 Transition 中，但目前需要在 `await` 之后将任何 `set` 函数再次包裹在 `startTransition` 中（参见[疑难解答](#react-doesnt-treat-my-state-update-after-await-as-a-transition)）。标记为 Transition 的状态更新将具备[非阻塞特性](#marking-a-state-update-as-a-non-blocking-transition)，并且[不会显示不必要的加载指示](#preventing-unwanted-loading-indicators)。
+* `action`：通过调用一个或多个 [`set` 函数](/reference/react/useState#setstate) 来更新某些状态的函数。React 会立即调用 `action`（无需参数），并将 `action` 函数调用期间同步调度的所有状态更新标记为 Transition。在 `action` 中通过 `await` 等待的异步调用会被包含在 Transition 中，但目前需要在 `await` 之后将任何 `set` 函数再次包裹在 `startTransition` 中（参见[疑难解答](#react-doesnt-treat-my-state-update-after-await-as-a-transition)）。标记为 Transition 的状态更新将具备[非阻塞特性](#perform-non-blocking-updates-with-actions)，并且[不会显示不必要的加载指示](#preventing-unwanted-loading-indicators)。
 
 #### 返回值 {/*starttransition-returns*/}
 
@@ -1246,7 +1246,7 @@ function Router() {
 
 这么做有三个好处：
 
-- [转换效果是可中断的](#marking-a-state-update-as-a-non-blocking-transition)，这样用户可以在等待重新渲染完成之前点击其他地方。
+- [转换效果是可中断的](#perform-non-blocking-updates-with-actions)，这样用户可以在等待重新渲染完成之前点击其他地方。
 - [转换效果可以防止不必要的加载指示符](#preventing-unwanted-loading-indicators)，这样用户就可以避免在导航时产生不协调的跳转。
 - [Transition 等待所有挂起的 action](#perform-non-blocking-updates-with-actions)，它允许用户在副作用完成之后再显示新页面。
 

@@ -208,7 +208,7 @@ function Counter() {
 <div id="root"></div>
 ```
 
-这个过程太慢了！要解决这个问题，可以在 [服务端或者应用构建期间](/reference/react-dom/server) 通过组件生成一些初始 HTML。这样一来，在 JavaScript 加载之前，用户就能看到一些文字、图片，也能点击链接。我们推荐 [使用框架](/learn/start-a-new-react-project#full-stack-frameworks)，通过框架开箱即用的能力轻易地完成这个优化。根据框架运行的时机，分为 **服务端渲染（SSR）** 和 **静态站点生成（SSG）**。
+这个过程太慢了！要解决这个问题，可以在 [服务端或者应用构建期间](/reference/react-dom/server) 通过组件生成一些初始 HTML。这样一来，在 JavaScript 加载之前，用户就能看到一些文字、图片，也能点击链接。我们推荐 [使用框架](/learn/creating-a-react-app#full-stack-frameworks)，通过框架开箱即用的能力轻易地完成这个优化。根据框架运行的时机，分为 **服务端渲染（SSR）** 和 **静态站点生成（SSG）**。
 
 </Note>
 
