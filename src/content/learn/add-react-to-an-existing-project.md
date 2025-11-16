@@ -20,7 +20,7 @@ title: 将 React 添加到现有项目中
 
 以下是推荐的配置方式：
 
-1. 使用一个 [基于 React 的框架](/learn/creating-a-react-appt) 构建 **应用的 React 部分**。
+1. 使用一个 [基于 React 的框架](/learn/creating-a-react-app) 构建 **应用的 React 部分**。
 2. **在框架配置中将 `/some-app` 指定为基本路径**（这里有 [Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath) 与 [Gatsby](https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/path-prefix/) 的配置样例）。
 3. **配置服务器或代理**，以便所有位于 `/some-app/` 下的请求都由 React 应用处理。
 
