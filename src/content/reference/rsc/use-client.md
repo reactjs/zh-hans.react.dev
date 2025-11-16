@@ -41,11 +41,7 @@ export default function RichTextEditor({ timestamp, text }) {
 }
 ```
 
-<<<<<<< HEAD
-当从服务器组件导入带有 `'use client'` 标记的文件时，[兼容的捆绑工具](/learn/start-a-new-react-project#full-stack-frameworks) 将模块导入视为服务器运行和客户端运行代码之间的边界。
-=======
-When a file marked with `'use client'` is imported from a Server Component, [compatible bundlers](/learn/creating-a-react-app#full-stack-frameworks) will treat the module import as a boundary between server-run and client-run code.
->>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
+当从服务器组件导入带有 `'use client'` 标记的文件时，[兼容的捆绑工具](/learn/creating-a-react-app#full-stack-frameworks) 将模块导入视为服务器运行和客户端运行代码之间的边界。
 
 作为 `RichTextEditor` 的依赖项，无论 `formatDate` 与 `Button` 的模块是否包含 `'use client'`，其都将在客户端上进行评估。请注意，当从服务器代码导入时，单个模块可能在服务器上进行评估，并且当从客户端代码导入时，可能在客户端上进行评估。
 

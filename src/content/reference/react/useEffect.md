@@ -896,11 +896,7 @@ button { margin: 5px; }
 
 ### 使用 Effect 请求数据 {/*fetching-data-with-effects*/}
 
-<<<<<<< HEAD
-你可以使用 Effect 来为组件请求数据。请注意，[如果你使用框架](/learn/start-a-new-react-project#full-stack-frameworks)，使用框架的数据请求方式将比在 Effect 中手动编写要有效得多。
-=======
-You can use an Effect to fetch data for your component. Note that [if you use a framework,](/learn/creating-a-react-app#full-stack-frameworks) using your framework's data fetching mechanism will be a lot more efficient than writing Effects manually.
->>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
+你可以使用 Effect 来为组件请求数据。请注意，[如果你使用框架](/learn/creating-a-react-app#full-stack-frameworks)，使用框架的数据请求方式将比在 Effect 中手动编写要有效得多。
 
 如果你想手动从 Effect 中请求数据，你的代码可能是这样的：
 

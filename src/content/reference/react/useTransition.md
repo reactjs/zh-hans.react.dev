@@ -95,11 +95,7 @@ function SubmitButton({ submitAction }) {
 
 #### 参数 {/*starttransition-parameters*/}
 
-<<<<<<< HEAD
-* `action`：通过调用一个或多个 [`set` 函数](/reference/react/useState#setstate) 来更新某些状态的函数。React 会立即调用 `action`（无需参数），并将 `action` 函数调用期间同步调度的所有状态更新标记为 Transition。在 `action` 中通过 `await` 等待的异步调用会被包含在 Transition 中，但目前需要在 `await` 之后将任何 `set` 函数再次包裹在 `startTransition` 中（参见[疑难解答](#react-doesnt-treat-my-state-update-after-await-as-a-transition)）。标记为 Transition 的状态更新将具备[非阻塞特性](#marking-a-state-update-as-a-non-blocking-transition)，并且[不会显示不必要的加载指示](#preventing-unwanted-loading-indicators)。
-=======
-* `action`: A function that updates some state by calling one or more [`set` functions](/reference/react/useState#setstate). React calls `action` immediately with no parameters and marks all state updates scheduled synchronously during the `action` function call as Transitions. Any async calls that are awaited in the `action` will be included in the Transition, but currently require wrapping any `set` functions after the `await` in an additional `startTransition` (see [Troubleshooting](#react-doesnt-treat-my-state-update-after-await-as-a-transition)). State updates marked as Transitions will be [non-blocking](#perform-non-blocking-updates-with-actions) and [will not display unwanted loading indicators](#preventing-unwanted-loading-indicators).
->>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
+* `action`：通过调用一个或多个 [`set` 函数](/reference/react/useState#setstate) 来更新某些状态的函数。React 会立即调用 `action`（无需参数），并将 `action` 函数调用期间同步调度的所有状态更新标记为 Transition。在 `action` 中通过 `await` 等待的异步调用会被包含在 Transition 中，但目前需要在 `await` 之后将任何 `set` 函数再次包裹在 `startTransition` 中（参见[疑难解答](#react-doesnt-treat-my-state-update-after-await-as-a-transition)）。标记为 Transition 的状态更新将具备[非阻塞特性](#perform-non-blocking-updates-with-actions)，并且[不会显示不必要的加载指示](#preventing-unwanted-loading-indicators)。
 
 #### 返回值 {/*starttransition-returns*/}
 
