@@ -757,11 +757,7 @@ function SearchResults({ query }) {
 
 处理竞态条件并不是实现数据获取的唯一难点。你可能还需要考虑缓存响应结果（使用户点击后退按钮时可以立即看到先前的屏幕内容），如何在服务端获取数据（使服务端初始渲染的 HTML 中包含获取到的内容而不是加载动画），以及如何避免网络瀑布（使子组件不必等待每个父组件的数据获取完毕后才开始获取数据）。
 
-<<<<<<< HEAD
-**这些问题适用于任何 UI 库，而不仅仅是 React。解决这些问题并不容易，这也是现代 [框架](/learn/start-a-new-react-project#full-stack-frameworks) 提供了比在 Effect 中获取数据更有效的内置数据获取机制的原因。**
-=======
-**These issues apply to any UI library, not just React. Solving them is not trivial, which is why modern [frameworks](/learn/creating-a-react-app#full-stack-frameworks) provide more efficient built-in data fetching mechanisms than fetching data in Effects.**
->>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
+**这些问题适用于任何 UI 库，而不仅仅是 React。解决这些问题并不容易，这也是现代 [框架](/learn/creating-a-react-app#full-stack-frameworks) 提供了比在 Effect 中获取数据更有效的内置数据获取机制的原因。**
 
 如果你不使用框架（也不想开发自己的框架），但希望使从 Effect 中获取数据更符合人类直觉，请考虑像这个例子一样，将获取逻辑提取到一个自定义 Hook 中：
 

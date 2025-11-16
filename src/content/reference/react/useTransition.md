@@ -1246,15 +1246,9 @@ function Router() {
 
 这么做有三个好处：
 
-<<<<<<< HEAD
-- [转换效果是可中断的](#marking-a-state-update-as-a-non-blocking-transition)，这样用户可以在等待重新渲染完成之前点击其他地方。
+- [转换效果是可中断的](#perform-non-blocking-updates-with-actions)，这样用户可以在等待重新渲染完成之前点击其他地方。
 - [转换效果可以防止不必要的加载指示符](#preventing-unwanted-loading-indicators)，这样用户就可以避免在导航时产生不协调的跳转。
 - [Transition 等待所有挂起的 action](#perform-non-blocking-updates-with-actions)，它允许用户在副作用完成之后再显示新页面。
-=======
-- [Transitions are interruptible,](#perform-non-blocking-updates-with-actions) which lets the user click away without waiting for the re-render to complete.
-- [Transitions prevent unwanted loading indicators,](#preventing-unwanted-loading-indicators) which lets the user avoid jarring jumps on navigation.
-- [Transitions wait for all pending actions](#perform-non-blocking-updates-with-actions) which lets the user wait for side effects to complete before the new page is shown.
->>>>>>> 2534424ec6c433cc2c811d5a0bd5a65b75efa5f0
 
 下面是一个简单的使用转换效果进行页面导航的路由器示例：
 
