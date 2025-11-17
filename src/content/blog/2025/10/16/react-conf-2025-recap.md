@@ -26,7 +26,7 @@ React Conf 2025 于 2025 年 10 月 7-8 日在内华达州亨德森举行。
 
 ## 第一天 {/*day-1-keynote*/}
 
-_[点击这里观看第一天完整直播。](https://www.youtube.com/watch?v=zyVRg2QR6LA&t=1067s)_
+__[点击这里观看第一天完整直播。](https://www.youtube.com/watch?v=zyVRg2QR6LA&t=1067s)__
 
 在第一天的主题演讲中，Joe Savona 分享了自上届 React Conf 以来团队和社区的更新，以及 React 19.0 和 19.1 的亮点。
 
