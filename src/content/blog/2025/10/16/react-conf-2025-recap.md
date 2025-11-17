@@ -42,7 +42,7 @@ Jack Pope 宣布了 Canary 版本中的新特性，包括：
 * [Fragment Refs](https://react.dev/reference/react/Fragment#fragmentinstance) —— 与 Fragment 包裹的 DOM 节点交互的新方式。
 
 Lauren Tan 宣布 [React 编译器 v1.0](https://react.dev/blog/2025/10/07/react-compiler-1)，并建议所有应用使用 React 编译器，可以获得以下好处：
-* 能够理解 React 代码的[自动 memoization](/learn/react-compiler/introduction#what-does-react-compiler-do)。
+* 能够理解 React 代码的 [自动记忆化](/learn/react-compiler/introduction#what-does-react-compiler-do)。
 * 由 React 编译器提供的 [新 lint 规则](/learn/react-compiler/installation#eslint-integration) ，用于传授最佳实践。
 * 在 Vite、Next.js 和 Expo 中为新应用提供 [默认支持](/learn/react-compiler/installation#basic-setup)。
 * 为准备迁移到 React 编译器的现有应用提供 [迁移指南](/learn/react-compiler/incremental-adoption)。
