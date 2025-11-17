@@ -55,7 +55,7 @@ Lauren Tan 宣布 [React 编译器 v1.0](https://react.dev/blog/2025/10/07/react
 
 ## 第二天 {/*day-2-keynote*/}
 
-_[点击这里观看第二天完整直播。](https://www.youtube.com/watch?v=p9OcztRyDl0&t=2299s)_
+__[点击这里观看第二天完整直播。](https://www.youtube.com/watch?v=p9OcztRyDl0&t=2299s)__
 
 在第二天的主题演讲中，Jorge Cohen 和 Nicola Corti 开场就重点介绍了 React Native 的惊人增长 —— 每周下载量达 400 万次（同比增长 100%），以及 Shopify、Zalando 和 HelloFresh 等公司值得关注的应用迁移，RISE、RUNNA 和 Partyful 等获奖应用，以及来自 Mistral、Replit 和 v0 的 AI 应用。
 
