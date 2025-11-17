@@ -13,7 +13,7 @@ title: React Blog
 
 <BlogCard title="回顾 React Conf 2025" date="2025 年 10 月 16 日" url="/blog/2025/10/16/react-conf-2025-recap">
 
-上周我们举办了 React Conf 2025，在本文中，我们总结了会议的演讲和公告...
+上周我们举办了 React Conf 2025，在本文中，我们总结了会议的演讲和公告……
 
 </BlogCard>
 
