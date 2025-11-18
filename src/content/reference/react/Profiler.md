@@ -89,7 +89,7 @@ function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime
 
 `<Profiler>` 允许你编程式收集性能测量数据。如果你正在寻找一个交互式的性能分析工具，可以尝试使用 [React 开发者工具](/learn/react-developer-tools) 中的 Profiler 标签页。它提供了类似浏览器扩展程序的功能。
 
-即使在剖析构建中，也会在 React Performance 跟踪的 [Component tracks](/reference/dev-tools/react-performance-tracks#components) 中标记 `<Profiler>` 封装的组件。
+即使在分析构建中，也会在 React Performance 跟踪的 [Component tracks](/reference/dev-tools/react-performance-tracks#components) 中标记 `<Profiler>` 封装的组件。
 在开发构建中，所有组件都会标记在组件跟踪中，而不管它们是否用 `<Profiler>` 封装。
 
 </Note>
