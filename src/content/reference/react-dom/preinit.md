@@ -4,7 +4,7 @@ title: preinit
 
 <Note>
 
-[基于 React 的框架](/learn/start-a-new-react-project) 通常会内置资源处理方案，因此你可能不必手动调用此 API。请查阅框架文档以获取详细信息。
+[基于 React 的框架](/learn/creating-a-react-app) 通常会内置资源处理方案，因此你可能不必手动调用此 API。请查阅框架文档以获取详细信息。
 
 </Note>
 

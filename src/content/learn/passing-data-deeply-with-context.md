@@ -24,7 +24,7 @@ translators:
 
 [传递 props](/learn/passing-props-to-a-component) 是将数据通过 UI 树显式传递到使用它的组件的好方法。
 
-但是当你需要在组件树中深层传递参数以及需要在组件间复用相同的参数时，传递 props 就会变得很麻烦。最近的根节点父组件可能离需要数据的组件很远，[状态提升](/learn/sharing-state-between-components) 到太高的层级会导致 “逐层传递 props” 的情况。
+但是当你需要在组件树中深层传递参数以及需要在组件间复用相同的参数时，传递 props 就会变得很麻烦。最近的共同祖先组件可能离需要数据的组件很远，[状态提升](/learn/sharing-state-between-components) 到太高的层级会导致 “逐层传递 props” 的情况。
 
 <DiagramGroup>
 

@@ -31,7 +31,7 @@ RSC 将面向服务器的多页面应用程序的简单“请求/响应”思维
 
 现在我们已经相当好地解决了数据提取的问题，我们正在探索另一个方向：从客户端向服务器发送数据，以便可以执行数据库变更和实现表单。我们通过在服务器/客户端边界传递 Server Action 函数来实现这一点。客户端可以调用该函数，提供无缝 RPC。而在 JavaScript 加载之前，Server Action 还可以提供逐步增强的表单。
 
-RSC 已经在 [Next.js App Router](/learn/start-a-new-react-project#nextjs-app-router) 中发布，展示了一个真正深度集成的路由器，它使用了 RSC 并将其作为 primitive。但这不是构建 RSC 兼容的路由器和框架的唯一方法。RSC 规范和实现提供了特定功能的明确分离，旨在成为适用于兼容 React 框架的组件规范。
+RSC 已经在 [Next.js App Router](/learn/creating-a-react-app#nextjs-app-router) 中发布，展示了一个真正深度集成的路由器，它使用了 RSC 并将其作为 primitive。但这不是构建 RSC 兼容的路由器和框架的唯一方法。RSC 规范和实现提供了特定功能的明确分离，旨在成为适用于兼容 React 框架的组件规范。
 
 我们通常建议使用现有的框架，但你仍然可以构建自定义框架。由于需要深度集成 bundler，构建自定义 RSC 兼容的框架并不像想象中那么容易。当前的若代 bundler 非常适合在客户端使用，但它们并没有专门为将单个模块图分割为服务器和客户端提供一流的支持而设计。因此我们选择直接与 bundler 开发人员合作，以将内置 RSC 作为 primitive。
 
@@ -92,7 +92,7 @@ React 的核心思想是开发人员将其 UI 定义为当前状态的函数。�
 
 ## 追踪 Transition {/*transition-tracing*/}
 
-追踪 Transition 的 API 可以检测 [React Transition](/reference/react/useTransition) 变慢的原因，并调查为什么会变慢。在上次更新后，我们完成了 API 的初始设计，并发布了一个 [RFC](https://github.com/reactjs/rfcs/pull/238)，基本功能也已经实现。该项目目前处于暂停状态。我们欢迎对 RFC 进行反馈，并期待恢复其开发，为 React 提供更好的性能测量工具。这将特别对基于 React Transition 构建的路由非常有用，例如 [Next.js App Router](/learn/start-a-new-react-project#nextjs-app-router)。
+追踪 Transition 的 API 可以检测 [React Transition](/reference/react/useTransition) 变慢的原因，并调查为什么会变慢。在上次更新后，我们完成了 API 的初始设计，并发布了一个 [RFC](https://github.com/reactjs/rfcs/pull/238)，基本功能也已经实现。该项目目前处于暂停状态。我们欢迎对 RFC 进行反馈，并期待恢复其开发，为 React 提供更好的性能测量工具。这将特别对基于 React Transition 构建的路由非常有用，例如 [Next.js App Router](/learn/creating-a-react-app#nextjs-app-router)。
 
 * * *
 除了这个更新，我们的团队最近还在社区播客和直播中客串，更多地讲述我们的工作并回答问题。

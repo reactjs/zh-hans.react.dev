@@ -34,7 +34,7 @@ title: 从零开始构建 React 应用
 [Vite](https://vite.dev/) 是一个构建工具，旨在为现代网络项目提供更快更简洁的开发体验。
 
 <TerminalBlock>
-{`npm create vite@latest my-app -- --template react`}
+npm create vite@latest my-app -- --template react-ts
 </TerminalBlock>
 
 Vite 采用约定式设计，开箱即提供合理的默认配置。它拥有丰富的插件生态系统，能够支持快速热更新、JSX、Babel/SWC 等常见功能。你可以查看 Vite 的 [React 插件](https://vite.dev/plugins/#vitejs-plugin-react) 或 [React SWC 插件](https://vite.dev/plugins/#vitejs-plugin-react-swc) 和 [React 服务器端渲染示例项目](https://vite.dev/guide/ssr.html#example-projects) 来开始使用。
@@ -46,7 +46,7 @@ Vite 已经作为构建工具在我们 [推荐的框架](/learn/creating-a-react
 [Parcel](https://parceljs.org/) 结合了出色的开箱即用开发体验和可扩展的架构，可以将你的项目从刚开始的阶段推向大规模的生产应用。
 
 <TerminalBlock>
-{`npm install --save-dev parcel`}
+npm install --save-dev parcel
 </TerminalBlock>
 
 Parcel 支持快速刷新、JSX、TypeScript、Flow 和开箱即用的样式。请查看 [Parcel 的 React 教程](https://parceljs.org/recipes/react/#getting-started) 以开始。
@@ -56,7 +56,7 @@ Parcel 支持快速刷新、JSX、TypeScript、Flow 和开箱即用的样式。�
 [Rsbuild](https://rsbuild.dev/) 是一个基于 Rspack 的构建工具，旨在为 React 应用程序提供无缝的开发体验。它配备了精心调优的默认设置和现成的性能优化。
 
 <TerminalBlock>
-{`npx create-rsbuild --template react`}
+npx create-rsbuild --template react
 </TerminalBlock>
 
 Rsbuild 内置了对 React 特性的支持，如快速刷新、JSX、TypeScript 和样式。请查看 [Rsbuild 的 React 指南](https://rsbuild.dev/zh/guide/framework/react) 以开始使用。
@@ -97,7 +97,7 @@ React 生态系统中包含许多用于解决这些问题的工具。我们列�
 
 如果你从大多数后端或 REST 风格的 API 获取数据，我们建议使用：
 
-- [React Query](https://react-query.tanstack.com/)
+- [TanStack Query](https://tanstack.com/query/)
 - [SWR](https://swr.vercel.app/)
 - [RTK Query](https://redux-toolkit.js.org/rtk-query/overview)
 
