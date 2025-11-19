@@ -90,7 +90,7 @@ function Page({ url }) {
 }
 ```
 
-In this example, the Effect should re-run after a render when `url` changes (to log the new page visit), but it should **not** re-run when `numberOfItems` changes. By wrapping the logging logic in an Effect Event, `numberOfItems` becomes non-reactive. It's always read from the latest value without triggering the Effect.
+在本例中，当 `url` 发生变化时，Effect 应在呈现后重新运行（以记录新页面的访问），但当 `numberOfItems` 发生变化时，它 **不** 应该重新运行。通过将日志记录逻辑封装在一个 Effect 事件中，`numberOfItems` 就变成了非响应的。它总是从最新值读取，而不会触发 Effect。
 
-You can pass reactive values like `url` as arguments to the Effect Event to keep them reactive while accessing the latest non-reactive values inside the event.
+你可以将 `url` 等响应式值作为参数传递给 Effect Event，使其保持响应状态，同时在事件内部访问最新的非响应式值。
 
