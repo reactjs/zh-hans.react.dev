@@ -101,7 +101,7 @@ function TeamReport({users}) {
 
 当 `TeamReport` 使用相同的 `user` 对象来渲染 `users` 列表时，它将调用 <CodeStep step={2}>`getUserMetrics`</CodeStep> 并从缓存中读取结果。
 
-If `calculateUserMetrics` can be aborted by passing an [`AbortSignal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal), you can use [`cacheSignal()`](/reference/react/cacheSignal) to cancel the expensive computation if React has finished rendering. `calculateUserMetrics` may already handle cancellation internally by using `cacheSignal` directly.
+如果可以通过传递 [`AbortSignal`](https://developer.mozilla.org/zh-CN/docs/Web/API/AbortSignal) 来中止 `calculateUserMetrics`，则可以使用 [`cacheSignal()`](/reference/react/cacheSignal)，以便在 React 完成渲染后取消昂贵的计算。`calculateUserMetrics` 可以直接使用 `cacheSignal` 在内部处理取消。
 
 <Pitfall>
 
