@@ -375,7 +375,7 @@ function MyForm() {
 }
 ```
 
-在上面这个例子中，父组件创建了一个名为 `MyForm` 的 ref，并且将它传递给了 `MyInput` 子组件。`MyInput` 将这个 ref 传递给 `<input>`。因为 `<input>` 是一个 [内置组件](/reference/react-dom/components/common)，React 会将 ref 的 `.current` 属性设置为这个 `<input>` DOM 元素。
+在上面这个例子中，父组件 `MyForm` 创建了一个名为 `inputRef` 的 ref，并且将它传递给了 `MyInput` 子组件。`MyInput` 将这个 ref 传递给 `<input>`。因为 `<input>` 是一个 [内置组件](/reference/react-dom/components/common)，React 会将 ref 的 `.current` 属性设置为这个 `<input>` DOM 元素。
 
 在 `MyForm` 中创建的 `inputRef` 现在指向 `MyInput` 返回的 `<input>` DOM 元素。在 `MyForm` 中创建的点击处理程序可以访问 `inputRef` 并且调用 `focus()` 来将焦点设置在 `<input>` 上。
 
