@@ -11,7 +11,17 @@ title: React Blog
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
+<<<<<<< HEAD
 <BlogCard title="回顾 React Conf 2025" date="2025 年 10 月 16 日" url="/blog/2025/10/16/react-conf-2025-recap">
+=======
+<BlogCard title="Critical Security Vulnerability in React Server Components" date="December 3, 2025" url="/blog/2025/12/03/critical-security-vulnerability-in-react-server-components">
+
+There is an unauthenticated remote code execution vulnerability in React Server Components. A fix has been published in versions 19.0.1, 19.1.2, and 19.2.1. We recommend upgrading immediately.
+
+</BlogCard>
+
+<BlogCard title="React Conf 2025 Recap" date="October 16, 2025" url="/blog/2025/10/16/react-conf-2025-recap">
+>>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 
 上周我们举办了 React Conf 2025，在本文中，我们总结了会议的演讲和公告……
 
