@@ -11,6 +11,12 @@ title: React Blog
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
+<BlogCard title="服务器组件中的严重安全漏洞" date="2025 年 12 月 3 日" url="/blog/2025/12/03/critical-security-vulnerability-in-react-server-components">
+
+服务器组件中存在未经身份验证的远程代码执行漏洞。版本 19.0.1、19.1.2 和 19.2.1 已经修复该漏洞。我们建议立即升级。
+
+</BlogCard>
+
 <BlogCard title="回顾 React Conf 2025" date="2025 年 10 月 16 日" url="/blog/2025/10/16/react-conf-2025-recap">
 
 上周我们举办了 React Conf 2025，在本文中，我们总结了会议的演讲和公告……
