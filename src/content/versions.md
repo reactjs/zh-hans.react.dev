@@ -52,12 +52,8 @@ React 文档位于 [react.dev](https://react.dev)，提供最新版本 React 的
 - [React Compiler Case Studies](https://www.youtube.com/watch?v=lvhPq5chokM)
 - [React 19 Deep Dive: Coordinating HTML](https://www.youtube.com/watch?v=IBBN-s77YSI)
 
-<<<<<<< HEAD
 **发布版本**
-=======
-**Releases**
 - [v19.2.1 (December, 2025)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1921-dec-3-2025)
->>>>>>> e22544e68d6fffda33332771efe27034739f35a4
 - [v19.2.0 (October, 2025)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1920-october-1st-2025)
 - [v19.1.2 (December, 2025)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1912-dec-3-2025)
 - [v19.1.1 (July, 2025)](https://github.com/facebook/react/blob/main/CHANGELOG.md#1911-july-28-2025)
