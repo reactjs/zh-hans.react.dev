@@ -164,13 +164,13 @@ Next.js 用户可以通过使用 [v15.3.1](https://github.com/vercel/next.js/rel
 
 ## 关于 useMemo、useCallback 和 React.memo 我应该怎么做？ {/*what-should-i-do-about-usememo-usecallback-and-reactmemo*/}
 
-By default, React Compiler will memoize your code based on its analysis and heuristics. In most cases, this memoization will be as precise, or moreso, than what you may have written.
+默认情况下，React 编译器会根据其分析和启发式方法对你的代码进行记忆化处理。在大多数情况下，这种记忆化处理的效果会与你编写的代码一样精确，甚至更胜一筹。
 
-However, in some cases developers may need more control over memoization. The `useMemo` and `useCallback` hooks can continue to be used with React Compiler as an escape hatch to provide control over which values are memoized. A common use-case for this is if a memoized value is used as an effect dependency, in order to ensure that an effect does not fire repeatedly even when its dependencies do not meaningfully change.
+然而，在某些情况下，开发者可能需要对记忆化进行更精细的控制。`useMemo` 和 `useCallback` Hooks 可以继续与 React 编译器一起使用，作为一种脱围机制，用于控制哪些值会被记忆化。一个常见的用例是，如果记忆化的值被用作 effect 的依赖项，即使其依赖项没有实质性变化，effect 也不会反复触发。
 
-For new code, we recommend relying on the compiler for memoization and using `useMemo`/`useCallback` where needed to achieve precise control.
+对于增量代码，我们建议依赖编译器进行记忆化，并在需要时使用 `useMemo`/`useCallback` 以实现精确控制。
 
-For existing code, we recommend either leaving existing memoization in place (removing it can change compilation output) or carefully testing before removing the memoization.
+对于现有代码，我们建议要么保留现有的记忆化（移除它可能会改变编译输出），要么在移除记忆化之前进行仔细测试。
 
 ## 尝试 React 编译器 {/*try-react-compiler*/}
 
