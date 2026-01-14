@@ -12,21 +12,21 @@
       "skipBreadcrumb": true,
       "routes": [
         {
-          "title": "Denial of Service and Source Code Exposure in React Server Components",
+          "title": "React 服务器组件中的拒绝服务和源代码泄露",
           "titleForHomepage": "Additional Vulnerabilities in RSC",
           "icon": "blog",
           "date": "December 11, 2025",
           "path": "/blog/2025/12/11/denial-of-service-and-source-code-exposure-in-react-server-components"
         },
         {
-          "title": "Critical Security Vulnerability in React Server Components",
+          "title": "React 服务器组件中的严重安全漏洞",
           "titleForHomepage": "Vulnerability in React Server Components",
           "icon": "blog",
           "date": "December 3, 2025",
           "path": "/blog/2025/12/03/critical-security-vulnerability-in-react-server-components"
         },
         {
-          "title": "React Conf 2025 Recap",
+          "title": "2025 年 React 大会回顾",
           "titleForHomepage": "React Conf 2025 Recap",
           "icon": "blog",
           "date": "October 16, 2025",
@@ -40,7 +40,7 @@
           "path": "/blog/2025/10/07/react-compiler-1"
         },
         {
-          "title": "Introducing the React Foundation",
+          "title": "介绍 React 基金会",
           "titleForHomepage": "Introducing the React Foundation",
           "icon": "blog",
           "date": "October 7, 2025",
@@ -61,7 +61,7 @@
           "path": "/blog/2025/04/23/react-labs-view-transitions-activity-and-more"
         },
         {
-          "title": "Sunsetting Create React App",
+          "title": "停止使用 Create React App",
           "titleForHomepage": "Sunsetting Create React App",
           "icon": "blog",
           "date": "February 14, 2025",
