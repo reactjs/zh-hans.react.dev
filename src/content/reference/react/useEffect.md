@@ -44,9 +44,9 @@ function ChatRoom({ roomId }) {
 
 #### 参数 {/*parameters*/}
 
-* `setup`：处理 Effect 的函数。setup 函数选择性返回一个 **清理（cleanup）** 函数。当组件被添加到 DOM 的时候，React 将运行 setup 函数。在每次依赖项变更重新渲染后，React 将首先使用旧值运行 cleanup 函数（如果你提供了该函数），然后使用新值运行 setup 函数。在组件从 DOM 中移除后，React 将最后一次运行 cleanup 函数。
+* `setup`：处理 Effect 的函数。setup 函数选择性返回一个 **清理（cleanup）** 函数。当 [组件提交的时候](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom)，React 会运行 setup 函数。在每次提交导致依赖项变更后，React 将首先使用旧值运行 cleanup 函数（如果你提供了该函数），然后使用新值运行 setup 函数。在组件从 DOM 中移除后，React 将最后一次运行 cleanup 函数。
  
-* **可选** `dependencies`：`setup` 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 [配置了 React](/learn/editor-setup#linting)，那么它将验证是否每个响应式值都被正确地指定为一个依赖项。依赖项列表的元素数量必须是固定的，并且必须像 `[dep1, dep2, dep3]` 这样内联编写。React 将使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来比较每个依赖项和它先前的值。如果省略此参数，则在每次重新渲染组件之后，将重新运行 Effect 函数。如果你想了解更多，请参见 [传递依赖数组、空数组和不传递依赖项之间的区别](#examples-dependencies)。
+* **可选** `dependencies`：`setup` 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 [配置了 React](/learn/editor-setup#linting)，那么它将验证是否每个响应式值都被正确地指定为一个依赖项。依赖项列表的元素数量必须是固定的，并且必须像 `[dep1, dep2, dep3]` 这样内联编写。React 将使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来比较每个依赖项和它先前的值。如果省略此参数，则在每次组件提交更改之后，将重新运行 Effect 函数。如果你想了解更多，请参见 [传递依赖数组、空数组和不传递依赖项之间的区别](#examples-dependencies)。
 
 #### 返回值 {/*returns*/}
 
@@ -107,14 +107,14 @@ function ChatRoom({ roomId }) {
 **React 在必要时会调用 setup 和 cleanup，这可能会发生多次**：
 
 1. 将组件挂载到页面时，将运行 <CodeStep step={1}>setup 代码</CodeStep>。
-2. 重新渲染 <CodeStep step={3}>依赖项</CodeStep> 变更的组件后：
+2. 如果组件提交导致 <CodeStep step={3}>依赖项</CodeStep> 被改变：
    - 首先，使用旧的 props 和 state 运行 <CodeStep step={2}>cleanup 代码</CodeStep>。
    - 然后，使用新的 props 和 state 运行 <CodeStep step={1}>setup 代码</CodeStep>。
 3. 当组件从页面卸载后，<CodeStep step={2}>cleanup 代码</CodeStep> 将运行最后一次。
 
 **用上面的代码作为例子来解释这个顺序**。  
 
-当 `ChatRoom` 组件添加到页面中时，它将使用 `serverUrl` 和 `roomId` 初始值连接到聊天室。如果 `serverUrl` 或者 `roomId` 发生改变并导致重新渲染（比如用户在下拉列表中选择了一个不同的聊天室），那么 Effect 就会 **断开与前一个聊天室的连接，并连接到下一个聊天室**。当 `ChatRoom` 组件从页面中卸载时，你的 Effect 将最后一次断开连接。
+当 `ChatRoom` 组件添加到页面中时，它将使用 `serverUrl` 和 `roomId` 初始值连接到聊天室。如果 `serverUrl` 或者 `roomId` 发生改变并导致提交（比如用户在下拉列表中选择了一个不同的聊天室），那么 Effect 就会 **断开与前一个聊天室的连接，并连接到下一个聊天室**。当 `ChatRoom` 组件从页面中卸载时，你的 Effect 将最后一次断开连接。
 
 **为了 [帮助你发现 bug](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed)，在开发环境下，React 在运行 <CodeStep step={1}>setup</CodeStep> 之前会额外运行一次<CodeStep step={1}>setup</CodeStep> 和 <CodeStep step={2}>cleanup</CodeStep>**。这是一个压力测试，用于验证 Effect 逻辑是否正确实现。如果这会导致可见的问题，那么你的 cleanup 函数就缺少一些逻辑。cleanup 函数应该停止或撤消 setup 函数正在执行的任何操作。一般来说，用户不应该能够区分只调用一次 setup（在生产环境中）与调用 *setup* → *cleanup* → *setup* 序列（在开发环境中）。[查看常见解决方案](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)。
 
@@ -1145,7 +1145,7 @@ useEffect(() => {
 
 #### 传递依赖项数组 {/*passing-a-dependency-array*/}
 
-如果指定了依赖项，则 Effect 在 **初始渲染后以及依赖项变更的重新渲染后** 运行。
+如果指定了依赖项，则 Effect 在 **初始提交后以及提交导致了依赖项变更后** 运行。
 
 ```js {3}
 useEffect(() => {
@@ -1242,7 +1242,7 @@ button { margin-left: 5px; }
 
 #### 传递空依赖项数组 {/*passing-an-empty-dependency-array*/}
 
-如果你的 Effect 确实没有使用任何响应式值，则它仅在 **初始渲染后** 运行。
+如果你的 Effect 确实没有使用任何响应式值，则它仅在 **初始提交后** 运行。
 
 ```js {3}
 useEffect(() => {
@@ -1319,7 +1319,7 @@ export function createConnection(serverUrl, roomId) {
 
 #### 不传递依赖项数组 {/*passing-no-dependency-array-at-all*/}
 
-如果完全不传递依赖数组，则 Effect 会在组件的 **每次单独渲染（和重新渲染）之后** 运行。
+如果完全不传递依赖数组，则 Effect 会在组件的 **每次单独提交之后** 运行。
 
 ```js {3}
 useEffect(() => {
@@ -1480,7 +1480,7 @@ body {
 
 ### 删除不必要的对象依赖项 {/*removing-unnecessary-object-dependencies*/}
 
-如果你的 Effect 依赖于在渲染期间创建的对象或函数，则它可能会频繁运行。例如，此 Effect 在每次渲染后都重新连接，因为 `options` 对象 [每次渲染都不同](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)：
+如果你的 Effect 依赖于在渲染期间创建的对象或函数，则它可能会频繁运行。例如，此 Effect 在每次提交后都重新连接，因为 `options` 对象 [每次渲染都不同](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)：
 
 ```js {6-9,12,15}
 const serverUrl = 'https://localhost:1234';
@@ -1497,7 +1497,7 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options); // 它在 Effect 内部使用
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // 🚩 因此，这些依赖在重新渲染时总是不同的
+  }, [options]); // 🚩 因此，这些依赖在每次提交时总是不同的
   // ...
 ```
 
@@ -1583,7 +1583,7 @@ button { margin-left: 10px; }
 
 ### 删除不必要的函数依赖项 {/*removing-unnecessary-function-dependencies*/}
 
-如果你的 Effect 依赖于在渲染期间创建的对象或函数，则它可能会频繁运行。例如，此 Effect 在每次渲染后重新连接，因为 `createOptions` 函数 [在每次渲染时都不同](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)：
+如果你的 Effect 依赖于在渲染期间创建的对象或函数，则它可能会频繁运行。例如，此 Effect 在每次提交后重新连接，因为 `createOptions` 函数 [在每次渲染时都不同](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)：
 
 ```js {4-9,12,16}
 function ChatRoom({ roomId }) {
@@ -1601,7 +1601,7 @@ function ChatRoom({ roomId }) {
     const connection = createConnection();
     connection.connect();
     return () => connection.disconnect();
-  }, [createOptions]); // 🚩 因此，此依赖项在每次重新渲染都是不同的
+  }, [createOptions]); // 🚩 因此，此依赖项在每次提交时都是不同的
   // ...
 ```
 
@@ -1775,7 +1775,7 @@ function MyComponent() {
 ```js {3}
 useEffect(() => {
   // ...
-}); // 🚩 没有依赖项数组：每次重新渲染后重新运行！
+}); // 🚩 没有依赖项数组：每次提交后重新运行！
 ```
 
 如果你已经指定了依赖项数组，你的 Effect 仍循环地重新运行，那是因为你的某个依赖项在每次重新渲染时都是不同的。

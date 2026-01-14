@@ -11,6 +11,12 @@ title: React Blog
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
+<BlogCard title="React 服务器组件中的拒绝服务和源代码泄露" date="2025 年 12 月 11 日" url="/blog/2025/12/11/denial-of-service-and-source-code-exposure-in-react-server-components">
+
+安全研究员在尝试利用上周公布的严重漏洞补丁时，又发现了 React 服务器组件中的两个漏洞并进行披露……
+
+</BlogCard>
+
 <BlogCard title="服务器组件中的严重安全漏洞" date="2025 年 12 月 3 日" url="/blog/2025/12/03/critical-security-vulnerability-in-react-server-components">
 
 服务器组件中存在未经身份验证的远程代码执行漏洞。版本 19.0.1、19.1.2 和 19.2.1 已经修复该漏洞。我们建议立即升级。
