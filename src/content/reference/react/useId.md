@@ -44,6 +44,8 @@ function PasswordField() {
 
 * `useId` 是一个 Hook，因此你只能 **在组件的顶层** 或自己的 Hook 中调用它。你不能在内部循环或条件判断中调用它。如果需要，可以提取一个新组件并将 state 移到该组件中。
 
+* `useId` **不应该被用来为 [use()](/reference/react/use) 生成缓存键**。这个 ID 在组件挂载的时候是稳定的，但是在后续的渲染过程中可能会发生变化。缓存键应该由你的数据中生成。
+
 * `useId` **不应该被用来生成列表中的 key**。[key 应该由你的数据生成](/learn/rendering-lists#where-to-get-your-key)。
 
 * `useId` 当前无法在 [异步服务器组件](/reference/rsc/server-components#async-components-with-server-components) 中使用。
