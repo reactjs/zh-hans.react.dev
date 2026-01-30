@@ -4,7 +4,7 @@ title: immutability
 
 <Intro>
 
-验证是否修改了 props、state 和其它[不可变](/reference/rules/components-and-hooks-must-be-pure#props-and-state-are-immutable)的值。
+验证是否修改了 props、state 和其它 [不可变](/reference/rules/components-and-hooks-must-be-pure#props-and-state-are-immutable) 的值。
 
 </Intro>
 
