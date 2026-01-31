@@ -4,85 +4,85 @@ title: immutability
 
 <Intro>
 
-Validates against mutating props, state, and other values that [are immutable](/reference/rules/components-and-hooks-must-be-pure#props-and-state-are-immutable).
+验证是否修改了 props、state 和其它 [不可变](/reference/rules/components-and-hooks-must-be-pure#props-and-state-are-immutable) 的值。
 
 </Intro>
 
-## Rule Details {/*rule-details*/}
+## 规则详情 {/*rule-details*/}
 
-A component’s props and state are immutable snapshots. Never mutate them directly. Instead, pass new props down, and use the setter function from `useState`.
+组件的 props 和 state 是不可变的快照。永远不要直接修改它们。相反，应向下传递新的 props，并使用 `useState` 提供的 setter 函数。
 
-## Common Violations {/*common-violations*/}
+## 常见违规示例 {/*common-violations*/}
 
-### Invalid {/*invalid*/}
+### 无效的 {/*invalid*/}
 
 ```js
-// ❌ Array push mutation
+// ❌ 数组 push 修改
 function Component() {
   const [items, setItems] = useState([1, 2, 3]);
 
   const addItem = () => {
-    items.push(4); // Mutating!
-    setItems(items); // Same reference, no re-render
+    items.push(4); // 修改！
+    setItems(items); // 引用相同，不重新渲染
   };
 }
 
-// ❌ Object property assignment
+// ❌ 对象属性赋值
 function Component() {
   const [user, setUser] = useState({name: 'Alice'});
 
   const updateName = () => {
-    user.name = 'Bob'; // Mutating!
-    setUser(user); // Same reference
+    user.name = 'Bob'; // 修改！
+    setUser(user); // 引用相同
   };
 }
 
-// ❌ Sort without spreading
+// ❌ 未利用展开进行排序
 function Component() {
   const [items, setItems] = useState([3, 1, 2]);
 
   const sortItems = () => {
-    setItems(items.sort()); // sort mutates!
+    setItems(items.sort()); // sort 会修改原数组！
   };
 }
 ```
 
-### Valid {/*valid*/}
+### 有效的 {/*valid*/}
 
 ```js
-// ✅ Create new array
+// ✅ 创建新数组
 function Component() {
   const [items, setItems] = useState([1, 2, 3]);
 
   const addItem = () => {
-    setItems([...items, 4]); // New array
+    setItems([...items, 4]); // 新数组
   };
 }
 
-// ✅ Create new object
+// ✅ 创建新对象
 function Component() {
   const [user, setUser] = useState({name: 'Alice'});
 
   const updateName = () => {
-    setUser({...user, name: 'Bob'}); // New object
+    setUser({...user, name: 'Bob'}); // 新对象
   };
 }
 ```
 
-## Troubleshooting {/*troubleshooting*/}
+## 故障排除 {/*troubleshooting*/}
 
-### I need to add items to an array {/*add-items-array*/}
+### 我需要向数组添加项 {/*add-items-array*/}
 
-Mutating arrays with methods like `push()` won't trigger re-renders:
+使用 `push()` 之类的方法修改数组不会触发重新渲染：
 
 ```js
-// ❌ Wrong: Mutating the array
+// ❌ 错误：修改数组
 function TodoList() {
   const [todos, setTodos] = useState([]);
 
   const addTodo = (id, text) => {
     todos.push({id, text});
-    setTodos(todos); // Same array reference!
+    setTodos(todos); // 相同的数组引用！
   };
 
   return (
@@ -93,16 +93,16 @@ function TodoList() {
 }
 ```
 
-Create a new array instead:
+改为创建一个新数组：
 
 ```js
-// ✅ Better: Create a new array
+// ✅ 更好的做法：创建新数组
 function TodoList() {
   const [todos, setTodos] = useState([]);
 
   const addTodo = (id, text) => {
     setTodos([...todos, {id, text}]);
-    // Or: setTodos(todos => [...todos, {id: Date.now(), text}])
+    // 或者：setTodos(todos => [...todos, {id: Date.now(), text}])
   };
 
   return (
@@ -113,12 +113,12 @@ function TodoList() {
 }
 ```
 
-### I need to update nested objects {/*update-nested-objects*/}
+### 我需要更新嵌套对象 {/*update-nested-objects*/}
 
-Mutating nested properties doesn't trigger re-renders:
+修改嵌套属性不会触发重新渲染：
 
 ```js
-// ❌ Wrong: Mutating nested object
+// ❌ 错误：修改嵌套对象
 function UserProfile() {
   const [user, setUser] = useState({
     name: 'Alice',
@@ -129,16 +129,16 @@ function UserProfile() {
   });
 
   const toggleTheme = () => {
-    user.settings.theme = 'dark'; // Mutation!
-    setUser(user); // Same object reference
+    user.settings.theme = 'dark'; // 修改！
+    setUser(user); // 相同的对象引用
   };
 }
 ```
 
-Spread at each level that needs updating:
+在需要更新的每一层级进行展开：
 
 ```js
-// ✅ Better: Create new objects at each level
+// ✅ 更好的做法：在每一层级创建新对象
 function UserProfile() {
   const [user, setUser] = useState({
     name: 'Alice',
