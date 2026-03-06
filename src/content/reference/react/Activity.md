@@ -43,7 +43,7 @@ title: <Activity>
 #### Props {/*props*/}
 
 * `children`： 你想要显示或隐藏的 UI。
-* `mode`： 字符串值，取值为 `'visible'` 或 `'hidden'`。如果省略，默认值为 `'visible'`。 
+* `mode`： 字符串值，取值为 `'visible'` 或 `'hidden'`。如果省略，默认值为 `'visible'`。
 
 #### Caveats {/*caveats*/}
 
@@ -111,7 +111,7 @@ import { useState } from 'react';
 
 export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false)
-  
+
   return (
     <nav>
       <button onClick={() => setIsExpanded(!isExpanded)}>
@@ -219,7 +219,7 @@ import { useState } from 'react';
 
 export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false)
-  
+
   return (
     <nav>
       <button onClick={() => setIsExpanded(!isExpanded)}>
@@ -287,7 +287,7 @@ h1 {
 
 <Sandpack>
 
-```js src/App.js 
+```js src/App.js
 import { useState } from 'react';
 import TabButton from './TabButton.js';
 import Home from './Home.js';
@@ -371,7 +371,7 @@ b { display: inline-block; margin-right: 10px; }
 
 这是因为我们在 `App` 组件中完全卸载了 `Contact`。当`Contact`组标签页被卸载时，`<textarea>` 元素的内部 DOM 状态也就丢失了。
 
-如果我们改用 `Activity` 边界来显示和隐藏当前活跃的标签页，我们就能保留每个标签页的 DOM 状态。试着再次输入文本并切换标签页，你会发现草稿消息不再被重置： 
+如果我们改用 `Activity` 边界来显示和隐藏当前活跃的标签页，我们就能保留每个标签页的 DOM 状态。试着再次输入文本并切换标签页，你会发现草稿消息不再被重置：
 
 <Sandpack>
 
@@ -434,7 +434,7 @@ export default function Home() {
 }
 ```
 
-```js src/Contact.js 
+```js src/Contact.js
 export default function Contact() {
   return (
     <div>
@@ -759,7 +759,7 @@ video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
 
 - 使用支持 `Suspense` 的框架进行数据获取，例如[Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense)
 - 使用 [`lazy`](/reference/react/lazy) 延迟加载（Lazy-loading）组件代码
-- 使用 [`use`](/reference/react/use) 读取缓存的 Promise 的值 
+- 使用 [`use`](/reference/react/use) 读取缓存的 Promise 的值
 
 `Activity` **无法**检测到在 Effect 内部获取的数据。
 
@@ -824,7 +824,7 @@ function Page() {
 }
 ```
 
-在这种情况下，React 必须一次性对整个页面进行注水。如果 `Home` 或 `Video` 的渲染速度较慢，它们可能会导致标签页按钮在注水期间感觉响应迟钝。 
+在这种情况下，React 必须一次性对整个页面进行注水。如果 `Home` 或 `Video` 的渲染速度较慢，它们可能会导致标签页按钮在注水期间感觉响应迟钝。
 
 在活跃的标签页周围添加 `Suspense` 可以解决这个问题：
 
@@ -903,7 +903,7 @@ function Page() {
       </Activity>
     </>
   );
-} 
+}
 ```
 
 ---
@@ -975,7 +975,7 @@ export default function Home() {
 }
 ```
 
-```js src/Video.js 
+```js src/Video.js
 export default function Video() {
   return (
     <video
@@ -1068,7 +1068,7 @@ export default function Home() {
 }
 ```
 
-```js src/Video.js 
+```js src/Video.js
 export default function Video() {
   return (
     <video
@@ -1185,7 +1185,7 @@ export default function Home() {
 }
 ```
 
-```js src/Video.js 
+```js src/Video.js
 import { useRef, useLayoutEffect } from 'react';
 
 export default function Video() {
@@ -1238,7 +1238,7 @@ video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
 
 不过，通常情况下，你的大多数 React 组件应该已经具备了被 `Activity` 边界隐藏的健壮性。并且从概念上讲，你应该将“隐藏”状态的 `Activity` 视为已被“卸载”。
 
-为了能及早发现其他没有正确清理逻辑的 Effect（这不仅对 `Activity` 边界至关重要，对 React 的许多其他行为也同样重要），我们建议使用 [`<StrictMode>`](/reference/react/StrictMode). 
+为了能及早发现其他没有正确清理逻辑的 Effect（这不仅对 `Activity` 边界至关重要，对 React 的许多其他行为也同样重要），我们建议使用 [`<StrictMode>`](/reference/react/StrictMode).
 
 ---
 
