@@ -11,7 +11,17 @@ title: React Blog
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
+<<<<<<< HEAD
 <BlogCard title="React 服务器组件中的拒绝服务和源代码泄露" date="2025 年 12 月 11 日" url="/blog/2025/12/11/denial-of-service-and-source-code-exposure-in-react-server-components">
+=======
+<BlogCard title="The React Foundation: A New Home for React Hosted by the Linux Foundation" date="February 24, 2026" url="/blog/2026/02/24/the-react-foundation">
+
+The React Foundation has officially launched under the Linux Foundation.
+
+</BlogCard>
+
+<BlogCard title="Denial of Service and Source Code Exposure in React Server Components" date="December 11, 2025" url="/blog/2025/12/11/denial-of-service-and-source-code-exposure-in-react-server-components">
+>>>>>>> 1207ee36e1c7e3f2737d8f1022015473ffa99adf
 
 安全研究员在尝试利用上周公布的严重漏洞补丁时，又发现了 React 服务器组件中的两个漏洞并进行披露……
 
