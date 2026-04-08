@@ -40,7 +40,11 @@ export default function App() {
 }
 ```
 
+<<<<<<< HEAD
 `Submit` 组件必须在 `<form>` 内部渲染以获取状态信息。该 Hook 返回诸如 <CodeStep step={1}>`pending`</CodeStep> 属性的信息，用于指示表单是否正在提交中。
+=======
+To get status information, the `Submit` component must be rendered within a `<form>`. The Hook returns information like the <CodeStep step={1}>`pending`</CodeStep> property which tells you if the form is actively submitting.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 在上面的示例中，`Submit` 利用此信息来在表单提交时禁用 `<button>` 按钮的按压操作。
 
@@ -65,8 +69,13 @@ export default function App() {
 
 #### 注意 {/*caveats*/}
 
+<<<<<<< HEAD
 * `useFormStatus` Hook 必须从在 `<form>` 内渲染的组件中调用。
 * `useFormStatus` 仅会返回父级 `<form>` 的状态信息。它不会返回同一组件或子组件中渲染的任何 `<form>` 的状态信息。
+=======
+* The `useFormStatus` Hook must be called from a component that is rendered inside a `<form>`.
+* `useFormStatus` will only return status information for a parent `<form>`. It will not return status information for any `<form>` rendered in that same component or children components.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 ---
 
@@ -75,7 +84,11 @@ export default function App() {
 ### 在表单提交期间显示待定状态 {/*display-a-pending-state-during-form-submission*/}
 可以在 `<form>` 中渲染的子组件中调用 `useFormStatus` Hook，并读取返回的 `pending` 属性，以在表单提交期间显示待定状态。
 
+<<<<<<< HEAD
 下面的示例使用 `pending` 属性指示表单正在提交。
+=======
+Here, we use the `pending` property to indicate the form is submitting.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 <Sandpack>
 
@@ -110,7 +123,7 @@ export async function submitForm(query) {
     await new Promise((res) => setTimeout(res, 1000));
 }
 ```
-</Sandpack>  
+</Sandpack>
 
 <Pitfall>
 
@@ -131,8 +144,13 @@ function Form() {
 
 ```js
 function Submit() {
+<<<<<<< HEAD
   // ✅ `pending` 将从包裹 Submit 组件的表单派生
   const { pending } = useFormStatus(); 
+=======
+  // ✅ `pending` will be derived from the form that wraps the Submit component
+  const { pending } = useFormStatus();
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
   return <button disabled={pending}>...</button>;
 }
 
@@ -215,7 +233,7 @@ button {
 
 ```
 
-</Sandpack>  
+</Sandpack>
 
 ---
 
@@ -223,7 +241,11 @@ button {
 
 ### `status.pending` 从不为 `true` {/*pending-is-never-true*/}
 
+<<<<<<< HEAD
 `useFormStatus` 仅会返回父级 `<form>` 的状态信息。
+=======
+`useFormStatus` will only return status information for a parent `<form>`.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 如果调用 `useFormStatus` 的组件未嵌套在 `<form>` 中，`status.pending` 总是返回 `false`。请验证 `useFormStatus` 是否在 `<form>` 元素的子组件中调用。
 

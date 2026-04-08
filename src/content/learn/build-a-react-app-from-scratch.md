@@ -12,7 +12,11 @@ title: 从零开始构建 React 应用
 
 #### 考虑使用框架 {/*consider-using-a-framework*/}
 
+<<<<<<< HEAD
 从头开始使用 React 是一种简单的入门方式，但需要注意的是，这通常相当于构建自己的临时框架。随着需求的变化，你可能需要解决一些框架相关的问题，而我们推荐的框架已经具备成熟且得到支持的解决方案。
+=======
+Starting from scratch is an easy way to get started using React, but a major tradeoff to be aware of is that going this route is often the same as building your own adhoc framework. As your requirements evolve, you may need to solve more framework-like problems that our recommended frameworks already have well developed and supported solutions for.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 例如，如果将来你的应用需要支持服务器端渲染（SSR）、静态站点生成（SSG）或 React 服务器组件（RSC），你将需要自行实现这些功能。同样，如果你希望使用将来 React 的特性，这些特性需要在框架层面集成，你也必须自行实现。
 
@@ -132,12 +136,22 @@ React 生态系统中包含许多用于解决这些问题的工具。我们列�
 
 * **React 服务器组件 (RSC)** 允许你在单个 React 树中混合构建时、仅服务器和交互式组件。RSC 可以提高性能，但目前需要深入的专业知识来设置和维护。请参阅 [Parcel 的 RSC 示例](https://github.com/parcel-bundler/rsc-examples)。
 
+<<<<<<< HEAD
 你的渲染策略需要与路由集成，以便使用你的框架构建的应用程序可以在每个路由级别选择渲染策略。这将使你能够在不重写整个应用程序的情况下使用不同的渲染策略。例如，你的应用程序的登录页面可能会从静态生成 (SSG) 中受益，而具有内容提要的页面可能在服务器端渲染时表现最佳。
+=======
+Your rendering strategies need to integrate with your router so apps built with your framework can choose the rendering strategy on a per-route level. This will enable different rendering strategies without having to rewrite your whole app. For example, the landing page for your app might benefit from being statically generated (SSG), while a page with a content feed might perform best with server-side rendering.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 使用合适的渲染策略针对合适的路由可以减少加载第一个内容字节的时间 ([首字节时间](https://web.dev/articles/ttfb))，第一个内容元素渲染的时间 ([首次内容绘制](https://web.dev/articles/fcp))，以及应用程序最大可见内容渲染的时间 ([最大内容绘制](https://web.dev/articles/lcp))。
 
 ### 还有... {/*and-more*/}
 
+<<<<<<< HEAD
 这些只是新应用在从头开始构建时需要考虑的功能的几个例子。你会遇到的许多限制可能很难解决，因为每个问题都与其他问题相互关联，并且可能需要你不熟悉的领域的深入专业知识。
 
 如果你不想自己解决这些问题, 你可以 [从一个框架开始](/learn/creating-a-react-app)，该框架开箱即用地提供这些功能。
+=======
+These are just a few examples of the features a new app will need to consider when building from scratch. Many limitations you'll hit can be difficult to solve as each problem is interconnected with the others and can require deep expertise in problem areas you may not be familiar with.
+
+If you don't want to solve these problems on your own, you can [get started with a framework](/learn/creating-a-react-app) that provides these features out of the box.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e

@@ -44,9 +44,15 @@ function ChatRoom({ roomId }) {
 
 #### 参数 {/*parameters*/}
 
+<<<<<<< HEAD
 * `setup`：处理 Effect 的函数。setup 函数选择性返回一个 **清理（cleanup）** 函数。当 [组件提交的时候](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom)，React 会运行 setup 函数。在每次提交导致依赖项变更后，React 将首先使用旧值运行 cleanup 函数（如果你提供了该函数），然后使用新值运行 setup 函数。在组件从 DOM 中移除后，React 将最后一次运行 cleanup 函数。
  
 * **可选** `dependencies`：`setup` 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 [配置了 React](/learn/editor-setup#linting)，那么它将验证是否每个响应式值都被正确地指定为一个依赖项。依赖项列表的元素数量必须是固定的，并且必须像 `[dep1, dep2, dep3]` 这样内联编写。React 将使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来比较每个依赖项和它先前的值。如果省略此参数，则在每次组件提交更改之后，将重新运行 Effect 函数。如果你想了解更多，请参见 [传递依赖数组、空数组和不传递依赖项之间的区别](#examples-dependencies)。
+=======
+* `setup`: The function with your Effect's logic. Your setup function may also optionally return a *cleanup* function. When your [component commits](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom), React will run your setup function. After every commit with changed dependencies, React will first run the cleanup function (if you provided it) with the old values, and then run your setup function with the new values. After your component is removed from the DOM, React will run your cleanup function.
+
+* **optional** `dependencies`: The list of all reactive values referenced inside of the `setup` code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is [configured for React](/learn/editor-setup#linting), it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like `[dep1, dep2, dep3]`. React will compare each dependency with its previous value using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. If you omit this argument, your Effect will re-run after every commit of the component. [See the difference between passing an array of dependencies, an empty array, and no dependencies at all.](#examples-dependencies)
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 #### 返回值 {/*returns*/}
 
@@ -112,7 +118,11 @@ function ChatRoom({ roomId }) {
    - 然后，使用新的 props 和 state 运行 <CodeStep step={1}>setup 代码</CodeStep>。
 3. 当组件从页面卸载后，<CodeStep step={2}>cleanup 代码</CodeStep> 将运行最后一次。
 
+<<<<<<< HEAD
 **用上面的代码作为例子来解释这个顺序**。  
+=======
+**Let's illustrate this sequence for the example above.**
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 当 `ChatRoom` 组件添加到页面中时，它将使用 `serverUrl` 和 `roomId` 初始值连接到聊天室。如果 `serverUrl` 或者 `roomId` 发生改变并导致提交（比如用户在下拉列表中选择了一个不同的聊天室），那么 Effect 就会 **断开与前一个聊天室的连接，并连接到下一个聊天室**。当 `ChatRoom` 组件从页面中卸载时，你的 Effect 将最后一次断开连接。
 
@@ -1082,7 +1092,7 @@ function ChatRoom({ roomId }) { // 这是一个响应式值
 ```js {8}
 function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
-  
+
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
@@ -1436,7 +1446,11 @@ function Counter() {
 }
 ```
 
+<<<<<<< HEAD
 因为 `count`  是一个响应式值，所以必须在依赖项列表中指定它。但是，这会导致 Effect 在每次 `count` 更改时再次执行 cleanup 和 setup。这并不理想。
+=======
+Since `count` is a reactive value, it must be specified in the list of dependencies. However, that causes the Effect to cleanup and setup again every time the `count` changes. This is not ideal.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 为了解决这个问题，将 [`c => c + 1` 状态更新器传递给](/reference/react/useState#updating-state-based-on-the-previous-state) `setCount`：
 

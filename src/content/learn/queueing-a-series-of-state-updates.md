@@ -180,7 +180,11 @@ h1 { display: inline-block; margin: 10px; width: 30px; text-align: center; }
 | “替换为 `5`” | `0`（未使用） | `5` |
 | `n => n + 1` | `5` | `5 + 1 = 6` |
 
+<<<<<<< HEAD
 React 会保存 `6` 为最终结果并从 `useState` 中返回。
+=======
+React stores `6` as the final result and returns it from `useState`.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 <Note>
 
@@ -308,7 +312,11 @@ export default function RequestTracker() {
         完成：{completed}
       </h3>
       <button onClick={handleClick}>
+<<<<<<< HEAD
         购买
+=======
+        Buy
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
       </button>
     </>
   );
@@ -352,7 +360,11 @@ export default function RequestTracker() {
         完成：{completed}
       </h3>
       <button onClick={handleClick}>
+<<<<<<< HEAD
         购买
+=======
+        Buy
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
       </button>
     </>
   );

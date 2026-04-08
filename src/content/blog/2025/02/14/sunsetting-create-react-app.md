@@ -11,7 +11,11 @@ description: 今天，我们正式宣布弃用 Create React App 作为新应用�
 
 <Intro>
 
+<<<<<<< HEAD
 今日起，我们将正式弃用 [Create React App](https://create-react-app.dev/) 作为新应用的推荐工具，并建议现有应用迁移至 [框架](#how-to-migrate-to-a-framework)，或迁移至 [构建工具](#how-to-migrate-to-a-build-tool)（如 Vite、Parcel 或 RSBuild）。
+=======
+Today, we’re deprecating [Create React App](https://create-react-app.dev/) for new apps, and encouraging existing apps to migrate to a [framework](#how-to-migrate-to-a-framework), or to [migrate to a build tool](#how-to-migrate-to-a-build-tool) like Vite, Parcel, or RSBuild.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 我们还提供了相关文档，适用于你的项目不适合使用框架的情况、你想要构建自己的框架，或者你只是想通过 [从零开始构建一个 React 应用](/learn/build-a-react-app-from-scratch) 来了解 React 的工作原理。
 
@@ -75,7 +79,11 @@ This error message will only be shown once per install.
 
 #### 是否需要使用框架？ {/*do-i-need-a-framework*/}
 
+<<<<<<< HEAD
 大多数应用都能从使用框架中获益，但在某些合理场景下从零开始构建 React 应用也是可行的。经验法则是：若你的应用需要路由功能，使用框架将更具优势。
+=======
+Most apps would benefit from a framework, but there are valid cases to build a React app from scratch. A good rule of thumb is if your app needs routing, you would probably benefit from a framework.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 正如 Svelte 拥有 SvelteKit、Vue 拥有 Nuxt、Solid 拥有 SolidStart，[React 推荐使用框架](#why-we-recommend-frameworks)——这类框架已原生集成路由功能，并与数据获取、代码分割等特性深度整合。此举可避免开发者陷入自行编写复杂配置的困境，本质上规避了重复造轮子的风险。
 

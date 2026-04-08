@@ -12,7 +12,18 @@
       "skipBreadcrumb": true,
       "routes": [
         {
+<<<<<<< HEAD
           "title": "React 服务器组件中的拒绝服务和源代码泄露",
+=======
+          "title": "The React Foundation: A New Home for React Hosted by the Linux Foundation",
+          "titleForHomepage": "The React Foundation: A New Home for React Hosted by the Linux Foundation",
+          "icon": "blog",
+          "date": "February 24, 2026",
+          "path": "/blog/2026/02/24/the-react-foundation"
+        },
+        {
+          "title": "Denial of Service and Source Code Exposure in React Server Components",
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
           "titleForHomepage": "Additional Vulnerabilities in RSC",
           "icon": "blog",
           "date": "December 11, 2025",

@@ -151,9 +151,13 @@ export default function SiteMapPage() {
 
 ### 控制样式表优先级 {/*controlling-stylesheet-precedence*/}
 
+<<<<<<< HEAD
 样式表可能会相互冲突，当发生冲突时，浏览器会选择文档中排在后面的样式表。React 允许使用 `precedence` 属性来控制样式表的顺序。在这个例子中，三个组件渲染样式表，具有相同优先级的组件在 `<head>` 中将会被分组在一起。
 
 {/*FIXME: this doesn't appear to actually work -- I guess precedence isn't implemented yet?*/}
+=======
+Stylesheets can conflict with each other, and when they do, the browser goes with the one that comes later in the document. React lets you control the order of stylesheets with the `precedence` prop. In this example, three components render stylesheets, and the ones with the same precedence are grouped together in the `<head>`.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 <SandpackWithHTMLOutput>
 

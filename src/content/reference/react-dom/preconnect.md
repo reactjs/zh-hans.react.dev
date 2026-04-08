@@ -34,7 +34,11 @@ function AppRoot() {
 
 [参见下方更多示例](#usage)。
 
+<<<<<<< HEAD
 `preconnect` 函数向浏览器提供一个提示，告诉它应该打开到给定服务器的连接。如果浏览器选择这样做，则可以加快从该服务器加载资源的速度。
+=======
+The `preconnect` function provides the browser with a hint that it should open a connection to the given server. If the browser chooses to do so, this can speed up the loading of resources from that server.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 #### 参数 {/*parameters*/}
 

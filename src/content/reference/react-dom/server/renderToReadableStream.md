@@ -293,7 +293,11 @@ suspense **不会去探测** Effect 内部或事件处理器中获取的数据�
 
 在上面的 `Posts` 组件中加载数据的具体方式取决于你的框架。如果你使用一个支持 Suspense 的框架，你可以在其数据获取文档中找到详细信息。
 
+<<<<<<< HEAD
 目前还不支持在不使用已提到的框架的情况下使用 Suspense 功能的数据提取。实现支持 Suspense 数据源的需求不稳定且没有记录。用 Suspense 集成数据源的官方 API 将在 React 的未来版本中发布。
+=======
+Suspense-enabled data fetching without the use of an opinionated framework is not yet supported. The requirements for implementing a Suspense-enabled data source are unstable and undocumented. An official API for integrating data sources with Suspense will be released in a future version of React.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 </Note>
 

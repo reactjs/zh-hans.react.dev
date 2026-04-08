@@ -31,6 +31,7 @@ translators:
 
 考虑如下数学公式：<Math><MathI>y</MathI> = 2<MathI>x</MathI></Math>。
 
+<<<<<<< HEAD
 若 <Math><MathI>x</MathI> = 2</Math> 则 <Math><MathI>y</MathI> = 4</Math>。永远如此。
 
 若 <Math><MathI>x</MathI> = 3</Math> 则 <Math><MathI>y</MathI> = 6</Math>。永远如此。
@@ -38,6 +39,15 @@ translators:
 若 <Math><MathI>x</MathI> = 3</Math>，那么 <MathI>y</MathI> 并不会因为时间或股市的影响，而有时等于 <Math>9</Math> 、 <Math>–1</Math> 或 <Math>2.5</Math>。 
 
 若 <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> 且 <Math><MathI>x</MathI> = 3</Math>, 那么 <MathI>y</MathI> _永远_ 等于 <Math>6</Math>. 
+=======
+If <Math><MathI>x</MathI> = 2</Math> then <Math><MathI>y</MathI> = 4</Math>. Always.
+
+If <Math><MathI>x</MathI> = 3</Math> then <Math><MathI>y</MathI> = 6</Math>. Always.
+
+If <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> won't sometimes be <Math>9</Math> or <Math>–1</Math> or <Math>2.5</Math> depending on the time of day or the state of the stock market.
+
+If <Math><MathI>y</MathI> = 2<MathI>x</MathI></Math> and <Math><MathI>x</MathI> = 3</Math>, <MathI>y</MathI> will _always_ be <Math>6</Math>.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 我们使用 JavaScript 的函数实现，看起来将会是这样：
 
@@ -56,7 +66,7 @@ React 便围绕着这个概念进行设计。**React 假设你编写的所有组
 ```js src/App.js
 function Recipe({ drinkers }) {
   return (
-    <ol>    
+    <ol>
       <li>Boil {drinkers} cups of water.</li>
       <li>Add {drinkers} spoons of tea and {0.5 * drinkers} spoons of spice.</li>
       <li>Add {0.5 * drinkers} cups of milk to boil and sugar to taste.</li>
@@ -79,11 +89,19 @@ export default function App() {
 
 </Sandpack>
 
+<<<<<<< HEAD
 当你给函数 `Recipe` 传入 `drinkers={2}` 参数时，它将返回包含 `2 cups of water` 的 JSX。永远如此。
+=======
+When you pass `drinkers={2}` to `Recipe`, it will return JSX containing `2 cups of water`. Always.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 而当你传入 `drinkers={4}` 时，它将返回包含 `4 cups of water` 的 JSX。永远如此。
 
+<<<<<<< HEAD
 就像数学公式一样。
+=======
+Just like a math formula.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 你可以把你的组件当作食谱：如果你遵循它们，并且在烹饪过程中不引入新食材，你每次都会得到相同的菜肴。那这道 “菜肴” 就是组件用于 React [渲染](/learn/render-and-commit) 的 JSX。
 
@@ -219,6 +237,7 @@ export default function TeaGathering() {
 
 <Recap>
 
+<<<<<<< HEAD
 * 一个组件必须是纯粹的，就意味着：
   * **只负责自己的任务。** 它不会更改在该函数调用前就已存在的对象或变量。
   * **输入相同，则输出相同。** 给定相同的输入，组件应该总是返回相同的 JSX。
@@ -226,11 +245,20 @@ export default function TeaGathering() {
 * 你不应该改变任何用于组件渲染的输入。这包括 props、state 和 context。通过 [“设置” state](/learn/state-a-components-memory) 来更新界面，而不要改变预先存在的对象。
 * 努力在你返回的 JSX 中表达你的组件逻辑。当你需要“改变事物”时，你通常希望在事件处理程序中进行。作为最后的手段，你可以使用 `useEffect`。
 * 编写纯函数需要一些练习，但它充分释放了 React 范式的能力。
+=======
+* A component must be pure, meaning:
+  * **It minds its own business.** It should not change any objects or variables that existed before rendering.
+  * **Same inputs, same output.** Given the same inputs, a component should always return the same JSX.
+* Rendering can happen at any time, so components should not depend on each others' rendering sequence.
+* You should not mutate any of the inputs that your components use for rendering. That includes props, state, and context. To update the screen, ["set" state](/learn/state-a-components-memory) instead of mutating preexisting objects.
+* Strive to express your component's logic in the JSX you return. When you need to "change things", you'll usually want to do it in an event handler. As a last resort, you can `useEffect`.
+* Writing pure functions takes a bit of practice, but it unlocks the power of React's paradigm.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 </Recap>
 
 
-  
+
 <Challenges>
 
 #### 修复坏掉的时钟 {/*fix-a-broken-clock*/}

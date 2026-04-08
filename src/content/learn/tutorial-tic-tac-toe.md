@@ -337,7 +337,11 @@ import './styles.css';
 import App from './App';
 ```
 
+<<<<<<< HEAD
 第 1-5 行将所有必要的部分组合在一起：
+=======
+Lines 1-5 bring all the necessary pieces together:
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 * React
 * React 与 Web 浏览器对话的库（React DOM）
@@ -551,7 +555,11 @@ export default function Board() {
 }
 ```
 
+<<<<<<< HEAD
 需要注意的是，这并不像 `div`，这些你自己的组件如 `Board` 和 `Square`，必须以大写字母开头。
+=======
+Note how unlike the browser `div`s, your own components `Board` and `Square` must start with a capital letter.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 让我们来看一看效果：
 
@@ -1094,7 +1102,11 @@ function Square({ value, onSquareClick }) {
 }
 ```
 
+<<<<<<< HEAD
 现在，你将把 `onSquareClick` props 连接到 `Board` 组件中的一个函数，命名为 `handleClick`。要将 `onSquareClick` 连接到 `handleClick`，需要将一个函数传递给第一个 `Square` 组件的 `onSquareClick` props：
+=======
+Now you'll connect the `onSquareClick` prop to a function in the `Board` component that you'll name `handleClick`. To connect `onSquareClick` to `handleClick` you'll pass a function to the `onSquareClick` prop of the first `Square` component:
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 ```js {7}
 export default function Board() {
@@ -2073,13 +2085,22 @@ export default function Game() {
 }
 ```
 
+<<<<<<< HEAD
 你可以在下面看到你的代码应该是什么样子。请注意，你应该会在开发者工具控制台中看到一条错误消息：
+=======
+You can see what your code should look like below. Note that you should see an error in the developer tools console that says:
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 <ConsoleBlock level="warning">
 Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of &#96;Game&#96;.
 </ConsoleBlock>
+<<<<<<< HEAD
   
 你将在下一节中修复此错误。
+=======
+
+You'll fix this error in the next section.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 <Sandpack>
 

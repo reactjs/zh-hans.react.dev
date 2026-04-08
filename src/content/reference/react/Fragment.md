@@ -4,7 +4,11 @@ title: <Fragment> (<>...</>)
 
 <Intro>
 
+<<<<<<< HEAD
 `<Fragment>` 通常使用 `<>...</>` 代替，它们都允许你在不添加额外节点的情况下将子元素组合。
+=======
+`<Fragment>`, often used via `<>...</>` syntax, lets you group elements without a wrapper node.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 <Canary> Fragments can also accept refs, which enable interacting with underlying DOM nodes without adding wrapper elements. See reference and usage below.</Canary>
 
@@ -43,7 +47,7 @@ When you pass a ref to a fragment, React provides a `FragmentInstance` object wi
 
 **Layout methods:**
 - `compareDocumentPosition(otherNode)`: Compares the document position of the Fragment with another node.
-  - If the Fragment has children, the native `compareDocumentPosition` value is returned. 
+  - If the Fragment has children, the native `compareDocumentPosition` value is returned.
   - Empty Fragments will attempt to compare positioning within the React tree and include `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`.
   - Elements that have a different relationship in the React tree and DOM tree due to portaling or other insertions are `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`.
 - `getClientRects()`: Returns a flat array of `DOMRect` objects representing the bounding rectangles of all children.
@@ -279,7 +283,7 @@ function VisibilityObserverFragment({ threshold = 0.5, onVisibilityChange, child
       },
       { threshold }
     );
-    
+
     fragmentRef.current.observeUsing(observer);
     return () => fragmentRef.current.unobserveUsing(observer);
   }, [threshold, onVisibilityChange]);

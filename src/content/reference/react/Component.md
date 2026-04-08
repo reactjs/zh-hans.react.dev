@@ -117,7 +117,7 @@ class Counter extends Component {
 
   handleAgeChange = () => {
     this.setState({
-      age: this.state.age + 1 
+      age: this.state.age + 1
     });
   };
 
@@ -724,7 +724,11 @@ class Rectangle extends Component {
 
 #### 注意 {/*shouldcomponentupdate-caveats*/}
 
+<<<<<<< HEAD
 - 此方法 **仅仅** 作为性能优化而存在。如果你的组件在没有它的情况下损坏，请先修复组件。
+=======
+- This method *only* exists as a performance optimization. If your component breaks without it, fix that first.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 - 可以考虑使用 [`PureComponent`](/reference/react/PureComponent) 而不是手写 `shouldComponentUpdate`。`PureComponent` 会浅比较 props 和 state 以及减少错过必要更新的概率。
 
@@ -1098,7 +1102,7 @@ export default class Counter extends Component {
 
   handleAgeChange = () => {
     this.setState({
-      age: this.state.age + 1 
+      age: this.state.age + 1
     });
   };
 
@@ -1123,7 +1127,7 @@ export default class Counter extends Component {
 button { display: block; margin-top: 10px; }
 ```
 
-</Sandpack> 
+</Sandpack>
 
 <Pitfall>
 
@@ -1207,7 +1211,7 @@ export default class ChatRoom extends Component {
       this.state.serverUrl,
       this.props.roomId
     );
-    this.connection.connect();    
+    this.connection.connect();
   }
 
   destroyConnection() {
@@ -1275,7 +1279,7 @@ button { margin-left: 10px; }
 Error boundaries do not catch errors for:
 
 - Event handlers [(learn more)](/learn/responding-to-events)
-- [Server side rendering](/reference/react-dom/server) 
+- [Server side rendering](/reference/react-dom/server)
 - Errors thrown in the error boundary itself (rather than its children)
 - Asynchronous code (e.g. `setTimeout` or `requestAnimationFrame` callbacks); an exception is the usage of the [`startTransition`](/reference/react/useTransition#starttransition) function returned by the [`useTransition`](/reference/react/useTransition) Hook. Errors thrown inside the transition function are caught by error boundaries [(learn more)](/reference/react/useTransition#displaying-an-error-to-users-with-error-boundary)
 
@@ -1439,7 +1443,7 @@ export default class Counter extends Component {
 
   handleAgeChange = (e) => {
     this.setState({
-      age: this.state.age + 1 
+      age: this.state.age + 1
     });
   };
 
@@ -1606,7 +1610,7 @@ export default class ChatRoom extends Component {
       this.state.serverUrl,
       this.props.roomId
     );
-    this.connection.connect();    
+    this.connection.connect();
   }
 
   destroyConnection() {
@@ -1795,7 +1799,7 @@ class Panel extends Component {
         <h1>{this.props.title}</h1>
         {this.props.children}
       </section>
-    );    
+    );
   }
 }
 

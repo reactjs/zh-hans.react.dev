@@ -34,6 +34,7 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride 的行李清单</h1>
       <ul>
+<<<<<<< HEAD
         <Item 
           isPacked={true} 
           name="宇航服" 
@@ -45,6 +46,19 @@ export default function PackingList() {
         <Item 
           isPacked={false} 
           name="Tam 的照片" 
+=======
+        <Item
+          isPacked={true}
+          name="Space suit"
+        />
+        <Item
+          isPacked={true}
+          name="Helmet with a golden leaf"
+        />
+        <Item
+          isPacked={false}
+          name="Photo of Tam"
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
         />
       </ul>
     </section>
@@ -82,6 +96,7 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride 的行李清单</h1>
       <ul>
+<<<<<<< HEAD
         <Item 
           isPacked={true} 
           name="宇航服" 
@@ -93,6 +108,19 @@ export default function PackingList() {
         <Item 
           isPacked={false} 
           name="Tam 的照片" 
+=======
+        <Item
+          isPacked={true}
+          name="Space suit"
+        />
+        <Item
+          isPacked={true}
+          name="Helmet with a golden leaf"
+        />
+        <Item
+          isPacked={false}
+          name="Photo of Tam"
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
         />
       </ul>
     </section>
@@ -134,6 +162,7 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride 的行李清单</h1>
       <ul>
+<<<<<<< HEAD
         <Item 
           isPacked={true} 
           name="宇航服" 
@@ -145,6 +174,19 @@ export default function PackingList() {
         <Item 
           isPacked={false} 
           name="Tam 的照片" 
+=======
+        <Item
+          isPacked={true}
+          name="Space suit"
+        />
+        <Item
+          isPacked={true}
+          name="Helmet with a golden leaf"
+        />
+        <Item
+          isPacked={false}
+          name="Photo of Tam"
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
         />
       </ul>
     </section>
@@ -238,6 +280,7 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride 的行李清单</h1>
       <ul>
+<<<<<<< HEAD
         <Item 
           isPacked={true} 
           name="宇航服" 
@@ -249,6 +292,19 @@ export default function PackingList() {
         <Item 
           isPacked={false} 
           name="Tam 的照片" 
+=======
+        <Item
+          isPacked={true}
+          name="Space suit"
+        />
+        <Item
+          isPacked={true}
+          name="Helmet with a golden leaf"
+        />
+        <Item
+          isPacked={false}
+          name="Photo of Tam"
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
         />
       </ul>
     </section>
@@ -292,6 +348,7 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride 的行李清单</h1>
       <ul>
+<<<<<<< HEAD
         <Item 
           isPacked={true} 
           name="宇航服" 
@@ -303,6 +360,19 @@ export default function PackingList() {
         <Item 
           isPacked={false} 
           name="Tam 的照片" 
+=======
+        <Item
+          isPacked={true}
+          name="Space suit"
+        />
+        <Item
+          isPacked={true}
+          name="Helmet with a golden leaf"
+        />
+        <Item
+          isPacked={false}
+          name="Photo of Tam"
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
         />
       </ul>
     </section>
@@ -373,6 +443,7 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride 的行李清单</h1>
       <ul>
+<<<<<<< HEAD
         <Item 
           isPacked={true} 
           name="宇航服" 
@@ -384,6 +455,19 @@ export default function PackingList() {
         <Item 
           isPacked={false} 
           name="Tam 的照片" 
+=======
+        <Item
+          isPacked={true}
+          name="Space suit"
+        />
+        <Item
+          isPacked={true}
+          name="Helmet with a golden leaf"
+        />
+        <Item
+          isPacked={false}
+          name="Photo of Tam"
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
         />
       </ul>
     </section>
@@ -419,6 +503,7 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride 的行李清单</h1>
       <ul>
+<<<<<<< HEAD
         <Item 
           isPacked={true} 
           name="宇航服" 
@@ -430,6 +515,19 @@ export default function PackingList() {
         <Item 
           isPacked={false} 
           name="Tam 的照片" 
+=======
+        <Item
+          isPacked={true}
+          name="Space suit"
+        />
+        <Item
+          isPacked={true}
+          name="Helmet with a golden leaf"
+        />
+        <Item
+          isPacked={false}
+          name="Photo of Tam"
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
         />
       </ul>
     </section>
@@ -476,6 +574,7 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride 的行李清单</h1>
       <ul>
+<<<<<<< HEAD
         <Item 
           isPacked={true} 
           name="宇航服" 
@@ -487,6 +586,19 @@ export default function PackingList() {
         <Item 
           isPacked={false} 
           name="Tam 的照片" 
+=======
+        <Item
+          isPacked={true}
+          name="Space suit"
+        />
+        <Item
+          isPacked={true}
+          name="Helmet with a golden leaf"
+        />
+        <Item
+          isPacked={false}
+          name="Photo of Tam"
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
         />
       </ul>
     </section>
@@ -514,6 +626,7 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride 的行李清单</h1>
       <ul>
+<<<<<<< HEAD
         <Item 
           isPacked={true} 
           name="宇航服" 
@@ -525,6 +638,19 @@ export default function PackingList() {
         <Item 
           isPacked={false} 
           name="Tam 的照片" 
+=======
+        <Item
+          isPacked={true}
+          name="Space suit"
+        />
+        <Item
+          isPacked={true}
+          name="Helmet with a golden leaf"
+        />
+        <Item
+          isPacked={false}
+          name="Photo of Tam"
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
         />
       </ul>
     </section>
@@ -562,6 +688,7 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride 的行李清单</h1>
       <ul>
+<<<<<<< HEAD
         <Item 
           importance={9} 
           name="宇航服" 
@@ -573,6 +700,19 @@ export default function PackingList() {
         <Item 
           importance={6} 
           name="Tam 的照片" 
+=======
+        <Item
+          importance={9}
+          name="Space suit"
+        />
+        <Item
+          importance={0}
+          name="Helmet with a golden leaf"
+        />
+        <Item
+          importance={6}
+          name="Photo of Tam"
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
         />
       </ul>
     </section>
@@ -606,6 +746,7 @@ export default function PackingList() {
     <section>
       <h1>Sally Ride 的行李清单</h1>
       <ul>
+<<<<<<< HEAD
         <Item 
           importance={9} 
           name="宇航服" 
@@ -617,6 +758,19 @@ export default function PackingList() {
         <Item 
           importance={6} 
           name="Tam 的照片" 
+=======
+        <Item
+          importance={9}
+          name="Space suit"
+        />
+        <Item
+          importance={0}
+          name="Helmet with a golden leaf"
+        />
+        <Item
+          importance={6}
+          name="Photo of Tam"
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
         />
       </ul>
     </section>

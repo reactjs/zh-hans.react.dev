@@ -49,19 +49,31 @@ JavaScript 是一个因其松散规则和动态特性而闻名的具有挑战性
 
 `action` 函数可以同步或异步执行。你可以在客户端使用标准 JavaScript 定义它们，也可以在服务器上使用 [`'use server'`](/reference/rsc/use-server) 指示符。当使用 action 时，React 将帮助管理数据提交的生命周期，提供类似 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) 和 [`useActionState`](/reference/react/useActionState) 的 Hook，以访问表单操作的当前 state 与响应。
 
+<<<<<<< HEAD
 默认情况下，Action 在 [transition](/reference/react/useTransition) 中提交，使当前页面在操作处理过程中保持交互性。由于 Action 支持异步函数，我们还添加了在 transitions 中使用 `async/await` 的功能，这允许在异步请求（如 `fetch`）开始时使用转换的 `isPending` 状态显示待处理 UI，并在应用更新时始终显示待处理 UI。
+=======
+By default, Actions are submitted within a [transition](/reference/react/useTransition), keeping the current page interactive while the action is processing. Since Actions support async functions, we've also added the ability to use `async/await` in transitions. This allows you to show pending UI with the `isPending` state of a transition when an async request like `fetch` starts, and show the pending UI all the way through the update being applied.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 除了 Action，我们还引入了一个名为 [`useOptimistic`](/reference/react/useOptimistic) 的功能，用于管理乐观状态更新。使用此 Hook 可以应用临时更新，一旦最终状态提交，它们就会自动回滚。对于 Action，这将帮助乐观地设置客户端数据的最终状态，假设提交成功，并恢复为从服务器接收到的数据值。它使用常规的 `async`/`await`，因此无论是在客户端上使用 `fetch` 还是在服务器上使用 Server Action，都可以工作。
 
 库作者可以使用 `useTransition` 在自己的组件中实现自定义 `action={fn}` props。我们的目的是，当设计他们的组件 API 时，库应采用 Action 模式，为 React 开发人员提供一致的体验。例如，如果你的库提供了一个 `<Calendar onSelect={eventHandler}>` 组件，则还可以考虑暴露一个 `<Calendar selectAction={action}>` API。
 
+<<<<<<< HEAD
 尽管我们最初专注于 Server Action 用于客户端/服务器数据传输，但我们对 React 的理念是在所有平台和环境中提供相同的编程模型。在可能的情况下，如果我们在客户端引入一个功能，我们也会使它在服务器上起作用，反之亦然。这一理念使我们能够创建一组 API，无论你的应用在何处运行，都可以工作，从而使以后更容易升级到不同的环境。
+=======
+While we initially focused on Server Actions for client-server data transfer, our philosophy for React is to provide the same programming model across all platforms and environments. When possible, if we introduce a feature on the client, we aim to make it also work on the server, and vice versa. This philosophy allows us to create a single set of APIs that work no matter where your app runs, making it easier to upgrade to different environments later.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 Action 现在在 Canary 渠道中可用，并将在下一个 React 发布版本中发布。
 
 ## React Canary 版本中的新特性 {/*new-features-in-react-canary*/}
 
+<<<<<<< HEAD
 我们将 [React Canaries](/blog/2023/05/03/react-canaries) 作为一个选项引入，可以在它们的设计接近完成时立即采用个别新的稳定功能，然后再发布到稳定的 semver 版本中。
+=======
+We introduced [React Canaries](/blog/2023/05/03/react-canaries) as an option to adopt individual new stable features as soon as their design is close to final, before they’re released in a stable semver version.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 Canaries 是我们开发 React 的一种变化。以前，功能会在 Meta 内部进行研究和构建，因此用户只会在发布到 Stable 时看到最终成品。通过 Canaries，我们正在社区的帮助下公开构建，以完成我们在 React Labs 博客系列中分享的功能。这意味着开发者能够更早地了解新功能，因为它们正在完成而不是已经完成。
 
@@ -75,7 +87,11 @@ React 服务器组件、资源加载、文档元数据与 Action 都已经加入
 
 - **Action**：如上所述，我们已将 Action 添加到管理从客户端发送数据到服务器的功能中。现在可以将 `action` 添加到像 [`<form/>`](/reference/react-dom/components/form) 这样的元素中，使用 [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) 访问状态，使用 [`useActionState`](/reference/react/useActionState) 处理结果，并使用 [`useOptimistic`](/reference/react/useOptimistic) 乐观地更新 UI。
 
+<<<<<<< HEAD
 由于所有这些功能是相互配合的，因此单独在稳定渠道中发布它们是困难的。发布 Action 而不带有用于访问表单状态的补充 Hook 会限制 Action 的实际可用性。引入 React 服务器组件而不集成 Server Action 会把在服务器上修改数据变得复杂化。
+=======
+Since all of these features work together, it’s difficult to release them in the Stable channel individually. Releasing Actions without the complementary hooks for accessing form states would limit the practical usability of Actions. Introducing React Server Components without integrating Server Actions would complicate modifying data on the server.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 在我们可以将一组功能发布到稳定渠道之前，我们需要确保它们能够协同工作，并且开发人员拥有在生产环境中使用它们所需的一切。React Canaries 允许我们逐个开发这些功能，并逐步释放稳定的 API，直到整个功能集完成。
 

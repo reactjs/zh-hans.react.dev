@@ -77,7 +77,11 @@ experimental_taintUniqueValue(
 
 ### 防止将令牌传递给客户端组件 {/*prevent-a-token-from-being-passed-to-client-components*/}
 
+<<<<<<< HEAD
 为了确保敏感信息（如密码、会话令牌或其他唯一值）不会被意外地传递给客户端组件，`taintUniqueValue` 函数提供了一层保护。当一个值被污染时，任何尝试将其传递给客户端组件的操作都将导致错误。
+=======
+To ensure that sensitive information such as passwords, session tokens, or other unique values do not inadvertently get passed to Client Components, the `taintUniqueValue` function provides a layer of protection. When a value is tainted, any attempt to pass it to a Client Component will result in an error.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 `lifetime` 参数定义了值保持被污染的状态的持续时间。对于应该永久保持被污染的状态的值，可以使用像 [`globalThis`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/globalThis) 或 `process` 这样的对象作为 `lifetime` 参数。这些对象的生命周期跨越应用程序执行的整个持续时间。
 
@@ -178,8 +182,13 @@ export function fetchAPI(url) {
 }
 ```
 
+<<<<<<< HEAD
 有时，在重构过程中可能会发生错误，而且不是所有同事都可能知道这一点。
 为了防止此类错误在后续发生，我们可以对实际密码进行“污染”：
+=======
+Sometimes mistakes happen during refactoring and not all of your colleagues might know about this.
+To protect against this mistakes happening down the line we can "taint" the actual password:
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 ```js
 import "server-only";

@@ -34,7 +34,11 @@ function AppRoot() {
 
 [参见下方更多示例。](#usage)
 
+<<<<<<< HEAD
 `prefetchDNS` 函数向浏览器提供一个提示，告诉它应该查找给定服务器的 IP 地址。如果浏览器选择这样做，则可以加快从该服务器加载资源的速度。
+=======
+The prefetchDNS function provides the browser with a hint that it should look up the IP address of a given server. If the browser chooses to do so, this can speed up the loading of resources from that server.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 #### 参数 {/*parameters*/}
 

@@ -42,9 +42,15 @@ JSON API 返回如下的数据:
 
 取决于你的使用背景，可以考虑通过不同的方式将设计分割为组件:
 
+<<<<<<< HEAD
 * **程序设计**——使用同样的技术决定你是否应该创建一个新的函数或者对象。这一技术即 [关注点分离](https://en.wikipedia.org/wiki/Separation_of_concerns)，也就是说，一个组件理想情况下应仅关注一件事情。但随着功能的持续增长，它应该被分解为更小的子组件。
 * **CSS**——思考你将把类选择器用于何处。(然而，组件并没有那么细的粒度。)
 * **设计**——思考你将如何组织布局的层级。
+=======
+* **Programming**--use the same techniques for deciding if you should create a new function or object. One such technique is the [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns), that is, a component should ideally only be concerned with one thing. If it ends up growing, it should be decomposed into smaller subcomponents.
+* **CSS**--consider what you would make class selectors for. (However, components are a bit less granular.)
+* **Design**--consider how you would organize the design's layers.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 如果你的 JSON 结构非常棒，经常会发现其映射到 UI 中的组件结构是一件自然而然的事情。那是因为 UI 和原型常拥有相同的信息结构--即，相同的形状。将你的 UI 分割到组件，每个组件匹配到原型中的每个部分。
 
@@ -233,10 +239,17 @@ td {
 
 让我们再次一条条验证它们:
 
+<<<<<<< HEAD
 1. 原始列表中的产品 **被作为 props 传递，所以不是 state**。
 2. 搜索文本似乎应该是 state，因为它会随着时间的推移而变化，并且无法从任何东西中计算出来。
 3. 复选框的值似乎是 state，因为它会随着时间的推移而变化，并且无法从任何东西中计算出来。
 4. 过滤后列表中的产品 **不是 state，因为可以通过被原始列表中的产品，根据搜索框文本和复选框的值进行计算**。
+=======
+1. The original list of products is **passed in as props, so it's not state.**
+2. The search text seems to be state since it changes over time and can't be computed from anything.
+3. The value of the checkbox seems to be state since it changes over time and can't be computed from anything.
+4. The filtered list of products **isn't state because it can be computed** by taking the original list of products and filtering it according to the search text and value of the checkbox.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 这就意味着只有搜索文本和复选框的值是 state！非常好！
 
@@ -270,6 +283,7 @@ props 和 state 是不同的，但它们可以共同工作。父组件将经常�
 
 现在为这个 state 贯彻我们的策略:
 
+<<<<<<< HEAD
 1. **验证使用 state 的组件**：
     * `ProductTable` 需要基于 state (搜索文本和复选框值) 过滤产品列表。
     * `SearchBar` 需要展示 state (搜索文本和复选框值)。
@@ -277,6 +291,15 @@ props 和 state 是不同的，但它们可以共同工作。父组件将经常�
 3. **决定 state 放置的地方**：我们将过滤文本和勾选 state 的值放置于 `FilterableProductTable` 中。
 
 所以 state 将被放置在 `FilterableProductTable`。
+=======
+1. **Identify components that use state:**
+    * `ProductTable` needs to filter the product list based on that state (search text and checkbox value).
+    * `SearchBar` needs to display that state (search text and checkbox value).
+2. **Find their common parent:** The first parent component both components share is `FilterableProductTable`.
+3. **Decide where the state lives**: We'll keep the filter text and checked state values in `FilterableProductTable`.
+
+So the state values will live in `FilterableProductTable`.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 用 [`useState()` Hook](/reference/react/useState) 为组件添加 state。Hook 可以“钩住”组件的 [渲染周期](/learn/render-and-commit)。在 `FilterableProductTable` 的顶部添加两个 state 变量，用于指定你应用程序的初始 state：
 
@@ -468,7 +491,11 @@ function SearchBar({ filterText, inStockOnly }) {
 
 目前你的应用程序可以带着 props 和 state 随着层级结构进行渲染。但是为了支持通过用户输入来改变 state，你需要让数据反向传输：深层结构的表单组件需要更新 `FilterableProductTable` 的 state。
 
+<<<<<<< HEAD
 React 使数据流变得明确，但比双向数据绑定需要多写一些代码。如果你尝试在上述的例子中输入或者勾选复选框，发现 React 忽视了你的输入。这点是有意为之的。通过 `<input value={filterText} />`，已经设置了 `input` 的 `value` 属性，使之恒等于从 `FilterableProductTable` 传递的 `filterText` state。只要 `filterText` state 不设置，（输入框的）输入就不会改变。
+=======
+Currently your app renders correctly with props and state flowing down the hierarchy. But to change the state according to user input, you will need to support data flowing the other way: the form components deep in the hierarchy need to update the state in `FilterableProductTable`.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 当用户更改表单输入时，state 将更新以反映这些更改。state 由 `FilterableProductTable` 所拥有，所以只有它可以调用 `setFilterText` 和 `setInStockOnly`。使 `SearchBar` 更新 `FilterableProductTable` 的 state，需要将这些函数传递到 `SearchBar`：
 

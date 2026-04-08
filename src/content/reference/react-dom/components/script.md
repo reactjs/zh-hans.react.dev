@@ -40,6 +40,7 @@ script: "<script>"
 
 但也支持其他属性：
 
+<<<<<<< HEAD
 * `async`：布尔值，允许浏览器延迟执行脚本，直到文档的其余部分已经处理完毕——这是性能优化的首选行为。
 * `crossOrigin`：字符串，表示要使用的 [CORS 策略](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes/crossorigin)，其可能的值为 `anonymous` 和 `use-credentials`。
 * `fetchPriority`：字符串，用于指示浏览器在同时获取多个脚本时按优先级对脚本进行排名，可能的值包括 `"high"`、`"low"` 与 `"auto"`（默认值）。
@@ -48,6 +49,16 @@ script: "<script>"
 * `nonce`：字符串，表示使用严格内容安全策略时允许资源的 [加密随机数](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/nonce)。
 * `referrer`：字符串，指定在获取脚本以及脚本依次获取任何资源时发送的 [referer 请求头](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/script#referrerpolicy)。
 * `type`：字符串，指定脚本是一个 [传统脚本、ES 模块还是导入映射](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type)。
+=======
+* `async`: a boolean. Allows the browser to defer execution of the script until the rest of the document has been processed — the preferred behavior for performance.
+*  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`.
+* `fetchPriority`: a string. Lets the browser rank scripts in priority when fetching multiple scripts at the same time. Can be `"high"`, `"low"`, or `"auto"` (the default).
+* `integrity`: a string. A cryptographic hash of the script, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
+* `noModule`: a boolean. Disables the script in browsers that support ES modules — allowing for a fallback script for browsers that do not.
+* `nonce`: a string. A cryptographic [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy.
+* `referrer`: a string. Says [what Referer header to send](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#referrerpolicy) when fetching the script and any resources that the script fetches in turn.
+* `type`: a string. Says whether the script is a [classic script, ES module, or import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type).
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 禁用 React 对脚本的 [特殊处理](#special-rendering-behavior) 的属性：
 

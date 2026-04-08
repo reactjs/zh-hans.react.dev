@@ -36,11 +36,19 @@ title: "<title>"
 
 #### 特殊的渲染行为 {/*special-rendering-behavior*/}
 
+<<<<<<< HEAD
 无论在 React 树中的哪个位置被渲染，React 将始终将与 `<title>` 组件对应的 DOM 元素放置在文档的 `<head>` 中。`<head>` 是 `<title>` 在 DOM 中唯一有效的位置，但如果表示特定页面的组件可以自行渲染其 `<title>`，这样做既方便又保持了可组合性。
 
 有两个例外情况：
 * 如果 `<title>` 在 `<svg>` 组件内部，则没有特殊行为，因为在这种情况下它不代表文档的标题，而是 [SVG 图形的可访问性注释](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title)。
 * 如果 `<title>` 具有 [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop) 属性，也没有特殊行为，因为在这种情况下它不代表文档的标题，而是页面特定部分的元数据。
+=======
+React will always place the DOM element corresponding to the `<title>` component within the document’s `<head>`, regardless of where in the React tree it is rendered. The `<head>` is the only valid place for `<title>` to exist within the DOM, yet it’s convenient and keeps things composable if a component representing a specific page can render its `<title>` itself.
+
+There are two exception to this:
+* If `<title>` is within an `<svg>` component, then there is no special behavior, because in this context it doesn’t represent the document’s title but rather is an [accessibility annotation for that SVG graphic](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/title).
+* If the `<title>` has an [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop) prop, there is no special behavior, because in this case it doesn’t represent the document’s title but rather metadata about a specific part of the page.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 <Pitfall>
 

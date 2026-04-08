@@ -60,7 +60,7 @@ import { useContext } from 'react';
 
 function Button() {
   const theme = useContext(ThemeContext);
-  // ... 
+  // ...
 ```
 
 `useContext` 返回你向 <CodeStep step={1}>context</CodeStep> 传递的 <CodeStep step={2}>context value</CodeStep>。为了确定 context 值，React 搜索组件树，为这个特定的 context **向上查找最近的** context provider。
@@ -845,7 +845,7 @@ export default function AddTask() {
           type: 'added',
           id: nextId++,
           text: text,
-        }); 
+        });
       }}>Add</button>
     </>
   );
@@ -1292,7 +1292,7 @@ export const LevelContext = createContext(0);
 
 你可以通过 context 传递任何值，包括对象和函数。
 
-```js [[2, 10, "{ currentUser, login }"]] 
+```js [[2, 10, "{ currentUser, login }"]]
 function MyApp() {
   const [currentUser, setCurrentUser] = useState(null);
 

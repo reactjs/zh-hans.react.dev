@@ -205,8 +205,13 @@ root.render(<App />);
 export class MyElement extends HTMLElement {
   constructor() {
     super();
+<<<<<<< HEAD
     // 初始化为元素时
     // 此处的值将被 React 覆盖
+=======
+    // The value here will be overwritten by React
+    // when initialized as an element
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
     this.value = undefined;
   }
 

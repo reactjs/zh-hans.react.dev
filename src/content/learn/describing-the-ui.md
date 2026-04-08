@@ -529,9 +529,15 @@ export default function TeaSet() {
 
 ## 将 UI 视为树 {/*your-ui-as-a-tree*/}
 
+<<<<<<< HEAD
 React 使用树形关系建模以展示组件和模块之间的关系。
 
 React 渲染树是组件之间父子关系的表示。
+=======
+React uses trees to model the relationships between components and modules.
+
+A React render tree is a representation of the parent and child relationship between components.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 <Diagram name="generic_render_tree" height={250} width={500} alt="一个树状图，有五个节点，每个节点代表一个组件。树状图的顶部有一个名为 Root Component 的根节点，它有两个向下延伸的箭头，分别标有 renders。两个箭头指向标有 Component A 和 Component C 的节点。Component A 有一条 renders 箭头指向标有 Component B 的节点。Component C 有一条 renders 箭头指向标有 Component D 的节点。">
 
@@ -541,7 +547,11 @@ React 渲染树是组件之间父子关系的表示。
 
 位于树顶部、靠近根组件的组件被视为顶层组件。没有子组件的组件被称为叶子组件。对组件的这种分类对于理解数据流和渲染性能非常有用。
 
+<<<<<<< HEAD
 对 JavaScript 模块之间的关系进行建模是了解应用程序的另一种有用方式。我们将其称为模块依赖树。
+=======
+Modelling the relationship between JavaScript modules is another useful way to understand your app. We refer to it as a module dependency tree.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 <Diagram name="generic_dependency_tree" height={250} width={500} alt="一个树状图，有五个节点。每个节点代表一个 JavaScript 模块。最顶部的节点标有 RootModule.js。它有三条箭头指向节点：ModuleA.js、ModuleB.js 和 ModuleC.js。每个箭头标有 imports。ModuleC.js 节点有一条 imports 箭头指向标有 ModuleD.js的节点。">
 
@@ -549,7 +559,11 @@ React 渲染树是组件之间父子关系的表示。
 
 </Diagram>
 
+<<<<<<< HEAD
 构建工具经常使用依赖树来捆绑客户端下载和渲染所需的所有 JavaScript 代码。对于 React 应用程序，打包大小会导致用户体验退化。了解模块依赖树有助于调试此类问题。
+=======
+A dependency tree is often used by build tools to bundle all the relevant JavaScript code for the client to download and render. A large bundle size regresses user experience for React apps. Understanding the module dependency tree is helpful to debug such issues.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 <LearnMore path="/learn/understanding-your-ui-as-a-tree">
 

@@ -492,7 +492,11 @@ export default function RowList({ children }) {
 
 ### 将 children 转化为数组 {/*converting-children-to-an-array*/}
 
+<<<<<<< HEAD
 通过调用 `Children.toArray(children)` 将 `children` 变为一个常规的 JavaScript 数组。这使得你能够使用 [`filter`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)， [`sort`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)， 或者 [`reverse`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse)  等数组内置方法来操作这个数组。
+=======
+Call `Children.toArray(children)` to turn the `children` data structure into a regular JavaScript array. This lets you manipulate the array with built-in array methods like [`filter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), [`sort`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort), or [`reverse`.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse)
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 <Sandpack>
 
@@ -861,7 +865,7 @@ export default function App() {
         return (
           <Row isHighlighted={index % 2 === 0}>
             <p>This is the {id} item.</p>
-          </Row> 
+          </Row>
         );
       }}
     />

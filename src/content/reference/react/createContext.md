@@ -64,7 +64,11 @@ function App() {
 
 <Note>
 
+<<<<<<< HEAD
 从 React 19 开始，你可以将 `<SomeContext>` 作为渲染的上下文 provider。
+=======
+Starting in React 19, you can render `<SomeContext>` as a provider.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 较旧版本的 React 需要使用 `<SomeContext.Provider>`。
 

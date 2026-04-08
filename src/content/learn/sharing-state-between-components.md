@@ -327,7 +327,11 @@ h3, p { margin: 5px 0px; }
 
 #### 同步输入状态 {/*synced-inputs*/}
 
+<<<<<<< HEAD
 现在有两个独立的输入框。为了让它们保持同步：即编辑一个输入框时，另一个输入框也会更新相同的文本，反之亦然。
+=======
+These two inputs are independent. Make them stay in sync: editing one input should update the other input with the same text, and vice versa.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 <Hint>
 
@@ -575,7 +579,7 @@ function SearchBar({ query, onChange }) {
 function List({ items }) {
   return (
     <table>
-      <tbody> 
+      <tbody>
         {items.map(food => (
           <tr key={food.id}>
             <td>{food.name}</td>

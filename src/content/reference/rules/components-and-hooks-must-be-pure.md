@@ -28,7 +28,11 @@ React 中的一个核心概念是保持纯粹。一个纯组件或 Hook 应该�
 
 React 是声明式的，即你告诉 React 你想要渲染的内容，React 会自己选择最佳的方式向用户展示它。为了做到这一点，React 在执行你的代码时分为几个阶段。虽然你不必了解所有这些阶段就能很好地使用 React。但是，了解哪些代码在渲染阶段运行，哪些代码在渲染阶段之外运行，可以让你更高层次地理解 React。
 
+<<<<<<< HEAD
 “渲染”指的是计算你的用户界面（UI）下一个版本应该呈现的样子。渲染完成后，[Effect](/reference/react/useEffect)  会被“清空”（意思是一直运行完所有的 Effect 为止），如果这些 Effect 对布局有影响，比如它们可能会改变之前的计算结果。React 会用这个新的计算结果与你 UI 上一个版本所用的计算结果进行比较，然后仅对 [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)，也就是用户实际看到的部分进行最小的必要更改，以确保 UI 更新至最新内容。
+=======
+_Rendering_ refers to calculating what the next version of your UI should look like. After rendering, React takes this new calculation and compares it to the calculation used to create the previous version of your UI. Then React commits just the minimum changes needed to the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) (what your user actually sees) to apply the changes. Finally, [Effects](/learn/synchronizing-with-effects) are flushed (meaning they are run until there are no more left). For more detailed information see the docs for [Render](/learn/render-and-commit) and [Commit and Effect Hooks](/reference/react/hooks#effect-hooks).
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 <DeepDive>
 

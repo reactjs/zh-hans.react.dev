@@ -91,7 +91,7 @@ React 将会在 `根节点` 中显示 `<App />` 组件，并且控制组件中�
 如果你在一个根节点上多次调用了 `render`，React 仍然会更新 DOM，这样才能保证显示的内容是最新的。React 将会筛选出可复用的部分和需要更新的部分，对于需要更新的部分，是 React 通过与之前渲染的树进行 [“比较”](/learn/preserving-and-resetting-state) 得到的。在同一个根节点上再次调用 `render` 就和在根节点上调用 [`set` 函数](/reference/react/useState#setstate) 类似：React 会避免没必要的 DOM 更新。
 
 * Although rendering is synchronous once it starts, `root.render(...)` is not. This means code after `root.render()` may run before any effects (`useLayoutEffect`, `useEffect`) of that specific render are fired. This is usually fine and rarely needs adjustment. In rare cases where effect timing matters, you can wrap `root.render(...)` in [`flushSync`](https://react.dev/reference/react-dom/flushSync) to ensure the initial render runs fully synchronously.
-  
+
   ```js
   const root = createRoot(document.getElementById('root'));
   root.render(<App />);
@@ -113,11 +113,15 @@ root.unmount();
 
 此方法适用的场景是，React 根节点中的 DOM 节点（或者它的任何一个父级节点）被除了这个方法以外的代码移除了。举个例子，试想在一个 jQuery 选项卡面板中，非活跃状态的选项卡的 DOM 结构将被移除。一个标签页被移除时，它内部的所有内容（包括 React 根节点）也将会从 DOM 树移除。在这种情况下，你才需要调用 `root.unmount` 来通知 React “停止”控制已经被移除的根节点的内容。否则，被移除的根节点的内部组件就不能及时释放消息订阅等资源。
 
+<<<<<<< HEAD
 调用 `root.unmout` 将卸载根节点内的所有组件，该根节点上的 React 将被剥离，即所有事件处理程序以及组件树上的状态将被移除。
 
 #### 参数 {/*root-unmount-parameters*/}
 
 `root.unmount` 不接收任何参数。
+=======
+Calling `root.unmount` will unmount all the components in the root and "detach" React from the root DOM node, including removing any event handlers or state in the tree.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 
 #### 返回值 {/*root-unmount-returns*/}
@@ -196,7 +200,11 @@ function Counter() {
 
 </Sandpack>
 
+<<<<<<< HEAD
 **如果你的应用程序完全由 React 构建，你仅应该创建全局唯一的一个根节点，并只调用一次 [`root.render`](#root-render)**。
+=======
+**If your app is fully built with React, you shouldn't need to create any more roots, or to call [`root.render`](#root-render) again.**
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 从这时起，React 将会控制整个应用程序的 DOM。如果要添加更多组件，[可以将它们嵌套进 `App` 组件中](/learn/importing-and-exporting-components)。如果你需要更新视图，每一个组件都可以通过使用 [state](/reference/react/useState) 做到这一点。如果你需要额外显示一些在这个 DOM 节点之外的内容，比如一个弹窗或者提示框，那么可以 [使用 portal 进行渲染](/reference/react-dom/createPortal)。
 
@@ -248,11 +256,11 @@ import { createRoot } from 'react-dom/client';
 import { Comments, Navigation } from './Components.js';
 
 const navDomNode = document.getElementById('navigation');
-const navRoot = createRoot(navDomNode); 
+const navRoot = createRoot(navDomNode);
 navRoot.render(<Navigation />);
 
 const commentDomNode = document.getElementById('comments');
-const commentRoot = createRoot(commentDomNode); 
+const commentRoot = createRoot(commentDomNode);
 commentRoot.render(<Comments />);
 ```
 
@@ -303,7 +311,7 @@ nav ul li { display: inline-block; margin-right: 20px; }
 
 ```js
 const domNode = document.createElement('div');
-const root = createRoot(domNode); 
+const root = createRoot(domNode);
 root.render(<Comment />);
 document.body.appendChild(domNode); // 你可以把它加入到页面文档的任何位置
 ```
@@ -509,7 +517,7 @@ To fix, pass the root options to `createRoot(...)`, not `root.render(...)`:
 root.render(App, {onUncaughtError});
 
 // ✅ Correct: pass options to createRoot.
-const root = createRoot(container, {onUncaughtError}); 
+const root = createRoot(container, {onUncaughtError});
 root.render(<App />);
 ```
 

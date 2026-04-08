@@ -59,7 +59,7 @@ function UpdateName({}) {
     if (error) {
       setError(error);
       return;
-    } 
+    }
     redirect("/path");
   };
 
@@ -92,7 +92,7 @@ function UpdateName({}) {
       if (error) {
         setError(error);
         return;
-      } 
+      }
       redirect("/path");
     })
   };
@@ -176,7 +176,11 @@ const [error, submitAction, isPending] = useActionState(
 );
 ```
 
+<<<<<<< HEAD
 `useActionState` 接受一个函数（"Action"），并返回一个被包装的用于调用的 Action。这是因为 Actions 是可以组合的。当调用被包装的 Action 时，`useActionState` 将返回 Action 的最后结果作为 `data`，以及 Action 的待定状态作为 `pending`。
+=======
+`useActionState` accepts a function (the "Action"), and returns a wrapped Action to call. This works because Actions compose. When the wrapped Action is called, `useActionState` will return the last result of the Action as `data`, and the pending state of the Action as `pending`.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 <Note>
 
@@ -308,9 +312,15 @@ function Heading({children}) {
   if (children == null) {
     return null;
   }
+<<<<<<< HEAD
   
   // 因为过早的返回
   // 这里 useContext 无法正常工作。
+=======
+
+  // This would not work with useContext
+  // because of the early return.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
   const theme = use(ThemeContext);
   return (
     <h1 style={{color: theme.color}}>
@@ -330,7 +340,7 @@ We've added two new APIs to `react-dom/static` for static site generation:
 - [`prerender`](/reference/react-dom/static/prerender)
 - [`prerenderToNodeStream`](/reference/react-dom/static/prerenderToNodeStream)
 
-These new APIs improve on `renderToString` by waiting for data to load for static HTML generation. They are designed to work with streaming environments like Node.js Streams and Web Streams. For example, in a Web Stream environment, you can prerender a React tree to static HTML with `prerender`: 
+These new APIs improve on `renderToString` by waiting for data to load for static HTML generation. They are designed to work with streaming environments like Node.js Streams and Web Streams. For example, in a Web Stream environment, you can prerender a React tree to static HTML with `prerender`:
 
 ```js
 import { prerender } from 'react-dom/static';
@@ -355,14 +365,22 @@ For more information, see [React DOM Static APIs](/reference/react-dom/static).
 
 服务器组件是一种新的选项，允许在打包前提前渲染组件，在与你的客户端应用程序或 SSR 服务器不同的环境中。这个独立的环境就是 React 服务器组件中的 "服务器"。服务器组件可以在你的 CI 服务器上在构建时运行一次，或者可以在每次请求时使用 web 服务器运行。
 
+<<<<<<< HEAD
 React 19 包含了所有从 Canary 渠道引入的 React 服务器组件功能。这意味着，现在可以将 React 19 作为 peer 依赖项来发布带有服务器组件的库，使用 `react-server` [导出条件](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md#react-server-conditional-exports) 用于支持 [全栈 React 架构](/learn/creating-a-react-app#which-features-make-up-the-react-teams-full-stack-architecture-vision) 的框架。
+=======
+React 19 includes all of the React Server Components features included from the Canary channel. This means libraries that ship with Server Components can now target React 19 as a peer dependency with a `react-server` [export condition](https://github.com/reactjs/rfcs/blob/main/text/0227-server-module-conventions.md#react-server-conditional-exports) for use in frameworks that support the [Full-stack React Architecture](/learn/creating-a-react-app#which-features-make-up-the-react-teams-full-stack-architecture-vision).
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 
 <Note>
 
 #### 如何构建对服务器组件的支持? {/*how-do-i-build-support-for-server-components*/}
 
+<<<<<<< HEAD
 虽然 React 19 中的 React 服务器组件是稳定的，并且在主版本之间不会发生破坏，但用于实现 React 服务器组件打包器或框架的底层 API 不遵循 semver，并可能在 React 19.x 的小版本之间发生破坏。
+=======
+While React Server Components in React 19 are stable and will not break between minor versions, the underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 为了支持 React 服务器组件作为打包器或框架，我们建议固定到特定的 React 版本，或者使用 Canary 发行版。我们将继续与打包器和框架合作，以稳定用于实现 React 服务器组件的 API。
 
@@ -497,7 +515,7 @@ function App({children}) {
     <ThemeContext value="dark">
       {children}
     </ThemeContext>
-  );  
+  );
 }
 ```
 
@@ -521,7 +539,11 @@ function App({children}) {
 />
 ```
 
+<<<<<<< HEAD
 当组件卸载时，React 将调用从 `ref` 回调返回的清理函数。这适用于 DOM refs，类组件的 refs，以及 `useImperativeHandle`。
+=======
+When the component unmounts, React will call the cleanup function returned from the `ref` callback. This works for DOM refs, refs to class components, and `useImperativeHandle`.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 <Note>
 
@@ -551,7 +573,7 @@ function Search({deferredValue}) {
   // On initial render the value is ''.
   // Then a re-render is scheduled with the deferredValue.
   const value = useDeferredValue(deferredValue, '');
-  
+
   return (
     <Results query={value} />
   );
@@ -564,7 +586,11 @@ function Search({deferredValue}) {
 
 ### 支持文档元数据 {/*support-for-metadata-tags*/}
 
+<<<<<<< HEAD
 在 HTML 中，像 `<title>`、`<link>` 和 `<meta>` 这样的文档元数据标签被保留在文档的 `<head>` 部分。在 React 中，决定应用程序适合的元数据的组件可能与你渲染 `<head>` 的地方相距甚远，或者 React 根本不渲染 `<head>`。在过去，这些元素需要在效果中手动插入，或者通过像 [`react-helmet`](https://github.com/nfl/react-helmet) 这样的库，并在服务器渲染 React 应用程序时需要小心处理。
+=======
+In HTML, document metadata tags like `<title>`, `<link>`, and `<meta>` are reserved for placement in the `<head>` section of the document. In React, the component that decides what metadata is appropriate for the app may be very far from the place where you render the `<head>` or React does not render the `<head>` at all. In the past, these elements would need to be inserted manually in an effect, or by libraries like [`react-helmet`](https://github.com/nfl/react-helmet), and required careful handling when server rendering a React application.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 在 React 19 中，我们将原生支持在组件中渲染文档元数据标签：
 
@@ -726,7 +752,11 @@ function MyComponent() {
 
 ### 更好的错误报告 {/*error-handling*/}
 
+<<<<<<< HEAD
 在 React 19 中，我们改进了错误处理，以消除重复并提供处理捕获和未捕获错误的选项。例如，当在由错误边界捕获的渲染中出现错误时，以前 React 会抛出两次错误（一次是原始错误，然后在自动恢复失败后再次抛出），然后调用 `console.error` 提供错误发生的信息。
+=======
+We improved error handling in React 19 to remove duplication and provide options for handling caught and uncaught errors. For example, when there's an error in render caught by an Error Boundary, previously React would throw the error twice (once for the original error, then again after failing to automatically recover), and then call `console.error` with info about where the error occurred.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 这导致每个捕获的错误都有三个错误：
 

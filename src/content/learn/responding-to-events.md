@@ -174,7 +174,11 @@ button { margin-right: 10px; }
 
 ### 将事件处理函数作为 props 传递 {/*passing-event-handlers-as-props*/}
 
+<<<<<<< HEAD
 通常，我们会在父组件中定义子组件的事件处理函数。比如：置于不同位置的 `Button` 组件，可能最终执行的功能也不同 —— 也许是播放电影，也许是上传图片。
+=======
+Often you'll want the parent component to specify a child's event handler. Consider buttons: depending on where you're using a `Button` component, you might want to execute a different function—perhaps one plays a movie and another uploads an image.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 为此，将组件从父组件接收的 prop 作为事件处理函数传递，如下所示：
 
@@ -317,11 +321,19 @@ button { margin-right: 10px; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 请注意，`App` 组件并不需要知道 `Toolbar` 将会对 `onPlayMovie` 和 `onUploadImage` 做 **什么** 。上述示例是 `Toolbar` 的实现细节。其中，`Toolbar` 将它们作为 `onClick` 处理函数传递给了 `Button` 组件，其实还可以通过键盘快捷键来触发它们。根据应用程序特定的交互方式（如 `onPlayMovie`）来命名 prop ，可以让你灵活地更改以后使用它们的方式。
 
 <Note>
 
 确保为事件处理程序使用适当的 HTML 标签。例如，要处理点击事件，请使用 [`<button onClick={handleClick}>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/button) 而不是 `<div onClick={handleClick}>`。使用真正的浏览器 `<button>` 启用内置的浏览器行为，如键盘导航。如果你不喜欢按钮的默认浏览器样式，并且想让它看起来更像一个链接或不同的 UI 元素，你可以使用 CSS 来实现。[了解有关编写无障碍标签的更多信息](https://developer.mozilla.org/zh-CN/docs/Learn/Accessibility/HTML)。
+=======
+Notice how the `App` component does not need to know *what* `Toolbar` will do with `onPlayMovie` or `onUploadImage`. That's an implementation detail of the `Toolbar`. Here, `Toolbar` passes them down as `onClick` handlers to its `Button`s, but it could later also trigger them on a keyboard shortcut. Naming props after app-specific interactions like `onPlayMovie` gives you the flexibility to change how they're used later.
+
+<Note>
+
+Make sure that you use the appropriate HTML tags for your event handlers. For example, to handle clicks, use [`<button onClick={handleClick}>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) instead of `<div onClick={handleClick}>`. Using a real browser `<button>` enables built-in browser behaviors like keyboard navigation. If you don't like the default browser styling of a button and want to make it look more like a link or a different UI element, you can achieve it with CSS. [Learn more about writing accessible markup.](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 </Note>
 
@@ -416,12 +428,21 @@ button { margin: 5px; }
 
 当你点击按钮时：
 
+<<<<<<< HEAD
 1. React 调用了传递给 `<button>` 的 `onClick` 处理函数。
 2. 定义在 `Button` 中的处理函数执行了如下操作：
    * 调用 `e.stopPropagation()`，阻止事件进一步冒泡。
    * 调用 `onClick` 函数，它是从 `Toolbar` 组件传递过来的 prop。
 3. 在 `Toolbar` 组件中定义的函数，显示按钮对应的 alert。
 4. 由于传播被阻止，父级 `<div>` 的 `onClick` 处理函数不会执行。
+=======
+1. React calls the `onClick` handler passed to `<button>`.
+2. That handler, defined in `Button`, does the following:
+   * Calls `e.stopPropagation()`, preventing the event from bubbling further.
+   * Calls the `onClick` function, which is a prop passed from the `Toolbar` component.
+3. That function, defined in the `Toolbar` component, displays the button's own alert.
+4. Since the propagation was stopped, the parent `<div>`'s `onClick` handler does *not* run.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 由于调用了 `e.stopPropagation()`，点击按钮现在将只显示一个 alert（来自 `<button>`），而并非两个（分别来自 `<button>` 和父级 toolbar `<div>`）。点击按钮与点击周围的 toolbar 不同，因此阻止传播对这个 UI 是有意义的。
 
@@ -438,11 +459,19 @@ button { margin: 5px; }
 </div>
 ```
 
+<<<<<<< HEAD
 每个事件分三个阶段传播：
 
 1. 它向下传播，调用所有的 `onClickCapture` 处理函数。
 2. 它执行被点击元素的 `onClick` 处理函数。 
 3. 它向上传播，调用所有的 `onClick` 处理函数。
+=======
+Each event propagates in three phases:
+
+1. It travels down, calling all `onClickCapture` handlers.
+2. It runs the clicked element's `onClick` handler.
+3. It travels upwards, calling all `onClick` handlers.
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 
 捕获事件对于路由或数据分析之类的代码很有用，但你可能不会在应用程序代码中使用它们。
 

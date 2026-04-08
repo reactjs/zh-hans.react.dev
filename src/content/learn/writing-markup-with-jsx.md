@@ -74,10 +74,17 @@ JavaScript
 假设你现在有一些（完全有效的）HTML 标签：
 
 ```html
+<<<<<<< HEAD
 <h1>海蒂·拉玛的待办事项</h1>
 <img 
   src="https://i.imgur.com/yXOvdOSs.jpg" 
   alt="Hedy Lamarr" 
+=======
+<h1>Hedy Lamarr's Todos</h1>
+<img
+  src="https://i.imgur.com/yXOvdOSs.jpg"
+  alt="Hedy Lamarr"
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
   class="photo"
 >
 <ul>
@@ -105,11 +112,19 @@ export default function TodoList() {
 ```js
 export default function TodoList() {
   return (
+<<<<<<< HEAD
     // 这不起作用！
     <h1>海蒂·拉玛的待办事项</h1>
     <img 
       src="https://i.imgur.com/yXOvdOSs.jpg" 
       alt="Hedy Lamarr" 
+=======
+    // This doesn't quite work!
+    <h1>Hedy Lamarr's Todos</h1>
+    <img
+      src="https://i.imgur.com/yXOvdOSs.jpg"
+      alt="Hedy Lamarr"
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
       class="photo"
     >
     <ul>
@@ -145,10 +160,17 @@ img { height: 90px }
 
 ```js {1,11}
 <div>
+<<<<<<< HEAD
   <h1>海蒂·拉玛的待办事项</h1>
   <img 
     src="https://i.imgur.com/yXOvdOSs.jpg" 
     alt="Hedy Lamarr" 
+=======
+  <h1>Hedy Lamarr's Todos</h1>
+  <img
+    src="https://i.imgur.com/yXOvdOSs.jpg"
+    alt="Hedy Lamarr"
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
     class="photo"
   >
   <ul>
@@ -162,10 +184,17 @@ img { height: 90px }
 
 ```js {1,11}
 <>
+<<<<<<< HEAD
   <h1>海蒂·拉玛的待办事项</h1>
   <img 
     src="https://i.imgur.com/yXOvdOSs.jpg" 
     alt="Hedy Lamarr" 
+=======
+  <h1>Hedy Lamarr's Todos</h1>
+  <img
+    src="https://i.imgur.com/yXOvdOSs.jpg"
+    alt="Hedy Lamarr"
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
     class="photo"
   >
   <ul>
@@ -192,9 +221,9 @@ JSX 要求标签必须正确闭合。像 `<img>` 这样的自闭合标签必须�
 
 ```js {2-6,8-10}
 <>
-  <img 
-    src="https://i.imgur.com/yXOvdOSs.jpg" 
-    alt="Hedy Lamarr" 
+  <img
+    src="https://i.imgur.com/yXOvdOSs.jpg"
+    alt="Hedy Lamarr"
     class="photo"
    />
   <ul>
@@ -212,9 +241,9 @@ JSX 最终会被转化为 JavaScript，而 JSX 中的属性也会变成 JavaScri
 这就是为什么在 React 中，大部分 HTML 和 SVG 属性都用驼峰式命名法表示。例如，需要用 `strokeWidth` 代替 `stroke-width`。由于 `class` 是一个保留字，所以在 React 中需要用 `className` 来代替。这也是 [DOM 属性中的命名](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/className):
 
 ```js {4}
-<img 
-  src="https://i.imgur.com/yXOvdOSs.jpg" 
-  alt="Hedy Lamarr" 
+<img
+  src="https://i.imgur.com/yXOvdOSs.jpg"
+  alt="Hedy Lamarr"
   className="photo"
 />
 ```
@@ -239,11 +268,19 @@ JSX 最终会被转化为 JavaScript，而 JSX 中的属性也会变成 JavaScri
 export default function TodoList() {
   return (
     <>
+<<<<<<< HEAD
       <h1>海蒂·拉玛的待办事项</h1>
       <img 
         src="https://i.imgur.com/yXOvdOSs.jpg" 
         alt="Hedy Lamarr" 
         className="photo" 
+=======
+      <h1>Hedy Lamarr's Todos</h1>
+      <img
+        src="https://i.imgur.com/yXOvdOSs.jpg"
+        alt="Hedy Lamarr"
+        className="photo"
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
       />
       <ul>
         <li>发明一种新式交通信号灯</li>

@@ -117,8 +117,13 @@ const people = [{
   profession: '物理学家',
 }, {
   id: 3,
+<<<<<<< HEAD
   name: '珀西·莱温·朱利亚',
   profession: '化学家',
+=======
+  name: 'Percy Lavon Julian',
+  profession: 'chemist',
+>>>>>>> e377252563aaec455d98f0c325ec989bef09065e
 }, {
   id: 4,
   name: '苏布拉马尼扬·钱德拉塞卡',
@@ -241,9 +246,9 @@ export function getImageUrl(person) {
 
 ```css
 ul { list-style-type: none; padding: 0px 10px; }
-li { 
-  margin-bottom: 10px; 
-  display: grid; 
+li {
+  margin-bottom: 10px;
+  display: grid;
   grid-template-columns: auto 1fr;
   gap: 20px;
   align-items: center;
@@ -377,9 +382,9 @@ export function getImageUrl(person) {
 
 ```css
 ul { list-style-type: none; padding: 0px 10px; }
-li { 
-  margin-bottom: 10px; 
-  display: grid; 
+li {
+  margin-bottom: 10px;
+  display: grid;
   grid-template-columns: auto 1fr;
   gap: 20px;
   align-items: center;
