@@ -16,7 +16,7 @@ React 编译器是一个新的构建时工具，它可以自动优化你的 Reac
 
 </YouWillLearn>
 
-## What does React Compiler do? {/*what-does-react-compiler-do*/}
+## React 编译器有什么作用？{/*what-does-react-compiler-do*/}
 
 React 编译器会在构建时自动优化你的 React 应用。通常情况下，即使不进行优化，React 的性能也已经足够快，但有时你需要手动对组件和值进行记忆化（memoization）以保持应用的响应速度。这种手动记忆化既繁琐又容易出错，并且会增加需要维护的额外代码。React 编译器为你自动完成这些优化，减轻了你的思维负担，使你可以专注于功能的开发。
 
