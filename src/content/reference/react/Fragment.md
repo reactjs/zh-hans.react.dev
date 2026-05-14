@@ -6,7 +6,7 @@ title: <Fragment> (<>...</>)
 
 `<Fragment>` 通常使用 `<>...</>` 代替，它们都允许你在不添加额外节点的情况下将子元素组合。
 
-<Canary> Fragments can also accept refs, which enable interacting with underlying DOM nodes without adding wrapper elements. See reference and usage below.</Canary>
+<Canary>Fragment 也可以接收 ref，使你能够与底层 DOM 节点交互，而无需添加额外的包装元素。参见下方的参考和用法。</Canary>
 
 ```js
 <>
@@ -30,33 +30,33 @@ title: <Fragment> (<>...</>)
 #### 参数 {/*props*/}
 
 - **可选** `key`：列表中 `<Fragment>` 的可以拥有 [keys](/learn/rendering-lists#keeping-list-items-in-order-with-key)。
-- <CanaryBadge />  **optional** `ref`: A ref object (e.g. from [`useRef`](/reference/react/useRef)) or [callback function](/reference/react-dom/components/common#ref-callback). React provides a `FragmentInstance` as the ref value that implements methods for interacting with the DOM nodes wrapped by the Fragment.
+- <CanaryBadge />  **可选** `ref`：一个 ref 对象（例如来自 [`useRef`](/reference/react/useRef)）或[回调函数](/reference/react-dom/components/common#ref-callback)。React 提供一个 `FragmentInstance` 作为 ref 值，该对象实现了用于与 Fragment 包裹的 DOM 节点交互的方法。
 
 ### <CanaryBadge /> FragmentInstance {/*fragmentinstance*/}
 
-When you pass a ref to a fragment, React provides a `FragmentInstance` object with methods for interacting with the DOM nodes wrapped by the fragment:
+当你将 ref 传递给 Fragment 时，React 会提供一个 `FragmentInstance` 对象，其中包含用于与 Fragment 包裹的 DOM 节点进行交互的方法：
 
-**Event handling methods:**
-- `addEventListener(type, listener, options?)`: Adds an event listener to all first-level DOM children of the Fragment.
-- `removeEventListener(type, listener, options?)`: Removes an event listener from all first-level DOM children of the Fragment.
-- `dispatchEvent(event)`: Dispatches an event to a virtual child of the Fragment to call any added listeners and can bubble to the DOM parent.
+**事件处理方法：**
+- `addEventListener(type, listener, options?)`：向 Fragment 的所有第一级 DOM 子元素添加事件监听器。
+- `removeEventListener(type, listener, options?)`：从 Fragment 的所有第一级 DOM 子元素中移除事件监听器。
+- `dispatchEvent(event)`：向 Fragment 的虚拟子元素分发事件以调用任何已添加的监听器，并且可以冒泡到 DOM 父元素。
 
-**Layout methods:**
-- `compareDocumentPosition(otherNode)`: Compares the document position of the Fragment with another node.
-  - If the Fragment has children, the native `compareDocumentPosition` value is returned.
-  - Empty Fragments will attempt to compare positioning within the React tree and include `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`.
-  - Elements that have a different relationship in the React tree and DOM tree due to portaling or other insertions are `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`.
-- `getClientRects()`: Returns a flat array of `DOMRect` objects representing the bounding rectangles of all children.
-- `getRootNode()`: Returns the root node containing the Fragment's parent DOM node.
+**布局方法：**
+- `compareDocumentPosition(otherNode)`：比较 Fragment 与另一个节点的文档位置。
+  - 如果 Fragment 有子元素，则返回原生的 `compareDocumentPosition` 值。
+  - 空的 Fragment 会尝试在 React 树中比较位置，并包含 `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`。
+  - 由于 portal 或其他插入方式导致在 React 树和 DOM 树中关系不同的元素，将返回 `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`。
+- `getClientRects()`：返回一个扁平数组，包含表示所有子元素边界矩形的 `DOMRect` 对象。
+- `getRootNode()`：返回包含 Fragment 父 DOM 节点的根节点。
 
-**Focus management methods:**
-- `focus(options?)`: Focuses the first focusable DOM node in the Fragment. Focus is attempted on nested children depth-first.
-- `focusLast(options?)`: Focuses the last focusable DOM node in the Fragment. Focus is attempted on nested children depth-first.
-- `blur()`: Removes focus if `document.activeElement` is within the Fragment.
+**焦点管理方法：**
+- `focus(options?)`：聚焦 Fragment 中的第一个可聚焦 DOM 节点。会以深度优先的方式尝试聚焦嵌套的子元素。
+- `focusLast(options?)`：聚焦 Fragment 中的最后一个可聚焦 DOM 节点。会以深度优先的方式尝试聚焦嵌套的子元素。
+- `blur()`：如果 `document.activeElement` 在 Fragment 内部，则移除焦点。
 
-**Observer methods:**
-- `observeUsing(observer)`: Starts observing the Fragment's DOM children with an IntersectionObserver or ResizeObserver.
-- `unobserveUsing(observer)`: Stops observing the Fragment's DOM children with the specified observer.
+**观察者方法：**
+- `observeUsing(observer)`：使用 IntersectionObserver 或 ResizeObserver 开始观察 Fragment 的 DOM 子元素。
+- `unobserveUsing(observer)`：停止使用指定的观察者观察 Fragment 的 DOM 子元素。
 
 #### 注意事项 {/*caveats*/}
 
@@ -64,7 +64,7 @@ When you pass a ref to a fragment, React provides a `FragmentInstance` object wi
 
 - 当你要从 `<><Child /></>` 转换为  `[<Child />]` 或 `<><Child /></>` 转换为 `<Child />`，React 并不会[重置 state](/learn/preserving-and-resetting-state)。这个规则只在一层深度的情况下生效，如果从 `<><><Child /></></>` 转换为 `<Child />` 则会重置 state。在[这里](https://gist.github.com/clemmy/b3ef00f9507909429d8aa0d3ee4f986b)查看更详细的介绍。
 
-- <CanaryBadge /> If you want to pass `ref` to a Fragment, you can't use the `<>...</>` syntax. You have to explicitly import `Fragment` from `'react'` and render `<Fragment ref={yourRef}>...</Fragment>`.
+- <CanaryBadge /> 如果你想向 Fragment 传递 `ref`，则不能使用 `<>...</>` 语法。你必须显式地从 `'react'` 中导入 `Fragment` 并渲染 `<Fragment ref={yourRef}>...</Fragment>`。
 
 ---
 
@@ -162,7 +162,7 @@ function CloseDialog() {
   );
   return (
     <AlertDialog buttons={buttons}>
-      Are you sure you want to leave this page?
+      你确定要离开此页面吗？
     </AlertDialog>
   );
 }
@@ -178,9 +178,9 @@ function CloseDialog() {
 function DateRangePicker({ start, end }) {
   return (
     <>
-      From
+      从
       <DatePicker date={start} />
-      to
+      到
       <DatePicker date={end} />
     </>
   );
@@ -242,9 +242,9 @@ function PostBody({ body }) {
 
 ---
 
-### <CanaryBadge /> Using Fragment refs for DOM interaction {/*using-fragment-refs-for-dom-interaction*/}
+### <CanaryBadge /> 使用 Fragment ref 进行 DOM 交互 {/*using-fragment-refs-for-dom-interaction*/}
 
-Fragment refs allow you to interact with the DOM nodes wrapped by a Fragment without adding extra wrapper elements. This is useful for event handling, visibility tracking, focus management, and replacing deprecated patterns like `ReactDOM.findDOMNode()`.
+Fragment ref 允许你与 Fragment 包裹的 DOM 节点进行交互，而无需添加额外的包装元素。这对于事件处理、可见性跟踪、焦点管理以及替代已弃用的模式（如 `ReactDOM.findDOMNode()`）非常有用。
 
 ```js
 import { Fragment } from 'react';
@@ -262,9 +262,9 @@ function ClickableFragment({ children, onClick }) {
 ```
 ---
 
-### <CanaryBadge /> Tracking visibility with Fragment refs {/*tracking-visibility-with-fragment-refs*/}
+### <CanaryBadge /> 使用 Fragment ref 跟踪可见性 {/*tracking-visibility-with-fragment-refs*/}
 
-Fragment refs are useful for visibility tracking and intersection observation. This enables you to monitor when content becomes visible without requiring the child Components to expose refs:
+Fragment ref 对于可见性跟踪和交叉观察非常有用。这使你能够监控内容何时变为可见，而无需子组件暴露 ref：
 
 ```js {19,21,31-34}
 import { Fragment, useRef, useLayoutEffect } from 'react';
@@ -293,7 +293,7 @@ function VisibilityObserverFragment({ threshold = 0.5, onVisibilityChange, child
 
 function MyComponent() {
   const handleVisibilityChange = (isVisible) => {
-    console.log('Component is', isVisible ? 'visible' : 'hidden');
+    console.log('组件', isVisible ? '可见' : '已隐藏');
   };
 
   return (
@@ -305,13 +305,13 @@ function MyComponent() {
 }
 ```
 
-This pattern is an alternative to Effect-based visibility logging, which is an anti-pattern in most cases. Relying on Effects alone does not guarantee that the rendered Component is observable by the user.
+这种模式是基于 Effect 的可见性日志记录的替代方案，后者在大多数情况下是一种反模式。仅依赖 Effect 并不能保证渲染的组件对用户可见。
 
 ---
 
-### <CanaryBadge /> Focus management with Fragment refs {/*focus-management-with-fragment-refs*/}
+### <CanaryBadge /> 使用 Fragment ref 管理焦点 {/*focus-management-with-fragment-refs*/}
 
-Fragment refs provide focus management methods that work across all DOM nodes within the Fragment:
+Fragment ref 提供了焦点管理方法，可作用于 Fragment 内的所有 DOM 节点：
 
 ```js
 import { Fragment, useRef } from 'react';
@@ -325,4 +325,4 @@ function FocusFragment({ children }) {
 }
 ```
 
-The `focus()` method focuses the first focusable element within the Fragment, while `focusLast()` focuses the last focusable element.
+`focus()` 方法聚焦 Fragment 内的第一个可聚焦元素，而 `focusLast()` 聚焦最后一个可聚焦元素。
