@@ -93,8 +93,8 @@ function Post() {
 export default function Blog() {
   return (
     <>
-      <Post title="An update" body="It's been a while since I posted..." />
-      <Post title="My new blog" body="I am starting a new blog!" />
+      <Post title="一则更新" body="距离我上次发帖已经有一段时间了..." />
+      <Post title="我的新博客" body="我开始了新的博客！" />
     </>
   )
 }
