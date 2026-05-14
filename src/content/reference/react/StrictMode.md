@@ -1230,11 +1230,11 @@ li {
 
 ```
 ...
-✅ Adding animal to the map. Total animals: 10
+✅ 将猫添加到 map 中。当前猫的总数：10
 ...
-❌ Removing animal from the map. Total animals: 0
+❌ 将猫从 map 中移除。当前猫的总数：0
 ...
-✅ Adding animal to the map. Total animals: 10
+✅ 将猫添加到 map 中。当前猫的总数：10
 ```
 
 **这是符合预期的。** 严格模式确认了 ref 回调被正确清理，因此数量永远不会超过预期值。修复之后，不存在内存泄漏，所有功能都按预期工作。
