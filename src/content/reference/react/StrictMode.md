@@ -124,7 +124,7 @@ function App() {
 
 <Note>
 
-When `StrictMode` is enabled for a part of the app, React will only enable behaviors that are possible in production. For example, if `<StrictMode>` is not enabled at the root of the app, it will not [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) on initial mount, since this would cause child effects to double fire without the parent effects, which cannot happen in production.
+当 `StrictMode` 仅为应用程序的一部分启用时，React 仅会启用在生产环境中可能发生的行为。例如，如果 `<StrictMode>` 未在应用根节点启用，则在初始挂载时它不会[额外重新运行 Effect](#fixing-bugs-found-by-re-running-effects-in-development)，因为这会导致子 Effect 在没有父 Effect 的情况下触发两次，而这在生产环境中是不可能发生的。
 
 </Note>
 
@@ -319,7 +319,7 @@ li {
 export default function StoryTray({ stories }) {
   const items = stories.slice(); // 复制数组
   // ✅ 正确的：在新数组上进行修改
-  items.push({ id: 'create', label: 'Create Story' });
+  items.push({ id: 'create', label: '创建故事' });
 ```
 
 这样做会 [使 `StoryTray` 函数成为纯函数](/learn/keeping-components-pure)。每次调用函数时，它只会修改一个新的数组副本，不会影响任何外部对象或变量。这解决了错误，但在发现其行为有问题之前，你可能需要更频繁地使组件重新渲染。
@@ -833,15 +833,15 @@ button { margin-left: 10px; }
 [请阅读更多关于实现 Effect 清理的内容](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)。
 
 ---
-### Fixing bugs found by re-running ref callbacks in development {/*fixing-bugs-found-by-re-running-ref-callbacks-in-development*/}
+### 修复在开发中通过重新运行 ref 回调发现的错误 {/*fixing-bugs-found-by-re-running-ref-callbacks-in-development*/}
 
-Strict Mode can also help find bugs in [callbacks refs.](/learn/manipulating-the-dom-with-refs)
+严格模式也可以帮助发现[回调 ref](/learn/manipulating-the-dom-with-refs) 中的错误。
 
-Every callback `ref` has some setup code and may have some cleanup code. Normally, React calls setup when the element is *created* (is added to the DOM) and calls cleanup when the element is *removed* (is removed from the DOM).
+每个回调 `ref` 都有一些 setup 代码，以及可能的 cleanup 代码。通常，当元素被*创建*（添加到 DOM）时，React 会调用 setup；当元素被*移除*（从 DOM 中移除）时，React 会调用 cleanup。
 
-When Strict Mode is on, React will also run **one extra setup+cleanup cycle in development for every callback `ref`.** This may feel surprising, but it helps reveal subtle bugs that are hard to catch manually.
+当开启严格模式时，React 还会在开发模式下为每个回调 `ref` **额外运行一次 setup+cleanup 循环**。这可能会让人感到惊讶，但它有助于发现手动难以捕捉到的细微错误。
 
-Consider this example, which allows you to select an animal and then scroll to one of them. Notice when you switch from "Cats" to "Dogs", the console logs show that the number of animals in the list keeps growing, and the "Scroll to" buttons stop working:
+参考以下示例，它允许你选择一种动物然后滚动到其中之一。注意，当你从 "Cats" 切换到 "Dogs" 时，控制台日志显示列表中的动物数量持续增长，而「滚动到」按钮停止工作：
 
 <Sandpack>
 
@@ -852,7 +852,7 @@ import './styles.css';
 import App from './App';
 
 const root = createRoot(document.getElementById("root"));
-// ❌ Not using StrictMode.
+// ❌ 未使用 StrictMode。
 root.render(<App />);
 ```
 
@@ -884,7 +884,7 @@ export default function CatFriends() {
       </nav>
       <hr />
       <nav>
-        <span>Scroll to:</span>{cats.map((cat, index) => (
+        <span>滚动到：</span>{cats.map((cat, index) => (
           <button key={cat.src} onClick={() => scrollToCat(index)}>
             {index}
           </button>
@@ -899,12 +899,12 @@ export default function CatFriends() {
                 const list = itemsRef.current;
                 const item = {cat: cat, node};
                 list.push(item);
-                console.log(`✅ Adding cat to the map. Total cats: ${list.length}`);
+                console.log(`✅ 将猫添加到 map 中。当前猫的总数：${list.length}`);
                 if (list.length > 10) {
-                  console.log('❌ Too many cats in the list!');
+                  console.log('❌ 列表中的猫太多了！');
                 }
                 return () => {
-                  // 🚩 No cleanup, this is a bug!
+                  // 🚩 没有清理，这是一个错误！
                 }
               }}
             >
@@ -960,9 +960,9 @@ li {
 </Sandpack>
 
 
-**This is a production bug!** Since the ref callback doesn't remove animals from the list in the cleanup, the list of animals keeps growing. This is a memory leak that can cause performance problems in a real app, and breaks the behavior of the app.
+**这是一个生产环境的错误！** 由于 ref 回调没有在清理时从列表中移除动物，动物列表会持续增长。这是一处内存泄漏，会在实际应用中引发性能问题，并破坏应用的行为。
 
-The issue is the ref callback doesn't cleanup after itself:
+问题在于 ref 回调没有在自身之后进行清理：
 
 ```js {6-8}
 <li
@@ -971,13 +971,13 @@ The issue is the ref callback doesn't cleanup after itself:
     const item = {animal, node};
     list.push(item);
     return () => {
-      // 🚩 No cleanup, this is a bug!
+      // 🚩 没有清理，这是一个错误！
     }
   }}
 </li>
 ```
 
-Now let's wrap the original (buggy) code in `<StrictMode>`:
+现在让我们将原始（有错误的）代码包裹在 `<StrictMode>` 中：
 
 <Sandpack>
 
@@ -989,7 +989,7 @@ import './styles.css';
 import App from './App';
 
 const root = createRoot(document.getElementById("root"));
-// ✅ Using StrictMode.
+// ✅ 使用 StrictMode。
 root.render(
   <StrictMode>
     <App />
@@ -1025,7 +1025,7 @@ export default function CatFriends() {
       </nav>
       <hr />
       <nav>
-        <span>Scroll to:</span>{cats.map((cat, index) => (
+        <span>滚动到：</span>{cats.map((cat, index) => (
           <button key={cat.src} onClick={() => scrollToCat(index)}>
             {index}
           </button>
@@ -1040,12 +1040,12 @@ export default function CatFriends() {
                 const list = itemsRef.current;
                 const item = {cat: cat, node};
                 list.push(item);
-                console.log(`✅ Adding cat to the map. Total cats: ${list.length}`);
+                console.log(`✅ 将猫添加到 map 中。当前猫的总数：${list.length}`);
                 if (list.length > 10) {
-                  console.log('❌ Too many cats in the list!');
+                  console.log('❌ 列表中的猫太多了！');
                 }
                 return () => {
-                  // 🚩 No cleanup, this is a bug!
+                  // 🚩 没有清理，这是一个错误！
                 }
               }}
             >
@@ -1100,9 +1100,9 @@ li {
 
 </Sandpack>
 
-**With Strict Mode, you immediately see that there is a problem**. Strict Mode runs an extra setup+cleanup cycle for every callback ref. This callback ref has no cleanup logic, so it adds refs but doesn't remove them. This is a hint that you're missing a cleanup function.
+**在严格模式下，你立即就能看到存在问题**。严格模式为每个回调 ref 运行额外一次 setup+cleanup 循环。这个回调 ref 没有 cleanup 逻辑，所以它添加了 ref 但没有移除它们。这是一个提示，你可能忘记了添加清理函数。
 
-Strict Mode lets you eagerly find mistakes in callback refs. When you fix your callback by adding a cleanup function in Strict Mode, you *also* fix many possible future production bugs like the "Scroll to" bug from before:
+严格模式让你能够及早发现回调 ref 中的错误。当你在严格模式下通过添加清理函数来修复回调时，你也*同时*修复了许多可能在未来的生产环境中出现的错误，比如之前的「滚动到」错误：
 
 <Sandpack>
 
@@ -1114,7 +1114,7 @@ import './styles.css';
 import App from './App';
 
 const root = createRoot(document.getElementById("root"));
-// ✅ Using StrictMode.
+// ✅ 使用 StrictMode。
 root.render(
   <StrictMode>
     <App />
@@ -1150,7 +1150,7 @@ export default function CatFriends() {
       </nav>
       <hr />
       <nav>
-        <span>Scroll to:</span>{cats.map((cat, index) => (
+        <span>滚动到：</span>{cats.map((cat, index) => (
           <button key={cat.src} onClick={() => scrollToCat(index)}>
             {index}
           </button>
@@ -1165,13 +1165,13 @@ export default function CatFriends() {
                 const list = itemsRef.current;
                 const item = {cat: cat, node};
                 list.push(item);
-                console.log(`✅ Adding cat to the map. Total cats: ${list.length}`);
+                console.log(`✅ 将猫添加到 map 中。当前猫的总数：${list.length}`);
                 if (list.length > 10) {
-                  console.log('❌ Too many cats in the list!');
+                  console.log('❌ 列表中的猫太多了！');
                 }
                 return () => {
                   list.splice(list.indexOf(item), 1);
-                  console.log(`❌ Removing cat from the map. Total cats: ${itemsRef.current.length}`);
+                  console.log(`❌ 将猫从 map 中移除。当前猫的总数：${itemsRef.current.length}`);
                 }
               }}
             >
@@ -1226,7 +1226,7 @@ li {
 
 </Sandpack>
 
-Now on inital mount in StrictMode, the ref callbacks are all setup, cleaned up, and setup again:
+现在，在严格模式下的初始挂载中，ref 回调全部经历了 setup、cleanup、再次 setup 的过程：
 
 ```
 ...
@@ -1237,9 +1237,9 @@ Now on inital mount in StrictMode, the ref callbacks are all setup, cleaned up, 
 ✅ Adding animal to the map. Total animals: 10
 ```
 
-**This is expected.** Strict Mode confirms that the ref callbacks are cleaned up correctly, so the size never grows above the expected amount. After the fix, there are no memory leaks, and all the features work as expected.
+**这是符合预期的。** 严格模式确认了 ref 回调被正确清理，因此数量永远不会超过预期值。修复之后，不存在内存泄漏，所有功能都按预期工作。
 
-Without Strict Mode, it was easy to miss the bug until you clicked around to app to notice broken features. Strict Mode made the bugs appear right away, before you push them to production.
+在没有严格模式的情况下，直到你在应用中点击并注意到功能被破坏之前，很容易忽视这个错误。严格模式让错误立即显现，避免在你将其推送到生产环境之前才被发现。
 
 ---
 ### 修复严格模式发出的弃用警告 {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
