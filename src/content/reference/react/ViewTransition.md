@@ -9,7 +9,7 @@ version: canary
 
 <Canary>
 
-**`<ViewTransition />` API 目前仅在 React 的 Canary 和实验通道中可用。**
+**`<ViewTransition />` API 目前仅在 React 的 Canary 和实验通道中可用**。
 
 [点击此处了解更多关于 React 发布渠道的信息。](/community/versioning-policy#all-release-channels)
 
@@ -449,7 +449,7 @@ button:hover {
 
 #### 只有顶层的 ViewTransition 才会在退出/进入时动画化 {/*only-top-level-viewtransition-animates-on-exit-enter*/}
 
-`<ViewTransition>` 只有放置在任何 DOM 节点_之前_才会激活退出/进入。
+`<ViewTransition>` 只有放置在任何 DOM 节点**之前**才会激活退出/进入。
 
 如果 `<ViewTransition>` 上方有一个 `<div>`，则不会触发退出/进入动画：
 
@@ -1270,7 +1270,7 @@ items.map(item => <div><Component key={item.id} item={item} /></div>)
 
 根据你放置 `<ViewTransition>` 的位置，有两种方式可以为 Suspense 边界添加动画：
 
-**更新：**
+**更新**：
 
 ```
 <ViewTransition>
@@ -1506,7 +1506,7 @@ button:hover {
 
 </Sandpack>
 
-**进入/退出：**
+**进入/退出**：
 
 ```
 <Suspense fallback={<ViewTransition><A /></ViewTransition>}>

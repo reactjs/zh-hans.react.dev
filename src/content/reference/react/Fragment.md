@@ -36,12 +36,12 @@ title: <Fragment> (<>...</>)
 
 当你将 ref 传递给 Fragment 时，React 会提供一个 `FragmentInstance` 对象，其中包含用于与 Fragment 包裹的 DOM 节点进行交互的方法：
 
-**事件处理方法：**
+**事件处理方法**：
 - `addEventListener(type, listener, options?)`：向 Fragment 的所有第一级 DOM 子元素添加事件监听器。
 - `removeEventListener(type, listener, options?)`：从 Fragment 的所有第一级 DOM 子元素中移除事件监听器。
 - `dispatchEvent(event)`：向 Fragment 的虚拟子元素分发事件以调用任何已添加的监听器，并且可以冒泡到 DOM 父元素。
 
-**布局方法：**
+**布局方法**：
 - `compareDocumentPosition(otherNode)`：比较 Fragment 与另一个节点的文档位置。
   - 如果 Fragment 有子元素，则返回原生的 `compareDocumentPosition` 值。
   - 空的 Fragment 会尝试在 React 树中比较位置，并包含 `Node.DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC`。
@@ -49,12 +49,12 @@ title: <Fragment> (<>...</>)
 - `getClientRects()`：返回一个扁平数组，包含表示所有子元素边界矩形的 `DOMRect` 对象。
 - `getRootNode()`：返回包含 Fragment 父 DOM 节点的根节点。
 
-**焦点管理方法：**
+**焦点管理方法**：
 - `focus(options?)`：聚焦 Fragment 中的第一个可聚焦 DOM 节点。会以深度优先的方式尝试聚焦嵌套的子元素。
 - `focusLast(options?)`：聚焦 Fragment 中的最后一个可聚焦 DOM 节点。会以深度优先的方式尝试聚焦嵌套的子元素。
 - `blur()`：如果 `document.activeElement` 在 Fragment 内部，则移除焦点。
 
-**观察者方法：**
+**观察者方法**：
 - `observeUsing(observer)`：使用 IntersectionObserver 或 ResizeObserver 开始观察 Fragment 的 DOM 子元素。
 - `unobserveUsing(observer)`：停止使用指定的观察者观察 Fragment 的 DOM 子元素。
 
