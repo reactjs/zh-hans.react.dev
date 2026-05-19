@@ -9,10 +9,10 @@
 **参与贡献前，请仔细阅读 [Wiki](https://github.com/reactjs/zh-hans.react.dev/wiki) ，并遵循相关指南。**
 
 主要关注下面的：
-- **[React 中文文档译文规范](https://github.com/reactjs/zh-hans.react.dev/wiki/React-Translation-Guide)**。
+- **[React 中文文档译文规范](https://github.com/reactjs/zh-hans.react.dev/wiki/React-Translation-Guide)**
 - **[词汇表](https://github.com/reactjs/zh-hans.react.dev/wiki/The-Glossary-Sheet)**
 
-翻译问题直接提交 pr 修改即可，其他问题在 issue 提出来进行讨论。
+翻译问题直接提交 Pull Request 修改即可，其他问题在 issue 提出来进行讨论。
 
 ---
 

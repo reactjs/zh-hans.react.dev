@@ -64,9 +64,32 @@ module.exports = {
 
 ### Vite {/*vite*/}
 
-如果你使用 Vite，可以将插件添加到 vite-plugin-react 中：
+如果你使用 Vite v6.0.0 或者更高版本，那么可以从 `@vitejs/plugin-react` 中导出并配置 `reactCompilerPreset`：
 
-```js {3,9}
+<TerminalBlock>
+npm install -D @rolldown/plugin-babel
+</TerminalBlock>
+
+```js {3-4,9-11}
+// vite.config.js
+import { defineConfig } from 'vite';
+import react, { reactCompilerPreset } from '@vitejs/plugin-react';
+import babel from '@rolldown/plugin-babel';
+
+export default defineConfig({
+  plugins: [
+    react(),
+    babel({
+      presets: [reactCompilerPreset()]
+    }),
+  ],
+});
+```
+
+<Note>
+从 `@vitejs/plugin-react@6.0.0` 开始，内联的 Babel 选项已经被移除。如果你使用的是更低版本，可以通过下面的方式进行配置：
+
+```js
 // vite.config.js
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -81,26 +104,21 @@ export default defineConfig({
   ],
 });
 ```
+</Note>
 
-或者，如果你更倾向于为 Vite 使用一个独立的 Babel 插件：
+或者, 你也可以通过 `@rolldown/plugin-babel` 直接使用 Babel 插件。
 
-<TerminalBlock>
-npm install -D vite-plugin-babel
-</TerminalBlock>
-
-```js {2,11}
+```js {3,9}
 // vite.config.js
-import babel from 'vite-plugin-babel';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import babel from '@rolldown/plugin-babel';
 
 export default defineConfig({
   plugins: [
     react(),
     babel({
-      babelConfig: {
-        plugins: ['babel-plugin-react-compiler'],
-      },
+      plugins: ['babel-plugin-react-compiler'],
     }),
   ],
 });
@@ -172,7 +190,7 @@ React 编译器包含一条 ESLint 规则，可帮助识别无法优化的代码
 npm install -D eslint-plugin-react-hooks@latest
 </TerminalBlock>
 
-如果你尚未配置好 eslint-plugin-react-hooks，参考 [readme 的安装说明来进行配置](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation)。编译器规则可在 `recommended-latest` 预设中找到。
+如果你尚未配置好 eslint-plugin-react-hooks，参考 [readme 的安装说明](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation) 来进行配置。编译器规则可在 `recommended-latest` 预设中找到。
 
 ESLint 规则将会：
 - 识别对 [React 规则](/reference/rules) 的违反情况
