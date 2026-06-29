@@ -285,7 +285,7 @@ React 文档位于 [react.dev](https://react.dev)，提供最新版本 React 的
 - [React v0.4.0](https://legacy.reactjs.org/blog/2013/07/17/react-v0-4-0.html)
 - [New in React v0.4: Prop Validation and Default Values](https://legacy.reactjs.org/blog/2013/07/11/react-v0-4-prop-validation-and-default-values.html)
 - [New in React v0.4: Autobind by Default](https://legacy.reactjs.org/blog/2013/07/02/react-v0-4-autobind-by-default.html)
-- [React v0.3.3](https://legacy.reactjs.org/blog/2013/07/02/react-v0-4-autobind-by-default.html)
+- [React v0.3.3](https://legacy.reactjs.org/blog/2013/06/21/react-v0-3-3.html)
 
 **发布版本**
 - [v0.10.0 (March 2014)](https://github.com/facebook/react/blob/main/CHANGELOG.md#0100-march-21-2014)
@@ -299,7 +299,7 @@ React 文档位于 [react.dev](https://react.dev)，提供最新版本 React 的
 - [v0.3.3 (June 2013)](https://github.com/facebook/react/blob/main/CHANGELOG.md#033-june-20-2013)
 - [v0.3.2 (May 2013)](https://github.com/facebook/react/blob/main/CHANGELOG.md#032-may-31-2013)
 - [v0.3.1 (May 2013)](https://github.com/facebook/react/blob/main/CHANGELOG.md#031-may-30-2013)
-- [v0.3.0 (May 2013)](https://github.com/facebook/react/blob/main/CHANGELOG.md#031-may-30-2013)
+- [v0.3.0 (May 2013)](https://github.com/facebook/react/blob/main/CHANGELOG.md#030-may-29-2013)
 
 ### 初始提交 {/*initial-commit*/}
 
