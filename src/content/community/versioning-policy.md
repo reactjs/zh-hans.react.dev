@@ -134,9 +134,15 @@ Canary 渠道还支持 React 与其他项目之间的集成测试。
   ```console
   yarn upgrade react@canary react-dom@canary
   ```
+<<<<<<< HEAD
 - 运行测试套件以测试更新后的包。
 - 如果一切顺利，那太好了！可以开始期望你的项目将与下一个次要版本的 React 配合使用。
 - 如果出现意外的错误，请通过 [提交 issue](https://github.com/facebook/react/issues) 告诉我们。
+=======
+- Run your test suite against the updated packages.
+- If everything passes, great! You can expect that your project will work with the next minor React release.
+- If something breaks unexpectedly, please let us know by [filing an issue](https://github.com/react/react/issues).
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 Next.js 使用了此工作流程，你可以参考他们的 [CircleCI 配置](https://github.com/zeit/next.js/blob/c0a1c0f93966fe33edd93fb53e5fafb0dcd80a9e/.circleci/config.yml) 作为示例。
 
@@ -166,4 +172,8 @@ Next.js 使用了此工作流程，你可以参考他们的 [CircleCI 配置](ht
 
 当我们准备好宣布新的实验性功能时，我们会在 [React 博客](/blog) 上发布相关信息，但这并不意味着我们会宣传每一个实验性功能。
 
+<<<<<<< HEAD
 你可以随时参考我们公开的 GitHub 仓库的 [历史记录](https://github.com/facebook/react/commits/main) 以获取完整的变更列表。
+=======
+You can always refer to our public GitHub repository's [history](https://github.com/react/react/commits/main) for a comprehensive list of changes.
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca

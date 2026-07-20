@@ -1009,7 +1009,11 @@ class Form extends Component {
 
 #### 注意 {/*static-getderivedstatefromprops-caveats*/}
 
+<<<<<<< HEAD
 - 无论什么原因，此方法都会在 **每次** 渲染时触发。这与 [`UNSAFE_componentWillReceiveProps`](#unsafe_cmoponentwillreceiveprops) 不同，后者仅在父组件不是因为调用了本地的 `setState` 而重新渲染时触发。
+=======
+- This method is fired on *every* render, regardless of the cause. This is different from [`UNSAFE_componentWillReceiveProps`](#unsafe_componentwillreceiveprops), which only fires when the parent causes a re-render and not as a result of a local `setState`.
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 - 此方法无权访问组件实例。如果你愿意，你可以在 `static getDerivedStateFromProps` 和其他类方法之间重用一些代码，也就是提取类定义之外的组件 props 和 state 的纯函数。
 
