@@ -45,7 +45,11 @@ _[点击这里观看第一天完整直播。](https://www.youtube.com/watch?v=T8
 - [为两台计算机设计的 React](https://www.youtube.com/watch?v=T8TZQ6k4SLE&t=18825s)，来自 [Dan Abramov](https://bsky.app/profile/danabra.mov)
 - [现在你应该理解了 React 服务器组件](https://www.youtube.com/watch?v=0ckOUBiuxVY&t=11256s)，来自 [Kent C. Dodds](https://twitter.com/kentcdodds)
 
+<<<<<<< HEAD
 最后，[Joe Savona](https://twitter.com/en_JS)、[Sathya Gunasekaran](https://twitter.com/_gsathya) 和 [Mofei Zhang](https://twitter.com/zmofei) 宣布 React 编译器现已 [开源](https://github.com/facebook/react/pull/29061)，并分享了一个实验版本的 React 编译器供大家尝试。
+=======
+Finally, we ended the keynote with [Joe Savona](https://twitter.com/en_JS), [Sathya Gunasekaran](https://twitter.com/_gsathya), and [Mofei Zhang](https://twitter.com/zmofei) announcing that the React Compiler is now [Open Source](https://github.com/react/react/pull/29061), and sharing an experimental version of the React Compiler to try out.
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
 
 有关使用 React Compile 及其工作原理的更多信息，请查看[文档](/learn/react-compiler)以及如下演讲：
 
