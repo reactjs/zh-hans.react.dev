@@ -755,6 +755,7 @@ video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
 
 <Note>
 
+<<<<<<< HEAD
 **只有支持 `Suspense` 的数据源才会在预渲染期间被获取。** 它们包括：
 
 - 使用支持 `Suspense` 的框架进行数据获取，例如 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#streaming-with-suspense)
@@ -766,6 +767,9 @@ video { width: 300px; margin-top: 10px; aspect-ratio: 16/9; }
 你在上述 `Posts` 组件中加载数据的具体方式取决于你所使用的框架。如果你使用的是支持 `Suspense` 的框架，你可以在其数据获取文档中找到相关细节。
 
 目前尚不支持在不使用集成框架的情况下，直接进行支持 `Suspense` 的数据获取。实现支持 `Suspense` 的数据源的相关要求尚不稳定且未记录在文档中。用于将数据源与 `Suspense` 集成的官方 API 将在 React 的未来版本中发布。
+=======
+Only data read from a source that [activates a Suspense boundary](/reference/react/Suspense#what-activates-a-suspense-boundary), such as a Promise read with [`use`](/reference/react/use), is fetched during pre-rendering. Activity does not detect data fetched inside an Effect.
+>>>>>>> c7d6b700038c63d1aaf2c649af1aefe01ebbacac
 
 </Note>
 

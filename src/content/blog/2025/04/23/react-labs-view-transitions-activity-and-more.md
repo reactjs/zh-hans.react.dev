@@ -11458,7 +11458,11 @@ root.render(
 
 如果你想了解更多关于它们如何工作的信息，请查看文档中的[`<ViewTransition>` 如何工作](/reference/react/ViewTransition#how-does-viewtransition-work)。
 
+<<<<<<< HEAD
 **关于我们如何构建视图过渡的更多背景信息，请参阅：[#31975](https://github.com/facebook/react/pull/31975)、[#32105](https://github.com/facebook/react/pull/32105)、[#32041](https://github.com/facebook/react/pull/32041)、[#32734](https://github.com/facebook/react/pull/32734)、[#32797](https://github.com/facebook/react/pull/32797)、[#31999](https://github.com/facebook/react/pull/31999)、[#32031](https://github.com/facebook/react/pull/32031)、[#32050](https://github.com/facebook/react/pull/32050)、[#32820](https://github.com/facebook/react/pull/32820)、[#32029](https://github.com/facebook/react/pull/32029)、[#32028](https://github.com/facebook/react/pull/32028) 和 [#32038](https://github.com/facebook/react/pull/32038)，由 [@sebmarkbage](https://twitter.com/sebmarkbage) 完成（感谢 Seb！）。**
+=======
+_For more background on how we built View Transitions, see: [#31975](https://github.com/react/react/pull/31975), [#32105](https://github.com/react/react/pull/32105), [#32041](https://github.com/react/react/pull/32041), [#32734](https://github.com/react/react/pull/32734), [#32797](https://github.com/react/react/pull/32797) [#31999](https://github.com/react/react/pull/31999), [#32031](https://github.com/react/react/pull/32031), [#32050](https://github.com/react/react/pull/32050), [#32820](https://github.com/react/react/pull/32820), [#32029](https://github.com/react/react/pull/32029), [#32028](https://github.com/react/react/pull/32028), and [#32038](https://github.com/react/react/pull/32038) by [@sebmarkbage](https://twitter.com/sebmarkbage) (thanks Seb!)._
+>>>>>>> c7d6b700038c63d1aaf2c649af1aefe01ebbacac
 
 ---
 

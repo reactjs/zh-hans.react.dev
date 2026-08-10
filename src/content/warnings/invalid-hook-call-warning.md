@@ -143,7 +143,11 @@ window.React2 = require('react');
 console.log(window.React1 === window.React2);
 ```
 
+<<<<<<< HEAD
 如果你在控制台看到打印了 `false`，那代表你的项目中存在两个 React，你需要搞明白这是为什么。[此 issue](https://github.com/facebook/react/issues/13991) 列举了一些常见的可能的原因。
+=======
+If it prints `false` then you might have two Reacts and need to figure out why that happened. [This issue](https://github.com/react/react/issues/13991) includes some common reasons encountered by the community.
+>>>>>>> c7d6b700038c63d1aaf2c649af1aefe01ebbacac
 
 如果你使用了 `npm link` 或者同类操作，也有可能导致这个问题出现。在这种情况下，你的构建工具可能会“看到”两个不同的 React——一个在应用目录，另一个则在工具库的目录。假设 `myapp` 和 `mylib` 是两个相邻的目录，一个可能有效的解决办法是在 `mylib` 目录下执行 `npm link ../myapp/node_modules/react`，这样就能让工具库里面使用的 React 和你应用里面使用的是同一个了。
 
@@ -155,4 +159,8 @@ console.log(window.React1 === window.React2);
 
 ## 其他原因 {/*other-causes*/}
 
+<<<<<<< HEAD
 如果上文没有解决你的问题，你可以在 [此 issue](https://github.com/facebook/react/issues/13991) 中提交评论，我们会积极地提供帮助。评论的时候，如果能提供一个小的、能复现的示例那最好不过了。
+=======
+If none of this worked, please comment in [this issue](https://github.com/react/react/issues/13991) and we'll try to help. Try to create a small reproducing example — you might discover the problem as you're doing it.
+>>>>>>> c7d6b700038c63d1aaf2c649af1aefe01ebbacac

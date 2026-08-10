@@ -190,7 +190,11 @@ React 编译器包含一条 ESLint 规则，可帮助识别无法优化的代码
 npm install -D eslint-plugin-react-hooks@latest
 </TerminalBlock>
 
+<<<<<<< HEAD
 如果你尚未配置好 eslint-plugin-react-hooks，参考 [readme 的安装说明](https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation) 来进行配置。编译器规则可在 `recommended-latest` 预设中找到。
+=======
+If you haven't already configured eslint-plugin-react-hooks, follow the [installation instructions in the readme](https://github.com/react/react/blob/main/packages/eslint-plugin-react-hooks/README.md#installation). The compiler rules are available in the `recommended-latest` preset.
+>>>>>>> c7d6b700038c63d1aaf2c649af1aefe01ebbacac
 
 ESLint 规则将会：
 - 识别对 [React 规则](/reference/rules) 的违反情况

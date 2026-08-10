@@ -47,7 +47,11 @@ function Tooltip() {
 
 #### 参数 {/*parameters*/}
 
+<<<<<<< HEAD
 * `setup`：处理副作用的函数。setup 函数选择性返回一个*清理*（cleanup）函数。在 [组件提交](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom) 之前，React 会运行 setup 函数。在每次因为提交导致依赖项变更后，React 将首先使用旧值运行 cleanup 函数（如果你提供了该函数），然后使用新值运行 setup 函数。在组件从 DOM 中移除之前，React 将最后一次运行 cleanup 函数。
+=======
+* `setup`: The function with your Effect's logic. Your setup function may also optionally return a *cleanup* function. After your [component commits](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom) to the DOM and before the browser repaints the screen, React will run your setup function. After every commit with changed dependencies, React will first run the cleanup function (if you provided it) with the old values, and then run your setup function with the new values. Before your component is removed from the DOM, React will run your cleanup function.
+>>>>>>> c7d6b700038c63d1aaf2c649af1aefe01ebbacac
 
 * **可选** `dependencies`：`setup` 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 [配置了 React](/learn/editor-setup#linting)，那么它将验证每个响应式值都被正确地指定为一个依赖项。依赖项列表必须具有固定数量的项，并且必须像 `[dep1, dep2, dep3]` 这样内联编写。React 将使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来比较每个依赖项和它先前的值。如果省略此参数，则在每次组件提交之后，会重新运行副作用函数。
 
