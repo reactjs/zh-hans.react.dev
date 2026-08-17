@@ -13,7 +13,11 @@ description: 正如我们在发布报告中分享的那样，React 18 借助新�
 
 正如我们在 [发布报告](/blog/2022/03/29/react-v18) 中分享的那样，React 18 借助新的并发渲染引入了许多新特性，对于已经存在的应用可以采用渐进式策略。在这篇文章中，我们会指导你如何逐步升级到 React 18。
 
+<<<<<<< HEAD
 如果你在升级的过程中遇到任何问题，可以在 GitHub [提 issue](https://github.com/facebook/react/issues/new/choose)。
+=======
+Please [report any issues](https://github.com/react/react/issues/new/choose) you encounter while upgrading to React 18.
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 </Intro>
 
@@ -315,11 +319,19 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
 ### React {/*react*/}
 
+<<<<<<< HEAD
 * **组件现在可以渲染 `undefined`**：如果你从组件返回 `undefined`，React 不会再发出告警。这使得允许的组件返回值与组件树中间允许的值能够保持一致。我们建议使用代码检查工具来防止像忘记在 JSX 前面的 `return` 语句这样的错误。
 * **在测试中，`act` 告警现在是可选的**：如果你正在运行端对端的测试，`act` 告警是非必要的。我们已经引入了一个 [可选](https://github.com/reactwg/react-18/discussions/102) 机制，这样你就可以只在有用且有益的单元测试开启它们。
 * **未加载的组件取消了关于 `setState` 的告警**：之前每当你在未加载的组件中调用 `setState`，React 就会发出内存泄漏告警。这个告警是为订阅添加的，但是人们经常在设置状态完好遇见它并且解决方法会让代码变得更加糟糕。所以我们已经 [移除](https://github.com/facebook/react/pull/22114) 了这个告警。
 * **不抑制控制台打印**：当你使用 Strict Mode 时，React 会将每个组件渲染两次来帮助你找到不符合预期的副作用。在 React 17 中，我们已经抑制了两次渲染之一的控制台打印让其更容易阅读。为了响应关于这会令人难以理解的 [社区反馈](https://github.com/facebook/react/issues/21783)，我们移除了这个抑制。取而代之的是，如果你安装了 React DevTool，第二次记录的渲染将会以灰色的文字展示并且会有一个选项（默认关闭）来抑制它们。
 * **改进了内存使用**：React 现在在卸载的时候会清理更多内部区域，这使得可能存在于应用代码中的未修复内存泄露的影响不那么严重。
+=======
+* **Components can now render `undefined`:** React no longer warns if you return `undefined` from a component. This makes the allowed component return values consistent with values that are allowed in the middle of a component tree. We suggest to use a linter to prevent mistakes like forgetting a `return` statement before JSX.
+* **In tests, `act` warnings are now opt-in:** If you're running end-to-end tests, the `act` warnings are unnecessary. We've introduced an [opt-in](https://github.com/reactwg/react-18/discussions/102) mechanism so you can enable them only for unit tests where they are useful and beneficial.
+* **No warning about `setState` on unmounted components:** Previously, React warned about memory leaks when you call `setState` on an unmounted component. This warning was added for subscriptions, but people primarily run into it in scenarios where setting state is fine, and workarounds make the code worse. We've [removed](https://github.com/react/react/pull/22114) this warning.
+* **No suppression of console logs:** When you use Strict Mode, React renders each component twice to help you find unexpected side effects. In React 17, we've suppressed console logs for one of the two renders to make the logs easier to read. In response to [community feedback](https://github.com/react/react/issues/21783) about this being confusing, we've removed the suppression. Instead, if you have React DevTools installed, the second log's renders will be displayed in grey, and there will be an option (off by default) to suppress them completely.
+* **Improved memory usage:** React now cleans up more internal fields on unmount, making the impact from unfixed memory leaks that may exist in your application code less severe.
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 ### React DOM Server {/*react-dom-server*/}
 
@@ -328,4 +340,8 @@ globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
 ## 更新日志 {/*changelog*/}
 
+<<<<<<< HEAD
 你可以在这里查看 [完整更新日志](https://github.com/facebook/react/blob/main/CHANGELOG.md)。
+=======
+You can view the [full changelog here](https://github.com/react/react/blob/main/CHANGELOG.md).
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
