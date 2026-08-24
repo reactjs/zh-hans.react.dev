@@ -92,7 +92,11 @@ React 编译器还可以用来编译库。由于 React 编译器需要在代码�
 
 我们之前在 React Conf 上宣布成立邀请制的 [React 编译器工作组](https://github.com/reactwg/react-compiler) 以提供反馈、提出问题并就编译器的实验版本进行协作。
 
+<<<<<<< HEAD
 从今天开始，随着 React 编译器的测试版发布，我们向所有人开放工作组成员资格。React 编译器工作组的目标是为生态系统做好准备，以便现有应用程序和库顺利、逐步采用 React 编译器。请继续在 [React 仓库中](https://github.com/facebook/react) 提交错误报告，但是在 [工作组论坛](https://github.com/reactwg/react-compiler/discussions) 中留下反馈、提出问题或分享想法。
+=======
+From today, together with the Beta release of React Compiler, we are opening up Working Group membership to everyone. The goal of the React Compiler Working Group is to prepare the ecosystem for a smooth, gradual adoption of React Compiler by existing applications and libraries. Please continue to file bug reports in the [React repo](https://github.com/react/react), but please leave feedback, ask questions, or share ideas in the [Working Group discussion forum](https://github.com/reactwg/react-compiler/discussions).
+>>>>>>> 12d692da47e77cdc558b928fcfbaf4e71c6d0cec
 
 核心团队还将使用工作组论坛来分享我们的研究成果。随着稳定版本的临近，任何重要信息也将发布在该论坛上。
 
@@ -127,7 +131,11 @@ React 编译器还可以用来编译库。由于 React 编译器需要在代码�
 
 ---
 
+<<<<<<< HEAD
 [^1]: 感谢 [@nikeee](https://github.com/facebook/react/pulls?q=is%3Apr+author%3Anikeee)、[@henryqdineen](https://github.com/facebook/react/pulls?q=is%3Apr+author%3Ahenryqdineen)、[@TrickyPi](https://github.com/facebook/react/pulls?q=is%3Apr+author%3ATrickyPi) 以及其他为编译器做出贡献的人。
+=======
+[^1]: Thanks [@nikeee](https://github.com/react/react/pulls?q=is%3Apr+author%3Anikeee), [@henryqdineen](https://github.com/react/react/pulls?q=is%3Apr+author%3Ahenryqdineen), [@TrickyPi](https://github.com/react/react/pulls?q=is%3Apr+author%3ATrickyPi), and several others for their contributions to the compiler.
+>>>>>>> 12d692da47e77cdc558b928fcfbaf4e71c6d0cec
 
 [^2]: 感谢 [Vaishali Garg](https://www.linkedin.com/in/vaishaligarg09) 在 Meta 领导这项关于 React 编译器的研究，并审阅这篇文章。
 

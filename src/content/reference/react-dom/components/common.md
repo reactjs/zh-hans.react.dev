@@ -36,7 +36,11 @@ title: "普通组件（例如 <div>）"
 
 * `suppressHydrationWarning`：布尔值。如果你使用 [服务器渲染](/reference/react-dom/server)，通常会在服务器和客户端渲染不同内容时发出警告。在一些罕见的情况下（比如时间戳），很难或者不可能保证完全匹配。如果你设置 `suppressHydrationWarning` 为 `true`，React 不会在元素属性和内容不匹配时发出警告。它只能在同级工作，并被作为脱围机制。[阅读有关抑制激活错误的内容](/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors)。
 
+<<<<<<< HEAD
 * `style`：CSS 样式对象，如 `{ fontWeight：'bold'，margin：20 }`。与 DOM [`style`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/style) 属性类似，CSS 属性应该使用像 `camelCase` 这样的驼峰命名法，如应该使用 `fontWeight` 而不是 `font-weight`。你可以将字符串或数字作为值传递，类似 `width: 100`，React 会自动将值附加为 `px`（“像素”），除非它是一个 [无单位的属性](https://github.com/facebook/react/blob/81d4ee9ca5c405dce62f64e61506b8e155f38d8d/packages/react-dom-bindings/src/shared/CSSProperty.js#L8-L57)。我们建议仅在动态样式中使用 `style`，即事先不知道样式值。在其他情况下，使用普通的 CSS 类和 `className` 更有效。[了解有关 `className` 和 `style` 的更多信息](#applying-css-styles)。
+=======
+* `style`: An object with CSS styles, for example `{ fontWeight: 'bold', margin: 20 }`. Similarly to the DOM [`style`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) property, the CSS property names need to be written as `camelCase`, for example `fontWeight` instead of `font-weight`. You can pass strings or numbers as values. If you pass a number, like `width: 100`, React will automatically append `px` ("pixels") to the value unless it's a [unitless property.](https://github.com/react/react/blob/81d4ee9ca5c405dce62f64e61506b8e155f38d8d/packages/react-dom-bindings/src/shared/CSSProperty.js#L8-L57) We recommend using `style` only for dynamic styles where you don't know the style values ahead of time. In other cases, applying plain CSS classes with `className` is more efficient. [Read more about `className` and `style`.](#applying-css-styles)
+>>>>>>> 12d692da47e77cdc558b928fcfbaf4e71c6d0cec
 
 所有内置组件也支持这些标准的 DOM 属性：
 

@@ -86,6 +86,7 @@ function SearchPage() {
 
 <Note>
 
+<<<<<<< HEAD
 这个例子假设你使用了支持 `Suspense` 的数据源：
 
 - 使用支持 suspense 的框架进行数据获取，例如 [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) 和 [Next.js](https://nextjs.org/docs/app/getting-started/fetching-data#with-suspenses)
@@ -93,6 +94,11 @@ function SearchPage() {
 - 使用 [`use`](/reference/react/use) 读取 Promise 的值
 
 [了解更多有关 suspense 及其限制的信息](/reference/react/Suspense)。
+=======
+This example assumes you use a data source that [activates a Suspense boundary](/reference/react/Suspense#what-activates-a-suspense-boundary), such as a Promise you read with [`use`](/reference/react/use).
+
+[Learn more about Suspense.](/reference/react/Suspense)
+>>>>>>> 12d692da47e77cdc558b928fcfbaf4e71c6d0cec
 
 </Note>
 
@@ -706,6 +712,8 @@ export default SlowList;
 ```css
 .items {
   padding: 0;
+  max-height: 300px;
+  overflow: auto;
 }
 
 .item {
@@ -783,6 +791,8 @@ export default SlowList;
 ```css
 .items {
   padding: 0;
+  max-height: 300px;
+  overflow: auto;
 }
 
 .item {

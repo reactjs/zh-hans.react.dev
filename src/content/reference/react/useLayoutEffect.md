@@ -47,7 +47,11 @@ function Tooltip() {
 
 #### 参数 {/*parameters*/}
 
+<<<<<<< HEAD
 * `setup`：处理副作用的函数。setup 函数选择性返回一个*清理*（cleanup）函数。在 [组件提交](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom) 之前，React 会运行 setup 函数。在每次因为提交导致依赖项变更后，React 将首先使用旧值运行 cleanup 函数（如果你提供了该函数），然后使用新值运行 setup 函数。在组件从 DOM 中移除之前，React 将最后一次运行 cleanup 函数。
+=======
+* `setup`: The function with your Effect's logic. Your setup function may also optionally return a *cleanup* function. After your [component commits](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom) to the DOM and before the browser repaints the screen, React will run your setup function. After every commit with changed dependencies, React will first run the cleanup function (if you provided it) with the old values, and then run your setup function with the new values. Before your component is removed from the DOM, React will run your cleanup function.
+>>>>>>> 12d692da47e77cdc558b928fcfbaf4e71c6d0cec
 
 * **可选** `dependencies`：`setup` 代码中引用的所有响应式值的列表。响应式值包括 props、state 以及所有直接在组件内部声明的变量和函数。如果你的代码检查工具 [配置了 React](/learn/editor-setup#linting)，那么它将验证每个响应式值都被正确地指定为一个依赖项。依赖项列表必须具有固定数量的项，并且必须像 `[dep1, dep2, dep3]` 这样内联编写。React 将使用 [`Object.is`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is) 来比较每个依赖项和它先前的值。如果省略此参数，则在每次组件提交之后，会重新运行副作用函数。
 
@@ -734,7 +738,13 @@ export default function TooltipContainer({ children, x, y, contentRef }) {
 
 - 用 [`useEffect`](/reference/react/useEffect) 替换 `useLayoutEffect`。React 可以在不阻塞绘制的情况下显示初始的渲染结果（因为初始的 HTML 将在 Effect 运行之前显示出来）。
 
+<<<<<<< HEAD
 - 或者，[将你的组件标记为仅在客户端上渲染](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content) 。这告诉 React 在服务器渲染期间将其内容替换为最接近的 [`<Suspense>`](/reference/react/Suspense) 处的表示加载中的后备方案（例如，一个加载动画或者光效）。
+=======
+- <CanaryBadge /> Alternatively, call [`use(browser())`](/reference/react/use#use-browser) to mark the component as browser-only. React will replace its content up to the closest [`<Suspense>`](/reference/react/Suspense) boundary with a loading fallback (for example, a spinner or a glimmer) during server rendering.
+
+- Alternatively, [mark your component as client-only.](/reference/react/Suspense#providing-a-fallback-for-server-errors-and-client-only-content) This tells React to replace its content up to the closest `<Suspense>` boundary with a loading fallback during server rendering.
+>>>>>>> 12d692da47e77cdc558b928fcfbaf4e71c6d0cec
 
 - 或者，只有在激活之后，使用 `useLayoutEffect` 渲染组件。保留一个初始化为 `false` 的 `isMounted` 布尔状态，并在 `useEffect` 调用中将其设置为 `true`。然后你的渲染逻辑就会像 `return isMounted ? <RealContent /> : <FallbackContent />` 这样。在服务端和激活过程中，用户将看到 `FallbackContent`，它不应该调用 `useLayoutEffect`。然后 React 将用 `RealContent` 替换它，`RealContent` 仅在客户端上运行并且可以包含 `useLayoutEffect` 调用。
 

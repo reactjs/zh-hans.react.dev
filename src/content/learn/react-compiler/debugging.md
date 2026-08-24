@@ -43,10 +43,17 @@ React Complier 可能导致你的应用出错的一个主要方式是，如果�
 
 ### 编译器构建错误 {/*compiler-build-errors*/}
 
+<<<<<<< HEAD
 如果你遇到一个意外中断构建的编译器错误，这很可能是编译器中的一个 bug。请将以下信息报告到 [facebook/react](https://github.com/facebook/react/issues) 仓库：
 - 错误信息
 - 导致错误的代码
 - 你使用的 React 和编译器版本
+=======
+If you encounter a compiler error that unexpectedly breaks your build, this is likely a bug in the compiler. Report it to the [react/react](https://github.com/react/react/issues) repository with:
+- The error message
+- The code that caused the error
+- Your React and compiler versions
+>>>>>>> 12d692da47e77cdc558b928fcfbaf4e71c6d0cec
 
 ### 运行时问题 {/*runtime-issues*/}
 
@@ -78,6 +85,7 @@ function ProblematicComponent() {
 
 如果你认为发现了一个编译器错误：
 
+<<<<<<< HEAD
 1. **确认不是违反 React 规则的问题** - 使用 ESLint 进行检查
 2. **创建最小的复现代码** - 在一个小示例中隔离问题
 3. **在不使用编译器的情况下测试** - 确认问题仅在编译时出现
@@ -86,6 +94,16 @@ function ProblematicComponent() {
   - 最小复现代码
   - 预期行为与实际行为
   - 任何错误信息
+=======
+1. **Verify it's not a Rules of React violation** - Check with ESLint
+2. **Create a minimal reproduction** - Isolate the issue in a small example
+3. **Test without the compiler** - Confirm the issue only occurs with compilation
+4. **File an [issue](https://github.com/react/react/issues/new?template=compiler_bug_report.yml)**:
+   - React and compiler versions
+   - Minimal reproduction code
+   - Expected vs actual behavior
+   - Any error messages
+>>>>>>> 12d692da47e77cdc558b928fcfbaf4e71c6d0cec
 
 ## 下一步 {/*next-steps*/}
 
