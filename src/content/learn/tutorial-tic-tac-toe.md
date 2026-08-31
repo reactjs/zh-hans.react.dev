@@ -899,6 +899,7 @@ body {
 
 ### React 开发者工具 {/*react-developer-tools*/}
 
+<<<<<<< HEAD
 React 开发者工具可以检查 React 组件的 props 和 state。可以在 CodeSandbox 的 *Browser* 部分底部找到 React DevTools 选项卡：
 
 ![CodeSandbox 中的 React 开发者工具](../images/tutorial/codesandbox-devtools.png)
@@ -906,12 +907,26 @@ React 开发者工具可以检查 React 组件的 props 和 state。可以在 Co
 要检查屏幕上的特定组件，请使用 React 开发者工具左上角的按钮：
 
 ![用 React 开发者工具选中组件](../images/tutorial/devtools-select.gif)
+=======
+React Developer Tools let you check the props and the state of your React components. It is available as a [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en), [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/), and [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil) browser extension.
 
-<Note>
+After you install it, a new *Components* tab will appear in your browser Developer Tools for sites using React. If you're following along in CodeSandbox, you'd need to first open your sandbox preview in a new tab:
 
+![opening in new tab](../images/tutorial/sandbox-new-tab.png)
+
+Then, on the preview page, open your browser's DevTools and find the *Components* tab:
+>>>>>>> 7c36f7ac329fe3cf2e11222edce9a535158c2cab
+
+![components tab](../images/tutorial/components-tab.png)
+
+<<<<<<< HEAD
 对于本地开发，React 开发工具可作为 [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)、[Firefox](https://addons.mozilla.org/zh-CN/firefox/addon/react-devtools/) 和 [Edge](https://microsoftedge.microsoft.com/addons/detail/react-developer-tools/gpphkfbcpidddadnkolkpfckpihlkkil) 的浏览器扩展来使用。安装它，*Component* 选项卡将出现在你的浏览器开发者工具中，将被用于使用 React 的站点。
+=======
+To inspect a particular component on the screen, use the button in the top left corner of the Components tab:
 
-</Note>
+![inspecting with devtools](../images/tutorial/devtools-inspect.gif)
+>>>>>>> 7c36f7ac329fe3cf2e11222edce9a535158c2cab
+
 
 ## 完成这个游戏 {/*completing-the-game*/}
 
