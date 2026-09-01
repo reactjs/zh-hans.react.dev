@@ -70,7 +70,11 @@ description: React 18 经过多年的努力才得以问世，它为 React 团队
 
 我们意识到，开发人员并不认为单独了解缓慢的提交或组件是有用的，更有用的是了解导致缓慢提交的实际原因。开发人员希望能够跟踪特定的交互（例如按钮点击、初始加载或页面导航），以便观察性能回归，并理解为什么交互缓慢以及如何修复它。
 
+<<<<<<< HEAD
 我们之前尝试通过创建一个 [交互追踪 API](https://gist.github.com/bvaughn/8de925562903afd2e7a12554adcdda16) 来解决这个问题，但它存在一些基本的设计缺陷，降低了追踪交互缓慢原因的准确性，有时导致交互永远无法结束。由于这些问题，我们最终 [移除了这个API](https://github.com/facebook/react/pull/20037)。
+=======
+We previously tried to solve this issue by creating an [Interaction Tracing API](https://gist.github.com/bvaughn/8de925562903afd2e7a12554adcdda16), but it had some fundamental design flaws that reduced the accuracy of tracking why an interaction was slow and sometimes resulted in interactions never ending. We ended up [removing this API](https://github.com/react/react/pull/20037) because of these issues.
+>>>>>>> 24618e2ac310ef03b86e60c858a8dbe55869965d
 
 我们正在开发一个新版本的交互追踪 API（由于它通过 `startTransition` 发起，我们将其暂时称为 Transition Tracing），来解决这些问题。
 

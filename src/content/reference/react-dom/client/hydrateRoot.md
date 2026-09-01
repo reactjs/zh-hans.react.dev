@@ -276,7 +276,13 @@ export default function App() {
 
 ---
 
+<<<<<<< HEAD
 ### 处理不同的客户端和服务端内容 {/*handling-different-client-and-server-content*/}
+=======
+{/* TODO: Remove this subsection when browser is available in Stable. */}
+
+### Handling different client and server content {/*handling-different-client-and-server-content*/}
+>>>>>>> 24618e2ac310ef03b86e60c858a8dbe55869965d
 
 如果你有意在服务器和客户端上呈现不同的内容，则可以进行两次渲染。在客户端上呈现不同内容的组件可以读取类似于 `isClient` 的 [状态变量](/reference/react/useState)，你可以在 [Effect](/reference/react/useEffect) 中将其设置为 `true`：
 
@@ -320,6 +326,10 @@ export default function App() {
 </Sandpack>
 
 这样，初始渲染将呈现与服务器相同的内容，避免不匹配，但是在激活之后会同步进行额外的渲染。
+
+Use this approach when you want the client-rendered content to be different from the initial server-rendered HTML.
+
+<Canary>If a component should render only in the browser, call [`use(browser())`](/reference/react/use#use-browser) instead of waiting for an Effect.</Canary>
 
 <Pitfall>
 
