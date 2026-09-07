@@ -51,7 +51,11 @@ React 团队很高兴分享一些更新：
 
 我们预计对工作组感兴趣的人数会激增，所以目前只允许被邀请的成员可以创建或评论主题。不过，这些过程是完全公开的，所以每个人都能得到一致的信息。我们相信这是一个很好的折衷方案，既能为工作组的成员创造一个利于工作的环境，又能保持对广大社区的开放性。
 
+<<<<<<< HEAD
 和从前一样，你仍然可以在我们的 [issue](https://github.com/facebook/react/issues) 中发布错误报告、疑难问题和反馈等信息。
+=======
+As always, you can submit bug reports, questions, and general feedback to our [issue tracker](https://github.com/react/react/issues).
+>>>>>>> f3d9794fc31f4a3faf7e863984d37f4ae86b3290
 
 ## 如何体验 React 18 alpha {/*how-to-try-react-18-alpha-today*/}
 
