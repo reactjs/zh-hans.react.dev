@@ -30,6 +30,12 @@ title: React DOM API
 * [`preinit`](/reference/react-dom/preinit) 让你获取并执行外部脚本，或获取并插入样式表。
 * [`preinitModule`](/reference/react-dom/preinitModule) 让你获取并执行一个 ESM 模块。
 
+## Server Rendering APIs {/*server-rendering-apis*/}
+
+This API controls how components render on the server:
+
+* <CanaryBadge /> [`browser`](/reference/react-dom/browser) lets you mark a component as browser-only during server rendering.
+
 ---
 
 ## 入口 {/*entry-points*/}
