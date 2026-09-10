@@ -176,6 +176,7 @@ async function main(frame) {
   // 这里只是为了演示而等待。
   // 在真实应用中，prelude 和 postponed 状态会在第 1 层序列化，并在这一层反序列化。
   // 在 React 从预渲染中断处继续渲染的同时，prelude 内容可以立即作为普通 HTML 刷新。
+  // React 将从预渲染停止的地方继续渲染。
   await sleep(2000);
 
   // 你会从传入的 HTTP 请求中获取 cookie
