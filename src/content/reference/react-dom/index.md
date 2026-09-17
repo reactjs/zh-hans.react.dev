@@ -30,6 +30,12 @@ title: React DOM API
 * [`preinit`](/reference/react-dom/preinit) 让你获取并执行外部脚本，或获取并插入样式表。
 * [`preinitModule`](/reference/react-dom/preinitModule) 让你获取并执行一个 ESM 模块。
 
+## 服务端渲染 API {/*server-rendering-apis*/}
+
+此 API 用于控制组件在服务端上的渲染方式：
+
+* [`browser`](/reference/react-dom/browser) 允许你在服务端渲染期间将组件标记为仅在浏览器中渲染。
+
 ---
 
 ## 入口 {/*entry-points*/}
