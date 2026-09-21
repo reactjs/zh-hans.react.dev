@@ -94,7 +94,11 @@ transition 可以让用户界面在慢速设备上保持更新响应。
 
 <Note>
 
+<<<<<<< HEAD
 `startTransition` 与 [`useTransition`](/reference/react/useTransition) 非常相似，但它不提供 `isPending` 标志来跟踪一个 Transition 是否正在进行。你可以在 `useTransition` 不可用时调用 `startTransition`。例如，在组件外部（如从数据库中）使用 `startTransition`。
+=======
+`startTransition` is very similar to [`useTransition`](/reference/react/useTransition), except that it does not provide the `isPending` flag to track whether a Transition is ongoing. The standalone function is also not associated with a component, so if the function passed to it throws an error or returns a rejected Promise, React reports the error with [`reportError`](https://developer.mozilla.org/en-US/docs/Web/API/Window/reportError). You can call `startTransition` when `useTransition` is not available. For example, `startTransition` works outside components, such as from a data library.
+>>>>>>> b011783fcc7a39da9eefd4274147a1444860a12b
 
 [在 `useTransition` 页面上了解 Transition 并查看示例](/reference/react/useTransition)。
 
