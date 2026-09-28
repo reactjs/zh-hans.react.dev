@@ -112,7 +112,7 @@ export async function updateName(name) {
 }
 ```
 
-```js [[1, 3, "updateName"], [1, 13, "updateName"], [2, 11, "submitAction"],  [2, 23, "submitAction"]]
+```js [[1, 3, "updateName"], [1, 13, "updateName"], [2, 11, "submitAction"], [2, 25, "submitAction"]]
 "use client";
 
 import {updateName} from './actions';
@@ -126,11 +126,13 @@ function UpdateName() {
   const submitAction = async () => {
     startTransition(async () => {
       const {error} = await updateName(name);
-      if (error) {
-        setError(error);
-      } else {
-        setName('');
-      }
+      startTransition(() => {
+        if (error) {
+          setError(error);
+        } else {
+          setName('');
+        }
+      });
     })
   }
 
