@@ -179,7 +179,44 @@ async function Author({id}) {
 
 可以通过重新请求服务器来使服务器组件动态化，重新请求时，它们可以访问数据并重新渲染。这种新的应用结构将以服务器为中心多页应用的「请求/响应」心智模型和以客户端为中心单页应用的无缝交互性的优点融合在一起，给你提供两全其美的体验。
 
+<<<<<<< HEAD
 ### 给服务器组件添加交互性 {/*adding-interactivity-to-server-components*/}
+=======
+### Rendering a context provider in a Server Component {/*rendering-a-context-provider-in-a-server-component*/}
+
+Server Components cannot create context, but they can render a context provider imported from a Client Component module.
+
+Create and export the context from a file with the [`'use client'`](/reference/rsc/use-client) directive:
+
+```js
+// user-context.js
+'use client';
+import { createContext } from 'react';
+
+export const UserContext = createContext(null);
+```
+
+Then import and render the context directly from a Server Component:
+
+```js
+// server-component.js
+import { UserContext } from './user-context';
+
+export async function Layout({ children }) {
+  const currentUser = await getCurrentUser();
+
+  return (
+    <UserContext value={currentUser}>
+      {children}
+    </UserContext>
+  );
+}
+```
+
+Client Components rendered inside this provider can read its value with [`use`](/reference/react/use) or [`useContext`](/reference/react/useContext).
+
+### Adding interactivity to Server Components {/*adding-interactivity-to-server-components*/}
+>>>>>>> 75ef18a9172e4c100b5d5650ae14c395c5c8ef42
 
 由于服务器组件不会发给浏览器，所以它们不能使用交互的 API，例如 `useState`。要给服务器组件添加交互性，你可以使用 `"use client"` 指令把他们和客户端组件组合在一起。
 
