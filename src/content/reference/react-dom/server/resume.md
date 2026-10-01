@@ -43,12 +43,22 @@ async function handler(request, writable) {
 
 #### 参数 {/*parameters*/}
 
+<<<<<<< HEAD
 * `reactNode`：调用 `prerender` 时传入的 React 节点。例如，像 `<App />` 这样的 JSX 元素。它应表示整个文档，因此 `App` 组件应渲染 `<html>` 标签。
 * `postponedState`：从 [prerender API](/reference/react-dom/static/index) 返回的不透明 `postpone` 对象，从你存储它的位置加载（例如 Redis、文件或 S3）。
 * **可选** `options`：包含流式传输选项的对象。
   * **可选** `nonce`：一个 [`nonce`](http://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#nonce) 字符串，用于允许 [`script-src` 内容安全策略](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src) 中的脚本。
   * **可选** `signal`：一个 [中止信号](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)，允许你 [中止服务端渲染](#aborting-server-rendering)，并在客户端渲染剩余内容。
   * **可选** `onError`：每当发生服务端错误时触发的回调函数，无论错误是 [可恢复](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) 还是 [不可恢复](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)。默认情况下，它只调用 `console.error`。如果你重写它来 [记录崩溃报告](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server)，请确保仍然调用 `console.error`。
+=======
+* `reactNode`: The React node you called `prerender` with. For example, a JSX element like `<App />`. It is expected to represent the entire document, so the `App` component should render the `<html>` tag.
+* `postponedState`: The opaque `postpone` object returned from a [prerender API](/reference/react-dom/static/index), loaded from wherever you stored it (e.g. redis, a file, or S3).
+* **optional** `options`: An object with streaming options.
+  * **optional** `nonce`: A [`nonce`](http://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#nonce) string to allow scripts for [`script-src` Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src).
+  * **optional** `signal`: An [abort signal](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) that lets you [abort server rendering](#aborting-server-rendering) and render the rest on the client.
+  * **optional** `onBrowserBailout`: A callback React calls when it recovers from [`browser()`](/reference/react-dom/browser) by leaving a Suspense fallback for the browser to replace. It receives an `Error` describing the browser-only render and an `errorInfo` object containing the `componentStack`. If a reason was passed to `browser`, it is available as `error.cause`. By default, React does nothing. [See how to report browser-only rendering.](/reference/react-dom/browser#reporting-browser-only-rendering-on-the-server)
+  * **optional** `onError`: A callback that fires whenever there is a server error, whether [recoverable](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-outside-the-shell) or [not.](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell) By default, this only calls `console.error`. If you override it to [log crash reports,](/reference/react-dom/server/renderToReadableStream#logging-crashes-on-the-server) make sure that you still call `console.error`.
+>>>>>>> 75ef18a9172e4c100b5d5650ae14c395c5c8ef42
 
 
 #### 返回值 {/*returns*/}
@@ -201,10 +211,18 @@ main(document.getElementById("container"));
 export async function flushReadableStreamToFrame(readable, frame) {
   const document = frame.contentWindow.document;
   const decoder = new TextDecoder();
-  for await (const chunk of readable) {
-    const partialHTML = decoder.decode(chunk);
+  const reader = readable.getReader();
+
+  while (true) {
+    const {done, value} = await reader.read();
+    if (done) {
+      break;
+    }
+    const partialHTML = decoder.decode(value, {stream: true});
     document.write(partialHTML);
   }
+
+  document.write(decoder.decode());
 }
 
 // 这不一定要是一个错误。
@@ -232,5 +250,10 @@ export function sleep(timeoutMS) {
 
 ### 延伸阅读 {/*further-reading*/}
 
+<<<<<<< HEAD
 恢复过程的行为类似于 `renderToReadableStream`。有关更多示例，请参阅 [`renderToReadableStream` 的用法部分](/reference/react-dom/server/renderToReadableStream#usage)。
 [`prerender` 的用法部分](/reference/react-dom/static/prerender#usage) 包含专门介绍如何使用 `prerender` 的示例。
+=======
+Resuming behaves like `renderToReadableStream`. For more examples, check out the [usage section of `renderToReadableStream`](/reference/react-dom/server/renderToReadableStream#usage).
+The [usage section of `prerender`](/reference/react-dom/static/prerender#usage) includes examples of how to use `prerender` specifically.
+>>>>>>> 75ef18a9172e4c100b5d5650ae14c395c5c8ef42
