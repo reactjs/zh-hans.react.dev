@@ -193,6 +193,12 @@ function ProblematicComponent() {
 
 ## 另请参阅 {/*see-also*/}
 
+<<<<<<< HEAD
 * [`compilationMode`](/reference/react-compiler/compilationMode) - 配置编译器如何选择要优化的内容
 * [`Configuration`](/reference/react-compiler/configuration) - 完整的编译器配置选项
 * [React 编译器文档](https://react.dev/learn/react-compiler) - 入门指南
+=======
+* [`compilationMode`](/reference/react-compiler/compilationMode) - Configure how the compiler chooses what to optimize
+* [`Configuration`](/reference/react-compiler/configuration) - Full compiler configuration options
+* [React Compiler documentation](/learn/react-compiler) - Getting started guide
+>>>>>>> 8c68ae8d2410abe59f351195780c6f8ea9f50904
