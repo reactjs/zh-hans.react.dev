@@ -52,7 +52,7 @@ root.render(<App />);
 
 #### 返回值 {/*returns*/}
 
-`createRoot` 返回一个带有两个方法的的对象，这两个方法是：[`render`](#root-render) 和 [`unmount`](#root-unmount)。
+`createRoot` 返回一个带有两个方法的对象，这两个方法是：[`render`](#root-render) 和 [`unmount`](#root-unmount)。
 
 #### 注意 {/*caveats*/}
 * 如果应用程序是服务端渲染的，那么不能使用 `createRoot()`。请使用 [`hydrateRoot()`](/reference/react-dom/client/hydrateRoot) 替代它。
