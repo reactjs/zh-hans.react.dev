@@ -23,11 +23,11 @@ __本文的日期已更新，以反映稳定版的发布日期。__
 
 <Intro>
 
-React 19 版本现在可以在 npm 上使用了!
+React 19 版本现在可以在 npm 上使用了！
 
 </Intro>
 
-在我们的 [React 19 升级指南](/blog/2024/04/25/react-19-upgrade-guide) 中, 我们分享了将应用程序升级到 React 19 的分步说明。在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
+在我们的 [React 19 升级指南](/blog/2024/04/25/react-19-upgrade-guide) 中，我们分享了将应用程序升级到 React 19 的分步说明。在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们。
 
 - [React 19 中的新功能](#whats-new-in-react-19)
 - [React 19 中的改进](#improvements-in-react-19)
@@ -360,7 +360,7 @@ React 19 包含了所有从 Canary 渠道引入的 React 服务器组件功能�
 
 <Note>
 
-#### 如何构建对服务器组件的支持? {/*how-do-i-build-support-for-server-components*/}
+#### 如何构建对服务器组件的支持？ {/*how-do-i-build-support-for-server-components*/}
 
 虽然 React 19 中的 React 服务器组件是稳定的，并且在主版本之间不会发生破坏，但用于实现 React 服务器组件打包器或框架的底层 API 不遵循 semver，并可能在 React 19.x 的小版本之间发生破坏。
 

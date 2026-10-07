@@ -81,7 +81,7 @@ React 生态系统中包含许多用于解决这些问题的工具。我们列�
 
 路由是现代应用程序的核心部分，通常与数据获取（包括为整个页面预取数据以加快加载速度）、代码拆分（以最小化客户端包的大小）和页面渲染方法（决定每个页面的生成方式）集成在一起。
 
-我们建议使用:
+我们建议使用：
 
 - [React Router](https://reactrouter.com/start/data/custom)
 - [Tanstack Router](https://tanstack.com/router/latest)
@@ -115,7 +115,7 @@ React 生态系统中包含许多用于解决这些问题的工具。我们列�
 
 通过路由拆分代码，并与打包和数据获取集成，可以减少应用程序的初始加载时间以及渲染应用程序最大可见内容所需的时间 ([最大内容绘制](https://web.dev/articles/lcp))。
 
-有关代码拆分的说明，请参阅你的构建工具文档:
+有关代码拆分的说明，请参阅你的构建工具文档：
 - [Vite 构建优化](https://vite.dev/guide/features.html#build-optimizations)
 - [Parcel 代码拆分](https://parceljs.org/features/code-splitting/)
 - [Rsbuild 代码拆分](https://rsbuild.dev/guide/optimization/code-splitting)
@@ -140,4 +140,4 @@ React 生态系统中包含许多用于解决这些问题的工具。我们列�
 
 这些只是新应用在从头开始构建时需要考虑的功能的几个例子。你会遇到的许多限制可能很难解决，因为每个问题都与其他问题相互关联，并且可能需要你不熟悉的领域的深入专业知识。
 
-如果你不想自己解决这些问题, 你可以 [从一个框架开始](/learn/creating-a-react-app)，该框架开箱即用地提供这些功能。
+如果你不想自己解决这些问题，你可以 [从一个框架开始](/learn/creating-a-react-app)，该框架开箱即用地提供这些功能。

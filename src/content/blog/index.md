@@ -67,7 +67,7 @@ In React Labs posts, we write about projects in active research and development.
 
 <BlogCard title="React v19 " date="December 5, 2024" url="/blog/2024/12/05/react-19">
 
-在我们的 React 19 升级指南中, 我们分享了将应用程序升级到 React 19 的分步说明。在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们……
+在我们的 React 19 升级指南中，我们分享了将应用程序升级到 React 19 的分步说明。在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们……
 
 </BlogCard>
 

@@ -165,7 +165,7 @@ console.timeEnd('filter array');
 2. 首选本地 state，非必要不进行 [状态提升](/learn/sharing-state-between-components)。例如，不要保持像表单、组件是否悬停在组件树顶部这样的瞬时状态。
 3. 保持你的 [渲染逻辑纯粹](/learn/keeping-components-pure)。如果重新渲染组件会导致一些问题或产生一些明显的视觉错误，那么它就是组件中的错误！修复错误而不是使用记忆化。
 4. 避免 [不必要地更新 state 的 Effect](/learn/you-might-not-need-an-effect)。React 应用程序中的大多数性能问题都是由 Effect 创造的更新链引起的，这些更新链导致组件反复重新渲染。
-5. 尽力 [从 Effect 中移除不必要的依赖项](/learn/removing-effect-dependencies)。例如, 相比于记忆化，在 Effect 内部或组件外部移动某些对象或函数通常更简单。
+5. 尽力 [从 Effect 中移除不必要的依赖项](/learn/removing-effect-dependencies)。例如，相比于记忆化，在 Effect 内部或组件外部移动某些对象或函数通常更简单。
 
 如果某个特定的交互仍然感觉滞后，[使用 React 开发者工具分析器](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) 查看哪些组件将从记忆化中获益最多，并在需要的地方添加记忆化。这些原则使你的组件更易于调试和理解，因此在任何情况下都应该遵循它们。从长远来看，我们正在研究 [自动进行粒度记忆](https://www.youtube.com/watch?v=lGEMwh32soc) 以一劳永逸地解决这个问题。
 

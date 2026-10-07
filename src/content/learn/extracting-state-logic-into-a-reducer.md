@@ -191,7 +191,7 @@ Reducer 是处理状态的另一种方式。你可以通过三个步骤将 `useS
 2. **编写** 一个 reducer 函数；
 3. 在你的组件中 **使用** reducer。
 
-### 第 1 步: 将设置状态的逻辑修改成 dispatch 的一个 action {/*step-1-move-from-setting-state-to-dispatching-actions*/}
+### 第 1 步：将设置状态的逻辑修改成 dispatch 的一个 action {/*step-1-move-from-setting-state-to-dispatching-actions*/}
 
 你的事件处理程序目前是通过设置状态来 **实现逻辑的**：
 
@@ -288,7 +288,7 @@ dispatch({
 
 </Note>
 
-### 第 2 步: 编写一个 reducer 函数 {/*step-2-write-a-reducer-function*/}
+### 第 2 步：编写一个 reducer 函数 {/*step-2-write-a-reducer-function*/}
 
 reducer 函数就是你放置状态逻辑的地方。它接受两个参数，分别为当前 state 和 action 对象，并且返回的是更新后的 state：
 
@@ -461,7 +461,7 @@ export default function tasksReducer(tasks, action) {
 
 </DeepDive>
 
-### 第 3 步: 在组件中使用 reducer {/*step-3-use-the-reducer-from-your-component*/}
+### 第 3 步：在组件中使用 reducer {/*step-3-use-the-reducer-from-your-component*/}
 
 最后，你需要将 `tasksReducer` 导入到组件中。记得先从 React 中导入 `useReducer` Hook：
 
@@ -874,7 +874,7 @@ Reducer 并非没有缺点！以下是比较它们的几种方法：
 
 * **代码体积：** 通常，在使用 `useState` 时，一开始只需要编写少量代码。而 `useReducer` 必须提前编写 reducer 函数和需要调度的 actions。但是，当多个事件处理程序以相似的方式修改 state 时，`useReducer` 可以减少代码量。
 * **可读性：** 当状态更新逻辑足够简单时，`useState` 的可读性还行。但是，一旦逻辑变得复杂起来，它们会使组件变得臃肿且难以阅读。在这种情况下，`useReducer` 允许你将状态更新逻辑与事件处理程序分离开来。
-* **可调试性：** 当使用 `useState` 出现问题时, 你很难发现具体原因以及为什么。 而使用 `useReducer` 时， 你可以在 reducer 函数中通过打印日志的方式来观察每个状态的更新，以及为什么要更新（来自哪个 `action`）。 如果所有 `action` 都没问题，你就知道问题出在了 reducer 本身的逻辑中。 然而，与使用 `useState` 相比，你必须单步执行更多的代码。
+* **可调试性：** 当使用 `useState` 出现问题时，你很难发现具体原因以及为什么。 而使用 `useReducer` 时， 你可以在 reducer 函数中通过打印日志的方式来观察每个状态的更新，以及为什么要更新（来自哪个 `action`）。 如果所有 `action` 都没问题，你就知道问题出在了 reducer 本身的逻辑中。 然而，与使用 `useState` 相比，你必须单步执行更多的代码。
 * **可测试性：** reducer 是一个不依赖于组件的纯函数。这就意味着你可以单独对它进行测试。一般来说，我们最好是在真实环境中测试组件，但对于复杂的状态更新逻辑，针对特定的初始状态和 `action`，断言 reducer 返回的特定状态会很有帮助。
 * **个人偏好：** 并不是所有人都喜欢用 reducer，没关系，这是个人偏好问题。你可以随时在 `useState` 和 `useReducer` 之间切换，它们能做的事情是一样的！
 
@@ -2081,7 +2081,7 @@ case 'edited_message': {
 const message = state.messages[state.selectedId];
 ```
 
-下面是完整答案:
+下面是完整答案：
 
 <Sandpack>
 

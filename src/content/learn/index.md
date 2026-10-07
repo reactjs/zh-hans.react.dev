@@ -239,7 +239,7 @@ const products = [
 ];
 ```
 
-在你的组件中，使用 `map()` 函数将这个数组转换为 `<li>` 标签构成的列表:
+在你的组件中，使用 `map()` 函数将这个数组转换为 `<li>` 标签构成的列表：
 
 ```js
 const listItems = products.map(product =>
@@ -462,7 +462,7 @@ function MyButton() {
 
 ```
 
-接着，将 `MyApp` 中的点击事件处理函数以及 **state 一同向下传递到** 每个 `MyButton` 中。你可以使用 JSX 的大括号向 `MyButton` 传递信息。就像之前向 `<img>` 等内置标签所做的那样:
+接着，将 `MyApp` 中的点击事件处理函数以及 **state 一同向下传递到** 每个 `MyButton` 中。你可以使用 JSX 的大括号向 `MyButton` 传递信息。就像之前向 `<img>` 等内置标签所做的那样：
 
 ```js {11-12}
 export default function MyApp() {
