@@ -34,7 +34,7 @@ import { useRef } from 'react';
 const ref = useRef(0);
 ```
 
-`useRef` 返回一个这样的对象:
+`useRef` 返回一个这样的对象：
 
 ```js
 {

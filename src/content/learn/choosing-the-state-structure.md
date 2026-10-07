@@ -99,7 +99,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 <Pitfall>
 
-如果你的 state 变量是一个对象时，请记住，[你不能只更新其中的一个字段](/learn/updating-objects-in-state) 而不显式复制其他字段。例如，在上面的例子中，你不能写成 `setPosition({ x: 100 })`，因为它根本就没有 `y` 属性! 相反，如果你想要仅设置 `x`，则可执行 `setPosition({ ...position, x: 100 })`，或将它们分成两个 state 变量，并执行 `setX(100)`。
+如果你的 state 变量是一个对象时，请记住，[你不能只更新其中的一个字段](/learn/updating-objects-in-state) 而不显式复制其他字段。例如，在上面的例子中，你不能写成 `setPosition({ x: 100 })`，因为它根本就没有 `y` 属性！相反，如果你想要仅设置 `x`，则可执行 `setPosition({ ...position, x: 100 })`，或将它们分成两个 state 变量，并执行 `setX(100)`。
 
 </Pitfall>
 

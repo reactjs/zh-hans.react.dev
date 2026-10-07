@@ -54,12 +54,12 @@ React 社区中其他较为流行的文本编辑器包括：
 
 #### 保存并自动格式化 {/*formatting-on-save*/}
 
-理想情况下，你应该在每次保存时自动格式化代码。VS Code 就包含该配置!
+理想情况下，你应该在每次保存时自动格式化代码。VS Code 就包含该配置！
 
 1. 在 VS Code, 按快捷键 `Ctrl/Cmd + Shift + P`.
 2. 输入 "settings"
 3. 按回车键
-4. 在搜索栏, 输入 "format on save"
+4. 在搜索栏，输入 "format on save"
 5. 确保勾选 "format on save" 选项！
 
 > 如果你的 ESLint 预设包含格式化规则，它们可能会与 Prettier 发生冲突。我们建议使用[`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier) 禁用你 ESLint 预设中的所有格式化规则，这样 ESLint 就只用于捕捉逻辑错误。如果你想在合并 PR 前强制执行文件的格式化，请在你的 CI 中使用 [`prettier --check`](https://prettier.io/docs/en/cli.html#--check) 命令。

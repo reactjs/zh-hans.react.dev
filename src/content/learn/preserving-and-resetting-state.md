@@ -382,7 +382,7 @@ label {
 
 <Pitfall>
 
-记住 **对 React 来说重要的是组件在 UI 树中的位置,而不是在 JSX 中的位置！** 这个组件在 `if` 内外有两个`return` 语句，它们带有不同的 `<Counter />` JSX 标签：
+记住 **对 React 来说重要的是组件在 UI 树中的位置，而不是在 JSX 中的位置！** 这个组件在 `if` 内外有两个`return` 语句，它们带有不同的 `<Counter />` JSX 标签：
 
 <Sandpack>
 

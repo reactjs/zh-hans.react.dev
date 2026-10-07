@@ -64,7 +64,7 @@ async function handler(request, response) {
 `prerender` 返回一个 Promise 对象：
 - 如果渲染成功，Promise 将解析为一个包含以下内容的对象：
   - `prelude`：一个 [Web Stream](https://developer.mozilla.org/zh-CN/docs/Web/API/Streams_API) 的 HTML。你可以使用此流以块的形式发送响应，或者将整个流读取为字符串。
-  - `postponed`：一个 JSON 序列化的不透明对象, 如果 `prerender` 未完成, 可将其传递给 [`resume`](/reference/react-dom/server/resume)。 否则，`null` 表示 `prelude` 包含所有内容，无需恢复。
+  - `postponed`：一个 JSON 序列化的不透明对象，如果 `prerender` 未完成，可将其传递给 [`resume`](/reference/react-dom/server/resume)。 否则，`null` 表示 `prelude` 包含所有内容，无需恢复。
 - 如果渲染失败，Promise 将被拒绝。[使用此方法输出一个回退 shell。](/reference/react-dom/server/renderToReadableStream#recovering-from-errors-inside-the-shell)
 
 #### 注意事项 {/*caveats*/}
@@ -102,7 +102,7 @@ async function handler(request) {
 }
 ```
 
-与 <CodeStep step={1}>根组件</CodeStep>一起, 你需要提供一组 <CodeStep step={2}> 引导 `<script>` 路径 </CodeStep>。 根组件应返回 **包含 `<html>` 标签** 的整个文档。
+与 <CodeStep step={1}>根组件</CodeStep>一起，你需要提供一组 <CodeStep step={2}> 引导 `<script>` 路径 </CodeStep>。 根组件应返回 **包含 `<html>` 标签** 的整个文档。
 
 例如，它可能看起来像这样：
 
