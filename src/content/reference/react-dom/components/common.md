@@ -28,7 +28,11 @@ title: "普通组件（例如 <div>）"
 
 * `children`：React 节点（可以是元素、字符串、数字、[portal](/reference/react-dom/createPortal)，如 `null`，`undefined` 这样的空节点和布尔值，或其他 React 节点数组）。`children` 属性指定了组件内部的内容。当使用 JSX 时，通常会通过嵌套标签 `<div><span /></div>` 隐式地指定 `children` 属性。
 
+<<<<<<< HEAD
 * `dangerouslySetInnerHTML`：一个形如 `{ __html: '<p>一些 HTML</p>' }` 的对象，其中包含原始的 HTML 字符串。此属性将会覆盖 DOM 节点的 [`innerHTML`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/innerHTML) 属性，并在内部显示传递的 HTML 内容。这个属性应该极度谨慎使用！如果内部的 HTML 不可信（例如它来源于用户数据），那么会有引入 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 漏洞的风险。[阅读更多关于使用 `dangerouslySetInnerHTML` 的内容](#dangerously-setting-the-inner-html)。
+=======
+* `dangerouslySetInnerHTML`: An object of the form `{ __html: '<p>some html</p>' }` with a raw HTML string or [`TrustedHTML`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedHTML) value inside. Overrides the [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML) property of the DOM node and displays the passed HTML inside. This should be used with extreme caution! If the HTML inside isn't trusted (for example, if it's based on user data), you risk introducing an [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) vulnerability. [Read more about using `dangerouslySetInnerHTML`.](#dangerously-setting-the-inner-html)
+>>>>>>> 046f17d04295ba047bb5739026b4ac3110f17028
 
 * `ref`：使用 [`useRef`](/reference/react/useRef) 或者 [`createRef`](/reference/react/createRef) 的 ref 对象，或者一个 [`ref` 回调函数](#ref-callback)，再或者一个用于 [传统 ref](https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs) 的字符串。ref 将被填充为此节点的 DOM 元素。[阅读更多关于使用 ref 操纵 DOM 的内容](#manipulating-a-dom-node-with-a-ref)。
 
@@ -36,7 +40,11 @@ title: "普通组件（例如 <div>）"
 
 * `suppressHydrationWarning`：布尔值。如果你使用 [服务器渲染](/reference/react-dom/server)，通常会在服务器和客户端渲染不同内容时发出警告。在一些罕见的情况下（比如时间戳），很难或者不可能保证完全匹配。如果你设置 `suppressHydrationWarning` 为 `true`，React 不会在元素属性和内容不匹配时发出警告。它只能在同级工作，并被作为脱围机制。[阅读有关抑制激活错误的内容](/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors)。
 
+<<<<<<< HEAD
 * `style`：CSS 样式对象，如 `{ fontWeight：'bold'，margin：20 }`。与 DOM [`style`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/style) 属性类似，CSS 属性应该使用像 `camelCase` 这样的驼峰命名法，如应该使用 `fontWeight` 而不是 `font-weight`。你可以将字符串或数字作为值传递，类似 `width: 100`，React 会自动将值附加为 `px`（“像素”），除非它是一个 [无单位的属性](https://github.com/facebook/react/blob/81d4ee9ca5c405dce62f64e61506b8e155f38d8d/packages/react-dom-bindings/src/shared/CSSProperty.js#L8-L57)。我们建议仅在动态样式中使用 `style`，即事先不知道样式值。在其他情况下，使用普通的 CSS 类和 `className` 更有效。[了解有关 `className` 和 `style` 的更多信息](#applying-css-styles)。
+=======
+* `style`: An object with CSS styles, for example `{ fontWeight: 'bold', margin: 20 }`. Similarly to the DOM [`style`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style) property, the CSS property names need to be written as `camelCase`, for example `fontWeight` instead of `font-weight`. You can pass strings or numbers as values. If you pass a number, like `width: 100`, React will automatically append `px` ("pixels") to the value unless it's a [unitless property.](https://github.com/react/react/blob/81d4ee9ca5c405dce62f64e61506b8e155f38d8d/packages/react-dom-bindings/src/shared/CSSProperty.js#L8-L57) We recommend using `style` only for dynamic styles where you don't know the style values ahead of time. In other cases, applying plain CSS classes with `className` is more efficient. [Read more about `className` and `style`.](#applying-css-styles)
+>>>>>>> 046f17d04295ba047bb5739026b4ac3110f17028
 
 所有内置组件也支持这些标准的 DOM 属性：
 
@@ -924,7 +932,11 @@ export default function Form() {
 
 ### 危险地设置内部 HTML {/*dangerously-setting-the-inner-html*/}
 
+<<<<<<< HEAD
 你可以像这样将原始的 HTML 字符串传递给元素:
+=======
+You can pass a raw HTML string or a [`TrustedHTML`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedHTML) value to an element like so:
+>>>>>>> 046f17d04295ba047bb5739026b4ac3110f17028
 
 ```js
 const markup = { __html:'<p>some raw html</p>' };
@@ -933,7 +945,13 @@ return <div dangerouslySetInnerHTML={markup} />;
 
 **这很危险。与底层的 DOM [`innerHTML`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/innerHTML) 属性一样，你必须极度谨慎！除非标记语言来自完全可信的来源，否则通过这种方式引入 [XSS](https://en.wikipedia.org/wiki/Cross-site_scripting) 是容易被攻击的**。
 
+<<<<<<< HEAD
 例如，如果你使用将 Markdown 转换为 HTML 的 Markdown 库，你得相信它的解析器没有漏洞，用户只能看到自己的输入，你可以像这样显示生成的 HTML:
+=======
+If your site enforces [Trusted Types](https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API), pass a `TrustedHTML` value created by your security policy as `__html`. React passes the value to the browser without converting it to a string, allowing the browser to validate it. Your policy must still ensure that any input used to create the value is trusted and sanitized.
+
+For example, if you use a Markdown library that converts Markdown to HTML, you trust that its parser doesn't contain bugs, and the user only sees their own input, you can display the resulting HTML like this:
+>>>>>>> 046f17d04295ba047bb5739026b4ac3110f17028
 
 <Sandpack>
 
