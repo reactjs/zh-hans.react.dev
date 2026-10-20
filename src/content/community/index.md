@@ -1,5 +1,5 @@
 ---
-title: React Community
+title: React 社区
 ---
 
 <Intro>
