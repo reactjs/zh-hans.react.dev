@@ -1,5 +1,5 @@
 ---
-title: React Blog
+title: React 博客
 ---
 
 <Intro>
@@ -11,9 +11,9 @@ title: React Blog
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
-<BlogCard title="The React Foundation: A New Home for React Hosted by the Linux Foundation" date="February 24, 2026" url="/blog/2026/02/24/the-react-foundation">
+<BlogCard title="React 基金会：由 Linux 基金会托管的 React 新家" date="2026 年 2 月 24 日" url="/blog/2026/02/24/the-react-foundation">
 
-The React Foundation has officially launched under the Linux Foundation.
+React 基金会已在 Linux 基金会旗下正式启动。
 
 </BlogCard>
 
@@ -35,67 +35,67 @@ The React Foundation has officially launched under the Linux Foundation.
 
 </BlogCard>
 
-<BlogCard title="React Compiler v1.0" date="October 7, 2025" url="/blog/2025/10/07/react-compiler-1">
+<BlogCard title="React Compiler v1.0" date="2025 年 10 月 7 日" url="/blog/2025/10/07/react-compiler-1">
 
 我们今天将发布 React Compiler 的第一个稳定发布版，以及 linting 和工具改进，使采用更加容易。
 
 </BlogCard>
 
-<BlogCard title="Introducing the React Foundation" date="October 7, 2025" url="/blog/2025/10/07/introducing-the-react-foundation">
+<BlogCard title="介绍 React 基金会" date="2025 年 10 月 7 日" url="/blog/2025/10/07/introducing-the-react-foundation">
 
-Today, we're announcing our plans to create the React Foundation and a new technical governance structure ...
-
-</BlogCard>
-
-<BlogCard title="React 19.2" date="October 1, 2025" url="/blog/2025/10/01/react-19-2">
-
-React 19.2 adds new features like Activity, React Performance Tracks, useEffectEvent, and more. In this post ...
+今天，我们宣布了创建 React 基金会以及一套新的技术治理结构的计划……
 
 </BlogCard>
 
-<BlogCard title="React Labs: View Transitions, Activity, and more" date="April 23, 2025" url="/blog/2025/04/23/react-labs-view-transitions-activity-and-more">
+<BlogCard title="React 19.2" date="2025 年 10 月 1 日" url="/blog/2025/10/01/react-19-2">
 
-In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and sharing other areas we're working on now ...
+React 19.2 新增了 Activity、React 性能追踪、useEffectEvent 等特性。在本文中，我们将概述这些新特性……
 
 </BlogCard>
 
-<BlogCard title="逐步淘汰 Create React App" date="February 14, 2025" url="/blog/2025/02/14/sunsetting-create-react-app">
+<BlogCard title="React Labs：视图过渡、Activity 等功能" date="2025 年 4 月 23 日" url="/blog/2025/04/23/react-labs-view-transitions-activity-and-more">
+
+在 React Labs 系列文章中，我们会介绍正在积极研究和开发的项目。本文将分享两个已经可供测试的新实验性功能，以及其他正在开发中功能的最新进展……
+
+</BlogCard>
+
+<BlogCard title="逐步淘汰 Create React App" date="2025 年 2 月 14 日" url="/blog/2025/02/14/sunsetting-create-react-app">
 
 今日起，我们将正式弃用 Create React App 作为新应用的推荐工具，并建议现有应用迁移至框架或构建工具（如 Vite、Parcel 和 RSBuild）。我们还提供了相关文档用于这些情况：你的项目不适合使用框架、你想要构建自己的框架，或者只是想通过从零开始构建一个 React 应用来了解 React 的工作原理等等……
 
 </BlogCard>
 
-<BlogCard title="React v19 " date="December 5, 2024" url="/blog/2024/12/05/react-19">
+<BlogCard title="React v19 " date="2024 年 12 月 5 日" url="/blog/2024/12/05/react-19">
 
 在我们的 React 19 升级指南中, 我们分享了将应用程序升级到 React 19 的分步说明。在这篇文章中，我们将概述 React 19 的新特性，以及如何使用它们……
 
 </BlogCard>
 
-<BlogCard title="React Compiler 发布 Beta 版本" date="October 21, 2024" url="/blog/2024/10/21/react-compiler-beta-release">
+<BlogCard title="React Compiler 发布 Beta 版本" date="2024 年 10 月 21 日" url="/blog/2024/10/21/react-compiler-beta-release">
 
 我们在 React Conf 2024 上宣布了 React Compiler 的实验性版本。从那时起我们已经取得了很多进展，在这篇文章中，我们将分享 React Compiler 下一步要做的事情……
 
 </BlogCard>
 
-<BlogCard title="回顾 React Conf 2024" date="May 22, 2024" url="/blog/2024/05/22/react-conf-2024-recap">
+<BlogCard title="回顾 React Conf 2024" date="2024 年 5 月 22 日" url="/blog/2024/05/22/react-conf-2024-recap">
 
 上周我们在内华达州亨德森举办了为期两天的 React Conf 2024 大会，有 700 多名与会者亲临现场，讨论 UI 工程领域的最新进展。这是我们自 2019 年以来首次举办线下会议，我们很高兴能够再次将社区团结在一起……
 
 </BlogCard>
 
-<BlogCard title="React 19 升级指南" date="April 25, 2024" url="/blog/2024/04/25/react-19-upgrade-guide">
+<BlogCard title="React 19 升级指南" date="2024 年 4 月 25 日" url="/blog/2024/04/25/react-19-upgrade-guide">
 
 React 19 中新增的改进需要一些破坏性变更，但我们已经尽力让升级过程尽可能平滑，我们预计这些变更不会影响大多数应用。在这篇文章中，我们将指导你完成将库升级到 React 19 的步骤……
 
 </BlogCard>
 
-<BlogCard title="React Labs：我们正在努力的方向——2024 年 2 月" date="February 15, 2024" url="/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024">
+<BlogCard title="React Labs：我们正在努力的方向——2024 年 2 月" date="2024 年 2 月 15 日" url="/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024">
 
 在 React Labs 的文章中，我们讲述了正在进行研究与开发的项目。自从上次更新以来，我们在 React 编译器、新功能和 React 19 方面取得了重大进展，除此之外我们还想要分享我们从中学到的东西。
 
 </BlogCard>
 
-<BlogCard title="React Canaries：在 Meta 之外逐步推出新功能" date="May 3, 2023" url="/blog/2023/05/03/react-canaries">
+<BlogCard title="React Canaries：在 Meta 之外逐步推出新功能" date="2023 年 5 月 3 日" url="/blog/2023/05/03/react-canaries">
 
 在过去，React 的新功能将仅在 Meta 中使用，然后才会在开源版本中发布。我们希望为 React 社区提供一种选择，使他们能够在新功能设计接近最终状态时立即采用这些功能——类似于 Meta 内部使用 React 的方式。我们正在推出一个新的官方支持的 Canary 发布渠道。它允许像框架这样的精选设置，对单个 React 功能的采用与 React 发布计划分离开。
 
