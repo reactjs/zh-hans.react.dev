@@ -187,7 +187,7 @@ React 18 中的 Suspense 在与 Transition API 结合时效果最好。如果你
 
 #### React DOM Server {/*react-dom-server*/}
 
-这些新的 API 现在可以从 `react-dom/server` 中导出，并且在服务端端完全支持流式 Suspense：
+这些新的 API 现在可以从 `react-dom/server` 中导出，并且在服务端完全支持流式 Suspense：
 
 * `renderToPipeableStream`：用于 Node 环境中的流式渲染。
 * `renderToReadableStream`：对新式的非主流运行时环境，比如 Deno 和 Cloudflare workers。
