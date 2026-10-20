@@ -125,9 +125,9 @@ title: "普通组件（例如 <div>）"
 * [`onPointerEnter`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/pointerenter_event)：一个 [`PointerEvent` 事件处理函数](#pointerevent-handler)。当指针在元素内移动时触发。没有捕获阶段。相反，`onPointerLeave` 和 `onPointerEnter` 从被离开的元素传播到被进入的元素。
 * [`onPointerLeave`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/pointerleave_event)：一个 [`PointerEvent` 事件处理函数](#pointerevent-handler)。当指针移动到元素外部时触发。没有捕获阶段。相反，`onPointerLeave` 和 `onPointerEnter` 从被离开的元素传播到被进入的元素。
 * [`onPointerMove`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/pointermove_event)：一个 [`PointerEvent` 事件处理函数](#pointerevent-handler)。当指针改变坐标时触发。
-* `onPointerMoveCapture`:一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onPointerMove` 版本。
+* `onPointerMoveCapture`：一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onPointerMove` 版本。
 * [`onPointerOut`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/pointerout_event)：一个 [`PointerEvent` 事件处理函数](#pointerevent-handler)。当指针移动到元素外部时触发，如果指针交互被取消以及 [其他一些原因](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/pointerout_event)。
-* `onPointerOutCapture`:一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onPointerOut` 版本。
+* `onPointerOutCapture`：一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onPointerOut` 版本。
 * [`onPointerUp`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/pointerup_event)：一个 [`PointerEvent` 事件处理函数](#pointerevent-handler)。当指针不再活动时触发。
 * `onPointerUpCapture`：一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onPointerUp` 版本。
 * [`onPaste`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/paste_event)：一个 [`ClipboardEvent` 事件处理函数](#clipboardevent-handler)。当用户尝试从剪贴板粘贴内容时触发。
@@ -174,7 +174,7 @@ title: "普通组件（例如 <div>）"
 这些事件仅适用于 [`<details>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/details) 元素，与浏览器事件不同，React 中的事件会冒泡：
 
 * [`onToggle`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLDetailsElement/toggle_event)：一个 [`Event` 事件处理函数](#event-handler)。当用户切换详细信息时触发。
-* `onToggleCapture`:一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onToggle` 版本。
+* `onToggleCapture`：一个在 [捕获阶段](/learn/responding-to-events#capture-phase-events) 触发的 `onToggle` 版本。
 
 这些事件会触发在 [`<img>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img)、[`<iframe>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe)、[`<object>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object)、[`<embed>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/embed)、[`<link>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link) 和 [SVG `<image>`](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/SVG_Image_Tag) 元素。与浏览器事件不同，React 中的事件会冒泡：
 
@@ -469,7 +469,7 @@ React 事件对象实现了一些标准的 [`Event`](https://developer.mozilla.o
 * `e`：一个有额外 [`FocusEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/FocusEvent) 属性的 [React 事件对象](#react-event-object)：
   * [`relatedTarget`](https://developer.mozilla.org/zh-CN/docs/Web/API/FocusEvent/relatedTarget)
 
-  它还包括继承的 [`UIEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent) 属性:
+  它还包括继承的 [`UIEvent`](https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent) 属性：
 
   * [`detail`](https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent/detail)
   * [`view`](https://developer.mozilla.org/zh-CN/docs/Web/API/UIEvent/view)
@@ -876,7 +876,7 @@ function Row({ isSelected, size }) {
 
 有时需要获取与 JSX 标签相关联的浏览器 DOM 节点。举个例子，当你希望在点击按钮时聚焦于一个 `<input>`，你需要在浏览器的`<input>` DOM 节点上调用 [`focus()`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/focus) 方法。
 
-要获取标签的浏览器 DOM 节点，请 [声明一个 ref](/reference/react/useRef) 并将其作为一个 `ref` 属性传递给标签:
+要获取标签的浏览器 DOM 节点，请 [声明一个 ref](/reference/react/useRef) 并将其作为一个 `ref` 属性传递给标签：
 
 ```js {7}
 import { useRef } from 'react';
@@ -924,7 +924,7 @@ export default function Form() {
 
 ### 危险地设置内部 HTML {/*dangerously-setting-the-inner-html*/}
 
-你可以像这样将原始的 HTML 字符串传递给元素:
+你可以像这样将原始的 HTML 字符串传递给元素：
 
 ```js
 const markup = { __html:'<p>some raw html</p>' };

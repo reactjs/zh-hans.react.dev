@@ -607,7 +607,7 @@ export default function TabButton({ action, children, isActive }) {
 }
 ```
 
-由于父组件的状态更新在 `action` 中，所以该状态更新会被标记为 transition。这意味着你可以在点击“Posts”后立即点击“Contact”，并且它不会阻止用户交互:
+由于父组件的状态更新在 `action` 中，所以该状态更新会被标记为 transition。这意味着你可以在点击“Posts”后立即点击“Contact”，并且它不会阻止用户交互：
 
 <Sandpack>
 

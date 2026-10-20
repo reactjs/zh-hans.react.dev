@@ -311,7 +311,7 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-`createContext` 只需**默认值**这么一个参数。在这里, `1` 表示最大的标题级别，但是你可以传递任何类型的值（甚至可以传入一个对象）。你将在下一个步骤中见识到默认值的意义。
+`createContext` 只需**默认值**这么一个参数。在这里，`1` 表示最大的标题级别，但是你可以传递任何类型的值（甚至可以传入一个对象）。你将在下一个步骤中见识到默认值的意义。
 
 ### Step 2：使用 Context {/*step-2-use-the-context*/}
 
@@ -869,7 +869,7 @@ Context 不局限于静态值。如果你在下一次渲染时传递不同的值
 <Recap>
 
 * Context 使组件向其下方的整个树提供信息。
-* 传递 Context 的方法:
+* 传递 Context 的方法：
   1. 通过 `export const MyContext = createContext(defaultValue)` 创建并导出 context。
   2. 在无论层级多深的任何子组件中，把 context 传递给 `useContext(MyContext)` Hook 来读取它。
   3. 在父组件中把 children 包在 `<MyContext value={...}>` 中来提供 context。

@@ -385,7 +385,7 @@ export default function Form() {
 
 ## 常用类型 {/*useful-types*/}
 
-当逐渐适应 React 和 TypeScript 的搭配使用后, 可以尝试阅读 `@types/react`，此库提供了一整套类型。你可以在 [DefinitelyTyped 的 React 目录中](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts) 找到它们。我们将在这里介绍一些更常见的类型。
+当逐渐适应 React 和 TypeScript 的搭配使用后，可以尝试阅读 `@types/react`，此库提供了一整套类型。你可以在 [DefinitelyTyped 的 React 目录中](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts) 找到它们。我们将在这里介绍一些更常见的类型。
 
 ### DOM 事件 {/*typing-dom-events*/}
 

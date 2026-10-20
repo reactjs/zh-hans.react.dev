@@ -37,7 +37,7 @@ translators:
 
 ## 步骤 1: 触发一次渲染 {/*step-1-trigger-a-render*/}
 
-有两种原因会导致组件的渲染:
+有两种原因会导致组件的渲染：
 
 1. 组件的 **初次渲染。**
 2. 组件（或者其祖先之一）的 **状态发生了改变。**
@@ -78,15 +78,15 @@ export default function Image() {
 <IllustrationBlock sequential>
   <Illustration caption="状态更新..." alt="React 作为餐厅服务员将一份 Card UI 送到用户那里，这里的用户以头部为光标的顾客表示。顾客说她想要一个粉色的 Card，而不是黑色的。" src="/images/docs/illustrations/i_rerender1.png" />
   <Illustration caption="...触发..." alt="React 回到组件厨房并告诉 Card 主厨他们需要一个粉色 Card。" src="/images/docs/illustrations/i_rerender2.png" />
-  <Illustration caption="...渲染!" alt="Card 主厨把粉色 Card 交给 React。" src="/images/docs/illustrations/i_rerender3.png" />
+  <Illustration caption="...渲染！" alt="Card 主厨把粉色 Card 交给 React。" src="/images/docs/illustrations/i_rerender3.png" />
 </IllustrationBlock>
 
 ## 步骤 2: React 渲染你的组件 {/*step-2-react-renders-your-components*/}
 
 在你触发渲染后，React 会调用你的组件来确定要在屏幕上显示的内容。**"渲染中" 即 React 在调用你的组件。**
 
-* **在进行初次渲染时,** React 会调用根组件。
-* **对于后续的渲染,** React 会调用内部状态更新触发了渲染的函数组件。
+* **在进行初次渲染时，** React 会调用根组件。
+* **对于后续的渲染，** React 会调用内部状态更新触发了渲染的函数组件。
 
 这个过程是递归的：如果更新后的组件会返回某个另外的组件，那么 React 接下来就会渲染 _那个_ 组件，而如果那个组件又返回了某个组件，那么 React 接下来就会渲染 _那个_ 组件，以此类推。这个过程会持续下去，直到没有更多的嵌套组件并且 React 确切知道哪些东西应该显示到屏幕上为止。
 
@@ -131,7 +131,7 @@ img { margin: 0 10px 10px 0; }
 </Sandpack>
 
 * **在初次渲染中，** React 将会为`<section>`、`<h1>` 和三个 `<img>` 标签 [创建 DOM 节点](https://developer.mozilla.org/docs/Web/API/Document/createElement)。
-* **在一次重渲染过程中,** React 将计算它们的哪些属性（如果有的话）自上次渲染以来已更改。在下一步（提交阶段）之前，它不会对这些信息执行任何操作。
+* **在一次重渲染过程中，** React 将计算它们的哪些属性（如果有的话）自上次渲染以来已更改。在下一步（提交阶段）之前，它不会对这些信息执行任何操作。
 
 <Pitfall>
 

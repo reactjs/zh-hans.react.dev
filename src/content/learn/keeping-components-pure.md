@@ -205,7 +205,7 @@ export default function TeaGathering() {
 
 <DeepDive>
 
-#### React 为何侧重于纯函数? {/*why-does-react-care-about-purity*/}
+#### React 为何侧重于纯函数？ {/*why-does-react-care-about-purity*/}
 
 编写纯函数需要遵循一些习惯和规程。但它开启了绝妙的机遇：
 

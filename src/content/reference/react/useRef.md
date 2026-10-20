@@ -39,7 +39,7 @@ function MyComponent() {
 
 #### 返回值 {/*returns*/}
 
-`useRef` 返回一个只有一个属性的对象:
+`useRef` 返回一个只有一个属性的对象：
 
 * `current`：初始值为传递的 `initialValue`。之后可以将其设置为其他值。如果将 ref 对象作为一个 JSX 节点的 `ref` 属性传递给 React，React 将为它设置 `current` 属性。
 

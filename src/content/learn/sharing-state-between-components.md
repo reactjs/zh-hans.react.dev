@@ -104,7 +104,7 @@ h3, p { margin: 5px 0px; }
 
 这样，`Accordion` 组件就可以控制 2 个 `Panel` 组件，保证同一时间只能展开一个。
 
-### 第 1 步: 从子组件中移除状态 {/*step-1-remove-state-from-the-child-components*/}
+### 第 1 步：从子组件中移除状态 {/*step-1-remove-state-from-the-child-components*/}
 
 你将把 `Panel` 组件对 `isActive` 的控制权交给他们的父组件。这意味着，父组件会将 `isActive` 作为 `prop` 传给子组件 `Panel`。我们先从 `Panel` 组件中 **删除下面这一行**：
 
@@ -120,7 +120,7 @@ function Panel({ title, children, isActive }) {
 
 现在 `Panel` 的父组件就可以通过 [向下传递 prop](/learn/passing-props-to-a-component) 来 **控制** `isActive`。但相反地，`Panel` 组件对 `isActive` 的值 **没有控制权** —— 现在完全由父组件决定！
 
-### 第 2 步: 从公共父组件传递硬编码数据 {/*step-2-pass-hardcoded-data-from-the-common-parent*/}
+### 第 2 步：从公共父组件传递硬编码数据 {/*step-2-pass-hardcoded-data-from-the-common-parent*/}
 
 为了实现状态提升，必须定位到你想协调的 **两个** 子组件最近的公共父组件：
 
@@ -177,7 +177,7 @@ h3, p { margin: 5px 0px; }
 
 你可以尝试修改 `Accordion` 组件中 `isActive` 的值，并在屏幕上查看结果。
 
-### 第 3 步: 为公共父组件添加状态 {/*step-3-add-state-to-the-common-parent*/}
+### 第 3 步：为公共父组件添加状态 {/*step-3-add-state-to-the-common-parent*/}
 
 状态提升通常会改变原状态的数据存储类型。
 
@@ -276,7 +276,7 @@ h3, p { margin: 5px 0px; }
 
 <Diagram name="sharing_state_parent" height={385} width={487} alt="这个图表展示了一个包含三个组件的树形结构图，其中父组件是 Accordion，两个子组件是 Panel。Accordion 包含一个值为 0 的 activeIndex 属性，该属性会传递给第一个Panel 组件，让其内部的 isActive 值变为 true，同时会传递给第二个 Panel 组件，让其内部的 isActive 值变为 false。" >
 
-一开始, `Accordion` 组件中的 `activeIndex` 是 `0`，此时第一个 `Panel` 组件接受到的属性为 `isActive = true`
+一开始，`Accordion` 组件中的 `activeIndex` 是 `0`，此时第一个 `Panel` 组件接受到的属性为 `isActive = true`
 
 </Diagram>
 
