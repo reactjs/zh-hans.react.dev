@@ -11,7 +11,17 @@ title: React 博客
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
+<<<<<<< HEAD
 <BlogCard title="React 基金会：由 Linux 基金会托管的 React 新家" date="2026 年 2 月 24 日" url="/blog/2026/02/24/the-react-foundation">
+=======
+<BlogCard title="React 19.3" date="September 9, 2026" url="/blog/2026/09/09/react-19-3">
+
+React 19.3 adds new features like View Transitions, Fragment Refs, browser(), Trusted Types, and more. In this post ...
+
+</BlogCard>
+
+<BlogCard title="The React Foundation: A New Home for React Hosted by the Linux Foundation" date="February 24, 2026" url="/blog/2026/02/24/the-react-foundation">
+>>>>>>> ae5e48074d4f73f1e349eda2a66841f9a959023e
 
 React 基金会已在 Linux 基金会旗下正式启动。
 
@@ -149,7 +159,11 @@ React 团队很高兴分享一些更新：
 
 ### 所有的发布笔记 {/*all-release-notes*/}
 
+<<<<<<< HEAD
 并不是每个 React 版本都值得拥有专属博客文章，但是你可以在 React 仓库的 `CHANGELOG.md` 或 [发布页面](https://github.com/facebook/react/releases) 中找到每个版本的详细变更。
+=======
+Not every React release deserves its own blog post, but you can find a detailed changelog for every release in the [`CHANGELOG.md`](https://github.com/react/react/blob/main/CHANGELOG.md) file in the React repository, as well as on the [Releases](https://github.com/react/react/releases) page.
+>>>>>>> ae5e48074d4f73f1e349eda2a66841f9a959023e
 
 ---
 
