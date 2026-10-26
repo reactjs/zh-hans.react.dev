@@ -736,6 +736,10 @@ export default function ContactTab() {
 button { margin-right: 10px }
 b { display: inline-block; margin-right: 10px; }
 .pending { color: #777; }
+.items {
+  max-height: 300px;
+  overflow: auto;
+}
 ```
 
 </Sandpack>
@@ -891,6 +895,10 @@ export default function ContactTab() {
 button { margin-right: 10px }
 b { display: inline-block; margin-right: 10px; }
 .pending { color: #777; }
+.items {
+  max-height: 300px;
+  overflow: auto;
+}
 ```
 
 </Sandpack>
@@ -1559,7 +1567,11 @@ main {
 
 ### 使用错误边界向用户显示错误 {/*displaying-an-error-to-users-with-error-boundary*/}
 
+<<<<<<< HEAD
 如果传递给 `startTransition` 的函数抛出错误，可以通过[错误边界（error boundary）](/reference/react/Component#catching-rendering-errors-with-an-error-boundary) 向用户显示错误。要使用错误边界，请将调用 `useTransition` 的组件包裹在错误边界中。当传递给 `startTransition` 的函数报错时，错误边界的备用 UI 将会显示。
+=======
+If a function passed to `startTransition` throws an error or returns a rejected Promise, you can display an error to your user with an [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). To use an error boundary, wrap the component where you are calling the `useTransition` in an error boundary. Once the function passed to `startTransition` errors, the fallback for the error boundary will be displayed.
+>>>>>>> ae5e48074d4f73f1e349eda2a66841f9a959023e
 
 <Sandpack>
 
@@ -1730,7 +1742,15 @@ startTransition(async () => {
 
 ### 我想在组件外部调用 `useTransition` {/*i-want-to-call-usetransition-from-outside-a-component*/}
 
+<<<<<<< HEAD
 `useTransition` 是一个 Hook，因此不能在组件外部调用。请使用独立的 [`startTransition`](/reference/react/startTransition) 方法。它们的工作方式相同，但不提供 `isPending` 标记。
+=======
+You can't call `useTransition` outside a component because it's a Hook. In this
+case, the standalone [`startTransition`](/reference/react/startTransition)
+function can mark state updates as Transitions. It does not provide the
+`isPending` flag. Because the standalone function is not associated with a
+component, an Error Boundary cannot handle errors from its Transition.
+>>>>>>> ae5e48074d4f73f1e349eda2a66841f9a959023e
 
 ---
 
