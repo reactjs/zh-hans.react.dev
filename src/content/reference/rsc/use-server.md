@@ -179,7 +179,7 @@ Server Action 是暴露的服务器端点，可以在客户端代码的任何位
 
 在 `<form>` 之外使用服务器函数时请使用 [transition](/reference/react/useTransition)，这允许显示加载指示器、显示 [乐观状态更新](/reference/react/useOptimistic) 和处理意外错误。表单会自动在 Transition 中包装服务器函数。
 
-```js {9-12}
+```js {9-14}
 import incrementLike from './actions';
 import { useState, useTransition } from 'react';
 
@@ -190,7 +190,9 @@ function LikeButton() {
   const onClick = () => {
     startTransition(async () => {
       const currentCount = await incrementLike();
-      setLikeCount(currentCount);
+      startTransition(() => {
+        setLikeCount(currentCount);
+      });
     });
   };
 
