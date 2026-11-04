@@ -16,8 +16,14 @@ title: "React 内置 Hook"
 
 使用以下 Hook 以向组件添加状态：
 
+<<<<<<< HEAD
 * 使用 [`useState`](/reference/react/useState) 声明可以直接更新的状态变量。
 * 使用 [`useReducer`](/reference/react/useReducer) 在 [reducer 函数](/learn/extracting-state-logic-into-a-reducer) 中声明带有更新逻辑的 state 变量。
+=======
+* [`useState`](/reference/react/useState) declares a state variable that you can update directly.
+* [`useReducer`](/reference/react/useReducer) declares a state variable with the update logic inside a [reducer function.](/learn/extracting-state-logic-into-a-reducer)
+* [`useOptimistic`](/reference/react/useOptimistic) lets you show a different state while an async action is pending.
+>>>>>>> ae5c052513bff992aef8f9e4454126e5c6c524ed
 
 ```js
 function ImageGallery() {
