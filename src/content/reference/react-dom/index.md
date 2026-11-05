@@ -30,6 +30,12 @@ title: React DOM API
 * [`preinit`](/reference/react-dom/preinit) 让你获取并执行外部脚本，或获取并插入样式表。
 * [`preinitModule`](/reference/react-dom/preinitModule) 让你获取并执行一个 ESM 模块。
 
+## Server Rendering APIs {/*server-rendering-apis*/}
+
+This API controls how components render on the server:
+
+* [`browser`](/reference/react-dom/browser) lets you mark a component as browser-only during server rendering.
+
 ---
 
 ## 入口 {/*entry-points*/}
@@ -45,9 +51,18 @@ title: React DOM API
 
 这些 API 将在 React 19 中被移除。
 
+<<<<<<< HEAD
 * [`findDOMNode`](https://18.react.dev/reference/react-dom/findDOMNode)：查看 [替代方案](https://18.react.dev/reference/react-dom/findDOMNode#alternatives)。
 * [`hydrate`](https://18.react.dev/reference/react-dom/hydrate)：使用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 来替代。
 * [`render`](https://18.react.dev/reference/react-dom/render)：使用 [`createRoot`](/reference/react-dom/client/createRoot) 来替代。
 * [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode)：使用 [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) 来替代。
 * [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream)：使用 [`react-dom/server`](/reference/react-dom/server) API 来替代。
 * [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream)：使用 [`react-dom/server`](/reference/react-dom/server) API 来替代。
+=======
+* [`findDOMNode`](https://18.react.dev/reference/react-dom/findDOMNode): see [alternatives](https://18.react.dev/reference/react-dom/findDOMNode#alternatives).
+* [`hydrate`](https://18.react.dev/reference/react-dom/hydrate): use [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) instead.
+* [`render`](https://18.react.dev/reference/react-dom/render): use [`createRoot`](/reference/react-dom/client/createRoot) instead.
+* [`unmountComponentAtNode`](https://18.react.dev/reference/react-dom/unmountComponentAtNode): use [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) instead.
+* [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
+* [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
+>>>>>>> 2e6dca162985d438d7a834b339d89177cf0a92b9

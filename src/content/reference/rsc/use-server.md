@@ -5,7 +5,11 @@ titleForTitleTag: "'use server' 指示符"
 
 <RSC>
 
+<<<<<<< HEAD
 `'use server'` 用于 [React 服务器组件](/reference/rsc/server-components)。
+=======
+`'use server'` is for use with [React Server Components](/reference/rsc/server-components).
+>>>>>>> 2e6dca162985d438d7a834b339d89177cf0a92b9
 
 </RSC>
 
@@ -139,7 +143,7 @@ export default function App() {
 // requestUsername.js
 'use server';
 
-export default async function requestUsername(formData) {
+export default async function requestUsername(prevState, formData) {
   const username = formData.get('username');
   if (canRequest(username)) {
     // ...
@@ -179,7 +183,7 @@ Server Action 是暴露的服务器端点，可以在客户端代码的任何位
 
 在 `<form>` 之外使用服务器函数时请使用 [transition](/reference/react/useTransition)，这允许显示加载指示器、显示 [乐观状态更新](/reference/react/useOptimistic) 和处理意外错误。表单会自动在 Transition 中包装服务器函数。
 
-```js {9-12}
+```js {9-14}
 import incrementLike from './actions';
 import { useState, useTransition } from 'react';
 
@@ -190,14 +194,21 @@ function LikeButton() {
   const onClick = () => {
     startTransition(async () => {
       const currentCount = await incrementLike();
-      setLikeCount(currentCount);
+      startTransition(() => {
+        setLikeCount(currentCount);
+      });
     });
   };
 
   return (
     <>
+<<<<<<< HEAD
       <p>点赞数量： {likeCount}</p>
       <button onClick={onClick} disabled={isPending}>点赞</button>;
+=======
+      <p>Total Likes: {likeCount}</p>
+      <button onClick={onClick} disabled={isPending}>Like</button>
+>>>>>>> 2e6dca162985d438d7a834b339d89177cf0a92b9
     </>
   );
 }

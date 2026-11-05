@@ -130,7 +130,11 @@ const uppercasePassword = password.toUpperCase() // `uppercasePassword` 不被�
 
 在此示例中，常量 `password` 被污染。然后，通过在 `password` 上调用 `toUpperCase` 方法使用 `password` 创建新值 `uppercasePassword`。新创建的 `uppercasePassword` 不被污染。
 
+<<<<<<< HEAD
 从被污染的值派生新值的其他类似方式，如将其连接到较大的字符串中、将其转换为 base64 或返回子字符串，会创建未被污染的值。
+=======
+Other similar ways of deriving new values from tainted values like concatenating it into a larger string, converting it to base64, or returning a substring create untainted values.
+>>>>>>> 2e6dca162985d438d7a834b339d89177cf0a92b9
 
 污点标记仅保护免受简单错误的影响，比如明确将机密值传递给客户端的错误。在调用 `taintUniqueValue` 时出现的错误，例如在 React 外部使用全局存储，没有相应的生命周期对象，可能会导致被污染的值变为未被污染。污点标记是一层保护，安全的应用程序将具有多层保护、精心设计的 API 和隔离模式。
 

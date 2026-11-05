@@ -182,7 +182,11 @@ const [error, submitAction, isPending] = useActionState(
 
 `React.useActionState` 在 Canary 版本中曾被称为 `ReactDOM.useFormState`，但我们已经将其重命名并弃用了 `useFormState`。
 
+<<<<<<< HEAD
 有关更多信息，请参见 [#28491](https://github.com/facebook/react/pull/28491)。
+=======
+See [#28491](https://github.com/react/react/pull/28491) for more info.
+>>>>>>> 2e6dca162985d438d7a834b339d89177cf0a92b9
 
 </Note>
 
@@ -389,7 +393,11 @@ React 19 包含了所有从 Canary 渠道引入的 React 服务器组件功能�
 
 服务器 Actions 可以在服务器组件中创建并作为 props 传递给客户端组件，或者可以在客户端组件中导入和使用。
 
+<<<<<<< HEAD
 有关更多信息，请参阅 [React 服务器 Actions](/reference/rsc/server-actions) 文档。
+=======
+For more, see the docs for [React Server Actions](/reference/rsc/server-functions).
+>>>>>>> 2e6dca162985d438d7a834b339d89177cf0a92b9
 
 ## React 19 中的改进 {/*improvements-in-react-19*/}
 
