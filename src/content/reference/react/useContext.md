@@ -826,7 +826,7 @@ const initialTasks = [
 ```
 
 ```js src/AddTask.js
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { useTasksDispatch } from './TasksContext.js';
 
 export default function AddTask() {
@@ -855,7 +855,7 @@ let nextId = 3;
 ```
 
 ```js src/TaskList.js
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { useTasks, useTasksDispatch } from './TasksContext.js';
 
 export default function TaskList() {
@@ -1366,7 +1366,11 @@ function MyApp() {
 
 如果你忘记了指定 `value`，它会像这样传值 `value={undefined}`。
 
+<<<<<<< HEAD
 你可能还错误地使用了一个不同的 prop 名：
+=======
+You may have also used a different prop name by mistake:
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 ```js {1,2}
 // 🚩 不起作用：prop 应该是“value”

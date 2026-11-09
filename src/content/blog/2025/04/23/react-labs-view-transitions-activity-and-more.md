@@ -1245,8 +1245,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "19.3.0-canary-eb8feb71-20260814",
+    "react-dom": "19.3.0-canary-eb8feb71-20260814",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -2442,8 +2442,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "19.3.0-canary-eb8feb71-20260814",
+    "react-dom": "19.3.0-canary-eb8feb71-20260814",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -3670,8 +3670,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "19.3.0-canary-eb8feb71-20260814",
+    "react-dom": "19.3.0-canary-eb8feb71-20260814",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -4879,8 +4879,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "19.3.0-canary-eb8feb71-20260814",
+    "react-dom": "19.3.0-canary-eb8feb71-20260814",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -6195,8 +6195,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "19.3.0-canary-eb8feb71-20260814",
+    "react-dom": "19.3.0-canary-eb8feb71-20260814",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -7493,8 +7493,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "19.3.0-canary-eb8feb71-20260814",
+    "react-dom": "19.3.0-canary-eb8feb71-20260814",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -8814,8 +8814,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "19.3.0-canary-eb8feb71-20260814",
+    "react-dom": "19.3.0-canary-eb8feb71-20260814",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -10155,8 +10155,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "19.3.0-canary-eb8feb71-20260814",
+    "react-dom": "19.3.0-canary-eb8feb71-20260814",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -11441,8 +11441,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "19.3.0-canary-eb8feb71-20260814",
+    "react-dom": "19.3.0-canary-eb8feb71-20260814",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -11458,7 +11458,11 @@ root.render(
 
 如果你想了解更多关于它们如何工作的信息，请查看文档中的[`<ViewTransition>` 如何工作](/reference/react/ViewTransition#how-does-viewtransition-work)。
 
+<<<<<<< HEAD
 **关于我们如何构建视图过渡的更多背景信息，请参阅：[#31975](https://github.com/facebook/react/pull/31975)、[#32105](https://github.com/facebook/react/pull/32105)、[#32041](https://github.com/facebook/react/pull/32041)、[#32734](https://github.com/facebook/react/pull/32734)、[#32797](https://github.com/facebook/react/pull/32797)、[#31999](https://github.com/facebook/react/pull/31999)、[#32031](https://github.com/facebook/react/pull/32031)、[#32050](https://github.com/facebook/react/pull/32050)、[#32820](https://github.com/facebook/react/pull/32820)、[#32029](https://github.com/facebook/react/pull/32029)、[#32028](https://github.com/facebook/react/pull/32028) 和 [#32038](https://github.com/facebook/react/pull/32038)，由 [@sebmarkbage](https://twitter.com/sebmarkbage) 完成（感谢 Seb！）。**
+=======
+_For more background on how we built View Transitions, see: [#31975](https://github.com/react/react/pull/31975), [#32105](https://github.com/react/react/pull/32105), [#32041](https://github.com/react/react/pull/32041), [#32734](https://github.com/react/react/pull/32734), [#32797](https://github.com/react/react/pull/32797) [#31999](https://github.com/react/react/pull/31999), [#32031](https://github.com/react/react/pull/32031), [#32050](https://github.com/react/react/pull/32050), [#32820](https://github.com/react/react/pull/32820), [#32029](https://github.com/react/react/pull/32029), [#32028](https://github.com/react/react/pull/32028), and [#32038](https://github.com/react/react/pull/32038) by [@sebmarkbage](https://twitter.com/sebmarkbage) (thanks Seb!)._
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 ---
 
@@ -12840,8 +12844,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "19.3.0-canary-eb8feb71-20260814",
+    "react-dom": "19.3.0-canary-eb8feb71-20260814",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -14178,8 +14182,8 @@ root.render(
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
+    "react": "19.3.0-canary-eb8feb71-20260814",
+    "react-dom": "19.3.0-canary-eb8feb71-20260814",
     "react-scripts": "latest"
   },
   "scripts": {
@@ -14266,7 +14270,11 @@ root.render(
 
 我们发现，困惑通常来自于在不需要的情况下使用 Effect。[你可能不需要 Effect](/learn/you-might-not-need-an-effect) 指南涵盖了许多 Effects 不是正确解决方案的情况。然而，即使 Effect 是解决问题的正确选择，Effects 仍然可能比类组件生命周期更难理解。
 
+<<<<<<< HEAD
 我们认为造成困惑的原因之一是开发者从 **组件** 的角度（像生命周期一样）思考 Effects，而不是从 **Effects** 的角度（Effect 做什么）思考。
+=======
+We believe one of the reasons for confusion is that developers tend to think of Effects from the _component's_ perspective (like a lifecycle), instead of the _Effects_ point of view (what the Effect does).
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 让我们看一个[文档中的例子](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective)：
 

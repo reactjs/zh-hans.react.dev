@@ -335,7 +335,11 @@ function MyComponent() {
 
 </Note>
 
+<<<<<<< HEAD
 [`useMemo`](/reference/react/useMemo) 会从函数调用中创建/重新访问记忆化值，只有在第二个参数中传入的依赖项发生变化时，才会重新运行该函数。函数的类型是根据第一个参数中函数的返回值进行推断的，如果希望明确指定，可以为该 Hook 提供一个类型参数以指定函数类型。
+=======
+The [`useMemo`](/reference/react/useMemo) Hooks will create/re-access a memoized value from a function call, re-running the function only when dependencies passed as the 2nd parameter are changed. The result of calling the Hook is inferred from the return value from the function in the first parameter. You can be more explicit by providing a type argument to the Hook.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 ```ts
 // 从 filterTodos 的返回值推断 visibleTodos 的类型

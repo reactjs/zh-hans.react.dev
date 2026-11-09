@@ -533,7 +533,11 @@ React 使用树形关系建模以展示组件和模块之间的关系。
 
 React 渲染树是组件之间父子关系的表示。
 
+<<<<<<< HEAD
 <Diagram name="generic_render_tree" height={250} width={500} alt="一个树状图，有五个节点，每个节点代表一个组件。树状图的顶部有一个名为 Root Component 的根节点，它有两个向下延伸的箭头，分别标有 renders。两个箭头指向标有 Component A 和 Component C 的节点。Component A 有一条 renders 箭头指向标有 Component B 的节点。Component C 有一条 renders 箭头指向标有 Component D 的节点。">
+=======
+<Diagram name="generic_render_tree" height={250} width={500} alt="A tree graph with five nodes, with each node representing a component. The root node is located at the top of the tree graph and is labelled 'Root Component'. It has two arrows extending down to two nodes labelled 'Component A' and 'Component C'. Each of the arrows is labelled with 'renders'. 'Component A' has a single 'renders' arrow to a node labelled 'Component B'. 'Component C' has a single 'renders' arrow to a node labelled 'Component D'.">
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 示例的 React 渲染树
 
