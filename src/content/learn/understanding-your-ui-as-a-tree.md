@@ -135,7 +135,11 @@ React 创建的 UI 树是由渲染过的组件构成的，被称为渲染树。
 
 #### 那么渲染树中的 HTML 标签在哪里呢？ {/*where-are-the-html-elements-in-the-render-tree*/}
 
+<<<<<<< HEAD
 也许会注意到在上面的渲染树中，没有提到每个组件渲染的 HTML 标签。这是因为渲染树仅由 React [组件](learn/your-first-component#components-ui-building-blocks) 组成。
+=======
+You'll notice in the above render tree, there is no mention of the HTML tags that each component renders. This is because the render tree is only composed of React [components](/learn/your-first-component#components-ui-building-blocks).
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 React 是跨平台的 UI 框架。react.dev 展示了一些渲染到使用 HTML 标签作为 UI 原语的 web 的示例。但是 React 应用程序同样可以渲染到移动设备或桌面平台，这些平台可能使用不同的 UI 原语，如 [UIView](https://developer.apple.com/documentation/uikit/uiview) 或 [FrameworkElement](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement?view=windowsdesktop-7.0)。
 

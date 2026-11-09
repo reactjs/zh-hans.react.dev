@@ -41,8 +41,13 @@ description: 今天，我们非常高兴推出 react.dev，React 及其文档的
 
 **新文档从一开始就使用 Hook 来介绍 React**。新文档分为两个主要部分：
 
+<<<<<<< HEAD
 * **[学习 React](/learn)** 是一个自学课程，从头开始介绍 React。
 * **[API 参考](/reference)** 提供了每个 React API 的详细信息和使用示例。
+=======
+* **[Learn React](/learn)** is a self-paced course that teaches React from scratch.
+* **[API Reference](/reference/react)** provides the details and usage examples for every React API.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 让我们更仔细地看看可以从每个部分中找到什么。
 
@@ -459,11 +464,19 @@ export default function PackingList() {
 
 在 [API 参考](/reference/react) 中，每个 React API 现在都有一个专门的页面。这包括各种类型的 API：
 
+<<<<<<< HEAD
 - 内置 Hook，比如 [`useState`](/reference/react/useState)。
 - 内置组件，比如 [`<Suspense>`](/reference/react/Suspense)。
 - 内置浏览器组件，比如 [`<input>`](/reference/react-dom/components/input)。
 - 面向框架的 API，比如 [`renderToPipeableStream`](/reference/react-dom/server/renderToReadableStream)。
 - 其他 React API，比如 [`memo`](/reference/react/memo)。
+=======
+- Built-in Hooks like [`useState`](/reference/react/useState).
+- Built-in components like [`<Suspense>`](/reference/react/Suspense).
+- Built-in browser components like [`<input>`](/reference/react-dom/components/input).
+- Framework-oriented APIs like [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream).
+- Other React APIs like [`memo`](/reference/react/memo).
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 你会注意到，每个 API 页面至少被分成两个部分：**参考** 和 **用法**。
 
@@ -607,7 +620,11 @@ button { display: block; margin-top: 10px; }
 
 </Recipes>
 
+<<<<<<< HEAD
 一些 API 页面还包括针对常见问题的 [故障排除](/reference/react/useEffect#troubleshooting) 和针对弃用 API 的 [替代方案](/reference/react-dom/findDOMNode#alternatives)。
+=======
+Some API pages also include [Troubleshooting](/reference/react/useEffect#troubleshooting) (for common problems) and [Alternatives](https://18.react.dev/reference/react-dom/findDOMNode#alternatives) (for deprecated APIs).
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 我们希望 API 参考不仅仅是用来查找参数，还可以用来查看任何给定 API 可以做的所有不同事情以及与其他 API 相关联的方法。
 

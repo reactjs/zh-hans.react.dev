@@ -143,7 +143,11 @@ function TableContainer({ items }) {
 - React 编译器只对 React 组件和 Hook 进行记忆化，而不是所有函数
 - React 编译器的记忆化不会在多个组件或 Hook 之间共享
 
+<<<<<<< HEAD
 因此，如果 `expensivelyProcessAReallyLargeArrayOfObjects` 在许多不同的组件中使用，即使传递了完全相同的 items，这个昂贵的计算也会被重复运行。我们建议在使代码变得更复杂之前，先 [profiling](reference/react/useMemo#how-to-tell-if-a-calculation-is-expensive) 以确定计算是否真的那么昂贵。
+=======
+So if `expensivelyProcessAReallyLargeArrayOfObjects` was used in many different components, even if the same exact items were passed down, that expensive calculation would be run repeatedly. We recommend [profiling](/reference/react/useMemo#how-to-tell-if-a-calculation-is-expensive) first to see if it really is that expensive before making code more complicated.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 </DeepDive>
 
 ## 我应该尝试这个编译器吗？ {/*should-i-try-out-the-compiler*/}
