@@ -143,7 +143,7 @@ React 不能在渲染中调用 `flushSync`。如果你这样做，它将不执�
 
 <ConsoleBlock level="error">
 
-警告: flushSync 在生命周期方法中被调用。当 React 已经在渲染时，React 无法刷新。考虑将此调用移至调度器任务或微任务中。
+警告：flushSync 在生命周期方法中被调用。当 React 已经在渲染时，React 无法刷新。考虑将此调用移至调度器任务或微任务中。
 
 </ConsoleBlock>
 

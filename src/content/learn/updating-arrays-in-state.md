@@ -543,7 +543,7 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-问题出在下面这段代码中:
+问题出在下面这段代码中：
 
 ```js
 const myNextList = [...myList];

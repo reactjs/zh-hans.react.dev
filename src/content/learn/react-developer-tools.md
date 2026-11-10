@@ -29,7 +29,7 @@ translators:
 ![React Developer Tools extension](/images/docs/react-devtools-extension.png)
 
 ### Safari 和其他浏览器 {/*safari-and-other-browsers*/}
-为其他浏览器（比如，Safari），安装 [`react-devtools`](https://www.npmjs.com/package/react-devtools) npm 包:
+为其他浏览器（比如，Safari），安装 [`react-devtools`](https://www.npmjs.com/package/react-devtools) npm 包：
 ```bash
 # Yarn
 yarn global add react-devtools

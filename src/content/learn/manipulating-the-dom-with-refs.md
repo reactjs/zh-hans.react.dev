@@ -46,7 +46,7 @@ const myRef = useRef(null);
 myRef.current.scrollIntoView();
 ```
 
-### 示例: 使文本输入框获得焦点 {/*example-focusing-a-text-input*/}
+### 示例：使文本输入框获得焦点 {/*example-focusing-a-text-input*/}
 
 在本例中，单击按钮将使输入框获得焦点：
 
@@ -84,7 +84,7 @@ export default function Form() {
 
 虽然 DOM 操作是 ref 最常见的用例，但 `useRef` Hook 可用于存储 React 之外的其他内容，例如计时器 ID 。与 state 类似，ref 能在渲染之间保留。你甚至可以将 ref 视为设置它们时不会触发重新渲染的 state 变量！你可以在[使用 Ref 引用值](/learn/referencing-values-with-refs)中了解有关 ref 的更多信息。
 
-### 示例: 滚动至一个元素 {/*example-scrolling-to-an-element*/}
+### 示例：滚动至一个元素 {/*example-scrolling-to-an-element*/}
 
 一个组件中可以有多个 ref。在这个例子中，有一个由三张图片和三个按钮组成的轮播，点击按钮会调用浏览器的 [`scrollIntoView()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView) 方法，在相应的 DOM 节点上将它们居中显示在视口中：
 

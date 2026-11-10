@@ -138,7 +138,7 @@ const chemists = people.filter(person =>
 );
 ```
 
-2. 接下来 **用 map 方法遍历** `chemists` 数组:
+2. 接下来 **用 map 方法遍历** `chemists` 数组：
 
 ```js {1,13}
 const listItems = chemists.map(person =>

@@ -52,7 +52,7 @@ export default function ProductPage({ productId, referrer, theme }) {
 
 在初次渲染时，`useCallback` 返回你已经传入的 `fn` 函数
 
-在之后的渲染中, 如果依赖没有改变，`useCallback` 返回上一次渲染中缓存的 `fn` 函数；否则返回这一次渲染传入的 `fn`。
+在之后的渲染中，如果依赖没有改变，`useCallback` 返回上一次渲染中缓存的 `fn` 函数；否则返回这一次渲染传入的 `fn`。
 
 #### 注意 {/*caveats*/}
 
@@ -233,7 +233,7 @@ function useCallback(fn, dependencies) {
 
 请注意，`useCallback` 不会阻止创建函数。你总是在创建一个函数（这很好！），但是如果没有任何东西改变，React 会忽略它并返回缓存的函数。
 
-**在实践中, 你可以通过遵循一些原则来减少许多不必要的记忆化**：
+**在实践中，你可以通过遵循一些原则来减少许多不必要的记忆化**：
 
 1. 当一个组件在视觉上包装其他组件时，让它 [接受 JSX 作为子元素](/learn/passing-props-to-a-component#passing-jsx-as-children)。随后，如果包装组件更新自己的 state，React 知道它的子组件不需要重新渲染。
 2. 建议使用 state 并且不要 [提升状态](/learn/sharing-state-between-components) 超过必要的程度。不要将表单和项是否悬停等短暂状态保存在树的顶部或全局状态库中。
@@ -783,7 +783,7 @@ function ChatRoom({ roomId }) {
 
 ---
 
-### 优化自定义 Hook{/*optimizing-a-custom-hook*/}
+### 优化自定义 Hook {/*optimizing-a-custom-hook*/}
 
 如果你正在编写一个 [自定义 Hook](/learn/reusing-logic-with-custom-hooks)，建议将它返回的任何函数包裹在 `useCallback` 中：
 
@@ -812,7 +812,7 @@ function useRouter() {
 
 ## 疑难解答 {/*troubleshooting*/}
 
-### 我的组件每一次渲染时, `useCallback` 都返回了完全不同的函数 {/*every-time-my-component-renders-usecallback-returns-a-different-function*/}
+### 我的组件每一次渲染时，`useCallback` 都返回了完全不同的函数 {/*every-time-my-component-renders-usecallback-returns-a-different-function*/}
 
 确保你已经将依赖数组指定为第二个参数！
 

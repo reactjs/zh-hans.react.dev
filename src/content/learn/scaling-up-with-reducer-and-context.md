@@ -244,7 +244,7 @@ Reducer 有助于保持事件处理程序的简短明了。但随着应用规模
 2. 将 state 和 dispatch **放入** context。
 3. 在组件树的任何地方 **使用** context。
 
-### 第一步: 创建 context {/*step-1-create-the-context*/}
+### 第一步：创建 context {/*step-1-create-the-context*/}
 
 `useReducer` 返回当前的 `tasks` 和 `dispatch` 函数来让你更新它们：
 
@@ -455,7 +455,7 @@ ul, li { margin: 0; padding: 0; }
 
 在这里，你把 `null` 作为默认值传递给两个 context。实际值是由 `TaskApp` 组件提供的。
 
-### 第二步: 将 state 和 dispatch 函数放入 context {/*step-2-put-state-and-dispatch-into-context*/}
+### 第二步：将 state 和 dispatch 函数放入 context {/*step-2-put-state-and-dispatch-into-context*/}
 
 现在，你可以将所有的 context 导入 `TaskApp` 组件。获取 `useReducer()` 返回的 `tasks` 和 `dispatch` 并将它们 [提供](/learn/passing-data-deeply-with-context#step-3-provide-the-context) 给整个组件树：
 
@@ -1359,7 +1359,7 @@ ul, li { margin: 0; padding: 0; }
 
 - 你可以将 reducer 与 context 相结合，让任何组件读取和更新它的状态。
 - 为子组件提供 state 和 dispatch 函数：
-  1. 创建两个 context (一个用于 state,一个用于 dispatch 函数)。
+  1. 创建两个 context (一个用于 state，一个用于 dispatch 函数)。
   2. 让组件的 context 使用 reducer。
   3. 使用组件中需要读取的 context。
 - 你可以通过将所有传递信息的代码移动到单个文件中来进一步整理组件。

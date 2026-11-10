@@ -383,7 +383,7 @@ function delay(ms) {
 
 <Hint>
 
-如果你没有思路，可以从下面的代码结构开始:
+如果你没有思路，可以从下面的代码结构开始：
 
 ```js
 export function getFinalState(baseState, queue) {
@@ -498,7 +498,7 @@ function TestCase({
 
 <Solution>
 
-这其实就是这一页中所描述的 React 用来计算最终 state 的算法:
+这其实就是这一页中所描述的 React 用来计算最终 state 的算法：
 
 <Sandpack>
 

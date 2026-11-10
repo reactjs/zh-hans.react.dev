@@ -106,7 +106,7 @@ export default defineConfig({
 ```
 </Note>
 
-或者, 你也可以通过 `@rolldown/plugin-babel` 直接使用 Babel 插件。
+或者，你也可以通过 `@rolldown/plugin-babel` 直接使用 Babel 插件。
 
 ```js {3,9}
 // vite.config.js

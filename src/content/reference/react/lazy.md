@@ -22,7 +22,7 @@ const SomeComponent = lazy(load)
 
 ### `lazy(load)` {/*lazy*/}
 
-在组件外部调用 `lazy`，以声明一个懒加载的 React 组件:
+在组件外部调用 `lazy`，以声明一个懒加载的 React 组件：
 
 ```js
 import { lazy } from 'react';

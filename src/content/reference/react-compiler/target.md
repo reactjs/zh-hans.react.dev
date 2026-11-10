@@ -107,7 +107,7 @@ import { c as _c } from 'react-compiler-runtime';
 
 如果你看到类似 “Cannot find module 'react/compiler-runtime'” 的错误：
 
-1. 检查你的 React 版本:
+1. 检查你的 React 版本：
    ```bash
    npm why react
    ```
