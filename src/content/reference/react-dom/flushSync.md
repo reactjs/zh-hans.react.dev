@@ -196,7 +196,11 @@ useEffect(() => {
 }, []);
 ```
 
+<<<<<<< HEAD
 这将允许当前渲染完成，并调度另一次同步渲染来刷新更新。
+=======
+This will allow the current render to finish and schedule another synchronous render to flush the updates.
+>>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 <Pitfall>
 
