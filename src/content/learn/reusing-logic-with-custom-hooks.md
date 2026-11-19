@@ -1413,7 +1413,7 @@ function SaveButton() {
 
 #### React 会为数据获取提供内置解决方案么？ {/*will-react-provide-any-built-in-solution-for-data-fetching*/}
 
-Today, with the [`use`](/reference/react/use#streaming-data-from-server-to-client) API, data can be read in render by passing a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to `use`:
+现在，借助 [`use`](/reference/react/use#streaming-data-from-server-to-client) API，你可以将 [Promise](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise) 传递给 `use`，从而在渲染过程中读取数据：
 
 ```js {1,4,11}
 import { use, Suspense } from "react";
