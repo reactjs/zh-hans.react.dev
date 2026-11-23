@@ -14,8 +14,14 @@ title: React DOM API
 
 这些 API 可以在你的组件中导入，但是很少使用：
 
+<<<<<<< HEAD
 * [`createPortal`](/reference/react-dom/createPortal) 允许你将子组件渲染到 DOM 树的不同位置。
 * [`flushSync`](/reference/react-dom/flushSync) 允许你强制 React 同步刷新状态并更新 DOM。
+=======
+* [`createPortal`](/reference/react-dom/createPortal) lets you render child components in a different part of the DOM tree.
+* [`flushSync`](/reference/react-dom/flushSync) lets you force React to flush a state update and update the DOM synchronously.
+* [`requestFormReset`](/reference/react-dom/requestFormReset) lets you request a form reset when handling submissions with custom Actions or Transitions.
+>>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 ## 资源预加载 API {/*resource-preloading-apis*/}
 
@@ -29,6 +35,12 @@ title: React DOM API
 * [`preloadModule`](/reference/react-dom/preloadModule) 让你获取预计要使用的 ESM 模块。
 * [`preinit`](/reference/react-dom/preinit) 让你获取并执行外部脚本，或获取并插入样式表。
 * [`preinitModule`](/reference/react-dom/preinitModule) 让你获取并执行一个 ESM 模块。
+
+## Server Rendering APIs {/*server-rendering-apis*/}
+
+This API controls how components render on the server:
+
+* [`browser`](/reference/react-dom/browser) lets you mark a component as browser-only during server rendering.
 
 ---
 
@@ -45,9 +57,18 @@ title: React DOM API
 
 这些 API 将在 React 19 中被移除。
 
+<<<<<<< HEAD
 * [`findDOMNode`](https://18.react.dev/reference/react-dom/findDOMNode)：查看 [替代方案](https://18.react.dev/reference/react-dom/findDOMNode#alternatives)。
 * [`hydrate`](https://18.react.dev/reference/react-dom/hydrate)：使用 [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) 来替代。
 * [`render`](https://18.react.dev/reference/react-dom/render)：使用 [`createRoot`](/reference/react-dom/client/createRoot) 来替代。
 * [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode)：使用 [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) 来替代。
 * [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream)：使用 [`react-dom/server`](/reference/react-dom/server) API 来替代。
 * [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream)：使用 [`react-dom/server`](/reference/react-dom/server) API 来替代。
+=======
+* [`findDOMNode`](https://18.react.dev/reference/react-dom/findDOMNode): see [alternatives](https://18.react.dev/reference/react-dom/findDOMNode#alternatives).
+* [`hydrate`](https://18.react.dev/reference/react-dom/hydrate): use [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) instead.
+* [`render`](https://18.react.dev/reference/react-dom/render): use [`createRoot`](/reference/react-dom/client/createRoot) instead.
+* [`unmountComponentAtNode`](https://18.react.dev/reference/react-dom/unmountComponentAtNode): use [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) instead.
+* [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
+* [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
+>>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f

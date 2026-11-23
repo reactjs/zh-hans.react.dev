@@ -76,7 +76,7 @@ Additional disclosures can be frustrating, but they are generally a sign of a he
 
 ### Affected frameworks and bundlers {/*affected-frameworks-and-bundlers*/}
 
-Some React frameworks and bundlers depended on, had peer dependencies for, or included the vulnerable React packages. The following React frameworks & bundlers are affected: [next](https://www.npmjs.com/package/next), [react-router](https://www.npmjs.com/package/react-router), [waku](https://www.npmjs.com/package/waku), [@parcel/rsc](https://www.npmjs.com/package/@parcel/rsc), [@vite/rsc-plugin](https://www.npmjs.com/package/@vitejs/plugin-rsc), and [rwsdk](https://www.npmjs.com/package/rwsdk).
+Some React frameworks and bundlers depended on, had peer dependencies for, or included the vulnerable React packages. The following React frameworks & bundlers are affected: [next](https://www.npmjs.com/package/next), [react-router](https://www.npmjs.com/package/react-router), [waku](https://www.npmjs.com/package/waku), [@parcel/rsc](https://www.npmjs.com/package/@parcel/rsc), [@vitejs/plugin-rsc](https://www.npmjs.com/package/@vitejs/plugin-rsc), and [rwsdk](https://www.npmjs.com/package/rwsdk).
 
 Please see [the instructions in the previous post](/blog/2025/12/03/critical-security-vulnerability-in-react-server-components#update-instructions) for upgrade steps.
 
@@ -98,7 +98,7 @@ If you are using React Native in a monorepo, you should update _only_ the impact
 
 This is required to mitigate the security advisories, but you do not need to update `react` and `react-dom` so this will not cause the version mismatch error in React Native.
 
-See [this issue](https://github.com/facebook/react-native/issues/54772#issuecomment-3617929832) for more information.
+See [this issue](https://github.com/react/react-native/issues/54772#issuecomment-3617929832) for more information.
 
 ---
 

@@ -342,7 +342,11 @@ function MyButton() {
 }
 ```
 
+<<<<<<< HEAD
 React 将再次调用你的组件函数。第一次 `count` 变成 `1`。接着点击会变成 `2`。继续点击会逐步递增。
+=======
+Calling `setCount` tells React to call your component function again. This is called a *re-render*. This time, `count` will be `1`. Then it will be `2`. And so on.
+>>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 如果你多次渲染同一个组件，每个组件都会拥有自己的 state。你可以尝试点击不同的按钮：
 
