@@ -22,7 +22,11 @@ translators:
 
 ## 状态与渲染树中的位置相关 {/*state-is-tied-to-a-position-in-the-tree*/}
 
+<<<<<<< HEAD
 React 会为 UI 中的组件结构构建 [渲染树](learn/understanding-your-ui-as-a-tree#the-render-tree)。
+=======
+React builds [render trees](/learn/understanding-your-ui-as-a-tree#the-render-tree) for the component structure in your UI.
+>>>>>>> 46a54e0592729712b7640308b53268e84fdc7c9f
 
 当向一个组件添加状态时，那么可能会认为状态“存在”在组件内。但实际上，状态是由 React 保存的。React 通过组件在渲染树中的位置将它保存的每个状态与正确的组件关联起来。
 
