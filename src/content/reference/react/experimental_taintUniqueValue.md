@@ -165,7 +165,7 @@ export async function Overview({ password }) {
 
 这个示例会将秘密的 API 令牌泄漏给客户端。如果这个 API 令牌可以用来访问此特定用户不应该访问的数据，可能会导致数据泄露。
 
-[comment]: <> (TODO: 一旦 `server-only` 文档写好就就将其链接到对应处)
+[comment]: <> (TODO: 一旦 `server-only` 文档写好就将其链接到对应处)
 
 理想情况下，像这样的机密信息应该被抽象到一个单独的辅助文件中，只有服务器上的可信数据工具才能导入它。这个辅助文件甚至可以被污染为 [`server-only`](https://www.npmjs.com/package/server-only)，以确保此文件不会在客户端被导入。
 

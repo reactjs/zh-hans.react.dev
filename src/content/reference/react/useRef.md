@@ -56,7 +56,7 @@ function MyComponent() {
 
 ## 使用 {/*usage*/}
 
-### 使用用 ref 引用一个值 {/*referencing-a-value-with-a-ref*/}
+### 使用 ref 引用一个值 {/*referencing-a-value-with-a-ref*/}
 
 在组件顶层调用 `useRef` 声明一个或多个 [ref](/learn/referencing-values-with-refs)。
 

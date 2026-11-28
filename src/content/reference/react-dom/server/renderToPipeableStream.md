@@ -416,7 +416,7 @@ const { pipe } = renderToPipeableStream(<App />, {
 
 ### 将 shell 之外的异常恢复 {/*recovering-from-errors-outside-the-shell*/}
 
-在这个例子中，`<Posts />` 组件被被包裹在 `<Suspense>` 中，所以它 **不是** shell 的一部分。
+在这个例子中，`<Posts />` 组件被包裹在 `<Suspense>` 中，所以它 **不是** shell 的一部分。
 
 ```js {6}
 function ProfilePage() {
